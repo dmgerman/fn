@@ -117,7 +117,21 @@ name|getUndoPresentationName
 parameter_list|()
 block|{
 return|return
-literal|"Undo: remove string "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Undo"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"remove string "
+argument_list|)
 return|;
 block|}
 DECL|method|getRedoPresentationName ()
@@ -127,7 +141,21 @@ name|getRedoPresentationName
 parameter_list|()
 block|{
 return|return
-literal|"Redo: remove string "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Redo"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"remove string "
+argument_list|)
 return|;
 block|}
 DECL|method|undo ()

@@ -343,6 +343,7 @@ operator|+
 literal|"SaveAs.gif"
 argument_list|)
 decl_stmt|,
+comment|//prefsIconFile = GUIGlobals.class.getResource(pre+"Options.gif"),
 DECL|field|prefsIconFile
 name|prefsIconFile
 init|=
@@ -354,7 +355,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"Options.gif"
+literal|"Hammer.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|newIconFile

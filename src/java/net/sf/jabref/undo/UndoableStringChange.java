@@ -129,15 +129,25 @@ name|getUndoPresentationName
 parameter_list|()
 block|{
 return|return
-literal|"Undo: change string "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Undo"
+argument_list|)
 operator|+
-operator|(
+literal|": "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
 name|nameChange
 condition|?
-literal|"name"
+literal|"change string name"
 else|:
-literal|"content"
-operator|)
+literal|"change string content"
+argument_list|)
 return|;
 block|}
 DECL|method|getRedoPresentationName ()
@@ -147,15 +157,25 @@ name|getRedoPresentationName
 parameter_list|()
 block|{
 return|return
-literal|"Redo: change string "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Redo"
+argument_list|)
 operator|+
-operator|(
+literal|": "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
 name|nameChange
 condition|?
-literal|"name"
+literal|"change string name"
 else|:
-literal|"content"
-operator|)
+literal|"change string content"
+argument_list|)
 return|;
 block|}
 DECL|method|undo ()

@@ -572,12 +572,7 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Fetch Medline"
-argument_list|)
+literal|"fetch Medline"
 argument_list|)
 decl_stmt|;
 name|Iterator

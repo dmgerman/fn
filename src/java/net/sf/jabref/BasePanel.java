@@ -3896,6 +3896,8 @@ argument_list|(
 operator|new
 name|UndoableInsertString
 argument_list|(
+name|ths
+argument_list|,
 name|database
 argument_list|,
 name|bs

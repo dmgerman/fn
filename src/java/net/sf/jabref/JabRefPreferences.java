@@ -1990,6 +1990,24 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
+literal|"Close preamble editor"
+argument_list|,
+literal|"ESCAPE"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Preamble editor: store changes"
+argument_list|,
+literal|"alt S"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
 literal|"Clear search"
 argument_list|,
 literal|"ESCAPE"

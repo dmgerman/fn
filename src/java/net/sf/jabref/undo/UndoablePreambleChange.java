@@ -119,7 +119,21 @@ name|getUndoPresentationName
 parameter_list|()
 block|{
 return|return
-literal|"Undo: change preamble"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Undo"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"change preamble"
+argument_list|)
 return|;
 block|}
 DECL|method|getRedoPresentationName ()
@@ -129,7 +143,21 @@ name|getRedoPresentationName
 parameter_list|()
 block|{
 return|return
-literal|"Redo: change preamble"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Redo"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"change preamble"
+argument_list|)
 return|;
 block|}
 DECL|method|undo ()

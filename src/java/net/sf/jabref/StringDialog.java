@@ -714,23 +714,6 @@ name|untitledStringsTitle
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|refreshTable ()
-specifier|public
-name|void
-name|refreshTable
-parameter_list|()
-block|{
-name|table
-operator|.
-name|revalidate
-argument_list|()
-expr_stmt|;
-name|table
-operator|.
-name|repaint
-argument_list|()
-expr_stmt|;
-block|}
 DECL|class|StringTable
 class|class
 name|StringTable
@@ -904,6 +887,28 @@ name|sp
 return|;
 block|}
 block|}
+DECL|method|refreshTable ()
+specifier|public
+name|void
+name|refreshTable
+parameter_list|()
+block|{
+name|table
+operator|.
+name|revalidate
+argument_list|()
+expr_stmt|;
+name|table
+operator|.
+name|clearSelection
+argument_list|()
+expr_stmt|;
+name|table
+operator|.
+name|repaint
+argument_list|()
+expr_stmt|;
+block|}
 DECL|class|StringTableModel
 class|class
 name|StringTableModel
@@ -1053,11 +1058,21 @@ name|showMessageDialog
 argument_list|(
 name|parent
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"A string with that label "
 operator|+
 literal|"already exists"
+argument_list|)
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Label"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -1088,9 +1103,19 @@ name|showMessageDialog
 argument_list|(
 name|parent
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"The label of the string can not be a number."
+argument_list|)
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Label"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -1289,9 +1314,19 @@ operator|==
 literal|0
 operator|)
 condition|?
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Name"
+argument_list|)
 else|:
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Content"
+argument_list|)
 operator|)
 return|;
 block|}
@@ -1429,7 +1464,12 @@ name|putValue
 argument_list|(
 name|SHORT_DESCRIPTION
 argument_list|,
-literal|"Close window (Ctrl-Q)"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Close dialog"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|this
@@ -1559,7 +1599,12 @@ name|putValue
 argument_list|(
 name|SHORT_DESCRIPTION
 argument_list|,
-literal|"New string (Ctrl-N)"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"New string"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|this
@@ -1587,7 +1632,12 @@ name|showInputDialog
 argument_list|(
 name|parent
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Please enter the string's label"
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
@@ -1611,9 +1661,19 @@ name|showMessageDialog
 argument_list|(
 name|parent
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"The label of the string can not be a number."
+argument_list|)
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Label"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -1645,7 +1705,11 @@ argument_list|(
 operator|new
 name|UndoableInsertString
 argument_list|(
-name|base
+name|panel
+argument_list|,
+name|panel
+operator|.
+name|database
 argument_list|,
 name|bs
 argument_list|,
@@ -1691,11 +1755,21 @@ name|showMessageDialog
 argument_list|(
 name|parent
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"A string with that label "
 operator|+
 literal|"already exists"
+argument_list|)
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Label"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -1750,7 +1824,12 @@ name|putValue
 argument_list|(
 name|SHORT_DESCRIPTION
 argument_list|,
-literal|"Store string (Ctrl-S)"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Store string"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|this
@@ -1815,7 +1894,12 @@ name|putValue
 argument_list|(
 name|SHORT_DESCRIPTION
 argument_list|,
-literal|"Remove selected strings (Shift-DEL)"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Remove selected strings"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|this
@@ -1860,7 +1944,14 @@ expr_stmt|;
 name|String
 name|msg
 init|=
-literal|"Really delete the selected "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Really delete the selected"
+argument_list|)
+operator|+
+literal|" "
 operator|+
 operator|(
 operator|(
@@ -1875,10 +1966,24 @@ name|sel
 operator|.
 name|length
 operator|+
-literal|" entries?"
+literal|" "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"entries"
+argument_list|)
 else|:
-literal|"entry?"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"entry"
+argument_list|)
 operator|)
+operator|+
+literal|"?"
 decl_stmt|;
 name|int
 name|answer
@@ -1891,7 +1996,12 @@ name|parent
 argument_list|,
 name|msg
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Delete strings"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -2050,7 +2160,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"Move string upwards"
+literal|"Move string up"
 argument_list|,
 operator|new
 name|ImageIcon
@@ -2065,7 +2175,12 @@ name|putValue
 argument_list|(
 name|SHORT_DESCRIPTION
 argument_list|,
-literal|"Move string upwards (Ctrl-Up)"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Move string up"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2240,7 +2355,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"Move string downwards"
+literal|"Move string down"
 argument_list|,
 operator|new
 name|ImageIcon
@@ -2255,7 +2370,12 @@ name|putValue
 argument_list|(
 name|SHORT_DESCRIPTION
 argument_list|,
-literal|"Move string downwards (Ctrl-Down)"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Move string down"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2450,7 +2570,12 @@ name|putValue
 argument_list|(
 name|SHORT_DESCRIPTION
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Undo"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2508,7 +2633,12 @@ name|putValue
 argument_list|(
 name|SHORT_DESCRIPTION
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Redo"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

@@ -53,6 +53,11 @@ specifier|private
 name|BibtexDatabase
 name|base
 decl_stmt|;
+DECL|field|panel
+specifier|private
+name|BasePanel
+name|panel
+decl_stmt|;
 DECL|field|string
 specifier|private
 name|BibtexString
@@ -63,10 +68,13 @@ specifier|private
 name|int
 name|pos
 decl_stmt|;
-DECL|method|UndoableInsertString (BibtexDatabase base, BibtexString string, int pos)
+DECL|method|UndoableInsertString (BasePanel panel, BibtexDatabase base, BibtexString string, int pos)
 specifier|public
 name|UndoableInsertString
 parameter_list|(
+name|BasePanel
+name|panel
+parameter_list|,
 name|BibtexDatabase
 name|base
 parameter_list|,
@@ -82,6 +90,12 @@ operator|.
 name|base
 operator|=
 name|base
+expr_stmt|;
+name|this
+operator|.
+name|panel
+operator|=
+name|panel
 expr_stmt|;
 name|this
 operator|.
@@ -103,7 +117,21 @@ name|getUndoPresentationName
 parameter_list|()
 block|{
 return|return
-literal|"Undo: insert string "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Undo"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"insert string "
+argument_list|)
 return|;
 block|}
 DECL|method|getRedoPresentationName ()
@@ -113,7 +141,21 @@ name|getRedoPresentationName
 parameter_list|()
 block|{
 return|return
-literal|"Redo: insert string "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Redo"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"insert string "
+argument_list|)
 return|;
 block|}
 DECL|method|undo ()
@@ -135,14 +177,11 @@ argument_list|(
 name|pos
 argument_list|)
 expr_stmt|;
-name|Util
+name|panel
 operator|.
-name|pr
-argument_list|(
-literal|"UndoableInsertString must notify after change."
-argument_list|)
+name|updateStringDialog
+argument_list|()
 expr_stmt|;
-comment|//baseFrame.updateStringDialog();
 block|}
 DECL|method|redo ()
 specifier|public
@@ -180,14 +219,11 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
-name|Util
+name|panel
 operator|.
-name|pr
-argument_list|(
-literal|"UndoableInsertString must notify after change."
-argument_list|)
+name|updateStringDialog
+argument_list|()
 expr_stmt|;
-comment|//baseFrame.updateStringDialog();
 block|}
 block|}
 end_class
