@@ -2936,7 +2936,7 @@ name|put
 argument_list|(
 literal|"Edit strings"
 argument_list|,
-literal|"ctrl shift S"
+literal|"ctrl T"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds

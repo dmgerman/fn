@@ -719,6 +719,7 @@ operator|=
 name|oldState
 expr_stmt|;
 block|}
+comment|/*public boolean surrendersFocusOnKeystroke() { 	return true; 	}*/
 comment|/**        * This method overrides the superclass' to disable the selection listener while the        * selection is cleared.        */
 DECL|method|clearSelection ()
 specifier|public
