@@ -139,7 +139,19 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<p>Title:</p>  *<p>Description:</p>  *<p>Copyright: Copyright (c) 2003</p>  *<p>Company:</p>  * @author not attributable  * @version 1.0  */
+comment|// created by : ?
+end_comment
+
+begin_comment
+comment|//
+end_comment
+
+begin_comment
+comment|// modified : r.nagel 2.09.2004
+end_comment
+
+begin_comment
+comment|//            - insert close button
 end_comment
 
 begin_class
@@ -174,7 +186,13 @@ DECL|field|KEEP_LOWER
 name|KEEP_LOWER
 init|=
 literal|2
+decl_stmt|,
+DECL|field|BREAK
+name|BREAK
+init|=
+literal|5
 decl_stmt|;
+comment|// close
 DECL|field|DIM
 specifier|final
 name|Dimension
@@ -266,6 +284,20 @@ operator|.
 name|lang
 argument_list|(
 literal|"Keep both"
+argument_list|)
+argument_list|)
+decl_stmt|,
+DECL|field|closeButton
+name|closeButton
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Close"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -585,6 +617,13 @@ argument_list|(
 name|both
 argument_list|)
 expr_stmt|;
+name|options
+operator|.
+name|add
+argument_list|(
+name|closeButton
+argument_list|)
+expr_stmt|;
 name|first
 operator|.
 name|addActionListener
@@ -666,6 +705,37 @@ block|{
 name|status
 operator|=
 name|KEEP_BOTH
+expr_stmt|;
+name|block
+operator|=
+literal|false
+expr_stmt|;
+name|dispose
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
+name|closeButton
+operator|.
+name|addActionListener
+argument_list|(
+operator|new
+name|ActionListener
+argument_list|()
+block|{
+specifier|public
+name|void
+name|actionPerformed
+parameter_list|(
+name|ActionEvent
+name|e
+parameter_list|)
+block|{
+name|status
+operator|=
+name|BREAK
 expr_stmt|;
 name|block
 operator|=

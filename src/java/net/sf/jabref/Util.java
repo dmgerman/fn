@@ -2664,6 +2664,15 @@ operator|.
 name|getRequiredFields
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|fields
+operator|==
+literal|null
+condition|)
+return|return
+literal|false
+return|;
 name|float
 name|req
 init|=
@@ -3028,8 +3037,8 @@ return|;
 block|}
 block|}
 comment|/**      * This methods assures all words in the given entry are recorded      * in their respective Completers, if any.      */
-comment|/*    public static void updateCompletersForEntry(Hashtable autoCompleters, 					 BibtexEntry be) {  	for (Iterator j=autoCompleters.keySet().iterator(); 	     j.hasNext();) { 	    String field = (String)j.next(); 	    Completer comp = (Completer)autoCompleters.get(field); 	    comp.addAll(be.getField(field)); 	} 	}*/
-comment|/** 	 * Sets empty or non-existing owner fields of bibtex entries inside an array to 	 * a specified default value. 	 * @param bibs array of bibtex entries 	 * @param defaultOwner default owner of bibtex entries 	 */
+comment|/*    public static void updateCompletersForEntry(Hashtable autoCompleters,                                          BibtexEntry be) {          for (Iterator j=autoCompleters.keySet().iterator();              j.hasNext();) {             String field = (String)j.next();             Completer comp = (Completer)autoCompleters.get(field);             comp.addAll(be.getField(field));         }         }*/
+comment|/**          * Sets empty or non-existing owner fields of bibtex entries inside an array to          * a specified default value.          * @param bibs array of bibtex entries          * @param defaultOwner default owner of bibtex entries          */
 DECL|method|setDefaultOwner ( ArrayList bibs, String defaultOwner )
 specifier|public
 specifier|static
