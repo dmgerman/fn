@@ -140,7 +140,7 @@ argument_list|(
 literal|"JabRef preferences"
 argument_list|)
 argument_list|,
-literal|true
+literal|false
 argument_list|)
 expr_stmt|;
 name|_prefs
@@ -325,6 +325,10 @@ operator|new
 name|TabLabelPattern
 argument_list|(
 name|_prefs
+argument_list|,
+name|parent
+operator|.
+name|helpDiag
 argument_list|)
 argument_list|)
 expr_stmt|;

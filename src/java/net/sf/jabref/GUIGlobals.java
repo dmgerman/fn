@@ -894,6 +894,11 @@ name|contentSelectorHelp
 init|=
 literal|"ContentSelectorHelp.html"
 decl_stmt|,
+DECL|field|labelPatternHelp
+name|labelPatternHelp
+init|=
+literal|"LabelPatterns.html"
+decl_stmt|,
 DECL|field|aboutPage
 name|aboutPage
 init|=
