@@ -164,6 +164,11 @@ DECL|field|OTHER
 name|OTHER
 init|=
 literal|3
+decl_stmt|,
+DECL|field|PADLEFT
+name|PADLEFT
+init|=
+literal|2
 decl_stmt|;
 DECL|method|EntryTableModel (JabRefFrame frame_, BasePanel panel_, BibtexDatabase db_)
 specifier|public
@@ -209,6 +214,7 @@ argument_list|()
 expr_stmt|;
 comment|//	entryIDs = db.getKeySet().toArray(); // Temporary
 block|}
+comment|/*public void numberRows() {           for(int r=0; r< model.getRowCount(); r++)                   model.setValueAt(r+1 + "", r, 0);  		 } */
 DECL|method|getColumnName (int col)
 specifier|public
 name|String
@@ -223,6 +229,18 @@ condition|(
 name|col
 operator|==
 literal|0
+condition|)
+return|return
+name|GUIGlobals
+operator|.
+name|NUMBER_COL
+return|;
+elseif|else
+if|if
+condition|(
+name|col
+operator|==
+literal|1
 condition|)
 return|return
 name|Util
@@ -243,7 +261,7 @@ name|columns
 index|[
 name|col
 operator|-
-literal|1
+name|PADLEFT
 index|]
 argument_list|)
 return|;
@@ -271,7 +289,7 @@ name|getColumnCount
 parameter_list|()
 block|{
 return|return
-literal|1
+name|PADLEFT
 operator|+
 name|columns
 operator|.
@@ -287,24 +305,12 @@ name|int
 name|column
 parameter_list|)
 block|{
-if|if
-condition|(
-name|column
-operator|==
-literal|0
-condition|)
 return|return
 name|String
 operator|.
 name|class
 return|;
-else|else
-return|return
-name|String
-operator|.
-name|class
-return|;
-comment|/*((ObjectType)(FieldTypes.GLOBAL_FIELD_TYPES.get 				 (GUIGlobals.ALL_FIELDS 				  [(frame.prefs.getByteArray("columnNames"))[column-1]]))) 				  .getValueClass();*/
+comment|/* 	if (column == 0) 	    return String.class; 	else 	 ((ObjectType)(FieldTypes.GLOBAL_FIELD_TYPES.get 				 (GUIGlobals.ALL_FIELDS 				  [(frame.prefs.getByteArray("columnNames"))[column-1]]))) 				  .getValueClass();*/
 block|}
 DECL|method|getValueAt (int row, int col)
 specifier|public
@@ -344,6 +350,19 @@ literal|0
 condition|)
 name|o
 operator|=
+literal|""
+operator|+
+name|row
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|col
+operator|==
+literal|1
+condition|)
+name|o
+operator|=
 name|be
 operator|.
 name|getType
@@ -364,7 +383,7 @@ name|columns
 index|[
 name|col
 operator|-
-literal|1
+name|PADLEFT
 index|]
 argument_list|)
 expr_stmt|;
@@ -387,9 +406,17 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|col
 operator|==
 literal|0
+operator|)
+operator|||
+operator|(
+name|col
+operator|==
+literal|1
+operator|)
 condition|)
 return|return
 name|OTHER
@@ -436,7 +463,7 @@ name|columns
 index|[
 name|col
 operator|-
-literal|1
+name|PADLEFT
 index|]
 argument_list|)
 condition|)
@@ -453,7 +480,7 @@ name|columns
 index|[
 name|col
 operator|-
-literal|1
+name|PADLEFT
 index|]
 argument_list|)
 condition|)
@@ -1034,8 +1061,8 @@ block|{
 if|if
 condition|(
 name|col
-operator|==
-literal|0
+operator|<=
+name|PADLEFT
 condition|)
 return|return
 literal|false

@@ -1909,6 +1909,14 @@ init|=
 literal|65
 decl_stmt|;
 comment|// Maximum
+DECL|field|NUMBER_COL
+specifier|public
+specifier|static
+name|String
+name|NUMBER_COL
+init|=
+literal|"#"
+decl_stmt|;
 DECL|field|DEFAULT_FIELD_LENGTH
 specifier|public
 specifier|static
@@ -2063,6 +2071,19 @@ operator|new
 name|Integer
 argument_list|(
 literal|75
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|fieldLength
+operator|.
+name|put
+argument_list|(
+name|NUMBER_COL
+argument_list|,
+operator|new
+name|Integer
+argument_list|(
+literal|32
 argument_list|)
 argument_list|)
 expr_stmt|;
