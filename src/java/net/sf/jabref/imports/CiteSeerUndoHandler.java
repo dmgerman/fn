@@ -747,7 +747,7 @@ name|nextField
 operator|.
 name|equals
 argument_list|(
-literal|"url"
+literal|"citeseerurl"
 argument_list|)
 condition|)
 block|{
@@ -1086,7 +1086,7 @@ condition|)
 block|{
 name|nextField
 operator|=
-literal|"url"
+literal|"citeseerurl"
 expr_stmt|;
 name|nextAssign
 operator|=

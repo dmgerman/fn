@@ -6781,6 +6781,14 @@ name|lang
 argument_list|(
 literal|"Import Data from CiteSeer"
 argument_list|)
+argument_list|,
+operator|new
+name|ImageIcon
+argument_list|(
+name|GUIGlobals
+operator|.
+name|wwwCiteSeerIcon
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|putValue
@@ -7214,6 +7222,14 @@ operator|.
 name|lang
 argument_list|(
 literal|"Fetch Citations from CiteSeer"
+argument_list|)
+argument_list|,
+operator|new
+name|ImageIcon
+argument_list|(
+name|GUIGlobals
+operator|.
+name|wwwCiteSeerIcon
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -1672,6 +1672,8 @@ literal|"doi"
 block|,
 literal|"url"
 block|,
+literal|"citeseerurl"
+block|,
 literal|"pdf"
 block|,
 literal|"abstract"
