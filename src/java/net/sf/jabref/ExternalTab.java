@@ -748,11 +748,7 @@ operator|.
 name|nextLine
 argument_list|()
 expr_stmt|;
-name|builder
-operator|.
-name|appendSeparator
-argument_list|()
-expr_stmt|;
+comment|//builder.appendSeparator();
 name|pan
 operator|=
 name|builder

@@ -260,7 +260,16 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Appearance"
+literal|"Entry table"
+argument_list|)
+decl_stmt|,
+name|COL
+init|=
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Entry table columns"
 argument_list|)
 decl_stmt|,
 name|KEY
@@ -316,6 +325,13 @@ operator|.
 name|add
 argument_list|(
 name|APP
+argument_list|)
+expr_stmt|;
+name|al
+operator|.
+name|add
+argument_list|(
+name|COL
 argument_list|)
 expr_stmt|;
 name|al
@@ -415,6 +431,21 @@ name|parent
 argument_list|)
 argument_list|,
 name|APP
+argument_list|)
+expr_stmt|;
+name|main
+operator|.
+name|add
+argument_list|(
+operator|new
+name|TableColumnsTab
+argument_list|(
+name|_prefs
+argument_list|,
+name|parent
+argument_list|)
+argument_list|,
+name|COL
 argument_list|)
 expr_stmt|;
 name|main
