@@ -4378,6 +4378,8 @@ literal|"Quit JabRef"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_Q,
+comment|//    Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 block|}
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
@@ -5143,6 +5145,7 @@ argument_list|(
 name|ths
 argument_list|)
 decl_stmt|;
+comment|/*FileDialog chooser = new FileDialog(ths, "Open", FileDialog.LOAD);                     chooser.show();                     int returnVal = 0;*/
 if|if
 condition|(
 name|returnVal
@@ -5159,6 +5162,7 @@ operator|.
 name|getSelectedFile
 argument_list|()
 expr_stmt|;
+comment|//fileToOpen = new File(chooser.getFile());
 block|}
 block|}
 else|else
