@@ -134,6 +134,13 @@ name|filenm
 operator|.
 name|endsWith
 argument_list|(
+literal|".ris"
+argument_list|)
+operator|||
+name|filenm
+operator|.
+name|endsWith
+argument_list|(
 literal|".ref"
 argument_list|)
 comment|// refer/endnote format
@@ -192,7 +199,7 @@ operator|!
 name|specific
 condition|)
 return|return
-literal|"*.bib, *.bibx, *.dat, *.txt, *.xml, *.ref or *.fcgi"
+literal|"*.bib, *.bibx, *.dat, *.txt, *.xml, *.ref, *.ris or *.fcgi"
 return|;
 else|else
 return|return
