@@ -4421,7 +4421,7 @@ argument_list|(
 literal|"Replaced"
 argument_list|)
 operator|+
-literal|": "
+literal|" "
 operator|+
 name|counter
 operator|+
@@ -4439,6 +4439,8 @@ literal|"occurence"
 else|:
 literal|"occurences"
 argument_list|)
+operator|+
+literal|"."
 argument_list|)
 expr_stmt|;
 if|if

@@ -528,39 +528,64 @@ name|newButton
 operator|.
 name|setToolTipText
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"New group"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|refresh
 operator|.
 name|setToolTipText
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Refresh view"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|andCb
 operator|.
 name|setToolTipText
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Display only entries belonging to all selected"
 operator|+
 literal|" groups."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|orCb
 operator|.
 name|setToolTipText
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Display all entries belonging to one or more "
 operator|+
 literal|"of the selected groups."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|autoGroup
 operator|.
 name|setToolTipText
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Automatically create groups for database."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|bgr
@@ -749,7 +774,12 @@ name|helpButton
 operator|.
 name|setToolTipText
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Help on groups"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|gbl
@@ -961,7 +991,12 @@ argument_list|(
 operator|new
 name|AbstractAction
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Remove"
+argument_list|)
 argument_list|)
 block|{
 specifier|public
@@ -1007,13 +1042,25 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-literal|"Remove group '"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Remove group"
+argument_list|)
+operator|+
+literal|" '"
 operator|+
 name|gname
 operator|+
 literal|"'?"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Remove group"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -1147,7 +1194,14 @@ name|frame
 operator|.
 name|output
 argument_list|(
-literal|"Removed group '"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Removed group"
+argument_list|)
+operator|+
+literal|" '"
 operator|+
 name|name
 operator|+
@@ -1167,9 +1221,14 @@ name|err
 operator|.
 name|println
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Unexpected error when "
 operator|+
 literal|"trying to remove group."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1842,7 +1901,14 @@ name|frame
 operator|.
 name|output
 argument_list|(
-literal|"Created group '"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Created group"
+argument_list|)
+operator|+
+literal|" '"
 operator|+
 name|gd
 operator|.
@@ -1977,7 +2043,12 @@ init|=
 operator|new
 name|AbstractAction
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Modify"
+argument_list|)
 argument_list|)
 block|{
 specifier|public
@@ -2120,7 +2191,14 @@ name|frame
 operator|.
 name|output
 argument_list|(
-literal|"Modified group '"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Modified group"
+argument_list|)
+operator|+
+literal|" '"
 operator|+
 name|gd
 operator|.

@@ -141,7 +141,14 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
-literal|"Characters to ignore:"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Characters to ignore"
+argument_list|)
+operator|+
+literal|":"
 argument_list|)
 decl_stmt|,
 DECL|field|nf
@@ -150,7 +157,14 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
-literal|"Field to group by:"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Field to group by"
+argument_list|)
+operator|+
+literal|":"
 argument_list|)
 decl_stmt|;
 name|JButton
@@ -160,7 +174,12 @@ init|=
 operator|new
 name|JButton
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Ok"
+argument_list|)
 argument_list|)
 decl_stmt|,
 DECL|field|cancel
@@ -169,7 +188,12 @@ init|=
 operator|new
 name|JButton
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Cancel"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|JPanel
@@ -266,7 +290,12 @@ name|super
 argument_list|(
 name|frame_
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Automatically create groups"
+argument_list|)
 argument_list|,
 literal|true
 argument_list|)
@@ -336,11 +365,21 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"You must provide a field name "
 operator|+
 literal|"as basis for the group creation."
+argument_list|)
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Automatically create groups"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -397,7 +436,12 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Autogenerate groups"
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|//boolean any = false; // To see if _any_ groups were created.
@@ -825,7 +869,12 @@ operator|.
 name|createEtchedBorder
 argument_list|()
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Group properties"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
