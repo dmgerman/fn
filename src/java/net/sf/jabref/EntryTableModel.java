@@ -1591,6 +1591,20 @@ literal|"terSort"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// Remove the old sorter as change listener for the database:
+if|if
+condition|(
+name|sorter
+operator|!=
+literal|null
+condition|)
+name|db
+operator|.
+name|removeDatabaseChangeListener
+argument_list|(
+name|sorter
+argument_list|)
+expr_stmt|;
 comment|// Then pick the three highest ranking ones, and go.
 if|if
 condition|(
