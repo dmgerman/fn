@@ -266,6 +266,13 @@ name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|bes
+operator|==
+literal|null
+condition|)
+continue|continue;
 comment|//(thisTableModel.getNameFromNumber(row));
 comment|// 2. add score per each hit
 name|searchScore

@@ -7614,11 +7614,12 @@ parameter_list|)
 block|{}
 block|}
 decl_stmt|;
-name|StringSelection
-name|ss
+comment|//StringSelection ss = new StringSelection(sw.toString());
+name|RtfSelection
+name|rs
 init|=
 operator|new
-name|StringSelection
+name|RtfSelection
 argument_list|(
 name|sw
 operator|.
@@ -7636,7 +7637,7 @@ argument_list|()
 operator|.
 name|setContents
 argument_list|(
-name|ss
+name|rs
 argument_list|,
 name|owner
 argument_list|)
@@ -10020,7 +10021,6 @@ name|int
 name|toScrollTo
 parameter_list|)
 block|{
-comment|//Util.pr("highlighting...");
 name|SwingUtilities
 operator|.
 name|invokeLater
@@ -10132,17 +10132,8 @@ operator|.
 name|getBottomComponent
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|comp
-operator|instanceof
-name|EntryEditor
-condition|)
-name|comp
-operator|.
-name|requestFocus
-argument_list|()
-expr_stmt|;
+comment|//if (comp instanceof EntryEditor)
+comment|//    comp.requestFocus();
 block|}
 block|}
 argument_list|)
