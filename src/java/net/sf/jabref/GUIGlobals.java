@@ -1657,6 +1657,14 @@ specifier|static
 name|String
 name|META_FLAG
 init|=
+literal|"jabref-meta: "
+decl_stmt|;
+DECL|field|META_FLAG_OLD
+specifier|public
+specifier|static
+name|String
+name|META_FLAG_OLD
+init|=
 literal|"bibkeeper-meta: "
 decl_stmt|;
 DECL|field|KEY_FIELD
@@ -2122,6 +2130,15 @@ argument_list|(
 literal|"ps"
 argument_list|,
 literal|"browse"
+argument_list|)
+expr_stmt|;
+name|FIELD_EXTRAS
+operator|.
+name|put
+argument_list|(
+literal|"keywords"
+argument_list|,
+literal|"selector"
 argument_list|)
 expr_stmt|;
 name|Map

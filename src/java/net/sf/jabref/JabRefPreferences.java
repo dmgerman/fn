@@ -2049,6 +2049,15 @@ argument_list|,
 literal|"F12"
 argument_list|)
 expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Copy \\cite{BibTeX key}"
+argument_list|,
+literal|"ctrl K"
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getNextUnit (Reader data)
 specifier|private

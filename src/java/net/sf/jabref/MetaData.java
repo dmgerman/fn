@@ -239,6 +239,22 @@ specifier|public
 name|MetaData
 parameter_list|()
 block|{	     }
+DECL|method|iterator ()
+specifier|public
+name|Iterator
+name|iterator
+parameter_list|()
+block|{
+return|return
+name|metaData
+operator|.
+name|keySet
+argument_list|()
+operator|.
+name|iterator
+argument_list|()
+return|;
+block|}
 DECL|method|getData (String key)
 specifier|public
 name|Vector

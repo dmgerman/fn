@@ -126,6 +126,11 @@ name|String
 name|FILETYPE_PREFS_EXT
 init|=
 literal|"_dir"
+decl_stmt|,
+DECL|field|SELECTOR_META_PREFIX
+name|SELECTOR_META_PREFIX
+init|=
+literal|"selector_"
 decl_stmt|;
 DECL|method|logger (String s)
 specifier|public
