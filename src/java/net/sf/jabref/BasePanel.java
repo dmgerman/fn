@@ -907,10 +907,15 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
+comment|//entryTable.clearSelection();
 name|entryTable
 operator|.
-name|clearSelection
-argument_list|()
+name|setRowSelectionInterval
+argument_list|(
+name|row
+argument_list|,
+name|row
+argument_list|)
 expr_stmt|;
 name|entryTable
 operator|.
@@ -923,6 +928,9 @@ name|markBaseChanged
 argument_list|()
 expr_stmt|;
 comment|// The database just changed.
+name|updateWiewToSelected
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 block|}
