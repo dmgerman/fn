@@ -857,7 +857,7 @@ name|anchor
 operator|=
 name|GridBagConstraints
 operator|.
-name|EAST
+name|WEST
 expr_stmt|;
 name|con
 operator|.

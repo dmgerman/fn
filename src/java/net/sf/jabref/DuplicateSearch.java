@@ -378,6 +378,10 @@ name|be
 index|[
 literal|1
 index|]
+argument_list|,
+name|DuplicateResolverDialog
+operator|.
+name|DUPLICATE_SEARCH
 argument_list|)
 expr_stmt|;
 name|drd

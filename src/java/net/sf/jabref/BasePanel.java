@@ -3387,34 +3387,23 @@ argument_list|(
 literal|"winEdtPath"
 argument_list|)
 decl_stmt|;
-name|winEdt
-operator|=
-literal|"osascript"
-expr_stmt|;
+comment|//winEdt = "osascript";
 try|try
 block|{
-comment|//StringBuffer toSend = new StringBuffer("\"[InsText('\\cite{");
 name|StringBuffer
 name|toSend
 init|=
 operator|new
 name|StringBuffer
 argument_list|(
-literal|"-e 'tell application \"iTeXMac\" to insert \"\\\\cite{"
+literal|"\"[InsText('\\cite{"
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|tmp
-condition|)
-name|toSend
-operator|=
-operator|new
-name|StringBuffer
-argument_list|(
-literal|"-e 'tell application \"TeXShop\" to set the selection of the front document to \"\\\\cite{"
-argument_list|)
-expr_stmt|;
+comment|//StringBuffer toSend = new StringBuffer
+comment|//    ("-e 'tell application \"iTeXMac\" to insert \"\\\\cite{");
+comment|//if (tmp)
+comment|//  toSend = new StringBuffer
+comment|//    ("-e 'tell application \"TeXShop\" to set the selection of the front document to \"\\\\cite{");
 name|String
 name|citeKey
 init|=
@@ -3556,32 +3545,18 @@ argument_list|)
 expr_stmt|;
 else|else
 block|{
-comment|//toSend.append("}');]\"");
-if|if
-condition|(
-operator|!
-name|tmp
-condition|)
 name|toSend
 operator|.
 name|append
 argument_list|(
-literal|"}\" in the text of the front document'"
+literal|"}');]\""
 argument_list|)
 expr_stmt|;
-else|else
-name|toSend
-operator|.
-name|append
-argument_list|(
-literal|"}\"'"
-argument_list|)
-expr_stmt|;
-name|tmp
-operator|=
-operator|!
-name|tmp
-expr_stmt|;
+comment|//if (!tmp)
+comment|//  toSend.append("}\" in the text of the front document'");
+comment|//else
+comment|//  toSend.append("}\"'");
+comment|//tmp = !tmp;
 name|System
 operator|.
 name|out

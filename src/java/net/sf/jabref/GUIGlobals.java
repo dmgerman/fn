@@ -149,8 +149,21 @@ DECL|field|encPrefix
 name|encPrefix
 init|=
 literal|"Encoding: "
-decl_stmt|;
+decl_stmt|,
 comment|// Part of the signature in written bib files.
+DECL|field|linuxDefaultLookAndFeel
+name|linuxDefaultLookAndFeel
+init|=
+literal|"com.jgoodies.plaf.plastic.Plastic3DLookAndFeel"
+decl_stmt|,
+comment|//"com.shfarr.ui.plaf.fh.FhLookAndFeel",
+comment|//"net.sourceforge.mlf.metouia.MetouiaLookAndFeel",
+comment|//"org.compiere.plaf.CompiereLookAndFeel",
+DECL|field|windowsDefaultLookAndFeel
+name|windowsDefaultLookAndFeel
+init|=
+literal|"com.jgoodies.plaf.windows.ExtWindowsLookAndFeel"
+decl_stmt|;
 DECL|field|CURRENTFONT
 specifier|public
 specifier|static

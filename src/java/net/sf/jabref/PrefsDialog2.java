@@ -341,6 +341,13 @@ name|helpDiag
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|Globals
+operator|.
+name|ON_MAC
+condition|)
 name|tabbed
 operator|.
 name|addTab
