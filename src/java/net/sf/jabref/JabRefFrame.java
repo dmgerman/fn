@@ -3782,18 +3782,32 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|PrefsDialog
-operator|.
-name|showPrefsDialog
+comment|//PrefsDialog.showPrefsDialog(ths, prefs);
+name|PrefsDialog2
+name|pd
+init|=
+operator|new
+name|PrefsDialog2
 argument_list|(
 name|ths
 argument_list|,
 name|prefs
 argument_list|)
+decl_stmt|;
+name|Util
+operator|.
+name|placeDialog
+argument_list|(
+name|pd
+argument_list|,
+name|ths
+argument_list|)
 expr_stmt|;
-comment|//PrefsDialog2 pd = new PrefsDialog2(ths, prefs);
-comment|//Util.placeDialog(pd, ths);
-comment|//pd.show();
+name|pd
+operator|.
+name|show
+argument_list|()
+expr_stmt|;
 comment|// This action can be invoked without an open database, so
 comment|// we have to check if we have one before trying to invoke
 comment|// methods to execute changes in the preferences.
