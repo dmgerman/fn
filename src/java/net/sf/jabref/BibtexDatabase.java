@@ -514,15 +514,11 @@ argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
-name|removeKeyFromSet
-argument_list|(
-name|oldKey
-argument_list|)
-expr_stmt|;
+comment|//removeKeyFromSet(oldKey);
 return|return
 name|checkForDuplicateKeyAndAdd
 argument_list|(
-literal|null
+name|oldKey
 argument_list|,
 name|entry
 operator|.

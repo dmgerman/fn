@@ -3638,7 +3638,25 @@ name|panel
 operator|.
 name|output
 argument_list|(
-literal|"Warning: bibtexkey is already used!"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Warning: duplicate bibtex key."
+argument_list|)
+argument_list|)
+expr_stmt|;
+else|else
+name|panel
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Bibtex key is unique."
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Add an UndoableKeyChange to the baseframe's undoManager.
@@ -3821,14 +3839,6 @@ argument_list|(
 literal|"No entries found."
 argument_list|)
 throw|;
-name|String
-name|id
-init|=
-name|entry
-operator|.
-name|getId
-argument_list|()
-decl_stmt|;
 name|NamedCompound
 name|compound
 init|=
@@ -3860,11 +3870,54 @@ name|next
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|String
+name|id
+init|=
+name|entry
+operator|.
+name|getId
+argument_list|()
+decl_stmt|,
+name|oldKey
+init|=
+name|entry
+operator|.
+name|getCiteKey
+argument_list|()
+decl_stmt|,
+name|newKey
+init|=
+name|nu
+operator|.
+name|getCiteKey
+argument_list|()
+decl_stmt|;
 name|boolean
 name|anyChanged
 init|=
 literal|false
+decl_stmt|,
+name|duplicateWarning
+init|=
+literal|false
 decl_stmt|;
+if|if
+condition|(
+name|panel
+operator|.
+name|database
+operator|.
+name|setCiteKeyForEntry
+argument_list|(
+name|id
+argument_list|,
+name|newKey
+argument_list|)
+condition|)
+name|duplicateWarning
+operator|=
+literal|true
+expr_stmt|;
 comment|// First, remove fields that the user have removed.
 name|Object
 index|[]
@@ -4117,8 +4170,10 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|anyChanged
 condition|)
+return|return;
 name|panel
 operator|.
 name|undoManager
@@ -4126,6 +4181,36 @@ operator|.
 name|addEdit
 argument_list|(
 name|compound
+argument_list|)
+expr_stmt|;
+comment|/*if (((oldKey == null)&& (newKey != null)) || 			((oldKey != null)&& (newKey == null)) || 			((oldKey != null)&& (newKey != null)&& !oldKey.equals(newKey))) {  			 } */
+if|if
+condition|(
+name|duplicateWarning
+condition|)
+name|panel
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Warning: duplicate bibtex key."
+argument_list|)
+argument_list|)
+expr_stmt|;
+else|else
+name|panel
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Stored entry."
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|lastSourceStringAccepted
