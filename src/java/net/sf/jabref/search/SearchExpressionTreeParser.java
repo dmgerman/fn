@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// $ANTLR 2.7.1: "TreeParser.g" -> "SearchExpressionTreeParser.java"$
+comment|// $ANTLR 2.7.4: "TreeParser.g" -> "SearchExpressionTreeParser.java"$
 end_comment
 
 begin_package
@@ -296,6 +296,14 @@ empty_stmt|;
 name|AST
 name|tSearchExpression_AST_in
 init|=
+operator|(
+name|_t
+operator|==
+name|ASTNULL
+operator|)
+condition|?
+literal|null
+else|:
 operator|(
 name|AST
 operator|)
@@ -822,6 +830,14 @@ name|AST
 name|tExpressionSearch_AST_in
 init|=
 operator|(
+name|_t
+operator|==
+name|ASTNULL
+operator|)
+condition|?
+literal|null
+else|:
+operator|(
 name|AST
 operator|)
 name|_t
@@ -1154,6 +1170,14 @@ empty_stmt|;
 name|AST
 name|tSearchType_AST_in
 init|=
+operator|(
+name|_t
+operator|==
+name|ASTNULL
+operator|)
+condition|?
+literal|null
+else|:
 operator|(
 name|AST
 operator|)
