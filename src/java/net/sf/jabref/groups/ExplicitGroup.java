@@ -733,6 +733,19 @@ name|toString
 argument_list|()
 return|;
 block|}
+comment|/** Remove all assignments, resulting in an empty group. */
+DECL|method|clearAssignments ()
+specifier|public
+name|void
+name|clearAssignments
+parameter_list|()
+block|{
+name|m_entries
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 

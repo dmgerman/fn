@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* All programs in this directory and subdirectories are published under the  GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it  under the terms of the GNU General Public License as published by the Free  Software Foundation; either version 2 of the License, or (at your option)  any later version.  This program is distributed in the hope that it will be useful, but WITHOUT  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for  more details.  You should have received a copy of the GNU General Public License along  with this program; if not, write to the Free Software Foundation, Inc., 59  Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html */
+comment|/*  All programs in this directory and subdirectories are published under the   GNU General Public License as described below.   This program is free software; you can redistribute it and/or modify it   under the terms of the GNU General Public License as published by the Free   Software Foundation; either version 2 of the License, or (at your option)   any later version.   This program is distributed in the hope that it will be useful, but WITHOUT   ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or   FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for   more details.   You should have received a copy of the GNU General Public License along   with this program; if not, write to the Free Software Foundation, Inc., 59   Temple Place, Suite 330, Boston, MA 02111-1307 USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html  */
 end_comment
 
 begin_package
@@ -101,7 +101,7 @@ name|GROUP_ITSELF
 init|=
 literal|2
 decl_stmt|;
-comment|/** 	 * Creates this node and associates the specified group with it. 	 */
+comment|/**      * Creates this node and associates the specified group with it.      */
 DECL|method|GroupTreeNode (AbstractGroup group)
 specifier|public
 name|GroupTreeNode
@@ -116,7 +116,7 @@ name|group
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * @return The group associated with this node. 	 */
+comment|/**      * @return The group associated with this node.      */
 DECL|method|getGroup ()
 specifier|public
 name|AbstractGroup
@@ -131,7 +131,7 @@ name|getUserObject
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Associates the specified group with this node. 	 */
+comment|/**      * Associates the specified group with this node.      */
 DECL|method|setGroup (AbstractGroup group)
 specifier|public
 name|void
@@ -147,7 +147,7 @@ name|group
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Returns a textual representation of this node and its children. This 	 * representation contains both the tree structure and the textual 	 * representations of the group associated with each node. It thus allows a 	 * complete reconstruction of this object and its children. 	 */
+comment|/**      * Returns a textual representation of this node and its children. This      * representation contains both the tree structure and the textual      * representations of the group associated with each node. It thus allows a      * complete reconstruction of this object and its children.      */
 DECL|method|toString ()
 specifier|public
 name|String
@@ -248,7 +248,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Parses the textual representation obtained from GroupTreeNode.toString() 	 * and recreates that node and all of its children from it. 	 *  	 * @throws Exception 	 *             When a group could not be recreated 	 */
+comment|/**      * Parses the textual representation obtained from GroupTreeNode.toString()      * and recreates that node and all of its children from it.      *       * @throws Exception      *             When a group could not be recreated      */
 DECL|method|fromString (String s, BibtexDatabase db)
 specifier|public
 specifier|static
@@ -444,7 +444,7 @@ return|return
 name|root
 return|;
 block|}
-comment|/** 	 * Returns the substring delimited by a pair of matching braces, with the 	 * first brace at index 0. Quoted characters are skipped. 	 *  	 * @return the matching substring, or "" if not found. 	 */
+comment|/**      * Returns the substring delimited by a pair of matching braces, with the      * first brace at index 0. Quoted characters are skipped.      *       * @return the matching substring, or "" if not found.      */
 DECL|method|getSubtree (String s)
 specifier|private
 specifier|static
@@ -531,7 +531,7 @@ return|return
 literal|""
 return|;
 block|}
-comment|/** 	 * Returns the index of the first occurence of c, skipping quoted special 	 * characters (escape character: '\\'). 	 *  	 * @param s 	 *            The String to search in. 	 * @param c 	 *            The character to search 	 * @return The index of the first unescaped occurence of c in s, or -1 if 	 *         not found. 	 */
+comment|/**      * Returns the index of the first occurence of c, skipping quoted special      * characters (escape character: '\\').      *       * @param s      *            The String to search in.      * @param c      *            The character to search      * @return The index of the first unescaped occurence of c in s, or -1 if      *         not found.      */
 DECL|method|indexOfUnquoted (String s, char c)
 specifier|private
 specifier|static
@@ -603,7 +603,7 @@ operator|-
 literal|1
 return|;
 block|}
-comment|/** 	 * Creates a deep copy of this node and all of its children, including all 	 * groups. 	 *  	 * @return This object's deep copy. 	 */
+comment|/**      * Creates a deep copy of this node and all of its children, including all      * groups.      *       * @return This object's deep copy.      */
 DECL|method|deepCopy ()
 specifier|public
 name|GroupTreeNode
@@ -657,7 +657,7 @@ return|return
 name|copy
 return|;
 block|}
-comment|/** 	 * @return An indexed path from the root node to this node. The elements in 	 *         the returned array represent the child index of each node in the 	 *         path. If this node is the root node, the returned array has zero 	 *         elements. 	 */
+comment|/**      * @return An indexed path from the root node to this node. The elements in      *         the returned array represent the child index of each node in the      *         path. If this node is the root node, the returned array has zero      *         elements.      */
 DECL|method|getIndexedPath ()
 specifier|public
 name|int
@@ -728,7 +728,7 @@ return|return
 name|indexedPath
 return|;
 block|}
-comment|/** 	 * @param indexedPath 	 *            A sequence of child indices that describe a path from this 	 *            node to one of its desendants. Be aware that if<b>indexedPath 	 *</b> was obtained by getIndexedPath(), this node should 	 *            usually be the root node. 	 * @return The descendant found by evaluating<b>indexedPath</b>. If the 	 *         path could not be traversed completely (i.e. one of the child 	 *         indices did not exist), null will be returned. 	 */
+comment|/**      * @param indexedPath      *            A sequence of child indices that describe a path from this      *            node to one of its desendants. Be aware that if<b>indexedPath      *</b> was obtained by getIndexedPath(), this node should      *            usually be the root node.      * @return The descendant found by evaluating<b>indexedPath</b>. If the      *         path could not be traversed completely (i.e. one of the child      *         indices did not exist), null will be returned.      */
 DECL|method|getDescendant (int[] indexedPath)
 specifier|public
 name|GroupTreeNode
@@ -783,7 +783,7 @@ return|return
 name|cursor
 return|;
 block|}
-comment|/** 	 * A GroupTreeNode can create a SearchRule that finds elements contained in 	 * its own group (GROUP_ITSELF), or the union of those elements in its own 	 * group and its children's groups (recursively) (GROUP_UNION_CHILDREN), or 	 * the intersection of the elements in its own group and its parent's group 	 * (GROUP_INTERSECTION_PARENT). 	 *  	 * @return A SearchRule that finds the desired elements. 	 */
+comment|/**      * A GroupTreeNode can create a SearchRule that finds elements contained in      * its own group (GROUP_ITSELF), or the union of those elements in its own      * group and its children's groups (recursively) (GROUP_UNION_CHILDREN), or      * the intersection of the elements in its own group and its parent's group      * (GROUP_INTERSECTION_PARENT).      *       * @return A SearchRule that finds the desired elements.      */
 DECL|method|getSearchRule (int searchMode)
 specifier|public
 name|SearchRule
@@ -908,7 +908,7 @@ return|return
 name|searchRule
 return|;
 block|}
-comment|/** 	 * Scans the subtree rooted at this node. 	 *  	 * @return All groups that contain the specified entry. 	 */
+comment|/**      * Scans the subtree rooted at this node.      *       * @return All groups that contain the specified entry.      */
 DECL|method|getMatchingGroups (BibtexEntry entry)
 specifier|public
 name|AbstractGroup
@@ -1004,7 +1004,7 @@ name|matchingGroupsArray
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Imports old (flat) groups data and converts it to a 2-level tree with an 	 * AllEntriesGroup at the root. 	 *  	 * @return the root of the generated tree. 	 */
+comment|/**      * Imports old (flat) groups data and converts it to a 2-level tree with an      * AllEntriesGroup at the root.      *       * @return the root of the generated tree.      */
 DECL|method|importFlatGroups (Vector groups)
 specifier|public
 specifier|static
@@ -1546,6 +1546,169 @@ decl_stmt|;
 name|myPreviousSibling
 operator|.
 name|add
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+return|return
+name|undo
+return|;
+block|}
+comment|/**      * @param path      *            A sequence of child indices that designate a node relative to      *            this node.      * @return The node designated by the specified path, or null if one or more      *         indices in the path could not be resolved.      */
+DECL|method|getChildAt (int[] path)
+specifier|public
+name|GroupTreeNode
+name|getChildAt
+parameter_list|(
+name|int
+index|[]
+name|path
+parameter_list|)
+block|{
+name|GroupTreeNode
+name|cursor
+init|=
+name|this
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|path
+operator|.
+name|length
+operator|&&
+name|cursor
+operator|!=
+literal|null
+condition|;
+operator|++
+name|i
+control|)
+name|cursor
+operator|=
+operator|(
+name|GroupTreeNode
+operator|)
+name|cursor
+operator|.
+name|getChildAt
+argument_list|(
+name|path
+index|[
+name|i
+index|]
+argument_list|)
+expr_stmt|;
+return|return
+name|cursor
+return|;
+block|}
+comment|/** Adds the selected entries to this node's group. */
+DECL|method|addSelectionToGroup (BasePanel basePanel)
+specifier|public
+name|AbstractUndoableEdit
+name|addSelectionToGroup
+parameter_list|(
+name|BasePanel
+name|basePanel
+parameter_list|)
+block|{
+if|if
+condition|(
+name|getGroup
+argument_list|()
+operator|==
+literal|null
+condition|)
+return|return
+literal|null
+return|;
+comment|// paranoia
+name|AbstractUndoableEdit
+name|undo
+init|=
+name|getGroup
+argument_list|()
+operator|.
+name|addSelection
+argument_list|(
+name|basePanel
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|undo
+operator|instanceof
+name|UndoableChangeAssignment
+condition|)
+operator|(
+operator|(
+name|UndoableChangeAssignment
+operator|)
+name|undo
+operator|)
+operator|.
+name|setEditedNode
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+return|return
+name|undo
+return|;
+block|}
+comment|/** Removes the selected entries from this node's group. */
+DECL|method|removeSelectionFromGroup (BasePanel basePanel)
+specifier|public
+name|AbstractUndoableEdit
+name|removeSelectionFromGroup
+parameter_list|(
+name|BasePanel
+name|basePanel
+parameter_list|)
+block|{
+if|if
+condition|(
+name|getGroup
+argument_list|()
+operator|==
+literal|null
+condition|)
+return|return
+literal|null
+return|;
+comment|// paranoia
+name|AbstractUndoableEdit
+name|undo
+init|=
+name|getGroup
+argument_list|()
+operator|.
+name|removeSelection
+argument_list|(
+name|basePanel
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|undo
+operator|instanceof
+name|UndoableChangeAssignment
+condition|)
+operator|(
+operator|(
+name|UndoableChangeAssignment
+operator|)
+name|undo
+operator|)
+operator|.
+name|setEditedNode
 argument_list|(
 name|this
 argument_list|)

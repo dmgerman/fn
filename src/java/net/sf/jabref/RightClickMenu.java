@@ -1519,10 +1519,7 @@ name|undo
 init|=
 name|m_node
 operator|.
-name|getGroup
-argument_list|()
-operator|.
-name|addSelection
+name|addSelectionToGroup
 argument_list|(
 name|panel
 argument_list|)
@@ -1614,10 +1611,7 @@ name|undo
 init|=
 name|m_node
 operator|.
-name|getGroup
-argument_list|()
-operator|.
-name|removeSelection
+name|removeSelectionFromGroup
 argument_list|(
 name|panel
 argument_list|)
