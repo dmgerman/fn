@@ -657,6 +657,15 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 comment|//(String) entry.getField(Globals.KEY_FIELD));
+name|editors
+operator|.
+name|put
+argument_list|(
+literal|"bibtexkey"
+argument_list|,
+name|tf
+argument_list|)
+expr_stmt|;
 name|gbl
 operator|.
 name|setConstraints
