@@ -397,6 +397,38 @@ argument_list|,
 name|fnt
 argument_list|)
 expr_stmt|;
+name|String
+name|osName
+init|=
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"os.name"
+argument_list|,
+literal|"def"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|osName
+operator|.
+name|equals
+argument_list|(
+literal|"Mac OS X"
+argument_list|)
+condition|)
+block|{
+name|Util
+operator|.
+name|pr
+argument_list|(
+literal|"Disabling Kunststoff look& feel on Mac OS X."
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 try|try
 block|{
 name|LookAndFeel
@@ -429,6 +461,7 @@ name|UnsupportedLookAndFeelException
 name|ex
 parameter_list|)
 block|{}
+block|}
 name|JabRefPreferences
 name|prefs
 init|=
