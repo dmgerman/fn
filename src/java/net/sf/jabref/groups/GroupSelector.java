@@ -3248,6 +3248,13 @@ name|void
 name|componentClosing
 parameter_list|()
 block|{
+if|if
+condition|(
+name|panel
+operator|!=
+literal|null
+condition|)
+comment|// panel may be null if no file is open any more
 name|panel
 operator|.
 name|stopShowingGroup
@@ -5073,6 +5080,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+comment|/** panel may be null to indicate that no file is currently open. */
 DECL|method|setActiveBasePanel (BasePanel panel)
 specifier|public
 name|void
@@ -5089,7 +5097,36 @@ argument_list|(
 name|panel
 argument_list|)
 expr_stmt|;
-comment|//To change body of overridden methods use File | Settings | File Templates.
+if|if
+condition|(
+name|panel
+operator|==
+literal|null
+condition|)
+block|{
+comment|// hide groups
+if|if
+condition|(
+name|frame
+operator|.
+name|sidePaneManager
+operator|.
+name|isPanelVisible
+argument_list|(
+literal|"groups"
+argument_list|)
+condition|)
+name|frame
+operator|.
+name|sidePaneManager
+operator|.
+name|togglePanel
+argument_list|(
+literal|"groups"
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 name|MetaData
 name|metaData
 init|=
