@@ -226,22 +226,11 @@ name|getGeneralFields
 parameter_list|()
 block|{
 return|return
-operator|new
-name|String
-index|[]
-block|{
-literal|"crossref"
-block|,
-literal|"url"
-block|,
-literal|"abstract"
-block|,
-literal|"keywords"
-block|,
-literal|"comment"
-block|}
+name|_type
+operator|.
+name|getGeneralFields
+argument_list|()
 return|;
-comment|// May change...
 block|}
 comment|/**      * Returns an array containing the names of all fields that are      * set for this particular entry.      */
 DECL|method|getAllFields ()

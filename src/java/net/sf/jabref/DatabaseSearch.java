@@ -329,7 +329,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Searched database. Number of hits"
+literal|"Searched database. GLobal number of hits"
 argument_list|)
 operator|+
 literal|": "

@@ -171,6 +171,8 @@ literal|"pages"
 block|,
 literal|"month"
 block|,
+literal|"eid"
+block|,
 literal|"note"
 block|}
 return|;
@@ -1639,6 +1641,32 @@ index|[]
 name|getRequiredFields
 parameter_list|()
 function_decl|;
+DECL|method|getGeneralFields ()
+specifier|public
+name|String
+index|[]
+name|getGeneralFields
+parameter_list|()
+block|{
+return|return
+operator|new
+name|String
+index|[]
+block|{
+literal|"crossref"
+block|,
+literal|"keywords"
+block|,
+literal|"doi"
+block|,
+literal|"url"
+block|,
+literal|"abstract"
+block|,
+literal|"comment"
+block|}
+return|;
+block|}
 DECL|method|describeRequiredFields ()
 specifier|public
 specifier|abstract
