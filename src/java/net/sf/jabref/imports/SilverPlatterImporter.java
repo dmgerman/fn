@@ -150,8 +150,20 @@ name|Util
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
 begin_comment
-comment|/**  * Imports a Biblioscape Tag File. The format is described on  * http://www.biblioscape.com/manual_bsp/Biblioscape_Tag_File.htm Several  * Biblioscape field types are ignored. Others are only included in the BibTeX  * field "comment".  */
+comment|/**  * Imports a SilverPlatter exported file. This is a poor format to parse,  * so it currently doesn't handle everything correctly.  */
 end_comment
 
 begin_class
@@ -199,6 +211,20 @@ name|stream
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|// This format is very similar to Inspec, so we have a two-fold strategy:
+comment|// If we see the flag signalling that it is an inspec file, return false.
+comment|// This flag should appear above the first entry and prevent us from
+comment|// accepting the Inspec format. Then we look for the title entry.
+name|Pattern
+name|pat1
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"Record.*INSPEC.*"
+argument_list|)
+decl_stmt|;
 name|String
 name|str
 decl_stmt|;
@@ -216,6 +242,22 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|pat1
+operator|.
+name|matcher
+argument_list|(
+name|str
+argument_list|)
+operator|.
+name|find
+argument_list|()
+condition|)
+return|return
+literal|false
+return|;
+comment|// This is an inspec file, so return false.
 if|if
 condition|(
 operator|(
@@ -239,7 +281,7 @@ argument_list|)
 operator|.
 name|equals
 argument_list|(
-literal|"AU:  "
+literal|"TI:  "
 argument_list|)
 operator|)
 condition|)

@@ -1057,7 +1057,16 @@ name|rowNumbers
 operator|=
 name|rowNumbers
 operator|+
-literal|" and "
+literal|" "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"and"
+argument_list|)
+operator|+
+literal|" "
 operator|+
 operator|(
 operator|(

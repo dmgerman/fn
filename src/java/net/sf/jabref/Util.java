@@ -584,17 +584,17 @@ operator|)
 return|;
 block|}
 comment|/**      * This method sets the location of a Dialog such that it is centered with      * regard to another window, but not outside the screen on the left and the      * top.      */
-DECL|method|placeDialog (javax.swing.JDialog diag, java.awt.Container win)
+DECL|method|placeDialog (java.awt.Dialog diag, java.awt.Container win)
 specifier|public
 specifier|static
 name|void
 name|placeDialog
 parameter_list|(
-name|javax
+name|java
 operator|.
-name|swing
+name|awt
 operator|.
-name|JDialog
+name|Dialog
 name|diag
 parameter_list|,
 name|java

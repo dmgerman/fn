@@ -2310,7 +2310,20 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-comment|//System.out.println("Trying format: "+imFo.getFormatName());
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Trying format: "
+operator|+
+name|imFo
+operator|.
+name|getFormatName
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|List
 name|entries
 init|=

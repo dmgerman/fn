@@ -150,8 +150,20 @@ name|Util
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
 begin_comment
-comment|/**  * Imports a Biblioscape Tag File. The format is described on  * http://www.biblioscape.com/manual_bsp/Biblioscape_Tag_File.htm Several  * Biblioscape field types are ignored. Others are only included in the BibTeX  * field "comment".  */
+comment|/**  * INSPEC format importer.  */
 end_comment
 
 begin_class
@@ -173,20 +185,83 @@ return|return
 literal|"INSPEC"
 return|;
 block|}
-comment|/**      * Check whether the source is in the correct format for this importer.      */
-DECL|method|isRecognizedFormat (InputStream in)
+comment|/**    * Check whether the source is in the correct format for this importer.    */
+DECL|method|isRecognizedFormat (InputStream stream)
 specifier|public
 name|boolean
 name|isRecognizedFormat
 parameter_list|(
 name|InputStream
-name|in
+name|stream
 parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|// Our strategy is to look for the "PY<year>" line.
+name|BufferedReader
+name|in
+init|=
+operator|new
+name|BufferedReader
+argument_list|(
+name|ImportFormatReader
+operator|.
+name|getReaderDefaultEncoding
+argument_list|(
+name|stream
+argument_list|)
+argument_list|)
+decl_stmt|;
+comment|//Pattern pat1 = Pattern.compile("PY:  \\d{4}");
+name|Pattern
+name|pat1
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"Record.*INSPEC.*"
+argument_list|)
+decl_stmt|;
+comment|//was PY \\\\d{4}? before
+name|String
+name|str
+decl_stmt|;
+while|while
+condition|(
+operator|(
+name|str
+operator|=
+name|in
+operator|.
+name|readLine
+argument_list|()
+operator|)
+operator|!=
+literal|null
+condition|)
+block|{
+comment|//Inspec and IEEE seem to have these strange " - " between key and value
+comment|//str = str.replace(" - ", "");
+comment|//System.out.println(str);
+if|if
+condition|(
+name|pat1
+operator|.
+name|matcher
+argument_list|(
+name|str
+argument_list|)
+operator|.
+name|find
+argument_list|()
+condition|)
 return|return
 literal|true
+return|;
+block|}
+return|return
+literal|false
 return|;
 block|}
 comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */

@@ -64,6 +64,7 @@ end_import
 
 begin_class
 DECL|class|FileHistory
+specifier|public
 class|class
 name|FileHistory
 extends|extends
@@ -603,16 +604,16 @@ literal|1
 argument_list|)
 expr_stmt|;
 comment|//Util.pr("'"+name+"'");
-name|frame
-operator|.
+specifier|final
+name|File
 name|fileToOpen
-operator|=
+init|=
 operator|new
 name|File
 argument_list|(
 name|name
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 operator|(
 operator|new
 name|Thread
@@ -629,6 +630,8 @@ name|open
 operator|.
 name|openIt
 argument_list|(
+name|fileToOpen
+argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;

@@ -70,9 +70,12 @@ name|BibtexDatabase
 name|base
 decl_stmt|;
 DECL|field|metaData
+DECL|field|entryTypes
 specifier|private
 name|HashMap
 name|metaData
+decl_stmt|,
+name|entryTypes
 decl_stmt|;
 DECL|field|file
 specifier|private
@@ -98,7 +101,7 @@ init|=
 literal|null
 decl_stmt|;
 comment|// Which encoding was used?
-DECL|method|ParserResult (BibtexDatabase base, HashMap metaData)
+DECL|method|ParserResult (BibtexDatabase base, HashMap metaData, HashMap entryTypes)
 specifier|public
 name|ParserResult
 parameter_list|(
@@ -107,6 +110,9 @@ name|base
 parameter_list|,
 name|HashMap
 name|metaData
+parameter_list|,
+name|HashMap
+name|entryTypes
 parameter_list|)
 block|{
 name|this
@@ -120,6 +126,12 @@ operator|.
 name|metaData
 operator|=
 name|metaData
+expr_stmt|;
+name|this
+operator|.
+name|entryTypes
+operator|=
+name|entryTypes
 expr_stmt|;
 block|}
 DECL|method|getDatabase ()
@@ -140,6 +152,16 @@ parameter_list|()
 block|{
 return|return
 name|metaData
+return|;
+block|}
+DECL|method|getEntryTypes ()
+specifier|public
+name|HashMap
+name|getEntryTypes
+parameter_list|()
+block|{
+return|return
+name|entryTypes
 return|;
 block|}
 DECL|method|getFile ()

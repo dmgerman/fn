@@ -264,6 +264,8 @@ argument_list|(
 name|_db
 argument_list|,
 name|_meta
+argument_list|,
+name|entryTypes
 argument_list|)
 decl_stmt|;
 name|skipWhitespace

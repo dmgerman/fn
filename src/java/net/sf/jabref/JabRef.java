@@ -1196,6 +1196,8 @@ name|ParserResult
 argument_list|(
 name|base
 argument_list|,
+literal|null
+argument_list|,
 operator|new
 name|HashMap
 argument_list|()

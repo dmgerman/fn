@@ -313,6 +313,7 @@ init|=
 literal|false
 decl_stmt|;
 DECL|field|encoding
+specifier|private
 name|String
 name|encoding
 init|=
@@ -705,6 +706,32 @@ block|{
 return|return
 name|prefs
 return|;
+block|}
+DECL|method|getEncoding ()
+specifier|public
+name|String
+name|getEncoding
+parameter_list|()
+block|{
+return|return
+name|encoding
+return|;
+block|}
+DECL|method|setEncoding (String encoding)
+specifier|public
+name|void
+name|setEncoding
+parameter_list|(
+name|String
+name|encoding
+parameter_list|)
+block|{
+name|this
+operator|.
+name|encoding
+operator|=
+name|encoding
+expr_stmt|;
 block|}
 DECL|method|output (String s)
 specifier|public
@@ -1330,7 +1357,8 @@ argument_list|)
 expr_stmt|;
 name|frame
 operator|.
-name|fileHistory
+name|getFileHistory
+argument_list|()
 operator|.
 name|newFile
 argument_list|(
@@ -1474,7 +1502,8 @@ expr_stmt|;
 comment|//runCommand("save");
 name|frame
 operator|.
-name|fileHistory
+name|getFileHistory
+argument_list|()
 operator|.
 name|newFile
 argument_list|(
@@ -5030,7 +5059,8 @@ argument_list|()
 expr_stmt|;
 name|frame
 operator|.
-name|fileHistory
+name|getFileHistory
+argument_list|()
 operator|.
 name|newFile
 argument_list|(
