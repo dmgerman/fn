@@ -593,6 +593,16 @@ name|void
 name|buildGUI
 parameter_list|()
 block|{
+name|String
+name|def
+init|=
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Default"
+argument_list|)
+decl_stmt|;
 name|GridBagLayout
 name|gbl
 init|=
@@ -618,7 +628,12 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Entry type"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|con
@@ -672,7 +687,7 @@ literal|0
 argument_list|,
 literal|5
 argument_list|,
-literal|0
+literal|10
 argument_list|,
 literal|0
 argument_list|)
@@ -696,7 +711,12 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Key pattern"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|con
@@ -745,7 +765,7 @@ literal|0
 argument_list|,
 literal|5
 argument_list|,
-literal|0
+literal|10
 argument_list|,
 literal|0
 argument_list|)
@@ -933,7 +953,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-literal|"Default"
+name|def
 argument_list|)
 expr_stmt|;
 name|con
@@ -1182,7 +1202,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-literal|"Default"
+name|def
 argument_list|)
 expr_stmt|;
 name|con
@@ -1431,7 +1451,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-literal|"Default"
+name|def
 argument_list|)
 expr_stmt|;
 name|con
@@ -1680,7 +1700,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-literal|"Default"
+name|def
 argument_list|)
 expr_stmt|;
 name|con
@@ -1929,7 +1949,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-literal|"Default"
+name|def
 argument_list|)
 expr_stmt|;
 name|con
@@ -2178,7 +2198,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-literal|"Default"
+name|def
 argument_list|)
 expr_stmt|;
 name|con
@@ -2427,7 +2447,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-literal|"Default"
+name|def
 argument_list|)
 expr_stmt|;
 name|con
@@ -2676,7 +2696,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-literal|"Default"
+name|def
 argument_list|)
 expr_stmt|;
 name|con
@@ -2925,7 +2945,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-literal|"Default"
+name|def
 argument_list|)
 expr_stmt|;
 name|con
@@ -3174,7 +3194,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-literal|"Default"
+name|def
 argument_list|)
 expr_stmt|;
 name|con
@@ -3423,7 +3443,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-literal|"Default"
+name|def
 argument_list|)
 expr_stmt|;
 name|con
@@ -3672,7 +3692,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-literal|"Default"
+name|def
 argument_list|)
 expr_stmt|;
 name|con
@@ -3921,7 +3941,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-literal|"Default"
+name|def
 argument_list|)
 expr_stmt|;
 name|con
@@ -4170,7 +4190,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-literal|"Default"
+name|def
 argument_list|)
 expr_stmt|;
 name|con
@@ -4363,7 +4383,12 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-literal|"Reset All"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Reset all"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|con

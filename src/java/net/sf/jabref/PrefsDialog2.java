@@ -318,7 +318,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Key Pattern"
+literal|"Key pattern"
 argument_list|)
 argument_list|,
 operator|new
