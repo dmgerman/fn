@@ -122,7 +122,7 @@ init|=
 literal|null
 decl_stmt|;
 name|int
-name|dupl
+name|duplicateCounter
 init|=
 literal|0
 decl_stmt|;
@@ -245,11 +245,6 @@ name|DuplicateResolverDialog
 name|drd
 init|=
 literal|null
-decl_stmt|;
-name|boolean
-name|cancelled
-init|=
-literal|false
 decl_stmt|;
 comment|/*   loop: while (!st.finished() || (current< duplicates.size()))   {     if ( current>= duplicates.size() )     {       // No more duplicates to resolve, but search is still in progress. Sleep a little.        try        {          sleep(10);        // sleep is deprecated !!!!        } catch (InterruptedException ex) {}        continue loop;     }   } */
 while|while
@@ -389,6 +384,9 @@ name|drd
 operator|.
 name|show
 argument_list|()
+expr_stmt|;
+name|duplicateCounter
+operator|++
 expr_stmt|;
 name|int
 name|answer
@@ -559,10 +557,11 @@ name|Integer
 operator|.
 name|MAX_VALUE
 expr_stmt|;
-block|}
-name|dupl
-operator|++
+name|duplicateCounter
+operator|--
 expr_stmt|;
+comment|// correct counter
+block|}
 name|drd
 operator|.
 name|dispose
@@ -595,7 +594,23 @@ argument_list|)
 operator|+
 literal|": "
 operator|+
-name|dupl
+name|duplicates
+operator|.
+name|size
+argument_list|()
+operator|+
+literal|" "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"pairs processed"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|duplicateCounter
 argument_list|)
 expr_stmt|;
 if|if
