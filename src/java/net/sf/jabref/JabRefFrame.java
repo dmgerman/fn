@@ -6997,6 +6997,10 @@ name|setNonEmptyState
 argument_list|()
 expr_stmt|;
 block|}
+name|fileToOpen
+operator|=
+literal|null
+expr_stmt|;
 block|}
 block|}
 DECL|method|openIt (boolean raisePanel)
@@ -7026,6 +7030,14 @@ condition|)
 block|{
 try|try
 block|{
+name|String
+name|fileName
+init|=
+name|fileToOpen
+operator|.
+name|getPath
+argument_list|()
+decl_stmt|;
 name|prefs
 operator|.
 name|put
@@ -7230,6 +7242,7 @@ argument_list|()
 expr_stmt|;
 comment|// Keep track of which encoding was used for loading.
 comment|/*             if (prefs.getBoolean("autoComplete")) {             db.setCompleters(autoCompleters);             }            */
+comment|// fileToOpen is set to null inside the EventDispatcherThread
 name|SwingUtilities
 operator|.
 name|invokeLater
@@ -7254,10 +7267,7 @@ argument_list|)
 operator|+
 literal|" '"
 operator|+
-name|fileToOpen
-operator|.
-name|getPath
-argument_list|()
+name|fileName
 operator|+
 literal|"' "
 operator|+
@@ -7286,10 +7296,6 @@ argument_list|)
 operator|+
 literal|"."
 argument_list|)
-expr_stmt|;
-name|fileToOpen
-operator|=
-literal|null
 expr_stmt|;
 block|}
 catch|catch
