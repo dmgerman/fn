@@ -134,6 +134,20 @@ name|FileUpdateMonitor
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|imports
+operator|.
+name|ImportFormatReader
+import|;
+end_import
+
 begin_class
 DECL|class|Globals
 specifier|public
@@ -198,6 +212,16 @@ name|fileUpdateMonitor
 init|=
 operator|new
 name|FileUpdateMonitor
+argument_list|()
+decl_stmt|;
+DECL|field|importFormatReader
+specifier|public
+specifier|static
+name|ImportFormatReader
+name|importFormatReader
+init|=
+operator|new
+name|ImportFormatReader
 argument_list|()
 decl_stmt|;
 comment|//public static ResourceBundle preferences = ResourceBundle.getBundle("resource/defaultPrefs");
@@ -1215,7 +1239,11 @@ return|;
 block|}
 name|JFileChooser
 name|fc
+init|=
+literal|null
 decl_stmt|;
+try|try
+block|{
 name|fc
 operator|=
 operator|new
@@ -1224,6 +1252,39 @@ argument_list|(
 name|directory
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InternalError
+name|errl
+parameter_list|)
+block|{
+comment|// This try/catch clause was added because a user reported an
+comment|// InternalError getting thrown on WinNT, presumably because of a
+comment|// bug in JGoodies Windows PLAF. This clause can be removed if the
+comment|// bug is fixed, but for now we just resort to the native file
+comment|// dialog, using the same method as is always used on Mac:
+return|return
+name|getNewFileForMac
+argument_list|(
+name|owner
+argument_list|,
+name|prefs
+argument_list|,
+name|directory
+argument_list|,
+name|extension
+argument_list|,
+name|dialogType
+argument_list|,
+name|updateWorkingDirectory
+argument_list|,
+name|dirOnly
+argument_list|,
+name|off
+argument_list|)
+return|;
+block|}
 if|if
 condition|(
 name|dirOnly

@@ -625,7 +625,7 @@ parameter_list|()
 block|{
 name|frame
 operator|.
-name|openDatabaseAction
+name|open
 operator|.
 name|openIt
 argument_list|(
