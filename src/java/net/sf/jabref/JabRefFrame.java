@@ -1103,10 +1103,19 @@ comment|//+fileToOpen.getName());
 name|openDatabaseAction
 operator|.
 name|openIt
-argument_list|()
+argument_list|(
+name|i
+operator|==
+literal|0
+argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|output
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
 block|}
 comment|//JFrame.setDefaultLookAndFeelDecorated(true);
 try|try
@@ -4316,7 +4325,9 @@ name|run
 parameter_list|()
 block|{
 name|openIt
-argument_list|()
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -4337,11 +4348,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|openIt ()
+DECL|method|openIt (boolean raisePanel)
 specifier|public
 name|void
 name|openIt
-parameter_list|()
+parameter_list|(
+name|boolean
+name|raisePanel
+parameter_list|)
 block|{
 if|if
 condition|(
@@ -4428,6 +4442,10 @@ argument_list|,
 name|bp
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|raisePanel
+condition|)
 name|tabbedPane
 operator|.
 name|setSelectedComponent
