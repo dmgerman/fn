@@ -592,7 +592,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"genIcon.png"
+literal|"absIcon.png"
 argument_list|)
 decl_stmt|,
 DECL|field|showAbsIconFile

@@ -64,6 +64,7 @@ name|KunststoffCheckBoxUI
 extends|extends
 name|MetalCheckBoxUI
 block|{
+comment|//~ Static fields/initializers /////////////////////////////////////////////
 DECL|field|checkBoxUI
 specifier|private
 specifier|final
@@ -75,6 +76,7 @@ operator|new
 name|KunststoffCheckBoxUI
 argument_list|()
 decl_stmt|;
+comment|//~ Constructors ///////////////////////////////////////////////////////////
 DECL|method|KunststoffCheckBoxUI ()
 specifier|public
 name|KunststoffCheckBoxUI
@@ -87,6 +89,7 @@ name|KunststoffCheckBoxIcon
 argument_list|()
 expr_stmt|;
 block|}
+comment|//~ Methods ////////////////////////////////////////////////////////////////
 DECL|method|createUI (JComponent b)
 specifier|public
 specifier|static
@@ -126,6 +129,18 @@ expr_stmt|;
 block|}
 block|}
 end_class
+
+begin_comment
+comment|///////////////////////////////////////////////////////////////////////////////
+end_comment
+
+begin_comment
+comment|//  END OF FILE.
+end_comment
+
+begin_comment
+comment|///////////////////////////////////////////////////////////////////////////////
+end_comment
 
 end_unit
 

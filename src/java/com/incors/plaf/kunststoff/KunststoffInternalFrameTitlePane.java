@@ -50,6 +50,10 @@ name|*
 import|;
 end_import
 
+begin_comment
+comment|/**  * DOCUMENT ME!  *  * @author $author$  * @version $Revision$  */
+end_comment
+
 begin_class
 DECL|class|KunststoffInternalFrameTitlePane
 specifier|public
@@ -58,6 +62,7 @@ name|KunststoffInternalFrameTitlePane
 extends|extends
 name|MetalInternalFrameTitlePane
 block|{
+comment|//~ Constructors ///////////////////////////////////////////////////////////
 DECL|method|KunststoffInternalFrameTitlePane (JInternalFrame frame)
 specifier|public
 name|KunststoffInternalFrameTitlePane
@@ -72,6 +77,7 @@ name|frame
 argument_list|)
 expr_stmt|;
 block|}
+comment|//~ Methods ////////////////////////////////////////////////////////////////
 DECL|method|paintComponent (Graphics g)
 specifier|public
 name|void
@@ -197,12 +203,14 @@ operator|.
 name|getWidth
 argument_list|()
 argument_list|,
+operator|(
 name|this
 operator|.
 name|getHeight
 argument_list|()
 operator|/
 literal|2
+operator|)
 operator|+
 literal|1
 argument_list|)
@@ -225,6 +233,18 @@ expr_stmt|;
 block|}
 block|}
 end_class
+
+begin_comment
+comment|///////////////////////////////////////////////////////////////////////////////
+end_comment
+
+begin_comment
+comment|//  END OF FILE.
+end_comment
+
+begin_comment
+comment|///////////////////////////////////////////////////////////////////////////////
+end_comment
 
 end_unit
 

@@ -114,6 +114,10 @@ name|ColorUIResource
 import|;
 end_import
 
+begin_comment
+comment|/**  * DOCUMENT ME!  *  * @author $author$  * @version $Revision$  */
+end_comment
+
 begin_class
 DECL|class|ColorUIResource2
 specifier|public
@@ -122,11 +126,13 @@ name|ColorUIResource2
 extends|extends
 name|ColorUIResource
 block|{
+comment|//~ Instance fields ////////////////////////////////////////////////////////
 DECL|field|myColor
 specifier|private
 name|Color
 name|myColor
 decl_stmt|;
+comment|//~ Constructors ///////////////////////////////////////////////////////////
 comment|// constructors
 DECL|method|ColorUIResource2 (Color c)
 specifier|public
@@ -361,30 +367,17 @@ name|alpha
 argument_list|)
 expr_stmt|;
 block|}
-comment|// non static methods
-DECL|method|getRed ()
+comment|//~ Methods ////////////////////////////////////////////////////////////////
+DECL|method|getAlpha ()
 specifier|public
 name|int
-name|getRed
+name|getAlpha
 parameter_list|()
 block|{
 return|return
 name|myColor
 operator|.
-name|getRed
-argument_list|()
-return|;
-block|}
-DECL|method|getGreen ()
-specifier|public
-name|int
-name|getGreen
-parameter_list|()
-block|{
-return|return
-name|myColor
-operator|.
-name|getGreen
+name|getAlpha
 argument_list|()
 return|;
 block|}
@@ -399,162 +392,6 @@ name|myColor
 operator|.
 name|getBlue
 argument_list|()
-return|;
-block|}
-DECL|method|getAlpha ()
-specifier|public
-name|int
-name|getAlpha
-parameter_list|()
-block|{
-return|return
-name|myColor
-operator|.
-name|getAlpha
-argument_list|()
-return|;
-block|}
-DECL|method|getRGB ()
-specifier|public
-name|int
-name|getRGB
-parameter_list|()
-block|{
-return|return
-name|myColor
-operator|.
-name|getRGB
-argument_list|()
-return|;
-block|}
-DECL|method|brighter ()
-specifier|public
-name|Color
-name|brighter
-parameter_list|()
-block|{
-return|return
-name|myColor
-operator|.
-name|brighter
-argument_list|()
-return|;
-block|}
-DECL|method|darker ()
-specifier|public
-name|Color
-name|darker
-parameter_list|()
-block|{
-return|return
-name|myColor
-operator|.
-name|darker
-argument_list|()
-return|;
-block|}
-DECL|method|hashCode ()
-specifier|public
-name|int
-name|hashCode
-parameter_list|()
-block|{
-return|return
-name|myColor
-operator|.
-name|hashCode
-argument_list|()
-return|;
-block|}
-DECL|method|equals (Object obj)
-specifier|public
-name|boolean
-name|equals
-parameter_list|(
-name|Object
-name|obj
-parameter_list|)
-block|{
-return|return
-name|myColor
-operator|.
-name|equals
-argument_list|(
-name|obj
-argument_list|)
-return|;
-block|}
-DECL|method|toString ()
-specifier|public
-name|String
-name|toString
-parameter_list|()
-block|{
-return|return
-name|myColor
-operator|.
-name|toString
-argument_list|()
-return|;
-block|}
-DECL|method|getRGBComponents (float[] compArray)
-specifier|public
-name|float
-index|[]
-name|getRGBComponents
-parameter_list|(
-name|float
-index|[]
-name|compArray
-parameter_list|)
-block|{
-return|return
-name|myColor
-operator|.
-name|getRGBComponents
-argument_list|(
-name|compArray
-argument_list|)
-return|;
-block|}
-DECL|method|getRGBColorComponents (float[] compArray)
-specifier|public
-name|float
-index|[]
-name|getRGBColorComponents
-parameter_list|(
-name|float
-index|[]
-name|compArray
-parameter_list|)
-block|{
-return|return
-name|myColor
-operator|.
-name|getRGBColorComponents
-argument_list|(
-name|compArray
-argument_list|)
-return|;
-block|}
-DECL|method|getComponents (float[] compArray)
-specifier|public
-name|float
-index|[]
-name|getComponents
-parameter_list|(
-name|float
-index|[]
-name|compArray
-parameter_list|)
-block|{
-return|return
-name|myColor
-operator|.
-name|getComponents
-argument_list|(
-name|compArray
-argument_list|)
 return|;
 block|}
 DECL|method|getColorComponents (float[] compArray)
@@ -573,31 +410,6 @@ name|myColor
 operator|.
 name|getColorComponents
 argument_list|(
-name|compArray
-argument_list|)
-return|;
-block|}
-DECL|method|getComponents (ColorSpace cspace, float[] compArray)
-specifier|public
-name|float
-index|[]
-name|getComponents
-parameter_list|(
-name|ColorSpace
-name|cspace
-parameter_list|,
-name|float
-index|[]
-name|compArray
-parameter_list|)
-block|{
-return|return
-name|myColor
-operator|.
-name|getComponents
-argument_list|(
-name|cspace
-argument_list|,
 name|compArray
 argument_list|)
 return|;
@@ -640,6 +452,157 @@ name|getColorSpace
 argument_list|()
 return|;
 block|}
+DECL|method|getComponents (float[] compArray)
+specifier|public
+name|float
+index|[]
+name|getComponents
+parameter_list|(
+name|float
+index|[]
+name|compArray
+parameter_list|)
+block|{
+return|return
+name|myColor
+operator|.
+name|getComponents
+argument_list|(
+name|compArray
+argument_list|)
+return|;
+block|}
+DECL|method|getComponents (ColorSpace cspace, float[] compArray)
+specifier|public
+name|float
+index|[]
+name|getComponents
+parameter_list|(
+name|ColorSpace
+name|cspace
+parameter_list|,
+name|float
+index|[]
+name|compArray
+parameter_list|)
+block|{
+return|return
+name|myColor
+operator|.
+name|getComponents
+argument_list|(
+name|cspace
+argument_list|,
+name|compArray
+argument_list|)
+return|;
+block|}
+DECL|method|getGreen ()
+specifier|public
+name|int
+name|getGreen
+parameter_list|()
+block|{
+return|return
+name|myColor
+operator|.
+name|getGreen
+argument_list|()
+return|;
+block|}
+DECL|method|getRGB ()
+specifier|public
+name|int
+name|getRGB
+parameter_list|()
+block|{
+return|return
+name|myColor
+operator|.
+name|getRGB
+argument_list|()
+return|;
+block|}
+DECL|method|getRGBColorComponents (float[] compArray)
+specifier|public
+name|float
+index|[]
+name|getRGBColorComponents
+parameter_list|(
+name|float
+index|[]
+name|compArray
+parameter_list|)
+block|{
+return|return
+name|myColor
+operator|.
+name|getRGBColorComponents
+argument_list|(
+name|compArray
+argument_list|)
+return|;
+block|}
+DECL|method|getRGBComponents (float[] compArray)
+specifier|public
+name|float
+index|[]
+name|getRGBComponents
+parameter_list|(
+name|float
+index|[]
+name|compArray
+parameter_list|)
+block|{
+return|return
+name|myColor
+operator|.
+name|getRGBComponents
+argument_list|(
+name|compArray
+argument_list|)
+return|;
+block|}
+comment|// non static methods
+DECL|method|getRed ()
+specifier|public
+name|int
+name|getRed
+parameter_list|()
+block|{
+return|return
+name|myColor
+operator|.
+name|getRed
+argument_list|()
+return|;
+block|}
+DECL|method|getTransparency ()
+specifier|public
+name|int
+name|getTransparency
+parameter_list|()
+block|{
+return|return
+name|myColor
+operator|.
+name|getTransparency
+argument_list|()
+return|;
+block|}
+DECL|method|brighter ()
+specifier|public
+name|Color
+name|brighter
+parameter_list|()
+block|{
+return|return
+name|myColor
+operator|.
+name|brighter
+argument_list|()
+return|;
+block|}
 DECL|method|createContext (ColorModel cm, Rectangle r, Rectangle2D r2d, AffineTransform xform, RenderingHints hints)
 specifier|public
 name|PaintContext
@@ -678,21 +641,77 @@ name|hints
 argument_list|)
 return|;
 block|}
-DECL|method|getTransparency ()
+DECL|method|darker ()
 specifier|public
-name|int
-name|getTransparency
+name|Color
+name|darker
 parameter_list|()
 block|{
 return|return
 name|myColor
 operator|.
-name|getTransparency
+name|darker
+argument_list|()
+return|;
+block|}
+DECL|method|equals (Object obj)
+specifier|public
+name|boolean
+name|equals
+parameter_list|(
+name|Object
+name|obj
+parameter_list|)
+block|{
+return|return
+name|myColor
+operator|.
+name|equals
+argument_list|(
+name|obj
+argument_list|)
+return|;
+block|}
+DECL|method|hashCode ()
+specifier|public
+name|int
+name|hashCode
+parameter_list|()
+block|{
+return|return
+name|myColor
+operator|.
+name|hashCode
+argument_list|()
+return|;
+block|}
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|myColor
+operator|.
+name|toString
 argument_list|()
 return|;
 block|}
 block|}
 end_class
+
+begin_comment
+comment|///////////////////////////////////////////////////////////////////////////////
+end_comment
+
+begin_comment
+comment|//  END OF FILE.
+end_comment
+
+begin_comment
+comment|///////////////////////////////////////////////////////////////////////////////
+end_comment
 
 end_unit
 

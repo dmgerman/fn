@@ -62,42 +62,55 @@ specifier|public
 interface|interface
 name|GradientTheme
 block|{
-comment|/**    * Returns the upper gradient color for components like JButton, JMenuBar,    * and JProgressBar.    * Will return<code>null</code> if upper gradient should not be painted.    */
-DECL|method|getComponentGradientColorReflection ()
-specifier|public
-name|ColorUIResource
-name|getComponentGradientColorReflection
-parameter_list|()
-function_decl|;
-comment|/**    * Returns the lower gradient color for components like JButton, JMenuBar,    * and JProgressBar.    * Will return<code>null</code> if lower gradient should not be painted.    */
-DECL|method|getComponentGradientColorShadow ()
-specifier|public
-name|ColorUIResource
-name|getComponentGradientColorShadow
-parameter_list|()
-function_decl|;
-comment|/**    * Returns the upper gradient color for text components like JTextField and    * JPasswordField.    * Will return<code>null</code> if upper gradient should not be painted.    */
-DECL|method|getTextComponentGradientColorReflection ()
-specifier|public
-name|ColorUIResource
-name|getTextComponentGradientColorReflection
-parameter_list|()
-function_decl|;
-comment|/**    * Returns the lower gradient color for text components like JTextField and    * JPasswordField.    * Will return<code>null</code> if lower gradient should not be painted.    */
-DECL|method|getTextComponentGradientColorShadow ()
-specifier|public
-name|ColorUIResource
-name|getTextComponentGradientColorShadow
-parameter_list|()
-function_decl|;
+comment|//~ Methods ////////////////////////////////////////////////////////////////
 DECL|method|getBackgroundGradientShadow ()
 specifier|public
 name|int
 name|getBackgroundGradientShadow
 parameter_list|()
 function_decl|;
+comment|/**      * Returns the upper gradient color for components like JButton, JMenuBar,      * and JProgressBar.      * Will return<code>null</code> if upper gradient should not be painted.      */
+DECL|method|getComponentGradientColorReflection ()
+specifier|public
+name|ColorUIResource
+name|getComponentGradientColorReflection
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the lower gradient color for components like JButton, JMenuBar,      * and JProgressBar.      * Will return<code>null</code> if lower gradient should not be painted.      */
+DECL|method|getComponentGradientColorShadow ()
+specifier|public
+name|ColorUIResource
+name|getComponentGradientColorShadow
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the upper gradient color for text components like JTextField and      * JPasswordField.      * Will return<code>null</code> if upper gradient should not be painted.      */
+DECL|method|getTextComponentGradientColorReflection ()
+specifier|public
+name|ColorUIResource
+name|getTextComponentGradientColorReflection
+parameter_list|()
+function_decl|;
+comment|/**      * Returns the lower gradient color for text components like JTextField and      * JPasswordField.      * Will return<code>null</code> if lower gradient should not be painted.      */
+DECL|method|getTextComponentGradientColorShadow ()
+specifier|public
+name|ColorUIResource
+name|getTextComponentGradientColorShadow
+parameter_list|()
+function_decl|;
 block|}
 end_interface
+
+begin_comment
+comment|///////////////////////////////////////////////////////////////////////////////
+end_comment
+
+begin_comment
+comment|//  END OF FILE.
+end_comment
+
+begin_comment
+comment|///////////////////////////////////////////////////////////////////////////////
+end_comment
 
 end_unit
 

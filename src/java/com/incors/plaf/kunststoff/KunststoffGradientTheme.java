@@ -36,6 +36,10 @@ name|*
 import|;
 end_import
 
+begin_comment
+comment|/**  * DOCUMENT ME!  *  * @author $author$  * @version $Revision$  */
+end_comment
+
 begin_class
 DECL|class|KunststoffGradientTheme
 specifier|public
@@ -44,6 +48,7 @@ name|KunststoffGradientTheme
 implements|implements
 name|GradientTheme
 block|{
+comment|//~ Instance fields ////////////////////////////////////////////////////////
 comment|// gradient colors
 DECL|field|componentGradientColorReflection
 specifier|private
@@ -115,15 +120,15 @@ name|backgroundGradientShadow
 init|=
 literal|32
 decl_stmt|;
-comment|// methods
-DECL|method|getName ()
+comment|//~ Methods ////////////////////////////////////////////////////////////////
+DECL|method|getBackgroundGradientShadow ()
 specifier|public
-name|String
-name|getName
+name|int
+name|getBackgroundGradientShadow
 parameter_list|()
 block|{
 return|return
-literal|"Default Kunststoff Gradient Theme"
+name|backgroundGradientShadow
 return|;
 block|}
 comment|// methods for getting gradient colors
@@ -147,6 +152,17 @@ return|return
 name|componentGradientColorShadow
 return|;
 block|}
+comment|// methods
+DECL|method|getName ()
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+literal|"Default Kunststoff Gradient Theme"
+return|;
+block|}
 DECL|method|getTextComponentGradientColorReflection ()
 specifier|public
 name|ColorUIResource
@@ -167,18 +183,20 @@ return|return
 name|textComponentGradientColorShadow
 return|;
 block|}
-DECL|method|getBackgroundGradientShadow ()
-specifier|public
-name|int
-name|getBackgroundGradientShadow
-parameter_list|()
-block|{
-return|return
-name|backgroundGradientShadow
-return|;
-block|}
 block|}
 end_class
+
+begin_comment
+comment|///////////////////////////////////////////////////////////////////////////////
+end_comment
+
+begin_comment
+comment|//  END OF FILE.
+end_comment
+
+begin_comment
+comment|///////////////////////////////////////////////////////////////////////////////
+end_comment
 
 end_unit
 

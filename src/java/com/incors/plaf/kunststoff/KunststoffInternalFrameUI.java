@@ -72,6 +72,10 @@ name|*
 import|;
 end_import
 
+begin_comment
+comment|/**  * DOCUMENT ME!  *  * @author $author$  * @version $Revision$  */
+end_comment
+
 begin_class
 DECL|class|KunststoffInternalFrameUI
 specifier|public
@@ -80,16 +84,7 @@ name|KunststoffInternalFrameUI
 extends|extends
 name|MetalInternalFrameUI
 block|{
-DECL|field|titlePane
-specifier|private
-name|MetalInternalFrameTitlePane
-name|titlePane
-decl_stmt|;
-DECL|field|paletteListener
-specifier|private
-name|PropertyChangeListener
-name|paletteListener
-decl_stmt|;
+comment|//~ Static fields/initializers /////////////////////////////////////////////
 DECL|field|FRAME_TYPE
 specifier|private
 specifier|static
@@ -132,6 +127,18 @@ literal|"JInternalFrame.isPalette"
 decl_stmt|;
 comment|// added by Thomas Auinger
 comment|// to solve a compiling problem
+comment|//~ Instance fields ////////////////////////////////////////////////////////
+DECL|field|titlePane
+specifier|private
+name|MetalInternalFrameTitlePane
+name|titlePane
+decl_stmt|;
+DECL|field|paletteListener
+specifier|private
+name|PropertyChangeListener
+name|paletteListener
+decl_stmt|;
+comment|//~ Constructors ///////////////////////////////////////////////////////////
 DECL|method|KunststoffInternalFrameUI (JInternalFrame b)
 specifier|public
 name|KunststoffInternalFrameUI
@@ -146,6 +153,7 @@ name|b
 argument_list|)
 expr_stmt|;
 block|}
+comment|//~ Methods ////////////////////////////////////////////////////////////////
 DECL|method|createUI (JComponent c)
 specifier|public
 specifier|static
@@ -166,6 +174,30 @@ operator|)
 name|c
 argument_list|)
 return|;
+block|}
+DECL|method|setPalette (boolean isPalette)
+specifier|public
+name|void
+name|setPalette
+parameter_list|(
+name|boolean
+name|isPalette
+parameter_list|)
+block|{
+name|super
+operator|.
+name|setPalette
+argument_list|(
+name|isPalette
+argument_list|)
+expr_stmt|;
+name|titlePane
+operator|.
+name|setPalette
+argument_list|(
+name|isPalette
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|installUI (JComponent c)
 specifier|public
@@ -248,30 +280,6 @@ expr_stmt|;
 return|return
 name|titlePane
 return|;
-block|}
-DECL|method|setPalette (boolean isPalette)
-specifier|public
-name|void
-name|setPalette
-parameter_list|(
-name|boolean
-name|isPalette
-parameter_list|)
-block|{
-name|super
-operator|.
-name|setPalette
-argument_list|(
-name|isPalette
-argument_list|)
-expr_stmt|;
-name|titlePane
-operator|.
-name|setPalette
-argument_list|(
-name|isPalette
-argument_list|)
-expr_stmt|;
 block|}
 DECL|method|setFrameType (String frameType)
 specifier|private
@@ -357,6 +365,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|//~ Inner Classes //////////////////////////////////////////////////////////
 DECL|class|PaletteListener
 class|class
 name|PaletteListener
@@ -399,6 +408,7 @@ argument_list|()
 operator|instanceof
 name|String
 condition|)
+block|{
 name|setFrameType
 argument_list|(
 operator|(
@@ -410,6 +420,7 @@ name|getNewValue
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -431,6 +442,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|setPalette
 argument_list|(
 operator|(
@@ -447,7 +459,9 @@ name|booleanValue
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|setPalette
 argument_list|(
 literal|false
@@ -456,9 +470,22 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
 comment|// end class PaletteListener
 block|}
 end_class
+
+begin_comment
+comment|///////////////////////////////////////////////////////////////////////////////
+end_comment
+
+begin_comment
+comment|//  END OF FILE.
+end_comment
+
+begin_comment
+comment|///////////////////////////////////////////////////////////////////////////////
+end_comment
 
 end_unit
 

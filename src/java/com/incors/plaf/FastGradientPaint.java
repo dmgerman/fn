@@ -48,6 +48,10 @@ name|ColorModel
 import|;
 end_import
 
+begin_comment
+comment|/**  * DOCUMENT ME!  *  * @author $author$  * @version $Revision$  */
+end_comment
+
 begin_class
 DECL|class|FastGradientPaint
 specifier|public
@@ -56,18 +60,21 @@ name|FastGradientPaint
 implements|implements
 name|Paint
 block|{
-DECL|field|startColor
-DECL|field|endColor
-name|int
-name|startColor
-decl_stmt|,
-name|endColor
-decl_stmt|;
+comment|//~ Instance fields ////////////////////////////////////////////////////////
 DECL|field|isVertical
 name|boolean
 name|isVertical
 decl_stmt|;
-DECL|method|FastGradientPaint ( Color sc, Color ec, boolean isV )
+DECL|field|endColor
+name|int
+name|endColor
+decl_stmt|;
+DECL|field|startColor
+name|int
+name|startColor
+decl_stmt|;
+comment|//~ Constructors ///////////////////////////////////////////////////////////
+DECL|method|FastGradientPaint (Color sc, Color ec, boolean isV)
 specifier|public
 name|FastGradientPaint
 parameter_list|(
@@ -100,7 +107,38 @@ operator|=
 name|isV
 expr_stmt|;
 block|}
-DECL|method|createContext ( ColorModel cm, Rectangle r, Rectangle2D r2d, AffineTransform xform, RenderingHints hints )
+comment|//~ Methods ////////////////////////////////////////////////////////////////
+DECL|method|getTransparency ()
+specifier|public
+name|int
+name|getTransparency
+parameter_list|()
+block|{
+return|return
+operator|(
+operator|(
+operator|(
+operator|(
+name|startColor
+operator|&
+name|endColor
+operator|)
+operator|>>
+literal|24
+operator|)
+operator|&
+literal|0xFF
+operator|)
+operator|==
+literal|0xFF
+operator|)
+condition|?
+name|OPAQUE
+else|:
+name|TRANSLUCENT
+return|;
+block|}
+DECL|method|createContext (ColorModel cm, Rectangle r, Rectangle2D r2d, AffineTransform xform, RenderingHints hints)
 specifier|public
 specifier|synchronized
 name|PaintContext
@@ -138,38 +176,20 @@ name|isVertical
 argument_list|)
 return|;
 block|}
-DECL|method|getTransparency ()
-specifier|public
-name|int
-name|getTransparency
-parameter_list|()
-block|{
-return|return
-operator|(
-operator|(
-operator|(
-operator|(
-name|startColor
-operator|&
-name|endColor
-operator|)
-operator|>>
-literal|24
-operator|)
-operator|&
-literal|0xFF
-operator|)
-operator|==
-literal|0xFF
-operator|)
-condition|?
-name|OPAQUE
-else|:
-name|TRANSLUCENT
-return|;
-block|}
 block|}
 end_class
+
+begin_comment
+comment|///////////////////////////////////////////////////////////////////////////////
+end_comment
+
+begin_comment
+comment|//  END OF FILE.
+end_comment
+
+begin_comment
+comment|///////////////////////////////////////////////////////////////////////////////
+end_comment
 
 end_unit
 

@@ -62,6 +62,10 @@ name|*
 import|;
 end_import
 
+begin_comment
+comment|/**  * DOCUMENT ME!  *  * @author $author$  * @version $Revision$  */
+end_comment
+
 begin_class
 DECL|class|KunststoffButtonUI
 specifier|public
@@ -70,6 +74,7 @@ name|KunststoffButtonUI
 extends|extends
 name|MetalButtonUI
 block|{
+comment|//~ Static fields/initializers /////////////////////////////////////////////
 DECL|field|buttonUI
 specifier|private
 specifier|final
@@ -81,6 +86,7 @@ operator|new
 name|KunststoffButtonUI
 argument_list|()
 decl_stmt|;
+comment|//~ Methods ////////////////////////////////////////////////////////////////
 DECL|method|createUI (JComponent c)
 specifier|public
 specifier|static
@@ -285,12 +291,14 @@ name|Rectangle
 argument_list|(
 literal|0
 argument_list|,
+operator|(
 name|parent
 operator|.
 name|getHeight
 argument_list|()
 operator|/
 literal|2
+operator|)
 operator|-
 name|loc
 operator|.
@@ -412,12 +420,14 @@ operator|=
 operator|new
 name|Rectangle
 argument_list|(
+operator|(
 name|parent
 operator|.
 name|getWidth
 argument_list|()
 operator|/
 literal|2
+operator|)
 operator|-
 name|loc
 operator|.
@@ -600,6 +610,18 @@ block|}
 block|}
 block|}
 end_class
+
+begin_comment
+comment|///////////////////////////////////////////////////////////////////////////////
+end_comment
+
+begin_comment
+comment|//  END OF FILE.
+end_comment
+
+begin_comment
+comment|///////////////////////////////////////////////////////////////////////////////
+end_comment
 
 end_unit
 

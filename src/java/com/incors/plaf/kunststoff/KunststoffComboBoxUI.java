@@ -74,6 +74,7 @@ name|KunststoffComboBoxUI
 extends|extends
 name|MetalComboBoxUI
 block|{
+comment|//~ Methods ////////////////////////////////////////////////////////////////
 DECL|method|createUI (JComponent c)
 specifier|public
 specifier|static
@@ -90,7 +91,7 @@ name|KunststoffComboBoxUI
 argument_list|()
 return|;
 block|}
-comment|/**    * Installs MyMetalComboBoxButton    */
+comment|/**      * Installs MyMetalComboBoxButton      */
 DECL|method|createArrowButton ()
 specifier|protected
 name|JButton
@@ -144,7 +145,8 @@ return|return
 name|button
 return|;
 block|}
-comment|/*    * This inner class finally fixed a nasty bug with the combo box. Thanks to    * Matthew Philips for providing the bugfix.    * Thanks to Ingo Kegel for fixing two compiling issues for jikes.    */
+comment|//~ Inner Classes //////////////////////////////////////////////////////////
+comment|/*      * This inner class finally fixed a nasty bug with the combo box. Thanks to      * Matthew Philips for providing the bugfix.      * Thanks to Ingo Kegel for fixing two compiling issues for jikes.      */
 DECL|class|MyMetalComboBoxButton
 specifier|private
 specifier|final
@@ -209,6 +211,7 @@ condition|(
 operator|!
 name|iconOnly
 operator|&&
+operator|(
 name|MyMetalComboBoxButton
 operator|.
 name|this
@@ -216,6 +219,7 @@ operator|.
 name|comboBox
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|boolean
@@ -319,6 +323,18 @@ block|}
 block|}
 block|}
 end_class
+
+begin_comment
+comment|///////////////////////////////////////////////////////////////////////////////
+end_comment
+
+begin_comment
+comment|//  END OF FILE.
+end_comment
+
+begin_comment
+comment|///////////////////////////////////////////////////////////////////////////////
+end_comment
 
 end_unit
 

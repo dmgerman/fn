@@ -62,6 +62,10 @@ name|*
 import|;
 end_import
 
+begin_comment
+comment|/**  * DOCUMENT ME!  *  * @author $author$  * @version $Revision$  */
+end_comment
+
 begin_class
 DECL|class|KunststoffCheckBoxIcon
 specifier|public
@@ -70,6 +74,7 @@ name|KunststoffCheckBoxIcon
 extends|extends
 name|MetalCheckBoxIcon
 block|{
+comment|//~ Methods ////////////////////////////////////////////////////////////////
 DECL|method|paintIcon (Component c, Graphics g, int x, int y)
 specifier|public
 name|void
@@ -214,9 +219,11 @@ name|x
 argument_list|,
 name|x
 operator|+
+operator|(
 name|controlSize
 operator|/
 literal|2
+operator|)
 argument_list|,
 name|controlSize
 argument_list|,
@@ -244,6 +251,18 @@ block|}
 block|}
 block|}
 end_class
+
+begin_comment
+comment|///////////////////////////////////////////////////////////////////////////////
+end_comment
+
+begin_comment
+comment|//  END OF FILE.
+end_comment
+
+begin_comment
+comment|///////////////////////////////////////////////////////////////////////////////
+end_comment
 
 end_unit
 
