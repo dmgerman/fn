@@ -167,10 +167,10 @@ comment|/**  * Changes {\^o} or {\^{o}} to ô  *  * @author $author$  * @version
 end_comment
 
 begin_class
-DECL|class|ConvertSpecialCharactersForXML
+DECL|class|XMLChars
 specifier|public
 class|class
-name|ConvertSpecialCharactersForXML
+name|XMLChars
 implements|implements
 name|LayoutFormatter
 block|{

@@ -200,19 +200,7 @@ argument_list|(
 literal|100
 argument_list|)
 decl_stmt|;
-name|fieldText
-operator|=
-operator|(
-operator|new
-name|ConvertSpecialCharactersForXML
-argument_list|()
-operator|)
-operator|.
-name|format
-argument_list|(
-name|fieldText
-argument_list|)
-expr_stmt|;
+comment|//fieldText = (new ConvertSpecialCharactersForXML()).format(fieldText);
 if|if
 condition|(
 name|fieldText

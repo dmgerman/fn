@@ -198,7 +198,13 @@ parameter_list|(
 name|Exception
 name|ex
 parameter_list|)
-block|{     }
+block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
 name|update
 argument_list|()
 expr_stmt|;

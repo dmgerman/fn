@@ -135,10 +135,10 @@ comment|/**  * Changes {\^o} or {\^{o}} to ô  *  * @author $author$  * @version
 end_comment
 
 begin_class
-DECL|class|FixAuthorLastFirstForHTML
+DECL|class|AuthorFirstFirst
 specifier|public
 class|class
-name|FixAuthorLastFirstForHTML
+name|AuthorFirstFirst
 implements|implements
 name|LayoutFormatter
 block|{
@@ -152,24 +152,14 @@ name|String
 name|fieldText
 parameter_list|)
 block|{
-name|ConvertSpecialCharactersForHTML
-name|conv
-init|=
-operator|new
-name|ConvertSpecialCharactersForHTML
-argument_list|()
-decl_stmt|;
+comment|//ConvertSpecialCharactersForHTML conv = new ConvertSpecialCharactersForHTML();
+comment|//return conv.format(ImportFormatReader.fixAuthor_lastnameFirst(fieldText));
 return|return
-name|conv
-operator|.
-name|format
-argument_list|(
 name|ImportFormatReader
 operator|.
-name|fixAuthor_lastnameFirst
+name|fixAuthor
 argument_list|(
 name|fieldText
-argument_list|)
 argument_list|)
 return|;
 block|}
