@@ -161,7 +161,12 @@ name|defBinds
 expr_stmt|;
 name|setTitle
 argument_list|(
-literal|"JabRef Key Binding:"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Key bindings"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|setModal
