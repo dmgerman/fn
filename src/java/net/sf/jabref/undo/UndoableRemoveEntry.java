@@ -72,12 +72,12 @@ specifier|private
 name|BibtexEntry
 name|entry
 decl_stmt|;
-DECL|field|entryTypeForms
+DECL|field|panel
 specifier|private
-name|HashMap
-name|entryTypeForms
+name|BasePanel
+name|panel
 decl_stmt|;
-DECL|method|UndoableRemoveEntry (BibtexDatabase base, BibtexEntry entry, HashMap entryTypeForms)
+DECL|method|UndoableRemoveEntry (BibtexDatabase base, BibtexEntry entry, BasePanel panel)
 specifier|public
 name|UndoableRemoveEntry
 parameter_list|(
@@ -87,8 +87,8 @@ parameter_list|,
 name|BibtexEntry
 name|entry
 parameter_list|,
-name|HashMap
-name|entryTypeForms
+name|BasePanel
+name|panel
 parameter_list|)
 block|{
 name|this
@@ -105,9 +105,9 @@ name|entry
 expr_stmt|;
 name|this
 operator|.
-name|entryTypeForms
+name|panel
 operator|=
-name|entryTypeForms
+name|panel
 expr_stmt|;
 block|}
 DECL|method|getUndoPresentationName ()
@@ -217,35 +217,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// If the entry has an editor currently open, we must close it.
-name|Object
-name|o
-init|=
-name|entryTypeForms
+name|panel
 operator|.
-name|get
+name|ensureNotShowing
 argument_list|(
 name|entry
-operator|.
-name|getId
-argument_list|()
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|o
-operator|!=
-literal|null
-condition|)
-block|{
-name|Util
-operator|.
-name|pr
-argument_list|(
-literal|"UndoableRemoveEntry must close EntryTypeForm."
 argument_list|)
 expr_stmt|;
-comment|//((EntryTypeForm)o).dispose();
-block|}
 block|}
 catch|catch
 parameter_list|(

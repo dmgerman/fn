@@ -739,6 +739,23 @@ operator|.
 name|VERTICAL
 argument_list|)
 decl_stmt|;
+name|tlb
+operator|.
+name|setMargin
+argument_list|(
+operator|new
+name|Insets
+argument_list|(
+literal|2
+argument_list|,
+literal|2
+argument_list|,
+literal|2
+argument_list|,
+literal|2
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// The toolbar carries all the key bindings that are valid for the whole
 comment|// window.
 name|ActionMap
@@ -1194,10 +1211,9 @@ literal|5
 argument_list|,
 literal|0
 argument_list|,
-literal|5
+literal|0
 argument_list|)
 expr_stmt|;
-comment|//con.fill = GridBagConstraints.HORIZONTAL;
 name|con
 operator|.
 name|anchor
@@ -1205,6 +1221,14 @@ operator|=
 name|GridBagConstraints
 operator|.
 name|WEST
+expr_stmt|;
+name|con
+operator|.
+name|fill
+operator|=
+name|GridBagConstraints
+operator|.
+name|BOTH
 expr_stmt|;
 for|for
 control|(
@@ -1240,14 +1264,7 @@ name|weighty
 operator|=
 literal|0
 expr_stmt|;
-name|con
-operator|.
-name|fill
-operator|=
-name|GridBagConstraints
-operator|.
-name|NONE
-expr_stmt|;
+comment|//con.fill = GridBagConstraints.BOTH;
 if|if
 condition|(
 name|i
@@ -1616,14 +1633,7 @@ name|weightx
 operator|=
 literal|1
 expr_stmt|;
-name|con
-operator|.
-name|fill
-operator|=
-name|GridBagConstraints
-operator|.
-name|BOTH
-expr_stmt|;
+comment|//con.fill = GridBagConstraints.BOTH;
 if|if
 condition|(
 name|i
@@ -4464,18 +4474,11 @@ name|getType
 argument_list|()
 condition|)
 block|{
-comment|//panel.entryTypeForms.remove(entry.getId());
-name|entry
-operator|=
+name|switchTo
+argument_list|(
 name|be
+argument_list|)
 expr_stmt|;
-name|updateAllFields
-argument_list|()
-expr_stmt|;
-name|updateSource
-argument_list|()
-expr_stmt|;
-comment|//panel.entryTypeForms.put(id, ths);
 block|}
 else|else
 block|{
@@ -4487,6 +4490,27 @@ name|be
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|/**      * Updates this editor to show the given entry, regardless of      * type correspondence.      *      * @param be a<code>BibtexEntry</code> value      */
+DECL|method|switchTo (BibtexEntry be)
+specifier|public
+name|void
+name|switchTo
+parameter_list|(
+name|BibtexEntry
+name|be
+parameter_list|)
+block|{
+name|entry
+operator|=
+name|be
+expr_stmt|;
+name|updateAllFields
+argument_list|()
+expr_stmt|;
+name|updateSource
+argument_list|()
+expr_stmt|;
 block|}
 DECL|class|GenerateKeyAction
 class|class

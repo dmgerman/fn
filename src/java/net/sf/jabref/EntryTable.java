@@ -1222,6 +1222,12 @@ argument_list|(
 name|rect
 argument_list|)
 expr_stmt|;
+name|revalidate
+argument_list|()
+expr_stmt|;
+name|repaint
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 end_class
