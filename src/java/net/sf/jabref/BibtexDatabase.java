@@ -360,6 +360,20 @@ name|id
 argument_list|)
 return|;
 block|}
+DECL|method|getEntries ()
+specifier|public
+specifier|synchronized
+name|Collection
+name|getEntries
+parameter_list|()
+block|{
+return|return
+name|_entries
+operator|.
+name|values
+argument_list|()
+return|;
+block|}
 comment|/**      * Returns the entry with the given bibtex key.      */
 DECL|method|getEntryByKey (String key)
 specifier|public
