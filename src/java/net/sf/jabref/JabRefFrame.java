@@ -295,15 +295,7 @@ operator|new
 name|CloseAction
 argument_list|()
 decl_stmt|,
-DECL|field|selectKeys
-name|selectKeys
-init|=
-operator|new
-name|SelectKeysAction
-argument_list|()
-decl_stmt|,
-comment|//incrementalSearch = new IncrementalSearchAction(),
-comment|//normalSearch = new SearchAction(),
+comment|//selectKeys = new SelectKeysAction(),
 DECL|field|newDatabaseAction
 name|newDatabaseAction
 init|=
@@ -2567,13 +2559,7 @@ argument_list|(
 name|showPrefs
 argument_list|)
 expr_stmt|;
-name|options
-operator|.
-name|add
-argument_list|(
-name|selectKeys
-argument_list|)
-expr_stmt|;
+comment|//options.add(selectKeys);
 name|mb
 operator|.
 name|add
@@ -2699,6 +2685,18 @@ operator|.
 name|add
 argument_list|(
 name|paste
+argument_list|)
+expr_stmt|;
+name|tlb
+operator|.
+name|addSeparator
+argument_list|()
+expr_stmt|;
+name|tlb
+operator|.
+name|add
+argument_list|(
+name|normalSearch
 argument_list|)
 expr_stmt|;
 name|tlb
