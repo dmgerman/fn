@@ -14,99 +14,99 @@ name|jabref
 package|;
 end_package
 
-begin_class
-DECL|class|BibtexString
+begin_interface
+DECL|interface|FieldEditor
 specifier|public
-class|class
-name|BibtexString
+interface|interface
+name|FieldEditor
 block|{
-DECL|field|_name
-DECL|field|_content
-name|String
-name|_name
-decl_stmt|,
-name|_content
-decl_stmt|;
-DECL|method|BibtexString (String name, String content)
-specifier|public
-name|BibtexString
-parameter_list|(
-name|String
-name|name
-parameter_list|,
-name|String
-name|content
-parameter_list|)
-block|{
-name|_name
-operator|=
-name|name
-expr_stmt|;
-name|_content
-operator|=
-name|content
-expr_stmt|;
-block|}
-DECL|method|getName ()
+DECL|method|getFieldName ()
 specifier|public
 name|String
-name|getName
+name|getFieldName
 parameter_list|()
-block|{
-return|return
-name|_name
-return|;
-block|}
-DECL|method|setName (String name)
+function_decl|;
+DECL|method|getPane ()
+specifier|public
+name|javax
+operator|.
+name|swing
+operator|.
+name|JComponent
+name|getPane
+parameter_list|()
+function_decl|;
+comment|// Returns the component to be added to a container. Might
+comment|// be a JScrollPane or the component itself.
+DECL|method|getLabel ()
+specifier|public
+name|javax
+operator|.
+name|swing
+operator|.
+name|JLabel
+name|getLabel
+parameter_list|()
+function_decl|;
+DECL|method|setLabelColor (java.awt.Color c)
 specifier|public
 name|void
-name|setName
+name|setLabelColor
 parameter_list|(
-name|String
-name|name
+name|java
+operator|.
+name|awt
+operator|.
+name|Color
+name|c
 parameter_list|)
-block|{
-name|_name
-operator|=
-name|name
-expr_stmt|;
-block|}
-DECL|method|getContent ()
-specifier|public
-name|String
-name|getContent
-parameter_list|()
-block|{
-return|return
-operator|(
-operator|(
-name|_content
-operator|==
-literal|null
-operator|)
-condition|?
-literal|""
-else|:
-name|_content
-operator|)
-return|;
-block|}
-DECL|method|setContent (String content)
+function_decl|;
+DECL|method|setBackground (java.awt.Color c)
 specifier|public
 name|void
-name|setContent
+name|setBackground
+parameter_list|(
+name|java
+operator|.
+name|awt
+operator|.
+name|Color
+name|c
+parameter_list|)
+function_decl|;
+DECL|method|getText ()
+specifier|public
+name|String
+name|getText
+parameter_list|()
+function_decl|;
+DECL|method|setText (String newText)
+specifier|public
+name|void
+name|setText
 parameter_list|(
 name|String
-name|content
+name|newText
 parameter_list|)
-block|{
-name|_content
-operator|=
-name|content
-expr_stmt|;
+function_decl|;
+DECL|method|getParent ()
+specifier|public
+name|java
+operator|.
+name|awt
+operator|.
+name|Container
+name|getParent
+parameter_list|()
+function_decl|;
+DECL|method|requestFocus ()
+specifier|public
+name|void
+name|requestFocus
+parameter_list|()
+function_decl|;
 block|}
-block|}
-end_class
+end_interface
 
 end_unit
 
