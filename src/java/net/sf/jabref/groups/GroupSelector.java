@@ -1654,7 +1654,7 @@ name|searchRules
 argument_list|,
 name|panel
 argument_list|,
-name|DatabaseSearch
+name|Globals
 operator|.
 name|GROUPSEARCH
 argument_list|,

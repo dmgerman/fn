@@ -7131,8 +7131,17 @@ condition|(
 operator|!
 name|previewEnabled
 condition|)
+block|{
+name|splitPane
+operator|.
+name|setBottomComponent
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 return|return;
 comment|// Do nothing if previews are disabled.
+block|}
 if|if
 condition|(
 name|previewPanel
@@ -7527,11 +7536,13 @@ name|be
 operator|!=
 literal|null
 condition|)
+block|{
 name|updateWiewToSelected
 argument_list|(
 name|be
 argument_list|)
 expr_stmt|;
+block|}
 operator|new
 name|FocusRequester
 argument_list|(

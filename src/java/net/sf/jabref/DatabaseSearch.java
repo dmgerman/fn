@@ -92,19 +92,6 @@ DECL|field|reorder
 name|boolean
 name|reorder
 decl_stmt|;
-specifier|public
-specifier|static
-name|String
-DECL|field|SEARCH
-name|SEARCH
-init|=
-literal|"search"
-decl_stmt|,
-DECL|field|GROUPSEARCH
-name|GROUPSEARCH
-init|=
-literal|"groupsearch"
-decl_stmt|;
 DECL|method|DatabaseSearch (Hashtable searchOptions,SearchRuleSet searchRules, BasePanel panel, String searchValueField, boolean reorder)
 specifier|public
 name|DatabaseSearch

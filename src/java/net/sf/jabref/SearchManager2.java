@@ -1387,7 +1387,7 @@ operator|.
 name|basePanel
 argument_list|()
 argument_list|,
-name|DatabaseSearch
+name|Globals
 operator|.
 name|SEARCH
 argument_list|,
@@ -1425,7 +1425,7 @@ operator|.
 name|basePanel
 argument_list|()
 argument_list|,
-name|DatabaseSearch
+name|Globals
 operator|.
 name|SEARCH
 argument_list|,

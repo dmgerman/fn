@@ -555,10 +555,12 @@ name|put
 argument_list|(
 literal|"workingDirectory"
 argument_list|,
-operator|(
-name|String
-operator|)
-literal|null
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"user.home"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|defaults
