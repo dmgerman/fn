@@ -4623,7 +4623,13 @@ argument_list|(
 name|file
 argument_list|)
 expr_stmt|;
-comment|//edit.add(test);
+name|edit
+operator|.
+name|add
+argument_list|(
+name|test
+argument_list|)
+expr_stmt|;
 name|edit
 operator|.
 name|add
