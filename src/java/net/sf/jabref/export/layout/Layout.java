@@ -48,6 +48,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|BibtexEntry
 import|;
 end_import
@@ -461,13 +473,17 @@ comment|//System.out.println(layoutEntries[i].text);
 block|}
 block|}
 comment|//~ Methods ////////////////////////////////////////////////////////////////
-DECL|method|doLayout (BibtexEntry bibtex)
+comment|/**      * Returns the processed bibtex entry. If the database argument is      * null, no string references will be resolved. Otherwise all valid      * string references will be replaced by the strings' contents. Even      * recursive string references are resolved.      */
+DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database)
 specifier|public
 name|String
 name|doLayout
 parameter_list|(
 name|BibtexEntry
 name|bibtex
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 block|{
 comment|//System.out.println("LAYOUT: " + bibtex.getId());
@@ -515,6 +531,8 @@ operator|.
 name|doLayout
 argument_list|(
 name|bibtex
+argument_list|,
+name|database
 argument_list|)
 expr_stmt|;
 comment|//System.out.println("'" + fieldText + "'");
@@ -550,6 +568,8 @@ operator|.
 name|doLayout
 argument_list|(
 name|bibtex
+argument_list|,
+name|database
 argument_list|)
 operator|.
 name|trim

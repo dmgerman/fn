@@ -1901,6 +1901,8 @@ operator|.
 name|doLayout
 argument_list|(
 name|entry
+argument_list|,
+name|database
 argument_list|)
 argument_list|)
 expr_stmt|;

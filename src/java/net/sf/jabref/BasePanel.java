@@ -987,6 +987,9 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+comment|//Util.pr("Testing resolve string... BasePanel line 237");
+comment|//Util.pr("Resolve aq: "+database.resolveString("aq"));
+comment|//Util.pr("Resolve text: "+database.resolveForStrings("A text which refers to the string #aq# and #billball#, hurra."));
 try|try
 block|{
 name|Globals
