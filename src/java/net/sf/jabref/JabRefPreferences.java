@@ -1138,7 +1138,7 @@ argument_list|,
 operator|new
 name|Boolean
 argument_list|(
-literal|true
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2786,6 +2786,15 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
+literal|"Close preamble editor"
+argument_list|,
+literal|"ESCAPE"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
 literal|"Back, help dialog"
 argument_list|,
 literal|"LEFT"
@@ -2872,6 +2881,15 @@ argument_list|(
 literal|"String dialog, add string"
 argument_list|,
 literal|"ctrl N"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"String dialog, remove string"
+argument_list|,
+literal|"shift DELETE"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds

@@ -635,7 +635,7 @@ argument_list|(
 name|name
 argument_list|)
 argument_list|,
-literal|null
+literal|""
 argument_list|)
 expr_stmt|;
 block|}

@@ -6118,6 +6118,11 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 comment|// The source couldn't be parsed, so the user is given an
 comment|// error message, and the choice to keep or revert the contents
 comment|// of the source text field.

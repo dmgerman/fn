@@ -1527,10 +1527,31 @@ block|{
 comment|// Return a renderer with red background if the entry is incomplete.
 name|renderer
 operator|=
+name|defRenderer
+expr_stmt|;
+if|if
+condition|(
+name|tableModel
+operator|.
+name|isComplete
+argument_list|(
+name|row
+argument_list|)
+condition|)
+name|renderer
+operator|=
+name|defRenderer
+expr_stmt|;
+else|else
+block|{
+comment|//if (tableModel.hasCrossRef(row))
+comment|//  renderer = maybeIncRenderer;
+comment|//else
+name|renderer
+operator|=
 name|iconStringRenderer
 expr_stmt|;
-comment|//	    renderer = defRenderer;
-comment|/*if (tableModel.isComplete(row)) 		renderer = defRenderer; 	    else { 		if (tableModel.hasCrossRef(row)) 		    renderer = maybeIncRenderer; 		else 		    renderer = incRenderer; 		    }*/
+block|}
 comment|//return (tableModel.isComplete(row) ? defRenderer: incRenderer);
 block|}
 comment|//else if (status == EntryTableModel.ICON_COL)

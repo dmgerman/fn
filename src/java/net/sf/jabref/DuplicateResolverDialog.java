@@ -328,7 +328,7 @@ argument_list|(
 literal|"Possible duplicate entries"
 argument_list|)
 argument_list|,
-literal|false
+literal|true
 argument_list|)
 expr_stmt|;
 name|p1
@@ -609,7 +609,9 @@ name|block
 operator|=
 literal|false
 expr_stmt|;
-comment|//dispose();
+name|dispose
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 argument_list|)
@@ -638,7 +640,9 @@ name|block
 operator|=
 literal|false
 expr_stmt|;
-comment|//dispose();
+name|dispose
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 argument_list|)
@@ -667,7 +671,9 @@ name|block
 operator|=
 literal|false
 expr_stmt|;
-comment|//dispose();
+name|dispose
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 argument_list|)
@@ -816,13 +822,6 @@ name|BibtexEntry
 name|newTwo
 parameter_list|)
 block|{
-name|Util
-operator|.
-name|pr
-argument_list|(
-literal|"jass"
-argument_list|)
-expr_stmt|;
 name|setSourceView
 argument_list|(
 name|newOne

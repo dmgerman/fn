@@ -669,7 +669,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"lyx.png"
+literal|"lyx2.png"
 argument_list|)
 decl_stmt|,
 DECL|field|backIconFile

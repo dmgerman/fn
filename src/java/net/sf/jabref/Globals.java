@@ -639,19 +639,8 @@ name|translation
 operator|=
 name|key
 expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Warning: could not get translation for \""
-operator|+
-name|key
-operator|+
-literal|"\""
-argument_list|)
-expr_stmt|;
+comment|//System.err.println("Warning: could not get translation for \""
+comment|//                   + key + "\"");
 block|}
 if|if
 condition|(

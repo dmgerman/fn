@@ -518,7 +518,12 @@ argument_list|(
 name|go
 argument_list|)
 expr_stmt|;
-comment|//con.weightx = 0;
+name|con
+operator|.
+name|weightx
+operator|=
+literal|0
+expr_stmt|;
 name|con
 operator|.
 name|gridwidth
