@@ -231,10 +231,13 @@ init|=
 literal|null
 decl_stmt|;
 comment|// Keeps track of the preamble dialog if it is open.
-comment|//StringDialog stringDialog = null;
+DECL|field|stringDialog
+name|StringDialog
+name|stringDialog
+init|=
+literal|null
+decl_stmt|;
 comment|// Keeps track of the string dialog if it is open.
-comment|//public HelpDialog helpDiag = new HelpDialog(this);
-comment|// The help window.
 comment|//SearchPane searchDialog = null;
 comment|// The search pane.
 DECL|field|showingSearchResults
@@ -263,24 +266,6 @@ init|=
 operator|new
 name|HashMap
 argument_list|()
-decl_stmt|;
-DECL|field|KEY_PROPERTY
-specifier|protected
-specifier|final
-specifier|static
-name|String
-name|KEY_PROPERTY
-init|=
-literal|"bibtexkey"
-decl_stmt|;
-DECL|field|SEARCH_PROPERTY
-specifier|protected
-specifier|final
-specifier|static
-name|String
-name|SEARCH_PROPERTY
-init|=
-literal|"search"
 decl_stmt|;
 DECL|method|BasePanel (JabRefFrame frame, JabRefPreferences prefs)
 specifier|public
@@ -423,6 +408,156 @@ argument_list|(
 literal|"redo"
 argument_list|,
 name|redoAction
+argument_list|)
+expr_stmt|;
+comment|// The action for opening an entry editor.
+name|actions
+operator|.
+name|put
+argument_list|(
+literal|"edit"
+argument_list|,
+operator|new
+name|BaseAction
+argument_list|()
+block|{
+specifier|public
+name|void
+name|action
+parameter_list|()
+block|{
+name|int
+name|clickedOn
+init|=
+operator|-
+literal|1
+decl_stmt|;
+comment|// We demand that one and only one row is selected.
+if|if
+condition|(
+name|entryTable
+operator|.
+name|getSelectedRowCount
+argument_list|()
+operator|==
+literal|1
+condition|)
+block|{
+name|clickedOn
+operator|=
+name|entryTable
+operator|.
+name|getSelectedRow
+argument_list|()
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|clickedOn
+operator|>=
+literal|0
+condition|)
+block|{
+name|String
+name|id
+init|=
+name|tableModel
+operator|.
+name|getNameFromNumber
+argument_list|(
+name|clickedOn
+argument_list|)
+decl_stmt|;
+comment|// First we check that no editor is already open for this
+comment|// entry.
+if|if
+condition|(
+operator|!
+name|entryTypeForms
+operator|.
+name|containsKey
+argument_list|(
+name|id
+argument_list|)
+condition|)
+block|{
+name|BibtexEntry
+name|be
+init|=
+name|database
+operator|.
+name|getEntryById
+argument_list|(
+name|id
+argument_list|)
+decl_stmt|;
+name|EntryTypeForm
+name|form
+init|=
+operator|new
+name|EntryTypeForm
+argument_list|(
+name|frame
+argument_list|,
+name|ths
+argument_list|,
+name|be
+argument_list|,
+name|prefs
+argument_list|)
+decl_stmt|;
+name|Util
+operator|.
+name|placeDialog
+argument_list|(
+name|form
+argument_list|,
+name|frame
+argument_list|)
+expr_stmt|;
+comment|// We want to center the editor.
+name|form
+operator|.
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|entryTypeForms
+operator|.
+name|put
+argument_list|(
+name|id
+argument_list|,
+name|form
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+operator|(
+call|(
+name|EntryTypeForm
+call|)
+argument_list|(
+name|entryTypeForms
+operator|.
+name|get
+argument_list|(
+name|id
+argument_list|)
+argument_list|)
+operator|)
+operator|.
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+block|}
 argument_list|)
 expr_stmt|;
 comment|// The action for saving a database.
@@ -805,6 +940,79 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+comment|// The action for opening the preamble editor
+name|actions
+operator|.
+name|put
+argument_list|(
+literal|"editPreamble"
+argument_list|,
+operator|new
+name|BaseAction
+argument_list|()
+block|{
+specifier|public
+name|void
+name|action
+parameter_list|()
+block|{
+if|if
+condition|(
+name|preambleEditor
+operator|==
+literal|null
+condition|)
+block|{
+name|PreambleEditor
+name|form
+init|=
+operator|new
+name|PreambleEditor
+argument_list|(
+name|frame
+argument_list|,
+name|ths
+argument_list|,
+name|database
+argument_list|,
+name|prefs
+argument_list|)
+decl_stmt|;
+name|Util
+operator|.
+name|placeDialog
+argument_list|(
+name|form
+argument_list|,
+name|frame
+argument_list|)
+expr_stmt|;
+name|form
+operator|.
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|preambleEditor
+operator|=
+name|form
+expr_stmt|;
+block|}
+else|else
+block|{
+name|preambleEditor
+operator|.
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * This method is called from JabRefFrame is a database specific      * action is requested by the user. Runs the command if it is      * defined, or prints an error message to the standard error      * stream.     */
 DECL|method|runCommand (String command)
@@ -1160,7 +1368,39 @@ name|baseChanged
 operator|=
 literal|false
 expr_stmt|;
-comment|/* 	    if (file != null) 		setTitle(GUIGlobals.baseTitle+file.getName()); 	    else 	    setTitle(GUIGlobals.untitledTitle);*/
+if|if
+condition|(
+name|file
+operator|!=
+literal|null
+condition|)
+name|frame
+operator|.
+name|setTabTitle
+argument_list|(
+name|ths
+argument_list|,
+name|file
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+else|else
+name|frame
+operator|.
+name|setTabTitle
+argument_list|(
+name|ths
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"untitled"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 DECL|method|showSearchResults (String searchValueField)
@@ -1290,20 +1530,34 @@ return|return
 name|database
 return|;
 block|}
+DECL|method|entryTypeFormClosing (String id)
+specifier|public
+name|void
+name|entryTypeFormClosing
+parameter_list|(
+name|String
+name|id
+parameter_list|)
+block|{
+comment|// Called by EntryTypeForm when closing.
+name|entryTypeForms
+operator|.
+name|remove
+argument_list|(
+name|id
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|preambleEditorClosing ()
 specifier|public
 name|void
 name|preambleEditorClosing
 parameter_list|()
 block|{
-name|Util
-operator|.
-name|pr
-argument_list|(
-literal|"BasePanel: must set preambleEditor = null"
-argument_list|)
+name|preambleEditor
+operator|=
+literal|null
 expr_stmt|;
-comment|//preambleEditor = null;
 block|}
 DECL|method|stringsClosing ()
 specifier|public
@@ -1311,14 +1565,10 @@ name|void
 name|stringsClosing
 parameter_list|()
 block|{
-name|Util
-operator|.
-name|pr
-argument_list|(
-literal|"BasePanel: must set stringDialog = null"
-argument_list|)
+name|stringDialog
+operator|=
+literal|null
 expr_stmt|;
-comment|//stringDialog = null;
 block|}
 comment|// The action for copying selected entries.
 comment|/*     CopyAction copyAction = new CopyAction(this);     class CopyAction extends AbstractAction { 	BibtexBaseFrame parent; 	public CopyAction(BibtexBaseFrame parent_) { 	    super("Copy", 		  new ImageIcon(GUIGlobals.copyIconFile)); 	    putValue(SHORT_DESCRIPTION, "Copy"); 	    parent = parent_; 	}     	public void actionPerformed(ActionEvent e) { 	    BibtexEntry[] bes = entryTable.getSelectedEntries();  	    // Entries are copied if only the first or multiple 	    // columns are selected. 	    if ((bes != null)&& (bes.length> 0)) { 		TransferableBibtexEntry trbe = new TransferableBibtexEntry(bes); 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(trbe, parent); 		output("Copied "+(bes.length>1 ? bes.length+" entries." : "1 entry.")); 	    } else { 		// The user maybe selected a single cell. 		int[] rows = entryTable.getSelectedRows(), 		    cols = entryTable.getSelectedColumns(); 		if ((cols.length == 1)&& (rows.length == 1)) { 		    // Copy single value. 		    Object o = tableModel.getValueAt(rows[0], cols[0]); 		    if (o != null) { 			StringSelection ss = new StringSelection(o.toString()); 			Toolkit.getDefaultToolkit().getSystemClipboard().setContents(ss, parent); 			output("Copied cell contents."); 		    } 		} 	    } 	}     }      // The action for pasting entries.     PasteAction pasteAction = new PasteAction();     class PasteAction extends AbstractAction { 	public PasteAction() { 	    super("Paste", 		  new ImageIcon(GUIGlobals.pasteIconFile)); 	    putValue(SHORT_DESCRIPTION, "Paste"); 	}     	public void actionPerformed(ActionEvent e) { 	    // We pick an object from the clipboard, check if it exists, and if it is a set of entries. 	    Transferable content = Toolkit.getDefaultToolkit().getSystemClipboard().getContents(null); 	    if (content != null) { 		DataFlavor[] flavor = content.getTransferDataFlavors(); 		if ((flavor != null)&& (flavor.length> 0)&& flavor[0].equals(TransferableBibtexEntry.entryFlavor)) { 		    // We have determined that the clipboard data is a set of entries. 		    BibtexEntry[] bes = null; 		    try { 			bes = (BibtexEntry[])(content.getTransferData(TransferableBibtexEntry.entryFlavor)); 		    } catch (UnsupportedFlavorException ex) { 		    } catch (IOException ex) {}  		    if ((bes != null)&& (bes.length> 0)) { 			NamedCompound ce = new NamedCompound 			    (bes.length> 1 ? "paste entries" : "paste entry"); 			for (int i=0; i<bes.length; i++) { 			    try {  				BibtexEntry be = (BibtexEntry)(bes[i].clone()); 				// We have to clone the entries, since the pasted 				// entries must exist independently of the copied 				// ones. 				be.setId(Util.createID(be.getType(), database)); 				database.insertEntry(be); 				ce.addEdit(new UndoableInsertEntry 					   (database, be, entryTypeForms)); 			    } catch (KeyCollisionException ex) { 				Util.pr("KeyCollisionException... this shouldn't happen."); 			    } 			} 			ce.end(); 			undoManager.addEdit(ce); 			tableModel.remap(); 			entryTable.clearSelection(); 			entryTable.revalidate(); 			output("Pasted "+(bes.length>1 ? bes.length+" entries." : "1 entry.")); 			refreshTable(); 			markBaseChanged(); 		    } 		} 		if ((flavor != null)&& (flavor.length> 0)&& flavor[0].equals(DataFlavor.stringFlavor)) {  		    // We have determined that the clipboard data is a string. 		    int[] rows = entryTable.getSelectedRows(), 			cols = entryTable.getSelectedColumns(); 		    if ((cols != null)&& (cols.length == 1)&& (cols[0] != 0)&& (rows != null)&& (rows.length == 1)) { 			try { 			    tableModel.setValueAt((String)(content.getTransferData(DataFlavor.stringFlavor)), rows[0], cols[0]); 			    refreshTable(); 			    markBaseChanged();			    			    output("Pasted cell contents"); 			} catch (UnsupportedFlavorException ex) { 			} catch (IOException ex) { 			} catch (IllegalArgumentException ex) { 			    output("Can't paste."); 			} 		    } 		} 	    } 	}     }  */
@@ -1377,8 +1627,10 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Nothing to undo."
+literal|"Nothing to undo"
 argument_list|)
+operator|+
+literal|"."
 argument_list|)
 expr_stmt|;
 block|}
@@ -1442,7 +1694,14 @@ name|frame
 operator|.
 name|output
 argument_list|(
-literal|"Nothing to redo."
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Nothing to redo"
+argument_list|)
+operator|+
+literal|"."
 argument_list|)
 expr_stmt|;
 block|}
@@ -1476,14 +1735,11 @@ operator|==
 literal|2
 condition|)
 block|{
-name|Util
-operator|.
-name|pr
+name|runCommand
 argument_list|(
-literal|"BasePanel: must call edit entry action."
+literal|"edit"
 argument_list|)
 expr_stmt|;
-comment|//editEntryAction.actionPerformed(null);
 block|}
 block|}
 DECL|method|mouseEntered (MouseEvent e)

@@ -212,6 +212,18 @@ name|fileToOpen
 init|=
 literal|null
 decl_stmt|;
+comment|// The help window.
+DECL|field|helpDiag
+specifier|public
+name|HelpDialog
+name|helpDiag
+init|=
+operator|new
+name|HelpDialog
+argument_list|(
+name|this
+argument_list|)
+decl_stmt|;
 comment|// Here we instantiate menu/toolbar actions. Actions regarding
 comment|// the currently open database are defined as a GeneralAction
 comment|// with a unique command string. This causes the appropriate
@@ -306,6 +318,23 @@ argument_list|,
 name|GUIGlobals
 operator|.
 name|redoIconFile
+argument_list|)
+decl_stmt|,
+DECL|field|editPreamble
+name|editPreamble
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"editPreamble"
+argument_list|,
+literal|"Edit preamble"
+argument_list|,
+literal|"Edit preamble"
+argument_list|,
+name|GUIGlobals
+operator|.
+name|preambleIconFile
 argument_list|)
 decl_stmt|;
 DECL|method|JabRefFrame ()
@@ -1327,6 +1356,19 @@ argument_list|(
 literal|"Edit"
 argument_list|)
 argument_list|)
+decl_stmt|,
+name|bibtex
+init|=
+operator|new
+name|JMenu
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Bibtex"
+argument_list|)
+argument_list|)
 decl_stmt|;
 name|file
 operator|.
@@ -1394,6 +1436,20 @@ operator|.
 name|add
 argument_list|(
 name|edit
+argument_list|)
+expr_stmt|;
+name|bibtex
+operator|.
+name|add
+argument_list|(
+name|editPreamble
+argument_list|)
+expr_stmt|;
+name|mb
+operator|.
+name|add
+argument_list|(
+name|bibtex
 argument_list|)
 expr_stmt|;
 comment|/* 	file.add(mItem(newDatabaseAction, null)); 	file.add(mItem(openDatabaseAction, GUIGlobals.openKeyStroke)); 	file.add(mItem(saveDatabaseAction, GUIGlobals.saveKeyStroke)); 	file.add(mItem(saveAsDatabaseAction, null)); 	file.add(mItem(saveSpecialAction, null)); 	file.addSeparator(); 	file.add(mItem(mergeDatabaseAction, null)); 	file.addSeparator(); 	file.add(mItem(closeDatabaseAction, null)); 	file.add(mItem(closeAction, GUIGlobals.closeKeyStroke)); 	mb.add(file);  	JMenu view = new JMenu("View"),  	    entry = new JMenu("Edit"), 	    entryType = new JMenu("New ..."), 	    bibtex = new JMenu("Bibtex"); 	for (int i=0; i<newSpecificEntryAction.length; i++) 	    entryType.add(mItem(newSpecificEntryAction[i],  				newSpecificEntryAction[i].keyStroke)); 	entry.add(mItem(undoAction, GUIGlobals.undoStroke)); 	entry.add(mItem(redoAction, GUIGlobals.redoStroke)); 	entry.addSeparator(); 	entry.add(mItem(removeEntryAction, GUIGlobals.removeEntryKeyStroke)); 	entry.add(mItem(copyAction, GUIGlobals.copyStroke)); 	entry.add(mItem(pasteAction, GUIGlobals.pasteStroke)); 	entry.addSeparator(); 	entry.add(mItem(selectAllAction, GUIGlobals.selectAllKeyStroke));  	view.add(mItem(showGroupsAction, GUIGlobals.showGroupsKeyStroke));  	bibtex.add(entryType); 	bibtex.add(mItem(newEntryAction, GUIGlobals.newEntryKeyStroke)); 	bibtex.addSeparator(); 	bibtex.add(mItem(copyKeyAction, GUIGlobals.copyKeyStroke)); 	bibtex.add(mItem(editPreambleAction, GUIGlobals.editPreambleKeyStroke)); 	bibtex.add(mItem(editStringsAction, GUIGlobals.editStringsKeyStroke)); 	bibtex.add(mItem(editEntryAction, GUIGlobals.editEntryKeyStroke));   	mb.add(entry); 	mb.add(view); 	mb.add(bibtex);  	JMenu tools = new JMenu("Tools"); 	tools.add(mItem(searchPaneAction, GUIGlobals.simpleSearchKeyStroke)); 	JMenu autoGenerateMenu = new JMenu("Autogenerate Bibtexkey") ;  	tools.add(mItem(makeLabelAction, GUIGlobals.generateKeyStroke)); 	tools.add(mItem(checkUniqueLabelAction, null)); 	//tools.add(autoGenerateMenu) ;  	mb.add(tools);  	JMenu options = new JMenu("Options"); 	//options.add(mItem(setupTableAction, GUIGlobals.setupTableKeyStroke)); 	options.add(setupTableAction); 	mb.add(options);  	JMenu help = new JMenu("Help"); 	help.add(mItem(new HelpAction(helpDiag, GUIGlobals.baseFrameHelp, "Help"), 		       GUIGlobals.helpKeyStroke)); 	help.add(new HelpAction("Help contents", helpDiag,  				GUIGlobals.helpContents, "Help contents")); 	help.addSeparator(); 	help.add(mItem(aboutAction, null)); 	mb.add(help);  	return mb; 	*/
