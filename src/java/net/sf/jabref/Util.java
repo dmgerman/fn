@@ -3905,7 +3905,7 @@ expr_stmt|;
 block|}
 block|}
 comment|// -------------------------------------------------------------------------------
-comment|/** extend the filename with defaultExtension, if no Extension could be found */
+comment|/** extends the filename with a default Extension, if no Extension '.x' could be found */
 DECL|method|getCorrectFileName (String orgName, String defaultExtension)
 specifier|public
 specifier|static
@@ -3945,7 +3945,7 @@ argument_list|,
 literal|1
 argument_list|)
 decl_stmt|;
-comment|// hidden files (?)
+comment|// hidden files Linux/Unix (?)
 if|if
 condition|(
 name|t
