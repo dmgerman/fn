@@ -3521,6 +3521,10 @@ operator|.
 name|requestFocus
 argument_list|()
 expr_stmt|;
+name|showing
+operator|=
+literal|null
+expr_stmt|;
 block|}
 comment|/**      * Closes the entry editor if it is showing the given entry.      *      * @param be a<code>BibtexEntry</code> value      */
 DECL|method|ensureNotShowing (BibtexEntry be)
@@ -3538,9 +3542,15 @@ name|showing
 operator|==
 name|be
 condition|)
+block|{
 name|hideEntryEditor
 argument_list|()
 expr_stmt|;
+name|showing
+operator|=
+literal|null
+expr_stmt|;
+block|}
 block|}
 DECL|method|markBaseChanged ()
 specifier|public

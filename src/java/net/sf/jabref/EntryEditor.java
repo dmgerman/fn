@@ -4094,7 +4094,7 @@ name|ImageIcon
 argument_list|(
 name|GUIGlobals
 operator|.
-name|forwardIconFile
+name|downIconFile
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4247,7 +4247,7 @@ name|ImageIcon
 argument_list|(
 name|GUIGlobals
 operator|.
-name|backIconFile
+name|upIconFile
 argument_list|)
 argument_list|)
 expr_stmt|;
