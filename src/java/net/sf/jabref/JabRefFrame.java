@@ -3891,7 +3891,7 @@ condition|)
 block|{
 name|bf
 operator|.
-name|setupMainPanel
+name|setupTable
 argument_list|()
 expr_stmt|;
 block|}
