@@ -936,23 +936,7 @@ argument_list|()
 expr_stmt|;
 comment|//	lab = new JLabel("<HTML>("+Globals.lang("this button will update the column width settings<BR>"
 comment|//						+"to match the current widths in your table")+")</HTML>");
-name|lab
-operator|=
-operator|new
-name|JLabel
-argument_list|(
-literal|"<HTML>("
-operator|+
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"this_button_will_update"
-argument_list|)
-operator|+
-literal|")</HTML>"
-argument_list|)
-expr_stmt|;
+comment|//        lab = new JLabel("<HTML>("+Globals.lang("this_button_will_update") +")</HTML>") ;
 name|builder
 operator|.
 name|append
@@ -990,13 +974,7 @@ argument_list|(
 name|pan
 argument_list|)
 expr_stmt|;
-name|builder
-operator|.
-name|append
-argument_list|(
-name|lab
-argument_list|)
-expr_stmt|;
+comment|//builder.append(lab);
 name|builder
 operator|.
 name|nextLine

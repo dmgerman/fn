@@ -73,7 +73,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class performs the somewhat weird action of extracting a file from within the running JabRef jar,  * and storing it to the given File. It may prove useful e.g. for extracting Endnote export/import filters which  * are needed for full integration with the export filter in JabRef, so we can bundle these for the user even though  * they are not used by JabRef directly.  * @author alver  */
+comment|/**  * This class performs the somewhat weird action of extracting a file from within the running JabRef jar,  * and storing it to the given File. It may prove useful e.g. for extracting Endnote export/import filters which  * are needed for full integration with the export filter in JabRef, so we can bundle these for the user even though  * they are not used by JabRef directly.  *  *  *  * @author alver  */
 end_comment
 
 begin_class

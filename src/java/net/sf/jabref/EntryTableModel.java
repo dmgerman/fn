@@ -1389,7 +1389,26 @@ argument_list|(
 literal|6
 argument_list|)
 decl_stmt|;
-comment|// For testing MARKED feature:
+comment|// For testing MARKED feature. With this IF clause, the marked entries will only float to the top when
+comment|// no sorting/grouping reordering is active.
+if|if
+condition|(
+operator|!
+name|panel
+operator|.
+name|sortingBySearchResults
+operator|&&
+operator|!
+name|panel
+operator|.
+name|sortingByCiteSeerResults
+operator|&&
+operator|!
+name|panel
+operator|.
+name|sortingByGroup
+condition|)
+block|{
 name|fields
 operator|.
 name|add
@@ -1410,6 +1429,7 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|panel
