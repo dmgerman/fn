@@ -1389,6 +1389,13 @@ argument_list|(
 literal|"plainTextImport"
 argument_list|,
 literal|"New entry from plain text"
+argument_list|,
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"New from plain text"
+argument_list|)
 argument_list|)
 decl_stmt|,
 DECL|field|customExpAction

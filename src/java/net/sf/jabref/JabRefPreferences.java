@@ -3252,6 +3252,15 @@ argument_list|,
 literal|"F5"
 argument_list|)
 expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"New from plain text"
+argument_list|,
+literal|"ctrl shift N"
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getNextUnit (Reader data)
 specifier|private

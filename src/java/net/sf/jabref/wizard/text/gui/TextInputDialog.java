@@ -468,7 +468,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"plain_text_import"
+literal|"Plain_text_import"
 argument_list|)
 operator|+
 literal|" "
@@ -510,7 +510,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"raw_source"
+literal|"Raw_source"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1018,7 +1018,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"input"
+literal|"Input"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1166,7 +1166,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"insert"
+literal|"Insert"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1191,7 +1191,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"append"
+literal|"Append"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1220,7 +1220,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"override"
+literal|"Override"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1302,7 +1302,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"available fields"
+literal|"Available fields"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2355,9 +2355,9 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"paste"
+literal|"Paste"
 argument_list|,
-literal|"paste from clipboard"
+literal|"Paste from clipboard"
 argument_list|,
 name|GUIGlobals
 operator|.
@@ -2481,9 +2481,9 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"open"
+literal|"Open"
 argument_list|,
-literal|"Open_File"
+literal|"Open_file"
 argument_list|,
 name|GUIGlobals
 operator|.
@@ -2627,7 +2627,7 @@ name|super
 argument_list|(
 literal|"Clear"
 argument_list|,
-literal|"clear_inputarea"
+literal|"Clear_inputarea"
 argument_list|,
 name|GUIGlobals
 operator|.
@@ -2667,7 +2667,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"plain_right_menu"
+literal|"Edit"
 argument_list|)
 expr_stmt|;
 name|this

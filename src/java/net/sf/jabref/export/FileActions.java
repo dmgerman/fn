@@ -1330,8 +1330,15 @@ block|{
 name|String
 name|encoding
 init|=
-literal|"iso-8859-1"
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"defaultEncoding"
+argument_list|)
 decl_stmt|;
+comment|//"iso-8859-1";
+comment|//System.out.println(encoding);
 comment|//PrintStream ps=null;
 name|OutputStreamWriter
 name|ps
