@@ -8645,7 +8645,7 @@ name|format
 operator|.
 name|equals
 argument_list|(
-literal|"refmanager"
+literal|"ris"
 argument_list|)
 condition|)
 name|bibentries

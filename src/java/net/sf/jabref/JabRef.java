@@ -254,6 +254,15 @@ argument_list|(
 literal|80
 argument_list|)
 expr_stmt|;
+name|NotifyOption
+name|loadSess
+init|=
+operator|new
+name|NotifyOption
+argument_list|(
+literal|""
+argument_list|)
+decl_stmt|;
 name|options
 operator|.
 name|register
@@ -284,8 +293,19 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Imports file: filename[,bibtexml|endnote|isi|ris]"
+literal|"Import file"
 argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"filename"
+argument_list|)
+operator|+
+literal|"[,import format]"
 argument_list|,
 name|importFile
 argument_list|)
@@ -302,8 +322,19 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Outputs or exports file: filename[,bibtexml|docbook|html|simplehtml]"
+literal|"Output or export file"
 argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"filename"
+argument_list|)
+operator|+
+literal|"[,export format]"
 argument_list|,
 name|exportFile
 argument_list|)
@@ -320,10 +351,28 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Displays help on command line options"
+literal|"Display help on command line options"
 argument_list|)
 argument_list|,
 name|helpO
+argument_list|)
+expr_stmt|;
+name|options
+operator|.
+name|register
+argument_list|(
+literal|"loadsession"
+argument_list|,
+literal|'l'
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Load session"
+argument_list|)
+argument_list|,
+name|loadSess
 argument_list|)
 expr_stmt|;
 name|options
@@ -358,6 +407,38 @@ name|options
 operator|.
 name|getHelp
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Available import formats"
+argument_list|)
+operator|+
+literal|": biblioscape, bibtexml, endnote, inspec, isi, medline, ovid, ris, scifinder, sixpack."
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Available export formats"
+argument_list|)
+operator|+
+literal|": bibtexml, docbook, html, simplehtml.\n"
 argument_list|)
 expr_stmt|;
 name|System
@@ -1530,6 +1611,38 @@ name|i
 operator|==
 literal|0
 operator|)
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|loadSess
+operator|.
+name|isInvoked
+argument_list|()
+condition|)
+block|{
+name|jrf
+operator|.
+name|loadSessionAction
+operator|.
+name|actionPerformed
+argument_list|(
+operator|new
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|ActionEvent
+argument_list|(
+name|jrf
+argument_list|,
+literal|0
+argument_list|,
+literal|""
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
