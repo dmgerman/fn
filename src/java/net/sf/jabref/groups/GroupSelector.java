@@ -4629,6 +4629,16 @@ argument_list|(
 literal|"Move"
 argument_list|)
 decl_stmt|;
+DECL|method|getGroupTreeRoot ()
+specifier|public
+name|GroupTreeNode
+name|getGroupTreeRoot
+parameter_list|()
+block|{
+return|return
+name|groupsRoot
+return|;
+block|}
 block|}
 end_class
 
