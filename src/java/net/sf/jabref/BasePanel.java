@@ -818,13 +818,25 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-literal|"File '"
+literal|"'"
 operator|+
 name|name
 operator|+
-literal|"' exists. Overwrite?"
+literal|"' "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"exists. Overwrite file?"
+argument_list|)
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Save database"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -996,14 +1008,7 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"File"
-argument_list|)
-operator|+
-literal|" '"
+literal|"'"
 operator|+
 name|name
 operator|+
@@ -1013,7 +1018,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"exists. Overwrite?"
+literal|"exists. Overwrite file?"
 argument_list|)
 argument_list|,
 name|Globals
@@ -1062,7 +1067,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Saved selected to file"
+literal|"Saved selected to"
 argument_list|)
 operator|+
 literal|" '"

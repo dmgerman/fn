@@ -102,11 +102,14 @@ decl_stmt|,
 DECL|field|defSource
 DECL|field|editSource
 DECL|field|defSort
+DECL|field|ctrlClick
 name|defSource
 decl_stmt|,
 name|editSource
 decl_stmt|,
 name|defSort
+decl_stmt|,
+name|ctrlClick
 decl_stmt|;
 DECL|field|groupField
 specifier|private
@@ -178,6 +181,7 @@ name|weightx
 operator|=
 literal|0
 expr_stmt|;
+comment|//con.insets = new Insets(10, 10, 10, 10);
 name|con
 operator|.
 name|insets
@@ -185,11 +189,11 @@ operator|=
 operator|new
 name|Insets
 argument_list|(
-literal|10
+literal|5
 argument_list|,
 literal|10
 argument_list|,
-literal|10
+literal|5
 argument_list|,
 literal|10
 argument_list|)
@@ -319,6 +323,26 @@ operator|.
 name|getBoolean
 argument_list|(
 literal|"defaultAutoSort"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|ctrlClick
+operator|=
+operator|new
+name|JCheckBox
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Open right-click menu with Ctrl+left button"
+argument_list|)
+argument_list|,
+name|_prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"ctrlClick"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -498,6 +522,23 @@ operator|.
 name|add
 argument_list|(
 name|defSource
+argument_list|)
+expr_stmt|;
+comment|//con.gridwidth = 1;
+name|gbl
+operator|.
+name|setConstraints
+argument_list|(
+name|ctrlClick
+argument_list|,
+name|con
+argument_list|)
+expr_stmt|;
+name|general
+operator|.
+name|add
+argument_list|(
+name|ctrlClick
 argument_list|)
 expr_stmt|;
 comment|//con.gridwidth = GridBagConstraints.REMAINDER;
@@ -1467,6 +1508,18 @@ argument_list|(
 literal|"enableSourceEditing"
 argument_list|,
 name|editSource
+operator|.
+name|isSelected
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|_prefs
+operator|.
+name|putBoolean
+argument_list|(
+literal|"ctrlClick"
+argument_list|,
+name|ctrlClick
 operator|.
 name|isSelected
 argument_list|()

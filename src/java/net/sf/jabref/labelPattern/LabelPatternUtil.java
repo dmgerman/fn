@@ -121,7 +121,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @author Ulrik Stervbo (ulriks AT ruc.dk)  */
+comment|/**  *  * @author Ulrik Stervbo (ulriks AT ruc.dk)  */
 end_comment
 
 begin_comment
@@ -153,7 +153,7 @@ name|DEFAULT_LABELPATTERN
 init|=
 name|split
 argument_list|(
-literal|"[auth]_[year]"
+literal|"[auth][year]"
 argument_list|)
 decl_stmt|;
 DECL|field|_db
@@ -162,7 +162,7 @@ specifier|static
 name|BibtexDatabase
 name|_db
 decl_stmt|;
-comment|/** 	 * This method takes a string of the form [field1]spacer[field2]spacer[field3]..., 	 * where the fields are the (required) fields of a BibTex entry. The string is split 	 * into firlds and spacers by recognizing the [ and ]. 	 *   	 * @param keyPattern a<code>String</code> 	 * @return an<code>ArrayList</code> The first item of the list 	 * is a string representation of the key pattern (the parameter), 	 * the second item is the spacer character (a<code>String</code>). 	 */
+comment|/** 	 * This method takes a string of the form [field1]spacer[field2]spacer[field3]..., 	 * where the fields are the (required) fields of a BibTex entry. The string is split 	 * into firlds and spacers by recognizing the [ and ]. 	 * 	 * @param keyPattern a<code>String</code> 	 * @return an<code>ArrayList</code> The first item of the list 	 * is a string representation of the key pattern (the parameter), 	 * the second item is the spacer character (a<code>String</code>). 	 */
 DECL|method|split (String labelPattern)
 specifier|public
 specifier|static
@@ -223,7 +223,7 @@ expr_stmt|;
 return|return
 name|_alist
 return|;
-comment|/* 		// Regular expresion for identifying the fields 		Pattern pi = Pattern.compile("\\[\\w*\\]"); 		// Regular expresion for identifying the spacer 		Pattern ps = Pattern.compile("\\].()*\\["); 		 		// The matcher for the field 		Matcher mi = pi.matcher(labelPattern); 		// The matcher for the spacer char 		Matcher ms = ps.matcher(labelPattern); 		 		// Before we do anything, we add the parameter to the ArrayLIst 		_alist.add(labelPattern);      		// If we can find the spacer character     		if(ms.find()){ 			String t_spacer = ms.group(); 				// Remove the `]' and `[' at the ends 				// We cant imagine a spacer of omre than one character. 				t_spacer = t_spacer.substring(1,2); 				_alist.add(t_spacer); 		}                  		while(mi.find()){ 			// Get the matched string 			String t_str = mi.group(); 				int _sindex = 1; 				int _eindex = t_str.length() -1; 				// Remove the `[' and `]' at the ends 				t_str = t_str.substring(_sindex, _eindex); 			_alist.add(t_str);  		} 		 		return _alist;*/
+comment|/* 		// Regular expresion for identifying the fields 		Pattern pi = Pattern.compile("\\[\\w*\\]"); 		// Regular expresion for identifying the spacer 		Pattern ps = Pattern.compile("\\].()*\\[");  		// The matcher for the field 		Matcher mi = pi.matcher(labelPattern); 		// The matcher for the spacer char 		Matcher ms = ps.matcher(labelPattern);  		// Before we do anything, we add the parameter to the ArrayLIst 		_alist.add(labelPattern);  		// If we can find the spacer character 		if(ms.find()){ 			String t_spacer = ms.group(); 				// Remove the `]' and `[' at the ends 				// We cant imagine a spacer of omre than one character. 				t_spacer = t_spacer.substring(1,2); 				_alist.add(t_spacer); 		}  		while(mi.find()){ 			// Get the matched string 			String t_str = mi.group(); 				int _sindex = 1; 				int _eindex = t_str.length() -1; 				// Remove the `[' and `]' at the ends 				t_str = t_str.substring(_sindex, _eindex); 			_alist.add(t_str); 		}  		return _alist;*/
 block|}
 comment|/** 	 * Generates a BibTeX label according to the pattern for a given entry type, and 	 * returns the<code>Bibtexentry</code> with the unique label. 	 * @param table a<code>LabelPattern</code> 	 * @param database a<code>BibtexDatabase</code> 	 * @param entryId a<code>String</code> 	 * @return modified Bibtexentry 	 */
 DECL|method|makeLabel (LabelPattern table, BibtexDatabase database, BibtexEntry _entry)
@@ -696,7 +696,7 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 		 * Edited by Morten Alver 2004.02.04. 		 * 		 * We now have a system for easing key duplicate prevention, so 		 * I am changing this method to conform to it. 		 *     		 // here we make sure the key is unique		 		   _label = makeLabelUnique(_sb.toString());				 		   _entry.setField(Globals.KEY_FIELD, _label);		 		   return _entry; 		*/
+comment|/** 		 * Edited by Morten Alver 2004.02.04. 		 * 		 * We now have a system for easing key duplicate prevention, so 		 * I am changing this method to conform to it. 		 *     		 // here we make sure the key is unique 		   _label = makeLabelUnique(_sb.toString()); 		   _entry.setField(Globals.KEY_FIELD, _label); 		   return _entry; 		*/
 comment|// Remove all illegal characters from the key.
 name|_label
 operator|=
@@ -1071,7 +1071,7 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 		 * Edited by Morten Alver 2004.02.04. 		 * 		 * We now have a system for easing key duplicate prevention, so 		 * I am changing this method to conform to it. 		 *     		 // here we make sure the key is unique		 		   _label = makeLabelUnique(_sb.toString());				 		   _entry.setField(Globals.KEY_FIELD, _label);		 		   return _entry; 		*/
+comment|/** 		 * Edited by Morten Alver 2004.02.04. 		 * 		 * We now have a system for easing key duplicate prevention, so 		 * I am changing this method to conform to it. 		 *     		 // here we make sure the key is unique 		   _label = makeLabelUnique(_sb.toString()); 		   _entry.setField(Globals.KEY_FIELD, _label); 		   return _entry; 		*/
 comment|// Remove all illegal characters from the key.
 name|_label
 operator|=
@@ -1147,7 +1147,7 @@ name|_entry
 return|;
 comment|/** End of edit, Morten Alver 2004.02.04.  */
 block|}
-comment|/** 	 * This method returns a truely unique label (in the BibtexDatabase), by taking a  	 * label and add the letters a-z until a unique key is found. 	 * @param key a<code>String</code> 	 * @return a unique label 	 */
+comment|/** 	 * This method returns a truely unique label (in the BibtexDatabase), by taking a 	 * label and add the letters a-z until a unique key is found. 	 * @param key a<code>String</code> 	 * @return a unique label 	 */
 DECL|method|makeLabelUnique (String label)
 specifier|public
 specifier|static
@@ -1595,7 +1595,7 @@ literal|1
 index|]
 return|;
 block|}
-comment|/** 	 * I<b>HATE</b> this method!! I looked and looked but couldn't find a way to  	 * turn 61 (or in real unicode 0061) into the letter 'a' - crap! 	 * @return an<code>ArrayList</code> which shouldn't be!! 	 */
+comment|/** 	 * I<b>HATE</b> this method!! I looked and looked but couldn't find a way to 	 * turn 61 (or in real unicode 0061) into the letter 'a' - crap! 	 * @return an<code>ArrayList</code> which shouldn't be!! 	 */
 DECL|method|builtLetters ()
 specifier|private
 specifier|static

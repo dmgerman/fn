@@ -161,7 +161,7 @@ specifier|final
 name|String
 name|SIGNATURE
 init|=
-literal|"This file was created with JabRef 1.19.\n\n"
+literal|"This file was created with JabRef 1.2.\n\n"
 decl_stmt|;
 comment|// Size of help window.
 specifier|static

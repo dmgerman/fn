@@ -1836,22 +1836,33 @@ literal|false
 argument_list|)
 expr_stmt|;
 comment|//tlb.setRollover(true);
+comment|//tlb.setLayout(gbl);
+name|AddRowAction
+name|ara
+init|=
+operator|new
+name|AddRowAction
+argument_list|()
+decl_stmt|;
+name|DeleteRowAction
+name|dra
+init|=
+operator|new
+name|DeleteRowAction
+argument_list|()
+decl_stmt|;
 name|tlb
 operator|.
 name|add
 argument_list|(
-operator|new
-name|AddRowAction
-argument_list|()
+name|ara
 argument_list|)
 expr_stmt|;
 name|tlb
 operator|.
 name|add
 argument_list|(
-operator|new
-name|DeleteRowAction
-argument_list|()
+name|dra
 argument_list|)
 expr_stmt|;
 name|tlb
@@ -1951,6 +1962,7 @@ specifier|public
 name|DeleteRowAction
 parameter_list|()
 block|{
+comment|//super(Globals.lang("Delete rows"));
 name|super
 argument_list|(
 literal|"Delete row"
@@ -2094,6 +2106,7 @@ specifier|public
 name|AddRowAction
 parameter_list|()
 block|{
+comment|//super(Globals.lang("Insert rows"));
 name|super
 argument_list|(
 literal|"Add row"
@@ -2261,6 +2274,7 @@ specifier|public
 name|UpdateWidthsAction
 parameter_list|()
 block|{
+comment|//super(Globals.lang("Update to current column widths"));
 name|super
 argument_list|(
 literal|"Add row"

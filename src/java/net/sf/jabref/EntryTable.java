@@ -130,6 +130,11 @@ name|boolean
 name|antialiasing
 init|=
 literal|true
+decl_stmt|,
+DECL|field|ctrlClick
+name|ctrlClick
+init|=
+literal|false
 decl_stmt|;
 comment|//RenderingHints renderingHints;
 DECL|method|EntryTable (EntryTableModel tm_, JabRefPreferences prefs_)
@@ -170,6 +175,15 @@ operator|.
 name|getBoolean
 argument_list|(
 literal|"antialias"
+argument_list|)
+expr_stmt|;
+name|ctrlClick
+operator|=
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"ctrlClick"
 argument_list|)
 expr_stmt|;
 name|getTableHeader
@@ -361,6 +375,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|e
 operator|.
 name|getButton
@@ -369,9 +384,29 @@ operator|==
 name|MouseEvent
 operator|.
 name|BUTTON3
+operator|)
+operator|||
+operator|(
+name|ctrlClick
+operator|&&
+operator|(
+name|e
+operator|.
+name|getButton
+argument_list|()
+operator|==
+name|MouseEvent
+operator|.
+name|BUTTON1
+operator|)
+operator|&&
+name|e
+operator|.
+name|isControlDown
+argument_list|()
+operator|)
 condition|)
 block|{
-comment|//|| (Globals.osName.equals(Globals.MAC)&& (e.getButton() == MouseEvent.BUTTON1)&& e.isControlDown())) {
 if|if
 condition|(
 name|rightClickMenu
