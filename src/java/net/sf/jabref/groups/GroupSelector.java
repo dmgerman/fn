@@ -2568,6 +2568,8 @@ literal|"groupsDefaultField"
 argument_list|)
 argument_list|,
 literal|" .,"
+argument_list|,
+literal|","
 argument_list|)
 decl_stmt|;
 name|gd

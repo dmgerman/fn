@@ -5088,6 +5088,20 @@ decl_stmt|;
 name|boolean
 name|set
 decl_stmt|;
+comment|// Trim the whitespace off this value
+name|fe
+operator|.
+name|setText
+argument_list|(
+name|fe
+operator|.
+name|getText
+argument_list|()
+operator|.
+name|trim
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|fe
