@@ -265,7 +265,7 @@ name|searchScore
 operator|=
 name|thisRuleSet
 operator|.
-name|applyRules
+name|applyRule
 argument_list|(
 name|thisSearchOptions
 argument_list|,
