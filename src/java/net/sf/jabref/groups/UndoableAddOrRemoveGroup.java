@@ -171,6 +171,9 @@ name|editedNode
 operator|.
 name|getGroup
 argument_list|()
+operator|.
+name|deepCopy
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// remember path to edited node. this cannot be stored as a reference,
@@ -400,7 +403,7 @@ name|cursor
 operator|.
 name|getChildAt
 argument_list|(
-name|i
+name|childIndex
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -409,10 +412,7 @@ name|cursor
 operator|.
 name|insert
 argument_list|(
-name|m_subtreeBackup
-operator|.
-name|deepCopy
-argument_list|()
+name|newNode
 argument_list|,
 name|childIndex
 argument_list|)
