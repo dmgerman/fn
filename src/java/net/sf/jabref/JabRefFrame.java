@@ -2162,7 +2162,7 @@ operator|new
 name|AbstractWorker
 argument_list|()
 block|{
-name|PrefsDialog2
+name|PrefsDialog3
 name|pd
 init|=
 literal|null
@@ -2185,7 +2185,7 @@ expr_stmt|;
 name|pd
 operator|=
 operator|new
-name|PrefsDialog2
+name|PrefsDialog3
 argument_list|(
 name|ths
 argument_list|,
