@@ -130,6 +130,14 @@ name|filenm
 operator|.
 name|endsWith
 argument_list|(
+literal|".bibx"
+argument_list|)
+comment|// default for BibTeXML
+operator|||
+name|filenm
+operator|.
+name|endsWith
+argument_list|(
 literal|".xml"
 argument_list|)
 operator|)
@@ -164,7 +172,7 @@ operator|!
 name|specific
 condition|)
 return|return
-literal|"*.bib, *.txt, *.xml, *.ref or *.fcgi"
+literal|"*.bib, *.bibx, *.txt, *.xml, *.ref or *.fcgi"
 return|;
 else|else
 return|return
