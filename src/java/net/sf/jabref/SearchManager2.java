@@ -2191,6 +2191,15 @@ operator|.
 name|basePanel
 argument_list|()
 decl_stmt|;
+name|frame
+operator|.
+name|searchToggle
+operator|.
+name|setSelected
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|bp

@@ -2612,6 +2612,15 @@ operator|.
 name|stopShowingGroup
 argument_list|()
 expr_stmt|;
+name|frame
+operator|.
+name|groupToggle
+operator|.
+name|setSelected
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 DECL|field|modifyAction
 name|AbstractAction
