@@ -7190,6 +7190,17 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|sidePaneManager
+operator|.
+name|stateChanged
+argument_list|(
+operator|new
+name|ChangeEvent
+argument_list|(
+name|tabbedPane
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|markActiveBasePanel
 argument_list|()
 expr_stmt|;
