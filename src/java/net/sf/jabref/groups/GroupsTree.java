@@ -74,6 +74,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -90,7 +100,7 @@ name|swing
 operator|.
 name|tree
 operator|.
-name|TreePath
+name|*
 import|;
 end_import
 
@@ -362,18 +372,18 @@ name|DropTargetDragEvent
 name|dtde
 parameter_list|)
 block|{
-comment|//        Point p = dtde.getLocation();
-comment|//        TreePath path = getPathForLocation(p.x, p.y);
-comment|//        if (path == null) {
-comment|//            dtde.rejectDrag();
-comment|//            return;
-comment|//        }
-comment|//        GroupTreeNode target = (GroupTreeNode) path.getLastPathComponent();
-comment|//        if (dragNode.isNodeChild(target)) {
-comment|//            dtde.rejectDrag();
-comment|//            return;
-comment|//        }
-comment|//        dtde.acceptDrag(DnDConstants.ACTION_COPY_OR_MOVE);
+comment|// Point p = dtde.getLocation();
+comment|// TreePath path = getPathForLocation(p.x, p.y);
+comment|// if (path == null) {
+comment|// dtde.rejectDrag();
+comment|// return;
+comment|// }
+comment|// GroupTreeNode target = (GroupTreeNode) path.getLastPathComponent();
+comment|// if (dragNode.isNodeChild(target)) {
+comment|// dtde.rejectDrag();
+comment|// return;
+comment|// }
+comment|// dtde.acceptDrag(DnDConstants.ACTION_COPY_OR_MOVE);
 block|}
 DECL|method|dropActionChanged (DropTargetDragEvent dtde)
 specifier|public
@@ -520,7 +530,37 @@ expr_stmt|;
 comment|// JZTODO invokeLater: error message; e.g. status line
 return|return;
 block|}
-comment|// JZTODO: the actual moving should be done by the GroupSelector
+name|Enumeration
+name|expandedPaths
+init|=
+name|groupSelector
+operator|.
+name|getExpandedPaths
+argument_list|()
+decl_stmt|;
+name|UndoableMoveGroup
+name|undo
+init|=
+operator|new
+name|UndoableMoveGroup
+argument_list|(
+name|groupSelector
+argument_list|,
+name|groupSelector
+operator|.
+name|getGroupTreeRoot
+argument_list|()
+argument_list|,
+name|source
+argument_list|,
+name|target
+argument_list|,
+name|target
+operator|.
+name|getChildCount
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|target
 operator|.
 name|add
@@ -538,13 +578,40 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+comment|// update selection/expansion state
 name|groupSelector
 operator|.
 name|revalidateGroups
+argument_list|(
+operator|new
+name|TreePath
+index|[]
+block|{
+operator|new
+name|TreePath
+argument_list|(
+name|source
+operator|.
+name|getPath
 argument_list|()
+argument_list|)
+block|}
+argument_list|,
+name|refreshPaths
+argument_list|(
+name|expandedPaths
+argument_list|)
+argument_list|)
 expr_stmt|;
-comment|// JZTODO : layout has
-comment|// changed...
+name|groupSelector
+operator|.
+name|concludeMoveGroup
+argument_list|(
+name|undo
+argument_list|,
+name|source
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -665,6 +732,69 @@ name|getLastPathComponent
 argument_list|()
 else|:
 literal|null
+return|;
+block|}
+comment|/** Refresh paths that may have become invalid due to node movements      * within the tree. This method creates new paths to the last path      * components (which must still exist) of the specified paths.      * @param paths Paths that may have become invalid.      * @return Refreshed paths that are all valid.      */
+DECL|method|refreshPaths (Enumeration paths)
+specifier|public
+name|Enumeration
+name|refreshPaths
+parameter_list|(
+name|Enumeration
+name|paths
+parameter_list|)
+block|{
+name|Vector
+name|freshPaths
+init|=
+operator|new
+name|Vector
+argument_list|()
+decl_stmt|;
+while|while
+condition|(
+name|paths
+operator|.
+name|hasMoreElements
+argument_list|()
+condition|)
+block|{
+name|freshPaths
+operator|.
+name|add
+argument_list|(
+operator|new
+name|TreePath
+argument_list|(
+operator|(
+call|(
+name|DefaultMutableTreeNode
+call|)
+argument_list|(
+operator|(
+name|TreePath
+operator|)
+name|paths
+operator|.
+name|nextElement
+argument_list|()
+argument_list|)
+operator|.
+name|getLastPathComponent
+argument_list|()
+operator|)
+operator|.
+name|getPath
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|freshPaths
+operator|.
+name|elements
+argument_list|()
 return|;
 block|}
 block|}
