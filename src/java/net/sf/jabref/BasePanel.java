@@ -6350,7 +6350,6 @@ name|be
 argument_list|)
 expr_stmt|;
 comment|// Create new Bibtex entry
-comment|// Create new Bibtex entry
 comment|// Set owner field to default value
 name|be
 operator|.
@@ -6430,6 +6429,29 @@ argument_list|)
 expr_stmt|;
 name|refreshTable
 argument_list|()
+expr_stmt|;
+name|int
+name|row
+init|=
+name|tableModel
+operator|.
+name|getNumberFromName
+argument_list|(
+name|id
+argument_list|)
+decl_stmt|;
+comment|//Util.pr(""+row);
+name|entryTable
+operator|.
+name|clearSelection
+argument_list|()
+expr_stmt|;
+name|entryTable
+operator|.
+name|scrollTo
+argument_list|(
+name|row
+argument_list|)
 expr_stmt|;
 name|markBaseChanged
 argument_list|()
