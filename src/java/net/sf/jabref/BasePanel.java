@@ -6414,6 +6414,15 @@ name|updateViewToSelected
 argument_list|()
 expr_stmt|;
 block|}
+name|frame
+operator|.
+name|previewToggle
+operator|.
+name|setSelected
+argument_list|(
+name|previewEnabled
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 argument_list|)
