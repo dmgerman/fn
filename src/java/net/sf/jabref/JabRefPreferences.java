@@ -1646,6 +1646,10 @@ argument_list|,
 name|bindings
 argument_list|)
 expr_stmt|;
+name|keyBinds
+operator|=
+name|newBindings
+expr_stmt|;
 block|}
 block|}
 DECL|method|getKeyPattern ()
@@ -2373,6 +2377,24 @@ argument_list|(
 literal|"Previous tab"
 argument_list|,
 literal|"ctrl LEFT"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Replace string"
+argument_list|,
+literal|"ctrl R"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Delete"
+argument_list|,
+literal|"Delete"
 argument_list|)
 expr_stmt|;
 block|}

@@ -361,7 +361,13 @@ operator|new
 name|CloseAction
 argument_list|()
 decl_stmt|,
-comment|//selectKeys = new SelectKeysAction(),
+DECL|field|selectKeys
+name|selectKeys
+init|=
+operator|new
+name|SelectKeysAction
+argument_list|()
+decl_stmt|,
 DECL|field|newDatabaseAction
 name|newDatabaseAction
 init|=
@@ -2997,7 +3003,13 @@ block|}
 argument_list|)
 expr_stmt|;
 comment|/*options.add(new AbstractAction("Font") { 		public void actionPerformed(ActionEvent e) { 		    // JDialog dl = new EntryCustomizationDialog(ths); 		    Font f=new FontSelectorDialog 				(ths, GUIGlobals.CURRENTFONT).getSelectedFont(); 			if(f==null) 				return; 			else 				GUIGlobals.CURRENTFONT=f; 			// updatefont 			prefs.put("fontFamily", GUIGlobals.CURRENTFONT.getFamily()); 			prefs.putInt("fontStyle", GUIGlobals.CURRENTFONT.getStyle()); 			prefs.putInt("fontSize", GUIGlobals.CURRENTFONT.getSize()); 			if (tabbedPane.getTabCount()> 0) { 				for (int i=0; i<tabbedPane.getTabCount(); i++) { 					baseAt(i).entryTable.updateFont(); 					baseAt(i).refreshTable(); 				} 			} 		} 		});*/
-comment|//options.add(selectKeys);
+name|options
+operator|.
+name|add
+argument_list|(
+name|selectKeys
+argument_list|)
+expr_stmt|;
 name|mb
 operator|.
 name|add
@@ -3934,8 +3946,15 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Your new key bindings have been stored.\n"
+literal|"Your new key bindings have been stored."
+argument_list|)
 operator|+
+literal|"\n"
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"You must restart JabRef for the new key "
 operator|+
 literal|"bindings to work properly."
