@@ -462,16 +462,7 @@ name|URL
 name|url
 parameter_list|)
 block|{
-name|String
-name|lang
-init|=
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"language"
-argument_list|)
-decl_stmt|;
+comment|//String lang = prefs.get("language");
 name|URL
 name|old
 init|=

@@ -182,31 +182,7 @@ operator|.
 name|helpSize
 argument_list|)
 expr_stmt|;
-name|Dimension
-name|ds
-init|=
-name|GUIGlobals
-operator|.
-name|helpSize
-decl_stmt|,
-name|df
-init|=
-name|bf
-operator|.
-name|getSize
-argument_list|()
-decl_stmt|;
-name|Point
-name|pf
-init|=
-name|bf
-operator|.
-name|getLocation
-argument_list|()
-decl_stmt|;
-comment|//setLocation(new Point(Math.max(0,(pf.x+(df.width-ds.width)/2)),
-comment|//Math.max(0,(pf.y+(df.height-ds.height)/2))));
-comment|/* There is probably no need for a window listener now, so 	 * it's commented out.  	diag.addWindowListener(new WindowAdapter() { 		public void windowClosing(WindowEvent e) { 		    open = null; 		} 	    });*/
+comment|/* There is probably no need for a window listener now, so 	 * it's commented out. 	diag.addWindowListener(new WindowAdapter() { 		public void windowClosing(WindowEvent e) { 		    open = null; 		} 	    });*/
 name|JToolBar
 name|tlb
 init|=

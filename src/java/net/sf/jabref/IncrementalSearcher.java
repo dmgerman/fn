@@ -78,11 +78,6 @@ name|hitInField
 operator|=
 literal|null
 expr_stmt|;
-name|int
-name|flags
-init|=
-literal|0
-decl_stmt|;
 comment|//if (!prefs.getBoolean("caseSensitiveSearch"))
 comment|//    flags = Pattern.CASE_INSENSITIVE;
 comment|//Pattern pattern = Pattern.compile(searchString, flags);

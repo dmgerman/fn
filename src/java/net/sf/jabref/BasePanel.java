@@ -330,16 +330,7 @@ name|HashMap
 argument_list|()
 decl_stmt|;
 comment|//## keep track of all keys for duplicate key warning and unique key generation
-DECL|field|allKeys
-specifier|private
-name|HashMap
-name|allKeys
-init|=
-operator|new
-name|HashMap
-argument_list|()
-decl_stmt|;
-comment|// use a map instead of a set since i need to know how many of each key is inthere
+comment|//private HashMap allKeys  = new HashMap();	// use a map instead of a set since i need to know how many of each key is inthere
 DECL|field|suppressOutput
 specifier|private
 name|boolean
@@ -995,10 +986,6 @@ name|file
 operator|=
 literal|null
 expr_stmt|;
-block|}
-else|else
-block|{
-comment|// Cancelled.
 block|}
 block|}
 block|}
@@ -1723,13 +1710,25 @@ parameter_list|(
 name|UnsupportedFlavorException
 name|ex
 parameter_list|)
-block|{ 			    }
+block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
 catch|catch
 parameter_list|(
 name|IOException
 name|ex
 parameter_list|)
-block|{}
+block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -2088,13 +2087,25 @@ parameter_list|(
 name|UnsupportedFlavorException
 name|ex
 parameter_list|)
-block|{ 				}
+block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
 catch|catch
 parameter_list|(
 name|IOException
 name|ex
 parameter_list|)
-block|{ 				}
+block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
 catch|catch
 parameter_list|(
 name|IllegalArgumentException
@@ -2631,16 +2642,13 @@ name|bes
 init|=
 literal|null
 decl_stmt|;
+comment|/*if (numSelected> 0) {			 			int answer = JOptionPane.showConfirmDialog 			    (frame, "Generate bibtex key"+ 			     (numSelected>1 ? "s for the selected " 			      +numSelected+" entries?" : 			      " for the selected entry?"), 			     "Autogenerate Bibtexkey", 			     JOptionPane.YES_NO_CANCEL_OPTION); 			if (answer != JOptionPane.YES_OPTION) { 			    return ; 			 			    } 			*/
 if|if
 condition|(
 name|numSelected
-operator|>
+operator|==
 literal|0
 condition|)
-block|{
-comment|/* 			int answer = JOptionPane.showConfirmDialog 			    (frame, "Generate bibtex key"+ 			     (numSelected>1 ? "s for the selected " 			      +numSelected+" entries?" : 			      " for the selected entry?"), 			     "Autogenerate Bibtexkey", 			     JOptionPane.YES_NO_CANCEL_OPTION); 			if (answer != JOptionPane.YES_OPTION) { 			    return ; 			 			    } 			*/
-block|}
-else|else
 block|{
 comment|// None selected. Inform the user to select entries first.
 name|JOptionPane
@@ -3963,16 +3971,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|Vector
-name|groups
-init|=
-name|metaData
-operator|.
-name|getData
-argument_list|(
-literal|"groups"
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
 name|groupSelector
@@ -4038,15 +4036,13 @@ operator|.
 name|iterator
 argument_list|()
 decl_stmt|;
-for|for
-control|(
-init|;
+while|while
+condition|(
 name|i
 operator|.
 name|hasNext
 argument_list|()
-condition|;
-control|)
+condition|)
 block|{
 name|String
 name|s

@@ -579,9 +579,7 @@ name|pve
 argument_list|)
 throw|;
 block|}
-name|Object
-name|oldValue
-init|=
+comment|//Object oldValue =
 name|_fields
 operator|.
 name|put
@@ -590,7 +588,7 @@ name|name
 argument_list|,
 name|value
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 block|}
 DECL|method|allFieldsPresent (String[] fields)
 specifier|protected

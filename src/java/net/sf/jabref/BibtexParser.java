@@ -687,11 +687,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|int
-name|brackets
-init|=
-literal|0
-decl_stmt|;
 return|return
 name|parseBracketedText
 argument_list|()
@@ -1633,21 +1628,7 @@ operator|.
 name|toString
 argument_list|()
 return|;
-block|}
-elseif|else
-if|if
-condition|(
-name|Character
-operator|.
-name|isWhitespace
-argument_list|(
-operator|(
-name|char
-operator|)
-name|c
-argument_list|)
-condition|)
-block|{
+comment|//} else if (Character.isWhitespace((char)c)) {
 comment|//throw new NoLabelException(token.toString());
 block|}
 elseif|else

@@ -184,10 +184,6 @@ comment|/*setBorder(BorderFactory.createTitledBorder 		  (BorderFactory.createEt
 name|JLabel
 name|lab
 decl_stmt|;
-name|BrowseAction
-name|ba
-decl_stmt|;
-comment|//JToolBar tlb;
 name|setLayout
 argument_list|(
 name|gbl

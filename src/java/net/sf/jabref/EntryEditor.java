@@ -374,34 +374,7 @@ operator|-
 literal|1
 decl_stmt|;
 comment|// The index the source panel has in tabbed.
-DECL|field|REQ
-DECL|field|OPT
-DECL|field|GEN
-DECL|field|FIELD_WIDTH
-DECL|field|FIELD_HEIGHT
-specifier|private
-specifier|final
-name|int
-name|REQ
-init|=
-literal|0
-decl_stmt|,
-name|OPT
-init|=
-literal|1
-decl_stmt|,
-name|GEN
-init|=
-literal|2
-decl_stmt|,
-name|FIELD_WIDTH
-init|=
-literal|40
-decl_stmt|,
-name|FIELD_HEIGHT
-init|=
-literal|2
-decl_stmt|;
+comment|//private final int REQ=0, OPT=1, GEN=2, FIELD_WIDTH=40, FIELD_HEIGHT=2;
 DECL|field|KEY_PROPERTY
 specifier|private
 specifier|final
@@ -1424,19 +1397,7 @@ name|GridBagConstraints
 operator|.
 name|BOTH
 expr_stmt|;
-name|FieldTextArea
-name|firstReq
-init|=
-literal|null
-decl_stmt|,
-name|firstOpt
-init|=
-literal|null
-decl_stmt|,
-name|firstGen
-init|=
-literal|null
-decl_stmt|;
+comment|//FieldTextArea firstReq = null, firstOpt = null, firstGen = null;
 for|for
 control|(
 name|int
@@ -3108,11 +3069,6 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|int
-name|i
-init|=
-literal|0
-decl_stmt|;
 name|HashSet
 name|keys
 init|=
@@ -4031,10 +3987,6 @@ name|String
 name|toSet
 init|=
 literal|null
-decl_stmt|,
-name|fieldName
-init|=
-literal|null
 decl_stmt|;
 name|FieldEditor
 name|fe
@@ -4729,13 +4681,7 @@ operator|.
 name|getId
 argument_list|()
 decl_stmt|,
-name|oldKey
-init|=
-name|entry
-operator|.
-name|getCiteKey
-argument_list|()
-decl_stmt|,
+comment|//oldKey = entry.getCiteKey(),
 name|newKey
 init|=
 name|nu
@@ -5168,13 +5114,9 @@ decl_stmt|;
 if|if
 condition|(
 name|answer
-operator|==
+operator|!=
 literal|0
 condition|)
-block|{
-comment|//updateSource = true;
-block|}
-else|else
 block|{
 name|updateSource
 operator|=

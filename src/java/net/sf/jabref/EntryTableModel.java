@@ -98,14 +98,6 @@ name|EntryTableModel
 extends|extends
 name|AbstractTableModel
 block|{
-DECL|field|TYPE
-specifier|private
-specifier|final
-name|String
-name|TYPE
-init|=
-literal|"entrytype"
-decl_stmt|;
 DECL|field|db
 name|BibtexDatabase
 name|db

@@ -81,7 +81,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A font chooser widget.  * @author Slava Pestov (jEdit), Sylvain Reynal  * @since jpicedt 1.3.2.beta-9  * @version $Id$  *<p>  * $Log$  * Revision 1.5  2004/02/24 23:30:18  mortenalver  * Added more translations, and started work on a Replace string feature  *  * Revision 1.4  2004/02/17 09:14:02  mortenalver  * Similar update in FontSelector preview.  *  * Revision 1.3  2004/02/17 07:35:22  mortenalver  * Experimenting with antialiasing in table.  *  * Revision 1.2  2003/12/14 23:48:02  mortenalver  * .  *  * Revision 1.1  2003/11/07 22:18:07  nbatada  * modified it slightly from initial version  *  * Revision 1.1  2003/11/07 22:14:34  nbatada  * modified it from initial version  *  * Revision 1.4  2003/11/02 01:51:06  reynal  * Cleaned-up i18n labels  *  * Revision 1.3  2003/08/31 22:05:40  reynal  *  * Enhanced class interface for some widgets.  *   */
+comment|/**  * A font chooser widget.  * @author Slava Pestov (jEdit), Sylvain Reynal  * @since jpicedt 1.3.2.beta-9  * @version $Id$  *<p>  * $Log$  * Revision 1.6  2004/02/27 23:28:41  mortenalver  * Some code tidying, no effect on behaviour (hopefully)  *  * Revision 1.5  2004/02/24 23:30:18  mortenalver  * Added more translations, and started work on a Replace string feature  *  * Revision 1.4  2004/02/17 09:14:02  mortenalver  * Similar update in FontSelector preview.  *  * Revision 1.3  2004/02/17 07:35:22  mortenalver  * Experimenting with antialiasing in table.  *  * Revision 1.2  2003/12/14 23:48:02  mortenalver  * .  *  * Revision 1.1  2003/11/07 22:18:07  nbatada  * modified it slightly from initial version  *  * Revision 1.1  2003/11/07 22:14:34  nbatada  * modified it from initial version  *  * Revision 1.4  2003/11/02 01:51:06  reynal  * Cleaned-up i18n labels  *  * Revision 1.3  2003/08/31 22:05:40  reynal  *  * Enhanced class interface for some widgets.  *   */
 end_comment
 
 begin_class
@@ -762,53 +762,9 @@ name|Graphics2D
 operator|)
 name|g
 decl_stmt|;
-name|Font
-name|f
-init|=
 name|g2
 operator|.
-name|getFont
-argument_list|()
-decl_stmt|;
-comment|//new Font("Plain", Font.PLAIN, 24);
-name|g2
-operator|.
-name|setColor
-argument_list|(
-name|getBackground
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|g2
-operator|.
-name|fill
-argument_list|(
-name|g2
-operator|.
-name|getClipBounds
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|g2
-operator|.
-name|setColor
-argument_list|(
-name|getForeground
-argument_list|()
-argument_list|)
-expr_stmt|;
-comment|//g2.setFont(f);
-name|RenderingHints
-name|rh
-init|=
-name|g2
-operator|.
-name|getRenderingHints
-argument_list|()
-decl_stmt|;
-name|rh
-operator|.
-name|put
+name|setRenderingHint
 argument_list|(
 name|RenderingHints
 operator|.
@@ -819,14 +775,6 @@ operator|.
 name|VALUE_ANTIALIAS_ON
 argument_list|)
 expr_stmt|;
-name|g2
-operator|.
-name|setRenderingHints
-argument_list|(
-name|rh
-argument_list|)
-expr_stmt|;
-comment|//g2.drawString(getText(), 40, 15+f.getSize());
 name|super
 operator|.
 name|paint
@@ -1854,42 +1802,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|main (String args[])
-specifier|public
-specifier|static
-name|void
-name|main
-parameter_list|(
-name|String
-name|args
-index|[]
-parameter_list|)
-block|{
-name|Font
-name|font
-init|=
-operator|new
-name|FontSelectorDialog
-argument_list|(
-literal|null
-argument_list|,
-operator|new
-name|Font
-argument_list|(
-literal|"Times"
-argument_list|,
-name|Font
-operator|.
-name|PLAIN
-argument_list|,
-literal|12
-argument_list|)
-argument_list|)
-operator|.
-name|getSelectedFont
-argument_list|()
-decl_stmt|;
-block|}
+comment|/*public static void main(String args[]) 	{ 	    Font font = new FontSelectorDialog(null,new Font("Times",Font.PLAIN,12)).getSelectedFont();  	}     */
 block|}
 end_class
 

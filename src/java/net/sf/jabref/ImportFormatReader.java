@@ -721,11 +721,6 @@ argument_list|(
 literal|"START_RECORD"
 argument_list|)
 decl_stmt|;
-name|int
-name|rowNum
-init|=
-literal|0
-decl_stmt|;
 name|HashMap
 name|hm
 init|=
@@ -1353,11 +1348,6 @@ literal|"::"
 argument_list|)
 decl_stmt|;
 comment|// skip the first entry as it is either empty or has document header
-name|int
-name|rowNum
-init|=
-literal|0
-decl_stmt|;
 name|HashMap
 name|hm
 init|=
@@ -2247,16 +2237,6 @@ argument_list|(
 literal|"<[0-9]+>"
 argument_list|)
 decl_stmt|;
-name|String
-name|key
-init|=
-literal|""
-decl_stmt|;
-name|String
-name|BibManKey
-init|=
-literal|""
-decl_stmt|;
 for|for
 control|(
 name|int
@@ -3115,11 +3095,6 @@ name|split
 argument_list|(
 name|ENDOFRECORD
 argument_list|)
-decl_stmt|;
-name|int
-name|rowNum
-init|=
-literal|0
 decl_stmt|;
 name|HashMap
 name|hm
@@ -4067,11 +4042,6 @@ name|split
 argument_list|(
 literal|"ER  -"
 argument_list|)
-decl_stmt|;
-name|int
-name|rowNum
-init|=
-literal|0
 decl_stmt|;
 name|HashMap
 name|hm
@@ -5072,11 +5042,6 @@ name|String
 name|Type
 init|=
 literal|""
-decl_stmt|;
-name|int
-name|rowNum
-init|=
-literal|0
 decl_stmt|;
 name|HashMap
 name|h
