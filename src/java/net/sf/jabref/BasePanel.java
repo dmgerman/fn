@@ -4341,6 +4341,10 @@ name|link
 operator|!=
 literal|null
 condition|)
+block|{
+comment|//output(Globals.lang("Calling external viewer..."));
+try|try
+block|{
 name|Util
 operator|.
 name|openExternalViewer
@@ -4353,13 +4357,62 @@ argument_list|,
 name|prefs
 argument_list|)
 expr_stmt|;
-else|else
 name|output
 argument_list|(
-literal|"No pdf or ps defined."
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"External viewer called"
+argument_list|)
+operator|+
+literal|"."
 argument_list|)
 expr_stmt|;
 block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ex
+parameter_list|)
+block|{
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Error: check your External viewer settings in Preferences"
+argument_list|)
+operator|+
+literal|"."
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"No pdf or ps defined."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"No entries or multiple entries selected."
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 argument_list|)

@@ -1446,6 +1446,8 @@ parameter_list|,
 name|JabRefPreferences
 name|prefs
 parameter_list|)
+throws|throws
+name|IOException
 block|{
 comment|// check html first since browser can invoke viewers
 if|if
@@ -1468,28 +1470,7 @@ block|{
 comment|// hml
 try|try
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Message: Opening url ("
-operator|+
-name|link
-operator|+
-literal|") with the HTML viewer ("
-operator|+
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"htmlviewer"
-argument_list|)
-operator|+
-literal|")"
-argument_list|)
-expr_stmt|;
+comment|/*System.err.println("Message: Opening url (" + link 				   + ") with the HTML viewer (" 				   + prefs.get("htmlviewer") +")");*/
 name|Process
 name|child
 init|=
@@ -1519,28 +1500,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Warning: Unable to open url "
-operator|+
-name|link
-operator|+
-literal|" with the HTML viewer ("
-operator|+
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"htmlviewer"
-argument_list|)
-operator|+
-literal|")"
-argument_list|)
-expr_stmt|;
+comment|/*System.err.println("Warning: Unable to open url " 				   + link + " with the HTML viewer (" 				   + prefs.get("htmlviewer") +")");*/
 block|}
 block|}
 elseif|else
@@ -1556,28 +1516,7 @@ condition|)
 block|{
 try|try
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Message: Opening file "
-operator|+
-name|link
-operator|+
-literal|" with the ps viewer ("
-operator|+
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"psviewer"
-argument_list|)
-operator|+
-literal|")"
-argument_list|)
-expr_stmt|;
+comment|/*System.err.println("Message: Opening file " + link 				   + " with the ps viewer (" 				   + prefs.get("psviewer") +")");*/
 name|Process
 name|child
 init|=
@@ -1607,28 +1546,7 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Warning: Unable to open file ("
-operator|+
-name|link
-operator|+
-literal|") with the postscipt viewer ("
-operator|+
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"psviewer"
-argument_list|)
-operator|+
-literal|")"
-argument_list|)
-expr_stmt|;
+comment|/*System.err.println("Warning: Unable to open file (" 				   + link + ") with the postscipt viewer (" 				   + prefs.get("psviewer") +")");*/
 block|}
 block|}
 elseif|else
@@ -1644,28 +1562,7 @@ condition|)
 block|{
 try|try
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Message: Opening file ("
-operator|+
-name|link
-operator|+
-literal|") with the pdf viewer ("
-operator|+
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"pdfviewer"
-argument_list|)
-operator|+
-literal|")"
-argument_list|)
-expr_stmt|;
+comment|/*System.err.println("Message: Opening file (" + link 				   + ") with the pdf viewer (" 				   + prefs.get("pdfviewer") +")");*/
 name|Process
 name|child
 init|=
@@ -1695,28 +1592,10 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Warning: Unable to open file "
-operator|+
-name|link
-operator|+
-literal|" with the pdf viewer ("
-operator|+
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"pdfviewer"
-argument_list|)
-operator|+
-literal|")"
-argument_list|)
-expr_stmt|;
+comment|/*System.err.println("Warning: Unable to open file " + link 				   + " with the pdf viewer (" 				   + prefs.get("pdfviewer") +")");*/
+throw|throw
+name|e
+throw|;
 block|}
 block|}
 else|else

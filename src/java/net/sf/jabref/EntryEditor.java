@@ -6784,6 +6784,8 @@ name|getText
 argument_list|()
 decl_stmt|;
 comment|// get selected ?  String 	getSelectedText()
+try|try
+block|{
 name|Util
 operator|.
 name|openExternalViewer
@@ -6793,6 +6795,23 @@ argument_list|,
 name|prefs
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ex
+parameter_list|)
+block|{
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"Error opening file."
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 block|}

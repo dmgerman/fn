@@ -2489,6 +2489,15 @@ argument_list|,
 literal|"Delete"
 argument_list|)
 expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Open pdf or ps"
+argument_list|,
+literal|"F2"
+argument_list|)
+expr_stmt|;
 comment|//defKeyBinds.put("Edit entry", "ctrl E");
 block|}
 DECL|method|getNextUnit (Reader data)

@@ -941,6 +941,30 @@ argument_list|(
 literal|"Push To LyX"
 argument_list|)
 argument_list|)
+decl_stmt|,
+DECL|field|openFile
+name|openFile
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"openFile"
+argument_list|,
+literal|"Open pdf or ps"
+argument_list|,
+literal|"Open pdf or ps"
+argument_list|,
+name|GUIGlobals
+operator|.
+name|pdfIcon
+argument_list|,
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Open pdf or ps"
+argument_list|)
+argument_list|)
 decl_stmt|;
 comment|/*setupSelector = new GeneralAction("setupSelector", "", "", 					  GUIGlobals.pasteIconFile, 					  prefs.getKey(")),*/
 comment|// The menus for importing/appending other formats
@@ -2956,6 +2980,13 @@ argument_list|)
 expr_stmt|;
 name|tools
 operator|.
+name|add
+argument_list|(
+name|openFile
+argument_list|)
+expr_stmt|;
+name|tools
+operator|.
 name|addSeparator
 argument_list|()
 expr_stmt|;
@@ -3031,7 +3062,13 @@ block|}
 argument_list|)
 expr_stmt|;
 comment|/*options.add(new AbstractAction("Font") { 		public void actionPerformed(ActionEvent e) { 		    // JDialog dl = new EntryCustomizationDialog(ths); 		    Font f=new FontSelectorDialog 				(ths, GUIGlobals.CURRENTFONT).getSelectedFont(); 			if(f==null) 				return; 			else 				GUIGlobals.CURRENTFONT=f; 			// updatefont 			prefs.put("fontFamily", GUIGlobals.CURRENTFONT.getFamily()); 			prefs.putInt("fontStyle", GUIGlobals.CURRENTFONT.getStyle()); 			prefs.putInt("fontSize", GUIGlobals.CURRENTFONT.getSize()); 			if (tabbedPane.getTabCount()> 0) { 				for (int i=0; i<tabbedPane.getTabCount(); i++) { 					baseAt(i).entryTable.updateFont(); 					baseAt(i).refreshTable(); 				} 			} 		} 		});*/
-comment|//options.add(selectKeys);
+name|options
+operator|.
+name|add
+argument_list|(
+name|selectKeys
+argument_list|)
+expr_stmt|;
 name|mb
 operator|.
 name|add
@@ -3210,6 +3247,13 @@ operator|.
 name|add
 argument_list|(
 name|lyxPushAction
+argument_list|)
+expr_stmt|;
+name|tlb
+operator|.
+name|add
+argument_list|(
+name|openFile
 argument_list|)
 expr_stmt|;
 name|tlb
@@ -3554,6 +3598,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|openFile
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|int
@@ -3785,6 +3836,13 @@ literal|true
 argument_list|)
 expr_stmt|;
 name|fetchMedline
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|openFile
 operator|.
 name|setEnabled
 argument_list|(
