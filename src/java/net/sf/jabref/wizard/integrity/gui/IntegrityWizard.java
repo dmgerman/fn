@@ -314,7 +314,12 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-literal|"scan"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Scan"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|startButton
@@ -329,7 +334,12 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-literal|"close"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Close"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|closeButton

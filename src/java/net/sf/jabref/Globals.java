@@ -286,6 +286,22 @@ name|duplicateThreshold
 init|=
 literal|0.75f
 decl_stmt|;
+DECL|field|consoleHandler
+specifier|private
+specifier|static
+name|Handler
+name|consoleHandler
+init|=
+operator|new
+name|java
+operator|.
+name|util
+operator|.
+name|logging
+operator|.
+name|ConsoleHandler
+argument_list|()
+decl_stmt|;
 DECL|field|ENCODINGS
 specifier|public
 specifier|static
@@ -463,15 +479,7 @@ name|global
 operator|.
 name|addHandler
 argument_list|(
-operator|new
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|ConsoleHandler
-argument_list|()
+name|consoleHandler
 argument_list|)
 expr_stmt|;
 block|}
@@ -527,6 +535,11 @@ name|e
 parameter_list|)
 block|{
 comment|//can't open log file so use console
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 name|handler
 operator|=
 operator|new
@@ -736,11 +749,7 @@ name|translation
 operator|=
 name|key
 expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
+name|logger
 argument_list|(
 literal|"Warning: could not get translation for \""
 operator|+
@@ -3917,7 +3926,7 @@ name|RTFCHARS
 operator|.
 name|put
 argument_list|(
-literal|"´a"
+literal|"?a"
 argument_list|,
 literal|"\\'e1"
 argument_list|)
@@ -3926,7 +3935,7 @@ name|RTFCHARS
 operator|.
 name|put
 argument_list|(
-literal|"´e"
+literal|"?e"
 argument_list|,
 literal|"\\'e9"
 argument_list|)
@@ -3935,7 +3944,7 @@ name|RTFCHARS
 operator|.
 name|put
 argument_list|(
-literal|"´i"
+literal|"?i"
 argument_list|,
 literal|"\\'ed"
 argument_list|)
@@ -3944,7 +3953,7 @@ name|RTFCHARS
 operator|.
 name|put
 argument_list|(
-literal|"´o"
+literal|"?o"
 argument_list|,
 literal|"\\'f3"
 argument_list|)
@@ -3953,7 +3962,7 @@ name|RTFCHARS
 operator|.
 name|put
 argument_list|(
-literal|"´u"
+literal|"?u"
 argument_list|,
 literal|"\\'fa"
 argument_list|)
@@ -4106,7 +4115,7 @@ name|RTFCHARS
 operator|.
 name|put
 argument_list|(
-literal|"´A"
+literal|"?A"
 argument_list|,
 literal|"\\'c1"
 argument_list|)
@@ -4115,7 +4124,7 @@ name|RTFCHARS
 operator|.
 name|put
 argument_list|(
-literal|"´E"
+literal|"?E"
 argument_list|,
 literal|"\\'c9"
 argument_list|)
@@ -4124,7 +4133,7 @@ name|RTFCHARS
 operator|.
 name|put
 argument_list|(
-literal|"´I"
+literal|"?I"
 argument_list|,
 literal|"\\'cd"
 argument_list|)
@@ -4133,7 +4142,7 @@ name|RTFCHARS
 operator|.
 name|put
 argument_list|(
-literal|"´O"
+literal|"?O"
 argument_list|,
 literal|"\\'d3"
 argument_list|)
@@ -4142,7 +4151,7 @@ name|RTFCHARS
 operator|.
 name|put
 argument_list|(
-literal|"´U"
+literal|"?U"
 argument_list|,
 literal|"\\'da"
 argument_list|)

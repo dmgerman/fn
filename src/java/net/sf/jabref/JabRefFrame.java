@@ -7928,7 +7928,12 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"Integrity Check"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Integrity check"
+argument_list|)
 argument_list|,
 comment|//Globals.lang( "" ),
 operator|new
@@ -7940,14 +7945,7 @@ name|integrityCheck
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|putValue
-argument_list|(
-name|SHORT_DESCRIPTION
-argument_list|,
-literal|"integrity"
-argument_list|)
-expr_stmt|;
-comment|//Globals.lang( "integrity" ) ) ;
+comment|//putValue( SHORT_DESCRIPTION, "integrity" ) ;  //Globals.lang( "integrity" ) ) ;
 comment|//putValue(MNEMONIC_KEY, GUIGlobals.newKeyCode);
 block|}
 DECL|method|actionPerformed ( ActionEvent e )

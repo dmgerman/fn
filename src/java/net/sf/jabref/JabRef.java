@@ -273,6 +273,11 @@ argument_list|)
 expr_stmt|;
 name|Globals
 operator|.
+name|turnOnFileLogging
+argument_list|()
+expr_stmt|;
+name|Globals
+operator|.
 name|setLanguage
 argument_list|(
 name|prefs
