@@ -368,7 +368,7 @@ name|options
 operator|.
 name|register
 argument_list|(
-literal|"loadsession"
+literal|"loads"
 argument_list|,
 literal|'l'
 argument_list|,
@@ -386,7 +386,7 @@ name|options
 operator|.
 name|register
 argument_list|(
-literal|"prexport"
+literal|"prexp"
 argument_list|,
 literal|'x'
 argument_list|,
@@ -404,7 +404,7 @@ name|options
 operator|.
 name|register
 argument_list|(
-literal|"primport"
+literal|"primp"
 argument_list|,
 literal|'p'
 argument_list|,

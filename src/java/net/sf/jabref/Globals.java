@@ -586,25 +586,25 @@ name|translation
 operator|=
 name|key
 expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Warning: could not get translation for \""
-operator|+
-name|key
-operator|+
-literal|"\""
-argument_list|)
-expr_stmt|;
+comment|//System.err.println("Warning: could not get translation for \""
+comment|//                   + key + "\"");
 block|}
 if|if
 condition|(
+operator|(
 name|translation
 operator|!=
 literal|null
+operator|)
+operator|&&
+operator|(
+name|translation
+operator|.
+name|length
+argument_list|()
+operator|!=
+literal|0
+operator|)
 condition|)
 block|{
 return|return
@@ -621,7 +621,7 @@ block|}
 else|else
 block|{
 return|return
-literal|null
+name|key
 return|;
 block|}
 block|}
