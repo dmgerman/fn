@@ -178,7 +178,6 @@ argument_list|()
 expr_stmt|;
 comment|//else
 comment|//    list = new JComboBox(items.toArray());
-comment|//list.setBackground(GUIGlobals.lightGray);
 name|con
 operator|.
 name|gridwidth

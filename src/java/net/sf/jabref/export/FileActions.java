@@ -518,8 +518,55 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Writes the JabRef signature and the encoding.      *      * @param encoding String the name of the encoding, which is part of the header.      */
+DECL|method|writeBibFileHeader (Writer out, String encoding)
+specifier|private
+specifier|static
+name|void
+name|writeBibFileHeader
+parameter_list|(
+name|Writer
+name|out
+parameter_list|,
+name|String
+name|encoding
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|out
+operator|.
+name|write
+argument_list|(
+name|GUIGlobals
+operator|.
+name|SIGNATURE
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|write
+argument_list|(
+literal|" "
+operator|+
+name|GUIGlobals
+operator|.
+name|version
+operator|+
+literal|".\n"
+operator|+
+name|GUIGlobals
+operator|.
+name|encPrefix
+operator|+
+name|encoding
+operator|+
+literal|"\n\n"
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Saves the database to file. Two boolean values indicate whether      * only entries with a nonzero Globals.SEARCH value and only      * entries with a nonzero Globals.GROUPSEARCH value should be      * saved. This can be used to let the user save only the results of      * a search. False and false means all entries are saved.      */
-DECL|method|saveDatabase (BibtexDatabase database, MetaData metaData, File file, JabRefPreferences prefs, boolean checkSearch, boolean checkGroup)
+DECL|method|saveDatabase (BibtexDatabase database, MetaData metaData, File file, JabRefPreferences prefs, boolean checkSearch, boolean checkGroup, String encoding)
 specifier|public
 specifier|static
 name|void
@@ -542,6 +589,9 @@ name|checkSearch
 parameter_list|,
 name|boolean
 name|checkGroup
+parameter_list|,
+name|String
+name|encoding
 parameter_list|)
 throws|throws
 name|SaveException
@@ -566,24 +616,22 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Define our data stream.
-comment|//Writer fw = getWriter(file, "UTF-8");
-name|FileWriter
+name|Writer
 name|fw
 init|=
-operator|new
-name|FileWriter
+name|getWriter
 argument_list|(
 name|file
+argument_list|,
+name|encoding
 argument_list|)
 decl_stmt|;
 comment|// Write signature.
-name|fw
-operator|.
-name|write
+name|writeBibFileHeader
 argument_list|(
-name|GUIGlobals
-operator|.
-name|SIGNATURE
+name|fw
+argument_list|,
+name|encoding
 argument_list|)
 expr_stmt|;
 comment|// Write preamble if there is one.
@@ -892,7 +940,7 @@ throw|;
 block|}
 block|}
 comment|/**      * Saves the database to file, including only the entries included      * in the supplied input array bes.      */
-DECL|method|savePartOfDatabase (BibtexDatabase database, MetaData metaData, File file, JabRefPreferences prefs, BibtexEntry[] bes)
+DECL|method|savePartOfDatabase (BibtexDatabase database, MetaData metaData, File file, JabRefPreferences prefs, BibtexEntry[] bes, String encoding)
 specifier|public
 specifier|static
 name|void
@@ -913,6 +961,9 @@ parameter_list|,
 name|BibtexEntry
 index|[]
 name|bes
+parameter_list|,
+name|String
+name|encoding
 parameter_list|)
 throws|throws
 name|SaveException
@@ -937,23 +988,22 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Define our data stream.
-name|FileWriter
+name|Writer
 name|fw
 init|=
-operator|new
-name|FileWriter
+name|getWriter
 argument_list|(
 name|file
+argument_list|,
+name|encoding
 argument_list|)
 decl_stmt|;
 comment|// Write signature.
-name|fw
-operator|.
-name|write
+name|writeBibFileHeader
 argument_list|(
-name|GUIGlobals
-operator|.
-name|SIGNATURE
+name|fw
+argument_list|,
+name|encoding
 argument_list|)
 expr_stmt|;
 comment|// Write preamble if there is one.
@@ -1216,7 +1266,6 @@ block|{
 name|OutputStreamWriter
 name|ow
 decl_stmt|;
-comment|//try {
 name|ow
 operator|=
 operator|new
@@ -1231,9 +1280,6 @@ argument_list|,
 name|encoding
 argument_list|)
 expr_stmt|;
-comment|//} catch (UnsupportedEncodingException ex) {
-comment|//  ow = new OutputStreamWriter(new FileOutputStream(f));
-comment|//}
 return|return
 name|ow
 return|;
@@ -1337,6 +1383,11 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|String
+name|encoding
+init|=
+literal|"iso-8859-1"
+decl_stmt|;
 comment|//PrintStream ps=null;
 name|OutputStreamWriter
 name|ps
@@ -1380,7 +1431,7 @@ argument_list|(
 name|outFile
 argument_list|)
 argument_list|,
-literal|"iso-8859-1"
+name|encoding
 argument_list|)
 expr_stmt|;
 comment|// Print header

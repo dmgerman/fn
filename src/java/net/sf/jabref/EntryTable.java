@@ -162,6 +162,11 @@ DECL|field|selectionListenerOn
 name|selectionListenerOn
 init|=
 literal|true
+decl_stmt|,
+DECL|field|tableColorCodes
+name|tableColorCodes
+init|=
+literal|true
 decl_stmt|;
 comment|//RenderingHints renderingHints;
 DECL|field|panel
@@ -239,6 +244,15 @@ operator|.
 name|getBoolean
 argument_list|(
 literal|"ctrlClick"
+argument_list|)
+expr_stmt|;
+name|tableColorCodes
+operator|=
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"tableColorCodesOn"
 argument_list|)
 expr_stmt|;
 name|getTableHeader
@@ -532,7 +546,7 @@ condition|)
 block|{
 name|panel
 operator|.
-name|updateWiewToSelected
+name|updateViewToSelected
 argument_list|()
 expr_stmt|;
 comment|//panel.database().getEntryById(
@@ -1453,12 +1467,7 @@ elseif|else
 if|if
 condition|(
 operator|!
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-literal|"tableColorCodesOn"
-argument_list|)
+name|tableColorCodes
 condition|)
 name|renderer
 operator|=

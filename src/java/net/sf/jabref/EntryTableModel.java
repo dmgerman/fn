@@ -505,14 +505,11 @@ decl_stmt|;
 name|BibtexEntry
 name|be
 init|=
-name|db
+name|sorter
 operator|.
-name|getEntryById
-argument_list|(
-name|getNameFromNumber
+name|getEntryAt
 argument_list|(
 name|row
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|String
@@ -2032,7 +2029,7 @@ argument_list|()
 expr_stmt|;
 name|panel
 operator|.
-name|updateWiewToSelected
+name|updateViewToSelected
 argument_list|()
 expr_stmt|;
 comment|//panel.updateEntryEditorIfShowing();

@@ -6277,6 +6277,18 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Should this be done _after_ we know it was successfully opened?
+name|String
+name|encoding
+init|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"defaultEncoding"
+argument_list|)
+decl_stmt|;
 name|ParserResult
 name|pr
 init|=
@@ -6285,6 +6297,8 @@ operator|.
 name|loadDatabase
 argument_list|(
 name|fileToOpen
+argument_list|,
+name|encoding
 argument_list|)
 decl_stmt|;
 name|BibtexDatabase
@@ -6814,7 +6828,7 @@ expr_stmt|;
 comment|// The database just changed.
 name|currentBp
 operator|.
-name|updateWiewToSelected
+name|updateViewToSelected
 argument_list|()
 expr_stmt|;
 name|output

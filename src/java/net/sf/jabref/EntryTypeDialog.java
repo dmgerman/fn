@@ -273,24 +273,8 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-name|pan
-operator|.
-name|setBackground
-argument_list|(
-name|GUIGlobals
-operator|.
-name|lightGray
-argument_list|)
-expr_stmt|;
-name|lower
-operator|.
-name|setBackground
-argument_list|(
-name|GUIGlobals
-operator|.
-name|lightGray
-argument_list|)
-expr_stmt|;
+comment|//pan.setBackground(GUIGlobals.lightGray);
+comment|//lower.setBackground(GUIGlobals.lightGray);
 comment|// Make ESC close dialog, equivalent to clicking Cancel.
 name|cancel
 operator|.

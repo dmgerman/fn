@@ -208,6 +208,46 @@ name|duplicateThreshold
 init|=
 literal|0.75f
 decl_stmt|;
+DECL|field|ENCODINGS
+specifier|public
+specifier|static
+name|String
+index|[]
+name|ENCODINGS
+init|=
+operator|new
+name|String
+index|[]
+block|{
+literal|"ISO8859_1"
+block|,
+literal|"UTF8"
+block|,
+literal|"UTF-16"
+block|,
+literal|"ASCII"
+block|,
+literal|"Cp1250"
+block|,
+literal|"Cp1251"
+block|,
+literal|"Cp1252"
+block|,
+literal|"Cp1253"
+block|,
+literal|"Cp1254"
+block|,
+literal|"Cp1257"
+block|,
+literal|"ISO8859_2"
+block|,
+literal|"ISO8859_4"
+block|,
+literal|"ISO8859_5"
+block|,
+literal|"ISO8859_7"
+block|}
+decl_stmt|;
 DECL|field|focusListener
 specifier|public
 specifier|static
@@ -1483,7 +1523,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´\\{e\\}\\}"
+literal|"\\{\\\\\\\uFFFD\\{e\\}\\}"
 argument_list|,
 literal|"&eacute;"
 argument_list|)
@@ -1492,7 +1532,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´\\{E\\}\\}"
+literal|"\\{\\\\\\\uFFFD\\{E\\}\\}"
 argument_list|,
 literal|"&Eacute;"
 argument_list|)
@@ -1501,7 +1541,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´\\{i\\}\\}"
+literal|"\\{\\\\\\\uFFFD\\{i\\}\\}"
 argument_list|,
 literal|"&iacute;"
 argument_list|)
@@ -1510,7 +1550,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´\\{I\\}\\}"
+literal|"\\{\\\\\\\uFFFD\\{I\\}\\}"
 argument_list|,
 literal|"&Iacute;"
 argument_list|)
@@ -1519,7 +1559,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´\\{o\\}\\}"
+literal|"\\{\\\\\\\uFFFD\\{o\\}\\}"
 argument_list|,
 literal|"&oacute;"
 argument_list|)
@@ -1528,7 +1568,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´\\{O\\}\\}"
+literal|"\\{\\\\\\\uFFFD\\{O\\}\\}"
 argument_list|,
 literal|"&Oacute;"
 argument_list|)
@@ -1537,7 +1577,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´\\{u\\}\\}"
+literal|"\\{\\\\\\\uFFFD\\{u\\}\\}"
 argument_list|,
 literal|"&uacute;"
 argument_list|)
@@ -1546,7 +1586,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´\\{U\\}\\}"
+literal|"\\{\\\\\\\uFFFD\\{U\\}\\}"
 argument_list|,
 literal|"&Uacute;"
 argument_list|)
@@ -1555,7 +1595,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´\\{a\\}\\}"
+literal|"\\{\\\\\\\uFFFD\\{a\\}\\}"
 argument_list|,
 literal|"&aacute;"
 argument_list|)
@@ -1564,7 +1604,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´\\{A\\}\\}"
+literal|"\\{\\\\\\\uFFFD\\{A\\}\\}"
 argument_list|,
 literal|"&Aacute;"
 argument_list|)
@@ -1861,7 +1901,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´A\\}"
+literal|"\\{\\\\\\\uFFFDA\\}"
 argument_list|,
 literal|"&eacute;"
 argument_list|)
@@ -1870,7 +1910,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´E\\}"
+literal|"\\{\\\\\\\uFFFDE\\}"
 argument_list|,
 literal|"&Eacute;"
 argument_list|)
@@ -1879,7 +1919,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´i\\}"
+literal|"\\{\\\\\\\uFFFDi\\}"
 argument_list|,
 literal|"&iacute;"
 argument_list|)
@@ -1888,7 +1928,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´I\\}"
+literal|"\\{\\\\\\\uFFFDI\\}"
 argument_list|,
 literal|"&Iacute;"
 argument_list|)
@@ -1897,7 +1937,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´o\\}"
+literal|"\\{\\\\\\\uFFFDo\\}"
 argument_list|,
 literal|"&oacute;"
 argument_list|)
@@ -1906,7 +1946,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´O\\}"
+literal|"\\{\\\\\\\uFFFDO\\}"
 argument_list|,
 literal|"&Oacute;"
 argument_list|)
@@ -1915,7 +1955,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´u\\}"
+literal|"\\{\\\\\\\uFFFDu\\}"
 argument_list|,
 literal|"&uacute;"
 argument_list|)
@@ -1924,7 +1964,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´U\\}"
+literal|"\\{\\\\\\\uFFFDU\\}"
 argument_list|,
 literal|"&Uacute;"
 argument_list|)
@@ -1933,7 +1973,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´a\\}"
+literal|"\\{\\\\\\\uFFFDa\\}"
 argument_list|,
 literal|"&aacute;"
 argument_list|)
@@ -1942,7 +1982,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´A\\}"
+literal|"\\{\\\\\\\uFFFDA\\}"
 argument_list|,
 literal|"&Aacute;"
 argument_list|)
@@ -2257,7 +2297,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´\\{e\\}\\}"
+literal|"\\{\\\\\\\uFFFD\\{e\\}\\}"
 argument_list|,
 literal|"&#x00E9;"
 argument_list|)
@@ -2266,7 +2306,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´\\{E\\}\\}"
+literal|"\\{\\\\\\\uFFFD\\{E\\}\\}"
 argument_list|,
 literal|"&#x00C9;"
 argument_list|)
@@ -2275,7 +2315,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´\\{i\\}\\}"
+literal|"\\{\\\\\\\uFFFD\\{i\\}\\}"
 argument_list|,
 literal|"&#x00ED;"
 argument_list|)
@@ -2284,7 +2324,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´\\{I\\}\\}"
+literal|"\\{\\\\\\\uFFFD\\{I\\}\\}"
 argument_list|,
 literal|"&#x00CD;"
 argument_list|)
@@ -2293,7 +2333,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´\\{o\\}\\}"
+literal|"\\{\\\\\\\uFFFD\\{o\\}\\}"
 argument_list|,
 literal|"&#x00F3;"
 argument_list|)
@@ -2302,7 +2342,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´\\{O\\}\\}"
+literal|"\\{\\\\\\\uFFFD\\{O\\}\\}"
 argument_list|,
 literal|"&#x00D3;"
 argument_list|)
@@ -2311,7 +2351,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´\\{u\\}\\}"
+literal|"\\{\\\\\\\uFFFD\\{u\\}\\}"
 argument_list|,
 literal|"&#x00FA;"
 argument_list|)
@@ -2320,7 +2360,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´\\{U\\}\\}"
+literal|"\\{\\\\\\\uFFFD\\{U\\}\\}"
 argument_list|,
 literal|"&#x00DA;"
 argument_list|)
@@ -2329,7 +2369,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´\\{a\\}\\}"
+literal|"\\{\\\\\\\uFFFD\\{a\\}\\}"
 argument_list|,
 literal|"&#x00E1;"
 argument_list|)
@@ -2338,7 +2378,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´\\{A\\}\\}"
+literal|"\\{\\\\\\\uFFFD\\{A\\}\\}"
 argument_list|,
 literal|"&#x00C1;"
 argument_list|)
@@ -2635,7 +2675,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´e\\}"
+literal|"\\{\\\\\\\uFFFDe\\}"
 argument_list|,
 literal|"&#x00E9;"
 argument_list|)
@@ -2644,7 +2684,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´E\\}"
+literal|"\\{\\\\\\\uFFFDE\\}"
 argument_list|,
 literal|"&#x00C9;"
 argument_list|)
@@ -2653,7 +2693,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´i\\}"
+literal|"\\{\\\\\\\uFFFDi\\}"
 argument_list|,
 literal|"&#x00ED;"
 argument_list|)
@@ -2662,7 +2702,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´I\\}"
+literal|"\\{\\\\\\\uFFFDI\\}"
 argument_list|,
 literal|"&#x00CD;"
 argument_list|)
@@ -2671,7 +2711,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´o\\}"
+literal|"\\{\\\\\\\uFFFDo\\}"
 argument_list|,
 literal|"&#x00F3;"
 argument_list|)
@@ -2680,7 +2720,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´O\\}"
+literal|"\\{\\\\\\\uFFFDO\\}"
 argument_list|,
 literal|"&#x00D3;"
 argument_list|)
@@ -2689,7 +2729,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´u\\}"
+literal|"\\{\\\\\\\uFFFDu\\}"
 argument_list|,
 literal|"&#x00FA;"
 argument_list|)
@@ -2698,7 +2738,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´U\\}"
+literal|"\\{\\\\\\\uFFFDU\\}"
 argument_list|,
 literal|"&#x00DA;"
 argument_list|)
@@ -2707,7 +2747,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´a\\}"
+literal|"\\{\\\\\\\uFFFDa\\}"
 argument_list|,
 literal|"&#x00E1;"
 argument_list|)
@@ -2716,7 +2756,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\´A\\}"
+literal|"\\{\\\\\\\uFFFDA\\}"
 argument_list|,
 literal|"&#x00C1;"
 argument_list|)

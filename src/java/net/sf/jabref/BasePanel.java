@@ -678,6 +678,8 @@ name|void
 name|action
 parameter_list|()
 block|{
+comment|//(new Thread() {
+comment|//public void run() {
 name|int
 name|clickedOn
 init|=
@@ -4304,6 +4306,18 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Should this be done _after_ we know it was successfully opened?
+name|String
+name|encoding
+init|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"defaultEncoding"
+argument_list|)
+decl_stmt|;
 name|ParserResult
 name|pr
 init|=
@@ -4312,6 +4326,8 @@ operator|.
 name|loadDatabase
 argument_list|(
 name|fileToOpen
+argument_list|,
+name|encoding
 argument_list|)
 decl_stmt|;
 name|BibtexDatabase
@@ -6301,7 +6317,7 @@ else|else
 block|{
 comment|//BibtexEntry[] bes = entryTable.getSelectedEntries();
 comment|//if ((bes != null)&& (bes.length> 0))
-name|updateWiewToSelected
+name|updateViewToSelected
 argument_list|()
 expr_stmt|;
 block|}
@@ -6397,6 +6413,13 @@ argument_list|,
 literal|false
 argument_list|,
 literal|false
+argument_list|,
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"defaultEncoding"
+argument_list|)
 argument_list|)
 expr_stmt|;
 else|else
@@ -6416,6 +6439,13 @@ name|entryTable
 operator|.
 name|getSelectedEntries
 argument_list|()
+argument_list|,
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"defaultEncoding"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -7369,10 +7399,10 @@ name|refreshTable
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|updateWiewToSelected ()
+DECL|method|updateViewToSelected ()
 specifier|public
 name|void
-name|updateWiewToSelected
+name|updateViewToSelected
 parameter_list|()
 block|{
 comment|// First, if the entry editor is visible, we should update it to the selected entry.
@@ -7413,7 +7443,13 @@ index|[
 literal|0
 index|]
 expr_stmt|;
-else|else
+elseif|else
+if|if
+condition|(
+name|showing
+operator|!=
+literal|null
+condition|)
 return|return;
 if|if
 condition|(
@@ -7855,7 +7891,42 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|updateWiewToSelected
+if|if
+condition|(
+name|entryTable
+operator|.
+name|getSelectedRows
+argument_list|()
+operator|.
+name|length
+operator|==
+literal|0
+condition|)
+block|{
+name|int
+name|row
+init|=
+name|tableModel
+operator|.
+name|getNumberFromName
+argument_list|(
+name|be
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|entryTable
+operator|.
+name|addRowSelectionInterval
+argument_list|(
+name|row
+argument_list|,
+name|row
+argument_list|)
+expr_stmt|;
+block|}
+name|updateViewToSelected
 argument_list|()
 expr_stmt|;
 block|}
@@ -8840,7 +8911,7 @@ expr_stmt|;
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
-name|updateWiewToSelected
+name|updateViewToSelected
 argument_list|()
 expr_stmt|;
 block|}
@@ -9169,7 +9240,7 @@ expr_stmt|;
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
-name|updateWiewToSelected
+name|updateViewToSelected
 argument_list|()
 expr_stmt|;
 block|}

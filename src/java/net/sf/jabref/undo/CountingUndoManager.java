@@ -124,7 +124,7 @@ operator|--
 expr_stmt|;
 name|panel
 operator|.
-name|updateWiewToSelected
+name|updateViewToSelected
 argument_list|()
 expr_stmt|;
 block|}
@@ -147,7 +147,7 @@ operator|++
 expr_stmt|;
 name|panel
 operator|.
-name|updateWiewToSelected
+name|updateViewToSelected
 argument_list|()
 expr_stmt|;
 block|}

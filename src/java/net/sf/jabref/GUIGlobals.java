@@ -106,6 +106,7 @@ decl_stmt|;
 comment|// HashMap containing refs to all open BibtexDatabases.
 comment|//static HashMap frames = new HashMap();
 comment|// Frame titles.
+specifier|public
 specifier|static
 name|String
 DECL|field|frameTitle
@@ -143,7 +144,13 @@ DECL|field|NUMBER_COL
 name|NUMBER_COL
 init|=
 literal|"#"
+decl_stmt|,
+DECL|field|encPrefix
+name|encPrefix
+init|=
+literal|"Encoding: "
 decl_stmt|;
+comment|// Part of the signature in written bib files.
 DECL|field|CURRENTFONT
 specifier|public
 specifier|static
@@ -167,11 +174,7 @@ specifier|final
 name|String
 name|SIGNATURE
 init|=
-literal|"This file was created with JabRef "
-operator|+
-name|version
-operator|+
-literal|".\n\n"
+literal|"This file was created with JabRef"
 decl_stmt|;
 comment|// Size of help window.
 specifier|static
