@@ -275,6 +275,8 @@ class|class
 name|TextInputDialog
 extends|extends
 name|JDialog
+implements|implements
+name|ActionListener
 block|{
 DECL|field|okButton
 specifier|private
@@ -360,6 +362,11 @@ name|JRadioButton
 name|overRadio
 decl_stmt|,
 name|appRadio
+decl_stmt|;
+DECL|field|testPanel
+specifier|private
+name|OverlayPanel
+name|testPanel
 decl_stmt|;
 DECL|field|entry
 specifier|private
@@ -527,6 +534,7 @@ name|entry
 operator|!=
 literal|null
 condition|)
+block|{
 if|if
 condition|(
 name|entry
@@ -536,6 +544,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|typeStr
 operator|=
 name|typeStr
@@ -550,6 +559,8 @@ operator|.
 name|getName
 argument_list|()
 expr_stmt|;
+block|}
+block|}
 name|this
 operator|.
 name|setTitle
@@ -610,6 +621,7 @@ if|if
 condition|(
 name|inputChanged
 condition|)
+block|{
 name|warnPanel
 operator|.
 name|updateView
@@ -617,6 +629,7 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -842,74 +855,12 @@ operator|=
 operator|new
 name|JTextPane
 argument_list|()
-block|{
-comment|//    pane =  new JTextPane(){
-specifier|public
-name|void
-name|setSize
-parameter_list|(
-name|Dimension
-name|d
-parameter_list|)
-block|{
-if|if
-condition|(
-name|d
-operator|.
-name|width
-operator|>
-literal|100
-condition|)
-name|d
-operator|.
-name|width
-operator|=
-literal|100
-expr_stmt|;
-name|super
-operator|.
-name|setSize
-argument_list|(
-name|d
-argument_list|)
-expr_stmt|;
-block|}
-specifier|public
-name|boolean
-name|getScrollableTracksViewportWidth
-parameter_list|()
-block|{
-return|return
-literal|false
-return|;
-block|}
-block|}
 expr_stmt|;
 name|textPane
 operator|.
 name|setEditable
 argument_list|(
 literal|false
-argument_list|)
-expr_stmt|;
-name|textPane
-operator|.
-name|setOpaque
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-name|textPane
-operator|.
-name|setMaximumSize
-argument_list|(
-operator|new
-name|Dimension
-argument_list|(
-literal|100
-argument_list|,
-literal|100
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|doc
@@ -924,22 +875,6 @@ argument_list|(
 name|doc
 argument_list|)
 expr_stmt|;
-name|OverlayPanel
-name|testPanel
-init|=
-operator|new
-name|OverlayPanel
-argument_list|(
-name|textPane
-argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Text_Input_Area"
-argument_list|)
-argument_list|)
-decl_stmt|;
 try|try
 block|{
 name|doc
@@ -965,50 +900,46 @@ name|Exception
 name|e
 parameter_list|)
 block|{}
-comment|// Scrollbar(s)
-name|JScrollPane
-name|paneScrollPane
-init|=
-operator|new
-name|JScrollPane
-argument_list|(
 name|testPanel
-argument_list|)
-decl_stmt|;
-comment|//    paneScrollPane.setVerticalScrollBarPolicy(
-comment|//        JScrollPane.VERTICAL_SCROLLBAR_ALWAYS ) ;
-name|paneScrollPane
-operator|.
-name|setHorizontalScrollBarPolicy
+operator|=
+operator|new
+name|OverlayPanel
 argument_list|(
-name|JScrollPane
+name|textPane
+argument_list|,
+name|Globals
 operator|.
-name|HORIZONTAL_SCROLLBAR_NEVER
+name|lang
+argument_list|(
+literal|"Text_Input_Area"
+argument_list|)
 argument_list|)
 expr_stmt|;
-name|paneScrollPane
+name|testPanel
 operator|.
 name|setPreferredSize
 argument_list|(
 operator|new
 name|Dimension
 argument_list|(
-literal|350
+literal|450
 argument_list|,
 literal|255
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|paneScrollPane
+name|testPanel
 operator|.
-name|setMinimumSize
+name|setMaximumSize
 argument_list|(
 operator|new
 name|Dimension
 argument_list|(
-literal|10
+literal|450
 argument_list|,
-literal|10
+name|Integer
+operator|.
+name|MAX_VALUE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1145,7 +1076,7 @@ name|leftPanel
 operator|.
 name|add
 argument_list|(
-name|paneScrollPane
+name|testPanel
 argument_list|,
 name|BorderLayout
 operator|.
@@ -1396,11 +1327,7 @@ name|insertButton
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|TextInputDialog_insert_actionAdapter
-argument_list|(
 name|this
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Radio buttons
@@ -1708,6 +1635,7 @@ name|infoURL
 operator|!=
 literal|null
 condition|)
+block|{
 try|try
 block|{
 name|infoText
@@ -1784,6 +1712,7 @@ name|e
 parameter_list|)
 block|{}
 block|}
+block|}
 comment|// ---------------------------------------------------------------------------
 comment|// ---------------------------------------------------------------------------
 DECL|method|initButtonPanel ()
@@ -1856,11 +1785,7 @@ name|okButton
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|TextInputDialog_ok_actionAdapter
-argument_list|(
 name|this
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|cancelButton
@@ -1879,11 +1804,7 @@ name|cancelButton
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
-name|TextInputDialog_Cancel_actionAdapter
-argument_list|(
 name|this
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// insert Buttons
@@ -2372,6 +2293,7 @@ name|old
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -2383,8 +2305,10 @@ operator|+
 name|txt
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 comment|// "null"+"txt" Strings forbidden
+block|{
 name|entry
 operator|.
 name|setField
@@ -2394,6 +2318,7 @@ argument_list|,
 name|txt
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// make the new data in bibtex source code visible
 name|updateSourceView
@@ -2415,14 +2340,33 @@ name|okPressed
 return|;
 block|}
 comment|// ---------------------------------------------------------------------------
-DECL|method|ok_actionPerformed ( ActionEvent e )
+comment|//  ActionListener
+comment|//  handling of button-click actions
+DECL|method|actionPerformed ( ActionEvent e )
 specifier|public
 name|void
-name|ok_actionPerformed
+name|actionPerformed
 parameter_list|(
 name|ActionEvent
 name|e
 parameter_list|)
+block|{
+name|Object
+name|source
+init|=
+name|e
+operator|.
+name|getSource
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|source
+operator|==
+name|this
+operator|.
+name|okButton
+condition|)
 block|{
 name|okPressed
 operator|=
@@ -2432,31 +2376,34 @@ name|dispose
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|Cancel_actionPerformed ( ActionEvent e )
-specifier|public
-name|void
-name|Cancel_actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
+elseif|else
+if|if
+condition|(
+name|source
+operator|==
+name|this
+operator|.
+name|cancelButton
+condition|)
 block|{
 name|dispose
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|insertField_actionPerformed ( ActionEvent e )
-specifier|protected
-name|void
-name|insertField_actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
+elseif|else
+if|if
+condition|(
+name|source
+operator|==
+name|this
+operator|.
+name|cancelButton
+condition|)
 block|{
 name|insertTextForTag
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|// ---------------------------------------------------------------------------
 comment|// update the bibtex source view and available List
@@ -2620,6 +2567,7 @@ index|]
 operator|!=
 literal|null
 condition|)
+block|{
 name|len
 operator|=
 name|len
@@ -2631,6 +2579,7 @@ index|]
 operator|.
 name|length
 expr_stmt|;
+block|}
 block|}
 name|String
 name|back
@@ -2735,7 +2684,7 @@ name|pasteIconFile
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed (ActionEvent e)
+DECL|method|actionPerformed ( ActionEvent e )
 specifier|public
 name|void
 name|actionPerformed
@@ -2785,6 +2734,7 @@ name|selStart
 operator|>
 literal|0
 condition|)
+block|{
 name|textPane
 operator|.
 name|replaceSelection
@@ -2792,6 +2742,7 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 name|int
 name|cPos
 init|=
@@ -2852,7 +2803,7 @@ name|openIconFile
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed (ActionEvent e)
+DECL|method|actionPerformed ( ActionEvent e )
 specifier|public
 name|void
 name|actionPerformed
@@ -2996,7 +2947,7 @@ name|clearInputArea
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed (ActionEvent e)
+DECL|method|actionPerformed ( ActionEvent e )
 specifier|public
 name|void
 name|actionPerformed
@@ -3039,7 +2990,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed (ActionEvent e)
+DECL|method|actionPerformed ( ActionEvent e )
 specifier|public
 name|void
 name|actionPerformed
@@ -3047,7 +2998,7 @@ parameter_list|(
 name|ActionEvent
 name|e
 parameter_list|)
-block|{ }
+block|{}
 block|}
 comment|// ---------------------------------------------------------------------------
 DECL|class|FieldListSelectionHandler
@@ -3064,7 +3015,7 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
-DECL|method|valueChanged (ListSelectionEvent e)
+DECL|method|valueChanged ( ListSelectionEvent e )
 specifier|public
 name|void
 name|valueChanged
@@ -3231,7 +3182,7 @@ operator|.
 name|wrongTagIcon
 argument_list|)
 decl_stmt|;
-DECL|method|SimpleCellRenderer (Font normFont)
+DECL|method|SimpleCellRenderer ( Font normFont )
 specifier|public
 name|SimpleCellRenderer
 parameter_list|(
@@ -3255,8 +3206,8 @@ name|ITALIC
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* This is the only method defined by ListCellRenderer.  We just        * reconfigure the Jlabel each time we're called.        */
-DECL|method|getListCellRendererComponent ( JList list, Object value, int index, boolean iss, boolean chf)
+comment|/* This is the only method defined by ListCellRenderer.  We just      * reconfigure the Jlabel each time we're called.      */
+DECL|method|getListCellRendererComponent ( JList list, Object value, int index, boolean iss, boolean chf )
 specifier|public
 name|Component
 name|getListCellRendererComponent
@@ -3281,7 +3232,7 @@ name|chf
 parameter_list|)
 comment|// the list and the cell have the focus
 block|{
-comment|/* The DefaultListCellRenderer class will take care of            * the JLabels text property, it's foreground and background            * colors, and so on.            */
+comment|/* The DefaultListCellRenderer class will take care of        * the JLabels text property, it's foreground and background        * colors, and so on.        */
 name|super
 operator|.
 name|getListCellRendererComponent
@@ -3297,7 +3248,7 @@ argument_list|,
 name|chf
 argument_list|)
 expr_stmt|;
-comment|/* We additionally set the JLabels icon property here.            */
+comment|/* We additionally set the JLabels icon property here.        */
 name|String
 name|s
 init|=
@@ -3379,7 +3330,7 @@ name|FieldListMouseListener
 extends|extends
 name|MouseAdapter
 block|{
-DECL|method|mouseClicked (MouseEvent e)
+DECL|method|mouseClicked ( MouseEvent e )
 specifier|public
 name|void
 name|mouseClicked
@@ -3408,171 +3359,6 @@ block|}
 end_class
 
 begin_comment
-comment|// ---------------------------------------------------------------------------
-end_comment
-
-begin_comment
-comment|// ----------- helper class -------------------
-end_comment
-
-begin_comment
-comment|// ---------------------------------------------------------------------------
-end_comment
-
-begin_class
-DECL|class|TextInputDialog_ok_actionAdapter
-class|class
-name|TextInputDialog_ok_actionAdapter
-implements|implements
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ActionListener
-block|{
-DECL|field|adaptee
-name|TextInputDialog
-name|adaptee
-decl_stmt|;
-DECL|method|TextInputDialog_ok_actionAdapter ( TextInputDialog adaptee )
-name|TextInputDialog_ok_actionAdapter
-parameter_list|(
-name|TextInputDialog
-name|adaptee
-parameter_list|)
-block|{
-name|this
-operator|.
-name|adaptee
-operator|=
-name|adaptee
-expr_stmt|;
-block|}
-DECL|method|actionPerformed ( ActionEvent e )
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
-block|{
-name|adaptee
-operator|.
-name|ok_actionPerformed
-argument_list|(
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-end_class
-
-begin_class
-DECL|class|TextInputDialog_Cancel_actionAdapter
-class|class
-name|TextInputDialog_Cancel_actionAdapter
-implements|implements
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ActionListener
-block|{
-DECL|field|adaptee
-name|TextInputDialog
-name|adaptee
-decl_stmt|;
-DECL|method|TextInputDialog_Cancel_actionAdapter ( TextInputDialog adaptee )
-name|TextInputDialog_Cancel_actionAdapter
-parameter_list|(
-name|TextInputDialog
-name|adaptee
-parameter_list|)
-block|{
-name|this
-operator|.
-name|adaptee
-operator|=
-name|adaptee
-expr_stmt|;
-block|}
-DECL|method|actionPerformed ( ActionEvent e )
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
-block|{
-name|adaptee
-operator|.
-name|Cancel_actionPerformed
-argument_list|(
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-end_class
-
-begin_class
-DECL|class|TextInputDialog_insert_actionAdapter
-class|class
-name|TextInputDialog_insert_actionAdapter
-implements|implements
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ActionListener
-block|{
-DECL|field|adaptee
-name|TextInputDialog
-name|adaptee
-decl_stmt|;
-DECL|method|TextInputDialog_insert_actionAdapter ( TextInputDialog adaptee )
-name|TextInputDialog_insert_actionAdapter
-parameter_list|(
-name|TextInputDialog
-name|adaptee
-parameter_list|)
-block|{
-name|this
-operator|.
-name|adaptee
-operator|=
-name|adaptee
-expr_stmt|;
-block|}
-DECL|method|actionPerformed ( ActionEvent e )
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
-block|{
-name|adaptee
-operator|.
-name|insertField_actionPerformed
-argument_list|(
-name|e
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-end_class
-
-begin_comment
 comment|//---------------------------------------------------------------
 end_comment
 
@@ -3588,7 +3374,7 @@ specifier|private
 name|JPopupMenu
 name|popMenu
 decl_stmt|;
-DECL|method|PopupListener (JPopupMenu menu)
+DECL|method|PopupListener ( JPopupMenu menu )
 specifier|public
 name|PopupListener
 parameter_list|(
@@ -3648,6 +3434,9 @@ name|isPopupTrigger
 argument_list|()
 condition|)
 block|{
+comment|//      System.out.println("show "
+comment|//                         + e.getComponent() +"  x =" + e.getX() +"y =" + e.getY() ) ;
+comment|//      popMenu.setVisible(true);
 name|popMenu
 operator|.
 name|show
@@ -3685,7 +3474,7 @@ name|BasicAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|method|BasicAction (String text, String description, URL icon)
+DECL|method|BasicAction ( String text, String description, URL icon )
 specifier|public
 name|BasicAction
 parameter_list|(
@@ -3728,7 +3517,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BasicAction (String text, String description, URL icon, KeyStroke key)
+DECL|method|BasicAction ( String text, String description, URL icon, KeyStroke key )
 specifier|public
 name|BasicAction
 parameter_list|(
@@ -3781,7 +3570,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BasicAction (String text)
+DECL|method|BasicAction ( String text )
 specifier|public
 name|BasicAction
 parameter_list|(
@@ -3800,7 +3589,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BasicAction (String text, KeyStroke key)
+DECL|method|BasicAction ( String text, KeyStroke key )
 specifier|public
 name|BasicAction
 parameter_list|(
@@ -3829,7 +3618,7 @@ name|key
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed (ActionEvent e)
+DECL|method|actionPerformed ( ActionEvent e )
 specifier|public
 specifier|abstract
 name|void
