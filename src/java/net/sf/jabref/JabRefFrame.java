@@ -7286,6 +7286,18 @@ literal|"Import Fields from CiteSeer Database"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|putValue
+argument_list|(
+name|ACCELERATOR_KEY
+argument_list|,
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Import fields from CiteSeer"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
@@ -7665,6 +7677,18 @@ operator|.
 name|lang
 argument_list|(
 literal|"Fetch Articles Citing your Database"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|putValue
+argument_list|(
+name|ACCELERATOR_KEY
+argument_list|,
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Fetch citations from CiteSeer"
 argument_list|)
 argument_list|)
 expr_stmt|;

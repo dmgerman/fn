@@ -1636,6 +1636,14 @@ name|isInvoked
 argument_list|()
 condition|)
 block|{
+comment|// Call the method performCompatibilityUpdate(), which does any
+comment|// necessary changes for users with a preference set from an older
+comment|// Jabref version.
+name|Util
+operator|.
+name|performCompatibilityUpdate
+argument_list|()
+expr_stmt|;
 comment|//Font fnt = new Font("plain", Font.PLAIN, 12);
 comment|/*Font fnt = new Font           (prefs.get("menuFontFamily"), prefs.getInt("menuFontStyle"),           prefs.getInt("menuFontSize"));        Object fnt = new UIDefaults.ProxyLazyValue           ("javax.swing.plaf.FontUIResource", null,            new Object[] { prefs.get("menuFontFamily"), new Integer(prefs.getInt("menuFontStyle")),                           new Integer(prefs.getInt("menuFontSize")) });        UIManager.put("MenuBar.font", fnt);       UIManager.put("MenuItem.font", fnt);       UIManager.put("RadioButtonMenuItem.font", fnt);       UIManager.put("CheckBoxMenuItem.font", fnt);       UIManager.put("Menu.font", fnt);       UIManager.put("PopupMenu.font", fnt);       */
 comment|//"Plain", new Integer(Font.PLAIN), new Integer(10)});

@@ -989,7 +989,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"I couldn't parse the CiteSeer URL field of the following entries"
+literal|"Couldn't parse the 'citeseerurl' field of the following entries"
 argument_list|)
 operator|+
 literal|':'
@@ -1013,7 +1013,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"CiteSeer Warning"
+literal|"Warning"
 argument_list|)
 argument_list|,
 name|JOptionPane
