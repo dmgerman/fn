@@ -412,6 +412,26 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Sets the given field to the given value.      */
+DECL|method|setField (HashMap fields)
+specifier|public
+name|void
+name|setField
+parameter_list|(
+name|HashMap
+name|fields
+parameter_list|)
+block|{
+name|_fields
+operator|.
+name|putAll
+argument_list|(
+name|fields
+argument_list|)
+expr_stmt|;
+comment|//_fields=fields.clone();
+comment|// clone slows up things but...
+comment|// if you don't clone then client has pointer to _field and can change it behind the scenes
+block|}
 DECL|method|setField (String name, Object value)
 specifier|public
 name|void
