@@ -156,6 +156,15 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+literal|"lyxpipe"
+argument_list|,
+literal|"somewhere"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
 literal|"posX"
 argument_list|,
 operator|new

@@ -235,9 +235,9 @@ argument_list|(
 name|lower
 argument_list|)
 expr_stmt|;
-comment|// ---------------------------------------------------------------
-comment|// Add tabs to tabbed here. Remeber, tabs must implement PrefsTab.
-comment|// ---------------------------------------------------------------
+comment|// ----------------------------------------------------------------
+comment|// Add tabs to tabbed here. Remember, tabs must implement PrefsTab.
+comment|// ----------------------------------------------------------------
 name|tabbed
 operator|.
 name|addTab
@@ -246,6 +246,19 @@ literal|"Table"
 argument_list|,
 operator|new
 name|TablePrefsTab
+argument_list|(
+name|_prefs
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|tabbed
+operator|.
+name|addTab
+argument_list|(
+literal|"External programs"
+argument_list|,
+operator|new
+name|ExternalProgramsTab
 argument_list|(
 name|_prefs
 argument_list|)
@@ -302,9 +315,9 @@ argument_list|)
 expr_stmt|;
 name|setSize
 argument_list|(
-literal|400
+literal|440
 argument_list|,
-literal|500
+literal|570
 argument_list|)
 expr_stmt|;
 block|}
