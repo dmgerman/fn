@@ -161,6 +161,20 @@ implements|implements
 name|VetoableChangeListener
 block|{
 comment|/*       * GUI component that allows editing of the fields of a BibtexEntry.      * EntryTypeForm also registers itself as a VetoableChangeListener,      * receiving events whenever a field of the entry changes, enabling the      * text fields to update themselves if the change is made from somewhere      * else.      */
+DECL|field|bg
+name|Color
+name|bg
+init|=
+operator|new
+name|Color
+argument_list|(
+literal|235
+argument_list|,
+literal|235
+argument_list|,
+literal|235
+argument_list|)
+decl_stmt|;
 comment|// A reference to the entry this object works on.
 DECL|field|entry
 name|BibtexEntry
@@ -435,6 +449,12 @@ name|prefs
 operator|=
 name|prefs_
 expr_stmt|;
+name|setBackground
+argument_list|(
+name|bg
+argument_list|)
+expr_stmt|;
+comment|//Color.white);
 name|entry
 operator|.
 name|addPropertyChangeListener
@@ -488,11 +508,17 @@ name|StoreFieldAction
 argument_list|()
 expr_stmt|;
 comment|/*addWindowListener(new WindowAdapter() { 		public void windowClosing(WindowEvent e) { 		    closeAction.actionPerformed(null); 		}	 		public void windowOpened(WindowEvent e) { 		    switch (tabbed.getSelectedIndex()) { 		    case 0: 			reqPanel.activate(); 			break; 		    case 1: 			optPanel.activate(); 			break; 		    case 2: 			genPanel.activate(); 			break; 		    case 3: 			source.requestFocus(); 			break; 		    } 		}	        		});*/
-name|setLayout
-argument_list|(
+name|BorderLayout
+name|bl
+init|=
 operator|new
 name|BorderLayout
 argument_list|()
+decl_stmt|;
+comment|//bl.setVgap(5);
+name|setLayout
+argument_list|(
+name|bl
 argument_list|)
 expr_stmt|;
 name|setupToolBar
@@ -758,6 +784,14 @@ argument_list|)
 expr_stmt|;
 comment|// The toolbar carries all the key bindings that are valid for the whole
 comment|// window.
+name|tlb
+operator|.
+name|setBackground
+argument_list|(
+name|bg
+argument_list|)
+expr_stmt|;
+comment|//Color.white);
 name|ActionMap
 name|am
 init|=
@@ -2567,6 +2601,13 @@ extends|extends
 name|JPanel
 block|{
 comment|/* 	 * This extension to JPanel keeps a reference to its active 	 * field, on behalf of which it requests the focus when 	 * it is told to. 	 */
+DECL|method|FieldPanel ()
+specifier|public
+name|FieldPanel
+parameter_list|()
+block|{
+comment|//setBackground(Color.white);
+block|}
 DECL|field|activeField
 name|FieldEditor
 name|activeField
