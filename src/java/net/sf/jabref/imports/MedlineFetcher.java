@@ -1179,14 +1179,45 @@ argument_list|)
 decl_stmt|;
 comment|// get the ids from entrez
 comment|// prompt the user to number articles to retrieve
+if|if
+condition|(
+name|result
+operator|.
+name|count
+operator|==
+literal|0
+condition|)
+block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|panel
+operator|.
+name|frame
+argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"No references found"
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 name|String
 name|question
 init|=
-operator|new
-name|String
+name|Globals
+operator|.
+name|lang
 argument_list|(
-literal|"Found "
+literal|"References found"
 argument_list|)
+operator|+
+literal|": "
 operator|+
 name|Integer
 operator|.
@@ -1197,16 +1228,13 @@ operator|.
 name|count
 argument_list|)
 operator|+
-operator|new
-name|String
-argument_list|(
-literal|" references. Retrieve references"
-argument_list|)
+literal|"  "
 operator|+
-operator|new
-name|String
+name|Globals
+operator|.
+name|lang
 argument_list|(
-literal|" from 1 through"
+literal|"Number of references to fetch?"
 argument_list|)
 decl_stmt|;
 name|String
