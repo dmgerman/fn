@@ -637,15 +637,30 @@ operator|.
 name|frame
 argument_list|()
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"I could not connect to host "
+argument_list|)
 operator|+
 name|targetURL
 operator|+
-literal|".  Please check your network connection "
+literal|".  "
 operator|+
-literal|"to this machine."
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Please check your network connection to this machine."
+argument_list|)
 argument_list|,
-literal|"CiteSeer Connection Error"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"CiteSeer Error"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -667,16 +682,28 @@ name|badURL
 init|=
 literal|""
 decl_stmt|;
-DECL|method|ShowBadURLDialog (String URL)
+DECL|field|rowNumber
+specifier|protected
+name|int
+name|rowNumber
+decl_stmt|;
+DECL|method|ShowBadURLDialog (String URL, int row)
 name|ShowBadURLDialog
 parameter_list|(
 name|String
 name|URL
+parameter_list|,
+name|int
+name|row
 parameter_list|)
 block|{
 name|badURL
 operator|=
 name|URL
+expr_stmt|;
+name|rowNumber
+operator|=
+name|row
 expr_stmt|;
 block|}
 DECL|method|run ()
@@ -694,16 +721,47 @@ operator|.
 name|frame
 argument_list|()
 argument_list|,
-literal|"I couldn't parse the following URL: "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"I couldn't parse the following URL"
+argument_list|)
+operator|+
+literal|": \""
 operator|+
 name|badURL
 operator|+
-comment|// How do I retrieve the index number? NOT the BibTex ID.
-literal|" on entry number XXX.  "
+literal|'\"'
 operator|+
-literal|" Please refer to the JabRef help manual on using the CiteSeer tools."
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|" on entry number "
+argument_list|)
+operator|+
+operator|(
+name|rowNumber
+operator|+
+literal|1
+operator|)
+operator|+
+literal|".  "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Please refer to the JabRef help manual on using the CiteSeer tools."
+argument_list|)
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"CiteSeer Error"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -1010,6 +1068,11 @@ operator|.
 name|iterator
 argument_list|()
 decl_stmt|;
+name|boolean
+name|abortOperation
+init|=
+literal|false
+decl_stmt|;
 name|String
 name|currentKey
 decl_stmt|;
@@ -1046,6 +1109,9 @@ name|targetIterator
 operator|.
 name|hasNext
 argument_list|()
+operator|&&
+operator|!
+name|abortOperation
 condition|)
 block|{
 name|currentKey
@@ -1067,6 +1133,8 @@ argument_list|(
 name|currentKey
 argument_list|)
 expr_stmt|;
+name|abortOperation
+operator|=
 name|generateIdentifierList
 argument_list|(
 name|currentEntry
@@ -1153,7 +1221,13 @@ parameter_list|(
 name|KeyCollisionException
 name|ex
 parameter_list|)
-block|{ 			}
+block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|generateCitationList (Hashtable citationHashTable, BibtexDatabase database)
@@ -1437,7 +1511,7 @@ return|;
 block|}
 DECL|method|generateIdentifierList (BibtexEntry currentEntry, Hashtable citationHashTable)
 specifier|private
-name|void
+name|boolean
 name|generateIdentifierList
 parameter_list|(
 name|BibtexEntry
@@ -1447,6 +1521,11 @@ name|Hashtable
 name|citationHashTable
 parameter_list|)
 block|{
+name|boolean
+name|abortOperation
+init|=
+literal|false
+decl_stmt|;
 name|String
 name|targetURL
 init|=
@@ -1603,6 +1682,22 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|int
+name|row
+init|=
+name|panel
+operator|.
+name|getTableModel
+argument_list|()
+operator|.
+name|getNumberFromName
+argument_list|(
+name|currentEntry
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|ShowBadURLDialog
 name|dialog
 init|=
@@ -1610,6 +1705,8 @@ operator|new
 name|ShowBadURLDialog
 argument_list|(
 name|targetURL
+argument_list|,
+name|row
 argument_list|)
 decl_stmt|;
 name|SwingUtilities
@@ -1679,6 +1776,20 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"IOException: "
+operator|+
+name|e
+operator|.
+name|getLocalizedMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|ShowNoConnectionDialog
 name|dialog
 init|=
@@ -1688,6 +1799,10 @@ argument_list|(
 name|OAI_HOST
 argument_list|)
 decl_stmt|;
+name|abortOperation
+operator|=
+literal|true
+expr_stmt|;
 name|SwingUtilities
 operator|.
 name|invokeLater
@@ -1696,6 +1811,11 @@ name|dialog
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+operator|(
+name|abortOperation
+operator|)
+return|;
 block|}
 comment|/** 	 * @param be 	 *  	 * Reminder: this method runs in the EventDispatcher thread 	 */
 DECL|method|importCiteSeerEntry (BibtexEntry be, NamedCompound citeseerNC)
@@ -1888,6 +2008,22 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|int
+name|row
+init|=
+name|panel
+operator|.
+name|getTableModel
+argument_list|()
+operator|.
+name|getNumberFromName
+argument_list|(
+name|be
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+decl_stmt|;
 name|ShowBadURLDialog
 name|dialog
 init|=
@@ -1895,6 +2031,8 @@ operator|new
 name|ShowBadURLDialog
 argument_list|(
 name|targetURL
+argument_list|,
+name|row
 argument_list|)
 decl_stmt|;
 name|dialog

@@ -6721,11 +6721,6 @@ operator|.
 name|refreshTable
 argument_list|()
 expr_stmt|;
-name|currentBp
-operator|.
-name|updateEntryEditorIfShowing
-argument_list|()
-expr_stmt|;
 name|int
 name|row
 init|=
@@ -6775,7 +6770,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Fetched all citations from target database."
+literal|"Completed citation import from CiteSeer."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6848,11 +6843,19 @@ operator|.
 name|frame
 argument_list|()
 argument_list|,
-literal|"The CiteSeer import functionality is currently "
-operator|+
-literal|"supported for only one row at a time."
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"This operation cannot work on multiple rows."
+argument_list|)
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"CiteSeer Import Error"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -6871,11 +6874,19 @@ operator|.
 name|frame
 argument_list|()
 argument_list|,
-literal|"You must select a row to perform the "
-operator|+
-literal|"CiteSeer import operation."
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"You must select a row to perform this operation."
+argument_list|)
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"CiteSeer Import Error"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -6982,6 +6993,16 @@ operator|.
 name|endImportCiteSeerProgress
 argument_list|()
 expr_stmt|;
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Citation import from CiteSeer failed."
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 name|basePanel
@@ -7014,11 +7035,28 @@ operator|.
 name|getSelectedComponent
 argument_list|()
 argument_list|,
-literal|"A CiteSeer import operation is currently in progress. "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"A CiteSeer import operation is currently in progress."
+argument_list|)
 operator|+
-literal|"  Please wait until it has finished."
+literal|"  "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Please wait until it has finished."
+argument_list|)
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"CiteSeer Import Error"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -7057,7 +7095,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Fetch Cited Articles from CiteSeer Database"
+literal|"Fetch Articles Citing your Database"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -7252,13 +7290,44 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|System
+name|JOptionPane
 operator|.
-name|out
-operator|.
-name|println
+name|showMessageDialog
 argument_list|(
-literal|"Fetch Currently Active"
+operator|(
+name|BasePanel
+operator|)
+name|tabbedPane
+operator|.
+name|getSelectedComponent
+argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"A CiteSeer fetch operation is currently in progress."
+argument_list|)
+operator|+
+literal|"  "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Please wait until it has finished."
+argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"CiteSeer Fetch Error"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|WARNING_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
