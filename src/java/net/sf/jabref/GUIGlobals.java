@@ -753,6 +753,20 @@ name|pre
 operator|+
 literal|"Binocular.gif"
 argument_list|)
+decl_stmt|,
+DECL|field|autoGroupIcon
+name|autoGroupIcon
+init|=
+name|GUIGlobals
+operator|.
+name|class
+operator|.
+name|getResource
+argument_list|(
+name|pre
+operator|+
+literal|"NewBCard.gif"
+argument_list|)
 decl_stmt|;
 comment|// Help files (in HTML format):
 specifier|public

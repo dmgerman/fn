@@ -76,6 +76,13 @@ specifier|private
 name|GroupSelector
 name|gs
 decl_stmt|;
+DECL|field|revalidate
+specifier|private
+name|boolean
+name|revalidate
+init|=
+literal|true
+decl_stmt|;
 DECL|method|UndoableAddOrRemoveGroup (GroupSelector gs, Vector groups, int index, boolean addition, String field, String name, String regexp)
 specifier|public
 name|UndoableAddOrRemoveGroup
@@ -225,6 +232,7 @@ name|boolean
 name|add
 parameter_list|)
 block|{
+comment|//System.out.println(name);
 if|if
 condition|(
 name|add
@@ -285,10 +293,29 @@ name|index
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|revalidate
+condition|)
 name|gs
 operator|.
 name|revalidateList
 argument_list|()
+expr_stmt|;
+block|}
+comment|/**      * Call this method to decide if the group list should be immediately      * revalidated by this operation. Default is true.      *      * @param val a<code>boolean</code> value      */
+DECL|method|setRevalidate (boolean val)
+specifier|public
+name|void
+name|setRevalidate
+parameter_list|(
+name|boolean
+name|val
+parameter_list|)
+block|{
+name|revalidate
+operator|=
+name|val
 expr_stmt|;
 block|}
 block|}

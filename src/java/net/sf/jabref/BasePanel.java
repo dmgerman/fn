@@ -4181,7 +4181,7 @@ name|tableModel
 return|;
 block|}
 DECL|method|getDatabase ()
-specifier|protected
+specifier|public
 name|BibtexDatabase
 name|getDatabase
 parameter_list|()
