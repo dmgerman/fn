@@ -7359,7 +7359,7 @@ DECL|class|ImportCiteSeerAction
 class|class
 name|ImportCiteSeerAction
 extends|extends
-name|AbstractAction
+name|MnemonicAwareAction
 block|{
 DECL|method|ImportCiteSeerAction ()
 specifier|public
@@ -7368,13 +7368,6 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Import Fields from CiteSeer"
-argument_list|)
-argument_list|,
 operator|new
 name|ImageIcon
 argument_list|(
@@ -7386,13 +7379,25 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|NAME
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Import fields from CiteSeer"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|putValue
+argument_list|(
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Import Fields from CiteSeer Database"
+literal|"Import fields from CiteSeer Database"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -7753,7 +7758,7 @@ DECL|class|FetchCiteSeerAction
 class|class
 name|FetchCiteSeerAction
 extends|extends
-name|AbstractAction
+name|MnemonicAwareAction
 block|{
 DECL|method|FetchCiteSeerAction ()
 specifier|public
@@ -7762,19 +7767,24 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Fetch Citations from CiteSeer"
-argument_list|)
-argument_list|,
 operator|new
 name|ImageIcon
 argument_list|(
 name|GUIGlobals
 operator|.
 name|wwwCiteSeerIcon
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|putValue
+argument_list|(
+name|NAME
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Fetch citations from CiteSeer"
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -297,6 +297,25 @@ name|hits
 operator|++
 expr_stmt|;
 block|}
+specifier|final
+name|int
+name|outputHits
+init|=
+name|hits
+decl_stmt|;
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+operator|new
+name|Thread
+argument_list|()
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
 name|panel
 operator|.
 name|entryTable
@@ -317,7 +336,6 @@ argument_list|,
 name|select
 argument_list|)
 expr_stmt|;
-comment|/*if (select) { // Select matches.           panel.selectResults(searchValueField);           new FocusRequester(panel.entryTable);         }*/
 if|if
 condition|(
 operator|(
@@ -347,9 +365,14 @@ argument_list|)
 operator|+
 literal|": "
 operator|+
-name|hits
+name|outputHits
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
+comment|/*if (select) { // Select matches.           panel.selectResults(searchValueField);           new FocusRequester(panel.entryTable);         }*/
 block|}
 block|}
 end_class

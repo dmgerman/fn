@@ -1889,17 +1889,7 @@ name|length
 argument_list|()
 argument_list|)
 expr_stmt|;
-operator|new
-name|FocusRequester
-argument_list|(
-name|frame
-operator|.
-name|basePanel
-argument_list|()
-operator|.
-name|entryTable
-argument_list|)
-expr_stmt|;
+comment|//new FocusRequester(frame.basePanel().entryTable);
 block|}
 block|}
 DECL|method|itemStateChanged (ItemEvent e)
