@@ -207,7 +207,7 @@ specifier|static
 name|float
 name|duplicateThreshold
 init|=
-literal|0.78f
+literal|0.75f
 decl_stmt|;
 DECL|field|focusListener
 specifier|public

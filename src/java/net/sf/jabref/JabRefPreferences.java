@@ -241,6 +241,50 @@ literal|"open /Applications/Safari.app"
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|Globals
+operator|.
+name|osName
+operator|.
+name|toLowerCase
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+literal|"windows"
+argument_list|)
+condition|)
+block|{
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"pdfviewer"
+argument_list|,
+literal|"cmd.exe /c start /b"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"psviewer"
+argument_list|,
+literal|"cmd.exe /c start /b"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"htmlviewer"
+argument_list|,
+literal|"cmd.exe /c start /b"
+argument_list|)
+expr_stmt|;
+block|}
 else|else
 block|{
 name|defaults
@@ -2688,6 +2732,15 @@ argument_list|(
 literal|"Open URL or DOI"
 argument_list|,
 literal|"F3"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Toggle entry preview"
+argument_list|,
+literal|"F9"
 argument_list|)
 expr_stmt|;
 comment|//defKeyBinds.put("Edit entry", "ctrl E");

@@ -426,16 +426,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Add the listener that responds to clicks on the table.
-if|if
-condition|(
-name|panel
-operator|.
-name|previewEnabled
-argument_list|()
-condition|)
-name|enablePreviewListener
+name|addSelectionListener
 argument_list|()
 expr_stmt|;
+comment|// Add the listener that responds to new entry selection.
+comment|// (to update entry editor or preview)
 name|setWidths
 argument_list|()
 expr_stmt|;
@@ -456,10 +451,10 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**        * A ListSelectionListener for updating the preview panel when the user selects an        * entry. Should only be active when preview is enabled.        */
-DECL|method|enablePreviewListener ()
+DECL|method|addSelectionListener ()
 specifier|public
 name|void
-name|enablePreviewListener
+name|addSelectionListener
 parameter_list|()
 block|{
 if|if
@@ -498,9 +493,15 @@ name|getSelectedRow
 argument_list|()
 decl_stmt|;
 comment|//e.getFirstIndex();
+if|if
+condition|(
+name|row
+operator|>=
+literal|0
+condition|)
 name|panel
 operator|.
-name|previewEntry
+name|updateWiewToSelected
 argument_list|(
 name|panel
 operator|.

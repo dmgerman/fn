@@ -308,7 +308,7 @@ comment|// Added to the font size when determining table
 DECL|field|PREVIEW_HEIGHT
 name|PREVIEW_HEIGHT
 init|=
-literal|100
+literal|125
 decl_stmt|;
 comment|// row height
 specifier|public
@@ -2385,7 +2385,7 @@ decl_stmt|,
 DECL|field|WIDTH_ICON_COL
 name|WIDTH_ICON_COL
 init|=
-literal|20
+literal|19
 decl_stmt|;
 DECL|field|FIELD_WEIGHT
 specifier|public
