@@ -2871,15 +2871,6 @@ return|;
 block|}
 else|else
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"test"
-argument_list|)
-expr_stmt|;
 return|return
 operator|(
 name|req

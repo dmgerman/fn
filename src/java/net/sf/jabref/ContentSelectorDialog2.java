@@ -538,15 +538,7 @@ expr_stmt|;
 name|pack
 argument_list|()
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"eee"
-argument_list|)
-expr_stmt|;
+comment|//System.out.println("eee");
 block|}
 DECL|method|setupActions ()
 specifier|private
@@ -1322,6 +1314,12 @@ name|void
 name|applyChanges
 parameter_list|()
 block|{
+name|boolean
+name|changedFieldSet
+init|=
+literal|false
+decl_stmt|;
+comment|// Watch if we need to rebuild entry editors
 comment|// First remove the mappings for fields that have been deleted.
 comment|// If these were re-added, they will be added below, so it doesn't
 comment|// cause any harm to remove them here.
@@ -1364,13 +1362,12 @@ operator|+
 name|fieldName
 argument_list|)
 expr_stmt|;
+name|changedFieldSet
+operator|=
+literal|true
+expr_stmt|;
 block|}
 comment|// Cycle through all fields that we have created listmodels for:
-name|boolean
-name|changedFieldSet
-init|=
-literal|false
-decl_stmt|;
 name|loop
 label|:
 for|for
@@ -1453,6 +1450,15 @@ literal|0
 condition|)
 while|while
 condition|(
+operator|(
+name|start
+operator|<
+name|lm
+operator|.
+name|size
+argument_list|()
+operator|)
+operator|&&
 operator|(
 operator|(
 name|String
@@ -1595,11 +1601,13 @@ name|updateAllContentSelectors
 argument_list|()
 expr_stmt|;
 else|else
+block|{
 name|panel
 operator|.
 name|rebuildAllEntryEditors
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Set the contents of the field selector list.      *      */
 DECL|method|setupFieldSelector ()

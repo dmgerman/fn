@@ -117,7 +117,7 @@ decl_stmt|,
 DECL|field|version
 name|version
 init|=
-literal|"1.5"
+literal|"1.55"
 decl_stmt|,
 DECL|field|stringsTitle
 name|stringsTitle

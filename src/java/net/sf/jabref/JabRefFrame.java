@@ -1436,7 +1436,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"New database menu"
+literal|"New database"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1795,6 +1795,14 @@ operator|.
 name|focusListener
 operator|.
 name|setFocused
+argument_list|(
+name|bp
+operator|.
+name|entryTable
+argument_list|)
+expr_stmt|;
+operator|new
+name|FocusRequester
 argument_list|(
 name|bp
 operator|.
@@ -3898,7 +3906,7 @@ name|file
 operator|.
 name|add
 argument_list|(
-name|newDatabaseMenu
+name|newDatabaseAction
 argument_list|)
 expr_stmt|;
 name|file
@@ -4301,6 +4309,13 @@ name|tools
 operator|.
 name|add
 argument_list|(
+name|manageSelectors
+argument_list|)
+expr_stmt|;
+name|tools
+operator|.
+name|add
+argument_list|(
 name|makeKeyAction
 argument_list|)
 expr_stmt|;
@@ -4335,6 +4350,11 @@ expr_stmt|;
 comment|//tools.add(fetchAuthorMedline);
 name|tools
 operator|.
+name|addSeparator
+argument_list|()
+expr_stmt|;
+name|tools
+operator|.
 name|add
 argument_list|(
 name|openFile
@@ -4349,9 +4369,14 @@ argument_list|)
 expr_stmt|;
 name|tools
 operator|.
+name|addSeparator
+argument_list|()
+expr_stmt|;
+name|tools
+operator|.
 name|add
 argument_list|(
-name|manageSelectors
+name|newSubDatabaseAction
 argument_list|)
 expr_stmt|;
 name|mb
@@ -4967,13 +4992,13 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Disable actions that demand an open database.      */
 DECL|method|setEmptyState ()
 specifier|private
 name|void
 name|setEmptyState
 parameter_list|()
 block|{
-comment|// Disable actions that demand an open database.
 name|mergeDatabaseAction
 operator|.
 name|setEnabled
@@ -5290,13 +5315,13 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Enable actions that demand an open database.      */
 DECL|method|setNonEmptyState ()
 specifier|private
 name|void
 name|setNonEmptyState
 parameter_list|()
 block|{
-comment|// Enable actions that demand an open database.
 name|mergeDatabaseAction
 operator|.
 name|setEnabled
@@ -5333,20 +5358,6 @@ literal|true
 argument_list|)
 expr_stmt|;
 name|saveSelectedAs
-operator|.
-name|setEnabled
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|nextTab
-operator|.
-name|setEnabled
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|prevTab
 operator|.
 name|setEnabled
 argument_list|(
@@ -5606,6 +5617,50 @@ literal|true
 argument_list|)
 expr_stmt|;
 name|closeDatabaseAction
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Disable actions that need more than one database open.      */
+DECL|method|setOnlyOne ()
+specifier|private
+name|void
+name|setOnlyOne
+parameter_list|()
+block|{
+name|nextTab
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|prevTab
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Disable actions that need more than one database open.      */
+DECL|method|setMultiple ()
+specifier|private
+name|void
+name|setMultiple
+parameter_list|()
+block|{
+name|nextTab
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|prevTab
 operator|.
 name|setEnabled
 argument_list|(
@@ -5817,6 +5872,21 @@ literal|1
 condition|)
 block|{
 name|setNonEmptyState
+argument_list|()
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|tabbedPane
+operator|.
+name|getTabCount
+argument_list|()
+operator|==
+literal|2
+condition|)
+block|{
+name|setMultiple
 argument_list|()
 expr_stmt|;
 block|}
@@ -6246,6 +6316,21 @@ literal|0
 condition|)
 block|{
 name|setEmptyState
+argument_list|()
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|tabbedPane
+operator|.
+name|getTabCount
+argument_list|()
+operator|==
+literal|1
+condition|)
+block|{
+name|setOnlyOne
 argument_list|()
 expr_stmt|;
 block|}
@@ -7658,7 +7743,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"New subdatabase"
+literal|"New subdatabase based on AUX file"
 argument_list|)
 argument_list|,
 operator|new
