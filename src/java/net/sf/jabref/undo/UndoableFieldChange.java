@@ -158,6 +158,12 @@ expr_stmt|;
 comment|// Revert the change.
 try|try
 block|{
+if|if
+condition|(
+name|oldValue
+operator|!=
+literal|null
+condition|)
 name|entry
 operator|.
 name|setField
@@ -165,6 +171,14 @@ argument_list|(
 name|field
 argument_list|,
 name|oldValue
+argument_list|)
+expr_stmt|;
+else|else
+name|entry
+operator|.
+name|clearField
+argument_list|(
+name|field
 argument_list|)
 expr_stmt|;
 block|}
@@ -200,6 +214,12 @@ expr_stmt|;
 comment|// Redo the change.
 try|try
 block|{
+if|if
+condition|(
+name|newValue
+operator|!=
+literal|null
+condition|)
 name|entry
 operator|.
 name|setField
@@ -207,6 +227,14 @@ argument_list|(
 name|field
 argument_list|,
 name|newValue
+argument_list|)
+expr_stmt|;
+else|else
+name|entry
+operator|.
+name|clearField
+argument_list|(
+name|field
 argument_list|)
 expr_stmt|;
 block|}
