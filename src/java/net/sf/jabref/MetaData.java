@@ -210,6 +210,7 @@ argument_list|(
 literal|"groupstree"
 argument_list|)
 condition|)
+block|{
 name|putGroups
 argument_list|(
 name|orderedData
@@ -217,7 +218,30 @@ argument_list|,
 name|db
 argument_list|)
 expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|key
+operator|.
+name|equals
+argument_list|(
+literal|"groups"
+argument_list|)
+condition|)
+block|{
+name|groupsRoot
+operator|=
+name|GroupTreeNode
+operator|.
+name|importFlatGroups
+argument_list|(
+name|orderedData
+argument_list|)
+expr_stmt|;
+block|}
 else|else
+block|{
 name|putData
 argument_list|(
 name|key
@@ -225,6 +249,7 @@ argument_list|,
 name|orderedData
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * The MetaData object can be constructed with no data in it.      */
