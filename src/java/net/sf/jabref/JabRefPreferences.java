@@ -3204,6 +3204,15 @@ name|put
 argument_list|(
 literal|"Toggle entry preview"
 argument_list|,
+literal|"ctrl F9"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Switch preview layout"
+argument_list|,
 literal|"F9"
 argument_list|)
 expr_stmt|;

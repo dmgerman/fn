@@ -528,11 +528,7 @@ operator|.
 name|lastModified
 argument_list|()
 expr_stmt|;
-name|tmpFile
-operator|=
-name|getTempFile
-argument_list|()
-expr_stmt|;
+comment|//tmpFile = getTempFile();
 name|copy
 argument_list|()
 expr_stmt|;

@@ -543,11 +543,14 @@ comment|// for the name and message strings.
 comment|// References to the toggle buttons in the toolbar:
 DECL|field|groupToggle
 DECL|field|searchToggle
+DECL|field|previewToggle
 specifier|public
 name|JToggleButton
 name|groupToggle
 decl_stmt|,
 name|searchToggle
+decl_stmt|,
+name|previewToggle
 decl_stmt|;
 name|AbstractAction
 DECL|field|open
@@ -1194,11 +1197,35 @@ literal|"togglePreview"
 argument_list|,
 literal|"Toggle entry preview"
 argument_list|,
+literal|"Toggle entry preview"
+argument_list|,
+name|GUIGlobals
+operator|.
+name|previewIconFile
+argument_list|,
 name|prefs
 operator|.
 name|getKey
 argument_list|(
 literal|"Toggle entry preview"
+argument_list|)
+argument_list|)
+decl_stmt|,
+DECL|field|switchPreview
+name|switchPreview
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"switchPreview"
+argument_list|,
+literal|"Switch preview layout"
+argument_list|,
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Switch preview layout"
 argument_list|)
 argument_list|)
 decl_stmt|,
@@ -1752,6 +1779,15 @@ name|isPanelVisible
 argument_list|(
 literal|"search"
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|previewToggle
+operator|.
+name|setSelected
+argument_list|(
+name|bp
+operator|.
+name|previewEnabled
 argument_list|)
 expr_stmt|;
 name|Globals
@@ -4136,7 +4172,7 @@ name|view
 operator|.
 name|add
 argument_list|(
-name|toggleGroups
+name|switchPreview
 argument_list|)
 expr_stmt|;
 name|mb
@@ -4617,6 +4653,35 @@ operator|.
 name|add
 argument_list|(
 name|groupToggle
+argument_list|)
+expr_stmt|;
+name|previewToggle
+operator|=
+operator|new
+name|JToggleButton
+argument_list|(
+name|togglePreview
+argument_list|)
+expr_stmt|;
+name|previewToggle
+operator|.
+name|setText
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+name|previewToggle
+operator|.
+name|setMargin
+argument_list|(
+name|marg
+argument_list|)
+expr_stmt|;
+name|tlb
+operator|.
+name|add
+argument_list|(
+name|previewToggle
 argument_list|)
 expr_stmt|;
 name|tlb
