@@ -104,6 +104,9 @@ operator|.
 name|field
 operator|=
 name|field
+operator|.
+name|toLowerCase
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
