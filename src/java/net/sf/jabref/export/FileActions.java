@@ -28,23 +28,11 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
 operator|.
-name|TreeSet
+name|Iterator
 import|;
 end_import
 
@@ -64,9 +52,25 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
+name|TreeSet
 import|;
 end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|*
+import|;
+end_import
+
+begin_comment
+comment|/**  * DOCUMENT ME!  *  * @author $author$  * @version $Revision$  */
+end_comment
 
 begin_class
 DECL|class|FileActions
@@ -74,7 +78,8 @@ specifier|public
 class|class
 name|FileActions
 block|{
-comment|/**      * Saves the database to file. Two boolean values indicate whether       * only entries with a nonzero Globals.SEARCH value and only      * entries with a nonzero Globals.GROUPSEARCH value should be      * saved. This can be used to let the user save only the results of       * a search. False and false means all entries are saved.      */
+comment|//~ Methods ////////////////////////////////////////////////////////////////
+comment|/**      * Saves the database to file. Two boolean values indicate whether      * only entries with a nonzero Globals.SEARCH value and only      * entries with a nonzero Globals.GROUPSEARCH value should be      * saved. This can be used to let the user save only the results of      * a search. False and false means all entries are saved.      */
 DECL|method|saveDatabase (BibtexDatabase database, MetaData metaData, File file, JabRefPreferences prefs, boolean checkSearch, boolean checkGroup)
 specifier|public
 specifier|static
@@ -116,7 +121,8 @@ name|file
 operator|.
 name|getName
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|String
 name|path
 init|=
 name|file
@@ -171,6 +177,7 @@ operator|.
 name|exists
 argument_list|()
 condition|)
+block|{
 name|back
 operator|.
 name|renameTo
@@ -178,6 +185,7 @@ argument_list|(
 name|temp
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|file
@@ -185,6 +193,7 @@ operator|.
 name|exists
 argument_list|()
 condition|)
+block|{
 name|file
 operator|.
 name|renameTo
@@ -192,6 +201,7 @@ argument_list|(
 name|back
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|temp
@@ -199,11 +209,13 @@ operator|.
 name|exists
 argument_list|()
 condition|)
+block|{
 name|temp
 operator|.
 name|delete
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -214,6 +226,7 @@ operator|.
 name|exists
 argument_list|()
 condition|)
+block|{
 name|file
 operator|.
 name|renameTo
@@ -221,6 +234,7 @@ argument_list|(
 name|temp
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Define our data stream.
 name|FileWriter
@@ -372,7 +386,12 @@ name|get
 argument_list|(
 literal|"priSort"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+comment|// Write database entries. Take care, using CrossRefEntry-
+comment|// Comparator, that referred entries occur after referring
+comment|// ones. Apart from crossref requirements, entries will be
+comment|// sorted as they appear on the screen.
+name|String
 name|sec
 init|=
 name|prefs
@@ -381,7 +400,12 @@ name|get
 argument_list|(
 literal|"secSort"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+comment|// Write database entries. Take care, using CrossRefEntry-
+comment|// Comparator, that referred entries occur after referring
+comment|// ones. Apart from crossref requirements, entries will be
+comment|// sorted as they appear on the screen.
+name|String
 name|ter
 init|=
 name|prefs
@@ -544,10 +568,12 @@ operator|.
 name|SEARCH
 argument_list|)
 condition|)
+block|{
 name|write
 operator|=
 literal|false
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|checkGroup
@@ -562,10 +588,12 @@ operator|.
 name|GROUPSEARCH
 argument_list|)
 condition|)
+block|{
 name|write
 operator|=
 literal|false
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|write
@@ -596,6 +624,7 @@ name|metaData
 operator|!=
 literal|null
 condition|)
+block|{
 name|metaData
 operator|.
 name|writeMetaData
@@ -603,6 +632,7 @@ argument_list|(
 name|fw
 argument_list|)
 expr_stmt|;
+block|}
 name|fw
 operator|.
 name|close
@@ -628,7 +658,9 @@ name|file
 operator|.
 name|getName
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+comment|// Repair the file with our temp file since saving failed.
+name|String
 name|path
 init|=
 name|file
@@ -650,7 +682,8 @@ name|GUIGlobals
 operator|.
 name|tempExt
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|File
 name|back
 init|=
 operator|new
@@ -672,11 +705,13 @@ operator|.
 name|exists
 argument_list|()
 condition|)
+block|{
 name|file
 operator|.
 name|delete
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|temp
@@ -684,6 +719,7 @@ operator|.
 name|exists
 argument_list|()
 condition|)
+block|{
 name|temp
 operator|.
 name|renameTo
@@ -691,7 +727,9 @@ argument_list|(
 name|file
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|back
 operator|.
 name|renameTo
@@ -699,6 +737,7 @@ argument_list|(
 name|file
 argument_list|)
 expr_stmt|;
+block|}
 throw|throw
 operator|new
 name|SaveException
@@ -762,6 +801,18 @@ return|;
 block|}
 block|}
 end_class
+
+begin_comment
+comment|///////////////////////////////////////////////////////////////////////////////
+end_comment
+
+begin_comment
+comment|//  END OF FILE.
+end_comment
+
+begin_comment
+comment|///////////////////////////////////////////////////////////////////////////////
+end_comment
 
 end_unit
 

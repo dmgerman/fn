@@ -4,7 +4,7 @@ comment|/* Copyright (C) 2003 Morten O. Alver All programs in this directory and
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.export
+DECL|package|net.sf.jabref.export.layout
 package|package
 name|net
 operator|.
@@ -13,6 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|export
+operator|.
+name|layout
 package|;
 end_package
 
@@ -21,25 +23,20 @@ comment|/**  * DOCUMENT ME!  *  * @author $author$  * @version $Revision$  */
 end_comment
 
 begin_interface
-DECL|interface|FieldFormatter
+DECL|interface|LayoutFormatter
 specifier|public
 interface|interface
-name|FieldFormatter
+name|LayoutFormatter
 block|{
 comment|//~ Methods ////////////////////////////////////////////////////////////////
-DECL|method|format (String s, boolean standardBibtex)
+DECL|method|format (String fieldText)
 specifier|public
 name|String
 name|format
 parameter_list|(
 name|String
-name|s
-parameter_list|,
-name|boolean
-name|standardBibtex
+name|fieldText
 parameter_list|)
-throws|throws
-name|IllegalArgumentException
 function_decl|;
 block|}
 end_interface

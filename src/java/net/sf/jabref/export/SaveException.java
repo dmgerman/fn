@@ -40,11 +40,13 @@ name|SaveException
 extends|extends
 name|Throwable
 block|{
+comment|//~ Instance fields ////////////////////////////////////////////////////////
 DECL|field|entry
 specifier|private
 name|BibtexEntry
 name|entry
 decl_stmt|;
+comment|//~ Constructors ///////////////////////////////////////////////////////////
 DECL|method|SaveException (String message)
 specifier|public
 name|SaveException
@@ -86,6 +88,17 @@ operator|=
 name|entry
 expr_stmt|;
 block|}
+comment|//~ Methods ////////////////////////////////////////////////////////////////
+DECL|method|getEntry ()
+specifier|public
+name|BibtexEntry
+name|getEntry
+parameter_list|()
+block|{
+return|return
+name|entry
+return|;
+block|}
 DECL|method|specificEntry ()
 specifier|public
 name|boolean
@@ -100,18 +113,20 @@ literal|null
 operator|)
 return|;
 block|}
-DECL|method|getEntry ()
-specifier|public
-name|BibtexEntry
-name|getEntry
-parameter_list|()
-block|{
-return|return
-name|entry
-return|;
-block|}
 block|}
 end_class
+
+begin_comment
+comment|///////////////////////////////////////////////////////////////////////////////
+end_comment
+
+begin_comment
+comment|//  END OF FILE.
+end_comment
+
+begin_comment
+comment|///////////////////////////////////////////////////////////////////////////////
+end_comment
 
 end_unit
 
