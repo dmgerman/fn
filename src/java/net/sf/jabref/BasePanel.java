@@ -430,6 +430,11 @@ name|sortingByGroup
 init|=
 literal|false
 decl_stmt|,
+DECL|field|sortingByCiteSeerResults
+name|sortingByCiteSeerResults
+init|=
+literal|false
+decl_stmt|,
 DECL|field|coloringByGroup
 name|coloringByGroup
 init|=
