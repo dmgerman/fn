@@ -1023,9 +1023,6 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-operator|.
-name|toLowerCase
-argument_list|()
 expr_stmt|;
 break|break;
 default|default:
