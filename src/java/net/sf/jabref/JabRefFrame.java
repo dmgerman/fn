@@ -244,6 +244,18 @@ argument_list|,
 name|prefs
 argument_list|)
 decl_stmt|;
+DECL|field|fileHistory
+name|FileHistory
+name|fileHistory
+init|=
+operator|new
+name|FileHistory
+argument_list|(
+name|prefs
+argument_list|,
+name|this
+argument_list|)
+decl_stmt|;
 DECL|field|labelMaker
 name|LabelMaker
 name|labelMaker
@@ -2079,11 +2091,7 @@ name|file
 operator|.
 name|add
 argument_list|(
-operator|new
-name|FileHistory
-argument_list|(
-name|prefs
-argument_list|)
+name|fileHistory
 argument_list|)
 expr_stmt|;
 name|file
@@ -2102,56 +2110,11 @@ comment|//==============================
 comment|// NB: I added this because my frame borders are so tiny that I cannot click
 comment|// on the "x" close button. Anyways, I think it is good to have and "exit" button
 comment|// I was too lazy to make a new ExitAction
-name|JMenuItem
-name|exit_mItem
-init|=
-operator|new
-name|JMenuItem
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Exit"
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|exit_mItem
-operator|.
-name|setAccelerator
-argument_list|(
-name|KeyStroke
-operator|.
-name|getKeyStroke
-argument_list|(
-name|KeyEvent
-operator|.
-name|VK_Q
-argument_list|,
-name|KeyEvent
-operator|.
-name|CTRL_MASK
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|//Ctrl-Q to exit
+comment|//JMenuItem exit_mItem = new JMenuItem(Globals.lang("Exit"));
+comment|//exit_mItem.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Q, KeyEvent.CTRL_MASK)); //Ctrl-Q to exit
 comment|// above keybinding should be from user define
-name|exit_mItem
-operator|.
-name|addActionListener
-argument_list|(
-operator|new
-name|CloseAction
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|file
-operator|.
-name|add
-argument_list|(
-name|exit_mItem
-argument_list|)
-expr_stmt|;
+comment|//exit_mItem.addActionListener(new CloseAction() );
+comment|//file.add( exit_mItem);
 comment|//=====================================
 name|file
 operator|.
@@ -3028,6 +2991,11 @@ name|names
 argument_list|)
 expr_stmt|;
 block|}
+name|fileHistory
+operator|.
+name|storeHistory
+argument_list|()
+expr_stmt|;
 block|}
 comment|// Let the search interface store changes to prefs.
 name|searchManager
@@ -3436,9 +3404,46 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Run the actual open in a thread to prevent the program
+comment|// locking until the file is loaded.
+if|if
+condition|(
+name|fileToOpen
+operator|!=
+literal|null
+condition|)
+block|{
+operator|(
+operator|new
+name|Thread
+argument_list|()
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
 name|openIt
 argument_list|()
 expr_stmt|;
+block|}
+block|}
+operator|)
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+name|fileHistory
+operator|.
+name|newFile
+argument_list|(
+name|fileToOpen
+operator|.
+name|getPath
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|openIt ()
 specifier|public
@@ -3518,7 +3523,7 @@ argument_list|,
 name|prefs
 argument_list|)
 decl_stmt|;
-comment|/* 						  if (prefs.getBoolean("autoComplete")) { 						  db.setCompleters(autoCompleters); 						  } 						*/
+comment|/* 		      if (prefs.getBoolean("autoComplete")) { 		      db.setCompleters(autoCompleters); 		      } 		    */
 name|tabbedPane
 operator|.
 name|add
@@ -3686,7 +3691,7 @@ literal|"New database created."
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/* 				  if (prefs.getBoolean("autoComplete")) 				  db.setCompleters(autoCompleters);*/
+comment|/* 	      if (prefs.getBoolean("autoComplete")) 	      db.setCompleters(autoCompleters);*/
 block|}
 block|}
 comment|// The action for opening the preferences dialog.
@@ -4138,7 +4143,70 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|//give message loaded succesfully
+name|HashMap
+name|meta
+init|=
+operator|new
+name|HashMap
+argument_list|()
+decl_stmt|;
+comment|// Metadata are only put in bibtex files, so we will not find it
+comment|// in imported files. Instead we pass an empty HashMap.
+name|BasePanel
+name|bp
+init|=
+operator|new
+name|BasePanel
+argument_list|(
+name|ths
+argument_list|,
+name|database
+argument_list|,
+literal|null
+argument_list|,
+name|meta
+argument_list|,
+name|prefs
+argument_list|)
+decl_stmt|;
+comment|/* 			  if (prefs.getBoolean("autoComplete")) { 			  db.setCompleters(autoCompleters); 			  } 			*/
+name|tabbedPane
+operator|.
+name|add
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"untitled"
+argument_list|)
+argument_list|,
+name|bp
+argument_list|)
+expr_stmt|;
+name|tabbedPane
+operator|.
+name|setSelectedComponent
+argument_list|(
+name|bp
+argument_list|)
+expr_stmt|;
+name|output
+argument_list|(
+literal|"Imported database '"
+operator|+
+name|filename
+operator|+
+literal|"' with "
+operator|+
+name|database
+operator|.
+name|getEntryCount
+argument_list|()
+operator|+
+literal|" entries."
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|setUpImportMenu (JMenu importMenu)
 specifier|private
