@@ -6043,13 +6043,7 @@ name|newInstance
 argument_list|()
 decl_stmt|;
 comment|// Configure the factory object to specify attributes of the parsers it creates
-name|parserFactory
-operator|.
-name|setValidating
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
+comment|// parserFactory.setValidating(true);
 name|parserFactory
 operator|.
 name|setNamespaceAware
