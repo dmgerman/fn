@@ -518,9 +518,10 @@ operator|.
 name|rejectDrop
 argument_list|()
 expr_stmt|;
-comment|// JZTODO invokeLater: error message
+comment|// JZTODO invokeLater: error message; e.g. status line
 return|return;
 block|}
+comment|// JZTODO: the actual moving should be done by the GroupSelector
 name|target
 operator|.
 name|add

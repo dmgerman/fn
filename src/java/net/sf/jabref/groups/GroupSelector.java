@@ -2936,6 +2936,8 @@ name|Enumeration
 name|expandedNodes
 parameter_list|)
 block|{
+comment|// JZTODO: calls to this method may modify the current selection and
+comment|// expasion state in an undesirable way. this must be checked and fixed...
 name|groupsTreeModel
 operator|.
 name|reload
@@ -3002,6 +3004,8 @@ name|void
 name|revalidateGroups
 parameter_list|()
 block|{
+comment|// JZTODO: calls to this method may modify the current selection and
+comment|// expasion state in an undesirable way. this must be checked and fixed...
 name|revalidateGroups
 argument_list|(
 name|groupsTree
