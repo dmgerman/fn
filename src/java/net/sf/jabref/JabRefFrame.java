@@ -3796,6 +3796,68 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * This method causes all open BasePanels to set up their tables      * anew. When called from PrefsDialog2, this updates to the new      * settings.      */
+DECL|method|setupAllTables ()
+specifier|public
+name|void
+name|setupAllTables
+parameter_list|()
+block|{
+comment|// This action can be invoked without an open database, so
+comment|// we have to check if we have one before trying to invoke
+comment|// methods to execute changes in the preferences.
+comment|// We want to notify all tabs about the changes to
+comment|// avoid problems when changing the column set.
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|tabbedPane
+operator|.
+name|getTabCount
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|BasePanel
+name|bf
+init|=
+name|baseAt
+argument_list|(
+name|i
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|bf
+operator|.
+name|database
+operator|!=
+literal|null
+condition|)
+block|{
+name|bf
+operator|.
+name|entryTable
+operator|.
+name|updateFont
+argument_list|()
+expr_stmt|;
+name|bf
+operator|.
+name|setupTable
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+block|}
 DECL|method|loadDatabase (File fileToOpen)
 specifier|protected
 name|ParserResult
@@ -5386,60 +5448,6 @@ operator|.
 name|show
 argument_list|()
 expr_stmt|;
-comment|// This action can be invoked without an open database, so
-comment|// we have to check if we have one before trying to invoke
-comment|// methods to execute changes in the preferences.
-comment|// We want to notify all tabs about the changes to
-comment|// avoid problems when changing the column set.
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|tabbedPane
-operator|.
-name|getTabCount
-argument_list|()
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|BasePanel
-name|bf
-init|=
-name|baseAt
-argument_list|(
-name|i
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|bf
-operator|.
-name|database
-operator|!=
-literal|null
-condition|)
-block|{
-name|bf
-operator|.
-name|entryTable
-operator|.
-name|updateFont
-argument_list|()
-expr_stmt|;
-name|bf
-operator|.
-name|setupTable
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 block|}
 block|}
 DECL|field|aboutAction

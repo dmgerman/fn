@@ -306,6 +306,8 @@ operator|new
 name|TablePrefsTab
 argument_list|(
 name|_prefs
+argument_list|,
+name|parent
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -456,6 +458,11 @@ name|storeSettings
 argument_list|()
 expr_stmt|;
 block|}
+name|frame
+operator|.
+name|setupAllTables
+argument_list|()
+expr_stmt|;
 name|frame
 operator|.
 name|output
