@@ -542,14 +542,30 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"subdatabase_from_aux"
+literal|"Subdatabase from aux"
 argument_list|)
 operator|+
 literal|": "
 operator|+
-literal|"file[.aux]"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"file"
+argument_list|)
 operator|+
-literal|",new[.bib]"
+literal|"[.aux]"
+operator|+
+literal|","
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"new"
+argument_list|)
+operator|+
+literal|"[.bib]"
 argument_list|,
 name|auxImExport
 argument_list|)
@@ -1844,6 +1860,13 @@ name|importPrefs
 operator|.
 name|getStringValue
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|BibtexEntryType
+operator|.
+name|loadCustomEntryTypes
+argument_list|(
+name|prefs
 argument_list|)
 expr_stmt|;
 block|}

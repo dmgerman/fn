@@ -1722,6 +1722,14 @@ name|META_FLAG_OLD
 init|=
 literal|"bibkeeper-meta: "
 decl_stmt|;
+DECL|field|ENTRYTYPE_FLAG
+specifier|public
+specifier|static
+name|String
+name|ENTRYTYPE_FLAG
+init|=
+literal|"jabref-entrytype: "
+decl_stmt|;
 DECL|field|KEY_FIELD
 specifier|public
 specifier|static

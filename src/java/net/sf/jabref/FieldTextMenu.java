@@ -566,7 +566,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"Paste from clipboard"
+literal|"Paste"
 argument_list|,
 literal|"Paste from clipboard"
 argument_list|,
@@ -661,7 +661,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"Copy to clipboard"
+literal|"Copy"
 argument_list|,
 literal|"Copy to clipboard"
 argument_list|,
