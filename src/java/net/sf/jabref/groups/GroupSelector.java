@@ -1795,7 +1795,7 @@ argument_list|(
 name|groupsTree
 argument_list|)
 expr_stmt|;
-comment|// JZTODO JZPUWIL: drag and drop...
+comment|// JZPUWIL: drag and drop...
 name|DragSource
 operator|.
 name|getDefaultDragSource
@@ -2826,7 +2826,6 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-comment|// JZTODO: null OK?
 block|}
 elseif|else
 if|if
@@ -3015,7 +3014,6 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-comment|// JZTODO: null OK?
 block|}
 block|}
 DECL|method|componentOpening ()
@@ -3029,7 +3027,6 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-comment|// JZTODO: null OK?
 block|}
 DECL|method|componentClosing ()
 specifier|public
