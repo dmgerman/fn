@@ -98,6 +98,18 @@ name|ImportFormatReader
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
 comment|/**  *   * @author Ulrik Stervbo (ulriks AT ruc.dk)  */
 end_comment
@@ -597,10 +609,13 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-comment|// here we make sure the key is unique
+comment|/** 		 * Edited by Morten Alver 2004.02.04. 		 * 		 * We now have a system for easing key duplicate prevention, so 		 * I am changing this method to conform to it. 		 *     		 // here we make sure the key is unique		 		   _label = makeLabelUnique(_sb.toString());				 		   _entry.setField(Globals.KEY_FIELD, _label);		 		   return _entry; 		*/
+comment|// Remove all illegal characters from the key.
 name|_label
 operator|=
-name|makeLabelUnique
+name|Util
+operator|.
+name|checkLegalKey
 argument_list|(
 name|_sb
 operator|.
@@ -608,20 +623,67 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Try new keys until we get a unique one:
+if|if
+condition|(
+name|_db
+operator|.
+name|setCiteKeyForEntry
+argument_list|(
 name|_entry
 operator|.
-name|setField
-argument_list|(
-name|Globals
-operator|.
-name|KEY_FIELD
+name|getId
+argument_list|()
 argument_list|,
 name|_label
 argument_list|)
+condition|)
+block|{
+name|char
+name|c
+init|=
+literal|'b'
+decl_stmt|;
+name|String
+name|modKey
+init|=
+name|_label
+operator|+
+literal|"a"
+decl_stmt|;
+while|while
+condition|(
+name|_db
+operator|.
+name|setCiteKeyForEntry
+argument_list|(
+name|_entry
+operator|.
+name|getId
+argument_list|()
+argument_list|,
+name|modKey
+argument_list|)
+condition|)
+name|modKey
+operator|=
+name|_label
+operator|+
+operator|(
+call|(
+name|char
+call|)
+argument_list|(
+name|c
+operator|++
+argument_list|)
+operator|)
 expr_stmt|;
+block|}
 return|return
 name|_entry
 return|;
+comment|/** End of edit, Morten Alver 2004.02.04.  */
 block|}
 comment|/** 	 * This method returns a truely unique label (in the BibtexDatabase), by taking a  	 * label and add the letters a-z until a unique key is found. 	 * @param key a<code>String</code> 	 * @return a unique label 	 */
 DECL|method|makeLabelUnique (String label)

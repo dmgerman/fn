@@ -310,7 +310,24 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//tabbed.addTab(Globals.lang("External programs"), new ExternalProgramsTab(_prefs));
-comment|//tabbed.addTab("Label Pattern", new TabLabelPattern(_prefs));
+name|tabbed
+operator|.
+name|addTab
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Key Pattern"
+argument_list|)
+argument_list|,
+operator|new
+name|TabLabelPattern
+argument_list|(
+name|_prefs
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|JButton
 name|ok
 init|=
