@@ -474,7 +474,7 @@ argument_list|(
 literal|"Available import formats"
 argument_list|)
 operator|+
-literal|": biblioscape, bibtexml, endnote, inspec,\n\tisi, medline, ovid, ris, scifinder, sixpack."
+literal|": biblioscape, bibtexml, endnote, inspec,\n\tisi, medline, ovid, ris, scifinder, sixpack, jstor."
 argument_list|)
 expr_stmt|;
 comment|// To specify export formats, we need to take the custom export formats into account.
@@ -773,23 +773,23 @@ block|{
 try|try
 block|{
 comment|//Class plastic = Class.forName("com.jgoodies.plaf.plastic.PlasticLookAndFeel");
-comment|//LookAndFeel lnf = new com.jgoodies.plaf.plastic.Plastic3DLookAndFeel();
-comment|//LookAndFeel lnf = new com.sun.java.swing.plaf.gtk.GTKLookAndFeel();
 name|LookAndFeel
 name|lnf
 init|=
 operator|new
 name|com
 operator|.
-name|incors
+name|jgoodies
 operator|.
 name|plaf
 operator|.
-name|kunststoff
+name|plastic
 operator|.
-name|KunststoffLookAndFeel
+name|Plastic3DLookAndFeel
 argument_list|()
 decl_stmt|;
+comment|//LookAndFeel lnf = new com.sun.java.swing.plaf.gtk.GTKLookAndFeel();
+comment|//LookAndFeel lnf = new com.incors.plaf.kunststoff.KunststoffLookAndFeel();
 comment|//com.incors.plaf.kunststoff.KunststoffLookAndFeel.setCurrentTheme(new com.incors.plaf.kunststoff.themes.KunststoffDesktopTheme());
 name|UIManager
 operator|.

@@ -90,6 +90,14 @@ operator|new
 name|Vector
 argument_list|()
 decl_stmt|;
+DECL|field|encoding
+specifier|private
+name|String
+name|encoding
+init|=
+literal|null
+decl_stmt|;
+comment|// Which encoding was used?
 DECL|method|ParserResult (BibtexDatabase base, HashMap metaData)
 specifier|public
 name|ParserResult
@@ -157,6 +165,32 @@ name|file
 operator|=
 name|f
 expr_stmt|;
+block|}
+comment|/**      * Sets the variable indicating which encoding was used during parsing.      *      * @param enc String the name of the encoding.      */
+DECL|method|setEncoding (String enc)
+specifier|public
+name|void
+name|setEncoding
+parameter_list|(
+name|String
+name|enc
+parameter_list|)
+block|{
+name|encoding
+operator|=
+name|enc
+expr_stmt|;
+block|}
+comment|/**      * Returns the name of the encoding used during parsing, or null if not specified      * (indicates that prefs.get("defaultEncoding") was used).      */
+DECL|method|getEncoding ()
+specifier|public
+name|String
+name|getEncoding
+parameter_list|()
+block|{
+return|return
+name|encoding
+return|;
 block|}
 comment|/**      * Add a parser warning.      *      * @param s String Warning text. Must be pretranslated.      */
 DECL|method|addWarning (String s)

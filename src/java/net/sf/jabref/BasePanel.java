@@ -289,6 +289,12 @@ init|=
 literal|null
 decl_stmt|;
 comment|// The filename of the database.
+DECL|field|encoding
+name|String
+name|encoding
+init|=
+literal|null
+decl_stmt|;
 comment|//Hashtable autoCompleters = new Hashtable();
 comment|// Hashtable that holds as keys the names of the fields where
 comment|// autocomplete is active, and references to the autocompleter objects.
@@ -629,6 +635,7 @@ specifier|abstract
 class|class
 name|BaseAction
 block|{
+comment|//implements Runnable {
 DECL|method|action ()
 specifier|abstract
 name|void
@@ -2914,7 +2921,23 @@ condition|)
 block|{
 name|output
 argument_list|(
-literal|"ERROR: verify that LyX is running and that the lyxpipe is valid. ["
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Error"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"verify that LyX is running and that the lyxpipe is valid"
+argument_list|)
+operator|+
+literal|". ["
 operator|+
 name|prefs
 operator|.
@@ -2928,6 +2951,13 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+name|Util
+operator|.
+name|pr
+argument_list|(
+literal|"tre"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|numSelected
@@ -2937,19 +2967,45 @@ condition|)
 block|{
 try|try
 block|{
+name|Util
+operator|.
+name|pr
+argument_list|(
+literal|"fil"
+argument_list|)
+expr_stmt|;
+name|FileWriter
+name|fw
+init|=
+operator|new
+name|FileWriter
+argument_list|(
+name|lyxpipe
+argument_list|)
+decl_stmt|;
+name|Util
+operator|.
+name|pr
+argument_list|(
+literal|"fil pluss"
+argument_list|)
+expr_stmt|;
 name|BufferedWriter
 name|lyx_out
 init|=
 operator|new
 name|BufferedWriter
 argument_list|(
-operator|new
-name|FileWriter
-argument_list|(
-name|lyxpipe
-argument_list|)
+name|fw
 argument_list|)
 decl_stmt|;
+name|Util
+operator|.
+name|pr
+argument_list|(
+literal|"fem"
+argument_list|)
+expr_stmt|;
 name|String
 name|citeStr
 init|=
@@ -2978,6 +3034,15 @@ name|i
 operator|++
 control|)
 block|{
+name|Util
+operator|.
+name|pr
+argument_list|(
+literal|":"
+operator|+
+name|i
+argument_list|)
+expr_stmt|;
 name|bes
 operator|=
 name|database
@@ -6327,17 +6392,25 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * This method is called from JabRefFrame is a database specific      * action is requested by the user. Runs the command if it is      * defined, or prints an error message to the standard error      * stream.      *      * @param command The name of the command to run.     */
-DECL|method|runCommand (String command)
+DECL|method|runCommand (String _command)
 specifier|public
 name|void
 name|runCommand
 parameter_list|(
 name|String
-name|command
+name|_command
 parameter_list|)
 throws|throws
 name|Throwable
 block|{
+specifier|final
+name|String
+name|command
+init|=
+name|_command
+decl_stmt|;
+comment|//(new Thread() {
+comment|//  public void run() {
 if|if
 condition|(
 name|actions
@@ -6361,6 +6434,8 @@ literal|"'"
 argument_list|)
 expr_stmt|;
 else|else
+try|try
+block|{
 operator|(
 operator|(
 name|BaseAction
@@ -6376,6 +6451,15 @@ operator|.
 name|action
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|ex
+parameter_list|)
+block|{              }
+comment|//  }
+comment|//}).start();
 block|}
 DECL|method|saveDatabase (File file, boolean selectedOnly)
 specifier|private

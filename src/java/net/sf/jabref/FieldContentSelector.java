@@ -194,6 +194,12 @@ name|GridBagConstraints
 operator|.
 name|HORIZONTAL
 expr_stmt|;
+name|con
+operator|.
+name|weightx
+operator|=
+literal|1
+expr_stmt|;
 name|gbl
 operator|.
 name|setConstraints
@@ -228,7 +234,6 @@ literal|"Manage"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//manage.setBackground(GUIGlobals.lightGray);
 name|gbl
 operator|.
 name|setConstraints

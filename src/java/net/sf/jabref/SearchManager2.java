@@ -1437,12 +1437,11 @@ name|hasFocus
 argument_list|()
 condition|)
 block|{
+comment|//searchField.setText("");
 name|searchField
 operator|.
-name|setText
-argument_list|(
-literal|""
-argument_list|)
+name|selectAll
+argument_list|()
 expr_stmt|;
 name|searchField
 operator|.
