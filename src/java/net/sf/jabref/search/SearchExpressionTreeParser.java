@@ -435,7 +435,7 @@ operator|.
 name|getType
 argument_list|()
 operator|<=
-name|LITERAL_matches
+name|ExpressionSearch
 operator|)
 operator|)
 condition|)
@@ -607,7 +607,7 @@ operator|.
 name|getType
 argument_list|()
 operator|<=
-name|LITERAL_matches
+name|ExpressionSearch
 operator|)
 operator|)
 condition|)
@@ -953,7 +953,6 @@ operator|.
 name|getPattern
 argument_list|()
 decl_stmt|;
-comment|//System.out.println("title="+fieldSpec.matcher("title").matches());
 name|int
 name|pseudoField
 init|=
@@ -987,7 +986,7 @@ name|content
 init|=
 literal|""
 decl_stmt|;
-comment|//null;
+comment|// null; (Changed 2004.06.03, Morten A.)
 switch|switch
 condition|(
 name|i
@@ -1080,7 +1079,6 @@ literal|""
 operator|)
 expr_stmt|;
 block|}
-comment|//System.out.println("SearchExpressionTree, 182: "+searchKeys[i].toString()+" "+bibtexEntry.getField(searchKeys[i].toString()));
 block|}
 name|Matcher
 name|matcher
@@ -1467,7 +1465,7 @@ literal|"\"not\""
 block|,
 literal|"\"contains\""
 block|,
-literal|"\"equals\""
+literal|"\"matches\""
 block|,
 literal|"white space"
 block|,
@@ -1498,8 +1496,6 @@ block|,
 literal|"Not"
 block|,
 literal|"ExpressionSearch"
-block|,
-literal|"LITERAL_matches"
 block|}
 decl_stmt|;
 block|}

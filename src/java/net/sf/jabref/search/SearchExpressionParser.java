@@ -2801,7 +2801,7 @@ literal|"\"not\""
 block|,
 literal|"\"contains\""
 block|,
-literal|"\"equals\""
+literal|"\"matches\""
 block|,
 literal|"white space"
 block|,
@@ -2832,8 +2832,6 @@ block|,
 literal|"Not"
 block|,
 literal|"ExpressionSearch"
-block|,
-literal|"LITERAL_matches"
 block|}
 decl_stmt|;
 DECL|method|buildTokenTypeASTClassMap ()
@@ -2899,7 +2897,7 @@ index|[]
 name|data
 init|=
 block|{
-literal|17134784L
+literal|357824L
 block|,
 literal|0L
 block|}
@@ -2936,7 +2934,7 @@ index|[]
 name|data
 init|=
 block|{
-literal|16806016L
+literal|29056L
 block|,
 literal|0L
 block|}

@@ -58,9 +58,9 @@ name|LITERAL_contains
 init|=
 literal|7
 decl_stmt|;
-DECL|field|LITERAL_equals
+DECL|field|LITERAL_matches
 name|int
-name|LITERAL_equals
+name|LITERAL_matches
 init|=
 literal|8
 decl_stmt|;
