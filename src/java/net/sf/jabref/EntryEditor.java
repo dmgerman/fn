@@ -3514,9 +3514,12 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|prefs
 operator|.
-name|switchPanelLeft
+name|getKey
+argument_list|(
+literal|"Entry editor, next panel"
+argument_list|)
 argument_list|,
 literal|"left"
 argument_list|)
@@ -3534,9 +3537,12 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|prefs
 operator|.
-name|switchPanelRight
+name|getKey
+argument_list|(
+literal|"Entry editor, previous panel"
+argument_list|)
 argument_list|,
 literal|"right"
 argument_list|)
@@ -3554,9 +3560,12 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|prefs
 operator|.
-name|helpKeyStroke
+name|getKey
+argument_list|(
+literal|"Help"
+argument_list|)
 argument_list|,
 literal|"help"
 argument_list|)

@@ -2614,16 +2614,17 @@ name|put
 argument_list|(
 literal|"Entry editor, next panel"
 argument_list|,
-literal|"ctrl shift Right"
+literal|"ctrl TAB"
 argument_list|)
 expr_stmt|;
+comment|//"shift Right");
 name|defKeyBinds
 operator|.
 name|put
 argument_list|(
 literal|"Entry editor, previous panel"
 argument_list|,
-literal|"ctrl shift Left"
+literal|"ctrl shift TAB"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds
@@ -2743,7 +2744,15 @@ argument_list|,
 literal|"F9"
 argument_list|)
 expr_stmt|;
-comment|//defKeyBinds.put("Edit entry", "ctrl E");
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Edit entry"
+argument_list|,
+literal|"ctrl E"
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getNextUnit (Reader data)
 specifier|private
