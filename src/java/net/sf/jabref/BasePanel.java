@@ -606,10 +606,23 @@ name|prefs
 operator|=
 name|prefs
 expr_stmt|;
+if|if
+condition|(
+name|meta
+operator|!=
+literal|null
+condition|)
 name|parseMetaData
 argument_list|(
 name|meta
 argument_list|)
+expr_stmt|;
+else|else
+name|metaData
+operator|=
+operator|new
+name|MetaData
+argument_list|()
 expr_stmt|;
 name|setupActions
 argument_list|()
@@ -3815,7 +3828,7 @@ name|bes
 init|=
 literal|null
 decl_stmt|;
-comment|/*if (numSelected> 0) { 			int answer = JOptionPane.showConfirmDialog 			    (frame, "Generate bibtex key"+ 			     (numSelected>1 ? "s for the selected " 			      +numSelected+" entries?" : 			      " for the selected entry?"), 			     "Autogenerate Bibtexkey", 			     JOptionPane.YES_NO_CANCEL_OPTION); 			if (answer != JOptionPane.YES_OPTION) { 			    return ;  			    } 			*/
+comment|/*if (numSelected> 0) {                         int answer = JOptionPane.showConfirmDialog                             (frame, "Generate bibtex key"+                              (numSelected>1 ? "s for the selected "                               +numSelected+" entries?" :                               " for the selected entry?"),                              "Autogenerate Bibtexkey",                              JOptionPane.YES_NO_CANCEL_OPTION);                         if (answer != JOptionPane.YES_OPTION) {                             return ;                              }                         */
 if|if
 condition|(
 name|numSelected
@@ -7230,7 +7243,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|/* 	entryTable.getInputMap().put(prefs.getKey("Edit entry"), "Edit"); 	entryTable.getActionMap().put("Edit", new AbstractAction() { 		public void actionPerformed(ActionEvent e) { 		    Util.pr("eueo"); 		    try { runCommand("edit"); 		    } catch (Throwable ex) { 			ex.printStackTrace(); 		    } 		} 	    }); 	*/
+comment|/*         entryTable.getInputMap().put(prefs.getKey("Edit entry"), "Edit");         entryTable.getActionMap().put("Edit", new AbstractAction() {                 public void actionPerformed(ActionEvent e) {                     Util.pr("eueo");                     try { runCommand("edit");                     } catch (Throwable ex) {                         ex.printStackTrace();                     }                 }             });         */
 name|entryTable
 operator|.
 name|addKeyListener
@@ -7383,7 +7396,7 @@ expr_stmt|;
 comment|// We replace the default FocusTraversalPolicy with a subclass
 comment|// that only allows FieldEditor components to gain keyboard focus,
 comment|// if there is an entry editor open.
-comment|/*splitPane.setFocusTraversalPolicy(new LayoutFocusTraversalPolicy() { 		protected boolean accept(Component c) { 		    Util.pr("jaa"); 		    if (showing == null) 			return super.accept(c); 		    else 			return (super.accept(c)&& 				(c instanceof FieldEditor)); 		} 		});*/
+comment|/*splitPane.setFocusTraversalPolicy(new LayoutFocusTraversalPolicy() {                 protected boolean accept(Component c) {                     Util.pr("jaa");                     if (showing == null)                         return super.accept(c);                     else                         return (super.accept(c)&&                                 (c instanceof FieldEditor));                 }                 });*/
 name|setupTable
 argument_list|()
 expr_stmt|;
