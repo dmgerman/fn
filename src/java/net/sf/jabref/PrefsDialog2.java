@@ -330,7 +330,7 @@ name|setSize
 argument_list|(
 literal|440
 argument_list|,
-literal|570
+literal|350
 argument_list|)
 expr_stmt|;
 block|}

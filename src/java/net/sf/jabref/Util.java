@@ -1332,6 +1332,39 @@ name|toString
 argument_list|()
 return|;
 block|}
+comment|/**      * Takes a       *      * @param names a<code>String</code> value      * @return a<code>String[]</code> value      */
+DECL|method|delimToStringArray (String names, String delimiter)
+specifier|public
+specifier|static
+name|String
+index|[]
+name|delimToStringArray
+parameter_list|(
+name|String
+name|names
+parameter_list|,
+name|String
+name|delimiter
+parameter_list|)
+block|{
+if|if
+condition|(
+name|names
+operator|==
+literal|null
+condition|)
+return|return
+literal|null
+return|;
+return|return
+name|names
+operator|.
+name|split
+argument_list|(
+name|delimiter
+argument_list|)
+return|;
+block|}
 comment|/**      * This methods assures all words in the given entry are recorded      * in their respective Completers, if any.      */
 comment|/*    public static void updateCompletersForEntry(Hashtable autoCompleters, 					 BibtexEntry be) {        	for (Iterator j=autoCompleters.keySet().iterator(); 	     j.hasNext();) { 	    String field = (String)j.next(); 	    Completer comp = (Completer)autoCompleters.get(field); 	    comp.addAll(be.getField(field)); 	} 	}*/
 block|}
