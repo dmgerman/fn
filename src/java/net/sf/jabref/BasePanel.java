@@ -8844,6 +8844,8 @@ argument_list|(
 name|form
 argument_list|)
 expr_stmt|;
+comment|//splitPane.revalidate();
+comment|//entryTable.ensureVisible(entryTable.getSelectedRow());
 block|}
 else|else
 block|{
@@ -8882,6 +8884,8 @@ argument_list|(
 name|form
 argument_list|)
 expr_stmt|;
+comment|//splitPane.revalidate();
+comment|//entryTable.ensureVisible(entryTable.getSelectedRow());
 name|entryEditors
 operator|.
 name|put
