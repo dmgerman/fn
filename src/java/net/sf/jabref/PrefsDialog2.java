@@ -114,6 +114,10 @@ operator|new
 name|JTabbedPane
 argument_list|()
 decl_stmt|;
+DECL|field|frame
+name|JabRefFrame
+name|frame
+decl_stmt|;
 DECL|method|PrefsDialog2 (JabRefFrame parent, JabRefPreferences prefs)
 specifier|public
 name|PrefsDialog2
@@ -125,9 +129,27 @@ name|JabRefPreferences
 name|prefs
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|parent
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"JabRef preferences"
+argument_list|)
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
 name|_prefs
 operator|=
 name|prefs
+expr_stmt|;
+name|frame
+operator|=
+name|parent
 expr_stmt|;
 name|getContentPane
 argument_list|()
@@ -148,6 +170,14 @@ operator|.
 name|weightx
 operator|=
 literal|1
+expr_stmt|;
+name|con
+operator|.
+name|fill
+operator|=
+name|GridBagConstraints
+operator|.
+name|BOTH
 expr_stmt|;
 name|con
 operator|.
@@ -338,6 +368,18 @@ name|storeSettings
 argument_list|()
 expr_stmt|;
 block|}
+name|frame
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Preferences recorded."
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|dispose
 argument_list|()
 expr_stmt|;
