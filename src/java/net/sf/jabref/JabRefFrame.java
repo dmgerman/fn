@@ -2785,10 +2785,9 @@ name|e
 parameter_list|)
 block|{
 comment|// JDialog dl = new EntryCustomizationDialog(ths);
-name|GUIGlobals
-operator|.
-name|CURRENTFONT
-operator|=
+name|Font
+name|f
+init|=
 operator|new
 name|FontSelectorDialog
 argument_list|(
@@ -2801,6 +2800,20 @@ argument_list|)
 operator|.
 name|getSelectedFont
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|f
+operator|==
+literal|null
+condition|)
+return|return;
+else|else
+name|GUIGlobals
+operator|.
+name|CURRENTFONT
+operator|=
+name|f
 expr_stmt|;
 comment|// updatefont
 name|prefs
