@@ -1189,6 +1189,7 @@ name|s
 operator|==
 literal|null
 condition|)
+block|{
 name|s
 operator|=
 operator|(
@@ -1201,6 +1202,19 @@ argument_list|(
 name|bindName
 argument_list|)
 expr_stmt|;
+comment|// So, if this happens, we add the default value to the current
+comment|// hashmap, so this doesn't happen again, and so this binding
+comment|// will appear in the KeyBindingsDialog.
+name|keyBinds
+operator|.
+name|put
+argument_list|(
+name|bindName
+argument_list|,
+name|s
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|KeyStroke
 operator|.
@@ -1462,6 +1476,15 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
+literal|"Quit JabRef"
+argument_list|,
+literal|"ctrl Q"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
 literal|"Open"
 argument_list|,
 literal|"ctrl O"
@@ -1474,6 +1497,15 @@ argument_list|(
 literal|"Save"
 argument_list|,
 literal|"ctrl S"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Close database"
+argument_list|,
+literal|"ctrl W"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds

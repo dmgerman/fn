@@ -255,6 +255,13 @@ operator|new
 name|CloseDatabaseAction
 argument_list|()
 decl_stmt|,
+DECL|field|quit
+name|quit
+init|=
+operator|new
+name|CloseAction
+argument_list|()
+decl_stmt|,
 DECL|field|selectKeys
 name|selectKeys
 init|=
@@ -1987,6 +1994,13 @@ argument_list|(
 name|close
 argument_list|)
 expr_stmt|;
+name|file
+operator|.
+name|add
+argument_list|(
+name|quit
+argument_list|)
+expr_stmt|;
 name|mb
 operator|.
 name|add
@@ -2516,6 +2530,18 @@ literal|"Quit JabRef"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|putValue
+argument_list|(
+name|ACCELERATOR_KEY
+argument_list|,
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Quit JabRef"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
@@ -2893,6 +2919,18 @@ operator|.
 name|lang
 argument_list|(
 literal|"Close the current database"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|putValue
+argument_list|(
+name|ACCELERATOR_KEY
+argument_list|,
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Close database"
 argument_list|)
 argument_list|)
 expr_stmt|;
