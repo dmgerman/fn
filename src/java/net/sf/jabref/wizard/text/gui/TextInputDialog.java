@@ -1333,7 +1333,12 @@ name|appRadio
 operator|.
 name|setToolTipText
 argument_list|(
-literal|"append the selected text to bibtex key"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"append_the_selected_text_to_bibtex_key"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|appRadio
@@ -1369,7 +1374,12 @@ name|overRadio
 operator|.
 name|setToolTipText
 argument_list|(
-literal|"override the bibtex key by the selected text"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"override_the_bibtex_key_by_the_selected_text"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|overRadio
@@ -1607,6 +1617,11 @@ argument_list|)
 expr_stmt|;
 comment|// ----------------------------------------------------------------------
 comment|// add a short info, if available
+comment|// load the info text from a help-file, the "normal" translation is
+comment|// to long and unpractical for the properties file (single line)
+comment|// => try to load the help file text, if it fails, show a short text
+comment|//infoText.setText(Globals.lang("This_is_a_simple_copy_and_paste_dialog._First_load_or_paste_some_"
+comment|//        +"text_into_the_text_input_area._After_that,_you_can_mark_text_and_assign_it_to_a_bibtex_field."));
 name|JEditorPane
 name|infoText
 init|=
@@ -1614,6 +1629,81 @@ operator|new
 name|JEditorPane
 argument_list|()
 decl_stmt|;
+name|boolean
+name|loaded
+init|=
+literal|false
+decl_stmt|;
+name|URL
+name|infoURL
+init|=
+name|JabRef
+operator|.
+name|class
+operator|.
+name|getResource
+argument_list|(
+name|GUIGlobals
+operator|.
+name|getLocaleHelpPath
+argument_list|()
+operator|+
+name|GUIGlobals
+operator|.
+name|shortPlainImport
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|infoURL
+operator|!=
+literal|null
+condition|)
+block|{
+try|try
+block|{
+comment|// get the info text from help file
+name|infoText
+operator|.
+name|setPage
+argument_list|(
+name|infoURL
+argument_list|)
+expr_stmt|;
+comment|//infoText.setContentType("text/html");
+name|loaded
+operator|=
+literal|true
+expr_stmt|;
+comment|// text successfully loaded
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{}
+block|}
+if|if
+condition|(
+operator|!
+name|loaded
+condition|)
+comment|// only if no help available
+block|{
+name|infoText
+operator|.
+name|setText
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"This_is_a_simple_copy_and_paste_dialog_for_import_some_fields_from_normal_text."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 name|infoText
 operator|.
 name|setEditable
@@ -1621,8 +1711,6 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-comment|// get the info text
-comment|//infoText.setContentType("text/html");
 name|infoText
 operator|.
 name|setBackground
@@ -1668,20 +1756,6 @@ argument_list|(
 literal|180
 argument_list|,
 literal|50
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|infoText
-operator|.
-name|setText
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"This_is_a_simple_copy_and_paste_dialog._First_load_or_paste_some_"
-operator|+
-literal|"text_into_the_text_input_area._After_that,_you_can_mark_text_and_assign_it_to_a_bibtex_field."
 argument_list|)
 argument_list|)
 expr_stmt|;
