@@ -792,7 +792,7 @@ name|fill
 operator|=
 name|GridBagConstraints
 operator|.
-name|HORIZONTAL
+name|BOTH
 expr_stmt|;
 name|con
 operator|.
@@ -1380,6 +1380,27 @@ name|updatePrefs
 argument_list|()
 expr_stmt|;
 comment|// Make sure the user's choices are recorded.
+if|if
+condition|(
+name|searchField
+operator|.
+name|getText
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|""
+argument_list|)
+condition|)
+block|{
+comment|// An empty search field should cause the search to be cleared.
+name|frame
+operator|.
+name|stopShowingSearchResults
+argument_list|()
+expr_stmt|;
+return|return;
+block|}
 comment|// Setup search parameters common to both highlight and float.
 name|Hashtable
 name|searchOptions
