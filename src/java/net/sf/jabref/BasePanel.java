@@ -3993,6 +3993,40 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Selects a single entry, and scrolls the table to center it.      *      */
+DECL|method|selectSingleEntry (int pos)
+specifier|public
+name|void
+name|selectSingleEntry
+parameter_list|(
+name|int
+name|pos
+parameter_list|)
+block|{
+name|entryTable
+operator|.
+name|clearSelection
+argument_list|()
+expr_stmt|;
+name|entryTable
+operator|.
+name|addRowSelectionInterval
+argument_list|(
+name|pos
+argument_list|,
+name|pos
+argument_list|)
+expr_stmt|;
+name|entryTable
+operator|.
+name|scrollToCenter
+argument_list|(
+name|pos
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|stopShowingSearchResults ()
 specifier|public
 name|void
