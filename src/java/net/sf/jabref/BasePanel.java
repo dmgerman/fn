@@ -10358,16 +10358,7 @@ comment|// Workaround to compensate for not being able to hide non-hits
 comment|// properly while showing groups. The problem is that we don't
 comment|// know how many hits there are - the number reported includes
 comment|// hits outside of the current group selection.
-if|if
-condition|(
-name|sortingByGroup
-condition|)
-block|{
-name|grayOut
-operator|=
-literal|true
-expr_stmt|;
-block|}
+comment|/*if (sortingByGroup) { 	    grayOut = true; 	    }*/
 if|if
 condition|(
 name|searchValueField
@@ -10386,6 +10377,15 @@ operator|=
 name|grayOut
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|searchValueField
+operator|==
+name|Globals
+operator|.
+name|GROUPSEARCH
+condition|)
+block|{
 name|lastSearchHits
 operator|=
 name|numberOfHits
@@ -10397,6 +10397,8 @@ operator|&&
 operator|!
 name|grayOut
 expr_stmt|;
+comment|//System.out.println("BasePanel: hidingNonHits="+hidingNonHits);
+block|}
 comment|// We either gray out, or hide, non-hits.
 comment|//tableModel.remap();
 name|entryTable
@@ -10698,10 +10700,7 @@ name|coloringBySearchResults
 operator|=
 literal|false
 expr_stmt|;
-name|hidingNonHits
-operator|=
-literal|false
-expr_stmt|;
+comment|//hidingNonHits = false;
 comment|/* entryTable.setShowingSearchResults(showingSearchResults,         showingGroup);        */
 name|entryTable
 operator|.
@@ -10728,6 +10727,10 @@ operator|=
 literal|false
 expr_stmt|;
 name|coloringByGroup
+operator|=
+literal|false
+expr_stmt|;
+name|hidingNonHits
 operator|=
 literal|false
 expr_stmt|;

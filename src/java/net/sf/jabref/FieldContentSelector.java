@@ -200,7 +200,7 @@ name|list
 operator|.
 name|setMaximumRowCount
 argument_list|(
-literal|20
+literal|35
 argument_list|)
 expr_stmt|;
 specifier|final

@@ -329,6 +329,9 @@ name|void
 name|run
 parameter_list|()
 block|{
+comment|//System.out.println("DatabaseSearch: grayOut="+grayOut);
+comment|//System.out.println("DatabaseSearch: reorder="+reorder);
+comment|//System.out.println("DatabaseSearch: outputHits="+outputHits);
 name|panel
 operator|.
 name|entryTable
