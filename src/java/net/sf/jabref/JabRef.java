@@ -85,7 +85,6 @@ operator|>
 literal|0
 condition|)
 block|{
-comment|//verify the file
 name|System
 operator|.
 name|out
@@ -100,6 +99,7 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+comment|//verify the file
 name|File
 name|f
 init|=
@@ -114,8 +114,6 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
-operator|(
 name|f
 operator|.
 name|exists
@@ -130,8 +128,25 @@ name|f
 operator|.
 name|isFile
 argument_list|()
-operator|)
 condition|)
+block|{
+name|jrf
+operator|.
+name|fileToOpen
+operator|=
+name|f
+expr_stmt|;
+name|jrf
+operator|.
+name|openDatabaseAction
+operator|.
+name|openIt
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|System
 operator|.
@@ -150,24 +165,6 @@ literal|" is not a valid file or is not readable"
 argument_list|)
 expr_stmt|;
 comment|//JOptionPane...
-block|}
-else|else
-block|{
-name|jrf
-operator|.
-name|fileToOpen
-operator|=
-name|f
-expr_stmt|;
-name|jrf
-operator|.
-name|openDatabaseAction
-operator|.
-name|openIt
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 else|else

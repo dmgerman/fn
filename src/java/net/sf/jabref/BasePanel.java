@@ -2268,27 +2268,7 @@ name|bes
 init|=
 literal|null
 decl_stmt|;
-name|Globals
-operator|.
-name|logger
-argument_list|(
-literal|"Pushing "
-operator|+
-name|numSelected
-operator|+
-operator|(
-name|numSelected
-operator|>
-literal|1
-condition|?
-literal|" entries"
-else|:
-literal|"entry"
-operator|)
-operator|+
-literal|" to LyX"
-argument_list|)
-expr_stmt|;
+comment|// Globals.logger("Pushing " +numSelected+(numSelected>1? " entries" : "entry") + " to LyX");
 comment|// check if lyxpipe is defined
 name|File
 name|lyxpipe

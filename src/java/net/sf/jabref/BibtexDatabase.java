@@ -774,21 +774,7 @@ name|boolean
 name|issueWarning
 parameter_list|)
 block|{
-name|Globals
-operator|.
-name|logger
-argument_list|(
-literal|" checkForDuplicateKeyAndAdd [oldKey = "
-operator|+
-name|oldKey
-operator|+
-literal|"] [newKey = "
-operator|+
-name|newKey
-operator|+
-literal|"]"
-argument_list|)
-expr_stmt|;
+comment|// Globals.logger(" checkForDuplicateKeyAndAdd [oldKey = " + oldKey + "] [newKey = " + newKey + "]");
 name|boolean
 name|duplicate
 init|=
