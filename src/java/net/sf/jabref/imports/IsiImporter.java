@@ -186,19 +186,9 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|//Inspec and IEEE seem to have these strange " - " between key and value
-name|str
-operator|=
-name|str
-operator|.
-name|replace
-argument_list|(
-literal|" - "
-argument_list|,
-literal|""
-argument_list|)
-expr_stmt|;
-comment|//System.out.println(str);
+comment|// The following line gives false positives for RIS files, so it should
+comment|// not be uncommented. The hypen is a characteristic of the RIS format.
+comment|//str = str.replace(" - ", "");
 if|if
 condition|(
 name|pat1
