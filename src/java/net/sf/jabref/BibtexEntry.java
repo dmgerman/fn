@@ -524,6 +524,17 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|value
+operator|==
+literal|null
+operator|||
+name|name
+operator|==
+literal|null
+condition|)
+return|return;
+if|if
+condition|(
 literal|"id"
 operator|.
 name|equals

@@ -903,6 +903,12 @@ name|key
 operator|=
 literal|null
 expr_stmt|;
+if|if
+condition|(
+name|result
+operator|!=
+literal|null
+condition|)
 name|result
 operator|.
 name|setField

@@ -367,9 +367,19 @@ parameter_list|)
 block|{
 name|String
 name|translation
+init|=
+literal|null
 decl_stmt|;
 try|try
 block|{
+if|if
+condition|(
+name|Globals
+operator|.
+name|messages
+operator|!=
+literal|null
+condition|)
 name|translation
 operator|=
 name|Globals
@@ -413,6 +423,12 @@ literal|"\""
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|translation
+operator|!=
+literal|null
+condition|)
 return|return
 name|translation
 operator|.
@@ -422,6 +438,10 @@ literal|"_"
 argument_list|,
 literal|" "
 argument_list|)
+return|;
+else|else
+return|return
+literal|null
 return|;
 block|}
 comment|//============================================================
