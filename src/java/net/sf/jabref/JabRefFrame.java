@@ -4731,6 +4731,15 @@ argument_list|(
 literal|"fetchMedline"
 argument_list|)
 expr_stmt|;
+operator|new
+name|FocusRequester
+argument_list|(
+name|basePanel
+argument_list|()
+operator|.
+name|medlineFetcher
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}

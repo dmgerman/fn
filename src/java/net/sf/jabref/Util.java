@@ -330,7 +330,31 @@ return|return
 name|s
 return|;
 block|}
-comment|/**       * This method sets the location of a Dialog such that it is centered with      * regard to another window, but not outside the screen on the left and the top.      */
+DECL|field|idCounter
+specifier|private
+specifier|static
+name|int
+name|idCounter
+init|=
+literal|0
+decl_stmt|;
+DECL|method|createNeutralId ()
+specifier|public
+specifier|static
+name|String
+name|createNeutralId
+parameter_list|()
+block|{
+return|return
+literal|""
+operator|+
+operator|(
+name|idCounter
+operator|++
+operator|)
+return|;
+block|}
+comment|/**      * This method sets the location of a Dialog such that it is centered with      * regard to another window, but not outside the screen on the left and the top.      */
 DECL|method|placeDialog (javax.swing.JDialog diag, java.awt.Container win)
 specifier|public
 specifier|static
@@ -431,7 +455,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This method translates a field or string from Bibtex notation, with      * possibly text contained in " " or { }, and string references, concatenated       * by '#' characters, into Bibkeeper notation, where string references are      * enclosed in a pair of '#' characters.      */
+comment|/**      * This method translates a field or string from Bibtex notation, with      * possibly text contained in " " or { }, and string references, concatenated      * by '#' characters, into Bibkeeper notation, where string references are      * enclosed in a pair of '#' characters.      */
 DECL|method|parseField (String content)
 specifier|public
 specifier|static
@@ -1332,7 +1356,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Takes a delimited string, splits it and returns       *      * @param names a<code>String</code> value      * @return a<code>String[]</code> value      */
+comment|/**      * Takes a delimited string, splits it and returns      *      * @param names a<code>String</code> value      * @return a<code>String[]</code> value      */
 DECL|method|delimToStringArray (String names, String delimiter)
 specifier|public
 specifier|static
@@ -1366,7 +1390,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * This methods assures all words in the given entry are recorded      * in their respective Completers, if any.      */
-comment|/*    public static void updateCompletersForEntry(Hashtable autoCompleters, 					 BibtexEntry be) {        	for (Iterator j=autoCompleters.keySet().iterator(); 	     j.hasNext();) { 	    String field = (String)j.next(); 	    Completer comp = (Completer)autoCompleters.get(field); 	    comp.addAll(be.getField(field)); 	} 	}*/
+comment|/*    public static void updateCompletersForEntry(Hashtable autoCompleters, 					 BibtexEntry be) {  	for (Iterator j=autoCompleters.keySet().iterator(); 	     j.hasNext();) { 	    String field = (String)j.next(); 	    Completer comp = (Completer)autoCompleters.get(field); 	    comp.addAll(be.getField(field)); 	} 	}*/
 block|}
 end_class
 

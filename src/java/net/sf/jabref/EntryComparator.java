@@ -167,6 +167,8 @@ parameter_list|)
 throws|throws
 name|ClassCastException
 block|{
+comment|//if (o1 == null) Util.pr("o1 == null");
+comment|//if (o2 == null) Util.pr("o2 == null");
 if|if
 condition|(
 operator|!

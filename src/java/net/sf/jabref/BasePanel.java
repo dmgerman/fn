@@ -229,9 +229,18 @@ name|entryTable
 init|=
 literal|null
 decl_stmt|;
+comment|// The sidepane manager takes care of populating the sidepane.
+DECL|field|sidePaneManager
+name|SidePaneManager
+name|sidePaneManager
+decl_stmt|;
 DECL|field|searchManager
 name|SearchManager2
 name|searchManager
+decl_stmt|;
+DECL|field|medlineFetcher
+name|MedlineFetcher
+name|medlineFetcher
 decl_stmt|;
 DECL|field|rcm
 name|RightClickMenu
@@ -281,11 +290,6 @@ DECL|field|showingGroup
 name|showingGroup
 init|=
 literal|false
-decl_stmt|;
-comment|// The sidepane manager takes care of populating the sidepane.
-DECL|field|sidePaneManager
-name|SidePaneManager
-name|sidePaneManager
 decl_stmt|;
 comment|// MetaData parses, keeps and writes meta data.
 DECL|field|metaData
@@ -3602,12 +3606,8 @@ argument_list|,
 name|metaData
 argument_list|)
 expr_stmt|;
-name|sidePaneManager
-operator|.
-name|register
-argument_list|(
-literal|"fetchMedline"
-argument_list|,
+name|medlineFetcher
+operator|=
 operator|new
 name|MedlineFetcher
 argument_list|(
@@ -3615,6 +3615,14 @@ name|this
 argument_list|,
 name|sidePaneManager
 argument_list|)
+expr_stmt|;
+name|sidePaneManager
+operator|.
+name|register
+argument_list|(
+literal|"fetchMedline"
+argument_list|,
+name|medlineFetcher
 argument_list|)
 expr_stmt|;
 name|searchManager

@@ -321,7 +321,7 @@ operator|=
 name|type
 expr_stmt|;
 block|}
-comment|/**      * Prompts the entry to call BibtexEntryType.getType(String) with       * its current type name as argument, and sets its type according      * to what is returned. This method is called when a user changes       * the type customization, to make sure all entries are set with      * current types.      * @return true if the entry could find a type, false if not (in      * this case the type will have been set to      * BibtexEntryType.TYPELESS).      */
+comment|/**      * Prompts the entry to call BibtexEntryType.getType(String) with      * its current type name as argument, and sets its type according      * to what is returned. This method is called when a user changes      * the type customization, to make sure all entries are set with      * current types.      * @return true if the entry could find a type, false if not (in      * this case the type will have been set to      * BibtexEntryType.TYPELESS).      */
 DECL|method|updateType ()
 specifier|public
 name|boolean
@@ -914,7 +914,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Then write remaining fields, if any.
-comment|/*for (int i=0; i<GUIGlobals.ALL_FIELDS.length; i++) { 	    if (!written.containsKey(GUIGlobals.ALL_FIELDS[i])&&               GUIGlobals.isWriteableField(GUIGlobals.ALL_FIELDS[i])               )           {             writeField(GUIGlobals.ALL_FIELDS[i], out);         } 	}//*/
+comment|/*for (int i=0; i<GUIGlobals.ALL_FIELDS.length; i++) { 	    if (!written.containsKey(GUIGlobals.ALL_FIELDS[i])&&               GUIGlobals.isWriteableField(GUIGlobals.ALL_FIELDS[i])               )         {             writeField(GUIGlobals.ALL_FIELDS[i], out);         } 	}//*/
 for|for
 control|(
 name|java

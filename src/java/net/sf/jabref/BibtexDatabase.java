@@ -1013,6 +1013,12 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
+name|key
+operator|==
+literal|null
+operator|)
+operator|||
 name|key
 operator|.
 name|equals
@@ -1091,7 +1097,7 @@ else|else
 comment|// ignore, as there is no such key
 empty_stmt|;
 block|}
-comment|/*     public void setCompleters(Hashtable autoCompleters) { 	_autoCompleters = autoCompleters;         	for (Iterator i=getKeySet().iterator(); i.hasNext();) { 	    BibtexEntry be = getEntryById((String)(i.next())); 	    be.addPropertyChangeListener(new FieldChangeListener 					 (autoCompleters, be));  	    Util.updateCompletersForEntry(autoCompleters, be); 	} 	}*/
+comment|/*     public void setCompleters(Hashtable autoCompleters) { 	_autoCompleters = autoCompleters;  	for (Iterator i=getKeySet().iterator(); i.hasNext();) { 	    BibtexEntry be = getEntryById((String)(i.next())); 	    be.addPropertyChangeListener(new FieldChangeListener 					 (autoCompleters, be));  	    Util.updateCompletersForEntry(autoCompleters, be); 	} 	}*/
 block|}
 end_class
 
