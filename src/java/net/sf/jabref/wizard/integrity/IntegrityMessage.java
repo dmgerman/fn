@@ -126,6 +126,29 @@ name|UNEXPECTED_CLOSING_BRACE_FAILURE
 init|=
 literal|2010
 decl_stmt|;
+specifier|public
+specifier|static
+name|int
+DECL|field|FULL_MODE
+name|FULL_MODE
+init|=
+literal|1
+decl_stmt|,
+comment|// print with Bibtex Entry
+DECL|field|SINLGE_MODE
+name|SINLGE_MODE
+init|=
+literal|2
+comment|// print only Message
+decl_stmt|;
+DECL|field|printMode
+specifier|private
+specifier|static
+name|int
+name|printMode
+init|=
+name|SINLGE_MODE
+decl_stmt|;
 DECL|field|type
 specifier|private
 name|int
@@ -151,6 +174,29 @@ specifier|private
 name|String
 name|msg
 decl_stmt|;
+DECL|field|fixed
+specifier|private
+name|boolean
+name|fixed
+decl_stmt|;
+comment|// the user has changed sometings on BibtexEntry
+DECL|method|setPrintMode (int newMode)
+specifier|public
+specifier|final
+specifier|synchronized
+specifier|static
+name|void
+name|setPrintMode
+parameter_list|(
+name|int
+name|newMode
+parameter_list|)
+block|{
+name|printMode
+operator|=
+name|newMode
+expr_stmt|;
+block|}
 DECL|method|IntegrityMessage (int pType, BibtexEntry pEntry, String pFieldName, Object pAdditionalInfo)
 specifier|public
 name|IntegrityMessage
@@ -191,6 +237,10 @@ operator|.
 name|additionalInfo
 operator|=
 name|pAdditionalInfo
+expr_stmt|;
+name|fixed
+operator|=
+literal|false
 expr_stmt|;
 name|msg
 operator|=
@@ -253,8 +303,34 @@ name|String
 name|toString
 parameter_list|()
 block|{
-return|return
+name|String
+name|back
+init|=
 name|msg
+decl_stmt|;
+if|if
+condition|(
+name|printMode
+operator|==
+name|FULL_MODE
+condition|)
+block|{
+name|back
+operator|=
+literal|"["
+operator|+
+name|entry
+operator|.
+name|getCiteKey
+argument_list|()
+operator|+
+literal|"] "
+operator|+
+name|msg
+expr_stmt|;
+block|}
+return|return
+name|back
 return|;
 block|}
 DECL|method|getType ()
@@ -296,6 +372,32 @@ block|{
 return|return
 name|additionalInfo
 return|;
+block|}
+DECL|method|getFixed ()
+specifier|public
+name|boolean
+name|getFixed
+parameter_list|()
+block|{
+return|return
+name|fixed
+return|;
+block|}
+DECL|method|setFixed (boolean pFixed)
+specifier|public
+name|void
+name|setFixed
+parameter_list|(
+name|boolean
+name|pFixed
+parameter_list|)
+block|{
+name|this
+operator|.
+name|fixed
+operator|=
+name|pFixed
+expr_stmt|;
 block|}
 block|}
 end_class

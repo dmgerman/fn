@@ -127,6 +127,27 @@ expr_stmt|;
 block|}
 block|}
 block|}
+DECL|method|valueUpdated (int index)
+specifier|public
+name|void
+name|valueUpdated
+parameter_list|(
+name|int
+name|index
+parameter_list|)
+block|{
+name|super
+operator|.
+name|fireContentsChanged
+argument_list|(
+name|this
+argument_list|,
+name|index
+argument_list|,
+name|index
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

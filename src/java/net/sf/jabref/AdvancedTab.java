@@ -497,6 +497,7 @@ argument_list|(
 name|pan
 argument_list|)
 expr_stmt|;
+comment|//	lab = new JLabel(Globals.lang("Note: You must specify the fully qualified class name for the look and feel,"));
 name|lab
 operator|=
 operator|new
@@ -506,7 +507,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Note: You must specify the fully qualified class name for the look and feel,"
+literal|"NoteText1"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -529,6 +530,7 @@ argument_list|(
 name|pan
 argument_list|)
 expr_stmt|;
+comment|//	lab = new JLabel(Globals.lang("and the class must be available in your classpath next time you start JabRef."));
 name|lab
 operator|=
 operator|new
@@ -538,7 +540,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"and the class must be available in your classpath next time you start JabRef."
+literal|"NoteText2"
 argument_list|)
 argument_list|)
 expr_stmt|;
