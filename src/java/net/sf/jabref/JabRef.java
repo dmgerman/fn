@@ -258,7 +258,7 @@ init|=
 operator|new
 name|StringOption
 argument_list|(
-literal|""
+literal|"jabref_prefs.xml"
 argument_list|)
 decl_stmt|;
 name|StringOption
@@ -267,7 +267,7 @@ init|=
 operator|new
 name|StringOption
 argument_list|(
-literal|""
+literal|"jabref_prefs.xml"
 argument_list|)
 decl_stmt|;
 name|options
