@@ -1519,6 +1519,17 @@ return|return
 name|keyBinds
 return|;
 block|}
+comment|/**      * Returns the HashMap containing default key bindings.      */
+DECL|method|getDefaultKeys ()
+specifier|public
+name|HashMap
+name|getDefaultKeys
+parameter_list|()
+block|{
+return|return
+name|defKeyBinds
+return|;
+block|}
 comment|/**      * Stores new key bindings into Preferences, provided they      * actually differ from the old ones.      */
 DECL|method|setNewKeyBindings (HashMap newBindings)
 specifier|public
