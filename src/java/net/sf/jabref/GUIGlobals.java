@@ -1235,7 +1235,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"filenew.png"
+literal|"new_page.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|markIcon
@@ -1625,12 +1625,15 @@ literal|102
 argument_list|)
 decl_stmt|,
 comment|// Title bar gradient color, sidepaneheader
+comment|//activeTabbed = Color.black,  // active Database (JTabbedPane)
+comment|//inActiveTabbed = Color.gray.darker(),  // inactive Database
 DECL|field|activeTabbed
 name|activeTabbed
 init|=
-name|Color
+name|validFieldColor
 operator|.
-name|black
+name|darker
+argument_list|()
 decl_stmt|,
 comment|// active Database (JTabbedPane)
 DECL|field|inActiveTabbed
@@ -1638,10 +1641,7 @@ name|inActiveTabbed
 init|=
 name|Color
 operator|.
-name|gray
-operator|.
-name|darker
-argument_list|()
+name|black
 decl_stmt|,
 comment|// inactive Database
 DECL|field|infoField

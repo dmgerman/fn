@@ -466,19 +466,7 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|tf
-operator|.
-name|setMinimumSize
-argument_list|(
-operator|new
-name|Dimension
-argument_list|(
-literal|1
-argument_list|,
-literal|1
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|//tf.setMinimumSize(new Dimension(1,1));
 comment|//add(hd, BorderLayout.NORTH);
 comment|//ok.setToolTipText(Globals.lang("Fetch Medline"));
 name|setLayout
@@ -681,6 +669,16 @@ argument_list|(
 name|listener
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getTextField ()
+specifier|public
+name|JTextField
+name|getTextField
+parameter_list|()
+block|{
+return|return
+name|tf
+return|;
 block|}
 DECL|method|fetchById ()
 specifier|public

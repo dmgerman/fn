@@ -2190,6 +2190,8 @@ argument_list|()
 decl_stmt|;
 name|writeField
 argument_list|(
+name|database
+argument_list|,
 name|entry
 argument_list|,
 operator|(
@@ -2231,6 +2233,8 @@ argument_list|)
 expr_stmt|;
 name|writeField
 argument_list|(
+name|database
+argument_list|,
 name|entry
 argument_list|,
 operator|(
@@ -2262,12 +2266,15 @@ argument_list|()
 expr_stmt|;
 comment|//	} catch (Throwable ex) {}
 block|}
-DECL|method|writeField (BibtexEntry entry, String field, HashMap fieldFormatters, Writer out)
+DECL|method|writeField (BibtexDatabase database, BibtexEntry entry, String field, HashMap fieldFormatters, Writer out)
 specifier|private
 specifier|static
 name|void
 name|writeField
 parameter_list|(
+name|BibtexDatabase
+name|database
+parameter_list|,
 name|BibtexEntry
 name|entry
 parameter_list|,
@@ -2305,6 +2312,15 @@ condition|)
 block|{
 return|return;
 block|}
+name|s
+operator|=
+name|database
+operator|.
+name|resolveForStrings
+argument_list|(
+name|s
+argument_list|)
+expr_stmt|;
 name|Object
 name|form
 init|=
