@@ -271,8 +271,14 @@ DECL|field|PREVIEW_PANEL_PADDING
 name|PREVIEW_PANEL_PADDING
 init|=
 literal|15
-decl_stmt|;
+decl_stmt|,
 comment|// Extra room given to the preview editor, in addition to its own
+DECL|field|MAX_CONTENT_SELECTOR_WIDTH
+name|MAX_CONTENT_SELECTOR_WIDTH
+init|=
+literal|240
+decl_stmt|;
+comment|// The max width of the combobox for content selectors.
 comment|// calculated preferred size
 comment|//public static final int[] PREVIEW_HEIGHT = {115, 300};
 comment|// row height
