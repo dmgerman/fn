@@ -1835,6 +1835,13 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|groupsTree
+operator|.
+name|setShowsRootHandles
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 comment|// groupsTree.setPrototypeCellValue("Suitable length");
 comment|// // The line above decides on the list's preferred width.
 name|groupsTree
