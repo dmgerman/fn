@@ -1527,6 +1527,16 @@ operator|.
 name|exec
 argument_list|(
 name|cmdArray
+index|[
+literal|0
+index|]
+operator|+
+literal|" "
+operator|+
+name|cmdArray
+index|[
+literal|1
+index|]
 argument_list|)
 decl_stmt|;
 block|}
@@ -1669,6 +1679,16 @@ operator|.
 name|exec
 argument_list|(
 name|cmdArray
+index|[
+literal|0
+index|]
+operator|+
+literal|" "
+operator|+
+name|cmdArray
+index|[
+literal|1
+index|]
 argument_list|)
 decl_stmt|;
 block|}
@@ -1806,6 +1826,16 @@ operator|.
 name|exec
 argument_list|(
 name|cmdArray
+index|[
+literal|0
+index|]
+operator|+
+literal|" "
+operator|+
+name|cmdArray
+index|[
+literal|1
+index|]
 argument_list|)
 decl_stmt|;
 block|}
@@ -2012,6 +2042,16 @@ operator|.
 name|exec
 argument_list|(
 name|cmdArray
+index|[
+literal|0
+index|]
+operator|+
+literal|" "
+operator|+
+name|cmdArray
+index|[
+literal|1
+index|]
 argument_list|)
 decl_stmt|;
 block|}
