@@ -3094,8 +3094,6 @@ operator|<
 name|entries
 operator|.
 name|length
-operator|-
-literal|1
 condition|;
 name|i
 operator|++
