@@ -899,6 +899,12 @@ literal|"markEntries"
 argument_list|,
 literal|"Mark entries"
 argument_list|,
+literal|"Mark entries"
+argument_list|,
+name|GUIGlobals
+operator|.
+name|markIcon
+argument_list|,
 name|prefs
 operator|.
 name|getKey
@@ -916,6 +922,12 @@ argument_list|(
 literal|"unmarkEntries"
 argument_list|,
 literal|"Unmark entries"
+argument_list|,
+literal|"Unmark entries"
+argument_list|,
+name|GUIGlobals
+operator|.
+name|unmarkIcon
 argument_list|,
 name|prefs
 operator|.
@@ -4740,6 +4752,25 @@ operator|.
 name|addSeparator
 argument_list|()
 expr_stmt|;
+name|tlb
+operator|.
+name|addAction
+argument_list|(
+name|mark
+argument_list|)
+expr_stmt|;
+name|tlb
+operator|.
+name|addAction
+argument_list|(
+name|unmark
+argument_list|)
+expr_stmt|;
+name|tlb
+operator|.
+name|addSeparator
+argument_list|()
+expr_stmt|;
 name|searchToggle
 operator|=
 operator|new
@@ -4860,18 +4891,8 @@ argument_list|(
 name|openUrl
 argument_list|)
 expr_stmt|;
-name|tlb
-operator|.
-name|addSeparator
-argument_list|()
-expr_stmt|;
-name|tlb
-operator|.
-name|addAction
-argument_list|(
-name|showPrefs
-argument_list|)
-expr_stmt|;
+comment|//tlb.addSeparator();
+comment|//tlb.addAction(showPrefs);
 name|tlb
 operator|.
 name|add

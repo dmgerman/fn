@@ -1224,6 +1224,34 @@ name|pre
 operator|+
 literal|"filenew.png"
 argument_list|)
+decl_stmt|,
+DECL|field|markIcon
+name|markIcon
+init|=
+name|GUIGlobals
+operator|.
+name|class
+operator|.
+name|getResource
+argument_list|(
+name|pre
+operator|+
+literal|"mark.png"
+argument_list|)
+decl_stmt|,
+DECL|field|unmarkIcon
+name|unmarkIcon
+init|=
+name|GUIGlobals
+operator|.
+name|class
+operator|.
+name|getResource
+argument_list|(
+name|pre
+operator|+
+literal|"unmark.png"
+argument_list|)
 decl_stmt|;
 comment|/*public static incompleteEntryIcon = new ImageIcon(incompleteIcon);     static {       incompleteEntryIcon.setTool     }*/
 comment|// Help files (in HTML format):
@@ -1565,6 +1593,9 @@ init|=
 name|Color
 operator|.
 name|gray
+operator|.
+name|darker
+argument_list|()
 comment|// inactive Database
 decl_stmt|;
 DECL|field|META_FLAG
