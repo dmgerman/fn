@@ -151,9 +151,15 @@ DECL|field|FUTURE_YEAR
 name|FUTURE_YEAR
 init|=
 literal|2050
-decl_stmt|;
+decl_stmt|,
 comment|// Needs to give a year definitely in the future. Used for guessing the
 comment|// year field when parsing textual data.  :-)
+DECL|field|STANDARD_EXPORT_COUNT
+name|STANDARD_EXPORT_COUNT
+init|=
+literal|4
+decl_stmt|;
+comment|// The number of standard export formats.
 DECL|field|resourcePrefix
 specifier|private
 specifier|static

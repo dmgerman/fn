@@ -1466,6 +1466,17 @@ init|=
 operator|new
 name|ExportCSV
 argument_list|()
+decl_stmt|,
+DECL|field|test
+name|test
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"test"
+argument_list|,
+literal|"Test"
+argument_list|)
 decl_stmt|;
 comment|/*setupSelector = new GeneralAction("setupSelector", "", "",           GUIGlobals.pasteIconFile,           prefs.getKey(")),*/
 comment|// The menus for importing/appending other formats
@@ -4114,6 +4125,13 @@ operator|.
 name|add
 argument_list|(
 name|customExportMenu
+argument_list|)
+expr_stmt|;
+name|file
+operator|.
+name|add
+argument_list|(
+name|test
 argument_list|)
 expr_stmt|;
 name|file
