@@ -81,7 +81,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A font chooser widget.  * @author Slava Pestov (jEdit), Sylvain Reynal  * @since jpicedt 1.3.2.beta-9  * @version $Id$  *<p>  * $Log$  * Revision 1.3  2004/02/17 07:35:22  mortenalver  * Experimenting with antialiasing in table.  *  * Revision 1.2  2003/12/14 23:48:02  mortenalver  * .  *  * Revision 1.1  2003/11/07 22:18:07  nbatada  * modified it slightly from initial version  *  * Revision 1.1  2003/11/07 22:14:34  nbatada  * modified it from initial version  *  * Revision 1.4  2003/11/02 01:51:06  reynal  * Cleaned-up i18n labels  *  * Revision 1.3  2003/08/31 22:05:40  reynal  *  * Enhanced class interface for some widgets.  *   */
+comment|/**  * A font chooser widget.  * @author Slava Pestov (jEdit), Sylvain Reynal  * @since jpicedt 1.3.2.beta-9  * @version $Id$  *<p>  * $Log$  * Revision 1.4  2004/02/17 09:14:02  mortenalver  * Similar update in FontSelector preview.  *  * Revision 1.3  2004/02/17 07:35:22  mortenalver  * Experimenting with antialiasing in table.  *  * Revision 1.2  2003/12/14 23:48:02  mortenalver  * .  *  * Revision 1.1  2003/11/07 22:18:07  nbatada  * modified it slightly from initial version  *  * Revision 1.1  2003/11/07 22:14:34  nbatada  * modified it from initial version  *  * Revision 1.4  2003/11/02 01:51:06  reynal  * Cleaned-up i18n labels  *  * Revision 1.3  2003/08/31 22:05:40  reynal  *  * Enhanced class interface for some widgets.  *   */
 end_comment
 
 begin_class
@@ -801,21 +801,12 @@ argument_list|(
 name|rh
 argument_list|)
 expr_stmt|;
-name|g2
+comment|//g2.drawString(getText(), 40, 15+f.getSize());
+name|super
 operator|.
-name|drawString
+name|paint
 argument_list|(
-name|getText
-argument_list|()
-argument_list|,
-literal|40
-argument_list|,
-literal|15
-operator|+
-name|f
-operator|.
-name|getSize
-argument_list|()
+name|g2
 argument_list|)
 expr_stmt|;
 block|}
