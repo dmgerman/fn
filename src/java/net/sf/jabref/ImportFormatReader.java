@@ -249,6 +249,7 @@ comment|// input format string: LN, FN [and LN, FN]*
 comment|// output format string: FN LN [and FN LN]*
 comment|//========================================================
 DECL|method|fixAuthor (String in)
+specifier|public
 specifier|static
 name|String
 name|fixAuthor
@@ -345,21 +346,13 @@ expr_stmt|;
 if|if
 condition|(
 name|i
-operator|==
+operator|!=
 name|authors
 operator|.
 name|length
 operator|-
 literal|1
 condition|)
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"."
-argument_list|)
-expr_stmt|;
-else|else
 name|sb
 operator|.
 name|append

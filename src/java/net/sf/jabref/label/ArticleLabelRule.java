@@ -120,6 +120,36 @@ literal|0
 condition|)
 block|{
 comment|// if author is empty
+if|if
+condition|(
+name|tokens
+index|[
+literal|0
+index|]
+operator|.
+name|indexOf
+argument_list|(
+literal|","
+argument_list|)
+operator|>
+literal|0
+condition|)
+name|tokens
+index|[
+literal|0
+index|]
+operator|=
+name|ImportFormatReader
+operator|.
+name|fixAuthor
+argument_list|(
+name|tokens
+index|[
+literal|0
+index|]
+argument_list|)
+expr_stmt|;
+comment|// convert lastname, firstname to firstname lastname
 name|String
 index|[]
 name|firstAuthor
@@ -141,6 +171,7 @@ argument_list|(
 literal|" "
 argument_list|)
 decl_stmt|;
+comment|// lastname, firstname
 name|newLabel
 operator|+=
 name|firstAuthor
@@ -239,7 +270,8 @@ name|t
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*         // use the journal name         // return the first token 4 wrds or longer, that's not journal         // , society, or the like (using the Keyword class)         try{                       if(oldEntry.getField("journal") != null) {             authorTokens = new StringTokenizer( ((String) oldEntry.getField("journal")).replaceAll(","," ").replaceAll("/"," ")) ;              String tempString = authorTokens.nextToken() ;              tempString = tempString.replaceAll(",","") ;              boolean done = false ;              while(tempString!=null&& !done ){                 tempString = tempString.replaceAll(",","").trim() ;                  if(tempString.trim().length()> 3&& !KeyWord.isKeyWord(tempString))  {                     done = true ;                  }                 else{                      if(authorTokens.hasMoreTokens()){                         tempString = authorTokens.nextToken() ;                      }else{                         done = true ;                      }                 }             }              if(tempString!=null&& (tempString.indexOf("null")<0) ){                 newLabel += String.valueOf( tempString.toLowerCase()) ;               }           }         }         catch(Throwable t){  System.err.println(t) ; } 	*/
+comment|// now check for uniqueness
+comment|// i need access to basepanes: checkForDuplicateKey
 name|oldEntry
 operator|.
 name|setField
@@ -254,6 +286,7 @@ expr_stmt|;
 return|return
 name|oldEntry
 return|;
+comment|/*         // use the journal name         // return the first token 4 wrds or longer, that's not journal         // , society, or the like (using the Keyword class)         try{                       if(oldEntry.getField("journal") != null) {             authorTokens = new StringTokenizer( ((String) oldEntry.getField("journal")).replaceAll(","," ").replaceAll("/"," ")) ;              String tempString = authorTokens.nextToken() ;              tempString = tempString.replaceAll(",","") ;              boolean done = false ;              while(tempString!=null&& !done ){                 tempString = tempString.replaceAll(",","").trim() ;                  if(tempString.trim().length()> 3&& !KeyWord.isKeyWord(tempString))  {                     done = true ;                  }                 else{                      if(authorTokens.hasMoreTokens()){                         tempString = authorTokens.nextToken() ;                      }else{                         done = true ;                      }                 }             }              if(tempString!=null&& (tempString.indexOf("null")<0) ){                 newLabel += String.valueOf( tempString.toLowerCase()) ;               }           }         }         catch(Throwable t){  System.err.println(t) ; } 	*/
 block|}
 comment|//    public static void main(String args[]){
 comment|//
