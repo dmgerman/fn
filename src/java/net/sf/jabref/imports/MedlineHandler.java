@@ -1118,6 +1118,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|b
 operator|.
 name|setField
@@ -1127,6 +1128,11 @@ argument_list|,
 name|author
 argument_list|)
 expr_stmt|;
+name|author
+operator|=
+literal|""
+expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -1400,6 +1406,10 @@ name|forename
 operator|=
 literal|""
 expr_stmt|;
+name|lastName
+operator|=
+literal|""
+expr_stmt|;
 name|abstractText
 operator|=
 literal|""
@@ -1659,6 +1669,18 @@ name|inAuthor
 operator|=
 literal|false
 expr_stmt|;
+name|forename
+operator|=
+literal|""
+expr_stmt|;
+name|initials
+operator|=
+literal|""
+expr_stmt|;
+name|lastname
+operator|=
+literal|""
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -1848,7 +1870,7 @@ name|inTitle
 condition|)
 block|{
 name|title
-operator|=
+operator|+=
 operator|new
 name|String
 argument_list|(
@@ -1867,7 +1889,7 @@ name|inYear
 condition|)
 block|{
 name|year
-operator|=
+operator|+=
 operator|new
 name|String
 argument_list|(
@@ -1886,7 +1908,7 @@ name|inJournal
 condition|)
 block|{
 name|journal
-operator|=
+operator|+=
 operator|new
 name|String
 argument_list|(
@@ -1905,7 +1927,7 @@ name|inMonth
 condition|)
 block|{
 name|month
-operator|=
+operator|+=
 operator|new
 name|String
 argument_list|(
@@ -1924,7 +1946,7 @@ name|inVolume
 condition|)
 block|{
 name|volume
-operator|=
+operator|+=
 operator|new
 name|String
 argument_list|(
@@ -1943,7 +1965,7 @@ name|inLastName
 condition|)
 block|{
 name|lastname
-operator|=
+operator|+=
 operator|new
 name|String
 argument_list|(
@@ -1962,7 +1984,7 @@ name|inInitials
 condition|)
 block|{
 name|initials
-operator|=
+operator|+=
 operator|new
 name|String
 argument_list|(
@@ -1981,7 +2003,7 @@ name|inIssue
 condition|)
 block|{
 name|number
-operator|=
+operator|+=
 operator|new
 name|String
 argument_list|(
@@ -2000,7 +2022,7 @@ name|inMedlinePgn
 condition|)
 block|{
 name|page
-operator|=
+operator|+=
 operator|new
 name|String
 argument_list|(
@@ -2019,7 +2041,7 @@ name|inMedlineID
 condition|)
 block|{
 name|medlineID
-operator|=
+operator|+=
 operator|new
 name|String
 argument_list|(
@@ -2038,7 +2060,7 @@ name|inURL
 condition|)
 block|{
 name|url
-operator|=
+operator|+=
 operator|new
 name|String
 argument_list|(
@@ -2095,7 +2117,7 @@ name|inForename
 condition|)
 block|{
 name|forename
-operator|=
+operator|+=
 operator|new
 name|String
 argument_list|(

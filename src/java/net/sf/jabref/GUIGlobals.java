@@ -2189,7 +2189,7 @@ name|LANGUAGES
 operator|.
 name|put
 argument_list|(
-literal|"Fran\uFFFDais"
+literal|"Francais"
 argument_list|,
 literal|"fr"
 argument_list|)

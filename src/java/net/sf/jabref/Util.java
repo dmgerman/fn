@@ -1759,6 +1759,22 @@ name|file
 operator|.
 name|getPath
 argument_list|()
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\s"
+argument_list|,
+literal|"\\\\ "
+argument_list|)
+expr_stmt|;
+name|pr
+argument_list|(
+literal|"rill '"
+operator|+
+name|link
+operator|+
+literal|"'"
+argument_list|)
 expr_stmt|;
 name|String
 index|[]

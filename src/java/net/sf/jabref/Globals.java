@@ -704,19 +704,8 @@ name|translation
 operator|=
 name|key
 expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Warning: could not get translation for \""
-operator|+
-name|key
-operator|+
-literal|"\""
-argument_list|)
-expr_stmt|;
+comment|//System.err.println("Warning: could not get translation for \""
+comment|//                   + key + "\"");
 block|}
 if|if
 condition|(
@@ -1435,7 +1424,7 @@ specifier|static
 name|String
 name|SPECIAL_COMMAND_CHARS
 init|=
-literal|"\"`^~'"
+literal|"\"`^~'c"
 decl_stmt|;
 DECL|field|HTML_CHARS
 specifier|public
@@ -2261,6 +2250,15 @@ argument_list|(
 literal|"~A"
 argument_list|,
 literal|"&Atilde;"
+argument_list|)
+expr_stmt|;
+name|HTMLCHARS
+operator|.
+name|put
+argument_list|(
+literal|"cc"
+argument_list|,
+literal|"&ccedil;"
 argument_list|)
 expr_stmt|;
 name|HTML_CHARS

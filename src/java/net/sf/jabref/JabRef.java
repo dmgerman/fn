@@ -1660,15 +1660,7 @@ literal|"true"
 argument_list|)
 expr_stmt|;
 comment|// Set antialiasing on everywhere. This only works in JRE>= 1.5. Or... it doesn't work, period.
-name|System
-operator|.
-name|setProperty
-argument_list|(
-literal|"swing.aatext"
-argument_list|,
-literal|"true"
-argument_list|)
-expr_stmt|;
+comment|//System.setProperty("swing.aatext", "true");
 name|int
 name|fontSizes
 init|=
@@ -1788,7 +1780,7 @@ name|plastic
 operator|.
 name|theme
 operator|.
-name|SkyBlue
+name|SkyBluer
 argument_list|()
 argument_list|)
 expr_stmt|;

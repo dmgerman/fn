@@ -694,6 +694,7 @@ argument_list|(
 literal|"\\d+[,\\d+]*"
 argument_list|)
 decl_stmt|;
+comment|//System.out.println(""+p+"\t"+idList);
 name|Matcher
 name|m
 init|=
@@ -1099,6 +1100,7 @@ argument_list|,
 name|handler
 argument_list|)
 expr_stmt|;
+comment|/*FileOutputStream out = new FileOutputStream(new File("/home/alver/ut.txt")); 	System.out.println("#####"); 	InputStream is = data.getInputStream(); 	int c; 	while ((c = is.read()) != -1) { 	    out.write((char)c); 	} 	System.out.println("#####"); 	out.close();*/
 comment|// When you're done, report the results stored by your handler object
 name|bibItems
 operator|=
@@ -1152,9 +1154,8 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|String
 name|idList
-init|=
+operator|=
 name|tf
 operator|.
 name|getText
@@ -1166,7 +1167,7 @@ literal|';'
 argument_list|,
 literal|','
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|//if(idList==null || idList.trim().equals(""))//if user pressed cancel
 comment|//    return;
 name|Pattern
@@ -1247,15 +1248,7 @@ expr_stmt|;
 name|fetchById
 argument_list|()
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Fetch by id"
-argument_list|)
-expr_stmt|;
+comment|//System.out.println("Fetch by id");
 block|}
 elseif|else
 if|if
@@ -1401,19 +1394,7 @@ argument_list|,
 name|PACING
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"fetching: "
-operator|+
-name|result
-operator|.
-name|ids
-argument_list|)
-expr_stmt|;
+comment|//System.out.println("fetching: " + result.ids);
 name|ArrayList
 name|bibs
 init|=
