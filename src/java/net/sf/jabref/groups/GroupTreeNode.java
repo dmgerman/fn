@@ -1720,6 +1720,9 @@ operator|.
 name|addSelection
 argument_list|(
 name|basePanel
+operator|.
+name|getSelectedEntries
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -1774,6 +1777,9 @@ operator|.
 name|removeSelection
 argument_list|(
 name|basePanel
+operator|.
+name|getSelectedEntries
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
