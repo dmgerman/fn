@@ -44,6 +44,18 @@ name|Globals
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
 begin_comment
 comment|/** * This class handles user defined custom export formats. They are initially read from Preferences, * and kept alphabetically (sorted by name). Formats can be added or removed. When modified, the * sort() method must be called to make sure the formats stay properly sorted. * When the method store() is called, export formats are written to Preferences. */
 end_comment
@@ -62,10 +74,17 @@ name|Object
 index|[]
 name|array
 decl_stmt|;
-DECL|method|CustomExportList ()
+DECL|field|prefs
+name|JabRefPreferences
+name|prefs
+decl_stmt|;
+DECL|method|CustomExportList (JabRefPreferences prefs_)
 specifier|public
 name|CustomExportList
-parameter_list|()
+parameter_list|(
+name|JabRefPreferences
+name|prefs_
+parameter_list|)
 block|{
 name|super
 argument_list|(
@@ -73,6 +92,10 @@ operator|new
 name|ExportComparator
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|prefs
+operator|=
+name|prefs_
 expr_stmt|;
 name|readPrefs
 argument_list|()
@@ -103,8 +126,6 @@ condition|(
 operator|(
 name|s
 operator|=
-name|Globals
-operator|.
 name|prefs
 operator|.
 name|getStringArray
@@ -247,6 +268,7 @@ name|i
 operator|++
 control|)
 block|{
+comment|//System.out.println(i+"..");
 name|Globals
 operator|.
 name|prefs

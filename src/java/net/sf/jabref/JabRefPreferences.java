@@ -64,6 +64,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|export
+operator|.
+name|CustomExportList
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|awt
@@ -181,6 +195,12 @@ specifier|private
 specifier|static
 name|LabelPattern
 name|keyPattern
+decl_stmt|;
+comment|// Object containing custom export formats:
+DECL|field|customExports
+specifier|public
+name|CustomExportList
+name|customExports
 decl_stmt|;
 DECL|method|JabRefPreferences ()
 specifier|public
@@ -1089,6 +1109,14 @@ expr_stmt|;
 comment|//defaults.put("keyPattern", new LabelPattern(KEY_PATTERN));
 name|restoreKeyBindings
 argument_list|()
+expr_stmt|;
+name|customExports
+operator|=
+operator|new
+name|CustomExportList
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 comment|//defaults.put("oooWarning", new Boolean(true));
 block|}

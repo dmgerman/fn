@@ -298,10 +298,11 @@ DECL|field|prefs
 name|JabRefPreferences
 name|prefs
 init|=
-operator|new
-name|JabRefPreferences
-argument_list|()
+name|Globals
+operator|.
+name|prefs
 decl_stmt|;
+comment|//new JabRefPreferences();
 DECL|field|tabbedPane
 name|JTabbedPane
 name|tabbedPane
@@ -398,16 +399,6 @@ name|File
 name|fileToOpen
 init|=
 literal|null
-decl_stmt|;
-comment|// Object containing custom export formats:
-DECL|field|customExports
-specifier|public
-name|CustomExportList
-name|customExports
-init|=
-operator|new
-name|CustomExportList
-argument_list|()
 decl_stmt|;
 comment|// The help window.
 DECL|field|helpDiag
@@ -2293,6 +2284,8 @@ operator|.
 name|storeHistory
 argument_list|()
 expr_stmt|;
+name|prefs
+operator|.
 name|customExports
 operator|.
 name|store
@@ -8427,6 +8420,8 @@ literal|0
 init|;
 name|i
 operator|<
+name|prefs
+operator|.
 name|customExports
 operator|.
 name|size
@@ -8440,6 +8435,8 @@ name|String
 index|[]
 name|s
 init|=
+name|prefs
+operator|.
 name|customExports
 operator|.
 name|getElementAt
