@@ -120,12 +120,7 @@ name|put
 argument_list|(
 name|type
 argument_list|,
-name|LabelPatternUtil
-operator|.
-name|split
-argument_list|(
 name|pattern
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -253,13 +248,30 @@ operator|+
 literal|"\' and gave up"
 argument_list|)
 expr_stmt|;
+return|return
+literal|null
+return|;
 block|}
-block|}
+else|else
 return|return
 operator|(
 name|ArrayList
 operator|)
 name|_obj
+return|;
+block|}
+comment|//		System.out.println(_obj.toString());
+else|else
+return|return
+name|LabelPatternUtil
+operator|.
+name|split
+argument_list|(
+operator|(
+name|String
+operator|)
+name|_obj
+argument_list|)
 return|;
 block|}
 block|}
