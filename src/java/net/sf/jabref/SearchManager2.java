@@ -446,6 +446,42 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+name|increment
+operator|.
+name|setToolTipText
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Incremental search"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|select
+operator|.
+name|setToolTipText
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Select matching entries"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|reorder
+operator|.
+name|setToolTipText
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Move matching entries to the top"
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// Add an item listener that makes sure we only listen for key events
 comment|// when incremental search is turned on.
 name|increment

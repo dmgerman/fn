@@ -2857,14 +2857,26 @@ literal|","
 operator|+
 name|citeKey
 expr_stmt|;
+if|if
+condition|(
+name|i
+operator|>
+literal|0
+condition|)
 name|message
 operator|+=
 literal|", "
+expr_stmt|;
+name|message
+operator|+=
+operator|(
+literal|1
 operator|+
 name|rows
 index|[
 name|i
 index|]
+operator|)
 expr_stmt|;
 block|}
 if|if

@@ -190,23 +190,7 @@ operator|.
 name|validFieldBackground
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|(
-name|content
-operator|!=
-literal|null
-operator|)
-operator|&&
-operator|(
-name|content
-operator|.
-name|length
-argument_list|()
-operator|>
-literal|0
-operator|)
-condition|)
+comment|//if ((content != null)&& (content.length()> 0))
 name|label
 operator|.
 name|setForeground
@@ -217,16 +201,8 @@ name|validFieldColor
 argument_list|)
 expr_stmt|;
 comment|// At construction time, the field can never have an invalid value.
-else|else
-name|label
-operator|.
-name|setForeground
-argument_list|(
-name|GUIGlobals
-operator|.
-name|nullFieldColor
-argument_list|)
-expr_stmt|;
+comment|//else
+comment|//    label.setForeground(GUIGlobals.nullFieldColor);
 block|}
 comment|/*     public void setAutoComplete(Completer completer) { 	addKeyListener(new AutoCompListener(completer));     }     */
 comment|/*public Dimension getPreferredSize() { 	return PREFERRED_SIZE; 	}*/
