@@ -194,6 +194,17 @@ decl_stmt|;
 comment|// supports only single entry
 name|parser
 operator|.
+name|caseSensitive
+operator|=
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"caseSensitiveSearch"
+argument_list|)
+expr_stmt|;
+name|parser
+operator|.
 name|searchExpression
 argument_list|()
 expr_stmt|;
@@ -226,8 +237,6 @@ name|treeParser
 operator|.
 name|apply
 argument_list|(
-name|prefs
-argument_list|,
 name|ast
 argument_list|,
 name|bibtexEntry

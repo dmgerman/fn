@@ -198,22 +198,11 @@ name|Object
 index|[]
 name|searchKeys
 decl_stmt|;
-comment|// JabRefPreferences
-DECL|field|caseSensitiveSearch
-specifier|private
-name|boolean
-name|caseSensitiveSearch
-init|=
-literal|false
-decl_stmt|;
-DECL|method|apply (JabRefPreferences prefs, AST ast, BibtexEntry bibtexEntry)
+DECL|method|apply (AST ast, BibtexEntry bibtexEntry)
 specifier|public
 name|int
 name|apply
 parameter_list|(
-name|JabRefPreferences
-name|prefs
-parameter_list|,
 name|AST
 name|ast
 parameter_list|,
@@ -225,17 +214,6 @@ name|antlr
 operator|.
 name|RecognitionException
 block|{
-name|this
-operator|.
-name|caseSensitiveSearch
-operator|=
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-literal|"caseSensitiveSearch"
-argument_list|)
-expr_stmt|;
 name|this
 operator|.
 name|bibtexEntry
