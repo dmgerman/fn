@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* Copyright (C) 2003  Morten O. Alver and Nizar N. Batada  All programs in this directory and subdirectories are published under the GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html  */
+comment|/*  * Copyright (C) 2003 Morten O. Alver and Nizar N. Batada  *   * All programs in this directory and subdirectories are published under the GNU  * General Public License as described below.  *   * This program is free software; you can redistribute it and/or modify it under  * the terms of the GNU General Public License as published by the Free Software  * Foundation; either version 2 of the License, or (at your option) any later  * version.  *   * This program is distributed in the hope that it will be useful, but WITHOUT  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS  * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more  * details.  *   * You should have received a copy of the GNU General Public License along with  * this program; if not, write to the Free Software Foundation, Inc., 59 Temple  * Place, Suite 330, Boston, MA 02111-1307 USA  *   * Further information about the GNU GPL is available at:  * http://www.gnu.org/copyleft/gpl.ja.html  *    */
 end_comment
 
 begin_package
@@ -20,9 +20,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|io
 operator|.
-name|*
+name|BufferedReader
 import|;
 end_import
 
@@ -32,7 +32,57 @@ name|java
 operator|.
 name|io
 operator|.
-name|*
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|FileInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|FileReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStreamReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|Reader
 import|;
 end_import
 
@@ -42,7 +92,67 @@ name|java
 operator|.
 name|net
 operator|.
-name|*
+name|HttpURLConnection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URL
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Vector
 import|;
 end_import
 
@@ -54,53 +164,19 @@ name|util
 operator|.
 name|regex
 operator|.
-name|*
+name|Matcher
 import|;
 end_import
 
 begin_import
 import|import
-name|org
+name|java
 operator|.
-name|xml
+name|util
 operator|.
-name|sax
+name|regex
 operator|.
-name|*
-import|;
-end_import
-
-begin_comment
-comment|// for medline
-end_comment
-
-begin_import
-import|import
-name|org
-operator|.
-name|xml
-operator|.
-name|sax
-operator|.
-name|helpers
-operator|.
-name|*
-import|;
-end_import
-
-begin_comment
-comment|//for medline
-end_comment
-
-begin_import
-import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|parsers
-operator|.
-name|SAXParserFactory
+name|Pattern
 import|;
 end_import
 
@@ -118,18 +194,102 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|parsers
+operator|.
+name|SAXParserFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|GUIGlobals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|KeyCollisionException
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Util
 import|;
 end_import
 
 begin_comment
-comment|/*   // int jabrefframe BibtexDatabase database=new BibtexDatabase(); String filename=Globals.getNewFile(); ArrayList bibitems=readISI(filename); // is there a getFileName(); Iterator it = bibitems.iterator(); while(it.hasNext()){ BibtexEntry entry = (BibtexEntry)it.next(); entry.setId(Util.createId(entry.getType(), database); try { database.insertEntry(entry); } catch (KeyCollisionException ex) {  } } */
+comment|/*  * // int jabrefframe BibtexDatabase database=new BibtexDatabase(); String  * filename=Globals.getNewFile(); ArrayList bibitems=readISI(filename); // is  * there a getFileName(); Iterator it = bibitems.iterator();  * while(it.hasNext()){ BibtexEntry entry = (BibtexEntry)it.next();  * entry.setId(Util.createId(entry.getType(), database); try {  * database.insertEntry(entry); } catch (KeyCollisionException ex) {  *  } }  */
 end_comment
 
 begin_class
@@ -138,7 +298,7 @@ specifier|public
 class|class
 name|ImportFormatReader
 block|{
-comment|/**      * Describe<code>fixAuthor</code> method here.      *      * @param in a<code>String</code> value      * @return a<code>String</code> value      // input format string: LN FN [and LN, FN]*      // output format string: FN LN [and FN LN]*      */
+comment|/**    * Describe<code>fixAuthor</code> method here.    *     * @param in    *          a<code>String</code> value    * @return a<code>String</code> value // input format string: LN FN [and    *         LN, FN]* // output format string: FN LN [and FN LN]*    */
 DECL|method|fixAuthor_nocomma (String in)
 specifier|public
 specifier|static
@@ -155,7 +315,7 @@ argument_list|(
 name|in
 argument_list|)
 return|;
-comment|/*       // Check if we have cached this particular name string before:       Object old = Globals.nameCache.get(in);       if (old != null)         return (String)old;        StringBuffer sb=new StringBuffer();       String[] authors = in.split(" and ");       for(int i=0; i<authors.length; i++){         //System.out.println(authors[i]);         authors[i]=authors[i].trim();         String[] t = authors[i].split(" "); 	if (t.length> 1) { 	    sb.append(t[t.length-1].trim()); 	    for (int cnt=0; cnt<=t.length-2; cnt++) 		sb.append(" " + t[cnt].trim()); 	} else 	    sb.append(t[0].trim()); 	if(i==authors.length-1) 	    sb.append("."); 	else 	    sb.append(" and "); 	       }        String fixed = sb.toString();        // Add the fixed name string to the cache.       Globals.nameCache.put(in, fixed);        return fixed;*/
+comment|/*      * // Check if we have cached this particular name string before: Object old =      * Globals.nameCache.get(in); if (old != null) return (String)old;      *       * StringBuffer sb=new StringBuffer(); String[] authors = in.split(" and ");      * for(int i=0; i<authors.length; i++){ //System.out.println(authors[i]);      * authors[i]=authors[i].trim(); String[] t = authors[i].split(" "); if      * (t.length> 1) { sb.append(t[t.length-1].trim()); for (int cnt=0; cnt      *<=t.length-2; cnt++) sb.append(" " + t[cnt].trim()); } else      * sb.append(t[0].trim()); if(i==authors.length-1) sb.append("."); else      * sb.append(" and ");      *  }      *       * String fixed = sb.toString();      *  // Add the fixed name string to the cache. Globals.nameCache.put(in,      * fixed);      *       * return fixed;      */
 block|}
 comment|//========================================================
 comment|// rearranges the author names
@@ -767,7 +927,7 @@ literal|" and "
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*String[] t = authors[i].split(",");             if(t.length< 2) {          // The name is without a comma, so it must be rearranged.          t = authors[i].split(" ");          if (t.length> 1) {              sb.append(t[t.length - 1]+ ","); // Last name              for (int j=0; j<t.length-1; j++)           sb.append(" "+t[j]);          } else if (t.length> 0)                   sb.append(t[0]);             }             else {          // The name is written with last name first, so it's ok.          sb.append(authors[i]);             }              if(i !=authors.length-1)          sb.append(" and ");          }*/
+comment|/*      * String[] t = authors[i].split(","); if(t.length< 2) { // The name is      * without a comma, so it must be rearranged. t = authors[i].split(" "); if      * (t.length> 1) { sb.append(t[t.length - 1]+ ","); // Last name for (int      * j=0; j<t.length-1; j++) sb.append(" "+t[j]); } else if (t.length> 0)      * sb.append(t[0]); } else { // The name is written with last name first, so      * it's ok. sb.append(authors[i]); }      *       * if(i !=authors.length-1) sb.append(" and ");      *  }      */
 comment|//Util.pr(in+" -> "+sb.toString());
 name|String
 name|fixed
@@ -1497,7 +1657,7 @@ return|return
 name|bibitems
 return|;
 block|}
-comment|/**      * Just a little wrapper for BibtexEntry's setField, to prevent the field      * from getting set when the content is an empty string.      */
+comment|/**    * Just a little wrapper for BibtexEntry's setField, to prevent the field from    * getting set when the content is an empty string.    */
 DECL|method|setField (BibtexEntry be, String field, String content)
 specifier|private
 specifier|static
@@ -1539,7 +1699,7 @@ comment|// given a filename, parses the file (assuming scifinder)
 comment|// returns null if unable to find any entries or if the
 comment|// file is not in scifinder format
 comment|//============================================================
-DECL|method|readScifinder ( String filename)
+DECL|method|readScifinder (String filename)
 specifier|public
 specifier|static
 name|ArrayList
@@ -2083,7 +2243,8 @@ name|Type
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// id assumes an existing database so don't create one here
+comment|// id assumes an existing database so don't
+comment|// create one here
 name|b
 operator|.
 name|setField
@@ -2106,7 +2267,7 @@ block|}
 comment|//==================================================
 comment|//
 comment|//==================================================
-DECL|method|readISI ( String filename)
+DECL|method|readISI (String filename)
 specifier|public
 specifier|static
 name|ArrayList
@@ -2193,7 +2354,8 @@ name|filename
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|//Pattern fieldPattern = Pattern.compile("^AU |^TI |^SO |^DT |^C1 |^AB |^ID |^BP |^PY |^SE |^PY |^VL |^IS ");
+comment|//Pattern fieldPattern = Pattern.compile("^AU |^TI |^SO |^DT |^C1 |^AB
+comment|// |^ID |^BP |^PY |^SE |^PY |^VL |^IS ");
 name|String
 name|str
 decl_stmt|;
@@ -2266,7 +2428,8 @@ operator|.
 name|trim
 argument_list|()
 decl_stmt|;
-comment|// I could have used the fieldPattern regular expression instead however this seems to be
+comment|// I could have used the fieldPattern regular expression instead
+comment|// however this seems to be
 comment|// quick and dirty and it works!
 if|if
 condition|(
@@ -2380,7 +2543,7 @@ control|(
 name|int
 name|i
 init|=
-literal|1
+literal|0
 init|;
 name|i
 operator|<
@@ -2406,6 +2569,26 @@ argument_list|(
 literal|" ## "
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|fields
+operator|.
+name|length
+operator|==
+literal|0
+condition|)
+name|fields
+operator|=
+name|entries
+index|[
+name|i
+index|]
+operator|.
+name|split
+argument_list|(
+literal|"\n"
+argument_list|)
+expr_stmt|;
 name|String
 name|Type
 init|=
@@ -2441,6 +2624,20 @@ name|j
 operator|++
 control|)
 block|{
+comment|//empty field don't do anything
+if|if
+condition|(
+name|fields
+index|[
+name|j
+index|]
+operator|.
+name|length
+argument_list|()
+operator|<=
+literal|2
+condition|)
+continue|continue;
 name|String
 name|beg
 init|=
@@ -2456,6 +2653,51 @@ argument_list|,
 literal|2
 argument_list|)
 decl_stmt|;
+name|String
+name|value
+init|=
+name|fields
+index|[
+name|j
+index|]
+operator|.
+name|substring
+argument_list|(
+literal|2
+argument_list|)
+decl_stmt|;
+name|value
+operator|=
+name|value
+operator|.
+name|trim
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|value
+operator|.
+name|startsWith
+argument_list|(
+literal|"-"
+argument_list|)
+condition|)
+name|value
+operator|=
+name|value
+operator|.
+name|substring
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+name|value
+operator|=
+name|value
+operator|.
+name|trim
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|beg
@@ -2468,26 +2710,7 @@ condition|)
 block|{
 name|PT
 operator|=
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|substring
-argument_list|(
-literal|2
-argument_list|,
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|length
-argument_list|()
-argument_list|)
-operator|.
-name|trim
-argument_list|()
+name|value
 operator|.
 name|replaceAll
 argument_list|(
@@ -2509,6 +2732,41 @@ name|beg
 operator|.
 name|equals
 argument_list|(
+literal|"TY"
+argument_list|)
+condition|)
+block|{
+name|Type
+operator|=
+literal|"inproceedings"
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|beg
+operator|.
+name|equals
+argument_list|(
+literal|"JO"
+argument_list|)
+condition|)
+name|hm
+operator|.
+name|put
+argument_list|(
+literal|"booktitle"
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|beg
+operator|.
+name|equals
+argument_list|(
 literal|"AU"
 argument_list|)
 condition|)
@@ -2520,26 +2778,7 @@ literal|"author"
 argument_list|,
 name|fixAuthor_lastnameFirst
 argument_list|(
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|substring
-argument_list|(
-literal|2
-argument_list|,
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|length
-argument_list|()
-argument_list|)
-operator|.
-name|trim
-argument_list|()
+name|value
 operator|.
 name|replaceAll
 argument_list|(
@@ -2566,26 +2805,7 @@ name|put
 argument_list|(
 literal|"title"
 argument_list|,
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|substring
-argument_list|(
-literal|2
-argument_list|,
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|length
-argument_list|()
-argument_list|)
-operator|.
-name|trim
-argument_list|()
+name|value
 operator|.
 name|replaceAll
 argument_list|(
@@ -2613,26 +2833,7 @@ name|put
 argument_list|(
 literal|"journal"
 argument_list|,
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|substring
-argument_list|(
-literal|2
-argument_list|,
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|length
-argument_list|()
-argument_list|)
-operator|.
-name|trim
-argument_list|()
+name|value
 argument_list|)
 expr_stmt|;
 block|}
@@ -2652,26 +2853,7 @@ name|put
 argument_list|(
 literal|"keywords"
 argument_list|,
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|substring
-argument_list|(
-literal|2
-argument_list|,
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|length
-argument_list|()
-argument_list|)
-operator|.
-name|trim
-argument_list|()
+name|value
 operator|.
 name|replaceAll
 argument_list|(
@@ -2697,26 +2879,7 @@ name|put
 argument_list|(
 literal|"abstract"
 argument_list|,
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|substring
-argument_list|(
-literal|2
-argument_list|,
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|length
-argument_list|()
-argument_list|)
-operator|.
-name|trim
-argument_list|()
+name|value
 operator|.
 name|replaceAll
 argument_list|(
@@ -2742,30 +2905,17 @@ name|equals
 argument_list|(
 literal|"BR"
 argument_list|)
+operator|||
+name|beg
+operator|.
+name|equals
+argument_list|(
+literal|"SP"
+argument_list|)
 condition|)
-comment|//hm.put("pages", fields[j].substring(2,fields[j].length()).trim());
 name|pages
 operator|=
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|substring
-argument_list|(
-literal|2
-argument_list|,
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|length
-argument_list|()
-argument_list|)
-operator|.
-name|trim
-argument_list|()
+name|value
 expr_stmt|;
 elseif|else
 if|if
@@ -2778,32 +2928,44 @@ literal|"EP"
 argument_list|)
 condition|)
 block|{
+name|int
+name|detpos
+init|=
+name|value
+operator|.
+name|indexOf
+argument_list|(
+literal|' '
+argument_list|)
+decl_stmt|;
+comment|// tweak for IEEE Explore
+if|if
+condition|(
+name|detpos
+operator|!=
+operator|-
+literal|1
+condition|)
+block|{
+name|value
+operator|=
+name|value
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|detpos
+argument_list|)
+expr_stmt|;
+block|}
 name|pages
 operator|=
 name|pages
 operator|+
 literal|"--"
 operator|+
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|substring
-argument_list|(
-literal|2
-argument_list|,
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|length
-argument_list|()
-argument_list|)
-operator|.
-name|trim
-argument_list|()
+name|value
 expr_stmt|;
 block|}
 elseif|else
@@ -2818,26 +2980,7 @@ argument_list|)
 condition|)
 name|pages
 operator|=
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|substring
-argument_list|(
-literal|2
-argument_list|,
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|length
-argument_list|()
-argument_list|)
-operator|.
-name|trim
-argument_list|()
+name|value
 expr_stmt|;
 elseif|else
 if|if
@@ -2855,26 +2998,7 @@ name|put
 argument_list|(
 literal|"number"
 argument_list|,
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|substring
-argument_list|(
-literal|2
-argument_list|,
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|length
-argument_list|()
-argument_list|)
-operator|.
-name|trim
-argument_list|()
+name|value
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -2893,26 +3017,7 @@ name|put
 argument_list|(
 literal|"year"
 argument_list|,
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|substring
-argument_list|(
-literal|2
-argument_list|,
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|length
-argument_list|()
-argument_list|)
-operator|.
-name|trim
-argument_list|()
+name|value
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -2931,26 +3036,7 @@ name|put
 argument_list|(
 literal|"volume"
 argument_list|,
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|substring
-argument_list|(
-literal|2
-argument_list|,
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|length
-argument_list|()
-argument_list|)
-operator|.
-name|trim
-argument_list|()
+name|value
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -2966,26 +3052,7 @@ condition|)
 block|{
 name|Type
 operator|=
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|substring
-argument_list|(
-literal|2
-argument_list|,
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|length
-argument_list|()
-argument_list|)
-operator|.
-name|trim
-argument_list|()
+name|value
 expr_stmt|;
 if|if
 condition|(
@@ -3034,23 +3101,7 @@ name|put
 argument_list|(
 literal|"CitedReferences"
 argument_list|,
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|substring
-argument_list|(
-literal|2
-argument_list|,
-name|fields
-index|[
-name|j
-index|]
-operator|.
-name|length
-argument_list|()
-argument_list|)
+name|value
 operator|.
 name|replaceAll
 argument_list|(
@@ -3091,7 +3142,8 @@ name|Type
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// id assumes an existing database so don't create one here
+comment|// id assumes an existing database so don't
+comment|// create one here
 name|b
 operator|.
 name|setField
@@ -3140,8 +3192,9 @@ argument_list|(
 literal|"Source ([ \\w&\\-]+)\\.[ ]+([0-9]+):([0-9]+\\-?[0-9]+?)\\,.*([0-9][0-9][0-9][0-9])"
 argument_list|)
 decl_stmt|;
-comment|//   public static Pattern ovid_pat_inspec= Pattern.compile("Source ([ \\w&\\-]+)");
-DECL|method|readOvid ( String filename)
+comment|//   public static Pattern ovid_pat_inspec= Pattern.compile("Source ([
+comment|// \\w&\\-]+)");
+DECL|method|readOvid (String filename)
 specifier|public
 specifier|static
 name|ArrayList
@@ -3540,7 +3593,7 @@ name|author
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/* if(isComma==false)  			    else 				h.put("author",  fixAuthor_nocomma( author) );*/
+comment|/*                * if(isComma==false)                *                 * else h.put("author", fixAuthor_nocomma( author) );                */
 block|}
 else|else
 name|h
@@ -3874,7 +3927,8 @@ literal|"article"
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// id assumes an existing database so don't create one here
+comment|// id assumes an existing database so
+comment|// don't create one here
 name|b
 operator|.
 name|setField
@@ -4009,7 +4063,8 @@ argument_list|(
 name|filename
 argument_list|)
 decl_stmt|;
-comment|// will return null if file is not readable
+comment|// will return null if file is not
+comment|// readable
 if|if
 condition|(
 name|f
@@ -4261,7 +4316,7 @@ operator|<
 literal|3
 condition|)
 continue|continue;
-comment|/* Details of Refer format for Journal Article and Book:  		  Generic            Ref     Journal Article   Book 		  Code 		  Author             %A      Author            Author 		  Year               %D      Year              Year 		  Title              %T      Title             Title 		  Secondary Author   %E                        Series Editor 		  Secondary Title    %B      Journal           Series Title 		  Place Published    %C                        City 		  Publisher          %I                        Publisher 		  Volume             %V      Volume            Volume 		  Number of Volumes  %6                        Number of Volumes 		  Number             %N      Issue 		  Pages              %P      Pages             Number of Pages 		  Edition            %7                        Edition 		  Subsidiary Author  %?                        Translator 		  Alternate Title    %J      Alternate Journal 		  Label              %F      Label             Label 		  Keywords           %K      Keywords          Keywords 		  Abstract           %X      Abstract          Abstract 		  Notes              %O      Notes             Notes 		*/
+comment|/*          * Details of Refer format for Journal Article and Book:          *           * Generic Ref Journal Article Book Code Author %A Author Author Year %D          * Year Year Title %T Title Title Secondary Author %E Series Editor          * Secondary Title %B Journal Series Title Place Published %C City          * Publisher %I Publisher Volume %V Volume Volume Number of Volumes %6          * Number of Volumes Number %N Issue Pages %P Pages Number of Pages          * Edition %7 Edition Subsidiary Author %? Translator Alternate Title %J          * Alternate Journal Label %F Label Label Keywords %K Keywords Keywords          * Abstract %X Abstract Abstract Notes %O Notes Notes          */
 name|String
 name|prefix
 init|=
@@ -4641,7 +4696,7 @@ name|val
 argument_list|)
 expr_stmt|;
 else|else
-comment|/* if (Type.equals("inproceedings"))*/
+comment|/* if (Type.equals("inproceedings")) */
 name|hm
 operator|.
 name|put
@@ -4922,7 +4977,8 @@ name|Type
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// id assumes an existing database so don't create one here
+comment|// id assumes an existing database so don't
+comment|// create one here
 name|b
 operator|.
 name|setField
@@ -5299,7 +5355,9 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
-comment|//Title = val;
+comment|//Title
+comment|// =
+comment|// val;
 elseif|else
 if|if
 condition|(
@@ -5636,7 +5694,8 @@ name|Type
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// id assumes an existing database so don't create one here
+comment|// id assumes an existing database so don't
+comment|// create one here
 name|b
 operator|.
 name|setField
@@ -5725,7 +5784,8 @@ operator|.
 name|newInstance
 argument_list|()
 decl_stmt|;
-comment|// Configure the factory object to specify attributes of the parsers it creates
+comment|// Configure the factory object to specify attributes of the parsers it
+comment|// creates
 name|parserFactory
 operator|.
 name|setValidating
@@ -5798,7 +5858,7 @@ operator|.
 name|ParserConfigurationException
 name|e1
 parameter_list|)
-block|{}
+block|{     }
 catch|catch
 parameter_list|(
 name|org
@@ -5810,7 +5870,7 @@ operator|.
 name|SAXException
 name|e2
 parameter_list|)
-block|{}
+block|{     }
 catch|catch
 parameter_list|(
 name|java
@@ -5820,7 +5880,7 @@ operator|.
 name|IOException
 name|e3
 parameter_list|)
-block|{}
+block|{     }
 return|return
 name|bibItems
 return|;
@@ -5891,7 +5951,8 @@ operator|.
 name|newInstance
 argument_list|()
 decl_stmt|;
-comment|// Configure the factory object to specify attributes of the parsers it creates
+comment|// Configure the factory object to specify attributes of the parsers it
+comment|// creates
 comment|// parserFactory.setValidating(true);
 name|parserFactory
 operator|.
@@ -5960,7 +6021,7 @@ operator|.
 name|ParserConfigurationException
 name|e1
 parameter_list|)
-block|{}
+block|{     }
 catch|catch
 parameter_list|(
 name|org
@@ -5972,7 +6033,7 @@ operator|.
 name|SAXException
 name|e2
 parameter_list|)
-block|{}
+block|{     }
 catch|catch
 parameter_list|(
 name|java
@@ -5982,7 +6043,7 @@ operator|.
 name|IOException
 name|e3
 parameter_list|)
-block|{}
+block|{     }
 return|return
 name|bibItems
 return|;
@@ -6043,7 +6104,8 @@ operator|.
 name|newInstance
 argument_list|()
 decl_stmt|;
-comment|// Configure the factory object to specify attributes of the parsers it creates
+comment|// Configure the factory object to specify attributes of the parsers it
+comment|// creates
 name|parserFactory
 operator|.
 name|setValidating
@@ -6108,7 +6170,7 @@ operator|.
 name|ParserConfigurationException
 name|e1
 parameter_list|)
-block|{}
+block|{     }
 catch|catch
 parameter_list|(
 name|org
@@ -6120,7 +6182,7 @@ operator|.
 name|SAXException
 name|e2
 parameter_list|)
-block|{}
+block|{     }
 catch|catch
 parameter_list|(
 name|java
@@ -6130,7 +6192,7 @@ operator|.
 name|IOException
 name|e3
 parameter_list|)
-block|{}
+block|{     }
 return|return
 name|bibItems
 return|;
@@ -6138,7 +6200,7 @@ block|}
 comment|//========================================================
 comment|//
 comment|//========================================================
-DECL|method|readINSPEC ( String filename)
+DECL|method|readINSPEC (String filename)
 specifier|public
 specifier|static
 name|ArrayList
@@ -6780,7 +6842,8 @@ name|Type
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// id assumes an existing database so don't create one here
+comment|// id assumes an existing database so don't
+comment|// create one here
 name|b
 operator|.
 name|setField
@@ -6814,7 +6877,7 @@ block|}
 comment|//========================================================
 comment|//
 comment|//========================================================
-DECL|method|readSilverPlatter ( String filename)
+DECL|method|readSilverPlatter (String filename)
 specifier|public
 specifier|static
 name|ArrayList
@@ -7652,7 +7715,8 @@ name|Type
 operator|=
 literal|"incollection"
 expr_stmt|;
-comment|// This entry type contains page numbers and booktitle in the title field.
+comment|// This entry type contains page numbers and booktitle in the
+comment|// title field.
 comment|// We assume the title field has been set already.
 name|String
 name|title
@@ -7782,7 +7846,8 @@ name|Type
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// id assumes an existing database so don't create one here
+comment|// id assumes an existing database so don't
+comment|// create one here
 name|b
 operator|.
 name|setField
@@ -8233,7 +8298,7 @@ parameter_list|(
 name|ArrayIndexOutOfBoundsException
 name|ex
 parameter_list|)
-block|{}
+block|{         }
 name|bibitems
 operator|.
 name|add
@@ -8263,7 +8328,7 @@ return|return
 name|bibitems
 return|;
 block|}
-comment|/**      * Imports a Biblioscape Tag File. The format is described on      * http://www.biblioscape.com/manual_bsp/Biblioscape_Tag_File.htm      * Several Biblioscape field types are ignored. Others are only included in the      * BibTeX field "comment".     */
+comment|/**    * Imports a Biblioscape Tag File. The format is described on    * http://www.biblioscape.com/manual_bsp/Biblioscape_Tag_File.htm Several    * Biblioscape field types are ignored. Others are only included in the BibTeX    * field "comment".    */
 DECL|method|readBiblioscapeTagFile (String filename)
 specifier|public
 specifier|static
@@ -8389,7 +8454,8 @@ operator|==
 literal|0
 condition|)
 continue|continue;
-comment|// ignore empty lines, e.g. at file end
+comment|// ignore empty lines, e.g. at file
+comment|// end
 comment|// entry delimiter -> item complete
 if|if
 condition|(
@@ -8730,8 +8796,10 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//else if (entry.getKey().equals("RM")) hm.put("",entry.getValue().toString());
-comment|//else if (entry.getKey().equals("RU")) hm.put("",entry.getValue().toString());
+comment|//else if (entry.getKey().equals("RM"))
+comment|// hm.put("",entry.getValue().toString());
+comment|//else if (entry.getKey().equals("RU"))
+comment|// hm.put("",entry.getValue().toString());
 elseif|else
 if|if
 condition|(
@@ -8842,7 +8910,8 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//else if (entry.getKey().equals("PP")) hm.put("",entry.getValue().toString());
+comment|//else if (entry.getKey().equals("PP"))
+comment|// hm.put("",entry.getValue().toString());
 elseif|else
 if|if
 condition|(
@@ -8955,7 +9024,8 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//else if (entry.getKey().equals("DP")) hm.put("",entry.getValue().toString());
+comment|//else if (entry.getKey().equals("DP"))
+comment|// hm.put("",entry.getValue().toString());
 elseif|else
 if|if
 condition|(
@@ -9066,7 +9136,8 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//else if (entry.getKey().equals("LA")) hm.put("",entry.getValue().toString());
+comment|//else if (entry.getKey().equals("LA"))
+comment|// hm.put("",entry.getValue().toString());
 elseif|else
 if|if
 condition|(
@@ -9095,11 +9166,16 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//else if (entry.getKey().equals("DI")) hm.put("",entry.getValue().toString());
-comment|//else if (entry.getKey().equals("DM")) hm.put("",entry.getValue().toString());
-comment|//else if (entry.getKey().equals("AV")) hm.put("",entry.getValue().toString());
-comment|//else if (entry.getKey().equals("PR")) hm.put("",entry.getValue().toString());
-comment|//else if (entry.getKey().equals("LO")) hm.put("",entry.getValue().toString());
+comment|//else if (entry.getKey().equals("DI"))
+comment|// hm.put("",entry.getValue().toString());
+comment|//else if (entry.getKey().equals("DM"))
+comment|// hm.put("",entry.getValue().toString());
+comment|//else if (entry.getKey().equals("AV"))
+comment|// hm.put("",entry.getValue().toString());
+comment|//else if (entry.getKey().equals("PR"))
+comment|// hm.put("",entry.getValue().toString());
+comment|//else if (entry.getKey().equals("LO"))
+comment|// hm.put("",entry.getValue().toString());
 elseif|else
 if|if
 condition|(
@@ -9356,8 +9432,10 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//else if (entry.getKey().equals("RD")) hm.put("",entry.getValue().toString());
-comment|//else if (entry.getKey().equals("MB")) hm.put("",entry.getValue().toString());
+comment|//else if (entry.getKey().equals("RD"))
+comment|// hm.put("",entry.getValue().toString());
+comment|//else if (entry.getKey().equals("MB"))
+comment|// hm.put("",entry.getValue().toString());
 elseif|else
 if|if
 condition|(
@@ -9414,8 +9492,10 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//else if (entry.getKey().equals("FA")) hm.put("",entry.getValue().toString());
-comment|//else if (entry.getKey().equals("CN")) hm.put("",entry.getValue().toString());
+comment|//else if (entry.getKey().equals("FA"))
+comment|// hm.put("",entry.getValue().toString());
+comment|//else if (entry.getKey().equals("CN"))
+comment|// hm.put("",entry.getValue().toString());
 elseif|else
 if|if
 condition|(
@@ -9444,9 +9524,12 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//else if (entry.getKey().equals("RP")) hm.put("",entry.getValue().toString());
-comment|//else if (entry.getKey().equals("DF")) hm.put("",entry.getValue().toString());
-comment|//else if (entry.getKey().equals("RS")) hm.put("",entry.getValue().toString());
+comment|//else if (entry.getKey().equals("RP"))
+comment|// hm.put("",entry.getValue().toString());
+comment|//else if (entry.getKey().equals("DF"))
+comment|// hm.put("",entry.getValue().toString());
+comment|//else if (entry.getKey().equals("RS"))
+comment|// hm.put("",entry.getValue().toString());
 elseif|else
 if|if
 condition|(
@@ -9475,7 +9558,8 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//else if (entry.getKey().equals("WP")) hm.put("",entry.getValue().toString());
+comment|//else if (entry.getKey().equals("WP"))
+comment|// hm.put("",entry.getValue().toString());
 elseif|else
 if|if
 condition|(
@@ -9504,8 +9588,10 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//else if (entry.getKey().equals("WR")) hm.put("",entry.getValue().toString());
-comment|//else if (entry.getKey().equals("EW")) hm.put("",entry.getValue().toString());
+comment|//else if (entry.getKey().equals("WR"))
+comment|// hm.put("",entry.getValue().toString());
+comment|//else if (entry.getKey().equals("EW"))
+comment|// hm.put("",entry.getValue().toString());
 elseif|else
 if|if
 condition|(
@@ -9534,8 +9620,10 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//else if (entry.getKey().equals("AC")) hm.put("",entry.getValue().toString());
-comment|//else if (entry.getKey().equals("LP")) hm.put("",entry.getValue().toString());
+comment|//else if (entry.getKey().equals("AC"))
+comment|// hm.put("",entry.getValue().toString());
+comment|//else if (entry.getKey().equals("LP"))
+comment|// hm.put("",entry.getValue().toString());
 block|}
 name|String
 name|bibtexType
@@ -9771,7 +9859,8 @@ operator|=
 literal|"phdthesis"
 expr_stmt|;
 block|}
-comment|// depending on bibtexType, decide where to place the titleRT and titleTI
+comment|// depending on bibtexType, decide where to place the titleRT and
+comment|// titleTI
 if|if
 condition|(
 name|bibtexType
@@ -9872,7 +9961,9 @@ argument_list|,
 name|titleST
 argument_list|)
 expr_stmt|;
-comment|// should not happen, I think
+comment|// should not
+comment|// happen, I
+comment|// think
 if|if
 condition|(
 name|titleTI
@@ -10308,7 +10399,8 @@ name|keepon
 operator|=
 literal|false
 expr_stmt|;
-comment|// Found the signature. The rest of the line is unknown, so we skip it:
+comment|// Found the signature. The rest of the line is unknown, so we skip
+comment|// it:
 while|while
 condition|(
 name|reader
@@ -10359,9 +10451,15 @@ condition|)
 break|break
 name|found
 break|;
-comment|// No, it doesn't seem to match.
+comment|// No,
+comment|// it
+comment|// doesn't
+comment|// seem
+comment|// to
+comment|// match.
 block|}
-comment|// If ok, then read the rest of the line, which should contain the name
+comment|// If ok, then read the rest of the line, which should contain the
+comment|// name
 comment|// of the encoding:
 name|StringBuffer
 name|sb
@@ -10408,7 +10506,7 @@ parameter_list|(
 name|IOException
 name|ex
 parameter_list|)
-block|{}
+block|{     }
 if|if
 condition|(
 operator|(
@@ -10435,7 +10533,8 @@ name|reader
 decl_stmt|;
 try|try
 block|{
-comment|// Ok, the supplied encoding is different from our default, so we must make a new
+comment|// Ok, the supplied encoding is different from our default, so we must
+comment|// make a new
 comment|// reader. Then close the old one.
 name|reader
 operator|=
@@ -10463,14 +10562,16 @@ name|reader
 operator|=
 name|oldReader
 expr_stmt|;
-comment|// The supplied encoding didn't work out, so we keep our
+comment|// The supplied encoding didn't work out, so we keep
+comment|// our
 comment|// existing reader.
 comment|//System.out.println("Error, using default encoding.");
 block|}
 block|}
 else|else
 block|{
-comment|// We couldn't find a supplied encoding. Since we don't know far into the file we read,
+comment|// We couldn't find a supplied encoding. Since we don't know far into the
+comment|// file we read,
 comment|// we start a new reader.
 name|reader
 operator|.
@@ -10486,7 +10587,8 @@ argument_list|,
 name|encoding
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("No encoding supplied, or supplied encoding equals default. Using default encoding.");
+comment|//System.out.println("No encoding supplied, or supplied encoding equals
+comment|// default. Using default encoding.");
 block|}
 comment|//return null;
 name|BibtexParser
