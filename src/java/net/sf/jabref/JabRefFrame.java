@@ -1056,13 +1056,15 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Files opened: "
+literal|"Files opened"
+argument_list|)
+operator|+
+literal|": "
 operator|+
 name|tabbedPane
 operator|.
 name|getTabCount
 argument_list|()
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

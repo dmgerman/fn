@@ -217,7 +217,12 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 name|name
+argument_list|)
 argument_list|,
 operator|new
 name|ImageIcon

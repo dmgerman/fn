@@ -141,11 +141,6 @@ name|String
 name|SIGNATURE
 init|=
 literal|"This file was created with JabRef.\n\n"
-decl_stmt|,
-DECL|field|SHOW_ALL
-name|SHOW_ALL
-init|=
-literal|"All entries"
 decl_stmt|;
 comment|// Size of help window.
 specifier|static

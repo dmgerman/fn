@@ -326,7 +326,7 @@ name|put
 argument_list|(
 literal|"language"
 argument_list|,
-literal|"en"
+literal|"no"
 argument_list|)
 expr_stmt|;
 name|defaults

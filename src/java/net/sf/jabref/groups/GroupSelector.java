@@ -1603,9 +1603,12 @@ name|newData
 operator|.
 name|add
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
-name|SHOW_ALL
+name|lang
+argument_list|(
+literal|"All entries"
+argument_list|)
 argument_list|)
 expr_stmt|;
 for|for

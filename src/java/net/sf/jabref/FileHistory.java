@@ -107,7 +107,12 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Recent files"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|this

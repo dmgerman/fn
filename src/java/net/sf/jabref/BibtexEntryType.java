@@ -1973,6 +1973,15 @@ argument_list|,
 name|MISC
 argument_list|)
 expr_stmt|;
+name|ALL_TYPES
+operator|.
+name|put
+argument_list|(
+literal|"other"
+argument_list|,
+name|OTHER
+argument_list|)
+expr_stmt|;
 comment|// We need a record of the standard types, in case the user wants
 comment|// to remove a customized version. Therefore we clone the map.
 name|STANDARD_TYPES
@@ -2028,7 +2037,7 @@ operator|)
 name|o
 return|;
 block|}
-comment|/**      * This method returns the standard BibtexEntryType for the       * name of a type, or null if it does not exist.      */
+comment|/**      * This method returns the standard BibtexEntryType for the      * name of a type, or null if it does not exist.      */
 DECL|method|getStandardType (String name)
 specifier|public
 specifier|static
