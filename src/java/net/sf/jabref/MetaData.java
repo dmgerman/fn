@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* Copyright (C) 2003 Morten O. Alver, Nizar N. Batada  All programs in this directory and subdirectories are published under the GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html  */
+comment|/*  Copyright (C) 2003 Morten O. Alver, Nizar N. Batada   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   */
 end_comment
 
 begin_package
@@ -18,19 +18,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|io
 operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
+name|*
 import|;
 end_import
 
@@ -40,57 +30,33 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
+name|*
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|util
+name|swing
 operator|.
-name|StringTokenizer
+name|tree
+operator|.
+name|DefaultMutableTreeNode
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|io
+name|sf
 operator|.
-name|Writer
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|jabref
 operator|.
-name|io
+name|groups
 operator|.
-name|StringReader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|Reader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
+name|GroupTreeNode
 import|;
 end_import
 
@@ -114,7 +80,14 @@ specifier|private
 name|StringReader
 name|data
 decl_stmt|;
-comment|/**      * The MetaData object stores all meta data sets in Vectors. To      * ensure that the data is written correctly to string, the user      * of a meta data Vector must simply make sure the appropriate      * changes are reflected in the Vector it has been passed.      */
+DECL|field|groupsRoot
+specifier|private
+name|GroupTreeNode
+name|groupsRoot
+init|=
+literal|null
+decl_stmt|;
+comment|/**      * The MetaData object stores all meta data sets in Vectors. To ensure that      * the data is written correctly to string, the user of a meta data Vector      * must simply make sure the appropriate changes are reflected in the Vector      * it has been passed.      */
 DECL|method|MetaData (HashMap inData)
 specifier|public
 name|MetaData
@@ -225,9 +198,22 @@ literal|"Weird error while parsing meta data."
 argument_list|)
 expr_stmt|;
 block|}
-name|metaData
+if|if
+condition|(
+name|key
 operator|.
-name|put
+name|equals
+argument_list|(
+literal|"groupstree"
+argument_list|)
+condition|)
+name|putGroups
+argument_list|(
+name|orderedData
+argument_list|)
+expr_stmt|;
+else|else
+name|putData
 argument_list|(
 name|key
 argument_list|,
@@ -342,6 +328,7 @@ name|key
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Stores the specified data in this object, using the specified key. For      * certain keys (e.g. "groupstree"), the objects in orderedData are      * reconstructed from their textual (String) representation if they are of      * type String, and stored as an actual instance.      */
 DECL|method|putData (String key, Vector orderedData)
 specifier|public
 name|void
@@ -364,6 +351,76 @@ name|orderedData
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|putGroups (Vector orderedData)
+specifier|private
+name|void
+name|putGroups
+parameter_list|(
+name|Vector
+name|orderedData
+parameter_list|)
+block|{
+comment|// JZTODO add groups version!!!
+try|try
+block|{
+comment|// version 1: orderedData contains exactly 1 element
+name|groupsRoot
+operator|=
+name|GroupTreeNode
+operator|.
+name|fromString
+argument_list|(
+operator|(
+name|String
+operator|)
+name|orderedData
+operator|.
+name|firstElement
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+comment|// JZTODO: what now? should never happen, unless
+comment|// metadata was edited directly in the file
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+DECL|method|getGroups ()
+specifier|public
+name|GroupTreeNode
+name|getGroups
+parameter_list|()
+block|{
+return|return
+name|groupsRoot
+return|;
+block|}
+comment|/**      * Sets a new group root node.<b>WARNING</b>: This invalidates everything      * returned by getGroups() so far!!!      */
+DECL|method|setGroups (GroupTreeNode root)
+specifier|public
+name|void
+name|setGroups
+parameter_list|(
+name|GroupTreeNode
+name|root
+parameter_list|)
+block|{
+name|groupsRoot
+operator|=
+name|root
+expr_stmt|;
+block|}
+comment|/**      * Writes all data to the specified writer, using each object's toString()      * method.      */
 DECL|method|writeMetaData (Writer out)
 specifier|public
 name|void
@@ -466,7 +523,9 @@ name|out
 operator|.
 name|write
 argument_list|(
-name|makeEscape
+name|Util
+operator|.
+name|quote
 argument_list|(
 operator|(
 name|String
@@ -477,6 +536,10 @@ name|elementAt
 argument_list|(
 name|j
 argument_list|)
+argument_list|,
+literal|";"
+argument_list|,
+literal|'\\'
 argument_list|)
 operator|+
 literal|";"
@@ -492,14 +555,71 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// write groups if present. skip this if only the root node exists
+comment|// (which is always the AllEntriesGroup).
+if|if
+condition|(
+name|groupsRoot
+operator|!=
+literal|null
+operator|&&
+name|groupsRoot
+operator|.
+name|getChildCount
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
+name|out
+operator|.
+name|write
+argument_list|(
+literal|"@comment{"
+operator|+
+name|GUIGlobals
+operator|.
+name|META_FLAG
+operator|+
+literal|"groupstree:"
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|write
+argument_list|(
+name|Util
+operator|.
+name|quote
+argument_list|(
+name|groupsRoot
+operator|.
+name|toString
+argument_list|()
+argument_list|,
+literal|";"
+argument_list|,
+literal|'\\'
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|write
+argument_list|(
+literal|"}\n\n"
+argument_list|)
+expr_stmt|;
 block|}
-DECL|method|getNextUnit (Reader data)
+block|}
+comment|/**      * Reads the next unit. Units are delimited by ';'.       */
+DECL|method|getNextUnit (Reader reader)
 specifier|private
 name|String
 name|getNextUnit
 parameter_list|(
 name|Reader
-name|data
+name|reader
 parameter_list|)
 throws|throws
 name|IOException
@@ -509,10 +629,6 @@ name|c
 decl_stmt|;
 name|boolean
 name|escape
-init|=
-literal|false
-decl_stmt|,
-name|done
 init|=
 literal|false
 decl_stmt|;
@@ -525,14 +641,10 @@ argument_list|()
 decl_stmt|;
 while|while
 condition|(
-operator|!
-name|done
-operator|&&
-operator|(
 operator|(
 name|c
 operator|=
-name|data
+name|reader
 operator|.
 name|read
 argument_list|()
@@ -540,42 +652,42 @@ operator|)
 operator|!=
 operator|-
 literal|1
+condition|)
+block|{
+if|if
+condition|(
+name|escape
+condition|)
+block|{
+name|res
+operator|.
+name|append
+argument_list|(
+operator|(
+name|char
 operator|)
-condition|)
-block|{
-if|if
-condition|(
 name|c
-operator|==
-literal|'\\'
-condition|)
-block|{
-if|if
-condition|(
-operator|!
-name|escape
-condition|)
-name|escape
-operator|=
-literal|true
+argument_list|)
 expr_stmt|;
-else|else
-block|{
 name|escape
 operator|=
 literal|false
 expr_stmt|;
-name|res
-operator|.
-name|append
-argument_list|(
+block|}
+elseif|else
+if|if
+condition|(
+name|c
+operator|==
 literal|'\\'
-argument_list|)
+condition|)
+block|{
+name|escape
+operator|=
+literal|true
 expr_stmt|;
 block|}
-block|}
-else|else
-block|{
+elseif|else
 if|if
 condition|(
 name|c
@@ -583,23 +695,7 @@ operator|==
 literal|';'
 condition|)
 block|{
-if|if
-condition|(
-operator|!
-name|escape
-condition|)
-name|done
-operator|=
-literal|true
-expr_stmt|;
-else|else
-name|res
-operator|.
-name|append
-argument_list|(
-literal|';'
-argument_list|)
-expr_stmt|;
+break|break;
 block|}
 else|else
 block|{
@@ -612,11 +708,6 @@ name|char
 operator|)
 name|c
 argument_list|)
-expr_stmt|;
-block|}
-name|escape
-operator|=
-literal|false
 expr_stmt|;
 block|}
 block|}
@@ -635,96 +726,22 @@ operator|.
 name|toString
 argument_list|()
 return|;
-else|else
 return|return
 literal|null
 return|;
 block|}
-DECL|method|makeEscape (String s)
-specifier|private
-name|String
-name|makeEscape
-parameter_list|(
-name|String
-name|s
-parameter_list|)
-block|{
-name|StringBuffer
-name|sb
-init|=
-operator|new
-name|StringBuffer
-argument_list|()
-decl_stmt|;
-name|int
-name|c
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|s
-operator|.
-name|length
-argument_list|()
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|c
-operator|=
-name|s
-operator|.
-name|charAt
-argument_list|(
-name|i
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-operator|(
-name|c
-operator|==
-literal|'\\'
-operator|)
-operator|||
-operator|(
-name|c
-operator|==
-literal|';'
-operator|)
-condition|)
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|'\\'
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-operator|(
-name|char
-operator|)
-name|c
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|sb
-operator|.
-name|toString
-argument_list|()
-return|;
-block|}
+comment|//
+comment|//    private String makeEscape(String s, String specials) {
+comment|//        StringBuffer sb = new StringBuffer();
+comment|//        int c;
+comment|//        for (int i = 0; i< s.length(); i++) {
+comment|//            c = s.charAt(i);
+comment|//            if ((c == '\\') || specials.indexOf(c)>= 0)
+comment|//                sb.append('\\');
+comment|//            sb.append((char) c);
+comment|//        }
+comment|//        return sb.toString();
+comment|//    }
 block|}
 end_class
 

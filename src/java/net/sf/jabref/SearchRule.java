@@ -20,7 +20,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Hashtable
+name|Map
 import|;
 end_import
 
@@ -30,12 +30,12 @@ specifier|public
 interface|interface
 name|SearchRule
 block|{
-DECL|method|applyRule (Hashtable searchStrings,BibtexEntry bibtexEntry)
+DECL|method|applyRule (Map searchStrings,BibtexEntry bibtexEntry)
 specifier|public
 name|int
 name|applyRule
 parameter_list|(
-name|Hashtable
+name|Map
 name|searchStrings
 parameter_list|,
 name|BibtexEntry

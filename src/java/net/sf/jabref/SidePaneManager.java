@@ -16,31 +16,11 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|swing
+name|util
 operator|.
 name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|LinkedHashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
 import|;
 end_import
 
@@ -54,17 +34,7 @@ name|jabref
 operator|.
 name|groups
 operator|.
-name|GroupSelector
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
+name|*
 import|;
 end_import
 
@@ -186,10 +156,8 @@ if|if
 condition|(
 name|metaData
 operator|.
-name|getData
-argument_list|(
-literal|"groups"
-argument_list|)
+name|getGroups
+argument_list|()
 operator|!=
 literal|null
 condition|)
@@ -207,10 +175,8 @@ name|panel
 argument_list|,
 name|metaData
 operator|.
-name|getData
-argument_list|(
-literal|"groups"
-argument_list|)
+name|getGroups
+argument_list|()
 argument_list|,
 name|this
 argument_list|,
@@ -243,20 +209,22 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|Vector
-name|v
+name|GroupTreeNode
+name|newGroupsRoot
 init|=
 operator|new
-name|Vector
+name|GroupTreeNode
+argument_list|(
+operator|new
+name|AllEntriesGroup
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|metaData
 operator|.
-name|putData
+name|setGroups
 argument_list|(
-literal|"groups"
-argument_list|,
-name|v
+name|newGroupsRoot
 argument_list|)
 expr_stmt|;
 name|panel
@@ -270,7 +238,7 @@ name|frame
 argument_list|,
 name|panel
 argument_list|,
-name|v
+name|newGroupsRoot
 argument_list|,
 name|this
 argument_list|,
@@ -287,7 +255,7 @@ name|groupSelector
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* 	if (components.size()> 0) { 	    panel.setLeftComponent(sidep); 	} else 	    panel.setLeftComponent(null); 	*/
+comment|/*          * if (components.size()> 0) { panel.setLeftComponent(sidep); } else          * panel.setLeftComponent(null);          */
 name|updateView
 argument_list|()
 expr_stmt|;
@@ -300,7 +268,6 @@ argument_list|()
 operator|>
 literal|0
 condition|)
-block|{
 name|sidep
 operator|.
 name|setVisible
@@ -308,7 +275,6 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-block|}
 else|else
 name|sidep
 operator|.
@@ -471,7 +437,6 @@ operator|+
 literal|"' unknown."
 argument_list|)
 expr_stmt|;
-comment|/* 	if (components.get(name) != null) { 	    if (!((SidePaneComponent)components.get(name)).isVisible()) { 		visibleComponents++; 		((SidePaneComponent)components.get(name)).setVisible(true); 		if (visibleComponents == 1) 		    panel.setLeftComponent(sidep);  		((SidePaneComponent)components.get(name)).componentOpening(); 		((SidePaneComponent)components.get(name)).setVisibility(true); 	    } else { 		hideAway((SidePaneComponent)components.get(name)); 	    } 	    return; // Component already there. 	} 	if (name.equals("groups")) { 	    if (metaData.getData("groups") == null) 		metaData.putData("groups", new Vector()); 	    panel.groupSelector = new GroupSelector 		(frame, panel, metaData.getData("groups"), this, prefs); 	    add("groups", panel.groupSelector); 	}        */
 block|}
 DECL|method|ensureVisible (String name)
 specifier|public

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* Copyright (C) 2003 Morten O. Alver, Nizar N. Batada  All programs in this directory and subdirectories are published under the GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html  */
+comment|/*  Copyright (C) 2003 Morten O. Alver, Nizar N. Batada   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   */
 end_comment
 
 begin_package
@@ -24,17 +24,7 @@ name|swing
 operator|.
 name|undo
 operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
+name|AbstractUndoableEdit
 import|;
 end_import
 
@@ -45,62 +35,64 @@ name|UndoableResetGroups
 extends|extends
 name|AbstractUndoableEdit
 block|{
-DECL|field|groups
+comment|/** A backup of the groups before the modification */
+DECL|field|m_groupsBackup
 specifier|private
-name|Vector
-name|groups
+specifier|final
+name|GroupTreeNode
+name|m_groupsBackup
 decl_stmt|;
-DECL|field|originalGroups
+comment|/** A handle to the global groups root node */
+DECL|field|m_groupsRootHandle
 specifier|private
-name|Vector
-name|originalGroups
+specifier|final
+name|GroupTreeNode
+name|m_groupsRootHandle
 decl_stmt|;
-DECL|field|gs
+DECL|field|m_groupSelector
 specifier|private
+specifier|final
 name|GroupSelector
-name|gs
+name|m_groupSelector
 decl_stmt|;
-DECL|field|revalidate
+DECL|field|m_revalidate
 specifier|private
 name|boolean
-name|revalidate
+name|m_revalidate
 init|=
 literal|true
 decl_stmt|;
-DECL|method|UndoableResetGroups (GroupSelector gs, Vector groups)
+DECL|method|UndoableResetGroups (GroupSelector groupSelector, GroupTreeNode groupsRoot)
 specifier|public
 name|UndoableResetGroups
 parameter_list|(
 name|GroupSelector
-name|gs
+name|groupSelector
 parameter_list|,
-name|Vector
-name|groups
+name|GroupTreeNode
+name|groupsRoot
 parameter_list|)
 block|{
 name|this
 operator|.
-name|groups
+name|m_groupsBackup
 operator|=
-name|groups
-expr_stmt|;
-name|this
+name|groupsRoot
 operator|.
-name|originalGroups
-operator|=
-operator|(
-name|Vector
-operator|)
-name|groups
-operator|.
-name|clone
+name|deepCopy
 argument_list|()
 expr_stmt|;
 name|this
 operator|.
-name|gs
+name|m_groupsRootHandle
 operator|=
-name|gs
+name|groupsRoot
+expr_stmt|;
+name|this
+operator|.
+name|m_groupSelector
+operator|=
+name|groupSelector
 expr_stmt|;
 block|}
 DECL|method|getUndoPresentationName ()
@@ -110,7 +102,7 @@ name|getUndoPresentationName
 parameter_list|()
 block|{
 return|return
-literal|"Undo: clear group"
+literal|"Undo: clear all groups"
 return|;
 block|}
 DECL|method|getRedoPresentationName ()
@@ -120,7 +112,7 @@ name|getRedoPresentationName
 parameter_list|()
 block|{
 return|return
-literal|"Redo: clear group"
+literal|"Redo: clear all groups"
 return|;
 block|}
 DECL|method|undo ()
@@ -134,20 +126,69 @@ operator|.
 name|undo
 argument_list|()
 expr_stmt|;
-name|groups
+comment|// keep root handle, but restore everything else from backup
+name|m_groupsRootHandle
 operator|.
-name|addAll
+name|removeAllChildren
+argument_list|()
+expr_stmt|;
+name|m_groupsRootHandle
+operator|.
+name|setGroup
 argument_list|(
-name|originalGroups
+name|m_groupsBackup
+operator|.
+name|getGroup
+argument_list|()
+operator|.
+name|deepCopy
+argument_list|()
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|m_groupsBackup
+operator|.
+name|getChildCount
+argument_list|()
+condition|;
+operator|++
+name|i
+control|)
+name|m_groupsRootHandle
+operator|.
+name|add
+argument_list|(
+operator|(
+operator|(
+name|GroupTreeNode
+operator|)
+name|m_groupsBackup
+operator|.
+name|getChildAt
+argument_list|(
+name|i
+argument_list|)
+operator|)
+operator|.
+name|deepCopy
+argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|revalidate
+name|m_revalidate
 condition|)
-name|gs
+name|m_groupSelector
 operator|.
-name|revalidateList
+name|revalidateGroups
 argument_list|()
 expr_stmt|;
 block|}
@@ -162,34 +203,43 @@ operator|.
 name|redo
 argument_list|()
 expr_stmt|;
-name|groups
+name|m_groupsRootHandle
 operator|.
-name|clear
+name|removeAllChildren
 argument_list|()
+expr_stmt|;
+name|m_groupsRootHandle
+operator|.
+name|setGroup
+argument_list|(
+operator|new
+name|AllEntriesGroup
+argument_list|()
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|revalidate
+name|m_revalidate
 condition|)
-name|gs
+name|m_groupSelector
 operator|.
-name|revalidateList
+name|revalidateGroups
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Call this method to decide if the group list should be immediately      * revalidated by this operation. Default is true.      *      * @param val a<code>boolean</code> value      */
-DECL|method|setRevalidate (boolean val)
+comment|/**      * Call this method to decide if the group list should be immediately      * revalidated by this operation. Default is true.      */
+DECL|method|setRevalidate (boolean revalidate)
 specifier|public
 name|void
 name|setRevalidate
 parameter_list|(
 name|boolean
-name|val
+name|revalidate
 parameter_list|)
 block|{
-name|revalidate
+name|m_revalidate
 operator|=
-name|val
+name|revalidate
 expr_stmt|;
 block|}
 block|}

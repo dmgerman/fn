@@ -20,7 +20,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Hashtable
+name|*
 import|;
 end_import
 
@@ -61,12 +61,12 @@ operator|=
 name|prefs
 expr_stmt|;
 block|}
-DECL|method|applyRule (Hashtable searchStrings,BibtexEntry bibtexEntry)
+DECL|method|applyRule (Map searchStrings,BibtexEntry bibtexEntry)
 specifier|public
 name|int
 name|applyRule
 parameter_list|(
-name|Hashtable
+name|Map
 name|searchStrings
 parameter_list|,
 name|BibtexEntry
@@ -83,12 +83,15 @@ name|counter
 init|=
 literal|0
 decl_stmt|;
-name|Enumeration
+name|Iterator
 name|e
 init|=
 name|searchStrings
 operator|.
-name|elements
+name|values
+argument_list|()
+operator|.
+name|iterator
 argument_list|()
 decl_stmt|;
 name|String
@@ -99,7 +102,7 @@ name|String
 operator|)
 name|e
 operator|.
-name|nextElement
+name|next
 argument_list|()
 decl_stmt|;
 name|String
