@@ -7560,12 +7560,6 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
-name|getCallBack
-argument_list|()
-operator|.
-name|update
-argument_list|()
-expr_stmt|;
 block|}
 specifier|public
 name|void
@@ -7596,6 +7590,11 @@ name|void
 name|run
 parameter_list|()
 block|{
+name|output
+argument_list|(
+literal|"starting"
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|Thread
@@ -7612,12 +7611,7 @@ name|InterruptedException
 name|ex
 parameter_list|)
 block|{ 			  }
-name|getCallBack
-argument_list|()
-operator|.
-name|update
-argument_list|()
-expr_stmt|;
+comment|//getCallBack().update();
 block|}
 specifier|public
 name|void
@@ -7707,6 +7701,11 @@ name|action
 argument_list|()
 expr_stmt|;
 else|else
+block|{
+comment|// This part uses Spin's features:
+name|Worker
+name|wrk
+init|=
 operator|(
 operator|(
 name|AbstractWorker
@@ -7716,10 +7715,41 @@ operator|)
 operator|.
 name|getWorker
 argument_list|()
+decl_stmt|;
+comment|// The Worker returned by getWorker() has been wrapped
+comment|// by Spin.off(), which makes its methods be run in
+comment|// a different thread from the EDT.
+name|CallBack
+name|clb
+init|=
+operator|(
+operator|(
+name|AbstractWorker
+operator|)
+name|o
+operator|)
+operator|.
+name|getCallBack
+argument_list|()
+decl_stmt|;
+comment|// The CallBack returned by getCallBack() has been wrapped
+comment|// by Spin.over(), which makes its methods be run on
+comment|// the EDT.
+name|wrk
 operator|.
 name|run
 argument_list|()
 expr_stmt|;
+comment|// Runs the potentially time-consuming action
+comment|// without freezing the GUI. The magic is that THIS line
+comment|// of execution will not continue until run() is finished.
+name|clb
+operator|.
+name|update
+argument_list|()
+expr_stmt|;
+comment|// Runs the update() method on the EDT.
+block|}
 block|}
 catch|catch
 parameter_list|(

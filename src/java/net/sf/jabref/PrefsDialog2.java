@@ -512,9 +512,11 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-operator|(
+name|AbstractWorker
+name|worker
+init|=
 operator|new
-name|Thread
+name|AbstractWorker
 argument_list|()
 block|{
 specifier|public
@@ -522,7 +524,6 @@ name|void
 name|run
 parameter_list|()
 block|{
-comment|//setVisible(false);
 comment|// First check that all tabs are ready to close:
 for|for
 control|(
@@ -598,6 +599,16 @@ name|storeSettings
 argument_list|()
 expr_stmt|;
 block|}
+comment|//try { Thread.sleep(3000); } catch (InterruptedException ex) {}
+block|}
+specifier|public
+name|void
+name|update
+parameter_list|()
+block|{
+name|dispose
+argument_list|()
+expr_stmt|;
 name|frame
 operator|.
 name|setupAllTables
@@ -615,14 +626,23 @@ literal|"Preferences recorded."
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|dispose
+block|}
+block|}
+decl_stmt|;
+name|worker
+operator|.
+name|getWorker
+argument_list|()
+operator|.
+name|run
 argument_list|()
 expr_stmt|;
-block|}
-block|}
-operator|)
+name|worker
 operator|.
-name|start
+name|getCallBack
+argument_list|()
+operator|.
+name|update
 argument_list|()
 expr_stmt|;
 block|}
@@ -653,27 +673,11 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-comment|// Just close dialog without recording changes.
-operator|(
-operator|new
-name|Thread
-argument_list|()
-block|{
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
 name|dispose
 argument_list|()
 expr_stmt|;
-block|}
-block|}
-operator|)
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
+comment|// Just close dialog without recording changes.
+comment|/*(new Thread() {               public void run() {                } 	      }).start();*/
 block|}
 block|}
 block|}

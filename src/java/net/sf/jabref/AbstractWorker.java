@@ -19,7 +19,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * ...  */
+comment|/**  * Convenience class for creating an object used for performing a time-  * consuming action off the Swing thread, and optionally performing GUI  * work afterwards. This class is supported by runCommand() in BasePanel,  * which, if the action called is an AbstractWorker, will run its run()  * method through the Worker interface, and then its update() method through  * the CallBack interface. This procedure ensures that run() cannot freeze  * the GUI, and that update() can safely update GUI components.  */
 end_comment
 
 begin_class
@@ -73,6 +73,7 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * This method returns a wrapped Worker instance of this AbstractWorker.      * whose methods will automatically be run off the EDT (Swing) thread.      */
 DECL|method|getWorker ()
 specifier|public
 name|Worker
@@ -83,6 +84,7 @@ return|return
 name|worker
 return|;
 block|}
+comment|/**      * This method returns a wrapped CallBack instance of this AbstractWorker      * whose methods will automatically be run on the EDT (Swing) thread.      */
 DECL|method|getCallBack ()
 specifier|public
 name|CallBack
@@ -93,6 +95,13 @@ return|return
 name|callBack
 return|;
 block|}
+comment|/**      * Empty implementation of the update() method. Override this method      * if a callback is needed.      */
+DECL|method|update ()
+specifier|public
+name|void
+name|update
+parameter_list|()
+block|{     }
 block|}
 end_class
 
