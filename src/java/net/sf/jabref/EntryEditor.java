@@ -271,12 +271,9 @@ name|tabbed
 init|=
 operator|new
 name|JTabbedPane
-argument_list|(
-name|JTabbedPane
-operator|.
-name|RIGHT
-argument_list|)
+argument_list|()
 decl_stmt|;
+comment|//JTabbedPane.RIGHT);
 DECL|field|gbl
 name|GridBagLayout
 name|gbl

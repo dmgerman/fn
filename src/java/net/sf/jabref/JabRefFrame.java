@@ -1324,37 +1324,7 @@ argument_list|(
 name|lim
 argument_list|)
 expr_stmt|;
-comment|/* 	JPanel empt = new JPanel(); 	empt.setBackground(GUIGlobals.lightGray); 	gbl.setConstraints(empt, con);         getContentPane().add(empt);  	*/
-name|con
-operator|.
-name|insets
-operator|=
-operator|new
-name|Insets
-argument_list|(
-literal|1
-argument_list|,
-literal|0
-argument_list|,
-literal|1
-argument_list|,
-literal|1
-argument_list|)
-expr_stmt|;
-name|con
-operator|.
-name|anchor
-operator|=
-name|GridBagConstraints
-operator|.
-name|EAST
-expr_stmt|;
-name|con
-operator|.
-name|weightx
-operator|=
-literal|0
-expr_stmt|;
+comment|/* 	JPanel empt = new JPanel(); 	empt.setBackground(GUIGlobals.lightGray); 	gbl.setConstraints(empt, con);         getContentPane().add(empt);  	 	con.insets = new Insets(1,0,1,1); 	con.anchor = GridBagConstraints.EAST; 	con.weightx = 0;       	gbl.setConstraints(searchManager, con); 	getContentPane().add(searchManager);*/
 name|con
 operator|.
 name|gridwidth
@@ -1363,8 +1333,6 @@ name|GridBagConstraints
 operator|.
 name|REMAINDER
 expr_stmt|;
-comment|//gbl.setConstraints(searchManager, con);
-comment|//getContentPane().add(searchManager);
 name|con
 operator|.
 name|weightx
@@ -2809,13 +2777,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|tlb
-operator|.
-name|setBorderPainted
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
+comment|//tlb.setBorderPainted(true);
 name|tlb
 operator|.
 name|setBackground

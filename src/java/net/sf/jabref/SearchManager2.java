@@ -835,6 +835,7 @@ argument_list|(
 name|reorder
 argument_list|)
 expr_stmt|;
+comment|//con.gridwidth = 1;
 name|gbl
 operator|.
 name|setConstraints
@@ -857,6 +858,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 comment|//con.insets = new Insets(0, 0, 2, 0);
+comment|//con.gridwidth = GridBagConstraints.REMAINDER;
 name|gbl
 operator|.
 name|setConstraints
