@@ -207,7 +207,7 @@ decl_stmt|,
 DECL|field|SPLIT_PANE_DIVIDER_LOCATION
 name|SPLIT_PANE_DIVIDER_LOCATION
 init|=
-literal|80
+literal|145
 decl_stmt|,
 DECL|field|GROUPS_VISIBLE_ROWS
 name|GROUPS_VISIBLE_ROWS

@@ -514,7 +514,6 @@ argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
-comment|//removeKeyFromSet(oldKey);
 return|return
 name|checkForDuplicateKeyAndAdd
 argument_list|(

@@ -136,16 +136,7 @@ DECL|field|sp
 name|JScrollPane
 name|sp
 decl_stmt|;
-DECL|field|close
-name|JButton
-name|close
-init|=
-operator|new
-name|JButton
-argument_list|(
-literal|"X"
-argument_list|)
-decl_stmt|;
+comment|//JButton close = new JButton("X");
 DECL|field|parent
 name|JSplitPane
 name|parent

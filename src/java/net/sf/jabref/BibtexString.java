@@ -105,6 +105,22 @@ operator|=
 name|content
 expr_stmt|;
 block|}
+DECL|method|clone ()
+specifier|public
+name|Object
+name|clone
+parameter_list|()
+block|{
+return|return
+operator|new
+name|BibtexString
+argument_list|(
+name|_name
+argument_list|,
+name|_content
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

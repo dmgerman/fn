@@ -728,7 +728,13 @@ name|fill
 operator|=
 name|GridBagConstraints
 operator|.
-name|BOTH
+name|HORIZONTAL
+expr_stmt|;
+name|con
+operator|.
+name|weightx
+operator|=
+literal|1
 expr_stmt|;
 name|con
 operator|.
@@ -776,7 +782,6 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-comment|/*         con.anchor = GridBagConstraints.WEST; 	con.fill = GridBagConstraints.HORIZONTAL; 	con.gridwidth = 1;          gbl.setConstraints(lab, con);         add(lab);  	con.gridwidth = 3;*/
 name|gbl
 operator|.
 name|setConstraints
@@ -791,8 +796,6 @@ argument_list|(
 name|searchField
 argument_list|)
 expr_stmt|;
-comment|//gbl.setConstraints(empt, con);
-comment|//add(empt);
 name|gbl
 operator|.
 name|setConstraints
@@ -850,13 +853,7 @@ argument_list|(
 name|openset
 argument_list|)
 expr_stmt|;
-name|JPanel
-name|empt
-init|=
-operator|new
-name|JPanel
-argument_list|()
-decl_stmt|;
+comment|//JPanel empt = new JPanel();
 comment|//con.insets = new Insets(0, 0, 2, 0);
 comment|//con.gridwidth = GridBagConstraints.REMAINDER;
 name|gbl
@@ -1112,7 +1109,7 @@ name|requestFocus
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Clears and focuses the search field if it is not      * focused. Otherwise, cycles to the next search type.           */
+comment|/**      * Clears and focuses the search field if it is not      * focused. Otherwise, cycles to the next search type.      */
 DECL|method|startSearch ()
 specifier|public
 name|void

@@ -483,7 +483,24 @@ name|e
 parameter_list|)
 block|{
 comment|// Just close dialog without recording changes.
+operator|(
+operator|new
+name|Thread
+argument_list|()
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
 name|dispose
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+operator|)
+operator|.
+name|start
 argument_list|()
 expr_stmt|;
 block|}

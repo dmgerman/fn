@@ -83,7 +83,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Dialog for creating or modifying groups. Operates directly on the   * Vector containing group information.  */
+comment|/**  * Dialog for creating or modifying groups. Operates directly on the  * Vector containing group information.  */
 end_comment
 
 begin_class

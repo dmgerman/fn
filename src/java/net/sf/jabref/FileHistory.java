@@ -444,7 +444,7 @@ specifier|public
 name|void
 name|setFileHistory
 parameter_list|()
-block|{ 	     }
+block|{      }
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

@@ -1161,6 +1161,16 @@ expr_stmt|;
 comment|//con.gridwidth = 1;
 comment|//gbl.setConstraints(tablePanel, con);
 comment|//add(tablePanel);
+name|tableFields
+operator|.
+name|setBorder
+argument_list|(
+name|BorderFactory
+operator|.
+name|createEtchedBorder
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|JScrollPane
 name|sp
 init|=
