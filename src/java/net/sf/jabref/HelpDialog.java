@@ -81,7 +81,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This is a non-modal help Dialog. The contents of the help is specified   * by calling   */
+comment|/**  * This is a non-modal help Dialog. The contents of the help is specified  * by calling  */
 end_comment
 
 begin_class
@@ -159,7 +159,11 @@ name|content
 operator|=
 operator|new
 name|HelpContent
-argument_list|()
+argument_list|(
+name|bf
+operator|.
+name|prefs
+argument_list|)
 expr_stmt|;
 name|content
 operator|.
@@ -199,7 +203,7 @@ argument_list|()
 decl_stmt|;
 comment|//setLocation(new Point(Math.max(0,(pf.x+(df.width-ds.width)/2)),
 comment|//Math.max(0,(pf.y+(df.height-ds.height)/2))));
-comment|/* There is probably no need for a window listener now, so 	 * it's commented out.  	diag.addWindowListener(new WindowAdapter() { 		public void windowClosing(WindowEvent e) { 		    open = null; 		}	        	    });*/
+comment|/* There is probably no need for a window listener now, so 	 * it's commented out.  	diag.addWindowListener(new WindowAdapter() { 		public void windowClosing(WindowEvent e) { 		    open = null; 		} 	    });*/
 name|JToolBar
 name|tlb
 init|=

@@ -356,6 +356,7 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+comment|//Util.pr(helpfile.getPath());
 name|diag
 operator|.
 name|showPage
