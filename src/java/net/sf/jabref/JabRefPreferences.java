@@ -1180,7 +1180,7 @@ argument_list|,
 operator|new
 name|Integer
 argument_list|(
-literal|14
+literal|11
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -190,6 +190,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|BorderFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -930,6 +940,16 @@ argument_list|(
 name|pan
 argument_list|)
 decl_stmt|;
+name|sp
+operator|.
+name|setBorder
+argument_list|(
+name|BorderFactory
+operator|.
+name|createEmptyBorder
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|pan
 operator|.
 name|setLayout
@@ -1874,6 +1894,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|readyToClose ()
+specifier|public
+name|boolean
+name|readyToClose
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
 block|}
 block|}
 end_class

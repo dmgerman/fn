@@ -2833,6 +2833,16 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|readyToClose ()
+specifier|public
+name|boolean
+name|readyToClose
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
 block|}
 end_class
 

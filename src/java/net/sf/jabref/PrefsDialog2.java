@@ -494,6 +494,47 @@ name|run
 parameter_list|()
 block|{
 comment|//setVisible(false);
+comment|// First check that all tabs are ready to close:
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|tabbed
+operator|.
+name|getTabCount
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+if|if
+condition|(
+operator|!
+operator|(
+operator|(
+name|PrefsTab
+operator|)
+name|tabbed
+operator|.
+name|getComponentAt
+argument_list|(
+name|i
+argument_list|)
+operator|)
+operator|.
+name|readyToClose
+argument_list|()
+condition|)
+return|return;
+comment|// If not, break off.
+block|}
+comment|// Then store settings and close:
 for|for
 control|(
 name|int

@@ -1623,55 +1623,7 @@ argument_list|()
 condition|)
 block|{
 comment|//Font fnt = new Font("plain", Font.PLAIN, 12);
-comment|/*Font fnt = new Font           (prefs.get("menuFontFamily"), prefs.getInt("menuFontStyle"), 	  prefs.getInt("menuFontSize"));*/
-name|Object
-name|fnt
-init|=
-operator|new
-name|UIDefaults
-operator|.
-name|ProxyLazyValue
-argument_list|(
-literal|"javax.swing.plaf.FontUIResource"
-argument_list|,
-literal|null
-argument_list|,
-operator|new
-name|Object
-index|[]
-block|{
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"menuFontFamily"
-argument_list|)
-block|,
-operator|new
-name|Integer
-argument_list|(
-name|prefs
-operator|.
-name|getInt
-argument_list|(
-literal|"menuFontStyle"
-argument_list|)
-argument_list|)
-block|,
-operator|new
-name|Integer
-argument_list|(
-name|prefs
-operator|.
-name|getInt
-argument_list|(
-literal|"menuFontSize"
-argument_list|)
-argument_list|)
-block|}
-argument_list|)
-decl_stmt|;
-comment|/*UIManager.put("MenuBar.font", fnt);       UIManager.put("MenuItem.font", fnt);       UIManager.put("RadioButtonMenuItem.font", fnt);       UIManager.put("CheckBoxMenuItem.font", fnt);       UIManager.put("Menu.font", fnt);       UIManager.put("PopupMenu.font", fnt);       */
+comment|/*Font fnt = new Font           (prefs.get("menuFontFamily"), prefs.getInt("menuFontStyle"), 	  prefs.getInt("menuFontSize"));        Object fnt = new UIDefaults.ProxyLazyValue           ("javax.swing.plaf.FontUIResource", null,            new Object[] { prefs.get("menuFontFamily"), new Integer(prefs.getInt("menuFontStyle")), 			  new Integer(prefs.getInt("menuFontSize")) });        UIManager.put("MenuBar.font", fnt);       UIManager.put("MenuItem.font", fnt);       UIManager.put("RadioButtonMenuItem.font", fnt);       UIManager.put("CheckBoxMenuItem.font", fnt);       UIManager.put("Menu.font", fnt);       UIManager.put("PopupMenu.font", fnt);       */
 comment|//"Plain", new Integer(Font.PLAIN), new Integer(10)});
 comment|/*       UIManager.put("Button.font", fnt);       UIManager.put("ToggleButton.font", fnt);       UIManager.put("RadioButton.font", fnt);       UIManager.put("CheckBox.font", fnt);       UIManager.put("ColorChooser.font", fnt);       UIManager.put("ComboBox.font", fnt);       UIManager.put("Label.font", fnt);       UIManager.put("List.font", fnt);       UIManager.put("MenuBar.font", fnt);       UIManager.put("MenuItem.font", fnt);       UIManager.put("RadioButtonMenuItem.font", fnt);       UIManager.put("CheckBoxMenuItem.font", fnt);       UIManager.put("Menu.font", fnt);       UIManager.put("PopupMenu.font", fnt);       UIManager.put("OptionPane.font", fnt);       UIManager.put("Panel.font", fnt);       UIManager.put("ProgressBar.font", fnt);       UIManager.put("ScrollPane.font", fnt);       UIManager.put("Viewport.font", fnt);       UIManager.put("TabbedPane.font", fnt);       UIManager.put("Table.font", fnt);       UIManager.put("TableHeader.font", fnt);       UIManager.put("TextField.font", fnt);       UIManager.put("PasswordField.font", fnt);       UIManager.put("TextArea.font", fnt);       UIManager.put("TextPane.font", fnt);       UIManager.put("EditorPane.font", fnt);       //UIManager.put("TitledBorder.font", fnt);       UIManager.put("ToolBar.font", fnt);       UIManager.put("ToolTip.font", fnt);       UIManager.put("Tree.font", fnt);       */
 comment|// This property is set to make the Mac OSX Java VM move the menu bar to the top
@@ -1685,7 +1637,7 @@ argument_list|,
 literal|"true"
 argument_list|)
 expr_stmt|;
-comment|// Set antialiasing on everywhere. This only works in JRE>= 1.5.
+comment|// Set antialiasing on everywhere. This only works in JRE>= 1.5. Or... it doesn't work, period.
 name|System
 operator|.
 name|setProperty
