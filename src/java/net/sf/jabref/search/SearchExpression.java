@@ -58,6 +58,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Hashtable
 import|;
 end_import
@@ -233,12 +243,12 @@ argument_list|()
 expr_stmt|;
 comment|// remember abstract syntax tree
 block|}
-DECL|method|applyRule (Hashtable searchStrings, BibtexEntry bibtexEntry)
+DECL|method|applyRule (Map searchStrings, BibtexEntry bibtexEntry)
 specifier|public
 name|int
 name|applyRule
 parameter_list|(
-name|Hashtable
+name|Map
 name|searchStrings
 parameter_list|,
 name|BibtexEntry
