@@ -43,6 +43,26 @@ begin_comment
 comment|// modified :
 end_comment
 
+begin_comment
+comment|//            02.11.2004
+end_comment
+
+begin_comment
+comment|//            - integrity check, which reports errors and warnings for the fields
+end_comment
+
+begin_comment
+comment|//            22.10.2004
+end_comment
+
+begin_comment
+comment|//            - little help box
+end_comment
+
+begin_comment
+comment|//
+end_comment
+
 begin_package
 DECL|package|net.sf.jabref.wizard.text.gui
 package|package
@@ -198,6 +218,22 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|wizard
+operator|.
+name|integrity
+operator|.
+name|*
+import|;
+end_import
+
 begin_class
 DECL|class|TextInputDialog
 specifier|public
@@ -269,6 +305,15 @@ operator|new
 name|JPanel
 argument_list|()
 decl_stmt|;
+DECL|field|warnPanel
+specifier|private
+name|JPanel
+name|warnPanel
+init|=
+operator|new
+name|JPanel
+argument_list|()
+decl_stmt|;
 DECL|field|fieldList
 specifier|private
 name|JList
@@ -312,6 +357,27 @@ specifier|private
 name|JTextArea
 name|preview
 decl_stmt|;
+DECL|field|warnings
+specifier|private
+name|JList
+name|warnings
+decl_stmt|;
+DECL|field|warningData
+specifier|private
+name|HintListModel
+name|warningData
+decl_stmt|;
+DECL|field|validChecker
+specifier|private
+name|IntegrityCheck
+name|validChecker
+decl_stmt|;
+DECL|field|inputChanged
+specifier|private
+name|boolean
+name|inputChanged
+decl_stmt|;
+comment|// input changed, fired by insert button
 DECL|field|marked
 specifier|private
 name|TagToMarkedTextStore
@@ -355,6 +421,18 @@ argument_list|,
 name|modal
 argument_list|)
 expr_stmt|;
+name|validChecker
+operator|=
+operator|new
+name|IntegrityCheck
+argument_list|()
+expr_stmt|;
+comment|// errors, warnings, hints
+name|inputChanged
+operator|=
+literal|true
+expr_stmt|;
+comment|// for a first validCheck
 name|_frame
 operator|=
 name|frame
@@ -493,6 +571,9 @@ expr_stmt|;
 name|initSourcePanel
 argument_list|()
 expr_stmt|;
+name|initWarnPanel
+argument_list|()
+expr_stmt|;
 name|JTabbedPane
 name|tabbed
 init|=
@@ -500,6 +581,33 @@ operator|new
 name|JTabbedPane
 argument_list|()
 decl_stmt|;
+name|tabbed
+operator|.
+name|addChangeListener
+argument_list|(
+operator|new
+name|ChangeListener
+argument_list|()
+block|{
+specifier|public
+name|void
+name|stateChanged
+parameter_list|(
+name|ChangeEvent
+name|e
+parameter_list|)
+block|{
+if|if
+condition|(
+name|inputChanged
+condition|)
+name|checkInput
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
 name|tabbed
 operator|.
 name|add
@@ -525,6 +633,20 @@ operator|.
 name|lang
 argument_list|(
 literal|"BibTeX_source"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|tabbed
+operator|.
+name|add
+argument_list|(
+name|warnPanel
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Messages_and_Hints"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1753,7 +1875,7 @@ argument_list|(
 operator|new
 name|Dimension
 argument_list|(
-literal|450
+literal|500
 argument_list|,
 literal|255
 argument_list|)
@@ -1773,6 +1895,80 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|sourcePanel
+operator|.
+name|add
+argument_list|(
+name|paneScrollPane
+argument_list|)
+expr_stmt|;
+block|}
+comment|// ---------------------------------------------------------------------------
+comment|// Panel with warnings/errors
+DECL|method|initWarnPanel ()
+specifier|private
+name|void
+name|initWarnPanel
+parameter_list|()
+block|{
+name|warningData
+operator|=
+operator|new
+name|HintListModel
+argument_list|()
+expr_stmt|;
+name|warnings
+operator|=
+operator|new
+name|JList
+argument_list|(
+name|warningData
+argument_list|)
+expr_stmt|;
+name|JScrollPane
+name|paneScrollPane
+init|=
+operator|new
+name|JScrollPane
+argument_list|(
+name|warnings
+argument_list|)
+decl_stmt|;
+name|paneScrollPane
+operator|.
+name|setVerticalScrollBarPolicy
+argument_list|(
+name|JScrollPane
+operator|.
+name|VERTICAL_SCROLLBAR_ALWAYS
+argument_list|)
+expr_stmt|;
+name|paneScrollPane
+operator|.
+name|setPreferredSize
+argument_list|(
+operator|new
+name|Dimension
+argument_list|(
+literal|540
+argument_list|,
+literal|255
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|paneScrollPane
+operator|.
+name|setMinimumSize
+argument_list|(
+operator|new
+name|Dimension
+argument_list|(
+literal|10
+argument_list|,
+literal|10
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|warnPanel
 operator|.
 name|add
 argument_list|(
@@ -2167,6 +2363,29 @@ block|}
 block|}
 block|}
 comment|// ---------------------------------------------------------------------------
+comment|// starts an IntegrityCheck
+DECL|method|checkInput ()
+specifier|private
+name|void
+name|checkInput
+parameter_list|()
+block|{
+name|warningData
+operator|.
+name|setData
+argument_list|(
+name|validChecker
+operator|.
+name|checkBibtexEntry
+argument_list|(
+name|entry
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//    if (hints != null)
+comment|//      if (hints.size()> 0)
+comment|//        warningData.setData(hints);
+block|}
 comment|// ---------------------------------------------------------------------------
 DECL|method|okPressed ()
 specifier|public

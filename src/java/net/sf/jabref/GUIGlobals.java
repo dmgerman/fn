@@ -1265,6 +1265,34 @@ name|pre
 operator|+
 literal|"unmark.png"
 argument_list|)
+decl_stmt|,
+DECL|field|newBibFile
+name|newBibFile
+init|=
+name|GUIGlobals
+operator|.
+name|class
+operator|.
+name|getResource
+argument_list|(
+name|pre
+operator|+
+literal|"newBibFile.png"
+argument_list|)
+decl_stmt|,
+DECL|field|integrityCheck
+name|integrityCheck
+init|=
+name|GUIGlobals
+operator|.
+name|class
+operator|.
+name|getResource
+argument_list|(
+name|pre
+operator|+
+literal|"integrity.png"
+argument_list|)
 decl_stmt|;
 comment|/*public static incompleteEntryIcon = new ImageIcon(incompleteIcon);     static {       incompleteEntryIcon.setTool     }*/
 comment|// Help files (in HTML format):
