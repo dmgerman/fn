@@ -145,6 +145,17 @@ init|=
 name|builtLetters
 argument_list|()
 decl_stmt|;
+DECL|field|DEFAULT_LABELPATTERN
+specifier|public
+specifier|static
+name|ArrayList
+name|DEFAULT_LABELPATTERN
+init|=
+name|split
+argument_list|(
+literal|"[auth]_[year]"
+argument_list|)
+decl_stmt|;
 DECL|field|_db
 specifier|private
 specifier|static

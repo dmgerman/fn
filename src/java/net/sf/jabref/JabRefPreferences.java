@@ -1837,6 +1837,29 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
+try|try
+block|{
+name|pre
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+comment|// We remove all old entries.
+block|}
+catch|catch
+parameter_list|(
+name|BackingStoreException
+name|ex
+parameter_list|)
+block|{
+name|Globals
+operator|.
+name|logger
+argument_list|(
+literal|"BackingStoreException in JabRefPreferences.putKeyPattern"
+argument_list|)
+expr_stmt|;
+block|}
 name|Iterator
 name|i
 init|=

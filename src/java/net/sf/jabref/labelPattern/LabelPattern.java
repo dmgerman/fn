@@ -240,22 +240,11 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|//TODO Throw some error
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Warning: I could not find the label \'"
-operator|+
-name|key
-operator|+
-literal|"\' and gave up"
-argument_list|)
-expr_stmt|;
+comment|// Not found - return the default value
 return|return
-literal|null
+name|LabelPatternUtil
+operator|.
+name|DEFAULT_LABELPATTERN
 return|;
 block|}
 block|}

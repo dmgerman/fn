@@ -2182,7 +2182,7 @@ name|LANGUAGES
 operator|.
 name|put
 argument_list|(
-literal|"French"
+literal|"Français"
 argument_list|,
 literal|"fr"
 argument_list|)
