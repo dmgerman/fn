@@ -348,6 +348,24 @@ name|m_entries
 argument_list|)
 return|;
 block|}
+DECL|method|addEntry (BibtexEntry entry)
+specifier|public
+name|boolean
+name|addEntry
+parameter_list|(
+name|BibtexEntry
+name|entry
+parameter_list|)
+block|{
+return|return
+name|m_entries
+operator|.
+name|add
+argument_list|(
+name|entry
+argument_list|)
+return|;
+block|}
 DECL|method|removeSelection (BasePanel basePanel)
 specifier|public
 name|AbstractUndoableEdit
@@ -423,6 +441,42 @@ name|m_entries
 argument_list|)
 return|;
 block|}
+DECL|method|removeEntry (BibtexEntry entry)
+specifier|public
+name|boolean
+name|removeEntry
+parameter_list|(
+name|BibtexEntry
+name|entry
+parameter_list|)
+block|{
+return|return
+name|m_entries
+operator|.
+name|remove
+argument_list|(
+name|entry
+argument_list|)
+return|;
+block|}
+DECL|method|contains (BibtexEntry entry)
+specifier|public
+name|boolean
+name|contains
+parameter_list|(
+name|BibtexEntry
+name|entry
+parameter_list|)
+block|{
+return|return
+name|m_entries
+operator|.
+name|contains
+argument_list|(
+name|entry
+argument_list|)
+return|;
+block|}
 DECL|method|contains (Map searchOptions, BibtexEntry entry)
 specifier|public
 name|boolean
@@ -436,8 +490,6 @@ name|entry
 parameter_list|)
 block|{
 return|return
-name|m_entries
-operator|.
 name|contains
 argument_list|(
 name|entry

@@ -248,6 +248,19 @@ return|return
 name|ID
 return|;
 block|}
+DECL|method|contains (BibtexEntry entry)
+specifier|public
+name|boolean
+name|contains
+parameter_list|(
+name|BibtexEntry
+name|entry
+parameter_list|)
+block|{
+return|return
+literal|true
+return|;
+block|}
 block|}
 end_class
 

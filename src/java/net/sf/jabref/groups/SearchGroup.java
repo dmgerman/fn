@@ -28,7 +28,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
+name|*
 import|;
 end_import
 
@@ -838,6 +838,27 @@ condition|?
 literal|false
 else|:
 literal|true
+return|;
+block|}
+DECL|method|contains (BibtexEntry entry)
+specifier|public
+name|boolean
+name|contains
+parameter_list|(
+name|BibtexEntry
+name|entry
+parameter_list|)
+block|{
+comment|// use dummy map
+return|return
+name|contains
+argument_list|(
+operator|new
+name|HashMap
+argument_list|()
+argument_list|,
+name|entry
+argument_list|)
 return|;
 block|}
 DECL|method|applyRule (Map searchOptions, BibtexEntry entry)

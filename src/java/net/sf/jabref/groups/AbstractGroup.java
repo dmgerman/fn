@@ -268,7 +268,7 @@ name|BasePanel
 name|basePanel
 parameter_list|)
 function_decl|;
-comment|/**      * @return true if this group contains the specified entry, false otherwise.      */
+comment|/**      * @param searchOptions The search options to apply.      * @return true if this group contains the specified entry, false otherwise.      */
 DECL|method|contains (Map searchOptions, BibtexEntry entry)
 specifier|public
 specifier|abstract
@@ -278,6 +278,17 @@ parameter_list|(
 name|Map
 name|searchOptions
 parameter_list|,
+name|BibtexEntry
+name|entry
+parameter_list|)
+function_decl|;
+comment|/**      * @return true if this group contains the specified entry, false otherwise.      */
+DECL|method|contains (BibtexEntry entry)
+specifier|public
+specifier|abstract
+name|boolean
+name|contains
+parameter_list|(
 name|BibtexEntry
 name|entry
 parameter_list|)

@@ -1148,6 +1148,22 @@ name|BibtexEntry
 name|entry
 parameter_list|)
 block|{
+return|return
+name|contains
+argument_list|(
+name|entry
+argument_list|)
+return|;
+block|}
+DECL|method|contains (BibtexEntry entry)
+specifier|public
+name|boolean
+name|contains
+parameter_list|(
+name|BibtexEntry
+name|entry
+parameter_list|)
+block|{
 name|String
 name|content
 init|=
