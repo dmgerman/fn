@@ -627,42 +627,6 @@ operator|.
 name|CENTER
 argument_list|)
 expr_stmt|;
-comment|// We replace the default FocusTraversalPolicy with a subclass
-comment|// that only allows FieldEditor components to gain keyboard focus.
-name|setFocusTraversalPolicy
-argument_list|(
-operator|new
-name|LayoutFocusTraversalPolicy
-argument_list|()
-block|{
-specifier|protected
-name|boolean
-name|accept
-parameter_list|(
-name|Component
-name|c
-parameter_list|)
-block|{
-return|return
-operator|(
-name|super
-operator|.
-name|accept
-argument_list|(
-name|c
-argument_list|)
-operator|&&
-operator|(
-name|c
-operator|instanceof
-name|JTextComponent
-operator|)
-operator|)
-return|;
-block|}
-block|}
-argument_list|)
-expr_stmt|;
 comment|//Util.pr("opt: "+optW+"  req:"+reqW);
 name|int
 name|prefHeight
@@ -1254,6 +1218,19 @@ name|GridBagConstraints
 operator|.
 name|BOTH
 expr_stmt|;
+name|FieldTextArea
+name|firstReq
+init|=
+literal|null
+decl_stmt|,
+name|firstOpt
+init|=
+literal|null
+decl_stmt|,
+name|firstGen
+init|=
+literal|null
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -1341,6 +1318,7 @@ argument_list|,
 name|stringContent
 argument_list|)
 expr_stmt|;
+comment|/*if (i == 0) 		    firstReq = ta1; 		if ((i == rmax-1)&& (firstReq != null)) 		ta1.setNextFocusableComponent(firstReq);*/
 name|setupJTextComponent
 argument_list|(
 name|ta1
@@ -1418,6 +1396,7 @@ argument_list|,
 name|stringContent
 argument_list|)
 expr_stmt|;
+comment|/*if (i == 0) 		    firstOpt = ta1; 		if (i == omax-1) 		ta1.setNextFocusableComponent(firstOpt);*/
 name|setupJTextComponent
 argument_list|(
 name|ta2
@@ -1495,6 +1474,7 @@ argument_list|,
 name|stringContent
 argument_list|)
 expr_stmt|;
+comment|/*if (i == 0) 		    firstGen = ta1; 		if (i == gmax-1) 		ta1.setNextFocusableComponent(firstGen);*/
 name|setupJTextComponent
 argument_list|(
 name|ta3

@@ -1744,6 +1744,15 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
+literal|"Search"
+argument_list|,
+literal|"ctrl F"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
 literal|"Incremental search"
 argument_list|,
 literal|"ctrl shift F"

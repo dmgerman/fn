@@ -3256,6 +3256,10 @@ operator|.
 name|SPLIT_PANE_DIVIDER_SIZE
 argument_list|)
 expr_stmt|;
+comment|// We replace the default FocusTraversalPolicy with a subclass
+comment|// that only allows FieldEditor components to gain keyboard focus,
+comment|// if there is an entry editor open.
+comment|/*splitPane.setFocusTraversalPolicy(new LayoutFocusTraversalPolicy() { 		protected boolean accept(Component c) { 		    Util.pr("jaa"); 		    if (showing == null) 			return super.accept(c); 		    else 			return (super.accept(c)&&  				(c instanceof FieldEditor)); 		} 		});*/
 name|setupTable
 argument_list|()
 expr_stmt|;
