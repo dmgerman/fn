@@ -321,7 +321,12 @@ operator|.
 name|createEtchedBorder
 argument_list|()
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Sort options"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -490,7 +495,12 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Secondary sort criterion"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|con
@@ -592,7 +602,12 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Tertiary sort criterion"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|gbl

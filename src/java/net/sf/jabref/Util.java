@@ -187,9 +187,16 @@ parameter_list|)
 block|{
 comment|// Make first character of String uppercase, and the
 comment|// rest lowercase.
-name|String
-name|res
-init|=
+if|if
+condition|(
+name|s
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|1
+condition|)
+return|return
 name|s
 operator|.
 name|substring
@@ -216,9 +223,13 @@ argument_list|)
 operator|.
 name|toLowerCase
 argument_list|()
-decl_stmt|;
+return|;
+else|else
 return|return
-name|res
+name|s
+operator|.
+name|toUpperCase
+argument_list|()
 return|;
 block|}
 DECL|method|checkName (String s)

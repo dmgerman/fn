@@ -415,8 +415,10 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Type: "
+literal|"Type"
 argument_list|)
+operator|+
+literal|": "
 argument_list|)
 decl_stmt|,
 name|lab2
@@ -428,8 +430,10 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Name: "
+literal|"Name"
 argument_list|)
+operator|+
+literal|": "
 argument_list|)
 decl_stmt|;
 name|con
@@ -916,7 +920,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Delimit fields with semicolon, ex.: author;title;journal"
+literal|"Delimit_1"
 argument_list|)
 argument_list|)
 expr_stmt|;

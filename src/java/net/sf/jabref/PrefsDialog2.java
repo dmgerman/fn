@@ -277,7 +277,12 @@ name|tabbed
 operator|.
 name|addTab
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"General"
+argument_list|)
 argument_list|,
 operator|new
 name|GeneralTab
@@ -290,7 +295,12 @@ name|tabbed
 operator|.
 name|addTab
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Table"
+argument_list|)
 argument_list|,
 operator|new
 name|TablePrefsTab
@@ -303,7 +313,12 @@ name|tabbed
 operator|.
 name|addTab
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"External programs"
+argument_list|)
 argument_list|,
 operator|new
 name|ExternalProgramsTab
@@ -319,7 +334,12 @@ init|=
 operator|new
 name|JButton
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Ok"
+argument_list|)
 argument_list|)
 decl_stmt|,
 name|cancel
@@ -327,7 +347,12 @@ init|=
 operator|new
 name|JButton
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Cancel"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|ok

@@ -3497,6 +3497,9 @@ name|toSet
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|updateSource
+argument_list|()
+expr_stmt|;
 name|panel
 operator|.
 name|refreshTable

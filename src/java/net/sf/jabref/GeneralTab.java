@@ -374,8 +374,10 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Default grouping field:"
+literal|"Default grouping field"
 argument_list|)
+operator|+
+literal|":"
 argument_list|)
 decl_stmt|;
 name|lab

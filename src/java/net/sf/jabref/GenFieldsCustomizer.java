@@ -304,7 +304,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Delimit fields with semicolon, ex.: url;pdf;note"
+literal|"Delimit_2"
 argument_list|)
 argument_list|)
 expr_stmt|;

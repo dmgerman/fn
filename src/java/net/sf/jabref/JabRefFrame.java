@@ -2723,7 +2723,12 @@ argument_list|(
 operator|new
 name|AbstractAction
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Customize entry types"
+argument_list|)
 argument_list|)
 block|{
 specifier|public
