@@ -38,6 +38,13 @@ operator|new
 name|JabRefPreferences
 argument_list|()
 decl_stmt|;
+name|BibtexEntryType
+operator|.
+name|loadCustomEntryTypes
+argument_list|(
+name|prefs
+argument_list|)
+expr_stmt|;
 name|Globals
 operator|.
 name|setLanguage

@@ -358,6 +358,15 @@ decl_stmt|;
 comment|// Variables for total weight of fields.
 comment|// These values can be used to calculate the preferred height for the form.
 comment|// reqW starts at 1 because it needs room for the bibtex key field.
+DECL|field|sourceIndex
+specifier|private
+name|int
+name|sourceIndex
+init|=
+operator|-
+literal|1
+decl_stmt|;
+comment|// The index the source panel has in tabbed.
 DECL|field|REQ
 DECL|field|OPT
 DECL|field|GEN
@@ -547,6 +556,28 @@ argument_list|,
 literal|"Show required fields"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|(
+name|entry
+operator|.
+name|getOptionalFields
+argument_list|()
+operator|!=
+literal|null
+operator|)
+operator|&&
+operator|(
+name|entry
+operator|.
+name|getOptionalFields
+argument_list|()
+operator|.
+name|length
+operator|>=
+literal|1
+operator|)
+condition|)
 name|tabbed
 operator|.
 name|addTab
@@ -569,6 +600,28 @@ argument_list|,
 literal|"Show optional fields"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|(
+name|entry
+operator|.
+name|getGeneralFields
+argument_list|()
+operator|!=
+literal|null
+operator|)
+operator|&&
+operator|(
+name|entry
+operator|.
+name|getGeneralFields
+argument_list|()
+operator|.
+name|length
+operator|>=
+literal|1
+operator|)
+condition|)
 name|tabbed
 operator|.
 name|addTab
@@ -610,6 +663,16 @@ argument_list|,
 literal|"Show/edit bibtex source"
 argument_list|)
 expr_stmt|;
+name|sourceIndex
+operator|=
+name|tabbed
+operator|.
+name|getTabCount
+argument_list|()
+operator|-
+literal|1
+expr_stmt|;
+comment|// Set the sourceIndex variable.
 name|tabbed
 operator|.
 name|addChangeListener
@@ -696,7 +759,7 @@ name|tabbed
 operator|.
 name|setSelectedIndex
 argument_list|(
-literal|3
+name|sourceIndex
 argument_list|)
 expr_stmt|;
 block|}
@@ -2842,8 +2905,8 @@ operator|)
 operator|.
 name|getSelectedIndex
 argument_list|()
-operator|<
-literal|3
+operator|!=
+name|sourceIndex
 condition|)
 block|{
 name|FieldPanel
@@ -4266,6 +4329,10 @@ name|newRow
 operator|=
 literal|0
 expr_stmt|;
+else|else
+return|return;
+comment|// newRow is still -1, so we can assume the database
+comment|// has only one entry.
 name|id
 operator|=
 name|panel
@@ -4428,6 +4495,10 @@ argument_list|()
 operator|-
 literal|1
 expr_stmt|;
+else|else
+return|return;
+comment|// newRow is still -1, so we can assume the database
+comment|// has only one entry.
 name|id
 operator|=
 name|panel

@@ -427,10 +427,15 @@ init|=
 operator|new
 name|TypeButton
 argument_list|(
+name|Util
+operator|.
+name|nCase
+argument_list|(
 name|tp
 operator|.
 name|getName
 argument_list|()
+argument_list|)
 argument_list|,
 name|tp
 argument_list|)
