@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.groups
+DECL|package|net.sf.jabref.util
 package|package
 name|net
 operator|.
@@ -8,12 +8,12 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|groups
+name|util
 package|;
 end_package
 
 begin_comment
-comment|/**  * A String tokenizer that works just like StringTokenizer, but considers quoted  * characters (which do not act as delimiters).  *   * JZTODO: move to some suitable location  */
+comment|/**  * A String tokenizer that works just like StringTokenizer, but considers quoted  * characters (which do not act as delimiters).  */
 end_comment
 
 begin_class
@@ -53,6 +53,7 @@ name|m_index
 init|=
 literal|0
 decl_stmt|;
+comment|/**      * @param content      *            The String to be tokenized.      * @param delimiters      *            The delimiter characters.      * @param quoteCharacter      *            The quoting character. Every character (including, but not      *            limited to, delimiters) that is preceded by this character is      *            not treated as a delimiter, but as a token component.      */
 DECL|method|QuotedStringTokenizer (String content, String delimiters, char quoteCharacter)
 specifier|public
 name|QuotedStringTokenizer
