@@ -145,15 +145,12 @@ name|ComponentUI
 name|newUI
 parameter_list|)
 block|{
+comment|//super.setUI(new JabRefUI(this));
 name|super
 operator|.
 name|setUI
 argument_list|(
-operator|new
-name|JabRefUI
-argument_list|(
-name|this
-argument_list|)
+name|newUI
 argument_list|)
 expr_stmt|;
 block|}

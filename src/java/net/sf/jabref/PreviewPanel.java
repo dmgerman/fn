@@ -448,6 +448,23 @@ name|toString
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|setEntry (BibtexEntry newEntry)
+specifier|public
+name|void
+name|setEntry
+parameter_list|(
+name|BibtexEntry
+name|newEntry
+parameter_list|)
+block|{
+name|entry
+operator|=
+name|newEntry
+expr_stmt|;
+name|update
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|update ()
 specifier|public
 name|void
