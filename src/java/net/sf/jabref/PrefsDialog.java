@@ -117,6 +117,7 @@ DECL|field|openLast
 DECL|field|secDesc
 DECL|field|terDesc
 DECL|field|defSource
+DECL|field|defSort
 DECL|field|editSource
 name|backup
 decl_stmt|,
@@ -127,6 +128,8 @@ decl_stmt|,
 name|terDesc
 decl_stmt|,
 name|defSource
+decl_stmt|,
+name|defSort
 decl_stmt|,
 name|editSource
 decl_stmt|,
@@ -515,6 +518,21 @@ operator|.
 name|getBoolean
 argument_list|(
 literal|"defaultShowSource"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|defSort
+operator|=
+operator|new
+name|JCheckBox
+argument_list|(
+literal|"Automatically sort by default"
+argument_list|,
+name|_prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"defaultAutoSort"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2919,6 +2937,18 @@ argument_list|(
 literal|"defaultShowSource"
 argument_list|,
 name|defSource
+operator|.
+name|isSelected
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|_prefs
+operator|.
+name|putBoolean
+argument_list|(
+literal|"defaultAutoSort"
+argument_list|,
+name|defSort
 operator|.
 name|isSelected
 argument_list|()
