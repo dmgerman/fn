@@ -216,6 +216,13 @@ name|ths
 init|=
 name|this
 decl_stmt|;
+DECL|field|incSearch
+specifier|private
+name|boolean
+name|incSearch
+init|=
+literal|false
+decl_stmt|;
 DECL|field|incSearchPos
 specifier|private
 name|int
@@ -550,6 +557,10 @@ name|FocusEvent
 name|e
 parameter_list|)
 block|{
+name|incSearch
+operator|=
+literal|false
+expr_stmt|;
 name|incSearchPos
 operator|=
 operator|-
@@ -1171,11 +1182,7 @@ operator|.
 name|isSelected
 argument_list|()
 operator|&&
-operator|(
-name|incSearchPos
-operator|>=
-literal|0
-operator|)
+name|incSearch
 condition|)
 block|{
 name|repeatIncremental
@@ -1244,6 +1251,11 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|searchField
+operator|.
+name|requestFocus
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 DECL|method|actionPerformed (ActionEvent e)
@@ -1265,6 +1277,10 @@ operator|==
 name|escape
 condition|)
 block|{
+name|incSearch
+operator|=
+literal|false
+expr_stmt|;
 if|if
 condition|(
 name|frame
@@ -1604,6 +1620,10 @@ name|void
 name|goIncremental
 parameter_list|()
 block|{
+name|incSearch
+operator|=
+literal|true
+expr_stmt|;
 name|SwingUtilities
 operator|.
 name|invokeLater
