@@ -62,7 +62,7 @@ comment|// this is the rule used handle articles
 comment|// we try (first author)/(year)
 DECL|method|applyRule (BibtexEntry oldEntry)
 specifier|public
-name|BibtexEntry
+name|String
 name|applyRule
 parameter_list|(
 name|BibtexEntry
@@ -250,19 +250,9 @@ name|newLabel
 operator|+=
 literal|"book"
 expr_stmt|;
-name|oldEntry
-operator|.
-name|setField
-argument_list|(
-name|Globals
-operator|.
-name|KEY_FIELD
-argument_list|,
-name|newLabel
-argument_list|)
-expr_stmt|;
+comment|//	oldEntry.setField(Globals.KEY_FIELD,newLabel) ;
 return|return
-name|oldEntry
+name|newLabel
 return|;
 block|}
 comment|//    public static void main(String args[]){

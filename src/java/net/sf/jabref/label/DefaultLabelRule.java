@@ -28,6 +28,18 @@ name|BibtexEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
 begin_class
 DECL|class|DefaultLabelRule
 specifier|public
@@ -39,7 +51,7 @@ block|{
 comment|// the default rule is that oit simply returns what it was given
 DECL|method|applyRule (BibtexEntry oldEntry)
 specifier|public
-name|BibtexEntry
+name|String
 name|applyRule
 parameter_list|(
 name|BibtexEntry
@@ -47,7 +59,17 @@ name|oldEntry
 parameter_list|)
 block|{
 return|return
+operator|(
+name|String
+operator|)
 name|oldEntry
+operator|.
+name|getField
+argument_list|(
+name|Globals
+operator|.
+name|KEY_FIELD
+argument_list|)
 return|;
 block|}
 block|}

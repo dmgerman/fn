@@ -37,7 +37,7 @@ block|{
 comment|// the default rule is that oit simply returns what it was given
 DECL|method|applyRule (BibtexEntry oldEntry)
 specifier|public
-name|BibtexEntry
+name|String
 name|applyRule
 parameter_list|(
 name|BibtexEntry

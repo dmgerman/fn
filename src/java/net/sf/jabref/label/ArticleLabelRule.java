@@ -50,7 +50,7 @@ comment|// this is the rule used handle articles
 comment|// we try (first author last name)/(year)/(first unique journal word)
 DECL|method|applyRule (BibtexEntry oldEntry)
 specifier|public
-name|BibtexEntry
+name|String
 name|applyRule
 parameter_list|(
 name|BibtexEntry
@@ -272,19 +272,9 @@ expr_stmt|;
 block|}
 comment|// now check for uniqueness
 comment|// i need access to basepanes: checkForDuplicateKey
-name|oldEntry
-operator|.
-name|setField
-argument_list|(
-name|Globals
-operator|.
-name|KEY_FIELD
-argument_list|,
-name|newLabel
-argument_list|)
-expr_stmt|;
+comment|//oldEntry.setField(Globals.KEY_FIELD,newLabel) ;
 return|return
-name|oldEntry
+name|newLabel
 return|;
 comment|/*         // use the journal name         // return the first token 4 wrds or longer, that's not journal         // , society, or the like (using the Keyword class)         try{                       if(oldEntry.getField("journal") != null) {             authorTokens = new StringTokenizer( ((String) oldEntry.getField("journal")).replaceAll(","," ").replaceAll("/"," ")) ;              String tempString = authorTokens.nextToken() ;              tempString = tempString.replaceAll(",","") ;              boolean done = false ;              while(tempString!=null&& !done ){                 tempString = tempString.replaceAll(",","").trim() ;                  if(tempString.trim().length()> 3&& !KeyWord.isKeyWord(tempString))  {                     done = true ;                  }                 else{                      if(authorTokens.hasMoreTokens()){                         tempString = authorTokens.nextToken() ;                      }else{                         done = true ;                      }                 }             }              if(tempString!=null&& (tempString.indexOf("null")<0) ){                 newLabel += String.valueOf( tempString.toLowerCase()) ;               }           }         }         catch(Throwable t){  System.err.println(t) ; } 	*/
 block|}
