@@ -24,6 +24,14 @@ comment|// todo     : - change colors and fonts
 end_comment
 
 begin_comment
+comment|//            - delete selected text
+end_comment
+
+begin_comment
+comment|//            - make textarea editable
+end_comment
+
+begin_comment
 comment|//
 end_comment
 
@@ -806,6 +814,20 @@ name|inputMenu
 operator|.
 name|add
 argument_list|(
+operator|new
+name|MenuHeaderAction
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|inputMenu
+operator|.
+name|addSeparator
+argument_list|()
+expr_stmt|;
+name|inputMenu
+operator|.
+name|add
+argument_list|(
 name|pasteMI
 argument_list|)
 expr_stmt|;
@@ -836,10 +858,24 @@ argument_list|()
 decl_stmt|;
 name|toolBar
 operator|.
+name|add
+argument_list|(
+operator|new
+name|ClearAction
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|toolBar
+operator|.
 name|setBorderPainted
 argument_list|(
 literal|false
 argument_list|)
+expr_stmt|;
+name|toolBar
+operator|.
+name|addSeparator
+argument_list|()
 expr_stmt|;
 name|toolBar
 operator|.
@@ -856,11 +892,6 @@ operator|new
 name|LoadAction
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|toolBar
-operator|.
-name|addSeparator
-argument_list|()
 expr_stmt|;
 name|JPanel
 name|leftPanel
@@ -1160,7 +1191,6 @@ operator|.
 name|VK_A
 argument_list|)
 expr_stmt|;
-comment|//    appRadio.setActionCommand("append");
 name|appRadio
 operator|.
 name|setSelected
@@ -1190,7 +1220,6 @@ operator|.
 name|VK_O
 argument_list|)
 expr_stmt|;
-comment|//    overRadio.setActionCommand("override");
 name|overRadio
 operator|.
 name|setSelected
@@ -1249,10 +1278,6 @@ argument_list|(
 name|overRadio
 argument_list|)
 expr_stmt|;
-comment|//Register a listener for the radio buttons.
-comment|//        rabbitButton.addActionListener(this);
-comment|//        pigButton.addActionListener(this);
-comment|/*     public void actionPerformed(ActionEvent e) {         picture.setIcon(new ImageIcon("images/"                                       + e.getActionCommand()                                       + ".gif"));     } */
 comment|// insert sub components
 name|JLabel
 name|label1
@@ -1322,7 +1347,6 @@ argument_list|(
 name|fieldScroller
 argument_list|)
 expr_stmt|;
-comment|/*     con.gridwidth = 4 ;     box = new JComboBox(getAllFields() ) ;     gbl.setConstraints( box, con ) ;     inputPanel.add(box) ; */
 name|con
 operator|.
 name|gridwidth
@@ -2558,6 +2582,83 @@ name|ex
 parameter_list|)
 block|{}
 block|}
+block|}
+comment|// ---------------------------------------------------------------------------
+DECL|class|ClearAction
+class|class
+name|ClearAction
+extends|extends
+name|BasicAction
+block|{
+DECL|method|ClearAction ()
+specifier|public
+name|ClearAction
+parameter_list|()
+block|{
+name|super
+argument_list|(
+literal|"Clear"
+argument_list|,
+literal|"clear_inputarea"
+argument_list|,
+name|GUIGlobals
+operator|.
+name|clearInputArea
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|actionPerformed (ActionEvent e)
+specifier|public
+name|void
+name|actionPerformed
+parameter_list|(
+name|ActionEvent
+name|e
+parameter_list|)
+block|{
+name|textPane
+operator|.
+name|setText
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+comment|// ---------------------------------------------------------------------------
+DECL|class|MenuHeaderAction
+class|class
+name|MenuHeaderAction
+extends|extends
+name|BasicAction
+block|{
+DECL|method|MenuHeaderAction ()
+specifier|public
+name|MenuHeaderAction
+parameter_list|()
+block|{
+name|super
+argument_list|(
+literal|"plain_right_menu"
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|actionPerformed (ActionEvent e)
+specifier|public
+name|void
+name|actionPerformed
+parameter_list|(
+name|ActionEvent
+name|e
+parameter_list|)
+block|{ }
 block|}
 comment|// ---------------------------------------------------------------------------
 DECL|class|FieldListSelectionHandler
