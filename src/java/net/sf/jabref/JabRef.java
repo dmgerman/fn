@@ -2828,6 +2828,13 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|ss
+operator|!=
+literal|null
+condition|)
+comment|// do this only if splashscreen was actually created
 name|ss
 operator|.
 name|dispose
