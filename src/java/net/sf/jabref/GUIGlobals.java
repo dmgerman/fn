@@ -1427,6 +1427,11 @@ DECL|field|shortPlainImport
 name|shortPlainImport
 init|=
 literal|"ShortPlainImport.html"
+decl_stmt|,
+DECL|field|shortIntegrityCheck
+name|shortIntegrityCheck
+init|=
+literal|"ShortIntegrityCheck.html"
 decl_stmt|;
 comment|// Colors.
 specifier|public

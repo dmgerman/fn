@@ -842,6 +842,48 @@ operator|=
 operator|new
 name|JTextPane
 argument_list|()
+block|{
+comment|//    pane =  new JTextPane(){
+specifier|public
+name|void
+name|setSize
+parameter_list|(
+name|Dimension
+name|d
+parameter_list|)
+block|{
+if|if
+condition|(
+name|d
+operator|.
+name|width
+operator|>
+literal|100
+condition|)
+name|d
+operator|.
+name|width
+operator|=
+literal|100
+expr_stmt|;
+name|super
+operator|.
+name|setSize
+argument_list|(
+name|d
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|boolean
+name|getScrollableTracksViewportWidth
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+block|}
 expr_stmt|;
 name|textPane
 operator|.
@@ -857,7 +899,19 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-comment|//    textPane.setMaximumSize( new Dimension(100, 100) );
+name|textPane
+operator|.
+name|setMaximumSize
+argument_list|(
+operator|new
+name|Dimension
+argument_list|(
+literal|100
+argument_list|,
+literal|100
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|doc
 operator|=
 name|textPane
@@ -921,13 +975,15 @@ argument_list|(
 name|testPanel
 argument_list|)
 decl_stmt|;
+comment|//    paneScrollPane.setVerticalScrollBarPolicy(
+comment|//        JScrollPane.VERTICAL_SCROLLBAR_ALWAYS ) ;
 name|paneScrollPane
 operator|.
-name|setVerticalScrollBarPolicy
+name|setHorizontalScrollBarPolicy
 argument_list|(
 name|JScrollPane
 operator|.
-name|VERTICAL_SCROLLBAR_ALWAYS
+name|HORIZONTAL_SCROLLBAR_NEVER
 argument_list|)
 expr_stmt|;
 name|paneScrollPane
@@ -956,7 +1012,6 @@ literal|10
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//    paneScrollPane.setHorizontalScrollBarPolicy( JScrollPane.HORIZONTAL_SCROLLBAR_NEVER) ;
 comment|// copy/paste Menu
 name|PasteAction
 name|pasteAction
