@@ -5520,6 +5520,24 @@ operator|.
 name|PLAIN_MESSAGE
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|idList
+operator|==
+literal|null
+operator|||
+name|idList
+operator|.
+name|trim
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|""
+argument_list|)
+condition|)
+comment|//if user pressed cancel
+return|return;
 name|Pattern
 name|p
 init|=
