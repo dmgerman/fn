@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* Copyright (C) 2003 Nizar N. Batada, Morten O. Alver  All programs in this directory and subdirectories are published under the GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html  */
+comment|/*  Copyright (C) 2003 Nizar N. Batada, Morten O. Alver   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   */
 end_comment
 
 begin_package
@@ -104,6 +104,16 @@ name|ImportFormatReader
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|*
+import|;
+end_import
+
 begin_class
 DECL|class|EntryTableModel
 specifier|public
@@ -171,10 +181,45 @@ name|OTHER
 init|=
 literal|3
 decl_stmt|,
-DECL|field|PADLEFT
-name|PADLEFT
+comment|//PDF_COL = 1, // The column displaying icons for linked pdfs.
+DECL|field|ICON_COL
+name|ICON_COL
 init|=
+literal|8
+decl_stmt|;
+comment|// Constant to indicate that an icon cell renderer should be used.
+specifier|public
+specifier|static
+specifier|final
+name|String
+DECL|field|PDF
+name|PDF
+init|=
+literal|"pdf"
+decl_stmt|,
+DECL|field|URL_
+name|URL_
+init|=
+literal|"url"
+decl_stmt|;
+DECL|field|padleft
+specifier|public
+name|int
+name|padleft
+init|=
+operator|-
 literal|1
+decl_stmt|;
+comment|// padleft indicates how many columns (starting from left) are
+comment|// special columns (number column or icon column).
+DECL|field|iconCols
+specifier|private
+name|HashMap
+name|iconCols
+init|=
+operator|new
+name|HashMap
+argument_list|()
 decl_stmt|;
 DECL|field|nameCols
 name|int
@@ -189,6 +234,18 @@ name|boolean
 name|namesAsIs
 decl_stmt|,
 name|namesFf
+decl_stmt|;
+DECL|field|pdfIcon
+name|ImageIcon
+name|pdfIcon
+init|=
+operator|new
+name|ImageIcon
+argument_list|(
+name|GUIGlobals
+operator|.
+name|pdfSmallIcon
+argument_list|)
 decl_stmt|;
 DECL|method|EntryTableModel (JabRefFrame frame_, BasePanel panel_, BibtexDatabase db_)
 specifier|public
@@ -232,9 +289,7 @@ comment|// preferences get changed.
 name|remap
 argument_list|()
 expr_stmt|;
-comment|//	entryIDs = db.getKeySet().toArray(); // Temporary
 block|}
-comment|/*public void numberRows() {          for(int r=0; r< model.getRowCount(); r++)                  model.setValueAt(r+1 + "", r, 0); 		 } */
 DECL|method|getColumnName (int col)
 specifier|public
 name|String
@@ -250,13 +305,28 @@ name|col
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|GUIGlobals
 operator|.
 name|NUMBER_COL
 return|;
-comment|//	else if (col == 1)
-comment|//	    return Util.nCase(TYPE);
+block|}
+elseif|else
+if|if
+condition|(
+name|getIconTypeForColumn
+argument_list|(
+name|col
+argument_list|)
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+literal|""
+return|;
+block|}
 comment|//	else {
 return|return
 name|Util
@@ -267,7 +337,7 @@ name|columns
 index|[
 name|col
 operator|-
-name|PADLEFT
+name|padleft
 index|]
 argument_list|)
 return|;
@@ -295,7 +365,7 @@ name|getColumnCount
 parameter_list|()
 block|{
 return|return
-name|PADLEFT
+name|padleft
 operator|+
 name|columns
 operator|.
@@ -312,11 +382,23 @@ name|column
 parameter_list|)
 block|{
 return|return
+operator|(
+name|getIconTypeForColumn
+argument_list|(
+name|column
+argument_list|)
+operator|!=
+literal|null
+condition|?
+name|Icon
+operator|.
+name|class
+else|:
 name|String
 operator|.
 name|class
+operator|)
 return|;
-comment|/* 	if (column == 0) 	    return String.class; 	else 	 ((ObjectType)(FieldTypes.GLOBAL_FIELD_TYPES.get 				 (GUIGlobals.ALL_FIELDS 				  [(frame.prefs.getByteArray("columnNames"))[column-1]]))) 				  .getValueClass();*/
 block|}
 DECL|method|getValueAt (int row, int col)
 specifier|public
@@ -348,12 +430,22 @@ name|row
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|String
+name|iconType
+init|=
+name|getIconTypeForColumn
+argument_list|(
+name|col
+argument_list|)
+decl_stmt|;
+comment|// If non-null, indicates an icon column's type.
 if|if
 condition|(
 name|col
 operator|==
 literal|0
 condition|)
+block|{
 name|o
 operator|=
 literal|""
@@ -364,7 +456,38 @@ operator|+
 literal|1
 operator|)
 expr_stmt|;
-comment|//else
+block|}
+elseif|else
+if|if
+condition|(
+name|iconType
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|hasField
+argument_list|(
+name|row
+argument_list|,
+name|iconType
+argument_list|)
+condition|)
+return|return
+literal|null
+return|;
+comment|// Ok, so we are going to display an icon. Find out which one, and return it:
+return|return
+name|GUIGlobals
+operator|.
+name|getTableIcon
+argument_list|(
+name|iconType
+argument_list|)
+return|;
+block|}
 comment|//  if (col == 1)
 comment|//  o = be.getType().getName();
 comment|//else {
@@ -375,7 +498,7 @@ name|columns
 index|[
 name|col
 operator|-
-name|PADLEFT
+name|padleft
 index|]
 operator|.
 name|equals
@@ -412,7 +535,7 @@ name|columns
 index|[
 name|col
 operator|-
-name|PADLEFT
+name|padleft
 index|]
 argument_list|)
 expr_stmt|;
@@ -432,11 +555,12 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 if|if
 condition|(
 name|col
 operator|-
-name|PADLEFT
+name|padleft
 operator|==
 name|nameCols
 index|[
@@ -450,22 +574,27 @@ name|o
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 if|if
 condition|(
 name|namesAsIs
 condition|)
+block|{
 return|return
 name|o
 return|;
+block|}
 else|else
 block|{
 if|if
 condition|(
 name|namesFf
 condition|)
+block|{
 return|return
 name|ImportFormatReader
 operator|.
@@ -477,7 +606,9 @@ operator|)
 name|o
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 name|ImportFormatReader
 operator|.
@@ -492,9 +623,52 @@ return|;
 block|}
 block|}
 block|}
+block|}
+block|}
 comment|//}
 return|return
 name|o
+return|;
+block|}
+comment|/**    * This method returns a string indicating the type of icons to be displayed in the given column.    * It returns null if the column is not an icon column, and thereby also serves to identify icon    * columns.    */
+DECL|method|getIconTypeForColumn (int col)
+specifier|public
+name|String
+name|getIconTypeForColumn
+parameter_list|(
+name|int
+name|col
+parameter_list|)
+block|{
+name|Object
+name|o
+init|=
+name|iconCols
+operator|.
+name|get
+argument_list|(
+operator|new
+name|Integer
+argument_list|(
+name|col
+argument_list|)
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|o
+operator|!=
+literal|null
+condition|)
+return|return
+operator|(
+name|String
+operator|)
+name|o
+return|;
+else|else
+return|return
+literal|null
 return|;
 block|}
 DECL|method|getCellStatus (int row, int col)
@@ -516,9 +690,25 @@ name|col
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|OTHER
 return|;
+block|}
+if|if
+condition|(
+name|getIconTypeForColumn
+argument_list|(
+name|col
+argument_list|)
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|ICON_COL
+return|;
+block|}
 name|BibtexEntryType
 name|type
 init|=
@@ -543,7 +733,7 @@ name|columns
 index|[
 name|col
 operator|-
-literal|1
+name|padleft
 index|]
 operator|.
 name|equals
@@ -561,13 +751,15 @@ name|columns
 index|[
 name|col
 operator|-
-name|PADLEFT
+name|padleft
 index|]
 argument_list|)
 condition|)
+block|{
 return|return
 name|REQUIRED
 return|;
+block|}
 if|if
 condition|(
 name|type
@@ -578,13 +770,15 @@ name|columns
 index|[
 name|col
 operator|-
-name|PADLEFT
+name|padleft
 index|]
 argument_list|)
 condition|)
+block|{
 return|return
 name|OPTIONAL
 return|;
+block|}
 return|return
 name|OTHER
 return|;
@@ -759,6 +953,49 @@ name|void
 name|remap
 parameter_list|()
 block|{
+comment|// Set the icon columns, indicating the number of special columns to the left.
+comment|// We currently assume one icon column plus the number column.
+name|iconCols
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+name|iconCols
+operator|.
+name|put
+argument_list|(
+operator|new
+name|Integer
+argument_list|(
+literal|1
+argument_list|)
+argument_list|,
+name|PDF
+argument_list|)
+expr_stmt|;
+name|iconCols
+operator|.
+name|put
+argument_list|(
+operator|new
+name|Integer
+argument_list|(
+literal|2
+argument_list|)
+argument_list|,
+name|URL_
+argument_list|)
+expr_stmt|;
+comment|// Add 1 to the number of icon columns to get padleft.
+name|padleft
+operator|=
+literal|1
+operator|+
+name|iconCols
+operator|.
+name|size
+argument_list|()
+expr_stmt|;
 comment|// Set up the int[] nameCols, to mark which columns should be
 comment|// treated as lists of names. This is to provide a correct presentation
 comment|// of names as efficiently as possible.
@@ -812,6 +1049,7 @@ argument_list|(
 literal|"editor"
 argument_list|)
 condition|)
+block|{
 name|tmp
 operator|.
 name|add
@@ -823,6 +1061,7 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|nameCols
 operator|=
@@ -851,6 +1090,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|nameCols
 index|[
 name|i
@@ -871,6 +1111,7 @@ operator|.
 name|intValue
 argument_list|()
 expr_stmt|;
+block|}
 name|namesAsIs
 operator|=
 name|panel
@@ -1102,6 +1343,7 @@ argument_list|()
 operator|<
 literal|4
 condition|)
+block|{
 name|sorter
 operator|=
 name|db
@@ -1188,7 +1430,9 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|sorter
 operator|=
 name|db
@@ -1300,165 +1544,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/*    remapAfterSearch(); 	else 	remapNormal();*/
 block|}
-DECL|method|remapNormal ()
-specifier|protected
-name|void
-name|remapNormal
-parameter_list|()
-block|{
-comment|// Changes have occured in order or entry count.
-name|String
-name|pri
-init|=
-name|frame
-operator|.
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"priSort"
-argument_list|)
-decl_stmt|,
-name|sec
-init|=
-name|frame
-operator|.
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"secSort"
-argument_list|)
-decl_stmt|,
-name|ter
-init|=
-name|frame
-operator|.
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"terSort"
-argument_list|)
-decl_stmt|;
-comment|// Make a three-layered sorted view.
-name|sorter
-operator|=
-name|db
-operator|.
-name|getSorter
-argument_list|(
-operator|new
-name|EntryComparator
-argument_list|(
-name|frame
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-literal|"priDescending"
-argument_list|)
-argument_list|,
-name|frame
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-literal|"secDescending"
-argument_list|)
-argument_list|,
-name|frame
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-literal|"terDescending"
-argument_list|)
-argument_list|,
-name|pri
-argument_list|,
-name|sec
-argument_list|,
-name|ter
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|//Util.pr("jau");
-block|}
-DECL|method|remapAfterSearch ()
-specifier|protected
-name|void
-name|remapAfterSearch
-parameter_list|()
-block|{
-comment|// Changes have occured in order or entry count.
-name|String
-name|pri
-init|=
-name|frame
-operator|.
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"priSort"
-argument_list|)
-decl_stmt|,
-name|sec
-init|=
-name|frame
-operator|.
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"secSort"
-argument_list|)
-decl_stmt|;
-comment|// Make a three-layered sorted view.
-name|sorter
-operator|=
-name|db
-operator|.
-name|getSorter
-argument_list|(
-operator|new
-name|EntryComparator
-argument_list|(
-literal|true
-argument_list|,
-name|frame
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-literal|"priDescending"
-argument_list|)
-argument_list|,
-name|frame
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-literal|"secDescending"
-argument_list|)
-argument_list|,
-literal|"search"
-argument_list|,
-name|pri
-argument_list|,
-name|sec
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|//Util.pr("jau");
 block|}
 DECL|method|isCellEditable (int row, int col)
 specifier|public
@@ -1476,11 +1562,13 @@ if|if
 condition|(
 name|col
 operator|<
-name|PADLEFT
+name|padleft
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 comment|// getColumnClass will throw a NullPointerException if there is no
 comment|// entry in FieldTypes.GLOBAL_FIELD_TYPES for the column.
 try|try
@@ -1503,14 +1591,18 @@ operator|.
 name|TYPE_HEADER
 argument_list|)
 condition|)
+block|{
 comment|//	    getColumnClass(col);
 return|return
 literal|true
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1642,10 +1734,12 @@ name|toSet
 argument_list|)
 operator|)
 condition|)
+block|{
 name|set
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -1662,15 +1756,18 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|set
 operator|=
 literal|true
 expr_stmt|;
 block|}
+block|}
 if|if
 condition|(
 name|set
 condition|)
+block|{
 try|try
 block|{
 if|if
@@ -1679,6 +1776,7 @@ name|toSet
 operator|!=
 literal|null
 condition|)
+block|{
 operator|(
 operator|new
 name|LatexFieldFormatter
@@ -1697,6 +1795,7 @@ name|fieldName
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Store this change in the UndoManager to facilitate undo.
 name|Object
 name|oldVal
@@ -1783,6 +1882,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 DECL|method|getNameFromNumber (int number)
 specifier|public
 name|String
@@ -1858,10 +1958,12 @@ name|i
 argument_list|)
 argument_list|)
 condition|)
+block|{
 name|res
 operator|=
 name|i
 expr_stmt|;
+block|}
 name|i
 operator|++
 expr_stmt|;

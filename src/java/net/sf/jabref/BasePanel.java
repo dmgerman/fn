@@ -182,8 +182,6 @@ name|BasePanel
 extends|extends
 name|JSplitPane
 implements|implements
-name|MouseListener
-implements|,
 name|ClipboardOwner
 block|{
 DECL|field|ths
@@ -6130,13 +6128,6 @@ argument_list|)
 expr_stmt|;
 name|entryTable
 operator|.
-name|addMouseListener
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
-name|entryTable
-operator|.
 name|getActionMap
 argument_list|()
 operator|.
@@ -8409,85 +8400,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|mouseClicked (MouseEvent e)
-specifier|public
-name|void
-name|mouseClicked
-parameter_list|(
-name|MouseEvent
-name|e
-parameter_list|)
-block|{
-comment|// Intercepts mouse clicks from the JTable showing the base contents.
-comment|// A double click on an entry should open the entry's editor.
-if|if
-condition|(
-name|e
-operator|.
-name|getClickCount
-argument_list|()
-operator|==
-literal|2
-condition|)
-block|{
-try|try
-block|{
-name|runCommand
-argument_list|(
-literal|"edit"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|ex
-parameter_list|)
-block|{
-name|ex
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-block|}
-DECL|method|mouseEntered (MouseEvent e)
-specifier|public
-name|void
-name|mouseEntered
-parameter_list|(
-name|MouseEvent
-name|e
-parameter_list|)
-block|{}
-DECL|method|mouseExited (MouseEvent e)
-specifier|public
-name|void
-name|mouseExited
-parameter_list|(
-name|MouseEvent
-name|e
-parameter_list|)
-block|{}
-DECL|method|mousePressed (MouseEvent e)
-specifier|public
-name|void
-name|mousePressed
-parameter_list|(
-name|MouseEvent
-name|e
-parameter_list|)
-block|{}
-DECL|method|mouseReleased (MouseEvent e)
-specifier|public
-name|void
-name|mouseReleased
-parameter_list|(
-name|MouseEvent
-name|e
-parameter_list|)
-block|{}
 comment|// Method pertaining to the ClipboardOwner interface.
 DECL|method|lostOwnership (Clipboard clipboard, Transferable contents)
 specifier|public
