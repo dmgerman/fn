@@ -103,6 +103,11 @@ name|frameTitle
 init|=
 literal|"JabRef"
 decl_stmt|,
+DECL|field|version
+name|version
+init|=
+literal|"1.2"
+decl_stmt|,
 DECL|field|stringsTitle
 name|stringsTitle
 init|=
@@ -152,6 +157,41 @@ specifier|public
 specifier|static
 name|Font
 name|CURRENTFONT
+decl_stmt|,
+DECL|field|typeNameFont
+name|typeNameFont
+init|=
+operator|new
+name|Font
+argument_list|(
+literal|"arial"
+argument_list|,
+name|Font
+operator|.
+name|ITALIC
+operator|+
+name|Font
+operator|.
+name|BOLD
+argument_list|,
+literal|24
+argument_list|)
+decl_stmt|,
+DECL|field|jabRefFont
+name|jabRefFont
+init|=
+operator|new
+name|Font
+argument_list|(
+literal|"arial"
+argument_list|,
+name|Font
+operator|.
+name|ITALIC
+comment|/*+Font.BOLD*/
+argument_list|,
+literal|20
+argument_list|)
 decl_stmt|;
 comment|// Signature written at the top of the .bib file.
 DECL|field|SIGNATURE
@@ -161,7 +201,11 @@ specifier|final
 name|String
 name|SIGNATURE
 init|=
-literal|"This file was created with JabRef 1.2.\n\n"
+literal|"This file was created with JabRef "
+operator|+
+name|version
+operator|+
+literal|".\n\n"
 decl_stmt|;
 comment|// Size of help window.
 specifier|static
