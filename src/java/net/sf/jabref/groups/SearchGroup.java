@@ -72,6 +72,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|QuotedStringTokenizer
+import|;
+end_import
+
+begin_import
+import|import
 name|antlr
 operator|.
 name|RecognitionException
