@@ -1227,7 +1227,9 @@ argument_list|)
 expr_stmt|;
 name|setRowHeight
 argument_list|(
-literal|4
+name|GUIGlobals
+operator|.
+name|TABLE_ROW_PADDING
 operator|+
 name|GUIGlobals
 operator|.

@@ -219,7 +219,14 @@ DECL|field|GROUPS_VISIBLE_ROWS
 name|GROUPS_VISIBLE_ROWS
 init|=
 literal|8
+decl_stmt|,
+DECL|field|TABLE_ROW_PADDING
+name|TABLE_ROW_PADDING
+init|=
+literal|4
 decl_stmt|;
+comment|// Added to the font size when determining table
+comment|// row height
 specifier|public
 specifier|static
 specifier|final
@@ -2107,8 +2114,41 @@ name|FIELD_LENGTH
 decl_stmt|,
 name|FIELD_WEIGHT
 decl_stmt|;
+DECL|field|FIELD_EXTRAS
+specifier|public
+specifier|static
+specifier|final
+name|Map
+name|FIELD_EXTRAS
+decl_stmt|;
 static|static
 block|{
+name|FIELD_EXTRAS
+operator|=
+operator|new
+name|HashMap
+argument_list|()
+expr_stmt|;
+comment|// fieldExtras contains mappings to tell the EntryEditor to add a specific
+comment|// function to this field, for instance a "browse" button for the "pdf" field.
+name|FIELD_EXTRAS
+operator|.
+name|put
+argument_list|(
+literal|"pdf"
+argument_list|,
+literal|"browse"
+argument_list|)
+expr_stmt|;
+name|FIELD_EXTRAS
+operator|.
+name|put
+argument_list|(
+literal|"ps"
+argument_list|,
+literal|"browse"
+argument_list|)
+expr_stmt|;
 name|Map
 name|fieldLength
 init|=
