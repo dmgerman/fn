@@ -11243,39 +11243,6 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|showBibtexkeyConfirmationDialog (String message)
-specifier|public
-name|boolean
-name|showBibtexkeyConfirmationDialog
-parameter_list|(
-name|String
-name|message
-parameter_list|)
-block|{
-name|JOptionPane
-operator|.
-name|showConfirmDialog
-argument_list|(
-name|frame
-argument_list|,
-name|message
-argument_list|,
-literal|"Confirm new Bibtexkey"
-argument_list|,
-comment|// JZTODO
-name|JOptionPane
-operator|.
-name|YES_NO_OPTION
-argument_list|,
-name|JOptionPane
-operator|.
-name|QUESTION_MESSAGE
-argument_list|)
-expr_stmt|;
-return|return
-literal|true
-return|;
-block|}
 DECL|class|UndoAction
 class|class
 name|UndoAction
