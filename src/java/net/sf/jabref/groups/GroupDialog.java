@@ -1216,6 +1216,14 @@ name|database
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|m_editedGroup
+operator|==
+literal|null
+condition|)
+break|break;
+comment|// do not perform the below converion
 comment|// JZTODO lyrics...
 name|int
 name|i
