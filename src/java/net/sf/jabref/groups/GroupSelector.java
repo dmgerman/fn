@@ -44,18 +44,6 @@ name|java
 operator|.
 name|awt
 operator|.
-name|dnd
-operator|.
-name|DragSource
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
 name|event
 operator|.
 name|*
@@ -66,9 +54,19 @@ begin_import
 import|import
 name|java
 operator|.
+name|beans
+operator|.
+name|PropertyChangeEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
-name|Hashtable
+name|*
 import|;
 end_import
 
@@ -2895,6 +2893,8 @@ name|GroupDialog
 argument_list|(
 name|frame
 argument_list|,
+name|panel
+argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
@@ -3235,6 +3235,8 @@ name|GroupDialog
 argument_list|(
 name|frame
 argument_list|,
+name|panel
+argument_list|,
 name|oldGroup
 argument_list|)
 decl_stmt|;
@@ -3381,6 +3383,8 @@ operator|new
 name|GroupDialog
 argument_list|(
 name|frame
+argument_list|,
+name|panel
 argument_list|,
 literal|null
 argument_list|)
@@ -3546,6 +3550,8 @@ operator|new
 name|GroupDialog
 argument_list|(
 name|frame
+argument_list|,
+name|panel
 argument_list|,
 literal|null
 argument_list|)
