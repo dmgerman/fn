@@ -2004,14 +2004,10 @@ name|source
 operator|.
 name|setEditable
 argument_list|(
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-literal|"enableSourceEditing"
-argument_list|)
+literal|true
 argument_list|)
 expr_stmt|;
+comment|//prefs.getBoolean("enableSourceEditing"));
 name|source
 operator|.
 name|setLineWrap

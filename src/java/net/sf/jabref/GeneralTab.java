@@ -332,22 +332,8 @@ argument_list|(
 name|defSource
 argument_list|)
 expr_stmt|;
-name|gbl
-operator|.
-name|setConstraints
-argument_list|(
-name|editSource
-argument_list|,
-name|con
-argument_list|)
-expr_stmt|;
-name|general
-operator|.
-name|add
-argument_list|(
-name|editSource
-argument_list|)
-expr_stmt|;
+comment|//gbl.setConstraints(editSource, con);
+comment|//general.add(editSource);
 name|gbl
 operator|.
 name|setConstraints
