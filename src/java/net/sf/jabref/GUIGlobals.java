@@ -736,7 +736,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"SearchRow.gif"
+literal|"Binocular.gif"
 argument_list|)
 decl_stmt|;
 comment|// Help files (in HTML format):

@@ -214,6 +214,10 @@ name|thisDatabase
 operator|.
 name|getEntryCount
 argument_list|()
+decl_stmt|,
+name|hits
+init|=
+literal|0
 decl_stmt|;
 for|for
 control|(
@@ -272,9 +276,15 @@ name|searchScore
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// 3. fire "sort" on "search"
-comment|// 4. add "search all optional fields"
-comment|// 5. modify algorithm to taste
+if|if
+condition|(
+name|searchScore
+operator|>
+literal|0
+condition|)
+name|hits
+operator|++
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -294,6 +304,38 @@ name|panel
 operator|.
 name|selectSearchResults
 argument_list|()
+expr_stmt|;
+if|if
+condition|(
+operator|(
+name|searchValueField
+operator|==
+literal|null
+operator|)
+operator|||
+operator|(
+name|searchValueField
+operator|==
+name|Globals
+operator|.
+name|SEARCH
+operator|)
+condition|)
+name|panel
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Searched database. Number of hits"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|hits
+argument_list|)
 expr_stmt|;
 block|}
 block|}

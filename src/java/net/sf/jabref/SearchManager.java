@@ -108,17 +108,17 @@ specifier|private
 name|JLabel
 name|lab
 init|=
+comment|//new JLabel(Globals.lang("Search")+":");
 operator|new
 name|JLabel
 argument_list|(
-name|Globals
-operator|.
-name|lang
+operator|new
+name|ImageIcon
 argument_list|(
-literal|"Search"
+name|GUIGlobals
+operator|.
+name|searchIconFile
 argument_list|)
-operator|+
-literal|":"
 argument_list|)
 decl_stmt|;
 DECL|field|settings
@@ -156,7 +156,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Unshow"
+literal|"Clear search"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -246,7 +246,12 @@ operator|=
 operator|new
 name|JCheckBoxMenuItem
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Search required fields"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -261,7 +266,12 @@ operator|=
 operator|new
 name|JCheckBoxMenuItem
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Search optional fields"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -276,7 +286,12 @@ operator|=
 operator|new
 name|JCheckBoxMenuItem
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Search general fields"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -291,7 +306,12 @@ operator|=
 operator|new
 name|JCheckBoxMenuItem
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Search all fields"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -306,7 +326,12 @@ operator|=
 operator|new
 name|JCheckBoxMenuItem
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Use regular expressions"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.

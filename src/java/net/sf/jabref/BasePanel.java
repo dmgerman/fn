@@ -383,7 +383,6 @@ name|file
 expr_stmt|;
 block|}
 DECL|method|output (String s)
-specifier|private
 name|void
 name|output
 parameter_list|(
