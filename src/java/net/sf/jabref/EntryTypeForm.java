@@ -3275,6 +3275,16 @@ operator|.
 name|format
 argument_list|(
 name|toSet
+argument_list|,
+name|GUIGlobals
+operator|.
+name|isStandardField
+argument_list|(
+name|fe
+operator|.
+name|getFieldName
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|Object

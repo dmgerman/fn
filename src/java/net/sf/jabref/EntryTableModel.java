@@ -1260,6 +1260,13 @@ operator|.
 name|format
 argument_list|(
 name|toSet
+argument_list|,
+name|GUIGlobals
+operator|.
+name|isStandardField
+argument_list|(
+name|fieldName
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Store this change in the UndoManager to facilitate undo.

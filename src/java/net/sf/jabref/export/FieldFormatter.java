@@ -22,13 +22,16 @@ specifier|public
 interface|interface
 name|FieldFormatter
 block|{
-DECL|method|format (String s)
+DECL|method|format (String s, boolean standardBibtex)
 specifier|public
 name|String
 name|format
 parameter_list|(
 name|String
 name|s
+parameter_list|,
+name|boolean
+name|standardBibtex
 parameter_list|)
 throws|throws
 name|IllegalArgumentException

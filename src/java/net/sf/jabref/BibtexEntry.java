@@ -967,6 +967,13 @@ name|o
 operator|.
 name|toString
 argument_list|()
+argument_list|,
+name|GUIGlobals
+operator|.
+name|isStandardField
+argument_list|(
+name|name
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

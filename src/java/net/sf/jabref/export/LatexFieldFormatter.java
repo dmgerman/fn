@@ -94,17 +94,45 @@ name|STARTCOL
 init|=
 literal|4
 decl_stmt|;
-DECL|method|format (String text)
+DECL|method|format (String text, boolean standardBibtex)
 specifier|public
 name|String
 name|format
 parameter_list|(
 name|String
 name|text
+parameter_list|,
+name|boolean
+name|standardBibtex
 parameter_list|)
 throws|throws
 name|IllegalArgumentException
 block|{
+comment|// If the field is non-standard, we will just append braces,
+comment|// wrap and write.
+if|if
+condition|(
+operator|!
+name|standardBibtex
+condition|)
+block|{
+return|return
+literal|"{"
+operator|+
+name|Util
+operator|.
+name|wrap2
+argument_list|(
+name|text
+argument_list|,
+name|GUIGlobals
+operator|.
+name|LINE_LENGTH
+argument_list|)
+operator|+
+literal|"}"
+return|;
+block|}
 name|sb
 operator|=
 operator|new
