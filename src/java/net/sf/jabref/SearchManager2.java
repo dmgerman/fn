@@ -1389,6 +1389,11 @@ name|Exception
 name|ex
 parameter_list|)
 block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 comment|// JZ: for testing; this does the new search if the
 comment|// search text is in correct syntax, and the regular search otherwise
 block|}

@@ -154,6 +154,12 @@ operator|new
 name|JabRefPreferences
 argument_list|()
 decl_stmt|;
+name|Globals
+operator|.
+name|prefs
+operator|=
+name|prefs
+expr_stmt|;
 name|BibtexEntryType
 operator|.
 name|loadCustomEntryTypes
@@ -278,7 +284,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Imports file: [bibtexml|endnote|isi|ris,]filename"
+literal|"Imports file: filename[,bibtexml|endnote|isi|ris]"
 argument_list|)
 argument_list|,
 name|importFile
@@ -296,7 +302,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Outputs or exports file: [bibtexml|docbook|html|simplehtml,]filename"
+literal|"Outputs or exports file: filename[,bibtexml|docbook|html|simplehtml]"
 argument_list|)
 argument_list|,
 name|exportFile

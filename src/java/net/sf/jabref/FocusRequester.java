@@ -32,6 +32,7 @@ end_import
 
 begin_class
 DECL|class|FocusRequester
+specifier|public
 class|class
 name|FocusRequester
 implements|implements

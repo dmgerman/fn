@@ -220,6 +220,14 @@ operator|new
 name|GlobalFocusListener
 argument_list|()
 decl_stmt|;
+DECL|field|prefs
+specifier|public
+specifier|static
+name|JabRefPreferences
+name|prefs
+init|=
+literal|null
+decl_stmt|;
 DECL|field|osName
 specifier|public
 specifier|static

@@ -1081,7 +1081,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"JabRef-Logo.gif"
+literal|"JabRef-Logo-small.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|splashScreenImage
@@ -1156,6 +1156,11 @@ DECL|field|pdfHelp
 name|pdfHelp
 init|=
 literal|"ExternalFiles.html"
+decl_stmt|,
+DECL|field|exportCustomizationHelp
+name|exportCustomizationHelp
+init|=
+literal|"CustomExports.html"
 decl_stmt|,
 DECL|field|aboutPage
 name|aboutPage
@@ -1867,6 +1872,26 @@ DECL|field|WIDTH_ICON_COL
 name|WIDTH_ICON_COL
 init|=
 literal|19
+decl_stmt|;
+comment|// Column widths for export customization dialog table:
+specifier|public
+specifier|static
+specifier|final
+name|int
+DECL|field|EXPORT_DIALOG_COL_0_WIDTH
+name|EXPORT_DIALOG_COL_0_WIDTH
+init|=
+literal|50
+decl_stmt|,
+DECL|field|EXPORT_DIALOG_COL_1_WIDTH
+name|EXPORT_DIALOG_COL_1_WIDTH
+init|=
+literal|200
+decl_stmt|,
+DECL|field|EXPORT_DIALOG_COL_2_WIDTH
+name|EXPORT_DIALOG_COL_2_WIDTH
+init|=
+literal|30
 decl_stmt|;
 DECL|field|FIELD_WEIGHT
 specifier|public
