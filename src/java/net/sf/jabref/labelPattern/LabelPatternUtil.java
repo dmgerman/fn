@@ -351,31 +351,7 @@ condition|(
 name|field
 condition|)
 block|{
-if|if
-condition|(
-name|_entry
-operator|.
-name|getField
-argument_list|(
-name|val
-argument_list|)
-operator|==
-literal|null
-condition|)
-block|{
-name|Globals
-operator|.
-name|logger
-argument_list|(
-literal|"Key generator warning: field '"
-operator|+
-name|val
-operator|+
-literal|"' empty."
-argument_list|)
-expr_stmt|;
-block|}
-else|else
+try|try
 block|{
 if|if
 condition|(
@@ -383,7 +359,7 @@ name|val
 operator|.
 name|equals
 argument_list|(
-literal|"author"
+literal|"auth"
 argument_list|)
 condition|)
 block|{
@@ -413,7 +389,7 @@ name|val
 operator|.
 name|equals
 argument_list|(
-literal|"editor"
+literal|"edtr"
 argument_list|)
 condition|)
 block|{
@@ -515,6 +491,24 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ex
+parameter_list|)
+block|{
+name|Globals
+operator|.
+name|logger
+argument_list|(
+literal|"Key generator warning: field '"
+operator|+
+name|val
+operator|+
+literal|"' empty."
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 else|else
@@ -743,7 +737,7 @@ name|_field
 operator|.
 name|equals
 argument_list|(
-literal|"author"
+literal|"auth"
 argument_list|)
 condition|)
 block|{
@@ -773,7 +767,7 @@ name|_field
 operator|.
 name|equals
 argument_list|(
-literal|"editor"
+literal|"edtr"
 argument_list|)
 condition|)
 block|{
@@ -856,6 +850,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|//else if(_field.equals("title
 comment|// we havent seen any special demands
 else|else
 block|{
