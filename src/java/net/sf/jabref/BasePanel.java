@@ -300,7 +300,9 @@ name|undoManager
 init|=
 operator|new
 name|CountingUndoManager
-argument_list|()
+argument_list|(
+name|ths
+argument_list|)
 decl_stmt|;
 DECL|field|undoAction
 name|UndoAction

@@ -28,6 +28,18 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BasePanel
+import|;
+end_import
+
 begin_class
 DECL|class|CountingUndoManager
 specifier|public
@@ -48,13 +60,27 @@ name|current
 init|=
 literal|0
 decl_stmt|;
-DECL|method|CountingUndoManager ()
+DECL|field|panel
+specifier|private
+name|BasePanel
+name|panel
+init|=
+literal|null
+decl_stmt|;
+DECL|method|CountingUndoManager (BasePanel basePanel)
 specifier|public
 name|CountingUndoManager
-parameter_list|()
+parameter_list|(
+name|BasePanel
+name|basePanel
+parameter_list|)
 block|{
 name|super
 argument_list|()
+expr_stmt|;
+name|panel
+operator|=
+name|basePanel
 expr_stmt|;
 block|}
 DECL|method|addEdit (UndoableEdit edit)
@@ -96,6 +122,11 @@ expr_stmt|;
 name|current
 operator|--
 expr_stmt|;
+name|panel
+operator|.
+name|updateWiewToSelected
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|redo ()
 specifier|public
@@ -113,6 +144,11 @@ argument_list|()
 expr_stmt|;
 name|current
 operator|++
+expr_stmt|;
+name|panel
+operator|.
+name|updateWiewToSelected
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|markUnchanged ()
