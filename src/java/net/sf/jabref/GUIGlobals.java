@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*   Copyright (C) 2003 Morten O. Alver    All programs in this directory and   subdirectories are published under the GNU General Public License as   described below.    This program is free software; you can redistribute it and/or modify   it under the terms of the GNU General Public License as published by   the Free Software Foundation; either version 2 of the License, or (at   your option) any later version.    This program is distributed in the hope that it will be useful, but   WITHOUT ANY WARRANTY; without even the implied warranty of   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU   General Public License for more details.    You should have received a copy of the GNU General Public License   along with this program; if not, write to the Free Software   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307   USA    Further information about the GNU GPL is available at:   http://www.gnu.org/copyleft/gpl.ja.html    Note:   Modified for use in JabRef.  */
+comment|/*   Copyright (C) 2003 Morten O. Alver    All programs in this directory and   subdirectories are published under the GNU General Public License as   described below.    This program is free software; you can redistribute it and/or modify   it under the terms of the GNU General Public License as published by   the Free Software Foundation; either version 2 of the License, or (at   your option) any later version.    This program is distributed in the hope that it will be useful, but   WITHOUT ANY WARRANTY; without even the implied warranty of   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU   General Public License for more details.    You should have received a copy of the GNU General Public License   along with this program; if not, write to the Free Software   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307   USA    Further information about the GNU GPL is available at:   http://www.gnu.org/copyleft/gpl.ja.html    Note:   Modified for use in JabRef.   */
 end_comment
 
 begin_package
@@ -84,7 +84,7 @@ specifier|public
 class|class
 name|GUIGlobals
 block|{
-comment|/*      * Static variables for graphics files and keyboard shortcuts.      */
+comment|/*    * Static variables for graphics files and keyboard shortcuts.    */
 comment|// for debugging
 DECL|field|teller
 specifier|static
@@ -297,10 +297,10 @@ name|helpPre
 init|=
 literal|"/help/"
 decl_stmt|;
+comment|/*  public static URL     //appIconFile = GUIGlobals.class.getResource(pre+"ikon.jpg"),      openIconFile = GUIGlobals.class.getResource(pre+"Open.gif"),    saveIconFile = GUIGlobals.class.getResource(pre+"Save.gif"),      saveAsIconFile = GUIGlobals.class.getResource(pre+"SaveAs.gif"),     //prefsIconFile = GUIGlobals.class.getResource(pre+"Options.gif"),      prefsIconFile = GUIGlobals.class.getResource(pre+"Hammer.gif"),      newIconFile = GUIGlobals.class.getResource(pre+"New.gif"),      undoIconFile = GUIGlobals.class.getResource(pre+"Undo.gif"),      redoIconFile = GUIGlobals.class.getResource(pre+"Redo.gif"),      preambleIconFile = GUIGlobals.class.getResource(pre+"Preamble.gif"),      addIconFile = GUIGlobals.class.getResource(pre+"UpdateRow.gif"),      delRowIconFile = GUIGlobals.class.getResource(pre+"DeleteRow.gif"),      showReqIconFile = GUIGlobals.class.getResource(pre+"r_icon.gif"),      showOptIconFile = GUIGlobals.class.getResource(pre+"o_icon.gif"),      showGenIconFile = GUIGlobals.class.getResource(pre+"g_icon.gif"),      sourceIconFile = GUIGlobals.class.getResource(pre+"viewsource.gif"),      copyIconFile = GUIGlobals.class.getResource(pre+"Copy3.gif"),      cutIconFile = GUIGlobals.class.getResource(pre+"Cut2.gif"),      copyKeyIconFile = GUIGlobals.class.getResource(pre+"CopyKey.gif"),      genKeyIconFile = GUIGlobals.class.getResource(pre+"GenKey.gif"),      lyxIconFile = GUIGlobals.class.getResource(pre+"LyX.gif"),      backIconFile = GUIGlobals.class.getResource(pre+"VCRBack.gif"),      forwardIconFile = GUIGlobals.class.getResource(pre+"VCRForward.gif"),      contentsIconFile = GUIGlobals.class.getResource(pre+"Contents.gif"),      removeIconFile = GUIGlobals.class.getResource(pre+"Delete.gif"),      upIconFile = GUIGlobals.class.getResource(pre+"Up.gif"),      downIconFile = GUIGlobals.class.getResource(pre+"Down.gif"),      stringsIconFile = GUIGlobals.class.getResource(pre+"Strings.gif"),      groupsIconFile = GUIGlobals.class.getResource(pre+"Groups.gif"),         closeIconFile = GUIGlobals.class.getResource(pre+"Close.gif"),      refreshSmallIconFile = GUIGlobals.class.getResource(pre+"GreenFlag.gif"),      helpSmallIconFile = GUIGlobals.class.getResource(pre+"HelpSmall.gif"),      helpIconFile = GUIGlobals.class.getResource(pre+"Help.gif"),      helpContentsIconFile = GUIGlobals.class.getResource(pre+"HelpIndex.gif"),      newSmallIconFile = GUIGlobals.class.getResource(pre+"NewSmall.gif"),      pasteIconFile = GUIGlobals.class.getResource(pre+"Paste2.gif"),      editEntryIconFile = GUIGlobals.class.getResource(pre+"DocumentDraw.gif"),      searchIconFile = GUIGlobals.class.getResource(pre+"Binocular.gif"),      autoGroupIcon = GUIGlobals.class.getResource(pre+"NewBCard.gif"),     //fetchMedlineIcon = GUIGlobals.class.getResource(pre+"BlueCircle.gif");                 fetchMedlineIcon = GUIGlobals.class.getResource(pre+"World2.gif"),      sheetIcon = GUIGlobals.class.getResource(pre+"Sheet.gif"),      jabreflogo = GUIGlobals.class.getResource(pre+"JabRef-Logo.gif");     //jabreflogo=new ImageIcon(getClass().getResource(pre+"JabRef-Logo.gif")));//.getImage());    */
 specifier|public
 specifier|static
 name|URL
-comment|//appIconFile = GUIGlobals.class.getResource(pre+"ikon.jpg"),
 DECL|field|openIconFile
 name|openIconFile
 init|=
@@ -312,7 +312,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"Open.gif"
+literal|"fileopen.png"
 argument_list|)
 decl_stmt|,
 DECL|field|saveIconFile
@@ -326,7 +326,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"Save.gif"
+literal|"filesave.png"
 argument_list|)
 decl_stmt|,
 DECL|field|saveAsIconFile
@@ -340,10 +340,9 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"SaveAs.gif"
+literal|"filesave.png"
 argument_list|)
 decl_stmt|,
-comment|//prefsIconFile = GUIGlobals.class.getResource(pre+"Options.gif"),
 DECL|field|prefsIconFile
 name|prefsIconFile
 init|=
@@ -355,7 +354,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"Hammer.gif"
+literal|"configure2.png"
 argument_list|)
 decl_stmt|,
 DECL|field|newIconFile
@@ -369,7 +368,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"New.gif"
+literal|"filenew.png"
 argument_list|)
 decl_stmt|,
 DECL|field|undoIconFile
@@ -383,7 +382,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"Undo.gif"
+literal|"undo.png"
 argument_list|)
 decl_stmt|,
 DECL|field|redoIconFile
@@ -397,7 +396,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"Redo.gif"
+literal|"redo.png"
 argument_list|)
 decl_stmt|,
 DECL|field|preambleIconFile
@@ -425,7 +424,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"UpdateRow.gif"
+literal|"news_subscribe.png"
 argument_list|)
 decl_stmt|,
 DECL|field|delRowIconFile
@@ -439,7 +438,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"DeleteRow.gif"
+literal|"news_unsubscribe.png"
 argument_list|)
 decl_stmt|,
 DECL|field|showReqIconFile
@@ -509,7 +508,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"Copy3.gif"
+literal|"editcopy.png"
 argument_list|)
 decl_stmt|,
 DECL|field|cutIconFile
@@ -523,7 +522,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"Cut2.gif"
+literal|"editcut.png"
 argument_list|)
 decl_stmt|,
 DECL|field|copyKeyIconFile
@@ -537,7 +536,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"CopyKey.gif"
+literal|"editcopy.png"
 argument_list|)
 decl_stmt|,
 DECL|field|genKeyIconFile
@@ -579,7 +578,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"VCRBack.gif"
+literal|"back.png"
 argument_list|)
 decl_stmt|,
 DECL|field|forwardIconFile
@@ -593,7 +592,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"VCRForward.gif"
+literal|"forward.png"
 argument_list|)
 decl_stmt|,
 DECL|field|contentsIconFile
@@ -607,7 +606,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"Contents.gif"
+literal|"contents2.png"
 argument_list|)
 decl_stmt|,
 DECL|field|removeIconFile
@@ -621,7 +620,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"Delete.gif"
+literal|"editdelete.png"
 argument_list|)
 decl_stmt|,
 DECL|field|upIconFile
@@ -635,7 +634,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"Up.gif"
+literal|"up.png"
 argument_list|)
 decl_stmt|,
 DECL|field|downIconFile
@@ -649,7 +648,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"Down.gif"
+literal|"down.png"
 argument_list|)
 decl_stmt|,
 DECL|field|stringsIconFile
@@ -677,7 +676,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"Groups.gif"
+literal|"queue.png"
 argument_list|)
 decl_stmt|,
 DECL|field|closeIconFile
@@ -691,7 +690,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"Close.gif"
+literal|"fileclose.png"
 argument_list|)
 decl_stmt|,
 DECL|field|refreshSmallIconFile
@@ -705,7 +704,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"GreenFlag.gif"
+literal|"reload.png"
 argument_list|)
 decl_stmt|,
 DECL|field|helpSmallIconFile
@@ -719,7 +718,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"HelpSmall.gif"
+literal|"help.png"
 argument_list|)
 decl_stmt|,
 DECL|field|helpIconFile
@@ -733,7 +732,21 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"Help.gif"
+literal|"help.png"
+argument_list|)
+decl_stmt|,
+DECL|field|aboutIcon
+name|aboutIcon
+init|=
+name|GUIGlobals
+operator|.
+name|class
+operator|.
+name|getResource
+argument_list|(
+name|pre
+operator|+
+literal|"hwinfo.png"
 argument_list|)
 decl_stmt|,
 DECL|field|helpContentsIconFile
@@ -747,7 +760,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"HelpIndex.gif"
+literal|"contents2.png"
 argument_list|)
 decl_stmt|,
 DECL|field|newSmallIconFile
@@ -761,7 +774,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"NewSmall.gif"
+literal|"filenew.png"
 argument_list|)
 decl_stmt|,
 DECL|field|pasteIconFile
@@ -775,7 +788,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"Paste2.gif"
+literal|"editpaste.png"
 argument_list|)
 decl_stmt|,
 DECL|field|editEntryIconFile
@@ -803,7 +816,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"Binocular.gif"
+literal|"find.png"
 argument_list|)
 decl_stmt|,
 DECL|field|autoGroupIcon
@@ -817,10 +830,9 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"NewBCard.gif"
+literal|"run.png"
 argument_list|)
 decl_stmt|,
-comment|//fetchMedlineIcon = GUIGlobals.class.getResource(pre+"BlueCircle.gif");
 DECL|field|fetchMedlineIcon
 name|fetchMedlineIcon
 init|=
@@ -832,7 +844,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"World2.gif"
+literal|"www.png"
 argument_list|)
 decl_stmt|,
 DECL|field|sheetIcon
@@ -846,7 +858,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"Sheet.gif"
+literal|"window_nofullscreen.png"
 argument_list|)
 decl_stmt|,
 DECL|field|jabreflogo
@@ -863,7 +875,6 @@ operator|+
 literal|"JabRef-Logo.gif"
 argument_list|)
 decl_stmt|;
-comment|//jabreflogo=new ImageIcon(getClass().getResource(pre+"JabRef-Logo.gif")));//.getImage());
 comment|// Help files (in HTML format):
 specifier|public
 specifier|static
@@ -1888,7 +1899,7 @@ block|,
 literal|"doi"
 block|,
 literal|"eid"
-block|, }
+block|,   }
 decl_stmt|;
 DECL|field|NON_WRITABLE_FIELDS
 specifier|public
@@ -1953,7 +1964,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**  * Returns true if the given field is a standard Bibtex field.  *  * @param field a<code>String</code> value  * @return a<code>boolean</code> value  */
+comment|/**    * Returns true if the given field is a standard Bibtex field.    *    * @param field a<code>String</code> value    * @return a<code>boolean</code> value    */
 DECL|method|isStandardField (String field)
 specifier|public
 specifier|static
@@ -2627,7 +2638,7 @@ argument_list|)
 expr_stmt|;
 block|}
 empty_stmt|;
-comment|/*   public static int getPreferredFieldLength(String name) {   int l = DEFAULT_FIELD_LENGTH;   Object o = fieldLength.get(name.toLowerCase());   if (o != null)   l = ((Integer)o).intValue();   return l;   }*/
+comment|/*     public static int getPreferredFieldLength(String name) {     int l = DEFAULT_FIELD_LENGTH;     Object o = fieldLength.get(name.toLowerCase());     if (o != null)     l = ((Integer)o).intValue();     return l;     }*/
 DECL|method|getFieldWeight (String name)
 specifier|public
 specifier|static
@@ -2662,6 +2673,7 @@ name|o
 operator|!=
 literal|null
 condition|)
+block|{
 name|l
 operator|=
 operator|(
@@ -2674,6 +2686,7 @@ operator|.
 name|doubleValue
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|l
 return|;

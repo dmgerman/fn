@@ -148,6 +148,21 @@ name|MAC
 init|=
 literal|"Mac OS X"
 decl_stmt|;
+DECL|field|osName
+specifier|public
+specifier|static
+name|String
+name|osName
+init|=
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"os.name"
+argument_list|,
+literal|"def"
+argument_list|)
+decl_stmt|;
 DECL|method|logger (String s)
 specifier|public
 specifier|static

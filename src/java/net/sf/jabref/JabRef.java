@@ -397,20 +397,11 @@ argument_list|,
 name|fnt
 argument_list|)
 expr_stmt|;
-name|String
-name|osName
-init|=
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"os.name"
-argument_list|,
-literal|"def"
-argument_list|)
-decl_stmt|;
+comment|//String osName = System.getProperty("os.name", "def");
 if|if
 condition|(
+name|Globals
+operator|.
 name|osName
 operator|.
 name|equals
@@ -469,9 +460,7 @@ name|prefs
 init|=
 operator|new
 name|JabRefPreferences
-argument_list|(
-name|osName
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|BibtexEntryType
 operator|.

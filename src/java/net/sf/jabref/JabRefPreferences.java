@@ -170,13 +170,10 @@ specifier|static
 name|LabelPattern
 name|keyPattern
 decl_stmt|;
-DECL|method|JabRefPreferences (String osName)
+DECL|method|JabRefPreferences ()
 specifier|public
 name|JabRefPreferences
-parameter_list|(
-name|String
-name|osName
-parameter_list|)
+parameter_list|()
 block|{
 name|prefs
 operator|=
@@ -192,6 +189,8 @@ expr_stmt|;
 comment|//Util.pr(prefs.toString());
 if|if
 condition|(
+name|Globals
+operator|.
 name|osName
 operator|.
 name|equals
@@ -226,7 +225,7 @@ name|put
 argument_list|(
 literal|"htmlviewer"
 argument_list|,
-literal|"/usr/bin/mozilla"
+literal|"open /Applications/Safari.app"
 argument_list|)
 expr_stmt|;
 block|}

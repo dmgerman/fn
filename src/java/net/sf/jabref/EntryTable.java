@@ -371,6 +371,7 @@ operator|.
 name|BUTTON3
 condition|)
 block|{
+comment|//|| (Globals.osName.equals(Globals.MAC)&& (e.getButton() == MouseEvent.BUTTON1)&& e.isControlDown())) {
 if|if
 condition|(
 name|rightClickMenu
@@ -793,7 +794,7 @@ expr_stmt|;
 return|return
 name|renderer
 return|;
-comment|/* 	int test = row - 4*(row/4);	 	if (test<= 1) 	    return renderer; 	else { 	    return renderer.darker(); 	    }*/
+comment|/* 	int test = row - 4*(row/4); 	if (test<= 1) 	    return renderer; 	else { 	    return renderer.darker(); 	    }*/
 block|}
 DECL|method|scrollTo (int y)
 specifier|public

@@ -996,13 +996,32 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-literal|"File '"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"File"
+argument_list|)
+operator|+
+literal|" '"
 operator|+
 name|name
 operator|+
-literal|"' exists. Overwrite?"
+literal|"' "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"exists. Overwrite?"
+argument_list|)
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Save database"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -1033,6 +1052,27 @@ name|expFile
 operator|.
 name|getPath
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|frame
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Saved selected to file"
+argument_list|)
+operator|+
+literal|" '"
+operator|+
+name|expFile
+operator|.
+name|getPath
+argument_list|()
+operator|+
+literal|"'."
 argument_list|)
 expr_stmt|;
 block|}
@@ -2694,7 +2734,7 @@ name|bes
 init|=
 literal|null
 decl_stmt|;
-comment|/*if (numSelected> 0) {			 			int answer = JOptionPane.showConfirmDialog 			    (frame, "Generate bibtex key"+ 			     (numSelected>1 ? "s for the selected " 			      +numSelected+" entries?" : 			      " for the selected entry?"), 			     "Autogenerate Bibtexkey", 			     JOptionPane.YES_NO_CANCEL_OPTION); 			if (answer != JOptionPane.YES_OPTION) { 			    return ; 			 			    } 			*/
+comment|/*if (numSelected> 0) { 			int answer = JOptionPane.showConfirmDialog 			    (frame, "Generate bibtex key"+ 			     (numSelected>1 ? "s for the selected " 			      +numSelected+" entries?" : 			      " for the selected entry?"), 			     "Autogenerate Bibtexkey", 			     JOptionPane.YES_NO_CANCEL_OPTION); 			if (answer != JOptionPane.YES_OPTION) { 			    return ;  			    } 			*/
 if|if
 condition|(
 name|numSelected
