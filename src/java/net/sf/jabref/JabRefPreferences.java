@@ -36,6 +36,34 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|labelPattern
+operator|.
+name|DefaultLabelPatterns
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|labelPattern
+operator|.
+name|LabelPattern
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|awt
@@ -124,6 +152,29 @@ init|=
 operator|new
 name|HashMap
 argument_list|()
+decl_stmt|;
+DECL|field|KEY_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|LabelPattern
+name|KEY_PATTERN
+init|=
+operator|new
+name|DefaultLabelPatterns
+argument_list|()
+decl_stmt|;
+DECL|field|keyPattern
+specifier|private
+specifier|static
+name|LabelPattern
+name|keyPattern
+init|=
+operator|new
+name|LabelPattern
+argument_list|(
+name|KEY_PATTERN
+argument_list|)
 decl_stmt|;
 DECL|method|JabRefPreferences ()
 specifier|public
@@ -717,6 +768,7 @@ literal|5
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//defaults.put("keyPattern", new LabelPattern(KEY_PATTERN));
 name|restoreKeyBindings
 argument_list|()
 expr_stmt|;
@@ -1465,6 +1517,30 @@ name|bindings
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|getKeyPattern ()
+specifier|public
+name|LabelPattern
+name|getKeyPattern
+parameter_list|()
+block|{
+return|return
+name|keyPattern
+return|;
+block|}
+DECL|method|putKeyPattern (LabelPattern pattern)
+specifier|public
+name|void
+name|putKeyPattern
+parameter_list|(
+name|LabelPattern
+name|pattern
+parameter_list|)
+block|{
+name|keyPattern
+operator|=
+name|pattern
+expr_stmt|;
 block|}
 DECL|method|restoreKeyBindings ()
 specifier|private

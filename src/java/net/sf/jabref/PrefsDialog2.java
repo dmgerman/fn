@@ -277,6 +277,19 @@ name|_prefs
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|tabbed
+operator|.
+name|addTab
+argument_list|(
+literal|"Label Pattern"
+argument_list|,
+operator|new
+name|TabKeyPattern
+argument_list|(
+name|_prefs
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|JButton
 name|ok
 init|=
@@ -330,7 +343,7 @@ name|setSize
 argument_list|(
 literal|440
 argument_list|,
-literal|350
+literal|500
 argument_list|)
 expr_stmt|;
 block|}
