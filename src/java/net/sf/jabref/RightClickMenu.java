@@ -778,6 +778,8 @@ operator|.
 name|next
 argument_list|()
 argument_list|)
+argument_list|,
+name|panel
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1128,12 +1130,19 @@ DECL|field|type
 name|BibtexEntryType
 name|type
 decl_stmt|;
-DECL|method|ChangeTypeAction (BibtexEntryType type)
+DECL|field|panel
+name|BasePanel
+name|panel
+decl_stmt|;
+DECL|method|ChangeTypeAction (BibtexEntryType type, BasePanel bp)
 specifier|public
 name|ChangeTypeAction
 parameter_list|(
 name|BibtexEntryType
 name|type
+parameter_list|,
+name|BasePanel
+name|bp
 parameter_list|)
 block|{
 name|super
@@ -1149,6 +1158,10 @@ operator|.
 name|type
 operator|=
 name|type
+expr_stmt|;
+name|panel
+operator|=
+name|bp
 expr_stmt|;
 block|}
 DECL|method|actionPerformed (ActionEvent evt)
