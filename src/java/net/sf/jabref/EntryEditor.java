@@ -261,6 +261,10 @@ DECL|field|bibtexKey
 name|JTextField
 name|bibtexKey
 decl_stmt|;
+DECL|field|tf
+name|FieldTextField
+name|tf
+decl_stmt|;
 DECL|field|source
 name|JTextArea
 name|source
@@ -1889,9 +1893,8 @@ name|GridBagConstraints
 operator|.
 name|NONE
 expr_stmt|;
-name|FieldTextField
 name|tf
-init|=
+operator|=
 operator|new
 name|FieldTextField
 argument_list|(
@@ -1907,7 +1910,7 @@ argument_list|(
 name|KEY_PROPERTY
 argument_list|)
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|gbl
 operator|.
 name|setConstraints
@@ -2801,6 +2804,13 @@ operator|.
 name|requestFocus
 argument_list|()
 expr_stmt|;
+else|else
+name|tf
+operator|.
+name|requestFocus
+argument_list|()
+expr_stmt|;
+comment|//
 block|}
 block|}
 DECL|class|TabListener

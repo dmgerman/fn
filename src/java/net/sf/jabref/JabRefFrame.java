@@ -2641,6 +2641,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+comment|/*tlb.add(new AbstractAction("Form dialog") { 		public void actionPerformed(ActionEvent e) { 		    JDialog dl = new EntryCustomizationDialog(ths); 		    dl.show(); 		} 		});*/
 name|tlb
 operator|.
 name|add
