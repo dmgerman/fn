@@ -200,6 +200,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+else|else
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|newFile (String filename)
 specifier|public
@@ -256,6 +262,17 @@ expr_stmt|;
 block|}
 name|setItems
 argument_list|()
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|isEnabled
+argument_list|()
+condition|)
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|setItems ()
