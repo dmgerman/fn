@@ -7178,6 +7178,7 @@ name|showing
 operator|=
 name|be
 expr_stmt|;
+comment|//form.setEnabled(false);
 block|}
 comment|/**      * Closes the entry editor.      *      */
 DECL|method|hideEntryEditor ()
