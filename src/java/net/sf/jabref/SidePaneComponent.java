@@ -117,6 +117,13 @@ specifier|protected
 name|SidePaneManager
 name|manager
 decl_stmt|;
+DECL|field|panel
+specifier|protected
+name|BasePanel
+name|panel
+init|=
+literal|null
+decl_stmt|;
 DECL|method|SidePaneComponent (SidePaneManager manager, URL icon, String title)
 specifier|public
 name|SidePaneComponent
@@ -249,6 +256,22 @@ block|{
 return|return
 name|visible
 return|;
+block|}
+DECL|method|setActiveBasePanel (BasePanel panel)
+specifier|public
+name|void
+name|setActiveBasePanel
+parameter_list|(
+name|BasePanel
+name|panel
+parameter_list|)
+block|{
+name|this
+operator|.
+name|panel
+operator|=
+name|panel
+expr_stmt|;
 block|}
 comment|/**      * Override this method if the component needs to make any changes      * before it can close.      */
 DECL|method|componentClosing ()

@@ -410,10 +410,6 @@ DECL|field|importFetcherActive
 name|boolean
 name|importFetcherActive
 decl_stmt|;
-DECL|field|panel
-name|BasePanel
-name|panel
-decl_stmt|;
 DECL|field|progressBar
 DECL|field|progressBar2
 name|JProgressBar
@@ -445,13 +441,10 @@ DECL|field|sidePaneManager
 name|SidePaneManager
 name|sidePaneManager
 decl_stmt|;
-DECL|method|CiteSeerFetcher (BasePanel panel_, SidePaneManager p0)
+DECL|method|CiteSeerFetcher (SidePaneManager p0)
 specifier|public
 name|CiteSeerFetcher
 parameter_list|(
-name|BasePanel
-name|panel_
-parameter_list|,
 name|SidePaneManager
 name|p0
 parameter_list|)
@@ -471,10 +464,6 @@ argument_list|(
 literal|"CiteSeer Transfer"
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|panel
-operator|=
-name|panel_
 expr_stmt|;
 name|sidePaneManager
 operator|=

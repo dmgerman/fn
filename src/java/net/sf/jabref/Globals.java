@@ -536,6 +536,14 @@ name|prefs
 init|=
 literal|null
 decl_stmt|;
+DECL|field|helpDiag
+specifier|public
+specifier|static
+name|HelpDialog
+name|helpDiag
+init|=
+literal|null
+decl_stmt|;
 DECL|field|osName
 specifier|public
 specifier|static
@@ -594,6 +602,12 @@ literal|"the"
 block|,
 literal|"for"
 block|}
+decl_stmt|;
+DECL|field|sidePaneManager
+specifier|public
+specifier|static
+name|SidePaneManager
+name|sidePaneManager
 decl_stmt|;
 DECL|method|logger (String s)
 specifier|public

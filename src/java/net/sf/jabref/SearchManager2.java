@@ -103,11 +103,7 @@ DECL|field|incSearcher
 name|IncrementalSearcher
 name|incSearcher
 decl_stmt|;
-DECL|field|frame
-specifier|private
-name|JabRefFrame
-name|frame
-decl_stmt|;
+comment|//private JabRefFrame frame;
 DECL|field|searchField
 specifier|private
 name|JTextField
@@ -207,11 +203,6 @@ literal|"Search"
 argument_list|)
 argument_list|)
 decl_stmt|;
-DECL|field|prefs
-specifier|private
-name|JabRefPreferences
-name|prefs
-decl_stmt|;
 DECL|field|searchReq
 DECL|field|searchOpt
 DECL|field|searchGen
@@ -282,16 +273,10 @@ decl_stmt|;
 comment|// To keep track of where we are in
 comment|// an incremental search. -1 means
 comment|// that the search is inactive.
-DECL|method|SearchManager2 (JabRefFrame frame, JabRefPreferences prefs_, SidePaneManager manager)
+DECL|method|SearchManager2 (SidePaneManager manager)
 specifier|public
 name|SearchManager2
 parameter_list|(
-name|JabRefFrame
-name|frame
-parameter_list|,
-name|JabRefPreferences
-name|prefs_
-parameter_list|,
 name|SidePaneManager
 name|manager
 parameter_list|)
@@ -312,21 +297,13 @@ literal|"Search"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|frame
-operator|=
-name|frame
-expr_stmt|;
-name|prefs
-operator|=
-name|prefs_
-expr_stmt|;
 name|incSearcher
 operator|=
 operator|new
 name|IncrementalSearcher
 argument_list|(
+name|Globals
+operator|.
 name|prefs
 argument_list|)
 expr_stmt|;
@@ -343,6 +320,8 @@ argument_list|(
 literal|"Search required fields"
 argument_list|)
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -363,6 +342,8 @@ argument_list|(
 literal|"Search optional fields"
 argument_list|)
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -383,6 +364,8 @@ argument_list|(
 literal|"Search general fields"
 argument_list|)
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -403,6 +386,8 @@ argument_list|(
 literal|"Search all fields"
 argument_list|)
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -423,6 +408,8 @@ argument_list|(
 literal|"Use regular expressions"
 argument_list|)
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -617,6 +604,8 @@ argument_list|(
 literal|"Case sensitive"
 argument_list|)
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -907,7 +896,7 @@ argument_list|(
 operator|new
 name|HelpAction
 argument_list|(
-name|frame
+name|Globals
 operator|.
 name|helpDiag
 argument_list|,
@@ -921,6 +910,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -939,6 +930,8 @@ elseif|else
 if|if
 condition|(
 operator|!
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -1257,6 +1250,8 @@ argument_list|()
 operator|.
 name|put
 argument_list|(
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getKey
@@ -1309,6 +1304,8 @@ argument_list|()
 operator|.
 name|put
 argument_list|(
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getKey
@@ -1361,11 +1358,13 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|updatePrefs ()
-specifier|protected
+specifier|public
 name|void
 name|updatePrefs
 parameter_list|()
 block|{
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|putBoolean
@@ -1378,6 +1377,8 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|putBoolean
@@ -1390,6 +1391,8 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|putBoolean
@@ -1402,6 +1405,8 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|putBoolean
@@ -1414,6 +1419,8 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|putBoolean
@@ -1426,6 +1433,8 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|putBoolean
@@ -1438,7 +1447,9 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//	prefs.putBoolean("grayOutNonHits", grayOut.isSelected());
+comment|//	Globals.prefs.putBoolean("grayOutNonHits", grayOut.isSelected());
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|putBoolean
@@ -1451,6 +1462,8 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|putBoolean
@@ -1617,10 +1630,7 @@ literal|false
 expr_stmt|;
 if|if
 condition|(
-name|frame
-operator|.
-name|basePanel
-argument_list|()
+name|panel
 operator|!=
 literal|null
 condition|)
@@ -1635,10 +1645,7 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|frame
-operator|.
-name|basePanel
-argument_list|()
+name|panel
 operator|.
 name|stopShowingSearchResults
 argument_list|()
@@ -1682,10 +1689,7 @@ name|isSelected
 argument_list|()
 operator|&&
 operator|(
-name|frame
-operator|.
-name|basePanel
-argument_list|()
+name|panel
 operator|!=
 literal|null
 operator|)
@@ -1709,7 +1713,7 @@ argument_list|)
 condition|)
 block|{
 comment|// An empty search field should cause the search to be cleared.
-name|frame
+name|panel
 operator|.
 name|stopShowingSearchResults
 argument_list|()
@@ -1748,6 +1752,8 @@ name|rule1
 decl_stmt|;
 if|if
 condition|(
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -1760,6 +1766,8 @@ operator|=
 operator|new
 name|RegExpRule
 argument_list|(
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -1767,6 +1775,8 @@ argument_list|(
 literal|"caseSensitiveSearch"
 argument_list|)
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -1774,6 +1784,8 @@ argument_list|(
 literal|"searchAll"
 argument_list|)
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -1781,6 +1793,8 @@ argument_list|(
 literal|"searchReq"
 argument_list|)
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -1788,6 +1802,8 @@ argument_list|(
 literal|"searchOpt"
 argument_list|)
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -1802,6 +1818,8 @@ operator|=
 operator|new
 name|SimpleSearchRule
 argument_list|(
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -1809,6 +1827,8 @@ argument_list|(
 literal|"caseSensitiveSearch"
 argument_list|)
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -1816,6 +1836,8 @@ argument_list|(
 literal|"searchAll"
 argument_list|)
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -1823,6 +1845,8 @@ argument_list|(
 literal|"searchReq"
 argument_list|)
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -1830,6 +1854,8 @@ argument_list|(
 literal|"searchOpt"
 argument_list|)
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -1847,6 +1873,8 @@ operator|=
 operator|new
 name|SearchExpression
 argument_list|(
+name|Globals
+operator|.
 name|prefs
 argument_list|,
 name|searchOptions
@@ -1895,10 +1923,7 @@ name|searchOptions
 argument_list|,
 name|searchRules
 argument_list|,
-name|frame
-operator|.
-name|basePanel
-argument_list|()
+name|panel
 argument_list|,
 name|Globals
 operator|.
@@ -1907,7 +1932,7 @@ argument_list|,
 literal|true
 argument_list|,
 literal|true
-comment|/*Globals.prefs.getBoolean("grayOutNonHits")*/
+comment|/*Globals.Globals.prefs.getBoolean("grayOutNonHits")*/
 argument_list|,
 name|select
 operator|.
@@ -1941,10 +1966,7 @@ name|searchOptions
 argument_list|,
 name|searchRules
 argument_list|,
-name|frame
-operator|.
-name|basePanel
-argument_list|()
+name|panel
 argument_list|,
 name|Globals
 operator|.
@@ -2049,7 +2071,7 @@ name|isSelected
 argument_list|()
 condition|)
 block|{
-name|frame
+name|panel
 operator|.
 name|stopShowingSearchResults
 argument_list|()
@@ -2068,10 +2090,7 @@ operator|++
 expr_stmt|;
 if|if
 condition|(
-name|frame
-operator|.
-name|basePanel
-argument_list|()
+name|panel
 operator|!=
 literal|null
 condition|)
@@ -2101,10 +2120,7 @@ return|return;
 block|}
 if|if
 condition|(
-name|frame
-operator|.
-name|basePanel
-argument_list|()
+name|panel
 operator|!=
 literal|null
 condition|)
@@ -2143,19 +2159,11 @@ operator|.
 name|getText
 argument_list|()
 decl_stmt|;
-name|BasePanel
-name|bp
-init|=
-name|frame
-operator|.
-name|basePanel
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|incSearchPos
 operator|>=
-name|bp
+name|panel
 operator|.
 name|getDatabase
 argument_list|()
@@ -2164,7 +2172,7 @@ name|getEntryCount
 argument_list|()
 condition|)
 block|{
-name|frame
+name|panel
 operator|.
 name|output
 argument_list|(
@@ -2217,14 +2225,14 @@ expr_stmt|;
 name|BibtexEntry
 name|be
 init|=
-name|bp
+name|panel
 operator|.
 name|getDatabase
 argument_list|()
 operator|.
 name|getEntryById
 argument_list|(
-name|bp
+name|panel
 operator|.
 name|tableModel
 operator|.
@@ -2254,7 +2262,7 @@ if|if
 condition|(
 name|incSearchPos
 operator|<
-name|bp
+name|panel
 operator|.
 name|getDatabase
 argument_list|()
@@ -2264,14 +2272,14 @@ argument_list|()
 condition|)
 name|be
 operator|=
-name|bp
+name|panel
 operator|.
 name|getDatabase
 argument_list|()
 operator|.
 name|getEntryById
 argument_list|(
-name|bp
+name|panel
 operator|.
 name|tableModel
 operator|.
@@ -2283,7 +2291,7 @@ argument_list|)
 expr_stmt|;
 else|else
 block|{
-name|frame
+name|panel
 operator|.
 name|output
 argument_list|(
@@ -2316,14 +2324,14 @@ operator|>=
 literal|0
 condition|)
 block|{
-name|bp
+name|panel
 operator|.
 name|selectSingleEntry
 argument_list|(
 name|incSearchPos
 argument_list|)
 expr_stmt|;
-name|frame
+name|panel
 operator|.
 name|output
 argument_list|(
@@ -2355,14 +2363,8 @@ name|void
 name|componentClosing
 parameter_list|()
 block|{
-name|BasePanel
-name|bp
-init|=
-name|frame
+name|panel
 operator|.
-name|basePanel
-argument_list|()
-decl_stmt|;
 name|frame
 operator|.
 name|searchToggle
@@ -2374,11 +2376,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|bp
+name|panel
 operator|!=
 literal|null
 condition|)
-name|bp
+name|panel
 operator|.
 name|stopShowingSearchResults
 argument_list|()

@@ -276,14 +276,7 @@ name|tmp
 init|=
 literal|true
 decl_stmt|;
-DECL|field|contentPane
-name|UIFSplitPane
-name|contentPane
-init|=
-operator|new
-name|UIFSplitPane
-argument_list|()
-decl_stmt|;
+comment|//UIFSplitPane contentPane = new UIFSplitPane();
 DECL|field|ths
 name|BasePanel
 name|ths
@@ -466,28 +459,6 @@ name|entryTable
 init|=
 literal|null
 decl_stmt|;
-comment|// The sidepane manager takes care of populating the sidepane.
-DECL|field|sidePaneManager
-specifier|public
-name|SidePaneManager
-name|sidePaneManager
-decl_stmt|;
-DECL|field|searchManager
-name|SearchManager2
-name|searchManager
-decl_stmt|;
-DECL|field|medlineFetcher
-name|MedlineFetcher
-name|medlineFetcher
-decl_stmt|;
-DECL|field|citeSeerFetcher
-name|CiteSeerFetcher
-name|citeSeerFetcher
-decl_stmt|;
-DECL|field|citeSeerFetcherPanel
-name|CiteSeerFetcherPanel
-name|citeSeerFetcherPanel
-decl_stmt|;
 DECL|field|rcm
 name|RightClickMenu
 name|rcm
@@ -528,10 +499,7 @@ literal|null
 decl_stmt|;
 comment|// Keeps track of the string dialog if it is open.
 comment|/**      * The group selector component for this database. Instantiated by the      * SidePaneManager if necessary, or from this class if merging groups from a      * different database.      */
-DECL|field|groupSelector
-name|GroupSelector
-name|groupSelector
-decl_stmt|;
+comment|//GroupSelector groupSelector;
 DECL|field|sortingBySearchResults
 name|boolean
 name|sortingBySearchResults
@@ -608,6 +576,11 @@ operator|new
 name|HashMap
 argument_list|()
 decl_stmt|;
+DECL|field|sidePaneManager
+specifier|private
+name|SidePaneManager
+name|sidePaneManager
+decl_stmt|;
 DECL|method|BasePanel (JabRefFrame frame, JabRefPreferences prefs)
 specifier|public
 name|BasePanel
@@ -620,6 +593,14 @@ name|prefs
 parameter_list|)
 block|{
 comment|//super(JSplitPane.HORIZONTAL_SPLIT, true);
+name|this
+operator|.
+name|sidePaneManager
+operator|=
+name|Globals
+operator|.
+name|sidePaneManager
+expr_stmt|;
 name|database
 operator|=
 operator|new
@@ -672,6 +653,14 @@ name|prefs
 parameter_list|)
 block|{
 comment|//super(JSplitPane.HORIZONTAL_SPLIT, true);
+name|this
+operator|.
+name|sidePaneManager
+operator|=
+name|Globals
+operator|.
+name|sidePaneManager
+expr_stmt|;
 name|this
 operator|.
 name|frame
@@ -3920,6 +3909,8 @@ if|if
 condition|(
 literal|true
 condition|)
+name|frame
+operator|.
 name|searchManager
 operator|.
 name|startSearch
@@ -3975,6 +3966,8 @@ if|if
 condition|(
 name|on
 condition|)
+name|frame
+operator|.
 name|searchManager
 operator|.
 name|startSearch
@@ -4015,6 +4008,8 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|frame
+operator|.
 name|searchManager
 operator|.
 name|startIncrementalSearch
@@ -5106,6 +5101,8 @@ comment|// dummy group
 comment|// groupsSelector is always created, even when no groups
 comment|// have been defined. therefore, no check for null is
 comment|// required here
+name|frame
+operator|.
 name|groupSelector
 operator|.
 name|addGroups
@@ -5116,6 +5113,8 @@ name|ce
 argument_list|)
 expr_stmt|;
 comment|// JZTODO: this should handle ExplicitGroups!!!
+name|frame
+operator|.
 name|groupSelector
 operator|.
 name|revalidateGroups
@@ -8545,6 +8544,8 @@ specifier|final
 name|TreePath
 name|path
 init|=
+name|frame
+operator|.
 name|groupSelector
 operator|.
 name|getSelectionPath
@@ -8597,6 +8598,8 @@ name|node
 operator|!=
 literal|null
 condition|)
+name|frame
+operator|.
 name|groupSelector
 operator|.
 name|moveNodeUp
@@ -8621,6 +8624,8 @@ name|node
 operator|!=
 literal|null
 condition|)
+name|frame
+operator|.
 name|groupSelector
 operator|.
 name|moveNodeDown
@@ -8645,6 +8650,8 @@ name|node
 operator|!=
 literal|null
 condition|)
+name|frame
+operator|.
 name|groupSelector
 operator|.
 name|moveNodeLeft
@@ -8669,6 +8676,8 @@ name|node
 operator|!=
 literal|null
 condition|)
+name|frame
+operator|.
 name|groupSelector
 operator|.
 name|moveNodeRight
@@ -8923,153 +8932,7 @@ argument_list|(
 name|showing
 argument_list|)
 expr_stmt|;
-name|sidePaneManager
-operator|=
-operator|new
-name|SidePaneManager
-argument_list|(
-name|frame
-argument_list|,
-name|this
-argument_list|,
-name|prefs
-argument_list|,
-name|metaData
-argument_list|)
-expr_stmt|;
-name|medlineFetcher
-operator|=
-operator|new
-name|MedlineFetcher
-argument_list|(
-name|this
-argument_list|,
-name|sidePaneManager
-argument_list|)
-expr_stmt|;
-name|citeSeerFetcher
-operator|=
-operator|new
-name|CiteSeerFetcher
-argument_list|(
-name|this
-argument_list|,
-name|sidePaneManager
-argument_list|)
-expr_stmt|;
-name|citeSeerFetcherPanel
-operator|=
-operator|new
-name|CiteSeerFetcherPanel
-argument_list|(
-name|this
-argument_list|,
-name|sidePaneManager
-argument_list|,
-name|citeSeerFetcher
-argument_list|)
-expr_stmt|;
-name|sidePaneManager
-operator|.
-name|register
-argument_list|(
-literal|"fetchMedline"
-argument_list|,
-name|medlineFetcher
-argument_list|)
-expr_stmt|;
-comment|//medlineAuthorFetcher = new MedlineAuthorFetcher(this, sidePaneManager);
-comment|//sidePaneManager.register("fetchAuthorMedline", medlineAuthorFetcher);
-name|searchManager
-operator|=
-operator|new
-name|SearchManager2
-argument_list|(
-name|frame
-argument_list|,
-name|prefs
-argument_list|,
-name|sidePaneManager
-argument_list|)
-expr_stmt|;
-name|sidePaneManager
-operator|.
-name|add
-argument_list|(
-literal|"search"
-argument_list|,
-name|searchManager
-argument_list|)
-expr_stmt|;
-name|sidePaneManager
-operator|.
-name|register
-argument_list|(
-literal|"CiteSeerPanel"
-argument_list|,
-name|citeSeerFetcherPanel
-argument_list|)
-expr_stmt|;
-name|sidePaneManager
-operator|.
-name|register
-argument_list|(
-literal|"CiteSeerProgress"
-argument_list|,
-name|citeSeerFetcher
-argument_list|)
-expr_stmt|;
-name|sidePaneManager
-operator|.
-name|populatePanel
-argument_list|()
-expr_stmt|;
-name|contentPane
-operator|.
-name|setBorder
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-name|contentPane
-operator|.
-name|setDividerLocation
-argument_list|(
-operator|-
-literal|1
-argument_list|)
-expr_stmt|;
-name|contentPane
-operator|.
-name|setLeftComponent
-argument_list|(
-name|sidePaneManager
-operator|.
-name|getPanel
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|contentPane
-operator|.
-name|setRightComponent
-argument_list|(
-name|splitPane
-argument_list|)
-expr_stmt|;
-name|contentPane
-operator|.
-name|setDividerBorderVisible
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-name|contentPane
-operator|.
-name|setDividerSize
-argument_list|(
-literal|2
-argument_list|)
-expr_stmt|;
+comment|/*        contentPane.setBorder(null);         contentPane.setDividerLocation(-1);         contentPane.setLeftComponent(sidePaneManager.getPanel());         contentPane.setRightComponent(splitPane);         contentPane.setDividerBorderVisible(false);         contentPane.setDividerSize(2);*/
 name|setLayout
 argument_list|(
 operator|new
@@ -9079,13 +8942,14 @@ argument_list|)
 expr_stmt|;
 name|add
 argument_list|(
-name|contentPane
+name|splitPane
 argument_list|,
 name|BorderLayout
 operator|.
 name|CENTER
 argument_list|)
 expr_stmt|;
+comment|//add(contentPane, BorderLayout.CENTER);
 comment|//add(sidePaneManager.getPanel(), BorderLayout.WEST);
 comment|//add(splitPane, BorderLayout.CENTER);
 comment|//setLayout(gbl);
@@ -9108,14 +8972,7 @@ name|void
 name|setDivider
 parameter_list|()
 block|{
-name|contentPane
-operator|.
-name|setDividerLocation
-argument_list|(
-operator|-
-literal|1
-argument_list|)
-expr_stmt|;
+comment|//contentPane.setDividerLocation(-1);
 block|}
 comment|/**      * This method is called after a database has been parsed. The      * hashmap contains the contents of all comments in the .bib file      * that started with the meta flag (GUIGlobals.META_FLAG).      * In this method, the meta data are input to their respective      * handlers.      *      * @param meta Metadata to input.      */
 DECL|method|parseMetaData (HashMap meta)
@@ -11857,6 +11714,8 @@ name|getGroupSelector
 parameter_list|()
 block|{
 return|return
+name|frame
+operator|.
 name|groupSelector
 return|;
 block|}

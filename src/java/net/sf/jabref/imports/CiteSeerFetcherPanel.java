@@ -180,12 +180,6 @@ name|SidePaneComponent
 implements|implements
 name|ActionListener
 block|{
-comment|//SidePaneHeader header =
-comment|//new SidePaneHeader("Fetch CiteSeer", GUIGlobals.wwwCiteSeerIcon, this);
-DECL|field|panel
-name|BasePanel
-name|panel
-decl_stmt|;
 DECL|field|idList
 name|String
 name|idList
@@ -275,13 +269,10 @@ name|ths
 init|=
 name|this
 decl_stmt|;
-DECL|method|CiteSeerFetcherPanel (BasePanel panel_, SidePaneManager p0, final CiteSeerFetcher fetcher)
+DECL|method|CiteSeerFetcherPanel (SidePaneManager p0, final CiteSeerFetcher fetcher)
 specifier|public
 name|CiteSeerFetcherPanel
 parameter_list|(
-name|BasePanel
-name|panel_
-parameter_list|,
 name|SidePaneManager
 name|p0
 parameter_list|,
@@ -306,19 +297,12 @@ literal|"Fetch CiteSeer"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|panel
-operator|=
-name|panel_
-expr_stmt|;
 name|help
 operator|=
 operator|new
 name|HelpAction
 argument_list|(
-name|panel
-operator|.
-name|frame
-argument_list|()
+name|Globals
 operator|.
 name|helpDiag
 argument_list|,
