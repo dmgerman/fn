@@ -1722,15 +1722,7 @@ block|}
 block|}
 else|else
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Message: currently only PDF, PS and HTML files can be opened by double clicking"
-argument_list|)
-expr_stmt|;
+comment|//System.err.println("Message: currently only PDF, PS and HTML files can be opened by double clicking");
 comment|//ignore
 block|}
 block|}
