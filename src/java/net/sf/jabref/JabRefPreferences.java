@@ -3289,7 +3289,7 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
-literal|"Import fields from CiteSeer"
+literal|"Import Fields from CiteSeer"
 argument_list|,
 literal|"ctrl shift C"
 argument_list|)

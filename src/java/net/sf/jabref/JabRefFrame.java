@@ -7557,7 +7557,7 @@ name|putValue
 argument_list|(
 name|NAME
 argument_list|,
-literal|"Import fields from CiteSeer"
+literal|"Import Fields from CiteSeer"
 argument_list|)
 expr_stmt|;
 name|putValue
@@ -7568,7 +7568,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Import fields from CiteSeer Database"
+literal|"Import Fields from CiteSeer Database"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -7580,10 +7580,11 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Import fields from CiteSeer"
+literal|"Import Fields from CiteSeer"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// Key defined in MenuTitles!
 block|}
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
@@ -8467,14 +8468,10 @@ name|putValue
 argument_list|(
 name|SHORT_DESCRIPTION
 argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
 literal|"integrity"
 argument_list|)
-argument_list|)
 expr_stmt|;
+comment|//Globals.lang( "integrity" ) ) ;
 comment|//putValue(MNEMONIC_KEY, GUIGlobals.newKeyCode);
 block|}
 DECL|method|actionPerformed ( ActionEvent e )

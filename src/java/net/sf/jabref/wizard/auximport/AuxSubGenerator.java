@@ -312,7 +312,7 @@ name|find
 argument_list|()
 condition|)
 block|{
-comment|// extract the bibtex-key XXX from \citation{XXX} string
+comment|// extract the bibtex-key(s) XXX from \citation{XXX} string
 name|int
 name|len
 init|=
@@ -358,15 +358,77 @@ operator|-
 literal|1
 argument_list|)
 decl_stmt|;
-comment|// save key into an set
+comment|// could be an comma separated list of keys
+name|String
+name|keys
+index|[]
+init|=
+name|str
+operator|.
+name|split
+argument_list|(
+literal|","
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|keys
+operator|!=
+literal|null
+condition|)
+block|{
+name|int
+name|keyCount
+init|=
+name|keys
+operator|.
+name|length
+decl_stmt|;
+for|for
+control|(
+name|int
+name|t
+init|=
+literal|0
+init|;
+name|t
+operator|<
+name|keyCount
+condition|;
+name|t
+operator|++
+control|)
+block|{
+name|String
+name|dummyStr
+init|=
+name|keys
+index|[
+name|t
+index|]
+decl_stmt|;
+if|if
+condition|(
+name|dummyStr
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// delete all unnecessary blanks and save key into an set
 name|mySet
 operator|.
 name|add
 argument_list|(
-name|str
+name|dummyStr
+operator|.
+name|trim
+argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//            System.out.println("found " +str +" in AUX") ;
+comment|//                System.out.println("found " +str +" in AUX") ;
+block|}
+block|}
+block|}
 block|}
 block|}
 block|}

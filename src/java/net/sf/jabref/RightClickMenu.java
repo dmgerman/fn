@@ -750,7 +750,12 @@ argument_list|(
 operator|new
 name|AbstractAction
 argument_list|(
-literal|"Import plain text"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Plain text import"
+argument_list|)
 argument_list|)
 block|{
 specifier|public

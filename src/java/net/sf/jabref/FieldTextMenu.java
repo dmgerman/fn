@@ -324,16 +324,16 @@ block|}
 block|}
 block|}
 comment|// ---------------------------------------------------------------------------
-DECL|class|BasicAction
+DECL|class|BasicMenuAction
 specifier|abstract
 class|class
-name|BasicAction
+name|BasicMenuAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|method|BasicAction (String text, String description, URL icon)
+DECL|method|BasicMenuAction (String text, String description, URL icon)
 specifier|public
-name|BasicAction
+name|BasicMenuAction
 parameter_list|(
 name|String
 name|text
@@ -374,9 +374,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BasicAction (String text, String description, URL icon, KeyStroke key)
+DECL|method|BasicMenuAction (String text, String description, URL icon, KeyStroke key)
 specifier|public
-name|BasicAction
+name|BasicMenuAction
 parameter_list|(
 name|String
 name|text
@@ -427,9 +427,35 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BasicAction (String text)
+DECL|method|BasicMenuAction (String text, String extensionText)
 specifier|public
-name|BasicAction
+name|BasicMenuAction
+parameter_list|(
+name|String
+name|text
+parameter_list|,
+name|String
+name|extensionText
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+name|text
+argument_list|)
+operator|+
+literal|" - "
+operator|+
+name|extensionText
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|BasicMenuAction (String text)
+specifier|public
+name|BasicMenuAction
 parameter_list|(
 name|String
 name|text
@@ -446,9 +472,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BasicAction (String text, KeyStroke key)
+DECL|method|BasicMenuAction (String text, KeyStroke key)
 specifier|public
-name|BasicAction
+name|BasicMenuAction
 parameter_list|(
 name|String
 name|text
@@ -491,7 +517,7 @@ DECL|class|MenuHeaderAction
 class|class
 name|MenuHeaderAction
 extends|extends
-name|BasicAction
+name|BasicMenuAction
 block|{
 DECL|method|MenuHeaderAction (String comment)
 specifier|public
@@ -503,8 +529,8 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-literal|"Edit -"
-operator|+
+literal|"Edit"
+argument_list|,
 name|comment
 argument_list|)
 expr_stmt|;
@@ -531,7 +557,7 @@ DECL|class|PasteAction
 class|class
 name|PasteAction
 extends|extends
-name|BasicAction
+name|BasicMenuAction
 block|{
 DECL|method|PasteAction ()
 specifier|public
@@ -626,7 +652,7 @@ DECL|class|CopyAction
 class|class
 name|CopyAction
 extends|extends
-name|BasicAction
+name|BasicMenuAction
 block|{
 DECL|method|CopyAction ()
 specifier|public

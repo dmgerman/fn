@@ -36,6 +36,14 @@ comment|//            - create several bibtex entries in dialog
 end_comment
 
 begin_comment
+comment|//            - if the dialog works with an existing entry (right click menu item)
+end_comment
+
+begin_comment
+comment|//              the cancel option doesn't work well
+end_comment
+
+begin_comment
 comment|//
 end_comment
 
@@ -242,6 +250,24 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|wizard
+operator|.
+name|integrity
+operator|.
+name|gui
+operator|.
+name|*
+import|;
+end_import
+
 begin_class
 DECL|class|TextInputDialog
 specifier|public
@@ -315,11 +341,11 @@ argument_list|()
 decl_stmt|;
 DECL|field|warnPanel
 specifier|private
-name|JPanel
+name|IntegrityMessagePanel
 name|warnPanel
 init|=
 operator|new
-name|JPanel
+name|IntegrityMessagePanel
 argument_list|()
 decl_stmt|;
 DECL|field|fieldList
@@ -364,21 +390,6 @@ DECL|field|preview
 specifier|private
 name|JTextArea
 name|preview
-decl_stmt|;
-DECL|field|warnings
-specifier|private
-name|JList
-name|warnings
-decl_stmt|;
-DECL|field|warningData
-specifier|private
-name|HintListModel
-name|warningData
-decl_stmt|;
-DECL|field|validChecker
-specifier|private
-name|IntegrityCheck
-name|validChecker
 decl_stmt|;
 DECL|field|inputChanged
 specifier|private
@@ -429,13 +440,6 @@ argument_list|,
 name|modal
 argument_list|)
 expr_stmt|;
-name|validChecker
-operator|=
-operator|new
-name|IntegrityCheck
-argument_list|()
-expr_stmt|;
-comment|// errors, warnings, hints
 name|inputChanged
 operator|=
 literal|true
@@ -579,9 +583,6 @@ expr_stmt|;
 name|initSourcePanel
 argument_list|()
 expr_stmt|;
-name|initWarnPanel
-argument_list|()
-expr_stmt|;
 name|JTabbedPane
 name|tabbed
 init|=
@@ -609,8 +610,12 @@ if|if
 condition|(
 name|inputChanged
 condition|)
-name|checkInput
-argument_list|()
+name|warnPanel
+operator|.
+name|updateView
+argument_list|(
+name|entry
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -1934,86 +1939,26 @@ argument_list|)
 expr_stmt|;
 name|sourcePanel
 operator|.
+name|setLayout
+argument_list|(
+operator|new
+name|BorderLayout
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|sourcePanel
+operator|.
 name|add
 argument_list|(
 name|paneScrollPane
+argument_list|,
+name|BorderLayout
+operator|.
+name|CENTER
 argument_list|)
 expr_stmt|;
 block|}
 comment|// ---------------------------------------------------------------------------
-comment|// Panel with warnings/errors
-DECL|method|initWarnPanel ()
-specifier|private
-name|void
-name|initWarnPanel
-parameter_list|()
-block|{
-name|warningData
-operator|=
-operator|new
-name|HintListModel
-argument_list|()
-expr_stmt|;
-name|warnings
-operator|=
-operator|new
-name|JList
-argument_list|(
-name|warningData
-argument_list|)
-expr_stmt|;
-name|JScrollPane
-name|paneScrollPane
-init|=
-operator|new
-name|JScrollPane
-argument_list|(
-name|warnings
-argument_list|)
-decl_stmt|;
-name|paneScrollPane
-operator|.
-name|setVerticalScrollBarPolicy
-argument_list|(
-name|JScrollPane
-operator|.
-name|VERTICAL_SCROLLBAR_ALWAYS
-argument_list|)
-expr_stmt|;
-name|paneScrollPane
-operator|.
-name|setPreferredSize
-argument_list|(
-operator|new
-name|Dimension
-argument_list|(
-literal|540
-argument_list|,
-literal|255
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|paneScrollPane
-operator|.
-name|setMinimumSize
-argument_list|(
-operator|new
-name|Dimension
-argument_list|(
-literal|10
-argument_list|,
-literal|10
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|warnPanel
-operator|.
-name|add
-argument_list|(
-name|paneScrollPane
-argument_list|)
-expr_stmt|;
-block|}
 comment|// ---------------------------------------------------------------------------
 DECL|method|addStylesToDocument ( StyledDocument doc )
 specifier|protected
@@ -2401,29 +2346,6 @@ block|}
 block|}
 block|}
 comment|// ---------------------------------------------------------------------------
-comment|// starts an IntegrityCheck
-DECL|method|checkInput ()
-specifier|private
-name|void
-name|checkInput
-parameter_list|()
-block|{
-name|warningData
-operator|.
-name|setData
-argument_list|(
-name|validChecker
-operator|.
-name|checkBibtexEntry
-argument_list|(
-name|entry
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|//    if (hints != null)
-comment|//      if (hints.size()> 0)
-comment|//        warningData.setData(hints);
-block|}
 comment|// ---------------------------------------------------------------------------
 DECL|method|okPressed ()
 specifier|public

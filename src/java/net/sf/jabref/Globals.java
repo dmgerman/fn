@@ -186,6 +186,11 @@ DECL|field|menuResourcePrefix
 name|menuResourcePrefix
 init|=
 literal|"resource/Menu"
+decl_stmt|,
+DECL|field|integrityResourcePrefix
+name|integrityResourcePrefix
+init|=
+literal|"resource/IntegrityMessage"
 decl_stmt|;
 DECL|field|logfile
 specifier|private
@@ -197,12 +202,15 @@ literal|"jabref.log"
 decl_stmt|;
 DECL|field|messages
 DECL|field|menuTitles
+DECL|field|intMessages
 specifier|public
 specifier|static
 name|ResourceBundle
 name|messages
 decl_stmt|,
 name|menuTitles
+decl_stmt|,
+name|intMessages
 decl_stmt|;
 DECL|field|fileUpdateMonitor
 specifier|public
@@ -678,6 +686,17 @@ argument_list|,
 name|locale
 argument_list|)
 expr_stmt|;
+name|intMessages
+operator|=
+name|ResourceBundle
+operator|.
+name|getBundle
+argument_list|(
+name|integrityResourcePrefix
+argument_list|,
+name|locale
+argument_list|)
+expr_stmt|;
 name|Locale
 operator|.
 name|setDefault
@@ -753,8 +772,19 @@ name|translation
 operator|=
 name|key
 expr_stmt|;
-comment|//System.err.println("Warning: could not get translation for \""
-comment|//                   + key + "\"");
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"Warning: could not get translation for \""
+operator|+
+name|key
+operator|+
+literal|"\""
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -848,8 +878,8 @@ name|translation
 operator|=
 name|key
 expr_stmt|;
-comment|//System.err.println("Warning: could not get menu item translation for \""
-comment|//                   + key + "\"");
+comment|//      System.err.println("Warning: could not get menu item translation for \""
+comment|//                         + key + "\"");
 block|}
 if|if
 condition|(
@@ -878,6 +908,87 @@ literal|"_"
 argument_list|,
 literal|" "
 argument_list|)
+return|;
+block|}
+else|else
+block|{
+return|return
+name|key
+return|;
+block|}
+block|}
+DECL|method|getIntegrityMessage (String key)
+specifier|public
+specifier|static
+name|String
+name|getIntegrityMessage
+parameter_list|(
+name|String
+name|key
+parameter_list|)
+block|{
+name|String
+name|translation
+init|=
+literal|null
+decl_stmt|;
+try|try
+block|{
+if|if
+condition|(
+name|Globals
+operator|.
+name|intMessages
+operator|!=
+literal|null
+condition|)
+block|{
+name|translation
+operator|=
+name|Globals
+operator|.
+name|intMessages
+operator|.
+name|getString
+argument_list|(
+name|key
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|MissingResourceException
+name|ex
+parameter_list|)
+block|{
+name|translation
+operator|=
+name|key
+expr_stmt|;
+comment|//      System.err.println("Warning: could not get menu item translation for \""
+comment|//                         + key + "\"");
+block|}
+if|if
+condition|(
+operator|(
+name|translation
+operator|!=
+literal|null
+operator|)
+operator|&&
+operator|(
+name|translation
+operator|.
+name|length
+argument_list|()
+operator|!=
+literal|0
+operator|)
+condition|)
+block|{
+return|return
+name|translation
 return|;
 block|}
 else|else
