@@ -2168,6 +2168,15 @@ name|LANGUAGES
 operator|.
 name|put
 argument_list|(
+literal|"French"
+argument_list|,
+literal|"fr"
+argument_list|)
+expr_stmt|;
+name|LANGUAGES
+operator|.
+name|put
+argument_list|(
 literal|"Norsk"
 argument_list|,
 literal|"no"
