@@ -6698,6 +6698,12 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|isShowingEditor
+argument_list|()
+condition|)
+return|return;
+if|if
+condition|(
 name|previewPanel
 operator|==
 literal|null
