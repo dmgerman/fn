@@ -872,7 +872,12 @@ name|OverlayPanel
 argument_list|(
 name|textPane
 argument_list|,
-literal|"Text Input Area"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Text_Input_Area"
+argument_list|)
 argument_list|)
 decl_stmt|;
 try|try
@@ -945,10 +950,6 @@ literal|10
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//    paneScrollPane.setBackground(Color.white);
-comment|//    paneScrollPane.setForeground(Color.green);
-comment|//    paneScrollPane.setOpaque(false);
-comment|//    testPanel.add(paneScrollPane) ;
 comment|// copy/paste Menu
 name|PasteAction
 name|pasteAction
@@ -1078,7 +1079,6 @@ operator|.
 name|NORTH
 argument_list|)
 expr_stmt|;
-comment|//    leftPanel.add( testPanel, BorderLayout.CENTER ) ;
 name|leftPanel
 operator|.
 name|add
