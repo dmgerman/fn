@@ -514,6 +514,13 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// Transfer focus to the editor.
+name|editor
+operator|.
+name|requestFocus
+argument_list|()
+expr_stmt|;
+comment|//new FocusRequester(editor.getTextComponent());
 block|}
 comment|/**    * Adds a word to the selector (to the JList and to the MetaData), unless it    * is already there    *    * @param newWord String Word to add    */
 DECL|method|addWord (String newWord)

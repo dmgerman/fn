@@ -428,7 +428,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Use antialiasing font"
+literal|"Use antialiasing font in table"
 argument_list|)
 argument_list|,
 name|_prefs
@@ -1560,7 +1560,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Table appearance"
+literal|"Miscellaneous"
 argument_list|)
 argument_list|)
 argument_list|)

@@ -196,6 +196,16 @@ return|return
 name|this
 return|;
 block|}
+DECL|method|getTextComponent ()
+specifier|public
+name|JComponent
+name|getTextComponent
+parameter_list|()
+block|{
+return|return
+name|this
+return|;
+block|}
 DECL|method|paintComponent (Graphics g)
 specifier|public
 name|void

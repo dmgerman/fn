@@ -56,6 +56,16 @@ name|Globals
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
+
 begin_class
 DECL|class|ResolvePDF
 specifier|public
@@ -85,10 +95,10 @@ argument_list|(
 literal|"pdfDirectory"
 argument_list|)
 decl_stmt|;
-comment|//Util.pr(Util.expandFilename(field, dir).getPath());
-return|return
-literal|"file://"
-operator|+
+comment|//Util.pr(""+field);
+name|File
+name|f
+init|=
 name|Util
 operator|.
 name|expandFilename
@@ -97,9 +107,22 @@ name|field
 argument_list|,
 name|dir
 argument_list|)
+decl_stmt|;
+return|return
+operator|(
+name|f
+operator|!=
+literal|null
+condition|?
+literal|"file://"
+operator|+
+name|f
 operator|.
 name|getPath
 argument_list|()
+else|:
+name|field
+operator|)
 return|;
 block|}
 block|}

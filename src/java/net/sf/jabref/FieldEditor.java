@@ -38,6 +38,17 @@ parameter_list|()
 function_decl|;
 comment|// Returns the component to be added to a container. Might
 comment|// be a JScrollPane or the component itself.
+DECL|method|getTextComponent ()
+specifier|public
+name|javax
+operator|.
+name|swing
+operator|.
+name|JComponent
+name|getTextComponent
+parameter_list|()
+function_decl|;
+comment|// Returns the text component itself.
 DECL|method|getLabel ()
 specifier|public
 name|javax

@@ -5138,6 +5138,13 @@ name|void
 name|setEmptyState
 parameter_list|()
 block|{
+name|manageSelectors
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|mergeDatabaseAction
 operator|.
 name|setEnabled
@@ -5475,6 +5482,13 @@ name|void
 name|setNonEmptyState
 parameter_list|()
 block|{
+name|manageSelectors
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|mergeDatabaseAction
 operator|.
 name|setEnabled

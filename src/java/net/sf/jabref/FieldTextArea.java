@@ -322,6 +322,16 @@ return|return
 name|sp
 return|;
 block|}
+DECL|method|getTextComponent ()
+specifier|public
+name|JComponent
+name|getTextComponent
+parameter_list|()
+block|{
+return|return
+name|this
+return|;
+block|}
 block|}
 end_class
 
