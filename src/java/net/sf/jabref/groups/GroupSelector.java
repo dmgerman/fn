@@ -551,12 +551,6 @@ name|frame
 operator|=
 name|frame
 expr_stmt|;
-name|this
-operator|.
-name|panel
-operator|=
-name|panel
-expr_stmt|;
 name|hideNonHits
 operator|=
 operator|new
