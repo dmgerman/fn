@@ -135,10 +135,10 @@ comment|/**  * Changes {\^o} or {\^{o}} to ô  *  * @author $author$  * @version
 end_comment
 
 begin_class
-DECL|class|FixAuthorFirstLast
+DECL|class|FixAuthorFirstFirst
 specifier|public
 class|class
-name|FixAuthorFirstLast
+name|FixAuthorFirstFirst
 implements|implements
 name|LayoutFormatter
 block|{

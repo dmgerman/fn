@@ -304,6 +304,7 @@ argument_list|,
 literal|"&amp;"
 argument_list|)
 return|;
+comment|//.replaceAll("--", "&mdash;");
 block|}
 DECL|method|restFormat (String s)
 specifier|private
