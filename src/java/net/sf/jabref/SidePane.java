@@ -246,9 +246,9 @@ name|pan
 operator|.
 name|setBackground
 argument_list|(
-name|Color
+name|GUIGlobals
 operator|.
-name|white
+name|lightGray
 argument_list|)
 expr_stmt|;
 name|super
@@ -369,9 +369,9 @@ name|pan
 operator|.
 name|setBackground
 argument_list|(
-name|Color
+name|GUIGlobals
 operator|.
-name|white
+name|lightGray
 argument_list|)
 expr_stmt|;
 name|con

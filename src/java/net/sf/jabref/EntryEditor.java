@@ -161,20 +161,6 @@ implements|implements
 name|VetoableChangeListener
 block|{
 comment|/*       * GUI component that allows editing of the fields of a BibtexEntry.      * EntryTypeForm also registers itself as a VetoableChangeListener,      * receiving events whenever a field of the entry changes, enabling the      * text fields to update themselves if the change is made from somewhere      * else.      */
-DECL|field|bg
-name|Color
-name|bg
-init|=
-operator|new
-name|Color
-argument_list|(
-literal|235
-argument_list|,
-literal|235
-argument_list|,
-literal|235
-argument_list|)
-decl_stmt|;
 comment|// A reference to the entry this object works on.
 DECL|field|entry
 name|BibtexEntry
@@ -451,7 +437,9 @@ name|prefs_
 expr_stmt|;
 name|setBackground
 argument_list|(
-name|bg
+name|GUIGlobals
+operator|.
+name|lightGray
 argument_list|)
 expr_stmt|;
 comment|//Color.white);
@@ -788,7 +776,9 @@ name|tlb
 operator|.
 name|setBackground
 argument_list|(
-name|bg
+name|GUIGlobals
+operator|.
+name|lightGray
 argument_list|)
 expr_stmt|;
 comment|//Color.white);

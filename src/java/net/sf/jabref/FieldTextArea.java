@@ -170,9 +170,9 @@ name|BorderFactory
 operator|.
 name|createEtchedBorder
 argument_list|(
-name|Color
+name|GUIGlobals
 operator|.
-name|white
+name|lightGray
 argument_list|,
 name|Color
 operator|.
@@ -191,9 +191,9 @@ name|label
 operator|.
 name|setBackground
 argument_list|(
-name|Color
+name|GUIGlobals
 operator|.
-name|white
+name|lightGray
 argument_list|)
 expr_stmt|;
 comment|//label.setForeground(Color.gray);

@@ -1474,6 +1474,20 @@ comment|// Colors.
 specifier|public
 specifier|static
 name|Color
+DECL|field|lightGray
+name|lightGray
+init|=
+operator|new
+name|Color
+argument_list|(
+literal|230
+argument_list|,
+literal|230
+argument_list|,
+literal|230
+argument_list|)
+decl_stmt|,
+comment|// Light gray background
 DECL|field|nullFieldColor
 name|nullFieldColor
 init|=

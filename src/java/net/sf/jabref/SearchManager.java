@@ -104,7 +104,7 @@ name|JTextField
 argument_list|(
 literal|""
 argument_list|,
-literal|30
+literal|20
 argument_list|)
 decl_stmt|;
 DECL|field|lab
