@@ -18,7 +18,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|Map
 import|;
 end_import
 
@@ -31,18 +31,6 @@ operator|.
 name|regex
 operator|.
 name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Pattern
 import|;
 end_import
 
@@ -53,6 +41,18 @@ operator|.
 name|swing
 operator|.
 name|JOptionPane
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|undo
+operator|.
+name|AbstractUndoableEdit
 import|;
 end_import
 
@@ -105,11 +105,6 @@ name|ID
 init|=
 literal|"KeywordGroup:"
 decl_stmt|;
-DECL|field|m_name
-specifier|private
-name|String
-name|m_name
-decl_stmt|;
 DECL|field|m_searchField
 specifier|private
 name|String
@@ -151,9 +146,10 @@ name|IllegalArgumentException
 throws|,
 name|PatternSyntaxException
 block|{
-name|m_name
-operator|=
+name|super
+argument_list|(
 name|name
+argument_list|)
 expr_stmt|;
 name|m_searchField
 operator|=
@@ -380,32 +376,6 @@ operator|+
 name|SEPARATOR
 return|;
 block|}
-DECL|method|getName ()
-specifier|public
-name|String
-name|getName
-parameter_list|()
-block|{
-return|return
-name|m_name
-return|;
-block|}
-DECL|method|setName (String m_name)
-specifier|public
-name|void
-name|setName
-parameter_list|(
-name|String
-name|m_name
-parameter_list|)
-block|{
-name|this
-operator|.
-name|m_name
-operator|=
-name|m_name
-expr_stmt|;
-block|}
 DECL|method|getSearchField ()
 specifier|public
 name|String
@@ -483,7 +453,7 @@ return|;
 block|}
 DECL|method|addSelection (BasePanel basePanel)
 specifier|public
-name|void
+name|AbstractUndoableEdit
 name|addSelection
 parameter_list|(
 name|BasePanel
@@ -510,7 +480,9 @@ operator|+
 literal|"\" does not support the adding of entries."
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|null
+return|;
 block|}
 for|for
 control|(
@@ -562,7 +534,9 @@ argument_list|(
 name|basePanel
 argument_list|)
 condition|)
-return|return;
+return|return
+literal|null
+return|;
 block|}
 block|}
 name|BibtexEntry
@@ -601,7 +575,7 @@ literal|"add to group"
 argument_list|)
 decl_stmt|;
 name|boolean
-name|hasEdits
+name|modified
 init|=
 literal|false
 decl_stmt|;
@@ -713,7 +687,7 @@ name|newContent
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|hasEdits
+name|modified
 operator|=
 literal|true
 expr_stmt|;
@@ -721,44 +695,13 @@ block|}
 block|}
 if|if
 condition|(
-name|hasEdits
+name|modified
 condition|)
-block|{
 name|ce
 operator|.
 name|end
 argument_list|()
 expr_stmt|;
-name|basePanel
-operator|.
-name|undoManager
-operator|.
-name|addEdit
-argument_list|(
-name|ce
-argument_list|)
-expr_stmt|;
-name|basePanel
-operator|.
-name|refreshTable
-argument_list|()
-expr_stmt|;
-name|basePanel
-operator|.
-name|markBaseChanged
-argument_list|()
-expr_stmt|;
-name|basePanel
-operator|.
-name|updateEntryEditorIfShowing
-argument_list|()
-expr_stmt|;
-name|basePanel
-operator|.
-name|updateViewToSelected
-argument_list|()
-expr_stmt|;
-block|}
 name|basePanel
 operator|.
 name|output
@@ -792,7 +735,17 @@ literal|"y."
 operator|)
 argument_list|)
 expr_stmt|;
+return|return
+name|modified
+condition|?
+name|ce
+else|:
+literal|null
+return|;
 block|}
+return|return
+literal|null
+return|;
 block|}
 comment|/**      * Displays a warning message about changes to the entries due to adding      * to/removal from a group.      *       * @return true if the user chose to proceed, false otherwise.      */
 DECL|method|showWarningDialog (BasePanel basePanel)
@@ -853,7 +806,7 @@ return|;
 block|}
 DECL|method|removeSelection (BasePanel basePanel)
 specifier|public
-name|void
+name|AbstractUndoableEdit
 name|removeSelection
 parameter_list|(
 name|BasePanel
@@ -880,7 +833,9 @@ operator|+
 literal|"\" does not support the removal of entries."
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|null
+return|;
 block|}
 for|for
 control|(
@@ -932,7 +887,9 @@ argument_list|(
 name|basePanel
 argument_list|)
 condition|)
-return|return;
+return|return
+literal|null
+return|;
 block|}
 block|}
 name|BibtexEntry
@@ -971,7 +928,7 @@ literal|"remove from group"
 argument_list|)
 decl_stmt|;
 name|boolean
-name|hasEdits
+name|modified
 init|=
 literal|false
 decl_stmt|;
@@ -1060,7 +1017,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|hasEdits
+name|modified
 operator|=
 literal|true
 expr_stmt|;
@@ -1068,44 +1025,13 @@ block|}
 block|}
 if|if
 condition|(
-name|hasEdits
+name|modified
 condition|)
-block|{
 name|ce
 operator|.
 name|end
 argument_list|()
 expr_stmt|;
-name|basePanel
-operator|.
-name|undoManager
-operator|.
-name|addEdit
-argument_list|(
-name|ce
-argument_list|)
-expr_stmt|;
-name|basePanel
-operator|.
-name|refreshTable
-argument_list|()
-expr_stmt|;
-name|basePanel
-operator|.
-name|markBaseChanged
-argument_list|()
-expr_stmt|;
-name|basePanel
-operator|.
-name|updateEntryEditorIfShowing
-argument_list|()
-expr_stmt|;
-name|basePanel
-operator|.
-name|updateViewToSelected
-argument_list|()
-expr_stmt|;
-block|}
 name|basePanel
 operator|.
 name|output
@@ -1139,7 +1065,17 @@ literal|"y."
 operator|)
 argument_list|)
 expr_stmt|;
+return|return
+name|modified
+condition|?
+name|ce
+else|:
+literal|null
+return|;
 block|}
+return|return
+literal|null
+return|;
 block|}
 DECL|method|equals (Object o)
 specifier|public
@@ -1202,7 +1138,7 @@ block|}
 comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.groups.AbstractGroup#contains(java.util.Map,      *      net.sf.jabref.BibtexEntry)      */
 DECL|method|contains (Map searchOptions, BibtexEntry entry)
 specifier|public
-name|int
+name|boolean
 name|contains
 parameter_list|(
 name|Map
@@ -1246,10 +1182,10 @@ argument_list|()
 operator|)
 condition|)
 return|return
-literal|1
+literal|true
 return|;
 return|return
-literal|0
+literal|false
 return|;
 block|}
 comment|/**      * Removes matches of searchString in the entry's field.      */
@@ -1370,6 +1306,10 @@ name|searchOptions
 argument_list|,
 name|entry
 argument_list|)
+condition|?
+literal|1
+else|:
+literal|0
 return|;
 block|}
 DECL|method|deepCopy ()

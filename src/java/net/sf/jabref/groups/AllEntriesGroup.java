@@ -18,17 +18,19 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|Map
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|util
+name|swing
 operator|.
-name|Map
+name|undo
+operator|.
+name|AbstractUndoableEdit
 import|;
 end_import
 
@@ -67,15 +69,17 @@ name|ID
 init|=
 literal|"AllEntriesGroup:"
 decl_stmt|;
-DECL|field|m_name
-specifier|private
-specifier|static
-specifier|final
-name|String
-name|m_name
-init|=
+DECL|method|AllEntriesGroup ()
+specifier|public
+name|AllEntriesGroup
+parameter_list|()
+block|{
+name|super
+argument_list|(
 literal|"All Entries"
-decl_stmt|;
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|fromString (String s)
 specifier|public
 specifier|static
@@ -125,16 +129,6 @@ return|return
 name|this
 return|;
 block|}
-DECL|method|getName ()
-specifier|public
-name|String
-name|getName
-parameter_list|()
-block|{
-return|return
-name|m_name
-return|;
-block|}
 DECL|method|supportsAdd ()
 specifier|public
 name|boolean
@@ -157,7 +151,7 @@ return|;
 block|}
 DECL|method|addSelection (BasePanel basePanel)
 specifier|public
-name|void
+name|AbstractUndoableEdit
 name|addSelection
 parameter_list|(
 name|BasePanel
@@ -165,10 +159,13 @@ name|basePanel
 parameter_list|)
 block|{
 comment|// not supported -> ignore
+return|return
+literal|null
+return|;
 block|}
 DECL|method|removeSelection (BasePanel basePanel)
 specifier|public
-name|void
+name|AbstractUndoableEdit
 name|removeSelection
 parameter_list|(
 name|BasePanel
@@ -176,10 +173,13 @@ name|basePanel
 parameter_list|)
 block|{
 comment|// not supported -> ignore
+return|return
+literal|null
+return|;
 block|}
 DECL|method|contains (Map searchOptions, BibtexEntry entry)
 specifier|public
-name|int
+name|boolean
 name|contains
 parameter_list|(
 name|Map
@@ -190,7 +190,7 @@ name|entry
 parameter_list|)
 block|{
 return|return
-literal|1
+literal|true
 return|;
 comment|// contains everything
 block|}

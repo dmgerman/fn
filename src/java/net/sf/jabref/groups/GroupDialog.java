@@ -474,8 +474,15 @@ literal|false
 decl_stmt|;
 DECL|field|m_parent
 specifier|private
+specifier|final
 name|JabRefFrame
 name|m_parent
+decl_stmt|;
+DECL|field|m_basePanel
+specifier|private
+specifier|final
+name|BasePanel
+name|m_basePanel
 decl_stmt|;
 DECL|field|m_resultingGroup
 specifier|private
@@ -483,12 +490,15 @@ name|AbstractGroup
 name|m_resultingGroup
 decl_stmt|;
 comment|/**      * Shows a group add/edit dialog.      *       * @param jabrefFrame      *            The parent frame.      * @param defaultField      *            The default grouping field.      * @param editedGroup      *            The group being edited, or null if a new group is to be      *            created.      */
-DECL|method|GroupDialog (JabRefFrame jabrefFrame, AbstractGroup editedGroup)
+DECL|method|GroupDialog (JabRefFrame jabrefFrame, BasePanel basePanel, AbstractGroup editedGroup)
 specifier|public
 name|GroupDialog
 parameter_list|(
 name|JabRefFrame
 name|jabrefFrame
+parameter_list|,
+name|BasePanel
+name|basePanel
 parameter_list|,
 name|AbstractGroup
 name|editedGroup
@@ -507,6 +517,10 @@ argument_list|)
 argument_list|,
 literal|true
 argument_list|)
+expr_stmt|;
+name|m_basePanel
+operator|=
+name|basePanel
 expr_stmt|;
 name|m_parent
 operator|=
@@ -1165,6 +1179,11 @@ name|getText
 argument_list|()
 operator|.
 name|trim
+argument_list|()
+argument_list|,
+name|m_basePanel
+operator|.
+name|database
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -421,6 +421,11 @@ operator|new
 name|ExplicitGroup
 argument_list|(
 literal|"Automatically created groups"
+argument_list|,
+name|panel
+operator|.
+name|database
+argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;

@@ -18,7 +18,19 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|undo
+operator|.
+name|AbstractUndoableEdit
 import|;
 end_import
 
@@ -45,6 +57,24 @@ specifier|abstract
 class|class
 name|AbstractGroup
 block|{
+DECL|field|m_name
+specifier|protected
+name|String
+name|m_name
+decl_stmt|;
+DECL|method|AbstractGroup (String name)
+specifier|public
+name|AbstractGroup
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|m_name
+operator|=
+name|name
+expr_stmt|;
+block|}
 comment|/** Character used for quoting in the string representation. */
 DECL|field|QUOTE_CHAR
 specifier|protected
@@ -74,7 +104,7 @@ name|getSearchRule
 parameter_list|()
 function_decl|;
 comment|/**      * Re-create a group instance.      *       * @param s      *            The result from the group's toString() method.      * @return New instance of the encoded group.      * @throws Exception      *             If an error occured and a group could not be created, e.g.      *             due to a malformed regular expression.      */
-DECL|method|fromString (String s)
+DECL|method|fromString (String s, BibtexDatabase db)
 specifier|public
 specifier|static
 name|AbstractGroup
@@ -82,6 +112,9 @@ name|fromString
 parameter_list|(
 name|String
 name|s
+parameter_list|,
+name|BibtexDatabase
+name|db
 parameter_list|)
 throws|throws
 name|Exception
@@ -160,6 +193,8 @@ operator|.
 name|fromString
 argument_list|(
 name|s
+argument_list|,
+name|db
 argument_list|)
 return|;
 return|return
@@ -170,70 +205,30 @@ block|}
 comment|/** Returns this group's name, e.g. for display in a list/tree. */
 DECL|method|getName ()
 specifier|public
-specifier|abstract
+specifier|final
 name|String
 name|getName
 parameter_list|()
-function_decl|;
-comment|/**      * Re-create multiple instances (of not necessarily the same type) from the      * specified Vector.      *       * @param vector      *            A vector containing String representations obtained from a      *            group's toString() method.      * @return A vector containing the recreated group instances.      * @throws Exception      *             If an error occured and a group could not be created, e.g.      *             due to a malformed regular expression.      */
-DECL|method|fromString (Vector vector)
-specifier|public
-specifier|static
-specifier|final
-name|Vector
-name|fromString
-parameter_list|(
-name|Vector
-name|vector
-parameter_list|)
-throws|throws
-name|Exception
 block|{
-name|Vector
-name|groups
-init|=
-operator|new
-name|Vector
-argument_list|()
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|vector
-operator|.
-name|size
-argument_list|()
-condition|;
-operator|++
-name|i
-control|)
-name|groups
-operator|.
-name|add
-argument_list|(
-name|fromString
-argument_list|(
-name|vector
-operator|.
-name|elementAt
-argument_list|(
-name|i
-argument_list|)
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
 return|return
-name|groups
+name|m_name
 return|;
+block|}
+comment|/** Sets the group's name. */
+DECL|method|setName (String name)
+specifier|public
+specifier|final
+name|void
+name|setName
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|m_name
+operator|=
+name|name
+expr_stmt|;
 block|}
 comment|/**      * @return true if this type of group supports the explicit adding of      *         entries.      */
 DECL|method|supportsAdd ()
@@ -251,33 +246,33 @@ name|boolean
 name|supportsRemove
 parameter_list|()
 function_decl|;
-comment|/**      * Adds the selected entries to this group.      */
+comment|/**      * Adds the selected entries to this group.      *       * @return If this group or one or more entries was/were modified as a      *         result of this operation, an object is returned that allows to      *         undo this change. null is returned otherwise.      */
 DECL|method|addSelection (BasePanel basePanel)
 specifier|public
 specifier|abstract
-name|void
+name|AbstractUndoableEdit
 name|addSelection
 parameter_list|(
 name|BasePanel
 name|basePanel
 parameter_list|)
 function_decl|;
-comment|/**      * Removes the selected entries from this group.      */
+comment|/**      * Removes the selected entries from this group.      *       * @return If this group or one or more entries was/were modified as a      *         result of this operation, an object is returned that allows to      *         undo this change. null is returned otherwise.      */
 DECL|method|removeSelection (BasePanel basePanel)
 specifier|public
 specifier|abstract
-name|void
+name|AbstractUndoableEdit
 name|removeSelection
 parameter_list|(
 name|BasePanel
 name|basePanel
 parameter_list|)
 function_decl|;
-comment|/**      * @return A value>0 if this group contains the specified entry, 0      *         otherwise.      */
+comment|/**      * @return true if this group contains the specified entry, false otherwise.      */
 DECL|method|contains (Map searchOptions, BibtexEntry entry)
 specifier|public
 specifier|abstract
-name|int
+name|boolean
 name|contains
 parameter_list|(
 name|Map

@@ -269,7 +269,7 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Parses the textual representation obtained from GroupTreeNode.toString()      * and recreates that node and all of its children from it.      *       * @throws Exception      *             When a group could not be recreated      */
-DECL|method|fromString (String s)
+DECL|method|fromString (String s, BibtexDatabase db)
 specifier|public
 specifier|static
 name|GroupTreeNode
@@ -277,6 +277,9 @@ name|fromString
 parameter_list|(
 name|String
 name|s
+parameter_list|,
+name|BibtexDatabase
+name|db
 parameter_list|)
 throws|throws
 name|Exception
@@ -328,6 +331,8 @@ operator|=
 name|fromString
 argument_list|(
 name|subtree
+argument_list|,
+name|db
 argument_list|)
 expr_stmt|;
 comment|// continue after this subtree by removing it
@@ -429,6 +434,8 @@ name|g
 argument_list|,
 literal|'\\'
 argument_list|)
+argument_list|,
+name|db
 argument_list|)
 argument_list|)
 expr_stmt|;

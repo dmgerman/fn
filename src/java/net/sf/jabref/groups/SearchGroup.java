@@ -28,7 +28,19 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|undo
+operator|.
+name|AbstractUndoableEdit
 import|;
 end_import
 
@@ -62,7 +74,7 @@ begin_import
 import|import
 name|antlr
 operator|.
-name|*
+name|RecognitionException
 import|;
 end_import
 
@@ -98,11 +110,6 @@ name|String
 name|ID
 init|=
 literal|"SearchGroup:"
-decl_stmt|;
-DECL|field|m_name
-specifier|private
-name|String
-name|m_name
 decl_stmt|;
 DECL|field|m_searchExpression
 specifier|private
@@ -201,9 +208,10 @@ name|boolean
 name|searchGeneralFields
 parameter_list|)
 block|{
-name|m_name
-operator|=
+name|super
+argument_list|(
 name|name
+argument_list|)
 expr_stmt|;
 name|m_searchExpression
 operator|=
@@ -659,16 +667,6 @@ operator|+
 name|SEPARATOR
 return|;
 block|}
-DECL|method|getName ()
-specifier|public
-name|String
-name|getName
-parameter_list|()
-block|{
-return|return
-name|m_name
-return|;
-block|}
 DECL|method|getSearchExpression ()
 specifier|public
 name|String
@@ -701,7 +699,7 @@ return|;
 block|}
 DECL|method|addSelection (BasePanel basePanel)
 specifier|public
-name|void
+name|AbstractUndoableEdit
 name|addSelection
 parameter_list|(
 name|BasePanel
@@ -709,10 +707,13 @@ name|basePanel
 parameter_list|)
 block|{
 comment|// nothing to do, add is not supported
+return|return
+literal|null
+return|;
 block|}
 DECL|method|removeSelection (BasePanel basePanel)
 specifier|public
-name|void
+name|AbstractUndoableEdit
 name|removeSelection
 parameter_list|(
 name|BasePanel
@@ -720,6 +721,9 @@ name|basePanel
 parameter_list|)
 block|{
 comment|// nothing to do, remove is not supported
+return|return
+literal|null
+return|;
 block|}
 DECL|method|equals (Object o)
 specifier|public
@@ -809,7 +813,7 @@ block|}
 comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.groups.AbstractGroup#contains(java.util.Map,      *      net.sf.jabref.BibtexEntry)      */
 DECL|method|contains (Map searchOptions, BibtexEntry entry)
 specifier|public
-name|int
+name|boolean
 name|contains
 parameter_list|(
 name|Map
@@ -828,6 +832,12 @@ name|searchOptions
 argument_list|,
 name|entry
 argument_list|)
+operator|==
+literal|0
+condition|?
+literal|false
+else|:
+literal|true
 return|;
 block|}
 DECL|method|applyRule (Map searchOptions, BibtexEntry entry)
