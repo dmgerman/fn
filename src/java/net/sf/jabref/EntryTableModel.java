@@ -1928,6 +1928,11 @@ operator|.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
+name|panel
+operator|.
+name|updateEntryEditorIfShowing
+argument_list|()
+expr_stmt|;
 comment|// Should the table also be scheduled for repaint?
 block|}
 catch|catch

@@ -7501,7 +7501,7 @@ return|;
 comment|// Nothing found.
 block|}
 DECL|method|updateAllFields ()
-specifier|private
+specifier|public
 name|void
 name|updateAllFields
 parameter_list|()
