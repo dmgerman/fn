@@ -1202,6 +1202,15 @@ parameter_list|)
 block|{
 try|try
 block|{
+name|NamedCompound
+name|dummyNamedCompound
+init|=
+operator|new
+name|NamedCompound
+argument_list|(
+literal|"Import Data from CiteSeer Database"
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 operator|(
@@ -1346,9 +1355,13 @@ name|getResponseBodyAsStream
 argument_list|()
 argument_list|,
 operator|new
-name|CiteSeerImportHandler
+name|CiteSeerUndoHandler
 argument_list|(
+name|dummyNamedCompound
+argument_list|,
 name|newEntry
+argument_list|,
+name|panel
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1361,15 +1374,6 @@ name|database
 operator|.
 name|insertEntry
 argument_list|(
-name|newEntry
-argument_list|)
-expr_stmt|;
-name|citationHashTable
-operator|.
-name|put
-argument_list|(
-name|key
-argument_list|,
 name|newEntry
 argument_list|)
 expr_stmt|;
@@ -1971,6 +1975,8 @@ argument_list|(
 name|citeseerNC
 argument_list|,
 name|be
+argument_list|,
+name|panel
 argument_list|)
 argument_list|)
 expr_stmt|;
