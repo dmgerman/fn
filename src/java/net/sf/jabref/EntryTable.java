@@ -1048,10 +1048,10 @@ name|fg
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|paint (Graphics g)
+DECL|method|paintComponent (Graphics g)
 specifier|public
 name|void
-name|paint
+name|paintComponent
 parameter_list|(
 name|Graphics
 name|g
@@ -1128,6 +1128,19 @@ operator|.
 name|VALUE_ANTIALIAS_ON
 argument_list|)
 expr_stmt|;
+name|rh
+operator|.
+name|put
+argument_list|(
+name|RenderingHints
+operator|.
+name|KEY_RENDERING
+argument_list|,
+name|RenderingHints
+operator|.
+name|VALUE_RENDER_QUALITY
+argument_list|)
+expr_stmt|;
 name|g2
 operator|.
 name|setRenderingHints
@@ -1139,7 +1152,7 @@ block|}
 comment|//g2.drawString(getText(), 3, f.getSize());
 name|super
 operator|.
-name|paint
+name|paintComponent
 argument_list|(
 name|g2
 argument_list|)
