@@ -361,13 +361,10 @@ name|s
 init|=
 name|tableModel
 operator|.
-name|getColumnName
+name|getFieldName
 argument_list|(
 name|col
 argument_list|)
-operator|.
-name|toLowerCase
-argument_list|()
 decl_stmt|;
 if|if
 condition|(
