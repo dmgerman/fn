@@ -2111,6 +2111,24 @@ argument_list|,
 literal|"ctrl K"
 argument_list|)
 expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Next tab"
+argument_list|,
+literal|"ctrl RIGHT"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Previous tab"
+argument_list|,
+literal|"ctrl LEFT"
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getNextUnit (Reader data)
 specifier|private

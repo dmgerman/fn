@@ -180,6 +180,24 @@ name|nullFieldColor
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|append (String text)
+specifier|public
+name|void
+name|append
+parameter_list|(
+name|String
+name|text
+parameter_list|)
+block|{
+name|setText
+argument_list|(
+name|getText
+argument_list|()
+operator|+
+name|text
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|getFieldName ()
 specifier|public
 name|String

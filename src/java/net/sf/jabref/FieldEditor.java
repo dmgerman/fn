@@ -89,6 +89,15 @@ name|String
 name|newText
 parameter_list|)
 function_decl|;
+DECL|method|append (String text)
+specifier|public
+name|void
+name|append
+parameter_list|(
+name|String
+name|text
+parameter_list|)
+function_decl|;
 DECL|method|getParent ()
 specifier|public
 name|java

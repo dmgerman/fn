@@ -40,29 +40,21 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|UIManager
+name|*
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|UIDefaults
-import|;
-end_import
+begin_comment
+comment|//import javax.swing.UIManager;
+end_comment
 
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|UnsupportedLookAndFeelException
-import|;
-end_import
+begin_comment
+comment|//import javax.swing.UIDefaults;
+end_comment
+
+begin_comment
+comment|//import javax.swing.UnsupportedLookAndFeelException;
+end_comment
 
 begin_class
 DECL|class|JabRef
@@ -397,10 +389,9 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|UIManager
-operator|.
-name|setLookAndFeel
-argument_list|(
+name|LookAndFeel
+name|lnf
+init|=
 operator|new
 name|com
 operator|.
@@ -412,6 +403,13 @@ name|kunststoff
 operator|.
 name|KunststoffLookAndFeel
 argument_list|()
+decl_stmt|;
+comment|//com.incors.plaf.kunststoff.KunststoffLookAndFeel.setCurrentTheme(new com.incors.plaf.kunststoff.themes.KunststoffDesktopTheme());
+name|UIManager
+operator|.
+name|setLookAndFeel
+argument_list|(
+name|lnf
 argument_list|)
 expr_stmt|;
 block|}
