@@ -8115,7 +8115,7 @@ DECL|class|NewSubDatabaseAction
 class|class
 name|NewSubDatabaseAction
 extends|extends
-name|AbstractAction
+name|MnemonicAwareAction
 block|{
 DECL|method|NewSubDatabaseAction ()
 specifier|public
@@ -8124,19 +8124,24 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"New subdatabase based on AUX file"
-argument_list|)
-argument_list|,
 operator|new
 name|ImageIcon
 argument_list|(
 name|GUIGlobals
 operator|.
 name|newBibFile
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|putValue
+argument_list|(
+name|NAME
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"New subdatabase based on AUX file"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -8405,7 +8410,7 @@ DECL|class|FetchMedlineAction
 class|class
 name|FetchMedlineAction
 extends|extends
-name|AbstractAction
+name|MnemonicAwareAction
 block|{
 DECL|method|FetchMedlineAction ()
 specifier|public
@@ -8414,19 +8419,24 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Fetch Medline"
-argument_list|)
-argument_list|,
 operator|new
 name|ImageIcon
 argument_list|(
 name|GUIGlobals
 operator|.
 name|fetchMedlineIcon
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|putValue
+argument_list|(
+name|NAME
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Fetch Medline"
 argument_list|)
 argument_list|)
 expr_stmt|;

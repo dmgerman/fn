@@ -368,11 +368,19 @@ operator|+
 name|outputHits
 argument_list|)
 expr_stmt|;
+operator|new
+name|FocusRequester
+argument_list|(
+name|panel
+operator|.
+name|entryTable
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|/*if (select) { // Select matches.           panel.selectResults(searchValueField);           new FocusRequester(panel.entryTable);         }*/
+comment|/*if (select) { // Select matches.           panel.selectResults(searchValueField);                    }*/
 block|}
 block|}
 end_class
