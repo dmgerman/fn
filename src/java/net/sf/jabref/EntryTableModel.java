@@ -1804,6 +1804,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Remaps and resorts the table model.      */
 DECL|method|remap ()
 specifier|public
 name|void
@@ -1821,6 +1822,7 @@ name|fireTableDataChanged
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Remaps and resorts the table model, and restricts the row number      * as directed.      */
 DECL|method|remap (int rows)
 specifier|public
 name|void
@@ -1842,16 +1844,44 @@ name|fireTableDataChanged
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|TEST_TEST ()
+comment|/**      * Quick remap of the table model. Sufficient for all operations except      * those that require a changed sort regime.      */
+DECL|method|update ()
 specifier|public
 name|void
-name|TEST_TEST
+name|update
 parameter_list|()
 block|{
 name|sorter
 operator|.
 name|index
 argument_list|()
+expr_stmt|;
+name|showAllEntries
+argument_list|()
+expr_stmt|;
+name|fireTableDataChanged
+argument_list|()
+expr_stmt|;
+block|}
+comment|/**      * Quick remap of the table model. Sufficient for all operations except      * those that require a changed sort regime.      * Restricts the row number as directed.      */
+DECL|method|update (int rows)
+specifier|public
+name|void
+name|update
+parameter_list|(
+name|int
+name|rows
+parameter_list|)
+block|{
+name|sorter
+operator|.
+name|index
+argument_list|()
+expr_stmt|;
+name|setRowCount
+argument_list|(
+name|rows
+argument_list|)
 expr_stmt|;
 name|fireTableDataChanged
 argument_list|()

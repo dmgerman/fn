@@ -241,41 +241,7 @@ name|ClassCastException
 block|{
 comment|//if (o1 == null) Util.pr("o1 == null");
 comment|//if (o2 == null) Util.pr("o2 == null");
-if|if
-condition|(
-operator|!
-operator|(
-name|o1
-operator|instanceof
-name|BibtexEntry
-operator|)
-operator|||
-operator|!
-operator|(
-name|o2
-operator|instanceof
-name|BibtexEntry
-operator|)
-condition|)
-throw|throw
-operator|new
-name|ClassCastException
-argument_list|(
-literal|"Trouble comparing objects: "
-operator|+
-name|o1
-operator|.
-name|toString
-argument_list|()
-operator|+
-literal|"\n\n"
-operator|+
-name|o2
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-throw|;
+comment|/*  The explicit instanceof test is unnecessary, since the  	    explicit casts below will throw ClassCastException anyway  	    if there is trouble.  	if (!(o1 instanceof BibtexEntry) || !(o2 instanceof BibtexEntry)) 	  throw new ClassCastException("Trouble comparing objects: "+o1.toString()+"\n\n"+o2.toString());*/
 name|BibtexEntry
 name|e1
 init|=
@@ -291,6 +257,16 @@ name|BibtexEntry
 operator|)
 name|o2
 decl_stmt|;
+if|if
+condition|(
+name|e1
+operator|==
+name|e2
+condition|)
+return|return
+literal|0
+return|;
+comment|//Util.pr("EntryComparator: "+e1+" : "+e2);
 name|Object
 name|f1
 init|=

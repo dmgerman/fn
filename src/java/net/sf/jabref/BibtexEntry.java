@@ -536,18 +536,50 @@ throw|;
 block|}
 comment|// This mechanism is probably not really necessary.
 comment|//Object normalValue = FieldTypes.normalize(name, value);
-try|try
-block|{
-name|firePropertyChangedEvent
-argument_list|(
-name|name
-argument_list|,
+name|Object
+name|oldValue
+init|=
 name|_fields
 operator|.
 name|get
 argument_list|(
 name|name
 argument_list|)
+decl_stmt|;
+try|try
+block|{
+comment|// First throw an empty event that just signals that this entry
+comment|// is about to change. This is needed, so the EntrySorter can
+comment|// remove the entry from its TreeSet. After a sort-sensitive
+comment|// field changes, the entry will not be found by the TreeMap,
+comment|// so without this event it would be impossible to reinsert this
+comment|// entry to keep everything sorted properly.
+name|firePropertyChangedEvent
+argument_list|(
+literal|null
+argument_list|,
+literal|null
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+comment|// We set the field before throwing the changeEvent, to enable
+comment|// the change listener to access the new value if the change
+comment|// sets off a change in database sorting etc.
+name|_fields
+operator|.
+name|put
+argument_list|(
+name|name
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
+name|firePropertyChangedEvent
+argument_list|(
+name|name
+argument_list|,
+name|oldValue
 argument_list|,
 name|value
 argument_list|)
@@ -559,6 +591,17 @@ name|PropertyVetoException
 name|pve
 parameter_list|)
 block|{
+comment|// Since we have already made the change, we must undo it since
+comment|// the change was rejected:
+name|_fields
+operator|.
+name|put
+argument_list|(
+name|name
+argument_list|,
+name|oldValue
+argument_list|)
+expr_stmt|;
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -569,16 +612,6 @@ name|pve
 argument_list|)
 throw|;
 block|}
-comment|//Object oldValue =
-name|_fields
-operator|.
-name|put
-argument_list|(
-name|name
-argument_list|,
-name|value
-argument_list|)
-expr_stmt|;
 block|}
 comment|/**      * Removes the mapping for the field name.      */
 DECL|method|clearField (String name)
@@ -1251,8 +1284,6 @@ name|toString
 parameter_list|()
 block|{
 return|return
-literal|"Entry:"
-operator|+
 name|getType
 argument_list|()
 operator|.

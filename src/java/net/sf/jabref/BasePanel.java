@@ -8990,14 +8990,6 @@ name|void
 name|refreshTable
 parameter_list|()
 block|{
-name|long
-name|tic
-init|=
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-decl_stmt|;
 comment|// This method is called by EntryTypeForm when a field value is
 comment|// stored. The table is scheduled for repaint.
 name|entryTable
@@ -9021,18 +9013,18 @@ name|hidingNonHits
 condition|)
 name|tableModel
 operator|.
-name|remap
+name|update
 argument_list|(
 name|lastSearchHits
 argument_list|)
 expr_stmt|;
 else|else
-comment|//tableModel.TEST_TEST();
 name|tableModel
 operator|.
-name|remap
+name|update
 argument_list|()
 expr_stmt|;
+comment|//tableModel.remap();
 if|if
 condition|(
 operator|(
@@ -9056,31 +9048,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-comment|//entryTable.revalidate();r
-comment|//entryTable.repaint();
-name|long
-name|toc
-init|=
-name|System
-operator|.
-name|currentTimeMillis
-argument_list|()
-decl_stmt|;
-name|Util
-operator|.
-name|pr
-argument_list|(
-literal|"Refresh took: "
-operator|+
-operator|(
-name|toc
-operator|-
-name|tic
-operator|)
-operator|+
-literal|" ms"
-argument_list|)
-expr_stmt|;
+comment|//long toc = System.currentTimeMillis();
+comment|//	Util.pr("Refresh took: "+(toc-tic)+" ms");
 block|}
 DECL|method|updatePreamble ()
 specifier|public
@@ -9930,6 +9899,7 @@ name|int
 name|toScrollTo
 parameter_list|)
 block|{
+comment|//Util.pr("highlighting...");
 name|SwingUtilities
 operator|.
 name|invokeLater
@@ -10481,7 +10451,11 @@ expr_stmt|;
 comment|//System.out.println("BasePanel: hidingNonHits="+hidingNonHits);
 block|}
 comment|// We either gray out, or hide, non-hits.
-comment|//tableModel.remap();
+name|tableModel
+operator|.
+name|remap
+argument_list|()
+expr_stmt|;
 name|entryTable
 operator|.
 name|clearSelection
@@ -10788,6 +10762,11 @@ operator|.
 name|clearSelection
 argument_list|()
 expr_stmt|;
+name|tableModel
+operator|.
+name|remap
+argument_list|()
+expr_stmt|;
 name|refreshTable
 argument_list|()
 expr_stmt|;
@@ -10819,6 +10798,11 @@ comment|/*       entryTable.setShowingSearchResults(showingSearchResults,       
 name|entryTable
 operator|.
 name|clearSelection
+argument_list|()
+expr_stmt|;
+name|tableModel
+operator|.
+name|remap
 argument_list|()
 expr_stmt|;
 name|refreshTable
