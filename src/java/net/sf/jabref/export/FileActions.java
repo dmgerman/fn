@@ -1343,6 +1343,8 @@ literal|"iso-8859-1"
 argument_list|)
 expr_stmt|;
 comment|// Print header
+try|try
+block|{
 name|reader
 operator|=
 name|getReader
@@ -1385,6 +1387,14 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ex
+parameter_list|)
+block|{}
+comment|// If an exception was cast, export filter doesn't have a begin file.
 comment|// Write database entrie; entries will be sorted as they
 comment|// appear on the screen.
 name|String
@@ -1482,7 +1492,11 @@ init|=
 name|layoutHelper
 operator|.
 name|getLayoutFromText
-argument_list|()
+argument_list|(
+name|Globals
+operator|.
+name|FORMATTER_PACKAGE
+argument_list|)
 decl_stmt|;
 name|reader
 operator|.
@@ -1609,7 +1623,11 @@ operator|=
 name|layoutHelper
 operator|.
 name|getLayoutFromText
-argument_list|()
+argument_list|(
+name|Globals
+operator|.
+name|FORMATTER_PACKAGE
+argument_list|)
 expr_stmt|;
 name|layouts
 operator|.
@@ -1656,6 +1674,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Print footer
+try|try
+block|{
 name|reader
 operator|=
 name|getReader
@@ -1698,6 +1718,14 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ex
+parameter_list|)
+block|{}
+comment|// If an exception was cast, export filter doesn't have a end file.
 name|ps
 operator|.
 name|flush

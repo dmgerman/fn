@@ -64,6 +64,18 @@ name|BibtexEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
 begin_comment
 comment|/**  * DOCUMENT ME!  *  * @author $author$  * @version $Revision$  */
 end_comment
@@ -96,20 +108,34 @@ specifier|private
 name|int
 name|type
 decl_stmt|;
+DECL|field|classPrefix
+specifier|private
+name|String
+name|classPrefix
+decl_stmt|;
 comment|//~ Constructors ///////////////////////////////////////////////////////////
-DECL|method|LayoutEntry (StringInt si)
+DECL|method|LayoutEntry (StringInt si, String classPrefix_)
 specifier|public
 name|LayoutEntry
 parameter_list|(
 name|StringInt
 name|si
+parameter_list|,
+name|String
+name|classPrefix_
 parameter_list|)
+throws|throws
+name|Exception
 block|{
 name|type
 operator|=
 name|si
 operator|.
 name|i
+expr_stmt|;
+name|classPrefix
+operator|=
+name|classPrefix_
 expr_stmt|;
 if|if
 condition|(
@@ -249,8 +275,8 @@ operator|.
 name|trim
 argument_list|()
 expr_stmt|;
-try|try
-block|{
+comment|//try
+comment|//{
 name|option
 operator|=
 name|getOptionalLayout
@@ -266,33 +292,34 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
+comment|//}
+comment|// catch (Exception e)
+comment|//{
+comment|//    e.printStackTrace();
+comment|//}
 block|}
 block|}
 comment|//		else if (si.i == LayoutHelper.IS_OPTION_FIELD_PARAM)
 comment|//		{
 comment|//		}
 block|}
-DECL|method|LayoutEntry (Vector parsedEntries)
+DECL|method|LayoutEntry (Vector parsedEntries, String classPrefix_)
 specifier|public
 name|LayoutEntry
 parameter_list|(
 name|Vector
 name|parsedEntries
+parameter_list|,
+name|String
+name|classPrefix_
 parameter_list|)
+throws|throws
+name|Exception
 block|{
+name|classPrefix
+operator|=
+name|classPrefix_
+expr_stmt|;
 name|String
 name|blockStart
 init|=
@@ -515,6 +542,8 @@ operator|new
 name|LayoutEntry
 argument_list|(
 name|blockEntries
+argument_list|,
+name|classPrefix
 argument_list|)
 expr_stmt|;
 name|tmpEntries
@@ -573,6 +602,8 @@ operator|new
 name|LayoutEntry
 argument_list|(
 name|si
+argument_list|,
+name|classPrefix
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1085,6 +1116,32 @@ name|formatter
 decl_stmt|;
 try|try
 block|{
+try|try
+block|{
+name|formatter
+operator|=
+operator|(
+name|LayoutFormatter
+operator|)
+name|Class
+operator|.
+name|forName
+argument_list|(
+name|classPrefix
+operator|+
+name|formatterName
+argument_list|)
+operator|.
+name|newInstance
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|ex2
+parameter_list|)
+block|{
 name|formatter
 operator|=
 operator|(
@@ -1101,6 +1158,7 @@ name|newInstance
 argument_list|()
 expr_stmt|;
 block|}
+block|}
 catch|catch
 parameter_list|(
 name|ClassNotFoundException
@@ -1111,9 +1169,16 @@ throw|throw
 operator|new
 name|Exception
 argument_list|(
-name|formatterName
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Formatter not found"
+argument_list|)
 operator|+
-literal|" not found."
+literal|": "
+operator|+
+name|formatterName
 argument_list|)
 throw|;
 block|}
@@ -1160,9 +1225,16 @@ throw|throw
 operator|new
 name|Exception
 argument_list|(
-name|formatterName
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Formatter not found"
+argument_list|)
 operator|+
-literal|" not found."
+literal|": "
+operator|+
+name|formatterName
 argument_list|)
 throw|;
 block|}

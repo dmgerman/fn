@@ -331,7 +331,11 @@ operator|=
 name|layoutHelper
 operator|.
 name|getLayoutFromText
-argument_list|()
+argument_list|(
+name|Globals
+operator|.
+name|FORMATTER_PACKAGE
+argument_list|)
 expr_stmt|;
 name|layouts
 operator|.

@@ -219,13 +219,16 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|//~ Methods ////////////////////////////////////////////////////////////////
-DECL|method|getLayoutFromText ()
+DECL|method|getLayoutFromText (String classPrefix)
 specifier|public
 name|Layout
 name|getLayoutFromText
-parameter_list|()
+parameter_list|(
+name|String
+name|classPrefix
+parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|parse
 argument_list|()
@@ -313,6 +316,8 @@ operator|new
 name|Layout
 argument_list|(
 name|parsedEntries
+argument_list|,
+name|classPrefix
 argument_list|)
 decl_stmt|;
 return|return

@@ -8988,15 +8988,11 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Exception
 name|ex
 parameter_list|)
 block|{
-name|ex
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
+comment|//ex.printStackTrace();
 name|JOptionPane
 operator|.
 name|showMessageDialog

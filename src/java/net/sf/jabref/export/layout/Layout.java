@@ -70,13 +70,18 @@ index|[]
 name|layoutEntries
 decl_stmt|;
 comment|//~ Constructors ///////////////////////////////////////////////////////////
-DECL|method|Layout (Vector parsedEntries)
+DECL|method|Layout (Vector parsedEntries, String classPrefix)
 specifier|public
 name|Layout
 parameter_list|(
 name|Vector
 name|parsedEntries
+parameter_list|,
+name|String
+name|classPrefix
 parameter_list|)
+throws|throws
+name|Exception
 block|{
 name|StringInt
 name|si
@@ -223,6 +228,8 @@ operator|new
 name|LayoutEntry
 argument_list|(
 name|blockEntries
+argument_list|,
+name|classPrefix
 argument_list|)
 expr_stmt|;
 name|tmpEntries
@@ -280,6 +287,8 @@ operator|new
 name|LayoutEntry
 argument_list|(
 name|si
+argument_list|,
+name|classPrefix
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -177,6 +177,21 @@ argument_list|(
 literal|"Clear search"
 argument_list|)
 argument_list|)
+decl_stmt|,
+DECL|field|help
+name|help
+init|=
+operator|new
+name|JButton
+argument_list|(
+operator|new
+name|ImageIcon
+argument_list|(
+name|GUIGlobals
+operator|.
+name|helpIconFile
+argument_list|)
+argument_list|)
 decl_stmt|;
 DECL|field|prefs
 specifier|private
@@ -669,6 +684,25 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|help
+operator|.
+name|addActionListener
+argument_list|(
+operator|new
+name|HelpAction
+argument_list|(
+name|frame
+operator|.
+name|helpDiag
+argument_list|,
+name|GUIGlobals
+operator|.
+name|searchHelp
+argument_list|,
+literal|"Help"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|types
 operator|.
 name|add
@@ -868,7 +902,12 @@ argument_list|(
 name|reorder
 argument_list|)
 expr_stmt|;
-comment|//con.gridwidth = 1;
+name|con
+operator|.
+name|gridwidth
+operator|=
+literal|1
+expr_stmt|;
 name|gbl
 operator|.
 name|setConstraints
@@ -885,7 +924,34 @@ argument_list|)
 expr_stmt|;
 comment|//JPanel empt = new JPanel();
 comment|//con.insets = new Insets(0, 0, 2, 0);
-comment|//con.gridwidth = GridBagConstraints.REMAINDER;
+name|con
+operator|.
+name|gridwidth
+operator|=
+name|GridBagConstraints
+operator|.
+name|REMAINDER
+expr_stmt|;
+name|gbl
+operator|.
+name|setConstraints
+argument_list|(
+name|help
+argument_list|,
+name|con
+argument_list|)
+expr_stmt|;
+name|add
+argument_list|(
+name|help
+argument_list|)
+expr_stmt|;
+name|con
+operator|.
+name|gridwidth
+operator|=
+literal|2
+expr_stmt|;
 name|gbl
 operator|.
 name|setConstraints
