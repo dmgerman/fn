@@ -1536,7 +1536,7 @@ block|{
 name|Object
 name|diskId
 init|=
-name|i
+name|j
 operator|.
 name|next
 argument_list|()
@@ -1559,10 +1559,7 @@ name|onDisk
 operator|.
 name|getString
 argument_list|(
-name|j
-operator|.
-name|next
-argument_list|()
+name|diskId
 argument_list|)
 decl_stmt|;
 if|if
@@ -1695,10 +1692,7 @@ name|used
 operator|.
 name|add
 argument_list|(
-name|disk
-operator|.
-name|getId
-argument_list|()
+name|diskId
 argument_list|)
 expr_stmt|;
 comment|//if (j==piv2)
@@ -1828,6 +1822,7 @@ argument_list|(
 name|diskId
 argument_list|)
 decl_stmt|;
+comment|//System.out.println("Cand: "+disk.getName());
 if|if
 condition|(
 name|disk
@@ -1974,6 +1969,23 @@ operator|.
 name|add
 argument_list|(
 name|diskId
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|onDisk
+operator|.
+name|getString
+argument_list|(
+name|diskId
+argument_list|)
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2129,9 +2141,10 @@ argument_list|(
 name|diskId
 argument_list|)
 decl_stmt|;
+comment|//System.out.println(disk.getName());
 name|used
 operator|.
-name|remove
+name|add
 argument_list|(
 name|diskId
 argument_list|)
@@ -2198,6 +2211,14 @@ argument_list|()
 condition|;
 control|)
 block|{
+name|Object
+name|key
+init|=
+name|i
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
 name|BibtexString
 name|bs
 init|=
@@ -2205,10 +2226,7 @@ name|base
 operator|.
 name|getString
 argument_list|(
-name|i
-operator|.
-name|next
-argument_list|()
+name|key
 argument_list|)
 decl_stmt|;
 if|if
@@ -2228,9 +2246,7 @@ name|used
 operator|.
 name|contains
 argument_list|(
-literal|""
-operator|+
-name|i
+name|key
 argument_list|)
 condition|)
 block|{
@@ -2238,9 +2254,7 @@ name|used
 operator|.
 name|add
 argument_list|(
-literal|""
-operator|+
-name|i
+name|key
 argument_list|)
 expr_stmt|;
 return|return

@@ -1419,15 +1419,8 @@ operator|+
 literal|"</dd>__NEWLINE__<p></p></font>"
 argument_list|)
 expr_stmt|;
-name|defaults
-operator|.
-name|put
-argument_list|(
-literal|"tempDir"
-argument_list|,
-literal|"/tmp/"
-argument_list|)
-expr_stmt|;
+comment|//defaults.put("tempDir", System.getProperty("java.io.tmpdir"));
+comment|//Util.pr(System.getProperty("java.io.tempdir"));
 comment|//defaults.put("keyPattern", new LabelPattern(KEY_PATTERN));
 name|restoreKeyBindings
 argument_list|()

@@ -264,7 +264,7 @@ argument_list|()
 operator|.
 name|removeString
 argument_list|(
-name|string
+name|inMem
 operator|.
 name|getId
 argument_list|()

@@ -11064,7 +11064,54 @@ literal|true
 expr_stmt|;
 comment|// Adding the sidepane component is Swing work, so we must do this in the Swing
 comment|// thread:
-comment|/*       Thread t = new Thread() {         public void run() {           FileUpdatePanel pan = new FileUpdatePanel(frame, ths, sidePaneManager, Globals.prefs);           sidePaneManager.add("fileUpdate", pan);         }       };       SwingUtilities.invokeLater(t);       */
+name|Thread
+name|t
+init|=
+operator|new
+name|Thread
+argument_list|()
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
+name|FileUpdatePanel
+name|pan
+init|=
+operator|new
+name|FileUpdatePanel
+argument_list|(
+name|frame
+argument_list|,
+name|ths
+argument_list|,
+name|sidePaneManager
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+argument_list|)
+decl_stmt|;
+name|sidePaneManager
+operator|.
+name|add
+argument_list|(
+literal|"fileUpdate"
+argument_list|,
+name|pan
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+decl_stmt|;
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+name|t
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|fileRemoved ()
 specifier|public
