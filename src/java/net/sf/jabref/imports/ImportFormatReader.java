@@ -8379,6 +8379,17 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|line
+operator|.
+name|length
+argument_list|()
+operator|==
+literal|0
+condition|)
+continue|continue;
+comment|// ignore empty lines, e.g. at file end
 comment|// entry delimiter -> item complete
 if|if
 condition|(
