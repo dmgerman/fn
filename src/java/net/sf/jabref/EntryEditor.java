@@ -5821,11 +5821,9 @@ name|panel
 operator|.
 name|entryTable
 operator|.
-name|scrollToCenter
+name|ensureVisible
 argument_list|(
 name|row
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 name|panel
