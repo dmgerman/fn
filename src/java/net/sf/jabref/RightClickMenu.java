@@ -107,7 +107,12 @@ init|=
 operator|new
 name|JMenu
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Add to group"
+argument_list|)
 argument_list|)
 decl_stmt|,
 DECL|field|groupRemoveMenu
@@ -116,7 +121,12 @@ init|=
 operator|new
 name|JMenu
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Remove from group"
+argument_list|)
 argument_list|)
 decl_stmt|,
 DECL|field|typeMenu
@@ -125,7 +135,12 @@ init|=
 operator|new
 name|JMenu
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Change entry type"
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|method|RightClickMenu (BasePanel panel_, MetaData metaData_)
@@ -260,7 +275,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Open pdf/ps"
+literal|"Open pdf or ps"
 argument_list|)
 argument_list|)
 block|{
