@@ -283,14 +283,9 @@ name|fw
 operator|.
 name|write
 argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
 name|GUIGlobals
 operator|.
 name|SIGNATURE
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Write preamble if there is one.
