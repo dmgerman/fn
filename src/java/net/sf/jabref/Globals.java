@@ -1144,6 +1144,13 @@ argument_list|(
 name|dialogType
 argument_list|)
 expr_stmt|;
+name|int
+name|dialogResult
+init|=
+name|JFileChooser
+operator|.
+name|CANCEL_OPTION
+decl_stmt|;
 if|if
 condition|(
 name|dialogType
@@ -1153,6 +1160,8 @@ operator|.
 name|OPEN_DIALOG
 condition|)
 block|{
+name|dialogResult
+operator|=
 name|fc
 operator|.
 name|showOpenDialog
@@ -1163,6 +1172,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|dialogResult
+operator|=
 name|fc
 operator|.
 name|showSaveDialog
@@ -1171,6 +1182,20 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+comment|// the getSelectedFile method returns a valid fileselection
+comment|// (if something is selected) indepentently from dialog return status
+if|if
+condition|(
+name|dialogResult
+operator|!=
+name|JFileChooser
+operator|.
+name|APPROVE_OPTION
+condition|)
+return|return
+literal|null
+return|;
+comment|// okay button
 name|File
 name|selectedFile
 init|=
