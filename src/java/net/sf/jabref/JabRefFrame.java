@@ -527,6 +527,30 @@ argument_list|(
 literal|"Toggle groups"
 argument_list|)
 argument_list|)
+decl_stmt|,
+DECL|field|makeKeyAction
+name|makeKeyAction
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"makeKey"
+argument_list|,
+literal|"Autogenerate BibTeX keys"
+argument_list|,
+literal|"Autogenerate BibTeX keys"
+argument_list|,
+name|GUIGlobals
+operator|.
+name|genKeyIconFile
+argument_list|,
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Autgenerate BibTeX keys"
+argument_list|)
+argument_list|)
 decl_stmt|;
 comment|// The action for adding a new entry of unspecified type.
 DECL|field|newEntryAction
@@ -2141,6 +2165,13 @@ operator|.
 name|add
 argument_list|(
 name|bibtex
+argument_list|)
+expr_stmt|;
+name|tools
+operator|.
+name|add
+argument_list|(
+name|makeKeyAction
 argument_list|)
 expr_stmt|;
 name|mb
