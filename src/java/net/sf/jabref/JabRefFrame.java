@@ -3335,7 +3335,7 @@ literal|null
 operator|)
 condition|?
 operator|new
-name|JFileChooser
+name|JabRefFileChooser
 argument_list|(
 operator|(
 name|File
@@ -3344,7 +3344,7 @@ literal|null
 argument_list|)
 else|:
 operator|new
-name|JFileChooser
+name|JabRefFileChooser
 argument_list|(
 operator|new
 name|File
@@ -3358,7 +3358,6 @@ argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|//chooser.setFileFilter(fileFilter);
 name|chooser
 operator|.
 name|addChoosableFileFilter
@@ -3369,13 +3368,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//nb nov2
-name|Util
-operator|.
-name|pr
-argument_list|(
-literal|"JabRefFrame: must set file filter."
-argument_list|)
-expr_stmt|;
 name|int
 name|returnVal
 init|=
@@ -3799,6 +3791,9 @@ argument_list|,
 name|prefs
 argument_list|)
 expr_stmt|;
+comment|//PrefsDialog2 pd = new PrefsDialog2(ths, prefs);
+comment|//Util.placeDialog(pd, ths);
+comment|//pd.show();
 comment|// This action can be invoked without an open database, so
 comment|// we have to check if we have one before trying to invoke
 comment|// methods to execute changes in the preferences.
