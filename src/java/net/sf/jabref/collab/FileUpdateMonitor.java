@@ -666,20 +666,7 @@ name|boolean
 name|copy
 parameter_list|()
 block|{
-name|Util
-operator|.
-name|pr
-argument_list|(
-literal|"<copy file=\""
-operator|+
-name|tmpFile
-operator|.
-name|getPath
-argument_list|()
-operator|+
-literal|"\">"
-argument_list|)
-expr_stmt|;
+comment|//Util.pr("<copy file=\""+tmpFile.getPath()+"\">");
 name|boolean
 name|res
 init|=
@@ -722,13 +709,7 @@ literal|"'"
 argument_list|)
 expr_stmt|;
 block|}
-name|Util
-operator|.
-name|pr
-argument_list|(
-literal|"</copy>"
-argument_list|)
-expr_stmt|;
+comment|//Util.pr("</copy>");
 return|return
 name|res
 return|;
@@ -832,18 +813,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|f
-operator|.
-name|getPath
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//System.out.println(f.getPath());
 block|}
 catch|catch
 parameter_list|(

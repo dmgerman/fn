@@ -24,6 +24,16 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Dimension
+import|;
+end_import
+
 begin_class
 DECL|class|SidePaneComponent
 specifier|public
@@ -116,6 +126,17 @@ name|void
 name|componentOpening
 parameter_list|()
 block|{      }
+DECL|method|getMinimumSize ()
+specifier|public
+name|Dimension
+name|getMinimumSize
+parameter_list|()
+block|{
+return|return
+name|getPreferredSize
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 

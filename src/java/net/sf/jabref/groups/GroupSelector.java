@@ -3448,17 +3448,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|getMinimumSize ()
-specifier|public
-name|Dimension
-name|getMinimumSize
-parameter_list|()
-block|{
-return|return
-name|getPreferredSize
-argument_list|()
-return|;
-block|}
 block|}
 end_class
 

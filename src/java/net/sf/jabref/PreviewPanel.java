@@ -22,6 +22,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|border
+operator|.
+name|Border
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -200,6 +212,13 @@ operator|.
 name|HORIZONTAL_SCROLLBAR_NEVER
 argument_list|)
 expr_stmt|;
+name|sp
+operator|.
+name|setBorder
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 comment|//Util.pr(layoutFile);
 name|init
 argument_list|()
@@ -261,6 +280,13 @@ operator|.
 name|layoutFile
 operator|=
 name|layoutFile
+expr_stmt|;
+name|sp
+operator|.
+name|setBorder
+argument_list|(
+literal|null
+argument_list|)
 expr_stmt|;
 name|init
 argument_list|()
