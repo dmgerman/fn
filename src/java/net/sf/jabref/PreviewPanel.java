@@ -195,7 +195,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Exception
 name|ex
 parameter_list|)
 block|{     }
@@ -209,7 +209,7 @@ name|void
 name|readLayout
 parameter_list|()
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|String
 name|entryType
@@ -535,7 +535,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Exception
 name|ex
 parameter_list|)
 block|{     }

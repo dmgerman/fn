@@ -1219,7 +1219,7 @@ name|JabRefPreferences
 name|prefs
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|exportDatabase
 argument_list|(
@@ -1254,7 +1254,7 @@ name|JabRefPreferences
 name|prefs
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 name|exportDatabase
 argument_list|(
@@ -1294,7 +1294,7 @@ name|JabRefPreferences
 name|prefs
 parameter_list|)
 throws|throws
-name|IOException
+name|Exception
 block|{
 comment|//PrintStream ps=null;
 name|OutputStreamWriter

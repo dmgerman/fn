@@ -98,8 +98,9 @@ specifier|final
 name|boolean
 name|DEFAULT_DISPLAY_USAGE
 init|=
-literal|true
+literal|false
 decl_stmt|;
+comment|// Mod. Morten A.
 comment|/**      * This boolean defines whether the menu should be used.      */
 DECL|field|DEFAULT_USE_MENU
 specifier|public
@@ -108,8 +109,9 @@ specifier|final
 name|boolean
 name|DEFAULT_USE_MENU
 init|=
-literal|true
+literal|false
 decl_stmt|;
+comment|// Mod. Morten A.
 comment|/**      * The default program name that is display in the usage.      */
 DECL|field|DEFAULT_PROGRAM_NAME
 specifier|public
@@ -325,17 +327,7 @@ name|currentModule
 operator|=
 name|generalModule
 expr_stmt|;
-name|register
-argument_list|(
-literal|"help"
-argument_list|,
-literal|'h'
-argument_list|,
-literal|"Displays help for each option."
-argument_list|,
-name|helpOption
-argument_list|)
-expr_stmt|;
+comment|// Mod. Morten A. ------------------------------------------------
 name|register
 argument_list|(
 literal|"version"
@@ -347,17 +339,8 @@ argument_list|,
 name|versionOption
 argument_list|)
 expr_stmt|;
-name|register
-argument_list|(
-literal|"menu"
-argument_list|,
-literal|'m'
-argument_list|,
-literal|"Displays the built-in interactive menu."
-argument_list|,
-name|menuOption
-argument_list|)
-expr_stmt|;
+comment|/*register( "help", 'h', "Displays help for each option.", helpOption ); 	register( "menu", 'm', "Displays the built-in interactive menu.", 		  menuOption );*/
+comment|// End mod. Morten A. ------------------------------------------------
 block|}
 comment|/**      * Returns the help information as a string.      *      * @return The help information.      */
 DECL|method|getHelp ()
@@ -380,8 +363,8 @@ else|:
 literal|""
 operator|)
 operator|+
-literal|"Use --menu to invoke the interactive built-in menu.\n\n"
-operator|+
+comment|// Mod. Morten A.
+comment|//"Use --menu to invoke the interactive built-in menu.\n\n" +
 name|Option
 operator|.
 name|getHelpHeader
