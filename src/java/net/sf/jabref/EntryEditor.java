@@ -873,9 +873,12 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|prefs
 operator|.
-name|exitDialog
+name|getKey
+argument_list|(
+literal|"Close entry editor"
+argument_list|)
 argument_list|,
 literal|"close"
 argument_list|)
@@ -916,9 +919,12 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|prefs
 operator|.
-name|generateKeyStroke
+name|getKey
+argument_list|(
+literal|"Autogenerate BibTeX keys"
+argument_list|)
 argument_list|,
 literal|"generateKey"
 argument_list|)
@@ -1028,9 +1034,12 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|prefs
 operator|.
-name|undoStroke
+name|getKey
+argument_list|(
+literal|"Undo"
+argument_list|)
 argument_list|,
 literal|"undo"
 argument_list|)
@@ -1048,9 +1057,12 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|prefs
 operator|.
-name|redoStroke
+name|getKey
+argument_list|(
+literal|"Redo"
+argument_list|)
 argument_list|,
 literal|"redo"
 argument_list|)
@@ -1068,9 +1080,12 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|prefs
 operator|.
-name|helpKeyStroke
+name|getKey
+argument_list|(
+literal|"Help"
+argument_list|)
 argument_list|,
 literal|"help"
 argument_list|)

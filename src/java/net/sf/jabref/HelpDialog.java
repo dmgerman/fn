@@ -250,9 +250,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|bf
 operator|.
-name|exitDialog
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Close dialog"
+argument_list|)
 argument_list|,
 literal|"close"
 argument_list|)
@@ -272,9 +277,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|bf
 operator|.
-name|switchPanelLeft
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Back, help dialog"
+argument_list|)
 argument_list|,
 literal|"left"
 argument_list|)
@@ -292,9 +302,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|bf
 operator|.
-name|switchPanelRight
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Forward, help dialog"
+argument_list|)
 argument_list|,
 literal|"right"
 argument_list|)
@@ -331,9 +346,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|bf
 operator|.
-name|switchPanelLeft
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Back, help dialog"
+argument_list|)
 argument_list|,
 literal|"left"
 argument_list|)
@@ -351,9 +371,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|bf
 operator|.
-name|switchPanelRight
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Forward, help dialog"
+argument_list|)
 argument_list|,
 literal|"right"
 argument_list|)

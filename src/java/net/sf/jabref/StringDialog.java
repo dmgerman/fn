@@ -438,13 +438,11 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|KeyStroke
+name|prefs
 operator|.
-name|getKeyStroke
+name|getKey
 argument_list|(
-name|GUIGlobals
-operator|.
-name|addKey
+literal|"String dialog, add string"
 argument_list|)
 argument_list|,
 literal|"add"
@@ -463,13 +461,11 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|KeyStroke
+name|prefs
 operator|.
-name|getKeyStroke
+name|getKey
 argument_list|(
-name|GUIGlobals
-operator|.
-name|removeKey
+literal|"String dialog, remove string"
 argument_list|)
 argument_list|,
 literal|"remove"
@@ -488,13 +484,11 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|KeyStroke
+name|prefs
 operator|.
-name|getKeyStroke
+name|getKey
 argument_list|(
-name|GUIGlobals
-operator|.
-name|upKey
+literal|"String dialog, move string up"
 argument_list|)
 argument_list|,
 literal|"up"
@@ -513,13 +507,11 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|KeyStroke
+name|prefs
 operator|.
-name|getKeyStroke
+name|getKey
 argument_list|(
-name|GUIGlobals
-operator|.
-name|downKey
+literal|"String dialog, move string down"
 argument_list|)
 argument_list|,
 literal|"down"
@@ -538,9 +530,12 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|prefs
 operator|.
-name|exitDialog
+name|getKey
+argument_list|(
+literal|"Close dialog"
+argument_list|)
 argument_list|,
 literal|"close"
 argument_list|)
@@ -558,9 +553,12 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|prefs
 operator|.
-name|helpKeyStroke
+name|getKey
+argument_list|(
+literal|"Help"
+argument_list|)
 argument_list|,
 literal|"help"
 argument_list|)
@@ -578,9 +576,12 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|prefs
 operator|.
-name|undoStroke
+name|getKey
+argument_list|(
+literal|"Undo"
+argument_list|)
 argument_list|,
 literal|"undo"
 argument_list|)
@@ -598,9 +599,12 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|prefs
 operator|.
-name|redoStroke
+name|getKey
+argument_list|(
+literal|"Redo"
+argument_list|)
 argument_list|,
 literal|"redo"
 argument_list|)
@@ -859,9 +863,14 @@ argument_list|()
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|frame
 operator|.
-name|exitDialog
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Close dialog"
+argument_list|)
 argument_list|,
 literal|"close"
 argument_list|)
@@ -881,9 +890,14 @@ argument_list|()
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|frame
 operator|.
-name|helpKeyStroke
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Help"
+argument_list|)
 argument_list|,
 literal|"help"
 argument_list|)

@@ -105,7 +105,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Dialog for creating or modifying groups. Operates directly on the   * Vector containing group information.  */
+comment|/**  * Dialog for creating or modifying groups. Operates directly on the  * Vector containing group information.  */
 end_comment
 
 begin_class
@@ -825,9 +825,15 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|frame
 operator|.
-name|exitDialog
+name|prefs
+argument_list|()
+operator|.
+name|getKey
+argument_list|(
+literal|"Close dialog"
+argument_list|)
 argument_list|,
 literal|"close"
 argument_list|)

@@ -164,11 +164,11 @@ name|okPressed
 init|=
 literal|false
 decl_stmt|;
-DECL|method|MergeDialog (Frame frame, String title, boolean modal)
+DECL|method|MergeDialog (JabRefFrame frame, String title, boolean modal)
 specifier|public
 name|MergeDialog
 parameter_list|(
-name|Frame
+name|JabRefFrame
 name|frame
 parameter_list|,
 name|String
@@ -190,7 +190,9 @@ expr_stmt|;
 try|try
 block|{
 name|jbInit
-argument_list|()
+argument_list|(
+name|frame
+argument_list|)
 expr_stmt|;
 name|pack
 argument_list|()
@@ -224,11 +226,14 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|jbInit ()
+DECL|method|jbInit (JabRefFrame parent)
 specifier|private
 name|void
 name|jbInit
-parameter_list|()
+parameter_list|(
+name|JabRefFrame
+name|parent
+parameter_list|)
 throws|throws
 name|Exception
 block|{
@@ -680,9 +685,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|parent
 operator|.
-name|exitDialog
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Close dialog"
+argument_list|)
 argument_list|,
 literal|"close"
 argument_list|)

@@ -257,7 +257,7 @@ literal|false
 decl_stmt|;
 DECL|field|parent
 specifier|private
-name|JFrame
+name|JabRefFrame
 name|parent
 decl_stmt|;
 DECL|field|flds
@@ -290,11 +290,11 @@ operator|new
 name|GridBagConstraints
 argument_list|()
 decl_stmt|;
-DECL|method|ReplaceStringDialog (JFrame parent_)
+DECL|method|ReplaceStringDialog (JabRefFrame parent_)
 specifier|public
 name|ReplaceStringDialog
 parameter_list|(
-name|JFrame
+name|JabRefFrame
 name|parent_
 parameter_list|)
 block|{
@@ -470,9 +470,14 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|parent
 operator|.
-name|exitDialog
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Close dialog"
+argument_list|)
 argument_list|,
 literal|"close"
 argument_list|)

@@ -2629,6 +2629,15 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
+literal|"Close dialog"
+argument_list|,
+literal|"ESCAPE"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
 literal|"Close entry editor"
 argument_list|,
 literal|"ESCAPE"
@@ -2638,9 +2647,18 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
-literal|"Close preamble editor"
+literal|"Back, help dialog"
 argument_list|,
-literal|"ESCAPE"
+literal|"LEFT"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Forward, help dialog"
+argument_list|,
+literal|"RIGHT"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds
@@ -2706,6 +2724,33 @@ argument_list|(
 literal|"Entry editor, store field"
 argument_list|,
 literal|"alt S"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"String dialog, add string"
+argument_list|,
+literal|"ctrl N"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"String dialog, move string up"
+argument_list|,
+literal|"ctrl UP"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"String dialog, move string down"
+argument_list|,
+literal|"ctrl DOWN"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds

@@ -519,9 +519,12 @@ argument_list|()
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|prefs
 operator|.
-name|exitDialog
+name|getKey
+argument_list|(
+literal|"Close preamble editor"
+argument_list|)
 argument_list|,
 literal|"close"
 argument_list|)

@@ -1828,6 +1828,16 @@ name|show
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|prefs ()
+specifier|public
+name|JabRefPreferences
+name|prefs
+parameter_list|()
+block|{
+return|return
+name|prefs
+return|;
+block|}
 comment|// General info dialog.  The OSXAdapter calls this method when "Quit OSXAdapter"
 comment|// is selected from the application menu, Cmd-Q is pressed, or "Quit" is selected from the Dock.
 DECL|method|quit ()
@@ -4790,6 +4800,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|dupliCheck
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|int
@@ -5072,6 +5089,13 @@ literal|true
 argument_list|)
 expr_stmt|;
 name|togglePreview
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|dupliCheck
 operator|.
 name|setEnabled
 argument_list|(

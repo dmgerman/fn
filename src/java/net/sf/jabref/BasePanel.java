@@ -279,10 +279,6 @@ DECL|field|medlineFetcher
 name|MedlineFetcher
 name|medlineFetcher
 decl_stmt|;
-DECL|field|medlineAuthorFetcher
-name|MedlineAuthorFetcher
-name|medlineAuthorFetcher
-decl_stmt|;
 DECL|field|rcm
 name|RightClickMenu
 name|rcm
@@ -6914,25 +6910,8 @@ argument_list|,
 name|medlineFetcher
 argument_list|)
 expr_stmt|;
-name|medlineAuthorFetcher
-operator|=
-operator|new
-name|MedlineAuthorFetcher
-argument_list|(
-name|this
-argument_list|,
-name|sidePaneManager
-argument_list|)
-expr_stmt|;
-name|sidePaneManager
-operator|.
-name|register
-argument_list|(
-literal|"fetchAuthorMedline"
-argument_list|,
-name|medlineAuthorFetcher
-argument_list|)
-expr_stmt|;
+comment|//medlineAuthorFetcher = new MedlineAuthorFetcher(this, sidePaneManager);
+comment|//sidePaneManager.register("fetchAuthorMedline", medlineAuthorFetcher);
 name|searchManager
 operator|=
 operator|new

@@ -66,6 +66,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|JabRefFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|Util
 import|;
 end_import
@@ -245,7 +257,7 @@ name|index
 decl_stmt|;
 DECL|field|parent
 specifier|private
-name|JFrame
+name|JabRefFrame
 name|parent
 decl_stmt|;
 DECL|field|oldName
@@ -276,11 +288,11 @@ operator|new
 name|GridBagConstraints
 argument_list|()
 decl_stmt|;
-DECL|method|GroupDialog (JFrame parent_, Vector groups_, int index_, String defaultField)
+DECL|method|GroupDialog (JabRefFrame parent_, Vector groups_, int index_, String defaultField)
 specifier|public
 name|GroupDialog
 parameter_list|(
-name|JFrame
+name|JabRefFrame
 name|parent_
 parameter_list|,
 name|Vector
@@ -751,9 +763,15 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|parent
 operator|.
-name|exitDialog
+name|prefs
+argument_list|()
+operator|.
+name|getKey
+argument_list|(
+literal|"Close dialog"
+argument_list|)
 argument_list|,
 literal|"close"
 argument_list|)

@@ -303,9 +303,14 @@ argument_list|)
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|baseFrame_
 operator|.
-name|exitDialog
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Close dialog"
+argument_list|)
 argument_list|,
 literal|"close"
 argument_list|)

@@ -178,15 +178,7 @@ argument_list|()
 expr_stmt|;
 comment|//else
 comment|//    list = new JComboBox(items.toArray());
-name|list
-operator|.
-name|setBackground
-argument_list|(
-name|GUIGlobals
-operator|.
-name|lightGray
-argument_list|)
-expr_stmt|;
+comment|//list.setBackground(GUIGlobals.lightGray);
 name|con
 operator|.
 name|gridwidth
@@ -237,15 +229,7 @@ literal|"Manage"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|manage
-operator|.
-name|setBackground
-argument_list|(
-name|GUIGlobals
-operator|.
-name|lightGray
-argument_list|)
-expr_stmt|;
+comment|//manage.setBackground(GUIGlobals.lightGray);
 name|gbl
 operator|.
 name|setConstraints
