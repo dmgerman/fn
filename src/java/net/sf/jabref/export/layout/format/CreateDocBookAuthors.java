@@ -138,6 +138,20 @@ name|LayoutFormatter
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|imports
+operator|.
+name|*
+import|;
+end_import
+
 begin_comment
 comment|/**  * Create DocBook authors formatter.  *  * @author $author$  * @version $Revision$  */
 end_comment
@@ -151,14 +165,6 @@ implements|implements
 name|LayoutFormatter
 block|{
 comment|//~ Methods ////////////////////////////////////////////////////////////////
-DECL|field|authorFormatter
-name|FixAuthorFirstFirst
-name|authorFormatter
-init|=
-operator|new
-name|FixAuthorFirstFirst
-argument_list|()
-decl_stmt|;
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -194,6 +200,19 @@ argument_list|(
 literal|100
 argument_list|)
 decl_stmt|;
+name|fieldText
+operator|=
+operator|(
+operator|new
+name|ConvertSpecialCharactersForXML
+argument_list|()
+operator|)
+operator|.
+name|format
+argument_list|(
+name|fieldText
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|fieldText
@@ -337,9 +356,9 @@ decl_stmt|;
 name|String
 name|authorMod
 init|=
-name|authorFormatter
+name|ImportFormatReader
 operator|.
-name|format
+name|fixAuthor
 argument_list|(
 name|author
 argument_list|)

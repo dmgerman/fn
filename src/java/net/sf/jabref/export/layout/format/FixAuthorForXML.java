@@ -135,10 +135,10 @@ comment|/**  * Changes {\^o} or {\^{o}} to ô  *  * @author $author$  * @version
 end_comment
 
 begin_class
-DECL|class|FixAuthorFirstFirst
+DECL|class|FixAuthorForXML
 specifier|public
 class|class
-name|FixAuthorFirstFirst
+name|FixAuthorForXML
 implements|implements
 name|LayoutFormatter
 block|{
@@ -152,11 +152,11 @@ name|String
 name|fieldText
 parameter_list|)
 block|{
-name|ConvertSpecialCharactersForHTML
+name|ConvertSpecialCharactersForXML
 name|conv
 init|=
 operator|new
-name|ConvertSpecialCharactersForHTML
+name|ConvertSpecialCharactersForXML
 argument_list|()
 decl_stmt|;
 return|return
