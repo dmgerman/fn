@@ -7207,11 +7207,11 @@ operator|==
 literal|2
 condition|)
 block|{
-name|JTextComponent
+name|FieldTextArea
 name|tf
 init|=
 operator|(
-name|JTextComponent
+name|FieldTextArea
 operator|)
 name|evt
 operator|.
@@ -7252,6 +7252,11 @@ operator|.
 name|openExternalViewer
 argument_list|(
 name|link
+argument_list|,
+name|tf
+operator|.
+name|getFieldName
+argument_list|()
 argument_list|,
 name|prefs
 argument_list|)

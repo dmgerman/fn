@@ -1448,7 +1448,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Open a http/pdf/ps viewer for the given link string.      *      */
-DECL|method|openExternalViewer (String link, JabRefPreferences prefs)
+DECL|method|openExternalViewer (String link, String fieldName, JabRefPreferences prefs)
 specifier|public
 specifier|static
 name|void
@@ -1456,6 +1456,9 @@ name|openExternalViewer
 parameter_list|(
 name|String
 name|link
+parameter_list|,
+name|String
+name|fieldName
 parameter_list|,
 name|JabRefPreferences
 name|prefs
@@ -1466,41 +1469,52 @@ block|{
 comment|// check html first since browser can invoke viewers
 if|if
 condition|(
-name|link
+name|fieldName
 operator|.
-name|startsWith
+name|equals
 argument_list|(
 literal|"doi"
 argument_list|)
 condition|)
 block|{
-name|link
-operator|=
+name|Process
+name|child
+init|=
+name|Runtime
+operator|.
+name|getRuntime
+argument_list|()
+operator|.
+name|exec
+argument_list|(
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"htmlviewer"
+argument_list|)
+operator|+
+literal|" "
+operator|+
 name|Globals
 operator|.
 name|DOI_LOOKUP_PREFIX
 operator|+
 name|link
-expr_stmt|;
+argument_list|)
+decl_stmt|;
 block|}
 if|if
 condition|(
-name|link
-operator|.
-name|substring
-argument_list|(
-literal|0
-argument_list|,
-literal|7
-argument_list|)
+name|fieldName
 operator|.
 name|equals
 argument_list|(
-literal|"http://"
+literal|"url"
 argument_list|)
 condition|)
 block|{
-comment|// hml
+comment|// html
 try|try
 block|{
 comment|/*System.err.println("Message: Opening url (" + link 				   + ") with the HTML viewer (" 				   + prefs.get("htmlviewer") +")");*/
@@ -1539,11 +1553,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|link
+name|fieldName
 operator|.
-name|endsWith
+name|equals
 argument_list|(
-literal|".ps"
+literal|"ps"
 argument_list|)
 condition|)
 block|{
@@ -1585,11 +1599,11 @@ block|}
 elseif|else
 if|if
 condition|(
-name|link
+name|fieldName
 operator|.
-name|endsWith
+name|equals
 argument_list|(
-literal|".pdf"
+literal|"pdf"
 argument_list|)
 condition|)
 block|{
@@ -1708,7 +1722,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"Message: currently only pdf, ps and HTML files can be opened by double clicking"
+literal|"Message: currently only PDF, PS and HTML files can be opened by double clicking"
 argument_list|)
 expr_stmt|;
 comment|//ignore
