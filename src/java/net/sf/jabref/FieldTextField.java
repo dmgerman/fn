@@ -86,7 +86,7 @@ expr_stmt|;
 name|label
 operator|=
 operator|new
-name|JLabel
+name|FieldNameLabel
 argument_list|(
 literal|" "
 operator|+
@@ -98,12 +98,9 @@ name|fieldName
 argument_list|)
 operator|+
 literal|" "
-argument_list|,
-name|JLabel
-operator|.
-name|CENTER
 argument_list|)
 expr_stmt|;
+comment|//label = new JLabel(" "+Util.nCase(fieldName)+" ", JLabel.CENTER);
 name|label
 operator|.
 name|setBorder
@@ -123,15 +120,7 @@ argument_list|)
 expr_stmt|;
 comment|//label.setOpaque(true);
 comment|//if ((content != null)&& (content.length()> 0))
-name|label
-operator|.
-name|setForeground
-argument_list|(
-name|GUIGlobals
-operator|.
-name|validFieldColor
-argument_list|)
-expr_stmt|;
+comment|//label.setForeground(GUIGlobals.validFieldColor);
 comment|// At construction time, the field can never have an invalid value.
 comment|//else label.setForeground(GUIGlobals.nullFieldColor);
 block|}

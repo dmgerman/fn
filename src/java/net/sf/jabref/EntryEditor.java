@@ -1370,7 +1370,7 @@ literal|28
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*	public Dimension getPreferredSize() { 	    return new Dimension(22, 30); 	    }*/
+comment|/*	public Dimension getPreferredSize() {             return new Dimension(22, 30);             }*/
 block|}
 DECL|method|setupFieldPanels (FieldPanel req, FieldPanel opt, FieldPanel gen)
 specifier|private
@@ -1630,6 +1630,22 @@ operator|.
 name|weighty
 operator|=
 literal|0
+expr_stmt|;
+name|con
+operator|.
+name|anchor
+operator|=
+name|GridBagConstraints
+operator|.
+name|NORTH
+expr_stmt|;
+name|con
+operator|.
+name|fill
+operator|=
+name|GridBagConstraints
+operator|.
+name|BOTH
 expr_stmt|;
 comment|//con.fill = GridBagConstraints.BOTH;
 if|if
@@ -2007,7 +2023,15 @@ name|weightx
 operator|=
 literal|1
 expr_stmt|;
-comment|//con.fill = GridBagConstraints.BOTH;
+comment|//con.fill = GridBagConstraints.NONE;
+name|con
+operator|.
+name|fill
+operator|=
+name|GridBagConstraints
+operator|.
+name|BOTH
+expr_stmt|;
 if|if
 condition|(
 name|i

@@ -155,6 +155,9 @@ name|typeNameFont
 decl_stmt|,
 DECL|field|jabRefFont
 name|jabRefFont
+decl_stmt|,
+DECL|field|fieldNameFont
+name|fieldNameFont
 decl_stmt|;
 comment|// Signature written at the top of the .bib file.
 DECL|field|SIGNATURE
@@ -1981,7 +1984,7 @@ name|LANGUAGES
 operator|.
 name|put
 argument_list|(
-literal|"Français"
+literal|"Fran\uFFFDais"
 argument_list|,
 literal|"fr"
 argument_list|)
@@ -2543,6 +2546,24 @@ operator|.
 name|BOLD
 argument_list|,
 literal|24
+argument_list|)
+expr_stmt|;
+name|fieldNameFont
+operator|=
+operator|new
+name|Font
+argument_list|(
+literal|"arial"
+argument_list|,
+name|Font
+operator|.
+name|ITALIC
+operator|+
+name|Font
+operator|.
+name|BOLD
+argument_list|,
+literal|14
 argument_list|)
 expr_stmt|;
 name|incompleteLabel

@@ -363,6 +363,9 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
+comment|//JMenu
+comment|//   moreRow = new JMenuItem(Globals.lang("Size of groups interface (rows)"));
+comment|//lessRow = new JMenuItem(Globals.lang("Show one less rows"));
 DECL|field|bgr
 name|ButtonGroup
 name|bgr
@@ -633,6 +636,13 @@ argument_list|(
 name|select
 argument_list|)
 expr_stmt|;
+name|settings
+operator|.
+name|addSeparator
+argument_list|()
+expr_stmt|;
+comment|//settings.add(moreRow);
+comment|//settings.add(lessRow);
 name|openset
 operator|.
 name|addActionListener

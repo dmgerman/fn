@@ -83,7 +83,7 @@ name|sp
 decl_stmt|;
 DECL|field|label
 specifier|protected
-name|JLabel
+name|FieldNameLabel
 name|label
 decl_stmt|;
 DECL|field|fieldName
@@ -150,7 +150,7 @@ expr_stmt|;
 name|label
 operator|=
 operator|new
-name|JLabel
+name|FieldNameLabel
 argument_list|(
 literal|" "
 operator|+
@@ -162,24 +162,11 @@ name|fieldName
 argument_list|)
 operator|+
 literal|" "
-argument_list|,
-name|JLabel
-operator|.
-name|CENTER
 argument_list|)
 expr_stmt|;
 comment|//label.setBorder(BorderFactory.createEtchedBorder
 comment|//		 (GUIGlobals.lightGray, Color.gray));
-name|label
-operator|.
-name|setBorder
-argument_list|(
-name|BorderFactory
-operator|.
-name|createEtchedBorder
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//label.setBorder(BorderFactory.createEtchedBorder());
 comment|//label.setOpaque(true);
 comment|//label.setBackground(GUIGlobals.lightGray);
 comment|//label.setForeground(Color.gray);
@@ -191,15 +178,7 @@ name|validFieldBackground
 argument_list|)
 expr_stmt|;
 comment|//if ((content != null)&& (content.length()> 0))
-name|label
-operator|.
-name|setForeground
-argument_list|(
-name|GUIGlobals
-operator|.
-name|validFieldColor
-argument_list|)
-expr_stmt|;
+comment|//label.setForeground(GUIGlobals.validFieldColor);
 comment|// At construction time, the field can never have an invalid value.
 comment|//else
 comment|//    label.setForeground(GUIGlobals.nullFieldColor);

@@ -566,6 +566,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Define our data stream.
+comment|//Writer fw = getWriter(file, "UTF-8");
 name|FileWriter
 name|fw
 init|=
@@ -1196,6 +1197,46 @@ name|be
 argument_list|)
 throw|;
 block|}
+block|}
+DECL|method|getWriter (File f, String encoding)
+specifier|public
+specifier|static
+name|OutputStreamWriter
+name|getWriter
+parameter_list|(
+name|File
+name|f
+parameter_list|,
+name|String
+name|encoding
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|OutputStreamWriter
+name|ow
+decl_stmt|;
+comment|//try {
+name|ow
+operator|=
+operator|new
+name|OutputStreamWriter
+argument_list|(
+operator|new
+name|FileOutputStream
+argument_list|(
+name|f
+argument_list|)
+argument_list|,
+name|encoding
+argument_list|)
+expr_stmt|;
+comment|//} catch (UnsupportedEncodingException ex) {
+comment|//  ow = new OutputStreamWriter(new FileOutputStream(f));
+comment|//}
+return|return
+name|ow
+return|;
 block|}
 DECL|method|exportCustomDatabase (BibtexDatabase database, String directory, String lfName, File outFile, JabRefPreferences prefs)
 specifier|public
