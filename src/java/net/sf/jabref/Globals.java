@@ -427,17 +427,17 @@ decl_stmt|,
 DECL|field|SEARCH
 name|SEARCH
 init|=
-literal|"search"
+literal|"__search"
 decl_stmt|,
 DECL|field|GROUPSEARCH
 name|GROUPSEARCH
 init|=
-literal|"groupsearch"
+literal|"__groupsearch"
 decl_stmt|,
 DECL|field|MARKED
 name|MARKED
 init|=
-literal|"markedentry"
+literal|"__markedentry"
 decl_stmt|,
 comment|// Using this when I have no database open when I read
 comment|// non bibtex file formats (used byte ImportFormatReader.java
@@ -1121,13 +1121,7 @@ argument_list|(
 name|owner
 argument_list|)
 decl_stmt|;
-name|fc
-operator|.
-name|setFilenameFilter
-argument_list|(
-name|filter
-argument_list|)
-expr_stmt|;
+comment|//fc.setFilenameFilter(filter);
 if|if
 condition|(
 name|directory

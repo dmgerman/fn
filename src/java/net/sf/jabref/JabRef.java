@@ -419,6 +419,8 @@ condition|)
 block|{
 try|try
 block|{
+comment|//Class plastic = Class.forName("com.jgoodies.plaf.plastic.PlasticLookAndFeel");
+comment|//new com.jgoodies.plaf.plastic.PlasticLookAndFeel();
 name|LookAndFeel
 name|lnf
 init|=

@@ -744,13 +744,6 @@ argument_list|(
 literal|"unmarkAll"
 argument_list|,
 literal|"Unmark all"
-argument_list|,
-name|prefs
-operator|.
-name|getKey
-argument_list|(
-literal|"Unmark all"
-argument_list|)
 argument_list|)
 decl_stmt|,
 DECL|field|saveSessionAction
@@ -1647,11 +1640,14 @@ name|jp
 operator|.
 name|setPage
 argument_list|(
-name|GUIGlobals
-operator|.
-name|aboutPage
+operator|new
+name|URL
+argument_list|(
+literal|"help/About.html"
+argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//GUIGlobals.aboutPage);
 comment|// We need a hyperlink listener to be able to switch to the license
 comment|// terms and back.
 name|jp

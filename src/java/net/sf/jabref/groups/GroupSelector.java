@@ -533,6 +533,13 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+name|invCb
+operator|.
+name|addActionListener
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 name|autoGroup
 operator|.
 name|addActionListener
