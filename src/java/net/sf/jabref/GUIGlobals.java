@@ -117,7 +117,7 @@ decl_stmt|,
 DECL|field|version
 name|version
 init|=
-literal|"1.6"
+literal|"1.7b"
 decl_stmt|,
 DECL|field|stringsTitle
 name|stringsTitle
@@ -1411,6 +1411,11 @@ DECL|field|medlineHelp
 name|medlineHelp
 init|=
 literal|"MedlineHelp.html"
+decl_stmt|,
+DECL|field|generalFieldsHelp
+name|generalFieldsHelp
+init|=
+literal|"GeneralFields.html"
 decl_stmt|,
 comment|//      searchHelp = "SearchHelp.html",
 DECL|field|aboutPage

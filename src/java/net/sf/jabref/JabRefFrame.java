@@ -4411,13 +4411,7 @@ argument_list|(
 name|copyCiteKey
 argument_list|)
 expr_stmt|;
-name|edit
-operator|.
-name|add
-argument_list|(
-name|exportToClipboard
-argument_list|)
-expr_stmt|;
+comment|//edit.add(exportToClipboard);
 name|edit
 operator|.
 name|addSeparator
