@@ -257,7 +257,6 @@ name|Graphics
 name|g
 parameter_list|)
 block|{
-comment|//Util.pr("her");
 name|Graphics2D
 name|g2
 init|=
