@@ -3521,7 +3521,7 @@ argument_list|(
 literal|"Entry editor, next panel"
 argument_list|)
 argument_list|,
-literal|"left"
+literal|"right"
 argument_list|)
 expr_stmt|;
 name|am
@@ -3544,7 +3544,7 @@ argument_list|(
 literal|"Entry editor, previous panel"
 argument_list|)
 argument_list|,
-literal|"right"
+literal|"left"
 argument_list|)
 expr_stmt|;
 name|am
@@ -3622,6 +3622,11 @@ argument_list|)
 decl_stmt|;
 name|keys
 operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+name|keys
+operator|.
 name|add
 argument_list|(
 name|AWTKeyStroke
@@ -3657,6 +3662,11 @@ operator|.
 name|BACKWARD_TRAVERSAL_KEYS
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|keys
+operator|.
+name|clear
+argument_list|()
 expr_stmt|;
 name|keys
 operator|.

@@ -1605,7 +1605,6 @@ name|String
 name|bindName
 parameter_list|)
 block|{
-comment|//Util.pr(bindName+" "+(String)keyBinds.get(bindName));
 name|String
 name|s
 init|=
@@ -2630,7 +2629,7 @@ argument_list|,
 literal|"ctrl TAB"
 argument_list|)
 expr_stmt|;
-comment|//"shift Right");
+comment|//"ctrl PLUS");//"shift Right");
 name|defKeyBinds
 operator|.
 name|put
@@ -2640,6 +2639,7 @@ argument_list|,
 literal|"ctrl shift TAB"
 argument_list|)
 expr_stmt|;
+comment|//"ctrl MINUS");
 name|defKeyBinds
 operator|.
 name|put
@@ -2700,7 +2700,7 @@ name|put
 argument_list|(
 literal|"Next tab"
 argument_list|,
-literal|"ctrl Right"
+literal|"ctrl RIGHT"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds
@@ -2709,7 +2709,7 @@ name|put
 argument_list|(
 literal|"Previous tab"
 argument_list|,
-literal|"ctrl Left"
+literal|"ctrl LEFT"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds
@@ -2727,7 +2727,7 @@ name|put
 argument_list|(
 literal|"Delete"
 argument_list|,
-literal|"Delete"
+literal|"DELETE"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds
@@ -2764,6 +2764,33 @@ argument_list|(
 literal|"Edit entry"
 argument_list|,
 literal|"ctrl E"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Mark entries"
+argument_list|,
+literal|"ctrl M"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Unmark entries"
+argument_list|,
+literal|"ctrl shift M"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Fetch Medline"
+argument_list|,
+literal|"F5"
 argument_list|)
 expr_stmt|;
 block|}
