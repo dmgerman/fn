@@ -5889,6 +5889,11 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 name|JOptionPane
 operator|.
 name|showMessageDialog

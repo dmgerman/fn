@@ -235,18 +235,7 @@ name|namesAsIs
 decl_stmt|,
 name|namesFf
 decl_stmt|;
-DECL|field|pdfIcon
-name|ImageIcon
-name|pdfIcon
-init|=
-operator|new
-name|ImageIcon
-argument_list|(
-name|GUIGlobals
-operator|.
-name|pdfSmallIcon
-argument_list|)
-decl_stmt|;
+comment|//ImageIcon pdfIcon = new ImageIcon(GUIGlobals.pdfSmallIcon);
 DECL|method|EntryTableModel (JabRefFrame frame_, BasePanel panel_, BibtexDatabase db_)
 specifier|public
 name|EntryTableModel
