@@ -3047,13 +3047,7 @@ argument_list|(
 name|fetchMedline
 argument_list|)
 expr_stmt|;
-name|tools
-operator|.
-name|add
-argument_list|(
-name|fetchAuthorMedline
-argument_list|)
-expr_stmt|;
+comment|//tools.add(fetchAuthorMedline);
 name|tools
 operator|.
 name|add
@@ -5090,6 +5084,7 @@ argument_list|)
 operator|)
 condition|)
 block|{
+comment|/*JFileChooser chooser = (prefs.get("workingDirectory") == null) ?                         new JabRefFileChooser((File)null) :                         new JabRefFileChooser(new File(prefs.get("workingDirectory")));*/
 name|JFileChooser
 name|chooser
 init|=
@@ -5105,7 +5100,7 @@ literal|null
 operator|)
 condition|?
 operator|new
-name|JabRefFileChooser
+name|JFileChooser
 argument_list|(
 operator|(
 name|File
@@ -5114,7 +5109,7 @@ literal|null
 argument_list|)
 else|:
 operator|new
-name|JabRefFileChooser
+name|JFileChooser
 argument_list|(
 operator|new
 name|File

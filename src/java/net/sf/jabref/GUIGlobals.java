@@ -2303,7 +2303,7 @@ name|put
 argument_list|(
 literal|"pdf"
 argument_list|,
-literal|"browse"
+literal|"browsePdf"
 argument_list|)
 expr_stmt|;
 name|FIELD_EXTRAS
