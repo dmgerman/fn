@@ -375,8 +375,19 @@ name|translation
 operator|=
 name|key
 expr_stmt|;
-comment|//System.err.println("Warning: could not get translation for \""
-comment|//	       + key +"\"");
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"Warning: could not get translation for \""
+operator|+
+name|key
+operator|+
+literal|"\""
+argument_list|)
+expr_stmt|;
 block|}
 return|return
 name|translation
@@ -552,7 +563,7 @@ return|return
 name|titleCap
 return|;
 block|}
-comment|/*    public static void setupKeyBindings(JabRefPreferences prefs) { 		   	 	}*/
+comment|/*    public static void setupKeyBindings(JabRefPreferences prefs) {   	}*/
 block|}
 end_class
 

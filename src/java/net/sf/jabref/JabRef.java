@@ -41,11 +41,7 @@ index|[]
 name|args
 parameter_list|)
 block|{
-name|Globals
-operator|.
-name|turnOffLogging
-argument_list|()
-expr_stmt|;
+comment|//Globals.turnOffLogging();
 name|JabRefPreferences
 name|prefs
 init|=
