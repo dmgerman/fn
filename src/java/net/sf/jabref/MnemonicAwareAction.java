@@ -42,11 +42,7 @@ specifier|public
 name|MnemonicAwareAction
 parameter_list|()
 block|{
-name|super
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
+comment|//super("");
 block|}
 DECL|method|MnemonicAwareAction (ImageIcon icon)
 specifier|public
@@ -56,9 +52,10 @@ name|ImageIcon
 name|icon
 parameter_list|)
 block|{
-name|super
+comment|//super(icon);
+name|putValue
 argument_list|(
-literal|""
+name|SMALL_ICON
 argument_list|,
 name|icon
 argument_list|)

@@ -160,6 +160,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|SwingUtilities
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -187,6 +197,8 @@ DECL|class|ChangeScanner
 specifier|public
 class|class
 name|ChangeScanner
+extends|extends
+name|Thread
 block|{
 DECL|field|MATCH_THRESHOLD
 specifier|final
@@ -212,6 +224,10 @@ block|,
 literal|"title"
 block|}
 decl_stmt|;
+DECL|field|f
+name|File
+name|f
+decl_stmt|;
 DECL|field|inMem
 name|BibtexDatabase
 name|inMem
@@ -228,7 +244,7 @@ DECL|field|frame
 name|JabRefFrame
 name|frame
 decl_stmt|;
-comment|/**    * We create an ArrayList to hold the changes we find. These will be added in the form    * of UndoEdit objects. We instantiate these so that the changes found in the file on disk    * can be reproduced in memory by calling redo() on them. REDO, not UNDO!    */
+comment|/**      * We create an ArrayList to hold the changes we find. These will be added in the form      * of UndoEdit objects. We instantiate these so that the changes found in the file on disk      * can be reproduced in memory by calling redo() on them. REDO, not UNDO!      */
 comment|//ArrayList changes = new ArrayList();
 DECL|field|changes
 name|DefaultMutableTreeNode
@@ -297,6 +313,24 @@ name|f
 parameter_list|)
 throws|throws
 name|IOException
+block|{
+name|this
+operator|.
+name|f
+operator|=
+name|f
+expr_stmt|;
+name|start
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|run ()
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
+try|try
 block|{
 comment|// Parse the temporary file.
 name|File
@@ -541,6 +575,19 @@ operator|>
 literal|0
 condition|)
 block|{
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+operator|new
+name|Runnable
+argument_list|()
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
 name|ChangeDisplayDialog
 name|dial
 init|=
@@ -569,6 +616,10 @@ name|show
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+argument_list|)
+expr_stmt|;
+block|}
 else|else
 block|{
 name|JOptionPane
@@ -595,6 +646,19 @@ name|JOptionPane
 operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ex
+parameter_list|)
+block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -1184,7 +1248,7 @@ block|}
 comment|//System.out.println("Suspected new entries in file: "+(disk.getEntryCount()-used.size()));
 block|}
 block|}
-comment|/**    * Finds the entry in neu best fitting the specified entry in old. If no entries get a score    * above zero, an entry is still returned.    * @param old EntrySorter    * @param neu EntrySorter    * @param index int    * @return BibtexEntry    */
+comment|/**      * Finds the entry in neu best fitting the specified entry in old. If no entries get a score      * above zero, an entry is still returned.      * @param old EntrySorter      * @param neu EntrySorter      * @param index int      * @return BibtexEntry      */
 DECL|method|bestFit (EntrySorter old, EntrySorter neu, int index)
 specifier|private
 name|BibtexEntry

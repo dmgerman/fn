@@ -95,7 +95,12 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-literal|"Jau"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Review changes"
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|panel
@@ -105,6 +110,10 @@ decl_stmt|;
 DECL|field|frame
 name|JabRefFrame
 name|frame
+decl_stmt|;
+DECL|field|manager
+name|SidePaneManager
+name|manager
 decl_stmt|;
 DECL|method|FileUpdatePanel (JabRefFrame frame, BasePanel panel, SidePaneManager manager, JabRefPreferences prefs)
 specifier|public
@@ -139,6 +148,12 @@ operator|.
 name|frame
 operator|=
 name|frame
+expr_stmt|;
+name|this
+operator|.
+name|manager
+operator|=
+name|manager
 expr_stmt|;
 name|SidePaneHeader
 name|header
@@ -178,21 +193,33 @@ operator|new
 name|JPanel
 argument_list|()
 decl_stmt|;
-name|main
-operator|.
-name|add
+comment|//main.add(test);
+name|JLabel
+name|lab
+init|=
+operator|new
+name|JLabel
 argument_list|(
-name|test
+literal|"<html><center>Your file has<BR>been modified<BR>by another process!</center></html>"
 argument_list|)
-expr_stmt|;
-comment|//main.add(new JLabel("Your file has<BR>been modified<BR>by another process!"));
+decl_stmt|;
 name|add
 argument_list|(
-name|main
+name|lab
 argument_list|,
 name|BorderLayout
 operator|.
 name|CENTER
+argument_list|)
+expr_stmt|;
+comment|//add(main, BorderLayout.CENTER);
+name|add
+argument_list|(
+name|test
+argument_list|,
+name|BorderLayout
+operator|.
+name|SOUTH
 argument_list|)
 expr_stmt|;
 name|test
@@ -213,6 +240,13 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+name|manager
+operator|.
+name|hideAway
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 name|ChangeScanner
 name|scanner
 init|=
@@ -237,13 +271,26 @@ name|file
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|panel
+operator|.
+name|setUpdatedExternally
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
 name|IOException
 name|ex
 parameter_list|)
-block|{      }
+block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class

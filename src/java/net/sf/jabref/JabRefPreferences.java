@@ -1359,9 +1359,9 @@ literal|"<b><i>\\bibtextype</i><a name=\"\\bibtexkey\">\\begin{bibtexkey} (\\bib
 operator|+
 literal|"\\end{bibtexkey}</b><br>__NEWLINE__"
 operator|+
-literal|"\\begin{author} \\format[HTMLChars,AuthorLastFirst]{\\author}<BR>\\end{author}__NEWLINE__"
+literal|"\\begin{author} \\format[HTMLChars,AuthorLastFirst,AuthorLastFirstAbbreviator,AuthorAndsReplacer]{\\author}<BR>\\end{author}__NEWLINE__"
 operator|+
-literal|"\\begin{editor} \\format[HTMLChars,AuthorLastFirst]{\\editor}<i>(ed.)</i><BR>\\end{editor}__NEWLINE__"
+literal|"\\begin{editor} \\format[HTMLChars,AuthorLastFirst,AuthorLastFirstAbbreviator,AuthorAndsReplacer]{\\editor}<i>(ed.)</i><BR>\\end{editor}__NEWLINE__"
 operator|+
 literal|"\\begin{title} \\format[HTMLChars]{\\title} \\end{title}<BR>__NEWLINE__"
 operator|+
@@ -1394,9 +1394,9 @@ literal|"<b><i>\\bibtextype</i><a name=\"\\bibtexkey\">\\begin{bibtexkey} (\\bib
 operator|+
 literal|"\\end{bibtexkey}</b><br>__NEWLINE__"
 operator|+
-literal|"\\begin{author} \\format[HTMLChars,AuthorLastFirst]{\\author}<BR>\\end{author}__NEWLINE__"
+literal|"\\begin{author} \\format[HTMLChars,AuthorLastFirst,AuthorLastFirstAbbreviator,AuthorAndsReplacer]{\\author}<BR>\\end{author}__NEWLINE__"
 operator|+
-literal|"\\begin{editor} \\format[HTMLChars,AuthorLastFirst]{\\editor}<i>(ed.)</i><BR>\\end{editor}__NEWLINE__"
+literal|"\\begin{editor} \\format[HTMLChars,AuthorLastFirst,AuthorLastFirstAbbreviator,AuthorAndsReplacer]{\\editor}<i>(ed.)</i><BR>\\end{editor}__NEWLINE__"
 operator|+
 literal|"\\begin{title} \\format[HTMLChars]{\\title} \\end{title}<BR>__NEWLINE__"
 operator|+

@@ -8444,12 +8444,7 @@ name|putValue
 argument_list|(
 name|NAME
 argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
 literal|"Fetch Medline"
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|putValue
