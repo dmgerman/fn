@@ -315,7 +315,7 @@ literal|null
 operator|||
 name|dragNode
 operator|.
-name|isNodeChild
+name|isNodeDescendant
 argument_list|(
 name|target
 argument_list|)
@@ -698,7 +698,7 @@ if|if
 condition|(
 name|source
 operator|.
-name|isNodeChild
+name|isNodeDescendant
 argument_list|(
 name|target
 argument_list|)
@@ -709,7 +709,6 @@ operator|.
 name|rejectDrop
 argument_list|()
 expr_stmt|;
-comment|// JZTODO invokeLater: error message; e.g. status line
 return|return;
 block|}
 name|Enumeration
@@ -720,8 +719,6 @@ operator|.
 name|getExpandedPaths
 argument_list|()
 decl_stmt|;
-comment|// JZFIXME somehow it is possible to arrive here with the root
-comment|// node being dragged...
 name|UndoableMoveGroup
 name|undo
 init|=
