@@ -154,7 +154,7 @@ init|=
 literal|false
 decl_stmt|;
 DECL|field|ths
-specifier|private
+specifier|protected
 name|EntryTable
 name|ths
 init|=
@@ -477,6 +477,60 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Add the listener that responds to clicks on the table.
+comment|// Trying this to get better handling of the row selection stuff.
+name|setSelectionModel
+argument_list|(
+operator|new
+name|javax
+operator|.
+name|swing
+operator|.
+name|DefaultListSelectionModel
+argument_list|()
+block|{
+specifier|public
+name|void
+name|setSelectionInterval
+parameter_list|(
+name|int
+name|index0
+parameter_list|,
+name|int
+name|index1
+parameter_list|)
+block|{
+comment|// Prompt user here
+comment|//Util.pr("Selection model: "+panel.entryEditorAllowsChange());
+if|if
+condition|(
+name|panel
+operator|.
+name|entryEditorAllowsChange
+argument_list|()
+operator|==
+literal|false
+condition|)
+block|{
+name|panel
+operator|.
+name|moveFocusToEntryEditor
+argument_list|()
+expr_stmt|;
+return|return;
+block|}
+name|super
+operator|.
+name|setSelectionInterval
+argument_list|(
+name|index0
+argument_list|,
+name|index1
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
 name|addSelectionListener
 argument_list|()
 expr_stmt|;
@@ -528,6 +582,7 @@ name|ListSelectionEvent
 name|e
 parameter_list|)
 block|{
+comment|//Util.pr("Selection listener");
 if|if
 condition|(
 operator|!
@@ -565,11 +620,18 @@ operator|>=
 literal|0
 condition|)
 block|{
+comment|//System.out.println(""+panel.validateEntryEditor());
+comment|/*                     * Can't call validateEntryEditor, before the FocusLost beats us to it and                     * makes the entry editor store its source. So we need to find out if the                     * entry editor is happy. But can we prevent the selection?                    */
 name|panel
 operator|.
 name|updateViewToSelected
 argument_list|()
 expr_stmt|;
+comment|//   setRowSelectionInterval(row, row);
+comment|// }
+comment|// else {
+comment|// Oops, an error occured.
+comment|// }
 comment|//panel.database().getEntryById(
 comment|//tableModel.getNameFromNumber(row)));
 block|}
@@ -1070,6 +1132,26 @@ argument_list|()
 operator|)
 condition|)
 block|{
+name|int
+name|selRow
+init|=
+name|getSelectedRow
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|selRow
+operator|==
+operator|-
+literal|1
+condition|)
+name|addRowSelectionInterval
+argument_list|(
+name|row
+argument_list|,
+name|row
+argument_list|)
+expr_stmt|;
 name|rightClickMenu
 operator|=
 operator|new

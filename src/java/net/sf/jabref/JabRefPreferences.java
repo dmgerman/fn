@@ -130,6 +130,20 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|export
+operator|.
+name|ExportComparator
+import|;
+end_import
+
 begin_class
 DECL|class|JabRefPreferences
 specifier|public
@@ -1246,6 +1260,87 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"preview0"
+argument_list|,
+literal|"<font face=\"arial\">"
+operator|+
+literal|"<b><i>\\bibtextype</i><a name=\"\\bibtexkey\">\\begin{bibtexkey} (\\bibtexkey)</a>"
+operator|+
+literal|"\\end{bibtexkey}</b><br>\n"
+operator|+
+literal|"\\begin{author} \\format[HTMLChars,AuthorLastFirst]{\\author}<BR>\\end{author}\n"
+operator|+
+literal|"\\begin{editor} \\format[HTMLChars,AuthorLastFirst]{\\editor}<i>(ed.)</i><BR>\\end{editor}\n"
+operator|+
+literal|"\\begin{title} \\format[HTMLChars]{\\title} \\end{title}<BR>\n"
+operator|+
+literal|"\\begin{chapter} \\format[HTMLChars]{\\chapter}<BR>\\end{chapter}\n"
+operator|+
+literal|"\\begin{journal}<em>\\format[HTMLChars]{\\journal},</em>\\end{journal}\n"
+operator|+
+literal|"\\begin{school}<em>\\format[HTMLChars]{\\school},</em>\\end{school}\n"
+operator|+
+literal|"\\begin{institution}<em>\\format[HTMLChars]{\\institution},</em>\\end{institution}\n"
+operator|+
+literal|"\\begin{publisher}<em>\\format[HTMLChars]{\\publisher},</em>\\end{publisher}\n"
+operator|+
+literal|"\\begin{year}<b>\\year</b>\\end{year} \\begin{volume}<i>, \\volume</i>\\end{volume} "
+operator|+
+literal|"\\begin{pages}, \\format[FormatPagesForHTML]{\\pages} \\end{pages}"
+operator|+
+literal|"</dd>\n<p></p></font>"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"preview1"
+argument_list|,
+literal|"<font face=\"arial\">"
+operator|+
+literal|"<b><i>\\bibtextype</i><a name=\"\\bibtexkey\">\\begin{bibtexkey} (\\bibtexkey)</a>"
+operator|+
+literal|"\\end{bibtexkey}</b><br>\n"
+operator|+
+literal|"\\begin{author} \\format[HTMLChars,AuthorLastFirst]{\\author}<BR>\\end{author}\n"
+operator|+
+literal|"\\begin{editor} \\format[HTMLChars,AuthorLastFirst]{\\editor}<i>(ed.)</i><BR>\\end{editor}\n"
+operator|+
+literal|"\\begin{title} \\format[HTMLChars]{\\title} \\end{title}<BR>\n"
+operator|+
+literal|"\\begin{chapter} \\format[HTMLChars]{\\chapter}<BR>\\end{chapter}\n"
+operator|+
+literal|"\\begin{journal}<em>\\format[HTMLChars]{\\journal},</em>\\end{journal}\n"
+operator|+
+literal|"\\begin{school}<em>\\format[HTMLChars]{\\school},</em>\\end{school}\n"
+operator|+
+literal|"\\begin{institution}<em>\\format[HTMLChars]{\\institution},</em>\\end{institution}\n"
+operator|+
+literal|"\\begin{publisher}<em>\\format[HTMLChars]{\\publisher},</em>\\end{publisher}\n"
+operator|+
+literal|"\\begin{year}<b>\\year</b>\\end{year} \\begin{volume}<i>, \\volume</i>\\end{volume} "
+operator|+
+literal|"\\begin{pages}, \\format[FormatPagesForHTML]{\\pages} \\end{pages}\n"
+operator|+
+literal|"\\begin{abstract}<BR><BR><B>Abstract:</B><I>\\format[HTMLChars]{\\abstract}</I>\\end{abstract}"
+operator|+
+literal|"</dd>\n<p></p></font>"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"tempDir"
+argument_list|,
+literal|"/tmp/"
+argument_list|)
+expr_stmt|;
 comment|//defaults.put("keyPattern", new LabelPattern(KEY_PATTERN));
 name|restoreKeyBindings
 argument_list|()
@@ -1256,6 +1351,10 @@ operator|new
 name|CustomExportList
 argument_list|(
 name|this
+argument_list|,
+operator|new
+name|ExportComparator
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//defaults.put("oooWarning", new Boolean(true));

@@ -254,11 +254,14 @@ init|=
 literal|80
 decl_stmt|,
 comment|// Added to the font size when determining table
-DECL|field|PREVIEW_HEIGHT
-name|PREVIEW_HEIGHT
+DECL|field|PREVIEW_PANEL_PADDING
+name|PREVIEW_PANEL_PADDING
 init|=
-literal|115
+literal|15
 decl_stmt|;
+comment|// Extra room given to the preview editor, in addition to its own
+comment|// calculated preferred size
+comment|//public static final int[] PREVIEW_HEIGHT = {115, 300};
 comment|// row height
 specifier|public
 specifier|static

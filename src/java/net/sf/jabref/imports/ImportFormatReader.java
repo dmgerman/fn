@@ -2671,7 +2671,7 @@ name|put
 argument_list|(
 literal|"author"
 argument_list|,
-name|fixAuthor
+name|fixAuthor_lastnameFirst
 argument_list|(
 name|fields
 index|[
@@ -3260,6 +3260,7 @@ argument_list|(
 literal|"Source ([ \\w&\\-]+)\\.[ ]+([0-9]+):([0-9]+\\-?[0-9]+?)\\,.*([0-9][0-9][0-9][0-9])"
 argument_list|)
 decl_stmt|;
+comment|//   public static Pattern ovid_pat_inspec= Pattern.compile("Source ([ \\w&\\-]+)");
 DECL|method|readOvid ( String filename)
 specifier|public
 specifier|static
@@ -3386,6 +3387,7 @@ argument_list|)
 operator|!=
 literal|' '
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -3393,6 +3395,7 @@ argument_list|(
 literal|"__NEWFIELD__"
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
@@ -3645,37 +3648,19 @@ literal|1
 condition|)
 block|{
 comment|// single author or no ";"
-if|if
-condition|(
-name|isComma
-operator|==
-literal|false
-condition|)
 name|h
 operator|.
 name|put
 argument_list|(
 literal|"author"
 argument_list|,
-name|fixAuthor
+name|fixAuthor_lastnameFirst
 argument_list|(
 name|author
 argument_list|)
 argument_list|)
 expr_stmt|;
-else|else
-name|h
-operator|.
-name|put
-argument_list|(
-literal|"author"
-argument_list|,
-name|fixAuthor_nocomma
-argument_list|(
-name|author
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|/* if(isComma==false)  			    else 				h.put("author",  fixAuthor_nocomma( author) );*/
 block|}
 else|else
 name|h
@@ -3751,6 +3736,18 @@ operator|==
 literal|0
 condition|)
 block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|fields
+index|[
+name|j
+index|]
+argument_list|)
+expr_stmt|;
 name|String
 name|s
 init|=
@@ -4999,7 +4996,7 @@ name|put
 argument_list|(
 literal|"author"
 argument_list|,
-name|fixAuthor
+name|fixAuthor_lastnameFirst
 argument_list|(
 name|Author
 argument_list|)
@@ -5021,7 +5018,7 @@ name|put
 argument_list|(
 literal|"editor"
 argument_list|,
-name|fixAuthor
+name|fixAuthor_lastnameFirst
 argument_list|(
 name|Editor
 argument_list|)
@@ -5714,7 +5711,7 @@ block|}
 comment|// fix authors
 name|Author
 operator|=
-name|fixAuthor
+name|fixAuthor_lastnameFirst
 argument_list|(
 name|Author
 argument_list|)
@@ -6625,7 +6622,7 @@ name|put
 argument_list|(
 literal|"author"
 argument_list|,
-name|fixAuthor
+name|fixAuthor_lastnameFirst
 argument_list|(
 name|frest
 operator|.

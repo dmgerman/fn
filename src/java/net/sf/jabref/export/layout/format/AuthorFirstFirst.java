@@ -131,7 +131,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Changes {\^o} or {\^{o}} to ô  *  * @author $author$  * @version $Revision$  */
+comment|/**  * Changes {\^o} or {\^{o}} to \uFFFD  *  * @author $author$  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -157,7 +157,7 @@ comment|//return conv.format(ImportFormatReader.fixAuthor_lastnameFirst(fieldTex
 return|return
 name|ImportFormatReader
 operator|.
-name|fixAuthor
+name|fixAuthor_nocomma
 argument_list|(
 name|fieldText
 argument_list|)

@@ -246,7 +246,12 @@ name|drd
 init|=
 literal|null
 decl_stmt|;
-comment|/*   loop: while (!st.finished() || (current< duplicates.size()))   {     if ( current>= duplicates.size() )     {        // No more duplicates to resolve, but search is still in progress. Sleep a little.        try        {          sleep(10);        // sleep is deprecated !!!!        } catch (InterruptedException ex) {}        continue loop;     }   } */
+name|boolean
+name|cancelled
+init|=
+literal|false
+decl_stmt|;
+comment|/*   loop: while (!st.finished() || (current< duplicates.size()))   {     if ( current>= duplicates.size() )     {       // No more duplicates to resolve, but search is still in progress. Sleep a little.        try        {          sleep(10);        // sleep is deprecated !!!!        } catch (InterruptedException ex) {}        continue loop;     }   } */
 while|while
 condition|(
 operator|!

@@ -768,7 +768,7 @@ block|{
 return|return
 name|ImportFormatReader
 operator|.
-name|fixAuthor
+name|fixAuthor_nocomma
 argument_list|(
 operator|(
 name|String

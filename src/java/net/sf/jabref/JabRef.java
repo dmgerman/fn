@@ -154,6 +154,14 @@ name|graphicFailure
 init|=
 literal|false
 decl_stmt|;
+comment|// Make sure of a proper cleanup when quitting (e.g. deleting temporary files).
+name|System
+operator|.
+name|runFinalizersOnExit
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 comment|// ----------------------------------------------------------------
 comment|// First instantiate preferences and set language.
 comment|// ----------------------------------------------------------------
@@ -1575,7 +1583,7 @@ argument_list|()
 condition|)
 block|{
 comment|//Font fnt = new Font("plain", Font.PLAIN, 12);
-comment|/*        Object fnt = new UIDefaults.ProxyLazyValue                 ("javax.swing.plaf.FontUIResource", null,        new Object[] {"Arial", new Integer(Font.PLAIN), new Integer(12)});              UIManager.put("Button.font", fnt);             UIManager.put("ToggleButton.font", fnt);             UIManager.put("RadioButton.font", fnt);             UIManager.put("CheckBox.font", fnt);             UIManager.put("ColorChooser.font", fnt);             UIManager.put("ComboBox.font", fnt);             UIManager.put("Label.font", fnt);             UIManager.put("List.font", fnt);             UIManager.put("MenuBar.font", fnt);             UIManager.put("MenuItem.font", fnt);             UIManager.put("RadioButtonMenuItem.font", fnt);             UIManager.put("CheckBoxMenuItem.font", fnt);             UIManager.put("Menu.font", fnt);             UIManager.put("PopupMenu.font", fnt);             UIManager.put("OptionPane.font", fnt);             UIManager.put("Panel.font", fnt);             UIManager.put("ProgressBar.font", fnt);             UIManager.put("ScrollPane.font", fnt);             UIManager.put("Viewport.font", fnt);             UIManager.put("TabbedPane.font", fnt);             UIManager.put("Table.font", fnt);             UIManager.put("TableHeader.font", fnt);             UIManager.put("TextField.font", fnt);             UIManager.put("PasswordField.font", fnt);             UIManager.put("TextArea.font", fnt);             UIManager.put("TextPane.font", fnt);             UIManager.put("EditorPane.font", fnt);             UIManager.put("TitledBorder.font", fnt);             UIManager.put("ToolBar.font", fnt);             UIManager.put("ToolTip.font", fnt);             UIManager.put("Tree.font", fnt);        */
+comment|/*       Object fnt = new UIDefaults.ProxyLazyValue           ("javax.swing.plaf.FontUIResource", null,            new Object[] {"Plain", new Integer(Font.PLAIN), new Integer(10)});        UIManager.put("Button.font", fnt);       UIManager.put("ToggleButton.font", fnt);       UIManager.put("RadioButton.font", fnt);       UIManager.put("CheckBox.font", fnt);       UIManager.put("ColorChooser.font", fnt);       UIManager.put("ComboBox.font", fnt);       UIManager.put("Label.font", fnt);       UIManager.put("List.font", fnt);       UIManager.put("MenuBar.font", fnt);       UIManager.put("MenuItem.font", fnt);       UIManager.put("RadioButtonMenuItem.font", fnt);       UIManager.put("CheckBoxMenuItem.font", fnt);       UIManager.put("Menu.font", fnt);       UIManager.put("PopupMenu.font", fnt);       UIManager.put("OptionPane.font", fnt);       UIManager.put("Panel.font", fnt);       UIManager.put("ProgressBar.font", fnt);       UIManager.put("ScrollPane.font", fnt);       UIManager.put("Viewport.font", fnt);       UIManager.put("TabbedPane.font", fnt);       UIManager.put("Table.font", fnt);       UIManager.put("TableHeader.font", fnt);       UIManager.put("TextField.font", fnt);       UIManager.put("PasswordField.font", fnt);       UIManager.put("TextArea.font", fnt);       UIManager.put("TextPane.font", fnt);       UIManager.put("EditorPane.font", fnt);       UIManager.put("TitledBorder.font", fnt);       UIManager.put("ToolBar.font", fnt);       UIManager.put("ToolTip.font", fnt);       UIManager.put("Tree.font", fnt); 	*/
 comment|// This property is set to make the Mac OSX Java VM move the menu bar to the top
 comment|// of the screen, where Mac users expect it to be.
 name|System

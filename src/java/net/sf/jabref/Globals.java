@@ -376,6 +376,23 @@ literal|"Windows"
 argument_list|)
 operator|)
 decl_stmt|;
+DECL|field|SKIP_WORDS
+specifier|public
+specifier|static
+name|String
+index|[]
+name|SKIP_WORDS
+init|=
+block|{
+literal|"a"
+block|,
+literal|"an"
+block|,
+literal|"the"
+block|,
+literal|"for"
+block|}
+decl_stmt|;
 DECL|method|logger (String s)
 specifier|public
 specifier|static
@@ -687,8 +704,19 @@ name|translation
 operator|=
 name|key
 expr_stmt|;
-comment|//System.err.println("Warning: could not get translation for \""
-comment|//                   + key + "\"");
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"Warning: could not get translation for \""
+operator|+
+name|key
+operator|+
+literal|"\""
+argument_list|)
+expr_stmt|;
 block|}
 if|if
 condition|(

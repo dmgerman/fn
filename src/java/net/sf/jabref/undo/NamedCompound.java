@@ -113,6 +113,17 @@ operator|+
 name|name
 return|;
 block|}
+comment|/**      * Returns the name of this compound, without the Undo or Redo prefix.      */
+DECL|method|getNameOnly ()
+specifier|public
+name|String
+name|getNameOnly
+parameter_list|()
+block|{
+return|return
+name|name
+return|;
+block|}
 block|}
 end_class
 

@@ -576,7 +576,7 @@ operator|.
 name|componentOpening
 argument_list|()
 expr_stmt|;
-comment|/*sidep.add(comp); 	components.put(name, comp); 	visibleComponents++; 	if (visibleComponents == 1) 	    panel.setLeftComponent(sidep);           comp.componentOpening(); 	comp.setVisibility(true);*/
+comment|/*sidep.add(comp);         components.put(name, comp);         visibleComponents++;         if (visibleComponents == 1)             panel.setLeftComponent(sidep);           comp.componentOpening();         comp.setVisibility(true);*/
 block|}
 DECL|method|register (String name, SidePaneComponent comp)
 specifier|public

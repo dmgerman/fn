@@ -134,6 +134,7 @@ init|=
 literal|0
 decl_stmt|;
 comment|// The number of vector elements before first group.
+comment|/*   Groups are stored in the vector like the following:       field1, name1, regexp1, field2, name2, regexp2, ...    */
 DECL|field|newButton
 name|JButton
 name|newButton
