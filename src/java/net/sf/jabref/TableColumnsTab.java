@@ -1485,7 +1485,12 @@ block|{
 comment|//super(Globals.lang("Update to current column widths"));
 name|super
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Update to current column widths"
+argument_list|)
 argument_list|,
 operator|new
 name|ImageIcon

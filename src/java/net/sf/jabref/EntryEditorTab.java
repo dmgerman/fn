@@ -351,6 +351,16 @@ argument_list|,
 name|ta
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|i
+operator|==
+literal|0
+condition|)
+name|activeField
+operator|=
+name|ta
+expr_stmt|;
 comment|// The label for this field:
 name|con
 operator|.
@@ -665,6 +675,21 @@ literal|"bibtexkey"
 argument_list|,
 name|tf
 argument_list|)
+expr_stmt|;
+comment|// If the key field is the only field, we should have only one editor, and this one should be set
+comment|// as active initially:
+if|if
+condition|(
+name|editors
+operator|.
+name|size
+argument_list|()
+operator|==
+literal|1
+condition|)
+name|activeField
+operator|=
+name|tf
 expr_stmt|;
 name|gbl
 operator|.
@@ -1108,6 +1133,60 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
+literal|"Entry editor, previous entry"
+argument_list|)
+argument_list|,
+literal|"prev"
+argument_list|)
+expr_stmt|;
+name|am
+operator|.
+name|put
+argument_list|(
+literal|"prev"
+argument_list|,
+name|parent
+operator|.
+name|prevEntryAction
+argument_list|)
+expr_stmt|;
+name|im
+operator|.
+name|put
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Entry editor, next entry"
+argument_list|)
+argument_list|,
+literal|"next"
+argument_list|)
+expr_stmt|;
+name|am
+operator|.
+name|put
+argument_list|(
+literal|"next"
+argument_list|,
+name|parent
+operator|.
+name|nextEntryAction
+argument_list|)
+expr_stmt|;
+name|im
+operator|.
+name|put
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getKey
+argument_list|(
 literal|"Entry editor, store field"
 argument_list|)
 argument_list|,
@@ -1141,6 +1220,22 @@ argument_list|,
 literal|"right"
 argument_list|)
 expr_stmt|;
+name|im
+operator|.
+name|put
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Entry editor, next panel 2"
+argument_list|)
+argument_list|,
+literal|"right"
+argument_list|)
+expr_stmt|;
 name|am
 operator|.
 name|put
@@ -1163,6 +1258,22 @@ operator|.
 name|getKey
 argument_list|(
 literal|"Entry editor, previous panel"
+argument_list|)
+argument_list|,
+literal|"left"
+argument_list|)
+expr_stmt|;
+name|im
+operator|.
+name|put
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Entry editor, previous panel 2"
 argument_list|)
 argument_list|,
 literal|"left"

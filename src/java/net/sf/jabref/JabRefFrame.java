@@ -19,6 +19,18 @@ begin_comment
 comment|//               - insert new Menuitem New Database -> New Database from Aux
 end_comment
 
+begin_comment
+comment|// modified : juan 10.02.2005
+end_comment
+
+begin_comment
+comment|//               - insert new Menuitem to the Export menu -> Openoffice
+end_comment
+
+begin_comment
+comment|//                 export filter
+end_comment
+
 begin_package
 DECL|package|net.sf.jabref
 package|package
@@ -29,6 +41,20 @@ operator|.
 name|jabref
 package|;
 end_package
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|*
+import|;
+end_import
 
 begin_import
 import|import
@@ -2311,8 +2337,10 @@ parameter_list|()
 block|{
 name|prefsDialog
 operator|.
-name|show
-argument_list|()
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 name|output
 argument_list|(
@@ -3554,6 +3582,16 @@ operator|-
 literal|1
 return|;
 block|}
+DECL|method|getTabbedPane ()
+specifier|public
+name|JTabbedPane
+name|getTabbedPane
+parameter_list|()
+block|{
+return|return
+name|tabbedPane
+return|;
+block|}
 DECL|method|getTabTitle (JComponent comp)
 specifier|public
 name|String
@@ -4026,8 +4064,10 @@ argument_list|)
 expr_stmt|;
 name|etd
 operator|.
-name|show
-argument_list|()
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 name|BibtexEntryType
 name|tp
@@ -4342,13 +4382,7 @@ argument_list|(
 name|file
 argument_list|)
 expr_stmt|;
-name|edit
-operator|.
-name|add
-argument_list|(
-name|test
-argument_list|)
-expr_stmt|;
+comment|//edit.add(test);
 name|edit
 operator|.
 name|add
@@ -4742,11 +4776,25 @@ operator|new
 name|CustomizeEntryTypeAction
 argument_list|()
 decl_stmt|;
+name|AbstractAction
+name|genFieldsCustomization
+init|=
+operator|new
+name|GenFieldsCustomizationAction
+argument_list|()
+decl_stmt|;
 name|options
 operator|.
 name|add
 argument_list|(
 name|customizeAction
+argument_list|)
+expr_stmt|;
+name|options
+operator|.
+name|add
+argument_list|(
+name|genFieldsCustomization
 argument_list|)
 expr_stmt|;
 name|options
@@ -7830,8 +7878,10 @@ argument_list|)
 expr_stmt|;
 name|dialog
 operator|.
-name|show
-argument_list|()
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -7930,7 +7980,7 @@ name|super
 argument_list|(
 name|Globals
 operator|.
-name|lang
+name|menuTitle
 argument_list|(
 literal|"Integrity check"
 argument_list|)
@@ -8008,8 +8058,10 @@ argument_list|)
 decl_stmt|;
 name|wizard
 operator|.
-name|show
-argument_list|()
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -8158,6 +8210,7 @@ argument_list|,
 literal|"Fetch CiteSeer"
 argument_list|)
 expr_stmt|;
+comment|//System.out.println(Globals.menuTitle("Fetch CiteSeer"));
 name|putValue
 argument_list|(
 name|ACCELERATOR_KEY
@@ -8807,8 +8860,10 @@ argument_list|)
 decl_stmt|;
 name|drd
 operator|.
-name|show
-argument_list|()
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 name|int
 name|res
@@ -9280,6 +9335,15 @@ argument_list|(
 literal|"Endnote"
 argument_list|)
 argument_list|)
+decl_stmt|,
+DECL|field|openofficeItem
+name|openofficeItem
+init|=
+operator|new
+name|JMenuItem
+argument_list|(
+literal|"OpenOffice Calc"
+argument_list|)
 decl_stmt|;
 DECL|method|setUpExportMenu (JMenu menu)
 specifier|private
@@ -9454,6 +9518,24 @@ expr_stmt|;
 name|extension
 operator|=
 literal|".enf"
+expr_stmt|;
+block|}
+comment|/*    else if (source == openofficeItem) { 		  lfFileName = "openoffice-csv"; 		  directory = "openoffice"; 		  extension = ".csv"; 		}*/
+elseif|else
+if|if
+condition|(
+name|source
+operator|==
+name|openofficeItem
+condition|)
+block|{
+name|lfFileName
+operator|=
+literal|"oocalc"
+expr_stmt|;
+name|extension
+operator|=
+literal|".sxc"
 expr_stmt|;
 block|}
 comment|// We need to find out:
@@ -9722,6 +9804,20 @@ operator|.
 name|add
 argument_list|(
 name|endnoteItem
+argument_list|)
+expr_stmt|;
+name|openofficeItem
+operator|.
+name|addActionListener
+argument_list|(
+name|listener
+argument_list|)
+expr_stmt|;
+name|menu
+operator|.
+name|add
+argument_list|(
+name|openofficeItem
 argument_list|)
 expr_stmt|;
 name|menu
@@ -10976,8 +11072,10 @@ argument_list|)
 decl_stmt|;
 name|ecd
 operator|.
-name|show
-argument_list|()
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -11115,7 +11213,7 @@ name|JDialog
 name|dl
 init|=
 operator|new
-name|EntryCustomizationDialog
+name|EntryCustomizationDialog2
 argument_list|(
 name|ths
 argument_list|)
@@ -11131,8 +11229,65 @@ argument_list|)
 expr_stmt|;
 name|dl
 operator|.
-name|show
-argument_list|()
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|class|GenFieldsCustomizationAction
+class|class
+name|GenFieldsCustomizationAction
+extends|extends
+name|MnemonicAwareAction
+block|{
+DECL|method|GenFieldsCustomizationAction ()
+specifier|public
+name|GenFieldsCustomizationAction
+parameter_list|()
+block|{
+name|putValue
+argument_list|(
+name|NAME
+argument_list|,
+literal|"Set up general fields"
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|actionPerformed (ActionEvent e)
+specifier|public
+name|void
+name|actionPerformed
+parameter_list|(
+name|ActionEvent
+name|e
+parameter_list|)
+block|{
+name|GenFieldsCustomizer
+name|gf
+init|=
+operator|new
+name|GenFieldsCustomizer
+argument_list|(
+name|ths
+argument_list|)
+decl_stmt|;
+name|Util
+operator|.
+name|placeDialog
+argument_list|(
+name|gf
+argument_list|,
+name|ths
+argument_list|)
+expr_stmt|;
+name|gf
+operator|.
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 block|}
 block|}

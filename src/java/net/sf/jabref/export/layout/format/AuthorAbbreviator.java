@@ -404,6 +404,7 @@ block|}
 else|else
 block|{
 comment|//Its a "complex" name like van Something, Someone Something
+comment|//System.out.println(author[1]);
 name|String
 index|[]
 name|nameParts

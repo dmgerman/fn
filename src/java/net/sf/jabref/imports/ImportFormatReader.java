@@ -1340,6 +1340,29 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|end
+operator|<
+literal|0
+condition|)
+block|{
+comment|// The braces are mismatched, so give up this.
+name|tmp
+operator|.
+name|append
+argument_list|(
+name|in
+operator|.
+name|substring
+argument_list|(
+name|start
+argument_list|)
+argument_list|)
+expr_stmt|;
+break|break;
+block|}
 block|}
 if|if
 condition|(
@@ -1816,6 +1839,13 @@ name|suppliedEncoding
 init|=
 literal|null
 decl_stmt|;
+name|StringBuffer
+name|headerText
+init|=
+operator|new
+name|StringBuffer
+argument_list|()
+decl_stmt|;
 try|try
 block|{
 name|boolean
@@ -1842,6 +1872,16 @@ name|reader
 operator|.
 name|read
 argument_list|()
+expr_stmt|;
+name|headerText
+operator|.
+name|append
+argument_list|(
+operator|(
+name|char
+operator|)
+name|c
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -1880,10 +1920,12 @@ name|piv
 operator|++
 expr_stmt|;
 else|else
+comment|//if (((char)c) == '@')
 name|keepon
 operator|=
 literal|false
 expr_stmt|;
+comment|//System.out.println(headerText.toString());
 name|found
 label|:
 if|if
@@ -1902,6 +1944,8 @@ name|keepon
 operator|=
 literal|false
 expr_stmt|;
+comment|//if (headerText.length()> GUIGlobals.SIGNATURE.length())
+comment|//    System.out.println("'"+headerText.toString().substring(0, headerText.length()-GUIGlobals.SIGNATURE.length())+"'");
 comment|// Found the signature. The rest of the line is unknown, so we skip
 comment|// it:
 while|while

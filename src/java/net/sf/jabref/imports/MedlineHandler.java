@@ -1075,10 +1075,17 @@ name|title
 argument_list|)
 expr_stmt|;
 comment|//##############################
-comment|// made pubmedid the keyword (user request)
+comment|// Sort keywords and remove duplicates. Add pubmedid as keyword (user request)
 name|keyword
 operator|=
+name|Util
+operator|.
+name|sortWordsAndRemoveDuplicates
+argument_list|(
 name|descriptorName
+argument_list|)
+operator|+
+literal|", "
 operator|+
 name|pubmedid
 expr_stmt|;

@@ -180,22 +180,8 @@ name|SidePaneComponent
 implements|implements
 name|ActionListener
 block|{
-DECL|field|header
-name|SidePaneHeader
-name|header
-init|=
-operator|new
-name|SidePaneHeader
-argument_list|(
-literal|"Fetch CiteSeer"
-argument_list|,
-name|GUIGlobals
-operator|.
-name|wwwCiteSeerIcon
-argument_list|,
-name|this
-argument_list|)
-decl_stmt|;
+comment|//SidePaneHeader header =
+comment|//new SidePaneHeader("Fetch CiteSeer", GUIGlobals.wwwCiteSeerIcon, this);
 DECL|field|panel
 name|BasePanel
 name|panel
@@ -307,6 +293,17 @@ block|{
 name|super
 argument_list|(
 name|p0
+argument_list|,
+name|GUIGlobals
+operator|.
+name|wwwCiteSeerIcon
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Fetch CiteSeer"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|panel
@@ -365,6 +362,15 @@ expr_stmt|;
 comment|//tf.setMinimumSize(new Dimension(1,1));
 comment|//add(hd, BorderLayout.NORTH);
 comment|//ok.setToolTipText(Globals.lang("Fetch Medline"));
+name|JPanel
+name|main
+init|=
+operator|new
+name|JPanel
+argument_list|()
+decl_stmt|;
+name|main
+operator|.
 name|setLayout
 argument_list|(
 name|gbl
@@ -414,20 +420,8 @@ name|weighty
 operator|=
 literal|0
 expr_stmt|;
-name|gbl
-operator|.
-name|setConstraints
-argument_list|(
-name|header
-argument_list|,
-name|con
-argument_list|)
-expr_stmt|;
-name|add
-argument_list|(
-name|header
-argument_list|)
-expr_stmt|;
+comment|//gbl.setConstraints(header, con);
+comment|//add(header);
 name|con
 operator|.
 name|weighty
@@ -468,6 +462,8 @@ argument_list|,
 name|con
 argument_list|)
 expr_stmt|;
+name|main
+operator|.
 name|add
 argument_list|(
 name|tf
@@ -494,6 +490,8 @@ argument_list|,
 name|con
 argument_list|)
 expr_stmt|;
+name|main
+operator|.
 name|add
 argument_list|(
 name|go
@@ -516,9 +514,38 @@ argument_list|,
 name|con
 argument_list|)
 expr_stmt|;
+name|main
+operator|.
 name|add
 argument_list|(
 name|helpBut
+argument_list|)
+expr_stmt|;
+name|main
+operator|.
+name|setBorder
+argument_list|(
+name|BorderFactory
+operator|.
+name|createEmptyBorder
+argument_list|(
+literal|1
+argument_list|,
+literal|1
+argument_list|,
+literal|1
+argument_list|,
+literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|add
+argument_list|(
+name|main
+argument_list|,
+name|BorderLayout
+operator|.
+name|CENTER
 argument_list|)
 expr_stmt|;
 name|go

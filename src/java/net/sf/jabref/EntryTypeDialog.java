@@ -186,7 +186,12 @@ expr_stmt|;
 comment|// Set modal on.
 name|setTitle
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Select entry type"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|addWindowListener
@@ -426,22 +431,7 @@ name|next
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|tp
-operator|.
-name|getName
-argument_list|()
-operator|+
-literal|"\n"
-operator|+
-name|tp
-argument_list|)
-expr_stmt|;
+comment|//System.out.println(tp.getName()+"\n"+tp);
 name|TypeButton
 name|b
 init|=

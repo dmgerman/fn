@@ -1413,7 +1413,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"keys_in_database"
+literal|"keys in database"
 argument_list|)
 operator|+
 literal|" "
@@ -1434,7 +1434,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"found_in_aux_file"
+literal|"found in aux file"
 argument_list|)
 operator|+
 literal|" "
@@ -1476,7 +1476,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"not_found"
+literal|"not found"
 argument_list|)
 operator|+
 literal|" "

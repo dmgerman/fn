@@ -36,6 +36,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|event
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|awt
@@ -63,7 +75,7 @@ name|FieldContentSelector
 extends|extends
 name|JComponent
 implements|implements
-name|ItemListener
+name|ActionListener
 block|{
 DECL|field|DELIMITER
 DECL|field|DELIMITER_2
@@ -154,6 +166,12 @@ DECL|field|metaData
 name|MetaData
 name|metaData
 decl_stmt|;
+DECL|field|ths
+name|FieldContentSelector
+name|ths
+init|=
+name|this
+decl_stmt|;
 DECL|method|FieldContentSelector (EntryEditor parent, FieldEditor editor_, MetaData data)
 specifier|public
 name|FieldContentSelector
@@ -203,6 +221,7 @@ argument_list|(
 literal|35
 argument_list|)
 expr_stmt|;
+comment|/*list.getInputMap().put(Globals.prefs.getKey("Select value"), "enter");         list.getActionMap().put("enter", new EnterAction());         System.out.println(Globals.prefs.getKey("Select value"));*/
 specifier|final
 name|MetaData
 name|metaData
@@ -264,7 +283,7 @@ argument_list|)
 expr_stmt|;
 name|list
 operator|.
-name|addItemListener
+name|addActionListener
 argument_list|(
 name|this
 argument_list|)
@@ -443,12 +462,12 @@ expr_stmt|;
 comment|//list = new JComboBox();
 block|}
 block|}
-DECL|method|itemStateChanged (ItemEvent e)
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
-name|itemStateChanged
+name|actionPerformed
 parameter_list|(
-name|ItemEvent
+name|ActionEvent
 name|e
 parameter_list|)
 block|{
@@ -456,15 +475,27 @@ if|if
 condition|(
 name|e
 operator|.
-name|getStateChange
+name|getActionCommand
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"comboBoxChanged"
+argument_list|)
+operator|&&
+operator|(
+name|e
+operator|.
+name|getModifiers
 argument_list|()
 operator|==
-name|ItemEvent
-operator|.
-name|DESELECTED
+literal|0
+operator|)
 condition|)
+comment|// These conditions signify arrow key navigation in the dropdown list, so we should
+comment|// not react to it. I'm not sure if this is well defined enough to be guaranteed to work
+comment|// everywhere.
 return|return;
-comment|// We get an uninteresting DESELECTED event as well.
 if|if
 condition|(
 name|list
@@ -487,6 +518,14 @@ operator|.
 name|getSelectedItem
 argument_list|()
 decl_stmt|;
+comment|//System.out.println(list.getSelectedIndex()+"\t"+chosen);
+if|if
+condition|(
+name|chosen
+operator|==
+literal|null
+condition|)
+return|return;
 if|if
 condition|(
 name|list
@@ -715,6 +754,8 @@ expr_stmt|;
 comment|//updateList();
 block|}
 block|}
+comment|/*class EnterAction extends AbstractAction {       public void actionPerformed(ActionEvent e) {           System.out.println("enter");           ths.actionPerformed(e);       }   }*/
+comment|/*public void popupMenuWillBecomeVisible(PopupMenuEvent e) {       System.out.println("visible");   }   public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {       System.out.println("invisible");   }   public void popupMenuCanceled(PopupMenuEvent e) {       System.out.println("canceled");   }*/
 block|}
 end_class
 

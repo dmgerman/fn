@@ -696,13 +696,7 @@ operator|.
 name|getRequiredFields
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|fields
-operator|!=
-literal|null
-condition|)
-block|{
+comment|//if (fields != null) {
 name|reqPan
 operator|=
 operator|new
@@ -763,7 +757,7 @@ argument_list|(
 name|reqPan
 argument_list|)
 expr_stmt|;
-block|}
+comment|//}
 if|if
 condition|(
 operator|(
@@ -1114,52 +1108,7 @@ argument_list|,
 name|generateKeyAction
 argument_list|)
 expr_stmt|;
-name|im
-operator|.
-name|put
-argument_list|(
-name|prefs
-operator|.
-name|getKey
-argument_list|(
-literal|"Entry editor, previous panel"
-argument_list|)
-argument_list|,
-literal|"left"
-argument_list|)
-expr_stmt|;
-name|am
-operator|.
-name|put
-argument_list|(
-literal|"left"
-argument_list|,
-name|switchLeftAction
-argument_list|)
-expr_stmt|;
-name|im
-operator|.
-name|put
-argument_list|(
-name|prefs
-operator|.
-name|getKey
-argument_list|(
-literal|"Entry editor, next panel"
-argument_list|)
-argument_list|,
-literal|"right"
-argument_list|)
-expr_stmt|;
-name|am
-operator|.
-name|put
-argument_list|(
-literal|"right"
-argument_list|,
-name|switchRightAction
-argument_list|)
-expr_stmt|;
+comment|/*im.put(prefs.getKey("Entry editor, previous panel"), "left");     im.put(prefs.getKey("Entry editor, previous panel 2"), "left");     am.put("left", switchLeftAction);     im.put(prefs.getKey("Entry editor, next panel"), "right");     im.put(prefs.getKey("Entry editor, next panel 2"), "right");     am.put("right", switchRightAction);*/
 name|im
 operator|.
 name|put
@@ -3189,6 +3138,7 @@ name|JTextComponent
 name|ta
 parameter_list|)
 block|{
+comment|/*       * NOTE: This method is only used for the source panel, not for the other tabs. Look at       * EntryEditorTab for the setup of text components in the other tabs.       */
 comment|/*      * if ((ta instanceof FieldTextArea)&& (prefs.getBoolean("autoComplete"))) {      * FieldTextArea fta = (FieldTextArea)ta; Completer comp =      * baseFrame.getAutoCompleter(fta.getFieldName()); if (comp != null)      * fta.setAutoComplete(comp); }      */
 comment|// Set up key bindings and focus listener for the FieldEditor.
 name|InputMap
@@ -3250,13 +3200,27 @@ argument_list|,
 literal|"right"
 argument_list|)
 expr_stmt|;
+name|im
+operator|.
+name|put
+argument_list|(
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Entry editor, next panel 2"
+argument_list|)
+argument_list|,
+literal|"right"
+argument_list|)
+expr_stmt|;
 name|am
 operator|.
 name|put
 argument_list|(
-literal|"left"
+literal|"right"
 argument_list|,
-name|switchLeftAction
+name|switchRightAction
 argument_list|)
 expr_stmt|;
 name|im
@@ -3273,13 +3237,27 @@ argument_list|,
 literal|"left"
 argument_list|)
 expr_stmt|;
+name|im
+operator|.
+name|put
+argument_list|(
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Entry editor, previous panel 2"
+argument_list|)
+argument_list|,
+literal|"left"
+argument_list|)
+expr_stmt|;
 name|am
 operator|.
 name|put
 argument_list|(
-literal|"right"
+literal|"left"
 argument_list|,
-name|switchRightAction
+name|switchLeftAction
 argument_list|)
 expr_stmt|;
 name|im
@@ -3621,13 +3599,6 @@ name|id
 parameter_list|)
 block|{
 comment|// Make sure the current edit is stored.
-name|Util
-operator|.
-name|pr
-argument_list|(
-literal|"frilp"
-argument_list|)
-expr_stmt|;
 name|Object
 name|activeTab
 init|=
@@ -6063,6 +6034,7 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+comment|//System.out.println("switch left");
 name|int
 name|i
 init|=
@@ -6130,6 +6102,7 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+comment|//System.out.println("switch right");
 name|int
 name|i
 init|=

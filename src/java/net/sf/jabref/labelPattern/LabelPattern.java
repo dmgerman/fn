@@ -255,6 +255,31 @@ operator|)
 name|_obj
 return|;
 block|}
+comment|/**          * Checks whether this pattern is customized or the default value.          */
+DECL|method|isDefaultValue (String key)
+specifier|public
+specifier|final
+name|boolean
+name|isDefaultValue
+parameter_list|(
+name|String
+name|key
+parameter_list|)
+block|{
+name|Object
+name|_obj
+init|=
+name|get
+argument_list|(
+name|key
+argument_list|)
+decl_stmt|;
+return|return
+name|_obj
+operator|==
+literal|null
+return|;
+block|}
 block|}
 end_class
 

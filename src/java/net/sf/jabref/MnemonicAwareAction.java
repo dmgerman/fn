@@ -169,6 +169,11 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+name|value
+operator|=
+name|name
+expr_stmt|;
 block|}
 name|super
 operator|.

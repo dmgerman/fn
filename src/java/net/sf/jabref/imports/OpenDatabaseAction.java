@@ -413,6 +413,27 @@ argument_list|()
 operator|)
 condition|)
 block|{
+name|frame
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Opening"
+argument_list|)
+operator|+
+literal|": '"
+operator|+
+name|file
+operator|.
+name|getPath
+argument_list|()
+operator|+
+literal|"'"
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|String
@@ -570,6 +591,11 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+comment|// Note to self or to someone else: The following line causes an
+comment|// ArrayIndexOutOfBoundsException in situations with a large number of
+comment|// warnings; approx. 5000 for the database I opened when I observed the problem
+comment|// (duplicate key warnings). I don't think this is a big problem for normal situations,
+comment|// and it may possibly be a bug in the Swing code.
 name|JOptionPane
 operator|.
 name|showMessageDialog

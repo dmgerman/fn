@@ -51,6 +51,7 @@ name|Component
 name|comp
 parameter_list|)
 block|{
+comment|//System.out.println("FocusRequester: "+comp.toString());
 name|this
 operator|.
 name|comp

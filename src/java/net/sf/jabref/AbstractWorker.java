@@ -78,6 +78,8 @@ specifier|public
 name|void
 name|init
 parameter_list|()
+throws|throws
+name|Throwable
 block|{      }
 comment|/**      * This method returns a wrapped Worker instance of this AbstractWorker.      * whose methods will automatically be run off the EDT (Swing) thread.      */
 DECL|method|getWorker ()

@@ -152,6 +152,15 @@ name|visibleRows
 init|=
 literal|0
 decl_stmt|;
+comment|// Testing something:
+DECL|field|allCache
+name|Object
+index|[]
+index|[]
+name|allCache
+init|=
+literal|null
+decl_stmt|;
 comment|//private Object[] entryIDs; // Temporary
 comment|// Constants used to define how a cell should be rendered.
 DECL|field|REQUIRED
@@ -542,6 +551,36 @@ name|class
 operator|)
 return|;
 block|}
+DECL|method|getValueAt_ (int row, int col)
+specifier|public
+name|Object
+name|getValueAt_
+parameter_list|(
+name|int
+name|row
+parameter_list|,
+name|int
+name|col
+parameter_list|)
+block|{
+return|return
+name|allCache
+index|[
+name|row
+index|]
+index|[
+name|col
+index|]
+return|;
+block|}
+DECL|method|updateAllCache ()
+specifier|public
+name|void
+name|updateAllCache
+parameter_list|()
+block|{
+comment|/*long start = System.currentTimeMillis();       int rows = getRowCount();       int cols = getColumnCount();       allCache = new Object[rows][cols];       for (int row=0; row<rows; row++)           for (int col=0; col<cols; col++)               allCache[row][col] = getValueAt_old(row, col);       Globals.logger("Time spent: "+(System.currentTimeMillis()-start));*/
+block|}
 DECL|method|getValueAt (int row, int col)
 specifier|public
 name|Object
@@ -761,14 +800,9 @@ return|;
 block|}
 if|if
 condition|(
+operator|!
 name|namesAsIs
 condition|)
-block|{
-return|return
-name|o
-return|;
-block|}
-else|else
 block|{
 if|if
 condition|(
@@ -805,7 +839,7 @@ block|}
 block|}
 block|}
 block|}
-comment|//}
+comment|/*if (o != null) {         String processed = Globals.getCached((String)o);         if (processed == null) {             StringBuffer sb = new StringBuffer("");//"<html>");             sb.append((String)o);             //sb.append("</html>");             processed = sb.toString();             Globals.cache((String)o, processed);             o = processed;         } else             o = processed;                           }*/
 return|return
 name|o
 return|;
@@ -1852,6 +1886,9 @@ name|showAllEntries
 argument_list|()
 expr_stmt|;
 comment|// Update the visible row count.
+name|updateAllCache
+argument_list|()
+expr_stmt|;
 name|fireTableDataChanged
 argument_list|()
 expr_stmt|;
@@ -1874,6 +1911,9 @@ argument_list|(
 name|rows
 argument_list|)
 expr_stmt|;
+name|updateAllCache
+argument_list|()
+expr_stmt|;
 name|fireTableDataChanged
 argument_list|()
 expr_stmt|;
@@ -1891,6 +1931,9 @@ name|index
 argument_list|()
 expr_stmt|;
 name|showAllEntries
+argument_list|()
+expr_stmt|;
+name|updateAllCache
 argument_list|()
 expr_stmt|;
 name|fireTableDataChanged
@@ -1916,6 +1959,9 @@ name|setRowCount
 argument_list|(
 name|rows
 argument_list|)
+expr_stmt|;
+name|updateAllCache
+argument_list|()
 expr_stmt|;
 name|fireTableDataChanged
 argument_list|()

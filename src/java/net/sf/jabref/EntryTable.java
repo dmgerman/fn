@@ -806,11 +806,9 @@ name|updateViewToSelected
 argument_list|()
 expr_stmt|;
 comment|// guarantee that the the entry is visible
-name|scrollToCenter
+name|ensureVisible
 argument_list|(
 name|row
-argument_list|,
-literal|0
 argument_list|)
 expr_stmt|;
 comment|//   setRowSelectionInterval(row, row);
@@ -936,6 +934,7 @@ name|selectionListenerOn
 operator|=
 literal|false
 expr_stmt|;
+comment|//if (row2< getModel().getRowCount()) {
 name|super
 operator|.
 name|addRowSelectionInterval
@@ -949,6 +948,7 @@ name|selectionListenerOn
 operator|=
 name|oldState
 expr_stmt|;
+comment|//}
 block|}
 comment|/*public boolean surrendersFocusOnKeystroke() {         return true;         }*/
 comment|/**        * This method overrides the superclass' to disable the selection listener while the        * selection is cleared.        */
@@ -1740,25 +1740,6 @@ name|defRenderer
 return|;
 comment|// This should not occur.
 block|}
-comment|// For testing MARKED feature:
-if|if
-condition|(
-name|tableModel
-operator|.
-name|hasField
-argument_list|(
-name|row
-argument_list|,
-name|Globals
-operator|.
-name|MARKED
-argument_list|)
-condition|)
-block|{
-return|return
-name|markedRenderer
-return|;
-block|}
 if|if
 condition|(
 operator|!
@@ -1926,6 +1907,31 @@ operator|=
 name|defRenderer
 expr_stmt|;
 comment|//Util.pr("("+row+","+column+"). "+status+" "+renderer.toString());
+comment|// For MARKED feature:
+if|if
+condition|(
+name|tableModel
+operator|.
+name|hasField
+argument_list|(
+name|row
+argument_list|,
+name|Globals
+operator|.
+name|MARKED
+argument_list|)
+operator|&&
+operator|(
+name|renderer
+operator|!=
+name|incRenderer
+operator|)
+condition|)
+block|{
+return|return
+name|markedRenderer
+return|;
+block|}
 return|return
 name|renderer
 return|;
@@ -2171,10 +2177,12 @@ DECL|class|Renderer
 specifier|private
 class|class
 name|Renderer
+comment|/*extends JTable implements TableCellRenderer {*/
 extends|extends
 name|DefaultTableCellRenderer
 block|{
 comment|//private DefaultTableCellRenderer darker;
+comment|//JLabel label = new AALabel();
 DECL|method|Renderer (Color c)
 specifier|public
 name|Renderer
@@ -2208,11 +2216,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-name|setForeground
-argument_list|(
-name|fg
-argument_list|)
-expr_stmt|;
+comment|//setForeground(fg);
 block|}
 DECL|method|firePropertyChange (String propertyName, boolean old, boolean newV)
 specifier|public
@@ -2254,6 +2258,7 @@ name|Object
 name|value
 parameter_list|)
 block|{
+comment|//System.out.println(""+value);
 if|if
 condition|(
 name|value
@@ -2269,13 +2274,12 @@ operator|)
 name|value
 argument_list|)
 expr_stmt|;
-name|super
-operator|.
-name|setValue
+name|setText
 argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+comment|//super.setValue(null);
 block|}
 elseif|else
 if|if
@@ -2293,8 +2297,6 @@ name|JLabel
 operator|)
 name|value
 decl_stmt|;
-name|super
-operator|.
 name|setIcon
 argument_list|(
 name|lab
@@ -2303,8 +2305,6 @@ name|getIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|super
-operator|.
 name|setToolTipText
 argument_list|(
 name|lab
@@ -2322,8 +2322,6 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
-name|super
-operator|.
 name|setText
 argument_list|(
 literal|null
@@ -2337,22 +2335,34 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-name|super
-operator|.
 name|setToolTipText
 argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-name|super
-operator|.
-name|setValue
+if|if
+condition|(
+name|value
+operator|!=
+literal|null
+condition|)
+name|setText
 argument_list|(
 name|value
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+else|else
+name|setText
+argument_list|(
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|//private class AALabel extends JLabel {
 DECL|method|paint (Graphics g)
 specifier|public
 name|void
@@ -2426,7 +2436,9 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
+comment|//super.paint(g2);
 block|}
+comment|//}
 block|}
 DECL|class|IncompleteRenderer
 class|class
@@ -2456,19 +2468,11 @@ name|Object
 name|value
 parameter_list|)
 block|{
-name|String
-name|txt
-init|=
-operator|(
-name|String
-operator|)
-name|value
-decl_stmt|;
 name|super
 operator|.
-name|setText
+name|setValue
 argument_list|(
-name|txt
+name|value
 argument_list|)
 expr_stmt|;
 name|super

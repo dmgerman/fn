@@ -124,6 +124,12 @@ name|ContentSelectorDialog2
 extends|extends
 name|JDialog
 block|{
+DECL|field|wordEditFieldListener
+name|ActionListener
+name|wordEditFieldListener
+init|=
+literal|null
+decl_stmt|;
 DECL|field|gbl
 name|GridBagLayout
 name|gbl
@@ -613,10 +619,8 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|wordEditField
-operator|.
-name|addActionListener
-argument_list|(
+name|wordEditFieldListener
+operator|=
 operator|new
 name|ActionListener
 argument_list|()
@@ -734,6 +738,12 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+expr_stmt|;
+name|wordEditField
+operator|.
+name|addActionListener
+argument_list|(
+name|wordEditFieldListener
 argument_list|)
 expr_stmt|;
 name|removeWord
@@ -1344,6 +1354,29 @@ init|=
 literal|false
 decl_stmt|;
 comment|// Watch if we need to rebuild entry editors
+comment|// Store if an entry is currently being edited:
+if|if
+condition|(
+operator|!
+name|wordEditField
+operator|.
+name|getText
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|""
+argument_list|)
+condition|)
+block|{
+name|wordEditFieldListener
+operator|.
+name|actionPerformed
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
 comment|// First remove the mappings for fields that have been deleted.
 comment|// If these were re-added, they will be added below, so it doesn't
 comment|// cause any harm to remove them here.

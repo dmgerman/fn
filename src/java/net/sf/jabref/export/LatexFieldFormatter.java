@@ -230,6 +230,17 @@ literal|"{"
 argument_list|)
 expr_stmt|;
 comment|// No formatting at all for these fields, to allow custom formatting?
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"preserveFieldFormatting"
+argument_list|)
+condition|)
 name|sb
 operator|.
 name|append
@@ -237,7 +248,23 @@ argument_list|(
 name|text
 argument_list|)
 expr_stmt|;
-comment|// Util.wrap2(text, GUIGlobals.LINE_LENGTH)
+else|else
+name|sb
+operator|.
+name|append
+argument_list|(
+name|Util
+operator|.
+name|wrap2
+argument_list|(
+name|text
+argument_list|,
+name|GUIGlobals
+operator|.
+name|LINE_LENGTH
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|sb
 operator|.
 name|append

@@ -22,6 +22,16 @@ name|java
 operator|.
 name|awt
 operator|.
+name|BorderLayout
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
 name|GridBagConstraints
 import|;
 end_import
@@ -157,6 +167,26 @@ operator|.
 name|regex
 operator|.
 name|Pattern
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|BorderFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JPanel
 import|;
 end_import
 
@@ -429,6 +459,17 @@ block|{
 name|super
 argument_list|(
 name|p0
+argument_list|,
+name|GUIGlobals
+operator|.
+name|wwwCiteSeerIcon
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"CiteSeer Transfer"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|panel
@@ -513,26 +554,22 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|JPanel
+name|main
+init|=
+operator|new
+name|JPanel
+argument_list|()
+decl_stmt|;
+name|main
+operator|.
 name|setLayout
 argument_list|(
 name|gbl
 argument_list|)
 expr_stmt|;
-name|SidePaneHeader
-name|header
-init|=
-operator|new
-name|SidePaneHeader
-argument_list|(
-literal|"CiteSeer Transfer"
-argument_list|,
-name|GUIGlobals
-operator|.
-name|wwwCiteSeerIcon
-argument_list|,
-name|this
-argument_list|)
-decl_stmt|;
+comment|//SidePaneHeader header = new SidePaneHeader
+comment|//	("CiteSeer Transfer", GUIGlobals.wwwCiteSeerIcon, this);
 name|con
 operator|.
 name|gridwidth
@@ -571,20 +608,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
-name|gbl
-operator|.
-name|setConstraints
-argument_list|(
-name|header
-argument_list|,
-name|con
-argument_list|)
-expr_stmt|;
-name|add
-argument_list|(
-name|header
-argument_list|)
-expr_stmt|;
+comment|//gbl.setConstraints(header, con);
+comment|//add(header);
 name|con
 operator|.
 name|insets
@@ -618,6 +643,8 @@ argument_list|,
 name|con
 argument_list|)
 expr_stmt|;
+name|main
+operator|.
 name|add
 argument_list|(
 name|progressBar
@@ -632,6 +659,8 @@ argument_list|,
 name|con
 argument_list|)
 expr_stmt|;
+name|main
+operator|.
 name|add
 argument_list|(
 name|progressBar2
@@ -646,9 +675,38 @@ argument_list|,
 name|con
 argument_list|)
 expr_stmt|;
+name|main
+operator|.
 name|add
 argument_list|(
 name|citeSeerProgress
+argument_list|)
+expr_stmt|;
+name|main
+operator|.
+name|setBorder
+argument_list|(
+name|BorderFactory
+operator|.
+name|createEmptyBorder
+argument_list|(
+literal|1
+argument_list|,
+literal|1
+argument_list|,
+literal|1
+argument_list|,
+literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|add
+argument_list|(
+name|main
+argument_list|,
+name|BorderLayout
+operator|.
+name|CENTER
 argument_list|)
 expr_stmt|;
 try|try
@@ -804,7 +862,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"I could not connect to host"
+literal|"Could not connect to host"
 argument_list|)
 operator|+
 literal|" "
@@ -1186,7 +1244,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"I couldn't seem to find an entry associated with this URL"
+literal|"Couldn't find an entry associated with this URL"
 argument_list|)
 operator|+
 literal|": \""
@@ -1287,7 +1345,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"I couldn't parse the following URL"
+literal|"Unable to parse the following URL"
 argument_list|)
 operator|+
 literal|": \""

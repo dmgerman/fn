@@ -417,12 +417,27 @@ argument_list|)
 condition|)
 block|{
 name|StringBuffer
-name|comment
+name|commentBuf
 init|=
-name|parseBracketedText
+name|parseBracketedTextExactly
 argument_list|()
 decl_stmt|;
 comment|/** 			 * 			 * Metadata are used to store Bibkeeper-specific 			 * information in .bib files. 			 * 			 * Metadata are stored in bibtex files in the format 			 * @comment{jabref-meta: type:data0;data1;data2;...} 			 * 			 * Each comment that starts with the META_FLAG is stored 			 * in the meta HashMap, with type as key. 			 * Unluckily, the old META_FLAG bibkeeper-meta: was used 			 * in JabRef 1.0 and 1.1, so we need to support it as 			 * well. At least for a while. We'll always save with the 			 * new one. 			 */
+name|String
+name|comment
+init|=
+name|commentBuf
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\n"
+argument_list|,
+literal|""
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|comment
@@ -562,6 +577,8 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// We remove all line breaks in the metadata - these will have been inserted
+comment|// to prevent too long lines when the file was saved, and are not part of the data.
 block|}
 comment|/** 			 * A custom entry type can also be stored in a @comment: 			 */
 if|if
@@ -1503,6 +1520,16 @@ comment|// to know when the string is finished.
 if|if
 condition|(
 name|isStandardBibtexField
+operator|||
+operator|!
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"preserveFieldFormatting"
+argument_list|)
 condition|)
 name|value
 operator|.

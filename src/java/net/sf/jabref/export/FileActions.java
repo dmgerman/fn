@@ -819,7 +819,7 @@ comment|// Write database entries. Take care, using CrossRefEntry-
 comment|// Comparator, that referred entries occur after referring
 comment|// ones. Apart from crossref requirements, entries will be
 comment|// sorted as they appear on the screen.
-name|TreeSet
+name|Set
 name|sorter
 init|=
 name|getSortedEntries
@@ -1711,6 +1711,27 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+if|if
+condition|(
+name|lfName
+operator|.
+name|equals
+argument_list|(
+literal|"oocalc"
+argument_list|)
+condition|)
+block|{
+name|OpenOfficeDocumentCreator
+operator|.
+name|exportOpenOfficeCalc
+argument_list|(
+name|outFile
+argument_list|,
+name|database
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 name|String
 name|encoding
 init|=
@@ -3141,11 +3162,17 @@ name|secD
 argument_list|,
 name|terD
 argument_list|,
+literal|false
+argument_list|,
 name|pri
 argument_list|,
 name|sec
 argument_list|,
 name|ter
+argument_list|,
+name|Globals
+operator|.
+name|KEY_FIELD
 argument_list|)
 argument_list|)
 argument_list|)

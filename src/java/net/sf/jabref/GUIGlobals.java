@@ -1188,6 +1188,7 @@ operator|+
 literal|"JabRef-Logo-small.gif"
 argument_list|)
 decl_stmt|,
+comment|//jabreflogo = GUIGlobals.class.getResource(pre + "JabRef-icon.png"),
 DECL|field|splashScreenImage
 name|splashScreenImage
 init|=
@@ -2314,7 +2315,7 @@ name|LANGUAGES
 operator|.
 name|put
 argument_list|(
-literal|"Francais"
+literal|"Fran\u00E7ais"
 argument_list|,
 literal|"fr"
 argument_list|)
