@@ -5968,6 +5968,12 @@ condition|(
 name|close
 condition|)
 block|{
+name|basePanel
+argument_list|()
+operator|.
+name|cleanUp
+argument_list|()
+expr_stmt|;
 name|tabbedPane
 operator|.
 name|remove

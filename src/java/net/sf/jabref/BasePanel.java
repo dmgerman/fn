@@ -238,6 +238,20 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|collab
+operator|.
+name|*
+import|;
+end_import
+
 begin_class
 DECL|class|BasePanel
 specifier|public
@@ -247,6 +261,8 @@ extends|extends
 name|JSplitPane
 implements|implements
 name|ClipboardOwner
+implements|,
+name|FileUpdateListener
 block|{
 DECL|field|ths
 name|BasePanel
@@ -289,6 +305,18 @@ init|=
 literal|null
 decl_stmt|;
 comment|// The filename of the database.
+DECL|field|fileMonitorHandle
+name|String
+name|fileMonitorHandle
+init|=
+literal|null
+decl_stmt|;
+DECL|field|saving
+name|boolean
+name|saving
+init|=
+literal|false
+decl_stmt|;
 DECL|field|encoding
 name|String
 name|encoding
@@ -487,6 +515,15 @@ name|JabRefPreferences
 name|prefs
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|JSplitPane
+operator|.
+name|HORIZONTAL_SPLIT
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
 name|database
 operator|=
 operator|new
@@ -574,13 +611,42 @@ expr_stmt|;
 name|setupMainPanel
 argument_list|()
 expr_stmt|;
-comment|/*if (prefs.getBoolean("autoComplete")) { 	    db.setCompleters(autoCompleters); 	    }*/
+comment|/*if (prefs.getBoolean("autoComplete")) {             db.setCompleters(autoCompleters);             }*/
 name|this
 operator|.
 name|file
 operator|=
 name|file
 expr_stmt|;
+comment|// Register so we get notifications about outside changes to the file.
+if|if
+condition|(
+name|file
+operator|!=
+literal|null
+condition|)
+try|try
+block|{
+name|fileMonitorHandle
+operator|=
+name|Globals
+operator|.
+name|fileUpdateMonitor
+operator|.
+name|addUpdateListener
+argument_list|(
+name|this
+argument_list|,
+name|file
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ex
+parameter_list|)
+block|{         }
 block|}
 DECL|method|database ()
 specifier|public
@@ -803,12 +869,42 @@ argument_list|)
 expr_stmt|;
 else|else
 block|{
+name|saving
+operator|=
+literal|true
+expr_stmt|;
 name|saveDatabase
 argument_list|(
 name|file
 argument_list|,
 literal|false
 argument_list|)
+expr_stmt|;
+try|try
+block|{
+name|Globals
+operator|.
+name|fileUpdateMonitor
+operator|.
+name|updateTimeStamp
+argument_list|(
+name|fileMonitorHandle
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|ex
+parameter_list|)
+block|{
+comment|// This means the file has not yet been registered, which is the case
+comment|// when doing a "Save as". Maybe we should change the monitor so no
+comment|// exception is cast.
+block|}
+name|saving
+operator|=
+literal|false
 expr_stmt|;
 name|undoManager
 operator|.
@@ -981,6 +1077,35 @@ argument_list|(
 literal|"save"
 argument_list|)
 expr_stmt|;
+comment|// Register so we get notifications about outside changes to the file.
+try|try
+block|{
+name|fileMonitorHandle
+operator|=
+name|Globals
+operator|.
+name|fileUpdateMonitor
+operator|.
+name|addUpdateListener
+argument_list|(
+name|ths
+argument_list|,
+name|file
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ex
+parameter_list|)
+block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
 name|prefs
 operator|.
 name|put
@@ -9796,6 +9921,77 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|fileUpdated ()
+specifier|public
+name|void
+name|fileUpdated
+parameter_list|()
+block|{
+if|if
+condition|(
+name|saving
+condition|)
+return|return;
+comment|// We are just saving the file, so this message is most likely due
+comment|// to bad timing. If not, we'll handle it on the next polling.
+name|Util
+operator|.
+name|pr
+argument_list|(
+literal|"File '"
+operator|+
+name|file
+operator|.
+name|getPath
+argument_list|()
+operator|+
+literal|"' has been modified."
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|fileRemoved ()
+specifier|public
+name|void
+name|fileRemoved
+parameter_list|()
+block|{
+name|Util
+operator|.
+name|pr
+argument_list|(
+literal|"File '"
+operator|+
+name|file
+operator|.
+name|getPath
+argument_list|()
+operator|+
+literal|"' has been deleted."
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|cleanUp ()
+specifier|public
+name|void
+name|cleanUp
+parameter_list|()
+block|{
+if|if
+condition|(
+name|fileMonitorHandle
+operator|!=
+literal|null
+condition|)
+name|Globals
+operator|.
+name|fileUpdateMonitor
+operator|.
+name|removeUpdateListener
+argument_list|(
+name|fileMonitorHandle
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
