@@ -88,6 +88,18 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|tree
+operator|.
+name|DefaultMutableTreeNode
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|undo
 operator|.
 name|CompoundEdit
@@ -208,6 +220,10 @@ decl_stmt|;
 DECL|field|list
 name|JList
 name|list
+decl_stmt|;
+DECL|field|tree
+name|JTree
+name|tree
 decl_stmt|;
 DECL|field|listModel
 name|ListModel
@@ -1652,6 +1668,27 @@ operator|.
 name|MULTIPLE_INTERVAL_SELECTION
 argument_list|)
 expr_stmt|;
+name|DefaultMutableTreeNode
+name|root
+init|=
+operator|new
+name|DefaultMutableTreeNode
+argument_list|(
+operator|new
+name|String
+argument_list|(
+literal|"All Entries"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|tree
+operator|=
+operator|new
+name|JTree
+argument_list|(
+name|root
+argument_list|)
+expr_stmt|;
 name|sp
 operator|=
 operator|new
@@ -1668,6 +1705,7 @@ operator|.
 name|HORIZONTAL_SCROLLBAR_AS_NEEDED
 argument_list|)
 expr_stmt|;
+comment|/*     sp = new JScrollPane(tree, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,             JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);     */
 name|con
 operator|.
 name|gridwidth
