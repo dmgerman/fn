@@ -1577,7 +1577,7 @@ literal|"eid"
 block|,
 literal|"search"
 block|,
-literal|"citeseerCitationCount"
+literal|"citeseercitationcount"
 block|}
 decl_stmt|;
 DECL|field|FIELD_DISPLAYS
@@ -1599,7 +1599,7 @@ name|FIELD_DISPLAYS
 operator|.
 name|put
 argument_list|(
-literal|"citeseerCitationCount"
+literal|"citeseercitationcount"
 argument_list|,
 literal|"Popularity"
 argument_list|)
@@ -2267,7 +2267,7 @@ name|fieldLength
 operator|.
 name|put
 argument_list|(
-literal|"citeseerCitationCount"
+literal|"citeseercitationcount"
 argument_list|,
 operator|new
 name|Integer
@@ -2552,7 +2552,7 @@ name|fieldWeight
 operator|.
 name|put
 argument_list|(
-literal|"citeseerCitationCount"
+literal|"citeseercitationcount"
 argument_list|,
 name|SMALL_W
 argument_list|)

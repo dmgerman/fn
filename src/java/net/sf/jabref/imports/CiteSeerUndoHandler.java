@@ -1248,13 +1248,13 @@ name|UndoableFieldChange
 argument_list|(
 name|bibEntry
 argument_list|,
-literal|"citeseerCitationCount"
+literal|"citeseercitationcount"
 argument_list|,
 name|bibEntry
 operator|.
 name|getField
 argument_list|(
-literal|"citeseerCitationCount"
+literal|"citeseercitationcount"
 argument_list|)
 argument_list|,
 name|newCount
@@ -1271,7 +1271,7 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-literal|"citeseerCitationCount"
+literal|"citeseercitationcount"
 argument_list|,
 name|newCount
 argument_list|)
