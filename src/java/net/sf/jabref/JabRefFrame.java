@@ -1360,6 +1360,17 @@ argument_list|,
 literal|"Find duplicates"
 argument_list|)
 decl_stmt|,
+DECL|field|plainTextImport
+name|plainTextImport
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"plainTextImport"
+argument_list|,
+literal|"New entry from plain text"
+argument_list|)
+decl_stmt|,
 DECL|field|customExpAction
 name|customExpAction
 init|=
@@ -4234,6 +4245,13 @@ argument_list|)
 expr_stmt|;
 name|bibtex
 operator|.
+name|add
+argument_list|(
+name|plainTextImport
+argument_list|)
+expr_stmt|;
+name|bibtex
+operator|.
 name|addSeparator
 argument_list|()
 expr_stmt|;
@@ -5307,6 +5325,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|plainTextImport
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|closeDatabaseAction
 operator|.
 name|setEnabled
@@ -5610,6 +5635,13 @@ argument_list|)
 expr_stmt|;
 block|}
 name|newEntryAction
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|plainTextImport
 operator|.
 name|setEnabled
 argument_list|(

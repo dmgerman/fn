@@ -1182,6 +1182,34 @@ name|pre
 operator|+
 literal|"JabRef-splash.png"
 argument_list|)
+decl_stmt|,
+DECL|field|completeTagIcon
+name|completeTagIcon
+init|=
+name|GUIGlobals
+operator|.
+name|class
+operator|.
+name|getResource
+argument_list|(
+name|pre
+operator|+
+literal|"completeItem.png"
+argument_list|)
+decl_stmt|,
+DECL|field|wrongTagIcon
+name|wrongTagIcon
+init|=
+name|GUIGlobals
+operator|.
+name|class
+operator|.
+name|getResource
+argument_list|(
+name|pre
+operator|+
+literal|"wrongItem.png"
+argument_list|)
 decl_stmt|;
 comment|/*public static incompleteEntryIcon = new ImageIcon(incompleteIcon);     static {       incompleteEntryIcon.setTool     }*/
 comment|// Help files (in HTML format):

@@ -745,9 +745,47 @@ argument_list|(
 name|typeMenu
 argument_list|)
 expr_stmt|;
+name|add
+argument_list|(
+operator|new
+name|AbstractAction
+argument_list|(
+literal|"Import plain text"
+argument_list|)
+block|{
+specifier|public
+name|void
+name|actionPerformed
+parameter_list|(
+name|ActionEvent
+name|e
+parameter_list|)
+block|{
+try|try
+block|{
+name|panel
+operator|.
+name|runCommand
+argument_list|(
+literal|"importPlainText"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|ex
+parameter_list|)
+block|{}
+block|}
+block|}
+argument_list|)
+expr_stmt|;
 name|addSeparator
 argument_list|()
 expr_stmt|;
+comment|//        add(groupMenu);
+comment|//        add(groupRemoveMenu);
 block|}
 comment|/**      * Remove all types from the menu. Then cycle through all available      * types, and add them.      */
 DECL|method|populateTypeMenu ()

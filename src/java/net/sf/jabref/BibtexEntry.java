@@ -988,7 +988,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Then write remaining fields, if any.
-comment|/*for (int i=0; i<GUIGlobals.ALL_FIELDS.length; i++) { 	    if (!written.containsKey(GUIGlobals.ALL_FIELDS[i])&&               GUIGlobals.isWriteableField(GUIGlobals.ALL_FIELDS[i])               )         {             writeField(GUIGlobals.ALL_FIELDS[i], out);         } 	}//*/
+comment|/*for (int i=0; i<GUIGlobals.ALL_FIELDS.length; i++) {             if (!written.containsKey(GUIGlobals.ALL_FIELDS[i])&&               GUIGlobals.isWriteableField(GUIGlobals.ALL_FIELDS[i])               )         {             writeField(GUIGlobals.ALL_FIELDS[i], out);         }         }//*/
 for|for
 control|(
 name|java
