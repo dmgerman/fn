@@ -288,7 +288,7 @@ name|helpDiag
 argument_list|,
 name|GUIGlobals
 operator|.
-name|medlineHelp
+name|citeSeerHelp
 argument_list|,
 literal|"Help"
 argument_list|)

@@ -723,44 +723,15 @@ argument_list|(
 name|select
 argument_list|)
 expr_stmt|;
-name|settings
-operator|.
-name|addSeparator
-argument_list|()
-expr_stmt|;
-name|settings
-operator|.
-name|add
-argument_list|(
-name|searchReq
-argument_list|)
-expr_stmt|;
-name|settings
-operator|.
-name|add
-argument_list|(
-name|searchOpt
-argument_list|)
-expr_stmt|;
-name|settings
-operator|.
-name|add
-argument_list|(
-name|searchGen
-argument_list|)
-expr_stmt|;
-name|settings
-operator|.
-name|addSeparator
-argument_list|()
-expr_stmt|;
-name|settings
-operator|.
-name|add
-argument_list|(
-name|searchAll
-argument_list|)
-expr_stmt|;
+comment|// 2005.03.29, trying to remove field category searches, to simplify
+comment|// search usability.
+comment|//settings.addSeparator();
+comment|//settings.add(searchReq);
+comment|//settings.add(searchOpt);
+comment|//settings.add(searchGen);
+comment|//settings.addSeparator();
+comment|//settings.add(searchAll);
+comment|// ---------------------------------------------------------------
 name|settings
 operator|.
 name|addSeparator
@@ -1112,12 +1083,7 @@ argument_list|(
 name|searchField
 argument_list|)
 expr_stmt|;
-name|con
-operator|.
-name|gridwidth
-operator|=
-literal|1
-expr_stmt|;
+comment|//con.gridwidth = 1;
 name|gbl
 operator|.
 name|setConstraints

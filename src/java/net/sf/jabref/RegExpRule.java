@@ -103,10 +103,14 @@ name|m_caseSensitiveSearch
 operator|=
 name|caseSensitive
 expr_stmt|;
+comment|// 2005.03.29, trying to remove field category searches, to simplify
+comment|// search usability.
 name|m_searchAll
 operator|=
-name|searchAll
+literal|true
 expr_stmt|;
+comment|//m_searchAll = searchAll;
+comment|// ---------------------------------------------------
 name|m_searchReq
 operator|=
 name|searchReq

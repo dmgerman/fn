@@ -1435,6 +1435,11 @@ name|medlineHelp
 init|=
 literal|"MedlineHelp.html"
 decl_stmt|,
+DECL|field|citeSeerHelp
+name|citeSeerHelp
+init|=
+literal|"CiteSeerHelp.html"
+decl_stmt|,
 DECL|field|generalFieldsHelp
 name|generalFieldsHelp
 init|=

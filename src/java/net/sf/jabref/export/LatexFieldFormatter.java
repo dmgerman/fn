@@ -564,10 +564,19 @@ expr_stmt|;
 comment|//if (tell++> 10) System.exit(0);
 block|}
 return|return
+name|Util
+operator|.
+name|wrap2
+argument_list|(
 name|sb
 operator|.
 name|toString
 argument_list|()
+argument_list|,
+name|GUIGlobals
+operator|.
+name|LINE_LENGTH
+argument_list|)
 return|;
 block|}
 DECL|method|writeText (String text, int start_pos, int end_pos)
