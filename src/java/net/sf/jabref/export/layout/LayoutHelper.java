@@ -156,6 +156,32 @@ name|IS_OPTION_FIELD
 init|=
 literal|5
 decl_stmt|;
+DECL|field|IS_GROUP_START
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|IS_GROUP_START
+init|=
+literal|6
+decl_stmt|;
+DECL|field|IS_GROUP_END
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|IS_GROUP_END
+init|=
+literal|7
+decl_stmt|;
+DECL|field|currentGroup
+specifier|private
+specifier|static
+name|String
+name|currentGroup
+init|=
+literal|null
+decl_stmt|;
 comment|//~ Instance fields ////////////////////////////////////////////////////////
 comment|//public static final int IS_OPTION_FIELD_PARAM = 6;
 DECL|field|_in
@@ -291,6 +317,22 @@ name|i
 operator|==
 name|IS_FIELD_END
 operator|)
+operator|||
+operator|(
+name|si
+operator|.
+name|i
+operator|==
+name|IS_GROUP_START
+operator|)
+operator|||
+operator|(
+name|si
+operator|.
+name|i
+operator|==
+name|IS_GROUP_END
+operator|)
 condition|)
 block|{
 name|si
@@ -323,6 +365,32 @@ decl_stmt|;
 return|return
 name|layout
 return|;
+block|}
+DECL|method|getCurrentGroup ()
+specifier|public
+specifier|static
+name|String
+name|getCurrentGroup
+parameter_list|()
+block|{
+return|return
+name|currentGroup
+return|;
+block|}
+DECL|method|setCurrentGroup (String newGroup)
+specifier|public
+specifier|static
+name|void
+name|setCurrentGroup
+parameter_list|(
+name|String
+name|newGroup
+parameter_list|)
+block|{
+name|currentGroup
+operator|=
+name|newGroup
+expr_stmt|;
 block|}
 comment|/**      *      */
 DECL|method|getBracketedField (int _field)
@@ -1141,6 +1209,25 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+elseif|else
+if|if
+condition|(
+name|name
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"begingroup"
+argument_list|)
+condition|)
+block|{
+comment|// get field name
+name|getBracketedField
+argument_list|(
+name|IS_GROUP_START
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 block|}
 elseif|else
 if|if
@@ -1223,6 +1310,24 @@ name|IS_FIELD_END
 argument_list|)
 expr_stmt|;
 return|return;
+block|}
+elseif|else
+if|if
+condition|(
+name|name
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"endgroup"
+argument_list|)
+condition|)
+block|{
+comment|// get field name
+name|getBracketedField
+argument_list|(
+name|IS_GROUP_END
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|// for all other cases

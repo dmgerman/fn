@@ -313,6 +313,32 @@ block|}
 comment|//========================================================
 comment|// rearranges the author names
 comment|// input format string: LN, FN [and LN, FN]*
+comment|// output format string: FN LN [, FN LN]+ [and FN LN]
+comment|//========================================================
+DECL|method|fixAuthor_commas (String in)
+specifier|public
+specifier|static
+name|String
+name|fixAuthor_commas
+parameter_list|(
+name|String
+name|in
+parameter_list|)
+block|{
+return|return
+operator|(
+name|fixAuthor
+argument_list|(
+name|in
+argument_list|,
+literal|false
+argument_list|)
+operator|)
+return|;
+block|}
+comment|//========================================================
+comment|// rearranges the author names
+comment|// input format string: LN, FN [and LN, FN]*
 comment|// output format string: FN LN [and FN LN]*
 comment|//========================================================
 DECL|method|fixAuthor (String in)
@@ -325,7 +351,36 @@ name|String
 name|in
 parameter_list|)
 block|{
+return|return
+operator|(
+name|fixAuthor
+argument_list|(
+name|in
+argument_list|,
+literal|true
+argument_list|)
+operator|)
+return|;
+block|}
+DECL|method|fixAuthor (String in, boolean includeAnds)
+specifier|public
+specifier|static
+name|String
+name|fixAuthor
+parameter_list|(
+name|String
+name|in
+parameter_list|,
+name|boolean
+name|includeAnds
+parameter_list|)
+block|{
 comment|// Check if we have cached this particular name string before:
+if|if
+condition|(
+name|includeAnds
+condition|)
+block|{
 name|Object
 name|old
 init|=
@@ -350,6 +405,34 @@ name|String
 operator|)
 name|old
 return|;
+block|}
+else|else
+block|{
+name|Object
+name|old
+init|=
+name|Globals
+operator|.
+name|nameCache_commas
+operator|.
+name|get
+argument_list|(
+name|in
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|old
+operator|!=
+literal|null
+condition|)
+return|return
+operator|(
+name|String
+operator|)
+name|old
+return|;
+block|}
 comment|//Util.pr("firstnamefirst");
 name|StringBuffer
 name|sb
@@ -409,10 +492,21 @@ name|length
 operator|<
 literal|2
 condition|)
-return|return
-name|in
-return|;
-comment|// something went wrong or there is no ","
+comment|// there is no comma, assume we have FN LN order
+name|sb
+operator|.
+name|append
+argument_list|(
+name|authors
+index|[
+name|i
+index|]
+operator|.
+name|trim
+argument_list|()
+argument_list|)
+expr_stmt|;
+else|else
 name|sb
 operator|.
 name|append
@@ -438,6 +532,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|includeAnds
+condition|)
+block|{
+if|if
+condition|(
 name|i
 operator|!=
 name|authors
@@ -454,6 +553,47 @@ argument_list|(
 literal|" and "
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+if|if
+condition|(
+name|i
+operator|==
+name|authors
+operator|.
+name|length
+operator|-
+literal|2
+condition|)
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|" and "
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|i
+operator|!=
+operator|(
+name|authors
+operator|.
+name|length
+operator|-
+literal|1
+operator|)
+condition|)
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|", "
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|String
 name|fixed
