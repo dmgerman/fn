@@ -222,6 +222,10 @@ name|overwriteNone
 init|=
 literal|false
 decl_stmt|;
+DECL|field|recordFound
+name|BooleanAssign
+name|recordFound
+decl_stmt|;
 DECL|field|newAuthors
 name|String
 name|newAuthors
@@ -480,7 +484,7 @@ operator|)
 return|;
 block|}
 comment|/**      * @param be      *       * We must remember to clobber the author field, because of the current      * implementation of addAuthor()      */
-DECL|method|CiteSeerUndoHandler (NamedCompound newCompound, BibtexEntry be, BasePanel basePanel)
+DECL|method|CiteSeerUndoHandler (NamedCompound newCompound, BibtexEntry be, BasePanel basePanel, BooleanAssign assignment)
 specifier|public
 name|CiteSeerUndoHandler
 parameter_list|(
@@ -492,6 +496,9 @@ name|be
 parameter_list|,
 name|BasePanel
 name|basePanel
+parameter_list|,
+name|BooleanAssign
+name|assignment
 parameter_list|)
 block|{
 name|citeseerNamedCompound
@@ -505,6 +512,17 @@ expr_stmt|;
 name|panel
 operator|=
 name|basePanel
+expr_stmt|;
+name|recordFound
+operator|=
+name|assignment
+expr_stmt|;
+name|recordFound
+operator|.
+name|setValue
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|characters (char[] ch, int start, int length)
@@ -897,6 +915,25 @@ parameter_list|)
 throws|throws
 name|SAXException
 block|{
+if|if
+condition|(
+name|name
+operator|.
+name|equals
+argument_list|(
+literal|"record"
+argument_list|)
+condition|)
+block|{
+name|recordFound
+operator|.
+name|setValue
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
 if|if
 condition|(
 name|name
