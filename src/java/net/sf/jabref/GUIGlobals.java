@@ -1213,6 +1213,11 @@ name|exportCustomizationHelp
 init|=
 literal|"CustomExports.html"
 decl_stmt|,
+DECL|field|medlineHelp
+name|medlineHelp
+init|=
+literal|"MedlineHelp.html"
+decl_stmt|,
 comment|//      searchHelp = "SearchHelp.html",
 DECL|field|aboutPage
 name|aboutPage
