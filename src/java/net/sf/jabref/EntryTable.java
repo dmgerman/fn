@@ -157,6 +157,11 @@ DECL|field|ctrlClick
 name|ctrlClick
 init|=
 literal|false
+decl_stmt|,
+DECL|field|selectionListenerOn
+name|selectionListenerOn
+init|=
+literal|true
 decl_stmt|;
 comment|//RenderingHints renderingHints;
 DECL|field|panel
@@ -480,10 +485,24 @@ block|{
 if|if
 condition|(
 operator|!
+name|selectionListenerOn
+condition|)
+return|return;
+if|if
+condition|(
+operator|!
 name|e
 operator|.
 name|getValueIsAdjusting
 argument_list|()
+condition|)
+block|{
+if|if
+condition|(
+name|getSelectedRowCount
+argument_list|()
+operator|==
+literal|1
 condition|)
 block|{
 name|int
@@ -499,6 +518,7 @@ name|row
 operator|>=
 literal|0
 condition|)
+block|{
 name|panel
 operator|.
 name|updateWiewToSelected
@@ -519,6 +539,32 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+comment|/* With a multiple selection, there are three alternative behaviours:                    1. Disable the entry editor. Do not update it.                    2. Do not disable the entry editor, and do not update it.                    3. Update the entry editor, and keep it enabled.                     We currently implement 1 and 2, and choose between them based on                    prefs.getBoolean("disableOnMultipleSelection");                    */
+if|if
+condition|(
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"disableOnMultipleSelection"
+argument_list|)
+condition|)
+block|{
+comment|// 1.
+name|panel
+operator|.
+name|setEntryEditorEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+comment|// 2. Do nothing.
+block|}
 block|}
 block|}
 block|}
@@ -546,6 +592,37 @@ name|removeListSelectionListener
 argument_list|(
 name|previewListener
 argument_list|)
+expr_stmt|;
+block|}
+comment|/**        * This method overrides the superclass' to disable the selection listener while the        * row selection is adjusted.        */
+DECL|method|setRowSelectionInterval (int row1, int row2)
+specifier|public
+name|void
+name|setRowSelectionInterval
+parameter_list|(
+name|int
+name|row1
+parameter_list|,
+name|int
+name|row2
+parameter_list|)
+block|{
+name|selectionListenerOn
+operator|=
+literal|false
+expr_stmt|;
+name|super
+operator|.
+name|setRowSelectionInterval
+argument_list|(
+name|row1
+argument_list|,
+name|row2
+argument_list|)
+expr_stmt|;
+name|selectionListenerOn
+operator|=
+literal|true
 expr_stmt|;
 block|}
 DECL|method|setWidths ()

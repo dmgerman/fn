@@ -7714,7 +7714,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Biblioscape Tag File"
+literal|"Biblioscape Tag file"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -7853,6 +7853,20 @@ literal|"HTML"
 argument_list|)
 argument_list|)
 decl_stmt|,
+DECL|field|simpleHtmlItem
+name|simpleHtmlItem
+init|=
+operator|new
+name|JMenuItem
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Simple HTML"
+argument_list|)
+argument_list|)
+decl_stmt|,
 comment|//plainTextItem = new JMenuItem(Globals.lang("Plain text")),
 DECL|field|docbookItem
 name|docbookItem
@@ -7922,6 +7936,22 @@ block|{
 name|lfFileName
 operator|=
 literal|"html"
+expr_stmt|;
+name|extension
+operator|=
+literal|".html"
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|source
+operator|==
+name|simpleHtmlItem
+condition|)
+block|{
+name|lfFileName
+operator|=
+literal|"simplehtml"
 expr_stmt|;
 name|extension
 operator|=
@@ -8103,6 +8133,20 @@ operator|.
 name|add
 argument_list|(
 name|htmlItem
+argument_list|)
+expr_stmt|;
+name|simpleHtmlItem
+operator|.
+name|addActionListener
+argument_list|(
+name|listener
+argument_list|)
+expr_stmt|;
+name|menu
+operator|.
+name|add
+argument_list|(
+name|simpleHtmlItem
 argument_list|)
 expr_stmt|;
 comment|//plainTextItem.addActionListener(listener);

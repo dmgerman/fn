@@ -3743,6 +3743,21 @@ name|requestFocus
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Reports the enabled status of the editor, as set by setEnabled()      */
+DECL|method|isEnabled ()
+specifier|public
+name|boolean
+name|isEnabled
+parameter_list|()
+block|{
+return|return
+name|source
+operator|.
+name|isEnabled
+argument_list|()
+return|;
+block|}
+comment|/**      * Sets the enabled status of all text fields of the entry editor.      */
 DECL|method|setEnabled (boolean enabled)
 specifier|public
 name|void
@@ -6348,24 +6363,6 @@ name|panel
 operator|.
 name|entryTable
 operator|.
-name|setColumnSelectionInterval
-argument_list|(
-literal|0
-argument_list|,
-name|panel
-operator|.
-name|entryTable
-operator|.
-name|getColumnCount
-argument_list|()
-operator|-
-literal|1
-argument_list|)
-expr_stmt|;
-name|panel
-operator|.
-name|entryTable
-operator|.
 name|ensureVisible
 argument_list|(
 name|row
@@ -6564,6 +6561,12 @@ argument_list|()
 expr_stmt|;
 name|updateSource
 argument_list|()
+expr_stmt|;
+name|panel
+operator|.
+name|showing
+operator|=
+name|be
 expr_stmt|;
 if|if
 condition|(
