@@ -2239,29 +2239,24 @@ name|Object
 name|citekey
 decl_stmt|;
 comment|// check if lyxpipe is defined
+comment|//File lyxpipe = new File( System.getProperty("user.home")+File.separator+".lyx/lyxpipe" + ".in");
 name|File
 name|lyxpipe
 init|=
 operator|new
 name|File
 argument_list|(
-name|System
+name|prefs
 operator|.
-name|getProperty
+name|get
 argument_list|(
-literal|"user.home"
+literal|"lyxpipe"
 argument_list|)
-operator|+
-name|File
-operator|.
-name|separator
-operator|+
-literal|".lyx/lyxpipe"
 operator|+
 literal|".in"
 argument_list|)
 decl_stmt|;
-comment|//File lyxpipe = new File( prefs.get("lyxpipe") +".in"); // this needs to fixed because it gives "asdf" when going prefs.get("lyxpipe")
+comment|// this needs to fixed because it gives "asdf" when going prefs.get("lyxpipe")
 if|if
 condition|(
 operator|!
@@ -2396,6 +2391,20 @@ name|KEY_FIELD
 argument_list|)
 expr_stmt|;
 comment|// if the key is empty we give a warning and ignore this entry
+if|if
+condition|(
+name|citekey
+operator|==
+literal|null
+operator|||
+name|citekey
+operator|.
+name|equals
+argument_list|(
+literal|""
+argument_list|)
+condition|)
+continue|continue;
 name|citeStr
 operator|+=
 literal|","
