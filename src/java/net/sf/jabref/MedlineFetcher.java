@@ -282,18 +282,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//add(hd, BorderLayout.NORTH);
-name|ok
-operator|.
-name|setToolTipText
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Fetch Medline"
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|//ok.setToolTipText(Globals.lang("Fetch Medline"));
 name|setLayout
 argument_list|(
 name|gbl
@@ -691,10 +680,10 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Medline entries fetched:"
+literal|"Medline entries fetched"
 argument_list|)
 operator|+
-literal|" "
+literal|": "
 operator|+
 name|bibs
 operator|.
@@ -746,9 +735,19 @@ name|panel
 operator|.
 name|frame
 argument_list|,
-literal|"Sorry, I was expecting a semicolon or comma separated list of Medline IDs (numbers)!"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Please enter a semicolon or comma separated list of Medline IDs (numbers)."
+argument_list|)
 argument_list|,
-literal|"Input Error"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Input error"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.

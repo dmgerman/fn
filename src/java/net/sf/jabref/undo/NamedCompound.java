@@ -67,7 +67,12 @@ name|this
 operator|.
 name|name
 operator|=
+name|Globals
+operator|.
+name|lang
+argument_list|(
 name|name
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getUndoPresentationName ()

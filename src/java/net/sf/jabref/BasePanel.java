@@ -1063,7 +1063,14 @@ argument_list|)
 expr_stmt|;
 name|output
 argument_list|(
-literal|"Copied "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Copied"
+argument_list|)
+operator|+
+literal|" "
 operator|+
 operator|(
 name|bes
@@ -1076,9 +1083,25 @@ name|bes
 operator|.
 name|length
 operator|+
-literal|" entries."
+literal|" "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"entries"
+argument_list|)
 else|:
-literal|"1 entry."
+literal|"1 "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"entry"
+argument_list|)
+operator|+
+literal|"."
 operator|)
 argument_list|)
 expr_stmt|;
@@ -1338,7 +1361,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Cut"
+literal|"Cut_pr"
 argument_list|)
 operator|+
 literal|" "
@@ -1866,7 +1889,14 @@ argument_list|()
 expr_stmt|;
 name|output
 argument_list|(
-literal|"Pasted "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Pasted"
+argument_list|)
+operator|+
+literal|" "
 operator|+
 operator|(
 name|bes
@@ -1879,10 +1909,26 @@ name|bes
 operator|.
 name|length
 operator|+
-literal|" entries."
+literal|" "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"entries"
+argument_list|)
 else|:
-literal|"1 entry."
+literal|"1 "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"entry"
+argument_list|)
 operator|)
+operator|+
+literal|"."
 argument_list|)
 expr_stmt|;
 name|refreshTable
@@ -2588,9 +2634,19 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"First select the entries you want keys to be generated for."
+argument_list|)
 argument_list|,
-literal|"Autogenerate Bibtexkey"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Autogenerate BibTeX key"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -2601,18 +2657,37 @@ return|return ;
 block|}
 name|output
 argument_list|(
-literal|"Generating Bibtexkey for "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Generating BibTeX key for"
+argument_list|)
+operator|+
+literal|" "
 operator|+
 name|numSelected
+operator|+
+literal|" "
 operator|+
 operator|(
 name|numSelected
 operator|>
 literal|1
 condition|?
-literal|" entries"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"entries"
+argument_list|)
 else|:
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"entry"
+argument_list|)
 operator|)
 argument_list|)
 expr_stmt|;
@@ -4255,7 +4330,14 @@ argument_list|)
 expr_stmt|;
 name|output
 argument_list|(
-literal|"Added new "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Added new"
+argument_list|)
+operator|+
+literal|" '"
 operator|+
 name|type
 operator|.
@@ -4265,7 +4347,16 @@ operator|.
 name|toLowerCase
 argument_list|()
 operator|+
-literal|" entry."
+literal|"' "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"entry"
+argument_list|)
+operator|+
+literal|"."
 argument_list|)
 expr_stmt|;
 name|refreshTable

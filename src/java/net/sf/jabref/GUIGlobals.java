@@ -508,7 +508,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"Copy.gif"
+literal|"Copy3.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|cutIconFile
@@ -522,7 +522,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"Cut.gif"
+literal|"Cut2.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|copyKeyIconFile
