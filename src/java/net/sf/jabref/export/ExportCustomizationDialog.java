@@ -742,6 +742,10 @@ argument_list|,
 name|closeAction
 argument_list|)
 expr_stmt|;
+comment|//am = table.getActionMap();
+comment|//im = table.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW);
+comment|//im.put(frame.prefs().getKey("Close dialog"), "close");
+comment|//am.put("close", closeAction);
 name|main
 operator|.
 name|add
