@@ -268,7 +268,7 @@ name|BasePanel
 name|basePanel
 parameter_list|)
 function_decl|;
-comment|/**      * @param searchOptions The search options to apply.      * @return true if this group contains the specified entry, false otherwise.      */
+comment|/**      * @param searchOptions      *            The search options to apply.      * @return true if this group contains the specified entry, false otherwise.      */
 DECL|method|contains (Map searchOptions, BibtexEntry entry)
 specifier|public
 specifier|abstract
@@ -293,6 +293,95 @@ name|BibtexEntry
 name|entry
 parameter_list|)
 function_decl|;
+comment|/**      * @return true if this group contains any of the specified entries, false      *         otherwise.      */
+DECL|method|containsAny (BibtexEntry[] entries)
+specifier|public
+name|boolean
+name|containsAny
+parameter_list|(
+name|BibtexEntry
+index|[]
+name|entries
+parameter_list|)
+block|{
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|entries
+operator|.
+name|length
+condition|;
+operator|++
+name|i
+control|)
+if|if
+condition|(
+name|contains
+argument_list|(
+name|entries
+index|[
+name|i
+index|]
+argument_list|)
+condition|)
+return|return
+literal|true
+return|;
+return|return
+literal|false
+return|;
+block|}
+comment|/**      * @return true if this group contains all of the specified entries, false      *         otherwise.      */
+DECL|method|containsAll (BibtexEntry[] entries)
+specifier|public
+name|boolean
+name|containsAll
+parameter_list|(
+name|BibtexEntry
+index|[]
+name|entries
+parameter_list|)
+block|{
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|entries
+operator|.
+name|length
+condition|;
+operator|++
+name|i
+control|)
+if|if
+condition|(
+operator|!
+name|contains
+argument_list|(
+name|entries
+index|[
+name|i
+index|]
+argument_list|)
+condition|)
+return|return
+literal|false
+return|;
+return|return
+literal|true
+return|;
+block|}
 comment|/**      * @return A deep copy of this object.      */
 DECL|method|deepCopy ()
 specifier|public
