@@ -425,6 +425,7 @@ literal|0
 decl_stmt|;
 DECL|method|createNeutralId ()
 specifier|public
+specifier|synchronized
 specifier|static
 name|String
 name|createNeutralId

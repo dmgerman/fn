@@ -1842,6 +1842,21 @@ name|fireTableDataChanged
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|TEST_TEST ()
+specifier|public
+name|void
+name|TEST_TEST
+parameter_list|()
+block|{
+name|sorter
+operator|.
+name|index
+argument_list|()
+expr_stmt|;
+name|fireTableDataChanged
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|isCellEditable (int row, int col)
 specifier|public
 name|boolean

@@ -413,6 +413,7 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|entryTable
+specifier|public
 name|EntryTable
 name|entryTable
 init|=
@@ -435,6 +436,10 @@ decl_stmt|;
 DECL|field|citeSeerFetcher
 name|CiteSeerFetcher
 name|citeSeerFetcher
+decl_stmt|;
+DECL|field|citeSeerFetcherPanel
+name|CiteSeerFetcherPanel
+name|citeSeerFetcherPanel
 decl_stmt|;
 DECL|field|rcm
 name|RightClickMenu
@@ -835,6 +840,11 @@ name|void
 name|action
 parameter_list|()
 block|{
+name|frame
+operator|.
+name|block
+argument_list|()
+expr_stmt|;
 comment|//(new Thread() {
 comment|//public void run() {
 name|int
@@ -913,6 +923,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|frame
+operator|.
+name|unblock
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 argument_list|)
@@ -8838,6 +8853,18 @@ argument_list|,
 name|sidePaneManager
 argument_list|)
 expr_stmt|;
+name|citeSeerFetcherPanel
+operator|=
+operator|new
+name|CiteSeerFetcherPanel
+argument_list|(
+name|this
+argument_list|,
+name|sidePaneManager
+argument_list|,
+name|citeSeerFetcher
+argument_list|)
+expr_stmt|;
 name|sidePaneManager
 operator|.
 name|register
@@ -8868,6 +8895,15 @@ argument_list|(
 literal|"search"
 argument_list|,
 name|searchManager
+argument_list|)
+expr_stmt|;
+name|sidePaneManager
+operator|.
+name|register
+argument_list|(
+literal|"CiteSeerPanel"
+argument_list|,
+name|citeSeerFetcherPanel
 argument_list|)
 expr_stmt|;
 name|sidePaneManager
@@ -8954,6 +8990,14 @@ name|void
 name|refreshTable
 parameter_list|()
 block|{
+name|long
+name|tic
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+decl_stmt|;
 comment|// This method is called by EntryTypeForm when a field value is
 comment|// stored. The table is scheduled for repaint.
 name|entryTable
@@ -8983,6 +9027,7 @@ name|lastSearchHits
 argument_list|)
 expr_stmt|;
 else|else
+comment|//tableModel.TEST_TEST();
 name|tableModel
 operator|.
 name|remap
@@ -9013,6 +9058,29 @@ argument_list|)
 expr_stmt|;
 comment|//entryTable.revalidate();r
 comment|//entryTable.repaint();
+name|long
+name|toc
+init|=
+name|System
+operator|.
+name|currentTimeMillis
+argument_list|()
+decl_stmt|;
+name|Util
+operator|.
+name|pr
+argument_list|(
+literal|"Refresh took: "
+operator|+
+operator|(
+name|toc
+operator|-
+name|tic
+operator|)
+operator|+
+literal|" ms"
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|updatePreamble ()
 specifier|public

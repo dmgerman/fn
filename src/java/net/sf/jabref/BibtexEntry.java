@@ -1244,6 +1244,31 @@ return|return
 name|clone
 return|;
 block|}
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+literal|"Entry:"
+operator|+
+name|getType
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|":"
+operator|+
+name|getField
+argument_list|(
+name|Globals
+operator|.
+name|KEY_FIELD
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

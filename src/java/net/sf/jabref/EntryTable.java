@@ -465,10 +465,16 @@ operator|>=
 literal|0
 condition|)
 block|{
+specifier|final
+name|int
+name|initoffset
+init|=
+literal|3
+decl_stmt|;
 name|int
 name|xoffset
 init|=
-literal|3
+name|initoffset
 decl_stmt|;
 for|for
 control|(
@@ -547,7 +553,7 @@ name|cw
 operator|-
 literal|2
 operator|*
-name|xoffset
+name|initoffset
 argument_list|,
 name|ch
 comment|/*-2*offset*/
