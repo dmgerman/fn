@@ -2621,17 +2621,17 @@ block|}
 DECL|method|getAcChoices ()
 specifier|public
 name|byte
-expr|]
+index|[]
 name|getAcChoices
-argument_list|()
+parameter_list|()
 block|{
 comment|// First we count how many checkboxes the user has selected
 comment|// for which fields to autocomplete.
 name|int
 name|count
-operator|=
+init|=
 literal|0
-block|;
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -2665,13 +2665,13 @@ comment|// Then we build the byte array.
 name|byte
 index|[]
 name|choices
-operator|=
+init|=
 operator|new
 name|byte
 index|[
 name|count
 index|]
-expr_stmt|;
+decl_stmt|;
 name|count
 operator|=
 literal|0
@@ -2721,9 +2721,6 @@ return|return
 name|choices
 return|;
 block|}
-end_class
-
-begin_class
 DECL|class|OkAction
 class|class
 name|OkAction
@@ -2989,9 +2986,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-end_class
-
-begin_class
 DECL|class|CancelAction
 class|class
 name|CancelAction
@@ -3025,8 +3019,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+block|}
 end_class
 
-unit|}
 end_unit
 
