@@ -9878,6 +9878,8 @@ operator|.
 name|revalidate
 argument_list|()
 expr_stmt|;
+name|loop
+label|:
 for|for
 control|(
 name|int
@@ -9895,6 +9897,18 @@ name|i
 operator|++
 control|)
 block|{
+if|if
+condition|(
+name|bes
+index|[
+name|i
+index|]
+operator|==
+literal|null
+condition|)
+continue|continue
+name|loop
+continue|;
 name|int
 name|row
 init|=
