@@ -63,12 +63,7 @@ specifier|private
 name|BibtexString
 name|string
 decl_stmt|;
-DECL|field|pos
-specifier|private
-name|int
-name|pos
-decl_stmt|;
-DECL|method|UndoableInsertString (BasePanel panel, BibtexDatabase base, BibtexString string, int pos)
+DECL|method|UndoableInsertString (BasePanel panel, BibtexDatabase base, BibtexString string)
 specifier|public
 name|UndoableInsertString
 parameter_list|(
@@ -80,9 +75,6 @@ name|base
 parameter_list|,
 name|BibtexString
 name|string
-parameter_list|,
-name|int
-name|pos
 parameter_list|)
 block|{
 name|this
@@ -102,12 +94,6 @@ operator|.
 name|string
 operator|=
 name|string
-expr_stmt|;
-name|this
-operator|.
-name|pos
-operator|=
-name|pos
 expr_stmt|;
 block|}
 DECL|method|getUndoPresentationName ()
@@ -174,7 +160,10 @@ name|base
 operator|.
 name|removeString
 argument_list|(
-name|pos
+name|string
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|panel
@@ -202,8 +191,6 @@ operator|.
 name|addString
 argument_list|(
 name|string
-argument_list|,
-name|pos
 argument_list|)
 expr_stmt|;
 block|}

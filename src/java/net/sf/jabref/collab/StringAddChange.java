@@ -74,10 +74,6 @@ DECL|field|string
 name|BibtexString
 name|string
 decl_stmt|;
-DECL|field|pos
-name|int
-name|pos
-decl_stmt|;
 DECL|field|tp
 name|InfoPane
 name|tp
@@ -96,15 +92,12 @@ argument_list|(
 name|tp
 argument_list|)
 decl_stmt|;
-DECL|method|StringAddChange (BibtexString string, int pos)
+DECL|method|StringAddChange (BibtexString string)
 specifier|public
 name|StringAddChange
 parameter_list|(
 name|BibtexString
 name|string
-parameter_list|,
-name|int
-name|pos
 parameter_list|)
 block|{
 name|name
@@ -130,12 +123,6 @@ operator|.
 name|string
 operator|=
 name|string
-expr_stmt|;
-name|this
-operator|.
-name|pos
-operator|=
-name|pos
 expr_stmt|;
 name|StringBuffer
 name|sb
@@ -291,24 +278,6 @@ expr_stmt|;
 block|}
 try|try
 block|{
-name|int
-name|goodPos
-init|=
-name|Math
-operator|.
-name|min
-argument_list|(
-name|pos
-argument_list|,
-name|panel
-operator|.
-name|database
-argument_list|()
-operator|.
-name|getStringCount
-argument_list|()
-argument_list|)
-decl_stmt|;
 name|panel
 operator|.
 name|database
@@ -317,8 +286,6 @@ operator|.
 name|addString
 argument_list|(
 name|string
-argument_list|,
-name|goodPos
 argument_list|)
 expr_stmt|;
 name|undoEdit
@@ -336,8 +303,6 @@ name|database
 argument_list|()
 argument_list|,
 name|string
-argument_list|,
-name|goodPos
 argument_list|)
 argument_list|)
 expr_stmt|;

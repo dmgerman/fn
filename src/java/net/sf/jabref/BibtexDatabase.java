@@ -101,8 +101,16 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|_strings
-name|Vector
+name|HashMap
 name|_strings
+init|=
+operator|new
+name|HashMap
+argument_list|()
+decl_stmt|;
+DECL|field|_strings_
+name|Vector
+name|_strings_
 init|=
 operator|new
 name|Vector
@@ -745,7 +753,7 @@ name|_preamble
 return|;
 block|}
 comment|/**      * Inserts a Bibtex String at the given index.      */
-DECL|method|addString (BibtexString string, int index)
+DECL|method|addString (BibtexString string)
 specifier|public
 specifier|synchronized
 name|void
@@ -753,9 +761,6 @@ name|addString
 parameter_list|(
 name|BibtexString
 name|string
-parameter_list|,
-name|int
-name|index
 parameter_list|)
 throws|throws
 name|KeyCollisionException
@@ -770,6 +775,9 @@ name|Iterator
 name|i
 init|=
 name|_strings
+operator|.
+name|keySet
+argument_list|()
 operator|.
 name|iterator
 argument_list|()
@@ -787,10 +795,15 @@ operator|(
 operator|(
 name|BibtexString
 operator|)
+name|_strings
+operator|.
+name|get
+argument_list|(
 name|i
 operator|.
 name|next
 argument_list|()
+argument_list|)
 operator|)
 operator|.
 name|getName
@@ -812,44 +825,80 @@ literal|"A string with this label already exists,"
 argument_list|)
 throw|;
 block|}
+if|if
+condition|(
 name|_strings
 operator|.
-name|insertElementAt
+name|containsKey
 argument_list|(
 name|string
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+condition|)
+throw|throw
+operator|new
+name|KeyCollisionException
+argument_list|(
+literal|"Duplicate BibtexString id."
+argument_list|)
+throw|;
+name|_strings
+operator|.
+name|put
+argument_list|(
+name|string
+operator|.
+name|getId
+argument_list|()
 argument_list|,
-name|index
+name|string
 argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Removes the string at the given index.      */
-DECL|method|removeString (int index)
+DECL|method|removeString (String id)
 specifier|public
 specifier|synchronized
 name|void
 name|removeString
 parameter_list|(
-name|int
-name|index
+name|String
+name|id
 parameter_list|)
 block|{
 name|_strings
 operator|.
-name|removeElementAt
+name|remove
 argument_list|(
-name|index
+name|id
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Returns a Set of keys to all BibtexString objects in the database.      * These are in no sorted order.      */
+DECL|method|getStringKeySet ()
+specifier|public
+name|Set
+name|getStringKeySet
+parameter_list|()
+block|{
+return|return
+name|_strings
+operator|.
+name|keySet
+argument_list|()
+return|;
+block|}
 comment|/**      * Returns the string at the given index.      */
-DECL|method|getString (int index)
+DECL|method|getString (Object o)
 specifier|public
 specifier|synchronized
 name|BibtexString
 name|getString
 parameter_list|(
-name|int
-name|index
+name|Object
+name|o
 parameter_list|)
 block|{
 return|return
@@ -859,9 +908,9 @@ call|)
 argument_list|(
 name|_strings
 operator|.
-name|elementAt
+name|get
 argument_list|(
-name|index
+name|o
 argument_list|)
 argument_list|)
 return|;
@@ -903,6 +952,9 @@ name|i
 init|=
 name|_strings
 operator|.
+name|keySet
+argument_list|()
+operator|.
 name|iterator
 argument_list|()
 init|;
@@ -919,10 +971,15 @@ operator|(
 operator|(
 name|BibtexString
 operator|)
+name|_strings
+operator|.
+name|get
+argument_list|(
 name|i
 operator|.
 name|next
 argument_list|()
+argument_list|)
 operator|)
 operator|.
 name|getName

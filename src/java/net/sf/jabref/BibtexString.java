@@ -22,15 +22,21 @@ name|BibtexString
 block|{
 DECL|field|_name
 DECL|field|_content
+DECL|field|_id
 name|String
 name|_name
 decl_stmt|,
 name|_content
+decl_stmt|,
+name|_id
 decl_stmt|;
-DECL|method|BibtexString (String name, String content)
+DECL|method|BibtexString (String id, String name, String content)
 specifier|public
 name|BibtexString
 parameter_list|(
+name|String
+name|id
+parameter_list|,
 name|String
 name|name
 parameter_list|,
@@ -38,6 +44,10 @@ name|String
 name|content
 parameter_list|)
 block|{
+name|_id
+operator|=
+name|id
+expr_stmt|;
 name|_name
 operator|=
 name|name
@@ -45,6 +55,30 @@ expr_stmt|;
 name|_content
 operator|=
 name|content
+expr_stmt|;
+block|}
+DECL|method|getId ()
+specifier|public
+name|String
+name|getId
+parameter_list|()
+block|{
+return|return
+name|_id
+return|;
+block|}
+DECL|method|setId (String id)
+specifier|public
+name|void
+name|setId
+parameter_list|(
+name|String
+name|id
+parameter_list|)
+block|{
+name|_id
+operator|=
+name|id
 expr_stmt|;
 block|}
 DECL|method|getName ()
@@ -115,6 +149,8 @@ return|return
 operator|new
 name|BibtexString
 argument_list|(
+name|_id
+argument_list|,
 name|_name
 argument_list|,
 name|_content

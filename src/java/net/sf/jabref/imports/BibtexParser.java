@@ -391,11 +391,6 @@ operator|.
 name|addString
 argument_list|(
 name|bs
-argument_list|,
-name|_db
-operator|.
-name|getStringCount
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -755,10 +750,20 @@ literal|')'
 argument_list|)
 expr_stmt|;
 comment|//Util.pr("Finished string parsing.");
+name|String
+name|id
+init|=
+name|Util
+operator|.
+name|createNeutralId
+argument_list|()
+decl_stmt|;
 return|return
 operator|new
 name|BibtexString
 argument_list|(
+name|id
+argument_list|,
 name|name
 argument_list|,
 name|content
