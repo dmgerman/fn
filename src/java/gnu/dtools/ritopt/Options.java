@@ -339,7 +339,7 @@ argument_list|,
 name|versionOption
 argument_list|)
 expr_stmt|;
-comment|/*register( "help", 'h', "Displays help for each option.", helpOption ); 	register( "menu", 'm', "Displays the built-in interactive menu.", 		  menuOption );*/
+comment|/*register( "help", 'h', "Displays help for each option.", helpOption );         register( "menu", 'm', "Displays the built-in interactive menu.",                   menuOption );*/
 comment|// End mod. Morten A. ------------------------------------------------
 block|}
 comment|/**      * Returns the help information as a string.      *      * @return The help information.      */
@@ -589,7 +589,7 @@ operator|=
 name|fn
 expr_stmt|;
 block|}
-comment|/**      * Sets the debugging flag.      *      * @param flag    The value to set the debugging flag.      public void setDebugFlag( boolean flag ) { 	debugFlag = flag;     }      /**      * Displays the program's help which includes a description of each      * option. The usage is display if the usage flag is set to true.      */
+comment|/**      * Sets the debugging flag.      *      * @param flag    The value to set the debugging flag.      public void setDebugFlag( boolean flag ) {         debugFlag = flag;     }      /**      * Displays the program's help which includes a description of each      * option. The usage is display if the usage flag is set to true.      */
 DECL|method|displayHelp ()
 specifier|public
 name|void
@@ -870,7 +870,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	catch ( Exception e ) { 	    System.err.println( "Error: Unexpected Error in ritopt Processing." + 				"Check syntax." ); 				}**/
+comment|/**         catch ( Exception e ) {             System.err.println( "Error: Unexpected Error in ritopt Processing." +                                 "Check syntax." );                                 }**/
 return|return
 name|retval
 return|;
