@@ -6731,7 +6731,7 @@ literal|"docbook"
 expr_stmt|;
 name|extension
 operator|=
-literal|".docbook"
+literal|".xml"
 expr_stmt|;
 block|}
 comment|// We need to find out:

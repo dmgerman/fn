@@ -250,7 +250,12 @@ init|=
 operator|new
 name|JCheckBox
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Intersection"
+argument_list|)
 argument_list|,
 literal|true
 argument_list|)
@@ -261,7 +266,12 @@ init|=
 operator|new
 name|JCheckBox
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Union"
+argument_list|)
 argument_list|,
 literal|false
 argument_list|)

@@ -553,10 +553,7 @@ name|inDescriptorName
 operator|=
 literal|true
 expr_stmt|;
-name|descriptorName
-operator|=
-literal|""
-expr_stmt|;
+comment|//descriptorName="";
 block|}
 elseif|else
 if|if
