@@ -297,10 +297,10 @@ name|helpPre
 init|=
 literal|"/help/"
 decl_stmt|;
-comment|/*  public static URL     //appIconFile = GUIGlobals.class.getResource(pre+"ikon.jpg"),      openIconFile = GUIGlobals.class.getResource(pre+"Open.gif"),    saveIconFile = GUIGlobals.class.getResource(pre+"Save.gif"),      saveAsIconFile = GUIGlobals.class.getResource(pre+"SaveAs.gif"),     //prefsIconFile = GUIGlobals.class.getResource(pre+"Options.gif"),      prefsIconFile = GUIGlobals.class.getResource(pre+"Hammer.gif"),      newIconFile = GUIGlobals.class.getResource(pre+"New.gif"),      undoIconFile = GUIGlobals.class.getResource(pre+"Undo.gif"),      redoIconFile = GUIGlobals.class.getResource(pre+"Redo.gif"),      preambleIconFile = GUIGlobals.class.getResource(pre+"Preamble.gif"),      addIconFile = GUIGlobals.class.getResource(pre+"UpdateRow.gif"),      delRowIconFile = GUIGlobals.class.getResource(pre+"DeleteRow.gif"),      showReqIconFile = GUIGlobals.class.getResource(pre+"r_icon.gif"),      showOptIconFile = GUIGlobals.class.getResource(pre+"o_icon.gif"),      showGenIconFile = GUIGlobals.class.getResource(pre+"g_icon.gif"),      sourceIconFile = GUIGlobals.class.getResource(pre+"viewsource.gif"),      copyIconFile = GUIGlobals.class.getResource(pre+"Copy3.gif"),      cutIconFile = GUIGlobals.class.getResource(pre+"Cut2.gif"),      copyKeyIconFile = GUIGlobals.class.getResource(pre+"CopyKey.gif"),      genKeyIconFile = GUIGlobals.class.getResource(pre+"GenKey.gif"),      lyxIconFile = GUIGlobals.class.getResource(pre+"LyX.gif"),      backIconFile = GUIGlobals.class.getResource(pre+"VCRBack.gif"),      forwardIconFile = GUIGlobals.class.getResource(pre+"VCRForward.gif"),      contentsIconFile = GUIGlobals.class.getResource(pre+"Contents.gif"),      removeIconFile = GUIGlobals.class.getResource(pre+"Delete.gif"),      upIconFile = GUIGlobals.class.getResource(pre+"Up.gif"),      downIconFile = GUIGlobals.class.getResource(pre+"Down.gif"),      stringsIconFile = GUIGlobals.class.getResource(pre+"Strings.gif"),      groupsIconFile = GUIGlobals.class.getResource(pre+"Groups.gif"),         closeIconFile = GUIGlobals.class.getResource(pre+"Close.gif"),      refreshSmallIconFile = GUIGlobals.class.getResource(pre+"GreenFlag.gif"),      helpSmallIconFile = GUIGlobals.class.getResource(pre+"HelpSmall.gif"),      helpIconFile = GUIGlobals.class.getResource(pre+"Help.gif"),      helpContentsIconFile = GUIGlobals.class.getResource(pre+"HelpIndex.gif"),      newSmallIconFile = GUIGlobals.class.getResource(pre+"NewSmall.gif"),      pasteIconFile = GUIGlobals.class.getResource(pre+"Paste2.gif"),      editEntryIconFile = GUIGlobals.class.getResource(pre+"DocumentDraw.gif"),      searchIconFile = GUIGlobals.class.getResource(pre+"Binocular.gif"),      autoGroupIcon = GUIGlobals.class.getResource(pre+"NewBCard.gif"),     //fetchMedlineIcon = GUIGlobals.class.getResource(pre+"BlueCircle.gif");                 fetchMedlineIcon = GUIGlobals.class.getResource(pre+"World2.gif"),      sheetIcon = GUIGlobals.class.getResource(pre+"Sheet.gif"),      jabreflogo = GUIGlobals.class.getResource(pre+"JabRef-Logo.gif");     //jabreflogo=new ImageIcon(getClass().getResource(pre+"JabRef-Logo.gif")));//.getImage());    */
 specifier|public
 specifier|static
 name|URL
+comment|//appIconFile = GUIGlobals.class.getResource(pre+"ikon.jpg"),
 DECL|field|openIconFile
 name|openIconFile
 init|=
@@ -312,7 +312,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"fileopen.png"
+literal|"Open.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|saveIconFile
@@ -326,7 +326,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"filesave.png"
+literal|"Save.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|saveAsIconFile
@@ -340,9 +340,10 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"filesave.png"
+literal|"SaveAs.gif"
 argument_list|)
 decl_stmt|,
+comment|//prefsIconFile = GUIGlobals.class.getResource(pre+"Options.gif"),
 DECL|field|prefsIconFile
 name|prefsIconFile
 init|=
@@ -354,7 +355,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"configure2.png"
+literal|"Hammer.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|newIconFile
@@ -368,7 +369,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"filenew.png"
+literal|"New.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|undoIconFile
@@ -382,7 +383,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"undo.png"
+literal|"Undo.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|redoIconFile
@@ -396,7 +397,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"redo.png"
+literal|"Redo.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|preambleIconFile
@@ -424,7 +425,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"news_subscribe.png"
+literal|"UpdateRow.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|delRowIconFile
@@ -438,7 +439,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"news_unsubscribe.png"
+literal|"DeleteRow.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|showReqIconFile
@@ -508,7 +509,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"editcopy.png"
+literal|"Copy3.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|cutIconFile
@@ -522,7 +523,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"editcut.png"
+literal|"Cut2.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|copyKeyIconFile
@@ -536,7 +537,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"editcopy.png"
+literal|"CopyKey.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|genKeyIconFile
@@ -578,7 +579,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"back.png"
+literal|"VCRBack.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|forwardIconFile
@@ -592,7 +593,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"forward.png"
+literal|"VCRForward.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|contentsIconFile
@@ -606,7 +607,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"contents2.png"
+literal|"Contents.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|removeIconFile
@@ -620,7 +621,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"editdelete.png"
+literal|"Delete.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|upIconFile
@@ -634,7 +635,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"up.png"
+literal|"Up.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|downIconFile
@@ -648,7 +649,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"down.png"
+literal|"Down.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|stringsIconFile
@@ -676,7 +677,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"queue.png"
+literal|"Groups.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|closeIconFile
@@ -690,7 +691,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"fileclose.png"
+literal|"Close.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|refreshSmallIconFile
@@ -704,7 +705,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"reload.png"
+literal|"GreenFlag.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|helpSmallIconFile
@@ -718,7 +719,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"help.png"
+literal|"HelpSmall.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|helpIconFile
@@ -732,21 +733,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"help.png"
-argument_list|)
-decl_stmt|,
-DECL|field|aboutIcon
-name|aboutIcon
-init|=
-name|GUIGlobals
-operator|.
-name|class
-operator|.
-name|getResource
-argument_list|(
-name|pre
-operator|+
-literal|"hwinfo.png"
+literal|"Help.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|helpContentsIconFile
@@ -760,7 +747,21 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"contents2.png"
+literal|"HelpIndex.gif"
+argument_list|)
+decl_stmt|,
+DECL|field|aboutIcon
+name|aboutIcon
+init|=
+name|GUIGlobals
+operator|.
+name|class
+operator|.
+name|getResource
+argument_list|(
+name|pre
+operator|+
+literal|"Help.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|newSmallIconFile
@@ -774,7 +775,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"filenew.png"
+literal|"NewSmall.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|pasteIconFile
@@ -788,7 +789,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"editpaste.png"
+literal|"Paste2.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|editEntryIconFile
@@ -816,7 +817,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"find.png"
+literal|"Binocular.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|autoGroupIcon
@@ -830,9 +831,10 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"run.png"
+literal|"NewBCard.gif"
 argument_list|)
 decl_stmt|,
+comment|//fetchMedlineIcon = GUIGlobals.class.getResource(pre+"BlueCircle.gif");
 DECL|field|fetchMedlineIcon
 name|fetchMedlineIcon
 init|=
@@ -844,7 +846,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"www.png"
+literal|"World2.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|sheetIcon
@@ -858,7 +860,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"window_nofullscreen.png"
+literal|"Sheet.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|jabreflogo
@@ -875,6 +877,8 @@ operator|+
 literal|"JabRef-Logo.gif"
 argument_list|)
 decl_stmt|;
+comment|//jabreflogo=new ImageIcon(getClass().getResource(pre+"JabRef-Logo.gif")));//.getImage());
+comment|/*   public static URL       openIconFile = GUIGlobals.class.getResource(pre + "fileopen.png"),        saveIconFile = GUIGlobals.class.getResource(pre + "filesave.png"),       saveAsIconFile = GUIGlobals.class.getResource(pre + "filesave.png"),        prefsIconFile = GUIGlobals.class.getResource(pre + "configure2.png"),       newIconFile = GUIGlobals.class.getResource(pre + "filenew.png"),       undoIconFile = GUIGlobals.class.getResource(pre + "undo.png"),       redoIconFile = GUIGlobals.class.getResource(pre + "redo.png"),       preambleIconFile = GUIGlobals.class.getResource(pre + "Preamble.gif"),       addIconFile = GUIGlobals.class.getResource(pre + "news_subscribe.png"),       delRowIconFile = GUIGlobals.class.getResource(pre + "news_unsubscribe.png"),       showReqIconFile = GUIGlobals.class.getResource(pre + "r_icon.gif"),       showOptIconFile = GUIGlobals.class.getResource(pre + "o_icon.gif"),       showGenIconFile = GUIGlobals.class.getResource(pre + "g_icon.gif"),       sourceIconFile = GUIGlobals.class.getResource(pre + "viewsource.gif"),       copyIconFile = GUIGlobals.class.getResource(pre + "editcopy.png"),       cutIconFile = GUIGlobals.class.getResource(pre + "editcut.png"),       copyKeyIconFile = GUIGlobals.class.getResource(pre + "editcopy.png"),       genKeyIconFile = GUIGlobals.class.getResource(pre + "GenKey.gif"),       lyxIconFile = GUIGlobals.class.getResource(pre + "LyX.gif"),       backIconFile = GUIGlobals.class.getResource(pre + "back.png"),       forwardIconFile = GUIGlobals.class.getResource(pre + "forward.png"),       contentsIconFile = GUIGlobals.class.getResource(pre + "contents2.png"),       removeIconFile = GUIGlobals.class.getResource(pre + "editdelete.png"),       upIconFile = GUIGlobals.class.getResource(pre + "up.png"),       downIconFile = GUIGlobals.class.getResource(pre + "down.png"),       stringsIconFile = GUIGlobals.class.getResource(pre + "Strings.gif"),       groupsIconFile = GUIGlobals.class.getResource(pre + "queue.png"),       closeIconFile = GUIGlobals.class.getResource(pre + "fileclose.png"),       refreshSmallIconFile = GUIGlobals.class.getResource(pre + "reload.png"),       helpSmallIconFile = GUIGlobals.class.getResource(pre + "help.png"),       helpIconFile = GUIGlobals.class.getResource(pre + "help.png"),       aboutIcon = GUIGlobals.class.getResource(pre + "hwinfo.png"),       helpContentsIconFile = GUIGlobals.class.getResource(pre + "contents2.png"),       newSmallIconFile = GUIGlobals.class.getResource(pre + "filenew.png"),       pasteIconFile = GUIGlobals.class.getResource(pre + "editpaste.png"),       editEntryIconFile = GUIGlobals.class.getResource(pre + "DocumentDraw.gif"),       searchIconFile = GUIGlobals.class.getResource(pre + "find.png"),       autoGroupIcon = GUIGlobals.class.getResource(pre + "run.png"),       fetchMedlineIcon = GUIGlobals.class.getResource(pre + "www.png"),       sheetIcon = GUIGlobals.class.getResource(pre + "window_nofullscreen.png"),       jabreflogo = GUIGlobals.class.getResource(pre + "JabRef-Logo.gif"); */
 comment|// Help files (in HTML format):
 specifier|public
 specifier|static
