@@ -251,19 +251,7 @@ name|_prefs
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|tabbed
-operator|.
-name|addTab
-argument_list|(
-literal|"External programs"
-argument_list|,
-operator|new
-name|ExternalProgramsTab
-argument_list|(
-name|_prefs
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|//##	tabbed.addTab("External programs", new ExternalProgramsTab(_prefs));
 name|JButton
 name|ok
 init|=

@@ -619,6 +619,30 @@ argument_list|(
 literal|"Autgenerate BibTeX keys"
 argument_list|)
 argument_list|)
+decl_stmt|,
+DECL|field|lyxPushAction
+name|lyxPushAction
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"pushToLyX"
+argument_list|,
+literal|"Insert selected citations into LyX"
+argument_list|,
+literal|"push selection to lyx"
+argument_list|,
+name|GUIGlobals
+operator|.
+name|lyxIconFile
+argument_list|,
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Push To LyX"
+argument_list|)
+argument_list|)
 decl_stmt|;
 comment|// The action for adding a new entry of unspecified type.
 DECL|field|newEntryAction
@@ -2308,6 +2332,13 @@ argument_list|(
 name|makeKeyAction
 argument_list|)
 expr_stmt|;
+name|tools
+operator|.
+name|add
+argument_list|(
+name|lyxPushAction
+argument_list|)
+expr_stmt|;
 name|mb
 operator|.
 name|add
@@ -3121,6 +3152,16 @@ name|close
 init|=
 literal|true
 decl_stmt|;
+if|if
+condition|(
+name|basePanel
+argument_list|()
+operator|==
+literal|null
+condition|)
+comment|// when it is initially empty
+return|return;
+comment|//nbatada nov 7
 if|if
 condition|(
 name|basePanel
@@ -4276,7 +4317,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Import Endnote"
+literal|"Endnote"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -4351,7 +4392,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Import INSPEC"
+literal|"INSPEC"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -4425,7 +4466,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Import ISI"
+literal|"ISI"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -4499,7 +4540,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Import Medline XML"
+literal|"Medline XML"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -4574,7 +4615,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Import Ovid"
+literal|"Ovid"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -4648,7 +4689,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Import RIS"
+literal|"RIS"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -4722,7 +4763,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Import SciFinder"
+literal|"SciFinder"
 argument_list|)
 argument_list|)
 decl_stmt|;
