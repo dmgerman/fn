@@ -88,12 +88,15 @@ init|=
 literal|null
 decl_stmt|;
 comment|/**      * The MetaData object stores all meta data sets in Vectors. To ensure that      * the data is written correctly to string, the user of a meta data Vector      * must simply make sure the appropriate changes are reflected in the Vector      * it has been passed.      */
-DECL|method|MetaData (HashMap inData)
+DECL|method|MetaData (HashMap inData, BibtexDatabase db)
 specifier|public
 name|MetaData
 parameter_list|(
 name|HashMap
 name|inData
+parameter_list|,
+name|BibtexDatabase
+name|db
 parameter_list|)
 block|{
 name|this
@@ -210,6 +213,8 @@ condition|)
 name|putGroups
 argument_list|(
 name|orderedData
+argument_list|,
+name|db
 argument_list|)
 expr_stmt|;
 else|else
@@ -351,13 +356,16 @@ name|orderedData
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|putGroups (Vector orderedData)
+DECL|method|putGroups (Vector orderedData, BibtexDatabase db)
 specifier|private
 name|void
 name|putGroups
 parameter_list|(
 name|Vector
 name|orderedData
+parameter_list|,
+name|BibtexDatabase
+name|db
 parameter_list|)
 block|{
 comment|// JZTODO add groups version!!!
@@ -377,6 +385,8 @@ name|orderedData
 operator|.
 name|firstElement
 argument_list|()
+argument_list|,
+name|db
 argument_list|)
 expr_stmt|;
 block|}

@@ -287,6 +287,8 @@ name|pr
 operator|.
 name|getMetaData
 argument_list|()
+argument_list|,
+name|inTemp
 argument_list|)
 decl_stmt|;
 comment|//Util.pr(tempFile.getPath()+": "+inMem.getEntryCount());
@@ -327,6 +329,8 @@ name|pr
 operator|.
 name|getMetaData
 argument_list|()
+argument_list|,
+name|onDisk
 argument_list|)
 decl_stmt|;
 comment|//Util.pr(f.getPath()+": "+onDisk.getEntryCount());
