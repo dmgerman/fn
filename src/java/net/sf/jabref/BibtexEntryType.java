@@ -1661,6 +1661,8 @@ literal|"doi"
 block|,
 literal|"url"
 block|,
+literal|"pdf"
+block|,
 literal|"abstract"
 block|,
 literal|"comment"

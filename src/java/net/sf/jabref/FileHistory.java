@@ -319,6 +319,16 @@ name|void
 name|storeHistory
 parameter_list|()
 block|{
+if|if
+condition|(
+name|history
+operator|.
+name|size
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
 name|String
 index|[]
 name|names
@@ -377,6 +387,7 @@ argument_list|,
 name|names
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|setFileHistory ()
 specifier|public

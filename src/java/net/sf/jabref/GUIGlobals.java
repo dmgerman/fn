@@ -1708,6 +1708,8 @@ literal|"abstract"
 block|,
 literal|"url"
 block|,
+literal|"pdf"
+block|,
 literal|"comment"
 block|,
 literal|"bibtexkey"
@@ -2179,6 +2181,15 @@ operator|.
 name|put
 argument_list|(
 literal|"eid"
+argument_list|,
+name|SMALL_W
+argument_list|)
+expr_stmt|;
+name|fieldWeight
+operator|.
+name|put
+argument_list|(
+literal|"pdf"
 argument_list|,
 name|SMALL_W
 argument_list|)
