@@ -490,21 +490,6 @@ argument_list|,
 literal|"store"
 argument_list|)
 expr_stmt|;
-name|Util
-operator|.
-name|pr
-argument_list|(
-name|prefs
-operator|.
-name|getKey
-argument_list|(
-literal|"Preamble editor: store changes"
-argument_list|)
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|ta
 operator|.
 name|getActionMap

@@ -761,7 +761,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"Paste.gif"
+literal|"Paste2.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|editEntryIconFile
