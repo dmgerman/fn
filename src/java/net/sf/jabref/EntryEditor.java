@@ -1097,13 +1097,6 @@ name|tlb
 operator|.
 name|add
 argument_list|(
-name|deleteAction
-argument_list|)
-expr_stmt|;
-name|tlb
-operator|.
-name|add
-argument_list|(
 name|generateKeyAction
 argument_list|)
 expr_stmt|;
@@ -1114,6 +1107,13 @@ argument_list|()
 expr_stmt|;
 comment|//tlb.add(undoAction);
 comment|//tlb.add(redoAction);
+name|tlb
+operator|.
+name|add
+argument_list|(
+name|deleteAction
+argument_list|)
+expr_stmt|;
 name|tlb
 operator|.
 name|add

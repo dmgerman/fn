@@ -6118,22 +6118,7 @@ parameter_list|)
 block|{
 comment|// Intercepts mouse clicks from the JTable showing the base contents.
 comment|// A double click on an entry should open the entry's editor.
-if|if
-condition|(
-name|e
-operator|.
-name|getClickCount
-argument_list|()
-operator|==
-literal|2
-condition|)
-block|{
-name|runCommand
-argument_list|(
-literal|"edit"
-argument_list|)
-expr_stmt|;
-block|}
+comment|/*if (e.getClickCount() == 2) { 	    runCommand("edit"); 	}*/
 block|}
 DECL|method|mouseEntered (MouseEvent e)
 specifier|public

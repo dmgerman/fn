@@ -20,6 +20,16 @@ name|java
 operator|.
 name|awt
 operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
 name|event
 operator|.
 name|*
@@ -45,36 +55,6 @@ operator|.
 name|table
 operator|.
 name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|Dimension
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|Rectangle
 import|;
 end_import
 
@@ -289,7 +269,6 @@ operator|.
 name|toLowerCase
 argument_list|()
 decl_stmt|;
-comment|// Change sort field ...
 if|if
 condition|(
 operator|!
@@ -412,6 +391,9 @@ name|GUIGlobals
 operator|.
 name|tableBackground
 argument_list|)
+expr_stmt|;
+name|updateFont
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|setWidths ()
@@ -1227,6 +1209,21 @@ argument_list|()
 expr_stmt|;
 name|repaint
 argument_list|()
+expr_stmt|;
+block|}
+comment|/**    * updateFont    */
+DECL|method|updateFont ()
+specifier|public
+name|void
+name|updateFont
+parameter_list|()
+block|{
+name|setFont
+argument_list|(
+name|GUIGlobals
+operator|.
+name|CURRENTFONT
+argument_list|)
 expr_stmt|;
 block|}
 block|}

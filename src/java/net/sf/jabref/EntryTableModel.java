@@ -168,7 +168,7 @@ decl_stmt|,
 DECL|field|PADLEFT
 name|PADLEFT
 init|=
-literal|2
+literal|1
 decl_stmt|;
 DECL|method|EntryTableModel (JabRefFrame frame_, BasePanel panel_, BibtexDatabase db_)
 specifier|public
@@ -214,7 +214,7 @@ argument_list|()
 expr_stmt|;
 comment|//	entryIDs = db.getKeySet().toArray(); // Temporary
 block|}
-comment|/*public void numberRows() {           for(int r=0; r< model.getRowCount(); r++)                   model.setValueAt(r+1 + "", r, 0);  		 } */
+comment|/*public void numberRows() {          for(int r=0; r< model.getRowCount(); r++)                  model.setValueAt(r+1 + "", r, 0); 		 } */
 DECL|method|getColumnName (int col)
 specifier|public
 name|String
@@ -235,21 +235,8 @@ name|GUIGlobals
 operator|.
 name|NUMBER_COL
 return|;
-elseif|else
-if|if
-condition|(
-name|col
-operator|==
-literal|1
-condition|)
-return|return
-name|Util
-operator|.
-name|nCase
-argument_list|(
-name|TYPE
-argument_list|)
-return|;
+comment|//	else if (col == 1)
+comment|//	    return Util.nCase(TYPE);
 else|else
 block|{
 return|return
@@ -358,13 +345,28 @@ operator|+
 literal|1
 operator|)
 expr_stmt|;
-elseif|else
+comment|//else
+comment|//  if (col == 1)
+comment|//  o = be.getType().getName();
+else|else
+block|{
 if|if
 condition|(
+name|columns
+index|[
 name|col
-operator|==
-literal|1
+operator|-
+name|PADLEFT
+index|]
+operator|.
+name|equals
+argument_list|(
+name|GUIGlobals
+operator|.
+name|TYPE_HEADER
+argument_list|)
 condition|)
+block|{
 name|o
 operator|=
 name|be
@@ -375,8 +377,8 @@ operator|.
 name|getName
 argument_list|()
 expr_stmt|;
+block|}
 else|else
-block|{
 name|o
 operator|=
 name|be

@@ -131,6 +131,17 @@ DECL|field|helpTitle
 name|helpTitle
 init|=
 literal|"JabRef help"
+decl_stmt|,
+DECL|field|TYPE_HEADER
+name|TYPE_HEADER
+init|=
+literal|"entrytype"
+decl_stmt|;
+DECL|field|CURRENTFONT
+specifier|public
+specifier|static
+name|Font
+name|CURRENTFONT
 decl_stmt|;
 comment|// Signature written at the top of the .bib file.
 DECL|field|SIGNATURE
