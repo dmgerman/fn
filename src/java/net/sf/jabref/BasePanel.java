@@ -10709,20 +10709,6 @@ return|return
 name|tableModel
 return|;
 block|}
-DECL|method|getSelectedEntries ()
-specifier|public
-name|BibtexEntry
-index|[]
-name|getSelectedEntries
-parameter_list|()
-block|{
-return|return
-name|entryTable
-operator|.
-name|getSelectedEntries
-argument_list|()
-return|;
-block|}
 DECL|method|isEntriesSelected ()
 specifier|public
 name|boolean
