@@ -137,6 +137,11 @@ DECL|field|SELECTOR_META_PREFIX
 name|SELECTOR_META_PREFIX
 init|=
 literal|"selector_"
+decl_stmt|,
+DECL|field|LAYOUT_PREFIX
+name|LAYOUT_PREFIX
+init|=
+literal|"/resource/layout/"
 decl_stmt|;
 DECL|method|logger (String s)
 specifier|public

@@ -6895,40 +6895,12 @@ expr_stmt|;
 block|}
 else|else
 return|return;
-name|InputStreamReader
-name|reader
-init|=
-literal|null
-decl_stmt|;
+comment|//InputStreamReader reader = null;
 try|try
 block|{
-name|URL
-name|reso
-init|=
-name|JabRefFrame
-operator|.
-name|class
-operator|.
-name|getResource
-argument_list|(
-literal|"/resource/layout/"
-operator|+
-name|lfFileName
-operator|+
-literal|".layout"
-argument_list|)
-decl_stmt|;
-name|reader
-operator|=
-operator|new
-name|InputStreamReader
-argument_list|(
-name|reso
-operator|.
-name|openStream
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//URL reso = JabRefFrame.class.getResource
+comment|//    ("/resource/layout/"+lfFileName+".layout");
+comment|//reader = new InputStreamReader(reso.openStream());
 name|FileActions
 operator|.
 name|exportDatabase
@@ -6938,7 +6910,7 @@ argument_list|()
 operator|.
 name|database
 argument_list|,
-name|reader
+name|lfFileName
 argument_list|,
 name|outFile
 argument_list|,
