@@ -573,6 +573,9 @@ parameter_list|)
 block|{
 try|try
 block|{
+comment|//if ((comment.length()< 9+GUIGlobals.ENTRYTYPE_FLAG.length())
+comment|//	|| comment
+comment|//System.out.println(">"+comment+"<");
 name|String
 name|rest
 decl_stmt|;

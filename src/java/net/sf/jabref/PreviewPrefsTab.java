@@ -633,14 +633,11 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|init
-argument_list|()
-expr_stmt|;
 block|}
-DECL|method|init ()
+DECL|method|setValues ()
 specifier|public
 name|void
-name|init
+name|setValues
 parameter_list|()
 block|{
 name|layout1

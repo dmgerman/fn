@@ -253,8 +253,9 @@ comment|// ----------------------------------------------------------------
 name|JabRefPreferences
 name|prefs
 init|=
-operator|new
 name|JabRefPreferences
+operator|.
+name|getInstance
 argument_list|()
 decl_stmt|;
 name|Globals

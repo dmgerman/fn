@@ -2308,8 +2308,6 @@ operator|.
 name|getValue
 argument_list|()
 decl_stmt|;
-comment|// TODO: Here we should use the feature to check if the importer recognizes the
-comment|//       format, but none of the importers have implemented this yet.
 try|try
 block|{
 comment|//System.out.println("Trying format: "+imFo.getFormatName());
@@ -2384,6 +2382,7 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
+comment|//ex.printStackTrace();
 comment|//System.out.println("Import failed");
 block|}
 block|}
@@ -2394,6 +2393,8 @@ name|entryList
 operator|==
 literal|null
 condition|)
+block|{
+try|try
 block|{
 name|ParserResult
 name|pr
@@ -2451,6 +2452,15 @@ name|usedFormat
 operator|=
 literal|"BibTeX"
 expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|ex
+parameter_list|)
+block|{
+comment|//ex.printStackTrace();
 block|}
 block|}
 return|return

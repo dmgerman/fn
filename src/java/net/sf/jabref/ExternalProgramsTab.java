@@ -751,6 +751,12 @@ expr_stmt|;
 block|}
 block|}
 block|}
+DECL|method|setValues ()
+specifier|public
+name|void
+name|setValues
+parameter_list|()
+block|{      }
 comment|/**      * Store changes to table preferences. This method is called when      * the user clicks Ok.      *      */
 DECL|method|storeSettings ()
 specifier|public

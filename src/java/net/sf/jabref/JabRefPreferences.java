@@ -216,8 +216,41 @@ specifier|public
 name|CustomExportList
 name|customExports
 decl_stmt|;
-DECL|method|JabRefPreferences ()
+comment|// The only instance of this class:
+DECL|field|INSTANCE
+specifier|private
+specifier|static
+name|JabRefPreferences
+name|INSTANCE
+init|=
+literal|null
+decl_stmt|;
+DECL|method|getInstance ()
 specifier|public
+specifier|static
+name|JabRefPreferences
+name|getInstance
+parameter_list|()
+block|{
+if|if
+condition|(
+name|INSTANCE
+operator|==
+literal|null
+condition|)
+name|INSTANCE
+operator|=
+operator|new
+name|JabRefPreferences
+argument_list|()
+expr_stmt|;
+return|return
+name|INSTANCE
+return|;
+block|}
+comment|// The constructor is made private to enforce this as a singleton class:
+DECL|method|JabRefPreferences ()
+specifier|private
 name|JabRefPreferences
 parameter_list|()
 block|{

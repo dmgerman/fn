@@ -198,15 +198,7 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|str
-argument_list|)
-expr_stmt|;
+comment|//System.out.println(str);
 if|if
 condition|(
 name|pat1

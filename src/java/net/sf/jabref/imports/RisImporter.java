@@ -233,6 +233,15 @@ name|compile
 argument_list|(
 literal|"AU  - .*"
 argument_list|)
+decl_stmt|,
+name|pat2
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"A1  - .*"
+argument_list|)
 decl_stmt|;
 name|String
 name|str
@@ -254,6 +263,16 @@ block|{
 if|if
 condition|(
 name|pat1
+operator|.
+name|matcher
+argument_list|(
+name|str
+argument_list|)
+operator|.
+name|find
+argument_list|()
+operator|||
+name|pat2
 operator|.
 name|matcher
 argument_list|(
