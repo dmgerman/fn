@@ -1396,8 +1396,12 @@ argument_list|(
 name|rect
 argument_list|)
 expr_stmt|;
-comment|//revalidate();
-comment|//repaint();
+name|revalidate
+argument_list|()
+expr_stmt|;
+name|repaint
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**    * updateFont    */
 DECL|method|updateFont ()

@@ -154,6 +154,20 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|imports
+operator|.
+name|BibtexParser
+import|;
+end_import
+
 begin_class
 DECL|class|EntryEditor
 specifier|public
@@ -1357,7 +1371,7 @@ argument_list|,
 operator|-
 name|width
 operator|-
-literal|5
+literal|7
 argument_list|,
 literal|28
 argument_list|)
@@ -3244,7 +3258,7 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Save"
+literal|"Save database"
 argument_list|)
 argument_list|,
 literal|"save"

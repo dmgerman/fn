@@ -124,6 +124,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|imports
+operator|.
 name|ImportFormatReader
 import|;
 end_import

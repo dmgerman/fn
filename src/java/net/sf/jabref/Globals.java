@@ -501,6 +501,7 @@ comment|//============================================================
 comment|// Using the hashmap of entry types found in BibtexEntryType
 comment|//============================================================
 DECL|method|getEntryType (String type)
+specifier|public
 specifier|static
 name|BibtexEntryType
 name|getEntryType
@@ -561,6 +562,7 @@ literal|"[A-Z]+"
 argument_list|)
 decl_stmt|;
 DECL|method|putBracesAroundCapitals (String title)
+specifier|public
 specifier|static
 name|String
 name|putBracesAroundCapitals

@@ -4,13 +4,15 @@ comment|/* Copyright (C) 2003  Morten O. Alver and Nizar N. Batada  All programs
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.imports
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|imports
 package|;
 end_package
 
@@ -114,6 +116,18 @@ name|SAXParser
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|*
+import|;
+end_import
+
 begin_comment
 comment|/*   // int jabrefframe BibtexDatabase database=new BibtexDatabase(); String filename=Globals.getNewFile(); ArrayList bibitems=readISI(filename); // is there a getFileName(); Iterator it = bibitems.iterator(); while(it.hasNext()){ BibtexEntry entry = (BibtexEntry)it.next(); entry.setId(Util.createId(entry.getType(), database); try { database.insertEntry(entry); } catch (KeyCollisionException ex) {  } } */
 end_comment
@@ -126,6 +140,7 @@ name|ImportFormatReader
 block|{
 comment|/**      * Describe<code>fixAuthor</code> method here.      *      * @param in a<code>String</code> value      * @return a<code>String</code> value      // input format string: LN FN [and LN, FN]*      // output format string: FN LN [and FN LN]*      */
 DECL|method|fixAuthor_nocomma (String in)
+specifier|public
 specifier|static
 name|String
 name|fixAuthor_nocomma
@@ -582,6 +597,7 @@ comment|// returns null if unable to find any entries or if the
 comment|// file is not in scifinder format
 comment|//============================================================
 DECL|method|readScifinder ( String filename)
+specifier|public
 specifier|static
 name|ArrayList
 name|readScifinder
@@ -1088,6 +1104,7 @@ comment|//==================================================
 comment|//
 comment|//==================================================
 DECL|method|readISI ( String filename)
+specifier|public
 specifier|static
 name|ArrayList
 name|readISI
@@ -2055,6 +2072,7 @@ comment|//==================================================
 comment|//
 comment|//==================================================
 DECL|field|ovid_src_pat
+specifier|public
 specifier|static
 name|Pattern
 name|ovid_src_pat
@@ -2067,6 +2085,7 @@ literal|"Source ([ \\w&\\-]+)\\.[ ]+([0-9]+)\\(([\\w\\-]+)\\):([0-9]+\\-?[0-9]+?
 argument_list|)
 decl_stmt|;
 DECL|field|ovid_src_pat_no_issue
+specifier|public
 specifier|static
 name|Pattern
 name|ovid_src_pat_no_issue
@@ -2079,6 +2098,7 @@ literal|"Source ([ \\w&\\-]+)\\.[ ]+([0-9]+):([0-9]+\\-?[0-9]+?)\\,.*([0-9][0-9]
 argument_list|)
 decl_stmt|;
 DECL|method|readOvid ( String filename)
+specifier|public
 specifier|static
 name|ArrayList
 name|readOvid
@@ -2920,6 +2940,7 @@ block|}
 comment|// check here for details on the format
 comment|// http://www.ecst.csuchico.edu/~jacobsd/bib/formats/endnote.html
 DECL|method|readEndnote (String filename)
+specifier|public
 specifier|static
 name|ArrayList
 name|readEndnote
@@ -3200,7 +3221,7 @@ operator|<
 literal|3
 condition|)
 continue|continue;
-comment|/* Details of Refer format for Journal Article and Book: 		    		  Generic            Ref     Journal Article   Book 		  Code 		  Author             %A      Author            Author 		  Year               %D      Year              Year 		  Title              %T      Title             Title 		  Secondary Author   %E                        Series Editor 		  Secondary Title    %B      Journal           Series Title 		  Place Published    %C                        City 		  Publisher          %I                        Publisher 		  Volume             %V      Volume            Volume 		  Number of Volumes  %6                        Number of Volumes 		  Number             %N      Issue 		  Pages              %P      Pages             Number of Pages 		  Edition            %7                        Edition 		  Subsidiary Author  %?                        Translator 		  Alternate Title    %J      Alternate Journal 		  Label              %F      Label             Label 		  Keywords           %K      Keywords          Keywords 		  Abstract           %X      Abstract          Abstract 		  Notes              %O      Notes             Notes 		*/
+comment|/* Details of Refer format for Journal Article and Book:  		  Generic            Ref     Journal Article   Book 		  Code 		  Author             %A      Author            Author 		  Year               %D      Year              Year 		  Title              %T      Title             Title 		  Secondary Author   %E                        Series Editor 		  Secondary Title    %B      Journal           Series Title 		  Place Published    %C                        City 		  Publisher          %I                        Publisher 		  Volume             %V      Volume            Volume 		  Number of Volumes  %6                        Number of Volumes 		  Number             %N      Issue 		  Pages              %P      Pages             Number of Pages 		  Edition            %7                        Edition 		  Subsidiary Author  %?                        Translator 		  Alternate Title    %J      Alternate Journal 		  Label              %F      Label             Label 		  Keywords           %K      Keywords          Keywords 		  Abstract           %X      Abstract          Abstract 		  Notes              %O      Notes             Notes 		*/
 name|String
 name|prefix
 init|=
@@ -3897,6 +3918,7 @@ comment|//========================================================
 comment|//
 comment|//========================================================
 DECL|method|readReferenceManager10 (String filename)
+specifier|public
 specifier|static
 name|ArrayList
 name|readReferenceManager10
@@ -4562,6 +4584,7 @@ comment|//==================================================
 comment|//
 comment|//==================================================
 DECL|method|readMedline (String filename)
+specifier|public
 specifier|static
 name|ArrayList
 name|readMedline
@@ -4727,6 +4750,7 @@ name|bibItems
 return|;
 block|}
 DECL|method|readBibTeXML (String filename)
+specifier|public
 specifier|static
 name|ArrayList
 name|readBibTeXML
@@ -4895,6 +4919,7 @@ comment|//==================================================
 comment|//
 comment|//==================================================
 DECL|method|fetchMedline (String id)
+specifier|public
 specifier|static
 name|ArrayList
 name|fetchMedline
@@ -5042,6 +5067,7 @@ comment|//========================================================
 comment|//
 comment|//========================================================
 DECL|method|readINSPEC ( String filename)
+specifier|public
 specifier|static
 name|ArrayList
 name|readINSPEC

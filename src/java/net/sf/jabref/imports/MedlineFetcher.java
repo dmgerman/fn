@@ -1,12 +1,14 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.imports
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|imports
 package|;
 end_package
 
@@ -129,6 +131,18 @@ operator|.
 name|regex
 operator|.
 name|Matcher
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|*
 import|;
 end_import
 
@@ -522,6 +536,7 @@ block|{
 name|panel
 operator|.
 name|frame
+argument_list|()
 operator|.
 name|output
 argument_list|(
@@ -619,6 +634,7 @@ argument_list|,
 name|panel
 operator|.
 name|database
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|be
@@ -631,6 +647,7 @@ expr_stmt|;
 name|panel
 operator|.
 name|database
+argument_list|()
 operator|.
 name|insertEntry
 argument_list|(
@@ -647,6 +664,7 @@ argument_list|(
 name|panel
 operator|.
 name|database
+argument_list|()
 argument_list|,
 name|be
 argument_list|,
@@ -729,6 +747,7 @@ argument_list|(
 name|panel
 operator|.
 name|frame
+argument_list|()
 argument_list|,
 name|Globals
 operator|.

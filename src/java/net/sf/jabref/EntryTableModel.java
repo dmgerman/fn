@@ -90,6 +90,20 @@ name|StringTokenizer
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|imports
+operator|.
+name|ImportFormatReader
+import|;
+end_import
+
 begin_class
 DECL|class|EntryTableModel
 specifier|public

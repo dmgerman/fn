@@ -204,6 +204,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|imports
+operator|.
 name|BibtexParser
 import|;
 end_import
@@ -215,6 +217,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|imports
 operator|.
 name|ParserResult
 import|;

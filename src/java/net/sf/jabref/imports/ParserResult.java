@@ -4,13 +4,15 @@ comment|/* Copyright (C) 2003 Morten O. Alver, Nizar N. Batada  All programs in 
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.imports
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|imports
 package|;
 end_package
 
@@ -21,6 +23,18 @@ operator|.
 name|util
 operator|.
 name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|*
 import|;
 end_import
 
