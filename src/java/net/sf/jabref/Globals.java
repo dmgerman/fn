@@ -127,6 +127,7 @@ class|class
 name|Globals
 block|{
 DECL|field|SHORTCUT_MASK
+specifier|public
 specifier|static
 name|int
 name|SHORTCUT_MASK

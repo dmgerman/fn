@@ -2413,13 +2413,15 @@ operator|+
 literal|"\n---------------------"
 argument_list|)
 expr_stmt|;
-name|Util
-operator|.
-name|guessBibtexFields
+name|TextAnalyzer
+name|ta
+init|=
+operator|new
+name|TextAnalyzer
 argument_list|(
 name|cont
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|output
 argument_list|(
 name|Globals
@@ -7060,26 +7062,14 @@ operator|.
 name|assureNotEditing
 argument_list|()
 expr_stmt|;
-name|entryTable
-operator|.
-name|invalidate
-argument_list|()
-expr_stmt|;
+comment|//entryTable.invalidate();
 name|tableModel
 operator|.
 name|remap
 argument_list|()
 expr_stmt|;
-name|entryTable
-operator|.
-name|revalidate
-argument_list|()
-expr_stmt|;
-name|entryTable
-operator|.
-name|repaint
-argument_list|()
-expr_stmt|;
+comment|//entryTable.revalidate();
+comment|//entryTable.repaint();
 block|}
 DECL|method|updatePreamble ()
 specifier|public
@@ -8300,18 +8290,6 @@ return|return
 name|database
 return|;
 block|}
-DECL|method|entryTypeFormClosing (String id)
-specifier|public
-name|void
-name|entryTypeFormClosing
-parameter_list|(
-name|String
-name|id
-parameter_list|)
-block|{
-comment|// Called by EntryTypeForm when closing.
-comment|// Deprecated, since EntryEditor has replaced EntryTypeForm.
-block|}
 DECL|method|preambleEditorClosing ()
 specifier|public
 name|void
@@ -9498,9 +9476,7 @@ operator|.
 name|stop
 argument_list|()
 expr_stmt|;
-name|stop
-argument_list|()
-expr_stmt|;
+comment|//stop();
 comment|//output(message);
 block|}
 block|}

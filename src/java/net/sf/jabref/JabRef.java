@@ -132,6 +132,11 @@ specifier|public
 class|class
 name|JabRef
 block|{
+DECL|field|jrf
+specifier|static
+name|JabRefFrame
+name|jrf
+decl_stmt|;
 comment|/*  class StringArrayOption extends ArrayOption {     public     public void modify(String value) {     }     public void modify(String[] value) {     }     public Object[] getObjectArray() {       return null;     }     public String getTypeName() {       return "Strings";     }     public String getStringValue() {       return "";     }     public Object getObject() {       return null;     }   }*/
 DECL|method|main (String[] args)
 specifier|public
@@ -1727,13 +1732,29 @@ literal|"fontSize"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|JabRefFrame
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+operator|new
+name|Runnable
+argument_list|()
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
 name|jrf
-init|=
+operator|=
 operator|new
 name|JabRefFrame
 argument_list|()
-decl_stmt|;
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|loaded

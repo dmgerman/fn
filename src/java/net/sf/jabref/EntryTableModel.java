@@ -1746,6 +1746,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|//Util.pr("remap");
+name|fireTableDataChanged
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|isCellEditable (int row, int col)
 specifier|public
