@@ -44,6 +44,14 @@ comment|// modified :
 end_comment
 
 begin_comment
+comment|//            04.11.2004
+end_comment
+
+begin_comment
+comment|//            - experimental: text-input-area with underlying infotext
+end_comment
+
+begin_comment
 comment|//            02.11.2004
 end_comment
 
@@ -837,6 +845,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|textPane
+operator|.
+name|setOpaque
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|doc
 operator|=
 name|textPane
@@ -849,6 +864,17 @@ argument_list|(
 name|doc
 argument_list|)
 expr_stmt|;
+name|OverlayPanel
+name|testPanel
+init|=
+operator|new
+name|OverlayPanel
+argument_list|(
+name|textPane
+argument_list|,
+literal|"Text Input Area"
+argument_list|)
+decl_stmt|;
 try|try
 block|{
 name|doc
@@ -881,7 +907,7 @@ init|=
 operator|new
 name|JScrollPane
 argument_list|(
-name|textPane
+name|testPanel
 argument_list|)
 decl_stmt|;
 name|paneScrollPane
@@ -919,6 +945,10 @@ literal|10
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//    paneScrollPane.setBackground(Color.white);
+comment|//    paneScrollPane.setForeground(Color.green);
+comment|//    paneScrollPane.setOpaque(false);
+comment|//    testPanel.add(paneScrollPane) ;
 comment|// copy/paste Menu
 name|PasteAction
 name|pasteAction
@@ -968,6 +998,13 @@ name|inputMenu
 argument_list|)
 decl_stmt|;
 name|textPane
+operator|.
+name|addMouseListener
+argument_list|(
+name|popupListener
+argument_list|)
+expr_stmt|;
+name|testPanel
 operator|.
 name|addMouseListener
 argument_list|(
@@ -1041,6 +1078,7 @@ operator|.
 name|NORTH
 argument_list|)
 expr_stmt|;
+comment|//    leftPanel.add( testPanel, BorderLayout.CENTER ) ;
 name|leftPanel
 operator|.
 name|add
