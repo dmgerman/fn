@@ -390,6 +390,19 @@ operator|+
 literal|" = "
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|bs
+operator|.
+name|getContent
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|""
+argument_list|)
+condition|)
 name|fw
 operator|.
 name|write
@@ -411,7 +424,15 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//Util.writeField(bs.getName(), bs.getContent(), fw);
+else|else
+name|fw
+operator|.
+name|write
+argument_list|(
+literal|"{}"
+argument_list|)
+expr_stmt|;
+comment|//Util.writeField(bs.getName(), bs.getContent(), fw) ;
 name|fw
 operator|.
 name|write
@@ -434,10 +455,6 @@ argument_list|(
 literal|"priSort"
 argument_list|)
 decl_stmt|;
-comment|// Write database entries. Take care, using CrossRefEntry-
-comment|// Comparator, that referred entries occur after referring
-comment|// ones. Apart from crossref requirements, entries will be
-comment|// sorted as they appear on the screen.
 name|String
 name|sec
 init|=
@@ -448,9 +465,6 @@ argument_list|(
 literal|"secSort"
 argument_list|)
 decl_stmt|;
-comment|// Write database entries. Take care, using CrossRefEntry-
-comment|// Comparator, that referred entries occur after referring
-comment|// ones. Apart from crossref requirements, entries will be
 comment|// sorted as they appear on the screen.
 name|String
 name|ter

@@ -415,7 +415,9 @@ name|osName
 operator|.
 name|equals
 argument_list|(
-literal|"Mac OS X"
+name|Globals
+operator|.
+name|MAC
 argument_list|)
 condition|)
 block|{
@@ -467,7 +469,9 @@ name|prefs
 init|=
 operator|new
 name|JabRefPreferences
-argument_list|()
+argument_list|(
+name|osName
+argument_list|)
 decl_stmt|;
 name|BibtexEntryType
 operator|.

@@ -222,7 +222,16 @@ name|prefs
 init|=
 operator|new
 name|JabRefPreferences
-argument_list|()
+argument_list|(
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"os.name"
+argument_list|,
+literal|"def"
+argument_list|)
+argument_list|)
 decl_stmt|;
 DECL|field|tabbedPane
 name|JTabbedPane

@@ -4969,6 +4969,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+comment|/* 	entryTable.getInputMap().put(prefs.getKey("Edit entry"), "Edit"); 	entryTable.getActionMap().put("Edit", new AbstractAction() { 		public void actionPerformed(ActionEvent e) { 		    Util.pr("eueo"); 		    try { runCommand("edit"); 		    } catch (Throwable ex) { 			ex.printStackTrace(); 		    } 		} 	    }); 	*/
 name|entryTable
 operator|.
 name|addKeyListener

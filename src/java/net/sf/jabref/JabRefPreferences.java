@@ -170,10 +170,13 @@ specifier|static
 name|LabelPattern
 name|keyPattern
 decl_stmt|;
-DECL|method|JabRefPreferences ()
+DECL|method|JabRefPreferences (String osName)
 specifier|public
 name|JabRefPreferences
-parameter_list|()
+parameter_list|(
+name|String
+name|osName
+parameter_list|)
 block|{
 name|prefs
 operator|=
@@ -187,6 +190,48 @@ name|class
 argument_list|)
 expr_stmt|;
 comment|//Util.pr(prefs.toString());
+if|if
+condition|(
+name|osName
+operator|.
+name|equals
+argument_list|(
+name|Globals
+operator|.
+name|MAC
+argument_list|)
+condition|)
+block|{
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"pdfviewer"
+argument_list|,
+literal|"open /Applications/Preview.app"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"psviewer"
+argument_list|,
+literal|"open /Applications/Preview.app"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"htmlviewer"
+argument_list|,
+literal|"/usr/bin/mozilla"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|defaults
 operator|.
 name|put
@@ -214,6 +259,7 @@ argument_list|,
 literal|"/usr/bin/mozilla"
 argument_list|)
 expr_stmt|;
+block|}
 name|defaults
 operator|.
 name|put
@@ -2431,6 +2477,7 @@ argument_list|,
 literal|"Delete"
 argument_list|)
 expr_stmt|;
+comment|//defKeyBinds.put("Edit entry", "ctrl E");
 block|}
 DECL|method|getNextUnit (Reader data)
 specifier|private

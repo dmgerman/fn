@@ -142,6 +142,11 @@ DECL|field|LAYOUT_PREFIX
 name|LAYOUT_PREFIX
 init|=
 literal|"/resource/layout/"
+decl_stmt|,
+DECL|field|MAC
+name|MAC
+init|=
+literal|"Mac OS X"
 decl_stmt|;
 DECL|method|logger (String s)
 specifier|public
