@@ -91,7 +91,7 @@ name|Map
 name|_entries
 init|=
 operator|new
-name|HashMap
+name|Hashtable
 argument_list|()
 decl_stmt|;
 DECL|field|_preamble
