@@ -1541,6 +1541,19 @@ argument_list|(
 literal|"View"
 argument_list|)
 argument_list|)
+decl_stmt|,
+name|options
+init|=
+operator|new
+name|JMenu
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Options"
+argument_list|)
+argument_list|)
 decl_stmt|;
 name|file
 operator|.
@@ -1677,6 +1690,20 @@ operator|.
 name|add
 argument_list|(
 name|bibtex
+argument_list|)
+expr_stmt|;
+name|options
+operator|.
+name|add
+argument_list|(
+name|showPrefs
+argument_list|)
+expr_stmt|;
+name|mb
+operator|.
+name|add
+argument_list|(
+name|options
 argument_list|)
 expr_stmt|;
 comment|/* 	file.add(mItem(newDatabaseAction, null)); 	file.add(mItem(openDatabaseAction, GUIGlobals.openKeyStroke)); 	file.add(mItem(saveDatabaseAction, GUIGlobals.saveKeyStroke)); 	file.add(mItem(saveAsDatabaseAction, null)); 	file.add(mItem(saveSpecialAction, null)); 	file.addSeparator(); 	file.add(mItem(mergeDatabaseAction, null)); 	file.addSeparator(); 	file.add(mItem(closeDatabaseAction, null)); 	file.add(mItem(closeAction, GUIGlobals.closeKeyStroke)); 	mb.add(file);  	JMenu view = new JMenu("View"),  	    entry = new JMenu("Edit"), 	    entryType = new JMenu("New ..."), 	    bibtex = new JMenu("Bibtex"); 	for (int i=0; i<newSpecificEntryAction.length; i++) 	    entryType.add(mItem(newSpecificEntryAction[i],  				newSpecificEntryAction[i].keyStroke)); 	entry.add(mItem(undoAction, GUIGlobals.undoStroke)); 	entry.add(mItem(redoAction, GUIGlobals.redoStroke)); 	entry.addSeparator(); 	entry.add(mItem(removeEntryAction, GUIGlobals.removeEntryKeyStroke)); 	entry.add(mItem(copyAction, GUIGlobals.copyStroke)); 	entry.add(mItem(pasteAction, GUIGlobals.pasteStroke)); 	entry.addSeparator(); 	entry.add(mItem(selectAllAction, GUIGlobals.selectAllKeyStroke));  	view.add(mItem(showGroupsAction, GUIGlobals.showGroupsKeyStroke));  	bibtex.add(entryType); 	bibtex.add(mItem(newEntryAction, GUIGlobals.newEntryKeyStroke)); 	bibtex.addSeparator(); 	bibtex.add(mItem(copyKeyAction, GUIGlobals.copyKeyStroke)); 	bibtex.add(mItem(editPreambleAction, GUIGlobals.editPreambleKeyStroke)); 	bibtex.add(mItem(editStringsAction, GUIGlobals.editStringsKeyStroke)); 	bibtex.add(mItem(editEntryAction, GUIGlobals.editEntryKeyStroke));   	mb.add(entry); 	mb.add(view); 	mb.add(bibtex);  	JMenu tools = new JMenu("Tools"); 	tools.add(mItem(searchPaneAction, GUIGlobals.simpleSearchKeyStroke)); 	JMenu autoGenerateMenu = new JMenu("Autogenerate Bibtexkey") ;  	tools.add(mItem(makeLabelAction, GUIGlobals.generateKeyStroke)); 	tools.add(mItem(checkUniqueLabelAction, null)); 	//tools.add(autoGenerateMenu) ;  	mb.add(tools);  	JMenu options = new JMenu("Options"); 	//options.add(mItem(setupTableAction, GUIGlobals.setupTableKeyStroke)); 	options.add(setupTableAction); 	mb.add(options);  	JMenu help = new JMenu("Help"); 	help.add(mItem(new HelpAction(helpDiag, GUIGlobals.baseFrameHelp, "Help"), 		       GUIGlobals.helpKeyStroke)); 	help.add(new HelpAction("Help contents", helpDiag,  				GUIGlobals.helpContents, "Help contents")); 	help.addSeparator(); 	help.add(mItem(aboutAction, null)); 	mb.add(help);  	return mb; 	*/
@@ -2450,23 +2477,23 @@ comment|/* 	    if (prefs.getBoolean("autoComplete")) 	    db.setCompleters(auto
 block|}
 block|}
 comment|// The action for opening the preferences dialog.
-DECL|field|setupTableAction
-name|SetupTableAction
-name|setupTableAction
+DECL|field|showPrefs
+name|AbstractAction
+name|showPrefs
 init|=
 operator|new
-name|SetupTableAction
+name|ShowPrefsAction
 argument_list|()
 decl_stmt|;
-DECL|class|SetupTableAction
+DECL|class|ShowPrefsAction
 class|class
-name|SetupTableAction
+name|ShowPrefsAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|method|SetupTableAction ()
+DECL|method|ShowPrefsAction ()
 specifier|public
-name|SetupTableAction
+name|ShowPrefsAction
 parameter_list|()
 block|{
 name|super
@@ -2509,14 +2536,62 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|Util
+name|PrefsDialog
 operator|.
-name|pr
+name|showPrefsDialog
 argument_list|(
-literal|"JabRefFrame: must show preferences dialog."
+name|ths
+argument_list|,
+name|prefs
 argument_list|)
 expr_stmt|;
-comment|/* 		PrefsDialog.showPrefsDialog(ths, prefs); 		// This action can be invoked without an open database, so 		// we have to check if we have one before trying to invoke 		// methods to execute changes in the preferences.  		// We want to notify all frames about the changes to  		// avoid problems when changing the column set. 		java.util.Iterator i = GUIGlobals.frames.keySet().iterator(); 		for (; i.hasNext();) { 		    BibtexBaseFrame bf = (BibtexBaseFrame) 			(GUIGlobals.frames.get(i.next())); 		    if (bf.database != null) { 			bf.setupMainPanel(); 		    } 		} 	    */
+comment|// This action can be invoked without an open database, so
+comment|// we have to check if we have one before trying to invoke
+comment|// methods to execute changes in the preferences.
+comment|// We want to notify all tabs about the changes to
+comment|// avoid problems when changing the column set.
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|tabbedPane
+operator|.
+name|getTabCount
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|BasePanel
+name|bf
+init|=
+name|baseAt
+argument_list|(
+name|i
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|bf
+operator|.
+name|database
+operator|!=
+literal|null
+condition|)
+block|{
+name|bf
+operator|.
+name|setupMainPanel
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 DECL|field|aboutAction
