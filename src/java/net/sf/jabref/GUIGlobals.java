@@ -117,7 +117,7 @@ decl_stmt|,
 DECL|field|version
 name|version
 init|=
-literal|"1.6 beta"
+literal|"1.6"
 decl_stmt|,
 DECL|field|stringsTitle
 name|stringsTitle

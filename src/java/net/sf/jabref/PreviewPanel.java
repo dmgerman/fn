@@ -415,17 +415,22 @@ block|{
 name|readLayout
 argument_list|()
 expr_stmt|;
+name|update
+argument_list|()
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
 name|Exception
 name|ex
 parameter_list|)
-block|{     }
-name|update
+block|{
+name|ex
+operator|.
+name|printStackTrace
 argument_list|()
 expr_stmt|;
-comment|//Util.pr("to");
+block|}
 block|}
 DECL|method|update ()
 specifier|public

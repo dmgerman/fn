@@ -119,6 +119,14 @@ name|filenm
 operator|.
 name|endsWith
 argument_list|(
+literal|".dat"
+argument_list|)
+comment|// silverplatter ending
+operator|||
+name|filenm
+operator|.
+name|endsWith
+argument_list|(
 literal|".txt"
 argument_list|)
 operator|||
@@ -184,7 +192,7 @@ operator|!
 name|specific
 condition|)
 return|return
-literal|"*.bib, *.bibx, *.txt, *.xml, *.ref or *.fcgi"
+literal|"*.bib, *.bibx, *.dat, *.txt, *.xml, *.ref or *.fcgi"
 return|;
 else|else
 return|return

@@ -2375,6 +2375,15 @@ argument_list|,
 literal|"&ccedil;"
 argument_list|)
 expr_stmt|;
+name|HTMLCHARS
+operator|.
+name|put
+argument_list|(
+literal|"cC"
+argument_list|,
+literal|"&Ccedil;"
+argument_list|)
+expr_stmt|;
 name|HTML_CHARS
 operator|.
 name|put
@@ -3315,7 +3324,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\\uFFFDe\\}"
+literal|"\\{\\\\\\'e\\}"
 argument_list|,
 literal|"&#x00E9;"
 argument_list|)
@@ -3324,7 +3333,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\\uFFFDE\\}"
+literal|"\\{\\\\\\'E\\}"
 argument_list|,
 literal|"&#x00C9;"
 argument_list|)
@@ -3333,7 +3342,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\\uFFFDi\\}"
+literal|"\\{\\\\\\'i\\}"
 argument_list|,
 literal|"&#x00ED;"
 argument_list|)
@@ -3342,7 +3351,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\\uFFFDI\\}"
+literal|"\\{\\\\\\'I\\}"
 argument_list|,
 literal|"&#x00CD;"
 argument_list|)
@@ -3351,7 +3360,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\\uFFFDo\\}"
+literal|"\\{\\\\\\'o\\}"
 argument_list|,
 literal|"&#x00F3;"
 argument_list|)
@@ -3360,7 +3369,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\\uFFFDO\\}"
+literal|"\\{\\\\\\'O\\}"
 argument_list|,
 literal|"&#x00D3;"
 argument_list|)
@@ -3369,7 +3378,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\\uFFFDu\\}"
+literal|"\\{\\\\\\'u\\}"
 argument_list|,
 literal|"&#x00FA;"
 argument_list|)
@@ -3378,7 +3387,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\\uFFFDU\\}"
+literal|"\\{\\\\\\'U\\}"
 argument_list|,
 literal|"&#x00DA;"
 argument_list|)
@@ -3387,7 +3396,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\\uFFFDa\\}"
+literal|"\\{\\\\\\'a\\}"
 argument_list|,
 literal|"&#x00E1;"
 argument_list|)
@@ -3396,7 +3405,7 @@ name|XML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\\uFFFDA\\}"
+literal|"\\{\\\\\\'A\\}"
 argument_list|,
 literal|"&#x00C1;"
 argument_list|)

@@ -978,6 +978,12 @@ block|}
 block|}
 if|if
 condition|(
+operator|(
+name|key
+operator|!=
+literal|null
+operator|)
+operator|&&
 name|key
 operator|.
 name|equals
@@ -1006,6 +1012,7 @@ argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
+comment|//System.out.println(key+"");
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
@@ -1037,7 +1044,12 @@ condition|)
 block|{
 break|break;
 block|}
-comment|//if (key != null)
+if|if
+condition|(
+name|c
+operator|==
+literal|','
+condition|)
 name|consume
 argument_list|(
 literal|','
@@ -1657,7 +1669,7 @@ init|=
 name|read
 argument_list|()
 decl_stmt|;
-comment|//Util.pr(".. "+c);
+comment|//Util.pr(".. '"+(char)c+"'\t"+c);
 if|if
 condition|(
 name|c
@@ -1682,6 +1694,18 @@ comment|//
 comment|// G\uFFFDr:  $_*+.-\/?"^
 if|if
 condition|(
+operator|!
+name|Character
+operator|.
+name|isWhitespace
+argument_list|(
+operator|(
+name|char
+operator|)
+name|c
+argument_list|)
+operator|&&
+operator|(
 name|Character
 operator|.
 name|isLetterOrDigit
@@ -1741,6 +1765,7 @@ operator|!=
 literal|'='
 operator|)
 operator|)
+operator|)
 condition|)
 block|{
 name|token
@@ -1756,6 +1781,30 @@ expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
+name|Character
+operator|.
+name|isWhitespace
+argument_list|(
+operator|(
+name|char
+operator|)
+name|c
+argument_list|)
+condition|)
+block|{
+comment|// We have encountered white space instead of the comma at the end of
+comment|// the key. Possibly the comma is missing, so we try to return what we
+comment|// have found, as the key.
+return|return
+name|token
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
+elseif|else
 if|if
 condition|(
 name|c
@@ -1787,17 +1836,13 @@ condition|)
 block|{
 comment|// If we find a '=' sign, it is either an error, or
 comment|// the entry lacked a comma signifying the end of the key.
-comment|//unread(c);
-throw|throw
-operator|new
-name|NoLabelException
-argument_list|(
+return|return
 name|token
 operator|.
 name|toString
 argument_list|()
-argument_list|)
-throw|;
+return|;
+comment|//throw new NoLabelException(token.toString());
 block|}
 else|else
 throw|throw

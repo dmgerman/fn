@@ -1857,22 +1857,14 @@ literal|"doi"
 argument_list|)
 condition|)
 block|{
-name|cmdArray
-index|[
-literal|0
-index|]
+comment|//cmdArray[0] = prefs.get("htmlviewer");
+comment|//cmdArray[1] = Globals.DOI_LOOKUP_PREFIX+link;
+comment|//Process child = Runtime.getRuntime().exec(cmdArray[0]+" "+cmdArray[1]);
+name|fieldName
 operator|=
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"htmlviewer"
-argument_list|)
+literal|"url"
 expr_stmt|;
-name|cmdArray
-index|[
-literal|1
-index|]
+name|link
 operator|=
 name|Globals
 operator|.
@@ -1880,31 +1872,10 @@ name|DOI_LOOKUP_PREFIX
 operator|+
 name|link
 expr_stmt|;
-name|Process
-name|child
-init|=
-name|Runtime
-operator|.
-name|getRuntime
-argument_list|()
-operator|.
-name|exec
-argument_list|(
-name|cmdArray
-index|[
-literal|0
-index|]
-operator|+
-literal|" "
-operator|+
-name|cmdArray
-index|[
-literal|1
-index|]
-argument_list|)
-decl_stmt|;
+comment|//String[] cmd = {"/usr/bin/open", "-a", prefs.get("htmlviewer"),
+comment|//                Globals.DOI_LOOKUP_PREFIX+link};
+comment|//Process child = Runtime.getRuntime().exec(cmd);
 block|}
-elseif|else
 if|if
 condition|(
 name|fieldName

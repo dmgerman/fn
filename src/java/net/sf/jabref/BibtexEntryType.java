@@ -135,12 +135,6 @@ operator|new
 name|String
 index|[]
 block|{
-literal|"volume"
-block|,
-literal|"number"
-block|,
-literal|"pages"
-block|,
 literal|"month"
 block|,
 literal|"eid"
@@ -167,6 +161,12 @@ block|,
 literal|"journal"
 block|,
 literal|"year"
+block|,
+literal|"volume"
+block|,
+literal|"number"
+block|,
+literal|"pages"
 block|}
 return|;
 block|}
@@ -205,6 +205,12 @@ block|,
 literal|"year"
 block|,
 literal|"bibtexkey"
+block|,
+literal|"volume"
+block|,
+literal|"number"
+block|,
+literal|"pages"
 block|}
 argument_list|)
 return|;
@@ -245,6 +251,8 @@ block|{
 literal|"author"
 block|,
 literal|"howpublished"
+block|,
+literal|"lastchecked"
 block|,
 literal|"address"
 block|,

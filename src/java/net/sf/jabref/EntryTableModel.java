@@ -181,6 +181,11 @@ name|OTHER
 init|=
 literal|3
 decl_stmt|,
+DECL|field|BOOLEAN
+name|BOOLEAN
+init|=
+literal|4
+decl_stmt|,
 comment|//PDF_COL = 1, // The column displaying icons for linked pdfs.
 DECL|field|ICON_COL
 name|ICON_COL
@@ -473,6 +478,18 @@ name|column
 parameter_list|)
 block|{
 comment|//return (getIconTypeForColumn(column) != null ? Icon.class : String.class);
+if|if
+condition|(
+name|column
+operator|==
+literal|0
+condition|)
+return|return
+name|Boolean
+operator|.
+name|class
+return|;
+else|else
 return|return
 operator|(
 name|getIconTypeForColumn
@@ -536,47 +553,6 @@ operator|==
 literal|0
 condition|)
 block|{
-if|if
-condition|(
-operator|!
-name|isComplete
-argument_list|(
-name|row
-argument_list|)
-condition|)
-block|{
-name|JLabel
-name|incomplete
-init|=
-operator|new
-name|JLabel
-argument_list|(
-literal|""
-operator|+
-operator|(
-name|row
-operator|+
-literal|1
-operator|)
-argument_list|,
-name|GUIGlobals
-operator|.
-name|incompleteLabel
-operator|.
-name|getIcon
-argument_list|()
-argument_list|,
-name|JLabel
-operator|.
-name|RIGHT
-argument_list|)
-decl_stmt|;
-comment|//      	JLabel incomplete = new JLabel("" + (row + 1));
-return|return
-name|incomplete
-return|;
-block|}
-else|else
 name|o
 operator|=
 literal|""
@@ -588,6 +564,7 @@ literal|1
 operator|)
 expr_stmt|;
 block|}
+comment|/*      if (!isComplete(row)) {       	//JLabel incomplete = new JLabel("" + (row + 1),GUIGlobals.incompleteLabel.getIcon(), JLabel.RIGHT);         //JLabel incomplete = new JLabel("" + (row + 1));         //incomplete.setToolTipText(Globals.lang("This entry is incomplete"));         //return incomplete;               } else */
 elseif|else
 if|if
 condition|(
@@ -864,7 +841,7 @@ literal|0
 condition|)
 block|{
 return|return
-name|OTHER
+name|BOOLEAN
 return|;
 block|}
 if|if

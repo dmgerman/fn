@@ -156,6 +156,10 @@ name|FontSizeHints
 import|;
 end_import
 
+begin_comment
+comment|//import com.jgoodies.plaf.plastic.PlasticLookAndFeel;
+end_comment
+
 begin_import
 import|import
 name|com
@@ -166,7 +170,7 @@ name|plaf
 operator|.
 name|plastic
 operator|.
-name|PlasticLookAndFeel
+name|Plastic3DLookAndFeel
 import|;
 end_import
 
@@ -2182,15 +2186,16 @@ operator|&&
 operator|(
 name|lnf
 operator|instanceof
-name|PlasticLookAndFeel
+name|Plastic3DLookAndFeel
 operator|)
 condition|)
 block|{
-name|PlasticLookAndFeel
+comment|//MetalLookAndFeel.setCurrentTheme(new com.jgoodies.plaf.plastic.theme.SkyBluer());
+name|Plastic3DLookAndFeel
 name|plLnf
 init|=
 operator|(
-name|PlasticLookAndFeel
+name|Plastic3DLookAndFeel
 operator|)
 name|lnf
 decl_stmt|;
@@ -2211,23 +2216,47 @@ name|fontSizes
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|MetalLookAndFeel
+block|}
+elseif|else
+if|if
+condition|(
+operator|(
+name|lnf
+operator|!=
+literal|null
+operator|)
+operator|&&
+operator|(
+name|lnf
+operator|instanceof
+name|ExtWindowsLookAndFeel
+operator|)
+condition|)
+block|{
+comment|//System.out.println("ttt");
+name|ExtWindowsLookAndFeel
+name|plLnf
+init|=
+operator|(
+name|ExtWindowsLookAndFeel
+operator|)
+name|lnf
+decl_stmt|;
+name|plLnf
 operator|.
-name|setCurrentTheme
+name|setFontSizeHints
 argument_list|(
 operator|new
-name|com
-operator|.
-name|jgoodies
-operator|.
-name|plaf
-operator|.
-name|plastic
-operator|.
-name|theme
-operator|.
-name|SkyBluer
-argument_list|()
+name|FontSizeHints
+argument_list|(
+name|fontSizes
+argument_list|,
+name|fontSizes
+argument_list|,
+name|fontSizes
+argument_list|,
+name|fontSizes
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2450,16 +2479,12 @@ literal|"fontSize"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//SwingUtilities.invokeLater(new Runnable() {
-comment|//  public void run() {
 name|jrf
 operator|=
 operator|new
 name|JabRefFrame
 argument_list|()
 expr_stmt|;
-comment|//  }
-comment|//});
 if|if
 condition|(
 name|loaded
@@ -2701,7 +2726,7 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Throwable
 name|ex
 parameter_list|)
 block|{

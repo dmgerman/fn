@@ -69,11 +69,24 @@ argument_list|(
 literal|" and "
 argument_list|)
 decl_stmt|;
-return|return
+name|String
+name|abbrev
+init|=
 name|getAbbreviations
 argument_list|(
 name|authors
 argument_list|)
+decl_stmt|;
+return|return
+operator|(
+name|abbrev
+operator|==
+literal|null
+condition|?
+literal|""
+else|:
+name|abbrev
+operator|)
 return|;
 block|}
 comment|/** 	 * Abbreviates the names in the Last First format. 	 *  	 * @param authors List of authors or editors. 	 * @return the names abbreviated. 	 * @throws RequiredOrderException 	 *  	 */
@@ -210,23 +223,13 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
 name|e
-argument_list|)
-expr_stmt|;
-name|System
 operator|.
-name|exit
-argument_list|(
-operator|-
-literal|1
-argument_list|)
+name|printStackTrace
+argument_list|()
 expr_stmt|;
+comment|//	System.out.println(e);
+comment|//System.exit(-1);
 block|}
 return|return
 name|s
@@ -266,9 +269,25 @@ name|i
 operator|++
 control|)
 block|{
-comment|//If the name does not have the comma it is not in the appropriate format.
+comment|//If the name contains a space, but does not have the comma it is not in the
+comment|// appropriate format.
 if|if
 condition|(
+operator|(
+name|authors
+index|[
+name|i
+index|]
+operator|.
+name|indexOf
+argument_list|(
+literal|' '
+argument_list|)
+operator|>=
+literal|0
+operator|)
+operator|&&
+operator|(
 name|authors
 index|[
 name|i
@@ -281,14 +300,25 @@ argument_list|)
 operator|==
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
-throw|throw
+name|Exception
+name|e
+init|=
 operator|new
 name|Exception
 argument_list|(
 literal|"Error: names must be rearranged in Last, First format before formatted with AuthorLastFirstAbbreviator"
 argument_list|)
+decl_stmt|;
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+throw|throw
+name|e
 throw|;
 block|}
 block|}
@@ -314,6 +344,18 @@ argument_list|(
 literal|", "
 argument_list|)
 decl_stmt|;
+comment|// If there is no comma in the name, we return it as it is:
+if|if
+condition|(
+name|author
+operator|.
+name|length
+operator|<
+literal|2
+condition|)
+return|return
+name|string
+return|;
 name|char
 name|c
 decl_stmt|;

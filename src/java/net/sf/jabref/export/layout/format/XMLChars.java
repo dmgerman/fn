@@ -163,7 +163,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Changes {\^o} or {\^{o}} to ô  *  * @author $author$  * @version $Revision$  */
+comment|/**  * Changes {\^o} or {\^{o}} to ?  *  * @author $author$  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -238,14 +238,9 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|fieldText
-operator|=
-name|fieldText
-operator|.
-name|replaceAll
-argument_list|(
-name|s
-argument_list|,
+name|String
+name|repl
+init|=
 operator|(
 name|String
 operator|)
@@ -257,6 +252,22 @@ name|get
 argument_list|(
 name|s
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|repl
+operator|!=
+literal|null
+condition|)
+name|fieldText
+operator|=
+name|fieldText
+operator|.
+name|replaceAll
+argument_list|(
+name|s
+argument_list|,
+name|repl
 argument_list|)
 expr_stmt|;
 block|}

@@ -748,6 +748,41 @@ operator|=
 name|oldState
 expr_stmt|;
 block|}
+DECL|method|addRowSelectionIntervalQuietly (int row1, int row2)
+specifier|public
+name|void
+name|addRowSelectionIntervalQuietly
+parameter_list|(
+name|int
+name|row1
+parameter_list|,
+name|int
+name|row2
+parameter_list|)
+block|{
+name|boolean
+name|oldState
+init|=
+name|selectionListenerOn
+decl_stmt|;
+name|selectionListenerOn
+operator|=
+literal|false
+expr_stmt|;
+name|super
+operator|.
+name|addRowSelectionInterval
+argument_list|(
+name|row1
+argument_list|,
+name|row2
+argument_list|)
+expr_stmt|;
+name|selectionListenerOn
+operator|=
+name|oldState
+expr_stmt|;
+block|}
 comment|/*public boolean surrendersFocusOnKeystroke() { 	return true; 	}*/
 comment|/**        * This method overrides the superclass' to disable the selection listener while the        * selection is cleared.        */
 DECL|method|clearSelection ()
@@ -1655,13 +1690,12 @@ comment|//  renderer = maybeIncRenderer;
 comment|//else
 name|renderer
 operator|=
-name|incompleteEntryRenderer
+name|incRenderer
 expr_stmt|;
+comment|//incompleteEntryRenderer;
 block|}
 comment|//return (tableModel.isComplete(row) ? defRenderer: incRenderer);
 block|}
-comment|//else if (status == EntryTableModel.ICON_COL)
-comment|//  renderer = iconRenderer;
 elseif|else
 if|if
 condition|(
@@ -1687,6 +1721,24 @@ condition|)
 name|renderer
 operator|=
 name|optRenderer
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|status
+operator|==
+name|EntryTableModel
+operator|.
+name|BOOLEAN
+condition|)
+name|renderer
+operator|=
+name|getDefaultRenderer
+argument_list|(
+name|Boolean
+operator|.
+name|class
+argument_list|)
 expr_stmt|;
 else|else
 name|renderer
@@ -1878,13 +1930,11 @@ DECL|field|incRenderer
 name|incRenderer
 init|=
 operator|new
-name|Renderer
-argument_list|(
-name|GUIGlobals
-operator|.
-name|tableIncompleteEntryBackground
-argument_list|)
+name|IncompleteRenderer
+argument_list|()
 decl_stmt|,
+comment|//new Renderer(GUIGlobals.tableIncompleteEntryBackground),
+comment|//Globals.lang("This entry is incomplete")),
 DECL|field|grayedOutRenderer
 name|grayedOutRenderer
 init|=
@@ -1961,7 +2011,6 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-comment|/* 	    darker = new DefaultTableCellRenderer(); 	    double adj = 0.9; 	    darker.setBackground(new Color((int)((double)c.getRed()*adj), 					   (int)((double)c.getGreen()*adj), 					   (int)((double)c.getBlue()*adj))); 	    */
 block|}
 DECL|method|Renderer (Color c, Color fg)
 specifier|public
@@ -1999,7 +2048,7 @@ parameter_list|,
 name|boolean
 name|newV
 parameter_list|)
-block|{         }
+block|{}
 DECL|method|firePropertyChange (String propertyName, Object old, Object newV)
 specifier|public
 name|void
@@ -2014,7 +2063,7 @@ parameter_list|,
 name|Object
 name|newV
 parameter_list|)
-block|{         }
+block|{}
 comment|/* For enabling the renderer to handle icons. */
 DECL|method|setValue (Object value)
 specifier|protected
@@ -2084,6 +2133,15 @@ name|getToolTipText
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|lab
+operator|.
+name|getIcon
+argument_list|()
+operator|!=
+literal|null
+condition|)
 name|super
 operator|.
 name|setText
@@ -2115,7 +2173,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|//public void paintComponent(Graphics g) {
 DECL|method|paint (Graphics g)
 specifier|public
 name|void
@@ -2125,7 +2182,6 @@ name|Graphics
 name|g
 parameter_list|)
 block|{
-comment|//Util.pr("her");
 name|Graphics2D
 name|g2
 init|=
@@ -2134,11 +2190,6 @@ name|Graphics2D
 operator|)
 name|g
 decl_stmt|;
-comment|//Font f = g2.getFont();//new Font("Plain", Font.PLAIN, 24);
-comment|//g2.setColor(getBackground());
-comment|//g2.fill(g2.getClipBounds());
-comment|//g2.setColor(getForeground());
-comment|//g2.setFont(f);
 if|if
 condition|(
 name|antialiasing
@@ -2195,9 +2246,64 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
-comment|//super.paintComponent(g2);
 block|}
-comment|//public DefaultTableCellRenderer darker() { return darker; }
+block|}
+DECL|class|IncompleteRenderer
+class|class
+name|IncompleteRenderer
+extends|extends
+name|Renderer
+block|{
+DECL|method|IncompleteRenderer ()
+specifier|public
+name|IncompleteRenderer
+parameter_list|()
+block|{
+name|super
+argument_list|(
+name|GUIGlobals
+operator|.
+name|tableIncompleteEntryBackground
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setValue (Object value)
+specifier|protected
+name|void
+name|setValue
+parameter_list|(
+name|Object
+name|value
+parameter_list|)
+block|{
+name|String
+name|txt
+init|=
+operator|(
+name|String
+operator|)
+name|value
+decl_stmt|;
+name|super
+operator|.
+name|setText
+argument_list|(
+name|txt
+argument_list|)
+expr_stmt|;
+name|super
+operator|.
+name|setToolTipText
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"This entry is incomplete"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/* public TableCellRenderer iconRenderer = new IconCellRenderer();         //new JTableButtonRenderer(getDefaultRenderer(JButton.class));     class IconCellRenderer extends DefaultTableCellRenderer {         protected void setValue(Object value) {             if (value instanceof Icon) {                 setIcon((Icon)value);                 super.setValue(null);             } else {                 setIcon(null);                 super.setValue(value);             }         }     }      class JTableButtonRenderer implements TableCellRenderer {       private TableCellRenderer __defaultRenderer;        public JTableButtonRenderer(TableCellRenderer renderer) {         __defaultRenderer = renderer;       }        public Component getTableCellRendererComponent(JTable table, Object value,                                                      boolean isSelected,                                                      boolean hasFocus,                                                      int row, int column)       {         if(value instanceof Component)           return (Component)value;         return __defaultRenderer.getTableCellRendererComponent(       table, value, isSelected, hasFocus, row, column);       }     }*/
 DECL|method|ensureVisible (int row)
