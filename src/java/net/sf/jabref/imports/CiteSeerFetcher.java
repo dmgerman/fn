@@ -596,7 +596,7 @@ block|}
 block|}
 comment|/***********************************/
 comment|/* Begin Inner Class Declarations */
-comment|/* The inner classes are used to modify components, when not in the 	 * event-dispatching thread.  These are used to follow the "single-threaded 	 * rule", as defined here: http://java.sun.com/products/jfc/tsc/articles/threads/threads1.html 	 *  	 *  	 * I'm pretty sure the Dialog box invokers should remain as inner classes, 	 * but I can't decide whether or not to break the one-thread rule for the  	 * progress bar classes.  Because the search contains a locking-mechanism, 	 * activateFetcher() and deactivateFetcher(), there should only be at-most-one 	 * thread accessing the progress bar at any time. 	 */
+comment|/* The inner classes are used to modify components, when not in the 	 * event-dispatching thread.  These are used to follow the "single-threaded 	 * rule", as defined here: http://java.sun.com/products/jfc/tsc/articles/threads/threads1.html 	 * 	 * 	 * I'm pretty sure the Dialog box invokers should remain as inner classes, 	 * but I can't decide whether or not to break the one-thread rule for the 	 * progress bar classes.  Because the search contains a locking-mechanism, 	 * activateFetcher() and deactivateFetcher(), there should only be at-most-one 	 * thread accessing the progress bar at any time. 	 */
 DECL|class|ShowNoConnectionDialog
 class|class
 name|ShowNoConnectionDialog
@@ -1508,12 +1508,9 @@ name|abortOperation
 init|=
 literal|false
 decl_stmt|;
-name|String
-name|targetURL
+name|Object
+name|o
 init|=
-operator|(
-name|String
-operator|)
 name|currentEntry
 operator|.
 name|getField
@@ -1521,13 +1518,23 @@ argument_list|(
 literal|"url"
 argument_list|)
 decl_stmt|;
+name|String
+name|targetURL
+init|=
+operator|(
+name|String
+operator|)
+name|o
+decl_stmt|;
 try|try
 block|{
 if|if
 condition|(
-name|targetURL
+operator|(
+name|o
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|targetURL
 operator|.
@@ -1553,6 +1560,15 @@ operator|)
 operator|)
 condition|)
 block|{
+name|Util
+operator|.
+name|pr
+argument_list|(
+literal|"targetUrl: "
+operator|+
+name|targetURL
+argument_list|)
+expr_stmt|;
 name|String
 name|id
 init|=
@@ -1662,7 +1678,13 @@ name|releaseConnection
 argument_list|()
 expr_stmt|;
 block|}
-else|else
+elseif|else
+if|if
+condition|(
+name|o
+operator|!=
+literal|null
+condition|)
 block|{
 name|int
 name|row
@@ -1799,7 +1821,7 @@ name|abortOperation
 operator|)
 return|;
 block|}
-comment|/** 	 * @param be 	 *  	 * Reminder: this method runs in the EventDispatcher thread 	 */
+comment|/** 	 * @param be 	 * 	 * Reminder: this method runs in the EventDispatcher thread 	 */
 DECL|method|importCiteSeerEntry (BibtexEntry be, NamedCompound citeseerNC)
 specifier|public
 name|boolean

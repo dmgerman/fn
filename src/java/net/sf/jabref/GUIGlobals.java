@@ -232,11 +232,6 @@ name|SPLIT_PANE_DIVIDER_LOCATION
 init|=
 literal|145
 decl_stmt|,
-DECL|field|GROUPS_VISIBLE_ROWS
-name|GROUPS_VISIBLE_ROWS
-init|=
-literal|10
-decl_stmt|,
 DECL|field|TABLE_ROW_PADDING
 name|TABLE_ROW_PADDING
 init|=

@@ -348,6 +348,7 @@ literal|null
 decl_stmt|;
 comment|// The sidepane manager takes care of populating the sidepane.
 DECL|field|sidePaneManager
+specifier|public
 name|SidePaneManager
 name|sidePaneManager
 decl_stmt|;

@@ -830,6 +830,23 @@ name|sidep
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|revalidate ()
+specifier|public
+name|void
+name|revalidate
+parameter_list|()
+block|{
+name|sidep
+operator|.
+name|revalidate
+argument_list|()
+expr_stmt|;
+name|sidep
+operator|.
+name|repaint
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 

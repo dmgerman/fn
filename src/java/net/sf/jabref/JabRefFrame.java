@@ -4564,8 +4564,9 @@ argument_list|(
 name|closeDatabaseAction
 argument_list|)
 expr_stmt|;
+comment|//Insets margin = new Insets(0, 0, 0, 0);
 comment|//for (int i=0; i<tlb.getComponentCount(); i++)
-comment|//    tlb.getComponentAtIndex(i).setBackground(GUIGlobals.lightGray);
+comment|//  ((JButton)tlb.getComponentAtIndex(i)).setMargin(margin);
 block|}
 DECL|class|JabRefLabel
 specifier|private

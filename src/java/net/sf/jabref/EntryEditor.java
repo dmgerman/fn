@@ -5380,7 +5380,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"duplicate bibtex key."
+literal|"duplicate BibTeX key."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5413,14 +5413,14 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"duplicate bibtex key."
+literal|"duplicate BibTeX key."
 argument_list|)
 argument_list|,
 name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Don't show this dialog again"
+literal|"Disable this warning dialog"
 argument_list|)
 argument_list|,
 literal|false
@@ -5473,7 +5473,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Bibtex key is unique."
+literal|"BibTeX key is unique."
 argument_list|)
 argument_list|)
 expr_stmt|;
