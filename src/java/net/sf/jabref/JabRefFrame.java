@@ -580,7 +580,7 @@ literal|"search"
 argument_list|,
 literal|"Search"
 argument_list|,
-literal|"Start search"
+literal|"Start"
 argument_list|,
 name|GUIGlobals
 operator|.
@@ -917,6 +917,7 @@ specifier|public
 name|JabRefFrame
 parameter_list|()
 block|{
+comment|/*try { 	    //UIManager.setLookAndFeel("com.jgoodies.plaf.windows.ExtWindowsLookAndFeel"); 	    UIManager.setLookAndFeel(new PlasticXPLookAndFeel()); 	    } catch (Exception e) { e.printStackTrace();}*/
 comment|//Globals.setLanguage("no", "");
 name|setTitle
 argument_list|(
@@ -2696,13 +2697,8 @@ name|tlb
 operator|.
 name|add
 argument_list|(
-name|normalSearch
+name|newEntryAction
 argument_list|)
-expr_stmt|;
-name|tlb
-operator|.
-name|addSeparator
-argument_list|()
 expr_stmt|;
 name|tlb
 operator|.
@@ -2716,6 +2712,39 @@ operator|.
 name|add
 argument_list|(
 name|editStrings
+argument_list|)
+expr_stmt|;
+name|tlb
+operator|.
+name|add
+argument_list|(
+name|makeKeyAction
+argument_list|)
+expr_stmt|;
+name|tlb
+operator|.
+name|add
+argument_list|(
+name|lyxPushAction
+argument_list|)
+expr_stmt|;
+name|tlb
+operator|.
+name|addSeparator
+argument_list|()
+expr_stmt|;
+name|tlb
+operator|.
+name|add
+argument_list|(
+name|normalSearch
+argument_list|)
+expr_stmt|;
+name|tlb
+operator|.
+name|add
+argument_list|(
+name|toggleGroups
 argument_list|)
 expr_stmt|;
 name|tlb
