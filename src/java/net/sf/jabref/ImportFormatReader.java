@@ -4006,6 +4006,13 @@ name|equals
 argument_list|(
 literal|"N2"
 argument_list|)
+operator|||
+name|lab
+operator|.
+name|equals
+argument_list|(
+literal|"AB"
+argument_list|)
 condition|)
 name|hm
 operator|.
