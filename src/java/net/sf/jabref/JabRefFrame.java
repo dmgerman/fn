@@ -1004,6 +1004,17 @@ argument_list|(
 literal|"Open url"
 argument_list|)
 argument_list|)
+decl_stmt|,
+DECL|field|dupliCheck
+name|dupliCheck
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"dupliCheck"
+argument_list|,
+literal|"Find duplicates"
+argument_list|)
 decl_stmt|;
 comment|/*setupSelector = new GeneralAction("setupSelector", "", "", 					  GUIGlobals.pasteIconFile, 					  prefs.getKey(")),*/
 comment|// The menus for importing/appending other formats
@@ -3001,6 +3012,13 @@ operator|.
 name|add
 argument_list|(
 name|replaceAll
+argument_list|)
+expr_stmt|;
+name|tools
+operator|.
+name|add
+argument_list|(
+name|dupliCheck
 argument_list|)
 expr_stmt|;
 name|tools

@@ -148,6 +148,14 @@ name|MAC
 init|=
 literal|"Mac OS X"
 decl_stmt|;
+DECL|field|duplicateThreshold
+specifier|public
+specifier|static
+name|float
+name|duplicateThreshold
+init|=
+literal|0.78f
+decl_stmt|;
 DECL|field|osName
 specifier|public
 specifier|static
