@@ -157,7 +157,7 @@ comment|//return conv.format(ImportFormatReader.fixAuthor_lastnameFirst(fieldTex
 return|return
 name|ImportFormatReader
 operator|.
-name|fixAuthor_nocomma
+name|fixAuthor_firstNameFirst
 argument_list|(
 name|fieldText
 argument_list|)

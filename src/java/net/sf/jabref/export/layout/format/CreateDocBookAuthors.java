@@ -346,7 +346,7 @@ name|authorMod
 init|=
 name|ImportFormatReader
 operator|.
-name|fixAuthor_nocomma
+name|fixAuthor_firstNameFirst
 argument_list|(
 name|author
 argument_list|)

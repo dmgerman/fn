@@ -226,6 +226,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|WeakHashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|Iterator
 import|;
 end_import
@@ -334,6 +344,29 @@ name|compile
 argument_list|(
 name|SPACE_MARKER
 argument_list|)
+decl_stmt|;
+comment|/* Use a WeakHashMAp for storing cached names, so the cached mapping will not prevent      * an obsoleted name string from being garbage collected.      */
+DECL|field|nameCacheLastFirst
+specifier|private
+specifier|final
+specifier|static
+name|Map
+name|nameCacheLastFirst
+init|=
+operator|new
+name|WeakHashMap
+argument_list|()
+decl_stmt|;
+DECL|field|nameCacheFirstFirst
+specifier|private
+specifier|final
+specifier|static
+name|Map
+name|nameCacheFirstFirst
+init|=
+operator|new
+name|WeakHashMap
+argument_list|()
 decl_stmt|;
 DECL|field|formats
 specifier|private
@@ -482,6 +515,24 @@ operator|new
 name|SilverPlatterImporter
 argument_list|()
 argument_list|)
+expr_stmt|;
+block|}
+DECL|method|clearNameCache ()
+specifier|public
+specifier|static
+name|void
+name|clearNameCache
+parameter_list|()
+block|{
+name|nameCacheLastFirst
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+name|nameCacheFirstFirst
+operator|.
+name|clear
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|importFromStream (String format, InputStream in)
@@ -948,90 +999,45 @@ return|;
 comment|//.substring(0, res.length()-1);
 block|}
 comment|/**    * Describe<code>fixAuthor</code> method here.    *    * @param in    *          a<code>String</code> value    * @return a<code>String</code> value // input format string: LN FN [and    *         LN, FN]* // output format string: FN LN [and FN LN]*    */
-DECL|method|fixAuthor_nocomma (String in)
+DECL|method|fixAuthor_firstNameFirst (final String inOrig)
 specifier|public
 specifier|static
 name|String
-name|fixAuthor_nocomma
+name|fixAuthor_firstNameFirst
 parameter_list|(
+specifier|final
 name|String
-name|in
+name|inOrig
 parameter_list|)
 block|{
-return|return
-name|fixAuthor
+name|String
+name|in
+init|=
+name|inOrig
+decl_stmt|;
+comment|// Check if we have cached this particular name string before:
+name|Object
+name|old
+init|=
+name|nameCacheFirstFirst
+operator|.
+name|get
 argument_list|(
 name|in
 argument_list|)
-return|;
-comment|/*      * // Check if we have cached this particular name string before: Object old =      * Globals.nameCache.get(in); if (old != null) return (String)old;      *      * StringBuffer sb=new StringBuffer(); String[] authors = in.split(" and ");      * for(int i=0; i<authors.length; i++){ //System.out.println(authors[i]);      * authors[i]=authors[i].trim(); String[] t = authors[i].split(" "); if      * (t.length> 1) { sb.append(t[t.length-1].trim()); for (int cnt=0; cnt      *<=t.length-2; cnt++) sb.append(" " + t[cnt].trim()); } else      * sb.append(t[0].trim()); if(i==authors.length-1) sb.append("."); else      * sb.append(" and ");      *  }      *      * String fixed = sb.toString();      *  // Add the fixed name string to the cache. Globals.nameCache.put(in,      * fixed);      *      * return fixed;      */
-block|}
-comment|//========================================================
-comment|// rearranges the author names
-comment|// input format string: LN, FN [and LN, FN]*
-comment|// output format string: FN LN [, FN LN]+ [and FN LN]
-comment|//========================================================
-DECL|method|fixAuthor_commas (String in)
-specifier|public
-specifier|static
-name|String
-name|fixAuthor_commas
-parameter_list|(
-name|String
-name|in
-parameter_list|)
-block|{
-return|return
-operator|(
-name|fixAuthor
-argument_list|(
-name|in
-argument_list|,
-literal|false
-argument_list|)
-operator|)
-return|;
-block|}
-comment|//========================================================
-comment|// rearranges the author names
-comment|// input format string: LN, FN [and LN, FN]*
-comment|// output format string: FN LN [and FN LN]*
-comment|//========================================================
-DECL|method|fixAuthor (String in)
-specifier|public
-specifier|static
-name|String
-name|fixAuthor
-parameter_list|(
-name|String
-name|in
-parameter_list|)
-block|{
+decl_stmt|;
+if|if
+condition|(
+name|old
+operator|!=
+literal|null
+condition|)
 return|return
 operator|(
-name|fixAuthor
-argument_list|(
-name|in
-argument_list|,
-literal|true
-argument_list|)
+name|String
 operator|)
+name|old
 return|;
-block|}
-DECL|method|fixAuthor (String in, boolean includeAnds)
-specifier|public
-specifier|static
-name|String
-name|fixAuthor
-parameter_list|(
-name|String
-name|in
-parameter_list|,
-name|boolean
-name|includeAnds
-parameter_list|)
-block|{
-comment|//Util.pr("firstnamefirst");
 name|StringBuffer
 name|sb
 init|=
@@ -1143,11 +1149,6 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|includeAnds
-condition|)
-block|{
-if|if
-condition|(
 name|i
 operator|!=
 operator|(
@@ -1166,49 +1167,10 @@ argument_list|(
 literal|" and "
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
-if|if
-condition|(
-name|i
-operator|==
-operator|(
-name|authors
-operator|.
-name|length
-operator|-
-literal|2
-operator|)
-condition|)
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|" and "
-argument_list|)
-expr_stmt|;
-elseif|else
-if|if
-condition|(
-name|i
-operator|!=
-operator|(
-name|authors
-operator|.
-name|length
-operator|-
-literal|1
-operator|)
-condition|)
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|", "
-argument_list|)
-expr_stmt|;
-block|}
+comment|//	    if (i == (authors.length - 2))
+comment|//		sb.append(" and ");
+comment|//	    else if (i != (authors.length - 1))
+comment|//		sb.append(", ");
 block|}
 name|String
 name|fixed
@@ -1218,6 +1180,16 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
+comment|// Cache this transformation so we don't have to repeat it unnecessarily:
+name|nameCacheFirstFirst
+operator|.
+name|put
+argument_list|(
+name|inOrig
+argument_list|,
+name|fixed
+argument_list|)
+expr_stmt|;
 return|return
 name|fixed
 return|;
@@ -1227,16 +1199,45 @@ comment|// rearranges the author names
 comment|// input format string: LN, FN [and LN, FN]*
 comment|// output format string: LN, FN [and LN, FN]*
 comment|//========================================================
-DECL|method|fixAuthor_lastnameFirst (String in)
+DECL|method|fixAuthor_lastnameFirst (final String inOrig)
 specifier|public
 specifier|static
 name|String
 name|fixAuthor_lastnameFirst
 parameter_list|(
+specifier|final
 name|String
-name|in
+name|inOrig
 parameter_list|)
 block|{
+name|String
+name|in
+init|=
+name|inOrig
+decl_stmt|;
+comment|// Check if we have cached this particular name string before:
+name|Object
+name|old
+init|=
+name|nameCacheLastFirst
+operator|.
+name|get
+argument_list|(
+name|in
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|old
+operator|!=
+literal|null
+condition|)
+return|return
+operator|(
+name|String
+operator|)
+name|old
+return|;
 if|if
 condition|(
 name|in
@@ -1379,7 +1380,6 @@ name|toString
 argument_list|()
 expr_stmt|;
 block|}
-comment|//Util.pr("lastnamefirst: in");
 name|StringBuffer
 name|sb
 init|=
@@ -1649,7 +1649,8 @@ operator|.
 name|find
 argument_list|()
 condition|)
-return|return
+name|fixed
+operator|=
 name|fixed
 operator|.
 name|replaceAll
@@ -1658,8 +1659,17 @@ name|SPACE_MARKER
 argument_list|,
 literal|" "
 argument_list|)
-return|;
-else|else
+expr_stmt|;
+comment|// Cache this transformation so we don't have to repeat it unnecessarily:
+name|nameCacheLastFirst
+operator|.
+name|put
+argument_list|(
+name|inOrig
+argument_list|,
+name|fixed
+argument_list|)
+expr_stmt|;
 return|return
 name|fixed
 return|;

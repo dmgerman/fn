@@ -155,7 +155,7 @@ index|]
 operator|=
 name|ImportFormatReader
 operator|.
-name|fixAuthor_nocomma
+name|fixAuthor_firstNameFirst
 argument_list|(
 name|tokens
 index|[
