@@ -677,11 +677,7 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
-name|ex
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
+comment|//ex.printStackTrace();
 comment|// Repair the file with our temp file since saving failed.
 name|String
 name|name

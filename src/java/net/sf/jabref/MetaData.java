@@ -257,6 +257,21 @@ name|Vector
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|metaData
+operator|.
+name|put
+argument_list|(
+name|Globals
+operator|.
+name|SELECTOR_META_PREFIX
+operator|+
+literal|"journal"
+argument_list|,
+operator|new
+name|Vector
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|iterator ()
 specifier|public

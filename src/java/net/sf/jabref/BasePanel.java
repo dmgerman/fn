@@ -772,7 +772,16 @@ argument_list|(
 name|topShow
 argument_list|)
 expr_stmt|;
+name|showEntry
+argument_list|(
+name|ex
+operator|.
+name|getEntry
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
+else|else
 name|ex
 operator|.
 name|printStackTrace

@@ -681,6 +681,18 @@ operator|new
 name|FetchMedlineAction
 argument_list|()
 decl_stmt|,
+DECL|field|copyKey
+name|copyKey
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"copyKey"
+argument_list|,
+literal|"Copy BibTeX key"
+argument_list|)
+decl_stmt|,
+comment|//"Put a BibTeX reference to the selected entries on the clipboard",
 DECL|field|copyCiteKey
 name|copyCiteKey
 init|=
@@ -2670,6 +2682,13 @@ operator|.
 name|add
 argument_list|(
 name|delete
+argument_list|)
+expr_stmt|;
+name|edit
+operator|.
+name|add
+argument_list|(
+name|copyKey
 argument_list|)
 expr_stmt|;
 name|edit

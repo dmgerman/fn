@@ -268,6 +268,7 @@ name|String
 name|in
 parameter_list|)
 block|{
+comment|//Util.pr("firstnamefirst");
 name|StringBuffer
 name|sb
 init|=
@@ -394,6 +395,7 @@ name|String
 name|in
 parameter_list|)
 block|{
+comment|//Util.pr("lastnamefirst: in");
 name|StringBuffer
 name|sb
 init|=
@@ -465,6 +467,15 @@ argument_list|(
 literal|" "
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|t
+operator|.
+name|length
+operator|>
+literal|1
+condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -482,14 +493,6 @@ literal|","
 argument_list|)
 expr_stmt|;
 comment|// Last name
-if|if
-condition|(
-name|t
-operator|.
-name|length
-operator|>
-literal|1
-condition|)
 for|for
 control|(
 name|int
@@ -508,7 +511,6 @@ condition|;
 name|j
 operator|++
 control|)
-block|{
 name|sb
 operator|.
 name|append
@@ -522,6 +524,17 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+name|sb
+operator|.
+name|append
+argument_list|(
+name|t
+index|[
+literal|0
+index|]
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{

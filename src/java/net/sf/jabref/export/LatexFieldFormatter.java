@@ -44,6 +44,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|GUIGlobals
 import|;
 end_import
@@ -300,10 +312,34 @@ throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"# characters don't match!"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"The # character is not allowed in BibTeX fields"
+argument_list|)
+operator|+
+literal|".\n"
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"In JabRef, use pairs of # characters to indicate "
+operator|+
+literal|"a string."
+argument_list|)
+operator|+
+literal|"\n"
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Note that the entry causing the problem has been selected."
+argument_list|)
 argument_list|)
 throw|;
-comment|//break; // Where does 'break' take us?
 block|}
 block|}
 if|if
