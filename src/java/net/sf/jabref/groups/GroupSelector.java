@@ -1465,6 +1465,8 @@ argument_list|,
 name|DatabaseSearch
 operator|.
 name|GROUPSEARCH
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|search

@@ -44,14 +44,6 @@ name|*
 import|;
 end_import
 
-begin_comment
-comment|// 1. initially just dump out the number of matches
-end_comment
-
-begin_comment
-comment|// 2. later, do sort and highlight, then indicating the # of matches
-end_comment
-
 begin_class
 DECL|class|DatabaseSearch
 specifier|public
@@ -96,6 +88,10 @@ name|searchValueField
 init|=
 literal|null
 decl_stmt|;
+DECL|field|reorder
+name|boolean
+name|reorder
+decl_stmt|;
 specifier|public
 specifier|static
 name|String
@@ -109,7 +105,7 @@ name|GROUPSEARCH
 init|=
 literal|"groupsearch"
 decl_stmt|;
-DECL|method|DatabaseSearch (Hashtable searchOptions,SearchRuleSet searchRules, BasePanel panel, String searchValueField)
+DECL|method|DatabaseSearch (Hashtable searchOptions,SearchRuleSet searchRules, BasePanel panel, String searchValueField, boolean reorder)
 specifier|public
 name|DatabaseSearch
 parameter_list|(
@@ -124,6 +120,9 @@ name|panel
 parameter_list|,
 name|String
 name|searchValueField
+parameter_list|,
+name|boolean
+name|reorder
 parameter_list|)
 block|{
 name|this
@@ -159,6 +158,12 @@ operator|.
 name|searchValueField
 operator|=
 name|searchValueField
+expr_stmt|;
+name|this
+operator|.
+name|reorder
+operator|=
+name|reorder
 expr_stmt|;
 block|}
 DECL|method|run ()
@@ -271,12 +276,24 @@ comment|// 3. fire "sort" on "search"
 comment|// 4. add "search all optional fields"
 comment|// 5. modify algorithm to taste
 block|}
+if|if
+condition|(
+name|reorder
+condition|)
+comment|// Float search.
 name|panel
 operator|.
 name|showSearchResults
 argument_list|(
 name|searchValueField
 argument_list|)
+expr_stmt|;
+else|else
+comment|// Highlight search.
+name|panel
+operator|.
+name|selectSearchResults
+argument_list|()
 expr_stmt|;
 block|}
 block|}

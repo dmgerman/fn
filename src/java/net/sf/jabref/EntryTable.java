@@ -179,7 +179,13 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+comment|//setColumnSelectionAllowed(true);
 name|setColumnSelectionAllowed
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|setRowSelectionAllowed
 argument_list|(
 literal|true
 argument_list|)
@@ -746,46 +752,11 @@ init|=
 name|getSelectedRows
 argument_list|()
 decl_stmt|;
-name|int
-index|[]
-name|cols
-init|=
-name|getSelectedColumns
-argument_list|()
-decl_stmt|;
+comment|//int[] cols = getSelectedColumns();
 comment|// Entries are selected if only the first or multiple
 comment|// columns are selected.
-if|if
-condition|(
-operator|(
-operator|(
-name|cols
-operator|.
-name|length
-operator|==
-literal|1
-operator|)
-operator|&&
-operator|(
-name|cols
-index|[
-literal|0
-index|]
-operator|==
-literal|0
-operator|)
-operator|)
-operator|||
-operator|(
-name|cols
-operator|.
-name|length
-operator|>
-literal|1
-operator|)
-condition|)
-block|{
-comment|// entryTable.getColumnCount())) {
+comment|//if (((cols.length == 1)&& (cols[0] == 0)) ||
+comment|//(cols.length> 1)) { // entryTable.getColumnCount())) {
 if|if
 condition|(
 name|rows
@@ -844,7 +815,6 @@ index|]
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 return|return
