@@ -151,6 +151,11 @@ DECL|field|TYPE_HEADER
 name|TYPE_HEADER
 init|=
 literal|"entrytype"
+decl_stmt|,
+DECL|field|NUMBER_COL
+name|NUMBER_COL
+init|=
+literal|"#"
 decl_stmt|;
 DECL|field|CURRENTFONT
 specifier|public
@@ -2196,14 +2201,6 @@ init|=
 literal|65
 decl_stmt|;
 comment|// Maximum
-DECL|field|NUMBER_COL
-specifier|public
-specifier|static
-name|String
-name|NUMBER_COL
-init|=
-literal|"#"
-decl_stmt|;
 DECL|field|DEFAULT_FIELD_LENGTH
 specifier|public
 specifier|static
@@ -2212,8 +2209,8 @@ name|DEFAULT_FIELD_LENGTH
 init|=
 literal|100
 decl_stmt|,
-DECL|field|NUMBER_COL_LANGTH
-name|NUMBER_COL_LANGTH
+DECL|field|NUMBER_COL_LENGTH
+name|NUMBER_COL_LENGTH
 init|=
 literal|32
 decl_stmt|;

@@ -461,6 +461,16 @@ name|setWidths
 parameter_list|()
 block|{
 comment|// Setting column widths:
+name|int
+name|ncWidth
+init|=
+name|prefs
+operator|.
+name|getInt
+argument_list|(
+literal|"numberColWidth"
+argument_list|)
+decl_stmt|;
 name|String
 index|[]
 name|widths
@@ -487,9 +497,7 @@ argument_list|)
 operator|.
 name|setPreferredWidth
 argument_list|(
-name|GUIGlobals
-operator|.
-name|NUMBER_COL_LANGTH
+name|ncWidth
 argument_list|)
 expr_stmt|;
 for|for

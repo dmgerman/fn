@@ -164,7 +164,7 @@ specifier|static
 name|BibtexDatabase
 name|_db
 decl_stmt|;
-comment|/** 	 * This method takes a string of the form [field1]spacer[field2]spacer[field3]..., 	 * where the fields are the (required) fields of a BibTex entry. The string is split 	 * into firlds and spacers by recognizing the [ and ]. 	 * 	 * @param keyPattern a<code>String</code> 	 * @return an<code>ArrayList</code> The first item of the list 	 * is a string representation of the key pattern (the parameter), 	 * the second item is the spacer character (a<code>String</code>). 	 */
+comment|/**    * This method takes a string of the form [field1]spacer[field2]spacer[field3]...,    * where the fields are the (required) fields of a BibTex entry. The string is split    * into firlds and spacers by recognizing the [ and ].    *    * @param keyPattern a<code>String</code>    * @return an<code>ArrayList</code> The first item of the list    * is a string representation of the key pattern (the parameter),    * the second item is the spacer character (a<code>String</code>).    */
 DECL|method|split (String labelPattern)
 specifier|public
 specifier|static
@@ -212,6 +212,7 @@ operator|.
 name|hasMoreTokens
 argument_list|()
 condition|)
+block|{
 name|_alist
 operator|.
 name|add
@@ -222,12 +223,13 @@ name|nextToken
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|_alist
 return|;
-comment|/* 		// Regular expresion for identifying the fields 		Pattern pi = Pattern.compile("\\[\\w*\\]"); 		// Regular expresion for identifying the spacer 		Pattern ps = Pattern.compile("\\].()*\\[");  		// The matcher for the field 		Matcher mi = pi.matcher(labelPattern); 		// The matcher for the spacer char 		Matcher ms = ps.matcher(labelPattern);  		// Before we do anything, we add the parameter to the ArrayLIst 		_alist.add(labelPattern);  		// If we can find the spacer character 		if(ms.find()){ 			String t_spacer = ms.group(); 				// Remove the `]' and `[' at the ends 				// We cant imagine a spacer of omre than one character. 				t_spacer = t_spacer.substring(1,2); 				_alist.add(t_spacer); 		}  		while(mi.find()){ 			// Get the matched string 			String t_str = mi.group(); 				int _sindex = 1; 				int _eindex = t_str.length() -1; 				// Remove the `[' and `]' at the ends 				t_str = t_str.substring(_sindex, _eindex); 			_alist.add(t_str); 		}  		return _alist;*/
+comment|/*        // Regular expresion for identifying the fields        Pattern pi = Pattern.compile("\\[\\w*\\]");        // Regular expresion for identifying the spacer        Pattern ps = Pattern.compile("\\].()*\\[");         // The matcher for the field        Matcher mi = pi.matcher(labelPattern);        // The matcher for the spacer char        Matcher ms = ps.matcher(labelPattern);         // Before we do anything, we add the parameter to the ArrayLIst        _alist.add(labelPattern);         // If we can find the spacer character        if(ms.find()){      String t_spacer = ms.group();       // Remove the `]' and `[' at the ends       // We cant imagine a spacer of omre than one character.       t_spacer = t_spacer.substring(1,2);       _alist.add(t_spacer);        }         while(mi.find()){      // Get the matched string      String t_str = mi.group();       int _sindex = 1;       int _eindex = t_str.length() -1;       // Remove the `[' and `]' at the ends       t_str = t_str.substring(_sindex, _eindex);      _alist.add(t_str);        }         return _alist;*/
 block|}
-comment|/** 	 * Generates a BibTeX label according to the pattern for a given entry type, and 	 * returns the<code>Bibtexentry</code> with the unique label. 	 * @param table a<code>LabelPattern</code> 	 * @param database a<code>BibtexDatabase</code> 	 * @param entryId a<code>String</code> 	 * @return modified Bibtexentry 	 */
+comment|/**    * Generates a BibTeX label according to the pattern for a given entry type, and    * returns the<code>Bibtexentry</code> with the unique label.    * @param table a<code>LabelPattern</code>    * @param database a<code>BibtexDatabase</code>    * @param entryId a<code>String</code>    * @return modified Bibtexentry    */
 DECL|method|makeLabel (LabelPattern table, BibtexDatabase database, BibtexEntry _entry)
 specifier|public
 specifier|static
@@ -262,6 +264,15 @@ init|=
 operator|new
 name|StringBuffer
 argument_list|()
+decl_stmt|;
+name|boolean
+name|forceUpper
+init|=
+literal|false
+decl_stmt|,
+name|forceLower
+init|=
+literal|false
 decl_stmt|;
 try|try
 block|{
@@ -340,10 +351,12 @@ argument_list|(
 literal|"["
 argument_list|)
 condition|)
+block|{
 name|field
 operator|=
 literal|true
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -354,10 +367,12 @@ argument_list|(
 literal|"]"
 argument_list|)
 condition|)
+block|{
 name|field
 operator|=
 literal|false
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -366,6 +381,38 @@ condition|)
 block|{
 try|try
 block|{
+if|if
+condition|(
+name|val
+operator|.
+name|equals
+argument_list|(
+literal|"uppercase"
+argument_list|)
+condition|)
+block|{
+name|forceUpper
+operator|=
+literal|true
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|val
+operator|.
+name|equals
+argument_list|(
+literal|"lowercase"
+argument_list|)
+condition|)
+block|{
+name|forceLower
+operator|=
+literal|true
+expr_stmt|;
+block|}
+elseif|else
 if|if
 condition|(
 name|val
@@ -670,10 +717,13 @@ name|piv
 argument_list|)
 argument_list|)
 condition|)
+block|{
 name|wrd
 operator|++
 expr_stmt|;
+block|}
 else|else
+block|{
 name|_sb
 operator|.
 name|append
@@ -686,8 +736,72 @@ name|piv
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|piv
 operator|++
+expr_stmt|;
+block|}
+block|}
+elseif|else
+if|if
+condition|(
+name|val
+operator|.
+name|equals
+argument_list|(
+literal|"yy"
+argument_list|)
+condition|)
+block|{
+name|String
+name|ss
+init|=
+name|_entry
+operator|.
+name|getField
+argument_list|(
+literal|"year"
+argument_list|)
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|ss
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|2
+condition|)
+block|{
+name|_sb
+operator|.
+name|append
+argument_list|(
+name|ss
+operator|.
+name|substring
+argument_list|(
+name|ss
+operator|.
+name|length
+argument_list|()
+operator|-
+literal|2
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|_sb
+operator|.
+name|append
+argument_list|(
+name|ss
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -758,7 +872,7 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 		 * Edited by Morten Alver 2004.02.04. 		 * 		 * We now have a system for easing key duplicate prevention, so 		 * I am changing this method to conform to it. 		 *     		 // here we make sure the key is unique 		   _label = makeLabelUnique(_sb.toString()); 		   _entry.setField(Globals.KEY_FIELD, _label); 		   return _entry; 		*/
+comment|/**      * Edited by Morten Alver 2004.02.04.      *      * We now have a system for easing key duplicate prevention, so      * I am changing this method to conform to it.      *          // here we make sure the key is unique        _label = makeLabelUnique(_sb.toString());        _entry.setField(Globals.KEY_FIELD, _label);        return _entry;      */
 comment|// Remove all illegal characters from the key.
 name|_label
 operator|=
@@ -772,7 +886,33 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|forceUpper
+condition|)
+block|{
+name|_label
+operator|=
+name|_label
+operator|.
+name|toUpperCase
+argument_list|()
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|forceLower
+condition|)
+block|{
+name|_label
+operator|=
+name|_label
+operator|.
+name|toLowerCase
+argument_list|()
+expr_stmt|;
 comment|// Try new keys until we get a unique one:
+block|}
 if|if
 condition|(
 name|_db
@@ -814,6 +954,7 @@ argument_list|,
 name|modKey
 argument_list|)
 condition|)
+block|{
 name|modKey
 operator|=
 name|_label
@@ -829,12 +970,13 @@ argument_list|)
 operator|)
 expr_stmt|;
 block|}
+block|}
 return|return
 name|_entry
 return|;
 comment|/** End of edit, Morten Alver 2004.02.04.  */
 block|}
-comment|/** 	 * Generates a BibTeX label according to the pattern for a given entry type, and 	 * returns the<code>Bibtexentry</code> with the unique label. 	 * @param table a<code>LabelPattern</code> 	 * @param database a<code>BibtexDatabase</code> 	 * @param entryId a<code>String</code> 	 * @return modified Bibtexentry 	 */
+comment|/**    * Generates a BibTeX label according to the pattern for a given entry type, and    * returns the<code>Bibtexentry</code> with the unique label.    * @param table a<code>LabelPattern</code>    * @param database a<code>BibtexDatabase</code>    * @param entryId a<code>String</code>    * @return modified Bibtexentry    */
 DECL|method|makeLabel_ (LabelPattern table, BibtexDatabase database, BibtexEntry _entry)
 specifier|public
 specifier|static
@@ -1133,7 +1275,7 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 		 * Edited by Morten Alver 2004.02.04. 		 * 		 * We now have a system for easing key duplicate prevention, so 		 * I am changing this method to conform to it. 		 *     		 // here we make sure the key is unique 		   _label = makeLabelUnique(_sb.toString()); 		   _entry.setField(Globals.KEY_FIELD, _label); 		   return _entry; 		*/
+comment|/**      * Edited by Morten Alver 2004.02.04.      *      * We now have a system for easing key duplicate prevention, so      * I am changing this method to conform to it.      *          // here we make sure the key is unique        _label = makeLabelUnique(_sb.toString());        _entry.setField(Globals.KEY_FIELD, _label);        return _entry;      */
 comment|// Remove all illegal characters from the key.
 name|_label
 operator|=
@@ -1189,6 +1331,7 @@ argument_list|,
 name|modKey
 argument_list|)
 condition|)
+block|{
 name|modKey
 operator|=
 name|_label
@@ -1204,12 +1347,13 @@ argument_list|)
 operator|)
 expr_stmt|;
 block|}
+block|}
 return|return
 name|_entry
 return|;
 comment|/** End of edit, Morten Alver 2004.02.04.  */
 block|}
-comment|/** 	 * This method returns a truely unique label (in the BibtexDatabase), by taking a 	 * label and add the letters a-z until a unique key is found. 	 * @param key a<code>String</code> 	 * @return a unique label 	 */
+comment|/**    * This method returns a truely unique label (in the BibtexDatabase), by taking a    * label and add the letters a-z until a unique key is found.    * @param key a<code>String</code>    * @return a unique label    */
 DECL|method|makeLabelUnique (String label)
 specifier|public
 specifier|static
@@ -1289,7 +1433,7 @@ return|return
 name|_newLabel
 return|;
 block|}
-comment|/** 	 * Tests whether a given label is unique. 	 * @param label a<code>String</code> 	 * @return<code>true</code> if and only if the<code>label</code> is unique 	 */
+comment|/**    * Tests whether a given label is unique.    * @param label a<code>String</code>    * @return<code>true</code> if and only if the<code>label</code> is unique    */
 DECL|method|isLabelUnique (String label)
 specifier|public
 specifier|static
@@ -1380,7 +1524,7 @@ return|return
 name|_isUnique
 return|;
 block|}
-comment|/** 	 * Gets the last name of the first author/editor 	 * @param authorField a<code>String</code> 	 * @return the sur name of an author/editor 	 */
+comment|/**    * Gets the last name of the first author/editor    * @param authorField a<code>String</code>    * @return the sur name of an author/editor    */
 DECL|method|firstAuthor (String authorField)
 specifier|private
 specifier|static
@@ -1432,6 +1576,7 @@ argument_list|)
 operator|>
 literal|0
 condition|)
+block|{
 name|tokens
 index|[
 literal|0
@@ -1448,6 +1593,7 @@ index|]
 argument_list|)
 expr_stmt|;
 comment|// convert lastname, firstname to firstname lastname
+block|}
 name|String
 index|[]
 name|firstAuthor
@@ -1486,7 +1632,7 @@ return|return
 name|author
 return|;
 block|}
-comment|/** 	 * Gets the last name of all authors/editors 	 * @param authorField a<code>String</code> 	 * @return the sur name of all authors/editors 	 */
+comment|/**    * Gets the last name of all authors/editors    * @param authorField a<code>String</code>    * @return the sur name of all authors/editors    */
 DECL|method|allAuthors (String authorField)
 specifier|private
 specifier|static
@@ -1543,6 +1689,7 @@ argument_list|)
 operator|>
 literal|0
 condition|)
+block|{
 name|tokens
 index|[
 name|i
@@ -1558,6 +1705,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 index|[]
 name|firstAuthor
@@ -1599,7 +1747,7 @@ return|return
 name|author
 return|;
 block|}
-comment|/**      * Gets the first part of the last name of the first      * author/editor, and appends the last name initial of the      * remaining authors/editors.      * @param authorField a<code>String</code>      * @return the sur name of all authors/editors      */
+comment|/**    * Gets the first part of the last name of the first    * author/editor, and appends the last name initial of the    * remaining authors/editors.    * @param authorField a<code>String</code>    * @return the sur name of all authors/editors    */
 DECL|method|oneAuthorPlusIni (String authorField)
 specifier|private
 specifier|static
@@ -1655,9 +1803,11 @@ name|length
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|author
 return|;
+block|}
 name|String
 index|[]
 name|firstAuthor
@@ -1742,7 +1892,7 @@ return|return
 name|author
 return|;
 block|}
-comment|/** 	 * Split the pages field into two and return the first one 	 * @param pages a<code>String</code> 	 * @return the first page number 	 */
+comment|/**    * Split the pages field into two and return the first one    * @param pages a<code>String</code>    * @return the first page number    */
 DECL|method|firstPage (String pages)
 specifier|private
 specifier|static
@@ -1771,7 +1921,7 @@ literal|0
 index|]
 return|;
 block|}
-comment|/** 	 * Split the pages field into two and return the last one 	 * @param pages a<code>String</code> 	 * @return the last page number 	 */
+comment|/**    * Split the pages field into two and return the last one    * @param pages a<code>String</code>    * @return the last page number    */
 DECL|method|lastPage (String pages)
 specifier|private
 specifier|static
@@ -1800,7 +1950,7 @@ literal|1
 index|]
 return|;
 block|}
-comment|/** 	 * I<b>HATE</b> this method!! I looked and looked but couldn't find a way to 	 * turn 61 (or in real unicode 0061) into the letter 'a' - crap! 	 * @return an<code>ArrayList</code> which shouldn't be!! 	 */
+comment|/**    * I<b>HATE</b> this method!! I looked and looked but couldn't find a way to    * turn 61 (or in real unicode 0061) into the letter 'a' - crap!    * @return an<code>ArrayList</code> which shouldn't be!!    */
 DECL|method|builtLetters ()
 specifier|private
 specifier|static

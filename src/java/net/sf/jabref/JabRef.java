@@ -462,6 +462,7 @@ operator|new
 name|JabRefPreferences
 argument_list|()
 decl_stmt|;
+comment|/*if (!prefs.get("columnNames").substring(0,1).equals(GUIGlobals.NUMBER_COL)) {           prefs.put("columnNames", GUIGlobals.NUMBER_COL+";"+prefs.get("columnNames"));           prefs.put("columnWidths", GUIGlobals.NUMBER_COL_LENGTH+";"+prefs.get("columnWidths"));         }*/
 name|BibtexEntryType
 operator|.
 name|loadCustomEntryTypes

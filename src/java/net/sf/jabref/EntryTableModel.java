@@ -257,8 +257,7 @@ name|NUMBER_COL
 return|;
 comment|//	else if (col == 1)
 comment|//	    return Util.nCase(TYPE);
-else|else
-block|{
+comment|//	else {
 return|return
 name|Util
 operator|.
@@ -272,7 +271,7 @@ name|PADLEFT
 index|]
 argument_list|)
 return|;
-block|}
+comment|//}
 block|}
 DECL|method|getRowCount ()
 specifier|public
@@ -368,8 +367,8 @@ expr_stmt|;
 comment|//else
 comment|//  if (col == 1)
 comment|//  o = be.getType().getName();
-else|else
-block|{
+comment|//else {
+elseif|else
 if|if
 condition|(
 name|columns
@@ -398,6 +397,9 @@ name|getName
 argument_list|()
 expr_stmt|;
 block|}
+comment|//else if (columns[col-PADLEFT].equals(GUIGlobals.NUMBER_COL)) {
+comment|//  o = ""+(row+1);
+comment|//}
 else|else
 block|{
 name|o
@@ -490,7 +492,7 @@ return|;
 block|}
 block|}
 block|}
-block|}
+comment|//}
 return|return
 name|o
 return|;
@@ -507,19 +509,12 @@ name|int
 name|col
 parameter_list|)
 block|{
+comment|//if ((col == 0)  || (col == 1)) return OTHER;
 if|if
 condition|(
-operator|(
 name|col
 operator|==
 literal|0
-operator|)
-operator|||
-operator|(
-name|col
-operator|==
-literal|1
-operator|)
 condition|)
 return|return
 name|OTHER
