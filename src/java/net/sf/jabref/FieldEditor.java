@@ -125,6 +125,23 @@ name|void
 name|requestFocus
 parameter_list|()
 function_decl|;
+comment|// paste text into component, it should also take some selected text into account
+DECL|method|paste (String textToInsert)
+specifier|public
+name|void
+name|paste
+parameter_list|(
+name|String
+name|textToInsert
+parameter_list|)
+function_decl|;
+comment|// normally implemented in JTextArea and JTextField
+DECL|method|getSelectedText ()
+specifier|public
+name|String
+name|getSelectedText
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

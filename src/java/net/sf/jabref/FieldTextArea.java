@@ -182,9 +182,32 @@ comment|//label.setForeground(GUIGlobals.validFieldColor);
 comment|// At construction time, the field can never have an invalid value.
 comment|//else
 comment|//    label.setForeground(GUIGlobals.nullFieldColor);
+name|FieldTextMenu
+name|popMenu
+init|=
+operator|new
+name|FieldTextMenu
+argument_list|(
+name|this
+argument_list|)
+decl_stmt|;
+name|this
+operator|.
+name|addMouseListener
+argument_list|(
+name|popMenu
+argument_list|)
+expr_stmt|;
+name|label
+operator|.
+name|addMouseListener
+argument_list|(
+name|popMenu
+argument_list|)
+expr_stmt|;
 block|}
-comment|/*     public void setAutoComplete(Completer completer) { 	addKeyListener(new AutoCompListener(completer));     }     */
-comment|/*public Dimension getPreferredSize() { 	return PREFERRED_SIZE; 	}*/
+comment|/*     public void setAutoComplete(Completer completer) {         addKeyListener(new AutoCompListener(completer));     }     */
+comment|/*public Dimension getPreferredSize() {         return PREFERRED_SIZE;         }*/
 DECL|method|getPreferredScrollableViewportSize ()
 specifier|public
 name|Dimension
@@ -331,6 +354,57 @@ block|{
 return|return
 name|this
 return|;
+block|}
+DECL|method|paste (String textToInsert)
+specifier|public
+name|void
+name|paste
+parameter_list|(
+name|String
+name|textToInsert
+parameter_list|)
+block|{
+name|int
+name|sel
+init|=
+name|getSelectionEnd
+argument_list|()
+operator|-
+name|getSelectionStart
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|sel
+operator|>
+literal|0
+condition|)
+comment|// selected text available
+name|replaceSelection
+argument_list|(
+name|textToInsert
+argument_list|)
+expr_stmt|;
+else|else
+block|{
+name|int
+name|cPos
+init|=
+name|this
+operator|.
+name|getCaretPosition
+argument_list|()
+decl_stmt|;
+name|this
+operator|.
+name|insert
+argument_list|(
+name|textToInsert
+argument_list|,
+name|cPos
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class

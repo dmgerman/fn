@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* Copyright (C) 2003 Morten O. Alver, Nizar N. Batada  All programs in this directory and subdirectories are published under the GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html  */
+comment|/*  Copyright (C) 2003 Morten O. Alver, Nizar N. Batada   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   */
 end_comment
 
 begin_package
@@ -178,7 +178,7 @@ name|JPanel
 implements|implements
 name|VetoableChangeListener
 block|{
-comment|/*      * GUI component that allows editing of the fields of a BibtexEntry.      * EntryTypeForm also registers itself as a VetoableChangeListener,      * receiving events whenever a field of the entry changes, enabling the      * text fields to update themselves if the change is made from somewhere      * else.      */
+comment|/*    * GUI component that allows editing of the fields of a BibtexEntry.    * EntryTypeForm also registers itself as a VetoableChangeListener,    * receiving events whenever a field of the entry changes, enabling the    * text fields to update themselves if the change is made from somewhere    * else.    */
 comment|// A reference to the entry this object works on.
 DECL|field|entry
 name|BibtexEntry
@@ -442,7 +442,7 @@ DECL|field|helpAction
 name|HelpAction
 name|helpAction
 decl_stmt|;
-DECL|method|EntryEditor (JabRefFrame frame_, BasePanel panel_, BibtexEntry entry_, JabRefPreferences prefs_)
+DECL|method|EntryEditor ( JabRefFrame frame_, BasePanel panel_, BibtexEntry entry_, JabRefPreferences prefs_ )
 specifier|public
 name|EntryEditor
 parameter_list|(
@@ -620,6 +620,7 @@ operator|>=
 literal|1
 operator|)
 condition|)
+block|{
 name|tabbed
 operator|.
 name|addTab
@@ -652,6 +653,7 @@ literal|"Show optional fields"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -674,6 +676,7 @@ operator|>=
 literal|1
 operator|)
 condition|)
+block|{
 name|tabbed
 operator|.
 name|addTab
@@ -706,6 +709,7 @@ literal|"Show general fields"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|tabbed
 operator|.
 name|addTab
@@ -1263,6 +1267,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 operator|(
 operator|(
 name|JComponent
@@ -1278,6 +1283,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 name|add
 argument_list|(
 name|tlb
@@ -1321,7 +1327,7 @@ specifier|private
 name|String
 name|label
 decl_stmt|;
-DECL|method|TypeLabel (String type)
+DECL|method|TypeLabel ( String type )
 specifier|public
 name|TypeLabel
 parameter_list|(
@@ -1470,7 +1476,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|paint (Graphics g)
+DECL|method|paint ( Graphics g )
 specifier|public
 name|void
 name|paint
@@ -1592,7 +1598,7 @@ name|repaint
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|setupFieldPanels (FieldPanel req, FieldPanel opt, FieldPanel gen, FieldPanel abs)
+DECL|method|setupFieldPanels ( FieldPanel req, FieldPanel opt, FieldPanel gen, FieldPanel abs )
 specifier|private
 name|void
 name|setupFieldPanels
@@ -1671,6 +1677,7 @@ name|reqFields
 operator|==
 literal|null
 condition|)
+block|{
 name|reqFields
 operator|=
 operator|new
@@ -1679,12 +1686,14 @@ index|[
 literal|0
 index|]
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|optFields
 operator|==
 literal|null
 condition|)
+block|{
 name|optFields
 operator|=
 operator|new
@@ -1693,12 +1702,14 @@ index|[
 literal|0
 index|]
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|genFields
 operator|==
 literal|null
 condition|)
+block|{
 name|genFields
 operator|=
 operator|new
@@ -1707,6 +1718,7 @@ index|[
 literal|0
 index|]
 expr_stmt|;
+block|}
 name|String
 index|[]
 name|absFields
@@ -1964,10 +1976,12 @@ argument_list|()
 expr_stmt|;
 block|}
 else|else
+block|{
 name|stringContent
 operator|=
 literal|null
 expr_stmt|;
+block|}
 name|ta1
 operator|=
 operator|new
@@ -1993,7 +2007,7 @@ argument_list|,
 name|ta1
 argument_list|)
 expr_stmt|;
-comment|/*if (i == 0) 		    firstReq = ta1; 		if ((i == rmax-1)&& (firstReq != null)) 		ta1.setNextFocusableComponent(firstReq);*/
+comment|/*if (i == 0)             firstReq = ta1;            if ((i == rmax-1)&& (firstReq != null))            ta1.setNextFocusableComponent(firstReq);*/
 name|setupJTextComponent
 argument_list|(
 name|ta1
@@ -2054,10 +2068,12 @@ argument_list|()
 expr_stmt|;
 block|}
 else|else
+block|{
 name|stringContent
 operator|=
 literal|null
 expr_stmt|;
+block|}
 name|ta2
 operator|=
 operator|new
@@ -2083,7 +2099,7 @@ argument_list|,
 name|ta2
 argument_list|)
 expr_stmt|;
-comment|/*if (i == 0) 		    firstOpt = ta1; 		if (i == omax-1) 		ta1.setNextFocusableComponent(firstOpt);*/
+comment|/*if (i == 0)             firstOpt = ta1;            if (i == omax-1)            ta1.setNextFocusableComponent(firstOpt);*/
 name|setupJTextComponent
 argument_list|(
 name|ta2
@@ -2144,10 +2160,12 @@ argument_list|()
 expr_stmt|;
 block|}
 else|else
+block|{
 name|stringContent
 operator|=
 literal|null
 expr_stmt|;
+block|}
 name|ta3
 operator|=
 operator|new
@@ -2173,7 +2191,7 @@ argument_list|,
 name|ta3
 argument_list|)
 expr_stmt|;
-comment|/*if (i == 0) 		    firstGen = ta1; 		if (i == gmax-1) 		ta1.setNextFocusableComponent(firstGen);*/
+comment|/*if (i == 0)             firstGen = ta1;            if (i == gmax-1)            ta1.setNextFocusableComponent(firstGen);*/
 name|setupJTextComponent
 argument_list|(
 name|ta3
@@ -2234,10 +2252,12 @@ argument_list|()
 expr_stmt|;
 block|}
 else|else
+block|{
 name|stringContent
 operator|=
 literal|null
 expr_stmt|;
+block|}
 name|ta4
 operator|=
 operator|new
@@ -2263,7 +2283,7 @@ argument_list|,
 name|ta4
 argument_list|)
 expr_stmt|;
-comment|/*if (i == 0) 		    firstGen = ta1; 		if (i == gmax-1) 		ta1.setNextFocusableComponent(firstGen);*/
+comment|/*if (i == 0)             firstGen = ta1;            if (i == gmax-1)            ta1.setNextFocusableComponent(firstGen);*/
 name|setupJTextComponent
 argument_list|(
 name|ta4
@@ -2446,13 +2466,16 @@ name|ex1
 operator|!=
 literal|null
 condition|)
+block|{
 name|con
 operator|.
 name|gridwidth
 operator|=
 literal|1
 expr_stmt|;
+block|}
 else|else
+block|{
 name|con
 operator|.
 name|gridwidth
@@ -2461,6 +2484,7 @@ name|GridBagConstraints
 operator|.
 name|REMAINDER
 expr_stmt|;
+block|}
 name|con
 operator|.
 name|weighty
@@ -2572,13 +2596,16 @@ name|ex2
 operator|!=
 literal|null
 condition|)
+block|{
 name|con
 operator|.
 name|gridwidth
 operator|=
 literal|1
 expr_stmt|;
+block|}
 else|else
+block|{
 name|con
 operator|.
 name|gridwidth
@@ -2587,6 +2614,7 @@ name|GridBagConstraints
 operator|.
 name|REMAINDER
 expr_stmt|;
+block|}
 name|con
 operator|.
 name|weighty
@@ -2705,13 +2733,16 @@ name|ex3
 operator|!=
 literal|null
 condition|)
+block|{
 name|con
 operator|.
 name|gridwidth
 operator|=
 literal|1
 expr_stmt|;
+block|}
 else|else
+block|{
 name|con
 operator|.
 name|gridwidth
@@ -2720,6 +2751,7 @@ name|GridBagConstraints
 operator|.
 name|REMAINDER
 expr_stmt|;
+block|}
 name|con
 operator|.
 name|fill
@@ -2855,13 +2887,16 @@ name|ex4
 operator|!=
 literal|null
 condition|)
+block|{
 name|con
 operator|.
 name|gridwidth
 operator|=
 literal|1
 expr_stmt|;
+block|}
 else|else
+block|{
 name|con
 operator|.
 name|gridwidth
@@ -2870,6 +2905,7 @@ name|GridBagConstraints
 operator|.
 name|REMAINDER
 expr_stmt|;
+block|}
 name|con
 operator|.
 name|fill
@@ -3128,7 +3164,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**    * getExtra checks the field name against GUIGlobals.FIELD_EXTRAS. If the name    * has an entry, the proper component to be shown is created and returned.    * Otherwise, null is returned.    * In addition, e.g. listeners can be added to the field editor, even if no    * component is returned.    *    * @param string Field name    * @return Component to show, or null if none.    */
-DECL|method|getExtra (String string, FieldEditor editor)
+DECL|method|getExtra ( String string, FieldEditor editor )
 specifier|private
 name|JComponent
 name|getExtra
@@ -3339,6 +3375,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|dir
 operator|=
 name|prefs
@@ -3354,6 +3391,7 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|chosenFile
 init|=
@@ -3382,7 +3420,7 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
-comment|/*JabRefFileChooser chooser = new JabRefFileChooser               (new File(ed.getText()));           if (ed.getText().equals("")) {             chooser.setCurrentDirectory(new File(prefs.get(fieldName +                 Globals.FILETYPE_PREFS_EXT, "")));           }           //chooser.addChoosableFileFilter(new OpenFileFilter()); //nb nov2           int returnVal = chooser.showOpenDialog(null);           if (returnVal == JFileChooser.APPROVE_OPTION) {*/
+comment|/*JabRefFileChooser chooser = new JabRefFileChooser               (new File(ed.getText()));                      if (ed.getText().equals("")) {             chooser.setCurrentDirectory(new File(prefs.get(fieldName +                 Globals.FILETYPE_PREFS_EXT, "")));                      }                      //chooser.addChoosableFileFilter(new OpenFileFilter()); //nb nov2                      int returnVal = chooser.showOpenDialog(null);                      if (returnVal == JFileChooser.APPROVE_OPTION) {*/
 if|if
 condition|(
 name|chosenFile
@@ -3591,11 +3629,14 @@ name|pdfDir
 operator|!=
 literal|null
 condition|)
+block|{
 name|dir
 operator|=
 name|pdfDir
 expr_stmt|;
+block|}
 else|else
+block|{
 name|dir
 operator|=
 name|prefs
@@ -3611,6 +3652,7 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|String
 name|chosenFile
@@ -3718,6 +3760,7 @@ operator|.
 name|separator
 argument_list|)
 condition|)
+block|{
 name|relPath
 operator|=
 name|relPath
@@ -3738,6 +3781,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Set relative path as field value
+block|}
 name|ed
 operator|.
 name|setText
@@ -3747,6 +3791,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|ed
 operator|.
 name|setText
@@ -3757,6 +3802,7 @@ name|getPath
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|prefs
 operator|.
 name|put
@@ -3855,7 +3901,7 @@ operator|+
 literal|"."
 argument_list|)
 expr_stmt|;
-return|return;
+return|return ;
 block|}
 name|panel
 operator|.
@@ -3962,6 +4008,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|panel
 operator|.
 name|output
@@ -3976,6 +4023,7 @@ operator|+
 literal|"."
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 operator|)
@@ -4006,9 +4054,11 @@ name|pan
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 DECL|method|setupSourcePanel ()
 specifier|private
@@ -4316,7 +4366,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|setupJTextComponent (JTextComponent ta)
+DECL|method|setupJTextComponent ( JTextComponent ta )
 specifier|private
 name|void
 name|setupJTextComponent
@@ -4326,7 +4376,7 @@ name|ta
 parameter_list|)
 block|{
 comment|// Activate autocompletion if it should be used for this field.
-comment|/* 	if ((ta instanceof FieldTextArea)&& 	    (prefs.getBoolean("autoComplete"))) { 	    FieldTextArea fta = (FieldTextArea)ta; 	    Completer comp = baseFrame.getAutoCompleter(fta.getFieldName()); 	    if (comp != null) 		fta.setAutoComplete(comp); 	} 	*/
+comment|/*       if ((ta instanceof FieldTextArea)&&         (prefs.getBoolean("autoComplete"))) {         FieldTextArea fta = (FieldTextArea)ta;         Completer comp = baseFrame.getAutoCompleter(fta.getFieldName());         if (comp != null)      fta.setAutoComplete(comp);       }      */
 comment|// Set up key bindings and focus listener for the FieldEditor.
 name|InputMap
 name|im
@@ -4596,6 +4646,7 @@ argument_list|()
 operator|instanceof
 name|FieldPanel
 condition|)
+block|{
 operator|(
 operator|(
 name|FieldPanel
@@ -4609,14 +4660,17 @@ operator|.
 name|activate
 argument_list|()
 expr_stmt|;
+block|}
 else|else
+block|{
 name|source
 operator|.
 name|requestFocus
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Reports the enabled status of the editor, as set by setEnabled()      */
+block|}
+comment|/**    * Reports the enabled status of the editor, as set by setEnabled()    */
 DECL|method|isEnabled ()
 specifier|public
 name|boolean
@@ -4630,8 +4684,8 @@ name|isEnabled
 argument_list|()
 return|;
 block|}
-comment|/**      * Sets the enabled status of all text fields of the entry editor.      */
-DECL|method|setEnabled (boolean enabled)
+comment|/**    * Sets the enabled status of all text fields of the entry editor.    */
+DECL|method|setEnabled ( boolean enabled )
 specifier|public
 name|void
 name|setEnabled
@@ -4752,6 +4806,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 comment|//if (comps[i] != closeAction)
 name|comps
 index|[
@@ -4764,14 +4819,15 @@ name|enabled
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 DECL|class|FieldListener
 class|class
 name|FieldListener
 extends|extends
 name|FocusAdapter
 block|{
-comment|/* 	 * Focus listener that fires the storeFieldAction when a FieldTextArea 	 * loses focus. 	 */
-DECL|method|focusGained (FocusEvent e)
+comment|/*      * Focus listener that fires the storeFieldAction when a FieldTextArea      * loses focus.      */
+DECL|method|focusGained ( FocusEvent e )
 specifier|public
 name|void
 name|focusGained
@@ -4848,7 +4904,7 @@ comment|//if (panel.baseChanged)
 comment|//  updateSource();
 block|}
 block|}
-DECL|method|focusLost (FocusEvent e)
+DECL|method|focusLost ( FocusEvent e )
 specifier|public
 name|void
 name|focusLost
@@ -4894,7 +4950,7 @@ name|FieldPanel
 extends|extends
 name|JPanel
 block|{
-comment|/* 	 * This extension to JPanel keeps a reference to its active 	 * field, on behalf of which it requests the focus when 	 * it is told to. 	 */
+comment|/*      * This extension to JPanel keeps a reference to its active      * field, on behalf of which it requests the focus when      * it is told to.      */
 DECL|method|FieldPanel ()
 specifier|public
 name|FieldPanel
@@ -4923,7 +4979,7 @@ name|this
 return|;
 comment|// Component to add. Return the scrollpane, if there is one.
 block|}
-DECL|method|setActive (FieldEditor c)
+DECL|method|setActive ( FieldEditor c )
 specifier|public
 name|void
 name|setActive
@@ -5076,12 +5132,15 @@ name|activeField
 operator|!=
 literal|null
 condition|)
+block|{
 name|activeField
 operator|.
 name|requestFocus
 argument_list|()
 expr_stmt|;
+block|}
 else|else
+block|{
 name|tf
 operator|.
 name|requestFocus
@@ -5090,13 +5149,14 @@ expr_stmt|;
 comment|//
 block|}
 block|}
+block|}
 DECL|class|TabListener
 class|class
 name|TabListener
 implements|implements
 name|ChangeListener
 block|{
-DECL|method|stateChanged (ChangeEvent e)
+DECL|method|stateChanged ( ChangeEvent e )
 specifier|public
 name|void
 name|stateChanged
@@ -5202,7 +5262,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed (ActionEvent e)
+DECL|method|actionPerformed ( ActionEvent e )
 specifier|public
 name|void
 name|actionPerformed
@@ -5227,7 +5287,9 @@ condition|(
 operator|!
 name|goOn
 condition|)
-return|return;
+block|{
+return|return ;
+block|}
 name|panel
 operator|.
 name|hideEntryEditor
@@ -5339,7 +5401,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed (ActionEvent e)
+DECL|method|actionPerformed ( ActionEvent e )
 specifier|public
 name|void
 name|actionPerformed
@@ -5348,7 +5410,7 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-comment|/*Thread t = new Thread() { 		    public void run() {                       panel.hideEntryEditor(); 		    } 		};*/
+comment|/*Thread t = new Thread() {        public void run() {                        panel.hideEntryEditor();        }          };*/
 if|if
 condition|(
 name|tabbed
@@ -5431,7 +5493,7 @@ argument_list|)
 expr_stmt|;
 comment|//putValue(MNEMONIC_KEY, GUIGlobals.copyKeyCode);
 block|}
-DECL|method|actionPerformed (ActionEvent e)
+DECL|method|actionPerformed ( ActionEvent e )
 specifier|public
 name|void
 name|actionPerformed
@@ -5513,7 +5575,7 @@ literal|"Store field value"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed (ActionEvent e)
+DECL|method|actionPerformed ( ActionEvent e )
 specifier|public
 name|void
 name|actionPerformed
@@ -5577,6 +5639,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|toSet
 operator|=
 name|fe
@@ -5586,6 +5649,7 @@ argument_list|()
 expr_stmt|;
 comment|// We check if the field has changed, since we don't want to mark the
 comment|// base as changed unless we have a real change.
+block|}
 if|if
 condition|(
 name|toSet
@@ -5607,15 +5671,19 @@ argument_list|)
 operator|==
 literal|null
 condition|)
+block|{
 name|set
 operator|=
 literal|false
 expr_stmt|;
+block|}
 else|else
+block|{
 name|set
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -5653,20 +5721,25 @@ name|toString
 argument_list|()
 argument_list|)
 condition|)
+block|{
 name|set
 operator|=
 literal|false
 expr_stmt|;
+block|}
 else|else
+block|{
 name|set
 operator|=
 literal|true
 expr_stmt|;
 block|}
+block|}
 if|if
 condition|(
 name|set
 condition|)
+block|{
 try|try
 block|{
 comment|// The following statement attempts to write the
@@ -5680,6 +5753,7 @@ name|toSet
 operator|!=
 literal|null
 condition|)
+block|{
 operator|(
 operator|new
 name|LatexFieldFormatter
@@ -5701,6 +5775,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|Object
 name|oldValue
 init|=
@@ -5720,6 +5795,7 @@ name|toSet
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -5732,7 +5808,9 @@ argument_list|,
 name|toSet
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|entry
 operator|.
 name|clearField
@@ -5743,6 +5821,7 @@ name|getFieldName
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -5863,6 +5942,7 @@ name|invalidFieldBackground
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 else|else
 block|{
 comment|// set == false
@@ -5876,7 +5956,7 @@ operator|.
 name|validFieldBackground
 argument_list|)
 expr_stmt|;
-comment|/*fe.setLabelColor((toSet == null) ? 				     GUIGlobals.nullFieldColor : 				     GUIGlobals.validFieldColor);*/
+comment|/*fe.setLabelColor((toSet == null) ?              GUIGlobals.nullFieldColor :              GUIGlobals.validFieldColor);*/
 block|}
 block|}
 elseif|else
@@ -5926,10 +6006,12 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|newValue
 operator|=
 literal|null
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -5967,8 +6049,10 @@ name|newValue
 argument_list|)
 operator|)
 condition|)
-return|return;
+block|{
+return|return ;
 comment|// No change.
+block|}
 name|boolean
 name|isDuplicate
 init|=
@@ -6088,6 +6172,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|prefs
 operator|.
 name|putBoolean
@@ -6099,7 +6184,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 else|else
+block|{
 name|panel
 operator|.
 name|output
@@ -6112,6 +6199,7 @@ literal|"BibTeX key is unique."
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Add an UndoableKeyChange to the baseframe's undoManager.
 name|panel
@@ -6227,7 +6315,7 @@ if|if
 condition|(
 name|accepted
 condition|)
-block|{                }
+block|{          }
 block|}
 block|}
 block|}
@@ -6248,7 +6336,7 @@ literal|"Switch to the panel to the left"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed (ActionEvent e)
+DECL|method|actionPerformed ( ActionEvent e )
 specifier|public
 name|void
 name|actionPerformed
@@ -6296,6 +6384,7 @@ argument_list|()
 operator|instanceof
 name|FieldPanel
 condition|)
+block|{
 operator|(
 operator|(
 name|FieldPanel
@@ -6309,6 +6398,7 @@ operator|.
 name|activate
 argument_list|()
 expr_stmt|;
+block|}
 comment|// Set focus to the last used textfield.
 block|}
 block|}
@@ -6329,7 +6419,7 @@ literal|"Switch to the panel to the right"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed (ActionEvent e)
+DECL|method|actionPerformed ( ActionEvent e )
 specifier|public
 name|void
 name|actionPerformed
@@ -6375,6 +6465,7 @@ argument_list|()
 operator|instanceof
 name|FieldPanel
 condition|)
+block|{
 operator|(
 operator|(
 name|FieldPanel
@@ -6388,6 +6479,7 @@ operator|.
 name|activate
 argument_list|()
 expr_stmt|;
+block|}
 comment|// Set focus to the last used textfield.
 block|}
 block|}
@@ -6433,7 +6525,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed (ActionEvent e)
+DECL|method|actionPerformed ( ActionEvent e )
 specifier|public
 name|void
 name|actionPerformed
@@ -6481,12 +6573,14 @@ operator|.
 name|getEntryCount
 argument_list|()
 condition|)
+block|{
 name|newRow
 operator|=
 name|thisRow
 operator|+
 literal|1
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -6494,13 +6588,17 @@ name|thisRow
 operator|>
 literal|0
 condition|)
+block|{
 name|newRow
 operator|=
 literal|0
 expr_stmt|;
+block|}
 else|else
-return|return;
+block|{
+return|return ;
 comment|// newRow is still -1, so we can assume the database
+block|}
 comment|// has only one entry.
 name|id
 operator|=
@@ -6590,7 +6688,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed (ActionEvent e)
+DECL|method|actionPerformed ( ActionEvent e )
 specifier|public
 name|void
 name|actionPerformed
@@ -6633,12 +6731,14 @@ literal|1
 operator|>=
 literal|0
 condition|)
+block|{
 name|newRow
 operator|=
 name|thisRow
 operator|-
 literal|1
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -6653,6 +6753,7 @@ argument_list|()
 operator|-
 literal|1
 condition|)
+block|{
 name|newRow
 operator|=
 name|panel
@@ -6664,9 +6765,12 @@ argument_list|()
 operator|-
 literal|1
 expr_stmt|;
+block|}
 else|else
-return|return;
+block|{
+return|return ;
 comment|// newRow is still -1, so we can assume the database
+block|}
 comment|// has only one entry.
 name|id
 operator|=
@@ -6715,8 +6819,8 @@ expr_stmt|;
 block|}
 block|}
 empty_stmt|;
-comment|/**      * Centers the given row, and highlights it.      *      * @param row an<code>int</code> value      */
-DECL|method|scrollTo (int row)
+comment|/**    * Centers the given row, and highlights it.    *    * @param row an<code>int</code> value    */
+DECL|method|scrollTo ( int row )
 specifier|private
 name|void
 name|scrollTo
@@ -6746,8 +6850,8 @@ name|row
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Switches the entry for this editor to the one with the given      * id. If the target entry is of the same type as the current,      * field values are simply updated. Otherwise, a new editor      * created to replace this one.      *      * @param id a<code>String</code> value      */
-DECL|method|switchTo (String id)
+comment|/**    * Switches the entry for this editor to the one with the given    * id. If the target entry is of the same type as the current,    * field values are simply updated. Otherwise, a new editor    * created to replace this one.    *    * @param id a<code>String</code> value    */
+DECL|method|switchTo ( String id )
 specifier|private
 name|void
 name|switchTo
@@ -6856,7 +6960,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Returns the index of the active (visible) panel.      *      * @return an<code>int</code> value      */
+comment|/**    * Returns the index of the active (visible) panel.    *    * @return an<code>int</code> value    */
 DECL|method|getVisiblePanel ()
 specifier|public
 name|int
@@ -6870,8 +6974,8 @@ name|getSelectedIndex
 argument_list|()
 return|;
 block|}
-comment|/**      * Sets the panel with the given index visible.      *      * @param i an<code>int</code> value      */
-DECL|method|setVisiblePanel (int i)
+comment|/**    * Sets the panel with the given index visible.    *    * @param i an<code>int</code> value    */
+DECL|method|setVisiblePanel ( int i )
 specifier|public
 name|void
 name|setVisiblePanel
@@ -6889,6 +6993,7 @@ operator|.
 name|getTabCount
 argument_list|()
 condition|)
+block|{
 name|tabbed
 operator|.
 name|setSelectedIndex
@@ -6896,6 +7001,7 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 while|while
@@ -6907,9 +7013,11 @@ operator|.
 name|getTabCount
 argument_list|()
 condition|)
+block|{
 name|i
 operator|--
 expr_stmt|;
+block|}
 name|tabbed
 operator|.
 name|setSelectedIndex
@@ -6919,8 +7027,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Updates this editor to show the given entry, regardless of      * type correspondence.      *      * @param be a<code>BibtexEntry</code> value      */
-DECL|method|switchTo (BibtexEntry be)
+comment|/**    * Updates this editor to show the given entry, regardless of    * type correspondence.    *    * @param be a<code>BibtexEntry</code> value    */
+DECL|method|switchTo ( BibtexEntry be )
 specifier|public
 name|void
 name|switchTo
@@ -6966,7 +7074,7 @@ DECL|field|selectedEntry
 name|BibtexEntry
 name|selectedEntry
 decl_stmt|;
-DECL|method|GenerateKeyAction (JabRefFrame parentFrame)
+DECL|method|GenerateKeyAction ( JabRefFrame parentFrame )
 specifier|public
 name|GenerateKeyAction
 parameter_list|(
@@ -7011,7 +7119,7 @@ argument_list|)
 expr_stmt|;
 comment|//        putValue(MNEMONIC_KEY, GUIGlobals.showGenKeyCode);
 block|}
-DECL|method|actionPerformed (ActionEvent e)
+DECL|method|actionPerformed ( ActionEvent e )
 specifier|public
 name|void
 name|actionPerformed
@@ -7191,7 +7299,7 @@ literal|"Undo"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed (ActionEvent e)
+DECL|method|actionPerformed ( ActionEvent e )
 specifier|public
 name|void
 name|actionPerformed
@@ -7258,7 +7366,7 @@ literal|"Redo"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed (ActionEvent e)
+DECL|method|actionPerformed ( ActionEvent e )
 specifier|public
 name|void
 name|actionPerformed
@@ -7302,7 +7410,7 @@ literal|"Save database"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed (ActionEvent e)
+DECL|method|actionPerformed ( ActionEvent e )
 specifier|public
 name|void
 name|actionPerformed
@@ -7390,7 +7498,7 @@ parameter_list|)
 block|{}
 block|}
 block|}
-comment|/**      * Returns false if the contents of the source panel has not been validated, true othervise.      */
+comment|/**    * Returns false if the contents of the source panel has not been validated, true othervise.    */
 DECL|method|lastSourceAccepted ()
 specifier|public
 name|boolean
@@ -7420,8 +7528,8 @@ return|return
 name|lastSourceAccepted
 return|;
 block|}
-comment|/*public boolean storeSourceIfNeeded() {       if (tabbed.getSelectedIndex() == sourceIndex)         return storeSource();       else         return true;     }*/
-DECL|method|storeSource (boolean showError)
+comment|/*public boolean storeSourceIfNeeded() {     if (tabbed.getSelectedIndex() == sourceIndex)       return storeSource();     else       return true;        }*/
+DECL|method|storeSource ( boolean showError )
 specifier|public
 name|boolean
 name|storeSource
@@ -7474,6 +7582,7 @@ argument_list|()
 operator|>
 literal|1
 condition|)
+block|{
 throw|throw
 operator|new
 name|Exception
@@ -7481,6 +7590,7 @@ argument_list|(
 literal|"More than one entry found."
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 name|db
@@ -7490,6 +7600,7 @@ argument_list|()
 operator|<
 literal|1
 condition|)
+block|{
 throw|throw
 operator|new
 name|Exception
@@ -7497,6 +7608,7 @@ argument_list|(
 literal|"No entries found."
 argument_list|)
 throw|;
+block|}
 name|NamedCompound
 name|compound
 init|=
@@ -7566,11 +7678,13 @@ argument_list|,
 name|newKey
 argument_list|)
 condition|)
+block|{
 name|duplicateWarning
 operator|=
 literal|true
 expr_stmt|;
 comment|// First, remove fields that the user have removed.
+block|}
 name|Object
 index|[]
 name|fields
@@ -7596,6 +7710,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 if|if
 condition|(
 name|GUIGlobals
@@ -7611,6 +7726,7 @@ name|toString
 argument_list|()
 argument_list|)
 condition|)
+block|{
 if|if
 condition|(
 name|nu
@@ -7684,6 +7800,8 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
+block|}
+block|}
 comment|// Then set all fields that have been set by the user.
 name|fields
 operator|=
@@ -7708,6 +7826,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 if|if
 condition|(
 name|entry
@@ -7835,6 +7954,7 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
+block|}
 name|compound
 operator|.
 name|end
@@ -7845,9 +7965,11 @@ condition|(
 operator|!
 name|anyChanged
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 name|panel
 operator|.
 name|undoManager
@@ -7857,11 +7979,12 @@ argument_list|(
 name|compound
 argument_list|)
 expr_stmt|;
-comment|/*if (((oldKey == null)&& (newKey != null)) ||             ((oldKey != null)&& (newKey == null)) ||             ((oldKey != null)&& (newKey != null)&& !oldKey.equals(newKey))) {               } */
+comment|/*if (((oldKey == null)&& (newKey != null)) ||           ((oldKey != null)&& (newKey == null)) ||           ((oldKey != null)&& (newKey != null)&& !oldKey.equals(newKey))) {             } */
 if|if
 condition|(
 name|duplicateWarning
 condition|)
+block|{
 name|panel
 operator|.
 name|output
@@ -7874,7 +7997,9 @@ literal|"Warning: duplicate bibtex key."
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|panel
 operator|.
 name|output
@@ -7889,6 +8014,7 @@ operator|+
 literal|"."
 argument_list|)
 expr_stmt|;
+block|}
 name|lastSourceStringAccepted
 operator|=
 name|source
@@ -8029,7 +8155,7 @@ literal|false
 return|;
 block|}
 block|}
-DECL|method|setField (String fieldName, String newFieldData)
+DECL|method|setField ( String fieldName, String newFieldData )
 specifier|public
 name|boolean
 name|setField
@@ -8058,9 +8184,11 @@ argument_list|,
 name|newFieldData
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 if|if
 condition|(
 name|setFieldInPanel
@@ -8072,9 +8200,11 @@ argument_list|,
 name|newFieldData
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 if|if
 condition|(
 name|setFieldInPanel
@@ -8086,9 +8216,11 @@ argument_list|,
 name|newFieldData
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -8115,7 +8247,7 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|setFieldInPanel (FieldPanel pan, String fieldName, String newFieldData)
+DECL|method|setFieldInPanel ( FieldPanel pan, String fieldName, String newFieldData )
 specifier|private
 name|boolean
 name|setFieldInPanel
@@ -8203,7 +8335,7 @@ argument_list|(
 name|newFieldData
 argument_list|)
 expr_stmt|;
-comment|/*ed.setLabelColor(((newFieldData == null) || newFieldData.equals("")) 				 ? GUIGlobals.nullFieldColor : 				 GUIGlobals.validFieldColor);*/
+comment|/*ed.setLabelColor(((newFieldData == null) || newFieldData.equals(""))            ? GUIGlobals.nullFieldColor :            GUIGlobals.validFieldColor);*/
 return|return
 literal|true
 return|;
@@ -8214,7 +8346,7 @@ literal|false
 return|;
 comment|// Nothing found.
 block|}
-comment|/**      * Sets all the text areas according to the shown entry.      */
+comment|/**    * Sets all the text areas according to the shown entry.    */
 DECL|method|updateAllFields ()
 specifier|public
 name|void
@@ -8326,13 +8458,13 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|/*ed.setLabelColor(content == null ? GUIGlobals.nullFieldColor :                                  GUIGlobals.validFieldColor);*/
+comment|/*ed.setLabelColor(content == null ? GUIGlobals.nullFieldColor :                          GUIGlobals.validFieldColor);*/
 comment|//if (ed.getFieldName().equals("year"))
 comment|//    Util.pr(content.toString());
 block|}
 block|}
 block|}
-comment|/**      * Removes the "invalid field" color from all text areas.      */
+comment|/**    * Removes the "invalid field" color from all text areas.    */
 DECL|method|validateAllFields ()
 specifier|public
 name|void
@@ -8475,7 +8607,7 @@ block|}
 block|}
 block|}
 comment|// Update the JTextArea when a field has changed.
-DECL|method|vetoableChange (PropertyChangeEvent e)
+DECL|method|vetoableChange ( PropertyChangeEvent e )
 specifier|public
 name|void
 name|vetoableChange
@@ -8508,7 +8640,7 @@ name|ExternalViewerListener
 extends|extends
 name|MouseAdapter
 block|{
-DECL|method|mouseClicked (MouseEvent evt)
+DECL|method|mouseClicked ( MouseEvent evt )
 specifier|public
 name|void
 name|mouseClicked
@@ -8550,7 +8682,9 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
-return|return;
+block|{
+return|return ;
+block|}
 name|tf
 operator|.
 name|selectAll
@@ -8615,7 +8749,7 @@ DECL|field|panel
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|method|ChangeTypeAction (BibtexEntryType type, BasePanel bp)
+DECL|method|ChangeTypeAction ( BibtexEntryType type, BasePanel bp )
 specifier|public
 name|ChangeTypeAction
 parameter_list|(
@@ -8645,7 +8779,7 @@ operator|=
 name|bp
 expr_stmt|;
 block|}
-DECL|method|actionPerformed (ActionEvent evt)
+DECL|method|actionPerformed ( ActionEvent evt )
 specifier|public
 name|void
 name|actionPerformed
