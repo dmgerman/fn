@@ -6895,12 +6895,30 @@ expr_stmt|;
 block|}
 else|else
 return|return;
-comment|//InputStreamReader reader = null;
+specifier|final
+name|String
+name|lfName
+init|=
+name|lfFileName
+decl_stmt|;
+specifier|final
+name|File
+name|oFile
+init|=
+name|outFile
+decl_stmt|;
+operator|(
+operator|new
+name|Thread
+argument_list|()
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
 try|try
 block|{
-comment|//URL reso = JabRefFrame.class.getResource
-comment|//    ("/resource/layout/"+lfFileName+".layout");
-comment|//reader = new InputStreamReader(reso.openStream());
 name|FileActions
 operator|.
 name|exportDatabase
@@ -6910,11 +6928,30 @@ argument_list|()
 operator|.
 name|database
 argument_list|,
-name|lfFileName
+name|lfName
 argument_list|,
-name|outFile
+name|oFile
 argument_list|,
 name|prefs
+argument_list|)
+expr_stmt|;
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Exported database to file"
+argument_list|)
+operator|+
+literal|" '"
+operator|+
+name|oFile
+operator|.
+name|getPath
+argument_list|()
+operator|+
+literal|"'."
 argument_list|)
 expr_stmt|;
 block|}
@@ -6930,6 +6967,13 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+block|}
+operator|)
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 decl_stmt|;
