@@ -122,6 +122,11 @@ argument_list|(
 literal|15
 argument_list|)
 decl_stmt|;
+DECL|field|defOwnerField
+specifier|private
+name|JTextField
+name|defOwnerField
+decl_stmt|;
 DECL|field|_prefs
 name|JabRefPreferences
 name|_prefs
@@ -373,6 +378,19 @@ operator|new
 name|JPanel
 argument_list|()
 decl_stmt|;
+name|defOwnerField
+operator|=
+operator|new
+name|JTextField
+argument_list|(
+name|_prefs
+operator|.
+name|get
+argument_list|(
+literal|"defaultOwner"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|groupField
 operator|=
 operator|new
@@ -558,7 +576,7 @@ expr_stmt|;
 comment|//con.gridwidth = GridBagConstraints.REMAINDER;
 comment|//gbl.setConstraints(defSort, con);
 comment|//general.add(defSort);
-comment|// Grouping field
+comment|// Default owner
 name|con
 operator|.
 name|gridwidth
@@ -575,12 +593,83 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Default grouping field"
+literal|"Default owner"
 argument_list|)
 operator|+
 literal|":"
 argument_list|)
 decl_stmt|;
+name|lab
+operator|.
+name|setHorizontalAlignment
+argument_list|(
+name|SwingConstants
+operator|.
+name|LEFT
+argument_list|)
+expr_stmt|;
+name|gbl
+operator|.
+name|setConstraints
+argument_list|(
+name|lab
+argument_list|,
+name|con
+argument_list|)
+expr_stmt|;
+name|general
+operator|.
+name|add
+argument_list|(
+name|lab
+argument_list|)
+expr_stmt|;
+name|con
+operator|.
+name|gridwidth
+operator|=
+name|GridBagConstraints
+operator|.
+name|REMAINDER
+expr_stmt|;
+name|gbl
+operator|.
+name|setConstraints
+argument_list|(
+name|defOwnerField
+argument_list|,
+name|con
+argument_list|)
+expr_stmt|;
+name|general
+operator|.
+name|add
+argument_list|(
+name|defOwnerField
+argument_list|)
+expr_stmt|;
+comment|// Grouping field
+name|con
+operator|.
+name|gridwidth
+operator|=
+literal|1
+expr_stmt|;
+name|lab
+operator|=
+operator|new
+name|JLabel
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Default grouping field"
+argument_list|)
+operator|+
+literal|":"
+argument_list|)
+expr_stmt|;
 name|lab
 operator|.
 name|setHorizontalAlignment
@@ -1757,6 +1846,21 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//_prefs.putBoolean("defaultAutoSort", defSort.isSelected());
+name|_prefs
+operator|.
+name|put
+argument_list|(
+literal|"defaultOwner"
+argument_list|,
+name|defOwnerField
+operator|.
+name|getText
+argument_list|()
+operator|.
+name|trim
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|_prefs
 operator|.
 name|put

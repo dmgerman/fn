@@ -6000,6 +6000,38 @@ argument_list|(
 name|be
 argument_list|)
 expr_stmt|;
+comment|// Create new Bibtex entry
+comment|// Create new Bibtex entry
+comment|// Set owner field to default value
+name|be
+operator|.
+name|setField
+argument_list|(
+literal|"owner"
+argument_list|,
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"defaultOwner"
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Set owner field to default value
+name|be
+operator|.
+name|setField
+argument_list|(
+literal|"owner"
+argument_list|,
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"defaultOwner"
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// Create an UndoableInsertEntry object.
 name|undoManager
 operator|.

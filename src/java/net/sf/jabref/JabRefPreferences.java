@@ -249,7 +249,7 @@ name|put
 argument_list|(
 literal|"pdfviewer"
 argument_list|,
-literal|"/usr/bin/acroread"
+literal|"acroread"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -258,7 +258,7 @@ name|put
 argument_list|(
 literal|"psviewer"
 argument_list|,
-literal|"/usr/X11R6/bin/gv"
+literal|"gv"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -267,7 +267,7 @@ name|put
 argument_list|(
 literal|"htmlviewer"
 argument_list|,
-literal|"/usr/bin/mozilla"
+literal|"mozilla"
 argument_list|)
 expr_stmt|;
 block|}
@@ -478,7 +478,7 @@ name|put
 argument_list|(
 literal|"columnNames"
 argument_list|,
-literal|"entrytype;author;title;year;journal;bibtexkey"
+literal|"entrytype;author;title;year;journal;owner;bibtexkey"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -487,7 +487,7 @@ name|put
 argument_list|(
 literal|"columnWidths"
 argument_list|,
-literal|"75;280;400;60;100;100"
+literal|"75;280;400;60;100;100;100"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -872,11 +872,25 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+literal|"defaultOwner"
+argument_list|,
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"user.name"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
 literal|"generalFields"
 argument_list|,
 literal|"crossref;keywords;doi;url;"
 operator|+
-literal|"pdf;abstract;comment"
+literal|"pdf;abstract;comment;owner"
 argument_list|)
 expr_stmt|;
 comment|//defaults.put("recentFiles", "/home/alver/Documents/bibk_dok/hovedbase.bib");
