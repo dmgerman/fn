@@ -456,6 +456,39 @@ name|name
 argument_list|)
 return|;
 block|}
+DECL|method|getCiteKey ()
+specifier|public
+name|String
+name|getCiteKey
+parameter_list|()
+block|{
+return|return
+operator|(
+name|_fields
+operator|.
+name|containsKey
+argument_list|(
+name|Globals
+operator|.
+name|KEY_FIELD
+argument_list|)
+condition|?
+operator|(
+name|String
+operator|)
+name|_fields
+operator|.
+name|get
+argument_list|(
+name|Globals
+operator|.
+name|KEY_FIELD
+argument_list|)
+else|:
+literal|null
+operator|)
+return|;
+block|}
 comment|/**      * Sets the given field to the given value.      */
 DECL|method|setField (HashMap fields)
 specifier|public

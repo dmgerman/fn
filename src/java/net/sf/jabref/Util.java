@@ -1332,7 +1332,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Takes a       *      * @param names a<code>String</code> value      * @return a<code>String[]</code> value      */
+comment|/**      * Takes a delimited string, splits it and returns       *      * @param names a<code>String</code> value      * @return a<code>String[]</code> value      */
 DECL|method|delimToStringArray (String names, String delimiter)
 specifier|public
 specifier|static
