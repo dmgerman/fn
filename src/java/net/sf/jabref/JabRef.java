@@ -1732,29 +1732,16 @@ literal|"fontSize"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-operator|new
-name|Runnable
-argument_list|()
-block|{
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
+comment|//SwingUtilities.invokeLater(new Runnable() {
+comment|//  public void run() {
 name|jrf
 operator|=
 operator|new
 name|JabRefFrame
 argument_list|()
 expr_stmt|;
-block|}
-block|}
-argument_list|)
-expr_stmt|;
+comment|//  }
+comment|//});
 if|if
 condition|(
 name|loaded

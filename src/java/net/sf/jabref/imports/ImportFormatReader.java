@@ -5232,6 +5232,13 @@ name|equals
 argument_list|(
 literal|"T1"
 argument_list|)
+operator|||
+name|lab
+operator|.
+name|equals
+argument_list|(
+literal|"TI"
+argument_list|)
 condition|)
 name|hm
 operator|.
