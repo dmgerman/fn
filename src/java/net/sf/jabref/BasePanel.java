@@ -6351,26 +6351,22 @@ argument_list|)
 expr_stmt|;
 comment|// Create new Bibtex entry
 comment|// Set owner field to default value
-name|be
-operator|.
-name|setField
-argument_list|(
-literal|"owner"
-argument_list|,
+if|if
+condition|(
 name|prefs
 operator|.
-name|get
+name|getBoolean
 argument_list|(
-literal|"defaultOwner"
+literal|"useOwner"
 argument_list|)
-argument_list|)
-expr_stmt|;
-comment|// Set owner field to default value
+condition|)
 name|be
 operator|.
 name|setField
 argument_list|(
-literal|"owner"
+name|Globals
+operator|.
+name|OWNER
 argument_list|,
 name|prefs
 operator|.

@@ -2562,7 +2562,9 @@ name|curEntry
 operator|.
 name|getField
 argument_list|(
-literal|"owner"
+name|Globals
+operator|.
+name|OWNER
 argument_list|)
 operator|==
 literal|null
@@ -2575,7 +2577,9 @@ name|curEntry
 operator|.
 name|getField
 argument_list|(
-literal|"owner"
+name|Globals
+operator|.
+name|OWNER
 argument_list|)
 operator|)
 operator|.
@@ -2590,7 +2594,9 @@ name|curEntry
 operator|.
 name|setField
 argument_list|(
-literal|"owner"
+name|Globals
+operator|.
+name|OWNER
 argument_list|,
 name|defaultOwner
 argument_list|)
