@@ -1077,6 +1077,8 @@ literal|"user.name"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//  defaults.put("generalFields", "crossref;keywords;doi;url;citeseerurl;"+
+comment|//	     "pdf;abstract;comment;owner");
 name|defaults
 operator|.
 name|put
@@ -1085,7 +1087,7 @@ literal|"generalFields"
 argument_list|,
 literal|"crossref;keywords;doi;url;citeseerurl;"
 operator|+
-literal|"pdf;abstract;comment;owner"
+literal|"pdf;comment;owner"
 argument_list|)
 expr_stmt|;
 comment|//defaults.put("recentFiles", "/home/alver/Documents/bibk_dok/hovedbase.bib");

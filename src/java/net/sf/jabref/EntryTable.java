@@ -220,13 +220,7 @@ name|tableModel
 operator|=
 name|tm_
 expr_stmt|;
-name|sp
-operator|.
-name|setBorder
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
+comment|//sp.setBorder(BorderFactory.createEmptyBorder());
 name|panel
 operator|=
 name|panel_

@@ -549,6 +549,10 @@ operator|+
 literal|"minus.gif"
 argument_list|)
 decl_stmt|,
+comment|//       showReqIconFile = GUIGlobals.class.getResource(pre + "r_icon.gif"),
+comment|//       showOptIconFile = GUIGlobals.class.getResource(pre + "o_icon.gif"),
+comment|//       showGenIconFile = GUIGlobals.class.getResource(pre + "g_icon.gif"),
+comment|//       showAbsIconFile = GUIGlobals.class.getResource(pre + "g_icon.gif"),
 DECL|field|showReqIconFile
 name|showReqIconFile
 init|=
@@ -560,7 +564,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"r_icon.gif"
+literal|"reqIcon.png"
 argument_list|)
 decl_stmt|,
 DECL|field|showOptIconFile
@@ -574,7 +578,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"o_icon.gif"
+literal|"optIcon.png"
 argument_list|)
 decl_stmt|,
 DECL|field|showGenIconFile
@@ -588,7 +592,21 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"g_icon.gif"
+literal|"genIcon.png"
+argument_list|)
+decl_stmt|,
+DECL|field|showAbsIconFile
+name|showAbsIconFile
+init|=
+name|GUIGlobals
+operator|.
+name|class
+operator|.
+name|getResource
+argument_list|(
+name|pre
+operator|+
+literal|"genIcon.png"
 argument_list|)
 decl_stmt|,
 DECL|field|sourceIconFile
