@@ -777,7 +777,7 @@ name|getResource
 argument_list|(
 name|helpPre
 operator|+
-literal|"GUIGlobalsHelp.html"
+literal|"BaseFrameHelp.html"
 argument_list|)
 decl_stmt|,
 DECL|field|entryEditorHelp
