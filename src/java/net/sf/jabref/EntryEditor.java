@@ -16,6 +16,20 @@ end_package
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|labelPattern
+operator|.
+name|LabelPatternUtil
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|beans
@@ -5981,19 +5995,23 @@ operator|.
 name|KEY_FIELD
 argument_list|)
 decl_stmt|;
+comment|//entry = frame.labelMaker.applyRule(entry, panel.database) ;
 name|entry
 operator|=
-name|frame
+name|LabelPatternUtil
 operator|.
-name|labelMaker
-operator|.
-name|applyRule
+name|makeLabel
 argument_list|(
-name|entry
+name|prefs
+operator|.
+name|getKeyPattern
+argument_list|()
 argument_list|,
 name|panel
 operator|.
 name|database
+argument_list|,
+name|entry
 argument_list|)
 expr_stmt|;
 comment|// Store undo information:
