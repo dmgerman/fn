@@ -1686,7 +1686,9 @@ name|dummyBoolean
 init|=
 operator|new
 name|BooleanAssign
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
@@ -2425,8 +2427,8 @@ name|abortOperation
 operator|)
 return|;
 block|}
-comment|/** 	 * @param be 	 * 	 */
-DECL|method|importCiteSeerEntry (BibtexEntry be, NamedCompound citeseerNC)
+comment|/** 	 * @param be 	 * @param overwriteNone 	 * @param overwriteAll 	 * 	 */
+DECL|method|importCiteSeerEntry (BibtexEntry be, NamedCompound citeseerNC, BooleanAssign overwriteAll, BooleanAssign overwriteNone)
 specifier|public
 name|boolean
 name|importCiteSeerEntry
@@ -2436,6 +2438,12 @@ name|be
 parameter_list|,
 name|NamedCompound
 name|citeseerNC
+parameter_list|,
+name|BooleanAssign
+name|overwriteAll
+parameter_list|,
+name|BooleanAssign
+name|overwriteNone
 parameter_list|)
 block|{
 name|SAXParserFactory
@@ -2451,7 +2459,9 @@ name|newValue
 init|=
 operator|new
 name|BooleanAssign
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 decl_stmt|;
 name|String
 name|identifier
@@ -2552,6 +2562,10 @@ argument_list|,
 name|panel
 argument_list|,
 name|newValue
+argument_list|,
+name|overwriteAll
+argument_list|,
+name|overwriteNone
 argument_list|)
 argument_list|)
 expr_stmt|;

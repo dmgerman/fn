@@ -30,6 +30,21 @@ DECL|field|value
 name|boolean
 name|value
 decl_stmt|;
+comment|/** 	 * @param b 	 */
+DECL|method|BooleanAssign (boolean b)
+specifier|public
+name|BooleanAssign
+parameter_list|(
+name|boolean
+name|b
+parameter_list|)
+block|{
+name|setValue
+argument_list|(
+name|b
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|setValue (boolean value)
 specifier|public
 name|void

@@ -1527,8 +1527,9 @@ block|{
 comment|// Return a renderer with red background if the entry is incomplete.
 name|renderer
 operator|=
-name|defRenderer
+name|iconStringRenderer
 expr_stmt|;
+comment|//	    renderer = defRenderer;
 comment|/*if (tableModel.isComplete(row)) 		renderer = defRenderer; 	    else { 		if (tableModel.hasCrossRef(row)) 		    renderer = maybeIncRenderer; 		else 		    renderer = incRenderer; 		    }*/
 comment|//return (tableModel.isComplete(row) ? defRenderer: incRenderer);
 block|}
@@ -1695,6 +1696,15 @@ block|}
 comment|// The following classes define the renderers used to render required
 comment|// and optional fields in the table. The purpose of these renderers is
 comment|// to visualize which fields are needed for each entry.
+DECL|field|iconStringRenderer
+specifier|private
+name|IconStringRenderer
+name|iconStringRenderer
+init|=
+operator|new
+name|IconStringRenderer
+argument_list|()
+decl_stmt|;
 DECL|field|defRenderer
 specifier|private
 name|Renderer
