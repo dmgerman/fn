@@ -94,7 +94,7 @@ name|nextAssign
 init|=
 literal|false
 decl_stmt|;
-comment|/** 	 * @param be 	 */
+comment|/** 	 * @param be 	 *  	 * We must remember to clobber the author field, 	 * because of the current implementation of addAuthor() 	 */
 DECL|method|CiteSeerImportHandler (BibtexEntry be)
 specifier|public
 name|CiteSeerImportHandler
@@ -106,6 +106,15 @@ block|{
 name|bibEntry
 operator|=
 name|be
+expr_stmt|;
+name|bibEntry
+operator|.
+name|setField
+argument_list|(
+literal|"author"
+argument_list|,
+literal|null
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|characters (char[] ch, int start, int length)

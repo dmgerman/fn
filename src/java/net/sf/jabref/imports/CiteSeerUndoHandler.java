@@ -128,7 +128,7 @@ name|nextAssign
 init|=
 literal|false
 decl_stmt|;
-comment|/** 	 * @param be 	 */
+comment|/** 	 * @param be 	 *  	 * We must remember to clobber the author field, 	 * because of the current implementation of addAuthor() 	 */
 DECL|method|CiteSeerUndoHandler (NamedCompound newCompound, BibtexEntry be)
 specifier|public
 name|CiteSeerUndoHandler
@@ -147,6 +147,42 @@ expr_stmt|;
 name|bibEntry
 operator|=
 name|be
+expr_stmt|;
+name|UndoableFieldChange
+name|fieldChange
+init|=
+operator|new
+name|UndoableFieldChange
+argument_list|(
+name|bibEntry
+argument_list|,
+literal|"author"
+argument_list|,
+name|bibEntry
+operator|.
+name|getField
+argument_list|(
+literal|"author"
+argument_list|)
+argument_list|,
+literal|null
+argument_list|)
+decl_stmt|;
+name|citeseerNamedCompound
+operator|.
+name|addEdit
+argument_list|(
+name|fieldChange
+argument_list|)
+expr_stmt|;
+name|bibEntry
+operator|.
+name|setField
+argument_list|(
+literal|"author"
+argument_list|,
+literal|null
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|characters (char[] ch, int start, int length)
