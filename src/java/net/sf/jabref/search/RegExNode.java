@@ -51,7 +51,7 @@ name|pattern
 init|=
 literal|null
 decl_stmt|;
-DECL|method|RegExNode (int tokenType, String text, boolean caseSensitive)
+DECL|method|RegExNode (int tokenType, String text, boolean caseSensitive, boolean regex)
 specifier|public
 name|RegExNode
 parameter_list|(
@@ -63,6 +63,9 @@ name|text
 parameter_list|,
 name|boolean
 name|caseSensitive
+parameter_list|,
+name|boolean
+name|regex
 parameter_list|)
 block|{
 name|initialize
@@ -78,8 +81,17 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
+name|regex
+condition|?
 name|text
+else|:
+literal|"\\Q"
+operator|+
+name|text
+operator|+
+literal|"\\E"
 argument_list|,
+comment|// quote if !regex
 name|caseSensitive
 condition|?
 literal|0
