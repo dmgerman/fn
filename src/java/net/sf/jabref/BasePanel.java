@@ -2577,49 +2577,7 @@ operator|>
 literal|0
 condition|)
 block|{
-name|int
-name|answer
-init|=
-name|JOptionPane
-operator|.
-name|showConfirmDialog
-argument_list|(
-name|frame
-argument_list|,
-literal|"Generate bibtex key"
-operator|+
-operator|(
-name|numSelected
-operator|>
-literal|1
-condition|?
-literal|"s for the selected "
-operator|+
-name|numSelected
-operator|+
-literal|" entries?"
-else|:
-literal|" for the selected entry?"
-operator|)
-argument_list|,
-literal|"Autogenerate Bibtexkey"
-argument_list|,
-name|JOptionPane
-operator|.
-name|YES_NO_CANCEL_OPTION
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|answer
-operator|!=
-name|JOptionPane
-operator|.
-name|YES_OPTION
-condition|)
-block|{
-return|return ;
-block|}
+comment|/* 			int answer = JOptionPane.showConfirmDialog 			    (frame, "Generate bibtex key"+ 			     (numSelected>1 ? "s for the selected " 			      +numSelected+" entries?" : 			      " for the selected entry?"), 			     "Autogenerate Bibtexkey", 			     JOptionPane.YES_NO_CANCEL_OPTION); 			if (answer != JOptionPane.YES_OPTION) { 			    return ; 			 			    } 			*/
 block|}
 else|else
 block|{

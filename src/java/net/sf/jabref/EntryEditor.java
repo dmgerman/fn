@@ -2142,7 +2142,7 @@ name|anchor
 operator|=
 name|GridBagConstraints
 operator|.
-name|NORTH
+name|WEST
 expr_stmt|;
 name|gbl
 operator|.
@@ -2153,13 +2153,6 @@ argument_list|,
 name|con
 argument_list|)
 expr_stmt|;
-name|gen
-operator|.
-name|add
-argument_list|(
-name|ex3
-argument_list|)
-expr_stmt|;
 name|con
 operator|.
 name|fill
@@ -2167,6 +2160,13 @@ operator|=
 name|GridBagConstraints
 operator|.
 name|BOTH
+expr_stmt|;
+name|gen
+operator|.
+name|add
+argument_list|(
+name|ex3
+argument_list|)
 expr_stmt|;
 name|con
 operator|.
@@ -4968,8 +4968,10 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Stored entry."
+literal|"Stored entry"
 argument_list|)
+operator|+
+literal|"."
 argument_list|)
 expr_stmt|;
 name|lastSourceStringAccepted

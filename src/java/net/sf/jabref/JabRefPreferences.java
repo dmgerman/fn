@@ -401,7 +401,16 @@ name|put
 argument_list|(
 literal|"columnNames"
 argument_list|,
-literal|"author;title;year;journal;bibtexkey"
+literal|"entrytype;author;title;year;journal;bibtexkey"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"columnWidths"
+argument_list|,
+literal|"75;280;400;60;100;100"
 argument_list|)
 expr_stmt|;
 name|defaults

@@ -7170,8 +7170,10 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Cowardly refusing to save empty session."
+literal|"Not saved (empty session)"
 argument_list|)
+operator|+
+literal|"."
 argument_list|)
 expr_stmt|;
 return|return;
@@ -7238,8 +7240,10 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Saved session."
+literal|"Saved session"
 argument_list|)
+operator|+
+literal|"."
 argument_list|)
 expr_stmt|;
 block|}
