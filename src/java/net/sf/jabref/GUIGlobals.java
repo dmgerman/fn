@@ -805,6 +805,7 @@ operator|+
 literal|"NewBCard.gif"
 argument_list|)
 decl_stmt|,
+comment|//fetchMedlineIcon = GUIGlobals.class.getResource(pre+"BlueCircle.gif");
 DECL|field|fetchMedlineIcon
 name|fetchMedlineIcon
 init|=
@@ -816,7 +817,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"BlueCircle.gif"
+literal|"World2.gif"
 argument_list|)
 decl_stmt|;
 comment|// Help files (in HTML format):
