@@ -305,6 +305,16 @@ name|WINDOWS_9x
 init|=
 literal|6
 decl_stmt|;
+comment|/** JVM constant for any Linux JVM */
+DECL|field|LINUX
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|LINUX
+init|=
+literal|7
+decl_stmt|;
 comment|/** JVM constant for any other platform */
 DECL|field|OTHER
 specifier|private
@@ -602,6 +612,22 @@ operator|=
 name|WINDOWS_NT
 expr_stmt|;
 block|}
+block|}
+elseif|else
+if|if
+condition|(
+name|osName
+operator|.
+name|startsWith
+argument_list|(
+literal|"Linux"
+argument_list|)
+condition|)
+block|{
+name|jvm
+operator|=
+name|LINUX
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -1861,6 +1887,14 @@ case|:
 name|browser
 operator|=
 literal|"command.com"
+expr_stmt|;
+break|break;
+case|case
+name|LINUX
+case|:
+name|browser
+operator|=
+literal|"mozilla"
 expr_stmt|;
 break|break;
 case|case
