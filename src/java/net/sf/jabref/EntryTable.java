@@ -468,7 +468,7 @@ block|{
 name|int
 name|xoffset
 init|=
-literal|0
+literal|3
 decl_stmt|;
 for|for
 control|(
@@ -534,17 +534,10 @@ operator|new
 name|Rectangle
 argument_list|()
 decl_stmt|;
-name|int
-name|offset
-init|=
-literal|3
-decl_stmt|;
 name|r
 operator|.
 name|setBounds
 argument_list|(
-name|offset
-operator|+
 name|xoffset
 argument_list|,
 literal|0
@@ -554,7 +547,7 @@ name|cw
 operator|-
 literal|2
 operator|*
-name|offset
+name|xoffset
 argument_list|,
 name|ch
 comment|/*-2*offset*/

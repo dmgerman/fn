@@ -1074,7 +1074,7 @@ literal|"search"
 argument_list|,
 literal|"Search"
 argument_list|,
-literal|"Toggle search panel"
+literal|"Search"
 argument_list|,
 name|GUIGlobals
 operator|.
@@ -1088,6 +1088,24 @@ literal|"Search"
 argument_list|)
 argument_list|)
 decl_stmt|,
+DECL|field|toggleSearch
+name|toggleSearch
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"toggleSearch"
+argument_list|,
+literal|"Search"
+argument_list|,
+literal|"Toggle search panel"
+argument_list|,
+name|GUIGlobals
+operator|.
+name|searchIconFile
+argument_list|)
+decl_stmt|,
+comment|//                                       prefs.getKey("Search")),
 DECL|field|fetchCiteSeer
 name|fetchCiteSeer
 init|=
@@ -4976,7 +4994,7 @@ operator|=
 operator|new
 name|JToggleButton
 argument_list|(
-name|normalSearch
+name|toggleSearch
 argument_list|)
 expr_stmt|;
 name|searchToggle
@@ -5559,6 +5577,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|toggleSearch
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|makeKeyAction
 operator|.
 name|setEnabled
@@ -5890,6 +5915,13 @@ literal|true
 argument_list|)
 expr_stmt|;
 name|toggleGroups
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|toggleSearch
 operator|.
 name|setEnabled
 argument_list|(

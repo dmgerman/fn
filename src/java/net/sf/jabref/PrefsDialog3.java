@@ -141,6 +141,7 @@ operator|new
 name|JPanel
 argument_list|()
 decl_stmt|;
+comment|/* { 		public void add(Component c, Object o) { 		    super.add(c, o); 		    System.out.println(o+" "+c.getPreferredSize()); 		    } 		    };*/
 DECL|field|chooser
 name|JList
 name|chooser
@@ -772,6 +773,11 @@ operator|new
 name|AbstractWorker
 argument_list|()
 block|{
+name|boolean
+name|ready
+init|=
+literal|true
+decl_stmt|;
 specifier|public
 name|void
 name|run
@@ -826,8 +832,14 @@ operator|.
 name|readyToClose
 argument_list|()
 condition|)
+block|{
+name|ready
+operator|=
+literal|false
+expr_stmt|;
 return|return;
 comment|// If not, break off.
+block|}
 block|}
 comment|// Then store settings and close:
 for|for
@@ -866,6 +878,12 @@ name|void
 name|update
 parameter_list|()
 block|{
+if|if
+condition|(
+operator|!
+name|ready
+condition|)
+return|return;
 name|dispose
 argument_list|()
 expr_stmt|;

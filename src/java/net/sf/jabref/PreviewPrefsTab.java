@@ -99,7 +99,7 @@ literal|""
 argument_list|,
 literal|1
 argument_list|,
-literal|60
+literal|1
 argument_list|)
 decl_stmt|,
 DECL|field|layout2
@@ -112,7 +112,7 @@ literal|""
 argument_list|,
 literal|1
 argument_list|,
-literal|60
+literal|1
 argument_list|)
 decl_stmt|;
 DECL|field|def1
