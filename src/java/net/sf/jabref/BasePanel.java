@@ -7145,7 +7145,13 @@ parameter_list|(
 name|Throwable
 name|ex
 parameter_list|)
-block|{              }
+block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
 comment|//  }
 comment|//}).start();
 block|}

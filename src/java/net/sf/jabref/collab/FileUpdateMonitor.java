@@ -259,6 +259,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|// System.out.println(file.getPath());
 if|if
 condition|(
 operator|!
@@ -331,13 +332,10 @@ name|o
 operator|==
 literal|null
 condition|)
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"Entry not found"
-argument_list|)
-throw|;
+return|return
+literal|false
+return|;
+comment|//	    throw new IllegalArgumentException("Entry not found");
 try|try
 block|{
 return|return
