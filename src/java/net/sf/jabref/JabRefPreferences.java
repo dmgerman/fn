@@ -1414,7 +1414,7 @@ literal|"\\begin{year}<b>\\year</b>\\end{year} \\begin{volume}<i>, \\volume</i>\
 operator|+
 literal|"\\begin{pages}, \\format[FormatPagesForHTML]{\\pages} \\end{pages}__NEWLINE__"
 operator|+
-literal|"\\begin{abstract}<BR><BR><B>Abstract:</B><I>\\format[HTMLChars]{\\abstract}</I>\\end{abstract}"
+literal|"\\begin{abstract}<BR><BR><b>Abstract:</b> \\format[HTMLChars]{\\abstract} \\end{abstract}"
 operator|+
 literal|"</dd>__NEWLINE__<p></p></font>"
 argument_list|)

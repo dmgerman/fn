@@ -1752,30 +1752,14 @@ literal|"'."
 argument_list|)
 throw|;
 block|}
-comment|// Use the correct viewer even if pdf and ps are mixed up:
 name|link
 operator|=
 name|file
 operator|.
 name|getPath
 argument_list|()
-operator|.
-name|replaceAll
-argument_list|(
-literal|"\\s"
-argument_list|,
-literal|"\\\\ "
-argument_list|)
 expr_stmt|;
-name|pr
-argument_list|(
-literal|"rill '"
-operator|+
-name|link
-operator|+
-literal|"'"
-argument_list|)
-expr_stmt|;
+comment|// Use the correct viewer even if pdf and ps are mixed up:
 name|String
 index|[]
 name|split
@@ -2079,16 +2063,6 @@ operator|.
 name|exec
 argument_list|(
 name|cmdArray
-index|[
-literal|0
-index|]
-operator|+
-literal|" "
-operator|+
-name|cmdArray
-index|[
-literal|1
-index|]
 argument_list|)
 decl_stmt|;
 block|}
@@ -2208,16 +2182,6 @@ operator|.
 name|exec
 argument_list|(
 name|cmdArray
-index|[
-literal|0
-index|]
-operator|+
-literal|" "
-operator|+
-name|cmdArray
-index|[
-literal|1
-index|]
 argument_list|)
 decl_stmt|;
 block|}
@@ -2344,6 +2308,7 @@ index|]
 operator|=
 name|link
 expr_stmt|;
+comment|//Process child = Runtime.getRuntime().exec(cmdArray[0]+" "+cmdArray[1]);
 name|Process
 name|child
 init|=
@@ -2355,16 +2320,6 @@ operator|.
 name|exec
 argument_list|(
 name|cmdArray
-index|[
-literal|0
-index|]
-operator|+
-literal|" "
-operator|+
-name|cmdArray
-index|[
-literal|1
-index|]
 argument_list|)
 decl_stmt|;
 block|}

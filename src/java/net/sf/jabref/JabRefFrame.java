@@ -8482,8 +8482,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Adds the entries to the database, possibly checking for duplicates first.      * @param filename If non-null, a message is printed to the status line describing      * how many entries were imported, and from which file. If null, the message will not      * be printed.      * @param intoNew Determines if the entries will be put in a new database or in the current      * one.      */
 DECL|method|addBibEntries (ArrayList bibentries, String filename, boolean intoNew)
-specifier|private
+specifier|public
 name|void
 name|addBibEntries
 parameter_list|(
@@ -8742,6 +8743,12 @@ name|setNonEmptyState
 argument_list|()
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|filename
+operator|!=
+literal|null
+condition|)
 name|output
 argument_list|(
 name|Globals
@@ -8819,7 +8826,7 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
-literal|"Import database"
+literal|"Import entries"
 argument_list|)
 decl_stmt|;
 name|Iterator
@@ -9105,6 +9112,12 @@ operator|.
 name|refreshTable
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|filename
+operator|!=
+literal|null
+condition|)
 name|output
 argument_list|(
 name|Globals
