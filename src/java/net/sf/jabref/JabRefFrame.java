@@ -1171,6 +1171,30 @@ literal|"Push to LyX"
 argument_list|)
 argument_list|)
 decl_stmt|,
+DECL|field|winEdtPushAction
+name|winEdtPushAction
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"pushToWinEdt"
+argument_list|,
+literal|"Insert selected citations into WinEdt"
+argument_list|,
+literal|"Push selection to WinEdt"
+argument_list|,
+name|GUIGlobals
+operator|.
+name|winEdtIcon
+argument_list|,
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Push to WinEdt"
+argument_list|)
+argument_list|)
+decl_stmt|,
 DECL|field|openFile
 name|openFile
 init|=
@@ -4289,6 +4313,13 @@ name|tools
 operator|.
 name|add
 argument_list|(
+name|winEdtPushAction
+argument_list|)
+expr_stmt|;
+name|tools
+operator|.
+name|add
+argument_list|(
 name|fetchMedline
 argument_list|)
 expr_stmt|;
@@ -4625,6 +4656,13 @@ operator|.
 name|addAction
 argument_list|(
 name|lyxPushAction
+argument_list|)
+expr_stmt|;
+name|tlb
+operator|.
+name|addAction
+argument_list|(
+name|winEdtPushAction
 argument_list|)
 expr_stmt|;
 name|tlb

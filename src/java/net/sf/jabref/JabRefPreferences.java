@@ -966,6 +966,15 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+literal|"winEdtPath"
+argument_list|,
+literal|"C:\\Program Files\\WinEdt Team\\WinEdt\\WinEdt.exe"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
 literal|"groupsVisibleRows"
 argument_list|,
 operator|new
@@ -2501,6 +2510,15 @@ argument_list|(
 literal|"Push to LyX"
 argument_list|,
 literal|"ctrl L"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Push to WinEdt"
+argument_list|,
+literal|"ctrl shift W"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds

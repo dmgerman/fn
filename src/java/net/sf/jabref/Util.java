@@ -1517,17 +1517,6 @@ literal|"pdf"
 argument_list|)
 condition|)
 block|{
-comment|//	try
-comment|//        {
-name|File
-name|f
-init|=
-operator|new
-name|File
-argument_list|(
-name|link
-argument_list|)
-decl_stmt|;
 name|String
 name|dir
 init|=
@@ -1541,7 +1530,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|f
+name|file
 operator|.
 name|exists
 argument_list|()
@@ -1596,7 +1585,6 @@ name|link
 argument_list|)
 expr_stmt|;
 block|}
-comment|//	}
 block|}
 if|if
 condition|(

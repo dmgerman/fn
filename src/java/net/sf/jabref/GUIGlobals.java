@@ -391,6 +391,7 @@ block|}
 specifier|public
 specifier|static
 name|URL
+comment|/*      openIconFile = GUIGlobals.class.getResource(pre + "fileopen2.png"),       editIconFile = GUIGlobals.class.getResource(pre + "pencil.png"),       saveIconFile = GUIGlobals.class.getResource(pre + "filesave.png"),       saveAsIconFile = GUIGlobals.class.getResource(pre + "filesave.png"),       prefsIconFile = GUIGlobals.class.getResource(pre + "configure2.png"),       newIconFile = GUIGlobals.class.getResource(pre + "filenew.png"),       undoIconFile = GUIGlobals.class.getResource(pre + "undo.png"),       redoIconFile = GUIGlobals.class.getResource(pre + "redo.png"),       preambleIconFile = GUIGlobals.class.getResource(pre + "preamble.png"),       addIconFile = GUIGlobals.class.getResource(pre + "news_subscribe.png"),       delRowIconFile = GUIGlobals.class.getResource(pre + "news_unsubscribe.png"),       showReqIconFile = GUIGlobals.class.getResource(pre + "r_icon.gif"),       showOptIconFile = GUIGlobals.class.getResource(pre + "o_icon.gif"),       showGenIconFile = GUIGlobals.class.getResource(pre + "g_icon.gif"),       sourceIconFile = GUIGlobals.class.getResource(pre + "viewsource.gif"),       copyIconFile = GUIGlobals.class.getResource(pre + "editcopy.png"),       cutIconFile = GUIGlobals.class.getResource(pre + "editcut.png"),       copyKeyIconFile = GUIGlobals.class.getResource(pre + "editcopy.png"),       genKeyIconFile = GUIGlobals.class.getResource(pre + "wizard.png"),       lyxIconFile = GUIGlobals.class.getResource(pre + "lyx.png"),       backIconFile = GUIGlobals.class.getResource(pre + "back.png"),       forwardIconFile = GUIGlobals.class.getResource(pre + "forward.png"),       contentsIconFile = GUIGlobals.class.getResource(pre + "contents2.png"),       removeIconFile = GUIGlobals.class.getResource(pre + "editdelete.png"),       upIconFile = GUIGlobals.class.getResource(pre + "up.png"),       downIconFile = GUIGlobals.class.getResource(pre + "down.png"),       stringsIconFile = GUIGlobals.class.getResource(pre + "strings.png"),       groupsIconFile = GUIGlobals.class.getResource(pre + "queue.png"),       closeIconFile = GUIGlobals.class.getResource(pre + "fileclose.png"),       close2IconFile = GUIGlobals.class.getResource(pre + "fileclose2.png"),       refreshSmallIconFile = GUIGlobals.class.getResource(pre + "reload.png"),       helpSmallIconFile = GUIGlobals.class.getResource(pre + "help.png"),       helpIconFile = GUIGlobals.class.getResource(pre + "help.png"),       aboutIcon = GUIGlobals.class.getResource(pre + "hwinfo.png"),       helpContentsIconFile = GUIGlobals.class.getResource(pre + "contents2.png"),       newSmallIconFile = GUIGlobals.class.getResource(pre + "filenew.png"),       pasteIconFile = GUIGlobals.class.getResource(pre + "editpaste.png"),       editEntryIconFile = GUIGlobals.class.getResource(pre + "DocumentDraw.gif"),       searchIconFile = GUIGlobals.class.getResource(pre + "find.png"),       autoGroupIcon = GUIGlobals.class.getResource(pre + "run.png"),       wwwIcon = GUIGlobals.class.getResource(pre + "www.png"), 	  wwwCiteSeerIcon = GUIGlobals.class.getResource(pre + "wwwciteseer.png"),       fetchMedlineIcon = GUIGlobals.class.getResource(pre + "goto.png"), 	  fetchHourglassIcon = GUIGlobals.class.getResource(pre + "Hourglass.png"),       pdfIcon = GUIGlobals.class.getResource(pre + "pdf.png"),       pdfSmallIcon = GUIGlobals.class.getResource(pre + "pdf_small.gif"),       sheetIcon = GUIGlobals.class.getResource(pre + "window_nofullscreen.png"),       doiIcon = GUIGlobals.class.getResource(pre + "doi.png"),       doiSmallIcon = GUIGlobals.class.getResource(pre + "doismall.png"),       psIcon = GUIGlobals.class.getResource(pre + "postscript.png"),       incompleteIcon = GUIGlobals.class.getResource(pre + "incomplete.png"),*/
 DECL|field|openIconFile
 name|openIconFile
 init|=
@@ -402,7 +403,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"fileopen2.png"
+literal|"fldr_obj.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|editIconFile
@@ -416,7 +417,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"pencil.png"
+literal|"edittsk_tsk.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|saveIconFile
@@ -430,7 +431,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"filesave.png"
+literal|"save_edit.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|saveAsIconFile
@@ -444,7 +445,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"filesave.png"
+literal|"saveas_edit.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|prefsIconFile
@@ -472,7 +473,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"filenew.png"
+literal|"new_page.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|undoIconFile
@@ -486,7 +487,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"undo.png"
+literal|"undo_edit.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|redoIconFile
@@ -500,7 +501,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"redo.png"
+literal|"redo_edit.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|preambleIconFile
@@ -528,7 +529,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"news_subscribe.png"
+literal|"plus.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|delRowIconFile
@@ -542,7 +543,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"news_unsubscribe.png"
+literal|"minus.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|showReqIconFile
@@ -612,7 +613,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"editcopy.png"
+literal|"copy_edit.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|cutIconFile
@@ -626,7 +627,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"editcut.png"
+literal|"cut_edit.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|copyKeyIconFile
@@ -640,7 +641,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"editcopy.png"
+literal|"copy_edit.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|genKeyIconFile
@@ -682,7 +683,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"back.png"
+literal|"backward_nav.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|forwardIconFile
@@ -696,7 +697,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"forward.png"
+literal|"forward_nav.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|contentsIconFile
@@ -710,7 +711,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"contents2.png"
+literal|"toc_closed.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|removeIconFile
@@ -724,7 +725,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"editdelete.png"
+literal|"delete_edit.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|upIconFile
@@ -738,7 +739,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"up.png"
+literal|"prev_nav.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|downIconFile
@@ -752,7 +753,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"down.png"
+literal|"next_nav.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|stringsIconFile
@@ -797,6 +798,20 @@ operator|+
 literal|"fileclose.png"
 argument_list|)
 decl_stmt|,
+DECL|field|close2IconFile
+name|close2IconFile
+init|=
+name|GUIGlobals
+operator|.
+name|class
+operator|.
+name|getResource
+argument_list|(
+name|pre
+operator|+
+literal|"fileclose2.png"
+argument_list|)
+decl_stmt|,
 DECL|field|refreshSmallIconFile
 name|refreshSmallIconFile
 init|=
@@ -808,7 +823,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"reload.png"
+literal|"refresh_nav.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|helpSmallIconFile
@@ -822,7 +837,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"help.png"
+literal|"view.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|helpIconFile
@@ -836,7 +851,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"help.png"
+literal|"view.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|aboutIcon
@@ -850,7 +865,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"hwinfo.png"
+literal|"view.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|helpContentsIconFile
@@ -878,7 +893,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"filenew.png"
+literal|"new_page.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|pasteIconFile
@@ -892,7 +907,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"editpaste.png"
+literal|"paste_edit.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|editEntryIconFile
@@ -920,7 +935,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"find.png"
+literal|"search.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|autoGroupIcon
@@ -934,7 +949,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"run.png"
+literal|"addtsk_tsk.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|wwwIcon
@@ -1032,7 +1047,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"window_nofullscreen.png"
+literal|"defaults_ps.gif"
 argument_list|)
 decl_stmt|,
 DECL|field|doiIcon
@@ -1088,7 +1103,21 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"incomplete.png"
+literal|"exclamation.gif"
+argument_list|)
+decl_stmt|,
+DECL|field|winEdtIcon
+name|winEdtIcon
+init|=
+name|GUIGlobals
+operator|.
+name|class
+operator|.
+name|getResource
+argument_list|(
+name|pre
+operator|+
+literal|"winedt.png"
 argument_list|)
 decl_stmt|,
 DECL|field|jabreflogo
@@ -1301,7 +1330,7 @@ init|=
 operator|new
 name|Color
 argument_list|(
-literal|235
+literal|230
 argument_list|,
 literal|235
 argument_list|,
@@ -1411,7 +1440,35 @@ literal|40
 argument_list|,
 literal|40
 argument_list|)
+decl_stmt|,
+DECL|field|gradientGray
+name|gradientGray
+init|=
+operator|new
+name|Color
+argument_list|(
+literal|112
+argument_list|,
+literal|121
+argument_list|,
+literal|165
+argument_list|)
+decl_stmt|,
+comment|// Title bar gradient color, sidepaneheader
+DECL|field|gradientBlue
+name|gradientBlue
+init|=
+operator|new
+name|Color
+argument_list|(
+literal|0
+argument_list|,
+literal|27
+argument_list|,
+literal|102
+argument_list|)
 decl_stmt|;
+comment|// Title bar gradient color, sidepaneheader
 DECL|field|META_FLAG
 specifier|public
 specifier|static
