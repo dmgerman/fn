@@ -608,6 +608,11 @@ name|int
 name|row2
 parameter_list|)
 block|{
+name|boolean
+name|oldState
+init|=
+name|selectionListenerOn
+decl_stmt|;
 name|selectionListenerOn
 operator|=
 literal|false
@@ -623,7 +628,48 @@ argument_list|)
 expr_stmt|;
 name|selectionListenerOn
 operator|=
-literal|true
+name|oldState
+expr_stmt|;
+block|}
+comment|/**        * This method overrides the superclass' to disable the selection listener while the        * selection is cleared.        */
+DECL|method|clearSelection ()
+specifier|public
+name|void
+name|clearSelection
+parameter_list|()
+block|{
+name|boolean
+name|oldState
+init|=
+name|selectionListenerOn
+decl_stmt|;
+name|selectionListenerOn
+operator|=
+literal|false
+expr_stmt|;
+name|super
+operator|.
+name|clearSelection
+argument_list|()
+expr_stmt|;
+name|selectionListenerOn
+operator|=
+name|oldState
+expr_stmt|;
+block|}
+comment|/**        * Enables or disables the selectionlistener. Useful if the selection needs to be        * updated in several steps, without the table responding between each.        * @param enabled boolean        */
+DECL|method|setSelectionListenerEnabled (boolean enabled)
+specifier|public
+name|void
+name|setSelectionListenerEnabled
+parameter_list|(
+name|boolean
+name|enabled
+parameter_list|)
+block|{
+name|selectionListenerOn
+operator|=
+name|enabled
 expr_stmt|;
 block|}
 comment|/**        * Turns off any cell editing going on.        */

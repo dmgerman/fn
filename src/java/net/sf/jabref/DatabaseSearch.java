@@ -313,30 +313,11 @@ argument_list|,
 name|reorder
 argument_list|,
 name|grayOut
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
+argument_list|,
 name|select
-condition|)
-block|{
-comment|// Select matches.
-name|panel
-operator|.
-name|selectResults
-argument_list|(
-name|searchValueField
 argument_list|)
 expr_stmt|;
-operator|new
-name|FocusRequester
-argument_list|(
-name|panel
-operator|.
-name|entryTable
-argument_list|)
-expr_stmt|;
-block|}
+comment|/*if (select) { // Select matches.           panel.selectResults(searchValueField);           new FocusRequester(panel.entryTable);         }*/
 if|if
 condition|(
 operator|(

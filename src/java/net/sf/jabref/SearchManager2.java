@@ -500,7 +500,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Select matching entries"
+literal|"Gray out non-matching entries"
 argument_list|)
 argument_list|)
 expr_stmt|;
