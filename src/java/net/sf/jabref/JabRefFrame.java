@@ -487,6 +487,23 @@ operator|.
 name|saveAsIconFile
 argument_list|)
 decl_stmt|,
+DECL|field|saveSelectedAs
+name|saveSelectedAs
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"saveSelectedAs"
+argument_list|,
+literal|"Save selected as ..."
+argument_list|,
+literal|"Save selected as ..."
+argument_list|,
+name|GUIGlobals
+operator|.
+name|saveAsIconFile
+argument_list|)
+decl_stmt|,
 DECL|field|nextTab
 name|nextTab
 init|=
@@ -2654,6 +2671,13 @@ name|file
 operator|.
 name|add
 argument_list|(
+name|saveSelectedAs
+argument_list|)
+expr_stmt|;
+name|file
+operator|.
+name|add
+argument_list|(
 name|exportMenu
 argument_list|)
 expr_stmt|;
@@ -3380,6 +3404,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|saveSelectedAs
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|nextTab
 operator|.
 name|setEnabled
@@ -3604,6 +3635,13 @@ literal|true
 argument_list|)
 expr_stmt|;
 name|saveAs
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|saveSelectedAs
 operator|.
 name|setEnabled
 argument_list|(
