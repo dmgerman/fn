@@ -11548,6 +11548,20 @@ name|listener
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getSelectedEntries ()
+specifier|public
+name|BibtexEntry
+index|[]
+name|getSelectedEntries
+parameter_list|()
+block|{
+return|return
+name|entryTable
+operator|.
+name|getSelectedEntries
+argument_list|()
+return|;
+block|}
 block|}
 end_class
 
