@@ -1759,6 +1759,13 @@ argument_list|)
 expr_stmt|;
 name|tabbedPane
 operator|.
+name|setBorder
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+name|tabbedPane
+operator|.
 name|setForeground
 argument_list|(
 name|GUIGlobals

@@ -1749,6 +1749,12 @@ operator|new
 name|GridBagLayout
 argument_list|()
 decl_stmt|;
+name|con
+operator|.
+name|weighty
+operator|=
+literal|0
+expr_stmt|;
 name|gbl
 operator|.
 name|setConstraints
@@ -3441,6 +3447,17 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|getMinimumSize ()
+specifier|public
+name|Dimension
+name|getMinimumSize
+parameter_list|()
+block|{
+return|return
+name|getPreferredSize
+argument_list|()
+return|;
 block|}
 block|}
 end_class

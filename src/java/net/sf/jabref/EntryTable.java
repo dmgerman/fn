@@ -52,6 +52,18 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|border
+operator|.
+name|Border
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|table
 operator|.
 name|*
@@ -114,6 +126,9 @@ name|PREFERRED_HEIGHT
 init|=
 literal|30
 decl_stmt|;
+comment|// We use a subclassed JScrollPane with setBorder() overridden as
+comment|// a no-op. This is done to avoid the JTable setting its border,
+comment|// which it does whether we want it or not. And we don't. :)
 DECL|field|sp
 name|JScrollPane
 name|sp
@@ -126,6 +141,16 @@ name|JTable
 operator|)
 name|this
 argument_list|)
+block|{
+specifier|public
+name|void
+name|setBorder
+parameter_list|(
+name|Border
+name|b
+parameter_list|)
+block|{}
+block|}
 decl_stmt|;
 DECL|field|rightClickMenu
 name|JPopupMenu
@@ -220,7 +245,11 @@ name|tableModel
 operator|=
 name|tm_
 expr_stmt|;
-comment|//sp.setBorder(BorderFactory.createEmptyBorder());
+name|setBorder
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 name|panel
 operator|=
 name|panel_

@@ -58,14 +58,8 @@ name|manager
 operator|=
 name|manager
 expr_stmt|;
-name|setBorder
-argument_list|(
-name|BorderFactory
-operator|.
-name|createEtchedBorder
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//setBorder(BorderFactory.createEtchedBorder());
+comment|//setBorder(BorderFactory.createMatteBorder(1,1,1,1,java.awt.Color.green));
 comment|//setPreferredSize(new java.awt.Dimension
 comment|//		  (GUIGlobals.SPLIT_PANE_DIVIDER_LOCATION, 200));
 comment|//Util.pr(""+GUIGlobals.SPLIT_PANE_DIVIDER_LOCATION);
