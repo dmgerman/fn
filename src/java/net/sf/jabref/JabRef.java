@@ -2279,7 +2279,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|UnsupportedLookAndFeelException
+name|Throwable
 name|ex
 parameter_list|)
 block|{
@@ -2288,6 +2288,41 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"Trying to set system default Look&Feel..."
+argument_list|)
+expr_stmt|;
+comment|// if desired lnf could not be set, try system default
+try|try
+block|{
+name|UIManager
+operator|.
+name|setLookAndFeel
+argument_list|(
+name|UIManager
+operator|.
+name|getSystemLookAndFeelClassName
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|e
+parameter_list|)
+block|{
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 comment|//LookAndFeel lnf = new com.sun.java.swing.plaf.gtk.GTKLookAndFeel();
 comment|//Look1AndFeel lnf = new com.incors.plaf.kunststoff.KunststoffLookAndFeel();
