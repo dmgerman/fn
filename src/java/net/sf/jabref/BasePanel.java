@@ -7015,6 +7015,11 @@ parameter_list|()
 block|{
 comment|// This method is called by EntryTypeForm when a field value is
 comment|// stored. The table is scheduled for repaint.
+name|entryTable
+operator|.
+name|assureNotEditing
+argument_list|()
+expr_stmt|;
 name|tableModel
 operator|.
 name|remap
@@ -7941,6 +7946,11 @@ argument_list|,
 name|showingGroup
 argument_list|)
 expr_stmt|;
+name|entryTable
+operator|.
+name|clearSelection
+argument_list|()
+expr_stmt|;
 name|refreshTable
 argument_list|()
 expr_stmt|;
@@ -7968,6 +7978,11 @@ name|showingSearchResults
 argument_list|,
 name|showingGroup
 argument_list|)
+expr_stmt|;
+name|entryTable
+operator|.
+name|clearSelection
+argument_list|()
 expr_stmt|;
 name|refreshTable
 argument_list|()

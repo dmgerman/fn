@@ -639,6 +639,42 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
+comment|/**        * Turns off any cell editing going on.        */
+DECL|method|assureNotEditing ()
+specifier|protected
+name|void
+name|assureNotEditing
+parameter_list|()
+block|{
+if|if
+condition|(
+name|isEditing
+argument_list|()
+condition|)
+block|{
+name|int
+name|col
+init|=
+name|getEditingColumn
+argument_list|()
+decl_stmt|,
+name|row
+init|=
+name|getEditingRow
+argument_list|()
+decl_stmt|;
+name|getCellEditor
+argument_list|(
+name|row
+argument_list|,
+name|col
+argument_list|)
+operator|.
+name|stopCellEditing
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 DECL|method|setWidths ()
 specifier|public
 name|void
