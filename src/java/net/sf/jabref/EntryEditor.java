@@ -2426,6 +2426,20 @@ literal|"Browse"
 argument_list|)
 argument_list|)
 decl_stmt|;
+operator|(
+operator|(
+name|JComponent
+operator|)
+name|editor
+operator|)
+operator|.
+name|addMouseListener
+argument_list|(
+operator|new
+name|ExternalViewerListener
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|but
 operator|.
 name|setBackground
@@ -6641,6 +6655,13 @@ operator|+
 literal|" "
 operator|+
 name|link
+operator|.
+name|replaceAll
+argument_list|(
+literal|" "
+argument_list|,
+literal|"\\ "
+argument_list|)
 argument_list|)
 decl_stmt|;
 block|}
