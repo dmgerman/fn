@@ -420,8 +420,11 @@ comment|// Note: GeneralAction's constructor automatically gets translations
 comment|// for the name and message strings.
 comment|// References to the toggle buttons in the toolbar:
 DECL|field|groupToggle
+DECL|field|searchToggle
 name|JToggleButton
 name|groupToggle
+decl_stmt|,
+name|searchToggle
 decl_stmt|;
 name|AbstractAction
 DECL|field|open
@@ -1685,9 +1688,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|//SwingUtilities.invokeLater(new Runnable() {
-comment|//public void run() {
-comment|//Util.pr(""+bp.groupSelector.isVisible());
 name|groupToggle
 operator|.
 name|setSelected
@@ -1702,9 +1702,20 @@ literal|"groups"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//groupSelector.isVisible());
-comment|//  }
-comment|//});
+name|searchToggle
+operator|.
+name|setSelected
+argument_list|(
+name|bp
+operator|.
+name|sidePaneManager
+operator|.
+name|isPanelVisible
+argument_list|(
+literal|"search"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|Globals
 operator|.
 name|focusListener
@@ -4479,11 +4490,26 @@ operator|.
 name|addSeparator
 argument_list|()
 expr_stmt|;
+name|searchToggle
+operator|=
+operator|new
+name|JToggleButton
+argument_list|(
+name|normalSearch
+argument_list|)
+expr_stmt|;
+name|searchToggle
+operator|.
+name|setText
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 name|tlb
 operator|.
 name|add
 argument_list|(
-name|normalSearch
+name|searchToggle
 argument_list|)
 expr_stmt|;
 name|groupToggle

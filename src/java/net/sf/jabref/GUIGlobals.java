@@ -1329,7 +1329,7 @@ init|=
 operator|new
 name|Color
 argument_list|(
-literal|225
+literal|210
 argument_list|,
 literal|210
 argument_list|,
@@ -1355,7 +1355,7 @@ init|=
 operator|new
 name|Color
 argument_list|(
-literal|205
+literal|180
 argument_list|,
 literal|180
 argument_list|,

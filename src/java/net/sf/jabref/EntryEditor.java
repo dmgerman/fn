@@ -6813,42 +6813,9 @@ name|showing
 operator|=
 name|be
 expr_stmt|;
-if|if
-condition|(
-name|tabbed
-operator|.
-name|getSelectedComponent
-argument_list|()
-operator|instanceof
-name|FieldPanel
-condition|)
-operator|(
-operator|(
-name|FieldPanel
-operator|)
-name|tabbed
-operator|.
-name|getSelectedComponent
-argument_list|()
-operator|)
-operator|.
-name|activate
-argument_list|()
-expr_stmt|;
-else|else
-operator|(
-operator|(
-name|JComponent
-operator|)
-name|tabbed
-operator|.
-name|getSelectedComponent
-argument_list|()
-operator|)
-operator|.
-name|requestFocus
-argument_list|()
-expr_stmt|;
+comment|//if (tabbed.getSelectedComponent() instanceof FieldPanel)
+comment|//    ((FieldPanel)tabbed.getSelectedComponent()).activate();
+comment|//else ((JComponent)tabbed.getSelectedComponent()).requestFocus();
 block|}
 DECL|class|GenerateKeyAction
 class|class
