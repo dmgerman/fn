@@ -1981,8 +1981,7 @@ argument_list|(
 name|groupsTree
 argument_list|)
 expr_stmt|;
-comment|// JZPUWIL: drag and drop...
-comment|// ...see GroupsTree
+comment|// drag'n'drop is enabled in GroupsTree.java
 name|groupsTree
 operator|.
 name|setShowsRootHandles
