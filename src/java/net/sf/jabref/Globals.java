@@ -839,7 +839,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\`\\{e\\}\\}"
+literal|"\\{\\\\\\´\\{e\\}\\}"
 argument_list|,
 literal|"&eacute;"
 argument_list|)
@@ -848,7 +848,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\`\\{E\\}\\}"
+literal|"\\{\\\\\\´\\{E\\}\\}"
 argument_list|,
 literal|"&Eacute;"
 argument_list|)
@@ -857,7 +857,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\`\\{i\\}\\}"
+literal|"\\{\\\\\\´\\{i\\}\\}"
 argument_list|,
 literal|"&iacute;"
 argument_list|)
@@ -866,7 +866,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\`\\{I\\}\\}"
+literal|"\\{\\\\\\´\\{I\\}\\}"
 argument_list|,
 literal|"&Iacute;"
 argument_list|)
@@ -875,7 +875,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\`\\{o\\}\\}"
+literal|"\\{\\\\\\´\\{o\\}\\}"
 argument_list|,
 literal|"&oacute;"
 argument_list|)
@@ -884,7 +884,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\`\\{O\\}\\}"
+literal|"\\{\\\\\\´\\{O\\}\\}"
 argument_list|,
 literal|"&Oacute;"
 argument_list|)
@@ -893,7 +893,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\`\\{u\\}\\}"
+literal|"\\{\\\\\\´\\{u\\}\\}"
 argument_list|,
 literal|"&uacute;"
 argument_list|)
@@ -902,7 +902,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\`\\{U\\}\\}"
+literal|"\\{\\\\\\´\\{U\\}\\}"
 argument_list|,
 literal|"&Uacute;"
 argument_list|)
@@ -1199,7 +1199,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\`e\\}"
+literal|"\\{\\\\\\`A\\}"
 argument_list|,
 literal|"&eacute;"
 argument_list|)
@@ -1208,7 +1208,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\`E\\}"
+literal|"\\{\\\\\\´E\\}"
 argument_list|,
 literal|"&Eacute;"
 argument_list|)
@@ -1217,7 +1217,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\`i\\}"
+literal|"\\{\\\\\\´i\\}"
 argument_list|,
 literal|"&iacute;"
 argument_list|)
@@ -1226,7 +1226,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\`I\\}"
+literal|"\\{\\\\\\´I\\}"
 argument_list|,
 literal|"&Iacute;"
 argument_list|)
@@ -1235,7 +1235,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\`o\\}"
+literal|"\\{\\\\\\´o\\}"
 argument_list|,
 literal|"&oacute;"
 argument_list|)
@@ -1244,7 +1244,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\`O\\}"
+literal|"\\{\\\\\\´O\\}"
 argument_list|,
 literal|"&Oacute;"
 argument_list|)
@@ -1253,7 +1253,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\`u\\}"
+literal|"\\{\\\\\\´u\\}"
 argument_list|,
 literal|"&uacute;"
 argument_list|)
@@ -1262,7 +1262,7 @@ name|HTML_CHARS
 operator|.
 name|put
 argument_list|(
-literal|"\\{\\\\\\`U\\}"
+literal|"\\{\\\\\\´U\\}"
 argument_list|,
 literal|"&Uacute;"
 argument_list|)

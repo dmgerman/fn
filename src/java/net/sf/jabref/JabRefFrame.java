@@ -965,6 +965,30 @@ argument_list|(
 literal|"Open pdf or ps"
 argument_list|)
 argument_list|)
+decl_stmt|,
+DECL|field|openUrl
+name|openUrl
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"openUrl"
+argument_list|,
+literal|"Open url"
+argument_list|,
+literal|"Open url"
+argument_list|,
+name|GUIGlobals
+operator|.
+name|wwwIcon
+argument_list|,
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Open url"
+argument_list|)
+argument_list|)
 decl_stmt|;
 comment|/*setupSelector = new GeneralAction("setupSelector", "", "", 					  GUIGlobals.pasteIconFile, 					  prefs.getKey(")),*/
 comment|// The menus for importing/appending other formats
@@ -2961,14 +2985,19 @@ name|tools
 operator|.
 name|add
 argument_list|(
-name|makeKeyAction
+name|replaceAll
 argument_list|)
+expr_stmt|;
+name|tools
+operator|.
+name|addSeparator
+argument_list|()
 expr_stmt|;
 name|tools
 operator|.
 name|add
 argument_list|(
-name|fetchMedline
+name|makeKeyAction
 argument_list|)
 expr_stmt|;
 name|tools
@@ -2982,19 +3011,21 @@ name|tools
 operator|.
 name|add
 argument_list|(
-name|openFile
+name|fetchMedline
 argument_list|)
-expr_stmt|;
-name|tools
-operator|.
-name|addSeparator
-argument_list|()
 expr_stmt|;
 name|tools
 operator|.
 name|add
 argument_list|(
-name|replaceAll
+name|openFile
+argument_list|)
+expr_stmt|;
+name|tools
+operator|.
+name|add
+argument_list|(
+name|openUrl
 argument_list|)
 expr_stmt|;
 name|mb
@@ -3254,6 +3285,13 @@ operator|.
 name|add
 argument_list|(
 name|openFile
+argument_list|)
+expr_stmt|;
+name|tlb
+operator|.
+name|add
+argument_list|(
+name|openUrl
 argument_list|)
 expr_stmt|;
 name|tlb
@@ -3605,6 +3643,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|openUrl
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|int
@@ -3843,6 +3888,13 @@ literal|true
 argument_list|)
 expr_stmt|;
 name|openFile
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|openUrl
 operator|.
 name|setEnabled
 argument_list|(

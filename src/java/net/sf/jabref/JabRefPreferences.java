@@ -2495,7 +2495,16 @@ name|put
 argument_list|(
 literal|"Open pdf or ps"
 argument_list|,
-literal|"F2"
+literal|"F4"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Open url"
+argument_list|,
+literal|"F3"
 argument_list|)
 expr_stmt|;
 comment|//defKeyBinds.put("Edit entry", "ctrl E");
