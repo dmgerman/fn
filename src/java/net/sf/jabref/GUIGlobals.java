@@ -1095,7 +1095,7 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"JabRef-splash.png"
+literal|"JabRef-splash2.png"
 argument_list|)
 decl_stmt|;
 comment|// Help files (in HTML format):

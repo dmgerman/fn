@@ -161,6 +161,7 @@ specifier|static
 name|ResourceBundle
 name|messages
 decl_stmt|;
+comment|//public static ResourceBundle preferences = ResourceBundle.getBundle("resource/defaultPrefs");
 DECL|field|locale
 specifier|public
 specifier|static

@@ -28,6 +28,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -53,6 +63,13 @@ DECL|field|metaData
 specifier|private
 name|HashMap
 name|metaData
+decl_stmt|;
+DECL|field|file
+specifier|private
+name|File
+name|file
+init|=
+literal|null
 decl_stmt|;
 DECL|method|ParserResult (BibtexDatabase base, HashMap metaData)
 specifier|public
@@ -97,6 +114,30 @@ block|{
 return|return
 name|metaData
 return|;
+block|}
+DECL|method|getFile ()
+specifier|public
+name|File
+name|getFile
+parameter_list|()
+block|{
+return|return
+name|file
+return|;
+block|}
+DECL|method|setFile (File f)
+specifier|public
+name|void
+name|setFile
+parameter_list|(
+name|File
+name|f
+parameter_list|)
+block|{
+name|file
+operator|=
+name|f
+expr_stmt|;
 block|}
 block|}
 end_class

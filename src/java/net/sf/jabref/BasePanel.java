@@ -3956,7 +3956,7 @@ comment|// Should this be done _after_ we know it was successfully opened?
 name|ParserResult
 name|pr
 init|=
-name|frame
+name|ImportFormatReader
 operator|.
 name|loadDatabase
 argument_list|(

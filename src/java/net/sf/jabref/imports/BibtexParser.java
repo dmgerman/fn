@@ -1052,6 +1052,18 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
+if|if
+condition|(
+name|entry
+operator|.
+name|getField
+argument_list|(
+name|key
+argument_list|)
+operator|==
+literal|null
+condition|)
 name|entry
 operator|.
 name|setField
@@ -1061,6 +1073,49 @@ argument_list|,
 name|content
 argument_list|)
 expr_stmt|;
+else|else
+block|{
+comment|// The following hack enables the parser to deal with multiple author or
+comment|// editor lines, stringing them together instead of getting just one of them.
+comment|// Multiple author or editor lines are not allowed by the bibtex format, but
+comment|// at least one online database exports bibitex like that, making it inconvenient
+comment|// for users if JabRef didn't accept it.
+if|if
+condition|(
+name|key
+operator|.
+name|equals
+argument_list|(
+literal|"author"
+argument_list|)
+operator|||
+name|key
+operator|.
+name|equals
+argument_list|(
+literal|"editor"
+argument_list|)
+condition|)
+name|entry
+operator|.
+name|setField
+argument_list|(
+name|key
+argument_list|,
+name|entry
+operator|.
+name|getField
+argument_list|(
+name|key
+argument_list|)
+operator|+
+literal|" and "
+operator|+
+name|content
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 DECL|method|parseFieldContent ()
 specifier|private
