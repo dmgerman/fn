@@ -3674,11 +3674,11 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-comment|//entryTable.requestFocus();
-name|splitPane
-operator|.
-name|requestFocus
-argument_list|()
+operator|new
+name|FocusRequester
+argument_list|(
+name|entryTable
+argument_list|)
 expr_stmt|;
 name|showing
 operator|=

@@ -169,7 +169,6 @@ argument_list|(
 name|BorderFactory
 operator|.
 name|createEtchedBorder
-comment|//			(EtchedBorder.LOWERED,
 argument_list|(
 name|Color
 operator|.
@@ -197,8 +196,7 @@ operator|.
 name|white
 argument_list|)
 expr_stmt|;
-comment|//label.setForeground(Color.gray)
-empty_stmt|;
+comment|//label.setForeground(Color.gray);
 name|setBackground
 argument_list|(
 name|GUIGlobals

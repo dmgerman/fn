@@ -955,6 +955,32 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|startIncrementalSearch ()
+specifier|public
+name|void
+name|startIncrementalSearch
+parameter_list|()
+block|{
+name|increment
+operator|.
+name|setSelected
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|searchField
+operator|.
+name|setText
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
+name|searchField
+operator|.
+name|requestFocus
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

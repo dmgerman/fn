@@ -1740,6 +1740,15 @@ argument_list|,
 literal|"ctrl G"
 argument_list|)
 expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Incremental search"
+argument_list|,
+literal|"ctrl shift F"
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getNextUnit (Reader data)
 specifier|private
