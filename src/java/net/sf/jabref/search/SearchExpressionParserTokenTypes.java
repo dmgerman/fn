@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// $ANTLR 2.7.4: "Parser.g" -> "SearchExpressionParser.java"$
+comment|// $ANTLR 2.7.5 (20050128): "Parser.g" -> "SearchExpressionParser.java"$
 end_comment
 
 begin_package
@@ -15,6 +15,16 @@ operator|.
 name|search
 package|;
 end_package
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|StringReader
+import|;
+end_import
 
 begin_interface
 DECL|interface|SearchExpressionParserTokenTypes

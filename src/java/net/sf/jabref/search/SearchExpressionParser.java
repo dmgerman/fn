@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// $ANTLR 2.7.4: "Parser.g" -> "SearchExpressionParser.java"$
+comment|// $ANTLR 2.7.5 (20050128): "Parser.g" -> "SearchExpressionParser.java"$
 end_comment
 
 begin_package
@@ -15,6 +15,16 @@ operator|.
 name|search
 package|;
 end_package
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|StringReader
+import|;
+end_import
 
 begin_import
 import|import
@@ -198,6 +208,76 @@ name|regex
 init|=
 literal|true
 decl_stmt|;
+comment|/** Creates a parser and lexer instance and tests the specified String. 	  * Returns true if s is in valid syntax for advanced field search, false otherwise. */
+DECL|method|isValidSyntax (String s, boolean caseSensitive, boolean regex)
+specifier|public
+specifier|static
+name|boolean
+name|isValidSyntax
+parameter_list|(
+name|String
+name|s
+parameter_list|,
+name|boolean
+name|caseSensitive
+parameter_list|,
+name|boolean
+name|regex
+parameter_list|)
+block|{
+comment|// JZTODO: Is there some way to prevent instance creation here?
+comment|// How can a parser and/or lexer be reused?
+name|SearchExpressionParser
+name|parser
+init|=
+operator|new
+name|SearchExpressionParser
+argument_list|(
+operator|new
+name|SearchExpressionLexer
+argument_list|(
+operator|new
+name|StringReader
+argument_list|(
+name|s
+argument_list|)
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|parser
+operator|.
+name|caseSensitive
+operator|=
+name|caseSensitive
+expr_stmt|;
+name|parser
+operator|.
+name|regex
+operator|=
+name|regex
+expr_stmt|;
+try|try
+block|{
+name|parser
+operator|.
+name|searchExpression
+argument_list|()
+expr_stmt|;
+return|return
+literal|true
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+block|}
 DECL|method|SearchExpressionParser (TokenBuffer tokenBuf, int k)
 specifier|protected
 name|SearchExpressionParser
