@@ -56,7 +56,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Hashtable
+name|*
 import|;
 end_import
 
@@ -1898,7 +1898,11 @@ name|HORIZONTAL_SCROLLBAR_AS_NEEDED
 argument_list|)
 expr_stmt|;
 name|revalidateGroups
-argument_list|()
+argument_list|(
+literal|null
+argument_list|,
+literal|null
+argument_list|)
 expr_stmt|;
 name|con
 operator|.
@@ -2730,11 +2734,19 @@ literal|"."
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|revalidateGroups ()
+comment|/** Clear selection, maintain expansion state */
+DECL|method|revalidateGroups (TreePath[] selectionPaths, Enumeration expandedNodes)
 specifier|public
 name|void
 name|revalidateGroups
-parameter_list|()
+parameter_list|(
+name|TreePath
+index|[]
+name|selectionPaths
+parameter_list|,
+name|Enumeration
+name|expandedNodes
+parameter_list|)
 block|{
 name|groupsTreeModel
 operator|.
@@ -2746,62 +2758,95 @@ operator|.
 name|clearSelection
 argument_list|()
 expr_stmt|;
-name|groupsTree
-operator|.
-name|revalidate
-argument_list|()
-expr_stmt|;
-block|}
-comment|/**      * @param paths      *            The paths to select.      */
-DECL|method|revalidateGroups (TreePath[] paths)
-specifier|public
-name|void
-name|revalidateGroups
-parameter_list|(
-name|TreePath
-index|[]
-name|paths
-parameter_list|)
+if|if
+condition|(
+name|selectionPaths
+operator|!=
+literal|null
+condition|)
 block|{
-name|groupsTreeModel
-operator|.
-name|reload
-argument_list|()
-expr_stmt|;
 name|groupsTree
 operator|.
 name|setSelectionPaths
 argument_list|(
-name|paths
+name|selectionPaths
 argument_list|)
 expr_stmt|;
+block|}
+comment|// tree is completely collapsed here
+if|if
+condition|(
+name|expandedNodes
+operator|!=
+literal|null
+condition|)
+block|{
+while|while
+condition|(
+name|expandedNodes
+operator|.
+name|hasMoreElements
+argument_list|()
+condition|)
+name|groupsTree
+operator|.
+name|expandPath
+argument_list|(
+operator|(
+name|TreePath
+operator|)
+name|expandedNodes
+operator|.
+name|nextElement
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|groupsTree
 operator|.
 name|revalidate
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * @param path      *            The path to select.      */
-DECL|method|revalidateGroups (TreePath path)
+DECL|method|revalidateGroups ()
 specifier|public
 name|void
 name|revalidateGroups
-parameter_list|(
-name|TreePath
-name|path
-parameter_list|)
+parameter_list|()
 block|{
 name|revalidateGroups
 argument_list|(
-operator|new
-name|TreePath
-index|[]
-block|{
-name|path
-block|}
+name|groupsTree
+operator|.
+name|getSelectionPaths
+argument_list|()
+argument_list|,
+name|getExpandedPaths
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|//    public void revalidateGroups() {
+comment|//        groupsTreeModel.reload();
+comment|//        groupsTree.clearSelection();
+comment|//        groupsTree.revalidate();
+comment|//    }
+comment|//    /**
+comment|//     * @param paths
+comment|//     *            The paths to select.
+comment|//     */
+comment|//    public void revalidateGroups(TreePath[] paths) {
+comment|//        groupsTreeModel.reload();
+comment|//        groupsTree.setSelectionPaths(paths);
+comment|//        groupsTree.revalidate();
+comment|//    }
+comment|//    /**
+comment|//     * @param path
+comment|//     *            The path to select.
+comment|//     */
+comment|//    public void revalidateGroups(TreePath path) {
+comment|//        revalidateGroups(new TreePath[] { path });
+comment|//    }
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2893,6 +2938,9 @@ argument_list|(
 name|groupsTree
 operator|.
 name|getSelectionPaths
+argument_list|()
+argument_list|,
+name|getExpandedPaths
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3238,14 +3286,13 @@ argument_list|)
 expr_stmt|;
 name|revalidateGroups
 argument_list|(
-operator|new
-name|TreePath
-argument_list|(
-name|node
+name|groupsTree
 operator|.
-name|getPath
+name|getSelectionPaths
 argument_list|()
-argument_list|)
+argument_list|,
+name|getExpandedPaths
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Store undo information.
@@ -3421,7 +3468,29 @@ name|ADD_NODE
 argument_list|)
 decl_stmt|;
 name|revalidateGroups
+argument_list|(
+name|groupsTree
+operator|.
+name|getSelectionPaths
 argument_list|()
+argument_list|,
+name|getExpandedPaths
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|groupsTree
+operator|.
+name|expandPath
+argument_list|(
+operator|new
+name|TreePath
+argument_list|(
+name|node
+operator|.
+name|getPath
+argument_list|()
+argument_list|)
+argument_list|)
 expr_stmt|;
 comment|// Store undo information.
 name|panel
@@ -3568,7 +3637,29 @@ name|ADD_NODE
 argument_list|)
 decl_stmt|;
 name|revalidateGroups
+argument_list|(
+name|groupsTree
+operator|.
+name|getSelectionPaths
 argument_list|()
+argument_list|,
+name|getExpandedPaths
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|groupsTree
+operator|.
+name|expandPath
+argument_list|(
+operator|new
+name|TreePath
+argument_list|(
+name|node
+operator|.
+name|getPath
+argument_list|()
+argument_list|)
+argument_list|)
 expr_stmt|;
 comment|// Store undo information.
 name|panel
@@ -3721,7 +3812,15 @@ name|removeFromParent
 argument_list|()
 expr_stmt|;
 name|revalidateGroups
+argument_list|(
+name|groupsTree
+operator|.
+name|getSelectionPaths
 argument_list|()
+argument_list|,
+name|getExpandedPaths
+argument_list|()
+argument_list|)
 expr_stmt|;
 comment|// Store undo information.
 name|panel
@@ -3929,7 +4028,15 @@ name|childIndex
 argument_list|)
 expr_stmt|;
 name|revalidateGroups
+argument_list|(
+name|groupsTree
+operator|.
+name|getSelectionPaths
 argument_list|()
+argument_list|,
+name|getExpandedPaths
+argument_list|()
+argument_list|)
 expr_stmt|;
 comment|// Store undo information.
 name|panel
@@ -4260,16 +4367,16 @@ literal|false
 return|;
 comment|// not possible
 block|}
+comment|// JZTODO really?:
 name|revalidateGroups
 argument_list|(
-operator|new
-name|TreePath
-argument_list|(
-name|node
+name|groupsTree
 operator|.
-name|getPath
+name|getSelectionPaths
 argument_list|()
-argument_list|)
+argument_list|,
+name|getExpandedPaths
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|panel
@@ -4382,16 +4489,16 @@ literal|false
 return|;
 comment|// not possible
 block|}
+comment|// JZTODO really?:
 name|revalidateGroups
 argument_list|(
-operator|new
-name|TreePath
-argument_list|(
-name|node
+name|groupsTree
 operator|.
-name|getPath
+name|getSelectionPaths
 argument_list|()
-argument_list|)
+argument_list|,
+name|getExpandedPaths
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|panel
@@ -4504,16 +4611,16 @@ literal|false
 return|;
 comment|// not possible
 block|}
+comment|// JZTODO really?:
 name|revalidateGroups
 argument_list|(
-operator|new
-name|TreePath
-argument_list|(
-name|node
+name|groupsTree
 operator|.
-name|getPath
+name|getSelectionPaths
 argument_list|()
-argument_list|)
+argument_list|,
+name|getExpandedPaths
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|panel
@@ -4626,16 +4733,16 @@ literal|false
 return|;
 comment|// not possible
 block|}
+comment|// JZTODO really?:
 name|revalidateGroups
 argument_list|(
-operator|new
-name|TreePath
-argument_list|(
-name|node
+name|groupsTree
 operator|.
-name|getPath
+name|getSelectionPaths
 argument_list|()
-argument_list|)
+argument_list|,
+name|getExpandedPaths
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|panel
@@ -4698,6 +4805,28 @@ parameter_list|()
 block|{
 return|return
 name|groupsRoot
+return|;
+block|}
+DECL|method|getExpandedPaths ()
+specifier|private
+name|Enumeration
+name|getExpandedPaths
+parameter_list|()
+block|{
+return|return
+name|groupsTree
+operator|.
+name|getExpandedDescendants
+argument_list|(
+operator|new
+name|TreePath
+argument_list|(
+name|groupsRoot
+operator|.
+name|getPath
+argument_list|()
+argument_list|)
+argument_list|)
 return|;
 block|}
 block|}
