@@ -58,6 +58,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|labelPattern
+operator|.
+name|LabelPatternUtil
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -2785,17 +2799,21 @@ operator|.
 name|KEY_FIELD
 argument_list|)
 expr_stmt|;
+comment|//bes = frame.labelMaker.applyRule(bes, database) ;
 name|bes
 operator|=
-name|frame
+name|LabelPatternUtil
 operator|.
-name|labelMaker
-operator|.
-name|applyRule
+name|makeLabel
 argument_list|(
-name|bes
+name|prefs
+operator|.
+name|getKeyPattern
+argument_list|()
 argument_list|,
 name|database
+argument_list|,
+name|bes
 argument_list|)
 expr_stmt|;
 name|ce

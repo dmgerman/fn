@@ -307,7 +307,7 @@ name|_alist
 return|;
 block|}
 comment|/** 	 * Generates a BibTeX label according to the pattern for a given entry type, and 	 * returns the<code>Bibtexentry</code> with the unique label. 	 * @param table a<code>LabelPattern</code> 	 * @param database a<code>BibtexDatabase</code> 	 * @param entryId a<code>String</code> 	 * @return modified Bibtexentry 	 */
-DECL|method|makeLabel (LabelPattern table, BibtexDatabase database, String entryId)
+DECL|method|makeLabel (LabelPattern table, BibtexDatabase database, BibtexEntry _entry)
 specifier|public
 specifier|static
 name|BibtexEntry
@@ -319,24 +319,15 @@ parameter_list|,
 name|BibtexDatabase
 name|database
 parameter_list|,
-name|String
-name|entryId
+name|BibtexEntry
+name|_entry
 parameter_list|)
 block|{
 name|_db
 operator|=
 name|database
 expr_stmt|;
-name|BibtexEntry
-name|_entry
-init|=
-name|_db
-operator|.
-name|getEntryById
-argument_list|(
-name|entryId
-argument_list|)
-decl_stmt|;
+comment|//BibtexEntry _entry = _db.getEntryById(entryId);
 name|ArrayList
 name|_al
 decl_stmt|;
@@ -360,12 +351,13 @@ name|_type
 init|=
 name|_entry
 operator|.
-name|getField
-argument_list|(
-literal|"type"
-argument_list|)
+name|getType
+argument_list|()
 operator|.
-name|toString
+name|getName
+argument_list|()
+operator|.
+name|toLowerCase
 argument_list|()
 decl_stmt|;
 comment|// Get the arrayList corrosponding to the type
