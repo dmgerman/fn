@@ -1360,7 +1360,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Unknown export type"
+literal|"Unknown export format"
 argument_list|)
 operator|+
 literal|": "

@@ -236,6 +236,18 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|event
+operator|.
+name|*
+import|;
+end_import
+
 begin_comment
 comment|/**  * The main window of the application.  */
 end_comment
@@ -1570,6 +1582,41 @@ argument_list|(
 literal|"posY"
 argument_list|)
 argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// The following state listener makes sure focus is registered with the correct database
+comment|// when the user switches tabs. Without this, cut/paste/copy operations would some times
+comment|// occur in the wrong tab.
+name|tabbedPane
+operator|.
+name|addChangeListener
+argument_list|(
+operator|new
+name|ChangeListener
+argument_list|()
+block|{
+specifier|public
+name|void
+name|stateChanged
+parameter_list|(
+name|ChangeEvent
+name|e
+parameter_list|)
+block|{
+name|Globals
+operator|.
+name|focusListener
+operator|.
+name|setFocused
+argument_list|(
+name|basePanel
+argument_list|()
+operator|.
+name|entryTable
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 argument_list|)
 expr_stmt|;
 block|}

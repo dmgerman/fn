@@ -2811,6 +2811,7 @@ argument_list|,
 literal|"&#x00C3;"
 argument_list|)
 expr_stmt|;
+comment|//XML_CHARS.put("\\u00E1", "&#x00E1;");
 block|}
 block|}
 end_class

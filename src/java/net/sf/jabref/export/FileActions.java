@@ -1218,7 +1218,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|PrintStream
+comment|//PrintStream ps=null;
+name|OutputStreamWriter
 name|ps
 init|=
 literal|null
@@ -1245,16 +1246,20 @@ decl_stmt|;
 name|InputStreamReader
 name|reader
 decl_stmt|;
+comment|// Trying to change the encoding:
+comment|//ps=new PrintStream(new FileOutputStream(outFile));
 name|ps
 operator|=
 operator|new
-name|PrintStream
+name|OutputStreamWriter
 argument_list|(
 operator|new
 name|FileOutputStream
 argument_list|(
 name|outFile
 argument_list|)
+argument_list|,
+literal|"iso-8859-1"
 argument_list|)
 expr_stmt|;
 comment|// Print header
@@ -1606,7 +1611,7 @@ comment|//Layout layout = layoutHelper.getLayoutFromText();
 comment|//System.out.println(layout.doLayout(entry));
 name|ps
 operator|.
-name|println
+name|write
 argument_list|(
 name|layout
 operator|.
@@ -1685,6 +1690,16 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+name|ps
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
+name|ps
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(

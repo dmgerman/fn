@@ -123,6 +123,20 @@ operator|)
 name|focused
 return|;
 block|}
+DECL|method|setFocused (Component c)
+specifier|public
+name|void
+name|setFocused
+parameter_list|(
+name|Component
+name|c
+parameter_list|)
+block|{
+name|focused
+operator|=
+name|c
+expr_stmt|;
+block|}
 block|}
 end_class
 

@@ -203,25 +203,8 @@ argument_list|(
 name|fieldText
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|pattern
-operator|.
-name|matcher
-argument_list|(
-name|fieldText
-argument_list|)
-operator|.
-name|matches
-argument_list|()
-condition|)
-return|return
-name|restFormat
-argument_list|(
-name|fieldText
-argument_list|)
-return|;
+comment|//if (!pattern.matcher(fieldText).matches())
+comment|//    return restFormat(fieldText);
 for|for
 control|(
 name|Iterator
