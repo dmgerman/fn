@@ -231,6 +231,7 @@ argument_list|()
 decl_stmt|;
 comment|//pan.setBorder(BorderFactory.createMatteBorder(1,1,1,1, Color.red));
 comment|//mainPanel.setBorder(BorderFactory.createMatteBorder(1,1,1,1, Color.yellow));
+comment|//setBorder(BorderFactory.createMatteBorder(1,1,1,1, Color.green));
 comment|//pan.setBackground(GUIGlobals.lightGray);
 name|super
 operator|.

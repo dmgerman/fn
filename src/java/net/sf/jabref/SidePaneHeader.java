@@ -266,6 +266,8 @@ operator|.
 name|top
 argument_list|,
 name|width
+operator|-
+literal|1
 argument_list|,
 name|height
 argument_list|)
@@ -305,32 +307,8 @@ argument_list|(
 name|gbl
 argument_list|)
 expr_stmt|;
-name|setPreferredSize
-argument_list|(
-operator|new
-name|Dimension
-argument_list|(
-name|GUIGlobals
-operator|.
-name|SPLIT_PANE_DIVIDER_LOCATION
-argument_list|,
-literal|18
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|setMinimumSize
-argument_list|(
-operator|new
-name|Dimension
-argument_list|(
-name|GUIGlobals
-operator|.
-name|SPLIT_PANE_DIVIDER_LOCATION
-argument_list|,
-literal|18
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|//setPreferredSize(new Dimension(GUIGlobals.SPLIT_PANE_DIVIDER_LOCATION, 18));
+comment|//setMinimumSize(new Dimension(GUIGlobals.SPLIT_PANE_DIVIDER_LOCATION, 18));
 comment|//imageIcon = new JLabel(new ImageIcon(image));
 name|nameLabel
 operator|=
@@ -437,32 +415,7 @@ name|this
 argument_list|)
 expr_stmt|;
 comment|//setBorder(BorderFactory.createEtchedBorder());
-name|setBorder
-argument_list|(
-name|BorderFactory
-operator|.
-name|createMatteBorder
-argument_list|(
-literal|1
-argument_list|,
-literal|1
-argument_list|,
-literal|1
-argument_list|,
-literal|2
-argument_list|,
-operator|new
-name|Color
-argument_list|(
-literal|150
-argument_list|,
-literal|150
-argument_list|,
-literal|150
-argument_list|)
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|//setBorder(BorderFactory.createMatteBorder(1,1,1,2,new Color(150,150,150)));
 comment|//add(imageIcon, BorderLayout.WEST);
 name|con
 operator|.

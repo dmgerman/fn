@@ -319,7 +319,7 @@ argument_list|(
 name|prefs
 argument_list|)
 expr_stmt|;
-comment|//setBorder(BorderFactory.createEtchedBorder());
+comment|//setBorder(BorderFactory.createMatteBorder(1,1,1,1,Color.magenta));
 name|searchReq
 operator|=
 operator|new
@@ -981,7 +981,7 @@ name|con
 operator|.
 name|weightx
 operator|=
-literal|0
+literal|1
 expr_stmt|;
 name|con
 operator|.
