@@ -899,6 +899,10 @@ name|selectionListenerOn
 operator|=
 literal|false
 expr_stmt|;
+comment|// Introducing a try-catch here to maybe track down the preview update bug
+comment|// that occurs sometimes (20050405 M. Alver):
+try|try
+block|{
 name|super
 operator|.
 name|setRowSelectionInterval
@@ -912,6 +916,37 @@ name|selectionListenerOn
 operator|=
 name|oldState
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|ex
+parameter_list|)
+block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Error occured. Trying to recover..."
+argument_list|)
+expr_stmt|;
+comment|// Maybe try to remap the entry table:
+name|tableModel
+operator|.
+name|remap
+argument_list|()
+expr_stmt|;
+name|clearSelection
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 DECL|method|addRowSelectionIntervalQuietly (int row1, int row2)
 specifier|public
