@@ -130,15 +130,8 @@ DECL|field|SHORTCUT_MASK
 specifier|static
 name|int
 name|SHORTCUT_MASK
-init|=
-name|Toolkit
-operator|.
-name|getDefaultToolkit
-argument_list|()
-operator|.
-name|getMenuShortcutKeyMask
-argument_list|()
 decl_stmt|;
+comment|// = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
 DECL|field|resourcePrefix
 specifier|private
 specifier|static
@@ -1294,6 +1287,25 @@ argument_list|()
 decl_stmt|;
 static|static
 block|{
+try|try
+block|{
+name|SHORTCUT_MASK
+operator|=
+name|Toolkit
+operator|.
+name|getDefaultToolkit
+argument_list|()
+operator|.
+name|getMenuShortcutKeyMask
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|t
+parameter_list|)
+block|{      }
 name|HTML_CHARS
 operator|.
 name|put

@@ -1656,14 +1656,7 @@ argument_list|(
 name|typeName
 argument_list|)
 expr_stmt|;
-name|bp
-operator|.
-name|rcm
-operator|.
-name|populateTypeMenu
-argument_list|()
-expr_stmt|;
-comment|// Update type menu for change type.
+comment|//bp.rcm.populateTypeMenu(); // Update type menu for change type.
 name|base
 operator|=
 name|bp
