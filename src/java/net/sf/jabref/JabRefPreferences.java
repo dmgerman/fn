@@ -197,7 +197,7 @@ name|put
 argument_list|(
 literal|"language"
 argument_list|,
-literal|"no"
+literal|"en"
 argument_list|)
 expr_stmt|;
 name|defaults
