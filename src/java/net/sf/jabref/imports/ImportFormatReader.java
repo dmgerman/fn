@@ -500,7 +500,7 @@ name|old
 init|=
 name|Globals
 operator|.
-name|nameCache
+name|nameCache_lastFirst
 operator|.
 name|get
 argument_list|(
@@ -767,7 +767,7 @@ decl_stmt|;
 comment|// Add the fixed name string to the cache.
 name|Globals
 operator|.
-name|nameCache
+name|nameCache_lastFirst
 operator|.
 name|put
 argument_list|(
