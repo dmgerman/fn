@@ -917,8 +917,10 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Delimit_1"
+literal|"Delimit fields with semicolon, ex."
 argument_list|)
+operator|+
+literal|": author;title;journal"
 argument_list|)
 expr_stmt|;
 name|types_cb

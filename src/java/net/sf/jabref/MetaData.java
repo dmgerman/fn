@@ -123,6 +123,9 @@ name|HashMap
 name|inData
 parameter_list|)
 block|{
+name|this
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|Iterator
@@ -238,7 +241,23 @@ DECL|method|MetaData ()
 specifier|public
 name|MetaData
 parameter_list|()
-block|{	     }
+block|{
+name|metaData
+operator|.
+name|put
+argument_list|(
+name|Globals
+operator|.
+name|SELECTOR_META_PREFIX
+operator|+
+literal|"keywords"
+argument_list|,
+operator|new
+name|Vector
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|iterator ()
 specifier|public
 name|Iterator

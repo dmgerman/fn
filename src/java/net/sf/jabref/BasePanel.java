@@ -225,8 +225,13 @@ decl_stmt|;
 comment|//ExampleFileFilter fileFilter;
 comment|// File filter for .bib files.
 DECL|field|baseChanged
+DECL|field|nonUndoableChange
 name|boolean
 name|baseChanged
+init|=
+literal|false
+decl_stmt|,
+name|nonUndoableChange
 init|=
 literal|false
 decl_stmt|;
@@ -315,6 +320,14 @@ comment|// MetaData parses, keeps and writes meta data.
 DECL|field|metaData
 name|MetaData
 name|metaData
+decl_stmt|;
+DECL|field|fieldExtras
+name|HashMap
+name|fieldExtras
+init|=
+operator|new
+name|HashMap
+argument_list|()
 decl_stmt|;
 comment|//## keep track of all keys for duplicate key warning and unique key generation
 DECL|field|allKeys
@@ -641,6 +654,10 @@ expr_stmt|;
 comment|// (Only) after a successful save the following
 comment|// statement marks that the base is unchanged
 comment|// since last save:
+name|nonUndoableChange
+operator|=
+literal|false
+expr_stmt|;
 name|baseChanged
 operator|=
 literal|false
@@ -5220,6 +5237,20 @@ literal|" "
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|markNonUndoableBaseChanged ()
+specifier|public
+name|void
+name|markNonUndoableBaseChanged
+parameter_list|()
+block|{
+name|nonUndoableChange
+operator|=
+literal|true
+expr_stmt|;
+name|markBaseChanged
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|markChangedOrUnChanged ()
 specifier|public
 specifier|synchronized
@@ -5248,6 +5279,9 @@ elseif|else
 if|if
 condition|(
 name|baseChanged
+operator|&&
+operator|!
+name|nonUndoableChange
 condition|)
 block|{
 name|baseChanged

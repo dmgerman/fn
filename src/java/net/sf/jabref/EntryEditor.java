@@ -688,7 +688,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Bibtex source"
+literal|"BibTeX source"
 argument_list|)
 argument_list|,
 operator|new
@@ -705,7 +705,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Show/edit bibtex source"
+literal|"Show/edit BibTeX source"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2403,22 +2403,6 @@ block|}
 elseif|else
 if|if
 condition|(
-operator|(
-operator|(
-name|s
-operator|!=
-literal|null
-operator|)
-operator|&&
-name|s
-operator|.
-name|equals
-argument_list|(
-literal|"selector"
-argument_list|)
-operator|)
-operator|||
-operator|(
 name|panel
 operator|.
 name|metaData
@@ -2436,7 +2420,6 @@ argument_list|()
 argument_list|)
 operator|!=
 literal|null
-operator|)
 condition|)
 block|{
 name|FieldContentSelector
@@ -5850,7 +5833,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Generate Bibtexkey"
+literal|"Generate BibTeX key"
 argument_list|)
 argument_list|,
 operator|new
@@ -5875,7 +5858,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Generate Bibtexkey"
+literal|"Generate BibTeX key"
 argument_list|)
 argument_list|)
 expr_stmt|;

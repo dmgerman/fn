@@ -255,7 +255,12 @@ name|ok
 operator|.
 name|setText
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Ok"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|ok
@@ -273,7 +278,12 @@ name|cancel
 operator|.
 name|setText
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Cancel"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|cancel
@@ -304,8 +314,10 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Delimit_2"
+literal|"Delimit fields with semicolon, ex."
 argument_list|)
+operator|+
+literal|": url;pdf;note"
 argument_list|)
 expr_stmt|;
 name|jPanel3
@@ -336,7 +348,12 @@ name|jLabel2
 operator|.
 name|setText
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"General fields"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|fieldsArea
@@ -366,7 +383,12 @@ name|revert
 operator|.
 name|setText
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Default"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|revert

@@ -863,6 +863,7 @@ literal|"Push To LyX"
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|/*setupSelector = new GeneralAction("setupSelector", "", "", 					  GUIGlobals.pasteIconFile, 					  prefs.getKey(")),*/
 comment|// The menus for importing/appending other formats
 DECL|field|importMenu
 name|JMenu
@@ -7319,6 +7320,26 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Loading session..."
+argument_list|)
+argument_list|)
+expr_stmt|;
+operator|(
+operator|new
+name|Thread
+argument_list|()
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
 name|HashSet
 name|currentFiles
 init|=
@@ -7468,6 +7489,13 @@ operator|-
 name|i0
 operator|)
 argument_list|)
+expr_stmt|;
+block|}
+block|}
+operator|)
+operator|.
+name|start
+argument_list|()
 expr_stmt|;
 block|}
 block|}
