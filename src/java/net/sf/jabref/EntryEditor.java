@@ -1819,6 +1819,8 @@ name|String
 index|[]
 block|{
 literal|"abstract"
+block|,
+literal|"annote"
 block|}
 decl_stmt|;
 name|int
@@ -1852,7 +1854,9 @@ name|length
 expr_stmt|;
 name|amax
 operator|=
-literal|1
+name|absFields
+operator|.
+name|length
 expr_stmt|;
 name|iter
 operator|=

@@ -2742,6 +2742,15 @@ name|fieldWeight
 operator|.
 name|put
 argument_list|(
+literal|"annote"
+argument_list|,
+name|MEDIUM_W
+argument_list|)
+expr_stmt|;
+name|fieldWeight
+operator|.
+name|put
+argument_list|(
 literal|"citeseercitationcount"
 argument_list|,
 name|SMALL_W
