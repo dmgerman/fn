@@ -101,7 +101,7 @@ name|ImageIcon
 argument_list|(
 name|GUIGlobals
 operator|.
-name|close2IconFile
+name|closeIconFile
 argument_list|)
 argument_list|)
 decl_stmt|;
