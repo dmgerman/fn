@@ -137,12 +137,20 @@ init|=
 literal|false
 decl_stmt|;
 comment|//RenderingHints renderingHints;
-DECL|method|EntryTable (EntryTableModel tm_, JabRefPreferences prefs_)
+DECL|field|panel
+specifier|private
+name|BasePanel
+name|panel
+decl_stmt|;
+DECL|method|EntryTable (EntryTableModel tm_, BasePanel panel_, JabRefPreferences prefs_)
 specifier|public
 name|EntryTable
 parameter_list|(
 name|EntryTableModel
 name|tm_
+parameter_list|,
+name|BasePanel
+name|panel_
 parameter_list|,
 name|JabRefPreferences
 name|prefs_
@@ -158,6 +166,10 @@ operator|.
 name|tableModel
 operator|=
 name|tm_
+expr_stmt|;
+name|panel
+operator|=
+name|panel_
 expr_stmt|;
 comment|// Add the global focus listener, so a menu item can see if this table was focused when
 comment|// an action was called.
@@ -416,12 +428,18 @@ argument_list|()
 operator|)
 condition|)
 block|{
-if|if
-condition|(
 name|rightClickMenu
-operator|!=
-literal|null
-condition|)
+operator|=
+operator|new
+name|RightClickMenu
+argument_list|(
+name|panel
+argument_list|,
+name|panel
+operator|.
+name|metaData
+argument_list|)
+expr_stmt|;
 name|rightClickMenu
 operator|.
 name|show
@@ -687,6 +705,25 @@ return|return
 name|defRenderer
 return|;
 comment|// This should not occur.
+block|}
+comment|// For testing MARKED feature:
+if|if
+condition|(
+name|tableModel
+operator|.
+name|hasField
+argument_list|(
+name|row
+argument_list|,
+name|Globals
+operator|.
+name|MARKED
+argument_list|)
+condition|)
+block|{
+return|return
+name|markedRenderer
+return|;
 block|}
 if|if
 condition|(
@@ -1057,6 +1094,17 @@ argument_list|(
 name|GUIGlobals
 operator|.
 name|maybeIncompleteEntryBackground
+argument_list|)
+decl_stmt|,
+DECL|field|markedRenderer
+name|markedRenderer
+init|=
+operator|new
+name|Renderer
+argument_list|(
+name|GUIGlobals
+operator|.
+name|markedEntryBackground
 argument_list|)
 decl_stmt|;
 DECL|class|Renderer

@@ -412,11 +412,15 @@ name|MAC
 argument_list|)
 condition|)
 block|{
-name|Util
+comment|// This property is set to make the Mac OSX Java VM move the menu bar to the top
+comment|// of the screen, where Mac users expect it to be.
+name|System
 operator|.
-name|pr
+name|setProperty
 argument_list|(
-literal|"Disabling Kunststoff look& feel on Mac OS X."
+literal|"com.apple.laf.useScreenMenuBar"
+argument_list|,
+literal|"true"
 argument_list|)
 expr_stmt|;
 block|}

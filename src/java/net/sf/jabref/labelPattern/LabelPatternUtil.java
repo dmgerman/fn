@@ -916,6 +916,8 @@ name|skipWords
 index|[
 name|_i
 index|]
+operator|+
+literal|" "
 argument_list|)
 condition|)
 block|{

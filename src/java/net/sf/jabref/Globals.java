@@ -371,6 +371,11 @@ name|GROUPSEARCH
 init|=
 literal|"groupsearch"
 decl_stmt|,
+DECL|field|MARKED
+name|MARKED
+init|=
+literal|"markedentry"
+decl_stmt|,
 comment|// Using this when I have no database open when I read
 comment|// non bibtex file formats (used byte ImportFormatReader.java
 DECL|field|DEFAULT_BIBTEXENTRY_ID
