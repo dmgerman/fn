@@ -155,7 +155,7 @@ name|JTextArea
 argument_list|(
 literal|""
 argument_list|,
-literal|1
+literal|5
 argument_list|,
 name|width
 argument_list|)
@@ -169,7 +169,7 @@ name|JTextArea
 argument_list|(
 literal|""
 argument_list|,
-literal|1
+literal|5
 argument_list|,
 name|width
 argument_list|)
@@ -277,13 +277,7 @@ expr_stmt|;
 name|setTypeSelection
 argument_list|()
 expr_stmt|;
-name|setSize
-argument_list|(
-literal|440
-argument_list|,
-literal|400
-argument_list|)
-expr_stmt|;
+comment|//setSize(440,400);
 name|initialize
 argument_list|()
 expr_stmt|;
@@ -836,6 +830,9 @@ expr_stmt|;
 block|}
 block|}
 argument_list|)
+expr_stmt|;
+name|pack
+argument_list|()
 expr_stmt|;
 name|name
 operator|.

@@ -1067,7 +1067,7 @@ block|{
 if|if
 condition|(
 name|col
-operator|<=
+operator|<
 name|PADLEFT
 condition|)
 return|return
@@ -1077,13 +1077,31 @@ comment|// getColumnClass will throw a NullPointerException if there is no
 comment|// entry in FieldTypes.GLOBAL_FIELD_TYPES for the column.
 try|try
 block|{
-name|getColumnClass
+if|if
+condition|(
+operator|!
+name|getColumnName
 argument_list|(
 name|col
 argument_list|)
-expr_stmt|;
+operator|.
+name|toLowerCase
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|GUIGlobals
+operator|.
+name|TYPE_HEADER
+argument_list|)
+condition|)
+comment|//	    getColumnClass(col);
 return|return
 literal|true
+return|;
+else|else
+return|return
+literal|false
 return|;
 block|}
 catch|catch
