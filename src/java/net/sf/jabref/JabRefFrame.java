@@ -1424,6 +1424,17 @@ argument_list|,
 literal|"Find duplicates"
 argument_list|)
 decl_stmt|,
+DECL|field|strictDupliCheck
+name|strictDupliCheck
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"strictDupliCheck"
+argument_list|,
+literal|"Find and remove exact duplicates"
+argument_list|)
+decl_stmt|,
 DECL|field|plainTextImport
 name|plainTextImport
 init|=
@@ -4441,6 +4452,13 @@ argument_list|)
 expr_stmt|;
 name|tools
 operator|.
+name|add
+argument_list|(
+name|strictDupliCheck
+argument_list|)
+expr_stmt|;
+name|tools
+operator|.
 name|addSeparator
 argument_list|()
 expr_stmt|;
@@ -5516,6 +5534,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|strictDupliCheck
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|int
@@ -5840,6 +5865,13 @@ literal|true
 argument_list|)
 expr_stmt|;
 name|dupliCheck
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|strictDupliCheck
 operator|.
 name|setEnabled
 argument_list|(

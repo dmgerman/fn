@@ -272,6 +272,19 @@ argument_list|,
 name|bes
 argument_list|)
 expr_stmt|;
+comment|// When using float search, it messes up the sort order if we retain
+comment|// graded search scores, because the table is sorted by the score.
+comment|// To prevent this, we let the search score saturate at 1.
+if|if
+condition|(
+name|searchScore
+operator|>
+literal|0
+condition|)
+name|searchScore
+operator|=
+literal|1
+expr_stmt|;
 comment|// 2.1 set score to search field
 name|bes
 operator|.
