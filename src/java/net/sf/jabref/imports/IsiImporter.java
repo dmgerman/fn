@@ -505,6 +505,9 @@ operator|<=
 literal|2
 condition|)
 continue|continue;
+comment|// this is Java 1.5.0 code:
+comment|// fields[j] = fields[j].replace(" - ", "");
+comment|// TODO: switch to 1.5.0 some day; until then, use 1.4.2 code:
 name|fields
 index|[
 name|j
@@ -515,7 +518,7 @@ index|[
 name|j
 index|]
 operator|.
-name|replace
+name|replaceAll
 argument_list|(
 literal|" - "
 argument_list|,
