@@ -1268,7 +1268,7 @@ if|if
 condition|(
 name|panel
 operator|.
-name|showingGroup
+name|sortingByGroup
 condition|)
 block|{
 comment|// Group search has the highest priority if active.
@@ -1297,7 +1297,7 @@ if|if
 condition|(
 name|panel
 operator|.
-name|showingSearchResults
+name|sortingBySearchResults
 condition|)
 block|{
 comment|// Normal search has priority over regular sorting.

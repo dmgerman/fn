@@ -858,27 +858,7 @@ return|return
 name|sp
 return|;
 block|}
-DECL|method|setShowingSearchResults (boolean search, boolean group)
-specifier|public
-name|void
-name|setShowingSearchResults
-parameter_list|(
-name|boolean
-name|search
-parameter_list|,
-name|boolean
-name|group
-parameter_list|)
-block|{
-name|showingSearchResults
-operator|=
-name|search
-expr_stmt|;
-name|showingGroup
-operator|=
-name|group
-expr_stmt|;
-block|}
+comment|/*public void setShowingSearchResults(boolean search, 					boolean group) { 	showingSearchResults = search; 	showingGroup = group;     } */
 DECL|method|setRightClickMenu (JPopupMenu rcm)
 specifier|public
 name|void
@@ -1361,7 +1341,9 @@ block|}
 if|if
 condition|(
 operator|!
-name|showingSearchResults
+name|panel
+operator|.
+name|coloringBySearchResults
 operator|||
 name|tableModel
 operator|.
@@ -1380,7 +1362,9 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|showingGroup
+name|panel
+operator|.
+name|coloringByGroup
 operator|||
 name|tableModel
 operator|.

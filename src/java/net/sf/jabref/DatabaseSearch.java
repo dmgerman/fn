@@ -89,10 +89,16 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|reorder
+DECL|field|select
+DECL|field|grayOut
 name|boolean
 name|reorder
+decl_stmt|,
+name|select
+decl_stmt|,
+name|grayOut
 decl_stmt|;
-DECL|method|DatabaseSearch (Hashtable searchOptions,SearchRuleSet searchRules, BasePanel panel, String searchValueField, boolean reorder)
+DECL|method|DatabaseSearch (Hashtable searchOptions,SearchRuleSet searchRules, BasePanel panel, String searchValueField, boolean reorder, boolean grayOut, boolean select)
 specifier|public
 name|DatabaseSearch
 parameter_list|(
@@ -110,6 +116,12 @@ name|searchValueField
 parameter_list|,
 name|boolean
 name|reorder
+parameter_list|,
+name|boolean
+name|grayOut
+parameter_list|,
+name|boolean
+name|select
 parameter_list|)
 block|{
 name|this
@@ -151,6 +163,18 @@ operator|.
 name|reorder
 operator|=
 name|reorder
+expr_stmt|;
+name|this
+operator|.
+name|select
+operator|=
+name|select
+expr_stmt|;
+name|this
+operator|.
+name|grayOut
+operator|=
+name|grayOut
 expr_stmt|;
 block|}
 DECL|method|run ()
@@ -273,25 +297,46 @@ name|hits
 operator|++
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|reorder
-condition|)
-comment|// Float search.
+name|panel
+operator|.
+name|entryTable
+operator|.
+name|invalidate
+argument_list|()
+expr_stmt|;
 name|panel
 operator|.
 name|showSearchResults
 argument_list|(
 name|searchValueField
+argument_list|,
+name|reorder
+argument_list|,
+name|grayOut
 argument_list|)
 expr_stmt|;
-else|else
-comment|// Highlight search.
+if|if
+condition|(
+name|select
+condition|)
+block|{
+comment|// Select matches.
 name|panel
 operator|.
-name|selectSearchResults
-argument_list|()
+name|selectResults
+argument_list|(
+name|searchValueField
+argument_list|)
 expr_stmt|;
+operator|new
+name|FocusRequester
+argument_list|(
+name|panel
+operator|.
+name|entryTable
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
