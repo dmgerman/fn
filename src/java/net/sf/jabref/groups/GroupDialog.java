@@ -489,6 +489,12 @@ specifier|private
 name|AbstractGroup
 name|m_resultingGroup
 decl_stmt|;
+DECL|field|m_editedGroup
+specifier|private
+specifier|final
+name|AbstractGroup
+name|m_editedGroup
+decl_stmt|;
 comment|/**      * Shows a group add/edit dialog.      *       * @param jabrefFrame      *            The parent frame.      * @param defaultField      *            The default grouping field.      * @param editedGroup      *            The group being edited, or null if a new group is to be      *            created.      */
 DECL|method|GroupDialog (JabRefFrame jabrefFrame, BasePanel basePanel, AbstractGroup editedGroup)
 specifier|public
@@ -525,6 +531,10 @@ expr_stmt|;
 name|m_parent
 operator|=
 name|jabrefFrame
+expr_stmt|;
+name|m_editedGroup
+operator|=
+name|editedGroup
 expr_stmt|;
 comment|// set default values (overwritten if editedGroup != null)
 name|m_searchField
@@ -1168,6 +1178,37 @@ block|{
 case|case
 name|INDEX_EXPLICITGROUP
 case|:
+if|if
+condition|(
+name|m_editedGroup
+operator|instanceof
+name|ExplicitGroup
+condition|)
+block|{
+comment|// keep assignments from possible previous ExplicitGroup
+name|m_resultingGroup
+operator|=
+name|m_editedGroup
+operator|.
+name|deepCopy
+argument_list|()
+expr_stmt|;
+name|m_resultingGroup
+operator|.
+name|setName
+argument_list|(
+name|m_name
+operator|.
+name|getText
+argument_list|()
+operator|.
+name|trim
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|m_resultingGroup
 operator|=
 operator|new
@@ -1187,6 +1228,7 @@ name|database
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 break|break;
 case|case
 name|INDEX_KEYWORDGROUP
