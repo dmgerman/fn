@@ -81,7 +81,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A font chooser widget.  * @author Slava Pestov (jEdit), Sylvain Reynal  * @since jpicedt 1.3.2.beta-9  * @version $Id$  *<p>  * $Log$  * Revision 1.4  2004/02/17 09:14:02  mortenalver  * Similar update in FontSelector preview.  *  * Revision 1.3  2004/02/17 07:35:22  mortenalver  * Experimenting with antialiasing in table.  *  * Revision 1.2  2003/12/14 23:48:02  mortenalver  * .  *  * Revision 1.1  2003/11/07 22:18:07  nbatada  * modified it slightly from initial version  *  * Revision 1.1  2003/11/07 22:14:34  nbatada  * modified it from initial version  *  * Revision 1.4  2003/11/02 01:51:06  reynal  * Cleaned-up i18n labels  *  * Revision 1.3  2003/08/31 22:05:40  reynal  *  * Enhanced class interface for some widgets.  *   */
+comment|/**  * A font chooser widget.  * @author Slava Pestov (jEdit), Sylvain Reynal  * @since jpicedt 1.3.2.beta-9  * @version $Id$  *<p>  * $Log$  * Revision 1.5  2004/02/24 23:30:18  mortenalver  * Added more translations, and started work on a Replace string feature  *  * Revision 1.4  2004/02/17 09:14:02  mortenalver  * Similar update in FontSelector preview.  *  * Revision 1.3  2004/02/17 07:35:22  mortenalver  * Experimenting with antialiasing in table.  *  * Revision 1.2  2003/12/14 23:48:02  mortenalver  * .  *  * Revision 1.1  2003/11/07 22:18:07  nbatada  * modified it slightly from initial version  *  * Revision 1.1  2003/11/07 22:14:34  nbatada  * modified it from initial version  *  * Revision 1.4  2003/11/02 01:51:06  reynal  * Cleaned-up i18n labels  *  * Revision 1.3  2003/08/31 22:05:40  reynal  *  * Enhanced class interface for some widgets.  *   */
 end_comment
 
 begin_class
@@ -408,7 +408,12 @@ argument_list|(
 name|comp
 argument_list|)
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"FontSelector"
+argument_list|)
 argument_list|,
 literal|true
 argument_list|)
@@ -471,7 +476,12 @@ name|familyPanel
 init|=
 name|createTextFieldAndListPanel
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Font Family"
+argument_list|)
 argument_list|,
 name|familyField
 operator|=
@@ -521,7 +531,12 @@ name|sizePanel
 init|=
 name|createTextFieldAndListPanel
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Font Size"
+argument_list|)
 argument_list|,
 name|sizeField
 operator|=
@@ -564,7 +579,12 @@ name|stylePanel
 init|=
 name|createTextFieldAndListPanel
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Font Style"
+argument_list|)
 argument_list|,
 name|styleField
 operator|=
@@ -718,7 +738,12 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Font Preview"
+argument_list|)
 argument_list|)
 block|{
 specifier|public
@@ -819,7 +844,12 @@ argument_list|(
 operator|new
 name|TitledBorder
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Font Preview"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -912,7 +942,12 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"OK"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|ok
@@ -956,7 +991,12 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Cancel"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|cancel

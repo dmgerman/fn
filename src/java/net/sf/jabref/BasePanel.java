@@ -4267,6 +4267,44 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|actions
+operator|.
+name|put
+argument_list|(
+literal|"replaceAll"
+argument_list|,
+operator|new
+name|BaseAction
+argument_list|()
+block|{
+specifier|public
+name|void
+name|action
+parameter_list|()
+block|{
+name|output
+argument_list|(
+literal|"Replace all"
+argument_list|)
+expr_stmt|;
+name|ReplaceStringDialog
+name|rsd
+init|=
+operator|new
+name|ReplaceStringDialog
+argument_list|(
+name|frame
+argument_list|)
+decl_stmt|;
+name|rsd
+operator|.
+name|show
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * This method is called from JabRefFrame is a database specific      * action is requested by the user. Runs the command if it is      * defined, or prints an error message to the standard error      * stream.      *      * @param command The name of the command to run.     */
 DECL|method|runCommand (String command)

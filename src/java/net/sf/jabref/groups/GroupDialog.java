@@ -78,6 +78,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|GUIGlobals
 import|;
 end_import
@@ -128,7 +140,14 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
-literal|"Group name:"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Group name"
+argument_list|)
+operator|+
+literal|":"
 argument_list|)
 decl_stmt|,
 DECL|field|nr
@@ -137,7 +156,14 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
-literal|"Search term:"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Search term"
+argument_list|)
+operator|+
+literal|":"
 argument_list|)
 decl_stmt|,
 DECL|field|nf
@@ -146,7 +172,14 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
-literal|"Field to search:"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Field to search"
+argument_list|)
+operator|+
+literal|":"
 argument_list|)
 decl_stmt|;
 name|JButton
@@ -156,7 +189,12 @@ init|=
 operator|new
 name|JButton
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Ok"
+argument_list|)
 argument_list|)
 decl_stmt|,
 DECL|field|cancel
@@ -165,7 +203,12 @@ init|=
 operator|new
 name|JButton
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Cancel"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|JPanel
@@ -254,7 +297,12 @@ name|super
 argument_list|(
 name|parent_
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Edit group"
+argument_list|)
 argument_list|,
 literal|true
 argument_list|)
@@ -436,11 +484,21 @@ name|showMessageDialog
 argument_list|(
 name|parent
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"You must provide a name, a search "
 operator|+
 literal|"string and a field name for this group."
+argument_list|)
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Create group"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -731,7 +789,12 @@ operator|.
 name|createEtchedBorder
 argument_list|()
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Group properties"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
