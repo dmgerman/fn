@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -65,7 +65,7 @@ name|Token
 name|label
 parameter_list|)
 function_decl|;
-DECL|method|beginSubRule (Token label, int line, boolean not)
+DECL|method|beginSubRule (Token label, Token start, boolean not)
 specifier|public
 name|void
 name|beginSubRule
@@ -73,21 +73,21 @@ parameter_list|(
 name|Token
 name|label
 parameter_list|,
-name|int
-name|line
+name|Token
+name|start
 parameter_list|,
 name|boolean
 name|not
 parameter_list|)
 function_decl|;
 comment|// Trees
-DECL|method|beginTree (int line)
+DECL|method|beginTree (Token tok)
 specifier|public
 name|void
 name|beginTree
 parameter_list|(
-name|int
-name|line
+name|Token
+name|tok
 parameter_list|)
 throws|throws
 name|SemanticException
@@ -313,7 +313,7 @@ name|Token
 name|action
 parameter_list|)
 function_decl|;
-DECL|method|refHeaderAction (Token name,Token act)
+DECL|method|refHeaderAction (Token name, Token act)
 specifier|public
 name|void
 name|refHeaderAction

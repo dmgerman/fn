@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_class
@@ -48,12 +48,34 @@ name|g
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|AlternativeElement (Grammar g, int autoGenType_)
+DECL|method|AlternativeElement (Grammar g, Token start)
 specifier|public
 name|AlternativeElement
 parameter_list|(
 name|Grammar
 name|g
+parameter_list|,
+name|Token
+name|start
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|g
+argument_list|,
+name|start
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|AlternativeElement (Grammar g, Token start, int autoGenType_)
+specifier|public
+name|AlternativeElement
+parameter_list|(
+name|Grammar
+name|g
+parameter_list|,
+name|Token
+name|start
 parameter_list|,
 name|int
 name|autoGenType_
@@ -62,6 +84,8 @@ block|{
 name|super
 argument_list|(
 name|g
+argument_list|,
+name|start
 argument_list|)
 expr_stmt|;
 name|autoGenType
@@ -78,6 +102,20 @@ block|{
 return|return
 name|autoGenType
 return|;
+block|}
+DECL|method|setAutoGenType (int a)
+specifier|public
+name|void
+name|setAutoGenType
+parameter_list|(
+name|int
+name|a
+parameter_list|)
+block|{
+name|autoGenType
+operator|=
+name|a
+expr_stmt|;
 block|}
 DECL|method|getLabel ()
 specifier|public
@@ -97,7 +135,7 @@ parameter_list|(
 name|String
 name|label
 parameter_list|)
-block|{}
+block|{     }
 block|}
 end_class
 

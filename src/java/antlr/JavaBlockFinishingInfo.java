@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_class
@@ -29,7 +29,7 @@ DECL|field|generatedAnIf
 name|boolean
 name|generatedAnIf
 decl_stmt|;
-comment|/** When generating an if or switch, end-of-token lookahead sets 	 *  will become the else or default clause, don't generate an 	 *  error clause in this case. 	 */
+comment|/** When generating an if or switch, end-of-token lookahead sets      *  will become the else or default clause, don't generate an      *  error clause in this case.      */
 DECL|field|needAnErrorClause
 name|boolean
 name|needAnErrorClause

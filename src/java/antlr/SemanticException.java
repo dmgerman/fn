@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_class
@@ -32,6 +32,7 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** @deprecated As of ANTLR 2.7.2 use {@see #SemanticException(char, String, int, int) } */
 DECL|method|SemanticException (String s, String fileName, int line)
 specifier|public
 name|SemanticException
@@ -46,6 +47,36 @@ name|int
 name|line
 parameter_list|)
 block|{
+name|this
+argument_list|(
+name|s
+argument_list|,
+name|fileName
+argument_list|,
+name|line
+argument_list|,
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|SemanticException (String s, String fileName, int line, int column)
+specifier|public
+name|SemanticException
+parameter_list|(
+name|String
+name|s
+parameter_list|,
+name|String
+name|fileName
+parameter_list|,
+name|int
+name|line
+parameter_list|,
+name|int
+name|column
+parameter_list|)
+block|{
 name|super
 argument_list|(
 name|s
@@ -53,6 +84,8 @@ argument_list|,
 name|fileName
 argument_list|,
 name|line
+argument_list|,
+name|column
 argument_list|)
 expr_stmt|;
 block|}

@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * Container for a C++ namespace specification.  Namespaces can be  * nested, so this contains a vector of all the nested names.  *  * @author David Wagner (JPL/Caltech) 8-12-00  *  * $Id$  */
+comment|/**  * ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * Container for a C++ namespace specification.  Namespaces can be  * nested, so this contains a vector of all the nested names.  *  * @author David Wagner (JPL/Caltech) 8-12-00  *  * $Id$  */
 end_comment
 
 begin_import
@@ -65,6 +65,11 @@ operator|new
 name|Vector
 argument_list|()
 decl_stmt|;
+DECL|field|_name
+specifier|private
+name|String
+name|_name
+decl_stmt|;
 DECL|method|NameSpace (String name)
 specifier|public
 name|NameSpace
@@ -73,13 +78,31 @@ name|String
 name|name
 parameter_list|)
 block|{
+name|_name
+operator|=
+operator|new
+name|String
+argument_list|(
+name|name
+argument_list|)
+expr_stmt|;
 name|parse
 argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Parse a C++ namespace declaration into seperate names 	 * splitting on ::  We could easily parameterize this to make 	 * the delimiter a language-specific parameter, or use subclasses 	 * to support C++ namespaces versus java packages. -DAW 	 */
+DECL|method|getName ()
+specifier|public
+name|String
+name|getName
+parameter_list|()
+block|{
+return|return
+name|_name
+return|;
+block|}
+comment|/**      * Parse a C++ namespace declaration into seperate names      * splitting on ::  We could easily parameterize this to make      * the delimiter a language-specific parameter, or use subclasses      * to support C++ namespaces versus java packages. -DAW      */
 DECL|method|parse (String name)
 specifier|protected
 name|void
@@ -118,7 +141,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Method to generate the required C++ namespace declarations 	 */
+comment|/**      * Method to generate the required C++ namespace declarations      */
 DECL|method|emitDeclarations (PrintWriter out)
 name|void
 name|emitDeclarations
@@ -168,7 +191,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Method to generate the required C++ namespace closures 	 */
+comment|/**      * Method to generate the required C++ namespace closures      */
 DECL|method|emitClosures (PrintWriter out)
 name|void
 name|emitClosures

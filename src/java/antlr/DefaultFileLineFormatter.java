@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_class
@@ -18,7 +18,7 @@ name|DefaultFileLineFormatter
 extends|extends
 name|FileLineFormatter
 block|{
-DECL|method|getFormatString (String fileName, int line)
+DECL|method|getFormatString (String fileName, int line, int column)
 specifier|public
 name|String
 name|getFormatString
@@ -28,42 +28,101 @@ name|fileName
 parameter_list|,
 name|int
 name|line
+parameter_list|,
+name|int
+name|column
 parameter_list|)
 block|{
+name|StringBuffer
+name|buf
+init|=
+operator|new
+name|StringBuffer
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|fileName
 operator|!=
 literal|null
 condition|)
-block|{
-return|return
+name|buf
+operator|.
+name|append
+argument_list|(
 name|fileName
 operator|+
 literal|":"
-operator|+
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
 name|line
-operator|+
-literal|": "
-return|;
-block|}
-else|else
+operator|!=
+operator|-
+literal|1
+condition|)
 block|{
-return|return
+if|if
+condition|(
+name|fileName
+operator|==
+literal|null
+condition|)
+name|buf
+operator|.
+name|append
+argument_list|(
 literal|"line "
-operator|+
+argument_list|)
+expr_stmt|;
+name|buf
+operator|.
+name|append
+argument_list|(
 name|line
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|column
+operator|!=
+operator|-
+literal|1
+condition|)
+name|buf
+operator|.
+name|append
+argument_list|(
+literal|":"
 operator|+
-literal|": "
-return|;
+name|column
+argument_list|)
+expr_stmt|;
+name|buf
+operator|.
+name|append
+argument_list|(
+literal|":"
+argument_list|)
+expr_stmt|;
 block|}
+name|buf
+operator|.
+name|append
+argument_list|(
+literal|" "
+argument_list|)
+expr_stmt|;
+return|return
+name|buf
+operator|.
+name|toString
+argument_list|()
+return|;
 block|}
 block|}
 end_class
-
-begin_empty_stmt
-empty_stmt|;
-end_empty_stmt
 
 end_unit
 

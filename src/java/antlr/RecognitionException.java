@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_class
@@ -29,13 +29,11 @@ specifier|public
 name|int
 name|line
 decl_stmt|;
-comment|// not used by treeparsers
 DECL|field|column
 specifier|public
 name|int
 name|column
 decl_stmt|;
-comment|// not used by treeparsers
 DECL|method|RecognitionException ()
 specifier|public
 name|RecognitionException
@@ -45,6 +43,20 @@ name|super
 argument_list|(
 literal|"parsing error"
 argument_list|)
+expr_stmt|;
+name|fileName
+operator|=
+literal|null
+expr_stmt|;
+name|line
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+name|column
+operator|=
+operator|-
+literal|1
 expr_stmt|;
 block|}
 comment|/**      * RecognitionException constructor comment.      * @param s java.lang.String      */
@@ -61,9 +73,23 @@ argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
+name|fileName
+operator|=
+literal|null
+expr_stmt|;
+name|line
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+name|column
+operator|=
+operator|-
+literal|1
+expr_stmt|;
 block|}
-comment|/**      * RecognitionException constructor comment.      * @param s java.lang.String      */
-DECL|method|RecognitionException (String s, String fileName, int line)
+comment|/** @deprecated As of ANTLR 2.7.2 use {@see #RecognitionException(char, String, int, int) } */
+DECL|method|RecognitionException (String s, String fileName_, int line_)
 specifier|public
 name|RecognitionException
 parameter_list|(
@@ -71,10 +97,41 @@ name|String
 name|s
 parameter_list|,
 name|String
-name|fileName
+name|fileName_
 parameter_list|,
 name|int
-name|line
+name|line_
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|s
+argument_list|,
+name|fileName_
+argument_list|,
+name|line_
+argument_list|,
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * RecognitionException constructor comment.      * @param s java.lang.String      */
+DECL|method|RecognitionException (String s, String fileName_, int line_, int column_)
+specifier|public
+name|RecognitionException
+parameter_list|(
+name|String
+name|s
+parameter_list|,
+name|String
+name|fileName_
+parameter_list|,
+name|int
+name|line_
+parameter_list|,
+name|int
+name|column_
 parameter_list|)
 block|{
 name|super
@@ -82,18 +139,38 @@ argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
-name|this
-operator|.
 name|fileName
 operator|=
-name|fileName
+name|fileName_
 expr_stmt|;
-name|this
-operator|.
 name|line
 operator|=
-name|line
+name|line_
 expr_stmt|;
+name|column
+operator|=
+name|column_
+expr_stmt|;
+block|}
+DECL|method|getFilename ()
+specifier|public
+name|String
+name|getFilename
+parameter_list|()
+block|{
+return|return
+name|fileName
+return|;
+block|}
+DECL|method|getLine ()
+specifier|public
+name|int
+name|getLine
+parameter_list|()
+block|{
+return|return
+name|line
+return|;
 block|}
 DECL|method|getColumn ()
 specifier|public
@@ -117,26 +194,6 @@ name|getMessage
 argument_list|()
 return|;
 block|}
-DECL|method|getFilename ()
-specifier|public
-name|String
-name|getFilename
-parameter_list|()
-block|{
-return|return
-name|fileName
-return|;
-block|}
-DECL|method|getLine ()
-specifier|public
-name|int
-name|getLine
-parameter_list|()
-block|{
-return|return
-name|line
-return|;
-block|}
 DECL|method|toString ()
 specifier|public
 name|String
@@ -154,6 +211,8 @@ argument_list|(
 name|fileName
 argument_list|,
 name|line
+argument_list|,
+name|column
 argument_list|)
 operator|+
 name|getMessage

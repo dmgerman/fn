@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -44,6 +44,22 @@ name|Vector
 import|;
 end_import
 
+begin_import
+import|import
+name|antlr
+operator|.
+name|PreservingFileWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|antlr
+operator|.
+name|Version
+import|;
+end_import
+
 begin_class
 DECL|class|Tool
 specifier|public
@@ -53,11 +69,10 @@ block|{
 DECL|field|version
 specifier|public
 specifier|static
-specifier|final
 name|String
 name|version
 init|=
-literal|"2.7.1"
+literal|""
 decl_stmt|;
 comment|/** Object that handles analysis errors */
 DECL|field|errorHandler
@@ -79,6 +94,13 @@ name|genDiagnostics
 init|=
 literal|false
 decl_stmt|;
+comment|/** Generate DocBook vs code? */
+DECL|field|genDocBook
+name|boolean
+name|genDocBook
+init|=
+literal|false
+decl_stmt|;
 comment|/** Generate HTML vs code? */
 DECL|field|genHTML
 name|boolean
@@ -97,6 +119,7 @@ literal|"."
 decl_stmt|;
 comment|// Grammar input
 DECL|field|grammarFile
+specifier|protected
 name|String
 name|grammarFile
 decl_stmt|;
@@ -114,7 +137,7 @@ name|in
 argument_list|)
 decl_stmt|;
 comment|// SAS: changed for proper text io
-comment|//	transient DataInputStream in = null;
+comment|//  transient DataInputStream in = null;
 DECL|field|literalsPrefix
 specifier|protected
 specifier|static
@@ -134,7 +157,6 @@ decl_stmt|;
 comment|/** C++ file level options */
 DECL|field|nameSpace
 specifier|protected
-specifier|static
 name|NameSpace
 name|nameSpace
 init|=
@@ -142,7 +164,6 @@ literal|null
 decl_stmt|;
 DECL|field|namespaceAntlr
 specifier|protected
-specifier|static
 name|String
 name|namespaceAntlr
 init|=
@@ -150,7 +171,6 @@ literal|null
 decl_stmt|;
 DECL|field|namespaceStd
 specifier|protected
-specifier|static
 name|String
 name|namespaceStd
 init|=
@@ -158,15 +178,20 @@ literal|null
 decl_stmt|;
 DECL|field|genHashLines
 specifier|protected
-specifier|static
 name|boolean
 name|genHashLines
 init|=
 literal|true
 decl_stmt|;
+DECL|field|noConstructors
+specifier|protected
+name|boolean
+name|noConstructors
+init|=
+literal|false
+decl_stmt|;
 DECL|field|cmdLineArgValid
 specifier|private
-specifier|static
 name|BitSet
 name|cmdLineArgValid
 init|=
@@ -184,12 +209,93 @@ name|errorHandler
 operator|=
 operator|new
 name|DefaultToolErrorHandler
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getGrammarFile ()
+specifier|public
+name|String
+name|getGrammarFile
+parameter_list|()
+block|{
+return|return
+name|grammarFile
+return|;
+block|}
+DECL|method|hasError ()
+specifier|public
+name|boolean
+name|hasError
+parameter_list|()
+block|{
+return|return
+name|hasError
+return|;
+block|}
+DECL|method|getNameSpace ()
+specifier|public
+name|NameSpace
+name|getNameSpace
+parameter_list|()
+block|{
+return|return
+name|nameSpace
+return|;
+block|}
+DECL|method|getNamespaceStd ()
+specifier|public
+name|String
+name|getNamespaceStd
+parameter_list|()
+block|{
+return|return
+name|namespaceStd
+return|;
+block|}
+DECL|method|getNamespaceAntlr ()
+specifier|public
+name|String
+name|getNamespaceAntlr
+parameter_list|()
+block|{
+return|return
+name|namespaceAntlr
+return|;
+block|}
+DECL|method|getGenHashLines ()
+specifier|public
+name|boolean
+name|getGenHashLines
+parameter_list|()
+block|{
+return|return
+name|genHashLines
+return|;
+block|}
+DECL|method|getLiteralsPrefix ()
+specifier|public
+name|String
+name|getLiteralsPrefix
+parameter_list|()
+block|{
+return|return
+name|literalsPrefix
+return|;
+block|}
+DECL|method|getUpperCaseMangledLiterals ()
+specifier|public
+name|boolean
+name|getUpperCaseMangledLiterals
+parameter_list|()
+block|{
+return|return
+name|upperCaseMangledLiterals
+return|;
 block|}
 DECL|method|setFileLineFormatter (FileLineFormatter formatter)
 specifier|public
-specifier|static
 name|void
 name|setFileLineFormatter
 parameter_list|(
@@ -206,8 +312,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|checkForInvalidArguments (String[] args, BitSet cmdLineArgValid)
-specifier|private
-specifier|static
+specifier|protected
 name|void
 name|checkForInvalidArguments
 parameter_list|(
@@ -266,7 +371,6 @@ block|}
 comment|/** This example is from the book _Java in a Nutshell_ by David      * Flanagan.  Written by David Flanagan.  Copyright (c) 1996      * O'Reilly& Associates.  You may study, use, modify, and      * distribute this example for any purpose.  This example is      * provided WITHOUT WARRANTY either expressed or implied.  */
 DECL|method|copyFile (String source_name, String dest_name)
 specifier|public
-specifier|static
 name|void
 name|copyFile
 parameter_list|(
@@ -297,13 +401,12 @@ argument_list|(
 name|dest_name
 argument_list|)
 decl_stmt|;
-name|FileReader
+name|Reader
 name|source
 init|=
 literal|null
 decl_stmt|;
-comment|// SAS: changed for proper text io
-name|FileWriter
+name|Writer
 name|destination
 init|=
 literal|null
@@ -413,7 +516,7 @@ operator|+
 name|dest_name
 argument_list|)
 throw|;
-comment|/* 		      System.out.print("File " + dest_name + 		      " already exists.  Overwrite? (Y/N): "); 		      System.out.flush(); 		      response = in.readLine(); 		      if (!response.equals("Y")&& !response.equals("y")) 		      throw new FileCopyException("FileCopy: copy cancelled."); 		    */
+comment|/*                       System.out.print("File " + dest_name +                       " already exists.  Overwrite? (Y/N): ");                       System.out.flush();                       response = in.readLine();                       if (!response.equals("Y")&& !response.equals("y"))                       throw new FileCopyException("FileCopy: copy cancelled.");                     */
 block|}
 else|else
 block|{
@@ -484,17 +587,25 @@ comment|// copy the file.
 name|source
 operator|=
 operator|new
+name|BufferedReader
+argument_list|(
+operator|new
 name|FileReader
 argument_list|(
 name|source_file
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|destination
 operator|=
 operator|new
+name|BufferedWriter
+argument_list|(
+operator|new
 name|FileWriter
 argument_list|(
 name|destination_file
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|buffer
@@ -553,6 +664,7 @@ name|source
 operator|!=
 literal|null
 condition|)
+block|{
 try|try
 block|{
 name|source
@@ -569,12 +681,14 @@ parameter_list|)
 block|{
 empty_stmt|;
 block|}
+block|}
 if|if
 condition|(
 name|destination
 operator|!=
 literal|null
 condition|)
+block|{
 try|try
 block|{
 name|destination
@@ -593,10 +707,38 @@ empty_stmt|;
 block|}
 block|}
 block|}
-comment|/** Perform processing on the grammar file.  Can only be called      * from main() @param args The command-line arguments passed to      * main()      */
-DECL|method|doEverything (String[] args)
-specifier|protected
+block|}
+comment|/** Perform processing on the grammar file.  Can only be called      * from main() @param args The command-line arguments passed to      * main().  This wrapper does the System.exit for use with command-line.      */
+DECL|method|doEverythingWrapper (String[] args)
+specifier|public
 name|void
+name|doEverythingWrapper
+parameter_list|(
+name|String
+index|[]
+name|args
+parameter_list|)
+block|{
+name|int
+name|exitCode
+init|=
+name|doEverything
+argument_list|(
+name|args
+argument_list|)
+decl_stmt|;
+name|System
+operator|.
+name|exit
+argument_list|(
+name|exitCode
+argument_list|)
+expr_stmt|;
+block|}
+comment|/** Process args and have ANTLR do it's stuff without calling System.exit.      *  Just return the result code.  Makes it easy for ANT build tool.      */
+DECL|method|doEverything (String[] args)
+specifier|public
+name|int
 name|doEverything
 parameter_list|(
 name|String
@@ -604,9 +746,9 @@ index|[]
 name|args
 parameter_list|)
 block|{
-comment|// SAS: removed "private" so subclass can call
-comment|//      (The subclass is for the VAJ interface)
 comment|// run the preprocessor to handle inheritance first.
+comment|// Start preprocessor. This strips generates an argument list
+comment|// without -glib options (inside preTool)
 name|antlr
 operator|.
 name|preprocessor
@@ -626,23 +768,14 @@ argument_list|,
 name|args
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-operator|!
+name|boolean
+name|preprocess_ok
+init|=
 name|preTool
 operator|.
 name|preprocess
 argument_list|()
-condition|)
-block|{
-name|System
-operator|.
-name|exit
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
+decl_stmt|;
 name|String
 index|[]
 name|modifiedArgs
@@ -658,22 +791,37 @@ argument_list|(
 name|modifiedArgs
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|preprocess_ok
+condition|)
+block|{
+return|return
+literal|1
+return|;
+block|}
 name|f
 operator|=
 name|getGrammarReader
 argument_list|()
 expr_stmt|;
+name|ANTLRLexer
+name|lexer
+init|=
+operator|new
+name|ANTLRLexer
+argument_list|(
+name|f
+argument_list|)
+decl_stmt|;
 name|TokenBuffer
 name|tokenBuf
 init|=
 operator|new
 name|TokenBuffer
 argument_list|(
-operator|new
-name|ANTLRLexer
-argument_list|(
-name|f
-argument_list|)
+name|lexer
 argument_list|)
 decl_stmt|;
 name|LLkAnalyzer
@@ -728,22 +876,12 @@ expr_stmt|;
 if|if
 condition|(
 name|hasError
+argument_list|()
 condition|)
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
+name|fatalError
 argument_list|(
 literal|"Exiting due to errors."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
-literal|1
 argument_list|)
 expr_stmt|;
 block|}
@@ -886,11 +1024,7 @@ name|RecognitionException
 name|pe
 parameter_list|)
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
+name|fatalError
 argument_list|(
 literal|"Unhandled parser error: "
 operator|+
@@ -900,13 +1034,6 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -914,11 +1041,7 @@ name|TokenStreamException
 name|io
 parameter_list|)
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
+name|fatalError
 argument_list|(
 literal|"TokenStreamException: "
 operator|+
@@ -928,21 +1051,10 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
 block|}
-name|System
-operator|.
-name|exit
-argument_list|(
+return|return
 literal|0
-argument_list|)
-expr_stmt|;
+return|;
 block|}
 comment|/** Issue an error      * @param s The message      */
 DECL|method|error (String s)
@@ -970,8 +1082,8 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Issue an error with line number information      * @param s The message      * @param file The file that has the error      * @param line The grammar file line number on which the error occured      */
-DECL|method|error (String s, String file, int line)
+comment|/** Issue an error with line number information      * @param s The message      * @param file The file that has the error (or null)      * @param line The grammar file line number on which the error occured (or -1)      * @param column The grammar file column number on which the error occured (or -1)      */
+DECL|method|error (String s, String file, int line, int column)
 specifier|public
 name|void
 name|error
@@ -984,19 +1096,15 @@ name|file
 parameter_list|,
 name|int
 name|line
+parameter_list|,
+name|int
+name|column
 parameter_list|)
 block|{
 name|hasError
 operator|=
 literal|true
 expr_stmt|;
-if|if
-condition|(
-name|file
-operator|!=
-literal|null
-condition|)
-block|{
 name|System
 operator|.
 name|err
@@ -1013,35 +1121,17 @@ argument_list|(
 name|file
 argument_list|,
 name|line
+argument_list|,
+name|column
 argument_list|)
 operator|+
 name|s
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"line "
-operator|+
-name|line
-operator|+
-literal|": "
-operator|+
-name|s
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-comment|/** When we are 1.1 compatible... public static Object factory2 (String p, Object[] initargs) {   Class c;   Object o = null;   try { 	int argslen = initargs.length; 	Class cl[] = new Class[argslen]; 	for (int i=0;i&lt;argslen;i++) { 	  cl[i] = Class.forName(initargs[i].getClass().getName()); 	} 	c = Class.forName (p); 	Constructor con = c.getConstructor (cl); 	o = con.newInstance (initargs);   } catch (Exception e) { 	System.err.println ("Can't make a " + p);   }   return o; } */
+comment|/** When we are 1.1 compatible... public static Object factory2 (String p, Object[] initargs) {      Class c;      Object o = null;      try {      int argslen = initargs.length;      Class cl[] = new Class[argslen];      for (int i=0;i&lt;argslen;i++) {      cl[i] = Class.forName(initargs[i].getClass().getName());      }      c = Class.forName (p);      Constructor con = c.getConstructor (cl);      o = con.newInstance (initargs);      } catch (Exception e) {      System.err.println ("Can't make a " + p);      }      return o;      }      */
 DECL|method|factory (String p)
 specifier|public
-specifier|static
 name|Object
 name|factory
 parameter_list|(
@@ -1104,7 +1194,6 @@ return|;
 block|}
 DECL|method|fileMinusPath (String f)
 specifier|public
-specifier|static
 name|String
 name|fileMinusPath
 parameter_list|(
@@ -1184,6 +1273,15 @@ return|return
 literal|"HTML"
 return|;
 block|}
+if|if
+condition|(
+name|genDocBook
+condition|)
+block|{
+return|return
+literal|"DocBook"
+return|;
+block|}
 return|return
 name|behavior
 operator|.
@@ -1192,7 +1290,6 @@ return|;
 block|}
 DECL|method|getOutputDirectory ()
 specifier|public
-specifier|static
 name|String
 name|getOutputDirectory
 parameter_list|()
@@ -1250,7 +1347,16 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"  -html              generate an html file from your grammar (minus actions)."
+literal|"  -html              generate a html file from your grammar."
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"  -docbook           generate a docbook sgml file from your grammar."
 argument_list|)
 expr_stmt|;
 name|System
@@ -1277,15 +1383,6 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"  -traceParser       have parser rules call traceIn/traceOut."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
 literal|"  -traceLexer        have lexer rules call traceIn/traceOut."
 argument_list|)
 expr_stmt|;
@@ -1295,7 +1392,25 @@ name|err
 operator|.
 name|println
 argument_list|(
+literal|"  -traceParser       have parser rules call traceIn/traceOut."
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
 literal|"  -traceTreeParser   have tree parser rules call traceIn/traceOut."
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"  -h|-help|--help    this message"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1318,12 +1433,18 @@ name|println
 argument_list|(
 literal|"ANTLR Parser Generator   Version "
 operator|+
-name|Tool
+name|Version
 operator|.
-name|version
+name|project_version
 operator|+
-literal|"   1989-2000 jGuru.com"
+literal|"   1989-2004 jGuru.com"
 argument_list|)
+expr_stmt|;
+name|version
+operator|=
+name|Version
+operator|.
+name|project_version
 expr_stmt|;
 try|try
 block|{
@@ -1339,6 +1460,75 @@ block|{
 name|help
 argument_list|()
 expr_stmt|;
+name|System
+operator|.
+name|exit
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|args
+operator|.
+name|length
+condition|;
+operator|++
+name|i
+control|)
+block|{
+if|if
+condition|(
+name|args
+index|[
+name|i
+index|]
+operator|.
+name|equals
+argument_list|(
+literal|"-h"
+argument_list|)
+operator|||
+name|args
+index|[
+name|i
+index|]
+operator|.
+name|equals
+argument_list|(
+literal|"-help"
+argument_list|)
+operator|||
+name|args
+index|[
+name|i
+index|]
+operator|.
+name|equals
+argument_list|(
+literal|"--help"
+argument_list|)
+condition|)
+block|{
+name|help
+argument_list|()
+expr_stmt|;
+name|System
+operator|.
+name|exit
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|Tool
 name|theTool
@@ -1448,9 +1638,9 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** This method is used by all code generators to create new output 	 * files. If the outputDir set by -o is not present it will be created here. 	 */
 DECL|method|openOutputFile (String f)
 specifier|public
-specifier|static
 name|PrintWriter
 name|openOutputFile
 parameter_list|(
@@ -1460,12 +1650,42 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+if|if
+condition|(
+name|outputDir
+operator|!=
+literal|"."
+condition|)
+block|{
+name|File
+name|out_dir
+init|=
+operator|new
+name|File
+argument_list|(
+name|outputDir
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|out_dir
+operator|.
+name|exists
+argument_list|()
+condition|)
+name|out_dir
+operator|.
+name|mkdirs
+argument_list|()
+expr_stmt|;
+block|}
 return|return
 operator|new
 name|PrintWriter
 argument_list|(
 operator|new
-name|FileWriter
+name|PreservingFileWriter
 argument_list|(
 name|outputDir
 operator|+
@@ -1487,6 +1707,11 @@ name|Reader
 name|getGrammarReader
 parameter_list|()
 block|{
+name|Reader
+name|f
+init|=
+literal|null
+decl_stmt|;
 try|try
 block|{
 if|if
@@ -1499,9 +1724,13 @@ block|{
 name|f
 operator|=
 operator|new
+name|BufferedReader
+argument_list|(
+operator|new
 name|FileReader
 argument_list|(
 name|grammarFile
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1512,21 +1741,11 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|panic
+name|fatalError
 argument_list|(
-literal|"Error: cannot open grammar file "
+literal|"cannot open grammar file "
 operator|+
 name|grammarFile
-argument_list|)
-expr_stmt|;
-name|help
-argument_list|()
-expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
-literal|1
 argument_list|)
 expr_stmt|;
 block|}
@@ -1534,40 +1753,17 @@ return|return
 name|f
 return|;
 block|}
-comment|/** Issue an unknown fatal error */
-DECL|method|panic ()
+comment|/** @since 2.7.2      */
+DECL|method|reportException (Exception e, String message)
 specifier|public
-specifier|static
 name|void
-name|panic
-parameter_list|()
-block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"panic"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
-comment|/** Issue a fatal error message      * @param s The message      */
-DECL|method|panic (String s)
-specifier|public
-specifier|static
-name|void
-name|panic
+name|reportException
 parameter_list|(
+name|Exception
+name|e
+parameter_list|,
 name|String
-name|s
+name|message
 parameter_list|)
 block|{
 name|System
@@ -1576,9 +1772,63 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"panic: "
+name|message
+operator|==
+literal|null
+condition|?
+name|e
+operator|.
+name|getMessage
+argument_list|()
+else|:
+name|message
 operator|+
-name|s
+literal|": "
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|/** @since 2.7.2      */
+DECL|method|reportProgress (String message)
+specifier|public
+name|void
+name|reportProgress
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+block|}
+comment|/** An error occured that should stop the Tool from doing any work.      *  The default implementation currently exits (via      *  {@link java.lang.System.exit(int)} after printing an error message to      *<var>stderr</var>. However, the tools should expect that a subclass      *  will override this to throw an unchecked exception such as      *  {@link java.lang.IllegalStateException} or another subclass of      *  {@link java.lang.RuntimeException}.<em>If this method is overriden,      *<strong>it must never return normally</strong>; i.e. it must always      *  throw an exception or call System.exit</em>.      *  @since 2.7.2      *  @param s The message      */
+DECL|method|fatalError (String message)
+specifier|public
+name|void
+name|fatalError
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+block|{
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+name|message
 argument_list|)
 expr_stmt|;
 name|System
@@ -1589,12 +1839,42 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** Issue an unknown fatal error.<em>If this method is overriden,      *<strong>it must never return normally</strong>; i.e. it must always      *  throw an exception or call System.exit</em>.      *  @deprecated as of 2.7.2 use {@link #fatalError(String)}. By default      *              this method executes<code>fatalError("panic");</code>.      */
+DECL|method|panic ()
+specifier|public
+name|void
+name|panic
+parameter_list|()
+block|{
+name|fatalError
+argument_list|(
+literal|"panic"
+argument_list|)
+expr_stmt|;
+block|}
+comment|/** Issue a fatal error message.<em>If this method is overriden,      *<strong>it must never return normally</strong>; i.e. it must always      *  throw an exception or call System.exit</em>.      *  @deprecated as of 2.7.2 use {@link #fatalError(String)}. By defaykt      *              this method executes<code>fatalError("panic: " + s);</code>.      * @param s The message      */
+DECL|method|panic (String s)
+specifier|public
+name|void
+name|panic
+parameter_list|(
+name|String
+name|s
+parameter_list|)
+block|{
+name|fatalError
+argument_list|(
+literal|"panic: "
+operator|+
+name|s
+argument_list|)
+expr_stmt|;
+block|}
 comment|// File.getParent() can return null when the file is specified without
 comment|// a directory or is in the root directory.
 comment|// This method handles those cases.
 DECL|method|parent (File f)
 specifier|public
-specifier|static
 name|File
 name|parent
 parameter_list|(
@@ -1669,6 +1949,30 @@ name|char
 name|separator
 parameter_list|)
 block|{
+name|java
+operator|.
+name|util
+operator|.
+name|StringTokenizer
+name|st
+init|=
+operator|new
+name|java
+operator|.
+name|util
+operator|.
+name|StringTokenizer
+argument_list|(
+name|list
+argument_list|,
+name|String
+operator|.
+name|valueOf
+argument_list|(
+name|separator
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|Vector
 name|v
 init|=
@@ -1678,100 +1982,24 @@ argument_list|(
 literal|10
 argument_list|)
 decl_stmt|;
-name|StringBuffer
-name|buf
-init|=
-operator|new
-name|StringBuffer
-argument_list|(
-literal|100
-argument_list|)
-decl_stmt|;
-name|int
-name|i
-init|=
-literal|0
-decl_stmt|;
 while|while
 condition|(
-name|i
-operator|<
-name|list
+name|st
 operator|.
-name|length
+name|hasMoreTokens
 argument_list|()
 condition|)
 block|{
-while|while
-condition|(
-name|i
-operator|<
-name|list
-operator|.
-name|length
-argument_list|()
-operator|&&
-name|list
-operator|.
-name|charAt
-argument_list|(
-name|i
-argument_list|)
-operator|!=
-name|separator
-condition|)
-block|{
-name|buf
-operator|.
-name|append
-argument_list|(
-name|list
-operator|.
-name|charAt
-argument_list|(
-name|i
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|i
-operator|++
-expr_stmt|;
-block|}
-comment|// add element to vector
 name|v
 operator|.
 name|appendElement
 argument_list|(
-name|buf
+name|st
 operator|.
-name|toString
+name|nextToken
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|buf
-operator|.
-name|setLength
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
-comment|// must be a separator or finished.
-if|if
-condition|(
-name|i
-operator|<
-name|list
-operator|.
-name|length
-argument_list|()
-condition|)
-block|{
-comment|// not done?
-name|i
-operator|++
-expr_stmt|;
-comment|// skip separator
-block|}
 block|}
 if|if
 condition|(
@@ -1792,7 +2020,6 @@ block|}
 comment|/** given a filename, strip off the directory prefix (if any)      *  and return it.  Return "./" if f has no dir prefix.      */
 DECL|method|pathToFile (String f)
 specifier|public
-specifier|static
 name|String
 name|pathToFile
 parameter_list|(
@@ -1853,9 +2080,9 @@ literal|1
 argument_list|)
 return|;
 block|}
-comment|/** Process the command-line arguments.  Can only be called by Tool.      * @param args The command-line arguments passed to main()      */
+comment|/**<p>Process the command-line arguments.  Can only be called by Tool.      * A bitset is collected of all correct arguments via setArgOk.</p>      * @param args The command-line arguments passed to main()      *      */
 DECL|method|processArguments (String[] args)
-specifier|private
+specifier|protected
 name|void
 name|processArguments
 parameter_list|(
@@ -1902,16 +2129,13 @@ name|genHTML
 operator|=
 literal|false
 expr_stmt|;
-name|Tool
-operator|.
 name|setArgOK
 argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
+elseif|else
 if|if
 condition|(
 name|args
@@ -1925,8 +2149,6 @@ literal|"-o"
 argument_list|)
 condition|)
 block|{
-name|Tool
-operator|.
 name|setArgOK
 argument_list|(
 name|i
@@ -1962,8 +2184,6 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
-name|Tool
-operator|.
 name|setArgOK
 argument_list|(
 name|i
@@ -1993,8 +2213,34 @@ name|genDiagnostics
 operator|=
 literal|false
 expr_stmt|;
-name|Tool
+name|setArgOK
+argument_list|(
+name|i
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|args
+index|[
+name|i
+index|]
 operator|.
+name|equals
+argument_list|(
+literal|"-docbook"
+argument_list|)
+condition|)
+block|{
+name|genDocBook
+operator|=
+literal|true
+expr_stmt|;
+name|genDiagnostics
+operator|=
+literal|false
+expr_stmt|;
 name|setArgOK
 argument_list|(
 name|i
@@ -2026,8 +2272,6 @@ index|[
 name|i
 index|]
 expr_stmt|;
-name|Tool
-operator|.
 name|setArgOK
 argument_list|(
 name|i
@@ -2037,10 +2281,8 @@ block|}
 block|}
 block|}
 block|}
-block|}
 DECL|method|setArgOK (int i)
 specifier|public
-specifier|static
 name|void
 name|setArgOK
 parameter_list|(
@@ -2058,7 +2300,6 @@ expr_stmt|;
 block|}
 DECL|method|setOutputDirectory (String o)
 specifier|public
-specifier|static
 name|void
 name|setOutputDirectory
 parameter_list|(
@@ -2071,383 +2312,9 @@ operator|=
 name|o
 expr_stmt|;
 block|}
-comment|/** General-purpose utility function for removing      * characters from back of string      * @param s The string to process      * @param c The character to remove      * @return The resulting string      */
-DECL|method|stripBack (String s, char c)
-specifier|static
-specifier|public
-name|String
-name|stripBack
-parameter_list|(
-name|String
-name|s
-parameter_list|,
-name|char
-name|c
-parameter_list|)
-block|{
-while|while
-condition|(
-name|s
-operator|.
-name|length
-argument_list|()
-operator|>
-literal|0
-operator|&&
-name|s
-operator|.
-name|charAt
-argument_list|(
-name|s
-operator|.
-name|length
-argument_list|()
-operator|-
-literal|1
-argument_list|)
-operator|==
-name|c
-condition|)
-block|{
-name|s
-operator|=
-name|s
-operator|.
-name|substring
-argument_list|(
-literal|0
-argument_list|,
-name|s
-operator|.
-name|length
-argument_list|()
-operator|-
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|s
-return|;
-block|}
-comment|/** General-purpose utility function for removing      * characters from back of string      * @param s The string to process      * @param remove A string containing the set of characters to remove      * @return The resulting string      */
-DECL|method|stripBack (String s, String remove)
-specifier|static
-specifier|public
-name|String
-name|stripBack
-parameter_list|(
-name|String
-name|s
-parameter_list|,
-name|String
-name|remove
-parameter_list|)
-block|{
-name|boolean
-name|changed
-decl_stmt|;
-do|do
-block|{
-name|changed
-operator|=
-literal|false
-expr_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|remove
-operator|.
-name|length
-argument_list|()
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|char
-name|c
-init|=
-name|remove
-operator|.
-name|charAt
-argument_list|(
-name|i
-argument_list|)
-decl_stmt|;
-while|while
-condition|(
-name|s
-operator|.
-name|length
-argument_list|()
-operator|>
-literal|0
-operator|&&
-name|s
-operator|.
-name|charAt
-argument_list|(
-name|s
-operator|.
-name|length
-argument_list|()
-operator|-
-literal|1
-argument_list|)
-operator|==
-name|c
-condition|)
-block|{
-name|changed
-operator|=
-literal|true
-expr_stmt|;
-name|s
-operator|=
-name|s
-operator|.
-name|substring
-argument_list|(
-literal|0
-argument_list|,
-name|s
-operator|.
-name|length
-argument_list|()
-operator|-
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-block|}
-do|while
-condition|(
-name|changed
-condition|)
-do|;
-return|return
-name|s
-return|;
-block|}
-comment|/** General-purpose utility function for removing      * characters from front of string      * @param s The string to process      * @param c The character to remove      * @return The resulting string      */
-DECL|method|stripFront (String s, char c)
-specifier|static
-specifier|public
-name|String
-name|stripFront
-parameter_list|(
-name|String
-name|s
-parameter_list|,
-name|char
-name|c
-parameter_list|)
-block|{
-while|while
-condition|(
-name|s
-operator|.
-name|length
-argument_list|()
-operator|>
-literal|0
-operator|&&
-name|s
-operator|.
-name|charAt
-argument_list|(
-literal|0
-argument_list|)
-operator|==
-name|c
-condition|)
-block|{
-name|s
-operator|=
-name|s
-operator|.
-name|substring
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|s
-return|;
-block|}
-comment|/** General-purpose utility function for removing      * characters from front of string      * @param s The string to process      * @param remove A string containing the set of characters to remove      * @return The resulting string      */
-DECL|method|stripFront (String s, String remove)
-specifier|static
-specifier|public
-name|String
-name|stripFront
-parameter_list|(
-name|String
-name|s
-parameter_list|,
-name|String
-name|remove
-parameter_list|)
-block|{
-name|boolean
-name|changed
-decl_stmt|;
-do|do
-block|{
-name|changed
-operator|=
-literal|false
-expr_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|remove
-operator|.
-name|length
-argument_list|()
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|char
-name|c
-init|=
-name|remove
-operator|.
-name|charAt
-argument_list|(
-name|i
-argument_list|)
-decl_stmt|;
-while|while
-condition|(
-name|s
-operator|.
-name|length
-argument_list|()
-operator|>
-literal|0
-operator|&&
-name|s
-operator|.
-name|charAt
-argument_list|(
-literal|0
-argument_list|)
-operator|==
-name|c
-condition|)
-block|{
-name|changed
-operator|=
-literal|true
-expr_stmt|;
-name|s
-operator|=
-name|s
-operator|.
-name|substring
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-block|}
-do|while
-condition|(
-name|changed
-condition|)
-do|;
-return|return
-name|s
-return|;
-block|}
-comment|/** General-purpose utility function for removing      * characters from the front and back of string      * @param s The string to process      * @param head exact string to strip from head      * @param tail exact string to strip from tail      * @return The resulting string      */
-DECL|method|stripFrontBack (String src, String head, String tail)
-specifier|public
-specifier|static
-name|String
-name|stripFrontBack
-parameter_list|(
-name|String
-name|src
-parameter_list|,
-name|String
-name|head
-parameter_list|,
-name|String
-name|tail
-parameter_list|)
-block|{
-name|int
-name|h
-init|=
-name|src
-operator|.
-name|indexOf
-argument_list|(
-name|head
-argument_list|)
-decl_stmt|;
-name|int
-name|t
-init|=
-name|src
-operator|.
-name|lastIndexOf
-argument_list|(
-name|tail
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|h
-operator|==
-operator|-
-literal|1
-operator|||
-name|t
-operator|==
-operator|-
-literal|1
-condition|)
-return|return
-name|src
-return|;
-return|return
-name|src
-operator|.
-name|substring
-argument_list|(
-name|h
-operator|+
-literal|1
-argument_list|,
-name|t
-argument_list|)
-return|;
-block|}
 comment|/** Issue an error; used for general tool errors not for grammar stuff      * @param s The message      */
 DECL|method|toolError (String s)
 specifier|public
-specifier|static
 name|void
 name|toolError
 parameter_list|(
@@ -2470,7 +2337,6 @@ block|}
 comment|/** Issue a warning      * @param s the message      */
 DECL|method|warning (String s)
 specifier|public
-specifier|static
 name|void
 name|warning
 parameter_list|(
@@ -2490,10 +2356,9 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Issue a warning with line number information      * @param s The message      * @param file The file that has the warning      * @param line The grammar file line number on which the warning occured      */
-DECL|method|warning (String s, String file, int line)
+comment|/** Issue a warning with line number information      * @param s The message      * @param file The file that has the warning (or null)      * @param line The grammar file line number on which the warning occured (or -1)      * @param column The grammar file line number on which the warning occured (or -1)      */
+DECL|method|warning (String s, String file, int line, int column)
 specifier|public
-specifier|static
 name|void
 name|warning
 parameter_list|(
@@ -2505,14 +2370,10 @@ name|file
 parameter_list|,
 name|int
 name|line
+parameter_list|,
+name|int
+name|column
 parameter_list|)
-block|{
-if|if
-condition|(
-name|file
-operator|!=
-literal|null
-condition|)
 block|{
 name|System
 operator|.
@@ -2530,6 +2391,8 @@ argument_list|(
 name|file
 argument_list|,
 name|line
+argument_list|,
+name|column
 argument_list|)
 operator|+
 literal|"warning:"
@@ -2538,29 +2401,9 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"warning; line "
-operator|+
-name|line
-operator|+
-literal|": "
-operator|+
-name|s
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 comment|/** Issue a warning with line number information      * @param s The lines of the message      * @param file The file that has the warning      * @param line The grammar file line number on which the warning occured      */
-DECL|method|warning (String[] s, String file, int line)
+DECL|method|warning (String[] s, String file, int line, int column)
 specifier|public
-specifier|static
 name|void
 name|warning
 parameter_list|(
@@ -2573,6 +2416,9 @@ name|file
 parameter_list|,
 name|int
 name|line
+parameter_list|,
+name|int
+name|column
 parameter_list|)
 block|{
 if|if
@@ -2594,13 +2440,6 @@ literal|"bad multi-line message to Tool.warning"
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|file
-operator|!=
-literal|null
-condition|)
-block|{
 name|System
 operator|.
 name|err
@@ -2617,6 +2456,8 @@ argument_list|(
 name|file
 argument_list|,
 name|line
+argument_list|,
+name|column
 argument_list|)
 operator|+
 literal|"warning:"
@@ -2660,7 +2501,11 @@ argument_list|(
 name|file
 argument_list|,
 name|line
+argument_list|,
+name|column
 argument_list|)
+operator|+
+literal|"    "
 operator|+
 name|s
 index|[
@@ -2670,65 +2515,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-else|else
-block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"warning: line "
-operator|+
-name|line
-operator|+
-literal|": "
-operator|+
-name|s
-index|[
-literal|0
-index|]
-argument_list|)
-expr_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|1
-init|;
-name|i
-operator|<
-name|s
-operator|.
-name|length
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"warning: line "
-operator|+
-name|line
-operator|+
-literal|": "
-operator|+
-name|s
-index|[
-name|i
-index|]
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-block|}
-comment|/**      * Support C++ namespaces (for now).  Add a nested namespace name to the      * current namespace.      * DAW: David Wagner      */
+comment|/**      * Support C++& C# namespaces (for now).      * C++: Add a nested namespace name to the current namespace.      * C# : Specify an enclosing namespace for the generated code.      * DAW: David Wagner -- C# support by kunle odutola      */
 DECL|method|setNameSpace (String name)
 specifier|public
 name|void
@@ -2749,6 +2536,8 @@ operator|=
 operator|new
 name|NameSpace
 argument_list|(
+name|StringUtils
+operator|.
 name|stripFrontBack
 argument_list|(
 name|name

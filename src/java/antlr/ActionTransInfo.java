@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_comment
@@ -36,6 +36,14 @@ init|=
 literal|null
 decl_stmt|;
 comment|// somebody referenced #rule; string is translated var
+DECL|field|followSetName
+specifier|public
+name|String
+name|followSetName
+init|=
+literal|null
+decl_stmt|;
+comment|// somebody referenced $FOLLOW; string is the name of the lookahead set
 DECL|method|toString ()
 specifier|public
 name|String
@@ -50,6 +58,10 @@ operator|+
 literal|", refRuleRoot:"
 operator|+
 name|refRuleRoot
+operator|+
+literal|", FOLLOW Set:"
+operator|+
+name|followSetName
 return|;
 block|}
 block|}

@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -119,7 +119,7 @@ init|=
 literal|null
 decl_stmt|;
 comment|// what was generated last?
-comment|/** Create a Diagnostic code-generator using the given Grammar 	 * The caller must still call setTool, setBehavior, and setAnalyzer 	 * before generating code. 	 */
+comment|/** Create a Diagnostic code-generator using the given Grammar      * The caller must still call setTool, setBehavior, and setAnalyzer      * before generating code.      */
 DECL|method|HTMLCodeGenerator ()
 specifier|public
 name|HTMLCodeGenerator
@@ -134,6 +134,140 @@ operator|new
 name|JavaCharFormatter
 argument_list|()
 expr_stmt|;
+block|}
+comment|/** Encode a string for printing in a HTML document..      * e.g. encode '<' '>' and similar stuff      * @param s the string to encode      */
+DECL|method|HTMLEncode (String s)
+specifier|static
+name|String
+name|HTMLEncode
+parameter_list|(
+name|String
+name|s
+parameter_list|)
+block|{
+name|StringBuffer
+name|buf
+init|=
+operator|new
+name|StringBuffer
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|,
+name|len
+init|=
+name|s
+operator|.
+name|length
+argument_list|()
+init|;
+name|i
+operator|<
+name|len
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|char
+name|c
+init|=
+name|s
+operator|.
+name|charAt
+argument_list|(
+name|i
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|c
+operator|==
+literal|'&'
+condition|)
+name|buf
+operator|.
+name|append
+argument_list|(
+literal|"&amp;"
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|c
+operator|==
+literal|'\"'
+condition|)
+name|buf
+operator|.
+name|append
+argument_list|(
+literal|"&quot;"
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|c
+operator|==
+literal|'\''
+condition|)
+name|buf
+operator|.
+name|append
+argument_list|(
+literal|"&#039;"
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|c
+operator|==
+literal|'<'
+condition|)
+name|buf
+operator|.
+name|append
+argument_list|(
+literal|"&lt;"
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|c
+operator|==
+literal|'>'
+condition|)
+name|buf
+operator|.
+name|append
+argument_list|(
+literal|"&gt;"
+argument_list|)
+expr_stmt|;
+else|else
+name|buf
+operator|.
+name|append
+argument_list|(
+name|c
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|buf
+operator|.
+name|toString
+argument_list|()
+return|;
 block|}
 DECL|method|gen ()
 specifier|public
@@ -191,25 +325,17 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|tool
+name|antlrTool
 operator|.
 name|hasError
+argument_list|()
 condition|)
 block|{
-name|System
+name|antlrTool
 operator|.
-name|out
-operator|.
-name|println
+name|fatalError
 argument_list|(
 literal|"Exiting due to errors."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
-literal|1
 argument_list|)
 expr_stmt|;
 block|}
@@ -221,21 +347,18 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|System
+name|antlrTool
 operator|.
-name|out
-operator|.
-name|println
+name|reportException
 argument_list|(
 name|e
-operator|.
-name|getMessage
-argument_list|()
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** Generate code for the given grammar element. 	 * @param blk The {...} action to generate 	 */
+comment|/** Generate code for the given grammar element.      * @param blk The {...} action to generate      */
 DECL|method|gen (ActionElement action)
 specifier|public
 name|void
@@ -245,9 +368,9 @@ name|ActionElement
 name|action
 parameter_list|)
 block|{
-comment|/* 		_print("{"); 		_printAction(action.actionText); 		_print("} "); 		*/
+comment|// no-op
 block|}
-comment|/** Generate code for the given grammar element.  * @param blk The "x|y|z|..." block to generate  */
+comment|/** Generate code for the given grammar element.      * @param blk The "x|y|z|..." block to generate      */
 DECL|method|gen (AlternativeBlock blk)
 specifier|public
 name|void
@@ -265,7 +388,7 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Generate code for the given grammar element. 	 * @param blk The block-end element to generate.  Block-end 	 * elements are synthesized by the grammar parser to represent 	 * the end of a block. 	 */
+comment|/** Generate code for the given grammar element.      * @param blk The block-end element to generate.  Block-end      * elements are synthesized by the grammar parser to represent      * the end of a block.      */
 DECL|method|gen (BlockEndElement end)
 specifier|public
 name|void
@@ -277,7 +400,7 @@ parameter_list|)
 block|{
 comment|// no-op
 block|}
-comment|/** Generate code for the given grammar element. 	 * @param blk The character literal reference to generate 	 */
+comment|/** Generate code for the given grammar element.      * @param blk The character literal reference to generate      */
 DECL|method|gen (CharLiteralElement atom)
 specifier|public
 name|void
@@ -287,7 +410,6 @@ name|CharLiteralElement
 name|atom
 parameter_list|)
 block|{
-comment|/* 		if (atom.label != null) { 			_print(atom.label+"="); 		} 		*/
 if|if
 condition|(
 name|atom
@@ -303,15 +425,18 @@ expr_stmt|;
 block|}
 name|_print
 argument_list|(
+name|HTMLEncode
+argument_list|(
 name|atom
 operator|.
 name|atomText
+argument_list|)
 operator|+
 literal|" "
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Generate code for the given grammar element. 	 * @param blk The character-range reference to generate 	 */
+comment|/** Generate code for the given grammar element.      * @param blk The character-range reference to generate      */
 DECL|method|gen (CharRangeElement r)
 specifier|public
 name|void
@@ -321,7 +446,6 @@ name|CharRangeElement
 name|r
 parameter_list|)
 block|{
-comment|/* 		if ( r.label!=null ) { 			_print(r.label+"="); 		} 		*/
 name|print
 argument_list|(
 name|r
@@ -338,7 +462,7 @@ literal|" "
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Generate the lexer TXT file */
+comment|/** Generate the lexer HTML file */
 DECL|method|gen (LexerGrammar g)
 specifier|public
 name|void
@@ -355,11 +479,9 @@ argument_list|(
 name|g
 argument_list|)
 expr_stmt|;
-name|System
+name|antlrTool
 operator|.
-name|out
-operator|.
-name|println
+name|reportProgress
 argument_list|(
 literal|"Generating "
 operator|+
@@ -373,9 +495,7 @@ argument_list|)
 expr_stmt|;
 name|currentOutput
 operator|=
-name|antlr
-operator|.
-name|Tool
+name|antlrTool
 operator|.
 name|openOutputFile
 argument_list|(
@@ -400,7 +520,9 @@ comment|// Generate header common to all TXT output files
 name|genHeader
 argument_list|()
 expr_stmt|;
-comment|/* 		// Output the user-defined lexer premamble 		println(grammar.preambleAction.getText()); 		*/
+comment|// Output the user-defined lexer premamble
+comment|// RK: guess not..
+comment|// println(grammar.preambleAction.getText());
 comment|// Generate lexer class definition
 name|println
 argument_list|(
@@ -419,29 +541,32 @@ condition|)
 block|{
 name|_println
 argument_list|(
+name|HTMLEncode
+argument_list|(
 name|grammar
 operator|.
 name|comment
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
 name|println
 argument_list|(
-literal|"class "
+literal|"Definition of lexer "
 operator|+
 name|grammar
 operator|.
 name|getClassName
 argument_list|()
 operator|+
-literal|" extends "
+literal|", which is a subclass of "
 operator|+
 name|grammar
 operator|.
 name|getSuperClass
 argument_list|()
 operator|+
-literal|" {"
+literal|"."
 argument_list|)
 expr_stmt|;
 comment|// Generate user-defined parser class members
@@ -518,7 +643,7 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
-comment|/** Generate code for the given grammar element.  * @param blk The (...)+ block to generate  */
+comment|/** Generate code for the given grammar element.      * @param blk The (...)+ block to generate      */
 DECL|method|gen (OneOrMoreBlock blk)
 specifier|public
 name|void
@@ -536,7 +661,7 @@ literal|"+"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Generate the parser TXT file */
+comment|/** Generate the parser HTML file */
 DECL|method|gen (ParserGrammar g)
 specifier|public
 name|void
@@ -554,11 +679,9 @@ name|g
 argument_list|)
 expr_stmt|;
 comment|// Open the output stream for the parser and set the currentOutput
-name|System
+name|antlrTool
 operator|.
-name|out
-operator|.
-name|println
+name|reportProgress
 argument_list|(
 literal|"Generating "
 operator|+
@@ -572,9 +695,7 @@ argument_list|)
 expr_stmt|;
 name|currentOutput
 operator|=
-name|antlr
-operator|.
-name|Tool
+name|antlrTool
 operator|.
 name|openOutputFile
 argument_list|(
@@ -594,7 +715,6 @@ comment|// Generate the header common to all output files.
 name|genHeader
 argument_list|()
 expr_stmt|;
-comment|/* 		_print("{"); 		printAction(grammar.preambleAction.getText()); 		_print("}"); 		*/
 comment|// Generate parser class definition
 name|println
 argument_list|(
@@ -613,30 +733,34 @@ condition|)
 block|{
 name|_println
 argument_list|(
+name|HTMLEncode
+argument_list|(
 name|grammar
 operator|.
 name|comment
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
 name|println
 argument_list|(
-literal|"class "
+literal|"Definition of parser "
 operator|+
 name|grammar
 operator|.
 name|getClassName
 argument_list|()
 operator|+
-literal|" extends "
+literal|", which is a subclass of "
 operator|+
 name|grammar
 operator|.
 name|getSuperClass
 argument_list|()
+operator|+
+literal|"."
 argument_list|)
 expr_stmt|;
-comment|/* 		// Generate user-defined parser class members 		println(""); 		_print("{"); 		printAction(grammar.classMemberAction.getText()); 		_print("}"); 		*/
 comment|// Enumerate the parser rules
 name|Enumeration
 name|rules
@@ -713,7 +837,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|/** Generate code for the given grammar element. 	 * @param blk The rule-reference to generate 	 */
+comment|/** Generate code for the given grammar element.      * @param blk The rule-reference to generate      */
 DECL|method|gen (RuleRefElement rr)
 specifier|public
 name|void
@@ -739,10 +863,9 @@ name|targetRule
 argument_list|)
 decl_stmt|;
 comment|// Generate the actual rule description
-comment|/* 		if ( rr.idAssign!=null ) { 			_print(rr.idAssign+"="); 		} 		*/
 name|_print
 argument_list|(
-literal|"<a href="
+literal|"<a href=\""
 operator|+
 name|grammar
 operator|.
@@ -755,7 +878,7 @@ name|rr
 operator|.
 name|targetRule
 operator|+
-literal|">"
+literal|"\">"
 argument_list|)
 expr_stmt|;
 name|_print
@@ -770,34 +893,17 @@ argument_list|(
 literal|"</a>"
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|rr
-operator|.
-name|args
-operator|!=
-literal|null
-condition|)
-block|{
-name|_print
-argument_list|(
-literal|"["
-operator|+
-name|rr
-operator|.
-name|args
-operator|+
-literal|"]"
-argument_list|)
-expr_stmt|;
-block|}
+comment|// RK: Leave out args..
+comment|//	if (rr.args != null) {
+comment|//		_print("["+rr.args+"]");
+comment|//	}
 name|_print
 argument_list|(
 literal|" "
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Generate code for the given grammar element. 	 * @param blk The string-literal reference to generate 	 */
+comment|/** Generate code for the given grammar element.      * @param blk The string-literal reference to generate      */
 DECL|method|gen (StringLiteralElement atom)
 specifier|public
 name|void
@@ -807,7 +913,6 @@ name|StringLiteralElement
 name|atom
 parameter_list|)
 block|{
-comment|/* 		if (atom.label != null) { 			_print(atom.label+"="); 		} 		*/
 if|if
 condition|(
 name|atom
@@ -823,9 +928,12 @@ expr_stmt|;
 block|}
 name|_print
 argument_list|(
+name|HTMLEncode
+argument_list|(
 name|atom
 operator|.
 name|atomText
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|_print
@@ -834,7 +942,7 @@ literal|" "
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Generate code for the given grammar element. 	 * @param blk The token-range reference to generate 	 */
+comment|/** Generate code for the given grammar element.      * @param blk The token-range reference to generate      */
 DECL|method|gen (TokenRangeElement r)
 specifier|public
 name|void
@@ -844,7 +952,6 @@ name|TokenRangeElement
 name|r
 parameter_list|)
 block|{
-comment|/* 		if ( r.label!=null ) { 			_print(r.label+"="); 		} 		*/
 name|print
 argument_list|(
 name|r
@@ -861,7 +968,7 @@ literal|" "
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Generate code for the given grammar element. 	 * @param blk The token-reference to generate 	 */
+comment|/** Generate code for the given grammar element.      * @param blk The token-reference to generate      */
 DECL|method|gen (TokenRefElement atom)
 specifier|public
 name|void
@@ -871,7 +978,6 @@ name|TokenRefElement
 name|atom
 parameter_list|)
 block|{
-comment|/* 		if (atom.label != null) { 			_print(atom.label+"="); 		} 		*/
 if|if
 condition|(
 name|atom
@@ -933,11 +1039,9 @@ name|g
 argument_list|)
 expr_stmt|;
 comment|// Open the output stream for the parser and set the currentOutput
-name|System
+name|antlrTool
 operator|.
-name|out
-operator|.
-name|println
+name|reportProgress
 argument_list|(
 literal|"Generating "
 operator|+
@@ -946,14 +1050,12 @@ operator|.
 name|getClassName
 argument_list|()
 operator|+
-literal|".txt"
+literal|".html"
 argument_list|)
 expr_stmt|;
 name|currentOutput
 operator|=
-name|antlr
-operator|.
-name|Tool
+name|antlrTool
 operator|.
 name|openOutputFile
 argument_list|(
@@ -962,7 +1064,7 @@ operator|.
 name|getClassName
 argument_list|()
 operator|+
-literal|".txt"
+literal|".html"
 argument_list|)
 expr_stmt|;
 comment|//SAS: changed for proper text file io
@@ -980,37 +1082,12 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
-name|println
-argument_list|(
-literal|"*** Tree-walker Preamble Action."
-argument_list|)
-expr_stmt|;
-name|println
-argument_list|(
-literal|"This action will appear before the declaration of your tree-walker class:"
-argument_list|)
-expr_stmt|;
-name|tabs
-operator|++
-expr_stmt|;
-name|println
-argument_list|(
-name|grammar
-operator|.
-name|preambleAction
-operator|.
-name|getText
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|tabs
-operator|--
-expr_stmt|;
-name|println
-argument_list|(
-literal|"*** End of tree-walker Preamble Action"
-argument_list|)
-expr_stmt|;
+comment|//		println("*** Tree-walker Preamble Action.");
+comment|//		println("This action will appear before the declaration of your tree-walker class:");
+comment|//		tabs++;
+comment|//		println(grammar.preambleAction.getText());
+comment|//		tabs--;
+comment|//		println("*** End of tree-walker Preamble Action");
 comment|// Generate tree-walker class definition
 name|println
 argument_list|(
@@ -1029,79 +1106,49 @@ condition|)
 block|{
 name|_println
 argument_list|(
+name|HTMLEncode
+argument_list|(
 name|grammar
 operator|.
 name|comment
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
 name|println
 argument_list|(
-literal|"class "
+literal|"Definition of tree parser "
 operator|+
 name|grammar
 operator|.
 name|getClassName
 argument_list|()
 operator|+
-literal|" extends "
+literal|", which is a subclass of "
 operator|+
 name|grammar
 operator|.
 name|getSuperClass
 argument_list|()
 operator|+
-literal|"{"
+literal|"."
 argument_list|)
 expr_stmt|;
 comment|// Generate user-defined tree-walker class members
-name|println
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
-name|println
-argument_list|(
-literal|"*** User-defined tree-walker class members:"
-argument_list|)
-expr_stmt|;
-name|println
-argument_list|(
-literal|"These are the member declarations that you defined for your class:"
-argument_list|)
-expr_stmt|;
-name|tabs
-operator|++
-expr_stmt|;
-name|printAction
-argument_list|(
-name|grammar
-operator|.
-name|classMemberAction
-operator|.
-name|getText
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|tabs
-operator|--
-expr_stmt|;
-name|println
-argument_list|(
-literal|"*** End of user-defined tree-walker class members"
-argument_list|)
-expr_stmt|;
+comment|//		println("");
+comment|//		println("*** User-defined tree-walker class members:");
+comment|//		println("These are the member declarations that you defined for your class:");
+comment|//		tabs++;
+comment|//		printAction(grammar.classMemberAction.getText());
+comment|//		tabs--;
+comment|//		println("*** End of user-defined tree-walker class members");
 comment|// Generate code for each rule in the grammar
 name|println
 argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
-name|println
-argument_list|(
-literal|"*** tree-walker rules:"
-argument_list|)
-expr_stmt|;
+comment|//		println("*** tree-walker rules:");
 name|tabs
 operator|++
 expr_stmt|;
@@ -1167,21 +1214,9 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
-name|println
-argument_list|(
-literal|"*** End of tree-walker rules"
-argument_list|)
-expr_stmt|;
-name|println
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
-name|println
-argument_list|(
-literal|"*** End of tree-walker"
-argument_list|)
-expr_stmt|;
+comment|//		println("*** End of tree-walker rules");
+comment|//		println("");
+comment|//		println("*** End of tree-walker");
 comment|// Close the tree-walker output stream
 name|currentOutput
 operator|.
@@ -1210,7 +1245,7 @@ literal|". "
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Generate code for the given grammar element.  * @param blk The (...)* block to generate  */
+comment|/** Generate code for the given grammar element.      * @param blk The (...)* block to generate      */
 DECL|method|gen (ZeroOrMoreBlock blk)
 specifier|public
 name|void
@@ -1301,40 +1336,15 @@ name|elem
 expr_stmt|;
 block|}
 block|}
-comment|/** Generate the header for a block, which may be a RuleBlock or a 	 * plain AlternativeBLock.  This generates any variable declarations, 	 * init-actions, and syntactic-predicate-testing variables. 	 * @blk The block for which the preamble is to be generated. 	 */
-DECL|method|genBlockPreamble (AlternativeBlock blk)
-specifier|protected
-name|void
-name|genBlockPreamble
-parameter_list|(
-name|AlternativeBlock
-name|blk
-parameter_list|)
-block|{
+comment|/** Generate the header for a block, which may be a RuleBlock or a      * plain AlternativeBLock.  This generates any variable declarations,      * init-actions, and syntactic-predicate-testing variables.      * @blk The block for which the preamble is to be generated.      */
+comment|//	protected void genBlockPreamble(AlternativeBlock blk) {
+comment|// RK: don't dump out init actions
 comment|// dump out init action
-if|if
-condition|(
-name|blk
-operator|.
-name|initAction
-operator|!=
-literal|null
-condition|)
-block|{
-name|printAction
-argument_list|(
-literal|"{"
-operator|+
-name|blk
-operator|.
-name|initAction
-operator|+
-literal|"}"
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-comment|/**Generate common code for a block of alternatives; return a postscript  * that needs to be generated at the end of the block.  Other routines  * may append else-clauses and such for error checking before the postfix  * is generated.  */
+comment|//		if ( blk.initAction!=null ) {
+comment|//			printAction("{" + blk.initAction + "}");
+comment|//		}
+comment|//	}
+comment|/**Generate common code for a block of alternatives; return a postscript      * that needs to be generated at the end of the block.  Other routines      * may append else-clauses and such for error checking before the postfix      * is generated.      */
 DECL|method|genCommonBlock (AlternativeBlock blk)
 specifier|public
 name|void
@@ -1398,7 +1408,6 @@ operator|>
 literal|1
 condition|)
 block|{
-comment|/* 			// only do newline if the last element wasn't a multi-line block 			if ( prevAltElem==null || 				 !(prevAltElem instanceof AlternativeBlock) || 				 ((AlternativeBlock)prevAltElem).alternatives.size()==1 ) 			{ 				_println(""); 			} 			*/
 name|_println
 argument_list|(
 literal|""
@@ -1411,6 +1420,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Dump the alternative, starting with predicates
+comment|//
 name|boolean
 name|save
 init|=
@@ -1424,46 +1434,18 @@ name|tabs
 operator|++
 expr_stmt|;
 comment|// in case we do a newline in alt, increase the tab indent
+comment|// RK: don't dump semantic/syntactic predicates
+comment|// only obscures grammar.
+comment|//
 comment|// Dump semantic predicates
-if|if
-condition|(
-name|alt
-operator|.
-name|semPred
-operator|!=
-literal|null
-condition|)
-block|{
-name|println
-argument_list|(
-literal|"{"
-operator|+
-name|alt
-operator|.
-name|semPred
-operator|+
-literal|"}?"
-argument_list|)
-expr_stmt|;
-block|}
+comment|//
+comment|//	if (alt.semPred != null) {
+comment|//		println("{" + alt.semPred + "}?");
+comment|//	}
 comment|// Dump syntactic predicate
-if|if
-condition|(
-name|alt
-operator|.
-name|synPred
-operator|!=
-literal|null
-condition|)
-block|{
-name|genSynPred
-argument_list|(
-name|alt
-operator|.
-name|synPred
-argument_list|)
-expr_stmt|;
-block|}
+comment|//	if (alt.synPred != null) {
+comment|//		genSynPred(alt.synPred);
+comment|//	}
 name|genAlt
 argument_list|(
 name|alt
@@ -1478,7 +1460,7 @@ name|save
 expr_stmt|;
 block|}
 block|}
-comment|/** Generate a textual representation of the follow set 	 * for a block. 	 * @param blk  The rule block of interest 	 */
+comment|/** Generate a textual representation of the follow set      * for a block.      * @param blk  The rule block of interest      */
 DECL|method|genFollowSetForRuleBlock (RuleBlock blk)
 specifier|public
 name|void
@@ -1615,11 +1597,8 @@ literal|"( "
 argument_list|)
 expr_stmt|;
 block|}
-name|genBlockPreamble
-argument_list|(
-name|blk
-argument_list|)
-expr_stmt|;
+comment|// RK: don't dump init actions
+comment|//	genBlockPreamble(blk);
 name|genCommonBlock
 argument_list|(
 name|blk
@@ -1698,6 +1677,11 @@ parameter_list|()
 block|{
 name|println
 argument_list|(
+literal|"<!DOCTYPE html PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">"
+argument_list|)
+expr_stmt|;
+name|println
+argument_list|(
 literal|"<HTML>"
 argument_list|)
 expr_stmt|;
@@ -1710,7 +1694,7 @@ name|println
 argument_list|(
 literal|"<TITLE>Grammar "
 operator|+
-name|tool
+name|antlrTool
 operator|.
 name|grammarFile
 operator|+
@@ -1729,7 +1713,7 @@ argument_list|)
 expr_stmt|;
 name|println
 argument_list|(
-literal|"<table border=1 cellpadding=5>"
+literal|"<table summary=\"\" border=\"1\" cellpadding=\"5\">"
 argument_list|)
 expr_stmt|;
 name|println
@@ -1744,7 +1728,7 @@ argument_list|)
 expr_stmt|;
 name|println
 argument_list|(
-literal|"<font size=+2>Grammar "
+literal|"<font size=\"+2\">Grammar "
 operator|+
 name|grammar
 operator|.
@@ -1756,9 +1740,9 @@ argument_list|)
 expr_stmt|;
 name|println
 argument_list|(
-literal|"<a href=http://www.ANTLR.org>ANTLR</a>-generated HTML file from "
+literal|"<a href=\"http://www.ANTLR.org\">ANTLR</a>-generated HTML file from "
 operator|+
-name|tool
+name|antlrTool
 operator|.
 name|grammarFile
 argument_list|)
@@ -1770,14 +1754,14 @@ argument_list|)
 expr_stmt|;
 name|println
 argument_list|(
-literal|"Terence Parr,<a href=http://www.magelang.com>MageLang Institute</a>"
+literal|"Terence Parr,<a href=\"http://www.magelang.com\">MageLang Institute</a>"
 argument_list|)
 expr_stmt|;
 name|println
 argument_list|(
 literal|"<br>ANTLR Version "
 operator|+
-name|Tool
+name|antlrTool
 operator|.
 name|version
 operator|+
@@ -1804,22 +1788,10 @@ argument_list|(
 literal|"<PRE>"
 argument_list|)
 expr_stmt|;
-name|tabs
-operator|++
-expr_stmt|;
-name|printAction
-argument_list|(
-name|behavior
-operator|.
-name|getHeaderAction
-argument_list|(
-literal|""
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|tabs
-operator|--
-expr_stmt|;
+comment|// RK: see no reason for printing include files and stuff...
+comment|//		tabs++;
+comment|//		printAction(behavior.getHeaderAction(""));
+comment|//		tabs--;
 block|}
 comment|/**Generate the lookahead set for an alternate. */
 DECL|method|genLookaheadSetForAlt (Alternative alt)
@@ -1914,7 +1886,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** Generate a textual representation of the lookahead set 	 * for a block. 	 * @param blk  The block of interest 	 */
+comment|/** Generate a textual representation of the lookahead set      * for a block.      * @param blk  The block of interest      */
 DECL|method|genLookaheadSetForBlock (AlternativeBlock blk)
 specifier|public
 name|void
@@ -2037,7 +2009,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** Generate the nextToken rule. 	 * nextToken is a synthetic lexer rule that is the implicit OR of all 	 * user-defined lexer rules. 	 */
+comment|/** Generate the nextToken rule.      * nextToken is a synthetic lexer rule that is the implicit OR of all      * user-defined lexer rules.      */
 DECL|method|genNextToken ()
 specifier|public
 name|void
@@ -2134,7 +2106,7 @@ name|blk
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Generate code for a named rule block 	 * @param s The RuleSymbol describing the rule to generate 	*/
+comment|/** Generate code for a named rule block      * @param s The RuleSymbol describing the rule to generate      */
 DECL|method|genRule (RuleSymbol s)
 specifier|public
 name|void
@@ -2174,9 +2146,12 @@ condition|)
 block|{
 name|_println
 argument_list|(
+name|HTMLEncode
+argument_list|(
 name|s
 operator|.
 name|comment
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2218,14 +2193,14 @@ block|}
 block|}
 name|_print
 argument_list|(
-literal|"<a name="
+literal|"<a name=\""
 operator|+
 name|s
 operator|.
 name|getId
 argument_list|()
 operator|+
-literal|">"
+literal|"\">"
 argument_list|)
 expr_stmt|;
 name|_print
@@ -2250,50 +2225,16 @@ operator|.
 name|getBlock
 argument_list|()
 decl_stmt|;
+comment|// RK: for HTML output not of much value...
 comment|// Gen method return value(s)
-if|if
-condition|(
-name|rblk
-operator|.
-name|returnAction
-operator|!=
-literal|null
-condition|)
-block|{
-name|_print
-argument_list|(
-literal|"["
-operator|+
-name|rblk
-operator|.
-name|returnAction
-operator|+
-literal|"]"
-argument_list|)
-expr_stmt|;
-block|}
+comment|//		if (rblk.returnAction != null) {
+comment|//			_print("["+rblk.returnAction+"]");
+comment|//		}
 comment|// Gen arguments
-if|if
-condition|(
-name|rblk
-operator|.
-name|argAction
-operator|!=
-literal|null
-condition|)
-block|{
-name|_print
-argument_list|(
-literal|" returns ["
-operator|+
-name|rblk
-operator|.
-name|argAction
-operator|+
-literal|"]"
-argument_list|)
-expr_stmt|;
-block|}
+comment|//		if (rblk.argAction != null)
+comment|//		{
+comment|//				_print(" returns [" + rblk.argAction+"]");
+comment|//		}
 name|_println
 argument_list|(
 literal|""
@@ -2329,7 +2270,7 @@ name|tabs
 operator|--
 expr_stmt|;
 block|}
-comment|/** Generate the syntactic predicate.  This basically generates 	 * the alternative block, buts tracks if we are inside a synPred 	 * @param blk  The syntactic predicate block 	 */
+comment|/** Generate the syntactic predicate.  This basically generates      * the alternative block, buts tracks if we are inside a synPred      * @param blk  The syntactic predicate block      */
 DECL|method|genSynPred (SynPredBlock blk)
 specifier|protected
 name|void
@@ -2388,11 +2329,9 @@ throws|throws
 name|IOException
 block|{
 comment|// Open the token output TXT file and set the currentOutput stream
-name|System
+name|antlrTool
 operator|.
-name|out
-operator|.
-name|println
+name|reportProgress
 argument_list|(
 literal|"Generating "
 operator|+
@@ -2408,9 +2347,7 @@ argument_list|)
 expr_stmt|;
 name|currentOutput
 operator|=
-name|antlr
-operator|.
-name|Tool
+name|antlrTool
 operator|.
 name|openOutputFile
 argument_list|(
@@ -2543,7 +2480,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|/** Get a string for an expression to generate creation of an AST subtree. 	  * @param v A Vector of String, where each element is an expression in the target language yielding an AST node. 	  */
+comment|/** Get a string for an expression to generate creation of an AST subtree.      * @param v A Vector of String, where each element is an expression in the target language yielding an AST node.      */
 DECL|method|getASTCreateString (Vector v)
 specifier|public
 name|String
@@ -2557,7 +2494,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** Get a string for an expression to generate creating of an AST node 	  * @param str The arguments to the AST constructor 	  */
+comment|/** Get a string for an expression to generate creating of an AST node      * @param str The arguments to the AST constructor      */
 DECL|method|getASTCreateString (GrammarAtom atom, String str)
 specifier|public
 name|String
@@ -2574,7 +2511,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** Map an identifier to it's corresponding tree-node variable. 	  * This is context-sensitive, depending on the rule and alternative 	  * being generated 	  * @param id The identifier name to map 	  * @param forInput true if the input tree node variable is to be returned, otherwise the output variable is returned. 	  */
+comment|/** Map an identifier to it's corresponding tree-node variable.      * This is context-sensitive, depending on the rule and alternative      * being generated      * @param id The identifier name to map      * @param forInput true if the input tree node variable is to be returned, otherwise the output variable is returned.      */
 DECL|method|mapTreeId (String id, ActionTransInfo tInfo)
 specifier|public
 name|String
@@ -2591,7 +2528,30 @@ return|return
 name|id
 return|;
 block|}
-comment|/** Format a lookahead or follow set. 	 * @param depth The depth of the entire lookahead/follow 	 * @param k The lookahead level to print 	 * @param lookahead  The lookahead/follow set to print 	 */
+comment|/// unused.
+DECL|method|processActionForSpecialSymbols (String actionStr, int line, RuleBlock currentRule, ActionTransInfo tInfo)
+specifier|protected
+name|String
+name|processActionForSpecialSymbols
+parameter_list|(
+name|String
+name|actionStr
+parameter_list|,
+name|int
+name|line
+parameter_list|,
+name|RuleBlock
+name|currentRule
+parameter_list|,
+name|ActionTransInfo
+name|tInfo
+parameter_list|)
+block|{
+return|return
+name|actionStr
+return|;
+block|}
+comment|/** Format a lookahead or follow set.      * @param depth The depth of the entire lookahead/follow      * @param k The lookahead level to print      * @param lookahead  The lookahead/follow set to print      */
 DECL|method|printSet (int depth, int k, Lookahead lookahead)
 specifier|public
 name|void

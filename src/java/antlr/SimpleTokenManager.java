@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -83,10 +83,10 @@ name|Hashtable
 name|table
 decl_stmt|;
 comment|// the ANTLR tool
-DECL|field|tool
+DECL|field|antlrTool
 specifier|protected
 name|Tool
-name|tool
+name|antlrTool
 decl_stmt|;
 comment|// Name of the token manager
 DECL|field|name
@@ -111,7 +111,7 @@ name|Tool
 name|tool_
 parameter_list|)
 block|{
-name|tool
+name|antlrTool
 operator|=
 name|tool_
 expr_stmt|;
@@ -239,11 +239,11 @@ name|maxToken
 expr_stmt|;
 name|tm
 operator|.
-name|tool
+name|antlrTool
 operator|=
 name|this
 operator|.
-name|tool
+name|antlrTool
 expr_stmt|;
 name|tm
 operator|.
@@ -260,7 +260,7 @@ name|CloneNotSupportedException
 name|e
 parameter_list|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|panic
 argument_list|(
@@ -425,7 +425,7 @@ name|keys
 argument_list|()
 return|;
 block|}
-comment|/** Get the token vocabulary (read-only). 	 * @return A Vector of TokenSymbol  	 */
+comment|/** Get the token vocabulary (read-only).      * @return A Vector of TokenSymbol      */
 DECL|method|getVocabulary ()
 specifier|public
 name|Vector
@@ -460,6 +460,7 @@ name|TokenSymbol
 name|sym
 parameter_list|)
 block|{
+comment|// System.out.println("mapToTokenSymbol("+name+","+sym+")");
 name|table
 operator|.
 name|put

@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_comment
@@ -21,7 +21,7 @@ name|CppCharFormatter
 implements|implements
 name|CharFormatter
 block|{
-comment|/** Given a character value, return a string representing the character 	 * that can be embedded inside a string literal or character literal 	 * This works for Java/C/C++ code-generation and languages with compatible 	 * special-character-escapment. 	 * Code-generators for languages should override this method. 	 * @param c   The character of interest. 	 * @param forCharLiteral  true to escape for char literal, false for string literal 	 */
+comment|/** Given a character value, return a string representing the character 	 * that can be embedded inside a string literal or character literal 	 * This works for Java/C/C++ code-generation and languages with compatible 	 * special-character-escapment. 	 * 	 * Used internally in CppCharFormatter and in 	 * CppCodeGenerator.converJavaToCppString. 	 * 	 * @param c   The character of interest. 	 * @param forCharLiteral  true to escape for char literal, false for string literal 	 */
 DECL|method|escapeChar (int c, boolean forCharLiteral)
 specifier|public
 name|String
@@ -34,6 +34,7 @@ name|boolean
 name|forCharLiteral
 parameter_list|)
 block|{
+comment|// System.out.println("CppCharFormatter.escapeChar("+c+")");
 switch|switch
 condition|(
 name|c
@@ -102,9 +103,9 @@ operator|>
 literal|255
 condition|)
 block|{
-return|return
-literal|"\\u"
-operator|+
+name|String
+name|s
+init|=
 name|Integer
 operator|.
 name|toString
@@ -113,6 +114,27 @@ name|c
 argument_list|,
 literal|16
 argument_list|)
+decl_stmt|;
+comment|// put leading zeroes in front of the thing..
+while|while
+condition|(
+name|s
+operator|.
+name|length
+argument_list|()
+operator|<
+literal|4
+condition|)
+name|s
+operator|=
+literal|'0'
+operator|+
+name|s
+expr_stmt|;
+return|return
+literal|"\\u"
+operator|+
+name|s
 return|;
 block|}
 else|else
@@ -147,7 +169,7 @@ return|;
 block|}
 block|}
 block|}
-comment|/** Converts a String into a representation that can be use as a literal 	 * when surrounded by double-quotes. 	 * @param s The String to be changed into a literal 	 */
+comment|/** Converts a String into a representation that can be use as a literal 	 * when surrounded by double-quotes. 	 * 	 * Used for escaping semantic predicate strings for exceptions. 	 * 	 * @param s The String to be changed into a literal 	 */
 DECL|method|escapeString (String s)
 specifier|public
 name|String
@@ -181,7 +203,6 @@ condition|;
 name|i
 operator|++
 control|)
-block|{
 name|retval
 operator|+=
 name|escapeChar
@@ -196,12 +217,11 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-block|}
 return|return
 name|retval
 return|;
 block|}
-comment|/** Given a character value, return a string representing the character 	 * literal that can be recognized by the target language compiler. 	 * This works for languages that use single-quotes for character literals. 	 * Code-generators for languages should override this method. 	 * @param c   The character of interest. 	 */
+comment|/** Given a character value, return a string representing the character 	 * literal that can be recognized by the target language compiler. 	 * This works for languages that use single-quotes for character literals. 	 * @param c The character of interest. 	 */
 DECL|method|literalChar (int c)
 specifier|public
 name|String
@@ -211,8 +231,33 @@ name|int
 name|c
 parameter_list|)
 block|{
-return|return
-literal|"static_cast<unsigned char>('"
+name|String
+name|ret
+init|=
+literal|"0x"
+operator|+
+name|Integer
+operator|.
+name|toString
+argument_list|(
+name|c
+argument_list|,
+literal|16
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|c
+operator|>=
+literal|0
+operator|&&
+name|c
+operator|<=
+literal|126
+condition|)
+name|ret
+operator|+=
+literal|" /* '"
 operator|+
 name|escapeChar
 argument_list|(
@@ -221,10 +266,13 @@ argument_list|,
 literal|true
 argument_list|)
 operator|+
-literal|"')"
+literal|"' */ "
+expr_stmt|;
+return|return
+name|ret
 return|;
 block|}
-comment|/** Converts a String into a string literal 	 * This works for languages that use double-quotes for string literals. 	 * Code-generators for languages should override this method. 	 * @param s The String to be changed into a literal 	 */
+comment|/** Converts a String into a string literal 	 * This works for languages that use double-quotes for string literals. 	 * Code-generators for languages should override this method. 	 * 	 * Used for the generation of the tables with token names 	 * 	 * @param s The String to be changed into a literal 	 */
 DECL|method|literalString (String s)
 specifier|public
 name|String

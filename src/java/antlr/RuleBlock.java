@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -254,7 +254,7 @@ condition|)
 block|{
 name|grammar
 operator|.
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -274,7 +274,7 @@ else|else
 block|{
 name|grammar
 operator|.
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -594,7 +594,7 @@ else|else
 block|{
 name|grammar
 operator|.
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -608,6 +608,11 @@ argument_list|,
 name|key
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|key
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -639,7 +644,7 @@ condition|)
 block|{
 name|grammar
 operator|.
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -653,6 +658,11 @@ argument_list|,
 name|key
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|key
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -700,7 +710,7 @@ else|else
 block|{
 name|grammar
 operator|.
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -714,6 +724,11 @@ argument_list|,
 name|key
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|key
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -746,7 +761,7 @@ condition|)
 block|{
 name|grammar
 operator|.
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -760,6 +775,11 @@ argument_list|,
 name|key
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|key
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -801,7 +821,7 @@ condition|)
 block|{
 name|grammar
 operator|.
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -815,6 +835,11 @@ argument_list|,
 name|key
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|key
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -841,9 +866,9 @@ operator|==
 literal|null
 condition|)
 block|{
-name|antlr
+name|grammar
 operator|.
-name|Tool
+name|antlrTool
 operator|.
 name|panic
 argument_list|(
@@ -869,6 +894,9 @@ elseif|else
 if|if
 condition|(
 name|key
+operator|.
+name|getText
+argument_list|()
 operator|.
 name|equals
 argument_list|(
@@ -917,7 +945,7 @@ else|else
 block|{
 name|grammar
 operator|.
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -932,6 +960,11 @@ name|key
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|key
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -940,7 +973,7 @@ else|else
 block|{
 name|grammar
 operator|.
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -959,6 +992,11 @@ argument_list|,
 name|key
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|key
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;

@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_comment
@@ -25,22 +25,22 @@ DECL|field|root
 name|GrammarAtom
 name|root
 decl_stmt|;
-DECL|method|TreeElement (Grammar g, int line)
+DECL|method|TreeElement (Grammar g, Token start)
 specifier|public
 name|TreeElement
 parameter_list|(
 name|Grammar
 name|g
 parameter_list|,
-name|int
-name|line
+name|Token
+name|start
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|g
 argument_list|,
-name|line
+name|start
 argument_list|,
 literal|false
 argument_list|)

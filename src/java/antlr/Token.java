@@ -7,11 +7,11 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_comment
-comment|/** A token is minimally a token type.  Subclasses can add the text matched  *  for the token and line info.   */
+comment|/** A token is minimally a token type.  Subclasses can add the text matched  *  for the token and line info.  */
 end_comment
 
 begin_class
@@ -95,9 +95,7 @@ DECL|method|Token ()
 specifier|public
 name|Token
 parameter_list|()
-block|{
-empty_stmt|;
-block|}
+block|{     }
 DECL|method|Token (int t)
 specifier|public
 name|Token
@@ -152,6 +150,25 @@ return|return
 literal|0
 return|;
 block|}
+DECL|method|getFilename ()
+specifier|public
+name|String
+name|getFilename
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+DECL|method|setFilename (String name)
+specifier|public
+name|void
+name|setFilename
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{ 	}
 DECL|method|getText ()
 specifier|public
 name|String
@@ -162,6 +179,33 @@ return|return
 literal|"<no text>"
 return|;
 block|}
+DECL|method|setText (String t)
+specifier|public
+name|void
+name|setText
+parameter_list|(
+name|String
+name|t
+parameter_list|)
+block|{     }
+DECL|method|setColumn (int c)
+specifier|public
+name|void
+name|setColumn
+parameter_list|(
+name|int
+name|c
+parameter_list|)
+block|{     }
+DECL|method|setLine (int l)
+specifier|public
+name|void
+name|setLine
+parameter_list|(
+name|int
+name|l
+parameter_list|)
+block|{     }
 DECL|method|getType ()
 specifier|public
 name|int
@@ -171,39 +215,6 @@ block|{
 return|return
 name|type
 return|;
-block|}
-DECL|method|setColumn (int c)
-specifier|public
-name|void
-name|setColumn
-parameter_list|(
-name|int
-name|c
-parameter_list|)
-block|{
-empty_stmt|;
-block|}
-DECL|method|setLine (int l)
-specifier|public
-name|void
-name|setLine
-parameter_list|(
-name|int
-name|l
-parameter_list|)
-block|{
-empty_stmt|;
-block|}
-DECL|method|setText (String t)
-specifier|public
-name|void
-name|setText
-parameter_list|(
-name|String
-name|t
-parameter_list|)
-block|{
-empty_stmt|;
 block|}
 DECL|method|setType (int t)
 specifier|public

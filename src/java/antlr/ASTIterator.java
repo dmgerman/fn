@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -186,7 +186,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/** Find the next subtree with structure and token types equal to 	 * those of 'template'. 	 */
+comment|/** Find the next subtree with structure and token types equal to      * those of 'template'.      */
 DECL|method|next (AST template)
 specifier|public
 name|AST

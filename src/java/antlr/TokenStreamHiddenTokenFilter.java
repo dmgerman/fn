@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -43,11 +43,11 @@ name|BitSet
 name|hideMask
 decl_stmt|;
 DECL|field|nextMonitoredToken
-specifier|private
+specifier|protected
 name|CommonHiddenStreamToken
 name|nextMonitoredToken
 decl_stmt|;
-comment|/** track tail of hidden list emanating from previous 	 *  monitored token 	 */
+comment|/** track tail of hidden list emanating from previous      *  monitored token      */
 DECL|field|lastHiddenToken
 specifier|protected
 name|CommonHiddenStreamToken
@@ -243,7 +243,7 @@ return|return
 name|discardMask
 return|;
 block|}
-comment|/** Return a ptr to the hidden token appearing immediately after 	 *  token t in the input stream. 	 */
+comment|/** Return a ptr to the hidden token appearing immediately after      *  token t in the input stream.      */
 DECL|method|getHiddenAfter (CommonHiddenStreamToken t)
 specifier|public
 name|CommonHiddenStreamToken
@@ -260,7 +260,7 @@ name|getHiddenAfter
 argument_list|()
 return|;
 block|}
-comment|/** Return a ptr to the hidden token appearing immediately before 	 *  token t in the input stream. 	 */
+comment|/** Return a ptr to the hidden token appearing immediately before      *  token t in the input stream.      */
 DECL|method|getHiddenBefore (CommonHiddenStreamToken t)
 specifier|public
 name|CommonHiddenStreamToken
@@ -287,7 +287,7 @@ return|return
 name|hideMask
 return|;
 block|}
-comment|/** Return the first hidden token if one appears 	 *  before any monitored token. 	 */
+comment|/** Return the first hidden token if one appears      *  before any monitored token.      */
 DECL|method|getInitialHiddenToken ()
 specifier|public
 name|CommonHiddenStreamToken
@@ -342,7 +342,7 @@ return|return
 name|nextMonitoredToken
 return|;
 block|}
-comment|/** Return the next monitored token.  *  Test the token following the monitored token.  *  If following is another monitored token, save it  *  for the next invocation of nextToken (like a single  *  lookahead token) and return it then.  *  If following is unmonitored, nondiscarded (hidden)  *  channel token, add it to the monitored token.  *  *  Note: EOF must be a monitored Token.  */
+comment|/** Return the next monitored token.      *  Test the token following the monitored token.      *  If following is another monitored token, save it      *  for the next invocation of nextToken (like a single      *  lookahead token) and return it then.      *  If following is unmonitored, nondiscarded (hidden)      *  channel token, add it to the monitored token.      *      *  Note: EOF must be a monitored Token.      */
 DECL|method|nextToken ()
 specifier|public
 name|Token

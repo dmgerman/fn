@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_comment
@@ -40,6 +40,26 @@ specifier|protected
 name|String
 name|filename
 decl_stmt|;
+DECL|method|reset ()
+specifier|public
+name|void
+name|reset
+parameter_list|()
+block|{
+name|guessing
+operator|=
+literal|0
+expr_stmt|;
+name|filename
+operator|=
+literal|null
+expr_stmt|;
+name|input
+operator|.
+name|reset
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 

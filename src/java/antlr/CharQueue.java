@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_comment
@@ -20,26 +20,26 @@ specifier|public
 class|class
 name|CharQueue
 block|{
-comment|// Physical circular buffer of characters
+comment|/** Physical circular buffer of tokens */
 DECL|field|buffer
 specifier|protected
 name|char
 index|[]
 name|buffer
 decl_stmt|;
-comment|// buffer.length-1 for quick modulous
+comment|/** buffer.length-1 for quick modulos */
 DECL|field|sizeLessOne
-specifier|protected
+specifier|private
 name|int
 name|sizeLessOne
 decl_stmt|;
-comment|// physical index of front token
+comment|/** physical index of front token */
 DECL|field|offset
-specifier|protected
+specifier|private
 name|int
 name|offset
 decl_stmt|;
-comment|// number of characters in the queue
+comment|/** number of tokens in the queue */
 DECL|field|nbrEntries
 specifier|protected
 name|int
@@ -57,6 +57,45 @@ comment|// Find first power of 2>= to requested size
 name|int
 name|size
 decl_stmt|;
+if|if
+condition|(
+name|minSize
+operator|<
+literal|0
+condition|)
+block|{
+name|init
+argument_list|(
+literal|16
+argument_list|)
+expr_stmt|;
+comment|// pick some value for them
+return|return;
+block|}
+comment|// check for overflow
+if|if
+condition|(
+name|minSize
+operator|>=
+operator|(
+name|Integer
+operator|.
+name|MAX_VALUE
+operator|/
+literal|2
+operator|)
+condition|)
+block|{
+name|init
+argument_list|(
+name|Integer
+operator|.
+name|MAX_VALUE
+argument_list|)
+expr_stmt|;
+comment|// wow that's big.
+return|return;
+block|}
 for|for
 control|(
 name|size
@@ -71,16 +110,14 @@ name|size
 operator|*=
 literal|2
 control|)
-block|{
-empty_stmt|;
-block|}
+block|{         }
 name|init
 argument_list|(
 name|size
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Add token to end of the queue 	 * @param tok The token to add 	 */
+comment|/** Add token to end of the queue      * @param tok The token to add      */
 DECL|method|append (char tok)
 specifier|public
 specifier|final
@@ -121,7 +158,7 @@ name|nbrEntries
 operator|++
 expr_stmt|;
 block|}
-comment|/** Fetch a token from the queue by index 	 * @param idx The index of the token to fetch, where zero is the token at the front of the queue 	 */
+comment|/** Fetch a token from the queue by index      * @param idx The index of the token to fetch, where zero is the token at the front of the queue      */
 DECL|method|elementAt (int idx)
 specifier|public
 specifier|final
@@ -216,10 +253,9 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
-comment|/** Initialize the queue. 	 * @param size The initial size of the queue 	 */
+comment|/** Initialize the queue.      * @param size The initial size of the queue      */
 DECL|method|init (int size)
-specifier|private
-specifier|final
+specifier|public
 name|void
 name|init
 parameter_list|(
@@ -243,6 +279,23 @@ name|size
 operator|-
 literal|1
 expr_stmt|;
+name|offset
+operator|=
+literal|0
+expr_stmt|;
+name|nbrEntries
+operator|=
+literal|0
+expr_stmt|;
+block|}
+comment|/** Clear the queue. Leaving the previous buffer alone.      */
+DECL|method|reset ()
+specifier|public
+specifier|final
+name|void
+name|reset
+parameter_list|()
+block|{
 name|offset
 operator|=
 literal|0

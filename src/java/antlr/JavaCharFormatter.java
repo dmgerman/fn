@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_class
@@ -210,7 +210,7 @@ return|;
 block|}
 block|}
 block|}
-comment|/** Converts a String into a representation that can be use as a literal 	 * when surrounded by double-quotes. 	 * @param s The String to be changed into a literal 	 */
+comment|/** Converts a String into a representation that can be use as a literal      * when surrounded by double-quotes.      * @param s The String to be changed into a literal      */
 DECL|method|escapeString (String s)
 specifier|public
 name|String
@@ -264,7 +264,7 @@ return|return
 name|retval
 return|;
 block|}
-comment|/** Given a character value, return a string representing the character 	 * literal that can be recognized by the target language compiler. 	 * This works for languages that use single-quotes for character literals. 	 * Code-generators for languages should override this method. 	 * @param c   The character of interest. 	 */
+comment|/** Given a character value, return a string representing the character      * literal that can be recognized by the target language compiler.      * This works for languages that use single-quotes for character literals.      * Code-generators for languages should override this method.      * @param c   The character of interest.      */
 DECL|method|literalChar (int c)
 specifier|public
 name|String
@@ -287,7 +287,7 @@ operator|+
 literal|"'"
 return|;
 block|}
-comment|/** Converts a String into a string literal 	 * This works for languages that use double-quotes for string literals. 	 * Code-generators for languages should override this method. 	 * @param s The String to be changed into a literal 	 */
+comment|/** Converts a String into a string literal      * This works for languages that use double-quotes for string literals.      * Code-generators for languages should override this method.      * @param s The String to be changed into a literal      */
 DECL|method|literalString (String s)
 specifier|public
 name|String

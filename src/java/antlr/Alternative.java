@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -96,7 +96,7 @@ DECL|method|Alternative ()
 specifier|public
 name|Alternative
 parameter_list|()
-block|{ 	}
+block|{     }
 DECL|method|Alternative (AlternativeElement firstElement)
 specifier|public
 name|Alternative

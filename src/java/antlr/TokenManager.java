@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -116,7 +116,7 @@ name|Enumeration
 name|getTokenSymbolKeys
 parameter_list|()
 function_decl|;
-comment|/** Get the token vocabulary (read-only). 	 * @return A Vector of Strings indexed by token type */
+comment|/** Get the token vocabulary (read-only).      * @return A Vector of Strings indexed by token type */
 DECL|method|getVocabulary ()
 specifier|public
 name|Vector

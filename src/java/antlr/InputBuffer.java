@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_comment
@@ -51,8 +51,6 @@ specifier|abstract
 class|class
 name|InputBuffer
 block|{
-comment|// char source
-comment|//	transient Reader input;  // leave to subclasses
 comment|// Number of active markers
 DECL|field|nMarkers
 specifier|protected
@@ -98,7 +96,7 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** This method updates the state of the input buffer so that 	 *  the text matched since the most recent mark() is no longer 	 *  held by the buffer.  So, you either do a mark/rewind for 	 *  failed predicate or mark/commit to keep on parsing without 	 *  rewinding the input. 	 */
+comment|/** This method updates the state of the input buffer so that      *  the text matched since the most recent mark() is no longer      *  held by the buffer.  So, you either do a mark/rewind for      *  failed predicate or mark/commit to keep on parsing without      *  rewinding the input.      */
 DECL|method|commit ()
 specifier|public
 name|void
@@ -271,7 +269,7 @@ literal|1
 argument_list|)
 return|;
 block|}
-comment|/**Return an integer marker that can be used to rewind the buffer to 	 * its current state. 	 */
+comment|/**Return an integer marker that can be used to rewind the buffer to      * its current state.      */
 DECL|method|mark ()
 specifier|public
 name|int
@@ -288,7 +286,7 @@ return|return
 name|markerOffset
 return|;
 block|}
-comment|/**Rewind the character buffer to a marker. 	 * @param mark Marker returned previously from mark() 	 */
+comment|/**Rewind the character buffer to a marker.      * @param mark Marker returned previously from mark()      */
 DECL|method|rewind (int mark)
 specifier|public
 name|void
@@ -307,6 +305,31 @@ name|mark
 expr_stmt|;
 name|nMarkers
 operator|--
+expr_stmt|;
+block|}
+comment|/** Reset the input buffer      */
+DECL|method|reset ()
+specifier|public
+name|void
+name|reset
+parameter_list|()
+block|{
+name|nMarkers
+operator|=
+literal|0
+expr_stmt|;
+name|markerOffset
+operator|=
+literal|0
+expr_stmt|;
+name|numToConsume
+operator|=
+literal|0
+expr_stmt|;
+name|queue
+operator|.
+name|reset
+argument_list|()
 expr_stmt|;
 block|}
 comment|/** Sync up deferred consumption */

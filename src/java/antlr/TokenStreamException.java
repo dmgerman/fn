@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_comment
@@ -26,7 +26,7 @@ DECL|method|TokenStreamException ()
 specifier|public
 name|TokenStreamException
 parameter_list|()
-block|{ 	}
+block|{     }
 DECL|method|TokenStreamException (String s)
 specifier|public
 name|TokenStreamException

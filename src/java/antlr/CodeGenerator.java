@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -19,10 +19,6 @@ operator|.
 name|PrintWriter
 import|;
 end_import
-
-begin_comment
-comment|// SAS: for proper text i/o
-end_comment
 
 begin_import
 import|import
@@ -43,10 +39,6 @@ operator|.
 name|FileWriter
 import|;
 end_import
-
-begin_comment
-comment|// SAS: for proper text i/o
-end_comment
 
 begin_import
 import|import
@@ -83,6 +75,13 @@ specifier|abstract
 class|class
 name|CodeGenerator
 block|{
+DECL|field|antlrTool
+specifier|protected
+name|antlr
+operator|.
+name|Tool
+name|antlrTool
+decl_stmt|;
 comment|/** Current tab indentation for code output */
 DECL|field|tabs
 specifier|protected
@@ -112,12 +111,6 @@ DECL|field|bitsetsUsed
 specifier|protected
 name|Vector
 name|bitsetsUsed
-decl_stmt|;
-comment|/** The antlr Tool */
-DECL|field|tool
-specifier|protected
-name|Tool
-name|tool
 decl_stmt|;
 comment|/** The grammar behavior */
 DECL|field|behavior
@@ -164,6 +157,16 @@ name|DEFAULT_BITSET_TEST_THRESHOLD
 init|=
 literal|4
 decl_stmt|;
+comment|/** If there are more than 8 long words to init in a bitset,      *  try to optimize it; e.g., detect runs of -1L and 0L.      */
+DECL|field|BITSET_OPTIMIZE_INIT_THRESHOLD
+specifier|protected
+specifier|static
+specifier|final
+name|int
+name|BITSET_OPTIMIZE_INIT_THRESHOLD
+init|=
+literal|8
+decl_stmt|;
 comment|/** This is a hint for the language-specific code generator.      * A switch() or language-specific equivalent will be generated instead      * of a series of if/else statements for blocks with number of alternates      * greater than or equal to this number of non-predicated LL(1) alternates.      * This is modified by the grammar option "codeGenMakeSwitchThreshold"      */
 DECL|field|makeSwitchThreshold
 specifier|protected
@@ -209,7 +212,7 @@ DECL|method|CodeGenerator ()
 specifier|public
 name|CodeGenerator
 parameter_list|()
-block|{}
+block|{     }
 comment|/** Output a String to the currentOutput stream.      * Ignored if string is null.      * @param s The string to output      */
 DECL|method|_print (String s)
 specifier|protected
@@ -630,11 +633,16 @@ name|t
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|t
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/** Get the identifier portion of an argument-action.      * The ID of an action is assumed to be a trailing identifier.      * Specific code-generators may want to override this      * if the language has unusual declaration syntax.      * @param s The action text      * @param line Line used for error reporting.      * @return A string containing the text of the identifier      */
-DECL|method|extractIdOfAction (String s, int line)
+comment|/** Get the identifier portion of an argument-action.      * The ID of an action is assumed to be a trailing identifier.      * Specific code-generators may want to override this      * if the language has unusual declaration syntax.      * @param s The action text      * @param line Line used for error reporting.      * @param column Line used for error reporting.      * @return A string containing the text of the identifier      */
+DECL|method|extractIdOfAction (String s, int line, int column)
 specifier|protected
 name|String
 name|extractIdOfAction
@@ -644,6 +652,9 @@ name|s
 parameter_list|,
 name|int
 name|line
+parameter_list|,
+name|int
+name|column
 parameter_list|)
 block|{
 name|s
@@ -716,7 +727,7 @@ block|}
 block|}
 comment|// Something is bogus, but we cannot parse the language-specific
 comment|// actions any better.  The compiler will have to catch the problem.
-name|tool
+name|antlrTool
 operator|.
 name|warning
 argument_list|(
@@ -728,6 +739,8 @@ name|getFilename
 argument_list|()
 argument_list|,
 name|line
+argument_list|,
+name|column
 argument_list|)
 expr_stmt|;
 return|return
@@ -756,11 +769,16 @@ name|t
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|t
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 return|;
 block|}
 comment|/** Get the type portion of an argument-action.      * The type of an action is assumed to precede a trailing identifier      * Specific code-generators may want to override this      * if the language has unusual declaration syntax.      * @param s The action text      * @param line Line used for error reporting.      * @return A string containing the text of the type      */
-DECL|method|extractTypeOfAction (String s, int line)
+DECL|method|extractTypeOfAction (String s, int line, int column)
 specifier|protected
 name|String
 name|extractTypeOfAction
@@ -770,6 +788,9 @@ name|s
 parameter_list|,
 name|int
 name|line
+parameter_list|,
+name|int
+name|column
 parameter_list|)
 block|{
 name|s
@@ -844,7 +865,7 @@ block|}
 block|}
 comment|// Something is bogus, but we cannot parse the language-specific
 comment|// actions any better.  The compiler will have to catch the problem.
-name|tool
+name|antlrTool
 operator|.
 name|warning
 argument_list|(
@@ -856,6 +877,8 @@ name|getFilename
 argument_list|()
 argument_list|,
 name|line
+argument_list|,
+name|column
 argument_list|)
 expr_stmt|;
 return|return
@@ -1079,9 +1102,7 @@ name|TokenTypesFileExt
 decl_stmt|;
 name|currentOutput
 operator|=
-name|antlr
-operator|.
-name|Tool
+name|antlrTool
 operator|.
 name|openOutputFile
 argument_list|(
@@ -1092,17 +1113,17 @@ name|println
 argument_list|(
 literal|"// $ANTLR "
 operator|+
-name|Tool
+name|antlrTool
 operator|.
 name|version
 operator|+
 literal|": "
 operator|+
-name|Tool
+name|antlrTool
 operator|.
 name|fileMinusPath
 argument_list|(
-name|tool
+name|antlrTool
 operator|.
 name|grammarFile
 argument_list|)
@@ -1288,7 +1309,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|warning
 argument_list|(
@@ -1345,8 +1366,8 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|/** Process a string for an simple expression for use in xx/action.g 	 * it is used to cast simple tokens/references to the right type for 	 * the generated language. 	 * @param str A String. 	 */
-DECL|method|processStringForASTConstructor ( String str )
+comment|/** Process a string for an simple expression for use in xx/action.g      * it is used to cast simple tokens/references to the right type for      * the generated language.      * @param str A String.      */
+DECL|method|processStringForASTConstructor (String str)
 specifier|public
 name|String
 name|processStringForASTConstructor
@@ -1400,11 +1421,11 @@ operator|+
 name|index
 return|;
 block|}
-DECL|method|lexerRuleName (String id)
+DECL|method|encodeLexerRuleName (String id)
 specifier|public
 specifier|static
 name|String
-name|lexerRuleName
+name|encodeLexerRuleName
 parameter_list|(
 name|String
 name|id
@@ -1414,6 +1435,41 @@ return|return
 literal|"m"
 operator|+
 name|id
+return|;
+block|}
+DECL|method|decodeLexerRuleName (String id)
+specifier|public
+specifier|static
+name|String
+name|decodeLexerRuleName
+parameter_list|(
+name|String
+name|id
+parameter_list|)
+block|{
+if|if
+condition|(
+name|id
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+return|return
+name|id
+operator|.
+name|substring
+argument_list|(
+literal|1
+argument_list|,
+name|id
+operator|.
+name|length
+argument_list|()
+argument_list|)
 return|;
 block|}
 comment|/** Map an identifier to it's corresponding tree-node variable.      * This is context-sensitive, depending on the rule and alternative      * being generated      * @param id The identifier name to map      * @param forInput true if the input tree node variable is to be returned, otherwise the output variable is returned.      * @return The mapped id (which may be the same as the input), or null if the mapping is invalid due to duplicates      */
@@ -1430,7 +1486,7 @@ name|ActionTransInfo
 name|tInfo
 parameter_list|)
 function_decl|;
-comment|/** Add a bitset to the list of bitsets to be generated.      * if the bitset is already in the list, ignore the request.      * Always adds the bitset to the end of the list, so the      * caller can rely on the position of bitsets in the list.      * The returned position can be used to format the bitset       * name, since it is invariant.      * @param p Bit set to mark for code generation      * @param forParser true if the bitset is used for the parser, false for the lexer      * @return The position of the bitset in the list.      */
+comment|/** Add a bitset to the list of bitsets to be generated.      * if the bitset is already in the list, ignore the request.      * Always adds the bitset to the end of the list, so the      * caller can rely on the position of bitsets in the list.      * The returned position can be used to format the bitset      * name, since it is invariant.      * @param p Bit set to mark for code generation      * @param forParser true if the bitset is used for the parser, false for the lexer      * @return The position of the bitset in the list.      */
 DECL|method|markBitsetForGen (BitSet p)
 specifier|protected
 name|int
@@ -1508,7 +1564,7 @@ operator|-
 literal|1
 return|;
 block|}
-comment|/** Output tab indent followed by a String, to the currentOutput stream.      * Ignored if string is null.      * @param s The string to output.        */
+comment|/** Output tab indent followed by a String, to the currentOutput stream.      * Ignored if string is null.      * @param s The string to output.      */
 DECL|method|print (String s)
 specifier|protected
 name|void
@@ -1593,7 +1649,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** Output the current tab indentation.  This outputs the number of tabs       * indicated by the "tabs" variable to the currentOutput stream.      */
+comment|/** Output the current tab indentation.  This outputs the number of tabs      * indicated by the "tabs" variable to the currentOutput stream.      */
 DECL|method|printTabs ()
 specifier|protected
 name|void
@@ -1624,11 +1680,12 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** Lexically process tree-specifiers in the action.      *  This will replace #id and #(...) with the appropriate      *  function calls and/or variables.      *       *  This is the default Java action translator, but I have made      *  it work for C++ also.        */
-DECL|method|processActionForTreeSpecifiers (String actionStr, int line, RuleBlock currentRule, ActionTransInfo tInfo)
+comment|/** Lexically process $ and # references within the action.      *  This will replace #id and #(...) with the appropriate      *  function calls and/or variables etc...      */
+DECL|method|processActionForSpecialSymbols (String actionStr, int line, RuleBlock currentRule, ActionTransInfo tInfo)
 specifier|protected
+specifier|abstract
 name|String
-name|processActionForTreeSpecifiers
+name|processActionForSpecialSymbols
 parameter_list|(
 name|String
 name|actionStr
@@ -1642,199 +1699,167 @@ parameter_list|,
 name|ActionTransInfo
 name|tInfo
 parameter_list|)
+function_decl|;
+DECL|method|getFOLLOWBitSet (String ruleName, int k)
+specifier|public
+name|String
+name|getFOLLOWBitSet
+parameter_list|(
+name|String
+name|ruleName
+parameter_list|,
+name|int
+name|k
+parameter_list|)
 block|{
-if|if
-condition|(
-name|actionStr
-operator|==
-literal|null
-operator|||
-name|actionStr
-operator|.
-name|length
-argument_list|()
-operator|==
-literal|0
-condition|)
-return|return
-literal|null
-return|;
-comment|// The action trans info tells us (at the moment) whether an
-comment|// assignment was done to the rule's tree root.
-if|if
-condition|(
-name|grammar
-operator|==
-literal|null
-condition|)
-return|return
-name|actionStr
-return|;
-if|if
-condition|(
-operator|(
-name|grammar
-operator|.
-name|buildAST
-operator|&&
-name|actionStr
-operator|.
-name|indexOf
-argument_list|(
-literal|'#'
-argument_list|)
-operator|!=
-operator|-
-literal|1
-operator|)
-operator|||
-name|grammar
-operator|instanceof
-name|TreeWalkerGrammar
-operator|||
-operator|(
-name|grammar
-operator|instanceof
-name|LexerGrammar
-operator|&&
-name|actionStr
-operator|.
-name|indexOf
-argument_list|(
-literal|'$'
-argument_list|)
-operator|!=
-operator|-
-literal|1
-operator|)
-condition|)
-block|{
-comment|// Create a lexer to read an action and return the translated version
-name|antlr
-operator|.
-name|actions
-operator|.
-name|java
-operator|.
-name|ActionLexer
-name|lexer
+name|GrammarSymbol
+name|rs
 init|=
-operator|new
-name|antlr
+name|grammar
 operator|.
-name|actions
-operator|.
-name|java
-operator|.
-name|ActionLexer
+name|getSymbol
 argument_list|(
-name|actionStr
-argument_list|,
-name|currentRule
-argument_list|,
-name|this
-argument_list|,
-name|tInfo
+name|ruleName
 argument_list|)
 decl_stmt|;
-name|lexer
-operator|.
-name|setLineOffset
-argument_list|(
-name|line
-argument_list|)
-expr_stmt|;
-name|lexer
-operator|.
-name|setTool
-argument_list|(
-name|tool
-argument_list|)
-expr_stmt|;
-try|try
+if|if
+condition|(
+operator|!
+operator|(
+name|rs
+operator|instanceof
+name|RuleSymbol
+operator|)
+condition|)
 block|{
-name|lexer
+return|return
+literal|null
+return|;
+block|}
+name|RuleBlock
+name|blk
+init|=
+operator|(
+operator|(
+name|RuleSymbol
+operator|)
+name|rs
+operator|)
 operator|.
-name|mACTION
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|actionStr
-operator|=
-name|lexer
-operator|.
-name|getTokenObject
+name|getBlock
 argument_list|()
+decl_stmt|;
+name|Lookahead
+name|follow
+init|=
+name|grammar
 operator|.
-name|getText
+name|theLLkAnalyzer
+operator|.
+name|FOLLOW
+argument_list|(
+name|k
+argument_list|,
+name|blk
+operator|.
+name|endNode
+argument_list|)
+decl_stmt|;
+name|String
+name|followSetName
+init|=
+name|getBitsetName
+argument_list|(
+name|markBitsetForGen
+argument_list|(
+name|follow
+operator|.
+name|fset
+argument_list|)
+argument_list|)
+decl_stmt|;
+return|return
+name|followSetName
+return|;
+block|}
+DECL|method|getFIRSTBitSet (String ruleName, int k)
+specifier|public
+name|String
+name|getFIRSTBitSet
+parameter_list|(
+name|String
+name|ruleName
+parameter_list|,
+name|int
+name|k
+parameter_list|)
+block|{
+name|GrammarSymbol
+name|rs
+init|=
+name|grammar
+operator|.
+name|getSymbol
+argument_list|(
+name|ruleName
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+operator|(
+name|rs
+operator|instanceof
+name|RuleSymbol
+operator|)
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+name|RuleBlock
+name|blk
+init|=
+operator|(
+operator|(
+name|RuleSymbol
+operator|)
+name|rs
+operator|)
+operator|.
+name|getBlock
 argument_list|()
-expr_stmt|;
-comment|// System.out.println("action translated: "+actionStr);
-comment|// System.out.println("trans info is "+tInfo);
-block|}
-catch|catch
-parameter_list|(
-name|RecognitionException
-name|ex
-parameter_list|)
-block|{
-name|lexer
+decl_stmt|;
+name|Lookahead
+name|first
+init|=
+name|grammar
 operator|.
-name|reportError
+name|theLLkAnalyzer
+operator|.
+name|look
 argument_list|(
-name|ex
+name|k
+argument_list|,
+name|blk
 argument_list|)
-expr_stmt|;
-return|return
-name|actionStr
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|TokenStreamException
-name|tex
-parameter_list|)
-block|{
-name|antlr
-operator|.
-name|Tool
-operator|.
-name|panic
+decl_stmt|;
+name|String
+name|firstSetName
+init|=
+name|getBitsetName
 argument_list|(
-literal|"Error reading action:"
-operator|+
-name|actionStr
-argument_list|)
-expr_stmt|;
-return|return
-name|actionStr
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|CharStreamException
-name|io
-parameter_list|)
-block|{
-name|antlr
-operator|.
-name|Tool
-operator|.
-name|panic
+name|markBitsetForGen
 argument_list|(
-literal|"Error reading action:"
-operator|+
-name|actionStr
+name|first
+operator|.
+name|fset
 argument_list|)
-expr_stmt|;
+argument_list|)
+decl_stmt|;
 return|return
-name|actionStr
-return|;
-block|}
-block|}
-return|return
-name|actionStr
+name|firstSetName
 return|;
 block|}
 comment|/**      * Remove the assignment portion of a declaration, if any.      * @param d the declaration      * @return the declaration without any assignment portion      */
@@ -2021,7 +2046,17 @@ name|NumberFormatException
 name|e
 parameter_list|)
 block|{
-name|tool
+name|Token
+name|tok
+init|=
+name|grammar
+operator|.
+name|getOption
+argument_list|(
+literal|"codeGenMakeSwitchThreshold"
+argument_list|)
+decl_stmt|;
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -2032,14 +2067,14 @@ operator|.
 name|getClassName
 argument_list|()
 argument_list|,
-name|grammar
-operator|.
-name|getOption
-argument_list|(
-literal|"codeGenMakeSwitchThreshold"
-argument_list|)
+name|tok
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|tok
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2075,7 +2110,17 @@ name|NumberFormatException
 name|e
 parameter_list|)
 block|{
-name|tool
+name|Token
+name|tok
+init|=
+name|grammar
+operator|.
+name|getOption
+argument_list|(
+literal|"codeGenBitsetTestThreshold"
+argument_list|)
+decl_stmt|;
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -2086,14 +2131,14 @@ operator|.
 name|getClassName
 argument_list|()
 argument_list|,
-name|grammar
-operator|.
-name|getOption
-argument_list|(
-literal|"codeGenBitsetTestThreshold"
-argument_list|)
+name|tok
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|tok
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2161,7 +2206,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -2176,23 +2221,28 @@ name|t
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|t
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|setTool (Tool tool_)
+DECL|method|setTool (Tool tool)
 specifier|public
 name|void
 name|setTool
 parameter_list|(
 name|Tool
-name|tool_
+name|tool
 parameter_list|)
 block|{
-name|tool
+name|antlrTool
 operator|=
-name|tool_
+name|tool
 expr_stmt|;
 block|}
 block|}

@@ -7,11 +7,11 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_comment
-comment|/**A GrammarAtom is either a token ref, a character ref, or string.  * The analysis doesn't care.  */
+comment|/** A GrammarAtom is either a token ref, a character ref, or string.  * The analysis doesn't care.  */
 end_comment
 
 begin_class
@@ -49,7 +49,7 @@ init|=
 literal|false
 decl_stmt|;
 comment|// ~T or ~'c' or ~"foo"
-comment|/** Set to type of AST node to create during parse.  Defaults to what is 	 *  set in the TokenSymbol. 	 */
+comment|/** Set to type of AST node to create during parse.  Defaults to what is      *  set in the TokenSymbol.      */
 DECL|field|ASTNodeType
 specifier|protected
 name|String
@@ -74,6 +74,8 @@ block|{
 name|super
 argument_list|(
 name|g
+argument_list|,
+name|t
 argument_list|,
 name|autoGenType
 argument_list|)
@@ -192,7 +194,7 @@ else|else
 block|{
 name|grammar
 operator|.
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -211,6 +213,11 @@ argument_list|,
 name|option
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|option
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;

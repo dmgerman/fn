@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -75,6 +75,8 @@ specifier|protected
 name|Grammar
 name|grammar
 decl_stmt|;
+comment|// FIXME: it would be nice if the path to the original grammar file was
+comment|// also searched.
 DECL|method|ImportVocabTokenManager (Grammar grammar, String filename_, String name_, Tool tool_)
 name|ImportVocabTokenManager
 parameter_list|(
@@ -105,15 +107,22 @@ name|grammar
 operator|=
 name|grammar
 expr_stmt|;
+name|this
+operator|.
+name|filename
+operator|=
+name|filename_
+expr_stmt|;
 comment|// Figure out exactly where the file lives.  Check $PWD first,
 comment|// and then search in -o<output_dir>.
+comment|//
 name|File
 name|grammarFile
 init|=
 operator|new
 name|File
 argument_list|(
-name|filename_
+name|filename
 argument_list|)
 decl_stmt|;
 if|if
@@ -130,12 +139,12 @@ operator|=
 operator|new
 name|File
 argument_list|(
-name|Tool
+name|antlrTool
 operator|.
 name|getOutputDirectory
 argument_list|()
 argument_list|,
-name|filename_
+name|filename
 argument_list|)
 expr_stmt|;
 if|if
@@ -147,21 +156,19 @@ name|exists
 argument_list|()
 condition|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|panic
 argument_list|(
 literal|"Cannot find importVocab file '"
 operator|+
 name|filename
+operator|+
+literal|"'"
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|filename
-operator|=
-name|filename_
-expr_stmt|;
 name|setReadOnly
 argument_list|(
 literal|true
@@ -170,14 +177,17 @@ expr_stmt|;
 comment|// Read a file with lines of the form ID=number
 try|try
 block|{
-comment|// SAS: changed the following for proper text io
-name|FileReader
+name|Reader
 name|fileIn
 init|=
+operator|new
+name|BufferedReader
+argument_list|(
 operator|new
 name|FileReader
 argument_list|(
 name|grammarFile
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|ANTLRTokdefLexer
@@ -198,6 +208,13 @@ argument_list|(
 name|tokdefLexer
 argument_list|)
 decl_stmt|;
+name|tokdefParser
+operator|.
+name|setTool
+argument_list|(
+name|antlrTool
+argument_list|)
+expr_stmt|;
 name|tokdefParser
 operator|.
 name|setFilename
@@ -219,13 +236,15 @@ name|FileNotFoundException
 name|fnf
 parameter_list|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|panic
 argument_list|(
 literal|"Cannot find importVocab file '"
 operator|+
 name|filename
+operator|+
+literal|"'"
 argument_list|)
 expr_stmt|;
 block|}
@@ -235,7 +254,7 @@ name|RecognitionException
 name|ex
 parameter_list|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|panic
 argument_list|(
@@ -258,7 +277,7 @@ name|TokenStreamException
 name|ex
 parameter_list|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|panic
 argument_list|(

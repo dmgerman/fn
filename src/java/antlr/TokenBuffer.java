@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_comment
@@ -82,6 +82,32 @@ name|TokenQueue
 argument_list|(
 literal|1
 argument_list|)
+expr_stmt|;
+block|}
+comment|/** Reset the input buffer to empty state */
+DECL|method|reset ()
+specifier|public
+specifier|final
+name|void
+name|reset
+parameter_list|()
+block|{
+name|nMarkers
+operator|=
+literal|0
+expr_stmt|;
+name|markerOffset
+operator|=
+literal|0
+expr_stmt|;
+name|numToConsume
+operator|=
+literal|0
+expr_stmt|;
+name|queue
+operator|.
+name|reset
+argument_list|()
 expr_stmt|;
 block|}
 comment|/** Mark another token for deferred consumption */
@@ -212,7 +238,7 @@ literal|1
 argument_list|)
 return|;
 block|}
-comment|/**Return an integer marker that can be used to rewind the buffer to 	 * its current state. 	 */
+comment|/**Return an integer marker that can be used to rewind the buffer to      * its current state.      */
 DECL|method|mark ()
 specifier|public
 specifier|final
@@ -232,7 +258,7 @@ return|return
 name|markerOffset
 return|;
 block|}
-comment|/**Rewind the token buffer to a marker. 	 * @param mark Marker returned previously from mark() 	 */
+comment|/**Rewind the token buffer to a marker.      * @param mark Marker returned previously from mark()      */
 DECL|method|rewind (int mark)
 specifier|public
 specifier|final

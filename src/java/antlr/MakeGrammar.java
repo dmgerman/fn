@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -316,11 +316,11 @@ name|label
 operator|.
 name|setText
 argument_list|(
-name|Tool
+name|StringUtils
 operator|.
 name|stripFront
 argument_list|(
-name|Tool
+name|StringUtils
 operator|.
 name|stripBack
 argument_list|(
@@ -355,7 +355,7 @@ name|label
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|beginSubRule (Token label, int line, boolean not)
+DECL|method|beginSubRule (Token label, Token start, boolean not)
 specifier|public
 name|void
 name|beginSubRule
@@ -363,8 +363,8 @@ parameter_list|(
 name|Token
 name|label
 parameter_list|,
-name|int
-name|line
+name|Token
+name|start
 parameter_list|,
 name|boolean
 name|not
@@ -376,7 +376,7 @@ name|beginSubRule
 argument_list|(
 name|label
 argument_list|,
-name|line
+name|start
 argument_list|,
 name|not
 argument_list|)
@@ -403,7 +403,7 @@ name|AlternativeBlock
 argument_list|(
 name|grammar
 argument_list|,
-name|line
+name|start
 argument_list|,
 name|not
 argument_list|)
@@ -456,13 +456,13 @@ name|label
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|beginTree (int line)
+DECL|method|beginTree (Token tok)
 specifier|public
 name|void
 name|beginTree
 parameter_list|(
-name|int
-name|line
+name|Token
+name|tok
 parameter_list|)
 throws|throws
 name|SemanticException
@@ -488,7 +488,15 @@ operator|.
 name|getFilename
 argument_list|()
 argument_list|,
-name|line
+name|tok
+operator|.
+name|getLine
+argument_list|()
+argument_list|,
+name|tok
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 throw|throw
@@ -503,7 +511,7 @@ name|super
 operator|.
 name|beginTree
 argument_list|(
-name|line
+name|tok
 argument_list|)
 expr_stmt|;
 name|blocks
@@ -525,7 +533,7 @@ name|TreeElement
 argument_list|(
 name|grammar
 argument_list|,
-name|line
+name|tok
 argument_list|)
 expr_stmt|;
 name|context
@@ -570,7 +578,7 @@ argument_list|()
 return|;
 block|}
 block|}
-comment|/**Used to build nextToken() for the lexer. 	 * This builds a rule which has every "public" rule in the given Vector of 	 * rules as it's alternate.  Each rule ref generates a Token object. 	 * @param g  The Grammar that is being processed 	 * @param lexRules A vector of lexer rules that will be used to create an alternate block. 	 * @param rname The name of the resulting rule. 	 */
+comment|/**Used to build nextToken() for the lexer.      * This builds a rule which has every "public" rule in the given Vector of      * rules as it's alternate.  Each rule ref generates a Token object.      * @param g  The Grammar that is being processed      * @param lexRules A vector of lexer rules that will be used to create an alternate block.      * @param rname The name of the resulting rule.      */
 DECL|method|createNextTokenRule (Grammar g, Vector lexRules, String rname)
 specifier|public
 specifier|static
@@ -674,7 +682,7 @@ condition|)
 block|{
 name|g
 operator|.
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -707,6 +715,81 @@ literal|"public"
 argument_list|)
 condition|)
 block|{
+name|Alternative
+name|alt
+init|=
+operator|new
+name|Alternative
+argument_list|()
+decl_stmt|;
+comment|// create alt we'll add to ref rule
+name|RuleBlock
+name|targetRuleBlock
+init|=
+name|r
+operator|.
+name|getBlock
+argument_list|()
+decl_stmt|;
+name|Vector
+name|targetRuleAlts
+init|=
+name|targetRuleBlock
+operator|.
+name|getAlternatives
+argument_list|()
+decl_stmt|;
+comment|// collect a sem pred if only one alt and it's at the start;
+comment|// simple, but faster to implement until real hoisting
+if|if
+condition|(
+name|targetRuleAlts
+operator|!=
+literal|null
+operator|&&
+name|targetRuleAlts
+operator|.
+name|size
+argument_list|()
+operator|==
+literal|1
+condition|)
+block|{
+name|Alternative
+name|onlyAlt
+init|=
+operator|(
+name|Alternative
+operator|)
+name|targetRuleAlts
+operator|.
+name|elementAt
+argument_list|(
+literal|0
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|onlyAlt
+operator|.
+name|semPred
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// ok, has sem pred, make this rule ref alt have a pred
+name|alt
+operator|.
+name|semPred
+operator|=
+name|onlyAlt
+operator|.
+name|semPred
+expr_stmt|;
+comment|// REMOVE predicate from target rule???  NOPE, another
+comment|// rule other than nextToken() might invoke it.
+block|}
+block|}
 comment|// create a rule ref to lexer rule
 comment|// the Token is a RULE_REF not a TOKEN_REF since the
 comment|// conversion to mRulename has already taken place
@@ -736,8 +819,6 @@ operator|.
 name|AUTO_GEN_NONE
 argument_list|)
 decl_stmt|;
-comment|//labelElement(rr, new Token("_rettoken"));
-comment|// rr.setIdAssign("_ttype");
 name|rr
 operator|.
 name|setLabel
@@ -757,15 +838,14 @@ name|next
 operator|=
 name|ruleEnd
 expr_stmt|;
-name|Alternative
 name|alt
-init|=
-operator|new
-name|Alternative
+operator|.
+name|addElement
 argument_list|(
 name|rr
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+comment|// add rule ref to alt
 name|alt
 operator|.
 name|setAutoGen
@@ -781,7 +861,7 @@ argument_list|(
 name|alt
 argument_list|)
 expr_stmt|;
-comment|// Add a reference to the rule used for the alt
+comment|// add alt to rule block
 name|r
 operator|.
 name|addReference
@@ -789,6 +869,7 @@ argument_list|(
 name|rr
 argument_list|)
 expr_stmt|;
+comment|// track ref to this rule in rule blk
 block|}
 block|}
 block|}
@@ -811,7 +892,7 @@ name|rb
 return|;
 block|}
 comment|/** Return block as if they had typed: "( rule )?" */
-DECL|method|createOptionalRuleRef (String rule, int line)
+DECL|method|createOptionalRuleRef (String rule, Token start)
 specifier|private
 name|AlternativeBlock
 name|createOptionalRuleRef
@@ -819,8 +900,8 @@ parameter_list|(
 name|String
 name|rule
 parameter_list|,
-name|int
-name|line
+name|Token
+name|start
 parameter_list|)
 block|{
 comment|// Make the subrule
@@ -832,7 +913,7 @@ name|AlternativeBlock
 argument_list|(
 name|grammar
 argument_list|,
-name|line
+name|start
 argument_list|,
 literal|false
 argument_list|)
@@ -843,7 +924,7 @@ name|mrule
 init|=
 name|CodeGenerator
 operator|.
-name|lexerRuleName
+name|encodeLexerRuleName
 argument_list|(
 name|rule
 argument_list|)
@@ -873,6 +954,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Make the rule ref element
+comment|// RK: fixme probably easier to abuse start token..
 name|Token
 name|t
 init|=
@@ -890,7 +972,20 @@ name|t
 operator|.
 name|setLine
 argument_list|(
-name|line
+name|start
+operator|.
+name|getLine
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|t
+operator|.
+name|setLine
+argument_list|(
+name|start
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|RuleRefElement
@@ -1055,6 +1150,11 @@ name|r
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|r
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|r
@@ -1085,14 +1185,14 @@ name|tool
 operator|.
 name|error
 argument_list|(
-literal|"Non-lexical rule "
+literal|"Lexical rule names must be upper case, '"
 operator|+
 name|r
 operator|.
 name|getText
 argument_list|()
 operator|+
-literal|" defined inside of lexer"
+literal|"' is not"
 argument_list|,
 name|grammar
 operator|.
@@ -1102,6 +1202,11 @@ argument_list|,
 name|r
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|r
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1158,7 +1263,7 @@ name|id
 operator|=
 name|CodeGenerator
 operator|.
-name|lexerRuleName
+name|encodeLexerRuleName
 argument_list|(
 name|id
 argument_list|)
@@ -1438,6 +1543,14 @@ name|block
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|context
+argument_list|()
+operator|.
+name|block
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1645,6 +1758,11 @@ argument_list|,
 name|block
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|block
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1864,6 +1982,11 @@ name|label
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|label
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1941,6 +2064,14 @@ operator|.
 name|block
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|context
+argument_list|()
+operator|.
+name|block
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2047,6 +2178,14 @@ operator|.
 name|block
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|context
+argument_list|()
+operator|.
+name|block
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2197,6 +2336,11 @@ name|lit
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|lit
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return;
@@ -2291,6 +2435,11 @@ name|lit
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|lit
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2332,9 +2481,6 @@ argument_list|(
 name|ignore
 argument_list|,
 name|lit
-operator|.
-name|getLine
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2385,6 +2531,11 @@ argument_list|,
 name|t1
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|t1
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2437,6 +2588,11 @@ argument_list|,
 name|t1
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|t1
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2493,6 +2649,11 @@ name|t1
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|t1
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2532,6 +2693,11 @@ argument_list|,
 name|t2
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|t2
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2608,9 +2774,6 @@ argument_list|(
 name|ignore
 argument_list|,
 name|t1
-operator|.
-name|getLine
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2700,7 +2863,7 @@ else|else
 block|{
 name|grammar
 operator|.
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -2719,6 +2882,11 @@ argument_list|,
 name|option
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|option
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2799,6 +2967,11 @@ argument_list|,
 name|option
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|option
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2940,7 +3113,7 @@ name|name
 init|=
 name|CodeGenerator
 operator|.
-name|lexerRuleName
+name|encodeLexerRuleName
 argument_list|(
 operator|(
 operator|(
@@ -2995,6 +3168,11 @@ argument_list|,
 name|returnAction
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|returnAction
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3100,6 +3278,11 @@ name|r
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|r
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3197,7 +3380,7 @@ name|id
 operator|=
 name|CodeGenerator
 operator|.
-name|lexerRuleName
+name|encodeLexerRuleName
 argument_list|(
 name|id
 argument_list|)
@@ -3362,6 +3545,11 @@ name|lit
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|lit
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3463,6 +3651,11 @@ name|lit
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|lit
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 break|break;
@@ -3507,9 +3700,6 @@ argument_list|(
 name|ignore
 argument_list|,
 name|lit
-operator|.
-name|getLine
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3574,6 +3764,11 @@ name|t
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|t
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3596,6 +3791,11 @@ argument_list|,
 name|t
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|t
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3639,9 +3839,6 @@ argument_list|(
 name|ignore
 argument_list|,
 name|t
-operator|.
-name|getLine
-argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3672,6 +3869,11 @@ name|idAssign
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|idAssign
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3696,6 +3898,11 @@ argument_list|,
 name|args
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|args
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3791,6 +3998,11 @@ name|t1
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|t1
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return;
@@ -3850,6 +4062,11 @@ argument_list|,
 name|t1
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|t1
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4180,7 +4397,7 @@ name|tool
 operator|.
 name|error
 argument_list|(
-literal|"'~' cannot be applied to syntactc predicate"
+literal|"'~' cannot be applied to syntactic predicate"
 argument_list|,
 name|grammar
 operator|.
@@ -4193,6 +4410,14 @@ operator|.
 name|block
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|context
+argument_list|()
+operator|.
+name|block
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4299,6 +4524,14 @@ operator|.
 name|block
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|context
+argument_list|()
+operator|.
+name|block
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;

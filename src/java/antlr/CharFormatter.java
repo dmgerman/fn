@@ -7,11 +7,11 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_comment
-comment|/** Interface used by BitSet to format elements of the set when   * converting to string   */
+comment|/** Interface used by BitSet to format elements of the set when  * converting to string  */
 end_comment
 
 begin_interface

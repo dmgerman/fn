@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -123,7 +123,7 @@ name|stream
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Return the stream from tokens are being pulled at 	 *  the moment. 	 */
+comment|/** Return the stream from tokens are being pulled at      *  the moment.      */
 DECL|method|getCurrentStream ()
 specifier|public
 name|TokenStream
@@ -286,7 +286,7 @@ name|sname
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Abort recognition of current Token and try again. 	 *  A stream can push a new stream (for include files 	 *  for example, and then retry(), which will cause 	 *  the current stream to abort back to this.nextToken(). 	 *  this.nextToken() then asks for a token from the 	 *  current stream, which is the new "substream." 	 */
+comment|/** Abort recognition of current Token and try again.      *  A stream can push a new stream (for include files      *  for example, and then retry(), which will cause      *  the current stream to abort back to this.nextToken().      *  this.nextToken() then asks for a token from the      *  current stream, which is the new "substream."      */
 DECL|method|retry ()
 specifier|public
 name|void

@@ -1,14 +1,14 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|// $ANTLR : "tokdef.g" -> "ANTLRTokdefParser.java"$
+end_comment
+
 begin_package
 DECL|package|antlr
 package|package
 name|antlr
 package|;
 end_package
-
-begin_comment
-comment|/*  * ANTLR-generated file resulting from grammar tokdef.g  *   * Terence Parr, MageLang Institute  * ANTLR Version 2.7.0a2; 1989-1999  */
-end_comment
 
 begin_interface
 DECL|interface|ANTLRTokdefParserTokenTypes
@@ -99,12 +99,6 @@ name|int
 name|XDIGIT
 init|=
 literal|15
-decl_stmt|;
-DECL|field|VOCAB
-name|int
-name|VOCAB
-init|=
-literal|16
 decl_stmt|;
 block|}
 end_interface

@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -48,7 +48,7 @@ specifier|public
 class|class
 name|TreeParser
 block|{
-comment|/** The AST Null object; the parsing cursor is set to this when 	 *  it is found to be null.  This way, we can test the 	 *  token type of a node without having to have tests for null 	 *  everywhere. 	 */
+comment|/** The AST Null object; the parsing cursor is set to this when      *  it is found to be null.  This way, we can test the      *  token type of a node without having to have tests for null      *  everywhere.      */
 DECL|field|ASTNULL
 specifier|public
 specifier|static
@@ -214,7 +214,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**Make sure current lookahead symbol matches the given set 	 * Throw an exception upon mismatch, which is catch by either the 	 * error handler or by the syntactic predicate. 	 */
+comment|/**Make sure current lookahead symbol matches the given set      * Throw an exception upon mismatch, which is catch by either the      * error handler or by the syntactic predicate.      */
 DECL|method|match (AST t, BitSet b)
 specifier|public
 name|void
@@ -316,6 +316,7 @@ argument_list|)
 throw|;
 block|}
 block|}
+comment|/** @deprecated as of 2.7.2. This method calls System.exit() and writes      *  directly to stderr, which is usually not appropriate when      *  a parser is embedded into a larger application. Since the method is       *<code>static</code>, it cannot be overridden to avoid these problems.      *  ANTLR no longer uses this method internally or in generated code.      */
 DECL|method|panic ()
 specifier|public
 specifier|static
@@ -407,7 +408,7 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Specify an object with support code (shared by 	 *  Parser and TreeParser.  Normally, the programmer 	 *  does not play with this, using setASTNodeType instead. 	 */
+comment|/** Specify an object with support code (shared by      *  Parser and TreeParser.  Normally, the programmer      *  does not play with this, using setASTNodeType instead.      */
 DECL|method|setASTFactory (ASTFactory f)
 specifier|public
 name|void
@@ -422,7 +423,7 @@ operator|=
 name|f
 expr_stmt|;
 block|}
-comment|/** Specify the type of node to create during tree building */
+comment|/** Specify the type of node to create during tree building.      * 	@deprecated since 2.7.2      */
 DECL|method|setASTNodeType (String nodeType)
 specifier|public
 name|void

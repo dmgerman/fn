@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -156,30 +156,6 @@ name|Grammar
 name|g
 parameter_list|)
 block|{
-name|this
-argument_list|(
-name|g
-argument_list|,
-literal|0
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|AlternativeBlock (Grammar g, int line, boolean not)
-specifier|public
-name|AlternativeBlock
-parameter_list|(
-name|Grammar
-name|g
-parameter_list|,
-name|int
-name|line
-parameter_list|,
-name|boolean
-name|not
-parameter_list|)
-block|{
 name|super
 argument_list|(
 name|g
@@ -195,10 +171,49 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
-name|line
+name|not
 operator|=
-name|line
+literal|false
 expr_stmt|;
+name|nblks
+operator|++
+expr_stmt|;
+name|ID
+operator|=
+name|nblks
+expr_stmt|;
+block|}
+DECL|method|AlternativeBlock (Grammar g, Token start, boolean not)
+specifier|public
+name|AlternativeBlock
+parameter_list|(
+name|Grammar
+name|g
+parameter_list|,
+name|Token
+name|start
+parameter_list|,
+name|boolean
+name|not
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|g
+argument_list|,
+name|start
+argument_list|)
+expr_stmt|;
+name|alternatives
+operator|=
+operator|new
+name|Vector
+argument_list|(
+literal|5
+argument_list|)
+expr_stmt|;
+comment|//		this.line = start.getLine();
+comment|//		this.column = start.getColumn();
 name|this
 operator|.
 name|not
@@ -391,7 +406,7 @@ name|LOOKAHEAD_DEPTH_INIT
 expr_stmt|;
 block|}
 block|}
-comment|/**Walk the syntactic predicate and, for a rule ref R, remove 	 * the ref from the list of FOLLOW references for R (stored 	 * in the symbol table. 	 */
+comment|/**Walk the syntactic predicate and, for a rule ref R, remove      * the ref from the list of FOLLOW references for R (stored      * in the symbol table.      */
 DECL|method|removeTrackingOfRuleRefs (Grammar g)
 specifier|public
 name|void
@@ -480,7 +495,7 @@ condition|)
 block|{
 name|grammar
 operator|.
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -660,7 +675,7 @@ else|else
 block|{
 name|grammar
 operator|.
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -674,6 +689,11 @@ argument_list|,
 name|key
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|key
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -734,7 +754,7 @@ else|else
 block|{
 name|grammar
 operator|.
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -748,6 +768,11 @@ argument_list|,
 name|key
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|key
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -816,7 +841,7 @@ else|else
 block|{
 name|grammar
 operator|.
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -831,6 +856,11 @@ name|key
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|key
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -839,7 +869,7 @@ else|else
 block|{
 name|grammar
 operator|.
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -858,6 +888,11 @@ argument_list|,
 name|key
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|key
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -936,7 +971,7 @@ name|GrammarAnalyzer
 operator|.
 name|LOOKAHEAD_DEPTH_INIT
 condition|)
-block|{ 	    }
+block|{             }
 elseif|else
 if|if
 condition|(

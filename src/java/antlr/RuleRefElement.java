@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_class
@@ -62,6 +62,8 @@ name|super
 argument_list|(
 name|g
 argument_list|,
+name|t
+argument_list|,
 name|autoGenType_
 argument_list|)
 expr_stmt|;
@@ -89,81 +91,21 @@ name|targetRule
 operator|=
 name|CodeGenerator
 operator|.
-name|lexerRuleName
+name|encodeLexerRuleName
 argument_list|(
 name|targetRule
 argument_list|)
 expr_stmt|;
 block|}
-name|line
-operator|=
-name|t
-operator|.
-name|getLine
-argument_list|()
-expr_stmt|;
 block|}
-DECL|method|RuleRefElement (Grammar g, String t, int line, int autoGenType_)
-specifier|public
-name|RuleRefElement
-parameter_list|(
-name|Grammar
-name|g
-parameter_list|,
-name|String
-name|t
-parameter_list|,
-name|int
-name|line
-parameter_list|,
-name|int
-name|autoGenType_
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|g
-argument_list|,
-name|autoGenType_
-argument_list|)
-expr_stmt|;
-name|targetRule
-operator|=
-name|t
-expr_stmt|;
-if|if
-condition|(
-name|Character
-operator|.
-name|isUpperCase
-argument_list|(
-name|targetRule
-operator|.
-name|charAt
-argument_list|(
-literal|0
-argument_list|)
-argument_list|)
-condition|)
-block|{
-comment|// lexer rule?
-name|targetRule
-operator|=
-name|CodeGenerator
-operator|.
-name|lexerRuleName
-argument_list|(
-name|targetRule
-argument_list|)
-expr_stmt|;
-block|}
-name|this
-operator|.
-name|line
-operator|=
-name|line
-expr_stmt|;
-block|}
+comment|//	public RuleRefElement(Grammar g, String t, int line, int autoGenType_) {
+comment|//		super(g, autoGenType_);
+comment|//		targetRule = t;
+comment|//		if ( Character.isUpperCase(targetRule.charAt(0)) ) { // lexer rule?
+comment|//			targetRule = CodeGenerator.lexerRuleName(targetRule);
+comment|//		}
+comment|//		this.line = line;
+comment|//	}
 DECL|method|generate ()
 specifier|public
 name|void

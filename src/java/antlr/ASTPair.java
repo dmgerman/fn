@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -21,7 +21,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** ASTPair:  utility class used for manipulating a pair of ASTs   * representing the current AST root and current AST sibling.   * This exists to compensate for the lack of pointers or 'var'   * arguments in Java.   */
+comment|/** ASTPair:  utility class used for manipulating a pair of ASTs  * representing the current AST root and current AST sibling.  * This exists to compensate for the lack of pointers or 'var'  * arguments in Java.  */
 end_comment
 
 begin_class

@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -55,6 +55,16 @@ operator|.
 name|io
 operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Hashtable
 import|;
 end_import
 
@@ -155,15 +165,21 @@ specifier|protected
 name|AST
 name|returnAST
 decl_stmt|;
-comment|/** AST support code; parser and treeparser delegate to this object */
+comment|/** AST support code; parser delegates to this object. 	 *  This is set during parser construction by default 	 *  to either "new ASTFactory()" or a ctor that 	 *  has a token type to class map for hetero nodes. 	 */
 DECL|field|astFactory
 specifier|protected
 name|ASTFactory
 name|astFactory
 init|=
-operator|new
-name|ASTFactory
-argument_list|()
+literal|null
+decl_stmt|;
+comment|/** Constructed if any AST types specified in tokens{..}. 	 *  Maps an Integer->Class object. 	 */
+DECL|field|tokenTypeToASTClassMap
+specifier|protected
+name|Hashtable
+name|tokenTypeToASTClassMap
+init|=
+literal|null
 decl_stmt|;
 DECL|field|ignoreInvalidDebugCalls
 specifier|private
@@ -185,11 +201,12 @@ specifier|public
 name|Parser
 parameter_list|()
 block|{
-name|inputState
-operator|=
+name|this
+argument_list|(
 operator|new
 name|ParserSharedInputState
 argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|Parser (ParserSharedInputState state)
@@ -204,6 +221,17 @@ name|inputState
 operator|=
 name|state
 expr_stmt|;
+block|}
+comment|/** If the user specifies a tokens{} section with heterogeneous 	 *  AST node types, then ANTLR generates code to fill 	 *  this mapping. 	 */
+DECL|method|getTokenTypeToASTClassMap ()
+specifier|public
+name|Hashtable
+name|getTokenTypeToASTClassMap
+parameter_list|()
+block|{
+return|return
+name|tokenTypeToASTClassMap
+return|;
 block|}
 DECL|method|addMessageListener (MessageListener l)
 specifier|public
@@ -553,7 +581,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/** Return the token type of the ith token of lookahead where i=1 	 * is the current token being examined by the parser (i.e., it 	 * has not been matched yet). 	 */
+comment|/** Return the token type of the ith token of lookahead where i=1      * is the current token being examined by the parser (i.e., it      * has not been matched yet).      */
 DECL|method|LA (int i)
 specifier|public
 specifier|abstract
@@ -595,7 +623,7 @@ name|mark
 argument_list|()
 return|;
 block|}
-comment|/**Make sure current lookahead symbol matches token type<tt>t</tt>. 	 * Throw an exception upon mismatch, which is catch by either the 	 * error handler or by the syntactic predicate. 	 */
+comment|/**Make sure current lookahead symbol matches token type<tt>t</tt>.      * Throw an exception upon mismatch, which is catch by either the      * error handler or by the syntactic predicate.      */
 DECL|method|match (int t)
 specifier|public
 name|void
@@ -643,7 +671,7 @@ name|consume
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**Make sure current lookahead symbol matches the given set 	 * Throw an exception upon mismatch, which is catch by either the 	 * error handler or by the syntactic predicate. 	 */
+comment|/**Make sure current lookahead symbol matches the given set      * Throw an exception upon mismatch, which is catch by either the      * error handler or by the syntactic predicate.      */
 DECL|method|match (BitSet b)
 specifier|public
 name|void
@@ -743,6 +771,7 @@ name|consume
 argument_list|()
 expr_stmt|;
 block|}
+comment|/** @deprecated as of 2.7.2. This method calls System.exit() and writes      *  directly to stderr, which is usually not appropriate when      *  a parser is embedded into a larger application. Since the method is      *<code>static</code>, it cannot be overridden to avoid these problems.      *  ANTLR no longer uses this method internally or in generated code.      */
 DECL|method|panic ()
 specifier|public
 specifier|static
@@ -1056,7 +1085,7 @@ name|pos
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Specify an object with support code (shared by 	 *  Parser and TreeParser.  Normally, the programmer 	 *  does not play with this, using setASTNodeType instead. 	 */
+comment|/** Specify an object with support code (shared by      *  Parser and TreeParser.  Normally, the programmer      *  does not play with this, using setASTNodeType instead.      */
 DECL|method|setASTFactory (ASTFactory f)
 specifier|public
 name|void
@@ -1088,7 +1117,7 @@ name|cl
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Specify the type of node to create during tree building; use setASTNodeClass now  *  to be consistent with Token Object Type accessor.  */
+comment|/** Specify the type of node to create during tree building; use setASTNodeClass now      *  to be consistent with Token Object Type accessor. 	 *  @deprecated since 2.7.1      */
 DECL|method|setASTNodeType (String nodeType)
 specifier|public
 name|void

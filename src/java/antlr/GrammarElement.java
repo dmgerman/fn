@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_comment
@@ -58,6 +58,11 @@ specifier|protected
 name|int
 name|line
 decl_stmt|;
+DECL|field|column
+specifier|protected
+name|int
+name|column
+decl_stmt|;
 DECL|method|GrammarElement (Grammar g)
 specifier|public
 name|GrammarElement
@@ -70,15 +75,53 @@ name|grammar
 operator|=
 name|g
 expr_stmt|;
+name|line
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+name|column
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+block|}
+DECL|method|GrammarElement (Grammar g, Token start)
+specifier|public
+name|GrammarElement
+parameter_list|(
+name|Grammar
+name|g
+parameter_list|,
+name|Token
+name|start
+parameter_list|)
+block|{
+name|grammar
+operator|=
+name|g
+expr_stmt|;
+name|line
+operator|=
+name|start
+operator|.
+name|getLine
+argument_list|()
+expr_stmt|;
+name|column
+operator|=
+name|start
+operator|.
+name|getColumn
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|generate ()
 specifier|public
 name|void
 name|generate
 parameter_list|()
-block|{
-empty_stmt|;
-block|}
+block|{     }
 DECL|method|getLine ()
 specifier|public
 name|int
@@ -87,6 +130,16 @@ parameter_list|()
 block|{
 return|return
 name|line
+return|;
+block|}
+DECL|method|getColumn ()
+specifier|public
+name|int
+name|getColumn
+parameter_list|()
+block|{
+return|return
+name|column
 return|;
 block|}
 DECL|method|look (int k)

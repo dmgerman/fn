@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -50,18 +50,26 @@ block|{
 name|super
 argument_list|(
 literal|"NoViableAlt"
+argument_list|,
+literal|"<AST>"
+argument_list|,
+name|t
+operator|.
+name|getLine
+argument_list|()
+argument_list|,
+name|t
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|node
 operator|=
 name|t
 expr_stmt|;
-name|fileName
-operator|=
-literal|"<AST>"
-expr_stmt|;
 block|}
-DECL|method|NoViableAltException (Token t, String fileName)
+DECL|method|NoViableAltException (Token t, String fileName_)
 specifier|public
 name|NoViableAltException
 parameter_list|(
@@ -69,52 +77,32 @@ name|Token
 name|t
 parameter_list|,
 name|String
-name|fileName
+name|fileName_
 parameter_list|)
 block|{
 name|super
 argument_list|(
 literal|"NoViableAlt"
+argument_list|,
+name|fileName_
+argument_list|,
+name|t
+operator|.
+name|getLine
+argument_list|()
+argument_list|,
+name|t
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|token
 operator|=
 name|t
 expr_stmt|;
-name|line
-operator|=
-name|t
-operator|.
-name|getLine
-argument_list|()
-expr_stmt|;
-name|column
-operator|=
-name|t
-operator|.
-name|getColumn
-argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|fileName
-operator|=
-name|fileName
-expr_stmt|;
 block|}
-comment|/** 	 * @deprecated As of ANTLR 2.7.0 	 */
-DECL|method|getErrorMessage ()
-specifier|public
-name|String
-name|getErrorMessage
-parameter_list|()
-block|{
-return|return
-name|getMessage
-argument_list|()
-return|;
-block|}
-comment|/** 	 * Returns a clean error message (no line number/column information) 	 */
+comment|/**      * Returns a clean error message (no line number/column information)      */
 DECL|method|getMessage ()
 specifier|public
 name|String
@@ -157,43 +145,6 @@ operator|+
 name|node
 operator|.
 name|toString
-argument_list|()
-return|;
-block|}
-comment|/**      * Returns a string representation of this exception.      */
-DECL|method|toString ()
-specifier|public
-name|String
-name|toString
-parameter_list|()
-block|{
-if|if
-condition|(
-name|token
-operator|!=
-literal|null
-condition|)
-block|{
-comment|// AST or Token?
-return|return
-name|FileLineFormatter
-operator|.
-name|getFormatter
-argument_list|()
-operator|.
-name|getFormatString
-argument_list|(
-name|fileName
-argument_list|,
-name|line
-argument_list|)
-operator|+
-name|getMessage
-argument_list|()
-return|;
-block|}
-return|return
-name|getMessage
 argument_list|()
 return|;
 block|}

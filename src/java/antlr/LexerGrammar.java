@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -113,7 +113,7 @@ name|filterMode
 init|=
 literal|false
 decl_stmt|;
-comment|/** if filterMode is true, then filterRule can indicate an optional 	 *  rule to use as the scarf language.  If null, programmer used 	 *  plain "filter=true" not "filter=rule". 	 */
+comment|/** if filterMode is true, then filterRule can indicate an optional      *  rule to use as the scarf language.  If null, programmer used      *  plain "filter=true" not "filter=rule".      */
 DECL|field|filterRule
 specifier|protected
 name|String
@@ -201,7 +201,7 @@ return|return
 name|testLiterals
 return|;
 block|}
-comment|/**Process command line arguments. 	 * -trace			have all rules call traceIn/traceOut 	 * -traceLexer		have lexical rules call traceIn/traceOut 	 * -debug			generate debugging output for parser debugger 	 */
+comment|/**Process command line arguments.      * -trace			have all rules call traceIn/traceOut      * -traceLexer		have lexical rules call traceIn/traceOut      * -debug			generate debugging output for parser debugger      */
 DECL|method|processArguments (String[] args)
 specifier|public
 name|void
@@ -246,7 +246,7 @@ name|traceRules
 operator|=
 literal|true
 expr_stmt|;
-name|Tool
+name|antlrTool
 operator|.
 name|setArgOK
 argument_list|(
@@ -272,7 +272,7 @@ name|traceRules
 operator|=
 literal|true
 expr_stmt|;
-name|Tool
+name|antlrTool
 operator|.
 name|setArgOK
 argument_list|(
@@ -298,7 +298,7 @@ name|debuggingOutput
 operator|=
 literal|true
 expr_stmt|;
-name|Tool
+name|antlrTool
 operator|.
 name|setArgOK
 argument_list|(
@@ -354,7 +354,7 @@ literal|"buildAST"
 argument_list|)
 condition|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|warning
 argument_list|(
@@ -366,6 +366,11 @@ argument_list|,
 name|value
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -416,7 +421,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|warning
 argument_list|(
@@ -428,6 +433,11 @@ argument_list|,
 name|value
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -479,7 +489,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -491,6 +501,11 @@ argument_list|,
 name|value
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -542,7 +557,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|warning
 argument_list|(
@@ -554,6 +569,11 @@ argument_list|,
 name|value
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -605,7 +625,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|warning
 argument_list|(
@@ -617,6 +637,11 @@ argument_list|,
 name|value
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -690,7 +715,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|warning
 argument_list|(
@@ -702,6 +727,11 @@ argument_list|,
 name|value
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -720,7 +750,7 @@ literal|"longestPossible"
 argument_list|)
 condition|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|warning
 argument_list|(
@@ -732,6 +762,11 @@ argument_list|,
 name|value
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -755,7 +790,7 @@ return|return
 literal|true
 return|;
 block|}
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -769,6 +804,11 @@ argument_list|,
 name|value
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;

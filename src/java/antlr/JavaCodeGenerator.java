@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -167,7 +167,7 @@ DECL|field|currentRule
 name|RuleBlock
 name|currentRule
 decl_stmt|;
-comment|/** Tracks the rule or labeled subrule being generated.  Used for         AST generation. */
+comment|/** Tracks the rule or labeled subrule being generated.  Used for      AST generation. */
 DECL|field|currentASTResult
 name|String
 name|currentASTResult
@@ -176,6 +176,15 @@ comment|/** Mapping between the ids used in the current alt, and the      * name
 DECL|field|treeVariableMap
 name|Hashtable
 name|treeVariableMap
+init|=
+operator|new
+name|Hashtable
+argument_list|()
+decl_stmt|;
+comment|/** Used to keep track of which AST variables have been defined in a rule      * (except for the #rule_name and #rule_name_in var's      */
+DECL|field|declaredASTVariables
+name|Hashtable
+name|declaredASTVariables
 init|=
 operator|new
 name|Hashtable
@@ -215,7 +224,7 @@ specifier|private
 name|Vector
 name|semPreds
 decl_stmt|;
-comment|/** Create a Java code-generator using the given Grammar. 	 * The caller must still call setTool, setBehavior, and setAnalyzer 	 * before generating code. 	 */
+comment|/** Create a Java code-generator using the given Grammar.      * The caller must still call setTool, setBehavior, and setAnalyzer      * before generating code.      */
 DECL|method|JavaCodeGenerator ()
 specifier|public
 name|JavaCodeGenerator
@@ -231,7 +240,7 @@ name|JavaCharFormatter
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** Adds a semantic predicate string to the sem pred vector 	    These strings will be used to build an array of sem pred names 	    when building a debugging parser.  This method should only be 	    called when the debug option is specified 	 */
+comment|/** Adds a semantic predicate string to the sem pred vector      These strings will be used to build an array of sem pred names      when building a debugging parser.  This method should only be      called when the debug option is specified      */
 DECL|method|addSemPred (String predicate)
 specifier|protected
 name|int
@@ -265,25 +274,17 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|tool
+name|antlrTool
 operator|.
 name|hasError
+argument_list|()
 condition|)
 block|{
-name|System
+name|antlrTool
 operator|.
-name|out
-operator|.
-name|println
+name|fatalError
 argument_list|(
 literal|"Exiting due to errors."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
-literal|1
 argument_list|)
 expr_stmt|;
 block|}
@@ -432,21 +433,18 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|System
+name|antlrTool
 operator|.
-name|out
-operator|.
-name|println
+name|reportException
 argument_list|(
 name|e
-operator|.
-name|getMessage
-argument_list|()
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** Generate code for the given grammar element. 	 * @param blk The {...} action to generate 	 */
+comment|/** Generate code for the given grammar element.      * @param blk The {...} action to generate      */
 DECL|method|gen (ActionElement action)
 specifier|public
 name|void
@@ -510,6 +508,8 @@ name|tabs
 operator|++
 expr_stmt|;
 block|}
+comment|// get the name of the followSet for the current rule so that we
+comment|// can replace $FOLLOW in the .g file.
 name|ActionTransInfo
 name|tInfo
 init|=
@@ -520,7 +520,7 @@ decl_stmt|;
 name|String
 name|actionStr
 init|=
-name|processActionForTreeSpecifiers
+name|processActionForSpecialSymbols
 argument_list|(
 name|action
 operator|.
@@ -651,7 +651,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** Generate code for the given grammar element. 	 * @param blk The "x|y|z|..." block to generate 	 */
+comment|/** Generate code for the given grammar element.      * @param blk The "x|y|z|..." block to generate      */
 DECL|method|gen (AlternativeBlock blk)
 specifier|public
 name|void
@@ -684,6 +684,11 @@ literal|"{"
 argument_list|)
 expr_stmt|;
 name|genBlockPreamble
+argument_list|(
+name|blk
+argument_list|)
+expr_stmt|;
+name|genBlockInitAction
 argument_list|(
 name|blk
 argument_list|)
@@ -752,7 +757,7 @@ operator|=
 name|saveCurrentASTResult
 expr_stmt|;
 block|}
-comment|/** Generate code for the given grammar element. 	 * @param blk The block-end element to generate.  Block-end 	 * elements are synthesized by the grammar parser to represent 	 * the end of a block. 	 */
+comment|/** Generate code for the given grammar element.      * @param blk The block-end element to generate.  Block-end      * elements are synthesized by the grammar parser to represent      * the end of a block.      */
 DECL|method|gen (BlockEndElement end)
 specifier|public
 name|void
@@ -780,7 +785,7 @@ literal|")"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Generate code for the given grammar element. 	 * @param blk The character literal reference to generate 	 */
+comment|/** Generate code for the given grammar element.      * @param blk The character literal reference to generate      */
 DECL|method|gen (CharLiteralElement atom)
 specifier|public
 name|void
@@ -860,7 +865,7 @@ operator|=
 name|oldsaveText
 expr_stmt|;
 block|}
-comment|/** Generate code for the given grammar element. 	 * @param blk The character-range reference to generate 	 */
+comment|/** Generate code for the given grammar element.      * @param blk The character-range reference to generate      */
 DECL|method|gen (CharRangeElement r)
 specifier|public
 name|void
@@ -899,6 +904,40 @@ literal|";"
 argument_list|)
 expr_stmt|;
 block|}
+name|boolean
+name|flag
+init|=
+operator|(
+name|grammar
+operator|instanceof
+name|LexerGrammar
+operator|&&
+operator|(
+operator|!
+name|saveText
+operator|||
+name|r
+operator|.
+name|getAutoGenType
+argument_list|()
+operator|==
+name|GrammarElement
+operator|.
+name|AUTO_GEN_BANG
+operator|)
+operator|)
+decl_stmt|;
+if|if
+condition|(
+name|flag
+condition|)
+block|{
+name|println
+argument_list|(
+literal|"_saveIndex=text.length();"
+argument_list|)
+expr_stmt|;
+block|}
 name|println
 argument_list|(
 literal|"matchRange("
@@ -916,6 +955,17 @@ operator|+
 literal|");"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|flag
+condition|)
+block|{
+name|println
+argument_list|(
+literal|"text.setLength(_saveIndex);"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/** Generate the lexer Java file */
 DECL|method|gen (LexerGrammar g)
@@ -957,7 +1007,7 @@ name|LexerGrammar
 operator|)
 condition|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|panic
 argument_list|(
@@ -1191,9 +1241,74 @@ name|comment
 argument_list|)
 expr_stmt|;
 block|}
+comment|// get prefix (replaces "public" and lets user specify)
+name|String
+name|prefix
+init|=
+literal|"public"
+decl_stmt|;
+name|Token
+name|tprefix
+init|=
+operator|(
+name|Token
+operator|)
+name|grammar
+operator|.
+name|options
+operator|.
+name|get
+argument_list|(
+literal|"classHeaderPrefix"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|tprefix
+operator|!=
+literal|null
+condition|)
+block|{
+name|String
+name|p
+init|=
+name|StringUtils
+operator|.
+name|stripFrontBack
+argument_list|(
+name|tprefix
+operator|.
+name|getText
+argument_list|()
+argument_list|,
+literal|"\""
+argument_list|,
+literal|"\""
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|p
+operator|!=
+literal|null
+condition|)
+block|{
+name|prefix
+operator|=
+name|p
+expr_stmt|;
+block|}
+block|}
 name|print
 argument_list|(
-literal|"public class "
+name|prefix
+operator|+
+literal|" "
+argument_list|)
+expr_stmt|;
+name|print
+argument_list|(
+literal|"class "
 operator|+
 name|grammar
 operator|.
@@ -1246,7 +1361,7 @@ block|{
 name|String
 name|suffix
 init|=
-name|Tool
+name|StringUtils
 operator|.
 name|stripFrontBack
 argument_list|(
@@ -1285,7 +1400,7 @@ expr_stmt|;
 comment|// Generate user-defined lexer class members
 name|print
 argument_list|(
-name|processActionForTreeSpecifiers
+name|processActionForSpecialSymbols
 argument_list|(
 name|grammar
 operator|.
@@ -1294,7 +1409,12 @@ operator|.
 name|getText
 argument_list|()
 argument_list|,
-literal|0
+name|grammar
+operator|.
+name|classMemberAction
+operator|.
+name|getLine
+argument_list|()
 argument_list|,
 name|currentRule
 argument_list|,
@@ -1455,6 +1575,31 @@ literal|"  setupDebugging();"
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Generate the setting of various generated options.
+comment|// These need to be before the literals since ANTLRHashString depends on
+comment|// the casesensitive stuff.
+name|println
+argument_list|(
+literal|"caseSensitiveLiterals = "
+operator|+
+name|g
+operator|.
+name|caseSensitiveLiterals
+operator|+
+literal|";"
+argument_list|)
+expr_stmt|;
+name|println
+argument_list|(
+literal|"setCaseSensitive("
+operator|+
+name|g
+operator|.
+name|caseSensitive
+operator|+
+literal|");"
+argument_list|)
+expr_stmt|;
 comment|// Generate the initialization of a hashtable
 comment|// containing the string literals used in the lexer
 comment|// The literals variable itself is in CharScanner
@@ -1560,29 +1705,6 @@ expr_stmt|;
 name|Enumeration
 name|ids
 decl_stmt|;
-comment|// Generate the setting of various generated options.
-name|println
-argument_list|(
-literal|"caseSensitiveLiterals = "
-operator|+
-name|g
-operator|.
-name|caseSensitiveLiterals
-operator|+
-literal|";"
-argument_list|)
-expr_stmt|;
-name|println
-argument_list|(
-literal|"setCaseSensitive("
-operator|+
-name|g
-operator|.
-name|caseSensitive
-operator|+
-literal|");"
-argument_list|)
-expr_stmt|;
 name|println
 argument_list|(
 literal|"}"
@@ -1783,7 +1905,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|/** Generate code for the given grammar element. 	 * @param blk The (...)+ block to generate 	 */
+comment|/** Generate code for the given grammar element.      * @param blk The (...)+ block to generate      */
 DECL|method|gen (OneOrMoreBlock blk)
 specifier|public
 name|void
@@ -1909,6 +2031,13 @@ argument_list|)
 expr_stmt|;
 name|tabs
 operator|++
+expr_stmt|;
+comment|// generate the init action for ()+ ()* inside the loop
+comment|// this allows us to do usefull EOF checking...
+name|genBlockInitAction
+argument_list|(
+name|blk
+argument_list|)
 expr_stmt|;
 comment|// Tell AST generation to build subrule result
 name|String
@@ -2186,7 +2315,7 @@ name|ParserGrammar
 operator|)
 condition|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|panic
 argument_list|(
@@ -2302,9 +2431,24 @@ argument_list|(
 literal|"import antlr.collections.impl.BitSet;"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|genAST
+condition|)
+block|{
 name|println
 argument_list|(
 literal|"import antlr.collections.AST;"
+argument_list|)
+expr_stmt|;
+name|println
+argument_list|(
+literal|"import java.util.Hashtable;"
+argument_list|)
+expr_stmt|;
+name|println
+argument_list|(
+literal|"import antlr.ASTFactory;"
 argument_list|)
 expr_stmt|;
 name|println
@@ -2317,6 +2461,7 @@ argument_list|(
 literal|"import antlr.collections.impl.ASTArray;"
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Output the user-defined parser preamble
 name|println
 argument_list|(
@@ -2376,9 +2521,74 @@ name|comment
 argument_list|)
 expr_stmt|;
 block|}
-name|println
+comment|// get prefix (replaces "public" and lets user specify)
+name|String
+name|prefix
+init|=
+literal|"public"
+decl_stmt|;
+name|Token
+name|tprefix
+init|=
+operator|(
+name|Token
+operator|)
+name|grammar
+operator|.
+name|options
+operator|.
+name|get
 argument_list|(
-literal|"public class "
+literal|"classHeaderPrefix"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|tprefix
+operator|!=
+literal|null
+condition|)
+block|{
+name|String
+name|p
+init|=
+name|StringUtils
+operator|.
+name|stripFrontBack
+argument_list|(
+name|tprefix
+operator|.
+name|getText
+argument_list|()
+argument_list|,
+literal|"\""
+argument_list|,
+literal|"\""
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|p
+operator|!=
+literal|null
+condition|)
+block|{
+name|prefix
+operator|=
+name|p
+expr_stmt|;
+block|}
+block|}
+name|print
+argument_list|(
+name|prefix
+operator|+
+literal|" "
+argument_list|)
+expr_stmt|;
+name|print
+argument_list|(
+literal|"class "
 operator|+
 name|grammar
 operator|.
@@ -2429,7 +2639,7 @@ block|{
 name|String
 name|suffix
 init|=
-name|Tool
+name|StringUtils
 operator|.
 name|stripFrontBack
 argument_list|(
@@ -2544,7 +2754,7 @@ block|}
 comment|// Generate user-defined parser class members
 name|print
 argument_list|(
-name|processActionForTreeSpecifiers
+name|processActionForSpecialSymbols
 argument_list|(
 name|grammar
 operator|.
@@ -2553,7 +2763,12 @@ operator|.
 name|getText
 argument_list|()
 argument_list|,
-literal|0
+name|grammar
+operator|.
+name|classMemberAction
+operator|.
+name|getLine
+argument_list|()
 argument_list|,
 name|currentRule
 argument_list|,
@@ -2611,6 +2826,24 @@ expr_stmt|;
 name|println
 argument_list|(
 literal|"  setupDebugging(tokenBuf);"
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|grammar
+operator|.
+name|buildAST
+condition|)
+block|{
+name|println
+argument_list|(
+literal|"  buildTokenTypeASTClassMap();"
+argument_list|)
+expr_stmt|;
+name|println
+argument_list|(
+literal|"  astFactory = new ASTFactory(getTokenTypeToASTClassMap());"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2705,6 +2938,24 @@ literal|"  setupDebugging(lexer);"
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|grammar
+operator|.
+name|buildAST
+condition|)
+block|{
+name|println
+argument_list|(
+literal|"  buildTokenTypeASTClassMap();"
+argument_list|)
+expr_stmt|;
+name|println
+argument_list|(
+literal|"  astFactory = new ASTFactory(getTokenTypeToASTClassMap());"
+argument_list|)
+expr_stmt|;
+block|}
 name|println
 argument_list|(
 literal|"}"
@@ -2776,6 +3027,24 @@ argument_list|(
 literal|"  tokenNames = _tokenNames;"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|grammar
+operator|.
+name|buildAST
+condition|)
+block|{
+name|println
+argument_list|(
+literal|"  buildTokenTypeASTClassMap();"
+argument_list|)
+expr_stmt|;
+name|println
+argument_list|(
+literal|"  astFactory = new ASTFactory(getTokenTypeToASTClassMap());"
+argument_list|)
+expr_stmt|;
+block|}
 name|println
 argument_list|(
 literal|"}"
@@ -2862,6 +3131,17 @@ comment|// Generate the token names
 name|genTokenStrings
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|grammar
+operator|.
+name|buildAST
+condition|)
+block|{
+name|genTokenASTNodeMap
+argument_list|()
+expr_stmt|;
+block|}
 comment|// Generate the bitsets used throughout the grammar
 name|genBitsets
 argument_list|(
@@ -2907,7 +3187,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|/** Generate code for the given grammar element. 	 * @param blk The rule-reference to generate 	 */
+comment|/** Generate code for the given grammar element.      * @param blk The rule-reference to generate      */
 DECL|method|gen (RuleRefElement rr)
 specifier|public
 name|void
@@ -2963,7 +3243,7 @@ argument_list|()
 condition|)
 block|{
 comment|// Is this redundant???
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -2984,6 +3264,11 @@ name|rr
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|rr
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return;
@@ -2999,7 +3284,7 @@ operator|)
 condition|)
 block|{
 comment|// Is this redundant???
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -3019,6 +3304,11 @@ argument_list|,
 name|rr
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|rr
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3117,7 +3407,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|warning
 argument_list|(
@@ -3137,6 +3427,11 @@ argument_list|,
 name|rr
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|rr
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3176,7 +3471,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|warning
 argument_list|(
@@ -3196,6 +3491,11 @@ argument_list|,
 name|rr
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|rr
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3283,14 +3583,8 @@ condition|(
 name|doNoGuessTest
 condition|)
 block|{
-name|println
-argument_list|(
-literal|"if (inputState.guessing==0) {"
-argument_list|)
-expr_stmt|;
-name|tabs
-operator|++
-expr_stmt|;
+comment|// println("if (inputState.guessing==0) {");
+comment|// tabs++;
 block|}
 if|if
 condition|(
@@ -3352,7 +3646,7 @@ name|GrammarElement
 operator|.
 name|AUTO_GEN_CARET
 case|:
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -3395,14 +3689,8 @@ condition|(
 name|doNoGuessTest
 condition|)
 block|{
-name|tabs
-operator|--
-expr_stmt|;
-name|println
-argument_list|(
-literal|"}"
-argument_list|)
-expr_stmt|;
+comment|// tabs--;
+comment|// println("}");
 block|}
 block|}
 name|genErrorCatchForElement
@@ -3411,7 +3699,7 @@ name|rr
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Generate code for the given grammar element. 	 * @param blk The string-literal reference to generate 	 */
+comment|/** Generate code for the given grammar element.      * @param blk The string-literal reference to generate      */
 DECL|method|gen (StringLiteralElement atom)
 specifier|public
 name|void
@@ -3518,7 +3806,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** Generate code for the given grammar element. 	 * @param blk The token-range reference to generate 	 */
+comment|/** Generate code for the given grammar element.      * @param blk The token-range reference to generate      */
 DECL|method|gen (TokenRangeElement r)
 specifier|public
 name|void
@@ -3592,7 +3880,7 @@ name|r
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Generate code for the given grammar element. 	 * @param blk The token-reference to generate 	 */
+comment|/** Generate code for the given grammar element.      * @param blk The token-reference to generate      */
 DECL|method|gen (TokenRefElement atom)
 specifier|public
 name|void
@@ -3626,7 +3914,7 @@ operator|instanceof
 name|LexerGrammar
 condition|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|panic
 argument_list|(
@@ -3752,6 +4040,103 @@ literal|")_t;"
 argument_list|)
 expr_stmt|;
 block|}
+comment|// check for invalid modifiers ! and ^ on tree element roots
+if|if
+condition|(
+name|t
+operator|.
+name|root
+operator|.
+name|getAutoGenType
+argument_list|()
+operator|==
+name|GrammarElement
+operator|.
+name|AUTO_GEN_BANG
+condition|)
+block|{
+name|antlrTool
+operator|.
+name|error
+argument_list|(
+literal|"Suffixing a root node with '!' is not implemented"
+argument_list|,
+name|grammar
+operator|.
+name|getFilename
+argument_list|()
+argument_list|,
+name|t
+operator|.
+name|getLine
+argument_list|()
+argument_list|,
+name|t
+operator|.
+name|getColumn
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|t
+operator|.
+name|root
+operator|.
+name|setAutoGenType
+argument_list|(
+name|GrammarElement
+operator|.
+name|AUTO_GEN_NONE
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|t
+operator|.
+name|root
+operator|.
+name|getAutoGenType
+argument_list|()
+operator|==
+name|GrammarElement
+operator|.
+name|AUTO_GEN_CARET
+condition|)
+block|{
+name|antlrTool
+operator|.
+name|warning
+argument_list|(
+literal|"Suffixing a root node with '^' is redundant; already a root"
+argument_list|,
+name|grammar
+operator|.
+name|getFilename
+argument_list|()
+argument_list|,
+name|t
+operator|.
+name|getLine
+argument_list|()
+argument_list|,
+name|t
+operator|.
+name|getColumn
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|t
+operator|.
+name|root
+operator|.
+name|setAutoGenType
+argument_list|(
+name|GrammarElement
+operator|.
+name|AUTO_GEN_NONE
+argument_list|)
+expr_stmt|;
+block|}
 comment|// Generate AST variables
 name|genElementAST
 argument_list|(
@@ -3792,6 +4177,23 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// match root
+if|if
+condition|(
+name|t
+operator|.
+name|root
+operator|instanceof
+name|WildcardElement
+condition|)
+block|{
+name|println
+argument_list|(
+literal|"if ( _t==null ) throw new MismatchedTokenException();"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|genMatch
 argument_list|(
 name|t
@@ -3799,6 +4201,7 @@ operator|.
 name|root
 argument_list|)
 expr_stmt|;
+block|}
 comment|// move to list of children
 name|println
 argument_list|(
@@ -3932,7 +4335,7 @@ name|TreeWalkerGrammar
 operator|)
 condition|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|panic
 argument_list|(
@@ -4107,9 +4510,74 @@ name|comment
 argument_list|)
 expr_stmt|;
 block|}
-name|println
+comment|// get prefix (replaces "public" and lets user specify)
+name|String
+name|prefix
+init|=
+literal|"public"
+decl_stmt|;
+name|Token
+name|tprefix
+init|=
+operator|(
+name|Token
+operator|)
+name|grammar
+operator|.
+name|options
+operator|.
+name|get
 argument_list|(
-literal|"public class "
+literal|"classHeaderPrefix"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|tprefix
+operator|!=
+literal|null
+condition|)
+block|{
+name|String
+name|p
+init|=
+name|StringUtils
+operator|.
+name|stripFrontBack
+argument_list|(
+name|tprefix
+operator|.
+name|getText
+argument_list|()
+argument_list|,
+literal|"\""
+argument_list|,
+literal|"\""
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|p
+operator|!=
+literal|null
+condition|)
+block|{
+name|prefix
+operator|=
+name|p
+expr_stmt|;
+block|}
+block|}
+name|print
+argument_list|(
+name|prefix
+operator|+
+literal|" "
+argument_list|)
+expr_stmt|;
+name|print
+argument_list|(
+literal|"class "
 operator|+
 name|grammar
 operator|.
@@ -4160,7 +4628,7 @@ block|{
 name|String
 name|suffix
 init|=
-name|Tool
+name|StringUtils
 operator|.
 name|stripFrontBack
 argument_list|(
@@ -4199,7 +4667,7 @@ expr_stmt|;
 comment|// Generate user-defined parser class members
 name|print
 argument_list|(
-name|processActionForTreeSpecifiers
+name|processActionForSpecialSymbols
 argument_list|(
 name|grammar
 operator|.
@@ -4208,7 +4676,12 @@ operator|.
 name|getText
 argument_list|()
 argument_list|,
-literal|0
+name|grammar
+operator|.
+name|classMemberAction
+operator|.
+name|getLine
+argument_list|()
 argument_list|,
 name|currentRule
 argument_list|,
@@ -4366,7 +4839,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|/** Generate code for the given grammar element. 	 * @param wc The wildcard element to generate 	 */
+comment|/** Generate code for the given grammar element.      * @param wc The wildcard element to generate      */
 DECL|method|gen (WildcardElement wc)
 specifier|public
 name|void
@@ -4527,7 +5000,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** Generate code for the given grammar element. 	 * @param blk The (...)* block to generate 	 */
+comment|/** Generate code for the given grammar element.      * @param blk The (...)* block to generate      */
 DECL|method|gen (ZeroOrMoreBlock blk)
 specifier|public
 name|void
@@ -4610,6 +5083,13 @@ argument_list|)
 expr_stmt|;
 name|tabs
 operator|++
+expr_stmt|;
+comment|// generate the init action for ()* inside the loop
+comment|// this allows us to do usefull EOF checking...
+name|genBlockInitAction
+argument_list|(
+name|blk
+argument_list|)
 expr_stmt|;
 comment|// Tell AST generation to build subrule result
 name|String
@@ -4825,7 +5305,7 @@ operator|=
 name|saveCurrentASTResult
 expr_stmt|;
 block|}
-comment|/** Generate an alternative. 	  * @param alt  The alternative to generate 	  * @param blk The block to which the alternative belongs 	  */
+comment|/** Generate an alternative.      * @param alt  The alternative to generate      * @param blk The block to which the alternative belongs      */
 DECL|method|genAlt (Alternative alt, AlternativeBlock blk)
 specifier|protected
 name|void
@@ -4949,6 +5429,16 @@ name|RuleBlock
 operator|)
 name|blk
 decl_stmt|;
+if|if
+condition|(
+name|grammar
+operator|.
+name|hasSyntacticPredicate
+condition|)
+block|{
+comment|// println("if ( inputState.guessing==0 ) {");
+comment|// tabs++;
+block|}
 name|println
 argument_list|(
 name|rblk
@@ -4963,6 +5453,16 @@ operator|+
 literal|")currentAST.root;"
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|grammar
+operator|.
+name|hasSyntacticPredicate
+condition|)
+block|{
+comment|// --tabs;
+comment|// println("}");
+block|}
 block|}
 elseif|else
 if|if
@@ -4977,6 +5477,28 @@ condition|)
 block|{
 comment|// ### future: also set AST value for labeled subrules.
 comment|// println(blk.getLabel() + "_AST = ("+labeledElementASTType+")currentAST.root;");
+name|antlrTool
+operator|.
+name|warning
+argument_list|(
+literal|"Labeled subrules not yet supported"
+argument_list|,
+name|grammar
+operator|.
+name|getFilename
+argument_list|()
+argument_list|,
+name|blk
+operator|.
+name|getLine
+argument_list|()
+argument_list|,
+name|blk
+operator|.
+name|getColumn
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 if|if
@@ -5018,8 +5540,8 @@ operator|=
 name|saveMap
 expr_stmt|;
 block|}
-comment|/** Generate all the bitsets to be used in the parser or lexer 	 * Generate the raw bitset data like "long _tokenSet1_data[] = {...};" 	 * and the BitSet object declarations like "BitSet _tokenSet1 = new BitSet(_tokenSet1_data);" 	 * Note that most languages do not support object initialization inside a 	 * class definition, so other code-generators may have to separate the 	 * bitset declarations from the initializations (e.g., put the initializations 	 * in the generated constructor instead). 	 * @param bitsetList The list of bitsets to generate. 	 * @param maxVocabulary Ensure that each generated bitset can contain at least this value. 	 */
-DECL|method|genBitsets ( Vector bitsetList, int maxVocabulary )
+comment|/** Generate all the bitsets to be used in the parser or lexer      * Generate the raw bitset data like "long _tokenSet1_data[] = {...};"      * and the BitSet object declarations like "BitSet _tokenSet1 = new BitSet(_tokenSet1_data);"      * Note that most languages do not support object initialization inside a      * class definition, so other code-generators may have to separate the      * bitset declarations from the initializations (e.g., put the initializations      * in the generated constructor instead).      * @param bitsetList The list of bitsets to generate.      * @param maxVocabulary Ensure that each generated bitset can contain at least this value.      */
+DECL|method|genBitsets (Vector bitsetList, int maxVocabulary )
 specifier|protected
 name|void
 name|genBitsets
@@ -5075,26 +5597,241 @@ argument_list|(
 name|maxVocabulary
 argument_list|)
 expr_stmt|;
+name|genBitSet
+argument_list|(
+name|p
+argument_list|,
+name|i
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+comment|/** Do something simple like:      *  private static final long[] mk_tokenSet_0() {      *    long[] data = { -2305839160922996736L, 63L, 16777216L, 0L, 0L, 0L };      *    return data;      *  }      *  public static final BitSet _tokenSet_0 = new BitSet(mk_tokenSet_0());      *      *  Or, for large bitsets, optimize init so ranges are collapsed into loops.      *  This is most useful for lexers using unicode.      */
+DECL|method|genBitSet (BitSet p, int id)
+specifier|private
+name|void
+name|genBitSet
+parameter_list|(
+name|BitSet
+name|p
+parameter_list|,
+name|int
+name|id
+parameter_list|)
+block|{
 comment|// initialization data
 name|println
 argument_list|(
-literal|"private static final long "
+literal|"private static final long[] mk"
 operator|+
 name|getBitsetName
 argument_list|(
-name|i
+name|id
 argument_list|)
 operator|+
-literal|"_data_"
-operator|+
-literal|"[] = { "
+literal|"() {"
+argument_list|)
+expr_stmt|;
+name|int
+name|n
+init|=
+name|p
+operator|.
+name|lengthInLongWords
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|n
+operator|<
+name|BITSET_OPTIMIZE_INIT_THRESHOLD
+condition|)
+block|{
+name|println
+argument_list|(
+literal|"\tlong[] data = { "
 operator|+
 name|p
 operator|.
 name|toStringOfWords
 argument_list|()
 operator|+
-literal|" };"
+literal|"};"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// will init manually, allocate space then set values
+name|println
+argument_list|(
+literal|"\tlong[] data = new long["
+operator|+
+name|n
+operator|+
+literal|"];"
+argument_list|)
+expr_stmt|;
+name|long
+index|[]
+name|elems
+init|=
+name|p
+operator|.
+name|toPackedArray
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|elems
+operator|.
+name|length
+condition|;
+control|)
+block|{
+if|if
+condition|(
+name|elems
+index|[
+name|i
+index|]
+operator|==
+literal|0
+condition|)
+block|{
+comment|// done automatically by Java, don't waste time/code
+name|i
+operator|++
+expr_stmt|;
+continue|continue;
+block|}
+if|if
+condition|(
+operator|(
+name|i
+operator|+
+literal|1
+operator|)
+operator|==
+name|elems
+operator|.
+name|length
+operator|||
+name|elems
+index|[
+name|i
+index|]
+operator|!=
+name|elems
+index|[
+name|i
+operator|+
+literal|1
+index|]
+condition|)
+block|{
+comment|// last number or no run of numbers, just dump assignment
+name|println
+argument_list|(
+literal|"\tdata["
+operator|+
+name|i
+operator|+
+literal|"]="
+operator|+
+name|elems
+index|[
+name|i
+index|]
+operator|+
+literal|"L;"
+argument_list|)
+expr_stmt|;
+name|i
+operator|++
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// scan to find end of run
+name|int
+name|j
+decl_stmt|;
+for|for
+control|(
+name|j
+operator|=
+name|i
+operator|+
+literal|1
+init|;
+name|j
+operator|<
+name|elems
+operator|.
+name|length
+operator|&&
+name|elems
+index|[
+name|j
+index|]
+operator|==
+name|elems
+index|[
+name|i
+index|]
+condition|;
+name|j
+operator|++
+control|)
+block|{                     }
+comment|// j-1 is last member of run
+name|println
+argument_list|(
+literal|"\tfor (int i = "
+operator|+
+name|i
+operator|+
+literal|"; i<="
+operator|+
+operator|(
+name|j
+operator|-
+literal|1
+operator|)
+operator|+
+literal|"; i++) { data[i]="
+operator|+
+name|elems
+index|[
+name|i
+index|]
+operator|+
+literal|"L; }"
+argument_list|)
+expr_stmt|;
+name|i
+operator|=
+name|j
+expr_stmt|;
+block|}
+block|}
+block|}
+name|println
+argument_list|(
+literal|"\treturn data;"
+argument_list|)
+expr_stmt|;
+name|println
+argument_list|(
+literal|"}"
 argument_list|)
 expr_stmt|;
 comment|// BitSet object
@@ -5104,22 +5841,23 @@ literal|"public static final BitSet "
 operator|+
 name|getBitsetName
 argument_list|(
-name|i
+name|id
 argument_list|)
 operator|+
 literal|" = new BitSet("
 operator|+
+literal|"mk"
+operator|+
 name|getBitsetName
 argument_list|(
-name|i
+name|id
 argument_list|)
 operator|+
-literal|"_data_"
+literal|"()"
 operator|+
 literal|");"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 comment|/** Generate the finish of a block, using a combination of the info      * returned from genCommonBlock() and the action to perform when      * no alts were taken      * @param howToFinish The return of genCommonBlock()      * @param noViableAction What to generate when no alt is taken      */
 DECL|method|genBlockFinish (JavaBlockFinishingInfo howToFinish, String noViableAction)
@@ -5207,7 +5945,48 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** Generate the header for a block, which may be a RuleBlock or a 	 * plain AlternativeBLock.  This generates any variable declarations, 	 * init-actions, and syntactic-predicate-testing variables. 	 * @blk The block for which the preamble is to be generated. 	 */
+comment|/** Generate the init action for a block, which may be a RuleBlock or a      * plain AlternativeBLock.      * @blk The block for which the preamble is to be generated.      */
+DECL|method|genBlockInitAction (AlternativeBlock blk)
+specifier|protected
+name|void
+name|genBlockInitAction
+parameter_list|(
+name|AlternativeBlock
+name|blk
+parameter_list|)
+block|{
+comment|// dump out init action
+if|if
+condition|(
+name|blk
+operator|.
+name|initAction
+operator|!=
+literal|null
+condition|)
+block|{
+name|printAction
+argument_list|(
+name|processActionForSpecialSymbols
+argument_list|(
+name|blk
+operator|.
+name|initAction
+argument_list|,
+name|blk
+operator|.
+name|getLine
+argument_list|()
+argument_list|,
+name|currentRule
+argument_list|,
+literal|null
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+comment|/** Generate the header for a block, which may be a RuleBlock or a      * plain AlternativeBLock.  This generates any variable declarations      * and syntactic-predicate-testing variables.      * @blk The block for which the preamble is to be generated.      */
 DECL|method|genBlockPreamble (AlternativeBlock blk)
 specifier|protected
 name|void
@@ -5277,12 +6056,12 @@ argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
-comment|//System.out.println("looking at labeled element: "+a);
-comment|//Variables for labeled rule refs and
-comment|//subrules are different than variables for
-comment|//grammar atoms.  This test is a little tricky
-comment|//because we want to get all rule refs and ebnf,
-comment|//but not rule blocks or syntactic predicates
+comment|// System.out.println("looking at labeled element: "+a);
+comment|// Variables for labeled rule refs and
+comment|// subrules are different than variables for
+comment|// grammar atoms.  This test is a little tricky
+comment|// because we want to get all rule refs and ebnf,
+comment|// but not rule blocks or syntactic predicates
 if|if
 condition|(
 name|a
@@ -5371,18 +6150,9 @@ operator|.
 name|buildAST
 condition|)
 block|{
-name|println
+name|genASTDeclaration
 argument_list|(
-name|labeledElementASTType
-operator|+
-literal|" "
-operator|+
 name|a
-operator|.
-name|getLabel
-argument_list|()
-operator|+
-literal|"_AST = null;"
 argument_list|)
 expr_stmt|;
 block|}
@@ -5399,18 +6169,9 @@ block|{
 comment|// Always gen AST variables for
 comment|// labeled elements, even if the
 comment|// element itself is marked with !
-name|println
+name|genASTDeclaration
 argument_list|(
-name|labeledElementASTType
-operator|+
-literal|" "
-operator|+
 name|a
-operator|.
-name|getLabel
-argument_list|()
-operator|+
-literal|"_AST = null;"
 argument_list|)
 expr_stmt|;
 block|}
@@ -5522,38 +6283,22 @@ name|GrammarAtom
 operator|)
 name|a
 decl_stmt|;
-name|println
+name|genASTDeclaration
 argument_list|(
+name|a
+argument_list|,
 name|ga
 operator|.
 name|getASTNodeType
 argument_list|()
-operator|+
-literal|" "
-operator|+
-name|a
-operator|.
-name|getLabel
-argument_list|()
-operator|+
-literal|"_AST = null;"
 argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
-name|println
+name|genASTDeclaration
 argument_list|(
-name|labeledElementASTType
-operator|+
-literal|" "
-operator|+
 name|a
-operator|.
-name|getLabel
-argument_list|()
-operator|+
-literal|"_AST = null;"
 argument_list|)
 expr_stmt|;
 block|}
@@ -5562,35 +6307,8 @@ block|}
 block|}
 block|}
 block|}
-comment|// dump out init action
-if|if
-condition|(
-name|blk
-operator|.
-name|initAction
-operator|!=
-literal|null
-condition|)
-block|{
-name|printAction
-argument_list|(
-name|processActionForTreeSpecifiers
-argument_list|(
-name|blk
-operator|.
-name|initAction
-argument_list|,
-literal|0
-argument_list|,
-name|currentRule
-argument_list|,
-literal|null
-argument_list|)
-argument_list|)
-expr_stmt|;
 block|}
-block|}
-comment|/** Generate a series of case statements that implement a BitSet test. 	 * @param p The Bitset for which cases are to be generated 	 */
+comment|/** Generate a series of case statements that implement a BitSet test.      * @param p The Bitset for which cases are to be generated      */
 DECL|method|genCases (BitSet p)
 specifier|protected
 name|void
@@ -6000,7 +6718,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|warning
 argument_list|(
@@ -6021,6 +6739,18 @@ operator|.
 name|synPred
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|blk
+operator|.
+name|getAlternativeAt
+argument_list|(
+literal|0
+argument_list|)
+operator|.
+name|synPred
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -6237,7 +6967,7 @@ name|containsEpsilon
 argument_list|()
 condition|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|warning
 argument_list|(
@@ -6253,6 +6983,13 @@ operator|.
 name|head
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|alt
+operator|.
+name|head
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -6591,6 +7328,11 @@ name|degree
 argument_list|()
 operator|>
 name|caseSizeThreshold
+operator|&&
+name|suitableForCaseExpression
+argument_list|(
+name|alt
+argument_list|)
 condition|)
 block|{
 if|if
@@ -6700,7 +7442,7 @@ decl_stmt|;
 name|String
 name|actionStr
 init|=
-name|processActionForTreeSpecifiers
+name|processActionForSpecialSymbols
 argument_list|(
 name|alt
 operator|.
@@ -7145,12 +7887,10 @@ literal|0
 condition|)
 block|{
 name|boolean
-name|doNoGuessTest
+name|needASTDecl
 init|=
 operator|(
-name|grammar
-operator|.
-name|hasSyntacticPredicate
+name|genAST
 operator|&&
 operator|(
 name|el
@@ -7171,11 +7911,49 @@ name|AUTO_GEN_BANG
 operator|)
 operator|)
 decl_stmt|;
+comment|// RK: if we have a grammar element always generate the decl
+comment|// since some guy can access it from an action and we can't
+comment|// peek ahead (well not without making a mess).
+comment|// I'd prefer taking this out.
+if|if
+condition|(
+name|el
+operator|.
+name|getAutoGenType
+argument_list|()
+operator|!=
+name|GrammarElement
+operator|.
+name|AUTO_GEN_BANG
+operator|&&
+operator|(
+name|el
+operator|instanceof
+name|TokenRefElement
+operator|)
+condition|)
+block|{
+name|needASTDecl
+operator|=
+literal|true
+expr_stmt|;
+block|}
+name|boolean
+name|doNoGuessTest
+init|=
+operator|(
+name|grammar
+operator|.
+name|hasSyntacticPredicate
+operator|&&
+name|needASTDecl
+operator|)
+decl_stmt|;
 name|String
 name|elementRef
 decl_stmt|;
 name|String
-name|astName
+name|astNameBase
 decl_stmt|;
 comment|// Generate names and declarations of the AST variable(s)
 if|if
@@ -7195,14 +7973,12 @@ operator|.
 name|getLabel
 argument_list|()
 expr_stmt|;
-name|astName
+name|astNameBase
 operator|=
 name|el
 operator|.
 name|getLabel
 argument_list|()
-operator|+
-literal|"_AST"
 expr_stmt|;
 block|}
 else|else
@@ -7212,17 +7988,23 @@ operator|=
 name|lt1Value
 expr_stmt|;
 comment|// Generate AST variables for unlabeled stuff
-name|astName
+name|astNameBase
 operator|=
 literal|"tmp"
 operator|+
 name|astVarNumber
-operator|+
-literal|"_AST"
 expr_stmt|;
+empty_stmt|;
 name|astVarNumber
 operator|++
 expr_stmt|;
+block|}
+comment|// Generate the declaration if required.
+if|if
+condition|(
+name|needASTDecl
+condition|)
+block|{
 comment|// Generate the declaration
 if|if
 condition|(
@@ -7249,50 +8031,56 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|println
+name|genASTDeclaration
 argument_list|(
+name|el
+argument_list|,
+name|astNameBase
+argument_list|,
 name|ga
 operator|.
 name|getASTNodeType
 argument_list|()
-operator|+
-literal|" "
-operator|+
-name|astName
-operator|+
-literal|" = null;"
 argument_list|)
 expr_stmt|;
+comment|//						println(ga.getASTNodeType()+" " + astName+" = null;");
 block|}
 else|else
 block|{
-name|println
+name|genASTDeclaration
 argument_list|(
+name|el
+argument_list|,
+name|astNameBase
+argument_list|,
 name|labeledElementASTType
-operator|+
-literal|" "
-operator|+
-name|astName
-operator|+
-literal|" = null;"
 argument_list|)
 expr_stmt|;
+comment|//						println(labeledElementASTType+" " + astName + " = null;");
 block|}
 block|}
 else|else
 block|{
-name|println
+name|genASTDeclaration
 argument_list|(
+name|el
+argument_list|,
+name|astNameBase
+argument_list|,
 name|labeledElementASTType
-operator|+
-literal|" "
-operator|+
-name|astName
-operator|+
-literal|" = null;"
 argument_list|)
 expr_stmt|;
+comment|//					println(labeledElementASTType+" " + astName + " = null;");
 block|}
+block|}
+comment|// for convenience..
+name|String
+name|astName
+init|=
+name|astNameBase
+operator|+
+literal|"_AST"
+decl_stmt|;
 comment|// Map the generated AST variable in the alternate
 name|mapTreeVariable
 argument_list|(
@@ -7321,22 +8109,17 @@ literal|"_in = null;"
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 comment|// Enclose actions with !guessing
 if|if
 condition|(
 name|doNoGuessTest
 condition|)
 block|{
-name|println
-argument_list|(
-literal|"if (inputState.guessing==0) {"
-argument_list|)
-expr_stmt|;
-name|tabs
-operator|++
-expr_stmt|;
+comment|// println("if (inputState.guessing==0) {");
+comment|// tabs++;
 block|}
+comment|// if something has a label assume it will be used
+comment|// so we must initialize the RefAST
 if|if
 condition|(
 name|el
@@ -7392,7 +8175,18 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-else|else
+comment|// if it has no label but a declaration exists initialize it.
+if|if
+condition|(
+name|el
+operator|.
+name|getLabel
+argument_list|()
+operator|==
+literal|null
+operator|&&
+name|needASTDecl
+condition|)
 block|{
 name|elementRef
 operator|=
@@ -7516,18 +8310,12 @@ condition|(
 name|doNoGuessTest
 condition|)
 block|{
-name|tabs
-operator|--
-expr_stmt|;
-name|println
-argument_list|(
-literal|"}"
-argument_list|)
-expr_stmt|;
+comment|// tabs--;
+comment|// println("}");
 block|}
 block|}
 block|}
-comment|/** Close the try block and generate catch phrases  	 * if the element has a labeled handler in the rule  	 */
+comment|/** Close the try block and generate catch phrases      * if the element has a labeled handler in the rule      */
 DECL|method|genErrorCatchForElement (AlternativeElement el)
 specifier|private
 name|void
@@ -7565,7 +8353,7 @@ name|r
 operator|=
 name|CodeGenerator
 operator|.
-name|lexerRuleName
+name|encodeLexerRuleName
 argument_list|(
 name|el
 operator|.
@@ -7593,7 +8381,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|panic
 argument_list|(
@@ -7719,9 +8507,16 @@ operator|++
 expr_stmt|;
 block|}
 comment|// When not guessing, execute user handler action
+name|ActionTransInfo
+name|tInfo
+init|=
+operator|new
+name|ActionTransInfo
+argument_list|()
+decl_stmt|;
 name|printAction
 argument_list|(
-name|processActionForTreeSpecifiers
+name|processActionForSpecialSymbols
 argument_list|(
 name|handler
 operator|.
@@ -7730,11 +8525,16 @@ operator|.
 name|getText
 argument_list|()
 argument_list|,
-literal|0
+name|handler
+operator|.
+name|action
+operator|.
+name|getLine
+argument_list|()
 argument_list|,
 name|currentRule
 argument_list|,
-literal|null
+name|tInfo
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -7829,7 +8629,7 @@ name|r
 operator|=
 name|CodeGenerator
 operator|.
-name|lexerRuleName
+name|encodeLexerRuleName
 argument_list|(
 name|el
 operator|.
@@ -7857,7 +8657,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|panic
 argument_list|(
@@ -7897,6 +8697,97 @@ operator|++
 expr_stmt|;
 block|}
 block|}
+DECL|method|genASTDeclaration (AlternativeElement el)
+specifier|protected
+name|void
+name|genASTDeclaration
+parameter_list|(
+name|AlternativeElement
+name|el
+parameter_list|)
+block|{
+name|genASTDeclaration
+argument_list|(
+name|el
+argument_list|,
+name|labeledElementASTType
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|genASTDeclaration (AlternativeElement el, String node_type)
+specifier|protected
+name|void
+name|genASTDeclaration
+parameter_list|(
+name|AlternativeElement
+name|el
+parameter_list|,
+name|String
+name|node_type
+parameter_list|)
+block|{
+name|genASTDeclaration
+argument_list|(
+name|el
+argument_list|,
+name|el
+operator|.
+name|getLabel
+argument_list|()
+argument_list|,
+name|node_type
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|genASTDeclaration (AlternativeElement el, String var_name, String node_type)
+specifier|protected
+name|void
+name|genASTDeclaration
+parameter_list|(
+name|AlternativeElement
+name|el
+parameter_list|,
+name|String
+name|var_name
+parameter_list|,
+name|String
+name|node_type
+parameter_list|)
+block|{
+comment|// already declared?
+if|if
+condition|(
+name|declaredASTVariables
+operator|.
+name|contains
+argument_list|(
+name|el
+argument_list|)
+condition|)
+return|return;
+comment|// emit code
+name|println
+argument_list|(
+name|node_type
+operator|+
+literal|" "
+operator|+
+name|var_name
+operator|+
+literal|"_AST = null;"
+argument_list|)
+expr_stmt|;
+comment|// mark as declared
+name|declaredASTVariables
+operator|.
+name|put
+argument_list|(
+name|el
+argument_list|,
+name|el
+argument_list|)
+expr_stmt|;
+block|}
 comment|/** Generate a header that is common to all Java files */
 DECL|method|genHeader ()
 specifier|protected
@@ -7916,11 +8807,11 @@ literal|": "
 operator|+
 literal|"\""
 operator|+
-name|Tool
+name|antlrTool
 operator|.
 name|fileMinusPath
 argument_list|(
-name|tool
+name|antlrTool
 operator|.
 name|grammarFile
 argument_list|)
@@ -8034,7 +8925,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -8055,6 +8946,23 @@ condition|)
 block|{
 name|genMatchUsingAtomText
 argument_list|(
+name|atom
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|atom
+operator|instanceof
+name|WildcardElement
+condition|)
+block|{
+name|gen
+argument_list|(
+operator|(
+name|WildcardElement
+operator|)
 name|atom
 argument_list|)
 expr_stmt|;
@@ -8571,7 +9479,7 @@ name|isDefined
 argument_list|(
 name|CodeGenerator
 operator|.
-name|lexerRuleName
+name|encodeLexerRuleName
 argument_list|(
 name|filterRule
 argument_list|)
@@ -8580,7 +9488,7 @@ condition|)
 block|{
 name|grammar
 operator|.
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -8606,7 +9514,7 @@ name|getSymbol
 argument_list|(
 name|CodeGenerator
 operator|.
-name|lexerRuleName
+name|encodeLexerRuleName
 argument_list|(
 name|filterRule
 argument_list|)
@@ -8623,7 +9531,7 @@ condition|)
 block|{
 name|grammar
 operator|.
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -8650,7 +9558,7 @@ condition|)
 block|{
 name|grammar
 operator|.
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -8742,11 +9650,38 @@ name|containsEpsilon
 argument_list|()
 condition|)
 block|{
-name|tool
+comment|//String r = a.head.toString();
+name|RuleRefElement
+name|rr
+init|=
+operator|(
+name|RuleRefElement
+operator|)
+name|a
+operator|.
+name|head
+decl_stmt|;
+name|String
+name|r
+init|=
+name|CodeGenerator
+operator|.
+name|decodeLexerRuleName
+argument_list|(
+name|rr
+operator|.
+name|targetRule
+argument_list|)
+decl_stmt|;
+name|antlrTool
 operator|.
 name|warning
 argument_list|(
-literal|"found optional path in nextToken()"
+literal|"public lexical rule "
+operator|+
+name|r
+operator|+
+literal|" is optional (can match \"nothing\")"
 argument_list|)
 expr_stmt|;
 block|}
@@ -9157,7 +10092,7 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Gen a named rule block. 	 * ASTs are generated for each element of an alternative unless 	 * the rule or the alternative have a '!' modifier. 	 * 	 * If an alternative defeats the default tree construction, it 	 * must set<rule>_AST to the root of the returned AST. 	 * 	 * Each alternative that does automatic tree construction, builds 	 * up root and child list pointers in an ASTPair structure. 	 * 	 * A rule finishes by setting the returnAST variable from the 	 * ASTPair. 	 * 	 * @param rule The name of the rule to generate 	 * @param startSymbol true if the rule is a start symbol (i.e., not referenced elsewhere) 	*/
+comment|/** Gen a named rule block.      * ASTs are generated for each element of an alternative unless      * the rule or the alternative have a '!' modifier.      *      * If an alternative defeats the default tree construction, it      * must set<rule>_AST to the root of the returned AST.      *      * Each alternative that does automatic tree construction, builds      * up root and child list pointers in an ASTPair structure.      *      * A rule finishes by setting the returnAST variable from the      * ASTPair.      *      * @param rule The name of the rule to generate      * @param startSymbol true if the rule is a start symbol (i.e., not referenced elsewhere)      */
 DECL|method|genRule (RuleSymbol s, boolean startSymbol, int ruleNum)
 specifier|public
 name|void
@@ -9206,7 +10141,7 @@ name|isDefined
 argument_list|()
 condition|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -9238,6 +10173,12 @@ operator|=
 name|s
 operator|.
 name|getId
+argument_list|()
+expr_stmt|;
+comment|// clear list of declared ast variables..
+name|declaredASTVariables
+operator|.
+name|clear
 argument_list|()
 expr_stmt|;
 comment|// Save the AST generation state, and set it to that of the rule
@@ -9313,6 +10254,11 @@ argument_list|,
 name|rblk
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|rblk
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 operator|+
@@ -9464,7 +10410,7 @@ operator|instanceof
 name|LexerGrammar
 condition|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -9614,7 +10560,7 @@ literal|"int _saveIndex;"
 argument_list|)
 expr_stmt|;
 comment|// used for element! (so we can kill text matched for element)
-comment|/* 	      println("boolean old_saveConsumedInput=saveConsumedInput;"); 	      if ( !rblk.getAutoGen() ) {		// turn off "save input" if ! on rule 	      println("saveConsumedInput=false;"); 	      } 	    */
+comment|/* 			 println("boolean old_saveConsumedInput=saveConsumedInput;"); 			 if ( !rblk.getAutoGen() ) {		// turn off "save input" if ! on rule 			 println("saveConsumedInput=false;"); 			 } 			 */
 block|}
 comment|// if debugging, write code to mark entry to the rule
 if|if
@@ -9695,7 +10641,7 @@ operator|.
 name|getId
 argument_list|()
 operator|+
-literal|"_AST_in = ("
+literal|"_AST_in = (_t == ASTNULL) ? null : ("
 operator|+
 name|labeledElementASTType
 operator|+
@@ -9717,6 +10663,7 @@ literal|"returnAST = null;"
 argument_list|)
 expr_stmt|;
 comment|// Tracks AST construction
+comment|// println("ASTPair currentAST = (inputState.guessing==0) ? new ASTPair() : null;");
 name|println
 argument_list|(
 literal|"ASTPair currentAST = new ASTPair();"
@@ -9739,6 +10686,11 @@ argument_list|)
 expr_stmt|;
 block|}
 name|genBlockPreamble
+argument_list|(
+name|rblk
+argument_list|)
+expr_stmt|;
+name|genBlockInitAction
 argument_list|(
 name|rblk
 argument_list|)
@@ -9836,7 +10788,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|warning
 argument_list|(
@@ -9852,6 +10804,13 @@ operator|.
 name|synPred
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|alt
+operator|.
+name|synPred
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -10204,6 +11163,11 @@ name|rblk
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|rblk
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 operator|+
 literal|";"
@@ -10482,7 +11446,7 @@ decl_stmt|;
 name|String
 name|args
 init|=
-name|processActionForTreeSpecifiers
+name|processActionForSpecialSymbols
 argument_list|(
 name|rr
 operator|.
@@ -10508,7 +11472,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -10524,12 +11488,20 @@ name|currentRule
 operator|.
 name|getRuleName
 argument_list|()
-operator|+
-literal|" on line "
-operator|+
+argument_list|,
+name|grammar
+operator|.
+name|getFilename
+argument_list|()
+argument_list|,
 name|rr
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|rr
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -10551,7 +11523,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|warning
 argument_list|(
@@ -10572,6 +11544,11 @@ name|rr
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|rr
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -10591,7 +11568,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|warning
 argument_list|(
@@ -10609,6 +11586,11 @@ argument_list|,
 name|rr
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|rr
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -10656,7 +11638,7 @@ argument_list|()
 decl_stmt|;
 name|pred
 operator|=
-name|processActionForTreeSpecifiers
+name|processActionForSpecialSymbols
 argument_list|(
 name|pred
 argument_list|,
@@ -10734,7 +11716,7 @@ literal|"\");"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Write an array of Strings which are the semantic predicate 	 *  expressions.  The debugger will reference them by number only 	 */
+comment|/** Write an array of Strings which are the semantic predicate      *  expressions.  The debugger will reference them by number only      */
 DECL|method|genSemPredMap ()
 specifier|protected
 name|void
@@ -11086,7 +12068,7 @@ literal|" ) {"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Generate a static array containing the names of the tokens, 	 * indexed by the token type values.  This static array is used 	 * to format error messages so that the token identifers or literal 	 * strings are displayed instead of the token numbers. 	 * 	 * If a lexical rule has a paraphrase, use it rather than the 	 * token label. 	 */
+comment|/** Generate a static array containing the names of the tokens,      * indexed by the token type values.  This static array is used      * to format error messages so that the token identifers or literal      * strings are displayed instead of the token numbers.      *      * If a lexical rule has a paraphrase, use it rather than the      * token label.      */
 DECL|method|genTokenStrings ()
 specifier|public
 name|void
@@ -11222,9 +12204,7 @@ condition|)
 block|{
 name|s
 operator|=
-name|antlr
-operator|.
-name|Tool
+name|StringUtils
 operator|.
 name|stripFrontBack
 argument_list|(
@@ -11275,6 +12255,177 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Close the string array initailizer
+name|tabs
+operator|--
+expr_stmt|;
+name|println
+argument_list|(
+literal|"};"
+argument_list|)
+expr_stmt|;
+block|}
+comment|/** Create and set Integer token type objects that map 	 *  to Java Class objects (which AST node to create).      */
+DECL|method|genTokenASTNodeMap ()
+specifier|protected
+name|void
+name|genTokenASTNodeMap
+parameter_list|()
+block|{
+name|println
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
+name|println
+argument_list|(
+literal|"protected void buildTokenTypeASTClassMap() {"
+argument_list|)
+expr_stmt|;
+comment|// Generate a map.put("T","TNode") for each token
+comment|// if heterogeneous node known for that token T.
+name|tabs
+operator|++
+expr_stmt|;
+name|boolean
+name|generatedNewHashtable
+init|=
+literal|false
+decl_stmt|;
+name|int
+name|n
+init|=
+literal|0
+decl_stmt|;
+comment|// Walk the token vocabulary and generate puts.
+name|Vector
+name|v
+init|=
+name|grammar
+operator|.
+name|tokenManager
+operator|.
+name|getVocabulary
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|v
+operator|.
+name|size
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|String
+name|s
+init|=
+operator|(
+name|String
+operator|)
+name|v
+operator|.
+name|elementAt
+argument_list|(
+name|i
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|s
+operator|!=
+literal|null
+condition|)
+block|{
+name|TokenSymbol
+name|ts
+init|=
+name|grammar
+operator|.
+name|tokenManager
+operator|.
+name|getTokenSymbol
+argument_list|(
+name|s
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|ts
+operator|!=
+literal|null
+operator|&&
+name|ts
+operator|.
+name|getASTNodeType
+argument_list|()
+operator|!=
+literal|null
+condition|)
+block|{
+name|n
+operator|++
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|generatedNewHashtable
+condition|)
+block|{
+comment|// only generate if we are going to add a mapping
+name|println
+argument_list|(
+literal|"tokenTypeToASTClassMap = new Hashtable();"
+argument_list|)
+expr_stmt|;
+name|generatedNewHashtable
+operator|=
+literal|true
+expr_stmt|;
+block|}
+name|println
+argument_list|(
+literal|"tokenTypeToASTClassMap.put(new Integer("
+operator|+
+name|ts
+operator|.
+name|getTokenType
+argument_list|()
+operator|+
+literal|"), "
+operator|+
+name|ts
+operator|.
+name|getASTNodeType
+argument_list|()
+operator|+
+literal|".class);"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+if|if
+condition|(
+name|n
+operator|==
+literal|0
+condition|)
+block|{
+name|println
+argument_list|(
+literal|"tokenTypeToASTClassMap=null;"
+argument_list|)
+expr_stmt|;
+block|}
 name|tabs
 operator|--
 expr_stmt|;
@@ -11450,9 +12601,7 @@ operator|==
 literal|null
 condition|)
 block|{
-name|antlr
-operator|.
-name|Tool
+name|antlrTool
 operator|.
 name|panic
 argument_list|(
@@ -11596,7 +12745,7 @@ name|exitIfError
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** Get a string for an expression to generate creation of an AST subtree. 	  * @param v A Vector of String, where each element is an expression in the target language yielding an AST node. 	  */
+comment|/** Get a string for an expression to generate creation of an AST subtree.      * @param v A Vector of String, where each element is an expression in the target language yielding an AST node.      */
 DECL|method|getASTCreateString (Vector v)
 specifier|public
 name|String
@@ -11694,8 +12843,8 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** Get a string for an expression to generate creating of an AST node 	 * @param atom The grammar node for which you are creating the node 	 * @param str The arguments to the AST constructor 	 */
-DECL|method|getASTCreateString (GrammarAtom atom, String str)
+comment|/** Get a string for an expression to generate creating of an AST node      * @param atom The grammar node for which you are creating the node      * @param str The arguments to the AST constructor      */
+DECL|method|getASTCreateString (GrammarAtom atom, String astCtorArgs)
 specifier|public
 name|String
 name|getASTCreateString
@@ -11704,10 +12853,10 @@ name|GrammarAtom
 name|atom
 parameter_list|,
 name|String
-name|str
+name|astCtorArgs
 parameter_list|)
 block|{
-comment|// System.out.println("ASTNodeType for "+atom+" is "+atom.getASTNodeType());
+comment|//System.out.println("getASTCreateString("+atom+","+astCtorArgs+")");
 if|if
 condition|(
 name|atom
@@ -11722,47 +12871,268 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// they specified a type either on the reference or in tokens{} section
 return|return
-literal|"new "
+literal|"("
 operator|+
 name|atom
 operator|.
 name|getASTNodeType
 argument_list|()
 operator|+
-literal|"("
-operator|+
-name|str
-operator|+
 literal|")"
+operator|+
+literal|"astFactory.create("
+operator|+
+name|astCtorArgs
+operator|+
+literal|",\""
+operator|+
+name|atom
+operator|.
+name|getASTNodeType
+argument_list|()
+operator|+
+literal|"\")"
 return|;
 block|}
 else|else
 block|{
+comment|// must be an action or something since not referencing an atom
 return|return
-literal|"("
-operator|+
-name|labeledElementASTType
-operator|+
-literal|")astFactory.create("
-operator|+
-name|str
-operator|+
-literal|")"
+name|getASTCreateString
+argument_list|(
+name|astCtorArgs
+argument_list|)
 return|;
 block|}
 block|}
-comment|/** Get a string for an expression to generate creating of an AST node 	 * @param str The arguments to the AST constructor 	 */
-DECL|method|getASTCreateString (String str)
+comment|/** Get a string for an expression to generate creating of an AST node. 	 *  Parse the first (possibly only) argument looking for the token type. 	 *  If the token type is a valid token symbol, ask for it's AST node type 	 *  and add to the end if only 2 arguments.  The forms are #[T], #[T,"t"], 	 *  and as of 2.7.2 #[T,"t",ASTclassname]. 	 *      * @param str The arguments to the AST constructor      */
+DECL|method|getASTCreateString (String astCtorArgs)
 specifier|public
 name|String
 name|getASTCreateString
 parameter_list|(
 name|String
-name|str
+name|astCtorArgs
 parameter_list|)
 block|{
-comment|// System.out.println("ASTNodeType for "+atom+" is "+atom.getASTNodeType());
+comment|//System.out.println("AST CTOR: "+astCtorArgs);
+if|if
+condition|(
+name|astCtorArgs
+operator|==
+literal|null
+condition|)
+block|{
+name|astCtorArgs
+operator|=
+literal|""
+expr_stmt|;
+block|}
+name|int
+name|nCommas
+init|=
+literal|0
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|astCtorArgs
+operator|.
+name|length
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+if|if
+condition|(
+name|astCtorArgs
+operator|.
+name|charAt
+argument_list|(
+name|i
+argument_list|)
+operator|==
+literal|','
+condition|)
+block|{
+name|nCommas
+operator|++
+expr_stmt|;
+block|}
+block|}
+comment|//System.out.println("num commas="+nCommas);
+if|if
+condition|(
+name|nCommas
+operator|<
+literal|2
+condition|)
+block|{
+comment|// if 1 or 2 args
+name|int
+name|firstComma
+init|=
+name|astCtorArgs
+operator|.
+name|indexOf
+argument_list|(
+literal|','
+argument_list|)
+decl_stmt|;
+name|int
+name|lastComma
+init|=
+name|astCtorArgs
+operator|.
+name|lastIndexOf
+argument_list|(
+literal|','
+argument_list|)
+decl_stmt|;
+name|String
+name|tokenName
+init|=
+name|astCtorArgs
+decl_stmt|;
+if|if
+condition|(
+name|nCommas
+operator|>
+literal|0
+condition|)
+block|{
+name|tokenName
+operator|=
+name|astCtorArgs
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|firstComma
+argument_list|)
+expr_stmt|;
+block|}
+comment|//System.out.println("Checking for ast node type of "+tokenName);
+name|TokenSymbol
+name|ts
+init|=
+name|grammar
+operator|.
+name|tokenManager
+operator|.
+name|getTokenSymbol
+argument_list|(
+name|tokenName
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|ts
+operator|!=
+literal|null
+condition|)
+block|{
+name|String
+name|astNodeType
+init|=
+name|ts
+operator|.
+name|getASTNodeType
+argument_list|()
+decl_stmt|;
+comment|//System.out.println("node type of "+tokenName+" is "+astNodeType);
+name|String
+name|emptyText
+init|=
+literal|""
+decl_stmt|;
+if|if
+condition|(
+name|nCommas
+operator|==
+literal|0
+condition|)
+block|{
+comment|// need to add 2nd arg of blank text for token text
+name|emptyText
+operator|=
+literal|",\"\""
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|astNodeType
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+literal|"("
+operator|+
+name|astNodeType
+operator|+
+literal|")"
+operator|+
+literal|"astFactory.create("
+operator|+
+name|astCtorArgs
+operator|+
+name|emptyText
+operator|+
+literal|",\""
+operator|+
+name|astNodeType
+operator|+
+literal|"\")"
+return|;
+block|}
+comment|// fall through and just do a regular create with cast on front
+comment|// if necessary (it differs from default "AST").
+block|}
+if|if
+condition|(
+name|labeledElementASTType
+operator|.
+name|equals
+argument_list|(
+literal|"AST"
+argument_list|)
+condition|)
+block|{
+return|return
+literal|"astFactory.create("
+operator|+
+name|astCtorArgs
+operator|+
+literal|")"
+return|;
+block|}
+return|return
+literal|"("
+operator|+
+name|labeledElementASTType
+operator|+
+literal|")"
+operator|+
+literal|"astFactory.create("
+operator|+
+name|astCtorArgs
+operator|+
+literal|")"
+return|;
+block|}
+comment|// create default type or (since 2.7.2) 3rd arg is classname
 return|return
 literal|"("
 operator|+
@@ -11770,7 +13140,7 @@ name|labeledElementASTType
 operator|+
 literal|")astFactory.create("
 operator|+
-name|str
+name|astCtorArgs
 operator|+
 literal|")"
 return|;
@@ -11904,7 +13274,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**Generate a lookahead test expression for an alternate.  This 	 * will be a series of tests joined by '&&' and enclosed by '()', 	 * the number of such tests being determined by the depth of the lookahead. 	 */
+comment|/**Generate a lookahead test expression for an alternate.  This      * will be a series of tests joined by '&&' and enclosed by '()',      * the number of such tests being determined by the depth of the lookahead.      */
 DECL|method|getLookaheadTestExpression (Alternative alt, int maxDepth)
 specifier|protected
 name|String
@@ -11952,10 +13322,9 @@ block|{
 comment|// empty lookahead can result from alt with sem pred
 comment|// that can see end of token.  E.g., A : {pred}? ('a')? ;
 return|return
-literal|"true"
+literal|"( true )"
 return|;
 block|}
-comment|/* 	  boolean first = true; 	  for (int i=1; i<=depth&& i<=maxDepth; i++) { 	  BitSet p = alt.cache[i].fset; 	  if (!first) { 	  e.append(")&& ("); 	  } 	  first = false; 			 	  // Syn preds can yield<end-of-syn-pred> (epsilon) lookahead. 	  // There is no way to predict what that token would be.  Just 	  // allow anything instead. 	  if ( alt.cache[i].containsEpsilon() ) { 	  e.append("true"); 	  } 	  else { 	  e.append(getLookaheadTestTerm(i, p)); 	  }	 	  }  	  e.append(")"); 	*/
 return|return
 literal|"("
 operator|+
@@ -11971,7 +13340,7 @@ operator|+
 literal|")"
 return|;
 block|}
-comment|/**Generate a depth==1 lookahead test expression given the BitSet. 	 * This may be one of: 	 * 1) a series of 'x==X||' tests 	 * 2) a range test using>=&&<= where possible, 	 * 3) a bitset membership test for complex comparisons 	 * @param k The lookahead level 	 * @param p The lookahead set for level k 	 */
+comment|/**Generate a depth==1 lookahead test expression given the BitSet.      * This may be one of:      * 1) a series of 'x==X||' tests      * 2) a range test using>=&&<= where possible,      * 3) a bitset membership test for complex comparisons      * @param k The lookahead level      * @param p The lookahead set for level k      */
 DECL|method|getLookaheadTestTerm (int k, BitSet p)
 specifier|protected
 name|String
@@ -12150,7 +13519,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** Return an expression for testing a contiguous renage of elements 	 * @param k The lookahead level 	 * @param elems The elements representing the set, usually from BitSet.toArray(). 	 * @return String containing test expression. 	 */
+comment|/** Return an expression for testing a contiguous renage of elements      * @param k The lookahead level      * @param elems The elements representing the set, usually from BitSet.toArray().      * @return String containing test expression.      */
 DECL|method|getRangeExpression (int k, int[] elems)
 specifier|public
 name|String
@@ -12173,7 +13542,7 @@ name|elems
 argument_list|)
 condition|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|panic
 argument_list|(
@@ -12233,7 +13602,7 @@ operator|+
 literal|")"
 return|;
 block|}
-comment|/** getValueString: get a string representation of a token or char value 	 * @param value The token or char value 	 */
+comment|/** getValueString: get a string representation of a token or char value      * @param value The token or char value      */
 DECL|method|getValueString (int value)
 specifier|private
 name|String
@@ -12492,7 +13861,7 @@ operator|+
 literal|")"
 return|;
 block|}
-comment|/** Mangle a string literal into a meaningful token name.  This is 	  * only possible for literals that are all characters.  The resulting 	  * mangled literal name is literalsPrefix with the text of the literal 	  * appended. 	  * @return A string representing the mangled literal, or null if not possible. 	  */
+comment|/** Mangle a string literal into a meaningful token name.  This is      * only possible for literals that are all characters.  The resulting      * mangled literal name is literalsPrefix with the text of the literal      * appended.      * @return A string representing the mangled literal, or null if not possible.      */
 DECL|method|mangleLiteral (String s)
 specifier|private
 name|String
@@ -12505,9 +13874,7 @@ block|{
 name|String
 name|mangled
 init|=
-name|antlr
-operator|.
-name|Tool
+name|antlrTool
 operator|.
 name|literalsPrefix
 decl_stmt|;
@@ -12572,9 +13939,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|antlr
-operator|.
-name|Tool
+name|antlrTool
 operator|.
 name|upperCaseMangledLiterals
 condition|)
@@ -12591,7 +13956,7 @@ return|return
 name|mangled
 return|;
 block|}
-comment|/** Map an identifier to it's corresponding tree-node variable. 	  * This is context-sensitive, depending on the rule and alternative 	  * being generated 	  * @param idParam The identifier name to map 	  * @return The mapped id (which may be the same as the input), or null if the mapping is invalid due to duplicates 	  */
+comment|/** Map an identifier to it's corresponding tree-node variable.      * This is context-sensitive, depending on the rule and alternative      * being generated      * @param idParam The identifier name to map      * @return The mapped id (which may be the same as the input), or null if the mapping is invalid due to duplicates      */
 DECL|method|mapTreeId (String idParam, ActionTransInfo transInfo)
 specifier|public
 name|String
@@ -12785,6 +14150,22 @@ name|NONUNIQUE
 condition|)
 block|{
 comment|// There is more than one element with this id
+name|antlrTool
+operator|.
+name|error
+argument_list|(
+literal|"Ambiguous reference to AST element "
+operator|+
+name|id
+operator|+
+literal|" in rule "
+operator|+
+name|currentRule
+operator|.
+name|getRuleName
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 literal|null
 return|;
@@ -12805,6 +14186,22 @@ condition|)
 block|{
 comment|// a recursive call to the enclosing rule is
 comment|// ambiguous with the rule itself.
+name|antlrTool
+operator|.
+name|error
+argument_list|(
+literal|"Ambiguous reference to AST element "
+operator|+
+name|id
+operator|+
+literal|" in rule "
+operator|+
+name|currentRule
+operator|.
+name|getRuleName
+argument_list|()
+argument_list|)
+expr_stmt|;
 return|return
 literal|null
 return|;
@@ -12883,7 +14280,7 @@ name|id
 return|;
 block|}
 block|}
-comment|/** Given an element and the name of an associated AST variable, 	  * create a mapping between the element "name" and the variable name. 	  */
+comment|/** Given an element and the name of an associated AST variable,      * create a mapping between the element "name" and the variable name.      */
 DECL|method|mapTreeVariable (AlternativeElement e, String name)
 specifier|private
 name|void
@@ -13031,6 +14428,232 @@ expr_stmt|;
 block|}
 block|}
 block|}
+comment|/** Lexically process $var and tree-specifiers in the action.      *  This will replace #id and #(...) with the appropriate      *  function calls and/or variables etc...      */
+DECL|method|processActionForSpecialSymbols (String actionStr, int line, RuleBlock currentRule, ActionTransInfo tInfo)
+specifier|protected
+name|String
+name|processActionForSpecialSymbols
+parameter_list|(
+name|String
+name|actionStr
+parameter_list|,
+name|int
+name|line
+parameter_list|,
+name|RuleBlock
+name|currentRule
+parameter_list|,
+name|ActionTransInfo
+name|tInfo
+parameter_list|)
+block|{
+if|if
+condition|(
+name|actionStr
+operator|==
+literal|null
+operator|||
+name|actionStr
+operator|.
+name|length
+argument_list|()
+operator|==
+literal|0
+condition|)
+return|return
+literal|null
+return|;
+comment|// The action trans info tells us (at the moment) whether an
+comment|// assignment was done to the rule's tree root.
+if|if
+condition|(
+name|grammar
+operator|==
+literal|null
+condition|)
+return|return
+name|actionStr
+return|;
+comment|// see if we have anything to do...
+if|if
+condition|(
+operator|(
+name|grammar
+operator|.
+name|buildAST
+operator|&&
+name|actionStr
+operator|.
+name|indexOf
+argument_list|(
+literal|'#'
+argument_list|)
+operator|!=
+operator|-
+literal|1
+operator|)
+operator|||
+name|grammar
+operator|instanceof
+name|TreeWalkerGrammar
+operator|||
+operator|(
+operator|(
+name|grammar
+operator|instanceof
+name|LexerGrammar
+operator|||
+name|grammar
+operator|instanceof
+name|ParserGrammar
+operator|)
+operator|&&
+name|actionStr
+operator|.
+name|indexOf
+argument_list|(
+literal|'$'
+argument_list|)
+operator|!=
+operator|-
+literal|1
+operator|)
+condition|)
+block|{
+comment|// Create a lexer to read an action and return the translated version
+name|antlr
+operator|.
+name|actions
+operator|.
+name|java
+operator|.
+name|ActionLexer
+name|lexer
+init|=
+operator|new
+name|antlr
+operator|.
+name|actions
+operator|.
+name|java
+operator|.
+name|ActionLexer
+argument_list|(
+name|actionStr
+argument_list|,
+name|currentRule
+argument_list|,
+name|this
+argument_list|,
+name|tInfo
+argument_list|)
+decl_stmt|;
+name|lexer
+operator|.
+name|setLineOffset
+argument_list|(
+name|line
+argument_list|)
+expr_stmt|;
+name|lexer
+operator|.
+name|setFilename
+argument_list|(
+name|grammar
+operator|.
+name|getFilename
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|lexer
+operator|.
+name|setTool
+argument_list|(
+name|antlrTool
+argument_list|)
+expr_stmt|;
+try|try
+block|{
+name|lexer
+operator|.
+name|mACTION
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|actionStr
+operator|=
+name|lexer
+operator|.
+name|getTokenObject
+argument_list|()
+operator|.
+name|getText
+argument_list|()
+expr_stmt|;
+comment|// System.out.println("action translated: "+actionStr);
+comment|// System.out.println("trans info is "+tInfo);
+block|}
+catch|catch
+parameter_list|(
+name|RecognitionException
+name|ex
+parameter_list|)
+block|{
+name|lexer
+operator|.
+name|reportError
+argument_list|(
+name|ex
+argument_list|)
+expr_stmt|;
+return|return
+name|actionStr
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|TokenStreamException
+name|tex
+parameter_list|)
+block|{
+name|antlrTool
+operator|.
+name|panic
+argument_list|(
+literal|"Error reading action:"
+operator|+
+name|actionStr
+argument_list|)
+expr_stmt|;
+return|return
+name|actionStr
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|CharStreamException
+name|io
+parameter_list|)
+block|{
+name|antlrTool
+operator|.
+name|panic
+argument_list|(
+literal|"Error reading action:"
+operator|+
+name|actionStr
+argument_list|)
+expr_stmt|;
+return|return
+name|actionStr
+return|;
+block|}
+block|}
+return|return
+name|actionStr
+return|;
+block|}
 DECL|method|setupGrammarParameters (Grammar g)
 specifier|private
 name|void
@@ -13081,7 +14704,7 @@ block|{
 name|String
 name|suffix
 init|=
-name|Tool
+name|StringUtils
 operator|.
 name|stripFrontBack
 argument_list|(
@@ -13180,7 +14803,7 @@ literal|"RecognitionException"
 expr_stmt|;
 name|throwNoViable
 operator|=
-literal|"throw new NoViableAltForCharException((char)LA(1), getFilename(), getLine());"
+literal|"throw new NoViableAltForCharException((char)LA(1), getFilename(), getLine(), getColumn());"
 expr_stmt|;
 block|}
 elseif|else
@@ -13229,7 +14852,7 @@ block|{
 name|String
 name|suffix
 init|=
-name|Tool
+name|StringUtils
 operator|.
 name|stripFrontBack
 argument_list|(
@@ -13325,7 +14948,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|panic
 argument_list|(
@@ -13334,7 +14957,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** This method exists so a subclass, namely VAJCodeGenerator, 	 *  can open the file in its own evil way.  JavaCodeGenerator 	 *  simply opens a text file... 	 */
+comment|/** This method exists so a subclass, namely VAJCodeGenerator,      *  can open the file in its own evil way.  JavaCodeGenerator      *  simply opens a text file...      */
 DECL|method|setupOutput (String className)
 specifier|public
 name|void
@@ -13348,9 +14971,7 @@ name|IOException
 block|{
 name|currentOutput
 operator|=
-name|antlr
-operator|.
-name|Tool
+name|antlrTool
 operator|.
 name|openOutputFile
 argument_list|(

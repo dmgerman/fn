@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -196,6 +196,63 @@ name|node
 expr_stmt|;
 block|}
 block|}
+comment|/** How many children does this node have? */
+DECL|method|getNumberOfChildren ()
+specifier|public
+name|int
+name|getNumberOfChildren
+parameter_list|()
+block|{
+name|BaseAST
+name|t
+init|=
+name|this
+operator|.
+name|down
+decl_stmt|;
+name|int
+name|n
+init|=
+literal|0
+decl_stmt|;
+if|if
+condition|(
+name|t
+operator|!=
+literal|null
+condition|)
+block|{
+name|n
+operator|=
+literal|1
+expr_stmt|;
+while|while
+condition|(
+name|t
+operator|.
+name|right
+operator|!=
+literal|null
+condition|)
+block|{
+name|t
+operator|=
+name|t
+operator|.
+name|right
+expr_stmt|;
+name|n
+operator|++
+expr_stmt|;
+block|}
+return|return
+name|n
+return|;
+block|}
+return|return
+name|n
+return|;
+block|}
 DECL|method|doWorkForFindAll (Vector v, AST target, boolean partialMatch)
 specifier|private
 name|void
@@ -346,7 +403,7 @@ name|getType
 argument_list|()
 return|;
 block|}
-comment|/** Is t an exact structural and equals() match of this tree.  The  *  'this' reference is considered the start of a sibling list.  */
+comment|/** Is t an exact structural and equals() match of this tree.  The      *  'this' reference is considered the start of a sibling list.      */
 DECL|method|equalsList (AST t)
 specifier|public
 name|boolean
@@ -684,7 +741,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/** Is 't' a subtree of the tree rooted at 'this'?  The siblings      *  of 'this' are ignored.       */
+comment|/** Is 't' a subtree of the tree rooted at 'this'?  The siblings      *  of 'this' are ignored.      */
 DECL|method|equalsTreePartial (AST sub)
 specifier|public
 name|boolean
@@ -903,6 +960,26 @@ return|return
 literal|0
 return|;
 block|}
+DECL|method|getLine ()
+specifier|public
+name|int
+name|getLine
+parameter_list|()
+block|{
+return|return
+literal|0
+return|;
+block|}
+DECL|method|getColumn ()
+specifier|public
+name|int
+name|getColumn
+parameter_list|()
+block|{
+return|return
+literal|0
+return|;
+block|}
 DECL|method|initialize (int t, String txt)
 specifier|public
 specifier|abstract
@@ -991,9 +1068,7 @@ parameter_list|(
 name|String
 name|text
 parameter_list|)
-block|{
-empty_stmt|;
-block|}
+block|{     }
 comment|/** Set the token type for this node */
 DECL|method|setType (int ttype)
 specifier|public
@@ -1003,9 +1078,7 @@ parameter_list|(
 name|int
 name|ttype
 parameter_list|)
-block|{
-empty_stmt|;
-block|}
+block|{     }
 DECL|method|setVerboseStringConversion (boolean verbose, String[] names)
 specifier|public
 specifier|static
@@ -1028,6 +1101,19 @@ name|tokenNames
 operator|=
 name|names
 expr_stmt|;
+block|}
+comment|/** Return an array of strings that maps token ID to it's text. @since 2.7.3 */
+DECL|method|getTokenNames ()
+specifier|public
+specifier|static
+name|String
+index|[]
+name|getTokenNames
+parameter_list|()
+block|{
+return|return
+name|tokenNames
+return|;
 block|}
 DECL|method|toString ()
 specifier|public
@@ -1066,7 +1152,7 @@ argument_list|()
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-name|Tool
+name|StringUtils
 operator|.
 name|stripFrontBack
 argument_list|(

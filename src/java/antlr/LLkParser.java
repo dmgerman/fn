@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -21,7 +21,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**An LL(k) parser.  *  * @see antlr.Token  * @see antlr.TokenBuffer  * @see antlr.LL1Parser  */
+comment|/**An LL(k) parser.  *  * @see antlr.Token  * @see antlr.TokenBuffer  */
 end_comment
 
 begin_class
@@ -48,8 +48,6 @@ name|k
 operator|=
 name|k_
 expr_stmt|;
-comment|//TokenBuffer tokenBuf = new TokenBuffer(null);
-comment|//setTokenBuffer(tokenBuf);
 block|}
 DECL|method|LLkParser (ParserSharedInputState state, int k_)
 specifier|public
@@ -62,13 +60,14 @@ name|int
 name|k_
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|state
+argument_list|)
+expr_stmt|;
 name|k
 operator|=
 name|k_
-expr_stmt|;
-name|inputState
-operator|=
-name|state
 expr_stmt|;
 block|}
 DECL|method|LLkParser (TokenBuffer tokenBuf, int k_)
@@ -122,7 +121,7 @@ name|tokenBuf
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**Consume another token from the input stream.  Can only write sequentially! 	 * If you need 3 tokens ahead, you must consume() 3 times. 	 *<p> 	 * Note that it is possible to overwrite tokens that have not been matched. 	 * For example, calling consume() 3 times when k=2, means that the first token 	 * consumed will be overwritten with the 3rd. 	 */
+comment|/**Consume another token from the input stream.  Can only write sequentially!      * If you need 3 tokens ahead, you must consume() 3 times.      *<p>      * Note that it is possible to overwrite tokens that have not been matched.      * For example, calling consume() 3 times when k=2, means that the first token      * consumed will be overwritten with the 3rd.      */
 DECL|method|consume ()
 specifier|public
 name|void
@@ -255,6 +254,16 @@ literal|", "
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|LT
+argument_list|(
+name|i
+argument_list|)
+operator|!=
+literal|null
+condition|)
+block|{
 name|System
 operator|.
 name|out
@@ -276,6 +285,23 @@ name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|print
+argument_list|(
+literal|"LA("
+operator|+
+name|i
+operator|+
+literal|")==null"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|System
 operator|.

@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_class
@@ -68,7 +68,7 @@ condition|)
 block|{
 name|g
 operator|.
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -84,6 +84,11 @@ argument_list|,
 name|t
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|t
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;

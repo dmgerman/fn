@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -75,10 +75,10 @@ specifier|abstract
 class|class
 name|Grammar
 block|{
-DECL|field|tool
+DECL|field|antlrTool
 specifier|protected
 name|Tool
-name|tool
+name|antlrTool
 decl_stmt|;
 DECL|field|generator
 specifier|protected
@@ -123,13 +123,13 @@ name|superClass
 init|=
 literal|null
 decl_stmt|;
-comment|/** The token manager associated with the grammar, if any. 	// The token manager is responsible for maintaining the set of valid tokens, and 	// is conceptually shared between the lexer and parser.  This may be either a 	// LexerGrammar or a ImportVocabTokenManager.     */
+comment|/** The token manager associated with the grammar, if any.      // The token manager is responsible for maintaining the set of valid tokens, and      // is conceptually shared between the lexer and parser.  This may be either a      // LexerGrammar or a ImportVocabTokenManager.      */
 DECL|field|tokenManager
 specifier|protected
 name|TokenManager
 name|tokenManager
 decl_stmt|;
-comment|/** The name of the export vocabulary...used to generate the output 	 *  token types interchange file. 	 */
+comment|/** The name of the export vocabulary...used to generate the output      *  token types interchange file.      */
 DECL|field|exportVocab
 specifier|protected
 name|String
@@ -137,7 +137,7 @@ name|exportVocab
 init|=
 literal|null
 decl_stmt|;
-comment|/** The name of the import vocabulary.  "Initial conditions" 	 */
+comment|/** The name of the import vocabulary.  "Initial conditions"      */
 DECL|field|importVocab
 specifier|protected
 name|String
@@ -271,7 +271,7 @@ name|className
 operator|=
 name|className_
 expr_stmt|;
-name|tool
+name|antlrTool
 operator|=
 name|tool_
 expr_stmt|;
@@ -374,7 +374,7 @@ return|return
 name|fileName
 return|;
 block|}
-comment|/** Get an integer option.  Given the name of the option find its       * associated integer value.  If the associated value is not an integer or      * is not in the table, then throw an exception of type NumberFormatException.      * @param key The name of the option      * @return The value associated with the key.      */
+comment|/** Get an integer option.  Given the name of the option find its      * associated integer value.  If the associated value is not an integer or      * is not in the table, then throw an exception of type NumberFormatException.      * @param key The name of the option      * @return The value associated with the key.      */
 DECL|method|getIntegerOption (String key)
 specifier|public
 name|int
@@ -500,7 +500,7 @@ name|elements
 argument_list|()
 return|;
 block|}
-comment|/** Check the existence of an option in the table 	 * @param key The name of the option 	 * @return true if the option is in the table 	 */
+comment|/** Check the existence of an option in the table      * @param key The name of the option      * @return true if the option is in the table      */
 DECL|method|hasOption (String key)
 specifier|public
 name|boolean
@@ -592,7 +592,7 @@ operator|=
 name|a
 expr_stmt|;
 block|}
-comment|/** Set a generic option. 	 * This associates a generic option key with a Token value. 	 * No validation is performed by this method, although users of the value 	 * (code generation and/or analysis) may require certain formats. 	 * The value is stored as a token so that the location of an error 	 * can be reported. 	 * @param key The name of the option. 	 * @param value The value to associate with the key. 	 * @return true if the option was a valid generic grammar option, false o/w 	 */
+comment|/** Set a generic option.      * This associates a generic option key with a Token value.      * No validation is performed by this method, although users of the value      * (code generation and/or analysis) may require certain formats.      * The value is stored as a token so that the location of an error      * can be reported.      * @param key The name of the option.      * @param value The value to associate with the key.      * @return true if the option was a valid generic grammar option, false o/w      */
 DECL|method|setOption (String key, Token value)
 specifier|public
 name|boolean
@@ -644,7 +644,45 @@ argument_list|(
 literal|"k"
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("setting lookahead to " + maxk);
+if|if
+condition|(
+name|maxk
+operator|<=
+literal|0
+condition|)
+block|{
+name|antlrTool
+operator|.
+name|error
+argument_list|(
+literal|"option 'k' must be greater than 0 (was "
+operator|+
+name|value
+operator|.
+name|getText
+argument_list|()
+operator|+
+literal|")"
+argument_list|,
+name|getFilename
+argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getLine
+argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|maxk
+operator|=
+literal|1
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -652,7 +690,7 @@ name|NumberFormatException
 name|e
 parameter_list|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -672,6 +710,11 @@ name|value
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -705,7 +748,7 @@ name|NumberFormatException
 name|e
 parameter_list|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -718,6 +761,11 @@ name|value
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -751,7 +799,7 @@ name|NumberFormatException
 name|e
 parameter_list|)
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -763,6 +811,11 @@ argument_list|,
 name|value
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -814,7 +867,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -826,6 +879,11 @@ argument_list|,
 name|value
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -877,7 +935,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -889,6 +947,11 @@ argument_list|,
 name|value
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -940,7 +1003,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -952,6 +1015,11 @@ argument_list|,
 name|value
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -967,6 +1035,20 @@ operator|.
 name|equals
 argument_list|(
 literal|"classHeaderSuffix"
+argument_list|)
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+if|if
+condition|(
+name|key
+operator|.
+name|equals
+argument_list|(
+literal|"classHeaderPrefix"
 argument_list|)
 condition|)
 block|{
@@ -1009,6 +1091,20 @@ operator|.
 name|equals
 argument_list|(
 literal|"genHashLines"
+argument_list|)
+condition|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+if|if
+condition|(
+name|key
+operator|.
+name|equals
+argument_list|(
+literal|"noConstructors"
 argument_list|)
 condition|)
 block|{

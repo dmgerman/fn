@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -112,6 +112,14 @@ name|Hashtable
 name|literals
 decl_stmt|;
 comment|// set by subclass
+comment|/** Tab chars are handled by tab() according to this value; override      *  method to do anything weird with tabs.      */
+DECL|field|tabsize
+specifier|protected
+name|int
+name|tabsize
+init|=
+literal|8
+decl_stmt|;
 DECL|field|_returnToken
 specifier|protected
 name|Token
@@ -166,25 +174,11 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-comment|// JZ: conflict with obfuscator: setTokenObjectClass("antlr.CommonToken");
 name|setTokenObjectClass
 argument_list|(
-operator|(
-operator|new
-name|antlr
-operator|.
-name|CommonToken
-argument_list|()
-operator|)
-operator|.
-name|getClass
-argument_list|()
-operator|.
-name|getName
-argument_list|()
+literal|"antlr.CommonToken"
 argument_list|)
 expr_stmt|;
-comment|// JZ: solution
 block|}
 DECL|method|CharScanner (InputBuffer cb)
 specifier|public
@@ -1013,23 +1007,72 @@ operator|=
 literal|1
 expr_stmt|;
 block|}
-comment|/** advance the current column number by an appropriate amount.      *  If you do not override this to specify how much to jump for      *  a tab, then tabs are counted as one char.  This method is      *  called from consume().      */
+comment|/** advance the current column number by an appropriate amount      *  according to tab size. This method is called from consume().      */
 DECL|method|tab ()
 specifier|public
 name|void
 name|tab
 parameter_list|()
 block|{
-comment|// update inputState.column as function of
-comment|// inputState.column and tab stops.
-comment|// For example, if tab stops are columns 1 and 5 etc...
-comment|// and column is 3, then add 2 to column.
-name|inputState
-operator|.
-name|column
-operator|++
+name|int
+name|c
+init|=
+name|getColumn
+argument_list|()
+decl_stmt|;
+name|int
+name|nc
+init|=
+operator|(
+operator|(
+operator|(
+name|c
+operator|-
+literal|1
+operator|)
+operator|/
+name|tabsize
+operator|)
+operator|+
+literal|1
+operator|)
+operator|*
+name|tabsize
+operator|+
+literal|1
+decl_stmt|;
+comment|// calculate tab stop
+name|setColumn
+argument_list|(
+name|nc
+argument_list|)
 expr_stmt|;
 block|}
+DECL|method|setTabSize ( int size )
+specifier|public
+name|void
+name|setTabSize
+parameter_list|(
+name|int
+name|size
+parameter_list|)
+block|{
+name|tabsize
+operator|=
+name|size
+expr_stmt|;
+block|}
+DECL|method|getTabSize ()
+specifier|public
+name|int
+name|getTabSize
+parameter_list|()
+block|{
+return|return
+name|tabsize
+return|;
+block|}
+comment|/** @see #panic(String)      */
 DECL|method|panic ()
 specifier|public
 name|void
@@ -1053,6 +1096,7 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** This method is executed by ANTLR internally when it detected an illegal      *  state that cannot be recovered from.      *  The default implementation of this method calls      *  {@link java.lang.System.exit(int)} and writes directly to      *  {@link java.lang.System.err)} , which is usually not appropriate when      *  a translator is embedded into a larger application.<em>It is highly      *  recommended that this method be overridden to handle the error in a      *  way appropriate for your application (e.g. throw an unchecked      *  exception)</em>.      */
 DECL|method|panic (String s)
 specifier|public
 name|void
@@ -1245,6 +1289,8 @@ argument_list|(
 name|pos
 argument_list|)
 expr_stmt|;
+comment|// RK: should not be here, it is messing up column calculation
+comment|// setColumn(inputState.tokenStartColumn);
 block|}
 DECL|method|setCaseSensitive (boolean t)
 specifier|public

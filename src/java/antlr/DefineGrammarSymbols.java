@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -320,6 +320,7 @@ name|id
 argument_list|)
 condition|)
 block|{
+comment|/*             // RK: dish out a warning if the token was not defined before.             tool.warning("Token '" + id + "' defined outside tokens section",                          tool.grammarFile, t.getLine(), t.getColumn());             */
 name|int
 name|tt
 init|=
@@ -402,20 +403,20 @@ parameter_list|(
 name|boolean
 name|doAST_
 parameter_list|)
-block|{ 	}
+block|{     }
 DECL|method|beginChildList ()
 specifier|public
 name|void
 name|beginChildList
 parameter_list|()
-block|{ 	}
+block|{     }
 comment|// Exception handling
 DECL|method|beginExceptionGroup ()
 specifier|public
 name|void
 name|beginExceptionGroup
 parameter_list|()
-block|{ 	}
+block|{     }
 DECL|method|beginExceptionSpec (Token label)
 specifier|public
 name|void
@@ -424,8 +425,8 @@ parameter_list|(
 name|Token
 name|label
 parameter_list|)
-block|{ 	}
-DECL|method|beginSubRule (Token label, int line, boolean not)
+block|{     }
+DECL|method|beginSubRule (Token label, Token start, boolean not)
 specifier|public
 name|void
 name|beginSubRule
@@ -433,24 +434,24 @@ parameter_list|(
 name|Token
 name|label
 parameter_list|,
-name|int
-name|line
+name|Token
+name|start
 parameter_list|,
 name|boolean
 name|not
 parameter_list|)
-block|{ 	}
-DECL|method|beginTree (int line)
+block|{     }
+DECL|method|beginTree (Token tok)
 specifier|public
 name|void
 name|beginTree
 parameter_list|(
-name|int
-name|line
+name|Token
+name|tok
 parameter_list|)
 throws|throws
 name|SemanticException
-block|{ 	}
+block|{     }
 comment|/** Define a lexer or parser rule */
 DECL|method|defineRuleName (Token r, String access, boolean ruleAutoGen, String docComment)
 specifier|public
@@ -497,7 +498,7 @@ name|id
 operator|=
 name|CodeGenerator
 operator|.
-name|lexerRuleName
+name|encodeLexerRuleName
 argument_list|(
 name|id
 argument_list|)
@@ -611,6 +612,11 @@ name|r
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|r
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -651,7 +657,7 @@ operator|=
 name|docComment
 expr_stmt|;
 block|}
-comment|/** Define a token from tokens {...}. 	 *  Must be label and literal or just label or just a literal. 	 */
+comment|/** Define a token from tokens {...}.      *  Must be label and literal or just label or just a literal.      */
 DECL|method|defineToken (Token tokname, Token tokliteral)
 specifier|public
 name|void
@@ -771,6 +777,11 @@ name|tokliteral
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|tokliteral
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return;
@@ -861,6 +872,11 @@ argument_list|,
 name|tokliteral
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|tokliteral
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1023,6 +1039,11 @@ name|tokname
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|tokname
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return;
@@ -1069,32 +1090,32 @@ specifier|public
 name|void
 name|endAlt
 parameter_list|()
-block|{ 	}
+block|{     }
 DECL|method|endChildList ()
 specifier|public
 name|void
 name|endChildList
 parameter_list|()
-block|{ 	}
+block|{     }
 DECL|method|endExceptionGroup ()
 specifier|public
 name|void
 name|endExceptionGroup
 parameter_list|()
-block|{ 	}
+block|{     }
 DECL|method|endExceptionSpec ()
 specifier|public
 name|void
 name|endExceptionSpec
 parameter_list|()
-block|{ 	}
+block|{     }
 DECL|method|endGrammar ()
 specifier|public
 name|void
 name|endGrammar
 parameter_list|()
-block|{ 	}
-comment|/** Called after the optional options section, to compensate for 	 * options that may not have been set. 	 * This method is bigger than it needs to be, but is much more 	 * clear if I delineate all the cases. 	 */
+block|{     }
+comment|/** Called after the optional options section, to compensate for      * options that may not have been set.      * This method is bigger than it needs to be, but is much more      * clear if I delineate all the cases.      */
 DECL|method|endOptions ()
 specifier|public
 name|void
@@ -1768,43 +1789,43 @@ parameter_list|(
 name|String
 name|r
 parameter_list|)
-block|{ 	}
+block|{     }
 DECL|method|endSubRule ()
 specifier|public
 name|void
 name|endSubRule
 parameter_list|()
-block|{ 	}
+block|{     }
 DECL|method|endTree ()
 specifier|public
 name|void
 name|endTree
 parameter_list|()
-block|{ 	}
+block|{     }
 DECL|method|hasError ()
 specifier|public
 name|void
 name|hasError
 parameter_list|()
-block|{ 	}
+block|{     }
 DECL|method|noASTSubRule ()
 specifier|public
 name|void
 name|noASTSubRule
 parameter_list|()
-block|{ 	}
+block|{     }
 DECL|method|oneOrMoreSubRule ()
 specifier|public
 name|void
 name|oneOrMoreSubRule
 parameter_list|()
-block|{ 	}
+block|{     }
 DECL|method|optionalSubRule ()
 specifier|public
 name|void
 name|optionalSubRule
 parameter_list|()
-block|{ 	}
+block|{     }
 DECL|method|setUserExceptions (String thr)
 specifier|public
 name|void
@@ -1813,7 +1834,7 @@ parameter_list|(
 name|String
 name|thr
 parameter_list|)
-block|{}
+block|{     }
 DECL|method|refAction (Token action)
 specifier|public
 name|void
@@ -1822,7 +1843,7 @@ parameter_list|(
 name|Token
 name|action
 parameter_list|)
-block|{ 	}
+block|{     }
 DECL|method|refArgAction (Token action)
 specifier|public
 name|void
@@ -1831,7 +1852,7 @@ parameter_list|(
 name|Token
 name|action
 parameter_list|)
-block|{ 	}
+block|{     }
 DECL|method|refCharLiteral (Token lit, Token label, boolean inverted, int autoGenType, boolean lastInRule)
 specifier|public
 name|void
@@ -1852,7 +1873,7 @@ parameter_list|,
 name|boolean
 name|lastInRule
 parameter_list|)
-block|{ 	}
+block|{     }
 DECL|method|refCharRange (Token t1, Token t2, Token label, int autoGenType, boolean lastInRule)
 specifier|public
 name|void
@@ -1873,7 +1894,7 @@ parameter_list|,
 name|boolean
 name|lastInRule
 parameter_list|)
-block|{ 	}
+block|{     }
 DECL|method|refElementOption (Token option, Token value)
 specifier|public
 name|void
@@ -1885,7 +1906,7 @@ parameter_list|,
 name|Token
 name|value
 parameter_list|)
-block|{ 	}
+block|{     }
 DECL|method|refTokensSpecElementOption (Token tok, Token option, Token value)
 specifier|public
 name|void
@@ -1900,7 +1921,7 @@ parameter_list|,
 name|Token
 name|value
 parameter_list|)
-block|{ 	}
+block|{     }
 DECL|method|refExceptionHandler (Token exTypeAndName, Token action)
 specifier|public
 name|void
@@ -1912,9 +1933,9 @@ parameter_list|,
 name|Token
 name|action
 parameter_list|)
-block|{ 	}
+block|{     }
 comment|// Header action applies to all parsers and lexers.
-DECL|method|refHeaderAction (Token name,Token act)
+DECL|method|refHeaderAction (Token name, Token act)
 specifier|public
 name|void
 name|refHeaderAction
@@ -1926,19 +1947,23 @@ name|Token
 name|act
 parameter_list|)
 block|{
-name|headerActions
-operator|.
-name|put
-argument_list|(
-operator|(
+name|String
+name|key
+decl_stmt|;
+if|if
+condition|(
 name|name
 operator|==
 literal|null
-operator|)
-condition|?
+condition|)
+name|key
+operator|=
 literal|""
-else|:
-name|Tool
+expr_stmt|;
+else|else
+name|key
+operator|=
+name|StringUtils
 operator|.
 name|stripFrontBack
 argument_list|(
@@ -1951,11 +1976,67 @@ literal|"\""
 argument_list|,
 literal|"\""
 argument_list|)
+expr_stmt|;
+comment|// FIXME: depending on the mode the inserted header actions should
+comment|// be checked for sanity.
+if|if
+condition|(
+name|headerActions
+operator|.
+name|containsKey
+argument_list|(
+name|key
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|key
+operator|.
+name|equals
+argument_list|(
+literal|""
+argument_list|)
+condition|)
+name|tool
+operator|.
+name|error
+argument_list|(
+name|act
+operator|.
+name|getLine
+argument_list|()
+operator|+
+literal|": header action already defined"
+argument_list|)
+expr_stmt|;
+else|else
+name|tool
+operator|.
+name|error
+argument_list|(
+name|act
+operator|.
+name|getLine
+argument_list|()
+operator|+
+literal|": header action '"
+operator|+
+name|key
+operator|+
+literal|"' already defined"
+argument_list|)
+expr_stmt|;
+block|}
+name|headerActions
+operator|.
+name|put
+argument_list|(
+name|key
 argument_list|,
 name|act
 argument_list|)
 expr_stmt|;
-comment|//		headerAction = act.getText();
 block|}
 DECL|method|getHeaderAction (String name)
 specifier|public
@@ -2005,7 +2086,7 @@ parameter_list|(
 name|Token
 name|action
 parameter_list|)
-block|{ 	}
+block|{     }
 DECL|method|refMemberAction (Token act)
 specifier|public
 name|void
@@ -2014,7 +2095,7 @@ parameter_list|(
 name|Token
 name|act
 parameter_list|)
-block|{ 	}
+block|{     }
 DECL|method|refPreambleAction (Token act)
 specifier|public
 name|void
@@ -2037,7 +2118,7 @@ parameter_list|(
 name|Token
 name|returnAction
 parameter_list|)
-block|{ 	}
+block|{     }
 DECL|method|refRule (Token idAssign, Token r, Token label, Token args, int autoGenType)
 specifier|public
 name|void
@@ -2084,7 +2165,7 @@ name|id
 operator|=
 name|CodeGenerator
 operator|.
-name|lexerRuleName
+name|encodeLexerRuleName
 argument_list|(
 name|id
 argument_list|)
@@ -2122,7 +2203,7 @@ parameter_list|(
 name|Token
 name|pred
 parameter_list|)
-block|{ 	}
+block|{     }
 DECL|method|refStringLiteral (Token lit, Token label, int autoGenType, boolean lastInRule)
 specifier|public
 name|void
@@ -2333,7 +2414,7 @@ parameter_list|(
 name|Token
 name|treeSpec
 parameter_list|)
-block|{ 	}
+block|{     }
 DECL|method|refWildcard (Token t, Token label, int autoGenType)
 specifier|public
 name|void
@@ -2348,7 +2429,7 @@ parameter_list|,
 name|int
 name|autoGenType
 parameter_list|)
-block|{ 	}
+block|{     }
 comment|/** Get ready to process a new grammar */
 DECL|method|reset ()
 specifier|public
@@ -2369,7 +2450,7 @@ parameter_list|(
 name|Token
 name|argaction
 parameter_list|)
-block|{ 	}
+block|{     }
 comment|/** Set the character vocabulary for a lexer */
 DECL|method|setCharVocabulary (BitSet b)
 specifier|public
@@ -2394,7 +2475,7 @@ name|b
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** setFileOption: Associate an option value with a key. 	 * This applies to options for an entire grammar file. 	 * @param key The token containing the option name 	 * @param value The token containing the option value. 	 */
+comment|/** setFileOption: Associate an option value with a key.      * This applies to options for an entire grammar file.      * @param key The token containing the option name      * @param value The token containing the option value.      */
 DECL|method|setFileOption (Token key, Token value, String filename)
 specifier|public
 name|void
@@ -2437,11 +2518,11 @@ condition|)
 block|{
 name|language
 operator|=
-name|Tool
+name|StringUtils
 operator|.
 name|stripBack
 argument_list|(
-name|Tool
+name|StringUtils
 operator|.
 name|stripFront
 argument_list|(
@@ -2501,6 +2582,11 @@ name|value
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2535,7 +2621,7 @@ name|tool
 operator|.
 name|literalsPrefix
 operator|=
-name|tool
+name|StringUtils
 operator|.
 name|stripFrontBack
 argument_list|(
@@ -2563,6 +2649,11 @@ argument_list|,
 name|value
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2627,7 +2718,7 @@ else|else
 block|{
 name|grammar
 operator|.
-name|tool
+name|antlrTool
 operator|.
 name|error
 argument_list|(
@@ -2639,6 +2730,11 @@ name|key
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|key
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2646,16 +2742,6 @@ block|}
 elseif|else
 if|if
 condition|(
-name|key
-operator|.
-name|getText
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-literal|"namespace"
-argument_list|)
-operator|||
 name|key
 operator|.
 name|getText
@@ -2715,11 +2801,89 @@ name|key
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|key
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
+if|if
+condition|(
+name|key
+operator|.
+name|getText
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"noConstructors"
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+operator|!
+operator|(
+name|value
+operator|.
+name|getText
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"true"
+argument_list|)
+operator|||
+name|value
+operator|.
+name|getText
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"false"
+argument_list|)
+operator|)
+condition|)
+name|tool
+operator|.
+name|error
+argument_list|(
+literal|"noConstructors option must be true or false"
+argument_list|,
+name|filename
+argument_list|,
+name|value
+operator|.
+name|getLine
+argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|tool
+operator|.
+name|noConstructors
+operator|=
+name|value
+operator|.
+name|getText
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"true"
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
 if|if
 condition|(
 name|key
@@ -2770,6 +2934,11 @@ name|value
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|tool
@@ -2818,34 +2987,16 @@ name|value
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
-if|if
-condition|(
-name|key
-operator|.
-name|getText
-argument_list|()
-operator|.
-name|equals
-argument_list|(
-literal|"namespace"
-argument_list|)
-condition|)
-name|tool
-operator|.
-name|setNameSpace
-argument_list|(
-name|value
-operator|.
-name|getText
-argument_list|()
-argument_list|)
-expr_stmt|;
-elseif|else
 if|if
 condition|(
 name|key
@@ -2893,6 +3044,130 @@ block|}
 block|}
 block|}
 block|}
+elseif|else
+if|if
+condition|(
+name|key
+operator|.
+name|getText
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"namespace"
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|language
+operator|.
+name|equals
+argument_list|(
+literal|"Cpp"
+argument_list|)
+operator|&&
+operator|!
+name|language
+operator|.
+name|equals
+argument_list|(
+literal|"CSharp"
+argument_list|)
+condition|)
+block|{
+name|tool
+operator|.
+name|error
+argument_list|(
+name|key
+operator|.
+name|getText
+argument_list|()
+operator|+
+literal|" option only valid for C++ and C# (a.k.a CSharp)"
+argument_list|,
+name|filename
+argument_list|,
+name|key
+operator|.
+name|getLine
+argument_list|()
+argument_list|,
+name|key
+operator|.
+name|getColumn
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+if|if
+condition|(
+name|value
+operator|.
+name|getType
+argument_list|()
+operator|!=
+name|ANTLRParser
+operator|.
+name|STRING_LITERAL
+condition|)
+block|{
+name|tool
+operator|.
+name|error
+argument_list|(
+name|key
+operator|.
+name|getText
+argument_list|()
+operator|+
+literal|" option must be a string"
+argument_list|,
+name|filename
+argument_list|,
+name|value
+operator|.
+name|getLine
+argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+if|if
+condition|(
+name|key
+operator|.
+name|getText
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"namespace"
+argument_list|)
+condition|)
+name|tool
+operator|.
+name|setNameSpace
+argument_list|(
+name|value
+operator|.
+name|getText
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
 else|else
 block|{
 name|tool
@@ -2912,11 +3187,16 @@ name|key
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** setGrammarOption: Associate an option value with a key. 	 * This function forwards to Grammar.setOption for some options. 	 * @param key The token containing the option name 	 * @param value The token containing the option value. 	 */
+comment|/** setGrammarOption: Associate an option value with a key.      * This function forwards to Grammar.setOption for some options.      * @param key The token containing the option name      * @param value The token containing the option value.      */
 DECL|method|setGrammarOption (Token key, Token value)
 specifier|public
 name|void
@@ -2975,6 +3255,11 @@ name|value
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3012,6 +3297,11 @@ argument_list|,
 name|value
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3079,6 +3369,11 @@ name|value
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3145,6 +3440,11 @@ name|value
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|value
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3177,7 +3477,7 @@ parameter_list|,
 name|Token
 name|value
 parameter_list|)
-block|{ 	}
+block|{     }
 DECL|method|setSubruleOption (Token key, Token value)
 specifier|public
 name|void
@@ -3189,7 +3489,7 @@ parameter_list|,
 name|Token
 name|value
 parameter_list|)
-block|{ 	}
+block|{     }
 comment|/** Start a new lexer */
 DECL|method|startLexer (String file, Token name, String superClass, String doc)
 specifier|public
@@ -3744,13 +4044,13 @@ specifier|public
 name|void
 name|synPred
 parameter_list|()
-block|{ 	}
+block|{     }
 DECL|method|zeroOrMoreSubRule ()
 specifier|public
 name|void
 name|zeroOrMoreSubRule
 parameter_list|()
-block|{ 	}
+block|{     }
 block|}
 end_class
 

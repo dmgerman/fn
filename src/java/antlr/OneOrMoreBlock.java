@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_class
@@ -31,22 +31,22 @@ name|g
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|OneOrMoreBlock (Grammar g, int line)
+DECL|method|OneOrMoreBlock (Grammar g, Token start)
 specifier|public
 name|OneOrMoreBlock
 parameter_list|(
 name|Grammar
 name|g
 parameter_list|,
-name|int
-name|line
+name|Token
+name|start
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|g
 argument_list|,
-name|line
+name|start
 argument_list|)
 expr_stmt|;
 block|}

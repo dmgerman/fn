@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -133,6 +133,42 @@ argument_list|(
 name|in
 argument_list|)
 argument_list|)
+expr_stmt|;
+block|}
+DECL|method|reset ()
+specifier|public
+name|void
+name|reset
+parameter_list|()
+block|{
+name|column
+operator|=
+literal|1
+expr_stmt|;
+name|line
+operator|=
+literal|1
+expr_stmt|;
+name|tokenStartColumn
+operator|=
+literal|1
+expr_stmt|;
+name|tokenStartLine
+operator|=
+literal|1
+expr_stmt|;
+name|guessing
+operator|=
+literal|0
+expr_stmt|;
+name|filename
+operator|=
+literal|null
+expr_stmt|;
+name|input
+operator|.
+name|reset
+argument_list|()
 expr_stmt|;
 block|}
 block|}

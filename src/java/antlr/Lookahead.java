@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -35,7 +35,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**This object holds all information needed to represent  * the lookahead for any particular lookahead computation  * for a<b>single</b> lookahead depth.  Final lookahead  * information is a simple bit set, but intermediate  * stages need computation cycle and FOLLOW information.  *  *<p>  * Concerning the<tt>cycle</tt> variable.  * If lookahead is computed for a RuleEnd node, then  * computation is part of a FOLLOW cycle for this rule.  * If lookahead is computed for a RuleBlock node, the  * computation is part of a FIRST cycle to this rule.  *  *<p>  * Concerning the<tt>epsilonDepth</tt> variable.  * This is not the depth relative to the rule reference  * that epsilon was encountered.  That value is  *<pre>  * 		initial_k - epsilonDepth + 1  *</pre>  * Also, lookahead depths past rule ref for local follow are:  *<pre>  * 		initial_k - (initial_k - epsilonDepth)  *</pre>  * Used for rule references.  If we try  * to compute look(k, ruleref) and there are fewer  * than k lookahead terminals before the end of the  * the rule, epsilon will be returned (don't want to  * pass the end of the rule).  We must track when the  * the lookahead got stuck.  For example,  *<pre>  * 		a : b A B E F G;  * 		b : C ;  *</pre>  * LOOK(5, ref-to(b)) is {<EPSILON>} with depth = 4, which  * indicates that at 2 (5-4+1) tokens ahead, end of rule was reached.  * Therefore, the token at 4=5-(5-4) past rule ref b must be  * included in the set == F.  * The situation is complicated by the fact that a computation  * may hit the end of a rule at many different depths.  For example,  *<pre>  * 		a : b A B C ;  * 		b : E F		// epsilon depth of 1 relative to initial k=3  * 		  | G		// epsilon depth of 2  * 		  ;  *</pre>  * Here, LOOK(3,ref-to(b)) returns epsilon, but the depths are  * {1, 2}; i.e., 3-(3-1) and 3-(3-2).  Those are the lookahead depths  * past the rule ref needed for the local follow.  *   *<p>  * This is null unless an epsilon is created.  *  * @see antlr.Lookahead#combineWith(Lookahead)  */
+comment|/**This object holds all information needed to represent  * the lookahead for any particular lookahead computation  * for a<b>single</b> lookahead depth.  Final lookahead  * information is a simple bit set, but intermediate  * stages need computation cycle and FOLLOW information.  *  *<p>  * Concerning the<tt>cycle</tt> variable.  * If lookahead is computed for a RuleEnd node, then  * computation is part of a FOLLOW cycle for this rule.  * If lookahead is computed for a RuleBlock node, the  * computation is part of a FIRST cycle to this rule.  *  *<p>  * Concerning the<tt>epsilonDepth</tt> variable.  * This is not the depth relative to the rule reference  * that epsilon was encountered.  That value is  *<pre>  * 		initial_k - epsilonDepth + 1  *</pre>  * Also, lookahead depths past rule ref for local follow are:  *<pre>  * 		initial_k - (initial_k - epsilonDepth)  *</pre>  * Used for rule references.  If we try  * to compute look(k, ruleref) and there are fewer  * than k lookahead terminals before the end of the  * the rule, epsilon will be returned (don't want to  * pass the end of the rule).  We must track when the  * the lookahead got stuck.  For example,  *<pre>  * 		a : b A B E F G;  * 		b : C ;  *</pre>  * LOOK(5, ref-to(b)) is {<EPSILON>} with depth = 4, which  * indicates that at 2 (5-4+1) tokens ahead, end of rule was reached.  * Therefore, the token at 4=5-(5-4) past rule ref b must be  * included in the set == F.  * The situation is complicated by the fact that a computation  * may hit the end of a rule at many different depths.  For example,  *<pre>  * 		a : b A B C ;  * 		b : E F		// epsilon depth of 1 relative to initial k=3  * 		  | G		// epsilon depth of 2  * 		  ;  *</pre>  * Here, LOOK(3,ref-to(b)) returns epsilon, but the depths are  * {1, 2}; i.e., 3-(3-1) and 3-(3-2).  Those are the lookahead depths  * past the rule ref needed for the local follow.  *  *<p>  * This is null unless an epsilon is created.  *  * @see antlr.Lookahead#combineWith(Lookahead)  */
 end_comment
 
 begin_class
@@ -61,7 +61,7 @@ DECL|field|epsilonDepth
 name|BitSet
 name|epsilonDepth
 decl_stmt|;
-comment|/** Does this lookahead depth include Epsilon token type? This 	 *  is used to avoid having a bit in the set for Epsilon as it 	 *  conflicts with parsing binary files. 	 */
+comment|/** Does this lookahead depth include Epsilon token type? This      *  is used to avoid having a bit in the set for Epsilon as it      *  conflicts with parsing binary files.      */
 DECL|field|hasEpsilon
 name|boolean
 name|hasEpsilon
@@ -299,7 +299,7 @@ return|return
 name|hasEpsilon
 return|;
 block|}
-comment|/** What is the intersection of two lookahead depths? 	 *  Only the Epsilon "bit" and bitset are considered. 	 */
+comment|/** What is the intersection of two lookahead depths?      *  Only the Epsilon "bit" and bitset are considered.      */
 DECL|method|intersection (Lookahead q)
 specifier|public
 name|Lookahead

@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_comment
@@ -20,7 +20,7 @@ specifier|public
 interface|interface
 name|GrammarAnalyzer
 block|{
-comment|/**The epsilon token type is an imaginary type used  	 * during analysis.  It indicates an incomplete look() computation. 	 * Must be kept consistent with Token constants to be between 	 * MIN_USER_TYPE and INVALID_TYPE. 	 */
+comment|/**The epsilon token type is an imaginary type used      * during analysis.  It indicates an incomplete look() computation.      * Must be kept consistent with Token constants to be between      * MIN_USER_TYPE and INVALID_TYPE.      */
 comment|// public static final int EPSILON_TYPE = 2;
 DECL|field|NONDETERMINISTIC
 specifier|public

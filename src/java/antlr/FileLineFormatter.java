@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_class
@@ -53,7 +53,8 @@ operator|=
 name|f
 expr_stmt|;
 block|}
-DECL|method|getFormatString (String fileName, int line)
+comment|/** @param fileName the file that should appear in the prefix. (or null)      * @param line the line (or -1)      * @param column the column (or -1)      */
+DECL|method|getFormatString (String fileName, int line, int column)
 specifier|public
 specifier|abstract
 name|String
@@ -64,6 +65,9 @@ name|fileName
 parameter_list|,
 name|int
 name|line
+parameter_list|,
+name|int
+name|column
 parameter_list|)
 function_decl|;
 block|}

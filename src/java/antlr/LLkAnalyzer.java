@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -104,7 +104,7 @@ operator|=
 name|tool_
 expr_stmt|;
 block|}
-comment|/** Return true if someone used the '.' wildcard default idiom. 	 *  Either #(. children) or '.' as an alt by itself. 	 */
+comment|/** Return true if someone used the '.' wildcard default idiom.      *  Either #(. children) or '.' as an alt by itself.      */
 DECL|method|altUsesWildcardDefault (Alternative alt)
 specifier|protected
 name|boolean
@@ -165,7 +165,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**Is this block of alternatives LL(k)?  Fill in alternative cache for this block. 	 * @return true if the block is deterministic 	 */
+comment|/**Is this block of alternatives LL(k)?  Fill in alternative cache for this block.      * @return true if the block is deterministic      */
 DECL|method|deterministic (AlternativeBlock blk)
 specifier|public
 name|boolean
@@ -266,6 +266,11 @@ argument_list|,
 name|blk
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|blk
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -672,7 +677,7 @@ name|lookaheadDepth
 operator|=
 name|NONDETERMINISTIC
 expr_stmt|;
-comment|/* if ith alt starts with a syntactic predicate, computing the 					 * lookahead is still done for code generation, but messages 					 * should not be generated when comparing against alt j. 					 * Alternatives with syn preds that are unnecessary do 					 * not result in syn pred try-blocks. 					 */
+comment|/* if ith alt starts with a syntactic predicate, computing the                              * lookahead is still done for code generation, but messages                              * should not be generated when comparing against alt j.                              * Alternatives with syn preds that are unnecessary do                              * not result in syn pred try-blocks.                              */
 if|if
 condition|(
 name|ai
@@ -707,7 +712,7 @@ comment|// This prevents alt j from being in any switch statements.
 comment|// move on to next alternative=>no possible ambiguity!
 comment|//						continue inner;
 block|}
-comment|/* if ith alt starts with a semantic predicate, computing the 					 * lookahead is still done for code generation, but messages 					 * should not be generated when comparing against alt j. 					 */
+comment|/* if ith alt starts with a semantic predicate, computing the                              * lookahead is still done for code generation, but messages                              * should not be generated when comparing against alt j.                              */
 elseif|else
 if|if
 condition|(
@@ -738,7 +743,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/* if jth alt is exactly the wildcard or wildcard root of tree, 					 * then remove elements from alt i lookahead from alt j's lookahead. 					 * Don't do an ambiguity warning. 					 */
+comment|/* if jth alt is exactly the wildcard or wildcard root of tree,                              * then remove elements from alt i lookahead from alt j's lookahead.                              * Don't do an ambiguity warning.                              */
 elseif|else
 if|if
 condition|(
@@ -755,7 +760,7 @@ operator|=
 name|aj
 expr_stmt|;
 block|}
-comment|/* If the user specified warnWhenFollowAmbig=false, then we 					 * can turn off this warning IFF one of the alts is empty; 					 * that is, it points immediately at the end block. 					 */
+comment|/* If the user specified warnWhenFollowAmbig=false, then we                              * can turn off this warning IFF one of the alts is empty;                              * that is, it points immediately at the end block.                              */
 elseif|else
 if|if
 condition|(
@@ -782,7 +787,7 @@ block|{
 comment|// System.out.println("ai.head pts to "+ai.head.getClass());
 comment|// System.out.println("aj.head pts to "+aj.head.getClass());
 block|}
-comment|/* If they have the generateAmbigWarnings option off for the block 					 * then don't generate a warning. 					 */
+comment|/* If they have the generateAmbigWarnings option off for the block                              * then don't generate a warning.                              */
 elseif|else
 if|if
 condition|(
@@ -791,7 +796,7 @@ name|blk
 operator|.
 name|generateAmbigWarnings
 condition|)
-block|{ 					}
+block|{                             }
 comment|/* If greedy=true and *one* empty alt shut off warning. */
 elseif|else
 if|if
@@ -924,7 +929,7 @@ return|return
 name|det
 return|;
 block|}
-comment|/**Is (...)+ block LL(1)?  Fill in alternative cache for this block. 	 * @return true if the block is deterministic 	 */
+comment|/**Is (...)+ block LL(1)?  Fill in alternative cache for this block.      * @return true if the block is deterministic      */
 DECL|method|deterministic (OneOrMoreBlock blk)
 specifier|public
 name|boolean
@@ -991,7 +996,7 @@ operator|&&
 name|blkOk
 return|;
 block|}
-comment|/**Is (...)* block LL(1)?  Fill in alternative cache for this block. 	 * @return true if the block is deterministic 	 */
+comment|/**Is (...)* block LL(1)?  Fill in alternative cache for this block.      * @return true if the block is deterministic      */
 DECL|method|deterministic (ZeroOrMoreBlock blk)
 specifier|public
 name|boolean
@@ -1163,6 +1168,11 @@ argument_list|,
 name|blk
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|blk
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1408,7 +1418,7 @@ operator|.
 name|alti
 argument_list|)
 decl_stmt|;
-comment|/* If the user specified warnWhenFollowAmbig=false, then we 					 * can turn off this warning. 					 */
+comment|/* If the user specified warnWhenFollowAmbig=false, then we                  * can turn off this warning.                  */
 if|if
 condition|(
 operator|!
@@ -1416,8 +1426,8 @@ name|blk
 operator|.
 name|warnWhenFollowAmbig
 condition|)
-block|{ 					}
-comment|/* If they have the generateAmbigWarnings option off for the block 					 * then don't generate a warning. 					 */
+block|{                 }
+comment|/* If they have the generateAmbigWarnings option off for the block                  * then don't generate a warning.                  */
 elseif|else
 if|if
 condition|(
@@ -1426,7 +1436,7 @@ name|blk
 operator|.
 name|generateAmbigWarnings
 condition|)
-block|{ 					}
+block|{                 }
 comment|/* If greedy=true and alt not empty, shut off warning */
 elseif|else
 if|if
@@ -1465,7 +1475,7 @@ literal|"greedy loop"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* If greedy=false then shut off warning...will have 					 * to add "if FOLLOW break" 					 * block during code gen to compensate for removal of warning. 					 */
+comment|/* If greedy=false then shut off warning...will have                  * to add "if FOLLOW break"                  * block during code gen to compensate for removal of warning.                  */
 elseif|else
 if|if
 condition|(
@@ -1541,6 +1551,11 @@ name|blk
 operator|.
 name|getLine
 argument_list|()
+argument_list|,
+name|blk
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1614,7 +1629,7 @@ return|return
 name|det
 return|;
 block|}
-comment|/**Compute the lookahead set of whatever follows references to 	 * the rule associated witht the FOLLOW block. 	 */
+comment|/**Compute the lookahead set of whatever follows references to      * the rule associated witht the FOLLOW block.      */
 DECL|method|FOLLOW (int k, RuleEndElement end)
 specifier|public
 name|Lookahead
@@ -1651,7 +1666,7 @@ name|rule
 operator|=
 name|CodeGenerator
 operator|.
-name|lexerRuleName
+name|encodeLexerRuleName
 argument_list|(
 name|rb
 operator|.
@@ -1870,31 +1885,214 @@ return|;
 block|}
 else|else
 block|{
-comment|// replace this cache entry with the entry from the referenced computation.
-comment|// Eventually, this percolates a complete (no cycle reference) cache entry
-comment|// to this node (or at least gets it closer and closer).  This is not
-comment|// crucial, but makes cache lookup faster as we might have to look up
-comment|// lots of cycle references before finding a complete reference.
+if|if
+condition|(
+name|DEBUG_ANALYZER
+condition|)
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"combining FOLLOW("
+operator|+
+name|k
+operator|+
+literal|") for "
+operator|+
+name|rule
+operator|+
+literal|": from "
+operator|+
 name|end
 operator|.
 name|cache
 index|[
 name|k
 index|]
-operator|=
+operator|.
+name|toString
+argument_list|(
+literal|","
+argument_list|,
+name|charFormatter
+argument_list|,
+name|grammar
+argument_list|)
+operator|+
+literal|" with FOLLOW for "
+operator|+
+operator|(
+operator|(
+name|RuleBlock
+operator|)
+name|re
+operator|.
+name|block
+operator|)
+operator|.
+name|getRuleName
+argument_list|()
+operator|+
+literal|": "
+operator|+
 name|re
 operator|.
 name|cache
 index|[
 name|k
 index|]
+operator|.
+name|toString
+argument_list|(
+literal|","
+argument_list|,
+name|charFormatter
+argument_list|,
+name|grammar
+argument_list|)
+argument_list|)
 expr_stmt|;
-comment|// Return the cache entry associated with the cycle reference.
+block|}
+comment|// combine results from other rule's FOLLOW
+if|if
+condition|(
+name|re
+operator|.
+name|cache
+index|[
+name|k
+index|]
+operator|.
+name|cycle
+operator|==
+literal|null
+condition|)
+block|{
+comment|// current rule depends on another rule's FOLLOW and
+comment|// it is complete with no cycle; just kill our cycle and
+comment|// combine full result from other rule's FOLLOW
+name|end
+operator|.
+name|cache
+index|[
+name|k
+index|]
+operator|.
+name|combineWith
+argument_list|(
+name|re
+operator|.
+name|cache
+index|[
+name|k
+index|]
+argument_list|)
+expr_stmt|;
+name|end
+operator|.
+name|cache
+index|[
+name|k
+index|]
+operator|.
+name|cycle
+operator|=
+literal|null
+expr_stmt|;
+comment|// kill cycle as we're complete
+block|}
+else|else
+block|{
+comment|// the FOLLOW cache for other rule has a cycle also.
+comment|// Here is where we bubble up a cycle.  We better recursively
+comment|// wipe out cycles (partial computations).  I'm a little nervous
+comment|// that we might leave a cycle here, however.
+name|Lookahead
+name|refFOLLOW
+init|=
+name|FOLLOW
+argument_list|(
+name|k
+argument_list|,
+name|re
+argument_list|)
+decl_stmt|;
+name|end
+operator|.
+name|cache
+index|[
+name|k
+index|]
+operator|.
+name|combineWith
+argument_list|(
+name|refFOLLOW
+argument_list|)
+expr_stmt|;
+comment|// all cycles should be gone, but if not, record ref to cycle
+name|end
+operator|.
+name|cache
+index|[
+name|k
+index|]
+operator|.
+name|cycle
+operator|=
+name|refFOLLOW
+operator|.
+name|cycle
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|DEBUG_ANALYZER
+condition|)
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"saving FOLLOW("
+operator|+
+name|k
+operator|+
+literal|") for "
+operator|+
+name|rule
+operator|+
+literal|": from "
+operator|+
+name|end
+operator|.
+name|cache
+index|[
+name|k
+index|]
+operator|.
+name|toString
+argument_list|(
+literal|","
+argument_list|,
+name|charFormatter
+argument_list|,
+name|grammar
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Return the updated cache entry associated
+comment|// with the cycle reference.
 return|return
 operator|(
 name|Lookahead
 operator|)
-name|re
+name|end
 operator|.
 name|cache
 index|[
@@ -2627,7 +2825,7 @@ return|return
 name|p
 return|;
 block|}
-comment|/**Compute what follows this place-holder node and possibly 	 * what begins the associated loop unless the 	 * node is locked. 	 *<p> 	 * if we hit the end of a loop, we have to include 	 * what tokens can begin the loop as well.  If the start 	 * node is locked, then we simply found an empty path 	 * through this subrule while analyzing it.  If the 	 * start node is not locked, then this node was hit 	 * during a FOLLOW operation and the FIRST of this 	 * block must be included in that lookahead computation. 	 */
+comment|/**Compute what follows this place-holder node and possibly      * what begins the associated loop unless the      * node is locked.      *<p>      * if we hit the end of a loop, we have to include      * what tokens can begin the loop as well.  If the start      * node is locked, then we simply found an empty path      * through this subrule while analyzing it.  If the      * start node is not locked, then this node was hit      * during a FOLLOW operation and the FIRST of this      * block must be included in that lookahead computation.      */
 DECL|method|look (int k, BlockEndElement end)
 specifier|public
 name|Lookahead
@@ -2822,7 +3020,7 @@ return|return
 name|p
 return|;
 block|}
-comment|/**Return this char as the lookahead if k=1. 	 *<p>### Doesn't work for ( 'a' 'b' | 'a' ~'b' ) yet!!! 	 *<p> 	 * If the atom has the<tt>not</tt> flag on, then 	 * create the set complement of the tokenType 	 * which is the set of all characters referenced 	 * in the grammar with this char turned off. 	 * Also remove characters from the set that 	 * are currently allocated for predicting 	 * previous alternatives.  This avoids ambiguity 	 * messages and is more properly what is meant. 	 * ( 'a' | ~'a' ) implies that the ~'a' is the 	 * "else" clause. 	 *<p> 	 * NOTE: we do<b>NOT</b> include exit path in 	 * the exclusion set. E.g., 	 * ( 'a' | ~'a' )* 'b' 	 * should exit upon seeing a 'b' during the loop. 	 */
+comment|/**Return this char as the lookahead if k=1.      *<p>### Doesn't work for ( 'a' 'b' | 'a' ~'b' ) yet!!!      *<p>      * If the atom has the<tt>not</tt> flag on, then      * create the set complement of the tokenType      * which is the set of all characters referenced      * in the grammar with this char turned off.      * Also remove characters from the set that      * are currently allocated for predicting      * previous alternatives.  This avoids ambiguity      * messages and is more properly what is meant.      * ( 'a' | ~'a' ) implies that the ~'a' is the      * "else" clause.      *<p>      * NOTE: we do<b>NOT</b> include exit path in      * the exclusion set. E.g.,      * ( 'a' | ~'a' )* 'b'      * should exit upon seeing a 'b' during the loop.      */
 DECL|method|look (int k, CharLiteralElement atom)
 specifier|public
 name|Lookahead
@@ -3246,7 +3444,7 @@ return|return
 name|l
 return|;
 block|}
-comment|/**The lookahead of a (...)+ block is the combined lookahead of 	 * all alternatives and, if an empty path is found, the lookahead 	 * of what follows the block. 	 */
+comment|/**The lookahead of a (...)+ block is the combined lookahead of      * all alternatives and, if an empty path is found, the lookahead      * of what follows the block.      */
 DECL|method|look (int k, OneOrMoreBlock blk)
 specifier|public
 name|Lookahead
@@ -3297,7 +3495,7 @@ return|return
 name|p
 return|;
 block|}
-comment|/**Combine the lookahead computed for each alternative. 	 * Lock the node so that no other computation may come back 	 * on itself--infinite loop.  This also implies infinite left-recursion 	 * in the grammar (or an error in this algorithm ;)). 	 */
+comment|/**Combine the lookahead computed for each alternative.      * Lock the node so that no other computation may come back      * on itself--infinite loop.  This also implies infinite left-recursion      * in the grammar (or an error in this algorithm ;)).      */
 DECL|method|look (int k, RuleBlock blk)
 specifier|public
 name|Lookahead
@@ -3348,7 +3546,7 @@ return|return
 name|p
 return|;
 block|}
-comment|/**If not locked or noFOLLOW set, compute FOLLOW of a rule. 	 *<p> 	 * TJP says 8/12/99: not true anymore: 	 * Lexical rules never compute follow.  They set epsilon and 	 * the code generator gens code to check for any character. 	 * The code generator must remove the tokens used to predict 	 * any previous alts in the same block. 	 *<p> 	 * When the last node of a rule is reached and noFOLLOW, 	 * it implies that a "local" FOLLOW will be computed 	 * after this call.  I.e., 	 *<pre> 	 *		a : b A; 	 *		b : B | ; 	 *		c : b C; 	 *</pre> 	 * Here, when computing the look of rule b from rule a, 	 * we want only {B,EPSILON_TYPE} so that look(b A) will 	 * be {B,A} not {B,A,C}. 	 *<p> 	 * if the end block is not locked and the FOLLOW is 	 * wanted, the algorithm must compute the lookahead 	 * of what follows references to this rule.  If 	 * end block is locked, FOLLOW will return an empty set 	 * with a cycle to the rule associated with this end block. 	 */
+comment|/**If not locked or noFOLLOW set, compute FOLLOW of a rule.      *<p>      * TJP says 8/12/99: not true anymore:      * Lexical rules never compute follow.  They set epsilon and      * the code generator gens code to check for any character.      * The code generator must remove the tokens used to predict      * any previous alts in the same block.      *<p>      * When the last node of a rule is reached and noFOLLOW,      * it implies that a "local" FOLLOW will be computed      * after this call.  I.e.,      *<pre>      *		a : b A;      *		b : B | ;      *		c : b C;      *</pre>      * Here, when computing the look of rule b from rule a,      * we want only {B,EPSILON_TYPE} so that look(b A) will      * be {B,A} not {B,A,C}.      *<p>      * if the end block is not locked and the FOLLOW is      * wanted, the algorithm must compute the lookahead      * of what follows references to this rule.  If      * end block is locked, FOLLOW will return an empty set      * with a cycle to the rule associated with this end block.      */
 DECL|method|look (int k, RuleEndElement end)
 specifier|public
 name|Lookahead
@@ -3440,7 +3638,7 @@ return|return
 name|p
 return|;
 block|}
-comment|/**Compute the lookahead contributed by a rule reference. 	 * 	 *<p> 	 * When computing ruleref lookahead, we don't want the FOLLOW 	 * computation done if an empty path exists for the rule. 	 * The FOLLOW is too loose of a set...we want only to 	 * include the "local" FOLLOW or what can follow this 	 * particular ref to the node.  In other words, we use 	 * context information to reduce the complexity of the 	 * analysis and strengthen the parser. 	 * 	 * The noFOLLOW flag is used as a means of restricting 	 * the FOLLOW to a "local" FOLLOW.  This variable is 	 * orthogonal to the<tt>lock</tt> variable that prevents 	 * infinite recursion.  noFOLLOW does not care about what k is. 	 */
+comment|/**Compute the lookahead contributed by a rule reference.      *      *<p>      * When computing ruleref lookahead, we don't want the FOLLOW      * computation done if an empty path exists for the rule.      * The FOLLOW is too loose of a set...we want only to      * include the "local" FOLLOW or what can follow this      * particular ref to the node.  In other words, we use      * context information to reduce the complexity of the      * analysis and strengthen the parser.      *      * The noFOLLOW flag is used as a means of restricting      * the FOLLOW to a "local" FOLLOW.  This variable is      * orthogonal to the<tt>lock</tt> variable that prevents      * infinite recursion.  noFOLLOW does not care about what k is.      */
 DECL|method|look (int k, RuleRefElement rr)
 specifier|public
 name|Lookahead
@@ -3519,6 +3717,11 @@ argument_list|,
 name|rr
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|rr
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3627,6 +3830,11 @@ argument_list|,
 name|rr
 operator|.
 name|getLine
+argument_list|()
+argument_list|,
+name|rr
+operator|.
+name|getColumn
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3912,7 +4120,7 @@ name|l
 return|;
 block|}
 block|}
-comment|/**The lookahead of a (...)=> block is the lookahead of 	 * what follows the block.  By definition, the syntactic 	 * predicate block defies static analysis (you want to try it 	 * out at run-time).  The LOOK of (a)=>A B is A for LL(1) 	 * ### is this even called? 	 */
+comment|/**The lookahead of a (...)=> block is the lookahead of      * what follows the block.  By definition, the syntactic      * predicate block defies static analysis (you want to try it      * out at run-time).  The LOOK of (a)=>A B is A for LL(1)      * ### is this even called?      */
 DECL|method|look (int k, SynPredBlock blk)
 specifier|public
 name|Lookahead
@@ -4353,7 +4561,7 @@ name|b
 argument_list|)
 return|;
 block|}
-comment|/** The (...)* element is the combined lookahead of the alternatives and what can 	 *  follow the loop. 	 */
+comment|/** The (...)* element is the combined lookahead of the alternatives and what can      *  follow the loop.      */
 DECL|method|look (int k, ZeroOrMoreBlock blk)
 specifier|public
 name|Lookahead
@@ -4423,7 +4631,7 @@ return|return
 name|p
 return|;
 block|}
-comment|/**Compute the combined lookahead for all productions of a rule. 	 * If the lookahead returns with epsilon, at least one epsilon 	 * path exists (one that consumes no tokens).  The noFOLLOW 	 * flag being set for this endruleblk, indicates that the 	 * a rule ref invoked this rule. 	 * 	 * Currently only look(RuleRef) calls this.  There is no need 	 * for the code generator to call this. 	 */
+comment|/**Compute the combined lookahead for all productions of a rule.      * If the lookahead returns with epsilon, at least one epsilon      * path exists (one that consumes no tokens).  The noFOLLOW      * flag being set for this endruleblk, indicates that the      * a rule ref invoked this rule.      *      * Currently only look(RuleRef) calls this.  There is no need      * for the code generator to call this.      */
 DECL|method|look (int k, String rule)
 specifier|public
 name|Lookahead
@@ -4671,7 +4879,7 @@ return|return
 name|p
 return|;
 block|}
-comment|/** If the first k-1 sets are singleton sets, the appoximate 	 *  lookahead analysis is equivalent to full lookahead analysis. 	 */
+comment|/** If the first k-1 sets are singleton sets, the appoximate      *  lookahead analysis is equivalent to full lookahead analysis.      */
 DECL|method|lookaheadEquivForApproxAndFullAnalysis (Lookahead[] bset, int k)
 specifier|public
 specifier|static
@@ -4733,7 +4941,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/** Remove the prediction sets from preceding alternatives 	 * and follow set, but *only* if this element is the first element  	 * of the alternative.  The class members currenBlock and 	 * currentBlock.analysisAlt must be set correctly. 	 * @param b The prediction bitset to be modified 	 * @el The element of interest 	 */
+comment|/** Remove the prediction sets from preceding alternatives      * and follow set, but *only* if this element is the first element      * of the alternative.  The class members currenBlock and      * currentBlock.analysisAlt must be set correctly.      * @param b The prediction bitset to be modified      * @el The element of interest      */
 DECL|method|removeCompetingPredictionSets (BitSet b, AlternativeElement el)
 specifier|private
 name|void
@@ -4842,7 +5050,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** Remove the prediction sets from preceding alternatives 	 * The class members currenBlock must be set correctly. 	 * Remove prediction sets from 1..k. 	 * @param look The prediction lookahead to be modified 	 * @el The element of interest 	 * @k  How deep into lookahead to modify 	 */
+comment|/** Remove the prediction sets from preceding alternatives      * The class members currenBlock must be set correctly.      * Remove prediction sets from 1..k.      * @param look The prediction lookahead to be modified      * @el The element of interest      * @k  How deep into lookahead to modify      */
 DECL|method|removeCompetingPredictionSetsFromWildcard (Lookahead[] look, AlternativeElement el, int k)
 specifier|private
 name|void

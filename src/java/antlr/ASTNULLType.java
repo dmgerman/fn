@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_import
@@ -58,9 +58,7 @@ parameter_list|(
 name|AST
 name|c
 parameter_list|)
-block|{
-empty_stmt|;
-block|}
+block|{     }
 DECL|method|equals (AST t)
 specifier|public
 name|boolean
@@ -194,6 +192,36 @@ operator|.
 name|NULL_TREE_LOOKAHEAD
 return|;
 block|}
+DECL|method|getLine ()
+specifier|public
+name|int
+name|getLine
+parameter_list|()
+block|{
+return|return
+literal|0
+return|;
+block|}
+DECL|method|getColumn ()
+specifier|public
+name|int
+name|getColumn
+parameter_list|()
+block|{
+return|return
+literal|0
+return|;
+block|}
+DECL|method|getNumberOfChildren ()
+specifier|public
+name|int
+name|getNumberOfChildren
+parameter_list|()
+block|{
+return|return
+literal|0
+return|;
+block|}
 DECL|method|initialize (int t, String txt)
 specifier|public
 name|void
@@ -205,7 +233,7 @@ parameter_list|,
 name|String
 name|txt
 parameter_list|)
-block|{}
+block|{     }
 DECL|method|initialize (AST t)
 specifier|public
 name|void
@@ -214,7 +242,7 @@ parameter_list|(
 name|AST
 name|t
 parameter_list|)
-block|{}
+block|{     }
 DECL|method|initialize (Token t)
 specifier|public
 name|void
@@ -223,7 +251,7 @@ parameter_list|(
 name|Token
 name|t
 parameter_list|)
-block|{}
+block|{     }
 DECL|method|setFirstChild (AST c)
 specifier|public
 name|void
@@ -232,9 +260,7 @@ parameter_list|(
 name|AST
 name|c
 parameter_list|)
-block|{
-empty_stmt|;
-block|}
+block|{     }
 DECL|method|setNextSibling (AST n)
 specifier|public
 name|void
@@ -243,9 +269,7 @@ parameter_list|(
 name|AST
 name|n
 parameter_list|)
-block|{
-empty_stmt|;
-block|}
+block|{     }
 DECL|method|setText (String text)
 specifier|public
 name|void
@@ -254,9 +278,7 @@ parameter_list|(
 name|String
 name|text
 parameter_list|)
-block|{
-empty_stmt|;
-block|}
+block|{     }
 DECL|method|setType (int ttype)
 specifier|public
 name|void
@@ -265,9 +287,7 @@ parameter_list|(
 name|int
 name|ttype
 parameter_list|)
-block|{
-empty_stmt|;
-block|}
+block|{     }
 DECL|method|toString ()
 specifier|public
 name|String

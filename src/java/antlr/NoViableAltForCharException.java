@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_class
@@ -37,31 +37,29 @@ block|{
 name|super
 argument_list|(
 literal|"NoViableAlt"
+argument_list|,
+name|scanner
+operator|.
+name|getFilename
+argument_list|()
+argument_list|,
+name|scanner
+operator|.
+name|getLine
+argument_list|()
+argument_list|,
+name|scanner
+operator|.
+name|getColumn
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|foundChar
 operator|=
 name|c
 expr_stmt|;
-name|this
-operator|.
-name|line
-operator|=
-name|scanner
-operator|.
-name|getLine
-argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|fileName
-operator|=
-name|scanner
-operator|.
-name|getFilename
-argument_list|()
-expr_stmt|;
 block|}
+comment|/** @deprecated As of ANTLR 2.7.2 use {@see #NoViableAltForCharException(char, String, int, int) } */
 DECL|method|NoViableAltForCharException (char c, String fileName, int line)
 specifier|public
 name|NoViableAltForCharException
@@ -76,39 +74,51 @@ name|int
 name|line
 parameter_list|)
 block|{
+name|this
+argument_list|(
+name|c
+argument_list|,
+name|fileName
+argument_list|,
+name|line
+argument_list|,
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|NoViableAltForCharException (char c, String fileName, int line, int column)
+specifier|public
+name|NoViableAltForCharException
+parameter_list|(
+name|char
+name|c
+parameter_list|,
+name|String
+name|fileName
+parameter_list|,
+name|int
+name|line
+parameter_list|,
+name|int
+name|column
+parameter_list|)
+block|{
 name|super
 argument_list|(
 literal|"NoViableAlt"
+argument_list|,
+name|fileName
+argument_list|,
+name|line
+argument_list|,
+name|column
 argument_list|)
 expr_stmt|;
 name|foundChar
 operator|=
 name|c
 expr_stmt|;
-name|this
-operator|.
-name|line
-operator|=
-name|line
-expr_stmt|;
-name|this
-operator|.
-name|fileName
-operator|=
-name|fileName
-expr_stmt|;
-block|}
-comment|/**      * @deprecated As of ANTLR 2.7.0      */
-DECL|method|getErrorMessage ()
-specifier|public
-name|String
-name|getErrorMessage
-parameter_list|()
-block|{
-return|return
-name|getMessage
-argument_list|()
-return|;
 block|}
 comment|/**      * Returns a clean error message (no line number/column information)      */
 DECL|method|getMessage ()
@@ -117,13 +127,66 @@ name|String
 name|getMessage
 parameter_list|()
 block|{
-return|return
+name|String
+name|mesg
+init|=
 literal|"unexpected char: "
-operator|+
+decl_stmt|;
+comment|// I'm trying to mirror a change in the C++ stuff.
+comment|// But java seems to lack something convenient isprint-ish..
+comment|// actually we're kludging around unicode and non unicode savy
+comment|// output stuff like most terms.. Basically one would want to
+comment|// be able to tweak the generation of this message.
+if|if
+condition|(
 operator|(
-name|char
+name|foundChar
+operator|>=
+literal|' '
+operator|)
+operator|&&
+operator|(
+name|foundChar
+operator|<=
+literal|'~'
+operator|)
+condition|)
+block|{
+name|mesg
+operator|+=
+literal|'\''
+expr_stmt|;
+name|mesg
+operator|+=
+name|foundChar
+expr_stmt|;
+name|mesg
+operator|+=
+literal|'\''
+expr_stmt|;
+block|}
+else|else
+block|{
+name|mesg
+operator|+=
+literal|"0x"
+operator|+
+name|Integer
+operator|.
+name|toHexString
+argument_list|(
+operator|(
+name|int
 operator|)
 name|foundChar
+argument_list|)
+operator|.
+name|toUpperCase
+argument_list|()
+expr_stmt|;
+block|}
+return|return
+name|mesg
 return|;
 block|}
 block|}

@@ -7,7 +7,7 @@ package|;
 end_package
 
 begin_comment
-comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/RIGHTS.html  *  * $Id$  */
+comment|/* ANTLR Translator Generator  * Project led by Terence Parr at http://www.jGuru.com  * Software rights: http://www.antlr.org/license.html  *  * $Id$  */
 end_comment
 
 begin_comment
@@ -30,11 +30,7 @@ name|char
 index|[]
 name|buffer
 init|=
-operator|new
-name|char
-index|[
-literal|8
-index|]
+literal|null
 decl_stmt|;
 DECL|field|length
 specifier|protected
@@ -48,7 +44,33 @@ DECL|method|ANTLRStringBuffer ()
 specifier|public
 name|ANTLRStringBuffer
 parameter_list|()
-block|{}
+block|{
+name|buffer
+operator|=
+operator|new
+name|char
+index|[
+literal|50
+index|]
+expr_stmt|;
+block|}
+DECL|method|ANTLRStringBuffer (int n)
+specifier|public
+name|ANTLRStringBuffer
+parameter_list|(
+name|int
+name|n
+parameter_list|)
+block|{
+name|buffer
+operator|=
+operator|new
+name|char
+index|[
+name|n
+index|]
+expr_stmt|;
+block|}
 DECL|method|append (char c)
 specifier|public
 specifier|final
