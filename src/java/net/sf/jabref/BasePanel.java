@@ -1166,11 +1166,19 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
+name|bes
+operator|!=
+literal|null
+operator|)
+operator|&&
+operator|(
 name|bes
 operator|.
 name|length
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 comment|// Create a CompoundEdit to make the action undoable.
@@ -3742,11 +3750,13 @@ operator|.
 name|VERTICAL_DIVIDER_LOCATION
 argument_list|)
 expr_stmt|;
+operator|new
+name|FocusRequester
+argument_list|(
 name|form
-operator|.
-name|requestFocus
-argument_list|()
+argument_list|)
 expr_stmt|;
+comment|//form.requestFocus();
 name|showing
 operator|=
 name|be

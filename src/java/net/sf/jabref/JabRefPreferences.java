@@ -1794,6 +1794,42 @@ argument_list|,
 literal|"ESCAPE"
 argument_list|)
 expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Entry editor: next panel"
+argument_list|,
+literal|"ctrl shift RIGHT"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Entry editor: previous panel"
+argument_list|,
+literal|"ctrl shift LEFT"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Entry editor: next entry"
+argument_list|,
+literal|"ctrl shift DOWN"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Entry editor: previous entry"
+argument_list|,
+literal|"ctrl shift UP"
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getNextUnit (Reader data)
 specifier|private
