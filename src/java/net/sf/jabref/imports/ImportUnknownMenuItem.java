@@ -715,6 +715,17 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// This method is called by the dialog when the user has cancelled or
+comment|// signalled a stop. It is expected that any long-running fetch operations
+comment|// will stop after this method is called.
+DECL|method|stopFetching ()
+specifier|public
+name|void
+name|stopFetching
+parameter_list|()
+block|{
+comment|// No process to stop.
+block|}
 block|}
 end_class
 

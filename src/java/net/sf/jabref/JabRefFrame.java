@@ -3214,6 +3214,13 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
+name|contentPane
+operator|.
+name|setBorder
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 comment|//getContentPane().setBackground(GUIGlobals.lightGray);
 name|con
 operator|.

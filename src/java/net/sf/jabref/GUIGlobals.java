@@ -376,6 +376,25 @@ argument_list|,
 literal|255
 argument_list|)
 decl_stmt|;
+DECL|field|DEFAULT_INSPECTION_FIELDS
+specifier|public
+specifier|static
+specifier|final
+name|String
+index|[]
+name|DEFAULT_INSPECTION_FIELDS
+init|=
+operator|new
+name|String
+index|[]
+block|{
+literal|"author"
+block|,
+literal|"title"
+block|,
+literal|"year"
+block|}
+decl_stmt|;
 DECL|method|getTableIcon (String fieldType)
 specifier|public
 specifier|static
