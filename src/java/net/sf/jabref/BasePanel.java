@@ -233,6 +233,10 @@ DECL|field|searchManager
 name|SearchManager2
 name|searchManager
 decl_stmt|;
+DECL|field|rcm
+name|RightClickMenu
+name|rcm
+decl_stmt|;
 DECL|field|showing
 name|BibtexEntry
 name|showing
@@ -3260,9 +3264,8 @@ block|}
 argument_list|)
 expr_stmt|;
 comment|// Set the right-click menu for the entry table.
-name|RightClickMenu
 name|rcm
-init|=
+operator|=
 operator|new
 name|RightClickMenu
 argument_list|(
@@ -3270,7 +3273,7 @@ name|this
 argument_list|,
 name|metaData
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|entryTable
 operator|.
 name|setRightClickMenu

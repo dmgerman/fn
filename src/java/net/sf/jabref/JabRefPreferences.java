@@ -2208,7 +2208,12 @@ return|return
 operator|new
 name|CustomEntryType
 argument_list|(
+name|Util
+operator|.
+name|nCase
+argument_list|(
 name|name
+argument_list|)
 argument_list|,
 name|req
 argument_list|,

@@ -321,6 +321,51 @@ operator|=
 name|type
 expr_stmt|;
 block|}
+comment|/**      * Prompts the entry to call BibtexEntryType.getType(String) with       * its current type name as argument, and sets its type according      * to what is returned. This method is called when a user changes       * the type customization, to make sure all entries are set with      * current types.      * @return true if the entry could find a type, false if not (in      * this case the type will have been set to      * BibtexEntryType.TYPELESS).      */
+DECL|method|updateType ()
+specifier|public
+name|boolean
+name|updateType
+parameter_list|()
+block|{
+name|BibtexEntryType
+name|newType
+init|=
+name|BibtexEntryType
+operator|.
+name|getType
+argument_list|(
+name|_type
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|newType
+operator|!=
+literal|null
+condition|)
+block|{
+name|_type
+operator|=
+name|newType
+expr_stmt|;
+return|return
+literal|true
+return|;
+block|}
+name|_type
+operator|=
+name|BibtexEntryType
+operator|.
+name|TYPELESS
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
 comment|/**      * Sets this entry's ID, provided the database containing it      * doesn't veto the change.      */
 DECL|method|setId (String id)
 specifier|public

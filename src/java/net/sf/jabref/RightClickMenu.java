@@ -233,6 +233,40 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|populateTypeMenu
+argument_list|()
+expr_stmt|;
+name|add
+argument_list|(
+name|typeMenu
+argument_list|)
+expr_stmt|;
+name|addSeparator
+argument_list|()
+expr_stmt|;
+name|add
+argument_list|(
+name|groupMenu
+argument_list|)
+expr_stmt|;
+name|add
+argument_list|(
+name|groupRemoveMenu
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Remove all types from the menu. Then cycle through all available      * types, and add them.      */
+DECL|method|populateTypeMenu ()
+specifier|public
+name|void
+name|populateTypeMenu
+parameter_list|()
+block|{
+name|typeMenu
+operator|.
+name|removeAll
+argument_list|()
+expr_stmt|;
 for|for
 control|(
 name|Iterator
@@ -278,24 +312,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|add
-argument_list|(
-name|typeMenu
-argument_list|)
-expr_stmt|;
-name|addSeparator
-argument_list|()
-expr_stmt|;
-name|add
-argument_list|(
-name|groupMenu
-argument_list|)
-expr_stmt|;
-name|add
-argument_list|(
-name|groupRemoveMenu
-argument_list|)
-expr_stmt|;
 block|}
 comment|/**      * Set the dynamic contents of "Add to group ..." submenu.      */
 DECL|method|popupMenuWillBecomeVisible (PopupMenuEvent e)
