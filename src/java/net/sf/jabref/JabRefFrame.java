@@ -8906,6 +8906,10 @@ block|{
 if|if
 condition|(
 name|bibentries
+operator|==
+literal|null
+operator|||
+name|bibentries
 operator|.
 name|size
 argument_list|()
