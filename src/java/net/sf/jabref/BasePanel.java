@@ -4053,6 +4053,11 @@ expr_stmt|;
 name|refreshTable
 argument_list|()
 expr_stmt|;
+name|entryTable
+operator|.
+name|requestFocus
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|stopShowingGroup ()
 specifier|public

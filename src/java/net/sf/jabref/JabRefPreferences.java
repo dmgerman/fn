@@ -1767,6 +1767,24 @@ argument_list|,
 literal|"ctrl shift F"
 argument_list|)
 expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Close entry editor"
+argument_list|,
+literal|"ESCAPE"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Clear search"
+argument_list|,
+literal|"ESCAPE"
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getNextUnit (Reader data)
 specifier|private

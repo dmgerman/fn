@@ -5005,6 +5005,18 @@ argument_list|(
 name|bp
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|tabbedPane
+operator|.
+name|getTabCount
+argument_list|()
+operator|==
+literal|1
+condition|)
+name|setNonEmptyState
+argument_list|()
+expr_stmt|;
 name|output
 argument_list|(
 literal|"Imported database '"
