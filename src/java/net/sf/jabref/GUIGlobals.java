@@ -116,7 +116,7 @@ decl_stmt|,
 DECL|field|version
 name|version
 init|=
-literal|"1.3.1"
+literal|"1.4"
 decl_stmt|,
 DECL|field|stringsTitle
 name|stringsTitle

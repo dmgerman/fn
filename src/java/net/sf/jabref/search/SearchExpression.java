@@ -269,6 +269,7 @@ literal|0
 return|;
 comment|// this should never occur
 block|}
+comment|//catch (NullPointerException ex) { return 0; } // Just testing (Morten)
 block|}
 block|}
 end_class
