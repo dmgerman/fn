@@ -1636,6 +1636,15 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
+literal|"Help"
+argument_list|,
+literal|"F1"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
 literal|"New article"
 argument_list|,
 literal|"ctrl shift A"

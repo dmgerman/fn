@@ -313,20 +313,8 @@ operator|new
 name|SelectKeysAction
 argument_list|()
 decl_stmt|,
-DECL|field|incrementalSearch
-name|incrementalSearch
-init|=
-operator|new
-name|IncrementalSearchAction
-argument_list|()
-decl_stmt|,
-DECL|field|normalSearch
-name|normalSearch
-init|=
-operator|new
-name|SearchAction
-argument_list|()
-decl_stmt|,
+comment|//incrementalSearch = new IncrementalSearchAction(),
+comment|//normalSearch = new SearchAction(),
 DECL|field|newDatabaseAction
 name|newDatabaseAction
 init|=
@@ -349,6 +337,13 @@ operator|.
 name|baseFrameHelp
 argument_list|,
 literal|"JabRef help"
+argument_list|,
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Help"
+argument_list|)
 argument_list|)
 decl_stmt|,
 DECL|field|contents
@@ -567,6 +562,54 @@ operator|.
 name|getKey
 argument_list|(
 literal|"Paste"
+argument_list|)
+argument_list|)
+decl_stmt|,
+DECL|field|incrementalSearch
+name|incrementalSearch
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"incSearch"
+argument_list|,
+literal|"Incremental search"
+argument_list|,
+literal|"Start incremental search"
+argument_list|,
+name|GUIGlobals
+operator|.
+name|searchIconFile
+argument_list|,
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Incremental search"
+argument_list|)
+argument_list|)
+decl_stmt|,
+DECL|field|normalSearch
+name|normalSearch
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"search"
+argument_list|,
+literal|"Search"
+argument_list|,
+literal|"Start search"
+argument_list|,
+name|GUIGlobals
+operator|.
+name|searchIconFile
+argument_list|,
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Search"
 argument_list|)
 argument_list|)
 decl_stmt|,
@@ -1320,23 +1363,8 @@ name|GridBagConstraints
 operator|.
 name|REMAINDER
 expr_stmt|;
-name|gbl
-operator|.
-name|setConstraints
-argument_list|(
-name|searchManager
-argument_list|,
-name|con
-argument_list|)
-expr_stmt|;
-name|getContentPane
-argument_list|()
-operator|.
-name|add
-argument_list|(
-name|searchManager
-argument_list|)
-expr_stmt|;
+comment|//gbl.setConstraints(searchManager, con);
+comment|//getContentPane().add(searchManager);
 name|con
 operator|.
 name|weightx

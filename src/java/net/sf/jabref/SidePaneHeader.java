@@ -240,6 +240,22 @@ comment|//setBorder(BorderFactory.createEtchedBorder());
 comment|//add(imageIcon, BorderLayout.WEST);
 name|con
 operator|.
+name|insets
+operator|=
+operator|new
+name|Insets
+argument_list|(
+literal|2
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+name|con
+operator|.
 name|gridwidth
 operator|=
 literal|1

@@ -352,7 +352,11 @@ name|o
 operator|=
 literal|""
 operator|+
+operator|(
 name|row
+operator|+
+literal|1
+operator|)
 expr_stmt|;
 elseif|else
 if|if

@@ -32,6 +32,13 @@ name|SidePaneComponent
 extends|extends
 name|JPanel
 block|{
+DECL|field|visible
+specifier|protected
+name|boolean
+name|visible
+init|=
+literal|false
+decl_stmt|;
 DECL|field|manager
 specifier|protected
 name|SidePaneManager
@@ -51,6 +58,14 @@ name|manager
 operator|=
 name|manager
 expr_stmt|;
+name|setBorder
+argument_list|(
+name|BorderFactory
+operator|.
+name|createEtchedBorder
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|//setPreferredSize(new java.awt.Dimension
 comment|//		  (GUIGlobals.SPLIT_PANE_DIVIDER_LOCATION, 200));
 comment|//Util.pr(""+GUIGlobals.SPLIT_PANE_DIVIDER_LOCATION);
@@ -68,6 +83,30 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+block|}
+comment|/**      * Used by SidePaneManager only, to keep track of visibility.      *      */
+DECL|method|setVisibility (boolean vis)
+name|void
+name|setVisibility
+parameter_list|(
+name|boolean
+name|vis
+parameter_list|)
+block|{
+name|visible
+operator|=
+name|vis
+expr_stmt|;
+block|}
+comment|/**      * Used by SidePaneManager only, to keep track of visibility.      *      */
+DECL|method|hasVisibility ()
+name|boolean
+name|hasVisibility
+parameter_list|()
+block|{
+return|return
+name|visible
+return|;
 block|}
 comment|/**      * Override this method if the component needs to make any changes      * before it can close.      */
 DECL|method|componentClosing ()
