@@ -1270,29 +1270,29 @@ literal|"<font face=\"arial\">"
 operator|+
 literal|"<b><i>\\bibtextype</i><a name=\"\\bibtexkey\">\\begin{bibtexkey} (\\bibtexkey)</a>"
 operator|+
-literal|"\\end{bibtexkey}</b><br>\n"
+literal|"\\end{bibtexkey}</b><br>__NEWLINE__"
 operator|+
-literal|"\\begin{author} \\format[HTMLChars,AuthorLastFirst]{\\author}<BR>\\end{author}\n"
+literal|"\\begin{author} \\format[HTMLChars,AuthorLastFirst]{\\author}<BR>\\end{author}__NEWLINE__"
 operator|+
-literal|"\\begin{editor} \\format[HTMLChars,AuthorLastFirst]{\\editor}<i>(ed.)</i><BR>\\end{editor}\n"
+literal|"\\begin{editor} \\format[HTMLChars,AuthorLastFirst]{\\editor}<i>(ed.)</i><BR>\\end{editor}__NEWLINE__"
 operator|+
-literal|"\\begin{title} \\format[HTMLChars]{\\title} \\end{title}<BR>\n"
+literal|"\\begin{title} \\format[HTMLChars]{\\title} \\end{title}<BR>__NEWLINE__"
 operator|+
-literal|"\\begin{chapter} \\format[HTMLChars]{\\chapter}<BR>\\end{chapter}\n"
+literal|"\\begin{chapter} \\format[HTMLChars]{\\chapter}<BR>\\end{chapter}__NEWLINE__"
 operator|+
-literal|"\\begin{journal}<em>\\format[HTMLChars]{\\journal},</em>\\end{journal}\n"
+literal|"\\begin{journal}<em>\\format[HTMLChars]{\\journal},</em>\\end{journal}__NEWLINE__"
 operator|+
-literal|"\\begin{school}<em>\\format[HTMLChars]{\\school},</em>\\end{school}\n"
+literal|"\\begin{school}<em>\\format[HTMLChars]{\\school},</em>\\end{school}__NEWLINE__"
 operator|+
-literal|"\\begin{institution}<em>\\format[HTMLChars]{\\institution},</em>\\end{institution}\n"
+literal|"\\begin{institution}<em>\\format[HTMLChars]{\\institution},</em>\\end{institution}__NEWLINE__"
 operator|+
-literal|"\\begin{publisher}<em>\\format[HTMLChars]{\\publisher},</em>\\end{publisher}\n"
+literal|"\\begin{publisher}<em>\\format[HTMLChars]{\\publisher},</em>\\end{publisher}__NEWLINE__"
 operator|+
 literal|"\\begin{year}<b>\\year</b>\\end{year} \\begin{volume}<i>, \\volume</i>\\end{volume} "
 operator|+
 literal|"\\begin{pages}, \\format[FormatPagesForHTML]{\\pages} \\end{pages}"
 operator|+
-literal|"</dd>\n<p></p></font>"
+literal|"</dd>__NEWLINE__<p></p></font>"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -1305,31 +1305,31 @@ literal|"<font face=\"arial\">"
 operator|+
 literal|"<b><i>\\bibtextype</i><a name=\"\\bibtexkey\">\\begin{bibtexkey} (\\bibtexkey)</a>"
 operator|+
-literal|"\\end{bibtexkey}</b><br>\n"
+literal|"\\end{bibtexkey}</b><br>__NEWLINE__"
 operator|+
-literal|"\\begin{author} \\format[HTMLChars,AuthorLastFirst]{\\author}<BR>\\end{author}\n"
+literal|"\\begin{author} \\format[HTMLChars,AuthorLastFirst]{\\author}<BR>\\end{author}__NEWLINE__"
 operator|+
-literal|"\\begin{editor} \\format[HTMLChars,AuthorLastFirst]{\\editor}<i>(ed.)</i><BR>\\end{editor}\n"
+literal|"\\begin{editor} \\format[HTMLChars,AuthorLastFirst]{\\editor}<i>(ed.)</i><BR>\\end{editor}__NEWLINE__"
 operator|+
-literal|"\\begin{title} \\format[HTMLChars]{\\title} \\end{title}<BR>\n"
+literal|"\\begin{title} \\format[HTMLChars]{\\title} \\end{title}<BR>__NEWLINE__"
 operator|+
-literal|"\\begin{chapter} \\format[HTMLChars]{\\chapter}<BR>\\end{chapter}\n"
+literal|"\\begin{chapter} \\format[HTMLChars]{\\chapter}<BR>\\end{chapter}__NEWLINE__"
 operator|+
-literal|"\\begin{journal}<em>\\format[HTMLChars]{\\journal},</em>\\end{journal}\n"
+literal|"\\begin{journal}<em>\\format[HTMLChars]{\\journal},</em>\\end{journal}__NEWLINE__"
 operator|+
-literal|"\\begin{school}<em>\\format[HTMLChars]{\\school},</em>\\end{school}\n"
+literal|"\\begin{school}<em>\\format[HTMLChars]{\\school},</em>\\end{school}__NEWLINE__"
 operator|+
-literal|"\\begin{institution}<em>\\format[HTMLChars]{\\institution},</em>\\end{institution}\n"
+literal|"\\begin{institution}<em>\\format[HTMLChars]{\\institution},</em>\\end{institution}__NEWLINE__"
 operator|+
-literal|"\\begin{publisher}<em>\\format[HTMLChars]{\\publisher},</em>\\end{publisher}\n"
+literal|"\\begin{publisher}<em>\\format[HTMLChars]{\\publisher},</em>\\end{publisher}__NEWLINE__"
 operator|+
 literal|"\\begin{year}<b>\\year</b>\\end{year} \\begin{volume}<i>, \\volume</i>\\end{volume} "
 operator|+
-literal|"\\begin{pages}, \\format[FormatPagesForHTML]{\\pages} \\end{pages}\n"
+literal|"\\begin{pages}, \\format[FormatPagesForHTML]{\\pages} \\end{pages}__NEWLINE__"
 operator|+
 literal|"\\begin{abstract}<BR><BR><B>Abstract:</B><I>\\format[HTMLChars]{\\abstract}</I>\\end{abstract}"
 operator|+
-literal|"</dd>\n<p></p></font>"
+literal|"</dd>__NEWLINE__<p></p></font>"
 argument_list|)
 expr_stmt|;
 name|defaults

@@ -761,7 +761,10 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-comment|//status = KEEP_BOTH;
+name|status
+operator|=
+name|BREAK
+expr_stmt|;
 name|block
 operator|=
 literal|false
