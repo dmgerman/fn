@@ -127,6 +127,16 @@ argument_list|(
 literal|"untitled"
 argument_list|)
 decl_stmt|,
+DECL|field|untitledTitle
+name|untitledTitle
+init|=
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"untitled"
+argument_list|)
+decl_stmt|,
 DECL|field|helpTitle
 name|helpTitle
 init|=

@@ -477,7 +477,7 @@ argument_list|,
 operator|new
 name|Boolean
 argument_list|(
-literal|true
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2006,6 +2006,24 @@ argument_list|(
 literal|"Entry editor: store field"
 argument_list|,
 literal|"alt S"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Save session"
+argument_list|,
+literal|"F11"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Load session"
+argument_list|,
+literal|"F12"
 argument_list|)
 expr_stmt|;
 block|}
