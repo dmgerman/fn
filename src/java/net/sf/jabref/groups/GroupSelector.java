@@ -1995,7 +1995,7 @@ argument_list|(
 literal|"groupsDefaultField"
 argument_list|)
 argument_list|,
-literal|".,"
+literal|" .,"
 argument_list|)
 decl_stmt|;
 name|gd

@@ -114,7 +114,7 @@ specifier|private
 name|StringReader
 name|data
 decl_stmt|;
-comment|/**      * The MetaData object stores all meta data sets in Vectors. To      * ensure that the data is written correctly to string, the user      * of a meta data Vector must simply make sure the appropriate       * changes are reflected in the Vector it has been passed.      */
+comment|/**      * The MetaData object stores all meta data sets in Vectors. To      * ensure that the data is written correctly to string, the user      * of a meta data Vector must simply make sure the appropriate      * changes are reflected in the Vector it has been passed.      */
 DECL|method|MetaData (HashMap inData)
 specifier|public
 name|MetaData
@@ -402,6 +402,16 @@ argument_list|(
 name|key
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|orderedData
+operator|.
+name|size
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
 name|out
 operator|.
 name|write
@@ -463,6 +473,7 @@ argument_list|(
 literal|"}\n\n"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|getNextUnit (Reader data)

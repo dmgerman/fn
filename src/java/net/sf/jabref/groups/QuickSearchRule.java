@@ -85,8 +85,11 @@ name|String
 name|field
 decl_stmt|;
 DECL|field|pattern
+DECL|field|hardPattern
 name|Pattern
 name|pattern
+decl_stmt|,
+name|hardPattern
 decl_stmt|;
 DECL|method|QuickSearchRule (String field, String searchString)
 specifier|public
@@ -108,6 +111,24 @@ operator|.
 name|toLowerCase
 argument_list|()
 expr_stmt|;
+name|int
+name|flags
+init|=
+name|Pattern
+operator|.
+name|CASE_INSENSITIVE
+decl_stmt|;
+name|hardPattern
+operator|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+name|searchString
+argument_list|,
+name|flags
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -128,13 +149,6 @@ operator|+
 literal|".*"
 expr_stmt|;
 block|}
-name|int
-name|flags
-init|=
-name|Pattern
-operator|.
-name|CASE_INSENSITIVE
-decl_stmt|;
 name|pattern
 operator|=
 name|Pattern
@@ -248,7 +262,7 @@ name|String
 index|[]
 name|split
 init|=
-name|pattern
+name|hardPattern
 operator|.
 name|split
 argument_list|(
@@ -271,6 +285,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|sb
 operator|.
 name|append
@@ -281,6 +296,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|bibtexEntry
 operator|.

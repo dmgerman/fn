@@ -413,8 +413,6 @@ operator|.
 name|toLowerCase
 argument_list|()
 argument_list|,
-literal|" "
-operator|+
 name|remove
 argument_list|()
 argument_list|)

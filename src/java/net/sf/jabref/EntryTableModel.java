@@ -1930,9 +1930,10 @@ argument_list|()
 expr_stmt|;
 name|panel
 operator|.
-name|updateEntryEditorIfShowing
+name|updateWiewToSelected
 argument_list|()
 expr_stmt|;
+comment|//panel.updateEntryEditorIfShowing();
 comment|// Should the table also be scheduled for repaint?
 block|}
 catch|catch
