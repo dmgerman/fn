@@ -933,7 +933,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-comment|//tlb.add(closeAction);
+name|tlb
+operator|.
+name|add
+argument_list|(
+name|closeAction
+argument_list|)
+expr_stmt|;
 comment|//tlb.addSeparator();
 name|tlb
 operator|.
@@ -1182,7 +1188,7 @@ operator|=
 operator|new
 name|Insets
 argument_list|(
-literal|10
+literal|5
 argument_list|,
 literal|5
 argument_list|,
@@ -2378,6 +2384,26 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|requestFocus ()
+specifier|public
+name|void
+name|requestFocus
+parameter_list|()
+block|{
+operator|(
+operator|(
+name|FieldPanel
+operator|)
+name|tabbed
+operator|.
+name|getSelectedComponent
+argument_list|()
+operator|)
+operator|.
+name|activate
+argument_list|()
+expr_stmt|;
+block|}
 DECL|class|FieldListener
 class|class
 name|FieldListener
@@ -2780,15 +2806,32 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Close window"
 argument_list|)
+argument_list|,
+operator|new
+name|ImageIcon
+argument_list|(
+name|GUIGlobals
+operator|.
+name|closeIconFile
+argument_list|)
+argument_list|)
 expr_stmt|;
-comment|//, new ImageIcon(GUIGlobals.closeIconFile));
 name|putValue
 argument_list|(
 name|SHORT_DESCRIPTION
 argument_list|,
-literal|"Close window (Ctrl-Q)"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Close window"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2841,7 +2884,11 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//dispose();
+name|panel
+operator|.
+name|hideEntryEditor
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 else|else
@@ -2856,7 +2903,11 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//dispose();
+name|panel
+operator|.
+name|hideEntryEditor
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 block|}

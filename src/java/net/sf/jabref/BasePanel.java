@@ -3422,14 +3422,17 @@ name|void
 name|assureStringDialogNotEditing
 parameter_list|()
 block|{
-name|Util
+if|if
+condition|(
+name|stringDialog
+operator|!=
+literal|null
+condition|)
+name|stringDialog
 operator|.
-name|pr
-argument_list|(
-literal|"BasePanel: there is no stringDialog."
-argument_list|)
+name|assureNotEditing
+argument_list|()
 expr_stmt|;
-comment|/* 	if (stringDialog != null) 	    stringDialog.assureNotEditing(); 	*/
 block|}
 DECL|method|updateStringDialog ()
 specifier|public
@@ -3437,14 +3440,17 @@ name|void
 name|updateStringDialog
 parameter_list|()
 block|{
-name|Util
+if|if
+condition|(
+name|stringDialog
+operator|!=
+literal|null
+condition|)
+name|stringDialog
 operator|.
-name|pr
-argument_list|(
-literal|"BasePanel: there is no stringDialog."
-argument_list|)
+name|refreshTable
+argument_list|()
 expr_stmt|;
-comment|/* 	if (stringDialog != null) 	    stringDialog.refreshTable(); 	*/
 block|}
 DECL|method|showEntry (BibtexEntry be)
 specifier|public
@@ -3486,6 +3492,11 @@ operator|.
 name|VERTICAL_DIVIDER_LOCATION
 argument_list|)
 expr_stmt|;
+name|form
+operator|.
+name|requestFocus
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|hideEntryEditor ()
 specifier|public
@@ -3499,6 +3510,12 @@ name|setBottomComponent
 argument_list|(
 literal|null
 argument_list|)
+expr_stmt|;
+comment|//entryTable.requestFocus();
+name|splitPane
+operator|.
+name|requestFocus
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|markBaseChanged ()
