@@ -463,7 +463,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//String lang = prefs.get("language");
-comment|/*URL old = getPage(); 	setPageOnly(url); 	forw.removeAllElements(); 	if (old != null) 	    history.push(old);*/
+comment|/*URL old = getPage();         setPageOnly(url);         forw.removeAllElements();         if (old != null)             history.push(old);*/
 block|}
 DECL|method|setPageOnly (URL url)
 specifier|private
