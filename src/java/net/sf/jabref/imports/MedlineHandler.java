@@ -616,6 +616,27 @@ name|localName
 operator|.
 name|equals
 argument_list|(
+literal|"CollectiveName"
+argument_list|)
+condition|)
+block|{
+name|inForename
+operator|=
+literal|true
+expr_stmt|;
+name|forename
+operator|=
+literal|""
+expr_stmt|;
+block|}
+comment|// Morten A. 20040513.
+elseif|else
+if|if
+condition|(
+name|localName
+operator|.
+name|equals
+argument_list|(
 literal|"PMID"
 argument_list|)
 condition|)

@@ -57,15 +57,23 @@ name|JOptionPane
 name|optionPane
 decl_stmt|;
 DECL|field|count
+DECL|field|piv
 name|int
 name|count
+decl_stmt|,
+name|piv
+init|=
+literal|0
 decl_stmt|;
-DECL|method|AuthorDialog (JFrame frame, String args[])
+DECL|method|AuthorDialog (JFrame frame, MedlineFetcher mf, String args[])
 specifier|public
 name|AuthorDialog
 parameter_list|(
 name|JFrame
 name|frame
+parameter_list|,
+name|MedlineFetcher
+name|mf
 parameter_list|,
 name|String
 name|args

@@ -116,7 +116,7 @@ decl_stmt|,
 DECL|field|version
 name|version
 init|=
-literal|"1.3"
+literal|"1.3.1"
 decl_stmt|,
 DECL|field|stringsTitle
 name|stringsTitle
@@ -1083,6 +1083,20 @@ argument_list|(
 name|pre
 operator|+
 literal|"JabRef-Logo.gif"
+argument_list|)
+decl_stmt|,
+DECL|field|splashScreenImage
+name|splashScreenImage
+init|=
+name|GUIGlobals
+operator|.
+name|class
+operator|.
+name|getResource
+argument_list|(
+name|pre
+operator|+
+literal|"JabRef-splash.png"
 argument_list|)
 decl_stmt|;
 comment|// Help files (in HTML format):
@@ -2145,7 +2159,9 @@ block|,
 literal|"doi"
 block|,
 literal|"eid"
-block|,   }
+block|,
+literal|"date"
+block|}
 decl_stmt|;
 comment|// These fields will not be saved to the .bib file.
 DECL|field|NON_WRITABLE_FIELDS

@@ -83,6 +83,18 @@ index|[]
 name|args
 parameter_list|)
 block|{
+name|SplashScreen
+name|ss
+init|=
+operator|new
+name|SplashScreen
+argument_list|()
+decl_stmt|;
+name|ss
+operator|.
+name|show
+argument_list|()
+expr_stmt|;
 comment|//Font fnt = new Font("plain", Font.PLAIN, 12);
 name|Object
 name|fnt
@@ -411,6 +423,45 @@ expr_stmt|;
 comment|//String osName = System.getProperty("os.name", "def");
 if|if
 condition|(
+name|Globals
+operator|.
+name|ON_WIN
+condition|)
+block|{
+try|try
+block|{
+name|UIManager
+operator|.
+name|setLookAndFeel
+argument_list|(
+operator|new
+name|com
+operator|.
+name|sun
+operator|.
+name|java
+operator|.
+name|swing
+operator|.
+name|plaf
+operator|.
+name|windows
+operator|.
+name|WindowsLookAndFeel
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedLookAndFeelException
+name|ex
+parameter_list|)
+block|{}
+block|}
+elseif|else
+if|if
+condition|(
 operator|!
 name|Globals
 operator|.
@@ -420,7 +471,8 @@ block|{
 try|try
 block|{
 comment|//Class plastic = Class.forName("com.jgoodies.plaf.plastic.PlasticLookAndFeel");
-comment|//new com.jgoodies.plaf.plastic.PlasticLookAndFeel();
+comment|//LookAndFeel lnf = new com.jgoodies.plaf.plastic.PlasticLookAndFeel();
+comment|//LookAndFeel lnf = new com.sun.java.swing.plaf.gtk.GTKLookAndFeel();
 name|LookAndFeel
 name|lnf
 init|=
@@ -517,6 +569,18 @@ operator|new
 name|JabRefFrame
 argument_list|()
 decl_stmt|;
+name|ss
+operator|.
+name|dispose
+argument_list|()
+expr_stmt|;
+name|jrf
+operator|.
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|args

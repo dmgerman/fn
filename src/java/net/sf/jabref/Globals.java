@@ -248,6 +248,18 @@ argument_list|(
 name|MAC
 argument_list|)
 operator|)
+decl_stmt|,
+DECL|field|ON_WIN
+name|ON_WIN
+init|=
+operator|(
+name|osName
+operator|.
+name|startsWith
+argument_list|(
+literal|"Windows"
+argument_list|)
+operator|)
 decl_stmt|;
 DECL|method|logger (String s)
 specifier|public
