@@ -1708,6 +1708,13 @@ comment|//Globals.setLanguage("no", "");
 name|macOSXRegistration
 argument_list|()
 expr_stmt|;
+name|setGlassPane
+argument_list|(
+operator|new
+name|MyGlassPane
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|setTitle
 argument_list|(
 name|GUIGlobals
@@ -11045,6 +11052,40 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * This method shows a wait cursor and blocks all input to the JFrame's contents.      */
+DECL|method|block ()
+specifier|public
+name|void
+name|block
+parameter_list|()
+block|{
+name|getGlassPane
+argument_list|()
+operator|.
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+comment|//getGlassPane().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+block|}
+comment|/**      * This method reverts the cursor to normal, and stops blocking input to the JFrame's contents.      */
+DECL|method|unblock ()
+specifier|public
+name|void
+name|unblock
+parameter_list|()
+block|{
+name|getGlassPane
+argument_list|()
+operator|.
+name|setVisible
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+comment|//	getGlassPane().setCursor(Cursor.WAIT_CURSOR);
+block|}
 DECL|class|SaveSessionAction
 class|class
 name|SaveSessionAction
@@ -12327,6 +12368,61 @@ operator|.
 name|show
 argument_list|()
 expr_stmt|;
+block|}
+block|}
+DECL|class|MyGlassPane
+specifier|private
+class|class
+name|MyGlassPane
+extends|extends
+name|JPanel
+block|{
+DECL|method|MyGlassPane ()
+specifier|public
+name|MyGlassPane
+parameter_list|()
+block|{
+name|addKeyListener
+argument_list|(
+operator|new
+name|KeyAdapter
+argument_list|()
+block|{ }
+argument_list|)
+expr_stmt|;
+name|addMouseListener
+argument_list|(
+operator|new
+name|MouseAdapter
+argument_list|()
+block|{ }
+argument_list|)
+expr_stmt|;
+name|super
+operator|.
+name|setCursor
+argument_list|(
+name|Cursor
+operator|.
+name|getPredefinedCursor
+argument_list|(
+name|Cursor
+operator|.
+name|WAIT_CURSOR
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Override isOpaque() to prevent the glasspane from hiding the window contents:
+DECL|method|isOpaque ()
+specifier|public
+name|boolean
+name|isOpaque
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
 block|}
 block|}
 block|}

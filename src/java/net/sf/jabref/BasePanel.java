@@ -3837,6 +3837,11 @@ argument_list|)
 expr_stmt|;
 return|return ;
 block|}
+name|frame
+operator|.
+name|block
+argument_list|()
+expr_stmt|;
 name|output
 argument_list|(
 name|Globals
@@ -4133,6 +4138,11 @@ literal|"entry"
 argument_list|)
 operator|)
 argument_list|)
+expr_stmt|;
+name|frame
+operator|.
+name|unblock
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -7607,6 +7617,22 @@ argument_list|()
 block|{
 specifier|public
 name|void
+name|init
+parameter_list|()
+block|{
+name|output
+argument_list|(
+literal|"blocking"
+argument_list|)
+expr_stmt|;
+name|frame
+operator|.
+name|block
+argument_list|()
+expr_stmt|;
+block|}
+specifier|public
+name|void
 name|run
 parameter_list|()
 block|{
@@ -7631,7 +7657,11 @@ name|InterruptedException
 name|ex
 parameter_list|)
 block|{ 			  }
-comment|//getCallBack().update();
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|()
+throw|;
 block|}
 specifier|public
 name|void
@@ -7640,8 +7670,13 @@ parameter_list|()
 block|{
 name|output
 argument_list|(
-literal|"done"
+literal|"unblocking"
 argument_list|)
+expr_stmt|;
+name|frame
+operator|.
+name|unblock
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -7789,6 +7824,14 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
+comment|// If the action has blocked the JabRefFrame before crashing, we need to unblock it.
+comment|// The call to unblock will simply hide the glasspane, so there is no harm in calling
+comment|// it even if the frame hasn't been blocked.
+name|frame
+operator|.
+name|unblock
+argument_list|()
+expr_stmt|;
 name|ex
 operator|.
 name|printStackTrace
