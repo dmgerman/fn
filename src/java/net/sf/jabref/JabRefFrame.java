@@ -4298,6 +4298,13 @@ name|view
 operator|.
 name|add
 argument_list|(
+name|toggleGroups
+argument_list|)
+expr_stmt|;
+name|view
+operator|.
+name|add
+argument_list|(
 name|togglePreview
 argument_list|)
 expr_stmt|;

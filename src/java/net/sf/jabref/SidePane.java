@@ -420,6 +420,16 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getMaximumSize ()
+specifier|public
+name|Dimension
+name|getMaximumSize
+parameter_list|()
+block|{
+return|return
+name|PREFERRED_SIZE
+return|;
+block|}
 DECL|method|getPreferredSize ()
 specifier|public
 name|Dimension

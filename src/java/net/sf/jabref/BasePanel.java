@@ -8152,39 +8152,9 @@ argument_list|()
 expr_stmt|;
 name|setLayout
 argument_list|(
-name|gbl
-argument_list|)
-expr_stmt|;
-name|con
-operator|.
-name|fill
-operator|=
-name|GridBagConstraints
-operator|.
-name|BOTH
-expr_stmt|;
-name|con
-operator|.
-name|weighty
-operator|=
-literal|1
-expr_stmt|;
-name|con
-operator|.
-name|weightx
-operator|=
-literal|0
-expr_stmt|;
-name|gbl
-operator|.
-name|setConstraints
-argument_list|(
-name|sidePaneManager
-operator|.
-name|getPanel
+operator|new
+name|BorderLayout
 argument_list|()
-argument_list|,
-name|con
 argument_list|)
 expr_stmt|;
 name|add
@@ -8193,28 +8163,28 @@ name|sidePaneManager
 operator|.
 name|getPanel
 argument_list|()
-argument_list|)
-expr_stmt|;
-name|con
-operator|.
-name|weightx
-operator|=
-literal|1
-expr_stmt|;
-name|gbl
-operator|.
-name|setConstraints
-argument_list|(
-name|splitPane
 argument_list|,
-name|con
+name|BorderLayout
+operator|.
+name|WEST
 argument_list|)
 expr_stmt|;
 name|add
 argument_list|(
 name|splitPane
+argument_list|,
+name|BorderLayout
+operator|.
+name|CENTER
 argument_list|)
 expr_stmt|;
+comment|//setLayout(gbl);
+comment|//con.fill = GridBagConstraints.BOTH;
+comment|//con.weighty = 1;
+comment|//con.weightx = 0;
+comment|//gbl.setConstraints(sidePaneManager.getPanel(), con);
+comment|//con.weightx = 1;
+comment|//gbl.setConstraints(splitPane, con);
 comment|//mainPanel.setDividerLocation(GUIGlobals.SPLIT_PANE_DIVIDER_LOCATION);
 comment|//setDividerSize(GUIGlobals.SPLIT_PANE_DIVIDER_SIZE);
 comment|//setResizeWeight(0);
