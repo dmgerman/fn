@@ -8035,7 +8035,7 @@ name|FromAuxDialog
 argument_list|(
 name|ths
 argument_list|,
-literal|"test"
+literal|""
 argument_list|,
 literal|true
 argument_list|,
