@@ -146,6 +146,9 @@ operator|=
 name|si
 operator|.
 name|s
+operator|.
+name|trim
+argument_list|()
 expr_stmt|;
 block|}
 elseif|else
@@ -232,6 +235,7 @@ block|{
 name|text
 operator|=
 operator|(
+operator|(
 name|String
 operator|)
 name|v
@@ -240,6 +244,10 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
+operator|)
+operator|.
+name|trim
+argument_list|()
 expr_stmt|;
 try|try
 block|{
@@ -971,6 +979,7 @@ operator|.
 name|IS_OPTION_FIELD
 condition|)
 block|{
+comment|//System.out.println("doLayout IS_OPTION_FIELD '"+text+"'");
 name|String
 name|fieldEntry
 decl_stmt|;
@@ -995,6 +1004,8 @@ name|getName
 argument_list|()
 expr_stmt|;
 block|}
+else|else
+block|{
 name|String
 name|field
 init|=
@@ -1026,6 +1037,7 @@ name|fieldEntry
 operator|=
 name|field
 expr_stmt|;
+block|}
 block|}
 comment|//System.out.println("OPTION: "+option);
 if|if
