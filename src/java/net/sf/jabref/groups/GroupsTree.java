@@ -153,8 +153,7 @@ argument_list|,
 name|this
 argument_list|)
 decl_stmt|;
-comment|// Eliminates right mouse clicks as valid actions - useful especially if
-comment|// you implement a JPopupMenu for the JTree
+comment|// Eliminates right mouse clicks as valid actions
 name|dgr
 operator|.
 name|setSourceActions
