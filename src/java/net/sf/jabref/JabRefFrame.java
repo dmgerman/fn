@@ -6725,7 +6725,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Import Data from CiteSeer"
+literal|"Import Fields from CiteSeer"
 argument_list|)
 argument_list|,
 operator|new
@@ -6745,7 +6745,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Import Data from CiteSeer Database"
+literal|"Import Fields from CiteSeer Database"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6872,7 +6872,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Completed citation import from CiteSeer."
+literal|"Completed Import Fields from CiteSeer."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -7028,6 +7028,7 @@ argument_list|(
 name|updateComponent
 argument_list|)
 expr_stmt|;
+block|}
 name|basePanel
 argument_list|()
 operator|.
@@ -7036,7 +7037,6 @@ operator|.
 name|deactivateImportFetcher
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 block|}
 operator|)

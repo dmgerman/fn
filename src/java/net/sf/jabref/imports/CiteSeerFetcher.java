@@ -491,7 +491,7 @@ literal|"CiteSeer Transfer"
 argument_list|,
 name|GUIGlobals
 operator|.
-name|fetchHourglassIcon
+name|wwwCiteSeerIcon
 argument_list|,
 name|this
 argument_list|)
