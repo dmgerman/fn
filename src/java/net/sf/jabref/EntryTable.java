@@ -1266,19 +1266,8 @@ expr_stmt|;
 block|}
 comment|//return (tableModel.isComplete(row) ? defRenderer: incRenderer);
 block|}
-elseif|else
-if|if
-condition|(
-name|status
-operator|==
-name|EntryTableModel
-operator|.
-name|ICON_COL
-condition|)
-name|renderer
-operator|=
-name|iconRenderer
-expr_stmt|;
+comment|//else if (status == EntryTableModel.ICON_COL)
+comment|//  renderer = iconRenderer;
 elseif|else
 if|if
 condition|(
@@ -1586,6 +1575,55 @@ name|fg
 argument_list|)
 expr_stmt|;
 block|}
+comment|/* For enabling the renderer to handle icons. */
+DECL|method|setValue (Object value)
+specifier|protected
+name|void
+name|setValue
+parameter_list|(
+name|Object
+name|value
+parameter_list|)
+block|{
+if|if
+condition|(
+name|value
+operator|instanceof
+name|Icon
+condition|)
+block|{
+name|setIcon
+argument_list|(
+operator|(
+name|Icon
+operator|)
+name|value
+argument_list|)
+expr_stmt|;
+name|super
+operator|.
+name|setValue
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|setIcon
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+name|super
+operator|.
+name|setValue
+argument_list|(
+name|value
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 DECL|method|paintComponent (Graphics g)
 specifier|public
 name|void
@@ -1667,72 +1705,7 @@ expr_stmt|;
 block|}
 comment|//public DefaultTableCellRenderer darker() { return darker; }
 block|}
-DECL|field|iconRenderer
-specifier|public
-name|TableCellRenderer
-name|iconRenderer
-init|=
-operator|new
-name|IconCellRenderer
-argument_list|()
-decl_stmt|;
-comment|//new JTableButtonRenderer(getDefaultRenderer(JButton.class));
-DECL|class|IconCellRenderer
-class|class
-name|IconCellRenderer
-extends|extends
-name|DefaultTableCellRenderer
-block|{
-DECL|method|setValue (Object value)
-specifier|protected
-name|void
-name|setValue
-parameter_list|(
-name|Object
-name|value
-parameter_list|)
-block|{
-if|if
-condition|(
-name|value
-operator|instanceof
-name|Icon
-condition|)
-block|{
-name|setIcon
-argument_list|(
-operator|(
-name|Icon
-operator|)
-name|value
-argument_list|)
-expr_stmt|;
-name|super
-operator|.
-name|setValue
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|setIcon
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-name|super
-operator|.
-name|setValue
-argument_list|(
-name|value
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-block|}
-comment|/*    class JTableButtonRenderer implements TableCellRenderer {       private TableCellRenderer __defaultRenderer;        public JTableButtonRenderer(TableCellRenderer renderer) {         __defaultRenderer = renderer;       }        public Component getTableCellRendererComponent(JTable table, Object value,                                                      boolean isSelected,                                                      boolean hasFocus,                                                      int row, int column)       {         if(value instanceof Component)           return (Component)value;         return __defaultRenderer.getTableCellRendererComponent(       table, value, isSelected, hasFocus, row, column);       }     }*/
+comment|/* public TableCellRenderer iconRenderer = new IconCellRenderer();         //new JTableButtonRenderer(getDefaultRenderer(JButton.class));     class IconCellRenderer extends DefaultTableCellRenderer {         protected void setValue(Object value) {             if (value instanceof Icon) {                 setIcon((Icon)value);                 super.setValue(null);             } else {                 setIcon(null);                 super.setValue(value);             }         }     }      class JTableButtonRenderer implements TableCellRenderer {       private TableCellRenderer __defaultRenderer;        public JTableButtonRenderer(TableCellRenderer renderer) {         __defaultRenderer = renderer;       }        public Component getTableCellRendererComponent(JTable table, Object value,                                                      boolean isSelected,                                                      boolean hasFocus,                                                      int row, int column)       {         if(value instanceof Component)           return (Component)value;         return __defaultRenderer.getTableCellRendererComponent(       table, value, isSelected, hasFocus, row, column);       }     }*/
 DECL|method|ensureVisible (int row)
 specifier|public
 name|void
