@@ -187,7 +187,19 @@ throw|throw
 operator|new
 name|ClassCastException
 argument_list|(
-literal|"Trouble comparing objects. This shouldn't happen."
+literal|"Trouble comparing objects: "
+operator|+
+name|o1
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|"\n\n"
+operator|+
+name|o2
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 throw|;
 name|BibtexEntry

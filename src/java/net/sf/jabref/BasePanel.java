@@ -1377,7 +1377,7 @@ literal|0
 condition|)
 block|{
 comment|//&& (database.getEntryCount()> 0)&& (entryTable.getSelectedRow()< database.getEntryCount())) {
-comment|/*  			   I have removed the confirmation dialog, since I converted 			   the "remove" action to a "cut". That means the user can 			   always paste the entries, in addition to pressing undo. 			   So the confirmation seems redundant. 			   			String msg = Globals.lang("Really delete the selected") 			    +" "+Globals.lang("entry")+"?", 			    title = Globals.lang("Delete entry"); 			if (rows.length> 1) { 			    msg = Globals.lang("Really delete the selected") 				+" "+rows.length+" "+Globals.lang("entries")+"?"; 			    title = Globals.lang("Delete multiple entries"); 			} 			int answer = JOptionPane.showConfirmDialog(frame, msg, title, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); 			if (answer == JOptionPane.YES_OPTION) {*/
+comment|/* 			   I have removed the confirmation dialog, since I converted 			   the "remove" action to a "cut". That means the user can 			   always paste the entries, in addition to pressing undo. 			   So the confirmation seems redundant.  			String msg = Globals.lang("Really delete the selected") 			    +" "+Globals.lang("entry")+"?", 			    title = Globals.lang("Delete entry"); 			if (rows.length> 1) { 			    msg = Globals.lang("Really delete the selected") 				+" "+rows.length+" "+Globals.lang("entries")+"?"; 			    title = Globals.lang("Delete multiple entries"); 			} 			int answer = JOptionPane.showConfirmDialog(frame, msg, title, JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE); 			if (answer == JOptionPane.YES_OPTION) {*/
 comment|// Create a CompoundEdit to make the action undoable.
 name|NamedCompound
 name|ce
@@ -3558,7 +3558,7 @@ expr_stmt|;
 comment|// We replace the default FocusTraversalPolicy with a subclass
 comment|// that only allows FieldEditor components to gain keyboard focus,
 comment|// if there is an entry editor open.
-comment|/*splitPane.setFocusTraversalPolicy(new LayoutFocusTraversalPolicy() { 		protected boolean accept(Component c) { 		    Util.pr("jaa"); 		    if (showing == null) 			return super.accept(c); 		    else 			return (super.accept(c)&&  				(c instanceof FieldEditor)); 		} 		});*/
+comment|/*splitPane.setFocusTraversalPolicy(new LayoutFocusTraversalPolicy() { 		protected boolean accept(Component c) { 		    Util.pr("jaa"); 		    if (showing == null) 			return super.accept(c); 		    else 			return (super.accept(c)&& 				(c instanceof FieldEditor)); 		} 		});*/
 name|setupTable
 argument_list|()
 expr_stmt|;
@@ -3602,7 +3602,21 @@ argument_list|,
 name|metaData
 argument_list|)
 expr_stmt|;
-comment|//sidePaneManager.register("search", new SearchManager2(frame, prefs, this));
+name|sidePaneManager
+operator|.
+name|register
+argument_list|(
+literal|"fetchMedline"
+argument_list|,
+operator|new
+name|MedlineFetcher
+argument_list|(
+name|this
+argument_list|,
+name|sidePaneManager
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|searchManager
 operator|=
 operator|new

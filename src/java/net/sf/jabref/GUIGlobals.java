@@ -84,7 +84,7 @@ specifier|public
 class|class
 name|GUIGlobals
 block|{
-comment|/*       * Static variables for graphics files and keyboard shortcuts.      */
+comment|/*      * Static variables for graphics files and keyboard shortcuts.      */
 comment|// for debugging
 DECL|field|teller
 specifier|static
@@ -766,6 +766,20 @@ argument_list|(
 name|pre
 operator|+
 literal|"NewBCard.gif"
+argument_list|)
+decl_stmt|,
+DECL|field|fetchMedlineIcon
+name|fetchMedlineIcon
+init|=
+name|GUIGlobals
+operator|.
+name|class
+operator|.
+name|getResource
+argument_list|(
+name|pre
+operator|+
+literal|"BlueCircle.gif"
 argument_list|)
 decl_stmt|;
 comment|// Help files (in HTML format):

@@ -594,6 +594,13 @@ literal|"Search"
 argument_list|)
 argument_list|)
 decl_stmt|,
+DECL|field|fetchMedline
+name|fetchMedline
+init|=
+operator|new
+name|FetchMedlineAction
+argument_list|()
+decl_stmt|,
 comment|/*remove = new GeneralAction("remove", "Remove", "Remove selected entries", 	  GUIGlobals.removeIconFile),*/
 DECL|field|selectAll
 name|selectAll
@@ -1289,7 +1296,7 @@ argument_list|(
 name|lim
 argument_list|)
 expr_stmt|;
-comment|/* 	JPanel empt = new JPanel(); 	empt.setBackground(GUIGlobals.lightGray); 	gbl.setConstraints(empt, con);         getContentPane().add(empt);  	 	con.insets = new Insets(1,0,1,1); 	con.anchor = GridBagConstraints.EAST; 	con.weightx = 0;       	gbl.setConstraints(searchManager, con); 	getContentPane().add(searchManager);*/
+comment|/* 	JPanel empt = new JPanel(); 	empt.setBackground(GUIGlobals.lightGray); 	gbl.setConstraints(empt, con);         getContentPane().add(empt);  	con.insets = new Insets(1,0,1,1); 	con.anchor = GridBagConstraints.EAST; 	con.weightx = 0; 	gbl.setConstraints(searchManager, con); 	getContentPane().add(searchManager);*/
 name|con
 operator|.
 name|gridwidth
@@ -2202,7 +2209,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/*     private void setupDatabaseLayout() { 	// This method is called whenever this frame has been provided 	// with a database, and completes the layout.  	 	if (file != null) 	    setTitle(GUIGlobals.baseTitle+file.getName()); 	else 	setTitle(GUIGlobals.untitledTitle);  	//DragNDropManager dndm = new DragNDropManager(this);  	//setNonEmptyState();	 	Util.pr("JabRefFrame: Must set non-empty state."); 	}*/
+comment|/*     private void setupDatabaseLayout() { 	// This method is called whenever this frame has been provided 	// with a database, and completes the layout.   	if (file != null) 	    setTitle(GUIGlobals.baseTitle+file.getName()); 	else 	setTitle(GUIGlobals.untitledTitle);  	//DragNDropManager dndm = new DragNDropManager(this);  	//setNonEmptyState(); 	Util.pr("JabRefFrame: Must set non-empty state."); 	}*/
 DECL|method|fillMenu ()
 specifier|private
 name|void
@@ -2584,6 +2591,13 @@ name|tools
 operator|.
 name|add
 argument_list|(
+name|fetchMedline
+argument_list|)
+expr_stmt|;
+name|tools
+operator|.
+name|add
+argument_list|(
 name|lyxPushAction
 argument_list|)
 expr_stmt|;
@@ -2944,7 +2958,7 @@ name|mi
 return|;
 block|}
 comment|//private void setupMainPanel() {
-comment|/*public Completer getAutoCompleter(String field) { 	return (Completer)autoCompleters.get(field); 	}           public void assignAutoCompleters() { 	// Set up which fields should have autocompletion. This should 	// probably be made customizable. Existing Completer objects are 	// forgotten. The completers must be updated towards the database. 	byte[] fields = prefs.getByteArray("autoCompFields"); 	autoCompleters = new Hashtable(); 	for (int i=0; i<fields.length; i++) { 	    autoCompleters.put(GUIGlobals.ALL_FIELDS[fields[i]], new Completer()); 	} 	     }             public void updateAutoCompleters() { 	if (database != null) 	    database.setCompleters(autoCompleters); 	    }*/
+comment|/*public Completer getAutoCompleter(String field) { 	return (Completer)autoCompleters.get(field); 	}       public void assignAutoCompleters() { 	// Set up which fields should have autocompletion. This should 	// probably be made customizable. Existing Completer objects are 	// forgotten. The completers must be updated towards the database. 	byte[] fields = prefs.getByteArray("autoCompFields"); 	autoCompleters = new Hashtable(); 	for (int i=0; i<fields.length; i++) { 	    autoCompleters.put(GUIGlobals.ALL_FIELDS[fields[i]], new Completer()); 	}      }      public void updateAutoCompleters() { 	if (database != null) 	    database.setCompleters(autoCompleters); 	    }*/
 DECL|method|output (String s)
 specifier|public
 name|void
@@ -3486,7 +3500,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**       * The action concerned with closing the window.      */
+comment|/**      * The action concerned with closing the window.      */
 DECL|class|CloseAction
 class|class
 name|CloseAction
@@ -4618,6 +4632,106 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/* 	      if (prefs.getBoolean("autoComplete")) 	      db.setCompleters(autoCompleters);*/
+block|}
+block|}
+DECL|class|FetchMedlineAction
+class|class
+name|FetchMedlineAction
+extends|extends
+name|AbstractAction
+block|{
+DECL|method|FetchMedlineAction ()
+specifier|public
+name|FetchMedlineAction
+parameter_list|()
+block|{
+name|super
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Fetch Medline"
+argument_list|)
+argument_list|,
+operator|new
+name|ImageIcon
+argument_list|(
+name|GUIGlobals
+operator|.
+name|fetchMedlineIcon
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|putValue
+argument_list|(
+name|SHORT_DESCRIPTION
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Fetch Medline by ID"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|actionPerformed (ActionEvent e)
+specifier|public
+name|void
+name|actionPerformed
+parameter_list|(
+name|ActionEvent
+name|e
+parameter_list|)
+block|{
+if|if
+condition|(
+name|tabbedPane
+operator|.
+name|getTabCount
+argument_list|()
+operator|>
+literal|0
+condition|)
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|tabbedPane
+operator|.
+name|getTabCount
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+operator|(
+operator|(
+name|BasePanel
+operator|)
+name|tabbedPane
+operator|.
+name|getComponentAt
+argument_list|(
+name|i
+argument_list|)
+operator|)
+operator|.
+name|sidePaneManager
+operator|.
+name|ensureVisible
+argument_list|(
+literal|"fetchMedline"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 comment|// The action for opening the preferences dialog.
