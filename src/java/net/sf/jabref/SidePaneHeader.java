@@ -266,8 +266,6 @@ operator|.
 name|top
 argument_list|,
 name|width
-operator|-
-literal|1
 argument_list|,
 name|height
 argument_list|)
