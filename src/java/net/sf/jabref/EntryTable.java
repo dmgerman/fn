@@ -371,6 +371,20 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|s
+operator|.
+name|equals
+argument_list|(
+literal|""
+argument_list|)
+condition|)
+block|{
+comment|// The user has clicked a column with an empty header, such as the icon columns.
+comment|// We could add sorting for these columns, but currently we do nothing.
+return|return;
+block|}
+if|if
+condition|(
 operator|!
 name|s
 operator|.

@@ -729,6 +729,8 @@ argument_list|,
 operator|new
 name|LatexFieldFormatter
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 name|ta1
@@ -759,6 +761,8 @@ argument_list|,
 operator|new
 name|LatexFieldFormatter
 argument_list|()
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 name|ta2

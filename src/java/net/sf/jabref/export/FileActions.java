@@ -830,6 +830,8 @@ argument_list|(
 name|fw
 argument_list|,
 name|ff
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|fw
@@ -1136,6 +1138,8 @@ argument_list|(
 name|fw
 argument_list|,
 name|ff
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|fw

@@ -60,16 +60,22 @@ extends|extends
 name|SearchRuleSet
 block|{
 DECL|field|and
+DECL|field|invert
 specifier|private
 name|boolean
 name|and
+decl_stmt|,
+name|invert
 decl_stmt|;
-DECL|method|AndOrSearchRuleSet (boolean and)
+DECL|method|AndOrSearchRuleSet (boolean and, boolean invert)
 specifier|public
 name|AndOrSearchRuleSet
 parameter_list|(
 name|boolean
 name|and
+parameter_list|,
+name|boolean
+name|invert
 parameter_list|)
 block|{
 name|this
@@ -77,6 +83,12 @@ operator|.
 name|and
 operator|=
 name|and
+expr_stmt|;
+name|this
+operator|.
+name|invert
+operator|=
+name|invert
 expr_stmt|;
 block|}
 DECL|method|applyRules (Hashtable searchString,BibtexEntry bibtexEntry)
@@ -143,12 +155,15 @@ expr_stmt|;
 block|}
 comment|// Then an AND rule demands that score == number of rules, and
 comment|// an OR rule demands score> 0.
+name|boolean
+name|res
+decl_stmt|;
 if|if
 condition|(
 name|and
 condition|)
-return|return
-operator|(
+name|res
+operator|=
 operator|(
 name|score
 operator|==
@@ -157,20 +172,33 @@ operator|.
 name|size
 argument_list|()
 operator|)
-condition|?
-literal|1
-else|:
-literal|0
-operator|)
-return|;
+expr_stmt|;
 else|else
-return|return
-operator|(
+name|res
+operator|=
 operator|(
 name|score
 operator|>
 literal|0
 operator|)
+expr_stmt|;
+if|if
+condition|(
+name|invert
+condition|)
+return|return
+operator|(
+name|res
+condition|?
+literal|0
+else|:
+literal|1
+operator|)
+return|;
+else|else
+return|return
+operator|(
+name|res
 condition|?
 literal|1
 else|:

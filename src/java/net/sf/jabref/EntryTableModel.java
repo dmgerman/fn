@@ -995,12 +995,28 @@ name|remap
 parameter_list|()
 block|{
 comment|// Set the icon columns, indicating the number of special columns to the left.
-comment|// We currently assume one icon column plus the number column.
+comment|// We add those that are enabled in preferences.
 name|iconCols
 operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+name|int
+name|coln
+init|=
+literal|1
+decl_stmt|;
+if|if
+condition|(
+name|panel
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"pdfColumn"
+argument_list|)
+condition|)
 name|iconCols
 operator|.
 name|put
@@ -1008,12 +1024,24 @@ argument_list|(
 operator|new
 name|Integer
 argument_list|(
-literal|1
+name|coln
+operator|++
 argument_list|)
 argument_list|,
 name|PDF
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|panel
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"urlColumn"
+argument_list|)
+condition|)
 name|iconCols
 operator|.
 name|put
@@ -1021,7 +1049,8 @@ argument_list|(
 operator|new
 name|Integer
 argument_list|(
-literal|2
+name|coln
+operator|++
 argument_list|)
 argument_list|,
 name|URL_

@@ -710,8 +710,8 @@ name|listener
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Write this entry to the given Writer, with the given FieldFormatter.      */
-DECL|method|write (Writer out, FieldFormatter ff)
+comment|/**      * Write this entry to the given Writer, with the given FieldFormatter.      * @param write True if this is a write, false if it is a display. The write will      * not include non-writeable fields if it is a write, otherwise non-displayable fields      * will be ignored. Refer to GUIGlobals for isWriteableField(String) and      * isDisplayableField(String).      */
+DECL|method|write (Writer out, FieldFormatter ff, boolean write)
 specifier|public
 name|void
 name|write
@@ -721,6 +721,9 @@ name|out
 parameter_list|,
 name|FieldFormatter
 name|ff
+parameter_list|,
+name|boolean
+name|write
 parameter_list|)
 throws|throws
 name|IOException
@@ -948,6 +951,27 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+name|boolean
+name|writeIt
+init|=
+operator|(
+name|write
+condition|?
+name|GUIGlobals
+operator|.
+name|isWriteableField
+argument_list|(
+name|key
+argument_list|)
+else|:
+name|GUIGlobals
+operator|.
+name|isDisplayableField
+argument_list|(
+name|key
+argument_list|)
+operator|)
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -958,12 +982,7 @@ argument_list|(
 name|key
 argument_list|)
 operator|&&
-name|GUIGlobals
-operator|.
-name|isWriteableField
-argument_list|(
-name|key
-argument_list|)
+name|writeIt
 condition|)
 block|{
 name|writeField

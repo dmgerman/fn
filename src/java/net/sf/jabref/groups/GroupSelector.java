@@ -275,6 +275,22 @@ argument_list|)
 argument_list|,
 literal|false
 argument_list|)
+decl_stmt|,
+DECL|field|invCb
+name|invCb
+init|=
+operator|new
+name|JCheckBox
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Inverted"
+argument_list|)
+argument_list|,
+literal|false
+argument_list|)
 decl_stmt|;
 DECL|field|bgr
 name|ButtonGroup
@@ -957,6 +973,22 @@ name|gbl
 operator|.
 name|setConstraints
 argument_list|(
+name|invCb
+argument_list|,
+name|con
+argument_list|)
+expr_stmt|;
+name|lower
+operator|.
+name|add
+argument_list|(
+name|invCb
+argument_list|)
+expr_stmt|;
+name|gbl
+operator|.
+name|setConstraints
+argument_list|(
 name|lower
 argument_list|,
 name|con
@@ -1490,7 +1522,7 @@ comment|// Show a search for the keyword of field sel*DIM+OFFSET-1
 comment|// in the vector. The following is analogue with
 comment|// the doSearch() method of SearchPane.
 comment|// We use a search rule set that takes care of multiple groups,
-comment|// in an AND or OR fashion.
+comment|// in an AND or OR fashion, and optionally inverts it.
 name|AndOrSearchRuleSet
 name|searchRules
 init|=
@@ -1498,6 +1530,11 @@ operator|new
 name|AndOrSearchRuleSet
 argument_list|(
 name|andCb
+operator|.
+name|isSelected
+argument_list|()
+argument_list|,
+name|invCb
 operator|.
 name|isSelected
 argument_list|()
