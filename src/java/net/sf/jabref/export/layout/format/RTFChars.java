@@ -516,13 +516,13 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"<em>"
+literal|"}{\\i "
 operator|+
 name|part
 operator|.
 name|s
 operator|+
-literal|"</em>"
+literal|"}{"
 argument_list|)
 expr_stmt|;
 block|}
@@ -557,13 +557,13 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"<b>"
+literal|"}{\\b "
 operator|+
 name|part
 operator|.
 name|s
 operator|+
-literal|"</b>"
+literal|"}{"
 argument_list|)
 expr_stmt|;
 block|}

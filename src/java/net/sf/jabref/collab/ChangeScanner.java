@@ -213,8 +213,6 @@ parameter_list|(
 name|File
 name|f
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|this
 operator|.

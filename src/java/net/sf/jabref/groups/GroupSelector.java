@@ -540,7 +540,6 @@ name|AllEntriesGroup
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//this.groupsRoot = groupsRoot;
 name|this
 operator|.
 name|manager
@@ -2015,15 +2014,7 @@ name|dge
 parameter_list|)
 block|{
 comment|// TODO Auto-generated method stub
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|dge
-argument_list|)
-expr_stmt|;
+comment|//System.out.println(dge);
 block|}
 block|}
 argument_list|)

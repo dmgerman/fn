@@ -276,7 +276,14 @@ name|tmp
 init|=
 literal|true
 decl_stmt|;
-comment|//UIFSplitPane contentPane = new UIFSplitPane();
+DECL|field|contentPane
+name|UIFSplitPane
+name|contentPane
+init|=
+operator|new
+name|UIFSplitPane
+argument_list|()
+decl_stmt|;
 DECL|field|ths
 name|BasePanel
 name|ths
@@ -1121,8 +1128,7 @@ name|ths
 argument_list|)
 decl_stmt|;
 comment|//, panel.database(), panel.metaData());
-try|try
-block|{
+comment|//try {
 name|scanner
 operator|.
 name|changeScan
@@ -1160,19 +1166,9 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ex
-parameter_list|)
-block|{
-name|ex
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
+comment|//} catch (IOException ex) {
+comment|//    ex.printStackTrace();
+comment|//}
 return|return;
 block|}
 block|}
@@ -1870,6 +1866,14 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 decl_stmt|;
+name|int
+name|row0
+init|=
+name|entryTable
+operator|.
+name|getSelectedRow
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 operator|(
@@ -2030,6 +2034,40 @@ expr_stmt|;
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
+comment|// Reselect the entry in the first prev. selected position:
+if|if
+condition|(
+name|row0
+operator|>=
+name|entryTable
+operator|.
+name|getRowCount
+argument_list|()
+condition|)
+name|row0
+operator|=
+name|entryTable
+operator|.
+name|getRowCount
+argument_list|()
+operator|-
+literal|1
+expr_stmt|;
+if|if
+condition|(
+name|row0
+operator|>=
+literal|0
+condition|)
+name|entryTable
+operator|.
+name|addRowSelectionInterval
+argument_list|(
+name|row0
+argument_list|,
+name|row0
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
@@ -2108,11 +2146,8 @@ condition|)
 block|{
 comment|// This is a hack to avoid the action being called twice,
 comment|// feel free to fix it...
-name|entryTable
-operator|.
-name|clearSelection
-argument_list|()
-expr_stmt|;
+return|return;
+comment|//entryTable.clearSelection();
 block|}
 else|else
 block|{
@@ -2129,19 +2164,9 @@ name|length
 operator|>
 literal|1
 condition|?
-name|Globals
-operator|.
-name|lang
-argument_list|(
 literal|"delete entries"
-argument_list|)
 else|:
-name|Globals
-operator|.
-name|lang
-argument_list|(
 literal|"delete entry"
-argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// Loop through the array of entries, and delete them.
@@ -2173,6 +2198,14 @@ index|]
 operator|.
 name|getId
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|ensureNotShowing
+argument_list|(
+name|bes
+index|[
+name|i
+index|]
 argument_list|)
 expr_stmt|;
 name|ce
@@ -2256,6 +2289,40 @@ argument_list|()
 expr_stmt|;
 name|markBaseChanged
 argument_list|()
+expr_stmt|;
+comment|// Reselect the entry in the first prev. selected position:
+if|if
+condition|(
+name|row0
+operator|>=
+name|entryTable
+operator|.
+name|getRowCount
+argument_list|()
+condition|)
+name|row0
+operator|=
+name|entryTable
+operator|.
+name|getRowCount
+argument_list|()
+operator|-
+literal|1
+expr_stmt|;
+if|if
+condition|(
+name|row0
+operator|>=
+literal|0
+condition|)
+name|entryTable
+operator|.
+name|addRowSelectionInterval
+argument_list|(
+name|row0
+argument_list|,
+name|row0
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -6175,6 +6242,8 @@ name|TextInputDialog
 argument_list|(
 name|frame
 argument_list|,
+name|ths
+argument_list|,
 literal|"import"
 argument_list|,
 literal|true
@@ -6300,6 +6369,8 @@ operator|new
 name|TextInputDialog
 argument_list|(
 name|frame
+argument_list|,
+name|ths
 argument_list|,
 literal|"import"
 argument_list|,
@@ -7123,38 +7194,55 @@ expr_stmt|;
 return|return;
 block|}
 comment|// Make a list of possible formats:
-name|Set
+name|Map
 name|formats
 init|=
 operator|new
-name|HashSet
+name|HashMap
 argument_list|()
 decl_stmt|;
 name|formats
 operator|.
-name|add
+name|put
 argument_list|(
+literal|"BibTeXML"
+argument_list|,
 literal|"bibtexml"
 argument_list|)
 expr_stmt|;
 name|formats
 operator|.
-name|add
+name|put
 argument_list|(
+literal|"DocBook"
+argument_list|,
 literal|"docbook"
 argument_list|)
 expr_stmt|;
 name|formats
 operator|.
-name|add
+name|put
 argument_list|(
+literal|"HTML"
+argument_list|,
 literal|"html"
 argument_list|)
 expr_stmt|;
 name|formats
 operator|.
-name|add
+name|put
 argument_list|(
+literal|"RTF (Harvard)"
+argument_list|,
+literal|"harvard/harvard"
+argument_list|)
+expr_stmt|;
+name|formats
+operator|.
+name|put
+argument_list|(
+literal|"Simple HTML"
+argument_list|,
 literal|"simplehtml"
 argument_list|)
 expr_stmt|;
@@ -7178,10 +7266,9 @@ name|i
 operator|++
 control|)
 block|{
-name|formats
-operator|.
-name|add
-argument_list|(
+name|Object
+name|o
+init|=
 operator|(
 name|prefs
 operator|.
@@ -7195,19 +7282,43 @@ operator|)
 index|[
 literal|0
 index|]
+decl_stmt|;
+name|formats
+operator|.
+name|put
+argument_list|(
+name|o
+argument_list|,
+name|o
 argument_list|)
 expr_stmt|;
 block|}
+name|Object
+index|[]
+name|array
+init|=
+name|formats
+operator|.
+name|keySet
+argument_list|()
+operator|.
+name|toArray
+argument_list|()
+decl_stmt|;
+name|Arrays
+operator|.
+name|sort
+argument_list|(
+name|array
+argument_list|)
+expr_stmt|;
 name|JList
 name|list
 init|=
 operator|new
 name|JList
 argument_list|(
-name|formats
-operator|.
-name|toArray
-argument_list|()
+name|array
 argument_list|)
 decl_stmt|;
 name|list
@@ -7253,7 +7364,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Select the format to copy entries in"
+literal|"Select format"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -7309,10 +7420,15 @@ call|(
 name|String
 call|)
 argument_list|(
+name|formats
+operator|.
+name|get
+argument_list|(
 name|list
 operator|.
 name|getSelectedValue
 argument_list|()
+argument_list|)
 argument_list|)
 decl_stmt|;
 specifier|final
@@ -7440,9 +7556,16 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 decl_stmt|;
+name|StringWriter
+name|sw
+init|=
+operator|new
+name|StringWriter
+argument_list|()
+decl_stmt|;
 name|FileActions
 operator|.
-name|exportToClipboard
+name|exportEntries
 argument_list|(
 name|database
 argument_list|,
@@ -7454,7 +7577,54 @@ name|custom
 argument_list|,
 name|directory
 argument_list|,
-name|prefs
+name|sw
+argument_list|)
+expr_stmt|;
+name|ClipboardOwner
+name|owner
+init|=
+operator|new
+name|ClipboardOwner
+argument_list|()
+block|{
+specifier|public
+name|void
+name|lostOwnership
+parameter_list|(
+name|Clipboard
+name|clipboard
+parameter_list|,
+name|Transferable
+name|content
+parameter_list|)
+block|{}
+block|}
+decl_stmt|;
+name|StringSelection
+name|ss
+init|=
+operator|new
+name|StringSelection
+argument_list|(
+name|sw
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|Toolkit
+operator|.
+name|getDefaultToolkit
+argument_list|()
+operator|.
+name|getSystemClipboard
+argument_list|()
+operator|.
+name|setContents
+argument_list|(
+name|ss
+argument_list|,
+name|owner
 argument_list|)
 expr_stmt|;
 name|message
@@ -7577,7 +7747,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This method is called from JabRefFrame is a database specific      * action is requested by the user. Runs the command if it is      * defined, or prints an error message to the standard error      * stream.      *      * @param command The name of the command to run.     */
+comment|/**      * This method is called from JabRefFrame is a database specific      * action is requested by the user. Runs the command if it is      * defined, or prints an error message to the standard error      * stream.      *      * @param _command The name of the command to run.     */
 DECL|method|runCommand (String _command)
 specifier|public
 name|void
@@ -7586,8 +7756,6 @@ parameter_list|(
 name|String
 name|_command
 parameter_list|)
-throws|throws
-name|Throwable
 block|{
 specifier|final
 name|String
@@ -8341,12 +8509,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|validateMainPanel ()
-specifier|public
-name|void
-name|validateMainPanel
-parameter_list|()
-block|{     }
 DECL|method|setupTable ()
 specifier|public
 name|void
@@ -8724,37 +8886,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-elseif|else
-if|if
-condition|(
-name|keyCode
-operator|==
-name|KeyEvent
-operator|.
-name|VK_DELETE
-condition|)
-block|{
-try|try
-block|{
-name|runCommand
-argument_list|(
-literal|"delete"
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|ex
-parameter_list|)
-block|{
-name|ex
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
-block|}
+comment|/*else if(keyCode == KeyEvent.VK_DELETE){                         try { runCommand("delete");                         } catch (Throwable ex) {                             ex.printStackTrace();                         }                     } */
 comment|/*                     if (((e.getKeyCode() == KeyEvent.VK_DOWN) || (e.getKeyCode() == KeyEvent.VK_UP))&& (e.getModifiers() == 0)) {                        Util.pr(entryTable.getSelectedRow()+"");                     }*/
 block|}
 block|}
@@ -8932,7 +9064,6 @@ argument_list|(
 name|showing
 argument_list|)
 expr_stmt|;
-comment|/*        contentPane.setBorder(null);         contentPane.setDividerLocation(-1);         contentPane.setLeftComponent(sidePaneManager.getPanel());         contentPane.setRightComponent(splitPane);         contentPane.setDividerBorderVisible(false);         contentPane.setDividerSize(2);*/
 name|setLayout
 argument_list|(
 operator|new
@@ -9053,7 +9184,7 @@ operator|>
 literal|0
 operator|)
 condition|)
-name|highlightEntries
+name|selectEntries
 argument_list|(
 name|bes
 argument_list|,
@@ -9905,10 +10036,10 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * This method selects the given enties.      * If an entryEditor is shown, it is given focus afterwards.      */
-DECL|method|highlightEntries (final BibtexEntry[] bes, final int toScrollTo)
+DECL|method|selectEntries (final BibtexEntry[] bes, final int toScrollTo)
 specifier|public
 name|void
-name|highlightEntries
+name|selectEntries
 parameter_list|(
 specifier|final
 name|BibtexEntry
@@ -9942,6 +10073,11 @@ decl_stmt|;
 name|entryTable
 operator|.
 name|revalidate
+argument_list|()
+expr_stmt|;
+name|entryTable
+operator|.
+name|clearSelection
 argument_list|()
 expr_stmt|;
 name|loop
@@ -10001,6 +10137,7 @@ name|rowToScrollTo
 operator|=
 name|row
 expr_stmt|;
+comment|//System.out.println("Adding: "+row+"\t'"+bes[i].getId()+"'");
 name|entryTable
 operator|.
 name|addRowSelectionIntervalQuietly

@@ -133,8 +133,6 @@ parameter_list|,
 name|String
 name|systemId
 parameter_list|)
-throws|throws
-name|Exception
 block|{}
 empty_stmt|;
 DECL|method|startDocument ()

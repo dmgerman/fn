@@ -524,6 +524,14 @@ operator|new
 name|RedoAction
 argument_list|()
 decl_stmt|;
+DECL|field|tabListener
+name|TabListener
+name|tabListener
+init|=
+operator|new
+name|TabListener
+argument_list|()
+decl_stmt|;
 DECL|method|EntryEditor (JabRefFrame frame_, BasePanel panel_, BibtexEntry entry_)
 specifier|public
 name|EntryEditor
@@ -633,15 +641,6 @@ expr_stmt|;
 name|setupSourcePanel
 argument_list|()
 expr_stmt|;
-name|tabbed
-operator|.
-name|addChangeListener
-argument_list|(
-operator|new
-name|TabListener
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|add
 argument_list|(
 name|tabbed
@@ -649,6 +648,13 @@ argument_list|,
 name|BorderLayout
 operator|.
 name|CENTER
+argument_list|)
+expr_stmt|;
+name|tabbed
+operator|.
+name|addChangeListener
+argument_list|(
+name|tabListener
 argument_list|)
 expr_stmt|;
 if|if
@@ -696,12 +702,19 @@ operator|.
 name|getRequiredFields
 argument_list|()
 decl_stmt|;
-comment|//if (fields != null) {
-name|reqPan
+name|List
+name|fieldList
+init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
+name|fields
+operator|!=
+literal|null
+condition|)
+name|fieldList
 operator|=
-operator|new
-name|EntryEditorTab
-argument_list|(
 name|java
 operator|.
 name|util
@@ -712,6 +725,13 @@ name|asList
 argument_list|(
 name|fields
 argument_list|)
+expr_stmt|;
+name|reqPan
+operator|=
+operator|new
+name|EntryEditorTab
+argument_list|(
+name|fieldList
 argument_list|,
 name|this
 argument_list|,
@@ -971,6 +991,13 @@ operator|-
 literal|1
 expr_stmt|;
 comment|// Set the sourceIndex variable.
+name|srcPanel
+operator|.
+name|setFocusCycleRoot
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getType ()
 specifier|public
@@ -1373,16 +1400,33 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**    * Rebuild the field tabs. This is called e.g. when a new content selector has been added.     */
 DECL|method|rebuildPanels ()
 specifier|public
 name|void
 name|rebuildPanels
 parameter_list|()
 block|{
+comment|// Remove change listener, because the rebuilding causes meaningless events and trouble:
+name|tabbed
+operator|.
+name|removeChangeListener
+argument_list|(
+name|tabListener
+argument_list|)
+expr_stmt|;
 name|setupFieldPanels
 argument_list|()
 expr_stmt|;
 comment|//reqPanel, optPanel, genPanel, absPanel);
+comment|// Add the change listener again:
+name|tabbed
+operator|.
+name|addChangeListener
+argument_list|(
+name|tabListener
+argument_list|)
+expr_stmt|;
 name|revalidate
 argument_list|()
 expr_stmt|;
@@ -2975,6 +3019,15 @@ operator|.
 name|INDENT
 argument_list|)
 expr_stmt|;
+name|source
+operator|.
+name|addFocusListener
+argument_list|(
+operator|new
+name|FieldEditorFocusListener
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// Add the global focus listener, so a menu item can see if this field
 comment|// was focused when
 comment|// an action was called.
@@ -3468,16 +3521,13 @@ name|activate
 argument_list|()
 expr_stmt|;
 else|else
-operator|(
-operator|(
-name|JComponent
-operator|)
-name|activeTab
-operator|)
-operator|.
-name|requestFocus
-argument_list|()
+operator|new
+name|FocusRequester
+argument_list|(
+name|source
+argument_list|)
 expr_stmt|;
+comment|//((JComponent)activeTab).requestFocus();
 block|}
 comment|/**    * Reports the enabled status of the editor, as set by setEnabled()    */
 DECL|method|isEnabled ()

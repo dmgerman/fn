@@ -303,6 +303,22 @@ literal|1
 operator|)
 condition|)
 block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|": '"
+operator|+
+name|authors
+index|[
+name|i
+index|]
+operator|+
+literal|"'"
+argument_list|)
+expr_stmt|;
 name|Exception
 name|e
 init|=

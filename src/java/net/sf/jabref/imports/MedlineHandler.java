@@ -1132,7 +1132,12 @@ name|setField
 argument_list|(
 literal|"author"
 argument_list|,
+name|ImportFormatReader
+operator|.
+name|expandAuthorInitials
+argument_list|(
 name|author
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|author

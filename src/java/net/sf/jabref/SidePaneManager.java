@@ -797,7 +797,6 @@ operator|.
 name|width
 argument_list|)
 expr_stmt|;
-comment|//    if (!wasVisible) panel.setDivider();
 block|}
 else|else
 name|sidep

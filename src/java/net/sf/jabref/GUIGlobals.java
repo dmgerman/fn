@@ -117,7 +117,7 @@ decl_stmt|,
 DECL|field|version
 name|version
 init|=
-literal|"1.7b"
+literal|"1.7"
 decl_stmt|,
 DECL|field|stringsTitle
 name|stringsTitle
@@ -360,6 +360,22 @@ name|JLabel
 name|incompleteLabel
 decl_stmt|;
 comment|// JLabel with icon signaling an incomplete entry.
+DECL|field|activeEditor
+specifier|public
+specifier|static
+name|Color
+name|activeEditor
+init|=
+operator|new
+name|Color
+argument_list|(
+literal|230
+argument_list|,
+literal|230
+argument_list|,
+literal|255
+argument_list|)
+decl_stmt|;
 DECL|method|getTableIcon (String fieldType)
 specifier|public
 specifier|static
@@ -1174,6 +1190,7 @@ operator|+
 literal|"winedt.png"
 argument_list|)
 decl_stmt|,
+comment|//jabreflogo = GUIGlobals.class.getResource(pre + "JabRef-Logo-small.gif"),
 DECL|field|jabreflogo
 name|jabreflogo
 init|=
@@ -1185,24 +1202,10 @@ name|getResource
 argument_list|(
 name|pre
 operator|+
-literal|"JabRef-Logo-small.gif"
+literal|"JabRef-icon.png"
 argument_list|)
 decl_stmt|,
-comment|//jabreflogo = GUIGlobals.class.getResource(pre + "JabRef-icon.png"),
-DECL|field|splashScreenImage
-name|splashScreenImage
-init|=
-name|GUIGlobals
-operator|.
-name|class
-operator|.
-name|getResource
-argument_list|(
-name|pre
-operator|+
-literal|"JabRef-splash.png"
-argument_list|)
-decl_stmt|,
+comment|//splashScreenImage = GUIGlobals.class.getResource(pre + "JabRef-splash.png"),
 DECL|field|completeTagIcon
 name|completeTagIcon
 init|=

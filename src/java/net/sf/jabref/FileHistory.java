@@ -551,12 +551,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|setFileHistory ()
-specifier|public
-name|void
-name|setFileHistory
-parameter_list|()
-block|{      }
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

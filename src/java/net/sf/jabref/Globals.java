@@ -171,7 +171,7 @@ comment|// year field when parsing textual data.  :-)
 DECL|field|STANDARD_EXPORT_COUNT
 name|STANDARD_EXPORT_COUNT
 init|=
-literal|4
+literal|5
 decl_stmt|,
 comment|// The number of standard export formats.
 DECL|field|METADATA_LINE_LENGTH
@@ -706,37 +706,13 @@ operator|.
 name|Handler
 name|handler
 decl_stmt|;
-try|try
-block|{
-name|handler
-operator|=
-operator|new
-name|FileHandler
-argument_list|(
-name|logfile
-argument_list|)
-expr_stmt|;
-comment|// this will overwrite
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-comment|//can't open log file so use console
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 name|handler
 operator|=
 operator|new
 name|ConsoleHandler
 argument_list|()
 expr_stmt|;
-block|}
+comment|/*try {       handler = new FileHandler(logfile); // this will overwrite     }     catch (IOException e) { //can't open log file so use console         e.printStackTrace();      } */
 name|Logger
 operator|.
 name|global

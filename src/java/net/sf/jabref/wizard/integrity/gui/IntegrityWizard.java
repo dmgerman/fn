@@ -192,6 +192,11 @@ specifier|private
 name|BibtexDatabase
 name|dbase
 decl_stmt|;
+DECL|field|basePanel
+specifier|private
+name|BasePanel
+name|basePanel
+decl_stmt|;
 DECL|field|closeButton
 specifier|private
 name|JButton
@@ -207,15 +212,15 @@ specifier|private
 name|IntegrityMessagePanel
 name|warnPanel
 decl_stmt|;
-DECL|method|IntegrityWizard ( JabRefFrame frame, BibtexDatabase database )
+DECL|method|IntegrityWizard ( JabRefFrame frame, BasePanel basePanel)
 specifier|public
 name|IntegrityWizard
 parameter_list|(
 name|JabRefFrame
 name|frame
 parameter_list|,
-name|BibtexDatabase
-name|database
+name|BasePanel
+name|basePanel
 parameter_list|)
 block|{
 name|super
@@ -231,9 +236,18 @@ name|_frame
 operator|=
 name|frame
 expr_stmt|;
+name|this
+operator|.
+name|basePanel
+operator|=
+name|basePanel
+expr_stmt|;
 name|dbase
 operator|=
+name|basePanel
+operator|.
 name|database
+argument_list|()
 expr_stmt|;
 try|try
 block|{
@@ -262,8 +276,6 @@ specifier|private
 name|void
 name|jbInit
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 comment|//    this.setModal( true ) ;
 name|this
@@ -287,11 +299,15 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//Globals.lang( "Plain_text_import" ) + " " + typeStr ) ;
+comment|//warnPanel = new IntegrityMessagePanel() ;
+comment|//this.setTitle( "Experimental feature - Integrity Check") ;//Globals.lang( "Plain_text_import" ) + " " + typeStr ) ;
 name|warnPanel
 operator|=
 operator|new
 name|IntegrityMessagePanel
-argument_list|()
+argument_list|(
+name|basePanel
+argument_list|)
 expr_stmt|;
 comment|// ButtonPanel
 name|JPanel

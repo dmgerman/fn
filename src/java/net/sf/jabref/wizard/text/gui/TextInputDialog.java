@@ -345,10 +345,6 @@ DECL|field|warnPanel
 specifier|private
 name|IntegrityMessagePanel
 name|warnPanel
-init|=
-operator|new
-name|IntegrityMessagePanel
-argument_list|()
 decl_stmt|;
 DECL|field|fieldList
 specifier|private
@@ -421,12 +417,15 @@ name|okPressed
 init|=
 literal|false
 decl_stmt|;
-DECL|method|TextInputDialog ( JabRefFrame frame, String title, boolean modal, BibtexEntry bibEntry )
+DECL|method|TextInputDialog ( JabRefFrame frame, BasePanel panel, String title, boolean modal, BibtexEntry bibEntry )
 specifier|public
 name|TextInputDialog
 parameter_list|(
 name|JabRefFrame
 name|frame
+parameter_list|,
+name|BasePanel
+name|panel
 parameter_list|,
 name|String
 name|title
@@ -445,6 +444,14 @@ argument_list|,
 name|title
 argument_list|,
 name|modal
+argument_list|)
+expr_stmt|;
+name|warnPanel
+operator|=
+operator|new
+name|IntegrityMessagePanel
+argument_list|(
+name|panel
 argument_list|)
 expr_stmt|;
 name|inputChanged
@@ -501,8 +508,6 @@ parameter_list|(
 name|JabRefFrame
 name|parent
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 name|this
 operator|.

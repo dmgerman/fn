@@ -224,10 +224,6 @@ name|*
 import|;
 end_import
 
-begin_comment
-comment|/**  * DOCUMENT ME!  *  * @author $author$  * @version $Revision$  */
-end_comment
-
 begin_class
 DECL|class|FileActions
 specifier|public
@@ -1612,7 +1608,7 @@ return|return
 name|ow
 return|;
 block|}
-DECL|method|exportCustomDatabase (BibtexDatabase database, String directory, String lfName, File outFile, JabRefPreferences prefs)
+DECL|method|exportCustomDatabase (BibtexDatabase database, String directory, String lfName, File outFile)
 specifier|public
 specifier|static
 name|void
@@ -1629,9 +1625,6 @@ name|lfName
 parameter_list|,
 name|File
 name|outFile
-parameter_list|,
-name|JabRefPreferences
-name|prefs
 parameter_list|)
 throws|throws
 name|Exception
@@ -1645,12 +1638,10 @@ argument_list|,
 name|lfName
 argument_list|,
 name|outFile
-argument_list|,
-name|prefs
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|exportDatabase (BibtexDatabase database, String lfName, File outFile, JabRefPreferences prefs)
+DECL|method|exportDatabase (BibtexDatabase database, String lfName, File outFile)
 specifier|public
 specifier|static
 name|void
@@ -1664,9 +1655,6 @@ name|lfName
 parameter_list|,
 name|File
 name|outFile
-parameter_list|,
-name|JabRefPreferences
-name|prefs
 parameter_list|)
 throws|throws
 name|Exception
@@ -1682,12 +1670,10 @@ argument_list|,
 name|lfName
 argument_list|,
 name|outFile
-argument_list|,
-name|prefs
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|exportDatabase (BibtexDatabase database, String prefix, String lfName, File outFile, JabRefPreferences prefs)
+DECL|method|exportDatabase (BibtexDatabase database, String prefix, String lfName, File outFile)
 specifier|public
 specifier|static
 name|void
@@ -1704,9 +1690,6 @@ name|lfName
 parameter_list|,
 name|File
 name|outFile
-parameter_list|,
-name|JabRefPreferences
-name|prefs
 parameter_list|)
 throws|throws
 name|Exception
@@ -1735,6 +1718,8 @@ block|}
 name|String
 name|encoding
 init|=
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|get
@@ -1773,12 +1758,10 @@ argument_list|,
 name|lfName
 argument_list|,
 name|ps
-argument_list|,
-name|prefs
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|exportDatabase (BibtexDatabase database, Set entries, String prefix, String lfName, Writer ps, JabRefPreferences prefs)
+DECL|method|exportDatabase (BibtexDatabase database, Set entries, String prefix, String lfName, Writer ps)
 specifier|public
 specifier|static
 name|void
@@ -1798,9 +1781,6 @@ name|lfName
 parameter_list|,
 name|Writer
 name|ps
-parameter_list|,
-name|JabRefPreferences
-name|prefs
 parameter_list|)
 throws|throws
 name|Exception
@@ -2260,11 +2240,11 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|exportToClipboard (BibtexDatabase database, BibtexEntry[] bes, String lfName, boolean custom, String directory, JabRefPreferences prefs)
+DECL|method|exportEntries (BibtexDatabase database, BibtexEntry[] bes, String lfName, boolean custom, String directory, Writer sw)
 specifier|public
 specifier|static
 name|void
-name|exportToClipboard
+name|exportEntries
 parameter_list|(
 name|BibtexDatabase
 name|database
@@ -2282,19 +2262,12 @@ parameter_list|,
 name|String
 name|directory
 parameter_list|,
-name|JabRefPreferences
-name|prefs
+name|Writer
+name|sw
 parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|StringWriter
-name|sw
-init|=
-operator|new
-name|StringWriter
-argument_list|()
-decl_stmt|;
 name|HashSet
 name|keys
 init|=
@@ -2350,56 +2323,6 @@ argument_list|,
 name|lfName
 argument_list|,
 name|sw
-argument_list|,
-name|prefs
-argument_list|)
-expr_stmt|;
-comment|//System.out.println(sw.toString());
-name|ClipboardOwner
-name|owner
-init|=
-operator|new
-name|ClipboardOwner
-argument_list|()
-block|{
-specifier|public
-name|void
-name|lostOwnership
-parameter_list|(
-name|Clipboard
-name|clipboard
-parameter_list|,
-name|Transferable
-name|content
-parameter_list|)
-block|{}
-block|}
-decl_stmt|;
-name|StringSelection
-name|ss
-init|=
-operator|new
-name|StringSelection
-argument_list|(
-name|sw
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-decl_stmt|;
-name|Toolkit
-operator|.
-name|getDefaultToolkit
-argument_list|()
-operator|.
-name|getSystemClipboard
-argument_list|()
-operator|.
-name|setContents
-argument_list|(
-name|ss
-argument_list|,
-name|owner
 argument_list|)
 expr_stmt|;
 block|}

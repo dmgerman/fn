@@ -281,8 +281,7 @@ name|panel
 argument_list|)
 decl_stmt|;
 comment|//, panel.database(), panel.metaData());
-try|try
-block|{
+comment|//try {
 name|scanner
 operator|.
 name|changeScan
@@ -300,19 +299,9 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ex
-parameter_list|)
-block|{
-name|ex
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
+comment|//} catch (IOException ex) {
+comment|//    ex.printStackTrace();
+comment|//}
 block|}
 block|}
 end_class

@@ -1017,8 +1017,6 @@ specifier|private
 name|void
 name|jbInit
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|titledBorder1
 operator|=

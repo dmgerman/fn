@@ -626,6 +626,9 @@ name|typ
 operator|.
 name|getName
 argument_list|()
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|,
 name|typ
 argument_list|)
@@ -712,7 +715,9 @@ block|}
 comment|// Before returning the database, update entries with unknown type
 comment|// based on parsed type definitions, if possible.
 name|checkEntryTypes
-argument_list|()
+argument_list|(
+name|_pr
+argument_list|)
 expr_stmt|;
 return|return
 name|_pr
@@ -2496,11 +2501,14 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|checkEntryTypes ()
+DECL|method|checkEntryTypes (ParserResult _pr)
 specifier|public
 name|void
 name|checkEntryTypes
-parameter_list|()
+parameter_list|(
+name|ParserResult
+name|_pr
+parameter_list|)
 block|{
 for|for
 control|(
@@ -2522,6 +2530,14 @@ argument_list|()
 condition|;
 control|)
 block|{
+name|Object
+name|key
+init|=
+name|i
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
 name|BibtexEntry
 name|be
 init|=
@@ -2535,10 +2551,7 @@ argument_list|(
 operator|(
 name|String
 operator|)
-name|i
-operator|.
-name|next
-argument_list|()
+name|key
 argument_list|)
 decl_stmt|;
 if|if
@@ -2566,6 +2579,9 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -2588,6 +2604,52 @@ operator|.
 name|setType
 argument_list|(
 name|type
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|//System.out.println("Unknown entry type: "+be.getType().getName());
+name|_pr
+operator|.
+name|addWarning
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"unknown entry type"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|be
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|". "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Type set to 'other'"
+argument_list|)
+operator|+
+literal|"."
+argument_list|)
+expr_stmt|;
+name|be
+operator|.
+name|setType
+argument_list|(
+name|BibtexEntryType
+operator|.
+name|OTHER
 argument_list|)
 expr_stmt|;
 block|}

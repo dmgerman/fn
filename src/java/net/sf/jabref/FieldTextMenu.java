@@ -72,6 +72,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|text
+operator|.
+name|JTextComponent
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|net
@@ -87,6 +99,20 @@ operator|.
 name|awt
 operator|.
 name|datatransfer
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
 operator|.
 name|*
 import|;
@@ -145,8 +171,6 @@ operator|=
 name|fieldComponent
 expr_stmt|;
 comment|// copy/paste Menu
-comment|//inputMenu.add( new MenuHeaderAction(myFieldName.getFieldName()) ) ;
-comment|//inputMenu.addSeparator() ;
 name|inputMenu
 operator|.
 name|add
@@ -159,6 +183,29 @@ operator|.
 name|add
 argument_list|(
 name|copyAct
+argument_list|)
+expr_stmt|;
+name|inputMenu
+operator|.
+name|addSeparator
+argument_list|()
+expr_stmt|;
+comment|//inputMenu.add(new ReplaceAction());
+name|inputMenu
+operator|.
+name|add
+argument_list|(
+operator|new
+name|CaseChangeMenu
+argument_list|(
+operator|(
+name|JTextComponent
+operator|)
+name|myFieldName
+operator|.
+name|getTextComponent
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -307,16 +354,16 @@ block|}
 block|}
 block|}
 comment|// ---------------------------------------------------------------------------
-DECL|class|BasicMenuAction
+DECL|class|BasicAction
 specifier|abstract
 class|class
-name|BasicMenuAction
+name|BasicAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|method|BasicMenuAction (String text, String description, URL icon)
+DECL|method|BasicAction (String text, String description, URL icon)
 specifier|public
-name|BasicMenuAction
+name|BasicAction
 parameter_list|(
 name|String
 name|text
@@ -357,9 +404,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BasicMenuAction (String text, String description, URL icon, KeyStroke key)
+DECL|method|BasicAction (String text, String description, URL icon, KeyStroke key)
 specifier|public
-name|BasicMenuAction
+name|BasicAction
 parameter_list|(
 name|String
 name|text
@@ -410,35 +457,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BasicMenuAction (String text, String extensionText)
+DECL|method|BasicAction (String text)
 specifier|public
-name|BasicMenuAction
-parameter_list|(
-name|String
-name|text
-parameter_list|,
-name|String
-name|extensionText
-parameter_list|)
-block|{
-name|super
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-name|text
-argument_list|)
-operator|+
-literal|" - "
-operator|+
-name|extensionText
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|BasicMenuAction (String text)
-specifier|public
-name|BasicMenuAction
+name|BasicAction
 parameter_list|(
 name|String
 name|text
@@ -455,9 +476,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BasicMenuAction (String text, KeyStroke key)
+DECL|method|BasicAction (String text, KeyStroke key)
 specifier|public
-name|BasicMenuAction
+name|BasicAction
 parameter_list|(
 name|String
 name|text
@@ -496,51 +517,13 @@ parameter_list|)
 function_decl|;
 block|}
 comment|//---------------------------------------------------------------
-DECL|class|MenuHeaderAction
-class|class
-name|MenuHeaderAction
-extends|extends
-name|BasicMenuAction
-block|{
-DECL|method|MenuHeaderAction (String comment)
-specifier|public
-name|MenuHeaderAction
-parameter_list|(
-name|String
-name|comment
-parameter_list|)
-block|{
-name|super
-argument_list|(
-literal|"Edit"
-argument_list|,
-name|comment
-argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|setEnabled
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|actionPerformed (ActionEvent e)
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
-block|{ }
-block|}
+comment|/*class MenuHeaderAction extends BasicAction   {     public MenuHeaderAction(String comment)     {       super("Edit -" +comment);       this.setEnabled(false);     }      public void actionPerformed(ActionEvent e) { }   }     */
 comment|// ---------------------------------------------------------------------------
 DECL|class|PasteAction
 class|class
 name|PasteAction
 extends|extends
-name|BasicMenuAction
+name|BasicAction
 block|{
 DECL|method|PasteAction ()
 specifier|public
@@ -549,7 +532,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"Paste"
+literal|"Paste from clipboard"
 argument_list|,
 literal|"Paste from clipboard"
 argument_list|,
@@ -635,7 +618,7 @@ DECL|class|CopyAction
 class|class
 name|CopyAction
 extends|extends
-name|BasicMenuAction
+name|BasicAction
 block|{
 DECL|method|CopyAction ()
 specifier|public
@@ -644,7 +627,7 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-literal|"Copy"
+literal|"Copy to clipboard"
 argument_list|,
 literal|"Copy to clipboard"
 argument_list|,
@@ -717,6 +700,8 @@ block|{}
 block|}
 block|}
 comment|// ---------------------------------------------------------------------------
+comment|/*class ReplaceAction extends BasicAction{     public ReplaceAction(){         super("Replace , by \u201e and\u201c");     }     public void actionPerformed(ActionEvent evt){         if (myFieldName.getText().equals("")){             return;         }         //myFieldName.selectAll();         String input = myFieldName.getText();         myFieldName.setText(input.replaceAll(","," and"));     }   }  */
+comment|//------------------------------------------------------------------------------
 block|}
 end_class
 

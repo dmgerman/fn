@@ -1781,7 +1781,13 @@ parameter_list|(
 name|MalformedURLException
 name|mue
 parameter_list|)
-block|{          }
+block|{
+name|mue
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
 name|File
 name|file
 decl_stmt|;

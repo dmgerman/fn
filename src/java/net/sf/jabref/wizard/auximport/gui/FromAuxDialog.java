@@ -316,8 +316,6 @@ parameter_list|(
 name|JabRefFrame
 name|parent
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 name|panel1
 operator|.

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  * Created on Jul 23, 2004  *  * TODO To change the template for this generated file go to  * Window - Preferences - Java - Code Style - Code Templates  */
+comment|/*  * Created on Jul 23, 2004  *  */
 end_comment
 
 begin_package
@@ -77,7 +77,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author sarahspi  *  * TODO To change the template for this generated type comment go to  * Window - Preferences - Java - Code Style - Code Templates  */
+comment|/**  * @author sarahspi  *  */
 end_comment
 
 begin_class

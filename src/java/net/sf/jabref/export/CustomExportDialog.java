@@ -683,13 +683,7 @@ argument_list|(
 name|gbl
 argument_list|)
 expr_stmt|;
-name|opt
-operator|.
-name|setLayout
-argument_list|(
-name|gbl
-argument_list|)
-expr_stmt|;
+comment|//opt.setLayout(gbl);
 name|main
 operator|.
 name|setBorder
@@ -1026,15 +1020,7 @@ name|GridBagConstraints
 operator|.
 name|NONE
 expr_stmt|;
-name|gbl
-operator|.
-name|setConstraints
-argument_list|(
-name|ok
-argument_list|,
-name|con
-argument_list|)
-expr_stmt|;
+comment|//gbl.setConstraints(ok, con);
 name|opt
 operator|.
 name|add
@@ -1058,15 +1044,7 @@ name|GridBagConstraints
 operator|.
 name|REMAINDER
 expr_stmt|;
-name|gbl
-operator|.
-name|setConstraints
-argument_list|(
-name|cancel
-argument_list|,
-name|con
-argument_list|)
-expr_stmt|;
+comment|//gbl.setConstraints(cancel, con);
 name|opt
 operator|.
 name|add

@@ -351,8 +351,7 @@ operator|!
 name|fileOk
 condition|)
 return|return;
-try|try
-block|{
+comment|//try {
 name|Object
 index|[]
 name|o
@@ -423,19 +422,9 @@ index|[
 literal|1
 index|]
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ex
-parameter_list|)
-block|{
-name|ex
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
+comment|//} catch (IOException ex) {
+comment|//ex.printStackTrace();
+comment|//}
 block|}
 DECL|method|update ()
 specifier|public

@@ -117,6 +117,13 @@ operator|.
 name|focusListener
 argument_list|)
 expr_stmt|;
+name|addFocusListener
+argument_list|(
+operator|new
+name|FieldEditorFocusListener
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|sp
 operator|=
 operator|new
