@@ -130,8 +130,15 @@ DECL|field|SHORTCUT_MASK
 specifier|static
 name|int
 name|SHORTCUT_MASK
-decl_stmt|;
+decl_stmt|,
 comment|// = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
+DECL|field|FUTURE_YEAR
+name|FUTURE_YEAR
+init|=
+literal|2050
+decl_stmt|;
+comment|// Needs to give a year definitely in the future. Used for guessing the
+comment|// year field when parsing textual data.  :-)
 DECL|field|resourcePrefix
 specifier|private
 specifier|static

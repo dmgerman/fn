@@ -154,6 +154,12 @@ specifier|public
 specifier|static
 specifier|final
 name|int
+DECL|field|NOT_CHOSEN
+name|NOT_CHOSEN
+init|=
+operator|-
+literal|1
+decl_stmt|,
 DECL|field|KEEP_BOTH
 name|KEEP_BOTH
 init|=
@@ -289,7 +295,13 @@ DECL|field|status
 name|int
 name|status
 init|=
-name|KEEP_BOTH
+name|NOT_CHOSEN
+decl_stmt|;
+DECL|field|block
+name|boolean
+name|block
+init|=
+literal|true
 decl_stmt|;
 DECL|method|DuplicateResolverDialog (JabRefFrame frame, BibtexEntry one, BibtexEntry two)
 specifier|public
@@ -316,7 +328,7 @@ argument_list|(
 literal|"Possible duplicate entries"
 argument_list|)
 argument_list|,
-literal|true
+literal|false
 argument_list|)
 expr_stmt|;
 name|p1
@@ -593,9 +605,11 @@ name|status
 operator|=
 name|KEEP_UPPER
 expr_stmt|;
-name|dispose
-argument_list|()
+name|block
+operator|=
+literal|false
 expr_stmt|;
+comment|//dispose();
 block|}
 block|}
 argument_list|)
@@ -620,9 +634,11 @@ name|status
 operator|=
 name|KEEP_LOWER
 expr_stmt|;
-name|dispose
-argument_list|()
+name|block
+operator|=
+literal|false
 expr_stmt|;
+comment|//dispose();
 block|}
 block|}
 argument_list|)
@@ -647,9 +663,11 @@ name|status
 operator|=
 name|KEEP_BOTH
 expr_stmt|;
-name|dispose
-argument_list|()
+name|block
+operator|=
+literal|false
 expr_stmt|;
+comment|//dispose();
 block|}
 block|}
 argument_list|)
@@ -798,6 +816,13 @@ name|BibtexEntry
 name|newTwo
 parameter_list|)
 block|{
+name|Util
+operator|.
+name|pr
+argument_list|(
+literal|"jass"
+argument_list|)
+expr_stmt|;
 name|setSourceView
 argument_list|(
 name|newOne
@@ -819,6 +844,34 @@ argument_list|(
 name|newTwo
 argument_list|)
 expr_stmt|;
+name|status
+operator|=
+name|NOT_CHOSEN
+expr_stmt|;
+name|p1
+operator|.
+name|revalidate
+argument_list|()
+expr_stmt|;
+name|p1
+operator|.
+name|repaint
+argument_list|()
+expr_stmt|;
+name|block
+operator|=
+literal|true
+expr_stmt|;
+block|}
+DECL|method|isBlocking ()
+specifier|public
+name|boolean
+name|isBlocking
+parameter_list|()
+block|{
+return|return
+name|block
+return|;
 block|}
 DECL|method|getSelected ()
 specifier|public
