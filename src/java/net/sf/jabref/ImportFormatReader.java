@@ -2632,7 +2632,7 @@ argument_list|)
 expr_stmt|;
 name|Globals
 operator|.
-name|logThis
+name|logger
 argument_list|(
 literal|"Error "
 operator|+

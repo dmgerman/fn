@@ -108,11 +108,11 @@ specifier|static
 name|ResourceBundle
 name|messages
 decl_stmt|;
-DECL|method|logThis (String s)
+DECL|method|logger (String s)
 specifier|public
 specifier|static
 name|void
-name|logThis
+name|logger
 parameter_list|(
 name|String
 name|s

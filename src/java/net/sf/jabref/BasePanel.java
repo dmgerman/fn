@@ -5152,11 +5152,156 @@ name|Transferable
 name|contents
 parameter_list|)
 block|{}
+comment|//##########################################
+comment|//  usage:
+comment|//  isDuplicate=checkForDuplicateKeyAndAdd( null, b.getKey() , issueDuplicateWarning);
+comment|//############################################
+comment|// if the newkey already exists and is not the same as oldkey it will give a warning
+comment|// else it will add the newkey to the to set and remove the oldkey
+DECL|method|checkForDuplicateKeyAndAdd (String oldKey, String newKey, boolean issueWarning)
+specifier|public
+name|boolean
+name|checkForDuplicateKeyAndAdd
+parameter_list|(
+name|String
+name|oldKey
+parameter_list|,
+name|String
+name|newKey
+parameter_list|,
+name|boolean
+name|issueWarning
+parameter_list|)
+block|{
+name|Globals
+operator|.
+name|logger
+argument_list|(
+literal|" checkForDuplicateKeyAndAdd [oldKey = "
+operator|+
+name|oldKey
+operator|+
+literal|"] [newKey = "
+operator|+
+name|newKey
+operator|+
+literal|"]"
+argument_list|)
+expr_stmt|;
+name|boolean
+name|duplicate
+init|=
+literal|false
+decl_stmt|;
+if|if
+condition|(
+name|oldKey
+operator|==
+literal|null
+condition|)
+block|{
+comment|// this is a new entry so don't bother removing oldKey
+name|duplicate
+operator|=
+name|addKeyToSet
+argument_list|(
+name|newKey
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+if|if
+condition|(
+name|oldKey
+operator|.
+name|equals
+argument_list|(
+name|newKey
+argument_list|)
+condition|)
+block|{
+comment|// were OK because the user did not change keys
+name|duplicate
+operator|=
+literal|false
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// user changed the key
+comment|// removed the oldkey
+comment|// But what if more than two have the same key?
+comment|// this means that user can add another key and would not get a warning!
+comment|// consider this: i add a key xxx, then i add another key xxx . I get a warning. I delete the key xxx. JBM
+comment|// removes this key from the allKey. then I add another key xxx. I don't get a warning!
+comment|// i need a way to count the number of keys of each type
+comment|// hashmap=>int (increment each time)
+name|removeKeyFromSet
+argument_list|(
+name|oldKey
+argument_list|)
+expr_stmt|;
+name|duplicate
+operator|=
+name|addKeyToSet
+argument_list|(
+name|newKey
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+if|if
+condition|(
+name|duplicate
+operator|==
+literal|true
+operator|&&
+name|issueWarning
+operator|==
+literal|true
+condition|)
+block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+literal|null
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Warning there is a duplicate key"
+argument_list|)
+operator|+
+literal|":"
+operator|+
+name|newKey
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Duplicate Key Warning"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|WARNING_MESSAGE
+argument_list|)
+expr_stmt|;
+comment|//, options);
+block|}
+return|return
+name|duplicate
+return|;
+block|}
 comment|//========================================================
 comment|// keep track of all the keys to warn if there are duplicates
 comment|//========================================================
 DECL|method|addKeyToSet (String key)
-specifier|public
+specifier|private
 name|boolean
 name|addKeyToSet
 parameter_list|(
@@ -5250,7 +5395,7 @@ comment|// reduce the number of keys by 1. if this number goes to zero then remo
 comment|// note: there is a good reason why we should not use a hashset but use hashmap instead
 comment|//========================================================
 DECL|method|removeKeyFromSet (String key)
-specifier|public
+specifier|private
 name|void
 name|removeKeyFromSet
 parameter_list|(
