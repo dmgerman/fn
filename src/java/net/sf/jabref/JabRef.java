@@ -590,6 +590,16 @@ name|getHelp
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|String
+name|importFormats
+init|=
+name|Globals
+operator|.
+name|importFormatReader
+operator|.
+name|getImportFormatList
+argument_list|()
+decl_stmt|;
 name|System
 operator|.
 name|out
@@ -603,9 +613,12 @@ argument_list|(
 literal|"Available import formats"
 argument_list|)
 operator|+
-literal|": biblioscape, bibtexml, endnote, inspec,\n\tisi, medline, ovid, ris, scifinder, sixpack, jstor, silverplatter."
+literal|":\n"
+operator|+
+name|importFormats
 argument_list|)
 expr_stmt|;
+comment|// + ": biblioscape, bibtexml, endnote, inspec,\n\tisi, medline, ovid, ris, scifinder, sixpack, jstor, silverplatter.");
 comment|// To specify export formats, we need to take the custom export formats into account.
 comment|// So we iterate through the custom formats and add them.
 name|String
@@ -2674,6 +2687,7 @@ operator|new
 name|JabRefFrame
 argument_list|()
 expr_stmt|;
+comment|// Add all loaded databases to the frame:
 if|if
 condition|(
 name|loaded
