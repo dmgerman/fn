@@ -14,45 +14,25 @@ end_package
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|regex
+name|jabref
 operator|.
-name|Matcher
+name|BibtexEntry
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|regex
+name|jabref
 operator|.
-name|Pattern
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|Reader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
+name|Globals
 import|;
 end_import
 
@@ -80,9 +60,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|io
 operator|.
-name|List
+name|InputStream
 import|;
 end_import
 
@@ -108,25 +88,23 @@ end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|BibtexEntry
+name|List
 import|;
 end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
+name|regex
 operator|.
-name|Globals
+name|Pattern
 import|;
 end_import
 
@@ -142,7 +120,7 @@ name|IsiImporter
 implements|implements
 name|ImportFormat
 block|{
-comment|/**      * Return the name of this import format.      */
+comment|/**    * Return the name of this import format.    */
 DECL|method|getFormatName ()
 specifier|public
 name|String
@@ -153,7 +131,7 @@ return|return
 literal|"ISI"
 return|;
 block|}
-comment|/**      * Check whether the source is in the correct format for this importer.      */
+comment|/**    * Check whether the source is in the correct format for this importer.    */
 DECL|method|isRecognizedFormat (InputStream stream)
 specifier|public
 name|boolean
@@ -165,7 +143,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|// Our strategy is to look for the "%A<author>" line.
+comment|// Our strategy is to look for the "PY<year>" line.
 name|BufferedReader
 name|in
 init|=
@@ -187,9 +165,10 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"PY \\\\d{4}?"
+literal|"PY \\d{4}"
 argument_list|)
 decl_stmt|;
+comment|//was PY \\\\d{4}? before
 name|String
 name|str
 decl_stmt|;
@@ -207,6 +186,27 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|//Inspec and IEEE seem to have these strange " - " between key and value
+name|str
+operator|=
+name|str
+operator|.
+name|replace
+argument_list|(
+literal|" - "
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|str
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|pat1
@@ -227,7 +227,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
+comment|/**    * Parse the entries in the source, and return a List of BibtexEntry    * objects.    */
 DECL|method|importEntries (InputStream stream)
 specifier|public
 name|List
@@ -313,7 +313,6 @@ argument_list|(
 literal|"PT "
 argument_list|)
 condition|)
-block|{
 name|sb
 operator|.
 name|append
@@ -323,7 +322,6 @@ operator|+
 name|str
 argument_list|)
 expr_stmt|;
-block|}
 else|else
 block|{
 name|String
@@ -478,11 +476,13 @@ name|String
 name|Type
 init|=
 literal|""
-decl_stmt|,
+decl_stmt|;
+name|String
 name|PT
 init|=
 literal|""
-decl_stmt|,
+decl_stmt|;
+name|String
 name|pages
 init|=
 literal|""
@@ -523,6 +523,23 @@ operator|<=
 literal|2
 condition|)
 continue|continue;
+name|fields
+index|[
+name|j
+index|]
+operator|=
+name|fields
+index|[
+name|j
+index|]
+operator|.
+name|replace
+argument_list|(
+literal|" - "
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
 name|String
 name|beg
 init|=
@@ -551,31 +568,6 @@ argument_list|(
 literal|2
 argument_list|)
 decl_stmt|;
-name|value
-operator|=
-name|value
-operator|.
-name|trim
-argument_list|()
-expr_stmt|;
-if|if
-condition|(
-name|value
-operator|.
-name|startsWith
-argument_list|(
-literal|"-"
-argument_list|)
-condition|)
-name|value
-operator|=
-name|value
-operator|.
-name|substring
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
 name|value
 operator|=
 name|value
@@ -621,6 +613,15 @@ literal|"TY"
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+literal|"CONF"
+operator|.
+name|equals
+argument_list|(
+name|value
+argument_list|)
+condition|)
 name|Type
 operator|=
 literal|"inproceedings"
@@ -655,12 +656,10 @@ argument_list|(
 literal|"AU"
 argument_list|)
 condition|)
-name|hm
-operator|.
-name|put
-argument_list|(
-literal|"author"
-argument_list|,
+block|{
+name|String
+name|author
+init|=
 name|ImportFormatReader
 operator|.
 name|fixAuthor_lastnameFirst
@@ -674,8 +673,45 @@ argument_list|,
 literal|" and "
 argument_list|)
 argument_list|)
+decl_stmt|;
+comment|// if there is already someone there then append with "and"
+if|if
+condition|(
+name|hm
+operator|.
+name|get
+argument_list|(
+literal|"author"
+argument_list|)
+operator|!=
+literal|null
+condition|)
+name|author
+operator|=
+operator|(
+name|String
+operator|)
+name|hm
+operator|.
+name|get
+argument_list|(
+literal|"author"
+argument_list|)
+operator|+
+literal|" and "
+operator|+
+name|author
+expr_stmt|;
+name|hm
+operator|.
+name|put
+argument_list|(
+literal|"author"
+argument_list|,
+name|author
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -712,8 +748,6 @@ argument_list|(
 literal|"SO"
 argument_list|)
 condition|)
-block|{
-comment|// journal name
 name|hm
 operator|.
 name|put
@@ -723,7 +757,6 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
-block|}
 elseif|else
 if|if
 condition|(
@@ -833,7 +866,6 @@ operator|!=
 operator|-
 literal|1
 condition|)
-block|{
 name|value
 operator|=
 name|value
@@ -845,7 +877,6 @@ argument_list|,
 name|detpos
 argument_list|)
 expr_stmt|;
-block|}
 name|pages
 operator|=
 name|pages
@@ -959,7 +990,6 @@ argument_list|(
 literal|"Journal"
 argument_list|)
 condition|)
-comment|//Article"))
 name|Type
 operator|=
 literal|"misc"
@@ -981,7 +1011,6 @@ argument_list|(
 literal|"CR"
 argument_list|)
 condition|)
-comment|//cited references
 name|hm
 operator|.
 name|put

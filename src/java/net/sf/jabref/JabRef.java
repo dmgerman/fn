@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003 Morten O. Alver, Nizar N. Batada   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   */
+comment|/*  * Copyright (C) 2003 Morten O. Alver, Nizar N. Batada  *  * All programs in this directory and subdirectories are published under the GNU  * General Public License as described below.  *  * This program is free software; you can redistribute it and/or modify it under  * the terms of the GNU General Public License as published by the Free Software  * Foundation; either version 2 of the License, or (at your option) any later  * version.  *  * This program is distributed in the hope that it will be useful, but WITHOUT  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS  * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more  * details.  *  * You should have received a copy of the GNU General Public License along with  * this program; if not, write to the Free Software Foundation, Inc., 59 Temple  * Place, Suite 330, Boston, MA 02111-1307 USA  *  * Further information about the GNU GPL is available at:  * http://www.gnu.org/copyleft/gpl.ja.html  *  */
 end_comment
 
 begin_package
@@ -13,136 +13,6 @@ operator|.
 name|jabref
 package|;
 end_package
-
-begin_import
-import|import
-name|gnu
-operator|.
-name|dtools
-operator|.
-name|ritopt
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|Font
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|Color
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|imports
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|wizard
-operator|.
-name|auximport
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|export
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|plaf
-operator|.
-name|metal
-operator|.
-name|MetalLookAndFeel
-import|;
-end_import
 
 begin_import
 import|import
@@ -188,6 +58,136 @@ name|ExtWindowsLookAndFeel
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|export
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|imports
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|wizard
+operator|.
+name|auximport
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|gnu
+operator|.
+name|dtools
+operator|.
+name|ritopt
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Color
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Font
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|plaf
+operator|.
+name|metal
+operator|.
+name|MetalLookAndFeel
+import|;
+end_import
+
 begin_comment
 comment|//import javax.swing.UIManager;
 end_comment
@@ -211,7 +211,7 @@ specifier|static
 name|JabRefFrame
 name|jrf
 decl_stmt|;
-comment|/*  class StringArrayOption extends ArrayOption {       public       public void modify(String value) {       }       public void modify(String[] value) {       }       public Object[] getObjectArray() {         return null;       }       public String getTypeName() {         return "Strings";       }       public String getStringValue() {         return "";       }       public Object getObject() {         return null;       }     }*/
+comment|/*      * class StringArrayOption extends ArrayOption { public public void      * modify(String value) { } public void modify(String[] value) { } public      * Object[] getObjectArray() { return null; } public String getTypeName() {      * return "Strings"; } public String getStringValue() { return ""; } public      * Object getObject() { return null; } }      */
 DECL|method|main (String[] args)
 specifier|public
 specifier|static
@@ -238,7 +238,8 @@ literal|"true"
 argument_list|)
 expr_stmt|;
 comment|//System.out.println(java.awt.Toolkit.getDefaultToolkit().getDesktopProperty("awt.dynamicLayoutSupported"));
-comment|// Make sure of a proper cleanup when quitting (e.g. deleting temporary files).
+comment|// Make sure of a proper cleanup when quitting (e.g. deleting temporary
+comment|// files).
 name|System
 operator|.
 name|runFinalizersOnExit
@@ -628,8 +629,10 @@ operator|+
 name|importFormats
 argument_list|)
 expr_stmt|;
-comment|// + ": biblioscape, bibtexml, endnote, inspec,\n\tisi, medline, ovid, ris, scifinder, sixpack, jstor, silverplatter.");
-comment|// To specify export formats, we need to take the custom export formats into account.
+comment|// + ": biblioscape, bibtexml, endnote, inspec,\n\tisi, medline, ovid,
+comment|// ris, scifinder, sixpack, jstor, silverplatter.");
+comment|// To specify export formats, we need to take the custom export formats
+comment|// into account.
 comment|// So we iterate through the custom formats and add them.
 name|String
 name|outFormats
@@ -679,6 +682,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|length
 operator|+
 name|format
@@ -688,6 +692,7 @@ index|]
 operator|.
 name|length
 argument_list|()
+operator|)
 operator|>
 literal|50
 condition|)
@@ -729,6 +734,7 @@ index|]
 expr_stmt|;
 name|length
 operator|+=
+operator|(
 literal|1
 operator|+
 name|format
@@ -738,6 +744,7 @@ index|]
 operator|.
 name|length
 argument_list|()
+operator|)
 expr_stmt|;
 block|}
 block|}
@@ -767,9 +774,11 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-comment|// First we quickly scan the command line parameters for any that signal that the GUI
-comment|// should not be opened. This is used to decide whether we should show the splash screen or not.
-comment|/*boolean openGui = true;            if (args.length> 0) for (int i=0; i<args.length; i++) {       if (args[i].startsWith("-o"))         openGui = false;       if (args[i].equals("-h")) {         System.out.println("Help info goes here.");         System.exit(0);       }            }*/
+comment|// First we quickly scan the command line parameters for any that signal
+comment|// that the GUI
+comment|// should not be opened. This is used to decide whether we should show the
+comment|// splash screen or not.
+comment|/*          * boolean openGui = true; if (args.length> 0) for (int i=0; i          *<args.length; i++) { if (args[i].startsWith("-o")) openGui = false; if          * (args[i].equals("-h")) { System.out.println("Help info goes here.");          * System.exit(0); } }          */
 name|SplashScreen
 name|ss
 init|=
@@ -879,7 +888,6 @@ name|pr
 operator|!=
 literal|null
 condition|)
-block|{
 name|loaded
 operator|.
 name|add
@@ -887,7 +895,6 @@ argument_list|(
 name|pr
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 if|if
@@ -939,7 +946,6 @@ name|pr
 operator|!=
 literal|null
 condition|)
-block|{
 name|loaded
 operator|.
 name|add
@@ -947,7 +953,6 @@ argument_list|(
 name|pr
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 elseif|else
 if|if
@@ -1280,7 +1285,8 @@ operator|==
 literal|1
 condition|)
 block|{
-comment|// This signals that the latest import should be stored in BibTeX format to the given file.
+comment|// This signals that the latest import should be stored in BibTeX
+comment|// format to the given file.
 if|if
 condition|(
 name|loaded
@@ -1411,7 +1417,6 @@ expr_stmt|;
 block|}
 block|}
 else|else
-block|{
 name|System
 operator|.
 name|err
@@ -1427,7 +1432,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 elseif|else
 if|if
 condition|(
@@ -1438,7 +1442,8 @@ operator|==
 literal|2
 condition|)
 block|{
-comment|// This signals that the latest import should be stored in the given format to the given file.
+comment|// This signals that the latest import should be stored in the given
+comment|// format to the given file.
 name|ParserResult
 name|pr
 init|=
@@ -1767,7 +1772,6 @@ block|}
 block|}
 block|}
 else|else
-block|{
 name|System
 operator|.
 name|err
@@ -1782,7 +1786,6 @@ literal|"The output option depends on a valid import option."
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 if|if
 condition|(
@@ -1957,6 +1960,7 @@ name|newBase
 operator|!=
 literal|null
 condition|)
+block|{
 if|if
 condition|(
 name|newBase
@@ -2071,6 +2075,7 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
+block|}
 if|if
 condition|(
 operator|!
@@ -2170,10 +2175,11 @@ name|performCompatibilityUpdate
 argument_list|()
 expr_stmt|;
 comment|//Font fnt = new Font("plain", Font.PLAIN, 12);
-comment|/*Font fnt = new Font           (prefs.get("menuFontFamily"), prefs.getInt("menuFontStyle"),           prefs.getInt("menuFontSize"));        Object fnt = new UIDefaults.ProxyLazyValue           ("javax.swing.plaf.FontUIResource", null,            new Object[] { prefs.get("menuFontFamily"), new Integer(prefs.getInt("menuFontStyle")),                           new Integer(prefs.getInt("menuFontSize")) });        UIManager.put("MenuBar.font", fnt);       UIManager.put("MenuItem.font", fnt);       UIManager.put("RadioButtonMenuItem.font", fnt);       UIManager.put("CheckBoxMenuItem.font", fnt);       UIManager.put("Menu.font", fnt);       UIManager.put("PopupMenu.font", fnt);       */
+comment|/*              * Font fnt = new Font (prefs.get("menuFontFamily"),              * prefs.getInt("menuFontStyle"), prefs.getInt("menuFontSize"));              *              * Object fnt = new UIDefaults.ProxyLazyValue              * ("javax.swing.plaf.FontUIResource", null, new Object[] {              * prefs.get("menuFontFamily"), new              * Integer(prefs.getInt("menuFontStyle")), new              * Integer(prefs.getInt("menuFontSize")) });              *              * UIManager.put("MenuBar.font", fnt); UIManager.put("MenuItem.font",              * fnt); UIManager.put("RadioButtonMenuItem.font", fnt);              * UIManager.put("CheckBoxMenuItem.font", fnt); UIManager.put("Menu.font",              * fnt); UIManager.put("PopupMenu.font", fnt);              */
 comment|//"Plain", new Integer(Font.PLAIN), new Integer(10)});
-comment|/*       UIManager.put("Button.font", fnt);       UIManager.put("ToggleButton.font", fnt);       UIManager.put("RadioButton.font", fnt);       UIManager.put("CheckBox.font", fnt);       UIManager.put("ColorChooser.font", fnt);       UIManager.put("ComboBox.font", fnt);       UIManager.put("Label.font", fnt);       UIManager.put("List.font", fnt);       UIManager.put("MenuBar.font", fnt);       UIManager.put("MenuItem.font", fnt);       UIManager.put("RadioButtonMenuItem.font", fnt);       UIManager.put("CheckBoxMenuItem.font", fnt);       UIManager.put("Menu.font", fnt);       UIManager.put("PopupMenu.font", fnt);       UIManager.put("OptionPane.font", fnt);       UIManager.put("Panel.font", fnt);       UIManager.put("ProgressBar.font", fnt);       UIManager.put("ScrollPane.font", fnt);       UIManager.put("Viewport.font", fnt);       UIManager.put("TabbedPane.font", fnt);       UIManager.put("Table.font", fnt);       UIManager.put("TableHeader.font", fnt);       UIManager.put("TextField.font", fnt);       UIManager.put("PasswordField.font", fnt);       UIManager.put("TextArea.font", fnt);       UIManager.put("TextPane.font", fnt);       UIManager.put("EditorPane.font", fnt);       //UIManager.put("TitledBorder.font", fnt);       UIManager.put("ToolBar.font", fnt);       UIManager.put("ToolTip.font", fnt);       UIManager.put("Tree.font", fnt);       */
-comment|// This property is set to make the Mac OSX Java VM move the menu bar to the top
+comment|/*              * UIManager.put("Button.font", fnt); UIManager.put("ToggleButton.font",              * fnt); UIManager.put("RadioButton.font", fnt);              * UIManager.put("CheckBox.font", fnt); UIManager.put("ColorChooser.font",              * fnt); UIManager.put("ComboBox.font", fnt); UIManager.put("Label.font",              * fnt); UIManager.put("List.font", fnt); UIManager.put("MenuBar.font",              * fnt); UIManager.put("MenuItem.font", fnt);              * UIManager.put("RadioButtonMenuItem.font", fnt);              * UIManager.put("CheckBoxMenuItem.font", fnt); UIManager.put("Menu.font",              * fnt); UIManager.put("PopupMenu.font", fnt);              * UIManager.put("OptionPane.font", fnt); UIManager.put("Panel.font",              * fnt); UIManager.put("ProgressBar.font", fnt);              * UIManager.put("ScrollPane.font", fnt); UIManager.put("Viewport.font",              * fnt); UIManager.put("TabbedPane.font", fnt);              * UIManager.put("Table.font", fnt); UIManager.put("TableHeader.font",              * fnt); UIManager.put("TextField.font", fnt);              * UIManager.put("PasswordField.font", fnt);              * UIManager.put("TextArea.font", fnt); UIManager.put("TextPane.font",              * fnt); UIManager.put("EditorPane.font", fnt);              * //UIManager.put("TitledBorder.font", fnt);              * UIManager.put("ToolBar.font", fnt); UIManager.put("ToolTip.font", fnt);              * UIManager.put("Tree.font", fnt);              */
+comment|// This property is set to make the Mac OSX Java VM move the menu bar to
+comment|// the top
 comment|// of the screen, where Mac users expect it to be.
 name|System
 operator|.
@@ -2262,8 +2268,10 @@ name|lnf
 init|=
 literal|null
 decl_stmt|;
-comment|//Class plastic = Class.forName("com.jgoodies.plaf.plastic.PlasticLookAndFeel");
-comment|//PlasticLookAndFeel lnf = new com.jgoodies.plaf.plastic.Plastic3DLookAndFeel();
+comment|//Class plastic =
+comment|// Class.forName("com.jgoodies.plaf.plastic.PlasticLookAndFeel");
+comment|//PlasticLookAndFeel lnf = new
+comment|// com.jgoodies.plaf.plastic.Plastic3DLookAndFeel();
 name|Object
 name|objLnf
 init|=
@@ -2272,7 +2280,8 @@ decl_stmt|;
 comment|//Util.pr(lookAndFeel);
 try|try
 block|{
-comment|//lnf2 = Class.forName("com.jgoodies.plaf.plastic.Plastic3DLookAndFeel").newInstance();
+comment|//lnf2 =
+comment|// Class.forName("com.jgoodies.plaf.plastic.Plastic3DLookAndFeel").newInstance();
 if|if
 condition|(
 name|lookAndFeel
@@ -2336,7 +2345,7 @@ parameter_list|(
 name|Exception
 name|ex2
 parameter_list|)
-block|{}
+block|{                     }
 block|}
 if|if
 condition|(
@@ -2367,7 +2376,8 @@ name|Plastic3DLookAndFeel
 operator|)
 condition|)
 block|{
-comment|//MetalLookAndFeel.setCurrentTheme(new com.jgoodies.plaf.plastic.theme.SkyBluer());
+comment|//MetalLookAndFeel.setCurrentTheme(new
+comment|// com.jgoodies.plaf.plastic.theme.SkyBluer());
 name|Plastic3DLookAndFeel
 name|plLnf
 init|=
@@ -2502,8 +2512,10 @@ expr_stmt|;
 block|}
 block|}
 comment|//LookAndFeel lnf = new com.sun.java.swing.plaf.gtk.GTKLookAndFeel();
-comment|//Look1AndFeel lnf = new com.incors.plaf.kunststoff.KunststoffLookAndFeel();
-comment|//com.incors.plaf.kunststoff.KunststoffLookAndFeel.setCurrentTheme(new com.incors.plaf.kunststoff.themes.KunststoffDesktopTheme());
+comment|//Look1AndFeel lnf = new
+comment|// com.incors.plaf.kunststoff.KunststoffLookAndFeel();
+comment|//com.incors.plaf.kunststoff.KunststoffLookAndFeel.setCurrentTheme(new
+comment|// com.incors.plaf.kunststoff.themes.KunststoffDesktopTheme());
 block|}
 block|}
 comment|// If the option is enabled, open the last edited databases, if any.
@@ -2614,11 +2626,9 @@ argument_list|(
 name|fileToOpen
 argument_list|)
 condition|)
-block|{
 continue|continue
 name|lastEdLoop
 continue|;
-block|}
 block|}
 if|if
 condition|(
@@ -2645,7 +2655,6 @@ name|pr
 operator|!=
 literal|null
 condition|)
-block|{
 name|loaded
 operator|.
 name|add
@@ -2653,7 +2662,6 @@ argument_list|(
 name|pr
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -2774,7 +2782,6 @@ operator|.
 name|isInvoked
 argument_list|()
 condition|)
-block|{
 name|jrf
 operator|.
 name|loadSessionAction
@@ -2798,7 +2805,6 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 name|ss
 operator|.
 name|dispose
@@ -2853,7 +2859,6 @@ expr_stmt|;
 block|}
 block|}
 else|else
-block|{
 name|System
 operator|.
 name|exit
@@ -2861,7 +2866,6 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|openBibFile (String name)
 specifier|public
@@ -2943,7 +2947,8 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
-comment|//System.err.println(Globals.lang("Error opening file")+" '"+ name+"': "+ex.getMessage());
+comment|//System.err.println(Globals.lang("Error opening file")+" '"+ name+"':
+comment|// "+ex.getMessage());
 name|System
 operator|.
 name|err
