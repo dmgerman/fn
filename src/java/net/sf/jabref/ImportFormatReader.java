@@ -2878,6 +2878,10 @@ name|Type
 operator|=
 literal|""
 expr_stmt|;
+name|Editor
+operator|=
+literal|""
+expr_stmt|;
 name|String
 index|[]
 name|fields
@@ -3278,6 +3282,16 @@ name|Author
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|Editor
+operator|.
+name|equals
+argument_list|(
+literal|""
+argument_list|)
+condition|)
 name|hm
 operator|.
 name|put
