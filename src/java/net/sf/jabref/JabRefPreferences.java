@@ -93,6 +93,20 @@ init|=
 operator|new
 name|HashMap
 argument_list|()
+decl_stmt|,
+DECL|field|keyBinds
+name|keyBinds
+init|=
+operator|new
+name|HashMap
+argument_list|()
+decl_stmt|,
+DECL|field|defKeyBinds
+name|defKeyBinds
+init|=
+operator|new
+name|HashMap
+argument_list|()
 decl_stmt|;
 DECL|method|JabRefPreferences ()
 specifier|public
@@ -599,6 +613,9 @@ argument_list|,
 literal|"keywords"
 argument_list|)
 expr_stmt|;
+name|restoreKeyBindings
+argument_list|()
+expr_stmt|;
 comment|//defaults.put("oooWarning", new Boolean(true));
 block|}
 DECL|method|get (String key)
@@ -1004,6 +1021,15 @@ argument_list|(
 name|key
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|names
+operator|==
+literal|null
+condition|)
+return|return
+literal|null
+return|;
 comment|//Util.pr(key+"\n"+names);
 name|StringReader
 name|rd
@@ -1102,6 +1128,481 @@ expr_stmt|;
 return|return
 name|res
 return|;
+block|}
+comment|/**      * Returns the KeyStroke for this binding, as defined by the      * defaults, or in the Preferences.      */
+DECL|method|getKey (String bindName)
+specifier|public
+name|KeyStroke
+name|getKey
+parameter_list|(
+name|String
+name|bindName
+parameter_list|)
+block|{
+comment|//Util.pr(bindName+" "+(String)keyBinds.get(bindName));
+name|String
+name|s
+init|=
+operator|(
+name|String
+operator|)
+name|keyBinds
+operator|.
+name|get
+argument_list|(
+name|bindName
+argument_list|)
+decl_stmt|;
+comment|// If the current key bindings don't contain the one asked for,
+comment|// we fall back on the default. This should only happen when a
+comment|// user has his own set in Preferences, and has upgraded to a
+comment|// new version where new bindings have been introduced.
+if|if
+condition|(
+name|s
+operator|==
+literal|null
+condition|)
+name|s
+operator|=
+operator|(
+name|String
+operator|)
+name|defKeyBinds
+operator|.
+name|get
+argument_list|(
+name|bindName
+argument_list|)
+expr_stmt|;
+return|return
+name|KeyStroke
+operator|.
+name|getKeyStroke
+argument_list|(
+name|s
+argument_list|)
+return|;
+block|}
+comment|/**      * Returns the HashMap containing all key bindings.      */
+DECL|method|getKeyBindings ()
+specifier|public
+name|HashMap
+name|getKeyBindings
+parameter_list|()
+block|{
+return|return
+name|keyBinds
+return|;
+block|}
+comment|/**      * Stores new key bindings into Preferences, provided they      * actually differ from the old ones.      */
+DECL|method|setNewKeyBindings (HashMap newBindings)
+specifier|public
+name|void
+name|setNewKeyBindings
+parameter_list|(
+name|HashMap
+name|newBindings
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|newBindings
+operator|.
+name|equals
+argument_list|(
+name|keyBinds
+argument_list|)
+condition|)
+block|{
+comment|// This confirms that the bindings have actually changed.
+name|String
+index|[]
+name|bindNames
+init|=
+operator|new
+name|String
+index|[
+name|newBindings
+operator|.
+name|size
+argument_list|()
+index|]
+decl_stmt|,
+name|bindings
+init|=
+operator|new
+name|String
+index|[
+name|newBindings
+operator|.
+name|size
+argument_list|()
+index|]
+decl_stmt|;
+name|int
+name|index
+init|=
+literal|0
+decl_stmt|;
+for|for
+control|(
+name|Iterator
+name|i
+init|=
+name|newBindings
+operator|.
+name|keySet
+argument_list|()
+operator|.
+name|iterator
+argument_list|()
+init|;
+name|i
+operator|.
+name|hasNext
+argument_list|()
+condition|;
+control|)
+block|{
+name|String
+name|nm
+init|=
+operator|(
+name|String
+operator|)
+name|i
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
+name|String
+name|bnd
+init|=
+operator|(
+name|String
+operator|)
+name|newBindings
+operator|.
+name|get
+argument_list|(
+name|nm
+argument_list|)
+decl_stmt|;
+name|bindNames
+index|[
+name|index
+index|]
+operator|=
+name|nm
+expr_stmt|;
+name|bindings
+index|[
+name|index
+index|]
+operator|=
+name|bnd
+expr_stmt|;
+name|index
+operator|++
+expr_stmt|;
+block|}
+name|putStringArray
+argument_list|(
+literal|"bindNames"
+argument_list|,
+name|bindNames
+argument_list|)
+expr_stmt|;
+name|putStringArray
+argument_list|(
+literal|"bindings"
+argument_list|,
+name|bindings
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|method|restoreKeyBindings ()
+specifier|private
+name|void
+name|restoreKeyBindings
+parameter_list|()
+block|{
+comment|// Define default keybindings.
+name|defineDefaultKeyBindings
+argument_list|()
+expr_stmt|;
+comment|// First read the bindings, and their names.
+name|String
+index|[]
+name|bindNames
+init|=
+name|getStringArray
+argument_list|(
+literal|"bindNames"
+argument_list|)
+decl_stmt|,
+name|bindings
+init|=
+name|getStringArray
+argument_list|(
+literal|"bindings"
+argument_list|)
+decl_stmt|;
+comment|// Then set up the key bindings HashMap.
+if|if
+condition|(
+operator|(
+name|bindNames
+operator|==
+literal|null
+operator|)
+operator|||
+operator|(
+name|bindings
+operator|==
+literal|null
+operator|)
+operator|||
+operator|(
+name|bindNames
+operator|.
+name|length
+operator|!=
+name|bindings
+operator|.
+name|length
+operator|)
+condition|)
+block|{
+comment|// Nothing defined in Preferences, or something is wrong.
+name|setDefaultKeyBindings
+argument_list|()
+expr_stmt|;
+return|return;
+block|}
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|bindNames
+operator|.
+name|length
+condition|;
+name|i
+operator|++
+control|)
+name|keyBinds
+operator|.
+name|put
+argument_list|(
+name|bindNames
+index|[
+name|i
+index|]
+argument_list|,
+name|bindings
+index|[
+name|i
+index|]
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setDefaultKeyBindings ()
+specifier|private
+name|void
+name|setDefaultKeyBindings
+parameter_list|()
+block|{
+name|keyBinds
+operator|=
+name|defKeyBinds
+expr_stmt|;
+block|}
+DECL|method|defineDefaultKeyBindings ()
+specifier|private
+name|void
+name|defineDefaultKeyBindings
+parameter_list|()
+block|{
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Open"
+argument_list|,
+literal|"ctrl O"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Save"
+argument_list|,
+literal|"ctrl S"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"New entry"
+argument_list|,
+literal|"ctrl N"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Cut"
+argument_list|,
+literal|"ctrl X"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Copy"
+argument_list|,
+literal|"ctrl C"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Paste"
+argument_list|,
+literal|"ctrl V"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Undo"
+argument_list|,
+literal|"ctrl Z"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Redo"
+argument_list|,
+literal|"ctrl Y"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"New article"
+argument_list|,
+literal|"ctrl shift A"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"New book"
+argument_list|,
+literal|"ctrl shift B"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"New phdthesis"
+argument_list|,
+literal|"ctrl shift T"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"New inbook"
+argument_list|,
+literal|"ctrl shift I"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"New mastersthesis"
+argument_list|,
+literal|"ctrl shift M"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"New proceedings"
+argument_list|,
+literal|"ctrl shift P"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"New unpublished"
+argument_list|,
+literal|"ctrl shift U"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Edit strings"
+argument_list|,
+literal|"ctrl shift S"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Edit preamble"
+argument_list|,
+literal|"ctrl P"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Select all"
+argument_list|,
+literal|"ctrl A"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Toggle groups"
+argument_list|,
+literal|"ctrl shift G"
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getNextUnit (Reader data)
 specifier|private

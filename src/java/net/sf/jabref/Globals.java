@@ -164,6 +164,7 @@ literal|" "
 argument_list|)
 return|;
 block|}
+comment|/*    public static void setupKeyBindings(JabRefPreferences prefs) {       }*/
 block|}
 end_class
 
