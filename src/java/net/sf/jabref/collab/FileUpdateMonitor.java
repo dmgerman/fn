@@ -93,7 +93,7 @@ specifier|final
 name|int
 name|WAIT
 init|=
-literal|5000
+literal|4000
 decl_stmt|;
 DECL|field|tmpNum
 specifier|static
@@ -302,6 +302,67 @@ expr_stmt|;
 return|return
 name|key
 return|;
+block|}
+comment|/**      * Forces a check on the file, and returns the result. Does not      * force a report to all listeners before the next routine check.      */
+DECL|method|hasBeenModified (String handle)
+specifier|public
+name|boolean
+name|hasBeenModified
+parameter_list|(
+name|String
+name|handle
+parameter_list|)
+throws|throws
+name|IllegalArgumentException
+block|{
+name|Object
+name|o
+init|=
+name|entries
+operator|.
+name|get
+argument_list|(
+name|handle
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|o
+operator|==
+literal|null
+condition|)
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Entry not found"
+argument_list|)
+throw|;
+try|try
+block|{
+return|return
+operator|(
+operator|(
+name|Entry
+operator|)
+name|o
+operator|)
+operator|.
+name|hasBeenUpdated
+argument_list|()
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ex
+parameter_list|)
+block|{
+comment|// Thrown if file has been removed. We return false.
+return|return
+literal|false
+return|;
+block|}
 block|}
 comment|/**    * Removes a listener from the monitor.    * @param handle String The handle for the listener to remove.    */
 DECL|method|removeUpdateListener (String handle)

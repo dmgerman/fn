@@ -922,7 +922,14 @@ else|else
 block|{
 if|if
 condition|(
-name|updatedExternally
+name|Globals
+operator|.
+name|fileUpdateMonitor
+operator|.
+name|hasBeenModified
+argument_list|(
+name|fileMonitorHandle
+argument_list|)
 condition|)
 block|{
 name|int
