@@ -284,7 +284,7 @@ argument_list|(
 literal|"Label Pattern"
 argument_list|,
 operator|new
-name|TabKeyPattern
+name|TabLabelPattern
 argument_list|(
 name|_prefs
 argument_list|)
