@@ -3401,6 +3401,15 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
+literal|"Fetch CiteSeer"
+argument_list|,
+literal|"F6"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
 literal|"New from plain text"
 argument_list|,
 literal|"ctrl shift N"

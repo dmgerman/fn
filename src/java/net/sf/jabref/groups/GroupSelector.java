@@ -294,7 +294,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Groups: Include Subgroups"
+literal|"Include subgroups"
 argument_list|)
 argument_list|,
 literal|true
@@ -311,7 +311,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Groups: Intersection with Supergroups"
+literal|"Intersection with supergroups"
 argument_list|)
 argument_list|,
 literal|false
@@ -328,7 +328,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Groups: Independent"
+literal|"Independent"
 argument_list|)
 argument_list|,
 literal|false
