@@ -36,6 +36,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|undo
+operator|.
+name|AbstractUndoableEdit
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -85,7 +97,7 @@ name|GROUP_ITSELF
 init|=
 literal|2
 decl_stmt|;
-comment|/**      * Creates this node and associates the specified group with it.      */
+comment|/** 	 * Creates this node and associates the specified group with it. 	 */
 DECL|method|GroupTreeNode (AbstractGroup group)
 specifier|public
 name|GroupTreeNode
@@ -100,7 +112,7 @@ name|group
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @return The group associated with this node.      */
+comment|/** 	 * @return The group associated with this node. 	 */
 DECL|method|getGroup ()
 specifier|public
 name|AbstractGroup
@@ -115,7 +127,7 @@ name|getUserObject
 argument_list|()
 return|;
 block|}
-comment|/**      * Associates the specified group with this node.      */
+comment|/** 	 * Associates the specified group with this node. 	 */
 DECL|method|setGroup (AbstractGroup group)
 specifier|public
 name|void
@@ -131,7 +143,7 @@ name|group
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns a textual representation of this node and its children. This      * representation contains both the tree structure and the textual      * representations of the group associated with each node. It thus allows a      * complete reconstruction of this object and its children.      */
+comment|/** 	 * Returns a textual representation of this node and its children. This 	 * representation contains both the tree structure and the textual 	 * representations of the group associated with each node. It thus allows a 	 * complete reconstruction of this object and its children. 	 */
 DECL|method|toString ()
 specifier|public
 name|String
@@ -232,7 +244,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Parses the textual representation obtained from GroupTreeNode.toString()      * and recreates that node and all of its children from it.      *       * @throws Exception      *             When a group could not be recreated      */
+comment|/** 	 * Parses the textual representation obtained from GroupTreeNode.toString() 	 * and recreates that node and all of its children from it. 	 *  	 * @throws Exception 	 *             When a group could not be recreated 	 */
 DECL|method|fromString (String s, BibtexDatabase db)
 specifier|public
 specifier|static
@@ -428,7 +440,7 @@ return|return
 name|root
 return|;
 block|}
-comment|/**      * Returns the substring delimited by a pair of matching braces, with the      * first brace at index 0. Quoted characters are skipped.      *       * @return the matching substring, or "" if not found.      */
+comment|/** 	 * Returns the substring delimited by a pair of matching braces, with the 	 * first brace at index 0. Quoted characters are skipped. 	 *  	 * @return the matching substring, or "" if not found. 	 */
 DECL|method|getSubtree (String s)
 specifier|private
 specifier|static
@@ -515,7 +527,7 @@ return|return
 literal|""
 return|;
 block|}
-comment|/**      * Returns the index of the first occurence of c, skipping quoted special      * characters (escape character: '\\').      *       * @param s      *            The String to search in.      * @param c      *            The character to search      * @return The index of the first unescaped occurence of c in s, or -1 if      *         not found.      */
+comment|/** 	 * Returns the index of the first occurence of c, skipping quoted special 	 * characters (escape character: '\\'). 	 *  	 * @param s 	 *            The String to search in. 	 * @param c 	 *            The character to search 	 * @return The index of the first unescaped occurence of c in s, or -1 if 	 *         not found. 	 */
 DECL|method|indexOfUnquoted (String s, char c)
 specifier|private
 specifier|static
@@ -587,7 +599,7 @@ operator|-
 literal|1
 return|;
 block|}
-comment|/**      * Creates a deep copy of this node and all of its children, including all      * groups.      *       * @return This object's deep copy.      */
+comment|/** 	 * Creates a deep copy of this node and all of its children, including all 	 * groups. 	 *  	 * @return This object's deep copy. 	 */
 DECL|method|deepCopy ()
 specifier|public
 name|GroupTreeNode
@@ -641,7 +653,7 @@ return|return
 name|copy
 return|;
 block|}
-comment|/**      * @return An indexed path from the root node to this node. The elements in      *         the returned array represent the child index of each node in the      *         path. If this node is the root node, the returned array has zero      *         elements.      */
+comment|/** 	 * @return An indexed path from the root node to this node. The elements in 	 *         the returned array represent the child index of each node in the 	 *         path. If this node is the root node, the returned array has zero 	 *         elements. 	 */
 DECL|method|getIndexedPath ()
 specifier|public
 name|int
@@ -712,7 +724,7 @@ return|return
 name|indexedPath
 return|;
 block|}
-comment|/**      * @param indexedPath      *            A sequence of child indices that describe a path from this      *            node to one of its desendants. Be aware that if<b>indexedPath      *</b> was obtained by getIndexedPath(), this node should      *            usually be the root node.      * @return The descendant found by evaluating<b>indexedPath</b>. If the      *         path could not be traversed completely (i.e. one of the child      *         indices did not exist), null will be returned.      */
+comment|/** 	 * @param indexedPath 	 *            A sequence of child indices that describe a path from this 	 *            node to one of its desendants. Be aware that if<b>indexedPath 	 *</b> was obtained by getIndexedPath(), this node should 	 *            usually be the root node. 	 * @return The descendant found by evaluating<b>indexedPath</b>. If the 	 *         path could not be traversed completely (i.e. one of the child 	 *         indices did not exist), null will be returned. 	 */
 DECL|method|getDescendant (int[] indexedPath)
 specifier|public
 name|GroupTreeNode
@@ -767,7 +779,7 @@ return|return
 name|cursor
 return|;
 block|}
-comment|/**      * A GroupTreeNode can create a SearchRule that finds elements contained in      * its own group (GROUP_ITSELF), or the union of those elements in its own      * group and its children's groups (recursively) (GROUP_UNION_CHILDREN), or      * the intersection of the elements in its own group and its parent's group      * (GROUP_INTERSECTION_PARENT).      *       * @return A SearchRule that finds the desired elements.      */
+comment|/** 	 * A GroupTreeNode can create a SearchRule that finds elements contained in 	 * its own group (GROUP_ITSELF), or the union of those elements in its own 	 * group and its children's groups (recursively) (GROUP_UNION_CHILDREN), or 	 * the intersection of the elements in its own group and its parent's group 	 * (GROUP_INTERSECTION_PARENT). 	 *  	 * @return A SearchRule that finds the desired elements. 	 */
 DECL|method|getSearchRule (int searchMode)
 specifier|public
 name|SearchRule
@@ -892,7 +904,7 @@ return|return
 name|searchRule
 return|;
 block|}
-comment|/**      * Scans the subtree rooted at this node.      *       * @return All groups that contain the specified entry.      */
+comment|/** 	 * Scans the subtree rooted at this node. 	 *  	 * @return All groups that contain the specified entry. 	 */
 DECL|method|getMatchingGroups (BibtexEntry entry)
 specifier|public
 name|AbstractGroup
@@ -988,7 +1000,7 @@ name|matchingGroupsArray
 argument_list|)
 return|;
 block|}
-comment|/**      * Imports old (flat) groups data and converts it to a 2-level tree      * with an AllEntriesGroup at the root.      * @return the root of the generated tree.      */
+comment|/** 	 * Imports old (flat) groups data and converts it to a 2-level tree with an 	 * AllEntriesGroup at the root. 	 *  	 * @return the root of the generated tree. 	 */
 DECL|method|importFlatGroups (Vector groups)
 specifier|public
 specifier|static
@@ -1128,6 +1140,414 @@ block|}
 block|}
 return|return
 name|root
+return|;
+block|}
+DECL|method|canMoveUp ()
+specifier|public
+name|boolean
+name|canMoveUp
+parameter_list|()
+block|{
+return|return
+name|getPreviousSibling
+argument_list|()
+operator|!=
+literal|null
+operator|&&
+operator|!
+operator|(
+name|getGroup
+argument_list|()
+operator|instanceof
+name|AllEntriesGroup
+operator|)
+return|;
+block|}
+DECL|method|canMoveDown ()
+specifier|public
+name|boolean
+name|canMoveDown
+parameter_list|()
+block|{
+return|return
+name|getNextSibling
+argument_list|()
+operator|!=
+literal|null
+operator|&&
+operator|!
+operator|(
+name|getGroup
+argument_list|()
+operator|instanceof
+name|AllEntriesGroup
+operator|)
+return|;
+block|}
+DECL|method|canMoveLeft ()
+specifier|public
+name|boolean
+name|canMoveLeft
+parameter_list|()
+block|{
+return|return
+operator|!
+operator|(
+name|getGroup
+argument_list|()
+operator|instanceof
+name|AllEntriesGroup
+operator|)
+operator|&&
+operator|!
+operator|(
+operator|(
+operator|(
+name|GroupTreeNode
+operator|)
+name|getParent
+argument_list|()
+operator|)
+operator|.
+name|getGroup
+argument_list|()
+operator|instanceof
+name|AllEntriesGroup
+operator|)
+return|;
+block|}
+DECL|method|canMoveRight ()
+specifier|public
+name|boolean
+name|canMoveRight
+parameter_list|()
+block|{
+return|return
+name|getPreviousSibling
+argument_list|()
+operator|!=
+literal|null
+operator|&&
+operator|!
+operator|(
+name|getGroup
+argument_list|()
+operator|instanceof
+name|AllEntriesGroup
+operator|)
+return|;
+block|}
+DECL|method|moveUp (GroupSelector groupSelector)
+specifier|public
+name|AbstractUndoableEdit
+name|moveUp
+parameter_list|(
+name|GroupSelector
+name|groupSelector
+parameter_list|)
+block|{
+specifier|final
+name|GroupTreeNode
+name|myParent
+init|=
+operator|(
+name|GroupTreeNode
+operator|)
+name|getParent
+argument_list|()
+decl_stmt|;
+specifier|final
+name|int
+name|index
+init|=
+name|myParent
+operator|.
+name|getIndex
+argument_list|(
+name|this
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|index
+operator|>
+literal|0
+condition|)
+block|{
+name|UndoableMoveGroup
+name|undo
+init|=
+operator|new
+name|UndoableMoveGroup
+argument_list|(
+name|groupSelector
+argument_list|,
+name|groupSelector
+operator|.
+name|getGroupTreeRoot
+argument_list|()
+argument_list|,
+name|this
+argument_list|,
+name|myParent
+argument_list|,
+name|index
+operator|-
+literal|1
+argument_list|)
+decl_stmt|;
+name|myParent
+operator|.
+name|insert
+argument_list|(
+name|this
+argument_list|,
+name|index
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
+return|return
+name|undo
+return|;
+block|}
+return|return
+literal|null
+return|;
+block|}
+DECL|method|moveDown (GroupSelector groupSelector)
+specifier|public
+name|AbstractUndoableEdit
+name|moveDown
+parameter_list|(
+name|GroupSelector
+name|groupSelector
+parameter_list|)
+block|{
+specifier|final
+name|GroupTreeNode
+name|myParent
+init|=
+operator|(
+name|GroupTreeNode
+operator|)
+name|getParent
+argument_list|()
+decl_stmt|;
+specifier|final
+name|int
+name|index
+init|=
+name|myParent
+operator|.
+name|getIndex
+argument_list|(
+name|this
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|index
+operator|<
+name|parent
+operator|.
+name|getChildCount
+argument_list|()
+operator|-
+literal|1
+condition|)
+block|{
+name|UndoableMoveGroup
+name|undo
+init|=
+operator|new
+name|UndoableMoveGroup
+argument_list|(
+name|groupSelector
+argument_list|,
+name|groupSelector
+operator|.
+name|getGroupTreeRoot
+argument_list|()
+argument_list|,
+name|this
+argument_list|,
+name|myParent
+argument_list|,
+name|index
+operator|+
+literal|1
+argument_list|)
+decl_stmt|;
+name|myParent
+operator|.
+name|insert
+argument_list|(
+name|this
+argument_list|,
+name|index
+operator|+
+literal|1
+argument_list|)
+expr_stmt|;
+return|return
+name|undo
+return|;
+block|}
+return|return
+literal|null
+return|;
+block|}
+DECL|method|moveLeft (GroupSelector groupSelector)
+specifier|public
+name|AbstractUndoableEdit
+name|moveLeft
+parameter_list|(
+name|GroupSelector
+name|groupSelector
+parameter_list|)
+block|{
+specifier|final
+name|GroupTreeNode
+name|myParent
+init|=
+operator|(
+name|GroupTreeNode
+operator|)
+name|getParent
+argument_list|()
+decl_stmt|;
+specifier|final
+name|GroupTreeNode
+name|myGrandParent
+init|=
+operator|(
+name|GroupTreeNode
+operator|)
+name|myParent
+operator|.
+name|getParent
+argument_list|()
+decl_stmt|;
+comment|// paranoia
+if|if
+condition|(
+name|myGrandParent
+operator|==
+literal|null
+condition|)
+return|return
+literal|null
+return|;
+specifier|final
+name|int
+name|index
+init|=
+name|myGrandParent
+operator|.
+name|getIndex
+argument_list|(
+name|myParent
+argument_list|)
+decl_stmt|;
+name|UndoableMoveGroup
+name|undo
+init|=
+operator|new
+name|UndoableMoveGroup
+argument_list|(
+name|groupSelector
+argument_list|,
+name|groupSelector
+operator|.
+name|getGroupTreeRoot
+argument_list|()
+argument_list|,
+name|this
+argument_list|,
+name|myGrandParent
+argument_list|,
+name|index
+operator|+
+literal|1
+argument_list|)
+decl_stmt|;
+name|myGrandParent
+operator|.
+name|insert
+argument_list|(
+name|this
+argument_list|,
+name|index
+operator|+
+literal|1
+argument_list|)
+expr_stmt|;
+return|return
+name|undo
+return|;
+block|}
+DECL|method|moveRight (GroupSelector groupSelector)
+specifier|public
+name|AbstractUndoableEdit
+name|moveRight
+parameter_list|(
+name|GroupSelector
+name|groupSelector
+parameter_list|)
+block|{
+specifier|final
+name|GroupTreeNode
+name|myPreviousSibling
+init|=
+operator|(
+name|GroupTreeNode
+operator|)
+name|getPreviousSibling
+argument_list|()
+decl_stmt|;
+comment|// paranoia
+if|if
+condition|(
+name|myPreviousSibling
+operator|==
+literal|null
+condition|)
+return|return
+literal|null
+return|;
+name|UndoableMoveGroup
+name|undo
+init|=
+operator|new
+name|UndoableMoveGroup
+argument_list|(
+name|groupSelector
+argument_list|,
+name|groupSelector
+operator|.
+name|getGroupTreeRoot
+argument_list|()
+argument_list|,
+name|this
+argument_list|,
+name|myPreviousSibling
+argument_list|,
+name|myPreviousSibling
+operator|.
+name|getChildCount
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|myPreviousSibling
+operator|.
+name|add
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+return|return
+name|undo
 return|;
 block|}
 block|}
