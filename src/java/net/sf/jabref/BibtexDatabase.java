@@ -495,6 +495,14 @@ argument_list|(
 name|id
 argument_list|)
 decl_stmt|;
+name|String
+name|oldKey
+init|=
+name|entry
+operator|.
+name|getCiteKey
+argument_list|()
+decl_stmt|;
 name|entry
 operator|.
 name|setField
@@ -504,6 +512,11 @@ operator|.
 name|KEY_FIELD
 argument_list|,
 name|key
+argument_list|)
+expr_stmt|;
+name|removeKeyFromSet
+argument_list|(
+name|oldKey
 argument_list|)
 expr_stmt|;
 return|return

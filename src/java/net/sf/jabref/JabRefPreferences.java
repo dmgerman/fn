@@ -1871,6 +1871,15 @@ argument_list|,
 literal|"ctrl shift UP"
 argument_list|)
 expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Entry editor: store field"
+argument_list|,
+literal|"alt S"
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getNextUnit (Reader data)
 specifier|private
