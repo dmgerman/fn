@@ -5133,6 +5133,10 @@ operator|.
 name|applyRule
 argument_list|(
 name|entry
+argument_list|,
+name|panel
+operator|.
+name|database
 argument_list|)
 expr_stmt|;
 comment|// Store undo information:

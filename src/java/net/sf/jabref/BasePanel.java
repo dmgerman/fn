@@ -2705,6 +2705,8 @@ operator|.
 name|applyRule
 argument_list|(
 name|bes
+argument_list|,
+name|database
 argument_list|)
 expr_stmt|;
 name|ce
