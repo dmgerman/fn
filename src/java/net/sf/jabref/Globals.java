@@ -110,6 +110,7 @@ name|messages
 decl_stmt|;
 DECL|method|logThis (String s)
 specifier|public
+specifier|static
 name|void
 name|logThis
 parameter_list|(
@@ -129,6 +130,7 @@ expr_stmt|;
 block|}
 DECL|method|turnOffLogging ()
 specifier|public
+specifier|static
 name|void
 name|turnOffLogging
 parameter_list|()
@@ -155,6 +157,7 @@ block|}
 comment|// should be only called ones
 DECL|method|turnOnConsoleLogging ()
 specifier|public
+specifier|static
 name|void
 name|turnOnConsoleLogging
 parameter_list|()
@@ -179,6 +182,7 @@ expr_stmt|;
 block|}
 DECL|method|turnOnFileLogging ()
 specifier|public
+specifier|static
 name|void
 name|turnOnFileLogging
 parameter_list|()
