@@ -3069,13 +3069,7 @@ name|void
 name|createToolBar
 parameter_list|()
 block|{
-name|tlb
-operator|.
-name|setRollover
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
+comment|//tlb.setRollover(true);
 comment|//tlb.setBorderPainted(true);
 name|tlb
 operator|.
@@ -3256,37 +3250,8 @@ argument_list|(
 name|closeDatabaseAction
 argument_list|)
 expr_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|tlb
-operator|.
-name|getComponentCount
-argument_list|()
-condition|;
-name|i
-operator|++
-control|)
-name|tlb
-operator|.
-name|getComponentAtIndex
-argument_list|(
-name|i
-argument_list|)
-operator|.
-name|setBackground
-argument_list|(
-name|GUIGlobals
-operator|.
-name|lightGray
-argument_list|)
-expr_stmt|;
+comment|//for (int i=0; i<tlb.getComponentCount(); i++)
+comment|//    tlb.getComponentAtIndex(i).setBackground(GUIGlobals.lightGray);
 block|}
 DECL|method|mItem (AbstractAction a, KeyStroke ks)
 specifier|private
