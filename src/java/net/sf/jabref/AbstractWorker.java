@@ -73,6 +73,12 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|init ()
+specifier|public
+name|void
+name|init
+parameter_list|()
+block|{      }
 comment|/**      * This method returns a wrapped Worker instance of this AbstractWorker.      * whose methods will automatically be run off the EDT (Swing) thread.      */
 DECL|method|getWorker ()
 specifier|public

@@ -3773,36 +3773,35 @@ argument_list|(
 literal|"makeKey"
 argument_list|,
 operator|new
-name|BaseAction
+name|AbstractWorker
 argument_list|()
-block|{
-specifier|public
-name|void
-name|action
-parameter_list|()
 block|{
 name|int
 index|[]
 name|rows
-init|=
+decl_stmt|;
+name|int
+name|numSelected
+decl_stmt|;
+comment|// Run first, in EDT:
+specifier|public
+name|void
+name|init
+parameter_list|()
+block|{
+name|rows
+operator|=
 name|entryTable
 operator|.
 name|getSelectedRows
 argument_list|()
-decl_stmt|;
-name|int
+expr_stmt|;
 name|numSelected
-init|=
+operator|=
 name|rows
 operator|.
 name|length
-decl_stmt|;
-name|BibtexEntry
-name|bes
-init|=
-literal|null
-decl_stmt|;
-comment|/*if (numSelected> 0) {                         int answer = JOptionPane.showConfirmDialog                             (frame, "Generate bibtex key"+                              (numSelected>1 ? "s for the selected "                               +numSelected+" entries?" :                               " for the selected entry?"),                              "Autogenerate Bibtexkey",                              JOptionPane.YES_NO_CANCEL_OPTION);                         if (answer != JOptionPane.YES_OPTION) {                             return ;                              }                         */
+expr_stmt|;
 if|if
 condition|(
 name|numSelected
@@ -3872,8 +3871,22 @@ argument_list|(
 literal|"entry"
 argument_list|)
 operator|)
+operator|+
+literal|"..."
 argument_list|)
 expr_stmt|;
+block|}
+comment|// Run second, on a different thread:
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
+name|BibtexEntry
+name|bes
+init|=
+literal|null
+decl_stmt|;
 name|NamedCompound
 name|ce
 init|=
@@ -4072,6 +4085,13 @@ argument_list|(
 name|ce
 argument_list|)
 expr_stmt|;
+block|}
+comment|// Run third, on EDT:
+specifier|public
+name|void
+name|update
+parameter_list|()
+block|{
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
@@ -7732,6 +7752,18 @@ operator|.
 name|getCallBack
 argument_list|()
 decl_stmt|;
+operator|(
+operator|(
+name|AbstractWorker
+operator|)
+name|o
+operator|)
+operator|.
+name|init
+argument_list|()
+expr_stmt|;
+comment|// This method runs in this same thread, the EDT.
+comment|// Useful for initial GUI actions, like printing a message.
 comment|// The CallBack returned by getCallBack() has been wrapped
 comment|// by Spin.over(), which makes its methods be run on
 comment|// the EDT.

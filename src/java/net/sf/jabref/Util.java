@@ -1136,6 +1136,12 @@ name|c
 operator|!=
 literal|'^'
 operator|)
+operator|&&
+operator|(
+name|c
+operator|!=
+literal|'\\'
+operator|)
 condition|)
 name|newKey
 operator|.
@@ -1217,15 +1223,7 @@ argument_list|(
 name|chr
 argument_list|)
 decl_stmt|;
-name|pr
-argument_list|(
-name|chr
-operator|+
-literal|" "
-operator|+
-name|replacer
-argument_list|)
-expr_stmt|;
+comment|//pr(chr+" "+replacer);
 name|s
 operator|=
 name|s
