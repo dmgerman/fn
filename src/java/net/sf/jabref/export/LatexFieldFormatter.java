@@ -58,6 +58,18 @@ name|Vector
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Util
+import|;
+end_import
+
 begin_class
 DECL|class|LatexFieldFormatter
 specifier|public
@@ -210,7 +222,6 @@ literal|1
 expr_stmt|;
 comment|// Ends the loop.
 block|}
-comment|//System.out.println("pos1:"+pos1);
 if|if
 condition|(
 name|pos1
@@ -415,6 +426,8 @@ name|boolean
 name|last
 parameter_list|)
 block|{
+comment|//sb.append(Util.wrap2((first ? "" : " # ") + text.substring(start_pos, end_pos)
+comment|//		     + (last ? "" : " # "), GUIGlobals.LINE_LENGTH));
 name|putIn
 argument_list|(
 operator|(
@@ -453,6 +466,34 @@ name|String
 name|s
 parameter_list|)
 block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+name|Util
+operator|.
+name|wrap2
+argument_list|(
+name|s
+argument_list|,
+name|GUIGlobals
+operator|.
+name|LINE_LENGTH
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|oldwrap (String s)
+specifier|private
+name|void
+name|oldwrap
+parameter_list|(
+name|String
+name|s
+parameter_list|)
+block|{
+comment|// the old wrap algorithm. It doesn't correctly handle long
+comment|// words. Util.wrap2() is used instead.
 name|boolean
 name|whitesp
 init|=
@@ -550,6 +591,34 @@ name|LINE_LENGTH
 operator|)
 condition|)
 block|{
+comment|//if ((it.getIndex() - lastWh)>= GUIGlobals.LINE_LENGTH)
+if|if
+condition|(
+name|sb
+operator|.
+name|charAt
+argument_list|(
+name|sb
+operator|.
+name|length
+argument_list|()
+operator|-
+name|it
+operator|.
+name|getIndex
+argument_list|()
+operator|+
+name|lastWh
+operator|-
+literal|1
+argument_list|)
+operator|!=
+literal|'\n'
+condition|)
+block|{
+comment|// This IF clause prevents us from going back if the last word
+comment|// is also the first in this line. Going back in this situation
+comment|// leads the algorithm into an endless loop.
 name|sb
 operator|.
 name|delete
@@ -579,6 +648,7 @@ argument_list|(
 name|lastWh
 argument_list|)
 expr_stmt|;
+block|}
 name|col
 operator|=
 literal|0
@@ -655,6 +725,7 @@ argument_list|()
 operator|-
 literal|1
 condition|)
+block|{
 name|c
 operator|=
 name|it
@@ -662,6 +733,18 @@ operator|.
 name|next
 argument_list|()
 expr_stmt|;
+name|Util
+operator|.
+name|pr
+argument_list|(
+literal|"'"
+operator|+
+name|c
+operator|+
+literal|"'"
+argument_list|)
+expr_stmt|;
+block|}
 else|else
 block|{
 comment|//c = ' ';
