@@ -24,35 +24,13 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|xml
 operator|.
 name|sax
 operator|.
-name|AttributeList
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|xml
-operator|.
-name|sax
-operator|.
-name|HandlerBase
+name|Attributes
 import|;
 end_import
 
@@ -65,6 +43,20 @@ operator|.
 name|sax
 operator|.
 name|SAXException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|xml
+operator|.
+name|sax
+operator|.
+name|helpers
+operator|.
+name|DefaultHandler
 import|;
 end_import
 
@@ -82,7 +74,7 @@ specifier|public
 class|class
 name|CiteSeerCitationHandler
 extends|extends
-name|HandlerBase
+name|DefaultHandler
 block|{
 DECL|field|correctDirection
 specifier|protected
@@ -198,7 +190,7 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
-DECL|method|startElement (String name, AttributeList attrs)
+DECL|method|startElement (String name, String localName, String qName, Attributes attrs)
 specifier|public
 name|void
 name|startElement
@@ -206,7 +198,13 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|AttributeList
+name|String
+name|localName
+parameter_list|,
+name|String
+name|qName
+parameter_list|,
+name|Attributes
 name|attrs
 parameter_list|)
 throws|throws
@@ -214,7 +212,7 @@ name|SAXException
 block|{
 if|if
 condition|(
-name|name
+name|qName
 operator|.
 name|equals
 argument_list|(
@@ -245,7 +243,7 @@ name|attrName
 init|=
 name|attrs
 operator|.
-name|getName
+name|getQName
 argument_list|(
 name|i
 argument_list|)
@@ -310,7 +308,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|name
+name|qName
 operator|.
 name|equals
 argument_list|(

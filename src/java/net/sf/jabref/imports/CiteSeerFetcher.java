@@ -60,6 +60,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|Enumeration
@@ -273,6 +283,20 @@ operator|.
 name|sax
 operator|.
 name|SAXException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|xml
+operator|.
+name|sax
+operator|.
+name|helpers
+operator|.
+name|DefaultHandler
 import|;
 end_import
 
@@ -828,6 +852,62 @@ block|}
 comment|/***********************************/
 comment|/* Begin Inner Class Declarations */
 comment|/* The inner classes are used to modify components, when not in the 	 * event-dispatching thread.  These are used to follow the "single-threaded 	 * rule", as defined here: http://java.sun.com/products/jfc/tsc/articles/threads/threads1.html 	 * 	 * 	 * I'm pretty sure the Dialog box invokers should remain as inner classes, 	 * but I can't decide whether or not to break the one-thread rule for the 	 * progress bar classes.  Because the search contains a locking-mechanism, 	 * activateFetcher() and deactivateFetcher(), there should only be at-most-one 	 * thread accessing the progress bar at any time. 	 */
+DECL|class|ShowEmptyFetchSetDialog
+class|class
+name|ShowEmptyFetchSetDialog
+implements|implements
+name|Runnable
+block|{
+DECL|method|run ()
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|panel
+operator|.
+name|frame
+argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"The CiteSeer fetch operation returned zero results"
+operator|+
+literal|"."
+argument_list|)
+argument_list|,
+literal|"CiteSeer"
+argument_list|,
+name|JOptionPane
+operator|.
+name|INFORMATION_MESSAGE
+argument_list|)
+expr_stmt|;
+name|deactivateCitationFetcher
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+DECL|method|getEmptyFetchSetDialog ()
+specifier|public
+name|ShowEmptyFetchSetDialog
+name|getEmptyFetchSetDialog
+parameter_list|()
+block|{
+return|return
+operator|(
+operator|new
+name|ShowEmptyFetchSetDialog
+argument_list|()
+operator|)
+return|;
+block|}
 DECL|class|ShowNoConnectionDialog
 class|class
 name|ShowNoConnectionDialog
@@ -1912,7 +1992,7 @@ block|}
 comment|/** 	 * @param newDatabase 	 * @param targetDatabase 	 */
 DECL|method|populate (BibtexDatabase newDatabase, BibtexDatabase targetDatabase)
 specifier|public
-name|void
+name|int
 name|populate
 parameter_list|(
 name|BibtexDatabase
@@ -1922,6 +2002,11 @@ name|BibtexDatabase
 name|targetDatabase
 parameter_list|)
 block|{
+name|int
+name|errorCode
+init|=
+literal|0
+decl_stmt|;
 name|Iterator
 name|targetIterator
 init|=
@@ -2110,6 +2195,11 @@ operator|>
 literal|0
 condition|)
 block|{
+name|errorCode
+operator|=
+operator|-
+literal|1
+expr_stmt|;
 name|ShowBadIdentifiersDialog
 name|badIdentifiersDialog
 init|=
@@ -2211,6 +2301,20 @@ argument_list|(
 name|progressStatus
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|abortOperation
+condition|)
+name|errorCode
+operator|=
+operator|-
+literal|2
+expr_stmt|;
+return|return
+operator|(
+name|errorCode
+operator|)
+return|;
 block|}
 DECL|method|generateCitationList (Hashtable citationHashTable, BibtexDatabase database)
 specifier|private
@@ -3319,15 +3423,17 @@ argument_list|(
 name|citeseerMethod
 argument_list|)
 decl_stmt|;
-name|saxParser
-operator|.
-name|parse
-argument_list|(
+name|InputStream
+name|inputStream
+init|=
 name|citeseerMethod
 operator|.
 name|getResponseBodyAsStream
 argument_list|()
-argument_list|,
+decl_stmt|;
+name|DefaultHandler
+name|handlerBase
+init|=
 operator|new
 name|CiteSeerUndoHandler
 argument_list|(
@@ -3343,6 +3449,15 @@ name|overwriteAll
 argument_list|,
 name|overwriteNone
 argument_list|)
+decl_stmt|;
+comment|/* 					 * Debugging: there must exist an easier way to do this. 					 * 					 * 					InputStreamReader iReader = new InputStreamReader(inputStream); 					int nextChar; 					while ((nextChar = iReader.read()) != -1) { 						System.out.print((char) nextChar); 					} 					*/
+name|saxParser
+operator|.
+name|parse
+argument_list|(
+name|inputStream
+argument_list|,
+name|handlerBase
 argument_list|)
 expr_stmt|;
 name|citeseerMethod
