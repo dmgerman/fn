@@ -125,6 +125,15 @@ name|void
 name|requestFocus
 parameter_list|()
 function_decl|;
+DECL|method|setEnabled (boolean enabled)
+specifier|public
+name|void
+name|setEnabled
+parameter_list|(
+name|boolean
+name|enabled
+parameter_list|)
+function_decl|;
 comment|// paste text into component, it should also take some selected text into account
 DECL|method|paste (String textToInsert)
 specifier|public

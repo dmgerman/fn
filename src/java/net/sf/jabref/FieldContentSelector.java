@@ -196,6 +196,13 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|list
+operator|.
+name|setMaximumRowCount
+argument_list|(
+literal|20
+argument_list|)
+expr_stmt|;
 specifier|final
 name|MetaData
 name|metaData

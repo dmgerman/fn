@@ -218,8 +218,6 @@ literal|"bibtexkey"
 block|,
 literal|"volume"
 block|,
-literal|"number"
-block|,
 literal|"pages"
 block|}
 argument_list|)

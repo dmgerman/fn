@@ -730,11 +730,11 @@ specifier|public
 name|void
 name|valueChanged
 parameter_list|(
+specifier|final
 name|ListSelectionEvent
 name|e
 parameter_list|)
 block|{
-comment|//Util.pr("Selection listener");
 if|if
 condition|(
 operator|!
@@ -749,6 +749,26 @@ operator|.
 name|getValueIsAdjusting
 argument_list|()
 condition|)
+block|{
+comment|// We must use invokeLater() to postpone the updating. This is because of
+comment|// the situation where an EntryEditor has changes in one of the FieldEditors
+comment|// that need to be stored. This storage is initiated by a focusLost() call,
+comment|// and results in a call to refreshTable() in BasePanel, which messes
+comment|// with the table selection. After that chain has finished, the selection
+comment|// will have been reset correctly, so we make sure everything is ok by
+comment|// putting the updating based on table selection behind it in the event queue.
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+operator|new
+name|Thread
+argument_list|()
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
 block|{
 if|if
 condition|(
@@ -773,7 +793,7 @@ literal|0
 condition|)
 block|{
 comment|//System.out.println(""+panel.validateEntryEditor());
-comment|/*                     * Can't call validateEntryEditor, before the FocusLost beats us to it and                     * makes the entry editor store its source. So we need to find out if the                     * entry editor is happy. But can we prevent the selection?                    */
+comment|/* 				       * Can't call validateEntryEditor, before the FocusLost beats us to it and 				       * makes the entry editor store its source. So we need to find out if the 				       * entry editor is happy. But can we prevent the selection? 				       */
 name|panel
 operator|.
 name|updateViewToSelected
@@ -790,7 +810,7 @@ block|}
 block|}
 else|else
 block|{
-comment|/* With a multiple selection, there are three alternative behaviours:                    1. Disable the entry editor. Do not update it.                    2. Do not disable the entry editor, and do not update it.                    3. Update the entry editor, and keep it enabled.                     We currently implement 1 and 2, and choose between them based on                    prefs.getBoolean("disableOnMultipleSelection");                    */
+comment|/* With a multiple selection, there are three alternative behaviours: 				     1. Disable the entry editor. Do not update it. 				     2. Do not disable the entry editor, and do not update it. 				     3. Update the entry editor, and keep it enabled. 				      				     We currently implement 1 and 2, and choose between them based on 				     prefs.getBoolean("disableOnMultipleSelection"); 				  */
 if|if
 condition|(
 name|prefs
@@ -812,6 +832,10 @@ expr_stmt|;
 block|}
 comment|// 2. Do nothing.
 block|}
+block|}
+block|}
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
