@@ -116,7 +116,7 @@ decl_stmt|,
 DECL|field|version
 name|version
 init|=
-literal|"1.2"
+literal|"1.3"
 decl_stmt|,
 DECL|field|stringsTitle
 name|stringsTitle
@@ -285,7 +285,7 @@ comment|// Added to the font size when determining table
 DECL|field|PREVIEW_HEIGHT
 name|PREVIEW_HEIGHT
 init|=
-literal|125
+literal|115
 decl_stmt|;
 comment|// row height
 specifier|public
