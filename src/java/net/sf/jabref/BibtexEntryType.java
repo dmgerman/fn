@@ -135,6 +135,8 @@ operator|new
 name|String
 index|[]
 block|{
+literal|"number"
+block|,
 literal|"month"
 block|,
 literal|"eid"
@@ -163,8 +165,6 @@ block|,
 literal|"year"
 block|,
 literal|"volume"
-block|,
-literal|"number"
 block|,
 literal|"pages"
 block|}

@@ -6214,7 +6214,7 @@ block|}
 block|}
 DECL|method|addTab (BibtexDatabase db, File file, HashMap meta, boolean raisePanel)
 specifier|public
-name|void
+name|BasePanel
 name|addTab
 parameter_list|(
 name|BibtexDatabase
@@ -6251,10 +6251,25 @@ name|tabbedPane
 operator|.
 name|add
 argument_list|(
+operator|(
+name|file
+operator|!=
+literal|null
+condition|?
 name|file
 operator|.
 name|getName
 argument_list|()
+else|:
+name|Globals
+operator|.
+name|lang
+argument_list|(
+name|GUIGlobals
+operator|.
+name|untitledTitle
+argument_list|)
+operator|)
 argument_list|,
 name|bp
 argument_list|)
@@ -6301,6 +6316,9 @@ name|setMultiple
 argument_list|()
 expr_stmt|;
 block|}
+return|return
+name|bp
+return|;
 block|}
 DECL|class|SelectKeysAction
 class|class
