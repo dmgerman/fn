@@ -843,8 +843,9 @@ init|=
 operator|new
 name|FormLayout
 argument_list|(
-literal|"1dlu, 8dlu, left:pref, 4dlu, fill:pref, 4dlu, fill:60dlu, 4dlu, fill:pref"
+literal|"1dlu, 8dlu, left:pref, 4dlu, fill:pref"
 argument_list|,
+comment|//, 4dlu, fill:60dlu, 4dlu, fill:pref",
 literal|""
 argument_list|)
 decl_stmt|;
@@ -1036,7 +1037,25 @@ operator|.
 name|nextLine
 argument_list|()
 expr_stmt|;
-comment|//lab = new JLabel("Update to current column widths");
+name|lab
+operator|=
+operator|new
+name|JLabel
+argument_list|(
+literal|"<HTML>("
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"this button will update the column width settings<BR>"
+operator|+
+literal|"to match the current widths in your table"
+argument_list|)
+operator|+
+literal|")</HTML>"
+argument_list|)
+expr_stmt|;
 name|builder
 operator|.
 name|append
@@ -1060,6 +1079,25 @@ operator|.
 name|append
 argument_list|(
 name|button
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|nextLine
+argument_list|()
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|pan
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|lab
 argument_list|)
 expr_stmt|;
 name|builder
