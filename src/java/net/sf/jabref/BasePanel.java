@@ -500,6 +500,16 @@ return|return
 name|frame
 return|;
 block|}
+DECL|method|prefs ()
+specifier|public
+name|JabRefPreferences
+name|prefs
+parameter_list|()
+block|{
+return|return
+name|prefs
+return|;
+block|}
 DECL|method|output (String s)
 specifier|public
 name|void

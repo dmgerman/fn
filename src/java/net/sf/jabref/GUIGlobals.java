@@ -121,27 +121,9 @@ decl_stmt|,
 DECL|field|stringsTitle
 name|stringsTitle
 init|=
-name|Globals
-operator|.
-name|lang
-argument_list|(
 literal|"Strings for database"
-argument_list|)
-operator|+
-literal|": "
 decl_stmt|,
-DECL|field|untitledStringsTitle
-name|untitledStringsTitle
-init|=
-name|stringsTitle
-operator|+
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"untitled"
-argument_list|)
-decl_stmt|,
+comment|//untitledStringsTitle = stringsTitle + Globals.lang("untitled"),
 DECL|field|untitledTitle
 name|untitledTitle
 init|=
@@ -1151,6 +1133,16 @@ DECL|field|labelPatternHelp
 name|labelPatternHelp
 init|=
 literal|"LabelPatterns.html"
+decl_stmt|,
+DECL|field|ownerHelp
+name|ownerHelp
+init|=
+literal|"OwnerHelp.html"
+decl_stmt|,
+DECL|field|pdfHelp
+name|pdfHelp
+init|=
+literal|"ExternalFiles.html"
 decl_stmt|,
 DECL|field|aboutPage
 name|aboutPage

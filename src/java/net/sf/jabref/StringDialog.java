@@ -693,9 +693,16 @@ literal|null
 condition|)
 name|setTitle
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 name|GUIGlobals
 operator|.
 name|stringsTitle
+argument_list|)
+operator|+
+literal|": "
 operator|+
 name|panel
 operator|.
@@ -708,9 +715,25 @@ expr_stmt|;
 else|else
 name|setTitle
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 name|GUIGlobals
 operator|.
-name|untitledStringsTitle
+name|stringsTitle
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+name|GUIGlobals
+operator|.
+name|untitledTitle
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

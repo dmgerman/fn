@@ -6196,17 +6196,6 @@ argument_list|,
 name|prefs
 argument_list|)
 decl_stmt|;
-name|Util
-operator|.
-name|pr
-argument_list|(
-literal|":"
-operator|+
-name|GUIGlobals
-operator|.
-name|untitledTitle
-argument_list|)
-expr_stmt|;
 name|tabbedPane
 operator|.
 name|add
