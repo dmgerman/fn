@@ -857,6 +857,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+comment|//    textPane.setMaximumSize( new Dimension(100, 100) );
 name|doc
 operator|=
 name|textPane
@@ -955,6 +956,7 @@ literal|10
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//    paneScrollPane.setHorizontalScrollBarPolicy( JScrollPane.HORIZONTAL_SCROLLBAR_NEVER) ;
 comment|// copy/paste Menu
 name|PasteAction
 name|pasteAction

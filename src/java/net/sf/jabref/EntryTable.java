@@ -799,11 +799,19 @@ literal|0
 condition|)
 block|{
 comment|//System.out.println(""+panel.validateEntryEditor());
-comment|/* 				       * Can't call validateEntryEditor, before the FocusLost beats us to it and 				       * makes the entry editor store its source. So we need to find out if the 				       * entry editor is happy. But can we prevent the selection? 				       */
+comment|/*                                        * Can't call validateEntryEditor, before the FocusLost beats us to it and                                        * makes the entry editor store its source. So we need to find out if the                                        * entry editor is happy. But can we prevent the selection?                                        */
 name|panel
 operator|.
 name|updateViewToSelected
 argument_list|()
+expr_stmt|;
+comment|// guarantee that the the entry is visible
+name|scrollToCenter
+argument_list|(
+name|row
+argument_list|,
+literal|0
+argument_list|)
 expr_stmt|;
 comment|//   setRowSelectionInterval(row, row);
 comment|// }
@@ -816,7 +824,7 @@ block|}
 block|}
 else|else
 block|{
-comment|/* With a multiple selection, there are three alternative behaviours: 				     1. Disable the entry editor. Do not update it. 				     2. Do not disable the entry editor, and do not update it. 				     3. Update the entry editor, and keep it enabled. 				      				     We currently implement 1 and 2, and choose between them based on 				     prefs.getBoolean("disableOnMultipleSelection"); 				  */
+comment|/* With a multiple selection, there are three alternative behaviours:                                      1. Disable the entry editor. Do not update it.                                      2. Do not disable the entry editor, and do not update it.                                      3. Update the entry editor, and keep it enabled.                                       We currently implement 1 and 2, and choose between them based on                                      prefs.getBoolean("disableOnMultipleSelection");                                   */
 if|if
 condition|(
 name|prefs
@@ -942,7 +950,7 @@ operator|=
 name|oldState
 expr_stmt|;
 block|}
-comment|/*public boolean surrendersFocusOnKeystroke() { 	return true; 	}*/
+comment|/*public boolean surrendersFocusOnKeystroke() {         return true;         }*/
 comment|/**        * This method overrides the superclass' to disable the selection listener while the        * selection is cleared.        */
 DECL|method|clearSelection ()
 specifier|public
@@ -1216,7 +1224,7 @@ return|return
 name|sp
 return|;
 block|}
-comment|/*public void setShowingSearchResults(boolean search, 					boolean group) { 	showingSearchResults = search; 	showingGroup = group;     } */
+comment|/*public void setShowingSearchResults(boolean search,                                         boolean group) {         showingSearchResults = search;         showingGroup = group;     } */
 DECL|method|setRightClickMenu (JPopupMenu rcm)
 specifier|public
 name|void
@@ -1921,7 +1929,7 @@ comment|//Util.pr("("+row+","+column+"). "+status+" "+renderer.toString());
 return|return
 name|renderer
 return|;
-comment|/* 	int test = row - 4*(row/4); 	if (test<= 1) 	    return renderer; 	else { 	    return renderer.darker(); 	    }*/
+comment|/*         int test = row - 4*(row/4);         if (test<= 1)             return renderer;         else {             return renderer.darker();             }*/
 block|}
 DECL|method|scrollTo (int y)
 specifier|public
