@@ -1535,8 +1535,24 @@ literal|27
 argument_list|,
 literal|102
 argument_list|)
-decl_stmt|;
+decl_stmt|,
 comment|// Title bar gradient color, sidepaneheader
+DECL|field|activeTabbed
+name|activeTabbed
+init|=
+name|Color
+operator|.
+name|black
+decl_stmt|,
+comment|// active Database (JTabbedPane)
+DECL|field|inActiveTabbed
+name|inActiveTabbed
+init|=
+name|Color
+operator|.
+name|gray
+comment|// inactive Database
+decl_stmt|;
 DECL|field|META_FLAG
 specifier|public
 specifier|static

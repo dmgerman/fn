@@ -696,6 +696,13 @@ operator|new
 name|JTextPane
 argument_list|()
 expr_stmt|;
+name|textPane
+operator|.
+name|setEditable
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|doc
 operator|=
 name|textPane
