@@ -706,12 +706,7 @@ name|tabbed
 operator|.
 name|addTab
 argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
 literal|"Abstract"
-argument_list|)
 argument_list|,
 operator|new
 name|ImageIcon
@@ -8172,6 +8167,8 @@ block|,
 name|optPanel
 block|,
 name|genPanel
+block|,
+name|absPanel
 block|}
 decl_stmt|;
 for|for

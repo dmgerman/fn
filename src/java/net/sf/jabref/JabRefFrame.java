@@ -9427,12 +9427,7 @@ init|=
 operator|new
 name|JMenuItem
 argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
 literal|"SilverPlatter"
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|newSilverPlatter_mItem

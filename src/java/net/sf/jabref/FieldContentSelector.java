@@ -264,11 +264,11 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|ContentSelectorDialog
+name|ContentSelectorDialog2
 name|csd
 init|=
 operator|new
-name|ContentSelectorDialog
+name|ContentSelectorDialog2
 argument_list|(
 name|frame
 argument_list|,

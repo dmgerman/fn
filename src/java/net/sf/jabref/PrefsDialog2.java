@@ -284,7 +284,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Table"
+literal|"Appearance"
 argument_list|)
 argument_list|,
 operator|new
