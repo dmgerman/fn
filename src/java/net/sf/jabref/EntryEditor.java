@@ -4670,6 +4670,15 @@ name|int
 name|i
 parameter_list|)
 block|{
+if|if
+condition|(
+name|i
+operator|<
+name|tabbed
+operator|.
+name|getTabCount
+argument_list|()
+condition|)
 name|tabbed
 operator|.
 name|setSelectedIndex
@@ -4677,6 +4686,28 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
+else|else
+block|{
+while|while
+condition|(
+name|i
+operator|>=
+name|tabbed
+operator|.
+name|getTabCount
+argument_list|()
+condition|)
+name|i
+operator|--
+expr_stmt|;
+name|tabbed
+operator|.
+name|setSelectedIndex
+argument_list|(
+name|i
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**      * Updates this editor to show the given entry, regardless of      * type correspondence.      *      * @param be a<code>BibtexEntry</code> value      */
 DECL|method|switchTo (BibtexEntry be)

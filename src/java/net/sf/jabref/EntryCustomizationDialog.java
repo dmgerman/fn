@@ -236,7 +236,7 @@ argument_list|(
 literal|"Customize entry types"
 argument_list|)
 argument_list|,
-literal|true
+literal|false
 argument_list|)
 expr_stmt|;
 name|this
@@ -799,12 +799,6 @@ name|void
 name|initialize
 parameter_list|()
 block|{
-name|setModal
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-comment|//setDefaultCloseOperation(JDialog.DO_NOTHING_ON_CLOSE);
 name|getContentPane
 argument_list|()
 operator|.
