@@ -433,6 +433,17 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+comment|// Add the global focus listener, so a menu item can see if this field was focused when
+comment|// an action was called.
+name|searchField
+operator|.
+name|addFocusListener
+argument_list|(
+name|Globals
+operator|.
+name|focusListener
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|searchAll

@@ -70,6 +70,15 @@ argument_list|(
 name|content
 argument_list|)
 expr_stmt|;
+comment|// Add the global focus listener, so a menu item can see if this field was focused when
+comment|// an action was called.
+name|addFocusListener
+argument_list|(
+name|Globals
+operator|.
+name|focusListener
+argument_list|)
+expr_stmt|;
 name|fieldName
 operator|=
 name|fieldName_

@@ -161,6 +161,16 @@ name|duplicateThreshold
 init|=
 literal|0.78f
 decl_stmt|;
+DECL|field|focusListener
+specifier|public
+specifier|static
+name|GlobalFocusListener
+name|focusListener
+init|=
+operator|new
+name|GlobalFocusListener
+argument_list|()
+decl_stmt|;
 DECL|field|osName
 specifier|public
 specifier|static

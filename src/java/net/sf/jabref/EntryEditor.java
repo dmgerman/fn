@@ -3268,6 +3268,17 @@ operator|.
 name|INDENT
 argument_list|)
 expr_stmt|;
+comment|// Add the global focus listener, so a menu item can see if this field was focused when
+comment|// an action was called.
+name|source
+operator|.
+name|addFocusListener
+argument_list|(
+name|Globals
+operator|.
+name|focusListener
+argument_list|)
+expr_stmt|;
 name|setupJTextComponent
 argument_list|(
 name|source
