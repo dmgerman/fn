@@ -500,30 +500,9 @@ argument_list|(
 name|defSource
 argument_list|)
 expr_stmt|;
-name|con
-operator|.
-name|gridwidth
-operator|=
-name|GridBagConstraints
-operator|.
-name|REMAINDER
-expr_stmt|;
-name|gbl
-operator|.
-name|setConstraints
-argument_list|(
-name|defSort
-argument_list|,
-name|con
-argument_list|)
-expr_stmt|;
-name|general
-operator|.
-name|add
-argument_list|(
-name|defSort
-argument_list|)
-expr_stmt|;
+comment|//con.gridwidth = GridBagConstraints.REMAINDER;
+comment|//gbl.setConstraints(defSort, con);
+comment|//general.add(defSort);
 comment|// Grouping field
 name|con
 operator|.
@@ -1493,18 +1472,7 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|_prefs
-operator|.
-name|putBoolean
-argument_list|(
-literal|"defaultAutoSort"
-argument_list|,
-name|defSort
-operator|.
-name|isSelected
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//_prefs.putBoolean("defaultAutoSort", defSort.isSelected());
 name|_prefs
 operator|.
 name|put

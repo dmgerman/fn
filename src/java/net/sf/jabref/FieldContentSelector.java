@@ -620,6 +620,13 @@ operator|+
 name|DELIMITER_2
 argument_list|)
 expr_stmt|;
+name|list
+operator|.
+name|setSelectedIndex
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
 name|parent
 operator|.
 name|storeFieldAction

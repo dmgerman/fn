@@ -188,8 +188,9 @@ operator|new
 name|GridBagLayout
 argument_list|()
 decl_stmt|;
+comment|//HelpAction help;
 DECL|field|help
-name|HelpAction
+name|JButton
 name|help
 decl_stmt|;
 DECL|field|jPanel4
@@ -400,6 +401,21 @@ expr_stmt|;
 name|help
 operator|=
 operator|new
+name|JButton
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Help"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|help
+operator|.
+name|addActionListener
+argument_list|(
+operator|new
 name|HelpAction
 argument_list|(
 name|frame
@@ -412,7 +428,9 @@ name|contentSelectorHelp
 argument_list|,
 literal|"Help"
 argument_list|)
+argument_list|)
 expr_stmt|;
+comment|//help = new HelpAction(frame.helpDiag, GUIGlobals.contentSelectorHelp, "Help");
 try|try
 block|{
 name|jbInit
@@ -494,8 +512,16 @@ comment|// The next two lines remove the part of the interface allowing
 comment|// the user to control which fields have a selector. I think this
 comment|// makes the dialog more intuitive. When the user opens this dialog
 comment|// from the Tools menu, the full interface will be available.
-comment|//panel1.remove(jPanel1);
-comment|//pack();
+name|panel1
+operator|.
+name|remove
+argument_list|(
+name|jPanel1
+argument_list|)
+expr_stmt|;
+name|pack
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * Set the contents of the field selector combobox.      *      */
 DECL|method|setupFieldSelector ()
@@ -1281,43 +1307,16 @@ operator|.
 name|SOUTH
 argument_list|)
 expr_stmt|;
-name|jPanel2
-operator|.
-name|add
-argument_list|(
-name|Close
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
-name|JToolBar
-name|tlb
-init|=
-operator|new
-name|JToolBar
-argument_list|()
-decl_stmt|;
+comment|//JToolBar tlb = new JToolBar();
 comment|//tlb.setLayout(new GridLayout(1,1));
 comment|//tlb.setPreferredSize(new Dimension(28, 28));
-name|tlb
-operator|.
-name|setFloatable
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-name|tlb
+comment|//tlb.setFloatable(false);
+comment|//tlb.add(help);
+name|jPanel2
 operator|.
 name|add
 argument_list|(
 name|help
-argument_list|)
-expr_stmt|;
-name|jPanel2
-operator|.
-name|add
-argument_list|(
-name|Close
 argument_list|,
 literal|null
 argument_list|)
@@ -1326,7 +1325,7 @@ name|jPanel2
 operator|.
 name|add
 argument_list|(
-name|tlb
+name|Close
 argument_list|,
 literal|null
 argument_list|)

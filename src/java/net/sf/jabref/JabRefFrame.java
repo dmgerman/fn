@@ -3377,6 +3377,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|copyKey
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|copyCiteKey
 operator|.
 name|setEnabled
@@ -3587,6 +3594,13 @@ literal|true
 argument_list|)
 expr_stmt|;
 name|selectAll
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|copyKey
 operator|.
 name|setEnabled
 argument_list|(
