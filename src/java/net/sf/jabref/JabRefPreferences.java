@@ -219,7 +219,7 @@ name|put
 argument_list|(
 literal|"pdfviewer"
 argument_list|,
-literal|"open /Applications/Preview.app"
+literal|"/Applications/Preview.app"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -228,7 +228,7 @@ name|put
 argument_list|(
 literal|"psviewer"
 argument_list|,
-literal|"open /Applications/Preview.app"
+literal|"/Applications/Preview.app"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -237,7 +237,7 @@ name|put
 argument_list|(
 literal|"htmlviewer"
 argument_list|,
-literal|"open /Applications/Safari.app"
+literal|"/Applications/Safari.app"
 argument_list|)
 expr_stmt|;
 block|}
