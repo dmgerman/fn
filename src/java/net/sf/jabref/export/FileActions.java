@@ -824,6 +824,8 @@ init|=
 name|getSortedEntries
 argument_list|(
 name|database
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|FieldFormatter
@@ -1703,6 +1705,8 @@ init|=
 name|getSortedEntries
 argument_list|(
 name|database
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 comment|/*String pri = prefs.get("priSort"), 		sec = prefs.get("secSort"), 		ter = prefs.get("terSort");             EntrySorter sorter = database.getSorter 		(new EntryComparator(prefs.getBoolean("priDescending"), 				     prefs.getBoolean("secDescending"), 				     prefs.getBoolean("terDescending"), 				     pri, sec, ter)); 	    */
@@ -2049,6 +2053,8 @@ init|=
 name|getSortedEntries
 argument_list|(
 name|database
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|Set
@@ -2564,7 +2570,8 @@ return|return
 name|reader
 return|;
 block|}
-DECL|method|getSortedEntries (BibtexDatabase database)
+comment|/*      * We have begun to use getSortedEntries() for both database save operations      * and non-database save operations.  In a non-database save operation      * (such as the exportDatabase call), we do not wish to use the       * global preference of saving in standard order.      */
+DECL|method|getSortedEntries (BibtexDatabase database, boolean isSaveOperation)
 specifier|protected
 specifier|static
 name|TreeSet
@@ -2572,6 +2579,9 @@ name|getSortedEntries
 parameter_list|(
 name|BibtexDatabase
 name|database
+parameter_list|,
+name|boolean
+name|isSaveOperation
 parameter_list|)
 block|{
 name|String
@@ -2590,6 +2600,9 @@ name|terD
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|isSaveOperation
+operator|||
 operator|!
 name|Globals
 operator|.
