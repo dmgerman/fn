@@ -1950,13 +1950,6 @@ argument_list|)
 expr_stmt|;
 name|groupsTree
 operator|.
-name|setShowsRootHandles
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|groupsTree
-operator|.
 name|setCellRenderer
 argument_list|(
 operator|new
@@ -3292,6 +3285,12 @@ name|groupsRoot
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|groupsRoot
+operator|=
+name|groupsRoot
+expr_stmt|;
 block|}
 comment|/**      * Adds the specified node as a child of the current root. The group      * contained in<b>newGroups</b> must not be of type AllEntriesGroup, since      * every tree has exactly one AllEntriesGroup (its root). The<b>newGroups      *</b> are inserted directly, i.e. they are not deepCopy()'d.      */
 DECL|method|addGroups (GroupTreeNode newGroups, CompoundEdit ce)
@@ -4487,6 +4486,21 @@ name|undo
 init|=
 literal|null
 decl_stmt|;
+name|TreePath
+index|[]
+name|selectionPaths
+init|=
+name|groupsTree
+operator|.
+name|getSelectionPaths
+argument_list|()
+decl_stmt|;
+name|Enumeration
+name|expandedPaths
+init|=
+name|getExpandedPaths
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -4523,6 +4537,7 @@ literal|"Cannot move group"
 argument_list|)
 operator|+
 literal|" '"
+comment|// JZTODO: translation...
 operator|+
 name|node
 operator|.
@@ -4532,7 +4547,14 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|"' up."
+literal|"' "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"up."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -4541,15 +4563,13 @@ return|;
 comment|// not possible
 block|}
 comment|// JZTODO really?:
+comment|//        revalidateGroups(groupsTree.getSelectionPaths(),
+comment|//                getExpandedPaths());
 name|revalidateGroups
 argument_list|(
-name|groupsTree
-operator|.
-name|getSelectionPaths
-argument_list|()
+name|selectionPaths
 argument_list|,
-name|getExpandedPaths
-argument_list|()
+name|expandedPaths
 argument_list|)
 expr_stmt|;
 name|panel
@@ -5048,17 +5068,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|GroupTreeNode
-name|groupsRoot
-init|=
-operator|new
-name|GroupTreeNode
-argument_list|(
-operator|new
-name|AllEntriesGroup
-argument_list|()
-argument_list|)
-decl_stmt|;
 name|metaData
 operator|.
 name|setGroups
