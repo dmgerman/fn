@@ -222,6 +222,15 @@ name|GROUPS_VISIBLE_ROWS
 init|=
 literal|8
 decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|double
+DECL|field|VERTICAL_DIVIDER_LOCATION
+name|VERTICAL_DIVIDER_LOCATION
+init|=
+literal|0.4
+decl_stmt|;
 comment|// File names.
 specifier|public
 specifier|static
@@ -2241,7 +2250,7 @@ name|put
 argument_list|(
 literal|"series"
 argument_list|,
-name|MEDIUM_W
+name|SMALL_W
 argument_list|)
 expr_stmt|;
 name|fieldWeight
@@ -2250,7 +2259,16 @@ name|put
 argument_list|(
 literal|"type"
 argument_list|,
-name|MEDIUM_W
+name|SMALL_W
+argument_list|)
+expr_stmt|;
+name|fieldWeight
+operator|.
+name|put
+argument_list|(
+literal|"address"
+argument_list|,
+name|SMALL_W
 argument_list|)
 expr_stmt|;
 name|fieldWeight
