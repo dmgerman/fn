@@ -2300,7 +2300,7 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
-literal|"Autgenerate BibTeX keys"
+literal|"Autogenerate BibTeX keys"
 argument_list|,
 literal|"ctrl G"
 argument_list|)

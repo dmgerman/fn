@@ -271,7 +271,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Show source by default"
+literal|"Show BibTeX source by default"
 argument_list|)
 argument_list|,
 name|_prefs

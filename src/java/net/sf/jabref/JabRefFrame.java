@@ -914,7 +914,7 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Autgenerate BibTeX keys"
+literal|"Autogenerate BibTeX keys"
 argument_list|)
 argument_list|)
 decl_stmt|,

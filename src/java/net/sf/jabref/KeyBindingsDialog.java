@@ -351,6 +351,31 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|addWindowListener
+argument_list|(
+operator|new
+name|WindowAdapter
+argument_list|()
+block|{
+specifier|public
+name|void
+name|windowClosing
+parameter_list|(
+name|WindowEvent
+name|e
+parameter_list|)
+block|{
+name|clickedSave
+operator|=
+literal|false
+expr_stmt|;
+name|dispose
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|setTop ()
 name|void
@@ -1193,7 +1218,7 @@ return|return
 name|defKey
 return|;
 block|}
-comment|/*     public static void main(String args[])     { 	HashMap h=new HashMap(); 	h.put("new-bibtex","ctrl N"); 	h.put("edit-bibtex","ctrl E"); 	h.put("exit-bibtex","ctrl Q");	 	KeyBindingsDialog d= new KeyBindingsDialog(h); 	d.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 	d.setSize(200,300); 	d.setVisible(true); 	 	}*/
+comment|/*     public static void main(String args[])     { 	HashMap h=new HashMap(); 	h.put("new-bibtex","ctrl N"); 	h.put("edit-bibtex","ctrl E"); 	h.put("exit-bibtex","ctrl Q"); 	KeyBindingsDialog d= new KeyBindingsDialog(h); 	d.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 	d.setSize(200,300); 	d.setVisible(true);  	}*/
 block|}
 end_class
 
