@@ -2163,6 +2163,8 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+try|try
+block|{
 operator|(
 call|(
 name|BasePanel
@@ -2180,6 +2182,19 @@ argument_list|(
 name|command
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|ex
+parameter_list|)
+block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
 else|else
 name|Util
 operator|.
@@ -4119,6 +4134,8 @@ name|YES_OPTION
 condition|)
 block|{
 comment|// The user wants to save.
+try|try
+block|{
 name|basePanel
 argument_list|()
 operator|.
@@ -4127,6 +4144,21 @@ argument_list|(
 literal|"save"
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|ex
+parameter_list|)
+block|{
+comment|// Something prevented the file
+comment|// from being saved. Break!!!
+name|close
+operator|=
+literal|false
+expr_stmt|;
+break|break;
+block|}
 block|}
 block|}
 if|if
@@ -4508,6 +4540,8 @@ name|YES_OPTION
 condition|)
 block|{
 comment|// The user wants to save.
+try|try
+block|{
 name|basePanel
 argument_list|()
 operator|.
@@ -4516,6 +4550,20 @@ argument_list|(
 literal|"save"
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|ex
+parameter_list|)
+block|{
+comment|// Something prevented the file
+comment|// from being saved. Break!!!
+name|close
+operator|=
+literal|false
+expr_stmt|;
+block|}
 block|}
 block|}
 if|if
@@ -7208,6 +7256,8 @@ name|YES_OPTION
 condition|)
 block|{
 comment|// The user wants to save.
+try|try
+block|{
 name|basePanel
 argument_list|()
 operator|.
@@ -7216,6 +7266,13 @@ argument_list|(
 literal|"save"
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|ex
+parameter_list|)
+block|{}
 block|}
 block|}
 if|if

@@ -2588,6 +2588,8 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+try|try
+block|{
 name|panel
 operator|.
 name|runCommand
@@ -2595,6 +2597,13 @@ argument_list|(
 literal|"undo"
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|ex
+parameter_list|)
+block|{}
 block|}
 block|}
 DECL|field|redoAction
@@ -2651,6 +2660,8 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+try|try
+block|{
 name|panel
 operator|.
 name|runCommand
@@ -2658,6 +2669,13 @@ argument_list|(
 literal|"redo"
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Throwable
+name|ex
+parameter_list|)
+block|{}
 block|}
 block|}
 block|}
