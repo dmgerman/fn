@@ -118,6 +118,15 @@ name|DropTargetListener
 implements|,
 name|DragGestureListener
 block|{
+DECL|field|dragScrollActivationMargin
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|dragScrollActivationMargin
+init|=
+literal|10
+decl_stmt|;
 DECL|field|groupSelector
 specifier|private
 name|GroupSelector
@@ -277,6 +286,10 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|target
+operator|==
+literal|null
+operator|||
 name|dragNode
 operator|.
 name|isNodeChild
@@ -372,18 +385,48 @@ name|DropTargetDragEvent
 name|dtde
 parameter_list|)
 block|{
-comment|// Point p = dtde.getLocation();
-comment|// TreePath path = getPathForLocation(p.x, p.y);
-comment|// if (path == null) {
-comment|// dtde.rejectDrag();
-comment|// return;
-comment|// }
-comment|// GroupTreeNode target = (GroupTreeNode) path.getLastPathComponent();
-comment|// if (dragNode.isNodeChild(target)) {
-comment|// dtde.rejectDrag();
-comment|// return;
-comment|// }
-comment|// dtde.acceptDrag(DnDConstants.ACTION_COPY_OR_MOVE);
+name|Rectangle
+name|r
+init|=
+operator|new
+name|Rectangle
+argument_list|(
+name|dtde
+operator|.
+name|getLocation
+argument_list|()
+operator|.
+name|x
+operator|-
+name|dragScrollActivationMargin
+argument_list|,
+name|dtde
+operator|.
+name|getLocation
+argument_list|()
+operator|.
+name|y
+operator|-
+name|dragScrollActivationMargin
+argument_list|,
+literal|1
+operator|+
+literal|2
+operator|*
+name|dragScrollActivationMargin
+argument_list|,
+literal|1
+operator|+
+literal|2
+operator|*
+name|dragScrollActivationMargin
+argument_list|)
+decl_stmt|;
+name|scrollRectToVisible
+argument_list|(
+name|r
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|dropActionChanged (DropTargetDragEvent dtde)
 specifier|public
