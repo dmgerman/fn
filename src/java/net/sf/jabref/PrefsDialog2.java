@@ -312,19 +312,7 @@ name|_prefs
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|tabbed
-operator|.
-name|addTab
-argument_list|(
-literal|"Label Pattern"
-argument_list|,
-operator|new
-name|TabLabelPattern
-argument_list|(
-name|_prefs
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|//tabbed.addTab("Label Pattern", new TabLabelPattern(_prefs));
 name|JButton
 name|ok
 init|=

@@ -651,9 +651,9 @@ name|GeneralAction
 argument_list|(
 literal|"mergeDatabase"
 argument_list|,
-literal|"Import from database"
+literal|"Append database"
 argument_list|,
-literal|"Import contents from a BibTeX database into the currently viewed database"
+literal|"Append contents from a BibTeX database into the currently viewed database"
 argument_list|,
 name|GUIGlobals
 operator|.
@@ -803,6 +803,36 @@ operator|.
 name|getKey
 argument_list|(
 literal|"Push To LyX"
+argument_list|)
+argument_list|)
+decl_stmt|;
+comment|// The menus for importing/appending other formats
+DECL|field|importMenu
+name|JMenu
+name|importMenu
+init|=
+operator|new
+name|JMenu
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Import and append"
+argument_list|)
+argument_list|)
+decl_stmt|,
+DECL|field|importNewMenu
+name|importNewMenu
+init|=
+operator|new
+name|JMenu
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Import"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2376,33 +2406,6 @@ literal|"Help"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|JMenu
-name|importMenu
-init|=
-operator|new
-name|JMenu
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Import"
-argument_list|)
-argument_list|)
-decl_stmt|,
-name|importNewMenu
-init|=
-operator|new
-name|JMenu
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Import into new"
-argument_list|)
-argument_list|)
-decl_stmt|;
 name|setUpImportMenu
 argument_list|(
 name|importMenu
@@ -3253,6 +3256,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|importMenu
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|int
@@ -3421,6 +3431,13 @@ literal|true
 argument_list|)
 expr_stmt|;
 name|incrementalSearch
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|importMenu
 operator|.
 name|setEnabled
 argument_list|(
@@ -5597,7 +5614,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Endnote"
+literal|"Refer/Endnote"
 argument_list|)
 argument_list|)
 decl_stmt|;

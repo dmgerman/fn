@@ -375,19 +375,8 @@ name|translation
 operator|=
 name|key
 expr_stmt|;
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Warning: could not get translation for \""
-operator|+
-name|key
-operator|+
-literal|"\""
-argument_list|)
-expr_stmt|;
+comment|//System.err.println("Warning: could not get translation for \""
+comment|//	       + key +"\"");
 block|}
 return|return
 name|translation
@@ -401,7 +390,7 @@ argument_list|)
 return|;
 block|}
 comment|//============================================================
-comment|// this is incomplete...i need to add all the types here
+comment|// Using the hashmap of entry types found in BibtexEntryType
 comment|//============================================================
 DECL|method|getEntryType (String type)
 specifier|static
@@ -413,57 +402,39 @@ name|type
 parameter_list|)
 block|{
 comment|// decide which entryType object to return
-if|if
-condition|(
-name|type
-operator|.
-name|equals
-argument_list|(
-literal|"article"
-argument_list|)
-condition|)
-return|return
+name|Object
+name|o
+init|=
 name|BibtexEntryType
 operator|.
-name|ARTICLE
-return|;
-elseif|else
+name|ALL_TYPES
+operator|.
+name|get
+argument_list|(
+name|type
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
-name|type
-operator|.
-name|equals
-argument_list|(
-literal|"book"
-argument_list|)
+name|o
+operator|!=
+literal|null
 condition|)
 return|return
+operator|(
 name|BibtexEntryType
-operator|.
-name|BOOK
-return|;
-elseif|else
-if|if
-condition|(
-name|type
-operator|.
-name|equals
-argument_list|(
-literal|"inproceedings"
-argument_list|)
-condition|)
-return|return
-name|BibtexEntryType
-operator|.
-name|INPROCEEDINGS
+operator|)
+name|o
 return|;
 else|else
-comment|//if(type.equals("other"))
+block|{
 return|return
 name|BibtexEntryType
 operator|.
 name|OTHER
 return|;
+block|}
+comment|/* 	if(type.equals("article")) 	    return BibtexEntryType.ARTICLE; 	else if(type.equals("book")) 	    return BibtexEntryType.BOOK; 	else if(type.equals("inproceedings")) 	    return BibtexEntryType.INPROCEEDINGS; 	*/
 block|}
 comment|//========================================================
 comment|// lot of abreviations in medline

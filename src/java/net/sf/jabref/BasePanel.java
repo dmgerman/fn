@@ -828,14 +828,15 @@ literal|"workingDirectory"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|Util
+name|chooser
 operator|.
-name|pr
+name|setFileFilter
 argument_list|(
-literal|"BasePanel: must set file filter"
+operator|new
+name|OpenFileFilter
+argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//chooser.setFileFilter(fileFilter);
 name|int
 name|returnVal
 init|=
@@ -3144,7 +3145,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Merge database"
+literal|"Append database"
 argument_list|)
 argument_list|,
 literal|true
@@ -3309,7 +3310,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Import database"
+literal|"Append database"
 argument_list|)
 argument_list|)
 decl_stmt|;

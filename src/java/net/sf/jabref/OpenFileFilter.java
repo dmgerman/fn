@@ -76,6 +76,14 @@ name|filenm
 operator|.
 name|endsWith
 argument_list|(
+literal|".ref"
+argument_list|)
+comment|// refer/endnote format
+operator|||
+name|filenm
+operator|.
+name|endsWith
+argument_list|(
 literal|".fcgi"
 argument_list|)
 comment|// default for pubmed
@@ -97,7 +105,7 @@ name|getDescription
 parameter_list|()
 block|{
 return|return
-literal|"*.bib or *.txt or *.xml or *.fcgi"
+literal|"*.bib, *.txt, *.xml, *.ref or *.fcgi"
 return|;
 block|}
 block|}

@@ -41,6 +41,11 @@ index|[]
 name|args
 parameter_list|)
 block|{
+name|Globals
+operator|.
+name|turnOffLogging
+argument_list|()
+expr_stmt|;
 name|JabRefPreferences
 name|prefs
 init|=
@@ -90,6 +95,18 @@ operator|.
 name|out
 operator|.
 name|println
+argument_list|(
+literal|"Opening: "
+operator|+
+name|args
+index|[
+literal|0
+index|]
+argument_list|)
+expr_stmt|;
+name|jrf
+operator|.
+name|output
 argument_list|(
 literal|"Opening: "
 operator|+
