@@ -16,8 +16,12 @@ name|java
 operator|.
 name|beans
 operator|.
-import|*
-name|import
+name|*
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
