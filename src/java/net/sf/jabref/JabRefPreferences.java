@@ -854,6 +854,29 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+DECL|method|get (String key, String def)
+specifier|public
+name|String
+name|get
+parameter_list|(
+name|String
+name|key
+parameter_list|,
+name|String
+name|def
+parameter_list|)
+block|{
+return|return
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|key
+argument_list|,
+name|def
+argument_list|)
+return|;
+block|}
 DECL|method|getBoolean (String key)
 specifier|public
 name|boolean

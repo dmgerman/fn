@@ -429,12 +429,12 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|showPage (URL url)
+DECL|method|showPage (String url)
 specifier|public
 name|void
 name|showPage
 parameter_list|(
-name|URL
+name|String
 name|url
 parameter_list|)
 block|{
