@@ -370,28 +370,8 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Could not load '"
-operator|+
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"language"
-argument_list|)
-operator|+
-literal|"' translated version of "
-operator|+
-name|filename
-operator|+
-literal|"."
-argument_list|)
-expr_stmt|;
+comment|//System.err.println("Could not load '"+prefs.get("language")
+comment|//	       +"' translated version of "+filename+".");
 name|URL
 name|file
 init|=
@@ -462,36 +442,28 @@ name|URL
 name|url
 parameter_list|)
 block|{
-comment|//String lang = prefs.get("language");
-name|URL
-name|old
+name|File
+name|f
 init|=
-name|getPage
-argument_list|()
-decl_stmt|;
-name|setPageOnly
+operator|new
+name|File
 argument_list|(
 name|url
-argument_list|)
-expr_stmt|;
-name|forw
 operator|.
-name|removeAllElements
+name|getPath
 argument_list|()
-expr_stmt|;
-if|if
-condition|(
-name|old
-operator|!=
-literal|null
-condition|)
-name|history
-operator|.
-name|push
+argument_list|)
+decl_stmt|;
+name|setPage
 argument_list|(
-name|old
+name|f
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 expr_stmt|;
+comment|//String lang = prefs.get("language");
+comment|/*URL old = getPage(); 	setPageOnly(url); 	forw.removeAllElements(); 	if (old != null) 	    history.push(old);*/
 block|}
 DECL|method|setPageOnly (URL url)
 specifier|private
