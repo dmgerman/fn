@@ -144,9 +144,12 @@ name|super
 argument_list|(
 name|bf
 argument_list|,
-name|GUIGlobals
+name|Globals
 operator|.
-name|helpTitle
+name|lang
+argument_list|(
+literal|"JabRef help"
+argument_list|)
 argument_list|,
 literal|false
 argument_list|)

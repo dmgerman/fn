@@ -118,6 +118,15 @@ specifier|static
 name|ResourceBundle
 name|messages
 decl_stmt|;
+DECL|field|FILETYPE_PREFS_EXT
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|FILETYPE_PREFS_EXT
+init|=
+literal|"_dir"
+decl_stmt|;
 DECL|method|logger (String s)
 specifier|public
 specifier|static

@@ -305,12 +305,24 @@ name|URL
 name|url
 parameter_list|)
 block|{
+name|String
+name|lang
+init|=
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"language"
+argument_list|)
+decl_stmt|;
+comment|//	if (!url.getPath
 name|URL
 name|old
 init|=
 name|getPage
 argument_list|()
 decl_stmt|;
+comment|//System.out.println(url.toString());
 name|File
 name|f
 init|=
@@ -335,6 +347,7 @@ name|getParent
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|/* 	// Search  	File[] listing = directory.listFiles(); 	for (int i=0; i<listing.length(); i++) { 	    if ( 	} 	*/
 name|File
 name|translatedFile
 init|=
@@ -348,12 +361,7 @@ argument_list|()
 operator|+
 literal|"/"
 operator|+
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"language"
-argument_list|)
+name|lang
 operator|+
 literal|"/"
 operator|+
@@ -363,6 +371,7 @@ name|getName
 argument_list|()
 argument_list|)
 decl_stmt|;
+comment|//System.out.println(translatedFile.getPath());
 if|if
 condition|(
 name|translatedFile
