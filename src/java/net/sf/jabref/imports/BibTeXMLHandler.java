@@ -499,6 +499,7 @@ argument_list|,
 name|currentChars
 argument_list|)
 expr_stmt|;
+comment|// Util.pr(local+ " "+currentChars);
 block|}
 name|currentChars
 operator|=

@@ -320,6 +320,13 @@ literal|"\\{"
 argument_list|,
 literal|""
 argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"<"
+argument_list|,
+literal|"&#x3c;"
+argument_list|)
 return|;
 block|}
 block|}
