@@ -130,7 +130,6 @@ name|TreeSelectionListener
 implements|,
 name|ActionListener
 block|{
-comment|/*      * Groups are stored in the vector like the following: field1, name1,      * regexp1, field2, name2, regexp2, ...      */
 DECL|field|newButton
 name|JButton
 name|newButton
@@ -215,7 +214,7 @@ operator|.
 name|white
 decl_stmt|;
 DECL|field|groupsTree
-name|JTree
+name|GroupsTree
 name|groupsTree
 decl_stmt|;
 DECL|field|groupsTreeModel
@@ -1944,8 +1943,10 @@ comment|// helpButton.setBorder(BorderFactory.createMatteBorder(1,1,1,1,Color.re
 name|groupsTree
 operator|=
 operator|new
-name|JTree
-argument_list|()
+name|GroupsTree
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 name|groupsTree
 operator|.
@@ -1988,37 +1989,7 @@ name|groupsTree
 argument_list|)
 expr_stmt|;
 comment|// JZPUWIL: drag and drop...
-name|DragSource
-operator|.
-name|getDefaultDragSource
-argument_list|()
-operator|.
-name|createDefaultDragGestureRecognizer
-argument_list|(
-name|groupsTree
-argument_list|,
-name|DnDConstants
-operator|.
-name|ACTION_MOVE
-argument_list|,
-operator|new
-name|DragGestureListener
-argument_list|()
-block|{
-specifier|public
-name|void
-name|dragGestureRecognized
-parameter_list|(
-name|DragGestureEvent
-name|dge
-parameter_list|)
-block|{
-comment|// TODO Auto-generated method stub
-comment|//System.out.println(dge);
-block|}
-block|}
-argument_list|)
-expr_stmt|;
+comment|// ...see GroupsTree
 name|groupsTree
 operator|.
 name|setShowsRootHandles
@@ -3043,27 +3014,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|//    public void revalidateGroups() {
-comment|//        groupsTreeModel.reload();
-comment|//        groupsTree.clearSelection();
-comment|//        groupsTree.revalidate();
-comment|//    }
-comment|//    /**
-comment|//     * @param paths
-comment|//     *            The paths to select.
-comment|//     */
-comment|//    public void revalidateGroups(TreePath[] paths) {
-comment|//        groupsTreeModel.reload();
-comment|//        groupsTree.setSelectionPaths(paths);
-comment|//        groupsTree.revalidate();
-comment|//    }
-comment|//    /**
-comment|//     * @param path
-comment|//     *            The path to select.
-comment|//     */
-comment|//    public void revalidateGroups(TreePath path) {
-comment|//        revalidateGroups(new TreePath[] { path });
-comment|//    }
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
