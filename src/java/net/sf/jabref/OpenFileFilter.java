@@ -34,6 +34,39 @@ name|filechooser
 operator|.
 name|FileFilter
 block|{
+DECL|field|filetype
+name|String
+name|filetype
+decl_stmt|;
+DECL|field|specific
+name|boolean
+name|specific
+init|=
+literal|false
+decl_stmt|;
+DECL|method|OpenFileFilter ()
+specifier|public
+name|OpenFileFilter
+parameter_list|()
+block|{}
+comment|/**      * Creates a new<code>OpenFileFilter</code> instance which only accepts      * one specific extension.      *      * @param s The extension of the file, e.g. ".bib" or ".html".      */
+DECL|method|OpenFileFilter (String s)
+specifier|public
+name|OpenFileFilter
+parameter_list|(
+name|String
+name|s
+parameter_list|)
+block|{
+name|filetype
+operator|=
+name|s
+expr_stmt|;
+name|specific
+operator|=
+literal|true
+expr_stmt|;
+block|}
 DECL|method|accept (File file)
 specifier|public
 name|boolean
@@ -51,6 +84,11 @@ operator|.
 name|getName
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|specific
+condition|)
 return|return
 operator|(
 name|filenm
@@ -97,6 +135,22 @@ argument_list|)
 operator|)
 return|;
 comment|// windows puts ".txt" extentions and for scifinder
+else|else
+return|return
+operator|(
+name|filenm
+operator|.
+name|endsWith
+argument_list|(
+name|filetype
+argument_list|)
+operator|||
+name|file
+operator|.
+name|isDirectory
+argument_list|()
+operator|)
+return|;
 block|}
 DECL|method|getDescription ()
 specifier|public
@@ -104,8 +158,19 @@ name|String
 name|getDescription
 parameter_list|()
 block|{
+if|if
+condition|(
+operator|!
+name|specific
+condition|)
 return|return
 literal|"*.bib, *.txt, *.xml, *.ref or *.fcgi"
+return|;
+else|else
+return|return
+literal|"*"
+operator|+
+name|filetype
 return|;
 block|}
 block|}
