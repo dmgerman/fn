@@ -156,6 +156,19 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
+operator|(
+operator|(
+name|JLabel
+operator|)
+name|c
+operator|)
+operator|.
+name|setIcon
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+comment|// save some space
 block|}
 return|return
 name|c
