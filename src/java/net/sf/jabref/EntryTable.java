@@ -124,6 +124,13 @@ name|ths
 init|=
 name|this
 decl_stmt|;
+DECL|field|antialiasing
+specifier|private
+name|boolean
+name|antialiasing
+init|=
+literal|true
+decl_stmt|;
 DECL|method|EntryTable (EntryTableModel tm_, JabRefPreferences prefs_)
 specifier|public
 name|EntryTable
@@ -149,6 +156,15 @@ expr_stmt|;
 name|prefs
 operator|=
 name|prefs_
+expr_stmt|;
+name|antialiasing
+operator|=
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"antialias"
+argument_list|)
 expr_stmt|;
 name|getTableHeader
 argument_list|()
@@ -1086,6 +1102,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//g2.setFont(f);
+if|if
+condition|(
+name|antialiasing
+condition|)
+block|{
 name|RenderingHints
 name|rh
 init|=
@@ -1114,6 +1135,7 @@ argument_list|(
 name|rh
 argument_list|)
 expr_stmt|;
+block|}
 comment|//g2.drawString(getText(), 3, f.getSize());
 name|super
 operator|.
