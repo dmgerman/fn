@@ -160,7 +160,7 @@ name|JPanel
 implements|implements
 name|VetoableChangeListener
 block|{
-comment|/*       * GUI component that allows editing of the fields of a BibtexEntry.      * EntryTypeForm also registers itself as a VetoableChangeListener,      * receiving events whenever a field of the entry changes, enabling the      * text fields to update themselves if the change is made from somewhere      * else.      */
+comment|/*      * GUI component that allows editing of the fields of a BibtexEntry.      * EntryTypeForm also registers itself as a VetoableChangeListener,      * receiving events whenever a field of the entry changes, enabling the      * text fields to update themselves if the change is made from somewhere      * else.      */
 comment|// A reference to the entry this object works on.
 DECL|field|entry
 name|BibtexEntry
@@ -505,7 +505,7 @@ operator|new
 name|StoreFieldAction
 argument_list|()
 expr_stmt|;
-comment|/*addWindowListener(new WindowAdapter() { 		public void windowClosing(WindowEvent e) { 		    closeAction.actionPerformed(null); 		}	 		public void windowOpened(WindowEvent e) { 		    switch (tabbed.getSelectedIndex()) { 		    case 0: 			reqPanel.activate(); 			break; 		    case 1: 			optPanel.activate(); 			break; 		    case 2: 			genPanel.activate(); 			break; 		    case 3: 			source.requestFocus(); 			break; 		    } 		}	        		});*/
+comment|/*addWindowListener(new WindowAdapter() { 		public void windowClosing(WindowEvent e) { 		    closeAction.actionPerformed(null); 		} 		public void windowOpened(WindowEvent e) { 		    switch (tabbed.getSelectedIndex()) { 		    case 0: 			reqPanel.activate(); 			break; 		    case 1: 			optPanel.activate(); 			break; 		    case 2: 			genPanel.activate(); 			break; 		    case 3: 			source.requestFocus(); 			break; 		    } 		} 		});*/
 name|BorderLayout
 name|bl
 init|=
@@ -1152,11 +1152,14 @@ decl_stmt|,
 comment|//        genFields = new String[] {"crossref", "url", "abstract", "comment"}; // May change...
 name|genFields
 init|=
-name|entry
+name|prefs
 operator|.
-name|getGeneralFields
-argument_list|()
+name|getStringArray
+argument_list|(
+literal|"generalFields"
+argument_list|)
 decl_stmt|;
+comment|//entry.getGeneralFields() ;
 if|if
 condition|(
 name|reqFields
@@ -2280,7 +2283,7 @@ name|ta
 parameter_list|)
 block|{
 comment|// Activate autocompletion if it should be used for this field.
-comment|/* 	if ((ta instanceof FieldTextArea)&&  	    (prefs.getBoolean("autoComplete"))) { 	    FieldTextArea fta = (FieldTextArea)ta; 	    Completer comp = baseFrame.getAutoCompleter(fta.getFieldName()); 	    if (comp != null) 		fta.setAutoComplete(comp); 	} 	*/
+comment|/* 	if ((ta instanceof FieldTextArea)&& 	    (prefs.getBoolean("autoComplete"))) { 	    FieldTextArea fta = (FieldTextArea)ta; 	    Completer comp = baseFrame.getAutoCompleter(fta.getFieldName()); 	    if (comp != null) 		fta.setAutoComplete(comp); 	} 	*/
 comment|// Set up key bindings and focus listener for the FieldEditor.
 name|InputMap
 name|im
@@ -3501,7 +3504,7 @@ name|invalidFieldBackground
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*catch (java.io.IOException ex2) { 		    fe.setLabelColor(GUIGlobals.invalidFieldColor); 		    fe.setBackground(GUIGlobals.invalidFieldBackground);		 		    }*/
+comment|/*catch (java.io.IOException ex2) { 		    fe.setLabelColor(GUIGlobals.invalidFieldColor); 		    fe.setBackground(GUIGlobals.invalidFieldBackground); 		    }*/
 else|else
 block|{
 comment|// set == false
@@ -4495,7 +4498,7 @@ expr_stmt|;
 comment|// Set focus to the last used textfield.
 block|}
 block|}
-comment|/*     class ShowReqAction extends AbstractAction { 	public ShowReqAction() { 	    super("Show required", 		  new ImageIcon(GUIGlobals.showReqIconFile)); 	    putValue(SHORT_DESCRIPTION, "Show required fields"); 	    putValue(MNEMONIC_KEY, GUIGlobals.showReqKeyCode); 	}      	public void actionPerformed(ActionEvent e) { 	    //System.out.println("Show required fields"); 	    tabbed.setSelectedIndex(REQ); 	    reqPanel.activate(); // Set focus to the last used textfield. 	}     }      class ShowOptAction extends AbstractAction { 	public ShowOptAction() { 	    super("Show optional",  		  new ImageIcon(GUIGlobals.showOptIconFile)); 	    putValue(SHORT_DESCRIPTION, "Show optional fields"); 	    putValue(MNEMONIC_KEY, GUIGlobals.showOptKeyCode); 	}      	public void actionPerformed(ActionEvent e) { 	    tabbed.setSelectedIndex(OPT); 	    optPanel.activate(); // Set focus to the last used textfield. 	}     }       class ShowGenAction extends AbstractAction { 	public ShowGenAction() { 	    super("Show general",  		  new ImageIcon(GUIGlobals.showGenIconFile)); 	    putValue(SHORT_DESCRIPTION, "Show general fields"); 	    putValue(MNEMONIC_KEY, GUIGlobals.showGenKeyCode); 	}      	public void actionPerformed(ActionEvent e) { 	    tabbed.setSelectedIndex(GEN); 	    genPanel.activate(); // Set focus to the last used textfield. 	}     }     */
+comment|/*     class ShowReqAction extends AbstractAction { 	public ShowReqAction() { 	    super("Show required", 		  new ImageIcon(GUIGlobals.showReqIconFile)); 	    putValue(SHORT_DESCRIPTION, "Show required fields"); 	    putValue(MNEMONIC_KEY, GUIGlobals.showReqKeyCode); 	}  	public void actionPerformed(ActionEvent e) { 	    //System.out.println("Show required fields"); 	    tabbed.setSelectedIndex(REQ); 	    reqPanel.activate(); // Set focus to the last used textfield. 	}     }      class ShowOptAction extends AbstractAction { 	public ShowOptAction() { 	    super("Show optional", 		  new ImageIcon(GUIGlobals.showOptIconFile)); 	    putValue(SHORT_DESCRIPTION, "Show optional fields"); 	    putValue(MNEMONIC_KEY, GUIGlobals.showOptKeyCode); 	}  	public void actionPerformed(ActionEvent e) { 	    tabbed.setSelectedIndex(OPT); 	    optPanel.activate(); // Set focus to the last used textfield. 	}     }       class ShowGenAction extends AbstractAction { 	public ShowGenAction() { 	    super("Show general", 		  new ImageIcon(GUIGlobals.showGenIconFile)); 	    putValue(SHORT_DESCRIPTION, "Show general fields"); 	    putValue(MNEMONIC_KEY, GUIGlobals.showGenKeyCode); 	}  	public void actionPerformed(ActionEvent e) { 	    tabbed.setSelectedIndex(GEN); 	    genPanel.activate(); // Set focus to the last used textfield. 	}     }     */
 DECL|class|NextEntryAction
 class|class
 name|NextEntryAction

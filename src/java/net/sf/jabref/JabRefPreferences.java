@@ -754,6 +754,17 @@ argument_list|,
 literal|"keywords"
 argument_list|)
 expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"generalFields"
+argument_list|,
+literal|"crossref;keywords;doi;url;"
+operator|+
+literal|"pdf;abstract;comment"
+argument_list|)
+expr_stmt|;
 comment|//defaults.put("recentFiles", "/home/alver/Documents/bibk_dok/hovedbase.bib");
 name|defaults
 operator|.
