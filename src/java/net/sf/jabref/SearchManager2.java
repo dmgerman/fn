@@ -64,6 +64,18 @@ name|swing
 operator|.
 name|event
 operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|event
+operator|.
 name|ChangeListener
 import|;
 end_import
@@ -77,6 +89,20 @@ operator|.
 name|event
 operator|.
 name|ChangeEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|search
+operator|.
+name|*
 import|;
 end_import
 
@@ -106,6 +132,8 @@ implements|,
 name|KeyListener
 implements|,
 name|ItemListener
+implements|,
+name|CaretListener
 block|{
 DECL|field|gbl
 name|GridBagLayout
@@ -183,8 +211,10 @@ argument_list|(
 literal|"Settings"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|escape
+specifier|private
+name|JButton
 name|escape
 init|=
 operator|new
@@ -197,8 +227,10 @@ argument_list|(
 literal|"Clear"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|help
+specifier|private
+name|JButton
 name|help
 init|=
 operator|new
@@ -212,20 +244,16 @@ operator|.
 name|helpIconFile
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+comment|/** This button's text will be set later. */
 DECL|field|search
+specifier|private
+name|JButton
 name|search
 init|=
 operator|new
 name|JButton
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Search"
-argument_list|)
-argument_list|)
+argument_list|()
 decl_stmt|;
 DECL|field|searchReq
 DECL|field|searchOpt
@@ -756,6 +784,13 @@ comment|//settings.addSeparator();
 name|searchField
 operator|.
 name|addActionListener
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+name|searchField
+operator|.
+name|addCaretListener
 argument_list|(
 name|this
 argument_list|)
@@ -1430,6 +1465,91 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|setSearchButtonSizes
+argument_list|()
+expr_stmt|;
+name|updateSearchButtonText
+argument_list|()
+expr_stmt|;
+block|}
+comment|/** force the search button to be large enough for      * the longer of the two texts */
+DECL|method|setSearchButtonSizes ()
+specifier|private
+name|void
+name|setSearchButtonSizes
+parameter_list|()
+block|{
+name|search
+operator|.
+name|setText
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Search Specified Field(s)"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Dimension
+name|size1
+init|=
+name|search
+operator|.
+name|getPreferredSize
+argument_list|()
+decl_stmt|;
+name|search
+operator|.
+name|setText
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Search All Fields"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|Dimension
+name|size2
+init|=
+name|search
+operator|.
+name|getPreferredSize
+argument_list|()
+decl_stmt|;
+name|size2
+operator|.
+name|width
+operator|=
+name|Math
+operator|.
+name|max
+argument_list|(
+name|size1
+operator|.
+name|width
+argument_list|,
+name|size2
+operator|.
+name|width
+argument_list|)
+expr_stmt|;
+name|search
+operator|.
+name|setMinimumSize
+argument_list|(
+name|size2
+argument_list|)
+expr_stmt|;
+name|search
+operator|.
+name|setPreferredSize
+argument_list|(
+name|size2
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|updatePrefs ()
 specifier|public
@@ -1940,8 +2060,8 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-comment|// JZ: for testing; this does the new search if the
-comment|// search text is in correct syntax, and the regular search otherwise
+comment|// this searches specified fields if specified,
+comment|// and all fields otherwise
 name|rule1
 operator|=
 operator|new
@@ -1960,7 +2080,9 @@ parameter_list|(
 name|Exception
 name|ex
 parameter_list|)
-block|{ 		}
+block|{
+comment|// we'll do a search in all fields
+block|}
 comment|//		} catch (PatternSyntaxException ex) {
 comment|//			System.out.println(ex);
 comment|//			return;
@@ -2478,6 +2600,77 @@ name|KeyEvent
 name|e
 parameter_list|)
 block|{}
+DECL|method|caretUpdate (CaretEvent e)
+specifier|public
+name|void
+name|caretUpdate
+parameter_list|(
+name|CaretEvent
+name|e
+parameter_list|)
+block|{
+if|if
+condition|(
+name|e
+operator|.
+name|getSource
+argument_list|()
+operator|==
+name|searchField
+condition|)
+block|{
+name|updateSearchButtonText
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+comment|/** Updates the text on the search button to reflect       * the type of search that will happen on click. */
+DECL|method|updateSearchButtonText ()
+specifier|private
+name|void
+name|updateSearchButtonText
+parameter_list|()
+block|{
+name|search
+operator|.
+name|setText
+argument_list|(
+name|SearchExpressionParser
+operator|.
+name|isValidSyntax
+argument_list|(
+name|searchField
+operator|.
+name|getText
+argument_list|()
+argument_list|,
+name|caseSensitive
+operator|.
+name|isSelected
+argument_list|()
+argument_list|,
+name|regExpSearch
+operator|.
+name|isSelected
+argument_list|()
+argument_list|)
+condition|?
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Search Specified Field(s)"
+argument_list|)
+else|:
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Search All Fields"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 
