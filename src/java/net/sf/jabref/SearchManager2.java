@@ -56,6 +56,20 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|search
+operator|.
+name|SearchExpression
+import|;
+end_import
+
 begin_class
 DECL|class|SearchManager2
 class|class
@@ -1356,6 +1370,38 @@ argument_list|(
 name|prefs
 argument_list|)
 expr_stmt|;
+try|try
+block|{
+name|rule1
+operator|=
+operator|new
+name|SearchExpression
+argument_list|(
+name|prefs
+argument_list|,
+name|searchOptions
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ex
+parameter_list|)
+block|{
+comment|// JZ: for testing; this does the new search if the
+comment|// search text is in correct syntax, and the regular search otherwise
+block|}
+comment|//		} catch (PatternSyntaxException ex) {
+comment|//			System.out.println(ex);
+comment|//			return;
+comment|//		} catch (TokenStreamException ex) {
+comment|//			System.out.println(ex);
+comment|//			return;
+comment|//		} catch (RecognitionException ex) {
+comment|//			System.out.println(ex);
+comment|//			return;
+comment|//		}
 name|searchRules
 operator|.
 name|addRule
