@@ -2041,11 +2041,7 @@ name|HORIZONTAL_SCROLLBAR_AS_NEEDED
 argument_list|)
 expr_stmt|;
 name|revalidateGroups
-argument_list|(
-literal|null
-argument_list|,
-literal|null
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|con
 operator|.
@@ -2908,7 +2904,7 @@ literal|"."
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Clear selection, maintain expansion state */
+comment|/**       * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and set the specified selection and expansion state. */
 DECL|method|revalidateGroups (TreePath[] selectionPaths, Enumeration expandedNodes)
 specifier|public
 name|void
@@ -2922,8 +2918,6 @@ name|Enumeration
 name|expandedNodes
 parameter_list|)
 block|{
-comment|// JZTODO: calls to this method may modify the current selection and
-comment|// expasion state in an undesirable way. this must be checked and fixed...
 name|groupsTreeModel
 operator|.
 name|reload
@@ -2984,14 +2978,13 @@ name|revalidate
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**       * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and maintain the current selection and expansion state. */
 DECL|method|revalidateGroups ()
 specifier|public
 name|void
 name|revalidateGroups
 parameter_list|()
 block|{
-comment|// JZTODO: calls to this method may modify the current selection and
-comment|// expasion state in an undesirable way. this must be checked and fixed...
 name|revalidateGroups
 argument_list|(
 name|groupsTree
@@ -3091,15 +3084,7 @@ name|newNode
 argument_list|)
 expr_stmt|;
 name|revalidateGroups
-argument_list|(
-name|groupsTree
-operator|.
-name|getSelectionPaths
 argument_list|()
-argument_list|,
-name|getExpandedPaths
-argument_list|()
-argument_list|)
 expr_stmt|;
 name|UndoableAddOrRemoveGroup
 name|undo
@@ -3457,15 +3442,7 @@ name|newGroup
 argument_list|)
 expr_stmt|;
 name|revalidateGroups
-argument_list|(
-name|groupsTree
-operator|.
-name|getSelectionPaths
 argument_list|()
-argument_list|,
-name|getExpandedPaths
-argument_list|()
-argument_list|)
 expr_stmt|;
 comment|// Store undo information.
 name|panel
@@ -3640,15 +3617,7 @@ name|ADD_NODE
 argument_list|)
 decl_stmt|;
 name|revalidateGroups
-argument_list|(
-name|groupsTree
-operator|.
-name|getSelectionPaths
 argument_list|()
-argument_list|,
-name|getExpandedPaths
-argument_list|()
-argument_list|)
 expr_stmt|;
 name|groupsTree
 operator|.
@@ -3809,15 +3778,7 @@ name|ADD_NODE
 argument_list|)
 decl_stmt|;
 name|revalidateGroups
-argument_list|(
-name|groupsTree
-operator|.
-name|getSelectionPaths
 argument_list|()
-argument_list|,
-name|getExpandedPaths
-argument_list|()
-argument_list|)
 expr_stmt|;
 name|groupsTree
 operator|.
@@ -3984,15 +3945,7 @@ name|removeFromParent
 argument_list|()
 expr_stmt|;
 name|revalidateGroups
-argument_list|(
-name|groupsTree
-operator|.
-name|getSelectionPaths
 argument_list|()
-argument_list|,
-name|getExpandedPaths
-argument_list|()
-argument_list|)
 expr_stmt|;
 comment|// Store undo information.
 name|panel
@@ -4200,15 +4153,7 @@ name|childIndex
 argument_list|)
 expr_stmt|;
 name|revalidateGroups
-argument_list|(
-name|groupsTree
-operator|.
-name|getSelectionPaths
 argument_list|()
-argument_list|,
-name|getExpandedPaths
-argument_list|()
-argument_list|)
 expr_stmt|;
 comment|// Store undo information.
 name|panel
