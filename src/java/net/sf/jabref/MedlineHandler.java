@@ -644,6 +644,13 @@ name|equals
 argument_list|(
 literal|"ForeName"
 argument_list|)
+operator|||
+name|localName
+operator|.
+name|equals
+argument_list|(
+literal|"FirstName"
+argument_list|)
 condition|)
 block|{
 name|inForename
@@ -1555,6 +1562,13 @@ operator|.
 name|equals
 argument_list|(
 literal|"ForeName"
+argument_list|)
+operator|||
+name|localName
+operator|.
+name|equals
+argument_list|(
+literal|"FirstName"
 argument_list|)
 condition|)
 block|{
