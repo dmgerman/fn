@@ -907,7 +907,7 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Entry editor: store field"
+literal|"Entry editor, store field"
 argument_list|)
 argument_list|,
 literal|"store"
@@ -950,7 +950,7 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Entry editor: previous panel"
+literal|"Entry editor, previous panel"
 argument_list|)
 argument_list|,
 literal|"left"
@@ -973,7 +973,7 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Entry editor: next panel"
+literal|"Entry editor, next panel"
 argument_list|)
 argument_list|,
 literal|"right"
@@ -996,7 +996,7 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Entry editor: previous entry"
+literal|"Entry editor, previous entry"
 argument_list|)
 argument_list|,
 literal|"prev"
@@ -1019,7 +1019,7 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Entry editor: next entry"
+literal|"Entry editor, next entry"
 argument_list|)
 argument_list|,
 literal|"next"
@@ -3161,7 +3161,7 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Entry editor: store field"
+literal|"Entry editor, store field"
 argument_list|)
 argument_list|,
 literal|"store"

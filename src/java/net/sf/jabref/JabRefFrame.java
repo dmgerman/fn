@@ -461,7 +461,7 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Save"
+literal|"Save database"
 argument_list|)
 argument_list|)
 decl_stmt|,
@@ -776,15 +776,9 @@ argument_list|,
 name|GUIGlobals
 operator|.
 name|openIconFile
-argument_list|,
-name|prefs
-operator|.
-name|getKey
-argument_list|(
-literal|"Open"
-argument_list|)
 argument_list|)
 decl_stmt|,
+comment|//prefs.getKey("Open")),
 comment|/*remove = new GeneralAction("remove", "Remove", "Remove selected entries", 	  GUIGlobals.removeIconFile),*/
 DECL|field|selectAll
 name|selectAll
@@ -890,7 +884,7 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Toggle groups"
+literal|"Toggle groups interface"
 argument_list|)
 argument_list|)
 decl_stmt|,
@@ -938,7 +932,7 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Push To LyX"
+literal|"Push to LyX"
 argument_list|)
 argument_list|)
 decl_stmt|,
@@ -4881,7 +4875,7 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Open"
+literal|"Open database"
 argument_list|)
 argument_list|)
 expr_stmt|;

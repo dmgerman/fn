@@ -1557,6 +1557,25 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|s
+operator|==
+literal|null
+condition|)
+block|{
+name|Globals
+operator|.
+name|logger
+argument_list|(
+literal|"Could not get key binding for \""
+operator|+
+name|bindName
+operator|+
+literal|"\""
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|KeyStroke
 operator|.
@@ -2106,7 +2125,7 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
-literal|"Push To LyX"
+literal|"Push to LyX"
 argument_list|,
 literal|"ctrl L"
 argument_list|)
@@ -2124,7 +2143,7 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
-literal|"Open"
+literal|"Open database"
 argument_list|,
 literal|"ctrl O"
 argument_list|)
@@ -2133,7 +2152,7 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
-literal|"Save"
+literal|"Save database"
 argument_list|,
 literal|"ctrl S"
 argument_list|)
@@ -2304,7 +2323,7 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
-literal|"Toggle groups"
+literal|"Toggle groups interface"
 argument_list|,
 literal|"ctrl shift G"
 argument_list|)
@@ -2367,7 +2386,7 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
-literal|"Preamble editor: store changes"
+literal|"Preamble editor, store changes"
 argument_list|,
 literal|"alt S"
 argument_list|)
@@ -2385,43 +2404,43 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
-literal|"Entry editor: next panel"
+literal|"Entry editor, next panel"
 argument_list|,
-literal|"ctrl shift RIGHT"
+literal|"ctrl shift Right"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds
 operator|.
 name|put
 argument_list|(
-literal|"Entry editor: previous panel"
+literal|"Entry editor, previous panel"
 argument_list|,
-literal|"ctrl shift LEFT"
+literal|"ctrl shift Left"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds
 operator|.
 name|put
 argument_list|(
-literal|"Entry editor: next entry"
+literal|"Entry editor, next entry"
 argument_list|,
-literal|"ctrl shift DOWN"
+literal|"ctrl shift Down"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds
 operator|.
 name|put
 argument_list|(
-literal|"Entry editor: previous entry"
+literal|"Entry editor, previous entry"
 argument_list|,
-literal|"ctrl shift UP"
+literal|"ctrl shift Up"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds
 operator|.
 name|put
 argument_list|(
-literal|"Entry editor: store field"
+literal|"Entry editor, store field"
 argument_list|,
 literal|"alt S"
 argument_list|)
@@ -2459,7 +2478,7 @@ name|put
 argument_list|(
 literal|"Next tab"
 argument_list|,
-literal|"ctrl RIGHT"
+literal|"ctrl Right"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds
@@ -2468,7 +2487,7 @@ name|put
 argument_list|(
 literal|"Previous tab"
 argument_list|,
-literal|"ctrl LEFT"
+literal|"ctrl Left"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds

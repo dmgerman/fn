@@ -234,6 +234,16 @@ DECL|field|TABLE_ROW_PADDING
 name|TABLE_ROW_PADDING
 init|=
 literal|4
+decl_stmt|,
+DECL|field|KEYBIND_COL_0
+name|KEYBIND_COL_0
+init|=
+literal|200
+decl_stmt|,
+DECL|field|KEYBIND_COL_1
+name|KEYBIND_COL_1
+init|=
+literal|80
 decl_stmt|;
 comment|// Added to the font size when determining table
 comment|// row height
