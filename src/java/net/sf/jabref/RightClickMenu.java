@@ -302,7 +302,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Open pdf or ps"
+literal|"Open PDF or PS"
 argument_list|)
 argument_list|)
 block|{
@@ -343,7 +343,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Open url"
+literal|"Open URL or DOI"
 argument_list|)
 argument_list|)
 block|{

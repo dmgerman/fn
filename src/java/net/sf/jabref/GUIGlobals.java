@@ -2315,6 +2315,24 @@ argument_list|,
 literal|"browse"
 argument_list|)
 expr_stmt|;
+name|FIELD_EXTRAS
+operator|.
+name|put
+argument_list|(
+literal|"url"
+argument_list|,
+literal|"external"
+argument_list|)
+expr_stmt|;
+name|FIELD_EXTRAS
+operator|.
+name|put
+argument_list|(
+literal|"doi"
+argument_list|,
+literal|"external"
+argument_list|)
+expr_stmt|;
 comment|//FIELD_EXTRAS.put("keywords", "selector");
 name|fieldLength
 operator|.

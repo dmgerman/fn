@@ -965,9 +965,9 @@ name|GeneralAction
 argument_list|(
 literal|"openFile"
 argument_list|,
-literal|"Open pdf or ps"
+literal|"Open PDF or PS"
 argument_list|,
-literal|"Open pdf or ps"
+literal|"Open PDF or PS"
 argument_list|,
 name|GUIGlobals
 operator|.
@@ -977,7 +977,7 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Open pdf or ps"
+literal|"Open PDF or PS"
 argument_list|)
 argument_list|)
 decl_stmt|,
@@ -989,9 +989,9 @@ name|GeneralAction
 argument_list|(
 literal|"openUrl"
 argument_list|,
-literal|"Open url"
+literal|"Open URL or DOI"
 argument_list|,
-literal|"Open url"
+literal|"Open URL or DOI"
 argument_list|,
 name|GUIGlobals
 operator|.
@@ -1001,7 +1001,7 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"Open url"
+literal|"Open URL or DOI"
 argument_list|)
 argument_list|)
 decl_stmt|,

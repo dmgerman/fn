@@ -147,6 +147,11 @@ DECL|field|MAC
 name|MAC
 init|=
 literal|"Mac OS X"
+decl_stmt|,
+DECL|field|DOI_LOOKUP_PREFIX
+name|DOI_LOOKUP_PREFIX
+init|=
+literal|"http://dx.doi.org/"
 decl_stmt|;
 DECL|field|duplicateThreshold
 specifier|public

@@ -2512,7 +2512,7 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
-literal|"Open pdf or ps"
+literal|"Open PDF or PS"
 argument_list|,
 literal|"F4"
 argument_list|)
@@ -2521,7 +2521,7 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
-literal|"Open url"
+literal|"Open URL or DOI"
 argument_list|,
 literal|"F3"
 argument_list|)
