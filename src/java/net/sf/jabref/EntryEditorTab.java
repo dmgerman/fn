@@ -641,7 +641,19 @@ name|Globals
 operator|.
 name|KEY_FIELD
 argument_list|,
-literal|null
+operator|(
+name|String
+operator|)
+name|parent
+operator|.
+name|entry
+operator|.
+name|getField
+argument_list|(
+name|Globals
+operator|.
+name|KEY_FIELD
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|//(String) entry.getField(Globals.KEY_FIELD));
