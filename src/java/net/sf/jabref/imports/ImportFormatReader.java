@@ -1246,7 +1246,7 @@ name|indexOf
 argument_list|(
 literal|"{"
 argument_list|)
-operator|>
+operator|>=
 literal|0
 condition|)
 block|{
@@ -1356,8 +1356,6 @@ name|in
 operator|.
 name|length
 argument_list|()
-operator|-
-literal|1
 operator|)
 condition|)
 name|tmp
@@ -1438,7 +1436,7 @@ index|]
 operator|.
 name|indexOf
 argument_list|(
-literal|','
+literal|", "
 argument_list|)
 decl_stmt|;
 name|test
