@@ -123,6 +123,15 @@ operator|.
 name|ALL_FIELDS
 argument_list|)
 decl_stmt|;
+DECL|field|tableFields
+specifier|private
+name|JTextArea
+name|tableFields
+init|=
+operator|new
+name|JTextArea
+argument_list|()
+decl_stmt|;
 comment|/**      * Customization of external program paths.      *      * @param prefs a<code>JabRefPreferences</code> value      */
 DECL|method|TablePrefsTab (JabRefPreferences prefs)
 specifier|public
@@ -1151,6 +1160,12 @@ argument_list|(
 literal|25
 argument_list|)
 expr_stmt|;
+name|con
+operator|.
+name|gridwidth
+operator|=
+literal|1
+expr_stmt|;
 name|gbl
 operator|.
 name|setConstraints
@@ -1165,6 +1180,25 @@ argument_list|(
 name|tablePanel
 argument_list|)
 expr_stmt|;
+name|JScrollPane
+name|sp
+init|=
+operator|new
+name|JScrollPane
+argument_list|(
+name|tableFields
+argument_list|,
+name|JScrollPane
+operator|.
+name|VERTICAL_SCROLLBAR_AS_NEEDED
+argument_list|,
+name|JScrollPane
+operator|.
+name|HORIZONTAL_SCROLLBAR_NEVER
+argument_list|)
+decl_stmt|;
+comment|//gbl.setConstraints(sp, con);
+comment|//add(sp);
 block|}
 DECL|method|getChoices ()
 specifier|private
