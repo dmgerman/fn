@@ -90,7 +90,7 @@ name|jabref
 operator|.
 name|wizard
 operator|.
-name|aux
+name|auximport
 operator|.
 name|*
 import|;

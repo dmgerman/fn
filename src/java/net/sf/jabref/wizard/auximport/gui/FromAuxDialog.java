@@ -16,7 +16,7 @@ comment|// modified :
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.wizard.aux.gui
+DECL|package|net.sf.jabref.wizard.auximport.gui
 package|package
 name|net
 operator|.
@@ -26,7 +26,7 @@ name|jabref
 operator|.
 name|wizard
 operator|.
-name|aux
+name|auximport
 operator|.
 name|gui
 package|;
@@ -108,7 +108,7 @@ name|jabref
 operator|.
 name|wizard
 operator|.
-name|aux
+name|auximport
 operator|.
 name|*
 import|;

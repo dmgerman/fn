@@ -24,7 +24,7 @@ comment|// modified :
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.wizard.aux
+DECL|package|net.sf.jabref.wizard.auximport
 package|package
 name|net
 operator|.
@@ -34,7 +34,7 @@ name|jabref
 operator|.
 name|wizard
 operator|.
-name|aux
+name|auximport
 package|;
 end_package
 
