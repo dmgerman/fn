@@ -1895,8 +1895,7 @@ literal|"type"
 block|,
 literal|"address"
 block|,
-literal|"annote"
-block|,
+comment|//? "annote",
 literal|"booktitle"
 block|,
 literal|"crossref"

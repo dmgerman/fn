@@ -221,21 +221,35 @@ argument_list|(
 literal|"Curly braces { and } must be balanced."
 argument_list|)
 throw|;
-return|return
+name|sb
+operator|=
+operator|new
+name|StringBuffer
+argument_list|(
 literal|"{"
-operator|+
-name|Util
+argument_list|)
+expr_stmt|;
+comment|// No formatting at all for these fields, to allow custom formatting?
+name|sb
 operator|.
-name|wrap2
+name|append
 argument_list|(
 name|text
-argument_list|,
-name|GUIGlobals
-operator|.
-name|LINE_LENGTH
 argument_list|)
-operator|+
+expr_stmt|;
+comment|// Util.wrap2(text, GUIGlobals.LINE_LENGTH)
+name|sb
+operator|.
+name|append
+argument_list|(
 literal|"}"
+argument_list|)
+expr_stmt|;
+return|return
+name|sb
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 name|sb
