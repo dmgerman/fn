@@ -451,6 +451,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
 if|if
 condition|(
 name|_field
@@ -480,6 +481,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
 if|if
 condition|(
 name|_field
@@ -509,6 +511,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
 if|if
 condition|(
 name|_field
