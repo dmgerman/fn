@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003 Morten O. Alver, Nizar N. Batada   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   */
+comment|/*  * Copyright (C) 2003 Morten O. Alver, Nizar N. Batada  *   * All programs in this directory and subdirectories are published under the GNU  * General Public License as described below.  *   * This program is free software; you can redistribute it and/or modify it under  * the terms of the GNU General Public License as published by the Free Software  * Foundation; either version 2 of the License, or (at your option) any later  * version.  *   * This program is distributed in the hope that it will be useful, but WITHOUT  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS  * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more  * details.  *   * You should have received a copy of the GNU General Public License along with  * this program; if not, write to the Free Software Foundation, Inc., 59 Temple  * Place, Suite 330, Boston, MA 02111-1307 USA  *   * Further information about the GNU GPL is available at:  * http://www.gnu.org/copyleft/gpl.ja.html  *    */
 end_comment
 
 begin_package
@@ -30,6 +30,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|net
+operator|.
+name|URLDownload
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|beans
@@ -52,9 +66,41 @@ begin_import
 import|import
 name|java
 operator|.
+name|net
+operator|.
+name|MalformedURLException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URL
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|logging
+operator|.
+name|Logger
 import|;
 end_import
 
@@ -77,6 +123,30 @@ operator|.
 name|datatransfer
 operator|.
 name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|dnd
+operator|.
+name|DnDConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|dnd
+operator|.
+name|DropTarget
 import|;
 end_import
 
@@ -178,7 +248,7 @@ name|JPanel
 implements|implements
 name|VetoableChangeListener
 block|{
-comment|/*    * GUI component that allows editing of the fields of a BibtexEntry.    * EntryTypeForm also registers itself as a VetoableChangeListener,    * receiving events whenever a field of the entry changes, enabling the    * text fields to update themselves if the change is made from somewhere    * else.    */
+comment|/*    * GUI component that allows editing of the fields of a BibtexEntry.    * EntryTypeForm also registers itself as a VetoableChangeListener, receiving    * events whenever a field of the entry changes, enabling the text fields to    * update themselves if the change is made from somewhere else.    */
 comment|// A reference to the entry this object works on.
 DECL|field|entry
 name|BibtexEntry
@@ -207,8 +277,8 @@ name|CopyKeyAction
 name|copyKeyAction
 decl_stmt|;
 comment|// The action concerned with copying the BibTeX key to the clipboard.
-name|AbstractAction
 DECL|field|nextEntryAction
+name|AbstractAction
 name|nextEntryAction
 init|=
 operator|new
@@ -275,6 +345,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|reqPanel
+DECL|field|optPanel
 name|FieldPanel
 name|reqPanel
 init|=
@@ -282,7 +353,6 @@ operator|new
 name|FieldPanel
 argument_list|()
 decl_stmt|,
-DECL|field|optPanel
 name|optPanel
 init|=
 operator|new
@@ -290,13 +360,13 @@ name|FieldPanel
 argument_list|()
 decl_stmt|,
 DECL|field|genPanel
+DECL|field|absPanel
 name|genPanel
 init|=
 operator|new
 name|FieldPanel
 argument_list|()
 decl_stmt|,
-DECL|field|absPanel
 name|absPanel
 init|=
 operator|new
@@ -370,6 +440,22 @@ operator|new
 name|HashSet
 argument_list|()
 decl_stmt|;
+DECL|field|logger
+name|Logger
+name|logger
+init|=
+name|Logger
+operator|.
+name|getLogger
+argument_list|(
+name|EntryEditor
+operator|.
+name|class
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+decl_stmt|;
 DECL|field|updateSource
 name|boolean
 name|updateSource
@@ -385,7 +471,8 @@ name|lastSourceAccepted
 init|=
 literal|true
 decl_stmt|;
-comment|// This indicates whether the last attempt
+comment|// This indicates whether the last
+comment|// attempt
 comment|// at parsing the source was successful. It is used to determine whether the
 comment|// dialog should close; it should stay open if the user received an error
 comment|// message about the source, whatever he or she chose to do about it.
@@ -413,7 +500,8 @@ name|genW
 init|=
 literal|0
 decl_stmt|;
-comment|// Variables for total weight of fields.
+comment|// Variables for total weight of
+comment|// fields.
 comment|// These values can be used to calculate the preferred height for the form.
 comment|// reqW starts at 1 because it needs room for the bibtex key field.
 DECL|field|sourceIndex
@@ -442,7 +530,7 @@ DECL|field|helpAction
 name|HelpAction
 name|helpAction
 decl_stmt|;
-DECL|method|EntryEditor ( JabRefFrame frame_, BasePanel panel_, BibtexEntry entry_, JabRefPreferences prefs_ )
+DECL|method|EntryEditor (JabRefFrame frame_, BasePanel panel_, BibtexEntry entry_, JabRefPreferences prefs_)
 specifier|public
 name|EntryEditor
 parameter_list|(
@@ -794,7 +882,7 @@ operator|.
 name|CENTER
 argument_list|)
 expr_stmt|;
-comment|//Util.pr("opt: "+optW+"  req:"+reqW);
+comment|//Util.pr("opt: "+optW+" req:"+reqW);
 name|int
 name|prefHeight
 init|=
@@ -1327,7 +1415,7 @@ specifier|private
 name|String
 name|label
 decl_stmt|;
-DECL|method|TypeLabel ( String type )
+DECL|method|TypeLabel (String type)
 specifier|public
 name|TypeLabel
 parameter_list|(
@@ -1404,7 +1492,8 @@ operator|new
 name|JPopupMenu
 argument_list|()
 decl_stmt|;
-comment|//typeMenu.add(new JLabel(Globals.lang("Set entry type")));
+comment|//typeMenu.add(new JLabel(Globals.lang("Set entry
+comment|// type")));
 comment|//typeMenu.addSeparator();
 for|for
 control|(
@@ -1476,7 +1565,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|paint ( Graphics g )
+DECL|method|paint (Graphics g)
 specifier|public
 name|void
 name|paint
@@ -1598,7 +1687,7 @@ name|repaint
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|setupFieldPanels ( FieldPanel req, FieldPanel opt, FieldPanel gen, FieldPanel abs )
+DECL|method|setupFieldPanels (FieldPanel req, FieldPanel opt, FieldPanel gen, FieldPanel abs)
 specifier|private
 name|void
 name|setupFieldPanels
@@ -1660,7 +1749,8 @@ operator|.
 name|getOptionalFields
 argument_list|()
 decl_stmt|,
-comment|//        genFields = new String[] {"crossref", "url", "abstract", "comment"}; // May change...
+comment|//        genFields = new String[] {"crossref", "url", "abstract", "comment"};
+comment|// // May change...
 name|genFields
 init|=
 name|prefs
@@ -1670,7 +1760,8 @@ argument_list|(
 literal|"generalFields"
 argument_list|)
 decl_stmt|;
-comment|//entry.getGeneralFields() ;
+comment|//entry.getGeneralFields()
+comment|// ;
 if|if
 condition|(
 name|reqFields
@@ -2007,7 +2098,7 @@ argument_list|,
 name|ta1
 argument_list|)
 expr_stmt|;
-comment|/*if (i == 0)             firstReq = ta1;            if ((i == rmax-1)&& (firstReq != null))            ta1.setNextFocusableComponent(firstReq);*/
+comment|/*          * if (i == 0) firstReq = ta1; if ((i == rmax-1)&& (firstReq != null))          * ta1.setNextFocusableComponent(firstReq);          */
 name|setupJTextComponent
 argument_list|(
 name|ta1
@@ -2099,7 +2190,7 @@ argument_list|,
 name|ta2
 argument_list|)
 expr_stmt|;
-comment|/*if (i == 0)             firstOpt = ta1;            if (i == omax-1)            ta1.setNextFocusableComponent(firstOpt);*/
+comment|/*          * if (i == 0) firstOpt = ta1; if (i == omax-1)          * ta1.setNextFocusableComponent(firstOpt);          */
 name|setupJTextComponent
 argument_list|(
 name|ta2
@@ -2191,7 +2282,7 @@ argument_list|,
 name|ta3
 argument_list|)
 expr_stmt|;
-comment|/*if (i == 0)             firstGen = ta1;            if (i == gmax-1)            ta1.setNextFocusableComponent(firstGen);*/
+comment|/*          * if (i == 0) firstGen = ta1; if (i == gmax-1)          * ta1.setNextFocusableComponent(firstGen);          */
 name|setupJTextComponent
 argument_list|(
 name|ta3
@@ -2283,7 +2374,7 @@ argument_list|,
 name|ta4
 argument_list|)
 expr_stmt|;
-comment|/*if (i == 0)             firstGen = ta1;            if (i == gmax-1)            ta1.setNextFocusableComponent(firstGen);*/
+comment|/*          * if (i == 0) firstGen = ta1; if (i == gmax-1)          * ta1.setNextFocusableComponent(firstGen);          */
 name|setupJTextComponent
 argument_list|(
 name|ta4
@@ -3181,8 +3272,8 @@ name|tf
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * getExtra checks the field name against GUIGlobals.FIELD_EXTRAS. If the name    * has an entry, the proper component to be shown is created and returned.    * Otherwise, null is returned.    * In addition, e.g. listeners can be added to the field editor, even if no    * component is returned.    *    * @param string Field name    * @return Component to show, or null if none.    */
-DECL|method|getExtra ( String string, FieldEditor editor )
+comment|/**    * getExtra checks the field name against GUIGlobals.FIELD_EXTRAS. If the name    * has an entry, the proper component to be shown is created and returned.    * Otherwise, null is returned. In addition, e.g. listeners can be added to    * the field editor, even if no component is returned.    *     * @param string    *          Field name    * @return Component to show, or null if none.    */
+DECL|method|getExtra (String string, FieldEditor editor)
 specifier|private
 name|JComponent
 name|getExtra
@@ -3438,7 +3529,7 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
-comment|/*JabRefFileChooser chooser = new JabRefFileChooser               (new File(ed.getText()));                      if (ed.getText().equals("")) {             chooser.setCurrentDirectory(new File(prefs.get(fieldName +                 Globals.FILETYPE_PREFS_EXT, "")));                      }                      //chooser.addChoosableFileFilter(new OpenFileFilter()); //nb nov2                      int returnVal = chooser.showOpenDialog(null);                      if (returnVal == JFileChooser.APPROVE_OPTION) {*/
+comment|/*            * JabRefFileChooser chooser = new JabRefFileChooser (new            * File(ed.getText())); if (ed.getText().equals("")) {            * chooser.setCurrentDirectory(new File(prefs.get(fieldName +            * Globals.FILETYPE_PREFS_EXT, ""))); }            * //chooser.addChoosableFileFilter(new OpenFileFilter()); //nb nov2            * int returnVal = chooser.showOpenDialog(null); if (returnVal ==            * JFileChooser.APPROVE_OPTION) {            */
 if|if
 condition|(
 name|chosenFile
@@ -3482,19 +3573,9 @@ name|getPath
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|storeFieldAction
-operator|.
-name|actionPerformed
-argument_list|(
-operator|new
-name|ActionEvent
+name|updateField
 argument_list|(
 name|ed
-argument_list|,
-literal|0
-argument_list|,
-literal|""
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3557,7 +3638,7 @@ literal|"Browse"
 argument_list|)
 argument_list|)
 decl_stmt|,
-name|auto
+name|download
 init|=
 operator|new
 name|JButton
@@ -3566,10 +3647,11 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Auto"
+literal|"Download"
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|//       auto = new JButton( Globals.lang( "Auto" ) ) ;
 operator|(
 operator|(
 name|JComponent
@@ -3857,7 +3939,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|auto
+name|download
 operator|.
 name|addActionListener
 argument_list|(
@@ -3873,9 +3955,63 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|Object
-name|o
+name|String
+name|res
 init|=
+name|JOptionPane
+operator|.
+name|showInputDialog
+argument_list|(
+operator|(
+name|Component
+operator|)
+name|ed
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Enter URL to download"
+argument_list|)
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|res
+operator|!=
+literal|null
+condition|)
+block|{
+name|URL
+name|url
+decl_stmt|;
+try|try
+block|{
+name|url
+operator|=
+operator|new
+name|URL
+argument_list|(
+name|res
+argument_list|)
+expr_stmt|;
+name|File
+name|file
+init|=
+operator|new
+name|File
+argument_list|(
+operator|new
+name|File
+argument_list|(
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"pdfDirectory"
+argument_list|)
+argument_list|)
+argument_list|,
 name|entry
 operator|.
 name|getField
@@ -3884,27 +4020,26 @@ name|Globals
 operator|.
 name|KEY_FIELD
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-operator|(
-name|o
-operator|==
-literal|null
-operator|)
-operator|||
-operator|(
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"pdfDirectory"
+operator|+
+literal|".pdf"
 argument_list|)
-operator|==
-literal|null
+decl_stmt|;
+name|URLDownload
+name|udl
+init|=
+operator|new
+name|URLDownload
+argument_list|(
+operator|(
+name|Component
 operator|)
-condition|)
-block|{
+name|ed
+argument_list|,
+name|url
+argument_list|,
+name|file
+argument_list|)
+decl_stmt|;
 name|frame
 operator|.
 name|output
@@ -3913,15 +4048,68 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"You must set both bibtex key and PDF directory"
+literal|"Downloading..."
 argument_list|)
-operator|+
-literal|"."
 argument_list|)
 expr_stmt|;
-return|return ;
+try|try
+block|{
+name|udl
+operator|.
+name|download
+argument_list|()
+expr_stmt|;
 block|}
-name|panel
+catch|catch
+parameter_list|(
+name|IOException
+name|e2
+parameter_list|)
+block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+operator|(
+name|Component
+operator|)
+name|ed
+argument_list|,
+literal|"Invalid URL"
+argument_list|,
+literal|"Download file"
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
+name|logger
+operator|.
+name|log
+argument_list|(
+name|java
+operator|.
+name|util
+operator|.
+name|logging
+operator|.
+name|Level
+operator|.
+name|WARNING
+argument_list|,
+literal|"Error while downloading "
+operator|+
+name|url
+operator|.
+name|toString
+argument_list|()
+argument_list|,
+name|e2
+argument_list|)
+expr_stmt|;
+block|}
+name|frame
 operator|.
 name|output
 argument_list|(
@@ -3929,130 +4117,60 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Searching for PDF file"
+literal|"Download completed"
 argument_list|)
-operator|+
-literal|" '"
-operator|+
-name|o
-operator|+
-literal|".pdf'..."
 argument_list|)
 expr_stmt|;
-operator|(
-operator|new
-name|Thread
-argument_list|()
-block|{
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
-name|Object
-name|o
-init|=
-name|entry
-operator|.
-name|getField
-argument_list|(
-name|Globals
-operator|.
-name|KEY_FIELD
-argument_list|)
-decl_stmt|;
-name|String
-name|found
-init|=
-name|Util
-operator|.
-name|findPdf
-argument_list|(
-operator|(
-name|String
-operator|)
-name|o
-argument_list|,
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"pdfDirectory"
-argument_list|)
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|found
-operator|!=
-literal|null
-condition|)
-block|{
 name|ed
 operator|.
 name|setText
 argument_list|(
-name|found
+name|file
+operator|.
+name|toURL
+argument_list|()
+operator|.
+name|toString
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|storeFieldAction
-operator|.
-name|actionPerformed
-argument_list|(
-operator|new
-name|ActionEvent
+name|updateField
 argument_list|(
 name|ed
-argument_list|,
-literal|0
-argument_list|,
-literal|""
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|panel
-operator|.
-name|output
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"PDF field set"
-argument_list|)
-operator|+
-literal|"."
 argument_list|)
 expr_stmt|;
 block|}
-else|else
+catch|catch
+parameter_list|(
+name|MalformedURLException
+name|e1
+parameter_list|)
 block|{
-name|panel
+name|JOptionPane
 operator|.
-name|output
+name|showMessageDialog
 argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"No PDF found"
-argument_list|)
-operator|+
-literal|"."
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-block|}
+operator|(
+name|Component
 operator|)
+name|ed
+argument_list|,
+literal|"Invalid URL"
+argument_list|,
+literal|"Download file"
+argument_list|,
+name|JOptionPane
 operator|.
-name|start
-argument_list|()
+name|ERROR_MESSAGE
+argument_list|)
 expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 argument_list|)
 expr_stmt|;
+comment|/*        * Erik: I propose to use the Download instead... auto.addActionListener(        * new ActionListener() { public void actionPerformed( ActionEvent e ) {        * Object o = entry.getField( Globals.KEY_FIELD ) ; if ( ( o == null ) || (        * prefs.get( "pdfDirectory" ) == null ) ) { frame.output( Globals.lang(        * "You must set both bibtex key and PDF directory" ) + "." ) ; return ; }        * panel.output( Globals.lang( "Searching for PDF file" ) + " '" + o +        * ".pdf'..." ) ; ( new Thread() { public void run() { Object o =        * entry.getField( Globals.KEY_FIELD ) ; String found = Util.findPdf( (        * String ) o, prefs.get( "pdfDirectory" ) ) ; if ( found != null ) {        * ed.setText( found ) ; updateField(ed); panel.output( Globals.lang( "PDF        * field set" ) + "." ) ; } else { panel.output( Globals.lang( "No PDF        * found" ) + "." ) ; } } } ).start() ; } } ) ; pan.add( auto ) ;        */
 name|pan
 operator|.
 name|add
@@ -4064,11 +4182,97 @@ name|pan
 operator|.
 name|add
 argument_list|(
-name|auto
+name|download
+argument_list|)
+expr_stmt|;
+comment|// Add drag and drop support to the field
+operator|(
+operator|(
+name|JComponent
+operator|)
+name|editor
+operator|)
+operator|.
+name|setDropTarget
+argument_list|(
+operator|new
+name|DropTarget
+argument_list|(
+operator|(
+name|Component
+operator|)
+name|editor
+argument_list|,
+name|DnDConstants
+operator|.
+name|ACTION_NONE
+argument_list|,
+operator|new
+name|UrlDragDrop
+argument_list|(
+name|this
+argument_list|,
+name|frame
+argument_list|,
+name|editor
+argument_list|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
 name|pan
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+operator|(
+name|s
+operator|!=
+literal|null
+operator|)
+operator|&&
+name|s
+operator|.
+name|equals
+argument_list|(
+literal|"url"
+argument_list|)
+condition|)
+block|{
+operator|(
+operator|(
+name|JComponent
+operator|)
+name|editor
+operator|)
+operator|.
+name|setDropTarget
+argument_list|(
+operator|new
+name|DropTarget
+argument_list|(
+operator|(
+name|Component
+operator|)
+name|editor
+argument_list|,
+name|DnDConstants
+operator|.
+name|ACTION_NONE
+argument_list|,
+operator|new
+name|SimpleUrlDragDrop
+argument_list|(
+name|editor
+argument_list|,
+name|storeFieldAction
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+literal|null
 return|;
 block|}
 else|else
@@ -4231,7 +4435,8 @@ operator|.
 name|INDENT
 argument_list|)
 expr_stmt|;
-comment|// Add the global focus listener, so a menu item can see if this field was focused when
+comment|// Add the global focus listener, so a menu item can see if this field
+comment|// was focused when
 comment|// an action was called.
 name|source
 operator|.
@@ -4384,7 +4589,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|setupJTextComponent ( JTextComponent ta )
+DECL|method|setupJTextComponent (JTextComponent ta)
 specifier|private
 name|void
 name|setupJTextComponent
@@ -4394,7 +4599,7 @@ name|ta
 parameter_list|)
 block|{
 comment|// Activate autocompletion if it should be used for this field.
-comment|/*       if ((ta instanceof FieldTextArea)&&         (prefs.getBoolean("autoComplete"))) {         FieldTextArea fta = (FieldTextArea)ta;         Completer comp = baseFrame.getAutoCompleter(fta.getFieldName());         if (comp != null)      fta.setAutoComplete(comp);       }      */
+comment|/*      * if ((ta instanceof FieldTextArea)&& (prefs.getBoolean("autoComplete"))) {      * FieldTextArea fta = (FieldTextArea)ta; Completer comp =      * baseFrame.getAutoCompleter(fta.getFieldName()); if (comp != null)      * fta.setAutoComplete(comp); }      */
 comment|// Set up key bindings and focus listener for the FieldEditor.
 name|InputMap
 name|im
@@ -4703,7 +4908,7 @@ argument_list|()
 return|;
 block|}
 comment|/**    * Sets the enabled status of all text fields of the entry editor.    */
-DECL|method|setEnabled ( boolean enabled )
+DECL|method|setEnabled (boolean enabled)
 specifier|public
 name|void
 name|setEnabled
@@ -4844,8 +5049,8 @@ name|FieldListener
 extends|extends
 name|FocusAdapter
 block|{
-comment|/*      * Focus listener that fires the storeFieldAction when a FieldTextArea      * loses focus.      */
-DECL|method|focusGained ( FocusEvent e )
+comment|/*      * Focus listener that fires the storeFieldAction when a FieldTextArea loses      * focus.      */
+DECL|method|focusGained (FocusEvent e)
 specifier|public
 name|void
 name|focusGained
@@ -4854,7 +5059,8 @@ name|FocusEvent
 name|e
 parameter_list|)
 block|{
-comment|//Util.pr("Gained focus "+e.getSource().toString().substring(0,30));
+comment|//Util.pr("Gained focus
+comment|// "+e.getSource().toString().substring(0,30));
 if|if
 condition|(
 name|e
@@ -4922,7 +5128,7 @@ comment|//if (panel.baseChanged)
 comment|//  updateSource();
 block|}
 block|}
-DECL|method|focusLost ( FocusEvent e )
+DECL|method|focusLost (FocusEvent e)
 specifier|public
 name|void
 name|focusLost
@@ -4941,22 +5147,12 @@ name|isTemporary
 argument_list|()
 condition|)
 block|{
-name|storeFieldAction
-operator|.
-name|actionPerformed
-argument_list|(
-operator|new
-name|ActionEvent
+name|updateField
 argument_list|(
 name|e
 operator|.
 name|getSource
 argument_list|()
-argument_list|,
-literal|0
-argument_list|,
-literal|""
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -4968,7 +5164,7 @@ name|FieldPanel
 extends|extends
 name|JPanel
 block|{
-comment|/*      * This extension to JPanel keeps a reference to its active      * field, on behalf of which it requests the focus when      * it is told to.      */
+comment|/*      * This extension to JPanel keeps a reference to its active field, on behalf      * of which it requests the focus when it is told to.      */
 DECL|method|FieldPanel ()
 specifier|public
 name|FieldPanel
@@ -4995,9 +5191,10 @@ block|{
 return|return
 name|this
 return|;
-comment|// Component to add. Return the scrollpane, if there is one.
+comment|// Component to add. Return the scrollpane, if there is
+comment|// one.
 block|}
-DECL|method|setActive ( FieldEditor c )
+DECL|method|setActive (FieldEditor c)
 specifier|public
 name|void
 name|setActive
@@ -5174,7 +5371,7 @@ name|TabListener
 implements|implements
 name|ChangeListener
 block|{
-DECL|method|stateChanged ( ChangeEvent e )
+DECL|method|stateChanged (ChangeEvent e)
 specifier|public
 name|void
 name|stateChanged
@@ -5280,7 +5477,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed ( ActionEvent e )
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -5306,7 +5503,7 @@ operator|!
 name|goOn
 condition|)
 block|{
-return|return ;
+return|return;
 block|}
 name|panel
 operator|.
@@ -5419,7 +5616,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed ( ActionEvent e )
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -5428,7 +5625,7 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-comment|/*Thread t = new Thread() {        public void run() {                        panel.hideEntryEditor();        }          };*/
+comment|/*        * Thread t = new Thread() { public void run() { panel.hideEntryEditor(); } };        */
 if|if
 condition|(
 name|tabbed
@@ -5439,19 +5636,9 @@ operator|==
 name|srcPanel
 condition|)
 block|{
-name|storeFieldAction
-operator|.
-name|actionPerformed
-argument_list|(
-operator|new
-name|ActionEvent
+name|updateField
 argument_list|(
 name|source
-argument_list|,
-literal|0
-argument_list|,
-literal|""
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -5511,7 +5698,7 @@ argument_list|)
 expr_stmt|;
 comment|//putValue(MNEMONIC_KEY, GUIGlobals.copyKeyCode);
 block|}
-DECL|method|actionPerformed ( ActionEvent e )
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -5593,7 +5780,7 @@ literal|"Store field value"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed ( ActionEvent e )
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -5665,7 +5852,8 @@ operator|.
 name|getText
 argument_list|()
 expr_stmt|;
-comment|// We check if the field has changed, since we don't want to mark the
+comment|// We check if the field has changed, since we don't want to
+comment|// mark the
 comment|// base as changed unless we have a real change.
 block|}
 if|if
@@ -5882,7 +6070,8 @@ name|validFieldBackground
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Add an UndoableFieldChange to the baseframe's undoManager.
+comment|// Add an UndoableFieldChange to the baseframe's
+comment|// undoManager.
 name|panel
 operator|.
 name|undoManager
@@ -5974,7 +6163,7 @@ operator|.
 name|validFieldBackground
 argument_list|)
 expr_stmt|;
-comment|/*fe.setLabelColor((toSet == null) ?              GUIGlobals.nullFieldColor :              GUIGlobals.validFieldColor);*/
+comment|/*            * fe.setLabelColor((toSet == null) ? GUIGlobals.nullFieldColor :            * GUIGlobals.validFieldColor);            */
 block|}
 block|}
 elseif|else
@@ -6068,7 +6257,7 @@ argument_list|)
 operator|)
 condition|)
 block|{
-return|return ;
+return|return;
 comment|// No change.
 block|}
 name|boolean
@@ -6357,7 +6546,7 @@ literal|"Switch to the panel to the left"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed ( ActionEvent e )
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -6440,7 +6629,7 @@ literal|"Switch to the panel to the right"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed ( ActionEvent e )
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -6546,7 +6735,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed ( ActionEvent e )
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -6617,7 +6806,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-return|return ;
+return|return;
 comment|// newRow is still -1, so we can assume the database
 block|}
 comment|// has only one entry.
@@ -6709,7 +6898,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed ( ActionEvent e )
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -6789,7 +6978,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-return|return ;
+return|return;
 comment|// newRow is still -1, so we can assume the database
 block|}
 comment|// has only one entry.
@@ -6840,8 +7029,8 @@ expr_stmt|;
 block|}
 block|}
 empty_stmt|;
-comment|/**    * Centers the given row, and highlights it.    *    * @param row an<code>int</code> value    */
-DECL|method|scrollTo ( int row )
+comment|/**    * Centers the given row, and highlights it.    *     * @param row    *          an<code>int</code> value    */
+DECL|method|scrollTo (int row)
 specifier|private
 name|void
 name|scrollTo
@@ -6871,8 +7060,8 @@ name|row
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Switches the entry for this editor to the one with the given    * id. If the target entry is of the same type as the current,    * field values are simply updated. Otherwise, a new editor    * created to replace this one.    *    * @param id a<code>String</code> value    */
-DECL|method|switchTo ( String id )
+comment|/**    * Switches the entry for this editor to the one with the given id. If the    * target entry is of the same type as the current, field values are simply    * updated. Otherwise, a new editor created to replace this one.    *     * @param id    *          a<code>String</code> value    */
+DECL|method|switchTo (String id)
 specifier|private
 name|void
 name|switchTo
@@ -6912,12 +7101,7 @@ literal|null
 condition|)
 block|{
 comment|//Util.pr(((FieldPanel)comp).getText());
-name|storeFieldAction
-operator|.
-name|actionPerformed
-argument_list|(
-operator|new
-name|ActionEvent
+name|updateField
 argument_list|(
 operator|(
 operator|(
@@ -6927,11 +7111,6 @@ name|comp
 operator|)
 operator|.
 name|activeField
-argument_list|,
-literal|0
-argument_list|,
-literal|""
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -6981,7 +7160,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Returns the index of the active (visible) panel.    *    * @return an<code>int</code> value    */
+comment|/**    * Returns the index of the active (visible) panel.    *     * @return an<code>int</code> value    */
 DECL|method|getVisiblePanel ()
 specifier|public
 name|int
@@ -6995,8 +7174,8 @@ name|getSelectedIndex
 argument_list|()
 return|;
 block|}
-comment|/**    * Sets the panel with the given index visible.    *    * @param i an<code>int</code> value    */
-DECL|method|setVisiblePanel ( int i )
+comment|/**    * Sets the panel with the given index visible.    *     * @param i    *          an<code>int</code> value    */
+DECL|method|setVisiblePanel (int i)
 specifier|public
 name|void
 name|setVisiblePanel
@@ -7048,8 +7227,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Updates this editor to show the given entry, regardless of    * type correspondence.    *    * @param be a<code>BibtexEntry</code> value    */
-DECL|method|switchTo ( BibtexEntry be )
+comment|/**    * Updates this editor to show the given entry, regardless of type    * correspondence.    *     * @param be    *          a<code>BibtexEntry</code> value    */
+DECL|method|switchTo (BibtexEntry be)
 specifier|public
 name|void
 name|switchTo
@@ -7095,7 +7274,7 @@ DECL|field|selectedEntry
 name|BibtexEntry
 name|selectedEntry
 decl_stmt|;
-DECL|method|GenerateKeyAction ( JabRefFrame parentFrame )
+DECL|method|GenerateKeyAction (JabRefFrame parentFrame)
 specifier|public
 name|GenerateKeyAction
 parameter_list|(
@@ -7140,7 +7319,7 @@ argument_list|)
 expr_stmt|;
 comment|//        putValue(MNEMONIC_KEY, GUIGlobals.showGenKeyCode);
 block|}
-DECL|method|actionPerformed ( ActionEvent e )
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -7153,7 +7332,8 @@ comment|// 1. get Bitexentry for selected index (already have)
 comment|// 2. run the LabelMaker by it
 try|try
 block|{
-comment|// this updates the table automatically, on close, but not within the tab
+comment|// this updates the table automatically, on close, but not
+comment|// within the tab
 name|Object
 name|oldValue
 init|=
@@ -7323,7 +7503,7 @@ literal|"Undo"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed ( ActionEvent e )
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -7347,7 +7527,7 @@ parameter_list|(
 name|Throwable
 name|ex
 parameter_list|)
-block|{}
+block|{       }
 block|}
 block|}
 DECL|field|redoAction
@@ -7390,7 +7570,7 @@ literal|"Redo"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed ( ActionEvent e )
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -7414,7 +7594,7 @@ parameter_list|(
 name|Throwable
 name|ex
 parameter_list|)
-block|{}
+block|{       }
 block|}
 block|}
 DECL|class|SaveDatabaseAction
@@ -7434,7 +7614,7 @@ literal|"Save database"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed ( ActionEvent e )
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -7467,40 +7647,20 @@ name|FieldPanel
 operator|)
 name|comp
 decl_stmt|;
-name|storeFieldAction
-operator|.
-name|actionPerformed
-argument_list|(
-operator|new
-name|ActionEvent
+name|updateField
 argument_list|(
 name|fp
 operator|.
 name|activeField
-argument_list|,
-literal|0
-argument_list|,
-literal|""
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
 comment|// Source panel.
-name|storeFieldAction
-operator|.
-name|actionPerformed
-argument_list|(
-operator|new
-name|ActionEvent
+name|updateField
 argument_list|(
 name|comp
-argument_list|,
-literal|0
-argument_list|,
-literal|""
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -7519,10 +7679,10 @@ parameter_list|(
 name|Throwable
 name|ex
 parameter_list|)
-block|{}
+block|{       }
 block|}
 block|}
-comment|/**    * Returns false if the contents of the source panel has not been validated, true othervise.    */
+comment|/**    * Returns false if the contents of the source panel has not been validated,    * true othervise.    */
 DECL|method|lastSourceAccepted ()
 specifier|public
 name|boolean
@@ -7552,8 +7712,8 @@ return|return
 name|lastSourceAccepted
 return|;
 block|}
-comment|/*public boolean storeSourceIfNeeded() {     if (tabbed.getSelectedIndex() == sourceIndex)       return storeSource();     else       return true;        }*/
-DECL|method|storeSource ( boolean showError )
+comment|/*    * public boolean storeSourceIfNeeded() { if (tabbed.getSelectedIndex() ==    * sourceIndex) return storeSource(); else return true; }    */
+DECL|method|storeSource (boolean showError)
 specifier|public
 name|boolean
 name|storeSource
@@ -8003,7 +8163,7 @@ argument_list|(
 name|compound
 argument_list|)
 expr_stmt|;
-comment|/*if (((oldKey == null)&& (newKey != null)) ||           ((oldKey != null)&& (newKey == null)) ||           ((oldKey != null)&& (newKey != null)&& !oldKey.equals(newKey))) {             } */
+comment|/*        * if (((oldKey == null)&& (newKey != null)) || ((oldKey != null)&&        * (newKey == null)) || ((oldKey != null)&& (newKey != null)&&        * !oldKey.equals(newKey))) { }        */
 if|if
 condition|(
 name|duplicateWarning
@@ -8179,7 +8339,7 @@ literal|false
 return|;
 block|}
 block|}
-DECL|method|setField ( String fieldName, String newFieldData )
+DECL|method|setField (String fieldName, String newFieldData)
 specifier|public
 name|boolean
 name|setField
@@ -8271,7 +8431,7 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|setFieldInPanel ( FieldPanel pan, String fieldName, String newFieldData )
+DECL|method|setFieldInPanel (FieldPanel pan, String fieldName, String newFieldData)
 specifier|private
 name|boolean
 name|setFieldInPanel
@@ -8359,7 +8519,7 @@ argument_list|(
 name|newFieldData
 argument_list|)
 expr_stmt|;
-comment|/*ed.setLabelColor(((newFieldData == null) || newFieldData.equals(""))            ? GUIGlobals.nullFieldColor :            GUIGlobals.validFieldColor);*/
+comment|/*          * ed.setLabelColor(((newFieldData == null) || newFieldData.equals("")) ?          * GUIGlobals.nullFieldColor : GUIGlobals.validFieldColor);          */
 return|return
 literal|true
 return|;
@@ -8482,7 +8642,7 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|/*ed.setLabelColor(content == null ? GUIGlobals.nullFieldColor :                          GUIGlobals.validFieldColor);*/
+comment|/*          * ed.setLabelColor(content == null ? GUIGlobals.nullFieldColor :          * GUIGlobals.validFieldColor);          */
 comment|//if (ed.getFieldName().equals("year"))
 comment|//    Util.pr(content.toString());
 block|}
@@ -8631,7 +8791,7 @@ block|}
 block|}
 block|}
 comment|// Update the JTextArea when a field has changed.
-DECL|method|vetoableChange ( PropertyChangeEvent e )
+DECL|method|vetoableChange (PropertyChangeEvent e)
 specifier|public
 name|void
 name|vetoableChange
@@ -8674,13 +8834,40 @@ argument_list|)
 expr_stmt|;
 comment|//Util.pr(e.getPropertyName());
 block|}
+comment|/**    * @param ed    */
+DECL|method|updateField (final Object source)
+specifier|public
+name|void
+name|updateField
+parameter_list|(
+specifier|final
+name|Object
+name|source
+parameter_list|)
+block|{
+name|storeFieldAction
+operator|.
+name|actionPerformed
+argument_list|(
+operator|new
+name|ActionEvent
+argument_list|(
+name|source
+argument_list|,
+literal|0
+argument_list|,
+literal|""
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 DECL|class|ExternalViewerListener
 class|class
 name|ExternalViewerListener
 extends|extends
 name|MouseAdapter
 block|{
-DECL|method|mouseClicked ( MouseEvent evt )
+DECL|method|mouseClicked (MouseEvent evt)
 specifier|public
 name|void
 name|mouseClicked
@@ -8723,7 +8910,7 @@ literal|""
 argument_list|)
 condition|)
 block|{
-return|return ;
+return|return;
 block|}
 name|tf
 operator|.
@@ -8738,7 +8925,8 @@ operator|.
 name|getText
 argument_list|()
 decl_stmt|;
-comment|// get selected ?  String 	getSelectedText()
+comment|// get selected ? String
+comment|// getSelectedText()
 try|try
 block|{
 name|Util
@@ -8789,7 +8977,7 @@ DECL|field|panel
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|method|ChangeTypeAction ( BibtexEntryType type, BasePanel bp )
+DECL|method|ChangeTypeAction (BibtexEntryType type, BasePanel bp)
 specifier|public
 name|ChangeTypeAction
 parameter_list|(
@@ -8819,7 +9007,7 @@ operator|=
 name|bp
 expr_stmt|;
 block|}
-DECL|method|actionPerformed ( ActionEvent evt )
+DECL|method|actionPerformed (ActionEvent evt)
 specifier|public
 name|void
 name|actionPerformed

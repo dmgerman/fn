@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* Copyright (C) 2003 Morten O. Alver  All programs in this directory and subdirectories are published under the GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html  */
+comment|/*  Copyright (C) 2003 Morten O. Alver   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   */
 end_comment
 
 begin_package
@@ -18,47 +18,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|awt
 operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|imports
-operator|.
-name|CiteSeerFetcher
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|imports
-operator|.
-name|ImportFormatReader
+name|Color
 import|;
 end_import
 
@@ -68,7 +30,107 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
+name|Dimension
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Point
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|BufferedInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|BufferedOutputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|FileInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|FileOutputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|StringWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|MalformedURLException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URL
 import|;
 end_import
 
@@ -78,9 +140,59 @@ name|java
 operator|.
 name|util
 operator|.
-name|regex
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|Pattern
+name|util
+operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|StringTokenizer
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Vector
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|ext
+operator|.
+name|BrowserLauncher
 import|;
 end_import
 
@@ -112,8 +224,36 @@ name|GroupSelector
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|imports
+operator|.
+name|CiteSeerFetcher
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|imports
+operator|.
+name|ImportFormatReader
+import|;
+end_import
+
 begin_comment
-comment|/**  * Describe class<code>Util</code> here.  *  * @author<a href="mailto:"></a>  * @version 1.0  */
+comment|/**  * Describe class<code>Util</code> here.  *   * @author<a href="mailto:"></a>  * @version 1.0  */
 end_comment
 
 begin_class
@@ -141,6 +281,8 @@ argument_list|)
 decl_stmt|;
 comment|// Integer values for indicating result of duplicate check (for entries):
 DECL|field|TYPE_MISMATCH
+DECL|field|NOT_EQUAL
+DECL|field|EQUAL
 specifier|final
 specifier|static
 name|int
@@ -149,22 +291,20 @@ init|=
 operator|-
 literal|1
 decl_stmt|,
-DECL|field|NOT_EQUAL
 name|NOT_EQUAL
 init|=
 literal|0
 decl_stmt|,
-DECL|field|EQUAL
 name|EQUAL
 init|=
 literal|1
 decl_stmt|,
 DECL|field|EMPTY_IN_ONE
+DECL|field|EMPTY_IN_TWO
 name|EMPTY_IN_ONE
 init|=
 literal|2
 decl_stmt|,
-DECL|field|EMPTY_IN_TWO
 name|EMPTY_IN_TWO
 init|=
 literal|3
@@ -433,7 +573,7 @@ operator|++
 operator|)
 return|;
 block|}
-comment|/**      * This method sets the location of a Dialog such that it is centered with      * regard to another window, but not outside the screen on the left and the top.      */
+comment|/**      * This method sets the location of a Dialog such that it is centered with      * regard to another window, but not outside the screen on the left and the      * top.      */
 DECL|method|placeDialog (javax.swing.JDialog diag, java.awt.Container win)
 specifier|public
 specifier|static
@@ -534,7 +674,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This method translates a field or string from Bibtex notation, with      * possibly text contained in " " or { }, and string references, concatenated      * by '#' characters, into Bibkeeper notation, where string references are      * enclosed in a pair of '#' characters.      */
+comment|/**      * This method translates a field or string from Bibtex notation, with      * possibly text contained in " " or { }, and string references,      * concatenated by '#' characters, into Bibkeeper notation, where string      * references are enclosed in a pair of '#' characters.      */
 DECL|method|parseField (String content)
 specifier|public
 specifier|static
@@ -675,7 +815,8 @@ name|string
 operator|=
 literal|false
 expr_stmt|;
-comment|//System.out.println("FileLoader: "+content+" "+string+" "+hash+" "+wr1+" "+wr2);
+comment|//System.out.println("FileLoader: "+content+" "+string+" "+hash+"
+comment|// "+wr1+" "+wr2);
 name|StringTokenizer
 name|tok
 init|=
@@ -802,7 +943,8 @@ name|s
 parameter_list|)
 block|{
 comment|// returns the string, after shaving off whitespace at the beginning
-comment|// and end, and removing (at most) one pair of braces or " surrounding it.
+comment|// and end, and removing (at most) one pair of braces or " surrounding
+comment|// it.
 if|if
 condition|(
 name|s
@@ -1036,7 +1178,7 @@ return|return
 name|s
 return|;
 block|}
-comment|/**      * This method returns a String similar to the one passed in,      * except all whitespace and '#' characters are removed. These      * characters make a key unusable by bibtex.      */
+comment|/**      * This method returns a String similar to the one passed in, except all      * whitespace and '#' characters are removed. These characters make a key      * unusable by bibtex.      */
 DECL|method|checkLegalKey (String key)
 specifier|public
 specifier|static
@@ -1136,12 +1278,6 @@ name|c
 operator|!=
 literal|'^'
 operator|)
-operator|&&
-operator|(
-name|c
-operator|!=
-literal|'\\'
-operator|)
 condition|)
 name|newKey
 operator|.
@@ -1151,93 +1287,11 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
-name|String
-name|newKeyS
-init|=
-name|replaceSpecialCharacters
-argument_list|(
+return|return
 name|newKey
 operator|.
 name|toString
 argument_list|()
-argument_list|)
-decl_stmt|;
-return|return
-name|newKeyS
-return|;
-block|}
-DECL|method|replaceSpecialCharacters (String s)
-specifier|public
-specifier|static
-name|String
-name|replaceSpecialCharacters
-parameter_list|(
-name|String
-name|s
-parameter_list|)
-block|{
-for|for
-control|(
-name|Iterator
-name|i
-init|=
-name|Globals
-operator|.
-name|UNICODE_CHARS
-operator|.
-name|keySet
-argument_list|()
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
-name|String
-name|chr
-init|=
-operator|(
-name|String
-operator|)
-name|i
-operator|.
-name|next
-argument_list|()
-decl_stmt|,
-name|replacer
-init|=
-operator|(
-name|String
-operator|)
-name|Globals
-operator|.
-name|UNICODE_CHARS
-operator|.
-name|get
-argument_list|(
-name|chr
-argument_list|)
-decl_stmt|;
-comment|//pr(chr+" "+replacer);
-name|s
-operator|=
-name|s
-operator|.
-name|replaceAll
-argument_list|(
-name|chr
-argument_list|,
-name|replacer
-argument_list|)
-expr_stmt|;
-block|}
-return|return
-name|s
 return|;
 block|}
 DECL|method|wrap2 (String in, int wrapAmount)
@@ -1464,7 +1518,7 @@ return|return
 name|res
 return|;
 block|}
-comment|/**      * Returns a HashMap containing all words used in the database in the      * given field type. Characters in @param remove are not included.      * @param db a<code>BibtexDatabase</code> value      * @param field a<code>String</code> value      * @param remove a<code>String</code> value      * @return a<code>HashSet</code> value      */
+comment|/**      * Returns a HashMap containing all words used in the database in the given      * field type. Characters in      *       * @param remove      *            are not included.      * @param db      *            a<code>BibtexDatabase</code> value      * @param field      *            a<code>String</code> value      * @param remove      *            a<code>String</code> value      * @return a<code>HashSet</code> value      */
 DECL|method|findAllWordsInField (BibtexDatabase db, String field, String remove)
 specifier|public
 specifier|static
@@ -1581,7 +1635,7 @@ return|return
 name|res
 return|;
 block|}
-comment|/**      * Takes a String array and returns a string with the array's      * elements delimited by a certain String.      *      * @param strs String array to convert.      * @param delimiter String to use as delimiter.      * @return Delimited String.      */
+comment|/**      * Takes a String array and returns a string with the array's elements      * delimited by a certain String.      *       * @param strs      *            String array to convert.      * @param delimiter      *            String to use as delimiter.      * @return Delimited String.      */
 DECL|method|stringArrayToDelimited (String[] strs, String delimiter)
 specifier|public
 specifier|static
@@ -1694,7 +1748,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Takes a delimited string, splits it and returns      *      * @param names a<code>String</code> value      * @return a<code>String[]</code> value      */
+comment|/**      * Takes a delimited string, splits it and returns      *       * @param names      *            a<code>String</code> value      * @return a<code>String[]</code> value      */
 DECL|method|delimToStringArray (String names, String delimiter)
 specifier|public
 specifier|static
@@ -1727,7 +1781,7 @@ name|delimiter
 argument_list|)
 return|;
 block|}
-comment|/**      * Open a http/pdf/ps viewer for the given link string.      *      */
+comment|/**      * Open a http/pdf/ps viewer for the given link string.      *        */
 DECL|method|openExternalViewer (String link, String fieldName, JabRefPreferences prefs)
 specifier|public
 specifier|static
@@ -1746,6 +1800,36 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|//try first with an URL
+try|try
+block|{
+name|URL
+name|fileurl
+init|=
+operator|new
+name|URL
+argument_list|(
+name|link
+argument_list|)
+decl_stmt|;
+name|BrowserLauncher
+operator|.
+name|openURL
+argument_list|(
+name|fileurl
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+catch|catch
+parameter_list|(
+name|MalformedURLException
+name|mue
+parameter_list|)
+block|{          }
 name|File
 name|file
 decl_stmt|;
@@ -1947,7 +2031,8 @@ condition|)
 block|{
 comment|//cmdArray[0] = prefs.get("htmlviewer");
 comment|//cmdArray[1] = Globals.DOI_LOOKUP_PREFIX+link;
-comment|//Process child = Runtime.getRuntime().exec(cmdArray[0]+" "+cmdArray[1]);
+comment|//Process child = Runtime.getRuntime().exec(cmdArray[0]+"
+comment|// "+cmdArray[1]);
 name|fieldName
 operator|=
 literal|"url"
@@ -2015,7 +2100,8 @@ operator|=
 name|canonicalLink
 expr_stmt|;
 block|}
-comment|// First check if the url is enclosed in \\url{}. If so, remove the wrapper.
+comment|// First check if the url is enclosed in \\url{}. If so, remove
+comment|// the wrapper.
 if|if
 condition|(
 name|link
@@ -2593,7 +2679,8 @@ index|]
 operator|=
 name|link
 expr_stmt|;
-comment|//Process child = Runtime.getRuntime().exec(cmdArray[0]+" "+cmdArray[1]);
+comment|//Process child = Runtime.getRuntime().exec(cmdArray[0]+"
+comment|// "+cmdArray[1]);
 name|Process
 name|child
 init|=
@@ -2668,7 +2755,7 @@ expr_stmt|;
 comment|//ignore
 block|}
 block|}
-comment|/**    * Searches the given directory and subdirectories for a pdf file with name as given + ".pdf"    */
+comment|/**      * Searches the given directory and subdirectories for a pdf file with name      * as given + ".pdf"      */
 DECL|method|findPdf (String key, String pdfDir)
 specifier|public
 specifier|static
@@ -2745,7 +2832,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns null if      * the file does not exist.      */
+comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.      */
 DECL|method|expandFilename (String name, String dir)
 specifier|public
 specifier|static
@@ -2954,7 +3041,8 @@ condition|)
 return|return
 literal|null
 return|;
-comment|// An error occured. We may not have permission to list the files.
+comment|// An error occured. We may not have
+comment|// permission to list the files.
 name|String
 name|found
 init|=
@@ -3015,7 +3103,7 @@ return|return
 name|found
 return|;
 block|}
-comment|/**    * Checks if the two entries represent the same publication.    *    * @param one BibtexEntry    * @param two BibtexEntry    * @return boolean    */
+comment|/**      * Checks if the two entries represent the same publication.      *       * @param one      *            BibtexEntry      * @param two      *            BibtexEntry      * @return boolean      */
 DECL|method|isDuplicate (BibtexEntry one, BibtexEntry two, float threshold)
 specifier|public
 specifier|static
@@ -3649,7 +3737,9 @@ condition|)
 return|return
 literal|1.01
 return|;
-comment|// Just to make sure we can use score>1 without trouble.
+comment|// Just to make sure we can
+comment|// use score>1 without
+comment|// trouble.
 else|else
 return|return
 operator|(
@@ -3665,10 +3755,10 @@ name|size
 argument_list|()
 return|;
 block|}
-comment|/**      * This methods assures all words in the given entry are recorded      * in their respective Completers, if any.      */
-comment|/*    public static void updateCompletersForEntry(Hashtable autoCompleters,                                          BibtexEntry be) {          for (Iterator j=autoCompleters.keySet().iterator();              j.hasNext();) {             String field = (String)j.next();             Completer comp = (Completer)autoCompleters.get(field);             comp.addAll(be.getField(field));         }         }*/
-comment|/**          * Sets empty or non-existing owner fields of bibtex entries inside an array to          * a specified default value.          * @param bibs array of bibtex entries          * @param defaultOwner default owner of bibtex entries          */
-DECL|method|setDefaultOwner ( ArrayList bibs, String defaultOwner )
+comment|/**      * This methods assures all words in the given entry are recorded in their      * respective Completers, if any.      */
+comment|/*      * public static void updateCompletersForEntry(Hashtable autoCompleters,      * BibtexEntry be) {      *       * for (Iterator j=autoCompleters.keySet().iterator(); j.hasNext();) {      * String field = (String)j.next(); Completer comp =      * (Completer)autoCompleters.get(field); comp.addAll(be.getField(field)); } }      */
+comment|/**      * Sets empty or non-existing owner fields of bibtex entries inside an array      * to a specified default value.      *       * @param bibs      *            array of bibtex entries      * @param defaultOwner      *            default owner of bibtex entries      */
+DECL|method|setDefaultOwner (ArrayList bibs, String defaultOwner)
 specifier|public
 specifier|static
 name|void
@@ -3801,7 +3891,7 @@ parameter_list|(
 name|IOException
 name|ex
 parameter_list|)
-block|{}
+block|{         }
 name|pr
 argument_list|(
 name|sw
@@ -3811,7 +3901,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**          * Copies a file.          * @param source File Source file          * @param dest File Destination file          * @param deleteIfExists boolean Determines whether the copy goes on even if the file exists.          * @returns boolean Whether the copy succeeded, or was stopped due to the file already existing.          * @throws IOException          */
+comment|/**      * Copies a file.      *       * @param source      *            File Source file      * @param dest      *            File Destination file      * @param deleteIfExists      *            boolean Determines whether the copy goes on even if the file      *            exists.      * @returns boolean Whether the copy succeeded, or was stopped due to the      *          file already existing.      * @throws IOException      */
 DECL|method|copyFile (File source, File dest, boolean deleteIfExists)
 specifier|public
 specifier|static
@@ -3917,7 +4007,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**          * Look for a group name in a groups vector          * @param nameToFind String The group name to search for.          * @param v Vector The vector to search in.          * @return int The group number where the name was found, or -1 if not found.          */
+comment|/**      * Look for a group name in a groups vector      *       * @param nameToFind      *            String The group name to search for.      * @param v      *            Vector The vector to search in.      * @return int The group number where the name was found, or -1 if not      *         found.      */
 DECL|method|findGroup (String nameToFind, Vector v)
 specifier|public
 specifier|static
@@ -3991,7 +4081,7 @@ operator|-
 literal|1
 return|;
 block|}
-comment|/**      * This method is called at startup, and makes necessary adaptations      * to preferences for users from an earlier version of Jabref.      */
+comment|/**      * This method is called at startup, and makes necessary adaptations to      * preferences for users from an earlier version of Jabref.      */
 DECL|method|performCompatibilityUpdate ()
 specifier|public
 specifier|static
@@ -4145,7 +4235,7 @@ expr_stmt|;
 block|}
 block|}
 comment|// -------------------------------------------------------------------------------
-comment|/** extends the filename with a default Extension, if no Extension '.x' could be found */
+comment|/**      * extends the filename with a default Extension, if no Extension '.x' could      * be found      */
 DECL|method|getCorrectFileName (String orgName, String defaultExtension)
 specifier|public
 specifier|static
