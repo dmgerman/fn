@@ -1328,6 +1328,11 @@ DECL|field|aboutPage
 name|aboutPage
 init|=
 literal|"About.html"
+decl_stmt|,
+DECL|field|shortPlainImport
+name|shortPlainImport
+init|=
+literal|"ShortPlainImport.html"
 decl_stmt|;
 comment|// Colors.
 specifier|public
@@ -1596,7 +1601,21 @@ name|gray
 operator|.
 name|darker
 argument_list|()
+decl_stmt|,
 comment|// inactive Database
+DECL|field|infoField
+name|infoField
+init|=
+operator|new
+name|Color
+argument_list|(
+literal|254
+argument_list|,
+literal|255
+argument_list|,
+literal|225
+argument_list|)
+comment|// color for an info field
 decl_stmt|;
 DECL|field|META_FLAG
 specifier|public

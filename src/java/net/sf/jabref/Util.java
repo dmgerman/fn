@@ -3904,6 +3904,66 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// -------------------------------------------------------------------------------
+comment|/** extend the filename with defaultExtension, if no Extension could be found */
+DECL|method|getCorrectFileName (String orgName, String defaultExtension)
+specifier|public
+specifier|static
+name|String
+name|getCorrectFileName
+parameter_list|(
+name|String
+name|orgName
+parameter_list|,
+name|String
+name|defaultExtension
+parameter_list|)
+block|{
+if|if
+condition|(
+name|orgName
+operator|==
+literal|null
+condition|)
+return|return
+literal|""
+return|;
+name|String
+name|back
+init|=
+name|orgName
+decl_stmt|;
+name|int
+name|t
+init|=
+name|orgName
+operator|.
+name|indexOf
+argument_list|(
+literal|"."
+argument_list|,
+literal|1
+argument_list|)
+decl_stmt|;
+comment|// hidden files (?)
+if|if
+condition|(
+name|t
+operator|<
+literal|1
+condition|)
+name|back
+operator|=
+name|back
+operator|+
+literal|"."
+operator|+
+name|defaultExtension
+expr_stmt|;
+return|return
+name|back
+return|;
+block|}
 block|}
 end_class
 
