@@ -4803,6 +4803,23 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+comment|// Show confirmation dialog if not disabled:
+name|boolean
+name|goOn
+init|=
+name|panel
+operator|.
+name|showDeleteConfirmationDialog
+argument_list|(
+literal|1
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|goOn
+condition|)
+return|return;
 name|panel
 operator|.
 name|hideEntryEditor

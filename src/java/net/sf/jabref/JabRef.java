@@ -114,6 +114,46 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|plaf
+operator|.
+name|metal
+operator|.
+name|MetalLookAndFeel
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|jgoodies
+operator|.
+name|plaf
+operator|.
+name|FontSizeHints
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|jgoodies
+operator|.
+name|plaf
+operator|.
+name|plastic
+operator|.
+name|PlasticLookAndFeel
+import|;
+end_import
+
 begin_comment
 comment|//import javax.swing.UIManager;
 end_comment
@@ -1645,6 +1685,16 @@ argument_list|,
 literal|"true"
 argument_list|)
 expr_stmt|;
+comment|// Set antialiasing on everywhere. This only works in JRE>= 1.5.
+name|System
+operator|.
+name|setProperty
+argument_list|(
+literal|"swing.aatext"
+argument_list|,
+literal|"true"
+argument_list|)
+expr_stmt|;
 comment|//String osName = System.getProperty("os.name", "def");
 if|if
 condition|(
@@ -1693,7 +1743,7 @@ block|{
 try|try
 block|{
 comment|//Class plastic = Class.forName("com.jgoodies.plaf.plastic.PlasticLookAndFeel");
-name|LookAndFeel
+name|PlasticLookAndFeel
 name|lnf
 init|=
 operator|new
@@ -1708,8 +1758,54 @@ operator|.
 name|Plastic3DLookAndFeel
 argument_list|()
 decl_stmt|;
+name|MetalLookAndFeel
+operator|.
+name|setCurrentTheme
+argument_list|(
+operator|new
+name|com
+operator|.
+name|jgoodies
+operator|.
+name|plaf
+operator|.
+name|plastic
+operator|.
+name|theme
+operator|.
+name|SkyBlue
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|int
+name|fontSizes
+init|=
+name|prefs
+operator|.
+name|getInt
+argument_list|(
+literal|"menuFontSize"
+argument_list|)
+decl_stmt|;
+name|lnf
+operator|.
+name|setFontSizeHints
+argument_list|(
+operator|new
+name|FontSizeHints
+argument_list|(
+name|fontSizes
+argument_list|,
+name|fontSizes
+argument_list|,
+name|fontSizes
+argument_list|,
+name|fontSizes
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|//LookAndFeel lnf = new com.sun.java.swing.plaf.gtk.GTKLookAndFeel();
-comment|//LookAndFeel lnf = new com.incors.plaf.kunststoff.KunststoffLookAndFeel();
+comment|//Look1AndFeel lnf = new com.incors.plaf.kunststoff.KunststoffLookAndFeel();
 comment|//com.incors.plaf.kunststoff.KunststoffLookAndFeel.setCurrentTheme(new com.incors.plaf.kunststoff.themes.KunststoffDesktopTheme());
 name|UIManager
 operator|.

@@ -1631,7 +1631,7 @@ comment|//  renderer = maybeIncRenderer;
 comment|//else
 name|renderer
 operator|=
-name|iconStringRenderer
+name|incompleteEntryRenderer
 expr_stmt|;
 block|}
 comment|//return (tableModel.isComplete(row) ? defRenderer: incRenderer);
@@ -1799,14 +1799,21 @@ block|}
 comment|// The following classes define the renderers used to render required
 comment|// and optional fields in the table. The purpose of these renderers is
 comment|// to visualize which fields are needed for each entry.
-DECL|field|iconStringRenderer
+DECL|field|incompleteEntryRenderer
 specifier|private
 name|IconStringRenderer
-name|iconStringRenderer
+name|incompleteEntryRenderer
 init|=
 operator|new
 name|IconStringRenderer
-argument_list|()
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"This entry is incomplete"
+argument_list|)
+argument_list|)
 decl_stmt|;
 DECL|field|defRenderer
 specifier|private
@@ -2492,7 +2499,7 @@ name|rendererPane
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Overrides paintComponent to NOT clone the Graphics      * passed in and NOT validate the Component passed in.      */
+comment|/**      * Overrides paintComponent to NOT clone the Graphics      * passed in and NOT validate the Component passed in.      * This is done for performance reasons.      */
 DECL|class|CustomCellRendererPane
 specifier|private
 class|class

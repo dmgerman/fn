@@ -88,6 +88,25 @@ name|IconStringRenderer
 extends|extends
 name|DefaultTableCellRenderer
 block|{
+DECL|field|toolTip
+name|String
+name|toolTip
+decl_stmt|;
+DECL|method|IconStringRenderer (String toolTip)
+specifier|public
+name|IconStringRenderer
+parameter_list|(
+name|String
+name|toolTip
+parameter_list|)
+block|{
+name|this
+operator|.
+name|toolTip
+operator|=
+name|toolTip
+expr_stmt|;
+block|}
 comment|/* 	   * @see TableCellRenderer#getTableCellRendererComponent(JTable, Object, boolean, boolean, int, int) 	   */
 DECL|method|getTableCellRendererComponent (JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 specifier|public
@@ -171,6 +190,13 @@ operator|)
 operator|.
 name|getIcon
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|retval
+operator|.
+name|setToolTipText
+argument_list|(
+name|toolTip
 argument_list|)
 expr_stmt|;
 block|}
