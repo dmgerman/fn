@@ -9599,8 +9599,6 @@ argument_list|,
 name|ths
 argument_list|,
 name|be
-argument_list|,
-name|prefs
 argument_list|)
 expr_stmt|;
 if|if

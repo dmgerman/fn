@@ -174,6 +174,25 @@ name|activeField
 init|=
 literal|null
 decl_stmt|;
+DECL|field|sp
+specifier|private
+name|JScrollPane
+name|sp
+init|=
+operator|new
+name|JScrollPane
+argument_list|(
+name|panel
+argument_list|,
+name|JScrollPane
+operator|.
+name|VERTICAL_SCROLLBAR_AS_NEEDED
+argument_list|,
+name|JScrollPane
+operator|.
+name|HORIZONTAL_SCROLLBAR_NEVER
+argument_list|)
+decl_stmt|;
 comment|//    private BibtexEntry entry;
 DECL|method|EntryEditorTab (List fields, EntryEditor parent, boolean addKeyField)
 specifier|public

@@ -166,6 +166,16 @@ DECL|field|CUSTOM_TYPE_OPT
 name|CUSTOM_TYPE_OPT
 init|=
 literal|"customTypeOpt_"
+decl_stmt|,
+DECL|field|CUSTOM_TAB_NAME
+name|CUSTOM_TAB_NAME
+init|=
+literal|"customTabName_"
+decl_stmt|,
+DECL|field|CUSTOM_TAB_FIELDS
+name|CUSTOM_TAB_FIELDS
+init|=
+literal|"customTabFields_"
 decl_stmt|;
 DECL|field|prefs
 name|Preferences
@@ -215,6 +225,14 @@ DECL|field|customExports
 specifier|public
 name|CustomExportList
 name|customExports
+decl_stmt|;
+comment|// Object containing info about customized entry editor tabs.
+DECL|field|tabList
+specifier|private
+name|EntryEditorTabList
+name|tabList
+init|=
+literal|null
 decl_stmt|;
 comment|// The only instance of this class:
 DECL|field|INSTANCE
@@ -1141,8 +1159,7 @@ literal|"user.name"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//  defaults.put("generalFields", "crossref;keywords;doi;url;citeseerurl;"+
-comment|//	     "pdf;abstract;comment;owner");
+comment|// The general fields stuff is made obsolete by the CUSTOM_TAB_... entries.
 name|defaults
 operator|.
 name|put
@@ -1152,6 +1169,64 @@ argument_list|,
 literal|"crossref;keywords;doi;url;citeseerurl;"
 operator|+
 literal|"pdf;comment;owner"
+argument_list|)
+expr_stmt|;
+comment|// Entry editor tab 0:
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|CUSTOM_TAB_NAME
+operator|+
+literal|"0"
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"General"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|CUSTOM_TAB_FIELDS
+operator|+
+literal|"0"
+argument_list|,
+literal|"crossref;keywords;doi;url;citeseerurl;"
+operator|+
+literal|"pdf;comment;owner"
+argument_list|)
+expr_stmt|;
+comment|// Entry editor tab 1:
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|CUSTOM_TAB_FIELDS
+operator|+
+literal|"1"
+argument_list|,
+literal|"abstract"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|CUSTOM_TAB_NAME
+operator|+
+literal|"1"
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Abstract"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//defaults.put("recentFiles", "/home/alver/Documents/bibk_dok/hovedbase.bib");
@@ -3723,11 +3798,47 @@ name|int
 name|number
 parameter_list|)
 block|{
+name|purgeSeries
+argument_list|(
+name|CUSTOM_TYPE_NAME
+argument_list|,
+name|number
+argument_list|)
+expr_stmt|;
+name|purgeSeries
+argument_list|(
+name|CUSTOM_TYPE_REQ
+argument_list|,
+name|number
+argument_list|)
+expr_stmt|;
+name|purgeSeries
+argument_list|(
+name|CUSTOM_TYPE_OPT
+argument_list|,
+name|number
+argument_list|)
+expr_stmt|;
+comment|/*while (get(CUSTOM_TYPE_NAME+number) != null) {             remove(CUSTOM_TYPE_NAME+number);             remove(CUSTOM_TYPE_REQ+number);             remove(CUSTOM_TYPE_OPT+number);             number++; 	    }*/
+block|}
+comment|/**      * Removes all entries keyed by prefix+number, where number      * is equal to or higher than the given number.      * @param number or higher.      */
+DECL|method|purgeSeries (String prefix, int number)
+specifier|public
+name|void
+name|purgeSeries
+parameter_list|(
+name|String
+name|prefix
+parameter_list|,
+name|int
+name|number
+parameter_list|)
+block|{
 while|while
 condition|(
 name|get
 argument_list|(
-name|CUSTOM_TYPE_NAME
+name|prefix
 operator|+
 name|number
 argument_list|)
@@ -3737,21 +3848,7 @@ condition|)
 block|{
 name|remove
 argument_list|(
-name|CUSTOM_TYPE_NAME
-operator|+
-name|number
-argument_list|)
-expr_stmt|;
-name|remove
-argument_list|(
-name|CUSTOM_TYPE_REQ
-operator|+
-name|number
-argument_list|)
-expr_stmt|;
-name|remove
-argument_list|(
-name|CUSTOM_TYPE_OPT
+name|prefix
 operator|+
 name|number
 argument_list|)
@@ -3760,6 +3857,38 @@ name|number
 operator|++
 expr_stmt|;
 block|}
+block|}
+DECL|method|getEntryEditorTabList ()
+specifier|public
+name|EntryEditorTabList
+name|getEntryEditorTabList
+parameter_list|()
+block|{
+if|if
+condition|(
+name|tabList
+operator|==
+literal|null
+condition|)
+name|updateEntryEditorTabList
+argument_list|()
+expr_stmt|;
+return|return
+name|tabList
+return|;
+block|}
+DECL|method|updateEntryEditorTabList ()
+specifier|public
+name|void
+name|updateEntryEditorTabList
+parameter_list|()
+block|{
+name|tabList
+operator|=
+operator|new
+name|EntryEditorTabList
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * Exports Preferences to an XML file.      *      * @param filename String File to export to      */
 DECL|method|exportPreferences (String filename)
