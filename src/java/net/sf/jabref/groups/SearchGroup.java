@@ -315,13 +315,8 @@ block|}
 else|else
 block|{
 comment|// do plaintext search
-name|JabRefPreferences
-name|prefs
-init|=
-operator|new
-name|JabRefPreferences
-argument_list|()
-decl_stmt|;
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|putBoolean
@@ -331,6 +326,8 @@ argument_list|,
 name|m_searchAllFields
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|putBoolean
@@ -340,6 +337,8 @@ argument_list|,
 name|m_searchRequiredFields
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|putBoolean
@@ -349,6 +348,8 @@ argument_list|,
 name|m_searchOptionalFields
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|putBoolean
@@ -358,6 +359,8 @@ argument_list|,
 name|m_searchGeneralFields
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|putBoolean
@@ -376,6 +379,8 @@ operator|=
 operator|new
 name|RegExpRule
 argument_list|(
+name|Globals
+operator|.
 name|prefs
 argument_list|)
 expr_stmt|;
@@ -385,6 +390,8 @@ operator|=
 operator|new
 name|SimpleSearchRule
 argument_list|(
+name|Globals
+operator|.
 name|prefs
 argument_list|)
 expr_stmt|;
