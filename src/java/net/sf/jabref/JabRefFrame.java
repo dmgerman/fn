@@ -4630,7 +4630,14 @@ argument_list|()
 expr_stmt|;
 name|output
 argument_list|(
-literal|"Closed database."
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Closed database"
+argument_list|)
+operator|+
+literal|"."
 argument_list|)
 expr_stmt|;
 block|}
@@ -5012,21 +5019,46 @@ argument_list|()
 expr_stmt|;
 name|output
 argument_list|(
-literal|"Opened database '"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Opened database"
+argument_list|)
+operator|+
+literal|" '"
 operator|+
 name|fileToOpen
 operator|.
 name|getPath
 argument_list|()
 operator|+
-literal|"' with "
+literal|"' "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"with"
+argument_list|)
+operator|+
+literal|" "
 operator|+
 name|db
 operator|.
 name|getEntryCount
 argument_list|()
 operator|+
-literal|" entries."
+literal|" "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"entries"
+argument_list|)
+operator|+
+literal|"."
 argument_list|)
 expr_stmt|;
 name|fileToOpen
@@ -5051,7 +5083,12 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Open database"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -5825,18 +5862,43 @@ argument_list|()
 expr_stmt|;
 name|output
 argument_list|(
-literal|"Imported database '"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Imported database"
+argument_list|)
+operator|+
+literal|" '"
 operator|+
 name|filename
 operator|+
-literal|"' with "
+literal|"' "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"with"
+argument_list|)
+operator|+
+literal|" "
 operator|+
 name|database
 operator|.
 name|getEntryCount
 argument_list|()
 operator|+
-literal|" entries into new database."
+literal|" "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"entries into new database"
+argument_list|)
+operator|+
+literal|"."
 argument_list|)
 expr_stmt|;
 block|}
@@ -5986,11 +6048,27 @@ argument_list|()
 expr_stmt|;
 name|output
 argument_list|(
-literal|"Imported database '"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Imported database"
+argument_list|)
+operator|+
+literal|" '"
 operator|+
 name|filename
 operator|+
-literal|"' with "
+literal|"' "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"with"
+argument_list|)
+operator|+
+literal|" "
 operator|+
 operator|(
 name|database
@@ -6001,7 +6079,16 @@ operator|-
 name|oldCount
 operator|)
 operator|+
-literal|" entries."
+literal|" "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"entries into new database"
+argument_list|)
+operator|+
+literal|"."
 argument_list|)
 expr_stmt|;
 block|}

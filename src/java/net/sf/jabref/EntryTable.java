@@ -131,6 +131,7 @@ name|antialiasing
 init|=
 literal|true
 decl_stmt|;
+comment|//RenderingHints renderingHints;
 DECL|method|EntryTable (EntryTableModel tm_, JabRefPreferences prefs_)
 specifier|public
 name|EntryTable
@@ -153,6 +154,11 @@ name|tableModel
 operator|=
 name|tm_
 expr_stmt|;
+comment|//renderingHints = g2.getRenderingHints();
+comment|//renderingHints.put(RenderingHints.KEY_ANTIALIASING,
+comment|//		   RenderingHints.VALUE_ANTIALIAS_ON);
+comment|//renderingHints.put(RenderingHints.KEY_RENDERING,
+comment|//		   RenderingHints.VALUE_RENDER_QUALITY);
 name|prefs
 operator|=
 name|prefs_
@@ -1066,41 +1072,10 @@ name|Graphics2D
 operator|)
 name|g
 decl_stmt|;
-name|Font
-name|f
-init|=
-name|g2
-operator|.
-name|getFont
-argument_list|()
-decl_stmt|;
-comment|//new Font("Plain", Font.PLAIN, 24);
-name|g2
-operator|.
-name|setColor
-argument_list|(
-name|getBackground
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|g2
-operator|.
-name|fill
-argument_list|(
-name|g2
-operator|.
-name|getClipBounds
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|g2
-operator|.
-name|setColor
-argument_list|(
-name|getForeground
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//Font f = g2.getFont();//new Font("Plain", Font.PLAIN, 24);
+comment|//g2.setColor(getBackground());
+comment|//g2.fill(g2.getClipBounds());
+comment|//g2.setColor(getForeground());
 comment|//g2.setFont(f);
 if|if
 condition|(
