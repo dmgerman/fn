@@ -1316,6 +1316,7 @@ expr_stmt|;
 block|}
 block|}
 comment|// Check if the user has right-clicked. If so, open the right-click menu.
+comment|//if (e.isPopupTrigger()) {
 if|if
 condition|(
 operator|(

@@ -145,25 +145,8 @@ operator|=
 name|fieldComponent
 expr_stmt|;
 comment|// copy/paste Menu
-name|inputMenu
-operator|.
-name|add
-argument_list|(
-operator|new
-name|MenuHeaderAction
-argument_list|(
-name|myFieldName
-operator|.
-name|getFieldName
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|inputMenu
-operator|.
-name|addSeparator
-argument_list|()
-expr_stmt|;
+comment|//inputMenu.add( new MenuHeaderAction(myFieldName.getFieldName()) ) ;
+comment|//inputMenu.addSeparator() ;
 name|inputMenu
 operator|.
 name|add
