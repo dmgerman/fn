@@ -925,6 +925,17 @@ argument_list|,
 literal|"Unmark all"
 argument_list|)
 decl_stmt|,
+DECL|field|manageSelectors
+name|manageSelectors
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"manageSelectors"
+argument_list|,
+literal|"Manage content selectors"
+argument_list|)
+decl_stmt|,
 DECL|field|saveSessionAction
 name|saveSessionAction
 init|=
@@ -4298,6 +4309,13 @@ operator|.
 name|add
 argument_list|(
 name|openUrl
+argument_list|)
+expr_stmt|;
+name|tools
+operator|.
+name|add
+argument_list|(
+name|manageSelectors
 argument_list|)
 expr_stmt|;
 name|mb
