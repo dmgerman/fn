@@ -22,16 +22,6 @@ name|java
 operator|.
 name|awt
 operator|.
-name|Dimension
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
 name|GridBagConstraints
 import|;
 end_import
@@ -240,6 +230,20 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|undo
+operator|.
+name|NamedCompound
+import|;
+end_import
+
 begin_comment
 comment|/**  * @author mspiegel  *  * To change the template for this generated type comment go to  * Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments  */
 end_comment
@@ -380,19 +384,6 @@ argument_list|()
 expr_stmt|;
 name|progressBar
 operator|.
-name|setMinimumSize
-argument_list|(
-operator|new
-name|Dimension
-argument_list|(
-literal|1
-argument_list|,
-literal|1
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|progressBar
-operator|.
 name|setValue
 argument_list|(
 literal|0
@@ -407,14 +398,18 @@ argument_list|)
 expr_stmt|;
 name|progressBar
 operator|.
+name|setMaximum
+argument_list|(
+literal|100
+argument_list|)
+expr_stmt|;
+name|progressBar
+operator|.
 name|setStringPainted
 argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-comment|//		I can't make this panel re-appear!
-comment|//      See comment "Ensure visible does not appear to be working" in JabRefFrame.java
-comment|//		sidePaneManager.hideAway(this);
 name|setLayout
 argument_list|(
 name|gbl
@@ -593,7 +588,7 @@ block|}
 block|}
 comment|/***********************************/
 comment|/* Begin Inner Class Declarations */
-comment|/* The inner classes are used to modify components, when not in the 	 * event-dispatching thread.  These are used to follow the "single-threaded 	 * rule", as defined here: http://java.sun.com/products/jfc/tsc/articles/threads/threads1.html 	 * 	 * 	 * I'm pretty sure the Dialog box invokers should remain as inner classes, 	 * but I can't decide whether or not to break the one-thread rule for the 	 * progress bar classes.  Because the search contains a locking-mechanism, 	 * activateFetcher() and deactivateFetcher(), there should only be at-most-one 	 * thread accessing the progress bar at any time. 	 */
+comment|/* The inner classes are used to modify components, when not in the 	 * event-dispatching thread.  These are used to follow the "single-threaded 	 * rule", as defined here: http://java.sun.com/products/jfc/tsc/articles/threads/threads1.html 	 *  	 *  	 * I'm pretty sure the Dialog box invokers should remain as inner classes, 	 * but I can't decide whether or not to break the one-thread rule for the  	 * progress bar classes.  Because the search contains a locking-mechanism, 	 * activateFetcher() and deactivateFetcher(), there should only be at-most-one 	 * thread accessing the progress bar at any time. 	 */
 DECL|class|ShowNoConnectionDialog
 class|class
 name|ShowNoConnectionDialog
@@ -1545,14 +1540,17 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * @param be 	 * 	 * Reminder: this method runs in the EventDispatcher thread 	 */
-DECL|method|importCiteSeerEntry (BibtexEntry be)
+comment|/** 	 * @param be 	 *  	 * Reminder: this method runs in the EventDispatcher thread 	 */
+DECL|method|importCiteSeerEntry (BibtexEntry be, NamedCompound citeseerNC)
 specifier|public
 name|boolean
 name|importCiteSeerEntry
 parameter_list|(
 name|BibtexEntry
 name|be
+parameter_list|,
+name|NamedCompound
+name|citeseerNC
 parameter_list|)
 block|{
 name|boolean
@@ -1713,8 +1711,10 @@ name|getResponseBodyAsStream
 argument_list|()
 argument_list|,
 operator|new
-name|CiteSeerImportHandler
+name|CiteSeerUndoHandler
 argument_list|(
+name|citeseerNC
+argument_list|,
 name|be
 argument_list|)
 argument_list|)

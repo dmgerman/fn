@@ -742,8 +742,6 @@ name|void
 name|action
 parameter_list|()
 block|{
-try|try
-block|{
 name|int
 name|clickedOn
 init|=
@@ -839,6 +837,15 @@ argument_list|(
 name|clickedOn
 argument_list|)
 decl_stmt|;
+name|NamedCompound
+name|citeseerNamedCompound
+init|=
+operator|new
+name|NamedCompound
+argument_list|(
+literal|"CiteSeer Import Fields"
+argument_list|)
+decl_stmt|;
 name|BibtexEntry
 name|be
 init|=
@@ -851,9 +858,6 @@ name|getEntryById
 argument_list|(
 name|id
 argument_list|)
-operator|.
-name|clone
-argument_list|()
 decl_stmt|;
 name|boolean
 name|newValue
@@ -863,6 +867,8 @@ operator|.
 name|importCiteSeerEntry
 argument_list|(
 name|be
+argument_list|,
+name|citeseerNamedCompound
 argument_list|)
 decl_stmt|;
 if|if
@@ -870,24 +876,25 @@ condition|(
 name|newValue
 condition|)
 block|{
-name|database
+name|citeseerNamedCompound
 operator|.
-name|removeEntry
-argument_list|(
-name|id
-argument_list|)
-expr_stmt|;
-name|database
-operator|.
-name|insertEntry
-argument_list|(
-name|be
-argument_list|)
+name|end
+argument_list|()
 expr_stmt|;
 comment|//				undoManager.addEdit(new UndoableInsertEntry(database, be, ths));
 comment|//				output(Globals.lang("Added new")+" '"+type.getName().toLowerCase()+"' "
 comment|//					   +Globals.lang("entry")+".");
+name|undoManager
+operator|.
+name|addEdit
+argument_list|(
+name|citeseerNamedCompound
+argument_list|)
+expr_stmt|;
 name|refreshTable
+argument_list|()
+expr_stmt|;
+name|updateEntryEditorIfShowing
 argument_list|()
 expr_stmt|;
 name|int
@@ -918,13 +925,6 @@ expr_stmt|;
 comment|// The database just changed.
 block|}
 block|}
-block|}
-catch|catch
-parameter_list|(
-name|KeyCollisionException
-name|ex
-parameter_list|)
-block|{ 				}
 block|}
 block|}
 argument_list|)
@@ -7225,8 +7225,6 @@ argument_list|,
 name|searchManager
 argument_list|)
 expr_stmt|;
-comment|//sidePaneManager.add("CiteSeerProgress", citeSeerFetcher);
-comment|//sidePaneManager.hideAway("CiteSeerProgress");
 name|sidePaneManager
 operator|.
 name|register
