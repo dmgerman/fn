@@ -729,6 +729,21 @@ return|return
 literal|null
 return|;
 block|}
+DECL|method|addSelection (BibtexEntry[] entries)
+specifier|public
+name|AbstractUndoableEdit
+name|addSelection
+parameter_list|(
+name|BibtexEntry
+index|[]
+name|entries
+parameter_list|)
+block|{
+comment|// nothing to do, add is not supported
+return|return
+literal|null
+return|;
+block|}
 DECL|method|removeSelection (BasePanel basePanel)
 specifier|public
 name|AbstractUndoableEdit
@@ -736,6 +751,21 @@ name|removeSelection
 parameter_list|(
 name|BasePanel
 name|basePanel
+parameter_list|)
+block|{
+comment|// nothing to do, remove is not supported
+return|return
+literal|null
+return|;
+block|}
+DECL|method|removeSelection (BibtexEntry[] entries)
+specifier|public
+name|AbstractUndoableEdit
+name|removeSelection
+parameter_list|(
+name|BibtexEntry
+index|[]
+name|entries
 parameter_list|)
 block|{
 comment|// nothing to do, remove is not supported
