@@ -1114,19 +1114,12 @@ argument_list|(
 name|rh
 argument_list|)
 expr_stmt|;
-name|g2
+comment|//g2.drawString(getText(), 3, f.getSize());
+name|super
 operator|.
-name|drawString
+name|paint
 argument_list|(
-name|getText
-argument_list|()
-argument_list|,
-literal|3
-argument_list|,
-name|f
-operator|.
-name|getSize
-argument_list|()
+name|g2
 argument_list|)
 expr_stmt|;
 block|}
