@@ -490,6 +490,11 @@ name|coloringBySearchResults
 init|=
 literal|false
 decl_stmt|,
+DECL|field|hidingNonHits
+name|hidingNonHits
+init|=
+literal|false
+decl_stmt|,
 DECL|field|sortingByGroup
 name|sortingByGroup
 init|=
@@ -510,6 +515,15 @@ name|previewEnabled
 init|=
 literal|true
 decl_stmt|;
+DECL|field|lastSearchHits
+name|int
+name|lastSearchHits
+init|=
+operator|-
+literal|1
+decl_stmt|;
+comment|// The number of hits in the latest search.
+comment|// Potential use in hiding non-hits completely.
 comment|// MetaData parses, keeps and writes meta data.
 DECL|field|metaData
 name|MetaData
@@ -8944,6 +8958,18 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|hidingNonHits
+condition|)
+name|tableModel
+operator|.
+name|remap
+argument_list|(
+name|lastSearchHits
+argument_list|)
+expr_stmt|;
+else|else
 name|tableModel
 operator|.
 name|remap
@@ -10285,7 +10311,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Shows either normal search results or group search, depending      * on the searchValueField. This is done by reordering entries and      * graying out non-hits.      *      * @param searchValueField Which field to show search for: Globals.SEARCH or      * Globals.GROUPSEARCH.      *      */
-DECL|method|showSearchResults (String searchValueField, boolean reorder, boolean grayOut, boolean select)
+DECL|method|showSearchResults (String searchValueField, boolean reorder, boolean grayOut, boolean select, int numberOfHits)
 specifier|public
 name|void
 name|showSearchResults
@@ -10301,9 +10327,22 @@ name|grayOut
 parameter_list|,
 name|boolean
 name|select
+parameter_list|,
+name|int
+name|numberOfHits
 parameter_list|)
 block|{
 comment|//entryTable.scrollTo(0);
+name|lastSearchHits
+operator|=
+name|numberOfHits
+expr_stmt|;
+name|hidingNonHits
+operator|=
+operator|!
+name|grayOut
+expr_stmt|;
+comment|// We either gray out, or hide, non-hits.
 name|entryTable
 operator|.
 name|invalidate
@@ -10643,6 +10682,10 @@ operator|=
 literal|false
 expr_stmt|;
 name|coloringBySearchResults
+operator|=
+literal|false
+expr_stmt|;
+name|hidingNonHits
 operator|=
 literal|false
 expr_stmt|;

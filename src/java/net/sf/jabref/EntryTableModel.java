@@ -76,7 +76,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Vector
+name|*
 import|;
 end_import
 
@@ -144,6 +144,13 @@ DECL|field|sorter
 specifier|private
 name|EntrySorter
 name|sorter
+decl_stmt|;
+DECL|field|visibleRows
+specifier|private
+name|int
+name|visibleRows
+init|=
+literal|0
 decl_stmt|;
 comment|//private Object[] entryIDs; // Temporary
 comment|// Constants used to define how a cell should be rendered.
@@ -439,6 +446,34 @@ index|]
 argument_list|)
 return|;
 block|}
+DECL|method|showAllEntries ()
+specifier|public
+name|void
+name|showAllEntries
+parameter_list|()
+block|{
+name|visibleRows
+operator|=
+name|sorter
+operator|.
+name|getEntryCount
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|setRowCount (int rows)
+specifier|public
+name|void
+name|setRowCount
+parameter_list|(
+name|int
+name|rows
+parameter_list|)
+block|{
+name|visibleRows
+operator|=
+name|rows
+expr_stmt|;
+block|}
 DECL|method|getRowCount ()
 specifier|public
 name|int
@@ -446,11 +481,9 @@ name|getRowCount
 parameter_list|()
 block|{
 comment|//Util.pr("rc "+sorter.getEntryCount());
+comment|//return sorter.getEntryCount();
 return|return
-name|sorter
-operator|.
-name|getEntryCount
-argument_list|()
+name|visibleRows
 return|;
 comment|//entryIDs.length;  // Temporary?
 block|}
@@ -1096,10 +1129,10 @@ literal|null
 operator|)
 return|;
 block|}
-DECL|method|remap ()
-specifier|public
+DECL|method|updateSorter ()
+specifier|private
 name|void
-name|remap
+name|updateSorter
 parameter_list|()
 block|{
 comment|// Set the icon columns, indicating the number of special columns to the left.
@@ -1339,25 +1372,21 @@ argument_list|)
 expr_stmt|;
 comment|// Build a vector of prioritized search objectives,
 comment|// then pick the 3 first.
-name|Vector
+name|List
 name|fields
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|(
-literal|5
-argument_list|,
-literal|1
+literal|6
 argument_list|)
 decl_stmt|,
 name|directions
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|(
-literal|5
-argument_list|,
-literal|1
+literal|6
 argument_list|)
 decl_stmt|;
 comment|// For testing MARKED feature:
@@ -1588,7 +1617,7 @@ name|Boolean
 operator|)
 name|directions
 operator|.
-name|elementAt
+name|get
 argument_list|(
 literal|0
 argument_list|)
@@ -1603,7 +1632,7 @@ name|Boolean
 operator|)
 name|directions
 operator|.
-name|elementAt
+name|get
 argument_list|(
 literal|1
 argument_list|)
@@ -1618,7 +1647,7 @@ name|Boolean
 operator|)
 name|directions
 operator|.
-name|elementAt
+name|get
 argument_list|(
 literal|2
 argument_list|)
@@ -1632,7 +1661,7 @@ name|String
 operator|)
 name|fields
 operator|.
-name|elementAt
+name|get
 argument_list|(
 literal|0
 argument_list|)
@@ -1642,7 +1671,7 @@ name|String
 operator|)
 name|fields
 operator|.
-name|elementAt
+name|get
 argument_list|(
 literal|1
 argument_list|)
@@ -1652,7 +1681,7 @@ name|String
 operator|)
 name|fields
 operator|.
-name|elementAt
+name|get
 argument_list|(
 literal|2
 argument_list|)
@@ -1677,7 +1706,7 @@ name|Boolean
 operator|)
 name|directions
 operator|.
-name|elementAt
+name|get
 argument_list|(
 literal|0
 argument_list|)
@@ -1692,7 +1721,7 @@ name|Boolean
 operator|)
 name|directions
 operator|.
-name|elementAt
+name|get
 argument_list|(
 literal|1
 argument_list|)
@@ -1707,7 +1736,7 @@ name|Boolean
 operator|)
 name|directions
 operator|.
-name|elementAt
+name|get
 argument_list|(
 literal|2
 argument_list|)
@@ -1722,7 +1751,7 @@ name|Boolean
 operator|)
 name|directions
 operator|.
-name|elementAt
+name|get
 argument_list|(
 literal|3
 argument_list|)
@@ -1736,7 +1765,7 @@ name|String
 operator|)
 name|fields
 operator|.
-name|elementAt
+name|get
 argument_list|(
 literal|0
 argument_list|)
@@ -1746,7 +1775,7 @@ name|String
 operator|)
 name|fields
 operator|.
-name|elementAt
+name|get
 argument_list|(
 literal|1
 argument_list|)
@@ -1756,7 +1785,7 @@ name|String
 operator|)
 name|fields
 operator|.
-name|elementAt
+name|get
 argument_list|(
 literal|2
 argument_list|)
@@ -1766,7 +1795,7 @@ name|String
 operator|)
 name|fields
 operator|.
-name|elementAt
+name|get
 argument_list|(
 literal|3
 argument_list|)
@@ -1774,7 +1803,41 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|//Util.pr("remap");
+block|}
+DECL|method|remap ()
+specifier|public
+name|void
+name|remap
+parameter_list|()
+block|{
+name|updateSorter
+argument_list|()
+expr_stmt|;
+name|showAllEntries
+argument_list|()
+expr_stmt|;
+comment|// Update the visible row count.
+name|fireTableDataChanged
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|remap (int rows)
+specifier|public
+name|void
+name|remap
+parameter_list|(
+name|int
+name|rows
+parameter_list|)
+block|{
+name|updateSorter
+argument_list|()
+expr_stmt|;
+name|setRowCount
+argument_list|(
+name|rows
+argument_list|)
+expr_stmt|;
 name|fireTableDataChanged
 argument_list|()
 expr_stmt|;

@@ -1384,6 +1384,19 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+literal|"grayOutNonHits"
+argument_list|,
+operator|new
+name|Boolean
+argument_list|(
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
 literal|"preview0"
 argument_list|,
 literal|"<font face=\"arial\">"

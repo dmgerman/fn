@@ -347,6 +347,8 @@ argument_list|,
 name|grayOut
 argument_list|,
 name|select
+argument_list|,
+name|outputHits
 argument_list|)
 expr_stmt|;
 if|if
