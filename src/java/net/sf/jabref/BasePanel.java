@@ -4802,6 +4802,9 @@ name|pr
 operator|.
 name|getMetaData
 argument_list|()
+argument_list|,
+name|database
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|NamedCompound
@@ -5028,9 +5031,15 @@ operator|new
 name|ExplicitGroup
 argument_list|(
 literal|"Imported Groups"
+argument_list|,
+name|database
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// dummy group
+comment|// groupsSelector is always created, even when no groups
+comment|// have been defined. therefore, no check for null is
+comment|// required here
 name|groupSelector
 operator|.
 name|addGroups
@@ -5040,6 +5049,7 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+comment|// JZTODO: this should handle ExplicitGroups!!!
 name|groupSelector
 operator|.
 name|revalidateGroups
@@ -8932,6 +8942,9 @@ operator|new
 name|MetaData
 argument_list|(
 name|meta
+argument_list|,
+name|database
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -11230,6 +11243,39 @@ return|return
 literal|true
 return|;
 block|}
+DECL|method|showBibtexkeyConfirmationDialog (String message)
+specifier|public
+name|boolean
+name|showBibtexkeyConfirmationDialog
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+block|{
+name|JOptionPane
+operator|.
+name|showConfirmDialog
+argument_list|(
+name|frame
+argument_list|,
+name|message
+argument_list|,
+literal|"Confirm new Bibtexkey"
+argument_list|,
+comment|// JZTODO
+name|JOptionPane
+operator|.
+name|YES_NO_OPTION
+argument_list|,
+name|JOptionPane
+operator|.
+name|QUESTION_MESSAGE
+argument_list|)
+expr_stmt|;
+return|return
+literal|true
+return|;
+block|}
 DECL|class|UndoAction
 class|class
 name|UndoAction
@@ -11619,6 +11665,16 @@ name|entryTable
 operator|.
 name|getSelectedEntries
 argument_list|()
+return|;
+block|}
+DECL|method|getGroupSelector ()
+specifier|public
+name|GroupSelector
+name|getGroupSelector
+parameter_list|()
+block|{
+return|return
+name|groupSelector
 return|;
 block|}
 block|}
