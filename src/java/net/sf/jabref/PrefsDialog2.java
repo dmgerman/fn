@@ -287,6 +287,8 @@ argument_list|,
 operator|new
 name|GeneralTab
 argument_list|(
+name|frame
+argument_list|,
 name|_prefs
 argument_list|)
 argument_list|)

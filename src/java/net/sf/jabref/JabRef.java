@@ -397,34 +397,25 @@ argument_list|,
 name|fnt
 argument_list|)
 expr_stmt|;
-comment|//String osName = System.getProperty("os.name", "def");
-if|if
-condition|(
-name|Globals
-operator|.
-name|osName
-operator|.
-name|equals
-argument_list|(
-name|Globals
-operator|.
-name|MAC
-argument_list|)
-condition|)
-block|{
 comment|// This property is set to make the Mac OSX Java VM move the menu bar to the top
 comment|// of the screen, where Mac users expect it to be.
 name|System
 operator|.
 name|setProperty
 argument_list|(
-literal|"com.apple.laf.useScreenMenuBar"
+literal|"apple.laf.useScreenMenuBar"
 argument_list|,
 literal|"true"
 argument_list|)
 expr_stmt|;
-block|}
-else|else
+comment|//String osName = System.getProperty("os.name", "def");
+if|if
+condition|(
+operator|!
+name|Globals
+operator|.
+name|ON_MAC
+condition|)
 block|{
 try|try
 block|{
@@ -632,7 +623,6 @@ block|{
 comment|//no arguments (this will be for later and other command line switches)
 comment|// ignore..
 block|}
-comment|/*       BibtexEntry b1 = new BibtexEntry("ee", BibtexEntryType.ARTICLE);       BibtexEntry b2 = new BibtexEntry("eee", BibtexEntryType.ARTICLE);       BibtexEntry b3 = new BibtexEntry("eeee", BibtexEntryType.ARTICLE);        b1.setField("author", "M. O. Alver");       b2.setField("author", "Alver, Morten");       b3.setField("author", "Morten Alver and Fredrik Skagen");        b1.setField("title", "Ole Brumm");       b2.setField("title", "Ole Brumm");       b2.setField("journal", "Ole Brumm");       b3.setField("title", "Ole Brumm er i skagen");       float threshold = 0.8f;       Util.pr(""+Util.isDuplicate(b1, b2, threshold)+               "\n"+Util.isDuplicate(b1, b3, threshold)+               "\n"+Util.isDuplicate(b2, b3, threshold));       */
 block|}
 block|}
 end_class
