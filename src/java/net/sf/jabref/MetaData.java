@@ -325,6 +325,23 @@ name|key
 argument_list|)
 return|;
 block|}
+DECL|method|remove (String key)
+specifier|public
+name|void
+name|remove
+parameter_list|(
+name|String
+name|key
+parameter_list|)
+block|{
+name|metaData
+operator|.
+name|remove
+argument_list|(
+name|key
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|putData (String key, Vector orderedData)
 specifier|public
 name|void

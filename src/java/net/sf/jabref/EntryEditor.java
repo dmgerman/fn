@@ -339,10 +339,6 @@ decl_stmt|;
 DECL|field|con
 name|GridBagConstraints
 name|con
-init|=
-operator|new
-name|GridBagConstraints
-argument_list|()
 decl_stmt|;
 DECL|field|lab
 name|JLabel
@@ -1572,6 +1568,30 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|rebuildPanels ()
+specifier|public
+name|void
+name|rebuildPanels
+parameter_list|()
+block|{
+name|setupFieldPanels
+argument_list|(
+name|reqPanel
+argument_list|,
+name|optPanel
+argument_list|,
+name|genPanel
+argument_list|,
+name|absPanel
+argument_list|)
+expr_stmt|;
+name|revalidate
+argument_list|()
+expr_stmt|;
+name|repaint
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|setupFieldPanels (FieldPanel req, FieldPanel opt, FieldPanel gen, FieldPanel abs)
 specifier|private
 name|void
@@ -1590,6 +1610,32 @@ name|FieldPanel
 name|abs
 parameter_list|)
 block|{
+name|req
+operator|.
+name|removeAll
+argument_list|()
+expr_stmt|;
+name|opt
+operator|.
+name|removeAll
+argument_list|()
+expr_stmt|;
+name|gen
+operator|.
+name|removeAll
+argument_list|()
+expr_stmt|;
+name|abs
+operator|.
+name|removeAll
+argument_list|()
+expr_stmt|;
+name|con
+operator|=
+operator|new
+name|GridBagConstraints
+argument_list|()
+expr_stmt|;
 comment|// First we ask the BibtexEntry which fields are optional and
 comment|// required.
 name|String

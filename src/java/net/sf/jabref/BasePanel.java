@@ -8466,6 +8466,55 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+DECL|method|rebuildAllEntryEditors ()
+specifier|public
+name|void
+name|rebuildAllEntryEditors
+parameter_list|()
+block|{
+for|for
+control|(
+name|Iterator
+name|i
+init|=
+name|entryEditors
+operator|.
+name|keySet
+argument_list|()
+operator|.
+name|iterator
+argument_list|()
+init|;
+name|i
+operator|.
+name|hasNext
+argument_list|()
+condition|;
+control|)
+block|{
+name|EntryEditor
+name|ed
+init|=
+operator|(
+name|EntryEditor
+operator|)
+name|entryEditors
+operator|.
+name|get
+argument_list|(
+name|i
+operator|.
+name|next
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|ed
+operator|.
+name|rebuildPanels
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 DECL|method|markBaseChanged ()
 specifier|public
 name|void
@@ -10474,74 +10523,14 @@ condition|)
 return|return;
 comment|// We are just saving the file, so this message is most likely due
 comment|// to bad timing. If not, we'll handle it on the next polling.
-name|Util
-operator|.
-name|pr
-argument_list|(
-literal|"File '"
-operator|+
-name|file
-operator|.
-name|getPath
-argument_list|()
-operator|+
-literal|"' has been modified."
-argument_list|)
-expr_stmt|;
+comment|//Util.pr("File '"+file.getPath()+"' has been modified.");
 name|updatedExternally
 operator|=
 literal|true
 expr_stmt|;
 comment|// Adding the sidepane component is Swing work, so we must do this in the Swing
 comment|// thread:
-name|Thread
-name|t
-init|=
-operator|new
-name|Thread
-argument_list|()
-block|{
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
-name|FileUpdatePanel
-name|pan
-init|=
-operator|new
-name|FileUpdatePanel
-argument_list|(
-name|frame
-argument_list|,
-name|ths
-argument_list|,
-name|sidePaneManager
-argument_list|,
-name|Globals
-operator|.
-name|prefs
-argument_list|)
-decl_stmt|;
-name|sidePaneManager
-operator|.
-name|add
-argument_list|(
-literal|"fileUpdate"
-argument_list|,
-name|pan
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-decl_stmt|;
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-name|t
-argument_list|)
-expr_stmt|;
+comment|/*       Thread t = new Thread() {         public void run() {           FileUpdatePanel pan = new FileUpdatePanel(frame, ths, sidePaneManager, Globals.prefs);           sidePaneManager.add("fileUpdate", pan);         }       };       SwingUtilities.invokeLater(t);       */
 block|}
 DECL|method|fileRemoved ()
 specifier|public

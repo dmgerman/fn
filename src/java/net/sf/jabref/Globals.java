@@ -1439,13 +1439,7 @@ decl_stmt|;
 static|static
 block|{
 comment|// Start the thread that monitors file time stamps.
-name|Util
-operator|.
-name|pr
-argument_list|(
-literal|"Starting FileUpdateMonitor thread. Globals line 293."
-argument_list|)
-expr_stmt|;
+comment|//Util.pr("Starting FileUpdateMonitor thread. Globals line 293.");
 name|fileUpdateMonitor
 operator|.
 name|start
