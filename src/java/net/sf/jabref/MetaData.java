@@ -75,14 +75,6 @@ name|groupsRoot
 init|=
 literal|null
 decl_stmt|;
-comment|/** The first version (0) lacked a version specification, thus      * this value defaults to 0. */
-DECL|field|groupsVersionOnDisk
-specifier|private
-name|int
-name|groupsVersionOnDisk
-init|=
-literal|0
-decl_stmt|;
 comment|/**      * The MetaData object stores all meta data sets in Vectors. To ensure that      * the data is written correctly to string, the user of a meta data Vector      * must simply make sure the appropriate changes are reflected in the Vector      * it has been passed.      */
 DECL|method|MetaData (HashMap inData, BibtexDatabase db)
 specifier|public
@@ -107,6 +99,18 @@ name|Vector
 name|flatGroupsData
 init|=
 literal|null
+decl_stmt|;
+name|Vector
+name|treeGroupsData
+init|=
+literal|null
+decl_stmt|;
+comment|// The first version (0) lacked a version specification,
+comment|// thus this value defaults to 0.
+name|int
+name|groupsVersionOnDisk
+init|=
+literal|0
 decl_stmt|;
 if|if
 condition|(
@@ -259,18 +263,17 @@ literal|"groupstree"
 argument_list|)
 condition|)
 block|{
-comment|// this possibly handles import of a previous groups version
-name|putGroups
-argument_list|(
-name|orderedData
-argument_list|,
-name|db
-argument_list|)
-expr_stmt|;
 name|groupsTreePresent
 operator|=
 literal|true
 expr_stmt|;
+name|treeGroupsData
+operator|=
+name|orderedData
+expr_stmt|;
+comment|// save for later user
+comment|// actual import operation is handled later because "groupsversion"
+comment|// tag might not yet have been read
 block|}
 elseif|else
 if|if
@@ -299,6 +302,20 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// this possibly handles import of a previous groups version
+if|if
+condition|(
+name|groupsTreePresent
+condition|)
+name|putGroups
+argument_list|(
+name|treeGroupsData
+argument_list|,
+name|db
+argument_list|,
+name|groupsVersionOnDisk
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -449,7 +466,7 @@ name|orderedData
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|putGroups (Vector orderedData, BibtexDatabase db)
+DECL|method|putGroups (Vector orderedData, BibtexDatabase db, int version)
 specifier|private
 name|void
 name|putGroups
@@ -459,6 +476,9 @@ name|orderedData
 parameter_list|,
 name|BibtexDatabase
 name|db
+parameter_list|,
+name|int
+name|version
 parameter_list|)
 block|{
 try|try
@@ -473,7 +493,7 @@ name|orderedData
 argument_list|,
 name|db
 argument_list|,
-name|groupsVersionOnDisk
+name|version
 argument_list|)
 expr_stmt|;
 block|}
