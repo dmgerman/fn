@@ -43,7 +43,7 @@ specifier|final
 name|int
 name|CURRENT_VERSION
 init|=
-literal|1
+literal|0
 decl_stmt|;
 comment|/**      * Imports old (flat) groups data and converts it to a 2-level tree with an      * AllEntriesGroup at the root.      *       * @return the root of the generated tree.      */
 DECL|method|importFlatGroups (Vector groups)
