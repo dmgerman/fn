@@ -381,7 +381,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Parses s and recreates the SearchGroup from it.      *       * @param s      *            The String representation obtained from      *            SearchGroup.toString(), or null if incompatible      */
-DECL|method|fromString (String s)
+DECL|method|fromString (String s, BibtexDatabase db, int version)
 specifier|public
 specifier|static
 name|AbstractGroup
@@ -389,6 +389,12 @@ name|fromString
 parameter_list|(
 name|String
 name|s
+parameter_list|,
+name|BibtexDatabase
+name|db
+parameter_list|,
+name|int
+name|version
 parameter_list|)
 throws|throws
 name|Exception
@@ -435,6 +441,14 @@ argument_list|,
 name|QUOTE_CHAR
 argument_list|)
 decl_stmt|;
+switch|switch
+condition|(
+name|version
+condition|)
+block|{
+case|case
+literal|0
+case|:
 name|String
 name|name
 init|=
@@ -576,6 +590,17 @@ argument_list|,
 name|searchGeneralFields
 argument_list|)
 return|;
+default|default:
+throw|throw
+operator|new
+name|UnsupportedVersionException
+argument_list|(
+literal|"SearchGroup"
+argument_list|,
+name|version
+argument_list|)
+throw|;
+block|}
 block|}
 comment|/**      * @see net.sf.jabref.groups.AbstractGroup#getSearchRule()      */
 DECL|method|getSearchRule ()

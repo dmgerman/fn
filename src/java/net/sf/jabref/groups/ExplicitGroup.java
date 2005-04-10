@@ -126,7 +126,7 @@ operator|=
 name|db
 expr_stmt|;
 block|}
-DECL|method|fromString (String s, BibtexDatabase db)
+DECL|method|fromString (String s, BibtexDatabase db, int version)
 specifier|public
 specifier|static
 name|AbstractGroup
@@ -137,6 +137,9 @@ name|s
 parameter_list|,
 name|BibtexDatabase
 name|db
+parameter_list|,
+name|int
+name|version
 parameter_list|)
 throws|throws
 name|Exception
@@ -183,6 +186,14 @@ argument_list|,
 name|QUOTE_CHAR
 argument_list|)
 decl_stmt|;
+switch|switch
+condition|(
+name|version
+condition|)
+block|{
+case|case
+literal|0
+case|:
 name|ExplicitGroup
 name|newGroup
 init|=
@@ -260,6 +271,17 @@ block|}
 return|return
 name|newGroup
 return|;
+default|default:
+throw|throw
+operator|new
+name|UnsupportedVersionException
+argument_list|(
+literal|"ExplicitGroup"
+argument_list|,
+name|version
+argument_list|)
+throw|;
+block|}
 block|}
 DECL|method|getSearchRule ()
 specifier|public

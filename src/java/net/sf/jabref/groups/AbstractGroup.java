@@ -107,8 +107,8 @@ name|SearchRule
 name|getSearchRule
 parameter_list|()
 function_decl|;
-comment|/**      * Re-create a group instance.      *       * @param s      *            The result from the group's toString() method.      * @return New instance of the encoded group.      * @throws Exception      *             If an error occured and a group could not be created, e.g.      *             due to a malformed regular expression.      */
-DECL|method|fromString (String s, BibtexDatabase db)
+comment|/**      * Re-create a group instance from a textual representation.      *       * @param s      *            The result from the group's toString() method.      * @return New instance of the encoded group.      * @throws Exception      *             If an error occured and a group could not be created, e.g.      *             due to a malformed regular expression.      */
+DECL|method|fromString (String s, BibtexDatabase db, int version)
 specifier|public
 specifier|static
 name|AbstractGroup
@@ -119,6 +119,9 @@ name|s
 parameter_list|,
 name|BibtexDatabase
 name|db
+parameter_list|,
+name|int
+name|version
 parameter_list|)
 throws|throws
 name|Exception
@@ -140,6 +143,10 @@ operator|.
 name|fromString
 argument_list|(
 name|s
+argument_list|,
+name|db
+argument_list|,
+name|version
 argument_list|)
 return|;
 if|if
@@ -159,6 +166,10 @@ operator|.
 name|fromString
 argument_list|(
 name|s
+argument_list|,
+name|db
+argument_list|,
+name|version
 argument_list|)
 return|;
 if|if
@@ -178,6 +189,10 @@ operator|.
 name|fromString
 argument_list|(
 name|s
+argument_list|,
+name|db
+argument_list|,
+name|version
 argument_list|)
 return|;
 if|if
@@ -199,6 +214,8 @@ argument_list|(
 name|s
 argument_list|,
 name|db
+argument_list|,
+name|version
 argument_list|)
 return|;
 return|return

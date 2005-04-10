@@ -259,7 +259,7 @@ literal|"groupstree"
 argument_list|)
 condition|)
 block|{
-comment|// JZTODO possibly handle import
+comment|// this possibly handles import of a previous groups version
 name|putGroups
 argument_list|(
 name|orderedData
@@ -311,7 +311,7 @@ condition|)
 block|{
 name|groupsRoot
 operator|=
-name|Versioning
+name|VersionHandling
 operator|.
 name|importFlatGroups
 argument_list|(
@@ -461,25 +461,19 @@ name|BibtexDatabase
 name|db
 parameter_list|)
 block|{
-comment|// JZTODO add groups version!!!
 try|try
 block|{
-comment|// version 1: orderedData contains exactly 1 element
 name|groupsRoot
 operator|=
-name|GroupTreeNode
+name|VersionHandling
 operator|.
-name|fromString
+name|importGroups
 argument_list|(
-operator|(
-name|String
-operator|)
 name|orderedData
-operator|.
-name|firstElement
-argument_list|()
 argument_list|,
 name|db
+argument_list|,
+name|groupsVersionOnDisk
 argument_list|)
 expr_stmt|;
 block|}
@@ -489,13 +483,7 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-comment|// JZTODO: what now? should never happen, unless
-comment|// metadata was edited directly in the file
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
+comment|// we cannot really do anything about this here
 block|}
 block|}
 DECL|method|getGroups ()
@@ -730,7 +718,7 @@ name|append
 argument_list|(
 literal|""
 operator|+
-name|Versioning
+name|VersionHandling
 operator|.
 name|CURRENT_VERSION
 operator|+
