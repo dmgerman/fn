@@ -36,18 +36,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|tree
-operator|.
-name|DefaultMutableTreeNode
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -56,7 +44,7 @@ name|jabref
 operator|.
 name|groups
 operator|.
-name|GroupTreeNode
+name|*
 import|;
 end_import
 
@@ -275,15 +263,17 @@ name|flatGroupsData
 operator|!=
 literal|null
 condition|)
+block|{
 name|groupsRoot
 operator|=
-name|GroupTreeNode
+name|Versioning
 operator|.
 name|importFlatGroups
 argument_list|(
 name|flatGroupsData
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * The MetaData object can be constructed with no data in it.      */
 DECL|method|MetaData ()
