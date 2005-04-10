@@ -75,6 +75,14 @@ name|groupsRoot
 init|=
 literal|null
 decl_stmt|;
+comment|/** The first version (0) lacked a version specification, thus      * this value defaults to 0. */
+DECL|field|groupsVersionOnDisk
+specifier|private
+name|int
+name|groupsVersionOnDisk
+init|=
+literal|0
+decl_stmt|;
 comment|/**      * The MetaData object stores all meta data sets in Vectors. To ensure that      * the data is written correctly to string, the user of a meta data Vector      * must simply make sure the appropriate changes are reflected in the Vector      * it has been passed.      */
 DECL|method|MetaData (HashMap inData, BibtexDatabase db)
 specifier|public
@@ -211,10 +219,47 @@ name|key
 operator|.
 name|equals
 argument_list|(
+literal|"groupsversion"
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
+name|orderedData
+operator|.
+name|size
+argument_list|()
+operator|>=
+literal|1
+condition|)
+name|groupsVersionOnDisk
+operator|=
+name|Integer
+operator|.
+name|parseInt
+argument_list|(
+name|orderedData
+operator|.
+name|firstElement
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|key
+operator|.
+name|equals
+argument_list|(
 literal|"groupstree"
 argument_list|)
 condition|)
 block|{
+comment|// JZTODO possibly handle import
 name|putGroups
 argument_list|(
 name|orderedData
@@ -665,6 +710,57 @@ operator|new
 name|StringBuffer
 argument_list|()
 decl_stmt|;
+comment|// write version first
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"@comment{"
+operator|+
+name|GUIGlobals
+operator|.
+name|META_FLAG
+operator|+
+literal|"groupsversion:"
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|""
+operator|+
+name|Versioning
+operator|.
+name|CURRENT_VERSION
+operator|+
+literal|";"
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"}\n\n"
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|write
+argument_list|(
+name|sb
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// now write actual groups
+name|sb
+operator|=
+operator|new
+name|StringBuffer
+argument_list|()
+expr_stmt|;
 name|sb
 operator|.
 name|append
@@ -887,18 +983,6 @@ return|return
 literal|null
 return|;
 block|}
-comment|//
-comment|//    private String makeEscape(String s, String specials) {
-comment|//        StringBuffer sb = new StringBuffer();
-comment|//        int c;
-comment|//        for (int i = 0; i< s.length(); i++) {
-comment|//            c = s.charAt(i);
-comment|//            if ((c == '\\') || specials.indexOf(c)>= 0)
-comment|//                sb.append('\\');
-comment|//            sb.append((char) c);
-comment|//        }
-comment|//        return sb.toString();
-comment|//    }
 block|}
 end_class
 
