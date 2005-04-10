@@ -615,6 +615,13 @@ literal|"&|\\\\&"
 argument_list|,
 literal|"&amp;"
 argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"[\\n]{2,}"
+argument_list|,
+literal|"<p>"
+argument_list|)
 return|;
 comment|//.replaceAll("--", "&mdash;");
 block|}

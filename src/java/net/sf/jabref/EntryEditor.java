@@ -4545,6 +4545,47 @@ expr_stmt|;
 block|}
 block|}
 block|}
+comment|/**      * Makes sure the current edit is stored.      */
+DECL|method|storeCurrentEdit ()
+specifier|public
+name|void
+name|storeCurrentEdit
+parameter_list|()
+block|{
+name|Component
+name|comp
+init|=
+name|Globals
+operator|.
+name|focusListener
+operator|.
+name|getFocused
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|comp
+operator|instanceof
+name|FieldEditor
+condition|)
+block|{
+name|storeFieldAction
+operator|.
+name|actionPerformed
+argument_list|(
+operator|new
+name|ActionEvent
+argument_list|(
+name|comp
+argument_list|,
+literal|0
+argument_list|,
+literal|""
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 comment|/**    * Sets all the text areas according to the shown entry.    */
 DECL|method|updateAllFields ()
 specifier|public

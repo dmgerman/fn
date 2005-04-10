@@ -2335,35 +2335,20 @@ argument_list|)
 condition|)
 block|{
 comment|//&& !whs.equals("\n"))
-if|if
-condition|(
+name|whs
+operator|=
 name|whs
 operator|.
-name|endsWith
+name|replaceAll
 argument_list|(
 literal|"\t"
-argument_list|)
-condition|)
-name|value
-operator|.
-name|append
-argument_list|(
-name|whs
-operator|.
-name|substring
-argument_list|(
-literal|0
 argument_list|,
-name|whs
-operator|.
-name|length
-argument_list|()
-operator|-
-literal|1
-argument_list|)
+literal|""
 argument_list|)
 expr_stmt|;
-else|else
+comment|// Remove tabulators.
+comment|//while (whs.endsWith("\t"))
+comment|//    whs = whs.substring(0, whs.length()-1);
 name|value
 operator|.
 name|append

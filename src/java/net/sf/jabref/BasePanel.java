@@ -898,6 +898,23 @@ name|void
 name|action
 parameter_list|()
 block|{
+if|if
+condition|(
+name|isShowingEditor
+argument_list|()
+condition|)
+block|{
+operator|new
+name|FocusRequester
+argument_list|(
+name|splitPane
+operator|.
+name|getBottomComponent
+argument_list|()
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 name|frame
 operator|.
 name|block
@@ -4142,6 +4159,9 @@ literal|0
 operator|)
 condition|)
 block|{
+name|storeCurrentEdit
+argument_list|()
+expr_stmt|;
 comment|//String[] keys = new String[bes.length];
 name|Vector
 name|keys
@@ -4433,6 +4453,9 @@ literal|0
 operator|)
 condition|)
 block|{
+name|storeCurrentEdit
+argument_list|()
+expr_stmt|;
 comment|//String[] keys = new String[bes.length];
 name|Vector
 name|keys
@@ -10220,6 +10243,37 @@ else|else
 name|editor
 operator|.
 name|updateAllFields
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+comment|/**      * If an entry editor is showing, make sure its currently focused field      * stores its changes, if any.      */
+DECL|method|storeCurrentEdit ()
+specifier|public
+name|void
+name|storeCurrentEdit
+parameter_list|()
+block|{
+if|if
+condition|(
+name|isShowingEditor
+argument_list|()
+condition|)
+block|{
+name|EntryEditor
+name|editor
+init|=
+operator|(
+name|EntryEditor
+operator|)
+name|splitPane
+operator|.
+name|getBottomComponent
+argument_list|()
+decl_stmt|;
+name|editor
+operator|.
+name|storeCurrentEdit
 argument_list|()
 expr_stmt|;
 block|}
