@@ -504,6 +504,15 @@ name|e
 parameter_list|)
 block|{
 comment|// we cannot really do anything about this here
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+name|e
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 DECL|method|getGroups ()
