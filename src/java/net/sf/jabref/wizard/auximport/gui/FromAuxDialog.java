@@ -1509,7 +1509,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"nested aux files"
+literal|"nested_aux_files"
 argument_list|)
 operator|+
 literal|" "

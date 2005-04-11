@@ -656,7 +656,6 @@ name|str
 argument_list|)
 expr_stmt|;
 comment|// insert file into filelist
-comment|//                 System.out.println("add #" +str +"#") ;
 block|}
 block|}
 block|}
