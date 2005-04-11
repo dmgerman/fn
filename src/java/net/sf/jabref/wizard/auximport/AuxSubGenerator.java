@@ -4,6 +4,10 @@ comment|/* Copyright (C) 2004 R. Nagel  All programs in this directory and subdi
 end_comment
 
 begin_comment
+comment|/**  *<p>Title: Latex Aux to Bibtex</p>  *  *<p>Description: generates a sub-database which contains only bibtex entries  * from input aux file</p>  *  *<p>Copyright: Copyright (c) 2004</p>  *  *<p>Company:</p>  *  * @version 1.0  * @author r.nagel  *  * @todo Redesign of dialog structure for an assitent like feeling....  *   Now - the unknown bibtex entries cannot inserted into the reference  *   database without closing the dialog.  */
+end_comment
+
+begin_comment
 comment|// created by : r.nagel 23.08.2004
 end_comment
 
@@ -12,7 +16,11 @@ comment|//
 end_comment
 
 begin_comment
-comment|// modified :
+comment|// modified : - 11.04.2005
+end_comment
+
+begin_comment
+comment|//              handling \\@input{file.aux} tag in aux files (nested aux files)
 end_comment
 
 begin_package
@@ -88,10 +96,6 @@ name|*
 import|;
 end_import
 
-begin_comment
-comment|/**  *<p>Title: Latex Aux to Bibtex</p>  *  *<p>Description: generates a sub-database which contains only bibtex entries  * from input aux file</p>  *  *<p>Copyright: Copyright (c) 2004</p>  *  *<p>Company:</p>  *  * @version 1.0  * @author r.nagel  *  * @todo Redesign of dialog structure for an assitent like feeling....  *   Now the unknown bibtex entries cannot inserted into the reference database  *   without closing the dialog.  */
-end_comment
-
 begin_class
 DECL|class|AuxSubGenerator
 specifier|public
@@ -122,6 +126,12 @@ name|BibtexDatabase
 name|auxDB
 decl_stmt|;
 comment|// contains only the bibtex keys who found in aux file
+DECL|field|nestedAuxCounter
+specifier|private
+name|int
+name|nestedAuxCounter
+decl_stmt|;
+comment|// counts the nested aux files
 DECL|method|AuxSubGenerator (BibtexDatabase refDBase)
 specifier|public
 name|AuxSubGenerator
@@ -164,7 +174,34 @@ operator|=
 name|newRefDB
 expr_stmt|;
 block|}
-comment|/**    * parseAuxFile    * read the Aux file and fill up some intern data structures    *    * @param filename String : Path to LatexAuxFile    * @return boolean, true = no error occurs    */
+comment|/**    * parseAuxFile    * read the Aux file and fill up some intern data structures.    * Nested aux files (latex \\include) supported!    *    * @param filename String : Path to LatexAuxFile    * @return boolean, true = no error occurs    */
+comment|// found at comp.text.tex
+comment|//> Can anyone tell be the information held within a .aux file?  Is there a
+comment|//> specific format to this file?
+comment|//
+comment|// I don't think there is a particular format. Every package, class
+comment|// or document can write to the aux file. The aux file consists of LaTeX macros
+comment|// and is read at the \begin{document} and again at the \end{document}.
+comment|//
+comment|// It usually contains information about existing labels
+comment|//  \\newlabel{sec:Intro}{{1}{1}}
+comment|// and citations
+comment|//  \citation{hiri:conv:1993}
+comment|// and macros to write information to other files (like toc, lof or lot files)
+comment|//  \@writefile{toc}{\contentsline {section}{\numberline
+comment|// {1}Intro}{1}}
+comment|// but as I said, there can be a lot more
+comment|// aux file :
+comment|//
+comment|// \\citation{x}  x = used reference of bibtex library entry
+comment|//
+comment|// \\@input{x}  x = nested aux file
+comment|//
+comment|// the \\bibdata{x} directive contains information about the
+comment|// bibtex library file -> x = name of bib file
+comment|//
+comment|// \\bibcite{x}{y}
+comment|//   x is a label for an item and y is the index in bibliography
 DECL|method|parseAuxFile (String filename)
 specifier|public
 specifier|final
@@ -194,6 +231,12 @@ name|back
 init|=
 literal|true
 decl_stmt|;
+comment|// fileopen status
+name|boolean
+name|loopFileOpen
+init|=
+literal|false
+decl_stmt|;
 comment|// the important tag
 name|pattern
 operator|=
@@ -210,8 +253,98 @@ name|br
 init|=
 literal|null
 decl_stmt|;
+comment|// filelist, used for nested aux files
+name|Vector
+name|fileList
+init|=
+operator|new
+name|Vector
+argument_list|(
+literal|5
+argument_list|)
+decl_stmt|;
+name|fileList
+operator|.
+name|add
+argument_list|(
+name|filename
+argument_list|)
+expr_stmt|;
+comment|// get the file path
+name|File
+name|dummy
+init|=
+operator|new
+name|File
+argument_list|(
+name|filename
+argument_list|)
+decl_stmt|;
+name|String
+name|path
+init|=
+name|dummy
+operator|.
+name|getParent
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|path
+operator|!=
+literal|null
+condition|)
+name|path
+operator|=
+name|path
+operator|+
+name|dummy
+operator|.
+name|separator
+expr_stmt|;
+else|else
+name|path
+operator|=
+literal|""
+expr_stmt|;
+name|nestedAuxCounter
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+comment|// count only the nested reads
+comment|// index of current file in list
+name|int
+name|fileIndex
+init|=
+literal|0
+decl_stmt|;
+while|while
+condition|(
+name|fileIndex
+operator|<
+name|fileList
+operator|.
+name|size
+argument_list|()
+condition|)
+block|{
+name|String
+name|fName
+init|=
+operator|(
+name|String
+operator|)
+name|fileList
+operator|.
+name|elementAt
+argument_list|(
+name|fileIndex
+argument_list|)
+decl_stmt|;
 try|try
 block|{
+comment|//        System.out.println("read #"+fName +"#") ;
 name|br
 operator|=
 operator|new
@@ -220,11 +353,15 @@ argument_list|(
 operator|new
 name|FileReader
 argument_list|(
-name|filename
+name|fName
 argument_list|)
 argument_list|)
 expr_stmt|;
 name|weiter
+operator|=
+literal|true
+expr_stmt|;
+name|loopFileOpen
 operator|=
 literal|true
 expr_stmt|;
@@ -251,6 +388,14 @@ argument_list|)
 expr_stmt|;
 comment|// System.exit( 0 ) ;
 name|back
+operator|=
+literal|false
+expr_stmt|;
+name|weiter
+operator|=
+literal|false
+expr_stmt|;
+name|loopFileOpen
 operator|=
 literal|false
 expr_stmt|;
@@ -431,7 +576,92 @@ block|}
 block|}
 block|}
 block|}
+comment|// try to find a nested aux file
+name|int
+name|index
+init|=
+name|line
+operator|.
+name|indexOf
+argument_list|(
+literal|"\\@input{"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|index
+operator|>=
+literal|0
+condition|)
+block|{
+name|int
+name|start
+init|=
+name|index
+operator|+
+literal|8
+decl_stmt|;
+name|int
+name|end
+init|=
+name|line
+operator|.
+name|indexOf
+argument_list|(
+literal|"}"
+argument_list|,
+name|start
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|end
+operator|>
+name|start
+condition|)
+block|{
+name|String
+name|str
+init|=
+name|path
+operator|+
+name|line
+operator|.
+name|substring
+argument_list|(
+name|index
+operator|+
+literal|8
+argument_list|,
+name|end
+argument_list|)
+decl_stmt|;
+comment|// if filename already in filelist
+if|if
+condition|(
+operator|!
+name|fileList
+operator|.
+name|contains
+argument_list|(
+name|str
+argument_list|)
+condition|)
+block|{
+name|fileList
+operator|.
+name|add
+argument_list|(
+name|str
+argument_list|)
+expr_stmt|;
+comment|// insert file into filelist
+comment|//                 System.out.println("add #" +str +"#") ;
 block|}
+block|}
+block|}
+block|}
+comment|// line != null
 else|else
 name|weiter
 operator|=
@@ -441,7 +671,7 @@ block|}
 comment|// end of while
 if|if
 condition|(
-name|back
+name|loopFileOpen
 condition|)
 comment|// only close, if open sucessful
 block|{
@@ -452,6 +682,9 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+name|nestedAuxCounter
+operator|++
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -459,6 +692,11 @@ name|IOException
 name|ioe
 parameter_list|)
 block|{}
+block|}
+name|fileIndex
+operator|++
+expr_stmt|;
+comment|// load next file
 block|}
 return|return
 name|back
@@ -653,7 +891,7 @@ name|size
 argument_list|()
 return|;
 block|}
-comment|/** reset used all datastructures */
+comment|/** reset all used datastructures */
 DECL|method|clear ()
 specifier|public
 specifier|final
@@ -671,6 +909,7 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+comment|// db = null ;  ???
 block|}
 comment|/** returns a vector off all not resolved bibtex entries found in auxfile */
 DECL|method|getNotFoundList ()
@@ -683,6 +922,20 @@ return|return
 name|notFoundList
 return|;
 block|}
+comment|/** returns the number of nested aux files, read by the last call of    *  generate method */
+DECL|method|getNestedAuxCounter ()
+specifier|public
+name|int
+name|getNestedAuxCounter
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|nestedAuxCounter
+return|;
+block|}
+comment|/*   public class FileNameString extends String   {     public boolean equals(Object anObject)     {       if (anObject == null)         return false ;        if (anObject.hashCode() == this.hashCode())         return true ;        return false ;     }   } */
 block|}
 end_class
 
