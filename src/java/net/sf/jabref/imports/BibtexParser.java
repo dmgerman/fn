@@ -126,6 +126,15 @@ name|line
 init|=
 literal|1
 decl_stmt|;
+DECL|field|fieldContentParser
+specifier|private
+name|FieldContentParser
+name|fieldContentParser
+init|=
+operator|new
+name|FieldContentParser
+argument_list|()
+decl_stmt|;
 DECL|method|BibtexParser (Reader in)
 specifier|public
 name|BibtexParser
@@ -1659,14 +1668,28 @@ argument_list|(
 literal|"preserveFieldFormatting"
 argument_list|)
 condition|)
+block|{
+comment|// value.append(parseBracketedText());
+comment|// TEST TEST TEST TEST TEST
+name|StringBuffer
+name|text
+init|=
+name|parseBracketedTextExactly
+argument_list|()
+decl_stmt|;
 name|value
 operator|.
 name|append
 argument_list|(
-name|parseBracketedText
-argument_list|()
+name|fieldContentParser
+operator|.
+name|format
+argument_list|(
+name|text
+argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 name|value
 operator|.
