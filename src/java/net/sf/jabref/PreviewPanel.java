@@ -138,6 +138,14 @@ DECL|field|entry
 name|BibtexEntry
 name|entry
 decl_stmt|;
+DECL|field|database
+name|BibtexDatabase
+name|database
+init|=
+literal|null
+decl_stmt|;
+comment|// If a database is set, the preview will attempt to resolve strings in the previewed
+comment|// entry using that database.
 DECL|field|layout
 name|Layout
 name|layout
@@ -181,6 +189,57 @@ DECL|field|sp
 name|JScrollPane
 name|sp
 decl_stmt|;
+DECL|method|PreviewPanel (BibtexDatabase db, String layoutFile)
+specifier|public
+name|PreviewPanel
+parameter_list|(
+name|BibtexDatabase
+name|db
+parameter_list|,
+name|String
+name|layoutFile
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|layoutFile
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|database
+operator|=
+name|db
+expr_stmt|;
+block|}
+DECL|method|PreviewPanel (BibtexDatabase db, BibtexEntry be, String layoutFile)
+specifier|public
+name|PreviewPanel
+parameter_list|(
+name|BibtexDatabase
+name|db
+parameter_list|,
+name|BibtexEntry
+name|be
+parameter_list|,
+name|String
+name|layoutFile
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|be
+argument_list|,
+name|layoutFile
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|database
+operator|=
+name|db
+expr_stmt|;
+block|}
 DECL|method|PreviewPanel (BibtexEntry be, String layoutFile)
 specifier|public
 name|PreviewPanel
@@ -292,6 +351,20 @@ name|init
 argument_list|()
 expr_stmt|;
 comment|//setText("<HTML></HTML>");
+block|}
+DECL|method|setDatabase (BibtexDatabase db)
+specifier|public
+name|void
+name|setDatabase
+parameter_list|(
+name|BibtexDatabase
+name|db
+parameter_list|)
+block|{
+name|database
+operator|=
+name|db
+expr_stmt|;
 block|}
 DECL|method|init ()
 specifier|private
@@ -456,7 +529,7 @@ name|doLayout
 argument_list|(
 name|entry
 argument_list|,
-literal|null
+name|database
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -618,7 +618,7 @@ argument_list|)
 operator|.
 name|replaceAll
 argument_list|(
-literal|"[\\n]{2,}"
+literal|"[\\n]{1,}"
 argument_list|,
 literal|"<p>"
 argument_list|)
