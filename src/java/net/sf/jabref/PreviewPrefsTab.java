@@ -836,6 +836,19 @@ name|getText
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|testPanel
+operator|.
+name|setPreferredSize
+argument_list|(
+operator|new
+name|Dimension
+argument_list|(
+literal|500
+argument_list|,
+literal|300
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -843,6 +856,17 @@ argument_list|(
 literal|null
 argument_list|,
 name|testPanel
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Preview"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|PLAIN_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
@@ -882,6 +906,19 @@ name|getText
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|testPanel
+operator|.
+name|setPreferredSize
+argument_list|(
+operator|new
+name|Dimension
+argument_list|(
+literal|500
+argument_list|,
+literal|300
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -889,6 +926,17 @@ argument_list|(
 literal|null
 argument_list|,
 name|testPanel
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Preview"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|PLAIN_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
@@ -1018,6 +1066,21 @@ argument_list|(
 literal|"url"
 argument_list|,
 literal|"http://thereferencedatabase.com/10011101.html"
+argument_list|)
+expr_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"abstract"
+argument_list|,
+literal|"The JabRef project was started by Morten Alver and Nizar Batada after "
+operator|+
+literal|"they decided to work together rather than each working on their own separate project "
+operator|+
+literal|"(Bibkeeper and JBibtexManager). JabRef initially combined the best features of both "
+operator|+
+literal|"predecessors, and in the time to come evolved far beyond them."
 argument_list|)
 expr_stmt|;
 block|}
