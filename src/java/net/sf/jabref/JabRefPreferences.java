@@ -3296,7 +3296,7 @@ name|put
 argument_list|(
 literal|"Next tab"
 argument_list|,
-literal|"ctrl RIGHT"
+literal|"ctrl PAGE_DOWN"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds
@@ -3305,7 +3305,7 @@ name|put
 argument_list|(
 literal|"Previous tab"
 argument_list|,
-literal|"ctrl LEFT"
+literal|"ctrl PAGE_UP"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds
