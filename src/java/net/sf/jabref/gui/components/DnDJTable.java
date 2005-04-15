@@ -20,19 +20,7 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|datatransfer
-operator|.
-name|Transferable
+name|Point
 import|;
 end_import
 
@@ -106,7 +94,7 @@ implements|,
 name|DragSourceListener
 block|{
 DECL|field|selectionToDrag
-specifier|private
+specifier|protected
 name|int
 index|[]
 name|selectionToDrag
@@ -627,7 +615,7 @@ name|DragSourceDragEvent
 name|dsde
 parameter_list|)
 block|{
-comment|// ignore
+comment|// to be implemented by subclass if required
 block|}
 DECL|method|dragOver (DragSourceDragEvent dsde)
 specifier|public
@@ -638,7 +626,7 @@ name|DragSourceDragEvent
 name|dsde
 parameter_list|)
 block|{
-comment|// ignore
+comment|// to be implemented by subclass if required
 block|}
 DECL|method|dropActionChanged (DragSourceDragEvent dsde)
 specifier|public
@@ -649,7 +637,7 @@ name|DragSourceDragEvent
 name|dsde
 parameter_list|)
 block|{
-comment|// ignore
+comment|// to be implemented by subclass if required
 block|}
 DECL|method|dragDropEnd (DragSourceDropEvent dsde)
 specifier|public
@@ -660,7 +648,7 @@ name|DragSourceDropEvent
 name|dsde
 parameter_list|)
 block|{
-comment|// JZTODO
+comment|// to be implemented by subclass if required
 block|}
 DECL|method|dragExit (DragSourceEvent dse)
 specifier|public
@@ -671,7 +659,7 @@ name|DragSourceEvent
 name|dse
 parameter_list|)
 block|{
-comment|// ignore
+comment|// to be implemented by subclass if required
 block|}
 block|}
 end_class
