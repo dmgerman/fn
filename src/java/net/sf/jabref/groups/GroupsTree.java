@@ -941,7 +941,7 @@ name|isDataFlavorSupported
 argument_list|(
 name|TransferableEntrySelection
 operator|.
-name|flavor
+name|flavorInternal
 argument_list|)
 condition|)
 block|{
@@ -976,7 +976,7 @@ name|getTransferData
 argument_list|(
 name|TransferableEntrySelection
 operator|.
-name|flavor
+name|flavorInternal
 argument_list|)
 decl_stmt|;
 name|target
