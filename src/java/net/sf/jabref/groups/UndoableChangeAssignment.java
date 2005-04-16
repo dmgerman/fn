@@ -91,6 +91,7 @@ name|m_groupsRootHandle
 init|=
 literal|null
 decl_stmt|;
+comment|/** Constructor for use in a group itself, where the enclosing      * node is unknown. The node must be set using setEditedNode()      * before this instance may be used.       * @param previousAssignment      * @param currentAssignment      */
 DECL|method|UndoableChangeAssignment (Set previousAssignment, Set currentAssignment)
 specifier|public
 name|UndoableChangeAssignment
@@ -119,7 +120,34 @@ name|currentAssignment
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sets the node of the group that was edited. This method has to be called      * before this instance may be used.      *       * @param node      *            The node whose assignments were edited.      */
+DECL|method|UndoableChangeAssignment (Set previousAssignment, Set currentAssignment, GroupTreeNode node)
+specifier|public
+name|UndoableChangeAssignment
+parameter_list|(
+name|Set
+name|previousAssignment
+parameter_list|,
+name|Set
+name|currentAssignment
+parameter_list|,
+name|GroupTreeNode
+name|node
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|previousAssignment
+argument_list|,
+name|currentAssignment
+argument_list|)
+expr_stmt|;
+name|setEditedNode
+argument_list|(
+name|node
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Sets the node of the group that was edited. If this node was not      * specified at construction time, this method has to be called      * before this instance may be used.      *       * @param node      *            The node whose assignments were edited.      */
 DECL|method|setEditedNode (GroupTreeNode node)
 specifier|public
 name|void

@@ -60,6 +60,14 @@ name|GroupTreeCellRenderer
 extends|extends
 name|DefaultTreeCellRenderer
 block|{
+comment|/** The cell over which the user is currently dragging */
+DECL|field|targetCell
+specifier|protected
+name|Object
+name|targetCell
+init|=
+literal|null
+decl_stmt|;
 DECL|method|getTreeCellRendererComponent (JTree tree, Object value, boolean selected, boolean expanded, boolean leaf, int row, boolean hasFocus)
 specifier|public
 name|Component
@@ -87,6 +95,17 @@ name|boolean
 name|hasFocus
 parameter_list|)
 block|{
+if|if
+condition|(
+name|value
+operator|==
+name|targetCell
+condition|)
+name|selected
+operator|=
+literal|true
+expr_stmt|;
+comment|// show as selected
 name|Component
 name|c
 init|=
@@ -177,6 +196,23 @@ block|}
 return|return
 name|c
 return|;
+block|}
+comment|/** For use when dragging: The sepcified cell is always rendered as      * selected.       * @param targetCell The cell over which the user is currently dragging.      */
+DECL|method|setTargetCell (Object targetCell)
+specifier|public
+name|void
+name|setTargetCell
+parameter_list|(
+name|Object
+name|targetCell
+parameter_list|)
+block|{
+name|this
+operator|.
+name|targetCell
+operator|=
+name|targetCell
+expr_stmt|;
 block|}
 block|}
 end_class

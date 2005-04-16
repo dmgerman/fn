@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* All programs in this directory and subdirectories are published under the  GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it  under the terms of the GNU General Public License as published by the Free  Software Foundation; either version 2 of the License, or (at your option)  any later version.  This program is distributed in the hope that it will be useful, but WITHOUT  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for  more details.  You should have received a copy of the GNU General Public License along  with this program; if not, write to the Free Software Foundation, Inc., 59  Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html */
+comment|/*  All programs in this directory and subdirectories are published under the   GNU General Public License as described below.   This program is free software; you can redistribute it and/or modify it   under the terms of the GNU General Public License as published by the Free   Software Foundation; either version 2 of the License, or (at your option)   any later version.   This program is distributed in the hope that it will be useful, but WITHOUT   ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or   FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for   more details.   You should have received a copy of the GNU General Public License along   with this program; if not, write to the Free Software Foundation, Inc., 59   Temple Place, Suite 330, Boston, MA 02111-1307 USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html  */
 end_comment
 
 begin_package
@@ -34,9 +34,9 @@ name|java
 operator|.
 name|awt
 operator|.
-name|event
+name|dnd
 operator|.
-name|InputEvent
+name|DnDConstants
 import|;
 end_import
 
@@ -44,9 +44,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|awt
 operator|.
-name|*
+name|event
+operator|.
+name|InputEvent
 import|;
 end_import
 
@@ -68,7 +70,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|EntryTable
 import|;
 end_import
 
@@ -111,11 +113,10 @@ name|c
 parameter_list|)
 block|{
 return|return
-name|TransferHandler
+name|DnDConstants
 operator|.
-name|COPY_OR_MOVE
+name|ACTION_LINK
 return|;
-comment|// JZTODO
 block|}
 DECL|method|createTransferable (JComponent c)
 specifier|public
@@ -188,7 +189,7 @@ name|int
 name|action
 parameter_list|)
 block|{
-comment|// default implementation is OK
+comment|// action is always LINK
 name|super
 operator|.
 name|exportAsDrag
@@ -197,7 +198,9 @@ name|comp
 argument_list|,
 name|e
 argument_list|,
-name|action
+name|DnDConstants
+operator|.
+name|ACTION_LINK
 argument_list|)
 expr_stmt|;
 block|}
