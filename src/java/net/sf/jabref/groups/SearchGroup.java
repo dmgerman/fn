@@ -449,6 +449,9 @@ block|{
 case|case
 literal|0
 case|:
+case|case
+literal|1
+case|:
 name|String
 name|name
 init|=

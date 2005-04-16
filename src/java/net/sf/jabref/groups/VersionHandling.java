@@ -67,7 +67,7 @@ specifier|final
 name|int
 name|CURRENT_VERSION
 init|=
-literal|0
+literal|1
 decl_stmt|;
 comment|/**      * Imports old (flat) groups data and converts it to a 2-level tree with an      * AllEntriesGroup at the root.      *       * @return the root of the generated tree.      */
 DECL|method|importFlatGroups (Vector groups)
@@ -189,6 +189,10 @@ argument_list|,
 name|field
 argument_list|,
 name|regexp
+argument_list|,
+literal|false
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 argument_list|)
@@ -224,8 +228,11 @@ block|{
 case|case
 literal|0
 case|:
+case|case
+literal|1
+case|:
 return|return
-name|Version0
+name|Version0_1
 operator|.
 name|fromString
 argument_list|(
@@ -238,6 +245,8 @@ name|firstElement
 argument_list|()
 argument_list|,
 name|db
+argument_list|,
+name|version
 argument_list|)
 return|;
 default|default:
@@ -256,14 +265,14 @@ throw|;
 block|}
 block|}
 comment|/** Imports groups version 0. */
-DECL|class|Version0
+DECL|class|Version0_1
 specifier|private
 specifier|static
 class|class
-name|Version0
+name|Version0_1
 block|{
 comment|/**          * Parses the textual representation obtained from          * GroupTreeNode.toString() and recreates that node and all of its          * children from it.          *           * @throws Exception          *             When a group could not be recreated          */
-DECL|method|fromString (String s, BibtexDatabase db)
+DECL|method|fromString (String s, BibtexDatabase db, int version)
 specifier|private
 specifier|static
 name|GroupTreeNode
@@ -274,6 +283,9 @@ name|s
 parameter_list|,
 name|BibtexDatabase
 name|db
+parameter_list|,
+name|int
+name|version
 parameter_list|)
 throws|throws
 name|Exception
@@ -327,6 +339,8 @@ argument_list|(
 name|subtree
 argument_list|,
 name|db
+argument_list|,
+name|version
 argument_list|)
 expr_stmt|;
 comment|// continue after this subtree by removing it
@@ -431,11 +445,10 @@ argument_list|)
 argument_list|,
 name|db
 argument_list|,
-literal|0
+name|version
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// version 0
 block|}
 if|if
 condition|(
