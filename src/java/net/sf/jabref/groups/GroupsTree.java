@@ -169,7 +169,7 @@ name|minAutoscrollInterval
 init|=
 literal|50L
 decl_stmt|;
-comment|/** the point on which the cursor is currently idling during a drag operation. */
+comment|/**      * the point on which the cursor is currently idling during a drag      * operation.      */
 DECL|field|idlePoint
 specifier|private
 name|Point
@@ -479,6 +479,16 @@ operator|.
 name|currentTimeMillis
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|idlePoint
+operator|==
+literal|null
+condition|)
+name|idlePoint
+operator|=
+name|cursor
+expr_stmt|;
 comment|// autoscrolling
 if|if
 condition|(
@@ -734,6 +744,7 @@ block|{
 try|try
 block|{
 comment|// initializations common to all flavors
+specifier|final
 name|Transferable
 name|transferable
 init|=
@@ -742,6 +753,7 @@ operator|.
 name|getTransferable
 argument_list|()
 decl_stmt|;
+specifier|final
 name|Point
 name|p
 init|=
@@ -750,6 +762,7 @@ operator|.
 name|getLocation
 argument_list|()
 decl_stmt|;
+specifier|final
 name|TreePath
 name|path
 init|=
@@ -778,6 +791,7 @@ argument_list|()
 expr_stmt|;
 return|return;
 block|}
+specifier|final
 name|GroupTreeNode
 name|target
 init|=
@@ -957,6 +971,16 @@ name|supportsAdd
 argument_list|()
 condition|)
 block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"drop rejected"
+argument_list|)
+expr_stmt|;
+comment|// JZTODO
 name|dtde
 operator|.
 name|rejectDrop
@@ -1080,17 +1104,6 @@ decl_stmt|;
 name|dragNode
 operator|=
 name|selectedNode
-expr_stmt|;
-name|idlePoint
-operator|=
-operator|new
-name|Point
-argument_list|(
-name|dge
-operator|.
-name|getDragOrigin
-argument_list|()
-argument_list|)
 expr_stmt|;
 name|dge
 operator|.
