@@ -30,18 +30,6 @@ name|java
 operator|.
 name|awt
 operator|.
-name|dnd
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
 name|event
 operator|.
 name|*
@@ -128,7 +116,7 @@ name|jabref
 operator|.
 name|groups
 operator|.
-name|TransferableEntrySelection
+name|EntryTableTransferHandler
 import|;
 end_import
 
@@ -280,6 +268,21 @@ argument_list|(
 name|Globals
 operator|.
 name|focusListener
+argument_list|)
+expr_stmt|;
+comment|// enable DnD
+name|setDragEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|setTransferHandler
+argument_list|(
+operator|new
+name|EntryTableTransferHandler
+argument_list|(
+name|this
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//renderingHints = g2.getRenderingHints();
