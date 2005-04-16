@@ -515,11 +515,27 @@ argument_list|)
 decl_stmt|;
 DECL|field|m_mainPanel
 DECL|field|lowerPanel
+DECL|field|m_descriptionPanel
 specifier|private
 name|JPanel
 name|m_mainPanel
 decl_stmt|,
 name|lowerPanel
+decl_stmt|,
+name|m_descriptionPanel
+decl_stmt|;
+DECL|field|m_description
+specifier|private
+name|JTextArea
+name|m_description
+init|=
+operator|new
+name|JTextArea
+argument_list|(
+literal|8
+argument_list|,
+literal|80
+argument_list|)
 decl_stmt|;
 DECL|field|m_okPressed
 specifier|private
@@ -855,6 +871,68 @@ name|getPanel
 argument_list|()
 expr_stmt|;
 comment|/*JPanel sgExpression = new JPanelXBoxPreferredHeight();         sgExpression.add(m_searchExpressionLabel);         sgExpression.add(Box.createHorizontalGlue());         sgExpression.add(new JPanelXBoxPreferredSize(m_sgSearchExpression));         JPanel sgSearchType = new JPanelXBoxPreferredHeight(m_searchType);         sgSearchType.add(Box.createHorizontalGlue());         JPanel sgCaseSensitive = new JPanelXBoxPreferredHeight(m_caseSensitive);         JPanel sgRegExp = new JPanelXBoxPreferredHeight(m_isRegExp);         JPanel sgAll = new JPanelXBoxPreferredHeight(m_searchAllFields);         JPanel sgReq = new JPanelXBoxPreferredHeight(m_searchRequiredFields);         JPanel sgOpt = new JPanelXBoxPreferredHeight(m_searchOptionalFields);         JPanel sgGen = new JPanelXBoxPreferredHeight(m_searchGeneralFields);         sgCaseSensitive.add(Box.createHorizontalGlue());         sgRegExp.add(Box.createHorizontalGlue());         sgAll.add(Box.createHorizontalGlue());         sgReq.add(Box.createHorizontalGlue());         sgOpt.add(Box.createHorizontalGlue());         sgGen.add(Box.createHorizontalGlue());         m_searchGroupPanel.add(sgExpression);         m_searchGroupPanel.add(sgSearchType);         m_searchGroupPanel.add(sgCaseSensitive);         m_searchGroupPanel.add(sgRegExp);         m_searchGroupPanel.add(sgAll);         m_searchGroupPanel.add(sgReq);         m_searchGroupPanel.add(sgOpt);         m_searchGroupPanel.add(sgGen);         m_searchGroupPanel.add(Box.createVerticalGlue());         */
+name|layout
+operator|=
+operator|new
+name|FormLayout
+argument_list|(
+literal|"left:pref, 4dlu, fill:130dlu"
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+name|builder
+operator|=
+operator|new
+name|DefaultFormBuilder
+argument_list|(
+name|layout
+argument_list|)
+expr_stmt|;
+name|m_description
+operator|.
+name|setEditable
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|m_description
+operator|.
+name|setWrapStyleWord
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|m_description
+operator|.
+name|setLineWrap
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|JScrollPane
+name|sp
+init|=
+operator|new
+name|JScrollPane
+argument_list|(
+name|m_description
+argument_list|)
+decl_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|sp
+argument_list|)
+expr_stmt|;
+name|m_descriptionPanel
+operator|=
+name|builder
+operator|.
+name|getPanel
+argument_list|()
+expr_stmt|;
 name|m_keywordGroupPanel
 operator|.
 name|setBorder
@@ -1073,8 +1151,14 @@ operator|.
 name|setLayout
 argument_list|(
 operator|new
-name|BorderLayout
-argument_list|()
+name|BoxLayout
+argument_list|(
+name|cp
+argument_list|,
+name|BoxLayout
+operator|.
+name|Y_AXIS
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|cp
@@ -1082,10 +1166,6 @@ operator|.
 name|add
 argument_list|(
 name|m_mainPanel
-argument_list|,
-name|BorderLayout
-operator|.
-name|NORTH
 argument_list|)
 expr_stmt|;
 name|cp
@@ -1093,10 +1173,13 @@ operator|.
 name|add
 argument_list|(
 name|lowerPanel
-argument_list|,
-name|BorderLayout
+argument_list|)
+expr_stmt|;
+name|cp
 operator|.
-name|CENTER
+name|add
+argument_list|(
+name|m_descriptionPanel
 argument_list|)
 expr_stmt|;
 name|cp
@@ -1104,10 +1187,6 @@ operator|.
 name|add
 argument_list|(
 name|buttons
-argument_list|,
-name|BorderLayout
-operator|.
-name|SOUTH
 argument_list|)
 expr_stmt|;
 comment|//cp.setLayout(new BoxLayout(cp, BoxLayout.Y_AXIS));
@@ -1816,7 +1895,9 @@ operator|>
 literal|0
 decl_stmt|;
 name|String
-name|s
+name|s1
+decl_stmt|,
+name|s2
 decl_stmt|;
 switch|switch
 condition|(
@@ -1829,7 +1910,7 @@ block|{
 case|case
 name|INDEX_KEYWORDGROUP
 case|:
-name|s
+name|s1
 operator|=
 name|m_searchField
 operator|.
@@ -1843,14 +1924,14 @@ name|okEnabled
 operator|=
 name|okEnabled
 operator|&&
-name|s
+name|s1
 operator|.
 name|length
 argument_list|()
 operator|>
 literal|0
 operator|&&
-name|s
+name|s1
 operator|.
 name|indexOf
 argument_list|(
@@ -1859,7 +1940,7 @@ argument_list|)
 operator|<
 literal|0
 expr_stmt|;
-name|s
+name|s2
 operator|=
 name|m_kgSearchExpression
 operator|.
@@ -1873,13 +1954,28 @@ name|okEnabled
 operator|=
 name|okEnabled
 operator|&&
-name|s
+name|s2
 operator|.
 name|length
 argument_list|()
 operator|>
 literal|0
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|okEnabled
+condition|)
+block|{
+name|m_description
+operator|.
+name|setText
+argument_list|(
+literal|"Please enter the field to search (e.g. \"keywords\") and the term to search it for (e.g. \"electrical\")."
+argument_list|)
+expr_stmt|;
+break|break;
+block|}
 if|if
 condition|(
 name|m_kgIsRegExp
@@ -1894,7 +1990,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-name|s
+name|s2
 argument_list|)
 expr_stmt|;
 block|}
@@ -1908,13 +2004,54 @@ name|okEnabled
 operator|=
 literal|false
 expr_stmt|;
+name|m_description
+operator|.
+name|setText
+argument_list|(
+literal|"The regular expression \""
+operator|+
+name|s2
+operator|+
+literal|"\" is invalid ("
+operator|+
+name|e
+operator|.
+name|getMessage
+argument_list|()
+operator|+
+literal|")."
+argument_list|)
+expr_stmt|;
+break|break;
 block|}
 block|}
+name|m_description
+operator|.
+name|setText
+argument_list|(
+name|getDescriptionForKeywordGroup
+argument_list|(
+name|s1
+argument_list|,
+name|s2
+argument_list|,
+name|m_kgCaseSensitive
+operator|.
+name|isSelected
+argument_list|()
+argument_list|,
+name|m_kgIsRegExp
+operator|.
+name|isSelected
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 break|break;
 case|case
 name|INDEX_SEARCHGROUP
 case|:
-name|s
+name|s2
 operator|=
 name|m_sgSearchExpression
 operator|.
@@ -1928,7 +2065,7 @@ name|okEnabled
 operator|=
 name|okEnabled
 operator|&
-name|s
+name|s2
 operator|.
 name|length
 argument_list|()
@@ -1942,7 +2079,7 @@ name|SearchExpressionParser
 operator|.
 name|isValidSyntax
 argument_list|(
-name|s
+name|s2
 argument_list|,
 name|m_sgCaseSensitive
 operator|.
@@ -2019,10 +2156,26 @@ expr_stmt|;
 name|validate
 argument_list|()
 expr_stmt|;
+name|m_description
+operator|.
+name|setText
+argument_list|(
+name|getDescriptionForSearchGroup
+argument_list|()
+argument_list|)
+expr_stmt|;
 break|break;
 case|case
 name|INDEX_EXPLICITGROUP
 case|:
+name|m_description
+operator|.
+name|setText
+argument_list|(
+name|getDescriptionForExplicitGroup
+argument_list|()
+argument_list|)
+expr_stmt|;
 break|break;
 block|}
 name|m_ok
@@ -2137,6 +2290,161 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+DECL|method|getDescriptionForExplicitGroup ()
+specifier|private
+name|String
+name|getDescriptionForExplicitGroup
+parameter_list|()
+block|{
+return|return
+literal|"This group contains entries based on explicit assignment. "
+operator|+
+literal|"Entries can be assigned to this group by selecting them "
+operator|+
+literal|"then using either drag and drop or the context menu. "
+operator|+
+literal|"Entries can be removed from this group by selecting them "
+operator|+
+literal|"then using the context menu."
+return|;
+block|}
+DECL|method|getDescriptionForKeywordGroup (String field, String expr, boolean caseSensitive, boolean regExp)
+specifier|private
+name|String
+name|getDescriptionForKeywordGroup
+parameter_list|(
+name|String
+name|field
+parameter_list|,
+name|String
+name|expr
+parameter_list|,
+name|boolean
+name|caseSensitive
+parameter_list|,
+name|boolean
+name|regExp
+parameter_list|)
+block|{
+name|StringBuffer
+name|sb
+init|=
+operator|new
+name|StringBuffer
+argument_list|()
+decl_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"This group contains entries whose \""
+operator|+
+name|field
+operator|+
+literal|"\" field "
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+name|regExp
+condition|?
+literal|"matches the regular expression "
+else|:
+literal|"contains the term "
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"\""
+operator|+
+name|expr
+operator|+
+literal|"\""
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+name|caseSensitive
+condition|?
+literal|" (case sensitive). "
+else|:
+literal|" (case insensitive). "
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+name|regExp
+condition|?
+literal|"Entries cannot be explicitly assigned to or removed from this group."
+else|:
+literal|"Additionally, entries whose \""
+operator|+
+name|field
+operator|+
+literal|"\" field does not contain "
+operator|+
+literal|"\""
+operator|+
+name|expr
+operator|+
+literal|"\" can be assigned to this group by selecting them "
+operator|+
+literal|"then using either drag and drop or the context menu. "
+operator|+
+literal|"This process adds the term \""
+operator|+
+name|expr
+operator|+
+literal|"\" to "
+operator|+
+literal|"each entry's \""
+operator|+
+name|field
+operator|+
+literal|"\" field. "
+operator|+
+literal|"Entries can be removed from this group by selecting them "
+operator|+
+literal|"then using the context menu. "
+operator|+
+literal|"This process removes the term \""
+operator|+
+name|expr
+operator|+
+literal|"\" from "
+operator|+
+literal|"each  entry's \""
+operator|+
+name|field
+operator|+
+literal|"\" field. "
+argument_list|)
+expr_stmt|;
+return|return
+name|sb
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
+DECL|method|getDescriptionForSearchGroup ()
+specifier|private
+name|String
+name|getDescriptionForSearchGroup
+parameter_list|()
+block|{
+return|return
+literal|"serach group..."
+return|;
 block|}
 block|}
 end_class
