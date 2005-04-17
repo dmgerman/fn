@@ -983,10 +983,7 @@ control|)
 block|{
 name|String
 name|content
-init|=
-literal|""
 decl_stmt|;
-comment|// null; (Changed 2004.06.03, Morten A.)
 switch|switch
 condition|(
 name|i
@@ -1030,6 +1027,7 @@ default|default:
 comment|// regular field
 if|if
 condition|(
+operator|!
 name|fieldSpec
 operator|.
 name|matcher
@@ -1046,10 +1044,12 @@ operator|.
 name|matches
 argument_list|()
 condition|)
-block|{
-name|Object
-name|o
-init|=
+continue|continue;
+name|content
+operator|=
+operator|(
+name|String
+operator|)
 name|bibtexEntry
 operator|.
 name|getField
@@ -1062,24 +1062,16 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
-decl_stmt|;
-name|content
-operator|=
-operator|(
-name|o
-operator|!=
-literal|null
-condition|?
-name|o
-operator|.
-name|toString
-argument_list|()
-else|:
-literal|""
-operator|)
 expr_stmt|;
 block|}
-block|}
+if|if
+condition|(
+name|content
+operator|==
+literal|null
+condition|)
+continue|continue;
+comment|// paranoia
 name|Matcher
 name|matcher
 init|=
