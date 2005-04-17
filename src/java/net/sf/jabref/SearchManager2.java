@@ -2531,7 +2531,7 @@ name|setText
 argument_list|(
 name|SearchExpressionParser
 operator|.
-name|isValidSyntax
+name|checkSyntax
 argument_list|(
 name|searchField
 operator|.
@@ -2548,6 +2548,8 @@ operator|.
 name|isSelected
 argument_list|()
 argument_list|)
+operator|!=
+literal|null
 condition|?
 name|Globals
 operator|.

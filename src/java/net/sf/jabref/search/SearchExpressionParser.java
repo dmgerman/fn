@@ -208,12 +208,12 @@ name|regex
 init|=
 literal|true
 decl_stmt|;
-comment|/** Creates a parser and lexer instance and tests the specified String. 	  * Returns true if s is in valid syntax for advanced field search, false otherwise. */
-DECL|method|isValidSyntax (String s, boolean caseSensitive, boolean regex)
+comment|/** Creates a parser and lexer instance and tests the specified String. 	  * Returns the AST if s is in valid syntax for advanced field search, null otherwise. */
+DECL|method|checkSyntax (String s, boolean caseSensitive, boolean regex)
 specifier|public
 specifier|static
-name|boolean
-name|isValidSyntax
+name|AST
+name|checkSyntax
 parameter_list|(
 name|String
 name|s
@@ -264,7 +264,10 @@ name|searchExpression
 argument_list|()
 expr_stmt|;
 return|return
-literal|true
+name|parser
+operator|.
+name|getAST
+argument_list|()
 return|;
 block|}
 catch|catch
@@ -274,7 +277,7 @@ name|e
 parameter_list|)
 block|{
 return|return
-literal|false
+literal|null
 return|;
 block|}
 block|}
