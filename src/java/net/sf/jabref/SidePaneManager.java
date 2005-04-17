@@ -749,7 +749,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|updateView ()
-specifier|private
+specifier|public
 name|void
 name|updateView
 parameter_list|()

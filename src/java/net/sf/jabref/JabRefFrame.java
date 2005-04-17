@@ -2080,7 +2080,7 @@ comment|//medlineAuthorFetcher = new MedlineAuthorFetcher(this, sidePaneManager)
 comment|//sidePaneManager.register("fetchAuthorMedline", medlineAuthorFetcher);
 name|sidePaneManager
 operator|.
-name|add
+name|register
 argument_list|(
 literal|"search"
 argument_list|,
@@ -3438,8 +3438,11 @@ name|getPanel
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//gbl.setConstraints(tabbedPane, con);
-comment|//getContentPane().add(tabbedPane);
+name|sidePaneManager
+operator|.
+name|updateView
+argument_list|()
+expr_stmt|;
 name|JPanel
 name|status
 init|=
@@ -9744,7 +9747,7 @@ literal|"endnote"
 expr_stmt|;
 name|extension
 operator|=
-literal|".enf"
+literal|".txt"
 expr_stmt|;
 block|}
 comment|/*    else if (source == openofficeItem) { 		  lfFileName = "openoffice-csv"; 		  directory = "openoffice"; 		  extension = ".csv"; 		}*/
