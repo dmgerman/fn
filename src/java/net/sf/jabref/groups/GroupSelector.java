@@ -2656,6 +2656,15 @@ name|TreeSelectionEvent
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+name|panel
+operator|==
+literal|null
+condition|)
+comment|// sorry, we're closed!
+return|return;
+comment|// ignore this event
 specifier|final
 name|TreePath
 index|[]
@@ -5143,6 +5152,7 @@ operator|.
 name|isLeaf
 argument_list|()
 condition|)
+block|{
 comment|// groups were defined
 name|frame
 operator|.
@@ -5153,6 +5163,16 @@ argument_list|(
 literal|"groups"
 argument_list|)
 expr_stmt|;
+name|frame
+operator|.
+name|groupToggle
+operator|.
+name|setSelected
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
