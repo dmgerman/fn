@@ -308,12 +308,6 @@ operator|new
 name|UIFSplitPane
 argument_list|()
 decl_stmt|;
-DECL|field|ths
-name|BasePanel
-name|ths
-init|=
-name|this
-decl_stmt|;
 DECL|field|splitPane
 name|JSplitPane
 name|splitPane
@@ -415,7 +409,7 @@ init|=
 operator|new
 name|CountingUndoManager
 argument_list|(
-name|ths
+name|this
 argument_list|)
 decl_stmt|;
 DECL|field|undoAction
@@ -1186,7 +1180,9 @@ name|ChangeScanner
 argument_list|(
 name|frame
 argument_list|,
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|)
 decl_stmt|;
 comment|//, panel.database(), panel.metaData());
@@ -1298,7 +1294,9 @@ name|frame
 operator|.
 name|setTabTitle
 argument_list|(
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|,
 name|file
 operator|.
@@ -1460,7 +1458,9 @@ name|fileUpdateMonitor
 operator|.
 name|addUpdateListener
 argument_list|(
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|,
 name|file
 argument_list|)
@@ -1739,7 +1739,9 @@ name|setContents
 argument_list|(
 name|trbe
 argument_list|,
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|)
 expr_stmt|;
 name|output
@@ -1875,7 +1877,9 @@ name|setContents
 argument_list|(
 name|ss
 argument_list|,
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|)
 expr_stmt|;
 name|output
@@ -2024,7 +2028,9 @@ index|[
 name|i
 index|]
 argument_list|,
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2284,7 +2290,9 @@ index|[
 name|i
 index|]
 argument_list|,
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2953,7 +2961,9 @@ name|database
 argument_list|,
 name|be
 argument_list|,
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3112,7 +3122,9 @@ name|PreambleEditor
 argument_list|(
 name|frame
 argument_list|,
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|,
 name|database
 argument_list|,
@@ -3185,7 +3197,9 @@ name|StringDialog
 argument_list|(
 name|frame
 argument_list|,
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|,
 name|database
 argument_list|,
@@ -3278,7 +3292,9 @@ argument_list|,
 operator|new
 name|PushToLyx
 argument_list|(
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4528,7 +4544,9 @@ name|setContents
 argument_list|(
 name|ss
 argument_list|,
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|)
 expr_stmt|;
 if|if
@@ -4826,7 +4844,9 @@ name|setContents
 argument_list|(
 name|ss
 argument_list|,
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|)
 expr_stmt|;
 if|if
@@ -4958,7 +4978,9 @@ name|placeDialog
 argument_list|(
 name|md
 argument_list|,
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|)
 expr_stmt|;
 name|md
@@ -5006,7 +5028,7 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
-comment|/*JFileChooser chooser = (prefs.get("workingDirectory") == null) ?                       new JabRefFileChooser((File)null) :                       new JabRefFileChooser(new File(prefs.get("workingDirectory")));                   chooser.addChoosableFileFilter( new OpenFileFilter() );//nb nov2                   int returnVal = chooser.showOpenDialog(ths);*/
+comment|/*JFileChooser chooser = (prefs.get("workingDirectory") == null) ?                       new JabRefFileChooser((File)null) :                       new JabRefFileChooser(new File(prefs.get("workingDirectory")));                   chooser.addChoosableFileFilter( new OpenFileFilter() );//nb nov2                   int returnVal = chooser.showOpenDialog(BasePanel.this);*/
 if|if
 condition|(
 name|chosenFile
@@ -5267,7 +5289,9 @@ name|database
 argument_list|,
 name|be
 argument_list|,
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5356,7 +5380,9 @@ argument_list|(
 operator|new
 name|UndoableInsertString
 argument_list|(
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|,
 name|database
 argument_list|,
@@ -5546,7 +5572,9 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|,
 name|ex
 operator|.
@@ -6356,7 +6384,9 @@ init|=
 operator|new
 name|DuplicateSearch
 argument_list|(
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|)
 decl_stmt|;
 name|ds
@@ -6389,7 +6419,9 @@ init|=
 operator|new
 name|StrictDuplicateSearch
 argument_list|(
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|)
 decl_stmt|;
 name|ds
@@ -6432,7 +6464,9 @@ name|placeDialog
 argument_list|(
 name|etd
 argument_list|,
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|)
 expr_stmt|;
 name|etd
@@ -6488,7 +6522,9 @@ name|TextInputDialog
 argument_list|(
 name|frame
 argument_list|,
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|,
 literal|"import"
 argument_list|,
@@ -6503,7 +6539,9 @@ name|placeDialog
 argument_list|(
 name|tidialog
 argument_list|,
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|)
 expr_stmt|;
 name|tidialog
@@ -6604,7 +6642,9 @@ name|database
 argument_list|,
 name|bibEntry
 argument_list|,
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6616,7 +6656,9 @@ name|TextInputDialog
 argument_list|(
 name|frame
 argument_list|,
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|,
 literal|"import"
 argument_list|,
@@ -6631,7 +6673,9 @@ name|placeDialog
 argument_list|(
 name|tidialog
 argument_list|,
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|)
 expr_stmt|;
 name|tidialog
@@ -7361,7 +7405,11 @@ name|ContentSelectorDialog2
 argument_list|(
 name|frame
 argument_list|,
-name|ths
+name|frame
+argument_list|,
+name|BasePanel
+operator|.
+name|this
 argument_list|,
 literal|false
 argument_list|,
@@ -8441,7 +8489,9 @@ name|database
 argument_list|,
 name|be
 argument_list|,
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -8516,7 +8566,7 @@ name|be
 argument_list|)
 expr_stmt|;
 comment|/*                     SwingUtilities.invokeLater(new Thread() {                         public void run() {                             entryTable.revalidate();                             entryTable.setRowSelectionInterval(row, row);                             entryTable.scrollTo(row);                                 }                     });*/
-comment|//EntryTypeForm etf = new EntryTypeForm(frame, ths, be, prefs);
+comment|//EntryTypeForm etf = new EntryTypeForm(frame, BasePanel.this, be, prefs);
 comment|//Util.placeDialog(etf, frame);
 comment|//etf.setVisible(true);
 comment|//entryTypeForms.put(id, etf);
@@ -8605,7 +8655,9 @@ name|database
 argument_list|,
 name|bibEntry
 argument_list|,
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -8736,7 +8788,9 @@ name|EntryTable
 argument_list|(
 name|tableModel
 argument_list|,
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|,
 name|frame
 operator|.
@@ -10033,7 +10087,9 @@ name|EntryEditor
 argument_list|(
 name|frame
 argument_list|,
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|,
 name|be
 argument_list|)
@@ -10757,7 +10813,9 @@ name|frame
 operator|.
 name|setTabTitle
 argument_list|(
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|,
 name|file
 operator|.
@@ -10770,7 +10828,9 @@ name|frame
 operator|.
 name|setTabTitle
 argument_list|(
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|,
 name|Globals
 operator|.
@@ -11989,7 +12049,9 @@ name|FileUpdatePanel
 argument_list|(
 name|frame
 argument_list|,
-name|ths
+name|BasePanel
+operator|.
+name|this
 argument_list|,
 name|sidePaneManager
 argument_list|,

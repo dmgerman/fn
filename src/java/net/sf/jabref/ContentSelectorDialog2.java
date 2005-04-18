@@ -444,10 +444,13 @@ operator|new
 name|ArrayList
 argument_list|()
 decl_stmt|;
-DECL|method|ContentSelectorDialog2 (JabRefFrame frame, BasePanel panel, boolean modal, MetaData metaData, String fieldName)
+DECL|method|ContentSelectorDialog2 (Frame owner, JabRefFrame frame, BasePanel panel, boolean modal, MetaData metaData, String fieldName)
 specifier|public
 name|ContentSelectorDialog2
 parameter_list|(
+name|Frame
+name|owner
+parameter_list|,
 name|JabRefFrame
 name|frame
 parameter_list|,
@@ -466,7 +469,7 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|frame
+name|owner
 argument_list|,
 name|Globals
 operator|.
@@ -502,13 +505,89 @@ name|currentField
 operator|=
 name|fieldName
 expr_stmt|;
+name|doInit
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|ContentSelectorDialog2 (Dialog owner, JabRefFrame frame, BasePanel panel, boolean modal, MetaData metaData, String fieldName)
+specifier|public
+name|ContentSelectorDialog2
+parameter_list|(
+name|Dialog
+name|owner
+parameter_list|,
+name|JabRefFrame
+name|frame
+parameter_list|,
+name|BasePanel
+name|panel
+parameter_list|,
+name|boolean
+name|modal
+parameter_list|,
+name|MetaData
+name|metaData
+parameter_list|,
+name|String
+name|fieldName
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|owner
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Setup selectors"
+argument_list|)
+argument_list|,
+name|modal
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|metaData
+operator|=
+name|metaData
+expr_stmt|;
+name|this
+operator|.
+name|frame
+operator|=
+name|frame
+expr_stmt|;
+name|this
+operator|.
+name|panel
+operator|=
+name|panel
+expr_stmt|;
+name|this
+operator|.
+name|currentField
+operator|=
+name|fieldName
+expr_stmt|;
+name|doInit
+argument_list|()
+expr_stmt|;
+block|}
+comment|/** Called from constructors */
+DECL|method|doInit ()
+specifier|private
+name|void
+name|doInit
+parameter_list|()
+block|{
 comment|//help = new JButton(Globals.lang("Help"));
 comment|//help.addActionListener(new HelpAction(frame.helpDiag, GUIGlobals.contentSelectorHelp, "Help"));
 comment|//help = new HelpAction(frame.helpDiag, GUIGlobals.contentSelectorHelp, "Help");
 name|initLayout
 argument_list|()
 expr_stmt|;
-comment|//	wordSelector.addItem(WORD_EMPTY_TEXT);
+comment|//  wordSelector.addItem(WORD_EMPTY_TEXT);
 name|setupFieldSelector
 argument_list|()
 expr_stmt|;
@@ -544,7 +623,6 @@ expr_stmt|;
 name|pack
 argument_list|()
 expr_stmt|;
-comment|//System.out.println("eee");
 block|}
 DECL|method|setupActions ()
 specifier|private
