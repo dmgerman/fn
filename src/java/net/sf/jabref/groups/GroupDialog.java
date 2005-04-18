@@ -2298,6 +2298,15 @@ argument_list|(
 literal|"Entries cannot be explicitly assigned to or removed from this group."
 argument_list|)
 expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"\n\nHint: To search specific fields only, type for example:\n"
+operator|+
+literal|"author=miller and title=electrical"
+argument_list|)
+expr_stmt|;
 return|return
 name|sb
 operator|.
@@ -2306,9 +2315,18 @@ argument_list|()
 return|;
 block|}
 comment|// describe advanced search expression
-comment|// JZTODO: prelude and outro still to be done...
-return|return
-name|describeNode
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"This group contains entries in which "
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+name|describeSearchGroupNode
 argument_list|(
 name|ast
 argument_list|,
@@ -2320,12 +2338,36 @@ literal|false
 argument_list|,
 literal|false
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|". The search is "
+operator|+
+operator|(
+name|caseSensitive
+condition|?
+literal|"case sensitive"
+else|:
+literal|"case insensitive"
+operator|)
+operator|+
+literal|"."
+argument_list|)
+expr_stmt|;
+return|return
+name|sb
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
-DECL|method|describeNode (AST node, boolean regExp, boolean not, boolean and, boolean or)
+DECL|method|describeSearchGroupNode (AST node, boolean regExp, boolean not, boolean and, boolean or)
 specifier|private
 name|String
-name|describeNode
+name|describeSearchGroupNode
 parameter_list|(
 name|AST
 name|node
@@ -2392,7 +2434,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|describeNode
+name|describeSearchGroupNode
 argument_list|(
 name|node
 operator|.
@@ -2410,7 +2452,7 @@ argument_list|)
 operator|+
 literal|" and "
 operator|+
-name|describeNode
+name|describeSearchGroupNode
 argument_list|(
 name|node
 operator|.
@@ -2483,7 +2525,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|describeNode
+name|describeSearchGroupNode
 argument_list|(
 name|node
 operator|.
@@ -2501,7 +2543,7 @@ argument_list|)
 operator|+
 literal|" or "
 operator|+
-name|describeNode
+name|describeSearchGroupNode
 argument_list|(
 name|node
 operator|.
@@ -2546,7 +2588,7 @@ operator|.
 name|Not
 case|:
 return|return
-name|describeNode
+name|describeSearchGroupNode
 argument_list|(
 name|node
 operator|.
