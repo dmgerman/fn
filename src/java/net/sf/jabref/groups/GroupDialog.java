@@ -126,20 +126,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|search
-operator|.
-name|SearchExpressionParser
-import|;
-end_import
-
-begin_import
-import|import
 name|antlr
 operator|.
 name|collections
@@ -256,13 +242,15 @@ decl_stmt|;
 comment|// for KeywordGroup
 DECL|field|m_kgSearchExpression
 specifier|private
-name|JTextField
+name|FieldTextField
 name|m_kgSearchExpression
 init|=
 operator|new
-name|JTextField
+name|FieldTextField
 argument_list|(
-name|TEXTFIELD_LENGTH
+literal|"keywords"
+argument_list|,
+literal|""
 argument_list|)
 decl_stmt|;
 DECL|field|m_searchField
@@ -400,11 +388,6 @@ name|JLabel
 argument_list|(
 literal|"Plaintext Search"
 argument_list|)
-decl_stmt|;
-DECL|field|m_parser
-specifier|private
-name|SearchExpressionParser
-name|m_parser
 decl_stmt|;
 comment|// JZTODO: translations...
 comment|// for all types
@@ -679,6 +662,30 @@ operator|.
 name|append
 argument_list|(
 name|m_kgSearchExpression
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+operator|new
+name|FieldContentSelector
+argument_list|(
+name|m_parent
+argument_list|,
+name|m_basePanel
+argument_list|,
+name|this
+argument_list|,
+name|m_kgSearchExpression
+argument_list|,
+name|m_basePanel
+operator|.
+name|metaData
+argument_list|()
+argument_list|,
+literal|null
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|builder
