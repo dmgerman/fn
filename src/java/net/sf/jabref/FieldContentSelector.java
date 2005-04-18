@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* Copyright (C) 2003 Morten O. Alver, Nizar N. Batada  All programs in this directory and subdirectories are published under the GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html  */
+comment|/*  Copyright (C) 2003 Morten O. Alver, Nizar N. Batada   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   */
 end_comment
 
 begin_package
@@ -13,6 +13,28 @@ operator|.
 name|jabref
 package|;
 end_package
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|*
+import|;
+end_import
 
 begin_import
 import|import
@@ -34,42 +56,9 @@ name|*
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|event
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|*
-import|;
-end_import
-
 begin_class
 DECL|class|FieldContentSelector
+specifier|public
 class|class
 name|FieldContentSelector
 extends|extends
@@ -79,6 +68,7 @@ name|ActionListener
 block|{
 DECL|field|DELIMITER
 DECL|field|DELIMITER_2
+specifier|protected
 specifier|final
 name|String
 name|DELIMITER
@@ -89,9 +79,11 @@ name|DELIMITER_2
 init|=
 literal|""
 decl_stmt|;
-DECL|field|editor
+DECL|field|m_editor
+specifier|protected
+specifier|final
 name|FieldEditor
-name|editor
+name|m_editor
 decl_stmt|;
 DECL|field|list
 name|JComboBox
@@ -158,54 +150,150 @@ operator|new
 name|GridBagConstraints
 argument_list|()
 decl_stmt|;
-DECL|field|parent
-name|EntryEditor
-name|parent
-decl_stmt|;
-DECL|field|metaData
+DECL|field|m_metaData
+specifier|protected
+specifier|final
 name|MetaData
-name|metaData
+name|m_metaData
 decl_stmt|;
-DECL|field|ths
-name|FieldContentSelector
-name|ths
-init|=
-name|this
+DECL|field|m_frame
+specifier|protected
+specifier|final
+name|JabRefFrame
+name|m_frame
 decl_stmt|;
-DECL|method|FieldContentSelector (EntryEditor parent, FieldEditor editor_, MetaData data)
+DECL|field|m_owner
+specifier|protected
+specifier|final
+name|Window
+name|m_owner
+decl_stmt|;
+DECL|field|m_panel
+specifier|protected
+specifier|final
+name|BasePanel
+name|m_panel
+decl_stmt|;
+DECL|field|m_action
+specifier|protected
+specifier|final
+name|AbstractAction
+name|m_action
+decl_stmt|;
+comment|/**      * @param action      *            The action that will be performed to conclude content      *            insertion.      */
+DECL|method|FieldContentSelector (JabRefFrame frame, BasePanel panel, Dialog owner, FieldEditor editor, MetaData data, AbstractAction action)
 specifier|public
 name|FieldContentSelector
 parameter_list|(
-name|EntryEditor
-name|parent
+name|JabRefFrame
+name|frame
+parameter_list|,
+name|BasePanel
+name|panel
+parameter_list|,
+name|Dialog
+name|owner
 parameter_list|,
 name|FieldEditor
-name|editor_
+name|editor
 parameter_list|,
 name|MetaData
 name|data
+parameter_list|,
+name|AbstractAction
+name|action
 parameter_list|)
+block|{
+name|m_editor
+operator|=
+name|editor
+expr_stmt|;
+name|m_metaData
+operator|=
+name|data
+expr_stmt|;
+name|m_action
+operator|=
+name|action
+expr_stmt|;
+name|m_frame
+operator|=
+name|frame
+expr_stmt|;
+name|m_panel
+operator|=
+name|panel
+expr_stmt|;
+name|m_owner
+operator|=
+name|owner
+expr_stmt|;
+name|doInit
+argument_list|()
+expr_stmt|;
+block|}
+comment|/**      * @param action      *            The action that will be performed to conclude content      *            insertion.      */
+DECL|method|FieldContentSelector (JabRefFrame frame, BasePanel panel, Frame owner, FieldEditor editor, MetaData data, AbstractAction action)
+specifier|public
+name|FieldContentSelector
+parameter_list|(
+name|JabRefFrame
+name|frame
+parameter_list|,
+name|BasePanel
+name|panel
+parameter_list|,
+name|Frame
+name|owner
+parameter_list|,
+name|FieldEditor
+name|editor
+parameter_list|,
+name|MetaData
+name|data
+parameter_list|,
+name|AbstractAction
+name|action
+parameter_list|)
+block|{
+name|m_editor
+operator|=
+name|editor
+expr_stmt|;
+name|m_metaData
+operator|=
+name|data
+expr_stmt|;
+name|m_action
+operator|=
+name|action
+expr_stmt|;
+name|m_frame
+operator|=
+name|frame
+expr_stmt|;
+name|m_panel
+operator|=
+name|panel
+expr_stmt|;
+name|m_owner
+operator|=
+name|owner
+expr_stmt|;
+name|doInit
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|doInit ()
+specifier|private
+name|void
+name|doInit
+parameter_list|()
 block|{
 name|setLayout
 argument_list|(
 name|gbl
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|editor
-operator|=
-name|editor_
-expr_stmt|;
-name|this
-operator|.
-name|parent
-operator|=
-name|parent
-expr_stmt|;
-name|metaData
-operator|=
-name|data
 expr_stmt|;
 name|list
 operator|.
@@ -221,34 +309,12 @@ argument_list|(
 literal|35
 argument_list|)
 expr_stmt|;
-comment|/*list.getInputMap().put(Globals.prefs.getKey("Select value"), "enter");         list.getActionMap().put("enter", new EnterAction());         System.out.println(Globals.prefs.getKey("Select value"));*/
-specifier|final
-name|MetaData
-name|metaData
-init|=
-name|data
-decl_stmt|;
-specifier|final
-name|JabRefFrame
-name|frame
-init|=
-name|parent
-operator|.
-name|frame
-decl_stmt|;
-specifier|final
-name|BasePanel
-name|panel
-init|=
-name|parent
-operator|.
-name|panel
-decl_stmt|;
+comment|/*          * list.getInputMap().put(Globals.prefs.getKey("Select value"),          * "enter"); list.getActionMap().put("enter", new EnterAction());          * System.out.println(Globals.prefs.getKey("Select value"));          */
 name|updateList
 argument_list|()
 expr_stmt|;
-comment|//else
-comment|//    list = new JComboBox(items.toArray());
+comment|// else
+comment|// list = new JComboBox(items.toArray());
 name|con
 operator|.
 name|gridwidth
@@ -271,7 +337,8 @@ name|weightx
 operator|=
 literal|1
 expr_stmt|;
-comment|//list.setPreferredSize(new Dimension(140, list.getPreferredSize().height));
+comment|// list.setPreferredSize(new Dimension(140,
+comment|// list.getPreferredSize().height));
 name|gbl
 operator|.
 name|setConstraints
@@ -336,21 +403,53 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+comment|// m_owner is either a Frame or a Dialog
 name|ContentSelectorDialog2
 name|csd
 init|=
+name|m_owner
+operator|instanceof
+name|Frame
+condition|?
 operator|new
 name|ContentSelectorDialog2
 argument_list|(
-name|frame
+operator|(
+name|Frame
+operator|)
+name|m_owner
 argument_list|,
-name|panel
+name|m_frame
+argument_list|,
+name|m_panel
 argument_list|,
 literal|false
 argument_list|,
-name|metaData
+name|m_metaData
 argument_list|,
-name|editor
+name|m_editor
+operator|.
+name|getFieldName
+argument_list|()
+argument_list|)
+else|:
+operator|new
+name|ContentSelectorDialog2
+argument_list|(
+operator|(
+name|Dialog
+operator|)
+name|m_owner
+argument_list|,
+name|m_frame
+argument_list|,
+name|m_panel
+argument_list|,
+literal|false
+argument_list|,
+name|m_metaData
+argument_list|,
+name|m_editor
 operator|.
 name|getFieldName
 argument_list|()
@@ -362,7 +461,7 @@ name|placeDialog
 argument_list|(
 name|csd
 argument_list|,
-name|frame
+name|m_frame
 argument_list|)
 expr_stmt|;
 name|csd
@@ -370,7 +469,7 @@ operator|.
 name|show
 argument_list|()
 expr_stmt|;
-comment|//updateList();
+comment|// updateList();
 block|}
 block|}
 argument_list|)
@@ -394,11 +493,11 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
-comment|//(Globals.lang(""));
+comment|// (Globals.lang(""));
 name|Vector
 name|items
 init|=
-name|metaData
+name|m_metaData
 operator|.
 name|getData
 argument_list|(
@@ -406,7 +505,7 @@ name|Globals
 operator|.
 name|SELECTOR_META_PREFIX
 operator|+
-name|editor
+name|m_editor
 operator|.
 name|getFieldName
 argument_list|()
@@ -459,7 +558,7 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//list = new JComboBox();
+comment|// list = new JComboBox();
 block|}
 block|}
 DECL|method|actionPerformed (ActionEvent e)
@@ -492,8 +591,10 @@ operator|==
 literal|0
 operator|)
 condition|)
-comment|// These conditions signify arrow key navigation in the dropdown list, so we should
-comment|// not react to it. I'm not sure if this is well defined enough to be guaranteed to work
+comment|// These conditions signify arrow key navigation in the dropdown
+comment|// list, so we should
+comment|// not react to it. I'm not sure if this is well defined enough to
+comment|// be guaranteed to work
 comment|// everywhere.
 return|return;
 if|if
@@ -518,7 +619,7 @@ operator|.
 name|getSelectedItem
 argument_list|()
 decl_stmt|;
-comment|//System.out.println(list.getSelectedIndex()+"\t"+chosen);
+comment|// System.out.println(list.getSelectedIndex()+"\t"+chosen);
 if|if
 condition|(
 name|chosen
@@ -537,18 +638,19 @@ operator|-
 literal|1
 condition|)
 block|{
-comment|// User edited in a new word. Add this.
+comment|// User edited in a new word.
+comment|// Add this.
 name|addWord
 argument_list|(
 name|chosen
 argument_list|)
 expr_stmt|;
-comment|/*   Vector items = metaData.getData(Globals.SELECTOR_META_PREFIX+ 					    editor.getFieldName()); 	    boolean exists = false; 	    int pos = -1; 	    for (int i=0; i<items.size(); i++) { 		String s = (String)items.elementAt(i); 		if (s.equals(chosen)) { 		    exists = true; 		    break; 		} 		if (s.toLowerCase().compareTo(chosen.toLowerCase())< 0) 		    pos = i+1; 	    } 	    if (!exists) { 		items.add(Math.max(0, pos), chosen); 		parent.panel.markNonUndoableBaseChanged(); 		updateList(); 	    }*/
+comment|/*              * Vector items = metaData.getData(Globals.SELECTOR_META_PREFIX+              * editor.getFieldName()); boolean exists = false; int pos = -1; for              * (int i=0; i<items.size(); i++) { String s =              * (String)items.elementAt(i); if (s.equals(chosen)) { exists =              * true; break; } if              * (s.toLowerCase().compareTo(chosen.toLowerCase())< 0) pos = i+1; }              * if (!exists) { items.add(Math.max(0, pos), chosen);              * parent.panel.markNonUndoableBaseChanged(); updateList(); }              */
 block|}
 if|if
 condition|(
 operator|!
-name|editor
+name|m_editor
 operator|.
 name|getText
 argument_list|()
@@ -558,14 +660,14 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
-name|editor
+name|m_editor
 operator|.
 name|append
 argument_list|(
 name|DELIMITER
 argument_list|)
 expr_stmt|;
-name|editor
+name|m_editor
 operator|.
 name|append
 argument_list|(
@@ -581,16 +683,20 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
-name|parent
-operator|.
-name|storeFieldAction
+if|if
+condition|(
+name|m_action
+operator|!=
+literal|null
+condition|)
+name|m_action
 operator|.
 name|actionPerformed
 argument_list|(
 operator|new
 name|ActionEvent
 argument_list|(
-name|editor
+name|m_editor
 argument_list|,
 literal|0
 argument_list|,
@@ -599,14 +705,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Transfer focus to the editor.
-name|editor
+name|m_editor
 operator|.
 name|requestFocus
 argument_list|()
 expr_stmt|;
-comment|//new FocusRequester(editor.getTextComponent());
+comment|// new FocusRequester(editor.getTextComponent());
 block|}
-comment|/**    * Adds a word to the selector (to the JList and to the MetaData), unless it    * is already there    *    * @param newWord String Word to add    */
+comment|/**      * Adds a word to the selector (to the JList and to the MetaData), unless it      * is already there      *       * @param newWord      *            String Word to add      */
 DECL|method|addWord (String newWord)
 specifier|public
 name|void
@@ -619,7 +725,7 @@ block|{
 name|Vector
 name|items
 init|=
-name|metaData
+name|m_metaData
 operator|.
 name|getData
 argument_list|(
@@ -627,7 +733,7 @@ name|Globals
 operator|.
 name|SELECTOR_META_PREFIX
 operator|+
-name|editor
+name|m_editor
 operator|.
 name|getFieldName
 argument_list|()
@@ -737,25 +843,21 @@ argument_list|,
 name|newWord
 argument_list|)
 expr_stmt|;
-name|parent
-operator|.
-name|panel
+name|m_panel
 operator|.
 name|markNonUndoableBaseChanged
 argument_list|()
 expr_stmt|;
-name|parent
-operator|.
-name|panel
+name|m_panel
 operator|.
 name|updateAllContentSelectors
 argument_list|()
 expr_stmt|;
-comment|//updateList();
+comment|// updateList();
 block|}
 block|}
-comment|/*class EnterAction extends AbstractAction {       public void actionPerformed(ActionEvent e) {           System.out.println("enter");           ths.actionPerformed(e);       }   }*/
-comment|/*public void popupMenuWillBecomeVisible(PopupMenuEvent e) {       System.out.println("visible");   }   public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {       System.out.println("invisible");   }   public void popupMenuCanceled(PopupMenuEvent e) {       System.out.println("canceled");   }*/
+comment|/*      * class EnterAction extends AbstractAction { public void      * actionPerformed(ActionEvent e) { System.out.println("enter");      * ths.actionPerformed(e); } }      */
+comment|/*      * public void popupMenuWillBecomeVisible(PopupMenuEvent e) {      * System.out.println("visible"); } public void      * popupMenuWillBecomeInvisible(PopupMenuEvent e) {      * System.out.println("invisible"); } public void      * popupMenuCanceled(PopupMenuEvent e) { System.out.println("canceled"); }      */
 block|}
 end_class
 
