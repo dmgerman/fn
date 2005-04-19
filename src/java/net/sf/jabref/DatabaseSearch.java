@@ -44,6 +44,18 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|PatternSyntaxException
+import|;
+end_import
+
 begin_class
 DECL|class|DatabaseSearch
 specifier|public
@@ -98,10 +110,17 @@ name|select
 decl_stmt|,
 name|grayOut
 decl_stmt|;
-DECL|method|DatabaseSearch (Hashtable searchOptions,SearchRuleSet searchRules, BasePanel panel, String searchValueField, boolean reorder, boolean grayOut, boolean select)
+DECL|field|errorDisplay
+name|ErrorMessageDisplay
+name|errorDisplay
+decl_stmt|;
+DECL|method|DatabaseSearch (ErrorMessageDisplay errorDisplay, Hashtable searchOptions, SearchRuleSet searchRules, BasePanel panel, String searchValueField, boolean reorder, boolean grayOut, boolean select)
 specifier|public
 name|DatabaseSearch
 parameter_list|(
+name|ErrorMessageDisplay
+name|errorDisplay
+parameter_list|,
 name|Hashtable
 name|searchOptions
 parameter_list|,
@@ -129,6 +148,12 @@ operator|.
 name|panel
 operator|=
 name|panel
+expr_stmt|;
+name|this
+operator|.
+name|errorDisplay
+operator|=
+name|errorDisplay
 expr_stmt|;
 name|thisDatabase
 operator|=
@@ -275,6 +300,8 @@ condition|)
 continue|continue;
 comment|//(thisTableModel.getNameFromNumber(row));
 comment|// 2. add score per each hit
+try|try
+block|{
 name|searchScore
 operator|=
 name|thisRuleSet
@@ -286,6 +313,25 @@ argument_list|,
 name|bes
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|PatternSyntaxException
+name|ex
+parameter_list|)
+block|{
+comment|// There is something wrong with the regexp pattern.
+name|errorDisplay
+operator|.
+name|reportError
+argument_list|(
+literal|"Malformed regular expression"
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 comment|// When using float search, it messes up the sort order if we retain
 comment|// graded search scores, because the table is sorted by the score.
 comment|// To prevent this, we let the search score saturate at 1.

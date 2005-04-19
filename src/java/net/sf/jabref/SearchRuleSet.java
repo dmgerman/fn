@@ -24,6 +24,18 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|PatternSyntaxException
+import|;
+end_import
+
 begin_class
 DECL|class|SearchRuleSet
 specifier|public
@@ -81,6 +93,8 @@ parameter_list|,
 name|BibtexEntry
 name|bibtexEntry
 parameter_list|)
+throws|throws
+name|PatternSyntaxException
 block|{
 name|int
 name|score

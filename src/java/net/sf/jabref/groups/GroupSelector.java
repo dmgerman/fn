@@ -129,6 +129,8 @@ implements|implements
 name|TreeSelectionListener
 implements|,
 name|ActionListener
+implements|,
+name|ErrorMessageDisplay
 block|{
 DECL|field|newButton
 name|JButton
@@ -2853,6 +2855,8 @@ init|=
 operator|new
 name|DatabaseSearch
 argument_list|(
+name|this
+argument_list|,
 name|searchOptions
 argument_list|,
 name|searchRules
@@ -5202,6 +5206,47 @@ expr_stmt|;
 block|}
 name|validateTree
 argument_list|()
+expr_stmt|;
+block|}
+comment|/**      * This method is required by the ErrorMessageDisplay interface, and lets this class      * serve as a callback for regular expression exceptions happening in DatabaseSearch.      * @param errorMessage      */
+DECL|method|reportError (String errorMessage)
+specifier|public
+name|void
+name|reportError
+parameter_list|(
+name|String
+name|errorMessage
+parameter_list|)
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Error in group search: "
+operator|+
+name|errorMessage
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * This method is required by the ErrorMessageDisplay interface, and lets this class      * serve as a callback for regular expression exceptions happening in DatabaseSearch.      * @param errorMessage      */
+DECL|method|reportError (String errorMessage, Exception exception)
+specifier|public
+name|void
+name|reportError
+parameter_list|(
+name|String
+name|errorMessage
+parameter_list|,
+name|Exception
+name|exception
+parameter_list|)
+block|{
+name|reportError
+argument_list|(
+name|errorMessage
+argument_list|)
 expr_stmt|;
 block|}
 block|}

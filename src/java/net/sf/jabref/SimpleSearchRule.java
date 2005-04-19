@@ -16,6 +16,24 @@ end_package
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|export
+operator|.
+name|layout
+operator|.
+name|format
+operator|.
+name|RemoveBrackets
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -36,6 +54,15 @@ DECL|field|m_caseSensitiveSearch
 specifier|final
 name|boolean
 name|m_caseSensitiveSearch
+decl_stmt|;
+DECL|field|removeBrackets
+specifier|static
+name|RemoveBrackets
+name|removeBrackets
+init|=
+operator|new
+name|RemoveBrackets
+argument_list|()
 decl_stmt|;
 DECL|method|SimpleSearchRule (boolean caseSensitive)
 specifier|public
@@ -158,10 +185,15 @@ try|try
 block|{
 name|fieldContent
 operator|=
+name|removeBrackets
+operator|.
+name|format
+argument_list|(
 name|fieldContentAsObject
 operator|.
 name|toString
 argument_list|()
+argument_list|)
 expr_stmt|;
 if|if
 condition|(

@@ -134,6 +134,8 @@ implements|,
 name|ItemListener
 implements|,
 name|CaretListener
+implements|,
+name|ErrorMessageDisplay
 block|{
 DECL|field|gbl
 name|GridBagLayout
@@ -2009,6 +2011,8 @@ init|=
 operator|new
 name|DatabaseSearch
 argument_list|(
+name|this
+argument_list|,
 name|searchOptions
 argument_list|,
 name|searchRules
@@ -2052,6 +2056,8 @@ init|=
 operator|new
 name|DatabaseSearch
 argument_list|(
+name|this
+argument_list|,
 name|searchOptions
 argument_list|,
 name|searchRules
@@ -2564,6 +2570,56 @@ name|lang
 argument_list|(
 literal|"Search All Fields"
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * This method is required by the ErrorMessageDisplay interface, and lets this class      * serve as a callback for regular expression exceptions happening in DatabaseSearch.      * @param errorMessage      */
+DECL|method|reportError (String errorMessage)
+specifier|public
+name|void
+name|reportError
+parameter_list|(
+name|String
+name|errorMessage
+parameter_list|)
+block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|panel
+argument_list|,
+name|errorMessage
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Search error"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * This method is required by the ErrorMessageDisplay interface, and lets this class      * serve as a callback for regular expression exceptions happening in DatabaseSearch.      * @param errorMessage      */
+DECL|method|reportError (String errorMessage, Exception exception)
+specifier|public
+name|void
+name|reportError
+parameter_list|(
+name|String
+name|errorMessage
+parameter_list|,
+name|Exception
+name|exception
+parameter_list|)
+block|{
+name|reportError
+argument_list|(
+name|errorMessage
 argument_list|)
 expr_stmt|;
 block|}
