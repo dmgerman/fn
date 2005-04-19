@@ -1681,23 +1681,6 @@ name|oldKey
 argument_list|)
 condition|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"LabelPatternUtil: "
-operator|+
-name|modKey
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
 name|_db
 operator|.
 name|setCiteKeyForEntry
@@ -1708,7 +1691,6 @@ name|getId
 argument_list|()
 argument_list|,
 name|modKey
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

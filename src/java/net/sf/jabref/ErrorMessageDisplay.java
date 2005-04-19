@@ -11,7 +11,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A class implementing this interface can provided as a receiver for error messages originating  * in a thread that can't return any value or throw any exceptions. E.g. net.sf.jabref.DatabaseSearch.  */
+comment|/**  * A class implementing this interface can provided as a receiver for error messages originating  * in a thread that can't return any value or throw any exceptions. E.g. net.sf.jabref.DatabaseSearch.  *  * The point is that the worker thread doesn't need to know what interface it is working against,  * since the ErrorMessageDisplay implementer will be responsible for displaying the error message.  */
 end_comment
 
 begin_interface
@@ -20,6 +20,7 @@ specifier|public
 interface|interface
 name|ErrorMessageDisplay
 block|{
+comment|/**      * An error has occured.      * @param errorMessage Error message.      */
 DECL|method|reportError (String errorMessage)
 specifier|public
 name|void
@@ -29,6 +30,7 @@ name|String
 name|errorMessage
 parameter_list|)
 function_decl|;
+comment|/**      * An error has occured.      * @param errorMessage Error message.      * @param exception Exception representing the error condition.      */
 DECL|method|reportError (String errorMessage, Exception exception)
 specifier|public
 name|void
