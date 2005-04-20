@@ -1560,6 +1560,8 @@ operator|.
 name|metaData
 argument_list|,
 name|storeFieldAction
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|contentSelectors
