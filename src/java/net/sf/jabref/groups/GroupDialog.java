@@ -586,8 +586,6 @@ operator|.
 name|append
 argument_list|(
 name|m_kgSearchField
-argument_list|,
-literal|1
 argument_list|)
 expr_stmt|;
 name|builderKG
@@ -751,8 +749,57 @@ name|INDEX_SEARCHGROUP
 argument_list|)
 expr_stmt|;
 comment|// ... for buttons panel
-comment|//        FormLayout layoutBP = new FormLayout(
-comment|//                "") JZPUWIL
+name|FormLayout
+name|layoutBP
+init|=
+operator|new
+name|FormLayout
+argument_list|(
+literal|"pref, 4dlu, pref"
+argument_list|,
+literal|"p"
+argument_list|)
+decl_stmt|;
+name|layoutBP
+operator|.
+name|setColumnGroups
+argument_list|(
+operator|new
+name|int
+index|[]
+index|[]
+block|{
+block|{
+literal|1
+block|,
+literal|3
+block|}
+block|}
+argument_list|)
+expr_stmt|;
+name|DefaultFormBuilder
+name|builderBP
+init|=
+operator|new
+name|DefaultFormBuilder
+argument_list|(
+name|layoutBP
+argument_list|)
+decl_stmt|;
+name|builderBP
+operator|.
+name|append
+argument_list|(
+name|m_ok
+argument_list|)
+expr_stmt|;
+name|builderBP
+operator|.
+name|add
+argument_list|(
+name|m_cancel
+argument_list|)
+expr_stmt|;
 comment|// create layout
 name|FormLayout
 name|layoutAll
@@ -764,7 +811,7 @@ literal|"right:pref, 4dlu, fill:500px, 4dlu, fill:pref"
 argument_list|,
 literal|"p, 3dlu, p, 3dlu, p, 0dlu, p, 0dlu, p, 3dlu, p, 3dlu, "
 operator|+
-literal|"p, 3dlu, p, 3dlu, top:80dlu"
+literal|"p, 3dlu, p, 3dlu, top:80dlu, 9dlu, p, , 9dlu, p"
 argument_list|)
 decl_stmt|;
 comment|// ...for keyword group
@@ -969,6 +1016,67 @@ argument_list|(
 name|sp
 argument_list|,
 literal|5
+argument_list|)
+expr_stmt|;
+name|builderAll
+operator|.
+name|nextLine
+argument_list|()
+expr_stmt|;
+name|builderAll
+operator|.
+name|nextLine
+argument_list|()
+expr_stmt|;
+name|builderAll
+operator|.
+name|appendSeparator
+argument_list|()
+expr_stmt|;
+name|builderAll
+operator|.
+name|nextLine
+argument_list|()
+expr_stmt|;
+name|builderAll
+operator|.
+name|nextLine
+argument_list|()
+expr_stmt|;
+name|CellConstraints
+name|cc
+init|=
+operator|new
+name|CellConstraints
+argument_list|()
+decl_stmt|;
+name|builderAll
+operator|.
+name|add
+argument_list|(
+name|builderBP
+operator|.
+name|getPanel
+argument_list|()
+argument_list|,
+name|cc
+operator|.
+name|xyw
+argument_list|(
+name|builderAll
+operator|.
+name|getColumn
+argument_list|()
+argument_list|,
+name|builderAll
+operator|.
+name|getRow
+argument_list|()
+argument_list|,
+literal|5
+argument_list|,
+literal|"center, fill"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|Container
