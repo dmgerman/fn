@@ -78,7 +78,7 @@ specifier|protected
 name|JLabel
 name|label
 decl_stmt|;
-DECL|method|FieldTextField (String fieldName_, String content)
+DECL|method|FieldTextField (String fieldName_, String content, boolean changeColorOnFocus)
 specifier|public
 name|FieldTextField
 parameter_list|(
@@ -87,6 +87,9 @@ name|fieldName_
 parameter_list|,
 name|String
 name|content
+parameter_list|,
+name|boolean
+name|changeColorOnFocus
 parameter_list|)
 block|{
 name|super
@@ -103,6 +106,10 @@ operator|.
 name|focusListener
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|changeColorOnFocus
+condition|)
 name|addFocusListener
 argument_list|(
 operator|new

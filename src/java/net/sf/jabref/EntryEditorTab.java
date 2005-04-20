@@ -689,6 +689,8 @@ name|Globals
 operator|.
 name|KEY_FIELD
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 comment|//(String) entry.getField(Globals.KEY_FIELD));
