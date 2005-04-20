@@ -674,6 +674,8 @@ name|metaData
 argument_list|()
 argument_list|,
 literal|null
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
