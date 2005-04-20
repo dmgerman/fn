@@ -482,7 +482,7 @@ name|m_frame
 argument_list|,
 name|m_panel
 argument_list|,
-literal|false
+literal|true
 argument_list|,
 name|m_metaData
 argument_list|,
@@ -504,7 +504,7 @@ name|m_frame
 argument_list|,
 name|m_panel
 argument_list|,
-literal|false
+literal|true
 argument_list|,
 name|m_metaData
 argument_list|,
@@ -619,7 +619,6 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// list = new JComboBox();
 block|}
 block|}
 DECL|method|actionPerformed (ActionEvent e)
