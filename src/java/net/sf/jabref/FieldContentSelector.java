@@ -56,6 +56,20 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|jgoodies
+operator|.
+name|forms
+operator|.
+name|layout
+operator|.
+name|Sizes
+import|;
+end_import
+
 begin_class
 DECL|class|FieldContentSelector
 specifier|public
@@ -180,8 +194,14 @@ specifier|final
 name|AbstractAction
 name|m_action
 decl_stmt|;
+DECL|field|m_horizontalLayout
+specifier|protected
+specifier|final
+name|boolean
+name|m_horizontalLayout
+decl_stmt|;
 comment|/**      * @param action      *            The action that will be performed to conclude content      *            insertion.      */
-DECL|method|FieldContentSelector (JabRefFrame frame, BasePanel panel, Dialog owner, FieldEditor editor, MetaData data, AbstractAction action)
+DECL|method|FieldContentSelector (JabRefFrame frame, BasePanel panel, Dialog owner, FieldEditor editor, MetaData data, AbstractAction action, boolean horizontalLayout)
 specifier|public
 name|FieldContentSelector
 parameter_list|(
@@ -202,6 +222,9 @@ name|data
 parameter_list|,
 name|AbstractAction
 name|action
+parameter_list|,
+name|boolean
+name|horizontalLayout
 parameter_list|)
 block|{
 name|m_editor
@@ -228,12 +251,16 @@ name|m_owner
 operator|=
 name|owner
 expr_stmt|;
+name|m_horizontalLayout
+operator|=
+name|horizontalLayout
+expr_stmt|;
 name|doInit
 argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * @param action      *            The action that will be performed to conclude content      *            insertion.      */
-DECL|method|FieldContentSelector (JabRefFrame frame, BasePanel panel, Frame owner, FieldEditor editor, MetaData data, AbstractAction action)
+DECL|method|FieldContentSelector (JabRefFrame frame, BasePanel panel, Frame owner, FieldEditor editor, MetaData data, AbstractAction action, boolean horizontalLayout)
 specifier|public
 name|FieldContentSelector
 parameter_list|(
@@ -254,6 +281,9 @@ name|data
 parameter_list|,
 name|AbstractAction
 name|action
+parameter_list|,
+name|boolean
+name|horizontalLayout
 parameter_list|)
 block|{
 name|m_editor
@@ -279,6 +309,10 @@ expr_stmt|;
 name|m_owner
 operator|=
 name|owner
+expr_stmt|;
+name|m_horizontalLayout
+operator|=
+name|horizontalLayout
 expr_stmt|;
 name|doInit
 argument_list|()
@@ -319,6 +353,10 @@ name|con
 operator|.
 name|gridwidth
 operator|=
+name|m_horizontalLayout
+condition|?
+literal|3
+else|:
 name|GridBagConstraints
 operator|.
 name|REMAINDER
@@ -358,6 +396,27 @@ expr_stmt|;
 name|add
 argument_list|(
 name|list
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|m_horizontalLayout
+condition|)
+name|add
+argument_list|(
+name|Box
+operator|.
+name|createHorizontalStrut
+argument_list|(
+name|Sizes
+operator|.
+name|dialogUnitXAsPixel
+argument_list|(
+literal|2
+argument_list|,
+name|this
+argument_list|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|manage
@@ -469,7 +528,9 @@ operator|.
 name|show
 argument_list|()
 expr_stmt|;
-comment|// updateList();
+name|updateList
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 argument_list|)
