@@ -274,6 +274,8 @@ argument_list|(
 literal|"keywords"
 argument_list|,
 literal|""
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 DECL|field|m_kgCaseSensitive
@@ -296,6 +298,17 @@ operator|new
 name|JCheckBox
 argument_list|(
 literal|"Regular Expression"
+argument_list|)
+decl_stmt|;
+DECL|field|m_kgIgnoreBraces
+specifier|private
+name|JCheckBox
+name|m_kgIgnoreBraces
+init|=
+operator|new
+name|JCheckBox
+argument_list|(
+literal|"Ignore curly braces {} in field content"
 argument_list|)
 decl_stmt|;
 comment|// for SearchGroup
@@ -331,6 +344,17 @@ operator|new
 name|JCheckBox
 argument_list|(
 literal|"Regular Expression"
+argument_list|)
+decl_stmt|;
+DECL|field|m_sgIgnoreBraces
+specifier|private
+name|JCheckBox
+name|m_sgIgnoreBraces
+init|=
+operator|new
+name|JCheckBox
+argument_list|(
+literal|"Ignore curly braces {} in field content"
 argument_list|)
 decl_stmt|;
 comment|// for all types
@@ -545,6 +569,14 @@ operator|.
 name|TOP
 argument_list|)
 expr_stmt|;
+name|getRootPane
+argument_list|()
+operator|.
+name|setDefaultButton
+argument_list|(
+name|m_ok
+argument_list|)
+expr_stmt|;
 comment|// build individual layout cards for each group
 name|m_optionsPanel
 operator|.
@@ -574,7 +606,7 @@ init|=
 operator|new
 name|FormLayout
 argument_list|(
-literal|"right:pref, 4dlu, fill:100dlu, 2dlu, left:pref"
+literal|"right:pref, 4dlu, fill:1dlu:grow, 2dlu, left:pref"
 argument_list|)
 decl_stmt|;
 name|DefaultFormBuilder
@@ -598,6 +630,8 @@ operator|.
 name|append
 argument_list|(
 name|m_kgSearchField
+argument_list|,
+literal|3
 argument_list|)
 expr_stmt|;
 name|builderKG
@@ -671,6 +705,20 @@ argument_list|,
 literal|3
 argument_list|)
 expr_stmt|;
+name|builderKG
+operator|.
+name|nextLine
+argument_list|()
+expr_stmt|;
+name|builderKG
+operator|.
+name|append
+argument_list|(
+name|m_kgIgnoreBraces
+argument_list|,
+literal|3
+argument_list|)
+expr_stmt|;
 name|m_optionsPanel
 operator|.
 name|add
@@ -692,7 +740,7 @@ init|=
 operator|new
 name|FormLayout
 argument_list|(
-literal|"right:pref, 4dlu, fill:190dlu"
+literal|"right:pref, 4dlu, fill:1dlu:grow"
 argument_list|)
 decl_stmt|;
 name|DefaultFormBuilder
@@ -742,6 +790,20 @@ operator|.
 name|append
 argument_list|(
 name|m_sgRegExp
+argument_list|,
+literal|3
+argument_list|)
+expr_stmt|;
+name|builderSG
+operator|.
+name|nextLine
+argument_list|()
+expr_stmt|;
+name|builderSG
+operator|.
+name|append
+argument_list|(
+name|m_sgIgnoreBraces
 argument_list|,
 literal|3
 argument_list|)
@@ -1495,6 +1557,13 @@ argument_list|(
 name|itemListener
 argument_list|)
 expr_stmt|;
+name|m_kgIgnoreBraces
+operator|.
+name|addItemListener
+argument_list|(
+name|itemListener
+argument_list|)
+expr_stmt|;
 name|m_sgSearchExpression
 operator|.
 name|addCaretListener
@@ -1510,6 +1579,13 @@ name|itemListener
 argument_list|)
 expr_stmt|;
 name|m_sgCaseSensitive
+operator|.
+name|addItemListener
+argument_list|(
+name|itemListener
+argument_list|)
+expr_stmt|;
+name|m_sgIgnoreBraces
 operator|.
 name|addItemListener
 argument_list|(
@@ -1582,6 +1658,7 @@ name|isRegExp
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// JZTODO curly braces...
 name|m_keywordsRadioButton
 operator|.
 name|setSelected
@@ -1653,6 +1730,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+comment|// JZTODO curly braces...
 block|}
 elseif|else
 if|if
@@ -2212,7 +2290,9 @@ literal|"then using either drag and drop or the context menu. "
 operator|+
 literal|"Entries can be removed from this group by selecting them "
 operator|+
-literal|"then using the context menu."
+literal|"then using the context menu. Every entry assigned to this group "
+operator|+
+literal|"must have a unique key."
 return|;
 block|}
 DECL|method|getDescriptionForKeywordGroup (String field, String expr, boolean caseSensitive, boolean regExp)
