@@ -1760,6 +1760,17 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+block|{
+comment|// creating new group -> default to explicit!
+name|m_explicitRadioButton
+operator|.
+name|setSelected
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|okPressed ()
 specifier|public
