@@ -1087,24 +1087,6 @@ name|b
 operator|=
 literal|false
 expr_stmt|;
-if|if
-condition|(
-name|c
-operator|==
-literal|'%'
-condition|)
-block|{
-name|sb
-operator|.
-name|append
-argument_list|(
-name|c
-argument_list|)
-expr_stmt|;
-comment|// quoted %
-block|}
-else|else
-block|{
 try|try
 block|{
 name|int
@@ -1155,7 +1137,45 @@ name|NumberFormatException
 name|e
 parameter_list|)
 block|{
-comment|// treat this as ""
+comment|// append literally (for quoting) or insert special symbol
+switch|switch
+condition|(
+name|c
+condition|)
+block|{
+case|case
+literal|'c'
+case|:
+comment|// colon
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|':'
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+literal|'e'
+case|:
+comment|// equal
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|'='
+argument_list|)
+expr_stmt|;
+break|break;
+default|default:
+comment|// anything else, e.g. %
+name|sb
+operator|.
+name|append
+argument_list|(
+name|c
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
