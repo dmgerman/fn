@@ -620,7 +620,9 @@ else|else
 block|{
 comment|// this would be the place to check if the dragging entries
 comment|// maybe are in this group already, but I think that's not
-comment|// worth the bother... it might even be irritating to the user.
+comment|// worth the bother (DropTargetDragEvent does not provide
+comment|// access to the drag object)...
+comment|// it might even be irritating to the user.
 if|if
 condition|(
 name|target
