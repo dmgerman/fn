@@ -106,6 +106,20 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|undo
+operator|.
+name|NamedCompound
+import|;
+end_import
+
 begin_class
 DECL|class|GroupSelector
 specifier|public
@@ -4968,7 +4982,7 @@ literal|"'."
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|concludeAssignment (AbstractUndoableEdit undo, GroupTreeNode node, int numberOfEntries)
+DECL|method|concludeAssignment (AbstractUndoableEdit undo, GroupTreeNode node, int assignedEntries)
 specifier|public
 name|void
 name|concludeAssignment
@@ -4980,9 +4994,43 @@ name|GroupTreeNode
 name|node
 parameter_list|,
 name|int
-name|numberOfEntries
+name|assignedEntries
 parameter_list|)
 block|{
+if|if
+condition|(
+name|undo
+operator|==
+literal|null
+condition|)
+block|{
+name|frame
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"The group \"%0\" already contains the selection."
+argument_list|,
+operator|new
+name|String
+index|[]
+block|{
+name|node
+operator|.
+name|getGroup
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+block|}
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 name|panel
 operator|.
 name|undoManager
@@ -4997,28 +5045,10 @@ operator|.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
-name|frame
-operator|.
-name|output
-argument_list|(
-literal|"Assigned "
-operator|+
-name|numberOfEntries
-operator|+
-literal|" "
-operator|+
-operator|(
-name|numberOfEntries
-operator|==
-literal|1
-condition|?
-literal|"entry"
-else|:
-literal|"entries"
-operator|)
-operator|+
-literal|" to group \""
-operator|+
+specifier|final
+name|String
+name|groupName
+init|=
 name|node
 operator|.
 name|getGroup
@@ -5026,8 +5056,47 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|"\""
+decl_stmt|;
+if|if
+condition|(
+name|assignedEntries
+operator|==
+literal|1
+condition|)
+name|frame
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Assigned 1 entry to group \"%0\"."
+argument_list|,
+name|groupName
+argument_list|)
+argument_list|)
+expr_stmt|;
+else|else
+name|frame
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Assigned %0 entries to group \"%1\"."
+argument_list|,
+name|String
+operator|.
+name|valueOf
+argument_list|(
+name|assignedEntries
+argument_list|)
+argument_list|,
+name|groupName
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// JZTODO translation
