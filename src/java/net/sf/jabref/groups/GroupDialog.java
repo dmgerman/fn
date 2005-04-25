@@ -226,7 +226,12 @@ init|=
 operator|new
 name|JRadioButton
 argument_list|(
-literal|"Assign entries to this group explicitly"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Statically group entries by manual assignment"
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|m_keywordsRadioButton
@@ -237,7 +242,12 @@ init|=
 operator|new
 name|JRadioButton
 argument_list|(
-literal|"Group entries by keywords"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Dynamically group entries by searching a field for a keyword"
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|m_searchRadioButton
@@ -248,7 +258,12 @@ init|=
 operator|new
 name|JRadioButton
 argument_list|(
-literal|"Group entries by search expression"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Dynamically group entries by a free-form search expression"
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// for KeywordGroup
@@ -286,7 +301,12 @@ init|=
 operator|new
 name|JCheckBox
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Case sensitive"
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|m_kgRegExp
@@ -297,18 +317,12 @@ init|=
 operator|new
 name|JCheckBox
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Regular Expression"
 argument_list|)
-decl_stmt|;
-DECL|field|m_kgIgnoreBraces
-specifier|private
-name|JCheckBox
-name|m_kgIgnoreBraces
-init|=
-operator|new
-name|JCheckBox
-argument_list|(
-literal|"Ignore curly braces {} in field content"
 argument_list|)
 decl_stmt|;
 comment|// for SearchGroup
@@ -332,7 +346,12 @@ init|=
 operator|new
 name|JCheckBox
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Case sensitive"
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|m_sgRegExp
@@ -343,18 +362,12 @@ init|=
 operator|new
 name|JCheckBox
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Regular Expression"
 argument_list|)
-decl_stmt|;
-DECL|field|m_sgIgnoreBraces
-specifier|private
-name|JCheckBox
-name|m_sgIgnoreBraces
-init|=
-operator|new
-name|JCheckBox
-argument_list|(
-literal|"Ignore curly braces {} in field content"
 argument_list|)
 decl_stmt|;
 comment|// for all types
@@ -622,7 +635,12 @@ name|builderKG
 operator|.
 name|append
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Field"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|builderKG
@@ -643,7 +661,12 @@ name|builderKG
 operator|.
 name|append
 argument_list|(
-literal|"Term"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Keyword"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|builderKG
@@ -707,20 +730,6 @@ argument_list|,
 literal|3
 argument_list|)
 expr_stmt|;
-name|builderKG
-operator|.
-name|nextLine
-argument_list|()
-expr_stmt|;
-name|builderKG
-operator|.
-name|append
-argument_list|(
-name|m_kgIgnoreBraces
-argument_list|,
-literal|3
-argument_list|)
-expr_stmt|;
 name|m_optionsPanel
 operator|.
 name|add
@@ -758,7 +767,12 @@ name|builderSG
 operator|.
 name|append
 argument_list|(
-literal|"Expression"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Search expression"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|builderSG
@@ -792,20 +806,6 @@ operator|.
 name|append
 argument_list|(
 name|m_sgRegExp
-argument_list|,
-literal|3
-argument_list|)
-expr_stmt|;
-name|builderSG
-operator|.
-name|nextLine
-argument_list|()
-expr_stmt|;
-name|builderSG
-operator|.
-name|append
-argument_list|(
-name|m_sgIgnoreBraces
 argument_list|,
 literal|3
 argument_list|)
@@ -890,7 +890,6 @@ operator|+
 literal|"p, 3dlu, p, 3dlu, top:80dlu, 9dlu, p, , 9dlu, p"
 argument_list|)
 decl_stmt|;
-comment|// ...for keyword group
 name|DefaultFormBuilder
 name|builderAll
 init|=
@@ -909,7 +908,12 @@ name|builderAll
 operator|.
 name|appendSeparator
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"General"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|builderAll
@@ -926,7 +930,12 @@ name|builderAll
 operator|.
 name|append
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Name"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|builderAll
@@ -1007,7 +1016,12 @@ name|builderAll
 operator|.
 name|appendSeparator
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Options"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|builderAll
@@ -1043,7 +1057,12 @@ name|builderAll
 operator|.
 name|appendSeparator
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Description"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|builderAll
@@ -1559,13 +1578,6 @@ argument_list|(
 name|itemListener
 argument_list|)
 expr_stmt|;
-name|m_kgIgnoreBraces
-operator|.
-name|addItemListener
-argument_list|(
-name|itemListener
-argument_list|)
-expr_stmt|;
 name|m_sgSearchExpression
 operator|.
 name|addCaretListener
@@ -1581,13 +1593,6 @@ name|itemListener
 argument_list|)
 expr_stmt|;
 name|m_sgCaseSensitive
-operator|.
-name|addItemListener
-argument_list|(
-name|itemListener
-argument_list|)
-expr_stmt|;
-name|m_sgIgnoreBraces
 operator|.
 name|addItemListener
 argument_list|(
@@ -1660,7 +1665,6 @@ name|isRegExp
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// JZTODO curly braces...
 name|m_keywordsRadioButton
 operator|.
 name|setSelected
@@ -1732,7 +1736,6 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-comment|// JZTODO curly braces...
 block|}
 elseif|else
 if|if
@@ -1887,6 +1890,31 @@ argument_list|()
 operator|>
 literal|0
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|okEnabled
+condition|)
+block|{
+name|setDescription
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Please enter a name for the group."
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|m_ok
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 name|String
 name|s1
 decl_stmt|,
@@ -1959,7 +1987,12 @@ condition|)
 block|{
 name|setDescription
 argument_list|(
-literal|"Please enter the field to search (e.g.<b>keywords</b>) and the term to search it for (e.g.<b>electrical</b>)."
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Please enter the field to search (e.g.<b>keywords</b>) and the keyword to search it for (e.g.<b>electrical</b>)."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2088,15 +2121,21 @@ condition|)
 block|{
 name|setDescription
 argument_list|(
-literal|"Please enter a search term. For example, to search all fields for<b>Smith</b>, enter:<p>"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Please enter a search term. For example, to search all fields for<b>Smith</b>, enter%c<p>"
 operator|+
 literal|"<tt>smith</tt><p>"
 operator|+
-literal|"To search the field<b>Author</b> for<b>Smith</b> and the field<b>Title</b> for<b>electrical</b>, enter:<p>"
+literal|"To search the field<b>Author</b> for<b>Smith</b> and the field<b>Title</b> for<b>electrical</b>, enter%c<p>"
 operator|+
-literal|"<tt>author=smith and title=electrical</tt>"
+literal|"<tt>author%esmith and title%eelectrical</tt>"
+argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//                setDescription(Globals.lang("Please_enter_a_search_term...","="));
 block|}
 else|else
 block|{
@@ -2230,9 +2269,19 @@ operator|.
 name|frame
 argument_list|()
 argument_list|,
-literal|"Assign all entries that matched the previous group to this group?"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Assign the previous group's entries to this group?"
+argument_list|)
 argument_list|,
-literal|"Conversion to an Explicit Group"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Change of Grouping Method"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -2318,7 +2367,7 @@ name|getDescriptionForExplicitGroup
 parameter_list|()
 block|{
 return|return
-literal|"This group contains entries based on explicit assignment. "
+literal|"This group contains entries based on manual assignment. "
 operator|+
 literal|"Entries can be assigned to this group by selecting them "
 operator|+
@@ -2328,7 +2377,9 @@ literal|"Entries can be removed from this group by selecting them "
 operator|+
 literal|"then using the context menu. Every entry assigned to this group "
 operator|+
-literal|"must have a unique key."
+literal|"must have a unique key. The key may be changed at any time "
+operator|+
+literal|"as long as it remains unique."
 return|;
 block|}
 DECL|method|getDescriptionForKeywordGroup (String field, String expr, boolean caseSensitive, boolean regExp)
@@ -2360,44 +2411,56 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"This group contains entries whose<b>"
-operator|+
-name|field
-operator|+
-literal|"</b> field "
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
 name|regExp
 condition|?
-literal|"matches the regular expression "
-else|:
-literal|"contains the term "
-argument_list|)
-expr_stmt|;
-name|sb
+name|Globals
 operator|.
-name|append
+name|lang
 argument_list|(
-literal|"<b>"
-operator|+
+literal|"This group contains entries whose<b>%0</b> field contains the regular expression<b>%1</b>"
+argument_list|,
+name|field
+argument_list|,
 name|expr
-operator|+
-literal|"</b>"
+argument_list|)
+else|:
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"This group contains entries whose<b>%0</b> field contains the keyword<b>%1</b>"
+argument_list|,
+name|field
+argument_list|,
+name|expr
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|sb
 operator|.
 name|append
 argument_list|(
+literal|" ("
+operator|+
+operator|(
 name|caseSensitive
 condition|?
-literal|" (case sensitive). "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"case sensitive"
+argument_list|)
 else|:
-literal|" (case insensitive). "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"case insensitive"
+argument_list|)
+operator|)
+operator|+
+literal|"). "
 argument_list|)
 expr_stmt|;
 name|sb
@@ -2406,49 +2469,39 @@ name|append
 argument_list|(
 name|regExp
 condition|?
-literal|"Entries cannot be explicitly assigned to or removed from this group."
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Entries cannot be manually assigned to or removed from this group."
+argument_list|)
 else|:
-literal|"Additionally, entries whose<b>"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Additionally, entries whose<b>%0</b> field does not contain "
 operator|+
-name|field
-operator|+
-literal|"</b> field does not contain "
-operator|+
-literal|"<b>"
-operator|+
-name|expr
-operator|+
-literal|"</b> can be assigned to this group by selecting them "
+literal|"<b>%1</b> can be assigned manually to this group by selecting them "
 operator|+
 literal|"then using either drag and drop or the context menu. "
 operator|+
-literal|"This process adds the term<b>"
+literal|"This process adds the term<b>%1</b> to "
 operator|+
-name|expr
+literal|"each entry's<b>%0</b> field. "
 operator|+
-literal|"</b> to "
-operator|+
-literal|"each entry's<b>"
-operator|+
-name|field
-operator|+
-literal|"</b> field. "
-operator|+
-literal|"Entries can be removed from this group by selecting them "
+literal|"Entries can be removed manually from this group by selecting them "
 operator|+
 literal|"then using the context menu. "
 operator|+
-literal|"This process removes the term<b>"
+literal|"This process removes the term<b>%1</b> from "
 operator|+
-name|expr
-operator|+
-literal|"</b> from "
-operator|+
-literal|"each  entry's<b>"
-operator|+
+literal|"each entry's<b>%0</b> field."
+argument_list|,
 name|field
-operator|+
-literal|"</b> field. "
+argument_list|,
+name|expr
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -2494,53 +2547,78 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"This group contains entries in which any field "
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
 name|regExp
 condition|?
-literal|"matches the regular expression "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"This group contains entries in which any field contains the regular expression<b>%0</b>"
+argument_list|,
+name|expr
+argument_list|)
 else|:
-literal|"contains the term "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"This group contains entries in which any field contains the term<b>%0</b>"
+argument_list|,
+name|expr
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|"<b>"
-operator|+
-name|expr
-operator|+
-literal|"</b> "
+literal|" ("
 operator|+
 operator|(
 name|caseSensitive
 condition|?
-literal|"(case sensitive). "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"case sensitive"
+argument_list|)
 else|:
-literal|"(case insensitive). "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"case insensitive"
+argument_list|)
 operator|)
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"Entries cannot be explicitly assigned to or removed from this group."
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"<p><br>Hint: To search specific fields only, enter for example:"
 operator|+
-literal|"<p><tt>author=smith and title=electrical</tt>"
+literal|"). "
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Entries cannot be manually assigned to or removed from this group."
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"<p><br>"
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Hint%c To search specific fields only, enter for example%c<p><tt>author%esmith and title%eelectrical</tt>"
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -2555,7 +2633,14 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"This group contains entries in which "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"This group contains entries in which"
+argument_list|)
+operator|+
+literal|" "
 argument_list|)
 expr_stmt|;
 name|sb
@@ -2580,17 +2665,28 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|". The search is "
-operator|+
-operator|(
+literal|". "
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
 name|caseSensitive
 condition|?
-literal|"case sensitive"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"The search is case sensitive."
+argument_list|)
 else|:
-literal|"case insensitive"
-operator|)
-operator|+
-literal|"."
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"The search is case insensitive."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -2649,7 +2745,14 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"not "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"not"
+argument_list|)
+operator|+
+literal|" "
 argument_list|)
 expr_stmt|;
 comment|// if there was an "or" in this subtree so far, braces may be needed
@@ -2686,7 +2789,16 @@ argument_list|,
 literal|false
 argument_list|)
 operator|+
-literal|" and "
+literal|" "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"and"
+argument_list|)
+operator|+
+literal|" "
 operator|+
 name|describeSearchGroupNode
 argument_list|(
@@ -2740,7 +2852,14 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"not "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"not"
+argument_list|)
+operator|+
+literal|" "
 argument_list|)
 expr_stmt|;
 comment|// if there was an "and" in this subtree so far, braces may be
@@ -2778,7 +2897,16 @@ argument_list|,
 literal|true
 argument_list|)
 operator|+
-literal|" or "
+literal|" "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"or"
+argument_list|)
+operator|+
+literal|" "
 operator|+
 name|describeSearchGroupNode
 argument_list|(
@@ -2849,6 +2977,7 @@ operator|.
 name|getFirstChild
 argument_list|()
 expr_stmt|;
+specifier|final
 name|String
 name|field
 init|=
@@ -2857,94 +2986,7 @@ operator|.
 name|getText
 argument_list|()
 decl_stmt|;
-name|node
-operator|=
-name|node
-operator|.
-name|getNextSibling
-argument_list|()
-expr_stmt|;
-name|String
-name|matchType
-decl_stmt|;
-switch|switch
-condition|(
-name|node
-operator|.
-name|getType
-argument_list|()
-condition|)
-block|{
-case|case
-name|SearchExpressionTreeParserTokenTypes
-operator|.
-name|LITERAL_contains
-case|:
-case|case
-name|SearchExpressionTreeParserTokenTypes
-operator|.
-name|EQUAL
-case|:
-name|matchType
-operator|=
-name|not
-condition|?
-literal|"doesn't contain"
-else|:
-literal|"contains"
-expr_stmt|;
-break|break;
-case|case
-name|SearchExpressionTreeParserTokenTypes
-operator|.
-name|LITERAL_matches
-case|:
-case|case
-name|SearchExpressionTreeParserTokenTypes
-operator|.
-name|EEQUAL
-case|:
-name|matchType
-operator|=
-name|not
-condition|?
-literal|"doesn't match"
-else|:
-literal|"matches"
-expr_stmt|;
-break|break;
-case|case
-name|SearchExpressionTreeParserTokenTypes
-operator|.
-name|NEQUAL
-case|:
-name|matchType
-operator|=
-literal|"doesn't contain"
-expr_stmt|;
-break|break;
-default|default:
-name|matchType
-operator|=
-literal|"?"
-expr_stmt|;
-comment|// this should never happen
-block|}
-name|node
-operator|=
-name|node
-operator|.
-name|getNextSibling
-argument_list|()
-expr_stmt|;
-name|String
-name|term
-init|=
-name|node
-operator|.
-name|getText
-argument_list|()
-decl_stmt|;
+specifier|final
 name|boolean
 name|regExpFieldSpec
 init|=
@@ -2958,55 +3000,184 @@ argument_list|,
 name|field
 argument_list|)
 decl_stmt|;
-name|sb
+name|node
+operator|=
+name|node
 operator|.
-name|append
-argument_list|(
+name|getNextSibling
+argument_list|()
+expr_stmt|;
+specifier|final
+name|int
+name|type
+init|=
+name|node
+operator|.
+name|getType
+argument_list|()
+decl_stmt|;
+name|node
+operator|=
+name|node
+operator|.
+name|getNextSibling
+argument_list|()
+expr_stmt|;
+specifier|final
+name|String
+name|term
+init|=
+name|node
+operator|.
+name|getText
+argument_list|()
+decl_stmt|;
+specifier|final
+name|String
+name|fieldSpec
+init|=
 name|regExpFieldSpec
 condition|?
-literal|"any field that matches the regular expression"
-else|:
-literal|"the field"
-argument_list|)
-expr_stmt|;
-name|sb
+name|Globals
 operator|.
-name|append
+name|lang
 argument_list|(
-literal|"<b>"
-operator|+
+literal|"any field that matches the regular expression<b>%0</b>"
+argument_list|,
 name|field
-operator|+
-literal|"</b> "
-operator|+
-name|matchType
 argument_list|)
-expr_stmt|;
-name|sb
+else|:
+name|Globals
 operator|.
-name|append
+name|lang
 argument_list|(
-operator|(
+literal|"the field<b>%0</b>"
+argument_list|,
+name|field
+argument_list|)
+decl_stmt|;
+specifier|final
+name|String
+name|termSpec
+init|=
 name|regExp
 condition|?
-literal|" the regular expression"
-else|:
-literal|" the term"
-operator|)
-operator|+
-literal|"<b>"
-operator|+
-name|term
-operator|+
-literal|"</b>"
-argument_list|)
-expr_stmt|;
-return|return
-name|sb
+name|Globals
 operator|.
-name|toString
-argument_list|()
+name|lang
+argument_list|(
+literal|"the regular expression<b>%0</b>"
+argument_list|,
+name|term
+argument_list|)
+else|:
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"the term<b>%0</b>"
+argument_list|,
+name|term
+argument_list|)
+decl_stmt|;
+switch|switch
+condition|(
+name|type
+condition|)
+block|{
+case|case
+name|SearchExpressionTreeParserTokenTypes
+operator|.
+name|LITERAL_contains
+case|:
+case|case
+name|SearchExpressionTreeParserTokenTypes
+operator|.
+name|EQUAL
+case|:
+return|return
+name|not
+condition|?
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"%0 doesn't contain %1"
+argument_list|,
+name|fieldSpec
+argument_list|,
+name|termSpec
+argument_list|)
+else|:
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"%0 contains %1"
+argument_list|,
+name|fieldSpec
+argument_list|,
+name|termSpec
+argument_list|)
 return|;
+case|case
+name|SearchExpressionTreeParserTokenTypes
+operator|.
+name|LITERAL_matches
+case|:
+case|case
+name|SearchExpressionTreeParserTokenTypes
+operator|.
+name|EEQUAL
+case|:
+return|return
+name|not
+condition|?
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"%0 doesn't match %1"
+argument_list|,
+name|fieldSpec
+argument_list|,
+name|termSpec
+argument_list|)
+else|:
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"%0 matches %1"
+argument_list|,
+name|fieldSpec
+argument_list|,
+name|termSpec
+argument_list|)
+return|;
+case|case
+name|SearchExpressionTreeParserTokenTypes
+operator|.
+name|NEQUAL
+case|:
+return|return
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"%0 doesn't contain %1"
+argument_list|,
+name|fieldSpec
+argument_list|,
+name|termSpec
+argument_list|)
+return|;
+default|default:
+return|return
+literal|"?"
+return|;
+comment|// this should never happen
+block|}
 block|}
 block|}
 DECL|method|setDescription (String description)
@@ -3045,11 +3216,16 @@ block|{
 name|String
 name|s
 init|=
-literal|"The regular expression<b>"
-operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"The regular expression<b>%0</b> is invalid:"
+argument_list|,
 name|regExp
+argument_list|)
 operator|+
-literal|"</b> is invalid:<p><tt>"
+literal|"<p><tt>%1</tt>"
 operator|+
 name|e
 operator|.
