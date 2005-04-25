@@ -124,19 +124,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
+name|BibtexEntry
 import|;
 end_import
 
@@ -312,6 +300,11 @@ decl_stmt|;
 name|setCellRenderer
 argument_list|(
 name|cellRenderer
+argument_list|)
+expr_stmt|;
+name|setFocusable
+argument_list|(
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
