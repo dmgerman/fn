@@ -688,48 +688,7 @@ argument_list|(
 name|entries
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|entries
-operator|.
-name|length
-operator|>
-literal|0
-condition|)
-comment|// JZTODO: translation
-name|basePanel
-operator|.
-name|output
-argument_list|(
-literal|"Appended '"
-operator|+
-name|m_searchExpression
-operator|+
-literal|"' to the '"
-operator|+
-name|m_searchField
-operator|+
-literal|"' field of "
-operator|+
-name|entries
-operator|.
-name|length
-operator|+
-literal|" entr"
-operator|+
-operator|(
-name|entries
-operator|.
-name|length
-operator|>
-literal|1
-condition|?
-literal|"ies."
-else|:
-literal|"y."
-operator|)
-argument_list|)
-expr_stmt|;
+comment|/*if (entries.length> 0) // JZTODO: translation             basePanel.output(Globals.lang("Appended \"%1\" to the \"%2\""                     + "field of %3 entr"                     + (entries.length> 1 ? "ies." : "y."), new String[]{                     m_searchExpression, m_searchField, ""+entries.length}));*/
 return|return
 name|undo
 return|;
@@ -770,6 +729,7 @@ argument_list|(
 literal|"add to group"
 argument_list|)
 decl_stmt|;
+comment|// JZTODO translation
 name|boolean
 name|modified
 init|=
