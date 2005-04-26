@@ -125,7 +125,9 @@ literal|"Internal error: AllEntriesGroup cannot be created from \""
 operator|+
 name|s
 operator|+
-literal|"\""
+literal|"\". "
+operator|+
+literal|"Please report this on www.sf.net/projects/jabref"
 argument_list|)
 throw|;
 switch|switch

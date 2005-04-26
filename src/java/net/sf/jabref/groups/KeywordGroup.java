@@ -278,7 +278,9 @@ literal|"Internal error: KeywordGroup cannot be created from \""
 operator|+
 name|s
 operator|+
-literal|"\""
+literal|"\". "
+operator|+
+literal|"Please report this on www.sf.net/projects/jabref"
 argument_list|)
 throw|;
 name|QuotedStringTokenizer
@@ -1567,7 +1569,9 @@ literal|"Internal error: Exception "
 operator|+
 name|t
 operator|+
-literal|" in KeywordGroup.deepCopy()"
+literal|" in KeywordGroup.deepCopy(). "
+operator|+
+literal|"Please report this on www.sf.net/projects/jabref"
 argument_list|)
 expr_stmt|;
 return|return
