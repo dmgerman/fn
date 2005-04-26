@@ -2956,9 +2956,9 @@ argument_list|()
 argument_list|,
 name|regExp
 argument_list|,
-literal|true
+operator|!
+name|not
 argument_list|,
-comment|//JZFIXME
 name|and
 argument_list|,
 name|or
@@ -3194,6 +3194,19 @@ condition|(
 name|regExp
 condition|)
 return|return
+name|not
+condition|?
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"%0 contains the Regular Expression<b>%1</b>"
+argument_list|,
+name|fieldSpec
+argument_list|,
+name|term
+argument_list|)
+else|:
 name|Globals
 operator|.
 name|lang
@@ -3206,6 +3219,19 @@ name|term
 argument_list|)
 return|;
 return|return
+name|not
+condition|?
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"%0 contains the term<b>%1</b>"
+argument_list|,
+name|fieldSpec
+argument_list|,
+name|term
+argument_list|)
+else|:
 name|Globals
 operator|.
 name|lang
@@ -3219,7 +3245,9 @@ argument_list|)
 return|;
 default|default:
 return|return
-literal|"?"
+literal|"Internal error: Unknown AST node type. "
+operator|+
+literal|"Please report this on www.sf.net/projects/jabref"
 return|;
 comment|// this should never happen
 block|}
