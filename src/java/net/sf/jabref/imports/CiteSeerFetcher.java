@@ -2244,7 +2244,12 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Import Data from CiteSeer Database"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|BooleanAssign

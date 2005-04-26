@@ -707,7 +707,12 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"CiteSeer import entries"
+argument_list|)
 argument_list|)
 decl_stmt|,
 comment|// Use a dummy UndoEdit to avoid storing the information on
@@ -717,7 +722,12 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Ok"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|BooleanAssign

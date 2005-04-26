@@ -1137,7 +1137,12 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"remove from group"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|boolean

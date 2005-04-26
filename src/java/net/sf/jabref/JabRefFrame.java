@@ -7589,7 +7589,12 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"CiteSeer Import Fields"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|boolean
@@ -8974,7 +8979,12 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Import entries"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|Iterator

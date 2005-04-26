@@ -1964,6 +1964,10 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 name|bes
 operator|.
 name|length
@@ -1973,6 +1977,7 @@ condition|?
 literal|"cut entries"
 else|:
 literal|"cut entry"
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// Loop through the array of entries, and delete them.
@@ -2226,6 +2231,10 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 name|bes
 operator|.
 name|length
@@ -2235,6 +2244,7 @@ condition|?
 literal|"delete entries"
 else|:
 literal|"delete entry"
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// Loop through the array of entries, and delete them.
@@ -2875,6 +2885,10 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 name|bes
 operator|.
 name|length
@@ -2884,6 +2898,7 @@ condition|?
 literal|"paste entries"
 else|:
 literal|"paste entry"
+argument_list|)
 argument_list|)
 decl_stmt|;
 for|for
@@ -3777,7 +3792,12 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"autogenerate keys"
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|//BibtexEntry be;
@@ -5209,7 +5229,12 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Append database"
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
@@ -6206,7 +6231,12 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Replace string"
+argument_list|)
 argument_list|)
 decl_stmt|;
 if|if
@@ -6809,7 +6839,12 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Mark entries"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|BibtexEntry
@@ -7010,7 +7045,12 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Unmark entries"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|BibtexEntry
@@ -7176,7 +7216,12 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Unmark all"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|Set
@@ -11497,7 +11542,12 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"change type"
+argument_list|)
 argument_list|)
 decl_stmt|;
 for|for

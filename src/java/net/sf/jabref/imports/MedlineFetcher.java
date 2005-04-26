@@ -1359,7 +1359,12 @@ name|GUIGlobals
 operator|.
 name|DEFAULT_INSPECTION_FIELDS
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Fetch Medline"
+argument_list|)
 argument_list|,
 literal|false
 argument_list|)

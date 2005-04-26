@@ -420,7 +420,12 @@ operator|=
 operator|new
 name|NamedCompound
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"duplicate removal"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|panel
@@ -490,7 +495,12 @@ operator|=
 operator|new
 name|NamedCompound
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"duplicate removal"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|panel

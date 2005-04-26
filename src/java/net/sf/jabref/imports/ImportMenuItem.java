@@ -461,7 +461,12 @@ name|panel
 argument_list|,
 name|fields
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Import"
+argument_list|)
 argument_list|,
 name|openInNew
 argument_list|)

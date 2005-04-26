@@ -3991,7 +3991,12 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"source edit"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|BibtexEntry
