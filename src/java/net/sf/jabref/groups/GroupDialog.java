@@ -2262,7 +2262,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Assign the previous group's entries to this group?"
+literal|"Assign the original group's entries to this group?"
 argument_list|)
 argument_list|,
 name|Globals

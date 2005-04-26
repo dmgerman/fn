@@ -106,20 +106,6 @@ name|*
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|undo
-operator|.
-name|NamedCompound
-import|;
-end_import
-
 begin_class
 DECL|class|GroupSelector
 specifier|public
@@ -3133,17 +3119,13 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Created group"
-argument_list|)
-operator|+
-literal|" '"
-operator|+
+literal|"Created_group_\"%0\"."
+argument_list|,
 name|newGroup
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|"'."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3473,17 +3455,13 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Modified group"
-argument_list|)
-operator|+
-literal|" '"
-operator|+
+literal|"Modified group \"%0\"."
+argument_list|,
 name|newGroup
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|"'."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3658,14 +3636,17 @@ name|frame
 operator|.
 name|output
 argument_list|(
-literal|"Added group '"
-operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Added group \"%0\"."
+argument_list|,
 name|newGroup
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|"'."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3819,14 +3800,17 @@ name|frame
 operator|.
 name|output
 argument_list|(
-literal|"Added group '"
-operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Added group \"%0\"."
+argument_list|,
 name|newGroup
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|"'."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3892,17 +3876,13 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Remove group"
-argument_list|)
-operator|+
-literal|" '"
-operator|+
+literal|"Remove group \"%0\" and its subgroups?"
+argument_list|,
 name|group
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|"' and its subgroups?"
+argument_list|)
 argument_list|,
 name|Globals
 operator|.
@@ -3976,17 +3956,13 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Removed group"
-argument_list|)
-operator|+
-literal|" '"
-operator|+
+literal|"Removed group \"%0\" and its subgroups."
+argument_list|,
 name|group
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|"' and its subgroups."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -4053,17 +4029,13 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Remove group"
-argument_list|)
-operator|+
-literal|" '"
-operator|+
+literal|"Remove group \"%0\"?"
+argument_list|,
 name|group
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|"'?"
+argument_list|)
 argument_list|,
 name|Globals
 operator|.
@@ -4184,17 +4156,13 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Removed group"
-argument_list|)
-operator|+
-literal|" '"
-operator|+
+literal|"Removed group \"%0\"."
+argument_list|,
 name|group
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|"' and its subgroups."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -4221,7 +4189,12 @@ init|=
 operator|new
 name|AbstractAction
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Up"
+argument_list|)
 argument_list|)
 block|{
 specifier|public
@@ -4273,7 +4246,12 @@ init|=
 operator|new
 name|AbstractAction
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Down"
+argument_list|)
 argument_list|)
 block|{
 specifier|public
@@ -4325,7 +4303,12 @@ init|=
 operator|new
 name|AbstractAction
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Left"
+argument_list|)
 argument_list|)
 block|{
 specifier|public
@@ -4377,7 +4360,12 @@ init|=
 operator|new
 name|AbstractAction
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Right"
+argument_list|)
 argument_list|)
 block|{
 specifier|public
@@ -4497,12 +4485,8 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Cannot move group"
-argument_list|)
-operator|+
-literal|" '"
-comment|// JZTODO: translation...
-operator|+
+literal|"Cannot move group \"%0\" up."
+argument_list|,
 name|node
 operator|.
 name|getGroup
@@ -4510,14 +4494,6 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|"' "
-operator|+
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"up."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4617,11 +4593,8 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Cannot move group"
-argument_list|)
-operator|+
-literal|" '"
-operator|+
+literal|"Cannot move group \"%0\" down."
+argument_list|,
 name|node
 operator|.
 name|getGroup
@@ -4629,8 +4602,7 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|"' down."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -4735,11 +4707,8 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Cannot move group"
-argument_list|)
-operator|+
-literal|" '"
-operator|+
+literal|"Cannot move group \"%0\" left."
+argument_list|,
 name|node
 operator|.
 name|getGroup
@@ -4747,8 +4716,7 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|"' left."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -4873,11 +4841,8 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Cannot move group"
-argument_list|)
-operator|+
-literal|" '"
-operator|+
+literal|"Cannot move group \"%0\" right."
+argument_list|,
 name|node
 operator|.
 name|getGroup
@@ -4885,8 +4850,7 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|"' right."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -4965,11 +4929,8 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Moved group"
-argument_list|)
-operator|+
-literal|" '"
-operator|+
+literal|"Moved group \"%0\"."
+argument_list|,
 name|node
 operator|.
 name|getGroup
@@ -4977,8 +4938,7 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-operator|+
-literal|"'."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -5108,7 +5068,12 @@ init|=
 operator|new
 name|JMenu
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Move"
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|method|getGroupTreeRoot ()
@@ -5275,15 +5240,20 @@ name|String
 name|errorMessage
 parameter_list|)
 block|{
+comment|// this should never happen, since regular expressions are checked for
+comment|// correctness by the edit group dialog, and no other errors should
+comment|// occur in a search
 name|System
 operator|.
-name|out
+name|err
 operator|.
 name|println
 argument_list|(
 literal|"Error in group search: "
 operator|+
 name|errorMessage
+operator|+
+literal|". Please report this on www.sf.net/projects/jabref"
 argument_list|)
 expr_stmt|;
 block|}

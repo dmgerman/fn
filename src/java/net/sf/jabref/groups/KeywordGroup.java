@@ -606,12 +606,15 @@ name|basePanel
 operator|.
 name|output
 argument_list|(
-literal|"The group \""
-operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"The group \"%0\" does not support the adding of entries."
+argument_list|,
 name|getName
 argument_list|()
-operator|+
-literal|"\" does not support the adding of entries."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -690,7 +693,6 @@ argument_list|(
 name|entries
 argument_list|)
 decl_stmt|;
-comment|/*if (entries.length> 0) // JZTODO: translation             basePanel.output(Globals.lang("Appended \"%1\" to the \"%2\""                     + "field of %3 entr"                     + (entries.length> 1 ? "ies." : "y."), new String[]{                     m_searchExpression, m_searchField, ""+entries.length}));*/
 return|return
 name|undo
 return|;
@@ -728,10 +730,14 @@ init|=
 operator|new
 name|NamedCompound
 argument_list|(
-literal|"add to group"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"add entries to group"
+argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// JZTODO translation
 name|boolean
 name|modified
 init|=
@@ -882,14 +888,22 @@ name|BasePanel
 name|basePanel
 parameter_list|)
 block|{
+comment|// JZFIXME this is not always shown when required
+comment|//        String message = "This action will modify the \""
+comment|//            + m_searchField
+comment|//            + "\" field "
+comment|//            + "of your entries.\nThis could cause undesired changes to "
+comment|//            + "your entries, so it\nis recommended that you change the field "
+comment|//            + "in your group\ndefinition to \"keywords\" or a non-standard name."
+comment|//            + "\n\nDo you still want to continue?";
 name|String
 name|message
 init|=
-literal|"This action will modify the \""
-operator|+
-name|m_searchField
-operator|+
-literal|"\" field "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"This action will modify the \"%0\" field "
 operator|+
 literal|"of your entries.\nThis could cause undesired changes to "
 operator|+
@@ -898,6 +912,9 @@ operator|+
 literal|"in your group\ndefinition to \"keywords\" or a non-standard name."
 operator|+
 literal|"\n\nDo you still want to continue?"
+argument_list|,
+name|m_searchField
+argument_list|)
 decl_stmt|;
 name|int
 name|choice
@@ -910,7 +927,12 @@ name|basePanel
 argument_list|,
 name|message
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Warning"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -950,12 +972,15 @@ name|basePanel
 operator|.
 name|output
 argument_list|(
-literal|"The group \""
-operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"The group \"%0\" does not support the removal of entries."
+argument_list|,
 name|getName
 argument_list|()
-operator|+
-literal|"\" does not support the removal of entries."
+argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
