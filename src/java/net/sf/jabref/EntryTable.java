@@ -1303,10 +1303,10 @@ name|TableClickListener
 extends|extends
 name|MouseAdapter
 block|{
-DECL|method|mouseClicked (MouseEvent e)
+DECL|method|mousePressed (MouseEvent e)
 specifier|public
 name|void
-name|mouseClicked
+name|mousePressed
 parameter_list|(
 name|MouseEvent
 name|e
@@ -1381,41 +1381,16 @@ expr_stmt|;
 block|}
 block|}
 comment|// Check if the user has right-clicked. If so, open the right-click menu.
-comment|//if (e.isPopupTrigger()) {
 if|if
 condition|(
-operator|(
 name|e
 operator|.
-name|getButton
+name|isPopupTrigger
 argument_list|()
-operator|==
-name|MouseEvent
-operator|.
-name|BUTTON3
-operator|)
-operator|||
-operator|(
-name|ctrlClick
-operator|&&
-operator|(
-name|e
-operator|.
-name|getButton
-argument_list|()
-operator|==
-name|MouseEvent
-operator|.
-name|BUTTON1
-operator|)
-operator|&&
-name|e
-operator|.
-name|isControlDown
-argument_list|()
-operator|)
 condition|)
 block|{
+comment|//if ( (e.getButton() == MouseEvent.BUTTON3) ||
+comment|//     (ctrlClick&& (e.getButton() == MouseEvent.BUTTON1)&& e.isControlDown())) {
 name|int
 name|selRow
 init|=

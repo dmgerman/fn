@@ -1157,7 +1157,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|insertNodes (JMenu menu, GroupTreeNode node, BibtexEntry[] selection, boolean add)
-specifier|private
+specifier|public
 name|void
 name|insertNodes
 parameter_list|(

@@ -456,6 +456,7 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|rcm
+specifier|public
 name|RightClickMenu
 name|rcm
 decl_stmt|;
@@ -526,12 +527,8 @@ DECL|field|coloringByGroup
 name|coloringByGroup
 init|=
 literal|false
-decl_stmt|,
-DECL|field|previewEnabled
-name|previewEnabled
-init|=
-literal|true
 decl_stmt|;
+comment|//previewEnabled = Globals.prefs.getBoolean("previewEnabled");
 DECL|field|lastSearchHits
 name|int
 name|lastSearchHits
@@ -7340,23 +7337,40 @@ name|void
 name|action
 parameter_list|()
 block|{
-name|previewEnabled
-operator|=
+name|boolean
+name|enabled
+init|=
 operator|!
-name|previewEnabled
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"previewEnabled"
+argument_list|)
+decl_stmt|;
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|putBoolean
+argument_list|(
+literal|"previewEnabled"
+argument_list|,
+name|enabled
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
 operator|!
-name|previewEnabled
+name|enabled
 condition|)
 name|hidePreview
 argument_list|()
 expr_stmt|;
 else|else
 block|{
-comment|//BibtexEntry[] bes = entryTable.getSelectedEntries();
-comment|//if ((bes != null)&& (bes.length> 0))
 name|updateViewToSelected
 argument_list|()
 expr_stmt|;
@@ -7367,7 +7381,7 @@ name|previewToggle
 operator|.
 name|setSelected
 argument_list|(
-name|previewEnabled
+name|enabled
 argument_list|)
 expr_stmt|;
 block|}
@@ -7410,7 +7424,14 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|previewEnabled
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"previewEnabled"
+argument_list|)
 condition|)
 name|hidePreview
 argument_list|()
@@ -9659,7 +9680,14 @@ comment|// If no entry editor is visible we must either instantiate a new previe
 if|if
 condition|(
 operator|!
-name|previewEnabled
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"previewEnabled"
+argument_list|)
 operator|||
 name|be
 operator|==
@@ -9878,11 +9906,17 @@ name|void
 name|hidePreview
 parameter_list|()
 block|{
-name|previewEnabled
-operator|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|putBoolean
+argument_list|(
+literal|"previewEnabled"
+argument_list|,
 literal|false
+argument_list|)
 expr_stmt|;
-comment|//previewPanel[activePreview] = null;
 name|Component
 name|c
 init|=
@@ -11983,16 +12017,6 @@ name|Transferable
 name|contents
 parameter_list|)
 block|{}
-DECL|method|previewEnabled ()
-specifier|public
-name|boolean
-name|previewEnabled
-parameter_list|()
-block|{
-return|return
-name|previewEnabled
-return|;
-block|}
 DECL|method|setEntryEditorEnabled (boolean enabled)
 specifier|public
 name|void

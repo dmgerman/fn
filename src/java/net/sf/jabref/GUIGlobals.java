@@ -1456,6 +1456,11 @@ name|shortPlainImport
 init|=
 literal|"ShortPlainImport.html"
 decl_stmt|,
+DECL|field|importInspectionHelp
+name|importInspectionHelp
+init|=
+literal|"ImportInspectionDialog.html"
+decl_stmt|,
 DECL|field|shortIntegrityCheck
 name|shortIntegrityCheck
 init|=

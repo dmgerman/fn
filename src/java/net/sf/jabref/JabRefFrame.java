@@ -2234,9 +2234,14 @@ name|previewToggle
 operator|.
 name|setSelected
 argument_list|(
-name|bp
+name|Globals
 operator|.
-name|previewEnabled
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"previewEnabled"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|Globals

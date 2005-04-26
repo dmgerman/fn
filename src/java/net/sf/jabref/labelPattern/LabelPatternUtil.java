@@ -271,7 +271,7 @@ name|_alist
 return|;
 comment|/*        // Regular expresion for identifying the fields        Pattern pi = Pattern.compile("\\[\\w*\\]");        // Regular expresion for identifying the spacer        Pattern ps = Pattern.compile("\\].()*\\[");         // The matcher for the field        Matcher mi = pi.matcher(labelPattern);        // The matcher for the spacer char        Matcher ms = ps.matcher(labelPattern);         // Before we do anything, we add the parameter to the ArrayLIst        _alist.add(labelPattern);         // If we can find the spacer character        if(ms.find()){      String t_spacer = ms.group();       // Remove the `]' and `[' at the ends       // We cant imagine a spacer of omre than one character.       t_spacer = t_spacer.substring(1,2);       _alist.add(t_spacer);        }         while(mi.find()){      // Get the matched string      String t_str = mi.group();       int _sindex = 1;       int _eindex = t_str.length() -1;       // Remove the `[' and `]' at the ends       t_str = t_str.substring(_sindex, _eindex);      _alist.add(t_str);        }         return _alist;*/
 block|}
-comment|/**    * Generates a BibTeX label according to the pattern for a given entry type, and    * returns the<code>Bibtexentry</code> with the unique label.    * @param table a<code>LabelPattern</code>    * @param database a<code>BibtexDatabase</code>    * @param entryId a<code>String</code>    * @return modified Bibtexentry    */
+comment|/**    * Generates a BibTeX label according to the pattern for a given entry type, and    * returns the<code>Bibtexentry</code> with the unique label.    * @param table a<code>LabelPattern</code>    * @param database a<code>BibtexDatabase</code>    * @param _entry a<code>BibtexEntry</code>    * @return modified Bibtexentry    */
 DECL|method|makeLabel (LabelPattern table, BibtexDatabase database, BibtexEntry _entry)
 specifier|public
 specifier|static
@@ -1925,14 +1925,14 @@ argument_list|()
 return|;
 block|}
 comment|/**    * This method returns a truely unique label (in the BibtexDatabase), by taking a    * label and add the letters a-z until a unique key is found.    * @param key a<code>String</code>    * @return a unique label    */
-DECL|method|makeLabelUnique (String label)
+DECL|method|makeLabelUnique (String key)
 specifier|public
 specifier|static
 name|String
 name|makeLabelUnique
 parameter_list|(
 name|String
-name|label
+name|key
 parameter_list|)
 block|{
 comment|// First I tried to make this recursive, but had to give up. I needed to
@@ -1940,12 +1940,12 @@ comment|// do too many chacks of different kinds.
 name|String
 name|_orgLabel
 init|=
-name|label
+name|key
 decl_stmt|;
 name|String
 name|_newLabel
 init|=
-name|label
+name|key
 decl_stmt|;
 name|int
 name|lettersSize

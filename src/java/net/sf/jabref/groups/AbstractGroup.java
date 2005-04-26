@@ -269,6 +269,7 @@ parameter_list|()
 function_decl|;
 comment|/**      * Adds the selected entries to this group. This method is to be called      * by GroupTreeNode. The BasePanel instance is required for user feedback.      *       * @return If this group or one or more entries was/were modified as a      *         result of this operation, an object is returned that allows to      *         undo this change. null is returned otherwise.      */
 DECL|method|addSelection (BasePanel basePanel)
+specifier|public
 specifier|abstract
 name|AbstractUndoableEdit
 name|addSelection
@@ -279,6 +280,7 @@ parameter_list|)
 function_decl|;
 comment|/**      * Adds the selected entries to this group.      *        * @return If this group or one or more entries was/were modified as a      *         result of this operation, an object is returned that allows to      *         undo this change. null is returned otherwise.      */
 DECL|method|addSelection (BibtexEntry[] entries)
+specifier|public
 specifier|abstract
 name|AbstractUndoableEdit
 name|addSelection
