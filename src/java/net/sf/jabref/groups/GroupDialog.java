@@ -217,7 +217,6 @@ argument_list|(
 name|TEXTFIELD_LENGTH
 argument_list|)
 decl_stmt|;
-comment|// JZTODO better descriptions
 DECL|field|m_explicitRadioButton
 specifier|private
 name|JRadioButton
@@ -1944,19 +1943,10 @@ name|okEnabled
 operator|&&
 name|s1
 operator|.
-name|length
-argument_list|()
-operator|>
-literal|0
-operator|&&
-name|s1
-operator|.
-name|indexOf
+name|matches
 argument_list|(
-literal|' '
+literal|"\\w+"
 argument_list|)
-operator|<
-literal|0
 expr_stmt|;
 name|s2
 operator|=
@@ -2135,7 +2125,6 @@ literal|"<tt>author%esmith and title%eelectrical</tt>"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//                setDescription(Globals.lang("Please_enter_a_search_term...","="));
 block|}
 else|else
 block|{
@@ -2367,6 +2356,10 @@ name|getDescriptionForExplicitGroup
 parameter_list|()
 block|{
 return|return
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"This group contains entries based on manual assignment. "
 operator|+
 literal|"Entries can be assigned to this group by selecting them "
@@ -2380,6 +2373,7 @@ operator|+
 literal|"must have a unique key. The key may be changed at any time "
 operator|+
 literal|"as long as it remains unique."
+argument_list|)
 return|;
 block|}
 DECL|method|getDescriptionForKeywordGroup (String field, String expr, boolean caseSensitive, boolean regExp)
@@ -2964,6 +2958,7 @@ name|regExp
 argument_list|,
 literal|true
 argument_list|,
+comment|//JZFIXME
 name|and
 argument_list|,
 name|or
@@ -3056,30 +3051,6 @@ argument_list|,
 name|field
 argument_list|)
 decl_stmt|;
-specifier|final
-name|String
-name|termSpec
-init|=
-name|regExp
-condition|?
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"the regular expression<b>%0</b>"
-argument_list|,
-name|term
-argument_list|)
-else|:
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"the term<b>%0</b>"
-argument_list|,
-name|term
-argument_list|)
-decl_stmt|;
 switch|switch
 condition|(
 name|type
@@ -3095,6 +3066,10 @@ name|SearchExpressionTreeParserTokenTypes
 operator|.
 name|EQUAL
 case|:
+if|if
+condition|(
+name|regExp
+condition|)
 return|return
 name|not
 condition|?
@@ -3102,22 +3077,47 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"%0 doesn't contain %1"
+literal|"%0 doesn't contain the Regular Expression<b>%1</b>"
 argument_list|,
 name|fieldSpec
 argument_list|,
-name|termSpec
+name|term
 argument_list|)
 else|:
 name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"%0 contains %1"
+literal|"%0 contains the Regular Expression<b>%1</b>"
 argument_list|,
 name|fieldSpec
 argument_list|,
-name|termSpec
+name|term
+argument_list|)
+return|;
+return|return
+name|not
+condition|?
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"%0 doesn't contain the term<b>%1</b>"
+argument_list|,
+name|fieldSpec
+argument_list|,
+name|term
+argument_list|)
+else|:
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"%0 contains the term<b>%1</b>"
+argument_list|,
+name|fieldSpec
+argument_list|,
+name|term
 argument_list|)
 return|;
 case|case
@@ -3130,6 +3130,10 @@ name|SearchExpressionTreeParserTokenTypes
 operator|.
 name|EEQUAL
 case|:
+if|if
+condition|(
+name|regExp
+condition|)
 return|return
 name|not
 condition|?
@@ -3137,22 +3141,47 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"%0 doesn't match %1"
+literal|"%0 doesn't match the Regular Expression<b>%1</b>"
 argument_list|,
 name|fieldSpec
 argument_list|,
-name|termSpec
+name|term
 argument_list|)
 else|:
 name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"%0 matches %1"
+literal|"%0 matches the Regular Expression<b>%1</b>"
 argument_list|,
 name|fieldSpec
 argument_list|,
-name|termSpec
+name|term
+argument_list|)
+return|;
+return|return
+name|not
+condition|?
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"%0 doesn't match the term<b>%1</b>"
+argument_list|,
+name|fieldSpec
+argument_list|,
+name|term
+argument_list|)
+else|:
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"%0 matches the term<b>%1</b>"
+argument_list|,
+name|fieldSpec
+argument_list|,
+name|term
 argument_list|)
 return|;
 case|case
@@ -3160,16 +3189,32 @@ name|SearchExpressionTreeParserTokenTypes
 operator|.
 name|NEQUAL
 case|:
+if|if
+condition|(
+name|regExp
+condition|)
 return|return
 name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"%0 doesn't contain %1"
+literal|"%0 doesn't contain the Regular Expression<b>%1</b>"
 argument_list|,
 name|fieldSpec
 argument_list|,
-name|termSpec
+name|term
+argument_list|)
+return|;
+return|return
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"%0 doesn't contain the term<b>%1</b>"
+argument_list|,
+name|fieldSpec
+argument_list|,
+name|term
 argument_list|)
 return|;
 default|default:
@@ -3220,12 +3265,12 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"The regular expression<b>%0</b> is invalid:"
+literal|"The regular expression<b>%0</b> is invalid%c"
 argument_list|,
 name|regExp
 argument_list|)
 operator|+
-literal|"<p><tt>%1</tt>"
+literal|"<p><tt>"
 operator|+
 name|e
 operator|.
@@ -3238,6 +3283,8 @@ literal|"\\n"
 argument_list|,
 literal|"<br>"
 argument_list|)
+operator|+
+literal|"</tt>"
 decl_stmt|;
 if|if
 condition|(
