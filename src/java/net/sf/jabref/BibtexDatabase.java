@@ -1324,7 +1324,20 @@ name|next
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|//Util.pr(": "+string.getName());
+name|Util
+operator|.
+name|pr
+argument_list|(
+name|label
+operator|+
+literal|" : "
+operator|+
+name|string
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|string
@@ -1332,9 +1345,15 @@ operator|.
 name|getName
 argument_list|()
 operator|.
+name|toLowerCase
+argument_list|()
+operator|.
 name|equals
 argument_list|(
 name|label
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -1464,13 +1483,14 @@ name|HashSet
 name|usedIds
 parameter_list|)
 block|{
+comment|//if (res.matches(".*#[-\\^\\:\\w]+#.*")) {
 if|if
 condition|(
 name|res
 operator|.
 name|matches
 argument_list|(
-literal|".*#[\\w]+#.*"
+literal|".*#[^#]+#.*"
 argument_list|)
 condition|)
 block|{
