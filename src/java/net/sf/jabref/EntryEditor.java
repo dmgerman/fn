@@ -7291,6 +7291,7 @@ literal|"duplicate BibTeX key."
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// JZFIXME: This warning should always be displayed!
 if|if
 condition|(
 name|prefs
@@ -7378,13 +7379,38 @@ name|entry
 argument_list|)
 condition|)
 block|{
+name|String
+index|[]
+name|options
+init|=
+operator|new
+name|String
+index|[]
+block|{
+literal|"Generate Unique Key"
+block|,
+literal|"Keep Duplicate Key"
+block|}
+decl_stmt|;
+name|int
+name|choice
+init|=
 name|JOptionPane
 operator|.
-name|showMessageDialog
+name|showOptionDialog
 argument_list|(
 name|frame
 argument_list|,
-literal|"Groups assignment for this entry cannot be restored after next load due to duplicate key"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Due to the duplicate BibTeX key, the groups assignment(s) for this entry\n"
+operator|+
+literal|"cannot be restored correctly when reopening this database. It is recommended\n"
+operator|+
+literal|"that you have JabRef generate a unique key now to prevent this problem."
+argument_list|)
 argument_list|,
 name|Globals
 operator|.
@@ -7395,7 +7421,33 @@ argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
+name|YES_NO_OPTION
+argument_list|,
+name|JOptionPane
+operator|.
 name|WARNING_MESSAGE
+argument_list|,
+literal|null
+argument_list|,
+name|options
+argument_list|,
+name|options
+index|[
+literal|0
+index|]
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|choice
+operator|==
+literal|0
+condition|)
+name|generateKeyAction
+operator|.
+name|actionPerformed
+argument_list|(
+literal|null
 argument_list|)
 expr_stmt|;
 block|}
