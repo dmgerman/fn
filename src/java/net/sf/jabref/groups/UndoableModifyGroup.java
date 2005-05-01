@@ -28,6 +28,18 @@ name|AbstractUndoableEdit
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
 begin_class
 DECL|class|UndoableModifyGroup
 specifier|public
@@ -125,7 +137,21 @@ name|getUndoPresentationName
 parameter_list|()
 block|{
 return|return
-literal|"Undo: modify group"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Undo"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"modify group"
+argument_list|)
 return|;
 block|}
 DECL|method|getRedoPresentationName ()
@@ -135,7 +161,21 @@ name|getRedoPresentationName
 parameter_list|()
 block|{
 return|return
-literal|"Redo: modify group"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Redo"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"modify group"
+argument_list|)
 return|;
 block|}
 DECL|method|undo ()

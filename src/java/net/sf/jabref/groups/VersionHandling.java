@@ -250,21 +250,25 @@ name|version
 argument_list|)
 return|;
 default|default:
-comment|// JZTODO translation
 throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|(
-literal|"Failed to read groups data (version: "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Failed to read groups data (unsupported version: %0)"
+argument_list|,
+literal|""
 operator|+
 name|version
-operator|+
-literal|" is not supported)"
+argument_list|)
 argument_list|)
 throw|;
 block|}
 block|}
-comment|/** Imports groups version 0. */
+comment|/** Imports groups version 0 and 1. */
 DECL|class|Version0_1
 specifier|private
 specifier|static

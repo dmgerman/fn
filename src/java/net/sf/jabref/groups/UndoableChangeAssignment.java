@@ -46,7 +46,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibtexEntry
+name|*
 import|;
 end_import
 
@@ -91,7 +91,7 @@ name|m_groupsRootHandle
 init|=
 literal|null
 decl_stmt|;
-comment|/** Constructor for use in a group itself, where the enclosing      * node is unknown. The node must be set using setEditedNode()      * before this instance may be used.       * @param previousAssignment      * @param currentAssignment      */
+comment|/**      * Constructor for use in a group itself, where the enclosing node is      * unknown. The node must be set using setEditedNode() before this instance      * may be used.      *       * @param previousAssignment      * @param currentAssignment      */
 DECL|method|UndoableChangeAssignment (Set previousAssignment, Set currentAssignment)
 specifier|public
 name|UndoableChangeAssignment
@@ -147,7 +147,7 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sets the node of the group that was edited. If this node was not      * specified at construction time, this method has to be called      * before this instance may be used.      *       * @param node      *            The node whose assignments were edited.      */
+comment|/**      * Sets the node of the group that was edited. If this node was not      * specified at construction time, this method has to be called before this      * instance may be used.      *       * @param node      *            The node whose assignments were edited.      */
 DECL|method|setEditedNode (GroupTreeNode node)
 specifier|public
 name|void
@@ -182,7 +182,21 @@ name|getUndoPresentationName
 parameter_list|()
 block|{
 return|return
-literal|"Undo: (de)assign entries"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Undo"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"change assignment of entries"
+argument_list|)
 return|;
 block|}
 DECL|method|getRedoPresentationName ()
@@ -192,7 +206,21 @@ name|getRedoPresentationName
 parameter_list|()
 block|{
 return|return
-literal|"Redo: (de)assign entries"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Redo"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"change assignment of entries"
+argument_list|)
 return|;
 block|}
 DECL|method|undo ()

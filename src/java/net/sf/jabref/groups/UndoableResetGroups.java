@@ -28,6 +28,18 @@ name|AbstractUndoableEdit
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
 begin_class
 DECL|class|UndoableResetGroups
 class|class
@@ -102,7 +114,21 @@ name|getUndoPresentationName
 parameter_list|()
 block|{
 return|return
-literal|"Undo: clear all groups"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Undo"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"clear all groups"
+argument_list|)
 return|;
 block|}
 DECL|method|getRedoPresentationName ()
@@ -112,7 +138,21 @@ name|getRedoPresentationName
 parameter_list|()
 block|{
 return|return
-literal|"Redo: clear all groups"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Redo"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"clear all groups"
+argument_list|)
 return|;
 block|}
 DECL|method|undo ()

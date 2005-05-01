@@ -4430,7 +4430,6 @@ operator|!=
 literal|1
 condition|)
 block|{
-comment|// JZTODO: translations
 name|frame
 operator|.
 name|output
@@ -4538,7 +4537,6 @@ operator|!=
 literal|1
 condition|)
 block|{
-comment|// JZTODO: translations
 name|frame
 operator|.
 name|output
@@ -4646,7 +4644,6 @@ operator|!=
 literal|1
 condition|)
 block|{
-comment|// JZTODO: translations
 name|frame
 operator|.
 name|output
@@ -4780,7 +4777,6 @@ operator|!=
 literal|1
 condition|)
 block|{
-comment|// JZTODO: translations
 name|frame
 operator|.
 name|output
@@ -5059,7 +5055,6 @@ name|groupName
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// JZTODO translation
 block|}
 DECL|field|moveSubmenu
 name|JMenu

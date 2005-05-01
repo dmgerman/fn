@@ -325,7 +325,6 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// for SearchGroup
-comment|// JZTODO translation
 DECL|field|m_sgSearchExpression
 specifier|private
 name|JTextField

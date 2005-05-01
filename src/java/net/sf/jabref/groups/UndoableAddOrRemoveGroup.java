@@ -28,6 +28,18 @@ name|AbstractUndoableEdit
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
 begin_class
 DECL|class|UndoableAddOrRemoveGroup
 class|class
@@ -194,7 +206,14 @@ name|getUndoPresentationName
 parameter_list|()
 block|{
 return|return
-literal|"Undo: "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Undo"
+argument_list|)
+operator|+
+literal|": "
 operator|+
 name|getName
 argument_list|()
@@ -215,23 +234,47 @@ case|case
 name|ADD_NODE
 case|:
 return|return
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"add group"
+argument_list|)
 return|;
 case|case
 name|REMOVE_NODE_KEEP_CHILDREN
 case|:
 return|return
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"remove group (keep subgroups)"
+argument_list|)
 return|;
 case|case
 name|REMOVE_NODE_AND_CHILDREN
 case|:
 return|return
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"remove group and subgroups"
+argument_list|)
 return|;
 block|}
 return|return
-literal|"? (unknown edit)"
+literal|"? ("
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"unknown edit"
+argument_list|)
+operator|+
+literal|")"
 return|;
 block|}
 DECL|method|getRedoPresentationName ()
@@ -241,7 +284,14 @@ name|getRedoPresentationName
 parameter_list|()
 block|{
 return|return
-literal|"Redo: "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Redo"
+argument_list|)
+operator|+
+literal|": "
 operator|+
 name|getName
 argument_list|()
