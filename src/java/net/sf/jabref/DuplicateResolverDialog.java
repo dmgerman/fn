@@ -848,6 +848,13 @@ argument_list|(
 name|both
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|type
+operator|==
+name|DUPLICATE_SEARCH
+condition|)
+block|{
 name|options
 operator|.
 name|add
@@ -867,6 +874,7 @@ argument_list|(
 name|cancel
 argument_list|)
 expr_stmt|;
+block|}
 name|first
 operator|.
 name|addActionListener

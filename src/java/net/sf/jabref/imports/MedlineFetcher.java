@@ -777,6 +777,9 @@ argument_list|)
 expr_stmt|;
 comment|/*NamedCompound ce = new NamedCompound("fetch Medline"); 		Iterator i = bibs.iterator(); 		while (i.hasNext()) { 		    try { 			BibtexEntry be = (BibtexEntry) i.next(); 			String id = Util.createId(be.getType(), panel.database()); 			be.setId(id); 			entries.add(be); 			//panel.database().insertEntry(be); 			//ce.addEdit(new UndoableInsertEntry(panel.database(), be, panel)); 		    } 		    catch (KeyCollisionException ex) { 		    } 		    }*/
 comment|//ce.end();
+name|int
+name|importedEntries
+init|=
 name|panel
 operator|.
 name|frame
@@ -790,7 +793,17 @@ literal|null
 argument_list|,
 literal|false
 argument_list|)
-expr_stmt|;
+decl_stmt|;
+if|if
+condition|(
+name|importedEntries
+operator|==
+literal|0
+condition|)
+block|{
+return|return;
+comment|// Nothing to refresh!
+block|}
 name|panel
 operator|.
 name|markBaseChanged

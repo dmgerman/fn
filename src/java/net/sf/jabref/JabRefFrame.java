@@ -8635,7 +8635,7 @@ block|}
 comment|/**      * Adds the entries to the database, possibly checking for duplicates first.      * @param filename If non-null, a message is printed to the status line describing      * how many entries were imported, and from which file. If null, the message will not      * be printed.      * @param intoNew Determines if the entries will be put in a new database or in the current      * one.      */
 DECL|method|addBibEntries (java.util.List bibentries, String filename, boolean intoNew)
 specifier|public
-name|void
+name|int
 name|addBibEntries
 parameter_list|(
 name|java
@@ -8694,8 +8694,15 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|0
+return|;
 block|}
+name|int
+name|addedEntries
+init|=
+literal|0
+decl_stmt|;
 comment|// Set owner field:
 if|if
 condition|(
@@ -8734,11 +8741,13 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Ne entries imported."
+literal|"No entries imported."
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|0
+return|;
 block|}
 if|if
 condition|(
@@ -8861,6 +8870,13 @@ name|prefs
 argument_list|)
 decl_stmt|;
 comment|/*             if (prefs.getBoolean("autoComplete")) {             db.setCompleters(autoCompleters);             }        */
+name|addedEntries
+operator|=
+name|database
+operator|.
+name|getEntryCount
+argument_list|()
+expr_stmt|;
 name|tabbedPane
 operator|.
 name|add
@@ -9126,10 +9142,12 @@ name|drd
 operator|.
 name|KEEP_LOWER
 condition|)
+block|{
 name|dupli
 operator|=
 literal|true
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -9233,6 +9251,9 @@ name|basePanel
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|addedEntries
+operator|++
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -9253,6 +9274,13 @@ expr_stmt|;
 block|}
 block|}
 block|}
+if|if
+condition|(
+name|addedEntries
+operator|>
+literal|0
+condition|)
+block|{
 name|ce
 operator|.
 name|end
@@ -9329,6 +9357,10 @@ literal|"."
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+return|return
+name|addedEntries
+return|;
 block|}
 DECL|method|setUpImportMenu (JMenu importMenu, boolean intoNew_)
 specifier|private

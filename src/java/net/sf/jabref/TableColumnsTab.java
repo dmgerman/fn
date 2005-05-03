@@ -1402,6 +1402,8 @@ name|i
 index|]
 operator|+
 name|i
+operator|-
+literal|1
 operator|<
 name|tableRows
 operator|.
@@ -1416,7 +1418,7 @@ name|Math
 operator|.
 name|max
 argument_list|(
-literal|1
+literal|0
 argument_list|,
 name|rows
 index|[
@@ -1424,6 +1426,8 @@ name|i
 index|]
 operator|+
 name|i
+operator|-
+literal|1
 argument_list|)
 argument_list|,
 operator|new

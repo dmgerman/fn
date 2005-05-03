@@ -1324,20 +1324,7 @@ name|next
 argument_list|()
 argument_list|)
 decl_stmt|;
-name|Util
-operator|.
-name|pr
-argument_list|(
-name|label
-operator|+
-literal|" : "
-operator|+
-name|string
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//Util.pr(label+" : "+string.getName());
 if|if
 condition|(
 name|string

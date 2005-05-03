@@ -4968,8 +4968,6 @@ operator|new
 name|JPopupMenu
 argument_list|()
 decl_stmt|;
-comment|//typeMenu.add(new JLabel(Globals.lang("Set entry
-comment|// type")));
 comment|//typeMenu.addSeparator();
 for|for
 control|(

@@ -3544,24 +3544,7 @@ comment|//  toSend.append("}\" in the text of the front document'");
 comment|//else
 comment|//  toSend.append("}\"'");
 comment|//tmp = !tmp;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Running command: "
-operator|+
-name|winEdt
-operator|+
-literal|" "
-operator|+
-name|toSend
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//System.out.println("Running command: "+winEdt + " " + toSend.toString());
 name|Runtime
 operator|.
 name|getRuntime
@@ -10373,7 +10356,13 @@ name|getId
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|//System.out.println("eee:"+row);
+if|if
+condition|(
+name|row
+operator|>=
+literal|0
+condition|)
+block|{
 name|entryTable
 operator|.
 name|setRowSelectionInterval
@@ -10409,6 +10398,7 @@ operator|.
 name|requestFocus
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
