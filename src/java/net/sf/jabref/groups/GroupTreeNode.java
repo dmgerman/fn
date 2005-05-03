@@ -1208,13 +1208,14 @@ name|cursor
 return|;
 block|}
 comment|/** Adds the selected entries to this node's group. */
-DECL|method|addSelectionToGroup (BasePanel basePanel)
+DECL|method|addToGroup (BibtexEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
-name|addSelectionToGroup
+name|addToGroup
 parameter_list|(
-name|BasePanel
-name|basePanel
+name|BibtexEntry
+index|[]
+name|entries
 parameter_list|)
 block|{
 if|if
@@ -1234,12 +1235,9 @@ init|=
 name|getGroup
 argument_list|()
 operator|.
-name|addSelection
+name|add
 argument_list|(
-name|basePanel
-operator|.
-name|getSelectedEntries
-argument_list|()
+name|entries
 argument_list|)
 decl_stmt|;
 if|if
@@ -1265,13 +1263,14 @@ name|undo
 return|;
 block|}
 comment|/** Removes the selected entries from this node's group. */
-DECL|method|removeSelectionFromGroup (BasePanel basePanel)
+DECL|method|removeFromGroup (BibtexEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
-name|removeSelectionFromGroup
+name|removeFromGroup
 parameter_list|(
-name|BasePanel
-name|basePanel
+name|BibtexEntry
+index|[]
+name|entries
 parameter_list|)
 block|{
 if|if
@@ -1291,12 +1290,9 @@ init|=
 name|getGroup
 argument_list|()
 operator|.
-name|removeSelection
+name|remove
 argument_list|(
-name|basePanel
-operator|.
-name|getSelectedEntries
-argument_list|()
+name|entries
 argument_list|)
 decl_stmt|;
 if|if

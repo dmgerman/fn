@@ -2505,7 +2505,7 @@ operator|.
 name|getGroup
 argument_list|()
 operator|.
-name|addSelection
+name|add
 argument_list|(
 operator|new
 name|BibtexEntry

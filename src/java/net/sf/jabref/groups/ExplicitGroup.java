@@ -318,10 +318,10 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|addSelection (BibtexEntry[] entries)
+DECL|method|add (BibtexEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
-name|addSelection
+name|add
 parameter_list|(
 name|BibtexEntry
 index|[]
@@ -385,25 +385,6 @@ name|m_entries
 argument_list|)
 return|;
 block|}
-DECL|method|addSelection (BasePanel basePanel)
-specifier|public
-name|AbstractUndoableEdit
-name|addSelection
-parameter_list|(
-name|BasePanel
-name|basePanel
-parameter_list|)
-block|{
-return|return
-name|addSelection
-argument_list|(
-name|basePanel
-operator|.
-name|getSelectedEntries
-argument_list|()
-argument_list|)
-return|;
-block|}
 DECL|method|addEntry (BibtexEntry entry)
 specifier|public
 name|boolean
@@ -422,10 +403,10 @@ name|entry
 argument_list|)
 return|;
 block|}
-DECL|method|removeSelection (BibtexEntry[] entries)
+DECL|method|remove (BibtexEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
-name|removeSelection
+name|remove
 parameter_list|(
 name|BibtexEntry
 index|[]
@@ -486,25 +467,6 @@ argument_list|(
 name|entriesBeforeEdit
 argument_list|,
 name|m_entries
-argument_list|)
-return|;
-block|}
-DECL|method|removeSelection (BasePanel basePanel)
-specifier|public
-name|AbstractUndoableEdit
-name|removeSelection
-parameter_list|(
-name|BasePanel
-name|basePanel
-parameter_list|)
-block|{
-return|return
-name|removeSelection
-argument_list|(
-name|basePanel
-operator|.
-name|getSelectedEntries
-argument_list|()
 argument_list|)
 return|;
 block|}

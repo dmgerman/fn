@@ -267,44 +267,24 @@ name|boolean
 name|supportsRemove
 parameter_list|()
 function_decl|;
-comment|/**      * Adds the selected entries to this group. This method is to be called      * by GroupTreeNode. The BasePanel instance is required for user feedback.      *       * @return If this group or one or more entries was/were modified as a      *         result of this operation, an object is returned that allows to      *         undo this change. null is returned otherwise.      */
-DECL|method|addSelection (BasePanel basePanel)
+comment|/**      * Adds the specified entries to this group.      *        * @return If this group or one or more entries was/were modified as a      *         result of this operation, an object is returned that allows to      *         undo this change. null is returned otherwise.      */
+DECL|method|add (BibtexEntry[] entries)
 specifier|public
 specifier|abstract
 name|AbstractUndoableEdit
-name|addSelection
-parameter_list|(
-name|BasePanel
-name|basePanel
-parameter_list|)
-function_decl|;
-comment|/**      * Adds the selected entries to this group.      *        * @return If this group or one or more entries was/were modified as a      *         result of this operation, an object is returned that allows to      *         undo this change. null is returned otherwise.      */
-DECL|method|addSelection (BibtexEntry[] entries)
-specifier|public
-specifier|abstract
-name|AbstractUndoableEdit
-name|addSelection
+name|add
 parameter_list|(
 name|BibtexEntry
 index|[]
 name|entries
 parameter_list|)
 function_decl|;
-comment|/**      * Removes the selected entries from this group. This method is to be called      * by GroupTreeNode. The BasePanel instance is required for user feedback.      *       * @return If this group or one or more entries was/were modified as a      *         result of this operation, an object is returned that allows to      *         undo this change. null is returned otherwise.      */
-DECL|method|removeSelection (BasePanel basePanel)
+comment|/**      * Removes the specified entries from this group.      *       * @return If this group or one or more entries was/were modified as a      *         result of this operation, an object is returned that allows to      *         undo this change. null is returned otherwise.      */
+DECL|method|remove (BibtexEntry[] entries)
+specifier|public
 specifier|abstract
 name|AbstractUndoableEdit
-name|removeSelection
-parameter_list|(
-name|BasePanel
-name|basePanel
-parameter_list|)
-function_decl|;
-comment|/**      * Removes the selected entries from this group.      *       * @return If this group or one or more entries was/were modified as a      *         result of this operation, an object is returned that allows to      *         undo this change. null is returned otherwise.      */
-DECL|method|removeSelection (BibtexEntry[] entries)
-specifier|abstract
-name|AbstractUndoableEdit
-name|removeSelection
+name|remove
 parameter_list|(
 name|BibtexEntry
 index|[]
