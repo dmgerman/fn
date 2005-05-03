@@ -4995,8 +4995,8 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Warns the user of undesired side effects of an explicit      * assignment/removal of entries to/from this group. Currently there are      * four types of groups: AllEntriesGroup, SearchGroup - do not support      * explicit assignment. ExplicitGroup - never modifies entries. KeywordGroup -      * only this modifies entries upon assignment/removal. Modifications are      * acceptable unless they affect a standard field (such as "author") besides      * the "keywords" field.      *       * @return true if the assignment has no undesired side effects, or the user      *         chose to perform it anyway. false otherwise (this indicates that      *         the user has aborted the assignment).      */
-DECL|method|warnAssignmentSideEffects (AbstractGroup group, BasePanel basePanel)
+comment|/**      * Warns the user of undesired side effects of an explicit      * assignment/removal of entries to/from this group. Currently there are      * four types of groups: AllEntriesGroup, SearchGroup - do not support      * explicit assignment. ExplicitGroup - never modifies entries. KeywordGroup -      * only this modifies entries upon assignment/removal. Modifications are      * acceptable unless they affect a standard field (such as "author") besides      * the "keywords" field.      *       * @param parent       *         The Component used as a parent when displaying a       *         confirmation dialog.      *       * @return true if the assignment has no undesired side effects, or the user      *         chose to perform it anyway. false otherwise (this indicates that      *         the user has aborted the assignment).      */
+DECL|method|warnAssignmentSideEffects (AbstractGroup group, Component parent)
 specifier|public
 specifier|static
 name|boolean
@@ -5005,8 +5005,8 @@ parameter_list|(
 name|AbstractGroup
 name|group
 parameter_list|,
-name|BasePanel
-name|basePanel
+name|Component
+name|parent
 parameter_list|)
 block|{
 if|if
@@ -5093,6 +5093,7 @@ name|String
 name|message
 init|=
 name|Globals
+comment|// JZTODO lyrics...
 operator|.
 name|lang
 argument_list|(
@@ -5116,7 +5117,7 @@ name|JOptionPane
 operator|.
 name|showConfirmDialog
 argument_list|(
-name|basePanel
+name|parent
 argument_list|,
 name|message
 argument_list|,
