@@ -9353,32 +9353,12 @@ specifier|final
 name|int
 name|prevSize
 init|=
-name|Math
-operator|.
-name|min
-argument_list|(
-name|splitPane
-operator|.
-name|getHeight
-argument_list|()
-operator|/
-literal|2
-argument_list|,
-name|previewPanel
-index|[
-name|activePreview
-index|]
-operator|.
-name|getPreferredSize
-argument_list|()
-operator|.
-name|height
-operator|+
 name|GUIGlobals
 operator|.
-name|PREVIEW_PANEL_PADDING
-argument_list|)
+name|PREVIEW_PANEL_HEIGHT
 decl_stmt|;
+comment|//Math.min(splitPane.getHeight()/2, previewPanel[activePreview].getPreferredSize().height
+comment|//                      + GUIGlobals.PREVIEW_PANEL_PADDING);
 comment|//            Util.pr(""+prevSize+" "+(splitPane.getHeight()/2)+" "+previewPanel[activePreview].getPreferredSize().height);
 name|splitPane
 operator|.
@@ -9392,7 +9372,6 @@ operator|-
 name|prevSize
 argument_list|)
 expr_stmt|;
-comment|/*SwingUtilities.invokeLater(new Runnable() {               public void run() {                 splitPane.setDividerLocation(splitPane.getHeight() - prevSize);               }             });*/
 block|}
 else|else
 name|splitPane
@@ -9687,14 +9666,20 @@ expr_stmt|;
 return|return;
 comment|// Do nothing if previews are disabled.
 block|}
-if|if
-condition|(
+comment|//      if (previewPanel[activePreview] == null) {
+name|boolean
+name|newPreviewPanel
+init|=
 name|previewPanel
 index|[
 name|activePreview
 index|]
 operator|==
 literal|null
+decl_stmt|;
+if|if
+condition|(
+name|newPreviewPanel
 condition|)
 block|{
 name|previewPanel
@@ -9736,6 +9721,38 @@ comment|//Util.pr(""+prevSize+" "+(splitPane.getHeight()/2)+" "+previewPanel[act
 comment|//splitPane.setDividerLocation(splitPane.getHeight() - prevSize);
 comment|//splitPane.resetToPreferredSizes();
 comment|//previewPanel[activePreview].getPane().invalidate();
+name|boolean
+name|resizePreview
+init|=
+literal|false
+decl_stmt|;
+if|if
+condition|(
+name|splitPane
+operator|.
+name|getBottomComponent
+argument_list|()
+operator|==
+literal|null
+operator|||
+name|splitPane
+operator|.
+name|getBottomComponent
+argument_list|()
+operator|!=
+name|previewPanel
+index|[
+name|activePreview
+index|]
+operator|.
+name|getPane
+argument_list|()
+condition|)
+block|{
+name|resizePreview
+operator|=
+literal|true
+expr_stmt|;
 name|splitPane
 operator|.
 name|setBottomComponent
@@ -9749,20 +9766,14 @@ name|getPane
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|int
-name|prevSize
-init|=
-name|Math
-operator|.
-name|min
-argument_list|(
-name|splitPane
-operator|.
-name|getHeight
-argument_list|()
-operator|/
-literal|2
-argument_list|,
+block|}
+if|if
+condition|(
+operator|!
+name|resizePreview
+condition|)
+name|resizePreview
+operator|=
 name|previewPanel
 index|[
 name|activePreview
@@ -9775,13 +9786,55 @@ name|getPreferredSize
 argument_list|()
 operator|.
 name|height
-operator|+
+operator|>=
+name|splitPane
+operator|.
+name|getHeight
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|resizePreview
+condition|)
+block|{
+if|if
+condition|(
+name|splitPane
+operator|.
+name|getDividerLocation
+argument_list|()
+operator|<=
+literal|0
+condition|)
+block|{
+name|resizePreview
+operator|=
+literal|true
+expr_stmt|;
+block|}
+block|}
+if|if
+condition|(
+name|newPreviewPanel
+operator|||
+name|resizePreview
+condition|)
+block|{
+name|int
+name|prevSize
+decl_stmt|;
+comment|//if(resizePreview) //prevSize = splitPane.getHeight()/2;
+comment|//else {
+name|prevSize
+operator|=
 name|GUIGlobals
 operator|.
-name|PREVIEW_PANEL_PADDING
-argument_list|)
-decl_stmt|;
-comment|//  int prevSize = 130;
+name|PREVIEW_PANEL_HEIGHT
+expr_stmt|;
+comment|//Math.max(150, previewPanel[activePreview].getPane().getPreferredSize().height)
+comment|//GUIGlobals.PREVIEW_PANEL_PADDING;
+comment|//}
 name|splitPane
 operator|.
 name|setDividerLocation
@@ -9794,9 +9847,9 @@ operator|-
 name|prevSize
 argument_list|)
 expr_stmt|;
-comment|/*      SwingUtilities.invokeLater(new Runnable() {         public void run() {          }       });*/
-comment|//previewPanel[activePreview].repaint();
-comment|//throw new NullPointerException("..");
+block|}
+comment|/*int prevSize = Math.min(splitPane.getHeight()/2, previewPanel[activePreview].getPane().getPreferredSize().height                             + GUIGlobals.PREVIEW_PANEL_PADDING);*/
+comment|//splitPane.setDividerLocation(splitPane.getHeight() - prevSize);
 block|}
 comment|/**      * Stores the source view in the entry editor, if one is open, has the source view      * selected and the source has been edited.      * @return boolean false if there is a validation error in the source panel, true otherwise.      */
 DECL|method|entryEditorAllowsChange ()

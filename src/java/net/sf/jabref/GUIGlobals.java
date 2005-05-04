@@ -273,6 +273,11 @@ init|=
 literal|15
 decl_stmt|,
 comment|// Extra room given to the preview editor, in addition to its own
+DECL|field|PREVIEW_PANEL_HEIGHT
+name|PREVIEW_PANEL_HEIGHT
+init|=
+literal|200
+decl_stmt|,
 DECL|field|MAX_CONTENT_SELECTOR_WIDTH
 name|MAX_CONTENT_SELECTOR_WIDTH
 init|=
