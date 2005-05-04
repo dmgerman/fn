@@ -946,6 +946,11 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
+name|boolean
+name|justParsedTag
+init|=
+literal|false
+decl_stmt|;
 while|while
 condition|(
 operator|!
@@ -1007,9 +1012,13 @@ literal|'\\'
 operator|)
 operator|&&
 operator|(
+name|justParsedTag
+operator|||
+operator|(
 name|previous
 operator|!=
 literal|'\\'
+operator|)
 operator|)
 condition|)
 block|{
@@ -1036,7 +1045,6 @@ name|IS_LAYOUT_TEXT
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("aha: " + buffer.toString());
 name|buffer
 operator|=
 literal|null
@@ -1045,9 +1053,19 @@ block|}
 name|parseField
 argument_list|()
 expr_stmt|;
+comment|// To make sure the next character, if it is a backslash, doesn't get ignored,
+comment|// since "previous" now holds a backslash:
+name|justParsedTag
+operator|=
+literal|true
+expr_stmt|;
 block|}
 else|else
 block|{
+name|justParsedTag
+operator|=
+literal|false
+expr_stmt|;
 if|if
 condition|(
 name|buffer

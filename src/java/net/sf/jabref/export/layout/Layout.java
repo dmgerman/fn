@@ -274,12 +274,18 @@ else|else
 block|{
 name|System
 operator|.
-name|err
+name|out
 operator|.
 name|println
 argument_list|(
 literal|"Nested field entries are not implemented !!!"
 argument_list|)
+expr_stmt|;
+comment|//System.out.println("..."+blockStart+"..."+si.s+"...");
+name|Thread
+operator|.
+name|dumpStack
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -369,12 +375,17 @@ else|else
 block|{
 name|System
 operator|.
-name|err
+name|out
 operator|.
 name|println
 argument_list|(
 literal|"Nested field entries are not implemented !!!"
 argument_list|)
+expr_stmt|;
+name|Thread
+operator|.
+name|dumpStack
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -535,65 +546,21 @@ argument_list|,
 name|database
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("'" + fieldText + "'");
+comment|// 2005.05.05 M. Alver
+comment|// The following change means we treat null fields as "". This is to fix the
+comment|// problem of whitespace disappearing after missing fields. Hoping there are
+comment|// no side effects.
 if|if
 condition|(
 name|fieldText
 operator|==
 literal|null
 condition|)
-block|{
-if|if
-condition|(
-operator|(
-name|i
-operator|+
-literal|1
-operator|)
-operator|<
-name|layoutEntries
-operator|.
-name|length
-condition|)
-block|{
-if|if
-condition|(
-name|layoutEntries
-index|[
-name|i
-operator|+
-literal|1
-index|]
-operator|.
-name|doLayout
-argument_list|(
-name|bibtex
-argument_list|,
-name|database
-argument_list|)
-operator|.
-name|trim
-argument_list|()
-operator|.
-name|length
-argument_list|()
-operator|==
-literal|0
-condition|)
-block|{
-comment|//sb.append("MISSING");
-name|i
-operator|++
-expr_stmt|;
-name|previousSkipped
+name|fieldText
 operator|=
-literal|true
+literal|""
 expr_stmt|;
-continue|continue;
-block|}
-block|}
-block|}
-else|else
+comment|/*if (fieldText == null)             {                 if ((i + 1)< layoutEntries.length)                 {                     if (layoutEntries[i + 1].doLayout(bibtex, database).trim().length() == 0)                     {                         //sb.append("MISSING");                         i++;                         previousSkipped = true;                          continue;                     }                 }             }             else*/
 block|{
 comment|// if previous was skipped --> remove leading line breaks
 if|if

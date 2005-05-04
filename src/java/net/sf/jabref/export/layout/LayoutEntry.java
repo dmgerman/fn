@@ -629,7 +629,7 @@ else|else
 block|{
 name|System
 operator|.
-name|err
+name|out
 operator|.
 name|println
 argument_list|(
@@ -1000,7 +1000,7 @@ operator|==
 literal|0
 condition|)
 block|{
-comment|//sb.append("MISSING");
+comment|//System.out.println("MISSING: "+bibtex);
 name|i
 operator|++
 expr_stmt|;
