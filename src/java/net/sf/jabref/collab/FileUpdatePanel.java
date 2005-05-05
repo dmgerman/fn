@@ -78,6 +78,16 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
+
 begin_class
 DECL|class|FileUpdatePanel
 specifier|public
@@ -115,7 +125,11 @@ DECL|field|manager
 name|SidePaneManager
 name|manager
 decl_stmt|;
-DECL|method|FileUpdatePanel (JabRefFrame frame, BasePanel panel, SidePaneManager manager, JabRefPreferences prefs)
+DECL|field|message
+name|JLabel
+name|message
+decl_stmt|;
+DECL|method|FileUpdatePanel (JabRefFrame frame, BasePanel panel, SidePaneManager manager, File file)
 specifier|public
 name|FileUpdatePanel
 parameter_list|(
@@ -128,8 +142,8 @@ parameter_list|,
 name|SidePaneManager
 name|manager
 parameter_list|,
-name|JabRefPreferences
-name|prefs
+name|File
+name|file
 parameter_list|)
 block|{
 name|super
@@ -182,24 +196,37 @@ name|BorderLayout
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|JLabel
-name|lab
-init|=
+name|message
+operator|=
 operator|new
 name|JLabel
 argument_list|(
-literal|"<html><center>Your file has<BR>been modified<BR>by another process!</center></html>"
+literal|"<html><center>"
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"The file<BR>'%0'<BR>has been modified<BR>externally!"
+argument_list|,
+name|file
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+operator|+
+literal|"</center></html>"
 argument_list|,
 name|JLabel
 operator|.
 name|CENTER
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|main
 operator|.
 name|add
 argument_list|(
-name|lab
+name|message
 argument_list|,
 name|BorderLayout
 operator|.

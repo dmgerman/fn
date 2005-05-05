@@ -12172,9 +12172,7 @@ name|this
 argument_list|,
 name|sidePaneManager
 argument_list|,
-name|Globals
-operator|.
-name|prefs
+name|file
 argument_list|)
 decl_stmt|;
 name|sidePaneManager

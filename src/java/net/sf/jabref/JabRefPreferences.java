@@ -1509,7 +1509,7 @@ literal|"\\begin{institution}<em>\\format[HTMLChars]{\\institution},</em>\\end{i
 operator|+
 literal|"\\begin{publisher}<em>\\format[HTMLChars]{\\publisher},</em>\\end{publisher}__NEWLINE__"
 operator|+
-literal|"\\begin{year}<b>\\year</b>\\end{year} \\begin{volume}<i>, \\volume</i>\\end{volume} "
+literal|"\\begin{year}<b>\\year</b>\\end{year}\\begin{volume}<i>, \\volume</i>\\end{volume}"
 operator|+
 literal|"\\begin{pages}, \\format[FormatPagesForHTML]{\\pages} \\end{pages}"
 operator|+
@@ -1544,7 +1544,7 @@ literal|"\\begin{institution}<em>\\format[HTMLChars]{\\institution},</em>\\end{i
 operator|+
 literal|"\\begin{publisher}<em>\\format[HTMLChars]{\\publisher},</em>\\end{publisher}__NEWLINE__"
 operator|+
-literal|"\\begin{year}<b>\\year</b>\\end{year} \\begin{volume}<i>, \\volume</i>\\end{volume} "
+literal|"\\begin{year}<b>\\year</b>\\end{year}\\begin{volume}<i>, \\volume</i>\\end{volume}"
 operator|+
 literal|"\\begin{pages}, \\format[FormatPagesForHTML]{\\pages} \\end{pages}__NEWLINE__"
 operator|+
