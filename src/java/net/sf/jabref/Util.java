@@ -2116,6 +2116,37 @@ name|dir
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|fieldName
+operator|.
+name|equals
+argument_list|(
+literal|"ps"
+argument_list|)
+condition|)
+block|{
+name|String
+name|dir
+init|=
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"psDirectory"
+argument_list|)
+decl_stmt|;
+name|file
+operator|=
+name|expandFilename
+argument_list|(
+name|link
+argument_list|,
+name|dir
+argument_list|)
+expr_stmt|;
+block|}
 else|else
 name|file
 operator|=
@@ -2162,6 +2193,7 @@ throw|throw
 operator|new
 name|IOException
 argument_list|(
+comment|//Globals.lang("File not found") + ": '" + link + "'."); }
 name|Globals
 operator|.
 name|lang
@@ -2169,7 +2201,11 @@ argument_list|(
 literal|"File not found"
 argument_list|)
 operator|+
-literal|": '"
+literal|" ("
+operator|+
+name|fieldName
+operator|+
+literal|"): '"
 operator|+
 name|link
 operator|+
@@ -3009,7 +3045,7 @@ comment|//ignore
 block|}
 block|}
 comment|/**      * Searches the given directory and subdirectories for a pdf file with name      * as given + ".pdf"      */
-DECL|method|findPdf (String key, String pdfDir)
+DECL|method|findPdf (String key, String extension, String directory)
 specifier|public
 specifier|static
 name|String
@@ -3019,7 +3055,10 @@ name|String
 name|key
 parameter_list|,
 name|String
-name|pdfDir
+name|extension
+parameter_list|,
+name|String
+name|directory
 parameter_list|)
 block|{
 name|String
@@ -3027,12 +3066,14 @@ name|filename
 init|=
 name|key
 operator|+
-literal|".pdf"
+literal|"."
+operator|+
+name|extension
 decl_stmt|;
 if|if
 condition|(
 operator|!
-name|pdfDir
+name|directory
 operator|.
 name|endsWith
 argument_list|(
@@ -3044,7 +3085,7 @@ literal|"file.separator"
 argument_list|)
 argument_list|)
 condition|)
-name|pdfDir
+name|directory
 operator|+=
 name|System
 operator|.
@@ -3060,7 +3101,7 @@ name|findInDir
 argument_list|(
 name|filename
 argument_list|,
-name|pdfDir
+name|directory
 argument_list|)
 decl_stmt|;
 if|if
@@ -3074,7 +3115,7 @@ name|found
 operator|.
 name|substring
 argument_list|(
-name|pdfDir
+name|directory
 operator|.
 name|length
 argument_list|()

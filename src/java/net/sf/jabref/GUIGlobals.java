@@ -2389,7 +2389,7 @@ name|put
 argument_list|(
 literal|"ps"
 argument_list|,
-literal|"browse"
+literal|"browsePs"
 argument_list|)
 expr_stmt|;
 name|FIELD_EXTRAS
