@@ -336,7 +336,8 @@ name|old
 init|=
 name|getPage
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+name|URL
 name|translatedFile
 init|=
 name|JabRef
