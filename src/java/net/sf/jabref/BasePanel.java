@@ -9049,6 +9049,9 @@ condition|(
 name|keyCode
 condition|)
 block|{
+comment|// The up/down/left/rightkeystrokes are displayed in the
+comment|// GroupSelector's popup menu, so if they are to be changed,
+comment|// edit GroupSelector.java accordingly!
 case|case
 name|KeyEvent
 operator|.
