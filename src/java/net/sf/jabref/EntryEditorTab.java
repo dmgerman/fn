@@ -194,7 +194,7 @@ name|HORIZONTAL_SCROLLBAR_NEVER
 argument_list|)
 decl_stmt|;
 comment|//    private BibtexEntry entry;
-DECL|method|EntryEditorTab (List fields, EntryEditor parent, boolean addKeyField)
+DECL|method|EntryEditorTab (List fields, EntryEditor parent, boolean addKeyField, String name)
 specifier|public
 name|EntryEditorTab
 parameter_list|(
@@ -206,6 +206,9 @@ name|parent
 parameter_list|,
 name|boolean
 name|addKeyField
+parameter_list|,
+name|String
+name|name
 parameter_list|)
 block|{
 if|if
@@ -248,6 +251,8 @@ expr_stmt|;
 name|setupPanel
 argument_list|(
 name|addKeyField
+argument_list|,
+name|name
 argument_list|)
 expr_stmt|;
 comment|// The following line makes sure focus cycles inside tab instead of being lost
@@ -260,7 +265,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setupPanel (boolean addKeyField)
+DECL|method|setupPanel (boolean addKeyField, String title)
 specifier|private
 specifier|final
 name|void
@@ -268,6 +273,9 @@ name|setupPanel
 parameter_list|(
 name|boolean
 name|addKeyField
+parameter_list|,
+name|String
+name|title
 parameter_list|)
 block|{
 name|GridBagLayout
@@ -609,6 +617,13 @@ name|ex
 argument_list|)
 expr_stmt|;
 block|}
+name|panel
+operator|.
+name|setName
+argument_list|(
+name|title
+argument_list|)
+expr_stmt|;
 block|}
 comment|// Add the edit field for Bibtex-key.
 if|if
