@@ -302,13 +302,6 @@ operator|new
 name|ButtonGroup
 argument_list|()
 decl_stmt|;
-DECL|field|ths
-specifier|private
-name|SearchManager2
-name|ths
-init|=
-name|this
-decl_stmt|;
 DECL|field|incSearch
 specifier|private
 name|boolean
@@ -1414,7 +1407,9 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|ths
+name|SearchManager2
+operator|.
+name|this
 operator|.
 name|actionPerformed
 argument_list|(
@@ -2122,6 +2117,9 @@ operator|==
 name|increment
 condition|)
 block|{
+name|updateSearchButtonText
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|increment
@@ -2133,7 +2131,7 @@ name|searchField
 operator|.
 name|addKeyListener
 argument_list|(
-name|ths
+name|this
 argument_list|)
 expr_stmt|;
 else|else
@@ -2141,8 +2139,23 @@ name|searchField
 operator|.
 name|removeKeyListener
 argument_list|(
-name|ths
+name|this
 argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|e
+operator|.
+name|getSource
+argument_list|()
+operator|==
+name|highlight
+condition|)
+block|{
+name|updateSearchButtonText
+argument_list|()
 expr_stmt|;
 block|}
 elseif|else
@@ -2156,6 +2169,9 @@ operator|==
 name|reorder
 condition|)
 block|{
+name|updateSearchButtonText
+argument_list|()
+expr_stmt|;
 comment|// If this search type is disabled, remove reordering from
 comment|// all databases.
 if|if
@@ -2535,6 +2551,12 @@ name|search
 operator|.
 name|setText
 argument_list|(
+operator|!
+name|increment
+operator|.
+name|isSelected
+argument_list|()
+operator|&&
 name|SearchExpressionParser
 operator|.
 name|checkSyntax
