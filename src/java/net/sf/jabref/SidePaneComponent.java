@@ -273,6 +273,16 @@ operator|=
 name|panel
 expr_stmt|;
 block|}
+DECL|method|getActiveBasePanel ()
+specifier|public
+name|BasePanel
+name|getActiveBasePanel
+parameter_list|()
+block|{
+return|return
+name|panel
+return|;
+block|}
 comment|/**      * Override this method if the component needs to make any changes      * before it can close.      */
 DECL|method|componentClosing ()
 specifier|public
