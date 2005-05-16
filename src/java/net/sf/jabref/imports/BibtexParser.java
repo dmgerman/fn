@@ -565,7 +565,7 @@ argument_list|()
 operator|.
 name|replaceAll
 argument_list|(
-literal|"\\n"
+literal|"[\\x0d\\x0a]"
 argument_list|,
 literal|""
 argument_list|)
