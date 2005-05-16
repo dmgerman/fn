@@ -378,6 +378,9 @@ block|}
 case|case
 literal|1
 case|:
+case|case
+literal|2
+case|:
 block|{
 name|String
 name|name

@@ -385,6 +385,9 @@ case|:
 case|case
 literal|1
 case|:
+case|case
+literal|2
+case|:
 name|String
 name|name
 init|=
