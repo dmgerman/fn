@@ -5881,6 +5881,7 @@ name|errorMessage
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Highlight all groups that contain any/all of the specified entries.       */
 DECL|method|showMatchingGroups (BibtexEntry[] entries, boolean requireAll)
 specifier|public
 name|void
@@ -5976,23 +5977,7 @@ name|i
 index|]
 argument_list|)
 condition|)
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"NOT adding node: "
-operator|+
-name|group
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-expr_stmt|;
 break|break;
-block|}
 block|}
 else|else
 block|{
@@ -6008,21 +5993,6 @@ name|i
 index|]
 argument_list|)
 condition|)
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"adding node: "
-operator|+
-name|group
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|vec
 operator|.
 name|add
@@ -6030,7 +6000,6 @@ argument_list|(
 name|node
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
