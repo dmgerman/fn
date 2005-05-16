@@ -151,11 +151,20 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|group
+operator|==
+literal|null
+operator|||
+operator|!
+operator|(
 name|c
 operator|instanceof
 name|JLabel
+operator|)
 condition|)
-block|{
+return|return
+name|c
+return|;
 comment|// sanity check
 name|JLabel
 name|label
@@ -240,7 +249,6 @@ literal|null
 argument_list|)
 expr_stmt|;
 comment|// save some space
-block|}
 return|return
 name|c
 return|;
