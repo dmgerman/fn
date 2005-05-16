@@ -798,7 +798,7 @@ name|StringTokenizer
 argument_list|(
 name|groupsRoot
 operator|.
-name|toString
+name|getTreeAsString
 argument_list|()
 argument_list|,
 literal|"\n"

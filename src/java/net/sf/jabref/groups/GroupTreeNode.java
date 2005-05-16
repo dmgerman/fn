@@ -250,10 +250,10 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Returns a textual representation of this node and its children. This      * representation contains both the tree structure and the textual      * representations of the group associated with each node. It thus allows a      * complete reconstruction of this object and its children.      */
-DECL|method|toString ()
+DECL|method|getTreeAsString ()
 specifier|public
 name|String
-name|toString
+name|getTreeAsString
 parameter_list|()
 block|{
 name|StringBuffer
