@@ -745,7 +745,7 @@ argument_list|()
 decl_stmt|;
 name|cellRenderer
 operator|.
-name|setTargetCell
+name|setHighlight1Cell
 argument_list|(
 name|target
 argument_list|)
@@ -1091,7 +1091,7 @@ parameter_list|)
 block|{
 name|cellRenderer
 operator|.
-name|setTargetCell
+name|setHighlight1Cell
 argument_list|(
 literal|null
 argument_list|)
@@ -1539,7 +1539,7 @@ parameter_list|)
 block|{
 name|cellRenderer
 operator|.
-name|setTargetCell
+name|setHighlight1Cell
 argument_list|(
 literal|null
 argument_list|)
