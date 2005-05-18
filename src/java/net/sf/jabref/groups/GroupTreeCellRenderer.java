@@ -253,9 +253,8 @@ return|return
 name|c
 return|;
 block|}
-comment|/** For use when dragging: The sepcified cell is always rendered as      * selected.       * @param cell The cell over which the user is currently dragging.      */
+comment|/**       * For use when dragging: The sepcified cell is always rendered as      * selected.       * @param cell The cell over which the user is currently dragging.      */
 DECL|method|setHighlight1Cell (Object cell)
-specifier|public
 name|void
 name|setHighlight1Cell
 parameter_list|(
@@ -270,8 +269,8 @@ operator|=
 name|cell
 expr_stmt|;
 block|}
+comment|/**      * Highlights the specified cells (in red), or disables highlight if cells ==      * null.      */
 DECL|method|setHighlight2Cells (Object[] cells)
-specifier|public
 name|void
 name|setHighlight2Cells
 parameter_list|(

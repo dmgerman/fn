@@ -743,15 +743,10 @@ operator|.
 name|getLastPathComponent
 argument_list|()
 decl_stmt|;
-name|cellRenderer
-operator|.
 name|setHighlight1Cell
 argument_list|(
 name|target
 argument_list|)
-expr_stmt|;
-name|repaint
-argument_list|()
 expr_stmt|;
 comment|// accept or reject
 if|if
@@ -1089,15 +1084,10 @@ name|DropTargetDropEvent
 name|dtde
 parameter_list|)
 block|{
-name|cellRenderer
-operator|.
 name|setHighlight1Cell
 argument_list|(
 literal|null
 argument_list|)
-expr_stmt|;
-name|repaint
-argument_list|()
 expr_stmt|;
 try|try
 block|{
@@ -1537,15 +1527,10 @@ name|DropTargetEvent
 name|dte
 parameter_list|)
 block|{
-name|cellRenderer
-operator|.
 name|setHighlight1Cell
 argument_list|(
 literal|null
 argument_list|)
-expr_stmt|;
-name|repaint
-argument_list|()
 expr_stmt|;
 block|}
 DECL|method|dragGestureRecognized (DragGestureEvent dge)
@@ -1743,6 +1728,49 @@ operator|.
 name|isExpanded
 operator|=
 literal|true
+expr_stmt|;
+block|}
+comment|/** Highlights the specified cell or disables highlight if cell == null */
+DECL|method|setHighlight1Cell (Object cell)
+specifier|public
+name|void
+name|setHighlight1Cell
+parameter_list|(
+name|Object
+name|cell
+parameter_list|)
+block|{
+name|cellRenderer
+operator|.
+name|setHighlight1Cell
+argument_list|(
+name|cell
+argument_list|)
+expr_stmt|;
+name|repaint
+argument_list|()
+expr_stmt|;
+block|}
+comment|/** Highlights the specified cells or disables highlight if cells == null */
+DECL|method|setHighlight2Cells (Object[] cells)
+specifier|public
+name|void
+name|setHighlight2Cells
+parameter_list|(
+name|Object
+index|[]
+name|cells
+parameter_list|)
+block|{
+name|cellRenderer
+operator|.
+name|setHighlight2Cells
+argument_list|(
+name|cells
+argument_list|)
+expr_stmt|;
+name|repaint
+argument_list|()
 expr_stmt|;
 block|}
 block|}
