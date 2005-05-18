@@ -5731,35 +5731,7 @@ name|getGroups
 argument_list|()
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-operator|!
-name|groupsRoot
-operator|.
-name|isLeaf
-argument_list|()
-condition|)
-block|{
-comment|// groups were defined
-name|frame
-operator|.
-name|sidePaneManager
-operator|.
-name|ensureVisible
-argument_list|(
-literal|"groups"
-argument_list|)
-expr_stmt|;
-name|frame
-operator|.
-name|groupToggle
-operator|.
-name|setSelected
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-block|}
+comment|/* Morten Alver (2005-05-12): commenting out the following, to avoid group interface               popping up when changing tabs. I'm not sure if this was put in by someone,               or if it is just a remainder of<=1.7.1 code. If the former, we can discuss it :)              if (!groupsRoot.isLeaf()) { // groups were defined                 frame.sidePaneManager.ensureVisible("groups");                 frame.groupToggle.setSelected(true);             }  */
 block|}
 else|else
 block|{

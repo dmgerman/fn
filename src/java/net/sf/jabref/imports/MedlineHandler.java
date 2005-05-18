@@ -1067,7 +1067,7 @@ block|}
 comment|//################################## 09/23/03  put {} around capitals
 name|title
 operator|=
-name|Globals
+name|Util
 operator|.
 name|putBracesAroundCapitals
 argument_list|(

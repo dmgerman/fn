@@ -968,6 +968,10 @@ expr_stmt|;
 name|clearSelection
 argument_list|()
 expr_stmt|;
+name|selectionListenerOn
+operator|=
+name|oldState
+expr_stmt|;
 block|}
 block|}
 DECL|method|addRowSelectionIntervalQuietly (int row1, int row2)
@@ -992,6 +996,8 @@ operator|=
 literal|false
 expr_stmt|;
 comment|//if (row2< getModel().getRowCount()) {
+try|try
+block|{
 name|super
 operator|.
 name|addRowSelectionInterval
@@ -1005,7 +1011,41 @@ name|selectionListenerOn
 operator|=
 name|oldState
 expr_stmt|;
-comment|//}
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|ex
+parameter_list|)
+block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Error occured. Trying to recover..."
+argument_list|)
+expr_stmt|;
+comment|// Maybe try to remap the entry table:
+name|tableModel
+operator|.
+name|remap
+argument_list|()
+expr_stmt|;
+name|clearSelection
+argument_list|()
+expr_stmt|;
+name|selectionListenerOn
+operator|=
+name|oldState
+expr_stmt|;
+block|}
 block|}
 comment|/*public boolean surrendersFocusOnKeystroke() {         return true;         }*/
 comment|/**        * This method overrides the superclass' to disable the selection listener while the        * selection is cleared.        */

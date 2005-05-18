@@ -596,7 +596,7 @@ name|put
 argument_list|(
 literal|"title"
 argument_list|,
-name|Globals
+name|Util
 operator|.
 name|putBracesAroundCapitals
 argument_list|(
