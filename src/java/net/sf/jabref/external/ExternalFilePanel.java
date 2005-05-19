@@ -458,6 +458,23 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Change which entry this panel is operating on. This is used only when this panel      * is not attached to an entry editor.      */
+DECL|method|setEntry (BibtexEntry entry)
+specifier|public
+name|void
+name|setEntry
+parameter_list|(
+name|BibtexEntry
+name|entry
+parameter_list|)
+block|{
+name|this
+operator|.
+name|entry
+operator|=
+name|entry
+expr_stmt|;
+block|}
 DECL|method|getKey ()
 specifier|protected
 name|Object
@@ -1216,9 +1233,10 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Starts a thread that searches the external file directory for the given field name,      * including subdirectories, and looks for files named after the current entry's bibtex      * key. Returns a reference to the thread for callers that may want to wait for the thread      * to finish (using join()).      *      * @param fieldName The field to set.      * @param editor An EntryEditor instance where to set the value found.      * @return A reference to the Thread that performs the operation.      */
 DECL|method|autoSetFile (final String fieldName, final FieldEditor editor)
 specifier|public
-name|void
+name|Thread
 name|autoSetFile
 parameter_list|(
 specifier|final
@@ -1266,7 +1284,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"You must set both bibtex key and %0 directory"
+literal|"You must set both BibTeX key and %0 directory"
 argument_list|,
 name|fieldName
 operator|.
@@ -1277,7 +1295,9 @@ operator|+
 literal|"."
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|null
+return|;
 block|}
 name|output
 argument_list|(
@@ -1304,6 +1324,9 @@ operator|+
 literal|"'..."
 argument_list|)
 expr_stmt|;
+name|Thread
+name|t
+init|=
 operator|(
 operator|new
 name|Thread
@@ -1360,6 +1383,12 @@ argument_list|(
 name|found
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|entryEditor
+operator|!=
+literal|null
+condition|)
 name|entryEditor
 operator|.
 name|updateField
@@ -1408,10 +1437,15 @@ block|}
 block|}
 block|}
 operator|)
+decl_stmt|;
+name|t
 operator|.
 name|start
 argument_list|()
 expr_stmt|;
+return|return
+name|t
+return|;
 block|}
 block|}
 end_class

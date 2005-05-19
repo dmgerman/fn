@@ -54,6 +54,13 @@ name|outdated
 init|=
 literal|false
 decl_stmt|;
+DECL|field|changing
+specifier|private
+name|boolean
+name|changing
+init|=
+literal|false
+decl_stmt|;
 DECL|method|EntrySorter (Map entries, Comparator comp)
 specifier|public
 name|EntrySorter
@@ -131,7 +138,52 @@ name|void
 name|index
 parameter_list|()
 block|{
-comment|// Create aan array of IDs for quick access, since getIdAt() is called by
+while|while
+condition|(
+name|changing
+condition|)
+block|{
+comment|// The boolean "changing" is true in the situation that an entry is about to change,
+comment|// and has temporarily been removed from the entry set in this sorter. So, if we index
+comment|// now, we will cause exceptions other places because one entry has been left out of
+comment|// the indexed array. So we have no other choice than to wait for the entry to be readded.
+comment|// The Thread.sleep() may not be a very good choice, but it should be safe.
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"...changing..."
+argument_list|)
+expr_stmt|;
+try|try
+block|{
+name|Thread
+operator|.
+name|sleep
+argument_list|(
+literal|10
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|InterruptedException
+name|e
+parameter_list|)
+block|{
+comment|// Nothing.
+block|}
+comment|//Thread.dumpStack();
+comment|//System.exit(0);
+block|}
+synchronized|synchronized
+init|(
+name|set
+init|)
+block|{
+comment|// Create an array of IDs for quick access, since getIdAt() is called by
 comment|// getValueAt() in EntryTableModel, which *has* to be efficient.
 name|int
 name|count
@@ -213,6 +265,7 @@ operator|++
 expr_stmt|;
 block|}
 block|}
+block|}
 DECL|method|isOutdated ()
 specifier|public
 name|boolean
@@ -232,12 +285,18 @@ name|int
 name|pos
 parameter_list|)
 block|{
+synchronized|synchronized
+init|(
+name|set
+init|)
+block|{
 return|return
 name|idArray
 index|[
 name|pos
 index|]
 return|;
+block|}
 comment|//return ((BibtexEntry)(entryArray[pos])).getId();
 block|}
 DECL|method|getEntryAt (int pos)
@@ -249,6 +308,11 @@ name|int
 name|pos
 parameter_list|)
 block|{
+synchronized|synchronized
+init|(
+name|set
+init|)
+block|{
 return|return
 name|entryArray
 index|[
@@ -256,11 +320,17 @@ name|pos
 index|]
 return|;
 block|}
+block|}
 DECL|method|getEntryCount ()
 specifier|public
 name|int
 name|getEntryCount
 parameter_list|()
+block|{
+synchronized|synchronized
+init|(
+name|set
+init|)
 block|{
 if|if
 condition|(
@@ -278,6 +348,7 @@ return|return
 literal|0
 return|;
 block|}
+block|}
 DECL|method|databaseChanged (DatabaseChangeEvent e)
 specifier|public
 name|void
@@ -286,6 +357,11 @@ parameter_list|(
 name|DatabaseChangeEvent
 name|e
 parameter_list|)
+block|{
+synchronized|synchronized
+init|(
+name|set
+init|)
 block|{
 if|if
 condition|(
@@ -357,6 +433,12 @@ name|getEntry
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|//System.out.println("CHANGING: "+e.getEntry().getCiteKey());
+comment|//Thread.dumpStack();
+name|changing
+operator|=
+literal|true
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -383,6 +465,12 @@ name|getEntry
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|//System.out.println("CHANGED: "+e.getEntry().getCiteKey());
+name|changing
+operator|=
+literal|false
+expr_stmt|;
+block|}
 block|}
 block|}
 block|}

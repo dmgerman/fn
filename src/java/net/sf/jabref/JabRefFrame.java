@@ -1660,6 +1660,17 @@ argument_list|(
 name|this
 argument_list|)
 decl_stmt|,
+DECL|field|autoSetPdf
+name|autoSetPdf
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"autoSetPdf"
+argument_list|,
+literal|"Autoset PDF field for selected entries"
+argument_list|)
+decl_stmt|,
 DECL|field|test
 name|test
 init|=
@@ -5015,6 +5026,18 @@ operator|.
 name|add
 argument_list|(
 name|integrityCheckAction
+argument_list|)
+expr_stmt|;
+name|tools
+operator|.
+name|addSeparator
+argument_list|()
+expr_stmt|;
+name|tools
+operator|.
+name|add
+argument_list|(
+name|autoSetPdf
 argument_list|)
 expr_stmt|;
 name|mb
