@@ -510,9 +510,6 @@ argument_list|()
 operator|.
 name|toString
 argument_list|()
-operator|.
-name|toLowerCase
-argument_list|()
 decl_stmt|;
 name|KeywordGroup
 name|group
