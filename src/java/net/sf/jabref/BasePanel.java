@@ -9516,6 +9516,7 @@ name|void
 name|refreshTable
 parameter_list|()
 block|{
+comment|//System.out.println("hiding="+hidingNonHits+"\tlastHits="+lastSearchHits);
 comment|// This method is called by EntryTypeForm when a field value is
 comment|// stored. The table is scheduled for repaint.
 name|entryTable

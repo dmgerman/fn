@@ -237,7 +237,6 @@ literal|"Set table font"
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|//menuFontButton = new JButton(Globals.lang("Set application font"));
 DECL|field|tableChanged
 specifier|private
 name|boolean

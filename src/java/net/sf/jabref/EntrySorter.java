@@ -138,6 +138,12 @@ name|void
 name|index
 parameter_list|()
 block|{
+if|if
+condition|(
+name|changing
+condition|)
+return|return;
+comment|//System.out.println("...changing..."+Thread.currentThread().toString());
 while|while
 condition|(
 name|changing
@@ -148,15 +154,6 @@ comment|// and has temporarily been removed from the entry set in this sorter. S
 comment|// now, we will cause exceptions other places because one entry has been left out of
 comment|// the indexed array. So we have no other choice than to wait for the entry to be readded.
 comment|// The Thread.sleep() may not be a very good choice, but it should be safe.
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"...changing..."
-argument_list|)
-expr_stmt|;
 try|try
 block|{
 name|Thread
@@ -433,7 +430,7 @@ name|getEntry
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("CHANGING: "+e.getEntry().getCiteKey());
+comment|//System.out.println("CHANGING: "+Thread.currentThread().toString());
 comment|//Thread.dumpStack();
 name|changing
 operator|=

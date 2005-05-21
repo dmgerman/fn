@@ -641,9 +641,12 @@ operator|.
 name|remap
 argument_list|()
 expr_stmt|;
-name|repaint
+name|panel
+operator|.
+name|refreshTable
 argument_list|()
 expr_stmt|;
+comment|//repaint();
 block|}
 block|}
 block|}
