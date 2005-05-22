@@ -138,43 +138,16 @@ name|void
 name|index
 parameter_list|()
 block|{
+comment|// The boolean "changing" is true in the situation that an entry is about to change,
+comment|// and has temporarily been removed from the entry set in this sorter. So, if we index
+comment|// now, we will cause exceptions other places because one entry has been left out of
+comment|// the indexed array. Simply waiting foth this to change can lead to deadlocks,
+comment|// so we have no other choice than to return without indexing.
 if|if
 condition|(
 name|changing
 condition|)
 return|return;
-comment|//System.out.println("...changing..."+Thread.currentThread().toString());
-while|while
-condition|(
-name|changing
-condition|)
-block|{
-comment|// The boolean "changing" is true in the situation that an entry is about to change,
-comment|// and has temporarily been removed from the entry set in this sorter. So, if we index
-comment|// now, we will cause exceptions other places because one entry has been left out of
-comment|// the indexed array. So we have no other choice than to wait for the entry to be readded.
-comment|// The Thread.sleep() may not be a very good choice, but it should be safe.
-try|try
-block|{
-name|Thread
-operator|.
-name|sleep
-argument_list|(
-literal|10
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{
-comment|// Nothing.
-block|}
-comment|//Thread.dumpStack();
-comment|//System.exit(0);
-block|}
 synchronized|synchronized
 init|(
 name|set
