@@ -750,6 +750,13 @@ argument_list|(
 literal|"journal"
 argument_list|,
 name|value
+operator|.
+name|replaceAll
+argument_list|(
+literal|"EOLEOL"
+argument_list|,
+literal|" "
+argument_list|)
 argument_list|)
 expr_stmt|;
 elseif|else

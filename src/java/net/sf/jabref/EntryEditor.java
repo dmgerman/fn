@@ -3255,7 +3255,7 @@ if|if
 condition|(
 name|GUIGlobals
 operator|.
-name|isWriteableField
+name|isDisplayableField
 argument_list|(
 name|fields
 index|[

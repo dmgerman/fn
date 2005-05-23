@@ -1668,7 +1668,7 @@ name|GeneralAction
 argument_list|(
 literal|"autoSetPdf"
 argument_list|,
-literal|"Autoset PDF field for selected entries"
+literal|"Synchronize PDF links"
 argument_list|)
 decl_stmt|,
 DECL|field|test

@@ -140,15 +140,9 @@ name|AbstractUndoableEdit
 import|;
 end_import
 
-begin_import
-import|import
-name|junit
-operator|.
-name|runner
-operator|.
-name|ReloadingTestSuiteLoader
-import|;
-end_import
+begin_comment
+comment|//import junit.runner.ReloadingTestSuiteLoader;
+end_comment
 
 begin_import
 import|import
