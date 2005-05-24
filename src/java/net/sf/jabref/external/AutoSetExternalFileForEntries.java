@@ -1168,6 +1168,10 @@ literal|"Cancel"
 argument_list|)
 argument_list|)
 decl_stmt|;
+DECL|field|description
+name|JLabel
+name|description
+decl_stmt|;
 DECL|field|canceled
 specifier|private
 name|boolean
@@ -1194,12 +1198,26 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Synchronize "
+literal|"Synchronize %0 links"
+argument_list|,
+name|fieldName
+operator|.
+name|toUpperCase
+argument_list|()
 argument_list|)
 argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+specifier|final
+name|String
+name|fn
+init|=
+name|fieldName
+operator|.
+name|toUpperCase
+argument_list|()
+decl_stmt|;
 name|ok
 operator|.
 name|addActionListener
@@ -1268,7 +1286,7 @@ name|lang
 argument_list|(
 literal|"Autoset %0 links. Do not overwrite existing links."
 argument_list|,
-name|fieldName
+name|fn
 argument_list|)
 argument_list|,
 literal|true
@@ -1285,7 +1303,7 @@ name|lang
 argument_list|(
 literal|"Autoset %0 links. Allow overwriting existing links."
 argument_list|,
-name|fieldName
+name|fn
 argument_list|)
 argument_list|,
 literal|false
@@ -1317,7 +1335,7 @@ name|lang
 argument_list|(
 literal|"Check existing %0 links"
 argument_list|,
-name|fieldName
+name|fn
 argument_list|)
 argument_list|,
 literal|true
@@ -1371,21 +1389,51 @@ argument_list|(
 name|layout
 argument_list|)
 decl_stmt|;
+name|description
+operator|=
+operator|new
+name|JLabel
+argument_list|(
+literal|"<HTML>"
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+comment|//"This function helps you keep your external %0 links up-to-date." +
+literal|"Attempt to autoset %0 links for your entries. Autoset works if "
+operator|+
+literal|"a %0 file in your %0 directory or a subdirectory<BR>is named identically to an entry's BibTeX key, plus extension."
+argument_list|,
+name|fn
+argument_list|)
+operator|+
+literal|"</HTML>"
+argument_list|)
+expr_stmt|;
+comment|//            description.setVerticalAlignment(JLabel.TOP);
+name|builder
+operator|.
+name|appendSeparator
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Autoset"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|builder
 operator|.
 name|append
 argument_list|(
-name|checkLinks
+name|description
 argument_list|)
 expr_stmt|;
 name|builder
 operator|.
 name|nextLine
-argument_list|()
-expr_stmt|;
-name|builder
-operator|.
-name|appendSeparator
 argument_list|()
 expr_stmt|;
 name|builder
@@ -1424,6 +1472,68 @@ operator|.
 name|nextLine
 argument_list|()
 expr_stmt|;
+name|builder
+operator|.
+name|appendSeparator
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Check links"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|description
+operator|=
+operator|new
+name|JLabel
+argument_list|(
+literal|"<HTML>"
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"This makes JabRef look up each %0 link and check if the file exists. If not, you will "
+operator|+
+literal|"be given options<BR>to resolve the problem."
+argument_list|,
+name|fn
+argument_list|)
+operator|+
+literal|"</HTML>"
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|description
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|nextLine
+argument_list|()
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|checkLinks
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|nextLine
+argument_list|()
+expr_stmt|;
+name|builder
+operator|.
+name|appendSeparator
+argument_list|()
+expr_stmt|;
 name|JPanel
 name|main
 init|=
@@ -1459,6 +1569,11 @@ argument_list|()
 decl_stmt|;
 name|bb
 operator|.
+name|addGlue
+argument_list|()
+expr_stmt|;
+name|bb
+operator|.
 name|addGridded
 argument_list|(
 name|ok
@@ -1470,6 +1585,11 @@ name|addGridded
 argument_list|(
 name|cancel
 argument_list|)
+expr_stmt|;
+name|bb
+operator|.
+name|addGlue
+argument_list|()
 expr_stmt|;
 name|getContentPane
 argument_list|()
