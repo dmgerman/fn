@@ -4557,7 +4557,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"This group's immediate subgroups"
+literal|"Immediate subgroups"
 argument_list|)
 argument_list|)
 block|{
@@ -4595,6 +4595,20 @@ operator|.
 name|getLastPathComponent
 argument_list|()
 decl_stmt|;
+specifier|final
+name|UndoableSortSubgroups
+name|undo
+init|=
+operator|new
+name|UndoableSortSubgroups
+argument_list|(
+name|GroupSelector
+operator|.
+name|this
+argument_list|,
+name|node
+argument_list|)
+decl_stmt|;
 name|groupsTree
 operator|.
 name|sort
@@ -4606,10 +4620,31 @@ argument_list|)
 expr_stmt|;
 name|panel
 operator|.
+name|undoManager
+operator|.
+name|addEdit
+argument_list|(
+name|undo
+argument_list|)
+expr_stmt|;
+name|panel
+operator|.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
-comment|// JZTODO undo
+comment|// JZTODO lyrics
+name|frame
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Sorted immediate subgroups."
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 decl_stmt|;
@@ -4665,6 +4700,20 @@ operator|.
 name|getLastPathComponent
 argument_list|()
 decl_stmt|;
+specifier|final
+name|UndoableSortSubgroups
+name|undo
+init|=
+operator|new
+name|UndoableSortSubgroups
+argument_list|(
+name|GroupSelector
+operator|.
+name|this
+argument_list|,
+name|node
+argument_list|)
+decl_stmt|;
 name|groupsTree
 operator|.
 name|sort
@@ -4676,10 +4725,31 @@ argument_list|)
 expr_stmt|;
 name|panel
 operator|.
+name|undoManager
+operator|.
+name|addEdit
+argument_list|(
+name|undo
+argument_list|)
+expr_stmt|;
+name|panel
+operator|.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
-comment|// JZTODO undo
+comment|// JZTODO lyrics
+name|frame
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Sorted all subgroups recursively."
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 decl_stmt|;

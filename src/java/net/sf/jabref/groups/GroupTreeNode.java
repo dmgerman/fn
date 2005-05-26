@@ -457,6 +457,57 @@ return|return
 name|indexedPath
 return|;
 block|}
+comment|/**      * Returns the node indicated by the specified indexedPath, which contains      * child indices obtained e.g. by getIndexedPath().      */
+DECL|method|getNode (int[] indexedPath)
+specifier|public
+name|GroupTreeNode
+name|getNode
+parameter_list|(
+name|int
+index|[]
+name|indexedPath
+parameter_list|)
+block|{
+name|GroupTreeNode
+name|cursor
+init|=
+name|this
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|indexedPath
+operator|.
+name|length
+condition|;
+operator|++
+name|i
+control|)
+name|cursor
+operator|=
+operator|(
+name|GroupTreeNode
+operator|)
+name|cursor
+operator|.
+name|getChildAt
+argument_list|(
+name|indexedPath
+index|[
+name|i
+index|]
+argument_list|)
+expr_stmt|;
+return|return
+name|cursor
+return|;
+block|}
 comment|/**      * @param indexedPath      *            A sequence of child indices that describe a path from this      *            node to one of its desendants. Be aware that if<b>indexedPath      *</b> was obtained by getIndexedPath(), this node should      *            usually be the root node.      * @return The descendant found by evaluating<b>indexedPath</b>. If the      *         path could not be traversed completely (i.e. one of the child      *         indices did not exist), null will be returned.      */
 DECL|method|getDescendant (int[] indexedPath)
 specifier|public
