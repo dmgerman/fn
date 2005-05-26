@@ -1848,6 +1848,14 @@ argument_list|)
 condition|)
 return|return;
 comment|// user aborted operation
+comment|// if an editor is showing, its fields must be updated
+comment|// after the assignment, and before that, the current
+comment|// edit has to be stored:
+name|panel
+operator|.
+name|storeCurrentEdit
+argument_list|()
+expr_stmt|;
 name|AbstractUndoableEdit
 name|undo
 init|=
