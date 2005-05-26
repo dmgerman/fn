@@ -14,16 +14,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -80,55 +70,36 @@ name|GroupChange
 extends|extends
 name|Change
 block|{
-DECL|field|tmpGroup
-name|AbstractGroup
-name|tmpGroup
+DECL|field|m_changedGroups
+specifier|private
+specifier|final
+name|GroupTreeNode
+name|m_changedGroups
 decl_stmt|;
-DECL|field|diskGroup
-name|AbstractGroup
-name|diskGroup
-decl_stmt|;
-DECL|field|removedLocally
-name|boolean
-name|removedLocally
-init|=
-literal|false
-decl_stmt|;
-DECL|field|md
-name|MetaData
-name|md
-decl_stmt|;
-DECL|method|GroupChange (MetaData md, AbstractGroup tmpGroup, AbstractGroup diskGroup)
+DECL|method|GroupChange (GroupTreeNode changedGroups)
 specifier|public
 name|GroupChange
 parameter_list|(
-name|MetaData
-name|md
-parameter_list|,
-name|AbstractGroup
-name|tmpGroup
-parameter_list|,
-name|AbstractGroup
-name|diskGroup
+name|GroupTreeNode
+name|changedGroups
 parameter_list|)
 block|{
 name|super
 argument_list|(
-literal|"Modified group"
+name|changedGroups
+operator|!=
+literal|null
+condition|?
+literal|"Modified groups tree"
+else|:
+literal|"Removed all groups"
 argument_list|)
 expr_stmt|;
-comment|// JZTODO
-comment|//    this.tmpGroup = tmpGroup;
-comment|//    this.diskGroup = diskGroup;
-comment|//    this.md = md;
-comment|//
-comment|//    if (md == null)
-comment|//      removedLocally = true;
-comment|//    else {
-comment|//      GroupTreeNode groups = md.getGroups();
-comment|//      if ((groups == null) || (GroupSelector.findGroupByName(groups, tmpGroup.getName()) == -1))
-comment|//        removedLocally = true;
-comment|//    }
+comment|// JZTODO lyrics
+name|m_changedGroups
+operator|=
+name|changedGroups
+expr_stmt|;
 block|}
 DECL|method|makeChange (BasePanel panel, NamedCompound undoEdit)
 specifier|public
@@ -142,16 +113,130 @@ name|NamedCompound
 name|undoEdit
 parameter_list|)
 block|{
-comment|// JZTODO
-comment|//
-comment|//    GroupTreeNode groups = md.getGroups();
-comment|//    //if (groups == null)
-comment|//    // Error, no groups...
-comment|//
-comment|//    int pos = GroupSelector.findGroupByName(groups,tmpGroup.getName());
-comment|//    if (pos>= 0) {
-comment|//      groups.setElementAt(diskGroup, pos);
-comment|//    }
+specifier|final
+name|GroupTreeNode
+name|root
+init|=
+name|panel
+operator|.
+name|getGroupSelector
+argument_list|()
+operator|.
+name|getGroupTreeRoot
+argument_list|()
+decl_stmt|;
+specifier|final
+name|UndoableModifySubtree
+name|undo
+init|=
+operator|new
+name|UndoableModifySubtree
+argument_list|(
+name|panel
+operator|.
+name|getGroupSelector
+argument_list|()
+argument_list|,
+name|root
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Modified groups"
+argument_list|)
+argument_list|)
+decl_stmt|;
+comment|// JZTODO lyrics
+name|root
+operator|.
+name|removeAllChildren
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|m_changedGroups
+operator|==
+literal|null
+condition|)
+block|{
+comment|// I think setting root to null is not possible
+name|root
+operator|.
+name|setGroup
+argument_list|(
+operator|new
+name|AllEntriesGroup
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// change root group, even though it'll be AllEntries anyway
+name|root
+operator|.
+name|setGroup
+argument_list|(
+name|m_changedGroups
+operator|.
+name|getGroup
+argument_list|()
+argument_list|)
+expr_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|m_changedGroups
+operator|.
+name|getChildCount
+argument_list|()
+condition|;
+operator|++
+name|i
+control|)
+name|root
+operator|.
+name|add
+argument_list|(
+operator|(
+operator|(
+name|GroupTreeNode
+operator|)
+name|m_changedGroups
+operator|.
+name|getChildAt
+argument_list|(
+name|i
+argument_list|)
+operator|)
+operator|.
+name|deepCopy
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+name|panel
+operator|.
+name|getGroupSelector
+argument_list|()
+operator|.
+name|revalidateGroups
+argument_list|()
+expr_stmt|;
+name|undoEdit
+operator|.
+name|addEdit
+argument_list|(
+name|undo
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|description ()
 name|JComponent
@@ -162,9 +247,30 @@ return|return
 operator|new
 name|JLabel
 argument_list|(
+literal|"<html>"
+operator|+
 name|name
+operator|+
+literal|"."
+operator|+
+operator|(
+name|m_changedGroups
+operator|!=
+literal|null
+condition|?
+literal|" "
+operator|+
+literal|"Accepting the change replaces the complete "
+operator|+
+literal|"groups tree with the externally modified groups tree."
+else|:
+literal|""
+operator|)
+operator|+
+literal|"</html>"
 argument_list|)
 return|;
+comment|// JZTODO lyrics
 block|}
 block|}
 end_class
