@@ -6026,6 +6026,11 @@ operator|.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
+name|panel
+operator|.
+name|updateEntryEditorIfShowing
+argument_list|()
+expr_stmt|;
 specifier|final
 name|String
 name|groupName
