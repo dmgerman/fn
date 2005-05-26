@@ -152,13 +152,6 @@ name|DataFlavor
 index|[]
 name|flavors
 decl_stmt|;
-DECL|field|isExpanded
-specifier|public
-name|boolean
-name|isExpanded
-init|=
-literal|false
-decl_stmt|;
 static|static
 block|{
 name|DataFlavor
@@ -290,7 +283,6 @@ operator|.
 name|nextElement
 argument_list|()
 expr_stmt|;
-comment|// JZTODO remove "expaneded?" info
 name|sb
 operator|.
 name|append
@@ -299,18 +291,6 @@ name|cursor
 operator|.
 name|getLevel
 argument_list|()
-operator|+
-literal|" "
-operator|+
-operator|(
-name|cursor
-operator|.
-name|isExpanded
-condition|?
-literal|"-"
-else|:
-literal|"+"
-operator|)
 operator|+
 literal|" "
 operator|+

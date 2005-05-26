@@ -697,9 +697,6 @@ decl_stmt|;
 name|int
 name|level
 decl_stmt|;
-name|boolean
-name|expanded
-decl_stmt|;
 name|String
 name|s
 decl_stmt|;
@@ -772,24 +769,6 @@ name|spaceIndex
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|expanded
-operator|=
-name|s
-operator|.
-name|charAt
-argument_list|(
-name|spaceIndex
-operator|+
-literal|1
-argument_list|)
-operator|==
-literal|'-'
-expr_stmt|;
-name|spaceIndex
-operator|+=
-literal|2
-expr_stmt|;
-comment|// skip expansion state indicator and following space
 name|group
 operator|=
 name|AbstractGroup
@@ -817,12 +796,6 @@ name|GroupTreeNode
 argument_list|(
 name|group
 argument_list|)
-expr_stmt|;
-name|newNode
-operator|.
-name|isExpanded
-operator|=
-name|expanded
 expr_stmt|;
 if|if
 condition|(
