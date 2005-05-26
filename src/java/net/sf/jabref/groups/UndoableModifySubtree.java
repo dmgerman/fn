@@ -51,9 +51,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|UndoableSortSubgroups
+DECL|class|UndoableModifySubtree
+specifier|public
 class|class
-name|UndoableSortSubgroups
+name|UndoableModifySubtree
 extends|extends
 name|AbstractUndoableEdit
 block|{
@@ -95,20 +96,27 @@ name|m_revalidate
 init|=
 literal|true
 decl_stmt|;
+DECL|field|m_name
+specifier|private
+specifier|final
+name|String
+name|m_name
+decl_stmt|;
 comment|/**      *       * @param subtree      *            The root node of the subtree that was modified (this node may      *            not be modified, it is just used as a convenience handle).      */
-DECL|method|UndoableSortSubgroups (GroupSelector groupSelector, GroupTreeNode subtree)
+DECL|method|UndoableModifySubtree (GroupSelector groupSelector, GroupTreeNode subtree, String name)
 specifier|public
-name|UndoableSortSubgroups
+name|UndoableModifySubtree
 parameter_list|(
 name|GroupSelector
 name|groupSelector
 parameter_list|,
 name|GroupTreeNode
 name|subtree
+parameter_list|,
+name|String
+name|name
 parameter_list|)
 block|{
-name|this
-operator|.
 name|m_subtreeBackup
 operator|=
 name|subtree
@@ -116,8 +124,6 @@ operator|.
 name|deepCopy
 argument_list|()
 expr_stmt|;
-name|this
-operator|.
 name|m_subtreeRootPath
 operator|=
 name|subtree
@@ -125,11 +131,13 @@ operator|.
 name|getIndexedPath
 argument_list|()
 expr_stmt|;
-name|this
-operator|.
 name|m_groupSelector
 operator|=
 name|groupSelector
+expr_stmt|;
+name|m_name
+operator|=
+name|name
 expr_stmt|;
 block|}
 DECL|method|getUndoPresentationName ()
@@ -148,12 +156,7 @@ argument_list|)
 operator|+
 literal|": "
 operator|+
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"sort subgroups"
-argument_list|)
+name|m_name
 return|;
 comment|// JZTODO lyrics
 block|}
@@ -173,12 +176,7 @@ argument_list|)
 operator|+
 literal|": "
 operator|+
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"sort subgroups"
-argument_list|)
+name|m_name
 return|;
 block|}
 DECL|method|undo ()
