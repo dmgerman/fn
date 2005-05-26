@@ -93,21 +93,12 @@ specifier|final
 name|Set
 name|m_entries
 decl_stmt|;
-DECL|field|m_database
-specifier|private
-specifier|final
-name|BibtexDatabase
-name|m_database
-decl_stmt|;
-DECL|method|ExplicitGroup (String name, BibtexDatabase db)
+DECL|method|ExplicitGroup (String name)
 specifier|public
 name|ExplicitGroup
 parameter_list|(
 name|String
 name|name
-parameter_list|,
-name|BibtexDatabase
-name|db
 parameter_list|)
 block|{
 name|super
@@ -120,10 +111,6 @@ operator|=
 operator|new
 name|HashSet
 argument_list|()
-expr_stmt|;
-name|m_database
-operator|=
-name|db
 expr_stmt|;
 block|}
 DECL|method|fromString (String s, BibtexDatabase db, int version)
@@ -212,8 +199,6 @@ name|tok
 operator|.
 name|nextToken
 argument_list|()
-argument_list|,
-name|db
 argument_list|)
 decl_stmt|;
 name|BibtexEntry
@@ -566,8 +551,6 @@ operator|new
 name|ExplicitGroup
 argument_list|(
 name|m_name
-argument_list|,
-name|m_database
 argument_list|)
 decl_stmt|;
 name|copy
@@ -630,12 +613,6 @@ name|equals
 argument_list|(
 name|m_entries
 argument_list|)
-operator|&&
-name|other
-operator|.
-name|m_database
-operator|==
-name|m_database
 return|;
 block|}
 comment|/**      * Returns a String representation of this group and its entries. Entries      * are referenced by their Bibtexkey. Entries that do not have a Bibtexkey      * are not included in the representation and will thus not be available      * upon recreation.      */

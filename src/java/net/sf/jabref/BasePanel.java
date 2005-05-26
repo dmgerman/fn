@@ -5477,8 +5477,6 @@ operator|new
 name|ExplicitGroup
 argument_list|(
 literal|"Imported Groups"
-argument_list|,
-name|database
 argument_list|)
 argument_list|)
 expr_stmt|;

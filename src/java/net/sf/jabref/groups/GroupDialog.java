@@ -1366,11 +1366,6 @@ argument_list|()
 operator|.
 name|trim
 argument_list|()
-argument_list|,
-name|m_basePanel
-operator|.
-name|database
-argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
