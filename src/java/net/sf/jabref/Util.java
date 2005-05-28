@@ -5137,7 +5137,7 @@ literal|"This action will modify the \"%0\" field "
 operator|+
 literal|"of your entries.\nThis could cause undesired changes to "
 operator|+
-literal|"your entries, so it\nis recommended that you change the field "
+literal|"your entries, so it is\nrecommended that you change the grouping field "
 operator|+
 literal|"in your group\ndefinition to \"keywords\" or a non-standard name."
 operator|+
@@ -5181,88 +5181,6 @@ operator|.
 name|NO_OPTION
 return|;
 block|}
-block|}
-block|}
-elseif|else
-if|if
-condition|(
-name|group
-operator|instanceof
-name|ExplicitGroup
-condition|)
-block|{
-name|ExplicitGroup
-name|eg
-init|=
-operator|(
-name|ExplicitGroup
-operator|)
-name|group
-decl_stmt|;
-name|boolean
-name|noKey
-init|=
-literal|false
-decl_stmt|;
-name|boolean
-name|duplicateKey
-init|=
-literal|false
-decl_stmt|;
-name|String
-name|s
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|entries
-operator|.
-name|length
-operator|&&
-operator|!
-operator|(
-name|noKey
-operator|&&
-name|duplicateKey
-operator|)
-condition|;
-operator|++
-name|i
-control|)
-block|{
-name|s
-operator|=
-name|entries
-index|[
-name|i
-index|]
-operator|.
-name|getCiteKey
-argument_list|()
-expr_stmt|;
-if|if
-condition|(
-name|s
-operator|==
-literal|null
-operator|||
-name|s
-operator|==
-literal|""
-condition|)
-name|noKey
-operator|=
-literal|true
-expr_stmt|;
-comment|//else if (group)
-comment|// JZPUWIL: check for dupes in database, but where to get
-comment|// database from??
 block|}
 block|}
 return|return
