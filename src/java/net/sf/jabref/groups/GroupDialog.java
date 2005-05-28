@@ -2399,6 +2399,26 @@ argument_list|(
 name|entries
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|Util
+operator|.
+name|warnAssignmentSideEffects
+argument_list|(
+name|m_resultingGroup
+argument_list|,
+name|entries
+argument_list|,
+name|m_basePanel
+operator|.
+name|getDatabase
+argument_list|()
+argument_list|,
+name|this
+argument_list|)
+condition|)
+return|return;
 comment|// the undo information for a conversion to an ExplicitGroup is
 comment|// contained completely in the UndoableModifyGroup object.
 if|if
