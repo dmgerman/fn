@@ -1159,6 +1159,11 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 decl_stmt|;
+name|panel
+operator|.
+name|storeCurrentEdit
+argument_list|()
+expr_stmt|;
 name|GroupTreeNode
 name|groups
 init|=
@@ -1214,11 +1219,6 @@ operator|.
 name|removeAll
 argument_list|()
 expr_stmt|;
-comment|// JZ: I think having a special menu for only one selected entry
-comment|// is rather non-intuitive because the user cannot see wheter a
-comment|// certain menu item will add or remove the entry to/from
-comment|// that group. IMHO, it is more consistent when the menu is always
-comment|// the same.
 if|if
 condition|(
 name|bes
