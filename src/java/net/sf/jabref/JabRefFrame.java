@@ -1671,6 +1671,17 @@ argument_list|,
 literal|"Synchronize PDF links"
 argument_list|)
 decl_stmt|,
+DECL|field|autoSetPs
+name|autoSetPs
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"autoSetPs"
+argument_list|,
+literal|"Synchronize PS links"
+argument_list|)
+decl_stmt|,
 DECL|field|test
 name|test
 init|=
@@ -5038,6 +5049,13 @@ operator|.
 name|add
 argument_list|(
 name|autoSetPdf
+argument_list|)
+expr_stmt|;
+name|tools
+operator|.
+name|add
+argument_list|(
+name|autoSetPs
 argument_list|)
 expr_stmt|;
 name|mb

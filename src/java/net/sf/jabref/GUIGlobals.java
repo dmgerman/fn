@@ -2380,7 +2380,7 @@ name|put
 argument_list|(
 literal|"pdf"
 argument_list|,
-literal|"browsePdf"
+literal|"browseDoc"
 argument_list|)
 expr_stmt|;
 name|FIELD_EXTRAS
@@ -2389,7 +2389,7 @@ name|put
 argument_list|(
 literal|"ps"
 argument_list|,
-literal|"browsePs"
+literal|"browseDocZip"
 argument_list|)
 expr_stmt|;
 name|FIELD_EXTRAS

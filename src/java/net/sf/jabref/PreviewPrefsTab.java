@@ -843,9 +843,9 @@ argument_list|(
 operator|new
 name|Dimension
 argument_list|(
-literal|500
+literal|800
 argument_list|,
-literal|300
+literal|350
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -913,9 +913,9 @@ argument_list|(
 operator|new
 name|Dimension
 argument_list|(
-literal|500
+literal|800
 argument_list|,
-literal|300
+literal|350
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -925,7 +925,11 @@ name|showMessageDialog
 argument_list|(
 literal|null
 argument_list|,
+operator|new
+name|JScrollPane
+argument_list|(
 name|testPanel
+argument_list|)
 argument_list|,
 name|Globals
 operator|.
@@ -984,7 +988,7 @@ name|Globals
 operator|.
 name|KEY_FIELD
 argument_list|,
-literal|"alba04"
+literal|"conceicao1997"
 argument_list|)
 expr_stmt|;
 name|entry
@@ -993,7 +997,7 @@ name|setField
 argument_list|(
 literal|"author"
 argument_list|,
-literal|"Morten O. Alver and Nizar Batada"
+literal|"L. E. C. Conceic{\\~a}o and T. van der Meeren and J. A. J. Verreth and M. S. Evjen and D. F. Houlihan and H. J. Fyhn"
 argument_list|)
 expr_stmt|;
 name|entry
@@ -1002,7 +1006,7 @@ name|setField
 argument_list|(
 literal|"title"
 argument_list|,
-literal|"JabRef, a reference management application"
+literal|"Amino acid metabolism and protein turnover in larval turbot (Scophthalmus maximus) fed natural zooplankton or Artemia"
 argument_list|)
 expr_stmt|;
 name|entry
@@ -1011,7 +1015,7 @@ name|setField
 argument_list|(
 literal|"year"
 argument_list|,
-literal|"2004"
+literal|"1997"
 argument_list|)
 expr_stmt|;
 name|entry
@@ -1020,7 +1024,7 @@ name|setField
 argument_list|(
 literal|"journal"
 argument_list|,
-literal|"Open Source Journal"
+literal|"Marine Biology"
 argument_list|)
 expr_stmt|;
 name|entry
@@ -1038,7 +1042,7 @@ name|setField
 argument_list|(
 literal|"number"
 argument_list|,
-literal|"1"
+literal|"2"
 argument_list|)
 expr_stmt|;
 name|entry
@@ -1047,7 +1051,7 @@ name|setField
 argument_list|(
 literal|"volume"
 argument_list|,
-literal|"52"
+literal|"123"
 argument_list|)
 expr_stmt|;
 name|entry
@@ -1056,7 +1060,25 @@ name|setField
 argument_list|(
 literal|"pdf"
 argument_list|,
-literal|"alba04.pdf"
+literal|"conceicao1997.pdf"
+argument_list|)
+expr_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"pages"
+argument_list|,
+literal|"255--265"
+argument_list|)
+expr_stmt|;
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"keywords"
+argument_list|,
+literal|"energetics, artemia, metabolism, amino acid, turbot"
 argument_list|)
 expr_stmt|;
 name|entry
@@ -1065,7 +1087,7 @@ name|setField
 argument_list|(
 literal|"url"
 argument_list|,
-literal|"http://thereferencedatabase.com/10011101.html"
+literal|"http://ejournals.ebsco.com/direct.asp?ArticleID=TYY4NT82XA9H7R8PFPPV"
 argument_list|)
 expr_stmt|;
 name|entry
@@ -1074,13 +1096,45 @@ name|setField
 argument_list|(
 literal|"abstract"
 argument_list|,
-literal|"The JabRef project was started by Morten Alver and Nizar Batada after "
+literal|"Abstract The present paper studied the influence of different food regimes "
 operator|+
-literal|"they decided to work together rather than each working on their own separate project "
+literal|"on the free amino acid (FAA) pool, the rate of protein turnover, the flux of amino acids, and "
 operator|+
-literal|"(Bibkeeper and JBibtexManager). JabRef initially combined the best features of both "
+literal|"their relation to growth of larval turbot (Scophthalmus maximus L.) from first feeding until "
 operator|+
-literal|"predecessors, and in the time to come evolved far beyond them."
+literal|"metamorphosis. The amino acid profile of protein was stable during the larval period although "
+operator|+
+literal|"some small, but significant, differences were found. Turbot larvae had proteins which were rich "
+operator|+
+literal|"in leucine and aspartate, and poor in glutamate, suggesting a high leucine requirement. The "
+operator|+
+literal|"profile of the FAA pool was highly variable and quite different from the amino acid profile in "
+operator|+
+literal|"protein. The proportion of essential FAA decreased with development. High contents of free tyrosine "
+operator|+
+literal|"and phenylalanine were found on Day 3, while free taurine was present at high levels throughout "
+operator|+
+literal|"the experimental period. Larval growth rates were positively correlated with taurine levels, "
+operator|+
+literal|"suggesting a dietary dependency for taurine and/or sulphur amino acids.\n\nReduced growth rates in "
+operator|+
+literal|"Artemia-fed larvae were associated with lower levels of free methionine, indicating that this diet "
+operator|+
+literal|"is deficient in methionine for turbot larvae. Leucine might also be limiting turbot growth as the "
+operator|+
+literal|"different diet organisms had lower levels of this amino acid in the free pool than was found in the "
+operator|+
+literal|"larval protein. A previously presented model was used to describe the flux of amino acids in growing "
+operator|+
+literal|"turbot larvae. The FAA pool was found to be small and variable. It was estimated that the daily dietary "
+operator|+
+literal|"amino acid intake might be up to ten times the larval FAA pool. In addition, protein synthesis and "
+operator|+
+literal|"protein degradation might daily remove and return, respectively, the equivalent of up to 20 and 10 "
+operator|+
+literal|"times the size of the FAA pool. In an early phase (Day 11) high growth rates were associated with a "
+operator|+
+literal|"relatively low protein turnover, while at a later stage (Day 17), a much higher turnover was observed."
 argument_list|)
 expr_stmt|;
 block|}

@@ -489,6 +489,17 @@ name|fieldName
 argument_list|)
 argument_list|)
 decl_stmt|;
+specifier|final
+name|OpenFileFilter
+name|off
+init|=
+name|Util
+operator|.
+name|getFileFilterForField
+argument_list|(
+name|fieldName
+argument_list|)
+decl_stmt|;
 name|ExternalFilePanel
 name|extPan
 init|=
@@ -498,6 +509,8 @@ argument_list|(
 name|fieldName
 argument_list|,
 literal|null
+argument_list|,
+name|off
 argument_list|)
 decl_stmt|;
 name|FieldTextField

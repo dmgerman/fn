@@ -179,6 +179,11 @@ specifier|private
 name|JabRefFrame
 name|frame
 decl_stmt|;
+DECL|field|off
+specifier|private
+name|OpenFileFilter
+name|off
+decl_stmt|;
 DECL|field|entry
 specifier|private
 name|BibtexEntry
@@ -186,7 +191,7 @@ name|entry
 init|=
 literal|null
 decl_stmt|;
-DECL|method|ExternalFilePanel (final String fieldName, final BibtexEntry entry)
+DECL|method|ExternalFilePanel (final String fieldName, final BibtexEntry entry, final OpenFileFilter off)
 specifier|public
 name|ExternalFilePanel
 parameter_list|(
@@ -197,6 +202,10 @@ parameter_list|,
 specifier|final
 name|BibtexEntry
 name|entry
+parameter_list|,
+specifier|final
+name|OpenFileFilter
+name|off
 parameter_list|)
 block|{
 name|this
@@ -206,6 +215,8 @@ argument_list|,
 literal|null
 argument_list|,
 name|fieldName
+argument_list|,
+name|off
 argument_list|,
 literal|null
 argument_list|)
@@ -217,7 +228,7 @@ operator|=
 name|entry
 expr_stmt|;
 block|}
-DECL|method|ExternalFilePanel (final JabRefFrame frame, final EntryEditor entryEditor, final String fieldName, final FieldEditor editor)
+DECL|method|ExternalFilePanel (final JabRefFrame frame, final EntryEditor entryEditor, final String fieldName, final OpenFileFilter off, final FieldEditor editor)
 specifier|public
 name|ExternalFilePanel
 parameter_list|(
@@ -234,6 +245,10 @@ name|String
 name|fieldName
 parameter_list|,
 specifier|final
+name|OpenFileFilter
+name|off
+parameter_list|,
+specifier|final
 name|FieldEditor
 name|editor
 parameter_list|)
@@ -243,6 +258,12 @@ operator|.
 name|frame
 operator|=
 name|frame
+expr_stmt|;
+name|this
+operator|.
+name|off
+operator|=
+name|off
 expr_stmt|;
 name|this
 operator|.
@@ -896,6 +917,31 @@ name|res
 argument_list|)
 expr_stmt|;
 name|String
+name|suffix
+init|=
+name|off
+operator|.
+name|getSuffix
+argument_list|(
+name|res
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|suffix
+operator|==
+literal|null
+condition|)
+name|suffix
+operator|=
+literal|"."
+operator|+
+name|fieldName
+operator|.
+name|toLowerCase
+argument_list|()
+expr_stmt|;
+name|String
 name|plannedName
 init|=
 literal|null
@@ -912,9 +958,7 @@ operator|=
 name|getKey
 argument_list|()
 operator|+
-literal|"."
-operator|+
-name|fieldName
+name|suffix
 expr_stmt|;
 else|else
 block|{
@@ -944,25 +988,16 @@ return|return;
 if|if
 condition|(
 operator|!
+name|off
+operator|.
+name|accept
+argument_list|(
 name|plannedName
-operator|.
-name|substring
-argument_list|(
-literal|4
-argument_list|)
-operator|.
-name|equals
-argument_list|(
-literal|"."
-operator|+
-name|fieldName
 argument_list|)
 condition|)
 name|plannedName
 operator|+=
-literal|"."
-operator|+
-name|fieldName
+name|suffix
 expr_stmt|;
 block|}
 name|File
@@ -1367,6 +1402,8 @@ name|fieldName
 operator|+
 literal|"Directory"
 argument_list|)
+argument_list|,
+name|off
 argument_list|)
 decl_stmt|;
 if|if

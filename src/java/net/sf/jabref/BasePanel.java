@@ -8302,6 +8302,21 @@ literal|"pdf"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|actions
+operator|.
+name|put
+argument_list|(
+literal|"autoSetPs"
+argument_list|,
+operator|new
+name|AutoSetExternalFileForEntries
+argument_list|(
+name|this
+argument_list|,
+literal|"ps"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * This method is called from JabRefFrame is a database specific      * action is requested by the user. Runs the command if it is      * defined, or prints an error message to the standard error      * stream.      *      * @param _command The name of the command to run.     */
 DECL|method|runCommand (String _command)
