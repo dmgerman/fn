@@ -1439,9 +1439,15 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|m_editedGroup
-operator|!=
-literal|null
+operator|instanceof
+name|ExplicitGroup
+operator|||
+name|m_editedGroup
+operator|instanceof
+name|SearchGroup
+operator|)
 operator|&&
 name|m_resultingGroup
 operator|.
