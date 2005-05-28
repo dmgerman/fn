@@ -3602,7 +3602,7 @@ name|CompoundEdit
 name|ce
 parameter_list|)
 block|{
-comment|// ensure that there are never two instances of AllEntriesGroup
+comment|// paranoia: ensure that there are never two instances of AllEntriesGroup
 if|if
 condition|(
 name|newGroups
@@ -3613,7 +3613,7 @@ operator|instanceof
 name|AllEntriesGroup
 condition|)
 return|return;
-comment|// JZTODO: output something...
+comment|// this should be impossible anyway
 name|groupsRoot
 operator|.
 name|add
