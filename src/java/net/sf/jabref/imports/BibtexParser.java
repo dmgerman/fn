@@ -820,6 +820,7 @@ if|if
 condition|(
 name|duplicateKey
 condition|)
+comment|// JZTODO lyrics
 name|_pr
 operator|.
 name|addWarning
@@ -828,7 +829,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Duplicate BibTeX key"
+literal|"duplicate BibTeX key"
 argument_list|)
 operator|+
 literal|": "
@@ -837,8 +838,63 @@ name|be
 operator|.
 name|getCiteKey
 argument_list|()
+operator|+
+literal|" ("
+operator|+
+literal|"Grouping may not work for this entry."
+operator|+
+literal|")"
 argument_list|)
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|be
+operator|.
+name|getCiteKey
+argument_list|()
+operator|==
+literal|null
+operator|||
+name|be
+operator|.
+name|getCiteKey
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|""
+argument_list|)
+condition|)
+block|{
+name|_pr
+operator|.
+name|addWarning
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"empty BibTeX key"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|be
+operator|.
+name|getAuthorTitleYear
+argument_list|(
+literal|40
+argument_list|)
+operator|+
+literal|" ("
+operator|+
+literal|"Grouping may not work for this entry."
+operator|+
+literal|")"
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|skipWhitespace
 argument_list|()
