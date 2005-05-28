@@ -225,7 +225,7 @@ name|boolean
 name|regex
 parameter_list|)
 block|{
-comment|// JZTODO: Is there some way to prevent instance creation here?
+comment|// Is there some way to prevent instance creation here?
 comment|// How can a parser and/or lexer be reused?
 name|SearchExpressionParser
 name|parser
