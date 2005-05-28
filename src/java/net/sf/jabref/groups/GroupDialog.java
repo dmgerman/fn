@@ -44,18 +44,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
 name|*
 import|;
 end_import
@@ -68,7 +56,7 @@ name|util
 operator|.
 name|regex
 operator|.
-name|Pattern
+name|*
 import|;
 end_import
 
@@ -91,6 +79,18 @@ operator|.
 name|event
 operator|.
 name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|undo
+operator|.
+name|AbstractUndoableEdit
 import|;
 end_import
 
@@ -469,6 +469,13 @@ DECL|field|m_resultingGroup
 specifier|private
 name|AbstractGroup
 name|m_resultingGroup
+decl_stmt|;
+DECL|field|m_undoAddPreviousEntires
+specifier|private
+name|AbstractUndoableEdit
+name|m_undoAddPreviousEntires
+init|=
+literal|null
 decl_stmt|;
 DECL|field|m_editedGroup
 specifier|private
@@ -1430,6 +1437,22 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|m_editedGroup
+operator|!=
+literal|null
+operator|&&
+name|m_resultingGroup
+operator|.
+name|supportsAdd
+argument_list|()
+condition|)
+block|{
+name|addPreviousEntries
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -2235,10 +2258,6 @@ name|void
 name|addPreviousEntries
 parameter_list|()
 block|{
-comment|// JZTODO in general, this should create undo information
-comment|// because it might affect the entries. currently, it is only
-comment|// used for ExplicitGroups; the undo information for this case is
-comment|// contained completely in the UndoableModifyGroup object.
 comment|// JZTODO lyrics...
 name|int
 name|i
@@ -2287,6 +2306,13 @@ return|return;
 name|BibtexEntry
 name|entry
 decl_stmt|;
+name|Vector
+name|vec
+init|=
+operator|new
+name|Vector
+argument_list|()
+decl_stmt|;
 for|for
 control|(
 name|Iterator
@@ -2329,16 +2355,62 @@ argument_list|(
 name|entry
 argument_list|)
 condition|)
-operator|(
-operator|(
-name|ExplicitGroup
-operator|)
-name|m_resultingGroup
-operator|)
+name|vec
 operator|.
-name|addEntry
+name|add
 argument_list|(
 name|entry
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|vec
+operator|.
+name|size
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
+name|BibtexEntry
+index|[]
+name|entries
+init|=
+operator|new
+name|BibtexEntry
+index|[
+name|vec
+operator|.
+name|size
+argument_list|()
+index|]
+decl_stmt|;
+name|vec
+operator|.
+name|toArray
+argument_list|(
+name|entries
+argument_list|)
+expr_stmt|;
+comment|// the undo information for a conversion to an ExplicitGroup is
+comment|// contained completely in the UndoableModifyGroup object.
+if|if
+condition|(
+operator|!
+operator|(
+name|m_resultingGroup
+operator|instanceof
+name|ExplicitGroup
+operator|)
+condition|)
+name|m_undoAddPreviousEntires
+operator|=
+name|m_resultingGroup
+operator|.
+name|add
+argument_list|(
+name|entries
 argument_list|)
 expr_stmt|;
 block|}
@@ -3384,6 +3456,17 @@ argument_list|)
 return|;
 return|return
 name|s
+return|;
+block|}
+comment|/** Returns an undo object for adding the edited group's entries      * to the new group, or null if this did not occur. */
+DECL|method|getUndoForAddPreviousEntries ()
+specifier|public
+name|AbstractUndoableEdit
+name|getUndoForAddPreviousEntries
+parameter_list|()
+block|{
+return|return
+name|m_undoAddPreviousEntires
 return|;
 block|}
 block|}
