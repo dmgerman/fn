@@ -195,15 +195,8 @@ name|id
 init|=
 name|Util
 operator|.
-name|createId
-argument_list|(
-name|entry
-operator|.
-name|getType
+name|createNeutralId
 argument_list|()
-argument_list|,
-name|base
-argument_list|)
 decl_stmt|;
 name|entry
 operator|.

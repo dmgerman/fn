@@ -2317,14 +2317,8 @@ name|id
 init|=
 name|Util
 operator|.
-name|createId
-argument_list|(
-name|BibtexEntryType
-operator|.
-name|ARTICLE
-argument_list|,
-name|database
-argument_list|)
+name|createNeutralId
+argument_list|()
 decl_stmt|;
 name|BibtexEntry
 name|newEntry

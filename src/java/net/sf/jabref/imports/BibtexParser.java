@@ -444,6 +444,7 @@ operator|!=
 literal|null
 operator|)
 decl_stmt|;
+comment|//Util.pr(tp.getName());
 if|if
 condition|(
 operator|!
@@ -797,7 +798,6 @@ name|isEntry
 condition|)
 comment|// True if not comment, preamble or string.
 block|{
-comment|//Util.pr("Found: "+tp.getName());
 name|BibtexEntry
 name|be
 init|=
@@ -1121,13 +1121,10 @@ name|id
 init|=
 name|Util
 operator|.
-name|createId
-argument_list|(
-name|tp
-argument_list|,
-name|_db
-argument_list|)
+name|createNeutralId
+argument_list|()
 decl_stmt|;
+comment|//createId(tp, _db);
 name|BibtexEntry
 name|result
 init|=
@@ -1343,7 +1340,6 @@ argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
-comment|//System.out.println(key+"");
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
@@ -1470,6 +1466,7 @@ name|key
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|//System.out.println(content);
 if|if
 condition|(
 name|content

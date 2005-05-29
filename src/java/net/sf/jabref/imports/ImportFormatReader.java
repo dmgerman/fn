@@ -794,15 +794,8 @@ name|setId
 argument_list|(
 name|Util
 operator|.
-name|createId
-argument_list|(
-name|entry
-operator|.
-name|getType
+name|createNeutralId
 argument_list|()
-argument_list|,
-name|database
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|database
