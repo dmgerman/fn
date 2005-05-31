@@ -226,7 +226,10 @@ operator|=
 operator|new
 name|StringBuffer
 argument_list|(
-literal|"{"
+name|Globals
+operator|.
+name|getOpeningBrace
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// No formatting at all for these fields, to allow custom formatting?
@@ -269,7 +272,10 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"}"
+name|Globals
+operator|.
+name|getClosingBrace
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
@@ -599,7 +605,10 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|'{'
+name|Globals
+operator|.
+name|getOpeningBrace
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|boolean
@@ -680,7 +689,10 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|'}'
+name|Globals
+operator|.
+name|getClosingBrace
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

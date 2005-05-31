@@ -1539,6 +1539,56 @@ return|;
 block|}
 comment|/*       if(type.equals("article"))         return BibtexEntryType.ARTICLE;       else if(type.equals("book"))         return BibtexEntryType.BOOK;       else if(type.equals("inproceedings"))         return BibtexEntryType.INPROCEEDINGS;      */
 block|}
+comment|/**      * This method provides the correct opening brace to use when writing a field      * to BibTeX format.      * @return A String containing the braces to use.      */
+DECL|method|getOpeningBrace ()
+specifier|public
+specifier|static
+name|String
+name|getOpeningBrace
+parameter_list|()
+block|{
+if|if
+condition|(
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"autoDoubleBraces"
+argument_list|)
+condition|)
+return|return
+literal|"{{"
+return|;
+else|else
+return|return
+literal|"{"
+return|;
+block|}
+comment|/**      * This method provides the correct closing brace to use when writing a field      * to BibTeX format.      * @return A String containing the braces to use.      */
+DECL|method|getClosingBrace ()
+specifier|public
+specifier|static
+name|String
+name|getClosingBrace
+parameter_list|()
+block|{
+if|if
+condition|(
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"autoDoubleBraces"
+argument_list|)
+condition|)
+return|return
+literal|"}}"
+return|;
+else|else
+return|return
+literal|"}"
+return|;
+block|}
 comment|/*    public static void setupKeyBindings(JabRefPreferences prefs) {     }*/
 DECL|method|getNewFile (JFrame owner, JabRefPreferences prefs, File directory, String extension, int dialogType, boolean updateWorkingDirectory)
 specifier|public
