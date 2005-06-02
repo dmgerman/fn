@@ -692,7 +692,7 @@ operator|.
 name|psIcon
 argument_list|)
 decl_stmt|;
-comment|/**      * Creates a dialog that displays the given set of fields in the table.      * The dialog allows another process to add entries dynamically while the dialog      * is shown.      * @param frame      * @param panel      * @param fields      */
+comment|/**      * Creates a dialog that displays the given set of fields in the table.      * The dialog allows another process to add entries dynamically while the dialog      * is shown.      *      * @param frame      * @param panel      * @param fields      */
 DECL|method|ImportInspectionDialog (JabRefFrame frame, BasePanel panel, String[] fields, String undoName, boolean newDatabase)
 specifier|public
 name|ImportInspectionDialog
@@ -1390,7 +1390,37 @@ name|current
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Add a List of entries to the table view. The table will update to show the      * added entries. Synchronizes on this.entries to avoid conflict with the delete button      * which removes entries.      * @param entries      */
+comment|/**      * Wrapper for addEntries(List) that takes a single entry.      *      * @param entry The entry to add.      */
+DECL|method|addEntry (BibtexEntry entry)
+specifier|public
+name|void
+name|addEntry
+parameter_list|(
+name|BibtexEntry
+name|entry
+parameter_list|)
+block|{
+name|List
+name|list
+init|=
+operator|new
+name|ArrayList
+argument_list|()
+decl_stmt|;
+name|list
+operator|.
+name|add
+argument_list|(
+name|entry
+argument_list|)
+expr_stmt|;
+name|addEntries
+argument_list|(
+name|list
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Add a List of entries to the table view. The table will update to show the      * added entries. Synchronizes on this.entries to avoid conflict with the delete button      * which removes entries.      *      * @param entries      */
 DECL|method|addEntries (List entries)
 specifier|public
 name|void
@@ -1811,7 +1841,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This method returns a List containing all entries that are selected      * (checkbox checked).      * @return      */
+comment|/**      * This method returns a List containing all entries that are selected      * (checkbox checked).      *      * @return      */
 DECL|method|getSelectedEntries ()
 specifier|public
 name|List
@@ -2359,7 +2389,7 @@ return|return
 name|action
 return|;
 block|}
-comment|/**      * Stores the information about the selected entries being scheduled for addition      * to this group. The entries are *not* added to the group at this time.      *      * Synchronizes on this.entries to prevent      * conflict with threads that modify the entry list.      */
+comment|/**      * Stores the information about the selected entries being scheduled for addition      * to this group. The entries are *not* added to the group at this time.      *<p/>      * Synchronizes on this.entries to prevent      * conflict with threads that modify the entry list.      */
 DECL|class|AddToGroupAction
 class|class
 name|AddToGroupAction
@@ -2593,15 +2623,10 @@ name|selected
 operator|.
 name|size
 argument_list|()
-operator|==
+operator|>
 literal|0
 condition|)
 block|{
-name|dispose
-argument_list|()
-expr_stmt|;
-return|return;
-block|}
 name|NamedCompound
 name|ce
 init|=
@@ -2887,6 +2912,7 @@ argument_list|(
 name|ce
 argument_list|)
 expr_stmt|;
+block|}
 name|dispose
 argument_list|()
 expr_stmt|;
@@ -3567,7 +3593,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**        * This class handles clicks on the table that should trigger specific        * events, like opening the popup menu.        */
+comment|/**      * This class handles clicks on the table that should trigger specific      * events, like opening the popup menu.      */
 DECL|class|TableClickListener
 class|class
 name|TableClickListener

@@ -223,6 +223,10 @@ extends|extends
 name|SidePaneComponent
 implements|implements
 name|Runnable
+implements|,
+name|ImportInspectionDialog
+operator|.
+name|CallBack
 block|{
 comment|/**@class SearchResult      *        nested class.      */
 DECL|class|SearchResult
@@ -777,121 +781,25 @@ argument_list|)
 expr_stmt|;
 comment|/*NamedCompound ce = new NamedCompound("fetch Medline"); 		Iterator i = bibs.iterator(); 		while (i.hasNext()) { 		    try { 			BibtexEntry be = (BibtexEntry) i.next(); 			String id = Util.createId(be.getType(), panel.database()); 			be.setId(id); 			entries.add(be); 			//panel.database().insertEntry(be); 			//ce.addEdit(new UndoableInsertEntry(panel.database(), be, panel)); 		    } 		    catch (KeyCollisionException ex) { 		    } 		    }*/
 comment|//ce.end();
-name|int
-name|importedEntries
-init|=
 name|panel
 operator|.
 name|frame
 argument_list|()
 operator|.
-name|addBibEntries
+name|addImportedEntries
 argument_list|(
+name|panel
+argument_list|,
 name|bibs
 argument_list|,
 literal|null
 argument_list|,
 literal|false
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|importedEntries
-operator|==
-literal|0
-condition|)
-block|{
-return|return;
-comment|// Nothing to refresh!
-block|}
-name|panel
-operator|.
-name|markBaseChanged
-argument_list|()
-expr_stmt|;
-name|panel
-operator|.
-name|refreshTable
-argument_list|()
-expr_stmt|;
-if|if
-condition|(
-name|bibs
-operator|.
-name|size
-argument_list|()
-operator|>
-literal|0
-condition|)
-block|{
-name|BibtexEntry
-index|[]
-name|entries
-init|=
-operator|(
-name|BibtexEntry
-index|[]
-operator|)
-name|bibs
-operator|.
-name|toArray
-argument_list|(
-operator|new
-name|BibtexEntry
-index|[
-literal|0
-index|]
-argument_list|)
-decl_stmt|;
-name|panel
-operator|.
-name|selectEntries
-argument_list|(
-name|entries
 argument_list|,
-literal|0
+name|this
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|entries
-operator|.
-name|length
-operator|==
-literal|1
-condition|)
-name|panel
-operator|.
-name|showEntry
-argument_list|(
-name|entries
-index|[
-literal|0
-index|]
-argument_list|)
-expr_stmt|;
-comment|//else
-comment|//    panel.updateViewToSelected();
-block|}
-name|panel
-operator|.
-name|output
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Medline entries fetched"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|bibs
-operator|.
-name|size
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|/* 		int importedEntries = panel.frame().addBibEntries(bibs, null, false);         if (importedEntries == 0) {             return; // Nothing to refresh!         }         panel.markBaseChanged(); 		panel.refreshTable();         if (bibs.size()> 0) {             BibtexEntry[] entries = (BibtexEntry[])bibs.toArray(new BibtexEntry[0]);             panel.selectEntries(entries, 0);             if (entries.length == 1)                 panel.showEntry(entries[0]);             //else             //    panel.updateViewToSelected();         }*/
 comment|//panel.undoManager.addEdit(ce);
 block|}
 else|else
@@ -2329,6 +2237,46 @@ operator|.
 name|toString
 argument_list|()
 return|;
+block|}
+comment|// This method is called by the dialog when the user has selected the
+comment|// wanted entries, and clicked Ok. The callback object can update status
+comment|// line etc.
+DECL|method|done (int entriesImported)
+specifier|public
+name|void
+name|done
+parameter_list|(
+name|int
+name|entriesImported
+parameter_list|)
+block|{
+name|panel
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Medline entries fetched"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|entriesImported
+argument_list|)
+expr_stmt|;
+block|}
+comment|// This method is called by the dialog when the user has cancelled or
+comment|// signalled a stop. It is expected that any long-running fetch operations
+comment|// will stop after this method is called.
+DECL|method|stopFetching ()
+specifier|public
+name|void
+name|stopFetching
+parameter_list|()
+block|{
+comment|//To change body of implemented methods use File | Settings | File Templates.
 block|}
 block|}
 end_class
