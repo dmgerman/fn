@@ -1382,6 +1382,26 @@ expr_stmt|;
 block|}
 specifier|public
 name|void
+name|cancelled
+parameter_list|()
+block|{
+name|panel
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"%0 import cancelled."
+argument_list|,
+literal|"Medline"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+specifier|public
+name|void
 name|stopFetching
 parameter_list|()
 block|{
@@ -2264,6 +2284,27 @@ operator|+
 literal|": "
 operator|+
 name|entriesImported
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|cancelled ()
+specifier|public
+name|void
+name|cancelled
+parameter_list|()
+block|{
+name|panel
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"%0 import cancelled."
+argument_list|,
+literal|"Medline"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

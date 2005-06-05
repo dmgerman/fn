@@ -2670,6 +2670,11 @@ name|prefs
 argument_list|)
 expr_stmt|;
 block|}
+name|boolean
+name|groupingCanceled
+init|=
+literal|false
+decl_stmt|;
 for|for
 control|(
 name|Iterator
@@ -2715,9 +2720,14 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|groupingCanceled
+operator|&&
+operator|(
 name|groups
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 if|if
@@ -2737,6 +2747,54 @@ block|{
 comment|// The entry has no key, so it can't be added to the group.
 comment|// The best course of ation is probably to ask the user if a key should be generated
 comment|// immediately.
+name|int
+name|answer
+init|=
+name|JOptionPane
+operator|.
+name|showConfirmDialog
+argument_list|(
+name|ImportInspectionDialog
+operator|.
+name|this
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Cannot add entries to group without generating keys. Generate keys now?"
+argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Add to group"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|YES_NO_OPTION
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|answer
+operator|==
+name|JOptionPane
+operator|.
+name|YES_OPTION
+condition|)
+block|{
+name|generateKeys
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+name|groupingCanceled
+operator|=
+literal|true
+expr_stmt|;
 block|}
 comment|// If the key was set, or has been set now, go ahead:
 if|if
@@ -2749,7 +2807,7 @@ name|Globals
 operator|.
 name|KEY_FIELD
 argument_list|)
-operator|==
+operator|!=
 literal|null
 condition|)
 block|{
@@ -3273,6 +3331,37 @@ expr_stmt|;
 name|dispose
 argument_list|()
 expr_stmt|;
+for|for
+control|(
+name|Iterator
+name|i
+init|=
+name|callBacks
+operator|.
+name|iterator
+argument_list|()
+init|;
+name|i
+operator|.
+name|hasNext
+argument_list|()
+condition|;
+control|)
+block|{
+operator|(
+operator|(
+name|CallBack
+operator|)
+name|i
+operator|.
+name|next
+argument_list|()
+operator|)
+operator|.
+name|cancelled
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 DECL|class|GenerateListener
@@ -4075,6 +4164,13 @@ parameter_list|(
 name|int
 name|entriesImported
 parameter_list|)
+function_decl|;
+comment|// This method is called by the dialog when the user has cancelled the import.
+DECL|method|cancelled ()
+specifier|public
+name|void
+name|cancelled
+parameter_list|()
 function_decl|;
 comment|// This method is called by the dialog when the user has cancelled or
 comment|// signalled a stop. It is expected that any long-running fetch operations

@@ -522,6 +522,30 @@ name|entriesImported
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|cancelled ()
+specifier|public
+name|void
+name|cancelled
+parameter_list|()
+block|{
+name|frame
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"%0 import cancelled."
+argument_list|,
+name|importer
+operator|.
+name|getFormatName
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 comment|// This method is called by the dialog when the user has cancelled or
 comment|// signalled a stop. It is expected that any long-running fetch operations
 comment|// will stop after this method is called.
