@@ -1407,23 +1407,10 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|SearchManager2
-operator|.
-name|this
-operator|.
-name|actionPerformed
-argument_list|(
-operator|new
-name|ActionEvent
-argument_list|(
-name|escape
-argument_list|,
-literal|0
-argument_list|,
-literal|""
-argument_list|)
-argument_list|)
+name|hideAway
+argument_list|()
 expr_stmt|;
+comment|//SearchManager2.this.actionPerformed(new ActionEvent(escape, 0, ""));
 block|}
 block|}
 argument_list|)

@@ -388,6 +388,17 @@ name|formats
 operator|.
 name|put
 argument_list|(
+literal|"csa"
+argument_list|,
+operator|new
+name|CsaImporter
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|formats
+operator|.
+name|put
+argument_list|(
 literal|"isi"
 argument_list|,
 operator|new
