@@ -34,6 +34,18 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|*
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class functions as a repository for options and their modules. It  * facilitates registration of options and modules, as well as processing of  * arguments.<p>  *  * Information such as help, usage, and versions are displayed  * when the respective --help and --version options are specified.  * The --menu option will invoke the built-in menu.<p>  *  * In the example below, the program processes three simple options.  *  *<pre>  * public class AboutMe {  *  *    private static StringOption name = new StringOption( "Ryan" );  *    private static IntOption age = new IntOption( 19 );  *    private static DoubleOption bankBalance = new DoubleOption( 15.15 );  *  *    public static void main( String args[] ) {  *       Options repo = new Options( "java AboutMe" );  *       repo.register( "name", 'n', name, "The person's name." );  *       repo.register( "age", 'a', age, "The person's age." );  *       repo.register( "balance", 'b', "The person's bank balance.",  *                       bankBalance );  *       repo.process( args ); g *       System.err.println( "" + name + ", age " + age + " has a " +  *                           " bank balance of " + bankBalance + "." );  *    }  * }  *</pre>  *  *<hr>  *  *<pre>  * Copyright (C) Damian Ryan Eads, 2001. All Rights Reserved.  *  * ritopt is free software; you can redistribute it and/or modify  * it under the terms of the GNU General Public License as published by  * the Free Software Foundation; either version 2 of the License, or  * (at your option) any later version.  *  * ritopt is distributed in the hope that it will be useful,  * but WITHOUT ANY WARRANTY; without even the implied warranty of  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  * GNU General Public License for more details.  *  * You should have received a copy of the GNU General Public License  * along with ritopt; if not, write to the Free Software  * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA  *</pre>  *  * @author Damian Eads  */
 end_comment
@@ -622,6 +634,14 @@ name|println
 argument_list|(
 name|getVersion
 argument_list|()
+operator|+
+literal|" (build "
+operator|+
+name|Globals
+operator|.
+name|BUILD
+operator|+
+literal|")"
 argument_list|)
 expr_stmt|;
 block|}

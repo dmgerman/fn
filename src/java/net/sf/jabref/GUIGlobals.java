@@ -114,10 +114,13 @@ name|frameTitle
 init|=
 literal|"JabRef"
 decl_stmt|,
+comment|//      version = "1.8b",
 DECL|field|version
 name|version
 init|=
-literal|"1.8b"
+name|Globals
+operator|.
+name|VERSION
 decl_stmt|,
 DECL|field|stringsTitle
 name|stringsTitle
