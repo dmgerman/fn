@@ -44,16 +44,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|undo
 operator|.
 name|AbstractUndoableEdit
@@ -154,8 +144,8 @@ name|m_pattern
 init|=
 literal|null
 decl_stmt|;
-comment|/**      * Creates a KeywordGroup with the specified properties.      */
-DECL|method|KeywordGroup (String name, String searchField, String searchExpression, boolean caseSensitive, boolean regExp)
+comment|/** 	 * Creates a KeywordGroup with the specified properties. 	 */
+DECL|method|KeywordGroup (String name, String searchField, String searchExpression, boolean caseSensitive, boolean regExp, int context)
 specifier|public
 name|KeywordGroup
 parameter_list|(
@@ -173,6 +163,9 @@ name|caseSensitive
 parameter_list|,
 name|boolean
 name|regExp
+parameter_list|,
+name|int
+name|context
 parameter_list|)
 throws|throws
 name|IllegalArgumentException
@@ -182,6 +175,8 @@ block|{
 name|super
 argument_list|(
 name|name
+argument_list|,
+name|context
 argument_list|)
 expr_stmt|;
 name|m_searchField
@@ -241,7 +236,7 @@ name|CASE_INSENSITIVE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Parses s and recreates the KeywordGroup from it.      *       * @param s      *            The String representation obtained from      *            KeywordGroup.toString()      */
+comment|/** 	 * Parses s and recreates the KeywordGroup from it. 	 *  	 * @param s 	 *            The String representation obtained from 	 *            KeywordGroup.toString() 	 */
 DECL|method|fromString (String s, BibtexDatabase db, int version)
 specifier|public
 specifier|static
@@ -372,6 +367,10 @@ argument_list|,
 literal|false
 argument_list|,
 literal|true
+argument_list|,
+name|AbstractGroup
+operator|.
+name|INDEPENDENT
 argument_list|)
 return|;
 block|}
@@ -470,6 +469,120 @@ argument_list|,
 name|caseSensitive
 argument_list|,
 name|regExp
+argument_list|,
+name|AbstractGroup
+operator|.
+name|INDEPENDENT
+argument_list|)
+return|;
+block|}
+case|case
+literal|3
+case|:
+block|{
+name|String
+name|name
+init|=
+name|tok
+operator|.
+name|nextToken
+argument_list|()
+decl_stmt|;
+name|int
+name|context
+init|=
+name|Integer
+operator|.
+name|parseInt
+argument_list|(
+name|tok
+operator|.
+name|nextToken
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|String
+name|field
+init|=
+name|tok
+operator|.
+name|nextToken
+argument_list|()
+decl_stmt|;
+name|String
+name|expression
+init|=
+name|tok
+operator|.
+name|nextToken
+argument_list|()
+decl_stmt|;
+name|boolean
+name|caseSensitive
+init|=
+name|Integer
+operator|.
+name|parseInt
+argument_list|(
+name|tok
+operator|.
+name|nextToken
+argument_list|()
+argument_list|)
+operator|==
+literal|1
+decl_stmt|;
+name|boolean
+name|regExp
+init|=
+name|Integer
+operator|.
+name|parseInt
+argument_list|(
+name|tok
+operator|.
+name|nextToken
+argument_list|()
+argument_list|)
+operator|==
+literal|1
+decl_stmt|;
+return|return
+operator|new
+name|KeywordGroup
+argument_list|(
+name|Util
+operator|.
+name|unquote
+argument_list|(
+name|name
+argument_list|,
+name|QUOTE_CHAR
+argument_list|)
+argument_list|,
+name|Util
+operator|.
+name|unquote
+argument_list|(
+name|field
+argument_list|,
+name|QUOTE_CHAR
+argument_list|)
+argument_list|,
+name|Util
+operator|.
+name|unquote
+argument_list|(
+name|expression
+argument_list|,
+name|QUOTE_CHAR
+argument_list|)
+argument_list|,
+name|caseSensitive
+argument_list|,
+name|regExp
+argument_list|,
+name|context
 argument_list|)
 return|;
 block|}
@@ -485,7 +598,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * @see net.sf.jabref.groups.AbstractGroup#getSearchRule()      */
+comment|/** 	 * @see net.sf.jabref.groups.AbstractGroup#getSearchRule() 	 */
 DECL|method|getSearchRule ()
 specifier|public
 name|SearchRule
@@ -496,7 +609,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/**      * Returns a String representation of this object that can be used to      * reconstruct it.      */
+comment|/** 	 * Returns a String representation of this object that can be used to 	 * reconstruct it. 	 */
 DECL|method|toString ()
 specifier|public
 name|String
@@ -516,6 +629,10 @@ name|SEPARATOR
 argument_list|,
 name|QUOTE_CHAR
 argument_list|)
+operator|+
+name|SEPARATOR
+operator|+
+name|m_context
 operator|+
 name|SEPARATOR
 operator|+
@@ -693,11 +810,14 @@ argument_list|)
 decl_stmt|,
 name|pre
 init|=
-literal|" "
-decl_stmt|,
-name|post
-init|=
-literal|""
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"groupKeywordSeparator"
+argument_list|)
 decl_stmt|;
 name|String
 name|newContent
@@ -715,8 +835,6 @@ name|pre
 operator|)
 operator|+
 name|m_searchExpression
-operator|+
-name|post
 decl_stmt|;
 name|entries
 index|[
@@ -1015,7 +1133,7 @@ operator|.
 name|m_regExp
 return|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.groups.AbstractGroup#contains(java.util.Map,      *      net.sf.jabref.BibtexEntry)      */
+comment|/* 	 * (non-Javadoc) 	 *  	 * @see net.sf.jabref.groups.AbstractGroup#contains(java.util.Map, 	 *      net.sf.jabref.BibtexEntry) 	 */
 DECL|method|contains (Map searchOptions, BibtexEntry entry)
 specifier|public
 name|boolean
@@ -1116,7 +1234,7 @@ operator|>=
 literal|0
 return|;
 block|}
-comment|/**      * Removes matches of searchString in the entry's field. This is only      * possible if the search expression is not a regExp.      */
+comment|/** 	 * Removes matches of searchString in the entry's field. This is only 	 * possible if the search expression is not a regExp. 	 */
 DECL|method|removeMatches (BibtexEntry entry)
 specifier|private
 name|void
@@ -1196,6 +1314,19 @@ name|j
 decl_stmt|,
 name|k
 decl_stmt|;
+specifier|final
+name|String
+name|separator
+init|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"groupKeywordSeparator"
+argument_list|)
+decl_stmt|;
 while|while
 condition|(
 operator|(
@@ -1261,6 +1392,10 @@ literal|1
 operator|>=
 literal|0
 operator|&&
+name|separator
+operator|.
+name|indexOf
+argument_list|(
 name|haystack
 operator|.
 name|charAt
@@ -1269,8 +1404,9 @@ name|j
 operator|-
 literal|1
 argument_list|)
-operator|==
-literal|' '
+argument_list|)
+operator|>=
+literal|0
 condition|)
 operator|--
 name|j
@@ -1284,14 +1420,19 @@ operator|.
 name|length
 argument_list|()
 operator|&&
+name|separator
+operator|.
+name|indexOf
+argument_list|(
 name|haystack
 operator|.
 name|charAt
 argument_list|(
 name|k
 argument_list|)
-operator|==
-literal|' '
+argument_list|)
+operator|>=
+literal|0
 condition|)
 operator|++
 name|k
@@ -1304,7 +1445,20 @@ name|j
 argument_list|,
 name|k
 argument_list|,
-literal|" "
+name|j
+operator|>=
+literal|0
+operator|&&
+name|k
+operator|<
+name|sbOrig
+operator|.
+name|length
+argument_list|()
+condition|?
+name|separator
+else|:
+literal|""
 argument_list|)
 expr_stmt|;
 name|sbLower
@@ -1315,7 +1469,20 @@ name|j
 argument_list|,
 name|k
 argument_list|,
-literal|" "
+name|j
+operator|>=
+literal|0
+operator|&&
+name|k
+operator|<
+name|sbOrig
+operator|.
+name|length
+argument_list|()
+condition|?
+name|separator
+else|:
+literal|""
 argument_list|)
 expr_stmt|;
 block|}
@@ -1397,6 +1564,8 @@ argument_list|,
 name|m_caseSensitive
 argument_list|,
 name|m_regExp
+argument_list|,
+name|m_context
 argument_list|)
 return|;
 block|}
@@ -1466,6 +1635,274 @@ parameter_list|()
 block|{
 return|return
 name|m_searchField
+return|;
+block|}
+DECL|method|isDynamic ()
+specifier|public
+name|boolean
+name|isDynamic
+parameter_list|()
+block|{
+return|return
+literal|true
+return|;
+block|}
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+name|getDescriptionForPreview
+argument_list|(
+name|m_searchField
+argument_list|,
+name|m_searchExpression
+argument_list|,
+name|m_caseSensitive
+argument_list|,
+name|m_regExp
+argument_list|)
+return|;
+block|}
+DECL|method|getDescriptionForPreview (String field, String expr, boolean caseSensitive, boolean regExp)
+specifier|public
+specifier|static
+name|String
+name|getDescriptionForPreview
+parameter_list|(
+name|String
+name|field
+parameter_list|,
+name|String
+name|expr
+parameter_list|,
+name|boolean
+name|caseSensitive
+parameter_list|,
+name|boolean
+name|regExp
+parameter_list|)
+block|{
+name|StringBuffer
+name|sb
+init|=
+operator|new
+name|StringBuffer
+argument_list|()
+decl_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+name|regExp
+condition|?
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"This group contains entries whose<b>%0</b> field contains the regular expression<b>%1</b>"
+argument_list|,
+name|field
+argument_list|,
+name|expr
+argument_list|)
+else|:
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"This group contains entries whose<b>%0</b> field contains the keyword<b>%1</b>"
+argument_list|,
+name|field
+argument_list|,
+name|expr
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|" ("
+operator|+
+operator|(
+name|caseSensitive
+condition|?
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"case sensitive"
+argument_list|)
+else|:
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"case insensitive"
+argument_list|)
+operator|)
+operator|+
+literal|"). "
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+name|regExp
+condition|?
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Entries cannot be manually assigned to or removed from this group."
+argument_list|)
+else|:
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Additionally, entries whose<b>%0</b> field does not contain "
+operator|+
+literal|"<b>%1</b> can be assigned manually to this group by selecting them "
+operator|+
+literal|"then using either drag and drop or the context menu. "
+operator|+
+literal|"This process adds the term<b>%1</b> to "
+operator|+
+literal|"each entry's<b>%0</b> field. "
+operator|+
+literal|"Entries can be removed manually from this group by selecting them "
+operator|+
+literal|"then using the context menu. "
+operator|+
+literal|"This process removes the term<b>%1</b> from "
+operator|+
+literal|"each entry's<b>%0</b> field."
+argument_list|,
+name|field
+argument_list|,
+name|expr
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+name|sb
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
+DECL|method|getShortDescription ()
+specifier|public
+name|String
+name|getShortDescription
+parameter_list|()
+block|{
+name|StringBuffer
+name|sb
+init|=
+operator|new
+name|StringBuffer
+argument_list|()
+decl_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"<b>"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"groupShowDynamic"
+argument_list|)
+condition|)
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"<i>"
+operator|+
+name|getName
+argument_list|()
+operator|+
+literal|"</i>"
+argument_list|)
+expr_stmt|;
+else|else
+name|sb
+operator|.
+name|append
+argument_list|(
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"</b> - dynamic group (<b>"
+operator|+
+name|m_searchField
+operator|+
+literal|"</b> contains<b>"
+operator|+
+name|m_searchExpression
+operator|+
+literal|"</b>)"
+argument_list|)
+expr_stmt|;
+switch|switch
+condition|(
+name|getHierarchicalContext
+argument_list|()
+condition|)
+block|{
+case|case
+name|AbstractGroup
+operator|.
+name|INCLUDING
+case|:
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|", includes subgroups"
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|AbstractGroup
+operator|.
+name|REFINING
+case|:
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|", refines supergroup"
+argument_list|)
+expr_stmt|;
+break|break;
+default|default:
+break|break;
+block|}
+return|return
+name|sb
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 block|}
