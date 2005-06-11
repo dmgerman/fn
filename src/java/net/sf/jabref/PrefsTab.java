@@ -12,6 +12,7 @@ end_package
 
 begin_interface
 DECL|interface|PrefsTab
+specifier|public
 interface|interface
 name|PrefsTab
 block|{
