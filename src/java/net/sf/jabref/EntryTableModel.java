@@ -1090,6 +1090,16 @@ name|row
 argument_list|)
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|be
+operator|==
+literal|null
+condition|)
+return|return
+literal|false
+return|;
+comment|// TODO: JZ: I think this should never happen, but it does
 name|String
 name|o
 init|=
