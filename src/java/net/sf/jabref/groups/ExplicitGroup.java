@@ -696,9 +696,17 @@ name|equals
 argument_list|(
 name|m_entries
 argument_list|)
+operator|&&
+name|other
+operator|.
+name|getHierarchicalContext
+argument_list|()
+operator|==
+name|getHierarchicalContext
+argument_list|()
 return|;
 block|}
-comment|/** 	 * Returns a String representation of this group and its entries. Entries 	 * are referenced by their Bibtexkey. Entries that do not have a Bibtexkey 	 * are not included in the representation and will thus not be available 	 * upon recreation. 	 */
+comment|/**      * Returns a String representation of this group and its entries. Entries      * are referenced by their Bibtexkey. Entries that do not have a Bibtexkey      * are not included in the representation and will thus not be available      * upon recreation.      */
 DECL|method|toString ()
 specifier|public
 name|String

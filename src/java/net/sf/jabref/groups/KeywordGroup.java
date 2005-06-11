@@ -1131,6 +1131,14 @@ operator|==
 name|other
 operator|.
 name|m_regExp
+operator|&&
+name|getHierarchicalContext
+argument_list|()
+operator|==
+name|other
+operator|.
+name|getHierarchicalContext
+argument_list|()
 return|;
 block|}
 comment|/* 	 * (non-Javadoc) 	 *  	 * @see net.sf.jabref.groups.AbstractGroup#contains(java.util.Map, 	 *      net.sf.jabref.BibtexEntry) 	 */
