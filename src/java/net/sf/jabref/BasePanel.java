@@ -5508,6 +5508,10 @@ operator|new
 name|ExplicitGroup
 argument_list|(
 literal|"Imported"
+argument_list|,
+name|AbstractGroup
+operator|.
+name|INDEPENDENT
 argument_list|)
 decl_stmt|;
 comment|// JZTODO lyrics
@@ -10937,11 +10941,18 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|editor
 operator|.
 name|updateAllFields
 argument_list|()
 expr_stmt|;
+name|editor
+operator|.
+name|updateSource
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * If an entry editor is showing, make sure its currently focused field      * stores its changes, if any.      */
