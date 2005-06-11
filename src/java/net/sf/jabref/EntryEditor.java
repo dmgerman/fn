@@ -2199,7 +2199,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|updateSource ()
-specifier|private
+specifier|public
 name|void
 name|updateSource
 parameter_list|()
@@ -3566,6 +3566,8 @@ elseif|else
 if|if
 condition|(
 name|emptyWarning
+operator|&&
+name|showError
 condition|)
 block|{
 name|warnEmptyBibtexkey
