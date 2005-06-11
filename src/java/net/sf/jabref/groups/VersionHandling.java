@@ -55,7 +55,7 @@ specifier|final
 name|int
 name|CURRENT_VERSION
 init|=
-literal|2
+literal|3
 decl_stmt|;
 comment|/**      * Imports old (flat) groups data and converts it to a 2-level tree with an      * AllEntriesGroup at the root.      *       * @return the root of the generated tree.      */
 DECL|method|importFlatGroups (Vector groups)
@@ -181,6 +181,10 @@ argument_list|,
 literal|false
 argument_list|,
 literal|true
+argument_list|,
+name|AbstractGroup
+operator|.
+name|INDEPENDENT
 argument_list|)
 argument_list|)
 argument_list|)
@@ -240,8 +244,11 @@ return|;
 case|case
 literal|2
 case|:
+case|case
+literal|3
+case|:
 return|return
-name|Version2
+name|Version2_3
 operator|.
 name|fromString
 argument_list|(
@@ -641,11 +648,11 @@ literal|1
 return|;
 block|}
 block|}
-DECL|class|Version2
+DECL|class|Version2_3
 specifier|private
 specifier|static
 class|class
-name|Version2
+name|Version2_3
 block|{
 DECL|method|fromString (Vector data, BibtexDatabase db, int version)
 specifier|private
