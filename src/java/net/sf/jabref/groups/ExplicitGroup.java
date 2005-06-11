@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* All programs in this directory and subdirectories are published under the  GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it  under the terms of the GNU General Public License as published by the Free  Software Foundation; either version 2 of the License, or (at your option)  any later version.  This program is distributed in the hope that it will be useful, but WITHOUT  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for  more details.  You should have received a copy of the GNU General Public License along  with this program; if not, write to the Free Software Foundation, Inc., 59  Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html */
+comment|/*  All programs in this directory and subdirectories are published under the   GNU General Public License as described below.   This program is free software; you can redistribute it and/or modify it   under the terms of the GNU General Public License as published by the Free   Software Foundation; either version 2 of the License, or (at your option)   any later version.   This program is distributed in the hope that it will be useful, but WITHOUT   ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or   FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for   more details.   You should have received a copy of the GNU General Public License along   with this program; if not, write to the Free Software Foundation, Inc., 59   Temple Place, Suite 330, Boston, MA 02111-1307 USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html  */
 end_comment
 
 begin_package
@@ -93,17 +93,22 @@ specifier|final
 name|Set
 name|m_entries
 decl_stmt|;
-DECL|method|ExplicitGroup (String name)
+DECL|method|ExplicitGroup (String name, int context)
 specifier|public
 name|ExplicitGroup
 parameter_list|(
 name|String
 name|name
+parameter_list|,
+name|int
+name|context
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|name
+argument_list|,
+name|context
 argument_list|)
 expr_stmt|;
 name|m_entries
@@ -189,6 +194,7 @@ case|:
 case|case
 literal|2
 case|:
+block|{
 name|ExplicitGroup
 name|newGroup
 init|=
@@ -199,8 +205,99 @@ name|tok
 operator|.
 name|nextToken
 argument_list|()
+argument_list|,
+name|AbstractGroup
+operator|.
+name|INDEPENDENT
 argument_list|)
 decl_stmt|;
+name|newGroup
+operator|.
+name|addEntries
+argument_list|(
+name|tok
+argument_list|,
+name|db
+argument_list|)
+expr_stmt|;
+return|return
+name|newGroup
+return|;
+block|}
+case|case
+literal|3
+case|:
+block|{
+name|String
+name|name
+init|=
+name|tok
+operator|.
+name|nextToken
+argument_list|()
+decl_stmt|;
+name|int
+name|context
+init|=
+name|Integer
+operator|.
+name|parseInt
+argument_list|(
+name|tok
+operator|.
+name|nextToken
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|ExplicitGroup
+name|newGroup
+init|=
+operator|new
+name|ExplicitGroup
+argument_list|(
+name|name
+argument_list|,
+name|context
+argument_list|)
+decl_stmt|;
+name|newGroup
+operator|.
+name|addEntries
+argument_list|(
+name|tok
+argument_list|,
+name|db
+argument_list|)
+expr_stmt|;
+return|return
+name|newGroup
+return|;
+block|}
+default|default:
+throw|throw
+operator|new
+name|UnsupportedVersionException
+argument_list|(
+literal|"ExplicitGroup"
+argument_list|,
+name|version
+argument_list|)
+throw|;
+block|}
+block|}
+comment|/** Called only when created fromString */
+DECL|method|addEntries (QuotedStringTokenizer tok, BibtexDatabase db)
+specifier|protected
+name|void
+name|addEntries
+parameter_list|(
+name|QuotedStringTokenizer
+name|tok
+parameter_list|,
+name|BibtexDatabase
+name|db
+parameter_list|)
+block|{
 name|BibtexEntry
 index|[]
 name|entries
@@ -248,8 +345,6 @@ condition|;
 operator|++
 name|i
 control|)
-name|newGroup
-operator|.
 name|m_entries
 operator|.
 name|add
@@ -260,20 +355,6 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
-block|}
-return|return
-name|newGroup
-return|;
-default|default:
-throw|throw
-operator|new
-name|UnsupportedVersionException
-argument_list|(
-literal|"ExplicitGroup"
-argument_list|,
-name|version
-argument_list|)
-throw|;
 block|}
 block|}
 DECL|method|getSearchRule ()
@@ -551,6 +632,8 @@ operator|new
 name|ExplicitGroup
 argument_list|(
 name|m_name
+argument_list|,
+name|m_context
 argument_list|)
 decl_stmt|;
 name|copy
@@ -615,7 +698,7 @@ name|m_entries
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns a String representation of this group and its entries. Entries      * are referenced by their Bibtexkey. Entries that do not have a Bibtexkey      * are not included in the representation and will thus not be available      * upon recreation.      */
+comment|/** 	 * Returns a String representation of this group and its entries. Entries 	 * are referenced by their Bibtexkey. Entries that do not have a Bibtexkey 	 * are not included in the representation and will thus not be available 	 * upon recreation. 	 */
 DECL|method|toString ()
 specifier|public
 name|String
@@ -645,6 +728,10 @@ name|SEPARATOR
 argument_list|,
 name|QUOTE_CHAR
 argument_list|)
+operator|+
+name|SEPARATOR
+operator|+
+name|m_context
 operator|+
 name|SEPARATOR
 argument_list|)
@@ -776,6 +863,122 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+block|}
+DECL|method|isDynamic ()
+specifier|public
+name|boolean
+name|isDynamic
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+name|getDescriptionForPreview
+argument_list|()
+return|;
+block|}
+DECL|method|getDescriptionForPreview ()
+specifier|public
+specifier|static
+name|String
+name|getDescriptionForPreview
+parameter_list|()
+block|{
+return|return
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"This group contains entries based on manual assignment. "
+operator|+
+literal|"Entries can be assigned to this group by selecting them "
+operator|+
+literal|"then using either drag and drop or the context menu. "
+operator|+
+literal|"Entries can be removed from this group by selecting them "
+operator|+
+literal|"then using the context menu. Every entry assigned to this group "
+operator|+
+literal|"must have a unique key. The key may be changed at any time "
+operator|+
+literal|"as long as it remains unique."
+argument_list|)
+return|;
+block|}
+DECL|method|getShortDescription ()
+specifier|public
+name|String
+name|getShortDescription
+parameter_list|()
+block|{
+name|StringBuffer
+name|sb
+init|=
+operator|new
+name|StringBuffer
+argument_list|()
+decl_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"<b>"
+operator|+
+name|getName
+argument_list|()
+operator|+
+literal|"</b> - static group"
+argument_list|)
+expr_stmt|;
+switch|switch
+condition|(
+name|getHierarchicalContext
+argument_list|()
+condition|)
+block|{
+case|case
+name|AbstractGroup
+operator|.
+name|INCLUDING
+case|:
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|", includes subgroups"
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|AbstractGroup
+operator|.
+name|REFINING
+case|:
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|", refines supergroup"
+argument_list|)
+expr_stmt|;
+break|break;
+default|default:
+break|break;
+block|}
+return|return
+name|sb
+operator|.
+name|toString
+argument_list|()
+return|;
 block|}
 block|}
 end_class

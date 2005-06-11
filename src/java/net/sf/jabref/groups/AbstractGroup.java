@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* All programs in this directory and subdirectories are published under the  GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it  under the terms of the GNU General Public License as published by the Free  Software Foundation; either version 2 of the License, or (at your option)  any later version.  This program is distributed in the hope that it will be useful, but WITHOUT  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for  more details.  You should have received a copy of the GNU General Public License along  with this program; if not, write to the Free Software Foundation, Inc., 59  Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html */
+comment|/*  All programs in this directory and subdirectories are published under the   GNU General Public License as described below.   This program is free software; you can redistribute it and/or modify it   under the terms of the GNU General Public License as published by the Free   Software Foundation; either version 2 of the License, or (at your option)   any later version.   This program is distributed in the hope that it will be useful, but WITHOUT   ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or   FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for   more details.   You should have received a copy of the GNU General Public License along   with this program; if not, write to the Free Software Foundation, Inc., 59   Temple Place, Suite 330, Boston, MA 02111-1307 USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html  */
 end_comment
 
 begin_package
@@ -61,24 +61,71 @@ specifier|abstract
 class|class
 name|AbstractGroup
 block|{
+comment|/** The group's name (every type of group has one). */
 DECL|field|m_name
 specifier|protected
 name|String
 name|m_name
 decl_stmt|;
-DECL|method|AbstractGroup (String name)
+comment|/** 	 * The hierarchical context of the group (INDEPENDENT, REFINING, or 	 * INCLUDING). Defaults to INDEPENDENT, which will be used if and 	 * only if the context specified in the constructor is invalid. 	 */
+DECL|field|m_context
+specifier|protected
+name|int
+name|m_context
+init|=
+name|INDEPENDENT
+decl_stmt|;
+DECL|method|AbstractGroup (String name, int context)
 specifier|public
 name|AbstractGroup
 parameter_list|(
 name|String
 name|name
+parameter_list|,
+name|int
+name|context
 parameter_list|)
 block|{
 name|m_name
 operator|=
 name|name
 expr_stmt|;
+name|setHierarchicalContext
+argument_list|(
+name|context
+argument_list|)
+expr_stmt|;
 block|}
+comment|/** Group's contents are independent of its hierarchical position. */
+DECL|field|INDEPENDENT
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|INDEPENDENT
+init|=
+literal|0
+decl_stmt|;
+comment|/** 	 * Group's content is the intersection of its own content with its 	 * supergroup's content. 	 */
+DECL|field|REFINING
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|REFINING
+init|=
+literal|1
+decl_stmt|;
+comment|/** 	 * Group's content is the union of its own content with its subgroups' 	 * content. 	 */
+DECL|field|INCLUDING
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|INCLUDING
+init|=
+literal|2
+decl_stmt|;
 comment|/** Character used for quoting in the string representation. */
 DECL|field|QUOTE_CHAR
 specifier|protected
@@ -89,7 +136,7 @@ name|QUOTE_CHAR
 init|=
 literal|'\\'
 decl_stmt|;
-comment|/**      * For separating units (e.g. name, which every group has) in the string      * representation      */
+comment|/** 	 * For separating units (e.g. name, which every group has) in the string 	 * representation 	 */
 DECL|field|SEPARATOR
 specifier|protected
 specifier|static
@@ -99,7 +146,7 @@ name|SEPARATOR
 init|=
 literal|";"
 decl_stmt|;
-comment|/**      * @return A search rule that will identify this group's entries.      */
+comment|/** 	 * @return A search rule that will identify this group's entries. 	 */
 DECL|method|getSearchRule ()
 specifier|public
 specifier|abstract
@@ -107,7 +154,7 @@ name|SearchRule
 name|getSearchRule
 parameter_list|()
 function_decl|;
-comment|/**      * Re-create a group instance from a textual representation.      *       * @param s      *            The result from the group's toString() method.      * @return New instance of the encoded group.      * @throws Exception      *             If an error occured and a group could not be created, e.g.      *             due to a malformed regular expression.      */
+comment|/** 	 * Re-create a group instance from a textual representation. 	 *  	 * @param s 	 *            The result from the group's toString() method. 	 * @return New instance of the encoded group. 	 * @throws Exception 	 *             If an error occured and a group could not be created, e.g. 	 *             due to a malformed regular expression. 	 */
 DECL|method|fromString (String s, BibtexDatabase db, int version)
 specifier|public
 specifier|static
@@ -251,7 +298,7 @@ operator|=
 name|name
 expr_stmt|;
 block|}
-comment|/**      * @return true if this type of group supports the explicit adding of      *         entries.      */
+comment|/** 	 * @return true if this type of group supports the explicit adding of 	 *         entries. 	 */
 DECL|method|supportsAdd ()
 specifier|public
 specifier|abstract
@@ -259,7 +306,7 @@ name|boolean
 name|supportsAdd
 parameter_list|()
 function_decl|;
-comment|/**      * @return true if this type of group supports the explicit removal of      *         entries.      */
+comment|/** 	 * @return true if this type of group supports the explicit removal of 	 *         entries. 	 */
 DECL|method|supportsRemove ()
 specifier|public
 specifier|abstract
@@ -267,7 +314,7 @@ name|boolean
 name|supportsRemove
 parameter_list|()
 function_decl|;
-comment|/**      * Adds the specified entries to this group.      *        * @return If this group or one or more entries was/were modified as a      *         result of this operation, an object is returned that allows to      *         undo this change. null is returned otherwise.      */
+comment|/** 	 * Adds the specified entries to this group. 	 *  	 * @return If this group or one or more entries was/were modified as a 	 *         result of this operation, an object is returned that allows to 	 *         undo this change. null is returned otherwise. 	 */
 DECL|method|add (BibtexEntry[] entries)
 specifier|public
 specifier|abstract
@@ -279,7 +326,7 @@ index|[]
 name|entries
 parameter_list|)
 function_decl|;
-comment|/**      * Removes the specified entries from this group.      *       * @return If this group or one or more entries was/were modified as a      *         result of this operation, an object is returned that allows to      *         undo this change. null is returned otherwise.      */
+comment|/** 	 * Removes the specified entries from this group. 	 *  	 * @return If this group or one or more entries was/were modified as a 	 *         result of this operation, an object is returned that allows to 	 *         undo this change. null is returned otherwise. 	 */
 DECL|method|remove (BibtexEntry[] entries)
 specifier|public
 specifier|abstract
@@ -291,7 +338,7 @@ index|[]
 name|entries
 parameter_list|)
 function_decl|;
-comment|/**      * @param searchOptions      *            The search options to apply.      * @return true if this group contains the specified entry, false otherwise.      */
+comment|/** 	 * @param searchOptions 	 *            The search options to apply. 	 * @return true if this group contains the specified entry, false otherwise. 	 */
 DECL|method|contains (Map searchOptions, BibtexEntry entry)
 specifier|public
 specifier|abstract
@@ -305,7 +352,7 @@ name|BibtexEntry
 name|entry
 parameter_list|)
 function_decl|;
-comment|/**      * @return true if this group contains the specified entry, false otherwise.      */
+comment|/** 	 * @return true if this group contains the specified entry, false otherwise. 	 */
 DECL|method|contains (BibtexEntry entry)
 specifier|public
 specifier|abstract
@@ -316,7 +363,7 @@ name|BibtexEntry
 name|entry
 parameter_list|)
 function_decl|;
-comment|/**      * @return true if this group contains any of the specified entries, false      *         otherwise.      */
+comment|/** 	 * @return true if this group contains any of the specified entries, false 	 *         otherwise. 	 */
 DECL|method|containsAny (BibtexEntry[] entries)
 specifier|public
 name|boolean
@@ -360,7 +407,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * @return true if this group contains all of the specified entries, false      *         otherwise.      */
+comment|/** 	 * @return true if this group contains all of the specified entries, false 	 *         otherwise. 	 */
 DECL|method|containsAll (BibtexEntry[] entries)
 specifier|public
 name|boolean
@@ -405,12 +452,77 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * @return A deep copy of this object.      */
+comment|/** 	 * Returns true if this group is dynamic, i.e. uses a search definition or 	 * equiv. that might match new entries, or false if this group contains a 	 * fixed set of entries and thus will never match a new entry that was not 	 * explicitly added to it. 	 */
+DECL|method|isDynamic ()
+specifier|public
+specifier|abstract
+name|boolean
+name|isDynamic
+parameter_list|()
+function_decl|;
+comment|/** Sets the groups's hierarchical context. If context is not a valid 	 * value, the call is ignored. */
+DECL|method|setHierarchicalContext (int context)
+specifier|public
+name|void
+name|setHierarchicalContext
+parameter_list|(
+name|int
+name|context
+parameter_list|)
+block|{
+if|if
+condition|(
+name|context
+operator|!=
+name|INDEPENDENT
+operator|&&
+name|context
+operator|!=
+name|REFINING
+operator|&&
+name|context
+operator|!=
+name|INCLUDING
+condition|)
+return|return;
+name|m_context
+operator|=
+name|context
+expr_stmt|;
+block|}
+comment|/** Returns the group's hierarchical context. */
+DECL|method|getHierarchicalContext ()
+specifier|public
+name|int
+name|getHierarchicalContext
+parameter_list|()
+block|{
+return|return
+name|m_context
+return|;
+block|}
+comment|/** Returns a lengthy textual description of this instance (for       * the groups editor). */
+DECL|method|getDescription ()
+specifier|public
+specifier|abstract
+name|String
+name|getDescription
+parameter_list|()
+function_decl|;
+comment|/** 	 * @return A deep copy of this object. 	 */
 DECL|method|deepCopy ()
 specifier|public
 specifier|abstract
 name|AbstractGroup
 name|deepCopy
+parameter_list|()
+function_decl|;
+comment|/** Returns a short description of the group in HTML (for a tooltip). */
+DECL|method|getShortDescription ()
+specifier|public
+specifier|abstract
+name|String
+name|getShortDescription
 parameter_list|()
 function_decl|;
 comment|// by general AbstractGroup contract, toString() must return

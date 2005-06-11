@@ -86,6 +86,10 @@ name|lang
 argument_list|(
 literal|"All Entries"
 argument_list|)
+argument_list|,
+name|AbstractGroup
+operator|.
+name|INDEPENDENT
 argument_list|)
 expr_stmt|;
 block|}
@@ -143,6 +147,9 @@ literal|1
 case|:
 case|case
 literal|2
+case|:
+case|case
+literal|3
 case|:
 return|return
 operator|new
@@ -303,6 +310,38 @@ parameter_list|)
 block|{
 return|return
 literal|true
+return|;
+block|}
+DECL|method|isDynamic ()
+specifier|public
+name|boolean
+name|isDynamic
+parameter_list|()
+block|{
+comment|// this is actually a special case; I define it as non-dynamic
+return|return
+literal|false
+return|;
+block|}
+DECL|method|getDescription ()
+specifier|public
+name|String
+name|getDescription
+parameter_list|()
+block|{
+return|return
+literal|"This group contains all entries. It cannot be edited or removed."
+return|;
+comment|// JZTODO lyrics
+block|}
+DECL|method|getShortDescription ()
+specifier|public
+name|String
+name|getShortDescription
+parameter_list|()
+block|{
+return|return
+literal|"<b>All Entries</b> (this group cannot be edited or removed)"
 return|;
 block|}
 block|}
