@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* Copyright (C) 2003 Nathan Dunn, Morten O. Alver  All programs in this directory and subdirectories are published under the GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html  */
+comment|/*  Copyright (C) 2003 Nathan Dunn, Morten O. Alver   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   */
 end_comment
 
 begin_package
@@ -13,26 +13,6 @@ operator|.
 name|jabref
 package|;
 end_package
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|*
-import|;
-end_import
 
 begin_import
 import|import
@@ -53,6 +33,16 @@ operator|.
 name|regex
 operator|.
 name|PatternSyntaxException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|SwingUtilities
 import|;
 end_import
 
@@ -113,6 +103,14 @@ decl_stmt|;
 DECL|field|errorDisplay
 name|ErrorMessageDisplay
 name|errorDisplay
+decl_stmt|;
+DECL|field|matches
+name|Set
+name|matches
+init|=
+operator|new
+name|HashSet
+argument_list|()
 decl_stmt|;
 DECL|method|DatabaseSearch (ErrorMessageDisplay errorDisplay, Hashtable searchOptions, SearchRuleSet searchRules, BasePanel panel, String searchValueField, boolean reorder, boolean grayOut, boolean select)
 specifier|public
@@ -208,49 +206,22 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|String
-name|searchString
-init|=
-literal|null
-decl_stmt|;
-name|Enumeration
-name|strings
-init|=
-name|thisSearchOptions
-operator|.
-name|elements
-argument_list|()
-decl_stmt|;
-name|searchString
-operator|=
-operator|(
-name|String
-operator|)
-name|strings
-operator|.
-name|nextElement
-argument_list|()
-expr_stmt|;
 name|int
 name|searchScore
 init|=
 literal|0
 decl_stmt|;
+name|matches
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 name|BibtexEntry
 name|bes
 init|=
 literal|null
 decl_stmt|;
-comment|//        System.out.println("doing search using this regular expr: "+searchString) ;
-comment|// 0. for each field in the database
 name|int
-name|numRows
-init|=
-name|thisDatabase
-operator|.
-name|getEntryCount
-argument_list|()
-decl_stmt|,
 name|hits
 init|=
 literal|0
@@ -298,7 +269,7 @@ operator|==
 literal|null
 condition|)
 continue|continue;
-comment|//(thisTableModel.getNameFromNumber(row));
+comment|// (thisTableModel.getNameFromNumber(row));
 comment|// 2. add score per each hit
 try|try
 block|{
@@ -366,9 +337,18 @@ name|searchScore
 operator|>
 literal|0
 condition|)
+block|{
 name|hits
 operator|++
 expr_stmt|;
+name|matches
+operator|.
+name|add
+argument_list|(
+name|bes
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 specifier|final
 name|int
@@ -389,9 +369,9 @@ name|void
 name|run
 parameter_list|()
 block|{
-comment|//System.out.println("DatabaseSearch: grayOut="+grayOut);
-comment|//System.out.println("DatabaseSearch: reorder="+reorder);
-comment|//System.out.println("DatabaseSearch: outputHits="+outputHits);
+comment|// System.out.println("DatabaseSearch: grayOut="+grayOut);
+comment|// System.out.println("DatabaseSearch: reorder="+reorder);
+comment|// System.out.println("DatabaseSearch: outputHits="+outputHits);
 name|panel
 operator|.
 name|entryTable
@@ -458,7 +438,19 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|/*if (select) { // Select matches.           panel.selectResults(searchValueField);                    }*/
+block|}
+DECL|method|matches ()
+specifier|public
+name|Iterator
+name|matches
+parameter_list|()
+block|{
+return|return
+name|matches
+operator|.
+name|iterator
+argument_list|()
+return|;
 block|}
 block|}
 end_class
