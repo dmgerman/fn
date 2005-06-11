@@ -1270,13 +1270,18 @@ name|Util
 operator|.
 name|warnAssignmentSideEffects
 argument_list|(
+operator|new
+name|AbstractGroup
+index|[]
+block|{
 name|group
-argument_list|,
+block|}
+operator|,
 name|selection
 operator|.
 name|getSelection
 argument_list|()
-argument_list|,
+operator|,
 name|groupSelector
 operator|.
 name|getActiveBasePanel
@@ -1284,12 +1289,12 @@ argument_list|()
 operator|.
 name|getDatabase
 argument_list|()
-argument_list|,
+operator|,
 name|groupSelector
 operator|.
 name|frame
-argument_list|)
-condition|)
+block|)
+block|)
 return|return;
 comment|// user aborted operation
 comment|// if an editor is showing, its fields must be updated
@@ -1371,6 +1376,9 @@ expr_stmt|;
 return|return;
 block|}
 block|}
+end_class
+
+begin_catch
 catch|catch
 parameter_list|(
 name|IOException
@@ -1379,6 +1387,9 @@ parameter_list|)
 block|{
 comment|// ignore
 block|}
+end_catch
+
+begin_catch
 catch|catch
 parameter_list|(
 name|UnsupportedFlavorException
@@ -1387,9 +1398,11 @@ parameter_list|)
 block|{
 comment|// ignore
 block|}
-block|}
+end_catch
+
+begin_function
+unit|}      public
 DECL|method|dragExit (DropTargetEvent dte)
-specifier|public
 name|void
 name|dragExit
 parameter_list|(
@@ -1403,6 +1416,9 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_function
 DECL|method|dragGestureRecognized (DragGestureEvent dge)
 specifier|public
 name|void
@@ -1454,7 +1470,13 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/** Returns the first selected node, or null if nothing is selected. */
+end_comment
+
+begin_function
 DECL|method|getSelectedNode ()
 specifier|public
 name|GroupTreeNode
@@ -1483,7 +1505,13 @@ else|:
 literal|null
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/**      * Refresh paths that may have become invalid due to node movements within      * the tree. This method creates new paths to the last path components      * (which must still exist) of the specified paths.      *       * @param paths      *            Paths that may have become invalid.      * @return Refreshed paths that are all valid.      */
+end_comment
+
+begin_function
 DECL|method|refreshPaths (Enumeration paths)
 specifier|public
 name|Enumeration
@@ -1546,7 +1574,13 @@ name|elements
 argument_list|()
 return|;
 block|}
+end_function
+
+begin_comment
 comment|/** Highlights the specified cell or disables highlight if cell == null */
+end_comment
+
+begin_function
 DECL|method|setHighlight1Cell (Object cell)
 specifier|public
 name|void
@@ -1567,7 +1601,13 @@ name|repaint
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/** Highlights the specified cells or disables highlight if cells == null */
+end_comment
+
+begin_function
 DECL|method|setHighlight2Cells (Object[] cells)
 specifier|public
 name|void
@@ -1589,7 +1629,13 @@ name|repaint
 argument_list|()
 expr_stmt|;
 block|}
+end_function
+
+begin_comment
 comment|/** Sort immediate children of the specified node alphabetically. */
+end_comment
+
+begin_function
 DECL|method|sort (GroupTreeNode node, boolean recursive)
 specifier|public
 name|void
@@ -1602,6 +1648,47 @@ name|boolean
 name|recursive
 parameter_list|)
 block|{
+name|sortWithoutRevalidate
+argument_list|(
+name|node
+argument_list|,
+name|recursive
+argument_list|)
+expr_stmt|;
+name|groupSelector
+operator|.
+name|revalidateGroups
+argument_list|()
+expr_stmt|;
+block|}
+end_function
+
+begin_comment
+comment|/** This sorts without revalidation of groups*/
+end_comment
+
+begin_function
+DECL|method|sortWithoutRevalidate (GroupTreeNode node, boolean recursive)
+specifier|protected
+name|void
+name|sortWithoutRevalidate
+parameter_list|(
+name|GroupTreeNode
+name|node
+parameter_list|,
+name|boolean
+name|recursive
+parameter_list|)
+block|{
+if|if
+condition|(
+name|node
+operator|.
+name|isLeaf
+argument_list|()
+condition|)
+return|return;
+comment|// nothing to sort
 name|GroupTreeNode
 name|child1
 decl_stmt|,
@@ -1749,7 +1836,7 @@ operator|++
 name|i
 control|)
 block|{
-name|sort
+name|sortWithoutRevalidate
 argument_list|(
 operator|(
 name|GroupTreeNode
@@ -1766,14 +1853,115 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|groupSelector
+block|}
+end_function
+
+begin_comment
+comment|/** Expand this node and all its children. */
+end_comment
+
+begin_function
+DECL|method|expandSubtree (GroupTreeNode node)
+specifier|public
+name|void
+name|expandSubtree
+parameter_list|(
+name|GroupTreeNode
+name|node
+parameter_list|)
+block|{
+for|for
+control|(
+name|Enumeration
+name|e
+init|=
+name|node
 operator|.
-name|revalidateGroups
+name|depthFirstEnumeration
 argument_list|()
+init|;
+name|e
+operator|.
+name|hasMoreElements
+argument_list|()
+condition|;
+control|)
+name|expandPath
+argument_list|(
+operator|new
+name|TreePath
+argument_list|(
+operator|(
+operator|(
+name|GroupTreeNode
+operator|)
+name|e
+operator|.
+name|nextElement
+argument_list|()
+operator|)
+operator|.
+name|getPath
+argument_list|()
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
-block|}
-end_class
+end_function
 
+begin_comment
+comment|/** Collapse this node and all its children. */
+end_comment
+
+begin_function
+DECL|method|collapseSubtree (GroupTreeNode node)
+specifier|public
+name|void
+name|collapseSubtree
+parameter_list|(
+name|GroupTreeNode
+name|node
+parameter_list|)
+block|{
+for|for
+control|(
+name|Enumeration
+name|e
+init|=
+name|node
+operator|.
+name|depthFirstEnumeration
+argument_list|()
+init|;
+name|e
+operator|.
+name|hasMoreElements
+argument_list|()
+condition|;
+control|)
+name|collapsePath
+argument_list|(
+operator|new
+name|TreePath
+argument_list|(
+operator|(
+operator|(
+name|GroupTreeNode
+operator|)
+name|e
+operator|.
+name|nextElement
+argument_list|()
+operator|)
+operator|.
+name|getPath
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+end_function
+
+unit|}
 end_unit
 
