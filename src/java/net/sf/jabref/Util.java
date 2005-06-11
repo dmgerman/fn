@@ -1685,41 +1685,32 @@ operator|.
 name|trim
 argument_list|()
 decl_stmt|;
-name|String
-index|[]
-name|resultSet
+name|StringTokenizer
+name|tok
 init|=
-name|fieldValue
-operator|.
-name|split
+operator|new
+name|StringTokenizer
 argument_list|(
+name|fieldValue
+argument_list|,
 name|deliminator
 argument_list|)
 decl_stmt|;
-for|for
-control|(
-name|int
-name|index
-init|=
-literal|0
-init|;
-name|index
-operator|<
-name|resultSet
+while|while
+condition|(
+name|tok
 operator|.
-name|length
-condition|;
-name|index
-operator|++
-control|)
+name|hasMoreTokens
+argument_list|()
+condition|)
 name|res
 operator|.
 name|add
 argument_list|(
-name|resultSet
-index|[
-name|index
-index|]
+name|tok
+operator|.
+name|nextToken
+argument_list|()
 operator|.
 name|trim
 argument_list|()
@@ -4918,14 +4909,15 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Warns the user of undesired side effects of an explicit      * assignment/removal of entries to/from this group. Currently there are      * four types of groups: AllEntriesGroup, SearchGroup - do not support      * explicit assignment. ExplicitGroup - never modifies entries. KeywordGroup -      * only this modifies entries upon assignment/removal. Modifications are      * acceptable unless they affect a standard field (such as "author") besides      * the "keywords" field.      *       * @param parent       *         The Component used as a parent when displaying a       *         confirmation dialog.      *       * @return true if the assignment has no undesired side effects, or the user      *         chose to perform it anyway. false otherwise (this indicates that      *         the user has aborted the assignment).      */
-DECL|method|warnAssignmentSideEffects (AbstractGroup group, BibtexEntry[] entries, BibtexDatabase db, Component parent)
+DECL|method|warnAssignmentSideEffects (AbstractGroup[] groups, BibtexEntry[] entries, BibtexDatabase db, Component parent)
 specifier|public
 specifier|static
 name|boolean
 name|warnAssignmentSideEffects
 parameter_list|(
 name|AbstractGroup
-name|group
+index|[]
+name|groups
 parameter_list|,
 name|BibtexEntry
 index|[]
@@ -4938,9 +4930,36 @@ name|Component
 name|parent
 parameter_list|)
 block|{
+name|Vector
+name|affectedFields
+init|=
+operator|new
+name|Vector
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|int
+name|k
+init|=
+literal|0
+init|;
+name|k
+operator|<
+name|groups
+operator|.
+name|length
+condition|;
+operator|++
+name|k
+control|)
+block|{
 if|if
 condition|(
-name|group
+name|groups
+index|[
+name|k
+index|]
 operator|instanceof
 name|KeywordGroup
 condition|)
@@ -4951,7 +4970,10 @@ init|=
 operator|(
 name|KeywordGroup
 operator|)
-name|group
+name|groups
+index|[
+name|k
+index|]
 decl_stmt|;
 name|String
 name|field
@@ -4973,9 +4995,7 @@ argument_list|(
 literal|"keywords"
 argument_list|)
 condition|)
-return|return
-literal|true
-return|;
+continue|continue;
 comment|// this is not undesired
 for|for
 control|(
@@ -5011,28 +5031,88 @@ index|]
 argument_list|)
 condition|)
 block|{
+name|affectedFields
+operator|.
+name|add
+argument_list|(
+name|field
+argument_list|)
+expr_stmt|;
+break|break;
+block|}
+block|}
+block|}
+block|}
+if|if
+condition|(
+name|affectedFields
+operator|.
+name|size
+argument_list|()
+operator|==
+literal|0
+condition|)
+return|return
+literal|true
+return|;
+comment|// no side effects
 comment|// show a warning, then return
-name|String
+name|StringBuffer
 name|message
 init|=
-name|Globals
 comment|// JZTODO lyrics...
-operator|.
-name|lang
+operator|new
+name|StringBuffer
 argument_list|(
-literal|"This action will modify the \"%0\" field "
+literal|"This action will modify the following field(s)\n"
 operator|+
-literal|"of your entries.\nThis could cause undesired changes to "
+literal|"in at least one entry each:\n"
+argument_list|)
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|affectedFields
+operator|.
+name|size
+argument_list|()
+condition|;
+operator|++
+name|i
+control|)
+name|message
+operator|.
+name|append
+argument_list|(
+name|affectedFields
+operator|.
+name|elementAt
+argument_list|(
+name|i
+argument_list|)
+operator|+
+literal|"\n"
+argument_list|)
+expr_stmt|;
+name|message
+operator|.
+name|append
+argument_list|(
+literal|"This could cause undesired changes to "
 operator|+
 literal|"your entries, so it is\nrecommended that you change the grouping field "
 operator|+
 literal|"in your group\ndefinition to \"keywords\" or a non-standard name."
 operator|+
 literal|"\n\nDo you still want to continue?"
-argument_list|,
-name|field
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|int
 name|choice
 init|=
@@ -5067,13 +5147,30 @@ name|JOptionPane
 operator|.
 name|NO_OPTION
 return|;
-block|}
-block|}
-block|}
-return|return
-literal|true
-return|;
-comment|// found no side effects
+comment|//        if (groups instanceof KeywordGroup) {
+comment|//            KeywordGroup kg = (KeywordGroup) groups;
+comment|//            String field = kg.getSearchField().toLowerCase();
+comment|//            if (field.equals("keywords"))
+comment|//                return true; // this is not undesired
+comment|//            for (int i = 0; i< GUIGlobals.ALL_FIELDS.length; ++i) {
+comment|//                if (field.equals(GUIGlobals.ALL_FIELDS[i])) {
+comment|//                    // show a warning, then return
+comment|//                    String message = Globals // JZTODO lyrics...
+comment|//                            .lang(
+comment|//                                    "This action will modify the \"%0\" field "
+comment|//                                            + "of your entries.\nThis could cause undesired changes to "
+comment|//                                            + "your entries, so it is\nrecommended that you change the grouping field "
+comment|//                                            + "in your group\ndefinition to \"keywords\" or a non-standard name."
+comment|//                                            + "\n\nDo you still want to continue?",
+comment|//                                    field);
+comment|//                    int choice = JOptionPane.showConfirmDialog(parent, message,
+comment|//                            Globals.lang("Warning"), JOptionPane.YES_NO_OPTION,
+comment|//                            JOptionPane.WARNING_MESSAGE);
+comment|//                    return choice != JOptionPane.NO_OPTION;
+comment|//                }
+comment|//            }
+comment|//        }
+comment|//        return true; // found no side effects
 block|}
 comment|//========================================================
 comment|// lot of abreviations in medline
@@ -5277,6 +5374,204 @@ argument_list|)
 expr_stmt|;
 return|return
 name|off
+return|;
+block|}
+DECL|method|wrapHTML (String s, final int lineWidth)
+specifier|public
+specifier|static
+name|String
+name|wrapHTML
+parameter_list|(
+name|String
+name|s
+parameter_list|,
+specifier|final
+name|int
+name|lineWidth
+parameter_list|)
+block|{
+name|StringBuffer
+name|sb
+init|=
+operator|new
+name|StringBuffer
+argument_list|()
+decl_stmt|;
+name|StringTokenizer
+name|tok
+init|=
+operator|new
+name|StringTokenizer
+argument_list|(
+name|s
+argument_list|)
+decl_stmt|;
+name|int
+name|charsLeft
+init|=
+name|lineWidth
+decl_stmt|;
+while|while
+condition|(
+name|tok
+operator|.
+name|hasMoreTokens
+argument_list|()
+condition|)
+block|{
+name|String
+name|word
+init|=
+name|tok
+operator|.
+name|nextToken
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|charsLeft
+operator|==
+name|lineWidth
+condition|)
+block|{
+comment|// fresh line
+name|sb
+operator|.
+name|append
+argument_list|(
+name|word
+argument_list|)
+expr_stmt|;
+name|charsLeft
+operator|-=
+name|word
+operator|.
+name|length
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|charsLeft
+operator|<=
+literal|0
+condition|)
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"<br>\n"
+argument_list|)
+expr_stmt|;
+name|charsLeft
+operator|=
+name|lineWidth
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+comment|// continue previous line
+if|if
+condition|(
+name|charsLeft
+operator|<
+name|word
+operator|.
+name|length
+argument_list|()
+operator|+
+literal|1
+condition|)
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"<br>\n"
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+name|word
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|word
+operator|.
+name|length
+argument_list|()
+operator|>=
+name|lineWidth
+operator|-
+literal|1
+condition|)
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"<br>\n"
+argument_list|)
+expr_stmt|;
+name|charsLeft
+operator|=
+name|lineWidth
+expr_stmt|;
+block|}
+else|else
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|" "
+argument_list|)
+expr_stmt|;
+name|charsLeft
+operator|=
+name|lineWidth
+operator|-
+name|word
+operator|.
+name|length
+argument_list|()
+operator|-
+literal|1
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|" "
+operator|+
+name|word
+argument_list|)
+expr_stmt|;
+name|charsLeft
+operator|-=
+name|word
+operator|.
+name|length
+argument_list|()
+operator|+
+literal|1
+expr_stmt|;
+block|}
+block|}
+block|}
+return|return
+name|sb
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 block|}
