@@ -193,12 +193,13 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Use the following deliminator"
+literal|"Use the following deliminator character(s)"
 argument_list|)
 operator|+
 literal|":"
 argument_list|)
 decl_stmt|;
+comment|// JZTODO lyrics
 DECL|field|ok
 DECL|field|cancel
 name|JButton
@@ -372,6 +373,13 @@ argument_list|(
 name|defaultDeliminator
 argument_list|)
 expr_stmt|;
+name|nd
+operator|.
+name|setSelected
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|ActionListener
 name|okListener
 init|=
@@ -409,6 +417,10 @@ name|lang
 argument_list|(
 literal|"Automatically created groups"
 argument_list|)
+argument_list|,
+name|AbstractGroup
+operator|.
+name|INCLUDING
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -522,6 +534,10 @@ argument_list|,
 literal|false
 argument_list|,
 literal|false
+argument_list|,
+name|AbstractGroup
+operator|.
+name|INDEPENDENT
 argument_list|)
 decl_stmt|;
 name|autoGroupsRoot
