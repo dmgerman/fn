@@ -458,12 +458,159 @@ operator|++
 expr_stmt|;
 block|}
 block|}
+elseif|else
+if|if
+condition|(
+operator|(
+name|content
+operator|.
+name|length
+argument_list|()
+operator|>
+name|i
+operator|+
+literal|1
+operator|)
+operator|&&
+operator|(
+name|content
+operator|.
+name|charAt
+argument_list|(
+name|i
+operator|+
+literal|1
+argument_list|)
+operator|!=
+literal|'\n'
+operator|)
+condition|)
+block|{
+comment|// We have a line break not followed by another line break. This is probably a normal
+comment|// line break made by whatever other editor, so we will remove the line break.
+name|content
+operator|.
+name|deleteCharAt
+argument_list|(
+name|i
+argument_list|)
+expr_stmt|;
+comment|// If the line break is not accompanied by other whitespace we must add a space:
+if|if
+condition|(
+operator|!
+name|Character
+operator|.
+name|isWhitespace
+argument_list|(
+name|content
+operator|.
+name|charAt
+argument_list|(
+name|i
+argument_list|)
+argument_list|)
+operator|&&
+comment|// No whitespace after?
+operator|(
+name|i
+operator|>
+literal|0
+operator|)
+operator|&&
+operator|!
+name|Character
+operator|.
+name|isWhitespace
+argument_list|(
+name|content
+operator|.
+name|charAt
+argument_list|(
+name|i
+operator|-
+literal|1
+argument_list|)
+argument_list|)
+condition|)
+comment|// No whitespace before?
+name|content
+operator|.
+name|insert
+argument_list|(
+name|i
+argument_list|,
+literal|' '
+argument_list|)
+expr_stmt|;
+block|}
+comment|//else if ((content.length()>i+1)&& (content.charAt(i+1)=='\n'))
 else|else
 name|i
 operator|++
 expr_stmt|;
 comment|//content.deleteCharAt(i);
 block|}
+elseif|else
+if|if
+condition|(
+name|c
+operator|==
+literal|' '
+condition|)
+block|{
+comment|//if ((content.length()>i+2)&& (content.charAt(i+1)==' ')) {
+if|if
+condition|(
+operator|(
+name|i
+operator|>
+literal|0
+operator|)
+operator|&&
+operator|(
+name|content
+operator|.
+name|charAt
+argument_list|(
+name|i
+operator|-
+literal|1
+argument_list|)
+operator|==
+literal|' '
+operator|)
+condition|)
+block|{
+comment|// We have two spaces in a row. Don't include this one.
+name|content
+operator|.
+name|deleteCharAt
+argument_list|(
+name|i
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+name|i
+operator|++
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|c
+operator|==
+literal|'\t'
+condition|)
+comment|// Remove all tab characters that aren't associated with a line break.
+name|content
+operator|.
+name|deleteCharAt
+argument_list|(
+name|i
+argument_list|)
+expr_stmt|;
 else|else
 name|i
 operator|++
@@ -491,6 +638,10 @@ name|int
 name|wrapAmount
 parameter_list|)
 block|{
+comment|// JZ: due to the formatting/wrapping bug, I temporarily disabled
+comment|// the below code to prevent JabRef from modifying .bib files in
+comment|// a way that may require manual correction.
+comment|//return in;
 name|String
 index|[]
 name|lines

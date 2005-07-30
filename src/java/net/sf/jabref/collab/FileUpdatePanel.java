@@ -129,7 +129,11 @@ DECL|field|message
 name|JLabel
 name|message
 decl_stmt|;
-DECL|method|FileUpdatePanel (JabRefFrame frame, BasePanel panel, SidePaneManager manager, File file)
+DECL|field|scanner
+name|ChangeScanner
+name|scanner
+decl_stmt|;
+DECL|method|FileUpdatePanel (JabRefFrame frame, BasePanel panel, SidePaneManager manager, File file, ChangeScanner scanner)
 specifier|public
 name|FileUpdatePanel
 parameter_list|(
@@ -144,6 +148,9 @@ name|manager
 parameter_list|,
 name|File
 name|file
+parameter_list|,
+name|ChangeScanner
+name|scanner
 parameter_list|)
 block|{
 name|super
@@ -179,6 +186,12 @@ operator|.
 name|manager
 operator|=
 name|manager
+expr_stmt|;
+name|this
+operator|.
+name|scanner
+operator|=
+name|scanner
 expr_stmt|;
 name|JPanel
 name|main
@@ -296,29 +309,14 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-name|ChangeScanner
-name|scanner
-init|=
-operator|new
-name|ChangeScanner
-argument_list|(
-name|frame
-argument_list|,
-name|panel
-argument_list|)
-decl_stmt|;
-comment|//, panel.database(), panel.metaData());
+comment|//ChangeScanner scanner = new ChangeScanner(frame, panel); //, panel.database(), panel.metaData());
 comment|//try {
 name|scanner
 operator|.
-name|changeScan
-argument_list|(
-name|panel
-operator|.
-name|file
+name|displayResult
 argument_list|()
-argument_list|)
 expr_stmt|;
+comment|//scanner.changeScan(panel.file());
 name|panel
 operator|.
 name|setUpdatedExternally

@@ -866,6 +866,22 @@ argument_list|()
 expr_stmt|;
 comment|//System.out.println("Activate, hurra");
 block|}
+DECL|method|updateAll ()
+specifier|public
+name|void
+name|updateAll
+parameter_list|()
+block|{
+comment|// Test: make sure all fields are correct:
+name|setEntry
+argument_list|(
+name|parent
+operator|.
+name|entry
+argument_list|)
+expr_stmt|;
+comment|/*for (int i=0; i<fields.length; i++) {             FieldEditor fe = (FieldEditor)editors.get(fields[i]);             fe.setText(e);         }  */
+block|}
 DECL|method|setEntry (BibtexEntry entry)
 specifier|public
 name|void

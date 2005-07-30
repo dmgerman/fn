@@ -18,7 +18,7 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|io
 operator|.
 name|*
 import|;
@@ -30,31 +30,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|regex
-operator|.
-name|Pattern
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Matcher
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JFileChooser
+name|*
 import|;
 end_import
 
@@ -74,29 +50,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|util
 operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|logging
 operator|.
-name|awt
-operator|.
-name|Font
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|*
+name|Filter
 import|;
 end_import
 
@@ -130,7 +88,7 @@ name|jabref
 operator|.
 name|collab
 operator|.
-name|FileUpdateMonitor
+name|*
 import|;
 end_import
 
@@ -144,7 +102,7 @@ name|jabref
 operator|.
 name|imports
 operator|.
-name|ImportFormatReader
+name|*
 import|;
 end_import
 
@@ -418,13 +376,32 @@ literal|"Cp1254"
 block|,
 literal|"Cp1257"
 block|,
+literal|"JIS"
+block|,
+literal|"SJIS"
+block|,
+literal|"EUC-JP"
+block|,
+comment|// Added Japanese encodings.
 literal|"ISO8859_2"
+block|,
+literal|"ISO8859_3"
 block|,
 literal|"ISO8859_4"
 block|,
 literal|"ISO8859_5"
 block|,
+literal|"ISO8859_6"
+block|,
 literal|"ISO8859_7"
+block|,
+literal|"ISO8859_8"
+block|,
+literal|"ISO8859_9"
+block|,
+literal|"ISO8859_13"
+block|,
+literal|"ISO8859_15"
 block|}
 decl_stmt|;
 comment|// String array that maps from month number to month string label:

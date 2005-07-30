@@ -11,7 +11,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * Options.java  *  * Version:  *    $Id$  */
+comment|/**  * Options.java  *  * Version:  *    $Id$   */
 end_comment
 
 begin_import

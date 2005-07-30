@@ -137,6 +137,11 @@ name|CaretListener
 implements|,
 name|ErrorMessageDisplay
 block|{
+DECL|field|frame
+specifier|private
+name|JabRefFrame
+name|frame
+decl_stmt|;
 DECL|field|gbl
 name|GridBagLayout
 name|gbl
@@ -320,10 +325,13 @@ decl_stmt|;
 comment|// To keep track of where we are in
 comment|// an incremental search. -1 means
 comment|// that the search is inactive.
-DECL|method|SearchManager2 (SidePaneManager manager)
+DECL|method|SearchManager2 (JabRefFrame frame, SidePaneManager manager)
 specifier|public
 name|SearchManager2
 parameter_list|(
+name|JabRefFrame
+name|frame
+parameter_list|,
 name|SidePaneManager
 name|manager
 parameter_list|)
@@ -343,6 +351,12 @@ argument_list|(
 literal|"Search"
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|frame
+operator|=
+name|frame
 expr_stmt|;
 name|incSearcher
 operator|=
@@ -2335,7 +2349,7 @@ name|panel
 operator|.
 name|tableModel
 operator|.
-name|getNameFromNumber
+name|getIdForRow
 argument_list|(
 name|incSearchPos
 argument_list|)
@@ -2382,7 +2396,7 @@ name|panel
 operator|.
 name|tableModel
 operator|.
-name|getNameFromNumber
+name|getIdForRow
 argument_list|(
 name|incSearchPos
 argument_list|)
@@ -2462,8 +2476,6 @@ name|void
 name|componentClosing
 parameter_list|()
 block|{
-name|panel
-operator|.
 name|frame
 operator|.
 name|searchToggle

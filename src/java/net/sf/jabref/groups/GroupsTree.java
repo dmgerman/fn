@@ -1632,6 +1632,34 @@ block|}
 end_function
 
 begin_comment
+comment|/** Highlights the specified cells or disables highlight if cells == null */
+end_comment
+
+begin_function
+DECL|method|setHighlight3Cells (Object[] cells)
+specifier|public
+name|void
+name|setHighlight3Cells
+parameter_list|(
+name|Object
+index|[]
+name|cells
+parameter_list|)
+block|{
+name|cellRenderer
+operator|.
+name|setHighlight3Cells
+argument_list|(
+name|cells
+argument_list|)
+expr_stmt|;
+name|repaint
+argument_list|()
+expr_stmt|;
+block|}
+end_function
+
+begin_comment
 comment|/** Sort immediate children of the specified node alphabetically. */
 end_comment
 

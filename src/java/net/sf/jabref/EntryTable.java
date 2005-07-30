@@ -48,6 +48,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -232,12 +252,32 @@ specifier|private
 name|BasePanel
 name|panel
 decl_stmt|;
+DECL|field|lastSelection
+name|Set
+name|lastSelection
+init|=
+operator|new
+name|HashSet
+argument_list|()
+decl_stmt|;
 DECL|field|previewListener
 specifier|private
 name|ListSelectionListener
 name|previewListener
 init|=
 literal|null
+decl_stmt|;
+DECL|field|activeRow
+specifier|private
+name|int
+name|activeRow
+init|=
+operator|-
+literal|1
+decl_stmt|;
+DECL|field|groupsHighlightListener
+name|ListSelectionListener
+name|groupsHighlightListener
 decl_stmt|;
 DECL|method|EntryTable (EntryTableModel tm_, BasePanel panel_, JabRefPreferences prefs_)
 specifier|public
@@ -442,12 +482,10 @@ if|if
 condition|(
 name|col
 operator|>=
-name|tableModel
-operator|.
-name|padleft
+literal|1
 condition|)
 block|{
-comment|// A valid column, but not the first.
+comment|//tableModel.padleft) { // A valid column, but not the first.
 name|String
 name|s
 init|=
@@ -458,20 +496,6 @@ argument_list|(
 name|col
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|s
-operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
-condition|)
-block|{
-comment|// The user has clicked a column with an empty header, such as the icon columns.
-comment|// We could add sorting for these columns, but currently we do nothing.
-return|return;
-block|}
 comment|/*                * If the user adjusts the header size the sort event is                * always triggered.                * To avoid this behaviour we check if the mouse is                * inside the label's bounds and has a certain distance (offset)                * to the label border.                *                * Sascha Hunold<hunoldinho@users.sourceforge.net>                */
 name|Point
 name|p
@@ -622,6 +646,7 @@ literal|"priSort"
 argument_list|)
 argument_list|)
 condition|)
+block|{
 name|prefs
 operator|.
 name|put
@@ -631,6 +656,40 @@ argument_list|,
 name|s
 argument_list|)
 expr_stmt|;
+comment|// Now, if the selected column is an icon column, set the sort to binary mode,
+comment|// meaning that it only separates set fields from empty fields, and does no
+comment|// internal sorting of set fields:
+if|if
+condition|(
+name|tableModel
+operator|.
+name|getIconTypeForColumn
+argument_list|(
+name|col
+argument_list|)
+operator|==
+literal|null
+condition|)
+name|prefs
+operator|.
+name|putBoolean
+argument_list|(
+literal|"priBinary"
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+else|else
+name|prefs
+operator|.
+name|putBoolean
+argument_list|(
+literal|"priBinary"
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 comment|// ... or change sort direction
 else|else
 name|prefs
@@ -730,6 +789,98 @@ name|addSelectionListener
 argument_list|()
 expr_stmt|;
 comment|// Add the listener that responds to new entry selection.
+name|groupsHighlightListener
+operator|=
+operator|new
+name|ListSelectionListener
+argument_list|()
+block|{
+specifier|public
+name|void
+name|valueChanged
+parameter_list|(
+name|ListSelectionEvent
+name|e
+parameter_list|)
+block|{
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"highlightGroupsMatchingAny"
+argument_list|)
+condition|)
+name|panel
+operator|.
+name|getGroupSelector
+argument_list|()
+operator|.
+name|showMatchingGroups
+argument_list|(
+name|panel
+operator|.
+name|getSelectedEntries
+argument_list|()
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"highlightGroupsMatchingAll"
+argument_list|)
+condition|)
+name|panel
+operator|.
+name|getGroupSelector
+argument_list|()
+operator|.
+name|showMatchingGroups
+argument_list|(
+name|panel
+operator|.
+name|getSelectedEntries
+argument_list|()
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+else|else
+comment|// no highlight
+name|panel
+operator|.
+name|getGroupSelector
+argument_list|()
+operator|.
+name|showMatchingGroups
+argument_list|(
+literal|null
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+expr_stmt|;
+name|getSelectionModel
+argument_list|()
+operator|.
+name|addListSelectionListener
+argument_list|(
+name|groupsHighlightListener
+argument_list|)
+expr_stmt|;
 comment|// (to update entry editor or preview)
 name|setWidths
 argument_list|()
@@ -749,6 +900,190 @@ expr_stmt|;
 name|updateFont
 argument_list|()
 expr_stmt|;
+block|}
+comment|/**      * Get the row number for the row that is active, in the sense that the preview or      * entry editor should show the corresponding entry.      * @return The active row number, or -1 if no row is active.      */
+DECL|method|getActiveRow ()
+specifier|public
+name|int
+name|getActiveRow
+parameter_list|()
+block|{
+return|return
+name|activeRow
+return|;
+block|}
+comment|/**      * Get the active entry, in the sense that the preview or entry editor should      * show it.      * @return The active entry, or null if no row is active.      */
+DECL|method|getActiveEntry ()
+specifier|public
+name|BibtexEntry
+name|getActiveEntry
+parameter_list|()
+block|{
+comment|//System.out.println("EntryTable.getActiveEntry: "+activeRow);
+return|return
+operator|(
+operator|(
+name|activeRow
+operator|>=
+literal|0
+operator|)
+operator|&&
+operator|(
+name|activeRow
+operator|<
+name|getRowCount
+argument_list|()
+operator|)
+operator|)
+condition|?
+name|tableModel
+operator|.
+name|getEntryForRow
+argument_list|(
+name|activeRow
+argument_list|)
+else|:
+literal|null
+return|;
+block|}
+comment|/**      * Updates our Set containing the last row selection. Ckecks which rows were ADDED      * to the selection, to see what new entry should be previewed.      * Returns the number of the row that should be considered active, or -1 if none.      *      * This method may have some potential for optimization.      *      * @param rows      * @return      */
+DECL|method|resolveNewSelection (int[] rows)
+specifier|private
+name|int
+name|resolveNewSelection
+parameter_list|(
+name|int
+index|[]
+name|rows
+parameter_list|)
+block|{
+name|HashSet
+name|newSel
+init|=
+operator|new
+name|HashSet
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|rows
+operator|.
+name|length
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|Integer
+name|row
+init|=
+operator|new
+name|Integer
+argument_list|(
+name|rows
+index|[
+name|i
+index|]
+argument_list|)
+decl_stmt|;
+name|newSel
+operator|.
+name|add
+argument_list|(
+name|row
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Store a clone of this Set:
+name|HashSet
+name|tmp
+init|=
+operator|new
+name|HashSet
+argument_list|(
+name|newSel
+argument_list|)
+decl_stmt|;
+name|newSel
+operator|.
+name|removeAll
+argument_list|(
+name|lastSelection
+argument_list|)
+expr_stmt|;
+comment|// Set the new selection as the last:
+name|lastSelection
+operator|=
+name|tmp
+expr_stmt|;
+comment|// We return an appropriate row number if a single additional entry was selected:
+name|int
+name|result
+init|=
+operator|-
+literal|1
+decl_stmt|;
+if|if
+condition|(
+name|newSel
+operator|.
+name|size
+argument_list|()
+operator|==
+literal|1
+condition|)
+name|result
+operator|=
+operator|(
+operator|(
+name|Integer
+operator|)
+name|newSel
+operator|.
+name|iterator
+argument_list|()
+operator|.
+name|next
+argument_list|()
+operator|)
+operator|.
+name|intValue
+argument_list|()
+expr_stmt|;
+comment|// .. or if the current selection is only one entry:
+if|if
+condition|(
+operator|(
+name|result
+operator|<
+literal|0
+operator|)
+operator|&&
+operator|(
+name|rows
+operator|.
+name|length
+operator|==
+literal|1
+operator|)
+condition|)
+name|result
+operator|=
+name|rows
+index|[
+literal|0
+index|]
+expr_stmt|;
+return|return
+name|result
+return|;
 block|}
 comment|/**        * A ListSelectionListener for updating the preview panel when the user selects an        * entry. Should only be active when preview is enabled.        */
 DECL|method|addSelectionListener ()
@@ -813,6 +1148,15 @@ name|void
 name|run
 parameter_list|()
 block|{
+comment|// If a single new row was selected, set it as the active row:
+name|activeRow
+operator|=
+name|resolveNewSelection
+argument_list|(
+name|getSelectedRows
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|getSelectedRowCount
@@ -821,22 +1165,10 @@ operator|==
 literal|1
 condition|)
 block|{
-name|int
-name|row
-init|=
-name|getSelectedRow
-argument_list|()
-decl_stmt|;
-comment|//e.getFirstIndex();
-if|if
-condition|(
-name|row
-operator|>=
-literal|0
-condition|)
-block|{
-comment|//System.out.println(""+panel.validateEntryEditor());
-comment|/*                                        * Can't call validateEntryEditor, before the FocusLost beats us to it and                                        * makes the entry editor store its source. So we need to find out if the                                        * entry editor is happy. But can we prevent the selection?                                        */
+comment|//int row = getSelectedRow(); //e.getFirstIndex();
+comment|//if (row>= 0) {
+comment|// Update the value for which entry is shown:
+comment|//  activeRow = row;
 name|panel
 operator|.
 name|updateViewToSelected
@@ -845,17 +1177,9 @@ expr_stmt|;
 comment|// guarantee that the the entry is visible
 name|ensureVisible
 argument_list|(
-name|row
+name|activeRow
 argument_list|)
 expr_stmt|;
-comment|//   setRowSelectionInterval(row, row);
-comment|// }
-comment|// else {
-comment|// Oops, an error occured.
-comment|// }
-comment|//panel.database().getEntryById(
-comment|//tableModel.getNameFromNumber(row)));
-block|}
 block|}
 else|else
 block|{
@@ -879,6 +1203,21 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+comment|// We want the entry preview to update when the user expands the
+comment|// selection one entry at a time:
+comment|//if ((e.getLastIndex()-e.getFirstIndex())<= 1) {
+if|if
+condition|(
+name|activeRow
+operator|>=
+literal|0
+condition|)
+name|panel
+operator|.
+name|updateViewToSelected
+argument_list|()
+expr_stmt|;
+comment|//}
 comment|// 2. Do nothing.
 block|}
 block|}
@@ -947,6 +1286,14 @@ argument_list|(
 name|row1
 argument_list|,
 name|row2
+argument_list|)
+expr_stmt|;
+name|activeRow
+operator|=
+name|resolveNewSelection
+argument_list|(
+name|getSelectedRows
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|selectionListenerOn
@@ -1553,6 +1900,8 @@ argument_list|(
 literal|"edit"
 argument_list|)
 expr_stmt|;
+return|return;
+comment|/*showEntry(be);                      if (splitPane.getBottomComponent() != null) {                         new FocusRequester(splitPane.getBottomComponent());                     }                                                      */
 block|}
 catch|catch
 parameter_list|(
@@ -1733,7 +2082,7 @@ name|getEntryById
 argument_list|(
 name|tableModel
 operator|.
-name|getNameFromNumber
+name|getIdForRow
 argument_list|(
 name|row
 argument_list|)
@@ -2209,7 +2558,7 @@ name|getEntryById
 argument_list|(
 name|tableModel
 operator|.
-name|getNameFromNumber
+name|getIdForRow
 argument_list|(
 name|rows
 index|[

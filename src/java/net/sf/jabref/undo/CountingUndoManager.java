@@ -30,6 +30,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -124,9 +134,11 @@ operator|--
 expr_stmt|;
 name|panel
 operator|.
-name|updateViewToSelected
+name|updateEntryEditorIfShowing
 argument_list|()
 expr_stmt|;
+comment|//panel.updateViewToSelected();
+comment|/*SwingUtilities.invokeLater(new Runnable() {             public void run() {                 panel.updateViewToSelected();             }         });*/
 block|}
 DECL|method|redo ()
 specifier|public
@@ -147,9 +159,11 @@ operator|++
 expr_stmt|;
 name|panel
 operator|.
-name|updateViewToSelected
+name|updateEntryEditorIfShowing
 argument_list|()
 expr_stmt|;
+comment|//panel.updateViewToSelected();
+comment|/*SwingUtilities.invokeLater(new Runnable() {             public void run() {                 panel.updateViewToSelected();             }         });*/
 block|}
 DECL|method|markUnchanged ()
 specifier|public

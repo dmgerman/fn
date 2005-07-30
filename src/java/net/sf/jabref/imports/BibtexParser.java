@@ -411,11 +411,20 @@ operator|!
 name|_eof
 condition|)
 block|{
+name|boolean
+name|found
+init|=
 name|consumeUncritically
 argument_list|(
 literal|'@'
 argument_list|)
-expr_stmt|;
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|found
+condition|)
+break|break;
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
@@ -1323,6 +1332,7 @@ name|key
 operator|=
 literal|null
 expr_stmt|;
+comment|//System.out.println("Key: "+key);
 if|if
 condition|(
 name|result
@@ -1444,7 +1454,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 decl_stmt|;
-comment|//Util.pr("_"+key+"_");
+comment|//Util.pr("Field: _"+key+"_");
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
@@ -1707,21 +1717,7 @@ block|{
 comment|// Value is a string enclosed in brackets. There can be pairs
 comment|// of brackets inside of a field, so we need to count the brackets
 comment|// to know when the string is finished.
-if|if
-condition|(
-name|isStandardBibtexField
-operator|||
-operator|!
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-literal|"preserveFieldFormatting"
-argument_list|)
-condition|)
-block|{
+comment|//if (isStandardBibtexField || !Globals.prefs.getBoolean("preserveFieldFormatting")) {
 comment|// value.append(parseBracketedText());
 comment|// TEST TEST TEST TEST TEST
 name|StringBuffer
@@ -1742,16 +1738,9 @@ name|text
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-name|value
-operator|.
-name|append
-argument_list|(
-name|parseBracketedTextExactly
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//}
+comment|//else
+comment|//    value.append(parseBracketedTextExactly());
 block|}
 elseif|else
 if|if
@@ -1884,6 +1873,15 @@ block|{
 comment|// Do it:
 while|while
 condition|(
+operator|(
+name|value
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|1
+operator|)
+operator|&&
 operator|(
 name|value
 operator|.
@@ -2694,7 +2692,7 @@ block|}
 block|}
 DECL|method|consumeUncritically (char expected)
 specifier|private
-name|void
+name|boolean
 name|consumeUncritically
 parameter_list|(
 name|char
@@ -2752,6 +2750,12 @@ name|_eof
 operator|=
 literal|true
 expr_stmt|;
+comment|// Return true if we actually found the character we were looking for:
+return|return
+name|c
+operator|==
+name|expected
+return|;
 block|}
 DECL|method|consume (char expected1, char expected2)
 specifier|private

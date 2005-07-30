@@ -657,6 +657,16 @@ name|startsWith
 argument_list|(
 literal|"Journal"
 argument_list|)
+operator|||
+name|tmp
+index|[
+literal|1
+index|]
+operator|.
+name|startsWith
+argument_list|(
+literal|"Review"
+argument_list|)
 condition|)
 name|Type
 operator|=

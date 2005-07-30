@@ -229,6 +229,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+comment|//Util.pr(": Starting");
 comment|// ----------------------------------------------------------------
 comment|// First instantiate preferences and set language.
 comment|// ----------------------------------------------------------------
@@ -268,6 +269,7 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+comment|//Util.pr(": Language set");
 comment|// ----------------------------------------------------------------
 comment|// Option processing using RitOpt
 comment|// ----------------------------------------------------------------
@@ -325,6 +327,13 @@ argument_list|()
 decl_stmt|;
 name|BooleanOption
 name|disableGui
+init|=
+operator|new
+name|BooleanOption
+argument_list|()
+decl_stmt|;
+name|BooleanOption
+name|blank
 init|=
 operator|new
 name|BooleanOption
@@ -556,6 +565,24 @@ argument_list|)
 expr_stmt|;
 name|options
 operator|.
+name|register
+argument_list|(
+literal|"blank"
+argument_list|,
+literal|'b'
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Do not open any files at startup"
+argument_list|)
+argument_list|,
+name|blank
+argument_list|)
+expr_stmt|;
+name|options
+operator|.
 name|setUseMenu
 argument_list|(
 literal|false
@@ -572,6 +599,7 @@ argument_list|(
 name|args
 argument_list|)
 decl_stmt|;
+comment|//Util.pr(": Options processed");
 if|if
 condition|(
 name|helpO
@@ -842,11 +870,19 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
+name|blank
+operator|.
+name|isInvoked
+argument_list|()
+operator|&&
+operator|(
 name|leftOver
 operator|.
 name|length
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 for|for
@@ -893,8 +929,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|//Util.pr(": Checked blank");
 if|if
 condition|(
+operator|!
+name|blank
+operator|.
+name|isInvoked
+argument_list|()
+operator|&&
 name|importFile
 operator|.
 name|isInvoked
@@ -963,9 +1006,6 @@ block|{
 comment|// Import a database in a certain format.
 try|try
 block|{
-name|List
-name|entries
-decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -1001,8 +1041,9 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+name|List
 name|entries
-operator|=
+init|=
 name|Globals
 operator|.
 name|importFormatReader
@@ -1031,7 +1072,7 @@ literal|"user.home"
 argument_list|)
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 block|}
 else|else
 block|{
@@ -1096,8 +1137,42 @@ index|[
 literal|0
 index|]
 decl_stmt|;
+if|if
+condition|(
+name|formatName
+operator|.
+name|equals
+argument_list|(
+name|ImportFormatReader
+operator|.
+name|BIBTEX_FORMAT
+argument_list|)
+condition|)
+block|{
+name|ParserResult
+name|pr
+init|=
+operator|(
+name|ParserResult
+operator|)
+name|o
+index|[
+literal|1
+index|]
+decl_stmt|;
+name|loaded
+operator|.
+name|add
+argument_list|(
+name|pr
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|List
 name|entries
-operator|=
+init|=
 operator|(
 name|java
 operator|.
@@ -1109,7 +1184,7 @@ name|o
 index|[
 literal|1
 index|]
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|entries
@@ -1149,7 +1224,6 @@ literal|"Could not find a suitable import format."
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 if|if
 condition|(
 name|entries
@@ -1192,6 +1266,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+block|}
 catch|catch
 parameter_list|(
 name|IOException
@@ -1229,6 +1305,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+comment|//Util.pr(": Finished import");
 if|if
 condition|(
 name|exportFile
@@ -1773,6 +1850,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|//Util.pr(": Finished export");
 if|if
 condition|(
 name|exportPrefs
@@ -1860,6 +1938,12 @@ block|}
 block|}
 if|if
 condition|(
+operator|!
+name|blank
+operator|.
+name|isInvoked
+argument_list|()
+operator|&&
 name|auxImExport
 operator|.
 name|isInvoked
@@ -2146,6 +2230,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|//Util.pr(": Finished aux");
 comment|//openGui = false;
 if|if
 condition|(
@@ -2167,6 +2252,7 @@ operator|.
 name|performCompatibilityUpdate
 argument_list|()
 expr_stmt|;
+comment|//Util.pr(": Finished compatibility");
 comment|//Font fnt = new Font("plain", Font.PLAIN, 12);
 comment|/*              * Font fnt = new Font (prefs.get("menuFontFamily"),              * prefs.getInt("menuFontStyle"), prefs.getInt("menuFontSize"));              *              * Object fnt = new UIDefaults.ProxyLazyValue              * ("javax.swing.plaf.FontUIResource", null, new Object[] {              * prefs.get("menuFontFamily"), new              * Integer(prefs.getInt("menuFontStyle")), new              * Integer(prefs.getInt("menuFontSize")) });              *              * UIManager.put("MenuBar.font", fnt); UIManager.put("MenuItem.font",              * fnt); UIManager.put("RadioButtonMenuItem.font", fnt);              * UIManager.put("CheckBoxMenuItem.font", fnt); UIManager.put("Menu.font",              * fnt); UIManager.put("PopupMenu.font", fnt);              */
 comment|//"Plain", new Integer(Font.PLAIN), new Integer(10)});
@@ -2270,7 +2356,7 @@ name|objLnf
 init|=
 literal|null
 decl_stmt|;
-comment|//Util.pr(lookAndFeel);
+comment|//Util.pr(": LnF: "+lookAndFeel);
 try|try
 block|{
 comment|//lnf2 =
@@ -2535,6 +2621,12 @@ block|}
 comment|// If the option is enabled, open the last edited databases, if any.
 if|if
 condition|(
+operator|!
+name|blank
+operator|.
+name|isInvoked
+argument_list|()
+operator|&&
 name|prefs
 operator|.
 name|getBoolean
@@ -2722,6 +2814,7 @@ literal|"fontSize"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//Util.pr(": Initializing frame");
 name|jrf
 operator|=
 operator|new
@@ -2840,6 +2933,7 @@ operator|.
 name|dispose
 argument_list|()
 expr_stmt|;
+comment|//Util.pr(": Showing frame");
 name|jrf
 operator|.
 name|setVisible
@@ -2847,6 +2941,160 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|loaded
+operator|.
+name|size
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|ParserResult
+name|pr
+init|=
+operator|(
+name|ParserResult
+operator|)
+name|loaded
+operator|.
+name|elementAt
+argument_list|(
+name|i
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"displayKeyWarningDialogAtStartup"
+argument_list|)
+operator|&&
+name|pr
+operator|.
+name|hasWarnings
+argument_list|()
+condition|)
+block|{
+name|String
+index|[]
+name|wrns
+init|=
+name|pr
+operator|.
+name|warnings
+argument_list|()
+decl_stmt|;
+name|StringBuffer
+name|wrn
+init|=
+operator|new
+name|StringBuffer
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|int
+name|j
+init|=
+literal|0
+init|;
+name|j
+operator|<
+name|wrns
+operator|.
+name|length
+condition|;
+name|j
+operator|++
+control|)
+name|wrn
+operator|.
+name|append
+argument_list|(
+operator|(
+name|j
+operator|+
+literal|1
+operator|)
+operator|+
+literal|". "
+operator|+
+name|wrns
+index|[
+name|j
+index|]
+operator|+
+literal|"\n"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|wrn
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+condition|)
+name|wrn
+operator|.
+name|deleteCharAt
+argument_list|(
+name|wrn
+operator|.
+name|length
+argument_list|()
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
+name|jrf
+operator|.
+name|showBaseAt
+argument_list|(
+name|i
+argument_list|)
+expr_stmt|;
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|jrf
+argument_list|,
+name|wrn
+operator|.
+name|toString
+argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Warnings"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|WARNING_MESSAGE
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+comment|//Util.pr(": Finished adding panels");
 if|if
 condition|(
 name|loaded

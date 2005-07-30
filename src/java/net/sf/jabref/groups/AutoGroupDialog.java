@@ -193,7 +193,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Use the following deliminator character(s)"
+literal|"Use the following delimiter character(s)"
 argument_list|)
 operator|+
 literal|":"

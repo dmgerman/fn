@@ -3081,7 +3081,7 @@ operator|.
 name|getTableModel
 argument_list|()
 operator|.
-name|getNameFromNumber
+name|getIdForRow
 argument_list|(
 name|currentIndex
 argument_list|)

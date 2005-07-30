@@ -52,6 +52,18 @@ comment|// modified :
 end_comment
 
 begin_comment
+comment|//            28.07.2005
+end_comment
+
+begin_comment
+comment|//            - fix: insert button doesnt work
+end_comment
+
+begin_comment
+comment|//            - append a author with "and"
+end_comment
+
+begin_comment
 comment|//            04.11.2004
 end_comment
 
@@ -100,16 +112,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|net
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|io
 operator|.
 name|*
@@ -120,7 +122,7 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|net
 operator|.
 name|*
 import|;
@@ -150,33 +152,9 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|datatransfer
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|text
 operator|.
 name|*
 import|;
@@ -208,25 +186,9 @@ end_import
 
 begin_import
 import|import
-name|net
+name|javax
 operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|wizard
+name|swing
 operator|.
 name|text
 operator|.
@@ -241,10 +203,6 @@ operator|.
 name|sf
 operator|.
 name|jabref
-operator|.
-name|wizard
-operator|.
-name|integrity
 operator|.
 name|*
 import|;
@@ -263,6 +221,22 @@ operator|.
 name|integrity
 operator|.
 name|gui
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|wizard
+operator|.
+name|text
 operator|.
 name|*
 import|;
@@ -2352,6 +2326,35 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// insert a new author with an additional "and"
+if|if
+condition|(
+name|type
+operator|.
+name|hashCode
+argument_list|()
+operator|==
+literal|"author"
+operator|.
+name|hashCode
+argument_list|()
+condition|)
+block|{
+name|entry
+operator|.
+name|setField
+argument_list|(
+name|type
+argument_list|,
+name|old
+operator|+
+literal|" and "
+operator|+
+name|txt
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 name|entry
 operator|.
 name|setField
@@ -2455,7 +2458,7 @@ name|source
 operator|==
 name|this
 operator|.
-name|cancelButton
+name|insertButton
 condition|)
 block|{
 name|insertTextForTag

@@ -956,6 +956,7 @@ name|out
 init|=
 literal|""
 decl_stmt|;
+comment|// PENDING jeffrey.kuhn@yale.edu 2005-05-27 : added call to fixPageRange
 name|out
 operator|=
 literal|"article{,\n"
@@ -986,7 +987,10 @@ name|number
 operator|+
 literal|"},\n pages = { "
 operator|+
+name|fixPageRange
+argument_list|(
 name|page
+argument_list|)
 operator|+
 literal|"},\n abstract = { "
 operator|+
@@ -1076,24 +1080,50 @@ argument_list|)
 expr_stmt|;
 comment|//##############################
 comment|// Sort keywords and remove duplicates. Add pubmedid as keyword (user request)
-name|keyword
-operator|=
+name|StringBuffer
+name|sb
+init|=
+operator|new
+name|StringBuffer
+argument_list|(
 name|Util
 operator|.
 name|sortWordsAndRemoveDuplicates
 argument_list|(
 name|descriptorName
 argument_list|)
-operator|+
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|sb
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+condition|)
+name|sb
+operator|.
+name|append
+argument_list|(
 literal|", "
-operator|+
-name|pubmedid
+argument_list|)
 expr_stmt|;
-comment|// 	    Bibitem b =  new Bibitem(author, title, journal,
-comment|// 				     key, year, page, volume,
-comment|// 				     type, series, editor, booktitle,
-comment|// 				     address, number, keyword, url, abstractText.replaceAll("%","\\\\%"), Globals.nextKey(),""+rowNum++ );
-comment|// 	    if(b.getType().length()> 0)
+name|sb
+operator|.
+name|append
+argument_list|(
+name|pubmedid
+argument_list|)
+expr_stmt|;
+name|keyword
+operator|=
+name|sb
+operator|.
+name|toString
+argument_list|()
+expr_stmt|;
 name|BibtexEntry
 name|b
 init|=
@@ -1202,6 +1232,7 @@ argument_list|,
 name|year
 argument_list|)
 expr_stmt|;
+comment|// PENDING jeffrey.kuhn@yale.edu 2005-05-27 : added call to fixPageRange
 if|if
 condition|(
 operator|!
@@ -1218,7 +1249,10 @@ name|setField
 argument_list|(
 literal|"pages"
 argument_list|,
+name|fixPageRange
+argument_list|(
 name|page
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -1373,6 +1407,29 @@ argument_list|(
 literal|"pii"
 argument_list|,
 name|pii
+argument_list|)
+expr_stmt|;
+comment|// PENDING jeffrey.kuhn@yale.edu 2005-05-27 : added "pmid" bibtex field
+comment|// Older references do not have doi entries, but every
+comment|// medline entry has a unique pubmed ID (aka primary ID).
+comment|// Add a bibtex field for the pubmed ID for future use.
+if|if
+condition|(
+operator|!
+name|pubmedid
+operator|.
+name|equals
+argument_list|(
+literal|""
+argument_list|)
+condition|)
+name|b
+operator|.
+name|setField
+argument_list|(
+literal|"pmid"
+argument_list|,
+name|pubmedid
 argument_list|)
 expr_stmt|;
 name|bibitems
@@ -2218,6 +2275,118 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|// PENDING jeffrey.kuhn@yale.edu 2005-05-27 : added fixPageRange method
+comment|//   Convert medline page ranges from short form to full form.
+comment|//   Medline reports page ranges in a shorthand format.
+comment|//   The last page is reported using only the digits which
+comment|//   differ from the first page.
+comment|//      i.e. 12345-51 refers to the actual range 12345-12351
+DECL|method|fixPageRange (String pageRange)
+specifier|public
+name|String
+name|fixPageRange
+parameter_list|(
+name|String
+name|pageRange
+parameter_list|)
+block|{
+name|int
+name|minusPos
+init|=
+name|pageRange
+operator|.
+name|indexOf
+argument_list|(
+literal|'-'
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|minusPos
+operator|<
+literal|0
+condition|)
+block|{
+return|return
+name|pageRange
+return|;
+block|}
+name|String
+name|first
+init|=
+name|pageRange
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|minusPos
+argument_list|)
+operator|.
+name|trim
+argument_list|()
+decl_stmt|;
+name|String
+name|last
+init|=
+name|pageRange
+operator|.
+name|substring
+argument_list|(
+name|minusPos
+operator|+
+literal|1
+argument_list|)
+operator|.
+name|trim
+argument_list|()
+decl_stmt|;
+name|int
+name|llast
+init|=
+name|last
+operator|.
+name|length
+argument_list|()
+decl_stmt|,
+name|lfirst
+init|=
+name|first
+operator|.
+name|length
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|llast
+operator|<
+name|lfirst
+condition|)
+block|{
+name|last
+operator|=
+name|first
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|lfirst
+operator|-
+name|llast
+argument_list|)
+operator|+
+name|last
+expr_stmt|;
+block|}
+return|return
+name|first
+operator|+
+literal|"--"
+operator|+
+name|last
+return|;
 block|}
 block|}
 end_class

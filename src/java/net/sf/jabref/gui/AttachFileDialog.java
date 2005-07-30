@@ -679,7 +679,6 @@ argument_list|(
 name|auto
 argument_list|)
 expr_stmt|;
-comment|//builder.append(Globals.lang("Advanced options for setting..."));
 name|builder
 operator|.
 name|nextLine

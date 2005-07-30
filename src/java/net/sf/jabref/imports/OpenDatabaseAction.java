@@ -657,7 +657,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Keep track of which encoding was used for loading.
-comment|/*             if (Globals.prefs.getBoolean("autoComplete")) {             db.setCompleters(autoCompleters);             }            */
+comment|/*                   if (Globals.prefs.getBoolean("autoComplete")) {                   db.setCompleters(autoCompleters);                   }                  */
 comment|// file is set to null inside the EventDispatcherThread
 name|SwingUtilities
 operator|.
@@ -994,21 +994,16 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Throwable
+name|Exception
 name|ex
 parameter_list|)
 block|{
-comment|//  ex.printStackTrace();
-name|JOptionPane
+comment|//ex.printStackTrace();
+name|Util
 operator|.
-name|showMessageDialog
+name|showQuickErrorDialog
 argument_list|(
 name|frame
-argument_list|,
-name|ex
-operator|.
-name|getMessage
-argument_list|()
 argument_list|,
 name|Globals
 operator|.
@@ -1017,11 +1012,10 @@ argument_list|(
 literal|"Open database"
 argument_list|)
 argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
+name|ex
 argument_list|)
 expr_stmt|;
+comment|/*                 JOptionPane.showMessageDialog                         (frame, ex.getMessage(),                                 Globals.lang("Open database"), JOptionPane.ERROR_MESSAGE);                                 */
 block|}
 block|}
 block|}

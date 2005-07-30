@@ -274,7 +274,12 @@ operator|new
 name|JRadioButton
 argument_list|(
 comment|// JZTODO lyrics
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Independent group: When selected, view only this group's entries"
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|m_intersectionButton
@@ -286,7 +291,12 @@ operator|new
 name|JRadioButton
 argument_list|(
 comment|// JZTODO lyrics
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Refine supergroup: When selected, view entries contained in both this group and its supergroup"
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|m_unionButton
@@ -298,7 +308,12 @@ operator|new
 name|JRadioButton
 argument_list|(
 comment|// JZTODO lyrics
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Include subgroups: When selected, view entries contained in this group or its subgroups"
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// for KeywordGroup

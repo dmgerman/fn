@@ -649,7 +649,12 @@ name|builder
 operator|.
 name|appendSeparator
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Special table columns"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|builder
@@ -718,7 +723,12 @@ name|builder
 operator|.
 name|appendSeparator
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Format of author and editor names"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|builder
@@ -782,7 +792,12 @@ name|builder
 operator|.
 name|appendSeparator
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Sort options"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Create a new panel with its own FormLayout for these items:
@@ -924,7 +939,12 @@ name|builder
 operator|.
 name|appendSeparator
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Table appearance"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|builder

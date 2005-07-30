@@ -4851,7 +4851,7 @@ parameter_list|)
 block|{
 name|groupsTree
 operator|.
-name|setHighlight2Cells
+name|setHighlight3Cells
 argument_list|(
 literal|null
 argument_list|)
@@ -5879,7 +5879,12 @@ init|=
 operator|new
 name|JMenu
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Sort alphabetically"
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|// JZTODO lyrics
@@ -6131,7 +6136,7 @@ name|errorMessage
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Highlight all groups that contain any/all of the specified entries.       */
+comment|/**      * Highlight all groups that contain any/all of the specified entries.      * If entries is null, highlight is cleared.       */
 DECL|method|showMatchingGroups (BibtexEntry[] entries, boolean requireAll)
 specifier|public
 name|void
@@ -6145,6 +6150,28 @@ name|boolean
 name|requireAll
 parameter_list|)
 block|{
+if|if
+condition|(
+name|entries
+operator|==
+literal|null
+condition|)
+block|{
+comment|// nothing selected
+name|groupsTree
+operator|.
+name|setHighlight3Cells
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+name|groupsTree
+operator|.
+name|revalidate
+argument_list|()
+expr_stmt|;
+return|return;
+block|}
 name|GroupTreeNode
 name|node
 decl_stmt|;
@@ -6275,7 +6302,7 @@ expr_stmt|;
 block|}
 name|groupsTree
 operator|.
-name|setHighlight2Cells
+name|setHighlight3Cells
 argument_list|(
 name|vec
 operator|.

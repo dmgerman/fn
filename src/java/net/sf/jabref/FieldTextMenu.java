@@ -290,6 +290,11 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|myFieldName
+operator|.
+name|requestFocus
+argument_list|()
+expr_stmt|;
 comment|// enable/disable copy to clipboard if selected text available
 name|String
 name|txt

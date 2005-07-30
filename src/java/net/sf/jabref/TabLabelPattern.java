@@ -279,7 +279,12 @@ init|=
 operator|new
 name|JCheckBox
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Do not overwrite existing keys"
+argument_list|)
 argument_list|)
 decl_stmt|,
 DECL|field|warnBeforeOverwriting
@@ -288,7 +293,12 @@ init|=
 operator|new
 name|JCheckBox
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Warn before overwriting existing keys"
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|lblEntryType
@@ -307,6 +317,28 @@ init|=
 operator|new
 name|JTextField
 argument_list|()
+decl_stmt|;
+DECL|field|basenamePatternRegex
+specifier|private
+name|JTextField
+name|basenamePatternRegex
+init|=
+operator|new
+name|JTextField
+argument_list|(
+literal|20
+argument_list|)
+decl_stmt|;
+DECL|field|basenamePatternReplacement
+specifier|private
+name|JTextField
+name|basenamePatternReplacement
+init|=
+operator|new
+name|JTextField
+argument_list|(
+literal|20
+argument_list|)
 decl_stmt|;
 DECL|field|btnDefaultAll
 DECL|field|btnDefault
@@ -410,6 +442,34 @@ argument_list|,
 name|dontOverwrite
 operator|.
 name|isSelected
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|put
+argument_list|(
+literal|"basenamePatternRegex"
+argument_list|,
+name|basenamePatternRegex
+operator|.
+name|getText
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|put
+argument_list|(
+literal|"basenamePatternReplacement"
+argument_list|,
+name|basenamePatternReplacement
+operator|.
+name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1108,7 +1168,12 @@ init|=
 operator|new
 name|JLabel
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Default pattern"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|gbl
@@ -1491,7 +1556,7 @@ name|con
 operator|.
 name|weightx
 operator|=
-literal|0
+literal|1
 expr_stmt|;
 name|con
 operator|.
@@ -1558,6 +1623,7 @@ argument_list|,
 literal|""
 argument_list|)
 decl_stmt|;
+comment|//, 8dlu, 20dlu, 8dlu, fill:pref", "");
 name|pan
 operator|=
 operator|new
@@ -1654,7 +1720,7 @@ name|con
 operator|.
 name|gridx
 operator|=
-literal|0
+literal|1
 expr_stmt|;
 name|con
 operator|.
@@ -1736,6 +1802,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+comment|/*        Simon Fischer's patch for replacing a regexp in keys before converting to filename:  	layout = new FormLayout 	        ("left:pref, 8dlu, left:pref, left:pref", ""); 	builder = new DefaultFormBuilder(layout);         builder.appendSeparator(Globals.lang("Bibkey to filename conversion"));         builder.nextLine(); 	builder.append(Globals.lang("Replace"), basenamePatternRegex);         builder.nextLine(); 	builder.append(Globals.lang("by"), basenamePatternReplacement);         builder.nextLine();          builder.getPanel().setBorder(BorderFactory.createEmptyBorder(5,5,5,5));         con.gridx = 2;  	con.gridy = 3; 	con.gridwidth = GridBagConstraints.REMAINDER; 	con.weightx = 1; 	con.fill = GridBagConstraints.BOTH; 	gbl.setConstraints(builder.getPanel(), con);         add(builder.getPanel());         */
 block|}
 comment|/** 	 * Method for filling the text fields with user defined key patterns or default. 	 * The method used (<code>getValue(key)</code>) to get the ArrayList  	 * corrosponding to an entry type throws a<code>NullPointerException</code> 	 * and<code>?</code> if an entry cannot be found. It really shouln't be 	 * nessesary to catch those exceptions here...  	 */
 comment|/*	private void fillTextfields(){ 		txtArticle.setText(_keypatterns.getValue("article").get(0).toString()); 		txtBook.setText(_keypatterns.getValue("book").get(0).toString()); 		txtBooklet.setText(_keypatterns.getValue("booklet").get(0).toString()); 		txtConference.setText(_keypatterns.getValue("conference").get(0).toString()); 		txtInbook.setText(_keypatterns.getValue("inbook").get(0).toString()); 		txtIncollection.setText(_keypatterns.getValue("incollection").get(0).toString()); 		txtInproceedings.setText(_keypatterns.getValue("inproceedings").get(0).toString()); 		txtManual.setText(_keypatterns.getValue("manual").get(0).toString()); 		txtMastersthesis.setText(_keypatterns.getValue("mastersthesis").get(0).toString()); 		txtMisc.setText(_keypatterns.getValue("misc").get(0).toString()); 		txtPhdthesis.setText(_keypatterns.getValue("phdthesis").get(0).toString()); 		txtProceedings.setText(_keypatterns.getValue("proceedings").get(0).toString()); 		txtTechreport.setText(_keypatterns.getValue("techreport").get(0).toString()); 		txtUnpublished.setText(_keypatterns.getValue("unpublished").get(0).toString()); 	}      */
@@ -1970,6 +2037,34 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
+name|basenamePatternRegex
+operator|.
+name|setText
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"basenamePatternRegex"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|basenamePatternReplacement
+operator|.
+name|setText
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"basenamePatternReplacement"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

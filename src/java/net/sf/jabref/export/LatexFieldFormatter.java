@@ -233,25 +233,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// No formatting at all for these fields, to allow custom formatting?
-if|if
-condition|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-literal|"preserveFieldFormatting"
-argument_list|)
-condition|)
-name|sb
-operator|.
-name|append
-argument_list|(
-name|text
-argument_list|)
-expr_stmt|;
-else|else
+comment|//if (Globals.prefs.getBoolean("preserveFieldFormatting"))
+comment|//  sb.append(text);
+comment|//else
 name|sb
 operator|.
 name|append

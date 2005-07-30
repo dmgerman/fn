@@ -183,7 +183,12 @@ init|=
 operator|new
 name|JCheckBox
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Show icons for groups"
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|showDynamic
@@ -195,7 +200,16 @@ init|=
 operator|new
 name|JCheckBox
 argument_list|(
-literal|"<html>Show dynamic groups in<i>italics</i></html>"
+literal|"<html>"
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Show dynamic groups in<i>italics</i>"
+argument_list|)
+operator|+
+literal|"</html>"
 argument_list|)
 decl_stmt|;
 DECL|field|expandTree
@@ -207,7 +221,12 @@ init|=
 operator|new
 name|JCheckBox
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Initially show groups tree expanded"
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|autoShow
@@ -219,7 +238,12 @@ init|=
 operator|new
 name|JCheckBox
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Automatically show groups interface when switching to a database that contains groups"
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|autoHide
@@ -231,7 +255,12 @@ init|=
 operator|new
 name|JCheckBox
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Automatically hide groups interface when switching to a database that contains no groups"
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|groupingField
@@ -337,7 +366,12 @@ name|builder
 operator|.
 name|appendSeparator
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"View"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|builder
@@ -464,7 +498,12 @@ name|builder
 operator|.
 name|appendSeparator
 argument_list|(
-literal|"Dynamic Groups"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Dynamic groups"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|builder
@@ -545,7 +584,14 @@ argument_list|(
 operator|new
 name|JLabel
 argument_list|(
-literal|"When adding/removing keywords, separate them by:"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"When adding/removing keywords, separate them by"
+argument_list|)
+operator|+
+literal|":"
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -32,7 +32,7 @@ name|awt
 operator|.
 name|event
 operator|.
-name|ActionEvent
+name|*
 import|;
 end_import
 
@@ -972,131 +972,7 @@ expr_stmt|;
 name|addSeparator
 argument_list|()
 expr_stmt|;
-name|add
-argument_list|(
-operator|new
-name|AbstractAction
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Highlight groups matching any"
-argument_list|)
-argument_list|)
-comment|// JZTODO lyrics
-block|{
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
-block|{
-name|panel
-operator|.
-name|getGroupSelector
-argument_list|()
-operator|.
-name|showMatchingGroups
-argument_list|(
-name|panel
-operator|.
-name|getSelectedEntries
-argument_list|()
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-argument_list|)
-expr_stmt|;
-name|add
-argument_list|(
-operator|new
-name|AbstractAction
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Highlight groups matching all"
-argument_list|)
-argument_list|)
-comment|// JZTODO lyrics
-block|{
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
-block|{
-name|panel
-operator|.
-name|getGroupSelector
-argument_list|()
-operator|.
-name|showMatchingGroups
-argument_list|(
-name|panel
-operator|.
-name|getSelectedEntries
-argument_list|()
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-argument_list|)
-expr_stmt|;
-name|add
-argument_list|(
-operator|new
-name|AbstractAction
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Clear highlighted groups"
-argument_list|)
-argument_list|)
-comment|// JZTODO lyrics
-block|{
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
-block|{
-name|panel
-operator|.
-name|getGroupSelector
-argument_list|()
-operator|.
-name|clearHighlightAction
-operator|.
-name|actionPerformed
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-argument_list|)
-expr_stmt|;
-name|addSeparator
-argument_list|()
-expr_stmt|;
-comment|//        add(groupMenu);
-comment|//        add(groupRemoveMenu);
+comment|// for "add/move/remove to/from group" entries (appended here)
 block|}
 comment|/**      * Remove all types from the menu. Then cycle through all available      * types, and add them.      */
 DECL|method|populateTypeMenu ()

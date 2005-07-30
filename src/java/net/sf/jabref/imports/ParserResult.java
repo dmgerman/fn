@@ -58,6 +58,16 @@ name|Vector
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
 begin_class
 DECL|class|ParserResult
 specifier|public
@@ -86,11 +96,11 @@ literal|null
 decl_stmt|;
 DECL|field|warnings
 specifier|private
-name|Vector
+name|ArrayList
 name|warnings
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|()
 decl_stmt|;
 DECL|field|encoding
@@ -214,7 +224,7 @@ return|return
 name|encoding
 return|;
 block|}
-comment|/**      * Add a parser warning.      *      * @param s String Warning text. Must be pretranslated.      */
+comment|/**      * Add a parser warning.      *      * @param s String Warning text. Must be pretranslated. Only added if there isn't already a dupe.      */
 DECL|method|addWarning (String s)
 specifier|public
 name|void
@@ -224,6 +234,16 @@ name|String
 name|s
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|warnings
+operator|.
+name|contains
+argument_list|(
+name|s
+argument_list|)
+condition|)
 name|warnings
 operator|.
 name|add
@@ -296,7 +316,7 @@ name|String
 operator|)
 name|warnings
 operator|.
-name|elementAt
+name|get
 argument_list|(
 name|i
 argument_list|)
