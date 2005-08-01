@@ -229,7 +229,14 @@ specifier|private
 name|boolean
 name|antialiasing
 init|=
-literal|true
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"antialias"
+argument_list|)
 decl_stmt|,
 DECL|field|ctrlClick
 name|ctrlClick
@@ -346,15 +353,8 @@ name|prefs
 operator|=
 name|prefs_
 expr_stmt|;
-name|antialiasing
-operator|=
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-literal|"antialias"
-argument_list|)
-expr_stmt|;
+comment|//antialiasing =
+comment|//System.out.println(antialiasing);
 name|ctrlClick
 operator|=
 name|prefs

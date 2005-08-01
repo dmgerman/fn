@@ -2087,6 +2087,27 @@ literal|"pdf"
 argument_list|)
 condition|)
 block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|expandFilename
+argument_list|(
+name|link
+argument_list|,
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|fieldName
+operator|+
+literal|"Directory"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|File
 name|file
 init|=
@@ -3049,6 +3070,21 @@ name|String
 name|dir
 parameter_list|)
 block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"expandFilename: name="
+operator|+
+name|name
+operator|+
+literal|"\t dir="
+operator|+
+name|dir
+argument_list|)
+expr_stmt|;
 name|File
 name|file
 init|=
@@ -3107,6 +3143,18 @@ argument_list|)
 operator|+
 name|name
 expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"expanded to: "
+operator|+
+name|name
+argument_list|)
+expr_stmt|;
+comment|//if (name.startsWith("ftp"))
 name|file
 operator|=
 operator|new
@@ -3153,6 +3201,17 @@ argument_list|(
 literal|"\\\\"
 argument_list|,
 literal|"/"
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"expandFilename: "
+operator|+
+name|name
 argument_list|)
 expr_stmt|;
 name|file

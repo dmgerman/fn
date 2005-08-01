@@ -56,9 +56,19 @@ name|*
 import|;
 end_import
 
-begin_comment
-comment|//import net.sf.jabref.about.*;
-end_comment
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|about
+operator|.
+name|*
+import|;
+end_import
 
 begin_import
 import|import

@@ -291,6 +291,7 @@ name|Graphics2D
 operator|)
 name|g
 decl_stmt|;
+comment|//System.out.println(antialiasing);
 if|if
 condition|(
 name|antialiasing
