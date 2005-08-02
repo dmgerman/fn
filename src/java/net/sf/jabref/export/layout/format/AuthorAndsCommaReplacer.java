@@ -16,6 +16,22 @@ name|format
 package|;
 end_package
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|export
+operator|.
+name|layout
+operator|.
+name|LayoutFormatter
+import|;
+end_import
+
 begin_comment
 comment|/**  * Replaces and's for& (in case of two authors) and ; (in case  * of more than two authors).  *  * @author Carlos Silla  */
 end_comment
@@ -25,6 +41,8 @@ DECL|class|AuthorAndsCommaReplacer
 specifier|public
 class|class
 name|AuthorAndsCommaReplacer
+implements|implements
+name|LayoutFormatter
 block|{
 comment|/* (non-Javadoc) 	 * @see net.sf.jabref.export.layout.LayoutFormatter#format(java.lang.String) 	 */
 DECL|method|format (String fieldText)

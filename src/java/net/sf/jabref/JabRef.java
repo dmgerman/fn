@@ -210,15 +210,7 @@ name|graphicFailure
 init|=
 literal|false
 decl_stmt|;
-name|System
-operator|.
-name|setProperty
-argument_list|(
-literal|"sun.awt.noerasebackground"
-argument_list|,
-literal|"true"
-argument_list|)
-expr_stmt|;
+comment|//System.setProperty("sun.awt.noerasebackground", "true");
 comment|//System.out.println(java.awt.Toolkit.getDefaultToolkit().getDesktopProperty("awt.dynamicLayoutSupported"));
 comment|// Make sure of a proper cleanup when quitting (e.g. deleting temporary
 comment|// files).

@@ -315,7 +315,7 @@ name|f1
 operator|=
 name|ImportFormatReader
 operator|.
-name|fixAuthor_lastnameFirst
+name|fixAuthorForAlphabetization
 argument_list|(
 operator|(
 name|String
@@ -323,6 +323,7 @@ operator|)
 name|f1
 argument_list|)
 expr_stmt|;
+comment|//ImportFormatReader.fixAuthor_lastnameFirst((String)f1);
 if|if
 condition|(
 name|f2
@@ -333,7 +334,7 @@ name|f2
 operator|=
 name|ImportFormatReader
 operator|.
-name|fixAuthor_lastnameFirst
+name|fixAuthorForAlphabetization
 argument_list|(
 operator|(
 name|String
@@ -341,6 +342,7 @@ operator|)
 name|f2
 argument_list|)
 expr_stmt|;
+comment|//ImportFormatReader.fixAuthor_lastnameFirst((String)f2);
 block|}
 elseif|else
 if|if

@@ -8182,9 +8182,6 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-operator|(
-name|BasePanel
-operator|)
 name|tabbedPane
 operator|.
 name|getSelectedComponent
@@ -8517,9 +8514,6 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-operator|(
-name|BasePanel
-operator|)
 name|tabbedPane
 operator|.
 name|getSelectedComponent
@@ -9399,28 +9393,6 @@ literal|"defaultOwner"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// check if bibentries is null
-if|if
-condition|(
-name|bibentries
-operator|==
-literal|null
-condition|)
-block|{
-name|output
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"No entries imported."
-argument_list|)
-argument_list|)
-expr_stmt|;
-return|return
-literal|0
-return|;
-block|}
 if|if
 condition|(
 name|intoNew
@@ -9803,7 +9775,7 @@ if|if
 condition|(
 name|res
 operator|==
-name|drd
+name|DuplicateResolverDialog
 operator|.
 name|KEEP_LOWER
 condition|)
@@ -9818,7 +9790,7 @@ if|if
 condition|(
 name|res
 operator|==
-name|drd
+name|DuplicateResolverDialog
 operator|.
 name|KEEP_UPPER
 condition|)
@@ -9854,7 +9826,7 @@ if|if
 condition|(
 name|res
 operator|==
-name|drd
+name|DuplicateResolverDialog
 operator|.
 name|BREAK
 condition|)
@@ -10480,8 +10452,6 @@ comment|// 2. The preferred extension for the layout format.
 comment|// 3. The name of the file to use.
 name|File
 name|outFile
-init|=
-literal|null
 decl_stmt|;
 name|String
 name|chosenFile
@@ -10635,9 +10605,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-decl_stmt|;
-name|JMenuItem
-name|item
 decl_stmt|;
 name|htmlItem
 operator|.
@@ -11277,8 +11244,6 @@ comment|// 2. The preferred extension for the layout format.
 comment|// 3. The name of the file to use.
 name|File
 name|outFile
-init|=
-literal|null
 decl_stmt|;
 name|String
 name|chosenFile
