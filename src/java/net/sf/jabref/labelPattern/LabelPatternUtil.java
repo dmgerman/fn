@@ -2166,13 +2166,14 @@ init|=
 literal|""
 decl_stmt|;
 comment|// This code was part of 'ApplyRule' in 'ArticleLabelRule'
+comment|//String[] tokens = ImportFormatReader.fixAuthor_lastnameFirst(authorField).split("\\band\\b");
 name|String
 index|[]
 name|tokens
 init|=
 name|ImportFormatReader
 operator|.
-name|fixAuthor_lastnameFirst
+name|fixAuthorForAlphabetization
 argument_list|(
 name|authorField
 argument_list|)
@@ -2248,7 +2249,7 @@ name|tokens
 init|=
 name|ImportFormatReader
 operator|.
-name|fixAuthor_lastnameFirst
+name|fixAuthorForAlphabetization
 argument_list|(
 name|authorField
 argument_list|)
@@ -2334,7 +2335,7 @@ name|authorField
 operator|=
 name|ImportFormatReader
 operator|.
-name|fixAuthor_lastnameFirst
+name|fixAuthorForAlphabetization
 argument_list|(
 name|authorField
 argument_list|)
@@ -2473,7 +2474,7 @@ name|authorField
 operator|=
 name|ImportFormatReader
 operator|.
-name|fixAuthor_lastnameFirst
+name|fixAuthorForAlphabetization
 argument_list|(
 name|authorField
 argument_list|)
@@ -2602,7 +2603,7 @@ name|authorField
 operator|=
 name|ImportFormatReader
 operator|.
-name|fixAuthor_lastnameFirst
+name|fixAuthorForAlphabetization
 argument_list|(
 name|authorField
 argument_list|)
@@ -2713,7 +2714,7 @@ name|authorField
 operator|=
 name|ImportFormatReader
 operator|.
-name|fixAuthor_lastnameFirst
+name|fixAuthorForAlphabetization
 argument_list|(
 name|authorField
 argument_list|)
@@ -2850,7 +2851,7 @@ name|authorField
 operator|=
 name|ImportFormatReader
 operator|.
-name|fixAuthor_lastnameFirst
+name|fixAuthorForAlphabetization
 argument_list|(
 name|authorField
 argument_list|)
