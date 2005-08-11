@@ -171,11 +171,6 @@ argument_list|()
 operator|==
 literal|null
 condition|)
-comment|// A nulled changeevent like this just signals that the entry
-comment|// is about to change. The signal enables listeners to
-comment|// prepare. This is needed for EntrySorter which must remove
-comment|// the entry from its TreeMap before it changes, and re-add it
-comment|// afterwards to keep it in the correct sort position.
 name|fireDatabaseChanged
 argument_list|(
 operator|new

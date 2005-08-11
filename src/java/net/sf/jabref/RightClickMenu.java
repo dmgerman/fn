@@ -423,6 +423,7 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+comment|/*SwingUtilities.invokeLater(new Runnable () {                         public void run() {*/
 try|try
 block|{
 name|panel
@@ -439,6 +440,7 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{}
+comment|/*}                     }); */
 block|}
 block|}
 argument_list|)
@@ -877,8 +879,19 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Copy \\cite{BibTeX key}"
+literal|"Copy"
 argument_list|)
+operator|+
+literal|" \\cite{"
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"BibTeX key"
+argument_list|)
+operator|+
+literal|"}"
 argument_list|,
 operator|new
 name|ImageIcon

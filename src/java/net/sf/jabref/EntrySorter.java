@@ -32,9 +32,14 @@ name|EntrySorter
 implements|implements
 name|DatabaseChangeListener
 block|{
+comment|//TreeSet set;
 DECL|field|set
-name|TreeSet
+name|ArrayList
 name|set
+decl_stmt|;
+DECL|field|comp
+name|Comparator
+name|comp
 decl_stmt|;
 DECL|field|idArray
 name|String
@@ -54,10 +59,10 @@ name|outdated
 init|=
 literal|false
 decl_stmt|;
-DECL|field|changing
+DECL|field|changed
 specifier|private
 name|boolean
-name|changing
+name|changed
 init|=
 literal|false
 decl_stmt|;
@@ -72,13 +77,18 @@ name|Comparator
 name|comp
 parameter_list|)
 block|{
+comment|//set = new TreeSet(comp);
 name|set
 operator|=
 operator|new
-name|TreeSet
-argument_list|(
+name|ArrayList
+argument_list|()
+expr_stmt|;
+name|this
+operator|.
 name|comp
-argument_list|)
+operator|=
+name|comp
 expr_stmt|;
 name|Set
 name|keySet
@@ -127,6 +137,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|//Collections.sort(set, comp);
+name|changed
+operator|=
+literal|true
+expr_stmt|;
 name|index
 argument_list|()
 expr_stmt|;
@@ -138,21 +153,32 @@ name|void
 name|index
 parameter_list|()
 block|{
-comment|// The boolean "changing" is true in the situation that an entry is about to change,
-comment|// and has temporarily been removed from the entry set in this sorter. So, if we index
-comment|// now, we will cause exceptions other places because one entry has been left out of
-comment|// the indexed array. Simply waiting foth this to change can lead to deadlocks,
-comment|// so we have no other choice than to return without indexing.
-if|if
-condition|(
-name|changing
-condition|)
-return|return;
+comment|/*  Old version, from when set was a TreeSet.          // The boolean "changing" is true in the situation that an entry is about to change,         // and has temporarily been removed from the entry set in this sorter. So, if we index         // now, we will cause exceptions other places because one entry has been left out of         // the indexed array. Simply waiting foth this to change can lead to deadlocks,         // so we have no other choice than to return without indexing.         if (changing)             return;         */
 synchronized|synchronized
 init|(
 name|set
 init|)
 block|{
+comment|// Resort if necessary:
+if|if
+condition|(
+name|changed
+condition|)
+block|{
+name|Collections
+operator|.
+name|sort
+argument_list|(
+name|set
+argument_list|,
+name|comp
+argument_list|)
+expr_stmt|;
+name|changed
+operator|=
+literal|false
+expr_stmt|;
+block|}
 comment|// Create an array of IDs for quick access, since getIdAt() is called by
 comment|// getValueAt() in EntryTableModel, which *has* to be efficient.
 name|int
@@ -355,6 +381,11 @@ name|getEntry
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|changed
+operator|=
+literal|true
+expr_stmt|;
+comment|//Collections.sort(set, comp);
 block|}
 elseif|else
 if|if
@@ -379,33 +410,7 @@ name|getEntry
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-name|e
-operator|.
-name|getType
-argument_list|()
-operator|==
-name|DatabaseChangeEvent
-operator|.
-name|CHANGING_ENTRY
-condition|)
-block|{
-name|set
-operator|.
-name|remove
-argument_list|(
-name|e
-operator|.
-name|getEntry
-argument_list|()
-argument_list|)
-expr_stmt|;
-comment|//System.out.println("CHANGING: "+Thread.currentThread().toString());
-comment|//Thread.dumpStack();
-name|changing
+name|changed
 operator|=
 literal|true
 expr_stmt|;
@@ -423,26 +428,16 @@ operator|.
 name|CHANGED_ENTRY
 condition|)
 block|{
-comment|// Remove and re-add the entry, to make sure it is in the
-comment|// correct sort position.
-name|set
-operator|.
-name|add
-argument_list|(
-name|e
-operator|.
-name|getEntry
-argument_list|()
-argument_list|)
-expr_stmt|;
-comment|//System.out.println("CHANGED: "+e.getEntry().getCiteKey());
-name|changing
+comment|// Entry changed. Resort list:
+comment|//Collections.sort(set, comp);
+name|changed
 operator|=
-literal|false
+literal|true
 expr_stmt|;
 block|}
 block|}
 block|}
+comment|/* Old version, from when set was a TreeSet.          public void databaseChanged(DatabaseChangeEvent e) {         synchronized(set) { 	        if (e.getType() == DatabaseChangeEvent.ADDED_ENTRY) { 	            set.add(e.getEntry()); 	        } 	        else if (e.getType() == DatabaseChangeEvent.REMOVED_ENTRY) { 	            set.remove(e.getEntry()); 	        } 	        else if (e.getType() == DatabaseChangeEvent.CHANGING_ENTRY) { 	            set.remove(e.getEntry());                 changing = true; 	        } 	        else if (e.getType() == DatabaseChangeEvent.CHANGED_ENTRY) { 	            // Remove and re-add the entry, to make sure it is in the 	            // correct sort position.         	    set.add(e.getEntry());                 changing = false;             }      	}      }     */
 block|}
 end_class
 

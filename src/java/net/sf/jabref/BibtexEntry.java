@@ -548,21 +548,7 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-comment|// First throw an empty event that just signals that this entry
-comment|// is about to change. This is needed, so the EntrySorter can
-comment|// remove the entry from its TreeSet. After a sort-sensitive
-comment|// field changes, the entry will not be found by the TreeMap,
-comment|// so without this event it would be impossible to reinsert this
-comment|// entry to keep everything sorted properly.
-name|firePropertyChangedEvent
-argument_list|(
-literal|null
-argument_list|,
-literal|null
-argument_list|,
-literal|null
-argument_list|)
-expr_stmt|;
+comment|/* The first event is no longer needed, so the following comment doesn't apply 	           as of 2005.08.11.              // First throw an empty event that just signals that this entry 	        // is about to change. This is needed, so the EntrySorter can 	        // remove the entry from its TreeSet. After a sort-sensitive 	        // field changes, the entry will not be found by the TreeMap, 	        // so without this event it would be impossible to reinsert this 	        // entry to keep everything sorted properly.             firePropertyChangedEvent(null, null, null);             */
 comment|// We set the field before throwing the changeEvent, to enable
 comment|// the change listener to access the new value if the change
 comment|// sets off a change in database sorting etc.

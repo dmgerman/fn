@@ -2318,6 +2318,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|refreshTable
+argument_list|()
+expr_stmt|;
+name|markBaseChanged
+argument_list|()
+expr_stmt|;
 name|frame
 operator|.
 name|output
@@ -2375,12 +2381,6 @@ name|ce
 argument_list|)
 expr_stmt|;
 comment|//entryTable.clearSelection();
-name|refreshTable
-argument_list|()
-expr_stmt|;
-name|markBaseChanged
-argument_list|()
-expr_stmt|;
 comment|// Reselect the entry in the first prev. selected position:
 if|if
 condition|(
