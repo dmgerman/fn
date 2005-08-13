@@ -557,7 +557,11 @@ name|out
 operator|.
 name|write
 argument_list|(
-literal|"]}\n"
+literal|"]}"
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
 argument_list|)
 expr_stmt|;
 block|}

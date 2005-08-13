@@ -732,6 +732,20 @@ specifier|static
 name|SidePaneManager
 name|sidePaneManager
 decl_stmt|;
+DECL|field|NEWLINE
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|NEWLINE
+init|=
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"line.separator"
+argument_list|)
+decl_stmt|;
 DECL|method|logger (String s)
 specifier|public
 specifier|static
