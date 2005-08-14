@@ -3068,6 +3068,14 @@ name|groupingCanceled
 init|=
 literal|false
 decl_stmt|;
+comment|// Set owner/timestamp if options are enabled:
+name|Util
+operator|.
+name|setAutomaticFields
+argument_list|(
+name|selected
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|Iterator

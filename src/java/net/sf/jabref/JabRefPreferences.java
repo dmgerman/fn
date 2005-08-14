@@ -1738,6 +1738,35 @@ operator|.
 name|TRUE
 argument_list|)
 expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"useTimeStamp"
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"timeStampFormat"
+argument_list|,
+literal|"yyyy.MM.dd"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"timeStampField"
+argument_list|,
+literal|"timestamp"
+argument_list|)
+expr_stmt|;
 comment|//defaults.put("tempDir", System.getProperty("java.io.tmpdir"));
 comment|//Util.pr(System.getProperty("java.io.tempdir"));
 comment|//defaults.put("keyPattern", new LabelPattern(KEY_PATTERN));

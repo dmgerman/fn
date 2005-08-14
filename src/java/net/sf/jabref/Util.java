@@ -114,6 +114,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|text
+operator|.
+name|SimpleDateFormat
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -4088,20 +4098,35 @@ return|;
 block|}
 comment|/**      * This methods assures all words in the given entry are recorded in their      * respective Completers, if any.      */
 comment|/*      * public static void updateCompletersForEntry(Hashtable autoCompleters,      * BibtexEntry be) {      *       * for (Iterator j=autoCompleters.keySet().iterator(); j.hasNext();) {      * String field = (String)j.next(); Completer comp =      * (Completer)autoCompleters.get(field); comp.addAll(be.getField(field)); } }      */
-comment|/**      * Sets empty or non-existing owner fields of bibtex entries inside an array      * to a specified default value.      *       * @param bibs      *            array of bibtex entries      * @param defaultOwner      *            default owner of bibtex entries      */
-DECL|method|setDefaultOwner (List bibs, String defaultOwner)
+comment|/**      * Sets empty or non-existing owner fields of bibtex entries inside an array      * to a specified default value. Timestamp field is also set. Preferences are      * checked to see if these options are enabled.      *       * @param bibs List of bibtex entries      *      */
+DECL|method|setAutomaticFields (List bibs)
 specifier|public
 specifier|static
 name|void
-name|setDefaultOwner
+name|setAutomaticFields
 parameter_list|(
 name|List
 name|bibs
-parameter_list|,
-name|String
-name|defaultOwner
 parameter_list|)
 block|{
+name|String
+name|defaultOwner
+init|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"defaultOwner"
+argument_list|)
+decl_stmt|;
+name|String
+name|timestamp
+init|=
+name|easyDateFormat
+argument_list|()
+decl_stmt|;
 comment|// Iterate through all entries
 for|for
 control|(
@@ -4135,6 +4160,19 @@ argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
+comment|// Set owner field if this option is enabled:
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"useOwner"
+argument_list|)
+condition|)
+block|{
 comment|// No or empty owner field?
 if|if
 condition|(
@@ -4182,6 +4220,34 @@ name|defaultOwner
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"useTimeStamp"
+argument_list|)
+condition|)
+name|curEntry
+operator|.
+name|setField
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"timeStampField"
+argument_list|)
+argument_list|,
+name|timestamp
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 DECL|method|printEntry (BibtexEntry entry)
@@ -6054,6 +6120,55 @@ name|sb
 operator|.
 name|toString
 argument_list|()
+return|;
+block|}
+DECL|method|easyDateFormat ()
+specifier|public
+specifier|static
+name|String
+name|easyDateFormat
+parameter_list|()
+block|{
+name|String
+name|format
+init|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"timeStampFormat"
+argument_list|)
+decl_stmt|;
+name|Date
+name|today
+init|=
+operator|new
+name|Date
+argument_list|()
+decl_stmt|;
+name|SimpleDateFormat
+name|formatter
+init|=
+operator|new
+name|SimpleDateFormat
+argument_list|(
+name|format
+argument_list|)
+decl_stmt|;
+name|String
+name|datenewformat
+init|=
+name|formatter
+operator|.
+name|format
+argument_list|(
+name|today
+argument_list|)
+decl_stmt|;
+return|return
+name|datenewformat
 return|;
 block|}
 block|}

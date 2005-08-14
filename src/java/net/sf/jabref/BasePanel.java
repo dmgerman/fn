@@ -8375,31 +8375,26 @@ argument_list|(
 name|be
 argument_list|)
 expr_stmt|;
-comment|// Create new Bibtex entry
-comment|// Set owner field to default value
-if|if
-condition|(
-name|prefs
+comment|// Set owner/timestamp if options are enabled:
+name|ArrayList
+name|list
+init|=
+operator|new
+name|ArrayList
+argument_list|()
+decl_stmt|;
+name|list
 operator|.
-name|getBoolean
+name|add
 argument_list|(
-literal|"useOwner"
-argument_list|)
-condition|)
 name|be
-operator|.
-name|setField
-argument_list|(
-name|Globals
-operator|.
-name|OWNER
-argument_list|,
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"defaultOwner"
 argument_list|)
+expr_stmt|;
+name|Util
+operator|.
+name|setAutomaticFields
+argument_list|(
+name|list
 argument_list|)
 expr_stmt|;
 comment|// Create an UndoableInsertEntry object.

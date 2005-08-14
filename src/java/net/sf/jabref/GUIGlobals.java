@@ -1519,6 +1519,11 @@ name|ownerHelp
 init|=
 literal|"OwnerHelp.html"
 decl_stmt|,
+DECL|field|timeStampHelp
+name|timeStampHelp
+init|=
+literal|"TimeStampHelp.html"
+decl_stmt|,
 DECL|field|pdfHelp
 name|pdfHelp
 init|=
