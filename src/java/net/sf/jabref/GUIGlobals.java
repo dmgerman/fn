@@ -1569,6 +1569,11 @@ DECL|field|shortIntegrityCheck
 name|shortIntegrityCheck
 init|=
 literal|"ShortIntegrityCheck.html"
+decl_stmt|,
+DECL|field|remoteHelp
+name|remoteHelp
+init|=
+literal|"RemoteHelp.html"
 decl_stmt|;
 comment|// Colors.
 specifier|public

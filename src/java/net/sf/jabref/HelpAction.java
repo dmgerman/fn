@@ -456,6 +456,45 @@ name|helpFile
 expr_stmt|;
 block|}
 comment|/*     public HelpAction(HelpDialog diag, URL helpfile, String tooltip) { 	super(Globals.lang("Help"), new ImageIcon(GUIGlobals.helpIconFile)); 	putValue(SHORT_DESCRIPTION, Globals.lang(tooltip)); 	this.diag = diag; 	this.helpfile = helpfile;               Util.pr("6. HelpAction: "+helpFile+" "+helpfile);     }      public HelpAction(HelpDialog diag, URL helpfile, String tooltip, 		      URL iconFile) { 	super(Globals.lang("Help"), new ImageIcon(iconFile)); 	putValue(SHORT_DESCRIPTION, Globals.lang(tooltip)); 	this.diag = diag; 	this.helpfile = helpfile;               Util.pr("7. HelpAction: "+helpFile+" "+helpfile);     }      public HelpAction(String title, HelpDialog diag, URL helpfile, String tooltip) { 	super(Globals.lang(title), new ImageIcon(GUIGlobals.helpIconFile)); 	putValue(SHORT_DESCRIPTION, Globals.lang(tooltip)); 	this.diag = diag; 	this.helpfile = helpfile;               Util.pr("8. HelpAction: "+helpFile+" "+helpfile);     }      public HelpAction(String title, HelpDialog diag, URL helpfile, String tooltip, 		      KeyStroke key) { 	super(Globals.lang(title), new ImageIcon(GUIGlobals.helpIconFile)); 	putValue(SHORT_DESCRIPTION, Globals.lang(tooltip)); 	putValue(ACCELERATOR_KEY, key); 	this.diag = diag; 	this.helpfile = helpfile;               Util.pr("9. HelpAction: "+helpFile+" "+helpfile);     } */
+DECL|method|getIconButton ()
+specifier|public
+name|JButton
+name|getIconButton
+parameter_list|()
+block|{
+name|JButton
+name|hlp
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|this
+argument_list|)
+decl_stmt|;
+name|hlp
+operator|.
+name|setText
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+name|hlp
+operator|.
+name|setPreferredSize
+argument_list|(
+operator|new
+name|Dimension
+argument_list|(
+literal|24
+argument_list|,
+literal|24
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+name|hlp
+return|;
+block|}
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

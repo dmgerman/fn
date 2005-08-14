@@ -214,6 +214,14 @@ name|toStop
 init|=
 literal|false
 decl_stmt|;
+DECL|field|IDENTIFIER
+specifier|private
+specifier|final
+name|String
+name|IDENTIFIER
+init|=
+literal|"jabref"
+decl_stmt|;
 DECL|method|RemoteListener (JabRef jabref, ServerSocket socket)
 specifier|public
 name|RemoteListener
@@ -302,6 +310,7 @@ expr_stmt|;
 return|return;
 block|}
 comment|//System.out.println("Connection...");
+comment|/*OutputStream out = newSocket.getOutputStream();                 out.write(IDENTIFIER.getBytes());                 out.close();                 System.out.println("aaa");*/
 name|InputStream
 name|in
 init|=
@@ -310,6 +319,7 @@ operator|.
 name|getInputStream
 argument_list|()
 decl_stmt|;
+comment|//System.out.println("aaaa");
 name|int
 name|c
 decl_stmt|;
@@ -345,6 +355,7 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
+comment|//System.out.println("Bbbb");*
 comment|//System.out.println("Received: '"+sb.toString()+"'");
 name|String
 index|[]
@@ -623,6 +634,7 @@ literal|"remoteServerPort"
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|/*InputStream in = socket.getInputStream();             int c;             StringBuffer sb = new StringBuffer();             while ((c = in.read())>= 0) {                 sb.append((char)c);             }             in.close();             System.out.println("Received: "+sb.toString());*/
 name|OutputStream
 name|out
 init|=
