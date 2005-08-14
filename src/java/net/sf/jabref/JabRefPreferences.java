@@ -1767,6 +1767,30 @@ argument_list|,
 literal|"timestamp"
 argument_list|)
 expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"useRemoteServer"
+argument_list|,
+name|Boolean
+operator|.
+name|FALSE
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"remoteServerPort"
+argument_list|,
+operator|new
+name|Integer
+argument_list|(
+literal|6050
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|//defaults.put("tempDir", System.getProperty("java.io.tmpdir"));
 comment|//Util.pr(System.getProperty("java.io.tempdir"));
 comment|//defaults.put("keyPattern", new LabelPattern(KEY_PATTERN));

@@ -111,6 +111,13 @@ init|=
 literal|null
 decl_stmt|;
 comment|// Which encoding was used?
+DECL|field|toOpenTab
+specifier|private
+name|boolean
+name|toOpenTab
+init|=
+literal|false
+decl_stmt|;
 DECL|method|ParserResult (BibtexDatabase base, HashMap metaData, HashMap entryTypes)
 specifier|public
 name|ParserResult
@@ -142,6 +149,33 @@ operator|.
 name|entryTypes
 operator|=
 name|entryTypes
+expr_stmt|;
+block|}
+comment|/**      * Check if this base is marked to be added to the currently open tab. Default is false.      * @return      */
+DECL|method|toOpenTab ()
+specifier|public
+name|boolean
+name|toOpenTab
+parameter_list|()
+block|{
+return|return
+name|toOpenTab
+return|;
+block|}
+DECL|method|setToOpenTab (boolean toOpenTab)
+specifier|public
+name|void
+name|setToOpenTab
+parameter_list|(
+name|boolean
+name|toOpenTab
+parameter_list|)
+block|{
+name|this
+operator|.
+name|toOpenTab
+operator|=
+name|toOpenTab
 expr_stmt|;
 block|}
 DECL|method|getDatabase ()

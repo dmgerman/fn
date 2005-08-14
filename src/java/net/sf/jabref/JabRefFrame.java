@@ -3820,6 +3820,7 @@ expr_stmt|;
 block|}
 comment|/**    * Returns the currently viewed BasePanel.    */
 DECL|method|basePanel ()
+specifier|public
 name|BasePanel
 name|basePanel
 parameter_list|()

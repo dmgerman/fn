@@ -6122,6 +6122,7 @@ name|toString
 argument_list|()
 return|;
 block|}
+comment|/**      * Creates a String containing the current date (and possibly time), formatted      * according to the format set in preferences under the key "timeStampFormat".      * @return The date string.      */
 DECL|method|easyDateFormat ()
 specifier|public
 specifier|static

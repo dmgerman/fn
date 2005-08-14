@@ -45,7 +45,7 @@ specifier|final
 name|int
 name|DEFAULT_HELP_OPTION_SIZE
 init|=
-literal|15
+literal|22
 decl_stmt|;
 comment|/**      * The default width of the type name field when the help usage is      * display.      */
 DECL|field|DEFAULT_HELP_TYPENAME_SIZE
