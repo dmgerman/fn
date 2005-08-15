@@ -2593,6 +2593,33 @@ return|return
 name|defKeyBinds
 return|;
 block|}
+DECL|method|flush ()
+specifier|public
+name|void
+name|flush
+parameter_list|()
+block|{
+try|try
+block|{
+name|prefs
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|BackingStoreException
+name|ex
+parameter_list|)
+block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 comment|/**      * Stores new key bindings into Preferences, provided they      * actually differ from the old ones.      */
 DECL|method|setNewKeyBindings (HashMap newBindings)
 specifier|public

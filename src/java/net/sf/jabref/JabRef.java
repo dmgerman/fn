@@ -373,7 +373,6 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-block|}
 comment|// Unless we are alone, try to contact already running JabRef:
 if|if
 condition|(
@@ -399,6 +398,7 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|//System.setProperty("sun.awt.noerasebackground", "true");
 comment|//System.out.println(java.awt.Toolkit.getDefaultToolkit().getDesktopProperty("awt.dynamicLayoutSupported"));

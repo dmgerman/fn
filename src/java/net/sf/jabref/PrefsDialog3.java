@@ -1307,6 +1307,13 @@ name|storeSettings
 argument_list|()
 expr_stmt|;
 block|}
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
 comment|//try { Thread.sleep(3000); } catch (InterruptedException ex) {}
 block|}
 specifier|public
