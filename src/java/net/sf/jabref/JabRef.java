@@ -390,7 +390,6 @@ argument_list|(
 name|args
 argument_list|)
 condition|)
-empty_stmt|;
 name|System
 operator|.
 name|exit
@@ -1532,9 +1531,7 @@ block|}
 block|}
 if|if
 condition|(
-operator|!
-name|initialStartup
-operator|&&
+comment|/*!initialStartup&& */
 operator|!
 name|blank
 operator|.
