@@ -390,6 +390,8 @@ argument_list|(
 name|args
 argument_list|)
 condition|)
+comment|// We have successfully sent our command line options through the socket to
+comment|// another JabRef instance. So we assume it's all taken care of, and quit.
 name|System
 operator|.
 name|exit

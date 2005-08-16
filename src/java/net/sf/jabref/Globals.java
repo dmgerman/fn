@@ -746,6 +746,21 @@ argument_list|(
 literal|"line.separator"
 argument_list|)
 decl_stmt|;
+DECL|field|UNIX_NEWLINE
+specifier|public
+specifier|static
+specifier|final
+name|boolean
+name|UNIX_NEWLINE
+init|=
+name|NEWLINE
+operator|.
+name|equals
+argument_list|(
+literal|"\n"
+argument_list|)
+decl_stmt|;
+comment|// true if we have unix newlines.
 DECL|method|logger (String s)
 specifier|public
 specifier|static

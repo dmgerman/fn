@@ -59,13 +59,13 @@ class|class
 name|FieldContentParser
 block|{
 comment|/**      * Performs the reformatting      * @param content StringBuffer containing the field to format.      * @return The formatted field content. NOTE: the StringBuffer returned may      * or may not be the same as the argument given.      */
-DECL|method|format (StringBuffer oldContent)
+DECL|method|format (StringBuffer content)
 specifier|public
 name|StringBuffer
 name|format
 parameter_list|(
 name|StringBuffer
-name|oldContent
+name|content
 parameter_list|)
 block|{
 name|int
@@ -79,28 +79,25 @@ name|i
 init|=
 literal|0
 decl_stmt|;
-comment|// Replace platform-specific newlines by the single \n:
-name|StringBuffer
+comment|// Remove windows newlines and insert unix ones:
 name|content
-init|=
+operator|=
 operator|new
 name|StringBuffer
 argument_list|(
-name|oldContent
+name|content
 operator|.
 name|toString
 argument_list|()
 operator|.
 name|replaceAll
 argument_list|(
-name|Globals
-operator|.
-name|NEWLINE
+literal|"\r\n"
 argument_list|,
 literal|"\n"
 argument_list|)
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|/*while (i<content.length()) {             if (content.charAt(i) == '\r')                 content.deleteCharAt(i);             else i++;         }          i=0;*/
 while|while
 condition|(
