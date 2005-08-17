@@ -66,6 +66,18 @@ name|PatternSyntaxException
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Matcher
+import|;
+end_import
+
 begin_class
 DECL|class|RegExpRule
 specifier|public
@@ -142,26 +154,6 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-operator|!
-name|searchString
-operator|.
-name|matches
-argument_list|(
-literal|"\\.\\*"
-argument_list|)
-condition|)
-block|{
-name|searchString
-operator|=
-literal|".*"
-operator|+
-name|searchString
-operator|+
-literal|".*"
-expr_stmt|;
-block|}
 name|int
 name|flags
 init|=
@@ -179,6 +171,7 @@ operator|.
 name|CASE_INSENSITIVE
 expr_stmt|;
 comment|// testing
+comment|//System.out.println(searchString);
 name|Pattern
 name|pattern
 init|=
@@ -285,8 +278,9 @@ operator|!=
 literal|null
 condition|)
 block|{
-if|if
-condition|(
+name|Matcher
+name|m
+init|=
 name|pattern
 operator|.
 name|matcher
@@ -301,16 +295,17 @@ operator|)
 name|value
 argument_list|)
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|m
 operator|.
-name|matches
+name|find
 argument_list|()
 condition|)
-block|{
 name|score
 operator|++
 expr_stmt|;
-comment|// Util.pr(String.valueOf(bibtexEntry.getField(fields[i].toString())));
-block|}
 block|}
 block|}
 catch|catch

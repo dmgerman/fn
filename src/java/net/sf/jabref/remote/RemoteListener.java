@@ -342,6 +342,7 @@ block|{
 while|while
 condition|(
 operator|(
+operator|(
 name|c
 operator|=
 name|in
@@ -351,6 +352,13 @@ argument_list|()
 operator|)
 operator|!=
 literal|'\0'
+operator|)
+operator|&&
+operator|(
+name|c
+operator|>=
+literal|0
+operator|)
 condition|)
 block|{
 name|sb
@@ -363,6 +371,18 @@ operator|)
 name|c
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|sb
+operator|.
+name|length
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+continue|continue;
 block|}
 name|String
 index|[]
@@ -592,12 +612,11 @@ name|SocketException
 name|ex
 parameter_list|)
 block|{
-comment|//active = false;
-name|ex
-operator|.
-name|printStackTrace
-argument_list|()
+name|active
+operator|=
+literal|false
 expr_stmt|;
+comment|//ex.printStackTrace();
 block|}
 catch|catch
 parameter_list|(
@@ -639,28 +658,10 @@ name|getInt
 argument_list|(
 literal|"remoteServerPort"
 argument_list|)
-argument_list|,
-literal|1
-argument_list|,
-name|InetAddress
-operator|.
-name|getByAddress
-argument_list|(
-operator|new
-name|byte
-index|[]
-block|{
-literal|127
-block|,
-literal|0
-block|,
-literal|0
-block|,
-literal|1
-block|}
-argument_list|)
 argument_list|)
 decl_stmt|;
+comment|//, 1,
+comment|//InetAddress.getByAddress(new byte[] {127, 0, 0, 1}));
 name|RemoteListener
 name|listener
 init|=
@@ -682,6 +683,24 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|e
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+literal|"Address already in use"
+argument_list|)
+condition|)
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 return|return
 literal|null
 return|;
@@ -729,6 +748,13 @@ literal|"remoteServerPort"
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|socket
+operator|.
+name|setSoTimeout
+argument_list|(
+literal|2000
+argument_list|)
+expr_stmt|;
 name|InputStream
 name|in
 init|=
@@ -755,8 +781,11 @@ operator|new
 name|StringBuffer
 argument_list|()
 decl_stmt|;
+try|try
+block|{
 while|while
 condition|(
+operator|(
 operator|(
 name|c
 operator|=
@@ -767,6 +796,13 @@ argument_list|()
 operator|)
 operator|!=
 literal|'\0'
+operator|)
+operator|&&
+operator|(
+name|c
+operator|>=
+literal|0
+operator|)
 condition|)
 block|{
 name|sb
@@ -777,6 +813,23 @@ operator|(
 name|char
 operator|)
 name|c
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|SocketTimeoutException
+name|ex
+parameter_list|)
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Connection timed out."
 argument_list|)
 expr_stmt|;
 block|}
@@ -801,7 +854,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Cannot use port %0 for remote operation; another"
+literal|"Cannot use port %0 for remote operation; another "
 operator|+
 literal|"application may be using it. Try specifying another port."
 argument_list|,
@@ -915,10 +968,15 @@ return|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Exception
 name|e
 parameter_list|)
 block|{
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 return|return
 literal|false
 return|;
