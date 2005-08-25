@@ -3298,6 +3298,7 @@ block|{
 comment|// Temporary (old method):
 comment|//FileLoader fl = new FileLoader();
 comment|//BibtexDatabase db = fl.load(fileToOpen.getPath());
+comment|// First we make a quick check to see if this looks like a BibTeX file:
 name|Reader
 name|reader
 init|=
@@ -3308,6 +3309,29 @@ argument_list|,
 name|encoding
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|BibtexParser
+operator|.
+name|isRecognizedFormat
+argument_list|(
+name|reader
+argument_list|)
+condition|)
+return|return
+literal|null
+return|;
+comment|// The file looks promising. Reinitialize the reader and go on:
+name|reader
+operator|=
+name|getReader
+argument_list|(
+name|fileToOpen
+argument_list|,
+name|encoding
+argument_list|)
+expr_stmt|;
 name|String
 name|suppliedEncoding
 init|=

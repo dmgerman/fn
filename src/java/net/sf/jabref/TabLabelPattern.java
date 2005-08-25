@@ -270,6 +270,8 @@ DECL|field|_keypatterns
 specifier|private
 name|LabelPattern
 name|_keypatterns
+init|=
+literal|null
 decl_stmt|;
 DECL|field|dontOverwrite
 specifier|private
@@ -369,13 +371,7 @@ name|_prefs
 operator|=
 name|prefs
 expr_stmt|;
-name|_keypatterns
-operator|=
-name|_prefs
-operator|.
-name|getKeyPattern
-argument_list|()
-expr_stmt|;
+comment|//_keypatterns = _prefs.getKeyPattern();
 name|help
 operator|=
 operator|new
@@ -574,7 +570,6 @@ argument_list|(
 name|_keypatterns
 argument_list|)
 expr_stmt|;
-comment|/* 		_keypatterns.addLabelPattern("article", 			txtArticle.getText()); 		_keypatterns.addLabelPattern("book", 					txtBook.getText()); 		_keypatterns.addLabelPattern("booklet", 			txtBooklet.getText()); 		_keypatterns.addLabelPattern("conference", 		txtConference.getText()); 		_keypatterns.addLabelPattern("inbook", 				txtInbook.getText()); 		_keypatterns.addLabelPattern("incollection", 	txtIncollection.getText()); 		_keypatterns.addLabelPattern("inproceedings",	txtInproceedings.getText()); 		_keypatterns.addLabelPattern("manual", 				txtManual.getText()); 		_keypatterns.addLabelPattern("mastersthesis",	txtMastersthesis.getText()); 		_keypatterns.addLabelPattern("misc",					txtMisc.getText()); 		_keypatterns.addLabelPattern("phdthesis", 		txtPhdthesis.getText()); 		_keypatterns.addLabelPattern("proceedings", 	txtProceedings.getText()); 		_keypatterns.addLabelPattern("techreport", 		txtTechreport.getText()); 		_keypatterns.addLabelPattern("unpublished", 	txtUnpublished.getText()); 		*/
 block|}
 DECL|method|addEntryType (Container c, String name, int y)
 specifier|private
@@ -889,6 +884,8 @@ literal|""
 argument_list|)
 expr_stmt|;
 else|else
+block|{
+comment|//System.out.println(":: "+_keypatterns.getValue(fieldName).get(0).toString());
 name|tf
 operator|.
 name|setText
@@ -909,6 +906,7 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/** 	 * Method to build GUI 	 * 	 */
 DECL|method|buildGUI ()
@@ -1931,6 +1929,13 @@ name|void
 name|setValues
 parameter_list|()
 block|{
+name|_keypatterns
+operator|=
+name|_prefs
+operator|.
+name|getKeyPattern
+argument_list|()
+expr_stmt|;
 name|defaultPat
 operator|.
 name|setText

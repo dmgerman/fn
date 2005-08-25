@@ -393,6 +393,12 @@ block|,
 literal|"EUC-JP"
 block|,
 comment|// Added Japanese encodings.
+literal|"Big5"
+block|,
+literal|"Big5_HKSCS"
+block|,
+literal|"GBK"
+block|,
 literal|"ISO8859_2"
 block|,
 literal|"ISO8859_3"

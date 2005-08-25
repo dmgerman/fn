@@ -2759,17 +2759,6 @@ name|LabelPattern
 name|getKeyPattern
 parameter_list|()
 block|{
-comment|// Lazy initialization..... Read overridden definitions from Preferences
-comment|// and add these.
-if|if
-condition|(
-name|keyPattern
-operator|!=
-literal|null
-condition|)
-return|return
-name|keyPattern
-return|;
 name|keyPattern
 operator|=
 operator|new

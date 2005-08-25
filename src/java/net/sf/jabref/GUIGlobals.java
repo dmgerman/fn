@@ -20,41 +20,7 @@ name|java
 operator|.
 name|awt
 operator|.
-name|event
-operator|.
-name|KeyEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ActionEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
 name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|KeyStroke
 import|;
 end_import
 
@@ -2267,6 +2233,11 @@ name|double
 name|DEFAULT_FIELD_WEIGHT
 init|=
 literal|1
+decl_stmt|,
+DECL|field|MAX_FIELD_WEIGHT
+name|MAX_FIELD_WEIGHT
+init|=
+literal|2
 decl_stmt|;
 specifier|public
 specifier|static
@@ -2680,14 +2651,13 @@ literal|32
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Map
-name|fieldWeight
-init|=
+name|FIELD_WEIGHT
+operator|=
 operator|new
 name|HashMap
 argument_list|()
-decl_stmt|;
-name|fieldWeight
+expr_stmt|;
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2696,7 +2666,7 @@ argument_list|,
 name|MEDIUM_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2705,7 +2675,7 @@ argument_list|,
 name|SMALL_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2714,7 +2684,7 @@ argument_list|,
 name|SMALL_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2723,7 +2693,7 @@ argument_list|,
 name|SMALL_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2732,7 +2702,7 @@ argument_list|,
 name|SMALL_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2741,7 +2711,7 @@ argument_list|,
 name|SMALL_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2750,7 +2720,7 @@ argument_list|,
 name|SMALL_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2759,7 +2729,7 @@ argument_list|,
 name|MEDIUM_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2768,7 +2738,7 @@ argument_list|,
 name|MEDIUM_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2777,7 +2747,7 @@ argument_list|,
 name|SMALL_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2786,7 +2756,7 @@ argument_list|,
 name|SMALL_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2795,7 +2765,7 @@ argument_list|,
 name|SMALL_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2804,7 +2774,7 @@ argument_list|,
 name|SMALL_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2813,7 +2783,7 @@ argument_list|,
 name|SMALL_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2822,7 +2792,7 @@ argument_list|,
 name|SMALL_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2831,7 +2801,7 @@ argument_list|,
 name|SMALL_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2840,7 +2810,7 @@ argument_list|,
 name|SMALL_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2849,7 +2819,7 @@ argument_list|,
 name|SMALL_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2858,7 +2828,7 @@ argument_list|,
 name|MEDIUM_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2867,7 +2837,7 @@ argument_list|,
 name|SMALL_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2876,7 +2846,7 @@ argument_list|,
 name|SMALL_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2885,7 +2855,7 @@ argument_list|,
 name|SMALL_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2894,7 +2864,7 @@ argument_list|,
 name|MEDIUM_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2903,7 +2873,7 @@ argument_list|,
 name|MEDIUM_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2912,7 +2882,7 @@ argument_list|,
 name|MEDIUM_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2921,7 +2891,7 @@ argument_list|,
 name|MEDIUM_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2930,7 +2900,7 @@ argument_list|,
 name|MEDIUM_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2939,7 +2909,7 @@ argument_list|,
 name|LARGE_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2948,7 +2918,7 @@ argument_list|,
 name|MEDIUM_W
 argument_list|)
 expr_stmt|;
-name|fieldWeight
+name|FIELD_WEIGHT
 operator|.
 name|put
 argument_list|(
@@ -2957,15 +2927,7 @@ argument_list|,
 name|SMALL_W
 argument_list|)
 expr_stmt|;
-name|FIELD_WEIGHT
-operator|=
-name|Collections
-operator|.
-name|unmodifiableMap
-argument_list|(
-name|fieldWeight
-argument_list|)
-expr_stmt|;
+comment|//FIELD_WEIGHT = Collections.unmodifiableMap(FIELD_WEIGHT);
 block|}
 empty_stmt|;
 comment|/*     public static int getPreferredFieldLength(String name) {     int l = DEFAULT_FIELD_LENGTH;     Object o = fieldLength.get(name.toLowerCase());     if (o != null)     l = ((Integer)o).intValue();     return l;     }*/
@@ -3020,6 +2982,33 @@ block|}
 return|return
 name|l
 return|;
+block|}
+DECL|method|setFieldWeight (String fieldName, double weight)
+specifier|public
+specifier|static
+name|void
+name|setFieldWeight
+parameter_list|(
+name|String
+name|fieldName
+parameter_list|,
+name|double
+name|weight
+parameter_list|)
+block|{
+name|FIELD_WEIGHT
+operator|.
+name|put
+argument_list|(
+name|fieldName
+argument_list|,
+operator|new
+name|Double
+argument_list|(
+name|weight
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 comment|/** returns the path to language independent help files */
 DECL|method|getLocaleHelpPath ()

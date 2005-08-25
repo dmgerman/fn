@@ -658,10 +658,28 @@ name|getInt
 argument_list|(
 literal|"remoteServerPort"
 argument_list|)
+argument_list|,
+literal|1
+argument_list|,
+name|InetAddress
+operator|.
+name|getByAddress
+argument_list|(
+operator|new
+name|byte
+index|[]
+block|{
+literal|127
+block|,
+literal|0
+block|,
+literal|0
+block|,
+literal|1
+block|}
+argument_list|)
 argument_list|)
 decl_stmt|;
-comment|//, 1,
-comment|//InetAddress.getByAddress(new byte[] {127, 0, 0, 1}));
 name|RemoteListener
 name|listener
 init|=

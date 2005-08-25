@@ -261,6 +261,13 @@ name|String
 name|filenm
 parameter_list|)
 block|{
+name|filenm
+operator|=
+name|filenm
+operator|.
+name|toLowerCase
+argument_list|()
+expr_stmt|;
 name|int
 name|dotPos
 init|=
