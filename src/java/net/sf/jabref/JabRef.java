@@ -339,68 +339,7 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-literal|"useRemoteServer"
-argument_list|)
-condition|)
-block|{
-name|remoteListener
-operator|=
-name|RemoteListener
-operator|.
-name|openRemoteListener
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|remoteListener
-operator|!=
-literal|null
-condition|)
-block|{
-name|remoteListener
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
-block|}
-comment|// Unless we are alone, try to contact already running JabRef:
-if|if
-condition|(
-name|remoteListener
-operator|==
-literal|null
-condition|)
-block|{
-if|if
-condition|(
-name|RemoteListener
-operator|.
-name|sendToActiveJabRefInstance
-argument_list|(
-name|args
-argument_list|)
-condition|)
-comment|// We have successfully sent our command line options through the socket to
-comment|// another JabRef instance. So we assume it's all taken care of, and quit.
-name|System
-operator|.
-name|exit
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
-block|}
-block|}
+comment|/*         if (Globals.prefs.getBoolean("useRemoteServer")) {             remoteListener = RemoteListener.openRemoteListener(this);             if (remoteListener != null) {                 remoteListener.start();             }          // Unless we are alone, try to contact already running JabRef: 	    if (remoteListener == null) { 		if (RemoteListener.sendToActiveJabRefInstance(args))             // We have successfully sent our command line options through the socket to             // another JabRef instance. So we assume it's all taken care of, and quit.             System.exit(0);         } 	}           */
 comment|//System.setProperty("sun.awt.noerasebackground", "true");
 comment|//System.out.println(java.awt.Toolkit.getDefaultToolkit().getDesktopProperty("awt.dynamicLayoutSupported"));
 comment|// Make sure of a proper cleanup when quitting (e.g. deleting temporary

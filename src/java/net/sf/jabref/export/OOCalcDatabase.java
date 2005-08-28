@@ -432,7 +432,7 @@ name|table
 operator|.
 name|setAttribute
 argument_list|(
-literal|"table.name"
+literal|"table:name"
 argument_list|,
 literal|"Bibliography"
 argument_list|)
