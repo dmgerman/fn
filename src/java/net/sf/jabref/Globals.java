@@ -638,14 +638,12 @@ decl_stmt|,
 DECL|field|ON_WIN
 name|ON_WIN
 init|=
-operator|(
 name|osName
 operator|.
 name|startsWith
 argument_list|(
 literal|"Windows"
 argument_list|)
-operator|)
 decl_stmt|;
 comment|// The following set of name parts are treated as part of the last name for
 comment|// display purposes, and as part of the first name for sorting purposes:

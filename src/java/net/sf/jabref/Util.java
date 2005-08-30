@@ -229,7 +229,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Describe class<code>Util</code> here.  *   * @author<a href="mailto:"></a>  * @version 1.0  */
+comment|/**  * Describe class<code>Util</code> here.  *  * @author<a href="mailto:"></a>  * @version 1.0  */
 end_comment
 
 begin_class
@@ -257,8 +257,6 @@ argument_list|)
 decl_stmt|;
 comment|// Integer values for indicating result of duplicate check (for entries):
 DECL|field|TYPE_MISMATCH
-DECL|field|NOT_EQUAL
-DECL|field|EQUAL
 specifier|final
 specifier|static
 name|int
@@ -267,20 +265,22 @@ init|=
 operator|-
 literal|1
 decl_stmt|,
+DECL|field|NOT_EQUAL
 name|NOT_EQUAL
 init|=
 literal|0
 decl_stmt|,
+DECL|field|EQUAL
 name|EQUAL
 init|=
 literal|1
 decl_stmt|,
 DECL|field|EMPTY_IN_ONE
-DECL|field|EMPTY_IN_TWO
 name|EMPTY_IN_ONE
 init|=
 literal|2
 decl_stmt|,
+DECL|field|EMPTY_IN_TWO
 name|EMPTY_IN_TWO
 init|=
 literal|3
@@ -1219,7 +1219,7 @@ return|return
 name|newKeyS
 return|;
 block|}
-comment|/** Replace non-english characters like umlauts etc. with a sensible      * letter or letter combination that bibtex can accept. The basis      * for replacement is the HashMap GLobals.UNICODE_CHARS.      */
+comment|/**      * Replace non-english characters like umlauts etc. with a sensible      * letter or letter combination that bibtex can accept. The basis      * for replacement is the HashMap GLobals.UNICODE_CHARS.      */
 DECL|method|replaceSpecialCharacters (String s)
 specifier|public
 specifier|static
@@ -1798,7 +1798,7 @@ return|return
 name|res
 return|;
 block|}
-comment|/**      * Returns a HashMap containing all words used in the database in the given      * field type. Characters in      *       * @param remove      *            are not included.      * @param db      *            a<code>BibtexDatabase</code> value      * @param field      *            a<code>String</code> value      * @param remove      *            a<code>String</code> value      * @return a<code>HashSet</code> value      */
+comment|/**      * Returns a HashMap containing all words used in the database in the given      * field type. Characters in      *      * @param remove are not included.      * @param db     a<code>BibtexDatabase</code> value      * @param field  a<code>String</code> value      * @param remove a<code>String</code> value      * @return a<code>HashSet</code> value      */
 DECL|method|findAllWordsInField (BibtexDatabase db, String field, String remove)
 specifier|public
 specifier|static
@@ -1915,7 +1915,7 @@ return|return
 name|res
 return|;
 block|}
-comment|/**      * Takes a String array and returns a string with the array's elements      * delimited by a certain String.      *       * @param strs      *            String array to convert.      * @param delimiter      *            String to use as delimiter.      * @return Delimited String.      */
+comment|/**      * Takes a String array and returns a string with the array's elements      * delimited by a certain String.      *      * @param strs      String array to convert.      * @param delimiter String to use as delimiter.      * @return Delimited String.      */
 DECL|method|stringArrayToDelimited (String[] strs, String delimiter)
 specifier|public
 specifier|static
@@ -2028,7 +2028,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Takes a delimited string, splits it and returns      *       * @param names      *            a<code>String</code> value      * @return a<code>String[]</code> value      */
+comment|/**      * Takes a delimited string, splits it and returns      *      * @param names a<code>String</code> value      * @return a<code>String[]</code> value      */
 DECL|method|delimToStringArray (String names, String delimiter)
 specifier|public
 specifier|static
@@ -2061,7 +2061,7 @@ name|delimiter
 argument_list|)
 return|;
 block|}
-comment|/**      * Open a http/pdf/ps viewer for the given link string.      *        */
+comment|/**      * Open a http/pdf/ps viewer for the given link string.      */
 DECL|method|openExternalViewer (String link, String fieldName, JabRefPreferences prefs)
 specifier|public
 specifier|static
@@ -2417,48 +2417,14 @@ operator|.
 name|ON_WIN
 condition|)
 block|{
-name|cmdArray
-index|[
-literal|0
-index|]
-operator|=
-name|prefs
-operator|.
-name|get
+name|openFileOnWindows
 argument_list|(
-literal|"htmlviewer"
-argument_list|)
-expr_stmt|;
-name|cmdArray
-index|[
-literal|1
-index|]
-operator|=
 name|link
-expr_stmt|;
-name|Process
-name|child
-init|=
-name|Runtime
-operator|.
-name|getRuntime
-argument_list|()
-operator|.
-name|exec
-argument_list|(
-name|cmdArray
-index|[
-literal|0
-index|]
-operator|+
-literal|" "
-operator|+
-name|cmdArray
-index|[
-literal|1
-index|]
+argument_list|,
+literal|false
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+comment|/*cmdArray[0] = prefs.get("htmlviewer");                     cmdArray[1] = link;                     Process child = Runtime.getRuntime().exec(                     cmdArray[0] + " " + cmdArray[1]);                     */
 block|}
 else|else
 block|{
@@ -2585,48 +2551,14 @@ operator|.
 name|ON_WIN
 condition|)
 block|{
-name|cmdArray
-index|[
-literal|0
-index|]
-operator|=
-name|prefs
-operator|.
-name|get
+name|openFileOnWindows
 argument_list|(
-literal|"psviewer"
-argument_list|)
-expr_stmt|;
-name|cmdArray
-index|[
-literal|1
-index|]
-operator|=
 name|link
-expr_stmt|;
-name|Process
-name|child
-init|=
-name|Runtime
-operator|.
-name|getRuntime
-argument_list|()
-operator|.
-name|exec
-argument_list|(
-name|cmdArray
-index|[
-literal|0
-index|]
-operator|+
-literal|" "
-operator|+
-name|cmdArray
-index|[
-literal|1
-index|]
+argument_list|,
+literal|true
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+comment|/*                     cmdArray[0] = prefs.get("psviewer");                     cmdArray[1] = link;                     Process child = Runtime.getRuntime().exec(                             cmdArray[0] + " " + cmdArray[1]);                     */
 block|}
 else|else
 block|{
@@ -2753,121 +2685,14 @@ operator|.
 name|ON_WIN
 condition|)
 block|{
-name|String
-index|[]
-name|spl
-init|=
+name|openFileOnWindows
+argument_list|(
 name|link
-operator|.
-name|split
-argument_list|(
-literal|"\\\\"
-argument_list|)
-decl_stmt|;
-name|StringBuffer
-name|sb
-init|=
-operator|new
-name|StringBuffer
-argument_list|()
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|spl
-operator|.
-name|length
-condition|;
-name|i
-operator|++
-control|)
-block|{
-if|if
-condition|(
-name|i
-operator|>
-literal|0
-condition|)
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"\\"
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|spl
-index|[
-name|i
-index|]
-operator|.
-name|indexOf
-argument_list|(
-literal|" "
-argument_list|)
-operator|>=
-literal|0
-condition|)
-name|spl
-index|[
-name|i
-index|]
-operator|=
-literal|"\""
-operator|+
-name|spl
-index|[
-name|i
-index|]
-operator|+
-literal|"\""
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-name|spl
-index|[
-name|i
-index|]
-argument_list|)
-expr_stmt|;
-block|}
-comment|//pr(sb.toString());
-name|link
-operator|=
-name|sb
-operator|.
-name|toString
-argument_list|()
-expr_stmt|;
-name|String
-name|cmd
-init|=
-literal|"cmd.exe /c start "
-operator|+
-name|link
-decl_stmt|;
-name|Process
-name|child
-init|=
-name|Runtime
-operator|.
-name|getRuntime
-argument_list|()
-operator|.
-name|exec
-argument_list|(
-name|cmd
-argument_list|)
-decl_stmt|;
+comment|/*                     String[] spl = link.split("\\\\");                     StringBuffer sb = new StringBuffer();                     for (int i = 0; i< spl.length; i++) {                         if (i> 0) sb.append("\\");                         if (spl[i].indexOf(" ")>= 0) spl[i] = "\"" + spl[i]                                 + "\"";                         sb.append(spl[i]);                      }                     //pr(sb.toString());                     link = sb.toString();                      String cmd = "cmd.exe /c start " + link;                      Process child = Runtime.getRuntime().exec(cmd);                     */
 block|}
 else|else
 block|{
@@ -2965,6 +2790,143 @@ argument_list|)
 expr_stmt|;
 comment|//ignore
 block|}
+block|}
+comment|/**      * Opens a file on a Windows system, using its default viewer.      * @param link The file name.      * @param localFile true if it is a local file, not an URL.      * @throws IOException      */
+DECL|method|openFileOnWindows (String link, boolean localFile)
+specifier|public
+specifier|static
+name|void
+name|openFileOnWindows
+parameter_list|(
+name|String
+name|link
+parameter_list|,
+name|boolean
+name|localFile
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+if|if
+condition|(
+name|localFile
+condition|)
+block|{
+name|String
+index|[]
+name|spl
+init|=
+name|link
+operator|.
+name|split
+argument_list|(
+literal|"\\\\"
+argument_list|)
+decl_stmt|;
+name|StringBuffer
+name|sb
+init|=
+operator|new
+name|StringBuffer
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|spl
+operator|.
+name|length
+condition|;
+name|i
+operator|++
+control|)
+block|{
+if|if
+condition|(
+name|i
+operator|>
+literal|0
+condition|)
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"\\"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|spl
+index|[
+name|i
+index|]
+operator|.
+name|indexOf
+argument_list|(
+literal|" "
+argument_list|)
+operator|>=
+literal|0
+condition|)
+name|spl
+index|[
+name|i
+index|]
+operator|=
+literal|"\""
+operator|+
+name|spl
+index|[
+name|i
+index|]
+operator|+
+literal|"\""
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+name|spl
+index|[
+name|i
+index|]
+argument_list|)
+expr_stmt|;
+block|}
+name|link
+operator|=
+name|sb
+operator|.
+name|toString
+argument_list|()
+expr_stmt|;
+block|}
+name|String
+name|cmd
+init|=
+literal|"cmd.exe /c start "
+operator|+
+name|link
+decl_stmt|;
+name|Process
+name|child
+init|=
+name|Runtime
+operator|.
+name|getRuntime
+argument_list|()
+operator|.
+name|exec
+argument_list|(
+name|cmd
+argument_list|)
+decl_stmt|;
 block|}
 comment|/**      * Searches the given directory and subdirectories for a pdf file with name      * as given + ".pdf"      */
 DECL|method|findPdf (String key, String extension, String directory, OpenFileFilter off)
@@ -3351,7 +3313,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Checks if the two entries represent the same publication.      *       * @param one      *            BibtexEntry      * @param two      *            BibtexEntry      * @return boolean      */
+comment|/**      * Checks if the two entries represent the same publication.      *      * @param one BibtexEntry      * @param two BibtexEntry      * @return boolean      */
 DECL|method|isDuplicate (BibtexEntry one, BibtexEntry two, float threshold)
 specifier|public
 specifier|static
@@ -3472,7 +3434,7 @@ operator|)
 return|;
 block|}
 block|}
-comment|/**      * Goes through all entries in the given database, and if at least one of      * them is a duplicate of the given entry, as per Util.isDuplicate(BibtexEntry, BibtexEntry),      * the duplicate is returned. The search is terminated when the first duplicate is found.      *      * @param database The database to search.      * @param entry The entry of which we are looking for duplicates.      * @return The first duplicate entry found. null if no duplicates are found.      */
+comment|/**      * Goes through all entries in the given database, and if at least one of      * them is a duplicate of the given entry, as per Util.isDuplicate(BibtexEntry, BibtexEntry),      * the duplicate is returned. The search is terminated when the first duplicate is found.      *      * @param database The database to search.      * @param entry    The entry of which we are looking for duplicates.      * @return The first duplicate entry found. null if no duplicates are found.      */
 DECL|method|containsDuplicate (BibtexDatabase database, BibtexEntry entry)
 specifier|public
 specifier|static
@@ -4078,7 +4040,7 @@ return|;
 block|}
 comment|/**      * This methods assures all words in the given entry are recorded in their      * respective Completers, if any.      */
 comment|/*      * public static void updateCompletersForEntry(Hashtable autoCompleters,      * BibtexEntry be) {      *       * for (Iterator j=autoCompleters.keySet().iterator(); j.hasNext();) {      * String field = (String)j.next(); Completer comp =      * (Completer)autoCompleters.get(field); comp.addAll(be.getField(field)); } }      */
-comment|/**      * Sets empty or non-existing owner fields of bibtex entries inside an array      * to a specified default value. Timestamp field is also set. Preferences are      * checked to see if these options are enabled.      *       * @param bibs List of bibtex entries      *      */
+comment|/**      * Sets empty or non-existing owner fields of bibtex entries inside an array      * to a specified default value. Timestamp field is also set. Preferences are      * checked to see if these options are enabled.      *      * @param bibs List of bibtex entries      */
 DECL|method|setAutomaticFields (List bibs)
 specifier|public
 specifier|static
@@ -4278,7 +4240,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Copies a file.      *       * @param source      *            File Source file      * @param dest      *            File Destination file      * @param deleteIfExists      *            boolean Determines whether the copy goes on even if the file      *            exists.      * @returns boolean Whether the copy succeeded, or was stopped due to the      *          file already existing.      * @throws IOException      */
+comment|/**      * Copies a file.      *      * @param source         File Source file      * @param dest           File Destination file      * @param deleteIfExists boolean Determines whether the copy goes on even if the file      *                       exists.      * @throws IOException      * @returns boolean Whether the copy succeeded, or was stopped due to the      * file already existing.      */
 DECL|method|copyFile (File source, File dest, boolean deleteIfExists)
 specifier|public
 specifier|static
@@ -4626,7 +4588,7 @@ literal|0
 argument_list|)
 return|;
 block|}
-comment|/**      * Quote special characters.      *       * @param s      *            The String which may contain special characters.      * @param specials      *            A String containing all special characters except the quoting      *            character itself, which is automatically quoted.      * @param quoteChar      *            The quoting character.      * @param linewrap      *            The number of characters after which a linebreak is inserted      *            (this linebreak is undone by unquote()). Set to 0 to disable.      * @return A String with every special character (including the quoting      *         character itself) quoted.      */
+comment|/**      * Quote special characters.      *      * @param s         The String which may contain special characters.      * @param specials  A String containing all special characters except the quoting      *                  character itself, which is automatically quoted.      * @param quoteChar The quoting character.      * @param linewrap  The number of characters after which a linebreak is inserted      *                  (this linebreak is undone by unquote()). Set to 0 to disable.      * @return A String with every special character (including the quoting      *         character itself) quoted.      */
 DECL|method|quote (String s, String specials, char quoteChar, int linewrap)
 specifier|public
 specifier|static
@@ -4781,7 +4743,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Unquote special characters. 	 *  	 * @param s 	 *            The String which may contain quoted special characters. 	 * @param quoteChar 	 *            The quoting character. 	 * @return A String with all quoted characters unquoted. 	 */
+comment|/**      * Unquote special characters.      *      * @param s         The String which may contain quoted special characters.      * @param quoteChar The quoting character.      * @return A String with all quoted characters unquoted.      */
 DECL|method|unquote (String s, char quoteChar)
 specifier|public
 specifier|static
@@ -4894,7 +4856,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**       * Quote all regular expression meta characters in s, in order to      * search for s literally.      */
+comment|/**      * Quote all regular expression meta characters in s, in order to      * search for s literally.      */
 DECL|method|quoteMeta (String s)
 specifier|public
 specifier|static
@@ -5133,7 +5095,7 @@ else|:
 literal|""
 return|;
 block|}
-comment|/**      * Warns the user of undesired side effects of an explicit      * assignment/removal of entries to/from this group. Currently there are      * four types of groups: AllEntriesGroup, SearchGroup - do not support      * explicit assignment. ExplicitGroup - never modifies entries. KeywordGroup -      * only this modifies entries upon assignment/removal. Modifications are      * acceptable unless they affect a standard field (such as "author") besides      * the "keywords" field.      *       * @param parent       *         The Component used as a parent when displaying a       *         confirmation dialog.      *       * @return true if the assignment has no undesired side effects, or the user      *         chose to perform it anyway. false otherwise (this indicates that      *         the user has aborted the assignment).      */
+comment|/**      * Warns the user of undesired side effects of an explicit      * assignment/removal of entries to/from this group. Currently there are      * four types of groups: AllEntriesGroup, SearchGroup - do not support      * explicit assignment. ExplicitGroup - never modifies entries. KeywordGroup -      * only this modifies entries upon assignment/removal. Modifications are      * acceptable unless they affect a standard field (such as "author") besides      * the "keywords" field.      *      * @param parent The Component used as a parent when displaying a      *               confirmation dialog.      * @return true if the assignment has no undesired side effects, or the user      *         chose to perform it anyway. false otherwise (this indicates that      *         the user has aborted the assignment).      */
 DECL|method|warnAssignmentSideEffects (AbstractGroup[] groups, BibtexEntry[] entries, BibtexDatabase db, Component parent)
 specifier|public
 specifier|static
@@ -5512,7 +5474,7 @@ return|return
 name|titleCap
 return|;
 block|}
-comment|/**      * This method looks up what kind of external binding is used for the given field,      * and constructs on OpenFileFilter suitable for browsing for an external file.      * @param fieldName The BibTeX field in question.      * @return The file filter.      */
+comment|/**      * This method looks up what kind of external binding is used for the given field,      * and constructs on OpenFileFilter suitable for browsing for an external file.      *      * @param fieldName The BibTeX field in question.      * @return The file filter.      */
 DECL|method|getFileFilterForField (String fieldName)
 specifier|public
 specifier|static
@@ -6102,7 +6064,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Creates a String containing the current date (and possibly time), formatted      * according to the format set in preferences under the key "timeStampFormat".      * @return The date string.      */
+comment|/**      * Creates a String containing the current date (and possibly time), formatted      * according to the format set in preferences under the key "timeStampFormat".      *      * @return The date string.      */
 DECL|method|easyDateFormat ()
 specifier|public
 specifier|static
