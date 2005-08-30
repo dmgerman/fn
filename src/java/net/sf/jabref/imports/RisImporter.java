@@ -1312,6 +1312,16 @@ block|}
 block|}
 block|}
 comment|// fix authors
+if|if
+condition|(
+name|Author
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
 name|Author
 operator|=
 name|ImportFormatReader
@@ -1330,6 +1340,17 @@ argument_list|,
 name|Author
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|Editor
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
 name|Editor
 operator|=
 name|ImportFormatReader
@@ -1348,6 +1369,7 @@ argument_list|,
 name|Editor
 argument_list|)
 expr_stmt|;
+block|}
 name|hm
 operator|.
 name|put

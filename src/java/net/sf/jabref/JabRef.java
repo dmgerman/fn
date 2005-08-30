@@ -678,24 +678,7 @@ argument_list|,
 name|blank
 argument_list|)
 expr_stmt|;
-name|options
-operator|.
-name|register
-argument_list|(
-literal|"importToOpen"
-argument_list|,
-literal|'\0'
-argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Import to open tab"
-argument_list|)
-argument_list|,
-name|importToOpenBase
-argument_list|)
-expr_stmt|;
+comment|//options.register("importToOpen", '\0', Globals.lang("Import to open tab"), importToOpenBase);
 name|options
 operator|.
 name|setUseMenu
