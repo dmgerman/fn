@@ -759,72 +759,10 @@ name|boolean
 name|readyToClose
 parameter_list|()
 block|{
-try|try
-block|{
-name|int
-name|size
-init|=
-name|Integer
-operator|.
-name|parseInt
-argument_list|(
-name|remoteServerPort
-operator|.
-name|getText
-argument_list|()
-argument_list|)
-decl_stmt|;
 return|return
 literal|true
 return|;
-comment|// Ok, the number was legal.
-block|}
-catch|catch
-parameter_list|(
-name|NumberFormatException
-name|ex
-parameter_list|)
-block|{
-name|JOptionPane
-operator|.
-name|showMessageDialog
-argument_list|(
-literal|null
-argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"You must enter an integer value in the text field for"
-argument_list|)
-operator|+
-literal|" '"
-operator|+
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Remote server port"
-argument_list|)
-operator|+
-literal|"'"
-argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Remote server port"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
-argument_list|)
-expr_stmt|;
-return|return
-literal|false
-return|;
-block|}
+comment|/*try {             int size = Integer.parseInt(remoteServerPort.getText());             return true; // Ok, the number was legal.         } catch (NumberFormatException ex) {             JOptionPane.showMessageDialog                     (null, Globals.lang("You must enter an integer value in the text field for") + " '" +                     Globals.lang("Remote server port") + "'", Globals.lang("Remote server port"),                             JOptionPane.ERROR_MESSAGE);             return false;         }*/
 block|}
 block|}
 end_class
