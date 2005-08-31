@@ -192,6 +192,11 @@ name|CUSTOM_TAB_FIELDS
 init|=
 literal|"customTabFields_"
 decl_stmt|;
+DECL|field|WRAPPED_USERNAME
+specifier|public
+name|String
+name|WRAPPED_USERNAME
+decl_stmt|;
 DECL|field|prefs
 name|Preferences
 name|prefs
@@ -1810,6 +1815,17 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//defaults.put("oooWarning", Boolean.TRUE);
+name|WRAPPED_USERNAME
+operator|=
+literal|"["
+operator|+
+name|get
+argument_list|(
+literal|"defaultOwner"
+argument_list|)
+operator|+
+literal|"]"
+expr_stmt|;
 block|}
 DECL|method|get (String key)
 specifier|public

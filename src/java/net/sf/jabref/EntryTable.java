@@ -2436,13 +2436,9 @@ if|if
 condition|(
 name|tableModel
 operator|.
-name|hasField
+name|isMarked
 argument_list|(
 name|row
-argument_list|,
-name|Globals
-operator|.
-name|MARKED
 argument_list|)
 operator|&&
 operator|(
