@@ -64,10 +64,10 @@ init|=
 literal|false
 decl_stmt|;
 DECL|field|next
-name|EntryComparator
+name|Comparator
 name|next
 decl_stmt|;
-DECL|method|EntryComparator (boolean binary, boolean desc, String field, EntryComparator next)
+DECL|method|EntryComparator (boolean binary, boolean desc, String field, Comparator next)
 specifier|public
 name|EntryComparator
 parameter_list|(
@@ -80,7 +80,7 @@ parameter_list|,
 name|String
 name|field
 parameter_list|,
-name|EntryComparator
+name|Comparator
 name|next
 parameter_list|)
 block|{

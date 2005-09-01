@@ -6706,6 +6706,8 @@ index|[
 name|i
 index|]
 argument_list|,
+name|database
+argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
@@ -6847,6 +6849,8 @@ operator|.
 name|unmarkEntry
 argument_list|(
 name|be
+argument_list|,
+name|database
 argument_list|,
 name|ce
 argument_list|)
