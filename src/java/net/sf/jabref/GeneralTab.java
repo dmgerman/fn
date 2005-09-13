@@ -1160,7 +1160,7 @@ init|=
 operator|new
 name|FormLayout
 argument_list|(
-literal|"left:pref, 8dlu, fill:60dlu, 4dlu, left:pref, 4dlu, left:pref, 4dlu, fill:pref"
+literal|"left:pref, 8dlu, fill:60dlu, 4dlu, left:pref, 4dlu, fill:60dlu, 4dlu, fill:pref"
 argument_list|,
 literal|""
 argument_list|)
