@@ -2198,7 +2198,7 @@ name|link
 operator|=
 name|file
 operator|.
-name|getPath
+name|getCanonicalPath
 argument_list|()
 expr_stmt|;
 comment|// Use the correct viewer even if pdf and ps are mixed up:

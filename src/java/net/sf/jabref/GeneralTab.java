@@ -88,6 +88,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|text
+operator|.
+name|SimpleDateFormat
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|jgoodies
@@ -2497,6 +2507,7 @@ parameter_list|()
 block|{
 try|try
 block|{
+comment|// Test if font size is a number:
 name|int
 name|size
 init|=
@@ -2510,10 +2521,19 @@ name|getText
 argument_list|()
 argument_list|)
 decl_stmt|;
-return|return
-literal|true
-return|;
-comment|// Ok, the number was legal.
+comment|// Test if date format is legal:
+name|SimpleDateFormat
+name|sdf
+init|=
+operator|new
+name|SimpleDateFormat
+argument_list|(
+name|timeStampFormat
+operator|.
+name|getText
+argument_list|()
+argument_list|)
+decl_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -2561,6 +2581,44 @@ return|return
 literal|false
 return|;
 block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|ex2
+parameter_list|)
+block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+literal|null
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"The chosen date format for new entries is not valid"
+argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Invalid date format"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
+return|return
+literal|true
+return|;
 block|}
 block|}
 end_class
