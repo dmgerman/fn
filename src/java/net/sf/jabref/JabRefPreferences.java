@@ -656,7 +656,7 @@ name|put
 argument_list|(
 literal|"columnNames"
 argument_list|,
-literal|"entrytype;author;title;year;journal;owner;bibtexkey"
+literal|"entrytype;author;title;year;journal;owner;timestamp;bibtexkey"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -665,7 +665,7 @@ name|put
 argument_list|(
 literal|"columnWidths"
 argument_list|,
-literal|"75;280;400;60;100;100;100"
+literal|"75;280;400;60;100;100;100;100"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -1304,7 +1304,7 @@ literal|"0"
 argument_list|,
 literal|"crossref;keywords;doi;url;citeseerurl;"
 operator|+
-literal|"pdf;comment;owner"
+literal|"pdf;comment;owner;timestamp"
 argument_list|)
 expr_stmt|;
 comment|// Entry editor tab 1:

@@ -1128,15 +1128,7 @@ name|translation
 operator|=
 name|key
 expr_stmt|;
-name|logger
-argument_list|(
-literal|"Warning: could not get translation for \""
-operator|+
-name|key
-operator|+
-literal|"\""
-argument_list|)
-expr_stmt|;
+comment|/*logger("Warning: could not get translation for \""                          + key + "\"");*/
 block|}
 if|if
 condition|(

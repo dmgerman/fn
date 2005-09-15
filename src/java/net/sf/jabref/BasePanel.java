@@ -5828,10 +5828,15 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Error: check your External viewer settings in Preferences"
+literal|"Error"
 argument_list|)
 operator|+
-literal|"."
+literal|": "
+operator|+
+name|ex
+operator|.
+name|getMessage
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
