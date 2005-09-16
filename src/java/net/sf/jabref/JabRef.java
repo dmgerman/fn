@@ -339,7 +339,68 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
-comment|/*         if (Globals.prefs.getBoolean("useRemoteServer")) {             remoteListener = RemoteListener.openRemoteListener(this);             if (remoteListener != null) {                 remoteListener.start();             }          // Unless we are alone, try to contact already running JabRef: 	    if (remoteListener == null) { 		if (RemoteListener.sendToActiveJabRefInstance(args))             // We have successfully sent our command line options through the socket to             // another JabRef instance. So we assume it's all taken care of, and quit.             System.exit(0);         } 	}           */
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"useRemoteServer"
+argument_list|)
+condition|)
+block|{
+name|remoteListener
+operator|=
+name|RemoteListener
+operator|.
+name|openRemoteListener
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|remoteListener
+operator|!=
+literal|null
+condition|)
+block|{
+name|remoteListener
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
+block|}
+comment|// Unless we are alone, try to contact already running JabRef:
+if|if
+condition|(
+name|remoteListener
+operator|==
+literal|null
+condition|)
+block|{
+if|if
+condition|(
+name|RemoteListener
+operator|.
+name|sendToActiveJabRefInstance
+argument_list|(
+name|args
+argument_list|)
+condition|)
+comment|// We have successfully sent our command line options through the socket to
+comment|// another JabRef instance. So we assume it's all taken care of, and quit.
+name|System
+operator|.
+name|exit
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 comment|//System.setProperty("sun.awt.noerasebackground", "true");
 comment|//System.out.println(java.awt.Toolkit.getDefaultToolkit().getDesktopProperty("awt.dynamicLayoutSupported"));
 comment|// Make sure of a proper cleanup when quitting (e.g. deleting temporary
@@ -678,7 +739,24 @@ argument_list|,
 name|blank
 argument_list|)
 expr_stmt|;
-comment|//options.register("importToOpen", '\0', Globals.lang("Import to open tab"), importToOpenBase);
+name|options
+operator|.
+name|register
+argument_list|(
+literal|"importToOpen"
+argument_list|,
+literal|'\0'
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Import to open tab"
+argument_list|)
+argument_list|,
+name|importToOpenBase
+argument_list|)
+expr_stmt|;
 name|options
 operator|.
 name|setUseMenu

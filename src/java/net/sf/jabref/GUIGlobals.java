@@ -2494,6 +2494,15 @@ argument_list|,
 literal|"external"
 argument_list|)
 expr_stmt|;
+name|FIELD_EXTRAS
+operator|.
+name|put
+argument_list|(
+literal|"journal"
+argument_list|,
+literal|"journalNames"
+argument_list|)
+expr_stmt|;
 comment|//FIELD_EXTRAS.put("keywords", "selector");
 name|fieldLength
 operator|.

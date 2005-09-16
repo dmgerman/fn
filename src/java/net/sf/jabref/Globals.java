@@ -130,6 +130,20 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|journals
+operator|.
+name|JournalAbbreviations
+import|;
+end_import
+
 begin_class
 DECL|class|Globals
 specifier|public
@@ -1068,6 +1082,12 @@ argument_list|)
 expr_stmt|;
 comment|//System.out.println(tableCache.size());
 block|}
+DECL|field|journalAbbrev
+specifier|public
+specifier|static
+name|JournalAbbreviations
+name|journalAbbrev
+decl_stmt|;
 DECL|method|lang (String key, String[] params)
 specifier|public
 specifier|static
@@ -2433,6 +2453,19 @@ argument_list|()
 decl_stmt|;
 static|static
 block|{
+comment|// Read built-in journal list:
+name|journalAbbrev
+operator|=
+operator|new
+name|JournalAbbreviations
+argument_list|(
+literal|"/resource/journalList.txt"
+argument_list|)
+expr_stmt|;
+comment|//System.out.println(journalAbbrev.getAbbreviatedName("Journal of Fish Biology", true));
+comment|//System.out.println(journalAbbrev.getAbbreviatedName("Journal of Fish Biology", false));
+comment|//System.out.println(journalAbbrev.getFullName("Aquaculture Eng."));
+comment|/*for (Iterator i=journalAbbrev.fullNameIterator(); i.hasNext();) {           String s = (String)i.next();           System.out.println(journalAbbrev.getFullName(s)+" : "+journalAbbrev.getAbbreviatedName(s, true));       } */
 comment|// Start the thread that monitors file time stamps.
 comment|//Util.pr("Starting FileUpdateMonitor thread. Globals line 293.");
 name|fileUpdateMonitor
