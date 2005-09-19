@@ -2453,15 +2453,6 @@ argument_list|()
 decl_stmt|;
 static|static
 block|{
-comment|// Read built-in journal list:
-name|journalAbbrev
-operator|=
-operator|new
-name|JournalAbbreviations
-argument_list|(
-literal|"/resource/journalList.txt"
-argument_list|)
-expr_stmt|;
 comment|//System.out.println(journalAbbrev.getAbbreviatedName("Journal of Fish Biology", true));
 comment|//System.out.println(journalAbbrev.getAbbreviatedName("Journal of Fish Biology", false));
 comment|//System.out.println(journalAbbrev.getFullName("Aquaculture Eng."));
@@ -4982,6 +4973,78 @@ literal|"\\'dc"
 argument_list|)
 expr_stmt|;
 comment|//XML_CHARS.put("\\u00E1", "&#x00E1;");
+block|}
+DECL|method|initializeJournalNames ()
+specifier|public
+specifier|static
+name|void
+name|initializeJournalNames
+parameter_list|()
+block|{
+comment|// Read built-in journal list:
+name|journalAbbrev
+operator|=
+operator|new
+name|JournalAbbreviations
+argument_list|(
+literal|"/resource/journalList.txt"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"personalJournalList"
+argument_list|)
+operator|!=
+literal|null
+condition|)
+block|{
+try|try
+block|{
+name|journalAbbrev
+operator|.
+name|readJournalList
+argument_list|(
+operator|new
+name|File
+argument_list|(
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"personalJournalList"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|FileNotFoundException
+name|e
+parameter_list|)
+block|{
+name|Globals
+operator|.
+name|logger
+argument_list|(
+literal|"Personal journal list file '"
+operator|+
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"personalJournalList"
+argument_list|)
+operator|+
+literal|"' not found."
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 end_class

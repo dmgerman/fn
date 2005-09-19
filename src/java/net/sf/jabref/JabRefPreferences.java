@@ -574,6 +574,17 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+literal|"namesLastOnly"
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
 literal|"language"
 argument_list|,
 literal|"en"
@@ -1794,6 +1805,15 @@ name|Integer
 argument_list|(
 literal|6050
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"personalJournalList"
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 comment|//defaults.put("tempDir", System.getProperty("java.io.tmpdir"));
@@ -3753,6 +3773,24 @@ argument_list|(
 literal|"Synchronize PS"
 argument_list|,
 literal|"ctrl F4"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Abbreviate"
+argument_list|,
+literal|"ctrl alt A"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Unabbreviate"
+argument_list|,
+literal|"ctrl alt shift A"
 argument_list|)
 expr_stmt|;
 comment|//defKeyBinds.put("Select value", "ctrl B");
