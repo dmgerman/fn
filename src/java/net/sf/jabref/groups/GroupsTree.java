@@ -181,7 +181,7 @@ name|minAutoscrollInterval
 init|=
 literal|50L
 decl_stmt|;
-comment|/**      * the point on which the cursor is currently idling during a drag      * operation.      */
+comment|/** 	 * the point on which the cursor is currently idling during a drag 	 * operation. 	 */
 DECL|field|idlePoint
 specifier|private
 name|Point
@@ -1401,7 +1401,7 @@ block|}
 end_catch
 
 begin_function
-unit|}      public
+unit|}  	public
 DECL|method|dragExit (DropTargetEvent dte)
 name|void
 name|dragExit
@@ -1508,7 +1508,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**      * Refresh paths that may have become invalid due to node movements within      * the tree. This method creates new paths to the last path components      * (which must still exist) of the specified paths.      *       * @param paths      *            Paths that may have become invalid.      * @return Refreshed paths that are all valid.      */
+comment|/** 	 * Refresh paths that may have become invalid due to node movements within 	 * the tree. This method creates new paths to the last path components 	 * (which must still exist) of the specified paths. 	 *  	 * @param paths 	 *            Paths that may have become invalid. 	 * @return Refreshed paths that are all valid. 	 */
 end_comment
 
 begin_function
@@ -1692,7 +1692,7 @@ block|}
 end_function
 
 begin_comment
-comment|/** This sorts without revalidation of groups*/
+comment|/** This sorts without revalidation of groups */
 end_comment
 
 begin_function
@@ -1987,6 +1987,194 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+end_function
+
+begin_comment
+comment|/** 	 * Returns true if the node specified by path has at least one descendant 	 * that is currently expanded. 	 */
+end_comment
+
+begin_function
+DECL|method|hasExpandedDescendant (TreePath path)
+specifier|public
+name|boolean
+name|hasExpandedDescendant
+parameter_list|(
+name|TreePath
+name|path
+parameter_list|)
+block|{
+name|GroupTreeNode
+name|node
+init|=
+operator|(
+name|GroupTreeNode
+operator|)
+name|path
+operator|.
+name|getLastPathComponent
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|Enumeration
+name|e
+init|=
+name|node
+operator|.
+name|children
+argument_list|()
+init|;
+name|e
+operator|.
+name|hasMoreElements
+argument_list|()
+condition|;
+control|)
+block|{
+name|GroupTreeNode
+name|child
+init|=
+operator|(
+name|GroupTreeNode
+operator|)
+name|e
+operator|.
+name|nextElement
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|child
+operator|.
+name|isLeaf
+argument_list|()
+condition|)
+continue|continue;
+comment|// don't care about this case
+name|TreePath
+name|pathToChild
+init|=
+name|path
+operator|.
+name|pathByAddingChild
+argument_list|(
+name|child
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|isExpanded
+argument_list|(
+name|pathToChild
+argument_list|)
+operator|||
+name|hasExpandedDescendant
+argument_list|(
+name|pathToChild
+argument_list|)
+condition|)
+return|return
+literal|true
+return|;
+block|}
+return|return
+literal|false
+return|;
+block|}
+end_function
+
+begin_comment
+comment|/** 	 * Returns true if the node specified by path has at least one descendant 	 * that is currently collapsed. 	 */
+end_comment
+
+begin_function
+DECL|method|hasCollapsedDescendant (TreePath path)
+specifier|public
+name|boolean
+name|hasCollapsedDescendant
+parameter_list|(
+name|TreePath
+name|path
+parameter_list|)
+block|{
+name|GroupTreeNode
+name|node
+init|=
+operator|(
+name|GroupTreeNode
+operator|)
+name|path
+operator|.
+name|getLastPathComponent
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|Enumeration
+name|e
+init|=
+name|node
+operator|.
+name|children
+argument_list|()
+init|;
+name|e
+operator|.
+name|hasMoreElements
+argument_list|()
+condition|;
+control|)
+block|{
+name|GroupTreeNode
+name|child
+init|=
+operator|(
+name|GroupTreeNode
+operator|)
+name|e
+operator|.
+name|nextElement
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|child
+operator|.
+name|isLeaf
+argument_list|()
+condition|)
+continue|continue;
+comment|// don't care about this case
+name|TreePath
+name|pathToChild
+init|=
+name|path
+operator|.
+name|pathByAddingChild
+argument_list|(
+name|child
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|isCollapsed
+argument_list|(
+name|pathToChild
+argument_list|)
+operator|||
+name|hasCollapsedDescendant
+argument_list|(
+name|pathToChild
+argument_list|)
+condition|)
+return|return
+literal|true
+return|;
+block|}
+return|return
+literal|false
+return|;
 block|}
 end_function
 
