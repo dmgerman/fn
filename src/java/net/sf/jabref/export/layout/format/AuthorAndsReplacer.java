@@ -58,6 +58,15 @@ name|String
 name|fieldText
 parameter_list|)
 block|{
+if|if
+condition|(
+name|fieldText
+operator|==
+literal|null
+condition|)
+return|return
+literal|null
+return|;
 name|String
 index|[]
 name|authors

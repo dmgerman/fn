@@ -7654,8 +7654,6 @@ index|]
 argument_list|,
 literal|"journal"
 argument_list|,
-literal|true
-argument_list|,
 name|ce
 argument_list|)
 condition|)

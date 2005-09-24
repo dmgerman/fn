@@ -356,6 +356,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|journals
+operator|.
+name|ManageJournalsAction
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|jgoodies
@@ -1701,6 +1715,15 @@ name|getKey
 argument_list|(
 literal|"Unabbreviate"
 argument_list|)
+argument_list|)
+decl_stmt|,
+DECL|field|manageJournals
+name|manageJournals
+init|=
+operator|new
+name|ManageJournalsAction
+argument_list|(
+name|this
 argument_list|)
 decl_stmt|,
 DECL|field|test
@@ -5390,7 +5413,14 @@ argument_list|(
 name|customExpAction
 argument_list|)
 expr_stmt|;
-comment|/*options.add(new AbstractAction("Font") {      public void actionPerformed(ActionEvent e) {          // JDialog dl = new EntryCustomizationDialog(ths);          Font f=new FontSelectorDialog        (ths, GUIGlobals.CURRENTFONT).getSelectedFont();       if(f==null)        return;       else        GUIGlobals.CURRENTFONT=f;       // updatefont       prefs.put("fontFamily", GUIGlobals.CURRENTFONT.getFamily());       prefs.putInt("fontStyle", GUIGlobals.CURRENTFONT.getStyle());       prefs.putInt("fontSize", GUIGlobals.CURRENTFONT.getSize());       if (tabbedPane.getTabCount()> 0) {        for (int i=0; i<tabbedPane.getTabCount(); i++) {         baseAt(i).entryTable.updateFont();         baseAt(i).refreshTable();        }       }      }      });*/
+name|options
+operator|.
+name|add
+argument_list|(
+name|manageJournals
+argument_list|)
+expr_stmt|;
+comment|/*options.add(new AbstractAction("Font") {     public void actionPerformed(ActionEvent e) {         // JDialog dl = new EntryCustomizationDialog(ths);         Font f=new FontSelectorDialog       (ths, GUIGlobals.CURRENTFONT).getSelectedFont();      if(f==null)       return;      else       GUIGlobals.CURRENTFONT=f;      // updatefont      prefs.put("fontFamily", GUIGlobals.CURRENTFONT.getFamily());      prefs.putInt("fontStyle", GUIGlobals.CURRENTFONT.getStyle());      prefs.putInt("fontSize", GUIGlobals.CURRENTFONT.getSize());      if (tabbedPane.getTabCount()> 0) {       for (int i=0; i<tabbedPane.getTabCount(); i++) {        baseAt(i).entryTable.updateFont();        baseAt(i).refreshTable();       }      }     }     });*/
 comment|//options.add(selectKeys);
 name|mb
 operator|.

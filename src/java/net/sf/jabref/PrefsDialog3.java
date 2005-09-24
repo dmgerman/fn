@@ -92,20 +92,6 @@ name|GroupsPrefsTab
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|journals
-operator|.
-name|JournalsTab
-import|;
-end_import
-
 begin_comment
 comment|/**  * Preferences dialog. Contains a TabbedPane, and tabs will be defined  * in separate classes. Tabs MUST implement the PrefsTab interface,  * since this dialog will call the storeSettings() method of all tabs  * when the user presses ok.  *  * With this design, it should be very easy to add new tabs later.  *  */
 end_comment
@@ -340,15 +326,7 @@ argument_list|(
 literal|"Entry preview"
 argument_list|)
 decl_stmt|,
-name|JOU
-init|=
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Journal names"
-argument_list|)
-decl_stmt|,
+comment|//JOU = Globals.lang("Journal names"),
 name|ADV
 init|=
 name|Globals
@@ -407,13 +385,7 @@ argument_list|(
 name|KEY
 argument_list|)
 expr_stmt|;
-name|al
-operator|.
-name|add
-argument_list|(
-name|JOU
-argument_list|)
-expr_stmt|;
+comment|//al.add(JOU);
 name|al
 operator|.
 name|add
@@ -568,19 +540,7 @@ argument_list|,
 name|PRE
 argument_list|)
 expr_stmt|;
-name|main
-operator|.
-name|add
-argument_list|(
-operator|new
-name|JournalsTab
-argument_list|(
-name|frame
-argument_list|)
-argument_list|,
-name|JOU
-argument_list|)
-expr_stmt|;
+comment|//main.add(new ManageJournalsPanel(frame), JOU);
 name|upper
 operator|.
 name|setBorder

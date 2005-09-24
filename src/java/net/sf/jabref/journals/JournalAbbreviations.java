@@ -162,27 +162,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|TreeMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
+name|*
 import|;
 end_import
 
@@ -269,6 +249,14 @@ name|abbrNameKeyed
 init|=
 operator|new
 name|HashMap
+argument_list|()
+decl_stmt|;
+DECL|field|all
+name|TreeMap
+name|all
+init|=
+operator|new
+name|TreeMap
 argument_list|()
 decl_stmt|;
 DECL|field|caseChanger
@@ -389,16 +377,13 @@ operator|)
 return|;
 block|}
 comment|/**      * Attempts to get the abbreviated name of the journal given. Returns null if no      * abbreviated name is known.      * @param journalName The journal name to abbreviate.      * @param titleCase true if the first character of every word should be capitalized, false      * if only the first character should be.      * @return The abbreviated name, or null if it couldn't be found.      */
-DECL|method|getAbbreviatedName (String journalName, boolean titleCase)
+DECL|method|getAbbreviatedName (String journalName)
 specifier|public
 name|String
 name|getAbbreviatedName
 parameter_list|(
 name|String
 name|journalName
-parameter_list|,
-name|boolean
-name|titleCase
 parameter_list|)
 block|{
 name|String
@@ -436,29 +421,7 @@ operator|)
 name|o
 expr_stmt|;
 return|return
-name|titleCase
-condition|?
-name|caseChanger
-operator|.
-name|changeCase
-argument_list|(
 name|s
-argument_list|,
-name|CaseChanger
-operator|.
-name|UPPER_EACH_FIRST
-argument_list|)
-else|:
-name|caseChanger
-operator|.
-name|changeCase
-argument_list|(
-name|s
-argument_list|,
-name|CaseChanger
-operator|.
-name|UPPER_FIRST
-argument_list|)
 return|;
 block|}
 comment|/**      * Attempts to get the full name of the abbreviation given. Returns null if no      * full name is known.      * @param journalName The abbreviation to resolve.      * @return The full name, or null if it couldn't be found.      */
@@ -686,6 +649,11 @@ index|]
 operator|.
 name|trim
 argument_list|()
+decl_stmt|;
+name|String
+name|fullNameLC
+init|=
+name|fullName
 operator|.
 name|toLowerCase
 argument_list|()
@@ -700,6 +668,11 @@ index|]
 operator|.
 name|trim
 argument_list|()
+decl_stmt|;
+name|String
+name|abbrNameLC
+init|=
+name|abbrName
 operator|.
 name|toLowerCase
 argument_list|()
@@ -730,7 +703,7 @@ name|fullNameKeyed
 operator|.
 name|put
 argument_list|(
-name|fullName
+name|fullNameLC
 argument_list|,
 name|abbrName
 argument_list|)
@@ -739,9 +712,18 @@ name|abbrNameKeyed
 operator|.
 name|put
 argument_list|(
-name|abbrName
+name|abbrNameLC
 argument_list|,
 name|fullName
+argument_list|)
+expr_stmt|;
+name|all
+operator|.
+name|put
+argument_list|(
+name|fullName
+argument_list|,
+name|abbrName
 argument_list|)
 expr_stmt|;
 block|}
@@ -785,7 +767,7 @@ block|}
 block|}
 block|}
 comment|/**      * Abbreviate the journal name of the given entry.      * @param entry The entry to be treated.      * @param fieldName The field name (e.g. "journal")      * @param titleCase true if every part should start with a capital.      * @param ce If the entry is changed, add an edit to this compound.      * @return true if the entry was changed, false otherwise.      */
-DECL|method|abbreviate (BibtexEntry entry, String fieldName, boolean titleCase, CompoundEdit ce)
+DECL|method|abbreviate (BibtexEntry entry, String fieldName, CompoundEdit ce)
 specifier|public
 name|boolean
 name|abbreviate
@@ -795,9 +777,6 @@ name|entry
 parameter_list|,
 name|String
 name|fieldName
-parameter_list|,
-name|boolean
-name|titleCase
 parameter_list|,
 name|CompoundEdit
 name|ce
@@ -850,8 +829,6 @@ init|=
 name|getAbbreviatedName
 argument_list|(
 name|text
-argument_list|,
-name|titleCase
 argument_list|)
 decl_stmt|;
 if|if
@@ -1006,6 +983,21 @@ return|return
 literal|false
 return|;
 block|}
+DECL|method|getJournals ()
+specifier|public
+name|Map
+name|getJournals
+parameter_list|()
+block|{
+return|return
+name|Collections
+operator|.
+name|unmodifiableMap
+argument_list|(
+name|all
+argument_list|)
+return|;
+block|}
 comment|/**      * Create a control panel for the entry editor's journal field, to toggle      * abbreviated/full journal name      * @param editor The FieldEditor for the journal field.      * @return The control panel for the entry editor.      */
 DECL|method|getNameSwitcher (final EntryEditor entryEditor, final FieldEditor editor, final UndoManager undoManager)
 specifier|public
@@ -1103,8 +1095,6 @@ operator|=
 name|getAbbreviatedName
 argument_list|(
 name|text
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 if|if
@@ -1248,15 +1238,15 @@ operator|=
 name|getAbbreviatedName
 argument_list|(
 name|name
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 name|row
 operator|++
 expr_stmt|;
 block|}
-return|return
+name|DefaultTableModel
+name|tableModel
+init|=
 operator|new
 name|DefaultTableModel
 argument_list|(
@@ -1281,6 +1271,9 @@ literal|"Abbreviation"
 argument_list|)
 block|}
 argument_list|)
+decl_stmt|;
+return|return
+name|tableModel
 return|;
 block|}
 block|}
