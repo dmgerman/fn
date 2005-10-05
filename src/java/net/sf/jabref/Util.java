@@ -4352,6 +4352,7 @@ decl_stmt|;
 name|int
 name|el
 decl_stmt|;
+comment|//int tell = 0;
 while|while
 condition|(
 operator|(
@@ -4365,6 +4366,7 @@ operator|)
 operator|>=
 literal|0
 condition|)
+block|{
 name|out
 operator|.
 name|write
@@ -4372,6 +4374,13 @@ argument_list|(
 name|el
 argument_list|)
 expr_stmt|;
+block|}
+name|out
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
+comment|// Will this make a difference? 2005.09.30
 name|in
 operator|.
 name|close

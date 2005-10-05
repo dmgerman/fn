@@ -1203,7 +1203,7 @@ block|}
 block|}
 block|}
 comment|// Finally, look if there are still untouched entries in the disk database. These
-comment|// can be assumed to have been added.
+comment|// mayhave been added.
 if|if
 condition|(
 name|used
@@ -1248,6 +1248,67 @@ name|i
 argument_list|)
 condition|)
 block|{
+comment|// See if there is an identical dupe in the mem database:
+name|boolean
+name|hasAlready
+init|=
+literal|false
+decl_stmt|;
+for|for
+control|(
+name|int
+name|j
+init|=
+literal|0
+init|;
+name|j
+operator|<
+name|mem
+operator|.
+name|getEntryCount
+argument_list|()
+condition|;
+name|j
+operator|++
+control|)
+block|{
+if|if
+condition|(
+name|Util
+operator|.
+name|compareEntriesStrictly
+argument_list|(
+name|mem
+operator|.
+name|getEntryAt
+argument_list|(
+name|j
+argument_list|)
+argument_list|,
+name|disk
+operator|.
+name|getEntryAt
+argument_list|(
+name|i
+argument_list|)
+argument_list|)
+operator|>=
+literal|1
+condition|)
+block|{
+name|hasAlready
+operator|=
+literal|true
+expr_stmt|;
+break|break;
+block|}
+block|}
+if|if
+condition|(
+operator|!
+name|hasAlready
+condition|)
+block|{
 name|EntryAddChange
 name|ec
 init|=
@@ -1269,6 +1330,7 @@ argument_list|(
 name|ec
 argument_list|)
 expr_stmt|;
+block|}
 comment|/*NamedCompound ce = new NamedCompound("Added entry");           ce.addEdit(new UndoableRemoveEntry(inMem, disk.getEntryAt(i), panel));           ce.end();           changes.add(ce);*/
 block|}
 block|}

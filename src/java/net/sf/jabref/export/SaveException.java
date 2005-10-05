@@ -46,6 +46,11 @@ specifier|private
 name|BibtexEntry
 name|entry
 decl_stmt|;
+DECL|field|status
+specifier|private
+name|int
+name|status
+decl_stmt|;
 comment|//~ Constructors ///////////////////////////////////////////////////////////
 DECL|method|SaveException (String message)
 specifier|public
@@ -63,6 +68,33 @@ expr_stmt|;
 name|entry
 operator|=
 literal|null
+expr_stmt|;
+block|}
+DECL|method|SaveException (String message, int status)
+specifier|public
+name|SaveException
+parameter_list|(
+name|String
+name|message
+parameter_list|,
+name|int
+name|status
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|message
+argument_list|)
+expr_stmt|;
+name|entry
+operator|=
+literal|null
+expr_stmt|;
+name|this
+operator|.
+name|status
+operator|=
+name|status
 expr_stmt|;
 block|}
 DECL|method|SaveException (String message, BibtexEntry entry)
@@ -89,6 +121,16 @@ name|entry
 expr_stmt|;
 block|}
 comment|//~ Methods ////////////////////////////////////////////////////////////////
+DECL|method|getStatus ()
+specifier|public
+name|int
+name|getStatus
+parameter_list|()
+block|{
+return|return
+name|status
+return|;
+block|}
 DECL|method|getEntry ()
 specifier|public
 name|BibtexEntry
