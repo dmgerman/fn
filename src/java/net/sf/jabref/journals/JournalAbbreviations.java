@@ -619,6 +619,7 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|//System.out.println(line);
 name|String
 index|[]
 name|parts
@@ -1001,6 +1002,7 @@ block|}
 comment|/**      * Create a control panel for the entry editor's journal field, to toggle      * abbreviated/full journal name      * @param editor The FieldEditor for the journal field.      * @return The control panel for the entry editor.      */
 DECL|method|getNameSwitcher (final EntryEditor entryEditor, final FieldEditor editor, final UndoManager undoManager)
 specifier|public
+specifier|static
 name|JComponent
 name|getNameSwitcher
 parameter_list|(
@@ -1064,6 +1066,10 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|Globals
+operator|.
+name|journalAbbrev
+operator|.
 name|isKnownName
 argument_list|(
 name|text
@@ -1077,6 +1083,10 @@ literal|null
 decl_stmt|;
 if|if
 condition|(
+name|Globals
+operator|.
+name|journalAbbrev
+operator|.
 name|isAbbreviatedName
 argument_list|(
 name|text
@@ -1084,6 +1094,10 @@ argument_list|)
 condition|)
 name|s
 operator|=
+name|Globals
+operator|.
+name|journalAbbrev
+operator|.
 name|getFullName
 argument_list|(
 name|text
@@ -1092,6 +1106,10 @@ expr_stmt|;
 else|else
 name|s
 operator|=
+name|Globals
+operator|.
+name|journalAbbrev
+operator|.
 name|getAbbreviatedName
 argument_list|(
 name|text

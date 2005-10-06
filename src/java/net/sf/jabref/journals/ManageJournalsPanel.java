@@ -839,15 +839,6 @@ name|void
 name|setValues
 parameter_list|()
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Ju"
-argument_list|)
-expr_stmt|;
 name|personalFile
 operator|.
 name|setText
@@ -1113,7 +1104,6 @@ literal|null
 condition|)
 try|try
 block|{
-comment|//fw.flush();
 name|fw
 operator|.
 name|close

@@ -268,6 +268,20 @@ name|ExternalFilePanel
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|journals
+operator|.
+name|JournalAbbreviations
+import|;
+end_import
+
 begin_class
 DECL|class|EntryEditor
 specifier|public
@@ -1002,7 +1016,7 @@ name|newTab
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* 	if ((entry.getGeneralFields() != null)&& (entry.getGeneralFields().length>= 1)) { 	     	    genPan = new EntryEditorTab(java.util.Arrays.asList(entry.getGeneralFields()), this, false); 	     	    tabbed.addTab(Globals.lang("General fields"), 			  new ImageIcon(GUIGlobals.showGenIconFile), genPan.getPane(), 			  Globals.lang("Show general fields")); 	    tabs.add(genPan);     	} 	 	String[] absFields = new String[] {"abstract", "annote"}; 	absPan = new EntryEditorTab(java.util.Arrays.asList(absFields), this, false);	 	tabbed.addTab("Abstract", new ImageIcon(GUIGlobals.showAbsIconFile), 		      absPan.getPane(), Globals.lang("Show abstract")); 		      tabs.add(absPan);*/
+comment|/*      if ((entry.getGeneralFields() != null)&& (entry.getGeneralFields().length>= 1)) { 	              genPan = new EntryEditorTab(java.util.Arrays.asList(entry.getGeneralFields()), this, false); 	              tabbed.addTab(Globals.lang("General fields"),                new ImageIcon(GUIGlobals.showGenIconFile), genPan.getPane(),                Globals.lang("Show general fields"));          tabs.add(genPan);      } 	      String[] absFields = new String[] {"abstract", "annote"};      absPan = new EntryEditorTab(java.util.Arrays.asList(absFields), this, false);      tabbed.addTab("Abstract", new ImageIcon(GUIGlobals.showAbsIconFile),                absPan.getPane(), Globals.lang("Show abstract"));                tabs.add(absPan);*/
 name|srcPanel
 operator|.
 name|setName
@@ -1704,9 +1718,7 @@ name|controls
 operator|.
 name|add
 argument_list|(
-name|Globals
-operator|.
-name|journalAbbrev
+name|JournalAbbreviations
 operator|.
 name|getNameSwitcher
 argument_list|(
@@ -2454,7 +2466,7 @@ name|ta
 parameter_list|)
 block|{
 comment|/*       * NOTE: This method is only used for the source panel, not for the other tabs. Look at       * EntryEditorTab for the setup of text components in the other tabs.       */
-comment|/*      * if ((ta instanceof FieldTextArea)&& (prefs.getBoolean("autoComplete"))) {      * FieldTextArea fta = (FieldTextArea)ta; Completer comp =      * baseFrame.getAutoCompleter(fta.getFieldName()); if (comp != null)      * fta.setAutoComplete(comp); }      */
+comment|/*     * if ((ta instanceof FieldTextArea)&& (prefs.getBoolean("autoComplete"))) {     * FieldTextArea fta = (FieldTextArea)ta; Completer comp =     * baseFrame.getAutoCompleter(fta.getFieldName()); if (comp != null)     * fta.setAutoComplete(comp); }     */
 comment|// Set up key bindings and focus listener for the FieldEditor.
 name|InputMap
 name|im
@@ -6507,7 +6519,7 @@ parameter_list|(
 name|Throwable
 name|ex
 parameter_list|)
-block|{ 	  }
+block|{       }
 block|}
 block|}
 DECL|class|ExternalViewerListener
