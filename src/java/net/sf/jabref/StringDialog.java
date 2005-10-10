@@ -825,9 +825,14 @@ argument_list|()
 operator|.
 name|setBackground
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
-name|tableBackground
+name|prefs
+operator|.
+name|getColor
+argument_list|(
+literal|"tableBackground"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// getInputMap().remove(GUIGlobals.exitDialog);

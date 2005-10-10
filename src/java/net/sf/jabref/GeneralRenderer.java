@@ -126,7 +126,11 @@ argument_list|,
 name|antialiasing
 argument_list|)
 expr_stmt|;
-comment|//setForeground(fg)????
+name|setForeground
+argument_list|(
+name|fg
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|firePropertyChange (String propertyName, boolean old, boolean newV)
 specifier|public

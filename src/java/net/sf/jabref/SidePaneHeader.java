@@ -68,16 +68,6 @@ name|URL
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JToolBar
-import|;
-end_import
-
 begin_class
 DECL|class|SidePaneHeader
 specifier|public
@@ -186,7 +176,7 @@ operator|.
 name|getPaint
 argument_list|()
 decl_stmt|;
-comment|//g2.setColor(Color.red);
+comment|//g2.putColor(Color.red);
 name|Insets
 name|ins
 init|=
