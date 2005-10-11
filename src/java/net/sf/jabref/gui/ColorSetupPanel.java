@@ -142,17 +142,6 @@ name|ICON_HEIGHT
 init|=
 literal|20
 decl_stmt|;
-DECL|field|tableText
-DECL|field|tableBackground
-DECL|field|gridColor
-specifier|private
-name|ColorButton
-name|tableText
-decl_stmt|,
-name|tableBackground
-decl_stmt|,
-name|gridColor
-decl_stmt|;
 DECL|field|buttons
 specifier|private
 name|ArrayList
@@ -173,7 +162,7 @@ init|=
 operator|new
 name|FormLayout
 argument_list|(
-literal|"30dlu, 4dlu, fill:pref, 4dlu, fill:pref"
+literal|"30dlu, 4dlu, fill:pref, 4dlu, fill:pref, 8dlu, 30dlu, 4dlu, fill:pref, 4dlu, fill:pref"
 argument_list|,
 literal|""
 argument_list|)
@@ -219,24 +208,6 @@ operator|.
 name|lang
 argument_list|(
 literal|"Table background color"
-argument_list|)
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|buttons
-operator|.
-name|add
-argument_list|(
-operator|new
-name|ColorButton
-argument_list|(
-literal|"gridColor"
-argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Table grid color"
 argument_list|)
 argument_list|)
 argument_list|)
@@ -313,6 +284,24 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|buttons
+operator|.
+name|add
+argument_list|(
+operator|new
+name|ColorButton
+argument_list|(
+literal|"gridColor"
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Table grid color"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|Iterator
@@ -368,11 +357,6 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|builder
-operator|.
-name|nextLine
-argument_list|()
-expr_stmt|;
 name|but
 operator|.
 name|addActionListener
@@ -385,7 +369,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*         builder.append(tableText);         builder.append(tableText.getName());         builder.append(tableBackground);         builder.append(tableBackground.getName());         builder.append(gridColor);         builder.append(gridColor.getName());           */
 name|setLayout
 argument_list|(
 operator|new
@@ -405,8 +388,6 @@ operator|.
 name|CENTER
 argument_list|)
 expr_stmt|;
-comment|//tableText.addActionListener(new ColorButtonListener(tableText));
-comment|//tableBackground.addActionListener(new ColorButtonListener( tableBackground));
 name|setValues
 argument_list|()
 expr_stmt|;
@@ -587,6 +568,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * A button to display the chosen color, and hold key information about a color setting.      * Includes a method to produce a Default button for this setting.      */
 DECL|class|ColorButton
 class|class
 name|ColorButton

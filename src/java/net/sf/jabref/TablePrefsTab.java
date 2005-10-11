@@ -106,6 +106,20 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|ColorSetupPanel
+import|;
+end_import
+
 begin_class
 DECL|class|TablePrefsTab
 class|class
@@ -239,6 +253,15 @@ argument_list|(
 literal|"Set table font"
 argument_list|)
 argument_list|)
+decl_stmt|;
+DECL|field|colorPanel
+specifier|private
+name|ColorSetupPanel
+name|colorPanel
+init|=
+operator|new
+name|ColorSetupPanel
+argument_list|()
 decl_stmt|;
 DECL|field|tableChanged
 specifier|private
@@ -1065,6 +1088,20 @@ operator|.
 name|nextLine
 argument_list|()
 expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|pan
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|colorPanel
+argument_list|)
+expr_stmt|;
 comment|//	builder.append(pan); builder.append(); builder.nextLine();
 name|JPanel
 name|upper
@@ -1119,9 +1156,9 @@ argument_list|(
 name|gbl
 argument_list|)
 expr_stmt|;
-comment|/* 	con.gridwidth = GridBagConstraints.REMAINDER; 	con.fill = GridBagConstraints.NONE; 	con.anchor = GridBagConstraints.WEST; 	gbl.setConstraints(colorCodes, con); 	upper.add(colorCodes); 	gbl.setConstraints(autoResizeMode, con); 	upper.add(autoResizeMode);         gbl.setConstraints(antialias, con);         upper.add(antialias);         con.gridwidth = 1; 	lab = new JLabel(Globals.lang("Menu and label font size")); 	gbl.setConstraints(lab, con); 	upper.add(lab); 	Insets old = con.insets; 	con.insets = new Insets(0, 5, 0, 5); 	gbl.setConstraints(fontSize, con); 	upper.add(fontSize); 	con.insets = old;         con.gridwidth = GridBagConstraints.REMAINDER; 	lab = new JLabel("("+Globals.lang("non-Mac only")+")"); 	gbl.setConstraints(lab, con); 	upper.add(lab); 	//gbl.setConstraints(menuFontButton, con); 	//upper.add(menuFontButton); 	//con.anchor = GridBagConstraints.EAST;         con.gridwidth = GridBagConstraints.REMAINDER; 	gbl.setConstraints(fontButton, con); 	upper.add(fontButton); 	con.anchor = GridBagConstraints.WEST; 	con.fill = GridBagConstraints.BOTH;         con.gridwidth = 1;         con.gridheight = 2; 	gbl.setConstraints(upper, con); 	//add(upper);         con.gridheight = 1;         con.gridwidth = GridBagConstraints.REMAINDER;         gbl.setConstraints(pdfColumn, con);         iconCol.add(pdfColumn);         gbl.setConstraints(urlColumn, con);         iconCol.add(urlColumn);         gbl.setConstraints(citeseerColumn, con);         iconCol.add(citeseerColumn);         con.fill = GridBagConstraints.BOTH;         gbl.setConstraints(iconCol, con); 	add(iconCol);   	con.gridwidth = GridBagConstraints.REMAINDER; 	con.fill = GridBagConstraints.NONE; 	con.anchor = GridBagConstraints.WEST; 	gbl.setConstraints(namesAsIs, con); 	namesp.add(namesAsIs); 	gbl.setConstraints(namesFf, con); 	namesp.add(namesFf); 	gbl.setConstraints(namesFl, con); 	namesp.add(namesFl);         con.fill = GridBagConstraints.BOTH;         gbl.setConstraints(namesp, con); 	add(namesp);*/
+comment|/*      con.gridwidth = GridBagConstraints.REMAINDER;      con.fill = GridBagConstraints.NONE;      con.anchor = GridBagConstraints.WEST;      gbl.setConstraints(colorCodes, con);      upper.add(colorCodes);      gbl.setConstraints(autoResizeMode, con);      upper.add(autoResizeMode);          gbl.setConstraints(antialias, con);          upper.add(antialias);          con.gridwidth = 1;      lab = new JLabel(Globals.lang("Menu and label font size"));      gbl.setConstraints(lab, con);      upper.add(lab);      Insets old = con.insets;      con.insets = new Insets(0, 5, 0, 5);      gbl.setConstraints(fontSize, con);      upper.add(fontSize);      con.insets = old;          con.gridwidth = GridBagConstraints.REMAINDER;      lab = new JLabel("("+Globals.lang("non-Mac only")+")");      gbl.setConstraints(lab, con);      upper.add(lab);      //gbl.setConstraints(menuFontButton, con);      //upper.add(menuFontButton);      //con.anchor = GridBagConstraints.EAST;          con.gridwidth = GridBagConstraints.REMAINDER;      gbl.setConstraints(fontButton, con);      upper.add(fontButton);      con.anchor = GridBagConstraints.WEST;      con.fill = GridBagConstraints.BOTH;          con.gridwidth = 1;          con.gridheight = 2;      gbl.setConstraints(upper, con);      //add(upper);          con.gridheight = 1;          con.gridwidth = GridBagConstraints.REMAINDER;          gbl.setConstraints(pdfColumn, con);          iconCol.add(pdfColumn);          gbl.setConstraints(urlColumn, con);          iconCol.add(urlColumn);          gbl.setConstraints(citeseerColumn, con);          iconCol.add(citeseerColumn);          con.fill = GridBagConstraints.BOTH;          gbl.setConstraints(iconCol, con);      add(iconCol);        con.gridwidth = GridBagConstraints.REMAINDER;      con.fill = GridBagConstraints.NONE;      con.anchor = GridBagConstraints.WEST;      gbl.setConstraints(namesAsIs, con);      namesp.add(namesAsIs);      gbl.setConstraints(namesFf, con);      namesp.add(namesFf);      gbl.setConstraints(namesFl, con);      namesp.add(namesFl);          con.fill = GridBagConstraints.BOTH;          gbl.setConstraints(namesp, con);      add(namesp);*/
 comment|// Set the correct value for the primary sort JComboBox.
-comment|/*String sec = prefs.get("secSort"), 	    ter = prefs.get("terSort"); 	for (int i=0; i<GUIGlobals.ALL_FIELDS.length; i++) { 	    if (sec.equals(GUIGlobals.ALL_FIELDS[i])) 		secSort.setSelectedIndex(i); 	    if (ter.equals(GUIGlobals.ALL_FIELDS[i])) 		terSort.setSelectedIndex(i); 	}  	lab = new JLabel(Globals.lang("Secondary sort criterion")); 	con.gridwidth = 1; 	con.insets = new Insets(0,5,0,0); 	gbl.setConstraints(lab, con); 	sort.add(lab); 	con.weightx = 1; 	gbl.setConstraints(secSort, con); 	sort.add(secSort);         gbl.setConstraints(secField, con);         sort.add(secField); 	con.gridwidth = GridBagConstraints.REMAINDER; 	gbl.setConstraints(secDesc, con); 	sort.add(secDesc);  	con.gridwidth = 1;   	lab = new JLabel(Globals.lang("Tertiary sort criterion")); 	gbl.setConstraints(lab, con); 	sort.add(lab); 	con.weightx = 0; 	//con.insets = new Insets(0,5,0,0);         gbl.setConstraints(terSort, con);         sort.add(terSort);         gbl.setConstraints(terField, con);         sort.add(terField); 	con.weightx = 1; 	con.gridwidth = GridBagConstraints.REMAINDER; 	gbl.setConstraints(terDesc, con); 	sort.add(terDesc);*/
+comment|/*String sec = prefs.get("secSort"),          ter = prefs.get("terSort");      for (int i=0; i<GUIGlobals.ALL_FIELDS.length; i++) {          if (sec.equals(GUIGlobals.ALL_FIELDS[i]))          secSort.setSelectedIndex(i);          if (ter.equals(GUIGlobals.ALL_FIELDS[i]))          terSort.setSelectedIndex(i);      }       lab = new JLabel(Globals.lang("Secondary sort criterion"));      con.gridwidth = 1;      con.insets = new Insets(0,5,0,0);      gbl.setConstraints(lab, con);      sort.add(lab);      con.weightx = 1;      gbl.setConstraints(secSort, con);      sort.add(secSort);          gbl.setConstraints(secField, con);          sort.add(secField);      con.gridwidth = GridBagConstraints.REMAINDER;      gbl.setConstraints(secDesc, con);      sort.add(secDesc);       con.gridwidth = 1;        lab = new JLabel(Globals.lang("Tertiary sort criterion"));      gbl.setConstraints(lab, con);      sort.add(lab);      con.weightx = 0;      //con.insets = new Insets(0,5,0,0);          gbl.setConstraints(terSort, con);          sort.add(terSort);          gbl.setConstraints(terField, con);          sort.add(terField);      con.weightx = 1;      con.gridwidth = GridBagConstraints.REMAINDER;      gbl.setConstraints(terDesc, con);      sort.add(terDesc);*/
 name|fontButton
 operator|.
 name|addActionListener
@@ -1171,7 +1208,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|/*menuFontButton.addActionListener(new ActionListener() { 		public void actionPerformed(ActionEvent e) { 		    Font f=new FontSelectorDialog 				(null, menuFont).getSelectedFont(); 			if(f==null) 			    return; 			else 			    menuFont = f; 		} 		});*/
+comment|/*menuFontButton.addActionListener(new ActionListener() {          public void actionPerformed(ActionEvent e) {              Font f=new FontSelectorDialog                  (null, menuFont).getSelectedFont();              if(f==null)                  return;              else                  menuFont = f;          }          });*/
 name|pan
 operator|=
 name|builder
@@ -1440,6 +1477,11 @@ literal|"terDescending"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|colorPanel
+operator|.
+name|setValues
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * Store changes to table preferences. This method is called when      * the user clicks Ok.      *      */
 DECL|method|storeSettings ()
@@ -1677,6 +1719,11 @@ operator|.
 name|CURRENTFONT
 operator|=
 name|font
+expr_stmt|;
+name|colorPanel
+operator|.
+name|storeSettings
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|readyToClose ()
