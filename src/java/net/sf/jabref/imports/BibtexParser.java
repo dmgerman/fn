@@ -188,7 +188,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"@[a-zA-Z]*\\{"
+literal|"@[a-zA-Z]*\\s*\\{"
 argument_list|)
 decl_stmt|;
 name|String
