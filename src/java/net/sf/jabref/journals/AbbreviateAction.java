@@ -75,7 +75,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Sep 17, 2005  * Time: 12:48:23 AM  * To change this template use File | Settings | File Templates.  */
+comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Sep 17, 2005  * Time: 12:48:23 AM  * To browseOld this template use File | Settings | File Templates.  */
 end_comment
 
 begin_class
@@ -198,6 +198,8 @@ argument_list|,
 literal|"journal"
 argument_list|,
 name|ce
+argument_list|,
+literal|true
 argument_list|)
 condition|)
 name|count

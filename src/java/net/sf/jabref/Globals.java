@@ -2185,9 +2185,15 @@ literal|null
 return|;
 block|}
 comment|// If this is a save dialog, and the user has not chosen "All files" as filter
-comment|// we enforce the given extension.
+comment|// we enforce the given extension. But only if extension is not null.
 if|if
 condition|(
+operator|(
+name|extension
+operator|!=
+literal|null
+operator|)
+operator|&&
 operator|(
 name|dialogType
 operator|==
