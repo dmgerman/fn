@@ -408,6 +408,36 @@ operator|)
 operator|)
 return|;
 block|}
+DECL|method|dotsToNodots (String name)
+specifier|public
+name|String
+name|dotsToNodots
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+name|name
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\."
+argument_list|,
+literal|" "
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"  "
+argument_list|,
+literal|" "
+argument_list|)
+operator|.
+name|trim
+argument_list|()
+return|;
+block|}
 comment|/**      * Attempts to get the abbreviated name of the journal given. Returns null if no      * abbreviated name is known.      * @param journalName The journal name to abbreviate.      * @param withDots True if the abbreviation should have dots.      * if only the first character should be.      * @return The abbreviated name, or null if it couldn't be found.      */
 DECL|method|getAbbreviatedName (String journalName, boolean withDots)
 specifier|public
@@ -507,13 +537,9 @@ condition|)
 block|{
 name|abbr
 operator|=
-name|abbr
-operator|.
-name|replaceAll
+name|dotsToNodots
 argument_list|(
-literal|"\\."
-argument_list|,
-literal|""
+name|abbr
 argument_list|)
 expr_stmt|;
 block|}
@@ -784,13 +810,9 @@ decl_stmt|;
 name|String
 name|abbrNoDots
 init|=
-name|abbrName
-operator|.
-name|replaceAll
+name|dotsToNodots
 argument_list|(
-literal|"\\."
-argument_list|,
-literal|""
+name|abbrName
 argument_list|)
 decl_stmt|;
 name|String
@@ -823,7 +845,7 @@ literal|0
 operator|)
 condition|)
 block|{
-comment|//System.out.println("'"+fullName+"' : '"+abbrName+"'");
+comment|//System.out.println("'"+fullName+"' : '"+abbrNoDots+"'");
 name|fullNameKeyed
 operator|.
 name|put

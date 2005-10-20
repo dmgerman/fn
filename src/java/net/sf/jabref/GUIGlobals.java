@@ -1231,6 +1231,7 @@ operator|+
 literal|"JabRef-icon.png"
 argument_list|)
 decl_stmt|,
+comment|//jabreflogo = GUIGlobals.class.getResource(pre + "test.svg"),
 comment|//splashScreenImage = GUIGlobals.class.getResource(pre + "JabRef-splash.png"),
 DECL|field|completeTagIcon
 name|completeTagIcon
