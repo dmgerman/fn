@@ -8596,8 +8596,7 @@ block|{
 name|GroupTreeNode
 name|newGroups
 init|=
-name|metaData
-argument_list|()
+name|meta
 operator|.
 name|getGroups
 argument_list|()
