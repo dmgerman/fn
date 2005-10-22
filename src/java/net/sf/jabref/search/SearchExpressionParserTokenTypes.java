@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// $ANTLR 2.7.5 (20050128): "Parser.g" -> "SearchExpressionParser.java"$
+comment|// $ANTLR : "Parser.g" -> "SearchExpressionParser.java"$
 end_comment
 
 begin_package

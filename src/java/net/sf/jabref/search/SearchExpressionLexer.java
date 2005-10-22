@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// $ANTLR 2.7.5 (20050128): "Lexer.g" -> "SearchExpressionLexer.java"$
+comment|// $ANTLR : "Lexer.g" -> "SearchExpressionLexer.java"$
 end_comment
 
 begin_package
@@ -1590,7 +1590,7 @@ name|_saveIndex
 argument_list|)
 expr_stmt|;
 block|{
-name|_loop11
+name|_loop28
 label|:
 do|do
 block|{
@@ -1618,7 +1618,7 @@ block|}
 else|else
 block|{
 break|break
-name|_loop11
+name|_loop28
 break|;
 block|}
 block|}
@@ -1861,11 +1861,11 @@ name|_saveIndex
 decl_stmt|;
 block|{
 name|int
-name|_cnt16
+name|_cnt33
 init|=
 literal|0
 decl_stmt|;
-name|_loop16
+name|_loop33
 label|:
 do|do
 block|{
@@ -1894,13 +1894,13 @@ else|else
 block|{
 if|if
 condition|(
-name|_cnt16
+name|_cnt33
 operator|>=
 literal|1
 condition|)
 block|{
 break|break
-name|_loop16
+name|_loop33
 break|;
 block|}
 else|else
@@ -1929,7 +1929,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-name|_cnt16
+name|_cnt33
 operator|++
 expr_stmt|;
 block|}

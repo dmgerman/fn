@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|// $ANTLR 2.7.5 (20050128): "TreeParser.g" -> "SearchExpressionTreeParser.java"$
+comment|// $ANTLR : "TreeParser.g" -> "SearchExpressionTreeParser.java"$
 end_comment
 
 begin_package
@@ -331,7 +331,7 @@ name|And
 case|:
 block|{
 name|AST
-name|__t2
+name|__t87
 init|=
 name|_t
 decl_stmt|;
@@ -480,7 +480,7 @@ block|}
 block|}
 name|_t
 operator|=
-name|__t2
+name|__t87
 expr_stmt|;
 name|_t
 operator|=
@@ -502,7 +502,7 @@ name|Or
 case|:
 block|{
 name|AST
-name|__t4
+name|__t89
 init|=
 name|_t
 decl_stmt|;
@@ -652,7 +652,7 @@ block|}
 block|}
 name|_t
 operator|=
-name|__t4
+name|__t89
 expr_stmt|;
 name|_t
 operator|=
@@ -674,7 +674,7 @@ name|Not
 case|:
 block|{
 name|AST
-name|__t6
+name|__t91
 init|=
 name|_t
 decl_stmt|;
@@ -713,7 +713,7 @@ name|_retTree
 expr_stmt|;
 name|_t
 operator|=
-name|__t6
+name|__t91
 expr_stmt|;
 name|_t
 operator|=
@@ -848,7 +848,7 @@ try|try
 block|{
 comment|// for error handling
 name|AST
-name|__t9
+name|__t94
 init|=
 name|_t
 decl_stmt|;
@@ -958,6 +958,11 @@ name|pseudoField
 init|=
 literal|0
 decl_stmt|;
+name|boolean
+name|noSuchField
+init|=
+literal|true
+decl_stmt|;
 comment|// this loop iterates over all regular keys, then over pseudo keys like "type"
 for|for
 control|(
@@ -1064,6 +1069,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|noSuchField
+operator|=
+literal|false
+expr_stmt|;
 if|if
 condition|(
 name|content
@@ -1123,9 +1132,22 @@ expr_stmt|;
 break|break;
 block|}
 block|}
+if|if
+condition|(
+name|noSuchField
+operator|&&
+name|matchType
+operator|==
+name|MATCH_DOES_NOT_CONTAIN
+condition|)
+name|ret
+operator|=
+literal|true
+expr_stmt|;
+comment|// special case
 name|_t
 operator|=
-name|__t9
+name|__t94
 expr_stmt|;
 name|_t
 operator|=
