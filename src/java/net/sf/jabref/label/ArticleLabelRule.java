@@ -18,16 +18,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|StringTokenizer
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -35,20 +25,6 @@ operator|.
 name|jabref
 operator|.
 name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|imports
-operator|.
-name|ImportFormatReader
 import|;
 end_import
 
@@ -153,7 +129,7 @@ index|[
 literal|0
 index|]
 operator|=
-name|ImportFormatReader
+name|AuthorList
 operator|.
 name|fixAuthor_firstNameFirst
 argument_list|(

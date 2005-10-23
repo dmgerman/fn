@@ -38,6 +38,18 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|AuthorList
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -654,9 +666,9 @@ name|author
 init|=
 name|isiAuthorConvert
 argument_list|(
-name|ImportFormatReader
+name|AuthorList
 operator|.
-name|fixAuthor_lastnameFirst
+name|fixAuthor_lastNameFirst
 argument_list|(
 name|value
 operator|.

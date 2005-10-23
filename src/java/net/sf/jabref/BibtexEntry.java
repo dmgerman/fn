@@ -496,9 +496,6 @@ argument_list|(
 name|fields
 argument_list|)
 expr_stmt|;
-comment|//_fields=fields.clone();
-comment|// clone slows up things but...
-comment|// if you don't clone then client has pointer to _field and can change it behind the scenes
 block|}
 DECL|method|setField (String name, Object value)
 specifier|public

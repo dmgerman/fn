@@ -124,14 +124,12 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
-operator|.
-name|ImportFormatReader
+name|AuthorList
 import|;
 end_import
 
 begin_comment
-comment|/**  * Changes {\^o} or {\^{o}} to ô  *  * @author $author$  * @version $Revision$  */
+comment|/**  * Changes {\^o} or {\^{o}} to ï¿½  *  * @author $author$  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -153,11 +151,11 @@ name|fieldText
 parameter_list|)
 block|{
 comment|//ConvertSpecialCharactersForHTML conv = new ConvertSpecialCharactersForHTML();
-comment|//return conv.format(ImportFormatReader.fixAuthor_lastnameFirst(fieldText));
+comment|//return conv.format(ImportFormatReader.fixAuthor_lastNameFirst(fieldText));
 return|return
-name|ImportFormatReader
+name|AuthorList
 operator|.
-name|fixAuthor_lastnameFirst
+name|fixAuthor_lastNameFirst
 argument_list|(
 name|fieldText
 argument_list|)

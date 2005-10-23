@@ -46,9 +46,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
-operator|.
-name|*
+name|AuthorList
 import|;
 end_import
 
@@ -117,7 +115,7 @@ decl_stmt|;
 name|String
 name|authorMod
 init|=
-name|ImportFormatReader
+name|AuthorList
 operator|.
 name|fixAuthor_firstNameFirst
 argument_list|(

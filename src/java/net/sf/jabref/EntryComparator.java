@@ -24,20 +24,6 @@ name|Comparator
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|imports
-operator|.
-name|ImportFormatReader
-import|;
-end_import
-
 begin_comment
 comment|/**  * This implementation of Comparator takes care of most of the details of sorting BibTeX entries in JabRef.  * It is structured as a node in a linked list of comparators, where each node can contain a link to a  * new comparator that decides the ordering (by recursion) if this one can't find a difference. The next  * node, if any, is given at construction time, and an arbitrary number of nodes can be included.  * If the entries are equal by this comparator, and there is no next entry, the entries' unique IDs will  * decide the ordering. Consequently, this comparator can never return 0 unless the entries are the same  * object.  */
 end_comment
@@ -164,7 +150,7 @@ name|ClassCastException
 block|{
 comment|//if (o1 == null) Util.pr("o1 == null");
 comment|//if (o2 == null) Util.pr("o2 == null");
-comment|/*  The explicit instanceof test is unnecessary, since the  	    explicit casts below will throw ClassCastException anyway  	    if there is trouble.  	if (!(o1 instanceof BibtexEntry) || !(o2 instanceof BibtexEntry)) 	  throw new ClassCastException("Trouble comparing objects: "+o1.toString()+"\n\n"+o2.toString());*/
+comment|/*  The explicit instanceof test is unnecessary, since the          explicit casts below will throw ClassCastException anyway          if there is trouble.       if (!(o1 instanceof BibtexEntry) || !(o2 instanceof BibtexEntry))        throw new ClassCastException("Trouble comparing objects: "+o1.toString()+"\n\n"+o2.toString());*/
 name|BibtexEntry
 name|e1
 init|=
@@ -313,7 +299,7 @@ literal|null
 condition|)
 name|f1
 operator|=
-name|ImportFormatReader
+name|AuthorList
 operator|.
 name|fixAuthorForAlphabetization
 argument_list|(
@@ -323,7 +309,7 @@ operator|)
 name|f1
 argument_list|)
 expr_stmt|;
-comment|//ImportFormatReader.fixAuthor_lastnameFirst((String)f1);
+comment|//ImportFormatReader.fixAuthor_lastNameFirst((String)f1);
 if|if
 condition|(
 name|f2
@@ -332,7 +318,7 @@ literal|null
 condition|)
 name|f2
 operator|=
-name|ImportFormatReader
+name|AuthorList
 operator|.
 name|fixAuthorForAlphabetization
 argument_list|(
@@ -342,7 +328,7 @@ operator|)
 name|f2
 argument_list|)
 expr_stmt|;
-comment|//ImportFormatReader.fixAuthor_lastnameFirst((String)f2);
+comment|//ImportFormatReader.fixAuthor_lastNameFirst((String)f2);
 block|}
 elseif|else
 if|if

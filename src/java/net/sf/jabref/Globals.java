@@ -659,72 +659,6 @@ argument_list|(
 literal|"Windows"
 argument_list|)
 decl_stmt|;
-comment|// The following set of name parts are treated as part of the last name for
-comment|// display purposes, and as part of the first name for sorting purposes:
-DECL|field|NAME_PARTICLES
-specifier|public
-specifier|static
-name|Set
-name|NAME_PARTICLES
-init|=
-operator|new
-name|HashSet
-argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
-operator|new
-name|String
-index|[]
-block|{
-literal|"von"
-block|,
-literal|"van"
-block|,
-literal|"der"
-block|,
-literal|"de"
-block|,
-literal|"la"
-block|,
-literal|"da"
-block|,
-literal|"di"
-block|}
-argument_list|)
-argument_list|)
-decl_stmt|;
-comment|// The following set of name parts are treated as the trailing part of
-comment|// the last name for both sorting and display purposes:
-DECL|field|JUNIOR_PARTICLES
-specifier|public
-specifier|static
-name|Set
-name|JUNIOR_PARTICLES
-init|=
-operator|new
-name|HashSet
-argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
-operator|new
-name|String
-index|[]
-block|{
-literal|"Jr"
-block|,
-literal|"jr"
-block|,
-literal|"Jr."
-block|,
-literal|"jr."
-block|}
-argument_list|)
-argument_list|)
-decl_stmt|;
 DECL|field|SKIP_WORDS
 specifier|public
 specifier|static
@@ -825,7 +759,7 @@ name|SEVERE
 argument_list|)
 expr_stmt|;
 block|}
-comment|// should be only called ones
+comment|// should be only called once
 DECL|method|turnOnConsoleLogging ()
 specifier|public
 specifier|static

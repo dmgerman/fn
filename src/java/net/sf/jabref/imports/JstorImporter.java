@@ -18,16 +18,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|Reader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|InputStream
 import|;
 end_import
@@ -68,37 +58,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Vector
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
 import|;
 end_import
 
@@ -134,7 +94,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|Util
 import|;
 end_import
 
@@ -146,7 +106,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|AuthorList
 import|;
 end_import
 
@@ -359,9 +319,9 @@ name|be
 argument_list|,
 literal|"author"
 argument_list|,
-name|ImportFormatReader
+name|AuthorList
 operator|.
-name|fixAuthor_lastnameFirst
+name|fixAuthor_lastNameFirst
 argument_list|(
 name|fields
 index|[
@@ -611,7 +571,7 @@ parameter_list|(
 name|ArrayIndexOutOfBoundsException
 name|ex
 parameter_list|)
-block|{ 	    }
+block|{         }
 name|bibitems
 operator|.
 name|add

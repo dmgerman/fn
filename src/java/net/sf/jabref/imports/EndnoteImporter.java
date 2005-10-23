@@ -20,29 +20,7 @@ name|util
 operator|.
 name|regex
 operator|.
-name|Matcher
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
 name|Pattern
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|Reader
 import|;
 end_import
 
@@ -139,6 +117,18 @@ operator|.
 name|jabref
 operator|.
 name|Util
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|AuthorList
 import|;
 end_import
 
@@ -488,7 +478,7 @@ operator|<
 literal|3
 condition|)
 continue|continue;
-comment|/* 		 * Details of Refer format for Journal Article and Book: 		 *  		 * Generic Ref Journal Article Book Code Author %A Author Author Year %D 		 * Year Year Title %T Title Title Secondary Author %E Series Editor 		 * Secondary Title %B Journal Series Title Place Published %C City 		 * Publisher %I Publisher Volume %V Volume Volume Number of Volumes %6 		 * Number of Volumes Number %N Issue Pages %P Pages Number of Pages 		 * Edition %7 Edition Subsidiary Author %? Translator Alternate Title %J 		 * Alternate Journal Label %F Label Label Keywords %K Keywords Keywords 		 * Abstract %X Abstract Abstract Notes %O Notes Notes 		 */
+comment|/*            * Details of Refer format for Journal Article and Book:            *            * Generic Ref Journal Article Book Code Author %A Author Author Year %D            * Year Year Title %T Title Title Secondary Author %E Series Editor            * Secondary Title %B Journal Series Title Place Published %C City            * Publisher %I Publisher Volume %V Volume Volume Number of Volumes %6            * Number of Volumes Number %N Issue Pages %P Pages Number of Pages            * Edition %7 Edition Subsidiary Author %? Translator Alternate Title %J            * Alternate Journal Label %F Label Label Keywords %K Keywords Keywords            * Abstract %X Abstract Abstract Notes %O Notes Notes            */
 name|String
 name|prefix
 init|=
@@ -1197,9 +1187,9 @@ name|put
 argument_list|(
 literal|"author"
 argument_list|,
-name|ImportFormatReader
+name|AuthorList
 operator|.
-name|fixAuthor_lastnameFirst
+name|fixAuthor_lastNameFirst
 argument_list|(
 name|Author
 argument_list|)
@@ -1221,9 +1211,9 @@ name|put
 argument_list|(
 literal|"editor"
 argument_list|,
-name|ImportFormatReader
+name|AuthorList
 operator|.
-name|fixAuthor_lastnameFirst
+name|fixAuthor_lastNameFirst
 argument_list|(
 name|Editor
 argument_list|)

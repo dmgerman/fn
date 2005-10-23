@@ -38,26 +38,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|beans
-operator|.
-name|PropertyChangeListener
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|beans
-operator|.
-name|PropertyChangeEvent
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -67,40 +47,6 @@ operator|.
 name|export
 operator|.
 name|LatexFieldFormatter
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|StringTokenizer
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|imports
-operator|.
-name|ImportFormatReader
 import|;
 end_import
 
@@ -865,7 +811,7 @@ name|namesNatbib
 condition|)
 name|o
 operator|=
-name|ImportFormatReader
+name|AuthorList
 operator|.
 name|fixAuthor_Natbib
 argument_list|(
@@ -881,7 +827,7 @@ name|namesFf
 condition|)
 name|o
 operator|=
-name|ImportFormatReader
+name|AuthorList
 operator|.
 name|fixAuthor_firstNameFirstCommas
 argument_list|(
@@ -899,9 +845,9 @@ name|namesLf
 condition|)
 name|o
 operator|=
-name|ImportFormatReader
+name|AuthorList
 operator|.
-name|fixAuthor_lastnameFirstCommas
+name|fixAuthor_lastNameFirstCommas
 argument_list|(
 operator|(
 name|String
@@ -919,7 +865,7 @@ comment|//              if (namesFf) {
 comment|//                return ImportFormatReader.fixAuthor_firstNameFirst( (String) o);
 comment|//              }
 comment|//              else {
-comment|//                return ImportFormatReader.fixAuthor_lastnameFirst( (String)o);
+comment|//                return ImportFormatReader.fixAuthor_lastNameFirst( (String)o);
 comment|//              }
 comment|//            }
 comment|//MK:^^^
@@ -1195,7 +1141,7 @@ condition|)
 return|return
 literal|false
 return|;
-comment|// JZTODO: I think this should never happen, but it does
+comment|// TODO: JZ: I think this should never happen, but it does
 name|String
 name|o
 init|=

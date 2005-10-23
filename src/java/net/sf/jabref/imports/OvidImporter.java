@@ -42,16 +42,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|Reader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|InputStream
 import|;
 end_import
@@ -83,26 +73,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
 import|;
 end_import
 
@@ -146,31 +116,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibtexEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Util
 import|;
 end_import
 
@@ -681,7 +627,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//    author = content.replaceAll("  ", " and ").replaceAll(" and $", "");
-comment|//h.put("author", ImportFormatReader.fixAuthor_lastnameFirst(author));
+comment|//h.put("author", ImportFormatReader.fixAuthor_lastNameFirst(author));
 block|}
 elseif|else
 if|if

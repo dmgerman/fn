@@ -44,9 +44,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
-operator|.
-name|ImportFormatReader
+name|AuthorList
 import|;
 end_import
 
@@ -72,7 +70,7 @@ name|fieldText
 parameter_list|)
 block|{
 return|return
-name|ImportFormatReader
+name|AuthorList
 operator|.
 name|fixAuthor_firstNameFirstCommas
 argument_list|(
