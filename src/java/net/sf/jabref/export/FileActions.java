@@ -373,7 +373,7 @@ operator|.
 name|getContent
 argument_list|()
 argument_list|,
-literal|true
+literal|"__dummy"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1009,12 +1009,10 @@ comment|// Define our data stream.
 name|VerifyingWriter
 name|fw
 init|=
+name|session
+operator|.
 name|getWriter
-argument_list|(
-name|file
-argument_list|,
-name|encoding
-argument_list|)
+argument_list|()
 decl_stmt|;
 comment|// Write signature.
 name|writeBibFileHeader
@@ -1536,42 +1534,6 @@ throw|;
 block|}
 return|return
 name|session
-return|;
-block|}
-DECL|method|getWriter (File f, String encoding)
-specifier|public
-specifier|static
-name|VerifyingWriter
-name|getWriter
-parameter_list|(
-name|File
-name|f
-parameter_list|,
-name|String
-name|encoding
-parameter_list|)
-throws|throws
-name|IOException
-block|{
-name|VerifyingWriter
-name|ow
-decl_stmt|;
-name|ow
-operator|=
-operator|new
-name|VerifyingWriter
-argument_list|(
-operator|new
-name|FileOutputStream
-argument_list|(
-name|f
-argument_list|)
-argument_list|,
-name|encoding
-argument_list|)
-expr_stmt|;
-return|return
-name|ow
 return|;
 block|}
 DECL|method|exportCustomDatabase (BibtexDatabase database, String directory, String lfName, File outFile)

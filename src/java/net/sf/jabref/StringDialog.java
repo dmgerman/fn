@@ -1412,7 +1412,7 @@ name|String
 operator|)
 name|value
 argument_list|,
-literal|true
+literal|"__dummy"
 argument_list|)
 expr_stmt|;
 block|}

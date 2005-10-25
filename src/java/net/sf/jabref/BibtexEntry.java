@@ -972,6 +972,21 @@ name|i
 operator|++
 control|)
 block|{
+if|if
+condition|(
+operator|!
+name|written
+operator|.
+name|containsKey
+argument_list|(
+name|s
+index|[
+name|i
+index|]
+argument_list|)
+condition|)
+block|{
+comment|// If field appears both in req. and opt. don't repeat.
 name|writeField
 argument_list|(
 name|s
@@ -996,6 +1011,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Then write remaining fields in alphabetic order.
 name|TreeSet
@@ -1179,12 +1195,7 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
-name|GUIGlobals
-operator|.
-name|isStandardField
-argument_list|(
 name|name
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

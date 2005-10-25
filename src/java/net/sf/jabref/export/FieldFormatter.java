@@ -27,7 +27,7 @@ interface|interface
 name|FieldFormatter
 block|{
 comment|//~ Methods ////////////////////////////////////////////////////////////////
-DECL|method|format (String s, boolean standardBibtex)
+DECL|method|format (String s, String fieldName)
 specifier|public
 name|String
 name|format
@@ -35,8 +35,8 @@ parameter_list|(
 name|String
 name|s
 parameter_list|,
-name|boolean
-name|standardBibtex
+name|String
+name|fieldName
 parameter_list|)
 throws|throws
 name|IllegalArgumentException

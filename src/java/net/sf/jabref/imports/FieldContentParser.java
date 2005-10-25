@@ -24,30 +24,6 @@ name|Globals
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Pattern
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Matcher
-import|;
-end_import
-
 begin_comment
 comment|/**  * This class provides the reformatting needed when reading BibTeX fields formatted  * in JabRef style. The reformatting must undo all formatting done by JabRef when  * writing the same fields.  */
 end_comment
@@ -68,12 +44,6 @@ name|StringBuffer
 name|content
 parameter_list|)
 block|{
-name|int
-name|prev
-init|=
-operator|-
-literal|1
-decl_stmt|;
 name|int
 name|i
 init|=
@@ -634,16 +604,12 @@ else|else
 name|i
 operator|++
 expr_stmt|;
-name|prev
-operator|=
-name|c
-expr_stmt|;
 block|}
 return|return
 name|content
 return|;
 block|}
-comment|/**      * Formats field contents for output. Must be "symmetric" with the parse method above,      * so stored and reloaded fields are not mangled.      * @param in      * @param wrapAmount      * @return      */
+comment|/**      * Formats field contents for output. Must be "symmetric" with the parse method above,      * so stored and reloaded fields are not mangled.      * @param in      * @param wrapAmount      * @return the wrapped String.      */
 DECL|method|wrap (String in, int wrapAmount)
 specifier|public
 specifier|static

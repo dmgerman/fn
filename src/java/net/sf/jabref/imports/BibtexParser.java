@@ -1158,9 +1158,7 @@ name|String
 name|content
 init|=
 name|parseFieldContent
-argument_list|(
-literal|true
-argument_list|)
+argument_list|()
 decl_stmt|;
 comment|//Util.pr("Now I'm going to consume a }");
 name|consume
@@ -1351,14 +1349,7 @@ name|String
 name|cont
 init|=
 name|parseFieldContent
-argument_list|(
-name|GUIGlobals
-operator|.
-name|isStandardField
-argument_list|(
-name|fieldName
-argument_list|)
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|result
 operator|.
@@ -1560,16 +1551,32 @@ name|String
 name|content
 init|=
 name|parseFieldContent
-argument_list|(
-name|GUIGlobals
+argument_list|()
+decl_stmt|;
+comment|// Now, if the field in question is set up to be fitted automatically with braces around
+comment|// capitals, we should remove those now when reading the field:
+if|if
+condition|(
+name|Globals
 operator|.
-name|isStandardField
+name|prefs
+operator|.
+name|putBracesAroundCapitals
 argument_list|(
 name|key
 argument_list|)
+condition|)
+block|{
+name|content
+operator|=
+name|Util
+operator|.
+name|removeBracesAroundCapitals
+argument_list|(
+name|content
 argument_list|)
-decl_stmt|;
-comment|//System.out.println(content);
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|content
@@ -1644,14 +1651,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|parseFieldContent (boolean isStandardBibtexField)
+DECL|method|parseFieldContent ()
 specifier|private
 name|String
 name|parseFieldContent
-parameter_list|(
-name|boolean
-name|isStandardBibtexField
-parameter_list|)
+parameter_list|()
 throws|throws
 name|IOException
 block|{

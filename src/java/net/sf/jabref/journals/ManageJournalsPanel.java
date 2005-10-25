@@ -672,11 +672,7 @@ name|builder
 operator|.
 name|add
 argument_list|(
-operator|new
-name|JScrollPane
-argument_list|(
 name|userPanel
-argument_list|)
 argument_list|,
 name|cc
 operator|.

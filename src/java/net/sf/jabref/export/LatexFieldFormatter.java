@@ -20,16 +20,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|text
 operator|.
 name|StringCharacterIterator
@@ -106,7 +96,7 @@ name|STARTCOL
 init|=
 literal|4
 decl_stmt|;
-DECL|method|format (String text, boolean standardBibtex)
+DECL|method|format (String text, String fieldName)
 specifier|public
 name|String
 name|format
@@ -114,18 +104,45 @@ parameter_list|(
 name|String
 name|text
 parameter_list|,
-name|boolean
-name|standardBibtex
+name|String
+name|fieldName
 parameter_list|)
 throws|throws
 name|IllegalArgumentException
 block|{
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|putBracesAroundCapitals
+argument_list|(
+name|fieldName
+argument_list|)
+condition|)
+block|{
+name|text
+operator|=
+name|Util
+operator|.
+name|putBracesAroundCapitals
+argument_list|(
+name|text
+argument_list|)
+expr_stmt|;
+block|}
 comment|// If the field is non-standard, we will just append braces,
 comment|// wrap and write.
 if|if
 condition|(
 operator|!
-name|standardBibtex
+name|GUIGlobals
+operator|.
+name|isStandardField
+argument_list|(
+name|fieldName
+argument_list|)
 condition|)
 block|{
 name|int
