@@ -104,7 +104,7 @@ specifier|final
 name|String
 name|TEMP_SUFFIX
 init|=
-literal|"save"
+literal|"save.bib"
 decl_stmt|;
 DECL|field|file
 DECL|field|tmp

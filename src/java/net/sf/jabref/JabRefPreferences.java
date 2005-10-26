@@ -1851,7 +1851,7 @@ name|put
 argument_list|(
 literal|"putBracesAroundCapitals"
 argument_list|,
-literal|""
+literal|"title"
 argument_list|)
 expr_stmt|;
 name|defaults

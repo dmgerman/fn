@@ -684,8 +684,8 @@ name|wr2
 operator|=
 name|end
 expr_stmt|;
-if|if
-condition|(
+name|string
+operator|=
 operator|(
 operator|(
 name|wr1
@@ -712,15 +712,6 @@ argument_list|,
 name|wr2
 argument_list|)
 operator|)
-condition|)
-name|string
-operator|=
-literal|true
-expr_stmt|;
-else|else
-name|string
-operator|=
-literal|false
 expr_stmt|;
 comment|//System.out.println("FileLoader: "+content+" "+string+" "+hash+"
 comment|// "+wr1+" "+wr2);
@@ -863,12 +854,8 @@ literal|null
 return|;
 name|char
 name|ch
-init|=
-literal|0
 decl_stmt|,
 name|ch2
-init|=
-literal|0
 decl_stmt|;
 name|int
 name|beg
@@ -889,10 +876,6 @@ init|=
 literal|false
 decl_stmt|,
 name|endok
-init|=
-literal|false
-decl_stmt|,
-name|braok
 init|=
 literal|false
 decl_stmt|;
@@ -995,7 +978,6 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-comment|//	while (!braok) {
 if|if
 condition|(
 name|end
@@ -1064,11 +1046,6 @@ operator|--
 expr_stmt|;
 block|}
 block|}
-comment|//else
-comment|//braok = true;
-comment|//  } else
-comment|//braok = true;
-comment|//}
 name|s
 operator|=
 name|s
@@ -1085,7 +1062,7 @@ return|return
 name|s
 return|;
 block|}
-comment|/**      * This method returns a String similar to the one passed in, except all      * whitespace and '#' characters are removed. These characters make a key      * unusable by bibtex.      */
+comment|/**      * This method returns a String similar to the one passed in, except that it is      * molded into a form that is acceptable for bibtex.      */
 DECL|method|checkLegalKey (String key)
 specifier|public
 specifier|static
@@ -4196,55 +4173,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|printEntry (BibtexEntry entry)
-specifier|public
-specifier|static
-name|void
-name|printEntry
-parameter_list|(
-name|BibtexEntry
-name|entry
-parameter_list|)
-block|{
-name|StringWriter
-name|sw
-init|=
-operator|new
-name|StringWriter
-argument_list|()
-decl_stmt|;
-try|try
-block|{
-name|entry
-operator|.
-name|write
-argument_list|(
-name|sw
-argument_list|,
-operator|new
-name|LatexFieldFormatter
-argument_list|()
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ex
-parameter_list|)
-block|{         }
-name|pr
-argument_list|(
-name|sw
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Copies a file.      *      * @param source         File Source file      * @param dest           File Destination file      * @param deleteIfExists boolean Determines whether the copy goes on even if the file      *                       exists.      * @throws IOException      * @returns boolean Whether the copy succeeded, or was stopped due to the      * file already existing.      */
+comment|/**      * Copies a file.      *      * @param source         File Source file      * @param dest           File Destination file      * @param deleteIfExists boolean Determines whether the copy goes on even if the file      *                       exists.      * @throws IOException      * @return boolean Whether the copy succeeded, or was stopped due to the      * file already existing.      */
 DECL|method|copyFile (File source, File dest, boolean deleteIfExists)
 specifier|public
 specifier|static
@@ -4392,8 +4321,6 @@ block|{
 comment|//pr(genFields+"\t"+genFields.indexOf("abstract"));
 name|String
 name|newGen
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -5383,18 +5310,6 @@ argument_list|(
 literal|"[A-Z]+"
 argument_list|)
 decl_stmt|;
-DECL|field|bracedTitleCapitalPattern
-specifier|static
-name|Pattern
-name|bracedTitleCapitalPattern
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|"\\{[A-Z]+\\}"
-argument_list|)
-decl_stmt|;
 DECL|method|putBracesAroundCapitals (String s)
 specifier|public
 specifier|static
@@ -5493,6 +5408,19 @@ name|toString
 argument_list|()
 return|;
 block|}
+DECL|field|bracedTitleCapitalPattern
+specifier|static
+name|Pattern
+name|bracedTitleCapitalPattern
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"\\{[A-Z]+\\}"
+argument_list|)
+decl_stmt|;
+comment|/**      * This method looks for occurences of capital letters enclosed in an arbitrary number of      * pairs of braces, e.g. "{AB}" or "{{T}}". All of these pairs of braces are removed.      * @param s The String to analyze.      * @return A new String with braces removed.      */
 DECL|method|removeBracesAroundCapitals (String s)
 specifier|public
 specifier|static
@@ -5503,13 +5431,51 @@ name|String
 name|s
 parameter_list|)
 block|{
-name|StringBuffer
-name|buf
+name|String
+name|previous
 init|=
-operator|new
-name|StringBuffer
-argument_list|()
+name|s
 decl_stmt|;
+while|while
+condition|(
+operator|(
+name|s
+operator|=
+name|removeSingleBracesAroundCapitals
+argument_list|(
+name|s
+argument_list|)
+operator|)
+operator|.
+name|length
+argument_list|()
+operator|<
+name|previous
+operator|.
+name|length
+argument_list|()
+condition|)
+block|{
+name|previous
+operator|=
+name|s
+expr_stmt|;
+block|}
+return|return
+name|s
+return|;
+block|}
+comment|/**      * This method looks for occurences of capital letters enclosed in one pair of braces, e.g. "{AB}".      * All these are replaced by only the capitals in between the braces.      * @param s The String to analyze.      * @return A new String with braces removed.      */
+DECL|method|removeSingleBracesAroundCapitals (String s)
+specifier|public
+specifier|static
+name|String
+name|removeSingleBracesAroundCapitals
+parameter_list|(
+name|String
+name|s
+parameter_list|)
+block|{
 name|Matcher
 name|mcr
 init|=
@@ -5519,6 +5485,13 @@ name|matcher
 argument_list|(
 name|s
 argument_list|)
+decl_stmt|;
+name|StringBuffer
+name|buf
+init|=
+operator|new
+name|StringBuffer
+argument_list|()
 decl_stmt|;
 while|while
 condition|(
@@ -6138,8 +6111,11 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|" "
-operator|+
+literal|' '
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|word
 argument_list|)
 expr_stmt|;
@@ -6198,18 +6174,13 @@ argument_list|(
 name|format
 argument_list|)
 decl_stmt|;
-name|String
-name|datenewformat
-init|=
+return|return
 name|formatter
 operator|.
 name|format
 argument_list|(
 name|today
 argument_list|)
-decl_stmt|;
-return|return
-name|datenewformat
 return|;
 block|}
 DECL|method|markEntry (BibtexEntry be, NamedCompound ce)

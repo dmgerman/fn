@@ -1583,22 +1583,10 @@ name|String
 name|getOpeningBrace
 parameter_list|()
 block|{
-if|if
-condition|(
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-literal|"autoDoubleBraces"
-argument_list|)
-condition|)
-return|return
-literal|"{{"
-return|;
-else|else
 return|return
 literal|"{"
 return|;
+comment|/*             As of version 2.0, storing all fields with double braces is no longer supported, because             it causes problems with e.g. the author field.          if (prefs.getBoolean("autoDoubleBraces"))             return "{{";         else             return "{";         */
 block|}
 comment|/**      * This method provides the correct closing brace to use when writing a field      * to BibTeX format.      * @return A String containing the braces to use.      */
 DECL|method|getClosingBrace ()
@@ -1608,22 +1596,10 @@ name|String
 name|getClosingBrace
 parameter_list|()
 block|{
-if|if
-condition|(
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-literal|"autoDoubleBraces"
-argument_list|)
-condition|)
-return|return
-literal|"}}"
-return|;
-else|else
 return|return
 literal|"}"
 return|;
+comment|/*             As of version 2.0, storing all fields with double braces is no longer supported, because             it causes problems with e.g. the author field.          if (prefs.getBoolean("autoDoubleBraces"))             return "}}";         else         */
 block|}
 comment|/*    public static void setupKeyBindings(JabRefPreferences prefs) {     }*/
 DECL|method|getNewFile (JFrame owner, JabRefPreferences prefs, File directory, String extension, int dialogType, boolean updateWorkingDirectory)
