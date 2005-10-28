@@ -604,7 +604,17 @@ operator|.
 name|TRUE
 argument_list|)
 expr_stmt|;
-comment|//        defaults.put("namesLastOnly", Boolean.TRUE);
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"namesLastOnly"
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
+argument_list|)
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -1851,7 +1861,7 @@ name|put
 argument_list|(
 literal|"putBracesAroundCapitals"
 argument_list|,
-literal|"title"
+literal|""
 argument_list|)
 expr_stmt|;
 name|defaults
