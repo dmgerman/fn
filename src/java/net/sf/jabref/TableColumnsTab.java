@@ -1541,7 +1541,7 @@ name|colMod
 init|=
 name|panel
 operator|.
-name|entryTable
+name|mainTable
 operator|.
 name|getColumnModel
 argument_list|()
@@ -1592,7 +1592,7 @@ name|name
 init|=
 name|panel
 operator|.
-name|entryTable
+name|mainTable
 operator|.
 name|getColumnName
 argument_list|(

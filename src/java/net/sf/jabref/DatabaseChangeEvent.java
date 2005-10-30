@@ -12,6 +12,7 @@ end_package
 
 begin_class
 DECL|class|DatabaseChangeEvent
+specifier|public
 class|class
 name|DatabaseChangeEvent
 block|{

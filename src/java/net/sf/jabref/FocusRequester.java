@@ -51,6 +51,17 @@ name|Component
 name|comp
 parameter_list|)
 block|{
+if|if
+condition|(
+name|comp
+operator|==
+literal|null
+condition|)
+name|Thread
+operator|.
+name|dumpStack
+argument_list|()
+expr_stmt|;
 comment|//System.out.println("FocusRequester: "+comp.toString());
 name|this
 operator|.

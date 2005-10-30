@@ -120,18 +120,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|plaf
-operator|.
-name|ComponentUI
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|table
 operator|.
 name|*
@@ -717,12 +705,6 @@ operator|.
 name|remap
 argument_list|()
 expr_stmt|;
-name|panel
-operator|.
-name|refreshTable
-argument_list|()
-expr_stmt|;
-comment|//repaint();
 block|}
 block|}
 block|}
@@ -1113,11 +1095,7 @@ comment|//int row = getSelectedRow(); //e.getFirstIndex();
 comment|//if (row>= 0) {
 comment|// Update the value for which entry is shown:
 comment|//  activeRow = row;
-name|panel
-operator|.
-name|updateViewToSelected
-argument_list|()
-expr_stmt|;
+comment|//panel.updateViewToSelected();
 comment|// guarantee that the the entry is visible
 name|ensureVisible
 argument_list|(
@@ -1150,17 +1128,8 @@ block|}
 comment|// We want the entry preview to update when the user expands the
 comment|// selection one entry at a time:
 comment|//if ((e.getLastIndex()-e.getFirstIndex())<= 1) {
-if|if
-condition|(
-name|activeRow
-operator|>=
-literal|0
-condition|)
-name|panel
-operator|.
-name|updateViewToSelected
-argument_list|()
-expr_stmt|;
+comment|//if (activeRow>= 0)
+comment|//panel.updateViewToSelected();
 comment|//}
 comment|// 2. Do nothing.
 block|}
@@ -1818,11 +1787,7 @@ argument_list|,
 name|row
 argument_list|)
 expr_stmt|;
-name|panel
-operator|.
-name|updateViewToSelected
-argument_list|()
-expr_stmt|;
+comment|//panel.updateViewToSelected();
 block|}
 name|rightClickMenu
 operator|=
@@ -2591,22 +2556,6 @@ block|}
 comment|// The following classes define the renderers used to render required
 comment|// and optional fields in the table. The purpose of these renderers is
 comment|// to visualize which fields are needed for each entry.
-DECL|field|incompleteEntryRenderer
-specifier|private
-name|IconStringRenderer
-name|incompleteEntryRenderer
-init|=
-operator|new
-name|IconStringRenderer
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"This entry is incomplete"
-argument_list|)
-argument_list|)
-decl_stmt|;
 DECL|field|defRenderer
 specifier|private
 name|GeneralRenderer
@@ -2615,8 +2564,6 @@ init|=
 operator|new
 name|GeneralRenderer
 argument_list|(
-name|this
-argument_list|,
 name|Globals
 operator|.
 name|prefs
@@ -2644,8 +2591,6 @@ init|=
 operator|new
 name|GeneralRenderer
 argument_list|(
-name|this
-argument_list|,
 name|Globals
 operator|.
 name|prefs
@@ -2673,8 +2618,6 @@ init|=
 operator|new
 name|GeneralRenderer
 argument_list|(
-name|this
-argument_list|,
 name|Globals
 operator|.
 name|prefs
@@ -2715,8 +2658,6 @@ init|=
 operator|new
 name|GeneralRenderer
 argument_list|(
-name|this
-argument_list|,
 name|Globals
 operator|.
 name|prefs
@@ -2744,8 +2685,6 @@ init|=
 operator|new
 name|GeneralRenderer
 argument_list|(
-name|this
-argument_list|,
 name|Globals
 operator|.
 name|prefs
@@ -2773,8 +2712,6 @@ init|=
 operator|new
 name|GeneralRenderer
 argument_list|(
-name|this
-argument_list|,
 name|Globals
 operator|.
 name|prefs
@@ -2815,8 +2752,6 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|table
-argument_list|,
 name|Globals
 operator|.
 name|prefs

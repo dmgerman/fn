@@ -445,11 +445,6 @@ argument_list|)
 expr_stmt|;
 name|panel
 operator|.
-name|refreshTable
-argument_list|()
-expr_stmt|;
-name|panel
-operator|.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
@@ -517,11 +512,6 @@ operator|.
 name|getId
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|panel
-operator|.
-name|refreshTable
-argument_list|()
 expr_stmt|;
 name|panel
 operator|.

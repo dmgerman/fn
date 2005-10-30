@@ -139,8 +139,6 @@ name|entries
 init|=
 name|panel
 operator|.
-name|entryTable
-operator|.
 name|getSelectedEntries
 argument_list|()
 decl_stmt|;
@@ -224,11 +222,6 @@ name|addEdit
 argument_list|(
 name|ce
 argument_list|)
-expr_stmt|;
-name|panel
-operator|.
-name|refreshTable
-argument_list|()
 expr_stmt|;
 name|panel
 operator|.

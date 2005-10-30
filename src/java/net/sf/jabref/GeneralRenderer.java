@@ -55,23 +55,15 @@ comment|/*extends JTable implements TableCellRenderer {*/
 extends|extends
 name|DefaultTableCellRenderer
 block|{
-DECL|field|table
-specifier|private
-name|JTable
-name|table
-decl_stmt|;
 DECL|field|antialiasing
 specifier|private
 name|boolean
 name|antialiasing
 decl_stmt|;
-DECL|method|GeneralRenderer (JTable entryTable, Color c, boolean antialiasing)
+DECL|method|GeneralRenderer (Color c, boolean antialiasing)
 specifier|public
 name|GeneralRenderer
 parameter_list|(
-name|JTable
-name|entryTable
-parameter_list|,
 name|Color
 name|c
 parameter_list|,
@@ -81,12 +73,6 @@ parameter_list|)
 block|{
 name|super
 argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|table
-operator|=
-name|entryTable
 expr_stmt|;
 name|this
 operator|.
@@ -100,13 +86,10 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|GeneralRenderer (JTable table, Color c, Color fg, boolean antialiasing)
+DECL|method|GeneralRenderer (Color c, Color fg, boolean antialiasing)
 specifier|public
 name|GeneralRenderer
 parameter_list|(
-name|JTable
-name|table
-parameter_list|,
 name|Color
 name|c
 parameter_list|,
@@ -119,8 +102,6 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
-name|table
-argument_list|,
 name|c
 argument_list|,
 name|antialiasing

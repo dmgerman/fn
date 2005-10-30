@@ -413,6 +413,17 @@ return|return
 name|sorter
 return|;
 block|}
+comment|/**      * Just temporary, for testing purposes....      * @return      */
+DECL|method|getEntryMap ()
+specifier|public
+name|Map
+name|getEntryMap
+parameter_list|()
+block|{
+return|return
+name|_entries
+return|;
+block|}
 comment|/**      * Returns the entry with the given ID (-> entry_type + hashcode).      */
 DECL|method|getEntryById (String id)
 specifier|public

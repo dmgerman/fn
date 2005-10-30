@@ -4073,7 +4073,7 @@ literal|0
 argument_list|)
 operator|)
 operator|.
-name|entryTable
+name|mainTable
 argument_list|)
 expr_stmt|;
 block|}

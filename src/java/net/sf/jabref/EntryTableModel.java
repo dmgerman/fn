@@ -2446,11 +2446,7 @@ operator|.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
-name|panel
-operator|.
-name|updateViewToSelected
-argument_list|()
-expr_stmt|;
+comment|//panel.updateViewToSelected();
 comment|//panel.updateEntryEditorIfShowing();
 comment|// Should the table also be scheduled for repaint?
 block|}

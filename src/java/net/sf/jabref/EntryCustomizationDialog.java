@@ -2312,11 +2312,6 @@ condition|)
 block|{
 name|bp
 operator|.
-name|refreshTable
-argument_list|()
-expr_stmt|;
-name|bp
-operator|.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;

@@ -643,16 +643,6 @@ argument_list|()
 expr_stmt|;
 name|panel
 operator|.
-name|refreshTable
-argument_list|()
-expr_stmt|;
-name|panel
-operator|.
-name|updateViewToSelected
-argument_list|()
-expr_stmt|;
-name|panel
-operator|.
 name|setUpdatedExternally
 argument_list|(
 literal|false

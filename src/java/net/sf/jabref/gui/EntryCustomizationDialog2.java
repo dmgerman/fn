@@ -1095,7 +1095,7 @@ literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Iterate over our map of required fields, and set those types if necessary:
+comment|// Iterate over our map of required fields, and list those types if necessary:
 name|List
 name|types
 init|=
@@ -2001,11 +2001,6 @@ argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
-name|bp
-operator|.
-name|refreshTable
-argument_list|()
-expr_stmt|;
 comment|//bp.markBaseChanged();
 block|}
 block|}

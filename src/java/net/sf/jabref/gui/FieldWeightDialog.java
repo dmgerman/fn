@@ -346,7 +346,7 @@ literal|"Field sizes"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// We use this set to build an alphabetical list of field names:
+comment|// We use this list to build an alphabetical list of field names:
 name|TreeSet
 name|fields
 init|=
@@ -651,7 +651,7 @@ argument_list|(
 name|slider
 argument_list|)
 decl_stmt|;
-comment|// Only set the value if it has changed:
+comment|// Only list the value if it has changed:
 if|if
 condition|(
 name|sInfo

@@ -236,6 +236,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|entry
 specifier|private
+specifier|static
 name|BibtexEntry
 name|entry
 decl_stmt|;
@@ -977,7 +978,7 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|initTestEntry
+name|getTestEntry
 argument_list|()
 expr_stmt|;
 name|PreviewPanel
@@ -1047,7 +1048,7 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|initTestEntry
+name|getTestEntry
 argument_list|()
 expr_stmt|;
 name|PreviewPanel
@@ -1106,11 +1107,11 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Create the BibtexEntry that will be used to test the previews.      */
-DECL|method|initTestEntry ()
-specifier|private
-name|void
-name|initTestEntry
+DECL|method|getTestEntry ()
+specifier|public
+specifier|static
+name|BibtexEntry
+name|getTestEntry
 parameter_list|()
 block|{
 if|if
@@ -1119,7 +1120,9 @@ name|entry
 operator|!=
 literal|null
 condition|)
-return|return;
+return|return
+name|entry
+return|;
 name|entry
 operator|=
 operator|new
@@ -1295,6 +1298,9 @@ operator|+
 literal|"relatively low protein turnover, while at a later stage (Day 17), a much higher turnover was observed."
 argument_list|)
 expr_stmt|;
+return|return
+name|entry
+return|;
 block|}
 DECL|method|setValues ()
 specifier|public

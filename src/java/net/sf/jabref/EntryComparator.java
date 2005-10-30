@@ -634,6 +634,7 @@ argument_list|)
 return|;
 comment|// Secondary sort if existent.
 else|else
+block|{
 return|return
 name|idCompare
 argument_list|(
@@ -643,6 +644,7 @@ name|e2
 argument_list|)
 return|;
 comment|// If still equal, we use the unique IDs.
+block|}
 block|}
 DECL|method|idCompare (BibtexEntry b1, BibtexEntry b2)
 specifier|private

@@ -12,6 +12,7 @@ end_package
 
 begin_interface
 DECL|interface|DatabaseChangeListener
+specifier|public
 interface|interface
 name|DatabaseChangeListener
 block|{

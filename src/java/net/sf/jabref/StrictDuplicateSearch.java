@@ -540,11 +540,6 @@ operator|.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
-name|panel
-operator|.
-name|refreshTable
-argument_list|()
-expr_stmt|;
 block|}
 block|}
 argument_list|)

@@ -138,20 +138,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|imports
-operator|.
-name|ImportFormatReader
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -217,18 +203,6 @@ operator|.
 name|table
 operator|.
 name|TableModel
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|table
-operator|.
-name|AbstractTableModel
 import|;
 end_import
 
@@ -768,7 +742,7 @@ name|PAD
 init|=
 literal|5
 decl_stmt|;
-comment|/**      * Creates a dialog that displays the given set of fields in the table.      * The dialog allows another process to add entries dynamically while the dialog      * is shown.      *      * @param frame      * @param panel      * @param fields      */
+comment|/**      * Creates a dialog that displays the given list of fields in the table.      * The dialog allows another process to add entries dynamically while the dialog      * is shown.      *      * @param frame      * @param panel      * @param fields      */
 DECL|method|ImportInspectionDialog (JabRefFrame frame, BasePanel panel, String[] fields, String undoName, boolean newDatabase)
 specifier|public
 name|ImportInspectionDialog
@@ -925,8 +899,6 @@ init|=
 operator|new
 name|GeneralRenderer
 argument_list|(
-name|table
-argument_list|,
 name|Color
 operator|.
 name|white
@@ -3224,7 +3196,7 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-comment|// If the key was set, or has been set now, go ahead:
+comment|// If the key was list, or has been list now, go ahead:
 if|if
 condition|(
 name|entry
@@ -3435,11 +3407,6 @@ block|}
 name|panel
 operator|.
 name|markBaseChanged
-argument_list|()
-expr_stmt|;
-name|panel
-operator|.
-name|refreshTable
 argument_list|()
 expr_stmt|;
 for|for
@@ -4701,7 +4668,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-comment|// After the dialog has closed, if it wasn't cancelled, set the field:
+comment|// After the dialog has closed, if it wasn't cancelled, list the field:
 if|if
 condition|(
 operator|!

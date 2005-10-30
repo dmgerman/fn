@@ -205,7 +205,7 @@ init|=
 operator|(
 name|panel
 operator|.
-name|entryTable
+name|mainTable
 operator|.
 name|getSelectedRowCount
 argument_list|()
@@ -223,7 +223,7 @@ if|if
 condition|(
 name|panel
 operator|.
-name|entryTable
+name|mainTable
 operator|.
 name|getSelectedRowCount
 argument_list|()
@@ -232,15 +232,20 @@ literal|1
 condition|)
 name|be
 operator|=
+operator|(
+name|BibtexEntry
+operator|)
 name|panel
 operator|.
-name|entryTable
+name|mainTable
 operator|.
-name|getSelectedEntries
+name|getSelected
 argument_list|()
-index|[
+operator|.
+name|get
+argument_list|(
 literal|0
-index|]
+argument_list|)
 expr_stmt|;
 name|addPopupMenuListener
 argument_list|(
@@ -1062,8 +1067,6 @@ index|[]
 name|bes
 init|=
 name|panel
-operator|.
-name|entryTable
 operator|.
 name|getSelectedEntries
 argument_list|()
@@ -2236,11 +2239,6 @@ parameter_list|)
 constructor_decl|;
 name|panel
 operator|.
-name|refreshTable
-parameter_list|()
-constructor_decl|;
-name|panel
-operator|.
 name|markBaseChanged
 parameter_list|()
 constructor_decl|;
@@ -2259,11 +2257,6 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-name|panel
-operator|.
-name|updateViewToSelected
-parameter_list|()
-constructor_decl|;
 block|}
 end_class
 
@@ -2397,14 +2390,6 @@ end_expr_stmt
 begin_expr_stmt
 name|panel
 operator|.
-name|refreshTable
-argument_list|()
-expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
-name|panel
-operator|.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
@@ -2428,14 +2413,6 @@ name|valueChanged
 argument_list|(
 literal|null
 argument_list|)
-expr_stmt|;
-end_expr_stmt
-
-begin_expr_stmt
-name|panel
-operator|.
-name|updateViewToSelected
-argument_list|()
 expr_stmt|;
 end_expr_stmt
 
