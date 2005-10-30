@@ -474,8 +474,6 @@ decl_stmt|;
 name|ParserResult
 name|pr
 init|=
-name|ImportFormatReader
-operator|.
 name|loadDatabase
 argument_list|(
 name|file
@@ -1068,6 +1066,422 @@ expr_stmt|;
 comment|/*                 JOptionPane.showMessageDialog                         (frame, ex.getMessage(),                                 Globals.lang("Open database"), JOptionPane.ERROR_MESSAGE);                                 */
 block|}
 block|}
+block|}
+DECL|method|loadDatabase (File fileToOpen, String encoding)
+specifier|public
+specifier|static
+name|ParserResult
+name|loadDatabase
+parameter_list|(
+name|File
+name|fileToOpen
+parameter_list|,
+name|String
+name|encoding
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+comment|// First we make a quick check to see if this looks like a BibTeX file:
+name|Reader
+name|reader
+decl_stmt|;
+comment|// = ImportFormatReader.getReader(fileToOpen, encoding);
+comment|//if (!BibtexParser.isRecognizedFormat(reader))
+comment|//    return null;
+comment|// The file looks promising. Reinitialize the reader and go on:
+comment|//reader = getReader(fileToOpen, encoding);
+name|Reader
+name|utf8Reader
+init|=
+name|ImportFormatReader
+operator|.
+name|getReader
+argument_list|(
+name|fileToOpen
+argument_list|,
+literal|"UTF8"
+argument_list|)
+decl_stmt|;
+name|String
+name|suppliedEncoding
+init|=
+name|checkForEncoding
+argument_list|(
+name|utf8Reader
+argument_list|)
+decl_stmt|;
+name|utf8Reader
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+comment|//System.out.println("Result of UTF8 test: "+suppliedEncoding);
+if|if
+condition|(
+name|suppliedEncoding
+operator|==
+literal|null
+condition|)
+block|{
+name|Reader
+name|utf16Reader
+init|=
+name|ImportFormatReader
+operator|.
+name|getReader
+argument_list|(
+name|fileToOpen
+argument_list|,
+literal|"UTF-16"
+argument_list|)
+decl_stmt|;
+name|suppliedEncoding
+operator|=
+name|checkForEncoding
+argument_list|(
+name|utf16Reader
+argument_list|)
+expr_stmt|;
+name|utf16Reader
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+comment|//System.out.println("Result of UTF-16 test: "+suppliedEncoding);
+block|}
+if|if
+condition|(
+operator|(
+name|suppliedEncoding
+operator|!=
+literal|null
+operator|)
+condition|)
+block|{
+comment|//&& (!suppliedEncoding.equalsIgnoreCase(encoding))) {
+comment|//Reader oldReader = reader;
+try|try
+block|{
+comment|// Ok, the supplied encoding is different from our default, so we must
+comment|// make a new
+comment|// reader. Then close the old one.
+name|reader
+operator|=
+name|ImportFormatReader
+operator|.
+name|getReader
+argument_list|(
+name|fileToOpen
+argument_list|,
+name|suppliedEncoding
+argument_list|)
+expr_stmt|;
+comment|//oldReader.close();
+comment|//System.out.println("Using encoding: "+suppliedEncoding);
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ex
+parameter_list|)
+block|{
+name|reader
+operator|=
+name|ImportFormatReader
+operator|.
+name|getReader
+argument_list|(
+name|fileToOpen
+argument_list|,
+name|encoding
+argument_list|)
+expr_stmt|;
+comment|// The supplied encoding didn't work out, so we use the default.
+comment|//System.out.println("Error, using default encoding.");
+block|}
+block|}
+else|else
+block|{
+comment|// We couldn't find a supplied encoding. Since we don't know far into the
+comment|// file we read,
+comment|// we start a new reader.
+name|reader
+operator|=
+name|ImportFormatReader
+operator|.
+name|getReader
+argument_list|(
+name|fileToOpen
+argument_list|,
+name|encoding
+argument_list|)
+expr_stmt|;
+comment|//System.out.println("No encoding supplied, or supplied encoding equals
+comment|// default. Using default encoding.");
+block|}
+comment|//return null;
+name|BibtexParser
+name|bp
+init|=
+operator|new
+name|BibtexParser
+argument_list|(
+name|reader
+argument_list|)
+decl_stmt|;
+name|ParserResult
+name|pr
+init|=
+name|bp
+operator|.
+name|parse
+argument_list|()
+decl_stmt|;
+name|pr
+operator|.
+name|setEncoding
+argument_list|(
+name|encoding
+argument_list|)
+expr_stmt|;
+return|return
+name|pr
+return|;
+block|}
+DECL|method|checkForEncoding (Reader reader)
+specifier|private
+specifier|static
+name|String
+name|checkForEncoding
+parameter_list|(
+name|Reader
+name|reader
+parameter_list|)
+block|{
+name|String
+name|suppliedEncoding
+init|=
+literal|null
+decl_stmt|;
+name|StringBuffer
+name|headerText
+init|=
+operator|new
+name|StringBuffer
+argument_list|()
+decl_stmt|;
+try|try
+block|{
+name|boolean
+name|keepon
+init|=
+literal|true
+decl_stmt|;
+name|int
+name|piv
+init|=
+literal|0
+decl_stmt|;
+name|int
+name|c
+decl_stmt|;
+while|while
+condition|(
+name|keepon
+condition|)
+block|{
+name|c
+operator|=
+name|reader
+operator|.
+name|read
+argument_list|()
+expr_stmt|;
+name|headerText
+operator|.
+name|append
+argument_list|(
+operator|(
+name|char
+operator|)
+name|c
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|(
+operator|(
+name|piv
+operator|==
+literal|0
+operator|)
+operator|&&
+name|Character
+operator|.
+name|isWhitespace
+argument_list|(
+operator|(
+name|char
+operator|)
+name|c
+argument_list|)
+operator|)
+operator|||
+operator|(
+name|c
+operator|==
+name|GUIGlobals
+operator|.
+name|SIGNATURE
+operator|.
+name|charAt
+argument_list|(
+name|piv
+argument_list|)
+operator|)
+condition|)
+name|piv
+operator|++
+expr_stmt|;
+else|else
+comment|//if (((char)c) == '@')
+name|keepon
+operator|=
+literal|false
+expr_stmt|;
+comment|//System.out.println(headerText.toString());
+name|found
+label|:
+if|if
+condition|(
+name|piv
+operator|==
+name|GUIGlobals
+operator|.
+name|SIGNATURE
+operator|.
+name|length
+argument_list|()
+condition|)
+block|{
+name|keepon
+operator|=
+literal|false
+expr_stmt|;
+comment|//if (headerText.length()> GUIGlobals.SIGNATURE.length())
+comment|//    System.out.println("'"+headerText.toString().substring(0, headerText.length()-GUIGlobals.SIGNATURE.length())+"'");
+comment|// Found the signature. The rest of the line is unknown, so we skip
+comment|// it:
+while|while
+condition|(
+name|reader
+operator|.
+name|read
+argument_list|()
+operator|!=
+literal|'\n'
+condition|)
+empty_stmt|;
+comment|// Then we must skip the "Encoding: "
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|GUIGlobals
+operator|.
+name|encPrefix
+operator|.
+name|length
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+if|if
+condition|(
+name|reader
+operator|.
+name|read
+argument_list|()
+operator|!=
+name|GUIGlobals
+operator|.
+name|encPrefix
+operator|.
+name|charAt
+argument_list|(
+name|i
+argument_list|)
+condition|)
+break|break
+name|found
+break|;
+comment|// No,
+comment|// it
+comment|// doesn't
+comment|// seem
+comment|// to
+comment|// match.
+block|}
+comment|// If ok, then read the rest of the line, which should contain the
+comment|// name
+comment|// of the encoding:
+name|StringBuffer
+name|sb
+init|=
+operator|new
+name|StringBuffer
+argument_list|()
+decl_stmt|;
+while|while
+condition|(
+operator|(
+name|c
+operator|=
+name|reader
+operator|.
+name|read
+argument_list|()
+operator|)
+operator|!=
+literal|'\n'
+condition|)
+name|sb
+operator|.
+name|append
+argument_list|(
+operator|(
+name|char
+operator|)
+name|c
+argument_list|)
+expr_stmt|;
+name|suppliedEncoding
+operator|=
+name|sb
+operator|.
+name|toString
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ex
+parameter_list|)
+block|{         }
+return|return
+name|suppliedEncoding
+return|;
 block|}
 block|}
 end_class

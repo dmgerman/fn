@@ -4141,7 +4141,7 @@ decl_stmt|;
 name|ParserResult
 name|pr
 init|=
-name|ImportFormatReader
+name|OpenDatabaseAction
 operator|.
 name|loadDatabase
 argument_list|(

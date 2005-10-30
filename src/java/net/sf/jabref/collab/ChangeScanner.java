@@ -260,7 +260,7 @@ decl_stmt|;
 name|ParserResult
 name|pr
 init|=
-name|ImportFormatReader
+name|OpenDatabaseAction
 operator|.
 name|loadDatabase
 argument_list|(
@@ -302,7 +302,7 @@ comment|//Util.pr(tempFile.getPath()+": "+inMem.getEntryCount());
 comment|// Parse the modified file.
 name|pr
 operator|=
-name|ImportFormatReader
+name|OpenDatabaseAction
 operator|.
 name|loadDatabase
 argument_list|(

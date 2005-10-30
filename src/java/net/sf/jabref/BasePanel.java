@@ -1359,6 +1359,13 @@ argument_list|(
 name|file
 argument_list|,
 literal|false
+argument_list|,
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"defaultEncoding"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//Util.pr("Testing resolve string... BasePanel line 237");
@@ -1733,6 +1740,13 @@ argument_list|(
 name|expFile
 argument_list|,
 literal|true
+argument_list|,
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"defaultEncoding"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//runCommand("save");
@@ -5295,7 +5309,7 @@ decl_stmt|;
 name|ParserResult
 name|pr
 init|=
-name|ImportFormatReader
+name|OpenDatabaseAction
 operator|.
 name|loadDatabase
 argument_list|(
@@ -7956,7 +7970,7 @@ block|}
 comment|//  }
 comment|//}).start();
 block|}
-DECL|method|saveDatabase (File file, boolean selectedOnly)
+DECL|method|saveDatabase (File file, boolean selectedOnly, String encoding)
 specifier|private
 name|void
 name|saveDatabase
@@ -7966,6 +7980,9 @@ name|file
 parameter_list|,
 name|boolean
 name|selectedOnly
+parameter_list|,
+name|String
+name|encoding
 parameter_list|)
 throws|throws
 name|SaveException
@@ -8003,12 +8020,7 @@ literal|false
 argument_list|,
 literal|false
 argument_list|,
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"defaultEncoding"
-argument_list|)
+name|encoding
 argument_list|)
 expr_stmt|;
 else|else
@@ -8031,12 +8043,7 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 argument_list|,
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"defaultEncoding"
-argument_list|)
+name|encoding
 argument_list|)
 expr_stmt|;
 block|}
@@ -11555,7 +11562,7 @@ expr_stmt|;
 comment|//entryTable.revalidate();
 comment|//entryTable.repaint();
 block|}
-comment|/**      * Selects all entries with a non-zero value in the field      * @param<code>String</code> field name.      */
+comment|/**      * Selects all entries with a non-zero value in the field      * @param field<code>String</code> field name.      */
 DECL|method|selectResults (String field)
 specifier|public
 name|void
