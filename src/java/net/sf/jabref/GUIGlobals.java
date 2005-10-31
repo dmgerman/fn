@@ -1762,6 +1762,8 @@ literal|"type"
 block|,
 literal|"address"
 block|,
+literal|"location"
+block|,
 literal|"annote"
 block|,
 literal|"booktitle"
@@ -1810,6 +1812,13 @@ name|FIELD_DISPLAYS
 decl_stmt|;
 static|static
 block|{
+name|Arrays
+operator|.
+name|sort
+argument_list|(
+name|ALL_FIELDS
+argument_list|)
+expr_stmt|;
 name|FIELD_DISPLAYS
 operator|=
 operator|new

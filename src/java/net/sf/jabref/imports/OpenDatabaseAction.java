@@ -1091,6 +1091,11 @@ comment|//if (!BibtexParser.isRecognizedFormat(reader))
 comment|//    return null;
 comment|// The file looks promising. Reinitialize the reader and go on:
 comment|//reader = getReader(fileToOpen, encoding);
+comment|// We want to check if there is a JabRef signature in the file, because that would tell us
+comment|// which character encoding is used. However, to read the signature we must be using a compatible
+comment|// encoding in the first place. Since the signature doesn't contain any fancy characters, we can
+comment|// read it regardless of encoding, with either UTF8 or UTF-16. That's the hypothesis, at any rate.
+comment|// 8 bit is most likely, so we try that first:
 name|Reader
 name|utf8Reader
 init|=
@@ -1116,7 +1121,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-comment|//System.out.println("Result of UTF8 test: "+suppliedEncoding);
+comment|// Now if that didn't get us anywhere, we check with the 16 bit encoding:
 if|if
 condition|(
 name|suppliedEncoding
@@ -1159,13 +1164,8 @@ literal|null
 operator|)
 condition|)
 block|{
-comment|//&& (!suppliedEncoding.equalsIgnoreCase(encoding))) {
-comment|//Reader oldReader = reader;
 try|try
 block|{
-comment|// Ok, the supplied encoding is different from our default, so we must
-comment|// make a new
-comment|// reader. Then close the old one.
 name|reader
 operator|=
 name|ImportFormatReader
@@ -1177,8 +1177,6 @@ argument_list|,
 name|suppliedEncoding
 argument_list|)
 expr_stmt|;
-comment|//oldReader.close();
-comment|//System.out.println("Using encoding: "+suppliedEncoding);
 block|}
 catch|catch
 parameter_list|(
@@ -1198,14 +1196,11 @@ name|encoding
 argument_list|)
 expr_stmt|;
 comment|// The supplied encoding didn't work out, so we use the default.
-comment|//System.out.println("Error, using default encoding.");
 block|}
 block|}
 else|else
 block|{
-comment|// We couldn't find a supplied encoding. Since we don't know far into the
-comment|// file we read,
-comment|// we start a new reader.
+comment|// We couldn't find a header with info about encoding. Use default:
 name|reader
 operator|=
 name|ImportFormatReader
@@ -1217,10 +1212,7 @@ argument_list|,
 name|encoding
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("No encoding supplied, or supplied encoding equals
-comment|// default. Using default encoding.");
 block|}
-comment|//return null;
 name|BibtexParser
 name|bp
 init|=
