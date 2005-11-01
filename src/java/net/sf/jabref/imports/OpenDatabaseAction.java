@@ -689,23 +689,13 @@ name|file
 argument_list|,
 name|meta
 argument_list|,
-name|Globals
-operator|.
-name|prefs
-argument_list|)
-decl_stmt|;
-name|bp
-operator|.
-name|setEncoding
-argument_list|(
 name|pr
 operator|.
 name|getEncoding
 argument_list|()
 argument_list|)
-expr_stmt|;
-comment|// Keep track of which encoding was used for loading.
-comment|/*                   if (Globals.prefs.getBoolean("autoComplete")) {                   db.setCompleters(autoCompleters);                   }                  */
+decl_stmt|;
+comment|/*                  if (Globals.prefs.getBoolean("autoComplete")) {                  db.setCompleters(autoCompleters);                  }                 */
 comment|// file is set to null inside the EventDispatcherThread
 name|SwingUtilities
 operator|.
@@ -1177,6 +1167,11 @@ argument_list|,
 name|suppliedEncoding
 argument_list|)
 expr_stmt|;
+name|encoding
+operator|=
+name|suppliedEncoding
+expr_stmt|;
+comment|// Just so we put the right info into the ParserResult.
 block|}
 catch|catch
 parameter_list|(

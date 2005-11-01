@@ -3818,6 +3818,11 @@ operator|.
 name|getMetaData
 argument_list|()
 argument_list|,
+name|pr
+operator|.
+name|getEncoding
+argument_list|()
+argument_list|,
 name|first
 argument_list|)
 expr_stmt|;

@@ -1726,6 +1726,13 @@ argument_list|(
 name|this
 argument_list|)
 decl_stmt|,
+DECL|field|databaseProperties
+name|databaseProperties
+init|=
+operator|new
+name|DatabasePropertiesAction
+argument_list|()
+decl_stmt|,
 DECL|field|test
 name|test
 init|=
@@ -4879,6 +4886,18 @@ name|file
 operator|.
 name|add
 argument_list|(
+name|databaseProperties
+argument_list|)
+expr_stmt|;
+name|file
+operator|.
+name|addSeparator
+argument_list|()
+expr_stmt|;
+name|file
+operator|.
+name|add
+argument_list|(
 name|fileHistory
 argument_list|)
 expr_stmt|;
@@ -6624,6 +6643,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|databaseProperties
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Enable actions that demand an open database.      */
 DECL|method|setNonEmptyState ()
@@ -7024,6 +7050,13 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|databaseProperties
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Disable actions that need more than one database open.      */
 DECL|method|setOnlyOne ()
@@ -7125,7 +7158,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|addTab (BibtexDatabase db, File file, HashMap meta, boolean raisePanel)
+DECL|method|addTab (BibtexDatabase db, File file, HashMap meta, String encoding, boolean raisePanel)
 specifier|public
 name|BasePanel
 name|addTab
@@ -7138,6 +7171,9 @@ name|file
 parameter_list|,
 name|HashMap
 name|meta
+parameter_list|,
+name|String
+name|encoding
 parameter_list|,
 name|boolean
 name|raisePanel
@@ -7157,7 +7193,7 @@ name|file
 argument_list|,
 name|meta
 argument_list|,
-name|prefs
+name|encoding
 argument_list|)
 decl_stmt|;
 name|addTab
@@ -7800,6 +7836,15 @@ operator|new
 name|HashMap
 argument_list|()
 argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"defaultEncoding"
+argument_list|)
+argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
@@ -8359,8 +8404,6 @@ operator|new
 name|BasePanel
 argument_list|(
 name|ths
-argument_list|,
-name|prefs
 argument_list|)
 expr_stmt|;
 name|int
@@ -8623,10 +8666,17 @@ argument_list|,
 comment|// file
 literal|null
 argument_list|,
-comment|// meta data
+name|Globals
+operator|.
 name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"defaultEncoding"
+argument_list|)
 argument_list|)
 decl_stmt|;
+comment|// meta data
 name|tabbedPane
 operator|.
 name|add
@@ -9423,7 +9473,14 @@ literal|null
 argument_list|,
 name|meta
 argument_list|,
+name|Globals
+operator|.
 name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"defaultEncoding"
+argument_list|)
 argument_list|)
 decl_stmt|;
 comment|/*             if (prefs.getBoolean("autoComplete")) {             db.setCompleters(autoCompleters);             }        */
@@ -12171,6 +12228,84 @@ name|ths
 argument_list|)
 expr_stmt|;
 name|gf
+operator|.
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+DECL|class|DatabasePropertiesAction
+class|class
+name|DatabasePropertiesAction
+extends|extends
+name|MnemonicAwareAction
+block|{
+DECL|field|propertiesDialog
+name|DatabasePropertiesDialog
+name|propertiesDialog
+init|=
+literal|null
+decl_stmt|;
+DECL|method|DatabasePropertiesAction ()
+specifier|public
+name|DatabasePropertiesAction
+parameter_list|()
+block|{
+name|putValue
+argument_list|(
+name|NAME
+argument_list|,
+literal|"Database properties"
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|actionPerformed (ActionEvent e)
+specifier|public
+name|void
+name|actionPerformed
+parameter_list|(
+name|ActionEvent
+name|e
+parameter_list|)
+block|{
+if|if
+condition|(
+name|propertiesDialog
+operator|==
+literal|null
+condition|)
+name|propertiesDialog
+operator|=
+operator|new
+name|DatabasePropertiesDialog
+argument_list|(
+name|JabRefFrame
+operator|.
+name|this
+argument_list|)
+expr_stmt|;
+name|propertiesDialog
+operator|.
+name|setPanel
+argument_list|(
+name|basePanel
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|Util
+operator|.
+name|placeDialog
+argument_list|(
+name|propertiesDialog
+argument_list|,
+name|JabRefFrame
+operator|.
+name|this
+argument_list|)
+expr_stmt|;
+name|propertiesDialog
 operator|.
 name|setVisible
 argument_list|(

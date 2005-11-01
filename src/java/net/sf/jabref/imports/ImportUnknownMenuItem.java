@@ -577,6 +577,15 @@ operator|.
 name|getMetaData
 argument_list|()
 argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"defaultEncoding"
+argument_list|)
+argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;

@@ -496,10 +496,6 @@ DECL|field|database
 name|BibtexDatabase
 name|database
 decl_stmt|;
-DECL|field|prefs
-name|JabRefPreferences
-name|prefs
-decl_stmt|;
 comment|// The database shown in this panel.
 DECL|field|file
 name|File
@@ -534,8 +530,6 @@ DECL|field|encoding
 specifier|private
 name|String
 name|encoding
-init|=
-literal|null
 decl_stmt|;
 DECL|field|gbl
 name|GridBagLayout
@@ -739,18 +733,15 @@ specifier|private
 name|SidePaneManager
 name|sidePaneManager
 decl_stmt|;
-DECL|method|BasePanel (JabRefFrame frame, JabRefPreferences prefs)
+comment|/**      * Create a new BasePanel with an empty database.      * @param frame The application window.      */
+DECL|method|BasePanel (JabRefFrame frame)
 specifier|public
 name|BasePanel
 parameter_list|(
 name|JabRefFrame
 name|frame
-parameter_list|,
-name|JabRefPreferences
-name|prefs
 parameter_list|)
 block|{
-comment|//super(JSplitPane.HORIZONTAL_SPLIT, true);
 name|this
 operator|.
 name|sidePaneManager
@@ -777,20 +768,36 @@ name|frame
 operator|=
 name|frame
 expr_stmt|;
-name|this
-operator|.
-name|prefs
-operator|=
-name|prefs
-expr_stmt|;
 name|setupActions
 argument_list|()
 expr_stmt|;
 name|setupMainPanel
 argument_list|()
 expr_stmt|;
+name|encoding
+operator|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"defaultEncoding"
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Default: "
+operator|+
+name|encoding
+argument_list|)
+expr_stmt|;
 block|}
-DECL|method|BasePanel (JabRefFrame frame, BibtexDatabase db, File file, HashMap meta, JabRefPreferences prefs)
+DECL|method|BasePanel (JabRefFrame frame, BibtexDatabase db, File file, HashMap meta, String encoding)
 specifier|public
 name|BasePanel
 parameter_list|(
@@ -806,10 +813,25 @@ parameter_list|,
 name|HashMap
 name|meta
 parameter_list|,
-name|JabRefPreferences
-name|prefs
+name|String
+name|encoding
 parameter_list|)
 block|{
+name|this
+operator|.
+name|encoding
+operator|=
+name|encoding
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|encoding
+argument_list|)
+expr_stmt|;
 comment|//super(JSplitPane.HORIZONTAL_SPLIT, true);
 name|this
 operator|.
@@ -828,12 +850,6 @@ expr_stmt|;
 name|database
 operator|=
 name|db
-expr_stmt|;
-name|this
-operator|.
-name|prefs
-operator|=
-name|prefs
 expr_stmt|;
 if|if
 condition|(
@@ -859,7 +875,7 @@ expr_stmt|;
 name|setupMainPanel
 argument_list|()
 expr_stmt|;
-comment|/*if (prefs.getBoolean("autoComplete")) {             db.setCompleters(autoCompleters);             }*/
+comment|/*if (Globals.prefs.getBoolean("autoComplete")) {             db.setCompleters(autoCompleters);             }*/
 name|this
 operator|.
 name|file
@@ -953,6 +969,8 @@ name|prefs
 parameter_list|()
 block|{
 return|return
+name|Globals
+operator|.
 name|prefs
 return|;
 block|}
@@ -1358,12 +1376,7 @@ name|file
 argument_list|,
 literal|false
 argument_list|,
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"defaultEncoding"
-argument_list|)
+name|encoding
 argument_list|)
 expr_stmt|;
 comment|//Util.pr("Testing resolve string... BasePanel line 237");
@@ -1464,11 +1477,15 @@ name|getNewFile
 argument_list|(
 name|frame
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 argument_list|,
 operator|new
 name|File
 argument_list|(
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|get
@@ -1586,6 +1603,8 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|put
@@ -1648,11 +1667,15 @@ name|getNewFile
 argument_list|(
 name|frame
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 argument_list|,
 operator|new
 name|File
 argument_list|(
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|get
@@ -1741,6 +1764,8 @@ name|expFile
 argument_list|,
 literal|true
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|get
@@ -2047,14 +2072,7 @@ operator|.
 name|getSelectedEntries
 argument_list|()
 decl_stmt|;
-name|int
-name|row0
-init|=
-name|mainTable
-operator|.
-name|getSelectedRow
-argument_list|()
-decl_stmt|;
+comment|//int row0 = mainTable.getSelectedRow();
 if|if
 condition|(
 operator|(
@@ -3013,6 +3031,8 @@ name|this
 argument_list|,
 name|database
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 argument_list|)
 decl_stmt|;
@@ -3088,6 +3108,8 @@ name|this
 argument_list|,
 name|database
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 argument_list|)
 decl_stmt|;
@@ -3239,6 +3261,8 @@ block|{
 name|String
 name|winEdt
 init|=
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|get
@@ -3666,6 +3690,8 @@ condition|)
 block|{
 if|if
 condition|(
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -3682,6 +3708,8 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -3744,6 +3772,8 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|putBoolean
@@ -3789,6 +3819,8 @@ comment|// is disabled, since all entries with keys set will have been removed.
 if|if
 condition|(
 operator|!
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -3887,6 +3919,8 @@ name|LabelPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getKeyPattern
@@ -4833,11 +4867,15 @@ name|getNewFile
 argument_list|(
 name|frame
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 argument_list|,
 operator|new
 name|File
 argument_list|(
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|get
@@ -4855,7 +4893,7 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
-comment|/*JFileChooser chooser = (prefs.get("workingDirectory") == null) ?                       new JabRefFileChooser((File)null) :                       new JabRefFileChooser(new File(prefs.get("workingDirectory")));                   chooser.addChoosableFileFilter( new OpenFileFilter() );//nb nov2                   int returnVal = chooser.showOpenDialog(BasePanel.this);*/
+comment|/*JFileChooser chooser = (Globals.prefs.get("workingDirectory") == null) ?                       new JabRefFileChooser((File)null) :                       new JabRefFileChooser(new File(Globals.prefs.get("workingDirectory")));                   chooser.addChoosableFileFilter( new OpenFileFilter() );//nb nov2                   int returnVal = chooser.showOpenDialog(BasePanel.this);*/
 if|if
 condition|(
 name|chosenFile
@@ -4970,6 +5008,8 @@ condition|)
 block|{
 try|try
 block|{
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|put
@@ -5282,6 +5322,8 @@ block|{
 name|String
 name|dir
 init|=
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|get
@@ -5390,6 +5432,8 @@ name|filepath
 argument_list|,
 name|field
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 argument_list|)
 expr_stmt|;
@@ -5579,6 +5623,8 @@ argument_list|()
 argument_list|,
 name|field
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 argument_list|)
 expr_stmt|;
@@ -6079,7 +6125,7 @@ block|}
 argument_list|)
 expr_stmt|;
 comment|// The action starts the "import from plain text" dialog
-comment|/*actions.put("importPlainText", new BaseAction() {                       public void action()                       {                         BibtexEntry bibEntry = null ;                         // try to get the first marked entry                         BibtexEntry[] bes = entryTable.getSelectedEntries();                         if ((bes != null)&& (bes.length> 0))                           bibEntry = bes[0] ;                          if (bibEntry != null)                         {                           // Create an UndoableInsertEntry object.                           undoManager.addEdit(new UndoableInsertEntry(database, bibEntry, BasePanel.this));                            TextInputDialog tidialog = new TextInputDialog(frame, BasePanel.this,                                                                           "import", true,                                                                          bibEntry) ;                           Util.placeDialog(tidialog, BasePanel.this);                           tidialog.setVisible(true);                            if (tidialog.okPressed())                           {                             output(Globals.lang("changed ")+" '"                                    +bibEntry.getType().getName().toLowerCase()+"' "                                    +Globals.lang("entry")+".");                             refreshTable();                             int row = tableModel.getNumberFromName(bibEntry.getId());                              entryTable.clearSelection();                             entryTable.scrollTo(row);                             markBaseChanged(); // The database just changed.                             if (prefs.getBoolean("autoOpenForm"))                             {                                   showEntry(bibEntry);                             }                           }                         }                       }                   });                 */
+comment|/*actions.put("importPlainText", new BaseAction() {                       public void action()                       {                         BibtexEntry bibEntry = null ;                         // try to get the first marked entry                         BibtexEntry[] bes = entryTable.getSelectedEntries();                         if ((bes != null)&& (bes.length> 0))                           bibEntry = bes[0] ;                          if (bibEntry != null)                         {                           // Create an UndoableInsertEntry object.                           undoManager.addEdit(new UndoableInsertEntry(database, bibEntry, BasePanel.this));                            TextInputDialog tidialog = new TextInputDialog(frame, BasePanel.this,                                                                           "import", true,                                                                          bibEntry) ;                           Util.placeDialog(tidialog, BasePanel.this);                           tidialog.setVisible(true);                            if (tidialog.okPressed())                           {                             output(Globals.lang("changed ")+" '"                                    +bibEntry.getType().getName().toLowerCase()+"' "                                    +Globals.lang("entry")+".");                             refreshTable();                             int row = tableModel.getNumberFromName(bibEntry.getId());                              entryTable.clearSelection();                             entryTable.scrollTo(row);                             markBaseChanged(); // The database just changed.                             if (Globals.prefs.getBoolean("autoOpenForm"))                             {                                   showEntry(bibEntry);                             }                           }                         }                       }                   });                 */
 name|actions
 operator|.
 name|put
@@ -6882,6 +6928,8 @@ literal|0
 init|;
 name|i
 operator|<
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|customExports
@@ -6897,6 +6945,8 @@ name|Object
 name|o
 init|=
 operator|(
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|customExports
@@ -7101,6 +7151,8 @@ call|(
 name|String
 call|)
 argument_list|(
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|customExports
@@ -7317,42 +7369,12 @@ specifier|public
 name|void
 name|init
 parameter_list|()
-block|{
-comment|//  new FieldWeightDialog(frame).setVisible(true);
-block|}
+block|{                                        }
 specifier|public
 name|void
 name|run
 parameter_list|()
-block|{
-comment|//net.sf.jabref.journals.JournalList.downloadJournalList(frame);
-name|Comparator
-name|comp
-init|=
-operator|new
-name|EntryComparator
-argument_list|(
-literal|false
-argument_list|,
-literal|true
-argument_list|,
-literal|"author"
-argument_list|)
-decl_stmt|;
-name|MainTableFormat
-operator|.
-name|displayTable
-argument_list|(
-name|BasePanel
-operator|.
-name|this
-argument_list|,
-name|database
-argument_list|,
-name|comp
-argument_list|)
-expr_stmt|;
-block|}
+block|{                  }
 specifier|public
 name|void
 name|update
@@ -7625,6 +7647,8 @@ name|metaData
 argument_list|,
 name|file
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 argument_list|,
 literal|false
@@ -7647,6 +7671,8 @@ name|metaData
 argument_list|,
 name|file
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 argument_list|,
 name|mainTable
@@ -8008,11 +8034,20 @@ if|if
 condition|(
 name|commit
 condition|)
+block|{
 name|session
 operator|.
 name|commit
 argument_list|()
 expr_stmt|;
+name|this
+operator|.
+name|encoding
+operator|=
+name|encoding
+expr_stmt|;
+comment|// Make sure to remember which encoding we used.
+block|}
 else|else
 name|session
 operator|.
@@ -8217,6 +8252,8 @@ expr_stmt|;
 comment|// The database just changed.
 if|if
 condition|(
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -8872,6 +8909,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -8888,6 +8927,8 @@ name|Globals
 operator|.
 name|OWNER
 argument_list|,
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|get
@@ -8976,6 +9017,8 @@ expr_stmt|;
 comment|// The database just changed.
 if|if
 condition|(
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -11063,7 +11106,7 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Selects all entries with a non-zero value in the field      * @param field<code>String</code> field name.      */
+comment|/* *      * Selects all entries with a non-zero value in the field      * @param field<code>String</code> field name.      */
 comment|/*    public void selectResults(String field) {       LinkedList intervals = new LinkedList();       int prevStart = -1, prevToSel = 0;       // First we build a list of intervals to select, without touching the table.       for (int i = 0; i< entryTable.getRowCount(); i++) {         String value = (String) (database.getEntryById                                  (tableModel.getIdForRow(i)))             .getField(field);         if ( (value != null)&& !value.equals("0")) {           if (prevStart< 0)             prevStart = i;           prevToSel = i;         }         else if (prevStart>= 0) {           intervals.add(new int[] {prevStart, prevToSel});           prevStart = -1;         }       }       // Then select those intervals, if any.       if (intervals.size()> 0) {         entryTable.setSelectionListenerEnabled(false);         entryTable.clearSelection();         for (Iterator i=intervals.iterator(); i.hasNext();) {           int[] interval = (int[])i.next();           entryTable.addRowSelectionInterval(interval[0], interval[1]);         }         entryTable.setSelectionListenerEnabled(true);       }   */
 DECL|method|setSearchMatcher (SearchMatcher matcher)
 specifier|public
@@ -11442,6 +11485,8 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -11568,6 +11613,8 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|putBoolean

@@ -1964,7 +1964,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This method returns a List containing all entries that are selected      * (checkbox checked).      *      * @return      */
+comment|/**      * This method returns a List containing all entries that are selected      * (checkbox checked).      *      * @return a List containing the selected entries.      */
 DECL|method|getSelectedEntries ()
 specifier|public
 name|List
@@ -3057,6 +3057,11 @@ argument_list|,
 name|Globals
 operator|.
 name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"defaultEncoding"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

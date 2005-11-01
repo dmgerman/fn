@@ -471,6 +471,11 @@ operator|.
 name|getMetaData
 argument_list|()
 argument_list|,
+name|pr
+operator|.
+name|getEncoding
+argument_list|()
+argument_list|,
 operator|(
 name|i
 operator|==
@@ -519,6 +524,11 @@ argument_list|,
 name|pr
 operator|.
 name|getMetaData
+argument_list|()
+argument_list|,
+name|pr
+operator|.
+name|getEncoding
 argument_list|()
 argument_list|,
 operator|(

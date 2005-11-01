@@ -265,7 +265,7 @@ name|db_
 expr_stmt|;
 name|columns
 operator|=
-name|panel
+name|Globals
 operator|.
 name|prefs
 operator|.
@@ -1265,7 +1265,7 @@ literal|1
 decl_stmt|;
 if|if
 condition|(
-name|panel
+name|Globals
 operator|.
 name|prefs
 operator|.
@@ -1290,7 +1290,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|panel
+name|Globals
 operator|.
 name|prefs
 operator|.
@@ -1315,7 +1315,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|panel
+name|Globals
 operator|.
 name|prefs
 operator|.
@@ -1466,7 +1466,7 @@ expr_stmt|;
 block|}
 name|showShort
 operator|=
-name|panel
+name|Globals
 operator|.
 name|prefs
 operator|.
@@ -1478,7 +1478,7 @@ expr_stmt|;
 comment|//MK:
 name|namesNatbib
 operator|=
-name|panel
+name|Globals
 operator|.
 name|prefs
 operator|.
@@ -1490,7 +1490,7 @@ expr_stmt|;
 comment|//MK:
 name|namesLastOnly
 operator|=
-name|panel
+name|Globals
 operator|.
 name|prefs
 operator|.
@@ -1512,7 +1512,7 @@ argument_list|)
 expr_stmt|;
 name|abbr_names
 operator|=
-name|panel
+name|Globals
 operator|.
 name|prefs
 operator|.
