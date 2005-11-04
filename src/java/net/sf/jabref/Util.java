@@ -2270,6 +2270,18 @@ name|fieldName
 operator|=
 literal|"url"
 expr_stmt|;
+comment|// Check to see if link field already contains a well formated URL
+if|if
+condition|(
+operator|!
+name|link
+operator|.
+name|startsWith
+argument_list|(
+literal|"http://"
+argument_list|)
+condition|)
+block|{
 name|link
 operator|=
 name|Globals
@@ -2278,6 +2290,7 @@ name|DOI_LOOKUP_PREFIX
 operator|+
 name|link
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
