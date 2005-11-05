@@ -1391,6 +1391,34 @@ literal|"Abstract"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// Entry editor tab 2: Review Field - used for research comments, etc.
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|CUSTOM_TAB_FIELDS
+operator|+
+literal|"2"
+argument_list|,
+literal|"review"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|CUSTOM_TAB_NAME
+operator|+
+literal|"2"
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Review"
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|//defaults.put("recentFiles", "/home/alver/Documents/bibk_dok/hovedbase.bib");
 name|defaults
 operator|.
@@ -1793,6 +1821,9 @@ operator|+
 literal|"\\begin{chapter} \\format[HTMLChars]{\\chapter}<BR>\\end{chapter}__NEWLINE__"
 operator|+
 literal|"\\begin{journal}<em>\\format[HTMLChars]{\\journal},</em>\\end{journal}__NEWLINE__"
+comment|// Include the booktitle field for @inproceedings, @proceedings, etc.
+operator|+
+literal|"\\begin{booktitle}<em>\\format[HTMLChars]{\\booktitle},</em>\\end{booktitle}__NEWLINE__"
 operator|+
 literal|"\\begin{school}<em>\\format[HTMLChars]{\\school},</em>\\end{school}__NEWLINE__"
 operator|+
@@ -1828,6 +1859,9 @@ operator|+
 literal|"\\begin{chapter} \\format[HTMLChars]{\\chapter}<BR>\\end{chapter}__NEWLINE__"
 operator|+
 literal|"\\begin{journal}<em>\\format[HTMLChars]{\\journal},</em>\\end{journal}__NEWLINE__"
+comment|// Include the booktitle field for @inproceedings, @proceedings, etc.
+operator|+
+literal|"\\begin{booktitle}<em>\\format[HTMLChars]{\\booktitle},</em>\\end{booktitle}__NEWLINE__"
 operator|+
 literal|"\\begin{school}<em>\\format[HTMLChars]{\\school},</em>\\end{school}__NEWLINE__"
 operator|+
@@ -1839,7 +1873,9 @@ literal|"\\begin{year}<b>\\year</b>\\end{year}\\begin{volume}<i>, \\volume</i>\\
 operator|+
 literal|"\\begin{pages}, \\format[FormatPagesForHTML]{\\pages} \\end{pages}__NEWLINE__"
 operator|+
-literal|"\\begin{abstract}<BR><BR><b>Abstract:</b> \\format[HTMLChars]{\\abstract} \\end{abstract}"
+literal|"\\begin{abstract}<BR><BR><b>Abstract:</b> \\format[HTMLChars]{\\abstract} \\end{abstract}__NEWLINE__"
+operator|+
+literal|"\\begin{review}<BR><BR><b>Review:</b> \\format[HTMLChars]{\\review} \\end{review}"
 operator|+
 literal|"</dd>__NEWLINE__<p></p></font>"
 argument_list|)
