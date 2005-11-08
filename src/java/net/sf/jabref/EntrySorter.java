@@ -34,6 +34,7 @@ name|DatabaseChangeListener
 block|{
 comment|//TreeSet set;
 DECL|field|set
+specifier|final
 name|ArrayList
 name|set
 decl_stmt|;

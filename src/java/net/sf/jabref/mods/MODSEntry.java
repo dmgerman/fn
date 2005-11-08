@@ -892,9 +892,6 @@ argument_list|()
 expr_stmt|;
 return|return
 name|result
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 comment|// must be from http://www.loc.gov/marc/sourcecode/genre/genrelist.html

@@ -188,13 +188,9 @@ argument_list|()
 expr_stmt|;
 name|buf
 operator|=
-operator|new
-name|String
-argument_list|(
 name|buf
 operator|+
 literal|"\n"
-argument_list|)
 expr_stmt|;
 name|StringTokenizer
 name|st
@@ -270,13 +266,9 @@ argument_list|()
 expr_stmt|;
 name|s
 operator|=
-operator|new
-name|String
-argument_list|(
 name|s
 operator|+
 literal|"\n"
-argument_list|)
 expr_stmt|;
 name|int
 name|endpos

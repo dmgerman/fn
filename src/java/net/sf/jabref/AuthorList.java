@@ -385,7 +385,6 @@ name|author
 argument_list|)
 expr_stmt|;
 block|}
-empty_stmt|;
 comment|// clean-up
 name|orig
 operator|=
@@ -740,8 +739,9 @@ name|tokens
 operator|.
 name|add
 argument_list|(
-operator|new
 name|Boolean
+operator|.
+name|valueOf
 argument_list|(
 name|token_case
 argument_list|)
@@ -791,7 +791,6 @@ break|break
 name|cases
 break|;
 block|}
-empty_stmt|;
 block|}
 elseif|else
 if|if
@@ -816,11 +815,8 @@ break|break
 name|cases
 break|;
 block|}
-empty_stmt|;
 block|}
-empty_stmt|;
 block|}
-empty_stmt|;
 comment|// end token_loop
 comment|// Second step: split name into parts (here: calculate indices
 comment|// of parts in 'tokens' Vector)
@@ -959,7 +955,6 @@ name|size
 argument_list|()
 expr_stmt|;
 block|}
-empty_stmt|;
 name|von_part_start
 operator|=
 name|von_start
@@ -979,7 +974,6 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
-empty_stmt|;
 block|}
 else|else
 block|{
@@ -1038,7 +1032,6 @@ operator|=
 name|comma_first
 expr_stmt|;
 block|}
-empty_stmt|;
 if|if
 condition|(
 name|von_start
@@ -1092,15 +1085,12 @@ operator|=
 name|last_part_start
 expr_stmt|;
 block|}
-empty_stmt|;
 name|von_part_start
 operator|=
 literal|0
 expr_stmt|;
 block|}
-empty_stmt|;
 block|}
-empty_stmt|;
 comment|// Third step: do actual splitting, construct Author object
 return|return
 operator|new
@@ -1321,7 +1311,6 @@ operator|+=
 name|TOKEN_GROUP_LENGTH
 expr_stmt|;
 block|}
-empty_stmt|;
 return|return
 name|res
 operator|.
@@ -1385,7 +1374,6 @@ name|token_start
 operator|++
 expr_stmt|;
 block|}
-empty_stmt|;
 name|token_end
 operator|=
 name|token_start
@@ -1421,7 +1409,6 @@ return|return
 name|TOKEN_COMMA
 return|;
 block|}
-empty_stmt|;
 name|token_abbr
 operator|=
 operator|-
@@ -1482,7 +1469,6 @@ name|braces_level
 operator|++
 expr_stmt|;
 block|}
-empty_stmt|;
 if|if
 condition|(
 name|braces_level
@@ -1545,7 +1531,6 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-empty_stmt|;
 if|if
 condition|(
 name|current_backslash
@@ -1613,14 +1598,12 @@ literal|true
 expr_stmt|;
 block|}
 block|}
-empty_stmt|;
 name|current_backslash
 operator|=
 operator|-
 literal|1
 expr_stmt|;
 block|}
-empty_stmt|;
 if|if
 condition|(
 name|c
@@ -1663,7 +1646,6 @@ name|token_end
 operator|++
 expr_stmt|;
 block|}
-empty_stmt|;
 if|if
 condition|(
 name|token_abbr
@@ -1837,7 +1819,6 @@ literal|" et al."
 argument_list|)
 expr_stmt|;
 block|}
-empty_stmt|;
 block|}
 return|return
 name|res
@@ -1877,7 +1858,7 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|getLast
+name|getLastOnly
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1912,7 +1893,7 @@ argument_list|(
 name|i
 argument_list|)
 operator|.
-name|getLast
+name|getLastOnly
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1920,7 +1901,6 @@ name|i
 operator|++
 expr_stmt|;
 block|}
-empty_stmt|;
 if|if
 condition|(
 name|size
@@ -1959,13 +1939,12 @@ argument_list|(
 name|i
 argument_list|)
 operator|.
-name|getLast
+name|getLastOnly
 argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-empty_stmt|;
 return|return
 name|res
 operator|.
@@ -2054,7 +2033,6 @@ name|i
 operator|++
 expr_stmt|;
 block|}
-empty_stmt|;
 if|if
 condition|(
 name|size
@@ -2101,7 +2079,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-empty_stmt|;
 return|return
 name|res
 operator|.
@@ -2185,9 +2162,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-empty_stmt|;
 block|}
-empty_stmt|;
 return|return
 name|res
 operator|.
@@ -2276,7 +2251,6 @@ name|i
 operator|++
 expr_stmt|;
 block|}
-empty_stmt|;
 if|if
 condition|(
 name|size
@@ -2322,9 +2296,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-empty_stmt|;
 block|}
-empty_stmt|;
 return|return
 name|res
 operator|.
@@ -2408,9 +2380,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-empty_stmt|;
 block|}
-empty_stmt|;
 return|return
 name|res
 operator|.
@@ -2490,9 +2460,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-empty_stmt|;
 block|}
-empty_stmt|;
 return|return
 name|res
 operator|.
@@ -2801,7 +2769,6 @@ operator|+
 name|res
 expr_stmt|;
 block|}
-empty_stmt|;
 if|if
 condition|(
 name|jr_part

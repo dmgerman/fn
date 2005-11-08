@@ -94,18 +94,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|event
-operator|.
-name|ListSelectionListener
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|tree
 operator|.
 name|TreePath
@@ -3374,7 +3362,10 @@ operator|.
 name|append
 argument_list|(
 literal|","
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|citeKey
 argument_list|)
 expr_stmt|;
@@ -4911,13 +4902,6 @@ argument_list|)
 expr_stmt|;
 comment|// Run the actual open in a thread to prevent the program
 comment|// locking until the file is loaded.
-if|if
-condition|(
-name|fileToOpen
-operator|!=
-literal|null
-condition|)
-block|{
 operator|(
 operator|new
 name|Thread
@@ -4971,7 +4955,6 @@ name|getPath
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 name|void
@@ -9828,14 +9811,6 @@ expr_stmt|;
 name|repaint
 argument_list|()
 expr_stmt|;
-block|}
-DECL|method|setDivider ()
-specifier|public
-name|void
-name|setDivider
-parameter_list|()
-block|{
-comment|//contentPane.setDividerLocation(-1);
 block|}
 comment|/**      * This method is called after a database has been parsed. The      * hashmap contains the contents of all comments in the .bib file      * that started with the meta flag (GUIGlobals.META_FLAG).      * In this method, the meta data are input to their respective      * handlers.      *      * @param meta Metadata to input.      */
 DECL|method|parseMetaData (HashMap meta)

@@ -1734,8 +1734,10 @@ operator|.
 name|append
 argument_list|(
 literal|" ("
-operator|+
-operator|(
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|caseSensitive
 condition|?
 name|Globals
@@ -1751,8 +1753,10 @@ name|lang
 argument_list|(
 literal|"case insensitive"
 argument_list|)
-operator|)
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"). "
 argument_list|)
 expr_stmt|;
@@ -1840,10 +1844,16 @@ operator|.
 name|append
 argument_list|(
 literal|"<i>"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|getName
 argument_list|()
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"</i>"
 argument_list|)
 expr_stmt|;
@@ -1861,13 +1871,25 @@ operator|.
 name|append
 argument_list|(
 literal|"</b> - dynamic group (<b>"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|m_searchField
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"</b> contains<b>"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|m_searchExpression
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"</b>)"
 argument_list|)
 expr_stmt|;

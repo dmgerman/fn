@@ -88,7 +88,7 @@ name|odell
 operator|.
 name|glazedlists
 operator|.
-name|BasicEventList
+name|SortedList
 import|;
 end_import
 
@@ -100,7 +100,19 @@ name|odell
 operator|.
 name|glazedlists
 operator|.
-name|SortedList
+name|EventList
+import|;
+end_import
+
+begin_import
+import|import
+name|ca
+operator|.
+name|odell
+operator|.
+name|glazedlists
+operator|.
+name|BasicEventList
 import|;
 end_import
 
@@ -109,10 +121,10 @@ comment|/**  * @author Morten O. Alver.  * Based on net.sf.jabref.MODSDatabase b
 end_comment
 
 begin_class
-DECL|class|OOCalcDatabase
+DECL|class|OpenDocumentRepresentation
 specifier|public
 class|class
-name|OOCalcDatabase
+name|OpenDocumentRepresentation
 block|{
 DECL|field|entries
 specifier|protected
@@ -120,16 +132,16 @@ name|Collection
 name|entries
 decl_stmt|;
 comment|/*protected final static String TYPE_COL = "BibliographyType";                   protected final static Map columns = new LinkedHashMap();         static {                       columns.put(TYPE_COL, "dummy");             columns.put("ISBN", "isbn");             coulmns.put("Identifier", "\bibtexkey");             coulmns.put("", "");             coulmns.put("", "");                   }*/
-DECL|method|OOCalcDatabase ()
+DECL|method|OpenDocumentRepresentation ()
 specifier|public
-name|OOCalcDatabase
+name|OpenDocumentRepresentation
 parameter_list|()
 block|{
 comment|//entries = new HashSet();
 block|}
-DECL|method|OOCalcDatabase (BibtexDatabase bibtex)
+DECL|method|OpenDocumentRepresentation (BibtexDatabase bibtex)
 specifier|public
-name|OOCalcDatabase
+name|OpenDocumentRepresentation
 parameter_list|(
 name|BibtexDatabase
 name|bibtex
@@ -262,7 +274,7 @@ name|setAttribute
 argument_list|(
 literal|"xmlns:office"
 argument_list|,
-literal|"http://openoffice.org/2000/office"
+literal|"urn:oasis:names:tc:opendocument:xmlns:office:1.0"
 argument_list|)
 expr_stmt|;
 name|collection
@@ -271,7 +283,7 @@ name|setAttribute
 argument_list|(
 literal|"xmlns:style"
 argument_list|,
-literal|"http://openoffice.org/2000/style"
+literal|"urn:oasis:names:tc:opendocument:xmlns:style:1.0"
 argument_list|)
 expr_stmt|;
 name|collection
@@ -280,7 +292,7 @@ name|setAttribute
 argument_list|(
 literal|"xmlns:text"
 argument_list|,
-literal|"http://openoffice.org/2000/text"
+literal|"urn:oasis:names:tc:opendocument:xmlns:text:1.0"
 argument_list|)
 expr_stmt|;
 name|collection
@@ -289,23 +301,23 @@ name|setAttribute
 argument_list|(
 literal|"xmlns:table"
 argument_list|,
-literal|"http://openoffice.org/2000/table"
+literal|"urn:oasis:names:tc:opendocument:xmlns:table:1.0"
 argument_list|)
 expr_stmt|;
 name|collection
 operator|.
 name|setAttribute
 argument_list|(
-literal|"xmlns:office:class"
+literal|"xmlns:meta"
 argument_list|,
-literal|"spreadsheet"
+literal|"urn:oasis:names:tc:opendocument:xmlns:meta:1.0"
 argument_list|)
 expr_stmt|;
 name|collection
 operator|.
 name|setAttribute
 argument_list|(
-literal|"xmlns:office:version"
+literal|"office:version"
 argument_list|,
 literal|"1.0"
 argument_list|)
@@ -316,7 +328,16 @@ name|setAttribute
 argument_list|(
 literal|"xmlns:fo"
 argument_list|,
-literal|"http://www.w3.org/1999/XSL/Format"
+literal|"urn:oasis:names:tc:opendocument:xmlns:xsl-fo-compatible:1.0"
+argument_list|)
+expr_stmt|;
+name|collection
+operator|.
+name|setAttribute
+argument_list|(
+literal|"xmlns:xlink"
+argument_list|,
+literal|"http://www.w3.org/1999/xlink"
 argument_list|)
 expr_stmt|;
 name|Element
@@ -326,7 +347,7 @@ name|result
 operator|.
 name|createElement
 argument_list|(
-literal|"office:script"
+literal|"office:scripts"
 argument_list|)
 decl_stmt|;
 name|collection
@@ -380,7 +401,7 @@ name|result
 operator|.
 name|createElement
 argument_list|(
-literal|"style.properties"
+literal|"style.table-row-properties"
 argument_list|)
 decl_stmt|;
 name|el3
@@ -507,6 +528,15 @@ operator|.
 name|createElement
 argument_list|(
 literal|"office:body"
+argument_list|)
+decl_stmt|,
+name|spreadsheet
+init|=
+name|result
+operator|.
+name|createElement
+argument_list|(
+literal|"office:spreadsheet"
 argument_list|)
 decl_stmt|,
 name|table
@@ -1333,11 +1363,18 @@ name|row
 argument_list|)
 expr_stmt|;
 block|}
-name|body
+name|spreadsheet
 operator|.
 name|appendChild
 argument_list|(
 name|table
+argument_list|)
+expr_stmt|;
+name|body
+operator|.
+name|appendChild
+argument_list|(
+name|spreadsheet
 argument_list|)
 expr_stmt|;
 name|collection

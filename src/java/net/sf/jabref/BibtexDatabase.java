@@ -2002,9 +2002,6 @@ argument_list|)
 expr_stmt|;
 comment|//decrementInteger( tI ));
 block|}
-else|else
-comment|// ignore, as there is no such key
-empty_stmt|;
 block|}
 DECL|method|fireDatabaseChanged (DatabaseChangeEvent e)
 specifier|public

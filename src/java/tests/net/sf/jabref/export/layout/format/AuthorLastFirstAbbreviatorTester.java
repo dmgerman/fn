@@ -78,11 +78,7 @@ block|{
 name|String
 name|name
 init|=
-operator|new
-name|String
-argument_list|(
 literal|"Lastname, Name"
-argument_list|)
 decl_stmt|;
 name|AuthorLastFirstAbbreviator
 name|ab
@@ -105,11 +101,7 @@ comment|//Expected Results:
 name|String
 name|expectedResult
 init|=
-operator|new
-name|String
-argument_list|(
 literal|"Lastname, N."
-argument_list|)
 decl_stmt|;
 comment|//Verifies the functionality:
 name|Assert
@@ -134,11 +126,7 @@ block|{
 name|String
 name|name
 init|=
-operator|new
-name|String
-argument_list|(
 literal|"Lastname, Name Middlename"
-argument_list|)
 decl_stmt|;
 name|AuthorLastFirstAbbreviator
 name|ab
@@ -161,11 +149,7 @@ comment|//Expected Results:
 name|String
 name|expectedResult
 init|=
-operator|new
-name|String
-argument_list|(
 literal|"Lastname, N.M."
-argument_list|)
 decl_stmt|;
 comment|//Verifies the functionality:
 name|Assert
@@ -190,11 +174,7 @@ block|{
 name|String
 name|name
 init|=
-operator|new
-name|String
-argument_list|(
 literal|"Lastname, Name Middlename and Sobrenome, Nome Nomedomeio"
-argument_list|)
 decl_stmt|;
 name|AuthorLastFirstAbbreviator
 name|ab
@@ -217,11 +197,7 @@ comment|//Expected Results:
 name|String
 name|expectedResult
 init|=
-operator|new
-name|String
-argument_list|(
 literal|"Lastname, N.M. and Sobrenome, N.N."
-argument_list|)
 decl_stmt|;
 comment|//Verifies the functionality:
 name|Assert

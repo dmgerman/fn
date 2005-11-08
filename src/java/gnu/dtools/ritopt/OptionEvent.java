@@ -118,14 +118,10 @@ name|this
 operator|.
 name|value
 operator|=
-operator|new
-name|String
-argument_list|(
 name|option
 operator|.
 name|getStringValue
 argument_list|()
-argument_list|)
 expr_stmt|;
 name|String
 name|longOption
@@ -152,11 +148,7 @@ condition|)
 block|{
 name|command
 operator|=
-operator|new
-name|String
-argument_list|(
 name|longOption
-argument_list|)
 expr_stmt|;
 block|}
 elseif|else

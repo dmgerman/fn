@@ -213,7 +213,10 @@ name|lang
 argument_list|(
 literal|"Label"
 argument_list|)
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|":</H3>"
 argument_list|)
 expr_stmt|;
@@ -241,7 +244,10 @@ name|lang
 argument_list|(
 literal|"New content"
 argument_list|)
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|":</H3>"
 argument_list|)
 expr_stmt|;
@@ -276,7 +282,10 @@ name|lang
 argument_list|(
 literal|"Current content"
 argument_list|)
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|":</H3>"
 argument_list|)
 expr_stmt|;
@@ -310,7 +319,10 @@ name|lang
 argument_list|(
 literal|"Cannot merge this change"
 argument_list|)
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|": "
 argument_list|)
 expr_stmt|;
@@ -324,7 +336,10 @@ name|lang
 argument_list|(
 literal|"The string has been removed locally"
 argument_list|)
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"</I>"
 argument_list|)
 expr_stmt|;

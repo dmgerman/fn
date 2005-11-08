@@ -90,6 +90,7 @@ index|[]
 name|bes
 decl_stmt|;
 DECL|field|duplicates
+specifier|final
 name|Vector
 name|duplicates
 init|=

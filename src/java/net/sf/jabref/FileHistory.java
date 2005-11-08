@@ -72,13 +72,6 @@ name|JMenu
 implements|implements
 name|ActionListener
 block|{
-DECL|field|bound
-name|int
-name|bound
-init|=
-literal|5
-decl_stmt|;
-comment|//or user defined
 DECL|field|prefs
 name|JabRefPreferences
 name|prefs

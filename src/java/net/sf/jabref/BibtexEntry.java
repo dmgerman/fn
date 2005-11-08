@@ -862,9 +862,6 @@ condition|?
 literal|""
 else|:
 name|str
-operator|.
-name|toString
-argument_list|()
 operator|)
 operator|+
 literal|","

@@ -153,14 +153,10 @@ name|op
 operator|.
 name|value
 operator|=
-operator|new
-name|String
-argument_list|(
 name|op
 operator|.
 name|getValue
 argument_list|()
-argument_list|)
 expr_stmt|;
 name|listeners
 operator|=

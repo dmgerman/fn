@@ -134,7 +134,6 @@ name|String
 name|systemId
 parameter_list|)
 block|{}
-empty_stmt|;
 DECL|method|startDocument ()
 specifier|public
 name|void

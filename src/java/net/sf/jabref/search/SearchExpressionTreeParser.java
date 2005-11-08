@@ -279,7 +279,6 @@ name|ret
 init|=
 literal|false
 decl_stmt|;
-empty_stmt|;
 name|AST
 name|tSearchExpression_AST_in
 init|=
@@ -812,7 +811,6 @@ name|ret
 init|=
 literal|false
 decl_stmt|;
-empty_stmt|;
 name|AST
 name|tExpressionSearch_AST_in
 init|=
@@ -1209,7 +1207,6 @@ name|matchType
 init|=
 literal|0
 decl_stmt|;
-empty_stmt|;
 name|AST
 name|tSearchType_AST_in
 init|=

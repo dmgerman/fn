@@ -1073,8 +1073,10 @@ operator|.
 name|append
 argument_list|(
 literal|" ("
-operator|+
-operator|(
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|caseSensitive
 condition|?
 name|Globals
@@ -1090,8 +1092,10 @@ name|lang
 argument_list|(
 literal|"case insensitive"
 argument_list|)
-operator|)
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"). "
 argument_list|)
 expr_stmt|;
@@ -1112,7 +1116,10 @@ operator|.
 name|append
 argument_list|(
 literal|"<p><br>"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|Globals
 operator|.
 name|lang
@@ -1139,7 +1146,10 @@ name|lang
 argument_list|(
 literal|"This group contains entries in which"
 argument_list|)
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|" "
 argument_list|)
 expr_stmt|;
@@ -1252,7 +1262,10 @@ name|lang
 argument_list|(
 literal|"not"
 argument_list|)
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|" "
 argument_list|)
 expr_stmt|;
@@ -1289,18 +1302,30 @@ literal|true
 argument_list|,
 literal|false
 argument_list|)
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|" "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|Globals
 operator|.
 name|lang
 argument_list|(
 literal|"and"
 argument_list|)
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|" "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|describeNode
 argument_list|(
 name|node
@@ -1359,7 +1384,10 @@ name|lang
 argument_list|(
 literal|"not"
 argument_list|)
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|" "
 argument_list|)
 expr_stmt|;
@@ -1397,18 +1425,30 @@ literal|false
 argument_list|,
 literal|true
 argument_list|)
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|" "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|Globals
 operator|.
 name|lang
 argument_list|(
 literal|"or"
 argument_list|)
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|" "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|describeNode
 argument_list|(
 name|node
@@ -1796,10 +1836,16 @@ operator|.
 name|append
 argument_list|(
 literal|"<i>"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|getName
 argument_list|()
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"</i>"
 argument_list|)
 expr_stmt|;
@@ -1819,9 +1865,15 @@ argument_list|(
 literal|"</b> - dynamic group ("
 operator|+
 literal|"search expression:<b>"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|m_searchExpression
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"</b>)"
 argument_list|)
 expr_stmt|;

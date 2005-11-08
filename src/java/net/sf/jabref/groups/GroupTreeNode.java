@@ -264,9 +264,15 @@ name|cursor
 operator|.
 name|getLevel
 argument_list|()
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|" "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|cursor
 operator|.
 name|getGroup
@@ -274,7 +280,10 @@ argument_list|()
 operator|.
 name|toString
 argument_list|()
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;

@@ -404,6 +404,17 @@ name|BiomailImporter
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|formats
+operator|.
+name|put
+argument_list|(
+literal|"repecnep"
+argument_list|,
+operator|new
+name|RepecNepImporter
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|clearNameCache ()
 specifier|public

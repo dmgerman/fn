@@ -167,7 +167,10 @@ name|lang
 argument_list|(
 literal|"Label"
 argument_list|)
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|":</H3>"
 argument_list|)
 expr_stmt|;
@@ -198,7 +201,10 @@ name|lang
 argument_list|(
 literal|"Content"
 argument_list|)
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|":</H3>"
 argument_list|)
 expr_stmt|;

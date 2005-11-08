@@ -1907,7 +1907,6 @@ name|s
 operator|.
 name|append
 argument_list|(
-operator|(
 name|i
 operator|>
 literal|0
@@ -1915,8 +1914,10 @@ condition|?
 literal|"; "
 else|:
 literal|""
-operator|)
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|comments
 operator|.
 name|elementAt

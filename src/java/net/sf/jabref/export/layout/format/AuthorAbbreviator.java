@@ -180,7 +180,10 @@ name|authors_abrv
 index|[
 name|i
 index|]
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|" and "
 argument_list|)
 expr_stmt|;
@@ -330,7 +333,10 @@ operator|.
 name|append
 argument_list|(
 name|c
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"."
 argument_list|)
 expr_stmt|;
@@ -341,7 +347,10 @@ operator|.
 name|append
 argument_list|(
 literal|" "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|author
 index|[
 name|author
@@ -364,7 +373,10 @@ name|author
 index|[
 literal|0
 index|]
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|", "
 argument_list|)
 expr_stmt|;
@@ -408,7 +420,10 @@ operator|.
 name|append
 argument_list|(
 name|c
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"."
 argument_list|)
 expr_stmt|;
@@ -482,7 +497,10 @@ operator|.
 name|append
 argument_list|(
 name|c
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"."
 argument_list|)
 expr_stmt|;

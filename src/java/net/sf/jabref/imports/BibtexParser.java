@@ -863,9 +863,6 @@ operator|.
 name|parseEntryType
 argument_list|(
 name|comment
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|entryTypes
@@ -1955,9 +1952,15 @@ operator|.
 name|append
 argument_list|(
 literal|"#"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|textToken
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"#"
 argument_list|)
 expr_stmt|;

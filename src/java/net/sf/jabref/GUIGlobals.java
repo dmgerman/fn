@@ -2828,7 +2828,6 @@ argument_list|)
 expr_stmt|;
 comment|//FIELD_WEIGHT = Collections.unmodifiableMap(FIELD_WEIGHT);
 block|}
-empty_stmt|;
 comment|/*     public static int getPreferredFieldLength(String name) {     int l = DEFAULT_FIELD_LENGTH;     Object o = fieldLength.get(name.toLowerCase());     if (o != null)     l = ((Integer)o).intValue();     return l;     }*/
 DECL|method|getFieldWeight (String name)
 specifier|public

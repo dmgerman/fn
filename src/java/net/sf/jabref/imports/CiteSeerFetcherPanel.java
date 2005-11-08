@@ -653,7 +653,6 @@ parameter_list|()
 block|{                     }
 comment|/*public void run() {                         citeSeerFetcher.endImportCiteSeerProgress();                         if (addedEntries != null)                             panel.markBaseChanged();                         panel.refreshTable(); // Select the entries that were added:                         if (addedEntries.size()> 0) {                             BibtexEntry[] toSelect = new BibtexEntry[addedEntries.size()];                             toSelect = (BibtexEntry[]) addedEntries.toArray(toSelect);                              panel.selectEntries(toSelect, 0);                             if (toSelect.length == 1)                                 panel.showEntry(toSelect[0]); //else //    panel.updateViewToSelected();                         }                         panel.output(Globals.lang("Completed Import Fields from CiteSeer."));                     } */
 block|}
-empty_stmt|;
 specifier|public
 name|void
 name|run

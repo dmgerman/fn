@@ -742,11 +742,7 @@ block|{
 name|String
 name|retval
 init|=
-operator|new
-name|String
-argument_list|(
 name|s
-argument_list|)
 decl_stmt|;
 name|boolean
 name|q

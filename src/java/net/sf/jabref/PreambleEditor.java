@@ -787,9 +787,6 @@ name|base
 operator|.
 name|getPreamble
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 condition|)
 name|set

@@ -94,14 +94,10 @@ case|:
 comment|//Does nothing;
 name|s
 operator|=
-operator|new
-name|String
-argument_list|(
 name|authors
 index|[
 literal|0
 index|]
-argument_list|)
 expr_stmt|;
 break|break;
 case|case
@@ -109,9 +105,6 @@ literal|2
 case|:
 name|s
 operator|=
-operator|new
-name|String
-argument_list|(
 name|authors
 index|[
 literal|0
@@ -123,7 +116,6 @@ name|authors
 index|[
 literal|1
 index|]
-argument_list|)
 expr_stmt|;
 break|break;
 default|default:
@@ -169,7 +161,10 @@ name|authors
 index|[
 name|i
 index|]
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"; "
 argument_list|)
 expr_stmt|;
@@ -182,9 +177,15 @@ name|authors
 index|[
 name|i
 index|]
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"& "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|authors
 index|[
 name|i

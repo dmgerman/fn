@@ -1735,8 +1735,9 @@ name|directions
 operator|.
 name|add
 argument_list|(
-operator|new
 name|Boolean
+operator|.
+name|valueOf
 argument_list|(
 name|frame
 operator|.
@@ -1753,8 +1754,9 @@ name|directions
 operator|.
 name|add
 argument_list|(
-operator|new
 name|Boolean
+operator|.
+name|valueOf
 argument_list|(
 name|frame
 operator|.
@@ -1771,8 +1773,9 @@ name|directions
 operator|.
 name|add
 argument_list|(
-operator|new
 name|Boolean
+operator|.
+name|valueOf
 argument_list|(
 name|frame
 operator|.
@@ -1831,8 +1834,9 @@ name|binary
 operator|.
 name|add
 argument_list|(
-operator|new
 name|Boolean
+operator|.
+name|valueOf
 argument_list|(
 name|Globals
 operator|.

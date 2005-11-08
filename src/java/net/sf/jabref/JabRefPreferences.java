@@ -1429,7 +1429,7 @@ argument_list|,
 operator|new
 name|Integer
 argument_list|(
-literal|5
+literal|8
 argument_list|)
 argument_list|)
 expr_stmt|;

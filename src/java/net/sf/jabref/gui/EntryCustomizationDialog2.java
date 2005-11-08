@@ -1492,17 +1492,10 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
-operator|(
 name|type
 operator|instanceof
 name|CustomEntryType
-operator|)
 condition|)
-empty_stmt|;
-comment|//messageLabel.setText("'"+type.getName()+"' "+
-comment|//        Globals.lang("is a standard type."));
-else|else
 block|{
 if|if
 condition|(
@@ -1612,6 +1605,8 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
+comment|//messageLabel.setText("'"+type.getName()+"' "+
+comment|//        Globals.lang("is a standard type."));
 block|}
 DECL|method|equalArrays (String[] one, String[] two)
 specifier|protected

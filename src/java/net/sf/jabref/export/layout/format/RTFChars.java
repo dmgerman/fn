@@ -517,11 +517,17 @@ operator|.
 name|append
 argument_list|(
 literal|"}{\\i "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|part
 operator|.
 name|s
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"}{"
 argument_list|)
 expr_stmt|;
@@ -558,11 +564,17 @@ operator|.
 name|append
 argument_list|(
 literal|"}{\\b "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|part
 operator|.
 name|s
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"}{"
 argument_list|)
 expr_stmt|;

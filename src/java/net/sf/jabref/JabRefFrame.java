@@ -8005,7 +8005,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-empty_stmt|;
 specifier|public
 name|void
 name|run
@@ -10223,6 +10222,15 @@ name|JMenuItem
 argument_list|(
 literal|"OpenOffice Calc"
 argument_list|)
+decl_stmt|,
+DECL|field|odsItem
+name|odsItem
+init|=
+operator|new
+name|JMenuItem
+argument_list|(
+literal|"OpenDocument Spreadsheet"
+argument_list|)
 decl_stmt|;
 DECL|method|setUpExportMenu (JMenu menu)
 specifier|private
@@ -10417,6 +10425,23 @@ operator|=
 literal|".sxc"
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|source
+operator|==
+name|odsItem
+condition|)
+block|{
+name|lfFileName
+operator|=
+literal|"ods"
+expr_stmt|;
+name|extension
+operator|=
+literal|".ods"
+expr_stmt|;
+block|}
 comment|// We need to find out:
 comment|// 1. The layout definition string to use. Or, rather, we
 comment|//    must provide a Reader for the layout definition.
@@ -10534,6 +10559,12 @@ argument_list|,
 name|lfName
 argument_list|,
 name|oFile
+argument_list|,
+name|basePanel
+argument_list|()
+operator|.
+name|getEncoding
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|output
@@ -10685,11 +10716,25 @@ argument_list|(
 name|listener
 argument_list|)
 expr_stmt|;
+name|odsItem
+operator|.
+name|addActionListener
+argument_list|(
+name|listener
+argument_list|)
+expr_stmt|;
 name|menu
 operator|.
 name|add
 argument_list|(
 name|openofficeItem
+argument_list|)
+expr_stmt|;
+name|menu
+operator|.
+name|add
+argument_list|(
+name|odsItem
 argument_list|)
 expr_stmt|;
 name|menu
@@ -11350,6 +11395,12 @@ argument_list|,
 name|lfName
 argument_list|,
 name|oFile
+argument_list|,
+name|basePanel
+argument_list|()
+operator|.
+name|getEncoding
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|output

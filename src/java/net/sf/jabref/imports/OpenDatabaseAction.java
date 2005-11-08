@@ -602,19 +602,26 @@ name|wrn
 operator|.
 name|append
 argument_list|(
-operator|(
 name|i
 operator|+
 literal|1
-operator|)
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|". "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|wrns
 index|[
 name|i
 index|]
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
@@ -850,7 +857,10 @@ index|]
 operator|.
 name|toString
 argument_list|()
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|", "
 argument_list|)
 expr_stmt|;

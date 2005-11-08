@@ -325,9 +325,13 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|ids
-operator|!=
+operator|.
+name|equals
+argument_list|(
 literal|""
+argument_list|)
 condition|)
 name|ids
 operator|+=
@@ -1300,8 +1304,11 @@ comment|// for strCount ...
 if|if
 condition|(
 name|strCount
-operator|==
+operator|.
+name|equals
+argument_list|(
 literal|""
+argument_list|)
 condition|)
 return|return;
 name|int
@@ -1373,6 +1380,14 @@ name|frame
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|diag
+operator|.
+name|setDefaultSelected
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+comment|// Make sure new entries are not selected by default.
 comment|// diag.setProgress(0, count);
 name|diag
 operator|.
@@ -2305,7 +2320,10 @@ operator|.
 name|append
 argument_list|(
 literal|"Title: "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|matcher
 operator|.
 name|group

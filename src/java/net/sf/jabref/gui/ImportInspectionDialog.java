@@ -637,6 +637,13 @@ init|=
 literal|false
 decl_stmt|;
 comment|// Set to true after keys have been generated.
+DECL|field|defaultSelected
+specifier|private
+name|boolean
+name|defaultSelected
+init|=
+literal|true
+decl_stmt|;
 DECL|field|toRect
 specifier|private
 name|Rectangle
@@ -742,6 +749,23 @@ name|PAD
 init|=
 literal|5
 decl_stmt|;
+comment|/**      * The "defaultSelected" boolean value determines if new entries added are selected for import or not.      * This value is true by default.      * @param defaultSelected The desired value.      */
+DECL|method|setDefaultSelected (boolean defaultSelected)
+specifier|public
+name|void
+name|setDefaultSelected
+parameter_list|(
+name|boolean
+name|defaultSelected
+parameter_list|)
+block|{
+name|this
+operator|.
+name|defaultSelected
+operator|=
+name|defaultSelected
+expr_stmt|;
+block|}
 comment|/**      * Creates a dialog that displays the given list of fields in the table.      * The dialog allows another process to add entries dynamically while the dialog      * is shown.      *      * @param frame      * @param panel      * @param fields      */
 DECL|method|ImportInspectionDialog (JabRefFrame frame, BasePanel panel, String[] fields, String undoName, boolean newDatabase)
 specifier|public
@@ -1556,7 +1580,10 @@ index|]
 operator|=
 name|Boolean
 operator|.
-name|TRUE
+name|valueOf
+argument_list|(
+name|defaultSelected
+argument_list|)
 expr_stmt|;
 comment|// Add an icon for it if this entry is a duplicate of an existing entry:
 if|if
@@ -3934,8 +3961,9 @@ name|this
 operator|.
 name|enable
 operator|=
-operator|new
 name|Boolean
+operator|.
+name|valueOf
 argument_list|(
 name|enable
 argument_list|)

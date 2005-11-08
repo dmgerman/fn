@@ -1345,7 +1345,6 @@ index|]
 return|;
 block|}
 block|}
-empty_stmt|;
 DECL|class|KeystrokeTableModel
 class|class
 name|KeystrokeTableModel

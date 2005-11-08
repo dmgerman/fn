@@ -2928,7 +2928,6 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-empty_stmt|;
 DECL|method|mk_tokenSet_0 ()
 specifier|private
 specifier|static

@@ -305,7 +305,10 @@ operator|.
 name|append
 argument_list|(
 literal|"__::__"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|str
 argument_list|)
 expr_stmt|;
@@ -315,7 +318,10 @@ operator|.
 name|append
 argument_list|(
 literal|"__NEWFIELD__"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|str
 argument_list|)
 expr_stmt|;
