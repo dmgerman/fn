@@ -434,10 +434,6 @@ DECL|field|panel
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|field|selectionListener
-name|MainTableSelectionListener
-name|selectionListener
-decl_stmt|;
 DECL|field|ths
 name|EntryEditor
 name|ths
@@ -1085,22 +1081,6 @@ block|{
 return|return
 name|type
 return|;
-block|}
-DECL|method|setSelectionListener (MainTableSelectionListener selectionListener)
-specifier|public
-name|void
-name|setSelectionListener
-parameter_list|(
-name|MainTableSelectionListener
-name|selectionListener
-parameter_list|)
-block|{
-name|this
-operator|.
-name|selectionListener
-operator|=
-name|selectionListener
-expr_stmt|;
 block|}
 DECL|method|getEntry ()
 specifier|public
@@ -4199,7 +4179,6 @@ argument_list|)
 expr_stmt|;
 comment|//Util.pr(e.getPropertyName());
 block|}
-comment|/**    * @param ed    */
 DECL|method|updateField (final Object source)
 specifier|public
 name|void
@@ -4663,7 +4642,7 @@ operator|!
 name|goOn
 condition|)
 return|return;
-name|selectionListener
+name|panel
 operator|.
 name|entryEditorClosing
 argument_list|(
@@ -4801,7 +4780,7 @@ if|if
 condition|(
 name|lastSourceAccepted
 condition|)
-name|selectionListener
+name|panel
 operator|.
 name|entryEditorClosing
 argument_list|(
@@ -4812,7 +4791,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
-name|selectionListener
+name|panel
 operator|.
 name|entryEditorClosing
 argument_list|(

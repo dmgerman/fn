@@ -460,11 +460,21 @@ decl_stmt|;
 comment|// What is the panel already showing?
 if|if
 condition|(
+operator|(
+name|mode
+operator|==
+name|BasePanel
+operator|.
+name|WILL_SHOW_EDITOR
+operator|)
+operator|||
+operator|(
 name|mode
 operator|==
 name|BasePanel
 operator|.
 name|SHOWING_EDITOR
+operator|)
 condition|)
 block|{
 comment|// An entry is currently being edited.
@@ -495,13 +505,6 @@ operator|!=
 name|oldEditor
 condition|)
 block|{
-name|newEditor
-operator|.
-name|setSelectionListener
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
 name|panel
 operator|.
 name|showEntryEditor
@@ -715,13 +718,6 @@ operator|.
 name|SHOWING_EDITOR
 condition|)
 block|{
-name|editor
-operator|.
-name|setSelectionListener
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
 name|panel
 operator|.
 name|showEntryEditor

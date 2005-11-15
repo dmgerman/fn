@@ -205,7 +205,9 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"(.+)\\(([0-9][0-9][0-9][0-9])\\)\\. ([ \\w&\\-,:]+)\\.  \\(pp. ([0-9]+\\-?[0-9]+?)\\)(.*)"
+literal|"(.+)\\(([0-9][0-9][0-9][0-9])\\)\\. ([ \\w&\\-,:]+)\\.[ ]+\\(pp. ([0-9]+\\-?[0-9]+?)\\).[A-Za-z0-9, ]+pp\\. "
+operator|+
+literal|"([\\w, ]+): ([\\w, ]+)\\."
 argument_list|)
 decl_stmt|;
 DECL|field|book_pat
@@ -218,7 +220,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"\\(([0-9][0-9][0-9][0-9])\\)\\. ([ \\w&\\-,:]+)\\.(.*)"
+literal|"\\(([0-9][0-9][0-9][0-9])\\)\\. [A-Za-z, ]+([0-9]+) pp\\. ([\\w, ]+): ([\\w, ]+)\\."
 argument_list|)
 decl_stmt|;
 comment|//   public static Pattern ovid_pat_inspec= Pattern.compile("Source ([
@@ -928,6 +930,34 @@ literal|4
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|h
+operator|.
+name|put
+argument_list|(
+literal|"address"
+argument_list|,
+name|matcher
+operator|.
+name|group
+argument_list|(
+literal|5
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|h
+operator|.
+name|put
+argument_list|(
+literal|"publisher"
+argument_list|,
+name|matcher
+operator|.
+name|group
+argument_list|(
+literal|6
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 elseif|else
 if|if
@@ -961,7 +991,48 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//h.put("booktitle", matcher.group(3));
+name|h
+operator|.
+name|put
+argument_list|(
+literal|"pages"
+argument_list|,
+name|matcher
+operator|.
+name|group
+argument_list|(
+literal|2
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|h
+operator|.
+name|put
+argument_list|(
+literal|"address"
+argument_list|,
+name|matcher
+operator|.
+name|group
+argument_list|(
+literal|3
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|h
+operator|.
+name|put
+argument_list|(
+literal|"publisher"
+argument_list|,
+name|matcher
+operator|.
+name|group
+argument_list|(
+literal|4
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 comment|// Add double hyphens to page ranges:
 if|if

@@ -407,6 +407,7 @@ block|{
 DECL|field|SHOWING_NOTHING
 DECL|field|SHOWING_PREVIEW
 DECL|field|SHOWING_EDITOR
+DECL|field|WILL_SHOW_EDITOR
 specifier|public
 specifier|final
 specifier|static
@@ -422,6 +423,10 @@ decl_stmt|,
 name|SHOWING_EDITOR
 init|=
 literal|2
+decl_stmt|,
+name|WILL_SHOW_EDITOR
+init|=
+literal|3
 decl_stmt|;
 DECL|field|mode
 specifier|private
@@ -773,17 +778,7 @@ argument_list|(
 literal|"defaultEncoding"
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Default: "
-operator|+
-name|encoding
-argument_list|)
-expr_stmt|;
+comment|//System.out.println("Default: "+encoding);
 block|}
 DECL|method|BasePanel (JabRefFrame frame, BibtexDatabase db, File file, HashMap meta, String encoding)
 specifier|public
@@ -811,15 +806,7 @@ name|encoding
 operator|=
 name|encoding
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|encoding
-argument_list|)
-expr_stmt|;
+comment|// System.out.println(encoding);
 comment|//super(JSplitPane.HORIZONTAL_SPLIT, true);
 name|this
 operator|.
@@ -8224,38 +8211,39 @@ argument_list|(
 name|be
 argument_list|)
 decl_stmt|;
+comment|// We are going to select the new entry. Before that, make sure that we are in
+comment|// show-entry mode. If we aren't already in that mode, enter the WILL_SHOW_EDITOR
+comment|// mode which makes sure the selection will trigger display of the entry editor
+comment|// and adjustment of the splitter.
+if|if
+condition|(
+name|mode
+operator|!=
+name|SHOWING_EDITOR
+condition|)
+name|mode
+operator|=
+name|WILL_SHOW_EDITOR
+expr_stmt|;
 name|highlightEntry
 argument_list|(
 name|be
 argument_list|)
 expr_stmt|;
+comment|// Selects the entry. The selection listener will open the editor.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
 comment|// The database just changed.
-if|if
-condition|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
+operator|new
+name|FocusRequester
 argument_list|(
-literal|"autoOpenForm"
-argument_list|)
-condition|)
-block|{
-name|showEntry
+name|getEntryEditor
 argument_list|(
 name|be
 argument_list|)
-expr_stmt|;
-name|runCommand
-argument_list|(
-literal|"edit"
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 catch|catch
 parameter_list|(
@@ -10514,6 +10502,15 @@ operator|.
 name|getDividerLocation
 argument_list|()
 expr_stmt|;
+name|boolean
+name|adjustSplitter
+init|=
+operator|(
+name|mode
+operator|==
+name|WILL_SHOW_EDITOR
+operator|)
+decl_stmt|;
 name|mode
 operator|=
 name|SHOWING_EDITOR
@@ -10542,6 +10539,16 @@ argument_list|(
 name|oldSplitterLocation
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|adjustSplitter
+condition|)
+block|{
+name|adjustSplitter
+argument_list|()
+expr_stmt|;
+comment|//new FocusRequester(editor);
+block|}
 block|}
 comment|/**      * Sets the given preview panel as the bottom component in the split panel.      * Updates the mode to SHOWING_PREVIEW.      * @param preview The preview to show.      */
 DECL|method|showPreview (PreviewPanel preview)
@@ -10602,19 +10609,8 @@ name|BibtexEntry
 name|be
 parameter_list|)
 block|{
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-operator|new
-name|Thread
-argument_list|()
-block|{
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
+comment|//SwingUtilities.invokeLater(new Thread() {
+comment|//     public void run() {
 specifier|final
 name|int
 name|row
@@ -10651,8 +10647,24 @@ name|row
 argument_list|)
 expr_stmt|;
 block|}
+comment|//     }
+comment|//});
 block|}
-block|}
+comment|/**      * This method is called from an EntryEditor when it should be closed. We relay      * to the selection listener, which takes care of the rest.      * @param editor The entry editor to close.      */
+DECL|method|entryEditorClosing (EntryEditor editor)
+specifier|public
+name|void
+name|entryEditorClosing
+parameter_list|(
+name|EntryEditor
+name|editor
+parameter_list|)
+block|{
+name|selectionListener
+operator|.
+name|entryEditorClosing
+argument_list|(
+name|editor
 argument_list|)
 expr_stmt|;
 block|}
