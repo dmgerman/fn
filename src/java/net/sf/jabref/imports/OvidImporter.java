@@ -207,7 +207,7 @@ name|compile
 argument_list|(
 literal|"(.+)\\(([0-9][0-9][0-9][0-9])\\)\\. ([ \\w&\\-,:]+)\\.[ ]+\\(pp. ([0-9]+\\-?[0-9]+?)\\).[A-Za-z0-9, ]+pp\\. "
 operator|+
-literal|"([\\w, ]+): ([\\w, ]+)\\."
+literal|"([\\w, ]+): ([\\w, ]+)"
 argument_list|)
 decl_stmt|;
 DECL|field|book_pat
@@ -220,7 +220,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"\\(([0-9][0-9][0-9][0-9])\\)\\. [A-Za-z, ]+([0-9]+) pp\\. ([\\w, ]+): ([\\w, ]+)\\."
+literal|"\\(([0-9][0-9][0-9][0-9])\\)\\. [A-Za-z, ]+([0-9]+) pp\\. ([\\w, ]+): ([\\w, ]+)"
 argument_list|)
 decl_stmt|;
 comment|//   public static Pattern ovid_pat_inspec= Pattern.compile("Source ([
@@ -467,6 +467,32 @@ operator|.
 name|trim
 argument_list|()
 decl_stmt|;
+comment|// Remove unnecessary dots at the end of lines:
+if|if
+condition|(
+name|content
+operator|.
+name|endsWith
+argument_list|(
+literal|"."
+argument_list|)
+condition|)
+name|content
+operator|=
+name|content
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|content
+operator|.
+name|length
+argument_list|()
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
 comment|//fields[j] = fields[j].trim();
 if|if
 condition|(
@@ -525,12 +551,9 @@ argument_list|)
 operator|==
 literal|0
 condition|)
-name|h
-operator|.
-name|put
-argument_list|(
-literal|"title"
-argument_list|,
+block|{
+name|content
+operator|=
 name|content
 operator|.
 name|replaceAll
@@ -539,8 +562,45 @@ literal|"\\[.+\\]"
 argument_list|,
 literal|""
 argument_list|)
+operator|.
+name|trim
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|content
+operator|.
+name|endsWith
+argument_list|(
+literal|"."
+argument_list|)
+condition|)
+name|content
+operator|=
+name|content
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|content
+operator|.
+name|length
+argument_list|()
+operator|-
+literal|1
 argument_list|)
 expr_stmt|;
+name|h
+operator|.
+name|put
+argument_list|(
+literal|"title"
+argument_list|,
+name|content
+argument_list|)
+expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
