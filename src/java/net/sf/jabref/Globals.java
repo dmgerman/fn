@@ -702,6 +702,16 @@ literal|"\n"
 argument_list|)
 decl_stmt|;
 comment|// true if we have unix newlines.
+DECL|field|BIBTEX_STRING
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|BIBTEX_STRING
+init|=
+literal|"__string"
+decl_stmt|;
+comment|// "Fieldname" to indicate that a field should be treated as a bibtex string. Used when writing database to file.
 DECL|method|logger (String s)
 specifier|public
 specifier|static
