@@ -62,6 +62,18 @@ name|Util
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
 begin_class
 DECL|class|LatexFieldFormatter
 specifier|public
@@ -263,6 +275,18 @@ comment|// No formatting at all for these fields, to allow custom formatting?
 comment|//if (Globals.prefs.getBoolean("preserveFieldFormatting"))
 comment|//  sb.append(text);
 comment|//else
+if|if
+condition|(
+operator|!
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|isNonWrappableField
+argument_list|(
+name|fieldName
+argument_list|)
+condition|)
 name|sb
 operator|.
 name|append
@@ -277,6 +301,14 @@ name|GUIGlobals
 operator|.
 name|LINE_LENGTH
 argument_list|)
+argument_list|)
+expr_stmt|;
+else|else
+name|sb
+operator|.
+name|append
+argument_list|(
+name|text
 argument_list|)
 expr_stmt|;
 name|sb
@@ -569,6 +601,18 @@ literal|1
 expr_stmt|;
 comment|//if (tell++> 10) System.exit(0);
 block|}
+if|if
+condition|(
+operator|!
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|isNonWrappableField
+argument_list|(
+name|fieldName
+argument_list|)
+condition|)
 return|return
 name|Util
 operator|.
@@ -583,6 +627,13 @@ name|GUIGlobals
 operator|.
 name|LINE_LENGTH
 argument_list|)
+return|;
+else|else
+return|return
+name|sb
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 DECL|method|writeText (String text, int start_pos, int end_pos)
@@ -600,7 +651,7 @@ name|int
 name|end_pos
 parameter_list|)
 block|{
-comment|/*sb.append("{"); 	sb.append(text.substring(start_pos, end_pos)); 	sb.append("}");*/
+comment|/*sb.append("{");      sb.append(text.substring(start_pos, end_pos));      sb.append("}");*/
 name|sb
 operator|.
 name|append
