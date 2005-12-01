@@ -8221,10 +8221,12 @@ name|mode
 operator|!=
 name|SHOWING_EDITOR
 condition|)
+block|{
 name|mode
 operator|=
 name|WILL_SHOW_EDITOR
 expr_stmt|;
+block|}
 name|highlightEntry
 argument_list|(
 name|be

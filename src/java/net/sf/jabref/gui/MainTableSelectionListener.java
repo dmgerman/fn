@@ -500,9 +500,19 @@ decl_stmt|;
 comment|// Show the new editor unless it was already visible:
 if|if
 condition|(
+operator|(
 name|newEditor
 operator|!=
 name|oldEditor
+operator|)
+operator|||
+operator|(
+name|mode
+operator|!=
+name|BasePanel
+operator|.
+name|SHOWING_EDITOR
+operator|)
 condition|)
 block|{
 name|panel
