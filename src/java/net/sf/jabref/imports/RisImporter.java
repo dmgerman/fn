@@ -1316,6 +1316,26 @@ operator|+
 name|val
 expr_stmt|;
 block|}
+comment|// Added ID import 2005.12.01, Morten Alver:
+elseif|else
+if|if
+condition|(
+name|lab
+operator|.
+name|equals
+argument_list|(
+literal|"ID"
+argument_list|)
+condition|)
+name|hm
+operator|.
+name|put
+argument_list|(
+literal|"refid"
+argument_list|,
+name|val
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 comment|// fix authors

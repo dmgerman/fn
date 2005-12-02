@@ -3504,7 +3504,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//rows = entryTable.getSelectedRows() ;
-comment|//numSelected = rows.length ;
+name|numSelected
+operator|=
+name|entries
+operator|.
+name|size
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|entries

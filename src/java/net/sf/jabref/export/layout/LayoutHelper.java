@@ -754,20 +754,22 @@ literal|']'
 operator|)
 condition|)
 block|{
-if|if
-condition|(
-name|buffer
-operator|!=
-literal|null
-condition|)
-block|{
+comment|// changed section start - arudert
+comment|// buffer may be null for parameters
+comment|//if (buffer != null)
+comment|//{
 if|if
 condition|(
 name|c
 operator|==
 literal|']'
+operator|&&
+name|buffer
+operator|!=
+literal|null
 condition|)
 block|{
+comment|// changed section end - arudert
 name|option
 operator|=
 name|buffer
@@ -786,13 +788,33 @@ expr_stmt|;
 block|}
 comment|//myStrings.add(buffer.toString());
 comment|//System.out.println("\nbracketedOption: " + buffer.toString());
+comment|// changed section begin - arudert
+comment|// bracketed option must be followed by an (optionally empty) parameter
+comment|// if empty, the parameter is set to " " (whitespace to avoid that the tokenizer that
+comment|// splits the string later on ignores the empty parameter)
+comment|//if (buffer != null)
+elseif|else
 if|if
 condition|(
-name|buffer
-operator|!=
-literal|null
+name|c
+operator|==
+literal|'}'
 condition|)
 block|{
+name|String
+name|parameter
+init|=
+name|buffer
+operator|==
+literal|null
+condition|?
+literal|" "
+else|:
+name|buffer
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|option
@@ -802,10 +824,7 @@ condition|)
 block|{
 name|tmp
 operator|=
-name|buffer
-operator|.
-name|toString
-argument_list|()
+name|parameter
 operator|+
 literal|"\n"
 operator|+
@@ -816,10 +835,7 @@ else|else
 block|{
 name|tmp
 operator|=
-name|buffer
-operator|.
-name|toString
-argument_list|()
+name|parameter
 expr_stmt|;
 block|}
 comment|//System.out.println("FORMAT: '"+tmp+"'");
@@ -840,7 +856,10 @@ return|return
 literal|null
 return|;
 block|}
-block|}
+comment|// changed section end - arudert
+comment|// changed section start - arudert
+comment|// }
+comment|// changed section end - arudert
 block|}
 else|else
 block|{
@@ -890,13 +909,10 @@ condition|)
 block|{                     }
 else|else
 block|{
-if|if
-condition|(
-name|c
-operator|!=
-literal|'\\'
-condition|)
-block|{
+comment|// changed section begin - arudert
+comment|// keep the backslash so we know wether this is a fieldname or an ordinary parameter
+comment|//if (c != '\\')
+comment|//{
 name|buffer
 operator|.
 name|append
@@ -907,7 +923,8 @@ operator|)
 name|c
 argument_list|)
 expr_stmt|;
-block|}
+comment|//}
+comment|// changed section end - arudert
 block|}
 block|}
 block|}

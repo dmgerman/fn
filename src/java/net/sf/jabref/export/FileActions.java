@@ -2195,6 +2195,12 @@ expr_stmt|;
 return|return;
 block|}
 comment|// Print header
+comment|// changed section - begin (arudert)
+name|Layout
+name|beginLayout
+init|=
+literal|null
+decl_stmt|;
 try|try
 block|{
 name|reader
@@ -2208,45 +2214,63 @@ operator|+
 literal|".begin.layout"
 argument_list|)
 expr_stmt|;
-while|while
-condition|(
-operator|(
-name|c
-operator|=
-name|reader
-operator|.
-name|read
-argument_list|()
-operator|)
-operator|!=
-operator|-
-literal|1
-condition|)
-block|{
-name|ps
-operator|.
-name|write
+name|LayoutHelper
+name|layoutHelper
+init|=
+operator|new
+name|LayoutHelper
 argument_list|(
-operator|(
-name|char
-operator|)
-name|c
+name|reader
+argument_list|)
+decl_stmt|;
+name|beginLayout
+operator|=
+name|layoutHelper
+operator|.
+name|getLayoutFromText
+argument_list|(
+name|Globals
+operator|.
+name|FORMATTER_PACKAGE
 argument_list|)
 expr_stmt|;
-block|}
 name|reader
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+comment|/* 	    while ((c = reader.read()) != -1) {                 ps.write((char)c); 	    } 	    reader.close(); */
 block|}
 catch|catch
 parameter_list|(
 name|IOException
 name|ex
 parameter_list|)
-block|{}
-comment|// If an exception was cast, export filter doesn't have a begin file.
+block|{
+comment|//  // If an exception was cast, export filter doesn't have a begin file.
+block|}
+comment|// Write the header
+if|if
+condition|(
+name|beginLayout
+operator|!=
+literal|null
+condition|)
+block|{
+name|ps
+operator|.
+name|write
+argument_list|(
+name|beginLayout
+operator|.
+name|doLayout
+argument_list|(
+name|database
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|// changed section - end (arudert)
 comment|// Write database entries; entries will be sorted as they
 comment|// appear on the screen, or sorted by author, depending on
 comment|// Preferences.
@@ -2468,6 +2492,12 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Print footer
+comment|// changed section - begin (arudert)
+name|Layout
+name|endLayout
+init|=
+literal|null
+decl_stmt|;
 try|try
 block|{
 name|reader
@@ -2481,45 +2511,62 @@ operator|+
 literal|".end.layout"
 argument_list|)
 expr_stmt|;
-while|while
-condition|(
-operator|(
-name|c
+name|layoutHelper
 operator|=
-name|reader
-operator|.
-name|read
-argument_list|()
-operator|)
-operator|!=
-operator|-
-literal|1
-condition|)
-block|{
-name|ps
-operator|.
-name|write
+operator|new
+name|LayoutHelper
 argument_list|(
-operator|(
-name|char
-operator|)
-name|c
+name|reader
 argument_list|)
 expr_stmt|;
-block|}
+name|endLayout
+operator|=
+name|layoutHelper
+operator|.
+name|getLayoutFromText
+argument_list|(
+name|Globals
+operator|.
+name|FORMATTER_PACKAGE
+argument_list|)
+expr_stmt|;
 name|reader
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+comment|/*                   while ((c = reader.read()) != -1) {                             ps.write((char)c);                   }                   reader.close();             */
 block|}
 catch|catch
 parameter_list|(
 name|IOException
 name|ex
 parameter_list|)
-block|{}
-comment|// If an exception was cast, export filter doesn't have a end file.
+block|{
+comment|//  // If an exception was cast, export filter doesn't have an end file.
+block|}
+comment|// Write the header
+if|if
+condition|(
+name|endLayout
+operator|!=
+literal|null
+condition|)
+block|{
+name|ps
+operator|.
+name|write
+argument_list|(
+name|endLayout
+operator|.
+name|doLayout
+argument_list|(
+name|database
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|// changed section - end (arudert)
 name|ps
 operator|.
 name|flush
