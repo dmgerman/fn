@@ -294,6 +294,22 @@ name|resource
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|JournalAbbreviations (File file)
+specifier|public
+name|JournalAbbreviations
+parameter_list|(
+name|File
+name|file
+parameter_list|)
+throws|throws
+name|FileNotFoundException
+block|{
+name|readJournalList
+argument_list|(
+name|file
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Get an iterator for the known journals in alphabetical order.      * @return Iterator for journal full names      */
 DECL|method|fullNameIterator ()
 specifier|public
@@ -749,6 +765,16 @@ literal|null
 condition|)
 block|{
 comment|//System.out.println(line);
+if|if
+condition|(
+name|line
+operator|.
+name|startsWith
+argument_list|(
+literal|"#"
+argument_list|)
+condition|)
+continue|continue;
 name|String
 index|[]
 name|parts

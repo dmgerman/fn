@@ -1990,13 +1990,19 @@ comment|//Globals.setLanguage("no", "");
 name|macOSXRegistration
 argument_list|()
 expr_stmt|;
-name|setGlassPane
-argument_list|(
+name|MyGlassPane
+name|glassPane
+init|=
 operator|new
 name|MyGlassPane
 argument_list|()
+decl_stmt|;
+name|setGlassPane
+argument_list|(
+name|glassPane
 argument_list|)
 expr_stmt|;
+comment|//  glassPane.setVisible(true);
 name|setTitle
 argument_list|(
 name|GUIGlobals
@@ -12365,6 +12371,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/*private class ForegroundLabel extends JLabel {          public ForegroundLabel(String s) {              super(s);              setFont(new Font("plain", Font.BOLD, 70));              setHorizontalAlignment(JLabel.CENTER);          }          public void paint(Graphics g) {             Graphics2D g2 = (Graphics2D)g;             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);             super.paint(g2);    //To change body of overridden methods use File | Settings | File Templates.         }     }       */
 DECL|class|MyGlassPane
 specifier|private
 class|class
@@ -12372,6 +12379,7 @@ name|MyGlassPane
 extends|extends
 name|JPanel
 block|{
+comment|//ForegroundLabel infoLabel = new ForegroundLabel("Showing search");
 DECL|method|MyGlassPane ()
 specifier|public
 name|MyGlassPane
@@ -12393,6 +12401,7 @@ argument_list|()
 block|{ }
 argument_list|)
 expr_stmt|;
+comment|/*  infoLabel.setForeground(new Color(255, 100, 100, 124));          setLayout(new BorderLayout());         add(infoLabel, BorderLayout.CENTER);*/
 name|super
 operator|.
 name|setCursor

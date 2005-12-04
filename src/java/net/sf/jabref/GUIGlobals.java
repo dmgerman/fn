@@ -1551,6 +1551,11 @@ DECL|field|remoteHelp
 name|remoteHelp
 init|=
 literal|"RemoteHelp.html"
+decl_stmt|,
+DECL|field|journalAbbrHelp
+name|journalAbbrHelp
+init|=
+literal|"JournalAbbreviations.html"
 decl_stmt|;
 comment|// Colors.
 specifier|public

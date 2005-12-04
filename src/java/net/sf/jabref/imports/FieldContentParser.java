@@ -44,12 +44,15 @@ name|StringBuffer
 name|content
 parameter_list|)
 block|{
+comment|//boolean rep = false;
 name|int
 name|i
 init|=
 literal|0
 decl_stmt|;
 comment|// Remove windows newlines and insert unix ones:
+comment|// TODO: 2005.12.3: Added replace from \r to \n, to work around a reported problem of words stiched together.
+comment|// But: we need to find out why these lone \r characters appear in his file.
 name|content
 operator|=
 operator|new
@@ -66,8 +69,16 @@ literal|"\r\n"
 argument_list|,
 literal|"\n"
 argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\r"
+argument_list|,
+literal|"\n"
+argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//if (rep) System.out.println(content.toString());
 comment|/*while (i<content.length()) {             if (content.charAt(i) == '\r')                 content.deleteCharAt(i);             else i++;         }          i=0;*/
 while|while
 condition|(
