@@ -62,6 +62,16 @@ name|ChangeEvent
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|*
+import|;
+end_import
+
 begin_class
 DECL|class|SidePaneManager
 specifier|public
@@ -689,7 +699,7 @@ comment|//sidep.setComponents(visible);
 name|updateView
 argument_list|()
 expr_stmt|;
-comment|/*comp.componentClosing(); 	comp.setVisible(false);  // Swing method to make component invisible. 	comp.setVisibility(false); // Our own boolean to keep track of visibility. 	visibleComponents--; 	if (visibleComponents == 0) 	    panel.remove(sidep);       */
+comment|/*comp.componentClosing();   comp.setVisible(false);  // Swing method to make component invisible.   comp.setVisibility(false); // Our own boolean to keep track of visibility.   visibleComponents--;   if (visibleComponents == 0)       panel.remove(sidep);     */
 block|}
 comment|/**      * Update all side pane components to show information from the given BasePanel.      * @param panel      */
 DECL|method|setActiveBasePanel (BasePanel panel)
@@ -906,6 +916,22 @@ name|ChangeEvent
 name|event
 parameter_list|)
 block|{
+comment|// Change by Morten Alver 2005.12.04:
+comment|// By postponing the updating of the side pane components, we get rid of the annoying
+comment|// latency when switching tabs:
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+operator|new
+name|Runnable
+argument_list|()
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
 name|setActiveBasePanel
 argument_list|(
 operator|(
@@ -917,6 +943,10 @@ name|tabbedPane
 operator|.
 name|getSelectedComponent
 argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 argument_list|)
 expr_stmt|;
 block|}

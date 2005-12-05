@@ -285,6 +285,15 @@ argument_list|(
 literal|"General"
 argument_list|)
 decl_stmt|,
+name|APP
+init|=
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Appearance"
+argument_list|)
+decl_stmt|,
 name|GRP
 init|=
 name|Globals
@@ -304,7 +313,7 @@ argument_list|(
 literal|"External programs"
 argument_list|)
 decl_stmt|,
-name|APP
+name|TAB
 init|=
 name|Globals
 operator|.
@@ -368,6 +377,13 @@ name|al
 operator|.
 name|add
 argument_list|(
+name|APP
+argument_list|)
+expr_stmt|;
+name|al
+operator|.
+name|add
+argument_list|(
 name|GRP
 argument_list|)
 expr_stmt|;
@@ -382,7 +398,7 @@ name|al
 operator|.
 name|add
 argument_list|(
-name|APP
+name|TAB
 argument_list|)
 expr_stmt|;
 name|al
@@ -480,6 +496,19 @@ operator|.
 name|add
 argument_list|(
 operator|new
+name|AppearancePrefsTab
+argument_list|(
+name|_prefs
+argument_list|)
+argument_list|,
+name|APP
+argument_list|)
+expr_stmt|;
+name|main
+operator|.
+name|add
+argument_list|(
+operator|new
 name|ExternalTab
 argument_list|(
 name|frame
@@ -502,7 +531,7 @@ argument_list|,
 name|parent
 argument_list|)
 argument_list|,
-name|APP
+name|TAB
 argument_list|)
 expr_stmt|;
 name|main

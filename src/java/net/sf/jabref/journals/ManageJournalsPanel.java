@@ -538,21 +538,35 @@ argument_list|)
 expr_stmt|;
 name|addExtPan
 operator|.
+name|setLayout
+argument_list|(
+operator|new
+name|BorderLayout
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|addExtPan
+operator|.
 name|add
 argument_list|(
 name|addExt
+argument_list|,
+name|BorderLayout
+operator|.
+name|EAST
 argument_list|)
 expr_stmt|;
+comment|//addExtPan.setBorder(BorderFactory.createMatteBorder(1,1,1,1,Color.red));
 name|FormLayout
 name|layout
 init|=
 operator|new
 name|FormLayout
 argument_list|(
-literal|"1dlu, 8dlu, left:pref, 4dlu, fill:pref:grow, 4dlu, fill:pref"
+literal|"1dlu, 8dlu, left:pref, 4dlu, fill:200dlu:grow, 4dlu, fill:pref"
 argument_list|,
 comment|// 4dlu, left:pref, 4dlu",
-literal|"40dlu, 20dlu, 20dlu, fill:200dlu, 4dlu, pref, 4dlu, 200dlu"
+literal|"pref, 20dlu, 20dlu, fill:200dlu, 4dlu, pref, 4dlu, 150dlu"
 argument_list|)
 decl_stmt|;
 name|DefaultFormBuilder
