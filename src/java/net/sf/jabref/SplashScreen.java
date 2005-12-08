@@ -307,19 +307,22 @@ decl_stmt|;
 comment|// Show the window.
 name|w
 operator|.
-name|toFront
-argument_list|()
-expr_stmt|;
-name|w
-operator|.
 name|setVisible
 argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|w
+operator|.
+name|toFront
+argument_list|()
+expr_stmt|;
 comment|// Note: To make sure the user gets a chance to see the
 comment|// splash window we wait until its paint method has been
 comment|// called at least once by the AWT event dispatcher thread.
+comment|// sebwills adds: However, just in case the paint method never gets called
+comment|// (e.g. if the splashscreen is completely obscured by an 'always on top'
+comment|// window of some other application), we time-out after 5 seconds.
 if|if
 condition|(
 operator|!
@@ -334,7 +337,7 @@ init|(
 name|w
 init|)
 block|{
-while|while
+if|if
 condition|(
 operator|!
 name|w
@@ -347,7 +350,9 @@ block|{
 name|w
 operator|.
 name|wait
-argument_list|()
+argument_list|(
+literal|5000
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
