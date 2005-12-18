@@ -163,6 +163,20 @@ argument_list|,
 name|hasFocus
 argument_list|)
 decl_stmt|;
+comment|// this is sometimes called from deep within somewhere, with a dummy
+comment|// value (probably for layout etc.), so we've got to check here!
+if|if
+condition|(
+operator|!
+operator|(
+name|value
+operator|instanceof
+name|GroupTreeNode
+operator|)
+condition|)
+return|return
+name|c
+return|;
 name|AbstractGroup
 name|group
 init|=
