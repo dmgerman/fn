@@ -5816,10 +5816,28 @@ literal|false
 return|;
 comment|// not possible
 block|}
-comment|// update of selection/expansion state not required
-comment|// when moving amongst siblings (no path is invalidated)
+comment|// update selection/expansion state (not really needed when
+comment|// moving among siblings, but I'm paranoid)
 name|revalidateGroups
+argument_list|(
+name|groupsTree
+operator|.
+name|refreshPaths
+argument_list|(
+name|groupsTree
+operator|.
+name|getSelectionPaths
 argument_list|()
+argument_list|)
+argument_list|,
+name|groupsTree
+operator|.
+name|refreshPaths
+argument_list|(
+name|getExpandedPaths
+argument_list|()
+argument_list|)
+argument_list|)
 expr_stmt|;
 name|concludeMoveGroup
 argument_list|(
@@ -5932,10 +5950,28 @@ literal|false
 return|;
 comment|// not possible
 block|}
-comment|// update of selection/expansion state not required
-comment|// when moving amongst siblings (no path is invalidated)
+comment|// update selection/expansion state (not really needed when
+comment|// moving among siblings, but I'm paranoid)
 name|revalidateGroups
+argument_list|(
+name|groupsTree
+operator|.
+name|refreshPaths
+argument_list|(
+name|groupsTree
+operator|.
+name|getSelectionPaths
 argument_list|()
+argument_list|)
+argument_list|,
+name|groupsTree
+operator|.
+name|refreshPaths
+argument_list|(
+name|getExpandedPaths
+argument_list|()
+argument_list|)
+argument_list|)
 expr_stmt|;
 name|concludeMoveGroup
 argument_list|(
@@ -5999,12 +6035,6 @@ name|undo
 init|=
 literal|null
 decl_stmt|;
-name|Enumeration
-name|expandedPaths
-init|=
-name|getExpandedPaths
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -6057,25 +6087,22 @@ block|}
 comment|// update selection/expansion state
 name|revalidateGroups
 argument_list|(
-operator|new
-name|TreePath
-index|[]
-block|{
-operator|new
-name|TreePath
-argument_list|(
-name|node
+name|groupsTree
 operator|.
-name|getPath
+name|refreshPaths
+argument_list|(
+name|groupsTree
+operator|.
+name|getSelectionPaths
 argument_list|()
 argument_list|)
-block|}
 argument_list|,
 name|groupsTree
 operator|.
 name|refreshPaths
 argument_list|(
-name|expandedPaths
+name|getExpandedPaths
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6141,12 +6168,6 @@ name|undo
 init|=
 literal|null
 decl_stmt|;
-name|Enumeration
-name|expandedPaths
-init|=
-name|getExpandedPaths
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -6199,25 +6220,22 @@ block|}
 comment|// update selection/expansion state
 name|revalidateGroups
 argument_list|(
-operator|new
-name|TreePath
-index|[]
-block|{
-operator|new
-name|TreePath
-argument_list|(
-name|node
+name|groupsTree
 operator|.
-name|getPath
+name|refreshPaths
+argument_list|(
+name|groupsTree
+operator|.
+name|getSelectionPaths
 argument_list|()
 argument_list|)
-block|}
 argument_list|,
 name|groupsTree
 operator|.
 name|refreshPaths
 argument_list|(
-name|expandedPaths
+name|getExpandedPaths
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
