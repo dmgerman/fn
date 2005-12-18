@@ -9491,6 +9491,8 @@ operator|.
 name|moveNodeUp
 argument_list|(
 name|node
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 break|break;
@@ -9517,6 +9519,8 @@ operator|.
 name|moveNodeDown
 argument_list|(
 name|node
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 break|break;
@@ -9543,6 +9547,8 @@ operator|.
 name|moveNodeLeft
 argument_list|(
 name|node
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 break|break;
@@ -9569,6 +9575,8 @@ operator|.
 name|moveNodeRight
 argument_list|(
 name|node
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 break|break;
