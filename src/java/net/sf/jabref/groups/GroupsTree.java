@@ -1660,6 +1660,33 @@ block|}
 end_function
 
 begin_comment
+comment|/** Highlights the specified cell or disables highlight if cell == null */
+end_comment
+
+begin_function
+DECL|method|setHighlightBorderCell (GroupTreeNode node)
+specifier|public
+name|void
+name|setHighlightBorderCell
+parameter_list|(
+name|GroupTreeNode
+name|node
+parameter_list|)
+block|{
+name|cellRenderer
+operator|.
+name|setHighlightBorderCell
+argument_list|(
+name|node
+argument_list|)
+expr_stmt|;
+name|repaint
+argument_list|()
+expr_stmt|;
+block|}
+end_function
+
+begin_comment
 comment|/** Sort immediate children of the specified node alphabetically. */
 end_comment
 
