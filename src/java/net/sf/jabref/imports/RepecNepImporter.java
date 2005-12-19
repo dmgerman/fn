@@ -181,7 +181,7 @@ DECL|class|RepecNepImporter
 specifier|public
 class|class
 name|RepecNepImporter
-implements|implements
+extends|extends
 name|ImportFormat
 block|{
 DECL|field|recognizedFields

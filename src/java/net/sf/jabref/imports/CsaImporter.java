@@ -129,7 +129,7 @@ DECL|class|CsaImporter
 specifier|public
 class|class
 name|CsaImporter
-implements|implements
+extends|extends
 name|ImportFormat
 block|{
 comment|// local fields

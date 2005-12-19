@@ -117,7 +117,7 @@ DECL|class|BiomailImporter
 specifier|public
 class|class
 name|BiomailImporter
-implements|implements
+extends|extends
 name|ImportFormat
 block|{
 comment|/**      * Return the name of this import format.      */

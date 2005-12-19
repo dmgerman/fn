@@ -119,7 +119,7 @@ DECL|class|JstorImporter
 specifier|public
 class|class
 name|JstorImporter
-implements|implements
+extends|extends
 name|ImportFormat
 block|{
 comment|/**      * Return the name of this import format.      */

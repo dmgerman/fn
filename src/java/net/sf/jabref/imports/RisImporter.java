@@ -129,7 +129,7 @@ DECL|class|RisImporter
 specifier|public
 class|class
 name|RisImporter
-implements|implements
+extends|extends
 name|ImportFormat
 block|{
 comment|/**      * Return the name of this import format.      */

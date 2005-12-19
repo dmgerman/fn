@@ -18,16 +18,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|Reader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|InputStream
 import|;
 end_import
@@ -126,18 +116,6 @@ name|Globals
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Util
-import|;
-end_import
-
 begin_comment
 comment|/**  * Imports a Biblioscape Tag File. The format is described on  * http://www.biblioscape.com/manual_bsp/Biblioscape_Tag_File.htm Several  * Biblioscape field types are ignored. Others are only included in the BibTeX  * field "comment".  */
 end_comment
@@ -147,7 +125,7 @@ DECL|class|BiblioscapeImporter
 specifier|public
 class|class
 name|BiblioscapeImporter
-implements|implements
+extends|extends
 name|ImportFormat
 block|{
 comment|/**      * Return the name of this import format.      */

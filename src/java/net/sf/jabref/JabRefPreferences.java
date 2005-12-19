@@ -78,6 +78,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|imports
+operator|.
+name|CustomImportList
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|awt
@@ -244,6 +258,12 @@ DECL|field|customExports
 specifier|public
 name|CustomExportList
 name|customExports
+decl_stmt|;
+comment|/** Set with all custom {@link ImportFormat}s */
+DECL|field|customImports
+specifier|public
+name|CustomImportList
+name|customImports
 decl_stmt|;
 comment|// Object containing info about customized entry editor tabs.
 DECL|field|tabList
@@ -2037,6 +2057,14 @@ argument_list|,
 operator|new
 name|ExportComparator
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|customImports
+operator|=
+operator|new
+name|CustomImportList
+argument_list|(
+name|this
 argument_list|)
 expr_stmt|;
 comment|//defaults.put("oooWarning", Boolean.TRUE);

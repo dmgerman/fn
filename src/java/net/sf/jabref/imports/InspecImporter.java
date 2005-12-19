@@ -129,7 +129,7 @@ DECL|class|InspecImporter
 specifier|public
 class|class
 name|InspecImporter
-implements|implements
+extends|extends
 name|ImportFormat
 block|{
 comment|/**      * Return the name of this import format.      */

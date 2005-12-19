@@ -117,7 +117,7 @@ DECL|class|ScifinderImporter
 specifier|public
 class|class
 name|ScifinderImporter
-implements|implements
+extends|extends
 name|ImportFormat
 block|{
 comment|/**      * Return the name of this import format.      */

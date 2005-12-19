@@ -18,16 +18,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|Reader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|InputStream
 import|;
 end_import
@@ -59,26 +49,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
 import|;
 end_import
 
@@ -159,7 +129,7 @@ DECL|class|SixpackImporter
 specifier|public
 class|class
 name|SixpackImporter
-implements|implements
+extends|extends
 name|ImportFormat
 block|{
 comment|/**      * Return the name of this import format.      */

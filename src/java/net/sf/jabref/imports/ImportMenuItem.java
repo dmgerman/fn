@@ -80,16 +80,6 @@ name|ImportInspectionDialog
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_class
 DECL|class|ImportMenuItem
 specifier|public
@@ -155,6 +145,16 @@ operator|.
 name|openInNew
 operator|=
 name|openInNew
+expr_stmt|;
+name|this
+operator|.
+name|setToolTipText
+argument_list|(
+name|importer
+operator|.
+name|getDescription
+argument_list|()
+argument_list|)
 expr_stmt|;
 name|addActionListener
 argument_list|(

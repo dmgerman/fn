@@ -318,6 +318,13 @@ name|prefs
 operator|=
 name|prefs
 expr_stmt|;
+name|Globals
+operator|.
+name|importFormatReader
+operator|.
+name|resetImportFormats
+argument_list|()
+expr_stmt|;
 name|BibtexEntryType
 operator|.
 name|loadCustomEntryTypes

@@ -153,7 +153,7 @@ DECL|class|OvidImporter
 specifier|public
 class|class
 name|OvidImporter
-implements|implements
+extends|extends
 name|ImportFormat
 block|{
 DECL|field|ovid_src_pat

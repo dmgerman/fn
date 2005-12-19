@@ -129,7 +129,7 @@ DECL|class|SilverPlatterImporter
 specifier|public
 class|class
 name|SilverPlatterImporter
-implements|implements
+extends|extends
 name|ImportFormat
 block|{
 comment|/**      * Return the name of this import format.      */
