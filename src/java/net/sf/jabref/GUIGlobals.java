@@ -2256,6 +2256,26 @@ name|EXPORT_DIALOG_COL_2_WIDTH
 init|=
 literal|30
 decl_stmt|;
+comment|// Column widths for import customization dialog table:
+specifier|public
+specifier|static
+specifier|final
+name|int
+DECL|field|IMPORT_DIALOG_COL_0_WIDTH
+name|IMPORT_DIALOG_COL_0_WIDTH
+init|=
+literal|50
+decl_stmt|,
+DECL|field|IMPORT_DIALOG_COL_1_WIDTH
+name|IMPORT_DIALOG_COL_1_WIDTH
+init|=
+literal|200
+decl_stmt|,
+DECL|field|IMPORT_DIALOG_COL_2_WIDTH
+name|IMPORT_DIALOG_COL_2_WIDTH
+init|=
+literal|100
+decl_stmt|;
 DECL|field|FIELD_WEIGHT
 specifier|public
 specifier|static
