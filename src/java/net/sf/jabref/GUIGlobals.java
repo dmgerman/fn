@@ -1511,6 +1511,11 @@ name|exportCustomizationHelp
 init|=
 literal|"CustomExports.html"
 decl_stmt|,
+DECL|field|importCustomizationHelp
+name|importCustomizationHelp
+init|=
+literal|"CustomImports.html"
+decl_stmt|,
 DECL|field|medlineHelp
 name|medlineHelp
 init|=

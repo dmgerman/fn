@@ -813,7 +813,7 @@ name|helpDiag
 argument_list|,
 name|GUIGlobals
 operator|.
-name|exportCustomizationHelp
+name|importCustomizationHelp
 argument_list|,
 literal|"Help"
 argument_list|)
