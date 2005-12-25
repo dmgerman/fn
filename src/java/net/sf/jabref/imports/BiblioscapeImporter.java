@@ -139,6 +139,17 @@ return|return
 literal|"Biblioscape"
 return|;
 block|}
+comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
+DECL|method|getCLIId ()
+specifier|public
+name|String
+name|getCLIId
+parameter_list|()
+block|{
+return|return
+literal|"biblioscape"
+return|;
+block|}
 comment|/**      * Check whether the source is in the correct format for this importer.      */
 DECL|method|isRecognizedFormat (InputStream in)
 specifier|public

@@ -91,7 +91,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Collection of user defined custom export formats.   *   *<p>The collection can be stored and retrieved from Preferences. It is sorted by the default  * order of {@link ImportFormat}.</p>  */
+comment|/**  * Collection of user defined custom import formats.   *   *<p>The collection can be stored and retrieved from Preferences. It is sorted by the default  * order of {@link ImportFormat}.</p>  */
 end_comment
 
 begin_class
@@ -102,7 +102,7 @@ name|CustomImportList
 extends|extends
 name|TreeSet
 block|{
-comment|/**    * Structure with data for a custom importer     */
+comment|/**    * Object with data for a custom importer.    *     *<p>Is also responsible for instantiating the class loader.</p>    */
 DECL|class|Importer
 specifier|public
 class|class
@@ -114,6 +114,11 @@ DECL|field|name
 specifier|private
 name|String
 name|name
+decl_stmt|;
+DECL|field|cliId
+specifier|private
+name|String
+name|cliId
 decl_stmt|;
 DECL|field|className
 specifier|private
@@ -157,7 +162,7 @@ index|]
 expr_stmt|;
 name|this
 operator|.
-name|className
+name|cliId
 operator|=
 name|data
 index|[
@@ -166,11 +171,20 @@ index|]
 expr_stmt|;
 name|this
 operator|.
-name|basePath
+name|className
 operator|=
 name|data
 index|[
 literal|2
+index|]
+expr_stmt|;
+name|this
+operator|.
+name|basePath
+operator|=
+name|data
+index|[
+literal|3
 index|]
 expr_stmt|;
 block|}
@@ -200,6 +214,34 @@ operator|.
 name|name
 operator|=
 name|name
+expr_stmt|;
+block|}
+DECL|method|getClidId ()
+specifier|public
+name|String
+name|getClidId
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|cliId
+return|;
+block|}
+DECL|method|setCliId (String cliId)
+specifier|public
+name|void
+name|setCliId
+parameter_list|(
+name|String
+name|cliId
+parameter_list|)
+block|{
+name|this
+operator|.
+name|cliId
+operator|=
+name|cliId
 expr_stmt|;
 block|}
 DECL|method|getClassName ()
@@ -289,6 +331,8 @@ name|String
 index|[]
 block|{
 name|name
+block|,
+name|cliId
 block|,
 name|className
 block|,
@@ -514,6 +558,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+try|try
+block|{
 name|super
 operator|.
 name|add
@@ -525,6 +571,31 @@ name|s
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"Warning! Could not load "
+operator|+
+name|s
+index|[
+literal|0
+index|]
+operator|+
+literal|" from preferences. Will ignore."
+argument_list|)
+expr_stmt|;
+comment|// Globals.prefs.remove("customImportFormat"+i);
+block|}
 name|i
 operator|++
 expr_stmt|;
@@ -546,6 +617,37 @@ argument_list|(
 name|customImporter
 argument_list|)
 expr_stmt|;
+block|}
+comment|/**    * Adds an importer.    *     *<p>If an old one equal to the new one was contained, the old    * one is replaced.</p>    *     * @param customImporter new (version of an) importer    * @return  if the importer was contained    */
+DECL|method|replaceImporter (Importer customImporter)
+specifier|public
+name|boolean
+name|replaceImporter
+parameter_list|(
+name|Importer
+name|customImporter
+parameter_list|)
+block|{
+name|boolean
+name|wasContained
+init|=
+name|this
+operator|.
+name|remove
+argument_list|(
+name|customImporter
+argument_list|)
+decl_stmt|;
+name|this
+operator|.
+name|addImporter
+argument_list|(
+name|customImporter
+argument_list|)
+expr_stmt|;
+return|return
+name|wasContained
+return|;
 block|}
 DECL|method|store ()
 specifier|public

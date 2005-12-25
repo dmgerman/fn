@@ -248,6 +248,44 @@ name|Globals
 operator|.
 name|prefs
 decl_stmt|;
+comment|/*    *  (non-Javadoc)    * @see java.awt.Component#getSize()    */
+DECL|method|getSize ()
+specifier|public
+name|Dimension
+name|getSize
+parameter_list|()
+block|{
+name|int
+name|width
+init|=
+name|GUIGlobals
+operator|.
+name|IMPORT_DIALOG_COL_0_WIDTH
+operator|+
+name|GUIGlobals
+operator|.
+name|IMPORT_DIALOG_COL_1_WIDTH
+operator|+
+name|GUIGlobals
+operator|.
+name|IMPORT_DIALOG_COL_2_WIDTH
+operator|+
+name|GUIGlobals
+operator|.
+name|IMPORT_DIALOG_COL_3_WIDTH
+decl_stmt|;
+return|return
+operator|new
+name|Dimension
+argument_list|(
+name|width
+argument_list|,
+name|width
+operator|*
+literal|2
+argument_list|)
+return|;
+block|}
 comment|/**    *     * @param frame_    * @throws HeadlessException    */
 DECL|method|ImportCustomizationDialog (JabRefFrame frame_)
 specifier|public
@@ -329,7 +367,7 @@ literal|"workingDirectory"
 argument_list|)
 argument_list|)
 argument_list|,
-literal|null
+literal|""
 argument_list|,
 literal|"Select Classpath of New Importer"
 argument_list|,
@@ -337,7 +375,7 @@ name|JFileChooser
 operator|.
 name|CUSTOM_DIALOG
 argument_list|,
-literal|true
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -365,7 +403,7 @@ name|JFileChooser
 operator|.
 name|CUSTOM_DIALOG
 argument_list|,
-literal|true
+literal|false
 argument_list|)
 decl_stmt|;
 if|if
@@ -469,6 +507,19 @@ name|getFormatName
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|importer
+operator|.
+name|setCliId
+argument_list|(
+name|importer
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getCLIId
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -504,7 +555,7 @@ name|prefs
 operator|.
 name|customImports
 operator|.
-name|addImporter
+name|replaceImporter
 argument_list|(
 name|importer
 argument_list|)
@@ -884,6 +935,20 @@ operator|.
 name|IMPORT_DIALOG_COL_2_WIDTH
 argument_list|)
 expr_stmt|;
+name|cm
+operator|.
+name|getColumn
+argument_list|(
+literal|3
+argument_list|)
+operator|.
+name|setPreferredWidth
+argument_list|(
+name|GUIGlobals
+operator|.
+name|IMPORT_DIALOG_COL_3_WIDTH
+argument_list|)
+expr_stmt|;
 name|JScrollPane
 name|sp
 init|=
@@ -1082,6 +1147,14 @@ operator|.
 name|SOUTH
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|setSize
+argument_list|(
+name|getSize
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|pack
 argument_list|()
 expr_stmt|;
@@ -1115,7 +1188,7 @@ name|getColumnCount
 parameter_list|()
 block|{
 return|return
-literal|3
+literal|4
 return|;
 block|}
 DECL|method|getRowCount ()
@@ -1162,6 +1235,17 @@ argument_list|)
 return|;
 case|case
 literal|1
+case|:
+return|return
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Command line id"
+argument_list|)
+return|;
+case|case
+literal|2
 case|:
 return|return
 name|Globals
@@ -1282,7 +1366,7 @@ name|value
 operator|=
 name|importer
 operator|.
-name|getClassName
+name|getClidId
 argument_list|()
 expr_stmt|;
 block|}
@@ -1292,6 +1376,22 @@ condition|(
 name|columnIndex
 operator|==
 literal|2
+condition|)
+block|{
+name|value
+operator|=
+name|importer
+operator|.
+name|getClassName
+argument_list|()
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|columnIndex
+operator|==
+literal|3
 condition|)
 block|{
 name|value

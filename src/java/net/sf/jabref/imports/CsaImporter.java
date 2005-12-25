@@ -292,6 +292,17 @@ return|return
 literal|"CSA"
 return|;
 block|}
+comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
+DECL|method|getCLIId ()
+specifier|public
+name|String
+name|getCLIId
+parameter_list|()
+block|{
+return|return
+literal|"csa"
+return|;
+block|}
 comment|// read a line
 DECL|method|readLine (BufferedReader file)
 specifier|private

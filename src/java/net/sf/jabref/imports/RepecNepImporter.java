@@ -278,6 +278,17 @@ return|return
 literal|"REPEC New Economic Papers (NEP)"
 return|;
 block|}
+comment|/*    *  (non-Javadoc)    * @see net.sf.jabref.imports.ImportFormat#getCLIId()    */
+DECL|method|getCLIId ()
+specifier|public
+name|String
+name|getCLIId
+parameter_list|()
+block|{
+return|return
+literal|"repecnep"
+return|;
+block|}
 comment|/*    *  (non-Javadoc)    * @see net.sf.jabref.imports.ImportFormat#getDescription()    */
 DECL|method|getDescription ()
 specifier|public
