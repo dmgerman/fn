@@ -1670,21 +1670,39 @@ literal|"Synchronize PS"
 argument_list|)
 argument_list|)
 decl_stmt|,
-DECL|field|abbreviate
-name|abbreviate
+DECL|field|abbreviateMedline
+name|abbreviateMedline
 init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"abbreviate"
+literal|"abbreviateMedline"
 argument_list|,
-literal|"Abbreviate journal names"
+literal|"Abbreviate journal names (MEDLINE)"
 argument_list|,
 name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Abbreviate journal names of the selected entries"
+literal|"Abbreviate journal names of the selected entries (MEDLINE abbreviation)"
+argument_list|)
+argument_list|)
+decl_stmt|,
+DECL|field|abbreviateIso
+name|abbreviateIso
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"abbreviateIso"
+argument_list|,
+literal|"Abbreviate journal names (ISO)"
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Abbreviate journal names of the selected entries (ISO abbreviation)"
 argument_list|)
 argument_list|,
 name|Globals
@@ -5404,7 +5422,14 @@ name|tools
 operator|.
 name|add
 argument_list|(
-name|abbreviate
+name|abbreviateIso
+argument_list|)
+expr_stmt|;
+name|tools
+operator|.
+name|add
+argument_list|(
+name|abbreviateMedline
 argument_list|)
 expr_stmt|;
 name|tools

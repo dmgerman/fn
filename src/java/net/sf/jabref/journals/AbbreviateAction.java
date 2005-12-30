@@ -96,12 +96,19 @@ name|message
 init|=
 literal|""
 decl_stmt|;
-DECL|method|AbbreviateAction (BasePanel panel)
+DECL|field|iso
+name|boolean
+name|iso
+decl_stmt|;
+DECL|method|AbbreviateAction (BasePanel panel, boolean iso)
 specifier|public
 name|AbbreviateAction
 parameter_list|(
 name|BasePanel
 name|panel
+parameter_list|,
+name|boolean
+name|iso
 parameter_list|)
 block|{
 name|this
@@ -109,6 +116,12 @@ operator|.
 name|panel
 operator|=
 name|panel
+expr_stmt|;
+name|this
+operator|.
+name|iso
+operator|=
+name|iso
 expr_stmt|;
 block|}
 DECL|method|init ()
@@ -197,7 +210,7 @@ literal|"journal"
 argument_list|,
 name|ce
 argument_list|,
-literal|true
+name|iso
 argument_list|)
 condition|)
 name|count
