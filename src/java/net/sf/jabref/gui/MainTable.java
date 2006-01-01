@@ -26,6 +26,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|groups
+operator|.
+name|EntryTableTransferHandler
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -324,6 +338,21 @@ init|=
 name|getSelected
 argument_list|()
 decl_stmt|;
+comment|// enable DnD
+name|setDragEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|setTransferHandler
+argument_list|(
+operator|new
+name|EntryTableTransferHandler
+argument_list|(
+name|this
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|setupComparatorChooser
 argument_list|()
 expr_stmt|;

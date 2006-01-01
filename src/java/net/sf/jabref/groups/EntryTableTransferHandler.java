@@ -74,6 +74,20 @@ name|EntryTable
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|MainTable
+import|;
+end_import
+
 begin_class
 DECL|class|EntryTableTransferHandler
 specifier|public
@@ -85,14 +99,14 @@ block|{
 DECL|field|entryTable
 specifier|protected
 specifier|final
-name|EntryTable
+name|MainTable
 name|entryTable
 decl_stmt|;
-DECL|method|EntryTableTransferHandler (EntryTable entryTable)
+DECL|method|EntryTableTransferHandler (MainTable entryTable)
 specifier|public
 name|EntryTableTransferHandler
 parameter_list|(
-name|EntryTable
+name|MainTable
 name|entryTable
 parameter_list|)
 block|{

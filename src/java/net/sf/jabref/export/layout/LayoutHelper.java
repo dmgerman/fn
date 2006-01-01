@@ -1169,6 +1169,7 @@ operator|=
 name|read
 argument_list|()
 expr_stmt|;
+comment|//System.out.print((char)c);
 if|if
 condition|(
 name|c
@@ -1205,9 +1206,15 @@ comment|//System.out.println("\n#" + (char) c);
 name|name
 operator|=
 name|buffer
+operator|!=
+literal|null
+condition|?
+name|buffer
 operator|.
 name|toString
 argument_list|()
+else|:
+literal|""
 expr_stmt|;
 comment|//System.out.println("NAME:" + name);
 name|buffer

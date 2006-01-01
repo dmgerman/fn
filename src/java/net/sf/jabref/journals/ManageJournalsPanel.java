@@ -945,7 +945,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Journal abbrebiations"
+literal|"Journal abbreviations"
 argument_list|)
 argument_list|,
 literal|false
