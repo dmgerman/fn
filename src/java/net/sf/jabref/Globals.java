@@ -2100,7 +2100,7 @@ name|fc
 operator|.
 name|showOpenDialog
 argument_list|(
-literal|null
+name|owner
 argument_list|)
 expr_stmt|;
 block|}
@@ -2120,7 +2120,7 @@ name|fc
 operator|.
 name|showSaveDialog
 argument_list|(
-literal|null
+name|owner
 argument_list|)
 expr_stmt|;
 block|}
@@ -2132,7 +2132,7 @@ name|fc
 operator|.
 name|showDialog
 argument_list|(
-literal|null
+name|owner
 argument_list|,
 name|description
 argument_list|)
