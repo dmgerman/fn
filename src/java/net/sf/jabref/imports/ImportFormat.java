@@ -107,6 +107,17 @@ name|String
 name|getFormatName
 parameter_list|()
 function_decl|;
+comment|/**      * Extensions that this importer can read.      *       * @return comma separated list of extensions or<code>null</code> for the default      */
+DECL|method|getExtensions ()
+specifier|public
+name|String
+name|getExtensions
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
 comment|/**      * Short, one token ID to identify the format from the command line.      *       * @return command line ID      */
 DECL|method|getCLIId ()
 specifier|public

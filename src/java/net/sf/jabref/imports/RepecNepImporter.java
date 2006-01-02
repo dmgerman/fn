@@ -289,6 +289,17 @@ return|return
 literal|"repecnep"
 return|;
 block|}
+comment|/*    *  (non-Javadoc)    * @see net.sf.jabref.imports.ImportFormat#getExtensions()    */
+DECL|method|getExtensions ()
+specifier|public
+name|String
+name|getExtensions
+parameter_list|()
+block|{
+return|return
+literal|".txt"
+return|;
+block|}
 comment|/*    *  (non-Javadoc)    * @see net.sf.jabref.imports.ImportFormat#getDescription()    */
 DECL|method|getDescription ()
 specifier|public
