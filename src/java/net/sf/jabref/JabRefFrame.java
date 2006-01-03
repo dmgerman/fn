@@ -10090,7 +10090,12 @@ init|=
 operator|new
 name|JMenu
 argument_list|(
-literal|"Custom Importers"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Custom importers"
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|submenu
@@ -10123,7 +10128,12 @@ name|submenu
 operator|.
 name|setToolTipText
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"No custom imports registered yet."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

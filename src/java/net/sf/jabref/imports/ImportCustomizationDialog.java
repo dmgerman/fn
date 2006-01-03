@@ -548,16 +548,21 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-literal|"Could not instantiate "
-operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Could not instantiate %0 %1"
+argument_list|,
 name|chosenFileStr
 operator|+
-literal|":\n "
-operator|+
+literal|":\n"
+argument_list|,
 name|exc
 operator|.
 name|getMessage
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -703,19 +708,24 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
-literal|"Could not instantiate "
-operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Could not instantiate %0 %1"
+argument_list|,
 name|importer
 operator|.
-name|getClassName
+name|getName
 argument_list|()
 operator|+
-literal|": "
-operator|+
+literal|":\n"
+argument_list|,
 name|exc
 operator|.
 name|getMessage
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -732,7 +742,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Please select an importer."
+literal|"Please select an importer"
 argument_list|)
 argument_list|)
 expr_stmt|;
