@@ -374,7 +374,12 @@ init|=
 operator|new
 name|JRadioButton
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Existing file"
+argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|add
@@ -556,6 +561,18 @@ operator|.
 name|EAST
 argument_list|)
 expr_stmt|;
+name|addExtPan
+operator|.
+name|setToolTipText
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Add"
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|//addExtPan.setBorder(BorderFactory.createMatteBorder(1,1,1,1,Color.red));
 name|FormLayout
 name|layout
@@ -566,7 +583,7 @@ argument_list|(
 literal|"1dlu, 8dlu, left:pref, 4dlu, fill:200dlu:grow, 4dlu, fill:pref"
 argument_list|,
 comment|// 4dlu, left:pref, 4dlu",
-literal|"pref, 20dlu, 20dlu, fill:200dlu, 4dlu, pref, 4dlu, 150dlu"
+literal|"pref, 20dlu, 20dlu, fill:200dlu, 4dlu, pref, 4dlu, fill:150dlu"
 argument_list|)
 decl_stmt|;
 name|DefaultFormBuilder
@@ -1036,7 +1053,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Abbreviation"
+literal|"ISO abbreviation"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1591,6 +1608,23 @@ argument_list|(
 name|addExtPan
 argument_list|)
 expr_stmt|;
+name|builder
+operator|.
+name|nextLine
+argument_list|()
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|Box
+operator|.
+name|createVerticalGlue
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|//builder.getPanel().setBorder(BorderFactory.createMatteBorder(1,1,1,1,Color.green));
+comment|//externalFilesPanel.setBorder(BorderFactory.createMatteBorder(1,1,1,1,Color.red));
 name|externalFilesPanel
 operator|.
 name|removeAll
@@ -3623,6 +3657,18 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+argument_list|)
+expr_stmt|;
+name|clear
+operator|.
+name|setToolTipText
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Remove"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

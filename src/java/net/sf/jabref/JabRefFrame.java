@@ -1680,12 +1680,7 @@ literal|"abbreviateMedline"
 argument_list|,
 literal|"Abbreviate journal names (MEDLINE)"
 argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
 literal|"Abbreviate journal names of the selected entries (MEDLINE abbreviation)"
-argument_list|)
 argument_list|)
 decl_stmt|,
 DECL|field|abbreviateIso
@@ -1698,12 +1693,7 @@ literal|"abbreviateIso"
 argument_list|,
 literal|"Abbreviate journal names (ISO)"
 argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
 literal|"Abbreviate journal names of the selected entries (ISO abbreviation)"
-argument_list|)
 argument_list|,
 name|Globals
 operator|.
@@ -1725,12 +1715,7 @@ literal|"unabbreviate"
 argument_list|,
 literal|"Unabbreviate journal names"
 argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
 literal|"Unabbreviate journal names of the selected entries"
-argument_list|)
 argument_list|,
 name|Globals
 operator|.
@@ -6713,6 +6698,27 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|abbreviateIso
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|abbreviateMedline
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|unabbreviate
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Enable actions that demand an open database.      */
 DECL|method|setNonEmptyState ()
@@ -7114,6 +7120,27 @@ literal|true
 argument_list|)
 expr_stmt|;
 name|databaseProperties
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|abbreviateIso
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|abbreviateMedline
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|unabbreviate
 operator|.
 name|setEnabled
 argument_list|(
