@@ -323,15 +323,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|setTransferHandler
-argument_list|(
-operator|new
-name|EntryTableTransferHandler
-argument_list|(
-name|this
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|// The following line is commented because EntryTableTransferHandler's
+comment|// constructor now only accepts MainTable which has replaced EntryTable.
+comment|// setTransferHandler(new EntryTableTransferHandler(this));
 comment|//renderingHints = g2.getRenderingHints();
 comment|//renderingHints.put(RenderingHints.KEY_ANTIALIASING,
 comment|//		   RenderingHints.VALUE_ANTIALIAS_ON);
