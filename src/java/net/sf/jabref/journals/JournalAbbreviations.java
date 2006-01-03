@@ -583,10 +583,24 @@ name|journalName
 argument_list|,
 literal|true
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|s
+operator|!=
+literal|null
+condition|)
+name|s
+operator|=
+name|s
 operator|.
 name|toLowerCase
 argument_list|()
-decl_stmt|;
+expr_stmt|;
+else|else
+return|return
+literal|null
+return|;
 name|Object
 name|o
 init|=
@@ -630,17 +644,9 @@ operator|)
 name|o
 expr_stmt|;
 return|return
-name|caseChanger
-operator|.
-name|changeCase
-argument_list|(
 name|s
-argument_list|,
-name|CaseChanger
-operator|.
-name|UPPER_EACH_FIRST
-argument_list|)
 return|;
+comment|//caseChanger.changeCase(s, CaseChanger.UPPER_EACH_FIRST);
 block|}
 DECL|method|readJournalList (String resourceFileName)
 specifier|public

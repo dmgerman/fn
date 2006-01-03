@@ -9296,6 +9296,11 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|diag
+operator|.
+name|toFront
+argument_list|()
+expr_stmt|;
 block|}
 else|else
 block|{
