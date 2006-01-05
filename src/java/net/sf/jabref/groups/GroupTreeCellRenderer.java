@@ -413,10 +413,15 @@ name|sb
 operator|.
 name|append
 argument_list|(
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|group
 operator|.
 name|getName
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if

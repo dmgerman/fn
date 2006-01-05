@@ -1055,7 +1055,12 @@ name|lang
 argument_list|(
 literal|"This group contains entries in which any field contains the regular expression<b>%0</b>"
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|expr
+argument_list|)
 argument_list|)
 else|:
 name|Globals
@@ -1064,7 +1069,12 @@ name|lang
 argument_list|(
 literal|"This group contains entries in which any field contains the term<b>%0</b>"
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|expr
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1586,7 +1596,12 @@ name|lang
 argument_list|(
 literal|"any field that matches the regular expression<b>%0</b>"
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|field
+argument_list|)
 argument_list|)
 else|:
 name|Globals
@@ -1595,7 +1610,12 @@ name|lang
 argument_list|(
 literal|"the field<b>%0</b>"
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|field
+argument_list|)
 argument_list|)
 decl_stmt|;
 switch|switch
@@ -1626,9 +1646,19 @@ name|lang
 argument_list|(
 literal|"%0 doesn't contain the Regular Expression<b>%1</b>"
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|fieldSpec
+argument_list|)
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|term
+argument_list|)
 argument_list|)
 else|:
 name|Globals
@@ -1637,9 +1667,19 @@ name|lang
 argument_list|(
 literal|"%0 contains the Regular Expression<b>%1</b>"
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|fieldSpec
+argument_list|)
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|term
+argument_list|)
 argument_list|)
 return|;
 return|return
@@ -1651,9 +1691,19 @@ name|lang
 argument_list|(
 literal|"%0 doesn't contain the term<b>%1</b>"
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|fieldSpec
+argument_list|)
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|term
+argument_list|)
 argument_list|)
 else|:
 name|Globals
@@ -1662,9 +1712,19 @@ name|lang
 argument_list|(
 literal|"%0 contains the term<b>%1</b>"
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|fieldSpec
+argument_list|)
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|term
+argument_list|)
 argument_list|)
 return|;
 case|case
@@ -1690,9 +1750,19 @@ name|lang
 argument_list|(
 literal|"%0 doesn't match the Regular Expression<b>%1</b>"
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|fieldSpec
+argument_list|)
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|term
+argument_list|)
 argument_list|)
 else|:
 name|Globals
@@ -1701,9 +1771,19 @@ name|lang
 argument_list|(
 literal|"%0 matches the Regular Expression<b>%1</b>"
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|fieldSpec
+argument_list|)
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|term
+argument_list|)
 argument_list|)
 return|;
 return|return
@@ -1715,9 +1795,19 @@ name|lang
 argument_list|(
 literal|"%0 doesn't match the term<b>%1</b>"
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|fieldSpec
+argument_list|)
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|term
+argument_list|)
 argument_list|)
 else|:
 name|Globals
@@ -1726,9 +1816,19 @@ name|lang
 argument_list|(
 literal|"%0 matches the term<b>%1</b>"
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|fieldSpec
+argument_list|)
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|term
+argument_list|)
 argument_list|)
 return|;
 case|case
@@ -1749,9 +1849,19 @@ name|lang
 argument_list|(
 literal|"%0 contains the Regular Expression<b>%1</b>"
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|fieldSpec
+argument_list|)
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|term
+argument_list|)
 argument_list|)
 else|:
 name|Globals
@@ -1760,9 +1870,19 @@ name|lang
 argument_list|(
 literal|"%0 doesn't contain the Regular Expression<b>%1</b>"
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|fieldSpec
+argument_list|)
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|term
+argument_list|)
 argument_list|)
 return|;
 return|return
@@ -1774,9 +1894,19 @@ name|lang
 argument_list|(
 literal|"%0 contains the term<b>%1</b>"
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|fieldSpec
+argument_list|)
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|term
+argument_list|)
 argument_list|)
 else|:
 name|Globals
@@ -1785,9 +1915,19 @@ name|lang
 argument_list|(
 literal|"%0 doesn't contain the term<b>%1</b>"
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|fieldSpec
+argument_list|)
 argument_list|,
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|term
+argument_list|)
 argument_list|)
 return|;
 default|default:
@@ -1840,8 +1980,13 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|getName
 argument_list|()
+argument_list|)
 argument_list|)
 operator|.
 name|append
@@ -1854,8 +1999,13 @@ name|sb
 operator|.
 name|append
 argument_list|(
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|getName
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|sb
@@ -1869,7 +2019,12 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
+name|Util
+operator|.
+name|quoteForHTML
+argument_list|(
 name|m_searchExpression
+argument_list|)
 argument_list|)
 operator|.
 name|append
