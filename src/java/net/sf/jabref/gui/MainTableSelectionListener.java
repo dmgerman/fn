@@ -172,15 +172,12 @@ name|workingOnPreview
 init|=
 literal|false
 decl_stmt|;
-DECL|method|MainTableSelectionListener (BasePanel panel, EventList tableRows, MainTable table)
+DECL|method|MainTableSelectionListener (BasePanel panel, MainTable table)
 specifier|public
 name|MainTableSelectionListener
 parameter_list|(
 name|BasePanel
 name|panel
-parameter_list|,
-name|EventList
-name|tableRows
 parameter_list|,
 name|MainTable
 name|table
@@ -202,7 +199,10 @@ name|this
 operator|.
 name|tableRows
 operator|=
-name|tableRows
+name|table
+operator|.
+name|getTableRows
+argument_list|()
 expr_stmt|;
 name|instantiatePreviews
 argument_list|()

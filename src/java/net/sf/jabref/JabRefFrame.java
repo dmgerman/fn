@@ -7852,6 +7852,12 @@ operator|+
 literal|"."
 argument_list|)
 expr_stmt|;
+name|System
+operator|.
+name|gc
+argument_list|()
+expr_stmt|;
+comment|// Test
 block|}
 block|}
 block|}

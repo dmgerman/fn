@@ -358,6 +358,20 @@ name|odell
 operator|.
 name|glazedlists
 operator|.
+name|matchers
+operator|.
+name|Matcher
+import|;
+end_import
+
+begin_import
+import|import
+name|ca
+operator|.
+name|odell
+operator|.
+name|glazedlists
+operator|.
 name|event
 operator|.
 name|ListEventListener
@@ -9055,15 +9069,7 @@ name|void
 name|createMainTable
 parameter_list|()
 block|{
-name|Comparator
-name|comp
-init|=
-operator|new
-name|FieldComparator
-argument_list|(
-literal|"author"
-argument_list|)
-decl_stmt|;
+comment|//Comparator comp = new FieldComparator("author");
 name|GlazedEntrySorter
 name|eventList
 init|=
@@ -9075,7 +9081,7 @@ operator|.
 name|getEntryMap
 argument_list|()
 argument_list|,
-name|comp
+literal|null
 argument_list|)
 decl_stmt|;
 comment|// Must initialize sort columns somehow:
@@ -9113,18 +9119,7 @@ operator|.
 name|INSTANCE
 argument_list|)
 expr_stmt|;
-specifier|final
-name|SortedList
-name|sortedList
-init|=
-operator|new
-name|SortedList
-argument_list|(
-name|searchFilterList
-argument_list|,
-name|comp
-argument_list|)
-decl_stmt|;
+comment|//final SortedList sortedList = new SortedList(searchFilterList, null);
 name|MainTableFormat
 name|tableFormat
 init|=
@@ -9139,28 +9134,16 @@ operator|.
 name|updateTableFormat
 argument_list|()
 expr_stmt|;
-name|EventTableModel
-name|tableModel
-init|=
-operator|new
-name|EventTableModel
-argument_list|(
-name|sortedList
-argument_list|,
-name|tableFormat
-argument_list|)
-decl_stmt|;
-comment|//PreviewPanel preview = new PreviewPanel(database, Globals.prefs.get("preview1"));
+comment|//EventTableModel tableModel = new EventTableModel(sortedList, tableFormat);
 name|mainTable
 operator|=
 operator|new
 name|MainTable
 argument_list|(
-name|tableModel
-argument_list|,
+comment|/*tableModel, */
 name|tableFormat
 argument_list|,
-name|sortedList
+name|searchFilterList
 argument_list|)
 expr_stmt|;
 name|selectionListener
@@ -9169,8 +9152,6 @@ operator|new
 name|MainTableSelectionListener
 argument_list|(
 name|this
-argument_list|,
-name|sortedList
 argument_list|,
 name|mainTable
 argument_list|)
@@ -11145,12 +11126,12 @@ name|matcher
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setGroupMatcher (SearchMatcher matcher)
+DECL|method|setGroupMatcher (Matcher matcher)
 specifier|public
 name|void
 name|setGroupMatcher
 parameter_list|(
-name|SearchMatcher
+name|Matcher
 name|matcher
 parameter_list|)
 block|{
