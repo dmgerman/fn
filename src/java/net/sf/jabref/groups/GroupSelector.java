@@ -3278,6 +3278,13 @@ operator|.
 name|stopShowingGroup
 argument_list|()
 expr_stmt|;
+name|panel
+operator|.
+name|mainTable
+operator|.
+name|stopShowingFloatGrouping
+argument_list|()
+expr_stmt|;
 if|if
 condition|(
 name|showOverlappingGroups
@@ -4012,12 +4019,21 @@ name|panel
 operator|!=
 literal|null
 condition|)
+block|{
 comment|// panel may be null if no file is open any more
 name|panel
 operator|.
 name|stopShowingGroup
 argument_list|()
 expr_stmt|;
+name|panel
+operator|.
+name|mainTable
+operator|.
+name|stopShowingFloatGrouping
+argument_list|()
+expr_stmt|;
+block|}
 name|frame
 operator|.
 name|groupToggle
