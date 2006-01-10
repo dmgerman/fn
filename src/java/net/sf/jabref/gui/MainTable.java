@@ -429,7 +429,7 @@ operator|=
 operator|new
 name|EventSelectionModel
 argument_list|(
-name|list
+name|sortedForGrouping
 argument_list|)
 expr_stmt|;
 name|setSelectionModel
