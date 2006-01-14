@@ -320,10 +320,12 @@ operator|new
 name|JTextField
 argument_list|()
 decl_stmt|;
-DECL|field|basenamePatternRegex
+comment|//private JTextField basenamePatternRegex = new JTextField(20);
+comment|//private JTextField basenamePatternReplacement = new JTextField(20);
+DECL|field|KeyPatternRegex
 specifier|private
 name|JTextField
-name|basenamePatternRegex
+name|KeyPatternRegex
 init|=
 operator|new
 name|JTextField
@@ -331,10 +333,10 @@ argument_list|(
 literal|20
 argument_list|)
 decl_stmt|;
-DECL|field|basenamePatternReplacement
+DECL|field|KeyPatternReplacement
 specifier|private
 name|JTextField
-name|basenamePatternReplacement
+name|KeyPatternReplacement
 init|=
 operator|new
 name|JTextField
@@ -441,15 +443,17 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|//Globals.prefs.put("basenamePatternRegex", basenamePatternRegex.getText());
+comment|//Globals.prefs.put("basenamePatternReplacement", basenamePatternReplacement.getText());
 name|Globals
 operator|.
 name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"basenamePatternRegex"
+literal|"KeyPatternRegex"
 argument_list|,
-name|basenamePatternRegex
+name|KeyPatternRegex
 operator|.
 name|getText
 argument_list|()
@@ -461,9 +465,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"basenamePatternReplacement"
+literal|"KeyPatternReplacement"
 argument_list|,
-name|basenamePatternReplacement
+name|KeyPatternReplacement
 operator|.
 name|getText
 argument_list|()
@@ -1616,7 +1620,7 @@ init|=
 operator|new
 name|FormLayout
 argument_list|(
-literal|"1dlu, 8dlu, left:pref"
+literal|"1dlu, 8dlu, left:pref, 8dlu, left:pref"
 argument_list|,
 literal|""
 argument_list|)
@@ -1673,7 +1677,6 @@ operator|.
 name|nextLine
 argument_list|()
 expr_stmt|;
-comment|//builder.nextColumn();
 name|builder
 operator|.
 name|append
@@ -1692,6 +1695,63 @@ name|builder
 operator|.
 name|nextLine
 argument_list|()
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|pan
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Replace (regular expression)"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"by"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|nextLine
+argument_list|()
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|pan
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|KeyPatternRegex
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|KeyPatternReplacement
+argument_list|)
 expr_stmt|;
 name|builder
 operator|.
@@ -2042,7 +2102,7 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-name|basenamePatternRegex
+name|KeyPatternRegex
 operator|.
 name|setText
 argument_list|(
@@ -2052,11 +2112,11 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"basenamePatternRegex"
+literal|"KeyPatternRegex"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|basenamePatternReplacement
+name|KeyPatternReplacement
 operator|.
 name|setText
 argument_list|(
@@ -2066,10 +2126,12 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"basenamePatternReplacement"
+literal|"KeyPatternReplacement"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//basenamePatternRegex.setText(Globals.prefs.get("basenamePatternRegex"));
+comment|//basenamePatternReplacement.setText(Globals.prefs.get("basenamePatternReplacement"));
 block|}
 block|}
 end_class

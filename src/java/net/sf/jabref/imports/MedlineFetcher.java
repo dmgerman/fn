@@ -928,6 +928,7 @@ comment|//
 comment|//==================================================
 DECL|method|fetchMedline (String id)
 specifier|public
+specifier|static
 name|ArrayList
 name|fetchMedline
 parameter_list|(

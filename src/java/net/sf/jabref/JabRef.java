@@ -404,8 +404,23 @@ argument_list|(
 name|args
 argument_list|)
 condition|)
+block|{
 comment|// We have successfully sent our command line options through the socket to
 comment|// another JabRef instance. So we assume it's all taken care of, and quit.
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Arguments passed on to running JabRef instance. Shutting down."
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|System
 operator|.
 name|exit
@@ -413,6 +428,7 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**        * See if the user has a personal journal list set up. If so, add these        * journal names and abbreviations to the list:        */
