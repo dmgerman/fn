@@ -3466,7 +3466,7 @@ name|actions
 operator|.
 name|put
 argument_list|(
-literal|"test"
+literal|"pushToEmacs"
 argument_list|,
 operator|new
 name|PushToEmacs

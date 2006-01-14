@@ -3834,6 +3834,15 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
+literal|"Push to Emacs"
+argument_list|,
+literal|"ctrl shift E"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
 literal|"Quit JabRef"
 argument_list|,
 literal|"ctrl Q"

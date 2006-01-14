@@ -1743,17 +1743,29 @@ operator|new
 name|DatabasePropertiesAction
 argument_list|()
 decl_stmt|,
-DECL|field|test
-name|test
+DECL|field|pushToEmacs
+name|pushToEmacs
 init|=
 operator|new
 name|GeneralAction
 argument_list|(
-literal|"test"
+literal|"pushToEmacs"
 argument_list|,
-literal|"Test"
+literal|"Insert selected citations into Emacs"
+argument_list|,
+literal|"Push selection to Emacs"
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Push to Emacs"
+argument_list|)
 argument_list|)
 decl_stmt|;
+comment|//test = new GeneralAction("test", "Test");
 comment|/*setupSelector = new GeneralAction("setupSelector", "", "",           GUIGlobals.pasteIconFile,           prefs.getKey(")),*/
 DECL|field|medlineFetcher
 name|MedlineFetcher
@@ -4986,13 +4998,7 @@ argument_list|(
 name|file
 argument_list|)
 expr_stmt|;
-name|edit
-operator|.
-name|add
-argument_list|(
-name|test
-argument_list|)
-expr_stmt|;
+comment|//edit.add(test);
 name|edit
 operator|.
 name|add
@@ -5308,6 +5314,13 @@ operator|.
 name|add
 argument_list|(
 name|makeKeyAction
+argument_list|)
+expr_stmt|;
+name|tools
+operator|.
+name|add
+argument_list|(
+name|pushToEmacs
 argument_list|)
 expr_stmt|;
 name|tools
