@@ -2978,6 +2978,10 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+return|return
+literal|null
+return|;
+else|else
 block|{
 name|file
 operator|=
