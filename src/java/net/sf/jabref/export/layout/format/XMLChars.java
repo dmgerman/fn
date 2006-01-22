@@ -304,13 +304,6 @@ literal|"--"
 argument_list|,
 literal|"&#x2013;"
 argument_list|)
-operator|.
-name|replaceAll
-argument_list|(
-literal|""
-argument_list|,
-literal|"-"
-argument_list|)
 return|;
 block|}
 DECL|method|restFormat (String s)
@@ -398,8 +391,6 @@ name|int
 operator|)
 name|character
 operator|)
-operator|&
-literal|255
 expr_stmt|;
 comment|//System.out.println(""+character+" "+code);
 if|if
