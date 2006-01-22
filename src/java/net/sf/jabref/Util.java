@@ -138,6 +138,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|lang
+operator|.
+name|StringIndexOutOfBoundsException
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -2970,7 +2980,7 @@ condition|(
 name|name
 operator|==
 literal|null
-operator|&&
+operator|||
 name|name
 operator|.
 name|length
@@ -3075,6 +3085,11 @@ name|Globals
 operator|.
 name|ON_WIN
 condition|)
+block|{
+comment|// workaround for catching Java bug in regexp replacer
+comment|// and, why, why, why ... I don't get it - wegner 2006/01/22
+try|try
+block|{
 name|name
 operator|=
 name|name
@@ -3086,6 +3101,34 @@ argument_list|,
 literal|"\\"
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|java
+operator|.
+name|lang
+operator|.
+name|StringIndexOutOfBoundsException
+name|exc
+parameter_list|)
+block|{
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"An internal Java error was caused by the entry "
+operator|+
+literal|"\""
+operator|+
+name|name
+operator|+
+literal|"\""
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 else|else
 name|name
 operator|=
