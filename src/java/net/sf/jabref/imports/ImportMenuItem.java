@@ -364,6 +364,17 @@ name|fileOk
 operator|=
 literal|true
 expr_stmt|;
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|put
+argument_list|(
+literal|"workingDirectory"
+argument_list|,
+name|filename
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 DECL|method|run ()

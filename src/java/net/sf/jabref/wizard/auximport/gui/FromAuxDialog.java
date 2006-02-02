@@ -1662,7 +1662,9 @@ name|getNewFile
 argument_list|(
 name|_frame
 argument_list|,
-literal|null
+name|Globals
+operator|.
+name|prefs
 argument_list|,
 operator|new
 name|File

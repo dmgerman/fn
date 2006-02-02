@@ -97,11 +97,12 @@ specifier|static
 name|Matcher
 name|UF_MATCHER
 init|=
+comment|//Pattern.compile("(?i)\\b\\w").matcher("");
 name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"(?i)\\b\\w"
+literal|"\\b\\w"
 argument_list|)
 operator|.
 name|matcher

@@ -487,6 +487,15 @@ condition|)
 block|{
 if|if
 condition|(
+operator|(
+name|current
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+operator|)
+operator|&&
 operator|!
 name|Character
 operator|.

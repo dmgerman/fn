@@ -159,11 +159,16 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 name|move
 condition|?
 literal|"Assign entry selection exclusively to this group"
 else|:
 literal|"Add entry selection to this group"
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// JZTODO lyrics

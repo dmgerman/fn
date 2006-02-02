@@ -83,7 +83,6 @@ argument_list|(
 name|owner
 argument_list|)
 expr_stmt|;
-comment|//URL imageURL = SplashScreen.class.getResource("/images/JabRef-splash.png");
 name|URL
 name|imageURL
 init|=
@@ -93,7 +92,7 @@ name|class
 operator|.
 name|getResource
 argument_list|(
-literal|"/images/splash-2.0beta.png"
+literal|"/images/jabref-2.0-splash.png"
 argument_list|)
 decl_stmt|;
 name|splashImage

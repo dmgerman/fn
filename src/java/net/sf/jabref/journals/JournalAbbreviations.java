@@ -221,7 +221,9 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Switches between full and abbreviated journal name"
+literal|"Switches between full and abbreviated journal name "
+operator|+
+literal|"if the journal name is known."
 argument_list|)
 operator|+
 literal|"<BR>"
@@ -230,10 +232,10 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"if the journal name is known. Go to (...............)"
+literal|"To set up, go to<B>Tools -> Manage journal abbreviations</B>"
 argument_list|)
 operator|+
-literal|"</HTML>"
+literal|".</HTML>"
 decl_stmt|;
 DECL|field|fullNameKeyed
 name|TreeMap
@@ -279,7 +281,7 @@ DECL|method|JournalAbbreviations ()
 specifier|public
 name|JournalAbbreviations
 parameter_list|()
-block|{      }
+block|{              }
 DECL|method|JournalAbbreviations (String resource)
 specifier|public
 name|JournalAbbreviations
@@ -1486,7 +1488,8 @@ name|UndoableFieldChange
 argument_list|(
 name|entryEditor
 operator|.
-name|entry
+name|getEntry
+argument_list|()
 argument_list|,
 name|editor
 operator|.

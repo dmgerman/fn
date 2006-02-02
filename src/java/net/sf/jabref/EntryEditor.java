@@ -258,6 +258,16 @@ name|MainTableSelectionListener
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|text
+operator|.
+name|*
+import|;
+end_import
+
 begin_class
 DECL|class|EntryEditor
 specifier|public
@@ -271,7 +281,7 @@ block|{
 comment|/*    * GUI component that allows editing of the fields of a BibtexEntry.    * EntryTypeForm also registers itself as a VetoableChangeListener, receiving    * events whenever a field of the entry changes, enabling the text fields to    * update themselves if the change is made from somewhere else.    */
 comment|// A reference to the entry this object works on.
 DECL|field|entry
-specifier|public
+specifier|private
 name|BibtexEntry
 name|entry
 decl_stmt|;
@@ -992,7 +1002,6 @@ name|newTab
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*      if ((entry.getGeneralFields() != null)&& (entry.getGeneralFields().length>= 1)) { 	              genPan = new EntryEditorTab(java.util.Arrays.asList(entry.getGeneralFields()), this, false); 	              tabbed.addTab(Globals.lang("General fields"),                new ImageIcon(GUIGlobals.showGenIconFile), genPan.getPane(),                Globals.lang("Show general fields"));          tabs.add(genPan);      } 	      String[] absFields = new String[] {"abstract", "annote"};      absPan = new EntryEditorTab(java.util.Arrays.asList(absFields), this, false);      tabbed.addTab("Abstract", new ImageIcon(GUIGlobals.showAbsIconFile),                absPan.getPane(), Globals.lang("Show abstract"));                tabs.add(absPan);*/
 name|srcPanel
 operator|.
 name|setName
@@ -1567,6 +1576,80 @@ name|String
 operator|)
 name|o
 decl_stmt|;
+comment|//addedByMoritz
+if|if
+condition|(
+name|fieldName
+operator|.
+name|equals
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"timeStampField"
+argument_list|)
+argument_list|)
+condition|)
+block|{
+comment|//if (fieldName.equals("dateadded")){
+operator|(
+operator|(
+name|JTextArea
+operator|)
+name|ed
+operator|)
+operator|.
+name|addMouseListener
+argument_list|(
+operator|new
+name|MouseAdapter
+argument_list|()
+block|{
+specifier|public
+name|void
+name|mouseClicked
+parameter_list|(
+name|MouseEvent
+name|e
+parameter_list|)
+block|{
+if|if
+condition|(
+name|e
+operator|.
+name|getClickCount
+argument_list|()
+operator|==
+literal|2
+condition|)
+block|{
+name|String
+name|date
+init|=
+name|Util
+operator|.
+name|easyDateFormat
+argument_list|()
+decl_stmt|;
+name|ed
+operator|.
+name|setText
+argument_list|(
+name|date
+argument_list|)
+expr_stmt|;
+comment|//DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+comment|//ed.setText(df.format(new Date()));
+block|}
+block|}
+block|}
+argument_list|)
+expr_stmt|;
+block|}
+comment|//END_OF addedByMoritz
 if|if
 condition|(
 operator|(
@@ -2980,96 +3063,53 @@ name|row
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Switches the entry for this editor to the one with the given id. If the    * target entry is of the same type as the current, field values are simply    * updated. Otherwise, a new editor created to replace this one.    *    * @param id    *          a<code>String</code> value    */
-DECL|method|switchTo (String id)
-specifier|private
+comment|/**     * Makes sure the current edit is stored.     */
+DECL|method|storeCurrentEdit ()
+specifier|public
 name|void
-name|switchTo
-parameter_list|(
-name|String
-name|id
-parameter_list|)
+name|storeCurrentEdit
+parameter_list|()
 block|{
-comment|// Make sure the current edit is stored.
-name|Object
-name|activeTab
+name|Component
+name|comp
 init|=
-name|tabs
+name|Globals
 operator|.
-name|get
-argument_list|(
-name|tabbed
+name|focusListener
 operator|.
-name|getSelectedIndex
+name|getFocused
 argument_list|()
-argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|activeTab
+operator|(
+name|comp
 operator|instanceof
-name|EntryEditorTab
+name|FieldEditor
+operator|)
+operator|&&
+name|this
+operator|.
+name|isAncestorOf
+argument_list|(
+name|comp
+argument_list|)
 condition|)
 block|{
-name|updateField
+name|storeFieldAction
+operator|.
+name|actionPerformed
 argument_list|(
-operator|(
-operator|(
-name|EntryEditorTab
-operator|)
-name|activeTab
-operator|)
-operator|.
-name|getActive
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-name|BibtexEntry
-name|be
-init|=
-name|panel
-operator|.
-name|database
-operator|.
-name|getEntryById
+operator|new
+name|ActionEvent
 argument_list|(
-name|id
+name|comp
+argument_list|,
+literal|0
+argument_list|,
+literal|""
 argument_list|)
-decl_stmt|;
-comment|// If the entry we are switching to is of the same type as
-comment|// this one, we can make the switch more elegant by keeping this
-comment|// same dialog, and updating it.
-if|if
-condition|(
-name|entry
-operator|.
-name|getType
-argument_list|()
-operator|==
-name|be
-operator|.
-name|getType
-argument_list|()
-condition|)
-name|switchTo
-argument_list|(
-name|be
 argument_list|)
-expr_stmt|;
-else|else
-block|{
-name|panel
-operator|.
-name|showEntry
-argument_list|(
-name|be
-argument_list|)
-expr_stmt|;
-name|panel
-operator|.
-name|moveFocusToEntryEditor
-argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -3209,6 +3249,7 @@ block|}
 comment|/**    * Updates this editor to show the given entry, regardless of type    * correspondence.    *    * @param be    *          a<code>BibtexEntry</code> value    */
 DECL|method|switchTo (BibtexEntry be)
 specifier|public
+specifier|synchronized
 name|void
 name|switchTo
 parameter_list|(
@@ -3216,6 +3257,18 @@ name|BibtexEntry
 name|be
 parameter_list|)
 block|{
+if|if
+condition|(
+name|entry
+operator|==
+name|be
+condition|)
+return|return;
+comment|//Util.pr("EntryEditor.switchTo(BibtexEntry): "+entry.getCiteKey());
+comment|//Util.pr("::EntryEditor.switchTo(BibtexEntry): "+this.type.getName());
+name|storeCurrentEdit
+argument_list|()
+expr_stmt|;
 name|entry
 operator|=
 name|be
@@ -3272,7 +3325,6 @@ name|boolean
 name|showError
 parameter_list|)
 block|{
-comment|//Util.pr("StoreSource");
 comment|// Store edited bibtex code.
 name|BibtexParser
 name|bp
@@ -3964,47 +4016,6 @@ name|newFieldData
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-block|}
-comment|/**      * Makes sure the current edit is stored.      */
-DECL|method|storeCurrentEdit ()
-specifier|public
-name|void
-name|storeCurrentEdit
-parameter_list|()
-block|{
-name|Component
-name|comp
-init|=
-name|Globals
-operator|.
-name|focusListener
-operator|.
-name|getFocused
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|comp
-operator|instanceof
-name|FieldEditor
-condition|)
-block|{
-name|storeFieldAction
-operator|.
-name|actionPerformed
-argument_list|(
-operator|new
-name|ActionEvent
-argument_list|(
-name|comp
-argument_list|,
-literal|0
-argument_list|,
-literal|""
-argument_list|)
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 comment|/**    * Sets all the text areas according to the shown entry.    */
@@ -4970,6 +4981,8 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+comment|//Util.pr("EntryEditor.StoreFieldAction: "+entry.getCiteKey());
+comment|//Util.pr("..EntryEditor.StoreFieldAction: "+this.toString());
 if|if
 condition|(
 name|e
@@ -4999,6 +5012,8 @@ decl_stmt|;
 name|boolean
 name|set
 decl_stmt|;
+comment|//Util.pr("....EntryEditor.StoreFieldAction: "+fe.getFieldName());
+comment|//Util.pr("...."+fe.getText()+"....");
 comment|// Trim the whitespace off this value
 name|fe
 operator|.
@@ -6139,8 +6154,6 @@ name|KEY_FIELD
 argument_list|)
 decl_stmt|;
 comment|//entry = frame.labelMaker.applyRule(entry, panel.database) ;
-name|entry
-operator|=
 name|LabelPatternUtil
 operator|.
 name|makeLabel
@@ -6621,7 +6634,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Scans all groups.    * @return true if the specified entry is contained in any ExplicitGroup,    * false otherwise.     */
+comment|/**    * Scans all groups.    * @return true if the specified entry is contained in any ExplicitGroup,    * false otherwise.    */
 DECL|method|containedInExplicitGroup (BibtexEntry entry)
 specifier|private
 name|boolean

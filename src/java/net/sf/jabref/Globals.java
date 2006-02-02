@@ -1018,15 +1018,8 @@ name|translation
 operator|=
 name|key
 expr_stmt|;
-name|logger
-argument_list|(
-literal|"Warning: could not get translation for \""
-operator|+
-name|key
-operator|+
-literal|"\""
-argument_list|)
-expr_stmt|;
+comment|//logger("Warning: could not get translation for \""
+comment|//                   + key + "\"");
 block|}
 if|if
 condition|(
@@ -1413,8 +1406,8 @@ name|translation
 operator|=
 name|key
 expr_stmt|;
-comment|//      System.err.println("Warning: could not get menu item translation for \""
-comment|//                         + key + "\"");
+comment|//System.err.println("Warning: could not get menu item translation for \""
+comment|//                   + key + "\"");
 block|}
 if|if
 condition|(
@@ -1985,8 +1978,6 @@ name|getNewFileForMac
 argument_list|(
 name|owner
 argument_list|,
-name|prefs
-argument_list|,
 name|directory
 argument_list|,
 name|extension
@@ -2032,8 +2023,6 @@ return|return
 name|getNewFileForMac
 argument_list|(
 name|owner
-argument_list|,
-name|prefs
 argument_list|,
 name|directory
 argument_list|,
@@ -2258,7 +2247,7 @@ name|getAbsolutePath
 argument_list|()
 return|;
 block|}
-DECL|method|getNewFileForMac (JFrame owner, JabRefPreferences prefs, File directory, String extensions, int dialogType, boolean updateWorkingDirectory, boolean dirOnly, FilenameFilter filter)
+DECL|method|getNewFileForMac (JFrame owner, File directory, String extensions, int dialogType, boolean updateWorkingDirectory, boolean dirOnly, FilenameFilter filter)
 specifier|private
 specifier|static
 name|String
@@ -2266,9 +2255,6 @@ name|getNewFileForMac
 parameter_list|(
 name|JFrame
 name|owner
-parameter_list|,
-name|JabRefPreferences
-name|prefs
 parameter_list|,
 name|File
 name|directory
@@ -2363,6 +2349,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|put

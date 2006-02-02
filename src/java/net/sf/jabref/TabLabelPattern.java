@@ -1713,6 +1713,8 @@ name|lang
 argument_list|(
 literal|"Replace (regular expression)"
 argument_list|)
+operator|+
+literal|":"
 argument_list|)
 expr_stmt|;
 name|builder
@@ -1725,6 +1727,8 @@ name|lang
 argument_list|(
 literal|"by"
 argument_list|)
+operator|+
+literal|":"
 argument_list|)
 expr_stmt|;
 name|builder

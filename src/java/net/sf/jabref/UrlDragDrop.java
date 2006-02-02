@@ -589,7 +589,8 @@ argument_list|)
 argument_list|,
 name|editor
 operator|.
-name|entry
+name|getEntry
+argument_list|()
 operator|.
 name|getField
 argument_list|(

@@ -548,7 +548,8 @@ argument_list|)
 else|:
 name|entryEditor
 operator|.
-name|entry
+name|getEntry
+argument_list|()
 operator|.
 name|getField
 argument_list|(

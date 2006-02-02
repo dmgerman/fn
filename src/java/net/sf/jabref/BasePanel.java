@@ -3256,7 +3256,24 @@ init|=
 operator|new
 name|StringBuffer
 argument_list|(
-literal|"\"[InsText('\\cite{"
+literal|"\"[InsText('\\"
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"citeCommand"
+argument_list|)
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|"{"
 argument_list|)
 decl_stmt|;
 name|String
@@ -3385,6 +3402,7 @@ argument_list|(
 literal|"}');]\""
 argument_list|)
 expr_stmt|;
+comment|//System.out.println(toSend.toString());
 name|Runtime
 operator|.
 name|getRuntime
@@ -6535,7 +6553,7 @@ argument_list|,
 name|enabled
 argument_list|)
 expr_stmt|;
-name|selectionListener
+name|frame
 operator|.
 name|setPreviewActive
 argument_list|(
@@ -8110,6 +8128,7 @@ operator|.
 name|createNeutralId
 argument_list|()
 decl_stmt|;
+specifier|final
 name|BibtexEntry
 name|be
 init|=
@@ -10371,6 +10390,11 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
+name|EntryEditor
+name|visibleNow
+init|=
+name|currentEditor
+decl_stmt|;
 comment|// We already have an editor for this entry type.
 name|form
 operator|=
@@ -10707,7 +10731,8 @@ argument_list|()
 operator|!=
 name|currentEditor
 operator|.
-name|entry
+name|getEntry
+argument_list|()
 operator|.
 name|getType
 argument_list|()
@@ -10725,7 +10750,8 @@ name|getEntryEditor
 argument_list|(
 name|currentEditor
 operator|.
-name|entry
+name|getEntry
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|showEntryEditor
@@ -11603,6 +11629,24 @@ else|else
 return|return
 literal|true
 return|;
+block|}
+comment|/**      * Activates or deactivates the entry preview, depending on the argument.      * When deactivating, makes sure that any visible preview is hidden.      * @param enabled      */
+DECL|method|setPreviewActive (boolean enabled)
+specifier|public
+name|void
+name|setPreviewActive
+parameter_list|(
+name|boolean
+name|enabled
+parameter_list|)
+block|{
+name|selectionListener
+operator|.
+name|setPreviewActive
+argument_list|(
+name|enabled
+argument_list|)
+expr_stmt|;
 block|}
 DECL|class|UndoAction
 class|class

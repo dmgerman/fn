@@ -320,6 +320,20 @@ name|prefs
 expr_stmt|;
 name|Globals
 operator|.
+name|setLanguage
+argument_list|(
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"language"
+argument_list|)
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+name|Globals
+operator|.
 name|importFormatReader
 operator|.
 name|resetImportFormats
@@ -333,25 +347,11 @@ name|prefs
 argument_list|)
 expr_stmt|;
 comment|// Read list(s) of journal names and abbreviations:
+comment|//Globals.turnOnFileLogging();
 name|Globals
 operator|.
 name|initializeJournalNames
 argument_list|()
-expr_stmt|;
-comment|//Globals.turnOnFileLogging();
-name|Globals
-operator|.
-name|setLanguage
-argument_list|(
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"language"
-argument_list|)
-argument_list|,
-literal|""
-argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -3275,7 +3275,6 @@ name|objLnf
 init|=
 literal|null
 decl_stmt|;
-comment|//Util.pr(": LnF: "+lookAndFeel);
 try|try
 block|{
 comment|//lnf2 =

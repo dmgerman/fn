@@ -1914,9 +1914,10 @@ name|put
 argument_list|(
 literal|"putBracesAroundCapitals"
 argument_list|,
-literal|"title;journal;booktitle;review;abstract"
+literal|""
 argument_list|)
 expr_stmt|;
+comment|//"title;journal;booktitle;review;abstract");
 name|defaults
 operator|.
 name|put
@@ -2039,6 +2040,15 @@ argument_list|(
 literal|"externalJournalLists"
 argument_list|,
 literal|null
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"citeCommand"
+argument_list|,
+literal|"cite"
 argument_list|)
 expr_stmt|;
 comment|//defaults.put("tempDir", System.getProperty("java.io.tmpdir"));

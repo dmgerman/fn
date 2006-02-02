@@ -656,7 +656,8 @@ name|String
 operator|)
 name|parent
 operator|.
-name|entry
+name|getEntry
+argument_list|()
 operator|.
 name|getField
 argument_list|(
@@ -668,7 +669,6 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-comment|//(String) entry.getField(Globals.KEY_FIELD));
 name|editors
 operator|.
 name|put
@@ -837,7 +837,8 @@ name|setEntry
 argument_list|(
 name|parent
 operator|.
-name|entry
+name|getEntry
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|/*for (int i=0; i<fields.length; i++) {             FieldEditor fe = (FieldEditor)editors.get(fields[i]);             fe.setText(e);         }  */

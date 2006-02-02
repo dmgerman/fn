@@ -2071,6 +2071,8 @@ parameter_list|()
 block|{
 name|File
 name|f
+init|=
+literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -2105,11 +2107,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
-return|return;
-comment|// Nothing to do.
-block|}
+comment|// else {
+comment|//    return; // Nothing to do.
+comment|//}
 block|}
 else|else
 name|f
@@ -2123,6 +2123,13 @@ name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|f
+operator|!=
+literal|null
+condition|)
+block|{
 name|FileWriter
 name|fw
 init|=
@@ -2280,6 +2287,7 @@ argument_list|,
 name|filename
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Store the list of external files set up:
 name|ArrayList
 name|extFiles

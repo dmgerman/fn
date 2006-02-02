@@ -1447,9 +1447,9 @@ name|GeneralAction
 argument_list|(
 literal|"pushToLyX"
 argument_list|,
-literal|"Insert selected citations into LyX"
+literal|"Insert selected citations into LyX/Kile"
 argument_list|,
-literal|"push selection to lyx"
+literal|"Push selection to LyX/Kile"
 argument_list|,
 name|GUIGlobals
 operator|.
@@ -1743,8 +1743,8 @@ operator|new
 name|DatabasePropertiesAction
 argument_list|()
 decl_stmt|,
-DECL|field|pushToEmacs
-name|pushToEmacs
+DECL|field|emacsPushAction
+name|emacsPushAction
 init|=
 operator|new
 name|GeneralAction
@@ -1754,6 +1754,10 @@ argument_list|,
 literal|"Insert selected citations into Emacs"
 argument_list|,
 literal|"Push selection to Emacs"
+argument_list|,
+name|GUIGlobals
+operator|.
+name|emacsIcon
 argument_list|,
 name|Globals
 operator|.
@@ -5320,7 +5324,7 @@ name|tools
 operator|.
 name|add
 argument_list|(
-name|pushToEmacs
+name|emacsPushAction
 argument_list|)
 expr_stmt|;
 name|tools
@@ -6009,6 +6013,13 @@ name|tlb
 operator|.
 name|addAction
 argument_list|(
+name|emacsPushAction
+argument_list|)
+expr_stmt|;
+name|tlb
+operator|.
+name|addAction
+argument_list|(
 name|lyxPushAction
 argument_list|)
 expr_stmt|;
@@ -6494,6 +6505,13 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|emacsPushAction
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|lyxPushAction
 operator|.
 name|setEnabled
@@ -6916,6 +6934,13 @@ literal|true
 argument_list|)
 expr_stmt|;
 name|makeKeyAction
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|emacsPushAction
 operator|.
 name|setEnabled
 argument_list|(
@@ -9212,7 +9237,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**    * This method does the job of adding imported entries into the active database, or into a new one.    * It shows the ImportInspectionDialog if preferences indicate it should be used. Otherwise it imports    * directly.    * @param panel The BasePanel to add to.    * @param entries The entries to add.    * @param filename Name of the file where the import came from.    * @param openInNew Should the entries be imported into a new database?    * @param callBack The callback for the ImportInspectionDialog to use.    */
-DECL|method|addImportedEntries (final BasePanel panel, List entries, String filename, boolean openInNew, ImportInspectionDialog.CallBack callBack)
+DECL|method|addImportedEntries (final BasePanel panel, final List entries, String filename, boolean openInNew, ImportInspectionDialog.CallBack callBack)
 specifier|public
 name|void
 name|addImportedEntries
@@ -9221,6 +9246,7 @@ specifier|final
 name|BasePanel
 name|panel
 parameter_list|,
+specifier|final
 name|List
 name|entries
 parameter_list|,
@@ -9379,6 +9405,19 @@ literal|1
 operator|)
 condition|)
 block|{
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+operator|new
+name|Runnable
+argument_list|()
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
 name|panel
 operator|.
 name|highlightEntry
@@ -9392,6 +9431,10 @@ name|get
 argument_list|(
 literal|0
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 argument_list|)
 expr_stmt|;
 block|}
@@ -11057,6 +11100,46 @@ index|[
 literal|1
 index|]
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+comment|/**      * Set the preview active state for all BasePanel instances.      * @param enabled      */
+DECL|method|setPreviewActive (boolean enabled)
+specifier|public
+name|void
+name|setPreviewActive
+parameter_list|(
+name|boolean
+name|enabled
+parameter_list|)
+block|{
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|tabbedPane
+operator|.
+name|getTabCount
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|baseAt
+argument_list|(
+name|i
+argument_list|)
+operator|.
+name|setPreviewActive
+argument_list|(
+name|enabled
 argument_list|)
 expr_stmt|;
 block|}

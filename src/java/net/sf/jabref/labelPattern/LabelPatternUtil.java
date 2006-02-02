@@ -1447,21 +1447,11 @@ block|}
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|NullPointerException
 name|ex
 parameter_list|)
 block|{
-name|Globals
-operator|.
-name|logger
-argument_list|(
-literal|"Key generator warning: field '"
-operator|+
-name|val
-operator|+
-literal|"' empty."
-argument_list|)
-expr_stmt|;
+comment|//Globals.logger("Key generator warning: field '" + val + "' empty.");
 block|}
 comment|// apply modifier if present
 if|if

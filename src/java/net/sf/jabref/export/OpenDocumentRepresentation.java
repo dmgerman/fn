@@ -980,12 +980,6 @@ name|result
 argument_list|,
 name|row
 argument_list|,
-operator|new
-name|AuthorLastFirst
-argument_list|()
-operator|.
-name|format
-argument_list|(
 name|getField
 argument_list|(
 name|e
@@ -993,8 +987,8 @@ argument_list|,
 literal|"author"
 argument_list|)
 argument_list|)
-argument_list|)
 expr_stmt|;
+comment|//new AuthorLastFirst().format(getField(e, "author")));
 name|addTableCell
 argument_list|(
 name|result
@@ -1043,12 +1037,6 @@ name|result
 argument_list|,
 name|row
 argument_list|,
-operator|new
-name|AuthorLastFirst
-argument_list|()
-operator|.
-name|format
-argument_list|(
 name|getField
 argument_list|(
 name|e
@@ -1056,8 +1044,8 @@ argument_list|,
 literal|"editor"
 argument_list|)
 argument_list|)
-argument_list|)
 expr_stmt|;
+comment|//new AuthorLastFirst().format(getField(e, "editor")));
 name|addTableCell
 argument_list|(
 name|result
