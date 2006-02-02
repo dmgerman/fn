@@ -1991,6 +1991,12 @@ name|NewEntryAction
 argument_list|(
 literal|"misc"
 argument_list|)
+block|,
+operator|new
+name|NewEntryAction
+argument_list|(
+literal|"other"
+argument_list|)
 block|}
 decl_stmt|;
 DECL|method|JabRefFrame ()

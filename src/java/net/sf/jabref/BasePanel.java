@@ -2825,6 +2825,13 @@ name|clone
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Util
+operator|.
+name|setAutomaticFields
+argument_list|(
+name|be
+argument_list|)
+expr_stmt|;
 comment|// We have to clone the
 comment|// entries, since the pasted
 comment|// entries must exist
