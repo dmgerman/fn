@@ -3666,7 +3666,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**       * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and set the specified selection and expansion state. */
+comment|/**       * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and set the specified selection and expansion state.       * @param node If this is non-null, the view is scrolled to make it visible.      */
 DECL|method|revalidateGroups (TreePath[] selectionPaths, Enumeration expandedNodes)
 specifier|public
 name|void
@@ -3678,6 +3678,33 @@ name|selectionPaths
 parameter_list|,
 name|Enumeration
 name|expandedNodes
+parameter_list|)
+block|{
+name|revalidateGroups
+argument_list|(
+name|selectionPaths
+argument_list|,
+name|expandedNodes
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**       * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and set the specified selection and expansion state.       * @param node If this is non-null, the view is scrolled to make it visible.      */
+DECL|method|revalidateGroups (TreePath[] selectionPaths, Enumeration expandedNodes, GroupTreeNode node)
+specifier|public
+name|void
+name|revalidateGroups
+parameter_list|(
+name|TreePath
+index|[]
+name|selectionPaths
+parameter_list|,
+name|Enumeration
+name|expandedNodes
+parameter_list|,
+name|GroupTreeNode
+name|node
 parameter_list|)
 block|{
 name|groupsTreeModel
@@ -3739,6 +3766,28 @@ operator|.
 name|revalidate
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|node
+operator|!=
+literal|null
+condition|)
+block|{
+name|groupsTree
+operator|.
+name|scrollPathToVisible
+argument_list|(
+operator|new
+name|TreePath
+argument_list|(
+name|node
+operator|.
+name|getPath
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**       * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and maintain the current selection and expansion state. */
 DECL|method|revalidateGroups ()
@@ -3749,6 +3798,22 @@ parameter_list|()
 block|{
 name|revalidateGroups
 argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**       * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and maintain the current selection and expansion state.       * @param node If this is non-null, the view is scrolled to make it visible.      */
+DECL|method|revalidateGroups (GroupTreeNode node)
+specifier|public
+name|void
+name|revalidateGroups
+parameter_list|(
+name|GroupTreeNode
+name|node
+parameter_list|)
+block|{
+name|revalidateGroups
+argument_list|(
 name|groupsTree
 operator|.
 name|getSelectionPaths
@@ -3756,6 +3821,8 @@ argument_list|()
 argument_list|,
 name|getExpandedPaths
 argument_list|()
+argument_list|,
+name|node
 argument_list|)
 expr_stmt|;
 block|}
@@ -4572,7 +4639,9 @@ name|newGroup
 argument_list|)
 expr_stmt|;
 name|revalidateGroups
-argument_list|()
+argument_list|(
+name|node
+argument_list|)
 expr_stmt|;
 comment|// Store undo information.
 if|if
