@@ -813,10 +813,19 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Throwable
 name|e
 parameter_list|)
 block|{
+comment|// we must catch all exceptions to be able notify users that
+comment|// saving failed, no matter what the reason was
+comment|// (and they won't just quit JabRef thinking
+comment|// everyting worked and loosing data)
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 throw|throw
 operator|new
 name|SaveException
