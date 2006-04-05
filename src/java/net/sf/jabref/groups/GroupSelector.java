@@ -7164,7 +7164,7 @@ name|errorMessage
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Highlight all groups that contain any/all of the specified entries.      * If entries is null, highlight is cleared.       */
+comment|/**      * Highlight all groups that contain any/all of the specified entries.      * If entries is null or has zero length, highlight is cleared.       */
 DECL|method|showMatchingGroups (BibtexEntry[] entries, boolean requireAll)
 specifier|public
 name|void
@@ -7183,6 +7183,12 @@ condition|(
 name|entries
 operator|==
 literal|null
+operator|||
+name|entries
+operator|.
+name|length
+operator|==
+literal|0
 condition|)
 block|{
 comment|// nothing selected
