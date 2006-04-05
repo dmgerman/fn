@@ -46,33 +46,11 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|border
-operator|.
-name|Border
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
 operator|.
 name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URL
 import|;
 end_import
 
@@ -162,6 +140,10 @@ DECL|field|entry
 name|BibtexEntry
 name|entry
 decl_stmt|;
+DECL|field|metaData
+name|MetaData
+name|metaData
+decl_stmt|;
 DECL|field|database
 name|BibtexDatabase
 name|database
@@ -213,12 +195,15 @@ DECL|field|sp
 name|JScrollPane
 name|sp
 decl_stmt|;
-DECL|method|PreviewPanel (BibtexDatabase db, String layoutFile)
+DECL|method|PreviewPanel (BibtexDatabase db, MetaData metaData, String layoutFile)
 specifier|public
 name|PreviewPanel
 parameter_list|(
 name|BibtexDatabase
 name|db
+parameter_list|,
+name|MetaData
+name|metaData
 parameter_list|,
 name|String
 name|layoutFile
@@ -227,6 +212,8 @@ block|{
 name|this
 argument_list|(
 name|layoutFile
+argument_list|,
+name|metaData
 argument_list|)
 expr_stmt|;
 name|this
@@ -236,12 +223,15 @@ operator|=
 name|db
 expr_stmt|;
 block|}
-DECL|method|PreviewPanel (BibtexDatabase db, BibtexEntry be, String layoutFile)
+DECL|method|PreviewPanel (BibtexDatabase db, MetaData metaData, BibtexEntry be, String layoutFile)
 specifier|public
 name|PreviewPanel
 parameter_list|(
 name|BibtexDatabase
 name|db
+parameter_list|,
+name|MetaData
+name|metaData
 parameter_list|,
 name|BibtexEntry
 name|be
@@ -254,6 +244,8 @@ name|this
 argument_list|(
 name|be
 argument_list|,
+name|metaData
+argument_list|,
 name|layoutFile
 argument_list|)
 expr_stmt|;
@@ -264,12 +256,15 @@ operator|=
 name|db
 expr_stmt|;
 block|}
-DECL|method|PreviewPanel (BibtexEntry be, String layoutFile)
+DECL|method|PreviewPanel (BibtexEntry be, MetaData metaData, String layoutFile)
 specifier|public
 name|PreviewPanel
 parameter_list|(
 name|BibtexEntry
 name|be
+parameter_list|,
+name|MetaData
+name|metaData
 parameter_list|,
 name|String
 name|layoutFile
@@ -334,12 +329,15 @@ name|update
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|PreviewPanel (String layoutFile)
+DECL|method|PreviewPanel (String layoutFile, MetaData metaData)
 specifier|public
 name|PreviewPanel
 parameter_list|(
 name|String
 name|layoutFile
+parameter_list|,
+name|MetaData
+name|metaData
 parameter_list|)
 block|{
 name|sp
@@ -370,6 +368,12 @@ name|setBorder
 argument_list|(
 literal|null
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|metaData
+operator|=
+name|metaData
 expr_stmt|;
 name|init
 argument_list|()
@@ -451,13 +455,11 @@ name|Util
 operator|.
 name|openExternalViewer
 argument_list|(
+name|metaData
+argument_list|,
 name|address
 argument_list|,
 literal|"url"
-argument_list|,
-name|Globals
-operator|.
-name|prefs
 argument_list|)
 expr_stmt|;
 block|}

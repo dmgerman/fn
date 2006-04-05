@@ -243,6 +243,19 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// Sort the list so it is ordered according to creation (or read) order
+comment|// when the table is unsorted.
+name|Collections
+operator|.
+name|sort
+argument_list|(
+name|list
+argument_list|,
+operator|new
+name|IdComparator
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|list
 operator|.
 name|getReadWriteLock

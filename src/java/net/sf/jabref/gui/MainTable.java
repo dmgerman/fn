@@ -652,6 +652,11 @@ expr_stmt|;
 name|refreshSorting
 argument_list|()
 expr_stmt|;
+name|scrollTo
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Removes sorting by search results, and graying out of non-hits.      */
 DECL|method|stopShowingFloatSearch ()

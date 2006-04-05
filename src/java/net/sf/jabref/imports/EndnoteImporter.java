@@ -602,12 +602,7 @@ name|put
 argument_list|(
 literal|"title"
 argument_list|,
-name|Util
-operator|.
-name|putBracesAroundCapitals
-argument_list|(
 name|val
-argument_list|)
 argument_list|)
 expr_stmt|;
 elseif|else

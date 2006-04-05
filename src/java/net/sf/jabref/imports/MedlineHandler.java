@@ -18,30 +18,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|regex
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|parsers
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|ArrayList
 import|;
 end_import
@@ -217,7 +193,7 @@ literal|false
 decl_stmt|;
 DECL|field|title
 DECL|field|journal
-DECL|field|keyword
+DECL|field|keywords
 DECL|field|author
 name|String
 name|title
@@ -228,7 +204,7 @@ name|journal
 init|=
 literal|""
 decl_stmt|,
-name|keyword
+name|keywords
 init|=
 literal|""
 decl_stmt|,
@@ -334,14 +310,9 @@ init|=
 literal|""
 decl_stmt|,
 DECL|field|pubmedid
-DECL|field|descriptorName
 DECL|field|doi
 DECL|field|pii
 name|pubmedid
-init|=
-literal|""
-decl_stmt|,
-name|descriptorName
 init|=
 literal|""
 decl_stmt|,
@@ -641,6 +612,18 @@ literal|"PMID"
 argument_list|)
 condition|)
 block|{
+comment|// Set PMID only once, because there can be<CommentIn> tags later on that
+comment|// contain IDs of different articles.
+if|if
+condition|(
+name|pubmedid
+operator|.
+name|length
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
 name|inPubMedID
 operator|=
 literal|true
@@ -649,6 +632,7 @@ name|pubmedid
 operator|=
 literal|""
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -1068,17 +1052,6 @@ comment|//if(m.matches())
 comment|//year = m.group();
 block|}
 block|}
-comment|//################################## 09/23/03  put {} around capitals
-name|title
-operator|=
-name|Util
-operator|.
-name|putBracesAroundCapitals
-argument_list|(
-name|title
-argument_list|)
-expr_stmt|;
-comment|//##############################
 comment|// Sort keywords and remove duplicates. Add pubmedid as keyword (user request)
 name|StringBuffer
 name|sb
@@ -1090,7 +1063,7 @@ name|Util
 operator|.
 name|sortWordsAndRemoveDuplicates
 argument_list|(
-name|descriptorName
+name|keywords
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1117,7 +1090,7 @@ argument_list|(
 name|pubmedid
 argument_list|)
 expr_stmt|;
-name|keyword
+name|keywords
 operator|=
 name|sb
 operator|.
@@ -1303,7 +1276,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|keyword
+name|keywords
 operator|.
 name|equals
 argument_list|(
@@ -1316,7 +1289,7 @@ name|setField
 argument_list|(
 literal|"keywords"
 argument_list|,
-name|keyword
+name|keywords
 argument_list|)
 expr_stmt|;
 if|if
@@ -1455,7 +1428,7 @@ name|journal
 operator|=
 literal|""
 expr_stmt|;
-name|keyword
+name|keywords
 operator|=
 literal|""
 expr_stmt|;
@@ -2165,7 +2138,7 @@ if|if
 condition|(
 name|inDescriptorName
 condition|)
-name|descriptorName
+name|keywords
 operator|+=
 operator|new
 name|String

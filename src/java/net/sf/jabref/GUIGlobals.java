@@ -133,7 +133,7 @@ comment|// Part of the signature in written bib files.
 DECL|field|linuxDefaultLookAndFeel
 name|linuxDefaultLookAndFeel
 init|=
-literal|"com.jgoodies.plaf.plastic.Plastic3DLookAndFeel"
+literal|"com.jgoodies.looks.plastic.Plastic3DLookAndFeel"
 decl_stmt|,
 comment|//"com.shfarr.ui.plaf.fh.FhLookAndFeel",
 comment|//"net.sourceforge.mlf.metouia.MetouiaLookAndFeel",
@@ -141,7 +141,7 @@ comment|//"org.compiere.plaf.CompiereLookAndFeel",
 DECL|field|windowsDefaultLookAndFeel
 name|windowsDefaultLookAndFeel
 init|=
-literal|"com.jgoodies.plaf.windows.ExtWindowsLookAndFeel"
+literal|"com.jgoodies.looks.windows.WindowsLookAndFeel"
 decl_stmt|;
 DECL|field|CURRENTFONT
 specifier|public
@@ -382,6 +382,10 @@ block|,
 literal|"title"
 block|,
 literal|"year"
+block|,
+name|Globals
+operator|.
+name|KEY_FIELD
 block|}
 decl_stmt|;
 DECL|method|getTableIcon (String fieldType)
@@ -2353,6 +2357,15 @@ argument_list|(
 literal|"Fran\u00E7ais"
 argument_list|,
 literal|"fr"
+argument_list|)
+expr_stmt|;
+name|LANGUAGES
+operator|.
+name|put
+argument_list|(
+literal|"Italiano"
+argument_list|,
+literal|"it"
 argument_list|)
 expr_stmt|;
 name|LANGUAGES

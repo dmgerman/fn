@@ -229,6 +229,10 @@ DECL|field|entry
 name|BibtexEntry
 name|entry
 decl_stmt|;
+DECL|field|metaData
+name|MetaData
+name|metaData
+decl_stmt|;
 DECL|field|cancelled
 specifier|private
 name|boolean
@@ -237,12 +241,15 @@ init|=
 literal|true
 decl_stmt|;
 comment|// Default to true, so a pure close operation implies Cancel.
-DECL|method|AttachFileDialog (Frame parent, BibtexEntry entry, String fieldName)
+DECL|method|AttachFileDialog (Frame parent, MetaData metaData, BibtexEntry entry, String fieldName)
 specifier|public
 name|AttachFileDialog
 parameter_list|(
 name|Frame
 name|parent
+parameter_list|,
+name|MetaData
+name|metaData
 parameter_list|,
 name|BibtexEntry
 name|entry
@@ -257,6 +264,12 @@ name|parent
 argument_list|,
 literal|true
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|metaData
+operator|=
+name|metaData
 expr_stmt|;
 name|this
 operator|.
@@ -296,12 +309,15 @@ name|initGui
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|AttachFileDialog (Dialog parent, BibtexEntry entry, String fieldName)
+DECL|method|AttachFileDialog (Dialog parent, MetaData metaData, BibtexEntry entry, String fieldName)
 specifier|public
 name|AttachFileDialog
 parameter_list|(
 name|Dialog
 name|parent
+parameter_list|,
+name|MetaData
+name|metaData
 parameter_list|,
 name|BibtexEntry
 name|entry
@@ -316,6 +332,12 @@ name|parent
 argument_list|,
 literal|true
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|metaData
+operator|=
+name|metaData
 expr_stmt|;
 name|this
 operator|.
@@ -392,6 +414,8 @@ operator|new
 name|ExternalFilePanel
 argument_list|(
 name|fieldName
+argument_list|,
+name|metaData
 argument_list|,
 name|entry
 argument_list|,

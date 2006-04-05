@@ -122,6 +122,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Vector
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|jgoodies
@@ -508,6 +518,11 @@ name|ExternalFilePanel
 argument_list|(
 name|fieldName
 argument_list|,
+name|panel
+operator|.
+name|metaData
+argument_list|()
+argument_list|,
 literal|null
 argument_list|,
 name|off
@@ -526,18 +541,18 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
+comment|// Find the default directory for this field type:
 name|String
 name|dir
 init|=
-name|Globals
+name|panel
 operator|.
-name|prefs
+name|metaData
+argument_list|()
 operator|.
-name|get
+name|getFileDirectory
 argument_list|(
 name|fieldName
-operator|+
-literal|"Directory"
 argument_list|)
 decl_stmt|;
 comment|// First we try to autoset fields
@@ -911,6 +926,11 @@ argument_list|(
 name|panel
 operator|.
 name|frame
+argument_list|()
+argument_list|,
+name|panel
+operator|.
+name|metaData
 argument_list|()
 argument_list|,
 name|sel

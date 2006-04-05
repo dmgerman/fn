@@ -126,20 +126,6 @@ name|*
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|groups
-operator|.
-name|EntryTableTransferHandler
-import|;
-end_import
-
 begin_class
 DECL|class|EntryTable
 specifier|public
@@ -866,7 +852,7 @@ else|:
 literal|null
 return|;
 block|}
-comment|/**      * Updates our Set containing the last row selection. Ckecks which rows were ADDED      * to the selection, to see what new entry should be previewed.      * Returns the number of the row that should be considered active, or -1 if none.      *      * This method may have some potential for optimization.      *      * @param rows      * @return      */
+comment|/**      * Updates our Set containing the last row selection. Ckecks which rows were ADDED      * to the selection, to see what new entry should be previewed.      *      * This method may have some potential for optimization.      *      * @param rows      * @return The number of the row that should be considered active, or -1 if none.       */
 DECL|method|resolveNewSelection (int[] rows)
 specifier|private
 name|int
@@ -2119,14 +2105,16 @@ name|Util
 operator|.
 name|openExternalViewer
 argument_list|(
+name|panel
+operator|.
+name|metaData
+argument_list|,
 operator|(
 name|String
 operator|)
 name|link
 argument_list|,
 name|fieldName
-argument_list|,
-name|prefs
 argument_list|)
 expr_stmt|;
 block|}

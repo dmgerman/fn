@@ -18,6 +18,18 @@ end_package
 
 begin_import
 import|import
+name|com
+operator|.
+name|jgoodies
+operator|.
+name|looks
+operator|.
+name|LookUtils
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|awt
@@ -45,18 +57,6 @@ operator|.
 name|border
 operator|.
 name|AbstractBorder
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|jgoodies
-operator|.
-name|plaf
-operator|.
-name|LookUtils
 import|;
 end_import
 

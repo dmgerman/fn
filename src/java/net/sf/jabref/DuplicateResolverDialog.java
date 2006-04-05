@@ -503,6 +503,10 @@ name|PreviewPanel
 argument_list|(
 name|one
 argument_list|,
+operator|new
+name|MetaData
+argument_list|()
+argument_list|,
 name|layout
 argument_list|)
 expr_stmt|;
@@ -512,6 +516,10 @@ operator|new
 name|PreviewPanel
 argument_list|(
 name|two
+argument_list|,
+operator|new
+name|MetaData
+argument_list|()
 argument_list|,
 name|layout
 argument_list|)

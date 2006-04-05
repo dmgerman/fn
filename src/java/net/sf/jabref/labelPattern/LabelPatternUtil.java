@@ -491,15 +491,6 @@ literal|""
 argument_list|)
 condition|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"author empty, so replacing with editor for label generation"
-argument_list|)
-expr_stmt|;
 name|authString
 operator|=
 name|_entry

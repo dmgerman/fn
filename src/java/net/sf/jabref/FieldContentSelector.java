@@ -329,13 +329,7 @@ argument_list|(
 name|gbl
 argument_list|)
 expr_stmt|;
-name|list
-operator|.
-name|setEditable
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
+comment|//list.setEditable(true);
 name|list
 operator|.
 name|setMaximumRowCount

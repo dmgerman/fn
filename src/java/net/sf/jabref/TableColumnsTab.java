@@ -1138,7 +1138,6 @@ specifier|public
 name|DeleteRowAction
 parameter_list|()
 block|{
-comment|//super(Globals.lang("Delete rows"));
 name|super
 argument_list|(
 literal|"Delete row"
@@ -1202,16 +1201,18 @@ control|(
 name|int
 name|i
 init|=
-literal|0
-init|;
-name|i
-operator|<
 name|rows
 operator|.
 name|length
+operator|-
+literal|1
+init|;
+name|i
+operator|>=
+literal|0
 condition|;
 name|i
-operator|++
+operator|--
 control|)
 block|{
 if|if
@@ -1221,9 +1222,7 @@ name|rows
 index|[
 name|i
 index|]
-operator|-
-name|i
-operator|<
+operator|<=
 name|tableRows
 operator|.
 name|size
@@ -1250,8 +1249,6 @@ name|i
 index|]
 operator|-
 literal|1
-operator|-
-name|offs
 argument_list|)
 expr_stmt|;
 name|offs
@@ -1263,7 +1260,6 @@ name|rowCount
 operator|-=
 name|offs
 expr_stmt|;
-comment|//rows.length;
 if|if
 condition|(
 name|rows
@@ -1304,7 +1300,6 @@ specifier|public
 name|AddRowAction
 parameter_list|()
 block|{
-comment|//super(Globals.lang("Insert rows"));
 name|super
 argument_list|(
 literal|"Add row"

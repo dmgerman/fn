@@ -209,7 +209,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This is the panel for the key pattern definition tab in 'Preferences'. So far  * it is only possible to edit default entry types.  *   * Labels and buttons does not yet draw from a resource file.  *     * @author Ulrik Stervbo (ulriks AT ruc.dk)  */
+comment|/**  * The Preferences panel for key generation.  */
 end_comment
 
 begin_class
@@ -300,6 +300,20 @@ operator|.
 name|lang
 argument_list|(
 literal|"Warn before overwriting existing keys"
+argument_list|)
+argument_list|)
+decl_stmt|,
+DECL|field|generateOnSave
+name|generateOnSave
+init|=
+operator|new
+name|JCheckBox
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Generate keys before saving (for entries without a key)"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -470,6 +484,20 @@ argument_list|,
 name|KeyPatternReplacement
 operator|.
 name|getText
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|putBoolean
+argument_list|(
+literal|"generateKeysBeforeSaving"
+argument_list|,
+name|generateOnSave
+operator|.
+name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1674,6 +1702,13 @@ argument_list|)
 expr_stmt|;
 name|builder
 operator|.
+name|append
+argument_list|(
+name|dontOverwrite
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
 name|nextLine
 argument_list|()
 expr_stmt|;
@@ -1688,7 +1723,7 @@ name|builder
 operator|.
 name|append
 argument_list|(
-name|dontOverwrite
+name|generateOnSave
 argument_list|)
 expr_stmt|;
 name|builder
@@ -2025,6 +2060,20 @@ operator|.
 name|getBoolean
 argument_list|(
 literal|"avoidOverwritingKey"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|generateOnSave
+operator|.
+name|setSelected
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"generateKeysBeforeSaving"
 argument_list|)
 argument_list|)
 expr_stmt|;

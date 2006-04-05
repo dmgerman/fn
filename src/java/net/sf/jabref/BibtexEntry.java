@@ -94,6 +94,15 @@ specifier|public
 class|class
 name|BibtexEntry
 block|{
+DECL|field|ID_FIELD
+specifier|public
+specifier|final
+specifier|static
+name|String
+name|ID_FIELD
+init|=
+literal|"id"
+decl_stmt|;
 DECL|field|_id
 specifier|private
 name|String
@@ -396,7 +405,7 @@ try|try
 block|{
 name|firePropertyChangedEvent
 argument_list|(
-literal|"id"
+name|ID_FIELD
 argument_list|,
 name|_id
 argument_list|,
@@ -520,7 +529,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-literal|"id"
+name|ID_FIELD
 operator|.
 name|equals
 argument_list|(
@@ -617,7 +626,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-literal|"id"
+name|ID_FIELD
 operator|.
 name|equals
 argument_list|(
@@ -898,6 +907,11 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+name|boolean
+name|hasWritten
+init|=
+literal|false
+decl_stmt|;
 comment|// Write required fields first.
 name|String
 index|[]
@@ -929,6 +943,10 @@ name|i
 operator|++
 control|)
 block|{
+name|hasWritten
+operator|=
+name|hasWritten
+operator||
 name|writeField
 argument_list|(
 name|s
@@ -939,6 +957,8 @@ argument_list|,
 name|out
 argument_list|,
 name|ff
+argument_list|,
+name|hasWritten
 argument_list|)
 expr_stmt|;
 name|written
@@ -998,6 +1018,11 @@ argument_list|)
 condition|)
 block|{
 comment|// If field appears both in req. and opt. don't repeat.
+comment|//writeField(s[i], out, ff);
+name|hasWritten
+operator|=
+name|hasWritten
+operator||
 name|writeField
 argument_list|(
 name|s
@@ -1008,6 +1033,8 @@ argument_list|,
 name|out
 argument_list|,
 name|ff
+argument_list|,
+name|hasWritten
 argument_list|)
 expr_stmt|;
 name|written
@@ -1120,6 +1147,10 @@ name|hasNext
 argument_list|()
 condition|;
 control|)
+name|hasWritten
+operator|=
+name|hasWritten
+operator||
 name|writeField
 argument_list|(
 operator|(
@@ -1133,13 +1164,26 @@ argument_list|,
 name|out
 argument_list|,
 name|ff
+argument_list|,
+name|hasWritten
 argument_list|)
 expr_stmt|;
+comment|//writeField((String)i.next(),out,ff);
 comment|// Finally, end the entry.
 name|out
 operator|.
 name|write
 argument_list|(
+operator|(
+name|hasWritten
+condition|?
+name|Globals
+operator|.
+name|NEWLINE
+else|:
+literal|""
+operator|)
+operator|+
 literal|"}"
 operator|+
 name|Globals
@@ -1148,9 +1192,10 @@ name|NEWLINE
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|writeField (String name, Writer out, FieldFormatter ff)
+comment|/**      * Write a single field, if it has any content.      * @param name The field name      * @param out The Writer to send it to      * @param ff A formatter to filter field contents before writing      * @param isFirst Indicates whether this is the first field written for      *    this entry - if not, start by writing a comma and newline      * @return true if this field was written, false if it was skipped because      *    it was not set      * @throws IOException In case of an IO error      */
+DECL|method|writeField (String name, Writer out, FieldFormatter ff, boolean isFirst)
 specifier|private
-name|void
+name|boolean
 name|writeField
 parameter_list|(
 name|String
@@ -1161,6 +1206,9 @@ name|out
 parameter_list|,
 name|FieldFormatter
 name|ff
+parameter_list|,
+name|boolean
+name|isFirst
 parameter_list|)
 throws|throws
 name|IOException
@@ -1180,6 +1228,21 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|isFirst
+condition|)
+name|out
+operator|.
+name|write
+argument_list|(
+literal|","
+operator|+
+name|Globals
+operator|.
+name|NEWLINE
+argument_list|)
+expr_stmt|;
 name|out
 operator|.
 name|write
@@ -1241,19 +1304,16 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
+return|return
+literal|true
+return|;
 comment|//Util.writeField(name, o, out);
-name|out
-operator|.
-name|write
-argument_list|(
-literal|","
-operator|+
-name|Globals
-operator|.
-name|NEWLINE
-argument_list|)
-expr_stmt|;
+comment|//out.write(","+Globals.NEWLINE);
 block|}
+else|else
+return|return
+literal|false
+return|;
 block|}
 comment|/**      * Returns a clone of this entry. Useful for copying.      */
 DECL|method|clone ()
