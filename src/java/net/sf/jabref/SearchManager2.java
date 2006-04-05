@@ -920,6 +920,14 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+name|escape
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+comment|// enabled after searching
 name|openset
 operator|.
 name|addActionListener
@@ -1849,7 +1857,9 @@ operator|!=
 literal|null
 condition|)
 block|{
-operator|(
+name|Thread
+name|t
+init|=
 operator|new
 name|Thread
 argument_list|()
@@ -1864,10 +1874,14 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-operator|)
+decl_stmt|;
+comment|// do this after the button action is over
+name|SwingUtilities
 operator|.
-name|start
-argument_list|()
+name|invokeLater
+argument_list|(
+name|t
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -2062,6 +2076,13 @@ argument_list|()
 operator|.
 name|update
 argument_list|()
+expr_stmt|;
+name|escape
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -2339,6 +2360,14 @@ name|stopShowingSearchResults
 argument_list|()
 expr_stmt|;
 block|}
+comment|// disable "Cancel" button to signal this to the user
+name|escape
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|itemStateChanged (ItemEvent e)
 specifier|public
@@ -2465,6 +2494,13 @@ block|{
 name|incSearch
 operator|=
 literal|true
+expr_stmt|;
+name|escape
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
 name|SwingUtilities
 operator|.
