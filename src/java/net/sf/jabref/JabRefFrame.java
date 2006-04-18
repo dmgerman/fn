@@ -1821,6 +1821,16 @@ argument_list|(
 literal|"New database"
 argument_list|)
 decl_stmt|;
+comment|// Other submenus
+DECL|field|checkAndFix
+name|JMenu
+name|checkAndFix
+init|=
+name|subMenu
+argument_list|(
+literal|"Find And Fix"
+argument_list|)
+decl_stmt|;
 comment|// The action for adding a new entry of unspecified type.
 DECL|field|newEntryAction
 name|NewEntryAction
@@ -5306,18 +5316,40 @@ argument_list|(
 name|replaceAll
 argument_list|)
 expr_stmt|;
+comment|// [kiar] I think we should group these festures
 name|tools
+operator|.
+name|add
+argument_list|(
+name|checkAndFix
+argument_list|)
+expr_stmt|;
+name|checkAndFix
 operator|.
 name|add
 argument_list|(
 name|dupliCheck
 argument_list|)
 expr_stmt|;
-name|tools
+name|checkAndFix
 operator|.
 name|add
 argument_list|(
 name|strictDupliCheck
+argument_list|)
+expr_stmt|;
+name|checkAndFix
+operator|.
+name|add
+argument_list|(
+name|makeKeyAction
+argument_list|)
+expr_stmt|;
+name|checkAndFix
+operator|.
+name|add
+argument_list|(
+name|integrityCheckAction
 argument_list|)
 expr_stmt|;
 name|tools
@@ -5330,13 +5362,6 @@ operator|.
 name|add
 argument_list|(
 name|manageSelectors
-argument_list|)
-expr_stmt|;
-name|tools
-operator|.
-name|add
-argument_list|(
-name|makeKeyAction
 argument_list|)
 expr_stmt|;
 name|tools
@@ -5397,13 +5422,6 @@ operator|.
 name|add
 argument_list|(
 name|newSubDatabaseAction
-argument_list|)
-expr_stmt|;
-name|tools
-operator|.
-name|add
-argument_list|(
-name|integrityCheckAction
 argument_list|)
 expr_stmt|;
 name|tools
@@ -8970,7 +8988,6 @@ argument_list|(
 literal|"Integrity check"
 argument_list|)
 argument_list|,
-comment|//Globals.lang( "" ),
 operator|new
 name|ImageIcon
 argument_list|(

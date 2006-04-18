@@ -1562,6 +1562,11 @@ name|shortIntegrityCheck
 init|=
 literal|"ShortIntegrityCheck.html"
 decl_stmt|,
+DECL|field|shortAuxImport
+name|shortAuxImport
+init|=
+literal|"ShortAuxImport.html"
+decl_stmt|,
 DECL|field|remoteHelp
 name|remoteHelp
 init|=

@@ -185,9 +185,10 @@ name|frame
 argument_list|,
 literal|"dialog"
 argument_list|,
-literal|true
+literal|false
 argument_list|)
 expr_stmt|;
+comment|// no modal
 name|_frame
 operator|=
 name|frame
