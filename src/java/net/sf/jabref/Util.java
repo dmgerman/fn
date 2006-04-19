@@ -2944,7 +2944,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|/*if (localFile) {             String[] spl = link.split("\\\\");             StringBuffer sb = new StringBuffer();             for (int i = 0; i< spl.length; i++) {                 if (i> 0) sb.append("\\");                 if (spl[i].indexOf(" ")>= 0) spl[i] = "\"" + spl[i]                         + "\"";                 sb.append(spl[i]);             }             link = sb.toString(); 	    }*/
+comment|/*if (localFile) {             String[] spl = link.split("\\\\");             StringBuffer sb = new StringBuffer();             for (int i = 0; i< spl.length; i++) {                 if (i> 0) sb.append("\\");                 if (spl[i].indexOf(" ")>= 0) spl[i] = "\"" + spl[i]                         + "\"";                 sb.append(spl[i]);             }             link = sb.toString();             }*/
 name|link
 operator|=
 name|link
@@ -4690,7 +4690,7 @@ argument_list|()
 return|;
 block|}
 comment|/**      * This methods assures all words in the given entry are recorded in their      * respective Completers, if any.      */
-comment|/*      * public static void updateCompletersForEntry(Hashtable autoCompleters,      * BibtexEntry be) {      *       * for (Iterator j=autoCompleters.keySet().iterator(); j.hasNext();) {      * String field = (String)j.next(); Completer comp =      * (Completer)autoCompleters.get(field); comp.addAll(be.getField(field)); } }      */
+comment|/*      * public static void updateCompletersForEntry(Hashtable autoCompleters,      * BibtexEntry be) {      *      * for (Iterator j=autoCompleters.keySet().iterator(); j.hasNext();) {      * String field = (String)j.next(); Completer comp =      * (Completer)autoCompleters.get(field); comp.addAll(be.getField(field)); } }      */
 comment|/**      * Sets empty or non-existing owner fields of bibtex entries inside a List      * to a specified default value. Timestamp field is also set. Preferences are      * checked to see if these options are enabled.      *      * @param bibs List of bibtex entries      */
 DECL|method|setAutomaticFields (List bibs)
 specifier|public
@@ -4924,7 +4924,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|OWNER
 argument_list|,
@@ -5962,14 +5962,17 @@ name|int
 name|i
 init|=
 literal|0
+init|,
+name|len
+init|=
+name|BibtexFields
+operator|.
+name|numberOfPublicFields
+argument_list|()
 init|;
 name|i
 operator|<
-name|GUIGlobals
-operator|.
-name|ALL_FIELDS
-operator|.
-name|length
+name|len
 condition|;
 operator|++
 name|i
@@ -5981,12 +5984,12 @@ name|field
 operator|.
 name|equals
 argument_list|(
-name|GUIGlobals
+name|BibtexFields
 operator|.
-name|ALL_FIELDS
-index|[
+name|getFieldName
+argument_list|(
 name|i
-index|]
+argument_list|)
 argument_list|)
 condition|)
 block|{
@@ -6544,14 +6547,9 @@ block|{
 name|String
 name|s
 init|=
-operator|(
-name|String
-operator|)
-name|GUIGlobals
+name|BibtexFields
 operator|.
-name|FIELD_EXTRAS
-operator|.
-name|get
+name|getFieldExtras
 argument_list|(
 name|fieldName
 argument_list|)
@@ -7188,7 +7186,7 @@ name|be
 operator|.
 name|getField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|MARKED
 argument_list|)
@@ -7282,7 +7280,7 @@ name|UndoableFieldChange
 argument_list|(
 name|be
 argument_list|,
-name|Globals
+name|BibtexFields
 operator|.
 name|MARKED
 argument_list|,
@@ -7290,7 +7288,7 @@ name|be
 operator|.
 name|getField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|MARKED
 argument_list|)
@@ -7303,7 +7301,7 @@ name|be
 operator|.
 name|setField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|MARKED
 argument_list|,
@@ -7334,7 +7332,7 @@ name|be
 operator|.
 name|getField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|MARKED
 argument_list|)
@@ -7496,7 +7494,7 @@ name|UndoableFieldChange
 argument_list|(
 name|be
 argument_list|,
-name|Globals
+name|BibtexFields
 operator|.
 name|MARKED
 argument_list|,
@@ -7504,7 +7502,7 @@ name|be
 operator|.
 name|getField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|MARKED
 argument_list|)
@@ -7517,7 +7515,7 @@ name|be
 operator|.
 name|setField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|MARKED
 argument_list|,
@@ -7588,7 +7586,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|OWNER
 argument_list|)
@@ -7704,7 +7702,7 @@ name|UndoableFieldChange
 argument_list|(
 name|be
 argument_list|,
-name|Globals
+name|BibtexFields
 operator|.
 name|MARKED
 argument_list|,
@@ -7712,7 +7710,7 @@ name|be
 operator|.
 name|getField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|MARKED
 argument_list|)
@@ -7725,7 +7723,7 @@ name|be
 operator|.
 name|setField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|MARKED
 argument_list|,
@@ -7750,7 +7748,7 @@ name|be
 operator|.
 name|getField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|MARKED
 argument_list|)

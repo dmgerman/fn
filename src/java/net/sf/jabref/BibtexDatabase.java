@@ -931,7 +931,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|,
@@ -943,7 +943,7 @@ name|entry
 operator|.
 name|clearField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)

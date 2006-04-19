@@ -280,7 +280,7 @@ operator|=
 name|_frame
 expr_stmt|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see java.awt.dnd.DropTargetListener#dragEnter(java.awt.dnd.DropTargetDragEvent)      */
+comment|/*      * (non-Javadoc)      *      * @see java.awt.dnd.DropTargetListener#dragEnter(java.awt.dnd.DropTargetDragEvent)      */
 DECL|method|dragEnter (DropTargetDragEvent dtde)
 specifier|public
 name|void
@@ -290,7 +290,7 @@ name|DropTargetDragEvent
 name|dtde
 parameter_list|)
 block|{     }
-comment|/*      * (non-Javadoc)      *       * @see java.awt.dnd.DropTargetListener#dragOver(java.awt.dnd.DropTargetDragEvent)      */
+comment|/*      * (non-Javadoc)      *      * @see java.awt.dnd.DropTargetListener#dragOver(java.awt.dnd.DropTargetDragEvent)      */
 DECL|method|dragOver (DropTargetDragEvent dtde)
 specifier|public
 name|void
@@ -300,7 +300,7 @@ name|DropTargetDragEvent
 name|dtde
 parameter_list|)
 block|{     }
-comment|/*      * (non-Javadoc)      *       * @see java.awt.dnd.DropTargetListener#dropActionChanged(java.awt.dnd.DropTargetDragEvent)      */
+comment|/*      * (non-Javadoc)      *      * @see java.awt.dnd.DropTargetListener#dropActionChanged(java.awt.dnd.DropTargetDragEvent)      */
 DECL|method|dropActionChanged (DropTargetDragEvent dtde)
 specifier|public
 name|void
@@ -310,7 +310,7 @@ name|DropTargetDragEvent
 name|dtde
 parameter_list|)
 block|{     }
-comment|/*      * (non-Javadoc)      *       * @see java.awt.dnd.DropTargetListener#dragExit(java.awt.dnd.DropTargetEvent)      */
+comment|/*      * (non-Javadoc)      *      * @see java.awt.dnd.DropTargetListener#dragExit(java.awt.dnd.DropTargetEvent)      */
 DECL|method|dragExit (DropTargetEvent dte)
 specifier|public
 name|void
@@ -377,7 +377,7 @@ name|id
 return|;
 block|}
 block|}
-comment|/*      * (non-Javadoc)      *       * @see java.awt.dnd.DropTargetListener#drop(java.awt.dnd.DropTargetDropEvent)      */
+comment|/*      * (non-Javadoc)      *      * @see java.awt.dnd.DropTargetListener#drop(java.awt.dnd.DropTargetDropEvent)      */
 DECL|method|drop (DropTargetDropEvent dtde)
 specifier|public
 name|void
@@ -594,7 +594,7 @@ argument_list|()
 operator|.
 name|getField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)

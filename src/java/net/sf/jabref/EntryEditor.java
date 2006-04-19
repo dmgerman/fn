@@ -1521,18 +1521,7 @@ name|ed
 init|=
 name|editor
 decl_stmt|;
-name|Object
-name|o
-init|=
-name|GUIGlobals
-operator|.
-name|FIELD_EXTRAS
-operator|.
-name|get
-argument_list|(
-name|string
-argument_list|)
-decl_stmt|;
+comment|// fieldName and parameter string identically ????
 specifier|final
 name|String
 name|fieldName
@@ -1542,15 +1531,15 @@ operator|.
 name|getFieldName
 argument_list|()
 decl_stmt|;
-comment|//if (o == null)
-comment|//  return null;
 name|String
 name|s
 init|=
-operator|(
-name|String
-operator|)
-name|o
+name|BibtexFields
+operator|.
+name|getFieldExtras
+argument_list|(
+name|string
+argument_list|)
 decl_stmt|;
 comment|//addedByMoritz
 if|if
@@ -3497,7 +3486,7 @@ control|)
 block|{
 if|if
 condition|(
-name|GUIGlobals
+name|BibtexFields
 operator|.
 name|isDisplayableField
 argument_list|(
@@ -6129,7 +6118,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -6182,7 +6171,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -6200,7 +6189,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -6208,7 +6197,7 @@ decl_stmt|;
 comment|// set the field named for "bibtexkey"
 name|setField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|,

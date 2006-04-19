@@ -852,7 +852,7 @@ else|:
 literal|null
 return|;
 block|}
-comment|/**      * Updates our Set containing the last row selection. Ckecks which rows were ADDED      * to the selection, to see what new entry should be previewed.      *      * This method may have some potential for optimization.      *      * @param rows      * @return The number of the row that should be considered active, or -1 if none.       */
+comment|/**      * Updates our Set containing the last row selection. Ckecks which rows were ADDED      * to the selection, to see what new entry should be previewed.      *      * This method may have some potential for optimization.      *      * @param rows      * @return The number of the row that should be considered active, or -1 if none.      */
 DECL|method|resolveNewSelection (int[] rows)
 specifier|private
 name|int
@@ -2234,7 +2234,7 @@ name|nonZeroField
 argument_list|(
 name|row
 argument_list|,
-name|Globals
+name|BibtexFields
 operator|.
 name|SEARCH
 argument_list|)
@@ -2255,7 +2255,7 @@ name|nonZeroField
 argument_list|(
 name|row
 argument_list|,
-name|Globals
+name|BibtexFields
 operator|.
 name|GROUPSEARCH
 argument_list|)

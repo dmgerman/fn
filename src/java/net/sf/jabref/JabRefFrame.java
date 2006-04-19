@@ -9412,7 +9412,7 @@ name|ths
 argument_list|,
 name|panel
 argument_list|,
-name|GUIGlobals
+name|BibtexFields
 operator|.
 name|DEFAULT_INSPECTION_FIELDS
 argument_list|,

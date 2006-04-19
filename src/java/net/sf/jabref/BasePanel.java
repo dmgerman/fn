@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* Copyright (C) 2003 Morten O. Alver and Nizar N. Batada  All programs in this directory and subdirectories are published under the GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html    */
+comment|/* Copyright (C) 2003 Morten O. Alver and Nizar N. Batada  All programs in this directory and subdirectories are published under the GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html   */
 end_comment
 
 begin_package
@@ -1513,7 +1513,7 @@ name|bes
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -3579,7 +3579,7 @@ name|bes
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -3765,7 +3765,7 @@ name|bes
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -3861,7 +3861,7 @@ name|bes
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -4181,7 +4181,7 @@ index|]
 operator|.
 name|getField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -4199,7 +4199,7 @@ index|]
 operator|.
 name|getField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -4477,7 +4477,7 @@ index|]
 operator|.
 name|getField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -4495,7 +4495,7 @@ index|]
 operator|.
 name|getField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -5149,7 +5149,7 @@ index|]
 operator|.
 name|getField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -6014,7 +6014,7 @@ block|}
 argument_list|)
 expr_stmt|;
 comment|// The action starts the "import from plain text" dialog
-comment|/*actions.put("importPlainText", new BaseAction() {                       public void action()                       {                         BibtexEntry bibEntry = null ;                         // try to get the first marked entry                         BibtexEntry[] bes = entryTable.getSelectedEntries();                         if ((bes != null)&& (bes.length> 0))                           bibEntry = bes[0] ;                          if (bibEntry != null)                         {                           // Create an UndoableInsertEntry object.                           undoManager.addEdit(new UndoableInsertEntry(database, bibEntry, BasePanel.this));                            TextInputDialog tidialog = new TextInputDialog(frame, BasePanel.this,                                                                           "import", true,                                                                          bibEntry) ;                           Util.placeDialog(tidialog, BasePanel.this);                           tidialog.setVisible(true);                            if (tidialog.okPressed())                           {                             output(Globals.lang("changed ")+" '"                                    +bibEntry.getType().getName().toLowerCase()+"' "                                    +Globals.lang("entry")+".");                             refreshTable();                             int row = tableModel.getNumberFromName(bibEntry.getId());                              entryTable.clearSelection();                             entryTable.scrollTo(row);                             markBaseChanged(); // The database just changed.                             if (Globals.prefs.getBoolean("autoOpenForm"))                             {                                   showEntry(bibEntry);                             }                           }                         }                       }                   });                 */
+comment|/*actions.put("importPlainText", new BaseAction() {                       public void action()                       {                         BibtexEntry bibEntry = null ;                         // try to get the first marked entry                         BibtexEntry[] bes = entryTable.getSelectedEntries();                         if ((bes != null)&& (bes.length> 0))                           bibEntry = bes[0] ;                          if (bibEntry != null)                         {                           // Create an UndoableInsertEntry object.                           undoManager.addEdit(new UndoableInsertEntry(database, bibEntry, BasePanel.this));                            TextInputDialog tidialog = new TextInputDialog(frame, BasePanel.this,                                                                          "import", true,                                                                          bibEntry) ;                           Util.placeDialog(tidialog, BasePanel.this);                           tidialog.setVisible(true);                            if (tidialog.okPressed())                           {                             output(Globals.lang("changed ")+" '"                                    +bibEntry.getType().getName().toLowerCase()+"' "                                    +Globals.lang("entry")+".");                             refreshTable();                             int row = tableModel.getNumberFromName(bibEntry.getId());                              entryTable.clearSelection();                             entryTable.scrollTo(row);                             markBaseChanged(); // The database just changed.                             if (Globals.prefs.getBoolean("autoOpenForm"))                             {                                   showEntry(bibEntry);                             }                           }                         }                       }                   });                 */
 name|actions
 operator|.
 name|put
@@ -8861,7 +8861,7 @@ name|bibEntry
 operator|.
 name|setField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|OWNER
 argument_list|,
@@ -12091,7 +12091,7 @@ name|bes
 operator|.
 name|getField
 argument_list|(
-name|GUIGlobals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)

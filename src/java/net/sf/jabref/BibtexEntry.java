@@ -476,7 +476,7 @@ name|_fields
 operator|.
 name|containsKey
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -488,7 +488,7 @@ name|_fields
 operator|.
 name|get
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -563,7 +563,7 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-comment|/* The first event is no longer needed, so the following comment doesn't apply 	           as of 2005.08.11.              // First throw an empty event that just signals that this entry 	        // is about to change. This is needed, so the EntrySorter can 	        // remove the entry from its TreeSet. After a sort-sensitive 	        // field changes, the entry will not be found by the TreeMap, 	        // so without this event it would be impossible to reinsert this 	        // entry to keep everything sorted properly.             firePropertyChangedEvent(null, null, null);             */
+comment|/* The first event is no longer needed, so the following comment doesn't apply                    as of 2005.08.11.              // First throw an empty event that just signals that this entry                 // is about to change. This is needed, so the EntrySorter can                 // remove the entry from its TreeSet. After a sort-sensitive                 // field changes, the entry will not be found by the TreeMap,                 // so without this event it would be impossible to reinsert this                 // entry to keep everything sorted properly.             firePropertyChangedEvent(null, null, null);             */
 comment|// We set the field before throwing the changeEvent, to enable
 comment|// the change listener to access the new value if the change
 comment|// sets off a change in database sorting etc.
@@ -860,7 +860,7 @@ name|String
 operator|)
 name|getField
 argument_list|(
-name|GUIGlobals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -900,7 +900,7 @@ name|written
 operator|.
 name|put
 argument_list|(
-name|GUIGlobals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|,
@@ -1096,14 +1096,14 @@ init|=
 operator|(
 name|write
 condition|?
-name|GUIGlobals
+name|BibtexFields
 operator|.
 name|isWriteableField
 argument_list|(
 name|key
 argument_list|)
 else|:
-name|GUIGlobals
+name|BibtexFields
 operator|.
 name|isDisplayableField
 argument_list|(
@@ -1371,7 +1371,7 @@ literal|":"
 operator|+
 name|getField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)

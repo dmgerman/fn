@@ -618,7 +618,7 @@ name|be
 operator|.
 name|getField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|MARKED
 argument_list|)

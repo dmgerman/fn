@@ -1153,7 +1153,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|,

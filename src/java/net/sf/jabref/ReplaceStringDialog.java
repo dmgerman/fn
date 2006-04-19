@@ -559,7 +559,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Settings panel:
-comment|/* 	con.weightx = 0; 	con.insets = new Insets(3, 5, 3, 5); 	con.anchor = GridBagConstraints.EAST; 	con.fill = GridBagConstraints.NONE; 	con.gridx = 0; 	con.gridy = 2; 	gbl.setConstraints(nf, con); 	settings.add(nf);*/
+comment|/*         con.weightx = 0;         con.insets = new Insets(3, 5, 3, 5);         con.anchor = GridBagConstraints.EAST;         con.fill = GridBagConstraints.NONE;         con.gridx = 0;         con.gridy = 2;         gbl.setConstraints(nf, con);         settings.add(nf);*/
 name|con
 operator|.
 name|gridwidth
@@ -1129,7 +1129,7 @@ name|s
 operator|.
 name|equals
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -1176,7 +1176,7 @@ index|]
 operator|.
 name|equals
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)

@@ -370,14 +370,15 @@ return|return
 literal|""
 return|;
 block|}
-elseif|else
-if|if
-condition|(
-name|GUIGlobals
+else|else
+comment|// try to find an alternative fieldname (for display)
+block|{
+name|String
+name|disName
+init|=
+name|BibtexFields
 operator|.
-name|FIELD_DISPLAYS
-operator|.
-name|get
+name|getFieldDisplayName
 argument_list|(
 name|columns
 index|[
@@ -386,30 +387,18 @@ operator|-
 name|padleft
 index|]
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|disName
 operator|!=
 literal|null
 condition|)
 block|{
 return|return
-operator|(
-operator|(
-name|String
-operator|)
-name|GUIGlobals
-operator|.
-name|FIELD_DISPLAYS
-operator|.
-name|get
-argument_list|(
-name|columns
-index|[
-name|col
-operator|-
-name|padleft
-index|]
-argument_list|)
-operator|)
+name|disName
 return|;
+block|}
 block|}
 return|return
 name|Util
@@ -606,7 +595,7 @@ literal|1
 operator|)
 expr_stmt|;
 block|}
-comment|/*      if (!isComplete(row)) {       	//JLabel incomplete = new JLabel("" + (row + 1),GUIGlobals.incompleteLabel.getIcon(), JLabel.RIGHT);         //JLabel incomplete = new JLabel("" + (row + 1));         //incomplete.setToolTipText(Globals.lang("This entry is incomplete"));         //return incomplete;               } else */
+comment|/*      if (!isComplete(row)) {               //JLabel incomplete = new JLabel("" + (row + 1),GUIGlobals.incompleteLabel.getIcon(), JLabel.RIGHT);         //JLabel incomplete = new JLabel("" + (row + 1));         //incomplete.setToolTipText(Globals.lang("This entry is incomplete"));         //return incomplete;       } else */
 elseif|else
 if|if
 condition|(
@@ -895,7 +884,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/*if (o != null) {         String processed = Globals.getCached((String)o);         if (processed == null) {             StringBuffer sb = new StringBuffer("");//"<html>");             sb.append((String)o);             //sb.append("</html>");             processed = sb.toString();             Globals.cache((String)o, processed);             o = processed;         } else             o = processed;                           }*/
+comment|/*if (o != null) {         String processed = Globals.getCached((String)o);         if (processed == null) {             StringBuffer sb = new StringBuffer("");//"<html>");             sb.append((String)o);             //sb.append("</html>");             processed = sb.toString();             Globals.cache((String)o, processed);             o = processed;         } else             o = processed;       }*/
 return|return
 name|o
 return|;
@@ -1010,7 +999,7 @@ index|]
 operator|.
 name|equals
 argument_list|(
-name|GUIGlobals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -1601,7 +1590,7 @@ name|fields
 operator|.
 name|add
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|MARKED
 argument_list|)
@@ -1637,7 +1626,7 @@ name|fields
 operator|.
 name|add
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|GROUPSEARCH
 argument_list|)
@@ -1673,7 +1662,7 @@ name|fields
 operator|.
 name|add
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|SEARCH
 argument_list|)
@@ -1978,7 +1967,7 @@ name|field
 operator|.
 name|equals
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|MARKED
 argument_list|)

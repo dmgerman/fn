@@ -958,43 +958,6 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * String constants.    */
-specifier|public
-specifier|static
-specifier|final
-name|String
-DECL|field|KEY_FIELD
-name|KEY_FIELD
-init|=
-literal|"bibtexkey"
-decl_stmt|,
-DECL|field|SEARCH
-name|SEARCH
-init|=
-literal|"__search"
-decl_stmt|,
-DECL|field|GROUPSEARCH
-name|GROUPSEARCH
-init|=
-literal|"__groupsearch"
-decl_stmt|,
-DECL|field|MARKED
-name|MARKED
-init|=
-literal|"__markedentry"
-decl_stmt|,
-DECL|field|OWNER
-name|OWNER
-init|=
-literal|"owner"
-decl_stmt|,
-comment|// Using this when I have no database open when I read
-comment|// non bibtex file formats (used byte ImportFormatReader.java
-DECL|field|DEFAULT_BIBTEXENTRY_ID
-name|DEFAULT_BIBTEXENTRY_ID
-init|=
-literal|"__ID"
-decl_stmt|;
 DECL|method|setLanguage (String language, String country)
 specifier|public
 specifier|static
