@@ -40,6 +40,18 @@ name|Globals
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexFields
+import|;
+end_import
+
 begin_class
 DECL|class|DefaultLabelRule
 specifier|public
@@ -66,7 +78,7 @@ name|oldEntry
 operator|.
 name|getField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)

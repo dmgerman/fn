@@ -352,14 +352,15 @@ return|return
 literal|""
 return|;
 block|}
-elseif|else
-if|if
-condition|(
-name|GUIGlobals
+else|else
+comment|// try to find an alternative fieldname (for display)
+block|{
+name|String
+name|disName
+init|=
+name|BibtexFields
 operator|.
-name|FIELD_DISPLAYS
-operator|.
-name|get
+name|getFieldDisplayName
 argument_list|(
 name|columns
 index|[
@@ -368,30 +369,18 @@ operator|-
 name|padleft
 index|]
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|disName
 operator|!=
 literal|null
 condition|)
 block|{
 return|return
-operator|(
-operator|(
-name|String
-operator|)
-name|GUIGlobals
-operator|.
-name|FIELD_DISPLAYS
-operator|.
-name|get
-argument_list|(
-name|columns
-index|[
-name|col
-operator|-
-name|padleft
-index|]
-argument_list|)
-operator|)
+name|disName
 return|;
+block|}
 block|}
 return|return
 name|Util
@@ -450,7 +439,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Finds the column index for the given column name.      * @param colName The column name      * @return The column index if any, or -1 if no column has that name.       */
+comment|/**      * Finds the column index for the given column name.      * @param colName The column name      * @return The column index if any, or -1 if no column has that name.      */
 DECL|method|getColumnIndex (String colName)
 specifier|public
 name|int
@@ -1194,7 +1183,7 @@ specifier|private
 name|String
 name|field
 init|=
-name|Globals
+name|BibtexFields
 operator|.
 name|SEARCH
 decl_stmt|;

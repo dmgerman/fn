@@ -345,7 +345,7 @@ condition|(
 name|field
 condition|)
 block|{
-comment|/* Edited by Seb Wills<saw27@mrao.cam.ac.uk> on 13-Apr-2004 	       Added new pseudo-fields "shortyear" and "veryshorttitle", and 	       and ":lower" modifier for all fields (in a way easily extended to other modifiers). 	       Helpfile help/LabelPatterns.html updated accordingly. 	    */
+comment|/* Edited by Seb Wills<saw27@mrao.cam.ac.uk> on 13-Apr-2004                Added new pseudo-fields "shortyear" and "veryshorttitle", and                and ":lower" modifier for all fields (in a way easily extended to other modifiers).                Helpfile help/LabelPatterns.html updated accordingly.             */
 comment|// check whether there is a modifier on the end such as ":lower"
 comment|//String modifier = null;
 name|String
@@ -2301,7 +2301,7 @@ name|_entry
 operator|.
 name|getField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -2984,7 +2984,7 @@ name|n
 argument_list|)
 return|;
 block|}
-comment|/**    * authshort format:    * added by Kolja Brix, kbx@users.sourceforge.net    *    * given author names    *   Isaac Newton and James Maxwell and Albert Einstein and N. Bohr    *   Isaac Newton and James Maxwell and Albert Einstein     *   Isaac Newton and James Maxwell     *   Isaac Newton     * yield    *   NME+    *   NME    *   NM    *   Newton    */
+comment|/**    * authshort format:    * added by Kolja Brix, kbx@users.sourceforge.net    *    * given author names    *   Isaac Newton and James Maxwell and Albert Einstein and N. Bohr    *   Isaac Newton and James Maxwell and Albert Einstein    *   Isaac Newton and James Maxwell    *   Isaac Newton    * yield    *   NME+    *   NME    *   NM    *   Newton    */
 DECL|method|authshort (String authorField)
 specifier|private
 specifier|static
@@ -3118,7 +3118,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**    * authIniN format:    * Each author gets (N div #authors) chars, the remaining    * (N mod #authors) chars are equally distributed to the    * authors first in the row.    * If (N< #authors), only the fist N authors get mentioned.    * a) I. Newton and J. Maxwell and A. Einstein and N. Bohr (..)    * b) I. Newton and J. Maxwell and A. Einstein     * c) I. Newton and J. Maxwell     * d) I. Newton     * E.g. authIni4 gives: a) NMEB, b) NeME, c) NeMa, d) Newt    */
+comment|/**    * authIniN format:    * Each author gets (N div #authors) chars, the remaining    * (N mod #authors) chars are equally distributed to the    * authors first in the row.    * If (N< #authors), only the fist N authors get mentioned.    * a) I. Newton and J. Maxwell and A. Einstein and N. Bohr (..)    * b) I. Newton and J. Maxwell and A. Einstein    * c) I. Newton and J. Maxwell    * d) I. Newton    * E.g. authIni4 gives: a) NMEB, b) NeME, c) NeMa, d) Newt    */
 DECL|method|authIniN (String authorField, int n)
 specifier|private
 specifier|static

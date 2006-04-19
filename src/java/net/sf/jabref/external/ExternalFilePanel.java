@@ -572,7 +572,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -584,7 +584,7 @@ argument_list|()
 operator|.
 name|getField
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)

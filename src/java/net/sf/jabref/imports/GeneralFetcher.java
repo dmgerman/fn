@@ -595,7 +595,7 @@ operator|.
 name|basePanel
 argument_list|()
 argument_list|,
-name|GUIGlobals
+name|BibtexFields
 operator|.
 name|DEFAULT_INSPECTION_FIELDS
 argument_list|,

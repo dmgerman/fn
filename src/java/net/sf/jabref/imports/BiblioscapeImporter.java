@@ -116,6 +116,18 @@ name|Globals
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexFields
+import|;
+end_import
+
 begin_comment
 comment|/**  * Imports a Biblioscape Tag File. The format is described on  * http://www.biblioscape.com/manual_bsp/Biblioscape_Tag_File.htm Several  * Biblioscape field types are ignored. Others are only included in the BibTeX  * field "comment".  */
 end_comment
@@ -1937,7 +1949,7 @@ init|=
 operator|new
 name|BibtexEntry
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|DEFAULT_BIBTEXENTRY_ID
 argument_list|,

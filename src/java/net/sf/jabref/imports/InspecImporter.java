@@ -120,6 +120,18 @@ name|Pattern
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexFields
+import|;
+end_import
+
 begin_comment
 comment|/**  * INSPEC format importer.  */
 end_comment
@@ -825,7 +837,7 @@ init|=
 operator|new
 name|BibtexEntry
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|DEFAULT_BIBTEXENTRY_ID
 argument_list|,

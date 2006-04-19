@@ -309,7 +309,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-comment|/*	    try { 		Thread.currentThread().sleep(500); 		} catch (InterruptedException ex) {}*/
+comment|/*	    try {                 Thread.currentThread().sleep(500);                 } catch (InterruptedException ex) {}*/
 break|break;
 block|}
 block|}
@@ -426,7 +426,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-comment|/*	    try { 		Thread.currentThread().sleep(500); 		} catch (InterruptedException ex) {}*/
+comment|/*	    try {                 Thread.currentThread().sleep(500);                 } catch (InterruptedException ex) {}*/
 break|break;
 block|}
 return|return
@@ -642,7 +642,7 @@ init|=
 name|parseBracketedTextExactly
 argument_list|()
 decl_stmt|;
-comment|/** 			 * 			 * Metadata are used to store Bibkeeper-specific 			 * information in .bib files. 			 * 			 * Metadata are stored in bibtex files in the format 			 * @comment{jabref-meta: type:data0;data1;data2;...} 			 * 			 * Each comment that starts with the META_FLAG is stored 			 * in the meta HashMap, with type as key. 			 * Unluckily, the old META_FLAG bibkeeper-meta: was used 			 * in JabRef 1.0 and 1.1, so we need to support it as 			 * well. At least for a while. We'll always save with the 			 * new one. 			 */
+comment|/**                          *                          * Metadata are used to store Bibkeeper-specific                          * information in .bib files.                          *                          * Metadata are stored in bibtex files in the format                          * @comment{jabref-meta: type:data0;data1;data2;...}                          *                          * Each comment that starts with the META_FLAG is stored                          * in the meta HashMap, with type as key.                          * Unluckily, the old META_FLAG bibkeeper-meta: was used                          * in JabRef 1.0 and 1.1, so we need to support it as                          * well. At least for a while. We'll always save with the                          * new one.                          */
 name|String
 name|comment
 init|=
@@ -820,7 +820,7 @@ expr_stmt|;
 comment|// We remove all line breaks in the metadata - these will have been inserted
 comment|// to prevent too long lines when the file was saved, and are not part of the data.
 block|}
-comment|/** 			 * A custom entry type can also be stored in a @comment: 			 */
+comment|/**                          * A custom entry type can also be stored in a @comment:                          */
 if|if
 condition|(
 name|comment
@@ -1439,7 +1439,7 @@ name|result
 operator|.
 name|setField
 argument_list|(
-name|GUIGlobals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|,
@@ -2652,7 +2652,7 @@ operator|--
 expr_stmt|;
 comment|// If we encounter whitespace of any kind, read it as a
 comment|// simple space, and ignore any others that follow immediately.
-comment|/*if (j == '\n') {             if (peek() == '\n')                 value.append('\n');         } 	    else*/
+comment|/*if (j == '\n') {             if (peek() == '\n')                 value.append('\n');         }             else*/
 if|if
 condition|(
 name|Character

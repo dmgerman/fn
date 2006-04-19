@@ -131,7 +131,7 @@ specifier|protected
 name|Collection
 name|entries
 decl_stmt|;
-comment|/*protected final static String TYPE_COL = "BibliographyType";                   protected final static Map columns = new LinkedHashMap();         static {                       columns.put(TYPE_COL, "dummy");             columns.put("ISBN", "isbn");             coulmns.put("Identifier", "\bibtexkey");             coulmns.put("", "");             coulmns.put("", "");                   }*/
+comment|/*protected final static String TYPE_COL = "BibliographyType";          protected final static Map columns = new LinkedHashMap();         static {              columns.put(TYPE_COL, "dummy");             columns.put("ISBN", "isbn");             coulmns.put("Identifier", "\bibtexkey");             coulmns.put("", "");             coulmns.put("", "");          }*/
 DECL|method|OpenDocumentRepresentation ()
 specifier|public
 name|OpenDocumentRepresentation
@@ -187,7 +187,7 @@ argument_list|(
 operator|new
 name|FieldComparator
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -918,7 +918,7 @@ name|getField
 argument_list|(
 name|e
 argument_list|,
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)

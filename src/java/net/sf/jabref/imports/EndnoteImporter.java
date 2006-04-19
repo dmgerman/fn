@@ -132,6 +132,18 @@ name|AuthorList
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexFields
+import|;
+end_import
+
 begin_comment
 comment|/**  * Importer for the Refer/Endnote format.  *  * check here for details on the format  * http://www.ecst.csuchico.edu/~jacobsd/bib/formats/endnote.html  */
 end_comment
@@ -1179,7 +1191,7 @@ name|hm
 operator|.
 name|put
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|,
@@ -1270,7 +1282,7 @@ init|=
 operator|new
 name|BibtexEntry
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|DEFAULT_BIBTEXENTRY_ID
 argument_list|,

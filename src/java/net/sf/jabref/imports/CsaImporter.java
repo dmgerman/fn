@@ -120,6 +120,18 @@ name|Matcher
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexFields
+import|;
+end_import
+
 begin_comment
 comment|/**  * Importer for records downloaded from CSA: Cambridge Scientific Abstracts  * in full text format.  Although the same basic format is used by all CSA  * databases, this importer has been tailored and tested to handle  * ASFA: Aquatic Sciences and Fisheries records.  *  * @author John Relph  */
 end_comment
@@ -1178,7 +1190,7 @@ init|=
 operator|new
 name|BibtexEntry
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|DEFAULT_BIBTEXENTRY_ID
 argument_list|,

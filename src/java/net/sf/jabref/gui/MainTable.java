@@ -1637,7 +1637,7 @@ name|columnName
 operator|.
 name|equals
 argument_list|(
-name|GUIGlobals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)

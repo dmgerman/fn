@@ -18,35 +18,11 @@ end_package
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
 operator|.
-name|Vector
+name|*
 import|;
 end_import
 
@@ -58,19 +34,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefPreferences
+name|*
 import|;
 end_import
 
@@ -149,7 +113,7 @@ comment|// wrap and write.
 if|if
 condition|(
 operator|!
-name|GUIGlobals
+name|BibtexFields
 operator|.
 name|isStandardField
 argument_list|(

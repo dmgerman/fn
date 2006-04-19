@@ -1003,7 +1003,7 @@ name|nonZeroField
 argument_list|(
 name|be
 argument_list|,
-name|Globals
+name|BibtexFields
 operator|.
 name|SEARCH
 argument_list|)
@@ -1023,7 +1023,7 @@ name|nonZeroField
 argument_list|(
 name|be
 argument_list|,
-name|Globals
+name|BibtexFields
 operator|.
 name|GROUPSEARCH
 argument_list|)
@@ -1539,7 +1539,7 @@ argument_list|(
 operator|new
 name|FieldComparator
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)
@@ -2270,7 +2270,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-comment|/* 	    while ((c = reader.read()) != -1) {                 ps.write((char)c); 	    } 	    reader.close(); */
+comment|/*             while ((c = reader.read()) != -1) {                 ps.write((char)c);             }             reader.close(); */
 block|}
 catch|catch
 parameter_list|(
@@ -2926,14 +2926,17 @@ name|int
 name|i
 init|=
 literal|0
+init|,
+name|len
+init|=
+name|BibtexFields
+operator|.
+name|numberOfPublicFields
+argument_list|()
 init|;
 name|i
 operator|<
-name|GUIGlobals
-operator|.
-name|ALL_FIELDS
-operator|.
-name|length
+name|len
 condition|;
 name|i
 operator|++
@@ -2942,12 +2945,12 @@ name|fields
 operator|.
 name|add
 argument_list|(
-name|GUIGlobals
+name|BibtexFields
 operator|.
-name|ALL_FIELDS
-index|[
+name|getFieldName
+argument_list|(
 name|i
-index|]
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//	try {
@@ -3706,7 +3709,7 @@ argument_list|(
 operator|new
 name|FieldComparator
 argument_list|(
-name|Globals
+name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)

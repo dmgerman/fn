@@ -854,7 +854,7 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
-comment|/*NamedCompound ce = new NamedCompound("fetch Medline"); 		Iterator i = bibs.iterator(); 		while (i.hasNext()) { 		    try { 			BibtexEntry be = (BibtexEntry) i.next(); 			String id = Util.createId(be.getType(), panel.database()); 			be.setId(id); 			entries.add(be); 			//panel.database().insertEntry(be); 			//ce.addEdit(new UndoableInsertEntry(panel.database(), be, panel)); 		    } 		    catch (KeyCollisionException ex) { 		    } 		    }*/
+comment|/*NamedCompound ce = new NamedCompound("fetch Medline");                 Iterator i = bibs.iterator();                 while (i.hasNext()) {                     try {                         BibtexEntry be = (BibtexEntry) i.next();                         String id = Util.createId(be.getType(), panel.database());                         be.setId(id);                         entries.add(be);                         //panel.database().insertEntry(be);                         //ce.addEdit(new UndoableInsertEntry(panel.database(), be, panel));                     }                     catch (KeyCollisionException ex) {                     }                     }*/
 comment|//ce.end();
 name|panel
 operator|.
@@ -874,7 +874,7 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
-comment|/* 		int importedEntries = panel.frame().addBibEntries(bibs, null, false);         if (importedEntries == 0) {             return; // Nothing to refresh!         }         panel.markBaseChanged(); 		panel.refreshTable();         if (bibs.size()> 0) {             BibtexEntry[] entries = (BibtexEntry[])bibs.toArray(new BibtexEntry[0]);             panel.selectEntries(entries, 0);             if (entries.length == 1)                 panel.showEntry(entries[0]);             //else             //    panel.updateViewToSelected();         }*/
+comment|/*                 int importedEntries = panel.frame().addBibEntries(bibs, null, false);         if (importedEntries == 0) {             return; // Nothing to refresh!         }         panel.markBaseChanged();                 panel.refreshTable();         if (bibs.size()> 0) {             BibtexEntry[] entries = (BibtexEntry[])bibs.toArray(new BibtexEntry[0]);             panel.selectEntries(entries, 0);             if (entries.length == 1)                 panel.showEntry(entries[0]);             //else             //    panel.updateViewToSelected();         }*/
 comment|//panel.undoManager.addEdit(ce);
 block|}
 else|else
@@ -1025,7 +1025,7 @@ argument_list|,
 name|handler
 argument_list|)
 expr_stmt|;
-comment|/*FileOutputStream out = new FileOutputStream(new File("/home/alver/ut.txt")); 	System.out.println("#####"); 	InputStream is = data.getInputStream(); 	int c; 	while ((c = is.read()) != -1) { 	    out.write((char)c); 	} 	System.out.println("#####"); 	out.close();*/
+comment|/*FileOutputStream out = new FileOutputStream(new File("/home/alver/ut.txt"));         System.out.println("#####");         InputStream is = data.getInputStream();         int c;         while ((c = is.read()) != -1) {             out.write((char)c);         }         System.out.println("#####");         out.close();*/
 comment|// When you're done, report the results stored by your handler object
 name|bibItems
 operator|=
@@ -1355,7 +1355,7 @@ argument_list|()
 argument_list|,
 name|panel
 argument_list|,
-name|GUIGlobals
+name|BibtexFields
 operator|.
 name|DEFAULT_INSPECTION_FIELDS
 argument_list|,

@@ -179,7 +179,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * NOTAT:   *    * S?rg for at ting oppdateres riktig ved tillegg av ny type. (velge, unng? at det blir feil innhold i listene).  *    *   *  *  * @author alver  */
+comment|/**  * NOTAT:  *    * S?rg for at ting oppdateres riktig ved tillegg av ny type. (velge, unng? at det blir feil innhold i listene).  *    *  *  *  * @author alver  */
 end_comment
 
 begin_class
@@ -267,9 +267,10 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-name|GUIGlobals
+name|BibtexFields
 operator|.
-name|ALL_FIELDS
+name|getAllFieldNames
+argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|lastSelected
