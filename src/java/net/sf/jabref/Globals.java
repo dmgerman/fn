@@ -227,6 +227,16 @@ name|buildInfos
 init|=
 literal|"/resource/build.properties"
 decl_stmt|;
+DECL|field|additionalFields
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|additionalFields
+init|=
+literal|"/resource/fields/fields.xml"
+decl_stmt|;
+comment|// some extra field definitions
 DECL|field|logfile
 specifier|private
 specifier|static

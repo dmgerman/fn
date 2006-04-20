@@ -96,7 +96,7 @@ block|{
 return|return
 name|Globals
 operator|.
-name|lang
+name|menuTitle
 argument_list|(
 literal|"Insert selected citations into LatexEditor"
 argument_list|)

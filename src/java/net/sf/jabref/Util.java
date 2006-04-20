@@ -3,6 +3,42 @@ begin_comment
 comment|/*  Copyright (C) 2003 Morten O. Alver   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   */
 end_comment
 
+begin_comment
+comment|// created by : Morten O. Alver 2003
+end_comment
+
+begin_comment
+comment|//
+end_comment
+
+begin_comment
+comment|// function : utility functions
+end_comment
+
+begin_comment
+comment|//
+end_comment
+
+begin_comment
+comment|// todo     :
+end_comment
+
+begin_comment
+comment|//
+end_comment
+
+begin_comment
+comment|// modified :  - r.nagel 20.04.2006
+end_comment
+
+begin_comment
+comment|//               make the DateFormatter abstract and splitt the easyDate methode
+end_comment
+
+begin_comment
+comment|//               (now we cannot change the dateformat dynamicly, sorry)
+end_comment
+
 begin_package
 DECL|package|net.sf.jabref
 package|package
@@ -18,7 +54,7 @@ begin_import
 import|import
 name|java
 operator|.
-name|awt
+name|io
 operator|.
 name|*
 import|;
@@ -28,11 +64,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|awt
+name|net
 operator|.
-name|event
-operator|.
-name|ActionListener
+name|*
 import|;
 end_import
 
@@ -40,11 +74,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|awt
+name|nio
 operator|.
-name|event
+name|charset
 operator|.
-name|ActionEvent
+name|*
 import|;
 end_import
 
@@ -52,7 +86,7 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|text
 operator|.
 name|*
 import|;
@@ -86,7 +120,7 @@ name|util
 operator|.
 name|regex
 operator|.
-name|Matcher
+name|*
 import|;
 end_import
 
@@ -94,11 +128,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|awt
 operator|.
-name|regex
-operator|.
-name|Pattern
+name|*
 import|;
 end_import
 
@@ -106,83 +138,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|text
+name|awt
 operator|.
-name|SimpleDateFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|event
 operator|.
-name|text
-operator|.
-name|NumberFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|Charset
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|nio
-operator|.
-name|charset
-operator|.
-name|CharsetEncoder
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|lang
-operator|.
-name|StringIndexOutOfBoundsException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URI
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URISyntaxException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|MalformedURLException
+name|*
 import|;
 end_import
 
@@ -204,9 +164,9 @@ name|jgoodies
 operator|.
 name|forms
 operator|.
-name|layout
+name|builder
 operator|.
-name|FormLayout
+name|*
 import|;
 end_import
 
@@ -218,9 +178,23 @@ name|jgoodies
 operator|.
 name|forms
 operator|.
-name|builder
+name|layout
 operator|.
-name|DefaultFormBuilder
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|external
+operator|.
+name|*
 import|;
 end_import
 
@@ -262,35 +236,7 @@ name|jabref
 operator|.
 name|undo
 operator|.
-name|NamedCompound
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|undo
-operator|.
-name|UndoableFieldChange
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|external
-operator|.
-name|ExternalFileType
+name|*
 import|;
 end_import
 
@@ -304,6 +250,16 @@ specifier|public
 class|class
 name|Util
 block|{
+comment|// A static Object for date formatting. Please do not create the object here,
+comment|// because there are some references from the Globals class.....
+DECL|field|dateFormatter
+specifier|private
+specifier|static
+name|SimpleDateFormat
+name|dateFormatter
+init|=
+literal|null
+decl_stmt|;
 comment|// Colors are defined here.
 DECL|field|fieldsCol
 specifier|public
@@ -322,10 +278,10 @@ literal|200
 argument_list|)
 decl_stmt|;
 comment|// Integer values for indicating result of duplicate check (for entries):
-DECL|field|TYPE_MISMATCH
 specifier|final
 specifier|static
 name|int
+DECL|field|TYPE_MISMATCH
 name|TYPE_MISMATCH
 init|=
 operator|-
@@ -7129,6 +7085,35 @@ name|String
 name|easyDateFormat
 parameter_list|()
 block|{
+comment|//        Date today = new Date();
+return|return
+name|easyDateFormat
+argument_list|(
+operator|new
+name|Date
+argument_list|()
+argument_list|)
+return|;
+block|}
+comment|/**      * Creates a readable Date string from the parameter date.      * The format is set in preferences under the key "timeStampFormat".      *      * @return The formatted date string.      */
+DECL|method|easyDateFormat (Date date)
+specifier|public
+specifier|static
+name|String
+name|easyDateFormat
+parameter_list|(
+name|Date
+name|date
+parameter_list|)
+block|{
+comment|// first use, create an instance
+if|if
+condition|(
+name|dateFormatter
+operator|==
+literal|null
+condition|)
+block|{
 name|String
 name|format
 init|=
@@ -7141,28 +7126,21 @@ argument_list|(
 literal|"timeStampFormat"
 argument_list|)
 decl_stmt|;
-name|Date
-name|today
-init|=
-operator|new
-name|Date
-argument_list|()
-decl_stmt|;
-name|SimpleDateFormat
-name|formatter
-init|=
+name|dateFormatter
+operator|=
 operator|new
 name|SimpleDateFormat
 argument_list|(
 name|format
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
 return|return
-name|formatter
+name|dateFormatter
 operator|.
 name|format
 argument_list|(
-name|today
+name|date
 argument_list|)
 return|;
 block|}

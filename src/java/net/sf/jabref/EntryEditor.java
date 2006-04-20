@@ -244,6 +244,50 @@ name|JournalAbbreviations
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|michaelbaranov
+operator|.
+name|microba
+operator|.
+name|calendar
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|michaelbaranov
+operator|.
+name|microba
+operator|.
+name|common
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|date
+operator|.
+name|*
+import|;
+end_import
+
 begin_class
 DECL|class|EntryEditor
 specifier|public
@@ -1502,7 +1546,7 @@ name|repaint
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**    * getExtra checks the field name against GUIGlobals.FIELD_EXTRAS. If the name    * has an entry, the proper component to be shown is created and returned.    * Otherwise, null is returned. In addition, e.g. listeners can be added to    * the field editor, even if no component is returned.    *    * @param string    *          Field name    * @return Component to show, or null if none.    */
+comment|/**    * getExtra checks the field name against BibtexFields.getFieldExtras(name).    * If the name has an entry, the proper component to be shown is created and    * returned. Otherwise, null is returned. In addition, e.g. listeners can be    * added to the field editor, even if no component is returned.    *    * @param string    *          Field name    * @return Component to show, or null if none.    */
 DECL|method|getExtra (String string, FieldEditor editor)
 specifier|public
 name|JComponent
@@ -1541,9 +1585,10 @@ argument_list|(
 name|string
 argument_list|)
 decl_stmt|;
-comment|//addedByMoritz
+comment|// timestamp or a other field with datepicker command
 if|if
 condition|(
+operator|(
 name|fieldName
 operator|.
 name|equals
@@ -1557,9 +1602,25 @@ argument_list|(
 literal|"timeStampField"
 argument_list|)
 argument_list|)
+operator|)
+operator|||
+operator|(
+operator|(
+name|s
+operator|!=
+literal|null
+operator|)
+operator|&&
+name|s
+operator|.
+name|equals
+argument_list|(
+literal|"datepicker"
+argument_list|)
+operator|)
 condition|)
 block|{
-comment|//if (fieldName.equals("dateadded")){
+comment|// double click AND datefield => insert the current date (today)
 operator|(
 operator|(
 name|JTextArea
@@ -1590,6 +1651,7 @@ argument_list|()
 operator|==
 literal|2
 condition|)
+comment|// double click
 block|{
 name|String
 name|date
@@ -1606,15 +1668,45 @@ argument_list|(
 name|date
 argument_list|)
 expr_stmt|;
-comment|//DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-comment|//ed.setText(df.format(new Date()));
 block|}
 block|}
 block|}
 argument_list|)
 expr_stmt|;
+comment|// insert a datepicker, if the extras field contains this command
+if|if
+condition|(
+operator|(
+name|s
+operator|!=
+literal|null
+operator|)
+operator|&&
+name|s
+operator|.
+name|equals
+argument_list|(
+literal|"datepicker"
+argument_list|)
+condition|)
+block|{
+name|DatePickerButton
+name|datePicker
+init|=
+operator|new
+name|DatePickerButton
+argument_list|(
+name|ed
+argument_list|)
+decl_stmt|;
+return|return
+name|datePicker
+operator|.
+name|getDatePicker
+argument_list|()
+return|;
 block|}
-comment|//END_OF addedByMoritz
+block|}
 if|if
 condition|(
 operator|(

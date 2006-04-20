@@ -2032,13 +2032,16 @@ argument_list|,
 literal|"yyyy.MM.dd"
 argument_list|)
 expr_stmt|;
+comment|//        defaults.put("timeStampField", "timestamp");
 name|defaults
 operator|.
 name|put
 argument_list|(
 literal|"timeStampField"
 argument_list|,
-literal|"timestamp"
+name|BibtexFields
+operator|.
+name|TIMESTAMP
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -5035,7 +5038,7 @@ argument_list|,
 name|number
 argument_list|)
 expr_stmt|;
-comment|/*while (get(CUSTOM_TYPE_NAME+number) != null) {             remove(CUSTOM_TYPE_NAME+number);             remove(CUSTOM_TYPE_REQ+number);             remove(CUSTOM_TYPE_OPT+number);             number++; 	    }*/
+comment|/*while (get(CUSTOM_TYPE_NAME+number) != null) {             remove(CUSTOM_TYPE_NAME+number);             remove(CUSTOM_TYPE_REQ+number);             remove(CUSTOM_TYPE_OPT+number);             number++;             }*/
 block|}
 comment|/**      * Removes all entries keyed by prefix+number, where number      * is equal to or higher than the given number.      * @param number or higher.      */
 DECL|method|purgeSeries (String prefix, int number)
