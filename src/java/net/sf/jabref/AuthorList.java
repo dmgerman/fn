@@ -1725,10 +1725,7 @@ name|c
 operator|==
 literal|'~'
 operator|||
-name|c
-operator|==
-literal|'-'
-operator|||
+comment|/*c=='-' ||*/
 name|Character
 operator|.
 name|isWhitespace
@@ -1737,6 +1734,8 @@ name|c
 argument_list|)
 condition|)
 break|break;
+comment|// Morten Alver 18 Apr 2006: Removed check for hyphen '-' above to prevent
+comment|// problems with names like Bailey-Jones getting broken up and sorted wrong.
 name|token_end
 operator|++
 expr_stmt|;
