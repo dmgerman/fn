@@ -1398,7 +1398,7 @@ name|put
 argument_list|(
 name|CUSTOM_TAB_NAME
 operator|+
-literal|"0"
+literal|"_def0"
 argument_list|,
 name|Globals
 operator|.
@@ -1414,7 +1414,7 @@ name|put
 argument_list|(
 name|CUSTOM_TAB_FIELDS
 operator|+
-literal|"0"
+literal|"_def0"
 argument_list|,
 literal|"crossref;keywords;doi;url;citeseerurl;"
 operator|+
@@ -1428,7 +1428,7 @@ name|put
 argument_list|(
 name|CUSTOM_TAB_FIELDS
 operator|+
-literal|"1"
+literal|"_def1"
 argument_list|,
 literal|"abstract"
 argument_list|)
@@ -1439,7 +1439,7 @@ name|put
 argument_list|(
 name|CUSTOM_TAB_NAME
 operator|+
-literal|"1"
+literal|"_def1"
 argument_list|,
 name|Globals
 operator|.
@@ -1456,7 +1456,7 @@ name|put
 argument_list|(
 name|CUSTOM_TAB_FIELDS
 operator|+
-literal|"2"
+literal|"_def2"
 argument_list|,
 literal|"review"
 argument_list|)
@@ -1467,7 +1467,7 @@ name|put
 argument_list|(
 name|CUSTOM_TAB_NAME
 operator|+
-literal|"2"
+literal|"_def2"
 argument_list|,
 name|Globals
 operator|.
