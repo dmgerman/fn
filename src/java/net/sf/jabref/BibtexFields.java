@@ -40,11 +40,15 @@ comment|//              e.g. LCCN = lib-congress
 end_comment
 
 begin_comment
-comment|//            - export/import of some definition from/to a xml file
+comment|//            - group id for each fields, e.g. standard, jurabib, bio....
 end_comment
 
 begin_comment
-comment|//            - group id for each fields, e.g. standard, jurabib, bio....
+comment|//            - add a additional properties functionality into the
+end_comment
+
+begin_comment
+comment|//              BibtexSingleField class
 end_comment
 
 begin_comment
@@ -52,7 +56,11 @@ comment|//
 end_comment
 
 begin_comment
-comment|// modified :
+comment|// modified : r.nagel 25.04.2006
+end_comment
+
+begin_comment
+comment|//            export/import of some definition from/to a xml file
 end_comment
 
 begin_package
@@ -1794,19 +1802,19 @@ name|STANDARD
 init|=
 literal|0x01
 decl_stmt|,
-comment|// is it a standard bibtex-field
+comment|// it is a standard bibtex-field
 DECL|field|PRIVATE
 name|PRIVATE
 init|=
 literal|0x02
 decl_stmt|,
-comment|// internal use
+comment|// internal use, e.g. owner, timestamp
 DECL|field|DISPLAYABLE
 name|DISPLAYABLE
 init|=
 literal|0x04
 decl_stmt|,
-comment|// These fields will not be shown inside the source editor panel
+comment|// These fields cannot be shown inside the source editor panel
 DECL|field|WRITEABLE
 name|WRITEABLE
 init|=

@@ -32,7 +32,11 @@ comment|//
 end_comment
 
 begin_comment
-comment|// modified :
+comment|// modified :  r.nagel 25.04.2006
+end_comment
+
+begin_comment
+comment|//             check NullPointer at the actionPerformed methode
 end_comment
 
 begin_package
@@ -98,6 +102,16 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|*
+import|;
+end_import
+
 begin_class
 DECL|class|DatePickerButton
 specifier|public
@@ -156,6 +170,21 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+name|Date
+name|date
+init|=
+name|datePicker
+operator|.
+name|getDate
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|date
+operator|!=
+literal|null
+condition|)
+block|{
 name|editor
 operator|.
 name|setText
@@ -164,13 +193,11 @@ name|Util
 operator|.
 name|easyDateFormat
 argument_list|(
-name|datePicker
-operator|.
-name|getDate
-argument_list|()
+name|date
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|getDatePicker ()
 specifier|public

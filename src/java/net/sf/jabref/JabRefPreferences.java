@@ -1386,7 +1386,7 @@ name|put
 argument_list|(
 literal|"generalFields"
 argument_list|,
-literal|"crossref;keywords;doi;url;citeseerurl;"
+literal|"crossref;keywords;doi;url;urldate;citeseerurl;"
 operator|+
 literal|"pdf;comment;owner"
 argument_list|)

@@ -81,7 +81,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A font chooser widget.  * @author Slava Pestov (jEdit), Sylvain Reynal  * @since jpicedt 1.3.2.beta-9  * @version $Id$  *<p>  * $Log$  * Revision 1.6  2004/02/27 23:28:41  mortenalver  * Some code tidying, no effect on behaviour (hopefully)  *  * Revision 1.5  2004/02/24 23:30:18  mortenalver  * Added more translations, and started work on a Replace string feature  *  * Revision 1.4  2004/02/17 09:14:02  mortenalver  * Similar update in FontSelector preview.  *  * Revision 1.3  2004/02/17 07:35:22  mortenalver  * Experimenting with antialiasing in table.  *  * Revision 1.2  2003/12/14 23:48:02  mortenalver  * .  *  * Revision 1.1  2003/11/07 22:18:07  nbatada  * modified it slightly from initial version  *  * Revision 1.1  2003/11/07 22:14:34  nbatada  * modified it from initial version  *  * Revision 1.4  2003/11/02 01:51:06  reynal  * Cleaned-up i18n labels  *  * Revision 1.3  2003/08/31 22:05:40  reynal  *  * Enhanced class interface for some widgets.  *   */
+comment|/**  * A font chooser widget.  * @author Slava Pestov (jEdit), Sylvain Reynal  * @since jpicedt 1.3.2.beta-9  * @version $Id$  *<p>  * $Log$  * Revision 1.7  2006/04/26 08:46:57  kiar  * fix dialog.show() deprecation messages, change build.xml  *  * Revision 1.6  2004/02/27 23:28:41  mortenalver  * Some code tidying, no effect on behaviour (hopefully)  *  * Revision 1.5  2004/02/24 23:30:18  mortenalver  * Added more translations, and started work on a Replace string feature  *  * Revision 1.4  2004/02/17 09:14:02  mortenalver  * Similar update in FontSelector preview.  *  * Revision 1.3  2004/02/17 07:35:22  mortenalver  * Experimenting with antialiasing in table.  *  * Revision 1.2  2003/12/14 23:48:02  mortenalver  * .  *  * Revision 1.1  2003/11/07 22:18:07  nbatada  * modified it slightly from initial version  *  * Revision 1.1  2003/11/07 22:14:34  nbatada  * modified it from initial version  *  * Revision 1.4  2003/11/02 01:51:06  reynal  * Cleaned-up i18n labels  *  * Revision 1.3  2003/08/31 22:05:40  reynal  *  * Enhanced class interface for some widgets.  *   */
 end_comment
 
 begin_class
@@ -192,7 +192,7 @@ name|updateText
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * update button's text content from the current button's font. 	 */
+comment|/**          * update button's text content from the current button's font.          */
 DECL|method|updateText ()
 specifier|private
 name|void
@@ -287,7 +287,7 @@ name|styleString
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * button's action-listener ; open a FontSelectorDialog 	 */
+comment|/**          * button's action-listener ; open a FontSelectorDialog          */
 DECL|class|ActionHandler
 class|class
 name|ActionHandler
@@ -354,7 +354,7 @@ name|FontSelectorDialog
 extends|extends
 name|JDialog
 block|{
-comment|/** 	 * 	 */
+comment|/**          *          */
 DECL|field|PLAIN
 specifier|static
 specifier|final
@@ -732,7 +732,7 @@ name|listPanel
 argument_list|)
 expr_stmt|;
 comment|//preview = new JLabel("Font Preview");
-comment|/* -------------------------------------------------------- 		   |  Experimental addition by Morten Alver. I want to    | 		   |  enable antialiasing in the preview field, since I'm | 		   |  working on introducing this in the table view.      | 		   -------------------------------------------------------- */
+comment|/* --------------------------------------------------------                    |  Experimental addition by Morten Alver. I want to    |                    |  enable antialiasing in the preview field, since I'm |                    |  working on introducing this in the table view.      |                    -------------------------------------------------------- */
 name|preview
 operator|=
 operator|new
@@ -997,9 +997,12 @@ name|comp
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|show
-argument_list|()
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
+comment|// show(); -> deprecated since 1.5
 block|}
 DECL|method|ok ()
 specifier|public
@@ -1137,7 +1140,7 @@ specifier|private
 name|JButton
 name|cancel
 decl_stmt|;
-comment|/** 	 * For some reason the default Java fonts show up in the 	 * list with .bold, .bolditalic, and .italic extensions. 	 */
+comment|/**          * For some reason the default Java fonts show up in the          * list with .bold, .bolditalic, and .italic extensions.          */
 DECL|field|HIDEFONTS
 specifier|private
 specifier|static
@@ -1802,7 +1805,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/*public static void main(String args[]) 	{ 	    Font font = new FontSelectorDialog(null,new Font("Times",Font.PLAIN,12)).getSelectedFont();  	}     */
+comment|/*public static void main(String args[])         {             Font font = new FontSelectorDialog(null,new Font("Times",Font.PLAIN,12)).getSelectedFont();          }     */
 block|}
 end_class
 

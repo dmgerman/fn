@@ -640,9 +640,12 @@ argument_list|)
 expr_stmt|;
 name|dial
 operator|.
-name|show
-argument_list|()
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
+comment|// dial.show(); -> deprecated since 1.5
 block|}
 block|}
 argument_list|)

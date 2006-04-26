@@ -263,9 +263,12 @@ argument_list|)
 decl_stmt|;
 name|ecd
 operator|.
-name|show
-argument_list|()
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
+comment|// ecd.show(); -> deprecated since 1.5
 if|if
 condition|(
 name|ecd
@@ -402,9 +405,12 @@ argument_list|)
 decl_stmt|;
 name|ecd
 operator|.
-name|show
-argument_list|()
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
+comment|// ecd.show(); -> deprecated since 1.5
 if|if
 condition|(
 name|ecd

@@ -387,9 +387,12 @@ argument_list|)
 expr_stmt|;
 name|drd
 operator|.
-name|show
-argument_list|()
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
+comment|// drd.show(); -> deprecated since 1.5
 name|duplicateCounter
 operator|++
 expr_stmt|;

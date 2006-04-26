@@ -481,7 +481,7 @@ DECL|field|manager
 name|SidePaneManager
 name|manager
 decl_stmt|;
-comment|/**      * The first element for each group defines which field to use for the      * quicksearch. The next two define the name and regexp for the group.      *       * @param groupData      *            The group meta data in raw format.      */
+comment|/**      * The first element for each group defines which field to use for the      * quicksearch. The next two define the name and regexp for the group.      *      * @param groupData      *            The group meta data in raw format.      */
 DECL|method|GroupSelector (JabRefFrame frame, SidePaneManager manager)
 specifier|public
 name|GroupSelector
@@ -3666,7 +3666,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**       * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and set the specified selection and expansion state.       * @param node If this is non-null, the view is scrolled to make it visible.      */
+comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and set the specified selection and expansion state.      * @param node If this is non-null, the view is scrolled to make it visible.      */
 DECL|method|revalidateGroups (TreePath[] selectionPaths, Enumeration expandedNodes)
 specifier|public
 name|void
@@ -3690,7 +3690,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**       * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and set the specified selection and expansion state.       * @param node If this is non-null, the view is scrolled to make it visible.      */
+comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and set the specified selection and expansion state.      * @param node If this is non-null, the view is scrolled to make it visible.      */
 DECL|method|revalidateGroups (TreePath[] selectionPaths, Enumeration expandedNodes, GroupTreeNode node)
 specifier|public
 name|void
@@ -3789,7 +3789,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**       * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and maintain the current selection and expansion state. */
+comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and maintain the current selection and expansion state. */
 DECL|method|revalidateGroups ()
 specifier|public
 name|void
@@ -3802,7 +3802,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**       * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and maintain the current selection and expansion state.       * @param node If this is non-null, the view is scrolled to make it visible.      */
+comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and maintain the current selection and expansion state.      * @param node If this is non-null, the view is scrolled to make it visible.      */
 DECL|method|revalidateGroups (GroupTreeNode node)
 specifier|public
 name|void
@@ -3877,9 +3877,12 @@ argument_list|)
 decl_stmt|;
 name|gd
 operator|.
-name|show
-argument_list|()
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
+comment|// gd.show(); -> deprecated since 1.5
 if|if
 condition|(
 name|gd
@@ -4010,9 +4013,12 @@ argument_list|)
 decl_stmt|;
 name|gd
 operator|.
-name|show
-argument_list|()
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
+comment|// gd.show(); -> deprecated since 1.5
 comment|// gd does the operation itself
 block|}
 elseif|else
@@ -6714,7 +6720,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Concludes the moving of a group tree node by storing the specified      * undo information, marking the change, and setting the status line.      * @param undo Undo information for the move operation.       * @param node The node that has been moved.      */
+comment|/**      * Concludes the moving of a group tree node by storing the specified      * undo information, marking the change, and setting the status line.      * @param undo Undo information for the move operation.      * @param node The node that has been moved.      */
 DECL|method|concludeMoveGroup (AbstractUndoableEdit undo, GroupTreeNode node)
 specifier|public
 name|void
@@ -7164,7 +7170,7 @@ name|errorMessage
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Highlight all groups that contain any/all of the specified entries.      * If entries is null or has zero length, highlight is cleared.       */
+comment|/**      * Highlight all groups that contain any/all of the specified entries.      * If entries is null or has zero length, highlight is cleared.      */
 DECL|method|showMatchingGroups (BibtexEntry[] entries, boolean requireAll)
 specifier|public
 name|void

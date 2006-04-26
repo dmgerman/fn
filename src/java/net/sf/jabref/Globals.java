@@ -2427,9 +2427,12 @@ expr_stmt|;
 block|}
 name|fc
 operator|.
-name|show
-argument_list|()
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
+comment|// fc.show(); -> deprecated since 1.5
 if|if
 condition|(
 name|fc

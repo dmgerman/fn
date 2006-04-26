@@ -519,9 +519,12 @@ argument_list|)
 expr_stmt|;
 name|csd
 operator|.
-name|show
-argument_list|()
+name|setVisible
+argument_list|(
+literal|true
+argument_list|)
 expr_stmt|;
+comment|// csd.show(); -> deprecated since 1.5
 name|updateList
 argument_list|()
 expr_stmt|;
@@ -766,7 +769,7 @@ argument_list|()
 expr_stmt|;
 comment|// new FocusRequester(editor.getTextComponent());
 block|}
-comment|/**      * Adds a word to the selector (to the JList and to the MetaData), unless it      * is already there      *       * @param newWord      *            String Word to add      */
+comment|/**      * Adds a word to the selector (to the JList and to the MetaData), unless it      * is already there      *      * @param newWord      *            String Word to add      */
 DECL|method|addWord (String newWord)
 specifier|public
 name|void
