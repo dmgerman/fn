@@ -87,9 +87,6 @@ name|BibtexDatabase
 name|db
 parameter_list|)
 block|{
-name|this
-argument_list|()
-expr_stmt|;
 name|boolean
 name|groupsTreePresent
 init|=
@@ -341,6 +338,13 @@ comment|/**      * The MetaData object can be constructed with no data in it.   
 DECL|method|MetaData ()
 specifier|public
 name|MetaData
+parameter_list|()
+block|{      }
+comment|/**      * Add default metadata for new database:      */
+DECL|method|initializeNewDatabase ()
+specifier|public
+name|void
+name|initializeNewDatabase
 parameter_list|()
 block|{
 name|metaData
@@ -701,7 +705,7 @@ name|orderedData
 operator|.
 name|size
 argument_list|()
-operator|>
+operator|>=
 literal|0
 condition|)
 block|{

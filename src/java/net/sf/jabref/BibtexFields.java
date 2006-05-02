@@ -991,6 +991,13 @@ argument_list|)
 expr_stmt|;
 name|dummy
 operator|.
+name|setExtras
+argument_list|(
+literal|"datepicker"
+argument_list|)
+expr_stmt|;
+name|dummy
+operator|.
 name|setPrivate
 argument_list|()
 expr_stmt|;

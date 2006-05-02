@@ -148,6 +148,15 @@ name|getTooltip
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|operation
+operator|.
+name|getKeyStrokeName
+argument_list|()
+operator|!=
+literal|null
+condition|)
 name|putValue
 argument_list|(
 name|ACCELERATOR_KEY

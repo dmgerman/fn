@@ -197,6 +197,16 @@ name|date
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// Set focus to editor component after changing its text:
+operator|new
+name|FocusRequester
+argument_list|(
+name|editor
+operator|.
+name|getTextComponent
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 DECL|method|getDatePicker ()
