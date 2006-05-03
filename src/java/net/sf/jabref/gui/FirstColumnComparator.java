@@ -94,32 +94,10 @@ name|score2
 init|=
 literal|0
 decl_stmt|;
-if|if
-condition|(
-name|Util
-operator|.
-name|isMarked
-argument_list|(
-name|e1
-argument_list|)
-condition|)
-name|score1
-operator|-=
-literal|2
-expr_stmt|;
-if|if
-condition|(
-name|Util
-operator|.
-name|isMarked
-argument_list|(
-name|e2
-argument_list|)
-condition|)
-name|score2
-operator|-=
-literal|2
-expr_stmt|;
+comment|//if (Util.isMarked(e1))
+comment|//    score1 -= 2;
+comment|//if (Util.isMarked(e2))
+comment|//    score2 -= 2;
 if|if
 condition|(
 name|e1

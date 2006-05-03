@@ -1236,27 +1236,6 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**     * If the label represents a string contained in this database, returns     * that string's content. Resolves references to other strings, taking     * care not to follow a circular reference pattern.     * If the string is undefined, returns the label itself.     */
-DECL|method|resolveString (String label)
-specifier|public
-name|String
-name|resolveString
-parameter_list|(
-name|String
-name|label
-parameter_list|)
-block|{
-return|return
-name|resolveString
-argument_list|(
-name|label
-argument_list|,
-operator|new
-name|HashSet
-argument_list|()
-argument_list|)
-return|;
-block|}
 comment|/**      * Resolves any references to strings contained in this database,      * if possible.      */
 DECL|method|resolveForStrings (String content)
 specifier|public
@@ -1278,6 +1257,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+comment|/**     * If the label represents a string contained in this database, returns     * that string's content. Resolves references to other strings, taking     * care not to follow a circular reference pattern.     * If the string is undefined, returns the label itself.     */
 DECL|method|resolveString (String label, HashSet usedIds)
 specifier|private
 name|String
@@ -1580,25 +1560,90 @@ argument_list|,
 name|stringEnd
 argument_list|)
 decl_stmt|;
-name|newRes
-operator|.
-name|append
-argument_list|(
+name|String
+name|resolved
+init|=
 name|resolveString
 argument_list|(
 name|refLabel
 argument_list|,
 name|usedIds
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|refLabel
+operator|.
+name|equals
+argument_list|(
+name|resolved
+argument_list|)
+condition|)
+block|{
+comment|// We got just the label in return, so this may not have
+comment|// been intended as a string label, or it may be a label for
+comment|// an undefined string. Therefore we prefer to display the #
+comment|// characters rather than removing them:
+name|newRes
+operator|.
+name|append
+argument_list|(
+name|res
+operator|.
+name|substring
+argument_list|(
+name|next
+argument_list|,
+name|stringEnd
+operator|+
+literal|1
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+comment|// The string was resolved, so we display its meaning only,
+comment|// stripping the # characters signifying the string label:
+name|newRes
+operator|.
+name|append
+argument_list|(
+name|resolved
+argument_list|)
+expr_stmt|;
 name|piv
 operator|=
 name|stringEnd
 operator|+
 literal|1
 expr_stmt|;
+block|}
+else|else
+block|{
+comment|// We didn't find the boundaries of the string ref. This
+comment|// makes it impossible to interpret it as a string label.
+comment|// So we should just append the rest of the text and finish.
+name|newRes
+operator|.
+name|append
+argument_list|(
+name|res
+operator|.
+name|substring
+argument_list|(
+name|next
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|piv
+operator|=
+name|res
+operator|.
+name|length
+argument_list|()
+expr_stmt|;
+break|break;
+block|}
 block|}
 if|if
 condition|(
