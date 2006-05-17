@@ -2106,6 +2106,17 @@ argument_list|,
 literal|"cite"
 argument_list|)
 expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"floatMarkedEntries"
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
+argument_list|)
+expr_stmt|;
 comment|//defaults.put("tempDir", System.getProperty("java.io.tmpdir"));
 comment|//Util.pr(System.getProperty("java.io.tempdir"));
 comment|//defaults.put("keyPattern", new LabelPattern(KEY_PATTERN));
@@ -4618,6 +4629,15 @@ argument_list|(
 literal|"Unabbreviate"
 argument_list|,
 literal|"ctrl alt shift A"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Search IEEXplore"
+argument_list|,
+literal|"F8"
 argument_list|)
 expr_stmt|;
 comment|//defKeyBinds.put("Select value", "ctrl B");

@@ -92,7 +92,7 @@ name|class
 operator|.
 name|getResource
 argument_list|(
-literal|"/images/jabref-2.0-splash.png"
+literal|"/images/splash-2.1beta.png"
 argument_list|)
 decl_stmt|;
 name|splashImage

@@ -465,6 +465,9 @@ index|[
 name|i
 index|]
 operator|.
+name|trim
+argument_list|()
+operator|.
 name|substring
 argument_list|(
 literal|1
