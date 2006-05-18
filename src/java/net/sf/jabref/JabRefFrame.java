@@ -1786,7 +1786,7 @@ name|importMenu
 init|=
 name|subMenu
 argument_list|(
-literal|"Import and append"
+literal|"Import into current database"
 argument_list|)
 decl_stmt|,
 DECL|field|importNewMenu
@@ -1794,7 +1794,7 @@ name|importNewMenu
 init|=
 name|subMenu
 argument_list|(
-literal|"Import"
+literal|"Import into new database"
 argument_list|)
 decl_stmt|,
 DECL|field|exportMenu
@@ -10447,8 +10447,6 @@ name|getNewFile
 argument_list|(
 name|ths
 argument_list|,
-name|prefs
-argument_list|,
 operator|new
 name|File
 argument_list|(
@@ -10809,8 +10807,6 @@ operator|.
 name|getNewFile
 argument_list|(
 name|ths
-argument_list|,
-name|prefs
 argument_list|,
 operator|new
 name|File
@@ -11665,8 +11661,6 @@ name|getNewFile
 argument_list|(
 name|ths
 argument_list|,
-name|prefs
-argument_list|,
 operator|new
 name|File
 argument_list|(
@@ -12505,8 +12499,6 @@ operator|.
 name|getNewFile
 argument_list|(
 name|ths
-argument_list|,
-name|prefs
 argument_list|,
 operator|new
 name|File

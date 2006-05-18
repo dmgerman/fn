@@ -1138,10 +1138,6 @@ name|getNewFile
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
-operator|.
-name|prefs
-argument_list|,
 name|old
 argument_list|,
 literal|null
@@ -1250,10 +1246,6 @@ operator|.
 name|getNewFile
 argument_list|(
 name|frame
-argument_list|,
-name|Globals
-operator|.
-name|prefs
 argument_list|,
 name|old
 argument_list|,
@@ -2505,10 +2497,6 @@ name|getNewFile
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
-operator|.
-name|prefs
-argument_list|,
 operator|new
 name|File
 argument_list|(
@@ -2674,10 +2662,6 @@ name|getNewDir
 argument_list|(
 name|frame
 argument_list|,
-name|Globals
-operator|.
-name|prefs
-argument_list|,
 operator|new
 name|File
 argument_list|(
@@ -2706,10 +2690,6 @@ operator|.
 name|getNewFile
 argument_list|(
 name|frame
-argument_list|,
-name|Globals
-operator|.
-name|prefs
 argument_list|,
 operator|new
 name|File

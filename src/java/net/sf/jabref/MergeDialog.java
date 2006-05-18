@@ -164,6 +164,16 @@ name|okPressed
 init|=
 literal|false
 decl_stmt|;
+DECL|method|isOkPressed ()
+specifier|public
+name|boolean
+name|isOkPressed
+parameter_list|()
+block|{
+return|return
+name|okPressed
+return|;
+block|}
 DECL|method|MergeDialog (JabRefFrame frame, String title, boolean modal)
 specifier|public
 name|MergeDialog

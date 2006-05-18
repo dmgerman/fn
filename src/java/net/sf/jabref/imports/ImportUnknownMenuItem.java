@@ -520,10 +520,14 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-name|panel
+name|AppendDatabaseAction
 operator|.
 name|mergeFromBibtex
 argument_list|(
+name|frame
+argument_list|,
+name|panel
+argument_list|,
 name|bibtexResult
 argument_list|,
 literal|true

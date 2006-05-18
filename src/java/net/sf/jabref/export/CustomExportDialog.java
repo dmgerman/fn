@@ -104,18 +104,6 @@ name|Globals
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|GUIGlobals
-import|;
-end_import
-
 begin_comment
 comment|/**  * Dialog for creating or modifying custom exports.  */
 end_comment
@@ -384,7 +372,7 @@ name|parent_
 expr_stmt|;
 comment|//groups = groups_;
 comment|//index = index_;
-comment|/*if (index>= 0) { 	    // Group entry already exists. 	    try { 		oldField = (String)groups.elementAt(index); 		field.setText(oldField); 		oldName = (String)groups.elementAt(index+1); 		name.setText(oldName); 		oldRegexp = (String)groups.elementAt(index+2); 		regexp.setText(oldRegexp);  		// We disable these text fields, since changing field 		// or regexp would leave the entries added to the 		// group hanging. 		field.setEnabled(false); 		regexp.setEnabled(false); 	    } catch (ArrayIndexOutOfBoundsException ex) { 	    } 	} else 	    field.setText(defaultField); */
+comment|/*if (index>= 0) {             // Group entry already exists.             try {             oldField = (String)groups.elementAt(index);             field.setText(oldField);             oldName = (String)groups.elementAt(index+1);             name.setText(oldName);             oldRegexp = (String)groups.elementAt(index+2);             regexp.setText(oldRegexp);              // We disable these text fields, since changing field             // or regexp would leave the entries added to the             // group hanging.             field.setEnabled(false);             regexp.setEnabled(false);             } catch (ArrayIndexOutOfBoundsException ex) {             }         } else             field.setText(defaultField);     */
 name|ActionListener
 name|okListener
 init|=
@@ -567,10 +555,6 @@ operator|.
 name|getNewFile
 argument_list|(
 name|parent
-argument_list|,
-name|Globals
-operator|.
-name|prefs
 argument_list|,
 name|directory
 argument_list|,

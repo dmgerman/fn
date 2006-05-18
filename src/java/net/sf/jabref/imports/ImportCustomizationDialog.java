@@ -519,8 +519,6 @@ name|getNewDir
 argument_list|(
 name|frame
 argument_list|,
-name|prefs
-argument_list|,
 operator|new
 name|File
 argument_list|(
@@ -557,8 +555,6 @@ operator|.
 name|getNewFile
 argument_list|(
 name|frame
-argument_list|,
-name|prefs
 argument_list|,
 name|importer
 operator|.
@@ -767,8 +763,6 @@ operator|.
 name|getNewFile
 argument_list|(
 name|frame
-argument_list|,
-name|prefs
 argument_list|,
 operator|new
 name|File

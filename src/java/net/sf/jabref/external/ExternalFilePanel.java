@@ -146,16 +146,6 @@ name|MalformedURLException
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
-import|;
-end_import
-
 begin_comment
 comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: May 7, 2005  * Time: 7:17:42 PM  * To change this template use File | Settings | File Templates.  */
 end_comment
@@ -727,10 +717,6 @@ operator|.
 name|getNewFile
 argument_list|(
 name|frame
-argument_list|,
-name|Globals
-operator|.
-name|prefs
 argument_list|,
 operator|new
 name|File
