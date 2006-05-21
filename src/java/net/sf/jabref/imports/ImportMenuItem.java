@@ -188,6 +188,27 @@ DECL|field|importer
 name|ImportFormat
 name|importer
 decl_stmt|;
+DECL|method|ImportMenuItem (JabRefFrame frame, boolean openInNew)
+specifier|public
+name|ImportMenuItem
+parameter_list|(
+name|JabRefFrame
+name|frame
+parameter_list|,
+name|boolean
+name|openInNew
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|frame
+argument_list|,
+name|openInNew
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|ImportMenuItem (JabRefFrame frame, boolean openInNew, ImportFormat importer)
 specifier|public
 name|ImportMenuItem

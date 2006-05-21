@@ -10245,8 +10245,6 @@ argument_list|(
 name|ths
 argument_list|,
 name|intoNew
-argument_list|,
-literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;

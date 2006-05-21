@@ -5013,8 +5013,6 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-comment|//Util.pr("EntryEditor.StoreFieldAction: "+entry.getCiteKey());
-comment|//Util.pr("..EntryEditor.StoreFieldAction: "+this.toString());
 if|if
 condition|(
 name|e
@@ -5044,8 +5042,6 @@ decl_stmt|;
 name|boolean
 name|set
 decl_stmt|;
-comment|//Util.pr("....EntryEditor.StoreFieldAction: "+fe.getFieldName());
-comment|//Util.pr("...."+fe.getText()+"....");
 comment|// Trim the whitespace off this value
 name|fe
 operator|.
@@ -5080,10 +5076,10 @@ operator|.
 name|getText
 argument_list|()
 expr_stmt|;
+block|}
 comment|// We check if the field has changed, since we don't want to
 comment|// mark the
 comment|// base as changed unless we have a real change.
-block|}
 if|if
 condition|(
 name|toSet
@@ -5306,6 +5302,31 @@ name|panel
 operator|.
 name|markBaseChanged
 argument_list|()
+expr_stmt|;
+comment|// TODO: is this a safe solution to keep selection on entry?
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+operator|new
+name|Runnable
+argument_list|()
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
+name|panel
+operator|.
+name|highlightEntry
+argument_list|(
+name|entry
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch

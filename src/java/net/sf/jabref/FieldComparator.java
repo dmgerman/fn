@@ -261,6 +261,7 @@ operator|)
 name|f2
 argument_list|)
 expr_stmt|;
+comment|//System.out.println(".. "+f1);
 block|}
 elseif|else
 if|if
@@ -341,6 +342,7 @@ name|result
 init|=
 literal|0
 decl_stmt|;
+comment|//System.out.println(f1);
 if|if
 condition|(
 operator|(
@@ -480,6 +482,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 decl_stmt|;
+comment|//System.out.println(ours);
 name|result
 operator|=
 name|ours

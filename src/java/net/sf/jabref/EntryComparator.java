@@ -308,6 +308,9 @@ name|String
 operator|)
 name|f1
 argument_list|)
+operator|.
+name|toLowerCase
+argument_list|()
 expr_stmt|;
 comment|//ImportFormatReader.fixAuthor_lastNameFirst((String)f1);
 if|if
@@ -327,6 +330,9 @@ name|String
 operator|)
 name|f2
 argument_list|)
+operator|.
+name|toLowerCase
+argument_list|()
 expr_stmt|;
 comment|//ImportFormatReader.fixAuthor_lastNameFirst((String)f2);
 block|}
@@ -583,6 +589,15 @@ operator|.
 name|toLowerCase
 argument_list|()
 decl_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|ours
+argument_list|)
+expr_stmt|;
 name|int
 name|comp
 init|=
