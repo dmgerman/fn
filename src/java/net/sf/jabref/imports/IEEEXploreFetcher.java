@@ -489,7 +489,17 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|null
+literal|"IEEEXplorerHelp.html"
+return|;
+block|}
+DECL|method|getKeyName ()
+specifier|public
+name|String
+name|getKeyName
+parameter_list|()
+block|{
+return|return
+literal|"Search IEEXplore"
 return|;
 block|}
 comment|// This method is called by the dialog when the user has cancelled the import.
@@ -516,30 +526,8 @@ name|int
 name|entriesImported
 parameter_list|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Number of entries parsed: "
-operator|+
-name|parsed
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Parsing failed for "
-operator|+
-name|unparseable
-operator|+
-literal|" entries"
-argument_list|)
-expr_stmt|;
+comment|//System.out.println("Number of entries parsed: "+parsed);
+comment|//System.out.println("Parsing failed for "+unparseable+" entries");
 block|}
 comment|// This method is called by the dialog when the user has cancelled or
 comment|// signalled a stop. It is expected that any long-running fetch operations
@@ -761,28 +749,8 @@ argument_list|)
 decl_stmt|;
 comment|//String page = getResultsFromFile(new File("/home/alver/div/temp50.txt"));
 comment|//List entries = new ArrayList();
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Number of hits: "
-operator|+
-name|hits
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Maximum returned: "
-operator|+
-name|maxHits
-argument_list|)
-expr_stmt|;
+comment|//System.out.println("Number of hits: "+hits);
+comment|//System.out.println("Maximum returned: "+maxHits);
 if|if
 condition|(
 name|hits
@@ -822,17 +790,7 @@ name|hits
 operator|)
 condition|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Fetching from: "
-operator|+
-name|firstEntry
-argument_list|)
-expr_stmt|;
+comment|//System.out.println("Fetching from: "+firstEntry);
 name|address
 operator|=
 name|makeUrl
@@ -1997,7 +1955,7 @@ else|else
 block|{
 name|System
 operator|.
-name|out
+name|err
 operator|.
 name|println
 argument_list|(
@@ -2006,7 +1964,7 @@ argument_list|)
 expr_stmt|;
 name|System
 operator|.
-name|out
+name|err
 operator|.
 name|println
 argument_list|(
@@ -2379,11 +2337,17 @@ argument_list|(
 name|substring
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
 name|m
 operator|.
 name|find
 argument_list|()
-expr_stmt|;
+condition|)
+return|return
+literal|0
+return|;
 if|if
 condition|(
 name|m
@@ -2667,24 +2631,8 @@ argument_list|(
 name|url
 argument_list|)
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|link
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Fetched abstract page."
-argument_list|)
-expr_stmt|;
+comment|//System.out.println(link);
+comment|//System.out.println("Fetched abstract page.");
 name|String
 name|marker
 init|=

@@ -10240,11 +10240,13 @@ operator|.
 name|add
 argument_list|(
 operator|new
-name|ImportUnknownMenuItem
+name|ImportMenuItem
 argument_list|(
 name|ths
 argument_list|,
 name|intoNew
+argument_list|,
+literal|null
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -10357,9 +10359,9 @@ name|ImportMenuItem
 argument_list|(
 name|ths
 argument_list|,
-name|imFo
-argument_list|,
 name|intoNew
+argument_list|,
+name|imFo
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -10420,54 +10422,13 @@ name|ImportMenuItem
 argument_list|(
 name|ths
 argument_list|,
-name|imFo
-argument_list|,
 name|intoNew
+argument_list|,
+name|imFo
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-comment|//
-comment|// simply opens up a jfilechooser dialog and gets a filename
-comment|// returns null if user selects cancel
-comment|// it should also do a check perhaps to see if
-comment|// file exists and is readable?
-comment|//
-DECL|method|getNewFile ()
-specifier|public
-name|String
-name|getNewFile
-parameter_list|()
-block|{
-return|return
-name|Globals
-operator|.
-name|getNewFile
-argument_list|(
-name|ths
-argument_list|,
-operator|new
-name|File
-argument_list|(
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"workingDirectory"
-argument_list|)
-argument_list|)
-argument_list|,
-literal|null
-argument_list|,
-name|JFileChooser
-operator|.
-name|OPEN_DIALOG
-argument_list|,
-literal|false
-argument_list|)
-return|;
-comment|/*JFileChooser fc;     if (prefs.get("workingDirectory") == null) {       fc = new JabRefFileChooser(new File(System.getProperty("user.home"))); //cwd));     }     else {       fc = new JabRefFileChooser(new File(prefs.get("workingDirectory"))); //cwd));     }      fc.addChoosableFileFilter(new OpenFileFilter());     fc.setDialogType(JFileChooser.OPEN_DIALOG);     fc.showOpenDialog(null);     File selectedFile = fc.getSelectedFile();     if (selectedFile == null) { // cancel       return null;     }     prefs.put("workingDirectory", selectedFile.getPath());     return selectedFile.getAbsolutePath();*/
 block|}
 DECL|method|getFileHistory ()
 specifier|public

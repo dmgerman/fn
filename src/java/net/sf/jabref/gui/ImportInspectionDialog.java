@@ -1619,12 +1619,12 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Add a List of entries to the table view. The table will update to show the      * added entries. Synchronizes on this.entries to avoid conflict with the delete button      * which removes entries.      *      * @param entries      */
-DECL|method|addEntries (List entries)
+DECL|method|addEntries (Collection entries)
 specifier|public
 name|void
 name|addEntries
 parameter_list|(
-name|List
+name|Collection
 name|entries
 parameter_list|)
 block|{

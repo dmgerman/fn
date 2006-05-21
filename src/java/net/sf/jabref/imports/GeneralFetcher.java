@@ -669,6 +669,23 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|putValue
+argument_list|(
+name|ACCELERATOR_KEY
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+name|fetcher
+operator|.
+name|getKeyName
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
