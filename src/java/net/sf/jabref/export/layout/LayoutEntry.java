@@ -1706,6 +1706,30 @@ name|BibtexDatabase
 name|database
 parameter_list|)
 block|{
+comment|// Change: Morten Alver, May 23, 2006. Formatter argument uses this method to
+comment|// resolve field values. We need this part to resolve \bibtextype correctly in
+comment|// constructs like \format[ToLowerCase]{\bibtextype}:
+if|if
+condition|(
+name|field
+operator|.
+name|equals
+argument_list|(
+literal|"bibtextype"
+argument_list|)
+condition|)
+block|{
+return|return
+name|bibtex
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+return|;
+block|}
+comment|// end change Morten Alver
 name|String
 name|res
 init|=

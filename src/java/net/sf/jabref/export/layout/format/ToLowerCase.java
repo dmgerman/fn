@@ -138,16 +138,11 @@ name|String
 name|fieldText
 parameter_list|)
 block|{
-name|String
-name|fieldEntry
-init|=
+return|return
 name|fieldText
 operator|.
 name|toLowerCase
 argument_list|()
-decl_stmt|;
-return|return
-name|fieldEntry
 return|;
 block|}
 block|}
