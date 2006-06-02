@@ -3654,6 +3654,10 @@ operator|new
 name|ArrayList
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|isSaveOperation
+condition|)
 name|comparators
 operator|.
 name|add
