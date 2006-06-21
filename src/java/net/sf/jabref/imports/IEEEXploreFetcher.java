@@ -489,7 +489,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|"IEEEXplorerHelp.html"
+literal|"IEEEXploreHelp.html"
 return|;
 block|}
 DECL|method|getKeyName ()

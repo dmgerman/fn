@@ -648,7 +648,12 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Cancel"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|apply
@@ -656,7 +661,12 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Apply"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|ok

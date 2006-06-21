@@ -621,15 +621,8 @@ parameter_list|)
 block|{
 return|return
 name|s
-operator|.
-name|replaceAll
-argument_list|(
-literal|"&|\\\\&"
-argument_list|,
-literal|"&amp;"
-argument_list|)
 return|;
-comment|//.replaceAll("--", "&mdash;");
+comment|//s.replaceAll("&|\\\\&","&amp;");//.replaceAll("--", "&mdash;");
 block|}
 DECL|method|getPart (String text, int i)
 specifier|private

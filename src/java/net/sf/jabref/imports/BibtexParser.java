@@ -955,7 +955,12 @@ argument_list|()
 operator|+
 literal|" ("
 operator|+
-literal|"Grouping may not work for this entry."
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"grouping may not work for this entry"
+argument_list|)
 operator|+
 literal|")"
 argument_list|)
@@ -1003,7 +1008,12 @@ argument_list|)
 operator|+
 literal|" ("
 operator|+
-literal|"Grouping may not work for this entry."
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"grouping may not work for this entry"
+argument_list|)
 operator|+
 literal|")"
 argument_list|)
