@@ -1304,6 +1304,12 @@ decl_stmt|;
 comment|// for strCount ...
 if|if
 condition|(
+operator|(
+name|strCount
+operator|==
+literal|null
+operator|)
+operator|||
 name|strCount
 operator|.
 name|equals

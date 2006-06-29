@@ -357,6 +357,8 @@ literal|"volume"
 block|,
 literal|"number"
 block|,
+literal|"pages"
+block|,
 literal|"series"
 block|,
 literal|"type"
@@ -523,6 +525,8 @@ block|{
 literal|"volume"
 block|,
 literal|"number"
+block|,
+literal|"pages"
 block|,
 literal|"series"
 block|,
