@@ -1828,7 +1828,7 @@ name|checkAndFix
 init|=
 name|subMenu
 argument_list|(
-literal|"Find And Fix"
+literal|"Scan database..."
 argument_list|)
 decl_stmt|;
 comment|// The action for adding a new entry of unspecified type.
@@ -5310,6 +5310,13 @@ argument_list|(
 name|replaceAll
 argument_list|)
 expr_stmt|;
+name|tools
+operator|.
+name|add
+argument_list|(
+name|makeKeyAction
+argument_list|)
+expr_stmt|;
 comment|// [kiar] I think we should group these festures
 name|tools
 operator|.
@@ -5336,7 +5343,14 @@ name|checkAndFix
 operator|.
 name|add
 argument_list|(
-name|makeKeyAction
+name|autoSetPdf
+argument_list|)
+expr_stmt|;
+name|checkAndFix
+operator|.
+name|add
+argument_list|(
+name|autoSetPs
 argument_list|)
 expr_stmt|;
 name|checkAndFix
@@ -5379,13 +5393,7 @@ argument_list|(
 name|winEdtPushAction
 argument_list|)
 expr_stmt|;
-name|tools
-operator|.
-name|add
-argument_list|(
-name|latexEditorPushAction
-argument_list|)
-expr_stmt|;
+comment|//tools.add(latexEditorPushAction);
 comment|//tools.add(fetchAuthorMedline);
 name|tools
 operator|.
@@ -5422,20 +5430,6 @@ name|tools
 operator|.
 name|addSeparator
 argument_list|()
-expr_stmt|;
-name|tools
-operator|.
-name|add
-argument_list|(
-name|autoSetPdf
-argument_list|)
-expr_stmt|;
-name|tools
-operator|.
-name|add
-argument_list|(
-name|autoSetPs
-argument_list|)
 expr_stmt|;
 name|tools
 operator|.
