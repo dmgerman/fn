@@ -132,6 +132,14 @@ name|int
 name|nestedAuxCounter
 decl_stmt|;
 comment|// counts the nested aux files
+DECL|field|crossreferencedEntriesCount
+specifier|private
+name|int
+name|crossreferencedEntriesCount
+init|=
+literal|0
+decl_stmt|;
+comment|// counts entries pulled in due to crossref
 DECL|method|AuxSubGenerator (BibtexDatabase refDBase)
 specifier|public
 name|AuxSubGenerator
@@ -776,26 +784,148 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|insertEntry
+argument_list|(
+name|auxDB
+argument_list|,
+name|entry
+argument_list|)
+expr_stmt|;
+comment|// Check if the entry we just found references another entry which
+comment|// we don't already have in our list of entries to include. If so,
+comment|// pull in that entry as well:
+name|String
+name|crossref
+init|=
+operator|(
+name|String
+operator|)
+name|entry
+operator|.
+name|getField
+argument_list|(
+literal|"crossref"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|(
+name|crossref
+operator|!=
+literal|null
+operator|)
+operator|&&
+operator|(
+operator|!
+name|mySet
+operator|.
+name|contains
+argument_list|(
+name|crossref
+argument_list|)
+operator|)
+condition|)
+block|{
+name|BibtexEntry
+name|refEntry
+init|=
+name|db
+operator|.
+name|getEntryByKey
+argument_list|(
+name|crossref
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|entry
+operator|==
+literal|null
+condition|)
+block|{
+name|notFoundList
+operator|.
+name|add
+argument_list|(
+name|crossref
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|insertEntry
+argument_list|(
+name|auxDB
+argument_list|,
+name|refEntry
+argument_list|)
+expr_stmt|;
+name|crossreferencedEntriesCount
+operator|++
+expr_stmt|;
+block|}
+block|}
+block|}
+block|}
+block|}
+comment|/**      * Insert a clone of the given entry. The clone is given a new unique ID.      * @param auxDB The database to insert into.      * @param entry The entry to insert a copy of.      */
+DECL|method|insertEntry (BibtexDatabase auxDB, BibtexEntry entry)
+specifier|private
+name|void
+name|insertEntry
+parameter_list|(
+name|BibtexDatabase
+name|auxDB
+parameter_list|,
+name|BibtexEntry
+name|entry
+parameter_list|)
+block|{
 try|try
 block|{
+name|BibtexEntry
+name|clonedEntry
+init|=
+operator|(
+name|BibtexEntry
+operator|)
+name|entry
+operator|.
+name|clone
+argument_list|()
+decl_stmt|;
+name|clonedEntry
+operator|.
+name|setId
+argument_list|(
+name|Util
+operator|.
+name|createNeutralId
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|auxDB
 operator|.
 name|insertEntry
 argument_list|(
-name|entry
+name|clonedEntry
 argument_list|)
 expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|KeyCollisionException
 name|e
 parameter_list|)
-block|{}
+block|{
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 block|}
 block|}
-block|}
-comment|/**    * generate    * Shortcut methode for easy generation.    *    * @param auxFileName String    * @param bibDB BibtexDatabase - reference database    * @return Vector - contains all not resolved bibtex entries    */
+comment|/**      * generate      * Shortcut methode for easy generation.      *      * @param auxFileName String      * @param bibDB BibtexDatabase - reference database      * @return Vector - contains all not resolved bibtex entries      */
 DECL|method|generate (String auxFileName, BibtexDatabase bibDB)
 specifier|public
 specifier|final
@@ -874,6 +1004,8 @@ name|auxDB
 operator|.
 name|getEntryCount
 argument_list|()
+operator|-
+name|crossreferencedEntriesCount
 return|;
 block|}
 DECL|method|getNotResolvedKeysCount ()
@@ -888,6 +1020,18 @@ name|notFoundList
 operator|.
 name|size
 argument_list|()
+return|;
+block|}
+comment|/**      * Query the number of extra entries pulled in due to crossrefs from other      * entries.      * @return The number of additional entries pulled in due to crossref      */
+DECL|method|getCrossreferencedEntriesCount ()
+specifier|public
+specifier|final
+name|int
+name|getCrossreferencedEntriesCount
+parameter_list|()
+block|{
+return|return
+name|crossreferencedEntriesCount
 return|;
 block|}
 comment|/** reset all used datastructures */
@@ -907,6 +1051,10 @@ name|notFoundList
 operator|.
 name|clear
 argument_list|()
+expr_stmt|;
+name|crossreferencedEntriesCount
+operator|=
+literal|0
 expr_stmt|;
 comment|// db = null ;  ???
 block|}

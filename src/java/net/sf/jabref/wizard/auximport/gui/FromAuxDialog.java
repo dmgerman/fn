@@ -1756,6 +1756,27 @@ name|getNotResolvedKeysCount
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|statusInfos
+operator|.
+name|append
+argument_list|(
+literal|"\n"
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"crossreferenced entries included"
+argument_list|)
+operator|+
+literal|" "
+operator|+
+name|auxParser
+operator|.
+name|getCrossreferencedEntriesCount
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|int
 name|nested
 init|=
