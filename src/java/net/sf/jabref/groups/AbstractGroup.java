@@ -501,7 +501,7 @@ return|return
 name|m_context
 return|;
 block|}
-comment|/** Returns a lengthy textual description of this instance (for       * the groups editor). */
+comment|/** Returns a lengthy textual description of this instance (for       * the groups editor). The text is formatted in HTML. */
 DECL|method|getDescription ()
 specifier|public
 specifier|abstract
