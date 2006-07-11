@@ -927,6 +927,11 @@ block|{
 name|String
 name|res
 decl_stmt|;
+name|BibtexEntry
+name|targetEntry
+init|=
+literal|null
+decl_stmt|;
 specifier|public
 name|Downloader
 parameter_list|(
@@ -939,6 +944,21 @@ operator|.
 name|res
 operator|=
 name|res
+expr_stmt|;
+comment|// If this panel belongs in an entry editor, note which entry is
+comment|// currently shown:
+if|if
+condition|(
+name|entryEditor
+operator|!=
+literal|null
+condition|)
+name|targetEntry
+operator|=
+name|entryEditor
+operator|.
+name|getEntry
+argument_list|()
 expr_stmt|;
 block|}
 specifier|public
@@ -964,6 +984,11 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|boolean
+name|updateEditor
+init|=
+literal|true
+decl_stmt|;
 try|try
 block|{
 name|editor
@@ -1185,6 +1210,25 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Check if we should update the editor text field, or update the
+comment|// target entry directly:
+name|updateEditor
+operator|=
+operator|(
+name|entryEditor
+operator|==
+literal|null
+operator|)
+operator|||
+operator|(
+name|entryEditor
+operator|.
+name|getEntry
+argument_list|()
+operator|==
+name|targetEntry
+operator|)
+expr_stmt|;
 name|output
 argument_list|(
 name|Globals
@@ -1274,7 +1318,10 @@ name|textToSet
 operator|=
 name|filename
 expr_stmt|;
-comment|//editor.setText(filename);
+if|if
+condition|(
+name|updateEditor
+condition|)
 name|SwingUtilities
 operator|.
 name|invokeLater
@@ -1305,6 +1352,21 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+else|else
+block|{
+comment|// Editor has probably changed to show a different entry. So
+comment|// we must update the target entry directly and not set the
+comment|// text of the editor.
+name|targetEntry
+operator|.
+name|setField
+argument_list|(
+name|fieldName
+argument_list|,
+name|textToSet
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1335,6 +1397,20 @@ expr_stmt|;
 block|}
 finally|finally
 block|{
+if|if
+condition|(
+name|updateEditor
+condition|)
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Juuu"
+argument_list|)
+expr_stmt|;
 name|editor
 operator|.
 name|setText
@@ -1349,6 +1425,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

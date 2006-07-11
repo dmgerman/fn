@@ -763,6 +763,7 @@ name|KeyEvent
 name|event
 parameter_list|)
 block|{     }
+comment|/*    public void setText(String t) {         super.setText(t);    //To change body of overridden methods use File | Settings | File Templates.         Thread.dumpStack();     }*/
 block|}
 end_class
 

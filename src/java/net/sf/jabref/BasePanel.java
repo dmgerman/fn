@@ -8189,6 +8189,8 @@ comment|/*tableModel, */
 name|tableFormat
 argument_list|,
 name|searchFilterList
+argument_list|,
+name|frame
 argument_list|)
 expr_stmt|;
 name|selectionListener

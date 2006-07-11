@@ -4220,7 +4220,9 @@ init|=
 operator|new
 name|DuplicateResolverDialog
 argument_list|(
-name|frame
+name|ImportInspectionDialog
+operator|.
+name|this
 argument_list|,
 name|other
 argument_list|,

@@ -1115,9 +1115,10 @@ name|dummy
 operator|.
 name|setWriteable
 argument_list|(
-literal|false
+literal|true
 argument_list|)
 expr_stmt|;
+comment|// This field must be written to file!
 name|dummy
 operator|.
 name|setDisplayable

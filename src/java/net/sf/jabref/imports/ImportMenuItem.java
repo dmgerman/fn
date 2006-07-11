@@ -160,6 +160,10 @@ name|HashMap
 import|;
 end_import
 
+begin_comment
+comment|// TODO: could separate the "menu item" functionality from the importing functionality
+end_comment
+
 begin_class
 DECL|class|ImportMenuItem
 specifier|public
@@ -285,6 +289,54 @@ name|worker
 operator|.
 name|init
 argument_list|()
+expr_stmt|;
+name|worker
+operator|.
+name|getWorker
+argument_list|()
+operator|.
+name|run
+argument_list|()
+expr_stmt|;
+name|worker
+operator|.
+name|getCallBack
+argument_list|()
+operator|.
+name|update
+argument_list|()
+expr_stmt|;
+block|}
+comment|/**      * Automatically imports the files given as arguments      * @param filenames List of files to import      */
+DECL|method|automatedImport (String filenames[])
+specifier|public
+name|void
+name|automatedImport
+parameter_list|(
+name|String
+name|filenames
+index|[]
+parameter_list|)
+block|{
+comment|// replace the work of the init step:
+name|MyWorker
+name|worker
+init|=
+operator|new
+name|MyWorker
+argument_list|()
+decl_stmt|;
+name|worker
+operator|.
+name|fileOk
+operator|=
+literal|true
+expr_stmt|;
+name|worker
+operator|.
+name|filenames
+operator|=
+name|filenames
 expr_stmt|;
 name|worker
 operator|.
@@ -952,11 +1004,19 @@ decl_stmt|;
 comment|/*             // Add the strings, if any:             for (Iterator i = bibtexResult.getDatabase().getStringKeySet().iterator(); i.hasNext();) {                 BibtexString s = bibtexResult.getDatabase().getString(i.next());                 try {                     toAddTo.addString(s);                 } catch (KeyCollisionException e) {                     e.printStackTrace();                 }              }               if ((panel != null)&& (bibtexResult.getDatabase().getEntryCount() == 1)) {                 SwingUtilities.invokeLater(new Runnable() {                     public void run() {                         panel.highlightEntry((BibtexEntry)                                 bibtexResult.getDatabase().getEntries().                                         iterator().next());                     }                 });               }             */
 if|if
 condition|(
+operator|(
+name|worker
+operator|!=
+literal|null
+operator|)
+operator|&&
+operator|(
 name|worker
 operator|.
 name|bibtexResult
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|frame

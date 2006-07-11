@@ -3301,6 +3301,22 @@ comment|//Util.pr("::EntryEditor.switchTo(BibtexEntry): "+this.type.getName());
 name|storeCurrentEdit
 argument_list|()
 expr_stmt|;
+comment|// Remove this instance as property listener for the entry:
+name|entry
+operator|.
+name|removePropertyChangeListener
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+comment|// Register as property listener for the new entry:
+name|be
+operator|.
+name|addPropertyChangeListener
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 name|entry
 operator|=
 name|be

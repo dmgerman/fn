@@ -400,7 +400,7 @@ name|updateRenderers
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|MainTable (MainTableFormat tableFormat, EventList list)
+DECL|method|MainTable (MainTableFormat tableFormat, EventList list, JabRefFrame frame)
 specifier|public
 name|MainTable
 parameter_list|(
@@ -409,6 +409,9 @@ name|tableFormat
 parameter_list|,
 name|EventList
 name|list
+parameter_list|,
+name|JabRefFrame
+name|frame
 parameter_list|)
 block|{
 name|super
@@ -587,17 +590,28 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|setTransferHandler
-argument_list|(
+name|TransferHandler
+name|xfer
+init|=
 operator|new
 name|EntryTableTransferHandler
 argument_list|(
 name|this
+argument_list|,
+name|frame
 argument_list|)
+decl_stmt|;
+name|setTransferHandler
+argument_list|(
+name|xfer
 argument_list|)
 expr_stmt|;
-name|setupComparatorChooser
-argument_list|()
+name|pane
+operator|.
+name|setTransferHandler
+argument_list|(
+name|xfer
+argument_list|)
 expr_stmt|;
 name|refreshSorting
 argument_list|()

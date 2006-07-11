@@ -57,7 +57,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test case  that verifies the functionalities of the  * formater AuthorLastFirstAbbreviator.  *   * @author Carlos Silla  */
+comment|/**  * Test case  that verifies the functionalities of the  * formater AuthorLastFirstAbbreviator.  *   * @author Carlos Silla  * @author Christopher Oezbek<oezi@oezi.de>  */
 end_comment
 
 begin_class
@@ -213,8 +213,64 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** 	 * Verifies the Abbreviation of two authors in the incorrect format. 	 *  	 * Ex: Lastname, Name Middlename 	 */
-comment|//TODO: Verify how to tell this test that it should pass if fail.
-comment|/*	public void testTwoAuthorsBadFormating() { 		String name = new String("Lastname, Name Middlename and Nome Nomedomeio Sobrenome"); 		 		AuthorLastFirstAbbreviator ab = new AuthorLastFirstAbbreviator(); 		 		String result = ab.format(name);		 	}*/
+DECL|method|testTwoAuthorsBadFormating ()
+specifier|public
+name|void
+name|testTwoAuthorsBadFormating
+parameter_list|()
+block|{
+comment|// String name = new String("Lastname, Name Middlename and Nome Nomedomeio Sobrenome");
+name|fail
+argument_list|()
+expr_stmt|;
+comment|// @TODO: How should a Formatter fail?
+comment|// assertEquals("Author names must be formatted \"Last, First\" or \"Last, Jr., First\" before formatting with AuthorLastFirstAbbreviator", abbreviate(name));
+block|}
+comment|/** 	 * Testcase for  	 * http://sourceforge.net/tracker/index.php?func=detail&aid=1466924&group_id=92314&atid=600306 	 */
+DECL|method|testJrAuthor ()
+specifier|public
+name|void
+name|testJrAuthor
+parameter_list|()
+block|{
+name|String
+name|name
+init|=
+literal|"Other, Jr., Anthony N."
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Other, A.N."
+argument_list|,
+name|abbreviate
+argument_list|(
+name|name
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|abbreviate (String name)
+specifier|protected
+name|String
+name|abbreviate
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+operator|(
+operator|new
+name|AuthorLastFirstAbbreviator
+argument_list|()
+operator|)
+operator|.
+name|format
+argument_list|(
+name|name
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 
