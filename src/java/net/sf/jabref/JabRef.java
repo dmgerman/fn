@@ -250,6 +250,7 @@ DECL|field|helpO
 DECL|field|disableGui
 DECL|field|blank
 DECL|field|loadSess
+DECL|field|showVersion
 name|BooleanOption
 name|helpO
 decl_stmt|,
@@ -258,6 +259,8 @@ decl_stmt|,
 name|blank
 decl_stmt|,
 name|loadSess
+decl_stmt|,
+name|showVersion
 decl_stmt|;
 comment|/*     * class StringArrayOption extends ArrayOption { public public void     * modify(String value) { } public void modify(String[] value) { } public     * Object[] getObjectArray() { return null; } public String getTypeName() {     * return "Strings"; } public String getStringValue() { return ""; } public     * Object getObject() { return null; } }     */
 DECL|method|main (String[] args)
@@ -539,6 +542,12 @@ operator|new
 name|BooleanOption
 argument_list|()
 expr_stmt|;
+name|showVersion
+operator|=
+operator|new
+name|BooleanOption
+argument_list|()
+expr_stmt|;
 name|exportPrefs
 operator|=
 operator|new
@@ -597,6 +606,24 @@ literal|"imopoepuoeu"
 argument_list|)
 expr_stmt|;
 comment|//Globals.lang);
+name|options
+operator|.
+name|register
+argument_list|(
+literal|"version"
+argument_list|,
+literal|'v'
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Display version"
+argument_list|)
+argument_list|,
+name|showVersion
+argument_list|)
+expr_stmt|;
 name|options
 operator|.
 name|register
@@ -857,6 +884,29 @@ name|args
 argument_list|)
 decl_stmt|;
 comment|//Util.pr(": Options processed");
+if|if
+condition|(
+name|initialStartup
+operator|&&
+name|showVersion
+operator|.
+name|isInvoked
+argument_list|()
+condition|)
+block|{
+name|options
+operator|.
+name|displayVersion
+argument_list|()
+expr_stmt|;
+name|disableGui
+operator|.
+name|setInvoked
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|initialStartup

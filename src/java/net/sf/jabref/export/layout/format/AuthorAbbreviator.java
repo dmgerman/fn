@@ -58,30 +58,24 @@ name|String
 name|fieldText
 parameter_list|)
 block|{
-name|String
-index|[]
-name|authors
-init|=
-name|fieldText
-operator|.
-name|split
-argument_list|(
-literal|" and "
-argument_list|)
-decl_stmt|;
-name|String
-name|abbrev
-init|=
-name|getAbbreviations
-argument_list|(
-name|authors
-argument_list|)
-decl_stmt|;
+comment|// It seems to me that this formatter and AuthorLastFirstAbbreviator
+comment|// are duplicates. Since the latter was patched to improve handling of
+comment|// some names, we refer the operation there:
 return|return
-name|abbrev
+operator|(
+operator|new
+name|AuthorLastFirstAbbreviator
+argument_list|()
+operator|)
+operator|.
+name|format
+argument_list|(
+name|fieldText
+argument_list|)
 return|;
+comment|/*String[] authors = fieldText.split(" and ");  		String abbrev = getAbbreviations(authors); 		return abbrev;         */
 block|}
-comment|/** 	 * Abbreviates the names in the Last First format. 	 *  	 * @param authors List of authors or editors. 	 * @return the names abbreviated. 	 * @throws RequiredOrderException 	 *  	 */
+comment|/** 	 * Abbreviates the names in the Last First format. 	 *  	 * @param authors List of authors or editors. 	 * @return the names abbreviated. 	 * 	 */
 DECL|method|getAbbreviations (String[] authors)
 specifier|private
 name|String

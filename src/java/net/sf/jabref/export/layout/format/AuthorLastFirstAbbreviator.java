@@ -102,19 +102,7 @@ condition|)
 return|return
 literal|""
 return|;
-if|if
-condition|(
-operator|!
-name|isProperFormat
-argument_list|(
-name|authors
-argument_list|)
-condition|)
-block|{
-return|return
-literal|"Author names must be formatted \"Last, First\" or \"Last, Jr., First\" before formatting with AuthorLastFirstAbbreviator"
-return|;
-block|}
+comment|/*if (!isProperFormat(authors)) { 			return "Author names must be formatted \"Last, First\" or \"Last, Jr., First\" before formatting with AuthorLastFirstAbbreviator"; 		}*/
 for|for
 control|(
 name|int
