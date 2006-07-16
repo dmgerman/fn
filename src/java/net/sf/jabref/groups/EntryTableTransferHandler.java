@@ -132,31 +132,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRef
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|JabRefFrame
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Util
 import|;
 end_import
 
@@ -185,20 +161,6 @@ operator|.
 name|imports
 operator|.
 name|ImportMenuItem
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|imports
-operator|.
-name|ImportFormatReader
 import|;
 end_import
 
@@ -402,7 +364,7 @@ comment|// This appears to be a dragged file link and not a reference
 comment|// format. Check if we can map this to a set of files:
 if|if
 condition|(
-name|handleFileLinkSet
+name|handleDraggedFilenames
 argument_list|(
 name|dropStr
 argument_list|)
@@ -535,10 +497,11 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|handleFileLinkSet (String s)
+comment|/**      * Handle a String describing a set of files or URLs dragged into JabRef.      * @param s String describing a set of files or URLs dragged into JabRef      */
+DECL|method|handleDraggedFilenames (String s)
 specifier|private
 name|boolean
-name|handleFileLinkSet
+name|handleDraggedFilenames
 parameter_list|(
 name|String
 name|s
@@ -662,17 +625,17 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|handleFileList
+name|handleDraggedFiles
 argument_list|(
 name|files
 argument_list|)
 return|;
 block|}
 comment|/**      * Handle a List containing File objects for a set of files to import.      * @param files A List containing File instances pointing to files.      */
-DECL|method|handleFileList (List files)
+DECL|method|handleDraggedFiles (List files)
 specifier|private
 name|boolean
-name|handleFileList
+name|handleDraggedFiles
 parameter_list|(
 name|List
 name|files
@@ -1110,7 +1073,7 @@ name|javaFileListFlavor
 argument_list|)
 decl_stmt|;
 return|return
-name|handleFileList
+name|handleDraggedFiles
 argument_list|(
 name|l
 argument_list|)
