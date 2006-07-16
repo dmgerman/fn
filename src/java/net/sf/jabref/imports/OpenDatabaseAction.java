@@ -605,6 +605,66 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+name|addNewDatabase
+argument_list|(
+name|pr
+argument_list|,
+name|file
+argument_list|,
+name|raisePanel
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|ex
+parameter_list|)
+block|{
+comment|//ex.printStackTrace();
+name|Util
+operator|.
+name|showQuickErrorDialog
+argument_list|(
+name|frame
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Open database"
+argument_list|)
+argument_list|,
+name|ex
+argument_list|)
+expr_stmt|;
+comment|/*                 JOptionPane.showMessageDialog                         (frame, ex.getMessage(),                                 Globals.lang("Open database"), JOptionPane.ERROR_MESSAGE);                                 */
+block|}
+block|}
+block|}
+DECL|method|addNewDatabase (ParserResult pr, File file, boolean raisePanel)
+specifier|public
+name|void
+name|addNewDatabase
+parameter_list|(
+name|ParserResult
+name|pr
+parameter_list|,
+name|File
+name|file
+parameter_list|,
+name|boolean
+name|raisePanel
+parameter_list|)
+block|{
+name|String
+name|fileName
+init|=
+name|file
+operator|.
+name|getPath
+argument_list|()
+decl_stmt|;
 name|BibtexDatabase
 name|db
 init|=
@@ -776,7 +836,7 @@ name|getEncoding
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|/*                  if (Globals.prefs.getBoolean("autoComplete")) {                  db.setCompleters(autoCompleters);                  }                 */
+comment|/*          if (Globals.prefs.getBoolean("autoComplete")) {          db.setCompleters(autoCompleters);          }         */
 comment|// file is set to null inside the EventDispatcherThread
 name|SwingUtilities
 operator|.
@@ -1113,33 +1173,6 @@ operator|+
 literal|"."
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|ex
-parameter_list|)
-block|{
-comment|//ex.printStackTrace();
-name|Util
-operator|.
-name|showQuickErrorDialog
-argument_list|(
-name|frame
-argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Open database"
-argument_list|)
-argument_list|,
-name|ex
-argument_list|)
-expr_stmt|;
-comment|/*                 JOptionPane.showMessageDialog                         (frame, ex.getMessage(),                                 Globals.lang("Open database"), JOptionPane.ERROR_MESSAGE);                                 */
-block|}
-block|}
 block|}
 DECL|method|loadDatabase (File fileToOpen, String encoding)
 specifier|public
