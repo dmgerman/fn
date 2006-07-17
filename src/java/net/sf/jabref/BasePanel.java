@@ -1110,6 +1110,10 @@ name|boolean
 name|success
 init|=
 literal|false
+decl_stmt|,
+name|cancelled
+init|=
+literal|false
 decl_stmt|;
 specifier|public
 name|void
@@ -1119,6 +1123,10 @@ throws|throws
 name|Throwable
 block|{
 name|success
+operator|=
+literal|false
+expr_stmt|;
+name|cancelled
 operator|=
 literal|false
 expr_stmt|;
@@ -1366,7 +1374,12 @@ literal|"'."
 argument_list|)
 expr_stmt|;
 block|}
-else|else
+elseif|else
+if|if
+condition|(
+operator|!
+name|cancelled
+condition|)
 block|{
 name|frame
 operator|.
@@ -1387,6 +1400,19 @@ name|void
 name|run
 parameter_list|()
 block|{
+if|if
+condition|(
+name|file
+operator|==
+literal|null
+condition|)
+block|{
+name|cancelled
+operator|=
+literal|true
+expr_stmt|;
+return|return;
+block|}
 try|try
 block|{
 comment|// If the option is set, autogenerate keys for all entries that are

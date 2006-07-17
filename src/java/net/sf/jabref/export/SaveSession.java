@@ -233,6 +233,13 @@ block|{
 if|if
 condition|(
 name|file
+operator|==
+literal|null
+condition|)
+return|return;
+if|if
+condition|(
+name|file
 operator|.
 name|exists
 argument_list|()

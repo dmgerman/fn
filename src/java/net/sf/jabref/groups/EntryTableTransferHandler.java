@@ -243,6 +243,7 @@ name|DROP_ALLOWED
 init|=
 literal|true
 decl_stmt|;
+comment|/**      * Construct the transfer handler.      * @param entryTable The table this transfer handler should operate on. This argument is      * allowed to equal @null, in which case the transfer handler can assume that it      * works for a JabRef instance with no databases open, attached to the empty tabbed pane.      * @param frame The JabRefFrame instance.      */
 DECL|method|EntryTableTransferHandler (MainTable entryTable, JabRefFrame frame)
 specifier|public
 name|EntryTableTransferHandler
@@ -327,6 +328,8 @@ name|JComponent
 name|c
 parameter_list|)
 block|{
+comment|// This method is called when dragging stuff *from* the table, so we can assume
+comment|// it will never be called if entryTable==null:
 return|return
 operator|new
 name|TransferableEntrySelection
@@ -395,20 +398,7 @@ argument_list|(
 name|dropStr
 argument_list|)
 decl_stmt|;
-name|JOptionPane
-operator|.
-name|showMessageDialog
-argument_list|(
-literal|null
-argument_list|,
-literal|"Making URL: "
-operator|+
-name|url
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//JOptionPane.showMessageDialog(null, "Making URL: "+url.toString());
 return|return
 name|handleDropTransfer
 argument_list|(
@@ -432,6 +422,11 @@ argument_list|,
 literal|""
 argument_list|)
 decl_stmt|;
+name|tmpfile
+operator|.
+name|deleteOnExit
+argument_list|()
+expr_stmt|;
 name|FileWriter
 name|fw
 init|=
@@ -453,20 +448,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"importing from "
-operator|+
-name|tmpfile
-operator|.
-name|getAbsolutePath
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//System.out.println("importing from " + tmpfile.getAbsolutePath());
 name|ImportMenuItem
 name|importer
 init|=
@@ -982,6 +964,11 @@ argument_list|,
 literal|""
 argument_list|)
 decl_stmt|;
+name|tmpfile
+operator|.
+name|deleteOnExit
+argument_list|()
+expr_stmt|;
 comment|//System.out.println("Import url: " + dropLink.toString());
 comment|//System.out.println("Temp file: "+tmpfile.getAbsolutePath());
 operator|new
@@ -997,7 +984,7 @@ operator|.
 name|download
 argument_list|()
 expr_stmt|;
-comment|// JabRef.importFiletypeUnknown(tmpfile.getAbsolutePath());
+comment|// Import into new if entryTable==null, otherwise into current database:
 name|ImportMenuItem
 name|importer
 init|=
@@ -1006,7 +993,11 @@ name|ImportMenuItem
 argument_list|(
 name|frame
 argument_list|,
-literal|false
+operator|(
+name|entryTable
+operator|==
+literal|null
+operator|)
 argument_list|)
 decl_stmt|;
 name|importer
