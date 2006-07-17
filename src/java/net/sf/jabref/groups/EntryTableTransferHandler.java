@@ -917,6 +917,7 @@ argument_list|(
 name|toImport
 argument_list|)
 expr_stmt|;
+comment|// Import into new if entryTable==null, otherwise into current database:
 name|ImportMenuItem
 name|importer
 init|=
@@ -925,7 +926,11 @@ name|ImportMenuItem
 argument_list|(
 name|frame
 argument_list|,
-literal|false
+operator|(
+name|entryTable
+operator|==
+literal|null
+operator|)
 argument_list|)
 decl_stmt|;
 name|importer
