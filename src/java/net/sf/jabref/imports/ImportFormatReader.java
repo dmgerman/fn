@@ -2169,6 +2169,7 @@ name|entryList
 operator|=
 name|entries
 expr_stmt|;
+comment|//System.out.println("Looks good: "+imFo.getFormatName());
 block|}
 block|}
 catch|catch

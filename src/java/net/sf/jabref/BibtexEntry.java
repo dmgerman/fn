@@ -497,7 +497,7 @@ literal|null
 operator|)
 return|;
 block|}
-comment|/**      * Sets the given field to the given value.      */
+comment|/**      * Sets a number of fields simultaneously. The given HashMap contains field      * names as keys, each mapped to the value to set.      * WARNING: this method does not notify change listeners, so it should *NOT*      * be used for entries that are being displayed in the GUI. Furthermore, it      * does not check values for content, so e.g. empty strings will be set as such.      */
 DECL|method|setField (HashMap fields)
 specifier|public
 name|void

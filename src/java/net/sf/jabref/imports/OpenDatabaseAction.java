@@ -227,6 +227,16 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
+if|if
+condition|(
+name|chosen
+index|[
+name|i
+index|]
+operator|!=
+literal|null
+condition|)
 name|filesToOpen
 operator|.
 name|add
@@ -241,6 +251,7 @@ index|]
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 comment|/*             String chosenFile = Globals.getNewFile(frame,                     new File(Globals.prefs.get("workingDirectory")), ".bib",                     JFileChooser.OPEN_DIALOG, true);              if (chosenFile != null) {                 fileToOpen = new File(chosenFile);             }*/
 block|}
 else|else

@@ -106,6 +106,20 @@ name|MainTable
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|jgoodies
+operator|.
+name|forms
+operator|.
+name|builder
+operator|.
+name|ButtonBarBuilder
+import|;
+end_import
+
 begin_comment
 comment|/**  * Preferences dialog. Contains a TabbedPane, and tabs will be defined  * in separate classes. Tabs MUST implement the PrefsTab interface,  * since this dialog will call the storeSettings() method of all tabs  * when the user presses ok.  *  * With this design, it should be very easy to add new tabs later.  *  */
 end_comment
@@ -797,9 +811,6 @@ operator|.
 name|CENTER
 argument_list|)
 expr_stmt|;
-comment|// Add all panels to main panel:
-comment|//for (Iterator i=panels.entrySet().iterator(); i.hasNext();) {
-comment|//}
 name|JButton
 name|ok
 init|=
@@ -850,20 +861,41 @@ argument_list|(
 name|cancelAction
 argument_list|)
 expr_stmt|;
+name|ButtonBarBuilder
+name|bb
+init|=
+operator|new
+name|ButtonBarBuilder
+argument_list|(
 name|lower
+argument_list|)
+decl_stmt|;
+name|bb
 operator|.
-name|add
+name|addGlue
+argument_list|()
+expr_stmt|;
+name|bb
+operator|.
+name|addGridded
 argument_list|(
 name|ok
 argument_list|)
 expr_stmt|;
-name|lower
+name|bb
 operator|.
-name|add
+name|addGridded
 argument_list|(
 name|cancel
 argument_list|)
 expr_stmt|;
+name|bb
+operator|.
+name|addGlue
+argument_list|()
+expr_stmt|;
+comment|//lower.add(ok);
+comment|//lower.add(cancel);
 comment|// Key bindings:
 name|ActionMap
 name|am
