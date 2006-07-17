@@ -613,6 +613,9 @@ argument_list|(
 name|xfer
 argument_list|)
 expr_stmt|;
+name|setupComparatorChooser
+argument_list|()
+expr_stmt|;
 name|refreshSorting
 argument_list|()
 expr_stmt|;
@@ -1391,6 +1394,7 @@ name|BE_ARRAY
 argument_list|)
 return|;
 block|}
+comment|/**      * This method sets up what Comparators are used for the various table columns.      * The ComparatorChooser enables and disables such Comparators as the user clicks      * columns, but this is where the Comparators are defined. Also, the ComparatorChooser      * is initialized with the sort order defined in Preferences.      */
 DECL|method|setupComparatorChooser ()
 specifier|private
 name|void
