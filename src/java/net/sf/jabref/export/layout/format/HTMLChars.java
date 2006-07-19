@@ -602,15 +602,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Unreachable code??"
-argument_list|)
-expr_stmt|;
+comment|/* TODO: this point is reached, apparently, if a command is terminated in a              * strange way, such as with "$\omega$". Also, the command "\&" causes us              * to get here. The former issue is maybe a little difficult to address, since              * it involves the LaTeX math mode. We don't have a complete LaTeX parser, so              * maybe it's better to ignore these commands?             */
+comment|//System.err.println("Unreachable code?? '"+field+"'");
 block|}
 if|if
 condition|(
