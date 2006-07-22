@@ -785,12 +785,11 @@ argument_list|(
 literal|"Required fields"
 argument_list|)
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|showReqIconFile
+name|getImage
+argument_list|(
+literal|"required"
 argument_list|)
 argument_list|,
 name|reqPan
@@ -879,12 +878,11 @@ argument_list|(
 literal|"Optional fields"
 argument_list|)
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|showOptIconFile
+name|getImage
+argument_list|(
+literal|"optional"
 argument_list|)
 argument_list|,
 name|optPan
@@ -972,12 +970,11 @@ argument_list|(
 name|i
 argument_list|)
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|showGenIconFile
+name|getImage
+argument_list|(
+literal|"general"
 argument_list|)
 argument_list|,
 name|newTab
@@ -1029,12 +1026,11 @@ argument_list|(
 literal|"BibTeX source"
 argument_list|)
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|sourceIconFile
+name|getImage
+argument_list|(
+literal|"source"
 argument_list|)
 argument_list|,
 name|srcPanel
@@ -4698,12 +4694,11 @@ argument_list|(
 literal|"Delete"
 argument_list|)
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|removeIconFile
+name|getImage
+argument_list|(
+literal|"remove"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4834,12 +4829,11 @@ argument_list|(
 literal|"Close window"
 argument_list|)
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|closeIconFile
+name|getImage
+argument_list|(
+literal|"close"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4920,14 +4914,6 @@ block|{
 name|super
 argument_list|(
 literal|"Copy BibTeX key to clipboard"
-argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
-name|GUIGlobals
-operator|.
-name|copyKeyIconFile
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|putValue
@@ -5889,12 +5875,11 @@ argument_list|(
 literal|"Next entry"
 argument_list|)
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|downIconFile
+name|getImage
+argument_list|(
+literal|"down"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6016,12 +6001,11 @@ argument_list|(
 literal|"Previous entry"
 argument_list|)
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|upIconFile
+name|getImage
+argument_list|(
+literal|"up"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6167,12 +6151,11 @@ argument_list|(
 literal|"Generate BibTeX key"
 argument_list|)
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|genKeyIconFile
+name|getImage
+argument_list|(
+literal|"makeKey"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6347,12 +6330,11 @@ name|super
 argument_list|(
 literal|"Undo"
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|undoIconFile
+name|getImage
+argument_list|(
+literal|"undo"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -6406,12 +6388,11 @@ name|super
 argument_list|(
 literal|"Undo"
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|redoIconFile
+name|getImage
+argument_list|(
+literal|"redo"
 argument_list|)
 argument_list|)
 expr_stmt|;

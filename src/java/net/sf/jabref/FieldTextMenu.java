@@ -543,7 +543,10 @@ literal|"Paste from clipboard"
 argument_list|,
 name|GUIGlobals
 operator|.
-name|pasteIconFile
+name|getIconUrl
+argument_list|(
+literal|"paste"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -638,7 +641,10 @@ literal|"Copy to clipboard"
 argument_list|,
 name|GUIGlobals
 operator|.
-name|copyIconFile
+name|getIconUrl
+argument_list|(
+literal|"copy"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

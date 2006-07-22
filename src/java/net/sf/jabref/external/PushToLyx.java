@@ -290,12 +290,11 @@ name|getIcon
 parameter_list|()
 block|{
 return|return
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|lyxIconFile
+name|getImage
+argument_list|(
+literal|"lyx"
 argument_list|)
 return|;
 block|}

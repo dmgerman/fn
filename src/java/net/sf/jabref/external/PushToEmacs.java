@@ -135,12 +135,11 @@ name|getIcon
 parameter_list|()
 block|{
 return|return
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|emacsIcon
+name|getImage
+argument_list|(
+literal|"emacs"
 argument_list|)
 return|;
 block|}

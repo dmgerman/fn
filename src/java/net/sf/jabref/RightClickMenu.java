@@ -288,12 +288,11 @@ argument_list|(
 literal|"Copy"
 argument_list|)
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|copyIconFile
+name|getImage
+argument_list|(
+literal|"copy"
 argument_list|)
 argument_list|)
 block|{
@@ -337,12 +336,11 @@ argument_list|(
 literal|"Paste"
 argument_list|)
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|pasteIconFile
+name|getImage
+argument_list|(
+literal|"paste"
 argument_list|)
 argument_list|)
 block|{
@@ -386,12 +384,11 @@ argument_list|(
 literal|"Cut"
 argument_list|)
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|cutIconFile
+name|getImage
+argument_list|(
+literal|"cut"
 argument_list|)
 argument_list|)
 block|{
@@ -435,12 +432,11 @@ argument_list|(
 literal|"Delete"
 argument_list|)
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|removeIconFile
+name|getImage
+argument_list|(
+literal|"delete"
 argument_list|)
 argument_list|)
 block|{
@@ -538,12 +534,11 @@ argument_list|(
 literal|"Mark entries"
 argument_list|)
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|markIcon
+name|getImage
+argument_list|(
+literal|"markEntries"
 argument_list|)
 argument_list|)
 block|{
@@ -587,12 +582,11 @@ argument_list|(
 literal|"Unmark entries"
 argument_list|)
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|unmarkIcon
+name|getImage
+argument_list|(
+literal|"unmarkEntries"
 argument_list|)
 argument_list|)
 block|{
@@ -661,12 +655,11 @@ argument_list|(
 literal|"Mark entry"
 argument_list|)
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|markIcon
+name|getImage
+argument_list|(
+literal|"markEntries"
 argument_list|)
 argument_list|)
 block|{
@@ -711,12 +704,11 @@ argument_list|(
 literal|"Unmark entry"
 argument_list|)
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|unmarkIcon
+name|getImage
+argument_list|(
+literal|"unmarkEntries"
 argument_list|)
 argument_list|)
 block|{
@@ -764,12 +756,11 @@ argument_list|(
 literal|"Open PDF or PS"
 argument_list|)
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|pdfIcon
+name|getImage
+argument_list|(
+literal|"pdf"
 argument_list|)
 argument_list|)
 block|{
@@ -813,12 +804,11 @@ argument_list|(
 literal|"Open URL or DOI"
 argument_list|)
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|wwwIcon
+name|getImage
+argument_list|(
+literal|"www"
 argument_list|)
 argument_list|)
 block|{
@@ -860,14 +850,6 @@ operator|.
 name|lang
 argument_list|(
 literal|"Copy BibTeX key"
-argument_list|)
-argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
-name|GUIGlobals
-operator|.
-name|copyKeyIconFile
 argument_list|)
 argument_list|)
 block|{
@@ -921,14 +903,6 @@ literal|"BibTeX key"
 argument_list|)
 operator|+
 literal|"}"
-argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
-name|GUIGlobals
-operator|.
-name|copyKeyIconFile
-argument_list|)
 argument_list|)
 block|{
 specifier|public
@@ -1697,7 +1671,10 @@ name|setIcon
 argument_list|(
 name|GUIGlobals
 operator|.
-name|groupIncludingIcon
+name|getImage
+argument_list|(
+literal|"groupIncluding"
+argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;
@@ -1712,7 +1689,10 @@ name|setIcon
 argument_list|(
 name|GUIGlobals
 operator|.
-name|groupRefiningIcon
+name|getImage
+argument_list|(
+literal|"groupRefining"
+argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;
@@ -1723,7 +1703,10 @@ name|setIcon
 argument_list|(
 name|GUIGlobals
 operator|.
-name|groupRegularIcon
+name|getImage
+argument_list|(
+literal|"groupRegular"
+argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;

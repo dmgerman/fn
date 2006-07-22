@@ -479,7 +479,10 @@ block|{
 return|return
 name|GUIGlobals
 operator|.
-name|wwwIcon
+name|getIconUrl
+argument_list|(
+literal|"www"
+argument_list|)
 return|;
 block|}
 DECL|method|getHelpPage ()

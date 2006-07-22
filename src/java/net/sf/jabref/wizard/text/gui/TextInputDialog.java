@@ -2741,7 +2741,10 @@ literal|"Paste from clipboard"
 argument_list|,
 name|GUIGlobals
 operator|.
-name|pasteIconFile
+name|getIconUrl
+argument_list|(
+literal|"paste"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -2860,7 +2863,10 @@ literal|"Open_file"
 argument_list|,
 name|GUIGlobals
 operator|.
-name|openIconFile
+name|getIconUrl
+argument_list|(
+literal|"open"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3004,7 +3010,10 @@ literal|"Clear_inputarea"
 argument_list|,
 name|GUIGlobals
 operator|.
-name|clearInputArea
+name|getIconUrl
+argument_list|(
+literal|"new"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3222,12 +3231,11 @@ specifier|private
 name|ImageIcon
 name|okIcon
 init|=
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|completeTagIcon
+name|getImage
+argument_list|(
+literal|"complete"
 argument_list|)
 decl_stmt|;
 DECL|field|needIcon
@@ -3235,12 +3243,11 @@ specifier|private
 name|ImageIcon
 name|needIcon
 init|=
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|wrongTagIcon
+name|getImage
+argument_list|(
+literal|"wrong"
 argument_list|)
 decl_stmt|;
 DECL|method|SimpleCellRenderer ( Font normFont )

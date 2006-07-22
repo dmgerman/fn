@@ -110,12 +110,11 @@ block|{
 comment|// This action leads to a dialog asking for entry type.
 name|super
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|helpIconFile
+name|getImage
+argument_list|(
+literal|"about"
 argument_list|)
 argument_list|)
 expr_stmt|;

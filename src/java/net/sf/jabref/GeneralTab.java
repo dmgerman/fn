@@ -631,7 +631,10 @@ literal|"Help"
 argument_list|,
 name|GUIGlobals
 operator|.
-name|helpSmallIconFile
+name|getIconUrl
+argument_list|(
+literal|"helpSmall"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|timeStampHelp
@@ -651,7 +654,10 @@ literal|"Help"
 argument_list|,
 name|GUIGlobals
 operator|.
-name|helpSmallIconFile
+name|getIconUrl
+argument_list|(
+literal|"helpSmall"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|inspectionWarnDupli

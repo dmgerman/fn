@@ -165,12 +165,11 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|newSmallIconFile
+name|getImage
+argument_list|(
+literal|"new"
 argument_list|)
 argument_list|)
 decl_stmt|,
@@ -180,12 +179,11 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|helpSmallIconFile
+name|getImage
+argument_list|(
+literal|"help"
 argument_list|)
 argument_list|)
 decl_stmt|,
@@ -195,12 +193,11 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|refreshSmallIconFile
+name|getImage
+argument_list|(
+literal|"refresh"
 argument_list|)
 argument_list|)
 decl_stmt|,
@@ -210,12 +207,11 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|autoGroupIcon
+name|getImage
+argument_list|(
+literal|"autoGroup"
 argument_list|)
 argument_list|)
 decl_stmt|,
@@ -453,12 +449,11 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|downIconFile
+name|getImage
+argument_list|(
+literal|"down"
 argument_list|)
 argument_list|)
 decl_stmt|,
@@ -468,12 +463,11 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|upIconFile
+name|getImage
+argument_list|(
+literal|"up"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -481,7 +475,7 @@ DECL|field|manager
 name|SidePaneManager
 name|manager
 decl_stmt|;
-comment|/**      * The first element for each group defines which field to use for the      * quicksearch. The next two define the name and regexp for the group.      *      * @param groupData      *            The group meta data in raw format.      */
+comment|/**      * The first element for each group defines which field to use for the      * quicksearch. The next two define the name and regexp for the group.      *      *      */
 DECL|method|GroupSelector (JabRefFrame frame, SidePaneManager manager)
 specifier|public
 name|GroupSelector
@@ -499,7 +493,10 @@ name|manager
 argument_list|,
 name|GUIGlobals
 operator|.
-name|groupsIconFile
+name|getIconUrl
+argument_list|(
+literal|"toggleGroups"
+argument_list|)
 argument_list|,
 name|Globals
 operator|.
@@ -1260,11 +1257,12 @@ init|=
 operator|new
 name|Dimension
 argument_list|(
-literal|20
+literal|29
 argument_list|,
-literal|20
+literal|29
 argument_list|)
 decl_stmt|;
+comment|//Dimension butDimSmall = new Dimension(20, 20);
 name|Dimension
 name|butDim2
 init|=
@@ -1273,7 +1271,7 @@ name|Dimension
 argument_list|(
 literal|40
 argument_list|,
-literal|20
+literal|22
 argument_list|)
 decl_stmt|;
 name|newButton

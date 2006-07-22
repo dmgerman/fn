@@ -156,12 +156,11 @@ name|getIcon
 parameter_list|()
 block|{
 return|return
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|winEdtIcon
+name|getImage
+argument_list|(
+literal|"winedt"
 argument_list|)
 return|;
 block|}

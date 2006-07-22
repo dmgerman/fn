@@ -743,7 +743,10 @@ literal|"Help contents"
 argument_list|,
 name|GUIGlobals
 operator|.
-name|helpContentsIconFile
+name|getIconUrl
+argument_list|(
+literal|"helpContents"
+argument_list|)
 argument_list|)
 decl_stmt|,
 comment|/* old about*/
@@ -765,7 +768,10 @@ literal|"About JabRef"
 argument_list|,
 name|GUIGlobals
 operator|.
-name|aboutIcon
+name|getIconUrl
+argument_list|(
+literal|"about"
+argument_list|)
 argument_list|)
 decl_stmt|,
 comment|/**/
@@ -781,10 +787,6 @@ argument_list|,
 literal|"Edit entry"
 argument_list|,
 literal|"Edit entry"
-argument_list|,
-name|GUIGlobals
-operator|.
-name|editIconFile
 argument_list|,
 name|prefs
 operator|.
@@ -806,10 +808,6 @@ literal|"Save database"
 argument_list|,
 literal|"Save database"
 argument_list|,
-name|GUIGlobals
-operator|.
-name|saveIconFile
-argument_list|,
 name|prefs
 operator|.
 name|getKey
@@ -829,10 +827,6 @@ argument_list|,
 literal|"Save database as ..."
 argument_list|,
 literal|"Save database as ..."
-argument_list|,
-name|GUIGlobals
-operator|.
-name|saveAsIconFile
 argument_list|,
 name|prefs
 operator|.
@@ -856,7 +850,10 @@ literal|"Save selected as ..."
 argument_list|,
 name|GUIGlobals
 operator|.
-name|saveAsIconFile
+name|getIconUrl
+argument_list|(
+literal|"saveAs"
+argument_list|)
 argument_list|)
 decl_stmt|,
 DECL|field|nextTab
@@ -898,10 +895,6 @@ literal|"Undo"
 argument_list|,
 literal|"Undo"
 argument_list|,
-name|GUIGlobals
-operator|.
-name|undoIconFile
-argument_list|,
 name|prefs
 operator|.
 name|getKey
@@ -921,10 +914,6 @@ argument_list|,
 literal|"Redo"
 argument_list|,
 literal|"Redo"
-argument_list|,
-name|GUIGlobals
-operator|.
-name|redoIconFile
 argument_list|,
 name|prefs
 operator|.
@@ -947,10 +936,6 @@ literal|"Delete"
 argument_list|,
 literal|"Delete"
 argument_list|,
-name|GUIGlobals
-operator|.
-name|removeIconFile
-argument_list|,
 name|prefs
 operator|.
 name|getKey
@@ -970,7 +955,10 @@ literal|"copy"
 argument_list|,
 name|GUIGlobals
 operator|.
-name|copyIconFile
+name|getIconUrl
+argument_list|(
+literal|"copy"
+argument_list|)
 argument_list|)
 decl_stmt|,
 DECL|field|paste
@@ -983,7 +971,10 @@ literal|"paste"
 argument_list|,
 name|GUIGlobals
 operator|.
-name|pasteIconFile
+name|getIconUrl
+argument_list|(
+literal|"paste"
+argument_list|)
 argument_list|)
 decl_stmt|,
 DECL|field|cut
@@ -996,7 +987,10 @@ literal|"cut"
 argument_list|,
 name|GUIGlobals
 operator|.
-name|cutIconFile
+name|getIconUrl
+argument_list|(
+literal|"cut"
+argument_list|)
 argument_list|)
 decl_stmt|,
 DECL|field|mark
@@ -1010,10 +1004,6 @@ argument_list|,
 literal|"Mark entries"
 argument_list|,
 literal|"Mark entries"
-argument_list|,
-name|GUIGlobals
-operator|.
-name|markIcon
 argument_list|,
 name|prefs
 operator|.
@@ -1034,10 +1024,6 @@ argument_list|,
 literal|"Unmark entries"
 argument_list|,
 literal|"Unmark entries"
-argument_list|,
-name|GUIGlobals
-operator|.
-name|unmarkIcon
 argument_list|,
 name|prefs
 operator|.
@@ -1095,10 +1081,6 @@ literal|"Incremental search"
 argument_list|,
 literal|"Start incremental search"
 argument_list|,
-name|GUIGlobals
-operator|.
-name|searchIconFile
-argument_list|,
 name|prefs
 operator|.
 name|getKey
@@ -1119,10 +1101,6 @@ literal|"Search"
 argument_list|,
 literal|"Search"
 argument_list|,
-name|GUIGlobals
-operator|.
-name|searchIconFile
-argument_list|,
 name|prefs
 operator|.
 name|getKey
@@ -1142,13 +1120,8 @@ argument_list|,
 literal|"Search"
 argument_list|,
 literal|"Toggle search panel"
-argument_list|,
-name|GUIGlobals
-operator|.
-name|searchIconFile
 argument_list|)
 decl_stmt|,
-comment|//                                       prefs.getKey("Search")),
 DECL|field|fetchCiteSeer
 name|fetchCiteSeer
 init|=
@@ -1223,7 +1196,10 @@ literal|"Append contents from a BibTeX database into the currently viewed databa
 argument_list|,
 name|GUIGlobals
 operator|.
-name|openIconFile
+name|getIconUrl
+argument_list|(
+literal|"open"
+argument_list|)
 argument_list|)
 decl_stmt|,
 comment|//prefs.getKey("Open")),
@@ -1276,10 +1252,6 @@ literal|"Edit preamble"
 argument_list|,
 literal|"Edit preamble"
 argument_list|,
-name|GUIGlobals
-operator|.
-name|preambleIconFile
-argument_list|,
 name|prefs
 operator|.
 name|getKey
@@ -1299,10 +1271,6 @@ argument_list|,
 literal|"Edit strings"
 argument_list|,
 literal|"Edit strings"
-argument_list|,
-name|GUIGlobals
-operator|.
-name|stringsIconFile
 argument_list|,
 name|prefs
 operator|.
@@ -1324,10 +1292,6 @@ literal|"Toggle groups interface"
 argument_list|,
 literal|"Toggle groups interface"
 argument_list|,
-name|GUIGlobals
-operator|.
-name|groupsIconFile
-argument_list|,
 name|prefs
 operator|.
 name|getKey
@@ -1347,10 +1311,6 @@ argument_list|,
 literal|"Toggle entry preview"
 argument_list|,
 literal|"Toggle entry preview"
-argument_list|,
-name|GUIGlobals
-operator|.
-name|previewIconFile
 argument_list|,
 name|prefs
 operator|.
@@ -1374,7 +1334,10 @@ literal|"Highlight groups matching any selected entry"
 argument_list|,
 name|GUIGlobals
 operator|.
-name|groupsHighlightMatchingAnyFile
+name|getIconUrl
+argument_list|(
+literal|"groupsHighlightAny"
+argument_list|)
 argument_list|)
 decl_stmt|,
 DECL|field|toggleHighlightAll
@@ -1391,7 +1354,10 @@ literal|"Highlight groups matching all selected entries"
 argument_list|,
 name|GUIGlobals
 operator|.
-name|groupsHighlightMatchingAllFile
+name|getIconUrl
+argument_list|(
+literal|"groupsHighlightAll"
+argument_list|)
 argument_list|)
 decl_stmt|,
 DECL|field|switchPreview
@@ -1423,10 +1389,6 @@ argument_list|,
 literal|"Autogenerate BibTeX keys"
 argument_list|,
 literal|"Autogenerate BibTeX keys"
-argument_list|,
-name|GUIGlobals
-operator|.
-name|genKeyIconFile
 argument_list|,
 name|prefs
 operator|.
@@ -1487,10 +1449,6 @@ literal|"Open PDF or PS"
 argument_list|,
 literal|"Open PDF or PS"
 argument_list|,
-name|GUIGlobals
-operator|.
-name|pdfIcon
-argument_list|,
 name|prefs
 operator|.
 name|getKey
@@ -1510,10 +1468,6 @@ argument_list|,
 literal|"Open URL or DOI"
 argument_list|,
 literal|"Open URL or DOI"
-argument_list|,
-name|GUIGlobals
-operator|.
-name|wwwIcon
 argument_list|,
 name|prefs
 operator|.
@@ -2055,12 +2009,11 @@ argument_list|)
 expr_stmt|;
 name|setIconImage
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|jabreflogo
+name|getImage
+argument_list|(
+literal|"jabrefIcon"
 argument_list|)
 operator|.
 name|getImage
@@ -4248,7 +4201,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|GeneralAction (String command, String text, String description, URL icon, KeyStroke key)
+DECL|method|GeneralAction (String command, String text, String description, String imageName, KeyStroke key)
 specifier|public
 name|GeneralAction
 parameter_list|(
@@ -4261,8 +4214,8 @@ parameter_list|,
 name|String
 name|description
 parameter_list|,
-name|URL
-name|icon
+name|String
+name|imageName
 parameter_list|,
 name|KeyStroke
 name|key
@@ -4270,10 +4223,11 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-operator|new
-name|ImageIcon
+name|GUIGlobals
+operator|.
+name|getImage
 argument_list|(
-name|icon
+name|imageName
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4390,6 +4344,29 @@ name|command
 operator|=
 name|command
 expr_stmt|;
+name|ImageIcon
+name|icon
+init|=
+name|GUIGlobals
+operator|.
+name|getImage
+argument_list|(
+name|command
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|icon
+operator|!=
+literal|null
+condition|)
+name|putValue
+argument_list|(
+name|SMALL_ICON
+argument_list|,
+name|icon
+argument_list|)
+expr_stmt|;
 name|putValue
 argument_list|(
 name|NAME
@@ -4433,6 +4410,29 @@ name|command
 operator|=
 name|command
 expr_stmt|;
+name|ImageIcon
+name|icon
+init|=
+name|GUIGlobals
+operator|.
+name|getImage
+argument_list|(
+name|command
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|icon
+operator|!=
+literal|null
+condition|)
+name|putValue
+argument_list|(
+name|SMALL_ICON
+argument_list|,
+name|icon
+argument_list|)
+expr_stmt|;
 name|putValue
 argument_list|(
 name|NAME
@@ -4460,6 +4460,7 @@ name|key
 argument_list|)
 expr_stmt|;
 block|}
+comment|/*    public GeneralAction(String command, String text, String description,                            URL imageUrl, KeyStroke key) {       this.command = command;         ImageIcon icon = GUIGlobals.getImage(command);         if (icon != null)             putValue(SMALL_ICON, icon);       putValue(NAME, text);       putValue(SHORT_DESCRIPTION, Globals.lang(description));         putValue(ACCELERATOR_KEY, key);     }*/
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -4562,12 +4563,11 @@ block|{
 comment|// This action leads to a dialog asking for entry type.
 name|super
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|addIconFile
+name|getImage
+argument_list|(
+literal|"add"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -7774,12 +7774,11 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|closeIconFile
+name|getImage
+argument_list|(
+literal|"close"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -8041,12 +8040,11 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|newIconFile
+name|getImage
+argument_list|(
+literal|"new"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -8133,12 +8131,11 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|wwwCiteSeerIcon
+name|getImage
+argument_list|(
+literal|"citeseer"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -8499,12 +8496,11 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|wwwCiteSeerIcon
+name|getImage
+argument_list|(
+literal|"citeseer"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -8825,12 +8821,11 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|newBibFile
+name|getImage
+argument_list|(
+literal|"new"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -9007,12 +9002,11 @@ argument_list|(
 literal|"Integrity check"
 argument_list|)
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|integrityCheck
+name|getImage
+argument_list|(
+literal|"integrityCheck"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -9111,12 +9105,11 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|fetchMedlineIcon
+name|getImage
+argument_list|(
+literal|"medline"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -9216,12 +9209,11 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|fetchMedlineIcon
+name|getImage
+argument_list|(
+literal|"medline"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -9295,7 +9287,6 @@ comment|//}
 block|}
 block|}
 block|}
-comment|/*class FetchAuthorMedlineAction       extends AbstractAction {     public FetchAuthorMedlineAction() {       super(Globals.lang("Fetch Medline by author"),             new ImageIcon(GUIGlobals.fetchMedlineIcon));       putValue(SHORT_DESCRIPTION, Globals.lang("Fetch Medline by author"));     }      public void actionPerformed(ActionEvent e) {       if (tabbedPane.getTabCount()> 0) {         for (int i = 0; i< tabbedPane.getTabCount(); i++) {           ( (BasePanel) tabbedPane.getComponentAt(i)).sidePaneManager.               ensureVisible("fetchAuthorMedline");           new FocusRequester(basePanel().medlineFetcher);         }       }     }      }*/
 comment|// The action for opening the preferences dialog.
 DECL|field|showPrefs
 name|AbstractAction
@@ -9318,12 +9309,11 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|prefsIconFile
+name|getImage
+argument_list|(
+literal|"preferences"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -11245,12 +11235,11 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|saveIconFile
+name|getImage
+argument_list|(
+literal|"save"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -11804,12 +11793,11 @@ parameter_list|()
 block|{
 name|super
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|openIconFile
+name|getImage
+argument_list|(
+literal|"loadSession"
 argument_list|)
 argument_list|)
 expr_stmt|;

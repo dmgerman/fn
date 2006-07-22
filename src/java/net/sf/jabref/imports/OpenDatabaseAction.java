@@ -100,12 +100,11 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|openIconFile
+name|getImage
+argument_list|(
+literal|"open"
 argument_list|)
 argument_list|)
 expr_stmt|;

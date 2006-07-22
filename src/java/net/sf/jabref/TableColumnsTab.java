@@ -1142,12 +1142,11 @@ name|super
 argument_list|(
 literal|"Delete row"
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|delRowIconFile
+name|getImage
+argument_list|(
+literal|"remove"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1304,12 +1303,11 @@ name|super
 argument_list|(
 literal|"Add row"
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|addIconFile
+name|getImage
+argument_list|(
+literal|"add"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1486,14 +1484,6 @@ operator|.
 name|lang
 argument_list|(
 literal|"Update to current column widths"
-argument_list|)
-argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
-name|GUIGlobals
-operator|.
-name|sheetIcon
 argument_list|)
 argument_list|)
 expr_stmt|;

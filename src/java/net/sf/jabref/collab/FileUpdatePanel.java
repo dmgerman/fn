@@ -159,7 +159,10 @@ name|manager
 argument_list|,
 name|GUIGlobals
 operator|.
-name|saveIconFile
+name|getIconUrl
+argument_list|(
+literal|"save"
+argument_list|)
 argument_list|,
 name|Globals
 operator|.

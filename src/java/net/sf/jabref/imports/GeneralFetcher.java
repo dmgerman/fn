@@ -183,12 +183,11 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|helpIconFile
+name|getImage
+argument_list|(
+literal|"helpSmall"
 argument_list|)
 argument_list|)
 decl_stmt|;

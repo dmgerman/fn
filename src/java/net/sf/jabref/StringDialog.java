@@ -1782,12 +1782,11 @@ name|super
 argument_list|(
 literal|"New string"
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|addIconFile
+name|getImage
+argument_list|(
+literal|"add"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2084,12 +2083,11 @@ name|super
 argument_list|(
 literal|"Store string"
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|addIconFile
+name|getImage
+argument_list|(
+literal|"add"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2154,12 +2152,11 @@ name|super
 argument_list|(
 literal|"Remove selected strings"
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|removeIconFile
+name|getImage
+argument_list|(
+literal|"remove"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2428,12 +2425,11 @@ name|super
 argument_list|(
 literal|"Undo"
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|undoIconFile
+name|getImage
+argument_list|(
+literal|"undo"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2500,12 +2496,11 @@ name|super
 argument_list|(
 literal|"Undo"
 argument_list|,
-operator|new
-name|ImageIcon
-argument_list|(
 name|GUIGlobals
 operator|.
-name|redoIconFile
+name|getImage
+argument_list|(
+literal|"redo"
 argument_list|)
 argument_list|)
 expr_stmt|;

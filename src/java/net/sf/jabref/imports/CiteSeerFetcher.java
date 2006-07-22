@@ -455,7 +455,10 @@ name|p0
 argument_list|,
 name|GUIGlobals
 operator|.
-name|wwwCiteSeerIcon
+name|getIconUrl
+argument_list|(
+literal|"citeseer"
+argument_list|)
 argument_list|,
 name|Globals
 operator|.
