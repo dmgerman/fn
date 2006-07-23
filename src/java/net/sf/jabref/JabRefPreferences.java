@@ -1391,6 +1391,26 @@ operator|+
 literal|"pdf;comment;owner"
 argument_list|)
 expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"useCustomIconTheme"
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"customIconThemeFile"
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
 comment|// Entry editor tab 0:
 name|defaults
 operator|.

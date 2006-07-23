@@ -3110,6 +3110,12 @@ operator|.
 name|performCompatibilityUpdate
 argument_list|()
 expr_stmt|;
+comment|// Set up custom or default icon theme:
+name|GUIGlobals
+operator|.
+name|setUpIconTheme
+argument_list|()
+expr_stmt|;
 comment|// This property is set to make the Mac OSX Java VM move the menu bar to
 comment|// the top
 comment|// of the screen, where Mac users expect it to be.

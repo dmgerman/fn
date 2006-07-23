@@ -71,7 +71,10 @@ block|{
 DECL|field|frame
 name|JFrame
 name|frame
+init|=
+literal|null
 decl_stmt|;
+comment|//JDialog dialog=null;
 DECL|field|comp
 name|JTextField
 name|comp
@@ -121,6 +124,7 @@ operator|=
 name|tc
 expr_stmt|;
 block|}
+comment|/*public BrowseAction(JDialog dialog, JTextField tc, boolean dir) {         super(Globals.lang("Browse"));         this.dialog = dialog;         this.dir = dir;         comp = tc;      } */
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

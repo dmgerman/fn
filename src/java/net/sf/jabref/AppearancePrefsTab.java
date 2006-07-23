@@ -141,6 +141,7 @@ name|colorCodes
 decl_stmt|,
 name|antialias
 decl_stmt|;
+comment|//, useCustomIconTheme;
 DECL|field|gbl
 specifier|private
 name|GridBagLayout
@@ -194,6 +195,7 @@ specifier|private
 name|JTextField
 name|fontSize
 decl_stmt|;
+comment|//, customIconThemeFile;
 comment|/**      * Customization of appearance parameters.      *      * @param prefs a<code>JabRefPreferences</code> value      */
 DECL|method|AppearancePrefsTab (JabRefPreferences prefs)
 specifier|public
@@ -247,6 +249,8 @@ literal|"Use antialiasing font"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//useCustomIconTheme = new JCheckBox(Globals.lang("Use custom icon theme"));
+comment|//customIconThemeFile = new JTextField();
 name|FormLayout
 name|layout
 init|=
@@ -392,6 +396,7 @@ argument_list|(
 name|colorPanel
 argument_list|)
 expr_stmt|;
+comment|/*builder.appendSeparator(Globals.lang("Custom icon theme"));         builder.append(useCustomIconTheme);         builder.nextLine();         JPanel p2 = new JPanel();         lab = new JLabel(Globals.lang("Custom icon theme file")+":");         p2.add(lab);         p2.add(customIconThemeFile);         BrowseAction browse = new BrowseAction(null, customIconThemeFile, false);         JButton browseBut = new JButton(Globals.lang("Browse"));         browseBut.addActionListener(browse);         p2.add(browseBut);         builder.append(p2);           */
 name|JPanel
 name|upper
 init|=
@@ -584,6 +589,8 @@ argument_list|(
 literal|"menuFontSize"
 argument_list|)
 expr_stmt|;
+comment|//useCustomIconTheme.setSelected(_prefs.getBoolean("useCustomIconTheme"));
+comment|//customIconThemeFile.setText(_prefs.get("customIconThemeFile"));
 name|colorPanel
 operator|.
 name|setValues
