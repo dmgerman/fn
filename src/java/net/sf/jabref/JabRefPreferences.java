@@ -1408,7 +1408,7 @@ name|put
 argument_list|(
 literal|"customIconThemeFile"
 argument_list|,
-literal|null
+literal|"/home/alver/div/smalltheme/Icons.properties"
 argument_list|)
 expr_stmt|;
 comment|// Entry editor tab 0:
