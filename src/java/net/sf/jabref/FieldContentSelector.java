@@ -70,6 +70,18 @@ name|Sizes
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|jgoodies
+operator|.
+name|looks
+operator|.
+name|Options
+import|;
+end_import
+
 begin_class
 DECL|class|FieldContentSelector
 specifier|public
@@ -335,6 +347,18 @@ operator|.
 name|setMaximumRowCount
 argument_list|(
 literal|35
+argument_list|)
+expr_stmt|;
+comment|// Set the width of the popup independent of the size of th box itself:
+name|list
+operator|.
+name|putClientProperty
+argument_list|(
+name|Options
+operator|.
+name|COMBO_POPUP_PROTOTYPE_DISPLAY_VALUE_KEY
+argument_list|,
+literal|"The longest text in the combo popup menu. And even longer."
 argument_list|)
 expr_stmt|;
 comment|/*          * list.getInputMap().put(Globals.prefs.getKey("Select value"),          * "enter"); list.getActionMap().put("enter", new EnterAction());          * System.out.println(Globals.prefs.getKey("Select value"));          */

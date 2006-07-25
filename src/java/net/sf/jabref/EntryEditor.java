@@ -4698,7 +4698,7 @@ name|GUIGlobals
 operator|.
 name|getImage
 argument_list|(
-literal|"remove"
+literal|"delete"
 argument_list|)
 argument_list|)
 expr_stmt|;

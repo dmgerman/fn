@@ -830,7 +830,7 @@ literal|"pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, "
 operator|+
 literal|"pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, "
 operator|+
-literal|"pref, 6dlu, pref, 6dlu, pref"
+literal|"pref, 6dlu, pref, 6dlu, pref, 6dlu, pref"
 argument_list|)
 decl_stmt|;
 name|DefaultFormBuilder
@@ -1199,23 +1199,7 @@ name|cc
 operator|.
 name|xy
 argument_list|(
-literal|4
-argument_list|,
-literal|23
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|builder
-operator|.
-name|add
-argument_list|(
-name|inspectionWarnDupli
-argument_list|,
-name|cc
-operator|.
-name|xy
-argument_list|(
-literal|4
+literal|2
 argument_list|,
 literal|25
 argument_list|)
@@ -1225,7 +1209,7 @@ name|builder
 operator|.
 name|add
 argument_list|(
-name|ctrlClick
+name|inspectionWarnDupli
 argument_list|,
 name|cc
 operator|.
@@ -1241,7 +1225,7 @@ name|builder
 operator|.
 name|add
 argument_list|(
-name|confirmDelete
+name|ctrlClick
 argument_list|,
 name|cc
 operator|.
@@ -1257,7 +1241,7 @@ name|builder
 operator|.
 name|add
 argument_list|(
-name|keyDuplicateWarningDialog
+name|confirmDelete
 argument_list|,
 name|cc
 operator|.
@@ -1273,7 +1257,7 @@ name|builder
 operator|.
 name|add
 argument_list|(
-name|keyEmptyWarningDialog
+name|keyDuplicateWarningDialog
 argument_list|,
 name|cc
 operator|.
@@ -1282,6 +1266,22 @@ argument_list|(
 literal|2
 argument_list|,
 literal|33
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|add
+argument_list|(
+name|keyEmptyWarningDialog
+argument_list|,
+name|cc
+operator|.
+name|xy
+argument_list|(
+literal|2
+argument_list|,
+literal|35
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1517,7 +1517,7 @@ name|xyw
 argument_list|(
 literal|2
 argument_list|,
-literal|35
+literal|37
 argument_list|,
 literal|3
 argument_list|)

@@ -541,7 +541,6 @@ operator|new
 name|JMenuBar
 argument_list|()
 decl_stmt|;
-comment|/* {     public void paintComponent(Graphics g) {       Graphics2D g2 = (Graphics2D)g;       g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,                           RenderingHints.VALUE_ANTIALIAS_ON);       g2.setRenderingHint(RenderingHints.KEY_RENDERING,                           RenderingHints.VALUE_RENDER_QUALITY);       super.paintComponent(g2);      }    };*/
 DECL|field|gbl
 name|GridBagLayout
 name|gbl
@@ -3399,6 +3398,19 @@ name|void
 name|setupLayout
 parameter_list|()
 block|{
+name|tabbedPane
+operator|.
+name|putClientProperty
+argument_list|(
+name|Options
+operator|.
+name|NO_CONTENT_BORDER_KEY
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
+argument_list|)
+expr_stmt|;
 name|fillMenu
 argument_list|()
 expr_stmt|;
@@ -3463,16 +3475,6 @@ operator|=
 name|GridBagConstraints
 operator|.
 name|REMAINDER
-expr_stmt|;
-name|mb
-operator|.
-name|setMinimumSize
-argument_list|(
-name|mb
-operator|.
-name|getPreferredSize
-argument_list|()
-argument_list|)
 expr_stmt|;
 comment|//gbl.setConstraints(mb, con);
 comment|//getContentPane().add(mb);

@@ -1556,6 +1556,17 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+literal|"overrideDefaultFonts"
+argument_list|,
+name|Boolean
+operator|.
+name|FALSE
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
 literal|"menuFontFamily"
 argument_list|,
 literal|"Times"
