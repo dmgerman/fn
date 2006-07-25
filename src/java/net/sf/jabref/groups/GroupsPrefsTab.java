@@ -346,8 +346,9 @@ init|=
 operator|new
 name|FormLayout
 argument_list|(
-literal|"9dlu, 500px"
+literal|"9dlu, pref"
 argument_list|,
+comment|//500px",
 literal|"p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, p, 3dlu, "
 operator|+
 literal|"p, 3dlu, p"
