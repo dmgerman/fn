@@ -1399,7 +1399,7 @@ literal|"useCustomIconTheme"
 argument_list|,
 name|Boolean
 operator|.
-name|TRUE
+name|FALSE
 argument_list|)
 expr_stmt|;
 name|defaults
