@@ -77,7 +77,6 @@ block|{
 return|return
 name|fieldText
 return|;
-comment|//return "Author names must be formatted \"Last, First\" or \"Last, Jr., First\" before formatting with AuthorLastFirstAbbreviator";
 block|}
 block|}
 comment|/** 	 * Abbreviates the names in the Last, First or Last, Jr, First format. 	 *  	 * @param authors 	 *            List of authors. 	 * @return The abbreviated names. 	 */
@@ -102,7 +101,23 @@ condition|)
 return|return
 literal|""
 return|;
-comment|/*if (!isProperFormat(authors)) { 			return "Author names must be formatted \"Last, First\" or \"Last, Jr., First\" before formatting with AuthorLastFirstAbbreviator"; 		}*/
+if|if
+condition|(
+operator|!
+name|isProperFormat
+argument_list|(
+name|authors
+argument_list|)
+condition|)
+block|{
+throw|throw
+operator|new
+name|IllegalArgumentException
+argument_list|(
+literal|"Author names must be formatted \"Last, First\" or \"Last, Jr., First\" before formatting with AuthorLastFirstAbbreviator"
+argument_list|)
+throw|;
+block|}
 for|for
 control|(
 name|int
