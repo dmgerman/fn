@@ -303,6 +303,8 @@ name|get
 argument_list|(
 literal|1
 argument_list|)
+argument_list|,
+name|classPrefix
 argument_list|)
 expr_stmt|;
 comment|//}
@@ -1442,14 +1444,18 @@ return|;
 block|}
 comment|// added section - end (arudert)
 comment|/**      * @param string      * @return      */
-DECL|method|getOptionalLayout (String formatterName)
-specifier|private
+DECL|method|getOptionalLayout (String formatterName, String classPrefix)
+specifier|public
+specifier|static
 name|LayoutFormatter
 index|[]
 name|getOptionalLayout
 parameter_list|(
 name|String
 name|formatterName
+parameter_list|,
+name|String
+name|classPrefix
 parameter_list|)
 throws|throws
 name|Exception
