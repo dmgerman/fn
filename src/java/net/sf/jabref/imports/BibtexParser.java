@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* Copyright (C) 2003 David Weitzman, Nizar N. Batada, Morten O. Alver  All programs in this directory and subdirectories are published under the GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html  */
+comment|/* Copyright (C) 2003-06 David Weitzman, Nizar N. Batada, Morten O. Alver  All programs in this directory and subdirectories are published under the GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html  */
 end_comment
 
 begin_package
@@ -80,6 +80,10 @@ name|*
 import|;
 end_import
 
+begin_comment
+comment|/**  * Class for importing BibTeX-files.  *   * Use:  *   *   BibtexParser parser = new BibtexParser(reader);   *     *   ParserResult result = parser.parse();  *   * or  *   *   ParserResult result = BibtexParser.parse(reader);  *   * Can be used stand-alone.  *   * @author David Weitzman  * @author Nizar N. Batada  * @author Morten O. Alver  * @author Christopher Oezbek<oezi@oezi.de>  */
+end_comment
+
 begin_class
 DECL|class|BibtexParser
 specifier|public
@@ -127,6 +131,11 @@ operator|new
 name|FieldContentParser
 argument_list|()
 decl_stmt|;
+DECL|field|_pr
+specifier|private
+name|ParserResult
+name|_pr
+decl_stmt|;
 DECL|method|BibtexParser (Reader in)
 specifier|public
 name|BibtexParser
@@ -148,6 +157,25 @@ name|NullPointerException
 argument_list|()
 throw|;
 block|}
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|==
+literal|null
+condition|)
+block|{
+name|Globals
+operator|.
+name|prefs
+operator|=
+name|JabRefPreferences
+operator|.
+name|getInstance
+argument_list|()
+expr_stmt|;
+block|}
 name|_in
 operator|=
 operator|new
@@ -156,6 +184,35 @@ argument_list|(
 name|in
 argument_list|)
 expr_stmt|;
+block|}
+comment|/** 	 * Shortcut usage to create a Parser and read the input. 	 *  	 * @param in - 	 *            Reader to read from 	 * @throws IOException 	 */
+DECL|method|parse (Reader in)
+specifier|public
+specifier|static
+name|ParserResult
+name|parse
+parameter_list|(
+name|Reader
+name|in
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|BibtexParser
+name|parser
+init|=
+operator|new
+name|BibtexParser
+argument_list|(
+name|in
+argument_list|)
+decl_stmt|;
+return|return
+name|parser
+operator|.
+name|parse
+argument_list|()
+return|;
 block|}
 comment|/**    * Check whether the source is in the correct format for this importer.    */
 DECL|method|isRecognizedFormat (Reader inOrig)
@@ -436,6 +493,7 @@ name|toString
 argument_list|()
 return|;
 block|}
+comment|/** 	 * Will parse the BibTex-Data found when reading from reader. 	 *  	 * The reader will be consumed.  	 *  	 * Multiple calls to parse() return the same results 	 *  	 * @return ParserResult 	 * @throws IOException 	 */
 DECL|method|parse ()
 specifier|public
 name|ParserResult
@@ -444,6 +502,16 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+comment|// If we already parsed this, just return it.
+if|if
+condition|(
+name|_pr
+operator|!=
+literal|null
+condition|)
+return|return
+name|_pr
+return|;
 name|_db
 operator|=
 operator|new
@@ -465,9 +533,8 @@ name|HashMap
 argument_list|()
 expr_stmt|;
 comment|// To store custem entry types parsed.
-name|ParserResult
 name|_pr
-init|=
+operator|=
 operator|new
 name|ParserResult
 argument_list|(
@@ -477,7 +544,7 @@ name|_meta
 argument_list|,
 name|entryTypes
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
