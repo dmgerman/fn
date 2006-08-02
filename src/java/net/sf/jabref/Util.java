@@ -3649,28 +3649,8 @@ argument_list|(
 literal|"file.separator"
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Trying to find: "
-operator|+
-name|directory
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|".*[bibtexkey].*\\."
-operator|+
-name|extension
-argument_list|)
-expr_stmt|;
+comment|// System.out.println("Trying to find: " + directory);
+comment|// System.out.println(".*[bibtexkey].*\\." + extension);
 name|String
 name|result
 init|=
@@ -4106,15 +4086,7 @@ name|i
 operator|++
 control|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|currentDirectory
-argument_list|)
-expr_stmt|;
+comment|// System.out.println(currentDirectory);
 name|String
 name|dirToProcess
 init|=

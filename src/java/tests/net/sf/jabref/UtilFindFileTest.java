@@ -759,15 +759,7 @@ name|String
 name|path2
 parameter_list|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|path1
-argument_list|)
-expr_stmt|;
+comment|// System.out.println(path1);
 if|if
 condition|(
 operator|(

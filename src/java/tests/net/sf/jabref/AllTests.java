@@ -133,6 +133,15 @@ name|suite
 operator|.
 name|addTestSuite
 argument_list|(
+name|UtilFindFileTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
 name|AuthorAndsReplacerTest
 operator|.
 name|class
