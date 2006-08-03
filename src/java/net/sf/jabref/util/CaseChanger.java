@@ -41,7 +41,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Class used to manage case changing  * @author Moritz Ringler  * @version $Revision$ ($Date$)  */
+comment|/**  *   * Class with static methods for changing the case of strings and arrays of  * strings.  *   * @author Moritz Ringler  *   * @version $Revision$ ($Date$)  */
 end_comment
 
 begin_class
@@ -90,26 +90,24 @@ name|UPPER_EACH_FIRST
 init|=
 literal|3
 decl_stmt|;
-DECL|field|UF_MATCHER
+comment|/** 	 * I don't think it is thread-safe to use the same matcher at the same time for all calls. 	 */
+DECL|field|UF_PATTERN
 specifier|private
 specifier|final
 specifier|static
-name|Matcher
-name|UF_MATCHER
+name|Pattern
+name|UF_PATTERN
 init|=
-comment|//Pattern.compile("(?i)\\b\\w").matcher("");
 name|Pattern
 operator|.
 name|compile
 argument_list|(
 literal|"\\b\\w"
 argument_list|)
-operator|.
-name|matcher
-argument_list|(
-literal|""
-argument_list|)
 decl_stmt|;
+comment|// private final static Matcher UF_MATCHER =
+comment|// // Pattern.compile("(?i)\\b\\w").matcher("");
+comment|// Pattern.compile("\\b\\w").matcher("");
 comment|/* you can add more modes here */
 DECL|field|numModes
 specifier|private
@@ -138,14 +136,10 @@ block|,
 literal|"Upper Each First"
 block|}
 decl_stmt|;
-DECL|method|CaseChanger ()
-specifier|public
-name|CaseChanger
-parameter_list|()
-block|{     }
-comment|/** Gets the name of a case changing mode      * @param mode by default one of LOWER, UPPER, UPPER_FIRST or      * UPPER_EACH_FIRST      */
+comment|/** 	 * Gets the name of a case changing mode 	 *  	 * @param mode 	 *            by default one of LOWER, UPPER, UPPER_FIRST or 	 *            UPPER_EACH_FIRST 	 */
 DECL|method|getModeName (int mode)
 specifier|public
+specifier|static
 name|String
 name|getModeName
 parameter_list|(
@@ -163,6 +157,7 @@ block|}
 comment|/** Gets the names of all available case changing modes */
 DECL|method|getModeNames ()
 specifier|public
+specifier|static
 name|String
 index|[]
 name|getModeNames
@@ -175,6 +170,7 @@ block|}
 comment|/** Gets the number of available case changing modes */
 DECL|method|getNumModes ()
 specifier|public
+specifier|static
 name|int
 name|getNumModes
 parameter_list|()
@@ -183,9 +179,10 @@ return|return
 name|numModes
 return|;
 block|}
-comment|/** Changes the case of the specified strings.      *  wrapper for {@link #changeCase(String input, int mode)}      * @see  #changeCase(String input, int mode)      */
-DECL|method|changeCase (String[] input,int mode)
+comment|/** 	 * Changes the case of the specified strings. wrapper for 	 * {@link #changeCase(String input, int mode)} 	 *  	 * @see #changeCase(String input, int mode) 	 */
+DECL|method|changeCase (String[] input, int mode)
 specifier|public
+specifier|static
 name|String
 index|[]
 name|changeCase
@@ -250,9 +247,10 @@ return|return
 name|output
 return|;
 block|}
-comment|/** Changes the case of the specified string      * @param input String to change      * @param mode by default one of LOWER, UPPER, UPPER_FIRST or      * UPPER_EACH_FIRST      * @return casechanged string      */
+comment|/** 	 * Changes the case of the specified string 	 *  	 * @param input 	 *            String to change 	 * @param mode 	 *            by default one of LOWER, UPPER, UPPER_FIRST or 	 *            UPPER_EACH_FIRST 	 * @return casechanged string 	 */
 DECL|method|changeCase (String input, int mode)
 specifier|public
+specifier|static
 name|String
 name|changeCase
 parameter_list|(
@@ -289,6 +287,7 @@ return|;
 case|case
 name|UPPER_FIRST
 case|:
+block|{
 name|String
 name|s
 init|=
@@ -297,27 +296,30 @@ operator|.
 name|toLowerCase
 argument_list|()
 decl_stmt|;
-name|UF_MATCHER
+name|Matcher
+name|matcher
+init|=
+name|UF_PATTERN
 operator|.
-name|reset
+name|matcher
 argument_list|(
 name|s
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
-name|UF_MATCHER
+name|matcher
 operator|.
 name|find
 argument_list|()
 condition|)
 block|{
 return|return
-name|UF_MATCHER
+name|matcher
 operator|.
 name|replaceFirst
 argument_list|(
-name|UF_MATCHER
+name|matcher
 operator|.
 name|group
 argument_list|(
@@ -335,16 +337,19 @@ return|return
 name|input
 return|;
 block|}
+block|}
 case|case
 name|UPPER_EACH_FIRST
 case|:
+block|{
+name|String
 name|s
-operator|=
+init|=
 name|input
 operator|.
 name|toLowerCase
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|StringBuffer
 name|sb
 init|=
@@ -357,28 +362,31 @@ name|found
 init|=
 literal|false
 decl_stmt|;
-name|UF_MATCHER
+name|Matcher
+name|matcher
+init|=
+name|UF_PATTERN
 operator|.
-name|reset
+name|matcher
 argument_list|(
 name|s
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 while|while
 condition|(
-name|UF_MATCHER
+name|matcher
 operator|.
 name|find
 argument_list|()
 condition|)
 block|{
-name|UF_MATCHER
+name|matcher
 operator|.
 name|appendReplacement
 argument_list|(
 name|sb
 argument_list|,
-name|UF_MATCHER
+name|matcher
 operator|.
 name|group
 argument_list|(
@@ -399,7 +407,7 @@ condition|(
 name|found
 condition|)
 block|{
-name|UF_MATCHER
+name|matcher
 operator|.
 name|appendTail
 argument_list|(
@@ -418,6 +426,7 @@ block|{
 return|return
 name|input
 return|;
+block|}
 block|}
 default|default:
 return|return
