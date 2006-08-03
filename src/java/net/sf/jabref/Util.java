@@ -511,9 +511,16 @@ name|s
 parameter_list|)
 block|{
 comment|// Append '.bib' to the string unless it ends with that.
-name|String
-name|extension
-init|=
+if|if
+condition|(
+name|s
+operator|.
+name|length
+argument_list|()
+operator|<
+literal|4
+operator|||
+operator|!
 name|s
 operator|.
 name|substring
@@ -525,23 +532,19 @@ argument_list|()
 operator|-
 literal|4
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-operator|!
-name|extension
 operator|.
 name|equalsIgnoreCase
 argument_list|(
 literal|".bib"
 argument_list|)
 condition|)
+block|{
 return|return
 name|s
 operator|+
 literal|".bib"
 return|;
-else|else
+block|}
 return|return
 name|s
 return|;
@@ -695,7 +698,7 @@ operator|==
 literal|0
 condition|)
 return|return
-literal|""
+name|content
 return|;
 name|String
 name|toSet
@@ -1155,7 +1158,7 @@ return|return
 name|s
 return|;
 block|}
-comment|/**      * This method returns a String similar to the one passed in, except that it is      * molded into a form that is acceptable for bibtex.      */
+comment|/**      * This method returns a String similar to the one passed in, except that it is      * molded into a form that is acceptable for bibtex.      *      * Watch-out that the returned string might be of length 0 afterwards.      *       * @param key mayBeNull      */
 DECL|method|checkLegalKey (String key)
 specifier|public
 specifier|static

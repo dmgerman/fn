@@ -16,9 +16,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|awt
 operator|.
-name|ByteArrayOutputStream
+name|Container
 import|;
 end_import
 
@@ -26,9 +26,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|awt
 operator|.
-name|PrintStream
+name|Dialog
 import|;
 end_import
 
@@ -39,6 +39,36 @@ operator|.
 name|io
 operator|.
 name|StringReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JWindow
 import|;
 end_import
 
@@ -124,39 +154,58 @@ name|UtilTest
 extends|extends
 name|TestCase
 block|{
-DECL|method|testBool ()
-specifier|public
-name|void
-name|testBool
-parameter_list|()
-block|{
-comment|// cannot be tested
-block|}
-DECL|method|testPr ()
-specifier|public
-name|void
-name|testPr
-parameter_list|()
-block|{
-comment|// cannot be tested
-block|}
-DECL|method|testPr_ ()
-specifier|public
-name|void
-name|testPr_
-parameter_list|()
-block|{
-comment|// cannot be tested
-block|}
 DECL|method|testNCase ()
 specifier|public
 name|void
 name|testNCase
 parameter_list|()
 block|{
-name|fail
+name|assertEquals
 argument_list|(
-literal|"Not yet implemented"
+literal|""
+argument_list|,
+name|Util
+operator|.
+name|nCase
+argument_list|(
+literal|""
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Hello world"
+argument_list|,
+name|Util
+operator|.
+name|nCase
+argument_list|(
+literal|"Hello World"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"A"
+argument_list|,
+name|Util
+operator|.
+name|nCase
+argument_list|(
+literal|"a"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Aa"
+argument_list|,
+name|Util
+operator|.
+name|nCase
+argument_list|(
+literal|"AA"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -166,9 +215,64 @@ name|void
 name|testCheckName
 parameter_list|()
 block|{
-name|fail
+name|assertEquals
 argument_list|(
-literal|"Not yet implemented"
+literal|"aa.bib"
+argument_list|,
+name|Util
+operator|.
+name|checkName
+argument_list|(
+literal|"aa"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|".bib"
+argument_list|,
+name|Util
+operator|.
+name|checkName
+argument_list|(
+literal|""
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"a.bib"
+argument_list|,
+name|Util
+operator|.
+name|checkName
+argument_list|(
+literal|"a.bib"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"a.bib"
+argument_list|,
+name|Util
+operator|.
+name|checkName
+argument_list|(
+literal|"a"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"a.bb.bib"
+argument_list|,
+name|Util
+operator|.
+name|checkName
+argument_list|(
+literal|"a.bb"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -178,11 +282,54 @@ name|void
 name|testCreateNeutralId
 parameter_list|()
 block|{
-name|fail
+name|HashSet
+name|set
+init|=
+operator|new
+name|HashSet
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+literal|10000
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|String
+name|string
+init|=
+name|Util
+operator|.
+name|createNeutralId
+argument_list|()
+decl_stmt|;
+name|assertFalse
 argument_list|(
-literal|"Not yet implemented"
+name|set
+operator|.
+name|contains
+argument_list|(
+name|string
+argument_list|)
 argument_list|)
 expr_stmt|;
+name|set
+operator|.
+name|add
+argument_list|(
+name|string
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|testPlaceDialog ()
 specifier|public
@@ -190,9 +337,121 @@ name|void
 name|testPlaceDialog
 parameter_list|()
 block|{
-name|fail
+name|Dialog
+name|d
+init|=
+operator|new
+name|JDialog
+argument_list|()
+decl_stmt|;
+name|d
+operator|.
+name|setSize
 argument_list|(
-literal|"Not yet implemented"
+literal|50
+argument_list|,
+literal|50
+argument_list|)
+expr_stmt|;
+name|Container
+name|c
+init|=
+operator|new
+name|JWindow
+argument_list|()
+decl_stmt|;
+name|c
+operator|.
+name|setBounds
+argument_list|(
+literal|100
+argument_list|,
+literal|200
+argument_list|,
+literal|100
+argument_list|,
+literal|50
+argument_list|)
+expr_stmt|;
+name|Util
+operator|.
+name|placeDialog
+argument_list|(
+name|d
+argument_list|,
+name|c
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|125
+argument_list|,
+name|d
+operator|.
+name|getX
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|200
+argument_list|,
+name|d
+operator|.
+name|getY
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Test upper left corner
+name|c
+operator|.
+name|setBounds
+argument_list|(
+literal|0
+argument_list|,
+literal|0
+argument_list|,
+literal|100
+argument_list|,
+literal|100
+argument_list|)
+expr_stmt|;
+name|d
+operator|.
+name|setSize
+argument_list|(
+literal|200
+argument_list|,
+literal|200
+argument_list|)
+expr_stmt|;
+name|Util
+operator|.
+name|placeDialog
+argument_list|(
+name|d
+argument_list|,
+name|c
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|0
+argument_list|,
+name|d
+operator|.
+name|getX
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|0
+argument_list|,
+name|d
+operator|.
+name|getY
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -202,9 +461,79 @@ name|void
 name|testParseField
 parameter_list|()
 block|{
-name|fail
+name|assertEquals
 argument_list|(
-literal|"Not yet implemented"
+literal|""
+argument_list|,
+name|Util
+operator|.
+name|parseField
+argument_list|(
+literal|""
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Three basic types (references, { } and " ")
+name|assertEquals
+argument_list|(
+literal|"#hallo#"
+argument_list|,
+name|Util
+operator|.
+name|parseField
+argument_list|(
+literal|"hallo"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"hallo"
+argument_list|,
+name|Util
+operator|.
+name|parseField
+argument_list|(
+literal|"{hallo}"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"bye"
+argument_list|,
+name|Util
+operator|.
+name|parseField
+argument_list|(
+literal|"\"bye\""
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Concatenation
+comment|// TODO: Well the function is wrong :-) another bug.
+name|assertEquals
+argument_list|(
+literal|"longlonglonglong"
+argument_list|,
+name|Util
+operator|.
+name|parseField
+argument_list|(
+literal|"\"long\" # \"long\" # \"long\" # \"long\""
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"hallo#bye#"
+argument_list|,
+name|Util
+operator|.
+name|parseField
+argument_list|(
+literal|"{hallo} # bye"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -317,9 +646,52 @@ name|void
 name|testCheckLegalKey
 parameter_list|()
 block|{
-name|fail
+name|assertEquals
 argument_list|(
-literal|"Not yet implemented"
+literal|"AAAA"
+argument_list|,
+name|Util
+operator|.
+name|checkLegalKey
+argument_list|(
+literal|"AA AA"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"SPECIALCHARS"
+argument_list|,
+name|Util
+operator|.
+name|checkLegalKey
+argument_list|(
+literal|"SPECIAL CHARS#{\\\"}~,^"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"AeaeaAAA"
+argument_list|,
+name|Util
+operator|.
+name|checkLegalKey
+argument_list|(
+literal|"ÄäáÀÁÂ"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|Util
+operator|.
+name|checkLegalKey
+argument_list|(
+literal|"\n\t\r"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -329,151 +701,31 @@ name|void
 name|testReplaceSpecialCharacters
 parameter_list|()
 block|{
-name|fail
+comment|// Shouldn't German Ä be resolved to Ae
+name|assertEquals
 argument_list|(
-literal|"Not yet implemented"
+literal|"AeaeaAAA"
+argument_list|,
+name|Util
+operator|.
+name|replaceSpecialCharacters
+argument_list|(
+literal|"ÄäáÀÁÂ"
+argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-DECL|method|test_wrap2 ()
-specifier|public
-name|void
-name|test_wrap2
-parameter_list|()
-block|{
-name|fail
+name|assertEquals
 argument_list|(
-literal|"Not yet implemented"
+literal|"Hallo Arger"
+argument_list|,
+name|Util
+operator|.
+name|replaceSpecialCharacters
+argument_list|(
+literal|"Hallo Arger"
+argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-DECL|method|testWrap2 ()
-specifier|public
-name|void
-name|testWrap2
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|test__wrap2 ()
-specifier|public
-name|void
-name|test__wrap2
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testFindDeliminatedWordsInField ()
-specifier|public
-name|void
-name|testFindDeliminatedWordsInField
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testFindAllWordsInField ()
-specifier|public
-name|void
-name|testFindAllWordsInField
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testStringArrayToDelimited ()
-specifier|public
-name|void
-name|testStringArrayToDelimited
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testDelimToStringArray ()
-specifier|public
-name|void
-name|testDelimToStringArray
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testOpenExternalViewer ()
-specifier|public
-name|void
-name|testOpenExternalViewer
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testOpenFileOnWindows ()
-specifier|public
-name|void
-name|testOpenFileOnWindows
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testOpenExternalFileAnyFormat ()
-specifier|public
-name|void
-name|testOpenExternalFileAnyFormat
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testFindPdf ()
-specifier|public
-name|void
-name|testFindPdf
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testFindFile ()
-specifier|public
-name|void
-name|testFindFile
-parameter_list|()
-block|{
-comment|// -> Tested in UtilFindFileTest
 block|}
 DECL|method|testJoin ()
 specifier|public
@@ -1034,342 +1286,6 @@ name|entry
 argument_list|,
 name|database
 argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testExpandFilename ()
-specifier|public
-name|void
-name|testExpandFilename
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testIsDuplicate ()
-specifier|public
-name|void
-name|testIsDuplicate
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testContainsDuplicate ()
-specifier|public
-name|void
-name|testContainsDuplicate
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testCompareEntriesStrictly ()
-specifier|public
-name|void
-name|testCompareEntriesStrictly
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testSetAutomaticFieldsList ()
-specifier|public
-name|void
-name|testSetAutomaticFieldsList
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testSetAutomaticFieldsBibtexEntry ()
-specifier|public
-name|void
-name|testSetAutomaticFieldsBibtexEntry
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testCopyFile ()
-specifier|public
-name|void
-name|testCopyFile
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testPerformCompatibilityUpdate ()
-specifier|public
-name|void
-name|testPerformCompatibilityUpdate
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testGetCorrectFileName ()
-specifier|public
-name|void
-name|testGetCorrectFileName
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testQuoteForHTML ()
-specifier|public
-name|void
-name|testQuoteForHTML
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testQuoteStringStringChar ()
-specifier|public
-name|void
-name|testQuoteStringStringChar
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testQuoteStringStringCharInt ()
-specifier|public
-name|void
-name|testQuoteStringStringCharInt
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testUnquote ()
-specifier|public
-name|void
-name|testUnquote
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testQuoteMeta ()
-specifier|public
-name|void
-name|testQuoteMeta
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testSortWordsAndRemoveDuplicates ()
-specifier|public
-name|void
-name|testSortWordsAndRemoveDuplicates
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testWarnAssignmentSideEffects ()
-specifier|public
-name|void
-name|testWarnAssignmentSideEffects
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testPutBracesAroundCapitals ()
-specifier|public
-name|void
-name|testPutBracesAroundCapitals
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testRemoveBracesAroundCapitals ()
-specifier|public
-name|void
-name|testRemoveBracesAroundCapitals
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testRemoveSingleBracesAroundCapitals ()
-specifier|public
-name|void
-name|testRemoveSingleBracesAroundCapitals
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testGetFileFilterForField ()
-specifier|public
-name|void
-name|testGetFileFilterForField
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testShowQuickErrorDialog ()
-specifier|public
-name|void
-name|testShowQuickErrorDialog
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testWrapHTML ()
-specifier|public
-name|void
-name|testWrapHTML
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testEasyDateFormat ()
-specifier|public
-name|void
-name|testEasyDateFormat
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testEasyDateFormatDate ()
-specifier|public
-name|void
-name|testEasyDateFormatDate
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testMarkEntry ()
-specifier|public
-name|void
-name|testMarkEntry
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testUnmarkEntry ()
-specifier|public
-name|void
-name|testUnmarkEntry
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testIsMarked ()
-specifier|public
-name|void
-name|testIsMarked
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|testFindEncodingsForString ()
-specifier|public
-name|void
-name|testFindEncodingsForString
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Not yet implemented"
 argument_list|)
 expr_stmt|;
 block|}
