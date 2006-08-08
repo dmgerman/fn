@@ -314,20 +314,6 @@ name|URLDownload
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|XMPUtil
-import|;
-end_import
-
 begin_comment
 comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: May 7, 2005  * Time: 7:17:42 PM  * To change this template use File | Settings | File Templates.  */
 end_comment
@@ -790,131 +776,32 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|pushXMP (String fieldName, FieldEditor editor)
-specifier|public
-name|void
-name|pushXMP
-parameter_list|(
-name|String
-name|fieldName
-parameter_list|,
-name|FieldEditor
-name|editor
-parameter_list|)
-block|{
-comment|// Find the default directory for this field type, if any:
-name|String
-name|dir
-init|=
-name|metaData
-operator|.
-name|getFileDirectory
-argument_list|(
-name|fieldName
-argument_list|)
-decl_stmt|;
-name|File
-name|file
-init|=
-literal|null
-decl_stmt|;
-if|if
-condition|(
-name|dir
-operator|!=
-literal|null
-condition|)
-block|{
-name|File
-name|tmp
-init|=
-name|Util
-operator|.
-name|expandFilename
-argument_list|(
-name|editor
-operator|.
-name|getText
-argument_list|()
-argument_list|,
-name|dir
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|tmp
-operator|!=
-literal|null
-condition|)
-name|file
-operator|=
-name|tmp
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|file
-operator|==
-literal|null
-condition|)
-block|{
-name|file
-operator|=
-operator|new
-name|File
-argument_list|(
-name|editor
-operator|.
-name|getText
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|file
-operator|==
-literal|null
-condition|)
-block|{
-name|output
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"No file associated"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-try|try
-block|{
-name|XMPUtil
-operator|.
-name|writeXMP
-argument_list|(
-name|file
-argument_list|,
-name|getEntry
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-comment|// TODO Auto-generated catch block
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
-block|}
+comment|//    public void pushXMP(String fieldName, FieldEditor editor) {
+comment|//
+comment|//        // Find the default directory for this field type, if any:
+comment|//        String dir = metaData.getFileDirectory(fieldName);
+comment|//        File file = null;
+comment|//        if (dir != null) {
+comment|//            File tmp = Util.expandFilename(editor.getText(), dir);
+comment|//            if (tmp != null)
+comment|//                file = tmp;
+comment|//        }
+comment|//
+comment|//        if (file == null){
+comment|//        	file = new File(editor.getText());
+comment|//        }
+comment|//
+comment|//        if (file == null){
+comment|//        	output(Globals.lang("No file associated"));
+comment|//        }
+comment|//
+comment|//        try {
+comment|//		//	XMPUtil.writeXMP(file, getEntry());
+comment|//		} catch (Exception e) {
+comment|//			// TODO Auto-generated catch block
+comment|//			e.printStackTrace();
+comment|//		}
+comment|//    }
 DECL|method|browseFile (final String fieldName, final FieldEditor editor)
 specifier|public
 name|void
