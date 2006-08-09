@@ -106,20 +106,6 @@ name|ParserResult
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|XMPUtil
-import|;
-end_import
-
 begin_comment
 comment|/**  * Test the BibtexParser  *   * @version $revision: 1.1$ $date: $  *   * @author Christopher Oezbek<oezi@oezi.de>  */
 end_comment
