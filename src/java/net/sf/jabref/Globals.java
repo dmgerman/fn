@@ -2105,6 +2105,13 @@ block|{
 if|if
 condition|(
 name|ON_MAC
+operator|&&
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"useNativeFileDialogOnMac"
+argument_list|)
 condition|)
 block|{
 return|return

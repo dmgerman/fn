@@ -242,6 +242,20 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|jgoodies
+operator|.
+name|forms
+operator|.
+name|builder
+operator|.
+name|ButtonBarBuilder
+import|;
+end_import
+
 begin_class
 DECL|class|TextInputDialog
 specifier|public
@@ -288,10 +302,10 @@ operator|new
 name|JPanel
 argument_list|()
 decl_stmt|;
-DECL|field|buttonPanel
+DECL|field|buttons
 specifier|private
 name|JPanel
-name|buttonPanel
+name|buttons
 init|=
 operator|new
 name|JPanel
@@ -373,7 +387,7 @@ specifier|private
 name|boolean
 name|inputChanged
 decl_stmt|;
-comment|// input changed, fired by insert button
+comment|// input changed, fired by insert buttons
 DECL|field|marked
 specifier|private
 name|TagToMarkedTextStore
@@ -751,12 +765,12 @@ operator|.
 name|CENTER
 argument_list|)
 expr_stmt|;
-comment|//gbl.setConstraints( buttonPanel, con ) ;
+comment|//gbl.setConstraints( buttons, con ) ;
 name|panel1
 operator|.
 name|add
 argument_list|(
-name|buttonPanel
+name|buttons
 argument_list|,
 name|BorderLayout
 operator|.
@@ -767,7 +781,7 @@ comment|// Key bindings:
 name|ActionMap
 name|am
 init|=
-name|buttonPanel
+name|buttons
 operator|.
 name|getActionMap
 argument_list|()
@@ -775,7 +789,7 @@ decl_stmt|;
 name|InputMap
 name|im
 init|=
-name|buttonPanel
+name|buttons
 operator|.
 name|getInputMap
 argument_list|(
@@ -1269,7 +1283,7 @@ argument_list|)
 expr_stmt|;
 comment|//fieldScroller.setPreferredSize( new Dimension( 180, 190 ) ) ;
 comment|//fieldScroller.setMinimumSize( new Dimension( 180, 190 ) ) ;
-comment|// insert button
+comment|// insert buttons
 name|insertButton
 operator|.
 name|setText
@@ -1753,53 +1767,6 @@ name|void
 name|initButtonPanel
 parameter_list|()
 block|{
-comment|// Panel Layout
-name|GridBagLayout
-name|gbl
-init|=
-operator|new
-name|GridBagLayout
-argument_list|()
-decl_stmt|;
-name|GridBagConstraints
-name|con
-init|=
-operator|new
-name|GridBagConstraints
-argument_list|()
-decl_stmt|;
-name|con
-operator|.
-name|weightx
-operator|=
-literal|0
-expr_stmt|;
-name|con
-operator|.
-name|insets
-operator|=
-operator|new
-name|Insets
-argument_list|(
-literal|5
-argument_list|,
-literal|10
-argument_list|,
-literal|0
-argument_list|,
-literal|10
-argument_list|)
-expr_stmt|;
-name|con
-operator|.
-name|fill
-operator|=
-name|GridBagConstraints
-operator|.
-name|HORIZONTAL
-expr_stmt|;
-comment|//    buttonPanel.setLayout(gbl) ;
-comment|// Buttons
 name|okButton
 operator|.
 name|setText
@@ -1812,7 +1779,6 @@ literal|"Accept"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//    okButton.setEnabled(false);
 name|okButton
 operator|.
 name|addActionListener
@@ -1839,46 +1805,56 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-comment|// insert Buttons
-name|con
+name|ButtonBarBuilder
+name|bb
+init|=
+operator|new
+name|ButtonBarBuilder
+argument_list|(
+name|buttons
+argument_list|)
+decl_stmt|;
+name|buttons
 operator|.
-name|gridwidth
-operator|=
-name|GridBagConstraints
+name|setBorder
+argument_list|(
+name|BorderFactory
 operator|.
-name|REMAINDER
+name|createEmptyBorder
+argument_list|(
+literal|2
+argument_list|,
+literal|2
+argument_list|,
+literal|2
+argument_list|,
+literal|2
+argument_list|)
+argument_list|)
 expr_stmt|;
-name|gbl
+name|bb
 operator|.
-name|setConstraints
+name|addGlue
+argument_list|()
+expr_stmt|;
+name|bb
+operator|.
+name|addGridded
 argument_list|(
 name|okButton
-argument_list|,
-name|con
 argument_list|)
 expr_stmt|;
-name|buttonPanel
+name|bb
 operator|.
-name|add
-argument_list|(
-name|okButton
-argument_list|)
-expr_stmt|;
-name|gbl
-operator|.
-name|setConstraints
-argument_list|(
-name|cancelButton
-argument_list|,
-name|con
-argument_list|)
-expr_stmt|;
-name|buttonPanel
-operator|.
-name|add
+name|addGridded
 argument_list|(
 name|cancelButton
 argument_list|)
+expr_stmt|;
+name|bb
+operator|.
+name|addGlue
+argument_list|()
 expr_stmt|;
 block|}
 comment|// ---------------------------------------------------------------------------
@@ -2402,7 +2378,7 @@ return|;
 block|}
 comment|// ---------------------------------------------------------------------------
 comment|//  ActionListener
-comment|//  handling of button-click actions
+comment|//  handling of buttons-click actions
 DECL|method|actionPerformed ( ActionEvent e )
 specifier|public
 name|void

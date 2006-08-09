@@ -130,7 +130,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * This method takes a string of the form [field1]spacer[field2]spacer[field3]...,    * where the fields are the (required) fields of a BibTex entry. The string is split    * into firlds and spacers by recognizing the [ and ].    *    * @param keyPattern a<code>String</code>    * @return an<code>ArrayList</code> The first item of the list    * is a string representation of the key pattern (the parameter),    * the second item is the spacer character (a<code>String</code>).    */
+comment|/**    * This method takes a string of the form [field1]spacer[field2]spacer[field3]...,    * where the fields are the (required) fields of a BibTex entry. The string is split    * into firlds and spacers by recognizing the [ and ].    *    * @param labelPattern a<code>String</code>    * @return an<code>ArrayList</code> The first item of the list    * is a string representation of the key pattern (the parameter),    * the second item is the spacer character (a<code>String</code>).    */
 DECL|method|split (String labelPattern)
 specifier|public
 specifier|static
@@ -1537,11 +1537,19 @@ operator|.
 name|toString
 argument_list|()
 operator|.
+name|replaceAll
+argument_list|(
+literal|"[\\{\\}]"
+argument_list|,
+literal|""
+argument_list|)
+operator|.
 name|split
 argument_list|(
-literal|"\\b"
+literal|"[ \r\n]"
 argument_list|)
 decl_stmt|;
+comment|//split("\\b");
 for|for
 control|(
 name|int
@@ -2488,7 +2496,7 @@ return|return
 name|author
 return|;
 block|}
-comment|/**    * Gets the surnames of the first N authors and appends EtAl if there are more than N authors    * @param authorField a<code>String</code>    * @param int n the number of desired authors    * @return Gets the surnames of the first N authors and appends EtAl if there are more than N authors    */
+comment|/**    * Gets the surnames of the first N authors and appends EtAl if there are more than N authors    * @param authorField a<code>String</code>    * @param n the number of desired authors    * @return Gets the surnames of the first N authors and appends EtAl if there are more than N authors    */
 DECL|method|NAuthors (String authorField, int n)
 specifier|private
 specifier|static

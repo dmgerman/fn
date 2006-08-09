@@ -1408,7 +1408,7 @@ name|put
 argument_list|(
 literal|"customIconThemeFile"
 argument_list|,
-literal|"/home/alver/div/smalltheme/Icons.properties"
+literal|"/home/alver/div/crystaltheme_16/Icons.properties"
 argument_list|)
 expr_stmt|;
 comment|// Entry editor tab 0:
@@ -2142,6 +2142,17 @@ operator|.
 name|put
 argument_list|(
 literal|"floatMarkedEntries"
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"useNativeFileDialogOnMac"
 argument_list|,
 name|Boolean
 operator|.

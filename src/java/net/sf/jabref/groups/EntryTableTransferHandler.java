@@ -779,6 +779,9 @@ index|[
 name|i
 index|]
 operator|.
+name|toLowerCase
+argument_list|()
+operator|.
 name|endsWith
 argument_list|(
 literal|".bib"
@@ -874,6 +877,39 @@ comment|// No error message, since we want to try importing the file?
 comment|//
 comment|//Util.showQuickErrorDialog(frame, Globals.lang("Open database"), e);
 block|}
+block|}
+elseif|else
+if|if
+condition|(
+name|fileNames
+index|[
+name|i
+index|]
+operator|.
+name|toLowerCase
+argument_list|()
+operator|.
+name|endsWith
+argument_list|(
+literal|".pdf"
+argument_list|)
+operator|||
+name|fileNames
+index|[
+name|i
+index|]
+operator|.
+name|toLowerCase
+argument_list|()
+operator|.
+name|endsWith
+argument_list|(
+literal|".ps"
+argument_list|)
+condition|)
+block|{
+comment|// Handle PDF by linking to it from the entry where it was dropped?
+comment|// Not implemented. We should not try to import the PDF file.
 block|}
 else|else
 name|notBibFiles

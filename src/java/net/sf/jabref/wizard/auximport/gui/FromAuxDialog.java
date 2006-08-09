@@ -177,10 +177,10 @@ operator|new
 name|JPanel
 argument_list|()
 decl_stmt|;
-DECL|field|optionsPanel
+DECL|field|buttons
 specifier|private
 name|JPanel
-name|optionsPanel
+name|buttons
 init|=
 operator|new
 name|JPanel
@@ -583,7 +583,7 @@ name|centerPane
 operator|.
 name|add
 argument_list|(
-name|optionsPanel
+name|buttons
 argument_list|,
 name|BorderLayout
 operator|.
@@ -620,7 +620,7 @@ name|panel1
 operator|.
 name|add
 argument_list|(
-name|optionsPanel
+name|buttons
 argument_list|,
 name|BorderLayout
 operator|.
@@ -839,14 +839,14 @@ literal|"Options"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|optionsPanel
+name|buttons
 operator|.
 name|setBorder
 argument_list|(
 name|border
 argument_list|)
 expr_stmt|;
-name|optionsPanel
+name|buttons
 operator|.
 name|setLayout
 argument_list|(
@@ -888,7 +888,7 @@ argument_list|,
 name|con
 argument_list|)
 expr_stmt|;
-name|optionsPanel
+name|buttons
 operator|.
 name|add
 argument_list|(
@@ -912,7 +912,7 @@ argument_list|,
 name|con
 argument_list|)
 expr_stmt|;
-name|optionsPanel
+name|buttons
 operator|.
 name|add
 argument_list|(
@@ -989,7 +989,7 @@ argument_list|,
 name|con
 argument_list|)
 expr_stmt|;
-name|optionsPanel
+name|buttons
 operator|.
 name|add
 argument_list|(
@@ -1021,7 +1021,7 @@ argument_list|,
 name|con
 argument_list|)
 expr_stmt|;
-name|optionsPanel
+name|buttons
 operator|.
 name|add
 argument_list|(
@@ -1085,7 +1085,7 @@ argument_list|,
 name|con
 argument_list|)
 expr_stmt|;
-name|optionsPanel
+name|buttons
 operator|.
 name|add
 argument_list|(

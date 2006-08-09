@@ -90,17 +90,7 @@ name|java
 operator|.
 name|awt
 operator|.
-name|Font
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|Frame
+name|*
 import|;
 end_import
 
@@ -131,6 +121,16 @@ operator|.
 name|util
 operator|.
 name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -3421,6 +3421,41 @@ name|SkyBluer
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Set a "model" icon size, so menu items are evenly spaced even though
+comment|// only some items have icons. We load an arbitrary icon and look at
+comment|// its size to determine what size to use:
+name|int
+name|defaultIconSize
+init|=
+name|GUIGlobals
+operator|.
+name|getImage
+argument_list|(
+literal|"open"
+argument_list|)
+operator|.
+name|getIconWidth
+argument_list|()
+decl_stmt|;
+name|com
+operator|.
+name|jgoodies
+operator|.
+name|looks
+operator|.
+name|Options
+operator|.
+name|setDefaultIconSize
+argument_list|(
+operator|new
+name|Dimension
+argument_list|(
+name|defaultIconSize
+argument_list|,
+name|defaultIconSize
+argument_list|)
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|overrideDefaultFonts
@@ -3509,6 +3544,41 @@ name|WindowsLookAndFeel
 operator|)
 condition|)
 block|{
+comment|// Set a "model" icon size, so menu items are evenly spaced even though
+comment|// only some items have icons. We load an arbitrary icon and look at
+comment|// its size to determine what size to use:
+name|int
+name|defaultIconSize
+init|=
+name|GUIGlobals
+operator|.
+name|getImage
+argument_list|(
+literal|"open"
+argument_list|)
+operator|.
+name|getIconWidth
+argument_list|()
+decl_stmt|;
+name|com
+operator|.
+name|jgoodies
+operator|.
+name|looks
+operator|.
+name|Options
+operator|.
+name|setDefaultIconSize
+argument_list|(
+operator|new
+name|Dimension
+argument_list|(
+name|defaultIconSize
+argument_list|,
+name|defaultIconSize
+argument_list|)
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|overrideDefaultFonts

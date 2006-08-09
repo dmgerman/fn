@@ -336,6 +336,8 @@ argument_list|(
 name|field
 argument_list|,
 name|i
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|i
@@ -486,6 +488,8 @@ argument_list|(
 name|field
 argument_list|,
 name|i
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|i
@@ -533,6 +537,8 @@ argument_list|(
 name|field
 argument_list|,
 name|i
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|i
@@ -571,6 +577,8 @@ argument_list|(
 name|field
 argument_list|,
 name|i
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|i
@@ -716,7 +724,7 @@ argument_list|)
 return|;
 comment|//.replaceAll("--", "&mdash;");
 block|}
-DECL|method|getPart (String text, int i)
+DECL|method|getPart (String text, int i, boolean terminateOnEndBraceOnly)
 specifier|private
 name|IntAndString
 name|getPart
@@ -726,6 +734,9 @@ name|text
 parameter_list|,
 name|int
 name|i
+parameter_list|,
+name|boolean
+name|terminateOnEndBraceOnly
 parameter_list|)
 block|{
 name|char
@@ -805,6 +816,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
+name|terminateOnEndBraceOnly
+operator|&&
 name|count
 operator|==
 literal|0
@@ -831,7 +845,7 @@ literal|'}'
 operator|&&
 operator|--
 name|count
-operator|<=
+operator|<
 literal|0
 condition|)
 break|break;

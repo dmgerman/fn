@@ -760,7 +760,7 @@ name|GUIGlobals
 operator|.
 name|getImage
 argument_list|(
-literal|"pdf"
+literal|"openFile"
 argument_list|)
 argument_list|)
 block|{
