@@ -46,23 +46,6 @@ name|AuthorListTest
 extends|extends
 name|TestCase
 block|{
-DECL|method|testAuthorList ()
-specifier|public
-name|void
-name|testAuthorList
-parameter_list|()
-block|{
-name|fail
-argument_list|(
-literal|"Is that really wanted that there is no way to access any of the fields of the Author?"
-argument_list|)
-expr_stmt|;
-name|fail
-argument_list|(
-literal|"And should we not rather use getAuthorList anyway"
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|testFixAuthor_Natbib ()
 specifier|public
 name|void
@@ -847,8 +830,9 @@ parameter_list|)
 block|{
 return|return
 operator|(
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 name|bibtex
 argument_list|)
@@ -1018,9 +1002,295 @@ name|void
 name|testGetAuthor
 parameter_list|()
 block|{
-name|fail
+try|try
+block|{
+name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
-literal|"getAuthor() is public, but Author is private. Thus cannot be used."
+literal|""
+argument_list|)
+operator|.
+name|getAuthor
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+name|fail
+argument_list|()
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{ 		}
+name|AuthorList
+operator|.
+name|Author
+name|author
+init|=
+name|AuthorList
+operator|.
+name|getAuthorList
+argument_list|(
+literal|"John Smith and von Neumann, Jr, John"
+argument_list|)
+operator|.
+name|getAuthor
+argument_list|(
+literal|0
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"John"
+argument_list|,
+name|author
+operator|.
+name|getFirst
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"J."
+argument_list|,
+name|author
+operator|.
+name|getFirstAbbr
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"John Smith"
+argument_list|,
+name|author
+operator|.
+name|getFirstLast
+argument_list|(
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"J. Smith"
+argument_list|,
+name|author
+operator|.
+name|getFirstLast
+argument_list|(
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|null
+argument_list|,
+name|author
+operator|.
+name|getJr
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Smith"
+argument_list|,
+name|author
+operator|.
+name|getLast
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Smith, John"
+argument_list|,
+name|author
+operator|.
+name|getLastFirst
+argument_list|(
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Smith, J."
+argument_list|,
+name|author
+operator|.
+name|getLastFirst
+argument_list|(
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Smith"
+argument_list|,
+name|author
+operator|.
+name|getLastOnly
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Smith, J."
+argument_list|,
+name|author
+operator|.
+name|getNameForAlphabetization
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|null
+argument_list|,
+name|author
+operator|.
+name|getVon
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|author
+operator|=
+name|AuthorList
+operator|.
+name|getAuthorList
+argument_list|(
+literal|"John Smith and von Neumann, Jr, John"
+argument_list|)
+operator|.
+name|getAuthor
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"John"
+argument_list|,
+name|author
+operator|.
+name|getFirst
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"J."
+argument_list|,
+name|author
+operator|.
+name|getFirstAbbr
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"John von Neumann, Jr"
+argument_list|,
+name|author
+operator|.
+name|getFirstLast
+argument_list|(
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"J. von Neumann, Jr"
+argument_list|,
+name|author
+operator|.
+name|getFirstLast
+argument_list|(
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Jr"
+argument_list|,
+name|author
+operator|.
+name|getJr
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Neumann"
+argument_list|,
+name|author
+operator|.
+name|getLast
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"von Neumann, Jr, John"
+argument_list|,
+name|author
+operator|.
+name|getLastFirst
+argument_list|(
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"von Neumann, Jr, J."
+argument_list|,
+name|author
+operator|.
+name|getLastFirst
+argument_list|(
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"von Neumann"
+argument_list|,
+name|author
+operator|.
+name|getLastOnly
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Neumann, Jr, J."
+argument_list|,
+name|author
+operator|.
+name|getNameForAlphabetization
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"von"
+argument_list|,
+name|author
+operator|.
+name|getVon
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -1034,8 +1304,9 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|""
 argument_list|)
@@ -1048,8 +1319,9 @@ name|assertEquals
 argument_list|(
 literal|"Smith"
 argument_list|,
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -1062,8 +1334,9 @@ name|assertEquals
 argument_list|(
 literal|"Smith and Black Brown"
 argument_list|,
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|)
@@ -1076,8 +1349,9 @@ name|assertEquals
 argument_list|(
 literal|"von Neumann et al."
 argument_list|,
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -1090,8 +1364,9 @@ comment|// Test caching
 name|AuthorList
 name|al
 init|=
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -1120,8 +1395,9 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|""
 argument_list|)
@@ -1134,8 +1410,9 @@ name|assertEquals
 argument_list|(
 literal|"Smith"
 argument_list|,
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -1148,8 +1425,9 @@ name|assertEquals
 argument_list|(
 literal|"Smith"
 argument_list|,
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"Smith, Jr, John"
 argument_list|)
@@ -1163,8 +1441,9 @@ name|assertEquals
 argument_list|(
 literal|"von Neumann, Smith and Black Brown"
 argument_list|,
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -1185,8 +1464,9 @@ name|al
 decl_stmt|;
 name|al
 operator|=
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|""
 argument_list|)
@@ -1217,8 +1497,9 @@ argument_list|)
 expr_stmt|;
 name|al
 operator|=
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -1249,8 +1530,9 @@ argument_list|)
 expr_stmt|;
 name|al
 operator|=
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|)
@@ -1281,8 +1563,9 @@ argument_list|)
 expr_stmt|;
 name|al
 operator|=
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -1314,8 +1597,9 @@ argument_list|)
 expr_stmt|;
 name|al
 operator|=
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"John Peter von Neumann"
 argument_list|)
@@ -1343,8 +1627,9 @@ name|assertEquals
 argument_list|(
 literal|"Smith, John"
 argument_list|,
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -1357,8 +1642,9 @@ name|assertEquals
 argument_list|(
 literal|"Smith, John and Black Brown, Peter"
 argument_list|,
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|)
@@ -1371,8 +1657,9 @@ name|assertEquals
 argument_list|(
 literal|"von Neumann, John and Smith, John and Black Brown, Peter"
 argument_list|,
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -1385,8 +1672,9 @@ name|assertEquals
 argument_list|(
 literal|"von Last, Jr, First"
 argument_list|,
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"von Last, Jr ,First"
 argument_list|)
@@ -1407,8 +1695,9 @@ name|al
 decl_stmt|;
 name|al
 operator|=
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|""
 argument_list|)
@@ -1439,8 +1728,9 @@ argument_list|)
 expr_stmt|;
 name|al
 operator|=
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -1471,8 +1761,9 @@ argument_list|)
 expr_stmt|;
 name|al
 operator|=
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|)
@@ -1503,8 +1794,9 @@ argument_list|)
 expr_stmt|;
 name|al
 operator|=
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -1536,8 +1828,9 @@ argument_list|)
 expr_stmt|;
 name|al
 operator|=
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"John Peter von Neumann"
 argument_list|)
@@ -1565,8 +1858,9 @@ name|assertEquals
 argument_list|(
 literal|"John Smith"
 argument_list|,
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -1579,8 +1873,9 @@ name|assertEquals
 argument_list|(
 literal|"John Smith and Peter Black Brown"
 argument_list|,
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|)
@@ -1593,8 +1888,9 @@ name|assertEquals
 argument_list|(
 literal|"John von Neumann and John Smith and Peter Black Brown"
 argument_list|,
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
@@ -1607,8 +1903,9 @@ name|assertEquals
 argument_list|(
 literal|"First von Last, Jr. III"
 argument_list|,
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"von Last, Jr. III, First"
 argument_list|)
@@ -1628,8 +1925,9 @@ name|assertEquals
 argument_list|(
 literal|"Smith, J."
 argument_list|,
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"John Smith"
 argument_list|)
@@ -1642,8 +1940,9 @@ name|assertEquals
 argument_list|(
 literal|"Neumann, J."
 argument_list|,
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"John von Neumann"
 argument_list|)
@@ -1656,8 +1955,9 @@ name|assertEquals
 argument_list|(
 literal|"Neumann, J."
 argument_list|,
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"J. von Neumann"
 argument_list|)
@@ -1670,8 +1970,9 @@ name|assertEquals
 argument_list|(
 literal|"Neumann, J. and Smith, J. and Black Brown, Jr., P."
 argument_list|,
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 literal|"John von Neumann and John Smith and de Black Brown, Jr., Peter"
 argument_list|)

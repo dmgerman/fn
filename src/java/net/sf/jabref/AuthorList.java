@@ -49,7 +49,6 @@ comment|// of Author
 comment|// Variables for storing computed strings, so they only need be created once:
 DECL|field|authorsNatbib
 DECL|field|authorsLastOnly
-DECL|field|authorsLastFirst
 DECL|field|authorLastFirstAnds
 specifier|private
 name|String
@@ -61,21 +60,12 @@ name|authorsLastOnly
 init|=
 literal|null
 decl_stmt|,
-name|authorsLastFirst
-init|=
-literal|null
-decl_stmt|,
 name|authorLastFirstAnds
 init|=
 literal|null
 decl_stmt|,
-DECL|field|authorsFirstFirst
 DECL|field|authorsFirstFirstAnds
 DECL|field|authorsAlph
-name|authorsFirstFirst
-init|=
-literal|null
-decl_stmt|,
 name|authorsFirstFirstAnds
 init|=
 literal|null
@@ -83,6 +73,30 @@ decl_stmt|,
 name|authorsAlph
 init|=
 literal|null
+decl_stmt|;
+DECL|field|authorsFirstFirst
+specifier|private
+name|String
+index|[]
+name|authorsFirstFirst
+init|=
+operator|new
+name|String
+index|[
+literal|2
+index|]
+decl_stmt|;
+DECL|field|authorsLastFirst
+specifier|private
+name|String
+index|[]
+name|authorsLastFirst
+init|=
+operator|new
+name|String
+index|[
+literal|2
+index|]
 decl_stmt|;
 comment|// The following variables are used only during parsing
 DECL|field|orig
@@ -372,7 +386,7 @@ argument_list|()
 decl_stmt|;
 comment|/**      * Parses the parameter strings and stores preformatted author information.      * @param bibtex_authors contents of either<CODE>author</CODE> or      *<CODE>editor</CODE> bibtex field.      */
 DECL|method|AuthorList (String bibtex_authors)
-specifier|public
+specifier|protected
 name|AuthorList
 parameter_list|(
 name|String
@@ -456,8 +470,9 @@ block|{
 name|AuthorList
 name|authors
 init|=
-operator|new
 name|AuthorList
+operator|.
+name|getAuthorList
 argument_list|(
 name|inOrig
 argument_list|)
@@ -2084,15 +2099,32 @@ name|boolean
 name|abbr
 parameter_list|)
 block|{
+name|int
+name|abbrInt
+init|=
+operator|(
+name|abbr
+condition|?
+literal|0
+else|:
+literal|1
+operator|)
+decl_stmt|;
 comment|// Check if we've computed this before:
 if|if
 condition|(
 name|authorsLastFirst
+index|[
+name|abbrInt
+index|]
 operator|!=
 literal|null
 condition|)
 return|return
 name|authorsLastFirst
+index|[
+name|abbrInt
+index|]
 return|;
 name|StringBuffer
 name|res
@@ -2212,6 +2244,9 @@ expr_stmt|;
 block|}
 block|}
 name|authorsLastFirst
+index|[
+name|abbrInt
+index|]
 operator|=
 name|res
 operator|.
@@ -2220,6 +2255,9 @@ argument_list|()
 expr_stmt|;
 return|return
 name|authorsLastFirst
+index|[
+name|abbrInt
+index|]
 return|;
 block|}
 comment|/**      * Returns the list of authors separated by "and"s with first names after last name;      * first names are not abbreviated.      *<p>      * "John Smith" ==> "Smith, John";      * "John Smith and Black Brown, Peter" ==> "Smith, John and Black Brown, Peter";      * "John von Neumann and John Smith and Black Brown, Peter" ==>      * "von Neumann, John and Smith, John and Black Brown, Peter".      * @return formatted list of authors.      */
@@ -2330,15 +2368,32 @@ name|boolean
 name|abbr
 parameter_list|)
 block|{
+name|int
+name|abbrInt
+init|=
+operator|(
+name|abbr
+condition|?
+literal|0
+else|:
+literal|1
+operator|)
+decl_stmt|;
 comment|// Check if we've computed this before:
 if|if
 condition|(
 name|authorsFirstFirst
+index|[
+name|abbrInt
+index|]
 operator|!=
 literal|null
 condition|)
 return|return
 name|authorsFirstFirst
+index|[
+name|abbrInt
+index|]
 return|;
 name|StringBuffer
 name|res
@@ -2458,6 +2513,9 @@ expr_stmt|;
 block|}
 block|}
 name|authorsFirstFirst
+index|[
+name|abbrInt
+index|]
 operator|=
 name|res
 operator|.
@@ -2466,6 +2524,9 @@ argument_list|()
 expr_stmt|;
 return|return
 name|authorsFirstFirst
+index|[
+name|abbrInt
+index|]
 return|;
 block|}
 comment|/**      * Returns the list of authors separated by "and"s with first names before last name;      * first names are not abbreviated.      *<p>      * "John Smith" ==> "John Smith";      * "John Smith and Black Brown, Peter" ==> "John Smith and Peter Black Brown";      * "John von Neumann and John Smith and Black Brown, Peter" ==>      * "John von Neumann and John Smith and Peter Black Brown".      * @return formatted list of authors.      */
@@ -2661,7 +2722,7 @@ return|;
 block|}
 comment|/**      *  This is an immutable class that keeps information regarding single author.      *  It is just a container for the information, with very simple methods      *  to access it.      *<p>      *  Current usage: only methods<code>getLastOnly</code>,      *<code>getFirstLast</code>, and<code>getLastFirst</code> are used;      *  all other methods are provided for completeness.      */
 DECL|class|Author
-specifier|private
+specifier|public
 specifier|static
 class|class
 name|Author
@@ -2738,7 +2799,7 @@ operator|=
 name|jr
 expr_stmt|;
 block|}
-comment|/**          * Retunrns the first name of the author stored in this object.          * @return first name of the author (may consist of several tokens)          */
+comment|/**          * Returns the first name of the author stored in this object ("First").          * @return first name of the author (may consist of several tokens)          */
 DECL|method|getFirst ()
 specifier|public
 name|String
@@ -2749,7 +2810,7 @@ return|return
 name|first_part
 return|;
 block|}
-comment|/**          * Retunrns the abbreviated first name of the author stored in this object.          * @return abbreviated first name of the author (may consist of several tokens)          */
+comment|/**          * Returns the abbreviated first name of the author stored in this object ("F.").          * @return abbreviated first name of the author (may consist of several tokens)          */
 DECL|method|getFirstAbbr ()
 specifier|public
 name|String
@@ -2760,7 +2821,7 @@ return|return
 name|first_abbr
 return|;
 block|}
-comment|/**          * Retunrns the von part of the author's name stored in this object.          * @return von part of the author's name (may consist of several tokens)          */
+comment|/**          * Returns the von part of the author's name stored in this object ("von").          * @return von part of the author's name (may consist of several tokens)          */
 DECL|method|getVon ()
 specifier|public
 name|String
@@ -2771,7 +2832,7 @@ return|return
 name|von_part
 return|;
 block|}
-comment|/**          * Retunrns the last name of the author stored in this object.          * @return last name of the author (may consist of several tokens)          */
+comment|/**          * Returns the last name of the author stored in this object ("Last").          * @return last name of the author (may consist of several tokens)          */
 DECL|method|getLast ()
 specifier|public
 name|String
@@ -2782,7 +2843,7 @@ return|return
 name|last_part
 return|;
 block|}
-comment|/**          * Retunrns the junior part of the author's name stored in this object.          * @return junior part of the author's name (may consist of several tokens)          */
+comment|/**          * Returns the junior part of the author's name stored in this object ("Jr").          * @return junior part of the author's name (may consist of several tokens) or null if the author does not have a Jr. Part          */
 DECL|method|getJr ()
 specifier|public
 name|String
@@ -2793,7 +2854,7 @@ return|return
 name|jr_part
 return|;
 block|}
-comment|/**          * Returns von part followed by last name.          * If both fields were specified as<CODE>null</CODE>,          * the empty string<CODE>""</CODE> is returned.          * @return 'von Last'          */
+comment|/**          * Returns von-part followed by last name ("von Last").          * If both fields were specified as<CODE>null</CODE>,          * the empty string<CODE>""</CODE> is returned.          * @return 'von Last'          */
 DECL|method|getLastOnly ()
 specifier|public
 name|String
@@ -2976,6 +3037,7 @@ return|return
 name|res
 return|;
 block|}
+comment|/**          * Returns the name as "Last, Jr, F." omitting the von-part and removing starting braces.          * @return "Last, Jr, F." as described above or "" if all these parts are empty.          */
 DECL|method|getNameForAlphabetization ()
 specifier|public
 name|String

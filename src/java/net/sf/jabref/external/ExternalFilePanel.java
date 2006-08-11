@@ -182,6 +182,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|transform
+operator|.
+name|TransformerException
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -314,6 +326,20 @@ name|URLDownload
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|XMPUtil
+import|;
+end_import
+
 begin_comment
 comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: May 7, 2005  * Time: 7:17:42 PM  * To change this template use File | Settings | File Templates.  */
 end_comment
@@ -329,6 +355,7 @@ block|{
 DECL|field|browseBut
 DECL|field|download
 DECL|field|auto
+DECL|field|xmp
 specifier|private
 name|JButton
 name|browseBut
@@ -336,6 +363,8 @@ decl_stmt|,
 name|download
 decl_stmt|,
 name|auto
+decl_stmt|,
+name|xmp
 decl_stmt|;
 DECL|field|entryEditor
 specifier|private
@@ -467,7 +496,7 @@ name|GridLayout
 argument_list|(
 literal|2
 argument_list|,
-literal|1
+literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -507,6 +536,31 @@ operator|.
 name|lang
 argument_list|(
 literal|"Auto"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|xmp
+operator|=
+operator|new
+name|JButton
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Write XMP"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|xmp
+operator|.
+name|setToolTipText
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Write BibtexEntry as XMP-metadata to PDF."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -612,24 +666,31 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|JPanel
-name|pan
-init|=
-operator|new
-name|JPanel
-argument_list|()
-decl_stmt|;
-name|pan
+name|xmp
 operator|.
-name|setLayout
+name|addActionListener
 argument_list|(
 operator|new
-name|GridLayout
+name|ActionListener
+argument_list|()
+block|{
+specifier|public
+name|void
+name|actionPerformed
+parameter_list|(
+name|ActionEvent
+name|e
+parameter_list|)
+block|{
+name|pushXMP
 argument_list|(
-literal|1
+name|fieldName
 argument_list|,
-literal|2
+name|editor
 argument_list|)
+expr_stmt|;
+block|}
+block|}
 argument_list|)
 expr_stmt|;
 name|add
@@ -637,15 +698,6 @@ argument_list|(
 name|browseBut
 argument_list|)
 expr_stmt|;
-name|pan
-operator|.
-name|add
-argument_list|(
-name|auto
-argument_list|)
-expr_stmt|;
-name|pan
-operator|.
 name|add
 argument_list|(
 name|download
@@ -653,7 +705,12 @@ argument_list|)
 expr_stmt|;
 name|add
 argument_list|(
-name|pan
+name|auto
+argument_list|)
+expr_stmt|;
+name|add
+argument_list|(
+name|xmp
 argument_list|)
 expr_stmt|;
 comment|// Add drag and drop support to the field
@@ -776,32 +833,237 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
-comment|//    public void pushXMP(String fieldName, FieldEditor editor) {
-comment|//
-comment|//        // Find the default directory for this field type, if any:
-comment|//        String dir = metaData.getFileDirectory(fieldName);
-comment|//        File file = null;
-comment|//        if (dir != null) {
-comment|//            File tmp = Util.expandFilename(editor.getText(), dir);
-comment|//            if (tmp != null)
-comment|//                file = tmp;
-comment|//        }
-comment|//
-comment|//        if (file == null){
-comment|//        	file = new File(editor.getText());
-comment|//        }
-comment|//
-comment|//        if (file == null){
-comment|//        	output(Globals.lang("No file associated"));
-comment|//        }
-comment|//
-comment|//        try {
-comment|//		//	XMPUtil.writeXMP(file, getEntry());
-comment|//		} catch (Exception e) {
-comment|//			// TODO Auto-generated catch block
-comment|//			e.printStackTrace();
-comment|//		}
-comment|//    }
+DECL|method|pushXMP (String fieldName, FieldEditor editor)
+specifier|public
+name|void
+name|pushXMP
+parameter_list|(
+name|String
+name|fieldName
+parameter_list|,
+name|FieldEditor
+name|editor
+parameter_list|)
+block|{
+comment|// Find the default directory for this field type, if any:
+name|String
+name|dir
+init|=
+name|metaData
+operator|.
+name|getFileDirectory
+argument_list|(
+name|fieldName
+argument_list|)
+decl_stmt|;
+name|File
+name|file
+init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
+name|dir
+operator|!=
+literal|null
+condition|)
+block|{
+name|File
+name|tmp
+init|=
+name|Util
+operator|.
+name|expandFilename
+argument_list|(
+name|editor
+operator|.
+name|getText
+argument_list|()
+argument_list|,
+name|dir
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|tmp
+operator|!=
+literal|null
+condition|)
+name|file
+operator|=
+name|tmp
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|file
+operator|==
+literal|null
+condition|)
+block|{
+name|file
+operator|=
+operator|new
+name|File
+argument_list|(
+name|editor
+operator|.
+name|getText
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|file
+operator|==
+literal|null
+condition|)
+block|{
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"No file associated"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+try|try
+block|{
+name|XMPUtil
+operator|.
+name|writeXMP
+argument_list|(
+name|file
+argument_list|,
+name|getEntry
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Wrote BibtexEntry as XMP to "
+operator|+
+name|file
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|editor
+operator|.
+name|getParent
+argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Error writing XMP to file: "
+operator|+
+name|e
+operator|.
+name|getLocalizedMessage
+argument_list|()
+argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Writing XMP"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
+name|Globals
+operator|.
+name|logger
+argument_list|(
+literal|"Error while writing XMP "
+operator|+
+name|file
+operator|.
+name|getAbsolutePath
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|TransformerException
+name|e
+parameter_list|)
+block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|editor
+operator|.
+name|getParent
+argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Error converting Bibtex to XMP: "
+operator|+
+name|e
+operator|.
+name|getLocalizedMessage
+argument_list|()
+argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Writing XMP"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
+name|Globals
+operator|.
+name|logger
+argument_list|(
+literal|"Error while converting BibtexEntry to XMP "
+operator|+
+name|file
+operator|.
+name|getAbsolutePath
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 DECL|method|browseFile (final String fieldName, final FieldEditor editor)
 specifier|public
 name|void

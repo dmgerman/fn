@@ -184,16 +184,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JTable
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|TransferHandler
 import|;
 end_import
@@ -278,9 +268,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|external
+name|gui
 operator|.
-name|ExternalFileType
+name|MainTable
 import|;
 end_import
 
@@ -292,9 +282,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
+name|imports
 operator|.
-name|MainTable
+name|AppendDatabaseAction
 import|;
 end_import
 
@@ -397,10 +387,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|EntryTableTransferHandler
+DECL|class|CopyOfEntryTableTransferHandler
 specifier|public
 class|class
-name|EntryTableTransferHandler
+name|CopyOfEntryTableTransferHandler
 extends|extends
 name|TransferHandler
 block|{
@@ -414,11 +404,6 @@ DECL|field|frame
 specifier|protected
 name|JabRefFrame
 name|frame
-decl_stmt|;
-DECL|field|panel
-specifier|private
-name|BasePanel
-name|panel
 decl_stmt|;
 DECL|field|urlFlavor
 specifier|protected
@@ -438,19 +423,16 @@ name|DROP_ALLOWED
 init|=
 literal|true
 decl_stmt|;
-comment|/**      * Construct the transfer handler.      * @param entryTable The table this transfer handler should operate on. This argument is      * allowed to equal @null, in which case the transfer handler can assume that it      * works for a JabRef instance with no databases open, attached to the empty tabbed pane.      * @param frame The JabRefFrame instance.      * @param panel The BasePanel this transferhandler works for.      */
-DECL|method|EntryTableTransferHandler (MainTable entryTable, JabRefFrame frame, BasePanel panel)
+comment|/** 	 * Construct the transfer handler. 	 *  	 * @param entryTable 	 *            The table this transfer handler should operate on. This 	 *            argument is allowed to equal 	 * @null, in which case the transfer handler can assume that it works for a 	 *        JabRef instance with no databases open, attached to the empty 	 *        tabbed pane. 	 * @param frame 	 *            The JabRefFrame instance. 	 */
+DECL|method|CopyOfEntryTableTransferHandler (MainTable entryTable, JabRefFrame frame)
 specifier|public
-name|EntryTableTransferHandler
+name|CopyOfEntryTableTransferHandler
 parameter_list|(
 name|MainTable
 name|entryTable
 parameter_list|,
 name|JabRefFrame
 name|frame
-parameter_list|,
-name|BasePanel
-name|panel
 parameter_list|)
 block|{
 name|this
@@ -464,12 +446,6 @@ operator|.
 name|frame
 operator|=
 name|frame
-expr_stmt|;
-name|this
-operator|.
-name|panel
-operator|=
-name|panel
 expr_stmt|;
 name|stringFlavor
 operator|=
@@ -532,7 +508,8 @@ name|JComponent
 name|c
 parameter_list|)
 block|{
-comment|// This method is called when dragging stuff *from* the table, so we can assume
+comment|// This method is called when dragging stuff *from* the table, so we can
+comment|// assume
 comment|// it will never be called if entryTable==null:
 return|return
 operator|new
@@ -546,17 +523,13 @@ argument_list|)
 return|;
 block|}
 comment|// add-ons -----------------------
-DECL|method|handleDropTransfer (String dropStr, final int dropRow)
+DECL|method|handleDropTransfer (String dropStr)
 specifier|protected
 name|boolean
 name|handleDropTransfer
 parameter_list|(
 name|String
 name|dropStr
-parameter_list|,
-specifier|final
-name|int
-name|dropRow
 parameter_list|)
 throws|throws
 name|IOException
@@ -578,8 +551,6 @@ condition|(
 name|handleDraggedFilenames
 argument_list|(
 name|dropStr
-argument_list|,
-name|dropRow
 argument_list|)
 condition|)
 return|return
@@ -608,13 +579,12 @@ argument_list|(
 name|dropStr
 argument_list|)
 decl_stmt|;
-comment|//JOptionPane.showMessageDialog(null, "Making URL: "+url.toString());
+comment|// JOptionPane.showMessageDialog(null, "Making URL:
+comment|// "+url.toString());
 return|return
 name|handleDropTransfer
 argument_list|(
 name|url
-argument_list|,
-name|dropRow
 argument_list|)
 return|;
 block|}
@@ -660,7 +630,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-comment|//System.out.println("importing from " + tmpfile.getAbsolutePath());
+comment|// System.out.println("importing from " + tmpfile.getAbsolutePath());
 name|ImportMenuItem
 name|importer
 init|=
@@ -691,18 +661,14 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Handle a String describing a set of files or URLs dragged into JabRef.      * @param s String describing a set of files or URLs dragged into JabRef      */
-DECL|method|handleDraggedFilenames (String s, final int dropRow)
+comment|/** 	 * Handle a String describing a set of files or URLs dragged into JabRef. 	 *  	 * @param s 	 *            String describing a set of files or URLs dragged into JabRef 	 */
+DECL|method|handleDraggedFilenames (String s)
 specifier|private
 name|boolean
 name|handleDraggedFilenames
 parameter_list|(
 name|String
 name|s
-parameter_list|,
-specifier|final
-name|int
-name|dropRow
 parameter_list|)
 block|{
 comment|// Split into lines:
@@ -826,23 +792,17 @@ return|return
 name|handleDraggedFiles
 argument_list|(
 name|files
-argument_list|,
-name|dropRow
 argument_list|)
 return|;
 block|}
-comment|/**      * Handle a List containing File objects for a set of files to import.      * @param files A List containing File instances pointing to files.      * @param dropRow      */
-DECL|method|handleDraggedFiles (List files, final int dropRow)
+comment|/** 	 * Handle a List containing File objects for a set of files to import. 	 *  	 * @param files 	 *            A List containing File instances pointing to files. 	 */
+DECL|method|handleDraggedFiles (List files)
 specifier|private
 name|boolean
 name|handleDraggedFiles
 parameter_list|(
 name|List
 name|files
-parameter_list|,
-specifier|final
-name|int
-name|dropRow
 parameter_list|)
 block|{
 specifier|final
@@ -906,7 +866,8 @@ name|i
 operator|++
 expr_stmt|;
 block|}
-comment|// Try to load bib files normally, and import the rest into the current database.
+comment|// Try to load bib files normally, and import the rest into the current
+comment|// database.
 comment|// This process must be spun off into a background thread:
 operator|new
 name|Thread
@@ -923,8 +884,6 @@ block|{
 name|loadOrImportFiles
 argument_list|(
 name|fileNames
-argument_list|,
-name|dropRow
 argument_list|)
 expr_stmt|;
 block|}
@@ -938,8 +897,8 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Take a set of filenames. Those with names indicating bib files are opened as such      * if possible. All other files we will attempt to import into the current database.      * @param fileNames The names of the files to open.      * @param dropRow      */
-DECL|method|loadOrImportFiles (String[] fileNames, int dropRow)
+comment|/** 	 * Take a set of filenames. Those with names indicating bib files are opened 	 * as such if possible. All other files we will attempt to import into the 	 * current database. 	 *  	 * @param fileNames 	 *            The names of the files to open. 	 */
+DECL|method|loadOrImportFiles (String[] fileNames)
 specifier|private
 name|void
 name|loadOrImportFiles
@@ -947,9 +906,6 @@ parameter_list|(
 name|String
 index|[]
 name|fileNames
-parameter_list|,
-name|int
-name|dropRow
 parameter_list|)
 block|{
 name|OpenDatabaseAction
@@ -962,6 +918,11 @@ name|frame
 argument_list|,
 literal|false
 argument_list|)
+decl_stmt|;
+name|AppendDatabaseAction
+name|appendAction
+init|=
+literal|null
 decl_stmt|;
 name|ArrayList
 name|notBibFiles
@@ -999,88 +960,16 @@ name|i
 operator|++
 control|)
 block|{
-comment|// Find the file's extension, if any:
-name|String
-name|extension
-init|=
-literal|""
-decl_stmt|;
-name|ExternalFileType
-name|fileType
-init|=
-literal|null
-decl_stmt|;
-name|int
-name|index
-init|=
-name|fileNames
-index|[
-name|i
-index|]
-operator|.
-name|lastIndexOf
-argument_list|(
-literal|'.'
-argument_list|)
-decl_stmt|;
 if|if
 condition|(
-operator|(
-name|index
-operator|>=
-literal|0
-operator|)
-operator|&&
-operator|(
-name|index
-operator|<
 name|fileNames
 index|[
 name|i
 index|]
 operator|.
-name|length
-argument_list|()
-operator|)
-condition|)
-block|{
-name|extension
-operator|=
-name|fileNames
-index|[
-name|i
-index|]
-operator|.
-name|substring
+name|endsWith
 argument_list|(
-name|index
-operator|+
-literal|1
-argument_list|)
-operator|.
-name|toLowerCase
-argument_list|()
-expr_stmt|;
-comment|//System.out.println(extension);
-name|fileType
-operator|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getExternalFileType
-argument_list|(
-name|extension
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|extension
-operator|.
-name|equals
-argument_list|(
-literal|"bib"
+literal|".bib"
 argument_list|)
 condition|)
 block|{
@@ -1169,19 +1058,24 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
-comment|// No error message, since we want to try importing the file?
+comment|// No error message, since we want to try importing the
+comment|// file?
 comment|//
-comment|//Util.showQuickErrorDialog(frame, Globals.lang("Open database"), e);
+comment|// Util.showQuickErrorDialog(frame, Globals.lang("Open
+comment|// database"), e);
 block|}
-continue|continue;
 block|}
+elseif|else
 if|if
 condition|(
-name|extension
+name|fileNames
+index|[
+name|i
+index|]
 operator|.
-name|equals
+name|endsWith
 argument_list|(
-literal|"pdf"
+literal|".pdf"
 argument_list|)
 condition|)
 block|{
@@ -1234,16 +1128,29 @@ block|}
 if|if
 condition|(
 name|c
-operator|!=
+operator|==
 literal|null
-operator|&&
+operator|||
 name|c
 operator|.
 name|size
 argument_list|()
-operator|>
+operator|==
 literal|0
 condition|)
+block|{
+name|notBibFiles
+operator|.
+name|add
+argument_list|(
+name|fileNames
+index|[
+name|i
+index|]
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 name|Iterator
 name|it
@@ -1425,36 +1332,9 @@ operator|.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
-continue|continue;
 block|}
 block|}
-if|if
-condition|(
-name|fileType
-operator|!=
-literal|null
-condition|)
-block|{
-comment|// This is a linkable file. If the user dropped it on an entry,
-comment|// we should offer options for autolinking to this files:
-if|if
-condition|(
-name|dropRow
-operator|>=
-literal|0
-condition|)
-block|{
-name|boolean
-name|local
-init|=
-literal|true
-decl_stmt|;
-comment|// TODO: need to signal if this is a local or autodownloaded file
-comment|//     DroppedFileHandler dfh = new DroppedFileHandler(frame, panel); // TODO: make this an instance variable?
-comment|//     dfh.handleDroppedfile(fileNames[i], fileType, local, entryTable, dropRow);
-block|}
-continue|continue;
-block|}
+else|else
 name|notBibFiles
 operator|.
 name|add
@@ -1496,7 +1376,8 @@ argument_list|(
 name|toImport
 argument_list|)
 expr_stmt|;
-comment|// Import into new if entryTable==null, otherwise into current database:
+comment|// Import into new if entryTable==null, otherwise into current
+comment|// database:
 name|ImportMenuItem
 name|importer
 init|=
@@ -1521,16 +1402,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|handleDropTransfer (URL dropLink, int dropRow)
+DECL|method|handleDropTransfer (URL dropLink)
 specifier|protected
 name|boolean
 name|handleDropTransfer
 parameter_list|(
 name|URL
 name|dropLink
-parameter_list|,
-name|int
-name|dropRow
 parameter_list|)
 throws|throws
 name|IOException
@@ -1556,8 +1434,8 @@ operator|.
 name|deleteOnExit
 argument_list|()
 expr_stmt|;
-comment|//System.out.println("Import url: " + dropLink.toString());
-comment|//System.out.println("Temp file: "+tmpfile.getAbsolutePath());
+comment|// System.out.println("Import url: " + dropLink.toString());
+comment|// System.out.println("Temp file: "+tmpfile.getAbsolutePath());
 operator|new
 name|URLDownload
 argument_list|(
@@ -1606,7 +1484,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Imports the dropped URL or plain text as a new entry in the current database.      * @todo It would be nice to support dropping of pdfs onto the table as a way      *       to link them to the corresponding entries.      */
+comment|/** 	 * Imports the dropped URL or plain text as a new entry in the current 	 * database. 	 *  	 * @todo It would be nice to support dropping of pdfs onto the table as a 	 *       way to link them to the corresponding entries. 	 */
 DECL|method|importData (JComponent comp, Transferable t)
 specifier|public
 name|boolean
@@ -1619,34 +1497,6 @@ name|Transferable
 name|t
 parameter_list|)
 block|{
-comment|// If the drop target is the main table, we want to record which
-comment|// row the item was dropped on, to identify the entry if needed:
-name|int
-name|dropRow
-init|=
-operator|-
-literal|1
-decl_stmt|;
-if|if
-condition|(
-name|comp
-operator|instanceof
-name|JTable
-condition|)
-block|{
-name|dropRow
-operator|=
-operator|(
-operator|(
-name|JTable
-operator|)
-name|comp
-operator|)
-operator|.
-name|getSelectedRow
-argument_list|()
-expr_stmt|;
-block|}
 try|try
 block|{
 if|if
@@ -1661,7 +1511,8 @@ name|javaFileListFlavor
 argument_list|)
 condition|)
 block|{
-comment|//JOptionPane.showMessageDialog(null, "Received javaFileListFlavor");
+comment|// JOptionPane.showMessageDialog(null, "Received
+comment|// javaFileListFlavor");
 comment|// This flavor is used for dragged file links in Windows:
 name|List
 name|l
@@ -1682,8 +1533,6 @@ return|return
 name|handleDraggedFiles
 argument_list|(
 name|l
-argument_list|,
-name|dropRow
 argument_list|)
 return|;
 block|}
@@ -1714,8 +1563,6 @@ return|return
 name|handleDropTransfer
 argument_list|(
 name|dropLink
-argument_list|,
-name|dropRow
 argument_list|)
 return|;
 block|}
@@ -1743,13 +1590,12 @@ argument_list|(
 name|stringFlavor
 argument_list|)
 decl_stmt|;
-comment|//JOptionPane.showMessageDialog(null, "Received stringFlavor: "+dropStr);
+comment|// JOptionPane.showMessageDialog(null, "Received stringFlavor:
+comment|// "+dropStr);
 return|return
 name|handleDropTransfer
 argument_list|(
 name|dropStr
-argument_list|,
-name|dropRow
 argument_list|)
 return|;
 block|}
@@ -1930,7 +1776,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|//System.out.println("drop type forbidden");
+comment|// System.out.println("drop type forbidden");
 comment|// nope, never heard of this type
 return|return
 literal|false

@@ -77,7 +77,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class redirects the System.err stream so it goes both the way it normally  * goes, and into a ByteArrayOutputStream. We can use this stream to display any  * error messages and stack traces to the user. Such an error console can be  * useful in getting complete bug reports, especially from Windows users,  * without asking users to run JabRef in a command window to catch the error info.  *  * User: alver  * Date: Mar 1, 2006  * Time: 11:13:03 PM  * To change this template use File | Settings | File Templates.  */
+comment|/**  * This class redirects the System.err stream so it goes both the way it normally  * goes, and into a ByteArrayOutputStream. We can use this stream to display any  * error messages and stack traces to the user. Such an error console can be  * useful in getting complete bug reports, especially from Windows users,  * without asking users to run JabRef in a command window to catch the error info.  *  * User: alver  * Date: Mar 1, 2006  * Time: 11:13:03 PM  */
 end_comment
 
 begin_class
