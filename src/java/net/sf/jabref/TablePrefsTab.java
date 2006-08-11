@@ -385,7 +385,12 @@ operator|=
 operator|new
 name|JRadioButton
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Show last names only"
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|pdfColumn

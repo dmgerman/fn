@@ -144,6 +144,46 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BasePanel
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|external
+operator|.
+name|DroppedFileHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|external
+operator|.
+name|ExternalFileType
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|MainTable
@@ -225,6 +265,11 @@ specifier|protected
 name|JabRefFrame
 name|frame
 decl_stmt|;
+DECL|field|panel
+specifier|private
+name|BasePanel
+name|panel
+decl_stmt|;
 DECL|field|urlFlavor
 specifier|protected
 name|DataFlavor
@@ -243,8 +288,8 @@ name|DROP_ALLOWED
 init|=
 literal|true
 decl_stmt|;
-comment|/**      * Construct the transfer handler.      * @param entryTable The table this transfer handler should operate on. This argument is      * allowed to equal @null, in which case the transfer handler can assume that it      * works for a JabRef instance with no databases open, attached to the empty tabbed pane.      * @param frame The JabRefFrame instance.      */
-DECL|method|EntryTableTransferHandler (MainTable entryTable, JabRefFrame frame)
+comment|/**      * Construct the transfer handler.      * @param entryTable The table this transfer handler should operate on. This argument is      * allowed to equal @null, in which case the transfer handler can assume that it      * works for a JabRef instance with no databases open, attached to the empty tabbed pane.      * @param frame The JabRefFrame instance.      * @param panel The BasePanel this transferhandler works for.      */
+DECL|method|EntryTableTransferHandler (MainTable entryTable, JabRefFrame frame, BasePanel panel)
 specifier|public
 name|EntryTableTransferHandler
 parameter_list|(
@@ -253,6 +298,9 @@ name|entryTable
 parameter_list|,
 name|JabRefFrame
 name|frame
+parameter_list|,
+name|BasePanel
+name|panel
 parameter_list|)
 block|{
 name|this
@@ -266,6 +314,12 @@ operator|.
 name|frame
 operator|=
 name|frame
+expr_stmt|;
+name|this
+operator|.
+name|panel
+operator|=
+name|panel
 expr_stmt|;
 name|stringFlavor
 operator|=
@@ -342,13 +396,17 @@ argument_list|)
 return|;
 block|}
 comment|// add-ons -----------------------
-DECL|method|handleDropTransfer (String dropStr)
+DECL|method|handleDropTransfer (String dropStr, final int dropRow)
 specifier|protected
 name|boolean
 name|handleDropTransfer
 parameter_list|(
 name|String
 name|dropStr
+parameter_list|,
+specifier|final
+name|int
+name|dropRow
 parameter_list|)
 throws|throws
 name|IOException
@@ -370,6 +428,8 @@ condition|(
 name|handleDraggedFilenames
 argument_list|(
 name|dropStr
+argument_list|,
+name|dropRow
 argument_list|)
 condition|)
 return|return
@@ -403,6 +463,8 @@ return|return
 name|handleDropTransfer
 argument_list|(
 name|url
+argument_list|,
+name|dropRow
 argument_list|)
 return|;
 block|}
@@ -480,13 +542,17 @@ literal|true
 return|;
 block|}
 comment|/**      * Handle a String describing a set of files or URLs dragged into JabRef.      * @param s String describing a set of files or URLs dragged into JabRef      */
-DECL|method|handleDraggedFilenames (String s)
+DECL|method|handleDraggedFilenames (String s, final int dropRow)
 specifier|private
 name|boolean
 name|handleDraggedFilenames
 parameter_list|(
 name|String
 name|s
+parameter_list|,
+specifier|final
+name|int
+name|dropRow
 parameter_list|)
 block|{
 comment|// Split into lines:
@@ -610,17 +676,23 @@ return|return
 name|handleDraggedFiles
 argument_list|(
 name|files
+argument_list|,
+name|dropRow
 argument_list|)
 return|;
 block|}
-comment|/**      * Handle a List containing File objects for a set of files to import.      * @param files A List containing File instances pointing to files.      */
-DECL|method|handleDraggedFiles (List files)
+comment|/**      * Handle a List containing File objects for a set of files to import.      * @param files A List containing File instances pointing to files.      * @param dropRow      */
+DECL|method|handleDraggedFiles (List files, final int dropRow)
 specifier|private
 name|boolean
 name|handleDraggedFiles
 parameter_list|(
 name|List
 name|files
+parameter_list|,
+specifier|final
+name|int
+name|dropRow
 parameter_list|)
 block|{
 specifier|final
@@ -701,6 +773,8 @@ block|{
 name|loadOrImportFiles
 argument_list|(
 name|fileNames
+argument_list|,
+name|dropRow
 argument_list|)
 expr_stmt|;
 block|}
@@ -714,8 +788,8 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Take a set of filenames. Those with names indicating bib files are opened as such      * if possible. All other files we will attempt to import into the current database.      * @param fileNames The names of the files to open.      */
-DECL|method|loadOrImportFiles (String[] fileNames)
+comment|/**      * Take a set of filenames. Those with names indicating bib files are opened as such      * if possible. All other files we will attempt to import into the current database.      * @param fileNames The names of the files to open.      * @param dropRow      */
+DECL|method|loadOrImportFiles (String[] fileNames, int dropRow)
 specifier|private
 name|void
 name|loadOrImportFiles
@@ -723,6 +797,9 @@ parameter_list|(
 name|String
 index|[]
 name|fileNames
+parameter_list|,
+name|int
+name|dropRow
 parameter_list|)
 block|{
 name|OpenDatabaseAction
@@ -772,19 +849,85 @@ name|i
 operator|++
 control|)
 block|{
-if|if
-condition|(
+comment|// Find the file's extension, if any:
+name|String
+name|extension
+init|=
+literal|""
+decl_stmt|;
+name|ExternalFileType
+name|fileType
+init|=
+literal|null
+decl_stmt|;
+name|int
+name|index
+init|=
 name|fileNames
 index|[
 name|i
 index|]
 operator|.
-name|toLowerCase
-argument_list|()
-operator|.
-name|endsWith
+name|lastIndexOf
 argument_list|(
-literal|".bib"
+literal|'.'
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|(
+name|index
+operator|>=
+literal|0
+operator|)
+operator|&&
+operator|(
+name|index
+operator|<
+name|fileNames
+index|[
+name|i
+index|]
+operator|.
+name|length
+argument_list|()
+operator|)
+condition|)
+block|{
+name|extension
+operator|=
+name|fileNames
+index|[
+name|i
+index|]
+operator|.
+name|substring
+argument_list|(
+name|index
+operator|+
+literal|1
+argument_list|)
+expr_stmt|;
+comment|//System.out.println(extension);
+name|fileType
+operator|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getExternalFileType
+argument_list|(
+name|extension
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|extension
+operator|.
+name|equals
+argument_list|(
+literal|"bib"
 argument_list|)
 condition|)
 block|{
@@ -881,35 +1024,57 @@ block|}
 elseif|else
 if|if
 condition|(
-name|fileNames
-index|[
-name|i
-index|]
-operator|.
-name|toLowerCase
-argument_list|()
-operator|.
-name|endsWith
-argument_list|(
-literal|".pdf"
-argument_list|)
-operator|||
-name|fileNames
-index|[
-name|i
-index|]
-operator|.
-name|toLowerCase
-argument_list|()
-operator|.
-name|endsWith
-argument_list|(
-literal|".ps"
-argument_list|)
+name|fileType
+operator|!=
+literal|null
 condition|)
 block|{
-comment|// Handle PDF by linking to it from the entry where it was dropped?
-comment|// Not implemented. We should not try to import the PDF file.
+comment|// This is a linkable file. If the user dropped it on an entry,
+comment|// we should offer options for autolinking to this files:
+if|if
+condition|(
+name|dropRow
+operator|>=
+literal|0
+condition|)
+block|{
+name|boolean
+name|local
+init|=
+literal|true
+decl_stmt|;
+comment|// TODO: need to signal if this is a local or autodownloaded file
+name|DroppedFileHandler
+name|dfh
+init|=
+operator|new
+name|DroppedFileHandler
+argument_list|(
+name|frame
+argument_list|,
+name|panel
+argument_list|)
+decl_stmt|;
+comment|// TODO: make this an instance variable?
+name|dfh
+operator|.
+name|handleDroppedfile
+argument_list|(
+name|fileNames
+index|[
+name|i
+index|]
+argument_list|,
+name|fileType
+argument_list|,
+name|local
+argument_list|,
+name|entryTable
+argument_list|,
+name|dropRow
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 else|else
 name|notBibFiles
@@ -978,13 +1143,16 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|handleDropTransfer (URL dropLink)
+DECL|method|handleDropTransfer (URL dropLink, int dropRow)
 specifier|protected
 name|boolean
 name|handleDropTransfer
 parameter_list|(
 name|URL
 name|dropLink
+parameter_list|,
+name|int
+name|dropRow
 parameter_list|)
 throws|throws
 name|IOException
@@ -1073,6 +1241,34 @@ name|Transferable
 name|t
 parameter_list|)
 block|{
+comment|// If the drop target is the main table, we want to record which
+comment|// row the item was dropped on, to identify the entry if needed:
+name|int
+name|dropRow
+init|=
+operator|-
+literal|1
+decl_stmt|;
+if|if
+condition|(
+name|comp
+operator|instanceof
+name|JTable
+condition|)
+block|{
+name|dropRow
+operator|=
+operator|(
+operator|(
+name|JTable
+operator|)
+name|comp
+operator|)
+operator|.
+name|getSelectedRow
+argument_list|()
+expr_stmt|;
+block|}
 try|try
 block|{
 if|if
@@ -1108,6 +1304,8 @@ return|return
 name|handleDraggedFiles
 argument_list|(
 name|l
+argument_list|,
+name|dropRow
 argument_list|)
 return|;
 block|}
@@ -1138,6 +1336,8 @@ return|return
 name|handleDropTransfer
 argument_list|(
 name|dropLink
+argument_list|,
+name|dropRow
 argument_list|)
 return|;
 block|}
@@ -1170,6 +1370,8 @@ return|return
 name|handleDropTransfer
 argument_list|(
 name|dropStr
+argument_list|,
+name|dropRow
 argument_list|)
 return|;
 block|}

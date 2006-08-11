@@ -126,6 +126,17 @@ return|return
 name|extension
 return|;
 block|}
+comment|/**      * Get the bibtex field name used to link to this file type.      * Currently we assume that field name equals filename extension.      * @return The field name.      */
+DECL|method|getFieldName ()
+specifier|public
+name|String
+name|getFieldName
+parameter_list|()
+block|{
+return|return
+name|extension
+return|;
+block|}
 DECL|method|getOpenWith ()
 specifier|public
 name|String

@@ -589,15 +589,6 @@ operator|.
 name|toLowerCase
 argument_list|()
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|ours
-argument_list|)
-expr_stmt|;
 name|int
 name|comp
 init|=

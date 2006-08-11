@@ -298,7 +298,6 @@ argument_list|,
 name|inTemp
 argument_list|)
 decl_stmt|;
-comment|//Util.pr(tempFile.getPath()+": "+inMem.getEntryCount());
 comment|// Parse the modified file.
 name|pr
 operator|=
@@ -340,7 +339,6 @@ argument_list|,
 name|onDisk
 argument_list|)
 decl_stmt|;
-comment|//Util.pr(f.getPath()+": "+onDisk.getEntryCount());
 comment|// Sort both databases according to a common sort key.
 name|EntryComparator
 name|comp
@@ -557,7 +555,6 @@ argument_list|,
 name|mdOnDisk
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("Time used: "+(System.currentTimeMillis()-startTime));
 block|}
 catch|catch
 parameter_list|(
@@ -755,7 +752,6 @@ name|piv1
 operator|++
 control|)
 block|{
-comment|//System.out.println(">>> "+piv1+"\t"+tmp.getEntryCount());
 comment|// First check if the similarly placed entry in the other base matches exactly.
 name|double
 name|comp
@@ -951,7 +947,6 @@ operator|>
 literal|0
 condition|)
 block|{
-comment|//Util.pr("Could not find exact match for "+notMatched.size()+" entries.");
 name|fuzzyLoop
 label|:
 for|for
@@ -989,7 +984,6 @@ operator|.
 name|intValue
 argument_list|()
 expr_stmt|;
-comment|//Util.printEntry(mem.getEntryAt(piv1));
 comment|// These two variables will keep track of which entry most closely matches the
 comment|// one we're looking at, in case none matches completely.
 name|int
@@ -1039,7 +1033,6 @@ name|i
 operator|++
 control|)
 block|{
-comment|//Util.pr("This one? "+i);
 if|if
 condition|(
 operator|!
@@ -1053,7 +1046,6 @@ name|i
 argument_list|)
 condition|)
 block|{
-comment|//Util.pr("Fuzzy matching for entry: "+piv1+" - "+i);
 name|comp
 operator|=
 name|Util
@@ -1165,9 +1157,7 @@ comment|//ce.addEdit(new UndoableInsertEntry(inMem, tmp.getEntryAt(piv1), panel)
 comment|//ce.end();
 comment|//changes.add(ce);
 comment|//System.out.println("Possible match for entry:");
-comment|//Util.printEntry(mem.getEntryAt(piv1));
 comment|//System.out.println("----------------------------------------------");
-comment|//Util.printEntry(disk.getEntryAt(bestMatchI));
 block|}
 else|else
 block|{
@@ -1978,7 +1968,6 @@ argument_list|(
 name|diskId
 argument_list|)
 decl_stmt|;
-comment|//System.out.println("Cand: "+disk.getName());
 if|if
 condition|(
 name|disk
@@ -2127,7 +2116,6 @@ argument_list|(
 name|diskId
 argument_list|)
 expr_stmt|;
-comment|//System.out.println(onDisk.getString(diskId).getName());
 block|}
 block|}
 block|}
@@ -2218,7 +2206,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|//System.out.println(used.size());
 comment|// Finally, see if there are remaining strings in the disk database. They
 comment|// must have been added.
 for|for

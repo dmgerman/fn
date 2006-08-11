@@ -82,6 +82,18 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|plaf
+operator|.
+name|TableUI
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|table
 operator|.
 name|TableCellRenderer
@@ -400,7 +412,7 @@ name|updateRenderers
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|MainTable (MainTableFormat tableFormat, EventList list, JabRefFrame frame)
+DECL|method|MainTable (MainTableFormat tableFormat, EventList list, JabRefFrame frame, BasePanel panel)
 specifier|public
 name|MainTable
 parameter_list|(
@@ -412,6 +424,9 @@ name|list
 parameter_list|,
 name|JabRefFrame
 name|frame
+parameter_list|,
+name|BasePanel
+name|panel
 parameter_list|)
 block|{
 name|super
@@ -599,6 +614,8 @@ argument_list|(
 name|this
 argument_list|,
 name|frame
+argument_list|,
+name|panel
 argument_list|)
 decl_stmt|;
 name|setTransferHandler
@@ -2793,6 +2810,40 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/*         protected void columnClicked(int i, int i1) {              super.columnClicked(i, i1);             refreshSorting();         }*/
+block|}
+comment|/**      * Morten Alver: This override is a workaround NullPointerException when      * dragging stuff into the table. I found this in a forum, but have no idea      * why it works.      * @param newUI      */
+DECL|method|setUI (TableUI newUI)
+specifier|public
+name|void
+name|setUI
+parameter_list|(
+name|TableUI
+name|newUI
+parameter_list|)
+block|{
+name|super
+operator|.
+name|setUI
+argument_list|(
+name|newUI
+argument_list|)
+expr_stmt|;
+name|TransferHandler
+name|handler
+init|=
+name|getTransferHandler
+argument_list|()
+decl_stmt|;
+name|setTransferHandler
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+name|setTransferHandler
+argument_list|(
+name|handler
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

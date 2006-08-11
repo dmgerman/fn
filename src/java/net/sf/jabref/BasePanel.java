@@ -8217,6 +8217,8 @@ argument_list|,
 name|searchFilterList
 argument_list|,
 name|frame
+argument_list|,
+name|this
 argument_list|)
 expr_stmt|;
 name|selectionListener

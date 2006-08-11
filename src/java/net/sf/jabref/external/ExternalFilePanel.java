@@ -1112,9 +1112,23 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|res
 operator|!=
 literal|null
+operator|)
+operator|&&
+operator|(
+name|res
+operator|.
+name|trim
+argument_list|()
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+operator|)
 condition|)
 block|{
 class|class
@@ -1578,14 +1592,19 @@ name|showMessageDialog
 argument_list|(
 name|parent
 argument_list|,
-literal|"Invalid URL: "
-operator|+
-name|e1
+name|Globals
 operator|.
-name|getMessage
-argument_list|()
+name|lang
+argument_list|(
+literal|"Invalid URL"
+argument_list|)
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Download file"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
@@ -1600,15 +1619,6 @@ condition|(
 name|updateEditor
 condition|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Juuu"
-argument_list|)
-expr_stmt|;
 name|editor
 operator|.
 name|setText
