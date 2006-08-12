@@ -729,6 +729,8 @@ operator|(
 name|String
 operator|)
 name|o
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -748,6 +750,8 @@ operator|)
 name|o
 argument_list|,
 name|abbr_names
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -767,6 +771,8 @@ operator|)
 name|o
 argument_list|,
 name|abbr_names
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 return|return

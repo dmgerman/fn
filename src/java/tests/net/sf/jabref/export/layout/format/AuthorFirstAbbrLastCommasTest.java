@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  * Copyright (C) 2006 Jabref-Team  *   * All programs in this directory and subdirectories are published under the GNU  * General Public License as described below.  *  * This program is free software; you can redistribute it and/or modify it under  * the terms of the GNU General Public License as published by the Free Software  * Foundation; either version 2 of the License, or (at your option) any later  * version.  *  * This program is distributed in the hope that it will be useful, but WITHOUT  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS  * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more  * details.  *  * You should have received a copy of the GNU General Public License along with  * this program; if not, write to the Free Software Foundation, Inc., 59 Temple  * Place, Suite 330, Boston, MA 02111-1307 USA  *  * Further information about the GNU GPL is available at:  * http://www.gnu.org/copyleft/gpl.ja.html  *  */
+comment|/*  * Copyright (C) 2006 Jabref-Team  *               2003 Morten O. Alver, Nizar N. Batada  *   * All programs in this directory and subdirectories are published under the GNU  * General Public License as described below.  *  * This program is free software; you can redistribute it and/or modify it under  * the terms of the GNU General Public License as published by the Free Software  * Foundation; either version 2 of the License, or (at your option) any later  * version.  *  * This program is distributed in the hope that it will be useful, but WITHOUT  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS  * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more  * details.  *  * You should have received a copy of the GNU General Public License along with  * this program; if not, write to the Free Software Foundation, Inc., 59 Temple  * Place, Suite 330, Boston, MA 02111-1307 USA  *  * Further information about the GNU GPL is available at:  * http://www.gnu.org/copyleft/gpl.ja.html  *  */
 end_comment
 
 begin_package
@@ -62,23 +62,22 @@ name|layout
 operator|.
 name|format
 operator|.
-name|AuthorAndsReplacer
+name|AuthorFirstAbbrLastCommas
 import|;
 end_import
 
 begin_comment
-comment|/**  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  *   * @author $Author$  * @version $Revision$ ($Date$)  *  */
 end_comment
 
 begin_class
-DECL|class|AuthorAndsReplacerTest
+DECL|class|AuthorFirstAbbrLastCommasTest
 specifier|public
 class|class
-name|AuthorAndsReplacerTest
+name|AuthorFirstAbbrLastCommasTest
 extends|extends
 name|TestCase
 block|{
-comment|/** 	 * Test method for 	 * {@link net.sf.jabref.export.layout.format.AuthorAndsReplacer#format(java.lang.String)}. 	 */
 DECL|method|testFormat ()
 specifier|public
 name|void
@@ -89,7 +88,7 @@ name|LayoutFormatter
 name|a
 init|=
 operator|new
-name|AuthorAndsReplacer
+name|AuthorFirstAbbrLastCommas
 argument_list|()
 decl_stmt|;
 comment|// Empty case
@@ -105,10 +104,10 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Single Names don't change
+comment|// Single Names
 name|assertEquals
 argument_list|(
-literal|"Someone, Van Something"
+literal|"V. S. Someone"
 argument_list|,
 name|a
 operator|.
@@ -118,23 +117,23 @@ literal|"Someone, Van Something"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Two names just an&
+comment|// Two names
 name|assertEquals
 argument_list|(
-literal|"John Smith& Black Brown, Peter"
+literal|"J. von Neumann and P. Black Brown"
 argument_list|,
 name|a
 operator|.
 name|format
 argument_list|(
-literal|"John Smith and Black Brown, Peter"
+literal|"John von Neumann and Black Brown, Peter"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Three names put a comma:
+comment|// Three names
 name|assertEquals
 argument_list|(
-literal|"von Neumann, John; Smith, John& Black Brown, Peter"
+literal|"J. von Neumann, J. Smith and P. Black Brown"
 argument_list|,
 name|a
 operator|.
@@ -146,13 +145,13 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"John von Neumann; John Smith& Peter Black Brown"
+literal|"J. von Neumann, J. Smith and P. Black Brown"
 argument_list|,
 name|a
 operator|.
 name|format
 argument_list|(
-literal|"John von Neumann and John Smith and Peter Black Brown"
+literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
 argument_list|)
 expr_stmt|;

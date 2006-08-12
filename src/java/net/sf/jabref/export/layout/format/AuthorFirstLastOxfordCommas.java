@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Version:  $Revision$               $Date$               $Author$      Copyright (c) Dept. Computer Architecture, University of Tuebingen, Germany      This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation version 2 of the License.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.   ///////////////////////////////////////////////////////////////////////////// */
+comment|/*  * AuthorFirstLastCommas.java  *  * Created on September 7, 2005, 1:06 PM  *  * To change this template, choose Tools | Options and locate the template under  * the Source Creation and Management node. Right-click the template and choose  * Open. You can then make changes to the template in the Source Editor.  */
 end_comment
 
 begin_package
@@ -48,11 +48,15 @@ name|AuthorList
 import|;
 end_import
 
+begin_comment
+comment|/**  *<ul>  *<li>Names are given as first name, von and last name.</li>  *<li>Individual authors separated by comma.</li>  *<li>The and of a list of three or more authors is preceeded by a comma  * (Oxford comma)</li>  *</ul>  *   * @author mkovtun  * @author Christopher Oezbek<oezi@oezi.de>  *   */
+end_comment
+
 begin_class
-DECL|class|AuthorLastFirst
+DECL|class|AuthorFirstLastOxfordCommas
 specifier|public
 class|class
-name|AuthorLastFirst
+name|AuthorFirstLastOxfordCommas
 implements|implements
 name|LayoutFormatter
 block|{
@@ -68,9 +72,13 @@ block|{
 return|return
 name|AuthorList
 operator|.
-name|fixAuthor_lastNameFirst
+name|fixAuthor_firstNameFirstCommas
 argument_list|(
 name|fieldText
+argument_list|,
+literal|false
+argument_list|,
+literal|true
 argument_list|)
 return|;
 block|}

@@ -35,7 +35,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * @author Christopher Oezbek<oezi@oezi.de>  * @version 0.1 - Still fails for stuff in AuthorList that is ambiguous  */
+comment|/**  *   * @see net.sf.jabref.AuthorList Class tested.  *   * @author Christopher Oezbek<oezi@oezi.de>  *   * @version 0.1 - Still fails for stuff in AuthorList that is ambiguous  */
 end_comment
 
 begin_class
@@ -179,6 +179,8 @@ name|void
 name|testFixAuthor_firstNameFirstCommas
 parameter_list|()
 block|{
+block|{
+comment|// No Commas
 name|assertEquals
 argument_list|(
 literal|""
@@ -190,6 +192,8 @@ argument_list|(
 literal|""
 argument_list|,
 literal|true
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -204,6 +208,8 @@ argument_list|(
 literal|""
 argument_list|,
 literal|false
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -216,6 +222,8 @@ operator|.
 name|fixAuthor_firstNameFirstCommas
 argument_list|(
 literal|"John Smith"
+argument_list|,
+literal|false
 argument_list|,
 literal|false
 argument_list|)
@@ -232,6 +240,8 @@ argument_list|(
 literal|"John Smith"
 argument_list|,
 literal|true
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -243,6 +253,195 @@ operator|.
 name|fixAuthor_firstNameFirstCommas
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
+argument_list|,
+literal|true
+argument_list|,
+literal|false
+argument_list|)
+operator|==
+name|AuthorList
+operator|.
+name|fixAuthor_firstNameFirstCommas
+argument_list|(
+literal|"John von Neumann"
+operator|+
+operator|(
+literal|0
+operator|==
+literal|1
+condition|?
+literal|""
+else|:
+literal|" and "
+operator|)
+operator|+
+literal|"John Smith and Black Brown, Peter"
+argument_list|,
+literal|true
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"John Smith and Peter Black Brown"
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_firstNameFirstCommas
+argument_list|(
+literal|"John Smith and Black Brown, Peter"
+argument_list|,
+literal|false
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"J. Smith and P. Black Brown"
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_firstNameFirstCommas
+argument_list|(
+literal|"John Smith and Black Brown, Peter"
+argument_list|,
+literal|true
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Method description is different than code -> additional comma
+comment|// there
+name|assertEquals
+argument_list|(
+literal|"John von Neumann, John Smith and Peter Black Brown"
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_firstNameFirstCommas
+argument_list|(
+literal|"John von Neumann and John Smith and Black Brown, Peter"
+argument_list|,
+literal|false
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"J. von Neumann, J. Smith and P. Black Brown"
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_firstNameFirstCommas
+argument_list|(
+literal|"John von Neumann and John Smith and Black Brown, Peter"
+argument_list|,
+literal|true
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"J. P. von Neumann"
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_firstNameFirstCommas
+argument_list|(
+literal|"John Peter von Neumann"
+argument_list|,
+literal|true
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|{
+comment|// Oxford Commas
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_firstNameFirstCommas
+argument_list|(
+literal|""
+argument_list|,
+literal|true
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_firstNameFirstCommas
+argument_list|(
+literal|""
+argument_list|,
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"John Smith"
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_firstNameFirstCommas
+argument_list|(
+literal|"John Smith"
+argument_list|,
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"J. Smith"
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_firstNameFirstCommas
+argument_list|(
+literal|"John Smith"
+argument_list|,
+literal|true
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Check caching
+name|assertTrue
+argument_list|(
+name|AuthorList
+operator|.
+name|fixAuthor_firstNameFirstCommas
+argument_list|(
+literal|"John von Neumann and John Smith and Black Brown, Peter"
+argument_list|,
+literal|true
 argument_list|,
 literal|true
 argument_list|)
@@ -266,6 +465,8 @@ operator|+
 literal|"John Smith and Black Brown, Peter"
 argument_list|,
 literal|true
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -280,6 +481,8 @@ argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|,
 literal|false
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -294,13 +497,16 @@ argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|,
 literal|true
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Method description is different than code -> additional comma there
+comment|// Method description is different than code -> additional comma
+comment|// there
 name|assertEquals
 argument_list|(
-literal|"John von Neumann, John Smith and Peter Black Brown"
+literal|"John von Neumann, John Smith, and Peter Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
@@ -309,18 +515,22 @@ argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
 literal|false
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"J. von Neumann, J. Smith and P. Black Brown"
+literal|"J. von Neumann, J. Smith, and P. Black Brown"
 argument_list|,
 name|AuthorList
 operator|.
 name|fixAuthor_firstNameFirstCommas
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
+argument_list|,
+literal|true
 argument_list|,
 literal|true
 argument_list|)
@@ -337,9 +547,12 @@ argument_list|(
 literal|"John Peter von Neumann"
 argument_list|,
 literal|true
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|testFixAuthor_firstNameFirst ()
 specifier|public
@@ -432,6 +645,8 @@ name|void
 name|testFixAuthor_lastNameFirstCommas
 parameter_list|()
 block|{
+block|{
+comment|// No commas before and
 name|assertEquals
 argument_list|(
 literal|""
@@ -443,6 +658,8 @@ argument_list|(
 literal|""
 argument_list|,
 literal|true
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -455,6 +672,8 @@ operator|.
 name|fixAuthor_lastNameFirstCommas
 argument_list|(
 literal|""
+argument_list|,
+literal|false
 argument_list|,
 literal|false
 argument_list|)
@@ -471,6 +690,8 @@ argument_list|(
 literal|"John Smith"
 argument_list|,
 literal|false
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -485,12 +706,14 @@ argument_list|(
 literal|"John Smith"
 argument_list|,
 literal|true
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Check caching
-name|assertTrue
-argument_list|(
+name|String
+name|a
+init|=
 name|AuthorList
 operator|.
 name|fixAuthor_lastNameFirstCommas
@@ -498,8 +721,13 @@ argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
 literal|true
+argument_list|,
+literal|false
 argument_list|)
-operator|==
+decl_stmt|;
+name|String
+name|b
+init|=
 name|AuthorList
 operator|.
 name|fixAuthor_lastNameFirstCommas
@@ -519,7 +747,23 @@ operator|+
 literal|"John Smith and Black Brown, Peter"
 argument_list|,
 literal|true
+argument_list|,
+literal|false
 argument_list|)
+decl_stmt|;
+comment|// Check caching
+name|assertEquals
+argument_list|(
+name|a
+argument_list|,
+name|b
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|a
+operator|==
+name|b
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -531,6 +775,8 @@ operator|.
 name|fixAuthor_lastNameFirstCommas
 argument_list|(
 literal|"John Smith and Black Brown, Peter"
+argument_list|,
+literal|false
 argument_list|,
 literal|false
 argument_list|)
@@ -547,10 +793,11 @@ argument_list|(
 literal|"John Smith and Black Brown, Peter"
 argument_list|,
 literal|true
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Method description is different than code -> additional comma there
 name|assertEquals
 argument_list|(
 literal|"von Neumann, John, Smith, John and Black Brown, Peter"
@@ -560,6 +807,8 @@ operator|.
 name|fixAuthor_lastNameFirstCommas
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
+argument_list|,
+literal|false
 argument_list|,
 literal|false
 argument_list|)
@@ -576,6 +825,8 @@ argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
 literal|true
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -590,9 +841,214 @@ argument_list|(
 literal|"John Peter von Neumann"
 argument_list|,
 literal|true
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+block|{
+comment|// Oxford Commas
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameFirstCommas
+argument_list|(
+literal|""
+argument_list|,
+literal|true
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameFirstCommas
+argument_list|(
+literal|""
+argument_list|,
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Smith, John"
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameFirstCommas
+argument_list|(
+literal|"John Smith"
+argument_list|,
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Smith, J."
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameFirstCommas
+argument_list|(
+literal|"John Smith"
+argument_list|,
+literal|true
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|String
+name|a
+init|=
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameFirstCommas
+argument_list|(
+literal|"John von Neumann and John Smith and Black Brown, Peter"
+argument_list|,
+literal|true
+argument_list|,
+literal|true
+argument_list|)
+decl_stmt|;
+name|String
+name|b
+init|=
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameFirstCommas
+argument_list|(
+literal|"John von Neumann"
+operator|+
+operator|(
+literal|0
+operator|==
+literal|1
+condition|?
+literal|""
+else|:
+literal|" and "
+operator|)
+operator|+
+literal|"John Smith and Black Brown, Peter"
+argument_list|,
+literal|true
+argument_list|,
+literal|true
+argument_list|)
+decl_stmt|;
+comment|// Check caching
+name|assertEquals
+argument_list|(
+name|a
+argument_list|,
+name|b
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|a
+operator|==
+name|b
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Smith, John and Black Brown, Peter"
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameFirstCommas
+argument_list|(
+literal|"John Smith and Black Brown, Peter"
+argument_list|,
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Smith, J. and Black Brown, P."
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameFirstCommas
+argument_list|(
+literal|"John Smith and Black Brown, Peter"
+argument_list|,
+literal|true
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"von Neumann, John, Smith, John, and Black Brown, Peter"
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameFirstCommas
+argument_list|(
+literal|"John von Neumann and John Smith and Black Brown, Peter"
+argument_list|,
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"von Neumann, J., Smith, J., and Black Brown, P."
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameFirstCommas
+argument_list|(
+literal|"John von Neumann and John Smith and Black Brown, Peter"
+argument_list|,
+literal|true
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"von Neumann, J. P."
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameFirstCommas
+argument_list|(
+literal|"John Peter von Neumann"
+argument_list|,
+literal|true
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|testFixAuthor_lastNameFirst ()
 specifier|public
@@ -600,6 +1056,7 @@ name|void
 name|testFixAuthor_lastNameFirst
 parameter_list|()
 block|{
+comment|// Test helper method
 name|assertEquals
 argument_list|(
 literal|"Smith, John"
@@ -677,6 +1134,186 @@ literal|"John Smith and Black Brown, Peter"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// Test Abbreviation == false
+name|assertEquals
+argument_list|(
+literal|"Smith, John"
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameFirst
+argument_list|(
+literal|"John Smith"
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Smith, John and Black Brown, Peter"
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameFirst
+argument_list|(
+literal|"John Smith and Black Brown, Peter"
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"von Neumann, John and Smith, John and Black Brown, Peter"
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameFirst
+argument_list|(
+literal|"John von Neumann and John Smith and Black Brown, Peter"
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"von Last, Jr, First"
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameFirst
+argument_list|(
+literal|"von Last, Jr ,First"
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameFirst
+argument_list|(
+literal|"John von Neumann and John Smith and Black Brown, Peter"
+argument_list|,
+literal|false
+argument_list|)
+operator|==
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameFirst
+argument_list|(
+literal|"John von Neumann"
+operator|+
+operator|(
+literal|0
+operator|==
+literal|1
+condition|?
+literal|""
+else|:
+literal|" and "
+operator|)
+operator|+
+literal|"John Smith and Black Brown, Peter"
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// Test Abbreviate == true
+name|assertEquals
+argument_list|(
+literal|"Smith, J."
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameFirst
+argument_list|(
+literal|"John Smith"
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Smith, J. and Black Brown, P."
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameFirst
+argument_list|(
+literal|"John Smith and Black Brown, Peter"
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"von Neumann, J. and Smith, J. and Black Brown, P."
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameFirst
+argument_list|(
+literal|"John von Neumann and John Smith and Black Brown, Peter"
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"von Last, Jr, F."
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameFirst
+argument_list|(
+literal|"von Last, Jr ,First"
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameFirst
+argument_list|(
+literal|"John von Neumann and John Smith and Black Brown, Peter"
+argument_list|,
+literal|true
+argument_list|)
+operator|==
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameFirst
+argument_list|(
+literal|"John von Neumann"
+operator|+
+operator|(
+literal|0
+operator|==
+literal|1
+condition|?
+literal|""
+else|:
+literal|" and "
+operator|)
+operator|+
+literal|"John Smith and Black Brown, Peter"
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|testFixAuthor_lastNameOnlyCommas ()
 specifier|public
@@ -684,6 +1321,8 @@ name|void
 name|testFixAuthor_lastNameOnlyCommas
 parameter_list|()
 block|{
+block|{
+comment|// No comma before and
 name|assertEquals
 argument_list|(
 literal|""
@@ -693,6 +1332,8 @@ operator|.
 name|fixAuthor_lastNameOnlyCommas
 argument_list|(
 literal|""
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -705,6 +1346,8 @@ operator|.
 name|fixAuthor_lastNameOnlyCommas
 argument_list|(
 literal|"John Smith"
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -717,6 +1360,8 @@ operator|.
 name|fixAuthor_lastNameOnlyCommas
 argument_list|(
 literal|"Smith, Jr, John"
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -727,6 +1372,8 @@ operator|.
 name|fixAuthor_lastNameOnlyCommas
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
+argument_list|,
+literal|false
 argument_list|)
 operator|==
 name|AuthorList
@@ -746,10 +1393,11 @@ literal|" and "
 operator|)
 operator|+
 literal|"John Smith and Black Brown, Peter"
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Method description is different than code
 name|assertEquals
 argument_list|(
 literal|"von Neumann, Smith and Black Brown"
@@ -759,9 +1407,104 @@ operator|.
 name|fixAuthor_lastNameOnlyCommas
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+block|{
+comment|// Oxford Comma
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameOnlyCommas
+argument_list|(
+literal|""
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Smith"
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameOnlyCommas
+argument_list|(
+literal|"John Smith"
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Smith"
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameOnlyCommas
+argument_list|(
+literal|"Smith, Jr, John"
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertTrue
+argument_list|(
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameOnlyCommas
+argument_list|(
+literal|"John von Neumann and John Smith and Black Brown, Peter"
+argument_list|,
+literal|true
+argument_list|)
+operator|==
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameOnlyCommas
+argument_list|(
+literal|"John von Neumann"
+operator|+
+operator|(
+literal|0
+operator|==
+literal|1
+condition|?
+literal|""
+else|:
+literal|" and "
+operator|)
+operator|+
+literal|"John Smith and Black Brown, Peter"
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"von Neumann, Smith, and Black Brown"
+argument_list|,
+name|AuthorList
+operator|.
+name|fixAuthor_lastNameOnlyCommas
+argument_list|(
+literal|"John von Neumann and John Smith and Black Brown, Peter"
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|testFixAuthorForAlphabetization ()
 specifier|public
@@ -1167,6 +1910,84 @@ name|AuthorList
 operator|.
 name|getAuthorList
 argument_list|(
+literal|"Peter Black Brown"
+argument_list|)
+operator|.
+name|getAuthor
+argument_list|(
+literal|0
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Peter Black"
+argument_list|,
+name|author
+operator|.
+name|getFirst
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"P. B."
+argument_list|,
+name|author
+operator|.
+name|getFirstAbbr
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Peter Black Brown"
+argument_list|,
+name|author
+operator|.
+name|getFirstLast
+argument_list|(
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"P. B. Brown"
+argument_list|,
+name|author
+operator|.
+name|getFirstLast
+argument_list|(
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|null
+argument_list|,
+name|author
+operator|.
+name|getJr
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|null
+argument_list|,
+name|author
+operator|.
+name|getVon
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|author
+operator|=
+name|AuthorList
+operator|.
+name|getAuthorList
+argument_list|(
 literal|"John Smith and von Neumann, Jr, John"
 argument_list|)
 operator|.
@@ -1391,6 +2212,8 @@ name|void
 name|testGetAuthorsLastOnly
 parameter_list|()
 block|{
+block|{
+comment|// No comma before and
 name|assertEquals
 argument_list|(
 literal|""
@@ -1403,7 +2226,9 @@ literal|""
 argument_list|)
 operator|.
 name|getAuthorsLastOnly
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1418,7 +2243,9 @@ literal|"John Smith"
 argument_list|)
 operator|.
 name|getAuthorsLastOnly
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1433,10 +2260,11 @@ literal|"Smith, Jr, John"
 argument_list|)
 operator|.
 name|getAuthorsLastOnly
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Method description is different than code
 name|assertEquals
 argument_list|(
 literal|"von Neumann, Smith and Black Brown"
@@ -1449,9 +2277,83 @@ literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
 operator|.
 name|getAuthorsLastOnly
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+block|{
+comment|// Oxford comma
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|AuthorList
+operator|.
+name|getAuthorList
+argument_list|(
+literal|""
+argument_list|)
+operator|.
+name|getAuthorsLastOnly
+argument_list|(
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Smith"
+argument_list|,
+name|AuthorList
+operator|.
+name|getAuthorList
+argument_list|(
+literal|"John Smith"
+argument_list|)
+operator|.
+name|getAuthorsLastOnly
+argument_list|(
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Smith"
+argument_list|,
+name|AuthorList
+operator|.
+name|getAuthorList
+argument_list|(
+literal|"Smith, Jr, John"
+argument_list|)
+operator|.
+name|getAuthorsLastOnly
+argument_list|(
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"von Neumann, Smith, and Black Brown"
+argument_list|,
+name|AuthorList
+operator|.
+name|getAuthorList
+argument_list|(
+literal|"John von Neumann and John Smith and Black Brown, Peter"
+argument_list|)
+operator|.
+name|getAuthorsLastOnly
+argument_list|(
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|testGetAuthorsLastFirst ()
 specifier|public
@@ -1459,6 +2361,8 @@ name|void
 name|testGetAuthorsLastFirst
 parameter_list|()
 block|{
+block|{
+comment|// No commas before and
 name|AuthorList
 name|al
 decl_stmt|;
@@ -1480,6 +2384,8 @@ operator|.
 name|getAuthorsLastFirst
 argument_list|(
 literal|true
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1491,6 +2397,8 @@ name|al
 operator|.
 name|getAuthorsLastFirst
 argument_list|(
+literal|false
+argument_list|,
 literal|false
 argument_list|)
 argument_list|)
@@ -1513,6 +2421,8 @@ operator|.
 name|getAuthorsLastFirst
 argument_list|(
 literal|false
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1524,6 +2434,187 @@ name|al
 operator|.
 name|getAuthorsLastFirst
 argument_list|(
+literal|true
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|al
+operator|=
+name|AuthorList
+operator|.
+name|getAuthorList
+argument_list|(
+literal|"John Smith and Black Brown, Peter"
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Smith, John and Black Brown, Peter"
+argument_list|,
+name|al
+operator|.
+name|getAuthorsLastFirst
+argument_list|(
+literal|false
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Smith, J. and Black Brown, P."
+argument_list|,
+name|al
+operator|.
+name|getAuthorsLastFirst
+argument_list|(
+literal|true
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|al
+operator|=
+name|AuthorList
+operator|.
+name|getAuthorList
+argument_list|(
+literal|"John von Neumann and John Smith and Black Brown, Peter"
+argument_list|)
+expr_stmt|;
+comment|// Method description is different than code -> additional comma
+comment|// there
+name|assertEquals
+argument_list|(
+literal|"von Neumann, John, Smith, John and Black Brown, Peter"
+argument_list|,
+name|al
+operator|.
+name|getAuthorsLastFirst
+argument_list|(
+literal|false
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"von Neumann, J., Smith, J. and Black Brown, P."
+argument_list|,
+name|al
+operator|.
+name|getAuthorsLastFirst
+argument_list|(
+literal|true
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|al
+operator|=
+name|AuthorList
+operator|.
+name|getAuthorList
+argument_list|(
+literal|"John Peter von Neumann"
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"von Neumann, J. P."
+argument_list|,
+name|al
+operator|.
+name|getAuthorsLastFirst
+argument_list|(
+literal|true
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|{
+comment|// Oxford comma
+name|AuthorList
+name|al
+decl_stmt|;
+name|al
+operator|=
+name|AuthorList
+operator|.
+name|getAuthorList
+argument_list|(
+literal|""
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|al
+operator|.
+name|getAuthorsLastFirst
+argument_list|(
+literal|true
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|al
+operator|.
+name|getAuthorsLastFirst
+argument_list|(
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|al
+operator|=
+name|AuthorList
+operator|.
+name|getAuthorList
+argument_list|(
+literal|"John Smith"
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Smith, John"
+argument_list|,
+name|al
+operator|.
+name|getAuthorsLastFirst
+argument_list|(
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Smith, J."
+argument_list|,
+name|al
+operator|.
+name|getAuthorsLastFirst
+argument_list|(
+literal|true
+argument_list|,
 literal|true
 argument_list|)
 argument_list|)
@@ -1546,6 +2637,8 @@ operator|.
 name|getAuthorsLastFirst
 argument_list|(
 literal|false
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1557,6 +2650,8 @@ name|al
 operator|.
 name|getAuthorsLastFirst
 argument_list|(
+literal|true
+argument_list|,
 literal|true
 argument_list|)
 argument_list|)
@@ -1570,27 +2665,30 @@ argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
 expr_stmt|;
-comment|// Method description is different than code -> additional comma there
 name|assertEquals
 argument_list|(
-literal|"von Neumann, John, Smith, John and Black Brown, Peter"
+literal|"von Neumann, John, Smith, John, and Black Brown, Peter"
 argument_list|,
 name|al
 operator|.
 name|getAuthorsLastFirst
 argument_list|(
 literal|false
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"von Neumann, J., Smith, J. and Black Brown, P."
+literal|"von Neumann, J., Smith, J., and Black Brown, P."
 argument_list|,
 name|al
 operator|.
 name|getAuthorsLastFirst
 argument_list|(
+literal|true
+argument_list|,
 literal|true
 argument_list|)
 argument_list|)
@@ -1613,9 +2711,12 @@ operator|.
 name|getAuthorsLastFirst
 argument_list|(
 literal|true
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|testGetAuthorsLastFirstAnds ()
 specifier|public
@@ -1635,7 +2736,9 @@ literal|"John Smith"
 argument_list|)
 operator|.
 name|getAuthorsLastFirstAnds
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1650,7 +2753,9 @@ literal|"John Smith and Black Brown, Peter"
 argument_list|)
 operator|.
 name|getAuthorsLastFirstAnds
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1665,7 +2770,9 @@ literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
 operator|.
 name|getAuthorsLastFirstAnds
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1680,7 +2787,77 @@ literal|"von Last, Jr ,First"
 argument_list|)
 operator|.
 name|getAuthorsLastFirstAnds
-argument_list|()
+argument_list|(
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Smith, J."
+argument_list|,
+name|AuthorList
+operator|.
+name|getAuthorList
+argument_list|(
+literal|"John Smith"
+argument_list|)
+operator|.
+name|getAuthorsLastFirstAnds
+argument_list|(
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Smith, J. and Black Brown, P."
+argument_list|,
+name|AuthorList
+operator|.
+name|getAuthorList
+argument_list|(
+literal|"John Smith and Black Brown, Peter"
+argument_list|)
+operator|.
+name|getAuthorsLastFirstAnds
+argument_list|(
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"von Neumann, J. and Smith, J. and Black Brown, P."
+argument_list|,
+name|AuthorList
+operator|.
+name|getAuthorList
+argument_list|(
+literal|"John von Neumann and John Smith and Black Brown, Peter"
+argument_list|)
+operator|.
+name|getAuthorsLastFirstAnds
+argument_list|(
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"von Last, Jr, F."
+argument_list|,
+name|AuthorList
+operator|.
+name|getAuthorList
+argument_list|(
+literal|"von Last, Jr ,First"
+argument_list|)
+operator|.
+name|getAuthorsLastFirstAnds
+argument_list|(
+literal|true
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1711,6 +2888,8 @@ operator|.
 name|getAuthorsFirstFirst
 argument_list|(
 literal|true
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1723,6 +2902,36 @@ operator|.
 name|getAuthorsFirstFirst
 argument_list|(
 literal|false
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|al
+operator|.
+name|getAuthorsFirstFirst
+argument_list|(
+literal|true
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|al
+operator|.
+name|getAuthorsFirstFirst
+argument_list|(
+literal|false
+argument_list|,
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1744,6 +2953,8 @@ operator|.
 name|getAuthorsFirstFirst
 argument_list|(
 literal|false
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1755,6 +2966,36 @@ name|al
 operator|.
 name|getAuthorsFirstFirst
 argument_list|(
+literal|true
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"John Smith"
+argument_list|,
+name|al
+operator|.
+name|getAuthorsFirstFirst
+argument_list|(
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"J. Smith"
+argument_list|,
+name|al
+operator|.
+name|getAuthorsFirstFirst
+argument_list|(
+literal|true
+argument_list|,
 literal|true
 argument_list|)
 argument_list|)
@@ -1777,6 +3018,8 @@ operator|.
 name|getAuthorsFirstFirst
 argument_list|(
 literal|false
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1788,6 +3031,36 @@ name|al
 operator|.
 name|getAuthorsFirstFirst
 argument_list|(
+literal|true
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"John Smith and Peter Black Brown"
+argument_list|,
+name|al
+operator|.
+name|getAuthorsFirstFirst
+argument_list|(
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"J. Smith and P. Black Brown"
+argument_list|,
+name|al
+operator|.
+name|getAuthorsFirstFirst
+argument_list|(
+literal|true
+argument_list|,
 literal|true
 argument_list|)
 argument_list|)
@@ -1801,7 +3074,6 @@ argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
 expr_stmt|;
-comment|// Method description is different than code -> additional comma there
 name|assertEquals
 argument_list|(
 literal|"John von Neumann, John Smith and Peter Black Brown"
@@ -1810,6 +3082,8 @@ name|al
 operator|.
 name|getAuthorsFirstFirst
 argument_list|(
+literal|false
+argument_list|,
 literal|false
 argument_list|)
 argument_list|)
@@ -1822,6 +3096,36 @@ name|al
 operator|.
 name|getAuthorsFirstFirst
 argument_list|(
+literal|true
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"John von Neumann, John Smith, and Peter Black Brown"
+argument_list|,
+name|al
+operator|.
+name|getAuthorsFirstFirst
+argument_list|(
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"J. von Neumann, J. Smith, and P. Black Brown"
+argument_list|,
+name|al
+operator|.
+name|getAuthorsFirstFirst
+argument_list|(
+literal|true
+argument_list|,
 literal|true
 argument_list|)
 argument_list|)
@@ -1837,12 +3141,56 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
+literal|"John Peter von Neumann"
+argument_list|,
+name|al
+operator|.
+name|getAuthorsFirstFirst
+argument_list|(
+literal|false
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"John Peter von Neumann"
+argument_list|,
+name|al
+operator|.
+name|getAuthorsFirstFirst
+argument_list|(
+literal|false
+argument_list|,
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
 literal|"J. P. von Neumann"
 argument_list|,
 name|al
 operator|.
 name|getAuthorsFirstFirst
 argument_list|(
+literal|true
+argument_list|,
+literal|false
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"J. P. von Neumann"
+argument_list|,
+name|al
+operator|.
+name|getAuthorsFirstFirst
+argument_list|(
+literal|true
+argument_list|,
 literal|true
 argument_list|)
 argument_list|)

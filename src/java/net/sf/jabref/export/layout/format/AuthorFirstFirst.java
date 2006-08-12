@@ -1,86 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
-
-begin_comment
-comment|//  Filename: $RCSfile$
-end_comment
-
-begin_comment
-comment|//  Purpose:  Atom representation.
-end_comment
-
-begin_comment
-comment|//  Language: Java
-end_comment
-
-begin_comment
-comment|//  Compiler: JDK 1.4
-end_comment
-
-begin_comment
-comment|//  Authors:  Joerg K. Wegner, Morten O. Alver
-end_comment
-
-begin_comment
-comment|//  Version:  $Revision$
-end_comment
-
-begin_comment
-comment|//            $Date$
-end_comment
-
-begin_comment
-comment|//            $Author$
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//  Copyright (c) Dept. Computer Architecture, University of Tuebingen, Germany
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//  This program is free software; you can redistribute it and/or modify
-end_comment
-
-begin_comment
-comment|//  it under the terms of the GNU General Public License as published by
-end_comment
-
-begin_comment
-comment|//  the Free Software Foundation version 2 of the License.
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|//  This program is distributed in the hope that it will be useful,
-end_comment
-
-begin_comment
-comment|//  but WITHOUT ANY WARRANTY; without even the implied warranty of
-end_comment
-
-begin_comment
-comment|//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-end_comment
-
-begin_comment
-comment|//  GNU General Public License for more details.
-end_comment
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
+comment|/*   * Copyright (C) 2006 Jabref-Team  *               2005 Dept. Computer Architecture, University of Tuebingen, Germany  *               2005 Joerg K. Wegner  *               2003 Morten O. Alver, Nizar N. Batada  *                 * All programs in this directory and subdirectories are published under the GNU  * General Public License as described below.  *  * This program is free software; you can redistribute it and/or modify it under  * the terms of the GNU General Public License as published by the Free Software  * Foundation; either version 2 of the License, or (at your option) any later  * version.  *  * This program is distributed in the hope that it will be useful, but WITHOUT  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS  * FOR A PARTICULAR PURPOSE. See the GNU General Public License for more  * details.  *  * You should have received a copy of the GNU General Public License along with  * this program; if not, write to the Free Software Foundation, Inc., 59 Temple  * Place, Suite 330, Boston, MA 02111-1307 USA  *  * Further information about the GNU GPL is available at:  * http://www.gnu.org/copyleft/gpl.ja.html  *  */
 end_comment
 
 begin_package
@@ -129,7 +49,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Changes {\^o} or {\^{o}} to \uFFFD  *  * @author $author$  * @version $Revision$  */
+comment|/**  *   * @author  $Author$  * @version $Revision$ $Date$  *   */
 end_comment
 
 begin_class
@@ -140,7 +60,6 @@ name|AuthorFirstFirst
 implements|implements
 name|LayoutFormatter
 block|{
-comment|//~ Methods ////////////////////////////////////////////////////////////////
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -150,8 +69,6 @@ name|String
 name|fieldText
 parameter_list|)
 block|{
-comment|//ConvertSpecialCharactersForHTML conv = new ConvertSpecialCharactersForHTML();
-comment|//return conv.format(ImportFormatReader.fixAuthor_lastNameFirst(fieldText));
 return|return
 name|AuthorList
 operator|.
@@ -163,18 +80,6 @@ return|;
 block|}
 block|}
 end_class
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
-
-begin_comment
-comment|//  END OF FILE.
-end_comment
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
 
 end_unit
 

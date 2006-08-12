@@ -49,7 +49,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *  * @author mkovtun  */
+comment|/**  *<ul>  *<li>Names are given as first name, von and last name.</li>  *<li>First names will not be abbreviated.</li>  *<li>Individual authors separated by comma.</li>  *<li>There is no comma before the and of a list of three or more authors.</li>  *</ul>  *   * @author mkovtun  * @author Christopher Oezbek<oezi@oezi.de>  *   */
 end_comment
 
 begin_class
@@ -75,6 +75,8 @@ operator|.
 name|fixAuthor_firstNameFirstCommas
 argument_list|(
 name|fieldText
+argument_list|,
+literal|false
 argument_list|,
 literal|false
 argument_list|)

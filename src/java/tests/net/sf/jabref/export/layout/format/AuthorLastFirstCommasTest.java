@@ -62,7 +62,7 @@ name|layout
 operator|.
 name|format
 operator|.
-name|AuthorAndsReplacer
+name|AuthorLastFirstCommas
 import|;
 end_import
 
@@ -71,14 +71,14 @@ comment|/**  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
 end_comment
 
 begin_class
-DECL|class|AuthorAndsReplacerTest
+DECL|class|AuthorLastFirstCommasTest
 specifier|public
 class|class
-name|AuthorAndsReplacerTest
+name|AuthorLastFirstCommasTest
 extends|extends
 name|TestCase
 block|{
-comment|/** 	 * Test method for 	 * {@link net.sf.jabref.export.layout.format.AuthorAndsReplacer#format(java.lang.String)}. 	 */
+comment|/** 	 * Test method for 	 * {@link net.sf.jabref.export.layout.format.AuthorLastFirstCommas#format(java.lang.String)}. 	 */
 DECL|method|testFormat ()
 specifier|public
 name|void
@@ -89,7 +89,7 @@ name|LayoutFormatter
 name|a
 init|=
 operator|new
-name|AuthorAndsReplacer
+name|AuthorLastFirstCommas
 argument_list|()
 decl_stmt|;
 comment|// Empty case
@@ -105,7 +105,7 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Single Names don't change
+comment|// Single Names
 name|assertEquals
 argument_list|(
 literal|"Someone, Van Something"
@@ -114,27 +114,27 @@ name|a
 operator|.
 name|format
 argument_list|(
-literal|"Someone, Van Something"
+literal|"Van Something Someone"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Two names just an&
+comment|// Two names
 name|assertEquals
 argument_list|(
-literal|"John Smith& Black Brown, Peter"
+literal|"von Neumann, John and Black Brown, Peter"
 argument_list|,
 name|a
 operator|.
 name|format
 argument_list|(
-literal|"John Smith and Black Brown, Peter"
+literal|"John von Neumann and Black Brown, Peter"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Three names put a comma:
+comment|// Three names
 name|assertEquals
 argument_list|(
-literal|"von Neumann, John; Smith, John& Black Brown, Peter"
+literal|"von Neumann, John, Smith, John and Black Brown, Peter"
 argument_list|,
 name|a
 operator|.
@@ -146,13 +146,13 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"John von Neumann; John Smith& Peter Black Brown"
+literal|"von Neumann, John, Smith, John and Black Brown, Peter"
 argument_list|,
 name|a
 operator|.
 name|format
 argument_list|(
-literal|"John von Neumann and John Smith and Peter Black Brown"
+literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -49,14 +49,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<ul>  *<li>Names are given in order: von last, jr, first.</li>  *<li>First names will be abbreviated.</li>  *<li>Individual authors are separated by commas.</li>  *<li>There is no comma before the 'and' at the end of a list of three or more authors</li>  *</ul>  *   * @author mkovtun  * @author Christopher Oezbek<oezi@oezi.de>  *   */
+comment|/**  *<ul>  *<li>Names are given in order: von last, jr, first.</li>  *<li>First names will NOT be abbreviated.</li>  *<li>Individual authors are separated by commas.</li>  *<li>The 'and' of a list of three or more authors is preceeded by a comma  * (Oxford comma)</li>  *   * @author mkovtun  * @author Christopher Oezbek<oezi@oezi.de>  *   */
 end_comment
 
 begin_class
-DECL|class|AuthorLastFirstAbbrCommas
+DECL|class|AuthorLastFirstOxfordCommas
 specifier|public
 class|class
-name|AuthorLastFirstAbbrCommas
+name|AuthorLastFirstOxfordCommas
 implements|implements
 name|LayoutFormatter
 block|{
@@ -76,9 +76,9 @@ name|fixAuthor_lastNameFirstCommas
 argument_list|(
 name|fieldText
 argument_list|,
-literal|true
-argument_list|,
 literal|false
+argument_list|,
+literal|true
 argument_list|)
 return|;
 block|}

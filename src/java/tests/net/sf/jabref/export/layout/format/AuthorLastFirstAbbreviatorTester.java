@@ -20,24 +20,6 @@ end_package
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|export
-operator|.
-name|layout
-operator|.
-name|format
-operator|.
-name|AuthorLastFirstAbbreviator
-import|;
-end_import
-
-begin_import
-import|import
 name|junit
 operator|.
 name|framework
@@ -53,6 +35,40 @@ operator|.
 name|framework
 operator|.
 name|TestCase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|export
+operator|.
+name|layout
+operator|.
+name|LayoutFormatter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|export
+operator|.
+name|layout
+operator|.
+name|format
+operator|.
+name|AuthorLastFirstAbbreviator
 import|;
 end_import
 
@@ -149,7 +165,7 @@ comment|//Expected Results:
 name|String
 name|expectedResult
 init|=
-literal|"Lastname, N.M."
+literal|"Lastname, N. M."
 decl_stmt|;
 comment|//Verifies the functionality:
 name|Assert
@@ -197,7 +213,7 @@ comment|//Expected Results:
 name|String
 name|expectedResult
 init|=
-literal|"Lastname, N.M. and Sobrenome, N.N."
+literal|"Lastname, N. M. and Sobrenome, N. N."
 decl_stmt|;
 comment|//Verifies the functionality:
 name|Assert
@@ -254,11 +270,73 @@ literal|"Other, Jr., Anthony N."
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Other, A.N."
+literal|"Other, A. N."
 argument_list|,
 name|abbreviate
 argument_list|(
 name|name
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|testFormat ()
+specifier|public
+name|void
+name|testFormat
+parameter_list|()
+block|{
+name|LayoutFormatter
+name|a
+init|=
+operator|new
+name|AuthorLastFirstAbbreviator
+argument_list|()
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|""
+argument_list|,
+name|a
+operator|.
+name|format
+argument_list|(
+literal|""
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Someone, V. S."
+argument_list|,
+name|a
+operator|.
+name|format
+argument_list|(
+literal|"Someone, Van Something"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Smith, J."
+argument_list|,
+name|a
+operator|.
+name|format
+argument_list|(
+literal|"Smith, John"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"von Neumann, J. and Smith, J. and Black Brown, P."
+argument_list|,
+name|a
+operator|.
+name|format
+argument_list|(
+literal|"von Neumann, John and Smith, John and Black Brown, Peter"
 argument_list|)
 argument_list|)
 expr_stmt|;

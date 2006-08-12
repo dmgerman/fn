@@ -24,6 +24,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|AuthorList
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|export
 operator|.
 name|layout
@@ -54,6 +66,7 @@ name|String
 name|fieldText
 parameter_list|)
 block|{
+comment|// return AuthorList.fixAuthor_lastNameFirst(fieldText, true);
 try|try
 block|{
 return|return
@@ -358,7 +371,7 @@ operator|.
 name|trim
 argument_list|()
 expr_stmt|;
-comment|// jr = author[1];
+comment|// jr = parts[1];
 name|first
 operator|=
 name|parts
@@ -448,6 +461,23 @@ operator|.
 name|append
 argument_list|(
 literal|'.'
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|i
+operator|<
+name|firstNames
+operator|.
+name|length
+operator|-
+literal|1
+condition|)
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|' '
 argument_list|)
 expr_stmt|;
 block|}

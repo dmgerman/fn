@@ -62,7 +62,7 @@ name|layout
 operator|.
 name|format
 operator|.
-name|AuthorAndsReplacer
+name|AuthorAndsCommaReplacer
 import|;
 end_import
 
@@ -71,14 +71,14 @@ comment|/**  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
 end_comment
 
 begin_class
-DECL|class|AuthorAndsReplacerTest
+DECL|class|AuthorAndsCommaReplacerTest
 specifier|public
 class|class
-name|AuthorAndsReplacerTest
+name|AuthorAndsCommaReplacerTest
 extends|extends
 name|TestCase
 block|{
-comment|/** 	 * Test method for 	 * {@link net.sf.jabref.export.layout.format.AuthorAndsReplacer#format(java.lang.String)}. 	 */
+comment|/** 	 * Test method for 	 * {@link net.sf.jabref.export.layout.format.AuthorAndsCommaReplacer#format(java.lang.String)}. 	 */
 DECL|method|testFormat ()
 specifier|public
 name|void
@@ -89,7 +89,7 @@ name|LayoutFormatter
 name|a
 init|=
 operator|new
-name|AuthorAndsReplacer
+name|AuthorAndsCommaReplacer
 argument_list|()
 decl_stmt|;
 comment|// Empty case
@@ -121,38 +121,26 @@ expr_stmt|;
 comment|// Two names just an&
 name|assertEquals
 argument_list|(
-literal|"John Smith& Black Brown, Peter"
+literal|"John von Neumann& Peter Black Brown"
 argument_list|,
 name|a
 operator|.
 name|format
 argument_list|(
-literal|"John Smith and Black Brown, Peter"
+literal|"John von Neumann and Peter Black Brown"
 argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Three names put a comma:
 name|assertEquals
 argument_list|(
-literal|"von Neumann, John; Smith, John& Black Brown, Peter"
+literal|"von Neumann, John, Smith, John& Black Brown, Peter"
 argument_list|,
 name|a
 operator|.
 name|format
 argument_list|(
 literal|"von Neumann, John and Smith, John and Black Brown, Peter"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-literal|"John von Neumann; John Smith& Peter Black Brown"
-argument_list|,
-name|a
-operator|.
-name|format
-argument_list|(
-literal|"John von Neumann and John Smith and Peter Black Brown"
 argument_list|)
 argument_list|)
 expr_stmt|;
