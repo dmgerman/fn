@@ -1171,6 +1171,8 @@ name|isEntry
 condition|)
 comment|// True if not comment, preamble or string.
 block|{
+comment|//try
+comment|//{
 name|BibtexEntry
 name|be
 init|=
@@ -1278,6 +1280,9 @@ literal|")"
 argument_list|)
 expr_stmt|;
 block|}
+comment|//} catch (IOException ex) {
+comment|//    ex.printStackTrace();
+comment|//}
 block|}
 name|skipWhitespace
 argument_list|()
