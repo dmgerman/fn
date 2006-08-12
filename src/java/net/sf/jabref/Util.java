@@ -273,7 +273,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Describe class<code>Util</code> here.  *  * @author<a href="mailto:"></a>  * @version 1.0  */
+comment|/**  * Describe class<code>Util</code> here.  *   * @author<a href="mailto:"></a>  * @version 1.0  */
 end_comment
 
 begin_class
@@ -282,7 +282,8 @@ specifier|public
 class|class
 name|Util
 block|{
-comment|// A static Object for date formatting. Please do not create the object here,
+comment|// A static Object for date formatting. Please do not create the object
+comment|// here,
 comment|// because there are some references from the Globals class.....
 DECL|field|dateFormatter
 specifier|private
@@ -310,26 +311,26 @@ literal|200
 argument_list|)
 decl_stmt|;
 comment|// Integer values for indicating result of duplicate check (for entries):
+DECL|field|TYPE_MISMATCH
+DECL|field|NOT_EQUAL
+DECL|field|EQUAL
+DECL|field|EMPTY_IN_ONE
 specifier|final
 specifier|static
 name|int
-DECL|field|TYPE_MISMATCH
 name|TYPE_MISMATCH
 init|=
 operator|-
 literal|1
 decl_stmt|,
-DECL|field|NOT_EQUAL
 name|NOT_EQUAL
 init|=
 literal|0
 decl_stmt|,
-DECL|field|EQUAL
 name|EQUAL
 init|=
 literal|1
 decl_stmt|,
-DECL|field|EMPTY_IN_ONE
 name|EMPTY_IN_ONE
 init|=
 literal|2
@@ -574,9 +575,9 @@ name|idCounter
 operator|++
 argument_list|)
 return|;
-comment|//return String.valueOf(idCounter++);
+comment|// return String.valueOf(idCounter++);
 block|}
-comment|/**      * This method sets the location of a Dialog such that it is centered with      * regard to another window, but not outside the screen on the left and the      * top.      */
+comment|/** 	 * This method sets the location of a Dialog such that it is centered with 	 * regard to another window, but not outside the screen on the left and the 	 * top. 	 */
 DECL|method|placeDialog (java.awt.Dialog diag, java.awt.Container win)
 specifier|public
 specifier|static
@@ -677,7 +678,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This method translates a field or string from Bibtex notation, with      * possibly text contained in " " or { }, and string references,      * concatenated by '#' characters, into Bibkeeper notation, where string      * references are enclosed in a pair of '#' characters.      */
+comment|/** 	 * This method translates a field or string from Bibtex notation, with 	 * possibly text contained in " " or { }, and string references, 	 * concatenated by '#' characters, into Bibkeeper notation, where string 	 * references are enclosed in a pair of '#' characters. 	 */
 DECL|method|parseField (String content)
 specifier|public
 specifier|static
@@ -809,7 +810,7 @@ name|wr2
 argument_list|)
 operator|)
 expr_stmt|;
-comment|//System.out.println("FileLoader: "+content+" "+string+" "+hash+"
+comment|// System.out.println("FileLoader: "+content+" "+string+" "+hash+"
 comment|// "+wr1+" "+wr2);
 name|StringTokenizer
 name|tok
@@ -1153,12 +1154,12 @@ argument_list|,
 name|end
 argument_list|)
 expr_stmt|;
-comment|//Util.pr(s);
+comment|// Util.pr(s);
 return|return
 name|s
 return|;
 block|}
-comment|/**      * This method returns a String similar to the one passed in, except that it is      * molded into a form that is acceptable for bibtex.      *      * Watch-out that the returned string might be of length 0 afterwards.      *       * @param key mayBeNull      */
+comment|/** 	 * This method returns a String similar to the one passed in, except that it 	 * is molded into a form that is acceptable for bibtex. 	 *  	 * Watch-out that the returned string might be of length 0 afterwards. 	 *  	 * @param key 	 *            mayBeNull 	 */
 DECL|method|checkLegalKey (String key)
 specifier|public
 specifier|static
@@ -1296,7 +1297,7 @@ return|return
 name|newKeyS
 return|;
 block|}
-comment|/**      * Replace non-english characters like umlauts etc. with a sensible      * letter or letter combination that bibtex can accept. The basis      * for replacement is the HashMap GLobals.UNICODE_CHARS.      */
+comment|/** 	 * Replace non-english characters like umlauts etc. with a sensible letter 	 * or letter combination that bibtex can accept. The basis for replacement 	 * is the HashMap GLobals.UNICODE_CHARS. 	 */
 DECL|method|replaceSpecialCharacters (String s)
 specifier|public
 specifier|static
@@ -1354,7 +1355,7 @@ argument_list|(
 name|chr
 argument_list|)
 decl_stmt|;
-comment|//pr(chr+" "+replacer);
+comment|// pr(chr+" "+replacer);
 name|s
 operator|=
 name|s
@@ -1384,10 +1385,11 @@ name|int
 name|wrapAmount
 parameter_list|)
 block|{
-comment|// The following line cuts out all whitespace and replaces them with single
+comment|// The following line cuts out all whitespace and replaces them with
+comment|// single
 comment|// spaces:
-comment|//in = in.replaceAll("[ ]+"," ").replaceAll("[\\t]+"," ");
-comment|//StringBuffer out = new StringBuffer(in);
+comment|// in = in.replaceAll("[ ]+"," ").replaceAll("[\\t]+"," ");
+comment|// StringBuffer out = new StringBuffer(in);
 name|StringBuffer
 name|out
 init|=
@@ -1577,7 +1579,8 @@ name|int
 name|wrapAmount
 parameter_list|)
 block|{
-comment|// The following line cuts out all whitespace except line breaks, and replaces
+comment|// The following line cuts out all whitespace except line breaks, and
+comment|// replaces
 comment|// with single spaces. Line breaks are padded with a tab character:
 name|StringBuffer
 name|out
@@ -1600,7 +1603,7 @@ name|p
 init|=
 literal|0
 decl_stmt|;
-comment|//int lastInserted = -1;
+comment|// int lastInserted = -1;
 while|while
 condition|(
 name|p
@@ -1655,7 +1658,7 @@ argument_list|,
 name|p
 argument_list|)
 decl_stmt|;
-comment|//System.out.println(lbreak);
+comment|// System.out.println(lbreak);
 if|if
 condition|(
 operator|(
@@ -1719,7 +1722,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|//System.out.println(q+" "+out.length());
+comment|// System.out.println(q+" "+out.length());
 name|out
 operator|.
 name|deleteCharAt
@@ -1750,7 +1753,7 @@ operator|.
 name|toString
 argument_list|()
 return|;
-comment|//.replaceAll("\n", "\n\t");
+comment|// .replaceAll("\n", "\n\t");
 block|}
 DECL|method|findDeliminatedWordsInField (BibtexDatabase db, String field, String deliminator)
 specifier|public
@@ -1875,7 +1878,7 @@ return|return
 name|res
 return|;
 block|}
-comment|/**      * Returns a HashMap containing all words used in the database in the given      * field type. Characters in      *      * @param remove are not included.      * @param db     a<code>BibtexDatabase</code> value      * @param field  a<code>String</code> value      * @param remove a<code>String</code> value      * @return a<code>HashSet</code> value      */
+comment|/** 	 * Returns a HashMap containing all words used in the database in the given 	 * field type. Characters in 	 *  	 * @param remove 	 *            are not included. 	 * @param db 	 *            a<code>BibtexDatabase</code> value 	 * @param field 	 *            a<code>String</code> value 	 * @param remove 	 *            a<code>String</code> value 	 * @return a<code>HashSet</code> value 	 */
 DECL|method|findAllWordsInField (BibtexDatabase db, String field, String remove)
 specifier|public
 specifier|static
@@ -1992,7 +1995,7 @@ return|return
 name|res
 return|;
 block|}
-comment|/**      * Takes a String array and returns a string with the array's elements      * delimited by a certain String.      *      * @param strs      String array to convert.      * @param delimiter String to use as delimiter.      * @return Delimited String.      */
+comment|/** 	 * Takes a String array and returns a string with the array's elements 	 * delimited by a certain String. 	 *  	 * @param strs 	 *            String array to convert. 	 * @param delimiter 	 *            String to use as delimiter. 	 * @return Delimited String. 	 */
 DECL|method|stringArrayToDelimited (String[] strs, String delimiter)
 specifier|public
 specifier|static
@@ -2105,7 +2108,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Takes a delimited string, splits it and returns      *      * @param names a<code>String</code> value      * @return a<code>String[]</code> value      */
+comment|/** 	 * Takes a delimited string, splits it and returns 	 *  	 * @param names 	 *            a<code>String</code> value 	 * @return a<code>String[]</code> value 	 */
 DECL|method|delimToStringArray (String names, String delimiter)
 specifier|public
 specifier|static
@@ -2138,8 +2141,8 @@ name|delimiter
 argument_list|)
 return|;
 block|}
-comment|/**      * Open a http/pdf/ps viewer for the given link string.      */
-DECL|method|openExternalViewer (MetaData metaData, String link, String fieldName )
+comment|/** 	 * Open a http/pdf/ps viewer for the given link string. 	 */
+DECL|method|openExternalViewer (MetaData metaData, String link, String fieldName)
 specifier|public
 specifier|static
 name|void
@@ -2524,7 +2527,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
-comment|/*cmdArray[0] = Globals.prefs.get("htmlviewer");                     cmdArray[1] = link;                     Process child = Runtime.getRuntime().exec(                     cmdArray[0] + " " + cmdArray[1]);                     */
+comment|/* 					 * cmdArray[0] = Globals.prefs.get("htmlviewer"); 					 * cmdArray[1] = link; Process child = 					 * Runtime.getRuntime().exec( cmdArray[0] + " " + 					 * cmdArray[1]); 					 */
 block|}
 else|else
 block|{
@@ -2676,7 +2679,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-comment|/*                     cmdArray[0] = Globals.prefs.get("psviewer");                     cmdArray[1] = link;                     Process child = Runtime.getRuntime().exec(                             cmdArray[0] + " " + cmdArray[1]);                     */
+comment|/* 					 * cmdArray[0] = Globals.prefs.get("psviewer"); cmdArray[1] = 					 * link; Process child = Runtime.getRuntime().exec( 					 * cmdArray[0] + " " + cmdArray[1]); 					 */
 block|}
 else|else
 block|{
@@ -2816,7 +2819,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-comment|/*                     String[] spl = link.split("\\\\");                     StringBuffer sb = new StringBuffer();                     for (int i = 0; i< spl.length; i++) {                         if (i> 0) sb.append("\\");                         if (spl[i].indexOf(" ")>= 0) spl[i] = "\"" + spl[i]                                 + "\"";                         sb.append(spl[i]);                      }                     //pr(sb.toString());                     link = sb.toString();                      String cmd = "cmd.exe /c start " + link;                      Process child = Runtime.getRuntime().exec(cmd);                     */
+comment|/* 					 * String[] spl = link.split("\\\\"); StringBuffer sb = new 					 * StringBuffer(); for (int i = 0; i< spl.length; i++) { if 					 * (i> 0) sb.append("\\"); if (spl[i].indexOf(" ")>= 0) 					 * spl[i] = "\"" + spl[i] + "\""; sb.append(spl[i]); 					 *  } //pr(sb.toString()); link = sb.toString(); 					 *  					 * String cmd = "cmd.exe /c start " + link; 					 *  					 * Process child = Runtime.getRuntime().exec(cmd); 					 */
 block|}
 else|else
 block|{
@@ -2841,7 +2844,7 @@ index|]
 operator|=
 name|link
 expr_stmt|;
-comment|//Process child = Runtime.getRuntime().exec(cmdArray[0]+"
+comment|// Process child = Runtime.getRuntime().exec(cmdArray[0]+"
 comment|// "+cmdArray[1]);
 name|Process
 name|child
@@ -2916,10 +2919,10 @@ argument_list|(
 literal|"Message: currently only PDF, PS and HTML files can be opened by double clicking"
 argument_list|)
 expr_stmt|;
-comment|//ignore
+comment|// ignore
 block|}
 block|}
-comment|/**      * Opens a file on a Windows system, using its default viewer.      * @param link The file name.      * @param localFile true if it is a local file, not an URL.      * @throws IOException      */
+comment|/** 	 * Opens a file on a Windows system, using its default viewer. 	 *  	 * @param link 	 *            The file name. 	 * @param localFile 	 *            true if it is a local file, not an URL. 	 * @throws IOException 	 */
 DECL|method|openFileOnWindows (String link, boolean localFile)
 specifier|public
 specifier|static
@@ -2935,7 +2938,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|/*if (localFile) {             String[] spl = link.split("\\\\");             StringBuffer sb = new StringBuffer();             for (int i = 0; i< spl.length; i++) {                 if (i> 0) sb.append("\\");                 if (spl[i].indexOf(" ")>= 0) spl[i] = "\"" + spl[i]                         + "\"";                 sb.append(spl[i]);             }             link = sb.toString();             }*/
+comment|/* 		 * if (localFile) { String[] spl = link.split("\\\\"); StringBuffer sb = 		 * new StringBuffer(); for (int i = 0; i< spl.length; i++) { if (i> 0) 		 * sb.append("\\"); if (spl[i].indexOf(" ")>= 0) spl[i] = "\"" + spl[i] + 		 * "\""; sb.append(spl[i]); } link = sb.toString(); } 		 */
 name|link
 operator|=
 name|link
@@ -2954,13 +2957,39 @@ argument_list|,
 literal|"\" \""
 argument_list|)
 expr_stmt|;
+comment|// Bug fix for:
+comment|// http://sourceforge.net/tracker/index.php?func=detail&aid=1489454&group_id=92314&atid=600306
 name|String
 name|cmd
-init|=
+decl_stmt|;
+if|if
+condition|(
+name|Globals
+operator|.
+name|osName
+operator|.
+name|startsWith
+argument_list|(
+literal|"Windows 9"
+argument_list|)
+condition|)
+block|{
+name|cmd
+operator|=
+literal|"command.com /c start "
+operator|+
+name|link
+expr_stmt|;
+block|}
+else|else
+block|{
+name|cmd
+operator|=
 literal|"cmd.exe /c start "
 operator|+
 name|link
-decl_stmt|;
+expr_stmt|;
+block|}
 name|Process
 name|child
 init|=
@@ -2975,7 +3004,7 @@ name|cmd
 argument_list|)
 decl_stmt|;
 block|}
-comment|/**      * Open an external file, attempting to use the correct viewer for it.      * @param metaData The MetaData for the database this file belongs to.      * @param link The file name.      */
+comment|/** 	 * Open an external file, attempting to use the correct viewer for it. 	 *  	 * @param metaData 	 *            The MetaData for the database this file belongs to. 	 * @param link 	 *            The file name. 	 */
 DECL|method|openExternalFileAnyFormat (MetaData metaData, String link)
 specifier|public
 specifier|static
@@ -3059,7 +3088,7 @@ argument_list|()
 else|:
 literal|null
 decl_stmt|;
-comment|/*if ((extension == null) || (extension.length() == 0)) {             // No extension. What to do?             throw new IOException(Globals.lang("No file extension. Could not find viewer for file."));         } */
+comment|/* 		 * if ((extension == null) || (extension.length() == 0)) { // No 		 * extension. What to do? throw new IOException(Globals.lang("No file 		 * extension. Could not find viewer for file.")); } 		 */
 comment|// Now we know the extension, check if it is one we know about:
 name|ExternalFileType
 name|fileType
@@ -3430,7 +3459,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Make sure an URL is "portable", in that it doesn't contain bad characters      * that break the open command in some OSes.      * @param link The URL to sanitize.      * @return Sanitized URL      */
+comment|/** 	 * Make sure an URL is "portable", in that it doesn't contain bad characters 	 * that break the open command in some OSes. 	 *  	 * @param link 	 *            The URL to sanitize. 	 * @return Sanitized URL 	 */
 DECL|method|sanitizeUrl (String link)
 specifier|private
 specifier|static
@@ -3507,7 +3536,7 @@ name|toASCIIString
 argument_list|()
 return|;
 block|}
-comment|/**      * Searches the given directory and subdirectories for a pdf file with name      * as given + ".pdf"      */
+comment|/** 	 * Searches the given directory and subdirectories for a pdf file with name 	 * as given + ".pdf" 	 */
 DECL|method|findPdf (String key, String extension, String directory, OpenFileFilter off)
 specifier|public
 specifier|static
@@ -3527,8 +3556,8 @@ name|OpenFileFilter
 name|off
 parameter_list|)
 block|{
-comment|//String filename = key + "."+extension;
-comment|/* Simon Fischer's patch for replacing a regexp in keys before converting to filename:          String regex = Globals.prefs.get("basenamePatternRegex");         if ((regex != null)&& (regex.trim().length()> 0)) {             String replacement = Globals.prefs.get("basenamePatternReplacement");             key = key.replaceAll(regex, replacement);         }         */
+comment|// String filename = key + "."+extension;
+comment|/* 		 * Simon Fischer's patch for replacing a regexp in keys before 		 * converting to filename: 		 *  		 * String regex = Globals.prefs.get("basenamePatternRegex"); if ((regex != 		 * null)&& (regex.trim().length()> 0)) { String replacement = 		 * Globals.prefs.get("basenamePatternReplacement"); key = 		 * key.replaceAll(regex, replacement); } 		 */
 if|if
 condition|(
 operator|!
@@ -3587,7 +3616,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * New version of findPdf that uses findFiles.      */
+comment|/** 	 * New version of findPdf that uses findFiles. 	 */
 DECL|method|findPdf (BibtexEntry entry, String extension, String directory)
 specifier|public
 specifier|static
@@ -3702,8 +3731,8 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * Searches the given directory and file name pattern for a file for the bibtexentry.      *       * Used to fix:      *         *   http://sourceforge.net/tracker/index.php?func=detail&aid=1503410&group_id=92314&atid=600309      *         * Requirements:      *       *   - Be able to find the associated PDF in a set of given directories.        *       *   - Be able to return a relative path or absolute path. -> This is not implemented       *         *   - Be fast.      *         *   - Allow for flexible naming schemes in the PDFs.      *         * Syntax scheme:      *       *   *     Any subDir      *   **    Any subDir (recursiv)      *   [key] Key from bibtex file and database      *   .*    Anything else is taken to be a Regular expression.      *         * @param entry non-null      * @param database non-null      * @param directory non-null      * @param file non-null      *       * @return Will return the first file found to match the given criteria or null if none was found.      */
-DECL|method|findFile ( BibtexEntry entry, BibtexDatabase database, String directory, String file)
+comment|/** 	 * Searches the given directory and file name pattern for a file for the 	 * bibtexentry. 	 *  	 * Used to fix: 	 *  	 * http://sourceforge.net/tracker/index.php?func=detail&aid=1503410&group_id=92314&atid=600309 	 *  	 * Requirements: 	 *  - Be able to find the associated PDF in a set of given directories. 	 *  - Be able to return a relative path or absolute path. -> This is not 	 * implemented 	 *  - Be fast. 	 *  - Allow for flexible naming schemes in the PDFs. 	 *  	 * Syntax scheme: 	 *  * Any subDir ** Any subDir (recursiv) [key] Key from bibtex file and 	 * database .* Anything else is taken to be a Regular expression. 	 *  	 * @param entry 	 *            non-null 	 * @param database 	 *            non-null 	 * @param directory 	 *            non-null 	 * @param file 	 *            non-null 	 *  	 * @return Will return the first file found to match the given criteria or 	 *         null if none was found. 	 */
+DECL|method|findFile (BibtexEntry entry, BibtexDatabase database, String directory, String file)
 specifier|public
 specifier|static
 name|String
@@ -3741,7 +3770,7 @@ name|file
 argument_list|)
 return|;
 block|}
-comment|/**      * Removes optional square brackets from the string s      * @param s      * @return      */
+comment|/** 	 * Removes optional square brackets from the string s 	 *  	 * @param s 	 * @return 	 */
 DECL|method|stripBrackets (String s)
 specifier|public
 specifier|static
@@ -3803,7 +3832,7 @@ name|endIndex
 argument_list|)
 return|;
 block|}
-comment|/**      * Accepts a string like [author:toLowerCase,toUpperCase], whereas the first string signifies       * the bibtex-field to get while the others are the names of layouters that will be applied.      *       * @param fieldAndFormat      * @param entry      * @param database      * @return      */
+comment|/** 	 * Accepts a string like [author:toLowerCase,toUpperCase], whereas the first 	 * string signifies the bibtex-field to get while the others are the names 	 * of layouters that will be applied. 	 *  	 * @param fieldAndFormat 	 * @param entry 	 * @param database 	 * @return 	 */
 DECL|method|getFieldAndFormat (String fieldAndFormat, BibtexEntry entry, BibtexDatabase database)
 specifier|public
 specifier|static
@@ -4028,7 +4057,7 @@ return|return
 name|res
 return|;
 block|}
-comment|/**      * Internal Version of findFile, which also accepts a current directory to base the search on.      *       * @param currentDirectory      * @param entry      * @param database      * @param directory      * @param file      * @return      */
+comment|/** 	 * Internal Version of findFile, which also accepts a current directory to 	 * base the search on. 	 *  	 * @param currentDirectory 	 * @param entry 	 * @param database 	 * @param directory 	 * @param file 	 * @return 	 */
 DECL|method|findFile (File currentDirectory, BibtexEntry entry, BibtexDatabase database, String directory, String file)
 specifier|protected
 specifier|static
@@ -4342,7 +4371,8 @@ operator|.
 name|length
 argument_list|)
 decl_stmt|;
-comment|// Before checking the subdirs, we first check the current dir
+comment|// Before checking the subdirs, we first check the current
+comment|// dir
 name|String
 name|result
 init|=
@@ -4669,7 +4699,7 @@ argument_list|(
 literal|"\\[.*?\\]"
 argument_list|)
 decl_stmt|;
-comment|/**      * Takes a string that contains bracketed expression and expands each of these using      * getFieldAndFormat.      *       * Unknown Bracket expressions are silently dropped.      *       * @param bracketString      * @param entry      * @param database      * @return      */
+comment|/** 	 * Takes a string that contains bracketed expression and expands each of 	 * these using getFieldAndFormat. 	 *  	 * Unknown Bracket expressions are silently dropped. 	 *  	 * @param bracketString 	 * @param entry 	 * @param database 	 * @return 	 */
 DECL|method|expandBrackets (String bracketString, BibtexEntry entry, BibtexDatabase database)
 specifier|public
 specifier|static
@@ -4760,7 +4790,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Concatenate all strings in the array from index 'from' to 'to'       * (excluding to) with the given separator.      *       * Example:      *       *   String[] s = "ab/cd/ed".split("/");      *   join(s, "\\", 0, s.length) -> "ab\\cd\\ed"      *       * @param strings      * @param separator      * @param from      * @param to Excluding strings[to]      * @return      */
+comment|/** 	 * Concatenate all strings in the array from index 'from' to 'to' (excluding 	 * to) with the given separator. 	 *  	 * Example: 	 *  	 * String[] s = "ab/cd/ed".split("/"); join(s, "\\", 0, s.length) -> 	 * "ab\\cd\\ed" 	 *  	 * @param strings 	 * @param separator 	 * @param from 	 * @param to 	 *            Excluding strings[to] 	 * @return 	 */
 DECL|method|join (String[] strings, String separator, int from, int to)
 specifier|public
 specifier|static
@@ -4853,7 +4883,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.      */
+comment|/** 	 * Converts a relative filename to an absolute one, if necessary. Returns 	 * null if the file does not exist. 	 */
 DECL|method|expandFilename (String name, String dir)
 specifier|public
 specifier|static
@@ -4867,7 +4897,7 @@ name|String
 name|dir
 parameter_list|)
 block|{
-comment|//System.out.println("expandFilename: name="+name+"\t dir="+dir);
+comment|// System.out.println("expandFilename: name="+name+"\t dir="+dir);
 name|File
 name|file
 init|=
@@ -4956,8 +4986,8 @@ argument_list|)
 operator|+
 name|name
 expr_stmt|;
-comment|//System.out.println("expanded to: "+name);
-comment|//if (name.startsWith("ftp"))
+comment|// System.out.println("expanded to: "+name);
+comment|// if (name.startsWith("ftp"))
 name|file
 operator|=
 operator|new
@@ -5039,7 +5069,7 @@ argument_list|,
 literal|"/"
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("expandFilename: "+name);
+comment|// System.out.println("expandFilename: "+name);
 name|file
 operator|=
 operator|new
@@ -5221,7 +5251,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Checks if the two entries represent the same publication.      *      * @param one BibtexEntry      * @param two BibtexEntry      * @return boolean      */
+comment|/** 	 * Checks if the two entries represent the same publication. 	 *  	 * @param one 	 *            BibtexEntry 	 * @param two 	 *            BibtexEntry 	 * @return boolean 	 */
 DECL|method|isDuplicate (BibtexEntry one, BibtexEntry two, float threshold)
 specifier|public
 specifier|static
@@ -5342,7 +5372,7 @@ operator|)
 return|;
 block|}
 block|}
-comment|/**      * Goes through all entries in the given database, and if at least one of      * them is a duplicate of the given entry, as per Util.isDuplicate(BibtexEntry, BibtexEntry),      * the duplicate is returned. The search is terminated when the first duplicate is found.      *      * @param database The database to search.      * @param entry    The entry of which we are looking for duplicates.      * @return The first duplicate entry found. null if no duplicates are found.      */
+comment|/** 	 * Goes through all entries in the given database, and if at least one of 	 * them is a duplicate of the given entry, as per 	 * Util.isDuplicate(BibtexEntry, BibtexEntry), the duplicate is returned. 	 * The search is terminated when the first duplicate is found. 	 *  	 * @param database 	 *            The database to search. 	 * @param entry 	 *            The entry of which we are looking for duplicates. 	 * @return The first duplicate entry found. null if no duplicates are found. 	 */
 DECL|method|containsDuplicate (BibtexDatabase database, BibtexEntry entry)
 specifier|public
 specifier|static
@@ -5454,7 +5484,7 @@ name|i
 operator|++
 control|)
 block|{
-comment|//Util.pr(":"+compareSingleField(fields[i], one, two));
+comment|// Util.pr(":"+compareSingleField(fields[i], one, two));
 if|if
 condition|(
 name|compareSingleField
@@ -5475,7 +5505,7 @@ block|{
 name|res
 operator|++
 expr_stmt|;
-comment|//Util.pr(fields[i]);
+comment|// Util.pr(fields[i]);
 block|}
 block|}
 return|return
@@ -5582,7 +5612,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 expr_stmt|;
-comment|//Util.pr(field+": '"+s1+"' vs '"+s2+"'");
+comment|// Util.pr(field+": '"+s1+"' vs '"+s2+"'");
 if|if
 condition|(
 name|field
@@ -5750,7 +5780,7 @@ operator|new
 name|HashSet
 argument_list|()
 decl_stmt|;
-comment|//one.getAllFields());
+comment|// one.getAllFields());
 name|Object
 index|[]
 name|o
@@ -5946,9 +5976,9 @@ name|size
 argument_list|()
 return|;
 block|}
-comment|/**      * This methods assures all words in the given entry are recorded in their      * respective Completers, if any.      */
-comment|/*      * public static void updateCompletersForEntry(Hashtable autoCompleters,      * BibtexEntry be) {      *      * for (Iterator j=autoCompleters.keySet().iterator(); j.hasNext();) {      * String field = (String)j.next(); Completer comp =      * (Completer)autoCompleters.get(field); comp.addAll(be.getField(field)); } }      */
-comment|/**      * Sets empty or non-existing owner fields of bibtex entries inside a List      * to a specified default value. Timestamp field is also set. Preferences are      * checked to see if these options are enabled.      *      * @param bibs List of bibtex entries      */
+comment|/** 	 * This methods assures all words in the given entry are recorded in their 	 * respective Completers, if any. 	 */
+comment|/* 	 * public static void updateCompletersForEntry(Hashtable autoCompleters, 	 * BibtexEntry be) { 	 *  	 * for (Iterator j=autoCompleters.keySet().iterator(); j.hasNext();) { 	 * String field = (String)j.next(); Completer comp = 	 * (Completer)autoCompleters.get(field); comp.addAll(be.getField(field)); } } 	 */
+comment|/** 	 * Sets empty or non-existing owner fields of bibtex entries inside a List 	 * to a specified default value. Timestamp field is also set. Preferences 	 * are checked to see if these options are enabled. 	 *  	 * @param bibs 	 *            List of bibtex entries 	 */
 DECL|method|setAutomaticFields (List bibs)
 specifier|public
 specifier|static
@@ -6062,7 +6092,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Sets empty or non-existing owner fields of a bibtex entry      * to a specified default value. Timestamp field is also set. Preferences are      * checked to see if these options are enabled.      *      * @param entry The entry to set fields for.      */
+comment|/** 	 * Sets empty or non-existing owner fields of a bibtex entry to a specified 	 * default value. Timestamp field is also set. Preferences are checked to 	 * see if these options are enabled. 	 *  	 * @param entry 	 *            The entry to set fields for. 	 */
 DECL|method|setAutomaticFields (BibtexEntry entry)
 specifier|public
 specifier|static
@@ -6174,8 +6204,8 @@ name|setOwner
 condition|)
 block|{
 comment|// No or empty owner field?
-comment|//if (entry.getField(Globals.OWNER) == null
-comment|//        || ((String) entry.getField(Globals.OWNER)).length() == 0) {
+comment|// if (entry.getField(Globals.OWNER) == null
+comment|// || ((String) entry.getField(Globals.OWNER)).length() == 0) {
 comment|// Set owner field to default value
 name|entry
 operator|.
@@ -6188,7 +6218,7 @@ argument_list|,
 name|owner
 argument_list|)
 expr_stmt|;
-comment|//}
+comment|// }
 block|}
 if|if
 condition|(
@@ -6204,7 +6234,7 @@ name|timeStamp
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Copies a file.      *      * @param source         File Source file      * @param dest           File Destination file      * @param deleteIfExists boolean Determines whether the copy goes on even if the file      *                       exists.      * @throws IOException      * @return boolean Whether the copy succeeded, or was stopped due to the      * file already existing.      */
+comment|/** 	 * Copies a file. 	 *  	 * @param source 	 *            File Source file 	 * @param dest 	 *            File Destination file 	 * @param deleteIfExists 	 *            boolean Determines whether the copy goes on even if the file 	 *            exists. 	 * @throws IOException 	 * @return boolean Whether the copy succeeded, or was stopped due to the 	 *         file already existing. 	 */
 DECL|method|copyFile (File source, File dest, boolean deleteIfExists)
 specifier|public
 specifier|static
@@ -6252,7 +6282,7 @@ condition|)
 return|return
 literal|false
 return|;
-comment|//else dest.delete();
+comment|// else dest.delete();
 block|}
 name|in
 operator|=
@@ -6281,7 +6311,7 @@ expr_stmt|;
 name|int
 name|el
 decl_stmt|;
-comment|//int tell = 0;
+comment|// int tell = 0;
 while|while
 condition|(
 operator|(
@@ -6351,7 +6381,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * This method is called at startup, and makes necessary adaptations to      * preferences for users from an earlier version of Jabref.      */
+comment|/** 	 * This method is called at startup, and makes necessary adaptations to 	 * preferences for users from an earlier version of Jabref. 	 */
 DECL|method|performCompatibilityUpdate ()
 specifier|public
 specifier|static
@@ -6373,7 +6403,7 @@ argument_list|(
 literal|"generalFields"
 argument_list|)
 decl_stmt|;
-comment|//pr(genFields+"\t"+genFields.indexOf("abstract"));
+comment|// pr(genFields+"\t"+genFields.indexOf("abstract"));
 if|if
 condition|(
 name|genFields
@@ -6386,7 +6416,7 @@ operator|>=
 literal|0
 condition|)
 block|{
-comment|//pr(genFields+"\t"+genFields.indexOf("abstract"));
+comment|// pr(genFields+"\t"+genFields.indexOf("abstract"));
 name|String
 name|newGen
 decl_stmt|;
@@ -6488,7 +6518,7 @@ name|newGen
 operator|=
 name|genFields
 expr_stmt|;
-comment|//pr(newGen);
+comment|// pr(newGen);
 name|Globals
 operator|.
 name|prefs
@@ -6503,7 +6533,7 @@ expr_stmt|;
 block|}
 block|}
 comment|// -------------------------------------------------------------------------------
-comment|/**      * extends the filename with a default Extension, if no Extension '.x' could      * be found      */
+comment|/** 	 * extends the filename with a default Extension, if no Extension '.x' could 	 * be found 	 */
 DECL|method|getCorrectFileName (String orgName, String defaultExtension)
 specifier|public
 specifier|static
@@ -6562,7 +6592,7 @@ return|return
 name|back
 return|;
 block|}
-comment|/** Quotes each and every character, e.g. '!' as&#33;. Used for      *  verbatim display of arbitrary strings that may contain HTML entities. */
+comment|/** 	 * Quotes each and every character, e.g. '!' as&#33;. Used for verbatim 	 * display of arbitrary strings that may contain HTML entities. 	 */
 DECL|method|quoteForHTML (String s)
 specifier|public
 specifier|static
@@ -6654,7 +6684,7 @@ literal|0
 argument_list|)
 return|;
 block|}
-comment|/**      * Quote special characters.      *      * @param s         The String which may contain special characters.      * @param specials  A String containing all special characters except the quoting      *                  character itself, which is automatically quoted.      * @param quoteChar The quoting character.      * @param linewrap  The number of characters after which a linebreak is inserted      *                  (this linebreak is undone by unquote()). Set to 0 to disable.      * @return A String with every special character (including the quoting      *         character itself) quoted.      */
+comment|/** 	 * Quote special characters. 	 *  	 * @param s 	 *            The String which may contain special characters. 	 * @param specials 	 *            A String containing all special characters except the quoting 	 *            character itself, which is automatically quoted. 	 * @param quoteChar 	 *            The quoting character. 	 * @param linewrap 	 *            The number of characters after which a linebreak is inserted 	 *            (this linebreak is undone by unquote()). Set to 0 to disable. 	 * @return A String with every special character (including the quoting 	 *         character itself) quoted. 	 */
 DECL|method|quote (String s, String specials, char quoteChar, int linewrap)
 specifier|public
 specifier|static
@@ -6809,7 +6839,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Unquote special characters.      *      * @param s         The String which may contain quoted special characters.      * @param quoteChar The quoting character.      * @return A String with all quoted characters unquoted.      */
+comment|/** 	 * Unquote special characters. 	 *  	 * @param s 	 *            The String which may contain quoted special characters. 	 * @param quoteChar 	 *            The quoting character. 	 * @return A String with all quoted characters unquoted. 	 */
 DECL|method|unquote (String s, char quoteChar)
 specifier|public
 specifier|static
@@ -6922,7 +6952,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Quote all regular expression meta characters in s, in order to      * search for s literally.      */
+comment|/** 	 * Quote all regular expression meta characters in s, in order to search for 	 * s literally. 	 */
 DECL|method|quoteMeta (String s)
 specifier|public
 specifier|static
@@ -6933,7 +6963,8 @@ name|String
 name|s
 parameter_list|)
 block|{
-comment|// work around a bug: trailing backslashes have to be quoted individually
+comment|// work around a bug: trailing backslashes have to be quoted
+comment|// individually
 name|int
 name|i
 init|=
@@ -7017,7 +7048,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/*      * This method "tidies" up e.g. a keyword string, by alphabetizing the words and      * removing all duplicates.      */
+comment|/* 	 * This method "tidies" up e.g. a keyword string, by alphabetizing the words 	 * and removing all duplicates. 	 */
 DECL|method|sortWordsAndRemoveDuplicates (String text)
 specifier|public
 specifier|static
@@ -7161,7 +7192,7 @@ else|:
 literal|""
 return|;
 block|}
-comment|/**      * Warns the user of undesired side effects of an explicit      * assignment/removal of entries to/from this group. Currently there are      * four types of groups: AllEntriesGroup, SearchGroup - do not support      * explicit assignment. ExplicitGroup - never modifies entries. KeywordGroup -      * only this modifies entries upon assignment/removal. Modifications are      * acceptable unless they affect a standard field (such as "author") besides      * the "keywords" field.      *      * @param parent The Component used as a parent when displaying a      *               confirmation dialog.      * @return true if the assignment has no undesired side effects, or the user      *         chose to perform it anyway. false otherwise (this indicates that      *         the user has aborted the assignment).      */
+comment|/** 	 * Warns the user of undesired side effects of an explicit 	 * assignment/removal of entries to/from this group. Currently there are 	 * four types of groups: AllEntriesGroup, SearchGroup - do not support 	 * explicit assignment. ExplicitGroup - never modifies entries. KeywordGroup - 	 * only this modifies entries upon assignment/removal. Modifications are 	 * acceptable unless they affect a standard field (such as "author") besides 	 * the "keywords" field. 	 *  	 * @param parent 	 *            The Component used as a parent when displaying a confirmation 	 *            dialog. 	 * @return true if the assignment has no undesired side effects, or the user 	 *         chose to perform it anyway. false otherwise (this indicates that 	 *         the user has aborted the assignment). 	 */
 DECL|method|warnAssignmentSideEffects (AbstractGroup[] groups, BibtexEntry[] entries, BibtexDatabase db, Component parent)
 specifier|public
 specifier|static
@@ -7406,35 +7437,36 @@ name|JOptionPane
 operator|.
 name|NO_OPTION
 return|;
-comment|//        if (groups instanceof KeywordGroup) {
-comment|//            KeywordGroup kg = (KeywordGroup) groups;
-comment|//            String field = kg.getSearchField().toLowerCase();
-comment|//            if (field.equals("keywords"))
-comment|//                return true; // this is not undesired
-comment|//            for (int i = 0; i< GUIGlobals.ALL_FIELDS.length; ++i) {
-comment|//                if (field.equals(GUIGlobals.ALL_FIELDS[i])) {
-comment|//                    // show a warning, then return
-comment|//                    String message = Globals // JZTODO lyrics...
-comment|//                            .lang(
-comment|//                                    "This action will modify the \"%0\" field "
-comment|//                                            + "of your entries.\nThis could cause undesired changes to "
-comment|//                                            + "your entries, so it is\nrecommended that you change the grouping field "
-comment|//                                            + "in your group\ndefinition to \"keywords\" or a non-standard name."
-comment|//                                            + "\n\nDo you still want to continue?",
-comment|//                                    field);
-comment|//                    int choice = JOptionPane.showConfirmDialog(parent, message,
-comment|//                            Globals.lang("Warning"), JOptionPane.YES_NO_OPTION,
-comment|//                            JOptionPane.WARNING_MESSAGE);
-comment|//                    return choice != JOptionPane.NO_OPTION;
-comment|//                }
-comment|//            }
-comment|//        }
-comment|//        return true; // found no side effects
+comment|// if (groups instanceof KeywordGroup) {
+comment|// KeywordGroup kg = (KeywordGroup) groups;
+comment|// String field = kg.getSearchField().toLowerCase();
+comment|// if (field.equals("keywords"))
+comment|// return true; // this is not undesired
+comment|// for (int i = 0; i< GUIGlobals.ALL_FIELDS.length; ++i) {
+comment|// if (field.equals(GUIGlobals.ALL_FIELDS[i])) {
+comment|// // show a warning, then return
+comment|// String message = Globals // JZTODO lyrics...
+comment|// .lang(
+comment|// "This action will modify the \"%0\" field "
+comment|// + "of your entries.\nThis could cause undesired changes to "
+comment|// + "your entries, so it is\nrecommended that you change the grouping
+comment|// field "
+comment|// + "in your group\ndefinition to \"keywords\" or a non-standard name."
+comment|// + "\n\nDo you still want to continue?",
+comment|// field);
+comment|// int choice = JOptionPane.showConfirmDialog(parent, message,
+comment|// Globals.lang("Warning"), JOptionPane.YES_NO_OPTION,
+comment|// JOptionPane.WARNING_MESSAGE);
+comment|// return choice != JOptionPane.NO_OPTION;
+comment|// }
+comment|// }
+comment|// }
+comment|// return true; // found no side effects
 block|}
-comment|//========================================================
+comment|// ========================================================
 comment|// lot of abreviations in medline
 comment|// PKC etc convert to {PKC} ...
-comment|//========================================================
+comment|// ========================================================
 DECL|field|titleCapitalPattern
 specifier|static
 name|Pattern
@@ -7447,7 +7479,7 @@ argument_list|(
 literal|"[A-Z]+"
 argument_list|)
 decl_stmt|;
-comment|/**      * Wrap all uppercase letters, or sequences of uppercase letters, in      * curly braces. Ignore letters within a pair of # character, as these      * are part of a string label that should not be modified.      * @param s The string to modify.      * @return The resulting string after wrapping capitals.      */
+comment|/** 	 * Wrap all uppercase letters, or sequences of uppercase letters, in curly 	 * braces. Ignore letters within a pair of # character, as these are part of 	 * a string label that should not be modified. 	 *  	 * @param s 	 *            The string to modify. 	 * @return The resulting string after wrapping capitals. 	 */
 DECL|method|putBracesAroundCapitals (String s)
 specifier|public
 specifier|static
@@ -7688,7 +7720,7 @@ operator|.
 name|toString
 argument_list|()
 return|;
-comment|/*if (s.length() == 0) return s; // Protect against ArrayIndexOutOf....         StringBuffer buf = new StringBuffer();          Matcher mcr = titleCapitalPattern.matcher(s.substring(1));         while (mcr.find()) {             String replaceStr = mcr.group();             mcr.appendReplacement(buf, "{" + replaceStr + "}");         }         mcr.appendTail(buf);         return s.substring(0, 1) + buf.toString();*/
+comment|/* 		 * if (s.length() == 0) return s; // Protect against ArrayIndexOutOf.... 		 * StringBuffer buf = new StringBuffer(); 		 *  		 * Matcher mcr = titleCapitalPattern.matcher(s.substring(1)); while 		 * (mcr.find()) { String replaceStr = mcr.group(); 		 * mcr.appendReplacement(buf, "{" + replaceStr + "}"); } 		 * mcr.appendTail(buf); return s.substring(0, 1) + buf.toString(); 		 */
 block|}
 DECL|field|bracedTitleCapitalPattern
 specifier|static
@@ -7702,7 +7734,7 @@ argument_list|(
 literal|"\\{[A-Z]+\\}"
 argument_list|)
 decl_stmt|;
-comment|/**      * This method looks for occurences of capital letters enclosed in an arbitrary number of      * pairs of braces, e.g. "{AB}" or "{{T}}". All of these pairs of braces are removed.      * @param s The String to analyze.      * @return A new String with braces removed.      */
+comment|/** 	 * This method looks for occurences of capital letters enclosed in an 	 * arbitrary number of pairs of braces, e.g. "{AB}" or "{{T}}". All of these 	 * pairs of braces are removed. 	 *  	 * @param s 	 *            The String to analyze. 	 * @return A new String with braces removed. 	 */
 DECL|method|removeBracesAroundCapitals (String s)
 specifier|public
 specifier|static
@@ -7747,7 +7779,7 @@ return|return
 name|s
 return|;
 block|}
-comment|/**      * This method looks for occurences of capital letters enclosed in one pair of braces, e.g. "{AB}".      * All these are replaced by only the capitals in between the braces.      * @param s The String to analyze.      * @return A new String with braces removed.      */
+comment|/** 	 * This method looks for occurences of capital letters enclosed in one pair 	 * of braces, e.g. "{AB}". All these are replaced by only the capitals in 	 * between the braces. 	 *  	 * @param s 	 *            The String to analyze. 	 * @return A new String with braces removed. 	 */
 DECL|method|removeSingleBracesAroundCapitals (String s)
 specifier|public
 specifier|static
@@ -7827,7 +7859,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * This method looks up what kind of external binding is used for the given field,      * and constructs on OpenFileFilter suitable for browsing for an external file.      *      * @param fieldName The BibTeX field in question.      * @return The file filter.      */
+comment|/** 	 * This method looks up what kind of external binding is used for the given 	 * field, and constructs on OpenFileFilter suitable for browsing for an 	 * external file. 	 *  	 * @param fieldName 	 *            The BibTeX field in question. 	 * @return The file filter. 	 */
 DECL|method|getFileFilterForField (String fieldName)
 specifier|public
 specifier|static
@@ -7911,7 +7943,7 @@ return|return
 name|off
 return|;
 block|}
-comment|/**      * This method can be used to display a "rich" error dialog which offers the entire      * stack trace for an exception.      *      * @param parent      * @param e      */
+comment|/** 	 * This method can be used to display a "rich" error dialog which offers the 	 * entire stack trace for an exception. 	 *  	 * @param parent 	 * @param e 	 */
 DECL|method|showQuickErrorDialog (JFrame parent, String title, Exception e)
 specifier|public
 specifier|static
@@ -8415,7 +8447,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Creates a String containing the current date (and possibly time), formatted      * according to the format set in preferences under the key "timeStampFormat".      *      * @return The date string.      */
+comment|/** 	 * Creates a String containing the current date (and possibly time), 	 * formatted according to the format set in preferences under the key 	 * "timeStampFormat". 	 *  	 * @return The date string. 	 */
 DECL|method|easyDateFormat ()
 specifier|public
 specifier|static
@@ -8423,7 +8455,7 @@ name|String
 name|easyDateFormat
 parameter_list|()
 block|{
-comment|//        Date today = new Date();
+comment|// Date today = new Date();
 return|return
 name|easyDateFormat
 argument_list|(
@@ -8433,7 +8465,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Creates a readable Date string from the parameter date.      * The format is set in preferences under the key "timeStampFormat".      *      * @return The formatted date string.      */
+comment|/** 	 * Creates a readable Date string from the parameter date. The format is set 	 * in preferences under the key "timeStampFormat". 	 *  	 * @return The formatted date string. 	 */
 DECL|method|easyDateFormat (Date date)
 specifier|public
 specifier|static
@@ -8567,7 +8599,7 @@ name|toString
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|//sb.append(' ');
+comment|// sb.append(' ');
 name|sb
 operator|.
 name|append
@@ -8840,7 +8872,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * An entry is marked with a "0", not in the new style with user names. We want to      * unmark it as transparently as possible. Since this shouldn't happen too often,      * we do it by scanning the "owner" fields of the entire database, collecting all      * user names. We then mark the entry for all users except the current one. Thus      * only the user who unmarks will see that it is unmarked, and we get rid of the      * old-style marking.      * @param be      * @param ce      */
+comment|/** 	 * An entry is marked with a "0", not in the new style with user names. We 	 * want to unmark it as transparently as possible. Since this shouldn't 	 * happen too often, we do it by scanning the "owner" fields of the entire 	 * database, collecting all user names. We then mark the entry for all users 	 * except the current one. Thus only the user who unmarks will see that it 	 * is unmarked, and we get rid of the old-style marking. 	 *  	 * @param be 	 * @param ce 	 */
 DECL|method|unmarkOldStyle (BibtexEntry be, BibtexDatabase database, NamedCompound ce)
 specifier|private
 specifier|static
@@ -8920,7 +8952,7 @@ argument_list|(
 name|o
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("Owner: "+entry.getField(Globals.OWNER));
+comment|// System.out.println("Owner: "+entry.getField(Globals.OWNER));
 block|}
 name|owners
 operator|.
@@ -9112,7 +9144,7 @@ operator|)
 operator|)
 return|;
 block|}
-comment|/**      * Make a list of supported character encodings that can encode all characters in the given String.      * @param characters A String of characters that should be supported by the encodings.      * @return A List of character encodings      */
+comment|/** 	 * Make a list of supported character encodings that can encode all 	 * characters in the given String. 	 *  	 * @param characters 	 *            A String of characters that should be supported by the 	 *            encodings. 	 * @return A List of character encodings 	 */
 DECL|method|findEncodingsForString (String characters)
 specifier|public
 specifier|static
