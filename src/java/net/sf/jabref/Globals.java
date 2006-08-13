@@ -1689,7 +1689,7 @@ literal|"}"
 return|;
 comment|/*             As of version 2.0, storing all fields with double braces is no longer supported, because             it causes problems with e.g. the author field.          if (prefs.getBoolean("autoDoubleBraces"))             return "}}";         else         */
 block|}
-comment|/*    public static void setupKeyBindings(JabRefPreferences prefs) {     }*/
+comment|/** 	 * Will return the names of multiple files selected in the given directory 	 * and the given extensions. 	 *  	 * Will return an empty String array if no entry is found. 	 *  	 * @param owner 	 * @param directory 	 * @param extension 	 * @param updateWorkingdirectory 	 * @return 	 */
 DECL|method|getMultipleFiles (JFrame owner, File directory, String extension, boolean updateWorkingdirectory)
 specifier|public
 specifier|static
@@ -1747,7 +1747,7 @@ name|extension
 argument_list|)
 expr_stmt|;
 name|Object
-name|o
+name|files
 init|=
 name|getNewFileImpl
 argument_list|(
@@ -1772,28 +1772,32 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-name|String
-index|[]
-name|toReturn
-decl_stmt|;
 if|if
 condition|(
-name|o
+name|files
 operator|instanceof
 name|String
 index|[]
 condition|)
-name|toReturn
-operator|=
+block|{
+return|return
 operator|(
 name|String
 index|[]
 operator|)
-name|o
-expr_stmt|;
-else|else
-name|toReturn
-operator|=
+name|files
+return|;
+block|}
+comment|// Fix for:
+comment|// http://sourceforge.net/tracker/index.php?func=detail&aid=1538769&group_id=92314&atid=600306
+if|if
+condition|(
+name|files
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
 operator|new
 name|String
 index|[]
@@ -1801,11 +1805,16 @@ block|{
 operator|(
 name|String
 operator|)
-name|o
+name|files
 block|}
-expr_stmt|;
+return|;
+block|}
 return|return
-name|toReturn
+operator|new
+name|String
+index|[
+literal|0
+index|]
 return|;
 block|}
 DECL|method|getNewFile (JFrame owner, File directory, String extension, int dialogType, boolean updateWorkingDirectory)
