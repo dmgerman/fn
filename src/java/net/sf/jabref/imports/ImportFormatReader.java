@@ -358,6 +358,15 @@ name|RepecNepImporter
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|formats
+operator|.
+name|add
+argument_list|(
+operator|new
+name|PdfXmpImporter
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// add all custom importers
 for|for
 control|(
