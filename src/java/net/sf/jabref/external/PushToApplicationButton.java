@@ -134,6 +134,16 @@ name|ActionEvent
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URL
+import|;
+end_import
+
 begin_comment
 comment|/**  * Customized UI component for pushing to external applications. Has a selection popup  * menu to change the selected external application.  * This class implements the ActionListener interface. When actionPerformed() is  * invoked, the currently selected PushToApplication is activated. The actionPerformed()  * method can be called with a null argument.  */
 end_comment
@@ -206,6 +216,22 @@ argument_list|,
 literal|23
 argument_list|)
 decl_stmt|;
+DECL|field|ARROW_ICON
+specifier|private
+specifier|static
+specifier|final
+name|URL
+name|ARROW_ICON
+init|=
+name|GUIGlobals
+operator|.
+name|class
+operator|.
+name|getResource
+argument_list|(
+literal|"/images/secondary_sorted_reverse.png"
+argument_list|)
+decl_stmt|;
 DECL|method|PushToApplicationButton (JabRefFrame frame, List pushActions)
 specifier|public
 name|PushToApplicationButton
@@ -259,11 +285,10 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-name|GUIGlobals
-operator|.
-name|getImage
+operator|new
+name|ImageIcon
 argument_list|(
-literal|"smallArrowDown"
+name|ARROW_ICON
 argument_list|)
 argument_list|)
 expr_stmt|;
