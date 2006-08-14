@@ -1171,8 +1171,9 @@ name|isEntry
 condition|)
 comment|// True if not comment, preamble or string.
 block|{
-comment|//try
-comment|//{
+comment|/** Morten Alver 13 Aug 2006:                      * Trying to make the parser more robust. If an exception is thrown when parsing                      * an entry, drop the entry and try to resume parsing. Add a warning for the                      * user.                      *                      * An alternative solution is to try rescuing the entry for which parsing failed,                      * by returning the entry with the exception and adding it before parsing is                      * continued.                      */
+try|try
+block|{
 name|BibtexEntry
 name|be
 init|=
@@ -1280,9 +1281,47 @@ literal|")"
 argument_list|)
 expr_stmt|;
 block|}
-comment|//} catch (IOException ex) {
-comment|//    ex.printStackTrace();
-comment|//}
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ex
+parameter_list|)
+block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+name|_pr
+operator|.
+name|addWarning
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Error occured when parsing entry"
+argument_list|)
+operator|+
+literal|": '"
+operator|+
+name|ex
+operator|.
+name|getMessage
+argument_list|()
+operator|+
+literal|"'. "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Skipped entry."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 name|skipWhitespace
 argument_list|()

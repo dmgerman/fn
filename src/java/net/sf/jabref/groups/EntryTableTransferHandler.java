@@ -292,6 +292,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|external
+operator|.
+name|DroppedFileHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|MainTable
@@ -1450,8 +1464,36 @@ init|=
 literal|true
 decl_stmt|;
 comment|// TODO: need to signal if this is a local or autodownloaded file
-comment|//     DroppedFileHandler dfh = new DroppedFileHandler(frame, panel); // TODO: make this an instance variable?
-comment|//     dfh.handleDroppedfile(fileNames[i], fileType, local, entryTable, dropRow);
+name|DroppedFileHandler
+name|dfh
+init|=
+operator|new
+name|DroppedFileHandler
+argument_list|(
+name|frame
+argument_list|,
+name|panel
+argument_list|)
+decl_stmt|;
+comment|// TODO: make this an instance variable?
+name|dfh
+operator|.
+name|handleDroppedfile
+argument_list|(
+name|fileNames
+index|[
+name|i
+index|]
+argument_list|,
+name|fileType
+argument_list|,
+name|local
+argument_list|,
+name|entryTable
+argument_list|,
+name|dropRow
+argument_list|)
+expr_stmt|;
 block|}
 continue|continue;
 block|}

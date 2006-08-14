@@ -50,6 +50,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|awt
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|List
@@ -67,7 +77,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Apr 4, 2006  * Time: 7:31:00 PM  * To change this template use File | Settings | File Templates.  */
+comment|/**  * An Action class representing the process of invoking a PushToApplication operation.  */
 end_comment
 
 begin_class
