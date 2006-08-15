@@ -7736,10 +7736,10 @@ return|return
 name|commit
 return|;
 block|}
-comment|/**      * This method is called from JabRefFrame when the user wants to      * create a new entry. If the argument is null, the user is      * prompted for an entry type.      *      * @param type The type of the entry to create.      */
+comment|/**      * This method is called from JabRefFrame when the user wants to      * create a new entry. If the argument is null, the user is      * prompted for an entry type.      *      * @param type The type of the entry to create.      * @return The newly created BibtexEntry or null the operation was canceled by the user.      */
 DECL|method|newEntry (BibtexEntryType type)
 specifier|public
-name|void
+name|BibtexEntry
 name|newEntry
 parameter_list|(
 name|BibtexEntryType
@@ -7942,6 +7942,9 @@ name|be
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return
+name|be
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -7961,6 +7964,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+return|return
+literal|null
+return|;
 block|}
 comment|/**      * This method is called from JabRefFrame when the user wants to      * create a new entry.      * @param bibEntry The new entry.      */
 DECL|method|insertEntry (BibtexEntry bibEntry)

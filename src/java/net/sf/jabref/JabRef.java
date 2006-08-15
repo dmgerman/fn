@@ -1042,8 +1042,6 @@ operator|+
 name|importFormats
 argument_list|)
 expr_stmt|;
-comment|// + ": biblioscape, bibtexml, endnote, inspec,\n\tisi, medline, ovid,
-comment|// ris, scifinder, sixpack, jstor, silverplatter.");
 comment|// To specify export formats, we need to take the custom export formats
 comment|// into account.
 comment|// So we iterate through the custom formats and add them.
