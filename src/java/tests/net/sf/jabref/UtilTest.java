@@ -511,7 +511,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Concatenation
-comment|// TODO: Well the function is wrong :-) another bug.
 name|assertEquals
 argument_list|(
 literal|"longlonglonglong"

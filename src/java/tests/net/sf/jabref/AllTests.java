@@ -172,7 +172,7 @@ argument_list|)
 expr_stmt|;
 name|suite
 operator|.
-name|addTestSuite
+name|addTest
 argument_list|(
 name|tests
 operator|.
@@ -190,7 +190,8 @@ name|format
 operator|.
 name|AllTests
 operator|.
-name|class
+name|suite
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|suite
