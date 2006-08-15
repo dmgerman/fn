@@ -146,16 +146,6 @@ begin_import
 import|import
 name|org
 operator|.
-name|jdom
-operator|.
-name|Attribute
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
 name|jempbox
 operator|.
 name|xmp
