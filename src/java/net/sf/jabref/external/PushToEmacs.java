@@ -113,6 +113,16 @@ literal|"Insert selected citations into Emacs"
 argument_list|)
 return|;
 block|}
+DECL|method|getApplicationName ()
+specifier|public
+name|String
+name|getApplicationName
+parameter_list|()
+block|{
+return|return
+literal|"Emacs"
+return|;
+block|}
 DECL|method|getTooltip ()
 specifier|public
 name|String

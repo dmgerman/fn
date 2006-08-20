@@ -268,6 +268,16 @@ literal|"Insert selected citations into LyX/Kile"
 argument_list|)
 return|;
 block|}
+DECL|method|getApplicationName ()
+specifier|public
+name|String
+name|getApplicationName
+parameter_list|()
+block|{
+return|return
+literal|"LyX/Kile"
+return|;
+block|}
 DECL|method|getTooltip ()
 specifier|public
 name|String

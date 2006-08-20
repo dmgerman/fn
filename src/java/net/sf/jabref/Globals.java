@@ -5478,7 +5478,7 @@ name|put
 argument_list|(
 literal|"\u00C4"
 argument_list|,
-literal|"A"
+literal|"Ae"
 argument_list|)
 expr_stmt|;
 name|UNICODE_CHARS

@@ -568,6 +568,17 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+literal|"rememberWindowLocation"
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
 literal|"autoResizeMode"
 argument_list|,
 operator|new
@@ -4030,6 +4041,15 @@ name|void
 name|defineDefaultKeyBindings
 parameter_list|()
 block|{
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Push to application"
+argument_list|,
+literal|"ctrl L"
+argument_list|)
+expr_stmt|;
 name|defKeyBinds
 operator|.
 name|put

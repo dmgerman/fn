@@ -62,6 +62,12 @@ name|String
 name|getName
 parameter_list|()
 function_decl|;
+DECL|method|getApplicationName ()
+specifier|public
+name|String
+name|getApplicationName
+parameter_list|()
+function_decl|;
 DECL|method|getTooltip ()
 specifier|public
 name|String

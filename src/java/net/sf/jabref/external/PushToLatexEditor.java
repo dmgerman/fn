@@ -102,6 +102,16 @@ literal|"Insert selected citations into LatexEditor"
 argument_list|)
 return|;
 block|}
+DECL|method|getApplicationName ()
+specifier|public
+name|String
+name|getApplicationName
+parameter_list|()
+block|{
+return|return
+literal|"LatexEditor"
+return|;
+block|}
 DECL|method|getTooltip ()
 specifier|public
 name|String

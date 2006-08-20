@@ -134,6 +134,16 @@ literal|"Insert selected citations into WinEdt"
 argument_list|)
 return|;
 block|}
+DECL|method|getApplicationName ()
+specifier|public
+name|String
+name|getApplicationName
+parameter_list|()
+block|{
+return|return
+literal|"WinEdt"
+return|;
+block|}
 DECL|method|getTooltip ()
 specifier|public
 name|String
