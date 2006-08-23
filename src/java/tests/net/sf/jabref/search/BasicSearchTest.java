@@ -85,7 +85,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Aug 20, 2006  * Time: 6:44:56 PM  * To change this template use File | Settings | File Templates.  */
+comment|/**  * Test case for BasicSearch.  */
 end_comment
 
 begin_class
@@ -275,7 +275,7 @@ argument_list|)
 expr_stmt|;
 name|query
 operator|=
-literal|"\"Marine [A-Za-z]* larviculture\""
+literal|"\"marine [A-Za-z]* larviculture\""
 expr_stmt|;
 name|assertEquals
 argument_list|(
@@ -307,7 +307,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|1
+literal|0
 argument_list|,
 name|bsCaseSensitiveRegexp
 operator|.

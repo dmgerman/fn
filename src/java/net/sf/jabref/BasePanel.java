@@ -1350,6 +1350,11 @@ name|file
 operator|.
 name|getName
 argument_list|()
+argument_list|,
+name|file
+operator|.
+name|getAbsolutePath
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|frame
@@ -8256,6 +8261,13 @@ argument_list|(
 name|selectionListener
 argument_list|)
 expr_stmt|;
+name|mainTable
+operator|.
+name|addKeyListener
+argument_list|(
+name|selectionListener
+argument_list|)
+expr_stmt|;
 comment|// Add the listener that will take care of highlighting groups as the selection changes:
 name|groupsHighlightListener
 operator|=
@@ -10044,6 +10056,13 @@ argument_list|,
 name|oldTitle
 operator|+
 literal|"*"
+argument_list|,
+name|frame
+operator|.
+name|getTabTooltip
+argument_list|(
+name|this
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// If the status line states that the base has been saved, we
@@ -10140,6 +10159,11 @@ name|file
 operator|.
 name|getName
 argument_list|()
+argument_list|,
+name|file
+operator|.
+name|getAbsolutePath
+argument_list|()
 argument_list|)
 expr_stmt|;
 else|else
@@ -10157,6 +10181,8 @@ name|lang
 argument_list|(
 literal|"untitled"
 argument_list|)
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 block|}

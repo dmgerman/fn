@@ -2416,7 +2416,6 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|// -------------------- !!!! NECESSARY ???? OBSOLETE ??? ----------------------
 DECL|field|aboutAction
 name|AboutAction
 name|aboutAction
@@ -2461,7 +2460,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|// -------------------- !!!! NECESSARY ???? OBSOLETE ??? ----------------------
 comment|// General info dialog.  The OSXAdapter calls this method when "About OSXAdapter"
 comment|// is selected from the application menu.
 DECL|method|about ()
@@ -4170,7 +4168,28 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|setTabTitle (JComponent comp, String s)
+DECL|method|getTabTooltip (JComponent comp)
+specifier|public
+name|String
+name|getTabTooltip
+parameter_list|(
+name|JComponent
+name|comp
+parameter_list|)
+block|{
+return|return
+name|tabbedPane
+operator|.
+name|getToolTipTextAt
+argument_list|(
+name|getTabIndex
+argument_list|(
+name|comp
+argument_list|)
+argument_list|)
+return|;
+block|}
+DECL|method|setTabTitle (JComponent comp, String title, String toolTip)
 specifier|public
 name|void
 name|setTabTitle
@@ -4179,19 +4198,36 @@ name|JComponent
 name|comp
 parameter_list|,
 name|String
-name|s
+name|title
+parameter_list|,
+name|String
+name|toolTip
 parameter_list|)
 block|{
-name|tabbedPane
-operator|.
-name|setTitleAt
-argument_list|(
+name|int
+name|index
+init|=
 name|getTabIndex
 argument_list|(
 name|comp
 argument_list|)
+decl_stmt|;
+name|tabbedPane
+operator|.
+name|setTitleAt
+argument_list|(
+name|index
 argument_list|,
-name|s
+name|title
+argument_list|)
+expr_stmt|;
+name|tabbedPane
+operator|.
+name|setToolTipTextAt
+argument_list|(
+name|index
+argument_list|,
+name|toolTip
 argument_list|)
 expr_stmt|;
 block|}
@@ -7550,6 +7586,29 @@ argument_list|,
 name|bp
 argument_list|)
 expr_stmt|;
+name|tabbedPane
+operator|.
+name|setToolTipTextAt
+argument_list|(
+name|tabbedPane
+operator|.
+name|getTabCount
+argument_list|()
+operator|-
+literal|1
+argument_list|,
+name|file
+operator|!=
+literal|null
+condition|?
+name|file
+operator|.
+name|getAbsolutePath
+argument_list|()
+else|:
+literal|null
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|raisePanel
@@ -9796,12 +9855,9 @@ name|tabbedPane
 operator|.
 name|add
 argument_list|(
-name|Globals
+name|GUIGlobals
 operator|.
-name|lang
-argument_list|(
-literal|"untitled"
-argument_list|)
+name|untitledTitle
 argument_list|,
 name|bp
 argument_list|)
