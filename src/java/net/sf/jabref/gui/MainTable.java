@@ -2845,11 +2845,60 @@ name|handler
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getSortingColumn ()
+comment|/**      * Get the first comparator set up for the given column.      * @param index The column number.      * @return The Comparator, or null if none is set.      */
+DECL|method|getComparatorForColumn (int index)
+specifier|public
+name|Comparator
+name|getComparatorForColumn
+parameter_list|(
+name|int
+name|index
+parameter_list|)
+block|{
+name|java
+operator|.
+name|util
+operator|.
+name|List
+name|l
+init|=
+name|comparatorChooser
+operator|.
+name|getComparatorsForColumn
+argument_list|(
+name|index
+argument_list|)
+decl_stmt|;
+return|return
+name|l
+operator|.
+name|size
+argument_list|()
+operator|==
+literal|0
+condition|?
+literal|null
+else|:
+operator|(
+name|Comparator
+operator|)
+name|l
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+return|;
+block|}
+comment|/**      * Find out which column is set as sort column.      * @param number The position in the sort hierarchy (primary, secondary, etc.)      * @return The sort column number.      */
+DECL|method|getSortingColumn (int number)
 specifier|public
 name|int
 name|getSortingColumn
-parameter_list|()
+parameter_list|(
+name|int
+name|number
+parameter_list|)
 block|{
 name|java
 operator|.
@@ -2869,8 +2918,8 @@ name|l
 operator|.
 name|size
 argument_list|()
-operator|==
-literal|0
+operator|<=
+name|number
 condition|)
 return|return
 operator|-
@@ -2886,12 +2935,23 @@ name|l
 operator|.
 name|get
 argument_list|(
-literal|0
+name|number
 argument_list|)
 operator|)
 operator|.
 name|intValue
 argument_list|()
+return|;
+block|}
+comment|/**      * Returns the List of entries sorted by a user-selected term. This is the      * sorting before marking, search etc. applies.      *      * Note: The returned List must not be modified from the outside      * @return The sorted list of entries.      */
+DECL|method|getSortedForTable ()
+specifier|public
+name|SortedList
+name|getSortedForTable
+parameter_list|()
+block|{
+return|return
+name|sortedForTable
 return|;
 block|}
 block|}

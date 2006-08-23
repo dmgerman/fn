@@ -499,6 +499,17 @@ operator|*
 name|multiplier
 return|;
 block|}
+comment|/**      * Returns the field this Comparator compares by.      * @return The field name.      */
+DECL|method|getFieldName ()
+specifier|public
+name|String
+name|getFieldName
+parameter_list|()
+block|{
+return|return
+name|field
+return|;
+block|}
 block|}
 end_class
 
