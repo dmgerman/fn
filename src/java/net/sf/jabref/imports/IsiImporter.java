@@ -14,42 +14,6 @@ end_package
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|AuthorList
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -104,7 +68,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
+name|Iterator
 import|;
 end_import
 
@@ -114,7 +78,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
+name|List
 import|;
 end_import
 
@@ -138,12 +102,60 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|AuthorList
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|BibtexFields
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
-comment|/**  * Importer for the ISI Web of Science format.  */
+comment|/**  * Importer for the ISI Web of Science format.  *   * Documentation about ISI WOS format:  *   *<ul>  *<li>http://wos.isitrial.com/help/helpprn.html</li>  *</ul>  *   * @author $Author$  * @version $Revision$ ($Date$)  *  */
 end_comment
 
 begin_class
@@ -154,7 +166,7 @@ name|IsiImporter
 extends|extends
 name|ImportFormat
 block|{
-comment|/**    * Return the name of this import format.    */
+comment|/** 	 * Return the name of this import format. 	 */
 DECL|method|getFormatName ()
 specifier|public
 name|String
@@ -165,7 +177,7 @@ return|return
 literal|"ISI"
 return|;
 block|}
-comment|/*    *  (non-Javadoc)    * @see net.sf.jabref.imports.ImportFormat#getCLIId()    */
+comment|/* 	 * (non-Javadoc) 	 *  	 * @see net.sf.jabref.imports.ImportFormat#getCLIId() 	 */
 DECL|method|getCLIId ()
 specifier|public
 name|String
@@ -176,7 +188,7 @@ return|return
 literal|"isi"
 return|;
 block|}
-comment|/**    * Check whether the source is in the correct format for this importer.    */
+comment|/** 	 * Check whether the source is in the correct format for this importer. 	 */
 DECL|method|isRecognizedFormat (InputStream stream)
 specifier|public
 name|boolean
@@ -213,7 +225,7 @@ argument_list|(
 literal|"PY \\d{4}"
 argument_list|)
 decl_stmt|;
-comment|//was PY \\\\d{4}? before
+comment|// was PY \\\\d{4}? before
 name|String
 name|str
 decl_stmt|;
@@ -231,9 +243,11 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// The following line gives false positives for RIS files, so it should
-comment|// not be uncommented. The hypen is a characteristic of the RIS format.
-comment|//str = str.replace(" - ", "");
+comment|// The following line gives false positives for RIS files, so it
+comment|// should
+comment|// not be uncommented. The hypen is a characteristic of the RIS
+comment|// format.
+comment|// str = str.replace(" - ", "");
 if|if
 condition|(
 name|pat1
@@ -254,7 +268,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**    * Parse the entries in the source, and return a List of BibtexEntry    * objects.    */
+comment|/** 	 * Parse the entries in the source, and return a List of BibtexEntry 	 * objects. 	 */
 DECL|method|importEntries (InputStream stream)
 specifier|public
 name|List
@@ -294,7 +308,7 @@ name|stream
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|//Pattern fieldPattern = Pattern.compile("^AU |^TI |^SO |^DT |^C1 |^AB
+comment|// Pattern fieldPattern = Pattern.compile("^AU |^TI |^SO |^DT |^C1 |^AB
 comment|// |^ID |^BP |^PY |^SE |^PY |^VL |^IS ");
 name|String
 name|str
@@ -414,18 +428,11 @@ name|append
 argument_list|(
 name|str
 operator|.
-name|substring
-argument_list|(
-literal|2
-argument_list|,
-name|str
-operator|.
-name|length
+name|trim
 argument_list|()
 argument_list|)
-argument_list|)
 expr_stmt|;
-comment|//remove the initial " "
+comment|// remove the initial spaces
 block|}
 block|}
 block|}
@@ -443,7 +450,6 @@ argument_list|(
 literal|"::"
 argument_list|)
 decl_stmt|;
-comment|// skip the first entry as it is either empty or has document header
 name|HashMap
 name|hm
 init|=
@@ -451,6 +457,7 @@ operator|new
 name|HashMap
 argument_list|()
 decl_stmt|;
+comment|// skip the first entry as it is either empty or has document header
 for|for
 control|(
 name|int
@@ -539,7 +546,7 @@ name|j
 operator|++
 control|)
 block|{
-comment|//empty field don't do anything
+comment|// empty field don't do anything
 if|if
 condition|(
 name|fields
@@ -600,14 +607,10 @@ name|substring
 argument_list|(
 literal|2
 argument_list|)
-decl_stmt|;
-name|value
-operator|=
-name|value
 operator|.
 name|trim
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|beg
@@ -640,7 +643,7 @@ name|Type
 operator|=
 literal|"article"
 expr_stmt|;
-comment|//make all of them PT?
+comment|// make all of them PT?
 block|}
 elseif|else
 if|if
@@ -700,11 +703,7 @@ block|{
 name|String
 name|author
 init|=
-name|isiAuthorConvert
-argument_list|(
-name|AuthorList
-operator|.
-name|fixAuthor_lastNameFirst
+name|isiAuthorsConvert
 argument_list|(
 name|value
 operator|.
@@ -713,7 +712,6 @@ argument_list|(
 literal|"EOLEOL"
 argument_list|,
 literal|" and "
-argument_list|)
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1146,7 +1144,7 @@ operator|=
 literal|"article"
 expr_stmt|;
 block|}
-comment|//ignore
+comment|// ignore
 elseif|else
 if|if
 condition|(
@@ -1196,6 +1194,17 @@ argument_list|,
 name|pages
 argument_list|)
 expr_stmt|;
+comment|// Skip empty entries
+if|if
+condition|(
+name|hm
+operator|.
+name|size
+argument_list|()
+operator|==
+literal|0
+condition|)
+continue|continue;
 name|BibtexEntry
 name|b
 init|=
@@ -1214,7 +1223,8 @@ name|Type
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// id assumes an existing database so don't
+comment|// id assumes an existing database
+comment|// so don't
 comment|// Remove empty fields:
 name|ArrayList
 name|toRemove
@@ -1339,26 +1349,72 @@ return|return
 name|bibitems
 return|;
 block|}
-DECL|method|isiAuthorConvert (String authors)
-specifier|private
+comment|/** 	 * Will expand ISI first names. 	 *  	 * Fixed bug from: 	 * http://sourceforge.net/tracker/index.php?func=detail&aid=1542552&group_id=92314&atid=600306 	 *  	 */
+DECL|method|isiAuthorConvert (String author)
+specifier|public
+specifier|static
 name|String
 name|isiAuthorConvert
 parameter_list|(
 name|String
-name|authors
+name|author
 parameter_list|)
 block|{
 name|String
 index|[]
-name|author
+name|s
 init|=
-name|authors
+name|author
 operator|.
 name|split
 argument_list|(
-literal|" and "
+literal|","
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|s
+operator|.
+name|length
+operator|!=
+literal|2
+condition|)
+return|return
+name|author
+return|;
+name|String
+name|last
+init|=
+name|s
+index|[
+literal|0
+index|]
+operator|.
+name|trim
+argument_list|()
+decl_stmt|;
+name|String
+name|first
+init|=
+name|s
+index|[
+literal|1
+index|]
+operator|.
+name|trim
+argument_list|()
+decl_stmt|;
+name|first
+operator|=
+name|first
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\.|\\s"
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
 name|StringBuffer
 name|sb
 init|=
@@ -1366,61 +1422,12 @@ operator|new
 name|StringBuffer
 argument_list|()
 decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|author
-operator|.
-name|length
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|int
-name|pos
-init|=
-name|author
-index|[
-name|i
-index|]
-operator|.
-name|indexOf
-argument_list|(
-literal|", "
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|pos
-operator|>
-literal|0
-condition|)
-block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-name|author
-index|[
-name|i
-index|]
-operator|.
-name|substring
-argument_list|(
-literal|0
-argument_list|,
-name|pos
+name|last
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
@@ -1430,23 +1437,18 @@ expr_stmt|;
 for|for
 control|(
 name|int
-name|j
-init|=
-name|pos
-operator|+
-literal|2
-init|;
-name|j
-operator|<
-name|author
-index|[
 name|i
-index|]
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|first
 operator|.
 name|length
 argument_list|()
 condition|;
-name|j
+name|i
 operator|++
 control|)
 block|{
@@ -1454,18 +1456,13 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|author
-index|[
-name|i
-index|]
+name|first
 operator|.
 name|charAt
 argument_list|(
-name|j
+name|i
 argument_list|)
 argument_list|)
-expr_stmt|;
-name|sb
 operator|.
 name|append
 argument_list|(
@@ -1474,12 +1471,9 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|j
-operator|<
-name|author
-index|[
 name|i
-index|]
+operator|<
+name|first
 operator|.
 name|length
 argument_list|()
@@ -1494,41 +1488,111 @@ literal|" "
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-else|else
-name|sb
-operator|.
-name|append
-argument_list|(
-name|author
-index|[
-name|i
-index|]
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|i
-operator|<
-name|author
-operator|.
-name|length
-operator|-
-literal|1
-condition|)
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|" and "
-argument_list|)
-expr_stmt|;
-block|}
 return|return
 name|sb
 operator|.
 name|toString
 argument_list|()
+return|;
+block|}
+DECL|method|isiAuthorsConvert (String[] authors)
+specifier|public
+specifier|static
+name|String
+index|[]
+name|isiAuthorsConvert
+parameter_list|(
+name|String
+index|[]
+name|authors
+parameter_list|)
+block|{
+name|String
+index|[]
+name|result
+init|=
+operator|new
+name|String
+index|[
+name|authors
+operator|.
+name|length
+index|]
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|result
+operator|.
+name|length
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|result
+index|[
+name|i
+index|]
+operator|=
+name|isiAuthorConvert
+argument_list|(
+name|authors
+index|[
+name|i
+index|]
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|result
+return|;
+block|}
+DECL|method|isiAuthorsConvert (String authors)
+specifier|public
+specifier|static
+name|String
+name|isiAuthorsConvert
+parameter_list|(
+name|String
+name|authors
+parameter_list|)
+block|{
+name|String
+index|[]
+name|s
+init|=
+name|isiAuthorsConvert
+argument_list|(
+name|authors
+operator|.
+name|split
+argument_list|(
+literal|" and "
+argument_list|)
+argument_list|)
+decl_stmt|;
+return|return
+name|Util
+operator|.
+name|join
+argument_list|(
+name|s
+argument_list|,
+literal|" and "
+argument_list|,
+literal|0
+argument_list|,
+name|s
+operator|.
+name|length
+argument_list|)
 return|;
 block|}
 block|}
