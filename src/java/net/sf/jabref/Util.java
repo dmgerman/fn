@@ -3461,7 +3461,7 @@ block|}
 block|}
 comment|/** 	 * Make sure an URL is "portable", in that it doesn't contain bad characters 	 * that break the open command in some OSes. 	 *  	 * @param link 	 *            The URL to sanitize. 	 * @return Sanitized URL 	 */
 DECL|method|sanitizeUrl (String link)
-specifier|private
+specifier|public
 specifier|static
 name|String
 name|sanitizeUrl
@@ -3515,6 +3515,25 @@ operator|=
 literal|"//"
 operator|+
 name|link
+expr_stmt|;
+comment|// The following is an ugly hack to fix the problem where a %20 in the
+comment|// original string (correct encoding of a space) gets returned as %2520
+comment|// because the URI constructor doesn't recognize that the % is the start of
+comment|// a sequence. The problem is that other such sequences will meet the same fate.
+comment|// If we need to take care of all these up front, we might as well not use URI
+comment|// at all.
+comment|// Another option is to do two times, hiding the %xx sequences in one of them,
+comment|// and see if one of the URLs looks good...
+name|ssp
+operator|=
+name|ssp
+operator|.
+name|replaceAll
+argument_list|(
+literal|"%20"
+argument_list|,
+literal|" "
+argument_list|)
 expr_stmt|;
 name|URI
 name|uri

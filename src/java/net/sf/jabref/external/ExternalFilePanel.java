@@ -1465,9 +1465,27 @@ literal|true
 decl_stmt|;
 try|try
 block|{
+name|String
+name|originalText
+init|=
+name|editor
+operator|.
+name|getText
+argument_list|()
+decl_stmt|;
 name|editor
 operator|.
 name|setText
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Downloading..."
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|output
 argument_list|(
 name|Globals
 operator|.
@@ -1617,22 +1635,19 @@ argument_list|,
 name|file
 argument_list|)
 decl_stmt|;
-name|output
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Downloading..."
-argument_list|)
-argument_list|)
-expr_stmt|;
+name|boolean
+name|success
+decl_stmt|;
 try|try
 block|{
 name|udl
 operator|.
 name|download
 argument_list|()
+expr_stmt|;
+name|success
+operator|=
+literal|true
 expr_stmt|;
 block|}
 catch|catch
@@ -1682,6 +1697,10 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
+expr_stmt|;
+name|success
+operator|=
+literal|false
 expr_stmt|;
 block|}
 comment|// Check if we should update the editor text field, or update the
@@ -1790,7 +1809,11 @@ expr_stmt|;
 block|}
 name|textToSet
 operator|=
+name|success
+condition|?
 name|filename
+else|:
+name|originalText
 expr_stmt|;
 if|if
 condition|(
@@ -1831,6 +1854,10 @@ block|{
 comment|// Editor has probably changed to show a different entry. So
 comment|// we must update the target entry directly and not set the
 comment|// text of the editor.
+if|if
+condition|(
+name|success
+condition|)
 name|targetEntry
 operator|.
 name|setField
