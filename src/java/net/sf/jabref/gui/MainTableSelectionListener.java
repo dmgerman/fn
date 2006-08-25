@@ -1916,6 +1916,16 @@ operator|.
 name|getKeyChar
 argument_list|()
 argument_list|)
+comment|//&& !e.isControlDown()&& !e.isAltDown()&& !e.isMetaDown()) {
+operator|&&
+operator|(
+name|e
+operator|.
+name|getModifiers
+argument_list|()
+operator|==
+literal|0
+operator|)
 condition|)
 block|{
 name|int
