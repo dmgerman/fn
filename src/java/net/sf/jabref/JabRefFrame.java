@@ -748,7 +748,6 @@ literal|"helpContents"
 argument_list|)
 argument_list|)
 decl_stmt|,
-comment|/* old about*/
 DECL|field|about
 name|about
 init|=
@@ -773,8 +772,6 @@ literal|"about"
 argument_list|)
 argument_list|)
 decl_stmt|,
-comment|/**/
-comment|//    about2 = new NewAboutAction(),
 DECL|field|editEntry
 name|editEntry
 init|=
@@ -1434,6 +1431,26 @@ argument_list|,
 operator|new
 name|PushToLatexEditor
 argument_list|()
+argument_list|)
+decl_stmt|,
+DECL|field|writeXmpAction
+name|writeXmpAction
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"writeXMP"
+argument_list|,
+literal|"Write XMP-metadata to PDFs"
+argument_list|,
+literal|"Will write XMP-metadata to the PDFs linked from selected entries."
+argument_list|,
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"writeXMP"
+argument_list|)
 argument_list|)
 decl_stmt|,
 DECL|field|openFile
@@ -5506,6 +5523,13 @@ name|pushExternalButton
 operator|.
 name|getMenuAction
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|tools
+operator|.
+name|add
+argument_list|(
+name|writeXmpAction
 argument_list|)
 expr_stmt|;
 comment|//tools.add(emacsPushAction);
