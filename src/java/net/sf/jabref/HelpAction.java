@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* Copyright (C) 2003 Morten O. Alver, Nizar N. Batada  All programs in this directory and subdirectories are published under the GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html  */
+comment|/*  Copyright (C) 2003 Morten O. Alver, Nizar N. Batada   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   */
 end_comment
 
 begin_package
@@ -20,7 +20,7 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
+name|Dimension
 import|;
 end_import
 
@@ -32,41 +32,7 @@ name|awt
 operator|.
 name|event
 operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|event
-operator|.
-name|HyperlinkListener
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|event
-operator|.
-name|HyperlinkEvent
+name|ActionEvent
 import|;
 end_import
 
@@ -77,6 +43,36 @@ operator|.
 name|net
 operator|.
 name|URL
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|ImageIcon
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JButton
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|KeyStroke
 import|;
 end_import
 
@@ -451,7 +447,6 @@ operator|=
 name|helpFile
 expr_stmt|;
 block|}
-comment|/*     public HelpAction(HelpDialog diag, URL helpfile, String tooltip) { 	super(Globals.lang("Help"), new ImageIcon(GUIGlobals.helpIconFile)); 	putValue(SHORT_DESCRIPTION, Globals.lang(tooltip)); 	this.diag = diag; 	this.helpfile = helpfile;               Util.pr("6. HelpAction: "+helpFile+" "+helpfile);     }      public HelpAction(HelpDialog diag, URL helpfile, String tooltip, 		      URL iconFile) { 	super(Globals.lang("Help"), new ImageIcon(iconFile)); 	putValue(SHORT_DESCRIPTION, Globals.lang(tooltip)); 	this.diag = diag; 	this.helpfile = helpfile;               Util.pr("7. HelpAction: "+helpFile+" "+helpfile);     }      public HelpAction(String title, HelpDialog diag, URL helpfile, String tooltip) { 	super(Globals.lang(title), new ImageIcon(GUIGlobals.helpIconFile)); 	putValue(SHORT_DESCRIPTION, Globals.lang(tooltip)); 	this.diag = diag; 	this.helpfile = helpfile;               Util.pr("8. HelpAction: "+helpFile+" "+helpfile);     }      public HelpAction(String title, HelpDialog diag, URL helpfile, String tooltip, 		      KeyStroke key) { 	super(Globals.lang(title), new ImageIcon(GUIGlobals.helpIconFile)); 	putValue(SHORT_DESCRIPTION, Globals.lang(tooltip)); 	putValue(ACCELERATOR_KEY, key); 	this.diag = diag; 	this.helpfile = helpfile;               Util.pr("9. HelpAction: "+helpFile+" "+helpfile);     } */
 DECL|method|getIconButton ()
 specifier|public
 name|JButton

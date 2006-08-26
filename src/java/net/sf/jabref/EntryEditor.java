@@ -260,6 +260,10 @@ name|*
 import|;
 end_import
 
+begin_comment
+comment|/**  * GUI component that allows editing of the fields of a BibtexEntry.  * EntryTypeForm also registers itself as a VetoableChangeListener, receiving  * events whenever a field of the entry changes, enabling the text fields to  * update themselves if the change is made from somewhere else.  */
+end_comment
+
 begin_class
 DECL|class|EntryEditor
 specifier|public
@@ -270,7 +274,6 @@ name|JPanel
 implements|implements
 name|VetoableChangeListener
 block|{
-comment|/*    * GUI component that allows editing of the fields of a BibtexEntry.    * EntryTypeForm also registers itself as a VetoableChangeListener, receiving    * events whenever a field of the entry changes, enabling the text fields to    * update themselves if the change is made from somewhere else.    */
 comment|// A reference to the entry this object works on.
 DECL|field|entry
 specifier|private

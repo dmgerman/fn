@@ -618,7 +618,14 @@ name|expandFilename
 argument_list|(
 name|pdf
 argument_list|,
+operator|new
+name|String
+index|[]
+block|{
 name|dir
+block|,
+literal|"."
+block|}
 argument_list|)
 decl_stmt|;
 name|optDiag

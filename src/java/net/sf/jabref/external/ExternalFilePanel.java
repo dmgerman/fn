@@ -122,6 +122,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|LinkedList
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -880,7 +890,14 @@ operator|.
 name|getText
 argument_list|()
 argument_list|,
+operator|new
+name|String
+index|[]
+block|{
 name|dir
+block|,
+literal|"."
+block|}
 argument_list|)
 decl_stmt|;
 if|if
@@ -2049,17 +2066,34 @@ init|=
 name|getKey
 argument_list|()
 decl_stmt|;
-comment|// Find the default directory for this field type:
-name|String
-name|dir
+comment|/* Find the following directories to look in for:                  *                   * default directory for this field type.                  *                   * directory of bibtex-file. // NOT POSSIBLE at the moment.                  *                   * JabRef-directory.                  */
+name|LinkedList
+name|list
 init|=
+operator|new
+name|LinkedList
+argument_list|()
+decl_stmt|;
+name|list
+operator|.
+name|add
+argument_list|(
 name|metaData
 operator|.
 name|getFileDirectory
 argument_list|(
 name|fieldName
 argument_list|)
-decl_stmt|;
+argument_list|)
+expr_stmt|;
+comment|/*  File fileOfDb = frame.basePanel().file();                 if (fileOfDb != null){                 	list.add(fileOfDb.getParentFile().getPath());                 }*/
+name|list
+operator|.
+name|add
+argument_list|(
+literal|"."
+argument_list|)
+expr_stmt|;
 name|String
 name|found
 init|=
@@ -2067,18 +2101,31 @@ name|Util
 operator|.
 name|findPdf
 argument_list|(
-operator|(
-name|String
-operator|)
-name|o
+name|getEntry
+argument_list|()
 argument_list|,
 name|fieldName
 argument_list|,
-name|dir
-argument_list|,
-name|off
+operator|(
+name|String
+index|[]
+operator|)
+name|list
+operator|.
+name|toArray
+argument_list|(
+operator|new
+name|String
+index|[
+name|list
+operator|.
+name|size
+argument_list|()
+index|]
+argument_list|)
 argument_list|)
 decl_stmt|;
+comment|//, off);
 comment|// To activate findFile:
 comment|// String found = Util.findFile(getEntry(), null, dir, ".*[bibtexkey].*");
 if|if

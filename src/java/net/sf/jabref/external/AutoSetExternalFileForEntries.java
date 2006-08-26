@@ -818,9 +818,17 @@ name|String
 operator|)
 name|old
 argument_list|,
+operator|new
+name|String
+index|[]
+block|{
 name|dir
+block|,
+literal|"."
+block|}
 argument_list|)
 decl_stmt|;
+empty_stmt|;
 if|if
 condition|(
 operator|(

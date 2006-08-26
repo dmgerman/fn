@@ -98,23 +98,16 @@ name|File
 import|;
 end_import
 
+begin_comment
+comment|/**  * Static variables for graphics files and keyboard shortcuts.  */
+end_comment
+
 begin_class
 DECL|class|GUIGlobals
 specifier|public
 class|class
 name|GUIGlobals
 block|{
-comment|/*    * Static variables for graphics files and keyboard shortcuts.    */
-comment|// for debugging
-DECL|field|teller
-specifier|static
-name|int
-name|teller
-init|=
-literal|0
-decl_stmt|;
-comment|// HashMap containing refs to all open BibtexDatabases.
-comment|//static HashMap frames = new HashMap();
 comment|// Frame titles.
 specifier|public
 specifier|static
@@ -124,7 +117,7 @@ name|frameTitle
 init|=
 literal|"JabRef"
 decl_stmt|,
-comment|//      version = "1.8b",
+comment|//	version = "1.8b",
 DECL|field|version
 name|version
 init|=
@@ -170,8 +163,8 @@ init|=
 literal|"com.jgoodies.looks.plastic.Plastic3DLookAndFeel"
 decl_stmt|,
 comment|//"com.shfarr.ui.plaf.fh.FhLookAndFeel",
-comment|//"net.sourceforge.mlf.metouia.MetouiaLookAndFeel",
-comment|//"org.compiere.plaf.CompiereLookAndFeel",
+comment|//	"net.sourceforge.mlf.metouia.MetouiaLookAndFeel",
+comment|//	"org.compiere.plaf.CompiereLookAndFeel",
 DECL|field|windowsDefaultLookAndFeel
 name|windowsDefaultLookAndFeel
 init|=
@@ -447,7 +440,7 @@ operator|)
 name|o
 return|;
 block|}
-comment|// Help files (in HTML format):
+comment|//Help files (in HTML format):
 specifier|public
 specifier|static
 name|String
@@ -536,7 +529,7 @@ name|generalFieldsHelp
 init|=
 literal|"GeneralFields.html"
 decl_stmt|,
-comment|//      searchHelp = "SearchHelp.html",
+comment|//	searchHelp = "SearchHelp.html",
 DECL|field|aboutPage
 name|aboutPage
 init|=
@@ -571,8 +564,13 @@ DECL|field|journalAbbrHelp
 name|journalAbbrHelp
 init|=
 literal|"JournalAbbreviations.html"
+decl_stmt|,
+DECL|field|regularExpressionSearchHelp
+name|regularExpressionSearchHelp
+init|=
+literal|"ExternalFiles.html#RegularExpressionSearch"
 decl_stmt|;
-comment|// Colors.
+comment|//	Colors.
 specifier|public
 specifier|static
 name|Color
@@ -641,7 +639,7 @@ operator|.
 name|white
 decl_stmt|,
 comment|// Valid field backgnd.
-comment|//invalidFieldBackground = new Color(210, 70, 70), // Invalid field backgnd.
+comment|//	invalidFieldBackground = new Color(210, 70, 70), // Invalid field backgnd.
 DECL|field|invalidFieldBackground
 name|invalidFieldBackground
 init|=
@@ -784,7 +782,7 @@ name|PE_HEIGHT
 init|=
 literal|2
 decl_stmt|;
-comment|// Size constants for EntryTypeForm; small, medium and large.
+comment|//	Size constants for EntryTypeForm; small, medium and large.
 DECL|field|FORM_WIDTH
 specifier|public
 specifier|static
@@ -821,7 +819,7 @@ block|,
 literal|130
 block|}
 decl_stmt|;
-comment|// Constants controlling formatted bibtex output.
+comment|//	Constants controlling formatted bibtex output.
 specifier|public
 specifier|static
 specifier|final
@@ -962,7 +960,7 @@ literal|"no"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Read either the default icon theme, or a custom one. If loading of the custom theme      * fails, try to fall back on the default theme.      */
+comment|/** 	 * Read either the default icon theme, or a custom one. If loading of the custom theme 	 * fails, try to fall back on the default theme. 	 */
 DECL|method|setUpIconTheme ()
 specifier|public
 specifier|static
@@ -1173,7 +1171,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Looks up the URL for the image representing the given function, in the resource      * file listing images.      * @param name The name of the icon, such as "open", "save", "saveAs" etc.      * @return The URL to the actual image to use.      */
+comment|/** 	 * Looks up the URL for the image representing the given function, in the resource 	 * file listing images. 	 * @param name The name of the icon, such as "open", "save", "saveAs" etc. 	 * @return The URL to the actual image to use. 	 */
 DECL|method|getIconUrl (String name)
 specifier|public
 specifier|static
@@ -1283,7 +1281,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Constructs an ImageIcon for the given function, using the image specified in      * the resource files resource/Icons_en.properties.      * @param name The name of the icon, such as "open", "save", "saveAs" etc.      * @return The ImageIcon for the function.      */
+comment|/** 	 * Constructs an ImageIcon for the given function, using the image specified in 	 * the resource files resource/Icons_en.properties. 	 * @param name The name of the icon, such as "open", "save", "saveAs" etc. 	 * @return The ImageIcon for the function. 	 */
 DECL|method|getImage (String name)
 specifier|public
 specifier|static
@@ -1319,7 +1317,7 @@ else|:
 literal|null
 return|;
 block|}
-comment|/**      * Read a typical java property file into a HashMap. Currently doesn't support escaping      * of the '=' character - it simply looks for the first '=' to determine where the key ends.      * Both the key and the value is trimmed for whitespace at the ends.      * @param file The URL to read information from.      * @param prefix A String to prefix to all values read. Can represent e.g. the directory      * where icon files are to be found.      * @return A HashMap containing all key-value pairs found.      * @throws IOException      */
+comment|/** 	 * Read a typical java property file into a HashMap. Currently doesn't support escaping 	 * of the '=' character - it simply looks for the first '=' to determine where the key ends. 	 * Both the key and the value is trimmed for whitespace at the ends. 	 * @param file The URL to read information from. 	 * @param prefix A String to prefix to all values read. Can represent e.g. the directory 	 * where icon files are to be found. 	 * @return A HashMap containing all key-value pairs found. 	 * @throws IOException 	 */
 DECL|method|readIconThemeFile (URL file, String prefix)
 specifier|private
 specifier|static
@@ -1403,11 +1401,6 @@ name|split
 argument_list|(
 literal|"\n"
 argument_list|)
-decl_stmt|;
-name|String
-name|directory
-init|=
-literal|null
 decl_stmt|;
 for|for
 control|(
@@ -1591,7 +1584,7 @@ name|middle
 operator|)
 return|;
 block|}
-comment|/**    * Perform initializations that are only used in graphical mode. This is to prevent    * the "Xlib: connection to ":0.0" refused by server" error when access to the X server    * on Un*x is unavailable.    */
+comment|/** 	 * Perform initializations that are only used in graphical mode. This is to prevent 	 * the "Xlib: connection to ":0.0" refused by server" error when access to the X server 	 * on Un*x is unavailable. 	 */
 DECL|method|init ()
 specifier|public
 specifier|static

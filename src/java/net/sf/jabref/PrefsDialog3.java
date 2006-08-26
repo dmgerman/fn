@@ -519,6 +519,10 @@ argument_list|(
 name|frame
 argument_list|,
 name|_prefs
+argument_list|,
+name|parent
+operator|.
+name|helpDiag
 argument_list|)
 argument_list|,
 name|EXT

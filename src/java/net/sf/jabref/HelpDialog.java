@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* Copyright (C) 2003 Morten O. Alver, Nizar N. Batada  All programs in this directory and subdirectories are published under the GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html  */
+comment|/*  Copyright (C) 2003 Morten O. Alver, Nizar N. Batada   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   */
 end_comment
 
 begin_package
@@ -20,7 +20,7 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
+name|BorderLayout
 import|;
 end_import
 
@@ -32,7 +32,7 @@ name|awt
 operator|.
 name|event
 operator|.
-name|*
+name|ActionEvent
 import|;
 end_import
 
@@ -42,7 +42,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|AbstractAction
 import|;
 end_import
 
@@ -52,9 +52,47 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|event
+name|ActionMap
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
 operator|.
-name|HyperlinkListener
+name|swing
+operator|.
+name|InputMap
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JComponent
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JToolBar
 import|;
 end_import
 
@@ -72,16 +110,18 @@ end_import
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|net
+name|swing
 operator|.
-name|URL
+name|event
+operator|.
+name|HyperlinkListener
 import|;
 end_import
 
 begin_comment
-comment|/**  * This is a non-modal help Dialog. The contents of the help is specified  * by calling  */
+comment|/**  *   * This is a non-modal help Dialog. The contents of the help is specified by  * calling showPage().  *   * @version $Revision$ ($Date$)  *   */
 end_comment
 
 begin_class
@@ -182,7 +222,6 @@ operator|.
 name|helpSize
 argument_list|)
 expr_stmt|;
-comment|/* There is probably no need for a window listener now, so 	 * it's commented out. 	diag.addWindowListener(new WindowAdapter() { 		public void windowClosing(WindowEvent e) { 		    open = null; 		} 	    });*/
 name|JToolBar
 name|tlb
 init|=
@@ -190,8 +229,6 @@ operator|new
 name|JToolBar
 argument_list|()
 decl_stmt|;
-comment|//tlb.add(new CloseAction());
-comment|//tlb.addSeparator();
 name|tlb
 operator|.
 name|add
@@ -455,23 +492,11 @@ argument_list|,
 name|frame
 argument_list|)
 expr_stmt|;
-name|setVisible
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 name|content
 operator|.
 name|reset
 argument_list|()
 expr_stmt|;
-name|forward
-operator|.
-name|setEnabled
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 name|back
 operator|.
 name|setEnabled
@@ -479,21 +504,14 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-block|}
-else|else
-block|{
 name|setVisible
 argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|forward
-operator|.
-name|setEnabled
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
+block|}
+else|else
+block|{
 name|back
 operator|.
 name|setEnabled
@@ -502,6 +520,13 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+name|forward
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 name|content
 operator|.
 name|setPage
@@ -514,7 +539,6 @@ operator|.
 name|requestFocus
 argument_list|()
 expr_stmt|;
-comment|//setVisible(true);
 block|}
 DECL|method|hyperlinkUpdate (HyperlinkEvent e)
 specifier|public
@@ -586,7 +610,7 @@ literal|"Close"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//, new ImageIcon(GUIGlobals.closeIconFile));
+comment|// , new ImageIcon(GUIGlobals.closeIconFile));
 name|putValue
 argument_list|(
 name|SHORT_DESCRIPTION
@@ -637,7 +661,7 @@ literal|"left"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//putValue(SHORT_DESCRIPTION, "Show the previous page");
+comment|// putValue(SHORT_DESCRIPTION, "Show the previous page");
 block|}
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public

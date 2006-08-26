@@ -95,7 +95,6 @@ argument_list|(
 literal|"pdfDirectory"
 argument_list|)
 decl_stmt|;
-comment|//Util.pr(""+field);
 name|File
 name|f
 init|=
@@ -105,7 +104,14 @@ name|expandFilename
 argument_list|(
 name|field
 argument_list|,
+operator|new
+name|String
+index|[]
+block|{
 name|dir
+block|,
+literal|"."
+block|}
 argument_list|)
 decl_stmt|;
 return|return
