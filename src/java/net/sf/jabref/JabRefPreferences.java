@@ -298,11 +298,11 @@ name|HashMap
 argument_list|()
 decl_stmt|;
 comment|// The only instance of this class:
-DECL|field|INSTANCE
+DECL|field|singleton
 specifier|private
 specifier|static
 name|JabRefPreferences
-name|INSTANCE
+name|singleton
 init|=
 literal|null
 decl_stmt|;
@@ -315,18 +315,18 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|INSTANCE
+name|singleton
 operator|==
 literal|null
 condition|)
-name|INSTANCE
+name|singleton
 operator|=
 operator|new
 name|JabRefPreferences
 argument_list|()
 expr_stmt|;
 return|return
-name|INSTANCE
+name|singleton
 return|;
 block|}
 comment|// The constructor is made private to enforce this as a singleton class:

@@ -2101,7 +2101,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Are newlines in the XML parsed correctly? 	 *  	 * @throws Exception 	 */
+comment|/** 	 * Are newlines in the XML processed correctly? 	 *  	 * @throws Exception 	 */
 DECL|method|testNewlineHandling ()
 specifier|public
 name|void
@@ -2117,6 +2117,8 @@ init|=
 literal|"<bibtex:title>\nHallo\nWorld \nthis \n is\n\nnot \n\nan \n\n exercise \n \n.\n \n\n</bibtex:title>\n"
 operator|+
 literal|"<bibtex:tabs>\nHallo\tWorld \tthis \t is\t\tnot \t\tan \t\n exercise \t \n.\t \n\t</bibtex:tabs>\n"
+operator|+
+literal|"<bibtex:abstract>\n\nAbstract preserve\n\t Whitespace\n\n</bibtex:abstract>"
 decl_stmt|;
 name|writeManually
 argument_list|(
@@ -2193,6 +2195,18 @@ operator|.
 name|getField
 argument_list|(
 literal|"tabs"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"\n\nAbstract preserve\n\t Whitespace\n\n"
+argument_list|,
+name|e
+operator|.
+name|getField
+argument_list|(
+literal|"abstract"
 argument_list|)
 argument_list|)
 expr_stmt|;

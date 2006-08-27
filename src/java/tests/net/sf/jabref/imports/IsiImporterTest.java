@@ -483,7 +483,7 @@ name|put
 argument_list|(
 literal|"title"
 argument_list|,
-literal|"/sub $1/"
+literal|"/sub $Hello/"
 argument_list|)
 expr_stmt|;
 name|IsiImporter
@@ -493,10 +493,18 @@ argument_list|(
 name|hm
 argument_list|)
 expr_stmt|;
-name|fail
-argument_list|()
+name|assertEquals
+argument_list|(
+literal|"$_{\\$Hello}$"
+argument_list|,
+name|hm
+operator|.
+name|get
+argument_list|(
+literal|"title"
+argument_list|)
+argument_list|)
 expr_stmt|;
-comment|// What should happen?
 block|}
 DECL|method|testImportEntries ()
 specifier|public

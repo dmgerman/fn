@@ -394,6 +394,18 @@ argument_list|(
 literal|2
 argument_list|)
 decl_stmt|;
+name|group2
+operator|=
+name|group2
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\$"
+argument_list|,
+literal|"\\\\\\\\\\\\\\$"
+argument_list|)
+expr_stmt|;
+comment|// Escaping insanity! :-)
 if|if
 condition|(
 name|group2
