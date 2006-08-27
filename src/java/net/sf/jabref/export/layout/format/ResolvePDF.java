@@ -66,6 +66,10 @@ name|File
 import|;
 end_import
 
+begin_comment
+comment|/**  * Will expand the relative PDF path.  *   * TODO Search also relative to Bib-file.  *   * @author $Author$  * @version $Revision$ ($Date$)  */
+end_comment
+
 begin_class
 DECL|class|ResolvePDF
 specifier|public
@@ -114,21 +118,37 @@ literal|"."
 block|}
 argument_list|)
 decl_stmt|;
-return|return
-operator|(
+comment|/* 		 * Stumbled over this while investigating  		 *  		 * https://sourceforge.net/tracker/index.php?func=detail&aid=1469903&group_id=92314&atid=600306  		 */
+if|if
+condition|(
+name|Globals
+operator|.
+name|ON_WIN
+operator|&&
 name|f
 operator|!=
 literal|null
-condition|?
+condition|)
+block|{
+name|field
+operator|=
 literal|"file://"
 operator|+
 name|f
 operator|.
 name|getPath
 argument_list|()
-else|:
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\\\"
+argument_list|,
+literal|"/"
+argument_list|)
+expr_stmt|;
+block|}
+return|return
 name|field
-operator|)
 return|;
 block|}
 block|}
