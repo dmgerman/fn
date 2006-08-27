@@ -569,6 +569,11 @@ DECL|field|regularExpressionSearchHelp
 name|regularExpressionSearchHelp
 init|=
 literal|"ExternalFiles.html#RegularExpressionSearch"
+decl_stmt|,
+DECL|field|previewHelp
+name|previewHelp
+init|=
+literal|"PreviewHelp.html"
 decl_stmt|;
 comment|//	Colors.
 specifier|public

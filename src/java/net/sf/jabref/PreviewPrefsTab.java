@@ -60,10 +60,6 @@ DECL|field|_frame
 name|JabRefFrame
 name|_frame
 decl_stmt|;
-DECL|field|helpDiag
-name|HelpDialog
-name|helpDiag
-decl_stmt|;
 DECL|field|pan
 name|JPanel
 name|pan
@@ -88,21 +84,8 @@ operator|new
 name|GridBagConstraints
 argument_list|()
 decl_stmt|;
-DECL|field|helpAction
-name|HelpAction
-name|helpAction
-init|=
-operator|new
-name|HelpAction
-argument_list|(
-name|Globals
-operator|.
-name|helpDiag
-argument_list|,
-literal|"PreviewHelp.html"
-argument_list|)
-decl_stmt|;
 DECL|field|layout1
+DECL|field|layout2
 name|JTextArea
 name|layout1
 init|=
@@ -116,7 +99,6 @@ argument_list|,
 literal|1
 argument_list|)
 decl_stmt|,
-DECL|field|layout2
 name|layout2
 init|=
 operator|new
@@ -145,6 +127,7 @@ argument_list|)
 argument_list|)
 decl_stmt|,
 DECL|field|def2
+DECL|field|test1
 name|def2
 init|=
 operator|new
@@ -158,7 +141,6 @@ literal|"Default"
 argument_list|)
 argument_list|)
 decl_stmt|,
-DECL|field|test1
 name|test1
 init|=
 operator|new
@@ -173,6 +155,7 @@ argument_list|)
 argument_list|)
 decl_stmt|,
 DECL|field|test2
+DECL|field|help
 name|test2
 init|=
 operator|new
@@ -186,21 +169,10 @@ literal|"Test"
 argument_list|)
 argument_list|)
 decl_stmt|,
-DECL|field|help
 name|help
-init|=
-operator|new
-name|JButton
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Help"
-argument_list|)
-argument_list|)
 decl_stmt|;
 DECL|field|p1
+DECL|field|p2
 name|JPanel
 name|p1
 init|=
@@ -208,7 +180,6 @@ operator|new
 name|JPanel
 argument_list|()
 decl_stmt|,
-DECL|field|p2
 name|p2
 init|=
 operator|new
@@ -216,6 +187,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|sp1
+DECL|field|sp2
 name|JScrollPane
 name|sp1
 init|=
@@ -225,7 +197,6 @@ argument_list|(
 name|layout1
 argument_list|)
 decl_stmt|,
-DECL|field|sp2
 name|sp2
 init|=
 operator|new
@@ -240,15 +211,12 @@ specifier|static
 name|BibtexEntry
 name|entry
 decl_stmt|;
-DECL|method|PreviewPrefsTab (JabRefPreferences prefs, HelpDialog diag)
+DECL|method|PreviewPrefsTab (JabRefPreferences prefs)
 specifier|public
 name|PreviewPrefsTab
 parameter_list|(
 name|JabRefPreferences
 name|prefs
-parameter_list|,
-name|HelpDialog
-name|diag
 parameter_list|)
 block|{
 name|_prefs
@@ -269,20 +237,11 @@ argument_list|(
 name|gbl
 argument_list|)
 expr_stmt|;
-name|help
-operator|.
-name|addActionListener
-argument_list|(
-name|helpAction
-argument_list|)
-expr_stmt|;
-comment|/*p1.setBorder(BorderFactory.createTitledBorder               (BorderFactory.createEtchedBorder(),Globals.lang("Preview")+" 1"));      p2.setBorder(BorderFactory.createTitledBorder               (BorderFactory.createEtchedBorder(),Globals.lang("Preview")+" 2")); */
 name|setLayout
 argument_list|(
 name|gbl
 argument_list|)
 expr_stmt|;
-comment|//new GridLayout(2,1));
 name|JLabel
 name|lab
 decl_stmt|;
@@ -362,7 +321,7 @@ argument_list|,
 name|con
 argument_list|)
 expr_stmt|;
-comment|//p1.add(lab);
+comment|// p1.add(lab);
 name|con
 operator|.
 name|weighty
@@ -512,7 +471,7 @@ argument_list|,
 name|con
 argument_list|)
 expr_stmt|;
-comment|//p2.add(lab);
+comment|// p2.add(lab);
 name|con
 operator|.
 name|weighty
@@ -635,6 +594,45 @@ argument_list|(
 name|pan
 argument_list|)
 expr_stmt|;
+block|{
+comment|// Help Button
+name|HelpAction
+name|helpAction
+init|=
+operator|new
+name|HelpAction
+argument_list|(
+name|Globals
+operator|.
+name|helpDiag
+argument_list|,
+name|GUIGlobals
+operator|.
+name|previewHelp
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Help on Preview Settings"
+argument_list|)
+argument_list|,
+name|GUIGlobals
+operator|.
+name|getIconUrl
+argument_list|(
+literal|"helpSmall"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|JButton
+name|help
+init|=
+name|helpAction
+operator|.
+name|getIconButton
+argument_list|()
+decl_stmt|;
 name|con
 operator|.
 name|weightx
@@ -665,6 +663,7 @@ argument_list|(
 name|help
 argument_list|)
 expr_stmt|;
+block|}
 name|con
 operator|.
 name|weightx
