@@ -18,17 +18,23 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
 operator|.
-name|export
-operator|.
-name|layout
-operator|.
-name|*
+name|Globals
 import|;
 end_import
 
@@ -52,22 +58,16 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|export
 operator|.
-name|io
+name|layout
 operator|.
-name|File
+name|LayoutFormatter
 import|;
 end_import
 
 begin_comment
-comment|/**  * Will expand the relative PDF path.  *   * TODO Search also relative to Bib-file.  *   * @author $Author$  * @version $Revision$ ($Date$)  */
+comment|/**  * Will expand the relative PDF path and return a URI for the given file (which  * must exist).  *   * TODO Search also relative to Bib-file.  *   * @author $Author$  * @version $Revision$ ($Date$)  */
 end_comment
 
 begin_class
@@ -118,38 +118,30 @@ literal|"."
 block|}
 argument_list|)
 decl_stmt|;
-comment|/* 		 * Stumbled over this while investigating  		 *  		 * https://sourceforge.net/tracker/index.php?func=detail&aid=1469903&group_id=92314&atid=600306  		 */
+comment|/* 		 * Stumbled over this while investigating 		 *  		 * https://sourceforge.net/tracker/index.php?func=detail&aid=1469903&group_id=92314&atid=600306 		 */
 if|if
 condition|(
-name|Globals
-operator|.
-name|ON_WIN
-operator|&&
 name|f
 operator|!=
 literal|null
 condition|)
 block|{
-name|field
-operator|=
-literal|"file://"
-operator|+
+return|return
 name|f
 operator|.
-name|getPath
+name|toURI
 argument_list|()
 operator|.
-name|replaceAll
-argument_list|(
-literal|"\\\\"
-argument_list|,
-literal|"/"
-argument_list|)
-expr_stmt|;
+name|toString
+argument_list|()
+return|;
 block|}
+else|else
+block|{
 return|return
 name|field
 return|;
+block|}
 block|}
 block|}
 end_class
