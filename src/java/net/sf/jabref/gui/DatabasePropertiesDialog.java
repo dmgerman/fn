@@ -218,6 +218,18 @@ argument_list|(
 literal|40
 argument_list|)
 decl_stmt|;
+DECL|field|oldPdfVal
+DECL|field|oldPsVal
+name|String
+name|oldPdfVal
+init|=
+literal|""
+decl_stmt|,
+name|oldPsVal
+init|=
+literal|""
+decl_stmt|;
+comment|// Remember old values to see if they are changed.
 DECL|method|DatabasePropertiesDialog (JFrame parent)
 specifier|public
 name|DatabasePropertiesDialog
@@ -775,6 +787,21 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Store original values to see if they get changed:
+name|oldPdfVal
+operator|=
+name|pdfDir
+operator|.
+name|getText
+argument_list|()
+expr_stmt|;
+name|oldPsVal
+operator|=
+name|psDir
+operator|.
+name|getText
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|storeSettings ()
 specifier|public
@@ -782,10 +809,17 @@ name|void
 name|storeSettings
 parameter_list|()
 block|{
+name|String
+name|oldEncoding
+init|=
 name|panel
 operator|.
-name|setEncoding
-argument_list|(
+name|getEncoding
+argument_list|()
+decl_stmt|;
+name|String
+name|newEncoding
+init|=
 operator|(
 name|String
 operator|)
@@ -793,6 +827,12 @@ name|encoding
 operator|.
 name|getSelectedItem
 argument_list|()
+decl_stmt|;
+name|panel
+operator|.
+name|setEncoding
+argument_list|(
+name|newEncoding
 argument_list|)
 expr_stmt|;
 name|Vector
@@ -902,6 +942,51 @@ name|remove
 argument_list|(
 literal|"psDirectory"
 argument_list|)
+expr_stmt|;
+comment|// See if any of the values have been modified:
+name|boolean
+name|changed
+init|=
+operator|!
+name|newEncoding
+operator|.
+name|equals
+argument_list|(
+name|oldEncoding
+argument_list|)
+operator|||
+operator|!
+name|oldPdfVal
+operator|.
+name|equals
+argument_list|(
+name|pdfDir
+operator|.
+name|getText
+argument_list|()
+argument_list|)
+operator|||
+operator|!
+name|oldPsVal
+operator|.
+name|equals
+argument_list|(
+name|psDir
+operator|.
+name|getText
+argument_list|()
+argument_list|)
+decl_stmt|;
+comment|// ... if so, mark base changed. Prevent the Undo button from removing
+comment|// change marking:
+if|if
+condition|(
+name|changed
+condition|)
+name|panel
+operator|.
+name|markNonUndoableBaseChanged
+argument_list|()
 expr_stmt|;
 block|}
 block|}

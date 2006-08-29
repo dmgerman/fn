@@ -664,7 +664,8 @@ if|if
 condition|(
 name|panel
 operator|.
-name|file
+name|getFile
+argument_list|()
 operator|!=
 literal|null
 condition|)
@@ -683,7 +684,8 @@ literal|": "
 operator|+
 name|panel
 operator|.
-name|file
+name|getFile
+argument_list|()
 operator|.
 name|getName
 argument_list|()

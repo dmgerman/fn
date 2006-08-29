@@ -560,6 +560,16 @@ argument_list|)
 expr_stmt|;
 comment|// Settings panel:
 comment|/*         con.weightx = 0;         con.insets = new Insets(3, 5, 3, 5);         con.anchor = GridBagConstraints.EAST;         con.fill = GridBagConstraints.NONE;         con.gridx = 0;         con.gridy = 2;         gbl.setConstraints(nf, con);         settings.add(nf);*/
+comment|//con.weightx = 1;
+name|con
+operator|.
+name|fill
+operator|=
+name|GridBagConstraints
+operator|.
+name|HORIZONTAL
+expr_stmt|;
+comment|//JSeparator sep = new JSeparator()
 name|con
 operator|.
 name|gridwidth
@@ -579,14 +589,6 @@ operator|=
 name|GridBagConstraints
 operator|.
 name|WEST
-expr_stmt|;
-name|con
-operator|.
-name|fill
-operator|=
-name|GridBagConstraints
-operator|.
-name|HORIZONTAL
 expr_stmt|;
 name|con
 operator|.

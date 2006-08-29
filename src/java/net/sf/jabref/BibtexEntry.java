@@ -515,6 +515,7 @@ name|fields
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Set a field, and notify listeners about the change.      *      * @param name The field to set.      * @param value The value to set.      */
 DECL|method|setField (String name, Object value)
 specifier|public
 name|void
@@ -563,7 +564,6 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-comment|/* The first event is no longer needed, so the following comment doesn't apply                    as of 2005.08.11.              // First throw an empty event that just signals that this entry                 // is about to change. This is needed, so the EntrySorter can                 // remove the entry from its TreeSet. After a sort-sensitive                 // field changes, the entry will not be found by the TreeMap,                 // so without this event it would be impossible to reinsert this                 // entry to keep everything sorted properly.             firePropertyChangedEvent(null, null, null);             */
 comment|// We set the field before throwing the changeEvent, to enable
 comment|// the change listener to access the new value if the change
 comment|// sets off a change in database sorting etc.
@@ -614,7 +614,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Removes the mapping for the field name.      */
+comment|/**      * Remove the mapping for the field name, and notify listeners about      * the change.      *      * @param name The field to clear.      */
 DECL|method|clearField (String name)
 specifier|public
 name|void
@@ -671,7 +671,7 @@ name|name
 argument_list|,
 name|oldValue
 argument_list|,
-literal|""
+literal|null
 argument_list|)
 expr_stmt|;
 block|}

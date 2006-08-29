@@ -75,6 +75,14 @@ name|groupsRoot
 init|=
 literal|null
 decl_stmt|;
+DECL|field|file
+specifier|private
+name|File
+name|file
+init|=
+literal|null
+decl_stmt|;
+comment|// The File where this base gets saved.
 comment|/**      * The MetaData object stores all meta data sets in Vectors. To ensure that      * the data is written correctly to string, the user of a meta data Vector      * must simply make sure the appropriate changes are reflected in the Vector      * it has been passed.      */
 DECL|method|MetaData (HashMap inData, BibtexDatabase db)
 specifier|public
@@ -533,6 +541,7 @@ operator|>
 literal|0
 operator|)
 condition|)
+block|{
 name|dir
 operator|=
 operator|(
@@ -545,6 +554,80 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
+comment|// If this directory is relative, we try to interpret it as relative to
+comment|// the file path of this bib file:
+if|if
+condition|(
+operator|!
+operator|(
+operator|new
+name|File
+argument_list|(
+name|dir
+argument_list|)
+operator|)
+operator|.
+name|isAbsolute
+argument_list|()
+operator|&&
+operator|(
+name|file
+operator|!=
+literal|null
+operator|)
+condition|)
+block|{
+name|String
+name|relDir
+init|=
+operator|new
+name|StringBuffer
+argument_list|(
+name|file
+operator|.
+name|getParent
+argument_list|()
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"file.separator"
+argument_list|)
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|dir
+argument_list|)
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+comment|// If this directory actually exists, it is very likely that the
+comment|// user wants us to use it:
+if|if
+condition|(
+operator|(
+operator|new
+name|File
+argument_list|(
+name|relDir
+argument_list|)
+operator|)
+operator|.
+name|exists
+argument_list|()
+condition|)
+name|dir
+operator|=
+name|relDir
+expr_stmt|;
+block|}
+block|}
 else|else
 name|dir
 operator|=
@@ -555,6 +638,30 @@ operator|.
 name|get
 argument_list|(
 name|key
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"MetaData: dir: '"
+operator|+
+name|dir
+operator|+
+literal|"' relative: "
+operator|+
+operator|(
+operator|new
+name|File
+argument_list|(
+name|dir
+argument_list|)
+operator|)
+operator|.
+name|isAbsolute
+argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
@@ -1227,6 +1334,32 @@ return|;
 return|return
 literal|null
 return|;
+block|}
+DECL|method|getFile ()
+specifier|public
+name|File
+name|getFile
+parameter_list|()
+block|{
+return|return
+name|file
+return|;
+block|}
+DECL|method|setFile (File file)
+specifier|public
+name|void
+name|setFile
+parameter_list|(
+name|File
+name|file
+parameter_list|)
+block|{
+name|this
+operator|.
+name|file
+operator|=
+name|file
+expr_stmt|;
 block|}
 block|}
 end_class

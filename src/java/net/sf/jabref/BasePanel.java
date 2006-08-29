@@ -1034,12 +1034,9 @@ name|BibtexDatabase
 name|database
 decl_stmt|;
 comment|// The database shown in this panel.
-DECL|field|file
+specifier|private
 name|File
-name|file
-init|=
-literal|null
-decl_stmt|,
+comment|//file = null,  // Moving file to MetaData (Morten, 2006.08.29)
 DECL|field|fileToOpen
 name|fileToOpen
 init|=
@@ -1407,11 +1404,12 @@ name|setupMainPanel
 argument_list|()
 expr_stmt|;
 comment|/*if (Globals.prefs.getBoolean("autoComplete")) {             db.setCompleters(autoCompleters);             }*/
-name|this
+name|metaData
 operator|.
+name|setFile
+argument_list|(
 name|file
-operator|=
-name|file
+argument_list|)
 expr_stmt|;
 comment|// Register so we get notifications about outside changes to the file.
 if|if
@@ -1471,16 +1469,6 @@ parameter_list|()
 block|{
 return|return
 name|metaData
-return|;
-block|}
-DECL|method|file ()
-specifier|public
-name|File
-name|file
-parameter_list|()
-block|{
-return|return
-name|file
 return|;
 block|}
 DECL|method|frame ()
@@ -1662,7 +1650,8 @@ literal|false
 expr_stmt|;
 if|if
 condition|(
-name|file
+name|getFile
+argument_list|()
 operator|==
 literal|null
 condition|)
@@ -1799,7 +1788,7 @@ name|scanner
 operator|.
 name|changeScan
 argument_list|(
-name|file
+name|getFile
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1876,12 +1865,14 @@ name|BasePanel
 operator|.
 name|this
 argument_list|,
-name|file
+name|getFile
+argument_list|()
 operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|file
+name|getFile
+argument_list|()
 operator|.
 name|getAbsolutePath
 argument_list|()
@@ -1900,7 +1891,8 @@ argument_list|)
 operator|+
 literal|" '"
 operator|+
-name|file
+name|getFile
+argument_list|()
 operator|.
 name|getPath
 argument_list|()
@@ -1937,7 +1929,8 @@ parameter_list|()
 block|{
 if|if
 condition|(
-name|file
+name|getFile
+argument_list|()
 operator|==
 literal|null
 condition|)
@@ -2124,7 +2117,8 @@ name|success
 operator|=
 name|saveDatabase
 argument_list|(
-name|file
+name|getFile
+argument_list|()
 argument_list|,
 literal|false
 argument_list|,
@@ -2258,18 +2252,24 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|file
-operator|=
+name|metaData
+operator|.
+name|setFile
+argument_list|(
 operator|new
 name|File
 argument_list|(
 name|chosenFile
 argument_list|)
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
 operator|!
-name|file
+name|metaData
+operator|.
+name|getFile
+argument_list|()
 operator|.
 name|exists
 argument_list|()
@@ -2283,7 +2283,10 @@ name|frame
 argument_list|,
 literal|"'"
 operator|+
-name|file
+name|metaData
+operator|.
+name|getFile
+argument_list|()
 operator|.
 name|getName
 argument_list|()
@@ -2335,7 +2338,8 @@ name|BasePanel
 operator|.
 name|this
 argument_list|,
-name|file
+name|getFile
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -2359,7 +2363,10 @@ name|put
 argument_list|(
 literal|"workingDirectory"
 argument_list|,
-name|file
+name|metaData
+operator|.
+name|getFile
+argument_list|()
 operator|.
 name|getParent
 argument_list|()
@@ -2372,7 +2379,10 @@ argument_list|()
 operator|.
 name|newFile
 argument_list|(
-name|file
+name|metaData
+operator|.
+name|getFile
+argument_list|()
 operator|.
 name|getPath
 argument_list|()
@@ -2380,10 +2390,15 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
-name|file
-operator|=
+block|{
+name|metaData
+operator|.
+name|setFile
+argument_list|(
 literal|null
+argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -10686,7 +10701,8 @@ literal|false
 expr_stmt|;
 if|if
 condition|(
-name|file
+name|getFile
+argument_list|()
 operator|!=
 literal|null
 condition|)
@@ -10698,12 +10714,14 @@ name|BasePanel
 operator|.
 name|this
 argument_list|,
-name|file
+name|getFile
+argument_list|()
 operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|file
+name|getFile
+argument_list|()
 operator|.
 name|getAbsolutePath
 argument_list|()
@@ -11584,7 +11602,7 @@ name|BasePanel
 operator|.
 name|this
 operator|.
-name|file
+name|getFile
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -11630,7 +11648,8 @@ name|this
 argument_list|,
 name|sidePaneManager
 argument_list|,
-name|file
+name|getFile
+argument_list|()
 argument_list|,
 name|scanner
 argument_list|)
@@ -11683,7 +11702,8 @@ name|pr
 argument_list|(
 literal|"File '"
 operator|+
-name|file
+name|getFile
+argument_list|()
 operator|.
 name|getPath
 argument_list|()
@@ -11740,6 +11760,20 @@ return|return
 name|mainTable
 operator|.
 name|getSelectedEntries
+argument_list|()
+return|;
+block|}
+comment|/**      * Get the file where this database was last saved to or loaded from, if any.      *      * @return The relevant File, or null if none is defined.      */
+DECL|method|getFile ()
+specifier|public
+name|File
+name|getFile
+parameter_list|()
+block|{
+return|return
+name|metaData
+operator|.
+name|getFile
 argument_list|()
 return|;
 block|}
