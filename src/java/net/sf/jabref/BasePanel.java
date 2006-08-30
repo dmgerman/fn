@@ -1812,7 +1812,7 @@ parameter_list|()
 block|{
 name|sidePaneManager
 operator|.
-name|hideAway
+name|hide
 argument_list|(
 literal|"fileUpdate"
 argument_list|)
@@ -3932,7 +3932,7 @@ parameter_list|()
 block|{
 name|sidePaneManager
 operator|.
-name|togglePanel
+name|toggle
 argument_list|(
 literal|"groups"
 argument_list|)
@@ -3945,7 +3945,7 @@ name|setSelected
 argument_list|(
 name|sidePaneManager
 operator|.
-name|isPanelVisible
+name|isComponentVisible
 argument_list|(
 literal|"groups"
 argument_list|)
@@ -4553,7 +4553,7 @@ block|{
 comment|//sidePaneManager.togglePanel("search");
 name|sidePaneManager
 operator|.
-name|ensureVisible
+name|show
 argument_list|(
 literal|"search"
 argument_list|)
@@ -4601,7 +4601,7 @@ block|{
 comment|//sidePaneManager.togglePanel("search");
 name|sidePaneManager
 operator|.
-name|togglePanel
+name|toggle
 argument_list|(
 literal|"search"
 argument_list|)
@@ -4611,7 +4611,7 @@ name|on
 init|=
 name|sidePaneManager
 operator|.
-name|isPanelVisible
+name|isComponentVisible
 argument_list|(
 literal|"search"
 argument_list|)
@@ -4657,7 +4657,7 @@ parameter_list|()
 block|{
 name|sidePaneManager
 operator|.
-name|ensureVisible
+name|show
 argument_list|(
 literal|"search"
 argument_list|)
@@ -11656,11 +11656,18 @@ argument_list|)
 decl_stmt|;
 name|sidePaneManager
 operator|.
-name|add
+name|register
 argument_list|(
 literal|"fileUpdate"
 argument_list|,
 name|pan
+argument_list|)
+expr_stmt|;
+name|sidePaneManager
+operator|.
+name|show
+argument_list|(
+literal|"fileUpdate"
 argument_list|)
 expr_stmt|;
 name|setUpdatedExternally

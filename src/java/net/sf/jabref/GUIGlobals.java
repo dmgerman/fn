@@ -256,7 +256,10 @@ DECL|field|SPLIT_PANE_DIVIDER_LOCATION
 name|SPLIT_PANE_DIVIDER_LOCATION
 init|=
 literal|145
+operator|+
+literal|15
 decl_stmt|,
+comment|// + 15 for possible scrollbar.
 DECL|field|TABLE_ROW_PADDING
 name|TABLE_ROW_PADDING
 init|=

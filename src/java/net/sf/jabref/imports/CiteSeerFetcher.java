@@ -1850,7 +1850,7 @@ argument_list|)
 expr_stmt|;
 name|sidePaneManager
 operator|.
-name|ensureVisible
+name|show
 argument_list|(
 literal|"CiteSeerProgress"
 argument_list|)

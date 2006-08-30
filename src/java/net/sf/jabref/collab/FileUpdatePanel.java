@@ -295,7 +295,7 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * actionPerformed    *    * @param e ActionEvent    */
+comment|/** 	 * actionPerformed 	 *  	 * @param e 	 *            ActionEvent 	 */
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -307,19 +307,20 @@ parameter_list|)
 block|{
 name|manager
 operator|.
-name|hideAway
+name|hideComponent
 argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-comment|//ChangeScanner scanner = new ChangeScanner(frame, panel); //, panel.database(), panel.metaData());
-comment|//try {
+comment|// ChangeScanner scanner = new ChangeScanner(frame, panel); //,
+comment|// panel.database(), panel.metaData());
+comment|// try {
 name|scanner
 operator|.
 name|displayResult
 argument_list|()
 expr_stmt|;
-comment|//scanner.changeScan(panel.file());
+comment|// scanner.changeScan(panel.file());
 name|panel
 operator|.
 name|setUpdatedExternally
@@ -327,9 +328,9 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-comment|//} catch (IOException ex) {
-comment|//    ex.printStackTrace();
-comment|//}
+comment|// } catch (IOException ex) {
+comment|// ex.printStackTrace();
+comment|// }
 block|}
 block|}
 end_class
