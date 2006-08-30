@@ -2181,6 +2181,24 @@ name|getAuthorsNatbib
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|/* 		 * [ 1465610 ] (Double-)Names containing hyphen (-) not handled correctly 		 */
+name|assertEquals
+argument_list|(
+literal|"Last-Name et al."
+argument_list|,
+name|AuthorList
+operator|.
+name|getAuthorList
+argument_list|(
+literal|"First Second Last-Name"
+operator|+
+literal|" and John Smith and Black Brown, Peter"
+argument_list|)
+operator|.
+name|getAuthorsNatbib
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// Test caching
 name|AuthorList
 name|al

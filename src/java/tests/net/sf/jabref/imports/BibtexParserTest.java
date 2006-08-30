@@ -906,6 +906,9 @@ name|assertEquals
 argument_list|(
 literal|"Hallo World this is not an exercise ."
 argument_list|,
+operator|(
+name|String
+operator|)
 name|e
 operator|.
 name|getField
@@ -918,6 +921,9 @@ name|assertEquals
 argument_list|(
 literal|"Hallo World this is not an exercise ."
 argument_list|,
+operator|(
+name|String
+operator|)
 name|e
 operator|.
 name|getField
