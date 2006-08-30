@@ -267,6 +267,13 @@ operator|.
 name|HORIZONTAL_SCROLLBAR_AS_NEEDED
 argument_list|)
 decl_stmt|;
+name|sp
+operator|.
+name|setBorder
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 comment|// To remove the scroll panel just change sp to mainPanel and comment
 comment|// the JScrollPane declaration
 name|super
