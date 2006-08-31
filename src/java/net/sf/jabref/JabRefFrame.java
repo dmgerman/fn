@@ -420,6 +420,7 @@ name|JabRefFrame
 extends|extends
 name|JFrame
 block|{
+comment|// CO: Code Smells...
 DECL|field|ths
 name|JabRefFrame
 name|ths

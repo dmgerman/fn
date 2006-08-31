@@ -261,7 +261,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * GUI component that allows editing of the fields of a BibtexEntry.  * EntryTypeForm also registers itself as a VetoableChangeListener, receiving  * events whenever a field of the entry changes, enabling the text fields to  * update themselves if the change is made from somewhere else.  */
+comment|/**  * GUI component that allows editing of the fields of a BibtexEntry.  * EntryEditor also registers itself as a VetoableChangeListener, receiving  * events whenever a field of the entry changes, enabling the text fields to  * update themselves if the change is made from somewhere else.  */
 end_comment
 
 begin_class
@@ -284,11 +284,12 @@ DECL|field|type
 name|BibtexEntryType
 name|type
 decl_stmt|;
+comment|// The action concerned with closing the window.
 DECL|field|closeAction
 name|CloseAction
 name|closeAction
 decl_stmt|;
-comment|// The action concerned with closing the window.
+comment|// The action that deletes the current entry, and closes the editor.
 DECL|field|deleteAction
 name|DeleteAction
 name|deleteAction
@@ -297,7 +298,7 @@ operator|new
 name|DeleteAction
 argument_list|()
 decl_stmt|;
-comment|// The action that deletes the current entry, and closes the editor.
+comment|// The action concerned with copying the BibTeX key to the clipboard.
 DECL|field|copyKeyAction
 name|CopyKeyAction
 name|copyKeyAction
@@ -311,7 +312,7 @@ operator|new
 name|NextEntryAction
 argument_list|()
 decl_stmt|;
-comment|// The action concerned with copying the BibTeX key to the clipboard.
+comment|// Actions for switching to next/previous entry.
 DECL|field|prevEntryAction
 name|AbstractAction
 name|prevEntryAction
@@ -320,13 +321,13 @@ operator|new
 name|PrevEntryAction
 argument_list|()
 decl_stmt|;
-comment|// Actions for switching to next/previous entry.
+comment|// The action concerned with storing a field value.
 DECL|field|storeFieldAction
 specifier|public
 name|StoreFieldAction
 name|storeFieldAction
 decl_stmt|;
-comment|// The action concerned with storing a field value.
+comment|// The actions concerned with switching the panels.
 DECL|field|switchLeftAction
 name|SwitchLeftAction
 name|switchLeftAction
@@ -343,12 +344,11 @@ operator|new
 name|SwitchRightAction
 argument_list|()
 decl_stmt|;
-comment|// The actions concerned with switching the panels.
+comment|// The action which generates a bibtexkey for this entry.
 DECL|field|generateKeyAction
 name|GenerateKeyAction
 name|generateKeyAction
 decl_stmt|;
-comment|// The action which generates a bibtexkey for this entry.
 DECL|field|saveDatabaseAction
 name|SaveDatabaseAction
 name|saveDatabaseAction
@@ -1790,6 +1790,8 @@ argument_list|,
 name|storeFieldAction
 argument_list|,
 literal|false
+argument_list|,
+literal|", "
 argument_list|)
 decl_stmt|;
 name|contentSelectors
@@ -1880,6 +1882,22 @@ argument_list|,
 name|storeFieldAction
 argument_list|,
 literal|false
+argument_list|,
+operator|(
+name|editor
+operator|.
+name|getFieldName
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"author"
+argument_list|)
+condition|?
+literal|" and "
+else|:
+literal|", "
+operator|)
 argument_list|)
 decl_stmt|;
 name|contentSelectors
@@ -4214,7 +4232,7 @@ name|next
 argument_list|()
 operator|)
 operator|.
-name|updateList
+name|rebuildComboBox
 argument_list|()
 expr_stmt|;
 block|}
