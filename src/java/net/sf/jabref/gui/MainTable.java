@@ -277,7 +277,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Oct 12, 2005  * Time: 10:29:39 PM  * To change this template use File | Settings | File Templates.  */
+comment|/**  * The central table which displays the bibtex entries.  *   * User: alver  * Date: Oct 12, 2005  * Time: 10:29:39 PM  *   */
 end_comment
 
 begin_class

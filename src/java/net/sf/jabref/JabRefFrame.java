@@ -573,6 +573,7 @@ name|GridBagConstraints
 argument_list|()
 decl_stmt|;
 DECL|field|statusLine
+DECL|field|statusLabel
 name|JLabel
 name|statusLine
 init|=
@@ -586,7 +587,6 @@ operator|.
 name|LEFT
 argument_list|)
 decl_stmt|,
-DECL|field|statusLabel
 name|statusLabel
 init|=
 operator|new
@@ -606,7 +606,7 @@ operator|.
 name|LEFT
 argument_list|)
 decl_stmt|;
-comment|//SearchManager searchManager  = new SearchManager(ths, prefs);
+comment|// SearchManager searchManager = new SearchManager(ths, prefs);
 DECL|field|fileHistory
 specifier|private
 name|FileHistory
