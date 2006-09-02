@@ -621,13 +621,9 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-name|super
-operator|.
-name|setPage
-argument_list|(
-operator|new
 name|URL
-argument_list|(
+name|resource
+init|=
 name|JabRef
 operator|.
 name|class
@@ -642,6 +638,24 @@ name|middle
 operator|+
 name|file
 argument_list|)
+decl_stmt|;
+comment|// Because of the call to toString(), we must test for null, or the fallback
+comment|// to english won't work if the page is missing in the selected langugage:
+if|if
+condition|(
+name|resource
+operator|!=
+literal|null
+condition|)
+block|{
+name|super
+operator|.
+name|setPage
+argument_list|(
+operator|new
+name|URL
+argument_list|(
+name|resource
 operator|.
 name|toString
 argument_list|()
@@ -653,13 +667,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ex
-parameter_list|)
-block|{
-try|try
+else|else
 block|{
 name|setPageOnly
 argument_list|(
@@ -686,29 +694,21 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 catch|catch
 parameter_list|(
-name|MalformedURLException
-name|e
+name|IOException
+name|ex
 parameter_list|)
 block|{
-name|setPageOnly
-argument_list|(
-name|HelpContent
+name|ex
 operator|.
-name|class
-operator|.
-name|getResource
-argument_list|(
-name|GUIGlobals
-operator|.
-name|helpPre
-operator|+
-name|file
-argument_list|)
-argument_list|)
+name|printStackTrace
+argument_list|()
 expr_stmt|;
-block|}
+comment|// The fallback below shouldn't bee needed any more, because of the null
+comment|// check above.
+comment|/*             try { 				setPageOnly(new URL(HelpContent.class.getResource(GUIGlobals.helpPre + file) + "#" + reference)); 			} catch (MalformedURLException e) { 				setPageOnly(HelpContent.class.getResource(GUIGlobals.helpPre + file)); 			}*/
 block|}
 name|forw
 operator|.
