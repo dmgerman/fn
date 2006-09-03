@@ -1408,6 +1408,249 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|testImportIEEEExport ()
+specifier|public
+name|void
+name|testImportIEEEExport
+parameter_list|()
+throws|throws
+name|IOException
+block|{
+name|IsiImporter
+name|importer
+init|=
+operator|new
+name|IsiImporter
+argument_list|()
+decl_stmt|;
+name|List
+name|entries
+init|=
+name|importer
+operator|.
+name|importEntries
+argument_list|(
+name|IsiImporterTest
+operator|.
+name|class
+operator|.
+name|getResourceAsStream
+argument_list|(
+literal|"IEEEImport1.txt"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|1
+argument_list|,
+name|entries
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|BibtexEntry
+name|a
+init|=
+operator|(
+name|BibtexEntry
+operator|)
+name|entries
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+name|a
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|,
+name|BibtexEntryType
+operator|.
+name|ARTICLE
+argument_list|,
+name|a
+operator|.
+name|getType
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Geoscience and Remote Sensing Letters, IEEE"
+argument_list|,
+name|a
+operator|.
+name|getField
+argument_list|(
+literal|"journal"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Improving Urban Road Extraction in High-Resolution "
+operator|+
+literal|"Images Exploiting Directional Filtering, Perceptual "
+operator|+
+literal|"Grouping, and Simple Topological Concepts"
+argument_list|,
+name|a
+operator|.
+name|getField
+argument_list|(
+literal|"title"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"4"
+argument_list|,
+name|a
+operator|.
+name|getField
+argument_list|(
+literal|"volume"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"3"
+argument_list|,
+name|a
+operator|.
+name|getField
+argument_list|(
+literal|"number"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"1545-598X"
+argument_list|,
+name|a
+operator|.
+name|getField
+argument_list|(
+literal|"SN"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"387--391"
+argument_list|,
+name|a
+operator|.
+name|getField
+argument_list|(
+literal|"pages"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Gamba, P. and Dell'Acqua, F. and Lisini, G."
+argument_list|,
+operator|(
+name|String
+operator|)
+name|a
+operator|.
+name|getField
+argument_list|(
+literal|"author"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"2006"
+argument_list|,
+name|a
+operator|.
+name|getField
+argument_list|(
+literal|"year"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Perceptual grouping, street extraction, urban remote sensing"
+argument_list|,
+operator|(
+name|String
+operator|)
+name|a
+operator|.
+name|getField
+argument_list|(
+literal|"keywords"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"In this letter, the problem of detecting urban road "
+operator|+
+literal|"networks from high-resolution optical/synthetic aperture "
+operator|+
+literal|"radar (SAR) images is addressed. To this end, this letter "
+operator|+
+literal|"exploits a priori knowledge about road direction "
+operator|+
+literal|"distribution in urban areas. In particular, this letter "
+operator|+
+literal|"presents an adaptive filtering procedure able to capture the "
+operator|+
+literal|"predominant directions of these roads and enhance the "
+operator|+
+literal|"extraction results. After road element extraction, to both "
+operator|+
+literal|"discard redundant segments and avoid gaps, a special "
+operator|+
+literal|"perceptual grouping algorithm is devised, exploiting "
+operator|+
+literal|"colinearity as well as proximity concepts. Finally, the road "
+operator|+
+literal|"network topology is considered, checking for road "
+operator|+
+literal|"intersections and regularizing the overall patterns using "
+operator|+
+literal|"these focal points. The proposed procedure was tested on a "
+operator|+
+literal|"pair of very high resolution images, one from an optical "
+operator|+
+literal|"sensor and one from a SAR sensor. The experiments show an "
+operator|+
+literal|"increase in both the completeness and the quality indexes "
+operator|+
+literal|"for the extracted road network."
+argument_list|,
+operator|(
+name|String
+operator|)
+name|a
+operator|.
+name|getField
+argument_list|(
+literal|"abstract"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|testImportEntriesMedline ()
 specifier|public
 name|void
