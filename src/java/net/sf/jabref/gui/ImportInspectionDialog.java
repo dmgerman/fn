@@ -906,6 +906,8 @@ operator|=
 operator|new
 name|PreviewPanel
 argument_list|(
+name|metaData
+argument_list|,
 name|Globals
 operator|.
 name|prefs
@@ -914,8 +916,6 @@ name|get
 argument_list|(
 literal|"preview1"
 argument_list|)
-argument_list|,
-name|metaData
 argument_list|)
 expr_stmt|;
 name|duplLabel
