@@ -202,6 +202,8 @@ return|return
 literal|"isi"
 return|;
 block|}
+comment|// 2006.09.05: Modified pattern to avoid false positives for other files due to an
+comment|// extra | at the end:
 DECL|field|isiPattern
 specifier|static
 specifier|final
@@ -212,7 +214,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"^FN ISI Export Format|^VR 1.|^PY \\d{4}|"
+literal|"FN ISI Export Format|VR 1.|PY \\d{4}"
 argument_list|)
 decl_stmt|;
 comment|/** 	 * Check whether the source is in the correct format for this importer. 	 */
