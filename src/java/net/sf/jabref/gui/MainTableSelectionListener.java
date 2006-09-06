@@ -108,43 +108,7 @@ name|awt
 operator|.
 name|event
 operator|.
-name|MouseListener
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|MouseEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|KeyListener
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|KeyEvent
+name|*
 import|;
 end_import
 
@@ -193,6 +157,8 @@ implements|,
 name|MouseListener
 implements|,
 name|KeyListener
+implements|,
+name|FocusListener
 block|{
 DECL|field|previewPanel
 name|PreviewPanel
@@ -243,6 +209,24 @@ name|boolean
 name|workingOnPreview
 init|=
 literal|false
+decl_stmt|;
+comment|// Register the last character pressed to quick jump in the table. Together
+comment|// with storing the last row number jumped to, this is used to let multiple
+comment|// key strokes cycle between all entries starting with the same letter:
+DECL|field|lastPressed
+specifier|private
+name|int
+name|lastPressed
+init|=
+literal|'\n'
+decl_stmt|;
+DECL|field|lastQuickJumpRow
+specifier|private
+name|int
+name|lastQuickJumpRow
+init|=
+operator|-
+literal|1
 decl_stmt|;
 comment|//private int lastCharPressed = -1;
 DECL|method|MainTableSelectionListener (BasePanel panel, MainTable table)
@@ -1958,12 +1942,65 @@ comment|// No sorting? TODO: look up by author, etc.?
 comment|// TODO: the following lookup should be done by a faster algorithm,
 comment|// such as binary search. But the table may not be sorted properly,
 comment|// due to marked entries, search etc., which rules out the binary search.
+name|int
+name|startRow
+init|=
+literal|0
+decl_stmt|;
+if|if
+condition|(
+operator|(
+name|c
+operator|==
+name|lastPressed
+operator|)
+operator|&&
+operator|(
+name|lastQuickJumpRow
+operator|>=
+literal|0
+operator|)
+condition|)
+block|{
+if|if
+condition|(
+name|lastQuickJumpRow
+operator|<
+name|table
+operator|.
+name|getRowCount
+argument_list|()
+operator|-
+literal|1
+condition|)
+name|startRow
+operator|=
+name|lastQuickJumpRow
+operator|+
+literal|1
+expr_stmt|;
+block|}
+name|lastPressed
+operator|=
+name|c
+expr_stmt|;
+name|boolean
+name|done
+init|=
+literal|false
+decl_stmt|;
+while|while
+condition|(
+operator|!
+name|done
+condition|)
+block|{
 for|for
 control|(
 name|int
 name|i
 init|=
-literal|0
+name|startRow
 init|;
 name|i
 operator|<
@@ -2045,8 +2082,30 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
+name|lastQuickJumpRow
+operator|=
+name|i
+expr_stmt|;
 return|return;
 block|}
+block|}
+comment|// Finished, no result. If we didn't start at the beginning of
+comment|// the table, try that. Otherwise, exit the while loop.
+if|if
+condition|(
+name|startRow
+operator|>
+literal|0
+condition|)
+name|startRow
+operator|=
+literal|0
+expr_stmt|;
+else|else
+name|done
+operator|=
+literal|true
+expr_stmt|;
 block|}
 block|}
 block|}
@@ -2068,6 +2127,31 @@ name|KeyEvent
 name|e
 parameter_list|)
 block|{     }
+DECL|method|focusGained (FocusEvent e)
+specifier|public
+name|void
+name|focusGained
+parameter_list|(
+name|FocusEvent
+name|e
+parameter_list|)
+block|{      }
+DECL|method|focusLost (FocusEvent e)
+specifier|public
+name|void
+name|focusLost
+parameter_list|(
+name|FocusEvent
+name|e
+parameter_list|)
+block|{
+name|lastPressed
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+comment|// Reset quick jump when focus is lost.
+block|}
 block|}
 end_class
 

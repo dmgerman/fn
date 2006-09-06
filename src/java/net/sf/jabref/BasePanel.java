@@ -8826,6 +8826,13 @@ argument_list|(
 name|selectionListener
 argument_list|)
 expr_stmt|;
+name|mainTable
+operator|.
+name|addFocusListener
+argument_list|(
+name|selectionListener
+argument_list|)
+expr_stmt|;
 comment|// Add the listener that will take care of highlighting groups as the selection changes:
 name|groupsHighlightListener
 operator|=
