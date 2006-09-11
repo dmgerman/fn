@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* Copyright (C) 2003 Nizar N. Batada, Morten O. Alver  All programs in this directory and subdirectories are published under the GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html  */
+comment|/*  Copyright (C) 2003 Nizar N. Batada, Morten O. Alver   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   */
 end_comment
 
 begin_package
@@ -16,23 +16,11 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|swing
+name|awt
 operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|border
-operator|.
-name|EtchedBorder
+name|Color
 import|;
 end_import
 
@@ -42,13 +30,9 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
+name|Dimension
 import|;
 end_import
-
-begin_comment
-comment|//import java.awt.Color;
-end_comment
 
 begin_import
 import|import
@@ -56,9 +40,27 @@ name|java
 operator|.
 name|awt
 operator|.
-name|event
+name|Graphics
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|*
+name|awt
+operator|.
+name|Graphics2D
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|RenderingHints
 import|;
 end_import
 
@@ -76,15 +78,47 @@ end_import
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|util
+name|swing
 operator|.
-name|regex
-operator|.
-name|Matcher
+name|JComponent
 import|;
 end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JLabel
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JScrollPane
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JTextArea
+import|;
+end_import
+
+begin_comment
+comment|/**  * An implementation of the FieldEditor backed by a JTextArea. Used for  * multi-line input.  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+end_comment
 
 begin_class
 DECL|class|FieldTextArea
@@ -95,30 +129,25 @@ extends|extends
 name|JTextArea
 implements|implements
 name|FieldEditor
-implements|,
-name|KeyListener
 block|{
 DECL|field|PREFERRED_SIZE
 name|Dimension
 name|PREFERRED_SIZE
 decl_stmt|;
 DECL|field|sp
-specifier|protected
 name|JScrollPane
 name|sp
 decl_stmt|;
 DECL|field|label
-specifier|protected
 name|FieldNameLabel
 name|label
 decl_stmt|;
 DECL|field|fieldName
-specifier|protected
 name|String
 name|fieldName
 decl_stmt|;
-comment|//protected Completer completer;
 DECL|field|bull
+specifier|final
 specifier|static
 name|Pattern
 name|bull
@@ -131,6 +160,7 @@ literal|"\\s*[-\\*]+.*"
 argument_list|)
 decl_stmt|;
 DECL|field|indent
+specifier|final
 specifier|static
 name|Pattern
 name|indent
@@ -143,7 +173,7 @@ literal|"\\s+.*"
 argument_list|)
 decl_stmt|;
 DECL|field|antialias
-specifier|private
+specifier|final
 name|boolean
 name|antialias
 init|=
@@ -172,8 +202,8 @@ argument_list|(
 name|content
 argument_list|)
 expr_stmt|;
-comment|// Add the global focus listener, so a menu item can see if this field was focused when
-comment|// an action was called.
+comment|// Add the global focus listener, so a menu item can see if this field
+comment|// was focused when an action was called.
 name|addFocusListener
 argument_list|(
 name|Globals
@@ -248,12 +278,6 @@ operator|+
 literal|" "
 argument_list|)
 expr_stmt|;
-comment|//label.setBorder(BorderFactory.createEtchedBorder
-comment|//		 (GUIGlobals.lightGray, Color.gray));
-comment|//label.setBorder(BorderFactory.createEtchedBorder());
-comment|//label.setOpaque(true);
-comment|//label.setBackground(GUIGlobals.lightGray);
-comment|//label.setForeground(Color.gray);
 name|setBackground
 argument_list|(
 name|GUIGlobals
@@ -261,11 +285,6 @@ operator|.
 name|validFieldBackground
 argument_list|)
 expr_stmt|;
-comment|//if ((content != null)&& (content.length()> 0))
-comment|//label.setForeground(GUIGlobals.validFieldColor);
-comment|// At construction time, the field can never have an invalid value.
-comment|//else
-comment|//    label.setForeground(GUIGlobals.nullFieldColor);
 name|FieldTextMenu
 name|popMenu
 init|=
@@ -289,10 +308,7 @@ argument_list|(
 name|popMenu
 argument_list|)
 expr_stmt|;
-comment|//this.addKeyListener(this);
 block|}
-comment|/*     public void setAutoComplete(Completer completer) {         addKeyListener(new AutoCompListener(completer));     }     */
-comment|/*public Dimension getPreferredSize() {         return PREFERRED_SIZE;         }*/
 DECL|method|getPreferredScrollableViewportSize ()
 specifier|public
 name|Dimension
@@ -467,303 +483,67 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|keyPressed (KeyEvent event)
-specifier|public
-name|void
-name|keyPressed
-parameter_list|(
-name|KeyEvent
-name|event
-parameter_list|)
-block|{
-name|int
-name|keyCode
-init|=
-name|event
-operator|.
-name|getKeyCode
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|keyCode
-operator|==
-name|KeyEvent
-operator|.
-name|VK_ENTER
-condition|)
-block|{
-comment|// Consume; we will handle this ourselves:
-name|event
-operator|.
-name|consume
-argument_list|()
-expr_stmt|;
-name|autoWrap
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-DECL|method|autoWrap ()
-specifier|private
-name|void
-name|autoWrap
-parameter_list|()
-block|{
-name|int
-name|pos
-init|=
-name|getCaretPosition
-argument_list|()
-decl_stmt|;
-name|int
-name|posAfter
-init|=
-name|pos
-operator|+
-literal|1
-decl_stmt|;
-name|StringBuffer
-name|sb
-init|=
-operator|new
-name|StringBuffer
-argument_list|(
-name|getText
-argument_list|()
-argument_list|)
-decl_stmt|;
-comment|// First insert the line break:
-name|sb
-operator|.
-name|insert
-argument_list|(
-name|pos
-argument_list|,
-literal|'\n'
-argument_list|)
-expr_stmt|;
-comment|// We want to investigate the beginning of the last line:
-comment|//int end = sb.length();
-comment|//System.out.println("."+sb.substring(0, pos)+".");
-comment|// Find 0 or the last line break before our current position:
-name|int
-name|idx
-init|=
-name|sb
-operator|.
-name|substring
-argument_list|(
-literal|0
-argument_list|,
-name|pos
-argument_list|)
-operator|.
-name|lastIndexOf
-argument_list|(
-literal|"\n"
-argument_list|)
-operator|+
-literal|1
-decl_stmt|;
-name|String
-name|prevLine
-init|=
-name|sb
-operator|.
-name|substring
-argument_list|(
-name|idx
-argument_list|,
-name|pos
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|bull
-operator|.
-name|matcher
-argument_list|(
-name|prevLine
-argument_list|)
-operator|.
-name|matches
-argument_list|()
-condition|)
-block|{
-name|int
-name|id
-init|=
-name|findFirstNonWhitespace
-argument_list|(
-name|prevLine
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|id
-operator|>=
-literal|0
-condition|)
-block|{
-name|sb
-operator|.
-name|insert
-argument_list|(
-name|posAfter
-argument_list|,
-name|prevLine
-operator|.
-name|substring
-argument_list|(
-literal|0
-argument_list|,
-name|id
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|posAfter
-operator|+=
-name|id
-expr_stmt|;
-block|}
-block|}
-elseif|else
-if|if
-condition|(
-name|indent
-operator|.
-name|matcher
-argument_list|(
-name|prevLine
-argument_list|)
-operator|.
-name|matches
-argument_list|()
-condition|)
-block|{
-name|int
-name|id
-init|=
-name|findFirstNonWhitespace
-argument_list|(
-name|prevLine
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|id
-operator|>=
-literal|0
-condition|)
-block|{
-name|sb
-operator|.
-name|insert
-argument_list|(
-name|posAfter
-argument_list|,
-name|prevLine
-operator|.
-name|substring
-argument_list|(
-literal|0
-argument_list|,
-name|id
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|posAfter
-operator|+=
-name|id
-expr_stmt|;
-block|}
-block|}
-comment|/*if (prevLine.startsWith(" ")) {             sb.insert(posAfter, " ");             posAfter++;         } */
-name|setText
-argument_list|(
-name|sb
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|setCaretPosition
-argument_list|(
-name|posAfter
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|findFirstNonWhitespace (String s)
-specifier|private
-name|int
-name|findFirstNonWhitespace
-parameter_list|(
-name|String
-name|s
-parameter_list|)
-block|{
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|s
-operator|.
-name|length
-argument_list|()
-condition|;
-name|i
-operator|++
-control|)
-block|{
-if|if
-condition|(
-operator|!
-name|Character
-operator|.
-name|isWhitespace
-argument_list|(
-name|s
-operator|.
-name|charAt
-argument_list|(
-name|i
-argument_list|)
-argument_list|)
-condition|)
-return|return
-name|i
-return|;
-block|}
-return|return
-operator|-
-literal|1
-return|;
-block|}
-DECL|method|keyReleased (KeyEvent event)
-specifier|public
-name|void
-name|keyReleased
-parameter_list|(
-name|KeyEvent
-name|event
-parameter_list|)
-block|{      }
-DECL|method|keyTyped (KeyEvent event)
-specifier|public
-name|void
-name|keyTyped
-parameter_list|(
-name|KeyEvent
-name|event
-parameter_list|)
-block|{     }
-comment|/*    public void setText(String t) {         super.setText(t);    //To change body of overridden methods use File | Settings | File Templates.         Thread.dumpStack();     }*/
+comment|// public void keyPressed(KeyEvent event) {
+comment|// int keyCode = event.getKeyCode();
+comment|// if (keyCode == KeyEvent.VK_ENTER) {
+comment|// // Consume; we will handle this ourselves:
+comment|// event.consume();
+comment|// autoWrap();
+comment|//
+comment|// }
+comment|//
+comment|// }
+comment|//
+comment|// private void autoWrap() {
+comment|// int pos = getCaretPosition();
+comment|// int posAfter = pos + 1;
+comment|// StringBuffer sb = new StringBuffer(getText());
+comment|// // First insert the line break:
+comment|// sb.insert(pos, '\n');
+comment|//
+comment|// // We want to investigate the beginning of the last line:
+comment|// // int end = sb.length();
+comment|//
+comment|// // System.out.println("."+sb.substring(0, pos)+".");
+comment|//
+comment|// // Find 0 or the last line break before our current position:
+comment|// int idx = sb.substring(0, pos).lastIndexOf("\n") + 1;
+comment|// String prevLine = sb.substring(idx, pos);
+comment|// if (bull.matcher(prevLine).matches()) {
+comment|// int id = findFirstNonWhitespace(prevLine);
+comment|// if (id>= 0) {
+comment|// sb.insert(posAfter, prevLine.substring(0, id));
+comment|// posAfter += id;
+comment|// }
+comment|// } else if (indent.matcher(prevLine).matches()) {
+comment|// int id = findFirstNonWhitespace(prevLine);
+comment|// if (id>= 0) {
+comment|// sb.insert(posAfter, prevLine.substring(0, id));
+comment|// posAfter += id;
+comment|// }
+comment|// }
+comment|// /*
+comment|// * if (prevLine.startsWith(" ")) { sb.insert(posAfter, " "); posAfter++; }
+comment|// */
+comment|//
+comment|// setText(sb.toString());
+comment|// setCaretPosition(posAfter);
+comment|// }
+comment|//
+comment|// private int findFirstNonWhitespace(String s) {
+comment|// for (int i = 0; i< s.length(); i++) {
+comment|// if (!Character.isWhitespace(s.charAt(i)))
+comment|// return i;
+comment|// }
+comment|// return -1;
+comment|// }
+comment|//
+comment|// public void keyReleased(KeyEvent event) {
+comment|//
+comment|// }
+comment|//
+comment|// public void keyTyped(KeyEvent event) {
+comment|// }
 block|}
 end_class
 

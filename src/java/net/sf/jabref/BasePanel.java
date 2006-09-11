@@ -1034,15 +1034,8 @@ name|BibtexDatabase
 name|database
 decl_stmt|;
 comment|// The database shown in this panel.
-specifier|private
-name|File
-comment|//file = null,  // Moving file to MetaData (Morten, 2006.08.29)
-DECL|field|fileToOpen
-name|fileToOpen
-init|=
-literal|null
-decl_stmt|;
-comment|// The filename of the database.
+comment|//  	Moving file to MetaData (Morten, 2006.08.29)
+comment|// private File fileToOpen = null;
 DECL|field|fileMonitorHandle
 name|String
 name|fileMonitorHandle
@@ -1440,6 +1433,16 @@ name|IOException
 name|ex
 parameter_list|)
 block|{         }
+block|}
+DECL|method|isBaseChanged ()
+specifier|public
+name|boolean
+name|isBaseChanged
+parameter_list|()
+block|{
+return|return
+name|baseChanged
+return|;
 block|}
 DECL|method|getMode ()
 specifier|public
@@ -1857,6 +1860,7 @@ condition|(
 name|success
 condition|)
 block|{
+comment|// Reset title of tab
 name|frame
 operator|.
 name|setTabTitle
