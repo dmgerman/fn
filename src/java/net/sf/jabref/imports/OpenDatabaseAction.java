@@ -1272,6 +1272,7 @@ argument_list|()
 expr_stmt|;
 comment|//System.out.println("Result of UTF-16 test: "+suppliedEncoding);
 block|}
+comment|//System.out.println(suppliedEncoding != null ? "Encoding: '"+suppliedEncoding+"'" : "no supplied encoding");
 if|if
 condition|(
 operator|(
@@ -1292,6 +1293,9 @@ argument_list|(
 name|fileToOpen
 argument_list|,
 name|suppliedEncoding
+operator|.
+name|trim
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|encoding
@@ -1302,10 +1306,15 @@ comment|// Just so we put the right info into the ParserResult.
 block|}
 catch|catch
 parameter_list|(
-name|IOException
+name|Exception
 name|ex
 parameter_list|)
 block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 name|reader
 operator|=
 name|ImportFormatReader

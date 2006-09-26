@@ -7785,6 +7785,17 @@ parameter_list|)
 throws|throws
 name|SaveException
 block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Saving with encoding: "
+operator|+
+name|encoding
+argument_list|)
+expr_stmt|;
 name|SaveSession
 name|session
 decl_stmt|;

@@ -433,7 +433,7 @@ literal|"JIS"
 block|,
 literal|"SJIS"
 block|,
-literal|"EUC-JP"
+literal|"EUC_JP"
 block|,
 comment|// Added Japanese encodings.
 literal|"Big5"
@@ -659,6 +659,7 @@ name|i
 index|]
 argument_list|)
 condition|)
+block|{
 name|encodings
 operator|.
 name|add
@@ -669,6 +670,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|ENCODINGS
 operator|=
