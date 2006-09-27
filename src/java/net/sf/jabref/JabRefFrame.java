@@ -2834,14 +2834,6 @@ name|void
 name|quit
 parameter_list|()
 block|{
-name|System
-operator|.
-name|exit
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
-comment|// TODO: ta bort
 comment|// Ask here if the user really wants to close, if the base
 comment|// has not been saved since last save.
 name|boolean

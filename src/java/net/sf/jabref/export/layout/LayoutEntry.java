@@ -841,6 +841,17 @@ name|IS_GROUP_START
 operator|)
 condition|)
 block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"FIELD_START: "
+operator|+
+name|text
+argument_list|)
+expr_stmt|;
 name|String
 name|field
 init|=
