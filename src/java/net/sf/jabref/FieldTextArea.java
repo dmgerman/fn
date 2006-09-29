@@ -316,7 +316,8 @@ name|getPreferredScrollableViewportSize
 parameter_list|()
 block|{
 return|return
-name|PREFERRED_SIZE
+name|getPreferredSize
+argument_list|()
 return|;
 block|}
 DECL|method|paint (Graphics g)
