@@ -153,16 +153,7 @@ literal|" "
 argument_list|)
 expr_stmt|;
 comment|//label = new JLabel(" "+Util.nCase(fieldName)+" ", JLabel.CENTER);
-name|label
-operator|.
-name|setBorder
-argument_list|(
-name|BorderFactory
-operator|.
-name|createEtchedBorder
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//label.setBorder(BorderFactory.createEtchedBorder());
 name|setBackground
 argument_list|(
 name|GUIGlobals
