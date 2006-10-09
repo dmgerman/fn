@@ -640,30 +640,7 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"MetaData: dir: '"
-operator|+
-name|dir
-operator|+
-literal|"' relative: "
-operator|+
-operator|(
-operator|new
-name|File
-argument_list|(
-name|dir
-argument_list|)
-operator|)
-operator|.
-name|isAbsolute
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//System.out.println("MetaData: dir: '"+dir+"' relative: "+(new File(dir)).isAbsolute());
 return|return
 name|dir
 return|;
