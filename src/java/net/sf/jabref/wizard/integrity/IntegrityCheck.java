@@ -871,25 +871,7 @@ operator|>
 literal|0
 condition|)
 block|{
-name|messages
-operator|.
-name|add
-argument_list|(
-operator|new
-name|IntegrityMessage
-argument_list|(
-name|IntegrityMessage
-operator|.
-name|UPPER_AND_LOWER_HINT
-argument_list|,
-name|entry
-argument_list|,
-name|fieldName
-argument_list|,
-literal|null
-argument_list|)
-argument_list|)
-expr_stmt|;
+comment|/*         Morten Alver (2006.10.10):          Disabling this warning because we have a feature for automatically adding         braces when saving, which makes this warning misleading. It could be modified         to suggest to use this feature if not enabled, and not give a warning if the         feature is enabled.          messages.add( new IntegrityMessage( IntegrityMessage.UPPER_AND_LOWER_HINT,                                         entry, fieldName, null))  ;*/
 block|}
 block|}
 comment|/** Checks, if the number String contains a four digit year */
