@@ -2764,6 +2764,22 @@ operator|=
 literal|"endnote"
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|exportName
+operator|.
+name|equals
+argument_list|(
+literal|"tablerefsabsbib"
+argument_list|)
+condition|)
+block|{
+name|directory
+operator|=
+literal|"tablerefsabsbib"
+expr_stmt|;
+block|}
 comment|// We need to find out:
 comment|// 1. The layout definition string to use. Or, rather, we
 comment|//    must provide a Reader for the layout definition.

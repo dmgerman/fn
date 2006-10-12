@@ -10005,6 +10005,20 @@ literal|"MODS"
 argument_list|)
 argument_list|)
 decl_stmt|,
+DECL|field|tablerefsabsbibItem
+name|tablerefsabsbibItem
+init|=
+operator|new
+name|JMenuItem
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"HTML table"
+argument_list|)
+argument_list|)
+decl_stmt|,
 DECL|field|rtfItem
 name|rtfItem
 init|=
@@ -10247,6 +10261,23 @@ operator|=
 literal|".ods"
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|source
+operator|==
+name|tablerefsabsbibItem
+condition|)
+block|{
+name|lfFileName
+operator|=
+literal|"tablerefsabsbib"
+expr_stmt|;
+name|extension
+operator|=
+literal|".html"
+expr_stmt|;
+block|}
 comment|// We need to find out:
 comment|// 1. The layout definition string to use. Or, rather, we
 comment|//    must provide a Reader for the layout definition.
@@ -10367,6 +10398,20 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
+name|tablerefsabsbibItem
+operator|.
+name|addActionListener
+argument_list|(
+name|listener
+argument_list|)
+expr_stmt|;
+name|menu
+operator|.
+name|add
+argument_list|(
+name|tablerefsabsbibItem
+argument_list|)
+expr_stmt|;
 name|htmlItem
 operator|.
 name|addActionListener

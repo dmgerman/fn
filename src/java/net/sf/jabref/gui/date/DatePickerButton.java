@@ -68,6 +68,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -129,6 +139,15 @@ operator|new
 name|DatePicker
 argument_list|()
 decl_stmt|;
+DECL|field|panel
+specifier|private
+name|JPanel
+name|panel
+init|=
+operator|new
+name|JPanel
+argument_list|()
+decl_stmt|;
 DECL|field|editor
 specifier|private
 name|FieldEditor
@@ -156,12 +175,32 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+name|panel
+operator|.
+name|setLayout
+argument_list|(
+operator|new
+name|BorderLayout
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|panel
+operator|.
+name|add
+argument_list|(
+name|datePicker
+argument_list|,
+name|BorderLayout
+operator|.
+name|WEST
+argument_list|)
+expr_stmt|;
 name|editor
 operator|=
 name|pEditor
 expr_stmt|;
 block|}
-DECL|method|actionPerformed ( ActionEvent e )
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -215,8 +254,9 @@ name|JComponent
 name|getDatePicker
 parameter_list|()
 block|{
+comment|//return datePicker;
 return|return
-name|datePicker
+name|panel
 return|;
 block|}
 block|}
