@@ -1464,7 +1464,7 @@ name|prefs
 operator|.
 name|getKey
 argument_list|(
-literal|"writeXMP"
+literal|"Write XMP"
 argument_list|)
 argument_list|)
 decl_stmt|,

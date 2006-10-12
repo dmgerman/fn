@@ -4763,6 +4763,15 @@ argument_list|,
 literal|"F8"
 argument_list|)
 expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Write XMP"
+argument_list|,
+literal|"ctrl F4"
+argument_list|)
+expr_stmt|;
 comment|//defKeyBinds.put("Select value", "ctrl B");
 block|}
 DECL|method|getNextUnit (Reader data)

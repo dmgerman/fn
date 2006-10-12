@@ -289,7 +289,7 @@ name|putValue
 argument_list|(
 name|NAME
 argument_list|,
-literal|"Set field "
+literal|"Set/clear fields"
 argument_list|)
 expr_stmt|;
 name|this
@@ -316,7 +316,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Set field"
+literal|"Set/clear fields"
 argument_list|)
 argument_list|,
 literal|true
@@ -395,7 +395,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Clear field"
+literal|"Clear fields"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -408,7 +408,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Set field"
+literal|"Set fields"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -459,7 +459,12 @@ operator|=
 operator|new
 name|JCheckBox
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Overwrite existing field values"
+argument_list|)
 argument_list|,
 literal|true
 argument_list|)
