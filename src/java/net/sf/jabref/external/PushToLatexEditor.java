@@ -50,6 +50,18 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|GUIGlobals
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -134,7 +146,12 @@ name|getIcon
 parameter_list|()
 block|{
 return|return
-literal|null
+name|GUIGlobals
+operator|.
+name|getImage
+argument_list|(
+literal|"edit"
+argument_list|)
 return|;
 block|}
 DECL|method|getKeyStrokeName ()
