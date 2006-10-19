@@ -350,9 +350,9 @@ operator|.
 name|repaint
 argument_list|()
 expr_stmt|;
-name|frame
+name|ExportFormats
 operator|.
-name|setUpCustomExportMenu
+name|initAllExports
 argument_list|()
 expr_stmt|;
 block|}
@@ -487,9 +487,9 @@ operator|.
 name|repaint
 argument_list|()
 expr_stmt|;
-name|frame
+name|ExportFormats
 operator|.
-name|setUpCustomExportMenu
+name|initAllExports
 argument_list|()
 expr_stmt|;
 block|}
@@ -550,9 +550,9 @@ operator|.
 name|repaint
 argument_list|()
 expr_stmt|;
-name|frame
+name|ExportFormats
 operator|.
-name|setUpCustomExportMenu
+name|initAllExports
 argument_list|()
 expr_stmt|;
 block|}

@@ -119,25 +119,17 @@ specifier|protected
 name|Collection
 name|entries
 decl_stmt|;
-comment|/*protected final static String TYPE_COL = "BibliographyType";          protected final static Map columns = new LinkedHashMap();         static {              columns.put(TYPE_COL, "dummy");             columns.put("ISBN", "isbn");             coulmns.put("Identifier", "\bibtexkey");             coulmns.put("", "");             coulmns.put("", "");          }*/
-DECL|method|OOCalcDatabase ()
-specifier|public
-name|OOCalcDatabase
-parameter_list|()
-block|{
-comment|//entries = new HashSet();
-block|}
-DECL|method|OOCalcDatabase (BibtexDatabase bibtex)
+DECL|method|OOCalcDatabase (BibtexDatabase bibtex, Set keySet)
 specifier|public
 name|OOCalcDatabase
 parameter_list|(
 name|BibtexDatabase
 name|bibtex
+parameter_list|,
+name|Set
+name|keySet
 parameter_list|)
 block|{
-name|this
-argument_list|()
-expr_stmt|;
 comment|// Make a list of comparators for sorting the entries:
 name|List
 name|comparators
@@ -189,6 +181,14 @@ operator|new
 name|BasicEventList
 argument_list|()
 decl_stmt|;
+comment|// Set up a list of all entries, if keySet==null, or the entries whose
+comment|// ids are in keySet, otherwise:
+if|if
+condition|(
+name|keySet
+operator|==
+literal|null
+condition|)
 name|entryList
 operator|.
 name|addAll
@@ -199,6 +199,43 @@ name|getEntries
 argument_list|()
 argument_list|)
 expr_stmt|;
+else|else
+block|{
+for|for
+control|(
+name|Iterator
+name|i
+init|=
+name|keySet
+operator|.
+name|iterator
+argument_list|()
+init|;
+name|i
+operator|.
+name|hasNext
+argument_list|()
+condition|;
+control|)
+name|entryList
+operator|.
+name|add
+argument_list|(
+name|bibtex
+operator|.
+name|getEntryById
+argument_list|(
+operator|(
+name|String
+operator|)
+name|i
+operator|.
+name|next
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 name|entries
 operator|=
 operator|new

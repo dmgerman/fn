@@ -54,6 +54,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|net
 operator|.
 name|URL
@@ -109,13 +119,71 @@ DECL|class|OpenDocumentSpreadsheetCreator
 specifier|public
 class|class
 name|OpenDocumentSpreadsheetCreator
+extends|extends
+name|ExportFormat
 block|{
 comment|/**      * Creates a new instance of OpenOfficeDocumentCreator      */
 DECL|method|OpenDocumentSpreadsheetCreator ()
-specifier|private
+specifier|public
 name|OpenDocumentSpreadsheetCreator
 parameter_list|()
-block|{     }
+block|{
+name|super
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"OpenDocument Spreadsheet"
+argument_list|)
+argument_list|,
+literal|"ods"
+argument_list|,
+literal|null
+argument_list|,
+literal|null
+argument_list|,
+literal|".ods"
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|performExport (final BibtexDatabase database, final String file, final String encoding, Set keySet)
+specifier|public
+name|void
+name|performExport
+parameter_list|(
+specifier|final
+name|BibtexDatabase
+name|database
+parameter_list|,
+specifier|final
+name|String
+name|file
+parameter_list|,
+specifier|final
+name|String
+name|encoding
+parameter_list|,
+name|Set
+name|keySet
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+name|exportOpenDocumentSpreadsheet
+argument_list|(
+operator|new
+name|File
+argument_list|(
+name|file
+argument_list|)
+argument_list|,
+name|database
+argument_list|,
+name|keySet
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|storeOpenDocumentSpreadsheetFile (File file, InputStream source)
 specifier|public
 specifier|static
@@ -231,7 +299,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|exportOpenDocumentSpreadsheet (File file, BibtexDatabase database)
+DECL|method|exportOpenDocumentSpreadsheet (File file, BibtexDatabase database, Set keySet)
 specifier|public
 specifier|static
 name|void
@@ -242,6 +310,9 @@ name|file
 parameter_list|,
 name|BibtexDatabase
 name|database
+parameter_list|,
+name|Set
+name|keySet
 parameter_list|)
 throws|throws
 name|Exception
@@ -264,6 +335,8 @@ argument_list|(
 name|tmpFile
 argument_list|,
 name|database
+argument_list|,
+name|keySet
 argument_list|)
 expr_stmt|;
 comment|// Then add the content to the zip file:
@@ -294,7 +367,7 @@ name|delete
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|exportOpenDocumentSpreadsheetXML (File tmpFile, BibtexDatabase database)
+DECL|method|exportOpenDocumentSpreadsheetXML (File tmpFile, BibtexDatabase database, Set keySet)
 specifier|public
 specifier|static
 name|void
@@ -305,6 +378,9 @@ name|tmpFile
 parameter_list|,
 name|BibtexDatabase
 name|database
+parameter_list|,
+name|Set
+name|keySet
 parameter_list|)
 block|{
 name|OpenDocumentRepresentation
@@ -314,6 +390,8 @@ operator|new
 name|OpenDocumentRepresentation
 argument_list|(
 name|database
+argument_list|,
+name|keySet
 argument_list|)
 decl_stmt|;
 try|try

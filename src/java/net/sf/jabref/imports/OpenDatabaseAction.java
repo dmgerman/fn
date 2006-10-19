@@ -1272,7 +1272,7 @@ argument_list|()
 expr_stmt|;
 comment|//System.out.println("Result of UTF-16 test: "+suppliedEncoding);
 block|}
-comment|//System.out.println(suppliedEncoding != null ? "Encoding: '"+suppliedEncoding+"'" : "no supplied encoding");
+comment|//System.out.println(suppliedEncoding != null ? "Encoding: '"+suppliedEncoding+"' Len: "+suppliedEncoding.length() : "no supplied encoding");
 if|if
 condition|(
 operator|(
@@ -1293,9 +1293,6 @@ argument_list|(
 name|fileToOpen
 argument_list|,
 name|suppliedEncoding
-operator|.
-name|trim
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|encoding
@@ -1604,6 +1601,15 @@ parameter_list|)
 block|{         }
 return|return
 name|suppliedEncoding
+operator|!=
+literal|null
+condition|?
+name|suppliedEncoding
+operator|.
+name|trim
+argument_list|()
+else|:
+literal|null
 return|;
 block|}
 block|}
