@@ -1088,47 +1088,7 @@ name|int
 name|entriesImported
 parameter_list|)
 block|{
-specifier|final
-name|BasePanel
-name|panel
-init|=
-operator|(
-name|BasePanel
-operator|)
-name|frame
-operator|.
-name|getTabbedPane
-argument_list|()
-operator|.
-name|getSelectedComponent
-argument_list|()
-decl_stmt|;
-name|BibtexDatabase
-name|toAddTo
-init|=
-name|panel
-operator|.
-name|database
-argument_list|()
-decl_stmt|;
-comment|/*             // Add the strings, if any:             for (Iterator i = bibtexResult.getDatabase().getStringKeySet().iterator(); i.hasNext();) {                 BibtexString s = bibtexResult.getDatabase().getString(i.next());                 try {                     toAddTo.addString(s);                 } catch (KeyCollisionException e) {                     e.printStackTrace();                 }              }               if ((panel != null)&& (bibtexResult.getDatabase().getEntryCount() == 1)) {                 SwingUtilities.invokeLater(new Runnable() {                     public void run() {                         panel.highlightEntry((BibtexEntry)                                 bibtexResult.getDatabase().getEntries().                                         iterator().next());                     }                 });               }             */
-if|if
-condition|(
-operator|(
-name|worker
-operator|!=
-literal|null
-operator|)
-operator|&&
-operator|(
-name|worker
-operator|.
-name|bibtexResult
-operator|!=
-literal|null
-operator|)
-condition|)
-block|{
+comment|/*             final BasePanel panel = (BasePanel) frame.getTabbedPane().getSelectedComponent();             BibtexDatabase toAddTo = panel.database();              // Add the strings, if any:             for (Iterator i = bibtexResult.getDatabase().getStringKeySet().iterator(); i.hasNext();) {                 BibtexString s = bibtexResult.getDatabase().getString(i.next());                 try {                     toAddTo.addString(s);                 } catch (KeyCollisionException e) {                     e.printStackTrace();                 }              }               if ((panel != null)&& (bibtexResult.getDatabase().getEntryCount() == 1)) {                 SwingUtilities.invokeLater(new Runnable() {                     public void run() {                         panel.highlightEntry((BibtexEntry)                                 bibtexResult.getDatabase().getEntries().                                         iterator().next());                     }                 });               }             */
 name|frame
 operator|.
 name|output
@@ -1145,8 +1105,6 @@ operator|+
 name|entriesImported
 argument_list|)
 expr_stmt|;
-comment|//        + "  " + Globals.lang("Format used") + ": " + worker.formatName);
-block|}
 block|}
 DECL|method|cancelled ()
 specifier|public
