@@ -44,6 +44,10 @@ name|Globals
 import|;
 end_import
 
+begin_comment
+comment|/**  * Transform a LaTeX-String to RTF.  *   * This method will:  *   *   1.) Remove LaTeX-Command sequences.  *     *   2.) Replace LaTeX-Special chars with RTF aquivalents.  *     *   3.) Replace emph and textit and textbf with their RTF replacements.  *     *   4.) Take special care to save all unicode characters correctly.   *   * @author $Author$  * @version $Revision$ ($Date$)  *  */
+end_comment
+
 begin_class
 DECL|class|RTFChars
 specifier|public
@@ -61,16 +65,6 @@ name|String
 name|field
 parameter_list|)
 block|{
-name|int
-name|i
-decl_stmt|;
-name|field
-operator|=
-name|firstFormat
-argument_list|(
-name|field
-argument_list|)
-expr_stmt|;
 name|StringBuffer
 name|sb
 init|=
@@ -85,9 +79,6 @@ name|currentCommand
 init|=
 literal|null
 decl_stmt|;
-name|char
-name|c
-decl_stmt|;
 name|boolean
 name|escaped
 init|=
@@ -99,8 +90,9 @@ literal|false
 decl_stmt|;
 for|for
 control|(
+name|int
 name|i
-operator|=
+init|=
 literal|0
 init|;
 name|i
@@ -114,15 +106,16 @@ name|i
 operator|++
 control|)
 block|{
+name|char
 name|c
-operator|=
+init|=
 name|field
 operator|.
 name|charAt
 argument_list|(
 name|i
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|escaped
@@ -229,6 +222,7 @@ condition|(
 operator|!
 name|incommand
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -239,9 +233,10 @@ operator|)
 name|c
 argument_list|)
 expr_stmt|;
-comment|// Else we are in a command, and should not keep the letter.
+block|}
 else|else
 block|{
+comment|// Else we are in a command, and should not keep the letter.
 name|currentCommand
 operator|.
 name|append
@@ -318,7 +313,6 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
-comment|// System.out.println("next: "+(char)c);
 name|String
 name|combody
 decl_stmt|;
@@ -367,12 +361,13 @@ operator|+
 literal|1
 argument_list|)
 expr_stmt|;
-comment|// System.out.println("... "+combody);
 block|}
-comment|// System.out.println(command+combody);
-name|Object
+name|String
 name|result
 init|=
+operator|(
+name|String
+operator|)
 name|Globals
 operator|.
 name|RTFCHARS
@@ -394,9 +389,6 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
 name|result
 argument_list|)
 expr_stmt|;
@@ -604,29 +596,90 @@ literal|false
 expr_stmt|;
 block|}
 block|}
+name|char
+index|[]
+name|chars
+init|=
+name|sb
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|toCharArray
+argument_list|()
+decl_stmt|;
+name|sb
+operator|=
+operator|new
+name|StringBuffer
+argument_list|()
+expr_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|chars
+operator|.
+name|length
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|char
+name|c
+init|=
+name|chars
+index|[
+name|i
+index|]
+decl_stmt|;
+if|if
+condition|(
+name|c
+operator|<
+literal|128
+condition|)
+name|sb
+operator|.
+name|append
+argument_list|(
+name|c
+argument_list|)
+expr_stmt|;
+else|else
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"\\u"
+argument_list|)
+operator|.
+name|append
+argument_list|(
+operator|(
+name|long
+operator|)
+name|c
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|'?'
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|sb
 operator|.
 name|toString
 argument_list|()
 return|;
-comment|// field.replaceAll("\\\\emph", "").replaceAll("\\\\em",
-comment|// "").replaceAll("\\\\textbf", "");
-block|}
-DECL|method|firstFormat (String s)
-specifier|private
-name|String
-name|firstFormat
-parameter_list|(
-name|String
-name|s
-parameter_list|)
-block|{
-return|return
-name|s
-return|;
-comment|// s.replaceAll("&|\\\\&","&amp;");//.replaceAll("--",
-comment|// "&mdash;");
 block|}
 DECL|method|getPart (String text, int i)
 specifier|private
