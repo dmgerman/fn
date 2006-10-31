@@ -115,7 +115,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * User: alver  *   * Date: Oct 18, 2006  *   * Time: 9:35:08 PM  *   */
+comment|/**  * User: alver  *   * Date: Oct 18, 2006   *   * Time: 9:35:08 PM   */
 end_comment
 
 begin_class
@@ -869,37 +869,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|format
-operator|.
-name|performExport
-argument_list|(
-name|frame
-operator|.
-name|basePanel
-argument_list|()
-operator|.
-name|database
-argument_list|()
-argument_list|,
-name|file
-operator|.
-name|getPath
-argument_list|()
-argument_list|,
-name|frame
-operator|.
-name|basePanel
-argument_list|()
-operator|.
-name|getEncoding
-argument_list|()
-argument_list|,
-name|entryIds
-argument_list|)
-expr_stmt|;
 comment|// Make sure we remember which filter was used, to set
-comment|// the default
-comment|// for next time:
+comment|// the default for next time:
 name|Globals
 operator|.
 name|prefs
@@ -928,6 +899,34 @@ name|getParent
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|format
+operator|.
+name|performExport
+argument_list|(
+name|frame
+operator|.
+name|basePanel
+argument_list|()
+operator|.
+name|database
+argument_list|()
+argument_list|,
+name|file
+operator|.
+name|getPath
+argument_list|()
+argument_list|,
+name|frame
+operator|.
+name|basePanel
+argument_list|()
+operator|.
+name|getEncoding
+argument_list|()
+argument_list|,
+name|entryIds
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -940,11 +939,62 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
+name|frame
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Could not save file"
+argument_list|)
+operator|+
+literal|" - "
+operator|+
+name|ex
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Need to warn the user that saving failed!
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|frame
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Could not save file"
+argument_list|)
+operator|+
+literal|".\n"
+operator|+
+name|ex
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Save database"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 block|}
 block|}
-empty_stmt|;
 return|return
 operator|new
 name|ExportAction

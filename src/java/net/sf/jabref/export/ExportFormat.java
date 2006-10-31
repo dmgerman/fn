@@ -315,7 +315,7 @@ return|return
 name|displayName
 return|;
 block|}
-comment|/**      * Perform the export.      * @param database The database to export from.      * @param file The filename to write to.      * @param encoding The encoding to use.      * @param entries A Set containing the IDs of all entries that should be exported.      *  If null, all entries will be exported.      * @throws Exception      */
+comment|/**      * Perform the export.      * @param database The database to export from.      * @param file The filename to write to.      * @param encoding The encoding to use.      * @param entries (may be null) A Set containing the IDs of all entries that should be exported.      *  If null, all entries will be exported.      * @throws Exception      */
 DECL|method|performExport (final BibtexDatabase database, final String file, final String encoding, Set entries)
 specifier|public
 name|void
@@ -757,7 +757,7 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-comment|//  // If an exception was cast, export filter doesn't have an end file.
+comment|// If an exception was thrown, export filter doesn't have an end file.
 block|}
 comment|// Write the header
 if|if
@@ -780,26 +780,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-try|try
-block|{
 name|finalizeSaveSession
 argument_list|(
 name|ss
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|SaveException
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 DECL|method|getSaveSession (final String encoding, final File outFile)
 specifier|public

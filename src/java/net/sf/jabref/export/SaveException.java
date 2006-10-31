@@ -38,7 +38,7 @@ specifier|public
 class|class
 name|SaveException
 extends|extends
-name|Throwable
+name|Exception
 block|{
 comment|//~ Instance fields ////////////////////////////////////////////////////////
 DECL|field|entry
