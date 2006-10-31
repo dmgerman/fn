@@ -282,7 +282,8 @@ literal|0
 operator|)
 condition|)
 block|{
-comment|// This indicates that we are in a command of the type \^o or \~{n}
+comment|// This indicates that we are in a command of the type
+comment|// \^o or \~{n}
 if|if
 condition|(
 name|i
@@ -317,7 +318,7 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("next: "+(char)c);
+comment|// System.out.println("next: "+(char)c);
 name|String
 name|combody
 decl_stmt|;
@@ -366,9 +367,9 @@ operator|+
 literal|1
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("... "+combody);
+comment|// System.out.println("... "+combody);
 block|}
-comment|//System.out.println(command+combody);
+comment|// System.out.println(command+combody);
 name|Object
 name|result
 init|=
@@ -412,7 +413,7 @@ block|}
 block|}
 else|else
 block|{
-comment|//if (!incommand || ((c!='{')&& !Character.isWhitespace(c)))
+comment|// if (!incommand || ((c!='{')&& !Character.isWhitespace(c)))
 name|testContent
 label|:
 if|if
@@ -478,7 +479,8 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-comment|// Then test if we are dealing with a italics or bold command. If so, handle.
+comment|// Then test if we are dealing with a italics or bold
+comment|// command. If so, handle.
 if|if
 condition|(
 name|command
@@ -608,7 +610,8 @@ operator|.
 name|toString
 argument_list|()
 return|;
-comment|//field.replaceAll("\\\\emph", "").replaceAll("\\\\em", "").replaceAll("\\\\textbf", "");
+comment|// field.replaceAll("\\\\emph", "").replaceAll("\\\\em",
+comment|// "").replaceAll("\\\\textbf", "");
 block|}
 DECL|method|firstFormat (String s)
 specifier|private
@@ -622,7 +625,8 @@ block|{
 return|return
 name|s
 return|;
-comment|//s.replaceAll("&|\\\\&","&amp;");//.replaceAll("--", "&mdash;");
+comment|// s.replaceAll("&|\\\\&","&amp;");//.replaceAll("--",
+comment|// "&mdash;");
 block|}
 DECL|method|getPart (String text, int i)
 specifier|private
@@ -644,7 +648,7 @@ name|count
 init|=
 literal|0
 decl_stmt|;
-comment|//, i=index;
+comment|// , i=index;
 name|StringBuffer
 name|part
 init|=
@@ -712,7 +716,8 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
-comment|//System.out.println("part: "+part.toString()+"\nformatted: "+format(part.toString()));
+comment|// System.out.println("part: "+part.toString()+"\nformatted:
+comment|// "+format(part.toString()));
 return|return
 operator|new
 name|IntAndString
