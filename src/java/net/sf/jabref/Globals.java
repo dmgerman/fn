@@ -168,14 +168,16 @@ specifier|static
 name|int
 name|SHORTCUT_MASK
 decl_stmt|,
-comment|// = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
+comment|// =
+comment|// Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
 DECL|field|FUTURE_YEAR
 name|FUTURE_YEAR
 init|=
 literal|2050
 decl_stmt|,
-comment|// Needs to give a year definitely in the future. Used for guessing the
-comment|// year field when parsing textual data.  :-)
+comment|// Needs to give a year definitely in the future.
+comment|// Used for guessing the
+comment|// year field when parsing textual data. :-)
 DECL|field|STANDARD_EXPORT_COUNT
 name|STANDARD_EXPORT_COUNT
 init|=
@@ -189,6 +191,7 @@ literal|70
 decl_stmt|;
 comment|// The line length used to wrap metadata.
 DECL|field|resourcePrefix
+DECL|field|menuResourcePrefix
 specifier|private
 specifier|static
 name|String
@@ -196,7 +199,6 @@ name|resourcePrefix
 init|=
 literal|"resource/JabRef"
 decl_stmt|,
-DECL|field|menuResourcePrefix
 name|menuResourcePrefix
 init|=
 literal|"resource/Menu"
@@ -215,6 +217,7 @@ name|buildInfos
 init|=
 literal|"/resource/build.properties"
 decl_stmt|;
+comment|/* 	 * some extra field definitions 	 */
 DECL|field|additionalFields
 specifier|public
 specifier|static
@@ -223,15 +226,6 @@ name|String
 name|additionalFields
 init|=
 literal|"/resource/fields/fields.xml"
-decl_stmt|;
-comment|// some extra field definitions
-DECL|field|logfile
-specifier|private
-specifier|static
-name|String
-name|logfile
-init|=
-literal|"jabref.log"
 decl_stmt|;
 DECL|field|messages
 DECL|field|menuTitles
@@ -272,15 +266,15 @@ name|ErrorConsole
 name|errorConsole
 decl_stmt|;
 DECL|field|VERSION
+DECL|field|BUILD
+DECL|field|BUILD_DATE
 specifier|public
 specifier|static
 name|String
 name|VERSION
 decl_stmt|,
-DECL|field|BUILD
 name|BUILD
 decl_stmt|,
-DECL|field|BUILD_DATE
 name|BUILD_DATE
 decl_stmt|;
 static|static
@@ -324,7 +318,8 @@ name|getInstance
 argument_list|()
 expr_stmt|;
 block|}
-comment|//public static ResourceBundle preferences = ResourceBundle.getBundle("resource/defaultPrefs");
+comment|// public static ResourceBundle preferences =
+comment|// ResourceBundle.getBundle("resource/defaultPrefs");
 DECL|field|locale
 specifier|public
 specifier|static
@@ -332,6 +327,7 @@ name|Locale
 name|locale
 decl_stmt|;
 DECL|field|FILETYPE_PREFS_EXT
+DECL|field|SELECTOR_META_PREFIX
 specifier|public
 specifier|static
 specifier|final
@@ -340,27 +336,26 @@ name|FILETYPE_PREFS_EXT
 init|=
 literal|"_dir"
 decl_stmt|,
-DECL|field|SELECTOR_META_PREFIX
 name|SELECTOR_META_PREFIX
 init|=
 literal|"selector_"
 decl_stmt|,
 DECL|field|LAYOUT_PREFIX
+DECL|field|MAC
 name|LAYOUT_PREFIX
 init|=
 literal|"/resource/layout/"
 decl_stmt|,
-DECL|field|MAC
 name|MAC
 init|=
 literal|"Mac OS X"
 decl_stmt|,
 DECL|field|DOI_LOOKUP_PREFIX
+DECL|field|NONE
 name|DOI_LOOKUP_PREFIX
 init|=
 literal|"http://dx.doi.org/"
 decl_stmt|,
-DECL|field|NONE
 name|NONE
 init|=
 literal|"_non__"
@@ -395,16 +390,18 @@ name|ConsoleHandler
 argument_list|()
 decl_stmt|;
 DECL|field|ENCODINGS
+DECL|field|ALL_ENCODINGS
 specifier|public
 specifier|static
 name|String
 index|[]
 name|ENCODINGS
 decl_stmt|,
-DECL|field|ALL_ENCODINGS
 name|ALL_ENCODINGS
 init|=
-comment|//(String[]) Charset.availableCharsets().keySet().toArray(new String[]{});
+comment|// (String[])
+comment|// Charset.availableCharsets().keySet().toArray(new
+comment|// String[]{});
 operator|new
 name|String
 index|[]
@@ -732,6 +729,7 @@ literal|"def"
 argument_list|)
 decl_stmt|;
 DECL|field|ON_MAC
+DECL|field|ON_WIN
 specifier|public
 specifier|static
 name|boolean
@@ -746,7 +744,6 @@ name|MAC
 argument_list|)
 operator|)
 decl_stmt|,
-DECL|field|ON_WIN
 name|ON_WIN
 init|=
 name|osName
@@ -795,6 +792,7 @@ argument_list|(
 literal|"line.separator"
 argument_list|)
 decl_stmt|;
+comment|/** 	 * true if we have unix newlines 	 */
 DECL|field|UNIX_NEWLINE
 specifier|public
 specifier|static
@@ -809,7 +807,6 @@ argument_list|(
 literal|"\n"
 argument_list|)
 decl_stmt|;
-comment|// true if we have unix newlines.
 DECL|field|BIBTEX_STRING
 specifier|public
 specifier|static
@@ -819,7 +816,8 @@ name|BIBTEX_STRING
 init|=
 literal|"__string"
 decl_stmt|;
-comment|// "Fieldname" to indicate that a field should be treated as a bibtex string. Used when writing database to file.
+comment|// "Fieldname" to indicate that a field should be treated as a bibtex
+comment|// string. Used when writing database to file.
 DECL|method|logger (String s)
 specifier|public
 specifier|static
@@ -923,7 +921,7 @@ operator|new
 name|ConsoleHandler
 argument_list|()
 expr_stmt|;
-comment|/*try {       handler = new FileHandler(logfile); // this will overwrite     }     catch (IOException e) { //can't open log file so use console         e.printStackTrace();      } */
+comment|/* 		 * try { handler = new FileHandler(logfile); // this will overwrite } 		 * catch (IOException e) { //can't open log file so use console 		 * e.printStackTrace(); } 		 */
 name|Logger
 operator|.
 name|global
@@ -1099,7 +1097,7 @@ name|translation
 operator|=
 name|key
 expr_stmt|;
-comment|//Thread.dumpStack();  // For debugging
+comment|// Thread.dumpStack(); // For debugging
 name|logger
 argument_list|(
 literal|"Warning: could not get translation for \""
@@ -1265,7 +1263,8 @@ name|NumberFormatException
 name|e
 parameter_list|)
 block|{
-comment|// append literally (for quoting) or insert special symbol
+comment|// append literally (for quoting) or insert special
+comment|// symbol
 switch|switch
 condition|(
 name|c
@@ -1495,8 +1494,9 @@ name|translation
 operator|=
 name|key
 expr_stmt|;
-comment|//System.err.println("Warning: could not get menu item translation for \""
-comment|//                   + key + "\"");
+comment|// System.err.println("Warning: could not get menu item translation
+comment|// for \""
+comment|// + key + "\"");
 block|}
 if|if
 condition|(
@@ -1583,8 +1583,9 @@ name|translation
 operator|=
 name|key
 expr_stmt|;
-comment|//      System.err.println("Warning: could not get menu item translation for \""
-comment|//                         + key + "\"");
+comment|// System.err.println("Warning: could not get menu item translation
+comment|// for \""
+comment|// + key + "\"");
 block|}
 if|if
 condition|(
@@ -1615,9 +1616,9 @@ name|key
 return|;
 block|}
 block|}
-comment|//============================================================
+comment|// ============================================================
 comment|// Using the hashmap of entry types found in BibtexEntryType
-comment|//============================================================
+comment|// ============================================================
 DECL|method|getEntryType (String type)
 specifier|public
 specifier|static
@@ -1663,9 +1664,9 @@ operator|.
 name|OTHER
 return|;
 block|}
-comment|/*       if(type.equals("article"))         return BibtexEntryType.ARTICLE;       else if(type.equals("book"))         return BibtexEntryType.BOOK;       else if(type.equals("inproceedings"))         return BibtexEntryType.INPROCEEDINGS;      */
+comment|/* 		 * if(type.equals("article")) return BibtexEntryType.ARTICLE; else 		 * if(type.equals("book")) return BibtexEntryType.BOOK; else 		 * if(type.equals("inproceedings")) return 		 * BibtexEntryType.INPROCEEDINGS; 		 */
 block|}
-comment|/**      * This method provides the correct opening brace to use when writing a field      * to BibTeX format.      * @return A String containing the braces to use.      */
+comment|/** 	 * This method provides the correct opening brace to use when writing a 	 * field to BibTeX format. 	 *  	 * @return A String containing the braces to use. 	 */
 DECL|method|getOpeningBrace ()
 specifier|public
 specifier|static
@@ -1676,9 +1677,9 @@ block|{
 return|return
 literal|"{"
 return|;
-comment|/*             As of version 2.0, storing all fields with double braces is no longer supported, because             it causes problems with e.g. the author field.          if (prefs.getBoolean("autoDoubleBraces"))             return "{{";         else             return "{";         */
+comment|/* 		 * As of version 2.0, storing all fields with double braces is no longer 		 * supported, because it causes problems with e.g. the author field. 		 *  		 * if (prefs.getBoolean("autoDoubleBraces")) return "{{"; else return 		 * "{"; 		 */
 block|}
-comment|/**      * This method provides the correct closing brace to use when writing a field      * to BibTeX format.      * @return A String containing the braces to use.      */
+comment|/** 	 * This method provides the correct closing brace to use when writing a 	 * field to BibTeX format. 	 *  	 * @return A String containing the braces to use. 	 */
 DECL|method|getClosingBrace ()
 specifier|public
 specifier|static
@@ -1689,7 +1690,7 @@ block|{
 return|return
 literal|"}"
 return|;
-comment|/*             As of version 2.0, storing all fields with double braces is no longer supported, because             it causes problems with e.g. the author field.          if (prefs.getBoolean("autoDoubleBraces"))             return "}}";         else         */
+comment|/* 		 * As of version 2.0, storing all fields with double braces is no longer 		 * supported, because it causes problems with e.g. the author field. 		 *  		 * if (prefs.getBoolean("autoDoubleBraces")) return "}}"; else 		 */
 block|}
 comment|/** 	 * Will return the names of multiple files selected in the given directory 	 * and the given extensions. 	 *  	 * Will return an empty String array if no entry is found. 	 *  	 * @param owner 	 * @param directory 	 * @param extension 	 * @param updateWorkingdirectory 	 * @return 	 */
 DECL|method|getMultipleFiles (JFrame owner, File directory, String extension, boolean updateWorkingdirectory)
@@ -2316,7 +2317,8 @@ return|return
 literal|null
 return|;
 block|}
-comment|// If this is a save dialog, and the user has not chosen "All files" as filter
+comment|// If this is a save dialog, and the user has not chosen "All files" as
+comment|// filter
 comment|// we enforce the given extension. But only if extension is not null.
 if|if
 condition|(
@@ -2500,7 +2502,7 @@ argument_list|(
 name|owner
 argument_list|)
 decl_stmt|;
-comment|//fc.setFilenameFilter(filter);
+comment|// fc.setFilenameFilter(filter);
 if|if
 condition|(
 name|directory
@@ -2615,6 +2617,7 @@ init|=
 literal|"\"`^~'c"
 decl_stmt|;
 DECL|field|HTML_CHARS
+DECL|field|HTMLCHARS
 specifier|public
 specifier|static
 name|HashMap
@@ -2624,7 +2627,6 @@ operator|new
 name|HashMap
 argument_list|()
 decl_stmt|,
-DECL|field|HTMLCHARS
 name|HTMLCHARS
 init|=
 operator|new
@@ -2632,20 +2634,20 @@ name|HashMap
 argument_list|()
 decl_stmt|,
 DECL|field|XML_CHARS
+DECL|field|ASCII2XML_CHARS
+DECL|field|UNICODE_CHARS
 name|XML_CHARS
 init|=
 operator|new
 name|HashMap
 argument_list|()
 decl_stmt|,
-DECL|field|ASCII2XML_CHARS
 name|ASCII2XML_CHARS
 init|=
 operator|new
 name|HashMap
 argument_list|()
 decl_stmt|,
-DECL|field|UNICODE_CHARS
 name|UNICODE_CHARS
 init|=
 operator|new
@@ -2653,13 +2655,13 @@ name|HashMap
 argument_list|()
 decl_stmt|,
 DECL|field|RTFCHARS
+DECL|field|URL_CHARS
 name|RTFCHARS
 init|=
 operator|new
 name|HashMap
 argument_list|()
 decl_stmt|,
-DECL|field|URL_CHARS
 name|URL_CHARS
 init|=
 operator|new
@@ -2668,12 +2670,14 @@ argument_list|()
 decl_stmt|;
 static|static
 block|{
-comment|//System.out.println(journalAbbrev.getAbbreviatedName("Journal of Fish Biology", true));
-comment|//System.out.println(journalAbbrev.getAbbreviatedName("Journal of Fish Biology", false));
-comment|//System.out.println(journalAbbrev.getFullName("Aquaculture Eng."));
-comment|/*for (Iterator i=journalAbbrev.fullNameIterator(); i.hasNext();) {           String s = (String)i.next();           System.out.println(journalAbbrev.getFullName(s)+" : "+journalAbbrev.getAbbreviatedName(s, true));       } */
+comment|// System.out.println(journalAbbrev.getAbbreviatedName("Journal of Fish
+comment|// Biology", true));
+comment|// System.out.println(journalAbbrev.getAbbreviatedName("Journal of Fish
+comment|// Biology", false));
+comment|// System.out.println(journalAbbrev.getFullName("Aquaculture Eng."));
+comment|/* 		 * for (Iterator i=journalAbbrev.fullNameIterator(); i.hasNext();) { 		 * String s = (String)i.next(); 		 * System.out.println(journalAbbrev.getFullName(s)+" : 		 * "+journalAbbrev.getAbbreviatedName(s, true)); } 		 */
 comment|// Start the thread that monitors file time stamps.
-comment|//Util.pr("Starting FileUpdateMonitor thread. Globals line 293.");
+comment|// Util.pr("Starting FileUpdateMonitor thread. Globals line 293.");
 name|fileUpdateMonitor
 operator|.
 name|start
@@ -2697,7 +2701,7 @@ parameter_list|(
 name|Throwable
 name|t
 parameter_list|)
-block|{      }
+block|{  		}
 comment|// Special characters in URLs need to be replaced to ensure that the URL
 comment|// opens properly on all platforms:
 name|URL_CHARS
@@ -2763,54 +2767,54 @@ argument_list|,
 literal|"%24"
 argument_list|)
 expr_stmt|;
-comment|//    HTMLCHARS.put("\"a", "&auml;");
-comment|//    HTMLCHARS.put("\"A", "&Auml;");
-comment|//    HTMLCHARS.put("\"e", "&euml;");
-comment|//    HTMLCHARS.put("\"E", "&Euml;");
-comment|//    HTMLCHARS.put("\"i", "&iuml;");
-comment|//    HTMLCHARS.put("\"I", "&Iuml;");
-comment|//    HTMLCHARS.put("\"o", "&ouml;");
-comment|//    HTMLCHARS.put("\"O", "&Ouml;");
-comment|//    HTMLCHARS.put("\"u", "&uuml;");
-comment|//    HTMLCHARS.put("\"U", "&Uuml;");
-comment|//    HTMLCHARS.put("`a", "&agrave;");
-comment|//    HTMLCHARS.put("`A", "&Agrave;");
-comment|//    HTMLCHARS.put("`e", "&egrave;");
-comment|//    HTMLCHARS.put("`E", "&Egrave;");
-comment|//    HTMLCHARS.put("`i", "&igrave;");
-comment|//    HTMLCHARS.put("`I", "&Igrave;");
-comment|//    HTMLCHARS.put("`o", "&ograve;");
-comment|//    HTMLCHARS.put("`O", "&Ograve;");
-comment|//    HTMLCHARS.put("`u", "&ugrave;");
-comment|//    HTMLCHARS.put("`U", "&Ugrave;");
-comment|//    HTMLCHARS.put("'e", "&eacute;");
-comment|//    HTMLCHARS.put("'E", "&Eacute;");
-comment|//    HTMLCHARS.put("'i", "&iacute;");
-comment|//    HTMLCHARS.put("'I", "&Iacute;");
-comment|//    HTMLCHARS.put("'o", "&oacute;");
-comment|//    HTMLCHARS.put("'O", "&Oacute;");
-comment|//    HTMLCHARS.put("'u", "&uacute;");
-comment|//    HTMLCHARS.put("'U", "&Uacute;");
-comment|//    HTMLCHARS.put("'a", "&aacute;");
-comment|//    HTMLCHARS.put("'A", "&Aacute;");
-comment|//    HTMLCHARS.put("^a", "&ocirc;");
-comment|//    HTMLCHARS.put("^A", "&Ocirc;");
-comment|//    HTMLCHARS.put("^o", "&ocirc;");
-comment|//    HTMLCHARS.put("^O", "&Ocirc;");
-comment|//    HTMLCHARS.put("^u", "&ucirc;");
-comment|//    HTMLCHARS.put("^U", "&Ucirc;");
-comment|//    HTMLCHARS.put("^e", "&ecirc;");
-comment|//    HTMLCHARS.put("^E", "&Ecirc;");
-comment|//    HTMLCHARS.put("^i", "&icirc;");
-comment|//    HTMLCHARS.put("^I", "&Icirc;");
-comment|//    HTMLCHARS.put("~o", "&otilde;");
-comment|//    HTMLCHARS.put("~O", "&Otilde;");
-comment|//    HTMLCHARS.put("~n", "&ntilde;");
-comment|//    HTMLCHARS.put("~N", "&Ntilde;");
-comment|//    HTMLCHARS.put("~a", "&atilde;");
-comment|//    HTMLCHARS.put("~A", "&Atilde;");
-comment|//    HTMLCHARS.put("cc", "&ccedil;");
-comment|//    HTMLCHARS.put("cC", "&Ccedil;");
+comment|// HTMLCHARS.put("\"a", "&auml;");
+comment|// HTMLCHARS.put("\"A", "&Auml;");
+comment|// HTMLCHARS.put("\"e", "&euml;");
+comment|// HTMLCHARS.put("\"E", "&Euml;");
+comment|// HTMLCHARS.put("\"i", "&iuml;");
+comment|// HTMLCHARS.put("\"I", "&Iuml;");
+comment|// HTMLCHARS.put("\"o", "&ouml;");
+comment|// HTMLCHARS.put("\"O", "&Ouml;");
+comment|// HTMLCHARS.put("\"u", "&uuml;");
+comment|// HTMLCHARS.put("\"U", "&Uuml;");
+comment|// HTMLCHARS.put("`a", "&agrave;");
+comment|// HTMLCHARS.put("`A", "&Agrave;");
+comment|// HTMLCHARS.put("`e", "&egrave;");
+comment|// HTMLCHARS.put("`E", "&Egrave;");
+comment|// HTMLCHARS.put("`i", "&igrave;");
+comment|// HTMLCHARS.put("`I", "&Igrave;");
+comment|// HTMLCHARS.put("`o", "&ograve;");
+comment|// HTMLCHARS.put("`O", "&Ograve;");
+comment|// HTMLCHARS.put("`u", "&ugrave;");
+comment|// HTMLCHARS.put("`U", "&Ugrave;");
+comment|// HTMLCHARS.put("'e", "&eacute;");
+comment|// HTMLCHARS.put("'E", "&Eacute;");
+comment|// HTMLCHARS.put("'i", "&iacute;");
+comment|// HTMLCHARS.put("'I", "&Iacute;");
+comment|// HTMLCHARS.put("'o", "&oacute;");
+comment|// HTMLCHARS.put("'O", "&Oacute;");
+comment|// HTMLCHARS.put("'u", "&uacute;");
+comment|// HTMLCHARS.put("'U", "&Uacute;");
+comment|// HTMLCHARS.put("'a", "&aacute;");
+comment|// HTMLCHARS.put("'A", "&Aacute;");
+comment|// HTMLCHARS.put("^a", "&ocirc;");
+comment|// HTMLCHARS.put("^A", "&Ocirc;");
+comment|// HTMLCHARS.put("^o", "&ocirc;");
+comment|// HTMLCHARS.put("^O", "&Ocirc;");
+comment|// HTMLCHARS.put("^u", "&ucirc;");
+comment|// HTMLCHARS.put("^U", "&Ucirc;");
+comment|// HTMLCHARS.put("^e", "&ecirc;");
+comment|// HTMLCHARS.put("^E", "&Ecirc;");
+comment|// HTMLCHARS.put("^i", "&icirc;");
+comment|// HTMLCHARS.put("^I", "&Icirc;");
+comment|// HTMLCHARS.put("~o", "&otilde;");
+comment|// HTMLCHARS.put("~O", "&Otilde;");
+comment|// HTMLCHARS.put("~n", "&ntilde;");
+comment|// HTMLCHARS.put("~N", "&Ntilde;");
+comment|// HTMLCHARS.put("~a", "&atilde;");
+comment|// HTMLCHARS.put("~A", "&Atilde;");
+comment|// HTMLCHARS.put("cc", "&ccedil;");
+comment|// HTMLCHARS.put("cC", "&Ccedil;");
 comment|// Following character definitions contributed by Ervin Kolenovic:
 comment|// HTML named entities from #192 - #255 (UNICODE Latin-1)
 name|HTMLCHARS
@@ -3043,7 +3047,8 @@ literal|"&Ouml;"
 argument_list|)
 expr_stmt|;
 comment|// #214
-comment|// According to ISO 8859-1 the "\times" symbol should be placed here (#215).
+comment|// According to ISO 8859-1 the "\times" symbol should be placed here
+comment|// (#215).
 comment|// Omitting this, because it is a mathematical symbol.
 name|HTMLCHARS
 operator|.
@@ -3355,7 +3360,8 @@ literal|"&ouml;"
 argument_list|)
 expr_stmt|;
 comment|// #246
-comment|// According to ISO 8859-1 the "\div" symbol should be placed here (#247).
+comment|// According to ISO 8859-1 the "\div" symbol should be placed here
+comment|// (#247).
 comment|// Omitting this, because it is a mathematical symbol.
 name|HTMLCHARS
 operator|.
@@ -3437,7 +3443,8 @@ literal|"&yuml;"
 argument_list|)
 expr_stmt|;
 comment|// #255
-comment|// HTML special characters without names (UNICODE Latin Extended-A), indicated by UNICODE number
+comment|// HTML special characters without names (UNICODE Latin Extended-A),
+comment|// indicated by UNICODE number
 name|HTMLCHARS
 operator|.
 name|put
@@ -6385,7 +6392,7 @@ argument_list|,
 literal|"i"
 argument_list|)
 expr_stmt|;
-comment|//UNICODE_CHARS.put("\u0100", "");
+comment|// UNICODE_CHARS.put("\u0100", "");
 name|RTFCHARS
 operator|.
 name|put
@@ -6755,8 +6762,10 @@ argument_list|,
 literal|"\\'dc"
 argument_list|)
 expr_stmt|;
-comment|// Use UNICODE characters for RTF-Chars which can not be found in the standard codepage
-comment|//  RTFCHARS.put("`A", "\\uc0\\u192");     // "Agrave" exists in standard codepage
+comment|// Use UNICODE characters for RTF-Chars which can not be found in the
+comment|// standard codepage
+comment|// RTFCHARS.put("`A", "\\uc0\\u192"); // "Agrave" exists in standard
+comment|// codepage
 name|RTFCHARS
 operator|.
 name|put
@@ -6767,7 +6776,8 @@ literal|"\\uc0\\u193"
 argument_list|)
 expr_stmt|;
 comment|// "Aacute"
-comment|//  RTFCHARS.put("^A", "\\uc0\\u194");     // "Acirc"  exists in standard codepage
+comment|// RTFCHARS.put("^A", "\\uc0\\u194"); // "Acirc" exists in standard
+comment|// codepage
 name|RTFCHARS
 operator|.
 name|put
@@ -6778,7 +6788,8 @@ literal|"\\uc0\\u195"
 argument_list|)
 expr_stmt|;
 comment|// "Atilde"
-comment|//  RTFCHARS.put("\"A", "\\uc0\\u196");    // "Auml"   exists in standard codepage
+comment|// RTFCHARS.put("\"A", "\\uc0\\u196"); // "Auml" exists in standard
+comment|// codepage
 name|RTFCHARS
 operator|.
 name|put
@@ -6809,7 +6820,8 @@ literal|"\\uc0\\u199"
 argument_list|)
 expr_stmt|;
 comment|// "Ccedil"
-comment|//  RTFCHARS.put("`E", "\\uc0\\u200");     // "Egrave" exists in standard codepage
+comment|// RTFCHARS.put("`E", "\\uc0\\u200"); // "Egrave" exists in standard
+comment|// codepage
 name|RTFCHARS
 operator|.
 name|put
@@ -6820,9 +6832,12 @@ literal|"\\uc0\\u201"
 argument_list|)
 expr_stmt|;
 comment|// "Eacute"
-comment|//  RTFCHARS.put("^E", "\\uc0\\u202");     // "Ecirc"  exists in standard codepage
-comment|//  RTFCHARS.put("\"E", "\\uc0\\u203");    // "Euml"   exists in standard codepage
-comment|//  RTFCHARS.put("`I", "\\uc0\\u204");     // "Igrave" exists in standard codepage
+comment|// RTFCHARS.put("^E", "\\uc0\\u202"); // "Ecirc" exists in standard
+comment|// codepage
+comment|// RTFCHARS.put("\"E", "\\uc0\\u203"); // "Euml" exists in standard
+comment|// codepage
+comment|// RTFCHARS.put("`I", "\\uc0\\u204"); // "Igrave" exists in standard
+comment|// codepage
 name|RTFCHARS
 operator|.
 name|put
@@ -6833,8 +6848,10 @@ literal|"\\uc0\\u205"
 argument_list|)
 expr_stmt|;
 comment|// "Iacute"
-comment|//  RTFCHARS.put("^I", "\\uc0\\u206");     // "Icirc"  exists in standard codepage
-comment|//  RTFCHARS.put("\"I", "\\uc0\\u207");    // "Iuml"   exists in standard codepage
+comment|// RTFCHARS.put("^I", "\\uc0\\u206"); // "Icirc" exists in standard
+comment|// codepage
+comment|// RTFCHARS.put("\"I", "\\uc0\\u207"); // "Iuml" exists in standard
+comment|// codepage
 name|RTFCHARS
 operator|.
 name|put
@@ -6855,7 +6872,8 @@ literal|"\\uc0\\u209"
 argument_list|)
 expr_stmt|;
 comment|// "Ntilde"
-comment|//  RTFCHARS.put("`O", "\\uc0\\u210");     // "Ograve" exists in standard codepage
+comment|// RTFCHARS.put("`O", "\\uc0\\u210"); // "Ograve" exists in standard
+comment|// codepage
 name|RTFCHARS
 operator|.
 name|put
@@ -6866,7 +6884,8 @@ literal|"\\uc0\\u211"
 argument_list|)
 expr_stmt|;
 comment|// "Oacute"
-comment|//  RTFCHARS.put("^O", "\\uc0\\u212");     // "Ocirc"  exists in standard codepage
+comment|// RTFCHARS.put("^O", "\\uc0\\u212"); // "Ocirc" exists in standard
+comment|// codepage
 name|RTFCHARS
 operator|.
 name|put
@@ -6877,8 +6896,10 @@ literal|"\\uc0\\u213"
 argument_list|)
 expr_stmt|;
 comment|// "Otilde"
-comment|//  RTFCHARS.put("\"O", "\\uc0\\u214");    // "Ouml"   exists in standard codepage
-comment|// According to ISO 8859-1 the "\times" symbol should be placed here (#215).
+comment|// RTFCHARS.put("\"O", "\\uc0\\u214"); // "Ouml" exists in standard
+comment|// codepage
+comment|// According to ISO 8859-1 the "\times" symbol should be placed here
+comment|// (#215).
 comment|// Omitting this, because it is a mathematical symbol.
 name|RTFCHARS
 operator|.
@@ -6890,7 +6911,8 @@ literal|"\\uc0\\u216"
 argument_list|)
 expr_stmt|;
 comment|// "OSlash"
-comment|//  RTFCHARS.put("`U", "\\uc0\\u217");     // "Ugrave"  exists in standard codepage
+comment|// RTFCHARS.put("`U", "\\uc0\\u217"); // "Ugrave" exists in standard
+comment|// codepage
 name|RTFCHARS
 operator|.
 name|put
@@ -6901,8 +6923,10 @@ literal|"\\uc0\\u218"
 argument_list|)
 expr_stmt|;
 comment|// "Uacute"
-comment|//  RTFCHARS.put("^U", "\\uc0\\u219");     // "Ucirc"   exists in standard codepage
-comment|//  RTFCHARS.put("\"U", "\\uc0\\u220");    // "Uuml"    exists in standard codepage
+comment|// RTFCHARS.put("^U", "\\uc0\\u219"); // "Ucirc" exists in standard
+comment|// codepage
+comment|// RTFCHARS.put("\"U", "\\uc0\\u220"); // "Uuml" exists in standard
+comment|// codepage
 name|RTFCHARS
 operator|.
 name|put
@@ -6933,7 +6957,8 @@ literal|"\\uc0\\u223"
 argument_list|)
 expr_stmt|;
 comment|// "szlig"
-comment|//  RTFCHARS.put("`a", "\\uc0\\u224");     // "agrave"  exists in standard codepage
+comment|// RTFCHARS.put("`a", "\\uc0\\u224"); // "agrave" exists in standard
+comment|// codepage
 name|RTFCHARS
 operator|.
 name|put
@@ -6944,7 +6969,8 @@ literal|"\\uc0\\u225"
 argument_list|)
 expr_stmt|;
 comment|// "aacute"
-comment|//  RTFCHARS.put("^a", "\\uc0\\u226");     // "acirc"   exists in standard codepage
+comment|// RTFCHARS.put("^a", "\\uc0\\u226"); // "acirc" exists in standard
+comment|// codepage
 name|RTFCHARS
 operator|.
 name|put
@@ -6955,7 +6981,8 @@ literal|"\\uc0\\u227"
 argument_list|)
 expr_stmt|;
 comment|// "atilde"
-comment|//  RTFCHARS.put("\"a", "\\uc0\\u228");    // "auml"    exists in standard codepage
+comment|// RTFCHARS.put("\"a", "\\uc0\\u228"); // "auml" exists in standard
+comment|// codepage
 name|RTFCHARS
 operator|.
 name|put
@@ -6986,7 +7013,8 @@ literal|"\\uc0\\u231"
 argument_list|)
 expr_stmt|;
 comment|// "ccedil"
-comment|//  RTFCHARS.put("`e", "\\uc0\\u232");     // "egrave"  exists in standard codepage
+comment|// RTFCHARS.put("`e", "\\uc0\\u232"); // "egrave" exists in standard
+comment|// codepage
 name|RTFCHARS
 operator|.
 name|put
@@ -6997,9 +7025,12 @@ literal|"\\uc0\\u233"
 argument_list|)
 expr_stmt|;
 comment|// "eacute"
-comment|//  RTFCHARS.put("^e", "\\uc0\\u234");     // "ecirc"   exists in standard codepage
-comment|//  RTFCHARS.put("\"e", "\\uc0\\u235");    // "euml"    exists in standard codepage
-comment|//  RTFCHARS.put("`i", "\\uc0\\u236");     // "igrave"  exists in standard codepage
+comment|// RTFCHARS.put("^e", "\\uc0\\u234"); // "ecirc" exists in standard
+comment|// codepage
+comment|// RTFCHARS.put("\"e", "\\uc0\\u235"); // "euml" exists in standard
+comment|// codepage
+comment|// RTFCHARS.put("`i", "\\uc0\\u236"); // "igrave" exists in standard
+comment|// codepage
 name|RTFCHARS
 operator|.
 name|put
@@ -7010,8 +7041,10 @@ literal|"\\uc0\\u237"
 argument_list|)
 expr_stmt|;
 comment|// "iacute"
-comment|//  RTFCHARS.put("^i", "\\uc0\\u238");     // "icirc"   exists in standard codepage
-comment|//  RTFCHARS.put("\"i", "\\uc0\\u239");    // "iuml"    exists in standard codepage
+comment|// RTFCHARS.put("^i", "\\uc0\\u238"); // "icirc" exists in standard
+comment|// codepage
+comment|// RTFCHARS.put("\"i", "\\uc0\\u239"); // "iuml" exists in standard
+comment|// codepage
 name|RTFCHARS
 operator|.
 name|put
@@ -7022,8 +7055,10 @@ literal|"\\uc0\\u240"
 argument_list|)
 expr_stmt|;
 comment|// "eth"
-comment|//  RTFCHARS.put("~n", "\\uc0\\u241");     // "ntilde"  exists in standard codepage
-comment|//  RTFCHARS.put("`o", "\\uc0\\u242");     // "ograve"  exists in standard codepage
+comment|// RTFCHARS.put("~n", "\\uc0\\u241"); // "ntilde" exists in standard
+comment|// codepage
+comment|// RTFCHARS.put("`o", "\\uc0\\u242"); // "ograve" exists in standard
+comment|// codepage
 name|RTFCHARS
 operator|.
 name|put
@@ -7034,7 +7069,8 @@ literal|"\\uc0\\u243"
 argument_list|)
 expr_stmt|;
 comment|// "oacute"
-comment|//  RTFCHARS.put("^o", "\\uc0\\u244");     // "ocirc"   exists in standard codepage
+comment|// RTFCHARS.put("^o", "\\uc0\\u244"); // "ocirc" exists in standard
+comment|// codepage
 name|RTFCHARS
 operator|.
 name|put
@@ -7045,8 +7081,10 @@ literal|"\\uc0\\u245"
 argument_list|)
 expr_stmt|;
 comment|// "otilde"
-comment|//  RTFCHARS.put("\"o", "\\uc0\\u246");    // "ouml"    exists in standard codepage
-comment|// According to ISO 8859-1 the "\div" symbol should be placed here (#247).
+comment|// RTFCHARS.put("\"o", "\\uc0\\u246"); // "ouml" exists in standard
+comment|// codepage
+comment|// According to ISO 8859-1 the "\div" symbol should be placed here
+comment|// (#247).
 comment|// Omitting this, because it is a mathematical symbol.
 name|RTFCHARS
 operator|.
@@ -7058,7 +7096,8 @@ literal|"\\uc0\\u248"
 argument_list|)
 expr_stmt|;
 comment|// "oslash"
-comment|//  RTFCHARS.put("`u", "\\uc0\\u249");      // "ugrave"  exists in standard codepage
+comment|// RTFCHARS.put("`u", "\\uc0\\u249"); // "ugrave" exists in standard
+comment|// codepage
 name|RTFCHARS
 operator|.
 name|put
@@ -7069,8 +7108,10 @@ literal|"\\uc0\\u250"
 argument_list|)
 expr_stmt|;
 comment|// "uacute"
-comment|//  RTFCHARS.put("^u", "\\uc0\\u251");      // "ucirc"   exists in standard codepage
-comment|//  RTFCHARS.put("\"u", "\\uc0\\u252");     // "uuml"    exists in standard codepage
+comment|// RTFCHARS.put("^u", "\\uc0\\u251"); // "ucirc" exists in standard
+comment|// codepage
+comment|// RTFCHARS.put("\"u", "\\uc0\\u252"); // "uuml" exists in standard
+comment|// codepage
 name|RTFCHARS
 operator|.
 name|put
@@ -8300,7 +8341,7 @@ argument_list|)
 expr_stmt|;
 comment|// "zcaron"
 comment|// Symbol #383 (f) has no special Latex command
-comment|//XML_CHARS.put("\\u00E1", "&#x00E1;");
+comment|// XML_CHARS.put("\\u00E1", "&#x00E1;");
 block|}
 DECL|method|initializeJournalNames ()
 specifier|public
@@ -8315,8 +8356,9 @@ operator|new
 name|JournalAbbreviations
 argument_list|()
 expr_stmt|;
-comment|//"/resource/journalList.txt");
-comment|// Read external lists, if any (in reverse order, so the upper lists override the lower):
+comment|// "/resource/journalList.txt");
+comment|// Read external lists, if any (in reverse order, so the upper lists
+comment|// override the lower):
 name|String
 index|[]
 name|lists
