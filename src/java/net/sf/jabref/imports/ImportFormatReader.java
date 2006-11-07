@@ -2191,6 +2191,17 @@ comment|//ex.printStackTrace();
 comment|//System.out.println("Import failed");
 block|}
 block|}
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Used format: "
+operator|+
+name|usedFormat
+argument_list|)
+expr_stmt|;
 comment|// Finally, if all else fails, see if it is a BibTeX file:
 if|if
 condition|(

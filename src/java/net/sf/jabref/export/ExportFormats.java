@@ -403,8 +403,8 @@ name|OpenDocumentSpreadsheetCreator
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// openofficeItem = new JMenuItem("OpenOffice Calc"),
-comment|// odsItem = new JMenuItem("OpenDocument Spreadsheet");
+comment|//openofficeItem = new JMenuItem("OpenOffice Calc"),
+comment|//odsItem = new JMenuItem("OpenDocument Spreadsheet");
 block|}
 comment|/** 	 * Build a string listing all available export formats. 	 *  	 * @param maxLineLength 	 *            The max line length before a line break must be added. 	 * @param linePrefix 	 *            If a line break is added, this prefix will be inserted at the 	 *            beginning of the next line. 	 * @return The string describing available formats. 	 */
 DECL|method|getConsoleExportList (int maxLineLength, int firstLineSubtr, String linePrefix)
