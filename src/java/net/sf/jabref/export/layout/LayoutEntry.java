@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* Copyright (C) 2003 Morten O. Alver All programs in this directory and subdirectories are published under the GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html  */
+comment|/*  Copyright (C) 2003 Morten O. Alver  All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   */
 end_comment
 
 begin_package
@@ -151,7 +151,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * DOCUMENT ME!  *  * @author $author$  * @version $Revision$  */
+comment|/**  * DOCUMENT ME!  *   * @author $author$  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -160,7 +160,8 @@ specifier|public
 class|class
 name|LayoutEntry
 block|{
-comment|//~ Instance fields ////////////////////////////////////////////////////////
+comment|// ~ Instance fields
+comment|// ////////////////////////////////////////////////////////
 DECL|field|option
 specifier|private
 name|LayoutFormatter
@@ -188,7 +189,8 @@ specifier|private
 name|String
 name|classPrefix
 decl_stmt|;
-comment|//~ Constructors ///////////////////////////////////////////////////////////
+comment|// ~ Constructors
+comment|// ///////////////////////////////////////////////////////////
 DECL|method|LayoutEntry (StringInt si, String classPrefix_)
 specifier|public
 name|LayoutEntry
@@ -263,7 +265,7 @@ name|LayoutHelper
 operator|.
 name|IS_FIELD_START
 condition|)
-block|{         }
+block|{ 		}
 elseif|else
 if|if
 condition|(
@@ -275,7 +277,7 @@ name|LayoutHelper
 operator|.
 name|IS_FIELD_END
 condition|)
-block|{         }
+block|{ 		}
 elseif|else
 if|if
 condition|(
@@ -350,8 +352,8 @@ operator|.
 name|trim
 argument_list|()
 expr_stmt|;
-comment|//try
-comment|//{
+comment|// try
+comment|// {
 name|option
 operator|=
 name|getOptionalLayout
@@ -369,16 +371,16 @@ argument_list|,
 name|classPrefix
 argument_list|)
 expr_stmt|;
-comment|//}
+comment|// }
 comment|// catch (Exception e)
-comment|//{
-comment|//    e.printStackTrace();
-comment|//}
+comment|// {
+comment|// e.printStackTrace();
+comment|// }
 block|}
 block|}
-comment|//		else if (si.i == LayoutHelper.IS_OPTION_FIELD_PARAM)
-comment|//		{
-comment|//		}
+comment|// else if (si.i == LayoutHelper.IS_OPTION_FIELD_PARAM)
+comment|// {
+comment|// }
 block|}
 DECL|method|LayoutEntry (Vector parsedEntries, String classPrefix_, int layoutType)
 specifier|public
@@ -534,7 +536,7 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("PARSED-ENTRY: "+si.s+"="+si.i);
+comment|// System.out.println("PARSED-ENTRY: "+si.s+"="+si.i);
 if|if
 condition|(
 name|si
@@ -545,7 +547,7 @@ name|LayoutHelper
 operator|.
 name|IS_LAYOUT_TEXT
 condition|)
-block|{             }
+block|{ 			}
 elseif|else
 if|if
 condition|(
@@ -557,7 +559,7 @@ name|LayoutHelper
 operator|.
 name|IS_SIMPLE_FIELD
 condition|)
-block|{             }
+block|{ 			}
 elseif|else
 if|if
 condition|(
@@ -713,10 +715,10 @@ name|LayoutHelper
 operator|.
 name|IS_OPTION_FIELD
 condition|)
-block|{             }
-comment|//			else if (si.i == LayoutHelper.IS_OPTION_FIELD_PARAM)
-comment|//			{
-comment|//			}
+block|{ 			}
+comment|// else if (si.i == LayoutHelper.IS_OPTION_FIELD_PARAM)
+comment|// {
+comment|// }
 if|if
 condition|(
 name|blockEntries
@@ -724,7 +726,7 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|//System.out.println("BLOCK ADD: "+si.s+"="+si.i);
+comment|// System.out.println("BLOCK ADD: "+si.s+"="+si.i);
 name|tmpEntries
 operator|.
 name|add
@@ -794,10 +796,11 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
-comment|//System.out.println(layoutEntries[i].text);
+comment|// System.out.println(layoutEntries[i].text);
 block|}
 block|}
-comment|//~ Methods ////////////////////////////////////////////////////////////////
+comment|// ~ Methods
+comment|// ////////////////////////////////////////////////////////////////
 DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database)
 specifier|public
 name|String
@@ -915,7 +918,7 @@ argument_list|,
 name|database
 argument_list|)
 decl_stmt|;
-comment|//String field = (String) bibtex.getField(text);
+comment|// String field = (String) bibtex.getField(text);
 if|if
 condition|(
 operator|(
@@ -1018,7 +1021,7 @@ argument_list|,
 name|database
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("'" + fieldText + "'");
+comment|// System.out.println("'" + fieldText + "'");
 if|if
 condition|(
 name|fieldText
@@ -1064,7 +1067,7 @@ operator|==
 literal|0
 condition|)
 block|{
-comment|//System.out.println("MISSING: "+bibtex);
+comment|// System.out.println("MISSING: "+bibtex);
 name|i
 operator|++
 expr_stmt|;
@@ -1078,7 +1081,8 @@ block|}
 block|}
 else|else
 block|{
-comment|// if previous was skipped --> remove leading line breaks
+comment|// if previous was skipped --> remove leading line
+comment|// breaks
 if|if
 condition|(
 name|previousSkipped
@@ -1155,7 +1159,8 @@ block|}
 block|}
 else|else
 block|{
-comment|//System.out.println("ENTRY-BLOCK: " + layoutEntries[i].doLayout(bibtex));
+comment|// System.out.println("ENTRY-BLOCK: " +
+comment|// layoutEntries[i].doLayout(bibtex));
 name|sb
 operator|.
 name|append
@@ -1197,7 +1202,7 @@ operator|.
 name|IS_GROUP_END
 operator|)
 condition|)
-block|{         }
+block|{ 		}
 elseif|else
 if|if
 condition|(
@@ -1208,7 +1213,7 @@ operator|.
 name|IS_OPTION_FIELD
 condition|)
 block|{
-comment|//System.out.println("doLayout IS_OPTION_FIELD '"+text+"'");
+comment|// System.out.println("doLayout IS_OPTION_FIELD '"+text+"'");
 name|String
 name|fieldEntry
 decl_stmt|;
@@ -1269,7 +1274,7 @@ name|database
 argument_list|)
 decl_stmt|;
 comment|// changed section end - arudert
-comment|//String field = (String) bibtex.getField(text);
+comment|// String field = (String) bibtex.getField(text);
 if|if
 condition|(
 name|field
@@ -1290,7 +1295,7 @@ name|field
 expr_stmt|;
 block|}
 block|}
-comment|//System.out.println("OPTION: "+option);
+comment|// System.out.println("OPTION: "+option);
 if|if
 condition|(
 name|option
@@ -1333,15 +1338,15 @@ return|return
 name|fieldEntry
 return|;
 block|}
-comment|//		else if (type == LayoutHelper.IS_OPTION_FIELD_PARAM)
-comment|//		{
-comment|//		}
+comment|// else if (type == LayoutHelper.IS_OPTION_FIELD_PARAM)
+comment|// {
+comment|// }
 return|return
 literal|""
 return|;
 block|}
 comment|// added section - begin (arudert)
-comment|/**    * Do layout for general formatters (no bibtex-entry fields).    *     * @param database Bibtex Database    * @return     */
+comment|/** 	 * Do layout for general formatters (no bibtex-entry fields). 	 *  	 * @param database 	 *            Bibtex Database 	 * @return 	 */
 DECL|method|doLayout (BibtexDatabase database)
 specifier|public
 name|String
@@ -1640,7 +1645,7 @@ return|return
 name|f
 return|;
 block|}
-comment|/** 	 * @param string 	 * @return 	 */
+comment|/** 	 * Return an array of LayoutFormatters found in the given formatterName 	 * string (in order of appearance). 	 *  	 */
 DECL|method|getOptionalLayout (String formatterName, String classPrefix)
 specifier|public
 specifier|static
@@ -1837,7 +1842,7 @@ argument_list|)
 return|;
 block|}
 comment|// changed section begin - arudert
-comment|/**      * Returns a text with references resolved according to an optionally given database.       */
+comment|/** 	 * Returns a text with references resolved according to an optionally given 	 * database. 	 */
 DECL|method|getText (String text, BibtexDatabase database)
 specifier|private
 name|String
@@ -1899,8 +1904,10 @@ name|BibtexDatabase
 name|database
 parameter_list|)
 block|{
-comment|// Change: Morten Alver, May 23, 2006. Formatter argument uses this method to
-comment|// resolve field values. We need this part to resolve \bibtextype correctly in
+comment|// Change: Morten Alver, May 23, 2006. Formatter argument uses this
+comment|// method to
+comment|// resolve field values. We need this part to resolve \bibtextype
+comment|// correctly in
 comment|// constructs like \format[ToLowerCase]{\bibtextype}:
 if|if
 condition|(
@@ -1967,15 +1974,15 @@ block|}
 end_class
 
 begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
+comment|// /////////////////////////////////////////////////////////////////////////////
 end_comment
 
 begin_comment
-comment|//  END OF FILE.
+comment|// END OF FILE.
 end_comment
 
 begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
+comment|// /////////////////////////////////////////////////////////////////////////////
 end_comment
 
 end_unit
