@@ -2928,7 +2928,6 @@ condition|)
 return|return
 literal|null
 return|;
-comment|//Util.pr(key+"\n"+names);
 name|StringReader
 name|rd
 init|=

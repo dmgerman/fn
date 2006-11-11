@@ -867,6 +867,14 @@ argument_list|)
 expr_stmt|;
 comment|// TODO: This is not a great way to do this, sure ;-)
 block|}
+DECL|method|testVoid ()
+specifier|public
+name|void
+name|testVoid
+parameter_list|()
+block|{
+comment|// to remove warning
+block|}
 block|}
 end_class
 

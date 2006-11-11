@@ -410,6 +410,12 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|testPreserveBrackets ()
+specifier|public
+name|void
+name|testPreserveBrackets
+parameter_list|()
+block|{ 		 		 	}
 block|}
 end_class
 

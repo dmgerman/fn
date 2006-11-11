@@ -372,6 +372,15 @@ name|lang
 argument_list|(
 literal|"Advanced"
 argument_list|)
+decl_stmt|,
+name|NAM
+init|=
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Name formatter"
+argument_list|)
 decl_stmt|;
 name|ArrayList
 name|al
@@ -442,6 +451,13 @@ operator|.
 name|add
 argument_list|(
 name|ADV
+argument_list|)
+expr_stmt|;
+name|al
+operator|.
+name|add
+argument_list|(
+name|NAM
 argument_list|)
 expr_stmt|;
 name|main
@@ -588,6 +604,21 @@ argument_list|,
 name|PRE
 argument_list|)
 expr_stmt|;
+name|main
+operator|.
+name|add
+argument_list|(
+operator|new
+name|NameFormatterTab
+argument_list|(
+name|parent
+operator|.
+name|helpDiag
+argument_list|)
+argument_list|,
+name|NAM
+argument_list|)
+expr_stmt|;
 comment|//main.add(new ManageJournalsPanel(frame), JOU);
 name|upper
 operator|.
@@ -680,7 +711,6 @@ operator|.
 name|getSelectedValue
 argument_list|()
 decl_stmt|;
-comment|//Util.pr(o);
 name|cardLayout
 operator|.
 name|show
@@ -690,8 +720,6 @@ argument_list|,
 name|o
 argument_list|)
 expr_stmt|;
-comment|//main.revalidate();
-comment|//main.repaint();
 block|}
 block|}
 argument_list|)

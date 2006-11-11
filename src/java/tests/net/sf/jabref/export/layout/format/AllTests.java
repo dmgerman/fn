@@ -128,6 +128,15 @@ name|suite
 operator|.
 name|addTestSuite
 argument_list|(
+name|BibtexNameLayoutFormatterTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
 name|AuthorOrgSciTest
 operator|.
 name|class

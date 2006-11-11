@@ -573,6 +573,11 @@ name|regularExpressionSearchHelp
 init|=
 literal|"ExternalFiles.html#RegularExpressionSearch"
 decl_stmt|,
+DECL|field|nameFormatterHelp
+name|nameFormatterHelp
+init|=
+literal|"CustomExports.html#NameFormatter"
+decl_stmt|,
 DECL|field|previewHelp
 name|previewHelp
 init|=

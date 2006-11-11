@@ -59,7 +59,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Preferences dialog. Contains a TabbedPane, and tabs will be defined  * in separate classes. Tabs MUST implement the PrefsTab interface,  * since this dialog will call the storeSettings() method of all tabs  * when the user presses ok.  *  * With this design, it should be very easy to add new tabs later.  *  */
+comment|/**  * Preferences dialog. Contains a TabbedPane, and tabs will be defined  * in separate classes. Tabs MUST implement the PrefsTab interface,  * since this dialog will call the storeSettings() method of all tabs  * when the user presses ok.  *  * With this design, it should be very easy to add new tabs later.  *  * @deprecated Use PrefsDialog3 instead!  *  */
 end_comment
 
 begin_class
@@ -254,7 +254,8 @@ name|lower
 argument_list|)
 expr_stmt|;
 comment|// ----------------------------------------------------------------
-comment|// Add tabs to tabbed here. Remember, tabs must implement PrefsTab.
+comment|// Add new tabs to be displayed in the preferences here.
+comment|// Remember, tabs must implement PrefsTab.
 comment|// ----------------------------------------------------------------
 name|tabbed
 operator|.

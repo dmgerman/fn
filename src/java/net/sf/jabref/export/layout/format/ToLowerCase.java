@@ -117,7 +117,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Remove brackets formatter.  *  * @author $author$  * @version $Revision$  */
+comment|/**  * Remove brackets formatter.  *   * @author $author$  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -128,7 +128,6 @@ name|ToLowerCase
 implements|implements
 name|LayoutFormatter
 block|{
-comment|//~ Methods ////////////////////////////////////////////////////////////////
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -147,18 +146,6 @@ return|;
 block|}
 block|}
 end_class
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
-
-begin_comment
-comment|//  END OF FILE.
-end_comment
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
 
 end_unit
 

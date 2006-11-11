@@ -145,6 +145,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|testVoid ()
+specifier|public
+name|void
+name|testVoid
+parameter_list|()
+block|{
+comment|// to remove warning
+block|}
 block|}
 end_class
 
