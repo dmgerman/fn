@@ -945,7 +945,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|//_meta = new HashMap(); // Metadata in comments for Bibkeeper.
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
@@ -956,17 +955,6 @@ name|StringBuffer
 name|buffer
 init|=
 literal|null
-decl_stmt|;
-name|int
-name|previous
-init|=
-operator|-
-literal|1
-decl_stmt|;
-name|boolean
-name|justParsedTag
-init|=
-literal|false
 decl_stmt|;
 name|boolean
 name|escaped
@@ -984,7 +972,6 @@ operator|=
 name|read
 argument_list|()
 expr_stmt|;
-comment|//System.out.println((char)c);
 if|if
 condition|(
 name|c
@@ -997,6 +984,13 @@ name|_eof
 operator|=
 literal|true
 expr_stmt|;
+comment|/* 				 * CO 2006-11-11: Added check for null, otherwise a Layout that 				 * finishs with a curly brace throws a NPE 				 */
+if|if
+condition|(
+name|buffer
+operator|!=
+literal|null
+condition|)
 name|parsedEntries
 operator|.
 name|add
@@ -1013,7 +1007,6 @@ name|IS_LAYOUT_TEXT
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("aha: " + buffer.toString());
 return|return
 literal|null
 return|;
@@ -1036,7 +1029,6 @@ operator|&&
 operator|!
 name|escaped
 condition|)
-comment|//&& (justParsedTag || (previous != '\\')))
 block|{
 if|if
 condition|(
@@ -1069,12 +1061,8 @@ block|}
 name|parseField
 argument_list|()
 expr_stmt|;
-comment|// To make sure the next character, if it is a backslash, doesn't get ignored,
-comment|// since "previous" now holds a backslash:
-name|justParsedTag
-operator|=
-literal|true
-expr_stmt|;
+comment|// To make sure the next character, if it is a backslash,
+comment|// doesn't get ignored, since "previous" now holds a backslash:
 name|escaped
 operator|=
 literal|false
@@ -1082,10 +1070,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|justParsedTag
-operator|=
-literal|false
-expr_stmt|;
 if|if
 condition|(
 name|buffer
@@ -1112,7 +1096,7 @@ operator|)
 operator|||
 name|escaped
 condition|)
-comment|//(previous == '\\')))
+comment|// (previous == '\\')))
 block|{
 name|buffer
 operator|.
@@ -1137,16 +1121,12 @@ operator|!
 name|escaped
 expr_stmt|;
 block|}
-name|previous
-operator|=
-name|c
-expr_stmt|;
 block|}
 return|return
 literal|null
 return|;
 block|}
-comment|/**      *      */
+comment|/** 	 *  	 */
 DECL|method|parseField ()
 specifier|private
 name|void
@@ -1177,7 +1157,7 @@ operator|=
 name|read
 argument_list|()
 expr_stmt|;
-comment|//System.out.print((char)c);
+comment|// System.out.print((char)c);
 if|if
 condition|(
 name|c
