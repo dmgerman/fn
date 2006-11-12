@@ -227,6 +227,15 @@ name|suite
 operator|.
 name|addTestSuite
 argument_list|(
+name|DOICheckTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
 name|AuthorLastFirstAbbrOxfordCommasTest
 operator|.
 name|class
