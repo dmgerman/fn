@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* Copyright (C) 2003-06 David Weitzman, Nizar N. Batada, Morten O. Alver  All programs in this directory and subdirectories are published under the GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html  */
+comment|/*  Copyright (C) 2003-06 David Weitzman, Nizar N. Batada, Morten O. Alver   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   */
 end_comment
 
 begin_package
@@ -32,36 +32,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|FileNotFoundException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|FileReader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -83,16 +53,6 @@ operator|.
 name|io
 operator|.
 name|Reader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
 import|;
 end_import
 
@@ -273,7 +233,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Class for importing BibTeX-files.  *   * Use:  *   *   BibtexParser parser = new BibtexParser(reader);   *     *   ParserResult result = parser.parse();  *   * or  *   *   ParserResult result = BibtexParser.parse(reader);  *   * Can be used stand-alone.  *   * @author David Weitzman  * @author Nizar N. Batada  * @author Morten O. Alver  * @author Christopher Oezbek<oezi@oezi.de>  */
+comment|/**  * Class for importing BibTeX-files.  *   * Use:  *   * BibtexParser parser = new BibtexParser(reader);  *   * ParserResult result = parser.parse();  *   * or  *   * ParserResult result = BibtexParser.parse(reader);  *   * Can be used stand-alone.  *   * @author David Weitzman  * @author Nizar N. Batada  * @author Morten O. Alver  * @author Christopher Oezbek   */
 end_comment
 
 begin_class
@@ -406,7 +366,7 @@ name|parse
 argument_list|()
 return|;
 block|}
-comment|/**    * Check whether the source is in the correct format for this importer.    */
+comment|/** 	 * Check whether the source is in the correct format for this importer. 	 */
 DECL|method|isRecognizedFormat (Reader inOrig)
 specifier|public
 specifier|static
@@ -429,7 +389,7 @@ argument_list|(
 name|inOrig
 argument_list|)
 decl_stmt|;
-comment|//Pattern pat1 = Pattern.compile("PY:  \\d{4}");
+comment|// Pattern pat1 = Pattern.compile("PY: \\d{4}");
 name|Pattern
 name|pat1
 init|=
@@ -552,13 +512,13 @@ continue|continue;
 block|}
 else|else
 comment|// found non-whitespace char
-comment|//Util.pr("SkipWhitespace, stops: "+c);
+comment|// Util.pr("SkipWhitespace, stops: "+c);
 name|unread
 argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-comment|/*	    try {                 Thread.currentThread().sleep(500);                 } catch (InterruptedException ex) {}*/
+comment|/* 			 * try { Thread.currentThread().sleep(500); } catch 			 * (InterruptedException ex) {} 			 */
 break|break;
 block|}
 block|}
@@ -669,13 +629,13 @@ continue|continue;
 block|}
 else|else
 comment|// found non-whitespace char
-comment|//Util.pr("SkipWhitespace, stops: "+c);
+comment|// Util.pr("SkipWhitespace, stops: "+c);
 name|unread
 argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-comment|/*	    try {                 Thread.currentThread().sleep(500);                 } catch (InterruptedException ex) {}*/
+comment|/* 			 * try { Thread.currentThread().sleep(500); } catch 			 * (InterruptedException ex) {} 			 */
 break|break;
 block|}
 return|return
@@ -685,7 +645,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Will parse the BibTex-Data found when reading from reader. 	 *  	 * The reader will be consumed.  	 *  	 * Multiple calls to parse() return the same results 	 *  	 * @return ParserResult 	 * @throws IOException 	 */
+comment|/** 	 * Will parse the BibTex-Data found when reading from reader. 	 *  	 * The reader will be consumed. 	 *  	 * Multiple calls to parse() return the same results 	 *  	 * @return ParserResult 	 * @throws IOException 	 */
 DECL|method|parse ()
 specifier|public
 name|ParserResult
@@ -790,7 +750,7 @@ operator|!=
 literal|null
 operator|)
 decl_stmt|;
-comment|//Util.pr(tp.getName());
+comment|// Util.pr(tp.getName());
 if|if
 condition|(
 operator|!
@@ -878,7 +838,7 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//ex.printStackTrace();
+comment|// ex.printStackTrace();
 block|}
 block|}
 elseif|else
@@ -901,7 +861,7 @@ init|=
 name|parseBracketedTextExactly
 argument_list|()
 decl_stmt|;
-comment|/**                          *                          * Metadata are used to store Bibkeeper-specific                          * information in .bib files.                          *                          * Metadata are stored in bibtex files in the format                          * @comment{jabref-meta: type:data0;data1;data2;...}                          *                          * Each comment that starts with the META_FLAG is stored                          * in the meta HashMap, with type as key.                          * Unluckily, the old META_FLAG bibkeeper-meta: was used                          * in JabRef 1.0 and 1.1, so we need to support it as                          * well. At least for a while. We'll always save with the                          * new one.                          */
+comment|/** 						 *  						 * Metadata are used to store Bibkeeper-specific 						 * information in .bib files. 						 *  						 * Metadata are stored in bibtex files in the format 						 *  						 * @comment{jabref-meta: type:data0;data1;data2;...} 						 *  						 * Each comment that starts with the META_FLAG is stored 						 * in the meta HashMap, with type as key. Unluckily, the 						 * old META_FLAG bibkeeper-meta: was used in JabRef 1.0 						 * and 1.1, so we need to support it as well. At least 						 * for a while. We'll always save with the new one. 						 */
 name|String
 name|comment
 init|=
@@ -1076,10 +1036,12 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// We remove all line breaks in the metadata - these will have been inserted
-comment|// to prevent too long lines when the file was saved, and are not part of the data.
+comment|// We remove all line breaks in the metadata - these
+comment|// will have been inserted
+comment|// to prevent too long lines when the file was
+comment|// saved, and are not part of the data.
 block|}
-comment|/**                          * A custom entry type can also be stored in a @comment:                          */
+comment|/** 						 * A custom entry type can also be stored in a 						 *  						 * @comment: 						 */
 if|if
 condition|(
 name|comment
@@ -1144,8 +1106,10 @@ block|}
 else|else
 block|{
 comment|// The entry type was not recognized. This may mean that
-comment|// it is a custom entry type whose definition will appear
-comment|// at the bottom of the file. So we use an UnknownEntryType
+comment|// it is a custom entry type whose definition will
+comment|// appear
+comment|// at the bottom of the file. So we use an
+comment|// UnknownEntryType
 comment|// to remember the type name by.
 name|tp
 operator|=
@@ -1158,7 +1122,7 @@ name|toLowerCase
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("unknown type: "+entryType);
+comment|// System.out.println("unknown type: "+entryType);
 name|isEntry
 operator|=
 literal|true
@@ -1171,7 +1135,7 @@ name|isEntry
 condition|)
 comment|// True if not comment, preamble or string.
 block|{
-comment|/** Morten Alver 13 Aug 2006:                      * Trying to make the parser more robust. If an exception is thrown when parsing                      * an entry, drop the entry and try to resume parsing. Add a warning for the                      * user.                      *                      * An alternative solution is to try rescuing the entry for which parsing failed,                      * by returning the entry with the exception and adding it before parsing is                      * continued.                      */
+comment|/** 					 * Morten Alver 13 Aug 2006: Trying to make the parser more 					 * robust. If an exception is thrown when parsing an entry, 					 * drop the entry and try to resume parsing. Add a warning 					 * for the user. 					 *  					 * An alternative solution is to try rescuing the entry for 					 * which parsing failed, by returning the entry with the 					 * exception and adding it before parsing is continued. 					 */
 try|try
 block|{
 name|BibtexEntry
@@ -1344,7 +1308,7 @@ name|KeyCollisionException
 name|kce
 parameter_list|)
 block|{
-comment|//kce.printStackTrace();
+comment|// kce.printStackTrace();
 throw|throw
 operator|new
 name|IOException
@@ -1447,7 +1411,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|//Util.pr("Parsing string");
+comment|// Util.pr("Parsing string");
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
@@ -1458,22 +1422,22 @@ argument_list|,
 literal|'('
 argument_list|)
 expr_stmt|;
-comment|//while (read() != '}');
+comment|// while (read() != '}');
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
-comment|//Util.pr("Parsing string name");
+comment|// Util.pr("Parsing string name");
 name|String
 name|name
 init|=
 name|parseTextToken
 argument_list|()
 decl_stmt|;
-comment|//Util.pr("Parsed string name");
+comment|// Util.pr("Parsed string name");
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
-comment|//Util.pr("Now the contents");
+comment|// Util.pr("Now the contents");
 name|consume
 argument_list|(
 literal|'='
@@ -1485,7 +1449,7 @@ init|=
 name|parseFieldContent
 argument_list|()
 decl_stmt|;
-comment|//Util.pr("Now I'm going to consume a }");
+comment|// Util.pr("Now I'm going to consume a }");
 name|consume
 argument_list|(
 literal|'}'
@@ -1493,7 +1457,7 @@ argument_list|,
 literal|')'
 argument_list|)
 expr_stmt|;
-comment|//Util.pr("Finished string parsing.");
+comment|// Util.pr("Finished string parsing.");
 name|String
 name|id
 init|=
@@ -1549,7 +1513,7 @@ operator|.
 name|createNeutralId
 argument_list|()
 decl_stmt|;
-comment|//createId(tp, _db);
+comment|// createId(tp, _db);
 name|BibtexEntry
 name|result
 init|=
@@ -1608,7 +1572,7 @@ operator|+
 name|parseKey
 argument_list|()
 expr_stmt|;
-comment|//parseTextToken(),
+comment|// parseTextToken(),
 else|else
 name|key
 operator|=
@@ -1741,7 +1705,7 @@ name|key
 operator|=
 literal|null
 expr_stmt|;
-comment|//System.out.println("Key: "+key);
+comment|// System.out.println("Key: "+key);
 if|if
 condition|(
 name|result
@@ -1863,7 +1827,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 decl_stmt|;
-comment|//Util.pr("Field: _"+key+"_");
+comment|// Util.pr("Field: _"+key+"_");
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
@@ -1878,7 +1842,8 @@ init|=
 name|parseFieldContent
 argument_list|()
 decl_stmt|;
-comment|// Now, if the field in question is set up to be fitted automatically with braces around
+comment|// Now, if the field in question is set up to be fitted automatically
+comment|// with braces around
 comment|// capitals, we should remove those now when reading the field:
 if|if
 condition|(
@@ -1934,10 +1899,14 @@ argument_list|)
 expr_stmt|;
 else|else
 block|{
-comment|// The following hack enables the parser to deal with multiple author or
-comment|// editor lines, stringing them together instead of getting just one of them.
-comment|// Multiple author or editor lines are not allowed by the bibtex format, but
-comment|// at least one online database exports bibtex like that, making it inconvenient
+comment|// The following hack enables the parser to deal with multiple
+comment|// author or
+comment|// editor lines, stringing them together instead of getting just
+comment|// one of them.
+comment|// Multiple author or editor lines are not allowed by the bibtex
+comment|// format, but
+comment|// at least one online database exports bibtex like that, making
+comment|// it inconvenient
 comment|// for users if JabRef didn't accept it.
 if|if
 condition|(
@@ -2069,7 +2038,7 @@ name|text
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/*                  The following code doesn't handle {"} correctly:                 // value is a string                 consume('"');                  while (!((peek() == '"')&& (j != '\\')))                 {                     j = read();                     if (_eof || (j == -1) || (j == 65535))                     {                         throw new RuntimeException("Error in line "+line+                                                    ": EOF in mid-string");                     }                      value.append((char) j);                 }                  consume('"');                 */
+comment|/* 				 *  				 * The following code doesn't handle {"} correctly: // value is 				 * a string consume('"'); 				 *  				 * while (!((peek() == '"')&& (j != '\\'))) { j = read(); if 				 * (_eof || (j == -1) || (j == 65535)) { throw new 				 * RuntimeException("Error in line "+line+ ": EOF in 				 * mid-string"); } 				 *  				 * value.append((char) j); } 				 *  				 * consume('"'); 				 */
 block|}
 elseif|else
 if|if
@@ -2080,11 +2049,8 @@ literal|'{'
 condition|)
 block|{
 comment|// Value is a string enclosed in brackets. There can be pairs
-comment|// of brackets inside of a field, so we need to count the brackets
-comment|// to know when the string is finished.
-comment|//if (isStandardBibtexField || !Globals.prefs.getBoolean("preserveFieldFormatting")) {
-comment|// value.append(parseBracketedText());
-comment|// TEST TEST TEST TEST TEST
+comment|// of brackets inside of a field, so we need to count the
+comment|// brackets to know when the string is finished.
 name|StringBuffer
 name|text
 init|=
@@ -2103,9 +2069,6 @@ name|text
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//}
-comment|//else
-comment|//    value.append(parseBracketedTextExactly());
 block|}
 elseif|else
 if|if
@@ -2128,33 +2091,43 @@ init|=
 name|parseTextToken
 argument_list|()
 decl_stmt|;
-name|int
-name|numVal
-init|=
+try|try
+block|{
+comment|// Fixme: What is this for?
+name|value
+operator|.
+name|append
+argument_list|(
+name|String
+operator|.
+name|valueOf
+argument_list|(
 name|Integer
 operator|.
 name|parseInt
 argument_list|(
 name|numString
 argument_list|)
-decl_stmt|;
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|NumberFormatException
+name|e
+parameter_list|)
+block|{
+comment|// If Integer could not be parsed then just add the text
+comment|// Used to fix [ 1594123 ] Failure to import big numbers
 name|value
 operator|.
 name|append
 argument_list|(
-operator|(
-operator|new
-name|Integer
-argument_list|(
-name|numVal
-argument_list|)
-operator|)
-operator|.
-name|toString
-argument_list|()
+name|numString
 argument_list|)
 expr_stmt|;
-comment|//entry.setField(key, new Integer(numVal));
+block|}
 block|}
 elseif|else
 if|if
@@ -2164,7 +2137,6 @@ operator|==
 literal|'#'
 condition|)
 block|{
-comment|//value.append(" # ");
 name|consume
 argument_list|(
 literal|'#'
@@ -2220,14 +2192,14 @@ argument_list|(
 literal|"#"
 argument_list|)
 expr_stmt|;
-comment|//Util.pr(parseTextToken());
-comment|//throw new RuntimeException("Unknown field type");
+comment|// Util.pr(parseTextToken());
+comment|// throw new RuntimeException("Unknown field type");
 block|}
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
 block|}
-comment|//Util.pr("Returning field content: "+value.toString());
+comment|// Util.pr("Returning field content: "+value.toString());
 comment|// Check if we are to strip extra pairs of braces before returning:
 if|if
 condition|(
@@ -2301,7 +2273,8 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Problem: if the field content is "{DNA} blahblah {EPA}", one pair too much will be removed.
+comment|// Problem: if the field content is "{DNA} blahblah {EPA}", one pair
+comment|// too much will be removed.
 comment|// Check if this is the case, and re-add as many pairs as needed.
 while|while
 condition|(
@@ -2339,7 +2312,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Check if a string at any point has had more ending braces (}) than opening ones ({).      * Will e.g. return true for the string "DNA} blahblal {EPA"      * @param s The string to check.      * @return true if at any index the brace count is negative.      */
+comment|/** 	 * Check if a string at any point has had more ending braces (}) than 	 * opening ones ({). Will e.g. return true for the string "DNA} blahblal 	 * {EPA" 	 *  	 * @param s 	 *            The string to check. 	 * @return true if at any index the brace count is negative. 	 */
 DECL|method|hasNegativeBraceCount (String s)
 specifier|private
 name|boolean
@@ -2349,7 +2322,7 @@ name|String
 name|s
 parameter_list|)
 block|{
-comment|//System.out.println(s);
+comment|// System.out.println(s);
 name|int
 name|i
 init|=
@@ -2415,7 +2388,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * This method is used to parse string labels, field names, entry      * type and numbers outside brackets.      */
+comment|/** 	 * This method is used to parse string labels, field names, entry type and 	 * numbers outside brackets. 	 */
 DECL|method|parseTextToken ()
 specifier|private
 name|String
@@ -2444,7 +2417,7 @@ init|=
 name|read
 argument_list|()
 decl_stmt|;
-comment|//Util.pr(".. "+c);
+comment|// Util.pr(".. "+c);
 if|if
 condition|(
 name|c
@@ -2543,7 +2516,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-comment|//Util.pr("Pasted text token: "+token.toString());
+comment|// Util.pr("Pasted text token: "+token.toString());
 return|return
 name|token
 operator|.
@@ -2553,7 +2526,7 @@ return|;
 block|}
 block|}
 block|}
-comment|/**      * This method is used to parse the bibtex key for an entry.      */
+comment|/** 	 * This method is used to parse the bibtex key for an entry. 	 */
 DECL|method|parseKey ()
 specifier|private
 name|String
@@ -2584,7 +2557,7 @@ init|=
 name|read
 argument_list|()
 decl_stmt|;
-comment|//Util.pr(".. '"+(char)c+"'\t"+c);
+comment|// Util.pr(".. '"+(char)c+"'\t"+c);
 if|if
 condition|(
 name|c
@@ -2606,7 +2579,7 @@ return|;
 block|}
 comment|// Ikke: #{}\uFFFD~\uFFFD
 comment|//
-comment|// G\uFFFDr:  $_*+.-\/?"^
+comment|// G\uFFFDr: $_*+.-\/?"^
 if|if
 condition|(
 operator|!
@@ -2709,8 +2682,10 @@ name|c
 argument_list|)
 condition|)
 block|{
-comment|// We have encountered white space instead of the comma at the end of
-comment|// the key. Possibly the comma is missing, so we try to return what we
+comment|// We have encountered white space instead of the comma at
+comment|// the end of
+comment|// the key. Possibly the comma is missing, so we try to
+comment|// return what we
 comment|// have found, as the key.
 return|return
 name|token
@@ -2738,8 +2713,8 @@ operator|.
 name|toString
 argument_list|()
 return|;
-comment|//} else if (Character.isWhitespace((char)c)) {
-comment|//throw new NoLabelException(token.toString());
+comment|// } else if (Character.isWhitespace((char)c)) {
+comment|// throw new NoLabelException(token.toString());
 block|}
 elseif|else
 if|if
@@ -2757,7 +2732,7 @@ operator|.
 name|toString
 argument_list|()
 return|;
-comment|//throw new NoLabelException(token.toString());
+comment|// throw new NoLabelException(token.toString());
 block|}
 else|else
 throw|throw
@@ -2815,7 +2790,7 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-comment|//Util.pr("Parse bracketed text");
+comment|// Util.pr("Parse bracketed text");
 name|StringBuffer
 name|value
 init|=
@@ -2908,7 +2883,7 @@ operator|--
 expr_stmt|;
 comment|// If we encounter whitespace of any kind, read it as a
 comment|// simple space, and ignore any others that follow immediately.
-comment|/*if (j == '\n') {             if (peek() == '\n')                 value.append('\n');         }             else*/
+comment|/* 			 * if (j == '\n') { if (peek() == '\n') value.append('\n'); } else 			 */
 if|if
 condition|(
 name|Character
@@ -2930,7 +2905,7 @@ argument_list|(
 name|j
 argument_list|)
 decl_stmt|;
-comment|//System.out.println(":"+whs+":");
+comment|// System.out.println(":"+whs+":");
 if|if
 condition|(
 operator|!
@@ -2950,7 +2925,8 @@ literal|"\n\t"
 argument_list|)
 condition|)
 block|{
-comment|//&& !whs.equals("\n"))
+comment|//&&
+comment|// !whs.equals("\n"))
 name|whs
 operator|=
 name|whs
@@ -2963,8 +2939,8 @@ literal|""
 argument_list|)
 expr_stmt|;
 comment|// Remove tabulators.
-comment|//while (whs.endsWith("\t"))
-comment|//    whs = whs.substring(0, whs.length()-1);
+comment|// while (whs.endsWith("\t"))
+comment|// whs = whs.substring(0, whs.length()-1);
 name|value
 operator|.
 name|append
@@ -3524,7 +3500,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|//System.out.println("Unknown entry type: "+be.getType().getName());
+comment|// System.out.println("Unknown entry type:
+comment|// "+be.getType().getName());
 name|_pr
 operator|.
 name|addWarning
