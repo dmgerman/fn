@@ -281,7 +281,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * A Bibtex Virtual machine that can execute .bst files.  *   * Documentation can be found in the original bibtex distribution:  *   * http://texcatalogue.sarovar.org/entries/bibtex.html#Download  *   * @author $Author$  * @version $Revision$ ($Date$)  *  */
+comment|/**  *   * A Bibtex Virtual machine that can execute .bst files.  *   * Documentation can be found in the original bibtex distribution:  *   * http://texcatalogue.sarovar.org/entries/bibtex.html#Download  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
 end_comment
 
 begin_class
@@ -2582,7 +2582,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|/** 		 * Pops the top (string) literal, removes nonalphanumeric characters 		 * except for white-space characters and hyphens and ties (these all 		 * get converted to a space), removes certain alphabetic characters 		 * contained in the control sequences associated with a \special 		 * character", and pushes the resulting string. 		 */
+comment|/** 		 * Pops the top (string) literal, removes nonalphanumeric characters 		 * except for white-space characters and hyphens and ties (these all get 		 * converted to a space), removes certain alphabetic characters 		 * contained in the control sequences associated with a \special 		 * character", and pushes the resulting string. 		 */
 name|buildInFunctions
 operator|.
 name|put
@@ -3292,7 +3292,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|/** 		 * Pops the top two literals (the integer literal len and a string 		 * literal, in that order). It pushes the substring of the (at most) 		 * len consecutive text characters starting from the beginning of 		 * the string. This function is similar to substring$, but this one 		 * considers a \special character", even if it's missing its 		 * matching right brace, to be a single text character (rather than 		 * however many ASCII characters it actually comprises), and this 		 * function doesn't consider braces to be text characters; 		 * furthermore, this function appends any needed matching right 		 * braces. 		 */
+comment|/** 		 * Pops the top two literals (the integer literal len and a string 		 * literal, in that order). It pushes the substring of the (at most) len 		 * consecutive text characters starting from the beginning of the 		 * string. This function is similar to substring$, but this one 		 * considers a \special character", even if it's missing its matching 		 * right brace, to be a single text character (rather than however many 		 * ASCII characters it actually comprises), and this function doesn't 		 * consider braces to be text characters; furthermore, this function 		 * appends any needed matching right braces. 		 */
 name|buildInFunctions
 operator|.
 name|put
@@ -4563,7 +4563,7 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
-comment|//						assert t.getType() == Bst.IDLIST;
+comment|// assert t.getType() == Bst.IDLIST;
 for|for
 control|(
 name|int
@@ -4652,7 +4652,7 @@ argument_list|(
 literal|2
 argument_list|)
 decl_stmt|;
-comment|//			assert t.getType() == Bst.IDLIST;
+comment|// assert t.getType() == Bst.IDLIST;
 for|for
 control|(
 name|int
@@ -4956,6 +4956,9 @@ operator|)
 operator|.
 name|compareTo
 argument_list|(
+operator|(
+name|String
+operator|)
 name|o2
 operator|.
 name|strings
@@ -5174,7 +5177,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-empty_stmt|;
 break|break;
 case|case
 name|Bst
@@ -5788,7 +5790,7 @@ name|entry
 return|;
 block|}
 block|}
-comment|//			Vector<BstEntry> entries;
+comment|// Vector<BstEntry> entries;
 DECL|field|entries
 name|Vector
 name|entries
@@ -5880,7 +5882,7 @@ name|identifier
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* 	 * public Map<String, String> getStrings() { 		return strings; 	}  	public Map<String, Integer> getIntegers() { 		return integers; 	}  	public Vector<BstEntry> getEntries() { 		return entries; 	}  	public Map<String, BstFunction> getFunctions() { 		return functions; 	} 	 */
+comment|/* 	 * public Map<String, String> getStrings() { return strings; } 	 *  	 * public Map<String, Integer> getIntegers() { return integers; } 	 *  	 * public Vector<BstEntry> getEntries() { return entries; } 	 *  	 * public Map<String, BstFunction> getFunctions() { return functions; } 	 */
 DECL|method|getStrings ()
 specifier|public
 name|Map
