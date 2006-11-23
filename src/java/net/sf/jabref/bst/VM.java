@@ -504,16 +504,16 @@ argument_list|(
 name|lex
 argument_list|)
 decl_stmt|;
-name|Bst
+name|BstParser
 name|parser
 init|=
 operator|new
-name|Bst
+name|BstParser
 argument_list|(
 name|tokens
 argument_list|)
 decl_stmt|;
-name|Bst
+name|BstParser
 operator|.
 name|program_return
 name|r
@@ -4005,7 +4005,7 @@ argument_list|()
 condition|)
 block|{
 case|case
-name|Bst
+name|BstParser
 operator|.
 name|STRINGS
 case|:
@@ -4016,7 +4016,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|Bst
+name|BstParser
 operator|.
 name|INTEGERS
 case|:
@@ -4027,7 +4027,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|Bst
+name|BstParser
 operator|.
 name|FUNCTION
 case|:
@@ -4038,7 +4038,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|Bst
+name|BstParser
 operator|.
 name|EXECUTE
 case|:
@@ -4049,7 +4049,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|Bst
+name|BstParser
 operator|.
 name|SORT
 case|:
@@ -4060,7 +4060,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|Bst
+name|BstParser
 operator|.
 name|ITERATE
 case|:
@@ -4071,7 +4071,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|Bst
+name|BstParser
 operator|.
 name|REVERSE
 case|:
@@ -4082,7 +4082,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|Bst
+name|BstParser
 operator|.
 name|ENTRY
 case|:
@@ -4093,7 +4093,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|Bst
+name|BstParser
 operator|.
 name|READ
 case|:
@@ -4102,7 +4102,7 @@ argument_list|()
 expr_stmt|;
 break|break;
 case|case
-name|Bst
+name|BstParser
 operator|.
 name|MACRO
 case|:
@@ -5146,7 +5146,7 @@ argument_list|()
 condition|)
 block|{
 case|case
-name|Bst
+name|BstParser
 operator|.
 name|STRING
 case|:
@@ -5179,7 +5179,7 @@ expr_stmt|;
 block|}
 break|break;
 case|case
-name|Bst
+name|BstParser
 operator|.
 name|INTEGER
 case|:
@@ -5207,7 +5207,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|Bst
+name|BstParser
 operator|.
 name|QUOTED
 case|:
@@ -5230,7 +5230,7 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|Bst
+name|BstParser
 operator|.
 name|STACK
 case|:
