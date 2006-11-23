@@ -192,7 +192,7 @@ block|{
 comment|// Most basic case
 name|assertEqualPaths
 argument_list|(
-literal|"HipKro03.pdf"
+literal|"/HipKro03.pdf"
 argument_list|,
 name|findFile
 argument_list|(
@@ -210,7 +210,7 @@ expr_stmt|;
 comment|// Including directory
 name|assertEqualPaths
 argument_list|(
-literal|"test/HipKro03.pdf"
+literal|"/test/HipKro03.pdf"
 argument_list|,
 name|findFile
 argument_list|(
@@ -314,7 +314,7 @@ argument_list|)
 decl_stmt|;
 name|assertEqualPaths
 argument_list|(
-literal|"HipKro03 - Hello.pdf"
+literal|"/HipKro03 - Hello.pdf"
 argument_list|,
 name|pdf
 argument_list|)
@@ -365,7 +365,7 @@ argument_list|)
 decl_stmt|;
 name|assertEqualPaths
 argument_list|(
-literal|"sub/HipKro03-sub.pdf"
+literal|"/sub/HipKro03-sub.pdf"
 argument_list|,
 name|pdf
 argument_list|)
@@ -443,7 +443,7 @@ argument_list|)
 decl_stmt|;
 name|assertEqualPaths
 argument_list|(
-literal|"HipKro03 - Hello.pdf"
+literal|"/HipKro03 - Hello.pdf"
 argument_list|,
 name|pdf
 argument_list|)
@@ -649,7 +649,7 @@ argument_list|)
 decl_stmt|;
 name|assertEqualPaths
 argument_list|(
-literal|"sub/HipKro03-sub.pdf"
+literal|"/sub/HipKro03-sub.pdf"
 argument_list|,
 name|pdf
 argument_list|)
@@ -829,7 +829,7 @@ block|{
 comment|// Simple case
 name|assertEqualPaths
 argument_list|(
-literal|"HipKro03.pdf"
+literal|"/HipKro03.pdf"
 argument_list|,
 name|Util
 operator|.
@@ -910,7 +910,7 @@ argument_list|)
 expr_stmt|;
 name|assertEqualPaths
 argument_list|(
-literal|"build.xml"
+literal|"/build.xml"
 argument_list|,
 name|Util
 operator|.
@@ -1027,7 +1027,7 @@ argument_list|)
 expr_stmt|;
 name|assertEqualPaths
 argument_list|(
-literal|"TE.ST"
+literal|"/TE.ST"
 argument_list|,
 name|Util
 operator|.
@@ -1052,7 +1052,7 @@ argument_list|)
 expr_stmt|;
 name|assertEqualPaths
 argument_list|(
-literal|".TEST"
+literal|"/.TEST"
 argument_list|,
 name|Util
 operator|.
@@ -1077,7 +1077,7 @@ argument_list|)
 expr_stmt|;
 name|assertEqualPaths
 argument_list|(
-literal|"TEST["
+literal|"/TEST["
 argument_list|,
 name|Util
 operator|.

@@ -4984,6 +4984,7 @@ condition|)
 block|{
 try|try
 block|{
+comment|/** 				 * [ 1601651 ] PDF subdirectory - missing first character 				 *  				 * http://sourceforge.net/tracker/index.php?func=detail&aid=1601651&group_id=92314&atid=600306 				 */
 return|return
 name|found
 operator|.
@@ -4996,8 +4997,6 @@ argument_list|()
 operator|.
 name|length
 argument_list|()
-operator|+
-literal|1
 argument_list|)
 return|;
 block|}
