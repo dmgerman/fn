@@ -2114,7 +2114,7 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-comment|//System.out.println("Trying format: "+imFo.getFormatName());
+comment|// System.out.println("Trying format: "+imFo.getFormatName());
 name|List
 name|entries
 init|=
@@ -2154,8 +2154,8 @@ else|:
 literal|0
 operator|)
 decl_stmt|;
-comment|//System.out.println("Entries: "+entryCount);
-comment|//BibtexDatabase base = importFile(formats[i], filename);
+comment|// System.out.println("Entries: "+entryCount);
+comment|// BibtexDatabase base = importFile(formats[i], filename);
 if|if
 condition|(
 name|entryCount
@@ -2178,18 +2178,15 @@ name|entryList
 operator|=
 name|entries
 expr_stmt|;
-comment|//System.out.println("Looks good: "+imFo.getFormatName());
+comment|// System.out.println("Looks good: "+imFo.getFormatName());
 block|}
 block|}
 catch|catch
 parameter_list|(
-name|IOException
-name|ex
+name|Exception
+name|e
 parameter_list|)
-block|{
-comment|//ex.printStackTrace();
-comment|//System.out.println("Import failed");
-block|}
+block|{ 			}
 block|}
 name|System
 operator|.
