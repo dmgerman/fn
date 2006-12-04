@@ -238,6 +238,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|UnsupportedEncodingException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|net
 operator|.
 name|URI
@@ -251,6 +261,16 @@ operator|.
 name|net
 operator|.
 name|URISyntaxException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URLDecoder
 import|;
 end_import
 
@@ -385,16 +405,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
 import|;
 end_import
 
@@ -3029,18 +3039,6 @@ name|link
 argument_list|)
 expr_stmt|;
 block|}
-catch|catch
-parameter_list|(
-name|URISyntaxException
-name|e2
-parameter_list|)
-block|{
-name|e2
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 elseif|else
 if|if
@@ -3787,8 +3785,6 @@ name|DOI_LOOKUP_PREFIX
 operator|+
 name|link
 expr_stmt|;
-try|try
-block|{
 name|link
 operator|=
 name|sanitizeUrl
@@ -3796,19 +3792,6 @@ argument_list|(
 name|link
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|URISyntaxException
-name|ex
-parameter_list|)
-block|{
-name|ex
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
 if|if
 condition|(
 name|Globals
@@ -3899,7 +3882,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 	 * Make sure an URL is "portable", in that it doesn't contain bad characters 	 * that break the open command in some OSes. 	 *  	 * @param link 	 *            The URL to sanitize. 	 * @return Sanitized URL 	 */
+comment|/** 	 * Make sure an URL is "portable", in that it doesn't contain bad characters 	 * that break the open command in some OSes. 	 *  	 * Old Version can be found in CVS version 114 of Util.java. 	 *  	 * @param link 	 *            The URL to sanitize. 	 * @return Sanitized URL 	 */
 DECL|method|sanitizeUrl (String link)
 specifier|public
 specifier|static
@@ -3909,91 +3892,66 @@ parameter_list|(
 name|String
 name|link
 parameter_list|)
-throws|throws
-name|URISyntaxException
 block|{
-name|String
-name|scheme
-init|=
-literal|"http"
-decl_stmt|;
-name|String
-name|ssp
-decl_stmt|;
-if|if
-condition|(
 name|link
-operator|.
-name|indexOf
-argument_list|(
-literal|"//"
-argument_list|)
-operator|>
-literal|0
-condition|)
-name|ssp
 operator|=
-literal|"//"
-operator|+
 name|link
-operator|.
-name|substring
-argument_list|(
-literal|2
-operator|+
-name|link
-operator|.
-name|indexOf
-argument_list|(
-literal|"//"
-argument_list|)
-argument_list|)
-expr_stmt|;
-else|else
-name|ssp
-operator|=
-literal|"//"
-operator|+
-name|link
-expr_stmt|;
-comment|// The following is an ugly hack to fix the problem where a %20 in the
-comment|// original string (correct encoding of a space) gets returned as %2520
-comment|// because the URI constructor doesn't recognize that the % is the start of
-comment|// a sequence. The problem is that other such sequences will meet the same fate.
-comment|// If we need to take care of all these up front, we might as well not use URI
-comment|// at all.
-comment|// Another option is to do two times, hiding the %xx sequences in one of them,
-comment|// and see if one of the URLs looks good...
-name|ssp
-operator|=
-name|ssp
 operator|.
 name|replaceAll
 argument_list|(
-literal|"%20"
+literal|"\\+"
 argument_list|,
-literal|" "
+literal|"%2B"
 argument_list|)
 expr_stmt|;
-name|URI
-name|uri
-init|=
+try|try
+block|{
+name|link
+operator|=
+name|URLDecoder
+operator|.
+name|decode
+argument_list|(
+name|link
+argument_list|,
+literal|"UTF-8"
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|UnsupportedEncodingException
+name|e
+parameter_list|)
+block|{ 		}
+comment|/** 		 * Fix for: [ 1574773 ] sanitizeUrl() breaks ftp:// and file:/// 		 *  		 * http://sourceforge.net/tracker/index.php?func=detail&aid=1574773&group_id=92314&atid=600306 		 */
+try|try
+block|{
+return|return
 operator|new
 name|URI
 argument_list|(
-name|scheme
+literal|null
 argument_list|,
-name|ssp
+name|link
 argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
-return|return
-name|uri
 operator|.
 name|toASCIIString
 argument_list|()
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|URISyntaxException
+name|e
+parameter_list|)
+block|{
+return|return
+name|link
+return|;
+block|}
 block|}
 comment|/** 	 * Searches the given directory and subdirectories for a pdf file with name 	 * as given + ".pdf" 	 */
 DECL|method|findPdf (String key, String extension, String directory, OpenFileFilter off)
