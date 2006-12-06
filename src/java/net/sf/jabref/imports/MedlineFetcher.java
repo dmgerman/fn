@@ -517,7 +517,24 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//tf.setMinimumSize(new Dimension(1,1));
+name|tf
+operator|.
+name|setPreferredSize
+argument_list|(
+operator|new
+name|Dimension
+argument_list|(
+literal|1
+argument_list|,
+name|tf
+operator|.
+name|getPreferredSize
+argument_list|()
+operator|.
+name|height
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|//add(hd, BorderLayout.NORTH);
 comment|//ok.setToolTipText(Globals.lang("Fetch Medline"));
 name|JPanel
