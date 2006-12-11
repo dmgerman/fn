@@ -381,6 +381,11 @@ specifier|private
 name|EntryEditor
 name|entryEditor
 decl_stmt|;
+DECL|field|fieldEditor
+specifier|private
+name|FieldEditor
+name|fieldEditor
+decl_stmt|;
 DECL|field|frame
 specifier|private
 name|JabRefFrame
@@ -403,7 +408,7 @@ specifier|private
 name|MetaData
 name|metaData
 decl_stmt|;
-DECL|method|ExternalFilePanel (final String fieldName, final MetaData metaData, final BibtexEntry entry, final OpenFileFilter off)
+DECL|method|ExternalFilePanel (final String fieldName, final MetaData metaData, final BibtexEntry entry, final FieldEditor editor, final OpenFileFilter off)
 specifier|public
 name|ExternalFilePanel
 parameter_list|(
@@ -418,6 +423,10 @@ parameter_list|,
 specifier|final
 name|BibtexEntry
 name|entry
+parameter_list|,
+specifier|final
+name|FieldEditor
+name|editor
 parameter_list|,
 specifier|final
 name|OpenFileFilter
@@ -444,6 +453,18 @@ operator|.
 name|entry
 operator|=
 name|entry
+expr_stmt|;
+name|this
+operator|.
+name|entryEditor
+operator|=
+literal|null
+expr_stmt|;
+name|this
+operator|.
+name|fieldEditor
+operator|=
+name|editor
 expr_stmt|;
 block|}
 DECL|method|ExternalFilePanel (final JabRefFrame frame, final MetaData metaData, final EntryEditor entryEditor, final String fieldName, final OpenFileFilter off, final FieldEditor editor)
@@ -498,6 +519,12 @@ operator|.
 name|entryEditor
 operator|=
 name|entryEditor
+expr_stmt|;
+name|this
+operator|.
+name|fieldEditor
+operator|=
+literal|null
 expr_stmt|;
 name|setLayout
 argument_list|(
@@ -1427,7 +1454,7 @@ expr_stmt|;
 else|else
 name|targetEntry
 operator|=
-literal|null
+name|entry
 expr_stmt|;
 operator|(
 operator|new
@@ -1890,6 +1917,28 @@ argument_list|,
 name|textToSet
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|fieldEditor
+operator|!=
+literal|null
+condition|)
+block|{
+name|fieldEditor
+operator|.
+name|setText
+argument_list|(
+name|textToSet
+argument_list|)
+expr_stmt|;
+name|fieldEditor
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
 name|updateEditor
 operator|=
 literal|false

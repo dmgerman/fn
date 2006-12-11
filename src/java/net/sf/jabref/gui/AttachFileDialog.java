@@ -419,6 +419,8 @@ name|metaData
 argument_list|,
 name|entry
 argument_list|,
+name|editor
+argument_list|,
 name|Util
 operator|.
 name|getFileFilterForField
