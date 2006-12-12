@@ -540,6 +540,24 @@ name|toString
 argument_list|()
 return|;
 block|}
+comment|/**      * Get a Map of all export formats.      * @return A Map containing all export formats, mapped to their console names.      */
+DECL|method|getExportFormats ()
+specifier|public
+specifier|static
+name|Map
+name|getExportFormats
+parameter_list|()
+block|{
+comment|// It is perhaps overly paranoid to make a defensive copy in this case:
+return|return
+name|Collections
+operator|.
+name|unmodifiableMap
+argument_list|(
+name|exportFormats
+argument_list|)
+return|;
+block|}
 comment|/** 	 * Look up the named export format. 	 *  	 * @param consoleName 	 *            The export name given in the JabRef console help information. 	 * @return The ExportFormat, or null if no exportformat with that name is 	 *         registered. 	 */
 DECL|method|getExportFormat (String consoleName)
 specifier|public
