@@ -792,6 +792,23 @@ argument_list|(
 literal|"line.separator"
 argument_list|)
 decl_stmt|;
+DECL|field|NEWLINE_LENGTH
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|NEWLINE_LENGTH
+init|=
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"line.separator"
+argument_list|)
+operator|.
+name|length
+argument_list|()
+decl_stmt|;
 comment|/** 	 * true if we have unix newlines 	 */
 DECL|field|UNIX_NEWLINE
 specifier|public

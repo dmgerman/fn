@@ -524,6 +524,7 @@ name|getId
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Write to file:
 name|format
 operator|.
 name|performExport
@@ -543,6 +544,7 @@ argument_list|,
 name|entries
 argument_list|)
 expr_stmt|;
+comment|// Read the file and put the contents on the clipboard:
 name|StringBuffer
 name|sb
 init|=
@@ -666,7 +668,6 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-comment|// TODO: report failure while writing to temporary file.
 name|e
 operator|.
 name|printStackTrace

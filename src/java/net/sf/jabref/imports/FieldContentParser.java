@@ -873,7 +873,9 @@ name|p
 operator|=
 name|q
 operator|+
-literal|1
+name|Globals
+operator|.
+name|NEWLINE_LENGTH
 expr_stmt|;
 block|}
 block|}
