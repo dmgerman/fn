@@ -230,6 +230,30 @@ name|String
 index|[]
 name|com
 init|=
+name|Globals
+operator|.
+name|ON_WIN
+condition|?
+comment|// Windows gnuclient:
+operator|new
+name|String
+index|[]
+block|{
+literal|"gnuclient"
+block|,
+literal|"-qe"
+block|,
+literal|"'"
+operator|+
+name|command
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|"'"
+block|}
+else|:
+comment|// Linux client:
 operator|new
 name|String
 index|[]
