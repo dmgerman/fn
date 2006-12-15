@@ -869,7 +869,7 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|pushXMP (String fieldName, FieldEditor editor)
+DECL|method|pushXMP (String fieldName, final FieldEditor editor)
 specifier|public
 name|void
 name|pushXMP
@@ -877,6 +877,7 @@ parameter_list|(
 name|String
 name|fieldName
 parameter_list|,
+specifier|final
 name|FieldEditor
 name|editor
 parameter_list|)
@@ -973,14 +974,46 @@ literal|"No file associated"
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return;
 block|}
+specifier|final
+name|File
+name|finalFile
+init|=
+name|file
+decl_stmt|;
+operator|(
+operator|new
+name|Thread
+argument_list|()
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Writing XMP to '%0'..."
+argument_list|,
+name|finalFile
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|XMPUtil
 operator|.
 name|writeXMP
 argument_list|(
-name|file
+name|finalFile
 argument_list|,
 name|getEntry
 argument_list|()
@@ -992,9 +1025,9 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Wrote BibtexEntry as XMP to "
-operator|+
-name|file
+literal|"Wrote XMP to '%0'."
+argument_list|,
+name|finalFile
 operator|.
 name|getName
 argument_list|()
@@ -1021,8 +1054,8 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Error writing XMP to file: "
-operator|+
+literal|"Error writing XMP to file: %0"
+argument_list|,
 name|e
 operator|.
 name|getLocalizedMessage
@@ -1045,12 +1078,17 @@ name|Globals
 operator|.
 name|logger
 argument_list|(
-literal|"Error while writing XMP "
-operator|+
-name|file
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Error while writing XMP %0"
+argument_list|,
+name|finalFile
 operator|.
 name|getAbsolutePath
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1073,8 +1111,8 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Error converting Bibtex to XMP: "
-operator|+
+literal|"Error converting Bibtex to XMP: %0"
+argument_list|,
 name|e
 operator|.
 name|getLocalizedMessage
@@ -1097,15 +1135,27 @@ name|Globals
 operator|.
 name|logger
 argument_list|(
-literal|"Error while converting BibtexEntry to XMP "
-operator|+
-name|file
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Error while converting BibtexEntry to XMP %0"
+argument_list|,
+name|finalFile
 operator|.
 name|getAbsolutePath
 argument_list|()
 argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
+block|}
+block|}
+operator|)
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|browseFile (final String fieldName, final FieldEditor editor)
 specifier|public
