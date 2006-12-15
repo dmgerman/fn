@@ -374,6 +374,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|GregorianCalendar
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashSet
 import|;
 end_import
@@ -718,9 +728,7 @@ specifier|public
 class|class
 name|Util
 block|{
-comment|// A static Object for date formatting. Please do not create the object
-comment|// here,
-comment|// because there are some references from the Globals class.....
+comment|/** 	 * A static Object for date formatting. Please do not create the object 	 * here, because there are some references from the Globals class..... 	 *  	 */
 DECL|field|dateFormatter
 specifier|private
 specifier|static
@@ -729,7 +737,7 @@ name|dateFormatter
 init|=
 literal|null
 decl_stmt|;
-comment|// Colors are defined here.
+comment|/* 	 * Colors are defined here. 	 *  	 */
 DECL|field|fieldsCol
 specifier|public
 specifier|static
@@ -746,7 +754,7 @@ argument_list|,
 literal|200
 argument_list|)
 decl_stmt|;
-comment|// Integer values for indicating result of duplicate check (for entries):
+comment|/* 	 * Integer values for indicating result of duplicate check (for entries): 	 *  	 */
 DECL|field|TYPE_MISMATCH
 DECL|field|NOT_EQUAL
 DECL|field|EQUAL
@@ -1361,6 +1369,113 @@ block|}
 block|}
 return|return
 name|toSet
+return|;
+block|}
+comment|/** 	 * Will return the publication date of the given bibtex entry in conformance 	 * to ISO 8601, i.e. either YYYY or YYYY-MM. 	 *  	 * @param entry 	 * @return will return the publication date of the entry or null if no year 	 *         was found. 	 */
+DECL|method|getPublicationDate (BibtexEntry entry)
+specifier|public
+specifier|static
+name|String
+name|getPublicationDate
+parameter_list|(
+name|BibtexEntry
+name|entry
+parameter_list|)
+block|{
+name|Object
+name|o
+init|=
+name|entry
+operator|.
+name|getField
+argument_list|(
+literal|"year"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|o
+operator|==
+literal|null
+condition|)
+return|return
+literal|null
+return|;
+name|String
+name|year
+init|=
+name|toFourDigitYear
+argument_list|(
+name|o
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|o
+operator|=
+name|entry
+operator|.
+name|getField
+argument_list|(
+literal|"month"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|o
+operator|!=
+literal|null
+condition|)
+block|{
+name|int
+name|month
+init|=
+name|Util
+operator|.
+name|getMonthNumber
+argument_list|(
+name|o
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|month
+operator|!=
+operator|-
+literal|1
+condition|)
+block|{
+return|return
+name|year
+operator|+
+literal|"-"
+operator|+
+operator|(
+name|month
+operator|+
+literal|1
+operator|<
+literal|10
+condition|?
+literal|"0"
+else|:
+literal|""
+operator|)
+operator|+
+operator|(
+name|month
+operator|+
+literal|1
+operator|)
+return|;
+block|}
+block|}
+return|return
+name|year
 return|;
 block|}
 DECL|method|shaveString (String s)
@@ -3250,7 +3365,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-comment|/* 					 * String[] spl = link.split("\\\\"); StringBuffer sb = new 					 * StringBuffer(); for (int i = 0; i< spl.length; i++) { if 					 * (i> 0) sb.append("\\"); if (spl[i].indexOf(" ")>= 0) 					 * spl[i] = "\"" + spl[i] + "\""; sb.append(spl[i]); 					 *  } //pr(sb.toString()); link = sb.toString(); 					 *  					 * String cmd = "cmd.exe /c start " + link; 					 *  					 * Process child = Runtime.getRuntime().exec(cmd); 					 */
+comment|/* 					 * String[] spl = link.split("\\\\"); StringBuffer sb = new 					 * StringBuffer(); for (int i = 0; i< spl.length; i++) { if 					 * (i> 0) sb.append("\\"); if (spl[i].indexOf(" ")>= 0) 					 * spl[i] = "\"" + spl[i] + "\""; sb.append(spl[i]); } 					 * //pr(sb.toString()); link = sb.toString(); 					 *  					 * String cmd = "cmd.exe /c start " + link; 					 *  					 * Process child = Runtime.getRuntime().exec(cmd); 					 */
 block|}
 else|else
 block|{
@@ -4033,7 +4148,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** 	 * New version of findPdf that uses findFiles. 	 *  	 * The search pattern will be read from the preferences. 	 *  	 * The [extension]-tags in this pattern will be replace by the given extension parameter. 	 *  	 */
+comment|/** 	 * New version of findPdf that uses findFiles. 	 *  	 * The search pattern will be read from the preferences. 	 *  	 * The [extension]-tags in this pattern will be replace by the given 	 * extension parameter. 	 *  	 */
 DECL|method|findPdf (BibtexEntry entry, String extension, String directory)
 specifier|public
 specifier|static
@@ -4157,7 +4272,7 @@ literal|true
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Searches the given directory and file name pattern for a file for the 	 * bibtexentry. 	 *  	 * Used to fix: 	 *  	 * http://sourceforge.net/tracker/index.php?func=detail&aid=1503410&group_id=92314&atid=600309 	 *  	 * Requirements: 	 *  	 *  - Be able to find the associated PDF in a set of given directories. 	 *   	 *  - Be able to return a relative path or absolute path.  	 * 	 *  - Be fast. 	 *   	 *  - Allow for flexible naming schemes in the PDFs. 	 *  	 * Syntax scheme for file: 	 *<ul> 	 *<li>* Any subDir</li> 	 *<li>** Any subDir (recursiv)</li> 	 *<li>[key] Key from bibtex file and database</li>  	 *<li>.* Anything else is taken to be a Regular expression.</li> 	 *</ul> 	 *  	 * @param entry 	 *            non-null 	 * @param database 	 *            non-null 	 * @param directory 	 * 				A set of root directories to start the search from. 	 * 				Paths are returned relative to these directories if 	 * 				relative is set to true. These directories will not  	 * 				be expanded or anything. Use the file attribute for  	 * 				this. 	 * @param file 	 *            non-null 	 *             	 * @param relative 	 *            whether to return relative file paths or absolute ones 	 *  	 * @return Will return the first file found to match the given criteria or 	 *         null if none was found. 	 */
+comment|/** 	 * Searches the given directory and file name pattern for a file for the 	 * bibtexentry. 	 *  	 * Used to fix: 	 *  	 * http://sourceforge.net/tracker/index.php?func=detail&aid=1503410&group_id=92314&atid=600309 	 *  	 * Requirements: 	 *  - Be able to find the associated PDF in a set of given directories. 	 *  - Be able to return a relative path or absolute path. 	 *  - Be fast. 	 *  - Allow for flexible naming schemes in the PDFs. 	 *  	 * Syntax scheme for file: 	 *<ul> 	 *<li>* Any subDir</li> 	 *<li>** Any subDir (recursiv)</li> 	 *<li>[key] Key from bibtex file and database</li> 	 *<li>.* Anything else is taken to be a Regular expression.</li> 	 *</ul> 	 *  	 * @param entry 	 *            non-null 	 * @param database 	 *            non-null 	 * @param directory 	 *            A set of root directories to start the search from. Paths are 	 *            returned relative to these directories if relative is set to 	 *            true. These directories will not be expanded or anything. Use 	 *            the file attribute for this. 	 * @param file 	 *            non-null 	 *  	 * @param relative 	 *            whether to return relative file paths or absolute ones 	 *  	 * @return Will return the first file found to match the given criteria or 	 *         null if none was found. 	 */
 DECL|method|findFile (BibtexEntry entry, BibtexDatabase database, String[] directory, String file, boolean relative)
 specifier|public
 specifier|static
@@ -4529,7 +4644,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/** 	 * Accepts a string like [author:toLowerCase("escapedstring"),toUpperCase], whereas the first 	 * string signifies the bibtex-field to get while the others are the names 	 * of layouters that will be applied. 	 *  	 * @param fieldAndFormat 	 * @param entry 	 * @param database 	 * @return 	 */
+comment|/** 	 * Accepts a string like [author:toLowerCase("escapedstring"),toUpperCase], 	 * whereas the first string signifies the bibtex-field to get while the 	 * others are the names of layouters that will be applied. 	 *  	 * @param fieldAndFormat 	 * @param entry 	 * @param database 	 * @return 	 */
 DECL|method|getFieldAndFormat (String fieldAndFormat, BibtexEntry entry, BibtexDatabase database)
 specifier|public
 specifier|static
@@ -4806,7 +4921,7 @@ return|return
 name|res
 return|;
 block|}
-comment|/** 	 * Convenience function for absolute search.      *      * Uses findFile(BibtexEntry, BibtexDatabase, (String)null, String, false). 	 */
+comment|/** 	 * Convenience function for absolute search. 	 *  	 * Uses findFile(BibtexEntry, BibtexDatabase, (String)null, String, false). 	 */
 DECL|method|findFile (BibtexEntry entry, BibtexDatabase database, String file)
 specifier|public
 specifier|static
@@ -4973,7 +5088,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** 	 * The actual work-horse. Will find absolute filepaths starting from the given directory using the given regular expression string for search. 	 */
+comment|/** 	 * The actual work-horse. Will find absolute filepaths starting from the 	 * given directory using the given regular expression string for search. 	 */
 DECL|method|findFile (BibtexEntry entry, BibtexDatabase database, File directory, String file)
 specifier|protected
 specifier|static
@@ -5910,7 +6025,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Converts a relative filename to an absolute one, if necessary. Returns 	 * null if the file does not exist. 	 *  	 * Will look in each of the given dirs starting from the beginning and returning the first found file to match if any. 	 */
+comment|/** 	 * Converts a relative filename to an absolute one, if necessary. Returns 	 * null if the file does not exist. 	 *  	 * Will look in each of the given dirs starting from the beginning and 	 * returning the first found file to match if any. 	 */
 DECL|method|expandFilename (String name, String[] dir)
 specifier|public
 specifier|static
@@ -10232,7 +10347,7 @@ operator|)
 operator|)
 return|;
 block|}
-comment|/**      * Set a given field to a given value for all entries in a Collection.      * This method DOES NOT update any UndoManager, but returns a relevant      * CompoundEdit that should be registered by the caller.      *      * @param entries The entries to set the field for.      * @param field The name of the field to set.      * @param text The value to set. This value can be null, indicating that the      *      field should be cleared.      * @param overwriteValues Indicate whether the value should be set even if      *      an entry already has the field set.      * @return A CompoundEdit for the entire operation.      */
+comment|/** 	 * Set a given field to a given value for all entries in a Collection. This 	 * method DOES NOT update any UndoManager, but returns a relevant 	 * CompoundEdit that should be registered by the caller. 	 *  	 * @param entries 	 *            The entries to set the field for. 	 * @param field 	 *            The name of the field to set. 	 * @param text 	 *            The value to set. This value can be null, indicating that the 	 *            field should be cleared. 	 * @param overwriteValues 	 *            Indicate whether the value should be set even if an entry 	 *            already has the field set. 	 * @return A CompoundEdit for the entire operation. 	 */
 DECL|method|massSetField (Collection entries, String field, String text, boolean overwriteValues)
 specifier|public
 specifier|static
@@ -10304,7 +10419,8 @@ argument_list|(
 name|field
 argument_list|)
 decl_stmt|;
-comment|// If we are not allowed to overwrite values, check if there is a nonempty
+comment|// If we are not allowed to overwrite values, check if there is a
+comment|// nonempty
 comment|// value already for this entry:
 if|if
 condition|(
@@ -10678,7 +10794,7 @@ name|year
 return|;
 block|}
 block|}
-comment|/** 	 * Will return an integer indicating the month of the entry from 0 to 11. 	 *  	 * -1 signals a unknown month string. 	 *  	 * This method accepts three types of months given: 	 *  	 * - Single and Double Digit months from 1 to 12 (01 to 12) 	 *  	 * - 3 Digit BibTex strings (jan 	 *  	 * - Full English Month identifiers. 	 *  	 * @param month 	 * @return 	 */
+comment|/** 	 * Will return an integer indicating the month of the entry from 0 to 11. 	 *  	 * -1 signals a unknown month string. 	 *  	 * This method accepts three types of months given: 	 *  - Single and Double Digit months from 1 to 12 (01 to 12) 	 *  - 3 Digit BibTex strings (jan, feb, mar...) 	 *  - Full English Month identifiers. 	 *  	 * @param month 	 * @return 	 */
 DECL|method|getMonthNumber (String month)
 specifier|public
 specifier|static
@@ -10692,6 +10808,13 @@ block|{
 name|month
 operator|=
 name|month
+operator|.
+name|replaceAll
+argument_list|(
+literal|"#"
+argument_list|,
+literal|""
+argument_list|)
 operator|.
 name|toLowerCase
 argument_list|()
