@@ -210,6 +210,31 @@ argument_list|(
 literal|"{"
 argument_list|)
 decl_stmt|;
+comment|// Trickiness required for Emacs under Windoze:
+comment|// wincommand = "(insert \\\"\\\\cite{Blah2001}\\\")";
+comment|// so that cmd receives: (insert \"\\cite{Blah2001}\")
+comment|// so that emacs receives: (insert "\cite{Blah2001}")
+comment|// so that emacs inserts: \cite{Blah2001}
+name|String
+name|wincommand
+init|=
+literal|"(insert \\\"\\\\"
+operator|+
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"citeCommand"
+argument_list|)
+operator|+
+literal|"{"
+operator|+
+name|keys
+operator|+
+literal|"}\\\")"
+decl_stmt|;
 try|try
 block|{
 name|command
@@ -264,10 +289,7 @@ literal|"-batch"
 block|,
 literal|"-eval"
 block|,
-name|command
-operator|.
-name|toString
-argument_list|()
+name|wincommand
 block|}
 decl_stmt|;
 specifier|final
