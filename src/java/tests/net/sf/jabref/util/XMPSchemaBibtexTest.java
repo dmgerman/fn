@@ -330,6 +330,8 @@ operator|new
 name|XMPSchemaBibtex
 argument_list|(
 name|e
+argument_list|,
+literal|"bibtex"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -1315,10 +1317,14 @@ expr_stmt|;
 name|Map
 name|s
 init|=
-name|bibtex
+name|XMPSchemaBibtex
 operator|.
 name|getAllProperties
-argument_list|()
+argument_list|(
+name|bibtex
+argument_list|,
+literal|"bibtex"
+argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(

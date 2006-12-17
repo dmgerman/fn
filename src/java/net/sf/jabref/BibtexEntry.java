@@ -141,6 +141,20 @@ name|searchHit
 decl_stmt|,
 name|groupHit
 decl_stmt|;
+DECL|method|BibtexEntry ()
+specifier|public
+name|BibtexEntry
+parameter_list|()
+block|{
+name|this
+argument_list|(
+name|Util
+operator|.
+name|createNeutralId
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|BibtexEntry (String id)
 specifier|public
 name|BibtexEntry

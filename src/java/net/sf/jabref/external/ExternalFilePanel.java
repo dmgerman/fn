@@ -869,11 +869,12 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|pushXMP (String fieldName, final FieldEditor editor)
+DECL|method|pushXMP (final String fieldName, final FieldEditor editor)
 specifier|public
 name|void
 name|pushXMP
 parameter_list|(
+specifier|final
 name|String
 name|fieldName
 parameter_list|,
@@ -882,6 +883,26 @@ name|FieldEditor
 name|editor
 parameter_list|)
 block|{
+operator|(
+operator|new
+name|Thread
+argument_list|()
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Looking for pdf..."
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// Find the default directory for this field type, if any:
 name|String
 name|dir
@@ -982,16 +1003,6 @@ name|finalFile
 init|=
 name|file
 decl_stmt|;
-operator|(
-operator|new
-name|Thread
-argument_list|()
-block|{
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
 name|output
 argument_list|(
 name|Globals
@@ -1091,6 +1102,21 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Error writing XMP to '%0'..."
+argument_list|,
+name|finalFile
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1144,6 +1170,21 @@ argument_list|,
 name|finalFile
 operator|.
 name|getAbsolutePath
+argument_list|()
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Error converting XMP to '%0'..."
+argument_list|,
+name|finalFile
+operator|.
+name|getName
 argument_list|()
 argument_list|)
 argument_list|)
