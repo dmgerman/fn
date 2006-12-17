@@ -61,16 +61,7 @@ name|suite
 operator|.
 name|addTestSuite
 argument_list|(
-name|IsiImporterTest
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|suite
-operator|.
-name|addTestSuite
-argument_list|(
-name|AutoImportTest
+name|OAI2ImportTest
 operator|.
 name|class
 argument_list|)
@@ -88,7 +79,7 @@ name|suite
 operator|.
 name|addTestSuite
 argument_list|(
-name|OAI2ImportTest
+name|IsiImporterTest
 operator|.
 name|class
 argument_list|)
