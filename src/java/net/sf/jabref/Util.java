@@ -1019,7 +1019,6 @@ name|idCounter
 operator|++
 argument_list|)
 return|;
-comment|// return String.valueOf(idCounter++);
 block|}
 comment|/** 	 * This method sets the location of a Dialog such that it is centered with 	 * regard to another window, but not outside the screen on the left and the 	 * top. 	 */
 DECL|method|placeDialog (java.awt.Dialog diag, java.awt.Container win)
