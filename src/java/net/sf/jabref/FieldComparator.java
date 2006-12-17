@@ -225,6 +225,21 @@ name|field
 argument_list|)
 expr_stmt|;
 block|}
+comment|/* 		 * [ 1598777 ] Month sorting 		 *  		 * http://sourceforge.net/tracker/index.php?func=detail&aid=1598777&group_id=92314&atid=600306 		 */
+name|int
+name|localMultiplier
+init|=
+name|multiplier
+decl_stmt|;
+if|if
+condition|(
+name|isMonthField
+condition|)
+name|localMultiplier
+operator|=
+operator|-
+name|localMultiplier
+expr_stmt|;
 comment|// Catch all cases involving null:
 if|if
 condition|(
@@ -239,7 +254,7 @@ literal|null
 condition|?
 literal|0
 else|:
-name|multiplier
+name|localMultiplier
 return|;
 if|if
 condition|(
@@ -249,7 +264,7 @@ literal|null
 condition|)
 return|return
 operator|-
-name|multiplier
+name|localMultiplier
 return|;
 comment|// Now we now that both f1 and f2 are != null
 if|if
@@ -364,12 +379,6 @@ operator|)
 name|f2
 argument_list|)
 argument_list|)
-expr_stmt|;
-comment|// Somehow this is twisted
-name|multiplier
-operator|=
-operator|-
-name|multiplier
 expr_stmt|;
 block|}
 name|int
@@ -529,7 +538,7 @@ block|}
 return|return
 name|result
 operator|*
-name|multiplier
+name|localMultiplier
 return|;
 block|}
 comment|/** 	 * Returns the field this Comparator compares by. 	 *  	 * @return The field name. 	 */
