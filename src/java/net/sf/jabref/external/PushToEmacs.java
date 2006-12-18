@@ -184,40 +184,28 @@ name|couldNotRunClient
 operator|=
 literal|false
 expr_stmt|;
-name|StringBuffer
-name|command
+try|try
+block|{
+name|String
+index|[]
+name|com
 init|=
-operator|new
-name|StringBuffer
-argument_list|(
-literal|"(insert\"\\\\"
-argument_list|)
-operator|.
-name|append
-argument_list|(
 name|Globals
 operator|.
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"citeCommand"
-argument_list|)
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|"{"
-argument_list|)
-decl_stmt|;
-comment|// Trickiness required for Emacs under Windoze:
-comment|// wincommand = "(insert \\\"\\\\cite{Blah2001}\\\")";
-comment|// so that cmd receives: (insert \"\\cite{Blah2001}\")
-comment|// so that emacs receives: (insert "\cite{Blah2001}")
-comment|// so that emacs inserts: \cite{Blah2001}
+name|ON_WIN
+condition|?
+comment|// Windows gnuclient escaping:
+comment|// java string: "(insert \\\"\\\\cite{Blah2001}\\\")";
+comment|// so cmd receives: (insert \"\\cite{Blah2001}\")
+comment|// so emacs receives: (insert "\cite{Blah2001}")
+operator|new
 name|String
-name|wincommand
-init|=
+index|[]
+block|{
+literal|"gnuclient"
+block|,
+literal|"-qe"
+block|,
 literal|"(insert \\\"\\\\"
 operator|+
 name|Globals
@@ -234,51 +222,12 @@ operator|+
 name|keys
 operator|+
 literal|"}\\\")"
-decl_stmt|;
-try|try
-block|{
-name|command
-operator|.
-name|append
-argument_list|(
-name|keys
-argument_list|)
-expr_stmt|;
-name|command
-operator|.
-name|append
-argument_list|(
-literal|"}\")"
-argument_list|)
-expr_stmt|;
-name|String
-index|[]
-name|com
-init|=
-name|Globals
-operator|.
-name|ON_WIN
-condition|?
-comment|// Windows gnuclient:
-operator|new
-name|String
-index|[]
-block|{
-literal|"gnuclient"
-block|,
-literal|"-qe"
-block|,
-literal|"'"
-operator|+
-name|command
-operator|.
-name|toString
-argument_list|()
-operator|+
-literal|"'"
 block|}
 else|:
-comment|// Linux client:
+comment|// Linux gnuclient escaping:
+comment|// java string: "(insert \"\\\\cite{Blah2001}\")"
+comment|// so sh receives: (insert "\\cite{Blah2001}")
+comment|// so emacs receives: (insert "\cite{Blah2001}")
 operator|new
 name|String
 index|[]
@@ -289,7 +238,22 @@ literal|"-batch"
 block|,
 literal|"-eval"
 block|,
-name|wincommand
+literal|"(insert \"\\\\"
+operator|+
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"citeCommand"
+argument_list|)
+operator|+
+literal|"{"
+operator|+
+name|keys
+operator|+
+literal|"}\")"
 block|}
 decl_stmt|;
 specifier|final
