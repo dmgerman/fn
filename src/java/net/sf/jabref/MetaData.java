@@ -1178,7 +1178,9 @@ name|i
 operator|+=
 name|lineLength
 operator|+
-literal|1
+name|Globals
+operator|.
+name|NEWLINE_LENGTH
 control|)
 block|{
 name|sb
