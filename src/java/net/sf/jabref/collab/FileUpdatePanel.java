@@ -98,6 +98,15 @@ name|SidePaneComponent
 implements|implements
 name|ActionListener
 block|{
+DECL|field|NAME
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|NAME
+init|=
+literal|"fileUpdate"
+decl_stmt|;
 DECL|field|test
 name|JButton
 name|test
@@ -292,6 +301,21 @@ operator|.
 name|addActionListener
 argument_list|(
 name|this
+argument_list|)
+expr_stmt|;
+block|}
+comment|/** 	 * Unregister when this component closes. We need that to avoid showing 	 * two such external change warnings at the same time, only the latest one. 	 */
+DECL|method|componentClosing ()
+specifier|public
+name|void
+name|componentClosing
+parameter_list|()
+block|{
+name|manager
+operator|.
+name|unregisterComponent
+argument_list|(
+name|NAME
 argument_list|)
 expr_stmt|;
 block|}
