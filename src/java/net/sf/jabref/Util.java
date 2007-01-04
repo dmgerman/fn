@@ -5057,7 +5057,11 @@ block|{
 try|try
 block|{
 comment|/** 				 * [ 1601651 ] PDF subdirectory - missing first character 				 *  				 * http://sourceforge.net/tracker/index.php?func=detail&aid=1601651&group_id=92314&atid=600306 				 */
-return|return
+comment|// Changed by M. Alver 2007.01.04:
+comment|// Remove first character if it is a directory separator character:
+name|String
+name|tmp
+init|=
 name|found
 operator|.
 name|substring
@@ -5070,7 +5074,44 @@ operator|.
 name|length
 argument_list|()
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|(
+name|tmp
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|1
+operator|)
+operator|&&
+operator|(
+name|tmp
+operator|.
+name|charAt
+argument_list|(
+literal|0
+argument_list|)
+operator|==
+name|File
+operator|.
+name|separatorChar
+operator|)
+condition|)
+name|tmp
+operator|=
+name|tmp
+operator|.
+name|substring
+argument_list|(
+literal|1
+argument_list|)
+expr_stmt|;
+return|return
+name|tmp
 return|;
+comment|//return found.substring(root.getCanonicalPath().length());
 block|}
 catch|catch
 parameter_list|(
