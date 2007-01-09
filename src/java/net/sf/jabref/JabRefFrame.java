@@ -3069,7 +3069,7 @@ operator|.
 name|getFile
 argument_list|()
 operator|.
-name|getPath
+name|getAbsolutePath
 argument_list|()
 argument_list|)
 expr_stmt|;
