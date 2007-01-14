@@ -529,6 +529,19 @@ comment|// by general AbstractGroup contract, toString() must return
 comment|// something from which this object can be reconstructed
 comment|// using fromString(String).
 comment|// by general AbstractGroup contract, equals() must be implemented
+comment|/**          * Update the group, if necessary, to handle the situation where the group          * is applied to a different BibtexDatabase than it was created for. This          * is for instance used when updating the group tree due to an external change.          *          * @param db The database to refresh for.          */
+DECL|method|refreshForNewDatabase (BibtexDatabase db)
+specifier|public
+name|void
+name|refreshForNewDatabase
+parameter_list|(
+name|BibtexDatabase
+name|db
+parameter_list|)
+block|{
+comment|// Default is to do nothing. Group types that are affected by a change
+comment|// of database must override this method.
+block|}
 block|}
 end_class
 

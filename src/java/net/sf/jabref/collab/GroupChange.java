@@ -221,6 +221,19 @@ name|deepCopy
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// the group tree is now appled to a different BibtexDatabase than it was created
+comment|// for, which affects groups such as ExplicitGroup (which links to BibtexEntry objects).
+comment|// We must traverse the tree and refresh all groups:
+name|root
+operator|.
+name|refreshGroupsForNewDatabase
+argument_list|(
+name|panel
+operator|.
+name|database
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 name|panel
 operator|.
