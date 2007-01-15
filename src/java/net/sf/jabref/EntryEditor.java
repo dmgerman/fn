@@ -2553,7 +2553,8 @@ literal|"Correct the entry, and "
 operator|+
 literal|"reopen editor to display/edit source."
 argument_list|)
-argument_list|;
+argument_list|)
+expr_stmt|;
 name|source
 operator|.
 name|setEditable
