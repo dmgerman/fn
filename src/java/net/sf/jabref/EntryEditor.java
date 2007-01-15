@@ -2529,7 +2529,14 @@ name|source
 operator|.
 name|setText
 argument_list|(
-literal|"Error: "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Error"
+argument_list|)
+operator|+
+literal|": "
 operator|+
 name|ex
 operator|.
@@ -2538,11 +2545,15 @@ argument_list|()
 operator|+
 literal|"\n\n"
 operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Correct the entry, and "
 operator|+
 literal|"reopen editor to display/edit source."
 argument_list|)
-expr_stmt|;
+argument_list|;
 name|source
 operator|.
 name|setEditable
