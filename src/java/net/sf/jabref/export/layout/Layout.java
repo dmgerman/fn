@@ -498,7 +498,6 @@ expr_stmt|;
 comment|//System.out.println(layoutEntries[i].text);
 block|}
 block|}
-comment|//~ Methods ////////////////////////////////////////////////////////////////
 comment|/**      * Returns the processed bibtex entry. If the database argument is      * null, no string references will be resolved. Otherwise all valid      * string references will be replaced by the strings' contents. Even      * recursive string references are resolved.      */
 DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database)
 specifier|public
@@ -512,7 +511,6 @@ name|BibtexDatabase
 name|database
 parameter_list|)
 block|{
-comment|//System.out.println("LAYOUT: " + bibtex.getId());
 name|StringBuffer
 name|sb
 init|=
@@ -521,14 +519,6 @@ name|StringBuffer
 argument_list|(
 literal|100
 argument_list|)
-decl_stmt|;
-name|String
-name|fieldText
-decl_stmt|;
-name|boolean
-name|previousSkipped
-init|=
-literal|false
 decl_stmt|;
 for|for
 control|(
@@ -547,8 +537,9 @@ name|i
 operator|++
 control|)
 block|{
+name|String
 name|fieldText
-operator|=
+init|=
 name|layoutEntries
 index|[
 name|i
@@ -560,7 +551,7 @@ name|bibtex
 argument_list|,
 name|database
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|// 2005.05.05 M. Alver
 comment|// The following change means we treat null fields as "". This is to fix the
 comment|// problem of whitespace disappearing after missing fields. Hoping there are
@@ -575,98 +566,12 @@ name|fieldText
 operator|=
 literal|""
 expr_stmt|;
-comment|/*if (fieldText == null)             {                 if ((i + 1)< layoutEntries.length)                 {                     if (layoutEntries[i + 1].doLayout(bibtex, database).trim().length() == 0)                     {                         //sb.append("MISSING");                         i++;                         previousSkipped = true;                          continue;                     }                 }             }             else*/
-block|{
-comment|// if previous was skipped --> remove leading line breaks
-if|if
-condition|(
-name|previousSkipped
-condition|)
-block|{
-name|int
-name|eol
-init|=
-literal|0
-decl_stmt|;
-while|while
-condition|(
-operator|(
-name|eol
-operator|<
-name|fieldText
-operator|.
-name|length
-argument_list|()
-operator|)
-operator|&&
-operator|(
-operator|(
-name|fieldText
-operator|.
-name|charAt
-argument_list|(
-name|eol
-argument_list|)
-operator|==
-literal|'\n'
-operator|)
-operator|||
-operator|(
-name|fieldText
-operator|.
-name|charAt
-argument_list|(
-name|eol
-argument_list|)
-operator|==
-literal|'\r'
-operator|)
-operator|)
-condition|)
-block|{
-name|eol
-operator|++
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|eol
-operator|<
-name|fieldText
-operator|.
-name|length
-argument_list|()
-condition|)
-block|{
-name|sb
-operator|.
-name|append
-argument_list|(
-name|fieldText
-operator|.
-name|substring
-argument_list|(
-name|eol
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-else|else
-block|{
-comment|//System.out.println("ENTRY-BLOCK: " + layoutEntries[i].doLayout(bibtex));
 name|sb
 operator|.
 name|append
 argument_list|(
 name|fieldText
 argument_list|)
-expr_stmt|;
-block|}
-block|}
-name|previousSkipped
-operator|=
-literal|false
 expr_stmt|;
 block|}
 return|return

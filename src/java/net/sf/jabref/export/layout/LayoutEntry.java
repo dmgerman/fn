@@ -799,8 +799,6 @@ expr_stmt|;
 comment|// System.out.println(layoutEntries[i].text);
 block|}
 block|}
-comment|// ~ Methods
-comment|// ////////////////////////////////////////////////////////////////
 DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database)
 specifier|public
 name|String
@@ -813,52 +811,25 @@ name|BibtexDatabase
 name|database
 parameter_list|)
 block|{
-if|if
+switch|switch
 condition|(
 name|type
-operator|==
+condition|)
+block|{
+case|case
 name|LayoutHelper
 operator|.
 name|IS_LAYOUT_TEXT
-condition|)
-block|{
+case|:
 return|return
 name|text
 return|;
-block|}
-elseif|else
-if|if
-condition|(
-name|type
-operator|==
+case|case
 name|LayoutHelper
 operator|.
 name|IS_SIMPLE_FIELD
-condition|)
-block|{
-if|if
-condition|(
-name|text
-operator|.
-name|equals
-argument_list|(
-literal|"bibtextype"
-argument_list|)
-condition|)
-block|{
+case|:
 return|return
-name|bibtex
-operator|.
-name|getType
-argument_list|()
-operator|.
-name|getName
-argument_list|()
-return|;
-block|}
-name|String
-name|field
-init|=
 name|getField
 argument_list|(
 name|bibtex
@@ -867,44 +838,17 @@ name|text
 argument_list|,
 name|database
 argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|field
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-literal|null
 return|;
-block|}
-else|else
-block|{
-return|return
-name|field
-return|;
-block|}
-block|}
-elseif|else
-if|if
-condition|(
-operator|(
-name|type
-operator|==
+case|case
 name|LayoutHelper
 operator|.
 name|IS_FIELD_START
-operator|)
-operator|||
-operator|(
-name|type
-operator|==
+case|:
+case|case
 name|LayoutHelper
 operator|.
 name|IS_GROUP_START
-operator|)
-condition|)
+case|:
 block|{
 name|String
 name|field
@@ -918,7 +862,6 @@ argument_list|,
 name|database
 argument_list|)
 decl_stmt|;
-comment|// String field = (String) bibtex.getField(text);
 if|if
 condition|(
 operator|(
@@ -1021,7 +964,6 @@ argument_list|,
 name|database
 argument_list|)
 expr_stmt|;
-comment|// System.out.println("'" + fieldText + "'");
 if|if
 condition|(
 name|fieldText
@@ -1067,7 +1009,6 @@ operator|==
 literal|0
 condition|)
 block|{
-comment|// System.out.println("MISSING: "+bibtex);
 name|i
 operator|++
 expr_stmt|;
@@ -1183,37 +1124,25 @@ argument_list|()
 return|;
 block|}
 block|}
-elseif|else
-if|if
-condition|(
-operator|(
-name|type
-operator|==
+case|case
 name|LayoutHelper
 operator|.
 name|IS_FIELD_END
-operator|)
-operator|||
-operator|(
-name|type
-operator|==
+case|:
+case|case
 name|LayoutHelper
 operator|.
 name|IS_GROUP_END
-operator|)
-condition|)
-block|{ 		}
-elseif|else
-if|if
-condition|(
-name|type
-operator|==
+case|:
+return|return
+literal|""
+return|;
+case|case
 name|LayoutHelper
 operator|.
 name|IS_OPTION_FIELD
-condition|)
+case|:
 block|{
-comment|// System.out.println("doLayout IS_OPTION_FIELD '"+text+"'");
 name|String
 name|fieldEntry
 decl_stmt|;
@@ -1274,7 +1203,6 @@ name|database
 argument_list|)
 decl_stmt|;
 comment|// changed section end - arudert
-comment|// String field = (String) bibtex.getField(text);
 if|if
 condition|(
 name|field
@@ -1338,12 +1266,11 @@ return|return
 name|fieldEntry
 return|;
 block|}
-comment|// else if (type == LayoutHelper.IS_OPTION_FIELD_PARAM)
-comment|// {
-comment|// }
+default|default:
 return|return
 literal|""
 return|;
+block|}
 block|}
 comment|// added section - begin (arudert)
 comment|/** 	 * Do layout for general formatters (no bibtex-entry fields). 	 *  	 * @param database 	 *            Bibtex Database 	 * @return 	 */

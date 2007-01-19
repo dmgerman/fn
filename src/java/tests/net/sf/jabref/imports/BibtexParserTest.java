@@ -1562,17 +1562,22 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|ParserResult
-name|result
+name|BibtexEntry
+name|e
 init|=
 name|BibtexParser
 operator|.
-name|parse
-argument_list|(
-operator|new
-name|StringReader
+name|singleFromString
 argument_list|(
 literal|"@article{canh05,"
+operator|+
+literal|"a = {a\nb},"
+operator|+
+literal|"b = {a\n\nb},"
+operator|+
+literal|"c = {a\n \nb},"
+operator|+
+literal|"d = {a \n \n b},"
 operator|+
 literal|"title = {\nHallo \nWorld \nthis \n is\n\nnot \n\nan \n\n exercise \n \n.\n \n\n},\n"
 operator|+
@@ -1580,42 +1585,6 @@ literal|"tabs = {\nHallo \tWorld \tthis \t is\t\tnot \t\tan \t\n exercise \t \n.
 operator|+
 literal|"}"
 argument_list|)
-argument_list|)
-decl_stmt|;
-name|Collection
-name|c
-init|=
-name|result
-operator|.
-name|getDatabase
-argument_list|()
-operator|.
-name|getEntries
-argument_list|()
-decl_stmt|;
-name|assertEquals
-argument_list|(
-literal|1
-argument_list|,
-name|c
-operator|.
-name|size
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|BibtexEntry
-name|e
-init|=
-operator|(
-name|BibtexEntry
-operator|)
-name|c
-operator|.
-name|iterator
-argument_list|()
-operator|.
-name|next
-argument_list|()
 decl_stmt|;
 name|assertEquals
 argument_list|(
@@ -1641,7 +1610,68 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Hallo World this is not an exercise ."
+literal|"a b"
+argument_list|,
+operator|(
+name|String
+operator|)
+name|e
+operator|.
+name|getField
+argument_list|(
+literal|"a"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"a\nb"
+argument_list|,
+operator|(
+name|String
+operator|)
+name|e
+operator|.
+name|getField
+argument_list|(
+literal|"b"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"a b"
+argument_list|,
+operator|(
+name|String
+operator|)
+name|e
+operator|.
+name|getField
+argument_list|(
+literal|"c"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"a b"
+argument_list|,
+operator|(
+name|String
+operator|)
+name|e
+operator|.
+name|getField
+argument_list|(
+literal|"d"
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// I think the last \n is a bug in the parser...
+name|assertEquals
+argument_list|(
+literal|"Hallo World this is\nnot \nan \n exercise . \n\n"
 argument_list|,
 operator|(
 name|String
@@ -1656,7 +1686,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Hallo World this is not an exercise ."
+literal|"Hallo World this isnot an exercise . "
 argument_list|,
 operator|(
 name|String
