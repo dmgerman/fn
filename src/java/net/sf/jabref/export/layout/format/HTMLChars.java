@@ -24,11 +24,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
-operator|.
-name|layout
-operator|.
-name|*
+name|Globals
 import|;
 end_import
 
@@ -40,9 +36,17 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|export
+operator|.
+name|layout
+operator|.
+name|LayoutFormatter
 import|;
 end_import
+
+begin_comment
+comment|/**  * This formatter escapes characters so they are suitable for HTML.  *   * @version $Revision$ ($Date$)  */
+end_comment
 
 begin_class
 DECL|class|HTMLChars
@@ -66,9 +70,20 @@ name|i
 decl_stmt|;
 name|field
 operator|=
-name|firstFormat
-argument_list|(
 name|field
+operator|.
+name|replaceAll
+argument_list|(
+literal|"&|\\\\&"
+argument_list|,
+literal|"&amp;"
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"[\\n]{1,}"
+argument_list|,
+literal|"<p>"
 argument_list|)
 expr_stmt|;
 name|StringBuffer
@@ -76,9 +91,7 @@ name|sb
 init|=
 operator|new
 name|StringBuffer
-argument_list|(
-literal|""
-argument_list|)
+argument_list|()
 decl_stmt|;
 name|StringBuffer
 name|currentCommand
@@ -154,6 +167,61 @@ operator|==
 literal|'\\'
 condition|)
 block|{
+if|if
+condition|(
+name|incommand
+condition|)
+block|{
+comment|/* Close Command */
+name|String
+name|command
+init|=
+name|currentCommand
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+name|Object
+name|result
+init|=
+name|Globals
+operator|.
+name|HTMLCHARS
+operator|.
+name|get
+argument_list|(
+name|command
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|result
+operator|!=
+literal|null
+condition|)
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+operator|(
+name|String
+operator|)
+name|result
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+name|command
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 name|escaped
 operator|=
 literal|true
@@ -282,7 +350,8 @@ literal|0
 operator|)
 condition|)
 block|{
-comment|// This indicates that we are in a command of the type \^o or \~{n}
+comment|// This indicates that we are in a command of the type
+comment|// \^o or \~{n}
 if|if
 condition|(
 name|i
@@ -317,7 +386,7 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("next: "+(char)c);
+comment|// System.out.println("next: "+(char)c);
 name|String
 name|combody
 decl_stmt|;
@@ -368,7 +437,7 @@ operator|+
 literal|1
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("... "+combody);
+comment|// System.out.println("... "+combody);
 block|}
 name|Object
 name|result
@@ -408,6 +477,72 @@ name|escaped
 operator|=
 literal|false
 expr_stmt|;
+block|}
+else|else
+block|{
+comment|//	Are we already at the end of the string?
+if|if
+condition|(
+name|i
+operator|+
+literal|1
+operator|==
+name|field
+operator|.
+name|length
+argument_list|()
+condition|)
+block|{
+name|String
+name|command
+init|=
+name|currentCommand
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+name|Object
+name|result
+init|=
+name|Globals
+operator|.
+name|HTMLCHARS
+operator|.
+name|get
+argument_list|(
+name|command
+argument_list|)
+decl_stmt|;
+comment|/* If found, then use translated version. If not, 							 * then keep 							 * the text of the parameter intact. 							 */
+if|if
+condition|(
+name|result
+operator|!=
+literal|null
+condition|)
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+operator|(
+name|String
+operator|)
+name|result
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+name|command
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 block|}
@@ -451,8 +586,8 @@ literal|'{'
 condition|)
 block|{
 comment|// First test if we are already at the end of the string.
-comment|//if (i>= field.length()-1)
-comment|//  break testContent;
+comment|// if (i>= field.length()-1)
+comment|// break testContent;
 name|String
 name|command
 init|=
@@ -461,7 +596,8 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-comment|// Then test if we are dealing with a italics or bold command.
+comment|// Then test if we are dealing with a italics or bold
+comment|// command.
 comment|// If so, handle.
 if|if
 condition|(
@@ -567,7 +703,13 @@ literal|"</b>"
 argument_list|)
 expr_stmt|;
 block|}
-else|else
+elseif|else
+if|if
+condition|(
+name|c
+operator|==
+literal|'{'
+condition|)
 block|{
 name|IntAndString
 name|part
@@ -593,6 +735,112 @@ name|part
 operator|.
 name|s
 expr_stmt|;
+if|if
+condition|(
+name|argument
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// handle common case of general latex command
+name|Object
+name|result
+init|=
+name|Globals
+operator|.
+name|HTMLCHARS
+operator|.
+name|get
+argument_list|(
+name|command
+operator|+
+name|argument
+argument_list|)
+decl_stmt|;
+comment|// System.out.print("command: "+command+", arg: "+argument);
+comment|// System.out.print(", result: ");
+comment|// If found, then use translated version. If not, then keep
+comment|// the
+comment|// text of the parameter intact.
+if|if
+condition|(
+name|result
+operator|!=
+literal|null
+condition|)
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+operator|(
+name|String
+operator|)
+name|result
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+name|argument
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+else|else
+block|{
+name|Object
+name|result
+init|=
+name|Globals
+operator|.
+name|HTMLCHARS
+operator|.
+name|get
+argument_list|(
+name|command
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|result
+operator|!=
+literal|null
+condition|)
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+operator|(
+name|String
+operator|)
+name|result
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+name|command
+argument_list|)
+expr_stmt|;
+block|}
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|' '
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 elseif|else
@@ -610,73 +858,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|/* TODO: this point is reached, apparently, if a command is terminated in a              * strange way, such as with "$\omega$". Also, the command "\&" causes us              * to get here. The former issue is maybe a little difficult to address, since              * it involves the LaTeX math mode. We don't have a complete LaTeX parser, so              * maybe it's better to ignore these commands?             */
-comment|//System.err.println("Unreachable code?? '"+field+"'");
-block|}
-if|if
-condition|(
-name|argument
-operator|!=
-literal|null
-condition|)
-block|{
-comment|// handle common case of general latex command
-name|String
-name|command
-init|=
-name|currentCommand
-operator|.
-name|toString
-argument_list|()
-decl_stmt|;
-name|Object
-name|result
-init|=
-name|Globals
-operator|.
-name|HTMLCHARS
-operator|.
-name|get
-argument_list|(
-name|command
-operator|+
-name|argument
-argument_list|)
-decl_stmt|;
-comment|//System.out.print("command: "+command+", arg: "+argument);
-comment|//System.out.print(", result: ");
-comment|// If found, then use translated version. If not, then keep the
-comment|// text of the parameter intact.
-if|if
-condition|(
-name|result
-operator|!=
-literal|null
-condition|)
-block|{
-comment|//System.out.println((String)result);
-name|sb
-operator|.
-name|append
-argument_list|(
-operator|(
-name|String
-operator|)
-name|result
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-comment|//System.out.println(argument);
-name|sb
-operator|.
-name|append
-argument_list|(
-name|argument
-argument_list|)
-expr_stmt|;
-block|}
+comment|/* 					 * TODO: this point is reached, apparently, if a command is 					 * terminated in a strange way, such as with "$\omega$". 					 * Also, the command "\&" causes us to get here. The former 					 * issue is maybe a little difficult to address, since it 					 * involves the LaTeX math mode. We don't have a complete 					 * LaTeX parser, so maybe it's better to ignore these 					 * commands? 					 */
 block|}
 name|incommand
 operator|=
@@ -694,35 +876,6 @@ operator|.
 name|toString
 argument_list|()
 return|;
-comment|//field.replaceAll("\\\\emph", "").replaceAll("\\\\em", "").replaceAll("\\\\textbf", "");
-block|}
-DECL|method|firstFormat (String s)
-specifier|private
-name|String
-name|firstFormat
-parameter_list|(
-name|String
-name|s
-parameter_list|)
-block|{
-return|return
-name|s
-operator|.
-name|replaceAll
-argument_list|(
-literal|"&|\\\\&"
-argument_list|,
-literal|"&amp;"
-argument_list|)
-operator|.
-name|replaceAll
-argument_list|(
-literal|"[\\n]{1,}"
-argument_list|,
-literal|"<p>"
-argument_list|)
-return|;
-comment|//.replaceAll("--", "&mdash;");
 block|}
 DECL|method|getPart (String text, int i, boolean terminateOnEndBraceOnly)
 specifier|private
@@ -747,7 +900,6 @@ name|count
 init|=
 literal|0
 decl_stmt|;
-comment|//, i=index;
 name|StringBuffer
 name|part
 init|=
@@ -759,23 +911,15 @@ comment|// advance to first char and skip wihitespace
 name|i
 operator|++
 expr_stmt|;
-for|for
-control|(
-init|;
+while|while
+condition|(
 name|i
 operator|<
 name|text
 operator|.
 name|length
 argument_list|()
-condition|;
-operator|++
-name|i
-control|)
-block|{
-if|if
-condition|(
-operator|!
+operator|&&
 name|Character
 operator|.
 name|isWhitespace
@@ -788,22 +932,21 @@ name|i
 argument_list|)
 argument_list|)
 condition|)
-break|break;
+block|{
+name|i
+operator|++
+expr_stmt|;
 block|}
 comment|// then grab whathever is the first token (counting braces)
-for|for
-control|(
-init|;
+while|while
+condition|(
 name|i
 operator|<
 name|text
 operator|.
 name|length
 argument_list|()
-condition|;
-operator|++
-name|i
-control|)
+condition|)
 block|{
 name|c
 operator|=
@@ -834,7 +977,8 @@ block|{
 name|i
 operator|--
 expr_stmt|;
-comment|// end argument and leave whitespace for further processing
+comment|// end argument and leave whitespace for further
+comment|// processing
 break|break;
 block|}
 if|if
@@ -869,8 +1013,10 @@ operator|)
 name|c
 argument_list|)
 expr_stmt|;
+name|i
+operator|++
+expr_stmt|;
 block|}
-comment|//System.out.println("part: "+part.toString()+"\nformatted: "+format(part.toString()));
 return|return
 operator|new
 name|IntAndString

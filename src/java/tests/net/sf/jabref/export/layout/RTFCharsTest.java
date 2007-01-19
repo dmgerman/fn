@@ -130,6 +130,18 @@ literal|"h\\'allo"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"h\\u225allo"
+argument_list|,
+name|layout
+operator|.
+name|format
+argument_list|(
+literal|"h\\'allo"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|testLaTeXHighlighting ()
 specifier|public

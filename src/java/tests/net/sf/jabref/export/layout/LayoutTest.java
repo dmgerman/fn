@@ -160,6 +160,7 @@ name|LayoutTest
 extends|extends
 name|TestCase
 block|{
+comment|/** 	 * Initialize Preferences. 	 */
 DECL|method|setUp ()
 specifier|protected
 name|void
@@ -193,21 +194,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|tearDown ()
-specifier|protected
-name|void
-name|tearDown
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|super
-operator|.
-name|tearDown
-argument_list|()
-expr_stmt|;
-block|}
-comment|/* TEST DATA */
+comment|/** 	 * Return Test data. 	 */
 DECL|method|t1BibtexString ()
 specifier|public
 name|String
@@ -402,6 +389,51 @@ name|toString
 argument_list|()
 return|;
 block|}
+DECL|method|testLayoutBibtextype ()
+specifier|public
+name|void
+name|testLayoutBibtextype
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|assertEquals
+argument_list|(
+literal|"Other"
+argument_list|,
+name|layout
+argument_list|(
+literal|"\\bibtextype"
+argument_list|,
+literal|"@other{bla, author={This\nis\na\ntext}}"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Article"
+argument_list|,
+name|layout
+argument_list|(
+literal|"\\bibtextype"
+argument_list|,
+literal|"@article{bla, author={This\nis\na\ntext}}"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Misc"
+argument_list|,
+name|layout
+argument_list|(
+literal|"\\bibtextype"
+argument_list|,
+literal|"@misc{bla, author={This\nis\na\ntext}}"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|testHTMLChar ()
 specifier|public
 name|void
@@ -427,7 +459,6 @@ argument_list|,
 name|layoutText
 argument_list|)
 expr_stmt|;
-comment|// This fails!
 name|layoutText
 operator|=
 name|layout
@@ -471,71 +502,15 @@ throws|throws
 name|Exception
 block|{
 name|String
-name|layoutFile
-init|=
-literal|"<font face=\"arial\">\\begin{abstract}<BR><BR><b>Abstract:</b> \\format[HTMLChars]{\\abstract} \\end{abstract}</font>"
-decl_stmt|;
-name|StringReader
-name|sr
-init|=
-operator|new
-name|StringReader
-argument_list|(
-name|layoutFile
-operator|.
-name|replaceAll
-argument_list|(
-literal|"__NEWLINE__"
-argument_list|,
-literal|"\n"
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|Layout
-name|layout
-init|=
-operator|new
-name|LayoutHelper
-argument_list|(
-name|sr
-argument_list|)
-operator|.
-name|getLayoutFromText
-argument_list|(
-name|Globals
-operator|.
-name|FORMATTER_PACKAGE
-argument_list|)
-decl_stmt|;
-name|StringBuffer
-name|sb
-init|=
-operator|new
-name|StringBuffer
-argument_list|()
-decl_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-name|layout
-operator|.
-name|doLayout
-argument_list|(
-name|t1BibtexEntry
-argument_list|()
-argument_list|,
-literal|null
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|String
 name|layoutText
 init|=
-name|sb
-operator|.
-name|toString
+name|layout
+argument_list|(
+literal|"<font face=\"arial\">\\begin{abstract}<BR><BR><b>Abstract:</b> \\format[HTMLChars]{\\abstract}\\end{abstract}</font>"
+argument_list|,
+name|t1BibtexString
 argument_list|()
+argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(

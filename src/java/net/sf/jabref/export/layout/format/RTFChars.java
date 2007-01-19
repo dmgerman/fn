@@ -701,7 +701,6 @@ name|count
 init|=
 literal|0
 decl_stmt|;
-comment|// , i=index;
 name|StringBuffer
 name|part
 init|=
@@ -769,8 +768,6 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
-comment|// System.out.println("part: "+part.toString()+"\nformatted:
-comment|// "+format(part.toString()));
 return|return
 operator|new
 name|IntAndString
