@@ -497,7 +497,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|// Our strategy is to look for the "PY<year>" line.
+comment|// Our strategy is to look for the "@<type>    {" line.
 name|BufferedReader
 name|in
 init|=
@@ -507,7 +507,6 @@ argument_list|(
 name|inOrig
 argument_list|)
 decl_stmt|;
-comment|// Pattern pat1 = Pattern.compile("PY: \\d{4}");
 name|Pattern
 name|pat1
 init|=
