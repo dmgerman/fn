@@ -1981,12 +1981,23 @@ return|return
 literal|true
 return|;
 block|}
+DECL|method|getTabName ()
+specifier|public
+name|String
+name|getTabName
+parameter_list|()
+block|{
+return|return
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Entry table"
+argument_list|)
+return|;
+block|}
 block|}
 end_class
-
-begin_comment
-comment|/*  * Boolean[] sel = new Boolean[GUIGlobals.ALL_FIELDS.length]; boolean found;  * _choices = GUIGlobals.ALL_FIELDS; _sel = sel; String[] columns =  * prefs.getStringArray("columnNames"); for (int i=0; i<_choices.length; i++) {  * found = false; for (int j=0; j<columns.length; j++) if  * (columns[j].equals(_choices[i])) found = true; if (found) sel[i] = new  * Boolean(true); else sel[i] = new Boolean(false); }  *   * TableModel tm = new AbstractTableModel() { public int getRowCount() { return  * (_choices.length-1)/2; } public int getColumnCount() { return 4; } public  * Object getValueAt(int row, int column) { switch (column) { case 0: return  * _choices[row]; case 1: return _sel[row]; case 2: return  * _choices[getRowCount()+row]; case 3: return _sel[getRowCount()+row]; } return  * null; // Unreachable. } public Class getColumnClass(int column) { if ((column ==  * 0) || (column == 2)) return String.class; else return Boolean.class; } public  * boolean isCellEditable(int row, int col) { if ((col == 1) || (col == 3))  * return true; else return false; } public void setValueAt(Object aValue, int  * rowIndex, int columnIndex) { if (columnIndex == 1) _sel[rowIndex] =  * (Boolean)aValue; if (columnIndex == 3) _sel[getRowCount()+rowIndex] =  * (Boolean)aValue; } };  *   * JTable table = new JTable(tm); table.setRowSelectionAllowed(false);  * table.setColumnSelectionAllowed(false);  * //table.getInputMap().put(GUIGlobals.exitDialog, "close");  * //table.getActionMap().put("close", new CancelAction()); JPanel tablePanel =  * new JPanel(), innerTablePanel = new JPanel();  *   * table.setShowVerticalLines(false);  * innerTablePanel.setBorder(BorderFactory.createEtchedBorder());  * //innerTablePanel.setBorder(BorderFactory.createLoweredBevelBorder());  * innerTablePanel.add(table); tablePanel.add(innerTablePanel);  *   *   * TableColumnModel cm = table.getColumnModel();  * cm.getColumn(0).setPreferredWidth(90); cm.getColumn(1).setPreferredWidth(25);  * cm.getColumn(2).setPreferredWidth(90); cm.getColumn(3).setPreferredWidth(25);  */
-end_comment
 
 end_unit
 

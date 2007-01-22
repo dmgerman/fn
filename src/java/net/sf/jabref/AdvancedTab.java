@@ -1109,9 +1109,6 @@ parameter_list|()
 block|{
 try|try
 block|{
-name|int
-name|size
-init|=
 name|Integer
 operator|.
 name|parseInt
@@ -1121,7 +1118,7 @@ operator|.
 name|getText
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 return|return
 literal|true
 return|;
@@ -1173,6 +1170,16 @@ return|return
 literal|false
 return|;
 block|}
+block|}
+DECL|method|getTabName ()
+specifier|public
+name|String
+name|getTabName
+parameter_list|()
+block|{
+return|return
+literal|"Advanced"
+return|;
 block|}
 block|}
 end_class

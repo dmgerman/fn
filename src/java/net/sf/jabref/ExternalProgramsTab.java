@@ -64,6 +64,10 @@ name|File
 import|;
 end_import
 
+begin_comment
+comment|/**  *   *   *  @version $Revision$ ($Date$)  *  @deprecated Use ExternalTab instead.  */
+end_comment
+
 begin_class
 DECL|class|ExternalProgramsTab
 class|class
@@ -822,6 +826,21 @@ parameter_list|()
 block|{
 return|return
 literal|true
+return|;
+block|}
+DECL|method|getTabName ()
+specifier|public
+name|String
+name|getTabName
+parameter_list|()
+block|{
+return|return
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"External programs"
+argument_list|)
 return|;
 block|}
 block|}

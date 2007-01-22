@@ -2710,6 +2710,21 @@ return|return
 literal|true
 return|;
 block|}
+DECL|method|getTabName ()
+specifier|public
+name|String
+name|getTabName
+parameter_list|()
+block|{
+return|return
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"General"
+argument_list|)
+return|;
+block|}
 block|}
 end_class
 

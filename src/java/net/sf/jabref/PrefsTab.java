@@ -10,6 +10,10 @@ name|jabref
 package|;
 end_package
 
+begin_comment
+comment|/**  * A prefsTab is a component displayed in the PreferenceDialog.  *   * It needs to extend from Component.  *   * @author $Author$  * @version $Revision$ ($Date$)  *  */
+end_comment
+
 begin_interface
 DECL|interface|PrefsTab
 specifier|public
@@ -35,6 +39,13 @@ DECL|method|readyToClose ()
 specifier|public
 name|boolean
 name|readyToClose
+parameter_list|()
+function_decl|;
+comment|/**      * Should return the localized identifier to use for the tab.      *       * @return Identifier for the tab (for instance "General", "Appearance" or "External Files").      */
+DECL|method|getTabName ()
+specifier|public
+name|String
+name|getTabName
 parameter_list|()
 function_decl|;
 block|}

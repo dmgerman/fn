@@ -499,7 +499,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * XMPUtils provide support for reading and writing BibTex data as XMP-Metadata  * in PDF-documents.  *   * @author Christopher Oezbek<oezi@oezi.de>  *   * TODO:  *   * Also read information from Dublin Core and Document Information if BibtexXMP  * is missing.  *   * Also write information as Dublin Core and Document Information.  *   * Synchronization  *   * @version $Revision$ ($Date$)  */
+comment|/**  * XMPUtils provide support for reading and writing BibTex data as XMP-Metadata  * in PDF-documents.  *   * @author Christopher Oezbek<oezi@oezi.de>  *   * TODO:   *   * Synchronization  *   * @version $Revision$ ($Date$)  */
 end_comment
 
 begin_class

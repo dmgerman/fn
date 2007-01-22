@@ -2813,9 +2813,9 @@ operator|=
 operator|new
 name|PrefsDialog3
 argument_list|(
-name|ths
-argument_list|,
-name|prefs
+name|JabRefFrame
+operator|.
+name|this
 argument_list|)
 expr_stmt|;
 name|Util
@@ -2824,7 +2824,9 @@ name|placeDialog
 argument_list|(
 name|prefsDialog
 argument_list|,
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|)
 expr_stmt|;
 block|}

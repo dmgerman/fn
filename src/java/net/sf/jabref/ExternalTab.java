@@ -50,16 +50,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|Action
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|BorderFactory
 import|;
 end_import
@@ -160,8 +150,6 @@ DECL|field|_frame
 name|JabRefFrame
 name|_frame
 decl_stmt|;
-comment|// private JComboBox language = new
-comment|// JComboBox(GUIGlobals.LANGUAGES.keySet().toArray());
 DECL|field|pdfDir
 DECL|field|regExpTextField
 DECL|field|psDir
@@ -1447,6 +1435,21 @@ parameter_list|()
 block|{
 return|return
 literal|true
+return|;
+block|}
+DECL|method|getTabName ()
+specifier|public
+name|String
+name|getTabName
+parameter_list|()
+block|{
+return|return
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"External programs"
+argument_list|)
 return|;
 block|}
 block|}
