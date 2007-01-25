@@ -2213,6 +2213,20 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"sidePaneWidth"
+argument_list|,
+operator|new
+name|Integer
+argument_list|(
+operator|-
+literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|//defaults.put("tempDir", System.getProperty("java.io.tmpdir"));
 comment|//Util.pr(System.getProperty("java.io.tempdir"));
 comment|//defaults.put("keyPattern", new LabelPattern(KEY_PATTERN));
