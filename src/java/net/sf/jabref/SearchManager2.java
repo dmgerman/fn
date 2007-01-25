@@ -1383,13 +1383,9 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|add
+name|setContent
 argument_list|(
 name|main
-argument_list|,
-name|BorderLayout
-operator|.
-name|CENTER
 argument_list|)
 expr_stmt|;
 name|searchField

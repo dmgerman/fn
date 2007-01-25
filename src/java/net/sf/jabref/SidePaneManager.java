@@ -213,6 +213,13 @@ operator|new
 name|SidePane
 argument_list|()
 expr_stmt|;
+name|sidep
+operator|.
+name|setVisible
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getPanel ()
 specifier|public
@@ -724,6 +731,7 @@ condition|(
 operator|!
 name|wasVisible
 condition|)
+block|{
 name|frame
 operator|.
 name|contentPane
@@ -739,6 +747,7 @@ operator|.
 name|width
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 name|sidep

@@ -2529,15 +2529,6 @@ name|source
 operator|.
 name|setText
 argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Error"
-argument_list|)
-operator|+
-literal|": "
-operator|+
 name|ex
 operator|.
 name|getMessage
