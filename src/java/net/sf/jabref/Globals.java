@@ -3065,7 +3065,7 @@ name|put
 argument_list|(
 literal|"O"
 argument_list|,
-literal|"&OSlash;"
+literal|"&Oslash;"
 argument_list|)
 expr_stmt|;
 comment|// #216
@@ -6919,7 +6919,7 @@ argument_list|,
 literal|"\\u216O"
 argument_list|)
 expr_stmt|;
-comment|// "OSlash"
+comment|// "Oslash"
 comment|// RTFCHARS.put("`U", "\\u217"); // "Ugrave" exists in standard
 comment|// codepage
 name|RTFCHARS
