@@ -1236,7 +1236,12 @@ name|getTabName
 parameter_list|()
 block|{
 return|return
-literal|"XMP Metadata"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"XMP metadata"
+argument_list|)
 return|;
 block|}
 block|}

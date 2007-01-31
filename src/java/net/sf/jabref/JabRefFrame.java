@@ -5757,6 +5757,23 @@ argument_list|(
 name|unabbreviate
 argument_list|)
 expr_stmt|;
+comment|// TODO: Temporary for 2.2 release: we should perhaps find a better solution:
+name|tools
+operator|.
+name|addSeparator
+argument_list|()
+expr_stmt|;
+name|tools
+operator|.
+name|add
+argument_list|(
+operator|new
+name|ExpandEndnoteFilters
+argument_list|(
+name|ths
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|mb
 operator|.
 name|add

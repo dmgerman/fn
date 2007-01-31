@@ -1178,7 +1178,12 @@ name|getTabName
 parameter_list|()
 block|{
 return|return
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Advanced"
+argument_list|)
 return|;
 block|}
 block|}

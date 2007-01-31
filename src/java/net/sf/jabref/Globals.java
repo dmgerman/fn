@@ -1503,9 +1503,8 @@ name|translation
 operator|=
 name|key
 expr_stmt|;
-comment|// System.err.println("Warning: could not get menu item translation
-comment|// for \""
-comment|// + key + "\"");
+comment|//System.err.println("Warning: could not get menu item translation for \""
+comment|//+ key + "\"");
 block|}
 if|if
 condition|(

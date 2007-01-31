@@ -127,6 +127,7 @@ argument_list|(
 name|filename
 argument_list|)
 expr_stmt|;
+comment|//System.out.println(filename+"\n"+resource);
 name|this
 operator|.
 name|parent
