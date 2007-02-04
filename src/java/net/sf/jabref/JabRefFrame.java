@@ -22,6 +22,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|export
+operator|.
+name|SaveAllAction
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|*
@@ -839,6 +853,15 @@ name|getKey
 argument_list|(
 literal|"Save database as ..."
 argument_list|)
+argument_list|)
+decl_stmt|,
+DECL|field|saveAll
+name|saveAll
+init|=
+operator|new
+name|SaveAllAction
+argument_list|(
+name|ths
 argument_list|)
 decl_stmt|,
 DECL|field|saveSelectedAs
@@ -4112,6 +4135,7 @@ expr_stmt|;
 block|}
 comment|/**    * Returns the indexed BasePanel.    * @param i Index of base    */
 DECL|method|baseAt (int i)
+specifier|public
 name|BasePanel
 name|baseAt
 parameter_list|(
@@ -5193,6 +5217,13 @@ name|file
 operator|.
 name|add
 argument_list|(
+name|saveAll
+argument_list|)
+expr_stmt|;
+name|file
+operator|.
+name|add
+argument_list|(
 name|saveSelectedAs
 argument_list|)
 expr_stmt|;
@@ -6134,6 +6165,13 @@ argument_list|)
 expr_stmt|;
 name|tlb
 operator|.
+name|addAction
+argument_list|(
+name|saveAll
+argument_list|)
+expr_stmt|;
+name|tlb
+operator|.
 name|addSeparator
 argument_list|()
 expr_stmt|;
@@ -6884,6 +6922,8 @@ block|,
 name|exportSelected
 block|,
 name|importCurrent
+block|,
+name|saveAll
 block|}
 argument_list|)
 argument_list|)

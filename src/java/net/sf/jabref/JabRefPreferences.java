@@ -4161,6 +4161,15 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
+literal|"Save all"
+argument_list|,
+literal|"ctrl alt S"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
 literal|"Close database"
 argument_list|,
 literal|"ctrl W"
