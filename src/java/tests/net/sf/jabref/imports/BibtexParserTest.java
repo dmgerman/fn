@@ -266,15 +266,12 @@ parameter_list|()
 block|{
 try|try
 block|{
-name|BibtexParser
-name|p
-init|=
 operator|new
 name|BibtexParser
 argument_list|(
 literal|null
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|fail
 argument_list|(
 literal|"Should not accept null."

@@ -70,7 +70,7 @@ name|suite
 operator|.
 name|addTestSuite
 argument_list|(
-name|BibtexParserTest
+name|IsiImporterTest
 operator|.
 name|class
 argument_list|)
@@ -79,7 +79,16 @@ name|suite
 operator|.
 name|addTestSuite
 argument_list|(
-name|IsiImporterTest
+name|CopacImporterTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|BibtexParserTest
 operator|.
 name|class
 argument_list|)

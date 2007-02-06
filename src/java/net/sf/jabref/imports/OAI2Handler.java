@@ -220,7 +220,7 @@ name|SAXException
 block|{
 if|if
 condition|(
-name|localName
+name|qName
 operator|.
 name|equals
 argument_list|(
@@ -240,7 +240,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|localName
+name|qName
 operator|.
 name|equals
 argument_list|(
@@ -260,7 +260,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|localName
+name|qName
 operator|.
 name|equals
 argument_list|(
@@ -280,7 +280,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|localName
+name|qName
 operator|.
 name|equals
 argument_list|(
@@ -300,7 +300,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|localName
+name|qName
 operator|.
 name|equals
 argument_list|(
@@ -320,7 +320,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|localName
+name|qName
 operator|.
 name|equals
 argument_list|(
@@ -340,7 +340,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|localName
+name|qName
 operator|.
 name|equals
 argument_list|(
@@ -360,7 +360,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|localName
+name|qName
 operator|.
 name|equals
 argument_list|(
@@ -380,7 +380,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|localName
+name|qName
 operator|.
 name|equals
 argument_list|(
@@ -400,7 +400,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|localName
+name|qName
 operator|.
 name|equals
 argument_list|(
@@ -420,7 +420,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|localName
+name|qName
 operator|.
 name|equals
 argument_list|(
@@ -457,7 +457,7 @@ name|SAXException
 block|{
 if|if
 condition|(
-name|localName
+name|qName
 operator|.
 name|equals
 argument_list|(
