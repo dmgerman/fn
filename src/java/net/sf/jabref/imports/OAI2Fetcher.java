@@ -1017,7 +1017,12 @@ name|lang
 argument_list|(
 literal|"An SAXException ocurred while parsing '%0':"
 argument_list|,
+operator|new
+name|String
+index|[]
+block|{
 name|url
+block|}
 argument_list|)
 operator|+
 literal|"\n\n"
@@ -1059,7 +1064,12 @@ name|lang
 argument_list|(
 literal|"An Error occurred while fetching from OAI2 source (%0):"
 argument_list|,
+operator|new
+name|String
+index|[]
+block|{
 name|url
+block|}
 argument_list|)
 operator|+
 literal|"\n\n"

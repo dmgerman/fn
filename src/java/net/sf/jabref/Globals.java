@@ -1083,7 +1083,6 @@ name|messages
 operator|!=
 literal|null
 condition|)
-block|{
 name|translation
 operator|=
 name|Globals
@@ -1103,20 +1102,24 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 catch|catch
 parameter_list|(
 name|MissingResourceException
 name|ex
 parameter_list|)
 block|{
+comment|//logger("Warning: could not get translation for \"" + key + "\"");
+block|}
+if|if
+condition|(
+name|translation
+operator|==
+literal|null
+condition|)
 name|translation
 operator|=
 name|key
 expr_stmt|;
-comment|// Thread.dumpStack(); // For debugging
-comment|//logger("Warning: could not get translation for \"" + key + "\"");
-block|}
 if|if
 condition|(
 operator|(
