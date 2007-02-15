@@ -86,6 +86,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|net
+operator|.
+name|ConnectException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|io
 operator|.
 name|*
@@ -858,6 +868,38 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
+name|ConnectException
+name|e
+parameter_list|)
+block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|frame
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Connection to IEEEXplore failed"
+argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Search IEEExplore"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
 name|IOException
 name|e
 parameter_list|)
@@ -867,6 +909,15 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
+block|}
+finally|finally
+block|{
+name|frame
+operator|.
+name|unblock
+argument_list|()
+expr_stmt|;
+comment|// We call this to ensure no lockup.
 block|}
 block|}
 DECL|method|makeUrl (int startIndex)
