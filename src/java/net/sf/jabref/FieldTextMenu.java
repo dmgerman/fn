@@ -190,7 +190,15 @@ operator|.
 name|addSeparator
 argument_list|()
 expr_stmt|;
-comment|//inputMenu.add(new ReplaceAction());
+name|inputMenu
+operator|.
+name|add
+argument_list|(
+operator|new
+name|ReplaceAction
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|inputMenu
 operator|.
 name|add

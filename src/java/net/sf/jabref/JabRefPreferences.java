@@ -273,7 +273,7 @@ specifier|public
 name|CustomExportList
 name|customExports
 decl_stmt|;
-comment|/** Set with all custom {@link ImportFormat}s */
+comment|/** Set with all custom {@link net.sf.jabref.imports.ImportFormat}s */
 DECL|field|customImports
 specifier|public
 name|CustomImportList
@@ -1168,18 +1168,9 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-literal|"autoCompFields"
+literal|"autoCompleteFields"
 argument_list|,
-operator|new
-name|byte
-index|[]
-block|{
-literal|0
-block|,
-literal|1
-block|,
-literal|28
-block|}
+literal|"author;editor;keywords"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -2227,6 +2218,34 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"importInspectionDialogWidth"
+argument_list|,
+operator|new
+name|Integer
+argument_list|(
+literal|650
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"importInspectionDialogHeight"
+argument_list|,
+operator|new
+name|Integer
+argument_list|(
+literal|650
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//defaults.put("autoRemoveExactDuplicates", Boolean.FALSE);
+comment|//defaults.put("confirmAutoRemoveExactDuplicates", Boolean.TRUE);
 comment|//defaults.put("tempDir", System.getProperty("java.io.tmpdir"));
 comment|//Util.pr(System.getProperty("java.io.tempdir"));
 comment|//defaults.put("keyPattern", new LabelPattern(KEY_PATTERN));
@@ -3250,7 +3269,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Looks up a color definition in preferences, and returns an array containing the RGB values.      * @param key The key for this setting.      * @return The RGB values corresponding to this color setting.      */
+comment|/**      * Looks up a color definition in preferences, and returns an array containing the RGB values.      * @param value The key for this setting.      * @return The RGB values corresponding to this color setting.      */
 DECL|method|getRgb (String value)
 specifier|public
 name|int

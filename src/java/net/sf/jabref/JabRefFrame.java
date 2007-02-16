@@ -1584,17 +1584,7 @@ argument_list|,
 literal|"Find duplicates"
 argument_list|)
 decl_stmt|,
-DECL|field|strictDupliCheck
-name|strictDupliCheck
-init|=
-operator|new
-name|GeneralAction
-argument_list|(
-literal|"strictDupliCheck"
-argument_list|,
-literal|"Find and remove exact duplicates"
-argument_list|)
-decl_stmt|,
+comment|//strictDupliCheck = new GeneralAction("strictDupliCheck", "Find and remove exact duplicates"),
 DECL|field|plainTextImport
 name|plainTextImport
 init|=
@@ -5669,13 +5659,7 @@ argument_list|(
 name|dupliCheck
 argument_list|)
 expr_stmt|;
-name|checkAndFix
-operator|.
-name|add
-argument_list|(
-name|strictDupliCheck
-argument_list|)
-expr_stmt|;
+comment|//checkAndFix.add(strictDupliCheck);
 name|checkAndFix
 operator|.
 name|add
@@ -6873,8 +6857,7 @@ name|togglePreview
 block|,
 name|dupliCheck
 block|,
-name|strictDupliCheck
-block|,
+comment|/*strictDupliCheck,*/
 name|highlightAll
 block|,
 name|highlightAny
@@ -10249,7 +10232,7 @@ argument_list|)
 expr_stmt|;
 comment|//getGlassPane().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 block|}
-comment|/**      * This method reverts the cursor to normal, and stops blocking input to the JFrame's contents.      */
+comment|/**      * This method reverts the cursor to normal, and stops blocking input to the JFrame's contents.      * There are no adverse effects of calling this method redundantly.      */
 DECL|method|unblock ()
 specifier|public
 name|void

@@ -154,6 +154,12 @@ name|boolean
 name|enabled
 parameter_list|)
 function_decl|;
+DECL|method|updateFont ()
+specifier|public
+name|void
+name|updateFont
+parameter_list|()
+function_decl|;
 comment|/** 	 * paste text into component, it should also take some selected text into 	 * account 	 */
 DECL|method|paste (String textToInsert)
 specifier|public

@@ -18,6 +18,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|awt
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|io
 operator|.
 name|*
@@ -110,6 +120,15 @@ name|JabRefFileChooser
 extends|extends
 name|JFileChooser
 block|{
+comment|// Remember size at previous use, so the user doesn't need to resize every time:
+DECL|field|lastSize
+specifier|private
+specifier|static
+name|Dimension
+name|lastSize
+init|=
+literal|null
+decl_stmt|;
 DECL|method|JabRefFileChooser ()
 specifier|public
 name|JabRefFileChooser
@@ -133,6 +152,8 @@ name|file
 argument_list|)
 expr_stmt|;
 block|}
+comment|/*public int showOpenDialog(Component parent) throws HeadlessException {         if (lastSize != null) {             setSize(lastSize);             System.out.println("Setting size: "+lastSize);         }         int answer = super.showOpenDialog(parent);         lastSize = getSize();         return answer;     }*/
+comment|/*public int showSaveDialog(Component parent) throws HeadlessException {         if (lastSize != null) {             setSize(lastSize);             System.out.println("Setting size: "+lastSize);         }         int answer = super.showSaveDialog(parent);         lastSize = getSize();         return answer;     }*/
 comment|//========================================================
 comment|//
 comment|//========================================================

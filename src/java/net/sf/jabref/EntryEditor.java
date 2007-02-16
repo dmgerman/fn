@@ -771,6 +771,8 @@ operator|=
 operator|new
 name|EntryEditorTab
 argument_list|(
+name|panel
+argument_list|,
 name|fieldList
 argument_list|,
 name|this
@@ -851,6 +853,8 @@ operator|=
 operator|new
 name|EntryEditorTab
 argument_list|(
+name|panel
+argument_list|,
 name|java
 operator|.
 name|util
@@ -950,6 +954,8 @@ init|=
 operator|new
 name|EntryEditorTab
 argument_list|(
+name|panel
+argument_list|,
 name|tabList
 operator|.
 name|getTabFields

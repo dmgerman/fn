@@ -111,6 +111,9 @@ argument_list|(
 name|content
 argument_list|)
 expr_stmt|;
+name|updateFont
+argument_list|()
+expr_stmt|;
 comment|// Add the global focus listener, so a menu item can see if this field
 comment|// was focused when
 comment|// an action was called.
@@ -272,6 +275,20 @@ block|{
 return|return
 name|this
 return|;
+block|}
+DECL|method|updateFont ()
+specifier|public
+name|void
+name|updateFont
+parameter_list|()
+block|{
+name|setFont
+argument_list|(
+name|GUIGlobals
+operator|.
+name|CURRENTFONT
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|paint (Graphics g)
 specifier|public

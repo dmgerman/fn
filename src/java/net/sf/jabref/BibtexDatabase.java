@@ -110,12 +110,6 @@ operator|new
 name|Vector
 argument_list|()
 decl_stmt|;
-DECL|field|_autoCompleters
-name|Hashtable
-name|_autoCompleters
-init|=
-literal|null
-decl_stmt|;
 DECL|field|changeListeners
 name|Set
 name|changeListeners
@@ -770,10 +764,6 @@ argument_list|(
 name|listener
 argument_list|)
 expr_stmt|;
-comment|// Possibly add a FieldChangeListener, which is there to add
-comment|// new words to the autocompleter's dictionary. In case the
-comment|// entry is non-empty (pasted), update completers.
-comment|/*if (_autoCompleters != null) {             entry.addPropertyChangeListener(new FieldChangeListener                                             (_autoCompleters, entry));             Util.updateCompletersForEntry(_autoCompleters,                                           entry);         }         */
 name|_entries
 operator|.
 name|put
@@ -2125,7 +2115,6 @@ name|l
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*     public void setCompleters(Hashtable autoCompleters) {         _autoCompleters = autoCompleters;          for (Iterator i=getKeySet().iterator(); i.hasNext();) {             BibtexEntry be = getEntryById((String)(i.next()));             be.addPropertyChangeListener(new FieldChangeListener                                          (autoCompleters, be));              Util.updateCompletersForEntry(autoCompleters, be);         }         }*/
 block|}
 end_class
 
