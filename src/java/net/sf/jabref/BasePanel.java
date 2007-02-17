@@ -8973,6 +8973,16 @@ name|repaint
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|getAutoCompleters ()
+specifier|public
+name|HashMap
+name|getAutoCompleters
+parameter_list|()
+block|{
+return|return
+name|autoCompleters
+return|;
+block|}
 DECL|method|getAutoCompleter (String fieldName)
 specifier|public
 name|AutoCompleter

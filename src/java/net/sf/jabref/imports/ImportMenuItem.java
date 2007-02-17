@@ -982,6 +982,19 @@ argument_list|)
 expr_stmt|;
 comment|//System.out.println("gen:"+entry.getCiteKey());
 block|}
+comment|// Let the autocompleters, if any, harvest words from the entry:
+name|Util
+operator|.
+name|updateCompletersForEntry
+argument_list|(
+name|panel
+operator|.
+name|getAutoCompleters
+argument_list|()
+argument_list|,
+name|entry
+argument_list|)
+expr_stmt|;
 name|ce
 operator|.
 name|addEdit
