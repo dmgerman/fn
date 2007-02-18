@@ -1170,7 +1170,7 @@ name|put
 argument_list|(
 literal|"autoCompleteFields"
 argument_list|,
-literal|"author;editor;journal;publisher;keywords"
+literal|"author;editor;title;journal;publisher;keywords"
 argument_list|)
 expr_stmt|;
 name|defaults
