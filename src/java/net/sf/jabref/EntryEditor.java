@@ -262,6 +262,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|AutoCompleter
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|jgoodies
@@ -5248,6 +5262,33 @@ argument_list|(
 name|GUIGlobals
 operator|.
 name|validFieldBackground
+argument_list|)
+expr_stmt|;
+comment|// See if we need to update an AutoCompleter instance:
+name|AutoCompleter
+name|aComp
+init|=
+name|panel
+operator|.
+name|getAutoCompleter
+argument_list|(
+name|fe
+operator|.
+name|getFieldName
+argument_list|()
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|aComp
+operator|!=
+literal|null
+condition|)
+name|aComp
+operator|.
+name|addAll
+argument_list|(
+name|toSet
 argument_list|)
 expr_stmt|;
 comment|// Add an UndoableFieldChange to the baseframe's
