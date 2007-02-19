@@ -100,7 +100,15 @@ name|boolean
 name|nameField
 init|=
 literal|false
+decl_stmt|,
+comment|// Attempt to store entire names?
+DECL|field|entireField
+name|entireField
+init|=
+literal|false
 decl_stmt|;
+comment|// Set to true if the entire field should be stored
+comment|// suitable e.g. for journal or publisher fields.
 DECL|method|AutoCompleter (String fieldName)
 specifier|public
 name|AutoCompleter
@@ -126,6 +134,27 @@ literal|"editor"
 argument_list|)
 condition|)
 name|nameField
+operator|=
+literal|true
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|fieldName
+operator|.
+name|equals
+argument_list|(
+literal|"journal"
+argument_list|)
+operator|||
+name|fieldName
+operator|.
+name|equals
+argument_list|(
+literal|"publisher"
+argument_list|)
+condition|)
+name|entireField
 operator|=
 literal|true
 expr_stmt|;
@@ -242,6 +271,24 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+elseif|else
+if|if
+condition|(
+name|entireField
+condition|)
+block|{
+name|addWord
+argument_list|(
+name|s
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|trim
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
