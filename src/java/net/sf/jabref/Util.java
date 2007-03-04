@@ -3364,7 +3364,7 @@ argument_list|)
 decl_stmt|;
 block|}
 comment|/** 	 * Open an external file, attempting to use the correct viewer for it. 	 *  	 * @param metaData 	 *            The MetaData for the database this file belongs to. 	 * @param link 	 *            The file name. 	 */
-DECL|method|openExternalFileAnyFormat (MetaData metaData, String link)
+DECL|method|openExternalFileAnyFormat (MetaData metaData, String link, ExternalFileType fileType)
 specifier|public
 specifier|static
 name|void
@@ -3375,6 +3375,9 @@ name|metaData
 parameter_list|,
 name|String
 name|link
+parameter_list|,
+name|ExternalFileType
+name|fileType
 parameter_list|)
 throws|throws
 name|IOException
@@ -3448,19 +3451,6 @@ else|:
 literal|null
 decl_stmt|;
 comment|/* 		 * if ((extension == null) || (extension.length() == 0)) { // No 		 * extension. What to do? throw new IOException(Globals.lang("No file 		 * extension. Could not find viewer for file.")); } 		 */
-comment|// Now we know the extension, check if it is one we know about:
-name|ExternalFileType
-name|fileType
-init|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getExternalFileType
-argument_list|(
-name|extension
-argument_list|)
-decl_stmt|;
 comment|// Find the default directory for this field type, if any:
 name|String
 name|dir
@@ -6354,18 +6344,22 @@ operator|.
 name|getRequiredFields
 argument_list|()
 decl_stmt|;
+name|float
+name|req
+decl_stmt|;
 if|if
 condition|(
 name|fields
 operator|==
 literal|null
 condition|)
-return|return
-literal|false
-return|;
-name|float
 name|req
-init|=
+operator|=
+literal|1
+expr_stmt|;
+else|else
+name|req
+operator|=
 name|compareFieldSet
 argument_list|(
 name|fields
@@ -6374,7 +6368,7 @@ name|one
 argument_list|,
 name|two
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|fields
 operator|=
 name|one

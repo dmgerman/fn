@@ -199,6 +199,15 @@ name|ReplaceAction
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|myFieldName
+operator|.
+name|getTextComponent
+argument_list|()
+operator|instanceof
+name|JTextComponent
+condition|)
 name|inputMenu
 operator|.
 name|add

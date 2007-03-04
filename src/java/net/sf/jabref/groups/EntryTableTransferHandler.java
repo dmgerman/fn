@@ -1415,7 +1415,7 @@ name|Globals
 operator|.
 name|prefs
 operator|.
-name|getExternalFileType
+name|getExternalFileTypeByExt
 argument_list|(
 name|extension
 argument_list|)

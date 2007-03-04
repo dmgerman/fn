@@ -14,6 +14,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|net
@@ -31,6 +41,8 @@ DECL|class|ExternalFileType
 specifier|public
 class|class
 name|ExternalFileType
+implements|implements
+name|Comparable
 block|{
 DECL|field|name
 DECL|field|extension
@@ -45,10 +57,10 @@ name|openWith
 decl_stmt|;
 DECL|field|icon
 specifier|protected
-name|URL
+name|ImageIcon
 name|icon
 decl_stmt|;
-DECL|method|ExternalFileType (String name, String extension, String openWith, URL icon)
+DECL|method|ExternalFileType (String name, String extension, String openWith, ImageIcon icon)
 specifier|public
 name|ExternalFileType
 parameter_list|(
@@ -61,7 +73,7 @@ parameter_list|,
 name|String
 name|openWith
 parameter_list|,
-name|URL
+name|ImageIcon
 name|icon
 parameter_list|)
 block|{
@@ -165,7 +177,7 @@ expr_stmt|;
 block|}
 DECL|method|getIcon ()
 specifier|public
-name|URL
+name|ImageIcon
 name|getIcon
 parameter_list|()
 block|{
@@ -173,12 +185,12 @@ return|return
 name|icon
 return|;
 block|}
-DECL|method|setIcon (URL icon)
+DECL|method|setIcon (ImageIcon icon)
 specifier|public
 name|void
 name|setIcon
 parameter_list|(
-name|URL
+name|ImageIcon
 name|icon
 parameter_list|)
 block|{
@@ -188,6 +200,44 @@ name|icon
 operator|=
 name|icon
 expr_stmt|;
+block|}
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|getName
+argument_list|()
+return|;
+block|}
+DECL|method|compareTo (Object o)
+specifier|public
+name|int
+name|compareTo
+parameter_list|(
+name|Object
+name|o
+parameter_list|)
+block|{
+return|return
+name|getName
+argument_list|()
+operator|.
+name|compareTo
+argument_list|(
+operator|(
+operator|(
+name|ExternalFileType
+operator|)
+name|o
+operator|)
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+return|;
 block|}
 block|}
 end_class

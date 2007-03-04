@@ -899,6 +899,32 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//FIELD_EXTRAS.put("keywords", "selector");
+name|dummy
+operator|=
+operator|new
+name|BibtexSingleField
+argument_list|(
+name|GUIGlobals
+operator|.
+name|FILE_FIELD
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|dummy
+operator|.
+name|setEditorType
+argument_list|(
+name|GUIGlobals
+operator|.
+name|FILE_LIST_EDITOR
+argument_list|)
+expr_stmt|;
+name|add
+argument_list|(
+name|dummy
+argument_list|)
+expr_stmt|;
 name|add
 argument_list|(
 operator|new
@@ -1479,6 +1505,44 @@ return|return
 literal|null
 return|;
 block|}
+DECL|method|getEditorType (String name)
+specifier|public
+specifier|static
+name|int
+name|getEditorType
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|BibtexSingleField
+name|sField
+init|=
+name|getField
+argument_list|(
+name|name
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|sField
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|sField
+operator|.
+name|getEditorType
+argument_list|()
+return|;
+block|}
+return|return
+name|GUIGlobals
+operator|.
+name|STANDARD_EDITOR
+return|;
+block|}
 DECL|method|getFieldWeight ( String name )
 specifier|public
 specifier|static
@@ -1863,6 +1927,15 @@ init|=
 name|GUIGlobals
 operator|.
 name|DEFAULT_FIELD_WEIGHT
+decl_stmt|;
+DECL|field|editorType
+specifier|private
+name|int
+name|editorType
+init|=
+name|GUIGlobals
+operator|.
+name|STANDARD_EDITOR
 decl_stmt|;
 comment|// a alternative displayname, e.g. used for
 comment|// "citeseercitationcount"="Popularity"
@@ -2477,6 +2550,30 @@ parameter_list|()
 block|{
 return|return
 name|extras
+return|;
+block|}
+DECL|method|setEditorType (int type)
+specifier|public
+name|void
+name|setEditorType
+parameter_list|(
+name|int
+name|type
+parameter_list|)
+block|{
+name|editorType
+operator|=
+name|type
+expr_stmt|;
+block|}
+DECL|method|getEditorType ()
+specifier|public
+name|int
+name|getEditorType
+parameter_list|()
+block|{
+return|return
+name|editorType
 return|;
 block|}
 comment|// -----------------------------------------------------------------------

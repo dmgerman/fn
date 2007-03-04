@@ -2960,6 +2960,14 @@ operator|.
 name|setUpIconTheme
 argument_list|()
 expr_stmt|;
+comment|// TODO: remove temporary registering of external file types?
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|updateExternalFileTypes
+argument_list|()
+expr_stmt|;
 comment|// This property is set to make the Mac OSX Java VM move the menu bar to
 comment|// the top
 comment|// of the screen, where Mac users expect it to be.

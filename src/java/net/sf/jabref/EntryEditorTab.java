@@ -270,6 +270,20 @@ name|AutoCompleteListener
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|FileListEditor
+import|;
+end_import
+
 begin_comment
 comment|/**  * A single tab displayed in the EntryEditor holding several FieldEditors.  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
 end_comment
@@ -321,10 +335,13 @@ specifier|private
 name|Component
 name|firstComponent
 decl_stmt|;
-DECL|method|EntryEditorTab (BasePanel panel, List fields, EntryEditor parent, boolean addKeyField, String name)
+DECL|method|EntryEditorTab (JabRefFrame frame, BasePanel panel, List fields, EntryEditor parent, boolean addKeyField, String name)
 specifier|public
 name|EntryEditorTab
 parameter_list|(
+name|JabRefFrame
+name|frame
+parameter_list|,
 name|BasePanel
 name|panel
 parameter_list|,
@@ -384,6 +401,8 @@ name|parent
 expr_stmt|;
 name|setupPanel
 argument_list|(
+name|frame
+argument_list|,
 name|panel
 argument_list|,
 name|addKeyField
@@ -400,10 +419,13 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setupPanel (BasePanel bPanel, boolean addKeyField, String title)
+DECL|method|setupPanel (JabRefFrame frame, BasePanel bPanel, boolean addKeyField, String title)
 name|void
 name|setupPanel
 parameter_list|(
+name|JabRefFrame
+name|frame
+parameter_list|,
 name|BasePanel
 name|bPanel
 parameter_list|,
@@ -830,10 +852,49 @@ operator|++
 control|)
 block|{
 comment|// Create the text area:
-specifier|final
-name|FieldTextArea
-name|ta
+name|int
+name|editorType
 init|=
+name|BibtexFields
+operator|.
+name|getEditorType
+argument_list|(
+name|fields
+index|[
+name|i
+index|]
+argument_list|)
+decl_stmt|;
+specifier|final
+name|FieldEditor
+name|ta
+decl_stmt|;
+if|if
+condition|(
+name|editorType
+operator|==
+name|GUIGlobals
+operator|.
+name|FILE_LIST_EDITOR
+condition|)
+name|ta
+operator|=
+operator|new
+name|FileListEditor
+argument_list|(
+name|frame
+argument_list|,
+name|fields
+index|[
+name|i
+index|]
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+else|else
+name|ta
+operator|=
 operator|new
 name|FieldTextArea
 argument_list|(
@@ -844,7 +905,7 @@ index|]
 argument_list|,
 literal|null
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|JComponent
 name|ex
 init|=
@@ -863,6 +924,9 @@ decl_stmt|;
 name|setupJTextComponent
 argument_list|(
 name|ta
+operator|.
+name|getTextComponent
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Add autocompleter listener, if required for this field:
@@ -887,6 +951,9 @@ literal|null
 condition|)
 block|{
 name|ta
+operator|.
+name|getTextComponent
+argument_list|()
 operator|.
 name|addKeyListener
 argument_list|(
@@ -1643,13 +1710,13 @@ name|panel
 return|;
 block|}
 comment|/** 	 * Set up key bindings and focus listener for the FieldEditor. 	 *  	 * @param component 	 */
-DECL|method|setupJTextComponent (final JTextComponent component)
+DECL|method|setupJTextComponent (final JComponent component)
 specifier|public
 name|void
 name|setupJTextComponent
 parameter_list|(
 specifier|final
-name|JTextComponent
+name|JComponent
 name|component
 parameter_list|)
 block|{
