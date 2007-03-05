@@ -890,6 +890,8 @@ name|i
 index|]
 argument_list|,
 literal|null
+argument_list|,
+name|parent
 argument_list|)
 expr_stmt|;
 else|else
