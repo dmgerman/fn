@@ -32,6 +32,7 @@ end_comment
 
 begin_class
 DECL|class|FileListEntry
+specifier|public
 class|class
 name|FileListEntry
 block|{
