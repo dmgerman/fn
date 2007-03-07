@@ -266,6 +266,15 @@ name|PushToLatexEditor
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|applications
+operator|.
+name|add
+argument_list|(
+operator|new
+name|PushToVim
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|PushToApplicationButton (JabRefFrame frame, List pushActions)
 specifier|public
