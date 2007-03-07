@@ -1388,7 +1388,7 @@ name|put
 argument_list|(
 literal|"latexEditorPath"
 argument_list|,
-literal|"C:\\TEMP\\Led.exe"
+literal|"C:\\Program Files\\LEd\\LEd.exe"
 argument_list|)
 expr_stmt|;
 name|defaults
