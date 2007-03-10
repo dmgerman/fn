@@ -421,7 +421,7 @@ specifier|private
 name|Date
 name|lastCall
 decl_stmt|;
-comment|/** 	 *  	 *  	 * @param oai2Host 	 *            the host to query without leading http:// and without trailing / 	 * @param oai2Script 	 *            the relative location of the oai2 interface without leading 	 *            and trailing / 	 * @param oai2Metadataprefix 	 *            the urlencoded metadataprefix 	 * @param oai2Prefixidentifier 	 *            the urlencoded prefix identifier 	 * @param waitTimeMs 	 *            Time to wait in milliseconds between query-requests. 	 */
+comment|/**      *       *       * @param oai2Host      *            the host to query without leading http:// and without trailing /      * @param oai2Script      *            the relative location of the oai2 interface without leading      *            and trailing /      * @param oai2Metadataprefix      *            the urlencoded metadataprefix      * @param oai2Prefixidentifier      *            the urlencoded prefix identifier      * @param waitTimeMs      *            Time to wait in milliseconds between query-requests.      */
 DECL|method|OAI2Fetcher (String oai2Host, String oai2Script, String oai2Metadataprefix, String oai2Prefixidentifier, String oai2ArchiveName, long waitTimeMs)
 specifier|public
 name|OAI2Fetcher
@@ -523,7 +523,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Default Constructor. The archive queried will be ArXiv.org 	 *  	 */
+comment|/**      * Default Constructor. The archive queried will be ArXiv.org      *       */
 DECL|method|OAI2Fetcher ()
 specifier|public
 name|OAI2Fetcher
@@ -545,7 +545,7 @@ literal|20000L
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Construct the query URL 	 *  	 * @param key 	 *            The key of the OAI2 entry that the url should poitn to. 	 *             	 * @return a String denoting the query URL 	 */
+comment|/**      * Construct the query URL      *       * @param key      *            The key of the OAI2 entry that the url should poitn to.      *                  * @return a String denoting the query URL      */
 DECL|method|constructUrl (String key)
 specifier|public
 name|String
@@ -665,7 +665,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Strip subccategories from ArXiv key. 	 *  	 * @param key The key to fix. 	 * @return Fixed key. 	 */
+comment|/**      * Strip subccategories from ArXiv key.      *       * @param key The key to fix.      * @return Fixed key.      */
 DECL|method|fixKey (String key)
 specifier|public
 specifier|static
@@ -784,7 +784,7 @@ literal|""
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Import an entry from an OAI2 archive. The BibtexEntry provided has to 	 * have the field OAI2_IDENTIFIER_FIELD set to the search string. 	 *  	 * @param key 	 *            The OAI2 key to fetch from ArXiv. 	 * @return The imnported BibtexEntry or null if none. 	 */
+comment|/**      * Import an entry from an OAI2 archive. The BibtexEntry provided has to      * have the field OAI2_IDENTIFIER_FIELD set to the search string.      *       * @param key      *            The OAI2 key to fetch from ArXiv.      * @return The imnported BibtexEntry or null if none.      */
 DECL|method|importOai2Entry (String key)
 specifier|public
 name|BibtexEntry
@@ -794,7 +794,7 @@ name|String
 name|key
 parameter_list|)
 block|{
-comment|/** 		 * Fix for problem reported in mailing-list:  		 *   https://sourceforge.net/forum/message.php?msg_id=4087158 		 */
+comment|/**          * Fix for problem reported in mailing-list:           *   https://sourceforge.net/forum/message.php?msg_id=4087158          */
 name|key
 operator|=
 name|fixKey
@@ -1307,7 +1307,7 @@ index|[
 name|i
 index|]
 decl_stmt|;
-comment|/* 				 * some archives - like arxive.org - might expect of you to wait 				 * some time 				 */
+comment|/*                  * some archives - like arxive.org - might expect of you to wait                  * some time                  */
 if|if
 condition|(
 name|shouldWait
@@ -1344,7 +1344,12 @@ name|frame
 operator|.
 name|output
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Waiting for ArXiv..."
+argument_list|)
 operator|+
 operator|(
 operator|(
@@ -1386,7 +1391,12 @@ name|frame
 operator|.
 name|output
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Processing "
+argument_list|)
 operator|+
 name|key
 argument_list|)
@@ -1471,7 +1481,12 @@ name|frame
 operator|.
 name|output
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Error while fetching from OIA2: "
+argument_list|)
 operator|+
 name|e
 operator|.
