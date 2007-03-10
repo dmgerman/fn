@@ -1251,7 +1251,7 @@ argument_list|,
 name|generateKeyAction
 argument_list|)
 expr_stmt|;
-comment|/* 		 * im.put(prefs.getKey("Entry editor, previous panel"), "left"); 		 * im.put(prefs.getKey("Entry editor, previous panel 2"), "left"); 		 * am.put("left", switchLeftAction); im.put(prefs.getKey("Entry editor, 		 * next panel"), "right"); im.put(prefs.getKey("Entry editor, next panel 		 * 2"), "right"); am.put("right", switchRightAction); 		 */
+comment|/*          * im.put(prefs.getKey("Entry editor, previous panel"), "left");          * im.put(prefs.getKey("Entry editor, previous panel 2"), "left");          * am.put("left", switchLeftAction); im.put(prefs.getKey("Entry editor,          * next panel"), "right"); im.put(prefs.getKey("Entry editor, next panel          * 2"), "right"); am.put("right", switchRightAction);          */
 name|im
 operator|.
 name|put
@@ -1516,7 +1516,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Rebuild the field tabs. This is called e.g. when a new content selector 	 * has been added. 	 */
+comment|/**      * Rebuild the field tabs. This is called e.g. when a new content selector      * has been added.      */
 DECL|method|rebuildPanels ()
 specifier|public
 name|void
@@ -1550,7 +1550,7 @@ name|repaint
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * getExtra checks the field name against BibtexFields.getFieldExtras(name). 	 * If the name has an entry, the proper component to be shown is created and 	 * returned. Otherwise, null is returned. In addition, e.g. listeners can be 	 * added to the field editor, even if no component is returned. 	 *  	 * @param string 	 *            Field name 	 * @return Component to show, or null if none. 	 */
+comment|/**      * getExtra checks the field name against BibtexFields.getFieldExtras(name).      * If the name has an entry, the proper component to be shown is created and      * returned. Otherwise, null is returned. In addition, e.g. listeners can be      * added to the field editor, even if no component is returned.      *       * @param string      *            Field name      * @return Component to show, or null if none.      */
 DECL|method|getExtra (String string, FieldEditor editor)
 specifier|public
 name|JComponent
@@ -2235,7 +2235,7 @@ return|return
 name|pan
 return|;
 block|}
-comment|/* 		 * else if ((s != null)&& s.equals("browsePs")) { ExternalFilePanel pan = 		 * new ExternalFilePanel(frame, this, "ps", off, ed); return pan; } 		 */
+comment|/*          * else if ((s != null)&& s.equals("browsePs")) { ExternalFilePanel pan =          * new ExternalFilePanel(frame, this, "ps", off, ed); return pan; }          */
 elseif|else
 if|if
 condition|(
@@ -2582,7 +2582,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 	 * NOTE: This method is only used for the source panel, not for the 	 * other tabs. Look at EntryEditorTab for the setup of text components 	 * in the other tabs. 	 */
+comment|/**      * NOTE: This method is only used for the source panel, not for the      * other tabs. Look at EntryEditorTab for the setup of text components      * in the other tabs.      */
 DECL|method|setupJTextComponent (JTextComponent ta)
 specifier|public
 name|void
@@ -2982,7 +2982,7 @@ argument_list|)
 expr_stmt|;
 comment|// ((JComponent)activeTab).requestFocus();
 block|}
-comment|/** 	 * Reports the enabled status of the editor, as set by setEnabled() 	 */
+comment|/**      * Reports the enabled status of the editor, as set by setEnabled()      */
 DECL|method|isEnabled ()
 specifier|public
 name|boolean
@@ -2996,7 +2996,7 @@ name|isEnabled
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Sets the enabled status of all text fields of the entry editor. 	 */
+comment|/**      * Sets the enabled status of all text fields of the entry editor.      */
 DECL|method|setEnabled (boolean enabled)
 specifier|public
 name|void
@@ -3060,7 +3060,7 @@ name|enabled
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Centers the given row, and highlights it. 	 *  	 * @param row 	 *            an<code>int</code> value 	 */
+comment|/**      * Centers the given row, and highlights it.      *       * @param row      *            an<code>int</code> value      */
 DECL|method|scrollTo (int row)
 specifier|private
 name|void
@@ -3091,7 +3091,7 @@ name|row
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Makes sure the current edit is stored. 	 */
+comment|/**      * Makes sure the current edit is stored.      */
 DECL|method|storeCurrentEdit ()
 specifier|public
 name|void
@@ -3141,7 +3141,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Returns the index of the active (visible) panel. 	 *  	 * @return an<code>int</code> value 	 */
+comment|/**      * Returns the index of the active (visible) panel.      *       * @return an<code>int</code> value      */
 DECL|method|getVisiblePanel ()
 specifier|public
 name|int
@@ -3172,7 +3172,7 @@ name|getName
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Sets the panel with the given index visible. 	 *  	 * @param i 	 *            an<code>int</code> value 	 */
+comment|/**      * Sets the panel with the given index visible.      *       * @param i      *            an<code>int</code> value      */
 DECL|method|setVisiblePanel (int i)
 specifier|public
 name|void
@@ -3274,7 +3274,7 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Updates this editor to show the given entry, regardless of type 	 * correspondence. 	 *  	 * @param be 	 *            a<code>BibtexEntry</code> value 	 */
+comment|/**      * Updates this editor to show the given entry, regardless of type      * correspondence.      *       * @param be      *            a<code>BibtexEntry</code> value      */
 DECL|method|switchTo (BibtexEntry be)
 specifier|public
 specifier|synchronized
@@ -3333,7 +3333,7 @@ operator|=
 name|be
 expr_stmt|;
 block|}
-comment|/** 	 * Returns false if the contents of the source panel has not been validated, 	 * true othervise. 	 */
+comment|/**      * Returns false if the contents of the source panel has not been validated,      * true othervise.      */
 DECL|method|lastSourceAccepted ()
 specifier|public
 name|boolean
@@ -3358,7 +3358,7 @@ return|return
 name|lastSourceAccepted
 return|;
 block|}
-comment|/* 	 * public boolean storeSourceIfNeeded() { if (tabbed.getSelectedIndex() == 	 * sourceIndex) return storeSource(); else return true; } 	 */
+comment|/*      * public boolean storeSourceIfNeeded() { if (tabbed.getSelectedIndex() ==      * sourceIndex) return storeSource(); else return true; }      */
 DECL|method|storeSource (boolean showError)
 specifier|public
 name|boolean
@@ -3818,7 +3818,7 @@ argument_list|(
 name|compound
 argument_list|)
 expr_stmt|;
-comment|/* 			 * if (((oldKey == null)&& (newKey != null)) || ((oldKey != null)&& 			 * (newKey == null)) || ((oldKey != null)&& (newKey != null)&& 			 * !oldKey.equals(newKey))) { } 			 */
+comment|/*              * if (((oldKey == null)&& (newKey != null)) || ((oldKey != null)&&              * (newKey == null)) || ((oldKey != null)&& (newKey != null)&&              * !oldKey.equals(newKey))) { }              */
 if|if
 condition|(
 name|duplicateWarning
@@ -3947,7 +3947,12 @@ name|showOptionDialog
 argument_list|(
 name|frame
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Error: "
+argument_list|)
 operator|+
 name|ex
 operator|.
@@ -4061,7 +4066,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 	 * Sets all the text areas according to the shown entry. 	 */
+comment|/**      * Sets all the text areas according to the shown entry.      */
 DECL|method|updateAllFields ()
 specifier|public
 name|void
@@ -4115,7 +4120,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 	 * Removes the "invalid field" color from all text areas. 	 */
+comment|/**      * Removes the "invalid field" color from all text areas.      */
 DECL|method|validateAllFields ()
 specifier|public
 name|void
@@ -4214,7 +4219,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/* 	 * Update the JTextArea when a field has changed. 	 *  	 * (non-Javadoc) 	 *  	 * @see java.beans.VetoableChangeListener#vetoableChange(java.beans.PropertyChangeEvent) 	 */
+comment|/*      * Update the JTextArea when a field has changed.      *       * (non-Javadoc)      *       * @see java.beans.VetoableChangeListener#vetoableChange(java.beans.PropertyChangeEvent)      */
 DECL|method|vetoableChange (PropertyChangeEvent e)
 specifier|public
 name|void
@@ -4547,7 +4552,7 @@ name|FieldListener
 extends|extends
 name|FocusAdapter
 block|{
-comment|/* 		 * Focus listener that fires the storeFieldAction when a FieldTextArea 		 * loses focus. 		 */
+comment|/*          * Focus listener that fires the storeFieldAction when a FieldTextArea          * loses focus.          */
 DECL|method|focusGained (FocusEvent e)
 specifier|public
 name|void
@@ -4556,7 +4561,7 @@ parameter_list|(
 name|FocusEvent
 name|e
 parameter_list|)
-block|{ 		}
+block|{         }
 DECL|method|focusLost (FocusEvent e)
 specifier|public
 name|void
@@ -5176,7 +5181,7 @@ name|fe
 operator|.
 name|setBackground
 argument_list|(
-comment|/* 										 * fe.getTextComponent().hasFocus() ? 										 * GUIGlobals.activeEditor : 										 */
+comment|/*                                          * fe.getTextComponent().hasFocus() ?                                          * GUIGlobals.activeEditor :                                          */
 name|GUIGlobals
 operator|.
 name|validFieldBackground
@@ -5660,7 +5665,12 @@ name|showMessageDialog
 argument_list|(
 name|frame
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Error: "
+argument_list|)
 operator|+
 name|ex
 operator|.
@@ -5741,7 +5751,7 @@ if|if
 condition|(
 name|accepted
 condition|)
-block|{ 				}
+block|{                 }
 block|}
 block|}
 block|}
@@ -6386,7 +6396,7 @@ parameter_list|(
 name|Throwable
 name|ex
 parameter_list|)
-block|{ 			}
+block|{             }
 block|}
 block|}
 DECL|class|RedoAction
@@ -6444,7 +6454,7 @@ parameter_list|(
 name|Throwable
 name|ex
 parameter_list|)
-block|{ 			}
+block|{             }
 block|}
 block|}
 DECL|class|SaveDatabaseAction
@@ -6533,7 +6543,7 @@ parameter_list|(
 name|Throwable
 name|ex
 parameter_list|)
-block|{ 			}
+block|{             }
 block|}
 block|}
 DECL|class|ExternalViewerListener
@@ -6703,7 +6713,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Scans all groups. 	 *  	 * @return true if the specified entry is contained in any ExplicitGroup, 	 *         false otherwise. 	 */
+comment|/**      * Scans all groups.      *       * @return true if the specified entry is contained in any ExplicitGroup,      *         false otherwise.      */
 DECL|method|containedInExplicitGroup (BibtexEntry entry)
 specifier|private
 name|boolean
