@@ -323,24 +323,7 @@ name|void
 name|init
 parameter_list|()
 block|{
-comment|// Get all entries, and make sure there are selected entries:
-name|sel
-operator|=
-name|panel
-operator|.
-name|getSelectedEntries
-argument_list|()
-expr_stmt|;
-if|if
-condition|(
-name|sel
-operator|.
-name|length
-operator|<
-literal|1
-condition|)
-block|{
-comment|// No entries selected. Assume all entries should be treated:
+comment|/*// Get all entries, and make sure there are selected entries:     	sel = panel.getSelectedEntries();     	if (sel.length< 1) { 	    // No entries selected. Assume all entries should be treated: 	    */
 name|Collection
 name|col
 init|=
@@ -378,7 +361,7 @@ argument_list|)
 expr_stmt|;
 comment|//goOn = false;
 comment|//return;
-block|}
+comment|//}
 comment|// Ask about rules for the operation:
 if|if
 condition|(
