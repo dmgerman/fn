@@ -737,7 +737,12 @@ name|GUIGlobals
 operator|.
 name|baseFrameHelp
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"JabRef help"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -761,7 +766,12 @@ name|GUIGlobals
 operator|.
 name|helpContents
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Help contents"
+argument_list|)
 argument_list|,
 name|GUIGlobals
 operator|.
@@ -785,7 +795,12 @@ name|GUIGlobals
 operator|.
 name|aboutPage
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"About JabRef"
+argument_list|)
 argument_list|,
 name|GUIGlobals
 operator|.
@@ -805,7 +820,12 @@ literal|"edit"
 argument_list|,
 literal|"Edit entry"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Edit entry"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -825,7 +845,12 @@ literal|"save"
 argument_list|,
 literal|"Save database"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Save database"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -845,7 +870,12 @@ literal|"saveAs"
 argument_list|,
 literal|"Save database as ..."
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Save database as ..."
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -874,7 +904,12 @@ literal|"saveSelectedAs"
 argument_list|,
 literal|"Save selected as ..."
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Save selected as ..."
+argument_list|)
 argument_list|,
 name|GUIGlobals
 operator|.
@@ -969,7 +1004,12 @@ literal|"undo"
 argument_list|,
 literal|"Undo"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Undo"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -989,7 +1029,12 @@ literal|"redo"
 argument_list|,
 literal|"Redo"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Redo"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -999,7 +1044,7 @@ literal|"Redo"
 argument_list|)
 argument_list|)
 decl_stmt|,
-comment|/*cut = new GeneralAction("cut", "Cut", "Cut",          GUIGlobals.cutIconFile,          prefs.getKey("Cut")),*/
+comment|/*cut = new GeneralAction("cut", "Cut", Globals.lang("Cut"),          GUIGlobals.cutIconFile,          prefs.getKey("Cut")),*/
 DECL|field|delete
 name|delete
 init|=
@@ -1010,7 +1055,12 @@ literal|"delete"
 argument_list|,
 literal|"Delete"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Delete"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -1020,7 +1070,7 @@ literal|"Delete"
 argument_list|)
 argument_list|)
 decl_stmt|,
-comment|/*copy = new GeneralAction("copy", "Copy", "Copy",                                GUIGlobals.copyIconFile,                                prefs.getKey("Copy")),*/
+comment|/*copy = new GeneralAction("copy", "Copy", Globals.lang("Copy"),                                GUIGlobals.copyIconFile,                                prefs.getKey("Copy")),*/
 DECL|field|copy
 name|copy
 init|=
@@ -1079,7 +1129,12 @@ literal|"markEntries"
 argument_list|,
 literal|"Mark entries"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Mark entries"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -1099,7 +1154,12 @@ literal|"unmarkEntries"
 argument_list|,
 literal|"Unmark entries"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Unmark entries"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -1155,7 +1215,12 @@ literal|"incSearch"
 argument_list|,
 literal|"Incremental search"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Start incremental search"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -1175,7 +1240,12 @@ literal|"search"
 argument_list|,
 literal|"Search"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Search"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -1195,7 +1265,12 @@ literal|"toggleSearch"
 argument_list|,
 literal|"Search"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Toggle search panel"
+argument_list|)
 argument_list|)
 decl_stmt|,
 DECL|field|fetchCiteSeer
@@ -1268,7 +1343,12 @@ literal|"mergeDatabase"
 argument_list|,
 literal|"Append database"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Append contents from a BibTeX database into the currently viewed database"
+argument_list|)
 argument_list|,
 name|GUIGlobals
 operator|.
@@ -1326,7 +1406,12 @@ literal|"editPreamble"
 argument_list|,
 literal|"Edit preamble"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Edit preamble"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -1346,7 +1431,12 @@ literal|"editStrings"
 argument_list|,
 literal|"Edit strings"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Edit strings"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -1366,7 +1456,12 @@ literal|"toggleGroups"
 argument_list|,
 literal|"Toggle groups interface"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Toggle groups interface"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -1386,7 +1481,12 @@ literal|"togglePreview"
 argument_list|,
 literal|"Toggle entry preview"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Toggle entry preview"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -1406,7 +1506,12 @@ literal|"toggleHighlightGroupsMatchingAny"
 argument_list|,
 literal|"Highlight groups matching any selected entry"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Highlight groups matching any selected entry"
+argument_list|)
 argument_list|,
 name|GUIGlobals
 operator|.
@@ -1426,7 +1531,12 @@ literal|"toggleHighlightGroupsMatchingAll"
 argument_list|,
 literal|"Highlight groups matching all selected entries"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Highlight groups matching all selected entries"
+argument_list|)
 argument_list|,
 name|GUIGlobals
 operator|.
@@ -1464,7 +1574,12 @@ literal|"makeKey"
 argument_list|,
 literal|"Autogenerate BibTeX keys"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Autogenerate BibTeX keys"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -1523,7 +1638,12 @@ literal|"writeXMP"
 argument_list|,
 literal|"Write XMP-metadata to PDFs"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Will write XMP-metadata to the PDFs linked from selected entries."
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -1543,7 +1663,12 @@ literal|"openFile"
 argument_list|,
 literal|"Open PDF or PS"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Open PDF or PS"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -1563,7 +1688,12 @@ literal|"openUrl"
 argument_list|,
 literal|"Open URL or DOI"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Open URL or DOI"
+argument_list|)
 argument_list|,
 name|prefs
 operator|.
@@ -1708,7 +1838,12 @@ literal|"abbreviateMedline"
 argument_list|,
 literal|"Abbreviate journal names (MEDLINE)"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Abbreviate journal names of the selected entries (MEDLINE abbreviation)"
+argument_list|)
 argument_list|)
 decl_stmt|,
 DECL|field|abbreviateIso
@@ -1721,7 +1856,12 @@ literal|"abbreviateIso"
 argument_list|,
 literal|"Abbreviate journal names (ISO)"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Abbreviate journal names of the selected entries (ISO abbreviation)"
+argument_list|)
 argument_list|,
 name|Globals
 operator|.
@@ -1743,7 +1883,12 @@ literal|"unabbreviate"
 argument_list|,
 literal|"Unabbreviate journal names"
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Unabbreviate journal names of the selected entries"
+argument_list|)
 argument_list|,
 name|Globals
 operator|.
@@ -2239,7 +2384,7 @@ operator|.
 name|inActiveTabbed
 argument_list|)
 expr_stmt|;
-comment|/* 		 * The following state listener makes sure focus is registered with the 		 * correct database when the user switches tabs. Without this, 		 * cut/paste/copy operations would some times occur in the wrong tab. 		 */
+comment|/*          * The following state listener makes sure focus is registered with the          * correct database when the user switches tabs. Without this,          * cut/paste/copy operations would some times occur in the wrong tab.          */
 name|tabbedPane
 operator|.
 name|addChangeListener
@@ -10253,7 +10398,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-comment|//	getGlassPane().setCursor(Cursor.WAIT_CURSOR);
+comment|//  getGlassPane().setCursor(Cursor.WAIT_CURSOR);
 block|}
 comment|/** Set the visibility of the progress bar in the right end of the       * status line at the bottom of the frame.       *       * If not called on the event dispatch thread, this method uses       * SwingUtilities.invokeLater() to do the actual operation on the EDT.       */
 DECL|method|setProgressBarVisible (final boolean visible)
