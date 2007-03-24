@@ -375,6 +375,15 @@ name|CopacImporter
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|formats
+operator|.
+name|add
+argument_list|(
+operator|new
+name|MsBibImporter
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// add all custom importers
 for|for
 control|(
@@ -845,7 +854,7 @@ return|return
 name|database
 return|;
 block|}
-comment|/**    * All custom importers.    *     *<p>Elements are in default order.</p>    *     * @return all custom importers, elements are of type {@link InputFormat}    */
+comment|/**    * All custom importers.    *     *<p>Elements are in default order.</p>    *     * @return all custom importers, elements are of type InputFormat    */
 DECL|method|getCustomImportFormats ()
 specifier|public
 name|SortedSet
@@ -910,7 +919,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**    * All built-in importers.    *     *<p>Elements are in default order.</p>    *     * @return all custom importers, elements are of type {@link InputFormat}    */
+comment|/**    * All built-in importers.    *     *<p>Elements are in default order.</p>    *     * @return all custom importers, elements are of type InputFormat    */
 DECL|method|getBuiltInInputFormats ()
 specifier|public
 name|SortedSet
@@ -976,7 +985,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**    * All importers.    *     *<p>Elements are in default order.</p>    *     * @return all custom importers, elements are of type {@link InputFormat}    */
+comment|/**    * All importers.    *     *<p>Elements are in default order.</p>    *     * @return all custom importers, elements are of type InputFormat    */
 DECL|method|getImportFormats ()
 specifier|public
 name|SortedSet

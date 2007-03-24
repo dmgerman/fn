@@ -403,6 +403,13 @@ name|OpenDocumentSpreadsheetCreator
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|putFormat
+argument_list|(
+operator|new
+name|MsBibExporter
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|//openofficeItem = new JMenuItem("OpenOffice Calc"),
 comment|//odsItem = new JMenuItem("OpenDocument Spreadsheet");
 block|}
