@@ -482,7 +482,7 @@ name|renameCheckBox
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Offer copy/move/linking options for a dragged external file. Perform the 	 * chosen operation, if any. 	 *  	 * @param fileName 	 *            The name of the dragged file. 	 * @param fileType 	 *            The FileType associated with the file. 	 * @param localFile 	 *            Indicate whether this is a local file, or a remote file copied 	 *            to a local temporary file. 	 * @param mainTable 	 *            The MainTable the file was dragged to. 	 * @param dropRow 	 *            The row where the file was dropped. 	 */
+comment|/**      * Offer copy/move/linking options for a dragged external file. Perform the      * chosen operation, if any.      *       * @param fileName      *            The name of the dragged file.      * @param fileType      *            The FileType associated with the file.      * @param localFile      *            Indicate whether this is a local file, or a remote file copied      *            to a local temporary file.      * @param mainTable      *            The MainTable the file was dragged to.      * @param dropRow      *            The row where the file was dropped.      */
 DECL|method|handleDroppedfile (String fileName, ExternalFileType fileType, boolean localFile, MainTable mainTable, int dropRow)
 specifier|public
 name|void
@@ -633,7 +633,7 @@ operator|.
 name|OK_OPTION
 condition|)
 return|return;
-comment|/* 		 * Ok, we're ready to go. See first if we need to do a file copy before 		 * linking: 		 */
+comment|/*          * Ok, we're ready to go. See first if we need to do a file copy before          * linking:          */
 name|boolean
 name|success
 init|=
@@ -854,7 +854,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"The PDF contains one or several bibtex-records.\nDo you want to import these as new entries into the current database database?"
+literal|"The PDF contains one or several bibtex-records.\nDo you want to import these as new entries into the current database?"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -915,7 +915,7 @@ literal|false
 return|;
 block|}
 comment|// reply == JOptionPane.YES_OPTION)
-comment|/* 		 * TODO Extract Import functionality from ImportMenuItem then we could 		 * do: 		 *  		 * ImportMenuItem importer = new ImportMenuItem(frame, (mainTable == 		 * null), new PdfXmpImporter()); 		 *  		 * importer.automatedImport(new String[] { fileName }); 		 */
+comment|/*          * TODO Extract Import functionality from ImportMenuItem then we could          * do:          *           * ImportMenuItem importer = new ImportMenuItem(frame, (mainTable ==          * null), new PdfXmpImporter());          *           * importer.automatedImport(new String[] { fileName });          */
 name|boolean
 name|isSingle
 init|=
@@ -1148,7 +1148,7 @@ parameter_list|(
 name|KeyCollisionException
 name|ex
 parameter_list|)
-block|{  				}
+block|{                  }
 block|}
 name|panel
 operator|.
@@ -1611,7 +1611,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Make a link to the file. 	 *  	 * @param entry 	 *            The entry to link from. 	 * @param fileType 	 *            The FileType associated with the file. 	 * @param filename 	 *            The path to the file. 	 * @param edits 	 *            An NamedCompound action this action is to be added to. If none 	 *            is given, the edit is added to the panel's undoManager. 	 */
+comment|/**      * Make a link to the file.      *       * @param entry      *            The entry to link from.      * @param fileType      *            The FileType associated with the file.      * @param filename      *            The path to the file.      * @param edits      *            An NamedCompound action this action is to be added to. If none      *            is given, the edit is added to the panel's undoManager.      */
 DECL|method|doLink (BibtexEntry entry, ExternalFileType fileType, String filename, NamedCompound edits)
 specifier|private
 name|void
@@ -1696,7 +1696,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Move the given file to the base directory for its file type, and rename 	 * it to the given filename. 	 *  	 * @param fileName 	 *            The name of the source file. 	 * @param fileType 	 *            The FileType associated with the file. 	 * @param destFilename 	 *            The destination filename. 	 * @param edits 	 *            TODO we should be able to undo this action 	 * @return true if the operation succeeded. 	 */
+comment|/**      * Move the given file to the base directory for its file type, and rename      * it to the given filename.      *       * @param fileName      *            The name of the source file.      * @param fileType      *            The FileType associated with the file.      * @param destFilename      *            The destination filename.      * @param edits      *            TODO we should be able to undo this action      * @return true if the operation succeeded.      */
 DECL|method|doRename (String fileName, ExternalFileType fileType, String destFilename, NamedCompound edits)
 specifier|private
 name|boolean
@@ -1821,7 +1821,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/** 	 * Copy the given file to the base directory for its file type, and give it 	 * the given name. 	 *  	 * @param fileName 	 *            The name of the source file. 	 * @param fileType 	 *            The FileType associated with the file. 	 * @param toFile 	 *            The destination filename. An existing path-component will be removed. 	 * @param edits 	 *            TODO we should be able to undo this! 	 * @return 	 */
+comment|/**      * Copy the given file to the base directory for its file type, and give it      * the given name.      *       * @param fileName      *            The name of the source file.      * @param fileType      *            The FileType associated with the file.      * @param toFile      *            The destination filename. An existing path-component will be removed.      * @param edits      *            TODO we should be able to undo this!      * @return      */
 DECL|method|doCopy (String fileName, ExternalFileType fileType, String toFile, NamedCompound edits)
 specifier|private
 name|boolean
