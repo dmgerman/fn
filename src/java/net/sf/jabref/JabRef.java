@@ -363,6 +363,7 @@ DECL|field|disableGui
 DECL|field|blank
 DECL|field|loadSess
 DECL|field|showVersion
+DECL|field|disableSplash
 name|BooleanOption
 name|helpO
 decl_stmt|,
@@ -373,6 +374,8 @@ decl_stmt|,
 name|loadSess
 decl_stmt|,
 name|showVersion
+decl_stmt|,
+name|disableSplash
 decl_stmt|;
 comment|/*     * class StringArrayOption extends ArrayOption { public public void     * modify(String value) { } public void modify(String[] value) { } public     * Object[] getObjectArray() { return null; } public String getTypeName() {     * return "Strings"; } public String getStringValue() { return ""; } public     * Object getObject() { return null; } }     */
 DECL|method|main (String[] args)
@@ -670,6 +673,12 @@ operator|new
 name|BooleanOption
 argument_list|()
 expr_stmt|;
+name|disableSplash
+operator|=
+operator|new
+name|BooleanOption
+argument_list|()
+expr_stmt|;
 name|blank
 operator|=
 operator|new
@@ -780,6 +789,24 @@ literal|"No GUI. Only process command line options."
 argument_list|)
 argument_list|,
 name|disableGui
+argument_list|)
+expr_stmt|;
+name|options
+operator|.
+name|register
+argument_list|(
+literal|"nosplash"
+argument_list|,
+literal|'s'
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Do not show splash window at startup"
+argument_list|)
+argument_list|,
+name|disableSplash
 argument_list|)
 expr_stmt|;
 name|options
@@ -1158,6 +1185,12 @@ name|initialStartup
 operator|&&
 operator|!
 name|disableGui
+operator|.
+name|isInvoked
+argument_list|()
+operator|&&
+operator|!
+name|disableSplash
 operator|.
 name|isInvoked
 argument_list|()
