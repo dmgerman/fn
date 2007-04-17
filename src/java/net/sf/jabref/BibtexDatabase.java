@@ -1226,7 +1226,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Resolves any references to strings contained in this database,      * if possible.      */
+comment|/**      * Resolves any references to strings contained in this field content,      * if possible.      */
 DECL|method|resolveForStrings (String content)
 specifier|public
 name|String
