@@ -126,16 +126,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Vector
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Collection
 import|;
 end_import
@@ -690,7 +680,7 @@ argument_list|(
 name|fieldName
 argument_list|)
 decl_stmt|;
-comment|// Check if a link is already set, and if so, if we are allowed to overwrite it:
+comment|// Check if a extension is already set, and if so, if we are allowed to overwrite it:
 if|if
 condition|(
 operator|(
@@ -901,7 +891,7 @@ argument_list|(
 name|fieldName
 argument_list|)
 decl_stmt|;
-comment|// Check if a link is set:
+comment|// Check if a extension is set:
 if|if
 condition|(
 operator|(
@@ -1004,7 +994,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Broken link"
+literal|"Broken extension"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -1628,7 +1618,7 @@ operator|+
 literal|"</HTML>"
 argument_list|)
 expr_stmt|;
-comment|//            description.setVerticalAlignment(JLabel.TOP);
+comment|//            name.setVerticalAlignment(JLabel.TOP);
 name|builder
 operator|.
 name|appendSeparator
@@ -1712,7 +1702,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"This makes JabRef look up each %0 link and check if the file exists. If not, you will "
+literal|"This makes JabRef look up each %0 extension and check if the file exists. If not, you will "
 operator|+
 literal|"be given options<BR>to resolve the problem."
 argument_list|,

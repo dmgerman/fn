@@ -293,7 +293,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class holds the functionality of autolinking to a file that's dropped  * onto an entry.  *   * Options for handling the files are: 1) Link to the file in its current  * position (disabled if the file is remote) 2) Copy the file to ??? directory,  * rename after bibtex key, and link 3) Move the file to ??? directory, rename  * after bibtex key, and link  */
+comment|/**  * This class holds the functionality of autolinking to a file that's dropped  * onto an entry.  *   * Options for handling the files are: 1) Link to the file in its current  * position (disabled if the file is remote) 2) Copy the file to ??? directory,  * rename after bibtex key, and extension 3) Move the file to ??? directory, rename  * after bibtex key, and extension  */
 end_comment
 
 begin_class
@@ -1369,7 +1369,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Copy to %0 directory and link from new entries."
+literal|"Copy to %0 directory and extension from new entries."
 argument_list|,
 name|fileType
 operator|.
@@ -1386,7 +1386,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Move to %0 directory and link from new entries."
+literal|"Move to %0 directory and extension from new entries."
 argument_list|,
 name|fileType
 operator|.
@@ -1418,7 +1418,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Copy to %0 directory and link from new entry."
+literal|"Copy to %0 directory and extension from new entry."
 argument_list|,
 name|fileType
 operator|.
@@ -1435,7 +1435,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Move to %0 directory and link from new entry."
+literal|"Move to %0 directory and extension from new entry."
 argument_list|,
 name|fileType
 operator|.
@@ -1473,7 +1473,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Copy to %0 directory and link from entries."
+literal|"Copy to %0 directory and extension from entries."
 argument_list|,
 name|fileType
 operator|.
@@ -1490,7 +1490,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Move to %0 directory and link from entries."
+literal|"Move to %0 directory and extension from entries."
 argument_list|,
 name|fileType
 operator|.
@@ -1522,7 +1522,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Copy to %0 directory and link from entry."
+literal|"Copy to %0 directory and extension from entry."
 argument_list|,
 name|fileType
 operator|.
@@ -1539,7 +1539,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Move to %0 directory and link from entry."
+literal|"Move to %0 directory and extension from entry."
 argument_list|,
 name|fileType
 operator|.
@@ -1611,7 +1611,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Make a link to the file.      *       * @param entry      *            The entry to link from.      * @param fileType      *            The FileType associated with the file.      * @param filename      *            The path to the file.      * @param edits      *            An NamedCompound action this action is to be added to. If none      *            is given, the edit is added to the panel's undoManager.      */
+comment|/**      * Make a extension to the file.      *       * @param entry      *            The entry to extension from.      * @param fileType      *            The FileType associated with the file.      * @param filename      *            The path to the file.      * @param edits      *            An NamedCompound action this action is to be added to. If none      *            is given, the edit is added to the panel's undoManager.      */
 DECL|method|doLink (BibtexEntry entry, ExternalFileType fileType, String filename, NamedCompound edits)
 specifier|private
 name|void
