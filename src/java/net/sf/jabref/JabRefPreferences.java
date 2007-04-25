@@ -2299,6 +2299,7 @@ literal|650
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//defaults.put("lastAutodetectedImport", "");
 comment|//defaults.put("autoRemoveExactDuplicates", Boolean.FALSE);
 comment|//defaults.put("confirmAutoRemoveExactDuplicates", Boolean.TRUE);
 comment|//defaults.put("tempDir", System.getProperty("java.io.tmpdir"));

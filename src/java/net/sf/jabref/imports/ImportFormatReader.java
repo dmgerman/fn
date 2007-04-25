@@ -2099,6 +2099,7 @@ name|bestResult
 init|=
 literal|0
 decl_stmt|;
+comment|/**String lastImport = Globals.prefs.get("lastAutodetectedImport");       for (Iterator i = getImportFormats().iterator(); i.hasNext();) { 			ImportFormat imFo = (ImportFormat) i.next();       **/
 comment|// Cycle through all importers:
 for|for
 control|(
