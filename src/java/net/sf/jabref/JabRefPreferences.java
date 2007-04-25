@@ -5228,9 +5228,29 @@ argument_list|)
 operator|==
 literal|null
 condition|)
-name|setDefaultExternalFileTypes
+block|{
+name|externalFileTypes
+operator|.
+name|clear
 argument_list|()
 expr_stmt|;
+name|List
+argument_list|<
+name|ExternalFileType
+argument_list|>
+name|list
+init|=
+name|getDefaultExternalFileTypes
+argument_list|()
+decl_stmt|;
+name|externalFileTypes
+operator|.
+name|addAll
+argument_list|(
+name|list
+argument_list|)
+expr_stmt|;
+block|}
 else|else
 block|{
 name|String
@@ -5291,13 +5311,29 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|setDefaultExternalFileTypes ()
-specifier|private
-name|void
-name|setDefaultExternalFileTypes
+DECL|method|getDefaultExternalFileTypes ()
+specifier|public
+name|List
+argument_list|<
+name|ExternalFileType
+argument_list|>
+name|getDefaultExternalFileTypes
 parameter_list|()
 block|{
-name|externalFileTypes
+name|List
+argument_list|<
+name|ExternalFileType
+argument_list|>
+name|list
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|ExternalFileType
+argument_list|>
+argument_list|()
+decl_stmt|;
+name|list
 operator|.
 name|add
 argument_list|(
@@ -5317,7 +5353,7 @@ literal|"pdfSmall"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|externalFileTypes
+name|list
 operator|.
 name|add
 argument_list|(
@@ -5337,7 +5373,7 @@ literal|"psSmall"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|externalFileTypes
+name|list
 operator|.
 name|add
 argument_list|(
@@ -5354,7 +5390,7 @@ literal|"openoffice"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|externalFileTypes
+name|list
 operator|.
 name|add
 argument_list|(
@@ -5371,7 +5407,7 @@ literal|"openoffice"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|externalFileTypes
+name|list
 operator|.
 name|add
 argument_list|(
@@ -5388,7 +5424,7 @@ literal|"openoffice"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|externalFileTypes
+name|list
 operator|.
 name|add
 argument_list|(
@@ -5405,7 +5441,7 @@ literal|"openoffice"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|externalFileTypes
+name|list
 operator|.
 name|add
 argument_list|(
@@ -5422,7 +5458,7 @@ literal|"picture"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|externalFileTypes
+name|list
 operator|.
 name|add
 argument_list|(
@@ -5439,7 +5475,7 @@ literal|"picture"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|externalFileTypes
+name|list
 operator|.
 name|add
 argument_list|(
@@ -5456,6 +5492,9 @@ literal|"emacs"
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return
+name|list
+return|;
 block|}
 DECL|method|getExternalFileTypeSelection ()
 specifier|public
@@ -5711,24 +5750,7 @@ name|i
 operator|++
 expr_stmt|;
 block|}
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Encoded: '"
-operator|+
-name|Util
-operator|.
-name|encodeStringArray
-argument_list|(
-name|array
-argument_list|)
-operator|+
-literal|"'"
-argument_list|)
-expr_stmt|;
+comment|//System.out.println("Encoded: '"+Util.encodeStringArray(array)+"'");
 name|put
 argument_list|(
 literal|"externalFileTypes"
@@ -5739,24 +5761,6 @@ name|encodeStringArray
 argument_list|(
 name|array
 argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Set the list of external file types back to the default, and the list stored      * in preferences, if any.      */
-DECL|method|resetExternalFileTypesToDefault ()
-specifier|public
-name|void
-name|resetExternalFileTypesToDefault
-parameter_list|()
-block|{
-name|setDefaultExternalFileTypes
-argument_list|()
-expr_stmt|;
-name|prefs
-operator|.
-name|remove
-argument_list|(
-literal|"externalFileTypes"
 argument_list|)
 expr_stmt|;
 block|}
