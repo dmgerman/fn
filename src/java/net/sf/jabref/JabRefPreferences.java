@@ -451,6 +451,24 @@ argument_list|,
 literal|"com.jgoodies.plaf.windows.ExtWindowsLookAndFeel"
 argument_list|)
 expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"winEdtPath"
+argument_list|,
+literal|"C:\\Program Files\\WinEdt Team\\WinEdt\\WinEdt.exe"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"latexEditorPath"
+argument_list|,
+literal|"C:\\Program Files\\LEd\\LEd.exe"
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -1381,24 +1399,6 @@ name|getProperty
 argument_list|(
 literal|"file.encoding"
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|defaults
-operator|.
-name|put
-argument_list|(
-literal|"winEdtPath"
-argument_list|,
-literal|"C:\\Program Files\\WinEdt Team\\WinEdt\\WinEdt.exe"
-argument_list|)
-expr_stmt|;
-name|defaults
-operator|.
-name|put
-argument_list|(
-literal|"latexEditorPath"
-argument_list|,
-literal|"C:\\Program Files\\LEd\\LEd.exe"
 argument_list|)
 expr_stmt|;
 name|defaults
