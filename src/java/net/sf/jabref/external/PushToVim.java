@@ -103,14 +103,14 @@ implements|implements
 name|PushToApplication
 block|{
 DECL|field|couldNotConnect
-DECL|field|couldNotRunVim
+DECL|field|couldNotRunClient
 specifier|private
 name|boolean
 name|couldNotConnect
 init|=
 literal|false
 decl_stmt|,
-name|couldNotRunVim
+name|couldNotRunClient
 init|=
 literal|false
 decl_stmt|;
@@ -196,7 +196,7 @@ name|couldNotConnect
 operator|=
 literal|false
 expr_stmt|;
-name|couldNotRunVim
+name|couldNotRunClient
 operator|=
 literal|false
 expr_stmt|;
@@ -206,53 +206,33 @@ name|String
 index|[]
 name|com
 init|=
-name|Globals
-operator|.
-name|ON_WIN
-condition|?
-comment|// Windows escaping:
-comment|// java string: "\\\\cite{Blah2001}"
-comment|// so cmd receives: "\\cite{Blah2001}"
-comment|// so vim receives: "\cite{Blah2001}"
 operator|new
 name|String
 index|[]
 block|{
-literal|"vim"
-block|,
-literal|"--remote-send"
-block|,
-literal|"\\\\"
-operator|+
 name|Globals
 operator|.
 name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommand"
-argument_list|)
-operator|+
-literal|"{"
-operator|+
-name|keys
-operator|+
-literal|"}"
-block|}
-else|:
-comment|// Linux escaping:
-comment|// java string: "\\cite{Blah2001}"
-comment|// so sh receives: "\cite{Blah2001}"
-comment|// so vim receives: "\cite{Blah2001}"
-operator|new
-name|String
-index|[]
-block|{
 literal|"vim"
+argument_list|)
+block|,
+literal|"--servername"
+block|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"vimServer"
+argument_list|)
 block|,
 literal|"--remote-send"
 block|,
-literal|"\\"
+literal|"<C-\\><C-N>a\\"
 operator|+
 name|Globals
 operator|.
@@ -417,7 +397,7 @@ name|IOException
 name|excep
 parameter_list|)
 block|{
-name|couldNotRunVim
+name|couldNotRunClient
 operator|=
 literal|true
 expr_stmt|;
@@ -464,34 +444,12 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Could not send to Vim. Make sure that Vim is running with"
+literal|"Could not connect to Vim server. Make sure that "
 operator|+
-literal|"the server option enabled."
-argument_list|)
-operator|+
-literal|"<BR>"
-operator|+
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"JabRef connects to the server "
-operator|+
-literal|"'vim', which is enabled by starting Vim with the option "
-operator|+
-literal|"'--servername vim'."
-argument_list|)
-operator|+
-literal|"<BR>"
-operator|+
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Also make sure that Vim is in Insert mode."
-argument_list|)
+literal|"Vim is running<BR>with correct server name."
 operator|+
 literal|"</HTML>"
+argument_list|)
 argument_list|,
 name|Globals
 operator|.
@@ -508,7 +466,7 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-name|couldNotRunVim
+name|couldNotRunClient
 condition|)
 name|JOptionPane
 operator|.
@@ -523,9 +481,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Could not run Vim. Make sure you have Vim installed and "
-operator|+
-literal|"the 'vim' command available on your path."
+literal|"Could not run the 'vim' program."
 argument_list|)
 argument_list|,
 name|Globals
