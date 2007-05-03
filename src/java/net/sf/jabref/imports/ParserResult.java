@@ -127,6 +127,14 @@ init|=
 literal|null
 decl_stmt|;
 comment|// Which encoding was used?
+DECL|field|jabrefVersion
+specifier|private
+name|String
+name|jabrefVersion
+init|=
+literal|null
+decl_stmt|;
+comment|// Which JabRef version wrote the file, if any?
 DECL|field|toOpenTab
 specifier|private
 name|boolean
@@ -192,6 +200,34 @@ operator|.
 name|toOpenTab
 operator|=
 name|toOpenTab
+expr_stmt|;
+block|}
+comment|/**      * Find which version of JabRef, if any, produced this bib file.      * @return The version number string, or null if no JabRef signature could be read.      */
+DECL|method|getJabrefVersion ()
+specifier|public
+name|String
+name|getJabrefVersion
+parameter_list|()
+block|{
+return|return
+name|jabrefVersion
+return|;
+block|}
+comment|/**      * Set the JabRef version number string for this parser result.      * @param jabrefVersion The version number string.                                               */
+DECL|method|setJabrefVersion (String jabrefVersion)
+specifier|public
+name|void
+name|setJabrefVersion
+parameter_list|(
+name|String
+name|jabrefVersion
+parameter_list|)
+block|{
+name|this
+operator|.
+name|jabrefVersion
+operator|=
+name|jabrefVersion
 expr_stmt|;
 block|}
 DECL|method|getDatabase ()
