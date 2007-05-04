@@ -135,6 +135,19 @@ init|=
 literal|null
 decl_stmt|;
 comment|// Which JabRef version wrote the file, if any?
+DECL|field|jabrefMajorVersion
+DECL|field|jabrefMinorVersion
+specifier|private
+name|int
+name|jabrefMajorVersion
+init|=
+literal|0
+decl_stmt|,
+name|jabrefMinorVersion
+init|=
+literal|0
+decl_stmt|;
+comment|// Numeric version representation
 DECL|field|toOpenTab
 specifier|private
 name|boolean
@@ -228,6 +241,58 @@ operator|.
 name|jabrefVersion
 operator|=
 name|jabrefVersion
+expr_stmt|;
+block|}
+DECL|method|getJabrefMajorVersion ()
+specifier|public
+name|int
+name|getJabrefMajorVersion
+parameter_list|()
+block|{
+return|return
+name|jabrefMajorVersion
+return|;
+block|}
+DECL|method|setJabrefMajorVersion (int jabrefMajorVersion)
+specifier|public
+name|void
+name|setJabrefMajorVersion
+parameter_list|(
+name|int
+name|jabrefMajorVersion
+parameter_list|)
+block|{
+name|this
+operator|.
+name|jabrefMajorVersion
+operator|=
+name|jabrefMajorVersion
+expr_stmt|;
+block|}
+DECL|method|getJabrefMinorVersion ()
+specifier|public
+name|int
+name|getJabrefMinorVersion
+parameter_list|()
+block|{
+return|return
+name|jabrefMinorVersion
+return|;
+block|}
+DECL|method|setJabrefMinorVersion (int jabrefMinorVersion)
+specifier|public
+name|void
+name|setJabrefMinorVersion
+parameter_list|(
+name|int
+name|jabrefMinorVersion
+parameter_list|)
+block|{
+name|this
+operator|.
+name|jabrefMinorVersion
+operator|=
+name|jabrefMinorVersion
 expr_stmt|;
 block|}
 DECL|method|getDatabase ()

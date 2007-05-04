@@ -648,7 +648,6 @@ argument_list|,
 name|ex
 argument_list|)
 expr_stmt|;
-comment|/*                 JOptionPane.showMessageDialog                         (frame, ex.getMessage(),                                 Globals.lang("Open database"), JOptionPane.ERROR_MESSAGE);                                 */
 block|}
 block|}
 block|}
