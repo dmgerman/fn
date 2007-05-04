@@ -406,10 +406,11 @@ expr_stmt|;
 name|putFormat
 argument_list|(
 operator|new
-name|MsBibExporter
+name|MSBibExportFormat
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// putFormat(new MsBibExporter());
 comment|//openofficeItem = new JMenuItem("OpenOffice Calc"),
 comment|//odsItem = new JMenuItem("OpenDocument Spreadsheet");
 block|}
