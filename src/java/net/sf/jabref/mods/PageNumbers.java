@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  * Created on Oct 29, 2004  *  * TODO To change the template for this generated file go to  * Window - Preferences - Java - Code Style - Code Templates  */
+comment|/*  * Created on Oct 29, 2004  * Updated on May 03, 2007  *  * TODO To change the template for this generated file go to  * Window - Preferences - Java - Code Style - Code Templates  */
 end_comment
 
 begin_package
@@ -147,7 +147,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author Michael Wrighton  *  * TODO To change the template for this generated type comment go to  * Window - Preferences - Java - Code Style - Code Templates  */
+comment|/**  * @author Michael Wrighton  * @author S M Mahbub Murshed  *  * TODO To change the template for this generated type comment go to  * Window - Preferences - Java - Code Style - Code Templates  */
 end_comment
 
 begin_class
@@ -159,6 +159,8 @@ block|{
 DECL|field|freeform
 name|String
 name|freeform
+init|=
+literal|null
 decl_stmt|;
 DECL|field|start
 DECL|field|end
@@ -190,6 +192,18 @@ name|String
 name|s
 parameter_list|)
 block|{
+name|s
+operator|=
+name|s
+operator|.
+name|replaceAll
+argument_list|(
+literal|""
+argument_list|,
+literal|"-"
+argument_list|)
+expr_stmt|;
+comment|// Remove special dash that looks like same but is not
 name|Pattern
 name|p
 init|=
@@ -197,7 +211,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"(\\d+)--(\\d+)"
+literal|"\\s*(\\d+)\\s*-{1,2}\\s*(\\d+)\\s*"
 argument_list|)
 decl_stmt|;
 name|Matcher
@@ -377,6 +391,47 @@ expr_stmt|;
 block|}
 return|return
 name|result
+return|;
+block|}
+DECL|method|toString (String seperator)
+specifier|public
+name|String
+name|toString
+parameter_list|(
+name|String
+name|seperator
+parameter_list|)
+block|{
+if|if
+condition|(
+name|freeform
+operator|!=
+literal|null
+condition|)
+return|return
+name|freeform
+return|;
+return|return
+operator|(
+name|start
+operator|+
+name|seperator
+operator|+
+name|end
+operator|)
+return|;
+block|}
+DECL|method|toString ()
+specifier|public
+name|String
+name|toString
+parameter_list|()
+block|{
+return|return
+name|toString
+argument_list|(
+literal|"--"
+argument_list|)
 return|;
 block|}
 block|}
