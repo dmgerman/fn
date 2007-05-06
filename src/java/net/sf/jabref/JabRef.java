@@ -3922,6 +3922,9 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+name|BasePanel
+name|panel
+init|=
 name|jrf
 operator|.
 name|addTab
@@ -3948,7 +3951,7 @@ argument_list|()
 argument_list|,
 name|first
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|first
 operator|=
 literal|false
@@ -4176,6 +4179,64 @@ name|WARNING_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|// After adding the databases, go through each and see if
+comment|// any post open actions need to be done. For instance, checking
+comment|// if we found new entry types that can be imported, or checking
+comment|// if the database contents should be modified due to new features
+comment|// in this version of JabRef:
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|loaded
+operator|.
+name|size
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|ParserResult
+name|pr
+init|=
+operator|(
+name|ParserResult
+operator|)
+name|loaded
+operator|.
+name|elementAt
+argument_list|(
+name|i
+argument_list|)
+decl_stmt|;
+name|BasePanel
+name|panel
+init|=
+name|jrf
+operator|.
+name|baseAt
+argument_list|(
+name|i
+argument_list|)
+decl_stmt|;
+name|OpenDatabaseAction
+operator|.
+name|performPostOpenActions
+argument_list|(
+name|panel
+argument_list|,
+name|pr
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 comment|//Util.pr(": Finished adding panels");
 if|if
