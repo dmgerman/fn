@@ -293,7 +293,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class holds the functionality of autolinking to a file that's dropped  * onto an entry.  *   * Options for handling the files are: 1) Link to the file in its current  * position (disabled if the file is remote) 2) Copy the file to ??? directory,  * rename after bibtex key, and extension 3) Move the file to ??? directory, rename  * after bibtex key, and extension  */
+comment|/**  * This class holds the functionality of autolinking to a file that's dropped  * onto an entry.  *   * Options for handling the files are:  *   * 1) Link to the file in its current position (disabled if the file is remote)  *   * 2) Copy the file to ??? directory, rename after bibtex key, and extension  *   * 3) Move the file to ??? directory, rename after bibtex key, and extension  */
 end_comment
 
 begin_class
@@ -357,15 +357,6 @@ DECL|field|optionsPanel
 specifier|private
 name|JPanel
 name|optionsPanel
-init|=
-operator|new
-name|JPanel
-argument_list|()
-decl_stmt|;
-DECL|field|importAsNewPanel
-specifier|private
-name|JPanel
-name|importAsNewPanel
 init|=
 operator|new
 name|JPanel
@@ -796,13 +787,13 @@ literal|false
 return|;
 block|}
 name|List
-name|l
+name|xmpEntriesInFile
 init|=
 literal|null
 decl_stmt|;
 try|try
 block|{
-name|l
+name|xmpEntriesInFile
 operator|=
 name|XMPUtil
 operator|.
@@ -825,13 +816,13 @@ block|}
 if|if
 condition|(
 operator|(
-name|l
+name|xmpEntriesInFile
 operator|==
 literal|null
 operator|)
 operator|||
 operator|(
-name|l
+name|xmpEntriesInFile
 operator|.
 name|size
 argument_list|()
@@ -919,7 +910,7 @@ comment|/*          * TODO Extract Import functionality from ImportMenuItem then
 name|boolean
 name|isSingle
 init|=
-name|l
+name|xmpEntriesInFile
 operator|.
 name|size
 argument_list|()
@@ -935,7 +926,7 @@ condition|?
 operator|(
 name|BibtexEntry
 operator|)
-name|l
+name|xmpEntriesInFile
 operator|.
 name|get
 argument_list|(
@@ -1085,7 +1076,7 @@ block|{
 name|Iterator
 name|it
 init|=
-name|l
+name|xmpEntriesInFile
 operator|.
 name|iterator
 argument_list|()
@@ -1341,11 +1332,6 @@ block|}
 decl_stmt|;
 if|if
 condition|(
-name|newEntry
-condition|)
-block|{
-if|if
-condition|(
 name|multipleEntries
 condition|)
 block|{
@@ -1357,7 +1343,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Link from new entries."
+literal|"Leave files in their current directory."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1369,7 +1355,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Copy to %0 directory and extension from new entries."
+literal|"Copy files to %0."
 argument_list|,
 name|fileType
 operator|.
@@ -1386,7 +1372,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Move to %0 directory and extension from new entries."
+literal|"Move files to %0."
 argument_list|,
 name|fileType
 operator|.
@@ -1406,7 +1392,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Link from new entry"
+literal|"Leave file in its current directory."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1418,7 +1404,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Copy to %0 directory and extension from new entry."
+literal|"Copy file to %0."
 argument_list|,
 name|fileType
 operator|.
@@ -1435,7 +1421,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Move to %0 directory and extension from new entry."
+literal|"Move file to %0."
 argument_list|,
 name|fileType
 operator|.
@@ -1444,111 +1430,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-block|}
-else|else
-block|{
-if|if
-condition|(
-name|multipleEntries
-condition|)
-block|{
-name|linkInPlace
-operator|.
-name|setText
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Link from entries."
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|copyRadioButton
-operator|.
-name|setText
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Copy to %0 directory and extension from entries."
-argument_list|,
-name|fileType
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|moveRadioButton
-operator|.
-name|setText
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Move to %0 directory and extension from entries."
-argument_list|,
-name|fileType
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|linkInPlace
-operator|.
-name|setText
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Link from entry"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|copyRadioButton
-operator|.
-name|setText
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Copy to %0 directory and extension from entry."
-argument_list|,
-name|fileType
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|moveRadioButton
-operator|.
-name|setText
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Move to %0 directory and extension from entry."
-argument_list|,
-name|fileType
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 name|renameCheckBox
 operator|.
