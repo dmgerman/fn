@@ -587,7 +587,12 @@ operator|.
 name|getCiteKey
 argument_list|()
 else|:
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Entry has no citekey"
+argument_list|)
 operator|)
 decl_stmt|;
 name|int
@@ -961,7 +966,12 @@ operator|.
 name|getCiteKey
 argument_list|()
 else|:
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Cannot rename for several entries."
+argument_list|)
 operator|)
 argument_list|,
 literal|false
@@ -1435,7 +1445,14 @@ name|renameCheckBox
 operator|.
 name|setText
 argument_list|(
-literal|"Rename to match citekey: "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Rename to match citekey"
+argument_list|)
+operator|+
+literal|": "
 operator|+
 name|citekeyOrReason
 argument_list|)
