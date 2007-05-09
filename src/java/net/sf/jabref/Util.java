@@ -3789,6 +3789,16 @@ throws|throws
 name|IOException
 block|{
 name|String
+name|cancelMessage
+init|=
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Unable to open file."
+argument_list|)
+decl_stmt|;
+name|String
 index|[]
 name|options
 init|=
@@ -3887,12 +3897,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Unable to open file."
-argument_list|)
+name|cancelMessage
 argument_list|)
 expr_stmt|;
 return|return;
@@ -4046,12 +4051,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Unable to open file."
-argument_list|)
+name|cancelMessage
 argument_list|)
 expr_stmt|;
 return|return;
@@ -4276,12 +4276,7 @@ name|frame
 operator|.
 name|output
 argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Unable to open file."
-argument_list|)
+name|cancelMessage
 argument_list|)
 expr_stmt|;
 return|return;
