@@ -1356,11 +1356,6 @@ name|openExternalFileAnyFormat
 argument_list|(
 name|panel
 operator|.
-name|frame
-argument_list|()
-argument_list|,
-name|panel
-operator|.
 name|metaData
 argument_list|()
 argument_list|,
@@ -1686,6 +1681,8 @@ operator|.
 name|frame
 argument_list|()
 argument_list|,
+name|entry
+argument_list|,
 name|description
 argument_list|,
 name|flEntry
@@ -1768,6 +1765,8 @@ name|panel
 operator|.
 name|frame
 argument_list|()
+argument_list|,
+name|entry
 argument_list|,
 operator|(
 name|String
