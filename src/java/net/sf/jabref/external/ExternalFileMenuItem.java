@@ -50,6 +50,18 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefFrame
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -131,10 +143,18 @@ specifier|final
 name|ExternalFileType
 name|fileType
 decl_stmt|;
-DECL|method|ExternalFileMenuItem (String name, String link, Icon icon, MetaData metaData, ExternalFileType fileType)
+DECL|field|frame
+specifier|final
+name|JabRefFrame
+name|frame
+decl_stmt|;
+DECL|method|ExternalFileMenuItem (JabRefFrame frame, String name, String link, Icon icon, MetaData metaData, ExternalFileType fileType)
 specifier|public
 name|ExternalFileMenuItem
 parameter_list|(
+name|JabRefFrame
+name|frame
+parameter_list|,
 name|String
 name|name
 parameter_list|,
@@ -160,6 +180,12 @@ argument_list|)
 expr_stmt|;
 name|this
 operator|.
+name|frame
+operator|=
+name|frame
+expr_stmt|;
+name|this
+operator|.
 name|link
 operator|=
 name|link
@@ -182,10 +208,13 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ExternalFileMenuItem (String name, String link, Icon icon, MetaData metaData)
+DECL|method|ExternalFileMenuItem (JabRefFrame frame, String name, String link, Icon icon, MetaData metaData)
 specifier|public
 name|ExternalFileMenuItem
 parameter_list|(
+name|JabRefFrame
+name|frame
+parameter_list|,
 name|String
 name|name
 parameter_list|,
@@ -201,6 +230,8 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
+name|frame
+argument_list|,
 name|name
 argument_list|,
 name|link
@@ -236,6 +267,8 @@ name|Util
 operator|.
 name|openExternalFileAnyFormat
 argument_list|(
+name|frame
+argument_list|,
 name|metaData
 argument_list|,
 name|link
@@ -330,6 +363,8 @@ name|Util
 operator|.
 name|openExternalFileAnyFormat
 argument_list|(
+name|frame
+argument_list|,
 name|metaData
 argument_list|,
 name|link

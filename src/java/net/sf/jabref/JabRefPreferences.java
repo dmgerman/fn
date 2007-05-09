@@ -172,6 +172,20 @@ name|ExternalFileType
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|external
+operator|.
+name|UnknownExternalFileType
+import|;
+end_import
+
 begin_class
 DECL|class|JabRefPreferences
 specifier|public
@@ -2315,6 +2329,17 @@ name|Integer
 argument_list|(
 literal|650
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"showFileLinksUpgradeWarning"
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
 argument_list|)
 expr_stmt|;
 comment|//defaults.put("lastAutodetectedImport", "");
@@ -5596,8 +5621,13 @@ return|return
 name|type
 return|;
 block|}
+comment|// Return an instance that signifies an unknown file type:
 return|return
-literal|null
+operator|new
+name|UnknownExternalFileType
+argument_list|(
+name|name
+argument_list|)
 return|;
 block|}
 comment|/**      * Look up the external file type registered for this extension, if any.      * @param extension The file extension.      * @return The ExternalFileType registered, or null if none.      */

@@ -35,7 +35,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Mar 4, 2006  * Time: 4:27:05 PM  * To change this template use File | Settings | File Templates.  */
+comment|/**  * This class defines a type of external files that can be linked to from JabRef.  * The class contains enough information to provide an icon, a standard extension  * and a link to which application handles files of this type.  */
 end_comment
 
 begin_class

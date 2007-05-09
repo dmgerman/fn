@@ -634,10 +634,6 @@ name|int
 name|wrapAmount
 parameter_list|)
 block|{
-comment|// JZ: due to the formatting/wrapping bug, I temporarily disabled
-comment|// the below code to prevent JabRef from modifying .bib files in
-comment|// a way that may require manual correction.
-comment|//return in;
 name|String
 index|[]
 name|lines

@@ -133,7 +133,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Add the action for the new external file handling system in version 2.3:
-comment|// postOpenActions.add(new FileLinksUpgradeWarning());
+comment|//postOpenActions.add(new FileLinksUpgradeWarning());
 block|}
 DECL|method|OpenDatabaseAction (JabRefFrame frame, boolean showDialog)
 specifier|public
