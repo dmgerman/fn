@@ -147,7 +147,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class produces a dialog box for editing a single file link from a Bibtex entry.  *  * The information to be edited includes the file description, the link itself and the  * file type. The dialog also includes convenience buttons for quick linking.  */
+comment|/**  * This class produces a dialog box for editing a single file link from a Bibtex entry.  *  * The information to be edited includes the file description, the link itself and the  * file type. The dialog also includes convenience buttons for quick linking.  *  * For use when downloading files, this class also offers a progress bar and a "Downloading..."  * label that can be hidden when the download is complete.  */
 end_comment
 
 begin_class
@@ -208,6 +208,33 @@ DECL|field|types
 name|JComboBox
 name|types
 decl_stmt|;
+DECL|field|prog
+name|JProgressBar
+name|prog
+init|=
+operator|new
+name|JProgressBar
+argument_list|(
+name|JProgressBar
+operator|.
+name|HORIZONTAL
+argument_list|)
+decl_stmt|;
+DECL|field|downloadLabel
+name|JLabel
+name|downloadLabel
+init|=
+operator|new
+name|JLabel
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Downloading..."
+argument_list|)
+argument_list|)
+decl_stmt|;
 DECL|field|entry
 specifier|private
 name|FileListEntry
@@ -220,7 +247,7 @@ name|okPressed
 init|=
 literal|false
 decl_stmt|;
-DECL|method|FileListEntryEditor (JFrame parent, FileListEntry entry)
+DECL|method|FileListEntryEditor (JFrame parent, FileListEntry entry, boolean showProgressBar)
 specifier|public
 name|FileListEntryEditor
 parameter_list|(
@@ -229,6 +256,9 @@ name|parent
 parameter_list|,
 name|FileListEntry
 name|entry
+parameter_list|,
+name|boolean
+name|showProgressBar
 parameter_list|)
 block|{
 name|this
@@ -424,6 +454,31 @@ argument_list|(
 name|types
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|showProgressBar
+condition|)
+block|{
+name|builder
+operator|.
+name|nextLine
+argument_list|()
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|downloadLabel
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|prog
+argument_list|)
+expr_stmt|;
+block|}
 name|ButtonBarBuilder
 name|bb
 init|=
@@ -720,6 +775,43 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|setOkEnabled (boolean enabled)
+specifier|public
+name|void
+name|setOkEnabled
+parameter_list|(
+name|boolean
+name|enabled
+parameter_list|)
+block|{
+name|ok
+operator|.
+name|setEnabled
+argument_list|(
+name|enabled
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|getProgressBar ()
+specifier|public
+name|JProgressBar
+name|getProgressBar
+parameter_list|()
+block|{
+return|return
+name|prog
+return|;
+block|}
+DECL|method|getProgressBarLabel ()
+specifier|public
+name|JLabel
+name|getProgressBarLabel
+parameter_list|()
+block|{
+return|return
+name|downloadLabel
+return|;
 block|}
 DECL|method|setEntry (FileListEntry entry)
 specifier|public

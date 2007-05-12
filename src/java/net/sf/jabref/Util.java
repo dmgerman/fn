@@ -356,18 +356,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|undo
-operator|.
-name|CompoundEdit
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -423,20 +411,6 @@ operator|.
 name|external
 operator|.
 name|UnknownExternalFileType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|external
-operator|.
-name|ExternalFileTypeEditor
 import|;
 end_import
 
@@ -4178,6 +4152,8 @@ argument_list|(
 name|frame
 argument_list|,
 name|flEntry
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 name|editor
