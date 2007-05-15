@@ -850,7 +850,14 @@ parameter_list|)
 block|{
 comment|// TODO: getFileDirectory()
 return|return
-literal|"/home/alver"
+name|metaData
+operator|.
+name|getFileDirectory
+argument_list|(
+name|GUIGlobals
+operator|.
+name|FILE_FIELD
+argument_list|)
 return|;
 block|}
 block|}
