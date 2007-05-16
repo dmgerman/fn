@@ -192,18 +192,6 @@ name|String
 name|s
 parameter_list|)
 block|{
-name|s
-operator|=
-name|s
-operator|.
-name|replaceAll
-argument_list|(
-literal|""
-argument_list|,
-literal|"-"
-argument_list|)
-expr_stmt|;
-comment|// Remove special dash that looks like same but is not
 name|Pattern
 name|p
 init|=
