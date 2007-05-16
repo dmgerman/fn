@@ -51,7 +51,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author Michael Wrighton  *  * TODO To change the template for this generated type comment go to  * Window - Preferences - Java - Code Style - Code Templates  */
+comment|/**  * @author Michael Wrighton, S M Mahbub Murshed  *  * TODO To change the template for this generated type comment go to  * Window - Preferences - Java - Code Style - Code Templates  *   * S M Mahbub Murshed : added few functions for convenience. May 15, 2007  */
 end_comment
 
 begin_class
@@ -81,6 +81,11 @@ name|middleName
 init|=
 literal|null
 decl_stmt|;
+DECL|method|PersonName ()
+specifier|public
+name|PersonName
+parameter_list|()
+block|{     }
 DECL|method|PersonName (String name)
 specifier|public
 name|PersonName
@@ -93,6 +98,33 @@ name|parseName
 argument_list|(
 name|name
 argument_list|)
+expr_stmt|;
+block|}
+DECL|method|PersonName (String firstName, String _middleName, String lastName)
+specifier|public
+name|PersonName
+parameter_list|(
+name|String
+name|firstName
+parameter_list|,
+name|String
+name|_middleName
+parameter_list|,
+name|String
+name|lastName
+parameter_list|)
+block|{
+name|givenName
+operator|=
+name|firstName
+expr_stmt|;
+name|middleName
+operator|=
+name|_middleName
+expr_stmt|;
+name|surname
+operator|=
+name|lastName
 expr_stmt|;
 block|}
 DECL|method|parseName (String author)
@@ -277,6 +309,20 @@ return|return
 name|surname
 return|;
 block|}
+DECL|method|setSurname (String lastName)
+specifier|public
+name|void
+name|setSurname
+parameter_list|(
+name|String
+name|lastName
+parameter_list|)
+block|{
+name|surname
+operator|=
+name|lastName
+expr_stmt|;
+block|}
 DECL|method|getFirstname ()
 specifier|public
 name|String
@@ -287,6 +333,20 @@ return|return
 name|givenName
 return|;
 block|}
+DECL|method|setFirstname (String firstName)
+specifier|public
+name|void
+name|setFirstname
+parameter_list|(
+name|String
+name|firstName
+parameter_list|)
+block|{
+name|givenName
+operator|=
+name|firstName
+expr_stmt|;
+block|}
 DECL|method|getMiddlename ()
 specifier|public
 name|String
@@ -295,6 +355,84 @@ parameter_list|()
 block|{
 return|return
 name|middleName
+return|;
+block|}
+DECL|method|setMiddlename (String _middleName)
+specifier|public
+name|void
+name|setMiddlename
+parameter_list|(
+name|String
+name|_middleName
+parameter_list|)
+block|{
+name|middleName
+operator|=
+name|_middleName
+expr_stmt|;
+block|}
+DECL|method|getFullname ()
+specifier|public
+name|String
+name|getFullname
+parameter_list|()
+block|{
+name|String
+name|fullName
+init|=
+literal|""
+decl_stmt|;
+if|if
+condition|(
+name|givenName
+operator|!=
+literal|null
+operator|&&
+name|givenName
+operator|!=
+literal|""
+condition|)
+name|fullName
+operator|+=
+name|givenName
+operator|+
+literal|" "
+expr_stmt|;
+if|if
+condition|(
+name|middleName
+operator|!=
+literal|null
+operator|&&
+name|middleName
+operator|!=
+literal|""
+condition|)
+name|fullName
+operator|+=
+name|middleName
+operator|+
+literal|" "
+expr_stmt|;
+if|if
+condition|(
+name|surname
+operator|!=
+literal|null
+operator|&&
+name|surname
+operator|!=
+literal|""
+condition|)
+name|fullName
+operator|+=
+name|surname
+expr_stmt|;
+return|return
+name|fullName
+operator|.
+name|trim
+argument_list|()
 return|;
 block|}
 DECL|method|toString ()
