@@ -52,6 +52,44 @@ name|IOException
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|msbib
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|parsers
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|w3c
+operator|.
+name|dom
+operator|.
+name|*
+import|;
+end_import
+
 begin_comment
 comment|/**  * Importer for the MS Office 2007 XML bibliography format  * By S. M. Mahbub Murshed  *  * ...  */
 end_comment
@@ -76,8 +114,87 @@ throws|throws
 name|IOException
 block|{
 comment|/*             This method is available for checking if a file can be of the MSBib type.             The effect of this method is primarily to avoid unnecessary processing of             files when searching for a suitable import format. If this method returns             false, the import routine will move on to the next import format.              The correct behaviour is to return false if it is certain that the file is             not of the MsBib type, and true otherwise. Returning true is the safe choice             if not certain.          */
+name|Document
+name|docin
+init|=
+literal|null
+decl_stmt|;
+try|try
+block|{
+name|DocumentBuilder
+name|dbuild
+init|=
+name|DocumentBuilderFactory
+operator|.
+name|newInstance
+argument_list|()
+operator|.
+name|newDocumentBuilder
+argument_list|()
+decl_stmt|;
+name|docin
+operator|=
+name|dbuild
+operator|.
+name|parse
+argument_list|(
+name|in
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+if|if
+condition|(
+name|docin
+operator|!=
+literal|null
+operator|&&
+name|docin
+operator|.
+name|getDocumentElement
+argument_list|()
+operator|.
+name|getTagName
+argument_list|()
+operator|.
+name|contains
+argument_list|(
+literal|"Sources"
+argument_list|)
+operator|==
+literal|false
+condition|)
+return|return
+literal|false
+return|;
+comment|//   		NodeList rootLst = docin.getElementsByTagName("b:Sources");
+comment|//   		if(rootLst.getLength()==0)
+comment|//   			rootLst = docin.getElementsByTagName("Sources");
+comment|//   		if(rootLst.getLength()==0)
+comment|//   			return false;
+comment|// System.out.println(docin.getDocumentElement().getTagName());
 return|return
 literal|true
+return|;
+block|}
+comment|/** 	 * String used to identify this import filter on the command line. 	 *  	 * @override 	 * @return "msbib" 	 */
+DECL|method|getCLIid ()
+specifier|public
+name|String
+name|getCLIid
+parameter_list|()
+block|{
+return|return
+literal|"msbib"
 return|;
 block|}
 DECL|method|importEntries (InputStream in)
@@ -91,27 +208,26 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Hello world MsBibImporter"
-argument_list|)
-expr_stmt|;
+name|MSBibDatabase
+name|dbase
+init|=
+operator|new
+name|MSBibDatabase
+argument_list|()
+decl_stmt|;
 name|List
 name|entries
 init|=
-operator|new
-name|ArrayList
-argument_list|()
+name|dbase
+operator|.
+name|importEntries
+argument_list|(
+name|in
+argument_list|)
 decl_stmt|;
-comment|/*             This method should read the input stream until the end, and add any entries             found to a List which is returned. If the stream doesn't contain any useful             data (is of the wrong format?) you can return null to signal that this is the             wrong import filter.          */
 return|return
-literal|null
+name|entries
 return|;
-comment|//return entries;
 block|}
 DECL|method|getFormatName ()
 specifier|public
