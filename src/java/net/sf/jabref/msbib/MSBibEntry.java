@@ -173,7 +173,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author S M Mahbub Murshed  * @email udvranto@yahoo.com  *  * @version 2.0.0  * @see http://mahbub.wordpress.com/2007/03/24/details-of-microsoft-office-2007-bibliographic-format-compared-to-bibtex/  * @see http://mahbub.wordpress.com/2007/03/22/deciphering-microsoft-office-2007-bibliography-format/  *   * Date: May 15, 2007; May 03, 2007  *   * History  * May 03, 2007 - Added export functionality  * May 15, 2007 - Added import functionality  */
+comment|/**  * @author S M Mahbub Murshed  * @email udvranto@yahoo.com  *  * @version 2.0.0  * @see http://mahbub.wordpress.com/2007/03/24/details-of-microsoft-office-2007-bibliographic-format-compared-to-bibtex/  * @see http://mahbub.wordpress.com/2007/03/22/deciphering-microsoft-office-2007-bibliography-format/  *   * Date: May 15, 2007; May 03, 2007  *   * History  * May 03, 2007 - Added export functionality  * May 15, 2007 - Added import functionality  * May 16, 2007 - Changed all interger entries to strings,  * 				  except LCID which must be an integer.  * 				  To avoid exception during integer parsing  *				  the exception is caught and LCID is set to zero.  */
 end_comment
 
 begin_class
@@ -381,11 +381,10 @@ literal|null
 decl_stmt|;
 DECL|field|numberOfVolumes
 specifier|protected
-name|int
+name|String
 name|numberOfVolumes
 init|=
-operator|-
-literal|1
+literal|null
 decl_stmt|;
 DECL|field|edition
 specifier|protected
@@ -424,11 +423,10 @@ literal|null
 decl_stmt|;
 DECL|field|chapterNumber
 specifier|protected
-name|int
+name|String
 name|chapterNumber
 init|=
-operator|-
-literal|1
+literal|null
 decl_stmt|;
 DECL|field|journalName
 specifier|protected
@@ -439,11 +437,10 @@ literal|null
 decl_stmt|;
 DECL|field|issue
 specifier|protected
-name|int
+name|String
 name|issue
 init|=
-operator|-
-literal|1
+literal|null
 decl_stmt|;
 DECL|field|periodicalTitle
 specifier|protected
@@ -867,6 +864,9 @@ name|temp
 operator|!=
 literal|null
 condition|)
+block|{
+try|try
+block|{
 name|LCID
 operator|=
 name|Integer
@@ -876,6 +876,19 @@ argument_list|(
 name|temp
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{
+name|LCID
+operator|=
+literal|0
+expr_stmt|;
+block|}
+block|}
 name|title
 operator|=
 name|getFromXml
@@ -978,7 +991,7 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-name|temp
+name|numberOfVolumes
 operator|=
 name|getFromXml
 argument_list|(
@@ -987,21 +1000,6 @@ operator|+
 literal|"NumberVolumes"
 argument_list|,
 name|entry
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|temp
-operator|!=
-literal|null
-condition|)
-name|numberOfVolumes
-operator|=
-name|Integer
-operator|.
-name|parseInt
-argument_list|(
-name|temp
 argument_list|)
 expr_stmt|;
 name|edition
@@ -1149,7 +1147,7 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-name|temp
+name|chapterNumber
 operator|=
 name|getFromXml
 argument_list|(
@@ -1158,21 +1156,6 @@ operator|+
 literal|"ChapterNumber"
 argument_list|,
 name|entry
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|temp
-operator|!=
-literal|null
-condition|)
-name|chapterNumber
-operator|=
-name|Integer
-operator|.
-name|parseInt
-argument_list|(
-name|temp
 argument_list|)
 expr_stmt|;
 name|journalName
@@ -1186,7 +1169,7 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-name|temp
+name|issue
 operator|=
 name|getFromXml
 argument_list|(
@@ -1195,21 +1178,6 @@ operator|+
 literal|"Issue"
 argument_list|,
 name|entry
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|temp
-operator|!=
-literal|null
-condition|)
-name|issue
-operator|=
-name|Integer
-operator|.
-name|parseInt
-argument_list|(
-name|temp
 argument_list|)
 expr_stmt|;
 name|periodicalTitle
@@ -2012,10 +1980,6 @@ literal|null
 condition|)
 name|numberOfVolumes
 operator|=
-name|Integer
-operator|.
-name|parseInt
-argument_list|(
 name|bibtex
 operator|.
 name|getField
@@ -2027,7 +1991,6 @@ argument_list|)
 operator|.
 name|toString
 argument_list|()
-argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -2240,10 +2203,6 @@ literal|null
 condition|)
 name|chapterNumber
 operator|=
-name|Integer
-operator|.
-name|parseInt
-argument_list|(
 name|bibtex
 operator|.
 name|getField
@@ -2253,7 +2212,6 @@ argument_list|)
 operator|.
 name|toString
 argument_list|()
-argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -2291,10 +2249,6 @@ literal|null
 condition|)
 name|issue
 operator|=
-name|Integer
-operator|.
-name|parseInt
-argument_list|(
 name|bibtex
 operator|.
 name|getField
@@ -2304,7 +2258,6 @@ argument_list|)
 operator|.
 name|toString
 argument_list|()
-argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -3428,6 +3381,26 @@ decl_stmt|;
 comment|// TODO: add lanaguage to LCID mapping
 return|return
 name|iLCID
+return|;
+block|}
+comment|// http://www.microsoft.com/globaldev/reference/lcid-all.mspx
+DECL|method|getLanguage (int LCID)
+specifier|protected
+name|String
+name|getLanguage
+parameter_list|(
+name|int
+name|LCID
+parameter_list|)
+block|{
+name|String
+name|language
+init|=
+literal|"english"
+decl_stmt|;
+comment|// TODO: add lanaguage to LCID mapping
+return|return
+name|language
 return|;
 block|}
 DECL|method|getSpecificAuthors (String type, Element authors, String _bcol)
@@ -5308,12 +5281,7 @@ name|msbibEntry
 argument_list|,
 literal|"NumberVolumes"
 argument_list|,
-name|Integer
-operator|.
-name|toString
-argument_list|(
 name|numberOfVolumes
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|addField
@@ -5377,12 +5345,7 @@ name|msbibEntry
 argument_list|,
 literal|"ChapterNumber"
 argument_list|,
-name|Integer
-operator|.
-name|toString
-argument_list|(
 name|chapterNumber
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|addField
@@ -5404,12 +5367,7 @@ name|msbibEntry
 argument_list|,
 literal|"Issue"
 argument_list|,
-name|Integer
-operator|.
-name|toString
-argument_list|(
 name|issue
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|addField
@@ -6547,9 +6505,7 @@ name|put
 argument_list|(
 literal|"language"
 argument_list|,
-name|Integer
-operator|.
-name|toString
+name|getLanguage
 argument_list|(
 name|LCID
 argument_list|)
@@ -6816,8 +6772,8 @@ expr_stmt|;
 if|if
 condition|(
 name|numberOfVolumes
-operator|>=
-literal|0
+operator|!=
+literal|null
 condition|)
 name|hm
 operator|.
@@ -6827,12 +6783,7 @@ name|MSBIB
 operator|+
 literal|"numberofvolume"
 argument_list|,
-name|Integer
-operator|.
-name|toString
-argument_list|(
 name|numberOfVolumes
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -6935,8 +6886,8 @@ expr_stmt|;
 if|if
 condition|(
 name|chapterNumber
-operator|>=
-literal|0
+operator|!=
+literal|null
 condition|)
 name|hm
 operator|.
@@ -6944,12 +6895,7 @@ name|put
 argument_list|(
 literal|"chapter"
 argument_list|,
-name|Integer
-operator|.
-name|toString
-argument_list|(
 name|chapterNumber
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -6970,8 +6916,8 @@ expr_stmt|;
 if|if
 condition|(
 name|issue
-operator|>=
-literal|0
+operator|!=
+literal|null
 condition|)
 name|hm
 operator|.
@@ -6979,12 +6925,7 @@ name|put
 argument_list|(
 literal|"number"
 argument_list|,
-name|Integer
-operator|.
-name|toString
-argument_list|(
 name|issue
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
