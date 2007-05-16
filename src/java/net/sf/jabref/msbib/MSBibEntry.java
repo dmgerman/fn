@@ -3509,6 +3509,42 @@ condition|)
 return|return
 name|result
 return|;
+name|NodeList
+name|person
+init|=
+operator|(
+call|(
+name|Element
+call|)
+argument_list|(
+name|nodeLst
+operator|.
+name|item
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
+operator|)
+operator|.
+name|getElementsByTagName
+argument_list|(
+name|_bcol
+operator|+
+literal|"Person"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|person
+operator|.
+name|getLength
+argument_list|()
+operator|<=
+literal|0
+condition|)
+return|return
+name|result
+return|;
 name|result
 operator|=
 operator|new
@@ -3524,7 +3560,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|nodeLst
+name|person
 operator|.
 name|getLength
 argument_list|()
@@ -3541,7 +3577,7 @@ call|(
 name|Element
 call|)
 argument_list|(
-name|nodeLst
+name|person
 operator|.
 name|item
 argument_list|(
@@ -3565,7 +3601,7 @@ call|(
 name|Element
 call|)
 argument_list|(
-name|nodeLst
+name|person
 operator|.
 name|item
 argument_list|(
@@ -3589,7 +3625,7 @@ call|(
 name|Element
 call|)
 argument_list|(
-name|nodeLst
+name|person
 operator|.
 name|item
 argument_list|(
@@ -6003,7 +6039,7 @@ literal|false
 condition|)
 name|allAuthors
 operator|+=
-literal|"; "
+literal|" and "
 expr_stmt|;
 name|allAuthors
 operator|+=
