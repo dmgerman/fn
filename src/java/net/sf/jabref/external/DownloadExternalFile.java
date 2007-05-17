@@ -543,6 +543,18 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// If this is a relative link, we should perhaps append the directory:
+name|String
+name|dirPrefix
+init|=
+name|directory
+operator|+
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"file.separator"
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -557,14 +569,7 @@ operator|=
 operator|new
 name|File
 argument_list|(
-name|directory
-operator|+
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"file.separator"
-argument_list|)
+name|dirPrefix
 operator|+
 name|entry
 operator|.
@@ -603,6 +608,55 @@ operator|.
 name|println
 argument_list|(
 literal|"File already exists! DownloadExternalFile.download()"
+argument_list|)
+expr_stmt|;
+block|}
+comment|// If the local file is in or below the main file directory, change the
+comment|// path to relative:
+if|if
+condition|(
+name|entry
+operator|.
+name|getLink
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+name|directory
+argument_list|)
+operator|&&
+operator|(
+name|entry
+operator|.
+name|getLink
+argument_list|()
+operator|.
+name|length
+argument_list|()
+operator|>
+name|dirPrefix
+operator|.
+name|length
+argument_list|()
+operator|)
+condition|)
+block|{
+name|entry
+operator|.
+name|setLink
+argument_list|(
+name|entry
+operator|.
+name|getLink
+argument_list|()
+operator|.
+name|substring
+argument_list|(
+name|dirPrefix
+operator|.
+name|length
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -645,8 +699,6 @@ name|delete
 argument_list|()
 expr_stmt|;
 block|}
-comment|/*         if (!new File(directory).exists()) {             JOptionPane.showMessageDialog(frame, Globals.lang(                     "Could not find download directory: %0", directory),                     Globals.lang("Download file"), JOptionPane.ERROR_MESSAGE);             return;         }            String textToSet = file.getPath();         if (textToSet.startsWith(directory)) {             // Construct path relative to pdf base dir             textToSet = textToSet.substring(directory.length(), textToSet.length());              // Remove leading path separator             if (textToSet.startsWith(File.separator)) {                 textToSet = textToSet.substring(File.separator.length());             }         }         */
-comment|//callback.downloadComplete(textToSet);
 block|}
 comment|/**      * This is called by the download thread when download is completed.      */
 DECL|method|downloadFinished ()

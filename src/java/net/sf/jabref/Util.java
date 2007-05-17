@@ -3400,6 +3400,31 @@ argument_list|(
 name|extension
 argument_list|)
 decl_stmt|;
+comment|// Include the standard "file" directory:
+name|String
+name|fileDir
+init|=
+name|metaData
+operator|.
+name|getFileDirectory
+argument_list|(
+name|GUIGlobals
+operator|.
+name|FILE_FIELD
+argument_list|)
+decl_stmt|;
+comment|// Include the directory of the bib file:
+name|String
+name|databaseDir
+init|=
+name|metaData
+operator|.
+name|getFile
+argument_list|()
+operator|.
+name|getParent
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|dir
@@ -3420,7 +3445,9 @@ index|[]
 block|{
 name|dir
 block|,
-literal|"."
+name|fileDir
+block|,
+name|databaseDir
 block|}
 argument_list|)
 decl_stmt|;
