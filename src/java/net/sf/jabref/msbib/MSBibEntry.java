@@ -885,7 +885,8 @@ parameter_list|)
 block|{
 name|LCID
 operator|=
-literal|0
+operator|-
+literal|1
 expr_stmt|;
 block|}
 block|}
@@ -2123,6 +2124,19 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+name|standardNumber
+operator|.
+name|equals
+argument_list|(
+literal|""
+argument_list|)
+condition|)
+name|standardNumber
+operator|=
+literal|null
+expr_stmt|;
+if|if
+condition|(
 name|bibtex
 operator|.
 name|getField
@@ -3206,116 +3220,27 @@ argument_list|(
 name|title
 argument_list|)
 expr_stmt|;
-name|shortTitle
+comment|// shortTitle = format(shortTitle);
+comment|// publisher = format(publisher);
+comment|// conferenceName = format(conferenceName);
+comment|// department = format(department);
+comment|// institution = format(institution);
+comment|// internetSiteTitle = format(internetSiteTitle);
+comment|// publicationTitle = format(publicationTitle);
+comment|// albumTitle = format(albumTitle);
+comment|// theater = format(theater);
+comment|// distributor = format(distributor);
+comment|// broadcastTitle = format(broadcastTitle);
+comment|// broadcaster = format(broadcaster);
+comment|// station = format(station);
+comment|// court = format(court);
+comment|// reporter = format(reporter);
+comment|// bibTex_Series = format(bibTex_Series);
+name|bibTex_Abstract
 operator|=
 name|format
 argument_list|(
-name|shortTitle
-argument_list|)
-expr_stmt|;
-name|publisher
-operator|=
-name|format
-argument_list|(
-name|publisher
-argument_list|)
-expr_stmt|;
-name|conferenceName
-operator|=
-name|format
-argument_list|(
-name|conferenceName
-argument_list|)
-expr_stmt|;
-name|department
-operator|=
-name|format
-argument_list|(
-name|department
-argument_list|)
-expr_stmt|;
-name|institution
-operator|=
-name|format
-argument_list|(
-name|institution
-argument_list|)
-expr_stmt|;
-name|internetSiteTitle
-operator|=
-name|format
-argument_list|(
-name|internetSiteTitle
-argument_list|)
-expr_stmt|;
-name|publicationTitle
-operator|=
-name|format
-argument_list|(
-name|publicationTitle
-argument_list|)
-expr_stmt|;
-name|albumTitle
-operator|=
-name|format
-argument_list|(
-name|albumTitle
-argument_list|)
-expr_stmt|;
-name|theater
-operator|=
-name|format
-argument_list|(
-name|theater
-argument_list|)
-expr_stmt|;
-name|distributor
-operator|=
-name|format
-argument_list|(
-name|distributor
-argument_list|)
-expr_stmt|;
-name|broadcastTitle
-operator|=
-name|format
-argument_list|(
-name|broadcastTitle
-argument_list|)
-expr_stmt|;
-name|broadcaster
-operator|=
-name|format
-argument_list|(
-name|broadcaster
-argument_list|)
-expr_stmt|;
-name|station
-operator|=
-name|format
-argument_list|(
-name|station
-argument_list|)
-expr_stmt|;
-name|court
-operator|=
-name|format
-argument_list|(
-name|court
-argument_list|)
-expr_stmt|;
-name|reporter
-operator|=
-name|format
-argument_list|(
-name|reporter
-argument_list|)
-expr_stmt|;
-name|bibTex_Series
-operator|=
-name|format
-argument_list|(
-name|bibTex_Series
+name|bibTex_Abstract
 argument_list|)
 expr_stmt|;
 block|}
@@ -3919,27 +3844,9 @@ operator|-
 literal|1
 condition|)
 block|{
-if|if
-condition|(
-name|FORMATXML
-condition|)
-name|result
-operator|.
-name|add
-argument_list|(
-operator|new
-name|PersonName
-argument_list|(
-name|chars
-operator|.
-name|format
-argument_list|(
-name|authors
-argument_list|)
-argument_list|)
-argument_list|)
-expr_stmt|;
-else|else
+comment|//			if(FORMATXML)
+comment|//				result.add(new PersonName(chars.format(authors)));
+comment|//			else
 name|result
 operator|.
 name|add
@@ -3982,30 +3889,9 @@ name|i
 operator|++
 control|)
 block|{
-if|if
-condition|(
-name|FORMATXML
-condition|)
-name|result
-operator|.
-name|add
-argument_list|(
-operator|new
-name|PersonName
-argument_list|(
-name|chars
-operator|.
-name|format
-argument_list|(
-name|names
-index|[
-name|i
-index|]
-argument_list|)
-argument_list|)
-argument_list|)
-expr_stmt|;
-else|else
+comment|//            	if(FORMATXML)
+comment|//            		result.add(new PersonName(chars.format(names[i])));
+comment|//            	else
 name|result
 operator|.
 name|add
@@ -4449,29 +4335,21 @@ comment|//	private String healXML(String value)
 comment|//	{
 comment|//		String healedValue = value;
 comment|//
-comment|//		// Remove special dash that looks like same but is not
-comment|//		healedValue = healedValue.replace('','-');
-comment|//		healedValue = healedValue.replace('','-');
-comment|//
-comment|//		// String literals
-comment|//		healedValue = healedValue.replaceAll("","`");
-comment|//		healedValue = healedValue.replaceAll("","'");
-comment|//		healedValue = healedValue.replaceAll("","\"");
-comment|//		healedValue = healedValue.replaceAll("","\"");
-comment|//
-comment|//		// HTML subscript value
-comment|//		healedValue = healedValue.replaceAll("<sub>","_");
-comment|//		healedValue = healedValue.replaceAll("</sub>","");
-comment|//
-comment|////		restore converted to html-char
-comment|////		Pattern p = Pattern.compile("&#(\\d{1,4});");
-comment|////		Matcher m = p.matcher(healedValue);
-comment|////		while (m.find())
-comment|////		{
-comment|////			int n = Integer.parseInt(m.group(1));
-comment|////			char ch = Character.forDigit(n,10);
-comment|////			healedValue = healedValue.replaceAll("&#"+m.group(1)+";",""+ch);
-comment|////		}
+comment|////		if(value.contains("A net energy gain"))
+comment|////			System.out.println(value);
+comment|////		restore converted html-char
+comment|//		Pattern p = Pattern.compile("&#([0-9A-Fa-f]{2,4});");
+comment|//		// Pattern p = Pattern.compile("&#(\\d{1,4});");
+comment|//		Matcher m = p.matcher(healedValue);
+comment|//		while (m.find())
+comment|//		{
+comment|//			int n = Integer.parseInt(m.group(1),16);
+comment|//			char ch = Character.forDigit(n,10);
+comment|//			System.out.println(m.group(1));
+comment|//			System.out.println(""+n);
+comment|//			System.out.println(""+ch);
+comment|//			healedValue = healedValue.replaceAll("\\&#"+m.group(1)+";",""+ch);
+comment|//		}
 comment|//
 comment|//		return healedValue;
 comment|//	}
@@ -4513,6 +4391,11 @@ name|name
 argument_list|)
 decl_stmt|;
 comment|// elem.appendChild(d.createTextNode(healXML(value)));
+comment|//		Text txt = d.createTextNode(value);
+comment|//		if(!txt.getTextContent().equals(value))
+comment|//			System.out.println("Values dont match!");
+comment|//			// throw new Exception("Values dont match!");
+comment|//		elem.appendChild(txt);
 name|elem
 operator|.
 name|appendChild
@@ -4521,7 +4404,10 @@ name|d
 operator|.
 name|createTextNode
 argument_list|(
+name|stripNonValidXMLCharacters
+argument_list|(
 name|value
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4996,6 +4882,12 @@ argument_list|,
 name|GUID
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|LCID
+operator|>=
+literal|0
+condition|)
 name|addField
 argument_list|(
 name|d
@@ -7410,6 +7302,152 @@ argument_list|)
 expr_stmt|;
 return|return
 name|entry
+return|;
+block|}
+comment|/** 	 * This method ensures that the output String has only      * valid XML unicode characters as specified by the      * XML 1.0 standard. For reference, please see      *<a href="http://www.w3.org/TR/2000/REC-xml-20001006#NT-Char">the      * standard</a>. This method will return an empty      * String if the input is null or empty.      *       * URL: http://cse-mjmcl.cse.bris.ac.uk/blog/2007/02/14/1171465494443.html      *      * @param in The String whose non-valid characters we want to remove.      * @return The in String, stripped of non-valid characters.      */
+DECL|method|stripNonValidXMLCharacters (String in)
+specifier|public
+name|String
+name|stripNonValidXMLCharacters
+parameter_list|(
+name|String
+name|in
+parameter_list|)
+block|{
+name|StringBuffer
+name|out
+init|=
+operator|new
+name|StringBuffer
+argument_list|()
+decl_stmt|;
+comment|// Used to hold the output.
+name|char
+name|current
+decl_stmt|;
+comment|// Used to reference the current character.
+if|if
+condition|(
+name|in
+operator|==
+literal|null
+operator|||
+operator|(
+literal|""
+operator|.
+name|equals
+argument_list|(
+name|in
+argument_list|)
+operator|)
+condition|)
+return|return
+literal|""
+return|;
+comment|// vacancy test.
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|in
+operator|.
+name|length
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|current
+operator|=
+name|in
+operator|.
+name|charAt
+argument_list|(
+name|i
+argument_list|)
+expr_stmt|;
+comment|// NOTE: No IndexOutOfBoundsException caught here; it should not happen.
+if|if
+condition|(
+operator|(
+name|current
+operator|==
+literal|0x9
+operator|)
+operator|||
+operator|(
+name|current
+operator|==
+literal|0xA
+operator|)
+operator|||
+operator|(
+name|current
+operator|==
+literal|0xD
+operator|)
+operator|||
+operator|(
+operator|(
+name|current
+operator|>=
+literal|0x20
+operator|)
+operator|&&
+operator|(
+name|current
+operator|<=
+literal|0xD7FF
+operator|)
+operator|)
+operator|||
+operator|(
+operator|(
+name|current
+operator|>=
+literal|0xE000
+operator|)
+operator|&&
+operator|(
+name|current
+operator|<=
+literal|0xFFFD
+operator|)
+operator|)
+operator|||
+operator|(
+operator|(
+name|current
+operator|>=
+literal|0x10000
+operator|)
+operator|&&
+operator|(
+name|current
+operator|<=
+literal|0x10FFFF
+operator|)
+operator|)
+condition|)
+name|out
+operator|.
+name|append
+argument_list|(
+name|current
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|out
+operator|.
+name|toString
+argument_list|()
 return|;
 block|}
 comment|/* 	 * render as XML 	 */
