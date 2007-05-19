@@ -206,12 +206,14 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|// forcing to use UTF8 output format for some problems with
+comment|// xml export in other encodings
 name|SaveSession
 name|ss
 init|=
 name|getSaveSession
 argument_list|(
-name|encoding
+literal|"UTF8"
 argument_list|,
 operator|new
 name|File
