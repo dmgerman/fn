@@ -1881,7 +1881,9 @@ name|tableIcons
 operator|.
 name|put
 argument_list|(
-literal|"file"
+name|GUIGlobals
+operator|.
+name|FILE_FIELD
 argument_list|,
 name|lab
 argument_list|)

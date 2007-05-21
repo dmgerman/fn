@@ -212,7 +212,9 @@ DECL|field|FILE
 name|FILE
 init|=
 block|{
-literal|"file"
+name|GUIGlobals
+operator|.
+name|FILE_FIELD
 block|}
 decl_stmt|;
 DECL|field|panel

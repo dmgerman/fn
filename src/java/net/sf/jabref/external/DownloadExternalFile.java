@@ -145,6 +145,11 @@ specifier|private
 name|JabRefFrame
 name|frame
 decl_stmt|;
+DECL|field|dialog
+specifier|private
+name|JDialog
+name|dialog
+decl_stmt|;
 DECL|field|metaData
 specifier|private
 name|MetaData
@@ -201,13 +206,13 @@ name|bibtexKey
 expr_stmt|;
 block|}
 comment|/**      * Start a download.      *      * @param callback The object to which the filename should be reported when download      *                 is complete.      */
-DECL|method|download (final FileListEditor callback)
+DECL|method|download (final DownloadCallback callback)
 specifier|public
 name|void
 name|download
 parameter_list|(
 specifier|final
-name|FileListEditor
+name|DownloadCallback
 name|callback
 parameter_list|)
 throws|throws
@@ -432,12 +437,18 @@ decl_stmt|;
 name|String
 name|suggestedName
 init|=
+name|bibtexKey
+operator|!=
+literal|null
+condition|?
 name|getSuggestedFileName
 argument_list|(
 name|res
 argument_list|,
 name|suffix
 argument_list|)
+else|:
+literal|""
 decl_stmt|;
 specifier|final
 name|String
@@ -471,10 +482,16 @@ name|FileListEntry
 argument_list|(
 literal|""
 argument_list|,
+name|bibtexKey
+operator|!=
+literal|null
+condition|?
 name|file
 operator|.
 name|getPath
 argument_list|()
+else|:
+literal|""
 argument_list|,
 name|Globals
 operator|.
@@ -544,6 +561,43 @@ name|getLink
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|f
+operator|.
+name|isDirectory
+argument_list|()
+condition|)
+block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|frame
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Target file cannot be a directory."
+argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Download file"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
 if|if
 condition|(
 name|f
@@ -1033,6 +1087,22 @@ operator|.
 name|FILE_FIELD
 argument_list|)
 return|;
+block|}
+comment|/**      * Callback interface that users of this class must implement in order to receive      * notification when download is complete.      */
+DECL|interface|DownloadCallback
+specifier|public
+interface|interface
+name|DownloadCallback
+block|{
+DECL|method|downloadComplete (FileListEntry file)
+specifier|public
+name|void
+name|downloadComplete
+parameter_list|(
+name|FileListEntry
+name|file
+parameter_list|)
+function_decl|;
 block|}
 block|}
 end_class

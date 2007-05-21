@@ -388,6 +388,7 @@ argument_list|()
 decl_stmt|;
 comment|// The action which generates a bibtexkey for this entry.
 DECL|field|generateKeyAction
+specifier|public
 name|GenerateKeyAction
 name|generateKeyAction
 decl_stmt|;
