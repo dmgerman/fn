@@ -1268,6 +1268,37 @@ operator|.
 name|getEntry
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|autoSetLinks
+argument_list|(
+name|entry
+argument_list|,
+name|tableModel
+argument_list|)
+condition|)
+name|entryEditor
+operator|.
+name|updateField
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Automatically add links for this entry to the table model given as an argument, based on      * the globally stored list of external file types. The entry itself is not modified. The entry's      * bibtex key must have been set.      *      * @param entry The BibtexEntry to find links for.      * @param tableModel The table model to insert links into. Already existing links are not duplicated or removed.      * @return true if any new links were found, false otherwise.      */
+DECL|method|autoSetLinks (BibtexEntry entry, FileListTableModel tableModel)
+specifier|public
+specifier|static
+name|boolean
+name|autoSetLinks
+parameter_list|(
+name|BibtexEntry
+name|entry
+parameter_list|,
+name|FileListTableModel
+name|tableModel
+parameter_list|)
+block|{
 name|String
 name|field
 init|=
@@ -1484,19 +1515,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
-if|if
-condition|(
+return|return
 name|foundAny
-condition|)
-block|{
-name|entryEditor
-operator|.
-name|updateField
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
-block|}
+return|;
 block|}
 comment|/**      * Run a file download operation.      */
 DECL|method|downloadFile ()
