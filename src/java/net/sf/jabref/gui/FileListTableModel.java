@@ -50,6 +50,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -271,14 +281,17 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|addEntry (int index, FileListEntry entry)
+comment|/**      * Add an entry to the table model, and fire a change event. The change event      * is fired on the event dispatch thread.      * @param index The row index to insert the entry at.      * @param entry The entry to insert.      */
+DECL|method|addEntry (final int index, final FileListEntry entry)
 specifier|public
 name|void
 name|addEntry
 parameter_list|(
+specifier|final
 name|int
 name|index
 parameter_list|,
+specifier|final
 name|FileListEntry
 name|entry
 parameter_list|)
@@ -297,6 +310,41 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|SwingUtilities
+operator|.
+name|isEventDispatchThread
+argument_list|()
+condition|)
+block|{
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+operator|new
+name|Runnable
+argument_list|()
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
+name|fireTableRowsInserted
+argument_list|(
+name|index
+argument_list|,
+name|index
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 name|fireTableRowsInserted
 argument_list|(
 name|index

@@ -214,6 +214,15 @@ name|compile
 argument_list|(
 literal|"%A .*"
 argument_list|)
+decl_stmt|,
+name|pat2
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"%E .*"
+argument_list|)
 decl_stmt|;
 name|String
 name|str
@@ -241,7 +250,17 @@ argument_list|(
 name|str
 argument_list|)
 operator|.
-name|find
+name|matches
+argument_list|()
+operator|||
+name|pat2
+operator|.
+name|matcher
+argument_list|(
+name|str
+argument_list|)
+operator|.
+name|matches
 argument_list|()
 condition|)
 return|return
@@ -405,7 +424,7 @@ name|HashMap
 argument_list|()
 decl_stmt|;
 name|String
-name|Author
+name|author
 init|=
 literal|""
 decl_stmt|,
@@ -413,7 +432,7 @@ name|Type
 init|=
 literal|""
 decl_stmt|,
-name|Editor
+name|editor
 init|=
 literal|""
 decl_stmt|;
@@ -439,7 +458,7 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-name|Author
+name|author
 operator|=
 literal|""
 expr_stmt|;
@@ -447,7 +466,7 @@ name|Type
 operator|=
 literal|""
 expr_stmt|;
-name|Editor
+name|editor
 operator|=
 literal|""
 expr_stmt|;
@@ -550,19 +569,19 @@ condition|)
 block|{
 if|if
 condition|(
-name|Author
+name|author
 operator|.
 name|equals
 argument_list|(
 literal|""
 argument_list|)
 condition|)
-name|Author
+name|author
 operator|=
 name|val
 expr_stmt|;
 else|else
-name|Author
+name|author
 operator|+=
 literal|" and "
 operator|+
@@ -582,19 +601,19 @@ condition|)
 block|{
 if|if
 condition|(
-name|Editor
+name|editor
 operator|.
 name|equals
 argument_list|(
 literal|""
 argument_list|)
 condition|)
-name|Editor
+name|editor
 operator|=
 name|val
 expr_stmt|;
 else|else
-name|Editor
+name|editor
 operator|+=
 literal|" and "
 operator|+
@@ -1213,7 +1232,7 @@ if|if
 condition|(
 name|IsEditedBook
 operator|&&
-name|Editor
+name|editor
 operator|.
 name|equals
 argument_list|(
@@ -1221,11 +1240,11 @@ literal|""
 argument_list|)
 condition|)
 block|{
-name|Editor
+name|editor
 operator|=
-name|Author
+name|author
 expr_stmt|;
-name|Author
+name|author
 operator|=
 literal|""
 expr_stmt|;
@@ -1234,7 +1253,7 @@ comment|//fixauthorscomma
 if|if
 condition|(
 operator|!
-name|Author
+name|author
 operator|.
 name|equals
 argument_list|(
@@ -1249,14 +1268,14 @@ literal|"author"
 argument_list|,
 name|fixAuthor
 argument_list|(
-name|Author
+name|author
 argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
 condition|(
 operator|!
-name|Editor
+name|editor
 operator|.
 name|equals
 argument_list|(
@@ -1271,7 +1290,7 @@ literal|"editor"
 argument_list|,
 name|fixAuthor
 argument_list|(
-name|Editor
+name|editor
 argument_list|)
 argument_list|)
 expr_stmt|;

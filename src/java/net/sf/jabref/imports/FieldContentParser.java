@@ -44,6 +44,7 @@ name|StringBuffer
 name|content
 parameter_list|)
 block|{
+comment|/*System.out.println("Content: '"+content+"'");         byte[] bt = content.toString().getBytes();         for (int i = 0; i< bt.length; i++) {             byte b = bt[i];             System.out.print(b+" ");         }         System.out.println("");         */
 comment|//boolean rep = false;
 name|int
 name|i
@@ -78,8 +79,6 @@ literal|"\n"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//if (rep) System.out.println(content.toString());
-comment|/*while (i<content.length()) {             if (content.charAt(i) == '\r')                 content.deleteCharAt(i);             else i++;         }          i=0;*/
 while|while
 condition|(
 name|i
@@ -117,7 +116,7 @@ argument_list|()
 operator|>
 name|i
 operator|+
-literal|2
+literal|1
 operator|)
 operator|&&
 operator|(
@@ -133,6 +132,18 @@ operator|==
 literal|'\t'
 operator|)
 operator|&&
+operator|(
+operator|(
+name|content
+operator|.
+name|length
+argument_list|()
+operator|==
+name|i
+operator|+
+literal|2
+operator|)
+operator|||
 operator|!
 name|Character
 operator|.
@@ -147,10 +158,11 @@ operator|+
 literal|2
 argument_list|)
 argument_list|)
+operator|)
 condition|)
 block|{
-comment|// We have \n\t followed by non-whitespace, which indicates
-comment|// a wrap made by JabRef. Remove and insert space if necessary.
+comment|// We have either \n\t followed by non-whitespace, or \n\t at the
+comment|// end. Bothe cases indicate a wrap made by JabRef. Remove and insert space if necessary.
 name|content
 operator|.
 name|deleteCharAt
@@ -168,14 +180,19 @@ argument_list|)
 expr_stmt|;
 comment|// \t
 comment|// Add space only if necessary:
+comment|// Note 2007-05-26, mortenalver: the following line was modified. It previously
+comment|// didn't add a space if the line break was at i==0. This caused some occurences of
+comment|// "string1 # { and } # string2" constructs lose the space in front of the "and" because
+comment|// the line wrap caused a JabRef linke break at the start of a value containing the " and ".
+comment|// The bug was caused by a protective check for i>0 to avoid intexing char -1 in content.
 if|if
 condition|(
 operator|(
 name|i
-operator|>
+operator|==
 literal|0
 operator|)
-operator|&&
+operator|||
 operator|!
 name|Character
 operator|.

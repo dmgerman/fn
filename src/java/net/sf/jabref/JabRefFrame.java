@@ -1792,6 +1792,31 @@ literal|"Synchronize PS"
 argument_list|)
 argument_list|)
 decl_stmt|,
+DECL|field|autoSetFile
+name|autoSetFile
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"autoSetFile"
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Synchronize file links"
+argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Synchronize files"
+argument_list|)
+argument_list|)
+decl_stmt|,
 DECL|field|abbreviateMedline
 name|abbreviateMedline
 init|=
@@ -5784,6 +5809,13 @@ name|dupliCheck
 argument_list|)
 expr_stmt|;
 comment|//checkAndFix.add(strictDupliCheck);
+name|checkAndFix
+operator|.
+name|add
+argument_list|(
+name|autoSetFile
+argument_list|)
+expr_stmt|;
 name|checkAndFix
 operator|.
 name|add

@@ -221,6 +221,15 @@ name|compile
 argument_list|(
 literal|"A1  - .*"
 argument_list|)
+decl_stmt|,
+name|pat3
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"A2  - .*"
+argument_list|)
 decl_stmt|;
 name|String
 name|str
@@ -252,6 +261,16 @@ name|find
 argument_list|()
 operator|||
 name|pat2
+operator|.
+name|matcher
+argument_list|(
+name|str
+argument_list|)
+operator|.
+name|find
+argument_list|()
+operator|||
+name|pat3
 operator|.
 name|matcher
 argument_list|(
@@ -375,23 +394,23 @@ operator|++
 control|)
 block|{
 name|String
-name|Type
+name|type
 init|=
 literal|""
 decl_stmt|,
-name|Author
+name|author
 init|=
 literal|""
 decl_stmt|,
-name|Editor
+name|editor
 init|=
 literal|""
 decl_stmt|,
-name|StartPage
+name|startPage
 init|=
 literal|""
 decl_stmt|,
-name|EndPage
+name|endPage
 init|=
 literal|""
 decl_stmt|,
@@ -647,7 +666,7 @@ argument_list|(
 literal|"BOOK"
 argument_list|)
 condition|)
-name|Type
+name|type
 operator|=
 literal|"book"
 expr_stmt|;
@@ -668,7 +687,7 @@ argument_list|(
 literal|"MGZN"
 argument_list|)
 condition|)
-name|Type
+name|type
 operator|=
 literal|"article"
 expr_stmt|;
@@ -682,7 +701,7 @@ argument_list|(
 literal|"THES"
 argument_list|)
 condition|)
-name|Type
+name|type
 operator|=
 literal|"phdthesis"
 expr_stmt|;
@@ -696,7 +715,7 @@ argument_list|(
 literal|"UNPB"
 argument_list|)
 condition|)
-name|Type
+name|type
 operator|=
 literal|"unpublished"
 expr_stmt|;
@@ -710,7 +729,7 @@ argument_list|(
 literal|"RPRT"
 argument_list|)
 condition|)
-name|Type
+name|type
 operator|=
 literal|"techreport"
 expr_stmt|;
@@ -724,7 +743,7 @@ argument_list|(
 literal|"CONF"
 argument_list|)
 condition|)
-name|Type
+name|type
 operator|=
 literal|"inproceedings"
 expr_stmt|;
@@ -738,13 +757,13 @@ argument_list|(
 literal|"CHAP"
 argument_list|)
 condition|)
-name|Type
+name|type
 operator|=
 literal|"incollection"
 expr_stmt|;
 comment|//"inbook";
 else|else
-name|Type
+name|type
 operator|=
 literal|"other"
 expr_stmt|;
@@ -833,7 +852,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|Author
+name|author
 operator|.
 name|equals
 argument_list|(
@@ -841,12 +860,12 @@ literal|""
 argument_list|)
 condition|)
 comment|// don't add " and " for the first author
-name|Author
+name|author
 operator|=
 name|val
 expr_stmt|;
 else|else
-name|Author
+name|author
 operator|+=
 literal|" and "
 operator|+
@@ -866,7 +885,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|Editor
+name|editor
 operator|.
 name|equals
 argument_list|(
@@ -874,12 +893,12 @@ literal|""
 argument_list|)
 condition|)
 comment|// don't add " and " for the first editor
-name|Editor
+name|editor
 operator|=
 name|val
 expr_stmt|;
 else|else
-name|Editor
+name|editor
 operator|+=
 literal|" and "
 operator|+
@@ -913,7 +932,7 @@ condition|)
 block|{
 if|if
 condition|(
-name|Type
+name|type
 operator|.
 name|equals
 argument_list|(
@@ -950,7 +969,7 @@ argument_list|(
 literal|"SP"
 argument_list|)
 condition|)
-name|StartPage
+name|startPage
 operator|=
 name|val
 expr_stmt|;
@@ -1009,7 +1028,7 @@ argument_list|(
 literal|"EP"
 argument_list|)
 condition|)
-name|EndPage
+name|endPage
 operator|=
 name|val
 expr_stmt|;
@@ -1383,7 +1402,7 @@ block|}
 comment|// fix authors
 if|if
 condition|(
-name|Author
+name|author
 operator|.
 name|length
 argument_list|()
@@ -1391,13 +1410,13 @@ operator|>
 literal|0
 condition|)
 block|{
-name|Author
+name|author
 operator|=
 name|AuthorList
 operator|.
 name|fixAuthor_lastNameFirst
 argument_list|(
-name|Author
+name|author
 argument_list|)
 expr_stmt|;
 name|hm
@@ -1406,13 +1425,13 @@ name|put
 argument_list|(
 literal|"author"
 argument_list|,
-name|Author
+name|author
 argument_list|)
 expr_stmt|;
 block|}
 if|if
 condition|(
-name|Editor
+name|editor
 operator|.
 name|length
 argument_list|()
@@ -1420,13 +1439,13 @@ operator|>
 literal|0
 condition|)
 block|{
-name|Editor
+name|editor
 operator|=
 name|AuthorList
 operator|.
 name|fixAuthor_lastNameFirst
 argument_list|(
-name|Editor
+name|editor
 argument_list|)
 expr_stmt|;
 name|hm
@@ -1435,7 +1454,7 @@ name|put
 argument_list|(
 literal|"editor"
 argument_list|,
-name|Editor
+name|editor
 argument_list|)
 expr_stmt|;
 block|}
@@ -1465,11 +1484,11 @@ name|put
 argument_list|(
 literal|"pages"
 argument_list|,
-name|StartPage
+name|startPage
 operator|+
 literal|"--"
 operator|+
-name|EndPage
+name|endPage
 argument_list|)
 expr_stmt|;
 name|BibtexEntry
@@ -1486,7 +1505,7 @@ name|Globals
 operator|.
 name|getEntryType
 argument_list|(
-name|Type
+name|type
 argument_list|)
 argument_list|)
 decl_stmt|;
