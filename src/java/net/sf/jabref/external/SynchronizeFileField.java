@@ -1094,6 +1094,8 @@ operator|.
 name|size
 argument_list|()
 expr_stmt|;
+comment|//for (BibtexEntry entr : changedEntries)
+comment|//    System.out.println(entr.getCiteKey());
 if|if
 condition|(
 name|entriesChangedCount
