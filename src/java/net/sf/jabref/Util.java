@@ -3287,9 +3287,6 @@ operator|+
 name|link
 expr_stmt|;
 block|}
-name|Process
-name|child
-init|=
 name|Runtime
 operator|.
 name|getRuntime
@@ -3299,7 +3296,56 @@ name|exec
 argument_list|(
 name|cmd
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
+comment|/**      * Opens a file on a Windows system, using the given application.      *      * @param link The file name.      * @param application Link to the app that opens the file.      * @throws IOException      */
+DECL|method|openFileWithApplicationOnWindows (String link, String application)
+specifier|public
+specifier|static
+name|void
+name|openFileWithApplicationOnWindows
+parameter_list|(
+name|String
+name|link
+parameter_list|,
+name|String
+name|application
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|link
+operator|=
+name|link
+operator|.
+name|replaceAll
+argument_list|(
+literal|"&"
+argument_list|,
+literal|"\"&\""
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|" "
+argument_list|,
+literal|"\" \""
+argument_list|)
+expr_stmt|;
+name|Runtime
+operator|.
+name|getRuntime
+argument_list|()
+operator|.
+name|exec
+argument_list|(
+name|application
+operator|+
+literal|" "
+operator|+
+name|link
+argument_list|)
+expr_stmt|;
 block|}
 comment|/** 	 * Open an external file, attempting to use the correct viewer for it. 	 *  	 * @param metaData 	 *            The MetaData for the database this file belongs to. 	 * @param link 	 *            The file name. 	 */
 DECL|method|openExternalFileAnyFormat (MetaData metaData, String link, ExternalFileType fileType)
@@ -3518,6 +3564,46 @@ operator|.
 name|ON_WIN
 condition|)
 block|{
+if|if
+condition|(
+operator|(
+name|fileType
+operator|.
+name|getOpenWith
+argument_list|()
+operator|!=
+literal|null
+operator|)
+operator|&&
+operator|(
+name|fileType
+operator|.
+name|getOpenWith
+argument_list|()
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+operator|)
+condition|)
+block|{
+comment|// Application is specified. Use it:
+name|openFileWithApplicationOnWindows
+argument_list|(
+name|file
+operator|.
+name|getPath
+argument_list|()
+argument_list|,
+name|fileType
+operator|.
+name|getOpenWith
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 name|openFileOnWindows
 argument_list|(
 name|file
