@@ -965,6 +965,11 @@ argument_list|,
 name|flEntry
 argument_list|,
 literal|false
+argument_list|,
+name|panel
+operator|.
+name|metaData
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|flEditor

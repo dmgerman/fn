@@ -227,6 +227,11 @@ specifier|private
 name|JabRefFrame
 name|frame
 decl_stmt|;
+DECL|field|metaData
+specifier|private
+name|MetaData
+name|metaData
+decl_stmt|;
 DECL|field|fieldName
 specifier|private
 name|String
@@ -272,12 +277,15 @@ name|auto
 decl_stmt|,
 name|download
 decl_stmt|;
-DECL|method|FileListEditor (JabRefFrame frame, String fieldName, String content, EntryEditor entryEditor)
+DECL|method|FileListEditor (JabRefFrame frame, MetaData metaData, String fieldName, String content, EntryEditor entryEditor)
 specifier|public
 name|FileListEditor
 parameter_list|(
 name|JabRefFrame
 name|frame
+parameter_list|,
+name|MetaData
+name|metaData
 parameter_list|,
 name|String
 name|fieldName
@@ -294,6 +302,12 @@ operator|.
 name|frame
 operator|=
 name|frame
+expr_stmt|;
+name|this
+operator|.
+name|metaData
+operator|=
+name|metaData
 expr_stmt|;
 name|this
 operator|.
@@ -1252,6 +1266,8 @@ argument_list|,
 name|entry
 argument_list|,
 literal|false
+argument_list|,
+name|metaData
 argument_list|)
 expr_stmt|;
 block|}
@@ -1341,6 +1357,8 @@ argument_list|(
 name|entry
 argument_list|,
 name|tableModel
+argument_list|,
+name|metaData
 argument_list|,
 operator|new
 name|ActionListener
@@ -2007,8 +2025,8 @@ return|return
 name|t
 return|;
 block|}
-comment|/**      * Automatically add links for this entry to the table model given as an argument, based on      * the globally stored list of external file types. The entry itself is not modified. The entry's      * bibtex key must have been set.      * The operation is done in a new thread, which is returned for the caller to wait for      * if needed.      *      * @param entry The BibtexEntry to find links for.      * @param tableModel The table model to insert links into. Already existing links are not duplicated or removed.      * @param callback An ActionListener that is notified (on the event dispatch thread) when the search is      *  finished. The ActionEvent has id=0 if no new links were added, and id=1 if one or more links were added.      *  This parameter can be null, which means that no callback will be notified.      * @param diag An instantiated modal JDialog which will be used to display the progress of the autosetting.      *      This parameter can be null, which means that no progress update will be shown.      * @return the thread performing the autosetting      */
-DECL|method|autoSetLinks (final BibtexEntry entry, final FileListTableModel tableModel, final ActionListener callback, final JDialog diag)
+comment|/**      * Automatically add links for this entry to the table model given as an argument, based on      * the globally stored list of external file types. The entry itself is not modified. The entry's      * bibtex key must have been set.      * The operation is done in a new thread, which is returned for the caller to wait for      * if needed.      *      * @param entry The BibtexEntry to find links for.      * @param tableModel The table model to insert links into. Already existing links are not duplicated or removed.      * @param metaData The MetaData providing the relevant file directory, if any.      * @param callback An ActionListener that is notified (on the event dispatch thread) when the search is      *  finished. The ActionEvent has id=0 if no new links were added, and id=1 if one or more links were added.      *  This parameter can be null, which means that no callback will be notified.      * @param diag An instantiated modal JDialog which will be used to display the progress of the autosetting.      *      This parameter can be null, which means that no progress update will be shown.      * @return the thread performing the autosetting      */
+DECL|method|autoSetLinks (final BibtexEntry entry, final FileListTableModel tableModel, final MetaData metaData, final ActionListener callback, final JDialog diag)
 specifier|public
 specifier|static
 name|Thread
@@ -2021,6 +2039,10 @@ parameter_list|,
 specifier|final
 name|FileListTableModel
 name|tableModel
+parameter_list|,
+specifier|final
+name|MetaData
+name|metaData
 parameter_list|,
 specifier|final
 name|ActionListener
@@ -2228,18 +2250,16 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-name|Globals
+name|metaData
 operator|.
-name|prefs
-operator|.
-name|hasKey
+name|getFileDirectory
 argument_list|(
 name|GUIGlobals
 operator|.
 name|FILE_FIELD
-operator|+
-literal|"Directory"
 argument_list|)
+operator|!=
+literal|null
 condition|)
 name|dirs
 operator|.
@@ -2248,17 +2268,13 @@ argument_list|(
 operator|new
 name|File
 argument_list|(
-name|Globals
+name|metaData
 operator|.
-name|prefs
-operator|.
-name|get
+name|getFileDirectory
 argument_list|(
 name|GUIGlobals
 operator|.
 name|FILE_FIELD
-operator|+
-literal|"Directory"
 argument_list|)
 argument_list|)
 argument_list|)

@@ -884,6 +884,11 @@ name|FileListEditor
 argument_list|(
 name|frame
 argument_list|,
+name|bPanel
+operator|.
+name|metaData
+argument_list|()
+argument_list|,
 name|fields
 index|[
 name|i

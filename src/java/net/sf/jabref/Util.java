@@ -3390,7 +3390,7 @@ name|pos
 init|=
 name|name
 operator|.
-name|indexOf
+name|lastIndexOf
 argument_list|(
 literal|'.'
 argument_list|)
@@ -4259,6 +4259,8 @@ argument_list|,
 name|flEntry
 argument_list|,
 literal|false
+argument_list|,
+name|metaData
 argument_list|)
 decl_stmt|;
 name|editor

@@ -5619,6 +5619,8 @@ name|entry
 argument_list|,
 name|model
 argument_list|,
+name|metaData
+argument_list|,
 operator|new
 name|ActionListener
 argument_list|()
@@ -5791,6 +5793,8 @@ argument_list|,
 name|flEntry
 argument_list|,
 literal|false
+argument_list|,
+name|metaData
 argument_list|)
 decl_stmt|;
 name|editor
