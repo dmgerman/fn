@@ -1126,6 +1126,19 @@ return|return
 name|entry
 return|;
 block|}
+DECL|method|getDatabase ()
+specifier|public
+name|BibtexDatabase
+name|getDatabase
+parameter_list|()
+block|{
+return|return
+name|panel
+operator|.
+name|getDatabase
+argument_list|()
+return|;
+block|}
 DECL|method|setupToolBar ()
 specifier|private
 name|void

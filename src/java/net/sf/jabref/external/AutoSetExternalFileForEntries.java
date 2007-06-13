@@ -709,6 +709,11 @@ name|sel
 index|[
 name|i
 index|]
+argument_list|,
+name|panel
+operator|.
+name|getDatabase
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|editor

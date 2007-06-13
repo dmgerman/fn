@@ -138,16 +138,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Iterator
 import|;
 end_import
@@ -174,26 +164,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|xml
@@ -213,6 +183,18 @@ operator|.
 name|jabref
 operator|.
 name|AuthorList
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexDatabase
 import|;
 end_import
 
@@ -450,56 +432,8 @@ name|PDMetadata
 import|;
 end_import
 
-begin_import
-import|import
-name|org
-operator|.
-name|w3c
-operator|.
-name|dom
-operator|.
-name|Element
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|w3c
-operator|.
-name|dom
-operator|.
-name|NamedNodeMap
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|w3c
-operator|.
-name|dom
-operator|.
-name|Node
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|w3c
-operator|.
-name|dom
-operator|.
-name|NodeList
-import|;
-end_import
-
 begin_comment
-comment|/**  * XMPUtils provide support for reading and writing BibTex data as XMP-Metadata  * in PDF-documents.  *   * @author Christopher Oezbek<oezi@oezi.de>  *   * TODO:   *   * Synchronization  *   * @version $Revision$ ($Date$)  */
+comment|/**  * XMPUtils provide support for reading and writing BibTex data as XMP-Metadata  * in PDF-documents.  *   * @author Christopher Oezbek<oezi@oezi.de>  *   * TODO:  *   * Synchronization  *   * @version $Revision$ ($Date$)  */
 end_comment
 
 begin_class
@@ -532,8 +466,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Try to write the given BibTexEntry in the XMP-stream of the given 	 * PDF-file. 	 *  	 * Throws an IOException if the file cannot be read or written, so the user 	 * can remove a lock or cancel the operation. 	 *  	 * The method will overwrite existing BibTeX-XMP-data, but keep other 	 * existing metadata. 	 *  	 * This is a convenience method for writeXMP(File, BibtexEntry). 	 *  	 * @param filename 	 *            The filename from which to open the file. 	 * @param entry 	 *            The entry to write. 	 * @throws TransformerException 	 *             If the entry was malformed or unsupported. 	 * @throws IOException 	 *             If the file could not be written to or could not be found. 	 */
-DECL|method|writeXMP (String filename, BibtexEntry entry)
+comment|/** 	 * Try to write the given BibTexEntry in the XMP-stream of the given 	 * PDF-file. 	 *  	 * Throws an IOException if the file cannot be read or written, so the user 	 * can remove a lock or cancel the operation. 	 *  	 * The method will overwrite existing BibTeX-XMP-data, but keep other 	 * existing metadata. 	 *  	 * This is a convenience method for writeXMP(File, BibtexEntry). 	 *  	 * @param filename 	 *            The filename from which to open the file. 	 * @param entry 	 *            The entry to write. 	 * @param database 	 *            maybenull An optional database which the given bibtex entries 	 *            belong to, which will be used to resolve strings. 	 * @throws TransformerException 	 *             If the entry was malformed or unsupported. 	 * @throws IOException 	 *             If the file could not be written to or could not be found. 	 */
+DECL|method|writeXMP (String filename, BibtexEntry entry, BibtexDatabase database)
 specifier|public
 specifier|static
 name|void
@@ -544,6 +478,9 @@ name|filename
 parameter_list|,
 name|BibtexEntry
 name|entry
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 throws|throws
 name|IOException
@@ -559,6 +496,8 @@ name|filename
 argument_list|)
 argument_list|,
 name|entry
+argument_list|,
+name|database
 argument_list|)
 expr_stmt|;
 block|}
@@ -567,6 +506,9 @@ DECL|method|readXMP (File file)
 specifier|public
 specifier|static
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|readXMP
 parameter_list|(
 name|File
@@ -607,6 +549,9 @@ DECL|method|readXMP (InputStream inputStream)
 specifier|public
 specifier|static
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|readXMP
 parameter_list|(
 name|InputStream
@@ -616,10 +561,16 @@ throws|throws
 name|IOException
 block|{
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|result
 init|=
 operator|new
 name|LinkedList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|PDDocument
@@ -847,7 +798,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|getBibtexEntryFromDocumentInformation (PDDocumentInformation di)
+DECL|method|getBibtexEntryFromDocumentInformation ( PDDocumentInformation di)
 specifier|public
 specifier|static
 name|BibtexEntry
@@ -1092,7 +1043,7 @@ literal|null
 operator|)
 return|;
 block|}
-DECL|method|getBibtexEntryFromDublinCore (XMPSchemaDublinCore dcSchema)
+DECL|method|getBibtexEntryFromDublinCore ( XMPSchemaDublinCore dcSchema)
 specifier|public
 specifier|static
 name|BibtexEntry
@@ -1401,6 +1352,8 @@ name|setField
 argument_list|(
 literal|"month"
 argument_list|,
+literal|"#"
+operator|+
 name|Globals
 operator|.
 name|MONTHS
@@ -1414,6 +1367,8 @@ operator|.
 name|MONTH
 argument_list|)
 index|]
+operator|+
+literal|"#"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1763,7 +1718,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|", "
+literal|","
 argument_list|)
 expr_stmt|;
 block|}
@@ -1913,8 +1868,8 @@ literal|null
 operator|)
 return|;
 block|}
-comment|/** 	 * Try to write the given BibTexEntry in the XMP-stream of the given 	 * PDF-file. 	 *  	 * Throws an IOException if the file cannot be read or written, so the user 	 * can remove a lock or cancel the operation. 	 *  	 * The method will overwrite existing BibTeX-XMP-data, but keep other 	 * existing metadata. 	 *  	 * This is a convenience method for writeXMP(File, Collection). 	 *  	 * @param file 	 *            The file to write to. 	 * @param entry 	 *            The entry to write. 	 * @throws TransformerException 	 *             If the entry was malformed or unsupported. 	 * @throws IOException 	 *             If the file could not be written to or could not be found. 	 */
-DECL|method|writeXMP (File file, BibtexEntry entry)
+comment|/** 	 * Try to write the given BibTexEntry in the XMP-stream of the given 	 * PDF-file. 	 *  	 * Throws an IOException if the file cannot be read or written, so the user 	 * can remove a lock or cancel the operation. 	 *  	 * The method will overwrite existing BibTeX-XMP-data, but keep other 	 * existing metadata. 	 *  	 * This is a convenience method for writeXMP(File, Collection). 	 *  	 * @param file 	 *            The file to write to. 	 * @param entry 	 *            The entry to write. 	 * @param database 	 *            maybenull An optional database which the given bibtex entries 	 *            belong to, which will be used to resolve strings. 	 * @throws TransformerException 	 *             If the entry was malformed or unsupported. 	 * @throws IOException 	 *             If the file could not be written to or could not be found. 	 */
+DECL|method|writeXMP (File file, BibtexEntry entry, BibtexDatabase database)
 specifier|public
 specifier|static
 name|void
@@ -1925,6 +1880,9 @@ name|file
 parameter_list|,
 name|BibtexEntry
 name|entry
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 throws|throws
 name|IOException
@@ -1932,10 +1890,16 @@ throws|,
 name|TransformerException
 block|{
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|l
 init|=
 operator|new
 name|LinkedList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|l
@@ -1951,12 +1915,14 @@ name|file
 argument_list|,
 name|l
 argument_list|,
+name|database
+argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Write the given BibtexEntries as XMP-metadata text to the given stream. 	 *  	 * The text that is written to the stream contains a complete XMP-document. 	 *  	 * @param bibtexEntries 	 *            The BibtexEntries to write XMP-metadata for. 	 * @throws TransformerException 	 *             Thrown if the bibtexEntries could not transformed to XMP. 	 * @throws IOException 	 *             Thrown if an IOException occured while writing to the stream. 	 */
-DECL|method|toXMP (Collection bibtexEntries, OutputStream outputStream)
+comment|/** 	 * Write the given BibtexEntries as XMP-metadata text to the given stream. 	 *  	 * The text that is written to the stream contains a complete XMP-document. 	 *  	 * @param bibtexEntries 	 *            The BibtexEntries to write XMP-metadata for. 	 * @param database 	 *            maybenull An optional database which the given bibtex entries 	 *            belong to, which will be used to resolve strings. 	 * @throws TransformerException 	 *             Thrown if the bibtexEntries could not transformed to XMP. 	 * @throws IOException 	 *             Thrown if an IOException occured while writing to the stream. 	 */
+DECL|method|toXMP (Collection bibtexEntries, BibtexDatabase database, OutputStream outputStream)
 specifier|public
 specifier|static
 name|void
@@ -1964,6 +1930,9 @@ name|toXMP
 parameter_list|(
 name|Collection
 name|bibtexEntries
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|,
 name|OutputStream
 name|outputStream
@@ -2028,6 +1997,8 @@ operator|.
 name|setBibtexEntry
 argument_list|(
 name|e
+argument_list|,
+name|database
 argument_list|)
 expr_stmt|;
 block|}
@@ -2039,8 +2010,8 @@ name|outputStream
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Convenience method for toXMP(Collection, OutputStream) returning a String 	 * containing the XMP-metadata of the given collection of BibtexEntries. 	 *  	 * The resulting metadata string is wrapped as a complete XMP-document. 	 *  	 * @param bibtexEntries 	 *            The BibtexEntries to return XMP-metadata for. 	 * @return The XMP representation of the given bibtexEntries. 	 * @throws TransformerException 	 *             Thrown if the bibtexEntries could not transformed to XMP. 	 */
-DECL|method|toXMP (Collection bibtexEntries)
+comment|/** 	 * Convenience method for toXMP(Collection, OutputStream) returning a String 	 * containing the XMP-metadata of the given collection of BibtexEntries. 	 *  	 * The resulting metadata string is wrapped as a complete XMP-document. 	 *  	 * @param bibtexEntries 	 *            The BibtexEntries to return XMP-metadata for. * 	 * @param database 	 *            maybenull An optional database which the given bibtex entries 	 *            belong to, which will be used to resolve strings. 	 * @return The XMP representation of the given bibtexEntries. 	 * @throws TransformerException 	 *             Thrown if the bibtexEntries could not transformed to XMP. 	 */
+DECL|method|toXMP (Collection bibtexEntries, BibtexDatabase database)
 specifier|public
 specifier|static
 name|String
@@ -2048,6 +2019,9 @@ name|toXMP
 parameter_list|(
 name|Collection
 name|bibtexEntries
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 throws|throws
 name|TransformerException
@@ -2064,6 +2038,8 @@ decl_stmt|;
 name|toXMP
 argument_list|(
 name|bibtexEntries
+argument_list|,
+name|database
 argument_list|,
 name|bs
 argument_list|)
@@ -2918,10 +2894,16 @@ throws|,
 name|TransformerException
 block|{
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|l
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|l
@@ -3383,8 +3365,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Try to write the given BibTexEntry in the XMP-stream of the given 	 * PDF-file. 	 *  	 * Throws an IOException if the file cannot be read or written, so the user 	 * can remove a lock or cancel the operation. 	 *  	 * The method will overwrite existing BibTeX-XMP-data, but keep other 	 * existing metadata. 	 *  	 * @param file 	 *            The file to write the entries to. 	 * @param bibtexEntries 	 *            The entries to write to the file. 	 * @param writePDFInfo 	 *            Write information also in PDF document properties 	 * @throws TransformerException 	 *             If the entry was malformed or unsupported. 	 * @throws IOException 	 *             If the file could not be written to or could not be found. 	 */
-DECL|method|writeXMP (File file, Collection bibtexEntries, boolean writePDFInfo)
+comment|/** 	 * Try to write the given BibTexEntry in the XMP-stream of the given 	 * PDF-file. 	 *  	 * Throws an IOException if the file cannot be read or written, so the user 	 * can remove a lock or cancel the operation. 	 *  	 * The method will overwrite existing BibTeX-XMP-data, but keep other 	 * existing metadata. 	 *  	 * @param file 	 *            The file to write the entries to. 	 * @param bibtexEntries 	 *            The entries to write to the file. * 	 * @param database 	 *            maybenull An optional database which the given bibtex entries 	 *            belong to, which will be used to resolve strings. * 	 * @param writePDFInfo 	 *            Write information also in PDF document properties 	 * @throws TransformerException 	 *             If the entry was malformed or unsupported. 	 * @throws IOException 	 *             If the file could not be written to or could not be found. 	 */
+DECL|method|writeXMP (File file, Collection bibtexEntries, BibtexDatabase database, boolean writePDFInfo)
 specifier|public
 specifier|static
 name|void
@@ -3395,6 +3377,9 @@ name|file
 parameter_list|,
 name|Collection
 name|bibtexEntries
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|,
 name|boolean
 name|writePDFInfo
@@ -3644,6 +3629,8 @@ operator|.
 name|setBibtexEntry
 argument_list|(
 name|e
+argument_list|,
+name|database
 argument_list|)
 expr_stmt|;
 block|}
@@ -4109,6 +4096,11 @@ operator|.
 name|toXMP
 argument_list|(
 name|c
+argument_list|,
+name|result
+operator|.
+name|getDatabase
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4298,6 +4290,11 @@ argument_list|)
 argument_list|,
 name|c
 argument_list|,
+name|result
+operator|.
+name|getDatabase
+argument_list|()
+argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
@@ -4430,6 +4427,11 @@ index|]
 argument_list|)
 argument_list|,
 name|e
+argument_list|,
+name|result
+operator|.
+name|getDatabase
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|System

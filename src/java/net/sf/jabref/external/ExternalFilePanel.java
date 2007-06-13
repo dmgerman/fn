@@ -210,6 +210,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|BibtexEntry
 import|;
 end_import
@@ -362,6 +374,15 @@ name|ExternalFilePanel
 extends|extends
 name|JPanel
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|3653290879640642718L
+decl_stmt|;
 DECL|field|browseBut
 DECL|field|download
 DECL|field|auto
@@ -400,8 +421,11 @@ DECL|field|entry
 specifier|private
 name|BibtexEntry
 name|entry
-init|=
-literal|null
+decl_stmt|;
+DECL|field|database
+specifier|private
+name|BibtexDatabase
+name|database
 decl_stmt|;
 DECL|field|metaData
 specifier|private
@@ -791,13 +815,16 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** 	 * Change which entry this panel is operating on. This is used only when 	 * this panel is not attached to an entry editor. 	 */
-DECL|method|setEntry (BibtexEntry entry)
+DECL|method|setEntry (BibtexEntry entry, BibtexDatabase database)
 specifier|public
 name|void
 name|setEntry
 parameter_list|(
 name|BibtexEntry
 name|entry
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 block|{
 name|this
@@ -806,6 +833,33 @@ name|entry
 operator|=
 name|entry
 expr_stmt|;
+name|this
+operator|.
+name|database
+operator|=
+name|database
+expr_stmt|;
+block|}
+DECL|method|getDatabase ()
+specifier|public
+name|BibtexDatabase
+name|getDatabase
+parameter_list|()
+block|{
+return|return
+operator|(
+name|database
+operator|!=
+literal|null
+condition|?
+name|database
+else|:
+name|entryEditor
+operator|.
+name|getDatabase
+argument_list|()
+operator|)
+return|;
 block|}
 DECL|method|getEntry ()
 specifier|public
@@ -1027,6 +1081,9 @@ argument_list|(
 name|finalFile
 argument_list|,
 name|getEntry
+argument_list|()
+argument_list|,
+name|getDatabase
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2251,18 +2308,18 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|Object
-name|o
-init|=
-name|getKey
-argument_list|()
-decl_stmt|;
 comment|/* 				 * Find the following directories to look in for: 				 *  				 * default directory for this field type. 				 *  				 * directory of bibtex-file. // NOT POSSIBLE at the moment. 				 *  				 * JabRef-directory. 				 */
 name|LinkedList
+argument_list|<
+name|String
+argument_list|>
 name|list
 init|=
 operator|new
 name|LinkedList
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|list

@@ -1454,6 +1454,8 @@ operator|.
 name|setBibtexEntry
 argument_list|(
 name|e
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|BibtexEntry
