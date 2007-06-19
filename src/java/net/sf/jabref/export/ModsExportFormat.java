@@ -207,7 +207,7 @@ name|ss
 init|=
 name|getSaveSession
 argument_list|(
-name|encoding
+literal|"UTF8"
 argument_list|,
 operator|new
 name|File
