@@ -564,8 +564,6 @@ literal|"' is reserved"
 argument_list|)
 throw|;
 block|}
-comment|// This mechanism is probably not really necessary.
-comment|//Object normalValue = FieldTypes.normalize(name, value);
 name|Object
 name|oldValue
 init|=

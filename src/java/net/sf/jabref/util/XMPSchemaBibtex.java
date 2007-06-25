@@ -1280,6 +1280,24 @@ literal|"review"
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|setBibtexEntry (BibtexEntry entry)
+specifier|public
+name|void
+name|setBibtexEntry
+parameter_list|(
+name|BibtexEntry
+name|entry
+parameter_list|)
+block|{
+name|setBibtexEntry
+argument_list|(
+name|entry
+argument_list|,
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+comment|/** 	 *  	 * @param entry 	 * @param database maybenull 	 */
 DECL|method|setBibtexEntry (BibtexEntry entry, BibtexDatabase database)
 specifier|public
 name|void

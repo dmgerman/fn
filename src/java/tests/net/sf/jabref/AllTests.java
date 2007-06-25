@@ -59,7 +59,7 @@ name|suite
 operator|.
 name|addTestSuite
 argument_list|(
-name|UtilTest
+name|BibtexDatabaseTest
 operator|.
 name|class
 argument_list|)
@@ -68,7 +68,7 @@ name|suite
 operator|.
 name|addTestSuite
 argument_list|(
-name|FileBasedTestCase
+name|JabRefTestCase
 operator|.
 name|class
 argument_list|)
@@ -95,7 +95,16 @@ name|suite
 operator|.
 name|addTestSuite
 argument_list|(
-name|JabRefTestCase
+name|FileBasedTestCase
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|UtilTest
 operator|.
 name|class
 argument_list|)
