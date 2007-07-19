@@ -22,7 +22,37 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
+name|BorderLayout
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|GridBagConstraints
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|GridBagLayout
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Insets
 import|;
 end_import
 
@@ -34,7 +64,29 @@ name|awt
 operator|.
 name|event
 operator|.
-name|*
+name|ActionEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|ActionListener
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
 import|;
 end_import
 
@@ -50,21 +102,13 @@ end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|Vector
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|jabref
 operator|.
-name|io
-operator|.
-name|File
+name|Globals
 import|;
 end_import
 
@@ -94,18 +138,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|jgoodies
@@ -115,20 +147,6 @@ operator|.
 name|builder
 operator|.
 name|ButtonBarBuilder
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|jgoodies
-operator|.
-name|forms
-operator|.
-name|layout
-operator|.
-name|Sizes
 import|;
 end_import
 
@@ -285,11 +303,6 @@ name|ok_pressed
 init|=
 literal|false
 decl_stmt|;
-DECL|field|groups
-specifier|private
-name|Vector
-name|groups
-decl_stmt|;
 DECL|field|index
 specifier|private
 name|int
@@ -305,7 +318,6 @@ DECL|field|oldRegexp
 DECL|field|oldField
 specifier|private
 name|String
-comment|/*name, regexp, field,*/
 name|oldName
 decl_stmt|,
 name|oldRegexp
@@ -398,9 +410,6 @@ name|parent
 operator|=
 name|parent_
 expr_stmt|;
-comment|//groups = groups_;
-comment|//index = index_;
-comment|/*if (index>= 0) {             // Group entry already exists.             try {             oldField = (String)groups.elementAt(index);             field.setText(oldField);             oldName = (String)groups.elementAt(index+1);             name.setText(oldName);             oldRegexp = (String)groups.elementAt(index+2);             regexp.setText(oldRegexp);              // We disable these text fields, since changing field             // or regexp would leave the entries added to the             // group hanging.             field.setEnabled(false);             regexp.setEnabled(false);             } catch (ArrayIndexOutOfBoundsException ex) {             }         } else             field.setText(defaultField);     */
 name|ActionListener
 name|okListener
 init|=

@@ -163,7 +163,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Oct 18, 2006  * Time: 9:39:53 PM  * To change this template use File | Settings | File Templates.  */
+comment|/**  * Base class for export formats based on templates.  *   */
 end_comment
 
 begin_class
@@ -209,6 +209,7 @@ name|customExport
 init|=
 literal|false
 decl_stmt|;
+comment|/** 	 * Initialize another export format based on templates stored in dir with 	 * layoutFile lfFilename. 	 *  	 *  	 * @param displayName 	 *            Name to display to the user. 	 * @param consoleName 	 *            Name to call this format in the console. 	 * @param lfFileName 	 *            Name of the main layout file. 	 * @param directory 	 *            Directory in which to find the layout file. 	 * @param extension 	 *            Should contain the . (for instance .txt). 	 */
 DECL|method|ExportFormat (String displayName, String consoleName, String lfFileName, String directory, String extension)
 specifier|public
 name|ExportFormat
@@ -268,7 +269,7 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Indicate whether this is a custom export. A custom export looks for its      * layout files using a normal file path, while a built-in export looks in      * the classpath.      * @param custom true to indicate a custom export format.      */
+comment|/** 	 * Indicate whether this is a custom export. A custom export looks for its 	 * layout files using a normal file path, while a built-in export looks in 	 * the classpath. 	 *  	 * @param custom 	 *            true to indicate a custom export format. 	 */
 DECL|method|setCustomExport (boolean custom)
 specifier|public
 name|void
@@ -315,7 +316,65 @@ return|return
 name|displayName
 return|;
 block|}
-comment|/**      * Perform the export.      * @param database The database to export from.      * @param file The filename to write to.      * @param encoding The encoding to use.      * @param entries (may be null) A Set containing the IDs of all entries that should be exported.      *  If null, all entries will be exported.      * @throws Exception      */
+comment|/** 	 * This method should return a reader from which the given file can be read. 	 *  	 * This standard implementation of this method will use the 	 * {@link FileActions#getReader(String)} method. 	 *  	 * Subclasses of ExportFormat are free to override and provide their own 	 * implementation. 	 */
+DECL|method|getReader (String filename)
+specifier|public
+name|Reader
+name|getReader
+parameter_list|(
+name|String
+name|filename
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+comment|// If this is a custom export, just use the given file name:
+name|String
+name|dir
+decl_stmt|;
+if|if
+condition|(
+name|customExport
+condition|)
+block|{
+name|dir
+operator|=
+literal|""
+expr_stmt|;
+block|}
+else|else
+block|{
+name|dir
+operator|=
+name|Globals
+operator|.
+name|LAYOUT_PREFIX
+operator|+
+operator|(
+name|directory
+operator|==
+literal|null
+condition|?
+literal|""
+else|:
+name|directory
+operator|+
+literal|"/"
+operator|)
+expr_stmt|;
+block|}
+return|return
+name|FileActions
+operator|.
+name|getReader
+argument_list|(
+name|dir
+operator|+
+name|filename
+argument_list|)
+return|;
+block|}
+comment|/** 	 * Perform the export. 	 *  	 * @param database 	 *            The database to export from. 	 * @param file 	 *            The filename to write to. 	 * @param encoding 	 *            The encoding to use. 	 * @param entries 	 *            (may be null) A Set containing the IDs of all entries that 	 *            should be exported. If null, all entries will be exported. 	 * @throws Exception 	 */
 DECL|method|performExport (final BibtexDatabase database, final String file, final String encoding, Set entries)
 specifier|public
 name|void
@@ -358,40 +417,6 @@ argument_list|,
 name|outFile
 argument_list|)
 decl_stmt|;
-specifier|final
-name|String
-name|dir
-decl_stmt|;
-comment|// If this is a custom export, just use the given file name:
-if|if
-condition|(
-name|customExport
-condition|)
-name|dir
-operator|=
-literal|""
-expr_stmt|;
-else|else
-name|dir
-operator|=
-operator|(
-name|directory
-operator|==
-literal|null
-condition|?
-name|Globals
-operator|.
-name|LAYOUT_PREFIX
-else|:
-name|Globals
-operator|.
-name|LAYOUT_PREFIX
-operator|+
-name|directory
-operator|+
-literal|"/"
-operator|)
-expr_stmt|;
 name|VerifyingWriter
 name|ps
 init|=
@@ -413,12 +438,8 @@ try|try
 block|{
 name|reader
 operator|=
-name|FileActions
-operator|.
 name|getReader
 argument_list|(
-name|dir
-operator|+
 name|lfFileName
 operator|+
 literal|".begin.layout"
@@ -456,7 +477,8 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-comment|//  // If an exception was cast, export filter doesn't have a begin file.
+comment|// // If an exception was cast, export filter doesn't have a begin
+comment|// file.
 block|}
 comment|// Write the header
 if|if
@@ -480,12 +502,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// changed section - end (arudert)
-comment|// Write database entries; entries will be sorted as they
-comment|// appear on the screen, or sorted by author, depending on
-comment|// Preferences.
-comment|// We also supply the Set entries - if we are to export only certain entries,
-comment|// it will be non-null, and be used to choose entries. Otherwise, it will be
-comment|// null, and be ignored.
+comment|/* 		 * Write database entries; entries will be sorted as they appear on the 		 * screen, or sorted by author, depending on Preferences. We also supply 		 * the Set entries - if we are to export only certain entries, it will 		 * be non-null, and be used to choose entries. Otherwise, it will be 		 * null, and be ignored. 		 */
 name|List
 name|sorted
 init|=
@@ -503,12 +520,8 @@ decl_stmt|;
 comment|// Load default layout
 name|reader
 operator|=
-name|FileActions
-operator|.
 name|getReader
 argument_list|(
-name|dir
-operator|+
 name|lfFileName
 operator|+
 literal|".layout"
@@ -625,12 +638,8 @@ block|{
 comment|// We try to get a type-specific layout for this entry.
 name|reader
 operator|=
-name|FileActions
-operator|.
 name|getReader
 argument_list|(
-name|dir
-operator|+
 name|lfFileName
 operator|+
 literal|"."
@@ -680,7 +689,8 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-comment|// The exception indicates that no type-specific layout exists, so we
+comment|// The exception indicates that no type-specific layout
+comment|// exists, so we
 comment|// go with the default one.
 name|layout
 operator|=
@@ -715,12 +725,8 @@ try|try
 block|{
 name|reader
 operator|=
-name|FileActions
-operator|.
 name|getReader
 argument_list|(
-name|dir
-operator|+
 name|lfFileName
 operator|+
 literal|".end.layout"
@@ -757,7 +763,8 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-comment|// If an exception was thrown, export filter doesn't have an end file.
+comment|// If an exception was thrown, export filter doesn't have an end
+comment|// file.
 block|}
 comment|// Write the header
 if|if

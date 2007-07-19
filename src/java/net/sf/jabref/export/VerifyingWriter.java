@@ -14,11 +14,11 @@ end_package
 
 begin_import
 import|import
-name|sun
+name|java
 operator|.
-name|misc
+name|io
 operator|.
-name|CharacterEncoder
+name|IOException
 import|;
 end_import
 
@@ -28,7 +28,27 @@ name|java
 operator|.
 name|io
 operator|.
-name|*
+name|OutputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|OutputStreamWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|UnsupportedEncodingException
 import|;
 end_import
 
@@ -66,30 +86,8 @@ name|TreeSet
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
 begin_comment
-comment|/**  * Writer that extends OutputStreamWriter, but also checks if the chosen encoding supports all  * text that is written. Currently only a boolean value is stored to remember whether everything  * has gone well or not.  */
+comment|/**  * Writer that extends OutputStreamWriter, but also checks if the chosen  * encoding supports all text that is written. Currently only a boolean value is  * stored to remember whether everything has gone well or not.  */
 end_comment
 
 begin_class
@@ -114,10 +112,16 @@ decl_stmt|;
 DECL|field|problemCharacters
 specifier|private
 name|TreeSet
+argument_list|<
+name|Character
+argument_list|>
 name|problemCharacters
 init|=
 operator|new
 name|TreeSet
+argument_list|<
+name|Character
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|method|VerifyingWriter (OutputStream out, String encoding)
@@ -263,34 +267,17 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|Iterator
-name|i
-init|=
+name|Character
+name|ch
+range|:
 name|problemCharacters
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
 name|chars
 operator|.
 name|append
 argument_list|(
-operator|(
-operator|(
-name|Character
-operator|)
-name|i
-operator|.
-name|next
-argument_list|()
-operator|)
+name|ch
 operator|.
 name|charValue
 argument_list|()

@@ -274,6 +274,9 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 name|Collection
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|c
 init|=
 name|result
@@ -295,9 +298,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
-operator|(
-name|BibtexEntry
-operator|)
 name|c
 operator|.
 name|iterator
@@ -487,6 +487,32 @@ expr_stmt|;
 name|assertEquals
 argument_list|(
 literal|"This is a<p>text "
+argument_list|,
+name|layoutText
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|testPluginLoading ()
+specifier|public
+name|void
+name|testPluginLoading
+parameter_list|()
+throws|throws
+name|Exception
+block|{
+name|String
+name|layoutText
+init|=
+name|layout
+argument_list|(
+literal|"\\begin{author}\\format[NameFormatter]{\\author}\\end{author}"
+argument_list|,
+literal|"@other{bla, author={Joe Doe and Jane, Moon}}"
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Joe Doe, Moon Jane"
 argument_list|,
 name|layoutText
 argument_list|)

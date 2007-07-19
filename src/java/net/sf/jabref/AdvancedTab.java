@@ -996,7 +996,7 @@ name|openRemoteListener
 argument_list|(
 name|JabRef
 operator|.
-name|ths
+name|singleton
 argument_list|)
 expr_stmt|;
 if|if

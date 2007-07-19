@@ -836,6 +836,7 @@ argument_list|(
 literal|"\n"
 argument_list|)
 decl_stmt|;
+comment|/** 	 * 	"Fieldname" to indicate that a field should be treated as a bibtex  	 * string. Used when writing database to file. 	 */
 DECL|field|BIBTEX_STRING
 specifier|public
 specifier|static
@@ -845,8 +846,6 @@ name|BIBTEX_STRING
 init|=
 literal|"__string"
 decl_stmt|;
-comment|// "Fieldname" to indicate that a field should be treated as a bibtex
-comment|// string. Used when writing database to file.
 DECL|method|logger (String s)
 specifier|public
 specifier|static
@@ -893,7 +892,7 @@ name|SEVERE
 argument_list|)
 expr_stmt|;
 block|}
-comment|// should be only called once
+comment|/** 	 * Should be only called once 	 */
 DECL|method|turnOnConsoleLogging ()
 specifier|public
 specifier|static
@@ -911,6 +910,7 @@ name|consoleHandler
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** 	 * Should be only called once 	 */
 DECL|method|turnOnFileLogging ()
 specifier|public
 specifier|static
@@ -950,7 +950,6 @@ operator|new
 name|ConsoleHandler
 argument_list|()
 expr_stmt|;
-comment|/* 		 * try { handler = new FileHandler(logfile); // this will overwrite } 		 * catch (IOException e) { //can't open log file so use console 		 * e.printStackTrace(); } 		 */
 name|Logger
 operator|.
 name|global

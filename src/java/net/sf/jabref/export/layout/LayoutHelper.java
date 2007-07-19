@@ -20,18 +20,6 @@ end_package
 
 begin_import
 import|import
-name|wsi
-operator|.
-name|ra
-operator|.
-name|types
-operator|.
-name|StringInt
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -66,42 +54,24 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|StringTokenizer
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Vector
 import|;
 end_import
 
+begin_import
+import|import
+name|wsi
+operator|.
+name|ra
+operator|.
+name|types
+operator|.
+name|StringInt
+import|;
+end_import
+
 begin_comment
-comment|/**  * DOCUMENT ME!  *  * @author $author$  * @version $Revision$  */
+comment|/**  * Helper class to get a Layout object.  *   *<code>  * LayoutHelper helper = new LayoutHelper(...a reader...);  * Layout layout = helper.getLayoutFromText();  *</code>  *  */
 end_comment
 
 begin_class
@@ -110,7 +80,6 @@ specifier|public
 class|class
 name|LayoutHelper
 block|{
-comment|//~ Static fields/initializers /////////////////////////////////////////////
 DECL|field|IS_LAYOUT_TEXT
 specifier|public
 specifier|static
@@ -182,8 +151,6 @@ name|currentGroup
 init|=
 literal|null
 decl_stmt|;
-comment|//~ Instance fields ////////////////////////////////////////////////////////
-comment|//public static final int IS_OPTION_FIELD_PARAM = 6;
 DECL|field|_in
 specifier|private
 name|PushbackReader
@@ -198,7 +165,6 @@ operator|new
 name|Vector
 argument_list|()
 decl_stmt|;
-comment|//private HashMap _meta;
 DECL|field|_eof
 specifier|private
 name|boolean
@@ -213,7 +179,6 @@ name|line
 init|=
 literal|1
 decl_stmt|;
-comment|//~ Constructors ///////////////////////////////////////////////////////////
 DECL|method|LayoutHelper (Reader in)
 specifier|public
 name|LayoutHelper
@@ -244,7 +209,6 @@ name|in
 argument_list|)
 expr_stmt|;
 block|}
-comment|//~ Methods ////////////////////////////////////////////////////////////////
 DECL|method|getLayoutFromText (String classPrefix)
 specifier|public
 name|Layout
@@ -392,7 +356,6 @@ operator|=
 name|newGroup
 expr_stmt|;
 block|}
-comment|/**      *      */
 DECL|method|getBracketedField (int _field)
 specifier|private
 name|String
@@ -1562,148 +1525,8 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
-comment|//
-comment|//	private String parseFieldContent() throws IOException
-comment|//	{
-comment|//		skipWhitespace();
-comment|//		consume('=');
-comment|//		skipWhitespace();
-comment|//		StringBuffer value = new StringBuffer();
-comment|//		int c, j = '.';
-comment|//
-comment|//		while (((c = peek()) != ',')&& (c != '}')&& (c != ')'))
-comment|//		{
-comment|//
-comment|//			if (_eof)
-comment|//			{
-comment|//				throw new RuntimeException(
-comment|//					"Error in line " + line + ": EOF in mid-string");
-comment|//			}
-comment|//			if (c == '"')
-comment|//			{
-comment|//				// value is a string
-comment|//				consume('"');
-comment|//
-comment|//				while (!((peek() == '"')&& (j != '\\')))
-comment|//				{
-comment|//					j = read();
-comment|//					if (_eof || (j == -1) || (j == 65535))
-comment|//					{
-comment|//						throw new RuntimeException(
-comment|//							"Error in line " + line + ": EOF in mid-string");
-comment|//					}
-comment|//
-comment|//					value.append((char) j);
-comment|//				}
-comment|//
-comment|//				consume('"');
-comment|//
-comment|//			}
-comment|//			skipWhitespace();
-comment|//		}
-comment|//		//Util.pr("Returning field content: "+value.toString());
-comment|//		return value.toString();
-comment|//
-comment|//	}
-comment|//
-comment|//	private StringBuffer parseBracketedText() throws IOException
-comment|//	{
-comment|//		//Util.pr("Parse bracketed text");
-comment|//		StringBuffer value = new StringBuffer();
-comment|//
-comment|//		consume('{');
-comment|//
-comment|//		int brackets = 0;
-comment|//
-comment|//		while (!((peek() == '}')&& (brackets == 0)))
-comment|//		{
-comment|//
-comment|//			int j = read();
-comment|//			if ((j == -1) || (j == 65535))
-comment|//			{
-comment|//				throw new RuntimeException(
-comment|//					"Error in line " + line + ": EOF in mid-string");
-comment|//			}
-comment|//			else if (j == '{')
-comment|//				brackets++;
-comment|//			else if (j == '}')
-comment|//				brackets--;
-comment|//
-comment|//			// If we encounter whitespace of any kind, read it as a
-comment|//			// simple space, and ignore any others that follow immediately.
-comment|//			if (Character.isWhitespace((char) j))
-comment|//			{
-comment|//				value.append(' ');
-comment|//				skipWhitespace();
-comment|//			}
-comment|//			else
-comment|//				value.append((char) j);
-comment|//
-comment|//		}
-comment|//
-comment|//		consume('}');
-comment|//
-comment|//		return value;
-comment|//	}
-comment|//	private void consume(char expected) throws IOException
-comment|//	{
-comment|//		int c = read();
-comment|//
-comment|//		if (c != expected)
-comment|//		{
-comment|//			throw new RuntimeException(
-comment|//				"Error in line "
-comment|//					+ line
-comment|//					+ ": Expected "
-comment|//					+ expected
-comment|//					+ " but received "
-comment|//					+ (char) c);
-comment|//		}
-comment|//
-comment|//	}
-comment|//
-comment|//	private void consumeUncritically(char expected) throws IOException
-comment|//	{
-comment|//		int c;
-comment|//		while (((c = read()) != expected)&& (c != -1)&& (c != 65535));
-comment|//		if ((c == -1) || (c == 65535))
-comment|//			_eof = true;
-comment|//	}
-comment|//
-comment|//	private void consume(char expected1, char expected2) throws IOException
-comment|//	{
-comment|//		// Consumes one of the two, doesn't care which appears.
-comment|//
-comment|//		int c = read();
-comment|//
-comment|//		if ((c != expected1)&& (c != expected2))
-comment|//		{
-comment|//			throw new RuntimeException(
-comment|//				"Error in line "
-comment|//					+ line
-comment|//					+ ": Expected "
-comment|//					+ expected1
-comment|//					+ " or "
-comment|//					+ expected2
-comment|//					+ " but received "
-comment|//					+ (int) c);
-comment|//		}
-comment|//
-comment|//	}
 block|}
 end_class
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
-
-begin_comment
-comment|//  END OF FILE.
-end_comment
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
 
 end_unit
 

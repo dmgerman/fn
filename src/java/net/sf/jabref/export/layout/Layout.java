@@ -20,18 +20,6 @@ end_package
 
 begin_import
 import|import
-name|wsi
-operator|.
-name|ra
-operator|.
-name|types
-operator|.
-name|StringInt
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
@@ -66,16 +54,18 @@ end_import
 
 begin_import
 import|import
-name|java
+name|wsi
 operator|.
-name|io
+name|ra
 operator|.
-name|IOException
+name|types
+operator|.
+name|StringInt
 import|;
 end_import
 
 begin_comment
-comment|/**  * DOCUMENT ME!  *  * @author $author$  * @version $Revision$  */
+comment|/**  * Main class for formatting DOCUMENT ME!  *  * @author $author$  * @version $Revision$  */
 end_comment
 
 begin_class

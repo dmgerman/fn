@@ -14,39 +14,31 @@ end_package
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|io
 operator|.
-name|jabref
-operator|.
-name|Globals
+name|File
 import|;
 end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|io
 operator|.
-name|jabref
-operator|.
-name|BibtexDatabase
+name|IOException
 import|;
 end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|msbib
-operator|.
-name|*
+name|Set
 import|;
 end_import
 
@@ -58,23 +50,7 @@ name|xml
 operator|.
 name|transform
 operator|.
-name|dom
-operator|.
-name|DOMSource
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|transform
-operator|.
-name|stream
-operator|.
-name|StreamResult
+name|OutputKeys
 import|;
 end_import
 
@@ -110,43 +86,63 @@ name|xml
 operator|.
 name|transform
 operator|.
-name|OutputKeys
+name|dom
+operator|.
+name|DOMSource
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|util
+name|xml
 operator|.
-name|Set
+name|transform
+operator|.
+name|stream
+operator|.
+name|StreamResult
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|io
+name|sf
 operator|.
-name|IOException
+name|jabref
+operator|.
+name|BibtexDatabase
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|io
+name|sf
 operator|.
-name|File
+name|jabref
+operator|.
+name|Globals
 import|;
 end_import
 
-begin_comment
-comment|/*  * @author S M Mahbub Murshed  * @email udvranto@yahoo.com * * @version 1.0.0 * @see http://mahbub.wordpress.com/2007/03/24/details-of-microsoft-office-2007-bibliographic-format-compared-to-bibtex/ * @see http://mahbub.wordpress.com/2007/03/22/deciphering-microsoft-office-2007-bibliography-format/ *  * Date: May 03, 2007 *  */
-end_comment
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|msbib
+operator|.
+name|MSBibDatabase
+import|;
+end_import
 
 begin_comment
 comment|/**  * ExportFormat for exporting in MSBIB XML format.  */

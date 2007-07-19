@@ -101,6 +101,11 @@ class|class
 name|CustomImportList
 extends|extends
 name|TreeSet
+argument_list|<
+name|CustomImportList
+operator|.
+name|Importer
+argument_list|>
 block|{
 comment|/**    * Object with data for a custom importer.    *     *<p>Is also responsible for instantiating the class loader.</p>    */
 DECL|class|Importer

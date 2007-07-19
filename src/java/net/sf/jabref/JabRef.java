@@ -16,59 +16,13 @@ end_package
 
 begin_import
 import|import
-name|net
+name|gnu
 operator|.
-name|sf
+name|dtools
 operator|.
-name|jabref
+name|ritopt
 operator|.
-name|export
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|imports
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|wizard
-operator|.
-name|auximport
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|remote
-operator|.
-name|RemoteListener
+name|BooleanOption
 import|;
 end_import
 
@@ -80,7 +34,19 @@ name|dtools
 operator|.
 name|ritopt
 operator|.
-name|*
+name|Options
+import|;
+end_import
+
+begin_import
+import|import
+name|gnu
+operator|.
+name|dtools
+operator|.
+name|ritopt
+operator|.
+name|StringOption
 import|;
 end_import
 
@@ -90,7 +56,27 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
+name|Dimension
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Font
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Frame
 import|;
 end_import
 
@@ -112,7 +98,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|*
+name|File
 import|;
 end_import
 
@@ -122,7 +108,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|File
+name|FileNotFoundException
 import|;
 end_import
 
@@ -130,19 +116,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|io
 operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
+name|IOException
 import|;
 end_import
 
@@ -162,11 +138,39 @@ begin_import
 import|import
 name|java
 operator|.
-name|lang
+name|util
 operator|.
-name|reflect
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|InvocationTargetException
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Vector
 import|;
 end_import
 
@@ -196,15 +200,87 @@ end_import
 
 begin_import
 import|import
-name|com
+name|net
 operator|.
-name|jgoodies
+name|sf
 operator|.
-name|looks
+name|jabref
 operator|.
-name|plastic
+name|export
 operator|.
-name|Plastic3DLookAndFeel
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|imports
+operator|.
+name|ImportFormatReader
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|imports
+operator|.
+name|OpenDatabaseAction
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|imports
+operator|.
+name|ParserResult
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|remote
+operator|.
+name|RemoteListener
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|wizard
+operator|.
+name|auximport
+operator|.
+name|AuxCommandLine
 import|;
 end_import
 
@@ -216,9 +292,7 @@ name|jgoodies
 operator|.
 name|looks
 operator|.
-name|plastic
-operator|.
-name|PlasticLookAndFeel
+name|FontPolicies
 import|;
 end_import
 
@@ -230,9 +304,7 @@ name|jgoodies
 operator|.
 name|looks
 operator|.
-name|windows
-operator|.
-name|WindowsLookAndFeel
+name|FontPolicy
 import|;
 end_import
 
@@ -268,7 +340,9 @@ name|jgoodies
 operator|.
 name|looks
 operator|.
-name|FontPolicy
+name|plastic
+operator|.
+name|Plastic3DLookAndFeel
 import|;
 end_import
 
@@ -280,20 +354,14 @@ name|jgoodies
 operator|.
 name|looks
 operator|.
-name|FontPolicies
+name|windows
+operator|.
+name|WindowsLookAndFeel
 import|;
 end_import
 
 begin_comment
-comment|//import javax.swing.UIManager;
-end_comment
-
-begin_comment
-comment|//import javax.swing.UIDefaults;
-end_comment
-
-begin_comment
-comment|//import javax.swing.UnsupportedLookAndFeelException;
+comment|/**  * JabRef Main Class - The application gets started here.  *  */
 end_comment
 
 begin_class
@@ -302,11 +370,11 @@ specifier|public
 class|class
 name|JabRef
 block|{
-DECL|field|ths
+DECL|field|singleton
 specifier|public
 specifier|static
 name|JabRef
-name|ths
+name|singleton
 decl_stmt|;
 DECL|field|remoteListener
 specifier|public
@@ -377,7 +445,6 @@ name|showVersion
 decl_stmt|,
 name|disableSplash
 decl_stmt|;
-comment|/*     * class StringArrayOption extends ArrayOption { public public void     * modify(String value) { } public void modify(String[] value) { } public     * Object[] getObjectArray() { return null; } public String getTypeName() {     * return "Strings"; } public String getStringValue() { return ""; } public     * Object getObject() { return null; } }     */
 DECL|method|main (String[] args)
 specifier|public
 specifier|static
@@ -397,7 +464,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|JabRef (String[] args)
-specifier|public
+specifier|protected
 name|JabRef
 parameter_list|(
 name|String
@@ -405,11 +472,12 @@ index|[]
 name|args
 parameter_list|)
 block|{
-name|ths
+name|singleton
 operator|=
 name|this
 expr_stmt|;
-comment|// The following two lines signal that the system proxy settings should be used:
+comment|// The following two lines signal that the system proxy settings should
+comment|// be used:
 name|System
 operator|.
 name|setProperty
@@ -459,6 +527,8 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+comment|/* 		 * The Plug-in System is started automatically on the first call to 		 * PluginCore.getManager(). 		 *  		 * Plug-ins are activated on the first call to their getInstance method. 		 */
+comment|/* Build list of Import and Export formats */
 name|Globals
 operator|.
 name|importFormatReader
@@ -473,19 +543,18 @@ argument_list|(
 name|prefs
 argument_list|)
 expr_stmt|;
-comment|// Build the list of available export formats:
 name|ExportFormats
 operator|.
 name|initAllExports
 argument_list|()
 expr_stmt|;
 comment|// Read list(s) of journal names and abbreviations:
-comment|//Globals.turnOnFileLogging();
 name|Globals
 operator|.
 name|initializeJournalNames
 argument_list|()
 expr_stmt|;
+comment|// Check for running JabRef
 if|if
 condition|(
 name|Globals
@@ -510,24 +579,11 @@ expr_stmt|;
 if|if
 condition|(
 name|remoteListener
-operator|!=
-literal|null
-condition|)
-block|{
-name|remoteListener
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
-block|}
-comment|// Unless we are alone, try to contact already running JabRef:
-if|if
-condition|(
-name|remoteListener
 operator|==
 literal|null
 condition|)
 block|{
+comment|// Unless we are alone, try to contact already running JabRef:
 if|if
 condition|(
 name|RemoteListener
@@ -538,8 +594,7 @@ name|args
 argument_list|)
 condition|)
 block|{
-comment|// We have successfully sent our command line options through the socket to
-comment|// another JabRef instance. So we assume it's all taken care of, and quit.
+comment|/* 					 * We have successfully sent our command line options 					 * through the socket to another JabRef instance. So we 					 * assume it's all taken care of, and quit. 					 */
 name|System
 operator|.
 name|out
@@ -563,8 +618,18 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+else|else
+block|{
+comment|// No listener found, thus we are the first instance to be
+comment|// started.
+name|remoteListener
+operator|.
+name|start
+argument_list|()
+expr_stmt|;
 block|}
-comment|/**        * See if the user has a personal journal list set up. If so, add these        * journal names and abbreviations to the list:        */
+block|}
+comment|/* 		 * See if the user has a personal journal list set up. If so, add these 		 * journal names and abbreviations to the list: 		 */
 name|String
 name|personalJournalList
 init|=
@@ -611,33 +676,17 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|//System.setProperty("sun.awt.noerasebackground", "true");
-comment|//System.out.println(java.awt.Toolkit.getDefaultToolkit().getDesktopProperty("awt.dynamicLayoutSupported"));
-comment|// Make sure of a proper cleanup when quitting (e.g. deleting temporary
-comment|// files).
-name|System
-operator|.
-name|runFinalizersOnExit
+comment|/* 		 * Make sure of a proper cleanup when quitting (e.g. deleting temporary 		 * files). 		 *  		 * CO 2007-07-12: Since this is deprecated, commented out: 		 *  		 * System.runFinalizersOnExit(true); 		 *  		 */
+name|openWindow
 argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|Vector
-name|loaded
-init|=
 name|processArguments
 argument_list|(
 name|args
 argument_list|,
 literal|true
 argument_list|)
-decl_stmt|;
-name|openWindow
-argument_list|(
-name|loaded
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("1");
 block|}
 DECL|method|setupOptions ()
 specifier|private
