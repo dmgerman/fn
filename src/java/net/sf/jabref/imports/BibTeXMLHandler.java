@@ -14,13 +14,71 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexFields
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Util
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|xml
 operator|.
 name|sax
 operator|.
-name|*
+name|Attributes
 import|;
 end_import
 
@@ -34,35 +92,9 @@ name|sax
 operator|.
 name|helpers
 operator|.
-name|*
+name|DefaultHandler
 import|;
 end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|*
-import|;
-end_import
-
-begin_comment
-comment|/*   Copyright (C) 2000-2004 E.L. Willighagen<egonw@sci.kun.nl>    This program is free software; you can redistribute it and/or modify   it under the terms of the GNU General Public License as published by   the Free Software Foundation; either version 2 of the License, or (at   your option) any later version.    This program is distributed in the hope that it will be useful, but   WITHOUT ANY WARRANTY; without even the implied warranty of   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU   General Public License for more details.    You should have received a copy of the GNU General Public License   along with this program; if not, write to the Free Software   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307   USA  */
-end_comment
 
 begin_comment
 comment|/**  * Reader for the BibTeXML format. See  *<a href="http://bibtexml.sourceforge.net/">bibtexml.sf.net</a>.  *  * @author Egon Willighagen  */
@@ -79,6 +111,9 @@ block|{
 DECL|field|bibitems
 specifier|private
 name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|bibitems
 decl_stmt|;
 DECL|field|b
@@ -88,12 +123,6 @@ name|b
 decl_stmt|;
 comment|// the entry being read
 comment|// XML parsing stuff
-DECL|field|name
-specifier|private
-name|String
-name|name
-decl_stmt|;
-comment|// the current element name
 DECL|field|currentChars
 specifier|private
 name|String
@@ -111,6 +140,9 @@ block|}
 DECL|method|getItems ()
 specifier|public
 name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|getItems
 parameter_list|()
 block|{
@@ -144,6 +176,9 @@ name|bibitems
 operator|=
 operator|new
 name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
@@ -213,12 +248,6 @@ name|name
 init|=
 name|raw
 decl_stmt|;
-name|this
-operator|.
-name|name
-operator|=
-name|name
-expr_stmt|;
 if|if
 condition|(
 name|name

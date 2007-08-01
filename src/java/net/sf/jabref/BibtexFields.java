@@ -80,7 +80,17 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Vector
 import|;
 end_import
 
@@ -94,7 +104,7 @@ name|jabref
 operator|.
 name|util
 operator|.
-name|*
+name|TXMLReader
 import|;
 end_import
 
@@ -217,14 +227,17 @@ comment|// contains all bibtex-field objects (BibtexSingleField)
 DECL|field|fieldSet
 specifier|private
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|BibtexSingleField
+argument_list|>
 name|fieldSet
-init|=
-literal|null
 decl_stmt|;
 comment|// contains all known (and public) bibtex fieldnames
 DECL|field|PUBLIC_FIELDS
 specifier|private
-name|Object
+name|String
 index|[]
 name|PUBLIC_FIELDS
 init|=
@@ -239,6 +252,11 @@ name|fieldSet
 operator|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|BibtexSingleField
+argument_list|>
 argument_list|()
 expr_stmt|;
 name|BibtexSingleField
@@ -1167,10 +1185,16 @@ argument_list|)
 expr_stmt|;
 comment|// collect all public fields for the PUBLIC_FIELDS array
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|pFields
 init|=
 operator|new
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|fieldSet
 operator|.
@@ -1180,35 +1204,15 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|Iterator
-name|iter
-init|=
+name|BibtexSingleField
+name|sField
+range|:
 name|fieldSet
 operator|.
 name|values
 argument_list|()
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|iter
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
-name|BibtexSingleField
-name|sField
-init|=
-operator|(
-name|BibtexSingleField
-operator|)
-name|iter
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 name|sField
@@ -1236,7 +1240,16 @@ operator|=
 name|pFields
 operator|.
 name|toArray
+argument_list|(
+operator|new
+name|String
+index|[
+name|pFields
+operator|.
+name|size
 argument_list|()
+index|]
+argument_list|)
 expr_stmt|;
 comment|// sort the entries
 name|java
@@ -1385,9 +1398,6 @@ expr_stmt|;
 name|BibtexSingleField
 name|dummy
 init|=
-operator|(
-name|BibtexSingleField
-operator|)
 name|fieldSet
 operator|.
 name|get
@@ -1806,7 +1816,7 @@ comment|/** returns an string-array with all fieldnames */
 DECL|method|getAllFieldNames ()
 specifier|public
 specifier|static
-name|Object
+name|String
 index|[]
 name|getAllFieldNames
 parameter_list|()

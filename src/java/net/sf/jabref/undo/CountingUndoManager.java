@@ -24,7 +24,7 @@ name|swing
 operator|.
 name|undo
 operator|.
-name|*
+name|CannotUndoException
 import|;
 end_import
 
@@ -34,7 +34,21 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|undo
+operator|.
+name|UndoManager
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|undo
+operator|.
+name|UndoableEdit
 import|;
 end_import
 

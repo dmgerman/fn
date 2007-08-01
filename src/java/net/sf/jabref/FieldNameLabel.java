@@ -12,21 +12,11 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|swing
+name|awt
 operator|.
-name|JLabel
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|Icon
+name|Color
 import|;
 end_import
 
@@ -36,7 +26,27 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
+name|Graphics
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Graphics2D
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|RenderingHints
 import|;
 end_import
 
@@ -47,6 +57,16 @@ operator|.
 name|swing
 operator|.
 name|BorderFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JLabel
 import|;
 end_import
 

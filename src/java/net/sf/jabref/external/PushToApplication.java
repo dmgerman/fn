@@ -14,13 +14,11 @@ end_package
 
 begin_import
 import|import
-name|net
+name|javax
 operator|.
-name|sf
+name|swing
 operator|.
-name|jabref
-operator|.
-name|BibtexEntry
+name|Icon
 import|;
 end_import
 
@@ -38,11 +36,13 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|net
 operator|.
-name|swing
+name|sf
 operator|.
-name|*
+name|jabref
+operator|.
+name|BibtexEntry
 import|;
 end_import
 

@@ -14,13 +14,21 @@ end_package
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|Globals
+name|util
+operator|.
+name|Iterator
 import|;
 end_import
 
@@ -30,9 +38,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|table
-operator|.
-name|AbstractTableModel
+name|SwingUtilities
 import|;
 end_import
 
@@ -54,27 +60,21 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|table
+operator|.
+name|AbstractTableModel
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|jabref
 operator|.
-name|util
-operator|.
-name|Iterator
+name|Globals
 import|;
 end_import
 

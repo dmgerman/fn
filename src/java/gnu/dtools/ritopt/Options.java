@@ -18,7 +18,7 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|io
 operator|.
 name|*
 import|;
@@ -28,9 +28,19 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|util
 operator|.
-name|*
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
 import|;
 end_import
 
@@ -42,7 +52,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|Globals
 import|;
 end_import
 

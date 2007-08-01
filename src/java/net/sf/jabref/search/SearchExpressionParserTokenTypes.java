@@ -16,16 +16,6 @@ name|search
 package|;
 end_package
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|StringReader
-import|;
-end_import
-
 begin_interface
 DECL|interface|SearchExpressionParserTokenTypes
 specifier|public

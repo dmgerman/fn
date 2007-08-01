@@ -20,7 +20,27 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
+name|BorderLayout
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|CardLayout
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Component
 import|;
 end_import
 
@@ -32,7 +52,19 @@ name|awt
 operator|.
 name|event
 operator|.
-name|*
+name|ActionEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|ActionListener
 import|;
 end_import
 
@@ -42,7 +74,17 @@ name|java
 operator|.
 name|io
 operator|.
-name|*
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
 import|;
 end_import
 
@@ -52,7 +94,17 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
 import|;
 end_import
 
@@ -74,7 +126,19 @@ name|swing
 operator|.
 name|event
 operator|.
-name|*
+name|ListSelectionEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|event
+operator|.
+name|ListSelectionListener
 import|;
 end_import
 
@@ -280,10 +344,16 @@ comment|// ----------------------------------------------------------------
 comment|// Add tabs to tabbed here. Remember, tabs must implement PrefsTab.
 comment|// ----------------------------------------------------------------
 name|ArrayList
+argument_list|<
+name|PrefsTab
+argument_list|>
 name|tabs
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|PrefsTab
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|tabs
@@ -441,6 +511,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|Iterator
+argument_list|<
+name|PrefsTab
+argument_list|>
 name|it
 init|=
 name|tabs

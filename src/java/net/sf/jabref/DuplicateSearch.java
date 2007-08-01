@@ -40,16 +40,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Vector
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|ArrayList
 import|;
 end_import
@@ -66,11 +56,21 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Vector
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|SwingUtilities
 import|;
 end_import
 
@@ -130,10 +130,18 @@ decl_stmt|;
 DECL|field|duplicates
 specifier|final
 name|Vector
+argument_list|<
+name|BibtexEntry
+index|[]
+argument_list|>
 name|duplicates
 init|=
 operator|new
 name|Vector
+argument_list|<
+name|BibtexEntry
+index|[]
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|autoRemoveExactDuplicates
@@ -308,10 +316,16 @@ decl_stmt|;
 comment|/*   loop: while (!st.finished() || (current< duplicates.size()))   {     if ( current>= duplicates.size() )     {       // No more duplicates to resolve, but search is still in progress. Sleep a little.        try        {          sleep(10);        } catch (InterruptedException ex) {}        continue loop;     }   } */
 specifier|final
 name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|toRemove
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 while|while
@@ -372,10 +386,6 @@ name|BibtexEntry
 index|[]
 name|be
 init|=
-operator|(
-name|BibtexEntry
-index|[]
-operator|)
 name|duplicates
 operator|.
 name|get
@@ -662,6 +672,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|iterator
 init|=
 name|toRemove
@@ -679,9 +692,6 @@ block|{
 name|BibtexEntry
 name|entry
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|iterator
 operator|.
 name|next

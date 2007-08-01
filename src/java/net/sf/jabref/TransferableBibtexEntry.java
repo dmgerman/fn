@@ -16,15 +16,13 @@ end_package
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|awt
 operator|.
-name|jabref
+name|datatransfer
 operator|.
-name|export
-operator|.
-name|LatexFieldFormatter
+name|DataFlavor
 import|;
 end_import
 
@@ -36,7 +34,19 @@ name|awt
 operator|.
 name|datatransfer
 operator|.
-name|*
+name|Transferable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|datatransfer
+operator|.
+name|UnsupportedFlavorException
 import|;
 end_import
 
@@ -46,7 +56,17 @@ name|java
 operator|.
 name|io
 operator|.
-name|*
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|StringWriter
 import|;
 end_import
 
@@ -57,6 +77,20 @@ operator|.
 name|swing
 operator|.
 name|JOptionPane
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|export
+operator|.
+name|LatexFieldFormatter
 import|;
 end_import
 

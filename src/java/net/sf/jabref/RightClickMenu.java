@@ -32,7 +32,7 @@ name|awt
 operator|.
 name|event
 operator|.
-name|*
+name|ActionEvent
 import|;
 end_import
 
@@ -40,9 +40,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|awt
 operator|.
-name|*
+name|event
+operator|.
+name|ActionListener
 import|;
 end_import
 
@@ -64,7 +66,7 @@ name|swing
 operator|.
 name|event
 operator|.
-name|*
+name|PopupMenuEvent
 import|;
 end_import
 
@@ -74,9 +76,9 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|undo
+name|event
 operator|.
-name|AbstractUndoableEdit
+name|PopupMenuListener
 import|;
 end_import
 
@@ -91,20 +93,6 @@ operator|.
 name|groups
 operator|.
 name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|undo
-operator|.
-name|NamedCompound
 import|;
 end_import
 
@@ -1046,24 +1034,15 @@ argument_list|()
 expr_stmt|;
 for|for
 control|(
-name|Iterator
-name|i
-init|=
+name|String
+name|key
+range|:
 name|BibtexEntryType
 operator|.
 name|ALL_TYPES
 operator|.
 name|keySet
 argument_list|()
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
 name|typeMenu
@@ -1077,13 +1056,7 @@ name|BibtexEntryType
 operator|.
 name|getType
 argument_list|(
-operator|(
-name|String
-operator|)
-name|i
-operator|.
-name|next
-argument_list|()
+name|key
 argument_list|)
 argument_list|,
 name|panel

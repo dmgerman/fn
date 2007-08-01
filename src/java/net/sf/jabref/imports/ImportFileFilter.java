@@ -47,6 +47,9 @@ extends|extends
 name|FileFilter
 implements|implements
 name|Comparable
+argument_list|<
+name|ImportFileFilter
+argument_list|>
 block|{
 DECL|field|format
 specifier|private
@@ -116,12 +119,12 @@ return|return
 name|name
 return|;
 block|}
-DECL|method|compareTo (Object o)
+DECL|method|compareTo (ImportFileFilter o)
 specifier|public
 name|int
 name|compareTo
 parameter_list|(
-name|Object
+name|ImportFileFilter
 name|o
 parameter_list|)
 block|{
@@ -130,12 +133,7 @@ name|name
 operator|.
 name|compareTo
 argument_list|(
-operator|(
-operator|(
-name|ImportFileFilter
-operator|)
 name|o
-operator|)
 operator|.
 name|name
 argument_list|)

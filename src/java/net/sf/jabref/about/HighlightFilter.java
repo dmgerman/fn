@@ -22,7 +22,7 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
+name|Color
 import|;
 end_import
 
@@ -34,7 +34,7 @@ name|awt
 operator|.
 name|image
 operator|.
-name|*
+name|RGBImageFilter
 import|;
 end_import
 

@@ -47,6 +47,14 @@ class|class
 name|LabelPattern
 extends|extends
 name|Hashtable
+argument_list|<
+name|String
+argument_list|,
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
 block|{
 comment|/** 	 * The parent of this LabelPattern. 	 */
 DECL|field|parent
@@ -116,7 +124,6 @@ name|String
 name|pattern
 parameter_list|)
 block|{
-comment|//put(type, pattern);
 name|put
 argument_list|(
 name|type
@@ -193,14 +200,20 @@ DECL|method|getValue (String key)
 specifier|public
 specifier|final
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|getValue
 parameter_list|(
 name|String
 name|key
 parameter_list|)
 block|{
-name|Object
-name|_obj
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+name|result
 init|=
 name|get
 argument_list|(
@@ -211,7 +224,7 @@ comment|// throws the NullPointerException
 comment|// Test to see if we found anything
 if|if
 condition|(
-name|_obj
+name|result
 operator|==
 literal|null
 condition|)
@@ -223,7 +236,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|_obj
+name|result
 operator|=
 name|parent
 operator|.
@@ -235,7 +248,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|_obj
+name|result
 operator|==
 literal|null
 condition|)
@@ -249,10 +262,7 @@ return|;
 block|}
 block|}
 return|return
-operator|(
-name|ArrayList
-operator|)
-name|_obj
+name|result
 return|;
 block|}
 comment|/**          * Checks whether this pattern is customized or the default value.          */

@@ -18,7 +18,17 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|JComponent
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JScrollPane
 import|;
 end_import
 
@@ -44,7 +54,21 @@ name|jabref
 operator|.
 name|undo
 operator|.
-name|*
+name|NamedCompound
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|undo
+operator|.
+name|UndoableInsertString
 import|;
 end_import
 

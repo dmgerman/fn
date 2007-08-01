@@ -28,7 +28,7 @@ name|export
 operator|.
 name|layout
 operator|.
-name|*
+name|LayoutFormatter
 import|;
 end_import
 

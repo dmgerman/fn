@@ -20,7 +20,27 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|Enumeration
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Vector
 import|;
 end_import
 
@@ -47,10 +67,16 @@ block|{
 DECL|field|ruleSet
 specifier|protected
 name|Vector
+argument_list|<
+name|SearchRule
+argument_list|>
 name|ruleSet
 init|=
 operator|new
 name|Vector
+argument_list|<
+name|SearchRule
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|method|addRule (SearchRule newRule)
@@ -82,12 +108,17 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|applyRule (Map searchString, BibtexEntry bibtexEntry)
+DECL|method|applyRule (Map<String, String> searchString, BibtexEntry bibtexEntry)
 specifier|public
 name|int
 name|applyRule
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|searchString
 parameter_list|,
 name|BibtexEntry
@@ -102,6 +133,9 @@ init|=
 literal|0
 decl_stmt|;
 name|Enumeration
+argument_list|<
+name|SearchRule
+argument_list|>
 name|e
 init|=
 name|ruleSet
@@ -119,15 +153,10 @@ condition|)
 block|{
 name|score
 operator|+=
-operator|(
-operator|(
-name|SearchRule
-operator|)
 name|e
 operator|.
 name|nextElement
 argument_list|()
-operator|)
 operator|.
 name|applyRule
 argument_list|(

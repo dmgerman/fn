@@ -58,7 +58,7 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
+name|Color
 import|;
 end_import
 
@@ -68,9 +68,27 @@ name|java
 operator|.
 name|awt
 operator|.
-name|event
+name|Dimension
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|*
+name|awt
+operator|.
+name|Font
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Graphics
 import|;
 end_import
 

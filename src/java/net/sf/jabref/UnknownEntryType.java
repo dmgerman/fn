@@ -16,7 +16,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|*
+name|Writer
 import|;
 end_import
 

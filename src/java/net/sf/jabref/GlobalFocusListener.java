@@ -16,9 +16,7 @@ name|java
 operator|.
 name|awt
 operator|.
-name|event
-operator|.
-name|FocusListener
+name|Component
 import|;
 end_import
 
@@ -40,7 +38,9 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
+name|event
+operator|.
+name|FocusListener
 import|;
 end_import
 
@@ -50,7 +50,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|JComponent
 import|;
 end_import
 

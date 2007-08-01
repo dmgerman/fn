@@ -24,7 +24,7 @@ name|swing
 operator|.
 name|undo
 operator|.
-name|*
+name|AbstractUndoableEdit
 import|;
 end_import
 
@@ -36,17 +36,43 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|BasePanel
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|HashMap
+name|jabref
+operator|.
+name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Util
 import|;
 end_import
 

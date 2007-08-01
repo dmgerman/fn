@@ -88,7 +88,19 @@ name|swing
 operator|.
 name|tree
 operator|.
-name|*
+name|DefaultTreeModel
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|tree
+operator|.
+name|TreePath
 import|;
 end_import
 
@@ -100,7 +112,19 @@ name|swing
 operator|.
 name|undo
 operator|.
-name|*
+name|AbstractUndoableEdit
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|undo
+operator|.
+name|CompoundEdit
 import|;
 end_import
 
@@ -113,20 +137,6 @@ operator|.
 name|jabref
 operator|.
 name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|search
-operator|.
-name|SearchMatcher
 import|;
 end_import
 

@@ -24,7 +24,31 @@ name|awt
 operator|.
 name|datatransfer
 operator|.
-name|*
+name|DataFlavor
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|datatransfer
+operator|.
+name|Transferable
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|datatransfer
+operator|.
+name|UnsupportedFlavorException
 import|;
 end_import
 
@@ -34,7 +58,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|*
+name|ByteArrayInputStream
 import|;
 end_import
 
@@ -45,16 +69,6 @@ operator|.
 name|io
 operator|.
 name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|print
-operator|.
-name|FlavorException
 import|;
 end_import
 

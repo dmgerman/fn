@@ -292,6 +292,9 @@ comment|/**      * Parse the entries in the source, and return a List of BibtexE
 DECL|method|importEntries (InputStream stream)
 specifier|public
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|importEntries
 parameter_list|(
 name|InputStream
@@ -301,10 +304,16 @@ throws|throws
 name|IOException
 block|{
 name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|bibitems
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|StringBuffer
@@ -419,10 +428,20 @@ init|=
 literal|""
 decl_stmt|;
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|hm
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|String
@@ -1305,9 +1324,6 @@ block|{
 name|String
 name|kw
 init|=
-operator|(
-name|String
-operator|)
 name|hm
 operator|.
 name|get
@@ -1512,15 +1528,24 @@ decl_stmt|;
 comment|// id assumes an existing database so don't
 comment|// Remove empty fields:
 name|ArrayList
+argument_list|<
+name|Object
+argument_list|>
 name|toRemove
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|Object
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|it
 init|=
 name|hm
@@ -1549,9 +1574,6 @@ decl_stmt|;
 name|String
 name|content
 init|=
-operator|(
-name|String
-operator|)
 name|hm
 operator|.
 name|get
@@ -1590,6 +1612,9 @@ block|}
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|Object
+argument_list|>
 name|iterator
 init|=
 name|toRemove

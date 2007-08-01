@@ -20,7 +20,17 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|BoxLayout
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JPanel
 import|;
 end_import
 

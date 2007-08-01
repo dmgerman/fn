@@ -95,6 +95,9 @@ name|context
 parameter_list|)
 block|{
 name|Stack
+argument_list|<
+name|Object
+argument_list|>
 name|stack
 init|=
 name|vm

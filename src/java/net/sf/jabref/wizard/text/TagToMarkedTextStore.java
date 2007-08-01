@@ -52,17 +52,27 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|HashMap
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|swing
+name|util
 operator|.
-name|*
+name|LinkedList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ListIterator
 import|;
 end_import
 
@@ -74,7 +84,7 @@ name|swing
 operator|.
 name|text
 operator|.
-name|*
+name|StyledDocument
 import|;
 end_import
 

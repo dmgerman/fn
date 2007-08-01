@@ -16,19 +16,11 @@ end_package
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|export
-operator|.
-name|layout
-operator|.
-name|format
-operator|.
-name|RemoveBrackets
+name|Map
 import|;
 end_import
 
@@ -38,7 +30,9 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|regex
+operator|.
+name|Matcher
 import|;
 end_import
 
@@ -68,13 +62,19 @@ end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|regex
+name|jabref
 operator|.
-name|Matcher
+name|export
+operator|.
+name|layout
+operator|.
+name|format
+operator|.
+name|RemoveBrackets
 import|;
 end_import
 
@@ -113,12 +113,17 @@ operator|=
 name|caseSensitive
 expr_stmt|;
 block|}
-DECL|method|applyRule (Map searchStrings, BibtexEntry bibtexEntry)
+DECL|method|applyRule (Map<String, String> searchStrings, BibtexEntry bibtexEntry)
 specifier|public
 name|int
 name|applyRule
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|searchStrings
 parameter_list|,
 name|BibtexEntry
@@ -132,8 +137,8 @@ name|score
 init|=
 literal|0
 decl_stmt|;
-name|Iterator
-name|e
+name|String
+name|searchString
 init|=
 name|searchStrings
 operator|.
@@ -142,14 +147,6 @@ argument_list|()
 operator|.
 name|iterator
 argument_list|()
-decl_stmt|;
-name|String
-name|searchString
-init|=
-operator|(
-name|String
-operator|)
-name|e
 operator|.
 name|next
 argument_list|()

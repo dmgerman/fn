@@ -30,9 +30,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|net
+name|io
 operator|.
-name|URL
+name|File
 import|;
 end_import
 
@@ -42,7 +42,17 @@ name|java
 operator|.
 name|io
 operator|.
-name|*
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URL
 import|;
 end_import
 
@@ -54,7 +64,31 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRef
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Worker
 import|;
 end_import
 

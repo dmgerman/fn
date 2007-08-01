@@ -44,7 +44,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|BibtexEntryType
 import|;
 end_import
 
@@ -56,7 +56,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibtexEntryType
+name|Util
 import|;
 end_import
 
@@ -71,16 +71,6 @@ operator|.
 name|search
 operator|.
 name|BasicSearch
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
 import|;
 end_import
 

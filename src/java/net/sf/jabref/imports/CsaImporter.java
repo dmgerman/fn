@@ -349,12 +349,17 @@ name|str
 return|;
 block|}
 comment|// append to the "note" field
-DECL|method|addNote (HashMap hm, String note)
+DECL|method|addNote (HashMap<String, String> hm, String note)
 specifier|private
 name|void
 name|addNote
 parameter_list|(
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|hm
 parameter_list|,
 name|String
@@ -384,9 +389,6 @@ name|notebuf
 operator|.
 name|append
 argument_list|(
-operator|(
-name|String
-operator|)
 name|hm
 operator|.
 name|get
@@ -424,12 +426,17 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// parse the date from the Source field
-DECL|method|parseDate (HashMap hm, String fstr)
+DECL|method|parseDate (HashMap<String, String> hm, String fstr)
 specifier|private
 name|String
 name|parseDate
 parameter_list|(
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|hm
 parameter_list|,
 name|String
@@ -795,9 +802,6 @@ block|{
 name|String
 name|oyear
 init|=
-operator|(
-name|String
-operator|)
 name|hm
 operator|.
 name|get
@@ -1006,6 +1010,9 @@ comment|/**      * Parse the entries in the source, and return a List of BibtexE
 DECL|method|importEntries (InputStream stream)
 specifier|public
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|importEntries
 parameter_list|(
 name|InputStream
@@ -1015,10 +1022,16 @@ throws|throws
 name|IOException
 block|{
 name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|bibitems
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|StringBuffer
@@ -1029,10 +1042,20 @@ name|StringBuffer
 argument_list|()
 decl_stmt|;
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|hm
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|BufferedReader
@@ -1061,11 +1084,6 @@ name|boolean
 name|first
 init|=
 literal|true
-decl_stmt|;
-name|int
-name|rline
-init|=
-literal|1
 decl_stmt|;
 name|line
 operator|=
@@ -1157,9 +1175,6 @@ block|{
 name|String
 name|booktitle
 init|=
-operator|(
-name|String
-operator|)
 name|hm
 operator|.
 name|get
@@ -1242,10 +1257,6 @@ name|readLine
 argument_list|(
 name|in
 argument_list|)
-expr_stmt|;
-name|rline
-operator|=
-name|line
 expr_stmt|;
 continue|continue;
 block|}
@@ -1468,11 +1479,6 @@ name|first
 operator|=
 literal|false
 expr_stmt|;
-name|rline
-operator|=
-name|fline
-expr_stmt|;
-comment|// save start of record
 block|}
 elseif|else
 if|if
@@ -1875,9 +1881,6 @@ block|{
 name|String
 name|oyear
 init|=
-operator|(
-name|String
-operator|)
 name|hm
 operator|.
 name|get

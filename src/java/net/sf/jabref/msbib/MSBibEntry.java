@@ -18,13 +18,215 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|StringWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|LinkedList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Matcher
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|regex
+operator|.
+name|Pattern
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|parsers
+operator|.
+name|DocumentBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|parsers
+operator|.
+name|DocumentBuilderFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|transform
+operator|.
+name|OutputKeys
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|transform
+operator|.
+name|Transformer
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|transform
+operator|.
+name|TransformerFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|transform
+operator|.
+name|dom
+operator|.
+name|DOMSource
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|transform
+operator|.
+name|stream
+operator|.
+name|StreamResult
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|BibtexEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexFields
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|export
+operator|.
+name|layout
+operator|.
+name|LayoutFormatter
 import|;
 end_import
 
@@ -42,23 +244,7 @@ name|layout
 operator|.
 name|format
 operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|export
-operator|.
-name|layout
-operator|.
-name|*
+name|XMLChars
 import|;
 end_import
 
@@ -72,59 +258,21 @@ name|jabref
 operator|.
 name|mods
 operator|.
-name|*
+name|PageNumbers
 import|;
 end_import
 
 begin_import
 import|import
-name|javax
+name|net
 operator|.
-name|xml
+name|sf
 operator|.
-name|parsers
+name|jabref
 operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
+name|mods
 operator|.
-name|xml
-operator|.
-name|transform
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|transform
-operator|.
-name|dom
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|transform
-operator|.
-name|stream
-operator|.
-name|*
+name|PersonName
 import|;
 end_import
 
@@ -136,39 +284,31 @@ name|w3c
 operator|.
 name|dom
 operator|.
-name|*
+name|Document
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|w3c
 operator|.
-name|*
+name|dom
+operator|.
+name|Element
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|io
+name|w3c
 operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|dom
 operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|*
+name|NodeList
 import|;
 end_import
 
@@ -221,6 +361,9 @@ decl_stmt|;
 DECL|field|authors
 specifier|protected
 name|List
+argument_list|<
+name|PersonName
+argument_list|>
 name|authors
 init|=
 literal|null
@@ -228,6 +371,9 @@ decl_stmt|;
 DECL|field|bookAuthors
 specifier|protected
 name|List
+argument_list|<
+name|PersonName
+argument_list|>
 name|bookAuthors
 init|=
 literal|null
@@ -235,6 +381,9 @@ decl_stmt|;
 DECL|field|editors
 specifier|protected
 name|List
+argument_list|<
+name|PersonName
+argument_list|>
 name|editors
 init|=
 literal|null
@@ -242,6 +391,9 @@ decl_stmt|;
 DECL|field|translators
 specifier|protected
 name|List
+argument_list|<
+name|PersonName
+argument_list|>
 name|translators
 init|=
 literal|null
@@ -249,6 +401,9 @@ decl_stmt|;
 DECL|field|producerNames
 specifier|protected
 name|List
+argument_list|<
+name|PersonName
+argument_list|>
 name|producerNames
 init|=
 literal|null
@@ -256,6 +411,9 @@ decl_stmt|;
 DECL|field|composers
 specifier|protected
 name|List
+argument_list|<
+name|PersonName
+argument_list|>
 name|composers
 init|=
 literal|null
@@ -263,6 +421,9 @@ decl_stmt|;
 DECL|field|conductors
 specifier|protected
 name|List
+argument_list|<
+name|PersonName
+argument_list|>
 name|conductors
 init|=
 literal|null
@@ -270,6 +431,9 @@ decl_stmt|;
 DECL|field|performers
 specifier|protected
 name|List
+argument_list|<
+name|PersonName
+argument_list|>
 name|performers
 init|=
 literal|null
@@ -277,6 +441,9 @@ decl_stmt|;
 DECL|field|writers
 specifier|protected
 name|List
+argument_list|<
+name|PersonName
+argument_list|>
 name|writers
 init|=
 literal|null
@@ -284,6 +451,9 @@ decl_stmt|;
 DECL|field|directors
 specifier|protected
 name|List
+argument_list|<
+name|PersonName
+argument_list|>
 name|directors
 init|=
 literal|null
@@ -291,6 +461,9 @@ decl_stmt|;
 DECL|field|compilers
 specifier|protected
 name|List
+argument_list|<
+name|PersonName
+argument_list|>
 name|compilers
 init|=
 literal|null
@@ -298,6 +471,9 @@ decl_stmt|;
 DECL|field|interviewers
 specifier|protected
 name|List
+argument_list|<
+name|PersonName
+argument_list|>
 name|interviewers
 init|=
 literal|null
@@ -305,6 +481,9 @@ decl_stmt|;
 DECL|field|interviewees
 specifier|protected
 name|List
+argument_list|<
+name|PersonName
+argument_list|>
 name|interviewees
 init|=
 literal|null
@@ -312,6 +491,9 @@ decl_stmt|;
 DECL|field|inventors
 specifier|protected
 name|List
+argument_list|<
+name|PersonName
+argument_list|>
 name|inventors
 init|=
 literal|null
@@ -319,6 +501,9 @@ decl_stmt|;
 DECL|field|counsels
 specifier|protected
 name|List
+argument_list|<
+name|PersonName
+argument_list|>
 name|counsels
 init|=
 literal|null
@@ -3331,6 +3516,9 @@ block|}
 DECL|method|getSpecificAuthors (String type, Element authors, String _bcol)
 specifier|protected
 name|List
+argument_list|<
+name|PersonName
+argument_list|>
 name|getSpecificAuthors
 parameter_list|(
 name|String
@@ -3344,6 +3532,9 @@ name|_bcol
 parameter_list|)
 block|{
 name|List
+argument_list|<
+name|PersonName
+argument_list|>
 name|result
 init|=
 literal|null
@@ -3447,6 +3638,9 @@ name|result
 operator|=
 operator|new
 name|LinkedList
+argument_list|<
+name|PersonName
+argument_list|>
 argument_list|()
 expr_stmt|;
 for|for
@@ -3811,6 +4005,9 @@ block|}
 DECL|method|getAuthors (String authors)
 specifier|protected
 name|List
+argument_list|<
+name|PersonName
+argument_list|>
 name|getAuthors
 parameter_list|(
 name|String
@@ -3818,17 +4015,16 @@ name|authors
 parameter_list|)
 block|{
 name|List
+argument_list|<
+name|PersonName
+argument_list|>
 name|result
 init|=
 operator|new
 name|LinkedList
-argument_list|()
-decl_stmt|;
-name|LayoutFormatter
-name|chars
-init|=
-operator|new
-name|XMLChars
+argument_list|<
+name|PersonName
+argument_list|>
 argument_list|()
 decl_stmt|;
 if|if
@@ -3844,9 +4040,6 @@ operator|-
 literal|1
 condition|)
 block|{
-comment|//			if(FORMATXML)
-comment|//				result.add(new PersonName(chars.format(authors)));
-comment|//			else
 name|result
 operator|.
 name|add
@@ -3889,9 +4082,6 @@ name|i
 operator|++
 control|)
 block|{
-comment|//            	if(FORMATXML)
-comment|//            		result.add(new PersonName(chars.format(names[i])));
-comment|//            	else
 name|result
 operator|.
 name|add
@@ -4300,6 +4490,7 @@ literal|null
 decl_stmt|;
 try|try
 block|{
+comment|// TODO No clue what this is doing!!
 name|DocumentBuilder
 name|d
 init|=
@@ -4331,28 +4522,6 @@ return|return
 name|result
 return|;
 block|}
-comment|//	private String healXML(String value)
-comment|//	{
-comment|//		String healedValue = value;
-comment|//
-comment|////		if(value.contains("A net energy gain"))
-comment|////			System.out.println(value);
-comment|////		restore converted html-char
-comment|//		Pattern p = Pattern.compile("&#([0-9A-Fa-f]{2,4});");
-comment|//		// Pattern p = Pattern.compile("&#(\\d{1,4});");
-comment|//		Matcher m = p.matcher(healedValue);
-comment|//		while (m.find())
-comment|//		{
-comment|//			int n = Integer.parseInt(m.group(1),16);
-comment|//			char ch = Character.forDigit(n,10);
-comment|//			System.out.println(m.group(1));
-comment|//			System.out.println(""+n);
-comment|//			System.out.println(""+ch);
-comment|//			healedValue = healedValue.replaceAll("\\&#"+m.group(1)+";",""+ch);
-comment|//		}
-comment|//
-comment|//		return healedValue;
-comment|//	}
 DECL|method|addField (Document d,Element parent, String name, String value)
 specifier|public
 name|void
@@ -4419,7 +4588,7 @@ name|elem
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addAuthor (Document d, Element allAuthors, String entryName, List authorsLst)
+DECL|method|addAuthor (Document d, Element allAuthors, String entryName, List<PersonName> authorsLst)
 specifier|public
 name|void
 name|addAuthor
@@ -4434,6 +4603,9 @@ name|String
 name|entryName
 parameter_list|,
 name|List
+argument_list|<
+name|PersonName
+argument_list|>
 name|authorsLst
 parameter_list|)
 block|{
@@ -4471,6 +4643,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|PersonName
+argument_list|>
 name|iter
 init|=
 name|authorsLst
@@ -4488,9 +4663,6 @@ block|{
 name|PersonName
 name|name
 init|=
-operator|(
-name|PersonName
-operator|)
 name|iter
 operator|.
 name|next
@@ -4817,11 +4989,6 @@ name|Document
 name|d
 parameter_list|)
 block|{
-name|Node
-name|result
-init|=
-literal|null
-decl_stmt|;
 try|try
 block|{
 name|Element
@@ -5692,7 +5859,7 @@ throw|;
 block|}
 comment|// return null;
 block|}
-DECL|method|parseSingleStandardNumber (String type,String bibtype, String standardNum, HashMap hm)
+DECL|method|parseSingleStandardNumber (String type,String bibtype, String standardNum, HashMap<String, String> hm)
 specifier|protected
 name|void
 name|parseSingleStandardNumber
@@ -5707,6 +5874,11 @@ name|String
 name|standardNum
 parameter_list|,
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|hm
 parameter_list|)
 block|{
@@ -5757,7 +5929,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|parseStandardNumber (String standardNum, HashMap hm)
+DECL|method|parseStandardNumber (String standardNum, HashMap<String, String> hm)
 specifier|protected
 name|void
 name|parseStandardNumber
@@ -5766,6 +5938,11 @@ name|String
 name|standardNum
 parameter_list|,
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|hm
 parameter_list|)
 block|{
@@ -5821,18 +5998,26 @@ name|hm
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addAuthor (HashMap hm, String type, List authorsLst)
+DECL|method|addAuthor (HashMap<String, String> hm, String type, List<PersonName> authorsLst)
 specifier|public
 name|void
 name|addAuthor
 parameter_list|(
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|hm
 parameter_list|,
 name|String
 name|type
 parameter_list|,
 name|List
+argument_list|<
+name|PersonName
+argument_list|>
 name|authorsLst
 parameter_list|)
 block|{
@@ -5856,6 +6041,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|PersonName
+argument_list|>
 name|iter
 init|=
 name|authorsLst
@@ -5873,9 +6061,6 @@ block|{
 name|PersonName
 name|name
 init|=
-operator|(
-name|PersonName
-operator|)
 name|iter
 operator|.
 name|next
@@ -6362,10 +6547,20 @@ comment|//			entry.setType(BibtexEntryType.MISC);
 comment|//		else
 comment|//			entry.setType(BibtexEntryType.MISC);
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|hm
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 if|if

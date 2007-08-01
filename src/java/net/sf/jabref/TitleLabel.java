@@ -16,17 +16,27 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|JLabel
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|awt
+name|swing
 operator|.
-name|*
+name|SwingConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|UIManager
 import|;
 end_import
 

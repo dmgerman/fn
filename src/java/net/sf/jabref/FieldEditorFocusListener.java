@@ -16,9 +16,17 @@ name|java
 operator|.
 name|awt
 operator|.
-name|event
+name|Color
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|FocusListener
+name|awt
+operator|.
+name|Component
 import|;
 end_import
 
@@ -40,7 +48,9 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
+name|event
+operator|.
+name|FocusListener
 import|;
 end_import
 

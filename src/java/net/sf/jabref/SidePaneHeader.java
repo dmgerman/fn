@@ -95,12 +95,9 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|nameLabel
-DECL|field|imageIcon
 specifier|private
 name|JLabel
 name|nameLabel
-decl_stmt|,
-name|imageIcon
 decl_stmt|;
 DECL|field|parent
 specifier|private

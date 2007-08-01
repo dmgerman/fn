@@ -36,10 +36,16 @@ comment|//TreeSet set;
 DECL|field|set
 specifier|final
 name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|set
 decl_stmt|;
 DECL|field|comp
 name|Comparator
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|comp
 decl_stmt|;
 DECL|field|idArray
@@ -67,14 +73,22 @@ name|changed
 init|=
 literal|false
 decl_stmt|;
-DECL|method|EntrySorter (Map entries, Comparator comp)
+DECL|method|EntrySorter (Map<String, BibtexEntry> entries, Comparator<BibtexEntry> comp)
 specifier|public
 name|EntrySorter
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|BibtexEntry
+argument_list|>
 name|entries
 parameter_list|,
 name|Comparator
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|comp
 parameter_list|)
 block|{
@@ -83,6 +97,9 @@ name|set
 operator|=
 operator|new
 name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 expr_stmt|;
 name|this
@@ -92,6 +109,9 @@ operator|=
 name|comp
 expr_stmt|;
 name|Set
+argument_list|<
+name|String
+argument_list|>
 name|keySet
 init|=
 name|entries
@@ -107,6 +127,9 @@ literal|null
 condition|)
 block|{
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|i
 init|=
 name|keySet
@@ -214,6 +237,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|i
 init|=
 name|set
@@ -232,9 +258,6 @@ comment|//        for (int i=0; i<idArray.length; i++) {
 name|BibtexEntry
 name|entry
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|i
 operator|.
 name|next
@@ -516,44 +539,6 @@ comment|//changed = true;
 block|}
 block|}
 block|}
-comment|/** Add an entry to the sorted set, making sure it is put in the right position      *      * @param entry The entry to add      */
-DECL|method|addEntry (BibtexEntry entry)
-specifier|private
-name|void
-name|addEntry
-parameter_list|(
-name|BibtexEntry
-name|entry
-parameter_list|)
-block|{
-name|int
-name|pos
-init|=
-operator|-
-name|Collections
-operator|.
-name|binarySearch
-argument_list|(
-name|set
-argument_list|,
-name|entry
-argument_list|,
-name|comp
-argument_list|)
-operator|-
-literal|1
-decl_stmt|;
-name|set
-operator|.
-name|add
-argument_list|(
-name|pos
-argument_list|,
-name|entry
-argument_list|)
-expr_stmt|;
-block|}
-comment|/* Old version, from when set was a TreeSet.      public void databaseChanged(DatabaseChangeEvent e) {     synchronized(set) {         if (e.getType() == DatabaseChangeEvent.ADDED_ENTRY) {             set.add(e.getEntry());         }         else if (e.getType() == DatabaseChangeEvent.REMOVED_ENTRY) {             set.remove(e.getEntry());         }         else if (e.getType() == DatabaseChangeEvent.CHANGING_ENTRY) {             set.remove(e.getEntry());             changing = true;         }         else if (e.getType() == DatabaseChangeEvent.CHANGED_ENTRY) {             // Remove and re-add the entry, to make sure it is in the             // correct sort position.             set.add(e.getEntry());             changing = false;         }      }  } */
 block|}
 end_class
 

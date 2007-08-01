@@ -18,23 +18,11 @@ end_comment
 
 begin_import
 import|import
-name|org
-operator|.
-name|antlr
-operator|.
-name|runtime
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|util
 operator|.
-name|Stack
+name|ArrayList
 import|;
 end_import
 
@@ -50,11 +38,13 @@ end_import
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|antlr
 operator|.
-name|ArrayList
+name|runtime
+operator|.
+name|*
 import|;
 end_import
 
@@ -68,11 +58,34 @@ name|runtime
 operator|.
 name|tree
 operator|.
-name|*
+name|CommonTreeAdaptor
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|antlr
+operator|.
+name|runtime
+operator|.
+name|tree
+operator|.
+name|TreeAdaptor
 import|;
 end_import
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"unused"
+block|,
+literal|"unchecked"
+block|}
+argument_list|)
 DECL|class|BstParser
 specifier|public
 class|class
@@ -858,6 +871,11 @@ block|}
 empty_stmt|;
 comment|// $ANTLR start commands
 comment|// Bst.g:16:1: commands : ( STRINGS^^ idList | INTEGERS^^ idList | FUNCTION^^ id stack | MACRO^^ id '{'! STRING '}'! | READ^^ | EXECUTE^^ '{'! function '}'! | ITERATE^^ '{'! function '}'! | REVERSE^^ '{'! function '}'! | ENTRY^^ idList0 idList0 idList0 | SORT^^ );
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 DECL|method|commands ()
 specifier|public
 name|commands_return

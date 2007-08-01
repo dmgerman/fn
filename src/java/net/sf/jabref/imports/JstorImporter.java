@@ -164,6 +164,9 @@ comment|/**      * Parse the entries in the source, and return a List of BibtexE
 DECL|method|importEntries (InputStream stream)
 specifier|public
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|importEntries
 parameter_list|(
 name|InputStream
@@ -173,10 +176,16 @@ throws|throws
 name|IOException
 block|{
 name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|bibitems
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|String

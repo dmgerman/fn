@@ -18,11 +18,11 @@ end_package
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|swing
+name|awt
 operator|.
-name|JDialog
+name|BorderLayout
 import|;
 end_import
 
@@ -32,29 +32,7 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|*
+name|Dimension
 import|;
 end_import
 
@@ -64,9 +42,7 @@ name|java
 operator|.
 name|awt
 operator|.
-name|event
-operator|.
-name|ActionListener
+name|HeadlessException
 import|;
 end_import
 
@@ -79,6 +55,18 @@ operator|.
 name|event
 operator|.
 name|ActionEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|ActionListener
 import|;
 end_import
 
@@ -120,6 +108,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|table
 operator|.
 name|AbstractTableModel
@@ -140,15 +138,13 @@ end_import
 
 begin_import
 import|import
-name|com
+name|net
 operator|.
-name|jgoodies
+name|sf
 operator|.
-name|forms
+name|jabref
 operator|.
-name|builder
-operator|.
-name|ButtonBarBuilder
+name|*
 import|;
 end_import
 
@@ -160,9 +156,9 @@ name|jgoodies
 operator|.
 name|forms
 operator|.
-name|layout
+name|builder
 operator|.
-name|Sizes
+name|ButtonBarBuilder
 import|;
 end_import
 

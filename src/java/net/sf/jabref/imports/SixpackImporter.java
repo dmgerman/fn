@@ -174,6 +174,9 @@ comment|/**      * Parse the entries in the source, and return a List of BibtexE
 DECL|method|importEntries (InputStream stream)
 specifier|public
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|importEntries
 parameter_list|(
 name|InputStream
@@ -200,10 +203,20 @@ block|}
 argument_list|)
 decl_stmt|;
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|fI
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|fI
@@ -450,10 +463,16 @@ literal|"file"
 argument_list|)
 expr_stmt|;
 name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|bibitems
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|BufferedReader
@@ -716,9 +735,6 @@ control|)
 block|{
 name|fld
 operator|=
-operator|(
-name|String
-operator|)
 name|fI
 operator|.
 name|get

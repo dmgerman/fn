@@ -14,9 +14,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|io
 operator|.
-name|*
+name|File
 import|;
 end_import
 
@@ -26,7 +26,17 @@ name|java
 operator|.
 name|io
 operator|.
-name|*
+name|FilenameFilter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashSet
 import|;
 end_import
 
@@ -48,10 +58,16 @@ name|FilenameFilter
 block|{
 DECL|field|extSet
 name|HashSet
+argument_list|<
+name|String
+argument_list|>
 name|extSet
 init|=
 operator|new
 name|HashSet
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|desc

@@ -14,6 +14,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JOptionPane
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -35,16 +45,6 @@ operator|.
 name|undo
 operator|.
 name|NamedCompound
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|*
 import|;
 end_import
 

@@ -24,7 +24,7 @@ name|swing
 operator|.
 name|undo
 operator|.
-name|*
+name|CompoundEdit
 import|;
 end_import
 

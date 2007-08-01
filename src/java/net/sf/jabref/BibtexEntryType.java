@@ -18,9 +18,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|util
 operator|.
-name|*
+name|Iterator
 import|;
 end_import
 
@@ -30,7 +30,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|TreeMap
 import|;
 end_import
 
@@ -42,6 +42,9 @@ class|class
 name|BibtexEntryType
 implements|implements
 name|Comparable
+argument_list|<
+name|BibtexEntryType
+argument_list|>
 block|{
 DECL|field|OTHER
 specifier|public
@@ -1744,12 +1747,12 @@ name|String
 name|getName
 parameter_list|()
 function_decl|;
-DECL|method|compareTo (Object o)
+DECL|method|compareTo (BibtexEntryType o)
 specifier|public
 name|int
 name|compareTo
 parameter_list|(
-name|Object
+name|BibtexEntryType
 name|o
 parameter_list|)
 block|{
@@ -1759,12 +1762,7 @@ argument_list|()
 operator|.
 name|compareTo
 argument_list|(
-operator|(
-operator|(
-name|BibtexEntryType
-operator|)
 name|o
-operator|)
 operator|.
 name|getName
 argument_list|()
@@ -1974,20 +1972,40 @@ DECL|field|ALL_TYPES
 specifier|public
 specifier|static
 name|TreeMap
+argument_list|<
+name|String
+argument_list|,
+name|BibtexEntryType
+argument_list|>
 name|ALL_TYPES
 init|=
 operator|new
 name|TreeMap
+argument_list|<
+name|String
+argument_list|,
+name|BibtexEntryType
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|STANDARD_TYPES
 specifier|public
 specifier|static
 name|TreeMap
+argument_list|<
+name|String
+argument_list|,
+name|BibtexEntryType
+argument_list|>
 name|STANDARD_TYPES
 init|=
 operator|new
 name|TreeMap
+argument_list|<
+name|String
+argument_list|,
+name|BibtexEntryType
+argument_list|>
 argument_list|()
 decl_stmt|;
 static|static
@@ -2132,13 +2150,16 @@ comment|// We need a record of the standard types, in case the user wants
 comment|// to remove a customized version. Therefore we clone the map.
 name|STANDARD_TYPES
 operator|=
-operator|(
+operator|new
 name|TreeMap
-operator|)
+argument_list|<
+name|String
+argument_list|,
+name|BibtexEntryType
+argument_list|>
+argument_list|(
 name|ALL_TYPES
-operator|.
-name|clone
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * This method returns the BibtexEntryType for the name of a type,      * or null if it does not exist.      */
@@ -2351,6 +2372,9 @@ name|prefs
 parameter_list|)
 block|{
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|i
 init|=
 name|ALL_TYPES

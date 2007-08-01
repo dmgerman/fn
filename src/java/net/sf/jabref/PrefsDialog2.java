@@ -20,7 +20,27 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
+name|GridBagConstraints
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|GridBagLayout
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Insets
 import|;
 end_import
 
@@ -32,7 +52,7 @@ name|awt
 operator|.
 name|event
 operator|.
-name|*
+name|ActionEvent
 import|;
 end_import
 

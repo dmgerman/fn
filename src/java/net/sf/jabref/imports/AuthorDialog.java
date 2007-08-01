@@ -14,13 +14,11 @@ end_package
 
 begin_import
 import|import
-name|net
+name|javax
 operator|.
-name|sf
+name|swing
 operator|.
-name|jabref
-operator|.
-name|*
+name|JCheckBox
 import|;
 end_import
 
@@ -30,17 +28,39 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|JDialog
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|beans
+name|swing
 operator|.
-name|*
+name|JFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JOptionPane
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
 import|;
 end_import
 

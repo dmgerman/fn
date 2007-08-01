@@ -24,11 +24,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
-operator|.
-name|layout
-operator|.
-name|*
+name|Globals
 import|;
 end_import
 
@@ -40,7 +36,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|export
+operator|.
+name|layout
+operator|.
+name|LayoutFormatter
 import|;
 end_import
 

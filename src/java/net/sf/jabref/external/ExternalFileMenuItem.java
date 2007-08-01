@@ -14,23 +14,13 @@ end_package
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|awt
 operator|.
-name|jabref
+name|event
 operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|*
+name|ActionEvent
 import|;
 end_import
 
@@ -50,11 +40,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|awt
+name|io
 operator|.
-name|event
-operator|.
-name|ActionEvent
+name|File
 import|;
 end_import
 
@@ -70,11 +58,33 @@ end_import
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|io
+name|swing
 operator|.
-name|File
+name|Icon
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JMenuItem
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|*
 import|;
 end_import
 

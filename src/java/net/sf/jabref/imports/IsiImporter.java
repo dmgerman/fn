@@ -293,13 +293,18 @@ argument_list|(
 literal|"/(sub|sup)\\s+(.*?)\\s*/"
 argument_list|)
 decl_stmt|;
-DECL|method|processSubSup (HashMap map)
+DECL|method|processSubSup (HashMap<String, String> map)
 specifier|static
 specifier|public
 name|void
 name|processSubSup
 parameter_list|(
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|map
 parameter_list|)
 block|{
@@ -354,9 +359,6 @@ name|subsupPattern
 operator|.
 name|matcher
 argument_list|(
-operator|(
-name|String
-operator|)
 name|map
 operator|.
 name|get
@@ -497,13 +499,18 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|processCapitalization (HashMap map)
+DECL|method|processCapitalization (HashMap<String, String> map)
 specifier|static
 specifier|public
 name|void
 name|processCapitalization
 parameter_list|(
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|map
 parameter_list|)
 block|{
@@ -552,9 +559,6 @@ block|{
 name|String
 name|s
 init|=
-operator|(
-name|String
-operator|)
 name|map
 operator|.
 name|get
@@ -611,6 +615,9 @@ comment|/** 	 * Parse the entries in the source, and return a List of BibtexEntr
 DECL|method|importEntries (InputStream stream)
 specifier|public
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|importEntries
 parameter_list|(
 name|InputStream
@@ -635,10 +642,16 @@ argument_list|)
 throw|;
 block|}
 name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|bibitems
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|StringBuffer
@@ -805,10 +818,20 @@ literal|"::"
 argument_list|)
 decl_stmt|;
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|hm
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// skip the first entry as it is either empty or has document header
@@ -1107,9 +1130,6 @@ literal|null
 condition|)
 name|author
 operator|=
-operator|(
-name|String
-operator|)
 name|hm
 operator|.
 name|get
@@ -1222,9 +1242,6 @@ expr_stmt|;
 name|String
 name|existingKeywords
 init|=
-operator|(
-name|String
-operator|)
 name|hm
 operator|.
 name|get
@@ -1741,15 +1758,24 @@ decl_stmt|;
 comment|// id assumes an existing database so don't
 comment|// Remove empty fields:
 name|ArrayList
+argument_list|<
+name|Object
+argument_list|>
 name|toRemove
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|Object
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|it
 init|=
 name|hm
@@ -1778,9 +1804,6 @@ decl_stmt|;
 name|String
 name|content
 init|=
-operator|(
-name|String
-operator|)
 name|hm
 operator|.
 name|get
@@ -1819,6 +1842,9 @@ block|}
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|Object
+argument_list|>
 name|iterator
 init|=
 name|toRemove

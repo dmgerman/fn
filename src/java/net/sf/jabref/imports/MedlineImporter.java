@@ -18,7 +18,37 @@ name|java
 operator|.
 name|io
 operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -48,31 +78,13 @@ end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|io
+name|sf
 operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|jabref
 operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
+name|BibtexEntry
 import|;
 end_import
 
@@ -130,6 +142,9 @@ comment|/**      * Parse the entries in the source, and return a List of BibtexE
 DECL|method|importEntries (InputStream stream)
 specifier|public
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|importEntries
 parameter_list|(
 name|InputStream
@@ -165,6 +180,9 @@ argument_list|)
 expr_stmt|;
 comment|// Now create a SAXParser object
 name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|bibItems
 init|=
 literal|null

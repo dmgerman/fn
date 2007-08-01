@@ -50,6 +50,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibtexEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|Globals
 import|;
 end_import
@@ -99,6 +111,9 @@ comment|/** 	 * Returns a list of all BibtexEntries found in the inputstream. 	 
 DECL|method|importEntries (InputStream in)
 specifier|public
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|importEntries
 parameter_list|(
 name|InputStream

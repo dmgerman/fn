@@ -102,17 +102,11 @@ end_package
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|export
-operator|.
-name|layout
-operator|.
-name|LayoutFormatter
+name|Iterator
 import|;
 end_import
 
@@ -124,29 +118,7 @@ name|util
 operator|.
 name|regex
 operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Util
+name|Pattern
 import|;
 end_import
 
@@ -159,6 +131,22 @@ operator|.
 name|jabref
 operator|.
 name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|export
+operator|.
+name|layout
+operator|.
+name|LayoutFormatter
 import|;
 end_import
 

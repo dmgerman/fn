@@ -24,7 +24,7 @@ name|swing
 operator|.
 name|undo
 operator|.
-name|*
+name|AbstractUndoableEdit
 import|;
 end_import
 

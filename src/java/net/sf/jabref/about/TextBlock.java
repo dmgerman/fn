@@ -50,7 +50,17 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Vector
 import|;
 end_import
 
@@ -59,10 +69,18 @@ DECL|class|TextBlock
 specifier|public
 class|class
 name|TextBlock
+implements|implements
+name|Iterable
+argument_list|<
+name|AboutTextLine
+argument_list|>
 block|{
 DECL|field|textLines
 specifier|private
 name|Vector
+argument_list|<
+name|AboutTextLine
+argument_list|>
 name|textLines
 decl_stmt|;
 DECL|field|headLine
@@ -84,6 +102,9 @@ name|textLines
 operator|=
 operator|new
 name|Vector
+argument_list|<
+name|AboutTextLine
+argument_list|>
 argument_list|()
 expr_stmt|;
 name|visible
@@ -109,16 +130,19 @@ name|line
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getEnumeration ()
+DECL|method|iterator ()
 specifier|public
-name|Enumeration
-name|getEnumeration
+name|Iterator
+argument_list|<
+name|AboutTextLine
+argument_list|>
+name|iterator
 parameter_list|()
 block|{
 return|return
 name|textLines
 operator|.
-name|elements
+name|iterator
 argument_list|()
 return|;
 block|}

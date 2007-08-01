@@ -163,14 +163,6 @@ name|message
 operator|+
 literal|"\n"
 argument_list|)
-decl_stmt|,
-name|empt
-init|=
-operator|new
-name|JLabel
-argument_list|(
-literal|""
-argument_list|)
 decl_stmt|;
 name|cb
 operator|.

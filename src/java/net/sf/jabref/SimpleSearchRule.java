@@ -16,6 +16,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -29,16 +39,6 @@ operator|.
 name|format
 operator|.
 name|RemoveBrackets
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|*
 import|;
 end_import
 
@@ -77,12 +77,17 @@ operator|=
 name|caseSensitive
 expr_stmt|;
 block|}
-DECL|method|applyRule (Map searchStrings, BibtexEntry bibtexEntry)
+DECL|method|applyRule (Map<String, String> searchStrings, BibtexEntry bibtexEntry)
 specifier|public
 name|int
 name|applyRule
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|searchStrings
 parameter_list|,
 name|BibtexEntry
@@ -92,9 +97,6 @@ block|{
 name|String
 name|searchString
 init|=
-operator|(
-name|String
-operator|)
 name|searchStrings
 operator|.
 name|values

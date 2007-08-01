@@ -14,6 +14,16 @@ end_package
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|ImageIcon
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -21,16 +31,6 @@ operator|.
 name|jabref
 operator|.
 name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|*
 import|;
 end_import
 
@@ -45,6 +45,9 @@ class|class
 name|ExternalFileType
 implements|implements
 name|Comparable
+argument_list|<
+name|ExternalFileType
+argument_list|>
 block|{
 DECL|field|name
 DECL|field|extension
@@ -351,12 +354,12 @@ name|getName
 argument_list|()
 return|;
 block|}
-DECL|method|compareTo (Object o)
+DECL|method|compareTo (ExternalFileType o)
 specifier|public
 name|int
 name|compareTo
 parameter_list|(
-name|Object
+name|ExternalFileType
 name|o
 parameter_list|)
 block|{
@@ -366,12 +369,7 @@ argument_list|()
 operator|.
 name|compareTo
 argument_list|(
-operator|(
-operator|(
-name|ExternalFileType
-operator|)
 name|o
-operator|)
 operator|.
 name|getName
 argument_list|()

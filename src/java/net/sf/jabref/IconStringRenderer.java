@@ -30,16 +30,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|ImageIcon
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JLabel
 import|;
 end_import
@@ -51,16 +41,6 @@ operator|.
 name|swing
 operator|.
 name|JTable
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|UIManager
 import|;
 end_import
 

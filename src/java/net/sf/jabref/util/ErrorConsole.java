@@ -14,23 +14,11 @@ end_package
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|awt
 operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|*
+name|Dimension
 import|;
 end_import
 
@@ -38,9 +26,11 @@ begin_import
 import|import
 name|java
 operator|.
-name|io
+name|awt
 operator|.
-name|PrintStream
+name|event
+operator|.
+name|ActionEvent
 import|;
 end_import
 
@@ -58,7 +48,17 @@ begin_import
 import|import
 name|java
 operator|.
-name|awt
+name|io
+operator|.
+name|PrintStream
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
 operator|.
 name|*
 import|;
@@ -66,13 +66,13 @@ end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|awt
+name|sf
 operator|.
-name|event
+name|jabref
 operator|.
-name|ActionEvent
+name|Globals
 import|;
 end_import
 

@@ -14,11 +14,9 @@ end_package
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
-operator|.
-name|jabref
+name|awt
 operator|.
 name|*
 import|;
@@ -30,7 +28,19 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
+name|event
+operator|.
+name|ActionEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
 import|;
 end_import
 
@@ -52,29 +62,19 @@ name|swing
 operator|.
 name|border
 operator|.
-name|*
+name|TitledBorder
 import|;
 end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|awt
+name|sf
 operator|.
-name|event
+name|jabref
 operator|.
 name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
 import|;
 end_import
 

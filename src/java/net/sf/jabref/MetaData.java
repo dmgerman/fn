@@ -30,7 +30,37 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|StringTokenizer
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Vector
 import|;
 end_import
 
@@ -44,7 +74,21 @@ name|jabref
 operator|.
 name|groups
 operator|.
-name|*
+name|GroupTreeNode
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|groups
+operator|.
+name|VersionHandling
 import|;
 end_import
 
@@ -53,14 +97,35 @@ DECL|class|MetaData
 specifier|public
 class|class
 name|MetaData
+implements|implements
+name|Iterable
+argument_list|<
+name|String
+argument_list|>
 block|{
 DECL|field|metaData
 specifier|private
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Vector
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
 name|metaData
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Vector
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|data
@@ -84,11 +149,16 @@ literal|null
 decl_stmt|;
 comment|// The File where this base gets saved.
 comment|/**      * The MetaData object stores all meta data sets in Vectors. To ensure that      * the data is written correctly to string, the user of a meta data Vector      * must simply make sure the appropriate changes are reflected in the Vector      * it has been passed.      */
-DECL|method|MetaData (HashMap inData, BibtexDatabase db)
+DECL|method|MetaData (HashMap<String, String> inData, BibtexDatabase db)
 specifier|public
 name|MetaData
 parameter_list|(
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|inData
 parameter_list|,
 name|BibtexDatabase
@@ -101,11 +171,17 @@ init|=
 literal|false
 decl_stmt|;
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|flatGroupsData
 init|=
 literal|null
 decl_stmt|;
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|treeGroupsData
 init|=
 literal|null
@@ -125,43 +201,20 @@ literal|null
 condition|)
 for|for
 control|(
-name|Iterator
-name|i
-init|=
+name|String
+name|key
+range|:
 name|inData
 operator|.
 name|keySet
 argument_list|()
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
-name|String
-name|key
-init|=
-operator|(
-name|String
-operator|)
-name|i
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|data
 operator|=
 operator|new
 name|StringReader
 argument_list|(
-operator|(
-name|String
-operator|)
 name|inData
 operator|.
 name|get
@@ -174,10 +227,16 @@ name|String
 name|unit
 decl_stmt|;
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|orderedData
 init|=
 operator|new
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// We must allow for ; and \ in escape sequences.
@@ -367,6 +426,9 @@ literal|"keywords"
 argument_list|,
 operator|new
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -382,6 +444,9 @@ literal|"author"
 argument_list|,
 operator|new
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -397,6 +462,9 @@ literal|"journal"
 argument_list|,
 operator|new
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -412,6 +480,9 @@ literal|"publisher"
 argument_list|,
 operator|new
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -419,6 +490,9 @@ block|}
 DECL|method|iterator ()
 specifier|public
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|iterator
 parameter_list|()
 block|{
@@ -435,6 +509,9 @@ block|}
 DECL|method|getData (String key)
 specifier|public
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|getData
 parameter_list|(
 name|String
@@ -442,9 +519,6 @@ name|key
 parameter_list|)
 block|{
 return|return
-operator|(
-name|Vector
-operator|)
 name|metaData
 operator|.
 name|get
@@ -471,7 +545,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Stores the specified data in this object, using the specified key. For      * certain keys (e.g. "groupstree"), the objects in orderedData are      * reconstructed from their textual (String) representation if they are of      * type String, and stored as an actual instance.      */
-DECL|method|putData (String key, Vector orderedData)
+DECL|method|putData (String key, Vector<String> orderedData)
 specifier|public
 name|void
 name|putData
@@ -480,6 +554,9 @@ name|String
 name|key
 parameter_list|,
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|orderedData
 parameter_list|)
 block|{
@@ -517,6 +594,9 @@ name|String
 name|dir
 decl_stmt|;
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|vec
 init|=
 name|getData
@@ -544,9 +624,6 @@ condition|)
 block|{
 name|dir
 operator|=
-operator|(
-name|String
-operator|)
 name|vec
 operator|.
 name|get
@@ -645,12 +722,15 @@ return|return
 name|dir
 return|;
 block|}
-DECL|method|putGroups (Vector orderedData, BibtexDatabase db, int version)
+DECL|method|putGroups (Vector<String> orderedData, BibtexDatabase db, int version)
 specifier|private
 name|void
 name|putGroups
 parameter_list|(
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|orderedData
 parameter_list|,
 name|BibtexDatabase
@@ -735,6 +815,9 @@ comment|// write all meta data except groups
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|i
 init|=
 name|metaData
@@ -755,9 +838,6 @@ block|{
 name|String
 name|key
 init|=
-operator|(
-name|String
-operator|)
 name|i
 operator|.
 name|next
@@ -771,11 +851,11 @@ name|StringBuffer
 argument_list|()
 decl_stmt|;
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|orderedData
 init|=
-operator|(
-name|Vector
-operator|)
 name|metaData
 operator|.
 name|get

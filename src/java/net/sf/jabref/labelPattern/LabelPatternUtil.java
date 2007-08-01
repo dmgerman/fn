@@ -93,6 +93,9 @@ DECL|field|DEFAULT_LABELPATTERN
 specifier|public
 specifier|static
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|DEFAULT_LABELPATTERN
 decl_stmt|;
 static|static
@@ -135,6 +138,9 @@ DECL|method|split (String labelPattern)
 specifier|public
 specifier|static
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|split
 parameter_list|(
 name|String
@@ -143,10 +149,16 @@ parameter_list|)
 block|{
 comment|// A holder for fields of the entry to be used for the key
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|_alist
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// Before we do anything, we add the parameter to the ArrayLIst
@@ -217,11 +229,12 @@ operator|=
 name|database
 expr_stmt|;
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|_al
 decl_stmt|;
 name|String
-name|_spacer
-decl_stmt|,
 name|_label
 decl_stmt|;
 name|StringBuffer
@@ -1974,11 +1987,6 @@ name|int
 name|number
 parameter_list|)
 block|{
-name|String
-name|s
-init|=
-literal|""
-decl_stmt|;
 if|if
 condition|(
 name|number
@@ -3050,13 +3058,6 @@ argument_list|(
 name|authorField
 argument_list|)
 expr_stmt|;
-name|StringBuffer
-name|author
-init|=
-operator|new
-name|StringBuffer
-argument_list|()
-decl_stmt|;
 name|String
 index|[]
 name|tokens
@@ -3116,7 +3117,6 @@ operator|.
 name|trim
 argument_list|()
 decl_stmt|;
-comment|//System.out.println(lastName);
 if|if
 condition|(
 name|lastName

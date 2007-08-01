@@ -110,7 +110,7 @@ name|java
 operator|.
 name|net
 operator|.
-name|*
+name|URL
 import|;
 end_import
 
@@ -120,7 +120,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|Enumeration
 import|;
 end_import
 
@@ -130,21 +130,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|regex
-operator|.
-name|Matcher
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Pattern
+name|Vector
 import|;
 end_import
 
@@ -156,7 +142,31 @@ name|util
 operator|.
 name|zip
 operator|.
-name|*
+name|ZipEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|zip
+operator|.
+name|ZipFile
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|zip
+operator|.
+name|ZipInputStream
 import|;
 end_import
 

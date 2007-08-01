@@ -89,6 +89,11 @@ DECL|field|metaData
 DECL|field|entryTypes
 specifier|private
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|metaData
 decl_stmt|,
 name|entryTypes
@@ -151,7 +156,7 @@ name|toOpenTab
 init|=
 literal|false
 decl_stmt|;
-DECL|method|ParserResult (BibtexDatabase base, HashMap metaData, HashMap entryTypes)
+DECL|method|ParserResult (BibtexDatabase base, HashMap<String, String> metaData, HashMap entryTypes)
 specifier|public
 name|ParserResult
 parameter_list|(
@@ -159,6 +164,11 @@ name|BibtexDatabase
 name|base
 parameter_list|,
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|metaData
 parameter_list|,
 name|HashMap
@@ -304,6 +314,11 @@ block|}
 DECL|method|getMetaData ()
 specifier|public
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|getMetaData
 parameter_list|()
 block|{

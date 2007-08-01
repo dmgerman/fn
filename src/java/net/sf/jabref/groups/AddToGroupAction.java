@@ -34,7 +34,17 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|Enumeration
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Vector
 import|;
 end_import
 
@@ -44,7 +54,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|AbstractAction
 import|;
 end_import
 
@@ -68,7 +78,43 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|BasePanel
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Util
 import|;
 end_import
 
@@ -226,10 +272,16 @@ argument_list|()
 decl_stmt|;
 specifier|final
 name|Vector
+argument_list|<
+name|GroupTreeNode
+argument_list|>
 name|removeGroupsNodes
 init|=
 operator|new
 name|Vector
+argument_list|<
+name|GroupTreeNode
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// used only when moving
@@ -240,6 +292,9 @@ condition|)
 block|{
 comment|// collect warnings for removal
 name|Enumeration
+argument_list|<
+name|GroupTreeNode
+argument_list|>
 name|e
 init|=
 operator|(
@@ -368,17 +423,12 @@ index|[
 name|i
 index|]
 operator|=
-operator|(
-operator|(
-name|GroupTreeNode
-operator|)
 name|removeGroupsNodes
 operator|.
 name|elementAt
 argument_list|(
 name|i
 argument_list|)
-operator|)
 operator|.
 name|getGroup
 argument_list|()
@@ -525,9 +575,6 @@ block|{
 name|GroupTreeNode
 name|node
 init|=
-operator|(
-name|GroupTreeNode
-operator|)
 name|removeGroupsNodes
 operator|.
 name|elementAt

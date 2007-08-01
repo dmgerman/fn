@@ -18,7 +18,17 @@ name|java
 operator|.
 name|io
 operator|.
-name|*
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
 import|;
 end_import
 
@@ -28,7 +38,17 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
 import|;
 end_import
 
@@ -38,7 +58,17 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|JOptionPane
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|SwingUtilities
 import|;
 end_import
 
@@ -76,7 +106,7 @@ name|jabref
 operator|.
 name|groups
 operator|.
-name|*
+name|GroupTreeNode
 import|;
 end_import
 
@@ -90,7 +120,21 @@ name|jabref
 operator|.
 name|imports
 operator|.
-name|*
+name|OpenDatabaseAction
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|imports
+operator|.
+name|ParserResult
 import|;
 end_import
 

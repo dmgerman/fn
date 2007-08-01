@@ -18,32 +18,6 @@ end_package
 
 begin_import
 import|import
-name|antlr
-operator|.
-name|RecognitionException
-import|;
-end_import
-
-begin_import
-import|import
-name|antlr
-operator|.
-name|TokenStreamException
-import|;
-end_import
-
-begin_import
-import|import
-name|antlr
-operator|.
-name|collections
-operator|.
-name|AST
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
@@ -58,7 +32,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|Hashtable
 import|;
 end_import
 
@@ -68,7 +42,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Hashtable
+name|Map
 import|;
 end_import
 
@@ -117,6 +91,32 @@ operator|.
 name|jabref
 operator|.
 name|SearchRule
+import|;
+end_import
+
+begin_import
+import|import
+name|antlr
+operator|.
+name|RecognitionException
+import|;
+end_import
+
+begin_import
+import|import
+name|antlr
+operator|.
+name|TokenStreamException
+import|;
+end_import
+
+begin_import
+import|import
+name|antlr
+operator|.
+name|collections
+operator|.
+name|AST
 import|;
 end_import
 

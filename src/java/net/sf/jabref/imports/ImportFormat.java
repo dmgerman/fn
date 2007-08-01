@@ -18,7 +18,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|InputStream
+name|IOException
 import|;
 end_import
 
@@ -28,7 +28,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|IOException
+name|InputStream
 import|;
 end_import
 
@@ -39,6 +39,18 @@ operator|.
 name|util
 operator|.
 name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexEntry
 import|;
 end_import
 
@@ -54,6 +66,9 @@ class|class
 name|ImportFormat
 implements|implements
 name|Comparable
+argument_list|<
+name|ImportFormat
+argument_list|>
 block|{
 DECL|field|isCustomImporter
 specifier|private
@@ -91,6 +106,9 @@ DECL|method|importEntries (InputStream in)
 specifier|public
 specifier|abstract
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|importEntries
 parameter_list|(
 name|InputStream
@@ -327,27 +345,19 @@ argument_list|()
 return|;
 block|}
 comment|/*      *  (non-Javadoc)      * @see java.lang.Comparable#compareTo(java.lang.Object)      */
-DECL|method|compareTo (Object o)
+DECL|method|compareTo (ImportFormat importer)
 specifier|public
 name|int
 name|compareTo
 parameter_list|(
-name|Object
-name|o
+name|ImportFormat
+name|importer
 parameter_list|)
 block|{
 name|int
 name|result
 init|=
 literal|0
-decl_stmt|;
-name|ImportFormat
-name|importer
-init|=
-operator|(
-name|ImportFormat
-operator|)
-name|o
 decl_stmt|;
 if|if
 condition|(
