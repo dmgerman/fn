@@ -3594,7 +3594,6 @@ operator|+
 literal|"\""
 argument_list|)
 expr_stmt|;
-comment|//throw new RuntimeException("");
 block|}
 if|if
 condition|(
@@ -4890,6 +4889,15 @@ argument_list|(
 literal|"Fetch citations from CiteSeer"
 argument_list|,
 literal|"F7"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Synchronize files"
+argument_list|,
+literal|"ctrl shift F4"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds
