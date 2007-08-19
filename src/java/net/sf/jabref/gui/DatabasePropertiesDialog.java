@@ -704,6 +704,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|fileD
 init|=
 name|metaData
@@ -764,6 +767,9 @@ argument_list|)
 expr_stmt|;
 block|}
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|pdfD
 init|=
 name|metaData
@@ -820,6 +826,9 @@ argument_list|)
 expr_stmt|;
 block|}
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|psD
 init|=
 name|metaData
@@ -931,10 +940,16 @@ name|newEncoding
 argument_list|)
 expr_stmt|;
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|dir
 init|=
 operator|new
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 literal|1
 argument_list|)
@@ -997,6 +1012,9 @@ name|dir
 operator|=
 operator|new
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 literal|1
 argument_list|)
@@ -1050,6 +1068,9 @@ name|dir
 operator|=
 operator|new
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 literal|1
 argument_list|)

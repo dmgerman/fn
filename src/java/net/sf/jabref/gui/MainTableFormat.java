@@ -93,6 +93,9 @@ class|class
 name|MainTableFormat
 implements|implements
 name|TableFormat
+argument_list|<
+name|BibtexEntry
+argument_list|>
 block|{
 specifier|public
 specifier|static
@@ -156,10 +159,22 @@ comment|// special columns (number column or icon column).
 DECL|field|iconCols
 specifier|private
 name|HashMap
+argument_list|<
+name|Integer
+argument_list|,
+name|String
+index|[]
+argument_list|>
 name|iconCols
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|Integer
+argument_list|,
+name|String
+index|[]
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|nameCols
@@ -394,13 +409,13 @@ operator|-
 literal|1
 return|;
 block|}
-DECL|method|getColumnValue (Object object, int col)
+DECL|method|getColumnValue (BibtexEntry be, int col)
 specifier|public
 name|Object
 name|getColumnValue
 parameter_list|(
-name|Object
-name|object
+name|BibtexEntry
+name|be
 parameter_list|,
 name|int
 name|col
@@ -408,14 +423,6 @@ parameter_list|)
 block|{
 name|Object
 name|o
-decl_stmt|;
-name|BibtexEntry
-name|be
-init|=
-operator|(
-name|BibtexEntry
-operator|)
-name|object
 decl_stmt|;
 name|String
 index|[]
@@ -953,10 +960,16 @@ comment|// Set up the int[] nameCols, to mark which columns should be
 comment|// treated as lists of names. This is to provide a correct presentation
 comment|// of names as efficiently as possible.
 name|Vector
+argument_list|<
+name|Integer
+argument_list|>
 name|tmp
 init|=
 operator|new
 name|Vector
+argument_list|<
+name|Integer
+argument_list|>
 argument_list|(
 literal|2
 argument_list|,
@@ -1049,17 +1062,12 @@ index|[
 name|i
 index|]
 operator|=
-operator|(
-operator|(
-name|Integer
-operator|)
 name|tmp
 operator|.
 name|elementAt
 argument_list|(
 name|i
 argument_list|)
-operator|)
 operator|.
 name|intValue
 argument_list|()
@@ -1092,13 +1100,16 @@ class|class
 name|NoSearchMatcher
 implements|implements
 name|Matcher
+argument_list|<
+name|BibtexEntry
+argument_list|>
 block|{
-DECL|method|matches (Object object)
+DECL|method|matches (BibtexEntry object)
 specifier|public
 name|boolean
 name|matches
 parameter_list|(
-name|Object
+name|BibtexEntry
 name|object
 parameter_list|)
 block|{
@@ -1113,16 +1124,10 @@ class|class
 name|SearchMatcher
 implements|implements
 name|Matcher
+argument_list|<
+name|BibtexEntry
+argument_list|>
 block|{
-DECL|field|field
-specifier|private
-name|String
-name|field
-init|=
-name|BibtexFields
-operator|.
-name|SEARCH
-decl_stmt|;
 DECL|field|ruleSet
 specifier|private
 name|SearchRuleSet
@@ -1131,9 +1136,14 @@ decl_stmt|;
 DECL|field|searchOptions
 specifier|private
 name|Hashtable
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|searchOptions
 decl_stmt|;
-DECL|method|SearchMatcher (SearchRuleSet ruleSet, Hashtable searchOptions)
+DECL|method|SearchMatcher (SearchRuleSet ruleSet, Hashtable<String, String> searchOptions)
 specifier|public
 name|SearchMatcher
 parameter_list|(
@@ -1141,6 +1151,11 @@ name|SearchRuleSet
 name|ruleSet
 parameter_list|,
 name|Hashtable
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|searchOptions
 parameter_list|)
 block|{
@@ -1157,23 +1172,15 @@ operator|=
 name|searchOptions
 expr_stmt|;
 block|}
-DECL|method|matches (Object object)
+DECL|method|matches (BibtexEntry entry)
 specifier|public
 name|boolean
 name|matches
 parameter_list|(
-name|Object
-name|object
-parameter_list|)
-block|{
 name|BibtexEntry
 name|entry
-init|=
-operator|(
-name|BibtexEntry
-operator|)
-name|object
-decl_stmt|;
+parameter_list|)
+block|{
 name|int
 name|result
 init|=

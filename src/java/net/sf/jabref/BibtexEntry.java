@@ -90,7 +90,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
+name|Map
 import|;
 end_import
 
@@ -100,7 +100,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
+name|Set
 import|;
 end_import
 
@@ -156,10 +156,20 @@ decl_stmt|;
 DECL|field|_fields
 specifier|private
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|_fields
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|_changeSupport
@@ -294,22 +304,28 @@ name|getGeneralFields
 argument_list|()
 return|;
 block|}
-comment|/**      * Returns an array containing the names of all fields that are      * set for this particular entry.      */
+comment|/**      * Returns an set containing the names of all fields that are      * set for this particular entry.      */
 DECL|method|getAllFields ()
 specifier|public
-name|Object
-index|[]
+name|Set
+argument_list|<
+name|String
+argument_list|>
 name|getAllFields
 parameter_list|()
 block|{
 return|return
+operator|new
+name|TreeSet
+argument_list|<
+name|String
+argument_list|>
+argument_list|(
 name|_fields
 operator|.
 name|keySet
 argument_list|()
-operator|.
-name|toArray
-argument_list|()
+argument_list|)
 return|;
 block|}
 comment|/**      * Returns a string describing the required fields for this entry.      */
@@ -502,7 +518,7 @@ block|}
 comment|/**      * Returns the contents of the given field, or null if it is not set.      */
 DECL|method|getField (String name)
 specifier|public
-name|Object
+name|String
 name|getField
 parameter_list|(
 name|String
@@ -535,9 +551,6 @@ operator|.
 name|KEY_FIELD
 argument_list|)
 condition|?
-operator|(
-name|String
-operator|)
 name|_fields
 operator|.
 name|get
@@ -552,12 +565,17 @@ operator|)
 return|;
 block|}
 comment|/**      * Sets a number of fields simultaneously. The given HashMap contains field      * names as keys, each mapped to the value to set.      * WARNING: this method does not notify change listeners, so it should *NOT*      * be used for entries that are being displayed in the GUI. Furthermore, it      * does not check values for content, so e.g. empty strings will be set as such.      */
-DECL|method|setField (Map fields)
+DECL|method|setField (Map<String, String> fields)
 specifier|public
 name|void
 name|setField
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|fields
 parameter_list|)
 block|{
@@ -570,7 +588,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Set a field, and notify listeners about the change.      *      * @param name The field to set.      * @param value The value to set.      */
-DECL|method|setField (String name, Object value)
+DECL|method|setField (String name, String value)
 specifier|public
 name|void
 name|setField
@@ -578,7 +596,7 @@ parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|Object
+name|String
 name|value
 parameter_list|)
 block|{
@@ -604,7 +622,7 @@ literal|"' is reserved"
 argument_list|)
 throw|;
 block|}
-name|Object
+name|String
 name|oldValue
 init|=
 name|_fields
@@ -942,10 +960,20 @@ name|NEWLINE
 argument_list|)
 expr_stmt|;
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|written
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|written
@@ -1105,43 +1133,29 @@ block|}
 block|}
 comment|// Then write remaining fields in alphabetic order.
 name|TreeSet
+argument_list|<
+name|String
+argument_list|>
 name|remainingFields
 init|=
 operator|new
 name|TreeSet
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|Iterator
-name|i
-init|=
+name|String
+name|key
+range|:
 name|_fields
 operator|.
 name|keySet
 argument_list|()
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
-name|String
-name|key
-init|=
-operator|(
-name|String
-operator|)
-name|i
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|boolean
 name|writeIt
 init|=
@@ -1185,19 +1199,10 @@ expr_stmt|;
 block|}
 for|for
 control|(
-name|Iterator
-name|i
-init|=
+name|String
+name|field
+range|:
 name|remainingFields
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 name|hasWritten
 operator|=
@@ -1205,13 +1210,7 @@ name|hasWritten
 operator||
 name|writeField
 argument_list|(
-operator|(
-name|String
-operator|)
-name|i
-operator|.
-name|next
-argument_list|()
+name|field
 argument_list|,
 name|out
 argument_list|,
@@ -1220,7 +1219,6 @@ argument_list|,
 name|hasWritten
 argument_list|)
 expr_stmt|;
-comment|//writeField((String)i.next(),out,ff);
 comment|// Finally, end the entry.
 name|out
 operator|.
@@ -1389,18 +1387,16 @@ name|clone
 operator|.
 name|_fields
 operator|=
-call|(
-name|Map
-call|)
-argument_list|(
-operator|(
+operator|new
 name|HashMap
-operator|)
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+argument_list|(
 name|_fields
 argument_list|)
-operator|.
-name|clone
-argument_list|()
 expr_stmt|;
 return|return
 name|clone

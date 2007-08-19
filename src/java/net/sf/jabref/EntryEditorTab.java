@@ -237,10 +237,20 @@ decl_stmt|;
 DECL|field|editors
 specifier|private
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|FieldEditor
+argument_list|>
 name|editors
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|FieldEditor
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|activeField
@@ -250,12 +260,7 @@ name|activeField
 init|=
 literal|null
 decl_stmt|;
-DECL|field|firstComponent
-specifier|private
-name|Component
-name|firstComponent
-decl_stmt|;
-DECL|method|EntryEditorTab (JabRefFrame frame, BasePanel panel, List fields, EntryEditor parent, boolean addKeyField, String name)
+DECL|method|EntryEditorTab (JabRefFrame frame, BasePanel panel, List<String> fields, EntryEditor parent, boolean addKeyField, String name)
 specifier|public
 name|EntryEditorTab
 parameter_list|(
@@ -266,6 +271,9 @@ name|BasePanel
 name|panel
 parameter_list|,
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|fields
 parameter_list|,
 name|EntryEditor
@@ -288,10 +296,6 @@ name|this
 operator|.
 name|fields
 operator|=
-operator|(
-name|String
-index|[]
-operator|)
 name|fields
 operator|.
 name|toArray
@@ -1285,6 +1289,9 @@ block|}
 DECL|method|getFields ()
 specifier|public
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|getFields
 parameter_list|()
 block|{
@@ -1363,6 +1370,9 @@ operator|=
 literal|true
 expr_stmt|;
 name|Iterator
+argument_list|<
+name|FieldEditor
+argument_list|>
 name|i
 init|=
 name|editors
@@ -1384,9 +1394,6 @@ block|{
 name|FieldEditor
 name|editor
 init|=
-operator|(
-name|FieldEditor
-operator|)
 name|i
 operator|.
 name|next
@@ -1467,9 +1474,6 @@ return|;
 name|FieldEditor
 name|ed
 init|=
-operator|(
-name|FieldEditor
-operator|)
 name|editors
 operator|.
 name|get
@@ -1497,6 +1501,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|i
 init|=
 name|editors
@@ -1517,9 +1524,6 @@ block|{
 name|String
 name|field
 init|=
-operator|(
-name|String
-operator|)
 name|i
 operator|.
 name|next
@@ -1528,9 +1532,6 @@ decl_stmt|;
 name|FieldEditor
 name|ed
 init|=
-operator|(
-name|FieldEditor
-operator|)
 name|editors
 operator|.
 name|get
@@ -1588,6 +1589,9 @@ name|enabled
 parameter_list|)
 block|{
 name|Iterator
+argument_list|<
+name|FieldEditor
+argument_list|>
 name|i
 init|=
 name|editors
@@ -1609,9 +1613,6 @@ block|{
 name|FieldEditor
 name|editor
 init|=
-operator|(
-name|FieldEditor
-operator|)
 name|i
 operator|.
 name|next
@@ -1956,10 +1957,16 @@ expr_stmt|;
 try|try
 block|{
 name|HashSet
+argument_list|<
+name|AWTKeyStroke
+argument_list|>
 name|keys
 init|=
 operator|new
 name|HashSet
+argument_list|<
+name|AWTKeyStroke
+argument_list|>
 argument_list|(
 name|component
 operator|.
@@ -2003,6 +2010,9 @@ name|keys
 operator|=
 operator|new
 name|HashSet
+argument_list|<
+name|AWTKeyStroke
+argument_list|>
 argument_list|(
 name|component
 operator|.

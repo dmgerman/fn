@@ -24,6 +24,18 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
+begin_import
+import|import
 name|ca
 operator|.
 name|odell
@@ -47,17 +59,26 @@ class|class
 name|HitOrMissComparator
 implements|implements
 name|Comparator
+argument_list|<
+name|BibtexEntry
+argument_list|>
 block|{
 DECL|field|hitOrMiss
 specifier|private
 name|Matcher
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|hitOrMiss
 decl_stmt|;
-DECL|method|HitOrMissComparator (Matcher hitOrMiss)
+DECL|method|HitOrMissComparator (Matcher<BibtexEntry> hitOrMiss)
 specifier|public
 name|HitOrMissComparator
 parameter_list|(
 name|Matcher
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|hitOrMiss
 parameter_list|)
 block|{
@@ -68,15 +89,15 @@ operator|=
 name|hitOrMiss
 expr_stmt|;
 block|}
-DECL|method|compare (Object o1, Object o2)
+DECL|method|compare (BibtexEntry o1, BibtexEntry o2)
 specifier|public
 name|int
 name|compare
 parameter_list|(
-name|Object
+name|BibtexEntry
 name|o1
 parameter_list|,
-name|Object
+name|BibtexEntry
 name|o2
 parameter_list|)
 block|{

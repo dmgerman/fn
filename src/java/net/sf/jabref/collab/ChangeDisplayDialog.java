@@ -571,6 +571,11 @@ literal|"Merged external changes"
 argument_list|)
 argument_list|)
 decl_stmt|;
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 name|Enumeration
 name|enumer
 init|=

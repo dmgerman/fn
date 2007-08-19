@@ -914,6 +914,9 @@ name|cancelled
 condition|)
 return|return;
 name|Collection
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|entryList
 decl_stmt|;
 comment|// If all entries should be treated, change the entries array:

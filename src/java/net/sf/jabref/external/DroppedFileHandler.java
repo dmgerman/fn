@@ -682,6 +682,9 @@ literal|false
 return|;
 block|}
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|xmpEntriesInFile
 init|=
 literal|null
@@ -818,9 +821,6 @@ init|=
 operator|(
 name|isSingle
 condition|?
-operator|(
-name|BibtexEntry
-operator|)
 name|xmpEntriesInFile
 operator|.
 name|get
@@ -974,6 +974,9 @@ name|success
 condition|)
 block|{
 name|Iterator
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|it
 init|=
 name|xmpEntriesInFile
@@ -994,9 +997,6 @@ block|{
 name|BibtexEntry
 name|entry
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|it
 operator|.
 name|next

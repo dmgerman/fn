@@ -572,6 +572,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|i
 init|=
 name|exportFormats
@@ -592,9 +595,6 @@ block|{
 name|String
 name|name
 init|=
-operator|(
-name|String
-operator|)
 name|i
 operator|.
 name|next
@@ -678,6 +678,11 @@ DECL|method|getExportFormats ()
 specifier|public
 specifier|static
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|ExportFormat
+argument_list|>
 name|getExportFormats
 parameter_list|()
 block|{
@@ -703,9 +708,6 @@ name|consoleName
 parameter_list|)
 block|{
 return|return
-operator|(
-name|ExportFormat
-operator|)
 name|exportFormats
 operator|.
 name|get
@@ -1222,6 +1224,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|i
 init|=
 name|exportFormats
@@ -1242,9 +1247,6 @@ block|{
 name|String
 name|formatName
 init|=
-operator|(
-name|String
-operator|)
 name|i
 operator|.
 name|next
@@ -1253,9 +1255,6 @@ decl_stmt|;
 name|ExportFormat
 name|format
 init|=
-operator|(
-name|ExportFormat
-operator|)
 name|exportFormats
 operator|.
 name|get
@@ -1293,6 +1292,9 @@ block|}
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|FileFilter
+argument_list|>
 name|i
 init|=
 name|filters

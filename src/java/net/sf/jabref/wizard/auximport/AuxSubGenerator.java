@@ -159,12 +159,18 @@ block|{
 DECL|field|mySet
 specifier|private
 name|HashSet
+argument_list|<
+name|String
+argument_list|>
 name|mySet
 decl_stmt|;
 comment|// all unique bibtex keys in aux file
 DECL|field|notFoundList
 specifier|private
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|notFoundList
 decl_stmt|;
 comment|// all not solved bibtex keys
@@ -206,6 +212,9 @@ name|mySet
 operator|=
 operator|new
 name|HashSet
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 literal|20
 argument_list|)
@@ -214,6 +223,9 @@ name|notFoundList
 operator|=
 operator|new
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 expr_stmt|;
 name|db
@@ -317,10 +329,16 @@ literal|null
 decl_stmt|;
 comment|// filelist, used for nested aux files
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|fileList
 init|=
 operator|new
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 literal|5
 argument_list|)
@@ -360,7 +378,7 @@ name|path
 operator|=
 name|path
 operator|+
-name|dummy
+name|File
 operator|.
 name|separator
 expr_stmt|;
@@ -394,9 +412,6 @@ block|{
 name|String
 name|fName
 init|=
-operator|(
-name|String
-operator|)
 name|fileList
 operator|.
 name|elementAt
@@ -783,6 +798,9 @@ name|clear
 argument_list|()
 expr_stmt|;
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|it
 init|=
 name|mySet
@@ -803,9 +821,6 @@ block|{
 name|String
 name|str
 init|=
-operator|(
-name|String
-operator|)
 name|it
 operator|.
 name|next
@@ -984,6 +999,9 @@ DECL|method|generate (String auxFileName, BibtexDatabase bibDB)
 specifier|public
 specifier|final
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|generate
 parameter_list|(
 name|String
@@ -1116,6 +1134,9 @@ comment|/** returns a vector off all not resolved bibtex entries found in auxfil
 DECL|method|getNotFoundList ()
 specifier|public
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|getNotFoundList
 parameter_list|()
 block|{

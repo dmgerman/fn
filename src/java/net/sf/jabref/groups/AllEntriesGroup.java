@@ -264,12 +264,17 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|contains (Map searchOptions, BibtexEntry entry)
+DECL|method|contains (Map<String, String> searchOptions, BibtexEntry entry)
 specifier|public
 name|boolean
 name|contains
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|searchOptions
 parameter_list|,
 name|BibtexEntry
@@ -293,12 +298,17 @@ name|AllEntriesGroup
 argument_list|()
 return|;
 block|}
-DECL|method|applyRule (Map searchStrings, BibtexEntry bibtexEntry)
+DECL|method|applyRule (Map<String, String> searchStrings, BibtexEntry bibtexEntry)
 specifier|public
 name|int
 name|applyRule
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|searchStrings
 parameter_list|,
 name|BibtexEntry

@@ -1,4 +1,8 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
+begin_comment
+comment|/* Copyright (C) 2003 Morten O. Alver  All programs in this directory and subdirectories are published under the GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html  */
+end_comment
+
 begin_package
 DECL|package|net.sf.jabref.gui
 package|package
@@ -18,7 +22,37 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -94,10 +128,6 @@ name|EventList
 import|;
 end_import
 
-begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Oct 12, 2005  * Time: 8:54:36 PM  * To change this template use File | Settings | File Templates.  */
-end_comment
-
 begin_class
 DECL|class|GlazedEntrySorter
 specifier|public
@@ -106,15 +136,12 @@ name|GlazedEntrySorter
 implements|implements
 name|DatabaseChangeListener
 block|{
-comment|/* Copyright (C) 2003 Morten O. Alver  All programs in this directory and subdirectories are published under the GNU General Public License as described below.  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA  Further information about the GNU GPL is available at: http://www.gnu.org/copyleft/gpl.ja.html  */
-comment|//TreeSet list;
 DECL|field|list
 name|EventList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|list
-decl_stmt|;
-DECL|field|comp
-name|Comparator
-name|comp
 decl_stmt|;
 DECL|field|idArray
 name|String
@@ -126,45 +153,27 @@ name|BibtexEntry
 index|[]
 name|entryArray
 decl_stmt|;
-comment|//static BibtexEntry[] DUMMY = new BibtexEntry[0];
-DECL|field|outdated
-specifier|private
-name|boolean
-name|outdated
-init|=
-literal|false
-decl_stmt|;
-DECL|field|changed
-specifier|private
-name|boolean
-name|changed
-init|=
-literal|false
-decl_stmt|;
-DECL|method|GlazedEntrySorter (Map entries, Comparator comp)
+DECL|method|GlazedEntrySorter (Map<String, BibtexEntry> entries)
 specifier|public
 name|GlazedEntrySorter
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|BibtexEntry
+argument_list|>
 name|entries
-parameter_list|,
-name|Comparator
-name|comp
 parameter_list|)
 block|{
-comment|//list = new TreeSet(comp);
 name|list
 operator|=
 operator|new
 name|BasicEventList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
-expr_stmt|;
-comment|//list2 = new SortedList(list, new FieldComparator(Globals.KEY_FIELD));
-name|this
-operator|.
-name|comp
-operator|=
-name|comp
 expr_stmt|;
 name|list
 operator|.
@@ -178,6 +187,9 @@ name|lock
 argument_list|()
 expr_stmt|;
 name|Set
+argument_list|<
+name|String
+argument_list|>
 name|keySet
 init|=
 name|entries
@@ -193,6 +205,9 @@ literal|null
 condition|)
 block|{
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|i
 init|=
 name|keySet
@@ -253,6 +268,9 @@ block|}
 DECL|method|getTheList ()
 specifier|public
 name|EventList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|getTheList
 parameter_list|()
 block|{
@@ -292,7 +310,6 @@ operator|.
 name|ADDED_ENTRY
 condition|)
 block|{
-comment|//int pos = -Collections.binarySearch(list, e.getEntry(), comp) - 1;
 name|list
 operator|.
 name|add
@@ -303,7 +320,6 @@ name|getEntry
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("Added. Size: " + list.size());
 block|}
 elseif|else
 if|if
@@ -328,7 +344,6 @@ name|getEntry
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("Removed. Size: " + list.size());
 block|}
 elseif|else
 if|if

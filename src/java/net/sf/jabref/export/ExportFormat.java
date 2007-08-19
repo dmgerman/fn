@@ -375,7 +375,7 @@ argument_list|)
 return|;
 block|}
 comment|/** 	 * Perform the export. 	 *  	 * @param database 	 *            The database to export from. 	 * @param file 	 *            The filename to write to. 	 * @param encoding 	 *            The encoding to use. 	 * @param entries 	 *            (may be null) A Set containing the IDs of all entries that 	 *            should be exported. If null, all entries will be exported. 	 * @throws Exception 	 */
-DECL|method|performExport (final BibtexDatabase database, final String file, final String encoding, Set entries)
+DECL|method|performExport (final BibtexDatabase database, final String file, final String encoding, Set<String> entries)
 specifier|public
 name|void
 name|performExport
@@ -393,6 +393,9 @@ name|String
 name|encoding
 parameter_list|,
 name|Set
+argument_list|<
+name|String
+argument_list|>
 name|entries
 parameter_list|)
 throws|throws
@@ -504,6 +507,9 @@ block|}
 comment|// changed section - end (arudert)
 comment|/* 		 * Write database entries; entries will be sorted as they appear on the 		 * screen, or sorted by author, depending on Preferences. We also supply 		 * the Set entries - if we are to export only certain entries, it will 		 * be non-null, and be used to choose entries. Otherwise, it will be 		 * null, and be ignored. 		 */
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|sorted
 init|=
 name|FileActions
@@ -554,16 +560,29 @@ name|close
 argument_list|()
 expr_stmt|;
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Layout
+argument_list|>
 name|layouts
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Layout
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|Layout
 name|layout
 decl_stmt|;
 name|Iterator
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|i
 init|=
 name|sorted
@@ -585,15 +604,12 @@ comment|// Get the entry
 name|BibtexEntry
 name|entry
 init|=
-call|(
-name|BibtexEntry
-call|)
-argument_list|(
+operator|(
 name|i
 operator|.
 name|next
 argument_list|()
-argument_list|)
+operator|)
 decl_stmt|;
 comment|// Get the layout
 name|String
@@ -621,9 +637,6 @@ argument_list|)
 condition|)
 name|layout
 operator|=
-operator|(
-name|Layout
-operator|)
 name|layouts
 operator|.
 name|get

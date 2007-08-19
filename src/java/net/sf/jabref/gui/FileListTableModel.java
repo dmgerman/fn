@@ -94,10 +94,16 @@ DECL|field|list
 specifier|private
 specifier|final
 name|ArrayList
+argument_list|<
+name|FileListEntry
+argument_list|>
 name|list
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|FileListEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|method|FileListTableModel ()
@@ -137,6 +143,9 @@ block|}
 DECL|method|getColumnClass (int columnIndex)
 specifier|public
 name|Class
+argument_list|<
+name|String
+argument_list|>
 name|getColumnClass
 parameter_list|(
 name|int
@@ -169,9 +178,6 @@ block|{
 name|FileListEntry
 name|entry
 init|=
-operator|(
-name|FileListEntry
-operator|)
 name|list
 operator|.
 name|get
@@ -239,9 +245,6 @@ name|list
 init|)
 block|{
 return|return
-operator|(
-name|FileListEntry
-operator|)
 name|list
 operator|.
 name|get
@@ -390,10 +393,16 @@ operator|=
 literal|""
 expr_stmt|;
 name|ArrayList
+argument_list|<
+name|FileListEntry
+argument_list|>
 name|newList
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|FileListEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|StringBuilder
@@ -404,10 +413,16 @@ name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|thisEntry
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|boolean
@@ -615,12 +630,15 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|decodeEntry (ArrayList contents)
+DECL|method|decodeEntry (ArrayList<String> contents)
 specifier|private
 name|FileListEntry
 name|decodeEntry
 parameter_list|(
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|contents
 parameter_list|)
 block|{
@@ -658,12 +676,15 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-DECL|method|getElementIfAvailable (ArrayList contents, int index)
+DECL|method|getElementIfAvailable (ArrayList<String> contents, int index)
 specifier|private
 name|String
 name|getElementIfAvailable
 parameter_list|(
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|contents
 parameter_list|,
 name|int
@@ -680,9 +701,6 @@ name|size
 argument_list|()
 condition|)
 return|return
-operator|(
-name|String
-operator|)
 name|contents
 operator|.
 name|get
@@ -712,6 +730,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|FileListEntry
+argument_list|>
 name|iterator
 init|=
 name|list
@@ -729,9 +750,6 @@ block|{
 name|FileListEntry
 name|entry
 init|=
-operator|(
-name|FileListEntry
-operator|)
 name|iterator
 operator|.
 name|next
@@ -788,6 +806,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|FileListEntry
+argument_list|>
 name|iterator
 init|=
 name|list
@@ -805,9 +826,6 @@ block|{
 name|FileListEntry
 name|entry
 init|=
-operator|(
-name|FileListEntry
-operator|)
 name|iterator
 operator|.
 name|next
@@ -1060,6 +1078,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|FileListEntry
+argument_list|>
 name|iterator
 init|=
 name|list
@@ -1077,9 +1098,6 @@ block|{
 name|FileListEntry
 name|fileListEntry
 init|=
-operator|(
-name|FileListEntry
-operator|)
 name|iterator
 operator|.
 name|next

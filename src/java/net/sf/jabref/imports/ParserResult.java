@@ -28,11 +28,33 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexEntryType
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
 operator|.
 name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
 import|;
 end_import
 
@@ -55,6 +77,18 @@ operator|.
 name|jabref
 operator|.
 name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexEntry
 import|;
 end_import
 
@@ -86,7 +120,6 @@ name|BibtexDatabase
 name|base
 decl_stmt|;
 DECL|field|metaData
-DECL|field|entryTypes
 specifier|private
 name|HashMap
 argument_list|<
@@ -95,7 +128,15 @@ argument_list|,
 name|String
 argument_list|>
 name|metaData
-decl_stmt|,
+decl_stmt|;
+DECL|field|entryTypes
+specifier|private
+name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|BibtexEntryType
+argument_list|>
 name|entryTypes
 decl_stmt|;
 DECL|field|file
@@ -156,7 +197,40 @@ name|toOpenTab
 init|=
 literal|false
 decl_stmt|;
-DECL|method|ParserResult (BibtexDatabase base, HashMap<String, String> metaData, HashMap entryTypes)
+DECL|method|ParserResult (Collection<BibtexEntry> entries)
+specifier|public
+name|ParserResult
+parameter_list|(
+name|Collection
+argument_list|<
+name|BibtexEntry
+argument_list|>
+name|entries
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|ImportFormatReader
+operator|.
+name|createDatabase
+argument_list|(
+name|entries
+argument_list|)
+argument_list|,
+literal|null
+argument_list|,
+operator|new
+name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|BibtexEntryType
+argument_list|>
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|ParserResult (BibtexDatabase base, HashMap<String, String> metaData, HashMap<String, BibtexEntryType> entryTypes)
 specifier|public
 name|ParserResult
 parameter_list|(
@@ -172,6 +246,11 @@ argument_list|>
 name|metaData
 parameter_list|,
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|BibtexEntryType
+argument_list|>
 name|entryTypes
 parameter_list|)
 block|{
@@ -329,6 +408,11 @@ block|}
 DECL|method|getEntryTypes ()
 specifier|public
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|BibtexEntryType
+argument_list|>
 name|getEntryTypes
 parameter_list|()
 block|{
@@ -473,9 +557,6 @@ index|[
 name|i
 index|]
 operator|=
-operator|(
-name|String
-operator|)
 name|warnings
 operator|.
 name|get

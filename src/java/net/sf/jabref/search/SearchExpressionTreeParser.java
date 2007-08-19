@@ -188,6 +188,9 @@ name|bibtexEntry
 operator|.
 name|getAllFields
 argument_list|()
+operator|.
+name|toArray
+argument_list|()
 expr_stmt|;
 return|return
 name|tSearchExpression

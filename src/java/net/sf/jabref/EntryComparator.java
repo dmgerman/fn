@@ -35,6 +35,9 @@ class|class
 name|EntryComparator
 implements|implements
 name|Comparator
+argument_list|<
+name|BibtexEntry
+argument_list|>
 block|{
 DECL|field|sortField
 name|String
@@ -51,9 +54,12 @@ literal|false
 decl_stmt|;
 DECL|field|next
 name|Comparator
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|next
 decl_stmt|;
-DECL|method|EntryComparator (boolean binary, boolean desc, String field, Comparator next)
+DECL|method|EntryComparator (boolean binary, boolean desc, String field, Comparator<BibtexEntry> next)
 specifier|public
 name|EntryComparator
 parameter_list|(
@@ -67,6 +73,9 @@ name|String
 name|field
 parameter_list|,
 name|Comparator
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|next
 parameter_list|)
 block|{
@@ -134,38 +143,20 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-DECL|method|compare (Object o1, Object o2)
+DECL|method|compare (BibtexEntry e1, BibtexEntry e2)
 specifier|public
 name|int
 name|compare
 parameter_list|(
-name|Object
-name|o1
+name|BibtexEntry
+name|e1
 parameter_list|,
-name|Object
-name|o2
+name|BibtexEntry
+name|e2
 parameter_list|)
 throws|throws
 name|ClassCastException
 block|{
-comment|//if (o1 == null) Util.pr("o1 == null");
-comment|//if (o2 == null) Util.pr("o2 == null");
-comment|/*  The explicit instanceof test is unnecessary, since the          explicit casts below will throw ClassCastException anyway          if there is trouble.       if (!(o1 instanceof BibtexEntry) || !(o2 instanceof BibtexEntry))        throw new ClassCastException("Trouble comparing objects: "+o1.toString()+"\n\n"+o2.toString());*/
-name|BibtexEntry
-name|e1
-init|=
-operator|(
-name|BibtexEntry
-operator|)
-name|o1
-decl_stmt|,
-name|e2
-init|=
-operator|(
-name|BibtexEntry
-operator|)
-name|o2
-decl_stmt|;
 if|if
 condition|(
 name|e1
@@ -226,9 +217,9 @@ name|next
 operator|.
 name|compare
 argument_list|(
-name|o1
+name|e1
 argument_list|,
-name|o2
+name|e2
 argument_list|)
 else|:
 name|idCompare
@@ -256,9 +247,9 @@ name|next
 operator|.
 name|compare
 argument_list|(
-name|o1
+name|e1
 argument_list|,
-name|o2
+name|e2
 argument_list|)
 else|:
 name|idCompare
@@ -395,9 +386,9 @@ name|next
 operator|.
 name|compare
 argument_list|(
-name|o1
+name|e1
 argument_list|,
-name|o2
+name|e2
 argument_list|)
 else|:
 name|idCompare
@@ -633,9 +624,9 @@ name|next
 operator|.
 name|compare
 argument_list|(
-name|o1
+name|e1
 argument_list|,
-name|o2
+name|e2
 argument_list|)
 return|;
 comment|// Secondary sort if existent.

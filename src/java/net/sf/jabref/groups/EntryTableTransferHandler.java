@@ -530,11 +530,22 @@ condition|)
 block|{
 comment|// JOptionPane.showMessageDialog(null, "Received
 comment|// javaFileListFlavor");
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 name|List
+argument_list|<
+name|File
+argument_list|>
 name|l
 init|=
 operator|(
 name|List
+argument_list|<
+name|File
+argument_list|>
 operator|)
 name|t
 operator|.
@@ -1071,10 +1082,16 @@ literal|"\n"
 argument_list|)
 decl_stmt|;
 name|List
+argument_list|<
+name|File
+argument_list|>
 name|files
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|File
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -1178,12 +1195,15 @@ argument_list|)
 return|;
 block|}
 comment|/** 	 * Handle a List containing File objects for a set of files to import. 	 *  	 * @param files 	 *            A List containing File instances pointing to files. 	 * @param dropRow @param dropRow The row in the table where the files were dragged.      * @return success status for the operation 	 */
-DECL|method|handleDraggedFiles (List files, final int dropRow)
+DECL|method|handleDraggedFiles (List<File> files, final int dropRow)
 specifier|private
 name|boolean
 name|handleDraggedFiles
 parameter_list|(
 name|List
+argument_list|<
+name|File
+argument_list|>
 name|files
 parameter_list|,
 specifier|final
@@ -1213,6 +1233,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|File
+argument_list|>
 name|iterator
 init|=
 name|files
@@ -1230,9 +1253,6 @@ block|{
 name|File
 name|file
 init|=
-operator|(
-name|File
-operator|)
 name|iterator
 operator|.
 name|next
@@ -1311,10 +1331,16 @@ literal|false
 argument_list|)
 decl_stmt|;
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|notBibFiles
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|String

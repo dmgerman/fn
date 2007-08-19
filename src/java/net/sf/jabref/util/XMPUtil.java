@@ -245,6 +245,9 @@ DECL|method|readXMP (String filename)
 specifier|public
 specifier|static
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|readXMP
 parameter_list|(
 name|String
@@ -343,6 +346,11 @@ expr_stmt|;
 block|}
 block|}
 comment|/** 	 * Try to read the given BibTexEntry from the XMP-stream of the given 	 * inputstream containing a PDF-file. 	 *  	 * @param file 	 *            The inputstream to read from. 	 *  	 * @throws IOException 	 *             Throws an IOException if the file cannot be read, so the user 	 *             than remove a lock or cancel the operation. 	 */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|readXMP (InputStream inputStream)
 specifier|public
 specifier|static
@@ -422,6 +430,9 @@ return|return
 literal|null
 return|;
 name|List
+argument_list|<
+name|XMPSchema
+argument_list|>
 name|schemas
 init|=
 name|meta
@@ -434,6 +445,9 @@ name|NAMESPACE
 argument_list|)
 decl_stmt|;
 name|Iterator
+argument_list|<
+name|XMPSchema
+argument_list|>
 name|it
 init|=
 name|schemas
@@ -597,6 +611,11 @@ name|result
 return|;
 block|}
 comment|/** 	 * Helper function for retrieving a BibtexEntry from the 	 * PDDocumentInformation in a PDF file. 	 *  	 * To understand how to get hold of a PDDocumentInformation have a look in 	 * the test cases for XMPUtil. 	 *  	 * The BibtexEntry is build by mapping individual fields in the document 	 * information (like author, title, keywords) to fields in a bibtex entry. 	 *  	 * @param di 	 *            The document information from which to build a BibtexEntry. 	 *  	 * @return The bibtex entry found in the document information. 	 */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|getBibtexEntryFromDocumentInformation ( PDDocumentInformation di)
 specifier|public
 specifier|static
@@ -832,7 +851,8 @@ operator|.
 name|getAllFields
 argument_list|()
 operator|.
-name|length
+name|size
+argument_list|()
 operator|>
 literal|0
 condition|?
@@ -843,6 +863,11 @@ operator|)
 return|;
 block|}
 comment|/** 	 * Helper function for retrieving a BibtexEntry from the DublinCore metadata 	 * in a PDF file. 	 *  	 * To understand how to get hold of a XMPSchemaDublinCore have a look in the 	 * test cases for XMPUtil. 	 *  	 * The BibtexEntry is build by mapping individual fields in the dublin core 	 * (like creator, title, subject) to fields in a bibtex entry. 	 *  	 * @param di 	 *            The document information from which to build a BibtexEntry. 	 *  	 * @return The bibtex entry found in the document information. 	 */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|getBibtexEntryFromDublinCore ( XMPSchemaDublinCore dcSchema)
 specifier|public
 specifier|static
@@ -1658,7 +1683,8 @@ operator|.
 name|getAllFields
 argument_list|()
 operator|.
-name|length
+name|size
+argument_list|()
 operator|>
 literal|0
 condition|?
@@ -1770,6 +1796,9 @@ name|XMPMetadata
 argument_list|()
 decl_stmt|;
 name|Iterator
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|it
 init|=
 name|bibtexEntries
@@ -2099,38 +2128,20 @@ literal|false
 argument_list|)
 expr_stmt|;
 comment|// Set all the values including key and entryType
-name|Object
-index|[]
-name|fields
-init|=
+for|for
+control|(
+name|String
+name|field
+range|:
 name|entry
 operator|.
 name|getAllFields
 argument_list|()
-decl_stmt|;
-for|for
-control|(
-name|int
-name|j
-init|=
-literal|0
-init|;
-name|j
-operator|<
-name|fields
-operator|.
-name|length
-condition|;
-name|j
-operator|++
 control|)
 block|{
 if|if
 condition|(
-name|fields
-index|[
-name|j
-index|]
+name|field
 operator|.
 name|equals
 argument_list|(
@@ -2145,10 +2156,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|fields
-index|[
-name|j
-index|]
+name|field
 operator|.
 name|toString
 argument_list|()
@@ -2223,10 +2231,7 @@ comment|/** 			 * ? -> Coverage 			 *  			 * Unmapped 			 *  			 * dc:coverage T
 comment|/** 			 * Author -> Creator 			 *  			 * Field: dc:creator 			 *  			 * Type: seq ProperName 			 *  			 * Category: External 			 *  			 * Description: The authors of the resource (listed in order of 			 * precedence, if significant). 			 *  			 * Bibtex-Fields used: author 			 */
 if|if
 condition|(
-name|fields
-index|[
-name|j
-index|]
+name|field
 operator|.
 name|equals
 argument_list|(
@@ -2241,10 +2246,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|fields
-index|[
-name|j
-index|]
+name|field
 operator|.
 name|toString
 argument_list|()
@@ -2316,10 +2318,7 @@ continue|continue;
 block|}
 if|if
 condition|(
-name|fields
-index|[
-name|j
-index|]
+name|field
 operator|.
 name|equals
 argument_list|(
@@ -2332,10 +2331,7 @@ continue|continue;
 block|}
 if|if
 condition|(
-name|fields
-index|[
-name|j
-index|]
+name|field
 operator|.
 name|equals
 argument_list|(
@@ -2376,10 +2372,7 @@ block|}
 comment|/** 			 * Abstract -> Description 			 *  			 * Field: dc:description 			 *  			 * Type: Lang Alt 			 *  			 * Category: External 			 *  			 * Description: A textual description of the content of the 			 * resource. Multiple values may be present for different languages. 			 *  			 * Bibtex-Fields used: abstract 			 */
 if|if
 condition|(
-name|fields
-index|[
-name|j
-index|]
+name|field
 operator|.
 name|equals
 argument_list|(
@@ -2394,10 +2387,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|fields
-index|[
-name|j
-index|]
+name|field
 operator|.
 name|toString
 argument_list|()
@@ -2421,10 +2411,7 @@ block|}
 comment|/** 			 * DOI -> identifier 			 *  			 * Field: dc:identifier 			 *  			 * Type: Text 			 *  			 * Category: External 			 *  			 * Description: Unique identifier of the resource. 			 *  			 * Bibtex-Fields used: doi 			 */
 if|if
 condition|(
-name|fields
-index|[
-name|j
-index|]
+name|field
 operator|.
 name|equals
 argument_list|(
@@ -2439,10 +2426,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|fields
-index|[
-name|j
-index|]
+name|field
 operator|.
 name|toString
 argument_list|()
@@ -2467,10 +2451,7 @@ comment|/** 			 * ? -> Language 			 *  			 * Unmapped 			 *  			 * dc:language b
 comment|/** 			 * Publisher -> Publisher 			 *  			 * Field: dc:publisher 			 *  			 * Type: bag ProperName 			 *  			 * Category: External 			 *  			 * Description: Publishers. 			 *  			 * Bibtex-Fields used: doi 			 */
 if|if
 condition|(
-name|fields
-index|[
-name|j
-index|]
+name|field
 operator|.
 name|equals
 argument_list|(
@@ -2485,10 +2466,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|fields
-index|[
-name|j
-index|]
+name|field
 operator|.
 name|toString
 argument_list|()
@@ -2514,10 +2492,7 @@ comment|/** 			 * ? -> Source 			 *  			 * Unmapped 			 *  			 * dc:source Text 
 comment|/** 			 * Keywords -> Subject 			 *  			 * Field: dc:subject 			 *  			 * Type: bag Text 			 *  			 * Category: External 			 *  			 * Description: An unordered array of descriptive phrases or 			 * keywords that specify the topic of the content of the resource. 			 *  			 * Bibtex-Fields used: doi 			 */
 if|if
 condition|(
-name|fields
-index|[
-name|j
-index|]
+name|field
 operator|.
 name|equals
 argument_list|(
@@ -2532,10 +2507,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|fields
-index|[
-name|j
-index|]
+name|field
 operator|.
 name|toString
 argument_list|()
@@ -2594,10 +2566,7 @@ block|}
 comment|/** 			 * Title -> Title 			 *  			 * Field: dc:title 			 *  			 * Type: Lang Alt 			 *  			 * Category: External 			 *  			 * Description: The title of the document, or the name given to the 			 * resource. Typically, it will be a name by which the resource is 			 * formally known. 			 *  			 * Bibtex-Fields used: title 			 */
 if|if
 condition|(
-name|fields
-index|[
-name|j
-index|]
+name|field
 operator|.
 name|equals
 argument_list|(
@@ -2612,10 +2581,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|fields
-index|[
-name|j
-index|]
+name|field
 operator|.
 name|toString
 argument_list|()
@@ -2645,10 +2611,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|fields
-index|[
-name|j
-index|]
+name|field
 operator|.
 name|toString
 argument_list|()
@@ -2663,10 +2626,7 @@ name|addRelation
 argument_list|(
 literal|"bibtex/"
 operator|+
-name|fields
-index|[
-name|j
-index|]
+name|field
 operator|.
 name|toString
 argument_list|()
@@ -2766,6 +2726,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** 	 * Try to write the given BibTexEntries as DublinCore XMP Schemas 	 *  	 * Existing DublinCore schemas in the document are removed 	 *  	 * @param document 	 *            The pdf document to write to. 	 * @param entries 	 *            The Bibtex entries that are written as schemas 	 * @param database 	 *            maybenull An optional database which the given bibtex entries 	 *            belong to, which will be used to resolve strings. If the 	 *            database is null the strings will not be resolved. 	 * @throws IOException 	 * @throws TransformerException 	 */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|writeDublinCore (PDDocument document, Collection<BibtexEntry> entries, BibtexDatabase database)
 specifier|public
 specifier|static
@@ -3040,8 +3005,10 @@ literal|false
 argument_list|)
 expr_stmt|;
 comment|// Set all the values including key and entryType
-name|Object
-index|[]
+name|Set
+argument_list|<
+name|String
+argument_list|>
 name|fields
 init|=
 name|entry
@@ -3051,27 +3018,15 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
+name|String
+name|field
+range|:
 name|fields
-operator|.
-name|length
-condition|;
-name|i
-operator|++
 control|)
 block|{
 if|if
 condition|(
-name|fields
-index|[
-name|i
-index|]
+name|field
 operator|.
 name|equals
 argument_list|(
@@ -3098,10 +3053,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|fields
-index|[
-name|i
-index|]
+name|field
 operator|.
 name|equals
 argument_list|(
@@ -3128,10 +3080,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|fields
-index|[
-name|i
-index|]
+name|field
 operator|.
 name|equals
 argument_list|(
@@ -3158,10 +3107,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|fields
-index|[
-name|i
-index|]
+name|field
 operator|.
 name|equals
 argument_list|(
@@ -3193,10 +3139,7 @@ name|setCustomMetadataValue
 argument_list|(
 literal|"bibtex/"
 operator|+
-name|fields
-index|[
-name|i
-index|]
+name|field
 operator|.
 name|toString
 argument_list|()
@@ -3205,10 +3148,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|fields
-index|[
-name|i
-index|]
+name|field
 operator|.
 name|toString
 argument_list|()
@@ -3237,6 +3177,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** 	 * Try to write the given BibTexEntry in the XMP-stream of the given 	 * PDF-file. 	 *  	 * Throws an IOException if the file cannot be read or written, so the user 	 * can remove a lock or cancel the operation. 	 *  	 * The method will overwrite existing BibTeX-XMP-data, but keep other 	 * existing metadata. 	 *  	 * @param file 	 *            The file to write the entries to. 	 * @param bibtexEntries 	 *            The entries to write to the file. * 	 * @param database 	 *            maybenull An optional database which the given bibtex entries 	 *            belong to, which will be used to resolve strings. If the 	 *            database is null the strings will not be resolved. 	 * @param writePDFInfo 	 *            Write information also in PDF document properties 	 * @throws TransformerException 	 *             If the entry was malformed or unsupported. 	 * @throws IOException 	 *             If the file could not be written to or could not be found. 	 */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|writeXMP (File file, Collection<BibtexEntry> bibtexEntries, BibtexDatabase databasee, boolean writePDFInfo)
 specifier|public
 specifier|static
@@ -3822,6 +3767,9 @@ condition|)
 block|{
 comment|// Read from pdf and write as BibTex
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|l
 init|=
 name|XMPUtil
@@ -3839,6 +3787,9 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 name|Iterator
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|it
 init|=
 name|l
@@ -4367,6 +4318,9 @@ block|{
 try|try
 block|{
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|l
 init|=
 name|XMPUtil

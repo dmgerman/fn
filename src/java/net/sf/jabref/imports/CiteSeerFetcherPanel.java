@@ -712,22 +712,9 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
-name|NamedCompound
-name|undoEdit
-init|=
-operator|new
-name|NamedCompound
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"CiteSeer import entries"
-argument_list|)
-argument_list|)
-decl_stmt|,
 comment|// Use a dummy UndoEdit to avoid storing the information on
 comment|// every field change, since we are importing new entries:
+name|NamedCompound
 name|dummyCompound
 init|=
 operator|new
@@ -767,10 +754,20 @@ literal|false
 argument_list|)
 decl_stmt|;
 name|Hashtable
+argument_list|<
+name|Integer
+argument_list|,
+name|BibtexEntry
+argument_list|>
 name|rejectedEntries
 init|=
 operator|new
 name|Hashtable
+argument_list|<
+name|Integer
+argument_list|,
+name|BibtexEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|String
@@ -875,9 +872,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Try to import based on the id:
-name|boolean
-name|newValues
-init|=
 name|citeSeerFetcher
 operator|.
 name|importCiteSeerEntry
@@ -897,7 +891,7 @@ name|newValue
 argument_list|,
 name|rejectedEntries
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 comment|// What we do with the entry depends on whether we are using the inspection window:
 if|if
 condition|(

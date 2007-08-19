@@ -20,7 +20,7 @@ specifier|public
 class|class
 name|KeyCollisionException
 extends|extends
-name|Exception
+name|RuntimeException
 block|{
 DECL|method|KeyCollisionException ()
 specifier|public

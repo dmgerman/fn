@@ -39,7 +39,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Matcher for filtering or sorting the table according to whether entries  * are tagged as search matches.  */
+comment|/**  * Matcher for filtering or sorting the table according to whether entries are  * tagged as search matches.  */
 end_comment
 
 begin_class
@@ -49,6 +49,9 @@ class|class
 name|SearchMatcher
 implements|implements
 name|Matcher
+argument_list|<
+name|BibtexEntry
+argument_list|>
 block|{
 DECL|field|INSTANCE
 specifier|public
@@ -60,23 +63,15 @@ operator|new
 name|SearchMatcher
 argument_list|()
 decl_stmt|;
-DECL|method|matches (Object object)
+DECL|method|matches (BibtexEntry entry)
 specifier|public
 name|boolean
 name|matches
 parameter_list|(
-name|Object
-name|object
-parameter_list|)
-block|{
 name|BibtexEntry
 name|entry
-init|=
-operator|(
-name|BibtexEntry
-operator|)
-name|object
-decl_stmt|;
+parameter_list|)
+block|{
 return|return
 name|entry
 operator|.

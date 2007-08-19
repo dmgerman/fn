@@ -166,6 +166,9 @@ name|bib
 argument_list|)
 decl_stmt|;
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|returnValue
 init|=
 name|auxParser

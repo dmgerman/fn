@@ -54,6 +54,12 @@ block|{
 DECL|field|list
 specifier|private
 name|List
+argument_list|<
+name|List
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
 name|list
 init|=
 literal|null
@@ -61,6 +67,9 @@ decl_stmt|;
 DECL|field|names
 specifier|private
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|names
 init|=
 literal|null
@@ -84,12 +93,21 @@ name|list
 operator|=
 operator|new
 name|ArrayList
+argument_list|<
+name|List
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
 argument_list|()
 expr_stmt|;
 name|names
 operator|=
 operator|new
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 expr_stmt|;
 name|int
@@ -181,6 +199,9 @@ literal|";"
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|entry
 init|=
 name|Arrays
@@ -278,6 +299,9 @@ literal|";"
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|entry
 init|=
 name|Arrays
@@ -344,6 +368,9 @@ block|}
 DECL|method|getTabFields (int tab)
 specifier|public
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|getTabFields
 parameter_list|(
 name|int
@@ -351,9 +378,6 @@ name|tab
 parameter_list|)
 block|{
 return|return
-operator|(
-name|List
-operator|)
 name|list
 operator|.
 name|get

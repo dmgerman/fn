@@ -114,6 +114,9 @@ class|class
 name|Importer
 implements|implements
 name|Comparable
+argument_list|<
+name|Importer
+argument_list|>
 block|{
 DECL|field|name
 specifier|private
@@ -395,12 +398,12 @@ name|hashCode
 argument_list|()
 return|;
 block|}
-DECL|method|compareTo (Object o)
+DECL|method|compareTo (Importer o)
 specifier|public
 name|int
 name|compareTo
 parameter_list|(
-name|Object
+name|Importer
 name|o
 parameter_list|)
 block|{
@@ -412,12 +415,7 @@ argument_list|()
 operator|.
 name|compareTo
 argument_list|(
-operator|(
-operator|(
-name|Importer
-operator|)
 name|o
-operator|)
 operator|.
 name|getName
 argument_list|()
@@ -466,6 +464,9 @@ block|}
 argument_list|)
 decl_stmt|;
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|clazz
 init|=
 name|Class

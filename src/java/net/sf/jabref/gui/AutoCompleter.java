@@ -14,13 +14,11 @@ end_package
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|AuthorList
+name|StringTokenizer
 import|;
 end_import
 
@@ -36,21 +34,13 @@ end_import
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|jabref
 operator|.
-name|util
-operator|.
-name|StringTokenizer
+name|AuthorList
 import|;
 end_import
 
@@ -79,19 +69,16 @@ decl_stmt|;
 DECL|field|words
 specifier|private
 name|TreeSet
+argument_list|<
+name|String
+argument_list|>
 name|words
 init|=
 operator|new
 name|TreeSet
-argument_list|()
-decl_stmt|;
-DECL|field|hm
-specifier|private
-name|HashMap
-name|hm
-init|=
-operator|new
-name|HashMap
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|nameField

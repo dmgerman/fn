@@ -45,6 +45,9 @@ class|class
 name|IconComparator
 implements|implements
 name|Comparator
+argument_list|<
+name|BibtexEntry
+argument_list|>
 block|{
 DECL|field|fields
 specifier|private
@@ -68,33 +71,18 @@ operator|=
 name|fields
 expr_stmt|;
 block|}
-DECL|method|compare (Object o1, Object o2)
+DECL|method|compare (BibtexEntry e1, BibtexEntry e2)
 specifier|public
 name|int
 name|compare
 parameter_list|(
-name|Object
-name|o1
-parameter_list|,
-name|Object
-name|o2
-parameter_list|)
-block|{
 name|BibtexEntry
 name|e1
-init|=
-operator|(
+parameter_list|,
 name|BibtexEntry
-operator|)
-name|o1
-decl_stmt|,
 name|e2
-init|=
-operator|(
-name|BibtexEntry
-operator|)
-name|o2
-decl_stmt|;
+parameter_list|)
+block|{
 for|for
 control|(
 name|int
@@ -112,7 +100,7 @@ name|i
 operator|++
 control|)
 block|{
-name|Object
+name|String
 name|val1
 init|=
 name|e1

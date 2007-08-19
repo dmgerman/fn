@@ -1622,6 +1622,9 @@ begin_function
 DECL|method|refreshPaths (Enumeration paths)
 specifier|public
 name|Enumeration
+argument_list|<
+name|TreePath
+argument_list|>
 name|refreshPaths
 parameter_list|(
 name|Enumeration
@@ -1629,10 +1632,16 @@ name|paths
 parameter_list|)
 block|{
 name|Vector
+argument_list|<
+name|TreePath
+argument_list|>
 name|freshPaths
 init|=
 operator|new
 name|Vector
+argument_list|<
+name|TreePath
+argument_list|>
 argument_list|()
 decl_stmt|;
 while|while

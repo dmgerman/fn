@@ -232,6 +232,9 @@ comment|/**      * Parse the entries in the source, and return a List of BibtexE
 DECL|method|importEntries (InputStream stream)
 specifier|public
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|importEntries
 parameter_list|(
 name|InputStream
@@ -241,10 +244,16 @@ throws|throws
 name|IOException
 block|{
 name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|bibitems
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|StringBuffer
@@ -405,10 +414,20 @@ argument_list|)
 decl_stmt|;
 comment|// skip the first entry as it is either empty or has document header
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|hm
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -464,11 +483,6 @@ argument_list|)
 expr_stmt|;
 name|String
 name|Type
-init|=
-literal|""
-decl_stmt|;
-name|String
-name|PT
 init|=
 literal|""
 decl_stmt|;
@@ -584,24 +598,7 @@ literal|"PT  - "
 argument_list|)
 condition|)
 block|{
-name|PT
-operator|=
-name|value
-operator|.
-name|replaceAll
-argument_list|(
-literal|"JOURNAL ARTICLE"
-argument_list|,
-literal|"article"
-argument_list|)
-operator|.
-name|replaceAll
-argument_list|(
-literal|"Journal Article"
-argument_list|,
-literal|"article"
-argument_list|)
-expr_stmt|;
+comment|// PT = value.replaceAll("JOURNAL ARTICLE", "article").replaceAll("Journal Article", "article");
 name|Type
 operator|=
 literal|"article"

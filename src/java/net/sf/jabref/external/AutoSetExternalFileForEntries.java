@@ -266,15 +266,10 @@ name|checkExisting
 init|=
 literal|true
 decl_stmt|;
-DECL|field|skipped
 DECL|field|entriesChanged
 DECL|field|brokenLinks
 specifier|private
 name|int
-name|skipped
-init|=
-literal|0
-decl_stmt|,
 name|entriesChanged
 init|=
 literal|0
@@ -313,8 +308,10 @@ name|void
 name|init
 parameter_list|()
 block|{
-comment|/*// Get all entries, and make sure there are selected entries:     	sel = panel.getSelectedEntries();     	if (sel.length< 1) { 	    // No entries selected. Assume all entries should be treated: 	    */
 name|Collection
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|col
 init|=
 name|panel
@@ -327,6 +324,10 @@ argument_list|()
 decl_stmt|;
 name|sel
 operator|=
+name|col
+operator|.
+name|toArray
+argument_list|(
 operator|new
 name|BibtexEntry
 index|[
@@ -335,23 +336,8 @@ operator|.
 name|size
 argument_list|()
 index|]
-expr_stmt|;
-name|sel
-operator|=
-operator|(
-name|BibtexEntry
-index|[]
-operator|)
-name|col
-operator|.
-name|toArray
-argument_list|(
-name|sel
 argument_list|)
 expr_stmt|;
-comment|//goOn = false;
-comment|//return;
-comment|//}
 comment|// Ask about rules for the operation:
 if|if
 condition|(
@@ -543,10 +529,6 @@ name|progress
 init|=
 literal|0
 decl_stmt|;
-name|skipped
-operator|=
-literal|0
-expr_stmt|;
 name|entriesChanged
 operator|=
 literal|0
@@ -667,7 +649,7 @@ name|progress
 argument_list|)
 expr_stmt|;
 specifier|final
-name|Object
+name|String
 name|old
 init|=
 name|sel
@@ -883,7 +865,7 @@ operator|++
 argument_list|)
 expr_stmt|;
 specifier|final
-name|Object
+name|String
 name|old
 init|=
 name|sel
@@ -906,12 +888,7 @@ literal|null
 operator|)
 operator|&&
 operator|!
-operator|(
-operator|(
-name|String
-operator|)
 name|old
-operator|)
 operator|.
 name|equals
 argument_list|(
@@ -927,9 +904,6 @@ name|Util
 operator|.
 name|expandFilename
 argument_list|(
-operator|(
-name|String
-operator|)
 name|old
 argument_list|,
 operator|new
@@ -979,9 +953,6 @@ operator|new
 name|String
 index|[]
 block|{
-operator|(
-name|String
-operator|)
 name|old
 block|,
 name|sel

@@ -154,12 +154,6 @@ name|DEFAULT_OPTION_FILENAME
 init|=
 literal|"default.opt"
 decl_stmt|;
-comment|/**      * The current verbosity.      */
-DECL|field|verbosity
-specifier|private
-name|int
-name|verbosity
-decl_stmt|;
 comment|/**      * The program to display in the usage.      */
 DECL|field|usageProgram
 specifier|private
@@ -216,31 +210,18 @@ operator|.
 name|util
 operator|.
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|OptionModule
+argument_list|>
 name|modules
-decl_stmt|;
-comment|/**      * The help method is invoked when this option is invoked.      */
-DECL|field|helpOption
-specifier|private
-name|NotifyOption
-name|helpOption
-decl_stmt|;
-comment|/**      * The built-in menu system is invoked when this option is invoked.      */
-DECL|field|menuOption
-specifier|private
-name|NotifyOption
-name|menuOption
 decl_stmt|;
 comment|/**      * Version information is displayed when this option is specified.      */
 DECL|field|versionOption
 specifier|private
 name|NotifyOption
 name|versionOption
-decl_stmt|;
-comment|/**      * An instance of the built-in menu.      */
-DECL|field|menu
-specifier|private
-name|OptionMenu
-name|menu
 decl_stmt|;
 comment|/**      * Create an option repository.      */
 DECL|method|Options ()
@@ -263,10 +244,6 @@ name|String
 name|programName
 parameter_list|)
 block|{
-name|verbosity
-operator|=
-name|DEFAULT_VERBOSITY
-expr_stmt|;
 name|displayUsage
 operator|=
 name|DEFAULT_DISPLAY_USAGE
@@ -287,27 +264,12 @@ name|modules
 operator|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|OptionModule
+argument_list|>
 argument_list|()
-expr_stmt|;
-name|menu
-operator|=
-operator|new
-name|OptionMenu
-argument_list|(
-name|this
-argument_list|)
-expr_stmt|;
-name|helpOption
-operator|=
-operator|new
-name|NotifyOption
-argument_list|(
-name|this
-argument_list|,
-literal|"help"
-argument_list|,
-literal|""
-argument_list|)
 expr_stmt|;
 name|versionOption
 operator|=
@@ -324,18 +286,6 @@ expr_stmt|;
 name|version
 operator|=
 literal|"Version 1.0"
-expr_stmt|;
-name|menuOption
-operator|=
-operator|new
-name|NotifyOption
-argument_list|(
-name|menu
-argument_list|,
-literal|"menu"
-argument_list|,
-literal|""
-argument_list|)
 expr_stmt|;
 name|generalModule
 operator|=
@@ -400,6 +350,9 @@ name|getHelp
 argument_list|()
 decl_stmt|;
 name|Iterator
+argument_list|<
+name|OptionModule
+argument_list|>
 name|it
 init|=
 name|modules
@@ -421,9 +374,6 @@ block|{
 name|OptionModule
 name|module
 init|=
-operator|(
-name|OptionModule
-operator|)
 name|it
 operator|.
 name|next
@@ -916,9 +866,6 @@ name|name
 parameter_list|)
 block|{
 return|return
-operator|(
-name|OptionModule
-operator|)
 name|modules
 operator|.
 name|get
@@ -1044,6 +991,9 @@ operator|.
 name|util
 operator|.
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|l
 init|=
 operator|new
@@ -1052,6 +1002,9 @@ operator|.
 name|util
 operator|.
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|int
@@ -1212,6 +1165,9 @@ argument_list|)
 expr_stmt|;
 block|}
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|it
 init|=
 name|l
@@ -1251,9 +1207,6 @@ name|n
 operator|++
 index|]
 operator|=
-operator|(
-name|String
-operator|)
 name|it
 operator|.
 name|next
@@ -1279,12 +1232,10 @@ name|writer
 init|=
 literal|null
 decl_stmt|;
-name|String
-name|line
-init|=
-literal|null
-decl_stmt|;
 name|Iterator
+argument_list|<
+name|OptionModule
+argument_list|>
 name|it
 init|=
 literal|null
@@ -1344,9 +1295,6 @@ block|{
 name|OptionModule
 name|module
 init|=
-operator|(
-name|OptionModule
-operator|)
 name|it
 operator|.
 name|next
@@ -2154,11 +2102,6 @@ name|dtext
 init|=
 literal|"+"
 decl_stmt|;
-name|char
-name|dpeek
-init|=
-literal|'\0'
-decl_stmt|;
 if|if
 condition|(
 name|n
@@ -2170,20 +2113,6 @@ operator|-
 literal|1
 condition|)
 block|{
-name|dpeek
-operator|=
-name|args
-index|[
-name|n
-operator|+
-literal|1
-index|]
-operator|.
-name|charAt
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|!
@@ -2459,11 +2388,6 @@ name|dtext
 init|=
 literal|"+"
 decl_stmt|;
-name|char
-name|dpeek
-init|=
-literal|'\0'
-decl_stmt|;
 if|if
 condition|(
 name|n
@@ -2487,20 +2411,6 @@ operator|>
 literal|0
 condition|)
 block|{
-name|dpeek
-operator|=
-name|args
-index|[
-name|n
-operator|+
-literal|1
-index|]
-operator|.
-name|charAt
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|!

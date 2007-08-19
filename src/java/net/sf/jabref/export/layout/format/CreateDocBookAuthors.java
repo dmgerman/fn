@@ -176,19 +176,6 @@ comment|//<author><firstname>L.</firstname><surname>Xue</surname></author>
 comment|//<author><firstname>F.</firstname><othername role="mi">L.</othername><surname>Stahura</surname></author>
 comment|//<author><firstname>J.</firstname><othername role="mi">W.</othername><surname>Godden</surname></author>
 comment|//<author><firstname>J.</firstname><surname>Bajorath</surname></author>
-name|int
-name|index
-init|=
-literal|0
-decl_stmt|;
-name|int
-name|oldPos
-init|=
-literal|0
-decl_stmt|;
-name|String
-name|author
-decl_stmt|;
 name|StringBuffer
 name|sb
 init|=
@@ -198,7 +185,6 @@ argument_list|(
 literal|100
 argument_list|)
 decl_stmt|;
-comment|//fieldText = (new ConvertSpecialCharactersForXML()).format(fieldText);
 if|if
 condition|(
 name|fieldText
@@ -333,10 +319,16 @@ parameter_list|)
 block|{
 comment|// TODO: replace special characters
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|v
 init|=
 operator|new
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|String

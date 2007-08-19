@@ -847,12 +847,17 @@ argument_list|()
 return|;
 block|}
 comment|/* 	 * (non-Javadoc) 	 *  	 * @see net.sf.jabref.groups.AbstractGroup#contains(java.util.Map, 	 *      net.sf.jabref.BibtexEntry) 	 */
-DECL|method|contains (Map searchOptions, BibtexEntry entry)
+DECL|method|contains (Map<String, String> searchOptions, BibtexEntry entry)
 specifier|public
 name|boolean
 name|contains
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|searchOptions
 parameter_list|,
 name|BibtexEntry
@@ -889,18 +894,28 @@ name|contains
 argument_list|(
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 argument_list|,
 name|entry
 argument_list|)
 return|;
 block|}
-DECL|method|applyRule (Map searchOptions, BibtexEntry entry)
+DECL|method|applyRule (Map<String, String> searchOptions, BibtexEntry entry)
 specifier|public
 name|int
 name|applyRule
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|searchOptions
 parameter_list|,
 name|BibtexEntry

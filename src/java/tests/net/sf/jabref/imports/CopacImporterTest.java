@@ -295,6 +295,9 @@ name|CopacImporter
 argument_list|()
 decl_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|entries
 init|=
 name|importer
@@ -423,6 +426,9 @@ name|CopacImporter
 argument_list|()
 decl_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|entries
 init|=
 name|importer

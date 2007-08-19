@@ -22,16 +22,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Enumeration
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Map
 import|;
 end_import
@@ -115,12 +105,17 @@ operator|=
 name|invert
 expr_stmt|;
 block|}
-DECL|method|applyRule (Map searchString, BibtexEntry bibtexEntry)
+DECL|method|applyRule (Map<String, String> searchString, BibtexEntry bibtexEntry)
 specifier|public
 name|int
 name|applyRule
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|searchString
 parameter_list|,
 name|BibtexEntry
@@ -132,35 +127,18 @@ name|score
 init|=
 literal|0
 decl_stmt|;
-name|Enumeration
-name|e
-init|=
-name|ruleSet
-operator|.
-name|elements
-argument_list|()
-decl_stmt|;
 comment|// We let each rule add a maximum of 1 to the score.
-while|while
-condition|(
-name|e
-operator|.
-name|hasMoreElements
-argument_list|()
-condition|)
+for|for
+control|(
+name|SearchRule
+name|rule
+range|:
+name|ruleSet
+control|)
 block|{
 name|score
 operator|+=
-operator|(
-operator|(
-operator|(
-name|SearchRule
-operator|)
-name|e
-operator|.
-name|nextElement
-argument_list|()
-operator|)
+name|rule
 operator|.
 name|applyRule
 argument_list|(
@@ -174,7 +152,6 @@ condition|?
 literal|1
 else|:
 literal|0
-operator|)
 expr_stmt|;
 block|}
 comment|// Then an AND rule demands that score == number of rules, and

@@ -67,7 +67,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** * This class handles user defined custom export formats. They are initially read from Preferences, * and kept alphabetically (sorted by name). Formats can be added or removed. When modified, the * sort() method must be called to make sure the formats stay properly sorted. * When the method store() is called, export formats are written to Preferences. */
+comment|/**  * This class handles user defined custom export formats. They are initially  * read from Preferences, and kept alphabetically (sorted by name). Formats can  * be added or removed. When modified, the sort() method must be called to make  * sure the formats stay properly sorted. When the method store() is called,  * export formats are written to Preferences.  */
 end_comment
 
 begin_class
@@ -77,14 +77,28 @@ class|class
 name|CustomExportList
 extends|extends
 name|TreeSet
+argument_list|<
+name|String
+index|[]
+argument_list|>
 block|{
 DECL|field|formats
 specifier|private
 name|TreeMap
+argument_list|<
+name|String
+argument_list|,
+name|ExportFormat
+argument_list|>
 name|formats
 init|=
 operator|new
 name|TreeMap
+argument_list|<
+name|String
+argument_list|,
+name|ExportFormat
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|array
@@ -97,8 +111,7 @@ DECL|field|prefs
 name|JabRefPreferences
 name|prefs
 decl_stmt|;
-comment|//  ExportComparator comp = new ExportComparator();
-DECL|method|CustomExportList (JabRefPreferences prefs_, Comparator comp)
+DECL|method|CustomExportList (JabRefPreferences prefs_, Comparator<String[]> comp)
 specifier|public
 name|CustomExportList
 parameter_list|(
@@ -106,6 +119,10 @@ name|JabRefPreferences
 name|prefs_
 parameter_list|,
 name|Comparator
+argument_list|<
+name|String
+index|[]
+argument_list|>
 name|comp
 parameter_list|)
 block|{
@@ -114,7 +131,6 @@ argument_list|(
 name|comp
 argument_list|)
 expr_stmt|;
-comment|//super(new ExportComparator());
 name|prefs
 operator|=
 name|prefs_
@@ -129,6 +145,11 @@ block|}
 DECL|method|getCustomExportFormats ()
 specifier|public
 name|TreeMap
+argument_list|<
+name|String
+argument_list|,
+name|ExportFormat
+argument_list|>
 name|getCustomExportFormats
 parameter_list|()
 block|{
@@ -455,7 +476,7 @@ name|i
 operator|++
 control|)
 block|{
-comment|//System.out.println(i+"..");
+comment|// System.out.println(i+"..");
 name|Globals
 operator|.
 name|prefs
@@ -497,12 +518,6 @@ name|int
 name|from
 parameter_list|)
 block|{
-name|String
-index|[]
-name|s
-init|=
-literal|null
-decl_stmt|;
 name|int
 name|i
 init|=
@@ -510,9 +525,6 @@ name|from
 decl_stmt|;
 while|while
 condition|(
-operator|(
-name|s
-operator|=
 name|Globals
 operator|.
 name|prefs
@@ -523,7 +535,6 @@ literal|"customExportFormat"
 operator|+
 name|i
 argument_list|)
-operator|)
 operator|!=
 literal|null
 condition|)

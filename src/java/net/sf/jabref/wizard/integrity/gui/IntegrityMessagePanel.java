@@ -823,7 +823,7 @@ literal|null
 condition|)
 block|{
 comment|//          System.out.println("update") ;
-name|Object
+name|String
 name|oldContent
 init|=
 name|entry

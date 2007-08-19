@@ -1207,7 +1207,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|Integer
+name|String
 name|newCount
 init|=
 operator|new
@@ -1215,6 +1215,9 @@ name|Integer
 argument_list|(
 name|citeseerCitationCount
 argument_list|)
+operator|.
+name|toString
+argument_list|()
 decl_stmt|;
 name|UndoableFieldChange
 name|fieldChange

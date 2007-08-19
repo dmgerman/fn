@@ -10,6 +10,16 @@ name|jabref
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
 begin_class
 DECL|class|IncrementalSearcher
 specifier|public
@@ -66,22 +76,13 @@ name|hitInField
 operator|=
 literal|null
 expr_stmt|;
-comment|//if (!prefs.getBoolean("caseSensitiveSearch"))
-comment|//    flags = Pattern.CASE_INSENSITIVE;
-comment|//Pattern pattern = Pattern.compile(searchString, flags);
-name|Object
-index|[]
-name|fields
-init|=
+return|return
+name|searchFields
+argument_list|(
 name|bibtexEntry
 operator|.
 name|getAllFields
 argument_list|()
-decl_stmt|;
-return|return
-name|searchFields
-argument_list|(
-name|fields
 argument_list|,
 name|bibtexEntry
 argument_list|,
@@ -89,13 +90,15 @@ name|pattern
 argument_list|)
 return|;
 block|}
-DECL|method|searchFields (Object[] fields, BibtexEntry bibtexEntry, String searchString)
+DECL|method|searchFields (Set<String> fields, BibtexEntry bibtexEntry, String searchString)
 specifier|protected
 name|boolean
 name|searchFields
 parameter_list|(
-name|Object
-index|[]
+name|Set
+argument_list|<
+name|String
+argument_list|>
 name|fields
 parameter_list|,
 name|BibtexEntry
@@ -119,19 +122,10 @@ condition|)
 block|{
 for|for
 control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
+name|String
+name|field
+range|:
 name|fields
-operator|.
-name|length
-condition|;
-name|i
-operator|++
 control|)
 block|{
 try|try
@@ -143,10 +137,7 @@ name|bibtexEntry
 operator|.
 name|getField
 argument_list|(
-name|fields
-index|[
-name|i
-index|]
+name|field
 operator|.
 name|toString
 argument_list|()
@@ -171,10 +162,7 @@ name|bibtexEntry
 operator|.
 name|getField
 argument_list|(
-name|fields
-index|[
-name|i
-index|]
+name|field
 operator|.
 name|toString
 argument_list|()
@@ -204,10 +192,7 @@ name|bibtexEntry
 operator|.
 name|getField
 argument_list|(
-name|fields
-index|[
-name|i
-index|]
+name|field
 operator|.
 name|toString
 argument_list|()
@@ -242,10 +227,7 @@ condition|)
 block|{
 name|hitInField
 operator|=
-name|fields
-index|[
-name|i
-index|]
+name|field
 operator|.
 name|toString
 argument_list|()

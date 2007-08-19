@@ -1300,7 +1300,8 @@ operator|.
 name|getAllFields
 argument_list|()
 operator|.
-name|length
+name|size
+argument_list|()
 operator|>
 literal|0
 condition|)

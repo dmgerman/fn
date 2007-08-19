@@ -114,6 +114,9 @@ DECL|field|mrjFileUtilsClass
 specifier|private
 specifier|static
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|mrjFileUtilsClass
 decl_stmt|;
 comment|/** The com.apple.mrj.MRJOSType class */
@@ -121,6 +124,9 @@ DECL|field|mrjOSTypeClass
 specifier|private
 specifier|static
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|mrjOSTypeClass
 decl_stmt|;
 comment|/** The com.apple.MacOS.AEDesc class */
@@ -128,6 +134,9 @@ DECL|field|aeDescClass
 specifier|private
 specifier|static
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|aeDescClass
 decl_stmt|;
 comment|/** The<init>(int) method of com.apple.MacOS.AETarget */
@@ -135,6 +144,9 @@ DECL|field|aeTargetConstructor
 specifier|private
 specifier|static
 name|Constructor
+argument_list|<
+name|?
+argument_list|>
 name|aeTargetConstructor
 decl_stmt|;
 comment|/** The<init>(int, int, int) method of com.apple.MacOS.AppleEvent */
@@ -142,6 +154,9 @@ DECL|field|appleEventConstructor
 specifier|private
 specifier|static
 name|Constructor
+argument_list|<
+name|?
+argument_list|>
 name|appleEventConstructor
 decl_stmt|;
 comment|/** The<init>(String) method of com.apple.MacOS.AEDesc */
@@ -149,6 +164,9 @@ DECL|field|aeDescConstructor
 specifier|private
 specifier|static
 name|Constructor
+argument_list|<
+name|?
+argument_list|>
 name|aeDescConstructor
 decl_stmt|;
 comment|/** The findFolder method of com.apple.mrj.MRJFileUtils */
@@ -229,6 +247,11 @@ name|Integer
 name|kAnyTransactionID
 decl_stmt|;
 comment|/** The linkage object required for JDirect 3 on Mac OS X. */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 DECL|field|linkage
 specifier|private
 specifier|static
@@ -236,6 +259,11 @@ name|Object
 name|linkage
 decl_stmt|;
 comment|/** The framework to reference on Mac OS X */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unused"
+argument_list|)
 DECL|field|JDirect_MacOSX
 specifier|private
 specifier|static
@@ -674,6 +702,9 @@ case|:
 try|try
 block|{
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|aeTargetClass
 init|=
 name|Class
@@ -684,6 +715,9 @@ literal|"com.apple.MacOS.AETarget"
 argument_list|)
 decl_stmt|;
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|osUtilsClass
 init|=
 name|Class
@@ -694,6 +728,9 @@ literal|"com.apple.MacOS.OSUtils"
 argument_list|)
 decl_stmt|;
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|appleEventClass
 init|=
 name|Class
@@ -704,6 +741,9 @@ literal|"com.apple.MacOS.AppleEvent"
 argument_list|)
 decl_stmt|;
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|aeClass
 init|=
 name|Class
@@ -1159,6 +1199,9 @@ case|:
 try|try
 block|{
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|linker
 init|=
 name|Class
@@ -1169,6 +1212,9 @@ literal|"com.apple.mrj.jdirect.Linker"
 argument_list|)
 decl_stmt|;
 name|Constructor
+argument_list|<
+name|?
+argument_list|>
 name|constructor
 init|=
 name|linker
@@ -1785,10 +1831,7 @@ name|IllegalArgumentException
 name|iare
 parameter_list|)
 block|{
-name|browser
-operator|=
-name|browser
-expr_stmt|;
+comment|// browser = browser;
 name|errorMessage
 operator|=
 name|iare

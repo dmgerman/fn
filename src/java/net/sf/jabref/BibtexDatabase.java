@@ -1102,26 +1102,41 @@ name|keySet
 argument_list|()
 return|;
 block|}
+comment|/**      * Returns a Collection of all BibtexString objects in the database.      * These are in no particular order.      */
+DECL|method|getStringValues ()
+specifier|public
+name|Collection
+argument_list|<
+name|BibtexString
+argument_list|>
+name|getStringValues
+parameter_list|()
+block|{
+return|return
+name|_strings
+operator|.
+name|values
+argument_list|()
+return|;
+block|}
 comment|/**      * Returns the string at the given index.      */
-DECL|method|getString (Object o)
+DECL|method|getString (String o)
 specifier|public
 specifier|synchronized
 name|BibtexString
 name|getString
 parameter_list|(
-name|Object
+name|String
 name|o
 parameter_list|)
 block|{
 return|return
-operator|(
 name|_strings
 operator|.
 name|get
 argument_list|(
 name|o
 argument_list|)
-operator|)
 return|;
 block|}
 comment|/**      * Returns the number of strings.      */

@@ -29,43 +29,25 @@ class|class
 name|ExportComparator
 implements|implements
 name|Comparator
+argument_list|<
+name|String
+index|[]
+argument_list|>
 block|{
-DECL|method|ExportComparator ()
-specifier|public
-name|ExportComparator
-parameter_list|()
-block|{}
-comment|// super(); }
-DECL|method|compare (Object o1, Object o2)
+DECL|method|compare (String[] s1, String[] s2)
 specifier|public
 name|int
 name|compare
 parameter_list|(
-name|Object
-name|o1
-parameter_list|,
-name|Object
-name|o2
-parameter_list|)
-block|{
 name|String
 index|[]
 name|s1
-init|=
-operator|(
+parameter_list|,
 name|String
 index|[]
-operator|)
-name|o1
-decl_stmt|,
 name|s2
-init|=
-operator|(
-name|String
-index|[]
-operator|)
-name|o2
-decl_stmt|;
+parameter_list|)
+block|{
 return|return
 name|s1
 index|[

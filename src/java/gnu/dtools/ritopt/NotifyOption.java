@@ -48,6 +48,9 @@ operator|.
 name|util
 operator|.
 name|List
+argument_list|<
+name|OptionListener
+argument_list|>
 name|listeners
 decl_stmt|;
 comment|/**      * Construct a NotifyOption with an empty list of listeners. Set the      * initial value to null.      */
@@ -166,6 +169,9 @@ operator|.
 name|util
 operator|.
 name|ArrayList
+argument_list|<
+name|OptionListener
+argument_list|>
 argument_list|(
 name|op
 operator|.
@@ -270,6 +276,9 @@ operator|.
 name|util
 operator|.
 name|ArrayList
+argument_list|<
+name|OptionListener
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
@@ -307,6 +316,9 @@ operator|.
 name|util
 operator|.
 name|Iterator
+argument_list|<
+name|OptionListener
+argument_list|>
 name|iterator
 init|=
 name|listeners
@@ -338,9 +350,6 @@ block|{
 name|OptionListener
 name|listener
 init|=
-operator|(
-name|OptionListener
-operator|)
 name|iterator
 operator|.
 name|next

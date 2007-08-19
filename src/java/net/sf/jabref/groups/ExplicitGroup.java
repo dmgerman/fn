@@ -91,6 +91,9 @@ DECL|field|m_entries
 specifier|private
 specifier|final
 name|Set
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|m_entries
 decl_stmt|;
 DECL|method|ExplicitGroup (String name, int context)
@@ -115,6 +118,9 @@ name|m_entries
 operator|=
 operator|new
 name|HashSet
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
@@ -410,10 +416,16 @@ literal|null
 return|;
 comment|// nothing to do
 name|HashSet
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|entriesBeforeEdit
 init|=
 operator|new
 name|HashSet
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|(
 name|m_entries
 argument_list|)
@@ -495,10 +507,16 @@ literal|null
 return|;
 comment|// nothing to do
 name|HashSet
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|entriesBeforeEdit
 init|=
 operator|new
 name|HashSet
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|(
 name|m_entries
 argument_list|)
@@ -575,12 +593,17 @@ name|entry
 argument_list|)
 return|;
 block|}
-DECL|method|contains (Map searchOptions, BibtexEntry entry)
+DECL|method|contains (Map<String, String> searchOptions, BibtexEntry entry)
 specifier|public
 name|boolean
 name|contains
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|searchOptions
 parameter_list|,
 name|BibtexEntry
@@ -594,12 +617,17 @@ name|entry
 argument_list|)
 return|;
 block|}
-DECL|method|applyRule (Map searchStrings, BibtexEntry bibtexEntry)
+DECL|method|applyRule (Map<String, String> searchStrings, BibtexEntry bibtexEntry)
 specifier|public
 name|int
 name|applyRule
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|searchStrings
 parameter_list|,
 name|BibtexEntry
@@ -698,10 +726,16 @@ literal|false
 return|;
 comment|// add/remove
 name|HashSet
+argument_list|<
+name|String
+argument_list|>
 name|keys
 init|=
 operator|new
 name|HashSet
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|BibtexEntry
@@ -714,6 +748,9 @@ comment|// compare bibtex keys for all entries that have one
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|it
 init|=
 name|m_entries
@@ -730,9 +767,6 @@ control|)
 block|{
 name|entry
 operator|=
-operator|(
-name|BibtexEntry
-operator|)
 name|it
 operator|.
 name|next
@@ -762,6 +796,9 @@ block|}
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|it
 init|=
 name|other
@@ -780,9 +817,6 @@ control|)
 block|{
 name|entry
 operator|=
-operator|(
-name|BibtexEntry
-operator|)
 name|it
 operator|.
 name|next
@@ -900,15 +934,24 @@ name|s
 decl_stmt|;
 comment|// write entries in well-defined order for CVS compatibility
 name|Set
+argument_list|<
+name|String
+argument_list|>
 name|sortedKeys
 init|=
 operator|new
 name|TreeSet
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|it
 init|=
 name|m_entries
@@ -925,15 +968,10 @@ control|)
 block|{
 name|s
 operator|=
-operator|(
-operator|(
-name|BibtexEntry
-operator|)
 name|it
 operator|.
 name|next
 argument_list|()
-operator|)
 operator|.
 name|getCiteKey
 argument_list|()
@@ -964,6 +1002,9 @@ block|}
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|it
 init|=
 name|sortedKeys
@@ -986,9 +1027,6 @@ name|Util
 operator|.
 name|quote
 argument_list|(
-operator|(
-name|String
-operator|)
 name|it
 operator|.
 name|next
@@ -1159,15 +1197,24 @@ name|db
 parameter_list|)
 block|{
 name|Set
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|newSet
 init|=
 operator|new
 name|HashSet
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|i
 init|=
 name|m_entries
@@ -1185,9 +1232,6 @@ block|{
 name|BibtexEntry
 name|entry
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|i
 operator|.
 name|next

@@ -14,6 +14,18 @@ end_package
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
+begin_import
+import|import
 name|ca
 operator|.
 name|odell
@@ -27,7 +39,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Matcher that accepts all entries. Used for filtering when so search is active.  */
+comment|/**  * Matcher that accepts all entries. Used for filtering when so search is  * active.  */
 end_comment
 
 begin_class
@@ -37,29 +49,30 @@ class|class
 name|NoSearchMatcher
 implements|implements
 name|Matcher
+argument_list|<
+name|BibtexEntry
+argument_list|>
 block|{
 DECL|field|INSTANCE
 specifier|public
 specifier|static
 specifier|final
 name|Matcher
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|INSTANCE
 init|=
 operator|new
 name|NoSearchMatcher
 argument_list|()
 decl_stmt|;
-DECL|method|NoSearchMatcher ()
-specifier|private
-name|NoSearchMatcher
-parameter_list|()
-block|{              }
-DECL|method|matches (Object object)
+DECL|method|matches (BibtexEntry object)
 specifier|public
 name|boolean
 name|matches
 parameter_list|(
-name|Object
+name|BibtexEntry
 name|object
 parameter_list|)
 block|{

@@ -261,13 +261,6 @@ argument_list|(
 literal|40
 argument_list|)
 expr_stmt|;
-name|JPanel
-name|general
-init|=
-operator|new
-name|JPanel
-argument_list|()
-decl_stmt|;
 name|Insets
 name|marg
 init|=

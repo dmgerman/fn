@@ -363,13 +363,18 @@ name|entries
 parameter_list|)
 function_decl|;
 comment|/** 	 * @param searchOptions 	 *            The search options to apply. 	 * @return true if this group contains the specified entry, false otherwise. 	 */
-DECL|method|contains (Map searchOptions, BibtexEntry entry)
+DECL|method|contains (Map<String, String> searchOptions, BibtexEntry entry)
 specifier|public
 specifier|abstract
 name|boolean
 name|contains
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|searchOptions
 parameter_list|,
 name|BibtexEntry

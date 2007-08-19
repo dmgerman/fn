@@ -34,31 +34,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|plugin
+name|util
 operator|.
-name|core
-operator|.
-name|JabRefPlugin
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|plugin
-operator|.
-name|core
-operator|.
-name|generated
-operator|.
-name|_JabRefPlugin
-operator|.
-name|ImportFormatExtension
+name|Pair
 import|;
 end_import
 
@@ -68,37 +46,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|SortedSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|TreeSet
+name|*
 import|;
 end_import
 
@@ -125,6 +73,42 @@ operator|.
 name|plugin
 operator|.
 name|PluginCore
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|plugin
+operator|.
+name|core
+operator|.
+name|JabRefPlugin
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|plugin
+operator|.
+name|core
+operator|.
+name|generated
+operator|.
+name|_JabRefPlugin
+operator|.
+name|ImportFormatExtension
 import|;
 end_import
 
@@ -731,13 +715,13 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|createDatabase (List<BibtexEntry> bibentries)
+DECL|method|createDatabase (Collection<BibtexEntry> bibentries)
 specifier|public
 specifier|static
 name|BibtexDatabase
 name|createDatabase
 parameter_list|(
-name|List
+name|Collection
 argument_list|<
 name|BibtexEntry
 argument_list|>
@@ -810,7 +794,6 @@ name|KeyCollisionException
 name|ex
 parameter_list|)
 block|{
-comment|//ignore
 name|System
 operator|.
 name|err
@@ -1939,13 +1922,13 @@ name|database
 return|;
 block|}
 comment|/**    * Receives an ArrayList of BibtexEntry instances, iterates through them, and    * removes all entries that have no fields set. This is useful for rooting out    * an unsucessful import (wrong format) that returns a number of empty entries.    */
-DECL|method|purgeEmptyEntries (List<BibtexEntry> entries)
+DECL|method|purgeEmptyEntries (Collection<BibtexEntry> entries)
 specifier|public
 specifier|static
 name|void
 name|purgeEmptyEntries
 parameter_list|(
-name|List
+name|Collection
 argument_list|<
 name|BibtexEntry
 argument_list|>
@@ -1980,22 +1963,16 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-comment|// Get all fields of the entry:
-name|Object
-index|[]
-name|o
-init|=
+comment|// If there are no fields, remove the entry:
+if|if
+condition|(
 name|entry
 operator|.
 name|getAllFields
 argument_list|()
-decl_stmt|;
-comment|// If there are no fields, remove the entry:
-if|if
-condition|(
-name|o
 operator|.
-name|length
+name|size
+argument_list|()
 operator|==
 literal|0
 condition|)
@@ -2006,34 +1983,39 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Tries to import a file by iterating through the available import filters,    * and keeping the import that seems most promising. Returns an Object array    * with two elements, 0: the name of the format used, 1: a List of entries.    */
+comment|/** 	 * Tries to import a file by iterating through the available import filters, 	 * and keeping the import that seems most promising. 	 *  	 * If all fails this method attempts to read this file as bibtex. 	 *  	 * @throws IOException  	 */
 DECL|method|importUnknownFormat (String filename)
 specifier|public
-name|Object
-index|[]
+name|Pair
+argument_list|<
+name|String
+argument_list|,
+name|ParserResult
+argument_list|>
 name|importUnknownFormat
 parameter_list|(
 name|String
 name|filename
 parameter_list|)
+throws|throws
+name|IOException
 block|{
-name|Object
-name|entryList
-init|=
-literal|null
-decl_stmt|;
+name|Pair
+argument_list|<
 name|String
-name|usedFormat
+argument_list|,
+name|ParserResult
+argument_list|>
+name|result
 init|=
 literal|null
 decl_stmt|;
+comment|// Cycle through all importers:
 name|int
 name|bestResult
 init|=
 literal|0
 decl_stmt|;
-comment|/**String lastImport = Globals.prefs.get("lastAutodetectedImport");       for (Iterator i = getImportFormats().iterator(); i.hasNext();) { 			ImportFormat imFo = (ImportFormat) i.next();       **/
-comment|// Cycle through all importers:
 for|for
 control|(
 name|ImportFormat
@@ -2043,9 +2025,6 @@ name|getImportFormats
 argument_list|()
 control|)
 block|{
-try|try
-block|{
-comment|// System.out.println("Trying format: "+imFo.getFormatName());
 name|List
 argument_list|<
 name|BibtexEntry
@@ -2088,8 +2067,6 @@ else|:
 literal|0
 operator|)
 decl_stmt|;
-comment|// System.out.println("Entries: "+entryCount);
-comment|// BibtexDatabase base = importFile(formats[i], filename);
 if|if
 condition|(
 name|entryCount
@@ -2101,48 +2078,40 @@ name|bestResult
 operator|=
 name|entryCount
 expr_stmt|;
-name|usedFormat
+name|result
 operator|=
+operator|new
+name|Pair
+argument_list|<
+name|String
+argument_list|,
+name|ParserResult
+argument_list|>
+argument_list|(
 name|imFo
 operator|.
 name|getFormatName
 argument_list|()
-expr_stmt|;
-name|entryList
-operator|=
-name|entries
-expr_stmt|;
-comment|// System.out.println("Looks good: "+imFo.getFormatName());
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{ 			}
-block|}
-name|System
-operator|.
-name|out
-operator|.
-name|println
+argument_list|,
+operator|new
+name|ParserResult
 argument_list|(
-literal|"Used format: "
-operator|+
-name|usedFormat
+name|entries
+argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Finally, if all else fails, see if it is a BibTeX file:
+block|}
+block|}
 if|if
 condition|(
-name|entryList
-operator|==
+name|result
+operator|!=
 literal|null
 condition|)
-block|{
-try|try
-block|{
+return|return
+name|result
+return|;
+comment|// Finally, if all else fails, see if it is a BibTeX file:
 name|ParserResult
 name|pr
 init|=
@@ -2193,10 +2162,6 @@ literal|0
 operator|)
 condition|)
 block|{
-name|entryList
-operator|=
-name|pr
-expr_stmt|;
 name|pr
 operator|.
 name|setFile
@@ -2208,30 +2173,23 @@ name|filename
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|usedFormat
-operator|=
-name|BIBTEX_FORMAT
-expr_stmt|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|ex
-parameter_list|)
-block|{
-comment|//ex.printStackTrace();
-block|}
-block|}
 return|return
 operator|new
-name|Object
-index|[]
-block|{
-name|usedFormat
-block|,
-name|entryList
+name|Pair
+argument_list|<
+name|String
+argument_list|,
+name|ParserResult
+argument_list|>
+argument_list|(
+name|BIBTEX_FORMAT
+argument_list|,
+name|pr
+argument_list|)
+return|;
 block|}
+return|return
+literal|null
 return|;
 block|}
 block|}

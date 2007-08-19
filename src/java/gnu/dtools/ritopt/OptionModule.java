@@ -30,7 +30,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Collection
+name|HashMap
 import|;
 end_import
 
@@ -59,11 +59,12 @@ block|{
 comment|/**      * A repository of options registered with this module.      */
 DECL|field|options
 specifier|private
-name|java
-operator|.
-name|util
-operator|.
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Option
+argument_list|>
 name|options
 decl_stmt|;
 comment|/**      * The name of this module.      */
@@ -152,11 +153,12 @@ block|{
 name|options
 operator|=
 operator|new
-name|java
-operator|.
-name|util
-operator|.
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Option
+argument_list|>
 argument_list|()
 expr_stmt|;
 name|this
@@ -387,7 +389,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns whether the option referred by a short option exists in this      * module.      *      * @param shortOption   The option to check for existance.      *      * @return A boolean value indicating whether the option passed exists.      */
-DECL|method|optionExists ( char shortOption )
+DECL|method|optionExists (char shortOption)
 specifier|public
 name|boolean
 name|optionExists
@@ -396,41 +398,17 @@ name|char
 name|shortOption
 parameter_list|)
 block|{
-name|Collection
-name|col
-init|=
+for|for
+control|(
+name|Option
+name|next
+range|:
 name|options
 operator|.
 name|values
 argument_list|()
-decl_stmt|;
-name|Iterator
-name|it
-init|=
-name|col
-operator|.
-name|iterator
-argument_list|()
-decl_stmt|;
-while|while
-condition|(
-name|it
-operator|.
-name|hasNext
-argument_list|()
-condition|)
+control|)
 block|{
-name|Option
-name|next
-init|=
-operator|(
-name|Option
-operator|)
-name|it
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|char
 name|c
 init|=
@@ -458,7 +436,7 @@ literal|false
 return|;
 block|}
 comment|/**      * Returns whether the option referred by a long option exists in this      * module.      *      * @param longOption   The option to check for existance.      *      * @return A boolean value indicating whether the option passed exists.      */
-DECL|method|optionExists ( String longOption )
+DECL|method|optionExists (String longOption)
 specifier|public
 name|boolean
 name|optionExists
@@ -467,41 +445,17 @@ name|String
 name|longOption
 parameter_list|)
 block|{
-name|Collection
-name|col
-init|=
+for|for
+control|(
+name|Option
+name|next
+range|:
 name|options
 operator|.
 name|values
 argument_list|()
-decl_stmt|;
-name|Iterator
-name|it
-init|=
-name|col
-operator|.
-name|iterator
-argument_list|()
-decl_stmt|;
-while|while
-condition|(
-name|it
-operator|.
-name|hasNext
-argument_list|()
-condition|)
+control|)
 block|{
-name|Option
-name|next
-init|=
-operator|(
-name|Option
-operator|)
-name|it
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|String
 name|s
 init|=
@@ -531,10 +485,13 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * Return an iterator over the option repository contained in this module.      *      * @return An iterator over the repository.      */
+comment|/** 	 * Return an iterator over the option repository contained in this module. 	 *  	 * @return An iterator over the repository. 	 */
 DECL|method|getOptionIterator ()
 specifier|public
 name|Iterator
+argument_list|<
+name|Option
+argument_list|>
 name|getOptionIterator
 parameter_list|()
 block|{
@@ -548,8 +505,8 @@ name|iterator
 argument_list|()
 return|;
 block|}
-comment|/**      * Returns the option referred by the long option passed.      *      * @param shortOption The option to retrieve.      *      * @return An option referred to by this module. null is returned      *         if it does not exist.      */
-DECL|method|getOption ( char shortOption )
+comment|/** 	 * Returns the option referred by the long option passed. 	 *  	 * @param shortOption 	 *            The option to retrieve. 	 *  	 * @return An option referred to by this module. null is returned if it does 	 *         not exist. 	 */
+DECL|method|getOption (char shortOption)
 specifier|public
 name|Option
 name|getOption
@@ -563,41 +520,17 @@ name|retval
 init|=
 literal|null
 decl_stmt|;
-name|Collection
-name|col
-init|=
+for|for
+control|(
+name|Option
+name|next
+range|:
 name|options
 operator|.
 name|values
 argument_list|()
-decl_stmt|;
-name|Iterator
-name|it
-init|=
-name|col
-operator|.
-name|iterator
-argument_list|()
-decl_stmt|;
-while|while
-condition|(
-name|it
-operator|.
-name|hasNext
-argument_list|()
-condition|)
+control|)
 block|{
-name|Option
-name|next
-init|=
-operator|(
-name|Option
-operator|)
-name|it
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|char
 name|c
 init|=
@@ -626,7 +559,7 @@ name|retval
 return|;
 block|}
 comment|/**      * Returns the option referred by the long option passed.      *      * @param longOption The option to retrieve.      *      * @return An option referred to by this module. null is returned      *         if it does not exist.      */
-DECL|method|getOption ( String longOption )
+DECL|method|getOption (String longOption)
 specifier|public
 name|Option
 name|getOption
@@ -640,41 +573,17 @@ name|retval
 init|=
 literal|null
 decl_stmt|;
-name|Collection
-name|col
-init|=
+for|for
+control|(
+name|Option
+name|next
+range|:
 name|options
 operator|.
 name|values
 argument_list|()
-decl_stmt|;
-name|Iterator
-name|it
-init|=
-name|col
-operator|.
-name|iterator
-argument_list|()
-decl_stmt|;
-while|while
-condition|(
-name|it
-operator|.
-name|hasNext
-argument_list|()
-condition|)
+control|)
 block|{
-name|Option
-name|next
-init|=
-operator|(
-name|Option
-operator|)
-name|it
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|String
 name|s
 init|=
@@ -717,41 +626,17 @@ name|retval
 init|=
 literal|""
 decl_stmt|;
-name|Collection
-name|col
-init|=
+for|for
+control|(
+name|Option
+name|next
+range|:
 name|options
 operator|.
 name|values
 argument_list|()
-decl_stmt|;
-name|Iterator
-name|it
-init|=
-name|col
-operator|.
-name|iterator
-argument_list|()
-decl_stmt|;
-while|while
-condition|(
-name|it
-operator|.
-name|hasNext
-argument_list|()
-condition|)
+control|)
 block|{
-name|Option
-name|next
-init|=
-operator|(
-name|Option
-operator|)
-name|it
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|retval
 operator|+=
 name|next
@@ -766,8 +651,8 @@ return|return
 name|retval
 return|;
 block|}
-comment|/**      * Writes the help information to a print stream.      *      * @param ps  The print stream to write to.      */
-DECL|method|writeFileToPrintStream ( PrintStream ps )
+comment|/** 	 * Writes the help information to a print stream. 	 *  	 * @param ps 	 *            The print stream to write to. 	 */
+DECL|method|writeFileToPrintStream (PrintStream ps)
 specifier|public
 name|void
 name|writeFileToPrintStream
@@ -776,22 +661,6 @@ name|PrintStream
 name|ps
 parameter_list|)
 block|{
-name|Collection
-name|col
-init|=
-name|options
-operator|.
-name|values
-argument_list|()
-decl_stmt|;
-name|Iterator
-name|it
-init|=
-name|col
-operator|.
-name|iterator
-argument_list|()
-decl_stmt|;
 name|ps
 operator|.
 name|println
@@ -803,25 +672,17 @@ operator|+
 literal|":"
 argument_list|)
 expr_stmt|;
-while|while
-condition|(
-name|it
+for|for
+control|(
+name|Option
+name|next
+range|:
+name|options
 operator|.
-name|hasNext
+name|values
 argument_list|()
-condition|)
+control|)
 block|{
-name|Option
-name|next
-init|=
-operator|(
-name|Option
-operator|)
-name|it
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|ps
 operator|.
 name|println
@@ -834,7 +695,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Returns whether this module is deprecated.      *      * @return A boolean value indicating whether this module is deprecated.      */
+comment|/** 	 * Returns whether this module is deprecated. 	 *  	 * @return A boolean value indicating whether this module is deprecated. 	 */
 DECL|method|isDeprecated ()
 specifier|public
 name|boolean

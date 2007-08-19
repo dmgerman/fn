@@ -139,7 +139,7 @@ expr_stmt|;
 name|int
 name|m
 init|=
-name|cc
+name|CaseChanger
 operator|.
 name|getNumModes
 argument_list|()
@@ -179,7 +179,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-name|cc
+name|CaseChanger
 operator|.
 name|getModeName
 argument_list|(
@@ -238,7 +238,7 @@ literal|0
 init|,
 name|m
 init|=
-name|cc
+name|CaseChanger
 operator|.
 name|getNumModes
 argument_list|()
@@ -283,7 +283,7 @@ name|parent
 operator|.
 name|setText
 argument_list|(
-name|cc
+name|CaseChanger
 operator|.
 name|changeCase
 argument_list|(

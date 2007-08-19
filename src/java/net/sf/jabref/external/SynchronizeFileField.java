@@ -784,7 +784,7 @@ operator|++
 argument_list|)
 expr_stmt|;
 specifier|final
-name|Object
+name|String
 name|old
 init|=
 name|sel
@@ -826,9 +826,6 @@ name|tableModel
 operator|.
 name|setContent
 argument_list|(
-operator|(
-name|String
-operator|)
 name|old
 argument_list|)
 expr_stmt|;

@@ -145,10 +145,16 @@ decl_stmt|;
 DECL|field|buttons
 specifier|private
 name|ArrayList
+argument_list|<
+name|ColorButton
+argument_list|>
 name|buttons
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|ColorButton
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|method|ColorSetupPanel ()
@@ -305,6 +311,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|ColorButton
+argument_list|>
 name|i
 init|=
 name|buttons
@@ -322,9 +331,6 @@ block|{
 name|ColorButton
 name|but
 init|=
-operator|(
-name|ColorButton
-operator|)
 name|i
 operator|.
 name|next
@@ -401,6 +407,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|ColorButton
+argument_list|>
 name|i
 init|=
 name|buttons
@@ -418,9 +427,6 @@ block|{
 name|ColorButton
 name|but
 init|=
-operator|(
-name|ColorButton
-operator|)
 name|i
 operator|.
 name|next
@@ -454,6 +460,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|ColorButton
+argument_list|>
 name|i
 init|=
 name|buttons
@@ -471,9 +480,6 @@ block|{
 name|ColorButton
 name|but
 init|=
-operator|(
-name|ColorButton
-operator|)
 name|i
 operator|.
 name|next

@@ -824,10 +824,16 @@ name|entry
 parameter_list|)
 block|{
 name|Vector
+argument_list|<
+name|AbstractGroup
+argument_list|>
 name|matchingGroups
 init|=
 operator|new
 name|Vector
+argument_list|<
+name|AbstractGroup
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|Enumeration
@@ -896,10 +902,6 @@ argument_list|()
 index|]
 decl_stmt|;
 return|return
-operator|(
-name|AbstractGroup
-index|[]
-operator|)
 name|matchingGroups
 operator|.
 name|toArray

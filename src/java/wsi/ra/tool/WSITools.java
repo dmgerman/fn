@@ -140,13 +140,16 @@ parameter_list|()
 block|{     }
 comment|//~ Methods ////////////////////////////////////////////////////////////////
 comment|/**      * @param  vcr  {@link java.util.Vector} of<tt>String</tt>      * @param  buf  Description of the Parameter      * @return      Description of the Return Value      */
-DECL|method|tokenize (Vector vcr, String buf)
+DECL|method|tokenize (Vector<String> vcr, String buf)
 specifier|public
 specifier|static
 name|boolean
 name|tokenize
 parameter_list|(
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|vcr
 parameter_list|,
 name|String
@@ -165,13 +168,16 @@ argument_list|)
 return|;
 block|}
 comment|/**      * @param  vcr       {@link java.util.Vector} of<tt>String</tt>      * @param  buf       Description of the Parameter      * @param  delimstr  Description of the Parameter      * @return           Description of the Return Value      */
-DECL|method|tokenize (Vector vcr, String buf, String delimstr)
+DECL|method|tokenize (Vector<String> vcr, String buf, String delimstr)
 specifier|public
 specifier|static
 name|boolean
 name|tokenize
 parameter_list|(
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|vcr
 parameter_list|,
 name|String
@@ -227,13 +233,16 @@ literal|true
 return|;
 block|}
 comment|/**      * @param  vcr       {@link java.util.Vector} of<tt>String</tt>      * @param  s         Description of the Parameter      * @param  delimstr  Description of the Parameter      * @param  limit     Description of the Parameter      * @return           Description of the Return Value      */
-DECL|method|tokenize (Vector vcr, String s, String delimstr, int limit)
+DECL|method|tokenize (Vector<String> vcr, String s, String delimstr, int limit)
 specifier|public
 specifier|static
 name|boolean
 name|tokenize
 parameter_list|(
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|vcr
 parameter_list|,
 name|String

@@ -194,10 +194,20 @@ name|frame
 decl_stmt|;
 DECL|field|sliders
 name|HashMap
+argument_list|<
+name|JSlider
+argument_list|,
+name|SliderInfo
+argument_list|>
 name|sliders
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|JSlider
+argument_list|,
+name|SliderInfo
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|ok
@@ -360,10 +370,16 @@ argument_list|)
 expr_stmt|;
 comment|// We use this list to build an alphabetical list of field names:
 name|TreeSet
+argument_list|<
+name|String
+argument_list|>
 name|fields
 init|=
 operator|new
 name|TreeSet
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// We use this map to remember which slider represents which field name:
@@ -420,6 +436,9 @@ comment|// --------------
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|i
 init|=
 name|fields
@@ -437,9 +456,6 @@ block|{
 name|String
 name|field
 init|=
-operator|(
-name|String
-operator|)
 name|i
 operator|.
 name|next
@@ -625,6 +641,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|JSlider
+argument_list|>
 name|i
 init|=
 name|sliders
@@ -645,9 +664,6 @@ block|{
 name|JSlider
 name|slider
 init|=
-operator|(
-name|JSlider
-operator|)
 name|i
 operator|.
 name|next
@@ -656,9 +672,6 @@ decl_stmt|;
 name|SliderInfo
 name|sInfo
 init|=
-operator|(
-name|SliderInfo
-operator|)
 name|sliders
 operator|.
 name|get

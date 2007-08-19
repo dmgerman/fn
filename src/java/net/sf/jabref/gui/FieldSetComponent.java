@@ -203,15 +203,20 @@ extends|extends
 name|JPanel
 implements|implements
 name|ActionListener
-comment|/*, ItemListener*/
 block|{
 DECL|field|additionListeners
 specifier|protected
 name|Set
+argument_list|<
+name|ActionListener
+argument_list|>
 name|additionListeners
 init|=
 operator|new
 name|HashSet
+argument_list|<
+name|ActionListener
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|list
@@ -297,14 +302,20 @@ decl_stmt|;
 DECL|field|modelListeners
 specifier|protected
 name|Set
+argument_list|<
+name|ListDataListener
+argument_list|>
 name|modelListeners
 init|=
 operator|new
 name|HashSet
+argument_list|<
+name|ListDataListener
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|/**       * Creates a new instance of FieldSetComponent, with preset selection      * values. These are put into a JComboBox.      */
-DECL|method|FieldSetComponent (String title, List fields, List preset, boolean arrows, boolean forceLowerCase)
+DECL|method|FieldSetComponent (String title, List<String> fields, List<String> preset, boolean arrows, boolean forceLowerCase)
 specifier|public
 name|FieldSetComponent
 parameter_list|(
@@ -312,9 +323,15 @@ name|String
 name|title
 parameter_list|,
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|fields
 parameter_list|,
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|preset
 parameter_list|,
 name|boolean
@@ -343,7 +360,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Creates a new instance of FieldSetComponent without preset selection      * values. Replaces the JComboBox with a JTextField.      */
-DECL|method|FieldSetComponent (String title, List fields, boolean arrows, boolean forceLowerCase)
+DECL|method|FieldSetComponent (String title, List<String> fields, boolean arrows, boolean forceLowerCase)
 specifier|public
 name|FieldSetComponent
 parameter_list|(
@@ -351,6 +368,9 @@ name|String
 name|title
 parameter_list|,
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|fields
 parameter_list|,
 name|boolean
@@ -378,7 +398,7 @@ name|forceLowerCase
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|FieldSetComponent (String title, List fields, List preset, String addText, String removeText, boolean arrows, boolean forceLowerCase)
+DECL|method|FieldSetComponent (String title, List<String> fields, List<String> preset, String addText, String removeText, boolean arrows, boolean forceLowerCase)
 specifier|public
 name|FieldSetComponent
 parameter_list|(
@@ -386,9 +406,15 @@ name|String
 name|title
 parameter_list|,
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|fields
 parameter_list|,
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|preset
 parameter_list|,
 name|String
@@ -460,28 +486,16 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|Iterator
-name|i
-init|=
+name|String
+name|field
+range|:
 name|fields
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 name|listModel
 operator|.
 name|addElement
 argument_list|(
-name|i
-operator|.
-name|next
-argument_list|()
+name|field
 argument_list|)
 expr_stmt|;
 name|list
@@ -1110,12 +1124,15 @@ name|en
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setFields (List fields)
+DECL|method|setFields (List<String> fields)
 specifier|public
 name|void
 name|setFields
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|fields
 parameter_list|)
 block|{
@@ -1128,28 +1145,16 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|Iterator
-name|i
-init|=
+name|String
+name|field
+range|:
 name|fields
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 name|newListModel
 operator|.
 name|addElement
 argument_list|(
-name|i
-operator|.
-name|next
-argument_list|()
+name|field
 argument_list|)
 expr_stmt|;
 name|this
@@ -1161,6 +1166,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|ListDataListener
+argument_list|>
 name|i
 init|=
 name|modelListeners
@@ -1178,9 +1186,6 @@ name|newListModel
 operator|.
 name|addListDataListener
 argument_list|(
-operator|(
-name|ListDataListener
-operator|)
 name|i
 operator|.
 name|next
@@ -1195,7 +1200,6 @@ name|newListModel
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*public void itemStateChanged(ItemEvent e) {         if (e.getStateChange() == e.DESELECTED)             return;         //sel.is         if (sel.isPopupVisible())             return;         String s = sel.getSelectedItem().toString();         addField(s);         sel.getEditor().selectAll();     }*/
 comment|/**      * This method is called when a new field should be added to the list. Performs validation of the       * field.      */
 DECL|method|addField (String s)
 specifier|protected
@@ -1335,6 +1339,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|ActionListener
+argument_list|>
 name|i
 init|=
 name|additionListeners
@@ -1349,15 +1356,10 @@ argument_list|()
 condition|;
 control|)
 block|{
-operator|(
-operator|(
-name|ActionListener
-operator|)
 name|i
 operator|.
 name|next
 argument_list|()
-operator|)
 operator|.
 name|actionPerformed
 argument_list|(
@@ -1458,9 +1460,17 @@ name|changesMade
 return|;
 block|}
 comment|/**      * Return the current list.      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|getFields ()
 specifier|public
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|getFields
 parameter_list|()
 block|{
@@ -1474,6 +1484,15 @@ name|toArray
 argument_list|()
 decl_stmt|;
 return|return
+call|(
+name|List
+argument_list|<
+name|String
+argument_list|>
+call|)
+argument_list|(
+name|List
+argument_list|)
 name|java
 operator|.
 name|util

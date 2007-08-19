@@ -154,8 +154,6 @@ name|NamedCompound
 name|undoEdit
 parameter_list|)
 block|{
-try|try
-block|{
 name|diskEntry
 operator|.
 name|setId
@@ -194,13 +192,6 @@ name|panel
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|KeyCollisionException
-name|ex
-parameter_list|)
-block|{      }
 block|}
 DECL|method|description ()
 name|JComponent

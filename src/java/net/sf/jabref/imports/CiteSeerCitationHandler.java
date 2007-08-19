@@ -18,7 +18,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Hashtable
+name|Map
 import|;
 end_import
 
@@ -61,11 +61,7 @@ import|;
 end_import
 
 begin_comment
-comment|/*  * Created on Jun 13, 2004  *  * To change the template for this generated file go to  * Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments  */
-end_comment
-
-begin_comment
-comment|/**  * @author mspiegel  *  * To change the template for this generated type comment go to  * Window&gt;Preferences&gt;Java&gt;Code Generation&gt;Code and Comments  */
+comment|/**  * @author mspiegel  *  */
 end_comment
 
 begin_class
@@ -88,15 +84,25 @@ name|getCitation
 decl_stmt|;
 DECL|field|citationList
 specifier|protected
-name|Hashtable
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Boolean
+argument_list|>
 name|citationList
 decl_stmt|;
 comment|/** 	 * @param identifierVector 	 */
-DECL|method|CiteSeerCitationHandler (Hashtable citationHashTable)
+DECL|method|CiteSeerCitationHandler (Map<String, Boolean> citationHashTable)
 specifier|public
 name|CiteSeerCitationHandler
 parameter_list|(
-name|Hashtable
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|Boolean
+argument_list|>
 name|citationHashTable
 parameter_list|)
 block|{

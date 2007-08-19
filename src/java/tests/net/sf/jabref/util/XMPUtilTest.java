@@ -146,43 +146,7 @@ name|jempbox
 operator|.
 name|xmp
 operator|.
-name|XMPMetadata
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jempbox
-operator|.
-name|xmp
-operator|.
-name|XMPSchemaBasic
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jempbox
-operator|.
-name|xmp
-operator|.
-name|XMPSchemaDublinCore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|jempbox
-operator|.
-name|xmp
-operator|.
-name|XMPSchemaMediaManagement
+name|*
 import|;
 end_import
 
@@ -550,6 +514,9 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 name|Collection
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|c
 init|=
 name|result
@@ -571,9 +538,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 return|return
-operator|(
-name|BibtexEntry
-operator|)
 name|c
 operator|.
 name|iterator
@@ -1185,6 +1149,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|l
 init|=
 name|XMPUtil
@@ -1304,6 +1271,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|l
 init|=
 name|XMPUtil
@@ -1445,6 +1415,9 @@ literal|null
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|l
 init|=
 name|XMPUtil
@@ -1480,28 +1453,16 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-name|TreeSet
+name|Set
 argument_list|<
-name|Object
+name|String
 argument_list|>
 name|ts
 init|=
-operator|new
-name|TreeSet
-argument_list|<
-name|Object
-argument_list|>
-argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|x
 operator|.
 name|getAllFields
 argument_list|()
-argument_list|)
-argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
@@ -1613,6 +1574,9 @@ literal|null
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|l
 init|=
 name|XMPUtil
@@ -1648,28 +1612,16 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-name|TreeSet
+name|Set
 argument_list|<
-name|Object
+name|String
 argument_list|>
 name|ts
 init|=
-operator|new
-name|TreeSet
-argument_list|<
-name|Object
-argument_list|>
-argument_list|(
-name|Arrays
-operator|.
-name|asList
-argument_list|(
 name|x
 operator|.
 name|getAllFields
 argument_list|()
-argument_list|)
-argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
@@ -1757,6 +1709,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|l
 init|=
 name|XMPUtil
@@ -1872,6 +1827,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|l
 init|=
 name|XMPUtil
@@ -2206,6 +2164,9 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 name|Collection
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|c
 init|=
 name|result
@@ -2252,6 +2213,9 @@ literal|null
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|l
 init|=
 name|XMPUtil
@@ -2328,6 +2292,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|l
 init|=
 name|XMPUtil
@@ -2433,6 +2400,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|l
 init|=
 name|XMPUtil
@@ -2499,6 +2469,11 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** 	 * Tests whether writing BibTex.xmp will preserve existing XMP-descriptions. 	 *  	 * @throws Exception 	 *             (indicating an failure) 	 */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|testSimpleUpdate ()
 specifier|public
 name|void
@@ -2684,6 +2659,9 @@ literal|null
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|l
 init|=
 name|XMPUtil
@@ -2830,6 +2808,9 @@ name|class
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|XMPSchema
+argument_list|>
 name|schemas
 init|=
 name|meta
@@ -3933,6 +3914,9 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 name|Collection
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|c
 init|=
 name|result
@@ -3979,6 +3963,9 @@ literal|null
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|l
 init|=
 name|XMPUtil
@@ -4060,38 +4047,20 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|Object
-index|[]
-name|o
-init|=
+for|for
+control|(
+name|String
+name|field
+range|:
 name|expected
 operator|.
 name|getAllFields
 argument_list|()
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|o
-operator|.
-name|length
-condition|;
-name|i
-operator|++
 control|)
 block|{
 if|if
 condition|(
-name|o
-index|[
-name|i
-index|]
+name|field
 operator|.
 name|toString
 argument_list|()
@@ -4104,10 +4073,7 @@ argument_list|(
 literal|"author"
 argument_list|)
 operator|||
-name|o
-index|[
-name|i
-index|]
+name|field
 operator|.
 name|toString
 argument_list|()
@@ -4132,10 +4098,7 @@ name|expected
 operator|.
 name|getField
 argument_list|(
-name|o
-index|[
-name|i
-index|]
+name|field
 operator|.
 name|toString
 argument_list|()
@@ -4156,10 +4119,7 @@ name|actual
 operator|.
 name|getField
 argument_list|(
-name|o
-index|[
-name|i
-index|]
+name|field
 operator|.
 name|toString
 argument_list|()
@@ -4187,10 +4147,7 @@ name|expected
 operator|.
 name|getField
 argument_list|(
-name|o
-index|[
-name|i
-index|]
+name|field
 operator|.
 name|toString
 argument_list|()
@@ -4203,10 +4160,7 @@ name|expected
 operator|.
 name|getField
 argument_list|(
-name|o
-index|[
-name|i
-index|]
+name|field
 operator|.
 name|toString
 argument_list|()
@@ -4219,10 +4173,7 @@ name|actual
 operator|.
 name|getField
 argument_list|(
-name|o
-index|[
-name|i
-index|]
+name|field
 operator|.
 name|toString
 argument_list|()
@@ -4241,14 +4192,16 @@ operator|.
 name|getAllFields
 argument_list|()
 operator|.
-name|length
+name|size
+argument_list|()
 argument_list|,
 name|actual
 operator|.
 name|getAllFields
 argument_list|()
 operator|.
-name|length
+name|size
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -4461,6 +4414,9 @@ name|xmp
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|l
 init|=
 name|XMPUtil
@@ -4644,6 +4600,9 @@ argument_list|)
 expr_stmt|;
 comment|// Read from file
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|l
 init|=
 name|XMPUtil
@@ -4808,9 +4767,6 @@ expr_stmt|;
 name|BibtexEntry
 name|a
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|l
 operator|.
 name|get
@@ -4821,9 +4777,6 @@ decl_stmt|;
 name|BibtexEntry
 name|b
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|l
 operator|.
 name|get
@@ -4875,6 +4828,11 @@ name|b
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|testReadWriteDC ()
 specifier|public
 name|void
@@ -5103,6 +5061,9 @@ argument_list|)
 expr_stmt|;
 comment|// Check Dublin Core
 name|List
+argument_list|<
+name|XMPSchema
+argument_list|>
 name|schemas
 init|=
 name|meta
@@ -5355,6 +5316,11 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|testWriteSingleUpdatesDCAndInfo ()
 specifier|public
 name|void
@@ -5583,6 +5549,9 @@ argument_list|)
 expr_stmt|;
 comment|// Check Dublin Core
 name|List
+argument_list|<
+name|XMPSchema
+argument_list|>
 name|schemas
 init|=
 name|meta
@@ -5835,6 +5804,11 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|testReadRawXMP ()
 specifier|public
 name|void
@@ -5928,6 +5902,9 @@ name|pdfFile
 argument_list|)
 decl_stmt|;
 name|List
+argument_list|<
+name|XMPSchema
+argument_list|>
 name|schemas
 init|=
 name|metadata
@@ -5980,6 +5957,9 @@ literal|0
 argument_list|)
 decl_stmt|;
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|authors
 init|=
 name|bib
@@ -6238,6 +6218,9 @@ name|xmp
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|l
 init|=
 name|XMPUtil
@@ -6403,6 +6386,9 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 name|Collection
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|c
 init|=
 name|result
@@ -6668,6 +6654,9 @@ name|xmp
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|l
 init|=
 name|XMPUtil
@@ -6825,6 +6814,9 @@ argument_list|()
 expr_stmt|;
 comment|// PDF should be annotated:
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|l
 init|=
 name|XMPUtil
@@ -6924,6 +6916,9 @@ argument_list|()
 expr_stmt|;
 comment|// PDF should be annotated:
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|l
 init|=
 name|XMPUtil
@@ -7102,6 +7097,9 @@ name|close
 argument_list|()
 expr_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|l
 init|=
 name|XMPUtil
@@ -7299,6 +7297,9 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 name|Collection
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|c
 init|=
 name|original
@@ -7348,6 +7349,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|l
 init|=
 name|XMPUtil
@@ -7476,6 +7480,11 @@ parameter_list|)
 block|{ 		}
 block|}
 comment|/** 	 * A better testcase for resolveStrings. Makes sure that also the document 	 * information and dublin core are written correctly. 	 *  	 * Data was contributed by Philip K.F. Hölzenspies (p.k.f.holzenspies [at] utwente.nl). 	 *  	 * @throws IOException 	 * @throws FileNotFoundException 	 * @throws TransformerException 	 *  	 */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|testResolveStrings2 ()
 specifier|public
 name|void
@@ -7712,6 +7721,9 @@ name|class
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|XMPSchema
+argument_list|>
 name|schemas
 init|=
 name|meta

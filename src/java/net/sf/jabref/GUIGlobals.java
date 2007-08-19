@@ -400,10 +400,20 @@ decl_stmt|;
 DECL|field|tableIcons
 specifier|static
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|JLabel
+argument_list|>
 name|tableIcons
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|JLabel
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// Contains table icon mappings. Set up
@@ -427,6 +437,11 @@ decl_stmt|;
 DECL|field|iconMap
 specifier|static
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|iconMap
 decl_stmt|;
 DECL|method|getTableIcon (String fieldType)
@@ -976,6 +991,11 @@ specifier|public
 specifier|static
 specifier|final
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|LANGUAGES
 decl_stmt|;
 static|static
@@ -984,6 +1004,11 @@ name|LANGUAGES
 operator|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 expr_stmt|;
 comment|// LANGUAGES contains mappings for supported languages.
@@ -1277,9 +1302,6 @@ block|{
 name|String
 name|path
 init|=
-operator|(
-name|String
-operator|)
 name|iconMap
 operator|.
 name|get
@@ -1404,6 +1426,11 @@ DECL|method|readIconThemeFile (URL file, String prefix)
 specifier|private
 specifier|static
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|readIconThemeFile
 parameter_list|(
 name|URL
@@ -1416,10 +1443,20 @@ throws|throws
 name|IOException
 block|{
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|map
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|InputStream

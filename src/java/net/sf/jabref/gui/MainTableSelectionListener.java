@@ -163,6 +163,9 @@ class|class
 name|MainTableSelectionListener
 implements|implements
 name|ListEventListener
+argument_list|<
+name|BibtexEntry
+argument_list|>
 implements|,
 name|MouseListener
 implements|,
@@ -197,6 +200,9 @@ name|panel
 decl_stmt|;
 DECL|field|tableRows
 name|EventList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|tableRows
 decl_stmt|;
 DECL|field|previewActive
@@ -241,14 +247,6 @@ name|int
 name|lastPressedCount
 init|=
 literal|0
-decl_stmt|;
-DECL|field|lastQuickJumpRow
-specifier|private
-name|int
-name|lastQuickJumpRow
-init|=
-operator|-
-literal|1
 decl_stmt|;
 DECL|field|lastPressedTime
 specifier|private
@@ -454,17 +452,22 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|listChanged (ListEvent e)
+DECL|method|listChanged (ListEvent<BibtexEntry> e)
 specifier|public
 name|void
 name|listChanged
 parameter_list|(
 name|ListEvent
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|e
 parameter_list|)
 block|{
-comment|//System.out.println(e);
 name|EventList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|selected
 init|=
 name|e
@@ -748,6 +751,9 @@ expr_stmt|;
 return|return;
 block|}
 name|EventList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|list
 init|=
 name|table
@@ -768,9 +774,6 @@ literal|1
 operator|)
 operator|||
 operator|(
-operator|(
-name|BibtexEntry
-operator|)
 name|list
 operator|.
 name|get
@@ -989,21 +992,9 @@ name|MouseEvent
 name|e
 parameter_list|)
 block|{
-comment|// First find the column on which the user has clicked.
+comment|// First find the row on which the user has clicked.
 specifier|final
 name|int
-name|col
-init|=
-name|table
-operator|.
-name|columnAtPoint
-argument_list|(
-name|e
-operator|.
-name|getPoint
-argument_list|()
-argument_list|)
-decl_stmt|,
 name|row
 init|=
 name|table
@@ -2132,6 +2123,9 @@ literal|0
 condition|)
 return|return;
 name|Comparator
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|comp
 init|=
 name|table
@@ -2242,6 +2236,9 @@ name|field
 argument_list|)
 expr_stmt|;
 name|SortedList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|list
 init|=
 name|table
@@ -2541,10 +2538,6 @@ name|ensureVisible
 argument_list|(
 name|i
 argument_list|)
-expr_stmt|;
-name|lastQuickJumpRow
-operator|=
-name|i
 expr_stmt|;
 return|return;
 block|}

@@ -1226,6 +1226,9 @@ block|{
 try|try
 block|{
 name|Class
+argument_list|<
+name|?
+argument_list|>
 name|GEClass
 init|=
 name|Class
@@ -1271,10 +1274,16 @@ name|GEInstance
 argument_list|)
 decl_stmt|;
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|nameVector
 init|=
 operator|new
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|nameArray
 operator|.

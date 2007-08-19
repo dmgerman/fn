@@ -68,6 +68,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -269,6 +279,9 @@ DECL|field|sortedForSearch
 DECL|field|sortedForGrouping
 specifier|private
 name|SortedList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|sortedForMarking
 decl_stmt|,
 name|sortedForTable
@@ -295,11 +308,17 @@ decl_stmt|;
 DECL|field|selectionModel
 specifier|private
 name|EventSelectionModel
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|selectionModel
 decl_stmt|;
 DECL|field|comparatorChooser
 specifier|private
 name|TableComparatorChooser
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|comparatorChooser
 decl_stmt|;
 DECL|field|pane
@@ -311,6 +330,9 @@ DECL|field|searchComparator
 DECL|field|groupComparator
 specifier|private
 name|Comparator
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|searchComparator
 decl_stmt|,
 name|groupComparator
@@ -326,6 +348,9 @@ DECL|field|searchMatcher
 DECL|field|groupMatcher
 specifier|private
 name|Matcher
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|searchMatcher
 decl_stmt|,
 name|groupMatcher
@@ -382,7 +407,7 @@ name|updateRenderers
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|MainTable (MainTableFormat tableFormat, EventList list, JabRefFrame frame, BasePanel panel)
+DECL|method|MainTable (MainTableFormat tableFormat, EventList<BibtexEntry> list, JabRefFrame frame, BasePanel panel)
 specifier|public
 name|MainTable
 parameter_list|(
@@ -390,6 +415,9 @@ name|MainTableFormat
 name|tableFormat
 parameter_list|,
 name|EventList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|list
 parameter_list|,
 name|JabRefFrame
@@ -414,6 +442,9 @@ name|sortedForTable
 operator|=
 operator|new
 name|SortedList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|(
 name|list
 argument_list|,
@@ -425,6 +456,9 @@ name|sortedForMarking
 operator|=
 operator|new
 name|SortedList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|(
 name|sortedForTable
 argument_list|,
@@ -436,6 +470,9 @@ name|sortedForSearch
 operator|=
 operator|new
 name|SortedList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|(
 name|sortedForMarking
 argument_list|,
@@ -447,6 +484,9 @@ name|sortedForGrouping
 operator|=
 operator|new
 name|SortedList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|(
 name|sortedForSearch
 argument_list|,
@@ -472,10 +512,16 @@ literal|null
 expr_stmt|;
 comment|//new HitOrMissComparator(groupMatcher);
 name|EventTableModel
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|tableModel
 init|=
 operator|new
 name|EventTableModel
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|(
 name|sortedForGrouping
 argument_list|,
@@ -502,6 +548,9 @@ name|selectionModel
 operator|=
 operator|new
 name|EventSelectionModel
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|(
 name|sortedForGrouping
 argument_list|)
@@ -562,13 +611,10 @@ operator|.
 name|MULTIPLE_COLUMN_KEYBOARD
 argument_list|)
 expr_stmt|;
-specifier|final
-name|EventList
-name|selected
-init|=
+comment|// TODO: Figure out, whether this call is needed.
 name|getSelected
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 comment|// enable DnD
 name|setDragEnabled
 argument_list|(
@@ -724,12 +770,15 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Adds a sorting rule that floats hits to the top, and causes non-hits to be grayed out:      * @param m The Matcher that determines if an entry is a hit or not.      */
-DECL|method|showFloatSearch (Matcher m)
+DECL|method|showFloatSearch (Matcher<BibtexEntry> m)
 specifier|public
 name|void
 name|showFloatSearch
 parameter_list|(
 name|Matcher
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|m
 parameter_list|)
 block|{
@@ -782,12 +831,15 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Adds a sorting rule that floats group hits to the top, and causes non-hits to be grayed out:      * @param m The Matcher that determines if an entry is a in the current group selection or not.      */
-DECL|method|showFloatGrouping (Matcher m)
+DECL|method|showFloatGrouping (Matcher<BibtexEntry> m)
 specifier|public
 name|void
 name|showFloatGrouping
 parameter_list|(
 name|Matcher
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|m
 parameter_list|)
 block|{
@@ -837,6 +889,9 @@ block|}
 DECL|method|getTableRows ()
 specifier|public
 name|EventList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|getTableRows
 parameter_list|()
 block|{
@@ -844,12 +899,15 @@ return|return
 name|sortedForGrouping
 return|;
 block|}
-DECL|method|addSelectionListener (ListEventListener listener)
+DECL|method|addSelectionListener (ListEventListener<BibtexEntry> listener)
 specifier|public
 name|void
 name|addSelectionListener
 parameter_list|(
 name|ListEventListener
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|listener
 parameter_list|)
 block|{
@@ -1338,9 +1396,6 @@ name|row
 parameter_list|)
 block|{
 return|return
-operator|(
-name|BibtexEntry
-operator|)
 name|sortedForGrouping
 operator|.
 name|get
@@ -1368,10 +1423,6 @@ literal|0
 index|]
 decl_stmt|;
 return|return
-operator|(
-name|BibtexEntry
-index|[]
-operator|)
 name|getSelected
 argument_list|()
 operator|.
@@ -1382,6 +1433,11 @@ argument_list|)
 return|;
 block|}
 comment|/**      * This method sets up what Comparators are used for the various table columns.      * The ComparatorChooser enables and disables such Comparators as the user clicks      * columns, but this is where the Comparators are defined. Also, the ComparatorChooser      * is initialized with the sort order defined in Preferences.      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|setupComparatorChooser ()
 specifier|private
 name|void
@@ -1389,11 +1445,13 @@ name|setupComparatorChooser
 parameter_list|()
 block|{
 comment|// First column:
-name|java
-operator|.
-name|util
-operator|.
 name|List
+argument_list|<
+name|Comparator
+argument_list|<
+name|BibtexEntry
+argument_list|>
+argument_list|>
 name|comparators
 init|=
 name|comparatorChooser
@@ -1695,9 +1753,6 @@ block|{
 name|BibtexEntry
 name|be
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|sortedForGrouping
 operator|.
 name|get
@@ -1782,6 +1837,9 @@ block|}
 DECL|method|getSelected ()
 specifier|public
 name|EventList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|getSelected
 parameter_list|()
 block|{
@@ -1830,60 +1888,7 @@ name|column
 argument_list|)
 return|;
 block|}
-DECL|method|nonZeroField (int row, String field)
-specifier|private
-name|boolean
-name|nonZeroField
-parameter_list|(
-name|int
-name|row
-parameter_list|,
-name|String
-name|field
-parameter_list|)
-block|{
-name|BibtexEntry
-name|be
-init|=
-operator|(
-name|BibtexEntry
-operator|)
-name|sortedForGrouping
-operator|.
-name|get
-argument_list|(
-name|row
-argument_list|)
-decl_stmt|;
-name|Object
-name|o
-init|=
-name|be
-operator|.
-name|getField
-argument_list|(
-name|field
-argument_list|)
-decl_stmt|;
-return|return
-operator|(
-operator|(
-name|o
-operator|==
-literal|null
-operator|)
-operator|||
-operator|!
-name|o
-operator|.
-name|equals
-argument_list|(
-literal|"0"
-argument_list|)
-operator|)
-return|;
-block|}
-DECL|method|matches (int row, Matcher m)
+DECL|method|matches (int row, Matcher<BibtexEntry> m)
 specifier|private
 name|boolean
 name|matches
@@ -1892,25 +1897,23 @@ name|int
 name|row
 parameter_list|,
 name|Matcher
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|m
 parameter_list|)
 block|{
-name|Object
-name|o
-init|=
+return|return
+name|m
+operator|.
+name|matches
+argument_list|(
 name|sortedForGrouping
 operator|.
 name|get
 argument_list|(
 name|row
 argument_list|)
-decl_stmt|;
-return|return
-name|m
-operator|.
-name|matches
-argument_list|(
-name|o
 argument_list|)
 return|;
 block|}
@@ -1928,9 +1931,6 @@ block|{
 name|BibtexEntry
 name|be
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|sortedForGrouping
 operator|.
 name|get
@@ -1971,9 +1971,6 @@ block|{
 name|BibtexEntry
 name|be
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|sortedForGrouping
 operator|.
 name|get
@@ -2730,8 +2727,11 @@ class|class
 name|MyTableComparatorChooser
 extends|extends
 name|TableComparatorChooser
+argument_list|<
+name|BibtexEntry
+argument_list|>
 block|{
-DECL|method|MyTableComparatorChooser (JTable table, SortedList list, Object sortingStrategy)
+DECL|method|MyTableComparatorChooser (JTable table, SortedList<BibtexEntry> list, Object sortingStrategy)
 specifier|public
 name|MyTableComparatorChooser
 parameter_list|(
@@ -2739,6 +2739,9 @@ name|JTable
 name|table
 parameter_list|,
 name|SortedList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|list
 parameter_list|,
 name|Object
@@ -2779,7 +2782,6 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*         protected void columnClicked(int i, int i1) {              super.columnClicked(i, i1);             refreshSorting();         }*/
 block|}
 comment|/**      * Morten Alver: This override is a workaround NullPointerException when      * dragging stuff into the table. I found this in a forum, but have no idea      * why it works.      * @param newUI      */
 DECL|method|setUI (TableUI newUI)
@@ -2816,20 +2818,30 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Get the first comparator set up for the given column.      * @param index The column number.      * @return The Comparator, or null if none is set.      */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|getComparatorForColumn (int index)
 specifier|public
 name|Comparator
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|getComparatorForColumn
 parameter_list|(
 name|int
 name|index
 parameter_list|)
 block|{
-name|java
-operator|.
-name|util
-operator|.
 name|List
+argument_list|<
+name|Comparator
+argument_list|<
+name|BibtexEntry
+argument_list|>
+argument_list|>
 name|l
 init|=
 name|comparatorChooser
@@ -2849,9 +2861,6 @@ literal|0
 condition|?
 literal|null
 else|:
-operator|(
-name|Comparator
-operator|)
 name|l
 operator|.
 name|get
@@ -2870,11 +2879,10 @@ name|int
 name|number
 parameter_list|)
 block|{
-name|java
-operator|.
-name|util
-operator|.
 name|List
+argument_list|<
+name|Integer
+argument_list|>
 name|l
 init|=
 name|comparatorChooser
@@ -2917,6 +2925,9 @@ comment|/**      * Returns the List of entries sorted by a user-selected term. T
 DECL|method|getSortedForTable ()
 specifier|public
 name|SortedList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|getSortedForTable
 parameter_list|()
 block|{

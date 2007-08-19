@@ -77,12 +77,12 @@ decl_stmt|;
 DECL|field|oldValue
 DECL|field|newValue
 specifier|private
-name|Object
+name|String
 name|oldValue
 decl_stmt|,
 name|newValue
 decl_stmt|;
-DECL|method|UndoableFieldChange (BibtexEntry entry, String field, Object oldValue, Object newValue)
+DECL|method|UndoableFieldChange (BibtexEntry entry, String field, String oldValue, String newValue)
 specifier|public
 name|UndoableFieldChange
 parameter_list|(
@@ -92,10 +92,10 @@ parameter_list|,
 name|String
 name|field
 parameter_list|,
-name|Object
+name|String
 name|oldValue
 parameter_list|,
-name|Object
+name|String
 name|newValue
 parameter_list|)
 block|{

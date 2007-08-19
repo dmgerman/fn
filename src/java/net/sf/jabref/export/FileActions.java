@@ -266,30 +266,27 @@ throws|throws
 name|IOException
 block|{
 name|List
+argument_list|<
+name|BibtexString
+argument_list|>
 name|strings
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|BibtexString
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|Iterator
-name|i
-init|=
+name|String
+name|s
+range|:
 name|database
 operator|.
 name|getStringKeySet
 argument_list|()
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
 name|strings
@@ -300,10 +297,7 @@ name|database
 operator|.
 name|getString
 argument_list|(
-name|i
-operator|.
-name|next
-argument_list|()
+name|s
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -323,15 +317,28 @@ argument_list|)
 expr_stmt|;
 comment|// First, make a Map of all entries:
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|BibtexString
+argument_list|>
 name|remaining
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|BibtexString
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|BibtexString
+argument_list|>
 name|i
 init|=
 name|strings
@@ -349,9 +356,6 @@ block|{
 name|BibtexString
 name|string
 init|=
-operator|(
-name|BibtexString
-operator|)
 name|i
 operator|.
 name|next
@@ -373,6 +377,9 @@ block|}
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|BibtexString
+argument_list|>
 name|i
 init|=
 name|strings
@@ -390,9 +397,6 @@ block|{
 name|BibtexString
 name|bs
 init|=
-operator|(
-name|BibtexString
-operator|)
 name|i
 operator|.
 name|next
@@ -421,7 +425,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|writeString (Writer fw, BibtexString bs, HashMap remaining)
+DECL|method|writeString (Writer fw, BibtexString bs, HashMap<String, BibtexString> remaining)
 specifier|private
 specifier|static
 name|void
@@ -434,6 +438,11 @@ name|BibtexString
 name|bs
 parameter_list|,
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|BibtexString
+argument_list|>
 name|remaining
 parameter_list|)
 throws|throws
@@ -719,20 +728,23 @@ parameter_list|)
 throws|throws
 name|SaveException
 block|{
-name|BibtexEntry
-name|be
-init|=
-literal|null
-decl_stmt|;
 name|TreeMap
+argument_list|<
+name|String
+argument_list|,
+name|BibtexEntryType
+argument_list|>
 name|types
 init|=
 operator|new
 name|TreeMap
+argument_list|<
+name|String
+argument_list|,
+name|BibtexEntryType
+argument_list|>
 argument_list|()
 decl_stmt|;
-comment|// Map to collect entry type definitions
-comment|// that we must save along with entries using them.
 name|boolean
 name|backup
 init|=
@@ -745,6 +757,11 @@ argument_list|)
 decl_stmt|;
 name|SaveSession
 name|session
+decl_stmt|;
+name|BibtexEntry
+name|exceptionCause
+init|=
+literal|null
 decl_stmt|;
 try|try
 block|{
@@ -807,7 +824,8 @@ throw|;
 block|}
 try|try
 block|{
-comment|// Get our data stream. This stream writes only to a temporary file, until committed.
+comment|// Get our data stream. This stream writes only to a temporary file,
+comment|// until committed.
 name|VerifyingWriter
 name|fw
 init|=
@@ -848,6 +866,9 @@ comment|// Comparator, that referred entries occur after referring
 comment|// ones. Apart from crossref requirements, entries will be
 comment|// sorted as they appear on the screen.
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|sorter
 init|=
 name|getSortedEntries
@@ -868,32 +889,15 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
-name|Iterator
-name|i
-init|=
+name|BibtexEntry
+name|be
+range|:
 name|sorter
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
-name|be
+name|exceptionCause
 operator|=
-call|(
-name|BibtexEntry
-call|)
-argument_list|(
-name|i
-operator|.
-name|next
-argument_list|()
-argument_list|)
+name|be
 expr_stmt|;
 comment|// Check if we must write the type definition for this
 comment|// entry, as well. Our criterion is that all non-standard
@@ -1037,6 +1041,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|i
 init|=
 name|types
@@ -1112,7 +1119,7 @@ operator|.
 name|cancel
 argument_list|()
 expr_stmt|;
-comment|//repairAfterError(file, backup, INIT_OK);
+comment|// repairAfterError(file, backup, INIT_OK);
 block|}
 catch|catch
 parameter_list|(
@@ -1162,7 +1169,7 @@ operator|.
 name|getMessage
 argument_list|()
 argument_list|,
-name|be
+name|exceptionCause
 argument_list|)
 throw|;
 block|}
@@ -1170,7 +1177,12 @@ return|return
 name|session
 return|;
 block|}
-comment|/**      * Saves the database to file, including only the entries included      * in the supplied input array bes.      *      * @return A List containing warnings, if any.      */
+comment|/** 	 * Saves the database to file, including only the entries included in the 	 * supplied input array bes. 	 *  	 * @return A List containing warnings, if any. 	 */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|savePartOfDatabase (BibtexDatabase database, MetaData metaData, File file, JabRefPreferences prefs, BibtexEntry[] bes, String encoding)
 specifier|public
 specifier|static
@@ -1200,13 +1212,28 @@ throws|throws
 name|SaveException
 block|{
 name|TreeMap
+argument_list|<
+name|String
+argument_list|,
+name|BibtexEntryType
+argument_list|>
 name|types
 init|=
 operator|new
 name|TreeMap
+argument_list|<
+name|String
+argument_list|,
+name|BibtexEntryType
+argument_list|>
 argument_list|()
 decl_stmt|;
-comment|// Map to collect entry type definitions
+comment|// Map
+comment|// to
+comment|// collect
+comment|// entry
+comment|// type
+comment|// definitions
 comment|// that we must save along with entries using them.
 name|BibtexEntry
 name|be
@@ -1313,10 +1340,6 @@ decl_stmt|,
 name|secD
 decl_stmt|,
 name|terD
-decl_stmt|,
-name|priBinary
-init|=
-literal|false
 decl_stmt|;
 if|if
 condition|(
@@ -1330,15 +1353,6 @@ argument_list|)
 condition|)
 block|{
 comment|// The setting is to save according to the current table order.
-name|priBinary
-operator|=
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-literal|"priBinary"
-argument_list|)
-expr_stmt|;
 name|pri
 operator|=
 name|prefs
@@ -1424,10 +1438,22 @@ literal|true
 expr_stmt|;
 block|}
 name|List
+argument_list|<
+name|Comparator
+argument_list|<
+name|BibtexEntry
+argument_list|>
+argument_list|>
 name|comparators
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|Comparator
+argument_list|<
+name|BibtexEntry
+argument_list|>
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|comparators
@@ -1509,6 +1535,9 @@ name|entryList
 argument_list|,
 operator|new
 name|FieldComparatorStack
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|(
 name|comparators
 argument_list|)
@@ -1568,6 +1597,9 @@ decl_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|i
 init|=
 name|sorter
@@ -1584,15 +1616,12 @@ control|)
 block|{
 name|be
 operator|=
-call|(
-name|BibtexEntry
-call|)
-argument_list|(
+operator|(
 name|i
 operator|.
 name|next
 argument_list|()
-argument_list|)
+operator|)
 expr_stmt|;
 comment|// Check if we must write the type definition for this
 comment|// entry, as well. Our criterion is that all non-standard
@@ -1684,6 +1713,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|i
 init|=
 name|types
@@ -1831,10 +1863,20 @@ throws|throws
 name|Exception
 block|{
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|fieldFormatters
 init|=
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|fieldFormatters
@@ -1885,6 +1927,9 @@ init|=
 literal|"\t"
 decl_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|sorted
 init|=
 name|getSortedEntries
@@ -1897,10 +1942,16 @@ literal|true
 argument_list|)
 decl_stmt|;
 name|Set
+argument_list|<
+name|String
+argument_list|>
 name|fields
 init|=
 operator|new
 name|TreeSet
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -2012,32 +2063,12 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|Iterator
-name|i
-init|=
-name|sorted
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
 name|BibtexEntry
 name|entry
-init|=
-operator|(
-name|BibtexEntry
-operator|)
-name|i
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
+range|:
+name|sorted
+control|)
+block|{
 name|writeField
 argument_list|(
 name|database
@@ -2118,7 +2149,7 @@ argument_list|()
 expr_stmt|;
 comment|//	} catch (Throwable ex) {}
 block|}
-DECL|method|writeField (BibtexDatabase database, BibtexEntry entry, String field, HashMap fieldFormatters, Writer out)
+DECL|method|writeField (BibtexDatabase database, BibtexEntry entry, String field, HashMap<String, Object> fieldFormatters, Writer out)
 specifier|private
 specifier|static
 name|void
@@ -2134,6 +2165,11 @@ name|String
 name|field
 parameter_list|,
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|fieldFormatters
 parameter_list|,
 name|Writer
@@ -2400,16 +2436,27 @@ name|reader
 return|;
 block|}
 comment|/*     * We have begun to use getSortedEntries() for both database save operations     * and non-database save operations.  In a non-database save operation     * (such as the exportDatabase call), we do not wish to use the     * global preference of saving in standard order.     */
-DECL|method|getSortedEntries (BibtexDatabase database, Set keySet, boolean isSaveOperation)
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
+DECL|method|getSortedEntries (BibtexDatabase database, Set<String> keySet, boolean isSaveOperation)
 specifier|public
 specifier|static
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|getSortedEntries
 parameter_list|(
 name|BibtexDatabase
 name|database
 parameter_list|,
 name|Set
+argument_list|<
+name|String
+argument_list|>
 name|keySet
 parameter_list|,
 name|boolean
@@ -2417,6 +2464,9 @@ name|isSaveOperation
 parameter_list|)
 block|{
 name|FieldComparatorStack
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|comparatorStack
 init|=
 literal|null
@@ -2436,10 +2486,22 @@ block|{
 comment|// Sort entries based on their creation order, utilizing the fact
 comment|// that IDs used for entries are increasing, sortable numbers.
 name|List
+argument_list|<
+name|Comparator
+argument_list|<
+name|BibtexEntry
+argument_list|>
+argument_list|>
 name|comparators
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|Comparator
+argument_list|<
+name|BibtexEntry
+argument_list|>
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|comparators
@@ -2464,6 +2526,9 @@ name|comparatorStack
 operator|=
 operator|new
 name|FieldComparatorStack
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|(
 name|comparators
 argument_list|)
@@ -2484,8 +2549,6 @@ decl_stmt|,
 name|secD
 decl_stmt|,
 name|terD
-decl_stmt|,
-name|priBinary
 init|=
 literal|false
 decl_stmt|;
@@ -2506,17 +2569,6 @@ argument_list|)
 condition|)
 block|{
 comment|// The setting is to save according to the current table order.
-name|priBinary
-operator|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-literal|"priBinary"
-argument_list|)
-expr_stmt|;
 name|pri
 operator|=
 name|Globals
@@ -2614,10 +2666,22 @@ literal|true
 expr_stmt|;
 block|}
 name|List
+argument_list|<
+name|Comparator
+argument_list|<
+name|BibtexEntry
+argument_list|>
+argument_list|>
 name|comparators
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|Comparator
+argument_list|<
+name|BibtexEntry
+argument_list|>
+argument_list|>
 argument_list|()
 decl_stmt|;
 if|if
@@ -2689,6 +2753,9 @@ name|comparatorStack
 operator|=
 operator|new
 name|FieldComparatorStack
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|(
 name|comparators
 argument_list|)
@@ -2734,6 +2801,9 @@ literal|null
 condition|)
 block|{
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|i
 init|=
 name|keySet
@@ -2759,15 +2829,12 @@ name|database
 operator|.
 name|getEntryById
 argument_list|(
-call|(
-name|String
-call|)
-argument_list|(
+operator|(
 name|i
 operator|.
 name|next
 argument_list|()
-argument_list|)
+operator|)
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -30,7 +30,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Hashtable
+name|Iterator
 import|;
 end_import
 
@@ -40,7 +40,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
+name|Map
 import|;
 end_import
 
@@ -103,7 +103,12 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|thisSearchOptions
-name|Hashtable
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|thisSearchOptions
 init|=
 literal|null
@@ -142,14 +147,19 @@ name|BibtexEntry
 argument_list|>
 argument_list|()
 decl_stmt|;
-DECL|method|DatabaseSearch (ErrorMessageDisplay errorDisplay, Hashtable searchOptions, SearchRuleSet searchRules, BasePanel panel, String searchValueField, boolean reorder, boolean grayOut, boolean select)
+DECL|method|DatabaseSearch (ErrorMessageDisplay errorDisplay, Map<String, String> searchOptions, SearchRuleSet searchRules, BasePanel panel, String searchValueField, boolean reorder, boolean grayOut, boolean select)
 specifier|public
 name|DatabaseSearch
 parameter_list|(
 name|ErrorMessageDisplay
 name|errorDisplay
 parameter_list|,
-name|Hashtable
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|searchOptions
 parameter_list|,
 name|SearchRuleSet
