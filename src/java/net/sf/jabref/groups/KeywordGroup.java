@@ -1168,12 +1168,17 @@ argument_list|()
 return|;
 block|}
 comment|/* 	 * (non-Javadoc) 	 *  	 * @see net.sf.jabref.groups.AbstractGroup#contains(java.util.Map, 	 *      net.sf.jabref.BibtexEntry) 	 */
-DECL|method|contains (Map searchOptions, BibtexEntry entry)
+DECL|method|contains (Map<String, String> searchOptions, BibtexEntry entry)
 specifier|public
 name|boolean
 name|contains
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|searchOptions
 parameter_list|,
 name|BibtexEntry
@@ -1199,9 +1204,6 @@ block|{
 name|String
 name|content
 init|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField
@@ -1552,12 +1554,17 @@ operator|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|applyRule (Map searchOptions, BibtexEntry entry)
+DECL|method|applyRule (Map<String, String> searchOptions, BibtexEntry entry)
 specifier|public
 name|int
 name|applyRule
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|searchOptions
 parameter_list|,
 name|BibtexEntry

@@ -151,7 +151,7 @@ name|prefs
 init|=
 literal|null
 decl_stmt|;
-DECL|method|SearchExpression (JabRefPreferences prefs, Hashtable searchOptions)
+DECL|method|SearchExpression (JabRefPreferences prefs, Hashtable<String, String> searchOptions)
 specifier|public
 name|SearchExpression
 parameter_list|(
@@ -159,6 +159,11 @@ name|JabRefPreferences
 name|prefs
 parameter_list|,
 name|Hashtable
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|searchOptions
 parameter_list|)
 throws|throws
@@ -193,9 +198,6 @@ name|elements
 argument_list|()
 operator|.
 name|nextElement
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 argument_list|)
 argument_list|)
@@ -243,12 +245,17 @@ argument_list|()
 expr_stmt|;
 comment|// remember abstract syntax tree
 block|}
-DECL|method|applyRule (Map searchStrings, BibtexEntry bibtexEntry)
+DECL|method|applyRule (Map<String, String> searchStrings, BibtexEntry bibtexEntry)
 specifier|public
 name|int
 name|applyRule
 parameter_list|(
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|searchStrings
 parameter_list|,
 name|BibtexEntry
@@ -279,7 +286,6 @@ literal|0
 return|;
 comment|// this should never occur
 block|}
-comment|//catch (NullPointerException ex) { return 0; } // Just testing (Morten)
 block|}
 block|}
 end_class

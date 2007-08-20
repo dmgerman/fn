@@ -131,7 +131,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author Michael Wrighton  *  * TODO To change the template for this generated type comment go to  * Window - Preferences - Java - Code Style - Code Templates  */
+comment|/**  * @author Michael Wrighton  *  */
 end_comment
 
 begin_class
@@ -143,6 +143,9 @@ block|{
 DECL|field|entries
 specifier|protected
 name|Set
+argument_list|<
+name|MODSEntry
+argument_list|>
 name|entries
 decl_stmt|;
 DECL|method|MODSDatabase ()
@@ -155,6 +158,9 @@ name|entries
 operator|=
 operator|new
 name|HashSet
+argument_list|<
+name|MODSEntry
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
@@ -166,23 +172,18 @@ name|BibtexDatabase
 name|bibtex
 parameter_list|)
 block|{
-name|Set
-name|keySet
-init|=
-name|bibtex
-operator|.
-name|getKeySet
-argument_list|()
-decl_stmt|;
 name|addEntries
 argument_list|(
 name|bibtex
 argument_list|,
-name|keySet
+name|bibtex
+operator|.
+name|getKeySet
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|MODSDatabase (BibtexDatabase bibtex, Set keySet)
+DECL|method|MODSDatabase (BibtexDatabase bibtex, Set<String> keySet)
 specifier|public
 name|MODSDatabase
 parameter_list|(
@@ -190,6 +191,9 @@ name|BibtexDatabase
 name|bibtex
 parameter_list|,
 name|Set
+argument_list|<
+name|String
+argument_list|>
 name|keySet
 parameter_list|)
 block|{
@@ -214,7 +218,7 @@ name|keySet
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addEntries (BibtexDatabase database, Set keySet)
+DECL|method|addEntries (BibtexDatabase database, Set<String> keySet)
 specifier|private
 name|void
 name|addEntries
@@ -223,6 +227,9 @@ name|BibtexDatabase
 name|database
 parameter_list|,
 name|Set
+argument_list|<
+name|String
+argument_list|>
 name|keySet
 parameter_list|)
 block|{
@@ -230,11 +237,17 @@ name|entries
 operator|=
 operator|new
 name|HashSet
+argument_list|<
+name|MODSEntry
+argument_list|>
 argument_list|()
 expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|iter
 init|=
 name|keySet
@@ -256,9 +269,6 @@ name|database
 operator|.
 name|getEntryById
 argument_list|(
-operator|(
-name|String
-operator|)
 name|iter
 operator|.
 name|next
@@ -354,6 +364,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|MODSEntry
+argument_list|>
 name|iter
 init|=
 name|entries
@@ -371,9 +384,6 @@ block|{
 name|MODSEntry
 name|entry
 init|=
-operator|(
-name|MODSEntry
-operator|)
 name|iter
 operator|.
 name|next

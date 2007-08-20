@@ -262,10 +262,6 @@ parameter_list|()
 throws|throws
 name|InterruptedException
 block|{
-name|process
-operator|=
-name|process
-expr_stmt|;
 name|in
 operator|=
 operator|new

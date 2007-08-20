@@ -3709,7 +3709,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and set the specified selection and expansion state.      * @param node If this is non-null, the view is scrolled to make it visible.      */
-DECL|method|revalidateGroups (TreePath[] selectionPaths, Enumeration expandedNodes)
+DECL|method|revalidateGroups (TreePath[] selectionPaths, Enumeration<TreePath> expandedNodes)
 specifier|public
 name|void
 name|revalidateGroups
@@ -3719,6 +3719,9 @@ index|[]
 name|selectionPaths
 parameter_list|,
 name|Enumeration
+argument_list|<
+name|TreePath
+argument_list|>
 name|expandedNodes
 parameter_list|)
 block|{
@@ -3733,7 +3736,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and set the specified selection and expansion state.      * @param node If this is non-null, the view is scrolled to make it visible.      */
-DECL|method|revalidateGroups (TreePath[] selectionPaths, Enumeration expandedNodes, GroupTreeNode node)
+DECL|method|revalidateGroups (TreePath[] selectionPaths, Enumeration<TreePath> expandedNodes, GroupTreeNode node)
 specifier|public
 name|void
 name|revalidateGroups
@@ -3743,6 +3746,9 @@ index|[]
 name|selectionPaths
 parameter_list|,
 name|Enumeration
+argument_list|<
+name|TreePath
+argument_list|>
 name|expandedNodes
 parameter_list|,
 name|GroupTreeNode
@@ -3793,9 +3799,6 @@ name|groupsTree
 operator|.
 name|expandPath
 argument_list|(
-operator|(
-name|TreePath
-operator|)
 name|expandedNodes
 operator|.
 name|nextElement
@@ -6977,6 +6980,9 @@ block|}
 DECL|method|getExpandedPaths ()
 specifier|public
 name|Enumeration
+argument_list|<
+name|TreePath
+argument_list|>
 name|getExpandedPaths
 parameter_list|()
 block|{
@@ -7276,6 +7282,9 @@ decl_stmt|;
 for|for
 control|(
 name|Enumeration
+argument_list|<
+name|GroupTreeNode
+argument_list|>
 name|e
 init|=
 name|groupsRoot
@@ -7292,9 +7301,6 @@ control|)
 block|{
 name|node
 operator|=
-operator|(
-name|GroupTreeNode
-operator|)
 name|e
 operator|.
 name|nextElement
@@ -7516,6 +7522,9 @@ comment|// just because I don't want to use null...
 for|for
 control|(
 name|Enumeration
+argument_list|<
+name|GroupTreeNode
+argument_list|>
 name|e
 init|=
 name|groupsRoot

@@ -173,23 +173,16 @@ literal|"Saving all databases..."
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|Worker
-name|worker
-init|=
-operator|(
-name|Worker
-operator|)
 name|Spin
 operator|.
 name|off
 argument_list|(
 name|this
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|run
 argument_list|()
 expr_stmt|;
-comment|//if (saved == databases)
 name|frame
 operator|.
 name|output
@@ -202,7 +195,6 @@ literal|"Save all finished."
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/*else if (saved> 0)             frame.output(Globals.lang("Saved %0 databases."));         else             frame.output(Globals.lang("No databases saved."));*/
 block|}
 DECL|method|run ()
 specifier|public

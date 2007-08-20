@@ -411,6 +411,9 @@ literal|"\n"
 argument_list|)
 decl_stmt|;
 name|Vector
+argument_list|<
+name|ParserResult
+argument_list|>
 name|loaded
 init|=
 name|jabref

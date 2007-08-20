@@ -829,11 +829,6 @@ name|BrowseListener
 implements|implements
 name|ActionListener
 block|{
-DECL|field|parent
-specifier|private
-name|JDialog
-name|parent
-decl_stmt|;
 DECL|field|comp
 specifier|private
 name|JTextField
@@ -850,12 +845,6 @@ name|JTextField
 name|comp
 parameter_list|)
 block|{
-name|this
-operator|.
-name|parent
-operator|=
-name|parent
-expr_stmt|;
 name|this
 operator|.
 name|comp

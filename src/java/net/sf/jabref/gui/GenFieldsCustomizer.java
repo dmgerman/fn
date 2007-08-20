@@ -1172,15 +1172,6 @@ operator|new
 name|StringBuffer
 argument_list|()
 decl_stmt|;
-name|String
-name|name
-init|=
-literal|null
-decl_stmt|,
-name|fields
-init|=
-literal|null
-decl_stmt|;
 name|EntryEditorTabList
 name|tabList
 init|=
@@ -1231,6 +1222,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|j
 init|=
 name|tabList
@@ -1253,9 +1247,6 @@ block|{
 name|String
 name|field
 init|=
-operator|(
-name|String
-operator|)
 name|j
 operator|.
 name|next

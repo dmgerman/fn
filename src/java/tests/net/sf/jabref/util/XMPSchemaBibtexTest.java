@@ -484,6 +484,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|authors
 init|=
 name|bibtex
@@ -699,6 +702,9 @@ argument_list|)
 expr_stmt|;
 block|{
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|l
 init|=
 name|bibtex
@@ -784,6 +790,9 @@ literal|"Kent Beck"
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|l
 init|=
 name|bibtex
@@ -831,6 +840,9 @@ literal|"Kent Beck"
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|l
 init|=
 name|bibtex
@@ -878,6 +890,9 @@ literal|"Tom DeMarco"
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|l
 init|=
 name|bibtex
@@ -940,6 +955,9 @@ literal|"Tom DeMarco"
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|l
 init|=
 name|bibtex
@@ -1005,6 +1023,9 @@ argument_list|)
 expr_stmt|;
 block|{
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|l
 init|=
 name|bibtex
@@ -1060,6 +1081,9 @@ literal|"Tom DeMarco"
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|l
 init|=
 name|bibtex
@@ -1107,6 +1131,9 @@ literal|"Tom DeMarco"
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|l
 init|=
 name|bibtex
@@ -1154,6 +1181,9 @@ literal|"Kent Beck"
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|l
 init|=
 name|bibtex
@@ -1216,6 +1246,9 @@ literal|"Kent Beck"
 argument_list|)
 expr_stmt|;
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|l
 init|=
 name|bibtex
@@ -1315,6 +1348,11 @@ literal|"Mouse, Mickey and Bond, James"
 argument_list|)
 expr_stmt|;
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|s
 init|=
 name|XMPSchemaBibtex

@@ -77,7 +77,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author Michael Wrighton  * @author S M Mahbub Murshed  *  * TODO To change the template for this generated type comment go to  * Window - Preferences - Java - Code Style - Code Templates  */
+comment|/**  * @author Michael Wrighton  * @author S M Mahbub Murshed  *  */
 end_comment
 
 begin_class

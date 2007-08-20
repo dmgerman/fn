@@ -739,7 +739,7 @@ operator|.
 name|getKeyCode
 argument_list|()
 operator|==
-name|e
+name|KeyEvent
 operator|.
 name|VK_ENTER
 condition|)

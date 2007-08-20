@@ -308,6 +308,18 @@ name|w3c
 operator|.
 name|dom
 operator|.
+name|Node
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|w3c
+operator|.
+name|dom
+operator|.
 name|NodeList
 import|;
 end_import
@@ -4479,18 +4491,17 @@ return|;
 block|}
 DECL|method|getDOMrepresentation ()
 specifier|public
-name|Document
+name|Node
 name|getDOMrepresentation
 parameter_list|()
 block|{
-name|Document
+name|Node
 name|result
 init|=
 literal|null
 decl_stmt|;
 try|try
 block|{
-comment|// TODO No clue what this is doing!!
 name|DocumentBuilder
 name|d
 init|=
@@ -4502,7 +4513,16 @@ operator|.
 name|newDocumentBuilder
 argument_list|()
 decl_stmt|;
-comment|//	result = getDOMrepresentation(d);
+name|result
+operator|=
+name|getDOMrepresentation
+argument_list|(
+name|d
+operator|.
+name|newDocument
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -7645,7 +7665,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/* 	 * render as XML 	 */
+comment|/* 	 * render as XML 	 *  	 * TODO This is untested. 	 */
 DECL|method|toString ()
 specifier|public
 name|String

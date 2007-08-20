@@ -82,11 +82,14 @@ index|[]
 name|layoutEntries
 decl_stmt|;
 comment|//~ Constructors ///////////////////////////////////////////////////////////
-DECL|method|Layout (Vector parsedEntries, String classPrefix)
+DECL|method|Layout (Vector<StringInt> parsedEntries, String classPrefix)
 specifier|public
 name|Layout
 parameter_list|(
 name|Vector
+argument_list|<
+name|StringInt
+argument_list|>
 name|parsedEntries
 parameter_list|,
 name|String
@@ -99,10 +102,16 @@ name|StringInt
 name|si
 decl_stmt|;
 name|Vector
+argument_list|<
+name|LayoutEntry
+argument_list|>
 name|tmpEntries
 init|=
 operator|new
 name|Vector
+argument_list|<
+name|LayoutEntry
+argument_list|>
 argument_list|(
 name|parsedEntries
 operator|.
@@ -110,8 +119,10 @@ name|size
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|//layoutEntries=new LayoutEntry[parsedEntries.size()];
 name|Vector
+argument_list|<
+name|StringInt
+argument_list|>
 name|blockEntries
 init|=
 literal|null
@@ -144,9 +155,6 @@ control|)
 block|{
 name|si
 operator|=
-operator|(
-name|StringInt
-operator|)
 name|parsedEntries
 operator|.
 name|get
@@ -154,7 +162,6 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("PARSED: "+si.s+"="+si.i);
 if|if
 condition|(
 name|si
@@ -194,6 +201,9 @@ name|blockEntries
 operator|=
 operator|new
 name|Vector
+argument_list|<
+name|StringInt
+argument_list|>
 argument_list|()
 expr_stmt|;
 name|blockStart
@@ -310,6 +320,9 @@ name|blockEntries
 operator|=
 operator|new
 name|Vector
+argument_list|<
+name|StringInt
+argument_list|>
 argument_list|()
 expr_stmt|;
 name|blockStart
@@ -475,9 +488,6 @@ index|[
 name|i
 index|]
 operator|=
-operator|(
-name|LayoutEntry
-operator|)
 name|tmpEntries
 operator|.
 name|get

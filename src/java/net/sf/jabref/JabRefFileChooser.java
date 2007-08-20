@@ -20,16 +20,6 @@ name|java
 operator|.
 name|awt
 operator|.
-name|Dimension
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
 name|event
 operator|.
 name|MouseEvent
@@ -142,15 +132,6 @@ name|JabRefFileChooser
 extends|extends
 name|JFileChooser
 block|{
-comment|// Remember size at previous use, so the user doesn't need to resize every time:
-DECL|field|lastSize
-specifier|private
-specifier|static
-name|Dimension
-name|lastSize
-init|=
-literal|null
-decl_stmt|;
 DECL|method|JabRefFileChooser ()
 specifier|public
 name|JabRefFileChooser
@@ -261,14 +242,11 @@ operator|.
 name|APPROVE_OPTION
 condition|)
 block|{
-name|File
-name|file
-init|=
 name|fc
 operator|.
 name|getSelectedFile
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 block|}
 block|}
 block|}

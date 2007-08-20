@@ -579,6 +579,9 @@ name|IsiImporter
 argument_list|()
 decl_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|entries
 init|=
 name|importer
@@ -732,6 +735,9 @@ name|IsiImporter
 argument_list|()
 decl_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|entries
 init|=
 name|importer
@@ -1019,6 +1025,9 @@ name|IsiImporter
 argument_list|()
 decl_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|entries
 init|=
 name|importer
@@ -1434,6 +1443,9 @@ name|IsiImporter
 argument_list|()
 decl_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|entries
 init|=
 name|importer
@@ -1677,6 +1689,9 @@ name|IsiImporter
 argument_list|()
 decl_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|entries
 init|=
 name|importer

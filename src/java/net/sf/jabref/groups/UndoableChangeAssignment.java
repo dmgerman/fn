@@ -98,12 +98,18 @@ DECL|field|m_previousAssignmentBackup
 specifier|private
 specifier|final
 name|Set
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|m_previousAssignmentBackup
 decl_stmt|;
 DECL|field|m_newAssignmentBackup
 specifier|private
 specifier|final
 name|Set
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|m_newAssignmentBackup
 decl_stmt|;
 comment|/** The path to the edited node */
@@ -124,14 +130,20 @@ init|=
 literal|null
 decl_stmt|;
 comment|/**      * Constructor for use in a group itself, where the enclosing node is      * unknown. The node must be set using setEditedNode() before this instance      * may be used.      *       * @param previousAssignment      * @param currentAssignment      */
-DECL|method|UndoableChangeAssignment (Set previousAssignment, Set currentAssignment)
+DECL|method|UndoableChangeAssignment (Set<BibtexEntry> previousAssignment, Set<BibtexEntry> currentAssignment)
 specifier|public
 name|UndoableChangeAssignment
 parameter_list|(
 name|Set
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|previousAssignment
 parameter_list|,
 name|Set
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|currentAssignment
 parameter_list|)
 block|{
@@ -139,6 +151,9 @@ name|m_previousAssignmentBackup
 operator|=
 operator|new
 name|HashSet
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|(
 name|previousAssignment
 argument_list|)
@@ -147,19 +162,28 @@ name|m_newAssignmentBackup
 operator|=
 operator|new
 name|HashSet
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|(
 name|currentAssignment
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|UndoableChangeAssignment (Set previousAssignment, Set currentAssignment, GroupTreeNode node)
+DECL|method|UndoableChangeAssignment (Set<BibtexEntry> previousAssignment, Set<BibtexEntry> currentAssignment, GroupTreeNode node)
 specifier|public
 name|UndoableChangeAssignment
 parameter_list|(
 name|Set
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|previousAssignment
 parameter_list|,
 name|Set
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|currentAssignment
 parameter_list|,
 name|GroupTreeNode
@@ -290,6 +314,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|it
 init|=
 name|m_previousAssignmentBackup
@@ -307,9 +334,6 @@ name|group
 operator|.
 name|addEntry
 argument_list|(
-operator|(
-name|BibtexEntry
-operator|)
 name|it
 operator|.
 name|next
@@ -352,6 +376,9 @@ expr_stmt|;
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|it
 init|=
 name|m_newAssignmentBackup
@@ -369,9 +396,6 @@ name|group
 operator|.
 name|addEntry
 argument_list|(
-operator|(
-name|BibtexEntry
-operator|)
 name|it
 operator|.
 name|next

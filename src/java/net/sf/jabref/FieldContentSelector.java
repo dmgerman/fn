@@ -654,6 +654,9 @@ literal|""
 argument_list|)
 expr_stmt|;
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|items
 init|=
 name|metaData
@@ -678,6 +681,9 @@ literal|null
 condition|)
 block|{
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|i
 init|=
 name|items

@@ -901,7 +901,10 @@ operator|==
 literal|null
 condition|)
 return|return;
-name|Object
+name|List
+argument_list|<
+name|String
+argument_list|>
 name|rl
 init|=
 name|reqLists
@@ -1101,12 +1104,6 @@ name|reqComp
 operator|.
 name|setFields
 argument_list|(
-operator|(
-name|List
-argument_list|<
-name|String
-argument_list|>
-operator|)
 name|rl
 argument_list|)
 expr_stmt|;
@@ -1175,6 +1172,9 @@ argument_list|)
 expr_stmt|;
 comment|// Iterate over our map of required fields, and list those types if necessary:
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|types
 init|=
 name|typeComp
@@ -1225,6 +1225,9 @@ argument_list|)
 condition|)
 continue|continue;
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|reqFields
 init|=
 name|reqLists
@@ -1235,6 +1238,9 @@ name|typeName
 argument_list|)
 decl_stmt|;
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|optFields
 init|=
 name|optLists
@@ -1257,6 +1263,8 @@ name|size
 argument_list|()
 index|]
 decl_stmt|;
+name|reqStr
+operator|=
 name|reqFields
 operator|.
 name|toArray
@@ -1277,6 +1285,8 @@ name|size
 argument_list|()
 index|]
 decl_stmt|;
+name|optStr
+operator|=
 name|optFields
 operator|.
 name|toArray
@@ -1893,13 +1903,6 @@ operator|==
 literal|0
 condition|)
 return|return;
-comment|//messageLabel.setText(Globals.lang("Updating entries..."));
-name|BibtexDatabase
-name|base
-decl_stmt|;
-name|Iterator
-name|iter
-decl_stmt|;
 for|for
 control|(
 name|int
@@ -1937,11 +1940,7 @@ argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
-name|boolean
-name|anyChanges
-init|=
-literal|false
-decl_stmt|;
+comment|// Invalidate associated cached entry editor
 name|bp
 operator|.
 name|entryEditors
@@ -1951,57 +1950,26 @@ argument_list|(
 name|typeName
 argument_list|)
 expr_stmt|;
-comment|//bp.rcm.populateTypeMenu(); // Update type menu for change type.
-name|base
-operator|=
+for|for
+control|(
+name|BibtexEntry
+name|entry
+range|:
 name|bp
 operator|.
 name|database
 argument_list|()
-expr_stmt|;
-name|iter
-operator|=
-name|base
 operator|.
-name|getKeySet
+name|getEntries
 argument_list|()
-operator|.
-name|iterator
-argument_list|()
-expr_stmt|;
-while|while
-condition|(
-name|iter
-operator|.
-name|hasNext
-argument_list|()
-condition|)
+control|)
 block|{
-name|anyChanges
-operator|=
-name|anyChanges
-operator||
-operator|!
-operator|(
-name|base
-operator|.
-name|getEntryById
-argument_list|(
-operator|(
-name|String
-operator|)
-name|iter
-operator|.
-name|next
-argument_list|()
-argument_list|)
-operator|)
+name|entry
 operator|.
 name|updateType
 argument_list|()
 expr_stmt|;
 block|}
-comment|/*if (anyChanges) {                 bp.refreshTable();                 bp.markBaseChanged();             }*/
 block|}
 block|}
 DECL|method|updateTables ()

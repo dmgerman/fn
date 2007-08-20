@@ -195,7 +195,7 @@ literal|".ods"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|performExport (final BibtexDatabase database, final String file, final String encoding, Set keySet)
+DECL|method|performExport (final BibtexDatabase database, final String file, final String encoding, Set<String> keySet)
 specifier|public
 name|void
 name|performExport
@@ -213,6 +213,9 @@ name|String
 name|encoding
 parameter_list|,
 name|Set
+argument_list|<
+name|String
+argument_list|>
 name|keySet
 parameter_list|)
 throws|throws
@@ -347,7 +350,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|exportOpenDocumentSpreadsheet (File file, BibtexDatabase database, Set keySet)
+DECL|method|exportOpenDocumentSpreadsheet (File file, BibtexDatabase database, Set<String> keySet)
 specifier|public
 specifier|static
 name|void
@@ -360,6 +363,9 @@ name|BibtexDatabase
 name|database
 parameter_list|,
 name|Set
+argument_list|<
+name|String
+argument_list|>
 name|keySet
 parameter_list|)
 throws|throws
@@ -415,7 +421,7 @@ name|delete
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|exportOpenDocumentSpreadsheetXML (File tmpFile, BibtexDatabase database, Set keySet)
+DECL|method|exportOpenDocumentSpreadsheetXML (File tmpFile, BibtexDatabase database, Set<String> keySet)
 specifier|public
 specifier|static
 name|void
@@ -428,6 +434,9 @@ name|BibtexDatabase
 name|database
 parameter_list|,
 name|Set
+argument_list|<
+name|String
+argument_list|>
 name|keySet
 parameter_list|)
 block|{

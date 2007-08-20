@@ -215,7 +215,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author Michael Wrighton  *  * TODO To change the template for this generated type comment go to  * Window - Preferences - Java - Code Style - Code Templates  */
+comment|/**  * @author Michael Wrighton  *  */
 end_comment
 
 begin_class
@@ -244,13 +244,6 @@ argument_list|<
 name|PersonName
 argument_list|>
 name|authors
-init|=
-literal|null
-decl_stmt|;
-DECL|field|editors
-specifier|protected
-name|List
-name|editors
 init|=
 literal|null
 decl_stmt|;
@@ -325,6 +318,9 @@ decl_stmt|;
 DECL|field|handledExtensions
 specifier|protected
 name|Set
+argument_list|<
+name|String
+argument_list|>
 name|handledExtensions
 decl_stmt|;
 DECL|field|host
@@ -377,6 +373,9 @@ name|handledExtensions
 operator|=
 operator|new
 name|HashSet
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
@@ -1084,39 +1083,18 @@ operator|.
 name|getName
 argument_list|()
 decl_stmt|;
-name|String
-name|result
-decl_stmt|;
-if|if
-condition|(
-name|bibtexType
-operator|.
-name|equals
-argument_list|(
-literal|"Mastersthesis"
-argument_list|)
-condition|)
-name|result
-operator|=
-literal|"theses"
-expr_stmt|;
-else|else
-name|result
-operator|=
-literal|"conference publication"
-expr_stmt|;
-comment|// etc...
+comment|/** 		 *<pre> String result; if (bibtexType.equals("Mastersthesis")) result = 		 * "theses"; else result = "conference publication"; // etc...</pre> 		 */
 return|return
 name|bibtexType
 return|;
 block|}
 DECL|method|getDOMrepresentation ()
 specifier|public
-name|Document
+name|Node
 name|getDOMrepresentation
 parameter_list|()
 block|{
-name|Document
+name|Node
 name|result
 init|=
 literal|null
@@ -1134,7 +1112,16 @@ operator|.
 name|newDocumentBuilder
 argument_list|()
 decl_stmt|;
-comment|//	result = getDOMrepresentation(d);
+name|result
+operator|=
+name|getDOMrepresentation
+argument_list|(
+name|d
+operator|.
+name|newDocument
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -1163,11 +1150,6 @@ name|Document
 name|d
 parameter_list|)
 block|{
-name|Node
-name|result
-init|=
-literal|null
-decl_stmt|;
 try|try
 block|{
 name|Element
@@ -1799,22 +1781,20 @@ block|}
 comment|/* now generate extension fields for unhandled data */
 for|for
 control|(
-name|Iterator
-name|iter
-init|=
+name|Map
+operator|.
+name|Entry
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|theEntry
+range|:
 name|extensionFields
 operator|.
 name|entrySet
 argument_list|()
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|iter
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
 name|Element
@@ -1827,27 +1807,9 @@ argument_list|(
 literal|"extension"
 argument_list|)
 decl_stmt|;
-name|Map
-operator|.
-name|Entry
-name|theEntry
-init|=
-operator|(
-name|Map
-operator|.
-name|Entry
-operator|)
-name|iter
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|String
 name|field
 init|=
-operator|(
-name|String
-operator|)
 name|theEntry
 operator|.
 name|getKey
@@ -1856,9 +1818,6 @@ decl_stmt|;
 name|String
 name|value
 init|=
-operator|(
-name|String
-operator|)
 name|theEntry
 operator|.
 name|getValue
@@ -2096,7 +2055,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/* 	 * render as XML 	 */
+comment|/* 	 * render as XML 	 *  	 * TODO This is untested. 	 *  	 */
 DECL|method|toString ()
 specifier|public
 name|String

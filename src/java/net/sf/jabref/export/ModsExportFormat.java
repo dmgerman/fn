@@ -179,7 +179,7 @@ literal|".xml"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|performExport (final BibtexDatabase database, final String file, final String encoding, Set keySet)
+DECL|method|performExport (final BibtexDatabase database, final String file, final String encoding, Set<String> keySet)
 specifier|public
 name|void
 name|performExport
@@ -197,6 +197,9 @@ name|String
 name|encoding
 parameter_list|,
 name|Set
+argument_list|<
+name|String
+argument_list|>
 name|keySet
 parameter_list|)
 throws|throws
@@ -235,7 +238,7 @@ argument_list|,
 name|keySet
 argument_list|)
 decl_stmt|;
-comment|// PS: DOES NOT SUPPORT EXPORTING ONLY A SET OF ENTRIES
+comment|// TODO: DOES NOT SUPPORT EXPORTING ONLY A SET OF ENTRIES
 try|try
 block|{
 name|DOMSource

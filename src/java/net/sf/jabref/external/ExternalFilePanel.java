@@ -232,11 +232,6 @@ specifier|private
 name|EntryEditor
 name|entryEditor
 decl_stmt|;
-DECL|field|fieldEditor
-specifier|private
-name|FieldEditor
-name|fieldEditor
-decl_stmt|;
 DECL|field|frame
 specifier|private
 name|JabRefFrame
@@ -299,7 +294,7 @@ name|fieldName
 argument_list|,
 name|off
 argument_list|,
-literal|null
+name|editor
 argument_list|)
 expr_stmt|;
 name|this
@@ -313,12 +308,6 @@ operator|.
 name|entryEditor
 operator|=
 literal|null
-expr_stmt|;
-name|this
-operator|.
-name|fieldEditor
-operator|=
-name|editor
 expr_stmt|;
 block|}
 DECL|method|ExternalFilePanel (final JabRefFrame frame, final MetaData metaData, final EntryEditor entryEditor, final String fieldName, final OpenFileFilter off, final FieldEditor editor)
@@ -373,12 +362,6 @@ operator|.
 name|entryEditor
 operator|=
 name|entryEditor
-expr_stmt|;
-name|this
-operator|.
-name|fieldEditor
-operator|=
-literal|null
 expr_stmt|;
 name|setLayout
 argument_list|(

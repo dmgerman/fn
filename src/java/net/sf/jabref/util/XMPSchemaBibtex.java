@@ -215,6 +215,9 @@ comment|/** 	 *  	 * @param field 	 * @return 	 * @derived Uses XMPSchema method
 DECL|method|getPersonList (String field)
 specifier|public
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|getPersonList
 parameter_list|(
 name|String
@@ -339,9 +342,17 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|getBagList (String bagName)
 specifier|public
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|getBagList
 parameter_list|(
 name|String
@@ -410,9 +421,17 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|getSequenceList (String seqName)
 specifier|public
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|getSequenceList
 parameter_list|(
 name|String
@@ -481,9 +500,17 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|getSequenceDateList (String seqName)
 specifier|public
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|getSequenceDateList
 parameter_list|(
 name|String
@@ -681,6 +708,11 @@ DECL|method|getAllProperties (XMPSchema schema, String namespaceName)
 specifier|public
 specifier|static
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|getAllProperties
 parameter_list|(
 name|XMPSchema
@@ -1094,15 +1126,10 @@ name|entry
 operator|.
 name|setValue
 argument_list|(
-operator|(
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getValue
 argument_list|()
-operator|)
 operator|.
 name|replaceAll
 argument_list|(
@@ -1380,6 +1407,11 @@ argument_list|)
 decl_stmt|;
 comment|// Get Text Properties
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|text
 init|=
 name|getAllProperties

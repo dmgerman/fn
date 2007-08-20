@@ -228,11 +228,6 @@ index|[
 literal|512
 index|]
 decl_stmt|;
-name|int
-name|reps
-init|=
-literal|0
-decl_stmt|;
 while|while
 condition|(
 literal|true

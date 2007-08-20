@@ -67,6 +67,15 @@ import|;
 end_import
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+block|{
+literal|"unchecked"
+block|,
+literal|"unused"
+block|}
+argument_list|)
 DECL|class|SearchExpressionLexer
 specifier|public
 class|class
@@ -160,6 +169,11 @@ name|literals
 operator|=
 operator|new
 name|Hashtable
+argument_list|<
+name|ANTLRHashString
+argument_list|,
+name|Integer
+argument_list|>
 argument_list|()
 expr_stmt|;
 name|literals

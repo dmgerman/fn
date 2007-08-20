@@ -814,6 +814,9 @@ argument_list|<
 name|BibtexEntry
 argument_list|,
 name|Set
+argument_list|<
+name|GroupTreeNode
+argument_list|>
 argument_list|>
 name|groupAdditions
 init|=
@@ -823,6 +826,9 @@ argument_list|<
 name|BibtexEntry
 argument_list|,
 name|Set
+argument_list|<
+name|GroupTreeNode
+argument_list|>
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -1362,8 +1368,6 @@ argument_list|(
 name|groupsAdd
 argument_list|,
 name|node
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 name|popup
@@ -2699,7 +2703,7 @@ name|repaint
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|insertNodes (JMenu menu, GroupTreeNode node, boolean add)
+DECL|method|insertNodes (JMenu menu, GroupTreeNode node)
 specifier|public
 name|void
 name|insertNodes
@@ -2709,9 +2713,6 @@ name|menu
 parameter_list|,
 name|GroupTreeNode
 name|node
-parameter_list|,
-name|boolean
-name|add
 parameter_list|)
 block|{
 specifier|final
@@ -2721,8 +2722,6 @@ init|=
 name|getAction
 argument_list|(
 name|node
-argument_list|,
-name|add
 argument_list|)
 decl_stmt|;
 if|if
@@ -2804,8 +2803,6 @@ name|getChildAt
 argument_list|(
 name|i
 argument_list|)
-argument_list|,
-name|add
 argument_list|)
 expr_stmt|;
 block|}
@@ -2890,8 +2887,6 @@ name|getChildAt
 argument_list|(
 name|i
 argument_list|)
-argument_list|,
-name|add
 argument_list|)
 expr_stmt|;
 name|menu
@@ -2917,37 +2912,20 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|getAction (GroupTreeNode node, boolean add)
+DECL|method|getAction (GroupTreeNode node)
 specifier|private
 name|AbstractAction
 name|getAction
 parameter_list|(
 name|GroupTreeNode
 name|node
-parameter_list|,
-name|boolean
-name|add
 parameter_list|)
 block|{
 name|AbstractAction
 name|action
 init|=
-name|add
-condition|?
-operator|(
-name|AbstractAction
-operator|)
 operator|new
 name|AddToGroupAction
-argument_list|(
-name|node
-argument_list|)
-else|:
-operator|(
-name|AbstractAction
-operator|)
-operator|new
-name|RemoveFromGroupAction
 argument_list|(
 name|node
 argument_list|)
@@ -2964,15 +2942,12 @@ name|action
 operator|.
 name|setEnabled
 argument_list|(
-comment|/*add ? */
 name|group
 operator|.
 name|supportsAdd
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//&& !group.containsAll(selection)
-comment|//        : group.supportsRemove()&& group.containsAny(selection));
 return|return
 name|action
 return|;
@@ -3141,26 +3116,6 @@ name|RemoveFromGroupAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|field|node
-specifier|private
-name|GroupTreeNode
-name|node
-decl_stmt|;
-DECL|method|RemoveFromGroupAction (GroupTreeNode node)
-specifier|public
-name|RemoveFromGroupAction
-parameter_list|(
-name|GroupTreeNode
-name|node
-parameter_list|)
-block|{
-name|this
-operator|.
-name|node
-operator|=
-name|node
-expr_stmt|;
-block|}
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -3507,6 +3462,11 @@ literal|null
 argument_list|,
 operator|new
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 argument_list|()
 argument_list|,
 name|Globals
@@ -3579,6 +3539,9 @@ argument_list|)
 expr_stmt|;
 comment|// If this entry should be added to any groups, do it now:
 name|Set
+argument_list|<
+name|GroupTreeNode
+argument_list|>
 name|groups
 init|=
 name|groupAdditions
@@ -3686,6 +3649,9 @@ block|{
 for|for
 control|(
 name|Iterator
+argument_list|<
+name|GroupTreeNode
+argument_list|>
 name|i2
 init|=
 name|groups
@@ -3703,9 +3669,6 @@ block|{
 name|GroupTreeNode
 name|node
 init|=
-operator|(
-name|GroupTreeNode
-operator|)
 name|i2
 operator|.
 name|next
@@ -4514,13 +4477,19 @@ class|class
 name|EntrySelectionListener
 implements|implements
 name|ListEventListener
+argument_list|<
+name|BibtexEntry
+argument_list|>
 block|{
-DECL|method|listChanged (ListEvent listEvent)
+DECL|method|listChanged (ListEvent<BibtexEntry> listEvent)
 specifier|public
 name|void
 name|listChanged
 parameter_list|(
 name|ListEvent
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|listEvent
 parameter_list|)
 block|{
@@ -4541,9 +4510,6 @@ name|preview
 operator|.
 name|setEntry
 argument_list|(
-operator|(
-name|BibtexEntry
-operator|)
 name|listEvent
 operator|.
 name|getSourceList
@@ -6291,6 +6257,11 @@ name|stopFetching
 parameter_list|()
 function_decl|;
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 DECL|method|setupComparatorChooser ()
 specifier|private
 name|void
@@ -6740,6 +6711,9 @@ class|class
 name|EntryTableFormat
 implements|implements
 name|TableFormat
+argument_list|<
+name|BibtexEntry
+argument_list|>
 block|{
 DECL|method|getColumnCount ()
 specifier|public
@@ -6803,26 +6777,18 @@ return|return
 literal|""
 return|;
 block|}
-DECL|method|getColumnValue (Object object, int i)
+DECL|method|getColumnValue (BibtexEntry entry, int i)
 specifier|public
 name|Object
 name|getColumnValue
 parameter_list|(
-name|Object
-name|object
+name|BibtexEntry
+name|entry
 parameter_list|,
 name|int
 name|i
 parameter_list|)
 block|{
-name|BibtexEntry
-name|entry
-init|=
-operator|(
-name|BibtexEntry
-operator|)
-name|object
-decl_stmt|;
 if|if
 condition|(
 name|i

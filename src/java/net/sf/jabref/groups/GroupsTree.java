@@ -1178,6 +1178,9 @@ expr_stmt|;
 return|return;
 block|}
 name|Enumeration
+argument_list|<
+name|TreePath
+argument_list|>
 name|expandedPaths
 init|=
 name|groupSelector
@@ -1619,7 +1622,7 @@ comment|/**      * Refresh paths that may have become invalid due to node moveme
 end_comment
 
 begin_function
-DECL|method|refreshPaths (Enumeration paths)
+DECL|method|refreshPaths (Enumeration<TreePath> paths)
 specifier|public
 name|Enumeration
 argument_list|<
@@ -1628,6 +1631,9 @@ argument_list|>
 name|refreshPaths
 parameter_list|(
 name|Enumeration
+argument_list|<
+name|TreePath
+argument_list|>
 name|paths
 parameter_list|)
 block|{
@@ -1660,18 +1666,13 @@ operator|new
 name|TreePath
 argument_list|(
 operator|(
-call|(
-name|DefaultMutableTreeNode
-call|)
-argument_list|(
 operator|(
-name|TreePath
+name|DefaultMutableTreeNode
 operator|)
 name|paths
 operator|.
 name|nextElement
 argument_list|()
-argument_list|)
 operator|.
 name|getLastPathComponent
 argument_list|()
@@ -2121,6 +2122,9 @@ block|{
 for|for
 control|(
 name|Enumeration
+argument_list|<
+name|GroupTreeNode
+argument_list|>
 name|e
 init|=
 name|node
@@ -2139,15 +2143,10 @@ argument_list|(
 operator|new
 name|TreePath
 argument_list|(
-operator|(
-operator|(
-name|GroupTreeNode
-operator|)
 name|e
 operator|.
 name|nextElement
 argument_list|()
-operator|)
 operator|.
 name|getPath
 argument_list|()
@@ -2174,6 +2173,9 @@ block|{
 for|for
 control|(
 name|Enumeration
+argument_list|<
+name|GroupTreeNode
+argument_list|>
 name|e
 init|=
 name|node
@@ -2238,6 +2240,9 @@ decl_stmt|;
 for|for
 control|(
 name|Enumeration
+argument_list|<
+name|GroupTreeNode
+argument_list|>
 name|e
 init|=
 name|node
@@ -2255,9 +2260,6 @@ block|{
 name|GroupTreeNode
 name|child
 init|=
-operator|(
-name|GroupTreeNode
-operator|)
 name|e
 operator|.
 name|nextElement
@@ -2332,6 +2334,9 @@ decl_stmt|;
 for|for
 control|(
 name|Enumeration
+argument_list|<
+name|GroupTreeNode
+argument_list|>
 name|e
 init|=
 name|node
@@ -2349,9 +2354,6 @@ block|{
 name|GroupTreeNode
 name|child
 init|=
-operator|(
-name|GroupTreeNode
-operator|)
 name|e
 operator|.
 name|nextElement

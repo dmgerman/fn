@@ -22,6 +22,16 @@ name|java
 operator|.
 name|awt
 operator|.
+name|GridBagConstraints
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
 name|event
 operator|.
 name|ActionEvent
@@ -175,11 +185,14 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 comment|/** Creates a new instance of EntryTypeList */
-DECL|method|EntryTypeList (List fields)
+DECL|method|EntryTypeList (List<String> fields)
 specifier|public
 name|EntryTypeList
 parameter_list|(
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|fields
 parameter_list|)
 block|{
@@ -215,7 +228,7 @@ name|con
 operator|.
 name|fill
 operator|=
-name|con
+name|GridBagConstraints
 operator|.
 name|VERTICAL
 expr_stmt|;
@@ -223,7 +236,7 @@ name|con
 operator|.
 name|anchor
 operator|=
-name|con
+name|GridBagConstraints
 operator|.
 name|EAST
 expr_stmt|;
@@ -461,22 +474,6 @@ argument_list|(
 name|typeName
 argument_list|)
 decl_stmt|;
-comment|// Check if there is a standard type for this name:
-name|boolean
-name|standardTypeExists
-init|=
-operator|(
-name|BibtexEntryType
-operator|.
-name|getStandardType
-argument_list|(
-name|typeName
-argument_list|)
-operator|!=
-literal|null
-operator|)
-decl_stmt|;
-comment|//System.out.println(typeName+"\t"+type.toString());
 comment|// If it is a custom entry type, we can remove it. If type == null, it means
 comment|// the user must have added it and not yet applied it, so we can remove it
 comment|// in this case as well. If it is a standard type it cannot be removed.

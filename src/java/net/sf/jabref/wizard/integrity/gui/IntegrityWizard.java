@@ -150,11 +150,6 @@ name|JDialog
 implements|implements
 name|ActionListener
 block|{
-DECL|field|_frame
-specifier|private
-name|JabRefFrame
-name|_frame
-decl_stmt|;
 DECL|field|dbase
 specifier|private
 name|BibtexDatabase
@@ -201,10 +196,6 @@ literal|false
 argument_list|)
 expr_stmt|;
 comment|// no modal
-name|_frame
-operator|=
-name|frame
-expr_stmt|;
 name|this
 operator|.
 name|basePanel

@@ -51,7 +51,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author Michael Wrighton, S M Mahbub Murshed  *  * TODO To change the template for this generated type comment go to  * Window - Preferences - Java - Code Style - Code Templates  *   * S M Mahbub Murshed : added few functions for convenience. May 15, 2007  */
+comment|/**  * @author Michael Wrighton, S M Mahbub Murshed  *  * S M Mahbub Murshed : added few functions for convenience. May 15, 2007  */
 end_comment
 
 begin_class
@@ -138,10 +138,16 @@ parameter_list|)
 block|{
 comment|// TODO: replace special characters
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 name|v
 init|=
 operator|new
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 name|String
@@ -176,9 +182,6 @@ literal|1
 condition|)
 name|surname
 operator|=
-operator|(
-name|String
-operator|)
 name|v
 operator|.
 name|get
@@ -199,9 +202,6 @@ condition|)
 block|{
 name|givenName
 operator|=
-operator|(
-name|String
-operator|)
 name|v
 operator|.
 name|get
@@ -211,9 +211,6 @@ argument_list|)
 expr_stmt|;
 name|surname
 operator|=
-operator|(
-name|String
-operator|)
 name|v
 operator|.
 name|get
@@ -226,9 +223,6 @@ else|else
 block|{
 name|givenName
 operator|=
-operator|(
-name|String
-operator|)
 name|v
 operator|.
 name|get
@@ -238,9 +232,6 @@ argument_list|)
 expr_stmt|;
 name|middleName
 operator|=
-operator|(
-name|String
-operator|)
 name|v
 operator|.
 name|get
@@ -250,9 +241,6 @@ argument_list|)
 expr_stmt|;
 name|surname
 operator|=
-operator|(
-name|String
-operator|)
 name|v
 operator|.
 name|get
