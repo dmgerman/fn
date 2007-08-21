@@ -53,7 +53,7 @@ argument_list|>
 block|{
 DECL|field|format
 specifier|private
-name|ExportFormat
+name|IExportFormat
 name|format
 decl_stmt|;
 DECL|field|extension
@@ -64,12 +64,15 @@ name|extension
 decl_stmt|,
 name|name
 decl_stmt|;
-DECL|method|ExportFileFilter (ExportFormat format)
+DECL|method|ExportFileFilter (IExportFormat format, String extension)
 specifier|public
 name|ExportFileFilter
 parameter_list|(
-name|ExportFormat
+name|IExportFormat
 name|format
+parameter_list|,
+name|String
+name|extension
 parameter_list|)
 block|{
 name|this
@@ -82,10 +85,7 @@ name|this
 operator|.
 name|extension
 operator|=
-name|format
-operator|.
-name|getExtension
-argument_list|()
+name|extension
 expr_stmt|;
 name|this
 operator|.
@@ -98,22 +98,29 @@ argument_list|()
 operator|+
 literal|" (*"
 operator|+
-name|format
-operator|.
-name|getExtension
-argument_list|()
+name|extension
 operator|+
 literal|")"
 expr_stmt|;
 block|}
 DECL|method|getExportFormat ()
 specifier|public
-name|ExportFormat
+name|IExportFormat
 name|getExportFormat
 parameter_list|()
 block|{
 return|return
 name|format
+return|;
+block|}
+DECL|method|getExtension ()
+specifier|public
+name|String
+name|getExtension
+parameter_list|()
+block|{
+return|return
+name|extension
 return|;
 block|}
 DECL|method|accept (File file)

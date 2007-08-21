@@ -248,7 +248,7 @@ name|Map
 argument_list|<
 name|String
 argument_list|,
-name|ExportFormat
+name|IExportFormat
 argument_list|>
 name|m
 init|=
@@ -257,7 +257,7 @@ operator|.
 name|getExportFormats
 argument_list|()
 decl_stmt|;
-name|ExportFormat
+name|IExportFormat
 index|[]
 name|formats
 init|=
@@ -289,7 +289,7 @@ literal|0
 decl_stmt|;
 for|for
 control|(
-name|ExportFormat
+name|IExportFormat
 name|format
 range|:
 name|m
@@ -420,7 +420,7 @@ operator|.
 name|NO_OPTION
 condition|)
 return|return;
-name|ExportFormat
+name|IExportFormat
 name|format
 init|=
 name|formats
