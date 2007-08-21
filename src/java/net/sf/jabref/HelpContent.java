@@ -190,6 +190,34 @@ name|HTMLEditorKit
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_class
 DECL|class|HelpContent
 specifier|public
@@ -198,6 +226,20 @@ name|HelpContent
 extends|extends
 name|JTextPane
 block|{
+DECL|field|log
+specifier|static
+name|Log
+name|log
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|HelpContent
+operator|.
+name|class
+argument_list|)
+decl_stmt|;
 DECL|field|pane
 name|JScrollPane
 name|pane
@@ -564,6 +606,7 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
+comment|// First check in specified language
 name|URL
 name|resource
 init|=
@@ -582,18 +625,53 @@ operator|+
 name|file
 argument_list|)
 decl_stmt|;
-comment|// Because of the call to toString(), we must test for null, or the fallback
-comment|// to english won't work if the page is missing in the selected langugage:
+comment|// If not available fallback to english
 if|if
 condition|(
 name|resource
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
-name|super
+name|resource
+operator|=
+name|JabRef
 operator|.
-name|setPage
+name|class
+operator|.
+name|getResource
+argument_list|(
+name|GUIGlobals
+operator|.
+name|helpPre
+operator|+
+name|file
+argument_list|)
+expr_stmt|;
+block|}
+comment|// If still not available print a warning
+if|if
+condition|(
+name|resource
+operator|==
+literal|null
+condition|)
+block|{
+comment|// TODO show warning to user
+name|log
+operator|.
+name|error
+argument_list|(
+literal|"Could not find html-help for file '"
+operator|+
+name|file
+operator|+
+literal|"'."
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
+name|setPageOnly
 argument_list|(
 operator|new
 name|URL
@@ -610,34 +688,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-else|else
-block|{
-name|setPageOnly
-argument_list|(
-operator|new
-name|URL
-argument_list|(
-name|HelpContent
-operator|.
-name|class
-operator|.
-name|getResource
-argument_list|(
-name|GUIGlobals
-operator|.
-name|helpPre
-operator|+
-name|file
-argument_list|)
-operator|+
-literal|"#"
-operator|+
-name|reference
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-block|}
 catch|catch
 parameter_list|(
 name|IOException
@@ -649,9 +699,6 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
-comment|// The fallback below shouldn't bee needed any more, because of the null
-comment|// check above.
-comment|/*             try { 				setPageOnly(new URL(HelpContent.class.getResource(GUIGlobals.helpPre + file) + "#" + reference)); 			} catch (MalformedURLException e) { 				setPageOnly(HelpContent.class.getResource(GUIGlobals.helpPre + file)); 			}*/
 block|}
 name|forw
 operator|.
