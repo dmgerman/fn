@@ -905,9 +905,10 @@ argument_list|(
 name|crossref
 argument_list|)
 decl_stmt|;
+comment|/**                * [ 1717849 ] Patch for aux import by Kai Eckert                */
 if|if
 condition|(
-name|entry
+name|refEntry
 operator|==
 literal|null
 condition|)
@@ -1157,7 +1158,6 @@ operator|.
 name|nestedAuxCounter
 return|;
 block|}
-comment|/*   public class FileNameString extends String   {     public boolean equals(Object anObject)     {       if (anObject == null)         return false ;        if (anObject.hashCode() == this.hashCode())         return true ;        return false ;     }   } */
 block|}
 end_class
 
