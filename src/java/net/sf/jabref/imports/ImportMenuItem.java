@@ -1442,8 +1442,27 @@ operator|.
 name|setAutomaticFields
 argument_list|(
 name|entries
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"overwriteOwner"
+argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"overwriteTimeStamp"
+argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// set timestamp and owner
 for|for
 control|(
 name|BibtexEntry

@@ -413,6 +413,8 @@ name|ExternalTab
 argument_list|(
 name|frame
 argument_list|,
+name|this
+argument_list|,
 name|prefs
 argument_list|,
 name|parent
@@ -1211,6 +1213,13 @@ expr_stmt|;
 name|frame
 operator|.
 name|removeCachedEntryEditors
+argument_list|()
+expr_stmt|;
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|updateEntryEditorTabList
 argument_list|()
 expr_stmt|;
 block|}

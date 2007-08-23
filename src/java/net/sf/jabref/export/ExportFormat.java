@@ -94,6 +94,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -119,6 +129,16 @@ operator|.
 name|util
 operator|.
 name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
 import|;
 end_import
 
@@ -368,8 +388,8 @@ name|filename
 argument_list|)
 return|;
 block|}
-comment|/** @see net.sf.jabref.export.IExportFormat#performExport(net.sf.jabref.BibtexDatabase, java.lang.String, java.lang.String, java.util.Set) */
-DECL|method|performExport (final BibtexDatabase database, final String file, final String encoding, Set<String> entryIds)
+comment|/**      * Perform the export.      * @param database The database to export from.      * @param file The filename to write to.      * @param encoding The encoding to use.      * @param keySet The set of IDs of the entries to export.      * @throws Exception      */
+DECL|method|performExport (final BibtexDatabase database, final String file, final String encoding, Set<String> keySet)
 specifier|public
 name|void
 name|performExport
@@ -390,11 +410,23 @@ name|Set
 argument_list|<
 name|String
 argument_list|>
-name|entryIds
+name|keySet
 parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|SwingUtilities
+operator|.
+name|isEventDispatchThread
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|File
 name|outFile
 init|=
@@ -414,6 +446,40 @@ argument_list|,
 name|outFile
 argument_list|)
 decl_stmt|;
+specifier|final
+name|String
+name|dir
+decl_stmt|;
+comment|// If this is a custom export, just use the given file name:
+if|if
+condition|(
+name|customExport
+condition|)
+name|dir
+operator|=
+literal|""
+expr_stmt|;
+else|else
+name|dir
+operator|=
+operator|(
+name|directory
+operator|==
+literal|null
+condition|?
+name|Globals
+operator|.
+name|LAYOUT_PREFIX
+else|:
+name|Globals
+operator|.
+name|LAYOUT_PREFIX
+operator|+
+name|directory
+operator|+
+literal|"/"
+operator|)
+expr_stmt|;
 name|VerifyingWriter
 name|ps
 init|=
@@ -422,45 +488,6 @@ operator|.
 name|getWriter
 argument_list|()
 decl_stmt|;
-name|performExport
-argument_list|(
-name|database
-argument_list|,
-name|entryIds
-argument_list|,
-name|ps
-argument_list|)
-expr_stmt|;
-name|finalizeSaveSession
-argument_list|(
-name|ss
-argument_list|)
-expr_stmt|;
-block|}
-comment|/** 	 * Perform the export of {@code database}. 	 *  	 * @param database 	 *            The database to export from. 	 * @param writer 	 *            The writer to use. 	 * @param entryIds 	 *            Contains the IDs of all entries that should be exported. If 	 *<code>null</code>, all entries will be exported. 	 * @throws IOException 	 *             if a problem occurred while trying to write to {@code writer} 	 *             or read from required resources. 	 * @throws Exception 	 *             if any other error occurred during export. 	 */
-DECL|method|performExport (final BibtexDatabase database, Set<String> entryIds, Writer writer)
-specifier|public
-name|void
-name|performExport
-parameter_list|(
-specifier|final
-name|BibtexDatabase
-name|database
-parameter_list|,
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|entryIds
-parameter_list|,
-name|Writer
-name|writer
-parameter_list|)
-throws|throws
-name|Exception
-throws|,
-name|IOException
-block|{
 comment|// Print header
 name|Layout
 name|beginLayout
@@ -474,8 +501,12 @@ try|try
 block|{
 name|reader
 operator|=
+name|FileActions
+operator|.
 name|getReader
 argument_list|(
+name|dir
+operator|+
 name|lfFileName
 operator|+
 literal|".begin.layout"
@@ -513,8 +544,7 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-comment|// If an exception was cast, export filter doesn't have a begin
-comment|// file.
+comment|//  // If an exception was cast, export filter doesn't have a begin file.
 block|}
 comment|// Write the header
 if|if
@@ -524,7 +554,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|writer
+name|ps
 operator|.
 name|write
 argument_list|(
@@ -533,12 +563,19 @@ operator|.
 name|doLayout
 argument_list|(
 name|database
+argument_list|,
+name|encoding
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
 comment|// changed section - end (arudert)
-comment|/* 		 * Write database entries; entries will be sorted as they appear on the 		 * screen, or sorted by author, depending on Preferences. We also supply 		 * the Set entries - if we are to export only certain entries, it will 		 * be non-null, and be used to choose entries. Otherwise, it will be 		 * null, and be ignored. 		 */
+comment|// Write database entries; entries will be sorted as they
+comment|// appear on the screen, or sorted by author, depending on
+comment|// Preferences.
+comment|// We also supply the Set entries - if we are to export only certain entries,
+comment|// it will be non-null, and be used to choose entries. Otherwise, it will be
+comment|// null, and be ignored.
 name|List
 argument_list|<
 name|BibtexEntry
@@ -551,7 +588,7 @@ name|getSortedEntries
 argument_list|(
 name|database
 argument_list|,
-name|entryIds
+name|keySet
 argument_list|,
 literal|false
 argument_list|)
@@ -559,8 +596,12 @@ decl_stmt|;
 comment|// Load default layout
 name|reader
 operator|=
+name|FileActions
+operator|.
 name|getReader
 argument_list|(
+name|dir
+operator|+
 name|lfFileName
 operator|+
 literal|".layout"
@@ -593,33 +634,47 @@ name|close
 argument_list|()
 expr_stmt|;
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Layout
-argument_list|>
 name|layouts
 init|=
 operator|new
 name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|Layout
-argument_list|>
 argument_list|()
 decl_stmt|;
 name|Layout
 name|layout
 decl_stmt|;
+name|Iterator
+name|i
+init|=
+name|sorted
+operator|.
+name|iterator
+argument_list|()
+decl_stmt|;
 for|for
 control|(
-name|BibtexEntry
-name|entry
-range|:
-name|sorted
+init|;
+name|i
+operator|.
+name|hasNext
+argument_list|()
+condition|;
 control|)
 block|{
+comment|// Get the entry
+name|BibtexEntry
+name|entry
+init|=
+call|(
+name|BibtexEntry
+call|)
+argument_list|(
+name|i
+operator|.
+name|next
+argument_list|()
+argument_list|)
+decl_stmt|;
 comment|// Get the layout
 name|String
 name|type
@@ -646,6 +701,9 @@ argument_list|)
 condition|)
 name|layout
 operator|=
+operator|(
+name|Layout
+operator|)
 name|layouts
 operator|.
 name|get
@@ -660,8 +718,12 @@ block|{
 comment|// We try to get a type-specific layout for this entry.
 name|reader
 operator|=
+name|FileActions
+operator|.
 name|getReader
 argument_list|(
+name|dir
+operator|+
 name|lfFileName
 operator|+
 literal|"."
@@ -711,8 +773,7 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-comment|// The exception indicates that no type-specific layout
-comment|// exists, so we
+comment|// The exception indicates that no type-specific layout exists, so we
 comment|// go with the default one.
 name|layout
 operator|=
@@ -721,7 +782,7 @@ expr_stmt|;
 block|}
 block|}
 comment|// Write the entry
-name|writer
+name|ps
 operator|.
 name|write
 argument_list|(
@@ -747,8 +808,12 @@ try|try
 block|{
 name|reader
 operator|=
+name|FileActions
+operator|.
 name|getReader
 argument_list|(
+name|dir
+operator|+
 name|lfFileName
 operator|+
 literal|".end.layout"
@@ -785,8 +850,7 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-comment|// If an exception was thrown, export filter doesn't have an end
-comment|// file.
+comment|// If an exception was thrown, export filter doesn't have an end file.
 block|}
 comment|// Write the header
 if|if
@@ -796,7 +860,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|writer
+name|ps
 operator|.
 name|write
 argument_list|(
@@ -805,10 +869,17 @@ operator|.
 name|doLayout
 argument_list|(
 name|database
+argument_list|,
+name|encoding
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|finalizeSaveSession
+argument_list|(
+name|ss
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getSaveSession (final String encoding, final File outFile)
 specifier|protected
@@ -843,8 +914,35 @@ return|return
 name|ss
 return|;
 block|}
+comment|/** @see net.sf.jabref.export.IExportFormat#getFileFilter() */
+DECL|method|getFileFilter ()
+specifier|public
+name|FileFilter
+name|getFileFilter
+parameter_list|()
+block|{
+if|if
+condition|(
+name|fileFilter
+operator|==
+literal|null
+condition|)
+name|fileFilter
+operator|=
+operator|new
+name|ExportFileFilter
+argument_list|(
+name|this
+argument_list|,
+name|extension
+argument_list|)
+expr_stmt|;
+return|return
+name|fileFilter
+return|;
+block|}
 DECL|method|finalizeSaveSession (final SaveSession ss)
-specifier|protected
+specifier|public
 name|void
 name|finalizeSaveSession
 parameter_list|(
@@ -854,8 +952,6 @@ name|ss
 parameter_list|)
 throws|throws
 name|Exception
-throws|,
-name|SaveException
 block|{
 name|ss
 operator|.
@@ -900,33 +996,6 @@ operator|.
 name|commit
 argument_list|()
 expr_stmt|;
-block|}
-comment|/** @see net.sf.jabref.export.IExportFormat#getFileFilter() */
-DECL|method|getFileFilter ()
-specifier|public
-name|FileFilter
-name|getFileFilter
-parameter_list|()
-block|{
-if|if
-condition|(
-name|fileFilter
-operator|==
-literal|null
-condition|)
-name|fileFilter
-operator|=
-operator|new
-name|ExportFileFilter
-argument_list|(
-name|this
-argument_list|,
-name|extension
-argument_list|)
-expr_stmt|;
-return|return
-name|fileFilter
-return|;
 block|}
 block|}
 end_class

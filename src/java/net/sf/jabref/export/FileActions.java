@@ -660,6 +660,13 @@ name|out
 operator|.
 name|write
 argument_list|(
+literal|"% "
+argument_list|)
+expr_stmt|;
+name|out
+operator|.
+name|write
+argument_list|(
 name|GUIGlobals
 operator|.
 name|SIGNATURE
@@ -680,6 +687,8 @@ operator|+
 name|Globals
 operator|.
 name|NEWLINE
+operator|+
+literal|"% "
 operator|+
 name|GUIGlobals
 operator|.

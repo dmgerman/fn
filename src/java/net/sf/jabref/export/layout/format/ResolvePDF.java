@@ -87,6 +87,8 @@ name|String
 name|field
 parameter_list|)
 block|{
+comment|// Search in the standard PDF directory:
+comment|/* TODO: oops, this part is not sufficient. We need access to the           database's metadata in order to check if the database overrides           the standard file directory */
 name|String
 name|dir
 init|=

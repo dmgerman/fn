@@ -394,10 +394,62 @@ literal|"Every BibtexEntry must have a type.  Instead of null, use type OTHER"
 argument_list|)
 throw|;
 block|}
+name|BibtexEntryType
+name|oldType
+init|=
+name|_type
+decl_stmt|;
+try|try
+block|{
+comment|// We set the type before throwing the changeEvent, to enable
+comment|// the change listener to access the new value if the change
+comment|// sets off a change in database sorting etc.
 name|_type
 operator|=
 name|type
 expr_stmt|;
+name|firePropertyChangedEvent
+argument_list|(
+name|GUIGlobals
+operator|.
+name|TYPE_HEADER
+argument_list|,
+name|oldType
+operator|!=
+literal|null
+condition|?
+name|oldType
+operator|.
+name|getName
+argument_list|()
+else|:
+literal|null
+argument_list|,
+name|type
+operator|!=
+literal|null
+condition|?
+name|type
+operator|.
+name|getName
+argument_list|()
+else|:
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|PropertyVetoException
+name|pve
+parameter_list|)
+block|{
+name|pve
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 comment|/**      * Prompts the entry to call BibtexEntryType.getType(String) with      * its current type name as argument, and sets its type according      * to what is returned. This method is called when a user changes      * the type customization, to make sure all entries are set with      * current types.      * @return true if the entry could find a type, false if not (in      * this case the type will have been set to      * BibtexEntryType.TYPELESS).      */
 DECL|method|updateType ()

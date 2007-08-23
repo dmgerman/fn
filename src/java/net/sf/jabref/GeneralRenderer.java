@@ -83,7 +83,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: May 30, 2005  * Time: 9:43:45 PM  * To change this template use File | Settings | File Templates.  */
+comment|/**  * Renderer for table cells, which supports both Icons, JLabels and plain text.  */
 end_comment
 
 begin_class
@@ -95,30 +95,16 @@ comment|/*extends JTable implements TableCellRenderer {*/
 extends|extends
 name|DefaultTableCellRenderer
 block|{
-DECL|field|antialiasing
-specifier|private
-name|boolean
-name|antialiasing
-decl_stmt|;
-DECL|method|GeneralRenderer (Color c, boolean antialiasing)
+DECL|method|GeneralRenderer (Color c)
 specifier|public
 name|GeneralRenderer
 parameter_list|(
 name|Color
 name|c
-parameter_list|,
-name|boolean
-name|antialiasing
 parameter_list|)
 block|{
 name|super
 argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|antialiasing
-operator|=
-name|antialiasing
 expr_stmt|;
 name|setBackground
 argument_list|(
@@ -126,7 +112,7 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|GeneralRenderer (Color c, Color fg, boolean antialiasing)
+DECL|method|GeneralRenderer (Color c, Color fg)
 specifier|public
 name|GeneralRenderer
 parameter_list|(
@@ -135,16 +121,11 @@ name|c
 parameter_list|,
 name|Color
 name|fg
-parameter_list|,
-name|boolean
-name|antialiasing
 parameter_list|)
 block|{
 name|this
 argument_list|(
 name|c
-argument_list|,
-name|antialiasing
 argument_list|)
 expr_stmt|;
 name|setForeground
@@ -299,79 +280,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|paint (Graphics g)
-specifier|public
-name|void
-name|paint
-parameter_list|(
-name|Graphics
-name|g
-parameter_list|)
-block|{
-name|Graphics2D
-name|g2
-init|=
-operator|(
-name|Graphics2D
-operator|)
-name|g
-decl_stmt|;
-comment|//System.out.println(antialiasing);
-if|if
-condition|(
-name|antialiasing
-condition|)
-block|{
-name|RenderingHints
-name|rh
-init|=
-name|g2
-operator|.
-name|getRenderingHints
-argument_list|()
-decl_stmt|;
-name|rh
-operator|.
-name|put
-argument_list|(
-name|RenderingHints
-operator|.
-name|KEY_ANTIALIASING
-argument_list|,
-name|RenderingHints
-operator|.
-name|VALUE_ANTIALIAS_ON
-argument_list|)
-expr_stmt|;
-name|rh
-operator|.
-name|put
-argument_list|(
-name|RenderingHints
-operator|.
-name|KEY_RENDERING
-argument_list|,
-name|RenderingHints
-operator|.
-name|VALUE_RENDER_QUALITY
-argument_list|)
-expr_stmt|;
-name|g2
-operator|.
-name|setRenderingHints
-argument_list|(
-name|rh
-argument_list|)
-expr_stmt|;
-block|}
-name|super
-operator|.
-name|paint
-argument_list|(
-name|g2
-argument_list|)
-expr_stmt|;
-block|}
+comment|/*  public void paint(Graphics g) {         Graphics2D g2 = (Graphics2D)g;         //System.out.println(antialiasing);         if (antialiasing) {             RenderingHints rh = g2.getRenderingHints();             rh.put(RenderingHints.KEY_ANTIALIASING,                 RenderingHints.VALUE_ANTIALIAS_ON);             rh.put(RenderingHints.KEY_RENDERING,                 RenderingHints.VALUE_RENDER_QUALITY);             g2.setRenderingHints(rh);         }           super.paint(g2);      }*/
 block|}
 end_class
 

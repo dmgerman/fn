@@ -224,8 +224,17 @@ name|JDialog
 block|{
 DECL|field|frame
 specifier|private
-name|JabRefFrame
+name|JFrame
 name|frame
+init|=
+literal|null
+decl_stmt|;
+DECL|field|dialog
+specifier|private
+name|JDialog
+name|dialog
+init|=
+literal|null
 decl_stmt|;
 DECL|field|fileTypes
 specifier|private
@@ -349,11 +358,11 @@ operator|new
 name|EditListener
 argument_list|()
 decl_stmt|;
-DECL|method|ExternalFileTypeEditor (JabRefFrame frame)
+DECL|method|ExternalFileTypeEditor (JFrame frame)
 specifier|public
 name|ExternalFileTypeEditor
 parameter_list|(
-name|JabRefFrame
+name|JFrame
 name|frame
 parameter_list|)
 block|{
@@ -376,6 +385,38 @@ operator|.
 name|frame
 operator|=
 name|frame
+expr_stmt|;
+name|init
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|ExternalFileTypeEditor (JDialog dialog)
+specifier|public
+name|ExternalFileTypeEditor
+parameter_list|(
+name|JDialog
+name|dialog
+parameter_list|)
+block|{
+name|super
+argument_list|(
+name|dialog
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Manage external file types"
+argument_list|)
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|dialog
+operator|=
+name|dialog
 expr_stmt|;
 name|init
 argument_list|()
@@ -429,6 +470,9 @@ name|types
 index|[
 name|i
 index|]
+operator|.
+name|copy
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -932,9 +976,21 @@ expr_stmt|;
 name|pack
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|frame
+operator|!=
+literal|null
+condition|)
 name|setLocationRelativeTo
 argument_list|(
 name|frame
+argument_list|)
+expr_stmt|;
+else|else
+name|setLocationRelativeTo
+argument_list|(
+name|dialog
 argument_list|)
 expr_stmt|;
 block|}
@@ -977,7 +1033,7 @@ return|return
 name|entryEditor
 return|;
 block|}
-comment|/**      * Get an AbstractAction for opening the external file types editor.      * @param frame The JabRefFrame used as parent window for the dialog.      * @return An Action for opening the editor.      */
+comment|/**      * Get an AbstractAction for opening the external file types editor.      * @param frame The JFrame used as parent window for the dialog.      * @return An Action for opening the editor.      */
 DECL|method|getAction (JabRefFrame frame)
 specifier|public
 specifier|static
@@ -993,6 +1049,25 @@ operator|new
 name|EditExternalFileTypesAction
 argument_list|(
 name|frame
+argument_list|)
+return|;
+block|}
+comment|/**      * Get an AbstractAction for opening the external file types editor.      * @param dialog The JDialog used as parent window for the dialog.      * @return An Action for opening the editor.      */
+DECL|method|getAction (JDialog dialog)
+specifier|public
+specifier|static
+name|AbstractAction
+name|getAction
+parameter_list|(
+name|JDialog
+name|dialog
+parameter_list|)
+block|{
+return|return
+operator|new
+name|EditExternalFileTypesAction
+argument_list|(
+name|dialog
 argument_list|)
 return|;
 block|}
@@ -1575,8 +1650,17 @@ name|MnemonicAwareAction
 block|{
 DECL|field|frame
 specifier|private
-name|JabRefFrame
+name|JFrame
 name|frame
+init|=
+literal|null
+decl_stmt|;
+DECL|field|dialog
+specifier|private
+name|JDialog
+name|dialog
+init|=
+literal|null
 decl_stmt|;
 DECL|field|editor
 name|ExternalFileTypeEditor
@@ -1584,11 +1668,11 @@ name|editor
 init|=
 literal|null
 decl_stmt|;
-DECL|method|EditExternalFileTypesAction (JabRefFrame frame)
+DECL|method|EditExternalFileTypesAction (JFrame frame)
 specifier|public
 name|EditExternalFileTypesAction
 parameter_list|(
-name|JabRefFrame
+name|JFrame
 name|frame
 parameter_list|)
 block|{
@@ -1609,6 +1693,31 @@ operator|=
 name|frame
 expr_stmt|;
 block|}
+DECL|method|EditExternalFileTypesAction (JDialog dialog)
+specifier|public
+name|EditExternalFileTypesAction
+parameter_list|(
+name|JDialog
+name|dialog
+parameter_list|)
+block|{
+name|super
+argument_list|()
+expr_stmt|;
+name|putValue
+argument_list|(
+name|NAME
+argument_list|,
+literal|"Manage external file types"
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|dialog
+operator|=
+name|dialog
+expr_stmt|;
+block|}
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1625,6 +1734,12 @@ operator|==
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|frame
+operator|!=
+literal|null
+condition|)
 name|editor
 operator|=
 operator|new
@@ -1633,7 +1748,21 @@ argument_list|(
 name|frame
 argument_list|)
 expr_stmt|;
+else|else
+name|editor
+operator|=
+operator|new
+name|ExternalFileTypeEditor
+argument_list|(
+name|dialog
+argument_list|)
+expr_stmt|;
 block|}
+name|editor
+operator|.
+name|setValues
+argument_list|()
+expr_stmt|;
 name|editor
 operator|.
 name|setVisible

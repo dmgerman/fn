@@ -857,6 +857,30 @@ argument_list|(
 name|j
 argument_list|)
 decl_stmt|;
+comment|// See if the link looks like an URL:
+name|boolean
+name|httpLink
+init|=
+name|flEntry
+operator|.
+name|getLink
+argument_list|()
+operator|.
+name|toLowerCase
+argument_list|()
+operator|.
+name|startsWith
+argument_list|(
+literal|"http"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|httpLink
+condition|)
+continue|continue;
+comment|// Don't check the remote file.
+comment|// TODO: should there be an option to check remote links?
 comment|// Get an absolute path representation:
 name|File
 name|file

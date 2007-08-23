@@ -659,13 +659,7 @@ argument_list|(
 name|p
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|Globals
-operator|.
-name|ON_MAC
-condition|)
-block|{
+comment|//if (Globals.ON_MAC) {
 name|builder
 operator|.
 name|nextLine
@@ -679,7 +673,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Mac file dialog"
+literal|"Native file dialog"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -704,7 +698,7 @@ argument_list|(
 name|useNativeFileDialogOnMac
 argument_list|)
 expr_stmt|;
-block|}
+comment|//}
 name|pan
 operator|=
 name|builder

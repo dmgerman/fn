@@ -2341,18 +2341,6 @@ name|void
 name|updateRenderers
 parameter_list|()
 block|{
-name|boolean
-name|antialiasing
-init|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-literal|"antialias"
-argument_list|)
-decl_stmt|;
 name|defRenderer
 operator|=
 operator|new
@@ -2375,8 +2363,6 @@ name|getColor
 argument_list|(
 literal|"tableText"
 argument_list|)
-argument_list|,
-name|antialiasing
 argument_list|)
 expr_stmt|;
 name|reqRenderer
@@ -2401,8 +2387,6 @@ name|getColor
 argument_list|(
 literal|"tableText"
 argument_list|)
-argument_list|,
-name|antialiasing
 argument_list|)
 expr_stmt|;
 name|optRenderer
@@ -2427,17 +2411,13 @@ name|getColor
 argument_list|(
 literal|"tableText"
 argument_list|)
-argument_list|,
-name|antialiasing
 argument_list|)
 expr_stmt|;
 name|incRenderer
 operator|=
 operator|new
 name|IncompleteRenderer
-argument_list|(
-name|antialiasing
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|compRenderer
 operator|=
@@ -2452,8 +2432,6 @@ name|getColor
 argument_list|(
 literal|"tableBackground"
 argument_list|)
-argument_list|,
-name|antialiasing
 argument_list|)
 expr_stmt|;
 name|markedNumberRenderer
@@ -2469,8 +2447,6 @@ name|getColor
 argument_list|(
 literal|"markedEntryBackground"
 argument_list|)
-argument_list|,
-name|antialiasing
 argument_list|)
 expr_stmt|;
 name|grayedOutNumberRenderer
@@ -2486,8 +2462,6 @@ name|getColor
 argument_list|(
 literal|"grayedOutBackground"
 argument_list|)
-argument_list|,
-name|antialiasing
 argument_list|)
 expr_stmt|;
 name|veryGrayedOutNumberRenderer
@@ -2503,8 +2477,6 @@ name|getColor
 argument_list|(
 literal|"veryGrayedOutBackground"
 argument_list|)
-argument_list|,
-name|antialiasing
 argument_list|)
 expr_stmt|;
 name|grayedOutRenderer
@@ -2529,8 +2501,6 @@ name|getColor
 argument_list|(
 literal|"grayedOutText"
 argument_list|)
-argument_list|,
-name|antialiasing
 argument_list|)
 expr_stmt|;
 name|veryGrayedOutRenderer
@@ -2555,8 +2525,6 @@ name|getColor
 argument_list|(
 literal|"veryGrayedOutText"
 argument_list|)
-argument_list|,
-name|antialiasing
 argument_list|)
 expr_stmt|;
 name|markedRenderer
@@ -2581,8 +2549,6 @@ name|getColor
 argument_list|(
 literal|"tableText"
 argument_list|)
-argument_list|,
-name|antialiasing
 argument_list|)
 expr_stmt|;
 block|}
@@ -2593,13 +2559,10 @@ name|IncompleteRenderer
 extends|extends
 name|GeneralRenderer
 block|{
-DECL|method|IncompleteRenderer (boolean antialiasing)
+DECL|method|IncompleteRenderer ()
 specifier|public
 name|IncompleteRenderer
-parameter_list|(
-name|boolean
-name|antialiasing
-parameter_list|)
+parameter_list|()
 block|{
 name|super
 argument_list|(
@@ -2611,8 +2574,6 @@ name|getColor
 argument_list|(
 literal|"incompleteEntryBackground"
 argument_list|)
-argument_list|,
-name|antialiasing
 argument_list|)
 expr_stmt|;
 name|super
@@ -2669,22 +2630,17 @@ name|CompleteRenderer
 extends|extends
 name|GeneralRenderer
 block|{
-DECL|method|CompleteRenderer (Color color, boolean antialiasing)
+DECL|method|CompleteRenderer (Color color)
 specifier|public
 name|CompleteRenderer
 parameter_list|(
 name|Color
 name|color
-parameter_list|,
-name|boolean
-name|antialiasing
 parameter_list|)
 block|{
 name|super
 argument_list|(
 name|color
-argument_list|,
-name|antialiasing
 argument_list|)
 expr_stmt|;
 block|}

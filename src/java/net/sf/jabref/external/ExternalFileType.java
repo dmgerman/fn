@@ -317,6 +317,45 @@ operator|=
 name|openWith
 expr_stmt|;
 block|}
+comment|/**      * Set the string associated with this file type's icon. The string is used      * to get the actual icon by the method GUIGlobals.getIcon(String)      * @param name The icon name to use.      */
+DECL|method|setIconName (String name)
+specifier|public
+name|void
+name|setIconName
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+name|this
+operator|.
+name|iconName
+operator|=
+name|name
+expr_stmt|;
+name|this
+operator|.
+name|icon
+operator|=
+name|GUIGlobals
+operator|.
+name|getImage
+argument_list|(
+name|iconName
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Get the string associated with this file type's icon. The string is used      * to get the actual icon by the method GUIGlobals.getIcon(String)      * @return The icon name.      */
+DECL|method|getIconName ()
+specifier|public
+name|String
+name|getIconName
+parameter_list|()
+block|{
+return|return
+name|iconName
+return|;
+block|}
 DECL|method|getIcon ()
 specifier|public
 name|ImageIcon
@@ -373,6 +412,26 @@ name|o
 operator|.
 name|getName
 argument_list|()
+argument_list|)
+return|;
+block|}
+DECL|method|copy ()
+specifier|public
+name|ExternalFileType
+name|copy
+parameter_list|()
+block|{
+return|return
+operator|new
+name|ExternalFileType
+argument_list|(
+name|name
+argument_list|,
+name|extension
+argument_list|,
+name|openWith
+argument_list|,
+name|iconName
 argument_list|)
 return|;
 block|}

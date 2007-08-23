@@ -639,40 +639,7 @@ argument_list|)
 expr_stmt|;
 comment|//        back.add("bad end (" +fieldName +" field)");
 block|}
-if|if
-condition|(
-name|structure
-operator|.
-name|indexOf
-argument_list|(
-literal|"NN,NN"
-argument_list|)
-operator|>
-operator|-
-literal|1
-condition|)
-block|{
-name|messages
-operator|.
-name|add
-argument_list|(
-operator|new
-name|IntegrityMessage
-argument_list|(
-name|IntegrityMessage
-operator|.
-name|NAME_SEMANTIC_WARNING
-argument_list|,
-name|entry
-argument_list|,
-name|fieldName
-argument_list|,
-literal|null
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|//        back.add("something could be wrong in " +fieldName +" field") ;
-block|}
+comment|/*if (structure.indexOf("NN,NN")> -1)       {         messages.add( new IntegrityMessage( IntegrityMessage.NAME_SEMANTIC_WARNING,                                             entry, fieldName, null))  ;  //        back.add("something could be wrong in " +fieldName +" field") ;       } */
 block|}
 comment|//    messages.add( new IntegrityMessage( IntegrityMessage.NAME_END_WARNING,
 comment|//                                        entry, fieldName, null))  ;

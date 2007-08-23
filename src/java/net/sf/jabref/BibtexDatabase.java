@@ -1310,7 +1310,7 @@ return|return
 name|results
 return|;
 block|}
-comment|/** 	 * Take the given BibtexEntry and resolve any string references. 	 *  	 * @param entriy 	 *            A BibtexEntry in which all strings of the form #xxx# will be 	 *            resolved against the hash map of string references stored in 	 *            the databasee. 	 *  	 * @param inPlace 	 *            If inPlace is true then the given BibtexEntry will be 	 *            modified, if false then a copy is made using close made before 	 *            resolving the strings. 	 *  	 * @return a BibtexEntry with all string references resolved. It is 	 *         dependent on the value of inPlace whether a copy is made or the 	 *         given BibtexEntries is modified. 	 */
+comment|/** 	 * Take the given BibtexEntry and resolve any string references. 	 *  	 * @param entry 	 *            A BibtexEntry in which all strings of the form #xxx# will be 	 *            resolved against the hash map of string references stored in 	 *            the databasee. 	 *  	 * @param inPlace 	 *            If inPlace is true then the given BibtexEntry will be 	 *            modified, if false then a copy is made using close made before 	 *            resolving the strings. 	 *  	 * @return a BibtexEntry with all string references resolved. It is 	 *         dependent on the value of inPlace whether a copy is made or the 	 *         given BibtexEntries is modified. 	 */
 DECL|method|resolveForStrings (BibtexEntry entry, boolean inPlace)
 specifier|public
 name|BibtexEntry

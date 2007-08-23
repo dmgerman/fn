@@ -221,6 +221,13 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+name|datePicker
+operator|.
+name|setShowTodayButton
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 name|panel
 operator|.
 name|setLayout

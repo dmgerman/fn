@@ -863,6 +863,22 @@ operator|.
 name|length
 argument_list|()
 decl_stmt|;
+comment|// Instantiate logger:
+DECL|field|logger
+specifier|private
+specifier|static
+name|Logger
+name|logger
+init|=
+name|Logger
+operator|.
+name|getLogger
+argument_list|(
+name|Logger
+operator|.
+name|GLOBAL_LOGGER_NAME
+argument_list|)
+decl_stmt|;
 comment|/** 	 * true if we have unix newlines 	 */
 DECL|field|UNIX_NEWLINE
 specifier|public
@@ -898,9 +914,7 @@ name|String
 name|s
 parameter_list|)
 block|{
-name|Logger
-operator|.
-name|global
+name|logger
 operator|.
 name|info
 argument_list|(
@@ -916,9 +930,7 @@ name|turnOffLogging
 parameter_list|()
 block|{
 comment|// only log exceptions
-name|Logger
-operator|.
-name|global
+name|logger
 operator|.
 name|setLevel
 argument_list|(
@@ -942,9 +954,7 @@ name|void
 name|turnOnConsoleLogging
 parameter_list|()
 block|{
-name|Logger
-operator|.
-name|global
+name|logger
 operator|.
 name|addHandler
 argument_list|(
@@ -960,9 +970,7 @@ name|void
 name|turnOnFileLogging
 parameter_list|()
 block|{
-name|Logger
-operator|.
-name|global
+name|logger
 operator|.
 name|setLevel
 argument_list|(
@@ -992,9 +1000,7 @@ operator|new
 name|ConsoleHandler
 argument_list|()
 expr_stmt|;
-name|Logger
-operator|.
-name|global
+name|logger
 operator|.
 name|addHandler
 argument_list|(
@@ -1756,7 +1762,7 @@ literal|"}"
 return|;
 comment|/* 		 * As of version 2.0, storing all fields with double braces is no longer 		 * supported, because it causes problems with e.g. the author field. 		 *  		 * if (prefs.getBoolean("autoDoubleBraces")) return "}}"; else 		 */
 block|}
-comment|/** 	 * Will return the names of multiple files selected in the given directory 	 * and the given extensions. 	 *  	 * Will return an empty String array if no entry is found. 	 *  	 * @param owner 	 * @param directory 	 * @param extension 	 * @param updateWorkingdirectory 	 * @return 	 */
+comment|/** 	 * Will return the names of multiple files selected in the given directory 	 * and the given extensions. 	 *  	 * Will return an empty String array if no entry is found. 	 *  	 * @param owner 	 * @param directory 	 * @param extension 	 * @param updateWorkingdirectory 	 * @return an array of selected file paths, or an empty array if no selection is made. 	 */
 DECL|method|getMultipleFiles (JFrame owner, File directory, String extension, boolean updateWorkingdirectory)
 specifier|public
 specifier|static
@@ -2244,8 +2250,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|ON_MAC
-operator|&&
+comment|/*ON_MAC&& */
 name|prefs
 operator|.
 name|getBoolean
@@ -2275,8 +2280,6 @@ return|;
 block|}
 name|JFileChooser
 name|fc
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{
@@ -3776,7 +3779,7 @@ literal|"&#270;"
 argument_list|)
 expr_stmt|;
 comment|// "Dcaron"
-comment|// Symbol #271 (d´) has no special Latex command
+comment|// Symbol #271 (dï¿½) has no special Latex command
 name|HTMLCHARS
 operator|.
 name|put
@@ -4200,8 +4203,8 @@ literal|"&#316;"
 argument_list|)
 expr_stmt|;
 comment|// "lcedil"
-comment|// Symbol #317 (L´) has no special Latex command
-comment|// Symbol #318 (l´) has no special Latex command
+comment|// Symbol #317 (Lï¿½) has no special Latex command
+comment|// Symbol #318 (lï¿½) has no special Latex command
 name|HTMLCHARS
 operator|.
 name|put
@@ -4302,7 +4305,7 @@ literal|"&#328;"
 argument_list|)
 expr_stmt|;
 comment|// "ncaron"
-comment|// Symbol #329 (´n) has no special Latex command
+comment|// Symbol #329 (ï¿½n) has no special Latex command
 name|HTMLCHARS
 operator|.
 name|put
@@ -4573,7 +4576,7 @@ literal|"&#356;"
 argument_list|)
 expr_stmt|;
 comment|// "Tcaron"
-comment|// Symbol #357 (t´) has no special Latex command
+comment|// Symbol #357 (tï¿½) has no special Latex command
 name|HTMLCHARS
 operator|.
 name|put
@@ -4825,6 +4828,16 @@ argument_list|)
 expr_stmt|;
 comment|// "zcaron"
 comment|// Symbol #383 (f) has no special Latex command
+name|HTMLCHARS
+operator|.
+name|put
+argument_list|(
+literal|"%"
+argument_list|,
+literal|"%"
+argument_list|)
+expr_stmt|;
+comment|// percent sign
 name|XML_CHARS
 operator|.
 name|put
@@ -7473,7 +7486,7 @@ literal|"\\u270D"
 argument_list|)
 expr_stmt|;
 comment|// "Dcaron"
-comment|// Symbol #271 (d´) has no special Latex command
+comment|// Symbol #271 (dï¿½) has no special Latex command
 name|RTFCHARS
 operator|.
 name|put
@@ -7897,8 +7910,8 @@ literal|"\\u316l"
 argument_list|)
 expr_stmt|;
 comment|// "lcedil"
-comment|// Symbol #317 (L´) has no special Latex command
-comment|// Symbol #318 (l´) has no special Latex command
+comment|// Symbol #317 (Lï¿½) has no special Latex command
+comment|// Symbol #318 (lï¿½) has no special Latex command
 name|RTFCHARS
 operator|.
 name|put
@@ -7999,7 +8012,7 @@ literal|"\\u328n"
 argument_list|)
 expr_stmt|;
 comment|// "ncaron"
-comment|// Symbol #329 (´n) has no special Latex command
+comment|// Symbol #329 (ï¿½n) has no special Latex command
 name|RTFCHARS
 operator|.
 name|put
@@ -8270,7 +8283,7 @@ literal|"\\u356T"
 argument_list|)
 expr_stmt|;
 comment|// "Tcaron"
-comment|// Symbol #357 (t´) has no special Latex command
+comment|// Symbol #357 (tï¿½) has no special Latex command
 name|RTFCHARS
 operator|.
 name|put

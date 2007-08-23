@@ -2094,35 +2094,9 @@ init|=
 name|parseTextToken
 argument_list|()
 decl_stmt|;
-try|try
-block|{
-comment|// Fixme: What is this for?
-name|value
-operator|.
-name|append
-argument_list|(
-name|String
-operator|.
-name|valueOf
-argument_list|(
-name|Integer
-operator|.
-name|parseInt
-argument_list|(
-name|numString
-argument_list|)
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|NumberFormatException
-name|e
-parameter_list|)
-block|{
-comment|// If Integer could not be parsed then just add the text
-comment|// Used to fix [ 1594123 ] Failure to import big numbers
+comment|// Morten Alver 2007-07-04: I don't see the point of parsing the integer
+comment|// and converting it back to a string, so I'm removing the construct below
+comment|// the following line:
 name|value
 operator|.
 name|append
@@ -2130,7 +2104,7 @@ argument_list|(
 name|numString
 argument_list|)
 expr_stmt|;
-block|}
+comment|/*                 try { 					// Fixme: What is this for? 					value.append(String.valueOf(Integer.parseInt(numString))); 				} catch (NumberFormatException e) { 					// If Integer could not be parsed then just add the text 					// Used to fix [ 1594123 ] Failure to import big numbers 					value.append(numString); 				} 				*/
 block|}
 elseif|else
 if|if
@@ -3573,12 +3547,12 @@ expr_stmt|;
 if|if
 condition|(
 operator|(
-operator|(
 name|piv
 operator|==
 literal|0
 operator|)
 operator|&&
+operator|(
 name|Character
 operator|.
 name|isWhitespace
@@ -3588,9 +3562,20 @@ name|char
 operator|)
 name|c
 argument_list|)
-operator|)
 operator|||
 operator|(
+name|c
+operator|==
+literal|'%'
+operator|)
+operator|)
+condition|)
+name|read
+argument_list|()
+expr_stmt|;
+elseif|else
+if|if
+condition|(
 name|c
 operator|==
 name|GUIGlobals
@@ -3601,7 +3586,6 @@ name|charAt
 argument_list|(
 name|piv
 argument_list|)
-operator|)
 condition|)
 block|{
 name|piv

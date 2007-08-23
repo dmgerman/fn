@@ -1276,6 +1276,28 @@ return|return
 name|fieldEntry
 return|;
 block|}
+case|case
+name|LayoutHelper
+operator|.
+name|IS_ENCODING_NAME
+case|:
+block|{
+comment|// Printing the encoding name is not supported in entry layouts, only
+comment|// in begin/end layouts. This prevents breakage if some users depend
+comment|// on a field called "encoding". We simply return this field instead:
+return|return
+name|BibtexDatabase
+operator|.
+name|getResolvedField
+argument_list|(
+literal|"encoding"
+argument_list|,
+name|bibtex
+argument_list|,
+name|database
+argument_list|)
+return|;
+block|}
 default|default:
 return|return
 literal|""
@@ -1284,13 +1306,16 @@ block|}
 block|}
 comment|// added section - begin (arudert)
 comment|/** 	 * Do layout for general formatters (no bibtex-entry fields). 	 *  	 * @param database 	 *            Bibtex Database 	 * @return 	 */
-DECL|method|doLayout (BibtexDatabase database)
+DECL|method|doLayout (BibtexDatabase database, String encoding)
 specifier|public
 name|String
 name|doLayout
 parameter_list|(
 name|BibtexDatabase
 name|database
+parameter_list|,
+name|String
+name|encoding
 parameter_list|)
 block|{
 if|if
@@ -1320,7 +1345,7 @@ throw|throw
 operator|new
 name|UnsupportedOperationException
 argument_list|(
-literal|"bibtext entry fields not allowed in begin or end layout"
+literal|"bibtex entry fields not allowed in begin or end layout"
 argument_list|)
 throw|;
 block|}
@@ -1442,6 +1467,20 @@ block|}
 block|}
 return|return
 name|field
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|type
+operator|==
+name|LayoutHelper
+operator|.
+name|IS_ENCODING_NAME
+condition|)
+block|{
+return|return
+name|encoding
 return|;
 block|}
 return|return
@@ -1799,6 +1838,42 @@ argument_list|,
 name|classPrefix
 argument_list|)
 decl_stmt|;
+comment|// If this formatter accepts an argument, check if we have one, and
+comment|// set it if so:
+if|if
+condition|(
+name|f
+operator|instanceof
+name|ParamLayoutFormatter
+condition|)
+block|{
+if|if
+condition|(
+name|strings
+operator|.
+name|length
+operator|>=
+literal|2
+condition|)
+operator|(
+operator|(
+name|ParamLayoutFormatter
+operator|)
+name|f
+operator|)
+operator|.
+name|setArgument
+argument_list|(
+name|strings
+index|[
+literal|1
+index|]
+operator|.
+name|trim
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|results
 operator|.
 name|add

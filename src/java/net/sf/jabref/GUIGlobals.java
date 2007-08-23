@@ -116,6 +116,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -1419,6 +1429,23 @@ argument_list|)
 argument_list|)
 else|:
 literal|null
+return|;
+block|}
+comment|/**      * Get a Map of all application icons mapped from their keys.      * @return A Map containing all icons used in the application.      */
+DECL|method|getAllIcons ()
+specifier|public
+specifier|static
+name|Map
+name|getAllIcons
+parameter_list|()
+block|{
+return|return
+name|Collections
+operator|.
+name|unmodifiableMap
+argument_list|(
+name|iconMap
+argument_list|)
 return|;
 block|}
 comment|/** 	 * Read a typical java property file into a HashMap. Currently doesn't support escaping 	 * of the '=' character - it simply looks for the first '=' to determine where the key ends. 	 * Both the key and the value is trimmed for whitespace at the ends. 	 * @param file The URL to read information from. 	 * @param prefix A String to prefix to all values read. Can represent e.g. the directory 	 * where icon files are to be found. 	 * @return A HashMap containing all key-value pairs found. 	 * @throws IOException 	 */

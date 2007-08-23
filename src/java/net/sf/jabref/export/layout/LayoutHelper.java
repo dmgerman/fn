@@ -143,6 +143,15 @@ name|IS_GROUP_END
 init|=
 literal|7
 decl_stmt|;
+DECL|field|IS_ENCODING_NAME
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|IS_ENCODING_NAME
+init|=
+literal|8
+decl_stmt|;
 DECL|field|currentGroup
 specifier|private
 specifier|static
@@ -1304,6 +1313,36 @@ argument_list|(
 name|IS_GROUP_END
 argument_list|)
 expr_stmt|;
+return|return;
+block|}
+elseif|else
+if|if
+condition|(
+name|name
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"encoding"
+argument_list|)
+condition|)
+block|{
+comment|// Print the name of the current encoding used for export.
+comment|// This is only supported in begin/end layouts, not in
+comment|// entry layouts.
+name|parsedEntries
+operator|.
+name|add
+argument_list|(
+operator|new
+name|StringInt
+argument_list|(
+name|name
+argument_list|,
+name|IS_ENCODING_NAME
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return;
 block|}
 block|}
 comment|// for all other cases

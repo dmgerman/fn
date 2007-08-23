@@ -647,7 +647,7 @@ block|{
 return|return
 literal|"<rdf:Description rdf:about='' xmlns:bibtex='http://jabref.sourceforge.net/bibteXMP/' "
 operator|+
-literal|"bibtex:title='öptímzàtîôn' "
+literal|"bibtex:title='ï¿½ptï¿½mzï¿½tï¿½ï¿½n' "
 operator|+
 literal|"bibtex:bibtexkey='OezbekC06' "
 operator|+
@@ -708,7 +708,7 @@ name|setField
 argument_list|(
 literal|"title"
 argument_list|,
-literal|"öptímzàtîôn"
+literal|"ï¿½ptï¿½mzï¿½tï¿½ï¿½n"
 argument_list|)
 expr_stmt|;
 name|e
@@ -869,7 +869,7 @@ name|setField
 argument_list|(
 literal|"abstract"
 argument_list|,
-literal|"The success of the Linux operating system has demonstrated the viability of an alternative form of software development  open source software  that challenges traditional assumptions about software markets. Understanding what drives open source developers to participate in open source projects is crucial for assessing the impact of open source software. This article identifies two broad types of motivations that account for their participation in open source projects. The first category includes internal factors such as intrinsic motivation and altruism, and the second category focuses on external rewards such as expected future returns and personal needs. This article also reports the results of a survey administered to open source programmers."
+literal|"The success of the Linux operating system has demonstrated the viability of an alternative form of software development ï¿½ open source software ï¿½ that challenges traditional assumptions about software markets. Understanding what drives open source developers to participate in open source projects is crucial for assessing the impact of open source software. This article identifies two broad types of motivations that account for their participation in open source projects. The first category includes internal factors such as intrinsic motivation and altruism, and the second category focuses on external rewards such as expected future returns and personal needs. This article also reports the results of a survey administered to open source programmers."
 argument_list|)
 expr_stmt|;
 return|return
@@ -937,7 +937,7 @@ literal|"<bibtex:year>1982</bibtex:year>"
 operator|+
 literal|"<bibtex:month>#jul#</bibtex:month>"
 operator|+
-literal|"<bibtex:abstract>The success of the Linux operating system has demonstrated the viability of an alternative form of software development  open source software  that challenges traditional assumptions about software markets. Understanding what drives open source developers to participate in open source projects is crucial for assessing the impact of open source software. This article identifies two broad types of motivations that account for their participation in open source projects. The first category includes internal factors such as intrinsic motivation and altruism, and the second category focuses on external rewards such as expected future returns and personal needs. This article also reports the results of a survey administered to open source programmers.</bibtex:abstract>"
+literal|"<bibtex:abstract>The success of the Linux operating system has demonstrated the viability of an alternative form of software development ï¿½ open source software ï¿½ that challenges traditional assumptions about software markets. Understanding what drives open source developers to participate in open source projects is crucial for assessing the impact of open source software. This article identifies two broad types of motivations that account for their participation in open source projects. The first category includes internal factors such as intrinsic motivation and altruism, and the second category focuses on external rewards such as expected future returns and personal needs. This article also reports the results of a survey administered to open source programmers.</bibtex:abstract>"
 argument_list|)
 return|;
 block|}
@@ -1253,7 +1253,7 @@ name|bibtex
 init|=
 literal|"<bibtex:year>2003</bibtex:year>\n"
 operator|+
-literal|"<bibtex:title>öptímzàtîôn</bibtex:title>\n"
+literal|"<bibtex:title>ï¿½ptï¿½mzï¿½tï¿½ï¿½n</bibtex:title>\n"
 operator|+
 literal|"<bibtex:bibtexkey>OezbekC06</bibtex:bibtexkey>\n"
 decl_stmt|;
@@ -1338,7 +1338,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"öptímzàtîôn"
+literal|"ï¿½ptï¿½mzï¿½tï¿½ï¿½n"
 argument_list|,
 name|e
 operator|.
@@ -2025,7 +2025,7 @@ name|bibtex
 init|=
 literal|"<bibtex:year>2003</bibtex:year>\n"
 operator|+
-literal|"<bibtex:title>öptímzàtîôn</bibtex:title>\n"
+literal|"<bibtex:title>ï¿½ptï¿½mzï¿½tï¿½ï¿½n</bibtex:title>\n"
 operator|+
 literal|"<bibtex:bibtexkey>OezbekC06</bibtex:bibtexkey>\n"
 decl_stmt|;
@@ -7479,7 +7479,7 @@ name|e
 parameter_list|)
 block|{ 		}
 block|}
-comment|/** 	 * A better testcase for resolveStrings. Makes sure that also the document 	 * information and dublin core are written correctly. 	 *  	 * Data was contributed by Philip K.F. Hölzenspies (p.k.f.holzenspies [at] utwente.nl). 	 *  	 * @throws IOException 	 * @throws FileNotFoundException 	 * @throws TransformerException 	 *  	 */
+comment|/** 	 * A better testcase for resolveStrings. Makes sure that also the document 	 * information and dublin core are written correctly. 	 *  	 * Data was contributed by Philip K.F. Hï¿½lzenspies (p.k.f.holzenspies [at] utwente.nl). 	 *  	 * @throws IOException 	 * @throws FileNotFoundException 	 * @throws TransformerException 	 *  	 */
 annotation|@
 name|SuppressWarnings
 argument_list|(

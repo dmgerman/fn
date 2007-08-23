@@ -419,9 +419,6 @@ operator|.
 name|IS_OPTION_FIELD
 condition|)
 block|{             }
-comment|//			else if (si.i == LayoutHelper.IS_OPTION_FIELD_PARAM)
-comment|//			{
-comment|//			}
 if|if
 condition|(
 name|blockEntries
@@ -581,16 +578,17 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|// added section - begin (arudert)
-comment|// note: string resolving not implemented yet
 comment|/**      * Returns the processed text. If the database argument is      * null, no string references will be resolved. Otherwise all valid      * string references will be replaced by the strings' contents. Even      * recursive string references are resolved.      */
-DECL|method|doLayout (BibtexDatabase database)
+DECL|method|doLayout (BibtexDatabase database, String encoding)
 specifier|public
 name|String
 name|doLayout
 parameter_list|(
 name|BibtexDatabase
 name|database
+parameter_list|,
+name|String
+name|encoding
 parameter_list|)
 block|{
 comment|//System.out.println("LAYOUT: " + bibtex.getId());
@@ -638,6 +636,8 @@ operator|.
 name|doLayout
 argument_list|(
 name|database
+argument_list|,
+name|encoding
 argument_list|)
 expr_stmt|;
 if|if
