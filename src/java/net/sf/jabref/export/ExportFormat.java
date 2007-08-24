@@ -58,16 +58,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -79,16 +69,6 @@ operator|.
 name|util
 operator|.
 name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|SwingUtilities
 import|;
 end_import
 
@@ -185,37 +165,30 @@ implements|implements
 name|IExportFormat
 block|{
 DECL|field|displayName
-specifier|private
 name|String
 name|displayName
 decl_stmt|;
 DECL|field|consoleName
-specifier|private
 name|String
 name|consoleName
 decl_stmt|;
 DECL|field|lfFileName
-specifier|private
 name|String
 name|lfFileName
 decl_stmt|;
 DECL|field|directory
-specifier|private
 name|String
 name|directory
 decl_stmt|;
 DECL|field|extension
-specifier|private
 name|String
 name|extension
 decl_stmt|;
 DECL|field|fileFilter
-specifier|private
 name|FileFilter
 name|fileFilter
 decl_stmt|;
 DECL|field|customExport
-specifier|private
 name|boolean
 name|customExport
 init|=
@@ -298,7 +271,7 @@ operator|=
 name|custom
 expr_stmt|;
 block|}
-comment|/** @see IExportFormat#getConsoleName() */
+comment|/** 	 * @see IExportFormat#getConsoleName() 	 */
 DECL|method|getConsoleName ()
 specifier|public
 name|String
@@ -309,7 +282,7 @@ return|return
 name|consoleName
 return|;
 block|}
-comment|/** @see IExportFormat#getDisplayName() */
+comment|/** 	 * @see IExportFormat#getDisplayName() 	 */
 DECL|method|getDisplayName ()
 specifier|public
 name|String
@@ -320,7 +293,7 @@ return|return
 name|displayName
 return|;
 block|}
-comment|/** 	 * This method should return a reader from which the given file can be read. 	 *  	 * This standard implementation of this method will use the 	 * {@link FileActions#getReader(String)} method. 	 *  	 * Subclasses of ExportFormat are free to override and provide their own 	 * implementation. 	 *  	 * @param filename the file name 	 * @throws IOException if the reader could not be created 	 *  	 * @return a newly created reader 	 */
+comment|/** 	 * This method should return a reader from which the given layout file can 	 * be read. 	 *  	 * This standard implementation of this method will use the 	 * {@link FileActions#getReader(String)} method. 	 *  	 * Subclasses of ExportFormat are free to override and provide their own 	 * implementation. 	 *  	 * @param filename 	 *            the file name 	 * @throws IOException 	 *             if the reader could not be created 	 *  	 * @return a newly created reader 	 */
 DECL|method|getReader (String filename)
 specifier|protected
 name|Reader
@@ -378,8 +351,8 @@ name|filename
 argument_list|)
 return|;
 block|}
-comment|/**      * Perform the export.      * @param database The database to export from.      * @param file The filename to write to.      * @param encoding The encoding to use.      * @param keySet The set of IDs of the entries to export.      * @throws Exception      */
-DECL|method|performExport (final BibtexDatabase database, final String file, final String encoding, Set<String> keySet)
+comment|/** 	 * Perform the export of {@code database}. 	 *  	 * @param database 	 *            The database to export from. 	 * @param file 	 *            the file to write the resulting export to 	 * @param encoding 	 *            The encoding of the database 	 * @param entryIds 	 *            Contains the IDs of all entries that should be exported. If 	 *<code>null</code>, all entries will be exported. 	 *  	 * @throws IOException 	 *             if a problem occurred while trying to write to {@code writer} 	 *             or read from required resources. 	 * @throws Exception 	 *             if any other error occurred during export. 	 *  	 * @see net.sf.jabref.export.IExportFormat#performExport(net.sf.jabref.BibtexDatabase, 	 *      java.lang.String, java.lang.String, java.util.Set) 	 */
+DECL|method|performExport (final BibtexDatabase database, final String file, final String encoding, Set<String> entryIds)
 specifier|public
 name|void
 name|performExport
@@ -400,23 +373,11 @@ name|Set
 argument_list|<
 name|String
 argument_list|>
-name|keySet
+name|entryIds
 parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|SwingUtilities
-operator|.
-name|isEventDispatchThread
-argument_list|()
-argument_list|)
-expr_stmt|;
 name|File
 name|outFile
 init|=
@@ -436,40 +397,6 @@ argument_list|,
 name|outFile
 argument_list|)
 decl_stmt|;
-specifier|final
-name|String
-name|dir
-decl_stmt|;
-comment|// If this is a custom export, just use the given file name:
-if|if
-condition|(
-name|customExport
-condition|)
-name|dir
-operator|=
-literal|""
-expr_stmt|;
-else|else
-name|dir
-operator|=
-operator|(
-name|directory
-operator|==
-literal|null
-condition|?
-name|Globals
-operator|.
-name|LAYOUT_PREFIX
-else|:
-name|Globals
-operator|.
-name|LAYOUT_PREFIX
-operator|+
-name|directory
-operator|+
-literal|"/"
-operator|)
-expr_stmt|;
 name|VerifyingWriter
 name|ps
 init|=
@@ -491,12 +418,8 @@ try|try
 block|{
 name|reader
 operator|=
-name|FileActions
-operator|.
 name|getReader
 argument_list|(
-name|dir
-operator|+
 name|lfFileName
 operator|+
 literal|".begin.layout"
@@ -534,7 +457,8 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-comment|//  // If an exception was cast, export filter doesn't have a begin file.
+comment|// If an exception was cast, export filter doesn't have a begin
+comment|// file.
 block|}
 comment|// Write the header
 if|if
@@ -559,13 +483,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|// changed section - end (arudert)
-comment|// Write database entries; entries will be sorted as they
-comment|// appear on the screen, or sorted by author, depending on
-comment|// Preferences.
-comment|// We also supply the Set entries - if we are to export only certain entries,
-comment|// it will be non-null, and be used to choose entries. Otherwise, it will be
-comment|// null, and be ignored.
+comment|/* 		 * Write database entries; entries will be sorted as they appear on the 		 * screen, or sorted by author, depending on Preferences. We also supply 		 * the Set entries - if we are to export only certain entries, it will 		 * be non-null, and be used to choose entries. Otherwise, it will be 		 * null, and be ignored. 		 */
 name|List
 argument_list|<
 name|BibtexEntry
@@ -578,7 +496,7 @@ name|getSortedEntries
 argument_list|(
 name|database
 argument_list|,
-name|keySet
+name|entryIds
 argument_list|,
 literal|false
 argument_list|)
@@ -586,12 +504,8 @@ decl_stmt|;
 comment|// Load default layout
 name|reader
 operator|=
-name|FileActions
-operator|.
 name|getReader
 argument_list|(
-name|dir
-operator|+
 name|lfFileName
 operator|+
 literal|".layout"
@@ -643,38 +557,14 @@ decl_stmt|;
 name|Layout
 name|layout
 decl_stmt|;
-name|Iterator
-argument_list|<
-name|BibtexEntry
-argument_list|>
-name|i
-init|=
-name|sorted
-operator|.
-name|iterator
-argument_list|()
-decl_stmt|;
 for|for
 control|(
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
-comment|// Get the entry
 name|BibtexEntry
 name|entry
-init|=
-operator|(
-name|i
-operator|.
-name|next
-argument_list|()
-operator|)
-decl_stmt|;
+range|:
+name|sorted
+control|)
+block|{
 comment|// Get the layout
 name|String
 name|type
@@ -715,12 +605,8 @@ block|{
 comment|// We try to get a type-specific layout for this entry.
 name|reader
 operator|=
-name|FileActions
-operator|.
 name|getReader
 argument_list|(
-name|dir
-operator|+
 name|lfFileName
 operator|+
 literal|"."
@@ -770,7 +656,8 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-comment|// The exception indicates that no type-specific layout exists, so we
+comment|// The exception indicates that no type-specific layout
+comment|// exists, so we
 comment|// go with the default one.
 name|layout
 operator|=
@@ -805,12 +692,8 @@ try|try
 block|{
 name|reader
 operator|=
-name|FileActions
-operator|.
 name|getReader
 argument_list|(
-name|dir
-operator|+
 name|lfFileName
 operator|+
 literal|".end.layout"
@@ -847,9 +730,10 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-comment|// If an exception was thrown, export filter doesn't have an end file.
+comment|// If an exception was thrown, export filter doesn't have an end
+comment|// file.
 block|}
-comment|// Write the header
+comment|// Write footer
 if|if
 condition|(
 name|endLayout
@@ -894,9 +778,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|SaveSession
-name|ss
-init|=
+return|return
 operator|new
 name|SaveSession
 argument_list|(
@@ -906,12 +788,9 @@ name|encoding
 argument_list|,
 literal|false
 argument_list|)
-decl_stmt|;
-return|return
-name|ss
 return|;
 block|}
-comment|/** @see net.sf.jabref.export.IExportFormat#getFileFilter() */
+comment|/** 	 * @see net.sf.jabref.export.IExportFormat#getFileFilter() 	 */
 DECL|method|getFileFilter ()
 specifier|public
 name|FileFilter

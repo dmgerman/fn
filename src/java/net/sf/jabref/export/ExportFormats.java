@@ -456,6 +456,7 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// 1. ExportFormats based on Templates
 for|for
 control|(
 name|ExportFormatTemplateExtension
@@ -491,7 +492,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// add generic exports contributed by Plugins
+comment|// 2. ExportFormat classed
 for|for
 control|(
 specifier|final
@@ -608,7 +609,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|// formatters provided by Plugins
+comment|// 3. Formatters provided by Export Format Providers
 for|for
 control|(
 name|ExportFormatProviderExtension

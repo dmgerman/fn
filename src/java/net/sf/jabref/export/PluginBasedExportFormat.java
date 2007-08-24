@@ -81,7 +81,7 @@ specifier|public
 name|ExportFormatTemplateExtension
 name|extension
 decl_stmt|;
-comment|/** 	 * Load the plugin from the given extension. Might be null if extension could not be loaded. 	 *  	 * @param extension 	 * @return 	 */
+comment|/** 	 * Load the plugin from the given extension. Might be null if extension 	 * could not be loaded. 	 *  	 * @param extension 	 * @return 	 */
 DECL|method|getFormat ( ExportFormatTemplateExtension extension)
 specifier|public
 specifier|static
@@ -227,6 +227,8 @@ operator|=
 name|extension
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getReader (String filename)
 specifier|public
 name|Reader
@@ -248,20 +250,6 @@ argument_list|(
 name|filename
 argument_list|)
 decl_stmt|;
-name|Globals
-operator|.
-name|logger
-argument_list|(
-name|reso
-operator|.
-name|toExternalForm
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|Reader
-name|reader
-decl_stmt|;
-comment|// If that didn't work, try loading as a normal file URL:
 if|if
 condition|(
 name|reso
@@ -271,8 +259,7 @@ condition|)
 block|{
 try|try
 block|{
-name|reader
-operator|=
+return|return
 operator|new
 name|InputStreamReader
 argument_list|(
@@ -281,7 +268,7 @@ operator|.
 name|openStream
 argument_list|()
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -289,47 +276,22 @@ name|FileNotFoundException
 name|ex
 parameter_list|)
 block|{
-throw|throw
-operator|new
-name|IOException
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Could not find layout file"
-argument_list|)
-operator|+
-literal|": '"
-operator|+
-name|filename
-operator|+
-literal|"'."
-argument_list|)
-throw|;
+comment|// If that didn't work, try below
 block|}
 block|}
-else|else
-block|{
-name|File
-name|f
-init|=
-operator|new
-name|File
-argument_list|(
-name|filename
-argument_list|)
-decl_stmt|;
 try|try
 block|{
-name|reader
-operator|=
+return|return
 operator|new
 name|FileReader
 argument_list|(
-name|f
+operator|new
+name|File
+argument_list|(
+name|filename
 argument_list|)
-expr_stmt|;
+argument_list|)
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -337,6 +299,8 @@ name|FileNotFoundException
 name|ex
 parameter_list|)
 block|{
+comment|// If that did not work, throw the IOException below
+block|}
 throw|throw
 operator|new
 name|IOException
@@ -355,11 +319,6 @@ operator|+
 literal|"'."
 argument_list|)
 throw|;
-block|}
-block|}
-return|return
-name|reader
-return|;
 block|}
 block|}
 end_class
