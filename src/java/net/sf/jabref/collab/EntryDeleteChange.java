@@ -164,7 +164,11 @@ operator|=
 operator|new
 name|PreviewPanel
 argument_list|(
+literal|null
+argument_list|,
 name|memEntry
+argument_list|,
+literal|null
 argument_list|,
 operator|new
 name|MetaData

@@ -377,7 +377,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * GUI component that allows editing of the fields of a BibtexEntry. EntryEditor  * also registers itself as a VetoableChangeListener, receiving events whenever  * a field of the entry changes, enabling the text fields to update themselves  * if the change is made from somewhere else.  */
+comment|/**  * GUI component that allows editing of the fields of a BibtexEntry (i.e. the  * one that shows up, when you double click on an entry in the table)  *   * It hosts the tabs (required, general, optional) and the buttons to the left.  *   * EntryEditor also registers itself as a VetoableChangeListener, receiving  * events whenever a field of the entry changes, enabling the text fields to  * update themselves if the change is made from somewhere else.  */
 end_comment
 
 begin_class
@@ -1244,7 +1244,6 @@ operator|.
 name|VERTICAL
 argument_list|)
 expr_stmt|;
-comment|// tlb.setMargin(new Insets(2,2,2,2));
 name|tlb
 operator|.
 name|setMargin
@@ -1264,7 +1263,6 @@ argument_list|)
 expr_stmt|;
 comment|// The toolbar carries all the key bindings that are valid for the whole
 comment|// window.
-comment|// tlb.setBackground(GUIGlobals.lightGray);//Color.white);
 name|ActionMap
 name|am
 init|=
@@ -1354,7 +1352,6 @@ argument_list|,
 name|generateKeyAction
 argument_list|)
 expr_stmt|;
-comment|/*          * im.put(prefs.getKey("Entry editor, previous panel"), "left");          * im.put(prefs.getKey("Entry editor, previous panel 2"), "left");          * am.put("left", switchLeftAction); im.put(prefs.getKey("Entry editor,          * next panel"), "right"); im.put(prefs.getKey("Entry editor, next panel          * 2"), "right"); am.put("right", switchRightAction);          */
 name|im
 operator|.
 name|put
@@ -1477,15 +1474,28 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+comment|// Create type-label
+name|typeLabel
+operator|=
+operator|new
+name|TypeLabel
+argument_list|(
+name|entry
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Add actions (and thus buttons)
 name|tlb
 operator|.
 name|add
 argument_list|(
 name|closeAction
 argument_list|)
-expr_stmt|;
-name|setLabel
-argument_list|()
 expr_stmt|;
 name|tlb
 operator|.
@@ -1494,8 +1504,6 @@ argument_list|(
 name|typeLabel
 argument_list|)
 expr_stmt|;
-comment|// tlb.addSeparator();
-comment|// tlb.add(copyKeyAction);
 name|tlb
 operator|.
 name|addSeparator
@@ -1513,8 +1521,6 @@ operator|.
 name|addSeparator
 argument_list|()
 expr_stmt|;
-comment|// tlb.add(undoAction);
-comment|// tlb.add(redoAction);
 name|tlb
 operator|.
 name|add
@@ -1595,27 +1601,6 @@ argument_list|,
 name|BorderLayout
 operator|.
 name|WEST
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|setLabel ()
-specifier|private
-name|void
-name|setLabel
-parameter_list|()
-block|{
-name|typeLabel
-operator|=
-operator|new
-name|TypeLabel
-argument_list|(
-name|entry
-operator|.
-name|getType
-argument_list|()
-operator|.
-name|getName
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

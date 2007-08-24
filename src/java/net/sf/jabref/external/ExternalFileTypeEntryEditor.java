@@ -18,7 +18,17 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
+name|BorderLayout
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Dimension
 import|;
 end_import
 
@@ -74,7 +84,7 @@ name|swing
 operator|.
 name|event
 operator|.
-name|DocumentListener
+name|DocumentEvent
 import|;
 end_import
 
@@ -86,7 +96,7 @@ name|swing
 operator|.
 name|event
 operator|.
-name|DocumentEvent
+name|DocumentListener
 import|;
 end_import
 
@@ -571,21 +581,6 @@ operator|new
 name|JPanel
 argument_list|()
 decl_stmt|;
-name|DefaultFormBuilder
-name|b2
-init|=
-operator|new
-name|DefaultFormBuilder
-argument_list|(
-operator|new
-name|FormLayout
-argument_list|(
-literal|"left:pref, 4dlu, fill:pref"
-argument_list|,
-literal|""
-argument_list|)
-argument_list|)
-decl_stmt|;
 name|application
 operator|.
 name|setPreferredSize
@@ -618,8 +613,6 @@ argument_list|(
 literal|4
 argument_list|)
 expr_stmt|;
-comment|//b2.append(other);
-comment|//b2.append(application);
 name|p2
 operator|.
 name|setLayout
@@ -656,7 +649,6 @@ argument_list|(
 name|p2
 argument_list|)
 expr_stmt|;
-comment|//builder.append(b2.getPanel());
 name|builder
 operator|.
 name|append

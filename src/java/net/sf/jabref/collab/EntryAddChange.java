@@ -117,7 +117,11 @@ operator|=
 operator|new
 name|PreviewPanel
 argument_list|(
+literal|null
+argument_list|,
 name|diskEntry
+argument_list|,
+literal|null
 argument_list|,
 operator|new
 name|MetaData

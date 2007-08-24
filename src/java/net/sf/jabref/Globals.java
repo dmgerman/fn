@@ -874,9 +874,12 @@ name|Logger
 operator|.
 name|getLogger
 argument_list|(
-name|Logger
+name|Globals
 operator|.
-name|GLOBAL_LOGGER_NAME
+name|class
+operator|.
+name|getName
+argument_list|()
 argument_list|)
 decl_stmt|;
 comment|/** 	 * true if we have unix newlines 	 */

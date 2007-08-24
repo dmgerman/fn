@@ -1231,6 +1231,9 @@ name|getInputStream
 argument_list|()
 decl_stmt|;
 name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|items
 init|=
 operator|new
@@ -1257,9 +1260,6 @@ operator|>
 literal|0
 condition|)
 return|return
-operator|(
-name|BibtexEntry
-operator|)
 name|items
 operator|.
 name|get

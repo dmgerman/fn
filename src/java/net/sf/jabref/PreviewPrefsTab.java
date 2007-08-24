@@ -1028,7 +1028,11 @@ init|=
 operator|new
 name|PreviewPanel
 argument_list|(
+literal|null
+argument_list|,
 name|entry
+argument_list|,
+literal|null
 argument_list|,
 operator|new
 name|MetaData
@@ -1102,7 +1106,11 @@ init|=
 operator|new
 name|PreviewPanel
 argument_list|(
+literal|null
+argument_list|,
 name|entry
+argument_list|,
+literal|null
 argument_list|,
 operator|new
 name|MetaData

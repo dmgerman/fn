@@ -621,7 +621,11 @@ operator|=
 operator|new
 name|PreviewPanel
 argument_list|(
+literal|null
+argument_list|,
 name|one
+argument_list|,
+literal|null
 argument_list|,
 operator|new
 name|MetaData
@@ -635,7 +639,11 @@ operator|=
 operator|new
 name|PreviewPanel
 argument_list|(
+literal|null
+argument_list|,
 name|two
+argument_list|,
+literal|null
 argument_list|,
 operator|new
 name|MetaData

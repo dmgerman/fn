@@ -56,18 +56,6 @@ name|awt
 operator|.
 name|event
 operator|.
-name|ActionListener
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
 name|KeyAdapter
 import|;
 end_import
@@ -319,20 +307,6 @@ operator|.
 name|imports
 operator|.
 name|BibtexParser
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|imports
-operator|.
-name|Z3950Connection
 import|;
 end_import
 
@@ -849,7 +823,6 @@ name|coloringByGroup
 init|=
 literal|false
 decl_stmt|;
-comment|//previewEnabled = Globals.prefs.getBoolean("previewEnabled");
 DECL|field|lastSearchHits
 name|int
 name|lastSearchHits
@@ -1259,18 +1232,8 @@ parameter_list|()
 throws|throws
 name|Throwable
 block|{
-name|Z3950Connection
-name|conn
-init|=
-operator|new
-name|Z3950Connection
-argument_list|()
-decl_stmt|;
-name|conn
-operator|.
-name|doSearch
-argument_list|()
-expr_stmt|;
+comment|// Z3950Connection conn = new Z3950Connection();
+comment|// conn.doSearch();
 comment|/*                     ArrayList<BibtexEntry> entries = new ArrayList<BibtexEntry>();                     BibtexEntry[] sel = getSelectedEntries();                     for (int i = 0; i< sel.length; i++) {                         BibtexEntry bibtexEntry = sel[i];                         entries.add(bibtexEntry);                     }                     final List<FileListEntry> links =                             AccessLinksForEntries.getExternalLinksForEntries(entries);                     for (Iterator<FileListEntry> iterator = links.iterator(); iterator.hasNext();) {                         FileListEntry entry = iterator.next();                         System.out.println("Link: "+entry.getLink());                     };                      final JProgressBar prog = new JProgressBar();                     prog.setIndeterminate(true);                     final JDialog diag = new JDialog(frame, false);                     diag.getContentPane().add(prog, BorderLayout.CENTER);                     diag.pack();                     diag.setLocationRelativeTo(frame);                     diag.setVisible(true);                     Thread t = new Thread(new Runnable() {                         public void run() {                             AccessLinksForEntries.copyExternalLinksToDirectory(links,                                 new File("/home/alver/tmp"), metaData, prog, false,                                     new ActionListener() {                                         public void actionPerformed(ActionEvent actionEvent) {                                             diag.dispose();                                         }                                     });                         }                     });                     t.start();                                          //CheckBoxFileChooser cb = new CheckBoxFileChooser(new File(""), "Selected only");                     //cb.showSaveDialog(frame);                      //ExternalFileTypeEditor efte = new ExternalFileTypeEditor(frame);                     //efte.setVisible(true);                      */
 block|}
 block|}
@@ -8331,55 +8294,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Ensure that no preview is shown. Called when preview is turned off. Must chech if      * a preview is in fact visible before doing anything rash.      */
-DECL|method|hidePreview ()
-specifier|public
-name|void
-name|hidePreview
-parameter_list|()
-block|{
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|putBoolean
-argument_list|(
-literal|"previewEnabled"
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
-name|Component
-name|c
-init|=
-name|splitPane
-operator|.
-name|getBottomComponent
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-operator|(
-name|c
-operator|!=
-literal|null
-operator|)
-operator|&&
-operator|!
-operator|(
-name|c
-operator|instanceof
-name|EntryEditor
-operator|)
-condition|)
-name|splitPane
-operator|.
-name|setBottomComponent
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|isShowingEditor ()
 specifier|public
 name|boolean
@@ -8881,9 +8795,6 @@ operator|.
 name|setBottomComponent
 argument_list|(
 name|preview
-operator|.
-name|getPane
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

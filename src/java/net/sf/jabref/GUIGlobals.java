@@ -1436,6 +1436,11 @@ DECL|method|getAllIcons ()
 specifier|public
 specifier|static
 name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|getAllIcons
 parameter_list|()
 block|{
