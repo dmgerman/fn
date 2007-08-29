@@ -2152,6 +2152,18 @@ operator|+
 literal|"</dd>__NEWLINE__<p></p></font>"
 argument_list|)
 expr_stmt|;
+comment|// TODO: Currently not possible to edit this setting:
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"previewPrintButton"
+argument_list|,
+name|Boolean
+operator|.
+name|FALSE
+argument_list|)
+expr_stmt|;
 name|defaults
 operator|.
 name|put
