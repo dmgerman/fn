@@ -486,6 +486,7 @@ argument_list|(
 name|pan
 argument_list|)
 expr_stmt|;
+comment|/** 		 * Fix for [ 1749613 ] About translation 		 *  		 * https://sourceforge.net/tracker/index.php?func=detail&aid=1749613&group_id=92314&atid=600306 		 *  		 * Cannot really use %0 to refer to the file type, since this ruins translation. 		 */
 name|JLabel
 name|lab
 init|=
@@ -496,11 +497,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Main %0 directory"
-argument_list|,
-name|GUIGlobals
-operator|.
-name|FILE_FIELD
+literal|"Main file directory"
 argument_list|)
 operator|+
 literal|":"
