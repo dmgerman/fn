@@ -37,7 +37,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A small table, where an entry type is associated with a label pattern (an   *<code>ArrayList</code>).  *   * A parent LabelPattern can be set.   * @author Ulrik Stervbo (ulriks AT ruc.dk)  */
+comment|/**  * A small table, where an entry type is associated with a label pattern (an  *<code>ArrayList</code>). A parent LabelPattern can be set.  *   * @author Ulrik Stervbo (ulriks AT ruc.dk)  */
 end_comment
 
 begin_class
@@ -56,7 +56,7 @@ name|String
 argument_list|>
 argument_list|>
 block|{
-comment|/** 	 * The parent of this LabelPattern. 	 */
+comment|/**      * The parent of this LabelPattern.      */
 DECL|field|parent
 specifier|protected
 name|LabelPattern
@@ -68,7 +68,7 @@ DECL|method|LabelPattern ()
 specifier|public
 name|LabelPattern
 parameter_list|()
-block|{}
+block|{     }
 DECL|method|LabelPattern (LabelPattern parent)
 specifier|public
 name|LabelPattern
@@ -84,7 +84,7 @@ operator|=
 name|parent
 expr_stmt|;
 block|}
-comment|/** 	 * Sets the parent LabelPattern. 	 * @param parent a<code>String</code> 	 */
+comment|/**      * Sets the parent LabelPattern.      *       * @param parent      *            a<code>String</code>      */
 DECL|method|setParent (LabelPattern parent)
 specifier|public
 name|void
@@ -101,7 +101,7 @@ operator|=
 name|parent
 expr_stmt|;
 block|}
-comment|/** 	 * Get the parent LabelPattern 	 * @return the parent LabelPattern 	 */
+comment|/**      * Get the parent LabelPattern      *       * @return the parent LabelPattern      */
 DECL|method|getParent ()
 specifier|public
 name|LabelPattern
@@ -137,7 +137,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Remove a label pattern from the LabelPattern. No key patterns can be removed from 	 * the very parent LabelPattern since is thought of as a default. To do this, use 	 * the  removeKeyPattern(String type, boolean sure) 	 * @param type a<code>String</code> 	 */
+comment|/**      * Remove a label pattern from the LabelPattern. No key patterns can be      * removed from the very parent LabelPattern since is thought of as a      * default. To do this, use the removeKeyPattern(String type, boolean sure)      *       * @param type      *            a<code>String</code>      */
 DECL|method|removeLabelPattern (String type)
 specifier|public
 name|void
@@ -195,7 +195,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Gets an object for a desired label from this LabelPattern or one of it's parents. 	 * This method first tries to obtain the object from this LabelPattern via the  	 *<code>get</code> method of<code>Hashtable</code>. If this fails, we try the  	 * parent. 	 *   	 * @param key a<code>String</code> 	 * @return the object for the given key 	 * @throws NullPointerException 	 */
+comment|/**      * Gets an object for a desired label from this LabelPattern or one of it's      * parents. This method first tries to obtain the object from this      * LabelPattern via the<code>get</code> method of<code>Hashtable</code>.      * If this fails, we try the parent.      *       * @param key      *            a<code>String</code>      * @return the object for the given key      * @throws NullPointerException      */
 DECL|method|getValue (String key)
 specifier|public
 specifier|final
@@ -220,7 +220,8 @@ argument_list|(
 name|key
 argument_list|)
 decl_stmt|;
-comment|// throws the NullPointerException
+comment|// throws the
+comment|// NullPointerException
 comment|// Test to see if we found anything
 if|if
 condition|(
@@ -265,7 +266,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**          * Checks whether this pattern is customized or the default value.          */
+comment|/**      * Checks whether this pattern is customized or the default value.      */
 DECL|method|isDefaultValue (String key)
 specifier|public
 specifier|final
