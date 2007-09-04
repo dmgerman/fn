@@ -158,6 +158,18 @@ name|Globals
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|MetaData
+import|;
+end_import
+
 begin_comment
 comment|/**  * @author alver  */
 end_comment
@@ -195,7 +207,7 @@ literal|".sxc"
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|performExport (final BibtexDatabase database, final String file, final String encoding, Set<String> keySet)
+DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, final String file, final String encoding, Set<String> keySet)
 specifier|public
 name|void
 name|performExport
@@ -203,6 +215,10 @@ parameter_list|(
 specifier|final
 name|BibtexDatabase
 name|database
+parameter_list|,
+specifier|final
+name|MetaData
+name|metaData
 parameter_list|,
 specifier|final
 name|String

@@ -435,6 +435,13 @@ name|MSBibExportFormat
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|putFormat
+argument_list|(
+operator|new
+name|MySqlExport
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// Add Export Formats contributed by Plugins
 name|JabRefPlugin
 name|plugin
@@ -563,6 +570,9 @@ parameter_list|(
 name|BibtexDatabase
 name|database
 parameter_list|,
+name|MetaData
+name|metaData
+parameter_list|,
 name|String
 name|file
 parameter_list|,
@@ -596,6 +606,8 @@ operator|.
 name|performExport
 argument_list|(
 name|database
+argument_list|,
+name|metaData
 argument_list|,
 name|file
 argument_list|,
@@ -1238,6 +1250,14 @@ name|basePanel
 argument_list|()
 operator|.
 name|database
+argument_list|()
+argument_list|,
+name|frame
+operator|.
+name|basePanel
+argument_list|()
+operator|.
+name|metaData
 argument_list|()
 argument_list|,
 name|finFile

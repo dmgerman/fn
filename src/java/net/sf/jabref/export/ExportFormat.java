@@ -116,6 +116,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|MetaData
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|Globals
 import|;
 end_import
@@ -351,8 +363,8 @@ name|filename
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Perform the export of {@code database}. 	 *  	 * @param database 	 *            The database to export from. 	 * @param file 	 *            the file to write the resulting export to 	 * @param encoding 	 *            The encoding of the database 	 * @param entryIds 	 *            Contains the IDs of all entries that should be exported. If 	 *<code>null</code>, all entries will be exported. 	 *  	 * @throws IOException 	 *             if a problem occurred while trying to write to {@code writer} 	 *             or read from required resources. 	 * @throws Exception 	 *             if any other error occurred during export. 	 *  	 * @see net.sf.jabref.export.IExportFormat#performExport(net.sf.jabref.BibtexDatabase, 	 *      java.lang.String, java.lang.String, java.util.Set) 	 */
-DECL|method|performExport (final BibtexDatabase database, final String file, final String encoding, Set<String> entryIds)
+comment|/** 	 * Perform the export of {@code database}. 	 *  	 * @param database 	 *            The database to export from.      * @param metaData      *            The database's meta data. 	 * @param file 	 *            the file to write the resulting export to 	 * @param encoding 	 *            The encoding of the database 	 * @param entryIds 	 *            Contains the IDs of all entries that should be exported. If 	 *<code>null</code>, all entries will be exported. 	 *  	 * @throws IOException 	 *             if a problem occurred while trying to write to {@code writer} 	 *             or read from required resources. 	 * @throws Exception 	 *             if any other error occurred during export. 	 *  	 * @see net.sf.jabref.export.IExportFormat#performExport(net.sf.jabref.BibtexDatabase, 	 *      net.sf.jabref.MetaData, java.lang.String, java.lang.String, java.util.Set) 	 */
+DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, final String file, final String encoding, Set<String> entryIds)
 specifier|public
 name|void
 name|performExport
@@ -360,6 +372,10 @@ parameter_list|(
 specifier|final
 name|BibtexDatabase
 name|database
+parameter_list|,
+specifier|final
+name|MetaData
+name|metaData
 parameter_list|,
 specifier|final
 name|String

@@ -26,6 +26,18 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|MetaData
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -80,13 +92,16 @@ name|FileFilter
 name|getFileFilter
 parameter_list|()
 function_decl|;
-comment|/** 	 * Perform the export. 	 *  	 * @param database 	 *            The database to export from. 	 * @param file 	 *            The filename to write to. 	 * @param encoding 	 *            The encoding to use. 	 * @param entryIds 	 *            (may be null) A Set containing the IDs of all entries that 	 *            should be exported. If null, all entries will be exported. 	 * @throws Exception 	 * @see #performExport(BibtexDatabase, Set, Writer) 	 */
-DECL|method|performExport (BibtexDatabase database, String file, String encoding, Set<String> entryIds)
+comment|/** 	 * Perform the export. 	 *  	 * @param database 	 *            The database to export from.      * @param metaData      *            The database's metadata. 	 * @param file 	 *            The filename to write to. 	 * @param encoding 	 *            The encoding to use. 	 * @param entryIds 	 *            (may be null) A Set containing the IDs of all entries that 	 *            should be exported. If null, all entries will be exported. 	 * @throws Exception 	 * @see #performExport(BibtexDatabase, Set, Writer) 	 */
+DECL|method|performExport (BibtexDatabase database, MetaData metaData, String file, String encoding, Set<String> entryIds)
 name|void
 name|performExport
 parameter_list|(
 name|BibtexDatabase
 name|database
+parameter_list|,
+name|MetaData
+name|metaData
 parameter_list|,
 name|String
 name|file
