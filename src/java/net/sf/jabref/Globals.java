@@ -360,8 +360,6 @@ name|getInstance
 argument_list|()
 expr_stmt|;
 block|}
-comment|// public static ResourceBundle preferences =
-comment|// ResourceBundle.getBundle("resource/defaultPrefs");
 DECL|field|locale
 specifier|public
 specifier|static

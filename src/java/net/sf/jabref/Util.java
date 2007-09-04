@@ -2547,6 +2547,13 @@ name|fieldName
 operator|=
 literal|"url"
 expr_stmt|;
+name|link
+operator|=
+name|sanitizeUrl
+argument_list|(
+name|link
+argument_list|)
+expr_stmt|;
 comment|// Check to see if link field already contains a well formated URL
 if|if
 condition|(
@@ -2559,6 +2566,29 @@ literal|"http://"
 argument_list|)
 condition|)
 block|{
+comment|// Remove possible 'doi:'
+if|if
+condition|(
+name|link
+operator|.
+name|matches
+argument_list|(
+literal|"^doi:/*.*"
+argument_list|)
+condition|)
+block|{
+name|link
+operator|=
+name|link
+operator|.
+name|replaceFirst
+argument_list|(
+literal|"^doi:/*"
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+block|}
 name|link
 operator|=
 name|Globals
@@ -2628,40 +2658,6 @@ block|{
 comment|// html
 try|try
 block|{
-comment|// First check if the url is enclosed in \\url{}. If so, remove
-comment|// the wrapper.
-if|if
-condition|(
-name|link
-operator|.
-name|startsWith
-argument_list|(
-literal|"\\url{"
-argument_list|)
-operator|&&
-name|link
-operator|.
-name|endsWith
-argument_list|(
-literal|"}"
-argument_list|)
-condition|)
-name|link
-operator|=
-name|link
-operator|.
-name|substring
-argument_list|(
-literal|5
-argument_list|,
-name|link
-operator|.
-name|length
-argument_list|()
-operator|-
-literal|1
-argument_list|)
-expr_stmt|;
 name|link
 operator|=
 name|sanitizeUrl
@@ -3087,7 +3083,6 @@ argument_list|(
 literal|"Message: currently only PDF, PS and HTML files can be opened by double clicking"
 argument_list|)
 expr_stmt|;
-comment|// ignore
 block|}
 block|}
 comment|/** 	 * Opens a file on a Windows system, using its default viewer. 	 *  	 * @param link 	 *            The file name. 	 * @param localFile 	 *            true if it is a local file, not an URL. 	 * @throws IOException 	 */
@@ -3318,7 +3313,6 @@ argument_list|()
 else|:
 literal|null
 decl_stmt|;
-comment|/* 		 * if ((extension == null) || (extension.length() == 0)) { // No 		 * extension. What to do? throw new IOException(Globals.lang("No file 		 * extension. Could not find viewer for file.")); } 		 */
 comment|// Find the default directory for this field type, if any:
 name|String
 name|dir
@@ -3442,8 +3436,6 @@ operator|)
 condition|)
 block|{
 comment|// Open the file:
-try|try
-block|{
 name|String
 name|filePath
 init|=
@@ -3574,73 +3566,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-throw|throw
-name|e
-throw|;
-comment|/*e.printStackTrace(); 				System.err.println("An error occured on the command: " + fileType.getOpenWith() 					+ " #" + link); 				System.err.println(e.getMessage());*/
-block|}
-block|}
 else|else
 block|{
 comment|// No file matched the name, or we didn't know the file type.
 comment|// Perhaps it is an URL thing.
-comment|// First check if it is enclosed in \\url{}. If so, remove
-comment|// the wrapper.
-if|if
-condition|(
-name|link
-operator|.
-name|startsWith
-argument_list|(
-literal|"\\url{"
-argument_list|)
-operator|&&
-name|link
-operator|.
-name|endsWith
-argument_list|(
-literal|"}"
-argument_list|)
-condition|)
-name|link
-operator|=
-name|link
-operator|.
-name|substring
-argument_list|(
-literal|5
-argument_list|,
-name|link
-operator|.
-name|length
-argument_list|()
-operator|-
-literal|1
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|link
-operator|.
-name|startsWith
-argument_list|(
-literal|"doi:"
-argument_list|)
-condition|)
-name|link
-operator|=
-name|Globals
-operator|.
-name|DOI_LOOKUP_PREFIX
-operator|+
-name|link
-expr_stmt|;
 name|link
 operator|=
 name|sanitizeUrl
@@ -4261,7 +4190,7 @@ return|return;
 block|}
 block|}
 block|}
-comment|/** 	 * Make sure an URL is "portable", in that it doesn't contain bad characters 	 * that break the open command in some OSes. 	 *  	 * Old Version can be found in CVS version 114 of Util.java. 	 *  	 * @param link 	 *            The URL to sanitize. 	 * @return Sanitized URL 	 */
+comment|/** 	 * Make sure an URL is "portable", in that it doesn't contain bad characters 	 * that break the open command in some OSes. 	 *  	 * A call to this method will also remove \\url{} enclosings and clean doi links. 	 *  	 * Old Version can be found in CVS version 114 of Util.java. 	 *  	 * @param link 	 *            The URL to sanitize. 	 * @return Sanitized URL 	 */
 DECL|method|sanitizeUrl (String link)
 specifier|public
 specifier|static
@@ -4272,6 +4201,91 @@ name|String
 name|link
 parameter_list|)
 block|{
+comment|// First check if it is enclosed in \\url{}. If so, remove
+comment|// the wrapper.
+if|if
+condition|(
+name|link
+operator|.
+name|startsWith
+argument_list|(
+literal|"\\url{"
+argument_list|)
+operator|&&
+name|link
+operator|.
+name|endsWith
+argument_list|(
+literal|"}"
+argument_list|)
+condition|)
+name|link
+operator|=
+name|link
+operator|.
+name|substring
+argument_list|(
+literal|5
+argument_list|,
+name|link
+operator|.
+name|length
+argument_list|()
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|link
+operator|.
+name|matches
+argument_list|(
+literal|"^doi:/*.*"
+argument_list|)
+condition|)
+block|{
+comment|// Remove 'doi:'
+name|link
+operator|=
+name|link
+operator|.
+name|replaceFirst
+argument_list|(
+literal|"^doi:/*"
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+name|link
+operator|=
+name|Globals
+operator|.
+name|DOI_LOOKUP_PREFIX
+operator|+
+name|link
+expr_stmt|;
+block|}
+comment|/*          * Poor man's DOI detection          *           * Fixes          * https://sourceforge.net/tracker/index.php?func=detail&aid=1709449&group_id=92314&atid=600306          */
+if|if
+condition|(
+name|link
+operator|.
+name|startsWith
+argument_list|(
+literal|"10."
+argument_list|)
+condition|)
+block|{
+name|link
+operator|=
+name|Globals
+operator|.
+name|DOI_LOOKUP_PREFIX
+operator|+
+name|link
+expr_stmt|;
+block|}
 name|link
 operator|=
 name|link
