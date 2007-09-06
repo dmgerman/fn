@@ -438,7 +438,7 @@ expr_stmt|;
 name|putFormat
 argument_list|(
 operator|new
-name|MySqlExport
+name|MySQLExport
 argument_list|()
 argument_list|)
 expr_stmt|;
