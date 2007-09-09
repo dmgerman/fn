@@ -14,111 +14,11 @@ end_package
 
 begin_import
 import|import
-name|junit
-operator|.
-name|awtui
-operator|.
-name|Logo
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexDatabase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|MetaData
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io
 operator|.
 name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|FileOutputStream
 import|;
 end_import
 
@@ -138,37 +38,17 @@ name|java
 operator|.
 name|util
 operator|.
-name|TreeMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
 import|;
 end_import
 
@@ -182,8 +62,30 @@ name|ListIterator
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|*
+import|;
+end_import
+
 begin_comment
-comment|/**  * Skeleton implementation of MySQLExporter.  */
+comment|/**  * MySQLExport contributed by Lee Patton.  */
 end_comment
 
 begin_class
@@ -199,8 +101,6 @@ specifier|public
 name|MySQLExport
 parameter_list|()
 block|{
-comment|// You need to fill in the correct extension, and edit the name if necessary.
-comment|// The second argument is the command-line name of the export format:
 name|super
 argument_list|(
 name|Globals
@@ -220,8 +120,8 @@ literal|".sql"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * First method calledd when user starts the export. 	 * 	 * @param database The bibtex database from which to export. 	 * @param file The filename to which the export should be writtten.      * @param encoding The encoding to use.      * @param keySet The set of IDs of the entries to export. 	 * @throws java.lang.Exception  	 */
-DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, final String file, final String encoding, Set keySet)
+comment|/**      * First method called when user starts the export.      *       * @param database      *            The bibtex database from which to export.      * @param file      *            The filename to which the export should be writtten.      * @param encoding      *            The encoding to use.      * @param keySet      *            The set of IDs of the entries to export.      * @throws java.lang.Exception      *             If something goes wrong, feel free to throw an exception. The      *             error message is shown to the user.      */
+DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, final String file, final String encoding, Set<String> keySet)
 specifier|public
 name|void
 name|performExport
@@ -243,24 +143,14 @@ name|String
 name|encoding
 parameter_list|,
 name|Set
+argument_list|<
+name|String
+argument_list|>
 name|keySet
 parameter_list|)
 throws|throws
 name|Exception
 block|{
-comment|// get TreeMap of all Bibtex Entry Types
-name|TreeMap
-argument_list|<
-name|String
-argument_list|,
-name|BibtexEntryType
-argument_list|>
-name|ALL_TYPES
-init|=
-name|BibtexEntryType
-operator|.
-name|ALL_TYPES
-decl_stmt|;
 name|ArrayList
 argument_list|<
 name|String
@@ -269,61 +159,25 @@ name|fields
 init|=
 operator|new
 name|ArrayList
-argument_list|()
-decl_stmt|;
-name|Set
-name|mappings
-init|=
-name|ALL_TYPES
-operator|.
-name|entrySet
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// loop through entry types
 for|for
 control|(
-name|Iterator
-name|iter
-init|=
-name|mappings
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|iter
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
-comment|// get the entry type
-name|Map
-operator|.
-name|Entry
-name|me
-init|=
-operator|(
-name|Map
-operator|.
-name|Entry
-operator|)
-name|iter
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|BibtexEntryType
 name|val
-init|=
-operator|(
+range|:
 name|BibtexEntryType
-operator|)
-name|me
 operator|.
-name|getValue
+name|ALL_TYPES
+operator|.
+name|values
 argument_list|()
-decl_stmt|;
+control|)
+block|{
 comment|// get required, optional, general and utility fields for this type
 name|fields
 operator|=
@@ -445,7 +299,8 @@ argument_list|(
 name|sql
 argument_list|)
 expr_stmt|;
-comment|// create comma separated list of field names for use in INSERT statements
+comment|// create comma separated list of field names for use in INSERT
+comment|// statements
 name|String
 name|fieldstr
 init|=
@@ -514,8 +369,6 @@ decl_stmt|;
 comment|// populate entry_type table
 name|sql_popTabET
 argument_list|(
-name|mappings
-argument_list|,
 name|fields
 argument_list|,
 name|fieldstr
@@ -541,8 +394,8 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * Inserts the elements of a String array into an ArrayList making sure not  	 * to duplicate entries in the ArrayList 	 *  	 * @param fields The ArrayList containing unique entries 	 * @param efields The String array to be inserted into the ArrayList 	 * @return The updated ArrayList with new unique entries 	 */
-DECL|method|processFields ( ArrayList<String> fields, String[] efields)
+comment|/**      * Inserts the elements of a String array into an ArrayList making sure not      * to duplicate entries in the ArrayList      *       * @param fields      *            The ArrayList containing unique entries      * @param efields      *            The String array to be inserted into the ArrayList      * @return The updated ArrayList with new unique entries      */
+DECL|method|processFields (ArrayList<String> fields, String[] efields)
 specifier|private
 name|ArrayList
 argument_list|<
@@ -614,8 +467,8 @@ return|return
 name|fields
 return|;
 block|}
-comment|/** 	 * Generates DML specifying table columns and thier datatypes.  The output 	 * of this routine should be used within a CREATE TABLE statement. 	 *  	 * @param fields  Contains unique field names 	 * @param datatype Specifies the SQL data type that the fields should take on. 	 * @return The DML code to be included in a CREATE TABLE statement. 	 */
-DECL|method|sql_fieldColumns ( ArrayList<String> fields, String datatype)
+comment|/**      * Generates DML specifying table columns and thier datatypes. The output of      * this routine should be used within a CREATE TABLE statement.      *       * @param fields      *            Contains unique field names      * @param datatype      *            Specifies the SQL data type that the fields should take on.      * @return The DML code to be included in a CREATE TABLE statement.      */
+DECL|method|sql_fieldColumns (ArrayList<String> fields, String datatype)
 specifier|private
 name|String
 name|sql_fieldColumns
@@ -685,8 +538,8 @@ return|return
 name|str
 return|;
 block|}
-comment|/** 	 * Returns the DML code necessary to create all tables required for holding 	 * jabref database. 	 * 	 * @param sql1 Column specifications for fields in entry_type table. 	 * @param sql2 Column specifications for fields in entries table. 	 * @return DML to creat all tables. 	 */
-DECL|method|sql_createTables ( String sql1, String sql2)
+comment|/**      * Returns the DML code necessary to create all tables required for holding      * jabref database.      *       * @param sql1      *            Column specifications for fields in entry_type table.      * @param sql2      *            Column specifications for fields in entries table.      * @return DML to creat all tables.      */
+DECL|method|sql_createTables (String sql1, String sql2)
 specifier|private
 name|String
 name|sql_createTables
@@ -783,16 +636,16 @@ return|return
 name|sql
 return|;
 block|}
-comment|/** 	 * Generates the DML required to populate the entry_types table with jabref data.  	 * 	 * @param mappings A Set of bibtex entries that are to be exported. 	 * @param fields The fields to be specified. 	 * @param fieldstr A comma delimited string of all field names. 	 * @param out The printstream to which the DML should be written. 	 */
-DECL|method|sql_popTabET ( Set mappings, ArrayList fields, String fieldstr, PrintStream out)
+comment|/**      * Generates the DML required to populate the entry_types table with jabref      * data.      *       * @param mappings      *            A Set of bibtex entries that are to be exported.      * @param fields      *            The fields to be specified.      * @param fieldstr      *            A comma delimited string of all field names.      * @param out      *            The printstream to which the DML should be written.      */
+DECL|method|sql_popTabET (ArrayList<String> fields, String fieldstr, PrintStream out)
 specifier|private
 name|void
 name|sql_popTabET
 parameter_list|(
-name|Set
-name|mappings
-parameter_list|,
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|fields
 parameter_list|,
 name|String
@@ -817,10 +670,16 @@ operator|+
 literal|") VALUES ("
 decl_stmt|;
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|fieldID
 init|=
 operator|new
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 for|for
@@ -848,56 +707,21 @@ literal|null
 argument_list|)
 expr_stmt|;
 comment|// loop through entry types
-name|Integer
-name|cnt
-init|=
-literal|0
-decl_stmt|;
 for|for
 control|(
-name|Iterator
-name|iter
-init|=
-name|mappings
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|iter
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
-comment|// get the entry type
-name|Map
-operator|.
-name|Entry
-name|me
-init|=
-operator|(
-name|Map
-operator|.
-name|Entry
-operator|)
-name|iter
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|BibtexEntryType
 name|val
-init|=
-operator|(
+range|:
 name|BibtexEntryType
-operator|)
-name|me
 operator|.
-name|getValue
+name|ALL_TYPES
+operator|.
+name|values
 argument_list|()
-decl_stmt|;
-comment|// set ID for each field corresponding to its relationship to the entry type
+control|)
+block|{
+comment|// set ID for each field corresponding to its relationship to the
+comment|// entry type
 for|for
 control|(
 name|int
@@ -1094,16 +918,25 @@ block|}
 block|}
 return|return;
 block|}
-comment|/** 	 * A utility function for facilitating the assignment of a code to each field 	 * name that represents the relationship of that field to a specific entry type.  	 * 	 * @param fields  A list of all fields. 	 * @param fieldID A list for holding the codes. 	 * @param fieldstr A String array containing the fields to be coded. 	 * @param ID The code that should be assigned to the specified fields. 	 * @return The updated code list. 	 */
-DECL|method|setFieldID ( ArrayList fields, ArrayList fieldID, String[] fieldstr, String ID )
+comment|/**      * A utility function for facilitating the assignment of a code to each      * field name that represents the relationship of that field to a specific      * entry type.      *       * @param fields      *            A list of all fields.      * @param fieldID      *            A list for holding the codes.      * @param fieldstr      *            A String array containing the fields to be coded.      * @param ID      *            The code that should be assigned to the specified fields.      * @return The updated code list.      */
+DECL|method|setFieldID (ArrayList<String> fields, ArrayList<String> fieldID, String[] fieldstr, String ID)
 specifier|private
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|setFieldID
 parameter_list|(
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|fields
 parameter_list|,
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|fieldID
 parameter_list|,
 name|String
@@ -1161,8 +994,8 @@ return|return
 name|fieldID
 return|;
 block|}
-comment|/** 	 * Generates the DML required to populate the entries table with jabref data.  	 * 	 * @param entries A sorted list of all entries to be exported. 	 * @param fields The fields to be specified. 	 * @param fieldstr A comma delimited string of all field names. 	 * @param out The printstream to which the DML should be written. 	 */
-DECL|method|sql_popTabFD ( List<BibtexEntry> entries, ArrayList fields, String fieldstr, PrintStream out)
+comment|/**      * Generates the DML required to populate the entries table with jabref      * data.      *       * @param entries      *            A sorted list of all entries to be exported.      * @param fields      *            The fields to be specified.      * @param fieldstr      *            A comma delimited string of all field names.      * @param out      *            The printstream to which the DML should be written.      */
+DECL|method|sql_popTabFD (List<BibtexEntry> entries, ArrayList<String> fields, String fieldstr, PrintStream out)
 specifier|private
 name|void
 name|sql_popTabFD
@@ -1174,6 +1007,9 @@ argument_list|>
 name|entries
 parameter_list|,
 name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|fields
 parameter_list|,
 name|String
@@ -1272,9 +1108,6 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-operator|(
-name|String
-operator|)
 name|fields
 operator|.
 name|get
