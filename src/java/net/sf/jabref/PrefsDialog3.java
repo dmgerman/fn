@@ -1415,8 +1415,6 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
-comment|// try { Thread.sleep(3000); } catch (InterruptedException
-comment|// ex) {}
 block|}
 specifier|public
 name|void

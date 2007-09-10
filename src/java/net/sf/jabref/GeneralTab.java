@@ -167,12 +167,14 @@ name|autoDoubleBraces
 decl_stmt|,
 DECL|field|confirmDelete
 DECL|field|allowEditing
+DECL|field|memoryStick
 DECL|field|useImportInspector
 name|confirmDelete
 decl_stmt|,
 name|allowEditing
 decl_stmt|,
-comment|/*preserveFormatting, */
+name|memoryStick
+decl_stmt|,
 name|useImportInspector
 decl_stmt|,
 DECL|field|useImportInspectorForSingle
@@ -332,6 +334,19 @@ operator|.
 name|lang
 argument_list|(
 literal|"Backup old file when saving"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|memoryStick
+operator|=
+operator|new
+name|JCheckBox
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Load and Save preferences from/to jabref.xml on start-up (memory stick mode)"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -837,7 +852,7 @@ literal|"pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, "
 operator|+
 literal|"pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, "
 operator|+
-literal|"pref, 6dlu, pref, 6dlu, pref, 6dlu, pref"
+literal|"pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, pref"
 argument_list|)
 decl_stmt|;
 name|DefaultFormBuilder
@@ -1138,8 +1153,6 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//builder.add(resolveStringsAll, cc.xy(2, 13));
-comment|//builder.add(doNotResolveStringsFor, cc.xyw(4, 13, 3));
 name|builder
 operator|.
 name|addSeparator
@@ -1275,6 +1288,22 @@ literal|29
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|builder
+operator|.
+name|add
+argument_list|(
+name|memoryStick
+argument_list|,
+name|cc
+operator|.
+name|xy
+argument_list|(
+literal|2
+argument_list|,
+literal|31
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// Create a new panel with its own FormLayout for the last items:
 name|FormLayout
 name|layout2
@@ -1353,7 +1382,6 @@ argument_list|(
 name|hlp
 argument_list|)
 expr_stmt|;
-comment|//builder2.nextLine();
 name|builder2
 operator|.
 name|nextLine
@@ -1522,7 +1550,7 @@ name|xyw
 argument_list|(
 literal|2
 argument_list|,
-literal|31
+literal|33
 argument_list|,
 literal|3
 argument_list|)
@@ -1699,6 +1727,18 @@ operator|.
 name|getBoolean
 argument_list|(
 literal|"dialogWarningForEmptyKey"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|memoryStick
+operator|.
+name|setSelected
+argument_list|(
+name|_prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"memoryStickMode"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2122,6 +2162,62 @@ argument_list|(
 literal|"dialogWarningForEmptyKey"
 argument_list|,
 name|keyEmptyWarningDialog
+operator|.
+name|isSelected
+argument_list|()
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|_prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"memoryStickMode"
+argument_list|)
+operator|&&
+operator|!
+name|memoryStick
+operator|.
+name|isSelected
+argument_list|()
+condition|)
+block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+literal|null
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"To disable the memory stick mode"
+operator|+
+literal|" rename or remove the jabref.xml file in the same folder as JabRef."
+argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Memory Stick Mode"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|INFORMATION_MESSAGE
+argument_list|)
+expr_stmt|;
+block|}
+name|_prefs
+operator|.
+name|putBoolean
+argument_list|(
+literal|"memoryStickMode"
+argument_list|,
+name|memoryStick
 operator|.
 name|isSelected
 argument_list|()

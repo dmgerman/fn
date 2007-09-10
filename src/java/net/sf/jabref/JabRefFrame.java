@@ -3614,6 +3614,11 @@ name|updatePrefs
 argument_list|()
 expr_stmt|;
 block|}
+name|prefs
+operator|.
+name|flush
+argument_list|()
+expr_stmt|;
 name|System
 operator|.
 name|exit
