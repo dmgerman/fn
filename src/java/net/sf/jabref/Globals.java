@@ -1737,32 +1737,6 @@ return|;
 block|}
 comment|/* 		 * if(type.equals("article")) return BibtexEntryType.ARTICLE; else 		 * if(type.equals("book")) return BibtexEntryType.BOOK; else 		 * if(type.equals("inproceedings")) return 		 * BibtexEntryType.INPROCEEDINGS; 		 */
 block|}
-comment|/** 	 * This method provides the correct opening brace to use when writing a 	 * field to BibTeX format. 	 *  	 * @return A String containing the braces to use. 	 */
-DECL|method|getOpeningBrace ()
-specifier|public
-specifier|static
-name|String
-name|getOpeningBrace
-parameter_list|()
-block|{
-return|return
-literal|"{"
-return|;
-comment|/* 		 * As of version 2.0, storing all fields with double braces is no longer 		 * supported, because it causes problems with e.g. the author field. 		 *  		 * if (prefs.getBoolean("autoDoubleBraces")) return "{{"; else return 		 * "{"; 		 */
-block|}
-comment|/** 	 * This method provides the correct closing brace to use when writing a 	 * field to BibTeX format. 	 *  	 * @return A String containing the braces to use. 	 */
-DECL|method|getClosingBrace ()
-specifier|public
-specifier|static
-name|String
-name|getClosingBrace
-parameter_list|()
-block|{
-return|return
-literal|"}"
-return|;
-comment|/* 		 * As of version 2.0, storing all fields with double braces is no longer 		 * supported, because it causes problems with e.g. the author field. 		 *  		 * if (prefs.getBoolean("autoDoubleBraces")) return "}}"; else 		 */
-block|}
 comment|/** 	 * Will return the names of multiple files selected in the given directory 	 * and the given extensions. 	 *  	 * Will return an empty String array if no entry is found. 	 *  	 * @param owner 	 * @param directory 	 * @param extension 	 * @param updateWorkingdirectory 	 * @return an array of selected file paths, or an empty array if no selection is made. 	 */
 DECL|method|getMultipleFiles (JFrame owner, File directory, String extension, boolean updateWorkingdirectory)
 specifier|public
