@@ -117,7 +117,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Remove non printable character formatter.  *  * Based on the RemoveBrackets.java class (Revision 1.2) by mortenalver  * @author $author$  * @version $Revision$  */
+comment|/**  * Remove non printable character formatter.  *   * Based on the RemoveBrackets.java class (Revision 1.2) by mortenalver  *   * @author $author$  * @version $Revision$  */
 end_comment
 
 begin_class
@@ -128,26 +128,20 @@ name|RemoveWhitespace
 implements|implements
 name|LayoutFormatter
 block|{
-comment|//~ Methods ////////////////////////////////////////////////////////////////
-DECL|method|format (String fieldText)
+DECL|method|format (String fieldEntry)
 specifier|public
 name|String
 name|format
 parameter_list|(
 name|String
-name|fieldText
+name|fieldEntry
 parameter_list|)
 block|{
-name|String
-name|fieldEntry
-init|=
-name|fieldText
-decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|fieldEntry
 operator|.
@@ -157,23 +151,15 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
+name|char
+name|c
+range|:
 name|fieldEntry
 operator|.
-name|length
+name|toCharArray
 argument_list|()
-condition|;
-name|i
-operator|++
 control|)
 block|{
-comment|//System.out.print(fieldEntry.charAt(i));
 if|if
 condition|(
 operator|!
@@ -181,67 +167,35 @@ name|Character
 operator|.
 name|isWhitespace
 argument_list|(
-name|fieldEntry
-operator|.
-name|charAt
-argument_list|(
-name|i
-argument_list|)
+name|c
 argument_list|)
 operator|||
 name|Character
 operator|.
 name|isSpaceChar
 argument_list|(
-name|fieldEntry
-operator|.
-name|charAt
-argument_list|(
-name|i
-argument_list|)
+name|c
 argument_list|)
 condition|)
 block|{
-comment|//System.out.print(fieldEntry.charAt(i));
 name|sb
 operator|.
 name|append
 argument_list|(
-name|fieldEntry
-operator|.
-name|charAt
-argument_list|(
-name|i
-argument_list|)
+name|c
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-name|fieldEntry
-operator|=
+return|return
 name|sb
 operator|.
 name|toString
 argument_list|()
-expr_stmt|;
-return|return
-name|fieldEntry
 return|;
 block|}
 block|}
 end_class
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
-
-begin_comment
-comment|//  END OF FILE.
-end_comment
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
 
 end_unit
 
