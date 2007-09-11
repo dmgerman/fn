@@ -14,6 +14,46 @@ begin_import
 import|import
 name|java
 operator|.
+name|awt
+operator|.
+name|Component
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Dimension
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|PrintWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|StringWriter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|lang
 operator|.
 name|reflect
@@ -34,6 +74,46 @@ name|Method
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|BorderFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JEditorPane
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JOptionPane
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JScrollPane
+import|;
+end_import
+
 begin_comment
 comment|/**  * This is a class compiled under Java 1.4.2 that will start the real JabRef and  * print some warnings if no Java 1.5 and higher and no JRE from Sun  * Microsystems is found.  *   * Caution: We cannot use any other class from JabRef here (for instance no  * calls to Globals.lang() are possible), since then it could not be run using  * Java 1.4.  *   * @author oezbek  *   */
 end_comment
@@ -44,6 +124,41 @@ specifier|public
 class|class
 name|JabRefMain
 block|{
+DECL|method|exceptionToString (Throwable t)
+specifier|public
+specifier|static
+name|String
+name|exceptionToString
+parameter_list|(
+name|Throwable
+name|t
+parameter_list|)
+block|{
+name|StringWriter
+name|stackTraceWriter
+init|=
+operator|new
+name|StringWriter
+argument_list|()
+decl_stmt|;
+name|t
+operator|.
+name|printStackTrace
+argument_list|(
+operator|new
+name|PrintWriter
+argument_list|(
+name|stackTraceWriter
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+name|stackTraceWriter
+operator|.
+name|toString
+argument_list|()
+return|;
+block|}
 comment|/**      * @param args      *            We will pass these arguments to JabRef later.      */
 DECL|method|main (String[] args)
 specifier|public
@@ -206,53 +321,299 @@ name|InvocationTargetException
 name|e
 parameter_list|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
+name|String
+name|errorMessage
+init|=
+literal|"\nERROR while starting or running JabRef:\n\n"
+operator|+
+name|exceptionToString
 argument_list|(
-literal|"ERROR while starting or running JabRef:\n"
-argument_list|)
-expr_stmt|;
 name|e
 operator|.
 name|getCause
 argument_list|()
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
+argument_list|)
+operator|+
+literal|"\n"
+operator|+
+literal|"Please first check if this problem and a solution is already known. Find our...\n"
+operator|+
+literal|"  * ...FAQ at http://jabref.sf.net/faq.php and our...\n"
+operator|+
+literal|"  * ...user mailing-list at http://sf.net/mailarchive/forum.php?forum_name=jabref-users\n\n"
+operator|+
+literal|"If you do not find a solution there, please let us know about the problem by writing a bug report.\n"
+operator|+
+literal|"You can find our bug tracker at http://sourceforge.net/tracker/?atid=600306&group_id=92314\n\n"
+operator|+
+literal|"  * If the bug has already been reported there, please add your comments to the existing bug.\n"
+operator|+
+literal|"  * If the bug has not been reported yet, then we need the complete error message given above\n"
+operator|+
+literal|"    and a description of what you did before the error occured.\n\n"
+operator|+
+literal|"We also need the following information (you can copy and paste all this):\n"
+operator|+
+literal|"  * Java Version: "
+operator|+
+name|javaVersion
+operator|+
+literal|"\n"
+operator|+
+literal|"  * Java Vendor: "
+operator|+
+name|javaVendor
+operator|+
+literal|"\n"
+operator|+
+literal|"  * Operating System: "
+operator|+
 name|System
 operator|.
-name|out
+name|getProperty
+argument_list|(
+literal|"os.name"
+argument_list|)
+operator|+
+literal|" ("
+operator|+
+name|System
 operator|.
-name|println
-argument_list|()
-expr_stmt|;
+name|getProperty
+argument_list|(
+literal|"os.version"
+argument_list|)
+operator|+
+literal|")\n"
+operator|+
+literal|"  * Hardware Architecture: "
+operator|+
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"os.arch"
+argument_list|)
+operator|+
+literal|"\n\n"
+operator|+
+literal|"We are sorry for the trouble and thanks for reporting problems with JabRef!\n"
+decl_stmt|;
 name|System
 operator|.
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"Please tell the JabRef developers about this by writing a bug report.\n"
+name|errorMessage
+argument_list|)
+expr_stmt|;
+name|JEditorPane
+name|pane
+init|=
+operator|new
+name|JEditorPane
+argument_list|(
+literal|"text/html"
+argument_list|,
+literal|"<html>The following error occurred while running JabRef:<p><font color=\"red\">"
 operator|+
-literal|"You can find our bug tracker at http://sourceforge.net/tracker/?atid=600306&group_id=92314\n"
+name|exceptionToString
+argument_list|(
+name|e
+operator|.
+name|getCause
+argument_list|()
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\n"
+argument_list|,
+literal|"<br>"
+argument_list|)
 operator|+
-literal|"If the bug has already been reported there, please add your comments to the existing bug.\n"
+literal|"</font></p>"
 operator|+
-literal|"If the bug has not been reported yet, then we need the complete error message given above\n"
+literal|"<p>Please first check if this problem and a solution is already known. Find our...</p>"
 operator|+
-literal|"and a description of what you did before the error occured.\n"
+literal|"<ul><li>...FAQ at<b>http://jabref.sf.net/faq.php</b> and our..."
 operator|+
-literal|"In most cases we also need your JabRef version, the java version\n"
+literal|"<li>...user mailing-list at<b>http://sf.net/mailarchive/forum.php?forum_name=jabref-users</b></ul>"
 operator|+
-literal|"(use 'java -version' for this) and the operating system you are using.\n"
+literal|"If you do not find a solution there, please let us know about the problem by writing a bug report.<br>"
 operator|+
-literal|"\n"
+literal|"You can find our bug tracker at<b>http://sourceforge.net/tracker/?atid=600306&group_id=92314</b>.<br>"
 operator|+
-literal|"We are sorry for the trouble and thanks for reporting problems with JabRef!\n"
+literal|"<ul><li>If the bug has already been reported there, please add your comments to the existing bug.<br>"
+operator|+
+literal|"<li>If the bug has not been reported yet, then we need the complete error message given above<br>"
+operator|+
+literal|"and a description of what you did before the error occured.</ul>"
+operator|+
+literal|"We also need the following information (you can copy and paste all this):</p>"
+operator|+
+literal|"<ul><li>Java Version: "
+operator|+
+name|javaVersion
+operator|+
+literal|"<li>Java Vendor: "
+operator|+
+name|javaVendor
+operator|+
+literal|"<li>Operating System: "
+operator|+
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"os.name"
+argument_list|)
+operator|+
+literal|" ("
+operator|+
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"os.version"
+argument_list|)
+operator|+
+literal|")"
+operator|+
+literal|"<li>Hardware Architecture: "
+operator|+
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"os.arch"
+argument_list|)
+operator|+
+literal|"</ul>"
+operator|+
+literal|"We are sorry for the trouble and thanks for reporting problems with JabRef!</html>"
+argument_list|)
+decl_stmt|;
+name|pane
+operator|.
+name|setEditable
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|pane
+operator|.
+name|setOpaque
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|pane
+operator|.
+name|putClientProperty
+argument_list|(
+name|JEditorPane
+operator|.
+name|HONOR_DISPLAY_PROPERTIES
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
+argument_list|)
+expr_stmt|;
+name|Component
+name|componentToDisplay
+decl_stmt|;
+if|if
+condition|(
+name|pane
+operator|.
+name|getPreferredSize
+argument_list|()
+operator|.
+name|getHeight
+argument_list|()
+operator|>
+literal|700
+condition|)
+block|{
+name|JScrollPane
+name|sPane
+init|=
+operator|new
+name|JScrollPane
+argument_list|(
+name|pane
+argument_list|,
+name|JScrollPane
+operator|.
+name|VERTICAL_SCROLLBAR_AS_NEEDED
+argument_list|,
+name|JScrollPane
+operator|.
+name|HORIZONTAL_SCROLLBAR_NEVER
+argument_list|)
+decl_stmt|;
+name|sPane
+operator|.
+name|setBorder
+argument_list|(
+name|BorderFactory
+operator|.
+name|createEmptyBorder
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|sPane
+operator|.
+name|setPreferredSize
+argument_list|(
+operator|new
+name|Dimension
+argument_list|(
+operator|(
+name|int
+operator|)
+name|pane
+operator|.
+name|getPreferredSize
+argument_list|()
+operator|.
+name|getWidth
+argument_list|()
+operator|+
+literal|30
+argument_list|,
+literal|700
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|componentToDisplay
+operator|=
+name|sPane
+expr_stmt|;
+block|}
+else|else
+block|{
+name|componentToDisplay
+operator|=
+name|pane
+expr_stmt|;
+block|}
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+literal|null
+argument_list|,
+name|componentToDisplay
+argument_list|,
+literal|"An error occurred while running JabRef"
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
@@ -357,22 +718,92 @@ name|UnsupportedClassVersionError
 name|e
 parameter_list|)
 block|{
+name|String
+name|errorMessage
+init|=
+name|exceptionToString
+argument_list|(
 name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
+argument_list|)
+operator|+
+literal|"\n"
+operator|+
+literal|"This means that your Java version ("
+operator|+
+name|javaVersion
+operator|+
+literal|") is not high enough to run JabRef.\n"
+operator|+
+literal|"Please update your Java Runtime Environment to a version 1.5 or higher.\n"
+decl_stmt|;
 name|System
 operator|.
 name|out
 operator|.
 name|println
 argument_list|(
-literal|"\nThis means that your Java version ("
+name|errorMessage
+argument_list|)
+expr_stmt|;
+name|JEditorPane
+name|pane
+init|=
+operator|new
+name|JEditorPane
+argument_list|(
+literal|"text/html"
+argument_list|,
+literal|"<html>You are using Java version "
 operator|+
 name|javaVersion
 operator|+
-literal|") is not high enough to run JabRef.\nPlease update your Java Runtime Environment to a version 1.5 or higher.\n"
+literal|", but JabRef needs version 1.5 or higher."
+operator|+
+literal|"<p>Please update your Java Runtime Environment.</p>"
+operator|+
+literal|"<p>For more information visit<b>http://jabref.sf.net/faq.php</b>.</p></html>"
+argument_list|)
+decl_stmt|;
+name|pane
+operator|.
+name|setEditable
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|pane
+operator|.
+name|setOpaque
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|pane
+operator|.
+name|putClientProperty
+argument_list|(
+name|JEditorPane
+operator|.
+name|HONOR_DISPLAY_PROPERTIES
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
+argument_list|)
+expr_stmt|;
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+literal|null
+argument_list|,
+name|pane
+argument_list|,
+literal|"Insufficient Java Version Installed"
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
