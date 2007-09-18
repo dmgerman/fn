@@ -1272,6 +1272,19 @@ name|newSet
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|getEntries ()
+specifier|public
+name|Set
+argument_list|<
+name|BibtexEntry
+argument_list|>
+name|getEntries
+parameter_list|()
+block|{
+return|return
+name|m_entries
+return|;
+block|}
 block|}
 end_class
 

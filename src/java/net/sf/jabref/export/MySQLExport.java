@@ -36,18 +36,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|security
-operator|.
-name|acl
-operator|.
-name|Group
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -81,6 +69,16 @@ operator|.
 name|util
 operator|.
 name|ListIterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
 import|;
 end_import
 
@@ -424,7 +422,6 @@ argument_list|,
 name|fout
 argument_list|)
 expr_stmt|;
-comment|// populate groups table
 name|GroupTreeNode
 name|gtn
 init|=
@@ -433,10 +430,26 @@ operator|.
 name|getGroups
 argument_list|()
 decl_stmt|;
+comment|// populate groups table
 name|int
-name|cnt
+name|cnt1
 init|=
 name|sql_popTabGP
+argument_list|(
+name|gtn
+argument_list|,
+literal|1
+argument_list|,
+literal|1
+argument_list|,
+name|fout
+argument_list|)
+decl_stmt|;
+comment|// populate entry_group table
+name|int
+name|cnt2
+init|=
+name|sql_popTabEG
 argument_list|(
 name|gtn
 argument_list|,
@@ -452,6 +465,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+return|return;
 block|}
 comment|/**      * Inserts the elements of a String array into an ArrayList making sure not      * to duplicate entries in the ArrayList      *       * @param fields      *            The ArrayList containing unique entries      * @param efields      *            The String array to be inserted into the ArrayList      * @return The updated ArrayList with new unique entries      */
 DECL|method|processFields (ArrayList<String> fields, String[] efields)
@@ -640,6 +654,15 @@ operator|+
 literal|"(\n"
 operator|+
 literal|"entries_id      INTEGER         NOT NULL AUTO_INCREMENT,\n"
+operator|+
+literal|"jabref_eid      VARCHAR("
+operator|+
+name|Util
+operator|.
+name|getMinimumIntegerDigits
+argument_list|()
+operator|+
+literal|")   DEFAULT NULL,\n"
 operator|+
 literal|"entry_types_id  INTEGER         DEFAULT NULL,\n"
 operator|+
@@ -1091,11 +1114,11 @@ decl_stmt|;
 name|String
 name|insert
 init|=
-literal|"INSERT INTO entries (entry_types_id, cite_key, "
+literal|"INSERT INTO entries (jabref_eid, entry_types_id, cite_key, "
 operator|+
 name|fieldstr
 operator|+
-literal|") VALUES ((SELECT entry_types_id FROM entry_types WHERE label=\""
+literal|") VALUES ("
 decl_stmt|;
 comment|// loop throught the entries that are to be exported
 for|for
@@ -1111,6 +1134,17 @@ name|sql
 operator|=
 name|insert
 operator|+
+literal|"\""
+operator|+
+name|entry
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|"\""
+operator|+
+literal|", (SELECT entry_types_id FROM entry_types WHERE label=\""
+operator|+
 name|entry
 operator|.
 name|getType
@@ -1122,13 +1156,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 operator|+
-literal|"\")"
-expr_stmt|;
-name|sql
-operator|=
-name|sql
-operator|+
-literal|", \""
+literal|"\"), \""
 operator|+
 name|entry
 operator|.
@@ -1311,6 +1339,159 @@ control|)
 name|ID
 operator|=
 name|sql_popTabGP
+argument_list|(
+name|e
+operator|.
+name|nextElement
+argument_list|()
+argument_list|,
+name|myID
+argument_list|,
+operator|++
+name|ID
+argument_list|,
+name|fout
+argument_list|)
+expr_stmt|;
+return|return
+name|ID
+return|;
+block|}
+comment|/**      * Generates the DML required to populate the entry_group table with jabref      * data.      *       * @param cursor      *            The current GroupTreeNode in the GroupsTree      * @param parentID      *            The integer ID associated with the cursors's parent node      * @param ID      *            The integer value to associate with the cursor      * @param fout      *            The printstream to which the DML should be written.      */
+DECL|method|sql_popTabEG (GroupTreeNode cursor, int parentID, int ID, PrintStream fout)
+specifier|private
+specifier|static
+name|int
+name|sql_popTabEG
+parameter_list|(
+name|GroupTreeNode
+name|cursor
+parameter_list|,
+name|int
+name|parentID
+parameter_list|,
+name|int
+name|ID
+parameter_list|,
+name|PrintStream
+name|fout
+parameter_list|)
+block|{
+comment|// if this group contains entries...
+if|if
+condition|(
+name|cursor
+operator|.
+name|getGroup
+argument_list|()
+operator|instanceof
+name|ExplicitGroup
+condition|)
+block|{
+comment|// build INSERT statement for each entry belonging to this group
+name|ExplicitGroup
+name|grp
+init|=
+operator|(
+name|ExplicitGroup
+operator|)
+name|cursor
+operator|.
+name|getGroup
+argument_list|()
+decl_stmt|;
+name|Iterator
+name|it
+init|=
+name|grp
+operator|.
+name|getEntries
+argument_list|()
+operator|.
+name|iterator
+argument_list|()
+decl_stmt|;
+while|while
+condition|(
+name|it
+operator|.
+name|hasNext
+argument_list|()
+condition|)
+block|{
+name|BibtexEntry
+name|be
+init|=
+operator|(
+name|BibtexEntry
+operator|)
+name|it
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
+name|fout
+operator|.
+name|println
+argument_list|(
+literal|"INSERT INTO entry_group (entries_id, groups_id) "
+operator|+
+literal|"VALUES ("
+operator|+
+literal|"(SELECT entries_id FROM entries WHERE jabref_eid="
+operator|+
+literal|"\""
+operator|+
+name|be
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|"\""
+operator|+
+literal|"), "
+operator|+
+literal|"(SELECT groups_id FROM groups WHERE groups_id="
+operator|+
+literal|"\""
+operator|+
+name|ID
+operator|+
+literal|"\")"
+operator|+
+literal|");"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+comment|// recurse on child nodes (depth-first traversal)
+name|int
+name|myID
+init|=
+name|ID
+decl_stmt|;
+for|for
+control|(
+name|Enumeration
+argument_list|<
+name|GroupTreeNode
+argument_list|>
+name|e
+init|=
+name|cursor
+operator|.
+name|children
+argument_list|()
+init|;
+name|e
+operator|.
+name|hasMoreElements
+argument_list|()
+condition|;
+control|)
+name|ID
+operator|=
+name|sql_popTabEG
 argument_list|(
 name|e
 operator|.
