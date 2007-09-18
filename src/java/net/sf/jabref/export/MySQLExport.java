@@ -36,9 +36,31 @@ begin_import
 import|import
 name|java
 operator|.
+name|security
+operator|.
+name|acl
+operator|.
+name|Group
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Enumeration
 import|;
 end_import
 
@@ -79,6 +101,20 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|groups
 operator|.
 name|*
 import|;
@@ -164,7 +200,8 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|// loop through entry types
+comment|// loop through entry types to get required, optional, general and
+comment|// utility fields for this type
 for|for
 control|(
 name|BibtexEntryType
@@ -178,7 +215,6 @@ name|values
 argument_list|()
 control|)
 block|{
-comment|// get required, optional, general and utility fields for this type
 name|fields
 operator|=
 name|processFields
@@ -388,6 +424,29 @@ argument_list|,
 name|fout
 argument_list|)
 expr_stmt|;
+comment|// populate groups table
+name|GroupTreeNode
+name|gtn
+init|=
+name|metaData
+operator|.
+name|getGroups
+argument_list|()
+decl_stmt|;
+name|int
+name|cnt
+init|=
+name|sql_popTabGP
+argument_list|(
+name|gtn
+argument_list|,
+literal|1
+argument_list|,
+literal|1
+argument_list|,
+name|fout
+argument_list|)
+decl_stmt|;
 name|fout
 operator|.
 name|close
@@ -554,7 +613,7 @@ block|{
 name|String
 name|sql
 init|=
-literal|"DROP TABLE IF EXISTS entry_type;\n"
+literal|"DROP TABLE IF EXISTS entry_types;\n"
 operator|+
 literal|"CREATE TABLE entry_types\n"
 operator|+
@@ -584,7 +643,7 @@ literal|"entries_id      INTEGER         NOT NULL AUTO_INCREMENT,\n"
 operator|+
 literal|"entry_types_id  INTEGER         DEFAULT NULL,\n"
 operator|+
-literal|"cite_key 	   VARCHAR(30)     DEFAULT NULL,\n"
+literal|"cite_key        VARCHAR(30)     DEFAULT NULL,\n"
 operator|+
 name|sql2
 operator|+
@@ -606,7 +665,7 @@ literal|"(\n"
 operator|+
 literal|"groups_id       INTEGER         NOT NULL AUTO_INCREMENT,\n"
 operator|+
-literal|"label           VARCHAR(30)     DEFAULT NULL,\n"
+literal|"label           VARCHAR(100)     DEFAULT NULL,\n"
 operator|+
 literal|"parent_id       INTEGER         DEFAULT NULL,\n"
 operator|+
@@ -1175,6 +1234,100 @@ expr_stmt|;
 block|}
 block|}
 return|return;
+block|}
+comment|/**      * Generates the DML required to populate the groups table with jabref      * data.      *       * @param cursor      *            The current GroupTreeNode in the GroupsTree      * @param parentID      *            The integer ID associated with the cursors's parent node      * @param ID      *            The integer value to associate with the cursor      * @param fout      *            The printstream to which the DML should be written.      */
+DECL|method|sql_popTabGP (GroupTreeNode cursor, int parentID, int ID, PrintStream fout)
+specifier|private
+specifier|static
+name|int
+name|sql_popTabGP
+parameter_list|(
+name|GroupTreeNode
+name|cursor
+parameter_list|,
+name|int
+name|parentID
+parameter_list|,
+name|int
+name|ID
+parameter_list|,
+name|PrintStream
+name|fout
+parameter_list|)
+block|{
+comment|// print the DML to insert the cursor's data
+name|fout
+operator|.
+name|println
+argument_list|(
+literal|"INSERT INTO groups (groups_id, label, parent_id) "
+operator|+
+literal|"VALUES ("
+operator|+
+name|ID
+operator|+
+literal|", \""
+operator|+
+name|cursor
+operator|.
+name|getGroup
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|"\", "
+operator|+
+name|parentID
+operator|+
+literal|");"
+argument_list|)
+expr_stmt|;
+comment|// recurse on child nodes (depth-first traversal)
+name|int
+name|myID
+init|=
+name|ID
+decl_stmt|;
+for|for
+control|(
+name|Enumeration
+argument_list|<
+name|GroupTreeNode
+argument_list|>
+name|e
+init|=
+name|cursor
+operator|.
+name|children
+argument_list|()
+init|;
+name|e
+operator|.
+name|hasMoreElements
+argument_list|()
+condition|;
+control|)
+name|ID
+operator|=
+name|sql_popTabGP
+argument_list|(
+name|e
+operator|.
+name|nextElement
+argument_list|()
+argument_list|,
+name|myID
+argument_list|,
+operator|++
+name|ID
+argument_list|,
+name|fout
+argument_list|)
+expr_stmt|;
+return|return
+name|ID
+return|;
 block|}
 block|}
 end_class
