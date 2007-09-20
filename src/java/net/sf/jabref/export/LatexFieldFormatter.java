@@ -341,7 +341,7 @@ operator|=
 operator|new
 name|StringBuffer
 argument_list|(
-literal|'{'
+literal|"{"
 argument_list|)
 expr_stmt|;
 comment|// No formatting at all for these fields, to allow custom formatting?
