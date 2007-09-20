@@ -1315,7 +1315,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-name|Object
+name|String
 name|o
 init|=
 name|getField
@@ -1409,8 +1409,6 @@ block|}
 return|return
 literal|true
 return|;
-comment|//Util.writeField(name, o, out);
-comment|//out.write(","+Globals.NEWLINE);
 block|}
 else|else
 return|return
