@@ -92,6 +92,20 @@ name|VersionHandling
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|sql
+operator|.
+name|DBStrings
+import|;
+end_import
+
 begin_class
 DECL|class|MetaData
 specifier|public
@@ -148,6 +162,15 @@ init|=
 literal|null
 decl_stmt|;
 comment|// The File where this base gets saved.
+DECL|field|dbStrings
+specifier|private
+name|DBStrings
+name|dbStrings
+init|=
+operator|new
+name|DBStrings
+argument_list|()
+decl_stmt|;
 comment|/**      * The MetaData object stores all meta data sets in Vectors. To ensure that      * the data is written correctly to string, the user of a meta data Vector      * must simply make sure the appropriate changes are reflected in the Vector      * it has been passed.      */
 DECL|method|MetaData (HashMap<String, String> inData, BibtexDatabase db)
 specifier|public
@@ -1418,6 +1441,32 @@ operator|.
 name|file
 operator|=
 name|file
+expr_stmt|;
+block|}
+DECL|method|getDBStrings ()
+specifier|public
+name|DBStrings
+name|getDBStrings
+parameter_list|()
+block|{
+return|return
+name|dbStrings
+return|;
+block|}
+DECL|method|setDBStrings (DBStrings dbStrings)
+specifier|public
+name|void
+name|setDBStrings
+parameter_list|(
+name|DBStrings
+name|dbStrings
+parameter_list|)
+block|{
+name|this
+operator|.
+name|dbStrings
+operator|=
+name|dbStrings
 expr_stmt|;
 block|}
 block|}
