@@ -3005,7 +3005,7 @@ block|{
 name|Connection
 name|conn
 init|=
-name|SQLutils
+name|SQLutil
 operator|.
 name|connect_mysql
 argument_list|(
@@ -3026,7 +3026,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// dump the database to the external SQL database
-comment|// SQLutils.dumpDB(conn);
+comment|// SQLutil.dumpDB(conn);
 name|conn
 operator|.
 name|close
