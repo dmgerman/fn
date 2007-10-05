@@ -460,7 +460,7 @@ name|jabref
 operator|.
 name|sql
 operator|.
-name|SQLutils
+name|SQLutil
 import|;
 end_import
 
@@ -3039,6 +3039,26 @@ name|Exception
 name|ex
 parameter_list|)
 block|{
+if|if
+condition|(
+name|ex
+operator|.
+name|getMessage
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+name|errorMessage
+operator|=
+name|ex
+operator|.
+name|toString
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
 name|errorMessage
 operator|=
 name|ex
@@ -3046,6 +3066,7 @@ operator|.
 name|getMessage
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// run third, on EDT:
