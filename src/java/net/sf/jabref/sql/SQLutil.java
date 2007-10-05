@@ -20,6 +20,80 @@ begin_import
 import|import
 name|java
 operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|PrintStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|lang
+operator|.
+name|Exception
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Enumeration
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_comment
+comment|/* import java.util.List; import java.util.ListIterator; import java.util.Iterator;  */
+end_comment
+
+begin_import
+import|import
+name|java
+operator|.
 name|sql
 operator|.
 name|*
@@ -126,6 +200,30 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|MetaData
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|BibtexEntryType
 import|;
 end_import
@@ -167,6 +265,20 @@ operator|.
 name|groups
 operator|.
 name|ExplicitGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|export
+operator|.
+name|FileActions
 import|;
 end_import
 
@@ -253,6 +365,148 @@ decl_stmt|;
 return|return
 name|conn
 return|;
+block|}
+comment|/**      * Utility method for processing DML with proper output      *      * @param out      *          The output (PrintStream or Connection) object to which the DML should be sent      * @param dml      *          The DML statements to be processed      */
+DECL|method|processDML ( Object out, String dml)
+specifier|private
+specifier|static
+name|void
+name|processDML
+parameter_list|(
+name|Object
+name|out
+parameter_list|,
+name|String
+name|dml
+parameter_list|)
+throws|throws
+name|SQLException
+block|{
+if|if
+condition|(
+name|out
+operator|instanceof
+name|PrintStream
+condition|)
+block|{
+name|PrintStream
+name|fout
+init|=
+operator|(
+name|PrintStream
+operator|)
+name|out
+decl_stmt|;
+name|fout
+operator|.
+name|println
+argument_list|(
+name|dml
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|out
+operator|instanceof
+name|Connection
+condition|)
+block|{
+name|Connection
+name|conn
+init|=
+operator|(
+name|Connection
+operator|)
+name|out
+decl_stmt|;
+name|execDML
+argument_list|(
+name|conn
+argument_list|,
+name|dml
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+comment|/**      * Utility method for executing DML      *      * @param conn      *          The DML Connection object that will execute the SQL      * @param sql      *          The DML statements to be executed      */
+DECL|method|execDML (Connection conn, String dml)
+specifier|public
+specifier|static
+name|void
+name|execDML
+parameter_list|(
+name|Connection
+name|conn
+parameter_list|,
+name|String
+name|dml
+parameter_list|)
+throws|throws
+name|SQLException
+block|{
+name|Statement
+name|stmnt
+init|=
+name|conn
+operator|.
+name|createStatement
+argument_list|()
+decl_stmt|;
+name|stmnt
+operator|.
+name|execute
+argument_list|(
+name|dml
+argument_list|)
+expr_stmt|;
+name|SQLWarning
+name|warn
+init|=
+name|stmnt
+operator|.
+name|getWarnings
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|warn
+operator|!=
+literal|null
+condition|)
+block|{
+comment|//TODO handle SQL warnings
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|warn
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"("
+operator|+
+name|dml
+operator|+
+literal|")"
+argument_list|)
+expr_stmt|;
+block|}
+name|stmnt
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
 DECL|method|getFields ()
 specifier|public
@@ -496,36 +750,254 @@ return|return
 name|list
 return|;
 block|}
-comment|/**      * Writes the table creation DML to the specififed file.      *       * @param dbtype      *          Indicates the type of database to be written to       * @param fout      *          The PrintStream to which the DML should be written      */
-DECL|method|dmlCreateTables (DBTYPE dbtype, PrintStream fout)
+comment|/**      * Accepts the BibtexDatabase and MetaData, generates the DML required to      * create and populate SQL database tables, and writes this DML to the       * specified output file.      *      * @param database      *          The BibtexDatabase to export      * @param metaData      *          The MetaData object containing the groups information      * @param keySet      *          The set of IDs of the entries to export.      * @param file      *          The name of the file to which the DML should be written      */
+DECL|method|exportDatabase (final BibtexDatabase database, final MetaData metaData, Set<String> keySet, String file )
 specifier|public
 specifier|static
 name|void
-name|dmlCreateTables
+name|exportDatabase
 parameter_list|(
-name|DBTYPE
-name|dbtype
+specifier|final
+name|BibtexDatabase
+name|database
 parameter_list|,
-name|PrintStream
-name|fout
+specifier|final
+name|MetaData
+name|metaData
+parameter_list|,
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|keySet
+parameter_list|,
+name|String
+name|file
 parameter_list|)
 throws|throws
-name|SQLException
+name|Exception
 block|{
-name|dmlCreateTables_worker
+comment|// open output file
+name|File
+name|outfile
+init|=
+operator|new
+name|File
 argument_list|(
-name|dbtype
+name|file
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|outfile
+operator|.
+name|exists
+argument_list|()
+condition|)
+name|outfile
+operator|.
+name|delete
+argument_list|()
+expr_stmt|;
+name|PrintStream
+name|fout
+init|=
+literal|null
+decl_stmt|;
+name|fout
+operator|=
+operator|new
+name|PrintStream
+argument_list|(
+name|outfile
+argument_list|)
+expr_stmt|;
+name|exportDatabase_worker
+argument_list|(
+name|database
+argument_list|,
+name|metaData
+argument_list|,
+name|keySet
 argument_list|,
 name|fout
 argument_list|)
 expr_stmt|;
+name|fout
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
 block|}
-comment|/**      * Worker method for the dbmlCreateTables methods.      *       * @param dbtype      *          Indicates the type of database to be written to       * @param fout      *          The output (PrintStream or Connection) object to which the DML should be written      */
-DECL|method|dmlCreateTables_worker (DBTYPE dbtype, Object out)
+comment|/**      * Accepts the BibtexDatabase and MetaData, generates the DML required to      * create and populate SQL database tables, and writes this DML to the       * specified SQL database.      *      * @param database      *          The BibtexDatabase to export      * @param metaData      *          The MetaData object containing the groups information      * @param keySet      *          The set of IDs of the entries to export.      * @param dbStrings      *          The necessary database connection information      */
+DECL|method|exportDatabase (final BibtexDatabase database, final MetaData metaData, Set<String> keySet, DBStrings dbStrings )
+specifier|public
+specifier|static
+name|void
+name|exportDatabase
+parameter_list|(
+specifier|final
+name|BibtexDatabase
+name|database
+parameter_list|,
+specifier|final
+name|MetaData
+name|metaData
+parameter_list|,
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|keySet
+parameter_list|,
+name|DBStrings
+name|dbStrings
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+name|Connection
+name|conn
+init|=
+name|SQLutil
+operator|.
+name|connect_mysql
+argument_list|(
+name|dbStrings
+operator|.
+name|getJdbcUrl
+argument_list|()
+argument_list|,
+name|dbStrings
+operator|.
+name|getUsername
+argument_list|()
+argument_list|,
+name|dbStrings
+operator|.
+name|getPassword
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|exportDatabase_worker
+argument_list|(
+name|database
+argument_list|,
+name|metaData
+argument_list|,
+name|keySet
+argument_list|,
+name|conn
+argument_list|)
+expr_stmt|;
+name|conn
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+comment|/**      * Worker method for the exportDatabase methods.      *      * @param database      *          The BibtexDatabase to export      * @param metaData      *          The MetaData object containing the groups information      * @param keySet      *            The set of IDs of the entries to export.      * @param out      *          The output (PrintStream or Connection) object to which the DML should be written.      */
+DECL|method|exportDatabase_worker (final BibtexDatabase database, final MetaData metaData, Set<String> keySet, Object out)
 specifier|private
 specifier|static
 name|void
-name|dmlCreateTables_worker
+name|exportDatabase_worker
+parameter_list|(
+specifier|final
+name|BibtexDatabase
+name|database
+parameter_list|,
+specifier|final
+name|MetaData
+name|metaData
+parameter_list|,
+name|Set
+argument_list|<
+name|String
+argument_list|>
+name|keySet
+parameter_list|,
+name|Object
+name|out
+parameter_list|)
+throws|throws
+name|Exception
+block|{
+name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
+name|entries
+init|=
+name|FileActions
+operator|.
+name|getSortedEntries
+argument_list|(
+name|database
+argument_list|,
+name|keySet
+argument_list|,
+literal|false
+argument_list|)
+decl_stmt|;
+comment|// create MySQL tables
+name|dmlCreateTables
+argument_list|(
+name|SQLutil
+operator|.
+name|DBTYPE
+operator|.
+name|MYSQL
+argument_list|,
+name|out
+argument_list|)
+expr_stmt|;
+comment|// populate entry_type table
+name|dmlPopTab_ET
+argument_list|(
+name|out
+argument_list|)
+expr_stmt|;
+comment|// populate entries table
+name|dmlPopTab_FD
+argument_list|(
+name|entries
+argument_list|,
+name|out
+argument_list|)
+expr_stmt|;
+name|GroupTreeNode
+name|gtn
+init|=
+name|metaData
+operator|.
+name|getGroups
+argument_list|()
+decl_stmt|;
+comment|// populate groups table
+name|dmlPopTab_GP
+argument_list|(
+name|gtn
+argument_list|,
+name|out
+argument_list|)
+expr_stmt|;
+comment|// populate entry_group table
+name|dmlPopTab_EG
+argument_list|(
+name|gtn
+argument_list|,
+name|out
+argument_list|)
+expr_stmt|;
+block|}
+empty_stmt|;
+comment|/**      * Writes the table creation DML to the specififed file.      *       * @param dbtype      *          Indicates the type of database to be written to       * @param fout      *          The output (PrintStream or Connection) object to which the DML should be written      */
+DECL|method|dmlCreateTables (DBTYPE dbtype, Object out)
+specifier|private
+specifier|static
+name|void
+name|dmlCreateTables
 parameter_list|(
 name|DBTYPE
 name|dbtype
@@ -558,7 +1030,7 @@ name|fieldsAsCols
 argument_list|(
 name|fields
 argument_list|,
-literal|"\tVARCHAR(3)\t\tDEFAULT NULL"
+literal|" VARCHAR(3)  DEFAULT NULL"
 argument_list|)
 decl_stmt|;
 name|String
@@ -570,7 +1042,7 @@ name|fieldsAsCols
 argument_list|(
 name|fields
 argument_list|,
-literal|"\tTEXT\t\tDEFAULT NULL"
+literal|" TEXT DEFAULT NULL"
 argument_list|)
 decl_stmt|;
 comment|// build the DML tables specification
@@ -587,13 +1059,13 @@ block|{
 case|case
 name|MYSQL
 case|:
-name|dml
-operator|=
 name|dmlTable_mysql
 argument_list|(
 name|dml1
 argument_list|,
 name|dml2
+argument_list|,
+name|out
 argument_list|)
 expr_stmt|;
 break|break;
@@ -615,143 +1087,7 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-comment|// handle DML according to output type
-name|processDML
-argument_list|(
-name|out
-argument_list|,
-name|dml
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Utility method for processing DML with proper output      *      * @param out      *          The output (PrintStream or Connection) object to which the DML should be sent      * @param dml      *          The DML statements to be processed      */
-DECL|method|processDML ( Object out, String dml)
-specifier|private
-specifier|static
-name|void
-name|processDML
-parameter_list|(
-name|Object
-name|out
-parameter_list|,
-name|String
-name|dml
-parameter_list|)
-throws|throws
-name|SQLException
-block|{
-if|if
-condition|(
-name|out
-operator|instanceof
-name|PrintStream
-condition|)
-block|{
-name|PrintStream
-name|fout
-init|=
-operator|(
-name|PrintStream
-operator|)
-name|out
-decl_stmt|;
-name|fout
-operator|.
-name|println
-argument_list|(
-name|dml
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|out
-operator|instanceof
-name|Connection
-condition|)
-block|{
-name|Connection
-name|conn
-init|=
-operator|(
-name|Connection
-operator|)
-name|out
-decl_stmt|;
-name|execDML
-argument_list|(
-name|conn
-argument_list|,
-name|dml
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-comment|/**      * Utility method for executing DML      *      * @param conn      *          The DML Connection object that will execute the SQL      * @param sql      *          The DML statements to be executed      */
-DECL|method|execDML (Connection conn, String dml)
-specifier|public
-specifier|static
-name|void
-name|execDML
-parameter_list|(
-name|Connection
-name|conn
-parameter_list|,
-name|String
-name|dml
-parameter_list|)
-throws|throws
-name|SQLException
-block|{
-name|Statement
-name|stmnt
-init|=
-name|conn
-operator|.
-name|createStatement
-argument_list|()
-decl_stmt|;
-name|stmnt
-operator|.
-name|execute
-argument_list|(
-name|dml
-argument_list|)
-expr_stmt|;
-name|SQLWarning
-name|warn
-init|=
-name|stmnt
-operator|.
-name|getWarnings
-argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|warn
-operator|!=
-literal|null
-condition|)
-block|{
-comment|//TODO handle SQL warnings
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|warn
-operator|.
-name|toString
-argument_list|()
-argument_list|)
-expr_stmt|;
-block|}
-name|stmnt
-operator|.
-name|close
-argument_list|()
-expr_stmt|;
+return|return;
 block|}
 comment|/**      * Generates DML specifying table columns and their datatypes. The output of      * this routine should be used within a CREATE TABLE statement.      *       * @param fields      *            Contains unique field names      * @param datatype      *            Specifies the SQL data type that the fields should take on.      * @return The DML code to be included in a CREATE TABLE statement.      */
 DECL|method|fieldsAsCols (ArrayList<String> fields, String datatype)
@@ -803,7 +1139,7 @@ operator|.
 name|next
 argument_list|()
 operator|+
-literal|"\t"
+literal|" "
 operator|+
 name|datatype
 expr_stmt|;
@@ -825,11 +1161,11 @@ return|return
 name|str
 return|;
 block|}
-comment|/**      * Returns DML code necessary to create all tables in a MySQL database.      *      * @param dml1      *            Column specifications for fields in entry_type table.      * @param dml2      *            Column specifications for fields in entries table.      * @return DML to create all MySQL tables.      */
-DECL|method|dmlTable_mysql (String dml1, String dml2)
+comment|/**      * Generates DML code necessary to create all tables in a MySQL database,       * and writes it to appropriate output.      *      * @param dml1      *            Column specifications for fields in entry_type table.      * @param dml2      *            Column specifications for fields in entries table.      * @param out      *            The output (PrintStream or Connection) object to which the DML should be written.      * @return DML to create all MySQL tables.      */
+DECL|method|dmlTable_mysql (String dml1, String dml2, Object out)
 specifier|private
 specifier|static
-name|String
+name|void
 name|dmlTable_mysql
 parameter_list|(
 name|String
@@ -837,38 +1173,67 @@ name|dml1
 parameter_list|,
 name|String
 name|dml2
+parameter_list|,
+name|Object
+name|out
 parameter_list|)
+throws|throws
+name|SQLException
 block|{
-name|String
-name|dml
-init|=
-literal|"DROP TABLE IF EXISTS entry_types;\n"
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"DROP TABLE IF EXISTS entry_types;"
+argument_list|)
+expr_stmt|;
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"DROP TABLE IF EXISTS entries;"
+argument_list|)
+expr_stmt|;
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"DROP TABLE IF EXISTS groups;"
+argument_list|)
+expr_stmt|;
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"DROP TABLE IF EXISTS entry_group;"
+argument_list|)
+expr_stmt|;
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"CREATE TABLE entry_types ( \n"
 operator|+
-literal|"CREATE TABLE entry_types\n"
+literal|"entry_types_id    INT UNSIGNED  NOT NULL AUTO_INCREMENT, \n"
 operator|+
-literal|"(\n"
-operator|+
-literal|"entry_types_id    INT UNSIGNED  NOT NULL AUTO_INCREMENT,\n"
-operator|+
-literal|"label			 TEXT,\n"
+literal|"label			 TEXT, \n"
 operator|+
 name|dml1
 operator|+
-literal|",\n"
+literal|", \n"
 operator|+
-literal|"PRIMARY KEY (entry_types_id)\n"
+literal|"PRIMARY KEY (entry_types_id) \n"
 operator|+
-literal|");\n"
+literal|");"
+argument_list|)
+expr_stmt|;
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"CREATE TABLE entries ( \n"
 operator|+
-literal|"\n"
-operator|+
-literal|"DROP TABLE IF EXISTS entries;\n"
-operator|+
-literal|"create table entries\n"
-operator|+
-literal|"(\n"
-operator|+
-literal|"entries_id      INTEGER         NOT NULL AUTO_INCREMENT,\n"
+literal|"entries_id      INTEGER         NOT NULL AUTO_INCREMENT, \n"
 operator|+
 literal|"jabref_eid      VARCHAR("
 operator|+
@@ -877,87 +1242,65 @@ operator|.
 name|getMinimumIntegerDigits
 argument_list|()
 operator|+
-literal|")   DEFAULT NULL,\n"
+literal|")   DEFAULT NULL, \n"
 operator|+
-literal|"entry_types_id  INTEGER         DEFAULT NULL,\n"
+literal|"entry_types_id  INTEGER         DEFAULT NULL, \n"
 operator|+
-literal|"cite_key        VARCHAR(30)     DEFAULT NULL,\n"
+literal|"cite_key        VARCHAR(30)     DEFAULT NULL, \n"
 operator|+
 name|dml2
 operator|+
 literal|",\n"
 operator|+
-literal|"PRIMARY KEY (entries_id),\n"
+literal|"PRIMARY KEY (entries_id), \n"
 operator|+
-literal|"FOREIGN KEY (entry_types_id) REFERENCES entry_type(entry_types_id)\n"
+literal|"FOREIGN KEY (entry_types_id) REFERENCES entry_type(entry_types_id) \n"
 operator|+
-literal|");\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"DROP TABLE IF EXISTS groups;\n"
-operator|+
-literal|"CREATE TABLE groups\n"
-operator|+
-literal|"(\n"
-operator|+
-literal|"groups_id       INTEGER         NOT NULL AUTO_INCREMENT,\n"
-operator|+
-literal|"label           VARCHAR(100)     DEFAULT NULL,\n"
-operator|+
-literal|"parent_id       INTEGER         DEFAULT NULL,\n"
-operator|+
-literal|"PRIMARY KEY (groups_id)\n"
-operator|+
-literal|");\n"
-operator|+
-literal|"\n"
-operator|+
-literal|"DROP TABLE IF EXISTS entry_group;\n"
-operator|+
-literal|"CREATE TABLE entry_group\n"
-operator|+
-literal|"(\n"
-operator|+
-literal|"entries_id       INTEGER        NOT NULL AUTO_INCREMENT,\n"
-operator|+
-literal|"groups_id        INTEGER        DEFAULT NULL,\n"
-operator|+
-literal|"FOREIGN KEY (entries_id) REFERENCES entry_fields(entries_id),\n"
-operator|+
-literal|"FOREIGN KEY (groups_id)  REFERENCES groups(groups_id)\n"
-operator|+
-literal|");\n"
-decl_stmt|;
-return|return
-name|dml
-return|;
-block|}
-comment|/**      * Generates the DML required to populate the entry_types table with jabref      * data.      *       * @param out      *            The printstream to which the DML should be written.      */
-DECL|method|dmlPopTab_ET (PrintStream out)
-specifier|public
-specifier|static
-name|void
-name|dmlPopTab_ET
-parameter_list|(
-name|PrintStream
-name|out
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-name|dmlPopTab_ET_worker
-argument_list|(
-name|out
+literal|");"
 argument_list|)
 expr_stmt|;
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"CREATE TABLE groups ( \n"
+operator|+
+literal|"groups_id       INTEGER         NOT NULL AUTO_INCREMENT, \n"
+operator|+
+literal|"label           VARCHAR(100)     DEFAULT NULL, \n"
+operator|+
+literal|"parent_id       INTEGER          DEFAULT NULL, \n"
+operator|+
+literal|"PRIMARY KEY (groups_id) \n"
+operator|+
+literal|");"
+argument_list|)
+expr_stmt|;
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"CREATE TABLE entry_group ( \n"
+operator|+
+literal|"entries_id       INTEGER        NOT NULL AUTO_INCREMENT, \n"
+operator|+
+literal|"groups_id        INTEGER        DEFAULT NULL, \n"
+operator|+
+literal|"FOREIGN KEY (entries_id) REFERENCES entry_fields(entries_id), \n"
+operator|+
+literal|"FOREIGN KEY (groups_id)  REFERENCES groups(groups_id) \n"
+operator|+
+literal|");"
+argument_list|)
+expr_stmt|;
+return|return;
 block|}
-comment|/**      * Worker for the dmlPopTab_ET methods.      *      * @param out      *            The output (PrintSream or Connection) object to which the DML should be written.      */
-DECL|method|dmlPopTab_ET_worker ( Object out)
+comment|/**      * Generates the DML required to populate the entry_types table with jabref      * data.      *       * @param out      *          The output (PrintSream or Connection) object to which the DML should be written.      */
+DECL|method|dmlPopTab_ET ( Object out)
 specifier|private
 specifier|static
 name|void
-name|dmlPopTab_ET_worker
+name|dmlPopTab_ET
 parameter_list|(
 name|Object
 name|out
@@ -1297,39 +1640,12 @@ return|return
 name|fieldID
 return|;
 block|}
-comment|/**      * Generates the DML required to populate the entries table with jabref      * data and writes it to the output PrintStream.      *       * @param entries      *          The BibtexEntries to export           * @param out      *          The PrintStream to which the DML should be written.      */
-DECL|method|dmlPopTab_FD (List<BibtexEntry> entries, PrintStream out)
-specifier|public
-specifier|static
-name|void
-name|dmlPopTab_FD
-parameter_list|(
-name|List
-argument_list|<
-name|BibtexEntry
-argument_list|>
-name|entries
-parameter_list|,
-name|PrintStream
-name|out
-parameter_list|)
-throws|throws
-name|Exception
-block|{
-name|dmlPopTab_FD_worker
-argument_list|(
-name|entries
-argument_list|,
-name|out
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Workder method for the dmlPopTab_FD methods.      *       * @param entries      *          The BibtexEntries to export           * @param out      *          The output (PrintStream or Connection) object to which the DML should be written.      */
-DECL|method|dmlPopTab_FD_worker (List<BibtexEntry> entries, Object out)
+comment|/**      * Generates the DML required to populate the entries table with jabref      * data and writes it to the output PrintStream.      *       * @param entries      *          The BibtexEntries to export           * @param out      *          The output (PrintStream or Connection) object to which the DML should be written.      */
+DECL|method|dmlPopTab_FD (List<BibtexEntry> entries, Object out)
 specifier|private
 specifier|static
 name|void
-name|dmlPopTab_FD_worker
+name|dmlPopTab_FD
 parameter_list|(
 name|List
 argument_list|<
@@ -1497,9 +1813,9 @@ expr_stmt|;
 block|}
 return|return;
 block|}
-comment|/**      * Generates the DML required to populate the groups table with jabref      * data, and writes this DML to the output file.      *       * @param cursor      *            The current GroupTreeNode in the GroupsTree      * @param fout      *            The printstream to which the DML should be written.      */
-DECL|method|dmlPopTab_GP (GroupTreeNode cursor, PrintStream fout)
-specifier|public
+comment|/**      * Generates the DML required to populate the groups table with jabref      * data, and writes this DML to the output file.      *       * @param cursor      *            The current GroupTreeNode in the GroupsTree      * @param out      *            The output (PrintStream or Connection) object to which the DML should be written.      */
+DECL|method|dmlPopTab_GP (GroupTreeNode cursor, Object out)
+specifier|private
 specifier|static
 name|int
 name|dmlPopTab_GP
@@ -1507,8 +1823,8 @@ parameter_list|(
 name|GroupTreeNode
 name|cursor
 parameter_list|,
-name|PrintStream
-name|fout
+name|Object
+name|out
 parameter_list|)
 throws|throws
 name|Exception
@@ -1524,14 +1840,14 @@ literal|1
 argument_list|,
 literal|1
 argument_list|,
-name|fout
+name|out
 argument_list|)
 decl_stmt|;
 return|return
 name|cnt
 return|;
 block|}
-comment|/**      * Recursive worker method for the dmlPopTab_GP methods.      *      * @param cursor      *            The current GroupTreeNode in the GroupsTree      * @param parentID      *            The integer ID associated with the cursors's parent node      * @param ID      *            The integer value to associate with the cursor      * @param fout      *            The output (PrintStream or Connection) object to which the DML should be written.      */
+comment|/**      * Recursive worker method for the dmlPopTab_GP methods.      *      * @param cursor      *            The current GroupTreeNode in the GroupsTree      * @param parentID      *            The integer ID associated with the cursors's parent node      * @param ID      *            The integer value to associate with the cursor      * @param out      *            The output (PrintStream or Connection) object to which the DML should be written.      */
 DECL|method|dmlPopTab_GP_worker (GroupTreeNode cursor, int parentID, int ID, Object out)
 specifier|private
 specifier|static
@@ -1627,9 +1943,9 @@ return|return
 name|ID
 return|;
 block|}
-comment|/**      * Generates the DML required to populate the entry_group table with jabref      * data, and writes the DML to the PrintStream.      *       * @param cursor      *            The current GroupTreeNode in the GroupsTree      * @param fout      *            The printstream to which the DML should be written.      */
-DECL|method|dmlPopTab_EG (GroupTreeNode cursor, PrintStream fout)
-specifier|public
+comment|/**      * Generates the DML required to populate the entry_group table with jabref      * data, and writes the DML to the PrintStream.      *       * @param cursor      *            The current GroupTreeNode in the GroupsTree      * @param out      *            The output (PrintStream or Connection) object to which the DML should be written.      */
+DECL|method|dmlPopTab_EG (GroupTreeNode cursor, Object fout)
+specifier|private
 specifier|static
 name|int
 name|dmlPopTab_EG
@@ -1637,7 +1953,7 @@ parameter_list|(
 name|GroupTreeNode
 name|cursor
 parameter_list|,
-name|PrintStream
+name|Object
 name|fout
 parameter_list|)
 throws|throws
@@ -1661,7 +1977,7 @@ return|return
 name|cnt
 return|;
 block|}
-comment|/**      * Recursive worker method for the dmlPopTab_EG methods.      *       * @param cursor      *            The current GroupTreeNode in the GroupsTree      * @param parentID      *            The integer ID associated with the cursors's parent node      * @param ID      *            The integer value to associate with the cursor      * @param fout      *            The output (PrintStream or Connection) object to which the DML should be written.      */
+comment|/**      * Recursive worker method for the dmlPopTab_EG methods.      *       * @param cursor      *            The current GroupTreeNode in the GroupsTree      * @param parentID      *            The integer ID associated with the cursors's parent node      * @param ID      *            The integer value to associate with the cursor      * @param out      *            The output (PrintStream or Connection) object to which the DML should be written.      */
 DECL|method|dmlPopTab_EG_worker (GroupTreeNode cursor, int parentID, int ID, Object out)
 specifier|private
 specifier|static
