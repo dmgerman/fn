@@ -2851,6 +2851,7 @@ name|isInitialized
 argument_list|()
 condition|)
 block|{
+comment|//String [] servers = {Globals.lang("MySQL"), Globals.lang("Derby")};
 name|String
 index|[]
 name|servers
@@ -3061,13 +3062,15 @@ block|{
 name|String
 name|url
 init|=
+name|SQLutil
+operator|.
+name|createJDBCurl
+argument_list|(
 name|metaData
 operator|.
 name|getDBStrings
 argument_list|()
-operator|.
-name|getJdbcUrl
-argument_list|()
+argument_list|)
 decl_stmt|;
 comment|// if no error, report success
 if|if

@@ -123,26 +123,6 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getJdbcUrl ()
-specifier|public
-name|String
-name|getJdbcUrl
-parameter_list|()
-block|{
-return|return
-literal|"jdbc:"
-operator|+
-name|serverType
-operator|+
-literal|"://"
-operator|+
-name|serverHostname
-operator|+
-literal|"/"
-operator|+
-name|database
-return|;
-block|}
 DECL|method|setServerType (String serverType)
 specifier|public
 name|void
