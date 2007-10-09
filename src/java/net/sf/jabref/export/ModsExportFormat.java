@@ -254,7 +254,6 @@ argument_list|,
 name|keySet
 argument_list|)
 decl_stmt|;
-comment|// TODO: DOES NOT SUPPORT EXPORTING ONLY A SET OF ENTRIES
 try|try
 block|{
 name|DOMSource

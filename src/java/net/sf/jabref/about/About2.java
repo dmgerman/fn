@@ -19,18 +19,6 @@ begin_comment
 comment|//
 end_comment
 
-begin_comment
-comment|// todo     :
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// modified :
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.about
 package|package

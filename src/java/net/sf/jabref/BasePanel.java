@@ -843,9 +843,19 @@ name|saveAction
 decl_stmt|;
 comment|/**      * The group selector component for this database. Instantiated by the      * SidePaneManager if necessary, or from this class if merging groups from a      * different database.      */
 comment|//GroupSelector groupSelector;
-DECL|field|sortingBySearchResults
 specifier|public
 name|boolean
+DECL|field|showingSearch
+name|showingSearch
+init|=
+literal|false
+decl_stmt|,
+DECL|field|showingGroup
+name|showingGroup
+init|=
+literal|false
+decl_stmt|,
+DECL|field|sortingBySearchResults
 name|sortingBySearchResults
 init|=
 literal|false
@@ -9016,6 +9026,11 @@ argument_list|()
 argument_list|)
 condition|)
 block|{
+name|EntryEditor
+name|visibleNow
+init|=
+name|currentEditor
+decl_stmt|;
 comment|// We already have an editor for this entry type.
 name|form
 operator|=
@@ -9034,6 +9049,29 @@ argument_list|()
 operator|)
 argument_list|)
 expr_stmt|;
+comment|// If the cached editor is not the same as the currently shown one,
+comment|// make sure the current one stores its current edit:
+if|if
+condition|(
+operator|(
+name|visibleNow
+operator|!=
+literal|null
+operator|)
+operator|&&
+operator|(
+name|form
+operator|!=
+name|visibleNow
+operator|)
+condition|)
+block|{
+name|visibleNow
+operator|.
+name|storeCurrentEdit
+argument_list|()
+expr_stmt|;
+block|}
 name|form
 operator|.
 name|switchTo
@@ -9046,7 +9084,12 @@ comment|//    form.setVisiblePanel(visName);
 block|}
 else|else
 block|{
-comment|// We must instantiate a new editor for this type.
+comment|// We must instantiate a new editor for this type. First make sure the old one
+comment|// stores its last edit:
+name|storeCurrentEdit
+argument_list|()
+expr_stmt|;
+comment|// Then start the new one:
 name|form
 operator|=
 operator|new
@@ -9747,6 +9790,10 @@ argument_list|(
 name|matcher
 argument_list|)
 expr_stmt|;
+name|showingSearch
+operator|=
+literal|true
+expr_stmt|;
 block|}
 DECL|method|setGroupMatcher (Matcher<BibtexEntry> matcher)
 specifier|public
@@ -9767,6 +9814,10 @@ argument_list|(
 name|matcher
 argument_list|)
 expr_stmt|;
+name|showingGroup
+operator|=
+literal|true
+expr_stmt|;
 block|}
 DECL|method|stopShowingSearchResults ()
 specifier|public
@@ -9782,6 +9833,10 @@ name|NoSearchMatcher
 operator|.
 name|INSTANCE
 argument_list|)
+expr_stmt|;
+name|showingSearch
+operator|=
+literal|false
 expr_stmt|;
 block|}
 DECL|method|stopShowingGroup ()
@@ -9799,6 +9854,35 @@ operator|.
 name|INSTANCE
 argument_list|)
 expr_stmt|;
+name|showingGroup
+operator|=
+literal|false
+expr_stmt|;
+block|}
+comment|/**      * Query whether this BasePanel is in the mode where a float search result is shown.      * @return true if showing float search, false otherwise.      */
+DECL|method|isShowingFloatSearch ()
+specifier|public
+name|boolean
+name|isShowingFloatSearch
+parameter_list|()
+block|{
+return|return
+name|mainTable
+operator|.
+name|isShowingFloatSearch
+argument_list|()
+return|;
+block|}
+comment|/**      * Query whether this BasePanel is in the mode where a filter search result is shown.      * @return true if showing filter search, false otherwise.      */
+DECL|method|isShowingFilterSearch ()
+specifier|public
+name|boolean
+name|isShowingFilterSearch
+parameter_list|()
+block|{
+return|return
+name|showingSearch
+return|;
 block|}
 DECL|method|getDatabase ()
 specifier|public

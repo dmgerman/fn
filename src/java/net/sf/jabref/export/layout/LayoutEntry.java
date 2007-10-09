@@ -1479,7 +1479,26 @@ operator|.
 name|IS_ENCODING_NAME
 condition|)
 block|{
+comment|// Try to translate from Java encoding name to common name:
+name|String
+name|commonName
+init|=
+name|Globals
+operator|.
+name|ENCODING_NAMES_LOOKUP
+operator|.
+name|get
+argument_list|(
+name|encoding
+argument_list|)
+decl_stmt|;
 return|return
+name|commonName
+operator|!=
+literal|null
+condition|?
+name|commonName
+else|:
 name|encoding
 return|;
 block|}
@@ -1868,9 +1887,6 @@ name|strings
 index|[
 literal|1
 index|]
-operator|.
-name|trim
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

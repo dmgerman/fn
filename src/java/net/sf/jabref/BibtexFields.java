@@ -504,6 +504,11 @@ name|SMALL_W
 argument_list|,
 literal|60
 argument_list|)
+operator|.
+name|setNumeric
+argument_list|(
+literal|true
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|add
@@ -624,6 +629,11 @@ name|SMALL_W
 argument_list|,
 literal|60
 argument_list|)
+operator|.
+name|setNumeric
+argument_list|(
+literal|true
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|add
@@ -640,6 +650,11 @@ operator|.
 name|SMALL_W
 argument_list|,
 literal|60
+argument_list|)
+operator|.
+name|setNumeric
+argument_list|(
+literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -725,6 +740,28 @@ argument_list|(
 name|dummy
 argument_list|)
 expr_stmt|;
+name|add
+argument_list|(
+operator|new
+name|BibtexSingleField
+argument_list|(
+literal|"pmid"
+argument_list|,
+literal|false
+argument_list|,
+name|GUIGlobals
+operator|.
+name|SMALL_W
+argument_list|,
+literal|60
+argument_list|)
+operator|.
+name|setNumeric
+argument_list|(
+literal|true
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// additional fields ------------------------------------------------------
 name|dummy
 operator|=
@@ -740,6 +777,13 @@ operator|.
 name|SMALL_W
 argument_list|,
 literal|75
+argument_list|)
+expr_stmt|;
+name|dummy
+operator|.
+name|setNumeric
+argument_list|(
+literal|true
 argument_list|)
 expr_stmt|;
 name|dummy
@@ -1819,6 +1863,42 @@ return|return
 literal|false
 return|;
 block|}
+DECL|method|isNumeric ( String field )
+specifier|public
+specifier|static
+name|boolean
+name|isNumeric
+parameter_list|(
+name|String
+name|field
+parameter_list|)
+block|{
+name|BibtexSingleField
+name|sField
+init|=
+name|getField
+argument_list|(
+name|field
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|sField
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|sField
+operator|.
+name|isNumeric
+argument_list|()
+return|;
+block|}
+return|return
+literal|false
+return|;
+block|}
 comment|/** returns an string-array with all fieldnames */
 DECL|method|getAllFieldNames ()
 specifier|public
@@ -1972,6 +2052,15 @@ name|String
 name|extras
 init|=
 literal|null
+decl_stmt|;
+comment|// This value defines whether contents of this field are expected to be
+comment|// numeric values. This can be used to sort e.g. volume numbers correctly:
+DECL|field|numeric
+specifier|private
+name|boolean
+name|numeric
+init|=
+literal|false
 decl_stmt|;
 comment|// a comma separated list of alternative bibtex-fieldnames, e.g.
 comment|// "LCCN" is the same like "lib-congress"
@@ -2644,6 +2733,36 @@ parameter_list|()
 block|{
 return|return
 name|name
+return|;
+block|}
+comment|/**        * Set this field's numeric propery        * @param numeric true to indicate that this is a numeric field.        * @return this BibtexSingleField instance. Makes it easier to call this        *   method on the fly while initializing without using a local variable.        */
+DECL|method|setNumeric (boolean numeric)
+specifier|public
+name|BibtexSingleField
+name|setNumeric
+parameter_list|(
+name|boolean
+name|numeric
+parameter_list|)
+block|{
+name|this
+operator|.
+name|numeric
+operator|=
+name|numeric
+expr_stmt|;
+return|return
+name|this
+return|;
+block|}
+DECL|method|isNumeric ()
+specifier|public
+name|boolean
+name|isNumeric
+parameter_list|()
+block|{
+return|return
+name|numeric
 return|;
 block|}
 block|}

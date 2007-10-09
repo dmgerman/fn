@@ -1398,7 +1398,7 @@ name|builder2
 operator|.
 name|append
 argument_list|(
-name|timeStampField
+name|timeStampFormat
 argument_list|)
 expr_stmt|;
 name|builder2
@@ -1426,7 +1426,7 @@ name|builder2
 operator|.
 name|append
 argument_list|(
-name|timeStampFormat
+name|timeStampField
 argument_list|)
 expr_stmt|;
 name|hlp

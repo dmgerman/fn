@@ -54,31 +54,19 @@ name|String
 name|fieldText
 parameter_list|)
 block|{
-comment|// return AuthorList.fixAuthor_lastNameFirst(fieldText, true);
-try|try
-block|{
+comment|/**          * This formatter is a duplicate of AuthorAbbreviator, so we simply          * call that one.          *          * TODO: Note that this makes the remaining methods in this formatter obsolete.           */
 return|return
-name|getAbbreviations
-argument_list|(
-name|fieldText
+operator|(
+operator|new
+name|AuthorAbbreviator
+argument_list|()
+operator|)
 operator|.
-name|split
+name|format
 argument_list|(
-literal|" and "
-argument_list|)
-argument_list|)
-return|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|e
-parameter_list|)
-block|{
-return|return
 name|fieldText
+argument_list|)
 return|;
-block|}
 block|}
 comment|/** 	 * Abbreviates the names in the Last, First or Last, Jr, First format. 	 *  	 * @param authors 	 *            List of authors. 	 * @return The abbreviated names. 	 */
 DECL|method|getAbbreviations (String[] authors)

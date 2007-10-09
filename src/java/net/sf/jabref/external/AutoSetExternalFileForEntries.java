@@ -1240,7 +1240,6 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|OptionsDialog
-specifier|static
 class|class
 name|OptionsDialog
 extends|extends
@@ -1824,15 +1823,14 @@ expr_stmt|;
 name|String
 name|dir
 init|=
-name|Globals
+name|panel
 operator|.
-name|prefs
+name|metaData
+argument_list|()
 operator|.
-name|get
+name|getFileDirectory
 argument_list|(
 name|fieldName
-operator|+
-literal|"Directory"
 argument_list|)
 decl_stmt|;
 if|if

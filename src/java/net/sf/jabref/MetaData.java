@@ -740,7 +740,6 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("MetaData: dir: '"+dir+"' relative: "+(new File(dir)).isAbsolute());
 return|return
 name|dir
 return|;

@@ -18,7 +18,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|ImageIcon
+name|*
 import|;
 end_import
 
@@ -68,6 +68,15 @@ specifier|protected
 name|ImageIcon
 name|icon
 decl_stmt|;
+DECL|field|label
+specifier|protected
+name|JLabel
+name|label
+init|=
+operator|new
+name|JLabel
+argument_list|()
+decl_stmt|;
 DECL|method|ExternalFileType (String name, String extension, String openWith, String iconName)
 specifier|public
 name|ExternalFileType
@@ -85,11 +94,27 @@ name|String
 name|iconName
 parameter_list|)
 block|{
+name|label
+operator|.
+name|setText
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|name
 operator|=
 name|name
+expr_stmt|;
+name|label
+operator|.
+name|setToolTipText
+argument_list|(
+name|this
+operator|.
+name|name
+argument_list|)
 expr_stmt|;
 name|this
 operator|.
@@ -103,19 +128,7 @@ name|openWith
 operator|=
 name|openWith
 expr_stmt|;
-name|this
-operator|.
-name|iconName
-operator|=
-name|iconName
-expr_stmt|;
-name|this
-operator|.
-name|icon
-operator|=
-name|GUIGlobals
-operator|.
-name|getImage
+name|setIconName
 argument_list|(
 name|iconName
 argument_list|)
@@ -163,6 +176,15 @@ index|[
 literal|0
 index|]
 expr_stmt|;
+name|label
+operator|.
+name|setToolTipText
+argument_list|(
+name|this
+operator|.
+name|name
+argument_list|)
+expr_stmt|;
 name|this
 operator|.
 name|extension
@@ -181,22 +203,14 @@ index|[
 literal|2
 index|]
 expr_stmt|;
-name|this
+name|label
 operator|.
-name|iconName
-operator|=
-name|val
-index|[
-literal|3
-index|]
+name|setText
+argument_list|(
+literal|null
+argument_list|)
 expr_stmt|;
-name|this
-operator|.
-name|icon
-operator|=
-name|GUIGlobals
-operator|.
-name|getImage
+name|setIconName
 argument_list|(
 name|val
 index|[
@@ -252,6 +266,15 @@ operator|.
 name|name
 operator|=
 name|name
+expr_stmt|;
+name|label
+operator|.
+name|setToolTipText
+argument_list|(
+name|this
+operator|.
+name|name
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getExtension ()
@@ -333,6 +356,8 @@ name|iconName
 operator|=
 name|name
 expr_stmt|;
+try|try
+block|{
 name|this
 operator|.
 name|icon
@@ -344,6 +369,44 @@ argument_list|(
 name|iconName
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|NullPointerException
+name|ex
+parameter_list|)
+block|{
+comment|// Loading the icon failed. This could be because the icons have not been
+comment|// initialized, which will be the case if we are operating from the command
+comment|// line and the graphical interface hasn't been initialized. In that case
+comment|// we will do without the icon:
+name|this
+operator|.
+name|icon
+operator|=
+literal|null
+expr_stmt|;
+block|}
+name|label
+operator|.
+name|setIcon
+argument_list|(
+name|this
+operator|.
+name|icon
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Obtain a JLabel instance set with this file type's icon. The same JLabel      * is returned from each call of this method.      * @return the label.      */
+DECL|method|getIconLabel ()
+specifier|public
+name|JLabel
+name|getIconLabel
+parameter_list|()
+block|{
+return|return
+name|label
+return|;
 block|}
 comment|/**      * Get the string associated with this file type's icon. The string is used      * to get the actual icon by the method GUIGlobals.getIcon(String)      * @return The icon name.      */
 DECL|method|getIconName ()

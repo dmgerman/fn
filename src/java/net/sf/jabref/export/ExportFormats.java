@@ -1198,6 +1198,30 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// Set the global variable for this database's file directory before exporting,
+comment|// so formatters can resolve linked files correctly.
+comment|// (This is an ugly hack!)
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|fileDirForDatabase
+operator|=
+name|frame
+operator|.
+name|basePanel
+argument_list|()
+operator|.
+name|metaData
+argument_list|()
+operator|.
+name|getFileDirectory
+argument_list|(
+name|GUIGlobals
+operator|.
+name|FILE_FIELD
+argument_list|)
+expr_stmt|;
 comment|// Make sure we remember which filter was used, to set
 comment|// the default for next time:
 name|Globals

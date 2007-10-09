@@ -207,7 +207,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author Morten O. Alver.  * Based on net.sf.jabref.MODSDatabase by Michael Wrighton  *  * TODO To change the template for this generated type comment go to  * Window - Preferences - Java - Code Style - Code Templates  */
+comment|/**  * @author Morten O. Alver.  * Based on net.sf.jabref.MODSDatabase by Michael Wrighton  *  */
 end_comment
 
 begin_class

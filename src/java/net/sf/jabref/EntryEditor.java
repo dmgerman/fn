@@ -256,6 +256,34 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|external
+operator|.
+name|WriteXMPEntryEditorAction
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|journals
+operator|.
+name|JournalAbbreviations
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|gui
 operator|.
 name|AutoCompleter
@@ -289,20 +317,6 @@ operator|.
 name|imports
 operator|.
 name|BibtexParser
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|journals
-operator|.
-name|JournalAbbreviations
 import|;
 end_import
 
@@ -465,6 +479,11 @@ DECL|field|generateKeyAction
 specifier|public
 name|GenerateKeyAction
 name|generateKeyAction
+decl_stmt|;
+DECL|field|writeXmp
+specifier|public
+name|AbstractAction
+name|writeXmp
 decl_stmt|;
 DECL|field|saveDatabaseAction
 name|SaveDatabaseAction
@@ -753,6 +772,16 @@ operator|=
 operator|new
 name|StoreFieldAction
 argument_list|()
+expr_stmt|;
+name|writeXmp
+operator|=
+operator|new
+name|WriteXMPEntryEditorAction
+argument_list|(
+name|panel_
+argument_list|,
+name|this
+argument_list|)
 expr_stmt|;
 name|BorderLayout
 name|bl
@@ -1514,6 +1543,13 @@ operator|.
 name|add
 argument_list|(
 name|generateKeyAction
+argument_list|)
+expr_stmt|;
+name|tlb
+operator|.
+name|add
+argument_list|(
+name|writeXmp
 argument_list|)
 expr_stmt|;
 name|tlb
@@ -3238,6 +3274,13 @@ if|if
 condition|(
 operator|(
 name|comp
+operator|==
+name|source
+operator|)
+operator|||
+operator|(
+operator|(
+name|comp
 operator|instanceof
 name|FieldEditor
 operator|)
@@ -3248,6 +3291,7 @@ name|isAncestorOf
 argument_list|(
 name|comp
 argument_list|)
+operator|)
 condition|)
 block|{
 name|storeFieldAction
@@ -3418,8 +3462,6 @@ operator|==
 name|be
 condition|)
 return|return;
-comment|// Util.pr("EntryEditor.switchTo(BibtexEntry): "+entry.getCiteKey());
-comment|// Util.pr("::EntryEditor.switchTo(BibtexEntry): "+this.type.getName());
 name|storeCurrentEdit
 argument_list|()
 expr_stmt|;
@@ -6268,6 +6310,11 @@ comment|// 1. get Bitexentry for selected index (already have)
 comment|// 2. run the LabelMaker by it
 try|try
 block|{
+comment|// Store the current edit in case this action is called during the
+comment|// editing of a field:
+name|storeCurrentEdit
+argument_list|()
+expr_stmt|;
 comment|// this updates the table automatically, on close, but not
 comment|// within the tab
 name|Object

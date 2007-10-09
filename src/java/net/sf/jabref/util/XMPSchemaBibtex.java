@@ -1267,7 +1267,7 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"xmpPrivacyFilter"
+literal|"xmpPrivacyFilters"
 argument_list|)
 argument_list|)
 argument_list|)

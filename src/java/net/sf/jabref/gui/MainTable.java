@@ -863,6 +863,16 @@ name|refreshSorting
 argument_list|()
 expr_stmt|;
 block|}
+DECL|method|isShowingFloatSearch ()
+specifier|public
+name|boolean
+name|isShowingFloatSearch
+parameter_list|()
+block|{
+return|return
+name|showingFloatSearch
+return|;
+block|}
 comment|/**      * Removes sorting by group, and graying out of non-hits.      */
 DECL|method|stopShowingFloatGrouping ()
 specifier|public

@@ -1063,10 +1063,28 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|// Now we need to make sense of the contents the user has made to the
-comment|// table setup table.
+comment|// table setup table. This needs to be done either if changes were made, or
+comment|// if the checkbox is checked and no field values have been stored previously:
 if|if
 condition|(
 name|tableChanged
+operator|||
+operator|(
+name|privacyFilterCheckBox
+operator|.
+name|isSelected
+argument_list|()
+operator|&&
+operator|!
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|hasKey
+argument_list|(
+literal|"xmpPrivacyFilters"
+argument_list|)
+operator|)
 condition|)
 block|{
 comment|// First we remove all rows with empty names.

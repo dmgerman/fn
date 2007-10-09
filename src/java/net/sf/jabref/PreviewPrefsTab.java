@@ -1215,7 +1215,7 @@ name|setField
 argument_list|(
 literal|"author"
 argument_list|,
-literal|"L. E. C. Conceic{\\~a}o and T. van der Meeren and J. A. J. Verreth and M. S. Evjen and D. F. Houlihan and H. J. Fyhn"
+literal|"Luis E. C. Conceic{\\~a}o and Terje van der Meeren and Johan A. J. Verreth and M S. Evjen and D. F. Houlihan and H. J. Fyhn"
 argument_list|)
 expr_stmt|;
 name|entry

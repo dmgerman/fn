@@ -97,7 +97,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Importer for the Refer/Endnote format.  *  * check here for details on the format  * http://www.ecst.csuchico.edu/~jacobsd/bib/formats/endnote.html  */
+comment|/**  * Importer for the Refer/Endnote format.  * modified to use article number for pages if pages are missing (some  * journals, e.g., Physical Review Letters, don't use pages anymore)  *  * check here for details on the format  * http://www.ecst.csuchico.edu/~jacobsd/bib/formats/endnote.html  */
 end_comment
 
 begin_class
@@ -406,6 +406,10 @@ decl_stmt|,
 name|editor
 init|=
 literal|""
+decl_stmt|,
+name|artnum
+init|=
+literal|""
 decl_stmt|;
 for|for
 control|(
@@ -438,6 +442,10 @@ operator|=
 literal|""
 expr_stmt|;
 name|editor
+operator|=
+literal|""
+expr_stmt|;
+name|artnum
 operator|=
 literal|""
 expr_stmt|;
@@ -1080,6 +1088,39 @@ argument_list|(
 literal|"O"
 argument_list|)
 condition|)
+block|{
+comment|// Notes may contain Article number
+if|if
+condition|(
+name|val
+operator|.
+name|startsWith
+argument_list|(
+literal|"Artn"
+argument_list|)
+condition|)
+block|{
+name|String
+index|[]
+name|tokens
+init|=
+name|val
+operator|.
+name|split
+argument_list|(
+literal|"\\s"
+argument_list|)
+decl_stmt|;
+name|artnum
+operator|=
+name|tokens
+index|[
+literal|1
+index|]
+expr_stmt|;
+block|}
+else|else
+block|{
 name|hm
 operator|.
 name|put
@@ -1089,6 +1130,8 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 elseif|else
 if|if
 condition|(
@@ -1263,6 +1306,38 @@ name|fixAuthor
 argument_list|(
 name|editor
 argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//if pages missing and article number given, use the article number
+if|if
+condition|(
+name|hm
+operator|.
+name|get
+argument_list|(
+literal|"pages"
+argument_list|)
+operator|.
+name|equals
+argument_list|(
+literal|"-"
+argument_list|)
+operator|&&
+operator|!
+name|artnum
+operator|.
+name|equals
+argument_list|(
+literal|""
+argument_list|)
+condition|)
+name|hm
+operator|.
+name|put
+argument_list|(
+literal|"pages"
+argument_list|,
+name|artnum
 argument_list|)
 expr_stmt|;
 name|BibtexEntry

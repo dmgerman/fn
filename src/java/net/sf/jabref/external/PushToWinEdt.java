@@ -258,6 +258,13 @@ operator|.
 name|append
 argument_list|(
 name|keyString
+operator|.
+name|replaceAll
+argument_list|(
+literal|"'"
+argument_list|,
+literal|"''"
+argument_list|)
 argument_list|)
 operator|.
 name|append

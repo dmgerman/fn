@@ -11371,6 +11371,57 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Sets the indeterminate status of the progress bar.      *      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
+DECL|method|setProgressBarIndeterminate (final boolean value)
+specifier|public
+name|void
+name|setProgressBarIndeterminate
+parameter_list|(
+specifier|final
+name|boolean
+name|value
+parameter_list|)
+block|{
+if|if
+condition|(
+name|SwingUtilities
+operator|.
+name|isEventDispatchThread
+argument_list|()
+condition|)
+name|progressBar
+operator|.
+name|setIndeterminate
+argument_list|(
+name|value
+argument_list|)
+expr_stmt|;
+else|else
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+operator|new
+name|Runnable
+argument_list|()
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
+name|progressBar
+operator|.
+name|setIndeterminate
+argument_list|(
+name|value
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Sets the maximum value of the progress bar. Always call this method      * before using the progress bar, to set a maximum value appropriate to      * the task at hand.       *       * If not called on the event dispatch thread, this method uses       * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
 DECL|method|setProgressBarMaximum (final int value)
 specifier|public

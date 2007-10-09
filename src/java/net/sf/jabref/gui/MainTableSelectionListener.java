@@ -1477,6 +1477,7 @@ expr_stmt|;
 block|}
 block|}
 else|else
+block|{
 name|Util
 operator|.
 name|openExternalViewer
@@ -1494,6 +1495,7 @@ argument_list|,
 name|fieldName
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(

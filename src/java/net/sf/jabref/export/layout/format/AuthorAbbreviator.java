@@ -36,6 +36,18 @@ name|LayoutFormatter
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|AuthorList
+import|;
+end_import
+
 begin_comment
 comment|/**  * Duplicate of AuthorLastFirstAbbreviator.  *   * @see AuthorLastFirstAbbreviator  *   * @author Carlos Silla  */
 end_comment
@@ -58,19 +70,22 @@ name|String
 name|fieldText
 parameter_list|)
 block|{
-comment|// It seems to me that this formatter and AuthorLastFirstAbbreviator
-comment|// are duplicates. Since the latter was patched to improve handling of
-comment|// some names, we refer the operation there:
-return|return
-operator|(
-operator|new
-name|AuthorLastFirstAbbreviator
-argument_list|()
-operator|)
+name|AuthorList
+name|list
+init|=
+name|AuthorList
 operator|.
-name|format
+name|getAuthorList
 argument_list|(
 name|fieldText
+argument_list|)
+decl_stmt|;
+return|return
+name|list
+operator|.
+name|getAuthorsLastFirstAnds
+argument_list|(
+literal|true
 argument_list|)
 return|;
 block|}

@@ -484,8 +484,6 @@ init|=
 operator|new
 name|DefaultFormBuilder
 argument_list|(
-name|message
-argument_list|,
 operator|new
 name|FormLayout
 argument_list|(
@@ -493,6 +491,8 @@ literal|"left:pref"
 argument_list|,
 literal|""
 argument_list|)
+argument_list|,
+name|message
 argument_list|)
 decl_stmt|;
 name|b

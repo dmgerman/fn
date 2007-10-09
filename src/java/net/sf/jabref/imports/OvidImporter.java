@@ -497,35 +497,10 @@ operator|.
 name|trim
 argument_list|()
 decl_stmt|;
-comment|// Remove unnecessary dots at the end of lines:
-if|if
-condition|(
-name|content
-operator|.
-name|endsWith
-argument_list|(
-literal|"."
-argument_list|)
-condition|)
-name|content
-operator|=
-name|content
-operator|.
-name|substring
-argument_list|(
-literal|0
-argument_list|,
-name|content
-operator|.
-name|length
-argument_list|()
-operator|-
-literal|1
-argument_list|)
-expr_stmt|;
-comment|//fields[j] = fields[j].trim();
-if|if
-condition|(
+comment|// Check if this is the author field (due to a minor special treatment for this field):
+name|boolean
+name|isAuthor
+init|=
 name|fieldName
 operator|.
 name|indexOf
@@ -554,6 +529,41 @@ argument_list|)
 operator|==
 operator|-
 literal|1
+decl_stmt|;
+comment|// Remove unnecessary dots at the end of lines, unless this is the author field,
+comment|// in which case a dot at the end could be significant:
+if|if
+condition|(
+operator|!
+name|isAuthor
+operator|&&
+name|content
+operator|.
+name|endsWith
+argument_list|(
+literal|"."
+argument_list|)
+condition|)
+name|content
+operator|=
+name|content
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|content
+operator|.
+name|length
+argument_list|()
+operator|-
+literal|1
+argument_list|)
+expr_stmt|;
+comment|//fields[j] = fields[j].trim();
+if|if
+condition|(
+name|isAuthor
 condition|)
 block|{
 name|h
@@ -565,9 +575,6 @@ argument_list|,
 name|content
 argument_list|)
 expr_stmt|;
-comment|/*if (content.indexOf(";")> 0){ //LN FN; [LN FN;]*                     names = content.replaceAll("[^\\.A-Za-z,;\\- ]", "").replaceAll(";", " and");                 }else{// LN FN. [LN FN.]*                     //author = content.replaceAll("\\.", " and").replaceAll(" and$", "");                     names = content;                 }                  StringBuffer buf = new StringBuffer();                 for (int ii=0; ii<names.length; ii++) {                     names[ii] = names[ii].trim();                     int space = names[ii].indexOf(' ');                     if (space>= 0) {                         buf.append(names[ii].substring(0, space));                         buf.append(',');                         buf.append(names[ii].substring(space));                     } else {                         buf.append(names[ii]);                     }                      buf.append()                     if (ii< names.length-1)                         buf.append(" and ");                 }                 h.put("author", AuthorList.fixAuthor_lastNameFirst(names));  */
-comment|//    author = content.replaceAll("  ", " and ").replaceAll(" and $", "");
-comment|//h.put("author", ImportFormatReader.fixAuthor_lastNameFirst(author));
 block|}
 elseif|else
 if|if
@@ -1171,7 +1178,6 @@ literal|"Abstract"
 argument_list|)
 condition|)
 block|{
-comment|//System.out.println("'"+content+"'");
 name|h
 operator|.
 name|put
@@ -1232,6 +1238,27 @@ argument_list|(
 literal|"entrytype"
 argument_list|,
 literal|"article"
+argument_list|)
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|content
+operator|.
+name|indexOf
+argument_list|(
+literal|"Conference Paper"
+argument_list|)
+operator|>=
+literal|0
+condition|)
+name|h
+operator|.
+name|put
+argument_list|(
+literal|"entrytype"
+argument_list|,
+literal|"inproceedings"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1454,6 +1481,7 @@ return|return
 name|bibitems
 return|;
 block|}
+comment|/**      * Convert a string of author names into a BibTeX-compatible format.      * @param content The name string.      * @return The formatted names.      */
 DECL|method|fixNames (String content)
 specifier|private
 name|String
@@ -1496,6 +1524,93 @@ literal|";"
 argument_list|,
 literal|" and"
 argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|content
+operator|.
+name|indexOf
+argument_list|(
+literal|"  "
+argument_list|)
+operator|>
+literal|0
+condition|)
+block|{
+name|String
+index|[]
+name|sNames
+init|=
+name|content
+operator|.
+name|split
+argument_list|(
+literal|"  "
+argument_list|)
+decl_stmt|;
+name|StringBuilder
+name|sb
+init|=
+operator|new
+name|StringBuilder
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|sNames
+operator|.
+name|length
+condition|;
+name|i
+operator|++
+control|)
+block|{
+if|if
+condition|(
+name|i
+operator|>
+literal|0
+condition|)
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|" and "
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+name|sNames
+index|[
+name|i
+index|]
+operator|.
+name|replaceFirst
+argument_list|(
+literal|" "
+argument_list|,
+literal|", "
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+name|names
+operator|=
+name|sb
+operator|.
+name|toString
+argument_list|()
 expr_stmt|;
 block|}
 else|else

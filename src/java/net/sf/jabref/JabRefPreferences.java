@@ -520,6 +520,18 @@ name|ExternalFileType
 argument_list|>
 argument_list|()
 decl_stmt|;
+comment|// The following field is used as a global variable during the export of a database.
+comment|// By setting this field to the path of the database's default file directory, formatters
+comment|// that should resolve external file paths can access this field. This is an ugly hack
+comment|// to solve the problem of formatters not having access to any context except for the
+comment|// string to be formatted and possible formatter arguments.
+DECL|field|fileDirForDatabase
+specifier|public
+name|String
+name|fileDirForDatabase
+init|=
+literal|null
+decl_stmt|;
 comment|// The only instance of this class:
 DECL|field|singleton
 specifier|private
@@ -730,7 +742,7 @@ name|put
 argument_list|(
 literal|"pdfviewer"
 argument_list|,
-literal|"acroread"
+literal|"evince"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -2264,9 +2276,9 @@ literal|"<b><i>\\bibtextype</i><a name=\"\\bibtexkey\">\\begin{bibtexkey} (\\bib
 operator|+
 literal|"\\end{bibtexkey}</b><br>__NEWLINE__"
 operator|+
-literal|"\\begin{author} \\format[AuthorLastFirst,HTMLChars,AuthorAbbreviator,AuthorAndsReplacer]{\\author}<BR>\\end{author}__NEWLINE__"
+literal|"\\begin{author} \\format[HTMLChars,AuthorAbbreviator,AuthorAndsReplacer]{\\author}<BR>\\end{author}__NEWLINE__"
 operator|+
-literal|"\\begin{editor} \\format[AuthorLastFirst,HTMLChars,AuthorAbbreviator,AuthorAndsReplacer]{\\editor}<i>(ed.)</i><BR>\\end{editor}__NEWLINE__"
+literal|"\\begin{editor} \\format[HTMLChars,AuthorAbbreviator,AuthorAndsReplacer]{\\editor}<i>(ed.)</i><BR>\\end{editor}__NEWLINE__"
 operator|+
 literal|"\\begin{title} \\format[HTMLChars]{\\title} \\end{title}<BR>__NEWLINE__"
 operator|+
@@ -2302,9 +2314,9 @@ literal|"<b><i>\\bibtextype</i><a name=\"\\bibtexkey\">\\begin{bibtexkey} (\\bib
 operator|+
 literal|"\\end{bibtexkey}</b><br>__NEWLINE__"
 operator|+
-literal|"\\begin{author} \\format[AuthorLastFirst,HTMLChars,AuthorAbbreviator,AuthorAndsReplacer]{\\author}<BR>\\end{author}__NEWLINE__"
+literal|"\\begin{author} \\format[HTMLChars,AuthorAbbreviator,AuthorAndsReplacer]{\\author}<BR>\\end{author}__NEWLINE__"
 operator|+
-literal|"\\begin{editor} \\format[AuthorLastFirst,HTMLChars,AuthorAbbreviator,AuthorAndsReplacer]{\\editor}<i>(ed.)</i><BR>\\end{editor}__NEWLINE__"
+literal|"\\begin{editor} \\format[HTMLChars,AuthorAbbreviator,AuthorAndsReplacer]{\\editor}<i>(ed.)</i><BR>\\end{editor}__NEWLINE__"
 operator|+
 literal|"\\begin{title} \\format[HTMLChars]{\\title} \\end{title}<BR>__NEWLINE__"
 operator|+
@@ -5265,7 +5277,7 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
-literal|"Search IEEXplore"
+literal|"Search IEEEXplore"
 argument_list|,
 literal|"F8"
 argument_list|)
@@ -5286,6 +5298,15 @@ argument_list|(
 literal|"Write XMP"
 argument_list|,
 literal|"ctrl F4"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"New file link"
+argument_list|,
+literal|"ctrl N"
 argument_list|)
 expr_stmt|;
 comment|//defKeyBinds.put("Select value", "ctrl B");
@@ -5859,6 +5880,40 @@ argument_list|(
 operator|new
 name|ExternalFileType
 argument_list|(
+literal|"Excel file"
+argument_list|,
+literal|"xls"
+argument_list|,
+literal|"oocalc"
+argument_list|,
+literal|"openoffice"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|list
+operator|.
+name|add
+argument_list|(
+operator|new
+name|ExternalFileType
+argument_list|(
+literal|"OpenDocument spreadsheet"
+argument_list|,
+literal|"ods"
+argument_list|,
+literal|"oocalc"
+argument_list|,
+literal|"openoffice"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|list
+operator|.
+name|add
+argument_list|(
+operator|new
+name|ExternalFileType
+argument_list|(
 literal|"PowerPoint file"
 argument_list|,
 literal|"ppt"
@@ -5881,6 +5936,23 @@ argument_list|,
 literal|"odp"
 argument_list|,
 literal|"ooimpress"
+argument_list|,
+literal|"openoffice"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|list
+operator|.
+name|add
+argument_list|(
+operator|new
+name|ExternalFileType
+argument_list|(
+literal|"Rich Text Format"
+argument_list|,
+literal|"rtf"
+argument_list|,
+literal|"oowriter"
 argument_list|,
 literal|"openoffice"
 argument_list|)

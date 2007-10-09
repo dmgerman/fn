@@ -106,6 +106,16 @@ name|FileListTableModel
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
 begin_comment
 comment|/**  * Export formatter that handles the file link list of JabRef 2.3 and later, by  * selecting the first file link, if any, specified by the field.  */
 end_comment
@@ -266,11 +276,34 @@ condition|)
 return|return
 literal|""
 return|;
-comment|// Search in the standard file directory:
-comment|/* TODO: oops, this part is not sufficient. We need access to the          database's metadata in order to check if the database overrides          the standard file directory */
 name|String
 name|dir
-init|=
+decl_stmt|;
+comment|// We need to resolve the file directory from the database's metadata,
+comment|// but that is not available from a formatter. Therefore, as an
+comment|// ugly hack, the export routine has set a global variable before
+comment|// starting the export, which contains the database's file directory:
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|fileDirForDatabase
+operator|!=
+literal|null
+condition|)
+name|dir
+operator|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|fileDirForDatabase
+expr_stmt|;
+else|else
+name|dir
+operator|=
 name|Globals
 operator|.
 name|prefs
@@ -283,7 +316,7 @@ name|FILE_FIELD
 operator|+
 literal|"Directory"
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|File
 name|f
 init|=
@@ -298,8 +331,6 @@ name|String
 index|[]
 block|{
 name|dir
-block|,
-literal|"."
 block|}
 argument_list|)
 decl_stmt|;
@@ -311,13 +342,34 @@ operator|!=
 literal|null
 condition|)
 block|{
+try|try
+block|{
+return|return
+name|f
+operator|.
+name|getCanonicalPath
+argument_list|()
+return|;
+comment|//f.toURI().toString();
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 return|return
 name|f
 operator|.
 name|getPath
 argument_list|()
 return|;
-comment|//f.toURI().toString();
+block|}
 block|}
 else|else
 block|{

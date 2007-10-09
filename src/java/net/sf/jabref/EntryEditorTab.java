@@ -747,8 +747,6 @@ init|=
 operator|new
 name|DefaultFormBuilder
 argument_list|(
-name|panel
-argument_list|,
 operator|new
 name|FormLayout
 argument_list|(
@@ -756,6 +754,8 @@ name|colSpec
 argument_list|,
 name|rowSpec
 argument_list|)
+argument_list|,
+name|panel
 argument_list|)
 decl_stmt|;
 for|for
