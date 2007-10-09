@@ -8776,9 +8776,10 @@ name|journalAbbrev
 operator|=
 operator|new
 name|JournalAbbreviations
-argument_list|()
+argument_list|(
+literal|"/resource/IEEEJournalList.txt"
+argument_list|)
 expr_stmt|;
-comment|// "/resource/journalList.txt");
 comment|// Read external lists, if any (in reverse order, so the upper lists
 comment|// override the lower):
 name|String
