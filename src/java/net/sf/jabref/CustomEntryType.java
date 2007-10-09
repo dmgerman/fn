@@ -345,13 +345,16 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|hasAllRequiredFields (BibtexEntry entry)
+DECL|method|hasAllRequiredFields (BibtexEntry entry, BibtexDatabase database)
 specifier|public
 name|boolean
 name|hasAllRequiredFields
 parameter_list|(
 name|BibtexEntry
 name|entry
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 block|{
 for|for
@@ -372,14 +375,18 @@ operator|++
 control|)
 if|if
 condition|(
-name|entry
+name|BibtexDatabase
 operator|.
-name|getField
+name|getResolvedField
 argument_list|(
 name|req
 index|[
 name|i
 index|]
+argument_list|,
+name|entry
+argument_list|,
+name|database
 argument_list|)
 operator|==
 literal|null

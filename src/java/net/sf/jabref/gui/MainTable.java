@@ -273,6 +273,11 @@ specifier|private
 name|MainTableFormat
 name|tableFormat
 decl_stmt|;
+DECL|field|panel
+specifier|private
+name|BasePanel
+name|panel
+decl_stmt|;
 DECL|field|sortedForMarking
 DECL|field|sortedForTable
 DECL|field|sortedForSearch
@@ -435,6 +440,12 @@ operator|.
 name|tableFormat
 operator|=
 name|tableFormat
+expr_stmt|;
+name|this
+operator|.
+name|panel
+operator|=
+name|panel
 expr_stmt|;
 comment|// This SortedList has a Comparator controlled by the TableComparatorChooser
 comment|// we are going to install, which responds to user sorting selctions:
@@ -1482,7 +1493,12 @@ name|add
 argument_list|(
 operator|new
 name|FirstColumnComparator
+argument_list|(
+name|panel
+operator|.
+name|database
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Icon columns:
@@ -1952,7 +1968,12 @@ return|return
 name|be
 operator|.
 name|hasAllRequiredFields
+argument_list|(
+name|panel
+operator|.
+name|database
 argument_list|()
+argument_list|)
 return|;
 block|}
 catch|catch

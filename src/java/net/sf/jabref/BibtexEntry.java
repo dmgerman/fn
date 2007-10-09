@@ -343,11 +343,14 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Returns true if this entry contains the fields it needs to be      * complete.      */
-DECL|method|hasAllRequiredFields ()
+DECL|method|hasAllRequiredFields (BibtexDatabase database)
 specifier|public
 name|boolean
 name|hasAllRequiredFields
-parameter_list|()
+parameter_list|(
+name|BibtexDatabase
+name|database
+parameter_list|)
 block|{
 return|return
 name|_type
@@ -355,6 +358,8 @@ operator|.
 name|hasAllRequiredFields
 argument_list|(
 name|this
+argument_list|,
+name|database
 argument_list|)
 return|;
 block|}
@@ -814,7 +819,8 @@ argument_list|)
 throw|;
 block|}
 block|}
-DECL|method|allFieldsPresent (String[] fields)
+comment|/**      * Determines whether this entry has all the given fields present. If a non-null      * database argument is given, this method will try to look up missing fields in      * entries linked by the "crossref" field, if any.      *      * @param fields An array of field names to be checked.      * @param database The database in which to look up crossref'd entries, if any. This      *  argument can be null, meaning that no attempt will be made to follow crossrefs.      * @return true if all fields are set or could be resolved, false otherwise.      */
+DECL|method|allFieldsPresent (String[] fields, BibtexDatabase database)
 specifier|protected
 name|boolean
 name|allFieldsPresent
@@ -822,6 +828,9 @@ parameter_list|(
 name|String
 index|[]
 name|fields
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 block|{
 for|for
@@ -843,12 +852,18 @@ control|)
 block|{
 if|if
 condition|(
-name|getField
+name|BibtexDatabase
+operator|.
+name|getResolvedField
 argument_list|(
 name|fields
 index|[
 name|i
 index|]
+argument_list|,
+name|this
+argument_list|,
+name|database
 argument_list|)
 operator|==
 literal|null

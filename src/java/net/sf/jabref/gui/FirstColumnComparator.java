@@ -34,6 +34,18 @@ name|BibtexEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexDatabase
+import|;
+end_import
+
 begin_class
 DECL|class|FirstColumnComparator
 specifier|public
@@ -45,6 +57,26 @@ argument_list|<
 name|BibtexEntry
 argument_list|>
 block|{
+DECL|field|database
+specifier|private
+name|BibtexDatabase
+name|database
+decl_stmt|;
+DECL|method|FirstColumnComparator (BibtexDatabase database)
+specifier|public
+name|FirstColumnComparator
+parameter_list|(
+name|BibtexDatabase
+name|database
+parameter_list|)
+block|{
+name|this
+operator|.
+name|database
+operator|=
+name|database
+expr_stmt|;
+block|}
 DECL|method|compare (BibtexEntry e1, BibtexEntry e2)
 specifier|public
 name|int
@@ -71,7 +103,9 @@ condition|(
 name|e1
 operator|.
 name|hasAllRequiredFields
-argument_list|()
+argument_list|(
+name|database
+argument_list|)
 condition|)
 name|score1
 operator|++
@@ -81,7 +115,9 @@ condition|(
 name|e2
 operator|.
 name|hasAllRequiredFields
-argument_list|()
+argument_list|(
+name|database
+argument_list|)
 condition|)
 name|score2
 operator|++

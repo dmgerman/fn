@@ -109,6 +109,9 @@ name|hasAllRequiredFields
 parameter_list|(
 name|BibtexEntry
 name|entry
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 block|{
 return|return
@@ -198,6 +201,9 @@ name|hasAllRequiredFields
 parameter_list|(
 name|BibtexEntry
 name|entry
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 block|{
 return|return
@@ -223,6 +229,8 @@ literal|"volume"
 block|,
 literal|"pages"
 block|}
+argument_list|,
+name|database
 argument_list|)
 return|;
 block|}
@@ -305,6 +313,9 @@ name|hasAllRequiredFields
 parameter_list|(
 name|BibtexEntry
 name|entry
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 block|{
 return|return
@@ -320,6 +331,8 @@ literal|"title"
 block|,
 literal|"bibtexkey"
 block|}
+argument_list|,
+name|database
 argument_list|)
 return|;
 block|}
@@ -420,6 +433,9 @@ name|hasAllRequiredFields
 parameter_list|(
 name|BibtexEntry
 name|entry
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 block|{
 return|return
@@ -439,6 +455,8 @@ literal|"year"
 block|,
 literal|"bibtexkey"
 block|}
+argument_list|,
+name|database
 argument_list|)
 operator|&&
 operator|(
@@ -581,6 +599,9 @@ name|hasAllRequiredFields
 parameter_list|(
 name|BibtexEntry
 name|entry
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 block|{
 return|return
@@ -600,6 +621,8 @@ literal|"year"
 block|,
 literal|"bibtexkey"
 block|}
+argument_list|,
+name|database
 argument_list|)
 operator|&&
 operator|(
@@ -722,6 +745,9 @@ name|hasAllRequiredFields
 parameter_list|(
 name|BibtexEntry
 name|entry
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 block|{
 return|return
@@ -745,6 +771,8 @@ literal|"year"
 block|,
 literal|"bibtexkey"
 block|}
+argument_list|,
+name|database
 argument_list|)
 return|;
 block|}
@@ -839,6 +867,9 @@ name|hasAllRequiredFields
 parameter_list|(
 name|BibtexEntry
 name|entry
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 block|{
 return|return
@@ -860,6 +891,8 @@ literal|"year"
 block|,
 literal|"bibtexkey"
 block|}
+argument_list|,
+name|database
 argument_list|)
 return|;
 block|}
@@ -954,6 +987,9 @@ name|hasAllRequiredFields
 parameter_list|(
 name|BibtexEntry
 name|entry
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 block|{
 return|return
@@ -975,6 +1011,8 @@ literal|"year"
 block|,
 literal|"bibtexkey"
 block|}
+argument_list|,
+name|database
 argument_list|)
 return|;
 block|}
@@ -1063,6 +1101,9 @@ name|hasAllRequiredFields
 parameter_list|(
 name|BibtexEntry
 name|entry
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 block|{
 return|return
@@ -1080,6 +1121,8 @@ literal|"year"
 block|,
 literal|"bibtexkey"
 block|}
+argument_list|,
+name|database
 argument_list|)
 return|;
 block|}
@@ -1162,6 +1205,9 @@ name|hasAllRequiredFields
 parameter_list|(
 name|BibtexEntry
 name|entry
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 block|{
 return|return
@@ -1177,6 +1223,8 @@ literal|"title"
 block|,
 literal|"bibtexkey"
 block|}
+argument_list|,
+name|database
 argument_list|)
 return|;
 block|}
@@ -1261,6 +1309,9 @@ name|hasAllRequiredFields
 parameter_list|(
 name|BibtexEntry
 name|entry
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 block|{
 return|return
@@ -1282,6 +1333,8 @@ literal|"year"
 block|,
 literal|"bibtexkey"
 block|}
+argument_list|,
+name|database
 argument_list|)
 return|;
 block|}
@@ -1364,6 +1417,9 @@ name|hasAllRequiredFields
 parameter_list|(
 name|BibtexEntry
 name|entry
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 block|{
 return|return
@@ -1385,6 +1441,8 @@ literal|"year"
 block|,
 literal|"bibtexkey"
 block|}
+argument_list|,
+name|database
 argument_list|)
 return|;
 block|}
@@ -1467,6 +1525,9 @@ name|hasAllRequiredFields
 parameter_list|(
 name|BibtexEntry
 name|entry
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 block|{
 return|return
@@ -1488,6 +1549,8 @@ literal|"year"
 block|,
 literal|"bibtexkey"
 block|}
+argument_list|,
+name|database
 argument_list|)
 return|;
 block|}
@@ -1564,6 +1627,9 @@ name|hasAllRequiredFields
 parameter_list|(
 name|BibtexEntry
 name|entry
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 block|{
 return|return
@@ -1583,6 +1649,8 @@ literal|"note"
 block|,
 literal|"bibtexkey"
 block|}
+argument_list|,
+name|database
 argument_list|)
 return|;
 block|}
@@ -1658,6 +1726,9 @@ name|hasAllRequiredFields
 parameter_list|(
 name|BibtexEntry
 name|entry
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 block|{
 return|return
@@ -1671,6 +1742,8 @@ index|[]
 block|{
 literal|"bibtexkey"
 block|}
+argument_list|,
+name|database
 argument_list|)
 return|;
 block|}
@@ -1732,6 +1805,9 @@ name|hasAllRequiredFields
 parameter_list|(
 name|BibtexEntry
 name|entry
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 block|{
 return|return
@@ -1822,7 +1898,7 @@ name|String
 name|describeRequiredFields
 parameter_list|()
 function_decl|;
-DECL|method|hasAllRequiredFields (BibtexEntry entry)
+DECL|method|hasAllRequiredFields (BibtexEntry entry, BibtexDatabase database)
 specifier|public
 specifier|abstract
 name|boolean
@@ -1830,6 +1906,9 @@ name|hasAllRequiredFields
 parameter_list|(
 name|BibtexEntry
 name|entry
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 function_decl|;
 DECL|method|getUtilityFields ()

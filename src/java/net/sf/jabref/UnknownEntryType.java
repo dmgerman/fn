@@ -114,13 +114,16 @@ return|return
 literal|"unknown"
 return|;
 block|}
-DECL|method|hasAllRequiredFields (BibtexEntry entry)
+DECL|method|hasAllRequiredFields (BibtexEntry entry, BibtexDatabase database)
 specifier|public
 name|boolean
 name|hasAllRequiredFields
 parameter_list|(
 name|BibtexEntry
 name|entry
+parameter_list|,
+name|BibtexDatabase
+name|database
 parameter_list|)
 block|{
 return|return
