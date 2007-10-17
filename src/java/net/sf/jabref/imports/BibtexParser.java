@@ -1540,6 +1540,26 @@ argument_list|,
 literal|'('
 argument_list|)
 expr_stmt|;
+name|int
+name|c
+init|=
+name|peek
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|(
+name|c
+operator|!=
+literal|'\n'
+operator|)
+operator|&&
+operator|(
+name|c
+operator|!=
+literal|'\r'
+operator|)
+condition|)
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
@@ -1594,15 +1614,14 @@ block|{
 comment|// This exception will be thrown if the entry lacks a key
 comment|// altogether, like in "@article{ author = { ...".
 comment|// It will also be thrown if a key contains =.
-name|char
 name|c
-init|=
+operator|=
 operator|(
 name|char
 operator|)
 name|peek
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|Character
@@ -1736,12 +1755,11 @@ condition|(
 literal|true
 condition|)
 block|{
-name|int
 name|c
-init|=
+operator|=
 name|peek
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 operator|(
