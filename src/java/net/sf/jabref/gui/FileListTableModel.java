@@ -817,7 +817,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Convenience method for finding a label corresponding to the type of the      * first file link in the given field content. The difference between using      * this method and using setContent() on an instance of FileListTableModel      * is a slight optimization: with this method, parsing is discontinued after      * the first entry has been found.      * @param content The file field content, as fed to this class' setContent() method.      * @return A JLabel set up with no text and the icon of the first entry's file type,      *  or null if no entry was found.      */
+comment|/**      * Convenience method for finding a label corresponding to the type of the      * first file link in the given field content. The difference between using      * this method and using setContent() on an instance of FileListTableModel      * is a slight optimization: with this method, parsing is discontinued after      * the first entry has been found.      * @param content The file field content, as fed to this class' setContent() method.      * @return A JLabel set up with no text and the icon of the first entry's file type,      *  or null if no entry was found or the entry had no icon.      */
 DECL|method|getFirstLabel (String content)
 specifier|public
 specifier|static
@@ -847,11 +847,23 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-return|return
+if|if
+condition|(
 name|entry
-operator|!=
+operator|==
 literal|null
-condition|?
+operator|||
+name|entry
+operator|.
+name|getType
+argument_list|()
+operator|==
+literal|null
+condition|)
+return|return
+literal|null
+return|;
+return|return
 name|entry
 operator|.
 name|getType
@@ -859,8 +871,6 @@ argument_list|()
 operator|.
 name|getIconLabel
 argument_list|()
-else|:
-literal|null
 return|;
 block|}
 DECL|method|getElementIfAvailable (ArrayList<String> contents, int index)
