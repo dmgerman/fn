@@ -1027,7 +1027,7 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Accepts the BibtexDatabase and MetaData, generates the DML required to      * create and populate SQL database tables, and writes this DML to the       * specified SQL database.      *      * @param database      *          The BibtexDatabase to export      * @param metaData      *          The MetaData object containing the groups information      * @param keySet      *          The set of IDs of the entries to export.      * @param dbStrings      *          The necessary database connection information      */
-DECL|method|exportDatabase (final BibtexDatabase database, final MetaData metaData, Set<String> keySet, DBStrings dbStrings )
+DECL|method|exportDatabase (final BibtexDatabase database, final MetaData metaData, Set<String> keySet, DBStrings dbStrings)
 specifier|public
 specifier|static
 name|void
@@ -1077,7 +1077,7 @@ argument_list|(
 name|dbStrings
 argument_list|)
 expr_stmt|;
-comment|//conn.setAutoCommit(false);
+comment|// conn.setAutoCommit(false);
 name|exportDatabase_worker
 argument_list|(
 name|dbtype
@@ -1125,11 +1125,6 @@ name|SQLException
 name|ex
 parameter_list|)
 block|{
-name|ex
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|conn
@@ -1154,13 +1149,7 @@ expr_stmt|;
 block|}
 block|}
 throw|throw
-operator|(
-name|Exception
-operator|)
 name|ex
-operator|.
-name|getCause
-argument_list|()
 throw|;
 block|}
 block|}
