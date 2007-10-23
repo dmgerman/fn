@@ -14,13 +14,11 @@ end_package
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|*
+name|Set
 import|;
 end_import
 
@@ -32,9 +30,31 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|groups
+name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
 operator|.
-name|*
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|MetaData
 import|;
 end_import
 
@@ -49,16 +69,6 @@ operator|.
 name|sql
 operator|.
 name|SQLutil
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
 import|;
 end_import
 

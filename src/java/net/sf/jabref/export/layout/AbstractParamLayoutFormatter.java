@@ -16,17 +16,11 @@ end_package
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|export
-operator|.
-name|layout
-operator|.
-name|LayoutFormatter
+name|ArrayList
 import|;
 end_import
 
@@ -37,16 +31,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
 import|;
 end_import
 
