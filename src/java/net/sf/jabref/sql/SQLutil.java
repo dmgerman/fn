@@ -2688,8 +2688,11 @@ name|sqlex
 operator|.
 name|getSQLState
 argument_list|()
-operator|==
+operator|.
+name|equals
+argument_list|(
 literal|"42000"
+argument_list|)
 condition|)
 block|{
 name|msg
@@ -2705,6 +2708,52 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|// desc  : command denied
+comment|// code  : 1142
+comment|// state : 42000
+comment|// msg   : * command denied to user 'username'@'hostname' for table 'table_name'
+comment|// tested with MySQL
+if|if
+condition|(
+name|sqlex
+operator|.
+name|getSQLState
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"42000"
+argument_list|)
+condition|)
+block|{
+name|msg
+operator|=
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"User does not have sufficient privileges.\n"
+argument_list|)
+expr_stmt|;
+name|msg
+operator|=
+name|msg
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"("
+operator|+
+name|sqlex
+operator|.
+name|getMessage
+argument_list|()
+operator|+
+literal|")"
+argument_list|)
+expr_stmt|;
+block|}
 comment|// desc  : Invalid username and/or password
 comment|// code  : 1045
 comment|// state : 28000
@@ -2717,8 +2766,11 @@ name|sqlex
 operator|.
 name|getSQLState
 argument_list|()
-operator|==
+operator|.
+name|equals
+argument_list|(
 literal|"28000"
+argument_list|)
 condition|)
 block|{
 name|msg
@@ -2746,8 +2798,11 @@ name|sqlex
 operator|.
 name|getSQLState
 argument_list|()
-operator|==
+operator|.
+name|equals
+argument_list|(
 literal|"08S01"
+argument_list|)
 condition|)
 block|{
 name|msg
