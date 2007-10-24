@@ -3303,6 +3303,11 @@ name|errorMessage
 init|=
 literal|null
 decl_stmt|;
+name|boolean
+name|connectToDB
+init|=
+literal|false
+decl_stmt|;
 comment|// run first, in EDT:
 specifier|public
 name|void
@@ -3442,7 +3447,19 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|connectToDB
+operator|=
+name|dbd
+operator|.
+name|getConnectToDB
+argument_list|()
+expr_stmt|;
 comment|// store database strings
+if|if
+condition|(
+name|connectToDB
+condition|)
+block|{
 name|dbs
 operator|=
 name|dbd
@@ -3463,11 +3480,17 @@ name|dispose
 argument_list|()
 expr_stmt|;
 block|}
+block|}
 comment|// run second, on a different thread:
 specifier|public
 name|void
 name|run
 parameter_list|()
+block|{
+if|if
+condition|(
+name|connectToDB
+condition|)
 block|{
 name|DBStrings
 name|dbs
@@ -3516,6 +3539,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 comment|// run third, on EDT:
 specifier|public
 name|void
@@ -3543,6 +3567,11 @@ operator|==
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|connectToDB
+condition|)
+block|{
 name|frame
 operator|.
 name|output
@@ -3557,6 +3586,7 @@ name|url
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// show an error dialog if an error occurred
 else|else

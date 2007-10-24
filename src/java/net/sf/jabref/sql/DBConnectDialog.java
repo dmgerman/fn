@@ -369,6 +369,13 @@ operator|new
 name|DBStrings
 argument_list|()
 decl_stmt|;
+DECL|field|connectToDB
+specifier|private
+name|boolean
+name|connectToDB
+init|=
+literal|false
+decl_stmt|;
 comment|/** Creates a new instance of DBConnectDialog */
 DECL|method|DBConnectDialog ( JFrame parent, DBStrings dbs)
 specifier|public
@@ -891,6 +898,11 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|setConnectToDB
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 argument_list|)
@@ -918,6 +930,11 @@ argument_list|)
 expr_stmt|;
 name|dispose
 argument_list|()
+expr_stmt|;
+name|setConnectToDB
+argument_list|(
+literal|false
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -1059,6 +1076,32 @@ operator|.
 name|dbStrings
 operator|=
 name|dbStrings
+expr_stmt|;
+block|}
+DECL|method|getConnectToDB ()
+specifier|public
+name|boolean
+name|getConnectToDB
+parameter_list|()
+block|{
+return|return
+name|connectToDB
+return|;
+block|}
+DECL|method|setConnectToDB (boolean connectToDB)
+specifier|public
+name|void
+name|setConnectToDB
+parameter_list|(
+name|boolean
+name|connectToDB
+parameter_list|)
+block|{
+name|this
+operator|.
+name|connectToDB
+operator|=
+name|connectToDB
 expr_stmt|;
 block|}
 block|}
