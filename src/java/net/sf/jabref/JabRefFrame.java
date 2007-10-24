@@ -2727,6 +2727,31 @@ name|GeneralAction
 argument_list|(
 literal|"dbConnect"
 argument_list|,
+literal|"Connect to external SQL database"
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Connect to external SQL database"
+argument_list|)
+argument_list|,
+name|GUIGlobals
+operator|.
+name|getIconUrl
+argument_list|(
+literal|"dbConnect"
+argument_list|)
+argument_list|)
+decl_stmt|,
+DECL|field|dbExport
+name|dbExport
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"dbExport"
+argument_list|,
 literal|"Export to external SQL database"
 argument_list|,
 name|Globals
@@ -2740,7 +2765,7 @@ name|GUIGlobals
 operator|.
 name|getIconUrl
 argument_list|(
-literal|"dbConnect"
+literal|"dbExport"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -6450,6 +6475,13 @@ argument_list|)
 expr_stmt|;
 name|file
 operator|.
+name|add
+argument_list|(
+name|dbExport
+argument_list|)
+expr_stmt|;
+name|file
+operator|.
 name|addSeparator
 argument_list|()
 expr_stmt|;
@@ -7377,6 +7409,13 @@ operator|.
 name|addAction
 argument_list|(
 name|dbConnect
+argument_list|)
+expr_stmt|;
+name|tlb
+operator|.
+name|addAction
+argument_list|(
+name|dbExport
 argument_list|)
 expr_stmt|;
 name|tlb
