@@ -354,6 +354,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|external
+operator|.
+name|UnknownExternalFileType
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|jgoodies
@@ -519,13 +533,18 @@ name|MetaData
 name|metaData
 decl_stmt|;
 DECL|field|okPressed
+DECL|field|okDisabledExternally
 specifier|private
 name|boolean
 name|okPressed
 init|=
 literal|false
+decl_stmt|,
+name|okDisabledExternally
+init|=
+literal|false
 decl_stmt|;
-DECL|method|FileListEntryEditor (JabRefFrame frame, FileListEntry entry, boolean showProgressBar, MetaData metaData)
+DECL|method|FileListEntryEditor (JabRefFrame frame, FileListEntry entry, boolean showProgressBar, boolean showOpenButton, MetaData metaData)
 specifier|public
 name|FileListEntryEditor
 parameter_list|(
@@ -537,6 +556,9 @@ name|entry
 parameter_list|,
 name|boolean
 name|showProgressBar
+parameter_list|,
+name|boolean
+name|showOpenButton
 parameter_list|,
 name|MetaData
 name|metaData
@@ -660,6 +682,11 @@ name|ItemEvent
 name|itemEvent
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|okDisabledExternally
+condition|)
 name|ok
 operator|.
 name|setEnabled
@@ -685,7 +712,7 @@ argument_list|(
 operator|new
 name|FormLayout
 argument_list|(
-literal|"left:pref, 4dlu, fill:150dlu, 4dlu, fill:pref"
+literal|"left:pref, 4dlu, fill:150dlu, 4dlu, fill:pref, 4dlu, fill:pref"
 argument_list|,
 literal|""
 argument_list|)
@@ -749,6 +776,17 @@ argument_list|(
 name|browseBut
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|showOpenButton
+condition|)
+name|builder
+operator|.
+name|append
+argument_list|(
+name|open
+argument_list|)
+expr_stmt|;
 name|builder
 operator|.
 name|nextLine
@@ -771,6 +809,8 @@ operator|.
 name|append
 argument_list|(
 name|description
+argument_list|,
+literal|3
 argument_list|)
 expr_stmt|;
 name|builder
@@ -816,6 +856,8 @@ operator|.
 name|append
 argument_list|(
 name|types
+argument_list|,
+literal|3
 argument_list|)
 expr_stmt|;
 if|if
@@ -840,6 +882,8 @@ operator|.
 name|append
 argument_list|(
 name|prog
+argument_list|,
+literal|3
 argument_list|)
 expr_stmt|;
 block|}
@@ -855,18 +899,8 @@ operator|.
 name|addGlue
 argument_list|()
 expr_stmt|;
-name|bb
-operator|.
-name|addGridded
-argument_list|(
-name|open
-argument_list|)
-expr_stmt|;
-name|bb
-operator|.
-name|addRelatedGap
-argument_list|()
-expr_stmt|;
+comment|//bb.addGridded(open);
+comment|//bb.addRelatedGap();
 name|bb
 operator|.
 name|addGridded
@@ -1277,10 +1311,7 @@ operator|.
 name|getText
 argument_list|()
 argument_list|,
-name|entry
-operator|.
-name|getType
-argument_list|()
+name|type
 argument_list|)
 expr_stmt|;
 block|}
@@ -1322,6 +1353,11 @@ name|boolean
 name|enabled
 parameter_list|)
 block|{
+name|okDisabledExternally
+operator|=
+operator|!
+name|enabled
+expr_stmt|;
 name|ok
 operator|.
 name|setEnabled
@@ -1425,21 +1461,8 @@ name|getLink
 argument_list|()
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|link
-operator|.
-name|getText
-argument_list|()
-operator|.
-name|length
-argument_list|()
-operator|>
-literal|0
-condition|)
-name|checkExtension
-argument_list|()
-expr_stmt|;
+comment|//if (link.getText().length()> 0)
+comment|//    checkExtension();
 name|types
 operator|.
 name|setModel
@@ -1467,12 +1490,24 @@ expr_stmt|;
 comment|// See what is a reasonable selection for the type combobox:
 if|if
 condition|(
+operator|(
 name|entry
 operator|.
 name|getType
 argument_list|()
 operator|!=
 literal|null
+operator|)
+operator|&&
+operator|!
+operator|(
+name|entry
+operator|.
+name|getType
+argument_list|()
+operator|instanceof
+name|UnknownExternalFileType
+operator|)
 condition|)
 name|types
 operator|.

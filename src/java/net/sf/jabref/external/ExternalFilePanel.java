@@ -963,7 +963,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Error while writing XMP %0"
+literal|"Error writing XMP to file: %0"
 argument_list|,
 name|finalFile
 operator|.
@@ -978,7 +978,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Error writing XMP to '%0'..."
+literal|"Error writing XMP to file: %0"
 argument_list|,
 name|finalFile
 operator|.
@@ -1744,13 +1744,15 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Invalid URL: "
+literal|"Invalid URL"
+argument_list|)
+operator|+
+literal|": "
 operator|+
 name|e2
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
 argument_list|,
 name|Globals
 operator|.

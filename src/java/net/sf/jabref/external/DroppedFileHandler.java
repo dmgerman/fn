@@ -918,7 +918,6 @@ else|:
 literal|null
 operator|)
 decl_stmt|;
-comment|/*reply = showLinkMoveCopyRenameDialog(Globals.lang("Link to PDF %0", fileName), fileType,             isSingle, (isSingle ? single.getCiteKey() : Globals.lang("Cannot rename for several entries.")),             false, !isSingle);*/
 name|boolean
 name|success
 init|=

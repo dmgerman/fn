@@ -1750,7 +1750,7 @@ name|MnemonicAwareAction
 block|{
 DECL|field|frame
 specifier|private
-name|JFrame
+name|JabRefFrame
 name|frame
 init|=
 literal|null
@@ -1768,11 +1768,11 @@ name|editor
 init|=
 literal|null
 decl_stmt|;
-DECL|method|EditExternalFileTypesAction (JFrame frame)
+DECL|method|EditExternalFileTypesAction (JabRefFrame frame)
 specifier|public
 name|EditExternalFileTypesAction
 parameter_list|(
-name|JFrame
+name|JabRefFrame
 name|frame
 parameter_list|)
 block|{
@@ -1870,6 +1870,33 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|frame
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
+name|frame
+operator|.
+name|basePanel
+argument_list|()
+operator|!=
+literal|null
+condition|)
+name|frame
+operator|.
+name|basePanel
+argument_list|()
+operator|.
+name|mainTable
+operator|.
+name|repaint
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 block|}

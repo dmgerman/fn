@@ -374,6 +374,19 @@ operator|.
 name|add
 argument_list|(
 operator|new
+name|FileTab
+argument_list|(
+name|frame
+argument_list|,
+name|prefs
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|tabs
+operator|.
+name|add
+argument_list|(
+operator|new
 name|EntryEditorPrefsTab
 argument_list|(
 name|frame
@@ -541,6 +554,7 @@ name|i
 init|=
 literal|0
 decl_stmt|;
+comment|//ArrayList<Component> comps = new ArrayList<Component>();
 while|while
 condition|(
 name|it
@@ -586,6 +600,7 @@ name|getTabName
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|//comps.add((Component)tab); // for debug only
 block|}
 name|upper
 operator|.
@@ -1276,6 +1291,7 @@ name|pack
 argument_list|()
 expr_stmt|;
 comment|// setSize(440, 500);
+comment|/** Look through component sizes to find which tab is to blame          *  when the dialog grows too large:         for (Component co : comps) {             System.out.println(co.getPreferredSize());         }*/
 block|}
 DECL|class|OkAction
 class|class

@@ -1076,15 +1076,7 @@ argument_list|,
 literal|"no"
 argument_list|)
 expr_stmt|;
-name|LANGUAGES
-operator|.
-name|put
-argument_list|(
-literal|"EspaÃ±ol"
-argument_list|,
-literal|"es"
-argument_list|)
-expr_stmt|;
+comment|//LANGUAGES.put("EspaÃ±ol", "es");
 block|}
 comment|/** 	 * Read either the default icon theme, or a custom one. If loading of the custom theme 	 * fails, try to fall back on the default theme. 	 */
 DECL|method|setUpIconTheme ()

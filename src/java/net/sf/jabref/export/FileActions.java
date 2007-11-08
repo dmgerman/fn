@@ -1387,8 +1387,10 @@ name|lang
 argument_list|(
 literal|"Warning: could not complete file repair; your file may "
 operator|+
-literal|"have been corrupted. Error message: "
+literal|"have been corrupted. Error message"
 argument_list|)
+operator|+
+literal|": "
 operator|+
 name|e
 operator|.

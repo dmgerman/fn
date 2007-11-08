@@ -14,28 +14,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|ActionEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|AbstractAction
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -55,6 +33,18 @@ operator|.
 name|jabref
 operator|.
 name|JabRefFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|MnemonicAwareAction
 import|;
 end_import
 
@@ -70,6 +60,18 @@ name|Util
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|ActionEvent
+import|;
+end_import
+
 begin_comment
 comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Sep 22, 2005  * Time: 10:45:02 PM  * To browseOld this template use File | Settings | File Templates.  */
 end_comment
@@ -80,7 +82,7 @@ specifier|public
 class|class
 name|ManageJournalsAction
 extends|extends
-name|AbstractAction
+name|MnemonicAwareAction
 block|{
 DECL|field|frame
 name|JabRefFrame
@@ -95,10 +97,15 @@ name|frame
 parameter_list|)
 block|{
 name|super
+argument_list|()
+expr_stmt|;
+name|putValue
 argument_list|(
+name|NAME
+argument_list|,
 name|Globals
 operator|.
-name|lang
+name|menuTitle
 argument_list|(
 literal|"Manage journal abbreviations"
 argument_list|)

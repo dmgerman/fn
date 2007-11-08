@@ -418,7 +418,7 @@ operator|+
 literal|" @optionfile :module: OPTIONS ... :module: OPTIONS"
 return|;
 block|}
-comment|/**      * Returns the program name displayed in the usage.      *      * @param The program name.      */
+comment|/**      * Returns the program name displayed in the usage.      *      * @returns The program name.      */
 DECL|method|getUsageProgram ()
 specifier|public
 name|String
@@ -429,7 +429,7 @@ return|return
 name|usageProgram
 return|;
 block|}
-comment|/**      * Returns the version of the program.      *      * @param The version.      */
+comment|/**      * Returns the version of the program.      *      * @returns The version.      */
 DECL|method|getVersion ()
 specifier|public
 name|String
@@ -561,7 +561,7 @@ operator|=
 name|fn
 expr_stmt|;
 block|}
-comment|/**      * Sets the debugging flag.      *      * @param flag    The value to set the debugging flag.      public void setDebugFlag( boolean flag ) {         debugFlag = flag;     }      /**      * Displays the program's help which includes a description of each      * option. The usage is display if the usage flag is set to true.      */
+comment|/**      * Displays the program's help which includes a description of each      * option. The usage is display if the usage flag is set to true.      */
 DECL|method|displayHelp ()
 specifier|public
 name|void
@@ -963,7 +963,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**      * Splits a string representing command line arguments into several      * strings.      *      * @param split   The string to split.      *      * @return  The splitted string.      */
+comment|/**      * Splits a string representing command line arguments into several      * strings.      *      * @param str   The string to split.      *      * @return  The splitted string.      */
 DECL|method|split ( String str )
 specifier|public
 name|String
@@ -1485,7 +1485,7 @@ throw|;
 block|}
 block|}
 block|}
-comment|/**      * Processes an array of strings representing command line arguments.      *      * @param  The arguments to process.      *      * @return The leftover arguments.      */
+comment|/**      * Processes an array of strings representing command line arguments.      *      * @param args arguments to process.      *      * @return The leftover arguments.      */
 DECL|method|processOptions ( String args[] )
 specifier|private
 name|String

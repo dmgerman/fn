@@ -1540,8 +1540,10 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Error while fetching from OIA2: "
+literal|"Error while fetching from OIA2"
 argument_list|)
+operator|+
+literal|": "
 operator|+
 name|e
 operator|.

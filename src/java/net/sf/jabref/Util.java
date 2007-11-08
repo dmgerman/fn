@@ -3924,6 +3924,8 @@ operator|)
 condition|)
 block|{
 comment|// Open the file:
+try|try
+block|{
 name|String
 name|filePath
 init|=
@@ -4052,6 +4054,18 @@ argument_list|(
 name|cmdArray
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+throw|throw
+name|e
+throw|;
+comment|/*e.printStackTrace(); 				System.err.println("An error occured on the command: " + fileType.getOpenWith() 					+ " #" + link); 				System.err.println(e.getMessage());*/
 block|}
 block|}
 else|else
@@ -4572,6 +4586,8 @@ name|flEntry
 argument_list|,
 literal|false
 argument_list|,
+literal|true
+argument_list|,
 name|metaData
 argument_list|)
 decl_stmt|;
@@ -5008,6 +5024,18 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|boolean
+name|exactOnly
+init|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"autolinkExactKeyOnly"
+argument_list|)
+decl_stmt|;
 comment|// Now look for keys
 name|nextFile
 label|:
@@ -5027,6 +5055,17 @@ operator|.
 name|getName
 argument_list|()
 decl_stmt|;
+name|int
+name|dot
+init|=
+name|name
+operator|.
+name|lastIndexOf
+argument_list|(
+literal|'.'
+argument_list|)
+decl_stmt|;
+comment|// First, look for exact matches:
 for|for
 control|(
 name|BibtexEntry
@@ -5035,16 +5074,53 @@ range|:
 name|entries
 control|)
 block|{
-if|if
-condition|(
-name|name
-operator|.
-name|contains
-argument_list|(
+name|String
+name|citeKey
+init|=
 name|entry
 operator|.
 name|getCiteKey
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|(
+name|citeKey
+operator|!=
+literal|null
+operator|)
+operator|&&
+operator|(
+name|citeKey
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+operator|)
+condition|)
+block|{
+if|if
+condition|(
+name|dot
+operator|>
+literal|0
+condition|)
+block|{
+if|if
+condition|(
+name|name
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|dot
+argument_list|)
+operator|.
+name|equals
+argument_list|(
+name|citeKey
 argument_list|)
 condition|)
 block|{
@@ -5063,6 +5139,79 @@ expr_stmt|;
 continue|continue
 name|nextFile
 continue|;
+block|}
+block|}
+block|}
+block|}
+comment|// If we get here, we didn't find any exact matches. If non-exact
+comment|// matches are allowed, try to find one:
+if|if
+condition|(
+operator|!
+name|exactOnly
+condition|)
+block|{
+for|for
+control|(
+name|BibtexEntry
+name|entry
+range|:
+name|entries
+control|)
+block|{
+name|String
+name|citeKey
+init|=
+name|entry
+operator|.
+name|getCiteKey
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|(
+name|citeKey
+operator|!=
+literal|null
+operator|)
+operator|&&
+operator|(
+name|citeKey
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+operator|)
+condition|)
+block|{
+if|if
+condition|(
+name|name
+operator|.
+name|startsWith
+argument_list|(
+name|citeKey
+argument_list|)
+condition|)
+block|{
+name|result
+operator|.
+name|get
+argument_list|(
+name|entry
+argument_list|)
+operator|.
+name|add
+argument_list|(
+name|file
+argument_list|)
+expr_stmt|;
+continue|continue
+name|nextFile
+continue|;
+block|}
+block|}
 block|}
 block|}
 block|}
@@ -5559,7 +5708,7 @@ name|directories
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Searches the given directory and file name pattern for a file for the 	 * bibtexentry. 	 *  	 * Used to fix: 	 *  	 * http://sourceforge.net/tracker/index.php?func=detail&aid=1503410&group_id=92314&atid=600309 	 *  	 * Requirements: 	 *  - Be able to find the associated PDF in a set of given directories. 	 *  - Be able to return a relative path or absolute path. 	 *  - Be fast. 	 *  - Allow for flexible naming schemes in the PDFs. 	 *  	 * Syntax scheme for file: 	 *<ul> 	 *<li>* Any subDir</li> 	 *<li>** Any subDir (recursiv)</li> 	 *<li>[key] Key from bibtex file and database</li> 	 *<li>.* Anything else is taken to be a Regular expression.</li> 	 *</ul> 	 *  	 * @param entry 	 *            non-null 	 * @param database 	 *            non-null 	 * @param directory 	 *            A set of root directories to start the search from. Paths are 	 *            returned relative to these directories if relative is set to 	 *            true. These directories will not be expanded or anything. Use 	 *            the file attribute for this. 	 * @param file 	 *            non-null 	 *  	 * @param relative 	 *            whether to return relative file paths or absolute ones 	 *  	 * @return Will return the first file found to match the given criteria or 	 *         null if none was found. 	 */
+comment|/** 	 * Searches the given directory and file name pattern for a file for the 	 * bibtexentry. 	 * 	 * Used to fix: 	 * 	 * http://sourceforge.net/tracker/index.php?func=detail&aid=1503410&group_id=92314&atid=600309 	 * 	 * Requirements: 	 *  - Be able to find the associated PDF in a set of given directories. 	 *  - Be able to return a relative path or absolute path. 	 *  - Be fast. 	 *  - Allow for flexible naming schemes in the PDFs. 	 * 	 * Syntax scheme for file: 	 *<ul> 	 *<li>* Any subDir</li> 	 *<li>** Any subDir (recursiv)</li> 	 *<li>[key] Key from bibtex file and database</li> 	 *<li>.* Anything else is taken to be a Regular expression.</li> 	 *</ul> 	 * 	 * @param entry 	 *            non-null 	 * @param database 	 *            non-null 	 * @param directory 	 *            A set of root directories to start the search from. Paths are 	 *            returned relative to these directories if relative is set to 	 *            true. These directories will not be expanded or anything. Use 	 *            the file attribute for this. 	 * @param file 	 *            non-null 	 * 	 * @param relative 	 *            whether to return relative file paths or absolute ones 	 * 	 * @return Will return the first file found to match the given criteria or 	 *         null if none was found. 	 */
 DECL|method|findFile (BibtexEntry entry, BibtexDatabase database, String[] directory, String file, boolean relative)
 specifier|public
 specifier|static
@@ -5635,7 +5784,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** 	 * Removes optional square brackets from the string s 	 *  	 * @param s 	 * @return 	 */
+comment|/** 	 * Removes optional square brackets from the string s 	 * 	 * @param s 	 * @return 	 */
 DECL|method|stripBrackets (String s)
 specifier|public
 specifier|static
@@ -6067,7 +6216,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/** 	 * Accepts a string like [author:toLowerCase("escapedstring"),toUpperCase], 	 * whereas the first string signifies the bibtex-field to get while the 	 * others are the names of layouters that will be applied. 	 *  	 * @param fieldAndFormat 	 * @param entry 	 * @param database 	 * @return 	 */
+comment|/** 	 * Accepts a string like [author:toLowerCase("escapedstring"),toUpperCase], 	 * whereas the first string signifies the bibtex-field to get while the 	 * others are the names of layouters that will be applied. 	 * 	 * @param fieldAndFormat 	 * @param entry 	 * @param database 	 * @return 	 */
 DECL|method|getFieldAndFormat (String fieldAndFormat, BibtexEntry entry, BibtexDatabase database)
 specifier|public
 specifier|static
@@ -6272,7 +6421,7 @@ return|return
 name|fieldValue
 return|;
 block|}
-comment|/** 	 * Convenience function for absolute search. 	 *  	 * Uses findFile(BibtexEntry, BibtexDatabase, (String)null, String, false). 	 */
+comment|/** 	 * Convenience function for absolute search. 	 * 	 * Uses findFile(BibtexEntry, BibtexDatabase, (String)null, String, false). 	 */
 DECL|method|findFile (BibtexEntry entry, BibtexDatabase database, String file)
 specifier|public
 specifier|static
@@ -6307,7 +6456,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Internal Version of findFile, which also accepts a current directory to 	 * base the search on. 	 *  	 */
+comment|/** 	 * Internal Version of findFile, which also accepts a current directory to 	 * base the search on. 	 * 	 */
 DECL|method|findFile (BibtexEntry entry, BibtexDatabase database, String directory, String file, boolean relative)
 specifier|public
 specifier|static
@@ -6408,7 +6557,7 @@ condition|)
 block|{
 try|try
 block|{
-comment|/** 				 * [ 1601651 ] PDF subdirectory - missing first character 				 *  				 * http://sourceforge.net/tracker/index.php?func=detail&aid=1601651&group_id=92314&atid=600306 				 */
+comment|/** 				 * [ 1601651 ] PDF subdirectory - missing first character 				 * 				 * http://sourceforge.net/tracker/index.php?func=detail&aid=1601651&group_id=92314&atid=600306 				 */
 comment|// Changed by M. Alver 2007.01.04:
 comment|// Remove first character if it is a directory separator character:
 name|String
@@ -7234,7 +7383,7 @@ argument_list|(
 literal|"\\[.*?\\]"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Takes a string that contains bracketed expression and expands each of 	 * these using getFieldAndFormat. 	 *  	 * Unknown Bracket expressions are silently dropped. 	 *  	 * @param bracketString 	 * @param entry 	 * @param database 	 * @return 	 */
+comment|/** 	 * Takes a string that contains bracketed expression and expands each of 	 * these using getFieldAndFormat. 	 * 	 * Unknown Bracket expressions are silently dropped. 	 * 	 * @param bracketString 	 * @param entry 	 * @param database 	 * @return 	 */
 DECL|method|expandBrackets (String bracketString, BibtexEntry entry, BibtexDatabase database)
 specifier|public
 specifier|static
@@ -13064,17 +13213,7 @@ operator|.
 name|size
 argument_list|()
 index|]
-index|[
-name|newList
-operator|.
-name|get
-argument_list|(
-literal|0
-argument_list|)
-operator|.
-name|size
-argument_list|()
-index|]
+index|[]
 decl_stmt|;
 for|for
 control|(
@@ -13093,6 +13232,25 @@ name|i
 operator|++
 control|)
 block|{
+name|res
+index|[
+name|i
+index|]
+operator|=
+operator|new
+name|String
+index|[
+name|newList
+operator|.
+name|get
+argument_list|(
+name|i
+argument_list|)
+operator|.
+name|size
+argument_list|()
+index|]
+expr_stmt|;
 for|for
 control|(
 name|int

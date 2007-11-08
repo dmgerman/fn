@@ -4052,8 +4052,10 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Error: "
+literal|"Error"
 argument_list|)
+operator|+
+literal|": "
 operator|+
 name|ex
 operator|.
@@ -5762,8 +5764,10 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Error: "
+literal|"Error"
 argument_list|)
+operator|+
+literal|": "
 operator|+
 name|ex
 operator|.

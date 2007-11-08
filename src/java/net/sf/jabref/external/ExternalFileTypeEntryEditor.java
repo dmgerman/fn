@@ -721,10 +721,9 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|diag
-operator|.
-name|dispose
-argument_list|()
+name|okPressed
+operator|=
+literal|true
 expr_stmt|;
 name|storeSettings
 argument_list|(
@@ -735,9 +734,10 @@ operator|.
 name|entry
 argument_list|)
 expr_stmt|;
-name|okPressed
-operator|=
-literal|true
+name|diag
+operator|.
+name|dispose
+argument_list|()
 expr_stmt|;
 block|}
 block|}

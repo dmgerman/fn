@@ -469,17 +469,16 @@ argument_list|()
 operator|.
 name|replaceAll
 argument_list|(
-literal|"[\\{\\}]"
+literal|"[\\{\\}']"
 argument_list|,
 literal|""
 argument_list|)
 operator|.
 name|split
 argument_list|(
-literal|"[ \r\n]"
+literal|"[ \r\n\"]"
 argument_list|)
 decl_stmt|;
-comment|// split("\\b");
 for|for
 control|(
 name|int
@@ -582,7 +581,6 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**          * Edited by Morten Alver 2004.02.04. We now have a system for easing          * key duplicate prevention, so I am changing this method to conform to          * it          */
 comment|// Remove all illegal characters from the key.
 name|_label
 operator|=
