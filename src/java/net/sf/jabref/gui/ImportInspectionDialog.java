@@ -1949,7 +1949,7 @@ literal|null
 operator|)
 operator|&&
 operator|(
-name|Util
+name|DuplicateCheck
 operator|.
 name|containsDuplicate
 argument_list|(
@@ -2065,17 +2065,13 @@ continue|continue;
 comment|// Don't compare the entry to itself
 if|if
 condition|(
-name|Util
+name|DuplicateCheck
 operator|.
 name|isDuplicate
 argument_list|(
 name|entry
 argument_list|,
 name|othEntry
-argument_list|,
-name|Globals
-operator|.
-name|duplicateThreshold
 argument_list|)
 condition|)
 return|return
@@ -5321,7 +5317,7 @@ decl_stmt|;
 name|BibtexEntry
 name|other
 init|=
-name|Util
+name|DuplicateCheck
 operator|.
 name|containsDuplicate
 argument_list|(

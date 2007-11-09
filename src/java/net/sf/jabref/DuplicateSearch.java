@@ -429,7 +429,7 @@ literal|false
 decl_stmt|;
 if|if
 condition|(
-name|Util
+name|DuplicateCheck
 operator|.
 name|compareEntriesStrictly
 argument_list|(
@@ -862,7 +862,7 @@ block|{
 name|boolean
 name|eq
 init|=
-name|Util
+name|DuplicateCheck
 operator|.
 name|isDuplicate
 argument_list|(
@@ -875,10 +875,6 @@ name|bes
 index|[
 name|j
 index|]
-argument_list|,
-name|Globals
-operator|.
-name|duplicateThreshold
 argument_list|)
 decl_stmt|;
 comment|// If (suspected) duplicates, add them to the duplicates vector.

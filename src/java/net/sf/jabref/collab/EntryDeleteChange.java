@@ -138,7 +138,7 @@ comment|// Compare the deleted entry in memory with the one in the tmpfile. The
 comment|// entry could have been removed in memory.
 name|matchWithTmp
 operator|=
-name|Util
+name|DuplicateCheck
 operator|.
 name|compareEntriesStrictly
 argument_list|(

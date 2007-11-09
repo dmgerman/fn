@@ -841,7 +841,7 @@ condition|)
 block|{
 name|comp
 operator|=
-name|Util
+name|DuplicateCheck
 operator|.
 name|compareEntriesStrictly
 argument_list|(
@@ -931,7 +931,7 @@ argument_list|)
 condition|)
 name|comp
 operator|=
-name|Util
+name|DuplicateCheck
 operator|.
 name|compareEntriesStrictly
 argument_list|(
@@ -1102,7 +1102,7 @@ condition|)
 block|{
 name|comp
 operator|=
-name|Util
+name|DuplicateCheck
 operator|.
 name|compareEntriesStrictly
 argument_list|(
@@ -1321,7 +1321,7 @@ control|)
 block|{
 if|if
 condition|(
-name|Util
+name|DuplicateCheck
 operator|.
 name|compareEntriesStrictly
 argument_list|(
@@ -1434,7 +1434,7 @@ block|{
 name|double
 name|res
 init|=
-name|Util
+name|DuplicateCheck
 operator|.
 name|compareEntriesStrictly
 argument_list|(

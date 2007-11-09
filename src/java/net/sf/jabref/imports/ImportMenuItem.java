@@ -887,7 +887,7 @@ decl_stmt|;
 name|BibtexEntry
 name|duplicate
 init|=
-name|Util
+name|DuplicateCheck
 operator|.
 name|containsDuplicate
 argument_list|(

@@ -301,7 +301,7 @@ name|j
 index|]
 argument_list|)
 operator|&&
-name|Util
+name|DuplicateCheck
 operator|.
 name|compareEntriesStrictly
 argument_list|(
