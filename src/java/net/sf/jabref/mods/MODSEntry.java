@@ -2055,7 +2055,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/* 	 * render as XML 	 *  	 * TODO This is untested. 	 *  	 */
+comment|/* 	 * render as XML 	 *  	 */
 DECL|method|toString ()
 specifier|public
 name|String

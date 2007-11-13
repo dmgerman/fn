@@ -24,14 +24,6 @@ comment|//
 end_comment
 
 begin_comment
-comment|// todo     :
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
 comment|// modified :  r.nagel 25.04.2006
 end_comment
 

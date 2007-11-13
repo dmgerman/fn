@@ -1496,7 +1496,6 @@ name|o
 argument_list|)
 condition|)
 block|{
-comment|//System.out.println("Deleted entry type (TODO): "+o);
 name|toRemove
 operator|.
 name|add

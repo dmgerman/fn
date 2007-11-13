@@ -228,34 +228,6 @@ name|expectedResult
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Verifies the Abbreviation of two authors in the incorrect format. 	 *  	 * Ex: Lastname, Name Middlename 	 */
-DECL|method|testTwoAuthorsBadFormating ()
-specifier|public
-name|void
-name|testTwoAuthorsBadFormating
-parameter_list|()
-block|{
-name|String
-name|name
-init|=
-operator|new
-name|String
-argument_list|(
-literal|"Lastname, Name Middlename and Nome Nomedomeio Sobrenome"
-argument_list|)
-decl_stmt|;
-comment|// Formatters should not fail but return the given string (if they can).
-name|assertEquals
-argument_list|(
-name|name
-argument_list|,
-name|abbreviate
-argument_list|(
-name|name
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 comment|/** 	 * Testcase for  	 * http://sourceforge.net/tracker/index.php?func=detail&aid=1466924&group_id=92314&atid=600306 	 */
 DECL|method|testJrAuthor ()
 specifier|public

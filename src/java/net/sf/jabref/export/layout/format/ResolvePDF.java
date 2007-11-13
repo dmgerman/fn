@@ -67,7 +67,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Will expand the relative PDF path and return a URI for the given file (which  * must exist).  *   * TODO Search also relative to Bib-file.  *   * @author $Author$  * @version $Revision$ ($Date$)  */
+comment|/**  * Will expand the relative PDF path and return a URI for the given file (which  * must exist).  *   * @author $Author$  * @version $Revision$ ($Date$)  */
 end_comment
 
 begin_class

@@ -54,7 +54,7 @@ name|String
 name|fieldText
 parameter_list|)
 block|{
-comment|/**          * This formatter is a duplicate of AuthorAbbreviator, so we simply          * call that one.          *          * TODO: Note that this makes the remaining methods in this formatter obsolete.           */
+comment|/**          * This formatter is a duplicate of AuthorAbbreviator, so we simply          * call that one.          */
 return|return
 operator|(
 operator|new
