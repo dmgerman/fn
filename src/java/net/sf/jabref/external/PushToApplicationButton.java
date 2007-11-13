@@ -304,6 +304,15 @@ decl_stmt|;
 comment|/**      * Set up the current available choices:      */
 static|static
 block|{
+name|applications
+operator|=
+operator|new
+name|ArrayList
+argument_list|<
+name|PushToApplication
+argument_list|>
+argument_list|()
+expr_stmt|;
 name|JabRefPlugin
 name|jabrefPlugin
 init|=
@@ -363,15 +372,6 @@ argument_list|)
 expr_stmt|;
 block|}
 name|applications
-operator|=
-operator|new
-name|ArrayList
-argument_list|<
-name|PushToApplication
-argument_list|>
-argument_list|()
-expr_stmt|;
-name|applications
 operator|.
 name|add
 argument_list|(
@@ -407,7 +407,15 @@ name|PushToLatexEditor
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//applications.add(new PushToVim());
+name|applications
+operator|.
+name|add
+argument_list|(
+operator|new
+name|PushToVim
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// Finally, sort the entries:
 name|Collections
 operator|.
