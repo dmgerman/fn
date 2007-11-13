@@ -349,17 +349,6 @@ range|:
 name|plugins
 control|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Added PushToApplication plugin: "
-operator|+
-name|extension
-argument_list|)
-expr_stmt|;
 name|applications
 operator|.
 name|add
@@ -417,17 +406,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Finally, sort the entries:
-name|Collections
-operator|.
-name|sort
-argument_list|(
-name|applications
-argument_list|,
-operator|new
-name|PushToApplicationComparator
-argument_list|()
-argument_list|)
-expr_stmt|;
+comment|//Collections.sort(applications, new PushToApplicationComparator());
 block|}
 DECL|method|PushToApplicationButton (JabRefFrame frame, List<PushToApplication> pushActions)
 specifier|public
@@ -606,9 +585,6 @@ block|{
 name|PushToApplication
 name|toApp
 init|=
-operator|(
-name|PushToApplication
-operator|)
 name|pushActions
 operator|.
 name|get
@@ -781,9 +757,6 @@ expr_stmt|;
 name|PushToApplication
 name|toApp
 init|=
-operator|(
-name|PushToApplication
-operator|)
 name|pushActions
 operator|.
 name|get
@@ -876,9 +849,6 @@ block|{
 name|PushToApplication
 name|toApp
 init|=
-operator|(
-name|PushToApplication
-operator|)
 name|pushActions
 operator|.
 name|get
