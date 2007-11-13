@@ -14,16 +14,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|Icon
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -42,7 +32,41 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|BibtexEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|MetaData
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|*
 import|;
 end_import
 
@@ -86,18 +110,24 @@ name|String
 name|getKeyStrokeName
 parameter_list|()
 function_decl|;
-comment|/**      * The actual operation. This method will not be called on the event dispatch      * thread, so it should not do GUI operations without utilizing invokeLater().      * @param entries      */
-DECL|method|pushEntries (BibtexEntry[] entries, String keyString)
+comment|/**      * The actual operation. This method will not be called on the event dispatch      * thread, so it should not do GUI operations without utilizing invokeLater().      * @param database      * @param entries      * @param metaData      */
+DECL|method|pushEntries (BibtexDatabase database, BibtexEntry[] entries, String keyString, MetaData metaData)
 specifier|public
 name|void
 name|pushEntries
 parameter_list|(
+name|BibtexDatabase
+name|database
+parameter_list|,
 name|BibtexEntry
 index|[]
 name|entries
 parameter_list|,
 name|String
 name|keyString
+parameter_list|,
+name|MetaData
+name|metaData
 parameter_list|)
 function_decl|;
 comment|/**      * Reporting etc., this method is called on the event dispatch thread after      * pushEntries() returns.      */

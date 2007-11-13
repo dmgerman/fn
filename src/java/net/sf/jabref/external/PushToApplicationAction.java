@@ -364,12 +364,22 @@ name|operation
 operator|.
 name|pushEntries
 argument_list|(
+name|panel
+operator|.
+name|database
+argument_list|()
+argument_list|,
 name|entries
 argument_list|,
 name|getKeyString
 argument_list|(
 name|entries
 argument_list|)
+argument_list|,
+name|panel
+operator|.
+name|metaData
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Call the operationCompleted() method on the event dispatch thread:
