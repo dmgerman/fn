@@ -1129,9 +1129,6 @@ block|{
 name|String
 name|field
 init|=
-operator|(
-name|String
-operator|)
 name|j
 operator|.
 name|next

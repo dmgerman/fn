@@ -130,9 +130,6 @@ name|String
 name|typeName
 init|=
 operator|(
-operator|(
-name|String
-operator|)
 name|i
 operator|.
 name|next

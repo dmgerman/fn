@@ -470,9 +470,6 @@ comment|// First check the (legacy) "pdf" field:
 name|String
 name|pdf
 init|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField
@@ -543,9 +540,6 @@ expr_stmt|;
 name|String
 name|field
 init|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField

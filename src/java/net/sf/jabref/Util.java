@@ -4473,9 +4473,6 @@ decl_stmt|;
 name|String
 name|oldValue
 init|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField
@@ -7674,7 +7671,6 @@ name|String
 name|dir
 parameter_list|)
 block|{
-comment|// System.out.println("expandFilename: name="+name+"\t dir="+dir);
 name|File
 name|file
 init|=
@@ -7707,13 +7703,6 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|file
-operator|!=
-literal|null
-condition|)
-block|{
 if|if
 condition|(
 operator|!
@@ -7867,7 +7856,6 @@ name|file
 operator|=
 literal|null
 expr_stmt|;
-block|}
 block|}
 return|return
 name|file
@@ -8800,9 +8788,6 @@ name|tableModel
 operator|.
 name|setContent
 argument_list|(
-operator|(
-name|String
-operator|)
 name|oldFileContent
 argument_list|)
 expr_stmt|;
@@ -8855,9 +8840,6 @@ block|{
 name|String
 name|s
 init|=
-operator|(
-name|String
-operator|)
 name|o
 decl_stmt|;
 if|if
@@ -11699,9 +11681,6 @@ operator|)
 operator|&&
 operator|(
 operator|(
-operator|(
-name|String
-operator|)
 name|oldVal
 operator|)
 operator|.

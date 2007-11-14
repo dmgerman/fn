@@ -44,7 +44,91 @@ name|antlr
 operator|.
 name|runtime
 operator|.
-name|*
+name|BitSet
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|antlr
+operator|.
+name|runtime
+operator|.
+name|EarlyExitException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|antlr
+operator|.
+name|runtime
+operator|.
+name|NoViableAltException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|antlr
+operator|.
+name|runtime
+operator|.
+name|Parser
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|antlr
+operator|.
+name|runtime
+operator|.
+name|ParserRuleReturnScope
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|antlr
+operator|.
+name|runtime
+operator|.
+name|RecognitionException
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|antlr
+operator|.
+name|runtime
+operator|.
+name|Token
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|antlr
+operator|.
+name|runtime
+operator|.
+name|TokenStream
 import|;
 end_import
 
@@ -84,6 +168,8 @@ block|{
 literal|"unused"
 block|,
 literal|"unchecked"
+block|,
+literal|"null"
 block|}
 argument_list|)
 DECL|class|BstParser
@@ -466,7 +552,6 @@ name|tree
 return|;
 block|}
 block|}
-empty_stmt|;
 comment|// $ANTLR start program
 comment|// Bst.g:14:1: program : ( commands )+ -> ^( COMMANDS ( commands )+ ) ;
 DECL|method|program ()
@@ -658,9 +743,6 @@ name|root_0
 expr_stmt|;
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -673,9 +755,6 @@ block|{
 name|Object
 name|root_1
 init|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -683,9 +762,6 @@ argument_list|()
 decl_stmt|;
 name|root_1
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|becomeRoot
@@ -812,9 +888,6 @@ name|retval
 operator|.
 name|tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|rulePostProcessing
@@ -868,7 +941,6 @@ name|tree
 return|;
 block|}
 block|}
-empty_stmt|;
 comment|// $ANTLR start commands
 comment|// Bst.g:16:1: commands : ( STRINGS^^ idList | INTEGERS^^ idList | FUNCTION^^ id stack | MACRO^^ id '{'! STRING '}'! | READ^^ | EXECUTE^^ '{'! function '}'! | ITERATE^^ '{'! function '}'! | REVERSE^^ '{'! function '}'! | ENTRY^^ idList0 idList0 idList0 | SORT^^ );
 annotation|@
@@ -1282,9 +1354,6 @@ comment|// Bst.g:17:4: STRINGS^^ idList
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -1292,9 +1361,6 @@ argument_list|()
 expr_stmt|;
 name|STRINGS2
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -1313,9 +1379,6 @@ argument_list|)
 expr_stmt|;
 name|STRINGS2_tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|create
@@ -1325,9 +1388,6 @@ argument_list|)
 expr_stmt|;
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|becomeRoot
@@ -1370,9 +1430,6 @@ comment|// Bst.g:18:4: INTEGERS^^ idList
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -1380,9 +1437,6 @@ argument_list|()
 expr_stmt|;
 name|INTEGERS4
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -1401,9 +1455,6 @@ argument_list|)
 expr_stmt|;
 name|INTEGERS4_tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|create
@@ -1413,9 +1464,6 @@ argument_list|)
 expr_stmt|;
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|becomeRoot
@@ -1458,9 +1506,6 @@ comment|// Bst.g:19:4: FUNCTION^^ id stack
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -1468,9 +1513,6 @@ argument_list|()
 expr_stmt|;
 name|FUNCTION6
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -1489,9 +1531,6 @@ argument_list|)
 expr_stmt|;
 name|FUNCTION6_tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|create
@@ -1501,9 +1540,6 @@ argument_list|)
 expr_stmt|;
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|becomeRoot
@@ -1570,9 +1606,6 @@ comment|// Bst.g:20:4: MACRO^^ id '{'! STRING '}'!
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -1580,9 +1613,6 @@ argument_list|()
 expr_stmt|;
 name|MACRO9
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -1601,9 +1631,6 @@ argument_list|)
 expr_stmt|;
 name|MACRO9_tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|create
@@ -1613,9 +1640,6 @@ argument_list|)
 expr_stmt|;
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|becomeRoot
@@ -1651,9 +1675,6 @@ argument_list|)
 expr_stmt|;
 name|char_literal11
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -1672,9 +1693,6 @@ argument_list|)
 expr_stmt|;
 name|STRING12
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -1693,9 +1711,6 @@ argument_list|)
 expr_stmt|;
 name|STRING12_tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|create
@@ -1714,9 +1729,6 @@ argument_list|)
 expr_stmt|;
 name|char_literal13
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -1742,9 +1754,6 @@ comment|// Bst.g:21:4: READ^^
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -1752,9 +1761,6 @@ argument_list|()
 expr_stmt|;
 name|READ14
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -1773,9 +1779,6 @@ argument_list|)
 expr_stmt|;
 name|READ14_tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|create
@@ -1785,9 +1788,6 @@ argument_list|)
 expr_stmt|;
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|becomeRoot
@@ -1806,9 +1806,6 @@ comment|// Bst.g:22:4: EXECUTE^^ '{'! function '}'!
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -1816,9 +1813,6 @@ argument_list|()
 expr_stmt|;
 name|EXECUTE15
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -1837,9 +1831,6 @@ argument_list|)
 expr_stmt|;
 name|EXECUTE15_tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|create
@@ -1849,9 +1840,6 @@ argument_list|)
 expr_stmt|;
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|becomeRoot
@@ -1863,9 +1851,6 @@ argument_list|)
 expr_stmt|;
 name|char_literal16
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -1908,9 +1893,6 @@ argument_list|)
 expr_stmt|;
 name|char_literal18
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -1936,9 +1918,6 @@ comment|// Bst.g:23:4: ITERATE^^ '{'! function '}'!
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -1946,9 +1925,6 @@ argument_list|()
 expr_stmt|;
 name|ITERATE19
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -1967,9 +1943,6 @@ argument_list|)
 expr_stmt|;
 name|ITERATE19_tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|create
@@ -1979,9 +1952,6 @@ argument_list|)
 expr_stmt|;
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|becomeRoot
@@ -1993,9 +1963,6 @@ argument_list|)
 expr_stmt|;
 name|char_literal20
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -2038,9 +2005,6 @@ argument_list|)
 expr_stmt|;
 name|char_literal22
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -2066,9 +2030,6 @@ comment|// Bst.g:24:4: REVERSE^^ '{'! function '}'!
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -2076,9 +2037,6 @@ argument_list|()
 expr_stmt|;
 name|REVERSE23
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -2097,9 +2055,6 @@ argument_list|)
 expr_stmt|;
 name|REVERSE23_tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|create
@@ -2109,9 +2064,6 @@ argument_list|)
 expr_stmt|;
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|becomeRoot
@@ -2123,9 +2075,6 @@ argument_list|)
 expr_stmt|;
 name|char_literal24
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -2168,9 +2117,6 @@ argument_list|)
 expr_stmt|;
 name|char_literal26
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -2196,9 +2142,6 @@ comment|// Bst.g:25:4: ENTRY^^ idList0 idList0 idList0
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -2206,9 +2149,6 @@ argument_list|()
 expr_stmt|;
 name|ENTRY27
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -2227,9 +2167,6 @@ argument_list|)
 expr_stmt|;
 name|ENTRY27_tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|create
@@ -2239,9 +2176,6 @@ argument_list|)
 expr_stmt|;
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|becomeRoot
@@ -2332,9 +2266,6 @@ comment|// Bst.g:26:4: SORT^^
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -2342,9 +2273,6 @@ argument_list|()
 expr_stmt|;
 name|SORT31
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -2363,9 +2291,6 @@ argument_list|)
 expr_stmt|;
 name|SORT31_tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|create
@@ -2375,9 +2300,6 @@ argument_list|)
 expr_stmt|;
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|becomeRoot
@@ -2428,9 +2350,6 @@ name|retval
 operator|.
 name|tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|rulePostProcessing
@@ -2484,7 +2403,6 @@ name|tree
 return|;
 block|}
 block|}
-empty_stmt|;
 comment|// $ANTLR start identifier
 comment|// Bst.g:28:1: identifier : IDENTIFIER ;
 DECL|method|identifier ()
@@ -2535,9 +2453,6 @@ comment|// Bst.g:29:4: IDENTIFIER
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -2545,9 +2460,6 @@ argument_list|()
 expr_stmt|;
 name|IDENTIFIER32
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -2566,9 +2478,6 @@ argument_list|)
 expr_stmt|;
 name|IDENTIFIER32_tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|create
@@ -2624,9 +2533,6 @@ name|retval
 operator|.
 name|tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|rulePostProcessing
@@ -2680,7 +2586,6 @@ name|tree
 return|;
 block|}
 block|}
-empty_stmt|;
 comment|// $ANTLR start id
 comment|// Bst.g:31:1: id : '{'! identifier '}'! ;
 DECL|method|id ()
@@ -2746,9 +2651,6 @@ comment|// Bst.g:32:4: '{'! identifier '}'!
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -2756,9 +2658,6 @@ argument_list|()
 expr_stmt|;
 name|char_literal33
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -2801,9 +2700,6 @@ argument_list|)
 expr_stmt|;
 name|char_literal35
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -2859,9 +2755,6 @@ name|retval
 operator|.
 name|tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|rulePostProcessing
@@ -2915,7 +2808,6 @@ name|tree
 return|;
 block|}
 block|}
-empty_stmt|;
 comment|// $ANTLR start idList
 comment|// Bst.g:34:1: idList : '{' ( identifier )+ '}' -> ^( IDLIST ( identifier )+ ) ;
 DECL|method|idList ()
@@ -3002,9 +2894,6 @@ comment|// Bst.g:35:4: '{' ( identifier )+ '}'
 block|{
 name|char_literal36
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -3137,9 +3026,6 @@ condition|)
 do|;
 name|char_literal38
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -3177,9 +3063,6 @@ name|root_0
 expr_stmt|;
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -3192,9 +3075,6 @@ block|{
 name|Object
 name|root_1
 init|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -3202,9 +3082,6 @@ argument_list|()
 decl_stmt|;
 name|root_1
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|becomeRoot
@@ -3331,9 +3208,6 @@ name|retval
 operator|.
 name|tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|rulePostProcessing
@@ -3387,7 +3261,6 @@ name|tree
 return|;
 block|}
 block|}
-empty_stmt|;
 comment|// $ANTLR start idList0
 comment|// Bst.g:37:1: idList0 : '{' ( identifier )* '}' -> ^( IDLIST ( identifier )* ) ;
 DECL|method|idList0 ()
@@ -3474,9 +3347,6 @@ comment|// Bst.g:38:4: '{' ( identifier )* '}'
 block|{
 name|char_literal39
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -3581,9 +3451,6 @@ condition|)
 do|;
 name|char_literal41
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -3621,9 +3488,6 @@ name|root_0
 expr_stmt|;
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -3636,9 +3500,6 @@ block|{
 name|Object
 name|root_1
 init|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -3646,9 +3507,6 @@ argument_list|()
 decl_stmt|;
 name|root_1
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|becomeRoot
@@ -3762,9 +3620,6 @@ name|retval
 operator|.
 name|tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|rulePostProcessing
@@ -3818,7 +3673,6 @@ name|tree
 return|;
 block|}
 block|}
-empty_stmt|;
 comment|// $ANTLR start function
 comment|// Bst.g:40:1: function : ( '<' | '>' | '=' | '+' | '-' | ':=' | '*' | identifier );
 DECL|method|function ()
@@ -4041,9 +3895,6 @@ comment|// Bst.g:41:4: '<'
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -4051,9 +3902,6 @@ argument_list|()
 expr_stmt|;
 name|char_literal42
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -4072,9 +3920,6 @@ argument_list|)
 expr_stmt|;
 name|char_literal42_tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|create
@@ -4100,9 +3945,6 @@ comment|// Bst.g:41:10: '>'
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -4110,9 +3952,6 @@ argument_list|()
 expr_stmt|;
 name|char_literal43
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -4131,9 +3970,6 @@ argument_list|)
 expr_stmt|;
 name|char_literal43_tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|create
@@ -4159,9 +3995,6 @@ comment|// Bst.g:41:16: '='
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -4169,9 +4002,6 @@ argument_list|()
 expr_stmt|;
 name|char_literal44
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -4190,9 +4020,6 @@ argument_list|)
 expr_stmt|;
 name|char_literal44_tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|create
@@ -4218,9 +4045,6 @@ comment|// Bst.g:41:22: '+'
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -4228,9 +4052,6 @@ argument_list|()
 expr_stmt|;
 name|char_literal45
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -4249,9 +4070,6 @@ argument_list|)
 expr_stmt|;
 name|char_literal45_tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|create
@@ -4277,9 +4095,6 @@ comment|// Bst.g:41:28: '-'
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -4287,9 +4102,6 @@ argument_list|()
 expr_stmt|;
 name|char_literal46
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -4308,9 +4120,6 @@ argument_list|)
 expr_stmt|;
 name|char_literal46_tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|create
@@ -4336,9 +4145,6 @@ comment|// Bst.g:41:34: ':='
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -4346,9 +4152,6 @@ argument_list|()
 expr_stmt|;
 name|string_literal47
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -4367,9 +4170,6 @@ argument_list|)
 expr_stmt|;
 name|string_literal47_tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|create
@@ -4395,9 +4195,6 @@ comment|// Bst.g:41:41: '*'
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -4405,9 +4202,6 @@ argument_list|()
 expr_stmt|;
 name|char_literal48
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -4426,9 +4220,6 @@ argument_list|)
 expr_stmt|;
 name|char_literal48_tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|create
@@ -4454,9 +4245,6 @@ comment|// Bst.g:41:47: identifier
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -4527,9 +4315,6 @@ name|retval
 operator|.
 name|tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|rulePostProcessing
@@ -4583,7 +4368,6 @@ name|tree
 return|;
 block|}
 block|}
-empty_stmt|;
 comment|// $ANTLR start stack
 comment|// Bst.g:43:1: stack : '{' ( stackitem )+ '}' -> ^( STACK ( stackitem )+ ) ;
 DECL|method|stack ()
@@ -4670,9 +4454,6 @@ comment|// Bst.g:44:4: '{' ( stackitem )+ '}'
 block|{
 name|char_literal50
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -4829,9 +4610,6 @@ condition|)
 do|;
 name|char_literal52
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -4869,9 +4647,6 @@ name|root_0
 expr_stmt|;
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -4884,9 +4659,6 @@ block|{
 name|Object
 name|root_1
 init|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -4894,9 +4666,6 @@ argument_list|()
 decl_stmt|;
 name|root_1
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|becomeRoot
@@ -5023,9 +4792,6 @@ name|retval
 operator|.
 name|tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|rulePostProcessing
@@ -5079,7 +4845,6 @@ name|tree
 return|;
 block|}
 block|}
-empty_stmt|;
 comment|// $ANTLR start stackitem
 comment|// Bst.g:46:1: stackitem : ( function | STRING | INTEGER | QUOTED | stack );
 DECL|method|stackitem ()
@@ -5264,9 +5029,6 @@ comment|// Bst.g:47:4: function
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -5305,9 +5067,6 @@ comment|// Bst.g:48:4: STRING
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -5315,9 +5074,6 @@ argument_list|()
 expr_stmt|;
 name|STRING54
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -5336,9 +5092,6 @@ argument_list|)
 expr_stmt|;
 name|STRING54_tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|create
@@ -5364,9 +5117,6 @@ comment|// Bst.g:49:4: INTEGER
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -5374,9 +5124,6 @@ argument_list|()
 expr_stmt|;
 name|INTEGER55
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -5395,9 +5142,6 @@ argument_list|)
 expr_stmt|;
 name|INTEGER55_tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|create
@@ -5423,9 +5167,6 @@ comment|// Bst.g:50:4: QUOTED
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -5433,9 +5174,6 @@ argument_list|()
 expr_stmt|;
 name|QUOTED56
 operator|=
-operator|(
-name|Token
-operator|)
 name|input
 operator|.
 name|LT
@@ -5454,9 +5192,6 @@ argument_list|)
 expr_stmt|;
 name|QUOTED56_tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|create
@@ -5482,9 +5217,6 @@ comment|// Bst.g:51:4: stack
 block|{
 name|root_0
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|nil
@@ -5555,9 +5287,6 @@ name|retval
 operator|.
 name|tree
 operator|=
-operator|(
-name|Object
-operator|)
 name|adaptor
 operator|.
 name|rulePostProcessing

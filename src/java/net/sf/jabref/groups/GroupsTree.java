@@ -2195,9 +2195,6 @@ operator|new
 name|TreePath
 argument_list|(
 operator|(
-operator|(
-name|GroupTreeNode
-operator|)
 name|e
 operator|.
 name|nextElement

@@ -764,9 +764,6 @@ comment|//find which key is selected and set its value int the bindHM
 name|String
 name|selectedFunction
 init|=
-operator|(
-name|String
-operator|)
 name|table
 operator|.
 name|getOriginalName

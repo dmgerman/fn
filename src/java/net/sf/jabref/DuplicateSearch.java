@@ -308,12 +308,6 @@ name|current
 init|=
 literal|0
 decl_stmt|;
-name|DuplicateResolverDialog
-name|drd
-init|=
-literal|null
-decl_stmt|;
-comment|/*   loop: while (!st.finished() || (current< duplicates.size()))   {     if ( current>= duplicates.size() )     {       // No more duplicates to resolve, but search is still in progress. Sleep a little.        try        {          sleep(10);        } catch (InterruptedException ex) {}        continue loop;     }   } */
 specifier|final
 name|ArrayList
 argument_list|<
@@ -628,17 +622,6 @@ block|}
 block|}
 block|}
 block|}
-if|if
-condition|(
-name|drd
-operator|!=
-literal|null
-condition|)
-name|drd
-operator|.
-name|dispose
-argument_list|()
-expr_stmt|;
 specifier|final
 name|int
 name|dupliC
@@ -765,13 +748,6 @@ operator|+
 name|dupliC
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|ce
-operator|!=
-literal|null
-condition|)
-block|{
 name|ce
 operator|.
 name|end
@@ -786,7 +762,6 @@ argument_list|(
 name|ce
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 argument_list|)

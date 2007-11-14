@@ -548,9 +548,6 @@ name|URLEncoder
 operator|.
 name|encode
 argument_list|(
-operator|(
-name|String
-operator|)
 name|key
 argument_list|,
 literal|"UTF-8"

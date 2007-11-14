@@ -2893,9 +2893,6 @@ return|;
 else|else
 return|return
 operator|(
-operator|(
-name|Integer
-operator|)
 name|l
 operator|.
 name|get

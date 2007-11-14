@@ -3603,9 +3603,6 @@ name|CiteSeerFetcherPanel
 argument_list|(
 name|sidePaneManager
 argument_list|,
-operator|(
-name|CiteSeerFetcher
-operator|)
 name|citeSeerFetcher
 argument_list|)
 expr_stmt|;
@@ -4524,9 +4521,6 @@ literal|null
 condition|)
 block|{
 operator|(
-operator|(
-name|SearchManager2
-operator|)
 name|searchManager
 operator|)
 operator|.

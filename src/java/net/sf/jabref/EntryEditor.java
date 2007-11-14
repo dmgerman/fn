@@ -3623,9 +3623,6 @@ name|db
 operator|.
 name|getEntryById
 argument_list|(
-operator|(
-name|String
-operator|)
 name|db
 operator|.
 name|getKeySet
@@ -3821,9 +3818,6 @@ block|{
 name|String
 name|toSet
 init|=
-operator|(
-name|String
-operator|)
 name|nu
 operator|.
 name|getField
@@ -5036,10 +5030,7 @@ block|{
 name|String
 name|s
 init|=
-call|(
-name|String
-call|)
-argument_list|(
+operator|(
 name|entry
 operator|.
 name|getField
@@ -5048,7 +5039,7 @@ name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)
-argument_list|)
+operator|)
 decl_stmt|;
 name|StringSelection
 name|ss
@@ -6374,9 +6365,6 @@ name|String
 operator|)
 name|oldValue
 argument_list|,
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField
@@ -6392,9 +6380,6 @@ comment|// here we update the field
 name|String
 name|bibtexKeyData
 init|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField

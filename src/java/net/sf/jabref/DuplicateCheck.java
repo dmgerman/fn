@@ -306,9 +306,6 @@ block|{
 name|String
 name|s1
 init|=
-operator|(
-name|String
-operator|)
 name|one
 operator|.
 name|getField
@@ -318,9 +315,6 @@ argument_list|)
 decl_stmt|,
 name|s2
 init|=
-operator|(
-name|String
-operator|)
 name|two
 operator|.
 name|getField
@@ -610,9 +604,6 @@ block|{
 name|String
 name|field
 init|=
-operator|(
-name|String
-operator|)
 name|fld
 operator|.
 name|next

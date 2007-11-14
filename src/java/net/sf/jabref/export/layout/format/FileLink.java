@@ -200,11 +200,6 @@ operator|.
 name|getLink
 argument_list|()
 expr_stmt|;
-else|else
-name|link
-operator|=
-literal|null
-expr_stmt|;
 block|}
 else|else
 block|{

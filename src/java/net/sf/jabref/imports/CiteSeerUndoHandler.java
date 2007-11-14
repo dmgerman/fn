@@ -619,9 +619,6 @@ if|if
 condition|(
 name|makeOverwriteChoice
 argument_list|(
-operator|(
-name|String
-operator|)
 name|bibEntry
 operator|.
 name|getField
@@ -688,9 +685,6 @@ if|if
 condition|(
 name|makeOverwriteChoice
 argument_list|(
-operator|(
-name|String
-operator|)
 name|bibEntry
 operator|.
 name|getField
@@ -793,9 +787,6 @@ if|if
 condition|(
 name|makeOverwriteChoice
 argument_list|(
-operator|(
-name|String
-operator|)
 name|bibEntry
 operator|.
 name|getField
@@ -1153,9 +1144,6 @@ if|if
 condition|(
 name|makeOverwriteChoice
 argument_list|(
-operator|(
-name|String
-operator|)
 name|bibEntry
 operator|.
 name|getField

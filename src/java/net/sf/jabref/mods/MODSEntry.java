@@ -689,9 +689,6 @@ name|host
 operator|.
 name|title
 operator|=
-operator|(
-name|String
-operator|)
 name|bibtex
 operator|.
 name|getField
@@ -703,9 +700,6 @@ name|host
 operator|.
 name|publisher
 operator|=
-operator|(
-name|String
-operator|)
 name|bibtex
 operator|.
 name|getField
@@ -717,9 +711,6 @@ name|host
 operator|.
 name|number
 operator|=
-operator|(
-name|String
-operator|)
 name|bibtex
 operator|.
 name|getField
@@ -742,9 +733,6 @@ name|host
 operator|.
 name|volume
 operator|=
-operator|(
-name|String
-operator|)
 name|bibtex
 operator|.
 name|getField
@@ -776,9 +764,6 @@ operator|=
 operator|new
 name|PageNumbers
 argument_list|(
-operator|(
-name|String
-operator|)
 name|bibtex
 operator|.
 name|getField

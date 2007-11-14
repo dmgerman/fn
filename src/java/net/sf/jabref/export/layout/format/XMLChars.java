@@ -431,9 +431,6 @@ name|int
 name|code
 init|=
 operator|(
-operator|(
-name|int
-operator|)
 name|fieldText
 operator|.
 name|charAt

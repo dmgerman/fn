@@ -3843,9 +3843,6 @@ block|{
 name|String
 name|s
 init|=
-operator|(
-name|String
-operator|)
 name|keyBinds
 operator|.
 name|get
@@ -3866,9 +3863,6 @@ condition|)
 block|{
 name|s
 operator|=
-operator|(
-name|String
-operator|)
 name|defKeyBinds
 operator|.
 name|get
@@ -4217,9 +4211,6 @@ decl_stmt|;
 name|String
 name|bnd
 init|=
-operator|(
-name|String
-operator|)
 name|newBindings
 operator|.
 name|get

@@ -1484,15 +1484,9 @@ name|toArray
 argument_list|()
 decl_stmt|;
 return|return
-call|(
+operator|(
 name|List
-argument_list|<
-name|String
-argument_list|>
-call|)
-argument_list|(
-name|List
-argument_list|)
+operator|)
 name|java
 operator|.
 name|util

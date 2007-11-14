@@ -700,9 +700,6 @@ operator|.
 name|MAX_FIELD_WEIGHT
 operator|*
 operator|(
-operator|(
-name|double
-operator|)
 name|slider
 operator|.
 name|getValue

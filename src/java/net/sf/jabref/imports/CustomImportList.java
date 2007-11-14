@@ -668,10 +668,6 @@ name|Importer
 index|[]
 name|importers
 init|=
-operator|(
-name|Importer
-index|[]
-operator|)
 name|this
 operator|.
 name|toArray

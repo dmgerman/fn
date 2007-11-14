@@ -280,9 +280,6 @@ block|{
 name|String
 name|mem
 init|=
-operator|(
-name|String
-operator|)
 name|memEntry
 operator|.
 name|getField
@@ -292,9 +289,6 @@ argument_list|)
 decl_stmt|,
 name|tmp
 init|=
-operator|(
-name|String
-operator|)
 name|tmpEntry
 operator|.
 name|getField
@@ -304,9 +298,6 @@ argument_list|)
 decl_stmt|,
 name|disk
 init|=
-operator|(
-name|String
-operator|)
 name|diskEntry
 operator|.
 name|getField
@@ -502,9 +493,6 @@ block|{
 name|Change
 name|c
 init|=
-operator|(
-name|Change
-operator|)
 name|e
 operator|.
 name|nextElement

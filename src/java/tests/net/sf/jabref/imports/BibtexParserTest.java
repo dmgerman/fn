@@ -962,9 +962,6 @@ expr_stmt|;
 name|BibtexEntry
 name|e
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|c
 operator|.
 name|iterator
@@ -1120,9 +1117,6 @@ expr_stmt|;
 name|BibtexEntry
 name|e2
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|c
 operator|.
 name|iterator
@@ -1243,9 +1237,6 @@ decl_stmt|;
 name|BibtexEntry
 name|e
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|c
 operator|.
 name|iterator
@@ -1258,9 +1249,6 @@ name|assertEquals
 argument_list|(
 literal|"1234567890123456789"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|e
 operator|.
 name|getField
@@ -1273,9 +1261,6 @@ name|assertEquals
 argument_list|(
 literal|"1234567890123456789"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|e
 operator|.
 name|getField
@@ -1288,9 +1273,6 @@ name|assertEquals
 argument_list|(
 literal|"1234"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|e
 operator|.
 name|getField
@@ -1367,9 +1349,6 @@ expr_stmt|;
 name|BibtexEntry
 name|e
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|c
 operator|.
 name|iterator
@@ -1404,9 +1383,6 @@ name|assertEquals
 argument_list|(
 literal|"2707318256"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|e
 operator|.
 name|getField
@@ -1419,9 +1395,6 @@ name|assertEquals
 argument_list|(
 literal|"Paris"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|e
 operator|.
 name|getField
@@ -1434,9 +1407,6 @@ name|assertEquals
 argument_list|(
 literal|"Minuit"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|e
 operator|.
 name|getField
@@ -1449,9 +1419,6 @@ name|assertEquals
 argument_list|(
 literal|"Questions de sociologie"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|e
 operator|.
 name|getField
@@ -1464,9 +1431,6 @@ name|assertEquals
 argument_list|(
 literal|"#bourdieu#"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|e
 operator|.
 name|getField
@@ -1479,9 +1443,6 @@ name|assertEquals
 argument_list|(
 literal|"2002"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|e
 operator|.
 name|getField
@@ -1549,9 +1510,6 @@ name|assertEquals
 argument_list|(
 literal|"a b"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|e
 operator|.
 name|getField
@@ -1564,9 +1522,6 @@ name|assertEquals
 argument_list|(
 literal|"a\nb"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|e
 operator|.
 name|getField
@@ -1579,9 +1534,6 @@ name|assertEquals
 argument_list|(
 literal|"a b"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|e
 operator|.
 name|getField
@@ -1594,9 +1546,6 @@ name|assertEquals
 argument_list|(
 literal|"a b"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|e
 operator|.
 name|getField
@@ -1610,9 +1559,6 @@ name|assertEquals
 argument_list|(
 literal|"Hallo World this is\nnot \nan \n exercise . \n\n"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|e
 operator|.
 name|getField
@@ -1625,9 +1571,6 @@ name|assertEquals
 argument_list|(
 literal|"Hallo World this isnot an exercise . "
 argument_list|,
-operator|(
-name|String
-operator|)
 name|e
 operator|.
 name|getField

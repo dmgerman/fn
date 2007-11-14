@@ -106,6 +106,8 @@ block|{
 literal|"unchecked"
 block|,
 literal|"unused"
+block|,
+literal|"null"
 block|}
 argument_list|)
 DECL|class|SearchExpressionTreeParser
@@ -299,9 +301,6 @@ decl_stmt|;
 name|AST
 name|tmp1_AST_in
 init|=
-operator|(
-name|AST
-operator|)
 name|_t
 decl_stmt|;
 name|match
@@ -404,9 +403,6 @@ block|{
 name|AST
 name|tmp2_AST_in
 init|=
-operator|(
-name|AST
-operator|)
 name|_t
 decl_stmt|;
 if|if
@@ -470,9 +466,6 @@ decl_stmt|;
 name|AST
 name|tmp3_AST_in
 init|=
-operator|(
-name|AST
-operator|)
 name|_t
 decl_stmt|;
 name|match
@@ -576,9 +569,6 @@ block|{
 name|AST
 name|tmp4_AST_in
 init|=
-operator|(
-name|AST
-operator|)
 name|_t
 decl_stmt|;
 if|if
@@ -642,9 +632,6 @@ decl_stmt|;
 name|AST
 name|tmp5_AST_in
 init|=
-operator|(
-name|AST
-operator|)
 name|_t
 decl_stmt|;
 name|match
@@ -799,9 +786,6 @@ decl_stmt|;
 name|AST
 name|tmp6_AST_in
 init|=
-operator|(
-name|AST
-operator|)
 name|_t
 decl_stmt|;
 name|match
@@ -820,9 +804,6 @@ argument_list|()
 expr_stmt|;
 name|var_f
 operator|=
-operator|(
-name|AST
-operator|)
 name|_t
 expr_stmt|;
 name|match
@@ -852,9 +833,6 @@ name|_retTree
 expr_stmt|;
 name|var_v
 operator|=
-operator|(
-name|AST
-operator|)
 name|_t
 expr_stmt|;
 name|match
@@ -991,9 +969,6 @@ condition|)
 continue|continue;
 name|content
 operator|=
-operator|(
-name|String
-operator|)
 name|bibtexEntry
 operator|.
 name|getField
@@ -1192,9 +1167,6 @@ block|{
 name|AST
 name|tmp7_AST_in
 init|=
-operator|(
-name|AST
-operator|)
 name|_t
 decl_stmt|;
 name|match
@@ -1224,9 +1196,6 @@ block|{
 name|AST
 name|tmp8_AST_in
 init|=
-operator|(
-name|AST
-operator|)
 name|_t
 decl_stmt|;
 name|match
@@ -1256,9 +1225,6 @@ block|{
 name|AST
 name|tmp9_AST_in
 init|=
-operator|(
-name|AST
-operator|)
 name|_t
 decl_stmt|;
 name|match
@@ -1288,9 +1254,6 @@ block|{
 name|AST
 name|tmp10_AST_in
 init|=
-operator|(
-name|AST
-operator|)
 name|_t
 decl_stmt|;
 name|match
@@ -1320,9 +1283,6 @@ block|{
 name|AST
 name|tmp11_AST_in
 init|=
-operator|(
-name|AST
-operator|)
 name|_t
 decl_stmt|;
 name|match

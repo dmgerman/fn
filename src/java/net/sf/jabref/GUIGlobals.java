@@ -1355,12 +1355,7 @@ parameter_list|(
 name|MalformedURLException
 name|e
 parameter_list|)
-block|{
-name|url
-operator|=
-literal|null
-expr_stmt|;
-block|}
+block|{ 				}
 if|if
 condition|(
 name|url

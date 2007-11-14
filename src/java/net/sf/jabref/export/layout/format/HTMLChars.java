@@ -263,9 +263,6 @@ name|Character
 operator|.
 name|isLetter
 argument_list|(
-operator|(
-name|char
-operator|)
 name|c
 argument_list|)
 operator|||
@@ -286,9 +283,6 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
-operator|(
-name|char
-operator|)
 name|c
 argument_list|)
 argument_list|)
@@ -310,9 +304,6 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|char
-operator|)
 name|c
 argument_list|)
 expr_stmt|;
@@ -323,9 +314,6 @@ name|currentCommand
 operator|.
 name|append
 argument_list|(
-operator|(
-name|char
-operator|)
 name|c
 argument_list|)
 expr_stmt|;
@@ -572,9 +560,6 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|char
-operator|)
 name|c
 argument_list|)
 expr_stmt|;
@@ -1065,9 +1050,6 @@ name|part
 operator|.
 name|append
 argument_list|(
-operator|(
-name|char
-operator|)
 name|c
 argument_list|)
 expr_stmt|;

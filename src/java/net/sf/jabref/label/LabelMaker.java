@@ -205,13 +205,10 @@ operator|=
 name|newKey
 operator|+
 operator|(
-call|(
-name|char
-call|)
-argument_list|(
+operator|(
 name|c
 operator|++
-argument_list|)
+operator|)
 operator|)
 expr_stmt|;
 block|}

@@ -75,9 +75,6 @@ operator|=
 operator|new
 name|StringTokenizer
 argument_list|(
-operator|(
-name|String
-operator|)
 name|oldEntry
 operator|.
 name|getField
@@ -202,9 +199,6 @@ operator|new
 name|StringTokenizer
 argument_list|(
 operator|(
-operator|(
-name|String
-operator|)
 name|oldEntry
 operator|.
 name|getField

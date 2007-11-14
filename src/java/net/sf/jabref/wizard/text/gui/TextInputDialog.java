@@ -2294,9 +2294,6 @@ comment|// get old text from bibtex tag
 name|String
 name|old
 init|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField

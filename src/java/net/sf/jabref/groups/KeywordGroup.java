@@ -821,9 +821,6 @@ block|{
 name|String
 name|oldContent
 init|=
-operator|(
-name|String
-operator|)
 name|entries
 index|[
 name|i
@@ -1012,9 +1009,6 @@ block|{
 name|String
 name|oldContent
 init|=
-operator|(
-name|String
-operator|)
 name|entries
 index|[
 name|i
@@ -1283,9 +1277,6 @@ block|{
 name|String
 name|content
 init|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField

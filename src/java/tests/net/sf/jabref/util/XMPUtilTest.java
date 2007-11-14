@@ -1455,9 +1455,6 @@ expr_stmt|;
 name|BibtexEntry
 name|e
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|l
 operator|.
 name|get
@@ -1577,9 +1574,6 @@ expr_stmt|;
 name|BibtexEntry
 name|e
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|l
 operator|.
 name|get
@@ -1721,9 +1715,6 @@ expr_stmt|;
 name|BibtexEntry
 name|x
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|l
 operator|.
 name|get
@@ -1880,9 +1871,6 @@ expr_stmt|;
 name|BibtexEntry
 name|x
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|l
 operator|.
 name|get
@@ -2015,9 +2003,6 @@ expr_stmt|;
 name|BibtexEntry
 name|e
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|l
 operator|.
 name|get
@@ -2133,9 +2118,6 @@ expr_stmt|;
 name|BibtexEntry
 name|e
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|l
 operator|.
 name|get
@@ -2468,9 +2450,6 @@ expr_stmt|;
 name|BibtexEntry
 name|e
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|c
 operator|.
 name|iterator
@@ -2519,9 +2498,6 @@ expr_stmt|;
 name|BibtexEntry
 name|x
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|l
 operator|.
 name|get
@@ -2598,9 +2574,6 @@ expr_stmt|;
 name|BibtexEntry
 name|e
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|l
 operator|.
 name|get
@@ -2706,9 +2679,6 @@ expr_stmt|;
 name|BibtexEntry
 name|e
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|l
 operator|.
 name|get
@@ -2965,9 +2935,6 @@ expr_stmt|;
 name|BibtexEntry
 name|e
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|l
 operator|.
 name|get
@@ -4218,9 +4185,6 @@ expr_stmt|;
 name|BibtexEntry
 name|e
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|c
 operator|.
 name|iterator
@@ -4269,9 +4233,6 @@ expr_stmt|;
 name|BibtexEntry
 name|x
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|l
 operator|.
 name|get
@@ -4709,9 +4670,6 @@ expr_stmt|;
 name|BibtexEntry
 name|a
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|l
 operator|.
 name|get
@@ -4722,9 +4680,6 @@ decl_stmt|;
 name|BibtexEntry
 name|b
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|l
 operator|.
 name|get
@@ -4895,9 +4850,6 @@ expr_stmt|;
 name|BibtexEntry
 name|a
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|l
 operator|.
 name|get
@@ -4908,9 +4860,6 @@ decl_stmt|;
 name|BibtexEntry
 name|b
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|l
 operator|.
 name|get
@@ -5298,6 +5247,7 @@ block|{
 name|fail
 argument_list|()
 expr_stmt|;
+return|return;
 block|}
 name|XMPMetadata
 name|meta
@@ -6515,9 +6465,6 @@ argument_list|(
 name|t1BibtexEntry
 argument_list|()
 argument_list|,
-operator|(
-name|BibtexEntry
-operator|)
 name|l
 operator|.
 name|get
@@ -6682,9 +6629,6 @@ expr_stmt|;
 name|BibtexEntry
 name|x
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|c
 operator|.
 name|iterator
@@ -6951,9 +6895,6 @@ argument_list|(
 name|t1BibtexEntry
 argument_list|()
 argument_list|,
-operator|(
-name|BibtexEntry
-operator|)
 name|l
 operator|.
 name|get
@@ -7111,9 +7052,6 @@ argument_list|(
 name|t1BibtexEntry
 argument_list|()
 argument_list|,
-operator|(
-name|BibtexEntry
-operator|)
 name|l
 operator|.
 name|get
@@ -7213,9 +7151,6 @@ argument_list|(
 name|t2BibtexEntry
 argument_list|()
 argument_list|,
-operator|(
-name|BibtexEntry
-operator|)
 name|l
 operator|.
 name|get
@@ -7392,9 +7327,6 @@ expr_stmt|;
 name|BibtexEntry
 name|a
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|l
 operator|.
 name|get
@@ -7405,9 +7337,6 @@ decl_stmt|;
 name|BibtexEntry
 name|b
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|l
 operator|.
 name|get
@@ -7593,9 +7522,6 @@ expr_stmt|;
 name|BibtexEntry
 name|e
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|c
 operator|.
 name|iterator
@@ -7647,9 +7573,6 @@ expr_stmt|;
 name|BibtexEntry
 name|x
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|l
 operator|.
 name|get

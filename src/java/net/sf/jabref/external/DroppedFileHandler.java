@@ -1462,9 +1462,6 @@ block|{
 name|String
 name|oldValue
 init|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField

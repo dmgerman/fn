@@ -59,9 +59,6 @@ name|oldEntry
 parameter_list|)
 block|{
 return|return
-operator|(
-name|String
-operator|)
 name|oldEntry
 operator|.
 name|getField

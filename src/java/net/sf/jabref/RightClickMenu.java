@@ -244,9 +244,6 @@ literal|1
 condition|)
 name|be
 operator|=
-operator|(
-name|BibtexEntry
-operator|)
 name|panel
 operator|.
 name|mainTable

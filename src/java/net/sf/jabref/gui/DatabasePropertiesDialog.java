@@ -750,9 +750,6 @@ operator|.
 name|setText
 argument_list|(
 operator|(
-operator|(
-name|String
-operator|)
 name|fileD
 operator|.
 name|get
@@ -809,9 +806,6 @@ operator|.
 name|setText
 argument_list|(
 operator|(
-operator|(
-name|String
-operator|)
 name|pdfD
 operator|.
 name|get
@@ -868,9 +862,6 @@ operator|.
 name|setText
 argument_list|(
 operator|(
-operator|(
-name|String
-operator|)
 name|psD
 operator|.
 name|get

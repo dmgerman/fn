@@ -2737,9 +2737,6 @@ name|substring
 argument_list|(
 literal|0
 argument_list|,
-operator|(
-name|int
-operator|)
 name|Math
 operator|.
 name|min

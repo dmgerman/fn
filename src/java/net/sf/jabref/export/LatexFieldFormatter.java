@@ -815,9 +815,6 @@ name|commandName
 operator|.
 name|append
 argument_list|(
-operator|(
-name|char
-operator|)
 name|c
 argument_list|)
 expr_stmt|;
@@ -1290,9 +1287,6 @@ operator|)
 operator|&&
 operator|(
 operator|(
-operator|(
-name|Integer
-operator|)
 name|right
 operator|.
 name|elementAt
@@ -1305,9 +1299,6 @@ name|intValue
 argument_list|()
 operator|<
 operator|(
-operator|(
-name|Integer
-operator|)
 name|left
 operator|.
 name|elementAt

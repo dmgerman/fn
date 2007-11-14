@@ -312,9 +312,6 @@ name|FieldTextField
 argument_list|(
 name|fieldName
 argument_list|,
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField
@@ -380,9 +377,6 @@ name|FieldTextField
 argument_list|(
 name|fieldName
 argument_list|,
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField

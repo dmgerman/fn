@@ -74,10 +74,7 @@ block|{
 name|String
 name|oldLabel
 init|=
-call|(
-name|String
-call|)
-argument_list|(
+operator|(
 name|oldEntry
 operator|.
 name|getField
@@ -86,7 +83,7 @@ name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)
-argument_list|)
+operator|)
 decl_stmt|;
 name|String
 name|newLabel
@@ -103,9 +100,6 @@ try|try
 block|{
 name|author
 operator|=
-operator|(
-name|String
-operator|)
 name|oldEntry
 operator|.
 name|getField

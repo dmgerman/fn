@@ -1909,9 +1909,6 @@ comment|// Then check whether this is a user defined formatter
 name|String
 name|formatterParameter
 init|=
-operator|(
-name|String
-operator|)
 name|userNameFormatter
 operator|.
 name|get

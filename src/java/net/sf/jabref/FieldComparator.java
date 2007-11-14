@@ -272,12 +272,6 @@ condition|(
 name|isNameField
 condition|)
 block|{
-if|if
-condition|(
-name|f1
-operator|!=
-literal|null
-condition|)
 name|f1
 operator|=
 name|AuthorList
@@ -290,12 +284,6 @@ operator|)
 name|f1
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|f2
-operator|!=
-literal|null
-condition|)
 name|f2
 operator|=
 name|AuthorList
@@ -386,15 +374,6 @@ condition|(
 name|isNumeric
 condition|)
 block|{
-name|boolean
-name|numeric1
-init|=
-literal|false
-decl_stmt|,
-name|numeric2
-init|=
-literal|false
-decl_stmt|;
 name|Integer
 name|i1
 init|=
@@ -417,10 +396,6 @@ name|String
 operator|)
 name|f1
 argument_list|)
-expr_stmt|;
-name|numeric1
-operator|=
-literal|true
 expr_stmt|;
 block|}
 catch|catch
@@ -445,10 +420,6 @@ operator|)
 name|f2
 argument_list|)
 expr_stmt|;
-name|numeric2
-operator|=
-literal|true
-expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -460,9 +431,13 @@ comment|// Parsing failed.
 block|}
 if|if
 condition|(
-name|numeric1
+name|i2
+operator|!=
+literal|null
 operator|&&
-name|numeric2
+name|i1
+operator|!=
+literal|null
 condition|)
 block|{
 comment|// Ok, parsing was successful. Update f1 and f2:
@@ -478,7 +453,9 @@ block|}
 elseif|else
 if|if
 condition|(
-name|numeric1
+name|i1
+operator|!=
+literal|null
 condition|)
 block|{
 comment|// The first one was parseable, but not the second one.
@@ -504,7 +481,9 @@ block|}
 elseif|else
 if|if
 condition|(
-name|numeric2
+name|i2
+operator|!=
+literal|null
 condition|)
 block|{
 comment|// The second one was parseable, but not the first one.

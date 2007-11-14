@@ -1980,9 +1980,6 @@ condition|)
 block|{
 name|currentKey
 operator|=
-operator|(
-name|String
-operator|)
 name|targetIterator
 operator|.
 name|next
@@ -2459,9 +2456,6 @@ return|return
 operator|(
 name|generateCanonicalNumber
 argument_list|(
-operator|(
-name|String
-operator|)
 name|be
 operator|.
 name|getField
@@ -2636,9 +2630,6 @@ return|return
 operator|(
 name|generateCanonicalURL
 argument_list|(
-operator|(
-name|String
-operator|)
 name|be
 operator|.
 name|getField

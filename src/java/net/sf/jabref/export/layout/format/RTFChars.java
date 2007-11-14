@@ -188,9 +188,6 @@ name|Character
 operator|.
 name|isLetter
 argument_list|(
-operator|(
-name|char
-operator|)
 name|c
 argument_list|)
 operator|||
@@ -203,9 +200,6 @@ name|indexOf
 argument_list|(
 literal|""
 operator|+
-operator|(
-name|char
-operator|)
 name|c
 argument_list|)
 operator|>=
@@ -227,9 +221,6 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|char
-operator|)
 name|c
 argument_list|)
 expr_stmt|;
@@ -241,9 +232,6 @@ name|currentCommand
 operator|.
 name|append
 argument_list|(
-operator|(
-name|char
-operator|)
 name|c
 argument_list|)
 expr_stmt|;
@@ -365,9 +353,6 @@ block|}
 name|String
 name|result
 init|=
-operator|(
-name|String
-operator|)
 name|Globals
 operator|.
 name|RTFCHARS
@@ -433,9 +418,6 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|char
-operator|)
 name|c
 argument_list|)
 expr_stmt|;
@@ -579,9 +561,6 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|char
-operator|)
 name|c
 argument_list|)
 expr_stmt|;
@@ -761,9 +740,6 @@ name|part
 operator|.
 name|append
 argument_list|(
-operator|(
-name|char
-operator|)
 name|c
 argument_list|)
 expr_stmt|;

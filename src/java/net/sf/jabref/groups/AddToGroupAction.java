@@ -323,9 +323,6 @@ condition|)
 block|{
 name|node
 operator|=
-operator|(
-name|GroupTreeNode
-operator|)
 name|e
 operator|.
 name|nextElement

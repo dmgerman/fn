@@ -446,9 +446,6 @@ block|{
 name|String
 name|year
 init|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField

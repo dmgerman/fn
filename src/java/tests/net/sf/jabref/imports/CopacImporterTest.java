@@ -327,9 +327,6 @@ expr_stmt|;
 name|BibtexEntry
 name|entry
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|entries
 operator|.
 name|get
@@ -458,9 +455,6 @@ expr_stmt|;
 name|BibtexEntry
 name|one
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|entries
 operator|.
 name|get
@@ -483,9 +477,6 @@ expr_stmt|;
 name|BibtexEntry
 name|two
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|entries
 operator|.
 name|get

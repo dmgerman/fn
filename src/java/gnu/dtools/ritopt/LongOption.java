@@ -40,9 +40,6 @@ parameter_list|()
 block|{
 name|this
 argument_list|(
-operator|(
-name|long
-operator|)
 literal|0
 argument_list|)
 expr_stmt|;

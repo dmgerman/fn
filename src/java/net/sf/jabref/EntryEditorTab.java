@@ -1049,9 +1049,6 @@ name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|,
-operator|(
-name|String
-operator|)
 name|parent
 operator|.
 name|getEntry
@@ -2296,9 +2293,6 @@ name|parent
 operator|.
 name|updateField
 argument_list|(
-operator|(
-name|FieldEditor
-operator|)
 name|e
 operator|.
 name|getSource

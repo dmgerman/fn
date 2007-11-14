@@ -486,9 +486,6 @@ block|{
 name|AuthorList
 name|authorList
 init|=
-operator|(
-name|AuthorList
-operator|)
 name|authorCache
 operator|.
 name|get
@@ -1858,9 +1855,6 @@ name|i
 parameter_list|)
 block|{
 return|return
-operator|(
-name|Author
-operator|)
 name|authors
 operator|.
 name|get

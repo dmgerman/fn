@@ -395,9 +395,6 @@ argument_list|(
 literal|5
 argument_list|,
 operator|(
-operator|(
-name|BstEntry
-operator|)
 name|vm
 operator|.
 name|getEntries
@@ -703,9 +700,6 @@ argument_list|(
 literal|5
 argument_list|)
 argument_list|,
-operator|(
-name|Integer
-operator|)
 name|vm
 operator|.
 name|getIntegers

@@ -853,9 +853,6 @@ name|tableModel
 operator|.
 name|setContentDontGuessTypes
 argument_list|(
-operator|(
-name|String
-operator|)
 name|old
 argument_list|)
 expr_stmt|;

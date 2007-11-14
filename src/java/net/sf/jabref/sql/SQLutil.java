@@ -1259,7 +1259,6 @@ name|out
 argument_list|)
 expr_stmt|;
 block|}
-empty_stmt|;
 comment|/**      * Writes the table creation DML to the specififed file.      *       * @param dbtype      *          Indicates the type of database to be written to       * @param fout      *          The output (PrintStream or Connection) object to which the DML should be written      */
 DECL|method|dmlCreateTables (DBTYPE dbtype, Object out)
 specifier|private

@@ -567,7 +567,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-empty_stmt|;
 return|return
 operator|new
 name|ImportAction

@@ -1817,9 +1817,6 @@ block|{
 name|BibtexEntry
 name|e
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|it
 operator|.
 name|next
@@ -3276,9 +3273,6 @@ name|writeDocumentInformation
 argument_list|(
 name|document
 argument_list|,
-operator|(
-name|BibtexEntry
-operator|)
 name|bibtexEntries
 operator|.
 name|iterator
@@ -3808,9 +3802,6 @@ block|{
 name|BibtexEntry
 name|e
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|it
 operator|.
 name|next

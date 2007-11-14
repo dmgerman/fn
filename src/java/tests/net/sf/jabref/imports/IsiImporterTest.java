@@ -611,9 +611,6 @@ expr_stmt|;
 name|BibtexEntry
 name|entry
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|entries
 operator|.
 name|get
@@ -767,9 +764,6 @@ expr_stmt|;
 name|BibtexEntry
 name|a
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|entries
 operator|.
 name|get
@@ -780,9 +774,6 @@ decl_stmt|;
 name|BibtexEntry
 name|b
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|entries
 operator|.
 name|get
@@ -1057,9 +1048,6 @@ expr_stmt|;
 name|BibtexEntry
 name|a
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|entries
 operator|.
 name|get
@@ -1070,9 +1058,6 @@ decl_stmt|;
 name|BibtexEntry
 name|b
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|entries
 operator|.
 name|get
@@ -1475,9 +1460,6 @@ expr_stmt|;
 name|BibtexEntry
 name|a
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|entries
 operator|.
 name|get
@@ -1585,9 +1567,6 @@ name|assertEquals
 argument_list|(
 literal|"Gamba, P. and Dell'Acqua, F. and Lisini, G."
 argument_list|,
-operator|(
-name|String
-operator|)
 name|a
 operator|.
 name|getField
@@ -1612,9 +1591,6 @@ name|assertEquals
 argument_list|(
 literal|"Perceptual grouping, street extraction, urban remote sensing"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|a
 operator|.
 name|getField
@@ -1661,9 +1637,6 @@ literal|"increase in both the completeness and the quality indexes "
 operator|+
 literal|"for the extracted road network."
 argument_list|,
-operator|(
-name|String
-operator|)
 name|a
 operator|.
 name|getField
@@ -1721,9 +1694,6 @@ expr_stmt|;
 name|BibtexEntry
 name|a
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|entries
 operator|.
 name|get
@@ -1734,9 +1704,6 @@ decl_stmt|;
 name|BibtexEntry
 name|b
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|entries
 operator|.
 name|get
@@ -1747,9 +1714,6 @@ decl_stmt|;
 if|if
 condition|(
 operator|(
-operator|(
-name|String
-operator|)
 name|a
 operator|.
 name|getField
@@ -1795,9 +1759,6 @@ name|assertEquals
 argument_list|(
 literal|"Wesensten, Nancy J."
 argument_list|,
-operator|(
-name|String
-operator|)
 name|a
 operator|.
 name|getField
@@ -1910,9 +1871,6 @@ name|assertEquals
 argument_list|(
 literal|"Joffe, Hadine and Hall, Janet E. and Gruber, Staci and Sarmiento, Ingrid A. and Cohen, Lee S. and Yurgelun-Todd, Deborah and Martin, Kathryn A."
 argument_list|,
-operator|(
-name|String
-operator|)
 name|b
 operator|.
 name|getField

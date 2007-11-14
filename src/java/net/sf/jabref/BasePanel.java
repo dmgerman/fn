@@ -4345,9 +4345,6 @@ argument_list|(
 name|bes
 argument_list|)
 argument_list|,
-operator|(
-name|String
-operator|)
 name|bes
 operator|.
 name|getField
@@ -6434,13 +6431,6 @@ name|bes
 operator|.
 name|length
 expr_stmt|;
-if|if
-condition|(
-name|bes
-operator|==
-literal|null
-condition|)
-return|return;
 for|for
 control|(
 name|int
@@ -11148,9 +11138,6 @@ argument_list|()
 argument_list|,
 literal|null
 argument_list|,
-operator|(
-name|String
-operator|)
 name|bes
 operator|.
 name|getField
@@ -11739,9 +11726,6 @@ control|)
 block|{
 name|citeKey
 operator|=
-operator|(
-name|String
-operator|)
 name|bes
 operator|.
 name|getField

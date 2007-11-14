@@ -1510,9 +1510,6 @@ literal|null
 condition|)
 block|{
 return|return
-operator|(
-name|BibtexSingleField
-operator|)
 name|runtime
 operator|.
 name|fieldSet
@@ -1926,9 +1923,6 @@ name|t
 parameter_list|)
 block|{
 return|return
-operator|(
-name|String
-operator|)
 name|runtime
 operator|.
 name|PUBLIC_FIELDS

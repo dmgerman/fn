@@ -228,6 +228,17 @@ block|{
 if|if
 condition|(
 name|blockStart
+operator|!=
+literal|null
+operator|&&
+name|blockEntries
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
+name|blockStart
 operator|.
 name|equals
 argument_list|(
@@ -296,12 +307,12 @@ argument_list|(
 literal|"Nested field entries are not implemented !!!"
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("..."+blockStart+"..."+si.s+"...");
 name|Thread
 operator|.
 name|dumpStack
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 elseif|else
@@ -342,6 +353,17 @@ operator|==
 name|LayoutHelper
 operator|.
 name|IS_GROUP_END
+condition|)
+block|{
+if|if
+condition|(
+name|blockStart
+operator|!=
+literal|null
+operator|&&
+name|blockEntries
+operator|!=
+literal|null
 condition|)
 block|{
 if|if
@@ -405,6 +427,7 @@ operator|.
 name|dumpStack
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 elseif|else

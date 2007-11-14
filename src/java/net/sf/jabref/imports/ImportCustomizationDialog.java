@@ -1821,12 +1821,6 @@ name|Importer
 index|[]
 name|importers
 init|=
-operator|(
-name|CustomImportList
-operator|.
-name|Importer
-index|[]
-operator|)
 name|Globals
 operator|.
 name|prefs

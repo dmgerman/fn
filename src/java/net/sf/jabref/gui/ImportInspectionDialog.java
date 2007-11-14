@@ -4657,9 +4657,6 @@ block|{
 name|BibtexEntry
 name|entry
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|sortedList
 operator|.
 name|get
@@ -4922,9 +4919,6 @@ decl_stmt|;
 name|BibtexEntry
 name|entry
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|sortedList
 operator|.
 name|get
@@ -5144,9 +5138,6 @@ decl_stmt|;
 name|BibtexEntry
 name|entry
 init|=
-operator|(
-name|BibtexEntry
-operator|)
 name|sortedList
 operator|.
 name|get
@@ -5980,9 +5971,6 @@ decl_stmt|;
 name|String
 name|oldVal
 init|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField
@@ -6207,9 +6195,6 @@ decl_stmt|;
 name|String
 name|oldVal
 init|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField
@@ -6456,9 +6441,6 @@ decl_stmt|;
 name|String
 name|oldVal
 init|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField
@@ -6563,9 +6545,6 @@ decl_stmt|;
 name|String
 name|oldVal
 init|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField
@@ -7633,9 +7612,6 @@ block|{
 name|String
 name|contents
 init|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField

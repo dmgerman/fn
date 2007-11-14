@@ -301,9 +301,6 @@ name|assertEquals
 argument_list|(
 literal|"hep-ph/0408155"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|be
 operator|.
 name|getField
@@ -316,9 +313,6 @@ name|assertEquals
 argument_list|(
 literal|"G. F. Giudice and A. Riotto and A. Zaffaroni and J. López-Peña"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|be
 operator|.
 name|getField
@@ -331,9 +325,6 @@ name|assertEquals
 argument_list|(
 literal|"Nucl.Phys. B"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|be
 operator|.
 name|getField
@@ -346,9 +337,6 @@ name|assertEquals
 argument_list|(
 literal|"710"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|be
 operator|.
 name|getField
@@ -361,9 +349,6 @@ name|assertEquals
 argument_list|(
 literal|"2005"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|be
 operator|.
 name|getField
@@ -376,9 +361,6 @@ name|assertEquals
 argument_list|(
 literal|"511-525"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|be
 operator|.
 name|getField
@@ -403,9 +385,6 @@ name|assertEquals
 argument_list|(
 literal|"Heavy Particles from Inflation"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|be
 operator|.
 name|getField
@@ -416,9 +395,6 @@ argument_list|)
 expr_stmt|;
 name|assertNotNull
 argument_list|(
-operator|(
-name|String
-operator|)
 name|be
 operator|.
 name|getField
@@ -431,9 +407,6 @@ name|assertEquals
 argument_list|(
 literal|"23 pages"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|be
 operator|.
 name|getField
@@ -446,9 +419,6 @@ name|assertEquals
 argument_list|(
 literal|"CERN-PH-TH/2004-151"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|be
 operator|.
 name|getField
@@ -503,9 +473,6 @@ name|assertEquals
 argument_list|(
 literal|"2005"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|be
 operator|.
 name|getField
@@ -749,9 +716,6 @@ name|assertEquals
 argument_list|(
 literal|"math/0612188"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|be
 operator|.
 name|getField
@@ -839,9 +803,6 @@ name|assertEquals
 argument_list|(
 literal|"astro-ph/0702080"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|be
 operator|.
 name|getField
@@ -899,9 +860,6 @@ name|assertEquals
 argument_list|(
 literal|"math/0601001"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|be
 operator|.
 name|getField
@@ -944,9 +902,6 @@ name|assertEquals
 argument_list|(
 literal|"hep-ph/0408155"
 argument_list|,
-operator|(
-name|String
-operator|)
 name|be
 operator|.
 name|getField

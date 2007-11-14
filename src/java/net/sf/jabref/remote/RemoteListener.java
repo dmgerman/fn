@@ -446,9 +446,6 @@ block|{
 name|ParserResult
 name|pr
 init|=
-operator|(
-name|ParserResult
-operator|)
 name|loaded
 operator|.
 name|elementAt

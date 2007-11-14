@@ -354,9 +354,6 @@ name|tab
 parameter_list|)
 block|{
 return|return
-operator|(
-name|String
-operator|)
 name|names
 operator|.
 name|get

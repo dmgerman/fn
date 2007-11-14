@@ -664,9 +664,6 @@ condition|)
 block|{
 name|str
 operator|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField

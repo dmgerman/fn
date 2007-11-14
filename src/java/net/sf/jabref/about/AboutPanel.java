@@ -34,7 +34,47 @@ name|java
 operator|.
 name|awt
 operator|.
-name|*
+name|Color
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Dimension
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Font
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|FontMetrics
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|Graphics
 import|;
 end_import
 
@@ -804,8 +844,6 @@ argument_list|(
 name|stream
 argument_list|)
 decl_stmt|;
-comment|//          getClass().getResourceAsStream(GUIGlobals.getLocaleHelpPath() + "credits.txt" ) ) ;
-comment|//          getClass().getResourceAsStream( "/help/credits.txt" ) ) ;
 name|BufferedReader
 name|input
 init|=
@@ -817,7 +855,6 @@ argument_list|,
 literal|1000
 argument_list|)
 decl_stmt|;
-comment|//      System.out.println("encoding :" +reader.getEncoding() ) ;
 while|while
 condition|(
 name|input
@@ -1050,12 +1087,24 @@ argument_list|(
 name|font3
 argument_list|)
 expr_stmt|;
-comment|//              System.out.println( "line " +aLine.getText() +"<" +(borders[3] + ( index * fm.getHeight() * 1.5 )) +">" ) ;
+name|block
+operator|=
+operator|new
+name|TextBlock
+argument_list|()
+expr_stmt|;
 name|block
 operator|.
 name|add
 argument_list|(
 name|aLine
+argument_list|)
+expr_stmt|;
+name|block
+operator|.
+name|setVisible
+argument_list|(
+literal|true
 argument_list|)
 expr_stmt|;
 name|index

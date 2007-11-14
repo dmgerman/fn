@@ -945,9 +945,6 @@ name|Util
 operator|.
 name|quote
 argument_list|(
-operator|(
-name|String
-operator|)
 name|orderedData
 operator|.
 name|elementAt

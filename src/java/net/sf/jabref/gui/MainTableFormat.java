@@ -610,9 +610,6 @@ name|FileListTableModel
 operator|.
 name|getFirstLabel
 argument_list|(
-operator|(
-name|String
-operator|)
 name|be
 operator|.
 name|getField

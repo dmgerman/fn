@@ -732,9 +732,6 @@ block|{
 while|while
 condition|(
 operator|(
-operator|(
-name|int
-operator|)
 name|size
 operator|-
 name|rb
@@ -753,9 +750,6 @@ name|b
 argument_list|,
 name|rb
 argument_list|,
-operator|(
-name|int
-operator|)
 name|size
 operator|-
 name|rb
@@ -820,9 +814,6 @@ block|{
 name|int
 name|size
 init|=
-operator|(
-name|int
-operator|)
 name|bis
 operator|.
 name|available
@@ -851,9 +842,6 @@ decl_stmt|;
 while|while
 condition|(
 operator|(
-operator|(
-name|int
-operator|)
 name|size
 operator|-
 name|rb
@@ -872,9 +860,6 @@ name|b
 argument_list|,
 name|rb
 argument_list|,
-operator|(
-name|int
-operator|)
 name|size
 operator|-
 name|rb

@@ -566,9 +566,6 @@ block|{
 name|PrefsTab
 name|tab
 init|=
-operator|(
-name|PrefsTab
-operator|)
 name|it
 operator|.
 name|next

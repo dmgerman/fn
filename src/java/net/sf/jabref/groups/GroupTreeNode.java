@@ -951,9 +951,6 @@ block|{
 name|group
 operator|=
 operator|(
-operator|(
-name|GroupTreeNode
-operator|)
 name|e
 operator|.
 name|nextElement

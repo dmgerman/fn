@@ -143,9 +143,6 @@ control|)
 block|{
 name|field
 operator|=
-operator|(
-name|String
-operator|)
 name|groups
 operator|.
 name|get
@@ -159,9 +156,6 @@ argument_list|)
 expr_stmt|;
 name|name
 operator|=
-operator|(
-name|String
-operator|)
 name|groups
 operator|.
 name|get
@@ -175,9 +169,6 @@ argument_list|)
 expr_stmt|;
 name|regexp
 operator|=
-operator|(
-name|String
-operator|)
 name|groups
 operator|.
 name|get

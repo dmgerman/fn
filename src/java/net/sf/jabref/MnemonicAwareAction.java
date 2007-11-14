@@ -161,9 +161,6 @@ argument_list|,
 operator|new
 name|Integer
 argument_list|(
-operator|(
-name|int
-operator|)
 name|mnemonic
 argument_list|)
 argument_list|)

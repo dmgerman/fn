@@ -1140,10 +1140,6 @@ name|putStringArray
 argument_list|(
 literal|"xmpPrivacyFilters"
 argument_list|,
-operator|(
-name|String
-index|[]
-operator|)
 name|tableRows
 operator|.
 name|toArray
