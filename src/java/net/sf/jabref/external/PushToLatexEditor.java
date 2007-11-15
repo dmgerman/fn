@@ -28,7 +28,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|Icon
+name|*
 import|;
 end_import
 
@@ -376,6 +376,22 @@ literal|false
 return|;
 comment|//To change body of implemented methods use File | Settings | File Templates.
 block|}
+DECL|method|getSettingsPanel ()
+specifier|public
+name|JPanel
+name|getSettingsPanel
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
+DECL|method|storeSettings ()
+specifier|public
+name|void
+name|storeSettings
+parameter_list|()
+block|{              }
 block|}
 end_class
 

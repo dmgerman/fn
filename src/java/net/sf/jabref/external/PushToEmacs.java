@@ -38,17 +38,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|Icon
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JOptionPane
+name|*
 import|;
 end_import
 
@@ -76,6 +66,8 @@ name|PushToEmacs
 implements|implements
 name|PushToApplication
 block|{
+comment|//private JPanel settings = null;
+comment|//private JTextField citeCommand = new JTextField(30);
 DECL|field|couldNotConnect
 DECL|field|couldNotRunClient
 specifier|private
@@ -153,6 +145,26 @@ return|return
 literal|"Push to Emacs"
 return|;
 block|}
+DECL|method|getSettingsPanel ()
+specifier|public
+name|JPanel
+name|getSettingsPanel
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+comment|/*if (settings == null)             initSettingsPanel();         citeCommand.setText(Globals.prefs.get("lyxpipe"));         return settings;*/
+block|}
+DECL|method|storeSettings ()
+specifier|public
+name|void
+name|storeSettings
+parameter_list|()
+block|{
+comment|//Globals.prefs.put("lyxpipe", citeCommand.getText());
+block|}
+comment|/*private void initSettingsPanel() {         settings = new JPanel();         settings.add(new JLabel(Globals.lang("Path to LyX pipe") + ":"));         settings.add(citeCommand);     }*/
 DECL|method|pushEntries (BibtexDatabase database, BibtexEntry[] entries, String keys, MetaData metaData)
 specifier|public
 name|void
