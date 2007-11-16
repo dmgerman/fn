@@ -54,6 +54,34 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|jgoodies
+operator|.
+name|forms
+operator|.
+name|builder
+operator|.
+name|DefaultFormBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|jgoodies
+operator|.
+name|forms
+operator|.
+name|layout
+operator|.
+name|FormLayout
+import|;
+end_import
+
 begin_comment
 comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Jan 14, 2006  * Time: 4:55:23 PM  * To change this template use File | Settings | File Templates.  */
 end_comment
@@ -66,8 +94,24 @@ name|PushToEmacs
 implements|implements
 name|PushToApplication
 block|{
-comment|//private JPanel settings = null;
-comment|//private JTextField citeCommand = new JTextField(30);
+DECL|field|settings
+specifier|private
+name|JPanel
+name|settings
+init|=
+literal|null
+decl_stmt|;
+DECL|field|citeCommand
+specifier|private
+name|JTextField
+name|citeCommand
+init|=
+operator|new
+name|JTextField
+argument_list|(
+literal|30
+argument_list|)
+decl_stmt|;
 DECL|field|couldNotConnect
 DECL|field|couldNotRunClient
 specifier|private
@@ -151,10 +195,32 @@ name|JPanel
 name|getSettingsPanel
 parameter_list|()
 block|{
-return|return
+if|if
+condition|(
+name|settings
+operator|==
 literal|null
+condition|)
+name|initSettingsPanel
+argument_list|()
+expr_stmt|;
+name|citeCommand
+operator|.
+name|setText
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"citeCommandEmacs"
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return
+name|settings
 return|;
-comment|/*if (settings == null)             initSettingsPanel();         citeCommand.setText(Globals.prefs.get("lyxpipe"));         return settings;*/
 block|}
 DECL|method|storeSettings ()
 specifier|public
@@ -162,9 +228,71 @@ name|void
 name|storeSettings
 parameter_list|()
 block|{
-comment|//Globals.prefs.put("lyxpipe", citeCommand.getText());
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|put
+argument_list|(
+literal|"citeCommandEmacs"
+argument_list|,
+name|citeCommand
+operator|.
+name|getText
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
-comment|/*private void initSettingsPanel() {         settings = new JPanel();         settings.add(new JLabel(Globals.lang("Path to LyX pipe") + ":"));         settings.add(citeCommand);     }*/
+DECL|method|initSettingsPanel ()
+specifier|private
+name|void
+name|initSettingsPanel
+parameter_list|()
+block|{
+name|DefaultFormBuilder
+name|builder
+init|=
+operator|new
+name|DefaultFormBuilder
+argument_list|(
+operator|new
+name|FormLayout
+argument_list|(
+literal|"left:pref, 4dlu, fill:pref"
+argument_list|,
+literal|""
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Cite command"
+argument_list|)
+operator|+
+literal|":"
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|citeCommand
+argument_list|)
+expr_stmt|;
+name|settings
+operator|=
+name|builder
+operator|.
+name|getPanel
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|pushEntries (BibtexDatabase database, BibtexEntry[] entries, String keys, MetaData metaData)
 specifier|public
 name|void
@@ -222,7 +350,14 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommand"
+literal|"citeCommandEmacs"
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\\\"
+argument_list|,
+literal|"\\\\\\\\"
 argument_list|)
 operator|+
 literal|"{"
@@ -246,7 +381,7 @@ literal|"-batch"
 block|,
 literal|"-eval"
 block|,
-literal|"(insert \"\\\\"
+literal|"(insert \""
 operator|+
 name|Globals
 operator|.
@@ -254,7 +389,14 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommand"
+literal|"citeCommandEmacs"
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\\\"
+argument_list|,
+literal|"\\\\\\\\"
 argument_list|)
 operator|+
 literal|"{"

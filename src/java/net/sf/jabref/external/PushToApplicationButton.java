@@ -1433,15 +1433,7 @@ name|index
 argument_list|)
 expr_stmt|;
 comment|// Invoke the selected operation (is that expected behaviour?):
-name|PushToApplicationButton
-operator|.
-name|this
-operator|.
-name|actionPerformed
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
+comment|//PushToApplicationButton.this.actionPerformed(null);
 comment|// It makes sense to transfer focus to the push button after the
 comment|// menu closes:
 name|pushButton
