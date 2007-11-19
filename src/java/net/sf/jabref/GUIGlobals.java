@@ -163,7 +163,6 @@ name|frameTitle
 init|=
 literal|"JabRef"
 decl_stmt|,
-comment|//	version = "1.8b",
 DECL|field|version
 name|version
 init|=
@@ -203,14 +202,15 @@ init|=
 literal|"Encoding: "
 decl_stmt|,
 comment|// Part of the signature in written bib files.
+comment|//linuxDefaultLookAndFeel = "com.jgoodies.looks.plastic.Plastic3DLookAndFeel",
+comment|//linuxDefaultLookAndFeel = "com.sun.java.swing.plaf.gtk.GTKLookAndFeel",
 DECL|field|linuxDefaultLookAndFeel
 name|linuxDefaultLookAndFeel
 init|=
-literal|"com.jgoodies.looks.plastic.Plastic3DLookAndFeel"
+literal|"org.jvnet.substance.skin.SubstanceCremeCoffeeLookAndFeel"
 decl_stmt|,
-comment|//"com.shfarr.ui.plaf.fh.FhLookAndFeel",
-comment|//	"net.sourceforge.mlf.metouia.MetouiaLookAndFeel",
-comment|//	"org.compiere.plaf.CompiereLookAndFeel",
+comment|//linuxDefaultLookAndFeel = "org.jvnet.substance.skin.SubstanceNebulaLookAndFeel",
+comment|//linuxDefaultLookAndFeel = "org.jvnet.substance.skin.SubstanceBusinessLookAndFeel",
 DECL|field|windowsDefaultLookAndFeel
 name|windowsDefaultLookAndFeel
 init|=
