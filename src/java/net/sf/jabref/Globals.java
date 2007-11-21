@@ -2514,11 +2514,12 @@ block|{
 name|fc
 operator|=
 operator|new
-name|JabRefFileChooser
+name|JFileChooser
 argument_list|(
 name|directory
 argument_list|)
 expr_stmt|;
+comment|//JabRefFileChooser(directory);
 if|if
 condition|(
 name|accessory
