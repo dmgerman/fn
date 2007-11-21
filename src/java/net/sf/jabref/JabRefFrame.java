@@ -8193,7 +8193,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * This method causes all open BasePanels to set up their tables    * anew. When called from PrefsDialog2, this updates to the new    * settings.    */
+comment|/**    * This method causes all open BasePanels to set up their tables    * anew. When called from PrefsDialog3, this updates to the new    * settings.    */
 DECL|method|setupAllTables ()
 specifier|public
 name|void
@@ -10162,7 +10162,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/**    * This method does the job of adding imported entries into the active database, or into a new one.    * It shows the ImportInspectionDialog if preferences indicate it should be used. Otherwise it imports    * directly.    * @param panel The BasePanel to add to.    * @param entries The entries to add.    * @param filename Name of the file where the import came from.    * @param openInNew Should the entries be imported into a new database?    * @param callBack The callback for the ImportInspectionDialog to use.    */
-DECL|method|addImportedEntries (final BasePanel panel, final List<BibtexEntry> entries, String filename, boolean openInNew, ImportInspectionDialog.CallBack callBack)
+DECL|method|addImportedEntries (final BasePanel panel, final List<BibtexEntry> entries, String filename, final boolean openInNew, final ImportInspectionDialog.CallBack callBack)
 specifier|public
 name|void
 name|addImportedEntries
@@ -10181,9 +10181,11 @@ parameter_list|,
 name|String
 name|filename
 parameter_list|,
+specifier|final
 name|boolean
 name|openInNew
 parameter_list|,
+specifier|final
 name|ImportInspectionDialog
 operator|.
 name|CallBack
@@ -10223,6 +10225,19 @@ literal|1
 operator|)
 operator|)
 condition|)
+block|{
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+operator|new
+name|Runnable
+argument_list|()
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
 block|{
 name|ImportInspectionDialog
 name|diag
@@ -10287,6 +10302,10 @@ name|diag
 operator|.
 name|toFront
 argument_list|()
+expr_stmt|;
+block|}
+block|}
+argument_list|)
 expr_stmt|;
 block|}
 else|else

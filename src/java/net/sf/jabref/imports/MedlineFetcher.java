@@ -1032,9 +1032,6 @@ literal|0
 operator|)
 condition|)
 block|{
-comment|//if (panel.prefs().getBoolean("useOwner")) {
-comment|//    Util.setDefaultOwner(bibs, panel.prefs().get("defaultOwner"));
-comment|//}
 name|tf
 operator|.
 name|setText
@@ -1042,8 +1039,6 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
-comment|/*NamedCompound ce = new NamedCompound("fetch Medline");                 Iterator i = bibs.iterator();                 while (i.hasNext()) {                     try {                         BibtexEntry be = (BibtexEntry) i.next();                         String id = Util.createId(be.getType(), panel.database());                         be.setId(id);                         entries.add(be);                         //panel.database().insertEntry(be);                         //ce.addEdit(new UndoableInsertEntry(panel.database(), be, panel));                     }                     catch (KeyCollisionException ex) {                     }                     }*/
-comment|//ce.end();
 name|panel
 operator|.
 name|frame
@@ -1062,8 +1057,6 @@ argument_list|,
 name|this
 argument_list|)
 expr_stmt|;
-comment|/*                 int importedEntries = panel.frame().addBibEntries(bibs, null, false);         if (importedEntries == 0) {             return; // Nothing to refresh!         }         panel.markBaseChanged();                 panel.refreshTable();         if (bibs.size()> 0) {             BibtexEntry[] entries = (BibtexEntry[])bibs.toArray(new BibtexEntry[0]);             panel.selectEntries(entries, 0);             if (entries.length == 1)                 panel.showEntry(entries[0]);             //else             //    panel.updateViewToSelected();         }*/
-comment|//panel.undoManager.addEdit(ce);
 block|}
 else|else
 name|panel
@@ -1164,7 +1157,6 @@ operator|.
 name|openConnection
 argument_list|()
 decl_stmt|;
-comment|/* Reader un = new InputStreamReader(data.getInputStream());         int c;         while ((c=un.read()) != -1) {           System.out.print((char)c);         }*/
 comment|// Obtain a factory object for creating SAX parsers
 name|SAXParserFactory
 name|parserFactory
