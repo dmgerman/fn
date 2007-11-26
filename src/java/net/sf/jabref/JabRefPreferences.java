@@ -3696,6 +3696,29 @@ index|]
 argument_list|)
 return|;
 block|}
+comment|/**      * Set the default value for a key. This is useful for plugins that need to      * add default values for the prefs keys they use.      * @param key The preferences key.      * @param value The default value.      */
+DECL|method|putDefaultValue (String key, String value)
+specifier|public
+name|void
+name|putDefaultValue
+parameter_list|(
+name|String
+name|key
+parameter_list|,
+name|String
+name|value
+parameter_list|)
+block|{
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|key
+argument_list|,
+name|value
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Stores a color in preferences.      * @param key The key for this setting.      * @param color The Color to store.      */
 DECL|method|putColor (String key, Color color)
 specifier|public
