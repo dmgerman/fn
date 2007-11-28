@@ -11298,7 +11298,6 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-comment|//getGlassPane().setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 block|}
 comment|/**      * This method reverts the cursor to normal, and stops blocking input to the JFrame's contents.      * There are no adverse effects of calling this method redundantly.      */
 DECL|method|unblock ()
@@ -11315,7 +11314,6 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-comment|//  getGlassPane().setCursor(Cursor.WAIT_CURSOR);
 block|}
 comment|/** Set the visibility of the progress bar in the right end of the       * status line at the bottom of the frame.       *       * If not called on the event dispatch thread, this method uses       * SwingUtilities.invokeLater() to do the actual operation on the EDT.       */
 DECL|method|setProgressBarVisible (final boolean visible)

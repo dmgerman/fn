@@ -1062,6 +1062,11 @@ name|WILL_SHOW_EDITOR
 init|=
 literal|3
 decl_stmt|;
+comment|/*      * The database shown in this panel.      */
+DECL|field|database
+name|BibtexDatabase
+name|database
+decl_stmt|;
 DECL|field|mode
 specifier|private
 name|int
@@ -1116,19 +1121,10 @@ DECL|field|splitPane
 name|JSplitPane
 name|splitPane
 decl_stmt|;
-comment|//BibtexEntry testE = new BibtexEntry("tt");
-comment|//boolean previewActive = true;
 DECL|field|frame
 name|JabRefFrame
 name|frame
 decl_stmt|;
-DECL|field|database
-name|BibtexDatabase
-name|database
-decl_stmt|;
-comment|// The database shown in this panel.
-comment|//  	Moving file to MetaData (Morten, 2006.08.29)
-comment|// private File fileToOpen = null;
 DECL|field|fileMonitorHandle
 name|String
 name|fileMonitorHandle
