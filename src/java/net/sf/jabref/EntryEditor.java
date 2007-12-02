@@ -4590,19 +4590,7 @@ argument_list|(
 name|label
 argument_list|)
 decl_stmt|;
-name|g2
-operator|.
-name|setRenderingHint
-argument_list|(
-name|RenderingHints
-operator|.
-name|KEY_ANTIALIASING
-argument_list|,
-name|RenderingHints
-operator|.
-name|VALUE_ANTIALIAS_ON
-argument_list|)
-expr_stmt|;
+comment|//g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 name|g2
 operator|.
 name|rotate

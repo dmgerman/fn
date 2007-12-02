@@ -58,10 +58,10 @@ specifier|public
 interface|interface
 name|SidePanePlugin
 block|{
-DECL|method|getSidePaneComponent (JabRefFrame frame, SidePaneManager manager)
+DECL|method|init (JabRefFrame frame, SidePaneManager manager)
 specifier|public
-name|SidePaneComponent
-name|getSidePaneComponent
+name|void
+name|init
 parameter_list|(
 name|JabRefFrame
 name|frame
@@ -69,6 +69,12 @@ parameter_list|,
 name|SidePaneManager
 name|manager
 parameter_list|)
+function_decl|;
+DECL|method|getSidePaneComponent ()
+specifier|public
+name|SidePaneComponent
+name|getSidePaneComponent
+parameter_list|()
 function_decl|;
 DECL|method|getMenuName ()
 specifier|public

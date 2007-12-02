@@ -5368,6 +5368,15 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
+literal|"Fetch SPIRES"
+argument_list|,
+literal|"ctrl F8"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
 literal|"Write XMP"
 argument_list|,
 literal|"ctrl F4"
