@@ -979,22 +979,22 @@ parameter_list|()
 function_decl|;
 block|}
 DECL|field|panel
-specifier|private
+specifier|protected
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|frame
-specifier|private
+specifier|protected
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|metaData
-specifier|private
+specifier|protected
 name|MetaData
 name|metaData
 decl_stmt|;
 DECL|field|contentPane
-specifier|private
+specifier|protected
 name|UIFSplitPane
 name|contentPane
 init|=
@@ -1007,12 +1007,12 @@ name|VERTICAL_SPLIT
 argument_list|)
 decl_stmt|;
 DECL|field|glTable
-specifier|private
+specifier|protected
 name|JTable
 name|glTable
 decl_stmt|;
 DECL|field|comparatorChooser
-specifier|private
+specifier|protected
 name|TableComparatorChooser
 argument_list|<
 name|BibtexEntry
@@ -1020,7 +1020,7 @@ argument_list|>
 name|comparatorChooser
 decl_stmt|;
 DECL|field|selectionModel
-specifier|private
+specifier|protected
 name|EventSelectionModel
 argument_list|<
 name|BibtexEntry
@@ -1028,13 +1028,13 @@ argument_list|>
 name|selectionModel
 decl_stmt|;
 DECL|field|fields
-specifier|private
+specifier|protected
 name|String
 index|[]
 name|fields
 decl_stmt|;
 DECL|field|progressBar
-specifier|private
+specifier|protected
 name|JProgressBar
 name|progressBar
 init|=
@@ -1048,7 +1048,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|ok
 DECL|field|cancel
-specifier|private
+specifier|protected
 name|JButton
 name|ok
 init|=
@@ -1091,7 +1091,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|entries
-specifier|private
+specifier|protected
 name|EventList
 argument_list|<
 name|BibtexEntry
@@ -1106,7 +1106,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|sortedList
-specifier|private
+specifier|protected
 name|SortedList
 argument_list|<
 name|BibtexEntry
@@ -1115,7 +1115,7 @@ name|sortedList
 decl_stmt|;
 comment|/**      * Duplicate resolving may require deletion of old entries.      */
 DECL|field|entriesToDelete
-specifier|private
+specifier|protected
 name|List
 argument_list|<
 name|BibtexEntry
@@ -1130,12 +1130,12 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|undoName
-specifier|private
+specifier|protected
 name|String
 name|undoName
 decl_stmt|;
 DECL|field|callBacks
-specifier|private
+specifier|protected
 name|ArrayList
 argument_list|<
 name|CallBack
@@ -1150,12 +1150,12 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|newDatabase
-specifier|private
+specifier|protected
 name|boolean
 name|newDatabase
 decl_stmt|;
 DECL|field|groupsAdd
-specifier|private
+specifier|protected
 name|JMenu
 name|groupsAdd
 init|=
@@ -1171,7 +1171,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|popup
-specifier|private
+specifier|protected
 name|JPopupMenu
 name|popup
 init|=
@@ -1180,7 +1180,7 @@ name|JPopupMenu
 argument_list|()
 decl_stmt|;
 DECL|field|selectAll
-specifier|private
+specifier|protected
 name|JButton
 name|selectAll
 init|=
@@ -1196,7 +1196,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|deselectAll
-specifier|private
+specifier|protected
 name|JButton
 name|deselectAll
 init|=
@@ -1212,7 +1212,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|deselectAllDuplicates
-specifier|private
+specifier|protected
 name|JButton
 name|deselectAllDuplicates
 init|=
@@ -1228,7 +1228,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|stop
-specifier|private
+specifier|protected
 name|JButton
 name|stop
 init|=
@@ -1244,7 +1244,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|delete
-specifier|private
+specifier|protected
 name|JButton
 name|delete
 init|=
@@ -1260,7 +1260,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|help
-specifier|private
+specifier|protected
 name|JButton
 name|help
 init|=
@@ -1276,12 +1276,12 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|preview
-specifier|private
+specifier|protected
 name|PreviewPanel
 name|preview
 decl_stmt|;
 DECL|field|generatedKeys
-specifier|private
+specifier|protected
 name|boolean
 name|generatedKeys
 init|=
@@ -1290,14 +1290,14 @@ decl_stmt|;
 comment|// Set to true after keys have been
 comment|// generated.
 DECL|field|defaultSelected
-specifier|private
+specifier|protected
 name|boolean
 name|defaultSelected
 init|=
 literal|true
 decl_stmt|;
 DECL|field|toRect
-specifier|private
+specifier|protected
 name|Rectangle
 name|toRect
 init|=
@@ -1314,7 +1314,7 @@ literal|1
 argument_list|)
 decl_stmt|;
 DECL|field|groupAdditions
-specifier|private
+specifier|protected
 name|Map
 argument_list|<
 name|BibtexEntry
@@ -1339,7 +1339,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|autoGenerate
-specifier|private
+specifier|protected
 name|JCheckBox
 name|autoGenerate
 init|=
@@ -1364,7 +1364,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|duplLabel
-specifier|private
+specifier|protected
 name|JLabel
 name|duplLabel
 init|=
@@ -1438,7 +1438,7 @@ decl_stmt|;
 DECL|field|DUPL_COL
 DECL|field|FILE_COL
 DECL|field|PDF_COL
-specifier|private
+specifier|protected
 specifier|final
 name|int
 name|DUPL_COL
@@ -3409,7 +3409,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|getAction (GroupTreeNode node)
-specifier|private
+specifier|protected
 name|AbstractAction
 name|getAction
 parameter_list|(
@@ -3456,7 +3456,7 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|field|node
-specifier|private
+specifier|protected
 name|GroupTreeNode
 name|node
 decl_stmt|;
@@ -4381,8 +4381,10 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Entries imported"
+literal|"Number of entries successfully imported"
 argument_list|)
+operator|+
+literal|": "
 operator|+
 name|selected
 operator|.
@@ -4413,7 +4415,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|signalStopFetching ()
-specifier|private
+specifier|protected
 name|void
 name|signalStopFetching
 parameter_list|()
@@ -4434,7 +4436,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|setWidths ()
-specifier|private
+specifier|protected
 name|void
 name|setWidths
 parameter_list|()
@@ -4814,7 +4816,7 @@ implements|implements
 name|ActionListener
 block|{
 DECL|field|enable
-specifier|private
+specifier|protected
 name|Boolean
 name|enable
 decl_stmt|;
@@ -7282,7 +7284,7 @@ argument_list|(
 literal|"unchecked"
 argument_list|)
 DECL|method|setupComparatorChooser ()
-specifier|private
+specifier|protected
 name|void
 name|setupComparatorChooser
 parameter_list|()
