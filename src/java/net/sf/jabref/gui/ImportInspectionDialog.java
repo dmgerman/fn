@@ -60,7 +60,67 @@ name|awt
 operator|.
 name|event
 operator|.
-name|*
+name|ActionEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|ActionListener
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|MouseEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|MouseListener
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|WindowAdapter
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|WindowEvent
 import|;
 end_import
 
@@ -80,7 +140,87 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Comparator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashSet
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
 import|;
 end_import
 
@@ -90,7 +230,147 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|AbstractAction
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|BorderFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JButton
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JCheckBox
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JLabel
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JMenu
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JMenuItem
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JOptionPane
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JPanel
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JPopupMenu
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JProgressBar
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JScrollPane
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JTable
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|SwingUtilities
 import|;
 end_import
 
@@ -162,7 +442,211 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
+name|AuthorList
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BasePanel
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexFields
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|CheckBoxMessage
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|DuplicateCheck
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|DuplicateResolverDialog
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|FieldComparator
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|GUIGlobals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|GeneralRenderer
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|HelpAction
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefFrame
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|KeyCollisionException
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|MetaData
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|PreviewPanel
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Util
 import|;
 end_import
 
@@ -469,7 +953,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Dialog to allow the selection of entries as part of an Import  *   * @author alver  * @author $Author$  * @version $Revision$ ($Date$)  *  */
+comment|/**  * Dialog to allow the selection of entries as part of an Import.  *   * The usual way to use this class is to pass it to an Importer which will do  * the following:  *<ul>  *<li>Register itself as a callback to get notified if the user wants to stop  * the import.</li>  *<li>Call setVisible(true) to display the dialog</li>  *<li>For each entry that has been found call addEntry(...)</li>  *<li>Call entryListComplete() after all entries have been fetched</li>  *</ul>  *   * If the importer wants to cancel the import, it should call the dispose()  * method.  *   * If the importer receives the stopFetching-call, it should not stop fetching  * at the next possible situation.  *   * @author alver  * @author $Author$  * @version $Revision$ ($Date: 2007-11-14 01:25:31 +0100 (Mi, 14 Nov  *          2007) $)  *   */
 end_comment
 
 begin_class
@@ -480,13 +964,20 @@ name|ImportInspectionDialog
 extends|extends
 name|JDialog
 block|{
-DECL|field|ths
-specifier|private
-name|ImportInspectionDialog
-name|ths
-init|=
-name|this
-decl_stmt|;
+DECL|interface|CallBack
+specifier|public
+specifier|static
+interface|interface
+name|CallBack
+block|{
+comment|/**          * This method is called by the dialog when the user has cancelled or          * signalled a stop. It is expected that any long-running fetch          * operations will stop after this method is called.          */
+DECL|method|stopFetching ()
+specifier|public
+name|void
+name|stopFetching
+parameter_list|()
+function_decl|;
+block|}
 DECL|field|panel
 specifier|private
 name|BasePanel
@@ -556,6 +1047,7 @@ name|HORIZONTAL
 argument_list|)
 decl_stmt|;
 DECL|field|ok
+DECL|field|cancel
 specifier|private
 name|JButton
 name|ok
@@ -571,13 +1063,13 @@ literal|"Ok"
 argument_list|)
 argument_list|)
 decl_stmt|,
-DECL|field|cancel
 name|cancel
 init|=
 operator|new
 name|JButton
 argument_list|(
 name|Globals
+DECL|field|generate
 operator|.
 name|lang
 argument_list|(
@@ -585,7 +1077,6 @@ literal|"Cancel"
 argument_list|)
 argument_list|)
 decl_stmt|,
-DECL|field|generate
 name|generate
 init|=
 operator|new
@@ -622,6 +1113,7 @@ name|BibtexEntry
 argument_list|>
 name|sortedList
 decl_stmt|;
+comment|/**      * Duplicate resolving may require deletion of old entries.      */
 DECL|field|entriesToDelete
 specifier|private
 name|List
@@ -637,7 +1129,6 @@ name|BibtexEntry
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|// Duplicate resolving may require deletion of old entries.
 DECL|field|undoName
 specifier|private
 name|String
@@ -796,7 +1287,8 @@ name|generatedKeys
 init|=
 literal|false
 decl_stmt|;
-comment|// Set to true after keys have been generated.
+comment|// Set to true after keys have been
+comment|// generated.
 DECL|field|defaultSelected
 specifier|private
 name|boolean
@@ -871,9 +1363,9 @@ literal|"generateKeysAfterInspection"
 argument_list|)
 argument_list|)
 decl_stmt|;
+DECL|field|duplLabel
 specifier|private
 name|JLabel
-DECL|field|duplLabel
 name|duplLabel
 init|=
 operator|new
@@ -888,6 +1380,7 @@ argument_list|)
 argument_list|)
 decl_stmt|,
 DECL|field|fileLabel
+DECL|field|pdfLabel
 name|fileLabel
 init|=
 operator|new
@@ -901,13 +1394,13 @@ literal|"psSmall"
 argument_list|)
 argument_list|)
 decl_stmt|,
-DECL|field|pdfLabel
 name|pdfLabel
 init|=
 operator|new
 name|JLabel
 argument_list|(
 name|GUIGlobals
+DECL|field|psLabel
 operator|.
 name|getImage
 argument_list|(
@@ -915,7 +1408,6 @@ literal|"pdfSmall"
 argument_list|)
 argument_list|)
 decl_stmt|,
-DECL|field|psLabel
 name|psLabel
 init|=
 operator|new
@@ -943,46 +1435,46 @@ literal|"wwwSmall"
 argument_list|)
 argument_list|)
 decl_stmt|;
+DECL|field|DUPL_COL
+DECL|field|FILE_COL
+DECL|field|PDF_COL
 specifier|private
 specifier|final
 name|int
-DECL|field|DUPL_COL
 name|DUPL_COL
 init|=
 literal|1
 decl_stmt|,
-DECL|field|FILE_COL
 name|FILE_COL
 init|=
 literal|2
 decl_stmt|,
-DECL|field|PDF_COL
 name|PDF_COL
 init|=
 operator|-
 literal|1
 decl_stmt|,
-comment|//3,
+comment|// 3,
 DECL|field|PS_COL
 name|PS_COL
 init|=
 operator|-
 literal|2
 decl_stmt|,
-comment|//4,
+comment|// 4,
 DECL|field|URL_COL
 name|URL_COL
 init|=
 literal|3
 decl_stmt|,
-comment|//5,
+comment|// 5,
 DECL|field|PAD
 name|PAD
 init|=
 literal|4
 decl_stmt|;
 comment|// 6;
-comment|/**      * The "defaultSelected" boolean value determines if new entries added are selected for import or not.      * This value is true by default.      * @param defaultSelected The desired value.      */
+comment|/**      * The "defaultSelected" boolean value determines if new entries added are      * selected for import or not. This value is true by default.      *       * @param defaultSelected      *            The desired value.      */
 DECL|method|setDefaultSelected (boolean defaultSelected)
 specifier|public
 name|void
@@ -999,7 +1491,7 @@ operator|=
 name|defaultSelected
 expr_stmt|;
 block|}
-comment|/**      * Creates a dialog that displays the given list of fields in the table.      * The dialog allows another process to add entries dynamically while the dialog      * is shown.      *      * @param frame      * @param panel      * @param fields      */
+comment|/**      * Creates a dialog that displays the given list of fields in the table. The      * dialog allows another process to add entries dynamically while the dialog      * is shown.      *       * @param frame      * @param panel      * @param fields      */
 DECL|method|ImportInspectionDialog (JabRefFrame frame, BasePanel panel, String[] fields, String undoName, boolean newDatabase)
 specifier|public
 name|ImportInspectionDialog
@@ -1382,7 +1874,8 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-comment|// Will get enabled if there are groups that can be added to.
+comment|// Will get enabled if there are
+comment|// groups that can be added to.
 name|insertNodes
 argument_list|(
 name|groupsAdd
@@ -1426,8 +1919,8 @@ name|AutoSetLinks
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//popup.add(new AttachFile("pdf"));
-comment|//popup.add(new AttachFile("ps"));
+comment|// popup.add(new AttachFile("pdf"));
+comment|// popup.add(new AttachFile("ps"));
 name|popup
 operator|.
 name|add
@@ -1871,7 +2364,7 @@ name|current
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Wrapper for addEntries(List) that takes a single entry.      *      * @param entry The entry to add.      */
+comment|/**      * Wrapper for addEntries(List) that takes a single entry.      *       * @param entry      *            The entry to add.      */
 DECL|method|addEntry (BibtexEntry entry)
 specifier|public
 name|void
@@ -1907,7 +2400,7 @@ name|list
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Add a List of entries to the table view. The table will update to show the      * added entries. Synchronizes on this.entries to avoid conflict with the delete button      * which removes entries.      *      * @param entries      */
+comment|/**      * Add a List of entries to the table view. The table will update to show      * the added entries. Synchronizes on this.entries to avoid conflict with      * the delete button which removes entries.      *       * @param entries      */
 DECL|method|addEntries (Collection<BibtexEntry> entries)
 specifier|public
 name|void
@@ -1928,7 +2421,8 @@ range|:
 name|entries
 control|)
 block|{
-comment|// We exploit the entry's search status for indicating "Keep" status:
+comment|// We exploit the entry's search status for indicating "Keep"
+comment|// status:
 name|entry
 operator|.
 name|setSearchHit
@@ -1936,8 +2430,10 @@ argument_list|(
 name|defaultSelected
 argument_list|)
 expr_stmt|;
-comment|// We exploit the entry's group status for indicating duplicate status.
-comment|// Checking duplicates means both checking against the background database (if
+comment|// We exploit the entry's group status for indicating duplicate
+comment|// status.
+comment|// Checking duplicates means both checking against the background
+comment|// database (if
 comment|// applicable) and against entries already in the table.
 if|if
 condition|(
@@ -2031,7 +2527,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Checks if there are duplicates to the given entry in the Collection. Does not      * report the entry as duplicate of itself if it is in the Collection.      * @param entries A Collection of BibtexEntry instances.      * @param entry The entry to search for duplicates of.      * @return A possible duplicate, if any, or null if none were found.      */
+comment|/**      * Checks if there are duplicates to the given entry in the Collection. Does      * not report the entry as duplicate of itself if it is in the Collection.      *       * @param entries      *            A Collection of BibtexEntry instances.      * @param entry      *            The entry to search for duplicates of.      * @return A possible duplicate, if any, or null if none were found.      */
 DECL|method|internalDuplicate (Collection<BibtexEntry> entries, BibtexEntry entry)
 specifier|protected
 name|BibtexEntry
@@ -2082,7 +2578,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Removes all selected entries from the table. Synchronizes on this.entries to prevent      * conflict with addition of new entries.      */
+comment|/**      * Removes all selected entries from the table. Synchronizes on this.entries      * to prevent conflict with addition of new entries.      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -2261,7 +2757,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This method returns a List containing all entries that are selected      * (checkbox checked).      *      * @return a List containing the selected entries.      */
+comment|/**      * This method returns a List containing all entries that are selected      * (checkbox checked).      *       * @return a List containing the selected entries.      */
 DECL|method|getSelectedEntries ()
 specifier|public
 name|List
@@ -2327,7 +2823,7 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*for (int i = 0; i< table.getRowCount(); i++) {             Boolean sel = (Boolean) table.getValueAt(i, 0);             if (sel.booleanValue()) {                 selected.add(entries.get(i));             }         }*/
+comment|/*          * for (int i = 0; i< table.getRowCount(); i++) { Boolean sel =          * (Boolean) table.getValueAt(i, 0); if (sel.booleanValue()) {          * selected.add(entries.get(i)); } }          */
 return|return
 name|selected
 return|;
@@ -2453,7 +2949,8 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
-comment|// Remove the entry from the database again, since we only added it in order to
+comment|// Remove the entry from the database again, since we only added it in
+comment|// order to
 comment|// make sure the key was unique:
 name|database
 operator|.
@@ -2482,7 +2979,7 @@ name|repaint
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Generate keys for all entries. All keys will be unique with respect to one another,      * and, if they are destined for an existing database, with respect to existing keys in      * the database.      */
+comment|/**      * Generate keys for all entries. All keys will be unique with respect to      * one another, and, if they are destined for an existing database, with      * respect to existing keys in the database.      */
 DECL|method|generateKeys (boolean addColumn)
 specifier|public
 name|void
@@ -2548,7 +3045,8 @@ name|size
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|// Iterate over the entries, add them to the database we are working with,
+comment|// Iterate over the entries, add them to the database we are working
+comment|// with,
 comment|// and generate unique keys:
 for|for
 control|(
@@ -2578,7 +3076,7 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-comment|//if (newDatabase) {
+comment|// if (newDatabase) {
 try|try
 block|{
 name|entry
@@ -2611,7 +3109,7 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
-comment|//}
+comment|// }
 name|LabelPatternUtil
 operator|.
 name|makeLabel
@@ -2640,8 +3138,10 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Remove the entries from the database again, since they are not supposed to
-comment|// added yet. They only needed to be in it while we generated the keys, to keep
+comment|// Remove the entries from the database again, since they are not
+comment|// supposed to
+comment|// added yet. They only needed to be in it while we generated the keys,
+comment|// to keep
 comment|// control over key uniqueness.
 for|for
 control|(
@@ -2948,7 +3448,7 @@ return|return
 name|action
 return|;
 block|}
-comment|/**      * Stores the information about the selected entries being scheduled for addition      * to this group. The entries are *not* added to the group at this time.      *<p/>      * Synchronizes on this.entries to prevent      * conflict with threads that modify the entry list.      */
+comment|/**      * Stores the information about the selected entries being scheduled for      * addition to this group. The entries are *not* added to the group at this      * time.<p/> Synchronizes on this.entries to prevent conflict with threads      * that modify the entry list.      */
 DECL|class|AddToGroupAction
 class|class
 name|AddToGroupAction
@@ -3040,7 +3540,8 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-comment|// We store the groups this entry should be added to in a Set in the Map:
+comment|// We store the groups this entry should be added to in a Set in
+comment|// the Map:
 name|Set
 argument_list|<
 name|GroupTreeNode
@@ -3106,22 +3607,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|class|RemoveFromGroupAction
-class|class
-name|RemoveFromGroupAction
-extends|extends
-name|AbstractAction
-block|{
-DECL|method|actionPerformed (ActionEvent event)
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|event
-parameter_list|)
-block|{         }
-block|}
 DECL|method|addCallBack (CallBack cb)
 specifier|public
 name|void
@@ -3154,7 +3639,8 @@ name|ActionEvent
 name|event
 parameter_list|)
 block|{
-comment|// First check if we are supposed to warn about duplicates. If so, see if there
+comment|// First check if we are supposed to warn about duplicates. If so,
+comment|// see if there
 comment|// are unresolved duplicates, and warn if yes.
 if|if
 condition|(
@@ -3196,7 +3682,8 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-comment|// Only check entries that are to be imported. Keep status is indicated
+comment|// Only check entries that are to be imported. Keep status
+comment|// is indicated
 comment|// through the search hit status of the entry:
 if|if
 condition|(
@@ -3207,7 +3694,8 @@ name|isSearchHit
 argument_list|()
 condition|)
 continue|continue;
-comment|// Check if the entry is a suspected, unresolved, duplicate. This status
+comment|// Check if the entry is a suspected, unresolved, duplicate.
+comment|// This status
 comment|// is indicated by the entry's group hit status:
 if|if
 condition|(
@@ -3296,7 +3784,8 @@ break|break;
 block|}
 block|}
 block|}
-comment|// The compund undo action used to contain all changes made by this dialog.
+comment|// The compund undo action used to contain all changes made by this
+comment|// dialog.
 name|NamedCompound
 name|ce
 init|=
@@ -3378,8 +3867,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/*panel.undoManager.addEdit(undo);             panel.refreshTable();             panel.markBaseChanged();*/
-comment|// If "Generate keys" is checked, generate keys unless it's already been done:
+comment|// If "Generate keys" is checked, generate keys unless it's already
+comment|// been done:
 if|if
 condition|(
 name|autoGenerate
@@ -3535,7 +4024,7 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-comment|//entry.clone();
+comment|// entry.clone();
 comment|// Remove settings to group/search hit status:
 name|entry
 operator|.
@@ -3591,8 +4080,10 @@ operator|==
 literal|null
 condition|)
 block|{
-comment|// The entry has no key, so it can't be added to the group.
-comment|// The best course of ation is probably to ask the user if a key should be generated
+comment|// The entry has no key, so it can't be added to the
+comment|// group.
+comment|// The best course of ation is probably to ask the
+comment|// user if a key should be generated
 comment|// immediately.
 name|int
 name|answer
@@ -3773,7 +4264,8 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
-comment|// Let the autocompleters, if any, harvest words from the entry:
+comment|// Let the autocompleters, if any, harvest words from
+comment|// the entry:
 name|Util
 operator|.
 name|updateCompletersForEntry
@@ -3871,37 +4363,46 @@ operator|.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
-for|for
-control|(
-name|Iterator
-argument_list|<
-name|CallBack
-argument_list|>
-name|i
-init|=
-name|callBacks
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
-name|i
-operator|.
-name|next
-argument_list|()
-operator|.
-name|done
-argument_list|(
+if|if
+condition|(
 name|selected
 operator|.
 name|size
 argument_list|()
+operator|>
+literal|0
+condition|)
+block|{
+name|frame
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Entries imported"
+argument_list|)
+operator|+
+name|selected
+operator|.
+name|size
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|frame
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"No entries imported."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -3919,28 +4420,13 @@ parameter_list|()
 block|{
 for|for
 control|(
-name|Iterator
-argument_list|<
 name|CallBack
-argument_list|>
-name|i
-init|=
+name|c
+range|:
 name|callBacks
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
-name|i
-operator|.
-name|next
-argument_list|()
+name|c
 operator|.
 name|stopFetching
 argument_list|()
@@ -4149,35 +4635,18 @@ expr_stmt|;
 name|dispose
 argument_list|()
 expr_stmt|;
-for|for
-control|(
-name|Iterator
-argument_list|<
-name|CallBack
-argument_list|>
-name|i
-init|=
-name|callBacks
+name|frame
 operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
+name|output
+argument_list|(
+name|Globals
 operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
-name|i
-operator|.
-name|next
-argument_list|()
-operator|.
-name|cancelled
-argument_list|()
+name|lang
+argument_list|(
+literal|"Import canceled by user"
+argument_list|)
+argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 DECL|class|GenerateListener
@@ -4206,7 +4675,8 @@ name|generatedKeys
 operator|=
 literal|true
 expr_stmt|;
-comment|// To prevent the button from getting enabled again.
+comment|// To prevent the button from getting
+comment|// enabled again.
 name|generateKeys
 argument_list|(
 literal|true
@@ -4279,7 +4749,7 @@ argument_list|(
 name|model
 argument_list|)
 expr_stmt|;
-comment|//setDefaultRenderer(Boolean.class, );
+comment|// setDefaultRenderer(Boolean.class, );
 block|}
 DECL|method|isCellEditable (int row, int col)
 specifier|public
@@ -4818,7 +5288,7 @@ name|MouseEvent
 name|e
 parameter_list|)
 block|{          }
-comment|/**          * Show right-click menu. If the click happened in an icon column that presents its own popup menu,          * show that. Otherwise, show the ordinary popup menu.          * @param e The mouse event that triggered the popup.          */
+comment|/**          * Show right-click menu. If the click happened in an icon column that          * presents its own popup menu, show that. Otherwise, show the ordinary          * popup menu.          *           * @param e          *            The mouse event that triggered the popup.          */
 DECL|method|showPopup (MouseEvent e)
 specifier|public
 name|void
@@ -4892,7 +5362,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**          * Show the popup menu for the FILE field.          * @param e The mouse event that triggered the popup.          */
+comment|/**          * Show the popup menu for the FILE field.          *           * @param e          *            The mouse event that triggered the popup.          */
 DECL|method|showFileFieldMenu (MouseEvent e)
 specifier|public
 name|void
@@ -5108,7 +5578,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**          * Open old-style external links after user clicks icon.          * @param fieldName The name of the BibTeX field this icon is used for.          * @param e The MouseEvent that triggered this operation.          */
+comment|/**          * Open old-style external links after user clicks icon.          *           * @param fieldName          *            The name of the BibTeX field this icon is used for.          * @param e          *            The MouseEvent that triggered this operation.          */
 DECL|method|openExternalLink (String fieldName, MouseEvent e)
 specifier|public
 name|void
@@ -5203,7 +5673,8 @@ name|MouseEvent
 name|e
 parameter_list|)
 block|{
-comment|// Check if the user has right-clicked. If so, open the right-click menu.
+comment|// Check if the user has right-clicked. If so, open the right-click
+comment|// menu.
 if|if
 condition|(
 name|e
@@ -5229,7 +5700,8 @@ name|MouseEvent
 name|e
 parameter_list|)
 block|{
-comment|// Check if the user has right-clicked. If so, open the right-click menu.
+comment|// Check if the user has right-clicked. If so, open the right-click
+comment|// menu.
 if|if
 condition|(
 name|e
@@ -5385,7 +5857,8 @@ operator|.
 name|KEEP_UPPER
 condition|)
 block|{
-comment|// Remove old entry. Or... add it to a list of entries to be deleted. We only delete
+comment|// Remove old entry. Or... add it to a list of entries
+comment|// to be deleted. We only delete
 comment|// it after Ok is clicked.
 name|entriesToDelete
 operator|.
@@ -5394,7 +5867,8 @@ argument_list|(
 name|other
 argument_list|)
 expr_stmt|;
-comment|// Clear duplicate icon, which is controlled by the group hit
+comment|// Clear duplicate icon, which is controlled by the
+comment|// group hit
 comment|// field of the entry:
 name|entries
 operator|.
@@ -5683,7 +6157,9 @@ name|JOptionPane
 operator|.
 name|showInputDialog
 argument_list|(
-name|ths
+name|ImportInspectionDialog
+operator|.
+name|this
 argument_list|,
 name|Globals
 operator|.
@@ -6217,7 +6693,8 @@ argument_list|(
 name|oldVal
 argument_list|)
 expr_stmt|;
-comment|// We have a static utility method for searching for all relevant links:
+comment|// We have a static utility method for searching for all relevant
+comment|// links:
 name|JDialog
 name|diag
 init|=
@@ -6709,14 +7186,17 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-comment|// Call up a dialog box that provides Browse, Download and auto buttons:
+comment|// Call up a dialog box that provides Browse, Download and auto
+comment|// buttons:
 name|AttachFileDialog
 name|diag
 init|=
 operator|new
 name|AttachFileDialog
 argument_list|(
-name|ths
+name|ImportInspectionDialog
+operator|.
+name|this
 argument_list|,
 name|metaData
 argument_list|,
@@ -6731,7 +7211,9 @@ name|placeDialog
 argument_list|(
 name|diag
 argument_list|,
-name|ths
+name|ImportInspectionDialog
+operator|.
+name|this
 argument_list|)
 expr_stmt|;
 name|diag
@@ -6741,7 +7223,8 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-comment|// After the dialog has closed, if it wasn't cancelled, list the field:
+comment|// After the dialog has closed, if it wasn't cancelled, list the
+comment|// field:
 if|if
 condition|(
 operator|!
@@ -6792,41 +7275,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-block|}
-DECL|interface|CallBack
-specifier|public
-specifier|static
-interface|interface
-name|CallBack
-block|{
-comment|// This method is called by the dialog when the user has selected the
-comment|// wanted entries, and clicked Ok. The callback object can update status
-comment|// line etc.
-DECL|method|done (int entriesImported)
-specifier|public
-name|void
-name|done
-parameter_list|(
-name|int
-name|entriesImported
-parameter_list|)
-function_decl|;
-comment|// This method is called by the dialog when the user has cancelled the import.
-DECL|method|cancelled ()
-specifier|public
-name|void
-name|cancelled
-parameter_list|()
-function_decl|;
-comment|// This method is called by the dialog when the user has cancelled or
-comment|// signalled a stop. It is expected that any long-running fetch operations
-comment|// will stop after this method is called.
-DECL|method|stopFetching ()
-specifier|public
-name|void
-name|stopFetching
-parameter_list|()
-function_decl|;
 block|}
 annotation|@
 name|SuppressWarnings
@@ -7055,7 +7503,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Set initial sort columns:
-comment|/*// Default sort order:         String[] sortFields = new String[] {Globals.prefs.get("priSort"), Globals.prefs.get("secSort"),             Globals.prefs.get("terSort")};         boolean[] sortDirections = new boolean[] {Globals.prefs.getBoolean("priDescending"),             Globals.prefs.getBoolean("secDescending"), Globals.prefs.getBoolean("terDescending")}; // descending         */
+comment|/*          * // Default sort order: String[] sortFields = new String[]          * {Globals.prefs.get("priSort"), Globals.prefs.get("secSort"),          * Globals.prefs.get("terSort")}; boolean[] sortDirections = new          * boolean[] {Globals.prefs.getBoolean("priDescending"),          * Globals.prefs.getBoolean("secDescending"),          * Globals.prefs.getBoolean("terDescending")}; // descending          */
 name|sortedList
 operator|.
 name|getReadWriteLock
@@ -7149,7 +7597,7 @@ else|:
 name|renderer
 return|;
 block|}
-comment|/*public TableCellEditor getCellEditor() {             return getDefaultEditor(Boolean.class);         } */
+comment|/*          * public TableCellEditor getCellEditor() { return          * getDefaultEditor(Boolean.class); }          */
 DECL|method|getColumnClass (int col)
 specifier|public
 name|Class
@@ -7225,7 +7673,8 @@ name|int
 name|column
 parameter_list|)
 block|{
-comment|// Only column 0, which is controlled by BibtexEntry.searchHit, is editable:
+comment|// Only column 0, which is controlled by BibtexEntry.searchHit, is
+comment|// editable:
 name|entries
 operator|.
 name|getReadWriteLock

@@ -1482,25 +1482,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|cancelled ()
-specifier|public
-name|void
-name|cancelled
-parameter_list|()
-block|{
-comment|// do nothing
-block|}
-DECL|method|done (int entriesImported)
-specifier|public
-name|void
-name|done
-parameter_list|(
-name|int
-name|entriesImported
-parameter_list|)
-block|{
-comment|// do nothing
-block|}
 DECL|method|stopFetching ()
 specifier|public
 name|void

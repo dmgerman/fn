@@ -316,6 +316,14 @@ literal|"Search JSTOR"
 argument_list|)
 return|;
 block|}
+DECL|method|stopFetching ()
+specifier|public
+name|void
+name|stopFetching
+parameter_list|()
+block|{
+comment|// cannot be interrupted
+block|}
 DECL|method|processQuery (String query, ImportInspectionDialog dialog, JabRefFrame frame)
 specifier|public
 name|void
@@ -559,33 +567,6 @@ name|e
 argument_list|)
 throw|;
 block|}
-block|}
-DECL|method|cancelled ()
-specifier|public
-name|void
-name|cancelled
-parameter_list|()
-block|{
-comment|// do nothing
-block|}
-DECL|method|done (int entriesImported)
-specifier|public
-name|void
-name|done
-parameter_list|(
-name|int
-name|entriesImported
-parameter_list|)
-block|{
-comment|// do nothing
-block|}
-DECL|method|stopFetching ()
-specifier|public
-name|void
-name|stopFetching
-parameter_list|()
-block|{
-comment|// cannot be interrupted
 block|}
 comment|/**      *       * @return a Jstor ticket ID      * @throws IOException      */
 DECL|method|openTicket ()
