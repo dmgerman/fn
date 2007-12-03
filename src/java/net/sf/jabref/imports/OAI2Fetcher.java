@@ -261,8 +261,6 @@ class|class
 name|OAI2Fetcher
 implements|implements
 name|EntryFetcher
-implements|,
-name|Runnable
 block|{
 DECL|field|OAI2_ARXIV_PREFIXIDENTIFIER
 specifier|public
@@ -359,16 +357,6 @@ name|boolean
 name|shouldContinue
 init|=
 literal|true
-decl_stmt|;
-DECL|field|query
-specifier|private
-name|String
-name|query
-decl_stmt|;
-DECL|field|dialog
-specifier|private
-name|ImportInspectionDialog
-name|dialog
 decl_stmt|;
 DECL|field|frame
 specifier|private
@@ -1231,73 +1219,10 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|query
-operator|=
-name|query
-expr_stmt|;
-name|this
-operator|.
-name|dialog
-operator|=
-name|dialog
-expr_stmt|;
-name|this
-operator|.
 name|frame
 operator|=
 name|frame
 expr_stmt|;
-operator|(
-operator|new
-name|Thread
-argument_list|(
-name|this
-argument_list|)
-operator|)
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
-block|}
-DECL|method|cancelled ()
-specifier|public
-name|void
-name|cancelled
-parameter_list|()
-block|{
-name|shouldContinue
-operator|=
-literal|false
-expr_stmt|;
-block|}
-DECL|method|done (int entriesImported)
-specifier|public
-name|void
-name|done
-parameter_list|(
-name|int
-name|entriesImported
-parameter_list|)
-block|{
-comment|// do nothing
-block|}
-DECL|method|stopFetching ()
-specifier|public
-name|void
-name|stopFetching
-parameter_list|()
-block|{
-name|shouldContinue
-operator|=
-literal|false
-expr_stmt|;
-block|}
-DECL|method|run ()
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
 try|try
 block|{
 name|dialog
@@ -1554,6 +1479,36 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+DECL|method|cancelled ()
+specifier|public
+name|void
+name|cancelled
+parameter_list|()
+block|{
+comment|// do nothing
+block|}
+DECL|method|done (int entriesImported)
+specifier|public
+name|void
+name|done
+parameter_list|(
+name|int
+name|entriesImported
+parameter_list|)
+block|{
+comment|// do nothing
+block|}
+DECL|method|stopFetching ()
+specifier|public
+name|void
+name|stopFetching
+parameter_list|()
+block|{
+name|shouldContinue
+operator|=
+literal|false
+expr_stmt|;
 block|}
 block|}
 end_class

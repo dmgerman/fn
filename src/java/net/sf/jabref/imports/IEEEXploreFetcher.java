@@ -312,8 +312,6 @@ specifier|public
 class|class
 name|IEEEXploreFetcher
 implements|implements
-name|Runnable
-implements|,
 name|EntryFetcher
 block|{
 DECL|field|dialog
@@ -436,7 +434,6 @@ name|fetchRis
 init|=
 literal|true
 decl_stmt|;
-comment|//private static final int MAX_ABSTRACT_FETCH = 5;
 DECL|field|MAX_RIS_FETCH
 specifier|private
 specifier|static
@@ -446,11 +443,6 @@ name|MAX_RIS_FETCH
 init|=
 literal|25
 decl_stmt|;
-DECL|method|IEEEXploreFetcher ()
-specifier|public
-name|IEEEXploreFetcher
-parameter_list|()
-block|{     }
 comment|//Pattern hitsPattern = Pattern.compile("Your search matched<strong>(\\d+)</strong>");
 DECL|field|hitsPattern
 name|Pattern
@@ -598,7 +590,6 @@ argument_list|(
 literal|"(.*) : (Accepted.*)"
 argument_list|)
 decl_stmt|;
-comment|/*Pattern entryPattern1 = Pattern.compile(".*<strong>(.+)</strong><br>\\s+(.+)<br>"                 +"\\s+<A href='(.+)'>(.+)</A><br>\\s+Volume (.+),&nbsp;\\s*"                 +"(.+)? (\\d\\d\\d\\d)\\s+Page\\(s\\):.*");      Pattern entryPattern2 = Pattern.compile(".*<strong>(.+)</strong><br>\\s+(.+)<br>"                     +"\\s+<A href='(.+)'>(.+)</A><br>\\s+Volume (.+),&nbsp;\\s+Issue (\\d+),&nbsp;\\s*"                     +"(.+)? (\\d\\d\\d\\d)\\s+Page\\(s\\):.*");       Pattern entryPattern3 = Pattern.compile(".*<strong>(.+)</strong><br>\\s+(.+)<br>"                     +"\\s+<A href='(.+)'>(.+)</A><br>\\s+Volume (.+),&nbsp;\\s+Issue (\\d+),&nbsp;" +                     "\\s+Part (\\d+),&nbsp;\\s*" //"[\\s-\\d]+"                     +"(.+)? (\\d\\d\\d\\d)\\s+Page\\(s\\):.*");      Pattern entryPattern4 = Pattern.compile(".*<strong>(.+)</strong><br>\\s+(.+)<br>"                     +"\\s+<A href='(.+)'>(.+)</A><br>\\s*" //[\\s-\\da-z]+"                     +"(.+)? (\\d\\d\\d\\d)\\s+Page\\(s\\):.*");     */
 DECL|field|abstractLinkPattern
 name|Pattern
 name|abstractLinkPattern
@@ -695,116 +686,6 @@ name|piv
 operator|=
 literal|0
 expr_stmt|;
-operator|(
-operator|new
-name|Thread
-argument_list|(
-name|this
-argument_list|)
-operator|)
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
-block|}
-DECL|method|getTitle ()
-specifier|public
-name|String
-name|getTitle
-parameter_list|()
-block|{
-return|return
-name|Globals
-operator|.
-name|menuTitle
-argument_list|(
-literal|"Search IEEEXplore"
-argument_list|)
-return|;
-block|}
-DECL|method|getIcon ()
-specifier|public
-name|URL
-name|getIcon
-parameter_list|()
-block|{
-return|return
-name|GUIGlobals
-operator|.
-name|getIconUrl
-argument_list|(
-literal|"www"
-argument_list|)
-return|;
-block|}
-DECL|method|getHelpPage ()
-specifier|public
-name|String
-name|getHelpPage
-parameter_list|()
-block|{
-return|return
-literal|"IEEEXploreHelp.html"
-return|;
-block|}
-DECL|method|getKeyName ()
-specifier|public
-name|String
-name|getKeyName
-parameter_list|()
-block|{
-return|return
-literal|"Search IEEEXplore"
-return|;
-block|}
-comment|// This method is called by the dialog when the user has cancelled the import.
-DECL|method|cancelled ()
-specifier|public
-name|void
-name|cancelled
-parameter_list|()
-block|{
-name|shouldContinue
-operator|=
-literal|false
-expr_stmt|;
-block|}
-comment|// This method is called by the dialog when the user has selected the
-comment|// wanted entries, and clicked Ok. The callback object can update status
-comment|// line etc.
-DECL|method|done (int entriesImported)
-specifier|public
-name|void
-name|done
-parameter_list|(
-name|int
-name|entriesImported
-parameter_list|)
-block|{
-comment|//System.out.println("Number of entries parsed: "+parsed);
-comment|//System.out.println("Parsing failed for "+unparseable+" entries");
-block|}
-comment|// This method is called by the dialog when the user has cancelled or
-comment|// signalled a stop. It is expected that any long-running fetch operations
-comment|// will stop after this method is called.
-DECL|method|stopFetching ()
-specifier|public
-name|void
-name|stopFetching
-parameter_list|()
-block|{
-name|shouldContinue
-operator|=
-literal|false
-expr_stmt|;
-block|}
-comment|/**      * The code that runs the actual search and fetch operation.      */
-DECL|method|run ()
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
 name|frame
 operator|.
 name|block
@@ -963,7 +844,6 @@ argument_list|,
 name|hitsPattern
 argument_list|)
 expr_stmt|;
-comment|/*if (hits == 0) {                 dialog.dispose();                 JOptionPane.showMessageDialog(frame, Globals.lang("No entries found for the search string '%0'",                         terms),                         Globals.lang("Search IEEEXplore"), JOptionPane.INFORMATION_MESSAGE);                 return;             } else {                 fetchingAbstracts = fetchAstracts.isSelected();                 if (fetchingAbstracts&& (hits> MAX_ABSTRACT_FETCH)) {                     fetchingAbstracts = false;                     JOptionPane.showMessageDialog(frame,                             Globals.lang("%0 entries found. To reduce server load, abstracts "                             +"will only be downloaded for searches returning %1 hits or less.",                                     new String[] {String.valueOf(hits), String.valueOf(MAX_ABSTRACT_FETCH)}),                             Globals.lang("Search IEEEXplore"), JOptionPane.INFORMATION_MESSAGE);                 }                 dialog.setVisible(true);             }             */
 name|int
 name|maxHits
 init|=
@@ -977,9 +857,6 @@ name|maxHitsPattern
 argument_list|)
 decl_stmt|;
 comment|//String page = getResultsFromFile(new File("/home/alver/div/temp50.txt"));
-comment|//List entries = new ArrayList();
-comment|//System.out.println("Number of hits: "+hits);
-comment|//System.out.println("Maximum returned: "+maxHits);
 if|if
 condition|(
 name|hits
@@ -1081,8 +958,6 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-comment|//parse(dialog, page, 0, 51);
-comment|//dialog.setProgress(perPage/2, hits);
 name|parse
 argument_list|(
 name|dialog
@@ -1110,7 +985,6 @@ name|hits
 operator|)
 condition|)
 block|{
-comment|//System.out.println("Fetching from: "+firstEntry);
 name|address
 operator|=
 name|makeUrl
@@ -1118,7 +992,6 @@ argument_list|(
 name|firstEntry
 argument_list|)
 expr_stmt|;
-comment|//System.out.println(address);
 name|page
 operator|=
 name|getResults
@@ -1130,7 +1003,6 @@ name|address
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//dialog.setProgress(firstEntry+perPage/2, hits);
 if|if
 condition|(
 operator|!
@@ -1226,6 +1098,109 @@ argument_list|()
 expr_stmt|;
 comment|// We call this to ensure no lockup.
 block|}
+block|}
+DECL|method|getTitle ()
+specifier|public
+name|String
+name|getTitle
+parameter_list|()
+block|{
+return|return
+name|Globals
+operator|.
+name|menuTitle
+argument_list|(
+literal|"Search IEEEXplore"
+argument_list|)
+return|;
+block|}
+DECL|method|getIcon ()
+specifier|public
+name|URL
+name|getIcon
+parameter_list|()
+block|{
+return|return
+name|GUIGlobals
+operator|.
+name|getIconUrl
+argument_list|(
+literal|"www"
+argument_list|)
+return|;
+block|}
+DECL|method|getHelpPage ()
+specifier|public
+name|String
+name|getHelpPage
+parameter_list|()
+block|{
+return|return
+literal|"IEEEXploreHelp.html"
+return|;
+block|}
+DECL|method|getKeyName ()
+specifier|public
+name|String
+name|getKeyName
+parameter_list|()
+block|{
+return|return
+literal|"Search IEEEXplore"
+return|;
+block|}
+comment|// This method is called by the dialog when the user has cancelled the import.
+DECL|method|cancelled ()
+specifier|public
+name|void
+name|cancelled
+parameter_list|()
+block|{
+name|shouldContinue
+operator|=
+literal|false
+expr_stmt|;
+block|}
+DECL|method|done (int entriesImported)
+specifier|public
+name|void
+name|done
+parameter_list|(
+name|int
+name|entriesImported
+parameter_list|)
+block|{
+name|frame
+operator|.
+name|output
+argument_list|(
+literal|"Number of entries parsed: "
+operator|+
+name|parsed
+argument_list|)
+expr_stmt|;
+name|frame
+operator|.
+name|output
+argument_list|(
+literal|"Parsing failed for "
+operator|+
+name|unparseable
+operator|+
+literal|" entries"
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|stopFetching ()
+specifier|public
+name|void
+name|stopFetching
+parameter_list|()
+block|{
+name|shouldContinue
+operator|=
+literal|false
+expr_stmt|;
 block|}
 DECL|method|makeUrl (int startIndex)
 specifier|private

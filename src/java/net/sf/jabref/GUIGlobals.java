@@ -593,7 +593,6 @@ name|generalFieldsHelp
 init|=
 literal|"GeneralFields.html"
 decl_stmt|,
-comment|//	searchHelp = "SearchHelp.html",
 DECL|field|aboutPage
 name|aboutPage
 init|=

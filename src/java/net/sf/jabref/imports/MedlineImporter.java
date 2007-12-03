@@ -18,6 +18,26 @@ name|java
 operator|.
 name|io
 operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|FileOutputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|IOException
 import|;
 end_import
@@ -29,6 +49,26 @@ operator|.
 name|io
 operator|.
 name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URL
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URLConnection
 import|;
 end_import
 
@@ -89,7 +129,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Importer for the Refer/Endnote format.  *  * check here for details on the format  * http://www.ecst.csuchico.edu/~jacobsd/bib/formats/endnote.html  */
+comment|/**  * Importer for the Refer/Endnote format.  *   * check here for details on the format  * http://www.ecst.csuchico.edu/~jacobsd/bib/formats/endnote.html  */
 end_comment
 
 begin_class
@@ -111,7 +151,7 @@ return|return
 literal|"Medline"
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
+comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
 DECL|method|getCLIId ()
 specifier|public
 name|String
@@ -137,6 +177,76 @@ block|{
 return|return
 literal|true
 return|;
+block|}
+comment|/**      * Fetch and parse an medline item from eutils.ncbi.nlm.nih.gov.      *       * @param id One or several ids, separated by ","      *       * @return Will return an empty list on error.      */
+DECL|method|fetchMedline (String id)
+specifier|public
+specifier|static
+name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
+name|fetchMedline
+parameter_list|(
+name|String
+name|id
+parameter_list|)
+block|{
+name|String
+name|baseUrl
+init|=
+literal|"http://eutils.ncbi.nlm.nih.gov/entrez/eutils/efetch.fcgi?db=pubmed&retmode=xml&rettype=citation&id="
+operator|+
+name|id
+decl_stmt|;
+try|try
+block|{
+name|URL
+name|url
+init|=
+operator|new
+name|URL
+argument_list|(
+name|baseUrl
+argument_list|)
+decl_stmt|;
+name|URLConnection
+name|data
+init|=
+name|url
+operator|.
+name|openConnection
+argument_list|()
+decl_stmt|;
+return|return
+operator|new
+name|MedlineImporter
+argument_list|()
+operator|.
+name|importEntries
+argument_list|(
+name|data
+operator|.
+name|getInputStream
+argument_list|()
+argument_list|)
+return|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|e
+parameter_list|)
+block|{
+return|return
+operator|new
+name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
+argument_list|()
+return|;
+block|}
 block|}
 comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
 DECL|method|importEntries (InputStream stream)
@@ -197,7 +307,8 @@ operator|.
 name|newSAXParser
 argument_list|()
 decl_stmt|;
-comment|//May throw exceptions
+comment|// May throw
+comment|// exceptions
 name|MedlineHandler
 name|handler
 init|=
@@ -205,7 +316,8 @@ operator|new
 name|MedlineHandler
 argument_list|()
 decl_stmt|;
-comment|// Start the parser. It reads the file and calls methods of the handler.
+comment|// Start the parser. It reads the file and calls methods of the
+comment|// handler.
 name|parser
 operator|.
 name|parse
@@ -215,7 +327,67 @@ argument_list|,
 name|handler
 argument_list|)
 expr_stmt|;
-comment|// When you're done, report the results stored by your handler object
+comment|// Switch this to true if you want to make a local copy for testing.
+if|if
+condition|(
+literal|false
+condition|)
+block|{
+name|stream
+operator|.
+name|reset
+argument_list|()
+expr_stmt|;
+name|FileOutputStream
+name|out
+init|=
+operator|new
+name|FileOutputStream
+argument_list|(
+operator|new
+name|File
+argument_list|(
+literal|"/home/alver/ut.txt"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|int
+name|c
+decl_stmt|;
+while|while
+condition|(
+operator|(
+name|c
+operator|=
+name|stream
+operator|.
+name|read
+argument_list|()
+operator|)
+operator|!=
+operator|-
+literal|1
+condition|)
+block|{
+name|out
+operator|.
+name|write
+argument_list|(
+operator|(
+name|char
+operator|)
+name|c
+argument_list|)
+expr_stmt|;
+block|}
+name|out
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+comment|// When you're done, report the results stored by your handler
+comment|// object
 name|bibItems
 operator|=
 name|handler
@@ -235,7 +407,13 @@ operator|.
 name|ParserConfigurationException
 name|e1
 parameter_list|)
-block|{ 	}
+block|{
+name|e1
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
 catch|catch
 parameter_list|(
 name|org
@@ -247,7 +425,13 @@ operator|.
 name|SAXException
 name|e2
 parameter_list|)
-block|{ 	}
+block|{
+name|e2
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
 catch|catch
 parameter_list|(
 name|java
@@ -257,7 +441,13 @@ operator|.
 name|IOException
 name|e3
 parameter_list|)
-block|{ 	}
+block|{
+name|e3
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
 return|return
 name|bibItems
 return|;
