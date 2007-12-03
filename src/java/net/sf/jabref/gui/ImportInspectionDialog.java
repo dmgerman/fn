@@ -953,7 +953,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Dialog to allow the selection of entries as part of an Import.  *   * The usual way to use this class is to pass it to an Importer which will do  * the following:  *<ul>  *<li>Register itself as a callback to get notified if the user wants to stop  * the import.</li>  *<li>Call setVisible(true) to display the dialog</li>  *<li>For each entry that has been found call addEntry(...)</li>  *<li>Call entryListComplete() after all entries have been fetched</li>  *</ul>  *   * If the importer wants to cancel the import, it should call the dispose()  * method.  *   * If the importer receives the stopFetching-call, it should not stop fetching  * at the next possible situation.  *   * @author alver  * @author $Author$  * @version $Revision$ ($Date: 2007-11-14 01:25:31 +0100 (Mi, 14 Nov  *          2007) $)  *   */
+comment|/**  * Dialog to allow the selection of entries as part of an Import.  *   * The usual way to use this class is to pass it to an Importer which will do  * the following:  *<ul>  *<li>Register itself as a callback to get notified if the user wants to stop  * the import.</li>  *<li>Call setVisible(true) to display the dialog</li>  *<li>For each entry that has been found call addEntry(...)</li>  *<li>Call entryListComplete() after all entries have been fetched</li>  *</ul>  *   * If the importer wants to cancel the import, it should call the dispose()  * method.  *   * If the importer receives the stopFetching-call, it should stop fetching as  * soon as possible (it is not really critical, but good style to not contribute  * any more results via addEntry, call entryListComplete() or dispose(), after  * receiving this call).  *   * @author alver  * @author $Author$  * @version $Revision$ ($Date: 2007-11-14 01:25:31 +0100 (Mi, 14 Nov  *          2007) $)  *   */
 end_comment
 
 begin_class
@@ -1287,7 +1287,8 @@ name|generatedKeys
 init|=
 literal|false
 decl_stmt|;
-comment|// Set to true after keys have been
+comment|// Set to true after keys have
+comment|// been
 comment|// generated.
 DECL|field|defaultSelected
 specifier|protected
