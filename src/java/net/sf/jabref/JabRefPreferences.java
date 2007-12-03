@@ -5368,6 +5368,15 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
+literal|"Search JSTOR"
+argument_list|,
+literal|"shift F9"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
 literal|"Fetch SPIRES"
 argument_list|,
 literal|"ctrl F8"
@@ -5391,7 +5400,6 @@ argument_list|,
 literal|"ctrl N"
 argument_list|)
 expr_stmt|;
-comment|//defKeyBinds.put("Select value", "ctrl B");
 block|}
 DECL|method|getNextUnit (Reader data)
 specifier|private

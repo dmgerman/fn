@@ -261,9 +261,8 @@ name|String
 name|getHelpPage
 parameter_list|()
 block|{
-comment|// No help page
 return|return
-literal|null
+literal|"JSTOR.html"
 return|;
 block|}
 DECL|method|getIcon ()
