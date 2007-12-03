@@ -363,7 +363,7 @@ specifier|private
 name|JabRefFrame
 name|frame
 decl_stmt|;
-comment|/* some archives - like arxive.org - might expect of you to wait some time */
+comment|/**      * some archives - like arxive.org - might expect of you to wait some time       */
 DECL|method|shouldWait ()
 specifier|private
 name|boolean
@@ -900,6 +900,8 @@ name|setField
 argument_list|(
 name|name
 argument_list|,
+name|OAI2Fetcher
+operator|.
 name|correctLineBreaks
 argument_list|(
 name|be
