@@ -138,16 +138,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -262,7 +252,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefFrame
+name|OutputPrinter
 import|;
 end_import
 
@@ -275,20 +265,6 @@ operator|.
 name|jabref
 operator|.
 name|Util
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|ImportInspectionDialog
 import|;
 end_import
 
@@ -315,16 +291,14 @@ implements|implements
 name|EntryFetcher
 block|{
 DECL|field|dialog
-name|ImportInspectionDialog
+name|ImportInspector
 name|dialog
 init|=
 literal|null
 decl_stmt|;
-DECL|field|frame
-name|JabRefFrame
-name|frame
-init|=
-literal|null
+DECL|field|status
+name|OutputPrinter
+name|status
 decl_stmt|;
 DECL|field|htmlConverter
 name|HTMLConverter
@@ -649,19 +623,19 @@ return|return
 name|pan
 return|;
 block|}
-DECL|method|processQuery (String query, ImportInspectionDialog dialog, JabRefFrame frame)
+DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter status)
 specifier|public
-name|void
+name|boolean
 name|processQuery
 parameter_list|(
 name|String
 name|query
 parameter_list|,
-name|ImportInspectionDialog
+name|ImportInspector
 name|dialog
 parameter_list|,
-name|JabRefFrame
-name|frame
+name|OutputPrinter
+name|status
 parameter_list|)
 block|{
 name|this
@@ -672,9 +646,9 @@ name|dialog
 expr_stmt|;
 name|this
 operator|.
-name|frame
+name|status
 operator|=
-name|frame
+name|status
 expr_stmt|;
 name|this
 operator|.
@@ -686,11 +660,7 @@ name|piv
 operator|=
 literal|0
 expr_stmt|;
-name|frame
-operator|.
-name|block
-argument_list|()
-expr_stmt|;
+comment|// frame.block();
 name|shouldContinue
 operator|=
 literal|true
@@ -736,11 +706,7 @@ name|url
 argument_list|)
 decl_stmt|;
 comment|//hits = getNumberOfHits(page, "Your search matched", hitsPattern);
-name|frame
-operator|.
-name|unblock
-argument_list|()
-expr_stmt|;
+comment|// frame.unblock();
 if|if
 condition|(
 name|page
@@ -753,17 +719,10 @@ operator|>=
 literal|0
 condition|)
 block|{
-name|dialog
+name|status
 operator|.
-name|dispose
-argument_list|()
-expr_stmt|;
-name|JOptionPane
-operator|.
-name|showMessageDialog
+name|showMessage
 argument_list|(
-name|frame
-argument_list|,
 name|Globals
 operator|.
 name|lang
@@ -785,7 +744,9 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 if|if
 condition|(
@@ -799,17 +760,10 @@ operator|>=
 literal|0
 condition|)
 block|{
-name|dialog
+name|status
 operator|.
-name|dispose
-argument_list|()
-expr_stmt|;
-name|JOptionPane
-operator|.
-name|showMessageDialog
+name|showMessage
 argument_list|(
-name|frame
-argument_list|,
 name|Globals
 operator|.
 name|lang
@@ -831,7 +785,9 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 name|hits
 operator|=
@@ -888,12 +844,10 @@ operator|==
 literal|true
 condition|)
 block|{
-name|JOptionPane
+name|status
 operator|.
-name|showMessageDialog
+name|showMessage
 argument_list|(
-name|frame
-argument_list|,
 name|Globals
 operator|.
 name|lang
@@ -951,13 +905,6 @@ literal|false
 expr_stmt|;
 block|}
 block|}
-name|dialog
-operator|.
-name|setVisible
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 name|parse
 argument_list|(
 name|dialog
@@ -1027,11 +974,9 @@ operator|+=
 name|perPage
 expr_stmt|;
 block|}
-name|dialog
-operator|.
-name|entryListComplete
-argument_list|()
-expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -1051,12 +996,10 @@ name|ConnectException
 name|e
 parameter_list|)
 block|{
-name|JOptionPane
+name|status
 operator|.
-name|showMessageDialog
+name|showMessage
 argument_list|(
-name|frame
-argument_list|,
 name|Globals
 operator|.
 name|lang
@@ -1089,15 +1032,9 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
-finally|finally
-block|{
-name|frame
-operator|.
-name|unblock
-argument_list|()
-expr_stmt|;
-comment|// We call this to ensure no lockup.
-block|}
+return|return
+literal|false
+return|;
 block|}
 DECL|method|getTitle ()
 specifier|public
@@ -1230,12 +1167,12 @@ name|piv
 init|=
 literal|0
 decl_stmt|;
-DECL|method|parse (ImportInspectionDialog dialog, String text, int startIndex, int firstEntryNumber)
+DECL|method|parse (ImportInspector dialog, String text, int startIndex, int firstEntryNumber)
 specifier|private
 name|void
 name|parse
 parameter_list|(
-name|ImportInspectionDialog
+name|ImportInspector
 name|dialog
 parameter_list|,
 name|String
@@ -1256,19 +1193,6 @@ name|int
 name|entryNumber
 init|=
 name|firstEntryNumber
-decl_stmt|;
-name|List
-argument_list|<
-name|BibtexEntry
-argument_list|>
-name|entries
-init|=
-operator|new
-name|ArrayList
-argument_list|<
-name|BibtexEntry
-argument_list|>
-argument_list|()
 decl_stmt|;
 name|BibtexEntry
 name|entry
@@ -1309,18 +1233,11 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|entries
-operator|.
-name|add
-argument_list|(
-name|entry
-argument_list|)
-expr_stmt|;
 name|dialog
 operator|.
-name|addEntries
+name|addEntry
 argument_list|(
-name|entries
+name|entry
 argument_list|)
 expr_stmt|;
 name|dialog
@@ -1334,11 +1251,6 @@ argument_list|,
 name|hits
 argument_list|)
 expr_stmt|;
-name|entries
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
 name|parsed
 operator|++
 expr_stmt|;
@@ -1346,7 +1258,6 @@ block|}
 name|entryNumber
 operator|++
 expr_stmt|;
-comment|//break;
 block|}
 block|}
 DECL|method|parseEntryRis (String number, boolean abs, boolean isStandard)

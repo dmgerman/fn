@@ -194,7 +194,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefFrame
+name|OutputPrinter
 import|;
 end_import
 
@@ -207,20 +207,6 @@ operator|.
 name|jabref
 operator|.
 name|Util
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|ImportInspectionDialog
 import|;
 end_import
 
@@ -358,10 +344,10 @@ name|shouldContinue
 init|=
 literal|true
 decl_stmt|;
-DECL|field|frame
+DECL|field|status
 specifier|private
-name|JabRefFrame
-name|frame
+name|OutputPrinter
+name|status
 decl_stmt|;
 comment|/**      * some archives - like arxive.org - might expect of you to wait some time       */
 DECL|method|shouldWait ()
@@ -1005,12 +991,10 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|JOptionPane
+name|status
 operator|.
-name|showMessageDialog
+name|showMessage
 argument_list|(
-name|frame
-argument_list|,
 name|Globals
 operator|.
 name|lang
@@ -1047,12 +1031,10 @@ name|SAXException
 name|e
 parameter_list|)
 block|{
-name|JOptionPane
+name|status
 operator|.
-name|showMessageDialog
+name|showMessage
 argument_list|(
-name|frame
-argument_list|,
 name|Globals
 operator|.
 name|lang
@@ -1094,12 +1076,10 @@ name|RuntimeException
 name|e
 parameter_list|)
 block|{
-name|JOptionPane
+name|status
 operator|.
-name|showMessageDialog
+name|showMessage
 argument_list|(
-name|frame
-argument_list|,
 name|Globals
 operator|.
 name|lang
@@ -1204,36 +1184,29 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|processQuery (String query, ImportInspectionDialog dialog, JabRefFrame frame)
+DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter status)
 specifier|public
-name|void
+name|boolean
 name|processQuery
 parameter_list|(
 name|String
 name|query
 parameter_list|,
-name|ImportInspectionDialog
+name|ImportInspector
 name|dialog
 parameter_list|,
-name|JabRefFrame
-name|frame
+name|OutputPrinter
+name|status
 parameter_list|)
 block|{
 name|this
 operator|.
-name|frame
+name|status
 operator|=
-name|frame
+name|status
 expr_stmt|;
 try|try
 block|{
-name|dialog
-operator|.
-name|setVisible
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 name|shouldContinue
 operator|=
 literal|true
@@ -1319,9 +1292,9 @@ operator|<
 name|waitTime
 condition|)
 block|{
-name|frame
+name|status
 operator|.
-name|output
+name|setStatus
 argument_list|(
 name|Globals
 operator|.
@@ -1366,9 +1339,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-name|frame
+name|status
 operator|.
-name|output
+name|setStatus
 argument_list|(
 name|Globals
 operator|.
@@ -1436,19 +1409,9 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* inform the inspection dialog, that we're done */
-name|dialog
-operator|.
-name|entryListComplete
-argument_list|()
-expr_stmt|;
-name|frame
-operator|.
-name|output
-argument_list|(
-literal|""
-argument_list|)
-expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -1456,9 +1419,9 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|frame
+name|status
 operator|.
-name|output
+name|setStatus
 argument_list|(
 name|Globals
 operator|.
@@ -1481,6 +1444,9 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
+return|return
+literal|false
+return|;
 block|}
 DECL|method|stopFetching ()
 specifier|public

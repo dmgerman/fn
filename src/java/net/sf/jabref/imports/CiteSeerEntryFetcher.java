@@ -142,7 +142,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefFrame
+name|OutputPrinter
 import|;
 end_import
 
@@ -155,20 +155,6 @@ operator|.
 name|jabref
 operator|.
 name|Util
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|ImportInspectionDialog
 import|;
 end_import
 
@@ -216,31 +202,24 @@ specifier|protected
 name|boolean
 name|stop
 decl_stmt|;
-DECL|method|processQuery (String query, ImportInspectionDialog dialog, JabRefFrame frame)
+DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter frame)
 specifier|public
-name|void
+name|boolean
 name|processQuery
 parameter_list|(
 name|String
 name|query
 parameter_list|,
-name|ImportInspectionDialog
+name|ImportInspector
 name|dialog
 parameter_list|,
-name|JabRefFrame
+name|OutputPrinter
 name|frame
 parameter_list|)
 block|{
 name|stop
 operator|=
 literal|false
-expr_stmt|;
-name|dialog
-operator|.
-name|setVisible
-argument_list|(
-literal|true
-argument_list|)
 expr_stmt|;
 name|String
 index|[]
@@ -311,12 +290,10 @@ literal|"^\\d+$"
 argument_list|)
 condition|)
 block|{
-name|JOptionPane
+name|frame
 operator|.
-name|showMessageDialog
+name|showMessage
 argument_list|(
-name|dialog
-argument_list|,
 name|Globals
 operator|.
 name|lang
@@ -499,12 +476,10 @@ name|Exception
 name|e
 parameter_list|)
 block|{
-name|JOptionPane
+name|frame
 operator|.
-name|showMessageDialog
+name|showMessage
 argument_list|(
-name|dialog
-argument_list|,
 name|Globals
 operator|.
 name|lang
@@ -530,12 +505,13 @@ name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
-name|dialog
-operator|.
-name|entryListComplete
-argument_list|()
-expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
+return|return
+literal|false
+return|;
 block|}
 DECL|method|getHelpPage ()
 specifier|public
@@ -595,21 +571,6 @@ return|return
 literal|"Fetch CiteSeer by ID"
 return|;
 block|}
-DECL|method|cancelled ()
-specifier|public
-name|void
-name|cancelled
-parameter_list|()
-block|{      }
-DECL|method|done (int entriesImported)
-specifier|public
-name|void
-name|done
-parameter_list|(
-name|int
-name|entriesImported
-parameter_list|)
-block|{      }
 DECL|method|stopFetching ()
 specifier|public
 name|void

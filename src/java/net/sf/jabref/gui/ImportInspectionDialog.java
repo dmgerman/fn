@@ -742,6 +742,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|imports
+operator|.
+name|ImportInspector
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|labelPattern
 operator|.
 name|LabelPatternUtil
@@ -963,6 +977,8 @@ class|class
 name|ImportInspectionDialog
 extends|extends
 name|JDialog
+implements|implements
+name|ImportInspector
 block|{
 DECL|interface|CallBack
 specifier|public
@@ -978,6 +994,13 @@ name|stopFetching
 parameter_list|()
 function_decl|;
 block|}
+DECL|field|ths
+specifier|protected
+name|ImportInspectionDialog
+name|ths
+init|=
+name|this
+decl_stmt|;
 DECL|field|panel
 specifier|protected
 name|BasePanel
@@ -2324,6 +2347,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+comment|/* (non-Javadoc) 	 * @see net.sf.jabref.gui.ImportInspection#setProgress(int, int) 	 */
 DECL|method|setProgress (int current, int max)
 specifier|public
 name|void
@@ -2365,7 +2389,7 @@ name|current
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Wrapper for addEntries(List) that takes a single entry.      *       * @param entry      *            The entry to add.      */
+comment|/* (non-Javadoc) 	 * @see net.sf.jabref.gui.ImportInspection#addEntry(net.sf.jabref.BibtexEntry) 	 */
 DECL|method|addEntry (BibtexEntry entry)
 specifier|public
 name|void
@@ -2401,7 +2425,7 @@ name|list
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Add a List of entries to the table view. The table will update to show      * the added entries. Synchronizes on this.entries to avoid conflict with      * the delete button which removes entries.      *       * @param entries      */
+comment|/* (non-Javadoc) 	 * @see net.sf.jabref.gui.ImportInspection#addEntries(java.util.Collection) 	 */
 DECL|method|addEntries (Collection<BibtexEntry> entries)
 specifier|public
 name|void
@@ -2710,7 +2734,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * When this method is called, the dialog will visually change to indicate      * that all entries are in place.      */
+comment|/* (non-Javadoc) 	 * @see net.sf.jabref.gui.ImportInspection#entryListComplete() 	 */
 DECL|method|entryListComplete ()
 specifier|public
 name|void

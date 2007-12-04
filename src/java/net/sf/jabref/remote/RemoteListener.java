@@ -14,25 +14,111 @@ end_package
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|io
 operator|.
-name|jabref
-operator|.
-name|BibtexEntry
+name|IOException
 import|;
 end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|io
+operator|.
+name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|OutputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|net
 operator|.
-name|sf
+name|InetAddress
+import|;
+end_import
+
+begin_import
+import|import
+name|java
 operator|.
-name|jabref
+name|net
 operator|.
-name|JabRef
+name|ServerSocket
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|Socket
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|SocketException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|SocketTimeoutException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Vector
 import|;
 end_import
 
@@ -56,6 +142,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibtexEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|Globals
 import|;
 end_import
@@ -68,9 +166,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|gui
-operator|.
-name|ImportInspectionDialog
+name|JabRef
 import|;
 end_import
 
@@ -88,76 +184,6 @@ name|ParserResult
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|OutputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
 begin_comment
 comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Aug 14, 2005  * Time: 8:11:58 PM  * To change this template use File | Settings | File Templates.  */
 end_comment
@@ -169,10 +195,6 @@ class|class
 name|RemoteListener
 extends|extends
 name|Thread
-implements|implements
-name|ImportInspectionDialog
-operator|.
-name|CallBack
 block|{
 DECL|field|jabref
 specifier|private
@@ -299,8 +321,6 @@ literal|false
 expr_stmt|;
 return|return;
 block|}
-comment|//byte[] address = socket.getInetAddress().getAddress();
-comment|//System.out.println("Connection: "+address[0]+" "+address[1]+" "+address[2]+" "+address[3]);
 name|OutputStream
 name|out
 init|=
@@ -587,8 +607,6 @@ argument_list|,
 literal|""
 argument_list|,
 literal|false
-argument_list|,
-name|this
 argument_list|)
 expr_stmt|;
 block|}
@@ -1028,49 +1046,6 @@ literal|false
 return|;
 block|}
 block|}
-comment|// This method is called by the dialog when the user has selected the
-comment|// wanted entries, and clicked Ok. The callback object can update status
-comment|// line etc.
-DECL|method|done (int entriesImported)
-specifier|public
-name|void
-name|done
-parameter_list|(
-name|int
-name|entriesImported
-parameter_list|)
-block|{
-name|jabref
-operator|.
-name|jrf
-operator|.
-name|output
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Imported entries"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-comment|// This method is called by the dialog when the user has cancelled the import.
-DECL|method|cancelled ()
-specifier|public
-name|void
-name|cancelled
-parameter_list|()
-block|{      }
-comment|// This method is called by the dialog when the user has cancelled or
-comment|// signalled a stop. It is expected that any long-running fetch operations
-comment|// will stop after this method is called.
-DECL|method|stopFetching ()
-specifier|public
-name|void
-name|stopFetching
-parameter_list|()
-block|{      }
 block|}
 end_class
 

@@ -40,7 +40,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefFrame
+name|OutputPrinter
 import|;
 end_import
 
@@ -59,7 +59,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Implement this interface to add another fetcher (something that grabs records  * from the Web for JabRef). Have a look at the existing implemenations  * OAI2Fetcher, IEEEXploreFetcher, MedlineFetcher, JStorFetcher and  * CiteSeerEntryFetcher.  *   * Note: You also need to implement the method stopFetching from  * ImportInspectionDialog.Callback  */
+comment|/**  * Implement this interface to add another fetcher (something that grabs records  * from the Web for JabRef). Have a look at the existing implemenations  * OAI2Fetcher, IEEEXploreFetcher, MedlineFetcher, JStorFetcher and  * CiteSeerEntryFetcher.  *   * Note: You also need to implement the method stopFetching from  * ImportInspectionDialog.Callback  *   * A Fetcher should not execute any GUI Operations, because it might be run in  * headless mode, but rather use the OutputPrinter for talking to the user.  */
 end_comment
 
 begin_interface
@@ -72,20 +72,20 @@ name|ImportInspectionDialog
 operator|.
 name|CallBack
 block|{
-comment|/**      * Handle a query entered by the user.      *       * The method may block the caller if query takes some time.      *       * The caller may not assume that the query is done when the call returns,      * but should rather wait for the call "entryListComplete" to the import      * inspection dialog.      *       * @param query      *            The query text.      * @param dialog      *            The dialog to add imported entries to.      * @param frame      *            The application frame.      */
-DECL|method|processQuery (String query, ImportInspectionDialog dialog, JabRefFrame frame)
+comment|/**      * Handle a query entered by the user.      *       * The method is expected to block the caller until all entries have been      * reported to the inspector.      *       * @param query      *            The query text.      * @param inspector      *            The dialog to add imported entries to.      * @param status      *            An OutputPrinter passed to the fetcher for reporting about the      *            status of the fetching.      *       * @return True if the query was completed successfully, false if an error      *         occurred.      */
+DECL|method|processQuery (String query, ImportInspector inspector, OutputPrinter status)
 specifier|public
-name|void
+name|boolean
 name|processQuery
 parameter_list|(
 name|String
 name|query
 parameter_list|,
-name|ImportInspectionDialog
-name|dialog
+name|ImportInspector
+name|inspector
 parameter_list|,
-name|JabRefFrame
-name|frame
+name|OutputPrinter
+name|status
 parameter_list|)
 function_decl|;
 comment|/**      * The title for this fetcher, displayed in the menu and in the side pane.      *       * @return The title      */

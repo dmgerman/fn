@@ -556,10 +556,6 @@ class|class
 name|MyWorker
 extends|extends
 name|AbstractWorker
-implements|implements
-name|ImportInspectionDialog
-operator|.
-name|CallBack
 block|{
 DECL|field|filenames
 DECL|field|formatName
@@ -629,7 +625,6 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-comment|/*if ((filenames != null)&& !(new File(filename)).exists()) {                JOptionPane.showMessageDialog(frame, Globals.lang("File not found") + ": '" + filename + "'",                        Globals.lang("Error"), JOptionPane.ERROR_MESSAGE);            } else*/
 if|if
 condition|(
 operator|(
@@ -664,7 +659,6 @@ literal|"Starting import"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//frame.output(Globals.lang("Importing file") + ": '" + filename + "'");
 name|fileOk
 operator|=
 literal|true
@@ -942,13 +936,6 @@ argument_list|()
 operator|.
 name|getEntries
 argument_list|()
-argument_list|)
-expr_stmt|;
-name|diag
-operator|.
-name|addCallBack
-argument_list|(
-name|this
 argument_list|)
 expr_stmt|;
 name|diag
@@ -1318,14 +1305,6 @@ operator|.
 name|unblock
 argument_list|()
 expr_stmt|;
-block|}
-DECL|method|stopFetching ()
-specifier|public
-name|void
-name|stopFetching
-parameter_list|()
-block|{
-comment|// No process to stop.
 block|}
 block|}
 DECL|method|mergeImportResults (List<Pair<String, ParserResult>> imports)

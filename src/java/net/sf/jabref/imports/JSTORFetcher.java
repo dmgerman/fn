@@ -176,21 +176,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefFrame
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|gui
-operator|.
-name|ImportInspectionDialog
+name|OutputPrinter
 import|;
 end_import
 
@@ -324,28 +310,21 @@ parameter_list|()
 block|{
 comment|// cannot be interrupted
 block|}
-DECL|method|processQuery (String query, ImportInspectionDialog dialog, JabRefFrame frame)
+DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter status)
 specifier|public
-name|void
+name|boolean
 name|processQuery
 parameter_list|(
 name|String
 name|query
 parameter_list|,
-name|ImportInspectionDialog
+name|ImportInspector
 name|dialog
 parameter_list|,
-name|JabRefFrame
-name|frame
+name|OutputPrinter
+name|status
 parameter_list|)
 block|{
-name|dialog
-operator|.
-name|setVisible
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
 try|try
 block|{
 comment|// First open a ticket with JStor
@@ -390,17 +369,10 @@ operator|==
 literal|0
 condition|)
 block|{
-name|dialog
+name|status
 operator|.
-name|dispose
-argument_list|()
-expr_stmt|;
-name|JOptionPane
-operator|.
-name|showMessageDialog
+name|showMessage
 argument_list|(
-name|frame
-argument_list|,
 name|Globals
 operator|.
 name|lang
@@ -422,20 +394,29 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
+for|for
+control|(
+name|BibtexEntry
+name|entry
+range|:
+name|entries
+control|)
+block|{
 name|dialog
 operator|.
-name|addEntries
+name|addEntry
 argument_list|(
-name|entries
+name|entry
 argument_list|)
 expr_stmt|;
-name|dialog
-operator|.
-name|entryListComplete
-argument_list|()
-expr_stmt|;
+block|}
+return|return
+literal|true
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -443,9 +424,9 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-name|frame
+name|status
 operator|.
-name|output
+name|showMessage
 argument_list|(
 name|Globals
 operator|.
@@ -463,6 +444,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+literal|false
+return|;
 block|}
 comment|/**      * Given a ticket an a list of citations, retrieve BibtexEntries from JStor      *       * @param ticket      *            A valid ticket as returned by openTicket()      * @param citations      *            A list of citations as returned by getCitations()      * @return A collection of BibtexEntries parsed from the bibtex returned by      *         JStor.      * @throws IOException      *             Most probably related to a problem connecting to JStor.      */
 DECL|method|getBibtexEntries (String ticket, String citations)

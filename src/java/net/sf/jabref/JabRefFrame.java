@@ -1135,14 +1135,9 @@ class|class
 name|JabRefFrame
 extends|extends
 name|JFrame
+implements|implements
+name|OutputPrinter
 block|{
-comment|// CO: Code Smells...
-DECL|field|ths
-name|JabRefFrame
-name|ths
-init|=
-name|this
-decl_stmt|;
 DECL|field|contentPane
 name|UIFSplitPane
 name|contentPane
@@ -1159,7 +1154,6 @@ name|Globals
 operator|.
 name|prefs
 decl_stmt|;
-comment|//new JabRefPreferences();
 DECL|field|prefsDialog
 name|PrefsDialog3
 name|prefsDialog
@@ -1330,7 +1324,6 @@ operator|new
 name|JProgressBar
 argument_list|()
 decl_stmt|;
-comment|// SearchManager searchManager = new SearchManager(ths, prefs);
 DECL|field|fileHistory
 specifier|private
 name|FileHistory
@@ -1607,7 +1600,9 @@ init|=
 operator|new
 name|SaveAllAction
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|)
 decl_stmt|,
 DECL|field|saveSelectedAs
@@ -3661,7 +3656,9 @@ init|=
 operator|new
 name|JDialog
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|,
 name|Globals
 operator|.
@@ -3828,7 +3825,9 @@ name|placeDialog
 argument_list|(
 name|about
 argument_list|,
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|)
 expr_stmt|;
 name|about
@@ -3854,7 +3853,9 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|,
 literal|"Could not load file 'About.html'"
 argument_list|,
@@ -3875,7 +3876,7 @@ name|void
 name|preferences
 parameter_list|()
 block|{
-comment|//PrefsDialog.showPrefsDialog(ths, prefs);
+comment|//PrefsDialog.showPrefsDialog(JabRefFrame.this, prefs);
 name|AbstractWorker
 name|worker
 init|=
@@ -4061,7 +4062,9 @@ name|JOptionPane
 operator|.
 name|showConfirmDialog
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|,
 name|Globals
 operator|.
@@ -4220,7 +4223,9 @@ name|putInt
 argument_list|(
 literal|"posX"
 argument_list|,
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 operator|.
 name|getLocation
 argument_list|()
@@ -4234,7 +4239,9 @@ name|putInt
 argument_list|(
 literal|"posY"
 argument_list|,
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 operator|.
 name|getLocation
 argument_list|()
@@ -4248,7 +4255,9 @@ name|putInt
 argument_list|(
 literal|"sizeX"
 argument_list|,
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 operator|.
 name|getSize
 argument_list|()
@@ -4262,7 +4271,9 @@ name|putInt
 argument_list|(
 literal|"sizeY"
 argument_list|,
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 operator|.
 name|getSize
 argument_list|()
@@ -6071,7 +6082,9 @@ init|=
 operator|new
 name|EntryTypeDialog
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|)
 decl_stmt|;
 name|Util
@@ -6080,7 +6093,9 @@ name|placeDialog
 argument_list|(
 name|etd
 argument_list|,
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|)
 expr_stmt|;
 name|etd
@@ -6930,7 +6945,9 @@ argument_list|(
 operator|new
 name|ExpandEndnoteFilters
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -7061,7 +7078,7 @@ argument_list|(
 name|manageJournals
 argument_list|)
 expr_stmt|;
-comment|/*options.add(new AbstractAction("Font") {       public void actionPerformed(ActionEvent e) {           // JDialog dl = new EntryCustomizationDialog(ths);           Font f=new FontSelectorDialog         (ths, GUIGlobals.CURRENTFONT).getSelectedFont();        if(f==null)         return;        else         GUIGlobals.CURRENTFONT=f;        // updatefont        prefs.put("fontFamily", GUIGlobals.CURRENTFONT.getFamily());        prefs.putInt("fontStyle", GUIGlobals.CURRENTFONT.getStyle());        prefs.putInt("fontSize", GUIGlobals.CURRENTFONT.getSize());        if (tabbedPane.getTabCount()> 0) {         for (int i=0; i<tabbedPane.getTabCount(); i++) {          baseAt(i).entryTable.updateFont();          baseAt(i).refreshTable();         }        }       }       });*/
+comment|/*options.add(new AbstractAction("Font") {       public void actionPerformed(ActionEvent e) {           // JDialog dl = new EntryCustomizationDialog(JabRefFrame.this);           Font f=new FontSelectorDialog         (JabRefFrame.this, GUIGlobals.CURRENTFONT).getSelectedFont();        if(f==null)         return;        else         GUIGlobals.CURRENTFONT=f;        // updatefont        prefs.put("fontFamily", GUIGlobals.CURRENTFONT.getFamily());        prefs.putInt("fontStyle", GUIGlobals.CURRENTFONT.getStyle());        prefs.putInt("fontSize", GUIGlobals.CURRENTFONT.getSize());        if (tabbedPane.getTabCount()> 0) {         for (int i=0; i<tabbedPane.getTabCount(); i++) {          baseAt(i).entryTable.updateFont();          baseAt(i).refreshTable();         }        }       }       });*/
 comment|//options.add(selectKeys);
 name|mb
 operator|.
@@ -8170,7 +8187,9 @@ init|=
 operator|new
 name|BasePanel
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|,
 name|db
 argument_list|,
@@ -8351,7 +8370,9 @@ name|placeDialog
 argument_list|(
 name|d
 argument_list|,
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|)
 expr_stmt|;
 name|d
@@ -8383,7 +8404,9 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|,
 name|Globals
 operator|.
@@ -8583,7 +8606,9 @@ name|JOptionPane
 operator|.
 name|showConfirmDialog
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|,
 name|Globals
 operator|.
@@ -9362,7 +9387,9 @@ operator|=
 operator|new
 name|BasePanel
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|)
 expr_stmt|;
 name|int
@@ -9570,13 +9597,17 @@ init|=
 operator|new
 name|FromAuxDialog
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|,
 literal|""
 argument_list|,
 literal|true
 argument_list|,
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 operator|.
 name|tabbedPane
 argument_list|)
@@ -9587,7 +9618,9 @@ name|placeDialog
 argument_list|(
 name|dialog
 argument_list|,
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|)
 expr_stmt|;
 name|dialog
@@ -9611,7 +9644,9 @@ init|=
 operator|new
 name|BasePanel
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|,
 name|dialog
 operator|.
@@ -9756,7 +9791,9 @@ init|=
 operator|new
 name|IntegrityWizard
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|,
 name|basePanel
 argument_list|()
@@ -9768,7 +9805,9 @@ name|placeDialog
 argument_list|(
 name|wizard
 argument_list|,
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|)
 expr_stmt|;
 name|wizard
@@ -9846,8 +9885,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**    * This method does the job of adding imported entries into the active database, or into a new one.    * It shows the ImportInspectionDialog if preferences indicate it should be used. Otherwise it imports    * directly.    * @param panel The BasePanel to add to.    * @param entries The entries to add.    * @param filename Name of the file where the import came from.    * @param openInNew Should the entries be imported into a new database?    * @param callBack The callback for the ImportInspectionDialog to use.    */
-DECL|method|addImportedEntries (final BasePanel panel, final List<BibtexEntry> entries, String filename, final boolean openInNew, final ImportInspectionDialog.CallBack callBack)
+comment|/**      * This method does the job of adding imported entries into the active      * database, or into a new one. It shows the ImportInspectionDialog if      * preferences indicate it should be used. Otherwise it imports directly.      *       * @param panel      *            The BasePanel to add to.      * @param entries      *            The entries to add.      * @param filename      *            Name of the file where the import came from.      * @param openInNew      *            Should the entries be imported into a new database?      * @param callBack      *            The callback for the ImportInspectionDialog to use.      */
+DECL|method|addImportedEntries (final BasePanel panel, final List<BibtexEntry> entries, String filename, final boolean openInNew)
 specifier|public
 name|void
 name|addImportedEntries
@@ -9869,16 +9908,9 @@ parameter_list|,
 specifier|final
 name|boolean
 name|openInNew
-parameter_list|,
-specifier|final
-name|ImportInspectionDialog
-operator|.
-name|CallBack
-name|callBack
 parameter_list|)
 block|{
-comment|// Use the import inspection dialog if it is enabled in preferences, and (there are more than
-comment|// one entry or the inspection dialog is also enabled for single entries):
+comment|/*          * Use the import inspection dialog if it is enabled in preferences, and          * (there are more than one entry or the inspection dialog is also          * enabled for single entries):          */
 if|if
 condition|(
 name|Globals
@@ -9930,7 +9962,9 @@ init|=
 operator|new
 name|ImportInspectionDialog
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|,
 name|panel
 argument_list|,
@@ -9957,13 +9991,6 @@ argument_list|)
 expr_stmt|;
 name|diag
 operator|.
-name|addCallBack
-argument_list|(
-name|callBack
-argument_list|)
-expr_stmt|;
-name|diag
-operator|.
 name|entryListComplete
 argument_list|()
 expr_stmt|;
@@ -9973,7 +10000,9 @@ name|placeDialog
 argument_list|(
 name|diag
 argument_list|,
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|)
 expr_stmt|;
 name|diag
@@ -9995,7 +10024,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 operator|.
 name|addBibEntries
 argument_list|(
@@ -10094,7 +10125,9 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|,
 name|Globals
 operator|.
@@ -10245,7 +10278,9 @@ init|=
 operator|new
 name|BasePanel
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|,
 name|database
 argument_list|,
@@ -10462,7 +10497,9 @@ init|=
 operator|new
 name|DuplicateResolverDialog
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|,
 name|existingEntry
 argument_list|,
@@ -10735,7 +10772,9 @@ argument_list|(
 operator|new
 name|ImportMenuItem
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|,
 name|intoNew
 argument_list|)
@@ -10799,7 +10838,9 @@ argument_list|(
 operator|new
 name|ImportMenuItem
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|,
 name|intoNew
 argument_list|,
@@ -10862,7 +10903,9 @@ argument_list|(
 operator|new
 name|ImportMenuItem
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|,
 name|intoNew
 argument_list|,
@@ -11329,7 +11372,9 @@ name|JOptionPane
 operator|.
 name|showConfirmDialog
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|,
 name|Globals
 operator|.
@@ -12114,7 +12159,9 @@ init|=
 operator|new
 name|ExportCustomizationDialog
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|)
 decl_stmt|;
 name|ecd
@@ -12160,7 +12207,9 @@ init|=
 operator|new
 name|ImportCustomizationDialog
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|)
 decl_stmt|;
 name|ecd
@@ -12206,7 +12255,9 @@ init|=
 operator|new
 name|EntryCustomizationDialog2
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|)
 decl_stmt|;
 name|Util
@@ -12215,7 +12266,9 @@ name|placeDialog
 argument_list|(
 name|dl
 argument_list|,
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|)
 expr_stmt|;
 name|dl
@@ -12261,7 +12314,9 @@ init|=
 operator|new
 name|GenFieldsCustomizer
 argument_list|(
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|)
 decl_stmt|;
 name|Util
@@ -12270,7 +12325,9 @@ name|placeDialog
 argument_list|(
 name|gf
 argument_list|,
-name|ths
+name|JabRefFrame
+operator|.
+name|this
 argument_list|)
 expr_stmt|;
 name|gf
@@ -12417,6 +12474,69 @@ return|return
 literal|false
 return|;
 block|}
+block|}
+DECL|method|showMessage (Object message, String title, int msgType)
+specifier|public
+name|void
+name|showMessage
+parameter_list|(
+name|Object
+name|message
+parameter_list|,
+name|String
+name|title
+parameter_list|,
+name|int
+name|msgType
+parameter_list|)
+block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|this
+argument_list|,
+name|message
+argument_list|,
+name|title
+argument_list|,
+name|msgType
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setStatus (String s)
+specifier|public
+name|void
+name|setStatus
+parameter_list|(
+name|String
+name|s
+parameter_list|)
+block|{
+name|output
+argument_list|(
+name|s
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|showMessage (String message)
+specifier|public
+name|void
+name|showMessage
+parameter_list|(
+name|String
+name|message
+parameter_list|)
+block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|this
+argument_list|,
+name|message
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
