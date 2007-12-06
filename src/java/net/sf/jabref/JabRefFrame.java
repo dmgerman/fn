@@ -2385,6 +2385,31 @@ literal|"Open URL or DOI"
 argument_list|)
 argument_list|)
 decl_stmt|,
+DECL|field|openSpires
+name|openSpires
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"openSpires"
+argument_list|,
+literal|"Open SPIRES entry"
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Open SPIRES entry"
+argument_list|)
+argument_list|,
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Open SPIRES entry"
+argument_list|)
+argument_list|)
+decl_stmt|,
 DECL|field|dupliCheck
 name|dupliCheck
 init|=
@@ -6896,6 +6921,13 @@ argument_list|)
 expr_stmt|;
 name|tools
 operator|.
+name|add
+argument_list|(
+name|openSpires
+argument_list|)
+expr_stmt|;
+name|tools
+operator|.
 name|addSeparator
 argument_list|()
 expr_stmt|;
@@ -7862,6 +7894,8 @@ block|,
 name|openPdf
 block|,
 name|openUrl
+block|,
+name|openSpires
 block|,
 name|togglePreview
 block|,

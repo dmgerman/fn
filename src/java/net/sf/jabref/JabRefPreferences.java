@@ -5215,6 +5215,15 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
+literal|"Open SPIRES entry"
+argument_list|,
+literal|"ctrl F3"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
 literal|"Toggle entry preview"
 argument_list|,
 literal|"ctrl F9"
@@ -5398,6 +5407,15 @@ argument_list|(
 literal|"New file link"
 argument_list|,
 literal|"ctrl N"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Fetch SPIRES"
+argument_list|,
+literal|"ctrl F8"
 argument_list|)
 expr_stmt|;
 block|}
