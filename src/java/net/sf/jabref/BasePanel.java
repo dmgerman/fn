@@ -4996,15 +4996,6 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|dir
-argument_list|)
-expr_stmt|;
 for|for
 control|(
 name|int

@@ -349,6 +349,31 @@ else|:
 literal|"Import into current database"
 argument_list|)
 expr_stmt|;
+name|putValue
+argument_list|(
+name|ACCELERATOR_KEY
+argument_list|,
+name|openInNew
+condition|?
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Import into new database"
+argument_list|)
+else|:
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Import into current database"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 specifier|public
 name|void

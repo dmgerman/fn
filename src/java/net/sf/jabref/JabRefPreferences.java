@@ -5418,6 +5418,24 @@ argument_list|,
 literal|"ctrl F8"
 argument_list|)
 expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Import into current database"
+argument_list|,
+literal|"ctrl I"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Import into new database"
+argument_list|,
+literal|"ctrl shift I"
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getNextUnit (Reader data)
 specifier|private
