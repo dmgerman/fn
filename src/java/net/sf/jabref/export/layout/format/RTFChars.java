@@ -106,6 +106,7 @@ name|i
 operator|++
 control|)
 block|{
+comment|/*System.out.println("incommand="+incommand+". escaped="+escaped                             +". currentCommand='"+(currentCommand!=null?currentCommand.toString():"")+"'");             System.out.println("sb: '"+sb.toString()+"'");*/
 name|char
 name|c
 init|=
@@ -116,6 +117,7 @@ argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
+comment|//System.out.println("Char: '"+((char)c)+"'");
 if|if
 condition|(
 name|escaped
@@ -412,6 +414,12 @@ name|c
 operator|!=
 literal|'{'
 operator|)
+operator|&&
+operator|(
+name|c
+operator|!=
+literal|'}'
+operator|)
 operator|)
 condition|)
 name|sb
@@ -423,7 +431,96 @@ argument_list|)
 expr_stmt|;
 else|else
 block|{
-comment|// First test if we are already at the end of the string.
+comment|// First test for braces that may be part of a LaTeX command:
+if|if
+condition|(
+operator|(
+name|c
+operator|==
+literal|'{'
+operator|)
+operator|&&
+operator|(
+name|currentCommand
+operator|.
+name|length
+argument_list|()
+operator|==
+literal|0
+operator|)
+condition|)
+block|{
+comment|// We have seen something like \{, which is probably the start
+comment|// of a command like \{aa}. Swallow the brace.
+continue|continue;
+block|}
+elseif|else
+if|if
+condition|(
+operator|(
+name|c
+operator|==
+literal|'}'
+operator|)
+operator|&&
+operator|(
+name|currentCommand
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+operator|)
+condition|)
+block|{
+comment|// Seems to be the end of a command like \{aa}. Look it up:
+name|String
+name|command
+init|=
+name|currentCommand
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+name|String
+name|result
+init|=
+name|Globals
+operator|.
+name|RTFCHARS
+operator|.
+name|get
+argument_list|(
+name|command
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|result
+operator|!=
+literal|null
+condition|)
+block|{
+name|sb
+operator|.
+name|append
+argument_list|(
+name|result
+argument_list|)
+expr_stmt|;
+block|}
+name|incommand
+operator|=
+literal|false
+expr_stmt|;
+name|escaped
+operator|=
+literal|false
+expr_stmt|;
+continue|continue;
+block|}
+comment|// Then look for italics etc.,
+comment|// but first check if we are already at the end of the string.
 if|if
 condition|(
 name|i
@@ -440,9 +537,20 @@ name|testContent
 break|;
 if|if
 condition|(
+operator|(
 name|c
 operator|==
 literal|'{'
+operator|)
+operator|&&
+operator|(
+name|currentCommand
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+operator|)
 condition|)
 block|{
 name|String

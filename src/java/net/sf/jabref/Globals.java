@@ -7482,10 +7482,11 @@ name|put
 argument_list|(
 literal|"ss"
 argument_list|,
-literal|"{\\uc2\\u223ss"
+literal|"{\\uc2\\u223ss}"
 argument_list|)
 expr_stmt|;
 comment|// "szlig"
+comment|//RTFCHARS.put("ss", "AFFEN"); // "szlig"
 comment|// RTFCHARS.put("`a", "\\u224"); // "agrave" exists in standard
 comment|// codepage
 name|RTFCHARS

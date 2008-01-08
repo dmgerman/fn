@@ -1278,15 +1278,12 @@ block|{
 comment|// This "auth" business was a dead end, so just
 comment|// use it literally:
 return|return
-name|_entry
-operator|.
 name|getField
 argument_list|(
+name|_entry
+argument_list|,
 name|val
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 block|}
@@ -1642,15 +1639,12 @@ block|{
 comment|// This "ed" business was a dead end, so just
 comment|// use it literally:
 return|return
-name|_entry
-operator|.
 name|getField
 argument_list|(
+name|_entry
+argument_list|,
 name|val
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 block|}
@@ -1850,15 +1844,12 @@ decl_stmt|;
 name|String
 name|kw
 init|=
-name|_entry
-operator|.
 name|getField
 argument_list|(
+name|_entry
+argument_list|,
 literal|"keywords"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -1921,10 +1912,10 @@ else|else
 block|{
 comment|// we havent seen any special demands
 return|return
-name|_entry
-operator|.
 name|getField
 argument_list|(
+name|_entry
+argument_list|,
 name|val
 argument_list|)
 return|;
@@ -1940,6 +1931,43 @@ return|return
 literal|""
 return|;
 block|}
+block|}
+comment|/**      * Look up a field of a BibtexEntry, returning its String value, or an      * empty string if it isn't set.      * @param entry The entry.      * @param field The field to look up.      * @return The field value.      */
+DECL|method|getField (BibtexEntry entry, String field)
+specifier|private
+specifier|static
+name|String
+name|getField
+parameter_list|(
+name|BibtexEntry
+name|entry
+parameter_list|,
+name|String
+name|field
+parameter_list|)
+block|{
+name|Object
+name|o
+init|=
+name|entry
+operator|.
+name|getField
+argument_list|(
+name|field
+argument_list|)
+decl_stmt|;
+return|return
+name|o
+operator|!=
+literal|null
+condition|?
+operator|(
+name|String
+operator|)
+name|o
+else|:
+literal|""
+return|;
 block|}
 comment|/**      * Computes an appendix to a BibTeX key that could make it unique. We use      * a-z for numbers 0-25, and then aa-az, ba-bz, etc.      *       * @param number      *            The appendix number.      * @return The String to append.      */
 DECL|method|getAddition (int number)
