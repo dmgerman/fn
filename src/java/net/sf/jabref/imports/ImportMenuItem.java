@@ -799,6 +799,11 @@ name|e
 parameter_list|)
 block|{
 comment|// No entries found...
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 comment|// Ok, done. Then try to gather in all we have found. Since we might

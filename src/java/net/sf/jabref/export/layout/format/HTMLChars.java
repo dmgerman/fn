@@ -607,6 +607,13 @@ name|command
 operator|.
 name|equals
 argument_list|(
+literal|"em"
+argument_list|)
+operator|||
+name|command
+operator|.
+name|equals
+argument_list|(
 literal|"emph"
 argument_list|)
 operator|||

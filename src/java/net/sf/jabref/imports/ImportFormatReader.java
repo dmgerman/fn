@@ -2025,6 +2025,8 @@ name|getImportFormats
 argument_list|()
 control|)
 block|{
+try|try
+block|{
 name|List
 argument_list|<
 name|BibtexEntry
@@ -2100,6 +2102,15 @@ name|entries
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ex
+parameter_list|)
+block|{
+comment|// The import didn't succeed. Go on.
 block|}
 block|}
 if|if

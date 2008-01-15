@@ -1116,15 +1116,21 @@ name|plannedName
 return|;
 block|}
 comment|/**      * Look for the last '.' in the link, and returnthe following characters.      * This gives the extension for most reasonably named links.      *      * @param link The link      * @return The suffix, excluding the dot (e.g. ".pdf")      */
-DECL|method|getSuffix (String link)
+DECL|method|getSuffix (final String link)
 specifier|public
 name|String
 name|getSuffix
 parameter_list|(
+specifier|final
 name|String
 name|link
 parameter_list|)
 block|{
+name|String
+name|strippedLink
+init|=
+name|link
+decl_stmt|;
 try|try
 block|{
 comment|// Try to strip the query string, if any, to get the correct suffix:
@@ -1166,7 +1172,7 @@ literal|1
 operator|)
 condition|)
 block|{
-name|link
+name|strippedLink
 operator|=
 name|link
 operator|.
@@ -1190,15 +1196,6 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|link
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 catch|catch
@@ -1210,10 +1207,14 @@ block|{
 comment|// Don't report this error, since this getting the suffix is a non-critical
 comment|// operation, and this error will be triggered and reported elsewhere.
 block|}
+comment|// First see if the stripped link gives a reasonable suffix:
+name|String
+name|suffix
+decl_stmt|;
 name|int
 name|index
 init|=
-name|link
+name|strippedLink
 operator|.
 name|lastIndexOf
 argument_list|(
@@ -1231,7 +1232,93 @@ operator|||
 operator|(
 name|index
 operator|==
+name|strippedLink
+operator|.
+name|length
+argument_list|()
+operator|-
+literal|1
+operator|)
+condition|)
+comment|// No occurence, or at the end
+name|suffix
+operator|=
+literal|null
+expr_stmt|;
+else|else
+name|suffix
+operator|=
+name|strippedLink
+operator|.
+name|substring
+argument_list|(
+name|index
+operator|+
+literal|1
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getExternalFileTypeByExt
+argument_list|(
+name|suffix
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getExternalFileTypeByExt
+argument_list|(
+name|suffix
+argument_list|)
+operator|!=
+literal|null
+condition|)
+block|{
+return|return
+name|suffix
+return|;
+block|}
+else|else
+block|{
+comment|// If the suffix doesn't seem to give any reasonable file type, try
+comment|// with the non-stripped link:
+name|String
+name|suffix2
+decl_stmt|;
+name|index
+operator|=
 name|link
+operator|.
+name|lastIndexOf
+argument_list|(
+literal|'.'
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|(
+name|index
+operator|<=
+literal|0
+operator|)
+operator|||
+operator|(
+name|index
+operator|==
+name|strippedLink
 operator|.
 name|length
 argument_list|()
@@ -1241,8 +1328,10 @@ operator|)
 condition|)
 comment|// No occurence, or at the end
 return|return
-literal|null
+name|suffix
 return|;
+comment|// return the first one we found, anyway.
+else|else
 return|return
 name|link
 operator|.
@@ -1253,6 +1342,7 @@ operator|+
 literal|1
 argument_list|)
 return|;
+block|}
 block|}
 DECL|method|getFileDirectory (String link)
 specifier|public
