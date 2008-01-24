@@ -48,6 +48,16 @@ name|SidePaneManager
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|*
+import|;
+end_import
+
 begin_comment
 comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Nov 26, 2007  * Time: 5:44:16 PM  * To change this template use File | Settings | File Templates.  */
 end_comment
@@ -76,10 +86,10 @@ name|SidePaneComponent
 name|getSidePaneComponent
 parameter_list|()
 function_decl|;
-DECL|method|getMenuName ()
+DECL|method|getMenuItem ()
 specifier|public
-name|String
-name|getMenuName
+name|JMenuItem
+name|getMenuItem
 parameter_list|()
 function_decl|;
 DECL|method|getShortcutKey ()

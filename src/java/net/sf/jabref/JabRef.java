@@ -4501,7 +4501,7 @@ name|jrf
 operator|.
 name|sidePaneManager
 operator|.
-name|registerAndShow
+name|register
 argument_list|(
 name|comp
 operator|.
@@ -4509,6 +4509,16 @@ name|getName
 argument_list|()
 argument_list|,
 name|comp
+argument_list|)
+expr_stmt|;
+name|jrf
+operator|.
+name|addPluginMenuItem
+argument_list|(
+name|plugin
+operator|.
+name|getMenuItem
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
