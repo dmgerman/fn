@@ -926,6 +926,7 @@ argument_list|(
 literal|"defaultEncoding"
 argument_list|)
 decl_stmt|;
+specifier|final
 name|ParserResult
 name|pr
 init|=
@@ -986,6 +987,7 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+specifier|final
 name|BasePanel
 name|panel
 init|=
@@ -1003,6 +1005,19 @@ comment|// any post open actions need to be done. For instance, checking
 comment|// if we found new entry types that can be imported, or checking
 comment|// if the database contents should be modified due to new features
 comment|// in this version of JabRef:
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+operator|new
+name|Runnable
+argument_list|()
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
 name|performPostOpenActions
 argument_list|(
 name|panel
@@ -1010,6 +1025,10 @@ argument_list|,
 name|pr
 argument_list|,
 literal|true
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 argument_list|)
 expr_stmt|;
 block|}
