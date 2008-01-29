@@ -1743,6 +1743,17 @@ operator|.
 name|FALSE
 argument_list|)
 expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"renameOnMoveFileToFileDir"
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
+argument_list|)
+expr_stmt|;
 comment|// The general fields stuff is made obsolete by the CUSTOM_TAB_... entries.
 name|defaults
 operator|.
