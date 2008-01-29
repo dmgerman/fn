@@ -1045,32 +1045,26 @@ name|String
 name|suffix
 parameter_list|)
 block|{
-if|if
-condition|(
-name|suffix
-operator|==
-literal|null
-condition|)
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Link has no obvious extension (DownloadExternalFile.download()"
-argument_list|)
-expr_stmt|;
-block|}
 name|String
 name|plannedName
 init|=
 name|bibtexKey
-operator|+
+decl_stmt|;
+if|if
+condition|(
+name|suffix
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+condition|)
+name|plannedName
+operator|+=
 literal|"."
 operator|+
 name|suffix
-decl_stmt|;
+expr_stmt|;
 comment|/*         * [ 1548875 ] download pdf produces unsupported filename         *         * http://sourceforge.net/tracker/index.php?func=detail&aid=1548875&group_id=92314&atid=600306         *         */
 if|if
 condition|(
@@ -1257,22 +1251,6 @@ operator|+
 literal|1
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getExternalFileTypeByExt
-argument_list|(
-name|suffix
-argument_list|)
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|Globals
@@ -1295,9 +1273,6 @@ else|else
 block|{
 comment|// If the suffix doesn't seem to give any reasonable file type, try
 comment|// with the non-stripped link:
-name|String
-name|suffix2
-decl_stmt|;
 name|index
 operator|=
 name|link
@@ -1326,11 +1301,55 @@ operator|-
 literal|1
 operator|)
 condition|)
+block|{
 comment|// No occurence, or at the end
+comment|// Check if there are path separators in the suffix - if so, it is definitely
+comment|// not a proper suffix, so we should give up:
+if|if
+condition|(
+name|suffix
+operator|.
+name|indexOf
+argument_list|(
+literal|'/'
+argument_list|)
+operator|>
+literal|0
+condition|)
+return|return
+literal|""
+return|;
+else|else
 return|return
 name|suffix
 return|;
 comment|// return the first one we found, anyway.
+block|}
+else|else
+block|{
+comment|// Check if there are path separators in the suffix - if so, it is definitely
+comment|// not a proper suffix, so we should give up:
+if|if
+condition|(
+name|link
+operator|.
+name|substring
+argument_list|(
+name|index
+operator|+
+literal|1
+argument_list|)
+operator|.
+name|indexOf
+argument_list|(
+literal|'/'
+argument_list|)
+operator|>
+literal|0
+condition|)
+return|return
+literal|""
+return|;
 else|else
 return|return
 name|link
@@ -1342,6 +1361,7 @@ operator|+
 literal|1
 argument_list|)
 return|;
+block|}
 block|}
 block|}
 DECL|method|getFileDirectory (String link)
