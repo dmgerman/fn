@@ -1073,6 +1073,22 @@ operator|=
 name|db
 expr_stmt|;
 block|}
+DECL|method|setMetaData (MetaData metaData)
+specifier|public
+name|void
+name|setMetaData
+parameter_list|(
+name|MetaData
+name|metaData
+parameter_list|)
+block|{
+name|this
+operator|.
+name|metaData
+operator|=
+name|metaData
+expr_stmt|;
+block|}
 DECL|method|readLayout (String layoutFormat)
 specifier|public
 name|void

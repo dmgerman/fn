@@ -4647,6 +4647,23 @@ name|i
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|showBasePanel (BasePanel bp)
+specifier|public
+name|void
+name|showBasePanel
+parameter_list|(
+name|BasePanel
+name|bp
+parameter_list|)
+block|{
+name|tabbedPane
+operator|.
+name|setSelectedComponent
+argument_list|(
+name|bp
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**    * Returns the currently viewed BasePanel.    */
 DECL|method|basePanel ()
 specifier|public
@@ -5827,7 +5844,13 @@ argument_list|(
 name|file
 argument_list|)
 expr_stmt|;
-comment|//edit.add(test);
+name|edit
+operator|.
+name|add
+argument_list|(
+name|test
+argument_list|)
+expr_stmt|;
 name|edit
 operator|.
 name|add
