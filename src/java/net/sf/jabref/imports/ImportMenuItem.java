@@ -1363,6 +1363,13 @@ block|{
 if|if
 condition|(
 name|importResult
+operator|==
+literal|null
+condition|)
+continue|continue;
+if|if
+condition|(
+name|importResult
 operator|.
 name|p
 operator|.
