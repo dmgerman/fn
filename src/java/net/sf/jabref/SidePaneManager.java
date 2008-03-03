@@ -495,6 +495,24 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+DECL|method|getComponent (String name)
+specifier|public
+name|SidePaneComponent
+name|getComponent
+parameter_list|(
+name|String
+name|name
+parameter_list|)
+block|{
+return|return
+name|components
+operator|.
+name|get
+argument_list|(
+name|name
+argument_list|)
+return|;
+block|}
 DECL|method|hideComponent (SidePaneComponent comp)
 specifier|public
 specifier|synchronized

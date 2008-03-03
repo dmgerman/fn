@@ -335,6 +335,17 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * We include a getter for the BasePanel this component refers to, because this      * component needs to be closed if the BasePanel is closed.      * @return the base panel this component refers to.      */
+DECL|method|getPanel ()
+specifier|public
+name|BasePanel
+name|getPanel
+parameter_list|()
+block|{
+return|return
+name|panel
+return|;
+block|}
 comment|/** 	 * Unregister when this component closes. We need that to avoid showing 	 * two such external change warnings at the same time, only the latest one. 	 */
 DECL|method|componentClosing ()
 specifier|public

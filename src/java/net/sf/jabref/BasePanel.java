@@ -11457,6 +11457,7 @@ literal|"' has been deleted."
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Perform necessary cleanup when this BasePanel is closed.      */
 DECL|method|cleanUp ()
 specifier|public
 name|void
@@ -11478,6 +11479,50 @@ argument_list|(
 name|fileMonitorHandle
 argument_list|)
 expr_stmt|;
+comment|// Check if there is a FileUpdatePanel for this BasePanel being shown. If so,
+comment|// remove it:
+if|if
+condition|(
+name|sidePaneManager
+operator|.
+name|hasComponent
+argument_list|(
+literal|"fileUpdate"
+argument_list|)
+condition|)
+block|{
+name|FileUpdatePanel
+name|fup
+init|=
+operator|(
+name|FileUpdatePanel
+operator|)
+name|sidePaneManager
+operator|.
+name|getComponent
+argument_list|(
+literal|"fileUpdate"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|fup
+operator|.
+name|getPanel
+argument_list|()
+operator|==
+name|this
+condition|)
+block|{
+name|sidePaneManager
+operator|.
+name|hideComponent
+argument_list|(
+literal|"fileUpdate"
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 DECL|method|setUpdatedExternally (boolean b)
 specifier|public
