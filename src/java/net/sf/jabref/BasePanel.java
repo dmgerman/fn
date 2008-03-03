@@ -11371,11 +11371,7 @@ operator|.
 name|NAME
 argument_list|)
 expr_stmt|;
-name|setUpdatedExternally
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
+comment|//setUpdatedExternally(false);
 comment|//scanner.displayResult();
 block|}
 block|}

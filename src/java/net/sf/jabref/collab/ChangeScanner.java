@@ -628,11 +628,15 @@ operator|>
 literal|0
 return|;
 block|}
-DECL|method|displayResult ()
+DECL|method|displayResult (final DisplayResultCallback fup)
 specifier|public
 name|void
 name|displayResult
-parameter_list|()
+parameter_list|(
+specifier|final
+name|DisplayResultCallback
+name|fup
+parameter_list|)
 block|{
 if|if
 condition|(
@@ -687,6 +691,16 @@ literal|true
 argument_list|)
 expr_stmt|;
 comment|// dial.show(); -> deprecated since 1.5
+name|fup
+operator|.
+name|scanResultsResolved
+argument_list|(
+name|dial
+operator|.
+name|isOkPressed
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 argument_list|)
@@ -717,6 +731,13 @@ argument_list|,
 name|JOptionPane
 operator|.
 name|INFORMATION_MESSAGE
+argument_list|)
+expr_stmt|;
+name|fup
+operator|.
+name|scanResultsResolved
+argument_list|(
+literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -2532,6 +2553,22 @@ comment|//            AbstractGroup group = (AbstractGroup)vOnDisk.firstElement(
 comment|//            vOnDisk.removeElementAt(0);
 comment|//            changes.add(new GroupAddOrRemove(group, true));
 comment|//        }
+block|}
+DECL|interface|DisplayResultCallback
+specifier|public
+specifier|static
+interface|interface
+name|DisplayResultCallback
+block|{
+DECL|method|scanResultsResolved (boolean resolved)
+specifier|public
+name|void
+name|scanResultsResolved
+parameter_list|(
+name|boolean
+name|resolved
+parameter_list|)
+function_decl|;
 block|}
 block|}
 end_class

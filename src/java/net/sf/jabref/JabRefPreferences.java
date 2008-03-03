@@ -3756,7 +3756,7 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Set the default value for a key. This is useful for plugins that need to      * add default values for the prefs keys they use.      * @param key The preferences key.      * @param value The default value.      */
-DECL|method|putDefaultValue (String key, String value)
+DECL|method|putDefaultValue (String key, Object value)
 specifier|public
 name|void
 name|putDefaultValue
@@ -3764,7 +3764,7 @@ parameter_list|(
 name|String
 name|key
 parameter_list|,
-name|String
+name|Object
 name|value
 parameter_list|)
 block|{

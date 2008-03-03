@@ -845,6 +845,7 @@ name|frame
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Control the visibility of the dialog.      * @param visible true to show dialog, false to hide.      */
 DECL|method|setVisible (boolean visible)
 specifier|public
 name|void
@@ -881,6 +882,7 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Set up the comparators for each column, so the user can modify sort order      * by clicking the column labels.      * @param comparatorChooser The comparator chooser controlling the sort order.      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -1101,6 +1103,7 @@ name|unlock
 argument_list|()
 expr_stmt|;
 block|}
+comment|/**      * Set column widths according to which field is shown, and lock icon columns      * to a suitable width.      */
 DECL|method|setWidths ()
 specifier|protected
 name|void
@@ -1298,7 +1301,7 @@ name|panel
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Mouse listener for the entry table.      */
+comment|/**      * Mouse listener for the entry table. Processes icon clicks to open external      * files or urls, as well as the opening of the context menu.      */
 DECL|class|TableClickListener
 class|class
 name|TableClickListener
@@ -1656,6 +1659,7 @@ break|break;
 block|}
 block|}
 block|}
+comment|/**          * If the user has signalled the opening of a context menu, the event          * gets redirected to this method. Here we open a file link menu if the          * user is pointing at a file link icon. Otherwise a general context          * menu should be shown.          * @param e The triggering mouse event.          */
 DECL|method|processPopupTrigger (MouseEvent e)
 specifier|public
 name|void
@@ -1890,6 +1894,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * The listener for the Glazed list monitoring the current selection.      * When selection changes, we need to update the preview panel.      */
 DECL|class|EntrySelectionListener
 class|class
 name|EntrySelectionListener
@@ -2001,7 +2006,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * TableFormat for the table shown in the dialog.      */
+comment|/**      * TableFormat for the table shown in the dialog. Handles the display of entry      * fields and icons for linked files and urls.      */
 DECL|class|EntryTableFormat
 specifier|public
 class|class

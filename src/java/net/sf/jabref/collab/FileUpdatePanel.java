@@ -117,6 +117,10 @@ extends|extends
 name|SidePaneComponent
 implements|implements
 name|ActionListener
+implements|,
+name|ChangeScanner
+operator|.
+name|DisplayResultCallback
 block|{
 DECL|field|NAME
 specifier|public
@@ -199,6 +203,13 @@ name|lang
 argument_list|(
 literal|"File changed"
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|close
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
 argument_list|)
 expr_stmt|;
 name|this
@@ -349,6 +360,36 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+comment|// ChangeScanner scanner = new ChangeScanner(frame, panel); //,
+comment|// panel.database(), panel.metaData());
+comment|// try {
+name|scanner
+operator|.
+name|displayResult
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+comment|// scanner.changeScan(panel.file());
+comment|// } catch (IOException ex) {
+comment|// ex.printStackTrace();
+comment|// }
+block|}
+comment|/**      * Callback method for signalling that the change scanner has displayed the      * scan results to the user.      * @param resolved true if there were no changes, or if the user has resolved them.      */
+DECL|method|scanResultsResolved (boolean resolved)
+specifier|public
+name|void
+name|scanResultsResolved
+parameter_list|(
+name|boolean
+name|resolved
+parameter_list|)
+block|{
+if|if
+condition|(
+name|resolved
+condition|)
+block|{
 name|manager
 operator|.
 name|hideComponent
@@ -356,15 +397,6 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-comment|// ChangeScanner scanner = new ChangeScanner(frame, panel); //,
-comment|// panel.database(), panel.metaData());
-comment|// try {
-name|scanner
-operator|.
-name|displayResult
-argument_list|()
-expr_stmt|;
-comment|// scanner.changeScan(panel.file());
 name|panel
 operator|.
 name|setUpdatedExternally
@@ -372,9 +404,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-comment|// } catch (IOException ex) {
-comment|// ex.printStackTrace();
-comment|// }
+block|}
 block|}
 block|}
 end_class

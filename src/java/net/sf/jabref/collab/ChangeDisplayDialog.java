@@ -287,6 +287,13 @@ name|infoShown
 init|=
 literal|null
 decl_stmt|;
+DECL|field|okPressed
+specifier|private
+name|boolean
+name|okPressed
+init|=
+literal|false
+decl_stmt|;
 DECL|method|ChangeDisplayDialog (JFrame owner, final BasePanel panel, final DefaultMutableTreeNode root)
 specifier|public
 name|ChangeDisplayDialog
@@ -656,6 +663,10 @@ expr_stmt|;
 name|dispose
 argument_list|()
 expr_stmt|;
+name|okPressed
+operator|=
+literal|true
+expr_stmt|;
 block|}
 block|}
 argument_list|)
@@ -663,6 +674,16 @@ expr_stmt|;
 name|pack
 argument_list|()
 expr_stmt|;
+block|}
+DECL|method|isOkPressed ()
+specifier|public
+name|boolean
+name|isOkPressed
+parameter_list|()
+block|{
+return|return
+name|okPressed
+return|;
 block|}
 DECL|method|setInfo (JComponent comp)
 specifier|private

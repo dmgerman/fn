@@ -488,6 +488,11 @@ name|SELECTOR_META_PREFIX
 init|=
 literal|"selector_"
 decl_stmt|,
+DECL|field|PROTECTED_FLAG_META
+name|PROTECTED_FLAG_META
+init|=
+literal|"protectedFlag"
+decl_stmt|,
 DECL|field|LAYOUT_PREFIX
 DECL|field|MAC
 name|LAYOUT_PREFIX

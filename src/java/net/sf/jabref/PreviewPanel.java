@@ -1148,6 +1148,22 @@ name|FORMATTER_PACKAGE
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|setLayout (Layout layout)
+specifier|public
+name|void
+name|setLayout
+parameter_list|(
+name|Layout
+name|layout
+parameter_list|)
+block|{
+name|this
+operator|.
+name|layout
+operator|=
+name|layout
+expr_stmt|;
+block|}
 DECL|method|setEntry (BibtexEntry newEntry)
 specifier|public
 name|void
