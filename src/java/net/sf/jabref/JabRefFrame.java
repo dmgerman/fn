@@ -3510,6 +3510,16 @@ argument_list|()
 condition|)
 comment|// The action was either cancelled or unsuccessful.
 comment|// Break!
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Unable to save database"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|close
 operator|=
 literal|false

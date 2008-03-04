@@ -2184,7 +2184,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Key pattern"
+literal|"BibTeX key generator"
 argument_list|)
 return|;
 block|}

@@ -202,13 +202,13 @@ init|=
 literal|"Encoding: "
 decl_stmt|,
 comment|// Part of the signature in written bib files.
-comment|//linuxDefaultLookAndFeel = "com.jgoodies.looks.plastic.Plastic3DLookAndFeel",
-comment|//linuxDefaultLookAndFeel = "com.sun.java.swing.plaf.gtk.GTKLookAndFeel",
 DECL|field|linuxDefaultLookAndFeel
 name|linuxDefaultLookAndFeel
 init|=
-literal|"org.jvnet.substance.skin.SubstanceCremeCoffeeLookAndFeel"
+literal|"com.jgoodies.looks.plastic.Plastic3DLookAndFeel"
 decl_stmt|,
+comment|//linuxDefaultLookAndFeel = "com.sun.java.swing.plaf.gtk.GTKLookAndFeel",
+comment|//linuxDefaultLookAndFeel = "org.jvnet.substance.skin.SubstanceCremeCoffeeLookAndFeel",
 comment|//linuxDefaultLookAndFeel = "org.jvnet.substance.skin.SubstanceNebulaLookAndFeel",
 comment|//linuxDefaultLookAndFeel = "org.jvnet.substance.skin.SubstanceBusinessLookAndFeel",
 DECL|field|windowsDefaultLookAndFeel
