@@ -1188,6 +1188,14 @@ operator|.
 name|end
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|ce
+operator|.
+name|hasEdits
+argument_list|()
+condition|)
+block|{
 name|panel
 operator|.
 name|undoManager
@@ -1197,6 +1205,12 @@ argument_list|(
 name|ce
 argument_list|)
 expr_stmt|;
+name|panel
+operator|.
+name|markBaseChanged
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 else|else

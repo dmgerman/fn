@@ -235,6 +235,16 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+name|openLink
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|openLink ()
+specifier|public
+name|boolean
+name|openLink
+parameter_list|()
+block|{
 try|try
 block|{
 name|ExternalFileType
@@ -342,6 +352,7 @@ name|type
 operator|instanceof
 name|UnknownExternalFileType
 condition|)
+return|return
 name|Util
 operator|.
 name|openExternalFileUnknown
@@ -359,8 +370,9 @@ name|UnknownExternalFileType
 operator|)
 name|type
 argument_list|)
-expr_stmt|;
+return|;
 else|else
+return|return
 name|Util
 operator|.
 name|openExternalFileAnyFormat
@@ -371,7 +383,7 @@ name|link
 argument_list|,
 name|type
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 catch|catch
 parameter_list|(
@@ -467,7 +479,9 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-return|return;
+return|return
+literal|false
+return|;
 block|}
 name|e1
 operator|.
@@ -475,6 +489,9 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
+return|return
+literal|false
+return|;
 block|}
 block|}
 end_class

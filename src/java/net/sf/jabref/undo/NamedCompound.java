@@ -30,6 +30,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|undo
+operator|.
+name|UndoableEdit
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -52,6 +64,12 @@ DECL|field|name
 name|String
 name|name
 decl_stmt|;
+DECL|field|hasEdits
+name|boolean
+name|hasEdits
+init|=
+literal|false
+decl_stmt|;
 DECL|method|NamedCompound (String name)
 specifier|public
 name|NamedCompound
@@ -69,6 +87,38 @@ name|name
 operator|=
 name|name
 expr_stmt|;
+block|}
+DECL|method|addEdit (UndoableEdit undoableEdit)
+specifier|public
+name|boolean
+name|addEdit
+parameter_list|(
+name|UndoableEdit
+name|undoableEdit
+parameter_list|)
+block|{
+name|hasEdits
+operator|=
+literal|true
+expr_stmt|;
+return|return
+name|super
+operator|.
+name|addEdit
+argument_list|(
+name|undoableEdit
+argument_list|)
+return|;
+block|}
+DECL|method|hasEdits ()
+specifier|public
+name|boolean
+name|hasEdits
+parameter_list|()
+block|{
+return|return
+name|hasEdits
+return|;
 block|}
 DECL|method|getUndoPresentationName ()
 specifier|public
