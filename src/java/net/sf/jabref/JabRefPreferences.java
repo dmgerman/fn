@@ -2943,6 +2943,9 @@ name|fields
 index|[
 name|i
 index|]
+operator|.
+name|trim
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -3003,6 +3006,9 @@ name|fields
 index|[
 name|i
 index|]
+operator|.
+name|trim
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
