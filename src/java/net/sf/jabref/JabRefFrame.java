@@ -584,15 +584,9 @@ DECL|field|pluginMenu
 name|JMenu
 name|pluginMenu
 init|=
-operator|new
-name|JMenu
-argument_list|(
-name|Globals
-operator|.
-name|menuTitle
+name|subMenu
 argument_list|(
 literal|"Plugins"
-argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|gbl

@@ -728,9 +728,8 @@ name|String
 name|getHelpPage
 parameter_list|()
 block|{
-comment|// there is no helppage
 return|return
-literal|null
+literal|"Spires.html"
 return|;
 block|}
 DECL|method|getIcon ()
