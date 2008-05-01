@@ -1063,7 +1063,7 @@ name|put
 argument_list|(
 literal|"Nederlands"
 argument_list|,
-literal|"du"
+literal|"nl"
 argument_list|)
 expr_stmt|;
 name|LANGUAGES
