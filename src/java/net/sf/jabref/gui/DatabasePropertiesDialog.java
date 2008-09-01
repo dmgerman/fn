@@ -515,6 +515,49 @@ argument_list|()
 expr_stmt|;
 name|builder
 operator|.
+name|appendSeparator
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Override legacy file fields"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+operator|new
+name|JLabel
+argument_list|(
+literal|"<html>"
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Note that these settings are used for the legacy "
+operator|+
+literal|"<b>pdf</b> and<b>ps</b> fields only.<br>For most users, setting the<b>Main file directory</b> "
+operator|+
+literal|"above should be sufficient."
+argument_list|)
+operator|+
+literal|"</html>"
+argument_list|)
+argument_list|,
+literal|3
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|nextLine
+argument_list|()
+expr_stmt|;
+name|builder
+operator|.
 name|append
 argument_list|(
 name|Globals

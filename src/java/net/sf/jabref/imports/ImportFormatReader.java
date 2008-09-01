@@ -2123,6 +2123,8 @@ return|return
 name|result
 return|;
 comment|// Finally, if all else fails, see if it is a BibTeX file:
+try|try
+block|{
 name|ParserResult
 name|pr
 init|=
@@ -2197,6 +2199,17 @@ name|BIBTEX_FORMAT
 argument_list|,
 name|pr
 argument_list|)
+return|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|RuntimeException
+name|ex
+parameter_list|)
+block|{
+return|return
+literal|null
 return|;
 block|}
 return|return

@@ -117,7 +117,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Remove brackets formatter.  *   * @author $author$  * @version $Revision$  */
+comment|/**  * Convert the contents to lower case.  *   * @author $author$  * @version $Revision$  */
 end_comment
 
 begin_class

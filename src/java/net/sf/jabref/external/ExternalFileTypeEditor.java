@@ -1199,6 +1199,8 @@ literal|""
 argument_list|,
 literal|""
 argument_list|,
+literal|""
+argument_list|,
 literal|"new"
 argument_list|)
 decl_stmt|;
@@ -1485,7 +1487,7 @@ name|getColumnCount
 parameter_list|()
 block|{
 return|return
-literal|4
+literal|5
 return|;
 block|}
 DECL|method|getRowCount ()
@@ -1545,6 +1547,17 @@ argument_list|)
 return|;
 case|case
 literal|3
+case|:
+return|return
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"MIME type"
+argument_list|)
+return|;
+case|case
+literal|4
 case|:
 return|return
 name|Globals
@@ -1646,6 +1659,15 @@ argument_list|()
 return|;
 case|case
 literal|3
+case|:
+return|return
+name|type
+operator|.
+name|getMimeType
+argument_list|()
+return|;
+case|case
+literal|4
 case|:
 return|return
 name|type

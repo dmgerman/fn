@@ -5666,6 +5666,8 @@ operator|.
 name|addAll
 argument_list|(
 name|toSet
+argument_list|,
+name|entry
 argument_list|)
 expr_stmt|;
 comment|// Add an UndoableFieldChange to the baseframe's
@@ -5700,32 +5702,9 @@ operator|.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
-comment|// TODO: is this a safe solution to keep selection on
-comment|// entry?
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-operator|new
-name|Runnable
-argument_list|()
-block|{
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
-name|panel
-operator|.
-name|highlightEntry
-argument_list|(
-name|entry
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-argument_list|)
-expr_stmt|;
+comment|// TODO: removed the following to avoid the problem of selection dropping
+comment|// TODO: back when clicking a different entry. But what was the purpose of this code?
+comment|/*SwingUtilities.invokeLater(new Runnable() {                             public void run() {                                 panel.highlightEntry(entry);                             }                         });*/
 block|}
 catch|catch
 parameter_list|(

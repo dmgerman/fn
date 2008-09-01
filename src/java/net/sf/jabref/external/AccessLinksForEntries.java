@@ -804,11 +804,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|class|CopyLinkedFiles
+DECL|class|SaveWithLinkedFiles
 specifier|public
 specifier|static
 class|class
-name|CopyLinkedFiles
+name|SaveWithLinkedFiles
 extends|extends
 name|BaseAction
 block|{
@@ -817,9 +817,9 @@ specifier|private
 name|BasePanel
 name|panel
 decl_stmt|;
-DECL|method|CopyLinkedFiles (BasePanel panel)
+DECL|method|SaveWithLinkedFiles (BasePanel panel)
 specifier|public
-name|CopyLinkedFiles
+name|SaveWithLinkedFiles
 parameter_list|(
 name|BasePanel
 name|panel

@@ -551,7 +551,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|idMatcher
+name|retMaxMatcher
 operator|.
 name|find
 argument_list|()

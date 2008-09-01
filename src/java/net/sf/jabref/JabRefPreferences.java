@@ -904,6 +904,17 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+literal|"windowMaximised"
+argument_list|,
+name|Boolean
+operator|.
+name|FALSE
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
 literal|"rememberWindowLocation"
 argument_list|,
 name|Boolean
@@ -1520,7 +1531,7 @@ name|put
 argument_list|(
 literal|"autoCompleteFields"
 argument_list|,
-literal|"author;editor;title;journal;publisher;keywords"
+literal|"author;editor;title;journal;publisher;keywords;crossref"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -4778,15 +4789,6 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
-literal|"Push to Emacs"
-argument_list|,
-literal|"ctrl shift E"
-argument_list|)
-expr_stmt|;
-name|defKeyBinds
-operator|.
-name|put
-argument_list|(
 literal|"Quit JabRef"
 argument_list|,
 literal|"ctrl Q"
@@ -5421,6 +5423,15 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
+literal|"Focus entry table"
+argument_list|,
+literal|"ctrl shift E"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
 literal|"Abbreviate"
 argument_list|,
 literal|"ctrl alt A"
@@ -5442,6 +5453,15 @@ argument_list|(
 literal|"Search IEEEXplore"
 argument_list|,
 literal|"F8"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Search ACM Digital Library"
+argument_list|,
+literal|"ctrl shift F8"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds
@@ -5913,6 +5933,8 @@ literal|"PDF"
 argument_list|,
 literal|"pdf"
 argument_list|,
+literal|"application/pdf"
+argument_list|,
 literal|"evince"
 argument_list|,
 literal|"pdfSmall"
@@ -5929,6 +5951,8 @@ argument_list|(
 literal|"PostScript"
 argument_list|,
 literal|"ps"
+argument_list|,
+literal|"application/postscript"
 argument_list|,
 literal|"evince"
 argument_list|,
@@ -5947,6 +5971,8 @@ literal|"Word"
 argument_list|,
 literal|"doc"
 argument_list|,
+literal|"application/msword"
+argument_list|,
 literal|"oowriter"
 argument_list|,
 literal|"openoffice"
@@ -5963,6 +5989,8 @@ argument_list|(
 literal|"OpenDocument text"
 argument_list|,
 literal|"odt"
+argument_list|,
+literal|"application/vnd.oasis.opendocument.text"
 argument_list|,
 literal|"oowriter"
 argument_list|,
@@ -5981,6 +6009,8 @@ literal|"Excel"
 argument_list|,
 literal|"xls"
 argument_list|,
+literal|"application/excel"
+argument_list|,
 literal|"oocalc"
 argument_list|,
 literal|"openoffice"
@@ -5997,6 +6027,8 @@ argument_list|(
 literal|"OpenDocument spreadsheet"
 argument_list|,
 literal|"ods"
+argument_list|,
+literal|"application/vnd.oasis.opendocument.spreadsheet"
 argument_list|,
 literal|"oocalc"
 argument_list|,
@@ -6015,6 +6047,8 @@ literal|"PowerPoint"
 argument_list|,
 literal|"ppt"
 argument_list|,
+literal|""
+argument_list|,
 literal|"ooimpress"
 argument_list|,
 literal|"openoffice"
@@ -6031,6 +6065,8 @@ argument_list|(
 literal|"OpenDocument presentation"
 argument_list|,
 literal|"odp"
+argument_list|,
+literal|"application/vnd.oasis.opendocument.presentation"
 argument_list|,
 literal|"ooimpress"
 argument_list|,
@@ -6049,6 +6085,8 @@ literal|"Rich Text Format"
 argument_list|,
 literal|"rtf"
 argument_list|,
+literal|"application/rtf"
+argument_list|,
 literal|"oowriter"
 argument_list|,
 literal|"openoffice"
@@ -6065,6 +6103,8 @@ argument_list|(
 literal|"PNG image"
 argument_list|,
 literal|"png"
+argument_list|,
+literal|"image/png"
 argument_list|,
 literal|"gimp"
 argument_list|,
@@ -6083,6 +6123,8 @@ literal|"GIF image"
 argument_list|,
 literal|"gif"
 argument_list|,
+literal|"image/gif"
+argument_list|,
 literal|"gimp"
 argument_list|,
 literal|"picture"
@@ -6099,6 +6141,8 @@ argument_list|(
 literal|"JPG image"
 argument_list|,
 literal|"jpg"
+argument_list|,
+literal|"image/jpeg"
 argument_list|,
 literal|"gimp"
 argument_list|,
@@ -6117,6 +6161,8 @@ literal|"Djvu"
 argument_list|,
 literal|"djvu"
 argument_list|,
+literal|""
+argument_list|,
 literal|"evince"
 argument_list|,
 literal|"psSmall"
@@ -6133,6 +6179,8 @@ argument_list|(
 literal|"Text"
 argument_list|,
 literal|"txt"
+argument_list|,
+literal|"text/plain"
 argument_list|,
 literal|"emacs"
 argument_list|,
@@ -6151,6 +6199,8 @@ literal|"LaTeX"
 argument_list|,
 literal|"tex"
 argument_list|,
+literal|""
+argument_list|,
 literal|"emacs"
 argument_list|,
 literal|"emacs"
@@ -6167,6 +6217,8 @@ argument_list|(
 literal|"CHM"
 argument_list|,
 literal|"chm"
+argument_list|,
+literal|""
 argument_list|,
 literal|"gnochm"
 argument_list|,
@@ -6185,6 +6237,8 @@ literal|"TIFF image"
 argument_list|,
 literal|"tiff"
 argument_list|,
+literal|"image/tiff"
+argument_list|,
 literal|"gimp"
 argument_list|,
 literal|"picture"
@@ -6201,6 +6255,8 @@ literal|"URL"
 argument_list|,
 literal|"html"
 argument_list|,
+literal|"text/html"
+argument_list|,
 literal|"firefox"
 argument_list|,
 literal|"www"
@@ -6213,15 +6269,8 @@ argument_list|(
 name|tp
 argument_list|)
 expr_stmt|;
-comment|// Under Windows we initialize all file types with an empty viewer app, to
-comment|// rely on the default app instead:
-if|if
-condition|(
-name|Globals
-operator|.
-name|ON_WIN
-condition|)
-block|{
+comment|// On all OSes there is a generic application available to handle file opening,
+comment|// so we don't need the default application settings anymore:
 for|for
 control|(
 name|Iterator
@@ -6257,7 +6306,6 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 return|return
 name|list
@@ -6389,14 +6437,90 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
+name|type
+operator|.
+name|getExtension
+argument_list|()
+operator|!=
+literal|null
+operator|)
+operator|&&
 name|type
 operator|.
 name|getExtension
 argument_list|()
 operator|.
-name|equals
+name|equalsIgnoreCase
 argument_list|(
 name|extension
+argument_list|)
+condition|)
+return|return
+name|type
+return|;
+block|}
+return|return
+literal|null
+return|;
+block|}
+comment|/**      * Look up the external file type registered for this MIME type, if any.      * @param mimeType The MIME type.      * @return The ExternalFileType registered, or null if none.      */
+DECL|method|getExternalFileTypeByMimeType (String mimeType)
+specifier|public
+name|ExternalFileType
+name|getExternalFileTypeByMimeType
+parameter_list|(
+name|String
+name|mimeType
+parameter_list|)
+block|{
+for|for
+control|(
+name|Iterator
+argument_list|<
+name|ExternalFileType
+argument_list|>
+name|iterator
+init|=
+name|externalFileTypes
+operator|.
+name|iterator
+argument_list|()
+init|;
+name|iterator
+operator|.
+name|hasNext
+argument_list|()
+condition|;
+control|)
+block|{
+name|ExternalFileType
+name|type
+init|=
+name|iterator
+operator|.
+name|next
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|(
+name|type
+operator|.
+name|getMimeType
+argument_list|()
+operator|!=
+literal|null
+operator|)
+operator|&&
+name|type
+operator|.
+name|getMimeType
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+name|mimeType
 argument_list|)
 condition|)
 return|return

@@ -473,6 +473,15 @@ operator|.
 name|extension
 argument_list|()
 expr_stmt|;
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|customExports
+operator|.
+name|store
+argument_list|()
+expr_stmt|;
 name|table
 operator|.
 name|revalidate

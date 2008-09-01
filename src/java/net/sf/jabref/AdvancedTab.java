@@ -621,6 +621,46 @@ name|JPanel
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+operator|new
+name|JLabel
+argument_list|(
+literal|"<html>"
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"This feature lets new files be opened or imported into an "
+operator|+
+literal|"already running instance of JabRef<BR>instead of opening a new instance. For instance, this "
+operator|+
+literal|"is useful when you open a file in JabRef<br>from your web browser."
+operator|+
+literal|"<BR>Note that this will prevent you from running more than one instance of JabRef at a time."
+argument_list|)
+operator|+
+literal|"</html>"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|nextLine
+argument_list|()
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+operator|new
+name|JPanel
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|JPanel
 name|p
 init|=

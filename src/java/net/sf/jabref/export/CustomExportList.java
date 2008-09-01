@@ -107,10 +107,6 @@ name|Object
 index|[]
 name|array
 decl_stmt|;
-DECL|field|prefs
-name|JabRefPreferences
-name|prefs
-decl_stmt|;
 DECL|method|CustomExportList (JabRefPreferences prefs_, Comparator<String[]> comp)
 specifier|public
 name|CustomExportList
@@ -131,16 +127,8 @@ argument_list|(
 name|comp
 argument_list|)
 expr_stmt|;
-name|prefs
-operator|=
-name|prefs_
-expr_stmt|;
-name|readPrefs
-argument_list|()
-expr_stmt|;
-name|sort
-argument_list|()
-expr_stmt|;
+comment|//readPrefs();
+comment|//sort();
 block|}
 DECL|method|getCustomExportFormats ()
 specifier|public
@@ -153,6 +141,17 @@ argument_list|>
 name|getCustomExportFormats
 parameter_list|()
 block|{
+name|formats
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+name|readPrefs
+argument_list|()
+expr_stmt|;
+name|sort
+argument_list|()
+expr_stmt|;
 return|return
 name|formats
 return|;
@@ -163,6 +162,11 @@ name|void
 name|readPrefs
 parameter_list|()
 block|{
+name|formats
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 name|int
 name|i
 init|=
@@ -171,14 +175,14 @@ decl_stmt|;
 name|String
 index|[]
 name|s
-init|=
-literal|null
 decl_stmt|;
 while|while
 condition|(
 operator|(
 name|s
 operator|=
+name|Globals
+operator|.
 name|prefs
 operator|.
 name|getStringArray

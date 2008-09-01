@@ -18,16 +18,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|Reader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|BufferedReader
 import|;
 end_import
@@ -56,11 +46,9 @@ begin_import
 import|import
 name|java
 operator|.
-name|util
+name|io
 operator|.
-name|regex
-operator|.
-name|Matcher
+name|Reader
 import|;
 end_import
 

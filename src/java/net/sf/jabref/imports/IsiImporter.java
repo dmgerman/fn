@@ -246,8 +246,14 @@ decl_stmt|;
 name|String
 name|str
 decl_stmt|;
+name|int
+name|i
+init|=
+literal|0
+decl_stmt|;
 while|while
 condition|(
+operator|(
 operator|(
 name|str
 operator|=
@@ -258,6 +264,13 @@ argument_list|()
 operator|)
 operator|!=
 literal|null
+operator|)
+operator|&&
+operator|(
+name|i
+operator|<
+literal|50
+operator|)
 condition|)
 block|{
 comment|/** 			 * The following line gives false positives for RIS files, so it 			 * should not be uncommented. The hypen is a characteristic of the 			 * RIS format. 			 *  			 * str = str.replace(" - ", "") 			 */
@@ -276,6 +289,9 @@ condition|)
 return|return
 literal|true
 return|;
+name|i
+operator|++
+expr_stmt|;
 block|}
 return|return
 literal|false

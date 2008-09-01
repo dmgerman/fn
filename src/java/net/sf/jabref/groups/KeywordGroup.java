@@ -1989,6 +1989,16 @@ name|toString
 argument_list|()
 return|;
 block|}
+DECL|method|getTypeId ()
+specifier|public
+name|String
+name|getTypeId
+parameter_list|()
+block|{
+return|return
+name|ID
+return|;
+block|}
 block|}
 end_class
 

@@ -108,16 +108,6 @@ name|java
 operator|.
 name|awt
 operator|.
-name|Point
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
 name|event
 operator|.
 name|ActionEvent
@@ -1167,82 +1157,11 @@ name|Container
 name|win
 parameter_list|)
 block|{
-name|Dimension
-name|ds
-init|=
 name|diag
 operator|.
-name|getSize
-argument_list|()
-decl_stmt|,
-name|df
-init|=
+name|setLocationRelativeTo
+argument_list|(
 name|win
-operator|.
-name|getSize
-argument_list|()
-decl_stmt|;
-name|Point
-name|pf
-init|=
-name|win
-operator|.
-name|getLocation
-argument_list|()
-decl_stmt|;
-name|diag
-operator|.
-name|setLocation
-argument_list|(
-operator|new
-name|Point
-argument_list|(
-name|Math
-operator|.
-name|max
-argument_list|(
-literal|0
-argument_list|,
-name|pf
-operator|.
-name|x
-operator|+
-operator|(
-name|df
-operator|.
-name|width
-operator|-
-name|ds
-operator|.
-name|width
-operator|)
-operator|/
-literal|2
-argument_list|)
-argument_list|,
-name|Math
-operator|.
-name|max
-argument_list|(
-literal|0
-argument_list|,
-name|pf
-operator|.
-name|y
-operator|+
-operator|(
-name|df
-operator|.
-name|height
-operator|-
-name|ds
-operator|.
-name|height
-operator|)
-operator|/
-literal|2
-argument_list|)
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -4061,10 +3980,36 @@ expr_stmt|;
 block|}
 else|else
 block|{
+comment|// Use the given app if specified, and the universal "xdg-open" otherwise:
 name|String
 index|[]
 name|openWith
-init|=
+decl_stmt|;
+if|if
+condition|(
+operator|(
+name|fileType
+operator|.
+name|getOpenWith
+argument_list|()
+operator|!=
+literal|null
+operator|)
+operator|&&
+operator|(
+name|fileType
+operator|.
+name|getOpenWith
+argument_list|()
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+operator|)
+condition|)
+name|openWith
+operator|=
 name|fileType
 operator|.
 name|getOpenWith
@@ -4074,7 +4019,17 @@ name|split
 argument_list|(
 literal|" "
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+else|else
+name|openWith
+operator|=
+operator|new
+name|String
+index|[]
+block|{
+literal|"xdg-open"
+block|}
+expr_stmt|;
 name|String
 index|[]
 name|cmdArray
@@ -4316,6 +4271,8 @@ name|fileType
 operator|.
 name|getName
 argument_list|()
+argument_list|,
+literal|""
 argument_list|,
 literal|""
 argument_list|,
@@ -4897,6 +4854,8 @@ argument_list|,
 name|directory
 argument_list|,
 name|off
+argument_list|,
+literal|0
 argument_list|)
 decl_stmt|;
 if|if
@@ -7858,7 +7817,7 @@ return|return
 name|file
 return|;
 block|}
-DECL|method|findInDir (String key, String dir, OpenFileFilter off)
+DECL|method|findInDir (String key, String dir, OpenFileFilter off, int count)
 specifier|private
 specifier|static
 name|String
@@ -7872,8 +7831,21 @@ name|dir
 parameter_list|,
 name|OpenFileFilter
 name|off
+parameter_list|,
+name|int
+name|count
 parameter_list|)
 block|{
+if|if
+condition|(
+name|count
+operator|>
+literal|20
+condition|)
+return|return
+literal|null
+return|;
+comment|// Make sure an infinite loop doesn't occur.
 name|File
 name|f
 init|=
@@ -7996,6 +7968,10 @@ name|getPath
 argument_list|()
 argument_list|,
 name|off
+argument_list|,
+name|count
+operator|+
+literal|1
 argument_list|)
 decl_stmt|;
 if|if
@@ -8076,6 +8052,8 @@ name|getField
 argument_list|(
 name|field
 argument_list|)
+argument_list|,
+name|be
 argument_list|)
 expr_stmt|;
 block|}
@@ -12615,6 +12593,15 @@ name|String
 name|s
 parameter_list|)
 block|{
+if|if
+condition|(
+name|s
+operator|==
+literal|null
+condition|)
+return|return
+literal|null
+return|;
 name|StringBuilder
 name|sb
 init|=
@@ -12777,6 +12764,64 @@ argument_list|(
 literal|1
 argument_list|)
 return|;
+block|}
+comment|/**      * Run an AbstractWorker's methods using Spin features to put each method      * on the correct thread.      * @param worker The worker to run.      * @throws Throwable       */
+DECL|method|runAbstractWorker (AbstractWorker worker)
+specifier|public
+specifier|static
+name|void
+name|runAbstractWorker
+parameter_list|(
+name|AbstractWorker
+name|worker
+parameter_list|)
+throws|throws
+name|Throwable
+block|{
+comment|// This part uses Spin's features:
+name|Worker
+name|wrk
+init|=
+name|worker
+operator|.
+name|getWorker
+argument_list|()
+decl_stmt|;
+comment|// The Worker returned by getWorker() has been wrapped
+comment|// by Spin.off(), which makes its methods be run in
+comment|// a different thread from the EDT.
+name|CallBack
+name|clb
+init|=
+name|worker
+operator|.
+name|getCallBack
+argument_list|()
+decl_stmt|;
+name|worker
+operator|.
+name|init
+argument_list|()
+expr_stmt|;
+comment|// This method runs in this same thread, the EDT.
+comment|// Useful for initial GUI actions, like printing a message.
+comment|// The CallBack returned by getCallBack() has been wrapped
+comment|// by Spin.over(), which makes its methods be run on
+comment|// the EDT.
+name|wrk
+operator|.
+name|run
+argument_list|()
+expr_stmt|;
+comment|// Runs the potentially time-consuming action
+comment|// without freezing the GUI. The magic is that THIS line
+comment|// of execution will not continue until run() is finished.
+name|clb
+operator|.
+name|update
+argument_list|()
+expr_stmt|;
+comment|// Runs the update() method on the EDT.
 block|}
 block|}
 end_class

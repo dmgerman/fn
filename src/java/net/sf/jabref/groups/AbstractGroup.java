@@ -99,6 +99,13 @@ name|m_context
 init|=
 name|INDEPENDENT
 decl_stmt|;
+DECL|method|getTypeId ()
+specifier|public
+specifier|abstract
+name|String
+name|getTypeId
+parameter_list|()
+function_decl|;
 DECL|method|AbstractGroup (String name, int context)
 specifier|public
 name|AbstractGroup

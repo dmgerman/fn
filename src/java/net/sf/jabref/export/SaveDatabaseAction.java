@@ -710,6 +710,12 @@ return|return;
 block|}
 try|try
 block|{
+comment|// Make sure the current edit is stored:
+name|panel
+operator|.
+name|storeCurrentEdit
+argument_list|()
+expr_stmt|;
 comment|// If the option is set, autogenerate keys for all entries that are
 comment|// lacking keys, before saving:
 name|panel

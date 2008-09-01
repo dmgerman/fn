@@ -645,6 +645,16 @@ argument_list|)
 throw|;
 block|}
 block|}
+DECL|method|getTypeId ()
+specifier|public
+name|String
+name|getTypeId
+parameter_list|()
+block|{
+return|return
+name|ID
+return|;
+block|}
 comment|/** 	 * @see net.sf.jabref.groups.AbstractGroup#getSearchRule() 	 */
 DECL|method|getSearchRule ()
 specifier|public

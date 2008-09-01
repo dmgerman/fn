@@ -702,6 +702,12 @@ condition|(
 name|success
 condition|)
 block|{
+comment|// Remove the original file:
+name|file
+operator|.
+name|delete
+argument_list|()
+expr_stmt|;
 comment|// Relativise path, if possible.
 if|if
 condition|(

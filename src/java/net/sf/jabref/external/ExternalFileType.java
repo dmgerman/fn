@@ -53,6 +53,7 @@ DECL|field|name
 DECL|field|extension
 DECL|field|openWith
 DECL|field|iconName
+DECL|field|mimeType
 specifier|protected
 name|String
 name|name
@@ -62,6 +63,8 @@ decl_stmt|,
 name|openWith
 decl_stmt|,
 name|iconName
+decl_stmt|,
+name|mimeType
 decl_stmt|;
 DECL|field|icon
 specifier|protected
@@ -77,7 +80,7 @@ operator|new
 name|JLabel
 argument_list|()
 decl_stmt|;
-DECL|method|ExternalFileType (String name, String extension, String openWith, String iconName)
+DECL|method|ExternalFileType (String name, String extension, String mimeType, String openWith, String iconName)
 specifier|public
 name|ExternalFileType
 parameter_list|(
@@ -86,6 +89,9 @@ name|name
 parameter_list|,
 name|String
 name|extension
+parameter_list|,
+name|String
+name|mimeType
 parameter_list|,
 name|String
 name|openWith
@@ -121,6 +127,12 @@ operator|.
 name|extension
 operator|=
 name|extension
+expr_stmt|;
+name|this
+operator|.
+name|mimeType
+operator|=
+name|mimeType
 expr_stmt|;
 name|this
 operator|.
@@ -194,6 +206,23 @@ index|[
 literal|1
 index|]
 expr_stmt|;
+name|label
+operator|.
+name|setText
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+comment|// Up to version 2.4b the mime type is not included:
+if|if
+condition|(
+name|val
+operator|.
+name|length
+operator|==
+literal|4
+condition|)
+block|{
 name|this
 operator|.
 name|openWith
@@ -203,13 +232,6 @@ index|[
 literal|2
 index|]
 expr_stmt|;
-name|label
-operator|.
-name|setText
-argument_list|(
-literal|null
-argument_list|)
-expr_stmt|;
 name|setIconName
 argument_list|(
 name|val
@@ -218,6 +240,45 @@ literal|3
 index|]
 argument_list|)
 expr_stmt|;
+block|}
+comment|// When mime type is included, the array length should be 5:
+elseif|else
+if|if
+condition|(
+name|val
+operator|.
+name|length
+operator|==
+literal|5
+condition|)
+block|{
+name|this
+operator|.
+name|mimeType
+operator|=
+name|val
+index|[
+literal|2
+index|]
+expr_stmt|;
+name|this
+operator|.
+name|openWith
+operator|=
+name|val
+index|[
+literal|3
+index|]
+expr_stmt|;
+name|setIconName
+argument_list|(
+name|val
+index|[
+literal|4
+index|]
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 comment|/**      * Return a String array representing this file type. This is used for storage into      * Preferences, and the same array can be used to construct the file type later,      * using the String[] constructor.      *      * @return A String[] containing all information about this file type.      */
 DECL|method|getStringArrayRepresentation ()
@@ -235,6 +296,8 @@ block|{
 name|name
 block|,
 name|extension
+block|,
+name|mimeType
 block|,
 name|openWith
 block|,
@@ -301,6 +364,32 @@ operator|.
 name|extension
 operator|=
 name|extension
+expr_stmt|;
+block|}
+DECL|method|getMimeType ()
+specifier|public
+name|String
+name|getMimeType
+parameter_list|()
+block|{
+return|return
+name|mimeType
+return|;
+block|}
+DECL|method|setMimeType (String mimeType)
+specifier|public
+name|void
+name|setMimeType
+parameter_list|(
+name|String
+name|mimeType
+parameter_list|)
+block|{
+name|this
+operator|.
+name|mimeType
+operator|=
+name|mimeType
 expr_stmt|;
 block|}
 comment|/**      * Get the bibtex field name used to extension to this file type.      * Currently we assume that field name equals filename extension.      * @return The field name.      */
@@ -492,6 +581,8 @@ name|name
 argument_list|,
 name|extension
 argument_list|,
+name|mimeType
+argument_list|,
 name|openWith
 argument_list|,
 name|iconName
@@ -578,6 +669,27 @@ argument_list|(
 name|other
 operator|.
 name|extension
+argument_list|)
+operator|)
+operator|&&
+operator|(
+name|mimeType
+operator|==
+literal|null
+condition|?
+name|other
+operator|.
+name|mimeType
+operator|==
+literal|null
+else|:
+name|mimeType
+operator|.
+name|equals
+argument_list|(
+name|other
+operator|.
+name|mimeType
 argument_list|)
 operator|)
 operator|&&

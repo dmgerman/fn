@@ -1238,6 +1238,8 @@ literal|""
 argument_list|,
 literal|""
 argument_list|,
+literal|""
+argument_list|,
 literal|"new"
 argument_list|)
 decl_stmt|;

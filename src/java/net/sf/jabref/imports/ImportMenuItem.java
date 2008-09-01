@@ -776,6 +776,20 @@ block|}
 else|else
 block|{
 comment|// Unknown format:
+name|frame
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Importing in unknown format"
+argument_list|)
+operator|+
+literal|"..."
+argument_list|)
+expr_stmt|;
 name|imports
 operator|.
 name|add

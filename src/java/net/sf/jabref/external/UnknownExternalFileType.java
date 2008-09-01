@@ -40,6 +40,8 @@ literal|""
 argument_list|,
 literal|""
 argument_list|,
+literal|""
+argument_list|,
 literal|"unknown"
 argument_list|)
 expr_stmt|;

@@ -26,6 +26,30 @@ begin_import
 import|import
 name|java
 operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|ItemEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
+name|ItemListener
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|io
 operator|.
 name|BufferedInputStream
@@ -172,6 +196,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|ButtonGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JCheckBox
 import|;
 end_import
@@ -193,6 +227,16 @@ operator|.
 name|swing
 operator|.
 name|JPanel
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JRadioButton
 import|;
 end_import
 
@@ -376,10 +420,10 @@ name|shouldContinue
 init|=
 literal|false
 decl_stmt|;
-DECL|field|fetchAstracts
+DECL|field|fetchAbstracts
 specifier|private
 name|JCheckBox
-name|fetchAstracts
+name|fetchAbstracts
 init|=
 operator|new
 name|JCheckBox
@@ -401,12 +445,44 @@ name|fetchingAbstracts
 init|=
 literal|false
 decl_stmt|;
-DECL|field|fetchRis
+DECL|field|htmlButton
+specifier|private
+name|JRadioButton
+name|htmlButton
+init|=
+operator|new
+name|JRadioButton
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"HTML parser"
+argument_list|)
+argument_list|)
+decl_stmt|;
+DECL|field|risButton
+specifier|private
+name|JRadioButton
+name|risButton
+init|=
+operator|new
+name|JRadioButton
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"RIS importer"
+argument_list|)
+argument_list|)
+decl_stmt|;
+DECL|field|fetchingRIS
 specifier|private
 name|boolean
-name|fetchRis
+name|fetchingRIS
 init|=
-literal|true
+literal|false
 decl_stmt|;
 DECL|field|MAX_RIS_FETCH
 specifier|private
@@ -417,7 +493,6 @@ name|MAX_RIS_FETCH
 init|=
 literal|25
 decl_stmt|;
-comment|//Pattern hitsPattern = Pattern.compile("Your search matched<strong>(\\d+)</strong>");
 DECL|field|hitsPattern
 name|Pattern
 name|hitsPattern
@@ -450,7 +525,7 @@ name|compile
 argument_list|(
 literal|".*<strong>(.+)</strong><br>"
 operator|+
-literal|"\\s+(.+)<br>"
+literal|"\\s+(.+)"
 operator|+
 literal|"\\s+<A href=.+>(.+)</A><br>"
 operator|+
@@ -608,15 +683,139 @@ name|BorderLayout
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|htmlButton
+operator|.
+name|setSelected
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|ButtonGroup
+name|group
+init|=
+operator|new
+name|ButtonGroup
+argument_list|()
+decl_stmt|;
+name|group
+operator|.
+name|add
+argument_list|(
+name|htmlButton
+argument_list|)
+expr_stmt|;
+name|group
+operator|.
+name|add
+argument_list|(
+name|risButton
+argument_list|)
+expr_stmt|;
 name|pan
 operator|.
 name|add
 argument_list|(
-name|fetchAstracts
+name|fetchAbstracts
+argument_list|,
+name|BorderLayout
+operator|.
+name|NORTH
+argument_list|)
+expr_stmt|;
+name|pan
+operator|.
+name|add
+argument_list|(
+name|htmlButton
 argument_list|,
 name|BorderLayout
 operator|.
 name|CENTER
+argument_list|)
+expr_stmt|;
+name|pan
+operator|.
+name|add
+argument_list|(
+name|risButton
+argument_list|,
+name|BorderLayout
+operator|.
+name|EAST
+argument_list|)
+expr_stmt|;
+name|fetchAbstracts
+operator|.
+name|addItemListener
+argument_list|(
+operator|new
+name|ItemListener
+argument_list|()
+block|{
+specifier|public
+name|void
+name|itemStateChanged
+parameter_list|(
+name|ItemEvent
+name|event
+parameter_list|)
+block|{
+if|if
+condition|(
+name|fetchAbstracts
+operator|.
+name|isSelected
+argument_list|()
+condition|)
+block|{
+name|risButton
+operator|.
+name|setSelected
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|risButton
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|htmlButton
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|risButton
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|htmlButton
+operator|.
+name|setEnabled
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|htmlButton
+operator|.
+name|setSelected
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
 argument_list|)
 expr_stmt|;
 return|return
@@ -660,7 +859,6 @@ name|piv
 operator|=
 literal|0
 expr_stmt|;
-comment|// frame.block();
 name|shouldContinue
 operator|=
 literal|true
@@ -692,11 +890,6 @@ argument_list|(
 name|address
 argument_list|)
 decl_stmt|;
-comment|// Fetch the search page and put the contents in a String:
-comment|//String page = getResultsFromFile(new File("/home/alver/div/temp.txt"));
-comment|//URLDownload ud = new URLDownload(new JPanel(), url, new File("/home/alver/div/temp.txt"));
-comment|//ud.download();
-comment|//dialog.setVisible(true);
 name|String
 name|page
 init|=
@@ -705,8 +898,6 @@ argument_list|(
 name|url
 argument_list|)
 decl_stmt|;
-comment|//hits = getNumberOfHits(page, "Your search matched", hitsPattern);
-comment|// frame.unblock();
 if|if
 condition|(
 name|page
@@ -812,20 +1003,16 @@ argument_list|,
 name|maxHitsPattern
 argument_list|)
 decl_stmt|;
-comment|//String page = getResultsFromFile(new File("/home/alver/div/temp50.txt"));
-if|if
-condition|(
-name|hits
-operator|>
-name|maxHits
-condition|)
-name|hits
-operator|=
-name|maxHits
-expr_stmt|;
 name|fetchingAbstracts
 operator|=
-name|fetchAstracts
+name|fetchAbstracts
+operator|.
+name|isSelected
+argument_list|()
+expr_stmt|;
+name|fetchingRIS
+operator|=
+name|risButton
 operator|.
 name|isSelected
 argument_list|()
@@ -834,14 +1021,68 @@ if|if
 condition|(
 name|hits
 operator|>
-name|MAX_RIS_FETCH
+name|maxHits
+operator|&&
+operator|!
+name|fetchingRIS
 condition|)
 block|{
+name|status
+operator|.
+name|showMessage
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Your search matched %0 entries. But "
+operator|+
+literal|"only %1 results are displayed."
+argument_list|,
+operator|new
+name|String
+index|[]
+block|{
+name|String
+operator|.
+name|valueOf
+argument_list|(
+name|hits
+argument_list|)
+block|,
+name|String
+operator|.
+name|valueOf
+argument_list|(
+name|maxHits
+argument_list|)
+block|}
+argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Search IEEEXplore"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|INFORMATION_MESSAGE
+argument_list|)
+expr_stmt|;
+name|hits
+operator|=
+name|maxHits
+expr_stmt|;
+block|}
 if|if
 condition|(
-name|fetchingAbstracts
-operator|==
-literal|true
+name|fetchingRIS
+operator|&&
+name|hits
+operator|>
+name|MAX_RIS_FETCH
 condition|)
 block|{
 name|status
@@ -854,7 +1095,7 @@ name|lang
 argument_list|(
 literal|"%0 entries found. To reduce server load, "
 operator|+
-literal|"only %1 will be downloaded."
+literal|"only %1 will be downloaded. Choose the HTML parser for more results."
 argument_list|,
 operator|new
 name|String
@@ -888,22 +1129,10 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
-name|fetchRis
-operator|=
-literal|true
-expr_stmt|;
 name|hits
 operator|=
 name|MAX_RIS_FETCH
 expr_stmt|;
-block|}
-else|else
-block|{
-name|fetchRis
-operator|=
-literal|false
-expr_stmt|;
-block|}
 block|}
 name|parse
 argument_list|(
@@ -1011,7 +1240,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Search IEEExplore"
+literal|"Search IEEEXplore"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -1026,6 +1255,32 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+name|status
+operator|.
+name|showMessage
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Search IEEEXplore"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
 name|e
 operator|.
 name|printStackTrace
@@ -1438,7 +1693,6 @@ operator|>
 literal|0
 condition|)
 block|{
-comment|//return items.get(0);
 name|BibtexEntry
 name|entry
 init|=
@@ -1665,27 +1919,63 @@ condition|)
 return|return
 name|entry
 return|;
-comment|// clean up month
+comment|// clean up author
 name|String
-name|month
+name|author
 init|=
+operator|(
+name|String
+operator|)
 name|entry
 operator|.
 name|getField
 argument_list|(
-literal|"month"
+literal|"author"
 argument_list|)
 decl_stmt|;
-comment|// hash or map TODO
+if|if
+condition|(
+name|author
+operator|!=
+literal|null
+condition|)
+block|{
+name|author
+operator|=
+name|author
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\."
+argument_list|,
+literal|". "
+argument_list|)
+expr_stmt|;
+name|author
+operator|=
+name|author
+operator|.
+name|replaceAll
+argument_list|(
+literal|"  "
+argument_list|,
+literal|" "
+argument_list|)
+expr_stmt|;
 name|entry
 operator|.
 name|setField
 argument_list|(
-literal|"month"
+literal|"author"
 argument_list|,
-name|month
+name|author
 argument_list|)
 expr_stmt|;
+block|}
+comment|// clean up month TODO
+comment|//String month = (String)entry.getField("month");
+comment|// hash or map TODO
+comment|//entry.setField("month", month);
 comment|// clean up publication field
 name|BibtexEntryType
 name|type
@@ -1757,7 +2047,6 @@ return|return
 literal|null
 return|;
 block|}
-comment|//System.out.println(fullName);
 if|if
 condition|(
 name|type
@@ -1840,7 +2129,6 @@ literal|"Proceedings"
 argument_list|)
 expr_stmt|;
 block|}
-comment|//System.out.println(fullName);
 name|Matcher
 name|m1
 init|=
@@ -1957,7 +2245,6 @@ literal|1
 index|]
 expr_stmt|;
 block|}
-comment|//        System.out.println(prefix);
 block|}
 if|if
 condition|(
@@ -2002,14 +2289,7 @@ operator|+
 name|prefix
 expr_stmt|;
 block|}
-comment|//            if (m1.group(3).trim() == "")
-comment|//            fullName = m1.group(2).trim() + " " + m1.group(1).trim();
-comment|//    else {
-comment|//    System.out.println(m1.group(3));
-comment|//fullName = m1.group(3).trim() + " " + m1.group(1).trim() + " " + m1.group(2).trim();
-comment|//}
 block|}
-comment|//System.out.println(fullName);
 if|if
 condition|(
 name|type
@@ -2235,7 +2515,6 @@ literal|1
 index|]
 expr_stmt|;
 block|}
-comment|//System.out.println(postfix);
 block|}
 name|fullName
 operator|=
@@ -2274,7 +2553,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|//System.out.println(fullName);
 name|fullName
 operator|=
 name|fullName
@@ -2332,7 +2610,6 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
-comment|//System.out.println(fullName);
 if|if
 condition|(
 name|fullName
@@ -2491,16 +2768,10 @@ argument_list|,
 name|endIndex
 argument_list|)
 decl_stmt|;
-comment|/*             // Fetching abstracts takes time, and causes a lot             // of requests, so this should be optional or disabled:             if (fetchingAbstracts) {                 Matcher number =                     ieeeArticleNumberPattern.matcher(text);                 if (number.find()) {                     try {                         entry = parseEntryRis(number.group(1));                     } catch (IOException e) {                         e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.                     }                 }             }             if (entry != null) { // fetch successful                 // we just need to add DOI, it is not included in RIS.                 int pgInd = text.indexOf("Digital Object Identifier ");                 if (pgInd>= 0) {                     int fieldEnd = text.indexOf("<br>", pgInd);                     if (fieldEnd>= 0) {                         entry.setField("doi",                             text.substring(pgInd+26, fieldEnd).trim());                     }                 }                 return entry;             }             */
 name|BibtexEntryType
 name|type
 init|=
-name|BibtexEntryType
-operator|.
-name|getType
-argument_list|(
-literal|"article"
-argument_list|)
+literal|null
 decl_stmt|;
 name|String
 name|sourceField
@@ -2579,7 +2850,7 @@ name|BibtexEntryType
 operator|.
 name|getType
 argument_list|(
-literal|"Standard"
+literal|"standard"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2597,7 +2868,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|fetchRis
+name|fetchingRIS
 operator|==
 literal|true
 condition|)
@@ -2751,8 +3022,6 @@ argument_list|,
 name|type
 argument_list|)
 expr_stmt|;
-comment|//System.out.println(text);
-comment|/*Matcher m1 = entryPattern1.matcher(text);             Matcher m2 = entryPattern2.matcher(text);             Matcher m3 = entryPattern3.matcher(text);             Matcher m4 = entryPattern4.matcher(text);             */
 if|if
 condition|(
 name|type
@@ -3023,7 +3292,6 @@ expr_stmt|;
 else|else
 break|break;
 block|}
-comment|//System.out.println(misc);
 name|Matcher
 name|ms1
 init|=
@@ -3159,7 +3427,6 @@ literal|2
 argument_list|)
 expr_stmt|;
 block|}
-comment|//System.out.println(misc);
 name|Matcher
 name|ms4
 init|=
@@ -3278,6 +3545,32 @@ argument_list|)
 expr_stmt|;
 name|unparseable
 operator|++
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|entry
+operator|==
+literal|null
+condition|)
+block|{
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"Parse failed"
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+name|text
+argument_list|)
 expr_stmt|;
 return|return
 literal|null
@@ -3401,16 +3694,16 @@ name|tmp
 operator|.
 name|replaceAll
 argument_list|(
-literal|"\\s+"
+literal|" - "
 argument_list|,
-literal|""
+literal|"--"
 argument_list|)
 operator|.
 name|replaceAll
 argument_list|(
-literal|"-"
+literal|"\\s+"
 argument_list|,
-literal|"--"
+literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;

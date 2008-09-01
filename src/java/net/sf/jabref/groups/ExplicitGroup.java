@@ -1285,6 +1285,16 @@ return|return
 name|m_entries
 return|;
 block|}
+DECL|method|getTypeId ()
+specifier|public
+name|String
+name|getTypeId
+parameter_list|()
+block|{
+return|return
+name|ID
+return|;
+block|}
 block|}
 end_class
 

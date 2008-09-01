@@ -110,18 +110,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|OutputPrinter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|BibtexDatabase
 import|;
 end_import
@@ -170,9 +158,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|imports
-operator|.
-name|BibtexParser
+name|OutputPrinter
 import|;
 end_import
 
@@ -224,9 +210,6 @@ name|URLEncoder
 operator|.
 name|encode
 argument_list|(
-operator|(
-name|String
-operator|)
 name|key
 argument_list|,
 literal|"UTF-8"
@@ -358,9 +341,6 @@ name|URLEncoder
 operator|.
 name|encode
 argument_list|(
-operator|(
-name|String
-operator|)
 name|key
 argument_list|,
 literal|"UTF-8"

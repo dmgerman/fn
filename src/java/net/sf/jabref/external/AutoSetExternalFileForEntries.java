@@ -1676,7 +1676,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"This makes JabRef look up each %0 extension and check if the file exists. If not, you will "
+literal|"This makes JabRef look up each %0 link and check if the file exists. If not, you will "
 operator|+
 literal|"be given options<BR>to resolve the problem."
 argument_list|,

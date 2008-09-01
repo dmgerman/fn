@@ -1307,6 +1307,23 @@ name|visible
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|isVisible ()
+specifier|public
+name|boolean
+name|isVisible
+parameter_list|()
+block|{
+return|return
+name|diag
+operator|!=
+literal|null
+operator|&&
+name|diag
+operator|.
+name|isVisible
+argument_list|()
+return|;
+block|}
 DECL|method|setValues (FileListEntry entry)
 specifier|public
 name|void
