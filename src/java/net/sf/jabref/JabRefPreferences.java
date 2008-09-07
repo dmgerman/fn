@@ -5522,6 +5522,24 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
+literal|"Back"
+argument_list|,
+literal|"ctrl alt LEFT"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Forward"
+argument_list|,
+literal|"ctrl alt RIGHT"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
 literal|"Import into current database"
 argument_list|,
 literal|"ctrl I"

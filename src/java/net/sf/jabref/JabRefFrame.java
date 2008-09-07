@@ -1830,6 +1830,8 @@ argument_list|(
 literal|"Forward"
 argument_list|)
 argument_list|,
+literal|"right"
+argument_list|,
 name|prefs
 operator|.
 name|getKey
@@ -1854,6 +1856,8 @@ name|lang
 argument_list|(
 literal|"Back"
 argument_list|)
+argument_list|,
+literal|"left"
 argument_list|,
 name|prefs
 operator|.
@@ -3566,6 +3570,12 @@ name|bp
 operator|.
 name|mainTable
 argument_list|)
+expr_stmt|;
+comment|// Set correct enabled state for Back and Forward actions:
+name|bp
+operator|.
+name|setBackAndForwardEnabledState
+argument_list|()
 expr_stmt|;
 operator|new
 name|FocusRequester

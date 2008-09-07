@@ -842,6 +842,16 @@ name|FILE_LIST_EDITOR
 init|=
 literal|2
 decl_stmt|;
+DECL|field|MAX_BACK_HISTORY_SIZE
+specifier|public
+specifier|static
+specifier|final
+name|int
+name|MAX_BACK_HISTORY_SIZE
+init|=
+literal|10
+decl_stmt|;
+comment|// The maximum number of "Back" operations stored.
 DECL|field|FILE_FIELD
 specifier|public
 specifier|static
