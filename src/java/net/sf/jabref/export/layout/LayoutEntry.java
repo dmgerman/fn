@@ -1545,6 +1545,17 @@ name|LayoutFormatter
 argument_list|>
 argument_list|()
 expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Loading from plugin: "
+operator|+
+name|formatterName
+argument_list|)
+expr_stmt|;
 name|JabRefPlugin
 name|plugin
 init|=

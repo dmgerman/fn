@@ -3496,9 +3496,10 @@ argument_list|()
 expr_stmt|;
 name|panel
 operator|.
-name|showing
-operator|=
+name|newEntryShowing
+argument_list|(
 name|be
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Returns false if the contents of the source panel has not been validated,      * true othervise.      */

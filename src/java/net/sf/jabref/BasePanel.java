@@ -721,6 +721,31 @@ operator|new
 name|RedoAction
 argument_list|()
 decl_stmt|;
+DECL|field|previousEntries
+specifier|private
+name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
+name|previousEntries
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
+argument_list|()
+decl_stmt|,
+DECL|field|nextEntries
+name|nextEntries
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|BibtexEntry
+argument_list|>
+argument_list|()
+decl_stmt|;
 comment|//ExampleFileFilter fileFilter;
 comment|// File filter for .bib files.
 DECL|field|baseChanged
@@ -771,9 +796,9 @@ specifier|public
 name|RightClickMenu
 name|rcm
 decl_stmt|;
-DECL|field|showing
+DECL|field|sho_wing
 name|BibtexEntry
-name|showing
+name|sho_wing
 init|=
 literal|null
 decl_stmt|;
@@ -6736,6 +6761,46 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|actions
+operator|.
+name|put
+argument_list|(
+literal|"back"
+argument_list|,
+operator|new
+name|BaseAction
+argument_list|()
+block|{
+specifier|public
+name|void
+name|action
+parameter_list|()
+throws|throws
+name|Throwable
+block|{                                }
+block|}
+argument_list|)
+expr_stmt|;
+name|actions
+operator|.
+name|put
+argument_list|(
+literal|"forward"
+argument_list|,
+operator|new
+name|BaseAction
+argument_list|()
+block|{
+specifier|public
+name|void
+name|action
+parameter_list|()
+throws|throws
+name|Throwable
+block|{              }
+block|}
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * This method is called from JabRefFrame is a database specific      * action is requested by the user. Runs the command if it is      * defined, or prints an error message to the standard error      * stream.      *      * @param _command The name of the command to run.     */
 DECL|method|runCommand (String _command)
@@ -9000,7 +9065,8 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|showing
+name|getShowing
+argument_list|()
 operator|==
 name|be
 condition|)
@@ -9020,9 +9086,10 @@ comment|// entry, but no entry editor is in fact shown. This happens
 comment|// after Preferences dialog is closed, and it means that we
 comment|// must make sure the same entry is shown again. We do this by
 comment|// setting showing to null, and recursively calling this method.
-name|showing
-operator|=
+name|newEntryShowing
+argument_list|(
 literal|null
+argument_list|)
 expr_stmt|;
 name|showEntry
 argument_list|(
@@ -9066,7 +9133,8 @@ literal|null
 decl_stmt|;
 if|if
 condition|(
-name|showing
+name|getShowing
+argument_list|()
 operator|!=
 literal|null
 condition|)
@@ -9089,7 +9157,8 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|showing
+name|getShowing
+argument_list|()
 operator|!=
 literal|null
 condition|)
@@ -9244,9 +9313,10 @@ argument_list|)
 expr_stmt|;
 comment|//new FocusRequester(form);
 comment|//form.requestFocus();
-name|showing
-operator|=
+name|newEntryShowing
+argument_list|(
 name|be
+argument_list|)
 expr_stmt|;
 name|setEntryEditorEnabled
 argument_list|(
@@ -9445,6 +9515,24 @@ operator|.
 name|setBottomComponent
 argument_list|(
 name|editor
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|editor
+operator|.
+name|getEntry
+argument_list|()
+operator|!=
+name|getShowing
+argument_list|()
+condition|)
+name|newEntryShowing
+argument_list|(
+name|editor
+operator|.
+name|getEntry
+argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
@@ -9655,9 +9743,10 @@ argument_list|()
 condition|)
 block|{
 comment|// The entry has changed type, so we must get a new editor.
-name|showing
-operator|=
+name|newEntryShowing
+argument_list|(
 literal|null
+argument_list|)
 expr_stmt|;
 name|EntryEditor
 name|newEditor
@@ -10931,7 +11020,8 @@ block|{
 if|if
 condition|(
 operator|(
-name|showing
+name|getShowing
+argument_list|()
 operator|!=
 literal|null
 operator|)
@@ -11511,6 +11601,39 @@ operator|.
 name|saving
 operator|=
 name|saving
+expr_stmt|;
+block|}
+DECL|method|getShowing ()
+specifier|public
+name|BibtexEntry
+name|getShowing
+parameter_list|()
+block|{
+return|return
+name|sho_wing
+return|;
+block|}
+DECL|method|newEntryShowing (BibtexEntry entry)
+specifier|public
+name|void
+name|newEntryShowing
+parameter_list|(
+name|BibtexEntry
+name|entry
+parameter_list|)
+block|{
+name|sho_wing
+operator|=
+name|entry
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"entryShowing"
+argument_list|)
 expr_stmt|;
 block|}
 block|}
