@@ -5524,7 +5524,7 @@ name|put
 argument_list|(
 literal|"Back"
 argument_list|,
-literal|"ctrl alt LEFT"
+literal|"alt LEFT"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds
@@ -5533,7 +5533,7 @@ name|put
 argument_list|(
 literal|"Forward"
 argument_list|,
-literal|"ctrl alt RIGHT"
+literal|"alt RIGHT"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds
