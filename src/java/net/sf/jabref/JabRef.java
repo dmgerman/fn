@@ -599,6 +599,12 @@ literal|""
 argument_list|)
 expr_stmt|;
 comment|/* 		 * The Plug-in System is started automatically on the first call to 		 * PluginCore.getManager(). 		 *  		 * Plug-ins are activated on the first call to their getInstance method. 		 */
+comment|// Update which fields should be treated as numeric, based on preferences:
+name|BibtexFields
+operator|.
+name|setNumericFieldsFromPrefs
+argument_list|()
+expr_stmt|;
 comment|/* Build list of Import and Export formats */
 name|Globals
 operator|.
