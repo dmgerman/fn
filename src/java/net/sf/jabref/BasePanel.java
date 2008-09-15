@@ -1405,16 +1405,14 @@ name|put
 argument_list|(
 literal|"test"
 argument_list|,
+comment|// new AccessLinksForEntries.SaveWithLinkedFiles(this));
 operator|new
-name|AccessLinksForEntries
-operator|.
-name|SaveWithLinkedFiles
+name|FindFullTextAction
 argument_list|(
 name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/*new BaseAction () {                 public void action() throws Throwable {                      SearchResultsDialog diag = new SearchResultsDialog(frame, "Test");                     diag.setVisible(true);                     List<BibtexEntry> list = new ArrayList<BibtexEntry>();                     BibtexEntry[] entries = getSelectedEntries();                     for (int i = 0; i< entries.length; i++) {                         BibtexEntry entry = entries[i];                         list.add(entry);                     }                     diag.addEntries(list, BasePanel.this);                       // Z3950Connection conn = new Z3950Connection();                     // conn.doSearch();                      ArrayList<BibtexEntry> entries = new ArrayList<BibtexEntry>();                     BibtexEntry[] sel = getSelectedEntries();                     for (int i = 0; i< sel.length; i++) {                         BibtexEntry bibtexEntry = sel[i];                         entries.add(bibtexEntry);                     }                     final List<FileListEntry> links =                             AccessLinksForEntries.getExternalLinksForEntries(entries);                     for (Iterator<FileListEntry> iterator = links.iterator(); iterator.hasNext();) {                         FileListEntry entry = iterator.next();                         System.out.println("Link: "+entry.getLink());                     };                      final JProgressBar prog = new JProgressBar();                     prog.setIndeterminate(true);                     final JDialog diag = new JDialog(frame, false);                     diag.getContentPane().add(prog, BorderLayout.CENTER);                     diag.pack();                     diag.setLocationRelativeTo(frame);                     diag.setVisible(true);                     Thread t = new Thread(new Runnable() {                         public void run() {                             AccessLinksForEntries.copyExternalLinksToDirectory(links,                                 new File("/home/alver/tmp"), metaData, prog, false,                                     new ActionListener() {                                         public void actionPerformed(ActionEvent actionEvent) {                                             diag.dispose();                                         }                                     });                         }                     });                     t.start();                                          //CheckBoxFileChooser cb = new CheckBoxFileChooser(new File(""), "Selected only");                     //cb.showSaveDialog(frame);                      //ExternalFileTypeEditor efte = new ExternalFileTypeEditor(frame);                     //efte.setVisible(true);                   }             });*/
 comment|// The action for saving a database.
 name|actions
 operator|.
@@ -6816,6 +6814,19 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+argument_list|)
+expr_stmt|;
+name|actions
+operator|.
+name|put
+argument_list|(
+literal|"downloadFullText"
+argument_list|,
+operator|new
+name|FindFullTextAction
+argument_list|(
+name|this
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

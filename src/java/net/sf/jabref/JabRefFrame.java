@@ -2869,6 +2869,19 @@ argument_list|)
 operator|.
 name|getAction
 argument_list|()
+decl_stmt|,
+DECL|field|downloadFullText
+name|downloadFullText
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"downloadFullText"
+argument_list|,
+literal|"Look up full text document"
+argument_list|,
+literal|"Follow DOI or URL link and try to locate PDF full text document"
+argument_list|)
 decl_stmt|;
 DECL|field|pushExternalButton
 name|PushToApplicationButton
@@ -6680,13 +6693,7 @@ argument_list|(
 name|file
 argument_list|)
 expr_stmt|;
-name|edit
-operator|.
-name|add
-argument_list|(
-name|test
-argument_list|)
-expr_stmt|;
+comment|//edit.add(test);
 name|edit
 operator|.
 name|add
@@ -7015,6 +7022,13 @@ operator|.
 name|add
 argument_list|(
 name|makeKeyAction
+argument_list|)
+expr_stmt|;
+name|tools
+operator|.
+name|add
+argument_list|(
+name|downloadFullText
 argument_list|)
 expr_stmt|;
 comment|// [kiar] I think we should group these festures
@@ -8385,6 +8399,28 @@ argument_list|,
 name|tabCount
 operator|>
 literal|1
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|tabCount
+operator|==
+literal|0
+condition|)
+block|{
+name|back
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|forward
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
