@@ -178,8 +178,6 @@ block|{
 literal|"unchecked"
 block|,
 literal|"unused"
-block|,
-literal|"null"
 block|}
 argument_list|)
 DECL|class|SearchExpressionLexer

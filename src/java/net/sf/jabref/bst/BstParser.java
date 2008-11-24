@@ -168,8 +168,6 @@ block|{
 literal|"unused"
 block|,
 literal|"unchecked"
-block|,
-literal|"null"
 block|}
 argument_list|)
 DECL|class|BstParser
@@ -943,11 +941,6 @@ block|}
 block|}
 comment|// $ANTLR start commands
 comment|// Bst.g:16:1: commands : ( STRINGS^^ idList | INTEGERS^^ idList | FUNCTION^^ id stack | MACRO^^ id '{'! STRING '}'! | READ^^ | EXECUTE^^ '{'! function '}'! | ITERATE^^ '{'! function '}'! | REVERSE^^ '{'! function '}'! | ENTRY^^ idList0 idList0 idList0 | SORT^^ );
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
 DECL|method|commands ()
 specifier|public
 name|commands_return
