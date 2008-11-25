@@ -8239,6 +8239,18 @@ return|;
 block|}
 block|}
 block|}
+DECL|method|toFront ()
+specifier|public
+name|void
+name|toFront
+parameter_list|()
+block|{
+name|super
+operator|.
+name|toFront
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 end_class
 

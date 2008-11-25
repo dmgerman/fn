@@ -116,6 +116,13 @@ specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
+DECL|field|fieldName
+specifier|private
+name|String
+name|fieldName
+init|=
+literal|null
+decl_stmt|;
 DECL|method|ExternalFileMenuItem (JabRefFrame frame, BibtexEntry entry, String name, String link, Icon icon, MetaData metaData, ExternalFileType fileType)
 specifier|public
 name|ExternalFileMenuItem
@@ -185,7 +192,7 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ExternalFileMenuItem (JabRefFrame frame, BibtexEntry entry, String name, String link, Icon icon, MetaData metaData)
+DECL|method|ExternalFileMenuItem (JabRefFrame frame, BibtexEntry entry, String name, String link, Icon icon, MetaData metaData, String fieldName)
 specifier|public
 name|ExternalFileMenuItem
 parameter_list|(
@@ -206,6 +213,9 @@ name|icon
 parameter_list|,
 name|MetaData
 name|metaData
+parameter_list|,
+name|String
+name|fieldName
 parameter_list|)
 block|{
 name|this
@@ -222,8 +232,17 @@ name|icon
 argument_list|,
 name|metaData
 argument_list|,
+operator|(
+name|ExternalFileType
+operator|)
 literal|null
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|fieldName
+operator|=
+name|fieldName
 expr_stmt|;
 block|}
 DECL|method|actionPerformed (ActionEvent e)
@@ -235,9 +254,31 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+name|boolean
+name|success
+init|=
 name|openLink
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|success
+condition|)
+block|{
+name|frame
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Unable to open link."
+argument_list|)
+argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|openLink ()
 specifier|public
@@ -245,6 +286,20 @@ name|boolean
 name|openLink
 parameter_list|()
 block|{
+name|frame
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"External viewer called"
+argument_list|)
+operator|+
+literal|"."
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|ExternalFileType
@@ -260,6 +315,38 @@ name|fileType
 operator|==
 literal|null
 condition|)
+block|{
+if|if
+condition|(
+name|this
+operator|.
+name|fieldName
+operator|!=
+literal|null
+condition|)
+block|{
+name|Util
+operator|.
+name|openExternalViewer
+argument_list|(
+name|frame
+operator|.
+name|basePanel
+argument_list|()
+operator|.
+name|metaData
+argument_list|()
+argument_list|,
+name|link
+argument_list|,
+name|fieldName
+argument_list|)
+expr_stmt|;
+return|return
+literal|true
+return|;
+block|}
+else|else
 block|{
 comment|// We don't already know the file type, so we try to deduce it from the extension:
 name|File
@@ -345,6 +432,7 @@ name|fileType
 operator|=
 name|type
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(

@@ -54,6 +54,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|event
+operator|.
+name|UndoableEditEvent
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf

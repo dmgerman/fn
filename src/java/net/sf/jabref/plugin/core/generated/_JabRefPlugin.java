@@ -397,6 +397,19 @@ literal|"extension"
 argument_list|)
 return|;
 block|}
+DECL|method|getEncoding ()
+specifier|public
+name|String
+name|getEncoding
+parameter_list|()
+block|{
+return|return
+name|getStringParameter
+argument_list|(
+literal|"encoding"
+argument_list|)
+return|;
+block|}
 block|}
 DECL|method|getExportFormatExtensions ()
 specifier|public

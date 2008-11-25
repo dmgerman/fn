@@ -322,6 +322,9 @@ return|return
 name|getBasePath
 argument_list|()
 operator|.
+name|toURI
+argument_list|()
+operator|.
 name|toURL
 argument_list|()
 return|;

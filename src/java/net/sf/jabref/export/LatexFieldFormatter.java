@@ -98,6 +98,29 @@ name|STARTCOL
 init|=
 literal|4
 decl_stmt|;
+DECL|field|neverFailOnHashes
+specifier|private
+name|boolean
+name|neverFailOnHashes
+init|=
+literal|false
+decl_stmt|;
+DECL|method|setNeverFailOnHashes (boolean neverFailOnHashes)
+specifier|public
+name|void
+name|setNeverFailOnHashes
+parameter_list|(
+name|boolean
+name|neverFailOnHashes
+parameter_list|)
+block|{
+name|this
+operator|.
+name|neverFailOnHashes
+operator|=
+name|neverFailOnHashes
+expr_stmt|;
+block|}
 DECL|method|format (String text, String fieldName)
 specifier|public
 name|String
@@ -541,13 +564,18 @@ operator|+
 literal|1
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("pos2:"+pos2);
 if|if
 condition|(
 name|pos2
 operator|==
 operator|-
 literal|1
+condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|neverFailOnHashes
 condition|)
 block|{
 throw|throw
@@ -582,6 +610,18 @@ literal|"Note that the entry causing the problem has been selected."
 argument_list|)
 argument_list|)
 throw|;
+block|}
+else|else
+block|{
+name|pos1
+operator|=
+name|text
+operator|.
+name|length
+argument_list|()
+expr_stmt|;
+comment|// just write out the rest of the text, and throw no exception
+block|}
 block|}
 block|}
 if|if
@@ -721,7 +761,7 @@ name|int
 name|end_pos
 parameter_list|)
 block|{
-comment|/*sb.append("{");      sb.append(text.substring(start_pos, end_pos));      sb.append("}");*/
+comment|/*sb.append("{");         sb.append(text.substring(start_pos, end_pos));         sb.append("}");*/
 name|sb
 operator|.
 name|append

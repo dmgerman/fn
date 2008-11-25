@@ -278,6 +278,12 @@ return|return
 literal|null
 return|;
 block|}
+DECL|method|toFront ()
+specifier|public
+name|void
+name|toFront
+parameter_list|()
+block|{     }
 block|}
 end_class
 

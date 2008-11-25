@@ -1558,6 +1558,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|b
 operator|.
 name|setField
@@ -1565,8 +1566,16 @@ argument_list|(
 literal|"institution"
 argument_list|,
 name|affiliation
+operator|.
+name|replaceAll
+argument_list|(
+literal|"#"
+argument_list|,
+literal|"\\\\#"
+argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 comment|// PENDING jeffrey.kuhn@yale.edu 2005-05-27 : added "pmid" bibtex field
 comment|// Older references do not have doi entries, but every
 comment|// medline entry has a unique pubmed ID (aka primary ID).

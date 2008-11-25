@@ -390,6 +390,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|event
+operator|.
+name|UndoableEditListener
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -4296,6 +4308,47 @@ literal|false
 return|;
 block|}
 block|}
+DECL|method|hasUndoInformation ()
+specifier|public
+name|boolean
+name|hasUndoInformation
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+DECL|method|undo ()
+specifier|public
+name|void
+name|undo
+parameter_list|()
+block|{     }
+DECL|method|hasRedoInformation ()
+specifier|public
+name|boolean
+name|hasRedoInformation
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
+DECL|method|redo ()
+specifier|public
+name|void
+name|redo
+parameter_list|()
+block|{     }
+DECL|method|addUndoableEditListener (UndoableEditListener listener)
+specifier|public
+name|void
+name|addUndoableEditListener
+parameter_list|(
+name|UndoableEditListener
+name|listener
+parameter_list|)
+block|{     }
 block|}
 end_class
 

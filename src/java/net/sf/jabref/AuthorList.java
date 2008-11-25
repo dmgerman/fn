@@ -1035,6 +1035,54 @@ argument_list|()
 operator|-
 name|TOKEN_GROUP_LENGTH
 expr_stmt|;
+name|int
+name|index
+init|=
+name|tokens
+operator|.
+name|size
+argument_list|()
+operator|-
+literal|2
+operator|*
+name|TOKEN_GROUP_LENGTH
+operator|+
+name|OFFSET_TOKEN_TERM
+decl_stmt|;
+if|if
+condition|(
+name|index
+operator|>
+literal|0
+condition|)
+block|{
+name|Character
+name|ch
+init|=
+operator|(
+name|Character
+operator|)
+name|tokens
+operator|.
+name|elementAt
+argument_list|(
+name|index
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|ch
+operator|.
+name|charValue
+argument_list|()
+operator|==
+literal|'-'
+condition|)
+name|last_part_start
+operator|-=
+name|TOKEN_GROUP_LENGTH
+expr_stmt|;
+block|}
 name|first_part_end
 operator|=
 name|last_part_start
@@ -1045,10 +1093,12 @@ name|first_part_end
 operator|>
 literal|0
 condition|)
+block|{
 name|first_part_start
 operator|=
 literal|0
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -1222,6 +1272,53 @@ operator|=
 literal|0
 expr_stmt|;
 block|}
+block|}
+if|if
+condition|(
+operator|(
+name|first_part_start
+operator|==
+operator|-
+literal|1
+operator|)
+operator|&&
+operator|(
+name|last_part_start
+operator|==
+operator|-
+literal|1
+operator|)
+operator|&&
+operator|(
+name|von_part_start
+operator|!=
+operator|-
+literal|1
+operator|)
+condition|)
+block|{
+comment|// There is no first or last name, but we have a von part. This is likely
+comment|// to indicate a single-entry name without an initial capital letter, such
+comment|// as "unknown".
+comment|// We make the von part the last name, to facilitate handling by last-name formatters:
+name|last_part_start
+operator|=
+name|von_part_start
+expr_stmt|;
+name|last_part_end
+operator|=
+name|von_part_end
+expr_stmt|;
+name|von_part_start
+operator|=
+operator|-
+literal|1
+expr_stmt|;
+name|von_part_end
+operator|=
+operator|-
+literal|1
+expr_stmt|;
 block|}
 comment|// Third step: do actual splitting, construct Author object
 return|return
@@ -1757,7 +1854,10 @@ name|c
 operator|==
 literal|'~'
 operator|||
-comment|/* c=='-' || */
+name|c
+operator|==
+literal|'-'
+operator|||
 name|Character
 operator|.
 name|isWhitespace
@@ -1770,6 +1870,7 @@ comment|// Morten Alver 18 Apr 2006: Removed check for hyphen '-' above to
 comment|// prevent
 comment|// problems with names like Bailey-Jones getting broken up and
 comment|// sorted wrong.
+comment|// Aaron Chen 14 Sep 2008: Enable hyphen check for first names like Chang-Chin
 name|token_end
 operator|++
 expr_stmt|;

@@ -356,6 +356,7 @@ literal|""
 operator|)
 argument_list|)
 expr_stmt|;
+comment|//ed.addUndoableEditListener(panel.undoListener);
 name|setupJTextComponent
 argument_list|(
 operator|(
@@ -632,7 +633,7 @@ name|FieldListener
 extends|extends
 name|FocusAdapter
 block|{
-comment|/* 	 * Focus listener that fires the storeFieldAction when a FieldTextArea 	 * loses focus. 	 */
+comment|/*        * Focus listener that fires the storeFieldAction when a FieldTextArea        * loses focus.        */
 DECL|method|focusLost (FocusEvent e)
 specifier|public
 name|void
@@ -891,6 +892,25 @@ name|validFieldBackground
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|ed
+operator|.
+name|getTextComponent
+argument_list|()
+operator|.
+name|hasFocus
+argument_list|()
+condition|)
+name|ed
+operator|.
+name|setBackground
+argument_list|(
+name|GUIGlobals
+operator|.
+name|activeEditor
+argument_list|)
+expr_stmt|;
 name|panel
 operator|.
 name|markBaseChanged
@@ -962,7 +982,7 @@ parameter_list|(
 name|Throwable
 name|ex
 parameter_list|)
-block|{}
+block|{             }
 block|}
 block|}
 DECL|field|redoAction
@@ -1028,7 +1048,7 @@ parameter_list|(
 name|Throwable
 name|ex
 parameter_list|)
-block|{}
+block|{             }
 block|}
 block|}
 comment|// The action concerned with closing the window.
@@ -1089,6 +1109,30 @@ name|dispose
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+DECL|method|getFieldEditor ()
+specifier|public
+name|FieldEditor
+name|getFieldEditor
+parameter_list|()
+block|{
+return|return
+name|ed
+return|;
+block|}
+DECL|method|storeCurrentEdit ()
+specifier|public
+name|void
+name|storeCurrentEdit
+parameter_list|()
+block|{
+name|storeFieldAction
+operator|.
+name|actionPerformed
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

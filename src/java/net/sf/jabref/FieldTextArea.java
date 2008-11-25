@@ -76,6 +76,54 @@ name|JTextArea
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|event
+operator|.
+name|UndoableEditListener
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|event
+operator|.
+name|UndoableEditEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|undo
+operator|.
+name|UndoManager
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|undo
+operator|.
+name|CannotUndoException
+import|;
+end_import
+
 begin_comment
 comment|/**  * An implementation of the FieldEditor backed by a JTextArea. Used for  * multi-line input.  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
 end_comment
@@ -132,20 +180,7 @@ argument_list|(
 literal|"\\s+.*"
 argument_list|)
 decl_stmt|;
-DECL|field|antialias
-specifier|final
-name|boolean
-name|antialias
-init|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-literal|"antialias"
-argument_list|)
-decl_stmt|;
+comment|//protected UndoManager undo = new UndoManager();
 DECL|method|FieldTextArea (String fieldName_, String content)
 specifier|public
 name|FieldTextArea
@@ -162,6 +197,8 @@ argument_list|(
 name|content
 argument_list|)
 expr_stmt|;
+comment|// Listen for undo and redo events
+comment|/*getDocument().addUndoableEditListener(new UndoableEditListener() {             public void undoableEditHappened(UndoableEditEvent evt) {                 undo.addEdit(evt.getEdit());             }         });*/
 name|updateFont
 argument_list|()
 expr_stmt|;
@@ -420,67 +457,62 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// public void keyPressed(KeyEvent event) {
-comment|// int keyCode = event.getKeyCode();
-comment|// if (keyCode == KeyEvent.VK_ENTER) {
-comment|// // Consume; we will handle this ourselves:
-comment|// event.consume();
-comment|// autoWrap();
-comment|//
-comment|// }
-comment|//
-comment|// }
-comment|//
-comment|// private void autoWrap() {
-comment|// int pos = getCaretPosition();
-comment|// int posAfter = pos + 1;
-comment|// StringBuffer sb = new StringBuffer(getText());
-comment|// // First insert the line break:
-comment|// sb.insert(pos, '\n');
-comment|//
-comment|// // We want to investigate the beginning of the last line:
-comment|// // int end = sb.length();
-comment|//
-comment|// // System.out.println("."+sb.substring(0, pos)+".");
-comment|//
-comment|// // Find 0 or the last line break before our current position:
-comment|// int idx = sb.substring(0, pos).lastIndexOf("\n") + 1;
-comment|// String prevLine = sb.substring(idx, pos);
-comment|// if (bull.matcher(prevLine).matches()) {
-comment|// int id = findFirstNonWhitespace(prevLine);
-comment|// if (id>= 0) {
-comment|// sb.insert(posAfter, prevLine.substring(0, id));
-comment|// posAfter += id;
-comment|// }
-comment|// } else if (indent.matcher(prevLine).matches()) {
-comment|// int id = findFirstNonWhitespace(prevLine);
-comment|// if (id>= 0) {
-comment|// sb.insert(posAfter, prevLine.substring(0, id));
-comment|// posAfter += id;
-comment|// }
-comment|// }
-comment|// /*
-comment|// * if (prevLine.startsWith(" ")) { sb.insert(posAfter, " "); posAfter++; }
-comment|// */
-comment|//
-comment|// setText(sb.toString());
-comment|// setCaretPosition(posAfter);
-comment|// }
-comment|//
-comment|// private int findFirstNonWhitespace(String s) {
-comment|// for (int i = 0; i< s.length(); i++) {
-comment|// if (!Character.isWhitespace(s.charAt(i)))
-comment|// return i;
-comment|// }
-comment|// return -1;
-comment|// }
-comment|//
-comment|// public void keyReleased(KeyEvent event) {
-comment|//
-comment|// }
-comment|//
-comment|// public void keyTyped(KeyEvent event) {
-comment|// }
+DECL|method|hasUndoInformation ()
+specifier|public
+name|boolean
+name|hasUndoInformation
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+comment|//undo.canUndo();
+block|}
+DECL|method|undo ()
+specifier|public
+name|void
+name|undo
+parameter_list|()
+block|{
+comment|/*try {             if (undo.canUndo()) {                 undo.undo();             }         } catch (CannotUndoException e) {         } */
+block|}
+DECL|method|hasRedoInformation ()
+specifier|public
+name|boolean
+name|hasRedoInformation
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+comment|//undo.canRedo();
+block|}
+DECL|method|redo ()
+specifier|public
+name|void
+name|redo
+parameter_list|()
+block|{
+comment|/*try {             if (undo.canRedo()) {                 undo.redo();             }         } catch (CannotUndoException e) {         }*/
+block|}
+DECL|method|addUndoableEditListener (UndoableEditListener listener)
+specifier|public
+name|void
+name|addUndoableEditListener
+parameter_list|(
+name|UndoableEditListener
+name|listener
+parameter_list|)
+block|{
+name|getDocument
+argument_list|()
+operator|.
+name|addUndoableEditListener
+argument_list|(
+name|listener
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 end_class
 

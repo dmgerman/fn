@@ -738,7 +738,7 @@ name|put
 argument_list|(
 literal|"lookAndFeel"
 argument_list|,
-literal|"com.jgoodies.plaf.windows.ExtWindowsLookAndFeel"
+literal|"com.jgoodies.looks.windows.WindowsLookAndFeel"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -786,7 +786,7 @@ name|put
 argument_list|(
 literal|"htmlviewer"
 argument_list|,
-literal|"mozilla"
+literal|"firefox"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -933,7 +933,7 @@ name|Integer
 argument_list|(
 name|JTable
 operator|.
-name|AUTO_RESIZE_OFF
+name|AUTO_RESIZE_ALL_COLUMNS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2790,6 +2790,17 @@ argument_list|,
 literal|"mittnum;author"
 argument_list|)
 expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"runAutomaticFileSearch"
+argument_list|,
+name|Boolean
+operator|.
+name|FALSE
+argument_list|)
+expr_stmt|;
 comment|//defaults.put("lastAutodetectedImport", "");
 comment|//defaults.put("autoRemoveExactDuplicates", Boolean.FALSE);
 comment|//defaults.put("confirmAutoRemoveExactDuplicates", Boolean.TRUE);
@@ -2804,8 +2815,6 @@ operator|=
 operator|new
 name|CustomExportList
 argument_list|(
-name|this
-argument_list|,
 operator|new
 name|ExportComparator
 argument_list|()
@@ -2866,6 +2875,17 @@ argument_list|,
 name|Boolean
 operator|.
 name|FALSE
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"useIEEEAbrv"
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
 argument_list|)
 expr_stmt|;
 block|}
@@ -5468,7 +5488,7 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
-literal|"Search ACM Digital Library"
+literal|"Search ACM Portal"
 argument_list|,
 literal|"ctrl shift F8"
 argument_list|)

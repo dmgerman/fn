@@ -149,7 +149,12 @@ init|=
 operator|new
 name|JMenu
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Assign exclusively to group"
+argument_list|)
 argument_list|)
 decl_stmt|,
 comment|// JZTODO lyrics

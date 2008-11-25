@@ -54,6 +54,18 @@ name|JLabel
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|event
+operator|.
+name|UndoableEditListener
+import|;
+end_import
+
 begin_comment
 comment|/**  * FieldEditors is a common interface between the FieldTextField and FieldTextArea.  *   * @author $Author$  * @version $Revision$ ($Date$)  *  */
 end_comment
@@ -176,6 +188,39 @@ specifier|public
 name|String
 name|getSelectedText
 parameter_list|()
+function_decl|;
+DECL|method|hasUndoInformation ()
+specifier|public
+name|boolean
+name|hasUndoInformation
+parameter_list|()
+function_decl|;
+DECL|method|undo ()
+specifier|public
+name|void
+name|undo
+parameter_list|()
+function_decl|;
+DECL|method|hasRedoInformation ()
+specifier|public
+name|boolean
+name|hasRedoInformation
+parameter_list|()
+function_decl|;
+DECL|method|redo ()
+specifier|public
+name|void
+name|redo
+parameter_list|()
+function_decl|;
+DECL|method|addUndoableEditListener (UndoableEditListener listener)
+specifier|public
+name|void
+name|addUndoableEditListener
+parameter_list|(
+name|UndoableEditListener
+name|listener
+parameter_list|)
 function_decl|;
 block|}
 end_interface

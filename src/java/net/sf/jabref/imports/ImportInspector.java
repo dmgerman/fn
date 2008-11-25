@@ -55,6 +55,12 @@ name|BibtexEntry
 name|entry
 parameter_list|)
 function_decl|;
+comment|/**      * If this is a graphical dialog, bring it to the front.      */
+DECL|method|toFront ()
+name|void
+name|toFront
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

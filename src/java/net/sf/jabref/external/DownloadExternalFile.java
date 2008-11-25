@@ -626,19 +626,32 @@ block|}
 comment|// Then, while the download is proceeding, let the user choose the details of the file:
 name|String
 name|suffix
-init|=
+decl_stmt|;
+if|if
+condition|(
+name|suggestedType
+operator|!=
+literal|null
+condition|)
+block|{
+name|suffix
+operator|=
+name|suggestedType
+operator|.
+name|getExtension
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// If we didn't find a file type from the MIME type, try based on extension:
+name|suffix
+operator|=
 name|getSuffix
 argument_list|(
 name|res
 argument_list|)
-decl_stmt|;
-comment|// If we didn't find a file type from the MIME type, try based on extension:
-if|if
-condition|(
-name|suggestedType
-operator|==
-literal|null
-condition|)
+expr_stmt|;
 name|suggestedType
 operator|=
 name|Globals
@@ -650,6 +663,7 @@ argument_list|(
 name|suffix
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|suggestedName
 init|=
@@ -659,8 +673,6 @@ literal|null
 condition|?
 name|getSuggestedFileName
 argument_list|(
-name|res
-argument_list|,
 name|suffix
 argument_list|)
 else|:
@@ -1257,14 +1269,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getSuggestedFileName (String res, String suffix)
+DECL|method|getSuggestedFileName (String suffix)
 specifier|public
 name|String
 name|getSuggestedFileName
 parameter_list|(
-name|String
-name|res
-parameter_list|,
 name|String
 name|suffix
 parameter_list|)
@@ -1333,7 +1342,7 @@ return|return
 name|plannedName
 return|;
 block|}
-comment|/**      * Look for the last '.' in the link, and returnthe following characters.      * This gives the extension for most reasonably named links.      *      * @param link The link      * @return The suffix, excluding the dot (e.g. ".pdf")      */
+comment|/**      * Look for the last '.' in the link, and returnthe following characters.      * This gives the extension for most reasonably named links.      *      * @param link The link      * @return The suffix, excluding the dot (e.g. "pdf")      */
 DECL|method|getSuffix (final String link)
 specifier|public
 name|String

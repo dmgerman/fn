@@ -5523,6 +5523,20 @@ name|getSelectedComponent
 argument_list|()
 return|;
 block|}
+comment|/**      * @return the BasePanel count.      */
+DECL|method|baseCount ()
+specifier|public
+name|int
+name|baseCount
+parameter_list|()
+block|{
+return|return
+name|tabbedPane
+operator|.
+name|getComponentCount
+argument_list|()
+return|;
+block|}
 comment|/**    * handle the color of active and inactive JTabbedPane tabs    */
 DECL|method|markActiveBasePanel ()
 specifier|private
@@ -8671,6 +8685,34 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/**      * Signal closing of the current tab. Standard warnings will be given if the      * database has been changed.      */
+DECL|method|closeCurrentTab ()
+specifier|public
+name|void
+name|closeCurrentTab
+parameter_list|()
+block|{
+name|closeDatabaseAction
+operator|.
+name|actionPerformed
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Close the current tab without giving any warning if the database has been changed.      */
+DECL|method|closeCurrentTabNoWarning ()
+specifier|public
+name|void
+name|closeCurrentTabNoWarning
+parameter_list|()
+block|{
+name|closeDatabaseAction
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 DECL|class|SelectKeysAction
 class|class
 name|SelectKeysAction
@@ -9102,6 +9144,17 @@ condition|(
 name|close
 condition|)
 block|{
+name|close
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+DECL|method|close ()
+specifier|public
+name|void
+name|close
+parameter_list|()
+block|{
 name|basePanel
 argument_list|()
 operator|.
@@ -9152,7 +9205,6 @@ name|gc
 argument_list|()
 expr_stmt|;
 comment|// Test
-block|}
 block|}
 block|}
 comment|// The action concerned with opening a new database.

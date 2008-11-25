@@ -216,6 +216,7 @@ name|windowsDefaultLookAndFeel
 init|=
 literal|"com.jgoodies.looks.windows.WindowsLookAndFeel"
 decl_stmt|;
+comment|//windowsDefaultLookAndFeel = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
 DECL|field|CURRENTFONT
 specifier|public
 specifier|static

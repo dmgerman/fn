@@ -206,6 +206,14 @@ DECL|field|extension
 name|String
 name|extension
 decl_stmt|;
+DECL|field|encoding
+name|String
+name|encoding
+init|=
+literal|null
+decl_stmt|;
+comment|// If this value is set, it will be used to override
+comment|// the default encoding for the basePanel.
 DECL|field|fileFilter
 name|FileFilter
 name|fileFilter
@@ -315,6 +323,23 @@ return|return
 name|displayName
 return|;
 block|}
+comment|/**      * Set an encoding which will be used in preference to the default value      * obtained from the basepanel.      * @param encoding The name of the encoding to use.      */
+DECL|method|setEncoding (String encoding)
+specifier|protected
+name|void
+name|setEncoding
+parameter_list|(
+name|String
+name|encoding
+parameter_list|)
+block|{
+name|this
+operator|.
+name|encoding
+operator|=
+name|encoding
+expr_stmt|;
+block|}
 comment|/** 	 * This method should return a reader from which the given layout file can 	 * be read. 	 *  	 * This standard implementation of this method will use the 	 * {@link FileActions#getReader(String)} method. 	 *  	 * Subclasses of ExportFormat are free to override and provide their own 	 * implementation. 	 *  	 * @param filename 	 *            the file name 	 * @throws IOException 	 *             if the reader could not be created 	 *  	 * @return a newly created reader 	 */
 DECL|method|getReader (String filename)
 specifier|protected
@@ -416,13 +441,61 @@ decl_stmt|;
 name|SaveSession
 name|ss
 init|=
+literal|null
+decl_stmt|;
+if|if
+condition|(
+name|this
+operator|.
+name|encoding
+operator|!=
+literal|null
+condition|)
+block|{
+try|try
+block|{
+name|ss
+operator|=
+name|getSaveSession
+argument_list|(
+name|this
+operator|.
+name|encoding
+argument_list|,
+name|outFile
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IOException
+name|ex
+parameter_list|)
+block|{
+comment|// Perhaps the overriding encoding doesn't work?
+comment|// We will fall back on the default encoding.
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+if|if
+condition|(
+name|ss
+operator|==
+literal|null
+condition|)
+name|ss
+operator|=
 name|getSaveSession
 argument_list|(
 name|encoding
 argument_list|,
 name|outFile
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|VerifyingWriter
 name|ps
 init|=

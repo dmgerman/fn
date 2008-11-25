@@ -568,7 +568,12 @@ name|getTitle
 parameter_list|()
 block|{
 return|return
+name|Globals
+operator|.
+name|menuTitle
+argument_list|(
 literal|"Fetch CiteSeer by ID"
+argument_list|)
 return|;
 block|}
 DECL|method|stopFetching ()

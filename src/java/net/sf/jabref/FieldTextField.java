@@ -54,6 +54,54 @@ name|JTextField
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|event
+operator|.
+name|UndoableEditListener
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|event
+operator|.
+name|UndoableEditEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|undo
+operator|.
+name|UndoManager
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|undo
+operator|.
+name|CannotUndoException
+import|;
+end_import
+
 begin_class
 DECL|class|FieldTextField
 specifier|public
@@ -74,6 +122,7 @@ specifier|protected
 name|JLabel
 name|label
 decl_stmt|;
+comment|//protected UndoManager undo = new UndoManager();
 DECL|method|FieldTextField (String fieldName_, String content, boolean changeColorOnFocus)
 specifier|public
 name|FieldTextField
@@ -93,6 +142,8 @@ argument_list|(
 name|content
 argument_list|)
 expr_stmt|;
+comment|// Listen for undo and redo events
+comment|/*getDocument().addUndoableEditListener(new UndoableEditListener() {             public void undoableEditHappened(UndoableEditEvent evt) {                 undo.addEdit(evt.getEdit());             }         });*/
 name|updateFont
 argument_list|()
 expr_stmt|;
@@ -315,6 +366,62 @@ block|}
 name|replaceSelection
 argument_list|(
 name|textToInsert
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|hasUndoInformation ()
+specifier|public
+name|boolean
+name|hasUndoInformation
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+comment|//undo.canUndo();
+block|}
+DECL|method|undo ()
+specifier|public
+name|void
+name|undo
+parameter_list|()
+block|{
+comment|/*try {             if (undo.canUndo()) {                 undo.undo();             }         } catch (CannotUndoException e) {         }*/
+block|}
+DECL|method|hasRedoInformation ()
+specifier|public
+name|boolean
+name|hasRedoInformation
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+comment|//undo.canRedo();
+block|}
+DECL|method|redo ()
+specifier|public
+name|void
+name|redo
+parameter_list|()
+block|{
+comment|/*try {             if (undo.canRedo()) {                 undo.redo();             }         } catch (CannotUndoException e) {         }*/
+block|}
+DECL|method|addUndoableEditListener (UndoableEditListener listener)
+specifier|public
+name|void
+name|addUndoableEditListener
+parameter_list|(
+name|UndoableEditListener
+name|listener
+parameter_list|)
+block|{
+name|getDocument
+argument_list|()
+operator|.
+name|addUndoableEditListener
+argument_list|(
+name|listener
 argument_list|)
 expr_stmt|;
 block|}

@@ -788,7 +788,7 @@ name|Util
 operator|.
 name|checkLegalKey
 argument_list|(
-literal|"ÄäáÀÁÂ"
+literal|"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -811,7 +811,7 @@ name|void
 name|testReplaceSpecialCharacters
 parameter_list|()
 block|{
-comment|// Shouldn't German Ä be resolved to Ae
+comment|// Shouldn't German ï¿½ be resolved to Ae
 name|assertEquals
 argument_list|(
 literal|"AeaeaAAA"
@@ -820,7 +820,7 @@ name|Util
 operator|.
 name|replaceSpecialCharacters
 argument_list|(
-literal|"ÄäáÀÁÂ"
+literal|"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1712,7 +1712,7 @@ name|Util
 operator|.
 name|getFieldAndFormat
 argument_list|(
-literal|"[:ToLowerCase]"
+literal|"[:lower]"
 argument_list|,
 name|entry
 argument_list|,
@@ -1728,7 +1728,7 @@ name|Util
 operator|.
 name|getFieldAndFormat
 argument_list|(
-literal|"[author:net.sf.jabref.export.layout.format.ToLowerCase]"
+literal|"[author:lower]"
 argument_list|,
 name|entry
 argument_list|,

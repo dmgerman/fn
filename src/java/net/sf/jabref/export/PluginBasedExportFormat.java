@@ -124,6 +124,14 @@ operator|.
 name|getExtension
 argument_list|()
 decl_stmt|;
+name|String
+name|encoding
+init|=
+name|extension
+operator|.
+name|getEncoding
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 literal|""
@@ -183,11 +191,13 @@ name|layoutFilename
 argument_list|,
 name|fileExtension
 argument_list|,
+name|encoding
+argument_list|,
 name|extension
 argument_list|)
 return|;
 block|}
-DECL|method|PluginBasedExportFormat (String displayName, String consoleName, String layoutFileName, String fileExtension, ExportFormatTemplateExtension extension)
+DECL|method|PluginBasedExportFormat (String displayName, String consoleName, String layoutFileName, String fileExtension, String encoding, ExportFormatTemplateExtension extension)
 specifier|public
 name|PluginBasedExportFormat
 parameter_list|(
@@ -202,6 +212,9 @@ name|layoutFileName
 parameter_list|,
 name|String
 name|fileExtension
+parameter_list|,
+name|String
+name|encoding
 parameter_list|,
 name|ExportFormatTemplateExtension
 name|extension
@@ -218,6 +231,18 @@ argument_list|,
 literal|null
 argument_list|,
 name|fileExtension
+argument_list|)
+expr_stmt|;
+comment|// Set the overriding encoding, if the plugin supplied one:
+if|if
+condition|(
+name|encoding
+operator|!=
+literal|null
+condition|)
+name|setEncoding
+argument_list|(
+name|encoding
 argument_list|)
 expr_stmt|;
 name|this

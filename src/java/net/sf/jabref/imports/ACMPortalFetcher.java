@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/* Aaron Chen  * 08-28-2007  * ACM Digital Library support  */
+comment|/* Aaron Chen  * 08-28-2007  * ACM Portal support  */
 end_comment
 
 begin_package
@@ -15,10 +15,6 @@ operator|.
 name|imports
 package|;
 end_package
-
-begin_comment
-comment|//import net.sf.jabref.net.URLDownload;
-end_comment
 
 begin_import
 import|import
@@ -267,10 +263,10 @@ comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Mar 25, 2006  *
 end_comment
 
 begin_class
-DECL|class|ACMDigitalLibraryFetcher
+DECL|class|ACMPortalFetcher
 specifier|public
 class|class
-name|ACMDigitalLibraryFetcher
+name|ACMPortalFetcher
 implements|implements
 name|EntryFetcher
 block|{
@@ -292,7 +288,6 @@ operator|new
 name|HTMLConverter
 argument_list|()
 decl_stmt|;
-comment|//	JournalAbbreviations journalAbbrev = new JournalAbbreviations("/resource/AcmRisJournalList.txt");
 DECL|field|terms
 specifier|private
 name|String
@@ -320,9 +315,19 @@ DECL|field|endUrl
 name|String
 name|endUrl
 init|=
-literal|"&coll=ACM&short=1"
+literal|"&coll=Portal&short=1"
 decl_stmt|;
 comment|//&start=";
+DECL|field|MAX_FETCH
+specifier|private
+specifier|static
+specifier|final
+name|int
+name|MAX_FETCH
+init|=
+literal|50
+decl_stmt|;
+comment|// 20 when short=0
 DECL|field|perPage
 DECL|field|hits
 DECL|field|unparseable
@@ -331,7 +336,7 @@ specifier|private
 name|int
 name|perPage
 init|=
-literal|20
+name|MAX_FETCH
 decl_stmt|,
 name|hits
 init|=
@@ -380,7 +385,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"The Guide"
+literal|"The Guide to Computing Literature"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -416,17 +421,6 @@ name|acmOrGuide
 init|=
 literal|false
 decl_stmt|;
-comment|//    private static final int MAX_ABSTRACT_FETCH = 5;
-DECL|field|MAX_FETCH
-specifier|private
-specifier|static
-specifier|final
-name|int
-name|MAX_FETCH
-init|=
-literal|20
-decl_stmt|;
-comment|//Pattern hitsPattern = Pattern.compile("Your search matched<strong>(\\d+)</strong>");
 DECL|field|hitsPattern
 name|Pattern
 name|hitsPattern
@@ -435,7 +429,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|".*Found<b>(\\d+.*,*\\d+.*)</b> of.*"
+literal|".*Found<b>(\\d+,*\\d*)</b> of.*"
 argument_list|)
 decl_stmt|;
 DECL|field|maxHitsPattern
@@ -446,7 +440,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|".*<td>Results \\d+ - \\d+ of (\\d+,*\\d+)</td>.*"
+literal|".*Results \\d+ - \\d+ of (\\d+,*\\d*).*"
 argument_list|)
 decl_stmt|;
 DECL|field|risPattern
@@ -469,70 +463,6 @@ operator|.
 name|compile
 argument_list|(
 literal|".*ABSTRACT</A></span>\\s+<p class=\"abstract\">\\s+(.*)"
-argument_list|)
-decl_stmt|;
-DECL|field|entryPattern1
-name|Pattern
-name|entryPattern1
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|".*<strong>(.+)</strong><br>\\s+(.+)<br>"
-operator|+
-literal|"\\s+<A href='(.+)'>(.+)</A><br>\\s+Volume (.+),&nbsp;\\s*"
-operator|+
-literal|"(.+)?\\s?(\\d\\d\\d\\d)\\s+Page\\(s\\):.*"
-argument_list|)
-decl_stmt|;
-DECL|field|entryPattern2
-name|Pattern
-name|entryPattern2
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|".*<strong>(.+)</strong><br>\\s+(.+)<br>"
-operator|+
-literal|"\\s+<A href='(.+)'>(.+)</A><br>\\s+Volume (.+),&nbsp;\\s+.*Issue (\\d+).*,&nbsp;\\s*"
-operator|+
-literal|"(.+)? (\\d\\d\\d\\d)\\s+Page\\(s\\):.*"
-argument_list|)
-decl_stmt|;
-DECL|field|entryPattern3
-name|Pattern
-name|entryPattern3
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|".*<strong>(.+)</strong><br>\\s+(.+)<br>"
-operator|+
-literal|"\\s+<A href='(.+)'>(.+)</A><br>\\s+Volume (.+),&nbsp;\\s+Issue (\\d+),&nbsp;"
-operator|+
-literal|"\\s+Part (\\d+),&nbsp;\\s*"
-comment|//"[\\s-\\d]+"
-operator|+
-literal|"(.+)? (\\d\\d\\d\\d)\\s+Page\\(s\\):.*"
-argument_list|)
-decl_stmt|;
-DECL|field|entryPattern4
-name|Pattern
-name|entryPattern4
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|".*<strong>(.+)</strong><br>\\s+(.+)<br>"
-operator|+
-literal|"\\s+<A href='(.+)'>(.+)</A><br>\\s*"
-comment|//[\\s-\\da-z]+"
-operator|+
-literal|"(.+)? (\\d\\d\\d\\d)\\s+Page\\(s\\):.*"
 argument_list|)
 decl_stmt|;
 DECL|field|fullCitationPattern
@@ -708,10 +638,6 @@ argument_list|(
 name|address
 argument_list|)
 decl_stmt|;
-comment|// Fetch the search page and put the contents in a String:
-comment|//String page = getResultsFromFile(new File("/home/alver/div/temp.txt"));
-comment|//URLDownload ud = new URLDownload(new JPanel(), url, new File("/home/alver/div/temp.txt"));
-comment|//ud.download();
 comment|//dialog.setVisible(true);
 name|String
 name|page
@@ -733,6 +659,59 @@ argument_list|,
 name|hitsPattern
 argument_list|)
 expr_stmt|;
+name|int
+name|index
+init|=
+name|page
+operator|.
+name|indexOf
+argument_list|(
+literal|"Found"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|index
+operator|>=
+literal|0
+condition|)
+block|{
+name|page
+operator|=
+name|page
+operator|.
+name|substring
+argument_list|(
+name|index
+operator|+
+literal|5
+argument_list|)
+expr_stmt|;
+name|index
+operator|=
+name|page
+operator|.
+name|indexOf
+argument_list|(
+literal|"Found"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|index
+operator|>=
+literal|0
+condition|)
+name|page
+operator|=
+name|page
+operator|.
+name|substring
+argument_list|(
+name|index
+argument_list|)
+expr_stmt|;
+block|}
 comment|//System.out.println(page);
 comment|//System.out.printf("Hit %d\n", hits);
 if|if
@@ -759,7 +738,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Search ACM Digital Library"
+literal|"Search ACM Portal"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -778,7 +757,7 @@ name|getNumberOfHits
 argument_list|(
 name|page
 argument_list|,
-literal|"<td>Results"
+literal|"Results"
 argument_list|,
 name|maxHitsPattern
 argument_list|)
@@ -841,7 +820,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Search ACM Digital Library"
+literal|"Search ACM Portal"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -966,14 +945,14 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Connection to ACM Digital Library failed"
+literal|"Connection to ACM Portal failed"
 argument_list|)
 argument_list|,
 name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Search ACM Digital Library"
+literal|"Search ACM Portal"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -1006,7 +985,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Search ACM Digital Library"
+literal|"Search ACM Portal"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -1094,7 +1073,6 @@ argument_list|(
 name|endUrl
 argument_list|)
 expr_stmt|;
-comment|//sb.append(String.valueOf(startIndex));
 return|return
 name|sb
 operator|.
@@ -1202,10 +1180,10 @@ expr_stmt|;
 comment|//break;
 block|}
 block|}
-DECL|method|parseEntryRis (String fullCitation, boolean abs)
+DECL|method|parseEntryBibTeX (String fullCitation, boolean abs)
 specifier|private
 name|BibtexEntry
-name|parseEntryRis
+name|parseEntryBibTeX
 parameter_list|(
 name|String
 name|fullCitation
@@ -1364,10 +1342,6 @@ argument_list|(
 literal|1
 argument_list|)
 decl_stmt|;
-comment|/* 						absBlock = absBlock.replaceAll("<i>", "\\$"); 						absBlock = absBlock.replaceAll("</i><sub>", "_"); 						absBlock = absBlock.replaceAll("<sub>", "_"); 						absBlock = absBlock.replaceAll("</i>", "\\$"); 						absBlock = absBlock.replaceAll("</sub>", ""); 						absBlock = absBlock.replaceAll("</?p.*>", ""); 						*/
-comment|//absBlock = absBlock.replaceAll("&gt;", ">");
-comment|//absBlock = absBlock.replaceAll("&lt;", "<");
-comment|//absBlock = absBlock.replaceAll("&#(\\d+);", "\\\\u$1");
 name|entry
 operator|.
 name|setField
@@ -1386,7 +1360,15 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|//System.out.println("No abstract matched.");
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"No abstract matched."
+argument_list|)
+expr_stmt|;
 comment|//System.out.println(page);
 block|}
 block|}
@@ -1572,7 +1554,7 @@ try|try
 block|{
 name|entry
 operator|=
-name|parseEntryRis
+name|parseEntryBibTeX
 argument_list|(
 name|fullCitation
 operator|.
@@ -1695,6 +1677,16 @@ name|ind
 operator|<
 literal|0
 condition|)
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|page
+argument_list|)
+expr_stmt|;
 throw|throw
 operator|new
 name|IOException
@@ -1707,6 +1699,7 @@ literal|"Could not parse number of hits"
 argument_list|)
 argument_list|)
 throw|;
+block|}
 name|String
 name|substring
 init|=
@@ -1759,17 +1752,17 @@ argument_list|(
 literal|"Unmatched!"
 argument_list|)
 expr_stmt|;
-comment|//System.out.println(substring);
-block|}
-if|if
-condition|(
-name|m
+name|System
 operator|.
-name|groupCount
-argument_list|()
-operator|>=
-literal|1
-condition|)
+name|out
+operator|.
+name|println
+argument_list|(
+name|substring
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 block|{
 try|try
 block|{
@@ -2065,7 +2058,7 @@ name|Globals
 operator|.
 name|menuTitle
 argument_list|(
-literal|"Search ACM Digital Library"
+literal|"Search ACM Portal"
 argument_list|)
 return|;
 block|}
@@ -2091,7 +2084,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|"ACMDigitalLibraryHelp.html"
+literal|"ACMPortalHelp.html"
 return|;
 block|}
 DECL|method|getKeyName ()
@@ -2101,7 +2094,7 @@ name|getKeyName
 parameter_list|()
 block|{
 return|return
-literal|"Search ACM Digital Library"
+literal|"Search ACM Portal"
 return|;
 block|}
 comment|// This method is called by the dialog when the user has cancelled the import.
