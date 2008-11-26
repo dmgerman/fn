@@ -1481,6 +1481,8 @@ literal|"title = {\nHallo \nWorld \nthis \n is\n\nnot \n\nan \n\n exercise \n \n
 operator|+
 literal|"tabs = {\nHallo \tWorld \tthis \t is\t\tnot \t\tan \t\n exercise \t \n.\t \n\t},\n"
 operator|+
+literal|"file = {Bemerkung:H:\\bla\\ups  sala.pdf:PDF}, \n"
+operator|+
 literal|"}"
 argument_list|)
 decl_stmt|;
@@ -1576,6 +1578,120 @@ operator|.
 name|getField
 argument_list|(
 literal|"tabs"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|/** 	 * Test for [2022983] 	 *  	 * @author Uwe Kuehn 	 * @author Andrei Haralevich 	 */
+DECL|method|testFileNaming ()
+specifier|public
+name|void
+name|testFileNaming
+parameter_list|()
+block|{
+name|BibtexEntry
+name|e
+init|=
+name|BibtexParser
+operator|.
+name|singleFromString
+argument_list|(
+literal|"@article{canh05,"
+operator|+
+literal|"title = {\nHallo \nWorld \nthis \n is\n\nnot \n\nan \n\n exercise \n \n.\n \n\n},\n"
+operator|+
+literal|"tabs = {\nHallo \tWorld \tthis \t is\t\tnot \t\tan \t\n exercise \t \n.\t \n\t},\n"
+operator|+
+literal|"file = {Bemerkung:H:\\bla\\ups  sala.pdf:PDF}, \n"
+operator|+
+literal|"}"
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Bemerkung:H:\\bla\\ups  sala.pdf:PDF"
+argument_list|,
+name|e
+operator|.
+name|getField
+argument_list|(
+literal|"file"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|/** 	 * Test for [2022983] 	 *  	 * @author Uwe Kuehn 	 * @author Andrei Haralevich 	 */
+DECL|method|testFileNaming1 ()
+specifier|public
+name|void
+name|testFileNaming1
+parameter_list|()
+block|{
+name|BibtexEntry
+name|e
+init|=
+name|BibtexParser
+operator|.
+name|singleFromString
+argument_list|(
+literal|"@article{canh05,"
+operator|+
+literal|"title = {\nHallo \nWorld \nthis \n is\n\nnot \n\nan \n\n exercise \n \n.\n \n\n},\n"
+operator|+
+literal|"tabs = {\nHallo \tWorld \tthis \t is\t\tnot \t\tan \t\n exercise \t \n.\t \n\t},\n"
+operator|+
+literal|"file = {Bemerkung:H:\\bla\\ups  \tsala.pdf:PDF}, \n"
+operator|+
+literal|"}"
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Bemerkung:H:\\bla\\ups  sala.pdf:PDF"
+argument_list|,
+name|e
+operator|.
+name|getField
+argument_list|(
+literal|"file"
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|/** 	 * Test for [2022983] 	 *  	 * @author Uwe Kuehn 	 * @author Andrei Haralevich 	 */
+DECL|method|testFileNaming3 ()
+specifier|public
+name|void
+name|testFileNaming3
+parameter_list|()
+block|{
+name|BibtexEntry
+name|e
+init|=
+name|BibtexParser
+operator|.
+name|singleFromString
+argument_list|(
+literal|"@article{canh05,"
+operator|+
+literal|"title = {\nHallo \nWorld \nthis \n is\n\nnot \n\nan \n\n exercise \n \n.\n \n\n},\n"
+operator|+
+literal|"tabs = {\nHallo \tWorld \tthis \t is\t\tnot \t\tan \t\n exercise \t \n.\t \n\t},\n"
+operator|+
+literal|"file = {Bemerkung:H:\\bla\\ups \n\tsala.pdf:PDF}, \n"
+operator|+
+literal|"}"
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Bemerkung:H:\\bla\\ups  sala.pdf:PDF"
+argument_list|,
+name|e
+operator|.
+name|getField
+argument_list|(
+literal|"file"
 argument_list|)
 argument_list|)
 expr_stmt|;

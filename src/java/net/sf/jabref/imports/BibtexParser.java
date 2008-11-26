@@ -1621,7 +1621,9 @@ name|String
 name|content
 init|=
 name|parseFieldContent
-argument_list|()
+argument_list|(
+name|name
+argument_list|)
 decl_stmt|;
 comment|// Util.pr("Now I'm going to consume a }");
 name|consume
@@ -1831,7 +1833,9 @@ name|String
 name|cont
 init|=
 name|parseFieldContent
-argument_list|()
+argument_list|(
+name|fieldName
+argument_list|)
 decl_stmt|;
 name|result
 operator|.
@@ -2025,7 +2029,9 @@ name|String
 name|content
 init|=
 name|parseFieldContent
-argument_list|()
+argument_list|(
+name|key
+argument_list|)
 decl_stmt|;
 comment|// Now, if the field in question is set up to be fitted automatically
 comment|// with braces around
@@ -2130,11 +2136,14 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|parseFieldContent ()
+DECL|method|parseFieldContent (String key)
 specifier|private
 name|String
 name|parseFieldContent
-parameter_list|()
+parameter_list|(
+name|String
+name|key
+parameter_list|)
 throws|throws
 name|IOException
 block|{
@@ -2249,6 +2258,8 @@ operator|.
 name|format
 argument_list|(
 name|text
+argument_list|,
+name|key
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2469,6 +2480,10 @@ name|toString
 argument_list|()
 return|;
 block|}
+comment|/** 	 * Originalinhalt nach parseFieldContent(String) verschoben. 	 * @return 	 * @throws IOException 	 */
+comment|//	private String parseFieldContent() throws IOException {
+comment|//		return parseFieldContent(null);
+comment|//	}
 comment|/** 	 * Check if a string at any point has had more ending braces (}) than 	 * opening ones ({). Will e.g. return true for the string "DNA} blahblal 	 * {EPA" 	 *  	 * @param s 	 *            The string to check. 	 * @return true if at any index the brace count is negative. 	 */
 DECL|method|hasNegativeBraceCount (String s)
 specifier|private

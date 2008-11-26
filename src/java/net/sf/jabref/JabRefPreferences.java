@@ -475,7 +475,7 @@ argument_list|<
 name|String
 argument_list|>
 argument_list|(
-literal|4
+literal|5
 argument_list|)
 decl_stmt|;
 DECL|field|KEY_PATTERN
@@ -2473,7 +2473,7 @@ name|put
 argument_list|(
 literal|"nonWrappableFields"
 argument_list|,
-literal|"pdf;ps;url;doi"
+literal|"pdf;ps;url;doi;file"
 argument_list|)
 expr_stmt|;
 name|defaults

@@ -24,6 +24,18 @@ name|Globals
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|GUIGlobals
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class provides the reformatting needed when reading BibTeX fields formatted  * in JabRef style. The reformatting must undo all formatting done by JabRef when  * writing the same fields.  */
 end_comment
@@ -34,14 +46,17 @@ specifier|public
 class|class
 name|FieldContentParser
 block|{
-comment|/**      * Performs the reformatting      * @param content StringBuffer containing the field to format.      * @return The formatted field content. NOTE: the StringBuffer returned may      * or may not be the same as the argument given.      */
-DECL|method|format (StringBuffer content)
+comment|/**      * Performs the reformatting      * @param content StringBuffer containing the field to format. key contains field name according to field      *  was edited by Kuehn/Havalevich      * @return The formatted field content. NOTE: the StringBuffer returned may      * or may not be the same as the argument given.      */
+DECL|method|format (StringBuffer content, String key)
 specifier|public
 name|StringBuffer
 name|format
 parameter_list|(
 name|StringBuffer
 name|content
+parameter_list|,
+name|String
+name|key
 parameter_list|)
 block|{
 comment|/*System.out.println("Content: '"+content+"'");         byte[] bt = content.toString().getBytes();         for (int i = 0; i< bt.length; i++) {             byte b = bt[i];             System.out.print(b+" ");         }         System.out.println("");         */
@@ -600,6 +615,29 @@ operator|)
 condition|)
 block|{
 comment|// We have two spaces in a row. Don't include this one.
+comment|// Yes, of course we have, but in Filenames it is nessary to have all spaces. :-)
+comment|// This is the reason why the next lines are required
+if|if
+condition|(
+name|key
+operator|!=
+literal|null
+operator|&&
+name|key
+operator|.
+name|equals
+argument_list|(
+name|GUIGlobals
+operator|.
+name|FILE_FIELD
+argument_list|)
+condition|)
+block|{
+name|i
+operator|++
+expr_stmt|;
+block|}
+else|else
 name|content
 operator|.
 name|deleteCharAt
@@ -635,6 +673,25 @@ expr_stmt|;
 block|}
 return|return
 name|content
+return|;
+block|}
+comment|/**      * Performs the reformatting      * @param content StringBuffer containing the field to format.      * @return The formatted field content. NOTE: the StringBuffer returned may      * or may not be the same as the argument given.      */
+DECL|method|format (StringBuffer content)
+specifier|public
+name|StringBuffer
+name|format
+parameter_list|(
+name|StringBuffer
+name|content
+parameter_list|)
+block|{
+return|return
+name|format
+argument_list|(
+name|content
+argument_list|,
+literal|null
+argument_list|)
 return|;
 block|}
 comment|/**      * Formats field contents for output. Must be "symmetric" with the parse method above,      * so stored and reloaded fields are not mangled.      * @param in      * @param wrapAmount      * @return the wrapped String.      */
