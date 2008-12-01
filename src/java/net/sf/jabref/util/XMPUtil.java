@@ -419,16 +419,14 @@ argument_list|(
 name|document
 argument_list|)
 decl_stmt|;
-comment|// If we did not find any metadata, there is nothing to return.
+comment|// If we did not find any XMP metadata, search for non XMP metadata
 if|if
 condition|(
 name|meta
-operator|==
+operator|!=
 literal|null
 condition|)
-return|return
-literal|null
-return|;
+block|{
 name|List
 argument_list|<
 name|XMPSchema
@@ -556,6 +554,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 if|if
 condition|(
 name|result
@@ -606,6 +605,19 @@ name|close
 argument_list|()
 expr_stmt|;
 block|}
+comment|// return null, if no metadata was found
+if|if
+condition|(
+name|result
+operator|.
+name|size
+argument_list|()
+operator|==
+literal|0
+condition|)
+return|return
+literal|null
+return|;
 return|return
 name|result
 return|;

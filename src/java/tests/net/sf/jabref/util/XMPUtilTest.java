@@ -2790,19 +2790,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Nothing there yet, but should not crash
-name|assertEquals
+name|assertNull
 argument_list|(
-literal|0
-argument_list|,
 name|XMPUtil
 operator|.
 name|readXMP
 argument_list|(
 name|pdfFile
 argument_list|)
-operator|.
-name|size
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|s
