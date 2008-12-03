@@ -5583,6 +5583,24 @@ argument_list|,
 literal|"ctrl shift I"
 argument_list|)
 expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Increase table font size"
+argument_list|,
+literal|"ctrl PLUS"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Decrease table font size"
+argument_list|,
+literal|"ctrl MINUS"
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getNextUnit (Reader data)
 specifier|private

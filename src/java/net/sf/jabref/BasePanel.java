@@ -8344,6 +8344,18 @@ expr_stmt|;
 block|}
 block|}
 block|}
+DECL|method|updateTableFont ()
+specifier|public
+name|void
+name|updateTableFont
+parameter_list|()
+block|{
+name|mainTable
+operator|.
+name|updateFont
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|createMainTable ()
 specifier|public
 name|void
