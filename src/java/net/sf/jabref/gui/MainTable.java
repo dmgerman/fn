@@ -1865,8 +1865,6 @@ decl_stmt|;
 name|String
 name|columnName
 init|=
-name|tableFormat
-operator|.
 name|getColumnName
 argument_list|(
 name|col
