@@ -10593,6 +10593,15 @@ name|getBoolean
 argument_list|(
 literal|"overwriteTimeStamp"
 argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"markImportedEntries"
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if

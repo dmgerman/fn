@@ -8055,7 +8055,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/** 	 * Sets empty or non-existing owner fields of bibtex entries inside a List 	 * to a specified default value. Timestamp field is also set. Preferences 	 * are checked to see if these options are enabled. 	 *  	 * @param bibs 	 *            List of bibtex entries 	 */
-DECL|method|setAutomaticFields (Collection<BibtexEntry> bibs, boolean overwriteOwner, boolean overwriteTimestamp)
+DECL|method|setAutomaticFields (Collection<BibtexEntry> bibs, boolean overwriteOwner, boolean overwriteTimestamp, boolean markEntries)
 specifier|public
 specifier|static
 name|void
@@ -8072,6 +8072,9 @@ name|overwriteOwner
 parameter_list|,
 name|boolean
 name|overwriteTimestamp
+parameter_list|,
+name|boolean
+name|markEntries
 parameter_list|)
 block|{
 name|String
@@ -8127,7 +8130,7 @@ argument_list|(
 literal|"useTimeStamp"
 argument_list|)
 decl_stmt|;
-comment|// Do not need to do anything if both options are disabled
+comment|// Do not need to do anything if all options are disabled
 if|if
 condition|(
 operator|!
@@ -8135,6 +8138,8 @@ operator|(
 name|globalSetOwner
 operator|||
 name|globalSetTimeStamp
+operator|||
+name|markEntries
 operator|)
 condition|)
 return|return;
@@ -8202,6 +8207,23 @@ argument_list|,
 name|timeStampField
 argument_list|,
 name|timestamp
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|markEntries
+condition|)
+name|Util
+operator|.
+name|markEntry
+argument_list|(
+name|curEntry
+argument_list|,
+operator|new
+name|NamedCompound
+argument_list|(
+literal|""
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

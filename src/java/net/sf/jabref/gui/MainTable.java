@@ -360,6 +360,13 @@ name|searchMatcher
 decl_stmt|,
 name|groupMatcher
 decl_stmt|;
+comment|// needed to activate/deactivate the listener
+DECL|field|tableColumnListener
+specifier|private
+specifier|final
+name|PersistenceTableColumnListener
+name|tableColumnListener
+decl_stmt|;
 comment|// Constants used to define how a cell should be rendered.
 DECL|field|REQUIRED
 DECL|field|OPTIONAL
@@ -677,6 +684,55 @@ argument_list|()
 expr_stmt|;
 name|setWidths
 argument_list|()
+expr_stmt|;
+name|this
+operator|.
+name|tableColumnListener
+operator|=
+operator|new
+name|PersistenceTableColumnListener
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|PersistenceTableColumnListener
+operator|.
+name|ACTIVATE_PREF_KEY
+argument_list|)
+condition|)
+block|{
+name|getColumnModel
+argument_list|()
+operator|.
+name|addColumnModelListener
+argument_list|(
+name|this
+operator|.
+name|tableColumnListener
+argument_list|)
+expr_stmt|;
+block|}
+name|this
+operator|.
+name|setTableHeader
+argument_list|(
+operator|new
+name|PreventDraggingJTableHeader
+argument_list|(
+name|this
+operator|.
+name|getColumnModel
+argument_list|()
+argument_list|)
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|refreshSorting ()
@@ -3043,6 +3099,16 @@ operator|)
 operator|.
 name|intValue
 argument_list|()
+return|;
+block|}
+DECL|method|getTableColumnListener ()
+specifier|public
+name|PersistenceTableColumnListener
+name|getTableColumnListener
+parameter_list|()
+block|{
+return|return
+name|tableColumnListener
 return|;
 block|}
 comment|/**      * Returns the List of entries sorted by a user-selected term. This is the      * sorting before marking, search etc. applies.      *      * Note: The returned List must not be modified from the outside      * @return The sorted list of entries.      */
