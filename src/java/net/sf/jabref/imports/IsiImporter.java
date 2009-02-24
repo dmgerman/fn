@@ -609,6 +609,8 @@ argument_list|,
 name|CaseChanger
 operator|.
 name|UPPER_EACH_FIRST
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 name|map
