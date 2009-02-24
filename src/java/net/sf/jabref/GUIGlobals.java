@@ -1114,6 +1114,15 @@ argument_list|,
 literal|"tr"
 argument_list|)
 expr_stmt|;
+name|LANGUAGES
+operator|.
+name|put
+argument_list|(
+literal|"Chinese"
+argument_list|,
+literal|"zh"
+argument_list|)
+expr_stmt|;
 block|}
 comment|/** 	 * Read either the default icon theme, or a custom one. If loading of the custom theme 	 * fails, try to fall back on the default theme. 	 */
 DECL|method|setUpIconTheme ()
