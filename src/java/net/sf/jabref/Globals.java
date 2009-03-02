@@ -8607,16 +8607,25 @@ comment|// codepage
 comment|// According to ISO 8859-1 the "\times" symbol should be placed here
 comment|// (#215).
 comment|// Omitting this, because it is a mathematical symbol.
+comment|//RTFCHARS.put("O", "\\u216O"); // "Oslash"
 name|RTFCHARS
 operator|.
 name|put
 argument_list|(
 literal|"O"
 argument_list|,
-literal|"\\u216O"
+literal|"\\'d8"
 argument_list|)
 expr_stmt|;
-comment|// "Oslash"
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"o"
+argument_list|,
+literal|"\\'f8"
+argument_list|)
+expr_stmt|;
 comment|// RTFCHARS.put("`U", "\\u217"); // "Ugrave" exists in standard
 comment|// codepage
 name|RTFCHARS
@@ -8793,16 +8802,7 @@ comment|// codepage
 comment|// According to ISO 8859-1 the "\div" symbol should be placed here
 comment|// (#247).
 comment|// Omitting this, because it is a mathematical symbol.
-name|RTFCHARS
-operator|.
-name|put
-argument_list|(
-literal|"o"
-argument_list|,
-literal|"\\u248o"
-argument_list|)
-expr_stmt|;
-comment|// "oslash"
+comment|//RTFCHARS.put("o", "\\u248o"); // "oslash"
 comment|// RTFCHARS.put("`u", "\\u249"); // "ugrave" exists in standard
 comment|// codepage
 name|RTFCHARS
