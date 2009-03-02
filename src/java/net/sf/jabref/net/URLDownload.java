@@ -58,6 +58,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|net
+operator|.
+name|CookieHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|CookieManager
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -105,6 +125,11 @@ name|mimeType
 init|=
 literal|null
 decl_stmt|;
+DECL|field|cm
+specifier|private
+name|CookieHandler
+name|cm
+decl_stmt|;
 DECL|method|URLDownload (Component _parent, URL _source, File _dest)
 specifier|public
 name|URLDownload
@@ -131,6 +156,47 @@ name|parent
 operator|=
 name|_parent
 expr_stmt|;
+try|try
+block|{
+comment|// This should set up JabRef to receive cookies properly
+if|if
+condition|(
+operator|(
+name|cm
+operator|=
+name|CookieHandler
+operator|.
+name|getDefault
+argument_list|()
+operator|)
+operator|==
+literal|null
+condition|)
+block|{
+name|cm
+operator|=
+operator|new
+name|CookieManager
+argument_list|()
+expr_stmt|;
+name|CookieHandler
+operator|.
+name|setDefault
+argument_list|(
+name|cm
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+catch|catch
+parameter_list|(
+name|SecurityException
+name|e
+parameter_list|)
+block|{
+comment|// Setting or getting the system default cookie handler is forbidden
+comment|// In this case cookie handling is not possible.
+block|}
 block|}
 DECL|method|getMimeType ()
 specifier|public
