@@ -688,6 +688,12 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
+name|fDirectory
+operator|!=
+literal|null
+operator|)
+operator|&&
 name|fDirectory
 operator|.
 name|trim
