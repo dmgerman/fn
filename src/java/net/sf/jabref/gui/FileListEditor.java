@@ -1598,6 +1598,8 @@ condition|(
 name|editListEntry
 argument_list|(
 name|entry
+argument_list|,
+literal|true
 argument_list|)
 condition|)
 name|tableModel
@@ -1808,13 +1810,17 @@ name|toIdx
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|editListEntry (FileListEntry entry)
+comment|/**      * Open an editor for this entry.      * @param entry The entry to edit.      * @param openBrowse True to indicate that a Browse dialog should be immediately opened.      * @return true if the edit was accepted, false if it was cancelled.      */
+DECL|method|editListEntry (FileListEntry entry, boolean openBrowse)
 specifier|private
 name|boolean
 name|editListEntry
 parameter_list|(
 name|FileListEntry
 name|entry
+parameter_list|,
+name|boolean
+name|openBrowse
 parameter_list|)
 block|{
 if|if
@@ -1854,6 +1860,8 @@ operator|.
 name|setVisible
 argument_list|(
 literal|true
+argument_list|,
+name|openBrowse
 argument_list|)
 expr_stmt|;
 if|if
@@ -3648,6 +3656,8 @@ decl_stmt|;
 name|editListEntry
 argument_list|(
 name|entry
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}

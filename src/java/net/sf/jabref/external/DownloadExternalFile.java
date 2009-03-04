@@ -498,6 +498,8 @@ operator|.
 name|setVisible
 argument_list|(
 literal|false
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 name|JOptionPane
@@ -947,6 +949,8 @@ operator|.
 name|setVisible
 argument_list|(
 literal|true
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 else|else

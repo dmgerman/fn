@@ -288,6 +288,13 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
+literal|"Remove all broken links"
+argument_list|)
+block|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Quit synchronization"
 argument_list|)
 block|}
@@ -780,6 +787,11 @@ condition|(
 name|checkExisting
 condition|)
 block|{
+name|boolean
+name|removeAllBroken
+init|=
+literal|false
+decl_stmt|;
 name|mainLoop
 label|:
 for|for
@@ -954,7 +966,15 @@ condition|)
 block|{
 name|int
 name|answer
-init|=
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|removeAllBroken
+condition|)
+block|{
+name|answer
+operator|=
 name|JOptionPane
 operator|.
 name|showOptionDialog
@@ -1013,7 +1033,16 @@ index|[
 literal|0
 index|]
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
+else|else
+block|{
+name|answer
+operator|=
+literal|2
+expr_stmt|;
+comment|// We should delete this link.
+block|}
 switch|switch
 condition|(
 name|answer
@@ -1051,13 +1080,15 @@ operator|.
 name|setVisible
 argument_list|(
 literal|true
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
 break|break;
 case|case
 literal|2
 case|:
-comment|// Clear field
+comment|// Clear field:
 name|tableModel
 operator|.
 name|removeEntry
@@ -1077,6 +1108,32 @@ comment|// Step back in the iteration, because we removed an entry.
 break|break;
 case|case
 literal|3
+case|:
+comment|// Clear field:
+name|tableModel
+operator|.
+name|removeEntry
+argument_list|(
+name|j
+argument_list|)
+expr_stmt|;
+name|deleted
+operator|=
+literal|true
+expr_stmt|;
+comment|// Make sure we don't investigate this link further.
+name|j
+operator|--
+expr_stmt|;
+comment|// Step back in the iteration, because we removed an entry.
+name|removeAllBroken
+operator|=
+literal|true
+expr_stmt|;
+comment|// Notify for further cases.
+break|break;
+case|case
+literal|4
 case|:
 comment|// Cancel
 break|break
@@ -1393,6 +1450,8 @@ operator|.
 name|setVisible
 argument_list|(
 literal|true
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 block|}
