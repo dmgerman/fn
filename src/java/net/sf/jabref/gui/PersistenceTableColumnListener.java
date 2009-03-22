@@ -110,7 +110,7 @@ specifier|final
 name|boolean
 name|DEFAULT_ENABLED
 init|=
-literal|false
+literal|true
 decl_stmt|;
 DECL|field|simpleClassName
 specifier|private

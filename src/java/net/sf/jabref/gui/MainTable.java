@@ -655,7 +655,6 @@ operator|.
 name|MULTIPLE_COLUMN_KEYBOARD
 argument_list|)
 expr_stmt|;
-comment|// TODO: this doesn't work after applying comparatorChooser:
 name|this
 operator|.
 name|tableColumnListener
@@ -668,18 +667,10 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-name|PersistenceTableColumnListener
-operator|.
-name|ACTIVATE_PREF_KEY
-argument_list|)
+literal|true
 condition|)
 block|{
+comment|//Globals.prefs.getBoolean(PersistenceTableColumnListener.ACTIVATE_PREF_KEY)) {
 name|getColumnModel
 argument_list|()
 operator|.
