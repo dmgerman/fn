@@ -243,7 +243,19 @@ parameter_list|(
 name|InterruptedException
 name|ex
 parameter_list|)
-block|{       }
+block|{
+comment|/*  the (?) correct way to interrupt threads, according to     	   *  http://www.roseindia.net/javatutorials/shutting_down_threads_cleanly.shtml     	   */
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|interrupt
+argument_list|()
+expr_stmt|;
+comment|// very important
+break|break;
+block|}
 block|}
 block|}
 comment|/**    * Cause the thread to stop monitoring. It will finish the current round before stopping.    */
