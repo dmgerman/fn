@@ -139,7 +139,7 @@ name|Globals
 operator|.
 name|menuTitle
 argument_list|(
-literal|"Install plugin"
+literal|"Manage plugins"
 argument_list|)
 argument_list|)
 expr_stmt|;

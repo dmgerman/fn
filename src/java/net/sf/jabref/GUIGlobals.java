@@ -643,6 +643,11 @@ DECL|field|previewHelp
 name|previewHelp
 init|=
 literal|"PreviewHelp.html"
+decl_stmt|,
+DECL|field|pluginHelp
+name|pluginHelp
+init|=
+literal|"Plugin.html"
 decl_stmt|;
 comment|//	Colors.
 specifier|public
