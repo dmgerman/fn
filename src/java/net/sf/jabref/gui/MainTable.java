@@ -685,23 +685,7 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-literal|true
-condition|)
-block|{
-comment|//Globals.prefs.getBoolean(PersistenceTableColumnListener.ACTIVATE_PREF_KEY)) {
-name|getColumnModel
-argument_list|()
-operator|.
-name|addColumnModelListener
-argument_list|(
-name|this
-operator|.
-name|tableColumnListener
-argument_list|)
-expr_stmt|;
-block|}
+comment|/*if (Globals.prefs.getBoolean(PersistenceTableColumnListener.ACTIVATE_PREF_KEY)) {             getColumnModel().addColumnModelListener(this.tableColumnListener );         }*/
 comment|// TODO: Figure out, whether this call is needed.
 name|getSelected
 argument_list|()
