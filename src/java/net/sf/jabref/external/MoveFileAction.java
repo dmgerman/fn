@@ -54,6 +54,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|FileDialogs
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -634,7 +648,7 @@ else|else
 block|{
 name|chosenFile
 operator|=
-name|Globals
+name|FileDialogs
 operator|.
 name|getNewFile
 argument_list|(

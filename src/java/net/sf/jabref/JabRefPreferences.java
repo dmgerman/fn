@@ -4236,7 +4236,8 @@ name|keyCode
 argument_list|,
 name|Globals
 operator|.
-name|SHORTCUT_MASK
+name|getShortcutMask
+argument_list|()
 operator|+
 name|KeyEvent
 operator|.
@@ -4253,7 +4254,8 @@ name|keyCode
 argument_list|,
 name|Globals
 operator|.
-name|SHORTCUT_MASK
+name|getShortcutMask
+argument_list|()
 argument_list|)
 return|;
 block|}

@@ -1833,7 +1833,7 @@ block|}
 name|String
 name|chosen
 init|=
-name|Globals
+name|FileDialogs
 operator|.
 name|getNewFile
 argument_list|(

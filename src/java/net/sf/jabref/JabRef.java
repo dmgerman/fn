@@ -580,6 +580,11 @@ argument_list|()
 decl_stmt|;
 name|Globals
 operator|.
+name|startBackgroundTasks
+argument_list|()
+expr_stmt|;
+name|Globals
+operator|.
 name|prefs
 operator|=
 name|prefs

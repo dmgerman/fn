@@ -150,6 +150,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|FileDialogs
+import|;
+end_import
+
+begin_import
+import|import
 name|com
 operator|.
 name|jgoodies
@@ -537,7 +551,7 @@ name|importer
 operator|.
 name|setBasePath
 argument_list|(
-name|Globals
+name|FileDialogs
 operator|.
 name|getNewDir
 argument_list|(
@@ -574,7 +588,7 @@ expr_stmt|;
 name|String
 name|chosenFileStr
 init|=
-name|Globals
+name|FileDialogs
 operator|.
 name|getNewFile
 argument_list|(
@@ -782,7 +796,7 @@ block|{
 name|String
 name|basePath
 init|=
-name|Globals
+name|FileDialogs
 operator|.
 name|getNewFile
 argument_list|(

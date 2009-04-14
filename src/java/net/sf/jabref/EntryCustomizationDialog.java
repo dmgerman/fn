@@ -16,6 +16,20 @@ end_package
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|FileDialogs
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|awt
@@ -1678,7 +1692,7 @@ block|{
 name|String
 name|filename
 init|=
-name|Globals
+name|FileDialogs
 operator|.
 name|getNewFile
 argument_list|(
@@ -1911,7 +1925,7 @@ block|{
 name|String
 name|filename
 init|=
-name|Globals
+name|FileDialogs
 operator|.
 name|getNewFile
 argument_list|(

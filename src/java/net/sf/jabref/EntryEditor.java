@@ -286,7 +286,7 @@ name|jabref
 operator|.
 name|gui
 operator|.
-name|AutoCompleter
+name|*
 import|;
 end_import
 
@@ -2162,7 +2162,7 @@ expr_stmt|;
 name|String
 name|chosenFile
 init|=
-name|Globals
+name|FileDialogs
 operator|.
 name|getNewFile
 argument_list|(

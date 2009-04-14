@@ -192,6 +192,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|gui
+operator|.
+name|FileDialogs
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|net
 operator|.
 name|URLDownload
@@ -1130,7 +1144,7 @@ expr_stmt|;
 name|String
 name|name
 init|=
-name|Globals
+name|FileDialogs
 operator|.
 name|getNewFile
 argument_list|(
@@ -1239,7 +1253,7 @@ expr_stmt|;
 name|String
 name|name
 init|=
-name|Globals
+name|FileDialogs
 operator|.
 name|getNewFile
 argument_list|(
@@ -2561,7 +2575,7 @@ decl_stmt|;
 name|String
 name|toName
 init|=
-name|Globals
+name|FileDialogs
 operator|.
 name|getNewFile
 argument_list|(
@@ -2726,7 +2740,7 @@ name|dir
 condition|)
 name|chosen
 operator|=
-name|Globals
+name|FileDialogs
 operator|.
 name|getNewDir
 argument_list|(
@@ -2755,7 +2769,7 @@ expr_stmt|;
 else|else
 name|chosen
 operator|=
-name|Globals
+name|FileDialogs
 operator|.
 name|getNewFile
 argument_list|(

@@ -12,6 +12,20 @@ end_package
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|FileDialogs
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|awt
@@ -184,7 +198,7 @@ name|dir
 condition|)
 name|chosen
 operator|=
-name|Globals
+name|FileDialogs
 operator|.
 name|getNewDir
 argument_list|(
@@ -213,7 +227,7 @@ expr_stmt|;
 else|else
 name|chosen
 operator|=
-name|Globals
+name|FileDialogs
 operator|.
 name|getNewFile
 argument_list|(
