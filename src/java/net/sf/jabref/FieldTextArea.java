@@ -285,6 +285,7 @@ operator|.
 name|validFieldBackground
 argument_list|)
 expr_stmt|;
+comment|//setFont(new Font("Times", Font.PLAIN, 10));
 name|FieldTextMenu
 name|popMenu
 init|=
