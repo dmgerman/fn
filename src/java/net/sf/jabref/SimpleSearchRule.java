@@ -38,7 +38,7 @@ name|layout
 operator|.
 name|format
 operator|.
-name|RemoveBrackets
+name|RemoveLatexCommands
 import|;
 end_import
 
@@ -55,13 +55,14 @@ specifier|final
 name|boolean
 name|m_caseSensitiveSearch
 decl_stmt|;
+comment|//static RemoveBrackets removeBrackets = new RemoveBrackets();
 DECL|field|removeBrackets
 specifier|static
-name|RemoveBrackets
+name|RemoveLatexCommands
 name|removeBrackets
 init|=
 operator|new
-name|RemoveBrackets
+name|RemoveLatexCommands
 argument_list|()
 decl_stmt|;
 DECL|method|SimpleSearchRule (boolean caseSensitive)

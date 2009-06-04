@@ -104,7 +104,7 @@ name|layout
 operator|.
 name|format
 operator|.
-name|RemoveBrackets
+name|RemoveLatexCommands
 import|;
 end_import
 
@@ -135,13 +135,14 @@ name|Pattern
 index|[]
 name|pattern
 decl_stmt|;
+comment|//static RemoveBrackets removeLatexCommands = new RemoveBrackets();
 DECL|field|removeBrackets
 specifier|static
-name|RemoveBrackets
+name|RemoveLatexCommands
 name|removeBrackets
 init|=
 operator|new
-name|RemoveBrackets
+name|RemoveLatexCommands
 argument_list|()
 decl_stmt|;
 DECL|method|BasicSearch (boolean caseSensitive, boolean regExp)

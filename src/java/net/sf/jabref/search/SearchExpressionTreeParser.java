@@ -66,6 +66,24 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|export
+operator|.
+name|layout
+operator|.
+name|format
+operator|.
+name|RemoveLatexCommands
+import|;
+end_import
+
+begin_import
+import|import
 name|antlr
 operator|.
 name|MismatchedTokenException
@@ -117,6 +135,17 @@ name|TreeParser
 implements|implements
 name|SearchExpressionTreeParserTokenTypes
 block|{
+comment|// Formatter used on every field before searching. Removes Latex commands that
+comment|// may interfere with the search:
+DECL|field|removeLatexCommands
+specifier|static
+name|RemoveLatexCommands
+name|removeLatexCommands
+init|=
+operator|new
+name|RemoveLatexCommands
+argument_list|()
+decl_stmt|;
 DECL|field|MATCH_EXACT
 specifier|private
 specifier|static
@@ -965,6 +994,10 @@ condition|)
 continue|continue;
 name|content
 operator|=
+name|removeLatexCommands
+operator|.
+name|format
+argument_list|(
 name|bibtexEntry
 operator|.
 name|getField
@@ -976,6 +1009,7 @@ index|]
 operator|.
 name|toString
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
