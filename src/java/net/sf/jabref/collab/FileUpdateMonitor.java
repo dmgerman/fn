@@ -372,6 +372,44 @@ literal|false
 return|;
 block|}
 block|}
+comment|/**      * Change the stored timestamp for the given file. If the timestamp equals      * the file's timestamp on disk, after this call the file will appear to      * have been modified. Used if a file has been modified, and the change      * scan fails, in order to ensure successive checks.      * @param handle the handle to the correct file.      */
+DECL|method|perturbTimestamp (String handle)
+specifier|public
+name|void
+name|perturbTimestamp
+parameter_list|(
+name|String
+name|handle
+parameter_list|)
+block|{
+name|Object
+name|o
+init|=
+name|entries
+operator|.
+name|get
+argument_list|(
+name|handle
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|o
+operator|==
+literal|null
+condition|)
+return|return;
+operator|(
+operator|(
+name|Entry
+operator|)
+name|o
+operator|)
+operator|.
+name|timeStamp
+operator|--
+expr_stmt|;
+block|}
 comment|/**    * Removes a listener from the monitor.    * @param handle String The handle for the listener to remove.    */
 DECL|method|removeUpdateListener (String handle)
 specifier|public

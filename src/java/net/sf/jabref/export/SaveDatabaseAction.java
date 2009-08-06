@@ -156,6 +156,7 @@ name|frame
 decl_stmt|;
 DECL|field|success
 DECL|field|cancelled
+DECL|field|fileLockedError
 specifier|private
 name|boolean
 name|success
@@ -163,6 +164,10 @@ init|=
 literal|false
 decl_stmt|,
 name|cancelled
+init|=
+literal|false
+decl_stmt|,
+name|fileLockedError
 init|=
 literal|false
 decl_stmt|;
@@ -206,6 +211,10 @@ name|cancelled
 operator|=
 literal|false
 expr_stmt|;
+name|fileLockedError
+operator|=
+literal|false
+expr_stmt|;
 if|if
 condition|(
 name|panel
@@ -220,6 +229,7 @@ argument_list|()
 expr_stmt|;
 else|else
 block|{
+comment|// Check for external modifications:
 if|if
 condition|(
 name|panel
@@ -360,6 +370,33 @@ name|void
 name|run
 parameter_list|()
 block|{
+if|if
+condition|(
+operator|!
+name|Util
+operator|.
+name|waitForFileLock
+argument_list|(
+name|panel
+operator|.
+name|getFile
+argument_list|()
+argument_list|,
+literal|10
+argument_list|)
+condition|)
+block|{
+comment|// TODO: GUI handling of the situation when the externally modified file keeps being locked.
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+literal|"File locked, this will be trouble."
+argument_list|)
+expr_stmt|;
+block|}
 name|ChangeScanner
 name|scanner
 init|=
@@ -686,6 +723,26 @@ operator|!
 name|cancelled
 condition|)
 block|{
+if|if
+condition|(
+name|fileLockedError
+condition|)
+block|{
+comment|// TODO: user should have the option to override the lock file.
+name|frame
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Could not save, file locked by another JabRef instance."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 name|frame
 operator|.
 name|output
@@ -737,6 +794,33 @@ operator|.
 name|autoGenerateKeysBeforeSaving
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|Util
+operator|.
+name|waitForFileLock
+argument_list|(
+name|panel
+operator|.
+name|getFile
+argument_list|()
+argument_list|,
+literal|10
+argument_list|)
+condition|)
+block|{
+name|success
+operator|=
+literal|false
+expr_stmt|;
+name|fileLockedError
+operator|=
+literal|true
+expr_stmt|;
+block|}
+else|else
+block|{
 comment|// Now save the database:
 name|success
 operator|=
@@ -782,6 +866,7 @@ block|{
 comment|// This means the file has not yet been registered, which is the case
 comment|// when doing a "Save as". Maybe we should change the monitor so no
 comment|// exception is cast.
+block|}
 block|}
 name|panel
 operator|.
