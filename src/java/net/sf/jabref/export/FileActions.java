@@ -935,7 +935,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Saves the database to file. Two boolean values indicate whether      * only entries with a nonzero Globals.SEARCH value and only      * entries with a nonzero Globals.GROUPSEARCH value should be      * saved. This can be used to let the user save only the results of      * a search. False and false means all entries are saved.      */
-DECL|method|saveDatabase (BibtexDatabase database, MetaData metaData, File file, JabRefPreferences prefs, boolean checkSearch, boolean checkGroup, String encoding)
+DECL|method|saveDatabase (BibtexDatabase database, MetaData metaData, File file, JabRefPreferences prefs, boolean checkSearch, boolean checkGroup, String encoding, boolean suppressBackup)
 specifier|public
 specifier|static
 name|SaveSession
@@ -961,6 +961,9 @@ name|checkGroup
 parameter_list|,
 name|String
 name|encoding
+parameter_list|,
+name|boolean
+name|suppressBackup
 parameter_list|)
 throws|throws
 name|SaveException
@@ -992,6 +995,14 @@ argument_list|(
 literal|"backup"
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|suppressBackup
+condition|)
+name|backup
+operator|=
+literal|false
+expr_stmt|;
 name|SaveSession
 name|session
 decl_stmt|;
@@ -2263,8 +2274,11 @@ name|comparatorStack
 init|=
 literal|null
 decl_stmt|;
-if|if
-condition|(
+name|boolean
+name|inOriginalOrder
+init|=
+name|isSaveOperation
+condition|?
 name|Globals
 operator|.
 name|prefs
@@ -2273,6 +2287,19 @@ name|getBoolean
 argument_list|(
 literal|"saveInOriginalOrder"
 argument_list|)
+else|:
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"exportInOriginalOrder"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|inOriginalOrder
 condition|)
 block|{
 comment|// Sort entries based on their creation order, utilizing the fact
@@ -2344,12 +2371,11 @@ name|terD
 init|=
 literal|false
 decl_stmt|;
-if|if
-condition|(
-operator|!
+name|boolean
+name|inStandardOrder
+init|=
 name|isSaveOperation
-operator|||
-operator|!
+condition|?
 name|Globals
 operator|.
 name|prefs
@@ -2358,6 +2384,20 @@ name|getBoolean
 argument_list|(
 literal|"saveInStandardOrder"
 argument_list|)
+else|:
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"exportInStandardOrder"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|!
+name|inStandardOrder
 condition|)
 block|{
 comment|// The setting is to save according to the current table order.

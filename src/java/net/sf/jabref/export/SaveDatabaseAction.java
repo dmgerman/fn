@@ -887,6 +887,37 @@ operator|.
 name|markUnchanged
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+operator|!
+name|AutoSaveManager
+operator|.
+name|deleteAutoSaveFile
+argument_list|(
+name|panel
+argument_list|)
+condition|)
+block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Deletion of autosave file failed"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Deleted autosave file (if it existed)"
+argument_list|)
+expr_stmt|;
 comment|// (Only) after a successful save the following
 comment|// statement marks that the base is unchanged
 comment|// since last save:
@@ -985,6 +1016,8 @@ argument_list|,
 literal|false
 argument_list|,
 name|encoding
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 else|else

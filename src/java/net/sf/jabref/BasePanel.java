@@ -7444,6 +7444,8 @@ argument_list|,
 literal|false
 argument_list|,
 name|encoding
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 else|else

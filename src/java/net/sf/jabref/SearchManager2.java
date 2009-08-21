@@ -1213,7 +1213,7 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"grayOutNonHits"
+literal|"floatSearch"
 argument_list|)
 condition|)
 name|floatSearch
@@ -1902,7 +1902,7 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"grayOutNonHits"
+literal|"floatSearch"
 argument_list|,
 name|floatSearch
 operator|.

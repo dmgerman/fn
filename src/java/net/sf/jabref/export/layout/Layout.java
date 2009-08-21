@@ -30,6 +30,26 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -80,6 +100,21 @@ specifier|private
 name|LayoutEntry
 index|[]
 name|layoutEntries
+decl_stmt|;
+DECL|field|missingFormatters
+specifier|private
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+name|missingFormatters
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+argument_list|()
 decl_stmt|;
 comment|//~ Constructors ///////////////////////////////////////////////////////////
 DECL|method|Layout (Vector<StringInt> parsedEntries, String classPrefix)
@@ -515,6 +550,32 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
+comment|// Note if one of the entries has an invalid formatter:
+if|if
+condition|(
+name|layoutEntries
+index|[
+name|i
+index|]
+operator|.
+name|isInvalidFormatter
+argument_list|()
+condition|)
+block|{
+name|missingFormatters
+operator|.
+name|addAll
+argument_list|(
+name|layoutEntries
+index|[
+name|i
+index|]
+operator|.
+name|getInvalidFormatters
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 comment|//System.out.println(layoutEntries[i].text);
 block|}
 block|}
@@ -772,6 +833,19 @@ argument_list|()
 return|;
 block|}
 comment|// added section - end (arudert)
+DECL|method|getMissingFormatters ()
+specifier|public
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+name|getMissingFormatters
+parameter_list|()
+block|{
+return|return
+name|missingFormatters
+return|;
+block|}
 block|}
 end_class
 

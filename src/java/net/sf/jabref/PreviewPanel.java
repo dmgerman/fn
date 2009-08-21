@@ -168,6 +168,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|export
+operator|.
+name|ExportFormats
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|util
 operator|.
 name|DocumentPrinter
@@ -1167,6 +1181,13 @@ operator|new
 name|StringBuffer
 argument_list|()
 decl_stmt|;
+name|ExportFormats
+operator|.
+name|entryNumber
+operator|=
+literal|1
+expr_stmt|;
+comment|// Set entry number in case that is included in the preview layout.
 if|if
 condition|(
 name|entry

@@ -50,6 +50,18 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|GUIGlobals
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -125,6 +137,17 @@ name|JabRefFrame
 name|frame
 parameter_list|)
 block|{
+name|super
+argument_list|(
+name|GUIGlobals
+operator|.
+name|getImage
+argument_list|(
+literal|"plugin"
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//System.out.println();
 name|this
 operator|.
 name|frame

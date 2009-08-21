@@ -859,6 +859,11 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+name|f
+operator|.
+name|deleteOnExit
+argument_list|()
+expr_stmt|;
 comment|//System.out.println(f.getPath());
 block|}
 catch|catch

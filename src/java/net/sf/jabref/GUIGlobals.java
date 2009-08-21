@@ -648,6 +648,11 @@ DECL|field|pluginHelp
 name|pluginHelp
 init|=
 literal|"Plugin.html"
+decl_stmt|,
+DECL|field|autosaveHelp
+name|autosaveHelp
+init|=
+literal|"Autosave.html"
 decl_stmt|;
 comment|//	Colors.
 specifier|public

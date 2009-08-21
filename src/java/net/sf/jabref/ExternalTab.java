@@ -258,7 +258,7 @@ operator|=
 operator|new
 name|JTextField
 argument_list|(
-literal|30
+literal|25
 argument_list|)
 expr_stmt|;
 name|pdfDir
@@ -266,7 +266,7 @@ operator|=
 operator|new
 name|JTextField
 argument_list|(
-literal|30
+literal|25
 argument_list|)
 expr_stmt|;
 name|fileDir
@@ -274,7 +274,7 @@ operator|=
 operator|new
 name|JTextField
 argument_list|(
-literal|30
+literal|25
 argument_list|)
 expr_stmt|;
 name|pdf
@@ -282,7 +282,7 @@ operator|=
 operator|new
 name|JTextField
 argument_list|(
-literal|30
+literal|25
 argument_list|)
 expr_stmt|;
 name|ps
@@ -290,7 +290,7 @@ operator|=
 operator|new
 name|JTextField
 argument_list|(
-literal|30
+literal|25
 argument_list|)
 expr_stmt|;
 name|html
@@ -298,7 +298,7 @@ operator|=
 operator|new
 name|JTextField
 argument_list|(
-literal|30
+literal|25
 argument_list|)
 expr_stmt|;
 name|editFileTypes
@@ -332,7 +332,7 @@ operator|=
 operator|new
 name|JTextField
 argument_list|(
-literal|30
+literal|25
 argument_list|)
 expr_stmt|;
 name|useRegExpComboBox
@@ -431,7 +431,7 @@ init|=
 operator|new
 name|FormLayout
 argument_list|(
-literal|"1dlu, 8dlu, left:pref, 4dlu, fill:170dlu, 4dlu, fill:pref"
+literal|"1dlu, 8dlu, left:pref, 4dlu, fill:150dlu, 4dlu, fill:pref"
 argument_list|,
 literal|""
 argument_list|)
@@ -655,6 +655,8 @@ operator|.
 name|append
 argument_list|(
 name|runAutoFileSearch
+argument_list|,
+literal|3
 argument_list|)
 expr_stmt|;
 name|builder

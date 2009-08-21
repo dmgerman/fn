@@ -146,7 +146,12 @@ name|basePanel
 operator|.
 name|output
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Looking for full text document..."
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

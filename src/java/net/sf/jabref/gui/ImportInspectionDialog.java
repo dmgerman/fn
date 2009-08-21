@@ -7736,6 +7736,14 @@ argument_list|(
 name|model
 argument_list|)
 expr_stmt|;
+name|getTableHeader
+argument_list|()
+operator|.
+name|setReorderingAllowed
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getCellRenderer (int row, int column)
 specifier|public

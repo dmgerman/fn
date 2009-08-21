@@ -611,7 +611,6 @@ name|getTabName
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//comps.add((Component)tab); // for debug only
 block|}
 name|upper
 operator|.

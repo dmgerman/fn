@@ -218,6 +218,15 @@ name|IExportFormat
 argument_list|>
 argument_list|()
 decl_stmt|;
+comment|// Global variable that is used for counting output entries when exporting:
+DECL|field|entryNumber
+specifier|public
+specifier|static
+name|int
+name|entryNumber
+init|=
+literal|0
+decl_stmt|;
 DECL|method|initAllExports ()
 specifier|public
 specifier|static

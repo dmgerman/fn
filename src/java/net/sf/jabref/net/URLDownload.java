@@ -68,16 +68,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|net
-operator|.
-name|CookieManager
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -176,7 +166,7 @@ block|{
 name|cm
 operator|=
 operator|new
-name|CookieManager
+name|CookieHandlerImpl
 argument_list|()
 expr_stmt|;
 name|CookieHandler
