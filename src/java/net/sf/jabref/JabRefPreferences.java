@@ -5749,6 +5749,15 @@ argument_list|,
 literal|"ctrl MINUS"
 argument_list|)
 expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Automatically link files"
+argument_list|,
+literal|"alt F"
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getNextUnit (Reader data)
 specifier|private

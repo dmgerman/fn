@@ -1269,33 +1269,6 @@ name|getPoint
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|// A double click on an entry should open the entry's editor.
-if|if
-condition|(
-name|e
-operator|.
-name|getClickCount
-argument_list|()
-operator|==
-literal|2
-condition|)
-block|{
-name|BibtexEntry
-name|toShow
-init|=
-name|tableRows
-operator|.
-name|get
-argument_list|(
-name|row
-argument_list|)
-decl_stmt|;
-name|editSignalled
-argument_list|(
-name|toShow
-argument_list|)
-expr_stmt|;
-block|}
 comment|// Check if the user has clicked on an icon cell to open url or pdf.
 specifier|final
 name|String
@@ -1343,6 +1316,83 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+block|}
+DECL|method|mouseClicked (MouseEvent e)
+specifier|public
+name|void
+name|mouseClicked
+parameter_list|(
+name|MouseEvent
+name|e
+parameter_list|)
+block|{
+comment|// First find the column on which the user has clicked.
+specifier|final
+name|int
+name|col
+init|=
+name|table
+operator|.
+name|columnAtPoint
+argument_list|(
+name|e
+operator|.
+name|getPoint
+argument_list|()
+argument_list|)
+decl_stmt|,
+name|row
+init|=
+name|table
+operator|.
+name|rowAtPoint
+argument_list|(
+name|e
+operator|.
+name|getPoint
+argument_list|()
+argument_list|)
+decl_stmt|;
+comment|// A double click on an entry should open the entry's editor.
+if|if
+condition|(
+name|e
+operator|.
+name|getClickCount
+argument_list|()
+operator|==
+literal|2
+condition|)
+block|{
+name|BibtexEntry
+name|toShow
+init|=
+name|tableRows
+operator|.
+name|get
+argument_list|(
+name|row
+argument_list|)
+decl_stmt|;
+name|editSignalled
+argument_list|(
+name|toShow
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Check if the user has clicked on an icon cell to open url or pdf.
+specifier|final
+name|String
+index|[]
+name|iconType
+init|=
+name|table
+operator|.
+name|getIconTypeForColumn
+argument_list|(
+name|col
+argument_list|)
+decl_stmt|;
 comment|// Workaround for Windows. Right-click is not popup trigger on mousePressed, but
 comment|// on mouseReleased. Therefore we need to avoid taking action at this point, because
 comment|// action will be taken when the button is released:
@@ -2165,15 +2215,6 @@ name|table
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|mouseClicked (MouseEvent e)
-specifier|public
-name|void
-name|mouseClicked
-parameter_list|(
-name|MouseEvent
-name|e
-parameter_list|)
-block|{      }
 DECL|method|mouseEntered (MouseEvent e)
 specifier|public
 name|void
