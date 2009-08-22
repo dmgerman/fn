@@ -28,6 +28,18 @@ name|BibtexEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
 begin_comment
 comment|/**  * Exception thrown if saving goes wrong. If caused by a specific  * entry, keeps track of which entry caused the problem.  */
 end_comment
@@ -41,6 +53,24 @@ extends|extends
 name|Exception
 block|{
 comment|//~ Instance fields ////////////////////////////////////////////////////////
+DECL|field|FILE_LOCKED
+specifier|public
+specifier|static
+specifier|final
+name|SaveException
+name|FILE_LOCKED
+init|=
+operator|new
+name|SaveException
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Could not save, file locked by another JabRef instance."
+argument_list|)
+argument_list|)
+decl_stmt|;
 DECL|field|entry
 specifier|private
 name|BibtexEntry

@@ -1089,6 +1089,60 @@ argument_list|(
 literal|"defaultEncoding"
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|Util
+operator|.
+name|waitForFileLock
+argument_list|(
+name|file
+argument_list|,
+literal|10
+argument_list|)
+condition|)
+block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+literal|null
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Error opening file"
+argument_list|)
+operator|+
+literal|" '"
+operator|+
+name|fileName
+operator|+
+literal|"'. "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"File is locked by another JabRef instance."
+argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Error"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
+comment|// TODO: offer an option to "steal" the locked file?
+return|return;
+block|}
 name|ParserResult
 name|pr
 decl_stmt|;
@@ -1145,7 +1199,37 @@ name|INVALID_FORMAT
 operator|)
 condition|)
 block|{
-comment|//Util.showQuickErrorDialog(frame, Globals.lang("Open database"), exception);
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+literal|null
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Error opening file"
+argument_list|)
+operator|+
+literal|" '"
+operator|+
+name|fileName
+operator|+
+literal|"'"
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Error"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
 name|String
 name|message
 init|=
