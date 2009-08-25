@@ -2219,7 +2219,7 @@ specifier|static
 name|String
 name|SPECIAL_COMMAND_CHARS
 init|=
-literal|"\"`^~'c"
+literal|"\"`^~'c="
 decl_stmt|;
 DECL|field|HTML_CHARS
 specifier|public
