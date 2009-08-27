@@ -87,10 +87,16 @@ index|[
 literal|1
 index|]
 return|;
+comment|// If we didn't get two parts, it may be that only the number of pages is given.
+comment|// Return the first part:
 else|else
 return|return
-literal|""
+name|pageParts
+index|[
+literal|0
+index|]
 return|;
+comment|//else return "";
 block|}
 block|}
 end_class
