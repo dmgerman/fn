@@ -853,14 +853,6 @@ argument_list|,
 name|ta
 argument_list|)
 decl_stmt|;
-name|setupJTextComponent
-argument_list|(
-name|ta
-operator|.
-name|getTextComponent
-argument_list|()
-argument_list|)
-expr_stmt|;
 comment|// Add autocompleter listener, if required for this field:
 name|AutoCompleter
 name|autoComp
@@ -875,6 +867,11 @@ name|i
 index|]
 argument_list|)
 decl_stmt|;
+name|AutoCompleteListener
+name|acl
+init|=
+literal|null
+decl_stmt|;
 if|if
 condition|(
 name|autoComp
@@ -882,21 +879,25 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|ta
-operator|.
-name|getTextComponent
-argument_list|()
-operator|.
-name|addKeyListener
-argument_list|(
+name|acl
+operator|=
 operator|new
 name|AutoCompleteListener
 argument_list|(
 name|autoComp
 argument_list|)
-argument_list|)
 expr_stmt|;
 block|}
+name|setupJTextComponent
+argument_list|(
+name|ta
+operator|.
+name|getTextComponent
+argument_list|()
+argument_list|,
+name|acl
+argument_list|)
+expr_stmt|;
 comment|// Store the editor for later reference:
 name|editors
 operator|.
@@ -1069,6 +1070,8 @@ comment|//tf.addUndoableEditListener(bPanel.undoListener);
 name|setupJTextComponent
 argument_list|(
 name|tf
+argument_list|,
+literal|null
 argument_list|)
 expr_stmt|;
 name|editors
@@ -1655,7 +1658,7 @@ name|panel
 return|;
 block|}
 comment|/** 	 * Set up key bindings and focus listener for the FieldEditor. 	 *  	 * @param component 	 */
-DECL|method|setupJTextComponent (final JComponent component)
+DECL|method|setupJTextComponent (final JComponent component, final AutoCompleteListener acl)
 specifier|public
 name|void
 name|setupJTextComponent
@@ -1663,8 +1666,50 @@ parameter_list|(
 specifier|final
 name|JComponent
 name|component
+parameter_list|,
+specifier|final
+name|AutoCompleteListener
+name|acl
 parameter_list|)
 block|{
+comment|// Here we add focus listeners to the component. The funny code is because we need
+comment|// to guarantee that the AutoCompleteListener - if used - is called before fieldListener
+comment|// on a focus lost event. The AutoCompleteListener is responsible for removing any
+comment|// current suggestion when focus is lost, and this must be done before fieldListener
+comment|// stores the current edit. Swing doesn't guarantee the order of execution of event
+comment|// listeners, so we handle this by only adding the AutoCompleteListener and telling
+comment|// it to call fieldListener afterwards. If no AutoCompleteListener is used, we
+comment|// add the fieldListener normally.
+if|if
+condition|(
+name|acl
+operator|!=
+literal|null
+condition|)
+block|{
+name|component
+operator|.
+name|addKeyListener
+argument_list|(
+name|acl
+argument_list|)
+expr_stmt|;
+name|component
+operator|.
+name|addFocusListener
+argument_list|(
+name|acl
+argument_list|)
+expr_stmt|;
+name|acl
+operator|.
+name|setNextFocusListener
+argument_list|(
+name|fieldListener
+argument_list|)
+expr_stmt|;
+block|}
+else|else
 name|component
 operator|.
 name|addFocusListener
