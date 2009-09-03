@@ -3318,7 +3318,7 @@ argument_list|()
 operator|+
 literal|")   DEFAULT NULL, \n"
 operator|+
-literal|"entry_types_id  INTEGER         DEFAULT NULL, \n"
+literal|"entry_types_id  INT UNSIGNED         DEFAULT NULL, \n"
 operator|+
 literal|"cite_key        VARCHAR(100)     DEFAULT NULL, \n"
 operator|+
@@ -3328,7 +3328,9 @@ literal|",\n"
 operator|+
 literal|"PRIMARY KEY (entries_id), \n"
 operator|+
-literal|"FOREIGN KEY (entry_types_id) REFERENCES entry_type(entry_types_id) \n"
+literal|"INDEX(entry_types_id), \n"
+operator|+
+literal|"FOREIGN KEY (entry_types_id) REFERENCES entry_types(entry_types_id) \n"
 operator|+
 literal|");"
 argument_list|)
@@ -3404,7 +3406,11 @@ literal|"entries_id       INTEGER        NOT NULL AUTO_INCREMENT, \n"
 operator|+
 literal|"groups_id        INTEGER        DEFAULT NULL, \n"
 operator|+
-literal|"FOREIGN KEY (entries_id) REFERENCES entry_fields(entries_id), \n"
+literal|"INDEX(entries_id), \n"
+operator|+
+literal|"INDEX(groups_id), \n"
+operator|+
+literal|"FOREIGN KEY (entries_id) REFERENCES entries(entries_id), \n"
 operator|+
 literal|"FOREIGN KEY (groups_id)  REFERENCES groups(groups_id) \n"
 operator|+
@@ -3481,7 +3487,7 @@ name|out
 argument_list|,
 literal|"ALTER TABLE entries ADD CONSTRAINT entries_fk "
 operator|+
-literal|"FOREIGN KEY (\"entry_types_id\") REFERENCES \"entry_type\" (\"entry_types_id\")"
+literal|"FOREIGN KEY (\"entry_types_id\") REFERENCES \"entry_types\" (\"entry_types_id\")"
 argument_list|)
 expr_stmt|;
 name|processDML
