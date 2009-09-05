@@ -1971,7 +1971,7 @@ name|put
 argument_list|(
 literal|"fontFamily"
 argument_list|,
-literal|"Times"
+literal|"SansSerif"
 argument_list|)
 expr_stmt|;
 name|defaults
