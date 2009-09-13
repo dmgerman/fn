@@ -109,6 +109,16 @@ name|LOCKFILE_SUFFIX
 init|=
 literal|".lock"
 decl_stmt|;
+comment|// The age in ms of a lockfile before JabRef will offer to "steal" the locked file:
+DECL|field|LOCKFILE_CRITICAL_AGE
+specifier|public
+specifier|static
+specifier|final
+name|long
+name|LOCKFILE_CRITICAL_AGE
+init|=
+literal|60000
+decl_stmt|;
 DECL|field|TEMP_PREFIX
 specifier|private
 specifier|static
