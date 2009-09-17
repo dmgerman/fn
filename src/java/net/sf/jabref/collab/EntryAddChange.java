@@ -146,13 +146,16 @@ name|pp
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|makeChange (BasePanel panel, NamedCompound undoEdit)
+DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|void
 name|makeChange
 parameter_list|(
 name|BasePanel
 name|panel
+parameter_list|,
+name|BibtexDatabase
+name|secondary
 parameter_list|,
 name|NamedCompound
 name|undoEdit
@@ -172,6 +175,13 @@ name|panel
 operator|.
 name|database
 argument_list|()
+operator|.
+name|insertEntry
+argument_list|(
+name|diskEntry
+argument_list|)
+expr_stmt|;
+name|secondary
 operator|.
 name|insertEntry
 argument_list|(

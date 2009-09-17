@@ -111,12 +111,20 @@ name|disk
 decl_stmt|,
 name|content
 decl_stmt|;
-DECL|method|StringNameChange (BibtexString string, String mem, String tmp, String disk, String content)
+DECL|field|tmpString
+specifier|private
+name|BibtexString
+name|tmpString
+decl_stmt|;
+DECL|method|StringNameChange (BibtexString string, BibtexString tmpString, String mem, String tmp, String disk, String content)
 specifier|public
 name|StringNameChange
 parameter_list|(
 name|BibtexString
 name|string
+parameter_list|,
+name|BibtexString
+name|tmpString
 parameter_list|,
 name|String
 name|mem
@@ -131,6 +139,12 @@ name|String
 name|content
 parameter_list|)
 block|{
+name|this
+operator|.
+name|tmpString
+operator|=
+name|tmpString
+expr_stmt|;
 name|name
 operator|=
 name|Globals
@@ -177,13 +191,16 @@ operator|=
 name|disk
 expr_stmt|;
 block|}
-DECL|method|makeChange (BasePanel panel, NamedCompound undoEdit)
+DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|void
 name|makeChange
 parameter_list|(
 name|BasePanel
 name|panel
+parameter_list|,
+name|BibtexDatabase
+name|secondary
 parameter_list|,
 name|NamedCompound
 name|undoEdit
@@ -336,6 +353,53 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|// Update tmp database:
+if|if
+condition|(
+name|tmpString
+operator|!=
+literal|null
+condition|)
+block|{
+name|tmpString
+operator|.
+name|setName
+argument_list|(
+name|disk
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|String
+name|newId
+init|=
+name|Util
+operator|.
+name|createNeutralId
+argument_list|()
+decl_stmt|;
+name|BibtexString
+name|bs
+init|=
+operator|new
+name|BibtexString
+argument_list|(
+name|newId
+argument_list|,
+name|disk
+argument_list|,
+name|content
+argument_list|)
+decl_stmt|;
+name|secondary
+operator|.
+name|addString
+argument_list|(
+name|bs
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 DECL|method|description ()

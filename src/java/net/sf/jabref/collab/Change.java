@@ -38,6 +38,18 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -213,14 +225,17 @@ name|JComponent
 name|description
 parameter_list|()
 function_decl|;
-comment|/**   * Perform the change. This method is responsible for adding a proper undo edit to   * the NamedCompound, so the change can be undone.   * @param panel BasePanel The tab where the database lives.   * @param undoEdit NamedCompound The compound to hold the undo edits.   */
-DECL|method|makeChange (BasePanel panel, NamedCompound undoEdit)
+comment|/**   * Perform the change. This method is responsible for adding a proper undo edit to   * the NamedCompound, so the change can be undone.   * @param panel BasePanel The tab where the database lives.   * @param secondary BibtexDatabase The "tmp" database for which the change   *   should also be made.   * @param undoEdit NamedCompound The compound to hold the undo edits.   */
+DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|abstract
 name|void
 name|makeChange
 parameter_list|(
 name|BasePanel
 name|panel
+parameter_list|,
+name|BibtexDatabase
+name|secondary
 parameter_list|,
 name|NamedCompound
 name|undoEdit

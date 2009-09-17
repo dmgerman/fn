@@ -341,6 +341,8 @@ name|field
 argument_list|,
 name|memEntry
 argument_list|,
+name|tmpEntry
+argument_list|,
 name|mem
 argument_list|,
 name|tmp
@@ -384,6 +386,8 @@ argument_list|(
 name|field
 argument_list|,
 name|memEntry
+argument_list|,
+name|tmpEntry
 argument_list|,
 name|mem
 argument_list|,
@@ -442,6 +446,8 @@ name|field
 argument_list|,
 name|memEntry
 argument_list|,
+name|tmpEntry
+argument_list|,
 name|mem
 argument_list|,
 name|tmp
@@ -454,13 +460,16 @@ block|}
 comment|//Util.pr("Field: "+fld.next());
 block|}
 block|}
-DECL|method|makeChange (BasePanel panel, NamedCompound undoEdit)
+DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|void
 name|makeChange
 parameter_list|(
 name|BasePanel
 name|panel
+parameter_list|,
+name|BibtexDatabase
+name|secondary
 parameter_list|,
 name|NamedCompound
 name|undoEdit
@@ -516,6 +525,8 @@ name|makeChange
 argument_list|(
 name|panel
 argument_list|,
+name|secondary
+argument_list|,
 name|undoEdit
 argument_list|)
 expr_stmt|;
@@ -542,8 +553,11 @@ extends|extends
 name|Change
 block|{
 DECL|field|entry
+DECL|field|tmpEntry
 name|BibtexEntry
 name|entry
+decl_stmt|,
+name|tmpEntry
 decl_stmt|;
 DECL|field|field
 DECL|field|inMem
@@ -576,7 +590,7 @@ argument_list|(
 name|tp
 argument_list|)
 decl_stmt|;
-DECL|method|FieldChange (String field, BibtexEntry memEntry, String inMem, String onTmp, String onDisk)
+DECL|method|FieldChange (String field, BibtexEntry memEntry, BibtexEntry tmpEntry, String inMem, String onTmp, String onDisk)
 specifier|public
 name|FieldChange
 parameter_list|(
@@ -585,6 +599,9 @@ name|field
 parameter_list|,
 name|BibtexEntry
 name|memEntry
+parameter_list|,
+name|BibtexEntry
+name|tmpEntry
 parameter_list|,
 name|String
 name|inMem
@@ -599,6 +616,12 @@ block|{
 name|entry
 operator|=
 name|memEntry
+expr_stmt|;
+name|this
+operator|.
+name|tmpEntry
+operator|=
+name|tmpEntry
 expr_stmt|;
 name|name
 operator|=
@@ -787,6 +810,51 @@ argument_list|(
 name|inMem
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+operator|(
+name|onTmp
+operator|!=
+literal|null
+operator|)
+operator|&&
+operator|!
+name|onTmp
+operator|.
+name|equals
+argument_list|(
+literal|""
+argument_list|)
+condition|)
+name|text
+operator|.
+name|append
+argument_list|(
+literal|"<H3>"
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Current tmp value"
+argument_list|)
+argument_list|)
+operator|.
+name|append
+argument_list|(
+literal|":</H3>"
+operator|+
+literal|" "
+argument_list|)
+operator|.
+name|append
+argument_list|(
+name|onTmp
+argument_list|)
+expr_stmt|;
 else|else
 block|{
 comment|// No value in memory.
@@ -810,13 +878,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|makeChange (BasePanel panel, NamedCompound undoEdit)
+DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|void
 name|makeChange
 parameter_list|(
 name|BasePanel
 name|panel
+parameter_list|,
+name|BibtexDatabase
+name|secondary
 parameter_list|,
 name|NamedCompound
 name|undoEdit
@@ -847,6 +918,15 @@ name|inMem
 argument_list|,
 name|onDisk
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|tmpEntry
+operator|.
+name|setField
+argument_list|(
+name|field
+argument_list|,
+name|onDisk
 argument_list|)
 expr_stmt|;
 block|}

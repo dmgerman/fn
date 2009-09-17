@@ -168,6 +168,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|undo
 operator|.
 name|NamedCompound
@@ -184,6 +196,11 @@ name|JDialog
 implements|implements
 name|TreeSelectionListener
 block|{
+DECL|field|secondary
+specifier|private
+name|BibtexDatabase
+name|secondary
+decl_stmt|;
 DECL|field|root
 name|DefaultMutableTreeNode
 name|root
@@ -294,7 +311,7 @@ name|okPressed
 init|=
 literal|false
 decl_stmt|;
-DECL|method|ChangeDisplayDialog (JFrame owner, final BasePanel panel, final DefaultMutableTreeNode root)
+DECL|method|ChangeDisplayDialog (JFrame owner, final BasePanel panel, BibtexDatabase secondary, final DefaultMutableTreeNode root)
 specifier|public
 name|ChangeDisplayDialog
 parameter_list|(
@@ -304,6 +321,9 @@ parameter_list|,
 specifier|final
 name|BasePanel
 name|panel
+parameter_list|,
+name|BibtexDatabase
+name|secondary
 parameter_list|,
 specifier|final
 name|DefaultMutableTreeNode
@@ -324,6 +344,29 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+name|this
+operator|.
+name|secondary
+operator|=
+name|secondary
+expr_stmt|;
+comment|// Just to be sure, put in an empty secondary base if none is given:
+if|if
+condition|(
+name|secondary
+operator|==
+literal|null
+condition|)
+block|{
+name|this
+operator|.
+name|secondary
+operator|=
+operator|new
+name|BibtexDatabase
+argument_list|()
+expr_stmt|;
+block|}
 name|this
 operator|.
 name|root
@@ -629,6 +672,12 @@ operator|.
 name|makeChange
 argument_list|(
 name|panel
+argument_list|,
+name|ChangeDisplayDialog
+operator|.
+name|this
+operator|.
+name|secondary
 argument_list|,
 name|ce
 argument_list|)

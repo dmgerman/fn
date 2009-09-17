@@ -76,6 +76,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|undo
 operator|.
 name|NamedCompound
@@ -129,7 +141,12 @@ argument_list|(
 name|tp
 argument_list|)
 decl_stmt|;
-DECL|method|StringRemoveChange (BibtexString string, BibtexString inMem)
+DECL|field|tmpString
+specifier|private
+name|BibtexString
+name|tmpString
+decl_stmt|;
+DECL|method|StringRemoveChange (BibtexString string, BibtexString tmpString, BibtexString inMem)
 specifier|public
 name|StringRemoveChange
 parameter_list|(
@@ -137,9 +154,18 @@ name|BibtexString
 name|string
 parameter_list|,
 name|BibtexString
+name|tmpString
+parameter_list|,
+name|BibtexString
 name|inMem
 parameter_list|)
 block|{
+name|this
+operator|.
+name|tmpString
+operator|=
+name|tmpString
+expr_stmt|;
 name|name
 operator|=
 name|Globals
@@ -283,13 +309,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|makeChange (BasePanel panel, NamedCompound undoEdit)
+DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|void
 name|makeChange
 parameter_list|(
 name|BasePanel
 name|panel
+parameter_list|,
+name|BibtexDatabase
+name|secondary
 parameter_list|,
 name|NamedCompound
 name|undoEdit
@@ -355,6 +384,17 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Update tmp database:
+name|secondary
+operator|.
+name|removeString
+argument_list|(
+name|tmpString
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|description ()
 name|JComponent

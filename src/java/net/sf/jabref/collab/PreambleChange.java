@@ -64,6 +64,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|undo
 operator|.
 name|NamedCompound
@@ -328,13 +340,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|makeChange (BasePanel panel, NamedCompound undoEdit)
+DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|void
 name|makeChange
 parameter_list|(
 name|BasePanel
 name|panel
+parameter_list|,
+name|BibtexDatabase
+name|secondary
 parameter_list|,
 name|NamedCompound
 name|undoEdit
@@ -368,6 +383,13 @@ name|mem
 argument_list|,
 name|disk
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|secondary
+operator|.
+name|setPreamble
+argument_list|(
+name|disk
 argument_list|)
 expr_stmt|;
 block|}

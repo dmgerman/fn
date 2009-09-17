@@ -129,12 +129,20 @@ argument_list|(
 name|tp
 argument_list|)
 decl_stmt|;
-DECL|method|StringChange (BibtexString string, String label, String mem, String tmp, String disk)
+DECL|field|tmpString
+specifier|private
+name|BibtexString
+name|tmpString
+decl_stmt|;
+DECL|method|StringChange (BibtexString string, BibtexString tmpString, String label, String mem, String tmp, String disk)
 specifier|public
 name|StringChange
 parameter_list|(
 name|BibtexString
 name|string
+parameter_list|,
+name|BibtexString
+name|tmpString
 parameter_list|,
 name|String
 name|label
@@ -149,6 +157,12 @@ name|String
 name|disk
 parameter_list|)
 block|{
+name|this
+operator|.
+name|tmpString
+operator|=
+name|tmpString
+expr_stmt|;
 name|name
 operator|=
 name|Globals
@@ -386,13 +400,16 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|makeChange (BasePanel panel, NamedCompound undoEdit)
+DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|void
 name|makeChange
 parameter_list|(
 name|BasePanel
 name|panel
+parameter_list|,
+name|BibtexDatabase
+name|secondary
 parameter_list|,
 name|NamedCompound
 name|undoEdit
@@ -431,6 +448,7 @@ name|disk
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// Update tmp databse:
 block|}
 else|else
 block|{
@@ -513,6 +531,48 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+comment|// Update tmp database:
+if|if
+condition|(
+name|tmpString
+operator|!=
+literal|null
+condition|)
+block|{
+name|tmpString
+operator|.
+name|setContent
+argument_list|(
+name|disk
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|BibtexString
+name|bs
+init|=
+operator|new
+name|BibtexString
+argument_list|(
+name|Util
+operator|.
+name|createNeutralId
+argument_list|()
+argument_list|,
+name|label
+argument_list|,
+name|disk
+argument_list|)
+decl_stmt|;
+name|secondary
+operator|.
+name|addString
+argument_list|(
+name|bs
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 DECL|method|description ()

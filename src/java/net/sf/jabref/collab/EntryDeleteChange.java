@@ -193,13 +193,16 @@ name|pp
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|makeChange (BasePanel panel, NamedCompound undoEdit)
+DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|void
 name|makeChange
 parameter_list|(
 name|BasePanel
 name|panel
+parameter_list|,
+name|BibtexDatabase
+name|secondary
 parameter_list|,
 name|NamedCompound
 name|undoEdit
@@ -234,6 +237,16 @@ name|memEntry
 argument_list|,
 name|panel
 argument_list|)
+argument_list|)
+expr_stmt|;
+name|secondary
+operator|.
+name|removeEntry
+argument_list|(
+name|tmpEntry
+operator|.
+name|getId
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
