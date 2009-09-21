@@ -223,7 +223,16 @@ name|tp
 operator|.
 name|setText
 argument_list|(
-literal|"<html>Metadata change</html>"
+literal|"<html>"
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Metadata change"
+argument_list|)
+operator|+
+literal|"</html>"
 argument_list|)
 expr_stmt|;
 block|}
@@ -339,6 +348,15 @@ operator|new
 name|StringBuilder
 argument_list|(
 literal|"<html>"
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Changes have been made to the following metadata elements"
+argument_list|)
+operator|+
+literal|":<p>"
 argument_list|)
 decl_stmt|;
 for|for
@@ -369,59 +387,23 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-switch|switch
-condition|(
-name|unit
-operator|.
-name|type
-condition|)
-block|{
-case|case
-name|ADD
-case|:
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|"<p>Added: "
-operator|+
+literal|"<br>&nbsp;&nbsp;"
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
 name|unit
 operator|.
 name|key
 argument_list|)
 expr_stmt|;
-break|break;
-case|case
-name|REMOVE
-case|:
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"<p>Removed: "
-operator|+
-name|unit
-operator|.
-name|key
-argument_list|)
-expr_stmt|;
-break|break;
-case|case
-name|MODIFY
-case|:
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"<p>Modified: "
-operator|+
-name|unit
-operator|.
-name|key
-argument_list|)
-expr_stmt|;
-break|break;
-block|}
+comment|/*switch (unit.type) {                 case ADD:                     sb.append("<p>Added: "+unit.key);                     break;                 case REMOVE:                     sb.append("<p>Removed: "+unit.key);                     break;                 case MODIFY:                     sb.append("<p>Modified: "+unit.key);                     break;             }*/
 block|}
 name|sb
 operator|.
