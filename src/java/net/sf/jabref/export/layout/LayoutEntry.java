@@ -200,6 +200,14 @@ name|LayoutFormatter
 index|[]
 name|option
 decl_stmt|;
+comment|// Formatter to be run after other formatters:
+DECL|field|postFormatter
+specifier|private
+name|LayoutFormatter
+name|postFormatter
+init|=
+literal|null
+decl_stmt|;
 DECL|field|text
 specifier|private
 name|String
@@ -939,6 +947,22 @@ expr_stmt|;
 block|}
 block|}
 block|}
+DECL|method|setPostFormatter (LayoutFormatter formatter)
+specifier|public
+name|void
+name|setPostFormatter
+parameter_list|(
+name|LayoutFormatter
+name|formatter
+parameter_list|)
+block|{
+name|this
+operator|.
+name|postFormatter
+operator|=
+name|formatter
+expr_stmt|;
+block|}
 DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database)
 specifier|public
 name|String
@@ -1479,6 +1503,22 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// If a post formatter has been set, call it:
+if|if
+condition|(
+name|postFormatter
+operator|!=
+literal|null
+condition|)
+name|fieldEntry
+operator|=
+name|postFormatter
+operator|.
+name|format
+argument_list|(
+name|fieldEntry
+argument_list|)
+expr_stmt|;
 return|return
 name|fieldEntry
 return|;
@@ -1672,6 +1712,22 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// If a post formatter has been set, call it:
+if|if
+condition|(
+name|postFormatter
+operator|!=
+literal|null
+condition|)
+name|field
+operator|=
+name|postFormatter
+operator|.
+name|format
+argument_list|(
+name|field
+argument_list|)
+expr_stmt|;
 return|return
 name|field
 return|;
