@@ -45,7 +45,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Transform a LaTeX-String to RTF.  *   * This method will:  *   *   1.) Remove LaTeX-Command sequences.  *     *   2.) Replace LaTeX-Special chars with RTF aquivalents.  *     *   3.) Replace emph and textit and textbf with their RTF replacements.  *     *   4.) Take special care to save all unicode characters correctly.   *   * @author $Author$  * @version $Revision$ ($Date$)  *  */
+comment|/**  * Transform a LaTeX-String to RTF.  *   * This method will:  *   *   1.) Remove LaTeX-Command sequences.  *     *   2.) Replace LaTeX-Special chars with RTF aquivalents.  *     *   3.) Replace emph and textit and textbf with their RTF replacements.  *     *   4.) Take special care to save all unicode characters correctly.  *  *   5.) Replace --- by \emdash and -- by \endash.  *   * @author $Author$  * @version $Revision$ ($Date$)  *  */
 end_comment
 
 begin_class
@@ -773,6 +773,20 @@ name|sb
 operator|.
 name|toString
 argument_list|()
+operator|.
+name|replaceAll
+argument_list|(
+literal|"---"
+argument_list|,
+literal|"{\\\\emdash}"
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"--"
+argument_list|,
+literal|"{\\\\endash}"
+argument_list|)
 return|;
 block|}
 DECL|method|getPart (String text, int i)
