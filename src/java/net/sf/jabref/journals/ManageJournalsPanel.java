@@ -2487,6 +2487,37 @@ operator|.
 name|initializeJournalNames
 argument_list|()
 expr_stmt|;
+comment|// Update the autocompleter for the "journal" field in all base panels,
+comment|// so added journal names are available:
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|frame
+operator|.
+name|baseCount
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|frame
+operator|.
+name|baseAt
+argument_list|(
+name|i
+argument_list|)
+operator|.
+name|addJournalListToAutoCompleter
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 DECL|class|DownloadAction
 class|class
