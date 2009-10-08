@@ -1775,6 +1775,11 @@ name|rebuildAllEntryEditors
 argument_list|()
 expr_stmt|;
 block|}
+name|panel
+operator|.
+name|addContentSelectorValuesToAutoCompleters
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * Set the contents of the field selector list.      *      */
 DECL|method|setupFieldSelector ()
