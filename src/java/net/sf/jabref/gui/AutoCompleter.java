@@ -226,6 +226,16 @@ return|return
 name|nameField
 return|;
 block|}
+DECL|method|isSingleUnitField ()
+specifier|public
+name|boolean
+name|isSingleUnitField
+parameter_list|()
+block|{
+return|return
+name|entireField
+return|;
+block|}
 DECL|method|addWord (String word)
 specifier|public
 name|void

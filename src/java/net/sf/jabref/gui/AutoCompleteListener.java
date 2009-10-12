@@ -1238,6 +1238,18 @@ name|getCaretPosition
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// We now have the text from the start of the field up to the caret position.
+comment|// In most fields, we are only interested in the currently edited word, so we
+comment|// seek from the caret backward to the closest space:
+if|if
+condition|(
+operator|!
+name|completer
+operator|.
+name|isSingleUnitField
+argument_list|()
+condition|)
+block|{
 if|if
 condition|(
 operator|(
@@ -1341,6 +1353,17 @@ name|piv
 operator|+
 literal|1
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+comment|// For fields such as "journal" it is more reasonable to try to complete on the entire
+comment|// text field content, so we skip the searching and keep the entire part up to the caret:
+else|else
+name|res
+operator|.
+name|append
+argument_list|(
+name|upToCaret
 argument_list|)
 expr_stmt|;
 comment|//Util.pr("AutoCompListener: "+res.toString());
