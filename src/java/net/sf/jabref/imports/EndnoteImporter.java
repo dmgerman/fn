@@ -1331,6 +1331,7 @@ comment|//if pages missing and article number given, use the article number
 if|if
 condition|(
 operator|(
+operator|(
 name|hm
 operator|.
 name|get
@@ -1352,6 +1353,7 @@ name|equals
 argument_list|(
 literal|"-"
 argument_list|)
+operator|)
 operator|&&
 operator|!
 name|artnum
