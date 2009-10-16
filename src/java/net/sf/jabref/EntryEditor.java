@@ -2133,6 +2133,7 @@ argument_list|,
 literal|false
 argument_list|,
 operator|(
+operator|(
 name|ed
 operator|.
 name|getFieldName
@@ -2142,6 +2143,17 @@ name|equals
 argument_list|(
 literal|"author"
 argument_list|)
+operator|||
+name|ed
+operator|.
+name|getFieldName
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"editor"
+argument_list|)
+operator|)
 condition|?
 literal|" and "
 else|:
