@@ -224,17 +224,22 @@ name|BibtexEntry
 argument_list|>
 name|entries
 decl_stmt|;
+DECL|field|database
+specifier|private
+name|BibtexDatabase
+name|database
+decl_stmt|;
 annotation|@
 name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-DECL|method|OpenDocumentRepresentation (BibtexDatabase bibtex, Set<String> keySet)
+DECL|method|OpenDocumentRepresentation (BibtexDatabase database, Set<String> keySet)
 specifier|public
 name|OpenDocumentRepresentation
 parameter_list|(
 name|BibtexDatabase
-name|bibtex
+name|database
 parameter_list|,
 name|Set
 argument_list|<
@@ -243,6 +248,12 @@ argument_list|>
 name|keySet
 parameter_list|)
 block|{
+name|this
+operator|.
+name|database
+operator|=
+name|database
+expr_stmt|;
 comment|// Make a list of comparators for sorting the entries:
 name|List
 argument_list|<
@@ -312,7 +323,7 @@ name|entryList
 operator|.
 name|addAll
 argument_list|(
-name|bibtex
+name|database
 operator|.
 name|getEntries
 argument_list|()
@@ -331,7 +342,7 @@ name|entryList
 operator|.
 name|add
 argument_list|(
-name|bibtex
+name|database
 operator|.
 name|getEntryById
 argument_list|(
@@ -1528,27 +1539,28 @@ name|String
 name|field
 parameter_list|)
 block|{
-name|Object
-name|o
+name|String
+name|s
 init|=
-name|e
+name|BibtexDatabase
 operator|.
-name|getField
+name|getResolvedField
 argument_list|(
 name|field
+argument_list|,
+name|e
+argument_list|,
+name|database
 argument_list|)
 decl_stmt|;
 return|return
-name|o
+name|s
 operator|==
 literal|null
 condition|?
 literal|""
 else|:
-name|o
-operator|.
-name|toString
-argument_list|()
+name|s
 return|;
 block|}
 DECL|method|addTableCell (Document doc, Element parent, String content)
