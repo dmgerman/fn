@@ -1542,19 +1542,6 @@ operator|.
 name|FILE_FIELD
 argument_list|)
 decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"filedir = '"
-operator|+
-name|fileDir
-operator|+
-literal|"'"
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|(
