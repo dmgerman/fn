@@ -919,6 +919,19 @@ specifier|static
 name|NumberFormat
 name|idFormat
 decl_stmt|;
+DECL|field|remoteLinkPattern
+specifier|public
+specifier|static
+name|Pattern
+name|remoteLinkPattern
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"[a-z]+://.*"
+argument_list|)
+decl_stmt|;
 static|static
 block|{
 name|idFormat
@@ -3952,26 +3965,21 @@ block|{
 name|boolean
 name|httpLink
 init|=
+name|remoteLinkPattern
+operator|.
+name|matcher
+argument_list|(
 name|link
 operator|.
 name|toLowerCase
 argument_list|()
-operator|.
-name|startsWith
-argument_list|(
-literal|"http:"
 argument_list|)
-operator|||
-name|link
 operator|.
-name|toLowerCase
+name|matches
 argument_list|()
-operator|.
-name|startsWith
-argument_list|(
-literal|"ftp:"
-argument_list|)
 decl_stmt|;
+comment|//boolean httpLink = link.toLowerCase().startsWith("http:")
+comment|//        || link.toLowerCase().startsWith("ftp:");
 if|if
 condition|(
 name|link
@@ -3984,6 +3992,11 @@ argument_list|(
 literal|"file://"
 argument_list|)
 condition|)
+block|{
+name|httpLink
+operator|=
+literal|false
+expr_stmt|;
 name|link
 operator|=
 name|link
@@ -3993,6 +4006,7 @@ argument_list|(
 literal|7
 argument_list|)
 expr_stmt|;
+block|}
 comment|// For other platforms we'll try to find the file type:
 name|File
 name|file
