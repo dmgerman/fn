@@ -81,9 +81,16 @@ argument_list|)
 operator|.
 name|replaceAll
 argument_list|(
-literal|"[\\n]{1,}"
+literal|"[\\n]{2,}"
 argument_list|,
 literal|"<p>"
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\n"
+argument_list|,
+literal|"<br>"
 argument_list|)
 expr_stmt|;
 name|StringBuffer
