@@ -1164,6 +1164,41 @@ name|visible
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|selectFirstEntry ()
+specifier|public
+name|void
+name|selectFirstEntry
+parameter_list|()
+block|{
+if|if
+condition|(
+name|entryTable
+operator|.
+name|getRowCount
+argument_list|()
+operator|>
+literal|0
+condition|)
+name|entryTable
+operator|.
+name|setRowSelectionInterval
+argument_list|(
+literal|0
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+else|else
+block|{
+name|contentPane
+operator|.
+name|setDividerLocation
+argument_list|(
+literal|1.0f
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 comment|/**      * Remove all entries from the table.      */
 DECL|method|clear ()
 specifier|public

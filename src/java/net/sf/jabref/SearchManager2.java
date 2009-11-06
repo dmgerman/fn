@@ -2710,6 +2710,11 @@ block|}
 block|}
 name|searchDialog
 operator|.
+name|selectFirstEntry
+argument_list|()
+expr_stmt|;
+name|searchDialog
+operator|.
 name|setVisible
 argument_list|(
 literal|true
@@ -2798,6 +2803,11 @@ name|panel
 argument_list|)
 expr_stmt|;
 block|}
+name|searchDialog
+operator|.
+name|selectFirstEntry
+argument_list|()
+expr_stmt|;
 name|searchDialog
 operator|.
 name|setVisible
