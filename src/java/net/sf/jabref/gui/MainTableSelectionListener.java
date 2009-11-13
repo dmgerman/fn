@@ -744,6 +744,7 @@ name|oldEditor
 operator|!=
 literal|null
 condition|)
+block|{
 name|visName
 operator|=
 name|oldEditor
@@ -751,6 +752,12 @@ operator|.
 name|getVisiblePanelName
 argument_list|()
 expr_stmt|;
+name|oldEditor
+operator|.
+name|setMovingToDifferentEntry
+argument_list|()
+expr_stmt|;
+block|}
 comment|// Get an old or new editor for the entry to edit:
 name|EntryEditor
 name|newEditor
