@@ -11472,6 +11472,23 @@ name|enabled
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|setSelectionListenerEnabled (boolean enabled)
+specifier|public
+name|void
+name|setSelectionListenerEnabled
+parameter_list|(
+name|boolean
+name|enabled
+parameter_list|)
+block|{
+name|selectionListener
+operator|.
+name|setEnabled
+argument_list|(
+name|enabled
+argument_list|)
+expr_stmt|;
+block|}
 DECL|class|UndoAction
 class|class
 name|UndoAction

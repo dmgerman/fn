@@ -384,6 +384,13 @@ name|workingOnPreview
 init|=
 literal|false
 decl_stmt|;
+DECL|field|enabled
+specifier|private
+name|boolean
+name|enabled
+init|=
+literal|true
+decl_stmt|;
 comment|// Register the last character pressed to quick jump in the table. Together
 comment|// with storing the last row number jumped to, this is used to let multiple
 comment|// key strokes cycle between all entries starting with the same letter:
@@ -464,6 +471,22 @@ name|previewPanel
 index|[
 name|activePreview
 index|]
+expr_stmt|;
+block|}
+DECL|method|setEnabled (boolean enabled)
+specifier|public
+name|void
+name|setEnabled
+parameter_list|(
+name|boolean
+name|enabled
+parameter_list|)
+block|{
+name|this
+operator|.
+name|enabled
+operator|=
+name|enabled
 expr_stmt|;
 block|}
 DECL|method|instantiatePreviews ()
@@ -605,6 +628,14 @@ argument_list|>
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+operator|!
+name|enabled
+condition|)
+block|{
+return|return;
+block|}
 name|EventList
 argument_list|<
 name|BibtexEntry
@@ -752,11 +783,6 @@ operator|.
 name|getVisiblePanelName
 argument_list|()
 expr_stmt|;
-name|oldEditor
-operator|.
-name|setMovingToDifferentEntry
-argument_list|()
-expr_stmt|;
 block|}
 comment|// Get an old or new editor for the entry to edit:
 name|EntryEditor
@@ -769,6 +795,20 @@ argument_list|(
 name|toShow
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+operator|(
+name|oldEditor
+operator|!=
+literal|null
+operator|)
+condition|)
+comment|//&& (oldEditor != newEditor))
+name|oldEditor
+operator|.
+name|setMovingToDifferentEntry
+argument_list|()
+expr_stmt|;
 comment|// Show the new editor unless it was already visible:
 if|if
 condition|(
