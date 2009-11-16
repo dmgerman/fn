@@ -8100,13 +8100,6 @@ operator|+
 literal|"."
 argument_list|)
 expr_stmt|;
-name|mainTable
-operator|.
-name|findEntry
-argument_list|(
-name|be
-argument_list|)
-expr_stmt|;
 comment|// We are going to select the new entry. Before that, make sure that we are in
 comment|// show-entry mode. If we aren't already in that mode, enter the WILL_SHOW_EDITOR
 comment|// mode which makes sure the selection will trigger display of the entry editor
@@ -8123,12 +8116,38 @@ operator|=
 name|WILL_SHOW_EDITOR
 expr_stmt|;
 block|}
+name|int
+name|row
+init|=
+name|mainTable
+operator|.
+name|findEntry
+argument_list|(
+name|be
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|row
+operator|>=
+literal|0
+condition|)
 name|highlightEntry
 argument_list|(
 name|be
 argument_list|)
 expr_stmt|;
 comment|// Selects the entry. The selection listener will open the editor.
+else|else
+block|{
+comment|// The entry is not visible in the table, perhaps due to a filtering search
+comment|// or group selection. Show the entry editor anyway:
+name|showEntry
+argument_list|(
+name|be
+argument_list|)
+expr_stmt|;
+block|}
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
