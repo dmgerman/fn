@@ -427,7 +427,8 @@ name|sp
 return|;
 block|}
 DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
-name|void
+specifier|public
+name|boolean
 name|makeChange
 parameter_list|(
 name|BasePanel
@@ -559,6 +560,9 @@ expr_stmt|;
 break|break;
 block|}
 block|}
+return|return
+literal|true
+return|;
 block|}
 DECL|class|MetaDataChangeUnit
 class|class

@@ -148,7 +148,7 @@ expr_stmt|;
 block|}
 DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|public
-name|void
+name|boolean
 name|makeChange
 parameter_list|(
 name|BasePanel
@@ -206,6 +206,9 @@ name|panel
 argument_list|)
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 DECL|method|description ()
 name|JComponent

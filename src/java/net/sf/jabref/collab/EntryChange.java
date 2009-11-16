@@ -462,7 +462,7 @@ block|}
 block|}
 DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|public
-name|void
+name|boolean
 name|makeChange
 parameter_list|(
 name|BasePanel
@@ -480,6 +480,11 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
+name|boolean
+name|allAccepted
+init|=
+literal|true
+decl_stmt|;
 name|Enumeration
 argument_list|<
 name|Change
@@ -530,8 +535,16 @@ argument_list|,
 name|undoEdit
 argument_list|)
 expr_stmt|;
+else|else
+name|allAccepted
+operator|=
+literal|false
+expr_stmt|;
 block|}
 comment|/*panel.database().removeEntry(memEntry.getId());     try {       diskEntry.setId(Util.createNeutralId());     } catch (KeyCollisionException ex) {}     panel.database().removeEntry(memEntry.getId());*/
+return|return
+name|allAccepted
+return|;
 block|}
 DECL|method|description ()
 name|JComponent
@@ -880,7 +893,7 @@ expr_stmt|;
 block|}
 DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|public
-name|void
+name|boolean
 name|makeChange
 parameter_list|(
 name|BasePanel
@@ -929,6 +942,9 @@ argument_list|,
 name|onDisk
 argument_list|)
 expr_stmt|;
+return|return
+literal|true
+return|;
 block|}
 DECL|method|description ()
 name|JComponent
