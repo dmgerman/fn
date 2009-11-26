@@ -16,6 +16,20 @@ end_package
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|AutoCompleteListener
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|awt
@@ -179,6 +193,13 @@ name|compile
 argument_list|(
 literal|"\\s+.*"
 argument_list|)
+decl_stmt|;
+DECL|field|autoCompleteListener
+specifier|private
+name|AutoCompleteListener
+name|autoCompleteListener
+init|=
+literal|null
 decl_stmt|;
 comment|//protected UndoManager undo = new UndoManager();
 DECL|method|FieldTextArea (String fieldName_, String content)
@@ -513,6 +534,42 @@ argument_list|(
 name|listener
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|setAutoCompleteListener (AutoCompleteListener listener)
+specifier|public
+name|void
+name|setAutoCompleteListener
+parameter_list|(
+name|AutoCompleteListener
+name|listener
+parameter_list|)
+block|{
+name|autoCompleteListener
+operator|=
+name|listener
+expr_stmt|;
+block|}
+DECL|method|clearAutoCompleteSuggestion ()
+specifier|public
+name|void
+name|clearAutoCompleteSuggestion
+parameter_list|()
+block|{
+if|if
+condition|(
+name|autoCompleteListener
+operator|!=
+literal|null
+condition|)
+block|{
+name|autoCompleteListener
+operator|.
+name|clearCurrentSuggestion
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 end_class

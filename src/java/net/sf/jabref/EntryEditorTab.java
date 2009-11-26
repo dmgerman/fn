@@ -978,6 +978,13 @@ argument_list|,
 name|acl
 argument_list|)
 expr_stmt|;
+name|ta
+operator|.
+name|setAutoCompleteListener
+argument_list|(
+name|acl
+argument_list|)
+expr_stmt|;
 comment|// Store the editor for later reference:
 name|editors
 operator|.

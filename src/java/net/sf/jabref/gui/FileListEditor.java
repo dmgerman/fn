@@ -4371,6 +4371,21 @@ name|UndoableEditListener
 name|listener
 parameter_list|)
 block|{     }
+DECL|method|setAutoCompleteListener (AutoCompleteListener listener)
+specifier|public
+name|void
+name|setAutoCompleteListener
+parameter_list|(
+name|AutoCompleteListener
+name|listener
+parameter_list|)
+block|{     }
+DECL|method|clearAutoCompleteSuggestion ()
+specifier|public
+name|void
+name|clearAutoCompleteSuggestion
+parameter_list|()
+block|{     }
 block|}
 end_class
 

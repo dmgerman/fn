@@ -16,6 +16,20 @@ end_package
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|AutoCompleteListener
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|awt
@@ -221,6 +235,21 @@ parameter_list|(
 name|UndoableEditListener
 name|listener
 parameter_list|)
+function_decl|;
+DECL|method|setAutoCompleteListener (AutoCompleteListener listener)
+specifier|public
+name|void
+name|setAutoCompleteListener
+parameter_list|(
+name|AutoCompleteListener
+name|listener
+parameter_list|)
+function_decl|;
+DECL|method|clearAutoCompleteSuggestion ()
+specifier|public
+name|void
+name|clearAutoCompleteSuggestion
+parameter_list|()
 function_decl|;
 block|}
 end_interface
