@@ -2431,7 +2431,11 @@ literal|"\\begin{publisher}<em>\\format[HTMLChars]{\\publisher},</em>\\end{publi
 operator|+
 literal|"\\begin{year}<b>\\year</b>\\end{year}\\begin{volume}<i>, \\volume</i>\\end{volume}"
 operator|+
-literal|"\\begin{pages}, \\format[FormatPagesForHTML]{\\pages} \\end{pages}"
+literal|"\\begin{pages}, \\format[FormatPagesForHTML]{\\pages} \\end{pages}__NEWLINE__"
+operator|+
+literal|"\\begin{abstract}<BR><BR><b>Abstract:</b> \\format[HTMLChars]{\\abstract} \\end{abstract}__NEWLINE__"
+operator|+
+literal|"\\begin{review}<BR><BR><b>Review:</b> \\format[HTMLChars]{\\review} \\end{review}"
 operator|+
 literal|"</dd>__NEWLINE__<p></p></font>"
 argument_list|)
@@ -2469,11 +2473,7 @@ literal|"\\begin{publisher}<em>\\format[HTMLChars]{\\publisher},</em>\\end{publi
 operator|+
 literal|"\\begin{year}<b>\\year</b>\\end{year}\\begin{volume}<i>, \\volume</i>\\end{volume}"
 operator|+
-literal|"\\begin{pages}, \\format[FormatPagesForHTML]{\\pages} \\end{pages}__NEWLINE__"
-operator|+
-literal|"\\begin{abstract}<BR><BR><b>Abstract:</b> \\format[HTMLChars]{\\abstract} \\end{abstract}__NEWLINE__"
-operator|+
-literal|"\\begin{review}<BR><BR><b>Review:</b> \\format[HTMLChars]{\\review} \\end{review}"
+literal|"\\begin{pages}, \\format[FormatPagesForHTML]{\\pages} \\end{pages}"
 operator|+
 literal|"</dd>__NEWLINE__<p></p></font>"
 argument_list|)

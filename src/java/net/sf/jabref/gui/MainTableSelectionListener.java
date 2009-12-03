@@ -342,7 +342,7 @@ DECL|field|activePreview
 name|int
 name|activePreview
 init|=
-literal|1
+literal|0
 decl_stmt|;
 DECL|field|preview
 name|PreviewPanel
