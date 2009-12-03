@@ -2412,7 +2412,9 @@ literal|"\\end{bibtexkey}</b><br>__NEWLINE__"
 operator|+
 literal|"\\begin{author} \\format[HTMLChars,AuthorAbbreviator,AuthorAndsReplacer]{\\author}<BR>\\end{author}__NEWLINE__"
 operator|+
-literal|"\\begin{editor} \\format[HTMLChars,AuthorAbbreviator,AuthorAndsReplacer]{\\editor}<i>(ed.)</i><BR>\\end{editor}__NEWLINE__"
+literal|"\\begin{editor} \\format[HTMLChars,AuthorAbbreviator,AuthorAndsReplacer]{\\editor} "
+operator|+
+literal|"<i>(\\format[IfPlural(Eds.,Ed.)]{\\editor})</i><BR>\\end{editor}__NEWLINE__"
 operator|+
 literal|"\\begin{title} \\format[HTMLChars]{\\title} \\end{title}<BR>__NEWLINE__"
 operator|+
@@ -2454,7 +2456,9 @@ literal|"\\end{bibtexkey}</b><br>__NEWLINE__"
 operator|+
 literal|"\\begin{author} \\format[HTMLChars,AuthorAbbreviator,AuthorAndsReplacer]{\\author}<BR>\\end{author}__NEWLINE__"
 operator|+
-literal|"\\begin{editor} \\format[HTMLChars,AuthorAbbreviator,AuthorAndsReplacer]{\\editor}<i>(ed.)</i><BR>\\end{editor}__NEWLINE__"
+literal|"\\begin{editor} \\format[HTMLChars,AuthorAbbreviator,AuthorAndsReplacer]{\\editor} "
+operator|+
+literal|"<i>(\\format[IfPlural(Eds.,Ed.)]{\\editor})</i><BR>\\end{editor}__NEWLINE__"
 operator|+
 literal|"\\begin{title} \\format[HTMLChars]{\\title} \\end{title}<BR>__NEWLINE__"
 operator|+
