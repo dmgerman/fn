@@ -3823,6 +3823,12 @@ argument_list|)
 operator|)
 condition|)
 block|{
+if|if
+condition|(
+name|comp
+operator|instanceof
+name|FieldEditor
+condition|)
 operator|(
 operator|(
 name|FieldEditor
