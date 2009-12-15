@@ -5644,7 +5644,7 @@ name|put
 argument_list|(
 literal|"Search IEEEXplore"
 argument_list|,
-literal|"F8"
+literal|"alt F8"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds
@@ -5672,15 +5672,6 @@ argument_list|(
 literal|"Search JSTOR"
 argument_list|,
 literal|"shift F9"
-argument_list|)
-expr_stmt|;
-name|defKeyBinds
-operator|.
-name|put
-argument_list|(
-literal|"Fetch SPIRES"
-argument_list|,
-literal|"ctrl F8"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds
