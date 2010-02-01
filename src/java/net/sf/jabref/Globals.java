@@ -589,6 +589,9 @@ literal|"Cp1257"
 block|,
 literal|"SJIS"
 block|,
+literal|"KOI8_R"
+block|,
+comment|// Cyrillic
 literal|"EUC_JP"
 block|,
 comment|// Added Japanese encodings.
