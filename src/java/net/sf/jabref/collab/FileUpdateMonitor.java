@@ -638,6 +638,13 @@ operator|.
 name|lastModified
 argument_list|()
 expr_stmt|;
+name|fileSize
+operator|=
+name|file
+operator|.
+name|length
+argument_list|()
+expr_stmt|;
 name|tmpFile
 operator|=
 name|getTempFile
