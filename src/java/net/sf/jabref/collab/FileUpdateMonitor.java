@@ -606,8 +606,11 @@ name|File
 name|tmpFile
 decl_stmt|;
 DECL|field|timeStamp
+DECL|field|fileSize
 name|long
 name|timeStamp
+decl_stmt|,
+name|fileSize
 decl_stmt|;
 DECL|method|Entry (FileUpdateListener ul, File f)
 specifier|public
@@ -644,7 +647,7 @@ name|copy
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Check if time stamp has changed.      * @throws IOException if the file does no longer exist.      * @return boolean true if the file has changed.      */
+comment|/**      * Check if time stamp or the file size has changed.      * @throws IOException if the file does no longer exist.      * @return boolean true if the file has changed.      */
 DECL|method|hasBeenUpdated ()
 specifier|public
 name|boolean
@@ -659,6 +662,14 @@ init|=
 name|file
 operator|.
 name|lastModified
+argument_list|()
+decl_stmt|;
+name|long
+name|fileSizeNow
+init|=
+name|file
+operator|.
+name|length
 argument_list|()
 decl_stmt|;
 if|if
@@ -678,6 +689,10 @@ return|return
 name|timeStamp
 operator|!=
 name|modified
+operator|||
+name|fileSize
+operator|!=
+name|fileSizeNow
 return|;
 block|}
 DECL|method|updateTimeStamp ()
@@ -700,6 +715,13 @@ operator|==
 literal|0L
 condition|)
 name|notifyFileRemoved
+argument_list|()
+expr_stmt|;
+name|fileSize
+operator|=
+name|file
+operator|.
+name|length
 argument_list|()
 expr_stmt|;
 name|copy
