@@ -71,6 +71,24 @@ literal|"Could not save, file locked by another JabRef instance."
 argument_list|)
 argument_list|)
 decl_stmt|;
+DECL|field|BACKUP_CREATION
+specifier|public
+specifier|static
+specifier|final
+name|SaveException
+name|BACKUP_CREATION
+init|=
+operator|new
+name|SaveException
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Unable to create backup"
+argument_list|)
+argument_list|)
+decl_stmt|;
 DECL|field|entry
 specifier|private
 name|BibtexEntry
@@ -80,6 +98,8 @@ DECL|field|status
 specifier|private
 name|int
 name|status
+init|=
+literal|0
 decl_stmt|;
 comment|//~ Constructors ///////////////////////////////////////////////////////////
 DECL|method|SaveException (String message)

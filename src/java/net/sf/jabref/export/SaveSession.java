@@ -255,6 +255,22 @@ return|return
 name|encoding
 return|;
 block|}
+DECL|method|setUseBackup (boolean useBackup)
+specifier|public
+name|void
+name|setUseBackup
+parameter_list|(
+name|boolean
+name|useBackup
+parameter_list|)
+block|{
+name|this
+operator|.
+name|backup
+operator|=
+name|useBackup
+expr_stmt|;
+block|}
 DECL|method|commit ()
 specifier|public
 name|void
@@ -331,25 +347,17 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
-throw|throw
-operator|new
-name|SaveException
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Save failed during backup creation"
-argument_list|)
-operator|+
-literal|": "
-operator|+
 name|ex
 operator|.
-name|getMessage
+name|printStackTrace
 argument_list|()
-argument_list|)
+expr_stmt|;
+throw|throw
+name|SaveException
+operator|.
+name|BACKUP_CREATION
 throw|;
+comment|//throw new SaveException(Globals.lang("Save failed during backup creation")+": "+ex.getMessage());
 block|}
 block|}
 try|try
