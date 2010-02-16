@@ -2453,7 +2453,7 @@ name|bibtex
 operator|.
 name|getField
 argument_list|(
-literal|"issue"
+literal|"number"
 argument_list|)
 operator|!=
 literal|null
@@ -2464,7 +2464,7 @@ name|bibtex
 operator|.
 name|getField
 argument_list|(
-literal|"issue"
+literal|"number"
 argument_list|)
 operator|.
 name|toString
