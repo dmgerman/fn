@@ -345,7 +345,15 @@ argument_list|,
 name|out
 argument_list|)
 expr_stmt|;
-comment|//addResourceFile("mimetype", "/resource/openoffice/mimetype", out);
+name|addResourceFile
+argument_list|(
+literal|"mimetype"
+argument_list|,
+literal|"/resource/ods/mimetype"
+argument_list|,
+name|out
+argument_list|)
+expr_stmt|;
 name|addResourceFile
 argument_list|(
 literal|"META-INF/manifest.xml"
