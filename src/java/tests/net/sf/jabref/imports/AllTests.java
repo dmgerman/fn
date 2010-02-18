@@ -93,6 +93,15 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|GeneralFetcherTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
 comment|//$JUnit-END$
 return|return
 name|suite
