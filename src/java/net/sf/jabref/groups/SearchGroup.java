@@ -1970,13 +1970,24 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|/*sb.append(Globals.lang("</b> - dynamic group (search expression:<b>")).*/
 name|sb
 operator|.
 name|append
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"</b> - dynamic group ("
+argument_list|)
 operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"search expression:<b>"
+argument_list|)
 argument_list|)
 operator|.
 name|append
@@ -2009,7 +2020,12 @@ name|sb
 operator|.
 name|append
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|", includes subgroups"
+argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;
@@ -2022,7 +2038,12 @@ name|sb
 operator|.
 name|append
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|", refines supergroup"
+argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;

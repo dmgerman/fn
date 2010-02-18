@@ -387,7 +387,12 @@ name|getShortDescription
 parameter_list|()
 block|{
 return|return
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"<b>All Entries</b> (this group cannot be edited or removed)"
+argument_list|)
 return|;
 block|}
 DECL|method|getTypeId ()
