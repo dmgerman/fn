@@ -2796,6 +2796,17 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+literal|"filechooserDisableRename"
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
 literal|"lastUsedExport"
 argument_list|,
 literal|null
