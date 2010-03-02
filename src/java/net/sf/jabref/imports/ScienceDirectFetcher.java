@@ -90,7 +90,17 @@ name|java
 operator|.
 name|io
 operator|.
-name|*
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|UnsupportedEncodingException
 import|;
 end_import
 
@@ -101,16 +111,6 @@ operator|.
 name|net
 operator|.
 name|URL
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URLConnection
 import|;
 end_import
 
@@ -150,16 +150,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|StringTokenizer
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|regex
 operator|.
 name|Matcher
@@ -179,10 +169,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|JSTORFetcher2
+DECL|class|ScienceDirectFetcher
 specifier|public
 class|class
-name|JSTORFetcher2
+name|ScienceDirectFetcher
 implements|implements
 name|EntryFetcher
 block|{
@@ -194,14 +184,14 @@ name|MAX_PAGES_TO_LOAD
 init|=
 literal|8
 decl_stmt|;
-DECL|field|JSTOR_URL
+DECL|field|WEBSITE_URL
 specifier|protected
 specifier|static
 specifier|final
 name|String
-name|JSTOR_URL
+name|WEBSITE_URL
 init|=
-literal|"http://www.jstor.org"
+literal|"http://www.sciencedirect.com"
 decl_stmt|;
 DECL|field|SEARCH_URL
 specifier|protected
@@ -210,42 +200,42 @@ specifier|final
 name|String
 name|SEARCH_URL
 init|=
-name|JSTOR_URL
+name|WEBSITE_URL
 operator|+
-literal|"/action/doBasicSearch?Query="
+literal|"/science/quicksearch?query="
 decl_stmt|;
-DECL|field|SEARCH_URL_END
+DECL|field|linkPrefix
 specifier|protected
 specifier|static
 specifier|final
 name|String
-name|SEARCH_URL_END
+name|linkPrefix
 init|=
-literal|"&x=0&y=0&wc=on"
+literal|"http://www.sciencedirect.com/science?_ob=ArticleURL&"
 decl_stmt|;
-DECL|field|SINGLE_CIT_ENC
-specifier|protected
-specifier|static
-specifier|final
-name|String
-name|SINGLE_CIT_ENC
-init|=
-literal|"http://www.jstor.org/action/exportSingleCitation?singleCitation=true&suffix="
-decl_stmt|;
-comment|//"http%3A%2F%2Fwww.jstor.org%2Faction%2FexportSingleCitation%3FsingleCitation"
-comment|//+"%3Dtrue%26suffix%3D";
-DECL|field|idPattern
+DECL|field|linkPattern
 specifier|protected
 specifier|static
 specifier|final
 name|Pattern
-name|idPattern
+name|linkPattern
 init|=
 name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"<a class=\"title\" href=\"/stable/(\\d+)\\?"
+literal|"<a href=\""
+operator|+
+name|linkPrefix
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\?"
+argument_list|,
+literal|"\\\\?"
+argument_list|)
+operator|+
+literal|"([^\"]+)\"\""
 argument_list|)
 decl_stmt|;
 DECL|field|nextPagePattern
@@ -261,15 +251,6 @@ name|compile
 argument_list|(
 literal|"<a href=\"(.*)\">Next&gt;"
 argument_list|)
-decl_stmt|;
-DECL|field|noAccessIndicator
-specifier|protected
-specifier|static
-specifier|final
-name|String
-name|noAccessIndicator
-init|=
-literal|"We do not recognize you as having access to JSTOR"
 decl_stmt|;
 DECL|field|stopFetching
 specifier|protected
@@ -292,7 +273,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|"JSTOR.html"
+literal|"ScienceDirect.html"
 return|;
 block|}
 DECL|method|getIcon ()
@@ -317,7 +298,7 @@ name|getKeyName
 parameter_list|()
 block|{
 return|return
-literal|"Search JSTOR"
+literal|"Search ScienceDirect"
 return|;
 block|}
 DECL|method|getOptionsPanel ()
@@ -342,7 +323,7 @@ name|Globals
 operator|.
 name|menuTitle
 argument_list|(
-literal|"Search JSTOR"
+literal|"Search ScienceDirect"
 argument_list|)
 return|;
 block|}
@@ -412,11 +393,6 @@ operator|==
 literal|0
 condition|)
 block|{
-if|if
-condition|(
-operator|!
-name|noAccessFound
-condition|)
 name|status
 operator|.
 name|showMessage
@@ -434,7 +410,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Search JSTOR"
+literal|"Search ScienceDirect"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -442,34 +418,6 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
-else|else
-block|{
-name|status
-operator|.
-name|showMessage
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"No entries found. It looks like you do not have access to search JStor."
-argument_list|,
-name|query
-argument_list|)
-argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Search JSTOR"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|INFORMATION_MESSAGE
-argument_list|)
-expr_stmt|;
-block|}
 return|return
 literal|false
 return|;
@@ -495,7 +443,9 @@ break|break;
 name|BibtexEntry
 name|entry
 init|=
-name|getSingleCitation
+name|BibsonomyScraper
+operator|.
+name|getEntry
 argument_list|(
 name|cit
 argument_list|)
@@ -550,7 +500,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Error while fetching from JSTOR"
+literal|"Error while fetching from ScienceDirect"
 argument_list|)
 operator|+
 literal|": "
@@ -611,8 +561,6 @@ name|query
 argument_list|,
 literal|"UTF-8"
 argument_list|)
-operator|+
-name|SEARCH_URL_END
 expr_stmt|;
 name|int
 name|count
@@ -723,15 +671,11 @@ operator|.
 name|getStringContent
 argument_list|()
 decl_stmt|;
-name|String
-name|entirePage
-init|=
-name|cont
-decl_stmt|;
+comment|//String entirePage = cont;
 name|Matcher
 name|m
 init|=
-name|idPattern
+name|linkPattern
 operator|.
 name|matcher
 argument_list|(
@@ -758,6 +702,8 @@ name|ids
 operator|.
 name|add
 argument_list|(
+name|linkPrefix
+operator|+
 name|m
 operator|.
 name|group
@@ -780,7 +726,7 @@ argument_list|)
 expr_stmt|;
 name|m
 operator|=
-name|idPattern
+name|linkPattern
 operator|.
 name|matcher
 argument_list|(
@@ -789,89 +735,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-elseif|else
-if|if
-condition|(
-name|entirePage
-operator|.
-name|indexOf
-argument_list|(
-name|noAccessIndicator
-argument_list|)
-operator|>=
-literal|0
-condition|)
-block|{
-name|noAccessFound
-operator|=
-literal|true
-expr_stmt|;
-return|return
-literal|null
-return|;
-block|}
 else|else
 block|{
 return|return
 literal|null
 return|;
 block|}
-name|m
-operator|=
-name|nextPagePattern
-operator|.
-name|matcher
-argument_list|(
-name|entirePage
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|m
-operator|.
-name|find
-argument_list|()
-condition|)
-block|{
-name|String
-name|newQuery
-init|=
-name|JSTOR_URL
-operator|+
-name|m
-operator|.
-name|group
-argument_list|(
-literal|1
-argument_list|)
-decl_stmt|;
-return|return
-name|newQuery
-return|;
-block|}
-else|else
+comment|/*m = nextPagePattern.matcher(entirePage);         if (m.find()) {             String newQuery = WEBSITE_URL +m.group(1);             return newQuery;         }         else*/
 return|return
 literal|null
-return|;
-block|}
-DECL|method|getSingleCitation (String cit)
-specifier|protected
-name|BibtexEntry
-name|getSingleCitation
-parameter_list|(
-name|String
-name|cit
-parameter_list|)
-block|{
-return|return
-name|BibsonomyScraper
-operator|.
-name|getEntry
-argument_list|(
-name|SINGLE_CIT_ENC
-operator|+
-name|cit
-argument_list|)
 return|;
 block|}
 block|}
