@@ -499,7 +499,7 @@ literal|20000L
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Construct the query URL      *       * @param key      *            The key of the OAI2 entry that the url should poitn to.      *                  * @return a String denoting the query URL      */
+comment|/**      * Construct the query URL      *       * @param key      *            The key of the OAI2 entry that the url should point to.      *                  * @return a String denoting the query URL      */
 DECL|method|constructUrl (String key)
 specifier|public
 name|String
@@ -616,7 +616,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Strip subccategories from ArXiv key.      *       * @param key The key to fix.      * @return Fixed key.      */
+comment|/**      * Strip subcategories from ArXiv key.      *       * @param key The key to fix.      * @return Fixed key.      */
 DECL|method|fixKey (String key)
 specifier|public
 specifier|static

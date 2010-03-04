@@ -5590,6 +5590,15 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
+literal|"Search ScienceDirect"
+argument_list|,
+literal|"ctrl F5"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
 literal|"New from plain text"
 argument_list|,
 literal|"ctrl shift N"
