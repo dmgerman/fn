@@ -2437,6 +2437,17 @@ literal|"review"
 block|, }
 return|;
 block|}
+DECL|method|getPrimaryOptionalFields ()
+specifier|public
+name|String
+index|[]
+name|getPrimaryOptionalFields
+parameter_list|()
+block|{
+return|return
+literal|null
+return|;
+block|}
 DECL|method|describeRequiredFields ()
 specifier|public
 specifier|abstract
@@ -2636,6 +2647,19 @@ decl_stmt|;
 static|static
 block|{
 comment|// Put the standard entry types into the type map.
+if|if
+condition|(
+operator|!
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"biblatexMode"
+argument_list|)
+condition|)
+block|{
 name|ALL_TYPES
 operator|.
 name|put
@@ -2807,6 +2831,21 @@ argument_list|,
 name|OTHER
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|ALL_TYPES
+operator|.
+name|put
+argument_list|(
+literal|"article"
+argument_list|,
+name|BibLatexEntryTypes
+operator|.
+name|ARTICLE
+argument_list|)
+expr_stmt|;
+block|}
 comment|// We need a record of the standard types, in case the user wants
 comment|// to remove a customized version. Therefore we clone the map.
 name|STANDARD_TYPES
