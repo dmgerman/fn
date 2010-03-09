@@ -672,9 +672,9 @@ comment|//String rowSpec = "left:pref, 4dlu, fill:pref:grow, 4dlu, fill:pref";
 name|String
 name|colSpec
 init|=
-literal|"fill:pref, 1dlu, fill:pref:grow, 1dlu, fill:pref, "
+literal|"fill:pref, 1dlu, fill:10dlu:grow, 1dlu, fill:pref, "
 operator|+
-literal|"8dlu, fill:pref, 1dlu, fill:pref:grow, 1dlu, fill:pref"
+literal|"8dlu, fill:pref, 1dlu, fill:10dlu:grow, 1dlu, fill:pref"
 decl_stmt|;
 name|StringBuffer
 name|sb

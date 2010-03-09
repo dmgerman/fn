@@ -2845,6 +2845,17 @@ operator|.
 name|ARTICLE
 argument_list|)
 expr_stmt|;
+name|ALL_TYPES
+operator|.
+name|put
+argument_list|(
+literal|"book"
+argument_list|,
+name|BibLatexEntryTypes
+operator|.
+name|BOOK
+argument_list|)
+expr_stmt|;
 block|}
 comment|// We need a record of the standard types, in case the user wants
 comment|// to remove a customized version. Therefore we clone the map.
