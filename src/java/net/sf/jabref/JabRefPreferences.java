@@ -545,6 +545,26 @@ name|ExternalFileType
 argument_list|>
 argument_list|()
 decl_stmt|;
+DECL|field|HTML_FALLBACK_TYPE
+specifier|public
+specifier|final
+name|ExternalFileType
+name|HTML_FALLBACK_TYPE
+init|=
+operator|new
+name|ExternalFileType
+argument_list|(
+literal|"URL"
+argument_list|,
+literal|"html"
+argument_list|,
+literal|"text/html"
+argument_list|,
+literal|""
+argument_list|,
+literal|"www"
+argument_list|)
+decl_stmt|;
 comment|// The following field is used as a global variable during the export of a database.
 comment|// By setting this field to the path of the database's default file directory, formatters
 comment|// that should resolve external file paths can access this field. This is an ugly hack
@@ -675,33 +695,9 @@ name|MAC
 argument_list|)
 condition|)
 block|{
-name|defaults
-operator|.
-name|put
-argument_list|(
-literal|"pdfviewer"
-argument_list|,
-literal|"/Applications/Preview.app"
-argument_list|)
-expr_stmt|;
-name|defaults
-operator|.
-name|put
-argument_list|(
-literal|"psviewer"
-argument_list|,
-literal|"/Applications/Preview.app"
-argument_list|)
-expr_stmt|;
-name|defaults
-operator|.
-name|put
-argument_list|(
-literal|"htmlviewer"
-argument_list|,
-literal|"/Applications/Safari.app"
-argument_list|)
-expr_stmt|;
+comment|//defaults.put("pdfviewer", "/Applications/Preview.app");
+comment|//defaults.put("psviewer", "/Applications/Preview.app");
+comment|//defaults.put("htmlviewer", "/Applications/Safari.app");
 name|defaults
 operator|.
 name|put
@@ -728,33 +724,9 @@ literal|"windows"
 argument_list|)
 condition|)
 block|{
-name|defaults
-operator|.
-name|put
-argument_list|(
-literal|"pdfviewer"
-argument_list|,
-literal|"cmd.exe /c start /b"
-argument_list|)
-expr_stmt|;
-name|defaults
-operator|.
-name|put
-argument_list|(
-literal|"psviewer"
-argument_list|,
-literal|"cmd.exe /c start /b"
-argument_list|)
-expr_stmt|;
-name|defaults
-operator|.
-name|put
-argument_list|(
-literal|"htmlviewer"
-argument_list|,
-literal|"cmd.exe /c start /b"
-argument_list|)
-expr_stmt|;
+comment|//defaults.put("pdfviewer", "cmd.exe /c start /b");
+comment|//defaults.put("psviewer", "cmd.exe /c start /b");
+comment|//defaults.put("htmlviewer", "cmd.exe /c start /b");
 name|defaults
 operator|.
 name|put
@@ -794,33 +766,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|defaults
-operator|.
-name|put
-argument_list|(
-literal|"pdfviewer"
-argument_list|,
-literal|"evince"
-argument_list|)
-expr_stmt|;
-name|defaults
-operator|.
-name|put
-argument_list|(
-literal|"psviewer"
-argument_list|,
-literal|"gv"
-argument_list|)
-expr_stmt|;
-name|defaults
-operator|.
-name|put
-argument_list|(
-literal|"htmlviewer"
-argument_list|,
-literal|"firefox"
-argument_list|)
-expr_stmt|;
+comment|//defaults.put("pdfviewer", "evince");
+comment|//defaults.put("psviewer", "gv");
+comment|//defaults.put("htmlviewer", "firefox");
 name|defaults
 operator|.
 name|put
@@ -2414,6 +2362,15 @@ argument_list|,
 name|Boolean
 operator|.
 name|TRUE
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"activePreview"
+argument_list|,
+literal|0
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -6078,7 +6035,7 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|putStringArray
+name|put
 argument_list|(
 name|CUSTOM_TYPE_REQ
 operator|+
@@ -6086,10 +6043,11 @@ name|nr
 argument_list|,
 name|tp
 operator|.
-name|getRequiredFields
+name|getRequiredFieldsString
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|//tp.getRequiredFields());
 name|putStringArray
 argument_list|(
 name|CUSTOM_TYPE_OPT
@@ -6741,7 +6699,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/**      * Look up the external file type registered for this MIME type, if any.      * @param mimeType The MIME type.      * @return The ExternalFileType registered, or null if none.      */
+comment|/**      * Look up the external file type registered for this MIME type, if any.      * @param mimeType The MIME type.      * @return The ExternalFileType registered, or null if none. For the mime type "text/html",      *   a valid file type is guaranteed to be returned.      */
 DECL|method|getExternalFileTypeByMimeType (String mimeType)
 specifier|public
 name|ExternalFileType
@@ -6804,6 +6762,19 @@ return|return
 name|type
 return|;
 block|}
+if|if
+condition|(
+name|mimeType
+operator|.
+name|equals
+argument_list|(
+literal|"text/html"
+argument_list|)
+condition|)
+return|return
+name|HTML_FALLBACK_TYPE
+return|;
+else|else
 return|return
 literal|null
 return|;

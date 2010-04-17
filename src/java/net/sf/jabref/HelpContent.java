@@ -474,13 +474,16 @@ name|removeAllElements
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|setPage (String filename)
+DECL|method|setPage (String filename, Class resourceOwner)
 specifier|public
 name|void
 name|setPage
 parameter_list|(
 name|String
 name|filename
+parameter_list|,
+name|Class
+name|resourceOwner
 parameter_list|)
 block|{
 comment|// Check for anchor
@@ -580,9 +583,7 @@ comment|// First check in specified language
 name|URL
 name|resource
 init|=
-name|JabRef
-operator|.
-name|class
+name|resourceOwner
 operator|.
 name|getResource
 argument_list|(
@@ -605,9 +606,7 @@ condition|)
 block|{
 name|resource
 operator|=
-name|JabRef
-operator|.
-name|class
+name|resourceOwner
 operator|.
 name|getResource
 argument_list|(
@@ -717,6 +716,10 @@ name|f
 operator|.
 name|getName
 argument_list|()
+argument_list|,
+name|JabRef
+operator|.
+name|class
 argument_list|)
 expr_stmt|;
 block|}

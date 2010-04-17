@@ -3396,6 +3396,83 @@ name|lastSourceStringAccepted
 operator|=
 name|srcString
 expr_stmt|;
+comment|//////////////////////////////////////////////////////////
+comment|// Set the current Entry to be selected.
+comment|// Fixes the bug of losing selection after, e.g.
+comment|// an autogeneration of a BibTeX key.
+comment|// - ILC (16/02/2010) -
+comment|//////////////////////////////////////////////////////////
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+operator|new
+name|Runnable
+argument_list|()
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
+specifier|final
+name|int
+name|row
+init|=
+name|panel
+operator|.
+name|mainTable
+operator|.
+name|findEntry
+argument_list|(
+name|entry
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|row
+operator|>=
+literal|0
+condition|)
+block|{
+if|if
+condition|(
+name|panel
+operator|.
+name|mainTable
+operator|.
+name|getSelectedRowCount
+argument_list|()
+operator|==
+literal|0
+condition|)
+name|panel
+operator|.
+name|mainTable
+operator|.
+name|setRowSelectionInterval
+argument_list|(
+name|row
+argument_list|,
+name|row
+argument_list|)
+expr_stmt|;
+comment|//scrollTo(row);
+name|panel
+operator|.
+name|mainTable
+operator|.
+name|ensureVisible
+argument_list|(
+name|row
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+block|}
+argument_list|)
+expr_stmt|;
+comment|//////////////////////////////////////////////////////////
 block|}
 catch|catch
 parameter_list|(
@@ -4776,6 +4853,7 @@ operator|.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
+comment|///////////////////////////////////////////////////////
 name|SwingUtilities
 operator|.
 name|invokeLater
@@ -4809,28 +4887,9 @@ operator|>=
 literal|0
 condition|)
 block|{
-if|if
-condition|(
-name|panel
-operator|.
-name|mainTable
-operator|.
-name|getSelectedRowCount
-argument_list|()
-operator|==
-literal|0
-condition|)
-name|panel
-operator|.
-name|mainTable
-operator|.
-name|setRowSelectionInterval
-argument_list|(
-name|row
-argument_list|,
-name|row
-argument_list|)
-expr_stmt|;
+comment|//if (panel.mainTable.getSelectedRowCount() == 0)
+comment|//    panel.mainTable.setRowSelectionInterval(row, row);
+comment|//scrollTo(row);
 name|panel
 operator|.
 name|mainTable
@@ -6712,6 +6771,7 @@ name|accepted
 condition|)
 block|{                 }
 block|}
+comment|////////////////////////////////////
 comment|// Make sure we scroll to the entry if it moved in the table.
 comment|// Should only be done if this editor is currently showing:
 comment|//System.out.println(getType().getName()+": movingAway="+movingAway+", isShowing="+isShowing());
@@ -6757,28 +6817,9 @@ operator|>=
 literal|0
 condition|)
 block|{
-if|if
-condition|(
-name|panel
-operator|.
-name|mainTable
-operator|.
-name|getSelectedRowCount
-argument_list|()
-operator|==
-literal|0
-condition|)
-name|panel
-operator|.
-name|mainTable
-operator|.
-name|setRowSelectionInterval
-argument_list|(
-name|row
-argument_list|,
-name|row
-argument_list|)
-expr_stmt|;
+comment|//if (panel.mainTable.getSelectedRowCount() == 0)
+comment|//    panel.mainTable.setRowSelectionInterval(row, row);
+comment|//scrollTo(row);
 name|panel
 operator|.
 name|mainTable

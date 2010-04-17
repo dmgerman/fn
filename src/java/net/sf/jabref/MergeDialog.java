@@ -236,21 +236,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|MergeDialog ()
-specifier|public
-name|MergeDialog
-parameter_list|()
-block|{
-name|this
-argument_list|(
-literal|null
-argument_list|,
-literal|""
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|jbInit (JabRefFrame parent)
 specifier|private
 name|void

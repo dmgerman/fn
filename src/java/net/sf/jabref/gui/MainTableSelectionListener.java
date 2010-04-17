@@ -310,6 +310,20 @@ name|ListEventListener
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|external
+operator|.
+name|ExternalFileType
+import|;
+end_import
+
 begin_comment
 comment|/**  * List event, mouse, key and focus listener for the main table that makes up the  * most part of the BasePanel for a single bib database.  */
 end_comment
@@ -342,7 +356,14 @@ DECL|field|activePreview
 name|int
 name|activePreview
 init|=
-literal|0
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getInt
+argument_list|(
+literal|"activePreview"
+argument_list|)
 decl_stmt|;
 DECL|field|preview
 name|PreviewPanel
@@ -1652,7 +1673,6 @@ expr_stmt|;
 return|return;
 comment|// There is an icon, but the field is not set.
 block|}
-try|try
 block|{
 comment|// See if this is a simple file link field, or if it is a file-list
 comment|// field that can specify a list of links:
@@ -1777,6 +1797,8 @@ block|}
 block|}
 else|else
 block|{
+try|try
+block|{
 name|Util
 operator|.
 name|openExternalViewer
@@ -1795,7 +1817,6 @@ name|fieldName
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 catch|catch
 parameter_list|(
 name|IOException
@@ -1810,18 +1831,18 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Error"
+literal|"Unable to open link."
 argument_list|)
-operator|+
-literal|": "
-operator|+
-name|ex
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|/*ExternalFileType type = Globals.prefs.getExternalFileTypeByMimeType("text/html");                             ExternalFileMenuItem item = new ExternalFileMenuItem                                     (panel.frame(), entry, "",                                     (String)link, type.getIcon(),                                     panel.metaData(), type);                             boolean success = item.openLink();                             if (!success) {                                 panel.output(Globals.lang("Unable to open link."));                             } */
+comment|//Util.openExternalViewer(panel.metaData(), (String)link, fieldName);
+block|}
+block|}
+comment|//catch (IOException ex) {
+comment|//    panel.output(Globals.lang("Error") + ": " + ex.getMessage());
+comment|//}
 block|}
 block|}
 operator|)
@@ -2392,6 +2413,17 @@ else|else
 name|activePreview
 operator|=
 literal|0
+expr_stmt|;
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|putInt
+argument_list|(
+literal|"activePreview"
+argument_list|,
+name|activePreview
+argument_list|)
 expr_stmt|;
 if|if
 condition|(

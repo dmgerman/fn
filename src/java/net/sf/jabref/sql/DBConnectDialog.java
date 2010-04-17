@@ -1232,17 +1232,6 @@ literal|"."
 expr_stmt|;
 break|break;
 default|default:
-name|errMsg
-operator|=
-name|errMsg
-operator|+
-name|errors
-operator|.
-name|toString
-argument_list|()
-operator|+
-literal|"."
-expr_stmt|;
 block|}
 return|return
 name|errMsg

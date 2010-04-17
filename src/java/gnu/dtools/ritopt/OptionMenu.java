@@ -264,6 +264,8 @@ literal|0
 decl_stmt|;
 if|if
 condition|(
+name|commandEntered
+operator|&&
 name|command
 operator|.
 name|equals

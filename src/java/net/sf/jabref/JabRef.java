@@ -2318,6 +2318,11 @@ operator|.
 name|prefs
 argument_list|)
 expr_stmt|;
+name|ExportFormats
+operator|.
+name|initAllExports
+argument_list|()
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(

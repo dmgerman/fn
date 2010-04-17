@@ -857,6 +857,11 @@ name|authors
 index|[
 name|i
 index|]
+operator|=
+name|authors
+index|[
+name|i
+index|]
 operator|.
 name|trim
 argument_list|()

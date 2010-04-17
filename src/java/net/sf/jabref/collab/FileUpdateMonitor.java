@@ -650,6 +650,11 @@ operator|=
 name|getTempFile
 argument_list|()
 expr_stmt|;
+name|tmpFile
+operator|.
+name|deleteOnExit
+argument_list|()
+expr_stmt|;
 name|copy
 argument_list|()
 expr_stmt|;
@@ -824,42 +829,7 @@ name|fileRemoved
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|finalize ()
-specifier|public
-name|void
-name|finalize
-parameter_list|()
-block|{
-try|try
-block|{
-name|tmpFile
-operator|.
-name|delete
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Throwable
-name|e
-parameter_list|)
-block|{
-name|Globals
-operator|.
-name|logger
-argument_list|(
-literal|"Cannot delete temporary file '"
-operator|+
-name|tmpFile
-operator|.
-name|getPath
-argument_list|()
-operator|+
-literal|"'"
-argument_list|)
-expr_stmt|;
-block|}
-block|}
+comment|/*public void finalize() {       try {         tmpFile.delete();       } catch (Throwable e) {         Globals.logger("Cannot delete temporary file '"+tmpFile.getPath()+"'");       }     }*/
 block|}
 DECL|method|getTempFile ()
 specifier|static

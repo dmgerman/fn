@@ -142,10 +142,6 @@ name|ButtonBarBuilder
 import|;
 end_import
 
-begin_comment
-comment|/**  * NOTAT:  *    * S?rg for at ting oppdateres riktig ved tillegg av ny type. (velge, unng? at det blir feil innhold i listene).  *    *  *  *  * @author alver  */
-end_comment
-
 begin_class
 DECL|class|EntryCustomizationDialog2
 specifier|public
@@ -1010,7 +1006,7 @@ name|rf
 init|=
 name|type
 operator|.
-name|getRequiredFields
+name|getRequiredFieldsForCustomization
 argument_list|()
 decl_stmt|,
 name|of
@@ -2139,7 +2135,7 @@ name|rf
 init|=
 name|type
 operator|.
-name|getRequiredFields
+name|getRequiredFieldsForCustomization
 argument_list|()
 decl_stmt|,
 name|of
