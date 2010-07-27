@@ -1954,6 +1954,12 @@ name|c
 operator|!=
 literal|'^'
 operator|)
+operator|&&
+operator|(
+name|c
+operator|!=
+literal|'\''
+operator|)
 condition|)
 name|newKey
 operator|.
