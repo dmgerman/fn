@@ -13101,6 +13101,16 @@ operator|=
 name|saving
 expr_stmt|;
 block|}
+DECL|method|isSaving ()
+specifier|public
+name|boolean
+name|isSaving
+parameter_list|()
+block|{
+return|return
+name|saving
+return|;
+block|}
 DECL|method|getShowing ()
 specifier|public
 name|BibtexEntry
