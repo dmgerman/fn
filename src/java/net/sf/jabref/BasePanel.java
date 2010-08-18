@@ -880,6 +880,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|labelPattern
+operator|.
+name|SearchFixDuplicateLabels
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|search
 operator|.
 name|NoSearchMatcher
@@ -7915,15 +7929,16 @@ name|actions
 operator|.
 name|put
 argument_list|(
-literal|"downloadFullText"
+literal|"resolveDuplicateKeys"
 argument_list|,
 operator|new
-name|FindFullTextAction
+name|SearchFixDuplicateLabels
 argument_list|(
 name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|//actions.put("downloadFullText", new FindFullTextAction(this));
 block|}
 comment|/**      * This method is called from JabRefFrame is a database specific      * action is requested by the user. Runs the command if it is      * defined, or prints an error message to the standard error      * stream.      *      * @param _command The name of the command to run.     */
 DECL|method|runCommand (String _command)

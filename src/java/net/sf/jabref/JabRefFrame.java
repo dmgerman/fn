@@ -2499,6 +2499,31 @@ name|PluginInstallerAction
 argument_list|(
 name|this
 argument_list|)
+decl_stmt|,
+DECL|field|resolveDuplicateKeys
+name|resolveDuplicateKeys
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"resolveDuplicateKeys"
+argument_list|,
+literal|"Resolve duplicate BibTeX keys"
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Find and remove duplicate BibTeX keys"
+argument_list|)
+argument_list|,
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Resolve duplicate BibTeX keys"
+argument_list|)
+argument_list|)
 decl_stmt|;
 DECL|field|pushExternalButton
 name|PushToApplicationButton
@@ -6868,6 +6893,13 @@ operator|.
 name|add
 argument_list|(
 name|dupliCheck
+argument_list|)
+expr_stmt|;
+name|checkAndFix
+operator|.
+name|add
+argument_list|(
+name|resolveDuplicateKeys
 argument_list|)
 expr_stmt|;
 comment|//checkAndFix.add(strictDupliCheck);
