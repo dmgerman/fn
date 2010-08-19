@@ -583,6 +583,11 @@ name|start
 init|=
 literal|false
 decl_stmt|;
+name|boolean
+name|doneWithOptions
+init|=
+literal|false
+decl_stmt|;
 name|String
 name|option
 init|=
@@ -676,18 +681,6 @@ condition|(
 operator|(
 name|c
 operator|==
-literal|'{'
-operator|)
-operator|||
-operator|(
-name|c
-operator|==
-literal|'}'
-operator|)
-operator|||
-operator|(
-name|c
-operator|==
 literal|']'
 operator|)
 operator|||
@@ -696,20 +689,43 @@ name|c
 operator|==
 literal|'['
 operator|)
+operator|||
+operator|(
+name|doneWithOptions
+operator|&&
+operator|(
+operator|(
+name|c
+operator|==
+literal|'{'
+operator|)
+operator|||
+operator|(
+name|c
+operator|==
+literal|'}'
+operator|)
+operator|)
+operator|)
 condition|)
+comment|//if ((c == '{') || (c == '}') || (c == ']') || (c == '['))
 block|{
 if|if
 condition|(
 operator|(
 name|c
 operator|==
-literal|'}'
+literal|']'
 operator|)
 operator|||
 operator|(
+name|doneWithOptions
+operator|&&
+operator|(
 name|c
 operator|==
-literal|']'
+literal|'}'
+operator|)
 operator|)
 condition|)
 block|{
@@ -743,6 +759,10 @@ expr_stmt|;
 name|start
 operator|=
 literal|false
+expr_stmt|;
+name|doneWithOptions
+operator|=
+literal|true
 expr_stmt|;
 block|}
 comment|//myStrings.add(buffer.toString());
@@ -851,23 +871,6 @@ condition|(
 name|start
 condition|)
 block|{
-if|if
-condition|(
-operator|(
-name|c
-operator|==
-literal|'}'
-operator|)
-operator|||
-operator|(
-name|c
-operator|==
-literal|']'
-operator|)
-condition|)
-block|{                     }
-else|else
-block|{
 comment|// changed section begin - arudert
 comment|// keep the backslash so we know wether this is a fieldname or an ordinary parameter
 comment|//if (c != '\\')
@@ -884,7 +887,6 @@ argument_list|)
 expr_stmt|;
 comment|//}
 comment|// changed section end - arudert
-block|}
 block|}
 block|}
 block|}
