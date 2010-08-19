@@ -264,6 +264,20 @@ name|FileLinksUpgradeWarning
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|label
+operator|.
+name|HandleDuplicateWarnings
+import|;
+end_import
+
 begin_comment
 comment|// The action concerned with opening an existing database.
 end_comment
@@ -323,6 +337,16 @@ name|add
 argument_list|(
 operator|new
 name|FileLinksUpgradeWarning
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Add the action for warning about and handling duplicate BibTeX keys:
+name|postOpenActions
+operator|.
+name|add
+argument_list|(
+operator|new
+name|HandleDuplicateWarnings
 argument_list|()
 argument_list|)
 expr_stmt|;

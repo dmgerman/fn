@@ -177,6 +177,21 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
+DECL|field|duplicateKeys
+specifier|private
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+name|duplicateKeys
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+argument_list|()
+decl_stmt|;
 DECL|field|errorMessage
 specifier|private
 name|String
@@ -603,6 +618,74 @@ argument_list|)
 expr_stmt|;
 return|return
 name|s
+return|;
+block|}
+comment|/**      * Add a key to the list of duplicated BibTeX keys found in the database.      * @param key The duplicated key      */
+DECL|method|addDuplicateKey (String key)
+specifier|public
+name|void
+name|addDuplicateKey
+parameter_list|(
+name|String
+name|key
+parameter_list|)
+block|{
+if|if
+condition|(
+operator|!
+name|duplicateKeys
+operator|.
+name|contains
+argument_list|(
+name|key
+argument_list|)
+condition|)
+name|duplicateKeys
+operator|.
+name|add
+argument_list|(
+name|key
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Query whether any duplicated BibTeX keys have been found in the database.      * @return true if there is at least one duplicate key.      */
+DECL|method|hasDuplicateKeys ()
+specifier|public
+name|boolean
+name|hasDuplicateKeys
+parameter_list|()
+block|{
+return|return
+name|duplicateKeys
+operator|.
+name|size
+argument_list|()
+operator|>
+literal|0
+return|;
+block|}
+comment|/**      * Get all duplicated keys found in the database.      * @return An array containing the duplicated keys.      */
+DECL|method|getDuplicateKeys ()
+specifier|public
+name|String
+index|[]
+name|getDuplicateKeys
+parameter_list|()
+block|{
+return|return
+name|duplicateKeys
+operator|.
+name|toArray
+argument_list|(
+operator|new
+name|String
+index|[
+name|duplicateKeys
+operator|.
+name|size
+argument_list|()
+index|]
+argument_list|)
 return|;
 block|}
 DECL|method|isPostponedAutosaveFound ()

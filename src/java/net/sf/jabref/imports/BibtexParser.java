@@ -1348,34 +1348,15 @@ condition|)
 comment|// JZTODO lyrics
 name|_pr
 operator|.
-name|addWarning
+name|addDuplicateKey
 argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"duplicate BibTeX key"
-argument_list|)
-operator|+
-literal|": "
-operator|+
 name|be
 operator|.
 name|getCiteKey
 argument_list|()
-operator|+
-literal|" ("
-operator|+
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"grouping may not work for this entry"
-argument_list|)
-operator|+
-literal|")"
 argument_list|)
 expr_stmt|;
+comment|/*_pr.addWarning(Globals.lang("duplicate BibTeX key") + ": " 								+ be.getCiteKey() + " (" 								+ Globals.lang("grouping may not work for this entry") + ")");                        */
 elseif|else
 if|if
 condition|(
