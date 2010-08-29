@@ -2192,15 +2192,7 @@ argument_list|,
 literal|"Export selected entries to clipboard"
 argument_list|)
 decl_stmt|,
-DECL|field|expandEndnoteZip
-name|expandEndnoteZip
-init|=
-operator|new
-name|ExpandEndnoteFilters
-argument_list|(
-name|this
-argument_list|)
-decl_stmt|,
+comment|//expandEndnoteZip = new ExpandEndnoteFilters(this),
 DECL|field|autoSetPdf
 name|autoSetPdf
 init|=
@@ -7035,25 +7027,6 @@ operator|.
 name|add
 argument_list|(
 name|unabbreviate
-argument_list|)
-expr_stmt|;
-comment|// TODO: Temporary for 2.2 release: we should perhaps find a better solution:
-name|tools
-operator|.
-name|addSeparator
-argument_list|()
-expr_stmt|;
-name|tools
-operator|.
-name|add
-argument_list|(
-operator|new
-name|ExpandEndnoteFilters
-argument_list|(
-name|JabRefFrame
-operator|.
-name|this
-argument_list|)
 argument_list|)
 expr_stmt|;
 name|mb
