@@ -824,7 +824,7 @@ condition|(
 operator|(
 name|newFile
 operator|.
-name|getPath
+name|getCanonicalPath
 argument_list|()
 operator|.
 name|length
@@ -839,7 +839,7 @@ operator|&&
 operator|(
 name|newFile
 operator|.
-name|getPath
+name|getCanonicalPath
 argument_list|()
 operator|.
 name|charAt
@@ -861,7 +861,7 @@ name|setLink
 argument_list|(
 name|newFile
 operator|.
-name|getPath
+name|getCanonicalPath
 argument_list|()
 operator|.
 name|substring
@@ -882,7 +882,7 @@ name|setLink
 argument_list|(
 name|newFile
 operator|.
-name|getPath
+name|getCanonicalPath
 argument_list|()
 operator|.
 name|substring
