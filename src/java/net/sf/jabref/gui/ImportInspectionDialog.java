@@ -4150,6 +4150,8 @@ name|unmarkEntry
 argument_list|(
 name|entry
 argument_list|,
+literal|true
+argument_list|,
 name|panel
 operator|.
 name|database

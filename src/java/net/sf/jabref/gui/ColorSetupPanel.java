@@ -261,7 +261,7 @@ argument_list|(
 operator|new
 name|ColorButton
 argument_list|(
-literal|"markedEntryBackground"
+literal|"markedEntryBackground0"
 argument_list|,
 name|Globals
 operator|.

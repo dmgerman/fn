@@ -7175,6 +7175,10 @@ index|[
 name|i
 index|]
 argument_list|,
+literal|1
+argument_list|,
+literal|true
+argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
@@ -7302,6 +7306,8 @@ index|[
 name|i
 index|]
 argument_list|,
+literal|false
+argument_list|,
 name|database
 argument_list|,
 name|ce
@@ -7412,6 +7418,8 @@ operator|.
 name|unmarkEntry
 argument_list|(
 name|be
+argument_list|,
+literal|false
 argument_list|,
 name|database
 argument_list|,

@@ -81,7 +81,7 @@ condition|)
 return|return
 literal|0
 return|;
-name|boolean
+name|int
 name|mrk1
 init|=
 name|Util
@@ -129,18 +129,11 @@ name|e2
 argument_list|)
 operator|)
 return|;
-elseif|else
-if|if
-condition|(
-name|mrk2
-condition|)
-return|return
-literal|1
-return|;
 else|else
 return|return
+name|mrk2
 operator|-
-literal|1
+name|mrk1
 return|;
 block|}
 DECL|method|idCompare (BibtexEntry b1, BibtexEntry b2)
