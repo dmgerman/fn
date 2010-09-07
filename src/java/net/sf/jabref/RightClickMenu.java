@@ -438,7 +438,7 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-comment|/*SwingUtilities.invokeLater(new Runnable () {                         public void run() {*/
+comment|/*SwingUtilities.invokeLater(new Runnable () {              public void run() {*/
 try|try
 block|{
 name|panel
@@ -455,7 +455,7 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{}
-comment|/*}                     }); */
+comment|/*}                }); */
 block|}
 block|}
 argument_list|)
@@ -506,6 +506,55 @@ argument_list|)
 expr_stmt|;
 name|addSeparator
 argument_list|()
+expr_stmt|;
+name|JMenu
+name|markSpecific
+init|=
+name|JabRefFrame
+operator|.
+name|subMenu
+argument_list|(
+literal|"Mark specific color"
+argument_list|)
+decl_stmt|;
+name|JabRefFrame
+name|frame
+init|=
+name|panel
+operator|.
+name|frame
+decl_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|Util
+operator|.
+name|MAX_MARKING_LEVEL
+condition|;
+name|i
+operator|++
+control|)
+name|markSpecific
+operator|.
+name|add
+argument_list|(
+operator|new
+name|MarkEntriesAction
+argument_list|(
+name|frame
+argument_list|,
+name|i
+argument_list|)
+operator|.
+name|getMenuItem
+argument_list|()
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
@@ -558,6 +607,11 @@ parameter_list|)
 block|{}
 block|}
 block|}
+argument_list|)
+expr_stmt|;
+name|add
+argument_list|(
+name|markSpecific
 argument_list|)
 expr_stmt|;
 name|add
@@ -633,6 +687,7 @@ argument_list|)
 operator|==
 literal|null
 condition|)
+block|{
 name|add
 argument_list|(
 operator|new
@@ -681,7 +736,19 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|add
+argument_list|(
+name|markSpecific
+argument_list|)
+expr_stmt|;
+block|}
 else|else
+block|{
+name|add
+argument_list|(
+name|markSpecific
+argument_list|)
+expr_stmt|;
 name|add
 argument_list|(
 operator|new
@@ -730,6 +797,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 name|addSeparator
 argument_list|()
 expr_stmt|;
