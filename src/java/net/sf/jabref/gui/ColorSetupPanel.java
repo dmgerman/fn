@@ -168,7 +168,7 @@ init|=
 operator|new
 name|FormLayout
 argument_list|(
-literal|"30dlu, 4dlu, fill:pref, 4dlu, fill:pref"
+literal|"30dlu, 4dlu, fill:pref, 4dlu, fill:pref, 8dlu, 30dlu, 4dlu, fill:pref, 4dlu, fill:pref"
 argument_list|,
 literal|""
 argument_list|)
@@ -207,6 +207,26 @@ argument_list|(
 operator|new
 name|ColorButton
 argument_list|(
+literal|"markedEntryBackground0"
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Marking color %0"
+argument_list|,
+literal|"1"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|buttons
+operator|.
+name|add
+argument_list|(
+operator|new
+name|ColorButton
+argument_list|(
 literal|"tableBackground"
 argument_list|,
 name|Globals
@@ -214,6 +234,26 @@ operator|.
 name|lang
 argument_list|(
 literal|"Table background color"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|buttons
+operator|.
+name|add
+argument_list|(
+operator|new
+name|ColorButton
+argument_list|(
+literal|"markedEntryBackground1"
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Marking color %0"
+argument_list|,
+literal|"2"
 argument_list|)
 argument_list|)
 argument_list|)
@@ -243,6 +283,26 @@ argument_list|(
 operator|new
 name|ColorButton
 argument_list|(
+literal|"markedEntryBackground2"
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Marking color %0"
+argument_list|,
+literal|"3"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|buttons
+operator|.
+name|add
+argument_list|(
+operator|new
+name|ColorButton
+argument_list|(
 literal|"tableOptFieldBackground"
 argument_list|,
 name|Globals
@@ -261,13 +321,15 @@ argument_list|(
 operator|new
 name|ColorButton
 argument_list|(
-literal|"markedEntryBackground0"
+literal|"markedEntryBackground3"
 argument_list|,
 name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Background color for marked entries"
+literal|"Marking color %0"
+argument_list|,
+literal|"4"
 argument_list|)
 argument_list|)
 argument_list|)
@@ -297,6 +359,26 @@ argument_list|(
 operator|new
 name|ColorButton
 argument_list|(
+literal|"markedEntryBackground4"
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Marking color %0"
+argument_list|,
+literal|"5"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|buttons
+operator|.
+name|add
+argument_list|(
+operator|new
+name|ColorButton
+argument_list|(
 literal|"gridColor"
 argument_list|,
 name|Globals
@@ -304,6 +386,24 @@ operator|.
 name|lang
 argument_list|(
 literal|"Table grid color"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|buttons
+operator|.
+name|add
+argument_list|(
+operator|new
+name|ColorButton
+argument_list|(
+literal|"markedEntryBackground5"
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Import marking color"
 argument_list|)
 argument_list|)
 argument_list|)
