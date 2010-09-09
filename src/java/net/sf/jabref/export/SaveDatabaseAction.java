@@ -715,6 +715,11 @@ operator|+
 literal|"'."
 argument_list|)
 expr_stmt|;
+name|frame
+operator|.
+name|setWindowTitle
+argument_list|()
+expr_stmt|;
 block|}
 elseif|else
 if|if

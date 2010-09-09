@@ -11294,6 +11294,7 @@ argument_list|(
 literal|"*"
 argument_list|)
 condition|)
+block|{
 name|frame
 operator|.
 name|setTabTitle
@@ -11312,6 +11313,12 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|frame
+operator|.
+name|setWindowTitle
+argument_list|()
+expr_stmt|;
+block|}
 comment|// If the status line states that the base has been saved, we
 comment|// remove this message, since it is no longer relevant. If a
 comment|// different message is shown, we leave it.
@@ -11371,9 +11378,11 @@ condition|(
 operator|!
 name|baseChanged
 condition|)
+block|{
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -11436,6 +11445,11 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+name|frame
+operator|.
+name|setWindowTitle
+argument_list|()
+expr_stmt|;
 block|}
 comment|/**      * Selects a single entry, and scrolls the table to center it.      *      * @param pos Current position of entry to select.      *      */
 DECL|method|selectSingleEntry (int pos)

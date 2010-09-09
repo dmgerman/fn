@@ -12303,7 +12303,7 @@ comment|// Do nothing.
 block|}
 block|}
 block|}
-comment|/*int piv = 0, hit; 			StringBuffer sb = new StringBuffer(); 			while ((hit = s.indexOf(Globals.prefs.WRAPPED_USERNAME, piv))>= 0) { 				if (hit> 0) 					sb.append(s.substring(piv, hit)); 				piv = hit + Globals.prefs.WRAPPED_USERNAME.length(); 			} 			if (piv< s.length() - 1) { 				sb.append(s.substring(piv)); 			} 			String newVal = sb.length()> 0 ? sb.toString() : null;*/
+comment|/*int piv = 0, hit; 			StringBuffer sb = new StringBuffer(); 			while ((hit = s.indexOf(G047749118118 			1110lobals.prefs.WRAPPED_USERNAME, piv))>= 0) { 				if (hit> 0) 					sb.append(s.substring(piv, hit)); 				piv = hit + Globals.prefs.WRAPPED_USERNAME.length(); 			} 			if (piv< s.length() - 1) { 				sb.append(s.substring(piv)); 			} 			String newVal = sb.length()> 0 ? sb.toString() : null;*/
 name|ce
 operator|.
 name|addEdit
