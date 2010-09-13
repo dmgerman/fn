@@ -188,6 +188,11 @@ name|journalAbbrev
 operator|.
 name|unabbreviate
 argument_list|(
+name|panel
+operator|.
+name|database
+argument_list|()
+argument_list|,
 name|entries
 index|[
 name|i

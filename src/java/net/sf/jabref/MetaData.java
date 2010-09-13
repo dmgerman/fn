@@ -609,9 +609,14 @@ comment|// metadata directory takes precedence if defined.
 name|String
 name|key
 init|=
-name|fieldName
-operator|+
-literal|"Directory"
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"userFileDir"
+argument_list|)
 decl_stmt|;
 name|String
 name|dir

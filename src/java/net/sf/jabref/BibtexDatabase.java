@@ -256,6 +256,13 @@ name|DatabaseChangeListener
 argument_list|>
 argument_list|()
 decl_stmt|;
+DECL|field|followCrossrefs
+specifier|private
+name|boolean
+name|followCrossrefs
+init|=
+literal|true
+decl_stmt|;
 comment|/** 	 * use a map instead of a set since i need to know how many of each key is 	 * inthere 	 */
 DECL|field|allKeys
 specifier|private
@@ -2315,7 +2322,7 @@ name|field
 argument_list|)
 decl_stmt|;
 comment|// If this field is not set, and the entry has a crossref, try to look up the
-comment|// field in the referred entry:
+comment|// field in the referred entry: Do not do this for the bibtex key.
 if|if
 condition|(
 operator|(
@@ -2323,6 +2330,26 @@ name|o
 operator|==
 literal|null
 operator|)
+operator|&&
+operator|(
+name|database
+operator|!=
+literal|null
+operator|)
+operator|&&
+name|database
+operator|.
+name|followCrossrefs
+operator|&&
+operator|!
+name|field
+operator|.
+name|equals
+argument_list|(
+name|BibtexFields
+operator|.
+name|KEY_FIELD
+argument_list|)
 operator|&&
 operator|(
 name|database
@@ -2429,6 +2456,22 @@ return|;
 return|return
 name|toResolve
 return|;
+block|}
+DECL|method|setFollowCrossrefs (boolean followCrossrefs)
+specifier|public
+name|void
+name|setFollowCrossrefs
+parameter_list|(
+name|boolean
+name|followCrossrefs
+parameter_list|)
+block|{
+name|this
+operator|.
+name|followCrossrefs
+operator|=
+name|followCrossrefs
+expr_stmt|;
 block|}
 block|}
 end_class

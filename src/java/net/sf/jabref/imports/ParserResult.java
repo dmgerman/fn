@@ -230,14 +230,23 @@ literal|null
 decl_stmt|;
 comment|// Which JabRef version wrote the file, if any?
 DECL|field|jabrefMajorVersion
-DECL|field|jabrefMinorVersion
 specifier|private
 name|int
 name|jabrefMajorVersion
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
+DECL|field|jabrefMinorVersion
+specifier|private
+name|int
 name|jabrefMinorVersion
+init|=
+literal|0
+decl_stmt|;
+DECL|field|jabrefMinor2Version
+specifier|private
+name|int
+name|jabrefMinor2Version
 init|=
 literal|0
 decl_stmt|;
@@ -430,6 +439,32 @@ operator|.
 name|jabrefMinorVersion
 operator|=
 name|jabrefMinorVersion
+expr_stmt|;
+block|}
+DECL|method|getJabrefMinor2Version ()
+specifier|public
+name|int
+name|getJabrefMinor2Version
+parameter_list|()
+block|{
+return|return
+name|jabrefMinor2Version
+return|;
+block|}
+DECL|method|setJabrefMinor2Version (int jabrefMinor2Version)
+specifier|public
+name|void
+name|setJabrefMinor2Version
+parameter_list|(
+name|int
+name|jabrefMinor2Version
+parameter_list|)
+block|{
+name|this
+operator|.
+name|jabrefMinor2Version
+operator|=
+name|jabrefMinor2Version
 expr_stmt|;
 block|}
 DECL|method|getDatabase ()

@@ -142,43 +142,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|EntryEditor
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|FieldEditor
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
+name|*
 import|;
 end_import
 
@@ -1034,12 +998,15 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Abbreviate the journal name of the given entry.      * @param entry The entry to be treated.      * @param fieldName The field name (e.g. "journal")      * @param ce If the entry is changed, add an edit to this compound.      * @param withDots True if the abbreviations should have dots.      * @return true if the entry was changed, false otherwise.      */
-DECL|method|abbreviate (BibtexEntry entry, String fieldName, CompoundEdit ce, boolean withDots)
+comment|/**      * Abbreviate the journal name of the given entry.      * @param database The database the entry belongs to, or null if no database.      * @param entry The entry to be treated.      * @param fieldName The field name (e.g. "journal")      * @param ce If the entry is changed, add an edit to this compound.      * @param withDots True if the abbreviations should have dots.      * @return true if the entry was changed, false otherwise.      */
+DECL|method|abbreviate (BibtexDatabase database, BibtexEntry entry, String fieldName, CompoundEdit ce, boolean withDots)
 specifier|public
 name|boolean
 name|abbreviate
 parameter_list|(
+name|BibtexDatabase
+name|database
+parameter_list|,
 name|BibtexEntry
 name|entry
 parameter_list|,
@@ -1053,8 +1020,8 @@ name|boolean
 name|withDots
 parameter_list|)
 block|{
-name|Object
-name|o
+name|String
+name|text
 init|=
 name|entry
 operator|.
@@ -1065,7 +1032,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|o
+name|text
 operator|==
 literal|null
 condition|)
@@ -1073,13 +1040,25 @@ return|return
 literal|false
 return|;
 name|String
-name|text
+name|origText
 init|=
-operator|(
-name|String
-operator|)
-name|o
+name|text
 decl_stmt|;
+if|if
+condition|(
+name|database
+operator|!=
+literal|null
+condition|)
+name|text
+operator|=
+name|database
+operator|.
+name|resolveForStrings
+argument_list|(
+name|text
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|isKnownName
@@ -1133,7 +1112,7 @@ name|entry
 argument_list|,
 name|fieldName
 argument_list|,
-name|text
+name|origText
 argument_list|,
 name|newText
 argument_list|)
@@ -1199,7 +1178,7 @@ name|entry
 argument_list|,
 name|fieldName
 argument_list|,
-name|text
+name|origText
 argument_list|,
 name|newText
 argument_list|)
@@ -1216,11 +1195,14 @@ return|;
 block|}
 block|}
 comment|/**      * Unabbreviate the journal name of the given entry.      * @param entry The entry to be treated.      * @param fieldName The field name (e.g. "journal")      * @param ce If the entry is changed, add an edit to this compound.      * @return true if the entry was changed, false otherwise.      */
-DECL|method|unabbreviate (BibtexEntry entry, String fieldName, CompoundEdit ce)
+DECL|method|unabbreviate (BibtexDatabase database, BibtexEntry entry, String fieldName, CompoundEdit ce)
 specifier|public
 name|boolean
 name|unabbreviate
 parameter_list|(
+name|BibtexDatabase
+name|database
+parameter_list|,
 name|BibtexEntry
 name|entry
 parameter_list|,
@@ -1231,8 +1213,8 @@ name|CompoundEdit
 name|ce
 parameter_list|)
 block|{
-name|Object
-name|o
+name|String
+name|text
 init|=
 name|entry
 operator|.
@@ -1243,7 +1225,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|o
+name|text
 operator|==
 literal|null
 condition|)
@@ -1251,13 +1233,25 @@ return|return
 literal|false
 return|;
 name|String
-name|text
+name|origText
 init|=
-operator|(
-name|String
-operator|)
-name|o
+name|text
 decl_stmt|;
+if|if
+condition|(
+name|database
+operator|!=
+literal|null
+condition|)
+name|text
+operator|=
+name|database
+operator|.
+name|resolveForStrings
+argument_list|(
+name|text
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|isKnownName
@@ -1308,7 +1302,7 @@ name|entry
 argument_list|,
 name|fieldName
 argument_list|,
-name|text
+name|origText
 argument_list|,
 name|newText
 argument_list|)
