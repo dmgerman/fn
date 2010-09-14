@@ -852,15 +852,6 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Storing temp database"
-argument_list|)
-expr_stmt|;
 try|try
 block|{
 name|SaveSession
@@ -906,15 +897,6 @@ name|ss
 operator|.
 name|commit
 argument_list|()
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"done"
-argument_list|)
 expr_stmt|;
 block|}
 catch|catch

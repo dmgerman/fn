@@ -12584,6 +12584,9 @@ name|saving
 condition|)
 return|return;
 comment|// We are just saving the file, so this message is most likely due
+comment|//if (updatedExternally) {
+comment|//  return;
+comment|//}
 comment|// to bad timing. If not, we'll handle it on the next polling.
 comment|//Util.pr("File '"+file.getPath()+"' has been modified.");
 name|updatedExternally
