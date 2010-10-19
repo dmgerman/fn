@@ -397,6 +397,18 @@ argument_list|()
 expr_stmt|;
 name|builder
 operator|.
+name|appendSeparator
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Table and entry editor colors"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
 name|append
 argument_list|(
 name|colorPanel

@@ -116,6 +116,24 @@ name|JLabel
 name|getLabel
 parameter_list|()
 function_decl|;
+DECL|method|setActiveBackgroundColor ()
+specifier|public
+name|void
+name|setActiveBackgroundColor
+parameter_list|()
+function_decl|;
+DECL|method|setValidBackgroundColor ()
+specifier|public
+name|void
+name|setValidBackgroundColor
+parameter_list|()
+function_decl|;
+DECL|method|setInvalidBackgroundColor ()
+specifier|public
+name|void
+name|setInvalidBackgroundColor
+parameter_list|()
+function_decl|;
 DECL|method|setLabelColor (Color c)
 specifier|public
 name|void

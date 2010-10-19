@@ -4410,6 +4410,24 @@ name|void
 name|clearAutoCompleteSuggestion
 parameter_list|()
 block|{     }
+DECL|method|setActiveBackgroundColor ()
+specifier|public
+name|void
+name|setActiveBackgroundColor
+parameter_list|()
+block|{     }
+DECL|method|setValidBackgroundColor ()
+specifier|public
+name|void
+name|setValidBackgroundColor
+parameter_list|()
+block|{     }
+DECL|method|setInvalidBackgroundColor ()
+specifier|public
+name|void
+name|setInvalidBackgroundColor
+parameter_list|()
+block|{     }
 block|}
 end_class
 

@@ -216,7 +216,14 @@ name|setBackground
 argument_list|(
 name|GUIGlobals
 operator|.
-name|validFieldBackground
+name|validFieldBackgroundColor
+argument_list|)
+expr_stmt|;
+name|setForeground
+argument_list|(
+name|GUIGlobals
+operator|.
+name|editorTextColor
 argument_list|)
 expr_stmt|;
 comment|// label.setOpaque(true);
@@ -329,6 +336,48 @@ block|{
 return|return
 name|this
 return|;
+block|}
+DECL|method|setActiveBackgroundColor ()
+specifier|public
+name|void
+name|setActiveBackgroundColor
+parameter_list|()
+block|{
+name|setBackground
+argument_list|(
+name|GUIGlobals
+operator|.
+name|activeBackground
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setValidBackgroundColor ()
+specifier|public
+name|void
+name|setValidBackgroundColor
+parameter_list|()
+block|{
+name|setBackground
+argument_list|(
+name|GUIGlobals
+operator|.
+name|validFieldBackgroundColor
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setInvalidBackgroundColor ()
+specifier|public
+name|void
+name|setInvalidBackgroundColor
+parameter_list|()
+block|{
+name|setBackground
+argument_list|(
+name|GUIGlobals
+operator|.
+name|invalidFieldBackgroundColor
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|updateFont ()
 specifier|public

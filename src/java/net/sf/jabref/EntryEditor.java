@@ -6170,12 +6170,8 @@ argument_list|)
 expr_stmt|;
 name|fe
 operator|.
-name|setBackground
-argument_list|(
-name|GUIGlobals
-operator|.
-name|invalidFieldBackground
-argument_list|)
+name|setInvalidBackgroundColor
+argument_list|()
 expr_stmt|;
 return|return;
 block|}
@@ -6183,13 +6179,8 @@ else|else
 block|{
 name|fe
 operator|.
-name|setBackground
-argument_list|(
-comment|/*                                          * fe.getTextComponent().hasFocus() ?                                          * GUIGlobals.activeEditor :                                          */
-name|GUIGlobals
-operator|.
-name|validFieldBackground
-argument_list|)
+name|setValidBackgroundColor
+argument_list|()
 expr_stmt|;
 block|}
 name|boolean
@@ -6289,23 +6280,15 @@ condition|)
 comment|// fe.setLabelColor(GUIGlobals.validFieldColor);
 name|fe
 operator|.
-name|setBackground
-argument_list|(
-name|GUIGlobals
-operator|.
-name|validFieldBackground
-argument_list|)
+name|setValidBackgroundColor
+argument_list|()
 expr_stmt|;
 else|else
 comment|// fe.setLabelColor(GUIGlobals.nullFieldColor);
 name|fe
 operator|.
-name|setBackground
-argument_list|(
-name|GUIGlobals
-operator|.
-name|validFieldBackground
-argument_list|)
+name|setValidBackgroundColor
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -6319,12 +6302,8 @@ argument_list|()
 condition|)
 name|fe
 operator|.
-name|setBackground
-argument_list|(
-name|GUIGlobals
-operator|.
-name|activeEditor
-argument_list|)
+name|setActiveBackgroundColor
+argument_list|()
 expr_stmt|;
 name|updateSource
 argument_list|()
@@ -6572,23 +6551,15 @@ condition|)
 comment|// fe.setLabelColor(GUIGlobals.validFieldColor);
 name|fe
 operator|.
-name|setBackground
-argument_list|(
-name|GUIGlobals
-operator|.
-name|validFieldBackground
-argument_list|)
+name|setValidBackgroundColor
+argument_list|()
 expr_stmt|;
 else|else
 comment|// fe.setLabelColor(GUIGlobals.nullFieldColor);
 name|fe
 operator|.
-name|setBackground
-argument_list|(
-name|GUIGlobals
-operator|.
-name|validFieldBackground
-argument_list|)
+name|setValidBackgroundColor
+argument_list|()
 expr_stmt|;
 comment|// See if we need to update an AutoCompleter instance:
 name|AbstractAutoCompleter
@@ -6690,12 +6661,8 @@ argument_list|)
 expr_stmt|;
 name|fe
 operator|.
-name|setBackground
-argument_list|(
-name|GUIGlobals
-operator|.
-name|invalidFieldBackground
-argument_list|)
+name|setInvalidBackgroundColor
+argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -6705,12 +6672,8 @@ comment|// set == false
 comment|// We set the field and label color.
 name|fe
 operator|.
-name|setBackground
-argument_list|(
-name|GUIGlobals
-operator|.
-name|validFieldBackground
-argument_list|)
+name|setValidBackgroundColor
+argument_list|()
 expr_stmt|;
 block|}
 if|if

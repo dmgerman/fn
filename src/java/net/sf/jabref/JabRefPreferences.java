@@ -2167,6 +2167,42 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+literal|"validFieldBackgroundColor"
+argument_list|,
+literal|"255:255:255"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"invalidFieldBackgroundColor"
+argument_list|,
+literal|"255:0:0"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"activeFieldEditorBackgroundColor"
+argument_list|,
+literal|"220:220:255"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"fieldEditorTextColor"
+argument_list|,
+literal|"0:0:0"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
 literal|"incompleteEntryBackground"
 argument_list|,
 literal|"250:175:175"
@@ -5856,6 +5892,15 @@ argument_list|(
 literal|"Automatically link files"
 argument_list|,
 literal|"alt F"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Refresh OO"
+argument_list|,
+literal|"ctrl alt O"
 argument_list|)
 expr_stmt|;
 block|}

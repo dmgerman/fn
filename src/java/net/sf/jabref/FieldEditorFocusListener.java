@@ -82,7 +82,7 @@ parameter_list|)
 block|{
 operator|(
 operator|(
-name|Component
+name|FieldEditor
 operator|)
 name|event
 operator|.
@@ -90,12 +90,8 @@ name|getSource
 argument_list|()
 operator|)
 operator|.
-name|setBackground
-argument_list|(
-name|GUIGlobals
-operator|.
-name|activeEditor
-argument_list|)
+name|setActiveBackgroundColor
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|focusLost (FocusEvent event)
@@ -109,7 +105,7 @@ parameter_list|)
 block|{
 operator|(
 operator|(
-name|Component
+name|FieldEditor
 operator|)
 name|event
 operator|.
@@ -117,12 +113,8 @@ name|getSource
 argument_list|()
 operator|)
 operator|.
-name|setBackground
-argument_list|(
-name|Color
-operator|.
-name|white
-argument_list|)
+name|setValidBackgroundColor
+argument_list|()
 expr_stmt|;
 block|}
 block|}

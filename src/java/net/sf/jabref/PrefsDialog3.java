@@ -1482,6 +1482,11 @@ operator|.
 name|updateRenderers
 argument_list|()
 expr_stmt|;
+name|GUIGlobals
+operator|.
+name|updateEntryEditorColors
+argument_list|()
+expr_stmt|;
 name|frame
 operator|.
 name|setupAllTables
