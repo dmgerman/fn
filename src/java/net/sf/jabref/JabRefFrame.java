@@ -5208,7 +5208,7 @@ name|setForeground
 argument_list|(
 name|GUIGlobals
 operator|.
-name|validFieldColor
+name|entryEditorLabelColor
 operator|.
 name|darker
 argument_list|()

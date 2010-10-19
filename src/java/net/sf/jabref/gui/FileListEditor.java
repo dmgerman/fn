@@ -4428,6 +4428,12 @@ name|void
 name|setInvalidBackgroundColor
 parameter_list|()
 block|{     }
+DECL|method|updateFontColor ()
+specifier|public
+name|void
+name|updateFontColor
+parameter_list|()
+block|{     }
 block|}
 end_class
 

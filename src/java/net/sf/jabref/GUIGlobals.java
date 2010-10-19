@@ -672,8 +672,8 @@ literal|30
 argument_list|)
 decl_stmt|,
 comment|// Light gray background
-DECL|field|validFieldColor
-name|validFieldColor
+DECL|field|entryEditorLabelColor
+name|entryEditorLabelColor
 init|=
 operator|new
 name|Color
@@ -733,7 +733,7 @@ comment|//inActiveTabbed = Color.gray.darker(),  // inactive Database
 DECL|field|activeTabbed
 name|activeTabbed
 init|=
-name|validFieldColor
+name|entryEditorLabelColor
 operator|.
 name|darker
 argument_list|()

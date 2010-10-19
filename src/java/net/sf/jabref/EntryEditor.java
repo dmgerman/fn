@@ -5365,7 +5365,7 @@ name|setForeground
 argument_list|(
 name|GUIGlobals
 operator|.
-name|validFieldColor
+name|entryEditorLabelColor
 argument_list|)
 expr_stmt|;
 name|setHorizontalAlignment
@@ -5516,7 +5516,7 @@ name|Graphics2D
 operator|)
 name|g
 decl_stmt|;
-comment|//g2.setColor(GUIGlobals.validFieldColor);
+comment|//g2.setColor(GUIGlobals.entryEditorLabelColor);
 comment|//g2.setFont(GUIGlobals.typeNameFont);
 comment|//FontMetrics fm = g2.getFontMetrics();
 comment|//int width = fm.stringWidth(label);
@@ -6277,7 +6277,7 @@ operator|>
 literal|0
 operator|)
 condition|)
-comment|// fe.setLabelColor(GUIGlobals.validFieldColor);
+comment|// fe.setLabelColor(GUIGlobals.entryEditorLabelColor);
 name|fe
 operator|.
 name|setValidBackgroundColor
@@ -6548,7 +6548,7 @@ operator|>
 literal|0
 operator|)
 condition|)
-comment|// fe.setLabelColor(GUIGlobals.validFieldColor);
+comment|// fe.setLabelColor(GUIGlobals.entryEditorLabelColor);
 name|fe
 operator|.
 name|setValidBackgroundColor

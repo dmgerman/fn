@@ -1653,6 +1653,11 @@ argument_list|)
 decl_stmt|;
 name|ed
 operator|.
+name|updateFontColor
+argument_list|()
+expr_stmt|;
+name|ed
+operator|.
 name|setEnabled
 argument_list|(
 literal|true

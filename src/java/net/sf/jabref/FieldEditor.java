@@ -152,6 +152,12 @@ name|Color
 name|c
 parameter_list|)
 function_decl|;
+DECL|method|updateFontColor ()
+specifier|public
+name|void
+name|updateFontColor
+parameter_list|()
+function_decl|;
 DECL|method|getText ()
 specifier|public
 name|String

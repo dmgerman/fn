@@ -463,6 +463,20 @@ name|invalidFieldBackgroundColor
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|updateFontColor ()
+specifier|public
+name|void
+name|updateFontColor
+parameter_list|()
+block|{
+name|setForeground
+argument_list|(
+name|GUIGlobals
+operator|.
+name|editorTextColor
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|updateFont ()
 specifier|public
 name|void

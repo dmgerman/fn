@@ -80,42 +80,6 @@ name|UndoableEditListener
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|event
-operator|.
-name|UndoableEditEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|undo
-operator|.
-name|UndoManager
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|undo
-operator|.
-name|CannotUndoException
-import|;
-end_import
-
 begin_class
 DECL|class|FieldTextField
 specifier|public
@@ -228,7 +192,7 @@ argument_list|)
 expr_stmt|;
 comment|// label.setOpaque(true);
 comment|// if ((content != null)&& (content.length()> 0))
-comment|// label.setForeground(GUIGlobals.validFieldColor);
+comment|// label.setForeground(GUIGlobals.entryEditorLabelColor);
 comment|// At construction time, the field can never have an invalid value.
 comment|// else label.setForeground(GUIGlobals.nullFieldColor);
 name|FieldTextMenu
@@ -376,6 +340,20 @@ argument_list|(
 name|GUIGlobals
 operator|.
 name|invalidFieldBackgroundColor
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|updateFontColor ()
+specifier|public
+name|void
+name|updateFontColor
+parameter_list|()
+block|{
+name|setForeground
+argument_list|(
+name|GUIGlobals
+operator|.
+name|editorTextColor
 argument_list|)
 expr_stmt|;
 block|}

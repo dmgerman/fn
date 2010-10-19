@@ -858,7 +858,7 @@ name|setLabelColor
 argument_list|(
 name|GUIGlobals
 operator|.
-name|validFieldColor
+name|entryEditorLabelColor
 argument_list|)
 expr_stmt|;
 name|ed
