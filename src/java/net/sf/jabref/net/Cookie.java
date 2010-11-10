@@ -352,6 +352,14 @@ name|endsWith
 argument_list|(
 name|value
 argument_list|)
+operator|&&
+operator|!
+name|value
+operator|.
+name|endsWith
+argument_list|(
+name|uriDomain
+argument_list|)
 condition|)
 block|{
 throw|throw
