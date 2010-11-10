@@ -734,6 +734,7 @@ expr_stmt|;
 block|}
 block|}
 else|else
+block|{
 name|dir
 operator|=
 name|Globals
@@ -742,9 +743,12 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-name|key
+name|fieldName
+operator|+
+literal|"Directory"
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|dir
 return|;
