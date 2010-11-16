@@ -4193,15 +4193,6 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"rememberWindowLocation"
-argument_list|)
-operator|&&
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
 literal|"windowMaximised"
 argument_list|)
 condition|)

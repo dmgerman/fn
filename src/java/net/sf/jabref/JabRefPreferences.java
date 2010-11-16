@@ -907,17 +907,6 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-literal|"rememberWindowLocation"
-argument_list|,
-name|Boolean
-operator|.
-name|TRUE
-argument_list|)
-expr_stmt|;
-name|defaults
-operator|.
-name|put
-argument_list|(
 literal|"autoResizeMode"
 argument_list|,
 operator|new
