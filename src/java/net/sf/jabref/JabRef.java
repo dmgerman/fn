@@ -4174,7 +4174,31 @@ argument_list|(
 name|jrf
 argument_list|)
 expr_stmt|;
-comment|//Util.pr(": Showing frame");
+comment|// If we are set to remember the window location, we also remember the maximised
+comment|// state. This needs to be set after the window has been made visible, so we
+comment|// do it here:
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"windowMaximised"
+argument_list|)
+condition|)
+block|{
+name|jrf
+operator|.
+name|setExtendedState
+argument_list|(
+name|JFrame
+operator|.
+name|MAXIMIZED_BOTH
+argument_list|)
+expr_stmt|;
+block|}
 name|jrf
 operator|.
 name|setVisible
@@ -4182,9 +4206,6 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-comment|// If we are set to remember the window location, we also remember the maximised
-comment|// state. This needs to be set after the window has been made visible, so we
-comment|// do it here:
 if|if
 condition|(
 name|Globals
