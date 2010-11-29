@@ -4260,7 +4260,13 @@ name|entry
 operator|==
 name|be
 condition|)
+block|{
+comment|/**              * Even if the editor is already showing the same entry, update              * the source panel. I'm not sure if this is the correct place to              * do this, but in some cases the source panel will otherwise not              * be up-to-date when an entry is changed while the entry editor              * is existing, set to the same entry, but not visible.              */
+name|updateSource
+argument_list|()
+expr_stmt|;
 return|return;
+block|}
 name|storeCurrentEdit
 argument_list|()
 expr_stmt|;

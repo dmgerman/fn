@@ -823,6 +823,11 @@ operator|.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
+name|panel
+operator|.
+name|updateEntryEditorIfShowing
+argument_list|()
+expr_stmt|;
 block|}
 name|edits
 operator|.
