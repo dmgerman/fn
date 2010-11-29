@@ -6482,6 +6482,17 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
+name|FindUnlinkedFilesDialog
+operator|.
+name|ACTION_COMMAND
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
 literal|"Increase table font size"
 argument_list|,
 literal|"ctrl PLUS"
