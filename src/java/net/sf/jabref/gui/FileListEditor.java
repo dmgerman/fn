@@ -2663,6 +2663,8 @@ name|JProgressBar
 operator|.
 name|HORIZONTAL
 argument_list|,
+literal|0
+argument_list|,
 name|types
 operator|.
 name|length

@@ -479,7 +479,6 @@ name|values
 argument_list|()
 control|)
 block|{
-comment|//System.out.println(tp.getName()+"\n"+tp);
 name|TypeButton
 name|b
 init|=
@@ -499,15 +498,6 @@ argument_list|,
 name|tp
 argument_list|)
 decl_stmt|;
-name|b
-operator|.
-name|setAlignmentX
-argument_list|(
-name|SwingConstants
-operator|.
-name|LEFT
-argument_list|)
-expr_stmt|;
 name|b
 operator|.
 name|addActionListener

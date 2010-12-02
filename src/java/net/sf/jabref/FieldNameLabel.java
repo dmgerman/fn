@@ -97,7 +97,7 @@ argument_list|)
 expr_stmt|;
 name|setVerticalAlignment
 argument_list|(
-name|NORTH
+name|TOP
 argument_list|)
 expr_stmt|;
 comment|//setFont(GUIGlobals.fieldNameFont);
