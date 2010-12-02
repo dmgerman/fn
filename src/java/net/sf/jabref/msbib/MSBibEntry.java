@@ -877,6 +877,21 @@ name|bibTex_Size
 init|=
 literal|null
 decl_stmt|;
+comment|/* SM 2010.10 intype, paper support */
+DECL|field|bibTex_InType
+specifier|protected
+name|String
+name|bibTex_InType
+init|=
+literal|null
+decl_stmt|;
+DECL|field|bibTex_Paper
+specifier|protected
+name|String
+name|bibTex_Paper
+init|=
+literal|null
+decl_stmt|;
 DECL|field|BIBTEX
 specifier|private
 specifier|final
@@ -2225,75 +2240,81 @@ name|bibtex
 operator|.
 name|getField
 argument_list|(
-literal|"ISBN"
+literal|"isbn"
 argument_list|)
 operator|!=
 literal|null
 condition|)
+comment|/* SM: 2010.10: lower case */
 name|standardNumber
 operator|+=
-literal|":ISBN:"
+literal|" ISBN: "
 operator|+
 name|bibtex
 operator|.
 name|getField
 argument_list|(
-literal|"ISBN"
+literal|"isbn"
 argument_list|)
 operator|.
 name|toString
 argument_list|()
 expr_stmt|;
+comment|/* SM: 2010.10: lower case */
 if|if
 condition|(
 name|bibtex
 operator|.
 name|getField
 argument_list|(
-literal|"ISSN"
+literal|"issn"
 argument_list|)
 operator|!=
 literal|null
 condition|)
+comment|/* SM: 2010.10: lower case */
 name|standardNumber
 operator|+=
-literal|":ISSN:"
+literal|" ISSN: "
 operator|+
 name|bibtex
 operator|.
 name|getField
 argument_list|(
-literal|"ISSN"
+literal|"issn"
 argument_list|)
 operator|.
 name|toString
 argument_list|()
 expr_stmt|;
+comment|/* SM: 2010.10: lower case */
 if|if
 condition|(
 name|bibtex
 operator|.
 name|getField
 argument_list|(
-literal|"LCCN"
+literal|"lccn"
 argument_list|)
 operator|!=
 literal|null
 condition|)
+comment|/* SM: 2010.10: lower case */
 name|standardNumber
 operator|+=
-literal|":LCCN:"
+literal|" LCCN: "
 operator|+
 name|bibtex
 operator|.
 name|getField
 argument_list|(
-literal|"LCCN"
+literal|"lccn"
 argument_list|)
 operator|.
 name|toString
 argument_list|()
 expr_stmt|;
+comment|/* SM: 2010.10: lower case */
 if|if
 condition|(
 name|bibtex
@@ -2307,7 +2328,7 @@ literal|null
 condition|)
 name|standardNumber
 operator|+=
-literal|":MRN:"
+literal|" MRN: "
 operator|+
 name|bibtex
 operator|.
@@ -2319,6 +2340,33 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
+comment|/* SM: 2010.10 begin DOI support */
+if|if
+condition|(
+name|bibtex
+operator|.
+name|getField
+argument_list|(
+literal|"doi"
+argument_list|)
+operator|!=
+literal|null
+condition|)
+name|standardNumber
+operator|+=
+literal|" DOI: "
+operator|+
+name|bibtex
+operator|.
+name|getField
+argument_list|(
+literal|"doi"
+argument_list|)
+operator|.
+name|toString
+argument_list|()
+expr_stmt|;
+comment|/* SM: 2010.10 end DOI support */
 if|if
 condition|(
 name|standardNumber
@@ -2566,6 +2614,7 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
+comment|/* SM: 2010.10 Modified for default source types */
 if|if
 condition|(
 name|bibtex
@@ -2589,6 +2638,90 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
+else|else
+block|{
+if|if
+condition|(
+name|bibtex
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"techreport"
+argument_list|)
+condition|)
+name|thesisType
+operator|=
+literal|"Tech. rep."
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|bibtex
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"mastersthesis"
+argument_list|)
+condition|)
+name|thesisType
+operator|=
+literal|"Master's thesis"
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|bibtex
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"phdthesis"
+argument_list|)
+condition|)
+name|thesisType
+operator|=
+literal|"Ph.D. dissertation"
+expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|bibtex
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"unpublished"
+argument_list|)
+condition|)
+name|thesisType
+operator|=
+literal|"unpublished"
+expr_stmt|;
+comment|//else if (bibtex.getType().getName().equalsIgnoreCase("manual"))
+comment|//	thesisType = "manual";
+block|}
 if|if
 condition|(
 operator|(
@@ -2665,23 +2798,25 @@ name|bibtex
 operator|.
 name|getField
 argument_list|(
-literal|"URL"
+literal|"url"
 argument_list|)
 operator|!=
 literal|null
 condition|)
+comment|/* SM: 2010.10: lower case */
 name|url
 operator|=
 name|bibtex
 operator|.
 name|getField
 argument_list|(
-literal|"URL"
+literal|"url"
 argument_list|)
 operator|.
 name|toString
 argument_list|()
 expr_stmt|;
+comment|/* SM: 2010.10: lower case */
 if|if
 condition|(
 name|bibtex
@@ -3374,6 +3509,53 @@ operator|.
 name|getField
 argument_list|(
 literal|"size"
+argument_list|)
+operator|.
+name|toString
+argument_list|()
+expr_stmt|;
+comment|/* SM: 2010.10 end intype, paper support */
+if|if
+condition|(
+name|bibtex
+operator|.
+name|getField
+argument_list|(
+literal|"intype"
+argument_list|)
+operator|!=
+literal|null
+condition|)
+name|bibTex_InType
+operator|=
+name|bibtex
+operator|.
+name|getField
+argument_list|(
+literal|"intype"
+argument_list|)
+operator|.
+name|toString
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|bibtex
+operator|.
+name|getField
+argument_list|(
+literal|"paper"
+argument_list|)
+operator|!=
+literal|null
+condition|)
+name|bibTex_Paper
+operator|=
+name|bibtex
+operator|.
+name|getField
+argument_list|(
+literal|"paper"
 argument_list|)
 operator|.
 name|toString
@@ -4257,10 +4439,17 @@ argument_list|(
 literal|"inbook"
 argument_list|)
 condition|)
+block|{
 name|result
 operator|=
 literal|"BookSection"
 expr_stmt|;
+name|bibTexEntry
+operator|=
+literal|"inbook"
+expr_stmt|;
+block|}
+comment|/* SM 2010.10: generalized */
 elseif|else
 if|if
 condition|(
@@ -4325,10 +4514,17 @@ argument_list|(
 literal|"inproceedings"
 argument_list|)
 condition|)
+block|{
 name|result
 operator|=
 literal|"ConferenceProceedings"
 expr_stmt|;
+name|bibTexEntry
+operator|=
+literal|"inproceedings"
+expr_stmt|;
+block|}
+comment|/* SM 2010.10: generalized */
 elseif|else
 if|if
 condition|(
@@ -4399,10 +4595,17 @@ argument_list|(
 literal|"techreport"
 argument_list|)
 condition|)
+block|{
 name|result
 operator|=
 literal|"Report"
 expr_stmt|;
+name|bibTexEntry
+operator|=
+literal|"techreport"
+expr_stmt|;
+block|}
+comment|/* SM 2010.10: generalized */
 elseif|else
 if|if
 condition|(
@@ -4511,6 +4714,27 @@ name|result
 operator|=
 literal|"Misc"
 expr_stmt|;
+comment|/*SM: 2010.10 - bibtex @electronic */
+elseif|else
+if|if
+condition|(
+name|bibtexType
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"electronic"
+argument_list|)
+condition|)
+block|{
+name|result
+operator|=
+literal|"Misc"
+expr_stmt|;
+name|bibTexEntry
+operator|=
+literal|"electronic"
+expr_stmt|;
+block|}
 return|return
 name|result
 return|;
@@ -4905,6 +5129,19 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+comment|/* SM: 2010.10 generalized */
+name|addField
+argument_list|(
+name|d
+argument_list|,
+name|parent
+argument_list|,
+literal|"City"
+argument_list|,
+name|address
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|addDate (Document d,Element parent, String date, String extra)
 specifier|public
@@ -5552,6 +5789,18 @@ argument_list|,
 literal|"Accessed"
 argument_list|)
 expr_stmt|;
+comment|/* SM 2010.10 added month export */
+name|addField
+argument_list|(
+name|d
+argument_list|,
+name|msbibEntry
+argument_list|,
+literal|"Month"
+argument_list|,
+name|month
+argument_list|)
+expr_stmt|;
 name|addField
 argument_list|(
 name|d
@@ -5869,6 +6118,33 @@ argument_list|,
 name|bibTex_Size
 argument_list|)
 expr_stmt|;
+comment|/* SM: 2010.10 end intype, paper support */
+name|addField
+argument_list|(
+name|d
+argument_list|,
+name|msbibEntry
+argument_list|,
+name|BIBTEX
+operator|+
+literal|"InType"
+argument_list|,
+name|bibTex_InType
+argument_list|)
+expr_stmt|;
+name|addField
+argument_list|(
+name|d
+argument_list|,
+name|msbibEntry
+argument_list|,
+name|BIBTEX
+operator|+
+literal|"Paper"
+argument_list|,
+name|bibTex_Paper
+argument_list|)
+expr_stmt|;
 return|return
 name|msbibEntry
 return|;
@@ -5928,7 +6204,7 @@ argument_list|>
 name|hm
 parameter_list|)
 block|{
-comment|// teste using http://www.javaregex.com/test.html
+comment|// tested using http://www.javaregex.com/test.html
 name|Pattern
 name|p
 init|=
@@ -6003,35 +6279,38 @@ name|parseSingleStandardNumber
 argument_list|(
 literal|"ISBN"
 argument_list|,
-literal|"ISBN"
+literal|"isbn"
 argument_list|,
 name|standardNum
 argument_list|,
 name|hm
 argument_list|)
 expr_stmt|;
+comment|/* SM: 2010.10: lower case */
 name|parseSingleStandardNumber
 argument_list|(
 literal|"ISSN"
 argument_list|,
-literal|"ISSN"
+literal|"issn"
 argument_list|,
 name|standardNum
 argument_list|,
 name|hm
 argument_list|)
 expr_stmt|;
+comment|/* SM: 2010.10: lower case */
 name|parseSingleStandardNumber
 argument_list|(
 literal|"LCCN"
 argument_list|,
-literal|"LCCN"
+literal|"lccn"
 argument_list|,
 name|standardNum
 argument_list|,
 name|hm
 argument_list|)
 expr_stmt|;
+comment|/* SM: 2010.10: lower case */
 name|parseSingleStandardNumber
 argument_list|(
 literal|"MRN"
@@ -6043,6 +6322,19 @@ argument_list|,
 name|hm
 argument_list|)
 expr_stmt|;
+comment|/* SM: 2010.10 begin DOI support */
+name|parseSingleStandardNumber
+argument_list|(
+literal|"DOI"
+argument_list|,
+literal|"doi"
+argument_list|,
+name|standardNum
+argument_list|,
+name|hm
+argument_list|)
+expr_stmt|;
+comment|/* SM: 2010.10 end DOI support */
 block|}
 DECL|method|addAuthor (HashMap<String, String> hm, String type, List<PersonName> authorsLst)
 specifier|public
