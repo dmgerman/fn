@@ -1119,6 +1119,15 @@ argument_list|,
 literal|"vi"
 argument_list|)
 expr_stmt|;
+name|LANGUAGES
+operator|.
+name|put
+argument_list|(
+literal|"Indonesian"
+argument_list|,
+literal|"in"
+argument_list|)
+expr_stmt|;
 comment|// Set up entry editor colors, first time:
 name|updateEntryEditorColors
 argument_list|()
