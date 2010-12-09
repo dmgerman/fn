@@ -1123,7 +1123,7 @@ name|LANGUAGES
 operator|.
 name|put
 argument_list|(
-literal|"Indonesian"
+literal|"Bahasa Indonesia"
 argument_list|,
 literal|"in"
 argument_list|)
