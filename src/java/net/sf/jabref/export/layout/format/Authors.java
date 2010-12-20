@@ -78,7 +78,7 @@ name|Authors
 extends|extends
 name|AbstractParamLayoutFormatter
 block|{
-comment|/*     AuthorSort = [FirstLast | LastFirst | LastFirstFirst]     AuthorAbbr = [Names | Initials | FirstInitial]     AuthorSep = [Comma | And | Colon | Semicolon | Sep=<string>]     AuthorLastSep = [And | Colon | Semicolon | Amp | Oxford | LastSep=<string>]     AuthorPunc = [FullPunc | NoPunc | NoComma | NoPeriod]     AuthorNumber = [inf |<number>]     EtAlString = [et al. | EtAl=<string>]     */
+comment|/*     AuthorSort = [FirstFirst | LastFirst | LastFirstFirstFirst]     AuthorAbbr = [FullName | Initials | FirstInitial | MiddleInitial | InitialsNoSpace | LastName]     AuthorSep = [Comma | And | Colon | Semicolon | Sep=<string>]     AuthorLastSep = [And | Comma | Colon | Semicolon | Amp | Oxford | LastSep=<string>]     AuthorPunc = [FullPunc | NoPunc | NoComma | NoPeriod]     AuthorNumber = [inf |<number>]     EtAlString = [ et al. | EtAl=<string>]     */
 specifier|static
 name|ArrayList
 argument_list|<
@@ -166,7 +166,7 @@ name|authorOrder
 operator|.
 name|add
 argument_list|(
-literal|"LastFirstFirst"
+literal|"LastFirstFirstFirst"
 argument_list|)
 expr_stmt|;
 name|authorAbbr
@@ -617,7 +617,7 @@ name|key
 operator|.
 name|equals
 argument_list|(
-literal|"LastFirstFirst"
+literal|"LastFirstFirstFirst"
 argument_list|)
 condition|)
 name|flMode
@@ -840,7 +840,7 @@ expr_stmt|;
 block|}
 block|}
 comment|// AuthorSep = [Comma | And | Colon | Semicolon | sep=<string>]
-comment|// AuthorLastSep = [And | Colon | Semicolon | Amp | Oxford | lastsep=<string>]
+comment|// AuthorLastSep = [And | Comma | Colon | Semicolon | Amp | Oxford | lastsep=<string>]
 elseif|else
 if|if
 condition|(
