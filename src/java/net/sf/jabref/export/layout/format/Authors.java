@@ -372,14 +372,9 @@ DECL|field|flMode
 name|int
 name|flMode
 init|=
-literal|1
+name|FIRST_FIRST
 decl_stmt|;
 name|boolean
-DECL|field|firstFirst
-name|firstFirst
-init|=
-literal|true
-decl_stmt|,
 DECL|field|abbreviate
 name|abbreviate
 init|=
@@ -642,7 +637,7 @@ name|key
 operator|.
 name|equals
 argument_list|(
-literal|"Names"
+literal|"FullName"
 argument_list|)
 condition|)
 block|{
@@ -1000,6 +995,22 @@ block|{
 name|lastSeparator
 operator|=
 name|OXFORD
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|key
+operator|.
+name|equals
+argument_list|(
+literal|"Amp"
+argument_list|)
+condition|)
+block|{
+name|lastSeparator
+operator|=
+name|AMP
 expr_stmt|;
 block|}
 elseif|else
@@ -1610,7 +1621,7 @@ name|format
 operator|.
 name|setArgument
 argument_list|(
-literal|"LastFirst,MiddleInitial,FullPunc,Comma,Oxford,10,EtAl= m.fl."
+literal|"MiddleInitial,FullPunc,Amp,Semicolon,10,EtAl= m.fl."
 argument_list|)
 expr_stmt|;
 name|System
