@@ -603,9 +603,11 @@ name|String
 name|fieldName
 parameter_list|)
 block|{
-comment|// There can be up to two directory definitions for these files - the database's
-comment|// metadata can specify a directory, or the preferences can specify one. The
-comment|// metadata directory takes precedence if defined.
+comment|// There can be up to three directory definitions for these files - the database's
+comment|// metadata can specify a general directory and/or a user-specific directory, or
+comment|// the preferences can specify one. The settings are prioritized in the following
+comment|// order and the first defined setting is used: metadata user-specific directory,
+comment|// metadata general directory, preferences directory.
 name|String
 name|key
 init|=
@@ -615,7 +617,7 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"userFileDir"
+literal|"userFileDirIndividual"
 argument_list|)
 decl_stmt|;
 name|String
@@ -632,6 +634,32 @@ argument_list|(
 name|key
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|vec
+operator|==
+literal|null
+condition|)
+block|{
+name|key
+operator|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"userFileDir"
+argument_list|)
+expr_stmt|;
+name|vec
+operator|=
+name|getData
+argument_list|(
+name|key
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(

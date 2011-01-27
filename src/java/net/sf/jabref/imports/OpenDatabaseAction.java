@@ -278,20 +278,6 @@ name|HandleDuplicateWarnings
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|external
-operator|.
-name|FileDirectoryUpgradeWarning
-import|;
-end_import
-
 begin_comment
 comment|// The action concerned with opening an existing database.
 end_comment
@@ -361,16 +347,6 @@ name|add
 argument_list|(
 operator|new
 name|HandleDuplicateWarnings
-argument_list|()
-argument_list|)
-expr_stmt|;
-comment|// Add the action for the new user-specific file directory setting in version 2.6+:
-name|postOpenActions
-operator|.
-name|add
-argument_list|(
-operator|new
-name|FileDirectoryUpgradeWarning
 argument_list|()
 argument_list|)
 expr_stmt|;
