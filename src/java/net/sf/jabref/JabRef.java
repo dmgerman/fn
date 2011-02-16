@@ -3227,6 +3227,42 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|splashScreen
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// do this only if splashscreen was actually created
+name|splashScreen
+operator|.
+name|dispose
+argument_list|()
+expr_stmt|;
+name|splashScreen
+operator|=
+literal|null
+expr_stmt|;
+block|}
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+literal|null
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Error setting look and feel"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|lookAndFeel
+argument_list|)
+expr_stmt|;
 try|try
 block|{
 name|objLnf
