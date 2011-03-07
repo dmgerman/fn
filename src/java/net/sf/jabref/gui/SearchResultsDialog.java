@@ -928,7 +928,7 @@ condition|)
 block|{
 name|BibtexEntry
 index|[]
-name|selectedEntries
+name|bes
 init|=
 name|selectionModel
 operator|.
@@ -956,7 +956,7 @@ init|=
 operator|new
 name|TransferableBibtexEntry
 argument_list|(
-name|selectedEntries
+name|bes
 argument_list|)
 decl_stmt|;
 comment|// ! look at ClipBoardManager
@@ -976,6 +976,52 @@ name|frame
 operator|.
 name|basePanel
 argument_list|()
+argument_list|)
+expr_stmt|;
+name|frame
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Copied"
+argument_list|)
+operator|+
+literal|" "
+operator|+
+operator|(
+name|bes
+operator|.
+name|length
+operator|>
+literal|1
+condition|?
+name|bes
+operator|.
+name|length
+operator|+
+literal|" "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"entries"
+argument_list|)
+else|:
+literal|"1 "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"entry"
+argument_list|)
+operator|+
+literal|"."
+operator|)
 argument_list|)
 expr_stmt|;
 block|}
