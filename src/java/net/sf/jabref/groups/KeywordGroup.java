@@ -1702,6 +1702,24 @@ else|:
 literal|0
 return|;
 block|}
+DECL|method|validateSearchStrings (Map<String, String> searchStrings)
+specifier|public
+name|boolean
+name|validateSearchStrings
+parameter_list|(
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|searchStrings
+parameter_list|)
+block|{
+return|return
+literal|true
+return|;
+block|}
 DECL|method|deepCopy ()
 specifier|public
 name|AbstractGroup

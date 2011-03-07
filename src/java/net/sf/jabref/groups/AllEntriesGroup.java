@@ -298,6 +298,24 @@ name|AllEntriesGroup
 argument_list|()
 return|;
 block|}
+DECL|method|validateSearchStrings (Map<String, String> searchStrings)
+specifier|public
+name|boolean
+name|validateSearchStrings
+parameter_list|(
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|searchStrings
+parameter_list|)
+block|{
+return|return
+literal|true
+return|;
+block|}
 DECL|method|applyRule (Map<String, String> searchStrings, BibtexEntry bibtexEntry)
 specifier|public
 name|int

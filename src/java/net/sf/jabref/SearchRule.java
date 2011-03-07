@@ -47,6 +47,20 @@ name|BibtexEntry
 name|bibtexEntry
 parameter_list|)
 function_decl|;
+DECL|method|validateSearchStrings (Map<String, String> searchStrings)
+specifier|public
+name|boolean
+name|validateSearchStrings
+parameter_list|(
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|searchStrings
+parameter_list|)
+function_decl|;
 block|}
 end_interface
 
