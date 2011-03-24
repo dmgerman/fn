@@ -1076,6 +1076,15 @@ name|LANGUAGES
 operator|.
 name|put
 argument_list|(
+literal|"Japanese"
+argument_list|,
+literal|"ja"
+argument_list|)
+expr_stmt|;
+name|LANGUAGES
+operator|.
+name|put
+argument_list|(
 literal|"Nederlands"
 argument_list|,
 literal|"nl"
