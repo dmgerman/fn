@@ -100,27 +100,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collections
+name|*
 import|;
 end_import
 
@@ -1018,7 +998,7 @@ block|{
 name|LANGUAGES
 operator|=
 operator|new
-name|HashMap
+name|TreeMap
 argument_list|<
 name|String
 argument_list|,
