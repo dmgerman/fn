@@ -5957,7 +5957,7 @@ name|put
 argument_list|(
 literal|"Import into new database"
 argument_list|,
-literal|"ctrl shift I"
+literal|"ctrl alt I"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds
