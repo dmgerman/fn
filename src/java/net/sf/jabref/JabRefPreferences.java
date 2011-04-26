@@ -3076,6 +3076,17 @@ operator|.
 name|FALSE
 argument_list|)
 expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"allowFileAutoOpenBrowse"
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
+argument_list|)
+expr_stmt|;
 comment|//defaults.put("lastAutodetectedImport", "");
 comment|//defaults.put("autoRemoveExactDuplicates", Boolean.FALSE);
 comment|//defaults.put("confirmAutoRemoveExactDuplicates", Boolean.TRUE);

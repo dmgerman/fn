@@ -1424,6 +1424,15 @@ block|{
 name|openBrowseWhenShown
 operator|=
 name|openBrowse
+operator|&&
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"allowFileAutoOpenBrowse"
+argument_list|)
 expr_stmt|;
 if|if
 condition|(
