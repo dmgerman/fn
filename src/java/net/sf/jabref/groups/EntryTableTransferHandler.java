@@ -346,6 +346,22 @@ name|URLDownload
 import|;
 end_import
 
+begin_import
+import|import
+name|spl
+operator|.
+name|PdfImporter
+import|;
+end_import
+
+begin_import
+import|import
+name|spl
+operator|.
+name|Tools
+import|;
+end_import
+
 begin_class
 DECL|class|EntryTableTransferHandler
 specifier|public
@@ -618,6 +634,9 @@ name|dropRow
 argument_list|)
 return|;
 block|}
+comment|// Done by MrDlib
+comment|/*if(t.isDataFlavorSupported(MindMapNodesSelection.mindMapNodesFlavor)){                 String xml = (String)t.getTransferData(MindMapNodesSelection.mindMapNodesFlavor);                 URL mindmapURL = null;                 if(t.isDataFlavorSupported(MindMapNodesSelection.mindmapUrlFlavor)){                     mindmapURL = (URL)t.getTransferData(MindMapNodesSelection.mindmapUrlFlavor);                 }                 List<File> files = new ArrayList<File>();                 String[] xmlNodes = xml.split("<nodeseparator>");                 for(String xmlNode : xmlNodes){                     XMLElement element = new XMLElement();                     element.parseString(xmlNode);                     String link = element.getStringAttribute("Link");                     String absoluteLink = Tools.getLink(link, mindmapURL);                     if(absoluteLink == null) continue;                     File file = new File(absoluteLink);                     if(file.exists()){                         files.add(file);                     }                     else{                         try {                             URL url = new URL(absoluteLink);                             file = new File(url.toURI());                             if(file.exists()){                                 files.add(file);                             }                         } catch (URISyntaxException e) {                             // Todo logging                         } catch(IllegalArgumentException e){                             // Todo logging                         } catch(MalformedURLException e){                             // Todo logging                         }                     }                 }                 if(files.size()> 0){                     return handleDraggedFiles(files, dropRow);                 }                 else{                     return false;                 }             }*/
+comment|// Done by MrDlib
 if|if
 condition|(
 name|t
@@ -1522,13 +1541,48 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|loadOrImportFiles
+comment|// Done by MrDlib
+specifier|final
+name|String
+index|[]
+name|newfileNames
+init|=
+operator|new
+name|PdfImporter
+argument_list|(
+name|frame
+argument_list|,
+name|panel
+argument_list|,
+name|entryTable
+argument_list|,
+name|dropRow
+argument_list|)
+operator|.
+name|importPdfFiles
 argument_list|(
 name|fileNames
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|newfileNames
+operator|.
+name|length
+operator|>
+literal|0
+condition|)
+block|{
+name|loadOrImportFiles
+argument_list|(
+name|newfileNames
 argument_list|,
 name|dropRow
 argument_list|)
 expr_stmt|;
+block|}
+comment|//loadOrImportFiles(fileNames, dropRow);
+comment|// Done by MrDlib
 block|}
 block|}
 argument_list|)

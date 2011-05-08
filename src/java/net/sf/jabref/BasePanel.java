@@ -1854,6 +1854,24 @@ return|return
 name|mode
 return|;
 block|}
+comment|//Done by MrDlib
+DECL|method|setMode (int mode)
+specifier|public
+name|void
+name|setMode
+parameter_list|(
+name|int
+name|mode
+parameter_list|)
+block|{
+name|this
+operator|.
+name|mode
+operator|=
+name|mode
+expr_stmt|;
+block|}
+comment|//Done by MrDlib
 DECL|method|database ()
 specifier|public
 name|BibtexDatabase
