@@ -42,16 +42,6 @@ end_import
 
 begin_import
 import|import
-name|splmm
-operator|.
-name|Localization
-operator|.
-name|LocalizationSupport
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
