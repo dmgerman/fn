@@ -1465,6 +1465,12 @@ expr_stmt|;
 if|if
 condition|(
 name|abbreviate
+operator|&&
+operator|(
+name|firstNamePart
+operator|!=
+literal|null
+operator|)
 condition|)
 block|{
 name|firstNamePart
@@ -1608,6 +1614,12 @@ block|}
 if|if
 condition|(
 name|lastNameOnly
+operator|||
+operator|(
+name|firstNamePart
+operator|==
+literal|null
+operator|)
 condition|)
 block|{
 name|sb
