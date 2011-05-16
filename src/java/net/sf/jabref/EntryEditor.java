@@ -1700,11 +1700,16 @@ name|tabbed
 operator|.
 name|addTab
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 name|tabList
 operator|.
 name|getTabName
 argument_list|(
 name|i
+argument_list|)
 argument_list|)
 argument_list|,
 name|GUIGlobals

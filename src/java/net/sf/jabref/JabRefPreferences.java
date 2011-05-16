@@ -1861,12 +1861,7 @@ name|CUSTOM_TAB_NAME
 operator|+
 literal|"_def0"
 argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"General"
-argument_list|)
+literal|"General[CUSTOM_TAB]"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -1902,12 +1897,7 @@ name|CUSTOM_TAB_NAME
 operator|+
 literal|"_def1"
 argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
 literal|"Abstract"
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Entry editor tab 2: Review Field - used for research comments, etc.
@@ -1930,12 +1920,7 @@ name|CUSTOM_TAB_NAME
 operator|+
 literal|"_def2"
 argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
 literal|"Review"
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//defaults.put("recentFiles", "/home/alver/Documents/bibk_dok/hovedbase.bib");
