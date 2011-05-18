@@ -1861,7 +1861,7 @@ name|CUSTOM_TAB_NAME
 operator|+
 literal|"_def0"
 argument_list|,
-literal|"General[CUSTOM_TAB]"
+literal|"General"
 argument_list|)
 expr_stmt|;
 name|defaults
