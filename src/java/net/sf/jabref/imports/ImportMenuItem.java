@@ -873,6 +873,13 @@ range|:
 name|imports
 control|)
 block|{
+if|if
+condition|(
+name|p
+operator|!=
+literal|null
+condition|)
+block|{
 name|ParserResult
 name|pr
 init|=
@@ -1008,6 +1015,7 @@ operator|.
 name|WARNING_MESSAGE
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

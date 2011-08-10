@@ -18,6 +18,20 @@ end_package
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|imports
+operator|.
+name|ImportFormatReader
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|awt
@@ -626,8 +640,9 @@ init|=
 operator|new
 name|BufferedReader
 argument_list|(
-operator|new
-name|InputStreamReader
+name|ImportFormatReader
+operator|.
+name|getReaderDefaultEncoding
 argument_list|(
 name|_in
 argument_list|)

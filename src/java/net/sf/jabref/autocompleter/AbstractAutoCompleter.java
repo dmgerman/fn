@@ -289,6 +289,16 @@ name|word
 argument_list|)
 return|;
 block|}
+DECL|method|getPrefix ()
+specifier|public
+name|String
+name|getPrefix
+parameter_list|()
+block|{
+return|return
+literal|""
+return|;
+block|}
 block|}
 end_class
 

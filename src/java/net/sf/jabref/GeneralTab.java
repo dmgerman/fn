@@ -1957,6 +1957,15 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+comment|// Update any defaults that might be language dependent:
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|setLanguageDependentDefaultValues
+argument_list|()
+expr_stmt|;
+comment|// Warn about restart needed:
 name|JOptionPane
 operator|.
 name|showMessageDialog
