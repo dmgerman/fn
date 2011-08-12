@@ -697,19 +697,6 @@ name|ImportDialog
 operator|.
 name|CONTENT
 case|:
-comment|//                    // Find out what type is wanted.
-comment|//                    EntryTypeDialog etd = new EntryTypeDialog(frame);
-comment|//                    // We want to center the dialog, to make it look nicer.
-comment|//                    Util.placeDialog(etd, frame);
-comment|//                    etd.setVisible(true);
-comment|//                    BibtexEntryType type = etd.getChoice();
-comment|// possibly, the type should be set in PdfContentImporter as the type can in some cases be derived from the PDF
-name|type
-operator|=
-name|BibtexEntryType
-operator|.
-name|INPROCEEDINGS
-expr_stmt|;
 name|PdfContentImporter
 name|contentImporter
 init|=
@@ -884,13 +871,6 @@ literal|0
 argument_list|)
 expr_stmt|;
 comment|// insert entry to database and link file
-name|entry
-operator|.
-name|setType
-argument_list|(
-name|type
-argument_list|)
-expr_stmt|;
 name|panel
 operator|.
 name|database
