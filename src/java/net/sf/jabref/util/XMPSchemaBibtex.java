@@ -60,6 +60,8 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
 name|jempbox
 operator|.
 name|xmp
@@ -71,6 +73,8 @@ end_import
 begin_import
 import|import
 name|org
+operator|.
+name|apache
 operator|.
 name|jempbox
 operator|.
@@ -500,16 +504,11 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|getSequenceDateList (String seqName)
 specifier|public
 name|List
 argument_list|<
-name|String
+name|Calendar
 argument_list|>
 name|getSequenceDateList
 parameter_list|(

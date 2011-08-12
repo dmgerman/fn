@@ -88,6 +88,8 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
 name|jempbox
 operator|.
 name|impl
@@ -99,6 +101,8 @@ end_import
 begin_import
 import|import
 name|org
+operator|.
+name|apache
 operator|.
 name|jempbox
 operator|.
@@ -112,6 +116,8 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
 name|jempbox
 operator|.
 name|xmp
@@ -123,6 +129,8 @@ end_import
 begin_import
 import|import
 name|org
+operator|.
+name|apache
 operator|.
 name|jempbox
 operator|.
@@ -136,6 +144,8 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
 name|jempbox
 operator|.
 name|xmp
@@ -147,6 +157,8 @@ end_import
 begin_import
 import|import
 name|org
+operator|.
+name|apache
 operator|.
 name|pdfbox
 operator|.
@@ -160,6 +172,8 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
 name|pdfbox
 operator|.
 name|cos
@@ -171,6 +185,8 @@ end_import
 begin_import
 import|import
 name|org
+operator|.
+name|apache
 operator|.
 name|pdfbox
 operator|.
@@ -184,6 +200,8 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
 name|pdfbox
 operator|.
 name|pdmodel
@@ -195,6 +213,8 @@ end_import
 begin_import
 import|import
 name|org
+operator|.
+name|apache
 operator|.
 name|pdfbox
 operator|.
@@ -208,6 +228,8 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
 name|pdfbox
 operator|.
 name|pdmodel
@@ -219,6 +241,8 @@ end_import
 begin_import
 import|import
 name|org
+operator|.
+name|apache
 operator|.
 name|pdfbox
 operator|.

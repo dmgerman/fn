@@ -372,6 +372,8 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
 name|jempbox
 operator|.
 name|xmp
@@ -383,6 +385,8 @@ end_import
 begin_import
 import|import
 name|org
+operator|.
+name|apache
 operator|.
 name|jempbox
 operator|.
@@ -396,6 +400,8 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
 name|jempbox
 operator|.
 name|xmp
@@ -407,6 +413,8 @@ end_import
 begin_import
 import|import
 name|org
+operator|.
+name|apache
 operator|.
 name|jempbox
 operator|.
@@ -420,6 +428,8 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
 name|jempbox
 operator|.
 name|xmp
@@ -431,6 +441,8 @@ end_import
 begin_import
 import|import
 name|org
+operator|.
+name|apache
 operator|.
 name|pdfbox
 operator|.
@@ -444,6 +456,8 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
 name|pdfbox
 operator|.
 name|pdmodel
@@ -455,6 +469,8 @@ end_import
 begin_import
 import|import
 name|org
+operator|.
+name|apache
 operator|.
 name|pdfbox
 operator|.
@@ -468,6 +484,8 @@ begin_import
 import|import
 name|org
 operator|.
+name|apache
+operator|.
 name|pdfbox
 operator|.
 name|pdmodel
@@ -479,6 +497,8 @@ end_import
 begin_import
 import|import
 name|org
+operator|.
+name|apache
 operator|.
 name|pdfbox
 operator|.
@@ -493,6 +513,8 @@ end_import
 begin_import
 import|import
 name|org
+operator|.
+name|apache
 operator|.
 name|pdfbox
 operator|.
@@ -2717,11 +2739,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** 	 * Tests whether writing BibTex.xmp will preserve existing XMP-descriptions. 	 *  	 * @throws Exception 	 *             (indicating an failure) 	 */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|testSimpleUpdate ()
 specifier|public
 name|void
@@ -5042,11 +5059,6 @@ name|b
 argument_list|)
 expr_stmt|;
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|testReadWriteDC ()
 specifier|public
 name|void
@@ -5531,11 +5543,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|testWriteSingleUpdatesDCAndInfo ()
 specifier|public
 name|void
@@ -6019,11 +6026,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|testReadRawXMP ()
 specifier|public
 name|void
@@ -7668,11 +7670,6 @@ parameter_list|)
 block|{ 		}
 block|}
 comment|/** 	 * A better testcase for resolveStrings. Makes sure that also the document 	 * information and dublin core are written correctly. 	 *  	 * Data was contributed by Philip K.F. Hï¿½lzenspies (p.k.f.holzenspies [at] utwente.nl). 	 *  	 * @throws IOException 	 * @throws FileNotFoundException 	 * @throws TransformerException 	 *  	 */
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unchecked"
-argument_list|)
 DECL|method|testResolveStrings2 ()
 specifier|public
 name|void
