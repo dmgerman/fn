@@ -534,6 +534,15 @@ operator|.
 name|add
 argument_list|(
 operator|new
+name|ImportSettingsTab
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|tabs
+operator|.
+name|add
+argument_list|(
+operator|new
 name|XmpPrefsTab
 argument_list|()
 argument_list|)

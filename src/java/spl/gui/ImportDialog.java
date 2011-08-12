@@ -64,6 +64,30 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|ImportSettingsTab
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
 name|spl
 operator|.
 name|listener
@@ -154,6 +178,60 @@ name|ImportDialog
 extends|extends
 name|JDialog
 block|{
+DECL|field|NOMETA
+specifier|public
+specifier|final
+specifier|static
+name|int
+name|NOMETA
+init|=
+literal|0
+decl_stmt|;
+DECL|field|XMP
+specifier|public
+specifier|final
+specifier|static
+name|int
+name|XMP
+init|=
+literal|1
+decl_stmt|;
+DECL|field|CONTENT
+specifier|public
+specifier|final
+specifier|static
+name|int
+name|CONTENT
+init|=
+literal|2
+decl_stmt|;
+DECL|field|MRDLIB
+specifier|public
+specifier|final
+specifier|static
+name|int
+name|MRDLIB
+init|=
+literal|3
+decl_stmt|;
+DECL|field|ONLYATTACH
+specifier|public
+specifier|final
+specifier|static
+name|int
+name|ONLYATTACH
+init|=
+literal|4
+decl_stmt|;
+DECL|field|UPDATEEMPTYFIELDS
+specifier|public
+specifier|final
+specifier|static
+name|int
+name|UPDATEEMPTYFIELDS
+init|=
+literal|5
+decl_stmt|;
 DECL|field|contentPane
 specifier|private
 name|JPanel
@@ -219,11 +297,6 @@ specifier|private
 name|JRadioButton
 name|radioButtonUpdateEmptyFields
 decl_stmt|;
-DECL|field|panelUpdateEntry
-specifier|private
-name|JPanel
-name|panelUpdateEntry
-decl_stmt|;
 DECL|field|labelMrDlib1
 specifier|private
 name|JLabel
@@ -233,11 +306,6 @@ DECL|field|labelMrDlib2
 specifier|private
 name|JLabel
 name|labelMrDlib2
-decl_stmt|;
-DECL|field|panelNewEntry
-specifier|private
-name|JPanel
-name|panelNewEntry
 decl_stmt|;
 DECL|field|result
 specifier|private
@@ -1265,10 +1333,45 @@ operator|.
 name|WHEN_ANCESTOR_OF_FOCUSED_COMPONENT
 argument_list|)
 expr_stmt|;
-comment|//this.radioButtonMrDlib.setSelected(true);
-comment|//this.radioButtonMrDlib.requestFocus();
-name|this
+switch|switch
+condition|(
+name|Globals
 operator|.
+name|prefs
+operator|.
+name|getInt
+argument_list|(
+name|ImportSettingsTab
+operator|.
+name|PREF_IMPORT_DEFAULT_PDF_IMPORT_STYLE
+argument_list|)
+condition|)
+block|{
+case|case
+name|NOMETA
+case|:
+name|radioButtonNoMeta
+operator|.
+name|setSelected
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|XMP
+case|:
+name|radioButtonXmp
+operator|.
+name|setSelected
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|CONTENT
+case|:
 name|radioButtonPDFcontent
 operator|.
 name|setSelected
@@ -1276,6 +1379,51 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+break|break;
+case|case
+name|MRDLIB
+case|:
+name|radioButtonMrDlib
+operator|.
+name|setSelected
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|ONLYATTACH
+case|:
+name|radioButtononlyAttachPDF
+operator|.
+name|setSelected
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|UPDATEEMPTYFIELDS
+case|:
+name|radioButtonUpdateEmptyFields
+operator|.
+name|setSelected
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+break|break;
+default|default:
+comment|// fallback
+name|radioButtonPDFcontent
+operator|.
+name|setSelected
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+break|break;
+block|}
 name|this
 operator|.
 name|setSize
@@ -1341,65 +1489,83 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getRadioButtonXmp ()
+DECL|method|getChoice ()
 specifier|public
-name|JRadioButton
-name|getRadioButtonXmp
+name|int
+name|getChoice
 parameter_list|()
 block|{
-return|return
+if|if
+condition|(
 name|radioButtonXmp
-return|;
-block|}
-DECL|method|getRadioButtonPDFcontent ()
-specifier|public
-name|JRadioButton
-name|getRadioButtonPDFcontent
-parameter_list|()
-block|{
+operator|.
+name|isSelected
+argument_list|()
+condition|)
 return|return
+name|XMP
+return|;
+elseif|else
+if|if
+condition|(
 name|radioButtonPDFcontent
-return|;
-block|}
-DECL|method|getRadioButtonMrDlib ()
-specifier|public
-name|JRadioButton
-name|getRadioButtonMrDlib
-parameter_list|()
-block|{
+operator|.
+name|isSelected
+argument_list|()
+condition|)
 return|return
+name|CONTENT
+return|;
+elseif|else
+if|if
+condition|(
 name|radioButtonMrDlib
-return|;
-block|}
-DECL|method|getRadioButtonNoMeta ()
-specifier|public
-name|JRadioButton
-name|getRadioButtonNoMeta
-parameter_list|()
-block|{
+operator|.
+name|isSelected
+argument_list|()
+condition|)
 return|return
+name|MRDLIB
+return|;
+elseif|else
+if|if
+condition|(
 name|radioButtonNoMeta
-return|;
-block|}
-DECL|method|getRadioButtononlyAttachPDF ()
-specifier|public
-name|JRadioButton
-name|getRadioButtononlyAttachPDF
-parameter_list|()
-block|{
+operator|.
+name|isSelected
+argument_list|()
+condition|)
 return|return
+name|NOMETA
+return|;
+elseif|else
+if|if
+condition|(
 name|radioButtononlyAttachPDF
-return|;
-block|}
-DECL|method|getRadioButtonUpdateEmptyFields ()
-specifier|public
-name|JRadioButton
-name|getRadioButtonUpdateEmptyFields
-parameter_list|()
-block|{
+operator|.
+name|isSelected
+argument_list|()
+condition|)
 return|return
-name|radioButtonUpdateEmptyFields
+name|ONLYATTACH
 return|;
+elseif|else
+if|if
+condition|(
+name|radioButtonUpdateEmptyFields
+operator|.
+name|isSelected
+argument_list|()
+condition|)
+return|return
+name|UPDATEEMPTYFIELDS
+return|;
+else|else
+throw|throw
+operator|new
+name|IllegalStateException
+argument_list|()
+throw|;
 block|}
 DECL|method|getDoNotShowAgain ()
 specifier|public
@@ -1426,25 +1592,6 @@ return|return
 name|result
 return|;
 block|}
-comment|//    private void setText() {
-comment|//        this.labelHeadline.setText(LocalizationSupport.message("Import_Metadata_from:"));
-comment|//        this.labelSubHeadline.setText(LocalizationSupport.message("Choose_the_source_for_the_metadata_import"));
-comment|//        this.buttonOK.setText(LocalizationSupport.message("Ok"));
-comment|//        this.buttonCancel.setText(LocalizationSupport.message("Cancel"));
-comment|//        this.radioButtonXmp.setText(LocalizationSupport.message("Create_entry_based_on_XMP_data"));
-comment|//        this.radioButtonUpdateEmptyFields.setText(LocalizationSupport.message("Update_empty_fields_with_data_fetched_from"));
-comment|//        this.radioButtonMrDlib.setText(LocalizationSupport.message("Create_entry_based_on_data_fetched_from"));
-comment|//        this.radioButtonNoMeta.setText(LocalizationSupport.message("Create_blank_entry_linking_the_PDF"));
-comment|//        this.radioButtononlyAttachPDF.setText(LocalizationSupport.message("Only_attach_PDF"));
-comment|//        this.labelMrDlib1.setText(LocalizationSupport.message("Mr._dLib"));
-comment|//        this.labelMrDlib2.setText(LocalizationSupport.message("Mr._dLib"));
-comment|//        this.panelNewEntry.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), LocalizationSupport.message("Create_New_Entry"), TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font(panelNewEntry.getFont().getName(), panelNewEntry.getFont().getStyle(), 12), new Color(-16777216)));
-comment|//        panelUpdateEntry.setBorder(BorderFactory.createTitledBorder(BorderFactory.createEtchedBorder(), LocalizationSupport.message("Update_Existing_Entry"), TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, new Font(panelUpdateEntry.getFont().getName(), panelUpdateEntry.getFont().getStyle(), 12), new Color(-16777216)));
-comment|//    }
-comment|//
-comment|//
-comment|//    private void createUIComponents() {
-comment|//    }
 comment|/**      * @noinspection ALL      */
 DECL|method|$$$getRootComponent$$$ ()
 specifier|public
@@ -1455,6 +1602,22 @@ block|{
 return|return
 name|contentPane
 return|;
+block|}
+DECL|method|disableXMPChoice ()
+specifier|public
+name|void
+name|disableXMPChoice
+parameter_list|()
+block|{
+name|this
+operator|.
+name|radioButtonXmp
+operator|.
+name|setEnabled
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

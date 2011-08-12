@@ -3058,6 +3058,32 @@ comment|//defaults.put("confirmAutoRemoveExactDuplicates", Boolean.TRUE);
 comment|//defaults.put("tempDir", System.getProperty("java.io.tmpdir"));
 comment|//Util.pr(System.getProperty("java.io.tempdir"));
 comment|//defaults.put("keyPattern", new LabelPattern(KEY_PATTERN));
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|ImportSettingsTab
+operator|.
+name|PREF_IMPORT_ALWAYSUSE
+argument_list|,
+name|Boolean
+operator|.
+name|FALSE
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|ImportSettingsTab
+operator|.
+name|PREF_IMPORT_DEFAULT_PDF_IMPORT_STYLE
+argument_list|,
+name|ImportSettingsTab
+operator|.
+name|DEFAULT_STYLE
+argument_list|)
+expr_stmt|;
 name|restoreKeyBindings
 argument_list|()
 expr_stmt|;
