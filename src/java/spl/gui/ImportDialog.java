@@ -174,6 +174,11 @@ specifier|private
 name|JButton
 name|buttonCancel
 decl_stmt|;
+DECL|field|checkBoxDoNotShowAgain
+specifier|private
+name|JCheckBox
+name|checkBoxDoNotShowAgain
+decl_stmt|;
 DECL|field|radioButtonXmp
 specifier|private
 name|JRadioButton
@@ -679,6 +684,19 @@ literal|"Cancel"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|checkBoxDoNotShowAgain
+operator|=
+operator|new
+name|JCheckBox
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Do not show this box again for this import"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|DefaultFormBuilder
 name|b
 init|=
@@ -771,6 +789,13 @@ operator|.
 name|append
 argument_list|(
 name|labelMrDlib2
+argument_list|)
+expr_stmt|;
+name|b
+operator|.
+name|append
+argument_list|(
+name|checkBoxDoNotShowAgain
 argument_list|)
 expr_stmt|;
 name|b
@@ -1335,6 +1360,21 @@ parameter_list|()
 block|{
 return|return
 name|radioButtonUpdateEmptyFields
+return|;
+block|}
+DECL|method|getDoNotShowAgain ()
+specifier|public
+name|boolean
+name|getDoNotShowAgain
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|checkBoxDoNotShowAgain
+operator|.
+name|isSelected
+argument_list|()
 return|;
 block|}
 DECL|method|getResult ()
