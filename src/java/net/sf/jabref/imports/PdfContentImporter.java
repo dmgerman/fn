@@ -797,9 +797,7 @@ literal|"Encrypted documents are not supported"
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return
-name|res
-return|;
+comment|//return res;
 block|}
 name|PDFTextStripper
 name|stripper
