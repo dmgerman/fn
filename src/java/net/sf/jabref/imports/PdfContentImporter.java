@@ -189,7 +189,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/** 	 * Removes all non-letter characters at the end 	 *  	 * EXCEPTION: a closing bracket is NOT removed 	 *  	 * @param input 	 * @return 	 */
+comment|/** 	 * Removes all non-letter characters at the end 	 *  	 * EXCEPTION: a closing bracket is NOT removed 	 *  	 * @param input 	 * @return 	 * TODO Additionally repalce multiple subsequent spaces by one space 	 */
 DECL|method|removeNonLettersAtEnd (String input)
 specifier|private
 name|String
@@ -328,6 +328,11 @@ name|res
 operator|=
 literal|""
 expr_stmt|;
+name|boolean
+name|isFirst
+init|=
+literal|true
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -362,7 +367,7 @@ name|curName
 operator|.
 name|indexOf
 argument_list|(
-literal|"and "
+literal|"and"
 argument_list|)
 operator|==
 literal|0
@@ -375,10 +380,86 @@ name|curName
 operator|.
 name|substring
 argument_list|(
-literal|4
+literal|3
+argument_list|)
+operator|.
+name|trim
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+name|int
+name|posAnd
+init|=
+name|curName
+operator|.
+name|indexOf
+argument_list|(
+literal|" and "
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|posAnd
+operator|>=
+literal|0
+condition|)
+block|{
+name|String
+name|nameBefore
+init|=
+name|curName
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|posAnd
+argument_list|)
+decl_stmt|;
+comment|// cannot be first name as "," is contained in the string
+name|res
+operator|=
+name|res
+operator|.
+name|concat
+argument_list|(
+literal|" and "
+argument_list|)
+operator|.
+name|concat
+argument_list|(
+name|removeNonLettersAtEnd
+argument_list|(
+name|nameBefore
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|curName
+operator|=
+name|curName
+operator|.
+name|substring
+argument_list|(
+name|posAnd
+operator|+
+literal|5
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+if|if
+condition|(
+operator|!
+name|curName
+operator|.
+name|equals
+argument_list|(
+literal|""
+argument_list|)
+condition|)
+block|{
 if|if
 condition|(
 name|curName
@@ -392,25 +473,17 @@ name|curName
 operator|=
 literal|"others"
 expr_stmt|;
-name|res
-operator|=
-name|res
-operator|.
-name|concat
-argument_list|(
-name|curName
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
-name|i
-operator|!=
-name|split
-operator|.
-name|length
-operator|-
-literal|1
+name|isFirst
 condition|)
+block|{
+name|isFirst
+operator|=
+literal|false
+expr_stmt|;
+block|}
+else|else
 block|{
 name|res
 operator|=
@@ -419,6 +492,16 @@ operator|.
 name|concat
 argument_list|(
 literal|" and "
+argument_list|)
+expr_stmt|;
+block|}
+name|res
+operator|=
+name|res
+operator|.
+name|concat
+argument_list|(
+name|curName
 argument_list|)
 expr_stmt|;
 block|}
@@ -438,14 +521,29 @@ argument_list|(
 literal|" "
 argument_list|)
 decl_stmt|;
-name|res
-operator|=
-literal|null
-expr_stmt|;
+if|if
+condition|(
+name|split
+operator|.
+name|length
+operator|==
+literal|0
+condition|)
+block|{
+comment|// empty names... something was really wrong...
+return|return
+literal|""
+return|;
+block|}
 name|boolean
 name|workedOnFirstOrMiddle
 init|=
 literal|false
+decl_stmt|;
+name|boolean
+name|isFirst
+init|=
+literal|true
 decl_stmt|;
 name|int
 name|i
@@ -464,6 +562,45 @@ operator|!
 name|workedOnFirstOrMiddle
 condition|)
 block|{
+if|if
+condition|(
+name|split
+index|[
+name|i
+index|]
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"and"
+argument_list|)
+condition|)
+block|{
+comment|// do nothing, just increment i at the end of this iteration
+block|}
+else|else
+block|{
+if|if
+condition|(
+name|isFirst
+condition|)
+block|{
+name|isFirst
+operator|=
+literal|false
+expr_stmt|;
+block|}
+else|else
+block|{
+name|res
+operator|=
+name|res
+operator|.
+name|concat
+argument_list|(
+literal|" and "
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -514,22 +651,6 @@ argument_list|)
 expr_stmt|;
 break|break;
 block|}
-elseif|else
-if|if
-condition|(
-name|split
-index|[
-name|i
-index|]
-operator|.
-name|equalsIgnoreCase
-argument_list|(
-literal|"and"
-argument_list|)
-condition|)
-block|{
-comment|// do nothing, just increment i at the end of this iteration
-block|}
 else|else
 block|{
 name|res
@@ -553,6 +674,7 @@ name|workedOnFirstOrMiddle
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else
@@ -595,11 +717,6 @@ block|}
 else|else
 block|{
 comment|// last name found
-comment|// finish this name
-name|workedOnFirstOrMiddle
-operator|=
-literal|false
-expr_stmt|;
 name|res
 operator|=
 name|res
@@ -617,23 +734,43 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|i
-operator|+
-literal|1
-operator|<
-name|split
+name|Character
 operator|.
-name|length
+name|isLowerCase
+argument_list|(
+name|split
+index|[
+name|i
+index|]
+operator|.
+name|charAt
+argument_list|(
+literal|0
+argument_list|)
+argument_list|)
 condition|)
+block|{
+comment|// it is probably be "van", "vom", ...
+comment|// we just rely on the fact that these things are written in lower case letters
+comment|// do NOT finish name
 name|res
 operator|=
 name|res
 operator|.
 name|concat
 argument_list|(
-literal|" and "
+literal|" "
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+comment|// finish this name
+name|workedOnFirstOrMiddle
+operator|=
+literal|false
+expr_stmt|;
+block|}
 block|}
 block|}
 name|i
@@ -948,6 +1085,14 @@ argument_list|(
 name|lineBreak
 argument_list|)
 decl_stmt|;
+comment|// idea: split[] contains the different lines
+comment|// blocks are separated by empty lines
+comment|// treat each block
+comment|//   or do special treatment at authors (which are not broken)
+comment|//   therefore, we do a line-based and not a block-based splitting
+comment|// i points to the current line
+comment|// curString (mostly) contains the current block
+comment|//   the different lines are joined into one and thereby separated by " "
 name|String
 name|curString
 init|=
