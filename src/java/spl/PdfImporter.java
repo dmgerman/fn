@@ -757,6 +757,23 @@ name|e
 parameter_list|)
 block|{
 comment|// import failed -> generate default entry
+name|Globals
+operator|.
+name|logger
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Import failed"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 name|createNewBlankEntry
 argument_list|(
 name|fileName
@@ -785,6 +802,23 @@ name|e
 parameter_list|)
 block|{
 comment|// import failed -> generate default entry
+name|Globals
+operator|.
+name|logger
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Import failed"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|e
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 name|createNewBlankEntry
 argument_list|(
 name|fileName
