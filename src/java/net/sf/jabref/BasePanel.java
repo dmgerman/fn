@@ -3420,6 +3420,18 @@ expr_stmt|;
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"autoOpenForm"
+argument_list|)
+condition|)
+block|{
 name|selectionListener
 operator|.
 name|editSignalled
@@ -3427,6 +3439,7 @@ argument_list|(
 name|firstBE
 argument_list|)
 expr_stmt|;
+block|}
 name|highlightEntry
 argument_list|(
 name|firstBE
