@@ -1746,6 +1746,24 @@ literal|"Copy \\cite{BibTeX key}"
 argument_list|)
 argument_list|)
 decl_stmt|,
+DECL|field|copyKeyAndTitle
+name|copyKeyAndTitle
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"copyKeyAndTitle"
+argument_list|,
+literal|"Copy BibTeX key and title"
+argument_list|,
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Copy BibTeX key and title"
+argument_list|)
+argument_list|)
+decl_stmt|,
 DECL|field|mergeDatabaseAction
 name|mergeDatabaseAction
 init|=
@@ -6639,6 +6657,13 @@ argument_list|(
 name|copyCiteKey
 argument_list|)
 expr_stmt|;
+name|edit
+operator|.
+name|add
+argument_list|(
+name|copyKeyAndTitle
+argument_list|)
+expr_stmt|;
 comment|//edit.add(exportToClipboard);
 name|edit
 operator|.
@@ -8078,6 +8103,8 @@ block|,
 name|copyKey
 block|,
 name|copyCiteKey
+block|,
+name|copyKeyAndTitle
 block|,
 name|editPreamble
 block|,

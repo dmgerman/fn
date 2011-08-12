@@ -5727,6 +5727,15 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
+literal|"Copy BibTeX key and title"
+argument_list|,
+literal|"ctrl shift alt K"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
 literal|"Next tab"
 argument_list|,
 literal|"ctrl PAGE_DOWN"
