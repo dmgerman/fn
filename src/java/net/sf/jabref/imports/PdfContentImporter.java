@@ -1748,7 +1748,7 @@ operator|)
 condition|)
 block|{
 comment|// looks like a Springer last line
-comment|// e.g: A. Persson and J. Stirna (Eds.): PoEM 2009, LNBIP 39, pp. 161175, 2009.
+comment|// e.g: A. Persson and J. Stirna (Eds.): PoEM 2009, LNBIP 39, pp. 161-175, 2009.
 name|publisher
 operator|=
 literal|"Springer"
