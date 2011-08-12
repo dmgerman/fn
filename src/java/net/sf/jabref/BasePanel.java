@@ -3182,6 +3182,16 @@ literal|"paste entry"
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|// Store the first inserted bibtexentry.
+comment|// bes[0] does not work as bes[0] is first clonded,
+comment|// then inserted.
+comment|// This entry is used to open up an entry editor
+comment|// for the first inserted entry.
+name|BibtexEntry
+name|firstBE
+init|=
+literal|null
+decl_stmt|;
 for|for
 control|(
 name|int
@@ -3217,6 +3227,16 @@ name|clone
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|firstBE
+operator|==
+literal|null
+condition|)
+name|firstBE
+operator|=
+name|be
+expr_stmt|;
 name|Util
 operator|.
 name|setAutomaticFields
@@ -3357,6 +3377,18 @@ argument_list|)
 expr_stmt|;
 name|markBaseChanged
 argument_list|()
+expr_stmt|;
+name|selectionListener
+operator|.
+name|editSignalled
+argument_list|(
+name|firstBE
+argument_list|)
+expr_stmt|;
+name|highlightEntry
+argument_list|(
+name|firstBE
+argument_list|)
 expr_stmt|;
 block|}
 block|}
