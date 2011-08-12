@@ -901,6 +901,11 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+name|panel
+operator|.
+name|markBaseChanged
+argument_list|()
+expr_stmt|;
 name|LabelPatternUtil
 operator|.
 name|makeLabel
