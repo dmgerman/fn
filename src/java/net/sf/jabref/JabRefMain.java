@@ -238,6 +238,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|javaVendor
 operator|.
 name|indexOf
@@ -247,6 +248,19 @@ argument_list|)
 operator|==
 operator|-
 literal|1
+operator|)
+operator|&&
+operator|(
+name|javaVendor
+operator|.
+name|indexOf
+argument_list|(
+literal|"Oracle"
+argument_list|)
+operator|==
+operator|-
+literal|1
+operator|)
 condition|)
 block|{
 name|System
@@ -257,7 +271,7 @@ name|println
 argument_list|(
 literal|"\n"
 operator|+
-literal|"WARNING: You are not running a Java version from Sun Microsystems.\n"
+literal|"WARNING: You are not running a Java version from Oracle (or Sun Microsystems).\n"
 operator|+
 literal|"         Your java vendor is: "
 operator|+
@@ -265,7 +279,7 @@ name|javaVendor
 operator|+
 literal|"\n"
 operator|+
-literal|"         If JabRef crashes please consider switching to a Sun Java Runtime.\n"
+literal|"         If JabRef crashes please consider switching to an Oracle Java Runtime.\n"
 operator|+
 literal|"         See http://jabref.sf.net/faq.php for more information.\n"
 argument_list|)
