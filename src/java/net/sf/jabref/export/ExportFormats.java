@@ -293,7 +293,12 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Docbook"
+literal|"DocBook"
+argument_list|)
+operator|.
+name|concat
+argument_list|(
+literal|" 4.4"
 argument_list|)
 argument_list|,
 literal|"docbook"

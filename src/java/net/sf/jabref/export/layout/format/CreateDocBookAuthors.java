@@ -413,7 +413,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"<lastname>"
+literal|"<surname>"
 argument_list|)
 expr_stmt|;
 name|sb
@@ -477,7 +477,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"</lastname>"
+literal|"</surname>"
 argument_list|)
 expr_stmt|;
 block|}
