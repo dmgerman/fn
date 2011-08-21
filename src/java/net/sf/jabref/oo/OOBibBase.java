@@ -2054,7 +2054,7 @@ name|DisposedException
 name|ex
 parameter_list|)
 block|{
-comment|// We need to catch this one here because the OOTestPanel class is
+comment|// We need to catch this one here because the OpenOfficePanel class is
 comment|// loaded before connection, and therefore cannot directly reference
 comment|// or catch a DisposedException (which is in a OO jar file).
 throw|throw
@@ -2107,7 +2107,7 @@ name|DisposedException
 name|ex
 parameter_list|)
 block|{
-comment|// We need to catch this one here because the OOTestPanel class is
+comment|// We need to catch this one here because the OpenOfficePanel class is
 comment|// loaded before connection, and therefore cannot directly reference
 comment|// or catch a DisposedException (which is in a OO jar file).
 throw|throw

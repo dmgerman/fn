@@ -1612,7 +1612,7 @@ comment|// preprocess fields instead:
 if|if
 condition|(
 operator|!
-name|OOTestPanel
+name|OpenOfficePanel
 operator|.
 name|postLayoutSupported
 operator|&&

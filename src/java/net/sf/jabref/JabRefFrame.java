@@ -542,7 +542,7 @@ name|jabref
 operator|.
 name|oo
 operator|.
-name|OOTestPanel
+name|OpenOfficePanel
 import|;
 end_import
 
@@ -7017,11 +7017,11 @@ argument_list|(
 name|checkAndFix
 argument_list|)
 expr_stmt|;
-name|OOTestPanel
+name|OpenOfficePanel
 name|otp
 init|=
 operator|new
-name|OOTestPanel
+name|OpenOfficePanel
 argument_list|()
 decl_stmt|;
 name|otp

@@ -36,20 +36,6 @@ name|forms
 operator|.
 name|builder
 operator|.
-name|ButtonStackBuilder
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|jgoodies
-operator|.
-name|forms
-operator|.
-name|builder
-operator|.
 name|DefaultFormBuilder
 import|;
 end_import
@@ -291,10 +277,10 @@ comment|/**  * This test panel can be opened by reflection from JabRef, passing 
 end_comment
 
 begin_class
-DECL|class|OOTestPanel
+DECL|class|OpenOfficePanel
 specifier|public
 class|class
-name|OOTestPanel
+name|OpenOfficePanel
 extends|extends
 name|AbstractWorker
 implements|implements
@@ -590,9 +576,9 @@ name|connectException
 init|=
 literal|null
 decl_stmt|;
-DECL|method|OOTestPanel ()
+DECL|method|OpenOfficePanel ()
 specifier|public
-name|OOTestPanel
+name|OpenOfficePanel
 parameter_list|()
 block|{
 name|ImageIcon
@@ -601,7 +587,7 @@ init|=
 operator|new
 name|ImageIcon
 argument_list|(
-name|OOTestPanel
+name|OpenOfficePanel
 operator|.
 name|class
 operator|.
@@ -1030,7 +1016,7 @@ init|=
 operator|new
 name|JMenuItem
 argument_list|(
-literal|"OpenOffice.org panel"
+literal|"OpenOffice/LibreOffice connection"
 argument_list|,
 name|GUIGlobals
 operator|.
@@ -2338,6 +2324,15 @@ name|boolean
 name|auto
 parameter_list|)
 block|{
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"I am the built-in version"
+argument_list|)
+expr_stmt|;
 comment|/*if (ooBase != null) {             try {                 java.util.List<XTextDocument> list = ooBase.getTextDocuments();                 // TODO: how to find the title of the documents?             } catch (Exception ex) {                 ex.printStackTrace();             }             return;         }*/
 name|String
 name|unoilDir
@@ -5329,7 +5324,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-name|OOTestPanel
+name|OpenOfficePanel
 operator|.
 name|this
 operator|.
