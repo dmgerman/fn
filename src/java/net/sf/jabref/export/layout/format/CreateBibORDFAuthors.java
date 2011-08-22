@@ -117,7 +117,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Create DocBook authors formatter.  *  * @author $author$  * @version $Revision: 2268 $  */
+comment|/**  * @author $author$  * @version $Revision: 2268 $  */
 end_comment
 
 begin_class
