@@ -1,9 +1,7 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|classes.net.sf.jabref.oo
+DECL|package|net.sf.jabref.oo
 package|package
-name|classes
-operator|.
 name|net
 operator|.
 name|sf

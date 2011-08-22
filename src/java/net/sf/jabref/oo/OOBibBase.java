@@ -408,8 +408,6 @@ end_import
 
 begin_import
 import|import
-name|classes
-operator|.
 name|net
 operator|.
 name|sf
