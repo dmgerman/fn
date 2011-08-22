@@ -83,7 +83,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Jan 14, 2006  * Time: 4:55:23 PM  * To change this template use File | Settings | File Templates.  */
+comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Jan 14, 2006  * Time: 4:55:23 PM  */
 end_comment
 
 begin_class
@@ -105,6 +105,28 @@ DECL|field|citeCommand
 specifier|private
 name|JTextField
 name|citeCommand
+init|=
+operator|new
+name|JTextField
+argument_list|(
+literal|30
+argument_list|)
+decl_stmt|;
+DECL|field|emacsPath
+specifier|private
+name|JTextField
+name|emacsPath
+init|=
+operator|new
+name|JTextField
+argument_list|(
+literal|30
+argument_list|)
+decl_stmt|;
+DECL|field|additionalParams
+specifier|private
+name|JTextField
+name|additionalParams
 init|=
 operator|new
 name|JTextField
@@ -218,6 +240,38 @@ literal|"citeCommandEmacs"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|emacsPath
+operator|.
+name|setText
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EMACS_PATH
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|additionalParams
+operator|.
+name|setText
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EMACS_ADDITIONAL_PARAMETERS
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return
 name|settings
 return|;
@@ -242,6 +296,38 @@ name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|put
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EMACS_PATH
+argument_list|,
+name|emacsPath
+operator|.
+name|getText
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|put
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EMACS_ADDITIONAL_PARAMETERS
+argument_list|,
+name|additionalParams
+operator|.
+name|getText
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|initSettingsPanel ()
 specifier|private
@@ -258,12 +344,115 @@ argument_list|(
 operator|new
 name|FormLayout
 argument_list|(
-literal|"left:pref, 4dlu, fill:pref"
+literal|"left:pref, 4dlu, fill:pref, 4dlu, fill:pref"
 argument_list|,
 literal|""
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+operator|new
+name|JLabel
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Path to gnuclient.exe or emacsclient.exe"
+argument_list|)
+operator|.
+name|concat
+argument_list|(
+literal|":"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|emacsPath
+argument_list|)
+expr_stmt|;
+name|BrowseAction
+name|action
+init|=
+operator|new
+name|BrowseAction
+argument_list|(
+literal|null
+argument_list|,
+name|emacsPath
+argument_list|,
+literal|false
+argument_list|)
+decl_stmt|;
+name|JButton
+name|browse
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Browse"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|browse
+operator|.
+name|addActionListener
+argument_list|(
+name|action
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|browse
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|nextLine
+argument_list|()
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Additional parameters"
+argument_list|)
+operator|.
+name|concat
+argument_list|(
+literal|":"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|additionalParams
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|nextLine
+argument_list|()
+expr_stmt|;
 name|builder
 operator|.
 name|append
@@ -320,12 +509,102 @@ name|couldNotRunClient
 operator|=
 literal|false
 expr_stmt|;
+name|String
+name|command
+init|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EMACS_PATH
+argument_list|)
+decl_stmt|;
+name|String
+name|addParams
+index|[]
+init|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EMACS_ADDITIONAL_PARAMETERS
+argument_list|)
+operator|.
+name|split
+argument_list|(
+literal|" "
+argument_list|)
+decl_stmt|;
 try|try
 block|{
 name|String
 index|[]
 name|com
 init|=
+operator|new
+name|String
+index|[
+name|addParams
+operator|.
+name|length
+operator|+
+literal|2
+index|]
+decl_stmt|;
+name|com
+index|[
+literal|0
+index|]
+operator|=
+name|command
+expr_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|addParams
+operator|.
+name|length
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|com
+index|[
+name|i
+operator|+
+literal|1
+index|]
+operator|=
+name|addParams
+index|[
+name|i
+index|]
+expr_stmt|;
+block|}
+name|com
+index|[
+name|com
+operator|.
+name|length
+operator|-
+literal|1
+index|]
+operator|=
 name|Globals
 operator|.
 name|ON_WIN
@@ -334,14 +613,6 @@ comment|// Windows gnuclient escaping:
 comment|// java string: "(insert \\\"\\\\cite{Blah2001}\\\")";
 comment|// so cmd receives: (insert \"\\cite{Blah2001}\")
 comment|// so emacs receives: (insert "\cite{Blah2001}")
-operator|new
-name|String
-index|[]
-block|{
-literal|"gnuclient"
-block|,
-literal|"-qe"
-block|,
 literal|"(insert \\\"\\\\"
 operator|+
 name|Globals
@@ -365,22 +636,11 @@ operator|+
 name|keys
 operator|+
 literal|"}\\\")"
-block|}
 else|:
 comment|// Linux gnuclient escaping:
 comment|// java string: "(insert \"\\\\cite{Blah2001}\")"
 comment|// so sh receives: (insert "\\cite{Blah2001}")
 comment|// so emacs receives: (insert "\cite{Blah2001}")
-operator|new
-name|String
-index|[]
-block|{
-literal|"gnuclient"
-block|,
-literal|"-batch"
-block|,
-literal|"-eval"
-block|,
 literal|"(insert \""
 operator|+
 name|Globals
@@ -404,8 +664,7 @@ operator|+
 name|keys
 operator|+
 literal|"}\")"
-block|}
-decl_stmt|;
+expr_stmt|;
 specifier|final
 name|Process
 name|p
@@ -440,6 +699,11 @@ operator|.
 name|getErrorStream
 argument_list|()
 decl_stmt|;
+comment|//                    try {
+comment|//                    	if (out.available()<= 0)
+comment|//                    		out = p.getInputStream();
+comment|//                    } catch (Exception e) {
+comment|//                    }
 name|int
 name|c
 decl_stmt|;
@@ -604,7 +868,7 @@ literal|"Could not connect to a running gnuserv process. Make sure that "
 operator|+
 literal|"Emacs or XEmacs is running,<BR>and that the server has been started "
 operator|+
-literal|"(by running the command 'gnuserv-start')."
+literal|"(by running the command 'server-start'/'gnuserv-start')."
 argument_list|)
 operator|+
 literal|"</HTML>"
@@ -639,9 +903,9 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Could not run the 'gnuclient' program. Make sure you have "
+literal|"Could not run the gnuclient/emacsclient program. Make sure you have "
 operator|+
-literal|"the gnuserv/gnuclient programs installed."
+literal|"the emacsclient/gnuclient program installed and available in the PATH."
 argument_list|)
 argument_list|,
 name|Globals
