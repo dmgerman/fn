@@ -555,6 +555,13 @@ name|MySQLExport
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|putFormat
+argument_list|(
+operator|new
+name|PostgreSQLExport
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// Add Export Formats contributed by Plugins
 name|JabRefPlugin
 name|plugin

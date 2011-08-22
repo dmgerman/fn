@@ -407,9 +407,12 @@ name|DBTYPE
 block|{
 DECL|enumConstant|MYSQL
 DECL|enumConstant|DERBY
+DECL|enumConstant|POSTGRESQL
 name|MYSQL
 block|,
 name|DERBY
+block|,
+name|POSTGRESQL
 block|}
 DECL|field|fields
 specifier|private
@@ -471,6 +474,7 @@ operator|.
 name|MYSQL
 expr_stmt|;
 block|}
+elseif|else
 if|if
 condition|(
 name|srvtype
@@ -486,6 +490,24 @@ operator|=
 name|DBTYPE
 operator|.
 name|DERBY
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|srvtype
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"postgresql"
+argument_list|)
+condition|)
+block|{
+name|dbtype
+operator|=
+name|DBTYPE
+operator|.
+name|POSTGRESQL
 expr_stmt|;
 block|}
 return|return
@@ -553,6 +575,45 @@ name|getDatabase
 argument_list|()
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|servertype
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"postgresql"
+argument_list|)
+condition|)
+block|{
+name|url
+operator|=
+literal|"jdbc:"
+operator|+
+name|dbs
+operator|.
+name|getServerType
+argument_list|()
+operator|.
+name|toLowerCase
+argument_list|()
+operator|+
+literal|"://"
+operator|+
+name|dbs
+operator|.
+name|getServerHostname
+argument_list|()
+operator|+
+literal|"/"
+operator|+
+name|dbs
+operator|.
+name|getDatabase
+argument_list|()
+expr_stmt|;
+block|}
+elseif|else
 if|if
 condition|(
 name|servertype
@@ -627,6 +688,7 @@ operator|=
 literal|"com.mysql.jdbc.Driver"
 expr_stmt|;
 block|}
+elseif|else
 if|if
 condition|(
 name|servertype
@@ -640,6 +702,22 @@ block|{
 name|driver
 operator|=
 literal|"org.apache.derby.jdbc.EmbeddedDriver"
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|servertype
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"postgresql"
+argument_list|)
+condition|)
+block|{
+name|driver
+operator|=
+literal|"org.postgresql.Driver"
 expr_stmt|;
 block|}
 return|return
@@ -780,7 +858,7 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|processDMLWithSingleResult ( Connection conn, String query)
+DECL|method|processDMLWithSingleResult (Connection conn, String query)
 specifier|private
 specifier|static
 name|String
@@ -936,7 +1014,7 @@ name|stmnt
 return|;
 block|}
 comment|/**      * Utility method for processing DML with proper output      *      * @param out      *          The output (PrintStream or Connection) object to which the DML should be sent      * @param dml      *          The DML statements to be processed      */
-DECL|method|processDML ( Object out, String dml)
+DECL|method|processDML (Object out, String dml)
 specifier|private
 specifier|static
 name|void
@@ -1653,6 +1731,14 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|// Read the column names from the entry table:
+switch|switch
+condition|(
+name|dbtype
+condition|)
+block|{
+case|case
+name|MYSQL
+case|:
 name|res
 operator|=
 name|processDMLWithResults
@@ -1662,6 +1748,22 @@ argument_list|,
 literal|"SHOW columns FROM entries;"
 argument_list|)
 expr_stmt|;
+break|break;
+case|case
+name|POSTGRESQL
+case|:
+name|res
+operator|=
+name|processDMLWithResults
+argument_list|(
+name|conn
+argument_list|,
+literal|"select a.attname from pg_attribute a, pg_class b where b.relfilenode=a.attrelid and b.relname=\'entries\' and a.attname not in (\'tableoid\',\'cmax\',\'xmax\',\'cmin\'\'xmin\',\'ctid\');"
+argument_list|)
+expr_stmt|;
+break|break;
+default|default:
+block|}
 name|ArrayList
 argument_list|<
 name|String
@@ -2208,6 +2310,8 @@ name|typeId
 init|=
 name|findGroupTypeName
 argument_list|(
+name|dbtype
+argument_list|,
 name|rs
 operator|.
 name|getString
@@ -2708,12 +2812,15 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Look up the group type name from the type ID in the database.      * @param groupId The database's groups id      * @param conn The database connection      * @return The name (JabRef type id) of the group type.      * @throws SQLException      */
-DECL|method|findGroupTypeName (String groupId, Connection conn)
+DECL|method|findGroupTypeName (DBTYPE dbtype, String groupId, Connection conn)
 specifier|public
 specifier|static
 name|String
 name|findGroupTypeName
 parameter_list|(
+name|DBTYPE
+name|dbtype
+parameter_list|,
 name|String
 name|groupId
 parameter_list|,
@@ -2723,7 +2830,21 @@ parameter_list|)
 throws|throws
 name|SQLException
 block|{
-return|return
+name|String
+name|res
+init|=
+literal|""
+decl_stmt|;
+switch|switch
+condition|(
+name|dbtype
+condition|)
+block|{
+case|case
+name|MYSQL
+case|:
+name|res
+operator|=
 name|processDMLWithSingleResult
 argument_list|(
 name|conn
@@ -2734,6 +2855,29 @@ name|groupId
 operator|+
 literal|"\";"
 argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|POSTGRESQL
+case|:
+name|res
+operator|=
+name|processDMLWithSingleResult
+argument_list|(
+name|conn
+argument_list|,
+literal|"SELECT label FROM group_types WHERE group_types_id=\'"
+operator|+
+name|groupId
+operator|+
+literal|"\';"
+argument_list|)
+expr_stmt|;
+break|break;
+default|default:
+block|}
+return|return
+name|res
 return|;
 block|}
 comment|/**      * Accepts the BibtexDatabase and MetaData, generates the DML required to      * create and populate SQL database tables, and writes this DML to the       * specified SQL database.      *      * @param database      *          The BibtexDatabase to export      * @param metaData      *          The MetaData object containing the groups information      * @param keySet      *          The set of IDs of the entries to export.      * @param dbStrings      *          The necessary database connection information      */
@@ -2921,12 +3065,16 @@ expr_stmt|;
 comment|// populate entry_type table
 name|dmlPopTab_ET
 argument_list|(
+name|dbtype
+argument_list|,
 name|out
 argument_list|)
 expr_stmt|;
 comment|// populate entries table
 name|dmlPopTab_FD
 argument_list|(
+name|dbtype
+argument_list|,
 name|entries
 argument_list|,
 name|out
@@ -2951,12 +3099,16 @@ decl_stmt|;
 comment|// populate group_types table
 name|dmlPopTab_GT
 argument_list|(
+name|dbtype
+argument_list|,
 name|out
 argument_list|)
 expr_stmt|;
 comment|// populate groups table
 name|dmlPopTab_GP
 argument_list|(
+name|dbtype
+argument_list|,
 name|gtn
 argument_list|,
 name|out
@@ -2965,6 +3117,8 @@ expr_stmt|;
 comment|// populate entry_group table
 name|dmlPopTab_EG
 argument_list|(
+name|dbtype
+argument_list|,
 name|gtn
 argument_list|,
 name|out
@@ -3085,6 +3239,86 @@ argument_list|)
 expr_stmt|;
 comment|// create tables
 name|dmlTable_mysql
+argument_list|(
+name|dml1
+argument_list|,
+name|dml2
+argument_list|,
+name|out
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|POSTGRESQL
+case|:
+comment|// drop tables
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"DROP TABLE IF EXISTS entry_types CASCADE;"
+argument_list|)
+expr_stmt|;
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"DROP TABLE IF EXISTS entries CASCADE;"
+argument_list|)
+expr_stmt|;
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"DROP TABLE IF EXISTS strings;"
+argument_list|)
+expr_stmt|;
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"DROP TABLE IF EXISTS group_types;"
+argument_list|)
+expr_stmt|;
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"DROP TABLE IF EXISTS groups CASCADE;"
+argument_list|)
+expr_stmt|;
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"DROP TABLE IF EXISTS entry_group;"
+argument_list|)
+expr_stmt|;
+comment|// generate DML that specifies DB columns corresponding to fields
+name|dml1
+operator|=
+name|SQLutil
+operator|.
+name|fieldsAsCols
+argument_list|(
+name|fields
+argument_list|,
+literal|" VARCHAR(3) DEFAULT NULL"
+argument_list|)
+expr_stmt|;
+name|dml2
+operator|=
+name|SQLutil
+operator|.
+name|fieldsAsCols
+argument_list|(
+name|fields
+argument_list|,
+literal|" TEXT DEFAULT NULL"
+argument_list|)
+expr_stmt|;
+comment|// create tables
+name|dmlTable_postgresql
 argument_list|(
 name|dml1
 argument_list|,
@@ -3419,6 +3653,177 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+comment|/**      * Generates DML code necessary to create all tables in a PostgreSQL database,       * and writes it to appropriate output.      *      * @param dml1      *            Column specifications for fields in entry_type table.      * @param dml2      *            Column specifications for fields in entries table.      * @param out      *            The output (PrintStream or Connection) object to which the DML should be written.      * @return DML to create all MySQL tables.      */
+DECL|method|dmlTable_postgresql (String dml1, String dml2, Object out)
+specifier|private
+specifier|static
+name|void
+name|dmlTable_postgresql
+parameter_list|(
+name|String
+name|dml1
+parameter_list|,
+name|String
+name|dml2
+parameter_list|,
+name|Object
+name|out
+parameter_list|)
+throws|throws
+name|SQLException
+block|{
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"CREATE TABLE entry_types ( \n"
+operator|+
+literal|"entry_types_id    SERIAL, \n"
+operator|+
+literal|"label			 TEXT, \n"
+operator|+
+name|dml1
+operator|+
+literal|", \n"
+operator|+
+literal|"PRIMARY KEY (entry_types_id) \n"
+operator|+
+literal|");"
+argument_list|)
+expr_stmt|;
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"CREATE TABLE entries ( \n"
+operator|+
+literal|"entries_id      SERIAL, \n"
+operator|+
+literal|"jabref_eid      VARCHAR("
+operator|+
+name|Util
+operator|.
+name|getMinimumIntegerDigits
+argument_list|()
+operator|+
+literal|")   DEFAULT NULL, \n"
+operator|+
+literal|"entry_types_id  INTEGER DEFAULT NULL, \n"
+operator|+
+literal|"cite_key        VARCHAR(100)     DEFAULT NULL, \n"
+operator|+
+name|dml2
+operator|+
+literal|",\n"
+operator|+
+literal|"PRIMARY KEY (entries_id), \n"
+operator|+
+literal|"FOREIGN KEY (entry_types_id) REFERENCES entry_types (entry_types_id) \n"
+operator|+
+literal|");"
+argument_list|)
+expr_stmt|;
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"CREATE TABLE strings ( \n"
+operator|+
+literal|"strings_id      SERIAL, \n"
+operator|+
+literal|"label      VARCHAR(100)  DEFAULT NULL, \n"
+operator|+
+literal|"content    VARCHAR(200)  DEFAULT NULL, \n"
+operator|+
+literal|"PRIMARY KEY (strings_id) \n"
+operator|+
+literal|");"
+argument_list|)
+expr_stmt|;
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"CREATE TABLE group_types ( \n"
+operator|+
+literal|"group_types_id  SERIAL, \n"
+operator|+
+literal|"label   VARCHAR(100)    DEFAULT NULL, \n"
+operator|+
+literal|"PRIMARY KEY (group_types_id) \n"
+operator|+
+literal|");"
+argument_list|)
+expr_stmt|;
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"CREATE TABLE groups ( \n"
+operator|+
+literal|"groups_id       SERIAL, \n"
+operator|+
+literal|"group_types_id  INTEGER         DEFAULT NULL, \n"
+operator|+
+literal|"label           VARCHAR(100)    DEFAULT NULL, \n"
+operator|+
+literal|"parent_id       INTEGER         DEFAULT NULL, \n"
+operator|+
+literal|"search_field       VARCHAR(100)          DEFAULT NULL, \n"
+operator|+
+literal|"search_expression  VARCHAR(200)          DEFAULT NULL, \n"
+operator|+
+literal|"case_sensitive  BOOLEAN       DEFAULT NULL, \n"
+operator|+
+literal|"reg_exp BOOLEAN DEFAULT NULL, \n"
+operator|+
+literal|"hierarchical_context INTEGER DEFAULT NULL, \n"
+operator|+
+literal|"PRIMARY KEY (groups_id) \n"
+operator|+
+literal|");"
+argument_list|)
+expr_stmt|;
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"CREATE TABLE entry_group ( \n"
+operator|+
+literal|"entries_id       SERIAL, \n"
+operator|+
+literal|"groups_id        INTEGER        DEFAULT NULL, \n"
+operator|+
+literal|"FOREIGN KEY (entries_id) REFERENCES entries (entries_id), \n"
+operator|+
+literal|"FOREIGN KEY (groups_id)  REFERENCES groups (groups_id) \n"
+operator|+
+literal|");"
+argument_list|)
+expr_stmt|;
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"CREATE INDEX entry_types_id_index ON entries (entry_types_id);"
+argument_list|)
+expr_stmt|;
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"CREATE INDEX entries_id_index ON entry_group (entries_id);"
+argument_list|)
+expr_stmt|;
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"CREATE INDEX groups_id_index ON entry_group (groups_id);"
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 comment|/**      * Generates DML code necessary to create all tables in a Derby database,       * and writes it to appropriate output.      *      * @param dml1      *            Column specifications for fields in entry_type table.      * @param dml2      *            Column specifications for fields in entries table.      * @param out      *            The output (PrintStream or Connection) object to which the DML should be written.      * @return DML to create all Derby tables.      */
 DECL|method|dmlTable_derby (String dml1, String dml2, Object out)
 specifier|private
@@ -3564,12 +3969,15 @@ expr_stmt|;
 return|return;
 block|}
 comment|/**      * Generates the DML required to populate the group_types table with      * JabRef data.      *      * @param out      *  The output (PrintSream or Connection) object to which the DML should be written.      * @throws SQLException      */
-DECL|method|dmlPopTab_GT ( Object out)
+DECL|method|dmlPopTab_GT ( DBTYPE dbtype,Object out)
 specifier|private
 specifier|static
 name|void
 name|dmlPopTab_GT
 parameter_list|(
+name|DBTYPE
+name|dbtype
+parameter_list|,
 name|Object
 name|out
 parameter_list|)
@@ -3629,12 +4037,39 @@ decl_stmt|;
 name|String
 name|insert
 init|=
+literal|""
+decl_stmt|;
+switch|switch
+condition|(
+name|dbtype
+condition|)
+block|{
+case|case
+name|MYSQL
+case|:
+name|insert
+operator|=
 literal|"INSERT INTO group_types (label) VALUES (\""
 operator|+
 name|typeName
 operator|+
 literal|"\");"
-decl_stmt|;
+expr_stmt|;
+break|break;
+case|case
+name|POSTGRESQL
+case|:
+name|insert
+operator|=
+literal|"INSERT INTO group_types (label) VALUES (\'"
+operator|+
+name|typeName
+operator|+
+literal|"\');"
+expr_stmt|;
+break|break;
+default|default:
+block|}
 comment|// handle DML according to output type
 name|processDML
 argument_list|(
@@ -3646,12 +4081,15 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Generates the DML required to populate the entry_types table with jabref      * data.      *       * @param out      *          The output (PrintSream or Connection) object to which the DML should be written.      */
-DECL|method|dmlPopTab_ET ( Object out)
+DECL|method|dmlPopTab_ET ( DBTYPE dbtype, Object out)
 specifier|private
 specifier|static
 name|void
 name|dmlPopTab_ET
 parameter_list|(
+name|DBTYPE
+name|dbtype
+parameter_list|,
 name|Object
 name|out
 parameter_list|)
@@ -3818,6 +4256,14 @@ literal|"uti"
 argument_list|)
 expr_stmt|;
 comment|// build DML insert statement
+switch|switch
+condition|(
+name|dbtype
+condition|)
+block|{
+case|case
+name|MYSQL
+case|:
 name|dml
 operator|=
 name|insert
@@ -3895,6 +4341,91 @@ operator|+
 literal|"NULL"
 expr_stmt|;
 block|}
+block|}
+break|break;
+case|case
+name|POSTGRESQL
+case|:
+name|dml
+operator|=
+name|insert
+operator|+
+literal|"\'"
+operator|+
+name|val
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|toLowerCase
+argument_list|()
+operator|+
+literal|"\'"
+expr_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|fieldID
+operator|.
+name|size
+argument_list|()
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|dml
+operator|=
+name|dml
+operator|+
+literal|", "
+expr_stmt|;
+if|if
+condition|(
+name|fieldID
+operator|.
+name|get
+argument_list|(
+name|i
+argument_list|)
+operator|!=
+literal|""
+condition|)
+block|{
+name|dml
+operator|=
+name|dml
+operator|+
+literal|"\'"
+operator|+
+name|fieldID
+operator|.
+name|get
+argument_list|(
+name|i
+argument_list|)
+operator|+
+literal|"\'"
+expr_stmt|;
+block|}
+else|else
+block|{
+name|dml
+operator|=
+name|dml
+operator|+
+literal|"NULL"
+expr_stmt|;
+block|}
+block|}
+break|break;
+default|default:
 block|}
 name|dml
 operator|=
@@ -3991,12 +4522,15 @@ name|fieldID
 return|;
 block|}
 comment|/**      * Generates the DML required to populate the entries table with jabref      * data and writes it to the output PrintStream.      *       * @param entries      *          The BibtexEntries to export           * @param out      *          The output (PrintStream or Connection) object to which the DML should be written.      */
-DECL|method|dmlPopTab_FD (List<BibtexEntry> entries, Object out)
+DECL|method|dmlPopTab_FD (DBTYPE dbtype,List<BibtexEntry> entries, Object out)
 specifier|private
 specifier|static
 name|void
 name|dmlPopTab_FD
 parameter_list|(
+name|DBTYPE
+name|dbtype
+parameter_list|,
 name|List
 argument_list|<
 name|BibtexEntry
@@ -4038,6 +4572,14 @@ name|entries
 control|)
 block|{
 comment|// build DML insert statement
+switch|switch
+condition|(
+name|dbtype
+condition|)
+block|{
+case|case
+name|MYSQL
+case|:
 name|dml
 operator|=
 name|insert
@@ -4073,6 +4615,48 @@ argument_list|()
 operator|+
 literal|"\""
 expr_stmt|;
+break|break;
+case|case
+name|POSTGRESQL
+case|:
+name|dml
+operator|=
+name|insert
+operator|+
+literal|"\'"
+operator|+
+name|entry
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|"\'"
+operator|+
+literal|", (SELECT entry_types_id FROM entry_types WHERE label=\'"
+operator|+
+name|entry
+operator|.
+name|getType
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+operator|.
+name|toLowerCase
+argument_list|()
+operator|+
+literal|"\'), \'"
+operator|+
+name|entry
+operator|.
+name|getCiteKey
+argument_list|()
+operator|+
+literal|"\'"
+expr_stmt|;
+break|break;
+default|default:
+block|}
 for|for
 control|(
 name|int
@@ -4118,6 +4702,14 @@ operator|!=
 literal|null
 condition|)
 block|{
+switch|switch
+condition|(
+name|dbtype
+condition|)
+block|{
+case|case
+name|MYSQL
+case|:
 comment|//escape slashes and quotes for MySQL
 name|val
 operator|=
@@ -4173,6 +4765,68 @@ name|val
 operator|+
 literal|"\""
 expr_stmt|;
+break|break;
+case|case
+name|POSTGRESQL
+case|:
+comment|//escape slashes and quotes for PostgreSQL
+name|val
+operator|=
+name|val
+operator|.
+name|replace
+argument_list|(
+literal|"\\"
+argument_list|,
+literal|"\\\\"
+argument_list|)
+expr_stmt|;
+name|val
+operator|=
+name|val
+operator|.
+name|replace
+argument_list|(
+literal|"\""
+argument_list|,
+literal|"\\\""
+argument_list|)
+expr_stmt|;
+name|val
+operator|=
+name|val
+operator|.
+name|replace
+argument_list|(
+literal|"\'"
+argument_list|,
+literal|"\\\'"
+argument_list|)
+expr_stmt|;
+name|val
+operator|=
+name|val
+operator|.
+name|replace
+argument_list|(
+literal|"`"
+argument_list|,
+literal|"\\`"
+argument_list|)
+expr_stmt|;
+name|dml
+operator|=
+name|dml
+operator|+
+literal|"\'"
+operator|+
+name|val
+operator|+
+literal|"\'"
+expr_stmt|;
+break|break;
+default|default:
+block|}
 block|}
 else|else
 block|{
@@ -4369,12 +5023,15 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Generates the DML required to populate the groups table with jabref      * data, and writes this DML to the output file.      *       * @param cursor      *            The current GroupTreeNode in the GroupsTree      * @param out      *            The output (PrintStream or Connection) object to which the DML should be written.      */
-DECL|method|dmlPopTab_GP (GroupTreeNode cursor, Object out)
+DECL|method|dmlPopTab_GP (DBTYPE dbtype, GroupTreeNode cursor, Object out)
 specifier|private
 specifier|static
 name|int
 name|dmlPopTab_GP
 parameter_list|(
+name|DBTYPE
+name|dbtype
+parameter_list|,
 name|GroupTreeNode
 name|cursor
 parameter_list|,
@@ -4389,6 +5046,8 @@ name|cnt
 init|=
 name|dmlPopTab_GP_worker
 argument_list|(
+name|dbtype
+argument_list|,
 name|cursor
 argument_list|,
 literal|1
@@ -4403,12 +5062,15 @@ name|cnt
 return|;
 block|}
 comment|/**      * Recursive worker method for the dmlPopTab_GP methods.      *      * @param cursor      *            The current GroupTreeNode in the GroupsTree      * @param parentID      *            The integer ID associated with the cursors's parent node      * @param ID      *            The integer value to associate with the cursor      * @param out      *            The output (PrintStream or Connection) object to which the DML should be written.      */
-DECL|method|dmlPopTab_GP_worker (GroupTreeNode cursor, int parentID, int ID, Object out)
+DECL|method|dmlPopTab_GP_worker (DBTYPE dbtype, GroupTreeNode cursor, int parentID, int ID, Object out)
 specifier|private
 specifier|static
 name|int
 name|dmlPopTab_GP_worker
 parameter_list|(
+name|DBTYPE
+name|dbtype
+parameter_list|,
 name|GroupTreeNode
 name|cursor
 parameter_list|,
@@ -4614,6 +5276,14 @@ literal|'\\'
 argument_list|)
 expr_stmt|;
 comment|// handle DML according to output type
+switch|switch
+condition|(
+name|dbtype
+condition|)
+block|{
+case|case
+name|MYSQL
+case|:
 name|processDML
 argument_list|(
 name|out
@@ -4720,6 +5390,119 @@ operator|+
 literal|");"
 argument_list|)
 expr_stmt|;
+break|break;
+case|case
+name|POSTGRESQL
+case|:
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"INSERT INTO groups (groups_id, label, parent_id, group_types_id, search_field, "
+operator|+
+literal|"search_expression, case_sensitive, reg_exp, hierarchical_context) "
+operator|+
+literal|"VALUES ("
+operator|+
+name|ID
+operator|+
+literal|", \'"
+operator|+
+name|cursor
+operator|.
+name|getGroup
+argument_list|()
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|"\', "
+operator|+
+name|parentID
+operator|+
+literal|", (SELECT group_types_id FROM group_types where label=\'"
+operator|+
+name|group
+operator|.
+name|getTypeId
+argument_list|()
+operator|+
+literal|"\')"
+operator|+
+literal|", "
+operator|+
+operator|(
+name|searchField
+operator|!=
+literal|null
+condition|?
+literal|"\'"
+operator|+
+name|searchField
+operator|+
+literal|"\'"
+else|:
+literal|"NULL"
+operator|)
+operator|+
+literal|", "
+operator|+
+operator|(
+name|searchExpr
+operator|!=
+literal|null
+condition|?
+literal|"\'"
+operator|+
+name|searchExpr
+operator|+
+literal|"\'"
+else|:
+literal|"NULL"
+operator|)
+operator|+
+literal|", "
+operator|+
+operator|(
+name|caseSensitive
+operator|!=
+literal|null
+condition|?
+literal|"\'"
+operator|+
+name|caseSensitive
+operator|+
+literal|"\'"
+else|:
+literal|"NULL"
+operator|)
+operator|+
+literal|", "
+operator|+
+operator|(
+name|reg_exp
+operator|!=
+literal|null
+condition|?
+literal|"\'"
+operator|+
+name|reg_exp
+operator|+
+literal|"\'"
+else|:
+literal|"NULL"
+operator|)
+operator|+
+literal|", "
+operator|+
+name|hierContext
+operator|+
+literal|");"
+argument_list|)
+expr_stmt|;
+break|break;
+default|default:
+block|}
 comment|// recurse on child nodes (depth-first traversal)
 name|int
 name|myID
@@ -4749,6 +5532,8 @@ name|ID
 operator|=
 name|dmlPopTab_GP_worker
 argument_list|(
+name|dbtype
+argument_list|,
 name|e
 operator|.
 name|nextElement
@@ -4767,12 +5552,15 @@ name|ID
 return|;
 block|}
 comment|/**      * Generates the DML required to populate the entry_group table with jabref      * data, and writes the DML to the PrintStream.      *       * @param cursor      *            The current GroupTreeNode in the GroupsTree      * @param out      *            The output (PrintStream or Connection) object to which the DML should be written.      */
-DECL|method|dmlPopTab_EG (GroupTreeNode cursor, Object fout)
+DECL|method|dmlPopTab_EG (DBTYPE dbtype,GroupTreeNode cursor, Object fout)
 specifier|private
 specifier|static
 name|int
 name|dmlPopTab_EG
 parameter_list|(
+name|DBTYPE
+name|dbtype
+parameter_list|,
 name|GroupTreeNode
 name|cursor
 parameter_list|,
@@ -4787,6 +5575,8 @@ name|cnt
 init|=
 name|dmlPopTab_EG_worker
 argument_list|(
+name|dbtype
+argument_list|,
 name|cursor
 argument_list|,
 literal|1
@@ -4801,12 +5591,15 @@ name|cnt
 return|;
 block|}
 comment|/**      * Recursive worker method for the dmlPopTab_EG methods.      *       * @param cursor      *            The current GroupTreeNode in the GroupsTree      * @param parentID      *            The integer ID associated with the cursors's parent node      * @param ID      *            The integer value to associate with the cursor      * @param out      *            The output (PrintStream or Connection) object to which the DML should be written.      */
-DECL|method|dmlPopTab_EG_worker (GroupTreeNode cursor, int parentID, int ID, Object out)
+DECL|method|dmlPopTab_EG_worker (DBTYPE dbtype,GroupTreeNode cursor, int parentID, int ID, Object out)
 specifier|private
 specifier|static
 name|int
 name|dmlPopTab_EG_worker
 parameter_list|(
+name|DBTYPE
+name|dbtype
+parameter_list|,
 name|GroupTreeNode
 name|cursor
 parameter_list|,
@@ -4857,6 +5650,14 @@ argument_list|()
 control|)
 block|{
 comment|// handle DML according to output type
+switch|switch
+condition|(
+name|dbtype
+condition|)
+block|{
+case|case
+name|MYSQL
+case|:
 name|processDML
 argument_list|(
 name|out
@@ -4889,6 +5690,45 @@ operator|+
 literal|");"
 argument_list|)
 expr_stmt|;
+break|break;
+case|case
+name|POSTGRESQL
+case|:
+name|processDML
+argument_list|(
+name|out
+argument_list|,
+literal|"INSERT INTO entry_group (entries_id, groups_id) "
+operator|+
+literal|"VALUES ("
+operator|+
+literal|"(SELECT entries_id FROM entries WHERE jabref_eid="
+operator|+
+literal|"\'"
+operator|+
+name|be
+operator|.
+name|getId
+argument_list|()
+operator|+
+literal|"\'"
+operator|+
+literal|"), "
+operator|+
+literal|"(SELECT groups_id FROM groups WHERE groups_id="
+operator|+
+literal|"\'"
+operator|+
+name|ID
+operator|+
+literal|"\')"
+operator|+
+literal|");"
+argument_list|)
+expr_stmt|;
+break|break;
+default|default:
+block|}
 block|}
 block|}
 comment|// recurse on child nodes (depth-first traversal)
@@ -4920,6 +5760,8 @@ name|ID
 operator|=
 name|dmlPopTab_EG_worker
 argument_list|(
+name|dbtype
+argument_list|,
 name|e
 operator|.
 name|nextElement
@@ -4963,6 +5805,17 @@ condition|)
 block|{
 case|case
 name|MYSQL
+case|:
+name|errorMessage
+operator|=
+name|getExceptionMessage_MySQL
+argument_list|(
+name|ex
+argument_list|)
+expr_stmt|;
+break|break;
+case|case
+name|POSTGRESQL
 case|:
 name|errorMessage
 operator|=

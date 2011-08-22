@@ -153,6 +153,13 @@ name|lang
 argument_list|(
 literal|"MySQL"
 argument_list|)
+block|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"PostgreSQL"
+argument_list|)
 block|}
 decl_stmt|;
 name|setServerTypes
