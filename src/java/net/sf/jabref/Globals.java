@@ -1210,6 +1210,8 @@ block|,
 literal|"for"
 block|,
 literal|"on"
+block|,
+literal|"of"
 block|}
 decl_stmt|;
 DECL|field|sidePaneManager
