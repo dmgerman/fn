@@ -2477,7 +2477,11 @@ name|getPrimaryOptionalFields
 parameter_list|()
 block|{
 return|return
-literal|null
+operator|new
+name|String
+index|[
+literal|0
+index|]
 return|;
 block|}
 DECL|method|describeRequiredFields ()
