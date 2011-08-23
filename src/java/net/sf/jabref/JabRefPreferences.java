@@ -747,7 +747,7 @@ name|put
 argument_list|(
 name|EMACS_ADDITIONAL_PARAMETERS
 argument_list|,
-literal|"-e"
+literal|"-n -e"
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -821,7 +821,7 @@ name|put
 argument_list|(
 name|EMACS_ADDITIONAL_PARAMETERS
 argument_list|,
-literal|"-e"
+literal|"-n -e"
 argument_list|)
 expr_stmt|;
 name|defaults
