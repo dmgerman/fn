@@ -787,6 +787,20 @@ literal|"--"
 argument_list|,
 literal|"{\\\\endash}"
 argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"``"
+argument_list|,
+literal|"{\\\\ldblquote}"
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"''"
+argument_list|,
+literal|"{\\\\rdblquote}"
+argument_list|)
 return|;
 block|}
 DECL|method|getPart (String text, int i)
