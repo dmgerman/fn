@@ -622,7 +622,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Returns the processed bibtex entry. If the database argument is      * null, no string references will be resolved. Otherwise all valid      * string references will be replaced by the strings' contents. Even      * recursive string references are resolved.      */
 DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database)
 specifier|public
 name|String
@@ -633,6 +632,36 @@ name|bibtex
 parameter_list|,
 name|BibtexDatabase
 name|database
+parameter_list|)
+block|{
+return|return
+name|doLayout
+argument_list|(
+name|bibtex
+argument_list|,
+name|database
+argument_list|,
+literal|null
+argument_list|)
+return|;
+block|}
+comment|/**      * Returns the processed bibtex entry. If the database argument is      * null, no string references will be resolved. Otherwise all valid      * string references will be replaced by the strings' contents. Even      * recursive string references are resolved.      */
+DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database, ArrayList<String> wordsToHighlight)
+specifier|public
+name|String
+name|doLayout
+parameter_list|(
+name|BibtexEntry
+name|bibtex
+parameter_list|,
+name|BibtexDatabase
+name|database
+parameter_list|,
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+name|wordsToHighlight
 parameter_list|)
 block|{
 name|StringBuffer
@@ -674,6 +703,8 @@ argument_list|(
 name|bibtex
 argument_list|,
 name|database
+argument_list|,
+name|wordsToHighlight
 argument_list|)
 decl_stmt|;
 comment|// 2005.05.05 M. Alver

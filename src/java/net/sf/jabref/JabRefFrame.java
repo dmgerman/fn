@@ -2596,6 +2596,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|searchManager
+specifier|private
 name|SearchManager2
 name|searchManager
 decl_stmt|;
@@ -13264,6 +13265,16 @@ argument_list|,
 name|message
 argument_list|)
 expr_stmt|;
+block|}
+DECL|method|getSearchManager ()
+specifier|public
+name|SearchManager2
+name|getSearchManager
+parameter_list|()
+block|{
+return|return
+name|searchManager
+return|;
 block|}
 block|}
 end_class

@@ -1598,6 +1598,17 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+literal|"highLightWords"
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
 literal|"searchPanePosX"
 argument_list|,
 operator|new

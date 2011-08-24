@@ -4744,7 +4744,8 @@ literal|true
 condition|)
 name|frame
 operator|.
-name|searchManager
+name|getSearchManager
+argument_list|()
 operator|.
 name|startSearch
 argument_list|()
@@ -4801,7 +4802,8 @@ name|on
 condition|)
 name|frame
 operator|.
-name|searchManager
+name|getSearchManager
+argument_list|()
 operator|.
 name|startSearch
 argument_list|()
@@ -4843,7 +4845,8 @@ argument_list|)
 expr_stmt|;
 name|frame
 operator|.
-name|searchManager
+name|getSearchManager
+argument_list|()
 operator|.
 name|startIncrementalSearch
 argument_list|()

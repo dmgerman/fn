@@ -891,7 +891,8 @@ expr_stmt|;
 comment|//inform the fieldtextarea of search events to highlight searchstrings
 name|frame
 operator|.
-name|searchManager
+name|getSearchManager
+argument_list|()
 operator|.
 name|addSearchListener
 argument_list|(

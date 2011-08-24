@@ -20,16 +20,6 @@ name|java
 operator|.
 name|awt
 operator|.
-name|FileDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
 name|Toolkit
 import|;
 end_import
@@ -51,16 +41,6 @@ operator|.
 name|io
 operator|.
 name|FileNotFoundException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|FilenameFilter
 import|;
 end_import
 
@@ -208,48 +188,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JComponent
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JFileChooser
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JFrame
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|event
-operator|.
-name|UndoableEditListener
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -370,6 +308,18 @@ init|=
 literal|70
 decl_stmt|;
 comment|// The line length used to wrap metadata.
+comment|// used at highlighting in preview area.
+comment|// Color chosen similar to JTextComponent.getSelectionColor(), which is
+comment|// used at highlighting words at the editor
+DECL|field|highlightColor
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|highlightColor
+init|=
+literal|"#3399FF"
+decl_stmt|;
 DECL|field|resourcePrefix
 DECL|field|menuResourcePrefix
 specifier|private

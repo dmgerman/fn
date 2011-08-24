@@ -72,7 +72,7 @@ name|suite
 operator|.
 name|addTestSuite
 argument_list|(
-name|RTFCharsTest
+name|LayoutEntryTest
 operator|.
 name|class
 argument_list|)
@@ -82,6 +82,15 @@ operator|.
 name|addTestSuite
 argument_list|(
 name|LayoutTest
+operator|.
+name|class
+argument_list|)
+expr_stmt|;
+name|suite
+operator|.
+name|addTestSuite
+argument_list|(
+name|RTFCharsTest
 operator|.
 name|class
 argument_list|)

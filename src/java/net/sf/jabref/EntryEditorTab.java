@@ -993,7 +993,8 @@ argument_list|)
 expr_stmt|;
 name|frame
 operator|.
-name|searchManager
+name|getSearchManager
+argument_list|()
 operator|.
 name|addSearchListener
 argument_list|(
