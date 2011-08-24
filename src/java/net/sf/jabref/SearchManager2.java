@@ -3201,6 +3201,14 @@ name|stopShowingSearchResults
 argument_list|()
 expr_stmt|;
 block|}
+comment|// clear search means that nothing is searched for
+comment|// even if a word is written in the text field,
+comment|// nothing should be highlighted
+name|fireSearchlistenerEvent
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
 comment|// disable "Cancel" button to signal this to the user
 name|escape
 operator|.

@@ -3205,8 +3205,20 @@ block|{
 name|source
 operator|=
 operator|new
-name|JTextArea
+name|JTextAreaWithHighlighting
 argument_list|()
+expr_stmt|;
+name|frame
+operator|.
+name|searchManager
+operator|.
+name|addSearchListener
+argument_list|(
+operator|(
+name|SearchTextListener
+operator|)
+name|source
+argument_list|)
 expr_stmt|;
 comment|/* {             private boolean antialias = Globals.prefs.getBoolean("antialias");              public void paint(Graphics g) {                 Graphics2D g2 = (Graphics2D) g;                 if (antialias)                     g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,                         RenderingHints.VALUE_ANTIALIAS_ON);                 super.paint(g2);             }         };*/
 comment|//DefaultFormBuilder builder = new DefaultFormBuilder
