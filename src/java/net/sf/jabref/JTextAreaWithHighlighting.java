@@ -263,10 +263,18 @@ literal|null
 operator|||
 name|words
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
+operator|||
+name|words
+operator|.
+name|get
+argument_list|(
 literal|0
+argument_list|)
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 return|return;
@@ -275,9 +283,6 @@ name|String
 name|content
 init|=
 name|getText
-argument_list|()
-operator|.
-name|toUpperCase
 argument_list|()
 decl_stmt|;
 if|if
@@ -338,7 +343,18 @@ parameter_list|(
 name|BadLocationException
 name|ble
 parameter_list|)
-block|{ 			}
+block|{
+comment|// should not occur if matcher works right
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+name|ble
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 annotation|@
