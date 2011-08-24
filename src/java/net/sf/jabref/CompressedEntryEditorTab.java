@@ -874,6 +874,7 @@ name|parent
 argument_list|)
 expr_stmt|;
 else|else
+block|{
 name|ta
 operator|=
 operator|new
@@ -887,6 +888,20 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+comment|//inform the fieldtextarea of search events to highlight searchstrings
+name|frame
+operator|.
+name|searchManager
+operator|.
+name|addSearchListener
+argument_list|(
+operator|(
+name|FieldTextArea
+operator|)
+name|ta
+argument_list|)
+expr_stmt|;
+block|}
 comment|//ta.addUndoableEditListener(bPanel.undoListener);
 name|JComponent
 name|ex

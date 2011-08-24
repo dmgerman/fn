@@ -30,11 +30,33 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|SearchTextListener
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|awt
 operator|.
 name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
 import|;
 end_import
 
@@ -120,6 +142,42 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|text
+operator|.
+name|BadLocationException
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|text
+operator|.
+name|DefaultHighlighter
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|text
+operator|.
+name|Highlighter
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|undo
 operator|.
 name|UndoManager
@@ -151,6 +209,8 @@ extends|extends
 name|JTextArea
 implements|implements
 name|FieldEditor
+implements|,
+name|SearchTextListener
 block|{
 DECL|field|PREFERRED_SIZE
 name|Dimension
@@ -201,7 +261,184 @@ name|autoCompleteListener
 init|=
 literal|null
 decl_stmt|;
-comment|//protected UndoManager undo = new UndoManager();
+comment|// protected UndoManager undo = new UndoManager();
+comment|//text to highlight (like from searches)
+DECL|field|textToHighlight
+specifier|private
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+name|textToHighlight
+decl_stmt|;
+comment|/** 	 * Highlight words in the Textarea 	 *  	 * @param words to highlight 	 */
+DECL|method|highLight (ArrayList<String> words)
+specifier|private
+name|void
+name|highLight
+parameter_list|(
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+name|words
+parameter_list|)
+block|{
+comment|// highlight all characters that appear in charsToHighlight
+name|Highlighter
+name|h
+init|=
+name|getHighlighter
+argument_list|()
+decl_stmt|;
+comment|// myTa.set
+name|h
+operator|.
+name|removeAllHighlights
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|words
+operator|==
+literal|null
+operator|||
+name|words
+operator|.
+name|size
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+return|return;
+block|}
+name|String
+name|content
+init|=
+name|getText
+argument_list|()
+operator|.
+name|toUpperCase
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|content
+operator|.
+name|equals
+argument_list|(
+literal|""
+argument_list|)
+condition|)
+return|return;
+for|for
+control|(
+name|String
+name|word
+range|:
+name|words
+control|)
+block|{
+name|String
+name|text
+init|=
+name|word
+operator|.
+name|toUpperCase
+argument_list|()
+decl_stmt|;
+name|int
+name|index
+init|=
+literal|0
+decl_stmt|;
+while|while
+condition|(
+literal|true
+condition|)
+block|{
+name|int
+name|startposition
+init|=
+name|content
+operator|.
+name|indexOf
+argument_list|(
+name|text
+argument_list|,
+name|index
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|startposition
+operator|==
+operator|-
+literal|1
+condition|)
+break|break;
+try|try
+block|{
+comment|//				System.out.println("highlight @ " + startposition);
+name|h
+operator|.
+name|addHighlight
+argument_list|(
+name|startposition
+argument_list|,
+name|startposition
+operator|+
+name|text
+operator|.
+name|length
+argument_list|()
+argument_list|,
+name|DefaultHighlighter
+operator|.
+name|DefaultPainter
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|BadLocationException
+name|ble
+parameter_list|)
+block|{ 			}
+name|index
+operator|=
+name|startposition
+operator|+
+literal|1
+expr_stmt|;
+block|}
+block|}
+block|}
+annotation|@
+name|Override
+DECL|method|setText (String t)
+specifier|public
+name|void
+name|setText
+parameter_list|(
+name|String
+name|t
+parameter_list|)
+block|{
+name|super
+operator|.
+name|setText
+argument_list|(
+name|t
+argument_list|)
+expr_stmt|;
+name|highLight
+argument_list|(
+name|textToHighlight
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|FieldTextArea (String fieldName_, String content)
 specifier|public
 name|FieldTextArea
@@ -219,7 +456,7 @@ name|content
 argument_list|)
 expr_stmt|;
 comment|// Listen for undo and redo events
-comment|/*getDocument().addUndoableEditListener(new UndoableEditListener() {             public void undoableEditHappened(UndoableEditEvent evt) {                 undo.addEdit(evt.getEdit());             }         });*/
+comment|/* 		 * getDocument().addUndoableEditListener(new UndoableEditListener() { 		 * public void undoableEditHappened(UndoableEditEvent evt) { 		 * undo.addEdit(evt.getEdit()); } }); 		 */
 name|updateFont
 argument_list|()
 expr_stmt|;
@@ -313,7 +550,7 @@ operator|.
 name|editorTextColor
 argument_list|)
 expr_stmt|;
-comment|//setFont(new Font("Times", Font.PLAIN, 10));
+comment|// setFont(new Font("Times", Font.PLAIN, 10));
 name|FieldTextMenu
 name|popMenu
 init|=
@@ -349,7 +586,7 @@ name|getPreferredSize
 argument_list|()
 return|;
 block|}
-comment|/*public void paint(Graphics g) { 		Graphics2D g2 = (Graphics2D) g; 		if (antialias) 			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON); 		super.paint(g2); 	}*/
+comment|/* 	 * public void paint(Graphics g) { Graphics2D g2 = (Graphics2D) g; if 	 * (antialias) g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, 	 * RenderingHints.VALUE_ANTIALIAS_ON); super.paint(g2); } 	 */
 DECL|method|getFieldName ()
 specifier|public
 name|String
@@ -551,7 +788,7 @@ block|{
 return|return
 literal|false
 return|;
-comment|//undo.canUndo();
+comment|// undo.canUndo();
 block|}
 DECL|method|undo ()
 specifier|public
@@ -559,7 +796,7 @@ name|void
 name|undo
 parameter_list|()
 block|{
-comment|/*try {             if (undo.canUndo()) {                 undo.undo();             }         } catch (CannotUndoException e) {         } */
+comment|/* 		 * try { if (undo.canUndo()) { undo.undo(); } } catch 		 * (CannotUndoException e) { } 		 */
 block|}
 DECL|method|hasRedoInformation ()
 specifier|public
@@ -570,7 +807,7 @@ block|{
 return|return
 literal|false
 return|;
-comment|//undo.canRedo();
+comment|// undo.canRedo();
 block|}
 DECL|method|redo ()
 specifier|public
@@ -578,7 +815,7 @@ name|void
 name|redo
 parameter_list|()
 block|{
-comment|/*try {             if (undo.canRedo()) {                 undo.redo();             }         } catch (CannotUndoException e) {         }*/
+comment|/* 		 * try { if (undo.canRedo()) { undo.redo(); } } catch 		 * (CannotUndoException e) { } 		 */
 block|}
 DECL|method|addUndoableEditListener (UndoableEditListener listener)
 specifier|public
@@ -633,6 +870,32 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
+DECL|method|searchText (ArrayList<String> words)
+specifier|public
+name|void
+name|searchText
+parameter_list|(
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+name|words
+parameter_list|)
+block|{
+comment|// words have to be stored in class variable as
+comment|// setText() makes use of them
+name|textToHighlight
+operator|=
+name|words
+expr_stmt|;
+name|highLight
+argument_list|(
+name|words
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class
