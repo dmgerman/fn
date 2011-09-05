@@ -415,6 +415,28 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
+literal|"HTML list"
+argument_list|)
+argument_list|,
+literal|"listrefs"
+argument_list|,
+literal|"listrefs"
+argument_list|,
+literal|"listrefs"
+argument_list|,
+literal|".html"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|putFormat
+argument_list|(
+operator|new
+name|ExportFormat
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"HTML table (with Abstract& BibTeX)"
 argument_list|)
 argument_list|,
