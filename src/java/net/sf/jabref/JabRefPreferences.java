@@ -418,6 +418,11 @@ DECL|field|EMACS_ADDITIONAL_PARAMETERS
 name|EMACS_ADDITIONAL_PARAMETERS
 init|=
 literal|"emacsParameters"
+decl_stmt|,
+DECL|field|EDIT_GROUP_MEMBERSHIP_MODE
+name|EDIT_GROUP_MEMBERSHIP_MODE
+init|=
+literal|"groupEditGroupMembershipMode"
 decl_stmt|;
 comment|// This String is used in the encoded list in prefs of external file type
 comment|// modifications, in order to indicate a removed default file type:
@@ -1810,6 +1815,17 @@ argument_list|(
 literal|"groupKeywordSeparator"
 argument_list|,
 literal|", "
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|EDIT_GROUP_MEMBERSHIP_MODE
+argument_list|,
+name|Boolean
+operator|.
+name|FALSE
 argument_list|)
 expr_stmt|;
 name|defaults
