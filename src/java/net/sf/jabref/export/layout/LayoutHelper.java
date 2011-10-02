@@ -1140,6 +1140,12 @@ name|char
 operator|)
 name|c
 argument_list|)
+operator|&&
+operator|(
+name|c
+operator|!=
+literal|'_'
+operator|)
 condition|)
 block|{
 name|unread
