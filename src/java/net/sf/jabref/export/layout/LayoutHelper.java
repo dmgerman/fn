@@ -1146,6 +1146,12 @@ name|c
 operator|!=
 literal|'_'
 operator|)
+operator|&&
+operator|(
+name|c
+operator|!=
+literal|'-'
+operator|)
 condition|)
 block|{
 name|unread
