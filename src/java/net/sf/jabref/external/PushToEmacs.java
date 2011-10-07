@@ -134,6 +134,15 @@ argument_list|(
 literal|30
 argument_list|)
 decl_stmt|;
+DECL|field|useEmacs23
+specifier|private
+name|JCheckBox
+name|useEmacs23
+init|=
+operator|new
+name|JCheckBox
+argument_list|()
+decl_stmt|;
 DECL|field|couldNotConnect
 DECL|field|couldNotRunClient
 specifier|private
@@ -272,6 +281,22 @@ name|EMACS_ADDITIONAL_PARAMETERS
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|useEmacs23
+operator|.
+name|setSelected
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EMACS_23
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return
 name|settings
 return|;
@@ -325,6 +350,22 @@ argument_list|,
 name|additionalParams
 operator|.
 name|getText
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|putBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EMACS_23
+argument_list|,
+name|useEmacs23
+operator|.
+name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -446,6 +487,35 @@ operator|.
 name|append
 argument_list|(
 name|additionalParams
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|nextLine
+argument_list|()
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Use EMACS 23 insertion string"
+argument_list|)
+operator|.
+name|concat
+argument_list|(
+literal|":"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|useEmacs23
 argument_list|)
 expr_stmt|;
 name|builder
@@ -596,6 +666,46 @@ name|i
 index|]
 expr_stmt|;
 block|}
+name|String
+name|prefix
+decl_stmt|;
+name|String
+name|suffix
+decl_stmt|;
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EMACS_23
+argument_list|)
+condition|)
+block|{
+name|prefix
+operator|=
+literal|"(with-current-buffer (window-buffer) (insert "
+expr_stmt|;
+name|suffix
+operator|=
+literal|"))"
+expr_stmt|;
+block|}
+else|else
+block|{
+name|prefix
+operator|=
+literal|"(insert "
+expr_stmt|;
+name|suffix
+operator|=
+literal|")"
+expr_stmt|;
+block|}
 name|com
 index|[
 name|com
@@ -613,7 +723,11 @@ comment|// Windows gnuclient escaping:
 comment|// java string: "(insert \\\"\\\\cite{Blah2001}\\\")";
 comment|// so cmd receives: (insert \"\\cite{Blah2001}\")
 comment|// so emacs receives: (insert "\cite{Blah2001}")
-literal|"(insert \\\"\\\\"
+name|prefix
+operator|.
+name|concat
+argument_list|(
+literal|"\\\"\\"
 operator|+
 name|Globals
 operator|.
@@ -635,13 +749,23 @@ literal|"{"
 operator|+
 name|keys
 operator|+
-literal|"}\\\")"
+literal|"}\\\""
+argument_list|)
+operator|.
+name|concat
+argument_list|(
+name|suffix
+argument_list|)
 else|:
 comment|// Linux gnuclient escaping:
 comment|// java string: "(insert \"\\\\cite{Blah2001}\")"
 comment|// so sh receives: (insert "\\cite{Blah2001}")
 comment|// so emacs receives: (insert "\cite{Blah2001}")
-literal|"(insert \""
+name|prefix
+operator|.
+name|concat
+argument_list|(
+literal|"\""
 operator|+
 name|Globals
 operator|.
@@ -663,7 +787,13 @@ literal|"{"
 operator|+
 name|keys
 operator|+
-literal|"}\")"
+literal|"}\""
+argument_list|)
+operator|.
+name|concat
+argument_list|(
+name|suffix
+argument_list|)
 expr_stmt|;
 specifier|final
 name|Process

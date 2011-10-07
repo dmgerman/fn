@@ -419,6 +419,11 @@ name|EMACS_ADDITIONAL_PARAMETERS
 init|=
 literal|"emacsParameters"
 decl_stmt|,
+DECL|field|EMACS_23
+name|EMACS_23
+init|=
+literal|"emacsUseV23InsertString"
+decl_stmt|,
 DECL|field|EDIT_GROUP_MEMBERSHIP_MODE
 name|EDIT_GROUP_MEMBERSHIP_MODE
 init|=
@@ -750,6 +755,15 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|EMACS_23
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
 name|EMACS_ADDITIONAL_PARAMETERS
 argument_list|,
 literal|"-n -e"
@@ -824,6 +838,15 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|EMACS_23
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
 name|EMACS_ADDITIONAL_PARAMETERS
 argument_list|,
 literal|"-n -e"
@@ -870,6 +893,15 @@ argument_list|(
 name|EMACS_PATH
 argument_list|,
 literal|"gnuclient"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|EMACS_23
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 name|defaults
