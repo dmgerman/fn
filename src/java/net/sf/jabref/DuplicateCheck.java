@@ -50,6 +50,16 @@ specifier|public
 class|class
 name|DuplicateCheck
 block|{
+DECL|field|reqWeight
+specifier|final
+specifier|static
+name|double
+name|reqWeight
+init|=
+literal|3
+decl_stmt|;
+comment|// Weighting of all required fields
+comment|// Extra weighting of those fields that are most likely to provide correct duplicate detection:
 DECL|field|fieldWeights
 specifier|static
 name|HashMap
@@ -138,6 +148,7 @@ condition|)
 return|return
 literal|false
 return|;
+comment|//System.out.println(one.getCiteKey()+" : "+two.getCiteKey());
 comment|// The check if they have the same required fields:
 name|String
 index|[]
@@ -152,11 +163,8 @@ name|getRequiredFields
 argument_list|()
 decl_stmt|;
 name|double
+index|[]
 name|req
-decl_stmt|,
-name|reqWeight
-init|=
-literal|4
 decl_stmt|;
 if|if
 condition|(
@@ -167,11 +175,14 @@ condition|)
 block|{
 name|req
 operator|=
-literal|0
-expr_stmt|;
-name|reqWeight
-operator|=
-literal|0
+operator|new
+name|double
+index|[]
+block|{
+literal|0.
+block|,
+literal|0.
+block|}
 expr_stmt|;
 block|}
 else|else
@@ -186,7 +197,7 @@ argument_list|,
 name|two
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("Req comp: "+req);
+comment|//System.out.println("Req comp: "+req[0]+" / "+req[1]);
 name|fields
 operator|=
 name|one
@@ -205,6 +216,7 @@ literal|null
 condition|)
 block|{
 name|double
+index|[]
 name|opt
 init|=
 name|compareFieldSet
@@ -216,22 +228,51 @@ argument_list|,
 name|two
 argument_list|)
 decl_stmt|;
-comment|//System.out.println("Opt comp: "+opt);
-comment|//System.out.println("Total: "+((reqWeight * req + opt) / (1 + reqWeight)));
-return|return
+comment|//System.out.println("Opt comp: "+opt[0]+" / "+opt[1]);
+comment|//System.out.println("Total: "+(reqWeight*req[0]*req[1] + opt[0]*opt[1]) / (req[1]*reqWeight+opt[1]));
+name|double
+name|totValue
+init|=
 operator|(
 name|reqWeight
 operator|*
 name|req
+index|[
+literal|0
+index|]
+operator|*
+name|req
+index|[
+literal|1
+index|]
 operator|+
 name|opt
+index|[
+literal|0
+index|]
+operator|*
+name|opt
+index|[
+literal|1
+index|]
 operator|)
 operator|/
 operator|(
+name|req
+index|[
 literal|1
-operator|+
+index|]
+operator|*
 name|reqWeight
+operator|+
+name|opt
+index|[
+literal|1
+index|]
 operator|)
+decl_stmt|;
+return|return
+name|totValue
 operator|>=
 name|Globals
 operator|.
@@ -243,6 +284,9 @@ block|{
 return|return
 operator|(
 name|req
+index|[
+literal|0
+index|]
 operator|>=
 name|Globals
 operator|.
@@ -255,6 +299,7 @@ DECL|method|compareFieldSet (String[] fields, BibtexEntry one, BibtexEntry two)
 specifier|private
 specifier|static
 name|double
+index|[]
 name|compareFieldSet
 parameter_list|(
 name|String
@@ -383,14 +428,28 @@ operator|>
 literal|0
 condition|)
 return|return
+operator|new
+name|double
+index|[]
+block|{
 name|res
 operator|/
 name|totWeights
+block|,
+name|totWeights
+block|}
 return|;
 else|else
 comment|// no fields present. This points to a possible duplicate?
 return|return
-literal|0.5f
+operator|new
+name|double
+index|[]
+block|{
+literal|0.5
+block|,
+literal|0.0
+block|}
 return|;
 block|}
 DECL|method|compareSingleField (String field, BibtexEntry one, BibtexEntry two)
@@ -887,6 +946,7 @@ name|i
 operator|++
 control|)
 block|{
+comment|/*if (!w1[i].equalsIgnoreCase(w2[i]))                 misses++;*/
 name|double
 name|corr
 init|=
