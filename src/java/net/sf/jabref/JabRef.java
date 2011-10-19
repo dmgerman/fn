@@ -2592,6 +2592,17 @@ operator|.
 name|FILE_FIELD
 argument_list|)
 expr_stmt|;
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|databaseFile
+operator|=
+name|metaData
+operator|.
+name|getFile
+argument_list|()
+expr_stmt|;
 name|System
 operator|.
 name|out

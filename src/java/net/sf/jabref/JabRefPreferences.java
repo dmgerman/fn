@@ -621,6 +621,16 @@ name|fileDirForDatabase
 init|=
 literal|null
 decl_stmt|;
+comment|// Similarly to the previous variable, this is a global that can be used during
+comment|// the export of a database if the database filename should be output. If a database
+comment|// is tied to a file on disk, this variable is set to that file before export starts:
+DECL|field|databaseFile
+specifier|public
+name|File
+name|databaseFile
+init|=
+literal|null
+decl_stmt|;
 comment|// The following field is used as a global variable during the export of a database.
 comment|// It is used to hold custom name formatters defined by a custom export filter.
 comment|// It is set before the export starts:
@@ -6191,6 +6201,15 @@ argument_list|(
 literal|"Fetch SPIRES"
 argument_list|,
 literal|"ctrl F8"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Fetch INSPIRE"
+argument_list|,
+literal|"ctrl F2"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds

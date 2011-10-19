@@ -1352,6 +1352,24 @@ operator|.
 name|FILE_FIELD
 argument_list|)
 expr_stmt|;
+comment|// Also store the database's file in a global variable:
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|databaseFile
+operator|=
+name|frame
+operator|.
+name|basePanel
+argument_list|()
+operator|.
+name|metaData
+argument_list|()
+operator|.
+name|getFile
+argument_list|()
+expr_stmt|;
 comment|// Make sure we remember which filter was used, to set
 comment|// the default for next time:
 name|Globals

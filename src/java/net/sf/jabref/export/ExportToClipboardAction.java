@@ -455,6 +455,24 @@ operator|.
 name|FILE_FIELD
 argument_list|)
 expr_stmt|;
+comment|// Also store the database's file in a global variable:
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|databaseFile
+operator|=
+name|frame
+operator|.
+name|basePanel
+argument_list|()
+operator|.
+name|metaData
+argument_list|()
+operator|.
+name|getFile
+argument_list|()
+expr_stmt|;
 comment|/*final boolean custom = (list.getSelectedIndex()>= Globals.STANDARD_EXPORT_COUNT);         String dir = null;         if (custom) {             int index = list.getSelectedIndex() - Globals.STANDARD_EXPORT_COUNT;             dir = (String) (Globals.prefs.customExports.getElementAt(index)[1]);             File f = new File(dir);             lfName = f.getName();             lfName = lfName.substring(0, lfName.indexOf("."));             // Remove file name - we want the directory only.             dir = f.getParent() + System.getProperty("file.separator");         }         final String format = lfName,                 directory = dir;         */
 name|File
 name|tmp
