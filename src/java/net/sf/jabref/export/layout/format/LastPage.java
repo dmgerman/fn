@@ -89,14 +89,25 @@ index|]
 return|;
 comment|// If we didn't get two parts, it may be that only the number of pages is given.
 comment|// Return the first part:
-else|else
+elseif|else
+if|if
+condition|(
+name|pageParts
+operator|.
+name|length
+operator|>=
+literal|1
+condition|)
 return|return
 name|pageParts
 index|[
 literal|0
 index|]
 return|;
-comment|//else return "";
+else|else
+return|return
+literal|""
+return|;
 block|}
 block|}
 end_class
