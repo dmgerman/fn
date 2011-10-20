@@ -116,78 +116,7 @@ argument_list|(
 literal|"(\\p{javaUpperCase}[\\p{javaLowerCase}]*)"
 argument_list|)
 decl_stmt|;
-DECL|method|main (String[] args)
-specifier|public
-specifier|static
-name|void
-name|main
-parameter_list|(
-name|String
-index|[]
-name|args
-parameter_list|)
-block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|normalizeAuthorList
-argument_list|(
-literal|"Ãlver MA"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|normalizeAuthorList
-argument_list|(
-literal|"Ãlver MA, GG Ãie, Ãie GG, Alfredsen JÃÃ, Jo Alfredsen, Olsen Y.Y. and Olsen Y. Y."
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|normalizeAuthorList
-argument_list|(
-literal|"Ãlver MA, GG Ãie, Ãie GG, Alfredsen JÃÃ, Jo Alfredsen, Olsen Y.Y., Olsen Y. Y."
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|normalizeAuthorList
-argument_list|(
-literal|"Alver, Morten and Alver, Morten O and Alfredsen, JA and Olsen, Y.Y."
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|normalizeAuthorList
-argument_list|(
-literal|"Alver, MA; Alfredsen, JA; Olsen Y.Y."
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
+comment|/*public static void main(String[] args) {         normalizeAuthorList("Staci D. Bilbo and Smith SH and Jaclyn M Schwarz");         //System.out.println(normalizeAuthorList("Ãlver MA"));         //System.out.println(normalizeAuthorList("Ãlver MA, GG Ãie, Ãie GG, Alfredsen JÃÃ, Jo Alfredsen, Olsen Y.Y. and Olsen Y. Y."));         //System.out.println(normalizeAuthorList("Ãlver MA, GG Ãie, Ãie GG, Alfredsen JÃÃ, Jo Alfredsen, Olsen Y.Y., Olsen Y. Y."));         //System.out.println(normalizeAuthorList("Alver, Morten and Alver, Morten O and Alfredsen, JA and Olsen, Y.Y."));         //System.out.println(normalizeAuthorList("Alver, MA; Alfredsen, JA; Olsen Y.Y."));     }*/
 DECL|method|normalizeAuthorList (String in)
 specifier|public
 specifier|static
