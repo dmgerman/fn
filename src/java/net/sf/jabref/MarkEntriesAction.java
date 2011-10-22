@@ -165,6 +165,13 @@ argument_list|)
 expr_stmt|;
 name|menuItem
 operator|.
+name|setOpaque
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|menuItem
+operator|.
 name|addActionListener
 argument_list|(
 name|this

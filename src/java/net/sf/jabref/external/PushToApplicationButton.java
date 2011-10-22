@@ -409,6 +409,13 @@ name|getManager
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|jabrefPlugin
+operator|!=
+literal|null
+condition|)
+block|{
 name|List
 argument_list|<
 name|_JabRefPlugin
@@ -490,6 +497,7 @@ argument_list|)
 expr_stmt|;
 comment|// Finally, sort the entries:
 comment|//Collections.sort(applications, new PushToApplicationComparator());
+block|}
 block|}
 DECL|method|PushToApplicationButton (JabRefFrame frame, List<PushToApplication> pushActions)
 specifier|public

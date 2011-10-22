@@ -8546,9 +8546,16 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+synchronized|synchronized
+init|(
+name|getTreeLock
+argument_list|()
+init|)
+block|{
 name|validateTree
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|/**      * This method is required by the ErrorMessageDisplay interface, and lets this class      * serve as a callback for regular expression exceptions happening in DatabaseSearch.      * @param errorMessage      */
 DECL|method|reportError (String errorMessage)

@@ -462,6 +462,13 @@ block|{
 name|super
 argument_list|()
 expr_stmt|;
+name|addFocusListener
+argument_list|(
+name|Globals
+operator|.
+name|focusListener
+argument_list|)
+expr_stmt|;
 name|setAutoResizeMode
 argument_list|(
 name|Globals
