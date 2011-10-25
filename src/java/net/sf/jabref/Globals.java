@@ -503,14 +503,6 @@ name|FORMATTER_PACKAGE
 init|=
 literal|"net.sf.jabref.export.layout.format."
 decl_stmt|;
-DECL|field|duplicateThreshold
-specifier|public
-specifier|static
-name|float
-name|duplicateThreshold
-init|=
-literal|0.75f
-decl_stmt|;
 DECL|field|consoleHandler
 specifier|private
 specifier|static

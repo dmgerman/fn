@@ -50,6 +50,25 @@ specifier|public
 class|class
 name|DuplicateCheck
 block|{
+DECL|field|duplicateThreshold
+specifier|public
+specifier|static
+name|double
+name|duplicateThreshold
+init|=
+literal|0.75
+decl_stmt|;
+comment|// The overall threshold to signal a duplicate pair
+comment|// Non-required fields are investigated only if the required fields give a value within
+comment|// the doubt range of the threshold:
+DECL|field|doubtRange
+specifier|public
+specifier|static
+name|double
+name|doubtRange
+init|=
+literal|0.05
+decl_stmt|;
 DECL|field|reqWeight
 specifier|final
 specifier|static
@@ -148,7 +167,6 @@ condition|)
 return|return
 literal|false
 return|;
-comment|//System.out.println(one.getCiteKey()+" : "+two.getCiteKey());
 comment|// The check if they have the same required fields:
 name|String
 index|[]
@@ -197,7 +215,36 @@ argument_list|,
 name|two
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("Req comp: "+req[0]+" / "+req[1]);
+if|if
+condition|(
+name|Math
+operator|.
+name|abs
+argument_list|(
+name|req
+index|[
+literal|0
+index|]
+operator|-
+name|duplicateThreshold
+argument_list|)
+operator|>
+name|doubtRange
+condition|)
+block|{
+comment|// Far from the threshold value, so we base our decision on the req. fields only
+return|return
+name|req
+index|[
+literal|0
+index|]
+operator|>=
+name|duplicateThreshold
+return|;
+block|}
+else|else
+block|{
+comment|// Close to the threshold value, so we take a look at the optional fields, if any:
 name|fields
 operator|=
 name|one
@@ -228,8 +275,6 @@ argument_list|,
 name|two
 argument_list|)
 decl_stmt|;
-comment|//System.out.println("Opt comp: "+opt[0]+" / "+opt[1]);
-comment|//System.out.println("Total: "+(reqWeight*req[0]*req[1] + opt[0]*opt[1]) / (req[1]*reqWeight+opt[1]));
 name|double
 name|totValue
 init|=
@@ -274,8 +319,6 @@ decl_stmt|;
 return|return
 name|totValue
 operator|>=
-name|Globals
-operator|.
 name|duplicateThreshold
 return|;
 block|}
@@ -288,11 +331,10 @@ index|[
 literal|0
 index|]
 operator|>=
-name|Globals
-operator|.
 name|duplicateThreshold
 operator|)
 return|;
+block|}
 block|}
 block|}
 DECL|method|compareFieldSet (String[] fields, BibtexEntry one, BibtexEntry two)
@@ -524,20 +566,6 @@ name|Util
 operator|.
 name|EMPTY_IN_TWO
 return|;
-name|s1
-operator|=
-name|s1
-operator|.
-name|toLowerCase
-argument_list|()
-expr_stmt|;
-name|s2
-operator|=
-name|s2
-operator|.
-name|toLowerCase
-argument_list|()
-expr_stmt|;
 comment|// Util.pr(field+": '"+s1+"' vs '"+s2+"'");
 if|if
 condition|(
@@ -576,6 +604,9 @@ literal|" and "
 argument_list|,
 literal|" "
 argument_list|)
+operator|.
+name|toLowerCase
+argument_list|()
 decl_stmt|,
 name|auth2
 init|=
@@ -594,6 +625,9 @@ literal|" and "
 argument_list|,
 literal|" "
 argument_list|)
+operator|.
+name|toLowerCase
+argument_list|()
 decl_stmt|;
 comment|//System.out.println(auth1);
 comment|//System.out.println(auth2);
@@ -606,6 +640,8 @@ argument_list|(
 name|auth1
 argument_list|,
 name|auth2
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 if|if
@@ -625,10 +661,107 @@ name|Util
 operator|.
 name|NOT_EQUAL
 return|;
-comment|/*String[] aus1 = AuthorList.fixAuthor_lastNameFirst(s1).split(" and "), aus2 = AuthorList                     .fixAuthor_lastNameFirst(s2).split(" and "), au1 = aus1[0].split(","), au2 = aus2[0]                     .split(",");              // Can check number of authors, all authors or only the first.             if ((aus1.length> 0)&& (aus1.length == aus2.length)&& au1[0].trim().equals(au2[0].trim()))                 return Util.EQUAL;             else                 return Util.NOT_EQUAL;*/
 block|}
-else|else
+elseif|else
+if|if
+condition|(
+name|field
+operator|.
+name|equals
+argument_list|(
+literal|"pages"
+argument_list|)
+condition|)
 block|{
+comment|// Pages can be given with a variety of delimiters, "-", "--", " - ", " -- ".
+comment|// We do a replace to harmonize these to a simple "-":
+comment|// After this, a simple test for equality should be enough:
+name|s1
+operator|=
+name|s1
+operator|.
+name|replaceAll
+argument_list|(
+literal|"[- ]+"
+argument_list|,
+literal|"-"
+argument_list|)
+expr_stmt|;
+name|s2
+operator|=
+name|s2
+operator|.
+name|replaceAll
+argument_list|(
+literal|"[- ]+"
+argument_list|,
+literal|"-"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|s1
+operator|.
+name|equals
+argument_list|(
+name|s2
+argument_list|)
+condition|)
+return|return
+name|Util
+operator|.
+name|EQUAL
+return|;
+else|else
+return|return
+name|Util
+operator|.
+name|NOT_EQUAL
+return|;
+block|}
+elseif|else
+if|if
+condition|(
+name|field
+operator|.
+name|equals
+argument_list|(
+literal|"journal"
+argument_list|)
+condition|)
+block|{
+comment|// We do not attempt to harmonize abbreviation state of the journal names,
+comment|// but we remove periods from the names in case they are abbreviated with
+comment|// and without dots:
+name|s1
+operator|=
+name|s1
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\."
+argument_list|,
+literal|""
+argument_list|)
+operator|.
+name|toLowerCase
+argument_list|()
+expr_stmt|;
+name|s2
+operator|=
+name|s2
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\."
+argument_list|,
+literal|""
+argument_list|)
+operator|.
+name|toLowerCase
+argument_list|()
+expr_stmt|;
+comment|//System.out.println(s1+" :: "+s2);
 name|double
 name|similarity
 init|=
@@ -637,6 +770,54 @@ argument_list|(
 name|s1
 argument_list|,
 name|s2
+argument_list|,
+literal|true
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|similarity
+operator|>
+literal|0.8
+condition|)
+return|return
+name|Util
+operator|.
+name|EQUAL
+return|;
+else|else
+return|return
+name|Util
+operator|.
+name|NOT_EQUAL
+return|;
+block|}
+else|else
+block|{
+name|s1
+operator|=
+name|s1
+operator|.
+name|toLowerCase
+argument_list|()
+expr_stmt|;
+name|s2
+operator|=
+name|s2
+operator|.
+name|toLowerCase
+argument_list|()
+expr_stmt|;
+name|double
+name|similarity
+init|=
+name|correlateByWords
+argument_list|(
+name|s1
+argument_list|,
+name|s2
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
 if|if
@@ -877,7 +1058,8 @@ literal|null
 return|;
 comment|// No duplicate found.
 block|}
-DECL|method|correlateByWords (String s1, String s2)
+comment|/**      * Compare two strings on the basis of word-by-word correlation analysis.      * @param s1 The first string      * @param s2 The second string      * @param truncate if true, always truncate the longer of two words to be compared to      *   harmonize their length. If false, use interpolation to harmonize the strings.      * @return a value in the interval [0, 1] indicating the degree of match.      */
+DECL|method|correlateByWords (String s1, String s2, boolean truncate)
 specifier|public
 specifier|static
 name|double
@@ -888,6 +1070,9 @@ name|s1
 parameter_list|,
 name|String
 name|s2
+parameter_list|,
+name|boolean
+name|truncate
 parameter_list|)
 block|{
 name|String
@@ -961,6 +1146,8 @@ name|w2
 index|[
 name|i
 index|]
+argument_list|,
+name|truncate
 argument_list|)
 decl_stmt|;
 if|if
@@ -996,7 +1183,7 @@ operator|-
 name|missRate
 return|;
 block|}
-DECL|method|correlateStrings (String s1, String s2)
+DECL|method|correlateStrings (String s1, String s2, boolean truncate)
 specifier|public
 specifier|static
 name|double
@@ -1007,8 +1194,59 @@ name|s1
 parameter_list|,
 name|String
 name|s2
+parameter_list|,
+name|boolean
+name|truncate
 parameter_list|)
 block|{
+name|int
+name|minLength
+init|=
+name|Math
+operator|.
+name|min
+argument_list|(
+name|s1
+operator|.
+name|length
+argument_list|()
+argument_list|,
+name|s2
+operator|.
+name|length
+argument_list|()
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|truncate
+operator|&&
+name|minLength
+operator|==
+literal|1
+condition|)
+block|{
+return|return
+name|s1
+operator|.
+name|charAt
+argument_list|(
+literal|0
+argument_list|)
+operator|==
+name|s2
+operator|.
+name|charAt
+argument_list|(
+literal|0
+argument_list|)
+condition|?
+literal|1.0
+else|:
+literal|0.0
+return|;
+block|}
+elseif|else
 if|if
 condition|(
 name|s1
@@ -1039,7 +1277,80 @@ else|:
 literal|0.0
 return|;
 block|}
-comment|// Convert strings to numbers and pad the shortest one with zeros:
+elseif|else
+if|if
+condition|(
+name|minLength
+operator|==
+literal|0
+condition|)
+return|return
+name|s1
+operator|.
+name|length
+argument_list|()
+operator|==
+literal|0
+operator|&&
+name|s2
+operator|.
+name|length
+argument_list|()
+operator|==
+literal|0
+condition|?
+literal|1.0
+else|:
+literal|0
+return|;
+comment|// Convert strings to numbers and harmonize length in a method dependent on truncate:
+if|if
+condition|(
+name|truncate
+condition|)
+block|{
+comment|// Harmonize length by truncation:
+if|if
+condition|(
+name|s1
+operator|.
+name|length
+argument_list|()
+operator|>
+name|minLength
+condition|)
+name|s1
+operator|=
+name|s1
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|minLength
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|s2
+operator|.
+name|length
+argument_list|()
+operator|>
+name|minLength
+condition|)
+name|s2
+operator|=
+name|s2
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|minLength
+argument_list|)
+expr_stmt|;
+block|}
 name|double
 index|[]
 name|n1
@@ -1056,6 +1367,13 @@ argument_list|(
 name|s2
 argument_list|)
 decl_stmt|;
+comment|// If truncation is disabled, harmonize length by interpolation:
+if|if
+condition|(
+operator|!
+name|truncate
+condition|)
+block|{
 if|if
 condition|(
 name|n1
@@ -1099,6 +1417,7 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|corrCoef
 argument_list|(
@@ -1400,6 +1719,12 @@ operator|<=
 name|array
 operator|.
 name|length
+operator|||
+name|array
+operator|.
+name|length
+operator|==
+literal|0
 condition|)
 return|return
 name|array
@@ -1563,6 +1888,8 @@ argument_list|(
 name|d1
 argument_list|,
 name|d2
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1577,6 +1904,8 @@ argument_list|(
 name|d1
 argument_list|,
 name|d3
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1591,6 +1920,8 @@ argument_list|(
 name|d2
 argument_list|,
 name|d3
+argument_list|,
+literal|false
 argument_list|)
 argument_list|)
 expr_stmt|;
