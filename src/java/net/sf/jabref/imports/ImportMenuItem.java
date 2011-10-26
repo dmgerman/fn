@@ -416,6 +416,12 @@ DECL|field|importer
 name|ImportFormat
 name|importer
 decl_stmt|;
+DECL|field|importError
+name|IOException
+name|importError
+init|=
+literal|null
+decl_stmt|;
 DECL|method|ImportMenuItem (JabRefFrame frame, boolean openInNew)
 specifier|public
 name|ImportMenuItem
@@ -616,6 +622,10 @@ name|void
 name|init
 parameter_list|()
 block|{
+name|importError
+operator|=
+literal|null
+expr_stmt|;
 name|filenames
 operator|=
 name|FileDialogs
@@ -818,6 +828,7 @@ operator|+
 literal|"..."
 argument_list|)
 expr_stmt|;
+comment|// This import method never throws an IOException:
 name|imports
 operator|.
 name|add
@@ -840,11 +851,12 @@ name|IOException
 name|e
 parameter_list|)
 block|{
-comment|// No entries found...
+comment|// This indicates that a specific importer was specified, and that
+comment|// this importer has thrown an IOException. We store the exception,
+comment|// so a relevant error message can be displayed.
+name|importError
+operator|=
 name|e
-operator|.
-name|printStackTrace
-argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -1531,6 +1543,41 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 else|else
+block|{
+comment|// Import in a specific format was specified. Check if we have stored error information:
+if|if
+condition|(
+name|importError
+operator|!=
+literal|null
+condition|)
+block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|frame
+argument_list|,
+name|importError
+operator|.
+name|getMessage
+argument_list|()
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Import failed"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -1558,6 +1605,8 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 block|}
 name|frame
 operator|.

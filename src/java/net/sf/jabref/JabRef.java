@@ -5724,6 +5724,8 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|List
 argument_list|<
 name|BibtexEntry
@@ -5798,6 +5800,38 @@ argument_list|(
 name|entries
 argument_list|)
 return|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|ex
+parameter_list|)
+block|{
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Unknown import format"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|data
+index|[
+literal|1
+index|]
+argument_list|)
+expr_stmt|;
+return|return
+literal|null
+return|;
+block|}
 block|}
 else|else
 block|{

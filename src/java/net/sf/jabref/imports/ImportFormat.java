@@ -101,7 +101,7 @@ parameter_list|)
 throws|throws
 name|IOException
 function_decl|;
-comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
+comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      *      * This method can be called in two different contexts - either when importing in      * a specified format, or when importing in unknown format. In the latter case,      * JabRef cycles through all available import formats. No error messages or feedback      * is displayed from individual import formats in this case.      *      * If importing in a specified format, and null or an empty list is returned, JabRef reports      * that no entries were found. If an IOException is thrown, JabRef displays the exception's      * message in unmodified form.      */
 DECL|method|importEntries (InputStream in)
 specifier|public
 specifier|abstract
