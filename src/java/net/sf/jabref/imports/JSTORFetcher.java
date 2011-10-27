@@ -181,7 +181,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class fetches up to 200 citations from JStor by a given search query. It  * communicates with jstor via HTTP and Cookies. The fetcher automates the  * following steps:  *<ol>  *<li>Do a basic search on www.jstor.org</li>  *<li>Save the first 200 hits</li>  *<li>Download the saved citations as bibtex</li>  *<li>Parse it with the BibtexParser</li>  *<li>Import the BibtexEntrys via the ImportInspectionDialog</li>  *</ol>  *   * @author Juliane Doege, Tobias Langner  */
+comment|/**  * This class fetches up to 200 citations from JStor by a given search query. It  * communicates with jstor via HTTP and Cookies. The activeFetcher automates the  * following steps:  *<ol>  *<li>Do a basic search on www.jstor.org</li>  *<li>Save the first 200 hits</li>  *<li>Download the saved citations as bibtex</li>  *<li>Parse it with the BibtexParser</li>  *<li>Import the BibtexEntrys via the ImportInspectionDialog</li>  *</ol>  *   * @author Juliane Doege, Tobias Langner  */
 end_comment
 
 begin_class

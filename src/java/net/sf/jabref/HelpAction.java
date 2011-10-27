@@ -100,11 +100,6 @@ name|resourceOwner
 init|=
 literal|null
 decl_stmt|;
-DECL|field|helpfile
-specifier|protected
-name|URL
-name|helpfile
-decl_stmt|;
 DECL|field|helpFile
 specifier|protected
 name|String
@@ -508,6 +503,22 @@ expr_stmt|;
 return|return
 name|hlp
 return|;
+block|}
+DECL|method|setHelpFile (String helpFile)
+specifier|public
+name|void
+name|setHelpFile
+parameter_list|(
+name|String
+name|helpFile
+parameter_list|)
+block|{
+name|this
+operator|.
+name|helpFile
+operator|=
+name|helpFile
+expr_stmt|;
 block|}
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
