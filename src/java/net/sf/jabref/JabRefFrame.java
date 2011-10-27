@@ -2159,6 +2159,7 @@ literal|"Open SPIRES entry"
 argument_list|)
 argument_list|)
 decl_stmt|,
+comment|/* 	   * It looks like this wasn't being implemented for spires anyway so we 	   * comment it out for now. 	   * 	  openInspire = new GeneralAction("openInspire", "Open INSPIRE entry",                                           Globals.lang("Open INSPIRE entry"),                                           prefs.getKey("Open INSPIRE entry")), 		*/
 DECL|field|dupliCheck
 name|dupliCheck
 init|=
@@ -8169,6 +8170,7 @@ name|exportMenu
 block|,
 name|fetchCiteSeer
 block|,
+comment|/* openSpires wasn't being supported so no point in supporting 			 * openInspire */
 name|openPdf
 block|,
 name|openUrl
@@ -8177,6 +8179,7 @@ name|openFile
 block|,
 name|openSpires
 block|,
+comment|/*openInspire,*/
 name|togglePreview
 block|,
 name|dupliCheck

@@ -880,6 +880,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|imports
+operator|.
+name|INSPIREFetcher
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|journals
 operator|.
 name|AbbreviateAction
@@ -7278,6 +7292,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+comment|/* 		 *  It looks like this action was not being supported for SPIRES anyway 		 *  so we don't bother to implement it.         actions.put("openInspire", new BaseAction() {         	public void action() {         		BibtexEntry[] bes = mainTable.getSelectedEntries();                 if ((bes != null)&& (bes.length == 1)) {                 	Object link = null;                     if (bes[0].getField("eprint") != null)                       link = INSPIREFetcher.constructUrlFromEprint(bes[0].getField("eprint").toString());                     else if (bes[0].getField("slaccitation") != null)                         link = INSPIREFetcher.constructUrlFromSlaccitation(bes[0].getField("slaccitation").toString());                     if (link != null) {                       //output(Globals.lang("Calling external viewer..."));                       try {                         Util.openExternalViewer(metaData(), link.toString(), "url");                         output(Globals.lang("External viewer called")+".");                       } catch (IOException ex) {                           output(Globals.lang("Error") + ": " + ex.getMessage());                       }                     }                     else                         output(Globals.lang("No url defined")+".");                 } else                   output(Globals.lang("No entries or multiple entries selected."));             }         	}); 			*/
 name|actions
 operator|.
 name|put
