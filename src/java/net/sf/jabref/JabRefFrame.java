@@ -3291,6 +3291,12 @@ expr_stmt|;
 name|setWindowTitle
 argument_list|()
 expr_stmt|;
+comment|// Update search autocompleter with information for the correct database:
+name|bp
+operator|.
+name|updateSearchManager
+argument_list|()
+expr_stmt|;
 comment|// Set correct enabled state for Back and Forward actions:
 name|bp
 operator|.

@@ -1579,6 +1579,17 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+literal|"searchAutoComplete"
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
 literal|"saveInStandardOrder"
 argument_list|,
 name|Boolean

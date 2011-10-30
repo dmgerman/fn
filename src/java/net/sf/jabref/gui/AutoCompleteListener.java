@@ -151,6 +151,13 @@ name|lastShownCompletion
 init|=
 literal|0
 decl_stmt|;
+DECL|field|consumeEnterKey
+specifier|protected
+name|boolean
+name|consumeEnterKey
+init|=
+literal|true
+decl_stmt|;
 comment|// This field is set if the focus listener should call another focus listener
 comment|// after finishing. This is needed because the autocomplete listener must
 comment|// run before the focus listener responsible for storing the current edit.
@@ -192,6 +199,23 @@ operator|.
 name|nextFocusListener
 operator|=
 name|listener
+expr_stmt|;
+block|}
+comment|/**      * This setting determines whether the autocomplete listener should consume the Enter key      * stroke when it leads to accepting a completion. If set to false, the JTextComponent will receive      * the Enter key press after the completion is done. The default value if true.      * @param t true to indicate that the Enter key should be consumed, false that it should be forwarded      */
+DECL|method|setConsumeEnterKey (boolean t)
+specifier|public
+name|void
+name|setConsumeEnterKey
+parameter_list|(
+name|boolean
+name|t
+parameter_list|)
+block|{
+name|this
+operator|.
+name|consumeEnterKey
+operator|=
+name|t
 expr_stmt|;
 block|}
 DECL|method|keyPressed (KeyEvent e)
@@ -251,6 +275,10 @@ argument_list|,
 name|end
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|consumeEnterKey
+condition|)
 name|e
 operator|.
 name|consume
