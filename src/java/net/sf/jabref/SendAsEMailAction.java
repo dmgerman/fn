@@ -254,12 +254,6 @@ argument_list|)
 operator|+
 literal|"."
 expr_stmt|;
-name|getCallBack
-argument_list|()
-operator|.
-name|update
-argument_list|()
-expr_stmt|;
 return|return;
 block|}
 name|StringWriter
@@ -547,6 +541,7 @@ argument_list|(
 literal|"Error creating email"
 argument_list|)
 expr_stmt|;
+return|return;
 block|}
 block|}
 name|String
@@ -763,6 +758,7 @@ name|getAbsolutePath
 argument_list|()
 argument_list|)
 expr_stmt|;
+return|return;
 block|}
 block|}
 block|}
