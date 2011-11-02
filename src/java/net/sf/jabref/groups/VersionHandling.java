@@ -748,6 +748,24 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
+comment|// This allows to read databases that have been modified by, e.g., BibDesk
+name|s
+operator|=
+name|s
+operator|.
+name|trim
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|s
+operator|.
+name|length
+argument_list|()
+operator|==
+literal|0
+condition|)
+continue|continue;
 name|spaceIndex
 operator|=
 name|s
