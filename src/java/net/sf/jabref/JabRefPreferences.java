@@ -6324,6 +6324,24 @@ argument_list|,
 literal|"ctrl alt O"
 argument_list|)
 expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"File list editor, move entry up"
+argument_list|,
+literal|"ctrl UP"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"File list editor, move entry down"
+argument_list|,
+literal|"ctrl DOWN"
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getNextUnit (Reader data)
 specifier|private
