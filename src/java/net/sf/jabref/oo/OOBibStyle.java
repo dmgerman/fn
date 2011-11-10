@@ -264,14 +264,6 @@ name|valid
 init|=
 literal|false
 decl_stmt|;
-DECL|field|juks
-name|List
-name|juks
-init|=
-operator|new
-name|ArrayList
-argument_list|()
-decl_stmt|;
 DECL|field|NONE
 DECL|field|LAYOUT
 DECL|field|PROPERTIES
