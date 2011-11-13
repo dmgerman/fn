@@ -2821,9 +2821,27 @@ name|ooBase
 operator|==
 literal|null
 condition|)
+block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|frame
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Unable to connect. One possible reason is that JabRef "
+operator|+
+literal|"and OpenOffice/LibreOffice are not both running in either 32 bit mode or 64 bit mode."
+argument_list|)
+argument_list|)
+expr_stmt|;
 throw|throw
 name|connectException
 throw|;
+block|}
 if|if
 condition|(
 name|ooBase
