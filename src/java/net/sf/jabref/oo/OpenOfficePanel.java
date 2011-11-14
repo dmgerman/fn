@@ -558,7 +558,7 @@ literal|null
 decl_stmt|;
 DECL|field|connectException
 specifier|private
-name|Exception
+name|Throwable
 name|connectException
 init|=
 literal|null
@@ -2810,6 +2810,15 @@ operator|.
 name|dispose
 argument_list|()
 expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"NHEREREWR"
+argument_list|)
+expr_stmt|;
 name|diag
 operator|.
 name|dispose
@@ -2822,22 +2831,6 @@ operator|==
 literal|null
 condition|)
 block|{
-name|JOptionPane
-operator|.
-name|showMessageDialog
-argument_list|(
-name|frame
-argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Unable to connect. One possible reason is that JabRef "
-operator|+
-literal|"and OpenOffice/LibreOffice are not both running in either 32 bit mode or 64 bit mode."
-argument_list|)
-argument_list|)
-expr_stmt|;
 throw|throw
 name|connectException
 throw|;
@@ -2942,7 +2935,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|Throwable
 name|e
 parameter_list|)
 block|{
@@ -2951,6 +2944,32 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|e
+operator|instanceof
+name|UnsatisfiedLinkError
+condition|)
+block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|frame
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Unable to connect. One possible reason is that JabRef "
+operator|+
+literal|"and OpenOffice/LibreOffice are not both running in either 32 bit mode or 64 bit mode."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -2976,6 +2995,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 DECL|method|run ()
 specifier|public
 name|void
@@ -2998,7 +3018,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|Exception
+name|Throwable
 name|e
 parameter_list|)
 block|{

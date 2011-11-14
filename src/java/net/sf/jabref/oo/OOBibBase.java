@@ -685,21 +685,9 @@ name|pathToOO
 argument_list|)
 expr_stmt|;
 comment|//getDesktop();
-try|try
-block|{
 name|selectDocument
 argument_list|()
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|Exception
-name|ex
-parameter_list|)
-block|{
-comment|// Could not find a writer document?
-return|return;
-block|}
 block|}
 DECL|method|isConnectedToDocument ()
 specifier|public
