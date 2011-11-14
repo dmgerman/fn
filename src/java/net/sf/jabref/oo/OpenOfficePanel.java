@@ -466,6 +466,20 @@ literal|"Settings"
 argument_list|)
 argument_list|)
 decl_stmt|,
+DECL|field|help
+name|help
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|GUIGlobals
+operator|.
+name|getImage
+argument_list|(
+literal|"help"
+argument_list|)
+argument_list|)
+decl_stmt|,
 DECL|field|test
 name|test
 init|=
@@ -1893,6 +1907,21 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|help
+operator|.
+name|addActionListener
+argument_list|(
+operator|new
+name|HelpAction
+argument_list|(
+name|Globals
+operator|.
+name|helpDiag
+argument_list|,
+literal|"OpenOfficeIntegration.html"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|test
 operator|.
 name|addActionListener
@@ -2065,7 +2094,7 @@ name|FormLayout
 argument_list|(
 literal|"fill:pref:grow, 1dlu, fill:pref:grow, 1dlu, fill:pref:grow, "
 operator|+
-literal|"1dlu, fill:pref:grow"
+literal|"1dlu, fill:pref:grow, 1dlu, fill:pref:grow"
 argument_list|,
 literal|""
 argument_list|)
@@ -2097,6 +2126,13 @@ operator|.
 name|append
 argument_list|(
 name|update
+argument_list|)
+expr_stmt|;
+name|bb
+operator|.
+name|append
+argument_list|(
+name|help
 argument_list|)
 expr_stmt|;
 comment|//b.append(connect);
