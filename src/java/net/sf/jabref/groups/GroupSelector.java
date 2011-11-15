@@ -6782,6 +6782,9 @@ name|GroupSelector
 operator|.
 name|this
 argument_list|,
+name|getGroupTreeRoot
+argument_list|()
+argument_list|,
 name|node
 argument_list|,
 literal|"Remove all subgroups"
@@ -7095,6 +7098,9 @@ name|GroupSelector
 operator|.
 name|this
 argument_list|,
+name|getGroupTreeRoot
+argument_list|()
+argument_list|,
 name|node
 argument_list|,
 name|Globals
@@ -7191,6 +7197,9 @@ argument_list|(
 name|GroupSelector
 operator|.
 name|this
+argument_list|,
+name|getGroupTreeRoot
+argument_list|()
 argument_list|,
 name|node
 argument_list|,

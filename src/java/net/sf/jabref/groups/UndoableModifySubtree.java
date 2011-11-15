@@ -71,10 +71,13 @@ extends|extends
 name|AbstractUndoableEdit
 block|{
 comment|/** A backup of the groups before the modification */
+DECL|field|m_groupRoot
 DECL|field|m_subtreeBackup
 specifier|private
 specifier|final
 name|GroupTreeNode
+name|m_groupRoot
+decl_stmt|,
 name|m_subtreeBackup
 decl_stmt|;
 comment|/** The path to the global groups root node */
@@ -121,12 +124,15 @@ name|String
 name|m_name
 decl_stmt|;
 comment|/**      *       * @param subtree      *            The root node of the subtree that was modified (this node may      *            not be modified, it is just used as a convenience handle).      */
-DECL|method|UndoableModifySubtree (GroupSelector groupSelector, GroupTreeNode subtree, String name)
+DECL|method|UndoableModifySubtree (GroupSelector groupSelector, GroupTreeNode groupRoot, GroupTreeNode subtree, String name)
 specifier|public
 name|UndoableModifySubtree
 parameter_list|(
 name|GroupSelector
 name|groupSelector
+parameter_list|,
+name|GroupTreeNode
+name|groupRoot
 parameter_list|,
 name|GroupTreeNode
 name|subtree
@@ -141,6 +147,10 @@ name|subtree
 operator|.
 name|deepCopy
 argument_list|()
+expr_stmt|;
+name|m_groupRoot
+operator|=
+name|groupRoot
 expr_stmt|;
 name|m_subtreeRootPath
 operator|=
@@ -219,10 +229,7 @@ specifier|final
 name|GroupTreeNode
 name|subtreeRoot
 init|=
-name|m_groupSelector
-operator|.
-name|getGroupTreeRoot
-argument_list|()
+name|m_groupRoot
 operator|.
 name|getNode
 argument_list|(
@@ -326,10 +333,7 @@ specifier|final
 name|GroupTreeNode
 name|subtreeRoot
 init|=
-name|m_groupSelector
-operator|.
-name|getGroupTreeRoot
-argument_list|()
+name|m_groupRoot
 operator|.
 name|getNode
 argument_list|(
