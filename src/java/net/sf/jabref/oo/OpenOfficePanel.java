@@ -2239,15 +2239,6 @@ operator|.
 name|CENTER
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"Adding shortcuts"
-argument_list|)
-expr_stmt|;
 name|frame
 operator|.
 name|getTabbedPane
@@ -2378,18 +2369,6 @@ name|basePanel
 argument_list|()
 operator|.
 name|database
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|databases
-operator|.
-name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
