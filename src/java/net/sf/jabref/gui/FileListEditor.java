@@ -2938,6 +2938,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|dirs
 operator|.
 name|add
@@ -2952,6 +2953,7 @@ index|]
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|Collection
 argument_list|<
 name|String
