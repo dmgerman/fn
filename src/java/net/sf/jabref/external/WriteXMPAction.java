@@ -478,7 +478,8 @@ literal|"pdf"
 argument_list|)
 decl_stmt|;
 name|String
-name|dir
+index|[]
+name|dirs
 init|=
 name|panel
 operator|.
@@ -499,14 +500,7 @@ name|expandFilename
 argument_list|(
 name|pdf
 argument_list|,
-operator|new
-name|String
-index|[]
-block|{
-name|dir
-block|,
-literal|"."
-block|}
+name|dirs
 argument_list|)
 decl_stmt|;
 if|if
@@ -523,7 +517,7 @@ name|f
 argument_list|)
 expr_stmt|;
 comment|// Then check the "file" field:
-name|dir
+name|dirs
 operator|=
 name|panel
 operator|.
@@ -639,14 +633,7 @@ operator|.
 name|getLink
 argument_list|()
 argument_list|,
-operator|new
-name|String
-index|[]
-block|{
-name|dir
-block|,
-literal|"."
-block|}
+name|dirs
 argument_list|)
 expr_stmt|;
 if|if

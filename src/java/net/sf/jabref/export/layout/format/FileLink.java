@@ -272,7 +272,8 @@ return|return
 literal|""
 return|;
 name|String
-name|dir
+index|[]
+name|dirs
 decl_stmt|;
 comment|// We need to resolve the file directory from the database's metadata,
 comment|// but that is not available from a formatter. Therefore, as an
@@ -288,7 +289,7 @@ name|fileDirForDatabase
 operator|!=
 literal|null
 condition|)
-name|dir
+name|dirs
 operator|=
 name|Globals
 operator|.
@@ -297,8 +298,12 @@ operator|.
 name|fileDirForDatabase
 expr_stmt|;
 else|else
-name|dir
+name|dirs
 operator|=
+operator|new
+name|String
+index|[]
+block|{
 name|Globals
 operator|.
 name|prefs
@@ -311,6 +316,7 @@ name|FILE_FIELD
 operator|+
 literal|"Directory"
 argument_list|)
+block|}
 expr_stmt|;
 name|File
 name|f
@@ -321,12 +327,7 @@ name|expandFilename
 argument_list|(
 name|link
 argument_list|,
-operator|new
-name|String
-index|[]
-block|{
-name|dir
-block|}
+name|dirs
 argument_list|)
 decl_stmt|;
 comment|/* 		 * Stumbled over this while investigating 		 * 		 * https://sourceforge.net/tracker/index.php?func=detail&aid=1469903&group_id=92314&atid=600306 		 */

@@ -214,7 +214,8 @@ name|getCiteKey
 argument_list|()
 decl_stmt|;
 name|String
-name|fileDir
+index|[]
+name|dirs
 init|=
 name|basePanel
 operator|.
@@ -230,9 +231,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|fileDir
+name|dirs
+operator|.
+name|length
 operator|==
-literal|null
+literal|0
 condition|)
 block|{
 comment|// TODO: error message if file dir not defined
