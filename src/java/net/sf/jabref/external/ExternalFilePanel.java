@@ -956,7 +956,8 @@ argument_list|)
 expr_stmt|;
 comment|// Find the default directory for this field type, if any:
 name|String
-name|dir
+index|[]
+name|dirs
 init|=
 name|metaData
 operator|.
@@ -972,9 +973,11 @@ literal|null
 decl_stmt|;
 if|if
 condition|(
-name|dir
-operator|!=
-literal|null
+name|dirs
+operator|.
+name|length
+operator|>
+literal|0
 condition|)
 block|{
 name|File
@@ -989,14 +992,7 @@ operator|.
 name|getText
 argument_list|()
 argument_list|,
-operator|new
-name|String
-index|[]
-block|{
-name|dir
-block|,
-literal|"."
-block|}
+name|dirs
 argument_list|)
 decl_stmt|;
 if|if
@@ -1248,6 +1244,7 @@ name|editor
 parameter_list|)
 block|{
 name|String
+index|[]
 name|directory
 init|=
 name|metaData

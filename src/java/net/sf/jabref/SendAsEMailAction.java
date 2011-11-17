@@ -411,7 +411,8 @@ name|i
 argument_list|)
 decl_stmt|;
 name|String
-name|path
+index|[]
+name|dirs
 init|=
 name|frame
 operator|.
@@ -428,6 +429,15 @@ operator|.
 name|FILE_FIELD
 argument_list|)
 decl_stmt|;
+name|String
+name|path
+init|=
+name|dirs
+index|[
+literal|0
+index|]
+decl_stmt|;
+comment|// TODO: This needs to be reworked, to handle more than one file dir
 name|path
 operator|=
 name|path

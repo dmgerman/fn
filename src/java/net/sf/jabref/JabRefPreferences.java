@@ -617,6 +617,7 @@ comment|// string to be formatted and possible formatter arguments.
 DECL|field|fileDirForDatabase
 specifier|public
 name|String
+index|[]
 name|fileDirForDatabase
 init|=
 literal|null
@@ -3216,6 +3217,17 @@ argument_list|(
 literal|"selectedFetcherIndex"
 argument_list|,
 literal|0
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"bibLocationAsFileDir"
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
 argument_list|)
 expr_stmt|;
 comment|//defaults.put("lastAutodetectedImport", "");
