@@ -827,7 +827,7 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"bibLocationAsPrimaryFileDir"
+literal|"bibLocAsPrimaryDir"
 argument_list|)
 condition|)
 name|dirs

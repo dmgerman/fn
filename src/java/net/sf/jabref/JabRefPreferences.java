@@ -3234,7 +3234,7 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-literal|"bibLocationAsPrimaryFileDir"
+literal|"bibLocAsPrimaryDir"
 argument_list|,
 name|Boolean
 operator|.
