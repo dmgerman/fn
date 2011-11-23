@@ -3283,7 +3283,10 @@ name|PREF_IMPORT_FILENAMEPATTERN
 argument_list|,
 name|ImportSettingsTab
 operator|.
-name|DEFAULT_FILENAMEPATTERN
+name|DEFAULT_FILENAMEPATTERNS
+index|[
+literal|0
+index|]
 argument_list|)
 expr_stmt|;
 name|restoreKeyBindings
