@@ -9132,6 +9132,15 @@ name|void
 name|initializeJournalNames
 parameter_list|()
 block|{
+comment|// Read internal lists:
+name|journalAbbrev
+operator|=
+operator|new
+name|JournalAbbreviations
+argument_list|(
+literal|"/resource/journalList.txt"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|prefs
@@ -9142,19 +9151,11 @@ literal|"useIEEEAbrv"
 argument_list|)
 condition|)
 name|journalAbbrev
-operator|=
-operator|new
-name|JournalAbbreviations
+operator|.
+name|readJournalList
 argument_list|(
 literal|"/resource/IEEEJournalList.txt"
 argument_list|)
-expr_stmt|;
-else|else
-name|journalAbbrev
-operator|=
-operator|new
-name|JournalAbbreviations
-argument_list|()
 expr_stmt|;
 comment|// Read external lists, if any (in reverse order, so the upper lists
 comment|// override the lower):
