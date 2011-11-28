@@ -1093,7 +1093,12 @@ init|=
 operator|new
 name|JMenuItem
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"OpenOffice/LibreOffice connection"
+argument_list|)
 argument_list|,
 name|GUIGlobals
 operator|.
