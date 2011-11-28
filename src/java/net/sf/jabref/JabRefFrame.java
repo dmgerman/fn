@@ -7028,8 +7028,9 @@ expr_stmt|;
 name|OpenOfficePanel
 name|otp
 init|=
-operator|new
 name|OpenOfficePanel
+operator|.
+name|getInstance
 argument_list|()
 decl_stmt|;
 name|otp
