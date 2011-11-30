@@ -7208,13 +7208,7 @@ argument_list|(
 name|tools
 argument_list|)
 expr_stmt|;
-name|web
-operator|.
-name|add
-argument_list|(
-name|fetchCiteSeer
-argument_list|)
-expr_stmt|;
+comment|//web.add(fetchCiteSeer);
 comment|/*        * Add all entryFetchers        */
 comment|/*for (EntryFetcher fetcher : fetchers){     	  GeneralFetcher generalFetcher = new GeneralFetcher(sidePaneManager, this, fetcher);           generalFetcher.setHelpResourceOwner(fetcher.getClass());     	  web.add(generalFetcher.getAction());     	  fetcherActions.add(generalFetcher.getAction());       }*/
 name|GeneralFetcher
