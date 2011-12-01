@@ -749,7 +749,7 @@ name|getKeyName
 parameter_list|()
 block|{
 return|return
-literal|"Fetch Medline"
+literal|"Medline"
 return|;
 block|}
 DECL|method|getOptionsPanel ()
@@ -770,12 +770,7 @@ name|getTitle
 parameter_list|()
 block|{
 return|return
-name|Globals
-operator|.
-name|menuTitle
-argument_list|(
-literal|"Search Medline"
-argument_list|)
+literal|"Medline"
 return|;
 block|}
 DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter frame)

@@ -1311,12 +1311,7 @@ name|getTitle
 parameter_list|()
 block|{
 return|return
-name|Globals
-operator|.
-name|menuTitle
-argument_list|(
-literal|"Search IEEEXplore"
-argument_list|)
+literal|"IEEEXplore"
 return|;
 block|}
 DECL|method|getIcon ()
@@ -1351,7 +1346,7 @@ name|getKeyName
 parameter_list|()
 block|{
 return|return
-literal|"Search IEEEXplore"
+literal|"IEEEXplore"
 return|;
 block|}
 comment|/**      * This method is called by the dialog when the user has cancelled the import.      */

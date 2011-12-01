@@ -310,12 +310,7 @@ name|getTitle
 parameter_list|()
 block|{
 return|return
-name|Globals
-operator|.
-name|menuTitle
-argument_list|(
-literal|"Search CiteSeer"
-argument_list|)
+literal|"CiteSeer"
 return|;
 block|}
 DECL|method|getKeyName ()
@@ -325,7 +320,7 @@ name|getKeyName
 parameter_list|()
 block|{
 return|return
-literal|"Search CiteSeer"
+literal|"CiteSeer"
 return|;
 block|}
 DECL|method|getIcon ()
@@ -350,7 +345,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|null
+literal|"CiteSeerHelp.html"
 return|;
 block|}
 DECL|method|getOptionsPanel ()

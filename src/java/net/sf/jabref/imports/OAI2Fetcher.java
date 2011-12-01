@@ -1156,8 +1156,6 @@ name|getKeyName
 parameter_list|()
 block|{
 return|return
-literal|"Fetch "
-operator|+
 name|oai2ArchiveName
 return|;
 block|}

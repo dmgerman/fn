@@ -354,7 +354,7 @@ name|getKeyName
 parameter_list|()
 block|{
 return|return
-literal|"Search JSTOR"
+literal|"JSTOR"
 return|;
 block|}
 DECL|method|getOptionsPanel ()
@@ -375,12 +375,7 @@ name|getTitle
 parameter_list|()
 block|{
 return|return
-name|Globals
-operator|.
-name|menuTitle
-argument_list|(
-literal|"Search JSTOR"
-argument_list|)
+literal|"JSTOR"
 return|;
 block|}
 DECL|method|stopFetching ()

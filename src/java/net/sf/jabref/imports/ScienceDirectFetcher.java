@@ -302,7 +302,7 @@ name|getKeyName
 parameter_list|()
 block|{
 return|return
-literal|"Search ScienceDirect"
+literal|"ScienceDirect"
 return|;
 block|}
 DECL|method|getOptionsPanel ()
