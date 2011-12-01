@@ -287,14 +287,6 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
-DECL|field|caseChanger
-name|CaseChanger
-name|caseChanger
-init|=
-operator|new
-name|CaseChanger
-argument_list|()
-decl_stmt|;
 DECL|method|JournalAbbreviations ()
 specifier|public
 name|JournalAbbreviations

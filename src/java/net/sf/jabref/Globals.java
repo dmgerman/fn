@@ -359,6 +359,14 @@ name|buildInfos
 init|=
 literal|"/resource/build.properties"
 decl_stmt|;
+DECL|field|JOURNALS_FILE_BUILTIN
+specifier|public
+specifier|static
+name|String
+name|JOURNALS_FILE_BUILTIN
+init|=
+literal|"/resource/journalList.txt"
+decl_stmt|;
 comment|/* 	 * some extra field definitions 	 */
 DECL|field|additionalFields
 specifier|public
@@ -9138,7 +9146,7 @@ operator|=
 operator|new
 name|JournalAbbreviations
 argument_list|(
-literal|"/resource/journalList.txt"
+name|JOURNALS_FILE_BUILTIN
 argument_list|)
 expr_stmt|;
 if|if

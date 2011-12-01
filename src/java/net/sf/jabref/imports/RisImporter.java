@@ -384,7 +384,7 @@ argument_list|()
 operator|.
 name|split
 argument_list|(
-literal|"ER  -"
+literal|"ER  -.*\\n"
 argument_list|)
 decl_stmt|;
 for|for
