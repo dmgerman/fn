@@ -188,9 +188,15 @@ name|ParserResult
 import|;
 end_import
 
-begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Aug 14, 2005  * Time: 8:11:58 PM  * To change this template use File | Settings | File Templates.  */
-end_comment
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|*
+import|;
+end_import
 
 begin_class
 DECL|class|RemoteListener
@@ -630,6 +636,30 @@ name|newSocket
 operator|.
 name|close
 argument_list|()
+expr_stmt|;
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+operator|new
+name|Runnable
+argument_list|()
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
+name|jabref
+operator|.
+name|jrf
+operator|.
+name|showIfMinimizedToSysTray
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
