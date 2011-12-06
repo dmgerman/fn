@@ -518,7 +518,7 @@ name|getKeyName
 parameter_list|()
 block|{
 return|return
-literal|"Fetch INSPIRE"
+literal|"INSPIRE"
 return|;
 block|}
 DECL|method|getOptionsPanel ()

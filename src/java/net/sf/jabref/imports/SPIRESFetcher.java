@@ -738,7 +738,7 @@ name|getKeyName
 parameter_list|()
 block|{
 return|return
-literal|"Fetch SPIRES"
+literal|"SPIRES"
 return|;
 block|}
 DECL|method|getOptionsPanel ()
