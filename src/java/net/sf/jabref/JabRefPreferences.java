@@ -6368,6 +6368,15 @@ argument_list|,
 literal|"ctrl DOWN"
 argument_list|)
 expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Minimize to system tray"
+argument_list|,
+literal|"ctrl alt W"
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getNextUnit (Reader data)
 specifier|private
