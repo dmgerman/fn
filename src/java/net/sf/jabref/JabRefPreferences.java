@@ -1056,6 +1056,17 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+literal|"previewPanelHeight"
+argument_list|,
+name|GUIGlobals
+operator|.
+name|PREVIEW_PANEL_HEIGHT
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
 literal|"tableColorCodesOn"
 argument_list|,
 name|Boolean
