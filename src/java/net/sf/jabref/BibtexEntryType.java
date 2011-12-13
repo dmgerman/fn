@@ -2431,44 +2431,6 @@ index|[]
 name|getRequiredFields
 parameter_list|()
 function_decl|;
-DECL|method|getGeneralFields ()
-specifier|public
-name|String
-index|[]
-name|getGeneralFields
-parameter_list|()
-block|{
-return|return
-operator|new
-name|String
-index|[]
-block|{
-literal|"crossref"
-block|,
-literal|"keywords"
-block|,
-literal|"doi"
-block|,
-literal|"url"
-block|,
-literal|"file"
-block|,
-literal|"citeseerurl"
-block|,
-literal|"pdf"
-block|,
-literal|"abstract"
-block|,
-literal|"comment"
-block|,
-literal|"owner"
-block|,
-literal|"timestamp"
-block|,
-literal|"review"
-block|, }
-return|;
-block|}
 DECL|method|getPrimaryOptionalFields ()
 specifier|public
 name|String

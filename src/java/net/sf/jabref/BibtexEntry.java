@@ -259,21 +259,6 @@ name|getRequiredFields
 argument_list|()
 return|;
 block|}
-comment|/**      * Returns an array describing general fields.      */
-DECL|method|getGeneralFields ()
-specifier|public
-name|String
-index|[]
-name|getGeneralFields
-parameter_list|()
-block|{
-return|return
-name|_type
-operator|.
-name|getGeneralFields
-argument_list|()
-return|;
-block|}
 comment|/**      * Returns an set containing the names of all fields that are      * set for this particular entry.      */
 DECL|method|getAllFields ()
 specifier|public
