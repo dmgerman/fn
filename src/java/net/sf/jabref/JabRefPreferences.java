@@ -1056,6 +1056,24 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+literal|"previewPanelHeight"
+argument_list|,
+literal|200
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"entryEditorHeight"
+argument_list|,
+literal|400
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
 literal|"tableColorCodesOn"
 argument_list|,
 name|Boolean
@@ -1996,7 +2014,7 @@ name|put
 argument_list|(
 literal|"generalFields"
 argument_list|,
-literal|"crossref;keywords;file;doi;url;urldate;citeseerurl;"
+literal|"crossref;keywords;file;doi;url;urldate;"
 operator|+
 literal|"pdf;comment;owner"
 argument_list|)
@@ -2364,17 +2382,6 @@ argument_list|,
 name|Boolean
 operator|.
 name|TRUE
-argument_list|)
-expr_stmt|;
-name|defaults
-operator|.
-name|put
-argument_list|(
-literal|"citeseerColumn"
-argument_list|,
-name|Boolean
-operator|.
-name|FALSE
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -3493,7 +3500,7 @@ name|CUSTOM_TAB_FIELDS
 operator|+
 literal|"_def0"
 argument_list|,
-literal|"crossref;keywords;file;doi;url;citeseerurl;"
+literal|"crossref;keywords;file;doi;url;"
 operator|+
 literal|"comment;owner;timestamp"
 argument_list|)
@@ -6093,15 +6100,6 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
-literal|"Fetch CiteSeer"
-argument_list|,
-literal|"F6"
-argument_list|)
-expr_stmt|;
-name|defKeyBinds
-operator|.
-name|put
-argument_list|(
 literal|"Search ScienceDirect"
 argument_list|,
 literal|"ctrl F5"
@@ -6123,24 +6121,6 @@ argument_list|(
 literal|"New from plain text"
 argument_list|,
 literal|"ctrl shift N"
-argument_list|)
-expr_stmt|;
-name|defKeyBinds
-operator|.
-name|put
-argument_list|(
-literal|"Import Fields from CiteSeer"
-argument_list|,
-literal|"ctrl shift C"
-argument_list|)
-expr_stmt|;
-name|defKeyBinds
-operator|.
-name|put
-argument_list|(
-literal|"Fetch citations from CiteSeer"
-argument_list|,
-literal|"F7"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds

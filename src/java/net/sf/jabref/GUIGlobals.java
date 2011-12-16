@@ -303,35 +303,12 @@ init|=
 literal|80
 decl_stmt|,
 comment|// Added to the font size when determining table
-DECL|field|PREVIEW_PANEL_PADDING
-name|PREVIEW_PANEL_PADDING
-init|=
-literal|15
-decl_stmt|,
-comment|// Extra room given to the preview editor, in addition to its own
-DECL|field|PREVIEW_PANEL_HEIGHT
-name|PREVIEW_PANEL_HEIGHT
-init|=
-literal|200
-decl_stmt|,
 DECL|field|MAX_CONTENT_SELECTOR_WIDTH
 name|MAX_CONTENT_SELECTOR_WIDTH
 init|=
 literal|240
 decl_stmt|;
 comment|// The max width of the combobox for content selectors.
-comment|// calculated preferred size
-comment|//public static final int[] PREVIEW_HEIGHT = {115, 300};
-comment|// row height
-specifier|public
-specifier|static
-specifier|final
-name|double
-DECL|field|VERTICAL_DIVIDER_LOCATION
-name|VERTICAL_DIVIDER_LOCATION
-init|=
-literal|0.4
-decl_stmt|;
 comment|// File names.
 specifier|public
 specifier|static
@@ -341,16 +318,6 @@ DECL|field|backupExt
 name|backupExt
 init|=
 literal|".bak"
-decl_stmt|,
-DECL|field|tempExt
-name|tempExt
-init|=
-literal|".tmp"
-decl_stmt|,
-DECL|field|defaultDir
-name|defaultDir
-init|=
-literal|"."
 decl_stmt|;
 comment|// Image paths.
 specifier|public

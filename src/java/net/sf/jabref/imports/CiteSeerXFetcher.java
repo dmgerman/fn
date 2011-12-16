@@ -312,7 +312,7 @@ name|getTitle
 parameter_list|()
 block|{
 return|return
-literal|"CiteSeer"
+literal|"CiteSeerX"
 return|;
 block|}
 DECL|method|getKeyName ()
@@ -322,7 +322,7 @@ name|getKeyName
 parameter_list|()
 block|{
 return|return
-literal|"CiteSeer"
+literal|"CiteSeerX"
 return|;
 block|}
 DECL|method|getIcon ()

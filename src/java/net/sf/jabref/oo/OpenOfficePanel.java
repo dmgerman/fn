@@ -1501,7 +1501,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|pushEntries
+name|pushEntriesInt
 operator|.
 name|setToolTipText
 argument_list|(
