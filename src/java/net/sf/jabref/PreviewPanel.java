@@ -1287,11 +1287,6 @@ argument_list|)
 expr_stmt|;
 name|previewPane
 operator|.
-name|invalidate
-argument_list|()
-expr_stmt|;
-name|previewPane
-operator|.
 name|revalidate
 argument_list|()
 expr_stmt|;
