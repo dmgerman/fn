@@ -55,7 +55,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author Michael Wrighton, S M Mahbub Murshed  *  * S M Mahbub Murshed : added few functions for convenience. May 15, 2007  */
+comment|/**  * @author Michael Wrighton, S M Mahbub Murshed  *  * S M Mahbub Murshed : added few functions for convenience. May 15, 2007  *  * History  * Dec 16, 2011 - Changed parseName(String) to export authorname with  * 				  more than 3 names correctly  *  */
 end_comment
 
 begin_class
@@ -175,12 +175,17 @@ argument_list|,
 literal|" \n\r"
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
+name|int
+name|amountOfNames
+init|=
 name|v
 operator|.
 name|size
 argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|amountOfNames
 operator|==
 literal|1
 condition|)
@@ -196,10 +201,7 @@ expr_stmt|;
 elseif|else
 if|if
 condition|(
-name|v
-operator|.
-name|size
-argument_list|()
+name|amountOfNames
 operator|==
 literal|2
 condition|)
@@ -236,12 +238,41 @@ argument_list|)
 expr_stmt|;
 name|middleName
 operator|=
+literal|""
+expr_stmt|;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|1
+init|;
+name|i
+operator|<
+name|amountOfNames
+operator|-
+literal|1
+condition|;
+name|i
+operator|++
+control|)
+name|middleName
+operator|+=
+literal|" "
+operator|+
 name|v
 operator|.
 name|get
 argument_list|(
-literal|1
+name|i
 argument_list|)
+expr_stmt|;
+name|middleName
+operator|=
+name|middleName
+operator|.
+name|trim
+argument_list|()
 expr_stmt|;
 name|surname
 operator|=
@@ -249,7 +280,9 @@ name|v
 operator|.
 name|get
 argument_list|(
-literal|2
+name|amountOfNames
+operator|-
+literal|1
 argument_list|)
 expr_stmt|;
 block|}
