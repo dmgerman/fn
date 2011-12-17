@@ -1387,7 +1387,7 @@ name|s
 operator|.
 name|split
 argument_list|(
-literal|"[^a-z]"
+literal|"[\\s;,]"
 argument_list|)
 return|;
 block|}
