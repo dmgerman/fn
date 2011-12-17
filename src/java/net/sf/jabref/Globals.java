@@ -9428,7 +9428,7 @@ name|searchPattern
 operator|.
 name|concat
 argument_list|(
-literal|" | ("
+literal|"|("
 argument_list|)
 operator|.
 name|concat
