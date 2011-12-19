@@ -1562,6 +1562,8 @@ operator|.
 name|importPdfFiles
 argument_list|(
 name|fileNames
+argument_list|,
+name|frame
 argument_list|)
 decl_stmt|;
 if|if

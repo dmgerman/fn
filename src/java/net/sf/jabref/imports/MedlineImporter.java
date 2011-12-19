@@ -68,6 +68,30 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|logging
+operator|.
+name|Level
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|logging
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|xml
@@ -102,6 +126,18 @@ name|BibtexEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|OutputPrinter
+import|;
+end_import
+
 begin_comment
 comment|/**  * Importer for the Refer/Endnote format.  *   * check here for details on the format  * http://www.ecst.csuchico.edu/~jacobsd/bib/formats/endnote.html  */
 end_comment
@@ -114,6 +150,24 @@ name|MedlineImporter
 extends|extends
 name|ImportFormat
 block|{
+DECL|field|logger
+specifier|private
+specifier|static
+name|Logger
+name|logger
+init|=
+name|Logger
+operator|.
+name|getLogger
+argument_list|(
+name|MedlineImporter
+operator|.
+name|class
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+decl_stmt|;
 comment|/**      * Return the name of this import format.      */
 DECL|method|getFormatName ()
 specifier|public
@@ -218,7 +272,7 @@ literal|false
 return|;
 block|}
 comment|/**      * Fetch and parse an medline item from eutils.ncbi.nlm.nih.gov.      *       * @param id One or several ids, separated by ","      *       * @return Will return an empty list on error.      */
-DECL|method|fetchMedline (String id)
+DECL|method|fetchMedline (String id, OutputPrinter status)
 specifier|public
 specifier|static
 name|List
@@ -229,6 +283,9 @@ name|fetchMedline
 parameter_list|(
 name|String
 name|id
+parameter_list|,
+name|OutputPrinter
+name|status
 parameter_list|)
 block|{
 name|String
@@ -268,6 +325,8 @@ name|data
 operator|.
 name|getInputStream
 argument_list|()
+argument_list|,
+name|status
 argument_list|)
 return|;
 block|}
@@ -288,7 +347,7 @@ return|;
 block|}
 block|}
 comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
-DECL|method|importEntries (InputStream stream)
+DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
 argument_list|<
@@ -298,6 +357,9 @@ name|importEntries
 parameter_list|(
 name|InputStream
 name|stream
+parameter_list|,
+name|OutputPrinter
+name|status
 parameter_list|)
 throws|throws
 name|IOException
@@ -447,10 +509,31 @@ name|ParserConfigurationException
 name|e1
 parameter_list|)
 block|{
+name|logger
+operator|.
+name|log
+argument_list|(
+name|Level
+operator|.
+name|SEVERE
+argument_list|,
 name|e1
 operator|.
-name|printStackTrace
+name|getLocalizedMessage
 argument_list|()
+argument_list|,
+name|e1
+argument_list|)
+expr_stmt|;
+name|status
+operator|.
+name|showMessage
+argument_list|(
+name|e1
+operator|.
+name|getLocalizedMessage
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -465,10 +548,31 @@ name|SAXException
 name|e2
 parameter_list|)
 block|{
+name|logger
+operator|.
+name|log
+argument_list|(
+name|Level
+operator|.
+name|SEVERE
+argument_list|,
 name|e2
 operator|.
-name|printStackTrace
+name|getLocalizedMessage
 argument_list|()
+argument_list|,
+name|e2
+argument_list|)
+expr_stmt|;
+name|status
+operator|.
+name|showMessage
+argument_list|(
+name|e2
+operator|.
+name|getLocalizedMessage
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -481,10 +585,31 @@ name|IOException
 name|e3
 parameter_list|)
 block|{
+name|logger
+operator|.
+name|log
+argument_list|(
+name|Level
+operator|.
+name|SEVERE
+argument_list|,
 name|e3
 operator|.
-name|printStackTrace
+name|getLocalizedMessage
 argument_list|()
+argument_list|,
+name|e3
+argument_list|)
+expr_stmt|;
+name|status
+operator|.
+name|showMessage
+argument_list|(
+name|e3
+operator|.
+name|getLocalizedMessage
+argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 return|return

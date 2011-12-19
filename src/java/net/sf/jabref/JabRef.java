@@ -424,6 +424,7 @@ literal|null
 decl_stmt|;
 DECL|field|jrf
 specifier|public
+specifier|static
 name|JabRefFrame
 name|jrf
 decl_stmt|;
@@ -434,6 +435,7 @@ name|options
 decl_stmt|;
 DECL|field|splashScreen
 specifier|public
+specifier|static
 name|Frame
 name|splashScreen
 init|=
@@ -5756,6 +5758,8 @@ name|data
 index|[
 literal|0
 index|]
+argument_list|,
+name|jrf
 argument_list|)
 expr_stmt|;
 block|}
@@ -5790,6 +5794,8 @@ argument_list|(
 literal|"user.home"
 argument_list|)
 argument_list|)
+argument_list|,
+name|jrf
 argument_list|)
 expr_stmt|;
 block|}

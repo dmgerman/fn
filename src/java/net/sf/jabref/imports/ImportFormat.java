@@ -58,6 +58,18 @@ name|BibtexEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|OutputPrinter
+import|;
+end_import
+
 begin_comment
 comment|/**  * Role of an importer for JabRef.  *   *<p>Importers are sorted according to following criteria  *<ol><li>  *   custom importers come first, then importers shipped with JabRef  *</li><li>  *   then importers are sorted by name.  *</li></ol>  *</p>  */
 end_comment
@@ -106,7 +118,7 @@ throws|throws
 name|IOException
 function_decl|;
 comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      *      * This method can be called in two different contexts - either when importing in      * a specified format, or when importing in unknown format. In the latter case,      * JabRef cycles through all available import formats. No error messages or feedback      * is displayed from individual import formats in this case.      *      * If importing in a specified format, and null or an empty list is returned, JabRef reports      * that no entries were found. If an IOException is thrown, JabRef displays the exception's      * message in unmodified form.      */
-DECL|method|importEntries (InputStream in)
+DECL|method|importEntries (InputStream in, OutputPrinter status)
 specifier|public
 specifier|abstract
 name|List
@@ -117,6 +129,9 @@ name|importEntries
 parameter_list|(
 name|InputStream
 name|in
+parameter_list|,
+name|OutputPrinter
+name|status
 parameter_list|)
 throws|throws
 name|IOException

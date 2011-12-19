@@ -477,7 +477,7 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|importFromStream (String format, InputStream in)
+DECL|method|importFromStream (String format, InputStream in, OutputPrinter status)
 specifier|public
 name|List
 argument_list|<
@@ -490,6 +490,9 @@ name|format
 parameter_list|,
 name|InputStream
 name|in
+parameter_list|,
+name|OutputPrinter
+name|status
 parameter_list|)
 throws|throws
 name|IOException
@@ -528,6 +531,8 @@ operator|.
 name|importEntries
 argument_list|(
 name|in
+argument_list|,
+name|status
 argument_list|)
 decl_stmt|;
 comment|// Remove all empty entries
@@ -546,7 +551,7 @@ return|return
 name|res
 return|;
 block|}
-DECL|method|importFromFile (String format, String filename)
+DECL|method|importFromFile (String format, String filename, OutputPrinter status)
 specifier|public
 name|List
 argument_list|<
@@ -559,6 +564,9 @@ name|format
 parameter_list|,
 name|String
 name|filename
+parameter_list|,
+name|OutputPrinter
+name|status
 parameter_list|)
 throws|throws
 name|IOException
@@ -592,10 +600,12 @@ argument_list|(
 name|importer
 argument_list|,
 name|filename
+argument_list|,
+name|status
 argument_list|)
 return|;
 block|}
-DECL|method|importFromFile (ImportFormat importer, String filename)
+DECL|method|importFromFile (ImportFormat importer, String filename, OutputPrinter status)
 specifier|public
 name|List
 argument_list|<
@@ -608,6 +618,9 @@ name|importer
 parameter_list|,
 name|String
 name|filename
+parameter_list|,
+name|OutputPrinter
+name|status
 parameter_list|)
 throws|throws
 name|IOException
@@ -681,6 +694,8 @@ operator|.
 name|importEntries
 argument_list|(
 name|stream
+argument_list|,
+name|status
 argument_list|)
 expr_stmt|;
 block|}
@@ -1840,6 +1855,16 @@ name|result
 init|=
 literal|null
 decl_stmt|;
+comment|// we don't use a provided OutputPrinter (such as the JabRef frame),
+comment|// as we don't want to see any outputs from failed importers:
+comment|// we expect failures and do not want to report them to the user
+name|OutputPrinterToNull
+name|nullOutput
+init|=
+operator|new
+name|OutputPrinterToNull
+argument_list|()
+decl_stmt|;
 comment|// Cycle through all importers:
 name|int
 name|bestResult
@@ -1868,6 +1893,8 @@ argument_list|(
 name|imFo
 argument_list|,
 name|filename
+argument_list|,
+name|nullOutput
 argument_list|)
 decl_stmt|;
 if|if

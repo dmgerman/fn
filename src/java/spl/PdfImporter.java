@@ -351,7 +351,7 @@ name|dropRow
 expr_stmt|;
 block|}
 comment|/**      *       * Imports the PDF files given by fileNames      *       * @param fileNames states the names of the files to import      * @return list of non-PDF files      */
-DECL|method|importPdfFiles (String[] fileNames)
+DECL|method|importPdfFiles (String[] fileNames, OutputPrinter status)
 specifier|public
 name|String
 index|[]
@@ -360,6 +360,9 @@ parameter_list|(
 name|String
 index|[]
 name|fileNames
+parameter_list|,
+name|OutputPrinter
+name|status
 parameter_list|)
 block|{
 name|List
@@ -440,6 +443,8 @@ expr_stmt|;
 name|importPdfFiles
 argument_list|(
 name|files
+argument_list|,
+name|status
 argument_list|)
 expr_stmt|;
 name|String
@@ -467,7 +472,7 @@ name|noPdfFilesArray
 return|;
 block|}
 comment|/**      * @param fileNames - PDF files to import      * @return true if the import succeeded, false otherwise      */
-DECL|method|importPdfFiles (List<String> fileNames)
+DECL|method|importPdfFiles (List<String> fileNames, OutputPrinter status)
 specifier|private
 name|boolean
 name|importPdfFiles
@@ -477,6 +482,9 @@ argument_list|<
 name|String
 argument_list|>
 name|fileNames
+parameter_list|,
+name|OutputPrinter
+name|status
 parameter_list|)
 block|{
 if|if
@@ -770,6 +778,8 @@ operator|.
 name|importEntries
 argument_list|(
 name|in
+argument_list|,
+name|status
 argument_list|)
 expr_stmt|;
 block|}

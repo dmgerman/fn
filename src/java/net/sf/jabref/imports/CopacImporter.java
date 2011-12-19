@@ -124,6 +124,18 @@ name|BibtexFields
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|OutputPrinter
+import|;
+end_import
+
 begin_comment
 comment|/**  * Importer for COPAC format.  *   * Documentation can be found online at:  *   * http://copac.ac.uk/faq/#format  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
 end_comment
@@ -235,7 +247,7 @@ literal|false
 return|;
 block|}
 comment|/** 	 * Parse the entries in the source, and return a List of BibtexEntry 	 * objects. 	 */
-DECL|method|importEntries (InputStream stream)
+DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
 argument_list|<
@@ -245,6 +257,9 @@ name|importEntries
 parameter_list|(
 name|InputStream
 name|stream
+parameter_list|,
+name|OutputPrinter
+name|status
 parameter_list|)
 throws|throws
 name|IOException

@@ -790,6 +790,8 @@ argument_list|(
 name|importer
 argument_list|,
 name|filename
+argument_list|,
+name|frame
 argument_list|)
 argument_list|)
 decl_stmt|;
