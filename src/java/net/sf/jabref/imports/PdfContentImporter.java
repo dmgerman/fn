@@ -178,6 +178,18 @@ name|Globals
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|OutputPrinter
+import|;
+end_import
+
 begin_comment
 comment|/**  * PdfContentImporter parses data of the first page of the PDF and creates a BibTeX entry.  *   * Currently, Springer and IEEE formats are supported.  *   * Integrating XMP support is future work  *   * @author koppor  *  */
 end_comment
@@ -918,7 +930,7 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|importEntries (InputStream in)
+DECL|method|importEntries (InputStream in, OutputPrinter status)
 specifier|public
 name|List
 argument_list|<
@@ -928,6 +940,9 @@ name|importEntries
 parameter_list|(
 name|InputStream
 name|in
+parameter_list|,
+name|OutputPrinter
+name|status
 parameter_list|)
 throws|throws
 name|IOException
@@ -2360,6 +2375,58 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|NoClassDefFoundError
+name|e
+parameter_list|)
+block|{
+if|if
+condition|(
+name|e
+operator|.
+name|getMessage
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"org/bouncycastle/jce/provider/BouncyCastleProvider"
+argument_list|)
+condition|)
+block|{
+name|status
+operator|.
+name|showMessage
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Java Bouncy Castle library not found. Please download and install it. For more information see http://www.bouncycastle.org/."
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|logger
+operator|.
+name|log
+argument_list|(
+name|Level
+operator|.
+name|SEVERE
+argument_list|,
+name|e
+operator|.
+name|getLocalizedMessage
+argument_list|()
+argument_list|,
+name|e
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 finally|finally
 block|{

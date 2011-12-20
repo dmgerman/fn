@@ -839,6 +839,8 @@ operator|.
 name|fetchMedline
 argument_list|(
 name|query
+argument_list|,
+name|frame
 argument_list|)
 decl_stmt|;
 if|if
@@ -1127,6 +1129,8 @@ argument_list|(
 name|result
 operator|.
 name|ids
+argument_list|,
+name|frame
 argument_list|)
 decl_stmt|;
 for|for

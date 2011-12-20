@@ -78,6 +78,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|OutputPrinter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|util
 operator|.
 name|XMPUtil
@@ -112,7 +124,7 @@ argument_list|)
 return|;
 block|}
 comment|/** 	 * Returns a list of all BibtexEntries found in the inputstream. 	 */
-DECL|method|importEntries (InputStream in)
+DECL|method|importEntries (InputStream in, OutputPrinter status)
 specifier|public
 name|List
 argument_list|<
@@ -122,6 +134,9 @@ name|importEntries
 parameter_list|(
 name|InputStream
 name|in
+parameter_list|,
+name|OutputPrinter
+name|status
 parameter_list|)
 throws|throws
 name|IOException
