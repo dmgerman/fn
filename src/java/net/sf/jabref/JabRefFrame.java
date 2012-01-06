@@ -821,9 +821,10 @@ name|JTabbedPane
 name|tabbedPane
 init|=
 operator|new
-name|JTabbedPane
+name|DragDropPane
 argument_list|()
 decl_stmt|;
+comment|//This creates the Drag&Drop JTabbedPane
 DECL|field|marg
 specifier|final
 name|Insets
