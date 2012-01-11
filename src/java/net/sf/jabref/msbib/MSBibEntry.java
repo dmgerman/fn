@@ -325,7 +325,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author S M Mahbub Murshed  * @email udvranto@yahoo.com  *  * @version 2.0.0  * @see http://mahbub.wordpress.com/2007/03/24/details-of-microsoft-office-2007-bibliographic-format-compared-to-bibtex/  * @see http://mahbub.wordpress.com/2007/03/22/deciphering-microsoft-office-2007-bibliography-format/  *   * Date: May 15, 2007; May 03, 2007  *   * History  * May 03, 2007 - Added export functionality  * May 15, 2007 - Added import functionality  * May 16, 2007 - Changed all interger entries to strings,  * 				  except LCID which must be an integer.  * 				  To avoid exception during integer parsing  *				  the exception is caught and LCID is set to zero.  */
+comment|/**  * @author S M Mahbub Murshed  * @email udvranto@yahoo.com  *  * @version 2.0.0  * @see http://mahbub.wordpress.com/2007/03/24/details-of-microsoft-office-2007-bibliographic-format-compared-to-bibtex/  * @see http://mahbub.wordpress.com/2007/03/22/deciphering-microsoft-office-2007-bibliography-format/  *   * Date: May 15, 2007; May 03, 2007  *   * History  * May 03, 2007 - Added export functionality  * May 15, 2007 - Added import functionality  * May 16, 2007 - Changed all interger entries to strings,  * 				  except LCID which must be an integer.  * 				  To avoid exception during integer parsing  *				  the exception is caught and LCID is set to zero.  * Jan 06, 2012 - Changed the XML element ConferenceName to present  * 				  the Booktitle instead of the organization field content  */
 end_comment
 
 begin_class
@@ -2551,7 +2551,7 @@ name|bibtex
 operator|.
 name|getField
 argument_list|(
-literal|"organization"
+literal|"booktitle"
 argument_list|)
 operator|!=
 literal|null
@@ -2562,7 +2562,7 @@ name|bibtex
 operator|.
 name|getField
 argument_list|(
-literal|"organization"
+literal|"booktitle"
 argument_list|)
 operator|.
 name|toString
