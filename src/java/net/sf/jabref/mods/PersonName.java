@@ -158,7 +158,6 @@ name|String
 name|author
 parameter_list|)
 block|{
-comment|// TODO: replace special characters
 name|Vector
 argument_list|<
 name|String
@@ -177,11 +176,14 @@ name|authorMod
 init|=
 name|AuthorList
 operator|.
-name|fixAuthor_firstNameFirst
+name|fixAuthor_lastNameFirst
 argument_list|(
 name|author
+argument_list|,
+literal|false
 argument_list|)
 decl_stmt|;
+comment|//Formating names and replacing escape Char for ',' back to a comma
 name|XMLChars
 name|xmlChars
 init|=
@@ -197,7 +199,26 @@ name|format
 argument_list|(
 name|authorMod
 argument_list|)
+operator|.
+name|replace
+argument_list|(
+literal|"&#44;"
+argument_list|,
+literal|","
+argument_list|)
 expr_stmt|;
+name|int
+name|endOfLastName
+init|=
+name|authorMod
+operator|.
+name|indexOf
+argument_list|(
+literal|","
+argument_list|)
+decl_stmt|;
+comment|// Tokenize just the firstName and middleNames as we have the surname
+comment|// before the comma.
 name|WSITools
 operator|.
 name|tokenize
@@ -205,8 +226,39 @@ argument_list|(
 name|v
 argument_list|,
 name|authorMod
+operator|.
+name|substring
+argument_list|(
+name|endOfLastName
+operator|+
+literal|1
+argument_list|)
+operator|.
+name|trim
+argument_list|()
 argument_list|,
 literal|" \n\r"
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|endOfLastName
+operator|>=
+literal|0
+condition|)
+comment|// comma is found
+name|v
+operator|.
+name|add
+argument_list|(
+name|authorMod
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|endOfLastName
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|int
