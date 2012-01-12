@@ -1079,6 +1079,15 @@ argument_list|,
 literal|"in"
 argument_list|)
 expr_stmt|;
+name|LANGUAGES
+operator|.
+name|put
+argument_list|(
+literal|"Brazilian Portugese"
+argument_list|,
+literal|"pt_BR"
+argument_list|)
+expr_stmt|;
 comment|// Set up entry editor colors, first time:
 name|updateEntryEditorColors
 argument_list|()
