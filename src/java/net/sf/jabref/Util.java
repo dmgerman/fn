@@ -7,30 +7,6 @@ begin_comment
 comment|// created by : Morten O. Alver 2003
 end_comment
 
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// function : utility functions
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// modified :  - r.nagel 20.04.2006
-end_comment
-
-begin_comment
-comment|//               make the DateFormatter abstract and splitt the easyDate methode
-end_comment
-
-begin_comment
-comment|//               (now we cannot change the dateformat dynamicly, sorry)
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref
 package|package
@@ -783,7 +759,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Describe class<code>Util</code> here.  *   * @author<a href="mailto:"></a>  * @version 1.0  */
+comment|/**  * utility functions  */
 end_comment
 
 begin_class
