@@ -379,7 +379,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Clear Note and URL if DOI exists"
+literal|"Clear note and URL if DOI exists"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -932,7 +932,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Cleanup Settings"
+literal|"Cleanup settings"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1144,7 +1144,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"clearNoteURLifDOIexists"
+name|JabRefPreferences
+operator|.
+name|CLEAR_NOTE_URL_IF_DOI_EXISTS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1159,7 +1161,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"clearNoteURLifDOIexists"
+name|JabRefPreferences
+operator|.
+name|CLEAR_NOTE_URL_IF_DOI_EXISTS
 argument_list|,
 name|clearNoteURLifDOIexists
 operator|.

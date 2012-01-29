@@ -428,6 +428,11 @@ DECL|field|EDIT_GROUP_MEMBERSHIP_MODE
 name|EDIT_GROUP_MEMBERSHIP_MODE
 init|=
 literal|"groupEditGroupMembershipMode"
+decl_stmt|,
+DECL|field|CLEAR_NOTE_URL_IF_DOI_EXISTS
+name|CLEAR_NOTE_URL_IF_DOI_EXISTS
+init|=
+literal|"clearNoteURLifDOIexists"
 decl_stmt|;
 comment|// This String is used in the encoded list in prefs of external file type
 comment|// modifications, in order to indicate a removed default file type:

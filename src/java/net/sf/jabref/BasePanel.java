@@ -4716,7 +4716,6 @@ operator|new
 name|AbstractWorker
 argument_list|()
 block|{
-comment|//int[] rows;
 name|List
 argument_list|<
 name|BibtexEntry
@@ -4754,7 +4753,6 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//rows = entryTable.getSelectedRows() ;
 name|numSelected
 operator|=
 name|entries
@@ -4996,7 +4994,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"clearNoteURLifDOIexists"
+name|JabRefPreferences
+operator|.
+name|CLEAR_NOTE_URL_IF_DOI_EXISTS
 argument_list|)
 condition|)
 block|{
@@ -5065,7 +5065,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"clearNoteURLifDOIexists"
+name|JabRefPreferences
+operator|.
+name|CLEAR_NOTE_URL_IF_DOI_EXISTS
 argument_list|)
 condition|)
 block|{
