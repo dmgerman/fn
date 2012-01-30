@@ -1884,6 +1884,17 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+literal|"autoAssignGroup"
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
 literal|"groupKeywordSeparator"
 argument_list|,
 literal|", "

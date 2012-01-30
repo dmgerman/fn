@@ -135,13 +135,13 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**     * Initializes the variables needed with defaults     */
 DECL|method|initialize ()
 specifier|public
 name|void
 name|initialize
 parameter_list|()
 block|{
-comment|//String [] servers = {Globals.lang("MySQL"), Globals.lang("Derby")};
 name|String
 index|[]
 name|servers

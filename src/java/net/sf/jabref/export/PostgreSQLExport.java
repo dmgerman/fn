@@ -72,7 +72,7 @@ name|jabref
 operator|.
 name|sql
 operator|.
-name|SQLutil
+name|DBExporterAndImporterFactory
 import|;
 end_import
 
@@ -143,9 +143,16 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
-name|SQLutil
+operator|new
+name|DBExporterAndImporterFactory
+argument_list|()
 operator|.
-name|exportDatabase
+name|getExporter
+argument_list|(
+literal|"POSTGRESQL"
+argument_list|)
+operator|.
+name|exportDatabaseAsFile
 argument_list|(
 name|database
 argument_list|,
@@ -154,12 +161,6 @@ argument_list|,
 name|keySet
 argument_list|,
 name|file
-argument_list|,
-name|SQLutil
-operator|.
-name|DBTYPE
-operator|.
-name|POSTGRESQL
 argument_list|)
 expr_stmt|;
 block|}

@@ -606,6 +606,8 @@ name|jabref
 operator|.
 name|sql
 operator|.
+name|importer
+operator|.
 name|DbImportAction
 import|;
 end_import
