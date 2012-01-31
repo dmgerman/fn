@@ -1287,6 +1287,12 @@ name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
+comment|// Store these settings so they appear as default next time:
+name|dbStrings
+operator|.
+name|storeToPreferences
+argument_list|()
+expr_stmt|;
 name|char
 index|[]
 name|pwd

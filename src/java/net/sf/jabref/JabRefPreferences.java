@@ -3259,6 +3259,42 @@ operator|.
 name|FALSE
 argument_list|)
 expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"dbConnectServerType"
+argument_list|,
+literal|"MySQL"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"dbConnectHostname"
+argument_list|,
+literal|"localhost"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"dbConnectDatabase"
+argument_list|,
+literal|"jabref"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"dbConnectUsername"
+argument_list|,
+literal|"root"
+argument_list|)
+expr_stmt|;
 comment|//defaults.put("lastAutodetectedImport", "");
 comment|//defaults.put("autoRemoveExactDuplicates", Boolean.FALSE);
 comment|//defaults.put("confirmAutoRemoveExactDuplicates", Boolean.TRUE);

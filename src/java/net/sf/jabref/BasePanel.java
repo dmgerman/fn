@@ -3917,6 +3917,11 @@ argument_list|(
 name|ex
 argument_list|)
 expr_stmt|;
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 name|dbs
 operator|.
 name|isConfigValid
