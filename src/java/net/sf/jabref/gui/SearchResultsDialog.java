@@ -740,11 +740,9 @@ name|BibtexEntry
 argument_list|>
 name|tableSorter
 init|=
-operator|new
 name|TableComparatorChooser
-argument_list|<
-name|BibtexEntry
-argument_list|>
+operator|.
+name|install
 argument_list|(
 name|entryTable
 argument_list|,
@@ -1249,9 +1247,6 @@ operator|.
 name|List
 argument_list|<
 name|Comparator
-argument_list|<
-name|BibtexEntry
-argument_list|>
 argument_list|>
 name|comparators
 init|=
