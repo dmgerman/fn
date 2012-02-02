@@ -428,11 +428,6 @@ DECL|field|EDIT_GROUP_MEMBERSHIP_MODE
 name|EDIT_GROUP_MEMBERSHIP_MODE
 init|=
 literal|"groupEditGroupMembershipMode"
-decl_stmt|,
-DECL|field|CLEAR_NOTE_URL_IF_DOI_EXISTS
-name|CLEAR_NOTE_URL_IF_DOI_EXISTS
-init|=
-literal|"clearNoteURLifDOIexists"
 decl_stmt|;
 comment|// This String is used in the encoded list in prefs of external file type
 comment|// modifications, in order to indicate a removed default file type:
@@ -3253,29 +3248,7 @@ operator|.
 name|FALSE
 argument_list|)
 expr_stmt|;
-name|defaults
-operator|.
-name|put
-argument_list|(
-literal|"AskAutoNamingPDFsAgain"
-argument_list|,
-name|Boolean
-operator|.
-name|TRUE
-argument_list|)
-expr_stmt|;
 comment|//defaults.put("lastAutodetectedImport", "");
-name|defaults
-operator|.
-name|put
-argument_list|(
-literal|"clearNoteURLifDOIexists"
-argument_list|,
-name|Boolean
-operator|.
-name|FALSE
-argument_list|)
-expr_stmt|;
 comment|//defaults.put("autoRemoveExactDuplicates", Boolean.FALSE);
 comment|//defaults.put("confirmAutoRemoveExactDuplicates", Boolean.TRUE);
 comment|//defaults.put("tempDir", System.getProperty("java.io.tmpdir"));
