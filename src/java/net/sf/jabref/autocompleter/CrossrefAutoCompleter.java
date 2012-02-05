@@ -106,13 +106,6 @@ operator|!=
 literal|null
 condition|)
 block|{
-if|if
-condition|(
-name|entry
-operator|!=
-literal|null
-condition|)
-block|{
 name|String
 name|key
 init|=
@@ -135,7 +128,6 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

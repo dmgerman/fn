@@ -102,13 +102,6 @@ name|autoCompFF
 decl_stmt|,
 name|autoCompLF
 decl_stmt|;
-DECL|field|caseSensitive
-specifier|private
-name|boolean
-name|caseSensitive
-init|=
-literal|true
-decl_stmt|;
 comment|/** 	 * @see AutoCompleterFactory 	 */
 DECL|method|NameFieldAutoCompleter (String fieldName)
 specifier|protected
@@ -129,22 +122,6 @@ block|}
 argument_list|,
 literal|false
 argument_list|)
-expr_stmt|;
-block|}
-DECL|method|setCaseSensitive (boolean caseSensitive)
-specifier|public
-name|void
-name|setCaseSensitive
-parameter_list|(
-name|boolean
-name|caseSensitive
-parameter_list|)
-block|{
-name|this
-operator|.
-name|caseSensitive
-operator|=
-name|caseSensitive
 expr_stmt|;
 block|}
 DECL|method|NameFieldAutoCompleter (String[] fieldNames, boolean lastNameOnly)
@@ -569,17 +546,13 @@ name|String
 name|str
 parameter_list|)
 block|{
-name|str
-operator|=
-name|str
-operator|.
-name|toLowerCase
-argument_list|()
-expr_stmt|;
 name|int
 name|index
 init|=
 name|str
+operator|.
+name|toLowerCase
+argument_list|()
 operator|.
 name|lastIndexOf
 argument_list|(
@@ -662,28 +635,6 @@ block|{
 return|return
 name|prefix
 return|;
-block|}
-annotation|@
-name|Override
-DECL|method|addWordToIndex (String word)
-specifier|public
-name|void
-name|addWordToIndex
-parameter_list|(
-name|String
-name|word
-parameter_list|)
-block|{
-name|super
-operator|.
-name|addWordToIndex
-argument_list|(
-name|word
-operator|.
-name|toLowerCase
-argument_list|()
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 end_class

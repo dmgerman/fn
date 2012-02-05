@@ -416,7 +416,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|1
+literal|2
 argument_list|,
 name|autoCompleter
 operator|.
@@ -428,6 +428,22 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+comment|// 1 for case-sensitive search, 2 for case insensitive search (Authornames also included)
+name|assertEquals
+argument_list|(
+literal|1
+argument_list|,
+name|autoCompleter
+operator|.
+name|complete
+argument_list|(
+literal|"Aut"
+argument_list|)
+operator|.
+name|length
+argument_list|)
+expr_stmt|;
+comment|// "Aut" triggers case-sensitive search, now only "Authornames" is returned
 name|assertEquals
 argument_list|(
 literal|"context"

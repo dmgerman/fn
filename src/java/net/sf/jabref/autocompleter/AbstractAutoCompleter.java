@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -15,6 +15,36 @@ operator|.
 name|autocompleter
 package|;
 end_package
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|HashSet
+import|;
+end_import
 
 begin_import
 import|import
@@ -38,6 +68,18 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|text
+operator|.
+name|JTextComponent
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -49,7 +91,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An autocompleter delivers possible completions for a given String. There are  * different types of autocompleters for different use cases.  *   * Example: {@link NameFieldAutoCompleter}, {@link EntireFieldAutoCompleter}  *   * @author kahlert, cordes  * @see AutoCompleterFactory  */
+comment|/**  * An autocompleter delivers possible completions for a given String. There are  * different types of autocompleters for different use cases.  *   * Example: {@link NameFieldAutoCompleter}, {@link EntireFieldAutoCompleter}  *   * @author kahlert, cordes, olly98  * @see AutoCompleterFactory  */
 end_comment
 
 begin_class
@@ -77,18 +119,61 @@ name|SHORTEST_WORD
 init|=
 literal|4
 decl_stmt|;
-DECL|field|_index
+comment|// stores the strings as is
+DECL|field|_index_casesensitive
 specifier|private
 name|TreeSet
 argument_list|<
 name|String
 argument_list|>
-name|_index
+name|_index_casesensitive
 init|=
 operator|new
 name|TreeSet
 argument_list|<
 name|String
+argument_list|>
+argument_list|()
+decl_stmt|;
+comment|// stores strings in lowercase
+DECL|field|_index_caseinsensitive
+specifier|private
+name|TreeSet
+argument_list|<
+name|String
+argument_list|>
+name|_index_caseinsensitive
+init|=
+operator|new
+name|TreeSet
+argument_list|<
+name|String
+argument_list|>
+argument_list|()
+decl_stmt|;
+comment|// stores for a lowercase string the possible expanded strings
+DECL|field|_possibleStringsForSearchString
+specifier|private
+name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|TreeSet
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
+name|_possibleStringsForSearchString
+init|=
+operator|new
+name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|TreeSet
+argument_list|<
+name|String
+argument_list|>
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -103,6 +188,7 @@ name|BibtexEntry
 name|entry
 parameter_list|)
 function_decl|;
+comment|/** 	 * States whether the field consists of multiple values (false) or of a single value (true) 	 *  	 * Symptom: if false, {@link net.sf.jabref.gui.AutoCompleteListener#getCurrentWord(JTextComponent comp)}  	 * returns current word only, if true, it returns the text beginning from the buffer 	 */
 DECL|method|isSingleUnitField ()
 specifier|abstract
 specifier|public
@@ -132,6 +218,101 @@ return|return
 literal|null
 return|;
 name|String
+name|lstr
+init|=
+name|str
+operator|.
+name|toLowerCase
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|lstr
+operator|.
+name|equals
+argument_list|(
+name|str
+argument_list|)
+condition|)
+block|{
+comment|// user typed in lower case word -> we do an case-insenstive search
+name|String
+name|ender
+init|=
+name|incrementLastCharacter
+argument_list|(
+name|lstr
+argument_list|)
+decl_stmt|;
+name|SortedSet
+argument_list|<
+name|String
+argument_list|>
+name|subset
+init|=
+name|_index_caseinsensitive
+operator|.
+name|subSet
+argument_list|(
+name|lstr
+argument_list|,
+name|ender
+argument_list|)
+decl_stmt|;
+comment|// As subset only contains lower case strings,
+comment|// we have to to determine possible strings for each hit
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+name|res
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|String
+name|s
+range|:
+name|subset
+control|)
+block|{
+name|res
+operator|.
+name|addAll
+argument_list|(
+name|_possibleStringsForSearchString
+operator|.
+name|get
+argument_list|(
+name|s
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|res
+operator|.
+name|toArray
+argument_list|(
+operator|new
+name|String
+index|[
+literal|0
+index|]
+argument_list|)
+return|;
+block|}
+else|else
+block|{
+comment|// user typed in a mix of upper case and lower case,
+comment|// we assume user wants to have exact search
+name|String
 name|ender
 init|=
 name|incrementLastCharacter
@@ -145,7 +326,7 @@ name|String
 argument_list|>
 name|subset
 init|=
-name|_index
+name|_index_casesensitive
 operator|.
 name|subSet
 argument_list|(
@@ -166,6 +347,7 @@ literal|0
 index|]
 argument_list|)
 return|;
+block|}
 block|}
 comment|/** 	 * Increments the last character of a string. 	 *  	 * Example: incrementLastCharacter("abc") returns "abd". 	 */
 DECL|method|incrementLastCharacter (String str)
@@ -267,13 +449,79 @@ argument_list|()
 operator|>=
 name|SHORTEST_WORD
 condition|)
-name|_index
+block|{
+name|_index_casesensitive
 operator|.
 name|add
 argument_list|(
 name|word
 argument_list|)
 expr_stmt|;
+comment|// insensitive treatment
+comment|// first, add the lower cased word to search index
+comment|// second, add a mapping from the lower cased word to the real word
+name|String
+name|word_lcase
+init|=
+name|word
+operator|.
+name|toLowerCase
+argument_list|()
+decl_stmt|;
+name|_index_caseinsensitive
+operator|.
+name|add
+argument_list|(
+name|word_lcase
+argument_list|)
+expr_stmt|;
+name|TreeSet
+argument_list|<
+name|String
+argument_list|>
+name|set
+init|=
+name|_possibleStringsForSearchString
+operator|.
+name|get
+argument_list|(
+name|word_lcase
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|set
+operator|==
+literal|null
+condition|)
+block|{
+name|set
+operator|=
+operator|new
+name|TreeSet
+argument_list|<
+name|String
+argument_list|>
+argument_list|()
+expr_stmt|;
+block|}
+name|set
+operator|.
+name|add
+argument_list|(
+name|word
+argument_list|)
+expr_stmt|;
+name|_possibleStringsForSearchString
+operator|.
+name|put
+argument_list|(
+name|word_lcase
+argument_list|,
+name|set
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|indexContainsWord (String word)
 specifier|public
@@ -285,11 +533,14 @@ name|word
 parameter_list|)
 block|{
 return|return
-name|_index
+name|_index_caseinsensitive
 operator|.
 name|contains
 argument_list|(
 name|word
+operator|.
+name|toLowerCase
+argument_list|()
 argument_list|)
 return|;
 block|}
