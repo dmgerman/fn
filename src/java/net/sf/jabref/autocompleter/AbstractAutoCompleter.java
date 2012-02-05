@@ -167,7 +167,7 @@ index|]
 argument_list|)
 return|;
 block|}
-comment|/* 	 * Increments the last character of a string. 	 *  	 * Example: incrementLastCharacter("abc") returns "abd". 	 */
+comment|/** 	 * Increments the last character of a string. 	 *  	 * Example: incrementLastCharacter("abc") returns "abd". 	 */
 DECL|method|incrementLastCharacter (String str)
 specifier|private
 specifier|static

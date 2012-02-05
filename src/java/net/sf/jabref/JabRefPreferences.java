@@ -428,6 +428,27 @@ DECL|field|EDIT_GROUP_MEMBERSHIP_MODE
 name|EDIT_GROUP_MEMBERSHIP_MODE
 init|=
 literal|"groupEditGroupMembershipMode"
+decl_stmt|,
+DECL|field|AUTOCOMPLETE_FIRSTNAME_MODE
+name|AUTOCOMPLETE_FIRSTNAME_MODE
+init|=
+literal|"autoCompFirstNameMode"
+decl_stmt|,
+comment|// here are the possible values for _MODE:
+DECL|field|AUTOCOMPLETE_FIRSTNAME_MODE_BOTH
+name|AUTOCOMPLETE_FIRSTNAME_MODE_BOTH
+init|=
+literal|"both"
+decl_stmt|,
+DECL|field|AUTOCOMPLETE_FIRSTNAME_MODE_ONLY_FULL
+name|AUTOCOMPLETE_FIRSTNAME_MODE_ONLY_FULL
+init|=
+literal|"fullOnly"
+decl_stmt|,
+DECL|field|AUTOCOMPLETE_FIRSTNAME_MODE_ONLY_ABBR
+name|AUTOCOMPLETE_FIRSTNAME_MODE_ONLY_ABBR
+init|=
+literal|"abbrOnly"
 decl_stmt|;
 comment|// This String is used in the encoded list in prefs of external file type
 comment|// modifications, in order to indicate a removed default file type:
@@ -1092,6 +1113,7 @@ operator|.
 name|FALSE
 argument_list|)
 expr_stmt|;
+comment|// "Show names unchanged"
 name|defaults
 operator|.
 name|put
@@ -1103,6 +1125,7 @@ operator|.
 name|FALSE
 argument_list|)
 expr_stmt|;
+comment|// "Show 'Firstname Lastname'"
 name|defaults
 operator|.
 name|put
@@ -1114,6 +1137,7 @@ operator|.
 name|FALSE
 argument_list|)
 expr_stmt|;
+comment|// "Show 'Lastname, Firstname'"
 name|defaults
 operator|.
 name|put
@@ -1125,6 +1149,7 @@ operator|.
 name|TRUE
 argument_list|)
 expr_stmt|;
+comment|// "Natbib style"
 name|defaults
 operator|.
 name|put
@@ -1136,6 +1161,7 @@ operator|.
 name|TRUE
 argument_list|)
 expr_stmt|;
+comment|// "Abbreviate names"
 name|defaults
 operator|.
 name|put
@@ -1147,6 +1173,7 @@ operator|.
 name|TRUE
 argument_list|)
 expr_stmt|;
+comment|// "Show last names only"
 name|defaults
 operator|.
 name|put
@@ -1739,6 +1766,7 @@ operator|.
 name|FALSE
 argument_list|)
 expr_stmt|;
+comment|// "Autocomplete names in 'Firstname Lastname' format only"
 name|defaults
 operator|.
 name|put
@@ -1748,6 +1776,16 @@ argument_list|,
 name|Boolean
 operator|.
 name|FALSE
+argument_list|)
+expr_stmt|;
+comment|// "Autocomplete names in 'Lastname, Firstname' format only"
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|AUTOCOMPLETE_FIRSTNAME_MODE
+argument_list|,
+name|AUTOCOMPLETE_FIRSTNAME_MODE_BOTH
 argument_list|)
 expr_stmt|;
 name|defaults
