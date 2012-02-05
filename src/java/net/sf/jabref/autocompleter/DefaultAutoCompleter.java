@@ -148,7 +148,7 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
-literal|" .,\n"
+literal|" ;.,\n"
 argument_list|)
 decl_stmt|;
 while|while
