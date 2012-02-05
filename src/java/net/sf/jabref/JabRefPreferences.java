@@ -429,6 +429,11 @@ name|EDIT_GROUP_MEMBERSHIP_MODE
 init|=
 literal|"groupEditGroupMembershipMode"
 decl_stmt|,
+DECL|field|SHORTEST_TO_COMPLETE
+name|SHORTEST_TO_COMPLETE
+init|=
+literal|"shortestToComplete"
+decl_stmt|,
 DECL|field|AUTOCOMPLETE_FIRSTNAME_MODE
 name|AUTOCOMPLETE_FIRSTNAME_MODE
 init|=
@@ -1779,6 +1784,19 @@ name|FALSE
 argument_list|)
 expr_stmt|;
 comment|// "Autocomplete names in 'Lastname, Firstname' format only"
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|SHORTEST_TO_COMPLETE
+argument_list|,
+operator|new
+name|Integer
+argument_list|(
+literal|2
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|defaults
 operator|.
 name|put
