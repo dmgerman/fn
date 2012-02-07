@@ -1788,11 +1788,9 @@ argument_list|)
 expr_stmt|;
 name|comparatorChooser
 operator|=
-operator|new
 name|TableComparatorChooser
-argument_list|<
-name|BibtexEntry
-argument_list|>
+operator|.
+name|install
 argument_list|(
 name|glTable
 argument_list|,
@@ -7496,9 +7494,6 @@ operator|.
 name|List
 argument_list|<
 name|Comparator
-argument_list|<
-name|BibtexEntry
-argument_list|>
 argument_list|>
 name|comparators
 init|=

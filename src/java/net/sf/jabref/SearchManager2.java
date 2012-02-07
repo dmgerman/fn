@@ -2680,14 +2680,6 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|fireSearchlistenerEvent
-argument_list|(
-name|searchField
-operator|.
-name|getText
-argument_list|()
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 name|e
@@ -2765,6 +2757,14 @@ argument_list|()
 expr_stmt|;
 return|return;
 block|}
+name|fireSearchlistenerEvent
+argument_list|(
+name|searchField
+operator|.
+name|getText
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// Setup search parameters common to both normal and float.
 name|Hashtable
 argument_list|<

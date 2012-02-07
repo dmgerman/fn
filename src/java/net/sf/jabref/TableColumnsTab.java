@@ -2712,6 +2712,9 @@ operator|=
 name|tr
 operator|.
 name|name
+operator|.
+name|toLowerCase
+argument_list|()
 expr_stmt|;
 name|nWidths
 index|[

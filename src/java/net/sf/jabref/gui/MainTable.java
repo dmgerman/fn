@@ -1760,9 +1760,6 @@ comment|// First column:
 name|List
 argument_list|<
 name|Comparator
-argument_list|<
-name|BibtexEntry
-argument_list|>
 argument_list|>
 name|comparators
 init|=
@@ -3525,9 +3522,6 @@ block|{
 name|List
 argument_list|<
 name|Comparator
-argument_list|<
-name|BibtexEntry
-argument_list|>
 argument_list|>
 name|l
 init|=
