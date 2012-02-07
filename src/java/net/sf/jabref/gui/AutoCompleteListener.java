@@ -174,6 +174,7 @@ DECL|field|completer
 name|AbstractAutoCompleter
 name|completer
 decl_stmt|;
+comment|// These variables keep track of the situation from time to time.
 DECL|field|toSetIn
 specifier|protected
 name|String
@@ -181,6 +182,7 @@ name|toSetIn
 init|=
 literal|null
 decl_stmt|,
+comment|// null indicates that there are no completions available
 DECL|field|lastBeginning
 name|lastBeginning
 init|=
@@ -226,7 +228,6 @@ name|nextFocusListener
 init|=
 literal|null
 decl_stmt|;
-comment|// These variables keep track of the situation from time to time.
 DECL|method|AutoCompleteListener (AbstractAutoCompleter completer)
 specifier|public
 name|AutoCompleteListener
@@ -338,6 +339,10 @@ name|end
 argument_list|,
 name|end
 argument_list|)
+expr_stmt|;
+name|toSetIn
+operator|=
+literal|null
 expr_stmt|;
 if|if
 condition|(
@@ -1207,6 +1212,14 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|ch
+operator|==
+literal|'\n'
+condition|)
+comment|// this case is handled at keyPressed(e)
+return|return;
+if|if
+condition|(
 operator|(
 name|e
 operator|.
@@ -1282,6 +1295,43 @@ operator|+
 literal|"<"
 argument_list|)
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|Character
+operator|.
+name|isWhitespace
+argument_list|(
+name|ch
+argument_list|)
+operator|&&
+operator|!
+name|completer
+operator|.
+name|isSingleUnitField
+argument_list|()
+condition|)
+block|{
+comment|// start a new search if end-of-field is reached
+comment|// replace displayed letters with typed letters
+name|setUnmodifiedTypedLetters
+argument_list|(
+operator|(
+name|JTextComponent
+operator|)
+name|e
+operator|.
+name|getSource
+argument_list|()
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|toSetIn
+operator|=
+literal|null
+expr_stmt|;
+return|return;
 block|}
 comment|// The case-insensitive system is a bit tricky here
 comment|// If keyword is "TODO" and user types "tO", then this is treated as "continue" as the "O" matches the "O"
@@ -1827,10 +1877,6 @@ name|toSetIn
 operator|=
 literal|null
 expr_stmt|;
-name|lastCompletions
-operator|=
-literal|null
-expr_stmt|;
 block|}
 DECL|method|findCompletions (String beginning, JTextComponent comp)
 specifier|protected
@@ -2152,7 +2198,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|lastCompletions
+name|toSetIn
 operator|!=
 literal|null
 condition|)
@@ -2199,7 +2245,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|lastCompletions
+name|toSetIn
 operator|!=
 literal|null
 condition|)

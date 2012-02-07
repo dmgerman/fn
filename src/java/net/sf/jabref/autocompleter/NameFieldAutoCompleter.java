@@ -82,11 +82,12 @@ name|String
 index|[]
 name|fieldNames
 decl_stmt|;
-DECL|field|lastNameOnly
+DECL|field|lastNameOnlyAndSeparationBySpace
 specifier|private
 name|boolean
-name|lastNameOnly
+name|lastNameOnlyAndSeparationBySpace
 decl_stmt|;
+comment|// true if only last names should be completed and there is NO separation by " and ", but by " "
 DECL|field|prefix
 specifier|private
 name|String
@@ -130,7 +131,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|NameFieldAutoCompleter (String[] fieldNames, boolean lastNameOnly)
+DECL|method|NameFieldAutoCompleter (String[] fieldNames, boolean lastNameOnlyAndSeparationBySpace)
 specifier|public
 name|NameFieldAutoCompleter
 parameter_list|(
@@ -139,7 +140,7 @@ index|[]
 name|fieldNames
 parameter_list|,
 name|boolean
-name|lastNameOnly
+name|lastNameOnlyAndSeparationBySpace
 parameter_list|)
 block|{
 name|this
@@ -150,9 +151,9 @@ name|fieldNames
 expr_stmt|;
 name|this
 operator|.
-name|lastNameOnly
+name|lastNameOnlyAndSeparationBySpace
 operator|=
-name|lastNameOnly
+name|lastNameOnlyAndSeparationBySpace
 expr_stmt|;
 if|if
 condition|(
@@ -255,8 +256,19 @@ name|boolean
 name|isSingleUnitField
 parameter_list|()
 block|{
+comment|// quick hack
+comment|// when used at entry fields (!this.lastNameOnlyAndSeparationBySpace), this is a single unit field
+comment|// when used at the search form (this.lastNameOnlyAndSeparationBySpace), this is NOT a single unit field
+comment|// reason: search keywords are separated by space.
+comment|//    This is OK for last names without prefix. "Lastname" works perfectly.
+comment|//    querying for "van der Lastname" can be interpreted as
+comment|//      a) "van" "der" "Lastname"
+comment|//      b) "van der Lastname" (autocompletion lastname)
 return|return
-literal|true
+operator|!
+name|this
+operator|.
+name|lastNameOnlyAndSeparationBySpace
 return|;
 block|}
 DECL|method|addBibtexEntry (BibtexEntry entry)
@@ -354,7 +366,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|lastNameOnly
+name|lastNameOnlyAndSeparationBySpace
 condition|)
 block|{
 name|addWordToIndex
@@ -500,11 +512,11 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|complete (String str)
-specifier|public
+comment|/** 	 * SIDE EFFECT: sets class variable prefix 	 * Delimiter: " and " 	 *  	 * @return String without prefix 	 */
+DECL|method|determinePrefixAndReturnRemainder_AND (String str)
+specifier|private
 name|String
-index|[]
-name|complete
+name|determinePrefixAndReturnRemainder_AND
 parameter_list|(
 name|String
 name|str
@@ -556,10 +568,116 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|prefix
 operator|=
 literal|""
 expr_stmt|;
+block|}
+return|return
+name|str
+return|;
+block|}
+comment|/** 	 * SIDE EFFECT: sets class variable prefix 	 * Delimiter: " " 	 *  	 * @return String without prefix 	 */
+DECL|method|determinePrefixAndReturnRemainder_SPACE (String str)
+specifier|private
+name|String
+name|determinePrefixAndReturnRemainder_SPACE
+parameter_list|(
+name|String
+name|str
+parameter_list|)
+block|{
+name|int
+name|index
+init|=
+name|str
+operator|.
+name|lastIndexOf
+argument_list|(
+literal|" "
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|index
+operator|>=
+literal|0
+condition|)
+block|{
+name|prefix
+operator|=
+name|str
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|index
+operator|+
+literal|1
+argument_list|)
+expr_stmt|;
+name|str
+operator|=
+name|str
+operator|.
+name|substring
+argument_list|(
+name|index
+operator|+
+literal|1
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|prefix
+operator|=
+literal|""
+expr_stmt|;
+block|}
+return|return
+name|str
+return|;
+block|}
+DECL|method|complete (String str)
+specifier|public
+name|String
+index|[]
+name|complete
+parameter_list|(
+name|String
+name|str
+parameter_list|)
+block|{
+comment|// Normally, one would implement that using
+comment|// class inheritance. But this seemed to overengineered
+if|if
+condition|(
+name|this
+operator|.
+name|lastNameOnlyAndSeparationBySpace
+condition|)
+block|{
+name|str
+operator|=
+name|determinePrefixAndReturnRemainder_SPACE
+argument_list|(
+name|str
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|str
+operator|=
+name|determinePrefixAndReturnRemainder_AND
+argument_list|(
+name|str
+argument_list|)
+expr_stmt|;
+block|}
 name|String
 index|[]
 name|res
