@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  * Adds the functionality for Drag&Drop of Tabs to a JTabbedPane.  * @author kleinms, strassfn  */
+comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -175,7 +175,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Extends the JTabbedPane class to support Drag&Drop of Tabs.  *   */
+comment|/**  * Extends the JTabbedPane class to support Drag&Drop of Tabs.  *   * @author kleinms, strassfn  */
 end_comment
 
 begin_class
@@ -316,13 +316,33 @@ operator|&&
 name|indexActTab
 operator|>=
 literal|0
-operator|&&
-name|indexDraggedTab
-operator|!=
-name|indexActTab
 condition|)
 block|{
 comment|//Is it a valid scenario?
+name|boolean
+name|toTheLeft
+init|=
+name|e
+operator|.
+name|getX
+argument_list|()
+operator|<=
+name|getUI
+argument_list|()
+operator|.
+name|getTabBounds
+argument_list|(
+name|DragDropPane
+operator|.
+name|this
+argument_list|,
+name|indexActTab
+argument_list|)
+operator|.
+name|getCenterX
+argument_list|()
+decl_stmt|;
+comment|//Go to the left or to the right of the actual Tab
 name|DragDropPane
 operator|.
 name|this
@@ -362,10 +382,31 @@ decl_stmt|;
 comment|//Rectangle with the same dimensions as the tab at the mouse position
 if|if
 condition|(
-name|indexDraggedTab
-operator|<
-name|indexActTab
+name|toTheLeft
 condition|)
+name|markerPane
+operator|.
+name|setPicLocation
+argument_list|(
+operator|new
+name|Point
+argument_list|(
+name|actTabRect
+operator|.
+name|x
+argument_list|,
+name|actTabRect
+operator|.
+name|y
+operator|+
+name|actTabRect
+operator|.
+name|height
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//Set pic to the left of the tab at the mouse position
+else|else
 name|markerPane
 operator|.
 name|setPicLocation
@@ -392,35 +433,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//Set pic to the right of the tab at the mouse position
-elseif|else
-if|if
-condition|(
-name|indexDraggedTab
-operator|>
-name|indexActTab
-condition|)
-name|markerPane
-operator|.
-name|setPicLocation
-argument_list|(
-operator|new
-name|Point
-argument_list|(
-name|actTabRect
-operator|.
-name|x
-argument_list|,
-name|actTabRect
-operator|.
-name|y
-operator|+
-name|actTabRect
-operator|.
-name|height
-argument_list|)
-argument_list|)
-expr_stmt|;
-comment|//Set pic to the left of the tab at the mouse position
 name|markerPane
 operator|.
 name|setVisible
@@ -536,6 +548,30 @@ name|draggingState
 condition|)
 block|{
 comment|//We are at tab tragging
+name|boolean
+name|toTheLeft
+init|=
+name|e
+operator|.
+name|getX
+argument_list|()
+operator|<=
+name|getUI
+argument_list|()
+operator|.
+name|getTabBounds
+argument_list|(
+name|DragDropPane
+operator|.
+name|this
+argument_list|,
+name|indexActTab
+argument_list|)
+operator|.
+name|getCenterX
+argument_list|()
+decl_stmt|;
+comment|//Go to the left or to the right of the actual Tab
 name|DragDropPane
 operator|.
 name|this
@@ -571,6 +607,69 @@ name|indexDraggedTab
 argument_list|)
 expr_stmt|;
 comment|//Remove dragged tab
+name|int
+name|newTabPos
+decl_stmt|;
+if|if
+condition|(
+name|indexActTab
+operator|<
+name|indexDraggedTab
+condition|)
+block|{
+comment|//We are dragging the tab to the left of its the position
+if|if
+condition|(
+name|toTheLeft
+operator|&&
+name|indexActTab
+operator|<
+operator|(
+name|DragDropPane
+operator|.
+name|this
+operator|.
+name|getTabCount
+argument_list|()
+operator|)
+condition|)
+comment|// The mouse is at the left side of a tab except the last one
+name|newTabPos
+operator|=
+name|indexActTab
+expr_stmt|;
+else|else
+name|newTabPos
+operator|=
+name|indexActTab
+operator|+
+literal|1
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|//We are dragging the tab to the right of the old position
+if|if
+condition|(
+name|toTheLeft
+operator|&&
+name|indexActTab
+operator|>
+literal|0
+condition|)
+comment|// The mouse is at the left side of a tab except the first one
+name|newTabPos
+operator|=
+name|indexActTab
+operator|-
+literal|1
+expr_stmt|;
+else|else
+name|newTabPos
+operator|=
+name|indexActTab
+expr_stmt|;
+block|}
 name|insertTab
 argument_list|(
 name|actTabTitle
@@ -581,7 +680,7 @@ name|actTab
 argument_list|,
 literal|null
 argument_list|,
-name|indexActTab
+name|newTabPos
 argument_list|)
 expr_stmt|;
 comment|//Insert dragged tab at new position
@@ -591,15 +690,10 @@ name|this
 operator|.
 name|setSelectedIndex
 argument_list|(
-name|indexActTab
+name|newTabPos
 argument_list|)
 expr_stmt|;
 comment|//Set selection back to the tab (at the new tab position
-name|indexDraggedTab
-operator|=
-name|indexActTab
-expr_stmt|;
-comment|//Only for robustness
 block|}
 block|}
 name|draggingState
@@ -611,7 +705,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * A glass panel who sets the marker for Dragging of Tabs. 	 *  	 */
+comment|/** 	 * A glass panel which sets the marker for Dragging of Tabs. 	 *  	 */
 DECL|class|MarkerPane
 class|class
 name|MarkerPane
