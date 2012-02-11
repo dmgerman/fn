@@ -429,6 +429,11 @@ name|EDIT_GROUP_MEMBERSHIP_MODE
 init|=
 literal|"groupEditGroupMembershipMode"
 decl_stmt|,
+DECL|field|AKS_AUTO_NAMING_PDFS_AGAIN
+name|AKS_AUTO_NAMING_PDFS_AGAIN
+init|=
+literal|"AskAutoNamingPDFsAgain"
+decl_stmt|,
 DECL|field|SHORTEST_TO_COMPLETE
 name|SHORTEST_TO_COMPLETE
 init|=
@@ -3349,6 +3354,19 @@ argument_list|(
 literal|"dbConnectUsername"
 argument_list|,
 literal|"root"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|AKS_AUTO_NAMING_PDFS_AGAIN
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
 argument_list|)
 expr_stmt|;
 comment|//defaults.put("lastAutodetectedImport", "");
