@@ -381,7 +381,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Initial Version:  *   * @author alver  * @version Date: May 7, 2005 Time: 7:17:42 PM  *   * Current Version:  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  * Initial Version:  *   * @author alver  * @version Date: May 7, 2005 Time: 7:17:42 PM  *   */
 end_comment
 
 begin_class

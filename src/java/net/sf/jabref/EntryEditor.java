@@ -793,6 +793,8 @@ extends|extends
 name|JPanel
 implements|implements
 name|VetoableChangeListener
+implements|,
+name|EntryContainer
 block|{
 comment|// A reference to the entry this object works on.
 DECL|field|entry
