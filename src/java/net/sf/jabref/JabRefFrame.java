@@ -2012,36 +2012,6 @@ literal|"Autogenerate BibTeX keys"
 argument_list|)
 argument_list|)
 decl_stmt|,
-DECL|field|autoNamepdf
-name|autoNamepdf
-init|=
-operator|new
-name|GeneralAction
-argument_list|(
-literal|"makePDFname"
-argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Autogenerate PDF Names"
-argument_list|)
-argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Autogenerate PDF Names"
-argument_list|)
-argument_list|,
-name|GUIGlobals
-operator|.
-name|getIconUrl
-argument_list|(
-literal|"autonamePDF"
-argument_list|)
-argument_list|)
-decl_stmt|,
 DECL|field|writeXmpAction
 name|writeXmpAction
 init|=
@@ -2510,7 +2480,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Cleanup Entry"
+literal|"Cleanup entries"
 argument_list|)
 argument_list|,
 name|GUIGlobals
@@ -7234,13 +7204,6 @@ name|tools
 operator|.
 name|add
 argument_list|(
-name|autoNamepdf
-argument_list|)
-expr_stmt|;
-name|tools
-operator|.
-name|add
-argument_list|(
 name|openPdf
 argument_list|)
 expr_stmt|;
@@ -8014,13 +7977,6 @@ argument_list|)
 expr_stmt|;
 comment|//tlb.addAction(openPdf);
 comment|//tlb.addAction(openUrl);
-name|tlb
-operator|.
-name|addAction
-argument_list|(
-name|autoNamepdf
-argument_list|)
-expr_stmt|;
 comment|//tlb.addSeparator();
 comment|//tlb.addAction(showPrefs);
 name|tlb
@@ -8227,8 +8183,6 @@ block|,
 name|toggleSearch
 block|,
 name|makeKeyAction
-block|,
-name|autoNamepdf
 block|,
 name|normalSearch
 block|,

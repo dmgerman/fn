@@ -8486,7 +8486,7 @@ return|return
 name|file
 return|;
 block|}
-comment|/** 	 * Converts an absolute filename to a relative one, if necessary. 	 *  	 * This method works correctly only if dirs are sorted decent in their length 	 * i.e. /home/user/literature/important before /home/user/literature  	 *  	 * @param dirs: directories to check.  	 */
+comment|/** 	 * Converts an absolute filename to a relative one, if necessary. 	 * Returns the parameter fileName itself if no shortening is possible  	 *  	 * This method works correctly only if dirs are sorted decent in their length 	 * i.e. /home/user/literature/important before /home/user/literature  	 *  	 * @param dirs: directories to check.  	 */
 DECL|method|shortenFileName (File fileName, String[] dirs)
 specifier|public
 specifier|static
@@ -15063,52 +15063,6 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-DECL|method|renamePath (String filePath, String fileNewName)
-specifier|public
-specifier|static
-name|String
-name|renamePath
-parameter_list|(
-name|String
-name|filePath
-parameter_list|,
-name|String
-name|fileNewName
-parameter_list|)
-block|{
-comment|//Create a file Object from filePath
-name|File
-name|fromFile
-init|=
-operator|new
-name|File
-argument_list|(
-name|filePath
-argument_list|)
-decl_stmt|;
-comment|//Create new Path based on old Path and new filename
-name|String
-name|newPath
-init|=
-name|fromFile
-operator|.
-name|getAbsolutePath
-argument_list|()
-operator|.
-name|replace
-argument_list|(
-name|fromFile
-operator|.
-name|getName
-argument_list|()
-argument_list|,
-name|fileNewName
-argument_list|)
-decl_stmt|;
-return|return
-name|newPath
-return|;
 block|}
 comment|/**      *       * @param fileName      * @param fileType      * @param destFilename      * @param edits      * @return      */
 DECL|method|renameFile (String fileName, String destFilename)
