@@ -290,7 +290,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 decl_stmt|;
-comment|// Get the arrayList corrosponding to the type
+comment|// Get the arrayList corresponding to the type
 name|_al
 operator|=
 name|table

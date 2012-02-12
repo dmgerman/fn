@@ -4266,13 +4266,6 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|database
-operator|.
-name|setFollowCrossrefs
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
 name|BibtexEntry
 name|bes
 init|=
@@ -4348,7 +4341,7 @@ argument_list|(
 literal|"avoidOverwritingKey"
 argument_list|)
 condition|)
-comment|// Rmove the entry, because its key is already set:
+comment|// Remove the entry, because its key is already set:
 name|i
 operator|.
 name|remove
