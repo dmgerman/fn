@@ -592,24 +592,16 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-name|JOptionPane
-operator|.
-name|showMessageDialog
-argument_list|(
 name|frame
-argument_list|,
+operator|.
+name|output
+argument_list|(
 name|databases
 operator|.
 name|size
 argument_list|()
 operator|+
 literal|" databases will be imported"
-argument_list|,
-literal|"Database Import"
-argument_list|,
-name|JOptionPane
-operator|.
-name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
