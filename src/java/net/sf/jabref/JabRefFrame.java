@@ -44,18 +44,6 @@ name|awt
 operator|.
 name|event
 operator|.
-name|ActionListener
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
 name|KeyAdapter
 import|;
 end_import
@@ -261,18 +249,6 @@ operator|.
 name|event
 operator|.
 name|ChangeListener
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|sciplore
-operator|.
-name|beans
-operator|.
-name|Url
 import|;
 end_import
 
@@ -819,12 +795,8 @@ decl_stmt|;
 DECL|field|tabbedPane
 name|JTabbedPane
 name|tabbedPane
-init|=
-operator|new
-name|DragDropPane
-argument_list|()
 decl_stmt|;
-comment|//This creates the Drag&Drop JTabbedPane
+comment|// initialized at constructor
 DECL|field|marg
 specifier|final
 name|Insets
@@ -2868,6 +2840,14 @@ name|void
 name|init
 parameter_list|()
 block|{
+name|tabbedPane
+operator|=
+operator|new
+name|DragDropPopupPane
+argument_list|(
+name|databaseProperties
+argument_list|)
+expr_stmt|;
 name|macOSXRegistration
 argument_list|()
 expr_stmt|;
