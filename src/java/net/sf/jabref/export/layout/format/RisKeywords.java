@@ -22,6 +22,16 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -81,15 +91,17 @@ operator|new
 name|StringBuilder
 argument_list|()
 decl_stmt|;
+name|List
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|keywords
 init|=
-name|s
+name|Util
 operator|.
-name|split
+name|getSeparatedKeywords
 argument_list|(
-literal|",[ ]*"
+name|s
 argument_list|)
 decl_stmt|;
 for|for
@@ -103,7 +115,8 @@ name|i
 operator|<
 name|keywords
 operator|.
-name|length
+name|size
+argument_list|()
 condition|;
 name|i
 operator|++
@@ -121,9 +134,11 @@ operator|.
 name|append
 argument_list|(
 name|keywords
-index|[
+operator|.
+name|get
+argument_list|(
 name|i
-index|]
+argument_list|)
 argument_list|)
 expr_stmt|;
 if|if
@@ -132,7 +147,8 @@ name|i
 operator|<
 name|keywords
 operator|.
-name|length
+name|size
+argument_list|()
 operator|-
 literal|1
 condition|)
