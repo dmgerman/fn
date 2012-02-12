@@ -39,7 +39,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Comparator that handles icon columns.  */
+comment|/**  * Comparator that handles icon columns.   */
 end_comment
 
 begin_class
@@ -75,6 +75,8 @@ operator|=
 name|fields
 expr_stmt|;
 block|}
+comment|/**      * Replaced old Method (see below) to give this Comparator the      * capability to sort with more levels than "HasGotOrHasNot"      *     public int compare(BibtexEntry e1, BibtexEntry e2) {          for (int i=0; i<fields.length; i++) {             String val1 = e1.getField(fields[i]),                     val2 = e2.getField(fields[i]);             if (val1 == null) {                 if (val2 != null)                     return 1;             } else {                 if (val2 == null)                     return -1;             }         }         return 0;     }     */
+comment|/**      * Replacement of old Method - Works slightly different      */
 DECL|method|compare (BibtexEntry e1, BibtexEntry e2)
 specifier|public
 name|int
@@ -87,6 +89,7 @@ name|BibtexEntry
 name|e2
 parameter_list|)
 block|{
+comment|// First get the Field Values
 for|for
 control|(
 name|int
@@ -129,34 +132,83 @@ name|i
 index|]
 argument_list|)
 decl_stmt|;
+comment|// Try to cast the Field Values to an Integer
+comment|// Leave at "0" if casting failed
+name|int
+name|v1
+init|=
+literal|0
+decl_stmt|;
+try|try
+block|{
+name|v1
+operator|=
+name|Integer
+operator|.
+name|valueOf
+argument_list|(
+name|val1
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{             	             }
+name|int
+name|v2
+init|=
+literal|0
+decl_stmt|;
+try|try
+block|{
+name|v2
+operator|=
+name|Integer
+operator|.
+name|valueOf
+argument_list|(
+name|val2
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|Exception
+name|e
+parameter_list|)
+block|{             	             }
+comment|// Compare Values like a usual Integer
 if|if
 condition|(
-name|val1
-operator|==
-literal|null
+name|v1
+operator|<
+name|v2
 condition|)
 block|{
+return|return
+operator|-
+literal|1
+return|;
+block|}
+elseif|else
 if|if
 condition|(
-name|val2
-operator|!=
-literal|null
+name|v1
+operator|>
+name|v2
 condition|)
+block|{
 return|return
 literal|1
 return|;
 block|}
 else|else
 block|{
-if|if
-condition|(
-name|val2
-operator|==
-literal|null
-condition|)
 return|return
-operator|-
-literal|1
+literal|0
 return|;
 block|}
 block|}

@@ -1417,6 +1417,65 @@ name|i
 operator|++
 control|)
 block|{
+comment|// Check if the Column is a RankingColumn
+comment|// If this is the case, set a certain Column-width,
+comment|// because the RankingIconColumn needs some more width
+if|if
+condition|(
+name|tableFormat
+operator|.
+name|isRankingColumn
+argument_list|(
+name|i
+argument_list|)
+condition|)
+block|{
+comment|// Lock the width of ranking icon column.
+name|cm
+operator|.
+name|getColumn
+argument_list|(
+name|i
+argument_list|)
+operator|.
+name|setPreferredWidth
+argument_list|(
+name|GUIGlobals
+operator|.
+name|WIDTH_ICON_COL_RANKING
+argument_list|)
+expr_stmt|;
+name|cm
+operator|.
+name|getColumn
+argument_list|(
+name|i
+argument_list|)
+operator|.
+name|setMinWidth
+argument_list|(
+name|GUIGlobals
+operator|.
+name|WIDTH_ICON_COL_RANKING
+argument_list|)
+expr_stmt|;
+name|cm
+operator|.
+name|getColumn
+argument_list|(
+name|i
+argument_list|)
+operator|.
+name|setMaxWidth
+argument_list|(
+name|GUIGlobals
+operator|.
+name|WIDTH_ICON_COL_RANKING
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 comment|// Lock the width of icon columns.
 name|cm
 operator|.
@@ -1460,6 +1519,7 @@ operator|.
 name|WIDTH_ICON_COL
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 for|for
 control|(
