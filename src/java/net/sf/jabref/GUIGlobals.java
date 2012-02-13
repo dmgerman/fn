@@ -1458,9 +1458,27 @@ name|url
 return|;
 block|}
 else|else
+block|{
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"No icon found for %0"
+argument_list|,
+name|name
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return
 literal|null
 return|;
+block|}
 block|}
 comment|/** 	 * Constructs an ImageIcon for the given function, using the image specified in 	 * the resource files resource/Icons_en.properties. 	 * @param name The name of the icon, such as "open", "save", "saveAs" etc. 	 * @return The ImageIcon for the function. 	 */
 DECL|method|getImage (String name)
