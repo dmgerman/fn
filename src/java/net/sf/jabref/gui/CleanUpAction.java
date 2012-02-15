@@ -1768,12 +1768,7 @@ name|Util
 operator|.
 name|checkForDOIwithHTTPprefix
 argument_list|(
-name|bes
-operator|.
-name|getField
-argument_list|(
 name|doiFieldValue
-argument_list|)
 argument_list|)
 condition|)
 block|{
