@@ -2887,6 +2887,17 @@ operator|==
 literal|0
 condition|)
 comment|//Only if no row selection is done, until now
+if|if
+condition|(
+name|this
+operator|.
+name|glTable
+operator|.
+name|getRowCount
+argument_list|()
+operator|>
+literal|0
+condition|)
 name|this
 operator|.
 name|glTable
