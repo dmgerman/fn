@@ -384,6 +384,15 @@ operator|=
 name|createPreviewPane
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|panel
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// dropped files handler only created for main window
+comment|// not for Windows as like the search results window
 name|this
 operator|.
 name|previewPane
@@ -402,6 +411,7 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Set up scroll pane for preview pane
 name|scrollPane
 operator|=
