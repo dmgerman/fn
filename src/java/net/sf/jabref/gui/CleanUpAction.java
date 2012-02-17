@@ -2241,6 +2241,30 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|doExportToKeywords (BibtexEntry entry, NamedCompound ce)
+specifier|private
+name|void
+name|doExportToKeywords
+parameter_list|(
+name|BibtexEntry
+name|entry
+parameter_list|,
+name|NamedCompound
+name|ce
+parameter_list|)
+block|{ 		 	}
+DECL|method|doImportFromKeywords (BibtexEntry entry, NamedCompound ce)
+specifier|private
+name|void
+name|doImportFromKeywords
+parameter_list|(
+name|BibtexEntry
+name|entry
+parameter_list|,
+name|NamedCompound
+name|ce
+parameter_list|)
+block|{ 		 	}
 DECL|method|doMakePathsRelative (BibtexEntry entry, NamedCompound ce)
 specifier|private
 name|void
