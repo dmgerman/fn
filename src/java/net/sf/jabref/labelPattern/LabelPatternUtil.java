@@ -2199,6 +2199,7 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// TODO: merge this functionality with Util.getSeparatedKeywords
 name|String
 index|[]
 name|keywords
@@ -2251,7 +2252,7 @@ return|;
 block|}
 else|else
 block|{
-comment|// we havent seen any special demands
+comment|// we haven't seen any special demands
 return|return
 name|getField
 argument_list|(

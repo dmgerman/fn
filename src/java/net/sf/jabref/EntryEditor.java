@@ -5269,7 +5269,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/*      * Update the JTextArea when a field has changed.      *       * (non-Javadoc)      *       * @see java.beans.VetoableChangeListener#vetoableChange(java.beans.PropertyChangeEvent)      */
+comment|/**      * Update the JTextArea when a field has changed.      *       * @see java.beans.VetoableChangeListener#vetoableChange(java.beans.PropertyChangeEvent)      */
 DECL|method|vetoableChange (PropertyChangeEvent e)
 specifier|public
 name|void

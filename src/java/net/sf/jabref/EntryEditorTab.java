@@ -305,7 +305,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A single tab displayed in the EntryEditor holding several FieldEditors.  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  * A single tab displayed in the EntryEditor holding several FieldEditors.  */
 end_comment
 
 begin_class
