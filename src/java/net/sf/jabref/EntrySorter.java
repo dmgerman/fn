@@ -383,21 +383,22 @@ init|(
 name|set
 init|)
 block|{
-if|if
+name|int
+name|pos
+decl_stmt|;
+switch|switch
 condition|(
 name|e
 operator|.
 name|getType
 argument_list|()
-operator|==
-name|DatabaseChangeEvent
-operator|.
-name|ADDED_ENTRY
 condition|)
 block|{
-name|int
+case|case
+name|ADDED_ENTRY
+case|:
 name|pos
-init|=
+operator|=
 operator|-
 name|Collections
 operator|.
@@ -414,7 +415,7 @@ name|comp
 argument_list|)
 operator|-
 literal|1
-decl_stmt|;
+expr_stmt|;
 name|set
 operator|.
 name|add
@@ -431,20 +432,10 @@ comment|//addEntry(e.getEntry());
 comment|//set.add(e.getEntry());
 comment|//changed = true;
 comment|//Collections.sort(set, comp);
-block|}
-elseif|else
-if|if
-condition|(
-name|e
-operator|.
-name|getType
-argument_list|()
-operator|==
-name|DatabaseChangeEvent
-operator|.
+break|break;
+case|case
 name|REMOVED_ENTRY
-condition|)
-block|{
+case|:
 name|set
 operator|.
 name|remove
@@ -459,25 +450,14 @@ name|changed
 operator|=
 literal|true
 expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
-name|e
-operator|.
-name|getType
-argument_list|()
-operator|==
-name|DatabaseChangeEvent
-operator|.
+break|break;
+case|case
 name|CHANGED_ENTRY
-condition|)
-block|{
+case|:
 comment|// Entry changed. Resort list:
 comment|//Collections.sort(set, comp);
-name|int
 name|pos
-init|=
+operator|=
 name|Collections
 operator|.
 name|binarySearch
@@ -491,7 +471,7 @@ argument_list|()
 argument_list|,
 name|comp
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 name|int
 name|posOld
 init|=
@@ -536,6 +516,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|//changed = true;
+break|break;
 block|}
 block|}
 block|}

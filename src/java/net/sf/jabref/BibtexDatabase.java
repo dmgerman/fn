@@ -324,6 +324,8 @@ name|this
 argument_list|,
 name|DatabaseChangeEvent
 operator|.
+name|ChangeType
+operator|.
 name|CHANGING_ENTRY
 argument_list|,
 operator|(
@@ -478,6 +480,8 @@ operator|.
 name|this
 argument_list|,
 name|DatabaseChangeEvent
+operator|.
+name|ChangeType
 operator|.
 name|CHANGED_ENTRY
 argument_list|,
@@ -886,6 +890,8 @@ name|this
 argument_list|,
 name|DatabaseChangeEvent
 operator|.
+name|ChangeType
+operator|.
 name|ADDED_ENTRY
 argument_list|,
 name|entry
@@ -959,6 +965,8 @@ argument_list|(
 name|this
 argument_list|,
 name|DatabaseChangeEvent
+operator|.
+name|ChangeType
 operator|.
 name|REMOVED_ENTRY
 argument_list|,

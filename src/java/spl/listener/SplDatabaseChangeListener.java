@@ -162,6 +162,8 @@ argument_list|()
 operator|==
 name|DatabaseChangeEvent
 operator|.
+name|ChangeType
+operator|.
 name|ADDED_ENTRY
 condition|)
 block|{

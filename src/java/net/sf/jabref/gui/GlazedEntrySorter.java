@@ -307,6 +307,8 @@ argument_list|()
 operator|==
 name|DatabaseChangeEvent
 operator|.
+name|ChangeType
+operator|.
 name|ADDED_ENTRY
 condition|)
 block|{
@@ -331,6 +333,8 @@ argument_list|()
 operator|==
 name|DatabaseChangeEvent
 operator|.
+name|ChangeType
+operator|.
 name|REMOVED_ENTRY
 condition|)
 block|{
@@ -354,6 +358,8 @@ name|getType
 argument_list|()
 operator|==
 name|DatabaseChangeEvent
+operator|.
+name|ChangeType
 operator|.
 name|CHANGED_ENTRY
 condition|)
