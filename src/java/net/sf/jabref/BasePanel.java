@@ -9708,6 +9708,14 @@ operator|.
 name|getSelectionPaths
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+name|selection
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// it is possible that the user selected nothing. Therefore, checked for "!= null"
 for|for
 control|(
 name|TreePath
@@ -9733,6 +9741,7 @@ argument_list|(
 name|entries
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|this
 operator|.
