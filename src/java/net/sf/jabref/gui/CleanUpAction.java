@@ -1156,7 +1156,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Clean up entries"
+literal|"Cleanup entries"
 argument_list|)
 decl_stmt|;
 name|Object

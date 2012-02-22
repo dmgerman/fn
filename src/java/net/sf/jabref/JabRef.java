@@ -5427,10 +5427,10 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Error:"
+literal|"Error"
 argument_list|)
 operator|+
-literal|" "
+literal|": "
 operator|+
 name|Globals
 operator|.

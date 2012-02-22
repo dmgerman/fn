@@ -596,12 +596,22 @@ name|frame
 operator|.
 name|output
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"%0 databases will be imported"
+argument_list|,
+name|Integer
+operator|.
+name|toString
+argument_list|(
 name|databases
 operator|.
 name|size
 argument_list|()
-operator|+
-literal|" databases will be imported"
+argument_list|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -790,14 +800,17 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Imported "
-operator|+
+literal|"Imported %0 databases successfully"
+argument_list|,
+name|Integer
+operator|.
+name|toString
+argument_list|(
 name|databases
 operator|.
 name|size
 argument_list|()
-operator|+
-literal|" databases successfully"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
