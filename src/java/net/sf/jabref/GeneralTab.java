@@ -1980,9 +1980,22 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"You have changed the language setting. "
-operator|+
+literal|"You have changed the language setting."
+argument_list|)
+operator|.
+name|concat
+argument_list|(
+literal|" "
+argument_list|)
+operator|.
+name|concat
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"You must restart JabRef for this to come into effect."
+argument_list|)
 argument_list|)
 argument_list|,
 name|Globals

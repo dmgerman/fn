@@ -1365,9 +1365,22 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"You have changed the look and feel setting. "
-operator|+
+literal|"You have changed the look and feel setting."
+argument_list|)
+operator|.
+name|concat
+argument_list|(
+literal|" "
+argument_list|)
+operator|.
+name|concat
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"You must restart JabRef for this to come into effect."
+argument_list|)
 argument_list|)
 argument_list|,
 name|Globals
@@ -1403,8 +1416,16 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"You have toggled the BibLaTeX mode. "
-operator|+
+literal|"You have toggled the BibLaTeX mode."
+argument_list|)
+operator|.
+name|concat
+argument_list|(
+literal|" "
+argument_list|)
+operator|.
+name|concat
+argument_list|(
 literal|"You must restart JabRef for this change to come into effect."
 argument_list|)
 argument_list|,
