@@ -74,7 +74,7 @@ name|s
 operator|.
 name|split
 argument_list|(
-literal|"[\\-]+"
+literal|"[ \\-]+"
 argument_list|)
 decl_stmt|;
 if|if
@@ -93,7 +93,7 @@ index|]
 return|;
 else|else
 return|return
-literal|""
+name|s
 return|;
 block|}
 block|}
