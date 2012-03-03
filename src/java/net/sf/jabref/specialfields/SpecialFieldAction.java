@@ -242,6 +242,14 @@ operator|.
 name|end
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|ce
+operator|.
+name|hasEdits
+argument_list|()
+condition|)
+block|{
 name|frame
 operator|.
 name|basePanel
@@ -323,6 +331,12 @@ argument_list|(
 name|outText
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+comment|// if user does not change anything with his action, we do not do anything either
+comment|// even no output message
+block|}
 block|}
 catch|catch
 parameter_list|(
