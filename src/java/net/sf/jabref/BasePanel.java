@@ -11953,15 +11953,6 @@ name|getDividerLocation
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|boolean
-name|adjustSplitter
-init|=
-operator|(
-name|mode
-operator|==
-name|WILL_SHOW_EDITOR
-operator|)
-decl_stmt|;
 name|mode
 operator|=
 name|SHOWING_EDITOR
@@ -11995,16 +11986,9 @@ name|getEntry
 argument_list|()
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|adjustSplitter
-condition|)
-block|{
 name|adjustSplitter
 argument_list|()
 expr_stmt|;
-comment|//new FocusRequester(editor);
-block|}
 block|}
 comment|/**      * Sets the given preview panel as the bottom component in the split panel.      * Updates the mode to SHOWING_PREVIEW.      * @param preview The preview to show.      */
 DECL|method|showPreview (PreviewPanel preview)
