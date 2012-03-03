@@ -826,6 +826,24 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|lastBeginningContainsTypedCharacter
+condition|)
+block|{
+comment|// the current letter is NOT contained in comp.getText()
+comment|// Thus, cursor position also did not get updated
+name|lastCaretPosition
+operator|++
+expr_stmt|;
+block|}
+name|comp
+operator|.
+name|setCaretPosition
+argument_list|(
+name|lastCaretPosition
+argument_list|)
+expr_stmt|;
 name|lastBeginning
 operator|=
 literal|null
