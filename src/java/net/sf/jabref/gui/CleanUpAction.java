@@ -2197,7 +2197,7 @@ name|oldValue
 operator|.
 name|replaceAll
 argument_list|(
-literal|"(\\d+)-(\\d+)"
+literal|"(\\d+) *- *(\\d+)"
 argument_list|,
 literal|"$1--$2"
 argument_list|)
