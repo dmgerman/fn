@@ -408,6 +408,13 @@ name|frame
 argument_list|()
 argument_list|,
 name|this
+argument_list|,
+name|this
+operator|.
+name|previewPane
+operator|.
+name|getTransferHandler
+argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;

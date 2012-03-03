@@ -1156,6 +1156,8 @@ argument_list|(
 name|frame
 argument_list|,
 name|entryEditor
+argument_list|,
+literal|null
 argument_list|)
 decl_stmt|;
 name|setTransferHandler

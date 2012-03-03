@@ -24,6 +24,18 @@ name|awt
 operator|.
 name|datatransfer
 operator|.
+name|Clipboard
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|datatransfer
+operator|.
 name|DataFlavor
 import|;
 end_import
@@ -81,6 +93,16 @@ operator|.
 name|io
 operator|.
 name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|Reader
 import|;
 end_import
 
@@ -264,7 +286,13 @@ specifier|protected
 name|EntryContainer
 name|entryContainer
 decl_stmt|;
-DECL|method|FileListEditorTransferHandler (JabRefFrame frame, EntryContainer entryContainer)
+DECL|field|textTransferHandler
+specifier|private
+name|TransferHandler
+name|textTransferHandler
+decl_stmt|;
+comment|/** 	 *  	 * @param frame 	 * @param entryContainer 	 * @param transferHandler is an instance of javax.swing.plaf.basic.BasicTextUI.TextTransferHandler. That class is not visible. Therefore, we have to "cheat" 	 */
+DECL|method|FileListEditorTransferHandler (JabRefFrame frame, EntryContainer entryContainer, TransferHandler textTransferHandler)
 specifier|public
 name|FileListEditorTransferHandler
 parameter_list|(
@@ -273,6 +301,9 @@ name|frame
 parameter_list|,
 name|EntryContainer
 name|entryContainer
+parameter_list|,
+name|TransferHandler
+name|textTransferHandler
 parameter_list|)
 block|{
 name|this
@@ -286,6 +317,12 @@ operator|.
 name|entryContainer
 operator|=
 name|entryContainer
+expr_stmt|;
+name|this
+operator|.
+name|textTransferHandler
+operator|=
+name|textTransferHandler
 expr_stmt|;
 name|stringFlavor
 operator|=
@@ -324,7 +361,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Overriden to indicate which types of drags are supported (only LINK).      *      * @override      */
+comment|/**      * Overridden to indicate which types of drags are supported (only LINK + COPY).      * COPY is supported as no support disables CTRL+C (copy of text)      */
+annotation|@
+name|Override
 DECL|method|getSourceActions (JComponent c)
 specifier|public
 name|int
@@ -338,9 +377,53 @@ return|return
 name|DnDConstants
 operator|.
 name|ACTION_LINK
+operator||
+name|DnDConstants
+operator|.
+name|ACTION_COPY
 return|;
 block|}
-comment|/*public boolean importData(TransferSupport transferSupport) {          return importData(FileListEditor.this, transferSupport.getTransferable());     }*/
+annotation|@
+name|Override
+DECL|method|exportToClipboard (JComponent comp, Clipboard clip, int action)
+specifier|public
+name|void
+name|exportToClipboard
+parameter_list|(
+name|JComponent
+name|comp
+parameter_list|,
+name|Clipboard
+name|clip
+parameter_list|,
+name|int
+name|action
+parameter_list|)
+block|{
+if|if
+condition|(
+name|this
+operator|.
+name|textTransferHandler
+operator|!=
+literal|null
+condition|)
+block|{
+name|this
+operator|.
+name|textTransferHandler
+operator|.
+name|exportToClipboard
+argument_list|(
+name|comp
+argument_list|,
+name|clip
+argument_list|,
+name|action
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 annotation|@
 name|SuppressWarnings
 argument_list|(
