@@ -725,6 +725,17 @@ operator|.
 name|FALSE
 argument_list|)
 expr_stmt|;
+name|citProperties
+operator|.
+name|put
+argument_list|(
+literal|"ItalicEtAl"
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
+argument_list|)
+expr_stmt|;
 name|initialize
 argument_list|(
 name|in
