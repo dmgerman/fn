@@ -7366,7 +7366,7 @@ argument_list|(
 name|manageJournals
 argument_list|)
 expr_stmt|;
-comment|/*options.add(new AbstractAction("Font") {       public void actionPerformed(ActionEvent e) {           // JDialog dl = new EntryCustomizationDialog(JabRefFrame.this);           Font f=new FontSelectorDialog         (JabRefFrame.this, GUIGlobals.CURRENTFONT).getSelectedFont();        if(f==null)         return;        else         GUIGlobals.CURRENTFONT=f;        // updatefont        prefs.put("fontFamily", GUIGlobals.CURRENTFONT.getFamily());        prefs.putInt("fontStyle", GUIGlobals.CURRENTFONT.getStyle());        prefs.putInt("fontSize", GUIGlobals.CURRENTFONT.getSize());        if (tabbedPane.getTabCount()> 0) {         for (int i=0; i<tabbedPane.getTabCount(); i++) {          baseAt(i).entryTable.updateFont();          baseAt(i).refreshTable();         }        }       }       });*/
+comment|/*options.add(new AbstractAction("Font") {       public void actionPerformed(ActionEvent e) {           Font f=new FontSelectorDialog         (JabRefFrame.this, GUIGlobals.CURRENTFONT).getSelectedFont();        if(f==null)         return;        else         GUIGlobals.CURRENTFONT=f;        // updatefont        prefs.put("fontFamily", GUIGlobals.CURRENTFONT.getFamily());        prefs.putInt("fontStyle", GUIGlobals.CURRENTFONT.getStyle());        prefs.putInt("fontSize", GUIGlobals.CURRENTFONT.getSize());        if (tabbedPane.getTabCount()> 0) {         for (int i=0; i<tabbedPane.getTabCount(); i++) {          baseAt(i).entryTable.updateFont();          baseAt(i).refreshTable();         }        }       }       });*/
 name|pluginMenu
 operator|.
 name|add
