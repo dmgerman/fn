@@ -76,33 +76,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|JabRef
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|undo
-operator|.
-name|NamedCompound
 import|;
 end_import
 
@@ -126,16 +100,6 @@ name|INSTANCE
 init|=
 literal|null
 decl_stmt|;
-comment|// vetoableChange is also called if we call SpecialFieldsUtils.importKeywords
-comment|// therefore, we have to avoid cyclic calls...
-DECL|field|noUpdate
-specifier|private
-specifier|static
-name|boolean
-name|noUpdate
-init|=
-literal|false
-decl_stmt|;
 DECL|method|vetoableChange (PropertyChangeEvent e)
 specifier|public
 name|void
@@ -147,11 +111,6 @@ parameter_list|)
 throws|throws
 name|PropertyVetoException
 block|{
-if|if
-condition|(
-name|noUpdate
-condition|)
-return|return;
 specifier|final
 name|BibtexEntry
 name|entry
@@ -190,10 +149,6 @@ name|void
 name|run
 parameter_list|()
 block|{
-comment|// Generating an instance of a NamedCompound and adding it as edit is a quick hack.
-comment|// The current infrastructure does not foresee to pass a named component to the vetoable change
-comment|// A "good" infrastructure would offer update listeners after calling the VetoableChangeListeners
-comment|// The parameters for them would offer a named component where the methods could add edits.
 if|if
 condition|(
 name|fieldName
@@ -204,45 +159,16 @@ literal|"keywords"
 argument_list|)
 condition|)
 block|{
-name|NamedCompound
-name|nc
-init|=
-operator|new
-name|NamedCompound
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Synchronized special fields based on keywords"
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|noUpdate
-operator|=
-literal|true
-expr_stmt|;
+comment|// we do NOT pass a named component indicating that we do not want to have undo capabilities
+comment|// if the user undoes the change in the keyword field, this method is also called and
+comment|// the special fields are updated accordingly
 name|SpecialFieldsUtils
 operator|.
 name|syncSpecialFieldsFromKeywords
 argument_list|(
 name|entry
 argument_list|,
-name|nc
-argument_list|)
-expr_stmt|;
-name|JabRef
-operator|.
-name|jrf
-operator|.
-name|basePanel
-argument_list|()
-operator|.
-name|undoManager
-operator|.
-name|addEdit
-argument_list|(
-name|nc
+literal|null
 argument_list|)
 expr_stmt|;
 name|SwingUtilities
@@ -267,10 +193,6 @@ argument_list|()
 operator|.
 name|updateEntryEditorIfShowing
 argument_list|()
-expr_stmt|;
-name|noUpdate
-operator|=
-literal|false
 expr_stmt|;
 block|}
 block|}
@@ -296,45 +218,16 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|NamedCompound
-name|nc
-init|=
-operator|new
-name|NamedCompound
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Synchronized keywords from special fields"
-argument_list|)
-argument_list|)
-decl_stmt|;
-name|noUpdate
-operator|=
-literal|true
-expr_stmt|;
+comment|// we do NOT pass a named component indicating that we do not want to have undo capabilities
+comment|// if the user undoes the change in the sepcial field, this method is also called and
+comment|// the keyword field is updated accordingly
 name|SpecialFieldsUtils
 operator|.
 name|syncKeywordsFromSpecialFields
 argument_list|(
 name|entry
 argument_list|,
-name|nc
-argument_list|)
-expr_stmt|;
-name|JabRef
-operator|.
-name|jrf
-operator|.
-name|basePanel
-argument_list|()
-operator|.
-name|undoManager
-operator|.
-name|addEdit
-argument_list|(
-name|nc
+literal|null
 argument_list|)
 expr_stmt|;
 name|SwingUtilities
@@ -359,10 +252,6 @@ argument_list|()
 operator|.
 name|updateEntryEditorIfShowing
 argument_list|()
-expr_stmt|;
-name|noUpdate
-operator|=
-literal|false
 expr_stmt|;
 block|}
 block|}

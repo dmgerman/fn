@@ -15369,6 +15369,12 @@ argument_list|,
 name|newValue
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|ce
+operator|!=
+literal|null
+condition|)
 name|ce
 operator|.
 name|addEdit
@@ -15388,6 +15394,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/** 	 * @param nc indicates the undo named compound. May be null 	 */
 DECL|method|updateField (BibtexEntry be, String field, String newValue, NamedCompound ce)
 specifier|public
 specifier|static
@@ -15421,6 +15428,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** 	 * @param nc indicates the undo named compound. May be null 	 */
 DECL|method|updateField (BibtexEntry be, String field, String newValue, NamedCompound ce, Boolean nullFieldIfValueIsTheSame)
 specifier|public
 specifier|static
@@ -15522,6 +15530,12 @@ argument_list|,
 name|newValue
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|ce
+operator|!=
+literal|null
+condition|)
 name|ce
 operator|.
 name|addEdit

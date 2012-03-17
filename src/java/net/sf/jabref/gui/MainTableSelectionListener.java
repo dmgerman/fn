@@ -1329,92 +1329,7 @@ name|MouseEvent
 name|e
 parameter_list|)
 block|{
-comment|// First find the row on which the user has clicked.
-specifier|final
-name|int
-name|row
-init|=
-name|table
-operator|.
-name|rowAtPoint
-argument_list|(
-name|e
-operator|.
-name|getPoint
-argument_list|()
-argument_list|)
-decl_stmt|;
-comment|// Check if the user has right-clicked. If so, open the right-click menu.
-if|if
-condition|(
-name|e
-operator|.
-name|isPopupTrigger
-argument_list|()
-condition|)
-block|{
-specifier|final
-name|int
-name|col
-init|=
-name|table
-operator|.
-name|columnAtPoint
-argument_list|(
-name|e
-operator|.
-name|getPoint
-argument_list|()
-argument_list|)
-decl_stmt|;
-comment|// Check if the user has clicked on an icon cell to open url or pdf.
-specifier|final
-name|String
-index|[]
-name|iconType
-init|=
-name|table
-operator|.
-name|getIconTypeForColumn
-argument_list|(
-name|col
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|iconType
-operator|==
-literal|null
-condition|)
-name|processPopupTrigger
-argument_list|(
-name|e
-argument_list|,
-name|row
-argument_list|)
-expr_stmt|;
-else|else
-name|showIconRightClickMenu
-argument_list|(
-name|e
-argument_list|,
-name|row
-argument_list|,
-name|iconType
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-DECL|method|mousePressed (MouseEvent e)
-specifier|public
-name|void
-name|mousePressed
-parameter_list|(
-name|MouseEvent
-name|e
-parameter_list|)
-block|{
-comment|// First find the column on which the user has clicked.
+comment|// First find the column and row on which the user has clicked.
 specifier|final
 name|int
 name|col
@@ -1495,6 +1410,7 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// left click on icon field
 name|SpecialField
 name|field
 init|=
@@ -1602,6 +1518,17 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
+DECL|method|mousePressed (MouseEvent e)
+specifier|public
+name|void
+name|mousePressed
+parameter_list|(
+name|MouseEvent
+name|e
+parameter_list|)
+block|{
+comment|// all handling is done in "mouseReleased"
 block|}
 DECL|method|mouseClicked (MouseEvent e)
 specifier|public

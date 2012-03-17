@@ -527,7 +527,7 @@ name|ce
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Update keywords according to values of special fields 	 */
+comment|/** 	 * Update keywords according to values of special fields 	 *  	 * @param nc indicates the undo named compound. May be null 	 */
 DECL|method|syncKeywordsFromSpecialFields (BibtexEntry be, NamedCompound nc)
 specifier|public
 specifier|static
@@ -670,7 +670,7 @@ name|nc
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * updates field values according to keywords 	 */
+comment|/** 	 * updates field values according to keywords 	 *  	 * @param nc indicates the undo named compound. May be null 	 */
 DECL|method|syncSpecialFieldsFromKeywords (BibtexEntry be, NamedCompound ce)
 specifier|public
 specifier|static
