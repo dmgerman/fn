@@ -2873,29 +2873,37 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|MalformedURLException
+name|Exception
 name|ex
 parameter_list|)
 block|{
-name|ex
+name|JOptionPane
 operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-comment|//To change body of catch statement use File | Settings | File Templates.
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ex2
-parameter_list|)
-block|{
-name|ex2
+name|showMessageDialog
+argument_list|(
+literal|null
+argument_list|,
+name|Globals
 operator|.
-name|printStackTrace
-argument_list|()
+name|lang
+argument_list|(
+literal|"Error downloading file '%0'"
+argument_list|,
+name|chosen
+argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Download failed"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
+argument_list|)
 expr_stmt|;
-comment|//To change body of catch statement use File | Settings | File Templates.
 block|}
 block|}
 block|}
