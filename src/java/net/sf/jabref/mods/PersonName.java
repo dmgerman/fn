@@ -184,29 +184,8 @@ literal|false
 argument_list|)
 decl_stmt|;
 comment|//Formating names and replacing escape Char for ',' back to a comma
-name|XMLChars
-name|xmlChars
-init|=
-operator|new
-name|XMLChars
-argument_list|()
-decl_stmt|;
-name|authorMod
-operator|=
-name|xmlChars
-operator|.
-name|format
-argument_list|(
-name|authorMod
-argument_list|)
-operator|.
-name|replace
-argument_list|(
-literal|"&#44;"
-argument_list|,
-literal|","
-argument_list|)
-expr_stmt|;
+comment|//            XMLChars xmlChars = new XMLChars();
+comment|//            authorMod = xmlChars.format(authorMod).replace("&#44;", ",");
 name|int
 name|endOfLastName
 init|=
