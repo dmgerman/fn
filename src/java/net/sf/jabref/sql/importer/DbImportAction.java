@@ -688,6 +688,12 @@ name|void
 name|update
 parameter_list|()
 block|{
+if|if
+condition|(
+operator|!
+name|connectToDB
+condition|)
+return|return;
 for|for
 control|(
 name|Object

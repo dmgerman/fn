@@ -2877,6 +2877,7 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|this
 operator|.
 name|glTable
@@ -2885,6 +2886,18 @@ name|getSelectedRowCount
 argument_list|()
 operator|==
 literal|0
+operator|)
+operator|&&
+operator|(
+name|this
+operator|.
+name|glTable
+operator|.
+name|getRowCount
+argument_list|()
+operator|>
+literal|0
+operator|)
 condition|)
 comment|//Only if no row selection is done, until now
 name|this

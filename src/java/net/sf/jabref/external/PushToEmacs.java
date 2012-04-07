@@ -406,7 +406,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Path to gnuclient.exe or emacsclient.exe"
+literal|"Path to gnuclient or emacsclient"
 argument_list|)
 operator|.
 name|concat

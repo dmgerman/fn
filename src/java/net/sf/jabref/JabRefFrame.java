@@ -2980,6 +2980,7 @@ argument_list|(
 literal|"posY"
 argument_list|)
 decl_stmt|;
+comment|/*         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();         GraphicsDevice[] gs = ge.getScreenDevices();           // Get size of each screen         for (int i=0; i<gs.length; i++) {             DisplayMode dm = gs[i].getDisplayMode();             int screenWidth = dm.getWidth();             int screenHeight = dm.getHeight();             System.out.println(gs[i].getDefaultConfiguration().getBounds());         }*/
 comment|//
 comment|// Fix for [ 1738920 ] Windows Position in Multi-Monitor environment
 comment|//
@@ -3003,6 +3004,26 @@ operator|==
 literal|1
 condition|)
 block|{
+name|Rectangle
+name|bounds
+init|=
+name|GraphicsEnvironment
+operator|.
+name|getLocalGraphicsEnvironment
+argument_list|()
+operator|.
+name|getScreenDevices
+argument_list|()
+index|[
+literal|0
+index|]
+operator|.
+name|getDefaultConfiguration
+argument_list|()
+operator|.
+name|getBounds
+argument_list|()
+decl_stmt|;
 name|Dimension
 name|dim
 init|=
@@ -3014,6 +3035,35 @@ operator|.
 name|getScreenSize
 argument_list|()
 decl_stmt|;
+comment|// Make sure we are not above or to the left of the screen bounds:
+if|if
+condition|(
+name|posX
+operator|<
+name|bounds
+operator|.
+name|x
+condition|)
+name|posX
+operator|=
+name|bounds
+operator|.
+name|x
+expr_stmt|;
+if|if
+condition|(
+name|posY
+operator|<
+name|bounds
+operator|.
+name|y
+condition|)
+name|posY
+operator|=
+name|bounds
+operator|.
+name|y
+expr_stmt|;
 name|int
 name|height
 init|=
@@ -3036,6 +3086,7 @@ operator|.
 name|getWidth
 argument_list|()
 decl_stmt|;
+comment|//if (posX< )
 if|if
 condition|(
 name|posX
@@ -7315,7 +7366,7 @@ argument_list|(
 name|manageJournals
 argument_list|)
 expr_stmt|;
-comment|/*options.add(new AbstractAction("Font") {       public void actionPerformed(ActionEvent e) {           // JDialog dl = new EntryCustomizationDialog(JabRefFrame.this);           Font f=new FontSelectorDialog         (JabRefFrame.this, GUIGlobals.CURRENTFONT).getSelectedFont();        if(f==null)         return;        else         GUIGlobals.CURRENTFONT=f;        // updatefont        prefs.put("fontFamily", GUIGlobals.CURRENTFONT.getFamily());        prefs.putInt("fontStyle", GUIGlobals.CURRENTFONT.getStyle());        prefs.putInt("fontSize", GUIGlobals.CURRENTFONT.getSize());        if (tabbedPane.getTabCount()> 0) {         for (int i=0; i<tabbedPane.getTabCount(); i++) {          baseAt(i).entryTable.updateFont();          baseAt(i).refreshTable();         }        }       }       });*/
+comment|/*options.add(new AbstractAction("Font") {       public void actionPerformed(ActionEvent e) {           Font f=new FontSelectorDialog         (JabRefFrame.this, GUIGlobals.CURRENTFONT).getSelectedFont();        if(f==null)         return;        else         GUIGlobals.CURRENTFONT=f;        // updatefont        prefs.put("fontFamily", GUIGlobals.CURRENTFONT.getFamily());        prefs.putInt("fontStyle", GUIGlobals.CURRENTFONT.getStyle());        prefs.putInt("fontSize", GUIGlobals.CURRENTFONT.getSize());        if (tabbedPane.getTabCount()> 0) {         for (int i=0; i<tabbedPane.getTabCount(); i++) {          baseAt(i).entryTable.updateFont();          baseAt(i).refreshTable();         }        }       }       });*/
 name|pluginMenu
 operator|.
 name|add

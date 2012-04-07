@@ -518,7 +518,6 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-comment|// JDialog dl = new EntryCustomizationDialog(ths);
 name|Font
 name|f
 init|=

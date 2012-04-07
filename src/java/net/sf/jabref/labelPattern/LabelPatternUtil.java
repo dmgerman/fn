@@ -915,7 +915,7 @@ argument_list|)
 operator|.
 name|split
 argument_list|(
-literal|"[ \r\n\"]"
+literal|"[\\(\\) \r\n\"]"
 argument_list|)
 decl_stmt|;
 for|for
