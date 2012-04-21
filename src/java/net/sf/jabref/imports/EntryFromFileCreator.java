@@ -214,6 +214,17 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|newEntry
+operator|==
+literal|null
+condition|)
+block|{
+return|return
+literal|null
+return|;
+block|}
+if|if
+condition|(
 name|addPathTokensAsKeywords
 condition|)
 block|{
