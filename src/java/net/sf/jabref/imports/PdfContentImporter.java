@@ -822,6 +822,16 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|splitNames
+index|[
+name|i
+index|]
+operator|.
+name|length
+argument_list|()
+operator|>
+literal|0
+operator|&&
 name|Character
 operator|.
 name|isLowerCase
