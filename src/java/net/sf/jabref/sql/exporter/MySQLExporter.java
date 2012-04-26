@@ -267,8 +267,6 @@ literal|"database_name VARCHAR(64) NOT NULL, \n"
 operator|+
 literal|"md5_path VARCHAR(32) NOT NULL, \n"
 operator|+
-literal|"UNIQUE INDEX `path_UNIQUE` (md5_path ASC), \n"
-operator|+
 literal|"PRIMARY KEY (database_id)\n );"
 argument_list|)
 expr_stmt|;
