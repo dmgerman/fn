@@ -14844,21 +14844,26 @@ return|return
 name|targetName
 return|;
 block|}
-DECL|field|REGEXP_DOI_WITH_HTTP_PREFIX
-specifier|private
-specifier|static
-name|String
-name|REGEXP_DOI_WITH_HTTP_PREFIX
-init|=
-literal|"[^\\s]+?(10\\.[^/]+/([^(\\s\\>\\\"\\<})])+)"
-decl_stmt|;
+comment|// DOI-regexp provided by http://stackoverflow.com/a/10300246/873282
 DECL|field|REGEXP_PLAINDOI
 specifier|private
 specifier|static
+specifier|final
 name|String
 name|REGEXP_PLAINDOI
 init|=
-literal|"(10\\.[^/]+/([^(\\s\\>\\\"\\<})])+)"
+literal|"(10[.][0-9]{4,}[^\\s\"/<>]*/[^\\s\"<>]+)"
+decl_stmt|;
+DECL|field|REGEXP_DOI_WITH_HTTP_PREFIX
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|REGEXP_DOI_WITH_HTTP_PREFIX
+init|=
+literal|"[^\\s]+?"
+operator|+
+name|REGEXP_PLAINDOI
 decl_stmt|;
 comment|/**    	 * Check if the String matches a DOI (with http://...)    	 */
 DECL|method|checkForDOIwithHTTPprefix (String check)
