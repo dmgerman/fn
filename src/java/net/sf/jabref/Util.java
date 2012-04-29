@@ -3126,57 +3126,8 @@ name|fieldName
 operator|=
 literal|"url"
 expr_stmt|;
-name|link
-operator|=
-name|sanitizeUrl
-argument_list|(
-name|link
-argument_list|)
-expr_stmt|;
-comment|// Check to see if link field already contains a well formated URL
-if|if
-condition|(
-operator|!
-name|link
-operator|.
-name|startsWith
-argument_list|(
-literal|"http://"
-argument_list|)
-condition|)
-block|{
-comment|// Remove possible 'doi:'
-if|if
-condition|(
-name|link
-operator|.
-name|matches
-argument_list|(
-literal|"^doi:/*.*"
-argument_list|)
-condition|)
-block|{
-name|link
-operator|=
-name|link
-operator|.
-name|replaceFirst
-argument_list|(
-literal|"^doi:/*"
-argument_list|,
-literal|""
-argument_list|)
-expr_stmt|;
-block|}
-name|link
-operator|=
-name|Globals
-operator|.
-name|DOI_LOOKUP_PREFIX
-operator|+
-name|link
-expr_stmt|;
-block|}
+comment|// sanitizing is done below at the treatment of "URL"
+comment|// in sanatizeUrl a doi-link is correctly treated
 block|}
 elseif|else
 if|if
@@ -5329,7 +5280,7 @@ return|;
 block|}
 block|}
 block|}
-comment|/** 	 * Make sure an URL is "portable", in that it doesn't contain bad characters 	 * that break the open command in some OSes. 	 *  	 * A call to this method will also remove \\url{} enclosings and clean doi links. 	 *  	 * Old Version can be found in CVS version 114 of Util.java. 	 *  	 * @param link 	 *            The URL to sanitize. 	 * @return Sanitized URL 	 */
+comment|/** 	 * Make sure an URL is "portable", in that it doesn't contain bad characters 	 * that break the open command in some OSes. 	 *  	 * A call to this method will also remove \\url{} enclosings and clean DOI links. 	 *  	 * @param link :the URL to sanitize. 	 * @return Sanitized URL 	 */
 DECL|method|sanitizeUrl (String link)
 specifier|public
 specifier|static
@@ -5340,6 +5291,13 @@ name|String
 name|link
 parameter_list|)
 block|{
+name|link
+operator|=
+name|link
+operator|.
+name|trim
+argument_list|()
+expr_stmt|;
 comment|// First check if it is enclosed in \\url{}. If so, remove
 comment|// the wrapper.
 if|if
@@ -5405,14 +5363,12 @@ operator|+
 name|link
 expr_stmt|;
 block|}
-comment|/*          * Poor man's DOI detection          *           * Fixes          * https://sourceforge.net/tracker/index.php?func=detail&aid=1709449&group_id=92314&atid=600306          */
+comment|// converts doi-only link to full http address
 if|if
 condition|(
-name|link
-operator|.
-name|startsWith
+name|checkForPlainDOI
 argument_list|(
-literal|"10."
+name|link
 argument_list|)
 condition|)
 block|{
@@ -5422,7 +5378,10 @@ name|Globals
 operator|.
 name|DOI_LOOKUP_PREFIX
 operator|+
+name|getDOI
+argument_list|(
 name|link
+argument_list|)
 expr_stmt|;
 block|}
 name|link
@@ -14933,7 +14892,7 @@ literal|".*"
 argument_list|)
 return|;
 block|}
-comment|/**    	 * Remove the http://... from DOI    	 *     	 * @param doi    	 * @return DOI without http://... prefix    	 */
+comment|/**    	 * Remove the http://... from DOI    	 *     	 * @param doi - may not be null    	 * @return first DOI in the given String (without http://... prefix)    	 */
 DECL|method|getDOI (String doi)
 specifier|public
 specifier|static
@@ -14950,7 +14909,7 @@ name|doi
 operator|.
 name|replaceAll
 argument_list|(
-name|REGEXP_DOI_WITH_HTTP_PREFIX
+name|REGEXP_PLAINDOI
 argument_list|,
 literal|"$1"
 argument_list|)
