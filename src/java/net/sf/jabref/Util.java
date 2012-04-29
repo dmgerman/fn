@@ -14844,7 +14844,7 @@ return|return
 name|targetName
 return|;
 block|}
-comment|// DOI-regexp provided by http://stackoverflow.com/a/10300246/873282
+comment|// DOI-regexp provided by http://stackoverflow.com/a/10324802/873282
 DECL|field|REGEXP_PLAINDOI
 specifier|private
 specifier|static
@@ -14852,7 +14852,7 @@ specifier|final
 name|String
 name|REGEXP_PLAINDOI
 init|=
-literal|"(10[.][0-9]{4,}[^\\s\"/<>]*/[^\\s\"<>]+)"
+literal|"(\\b(10[.][0-9]{4,}(?:[.][0-9]+)*/(?:(?![\"&\\'<>])\\S)+)\\b)"
 decl_stmt|;
 DECL|field|REGEXP_DOI_WITH_HTTP_PREFIX
 specifier|private
