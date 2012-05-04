@@ -1,8 +1,4 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
-begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.imports
 package|package
@@ -563,7 +559,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"([0-9,]+) results"
+literal|"([0-9,]+) Results"
 argument_list|)
 decl_stmt|;
 DECL|field|idPattern
@@ -576,9 +572,9 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"<input name=\"\" type=\"checkbox\" value=\"\"\\s*"
+literal|"<input name=\'\' title=\'.*\' type=\'checkbox\'"
 operator|+
-literal|"id=\"([0-9]+)\"/>"
+literal|"value=\'\'\\s*id=\'([0-9]+)\'/>"
 argument_list|)
 decl_stmt|;
 DECL|field|typePattern
@@ -669,7 +665,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"<a href=\"(.+)\" class=\"bodyCopySpaced\">Abstract</a>"
+literal|"<a href=\'(.+)\'>\\s*<span class=\"more\">View full.*</span></a>"
 argument_list|)
 decl_stmt|;
 DECL|field|abrvPattern
@@ -712,7 +708,7 @@ name|put
 argument_list|(
 literal|"author"
 argument_list|,
-literal|"<p>\\s+(.+)"
+literal|"</h3>\\s+(.+)<br />"
 argument_list|)
 expr_stmt|;
 name|fieldPatterns
@@ -1311,7 +1307,12 @@ name|getTitle
 parameter_list|()
 block|{
 return|return
-literal|"IEEEXplore"
+name|Globals
+operator|.
+name|menuTitle
+argument_list|(
+literal|"Search IEEEXplore"
+argument_list|)
 return|;
 block|}
 DECL|method|getIcon ()
@@ -1346,7 +1347,7 @@ name|getKeyName
 parameter_list|()
 block|{
 return|return
-literal|"IEEEXplore"
+literal|"Search IEEEXplore"
 return|;
 block|}
 comment|/**      * This method is called by the dialog when the user has cancelled the import.      */
@@ -2631,6 +2632,13 @@ argument_list|(
 literal|"pages"
 argument_list|)
 expr_stmt|;
+name|entry
+operator|.
+name|clearField
+argument_list|(
+literal|"number"
+argument_list|)
+expr_stmt|;
 block|}
 name|String
 index|[]
@@ -2666,6 +2674,49 @@ name|parts
 index|[
 literal|2
 index|]
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|entry
+operator|.
+name|getField
+argument_list|(
+literal|"note"
+argument_list|)
+operator|==
+literal|"Early Access"
+condition|)
+block|{
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"year"
+argument_list|,
+literal|"to be published"
+argument_list|)
+expr_stmt|;
+name|entry
+operator|.
+name|clearField
+argument_list|(
+literal|"month"
+argument_list|)
+expr_stmt|;
+name|entry
+operator|.
+name|clearField
+argument_list|(
+literal|"pages"
+argument_list|)
+expr_stmt|;
+name|entry
+operator|.
+name|clearField
+argument_list|(
+literal|"number"
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -2925,7 +2976,7 @@ name|fullName
 operator|.
 name|replace
 argument_list|(
-literal|"- "
+literal|" - "
 argument_list|,
 literal|"-"
 argument_list|)
@@ -3481,42 +3532,42 @@ name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-literal|"IEEE Journals"
+literal|"IEEE Journals&amp; Magazines"
 argument_list|)
 operator|||
 name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-literal|"IEEE Early Access"
+literal|"IEEE Early Access Articles"
 argument_list|)
 operator|||
 name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-literal|"IET Journals"
+literal|"IET Journals&amp; Magazines"
 argument_list|)
 operator|||
 name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-literal|"AIP Journals"
+literal|"AIP Journals&amp; Magazines"
 argument_list|)
 operator|||
 name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-literal|"AVS Journals"
+literal|"AVS Journals&amp; Magazines"
 argument_list|)
 operator|||
 name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-literal|"IBM Journals"
+literal|"IBM Journals&amp; Magazines"
 argument_list|)
 condition|)
 block|{
@@ -3541,14 +3592,14 @@ name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-literal|"IEEE Conferences"
+literal|"IEEE Conference Publications"
 argument_list|)
 operator|||
 name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-literal|"IET Conferences"
+literal|"IET Conference Publications"
 argument_list|)
 condition|)
 block|{
@@ -3598,7 +3649,7 @@ name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-literal|"IEEE Educational Courses"
+literal|"IEEE eLearning Library Courses"
 argument_list|)
 condition|)
 block|{
@@ -3623,7 +3674,7 @@ name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-literal|"IEEE Book Chapter"
+literal|"Wiley-IEEE Press eBook Chapters"
 argument_list|)
 condition|)
 block|{
@@ -3723,7 +3774,7 @@ name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-literal|"IEEE Book Chapter"
+literal|"Wiley-IEEE Press eBook Chapters"
 argument_list|)
 condition|)
 block|{
@@ -3733,7 +3784,7 @@ name|setField
 argument_list|(
 literal|"publisher"
 argument_list|,
-literal|"IEEE"
+literal|"Wiley-IEEE Press"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3743,7 +3794,7 @@ name|typeName
 operator|.
 name|equalsIgnoreCase
 argument_list|(
-literal|"IEEE Early Access"
+literal|"IEEE Early Access Articles"
 argument_list|)
 condition|)
 block|{
@@ -3984,7 +4035,7 @@ name|allText
 operator|.
 name|indexOf
 argument_list|(
-literal|"<div class=\"abstract RevealContent"
+literal|"<div class=\"abstract"
 argument_list|,
 name|piv
 argument_list|)
