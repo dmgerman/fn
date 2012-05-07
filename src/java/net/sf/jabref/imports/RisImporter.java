@@ -397,6 +397,27 @@ operator|.
 name|toString
 argument_list|()
 operator|.
+name|replaceAll
+argument_list|(
+literal|"\u2013"
+argument_list|,
+literal|"-"
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\u2014"
+argument_list|,
+literal|"--"
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\u2015"
+argument_list|,
+literal|"--"
+argument_list|)
+operator|.
 name|split
 argument_list|(
 literal|"ER  -.*\\n"
