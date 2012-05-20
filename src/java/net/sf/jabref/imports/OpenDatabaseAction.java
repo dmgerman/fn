@@ -1616,7 +1616,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|addNewDatabase (ParserResult pr, File file, boolean raisePanel)
+DECL|method|addNewDatabase (ParserResult pr, final File file, boolean raisePanel)
 specifier|public
 name|BasePanel
 name|addNewDatabase
@@ -1624,6 +1624,7 @@ parameter_list|(
 name|ParserResult
 name|pr
 parameter_list|,
+specifier|final
 name|File
 name|file
 parameter_list|,
@@ -1781,6 +1782,15 @@ name|lang
 argument_list|(
 literal|"Warnings"
 argument_list|)
+operator|+
+literal|" ("
+operator|+
+name|file
+operator|.
+name|getName
+argument_list|()
+operator|+
+literal|")"
 argument_list|,
 name|JOptionPane
 operator|.
