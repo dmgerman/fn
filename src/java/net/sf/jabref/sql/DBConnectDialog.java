@@ -192,7 +192,7 @@ name|forms
 operator|.
 name|builder
 operator|.
-name|ButtonBarBuilder
+name|ButtonBarBuilder2
 import|;
 end_import
 
@@ -834,11 +834,11 @@ name|CENTER
 argument_list|)
 expr_stmt|;
 comment|// add buttons are added in a similar way:
-name|ButtonBarBuilder
+name|ButtonBarBuilder2
 name|bb
 init|=
 operator|new
-name|ButtonBarBuilder
+name|ButtonBarBuilder2
 argument_list|()
 decl_stmt|;
 name|bb
@@ -848,14 +848,14 @@ argument_list|()
 expr_stmt|;
 name|bb
 operator|.
-name|addGridded
+name|addButton
 argument_list|(
 name|btnConnect
 argument_list|)
 expr_stmt|;
 name|bb
 operator|.
-name|addGridded
+name|addButton
 argument_list|(
 name|btnCancel
 argument_list|)

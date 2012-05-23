@@ -126,7 +126,7 @@ name|forms
 operator|.
 name|builder
 operator|.
-name|ButtonBarBuilder
+name|ButtonBarBuilder2
 import|;
 end_import
 
@@ -2459,11 +2459,11 @@ name|wordEditField
 argument_list|)
 expr_stmt|;
 comment|// Add buttons:
-name|ButtonBarBuilder
+name|ButtonBarBuilder2
 name|bsb
 init|=
 operator|new
-name|ButtonBarBuilder
+name|ButtonBarBuilder2
 argument_list|(
 name|buttonPan
 argument_list|)
@@ -2475,21 +2475,21 @@ argument_list|()
 expr_stmt|;
 name|bsb
 operator|.
-name|addGridded
+name|addButton
 argument_list|(
 name|ok
 argument_list|)
 expr_stmt|;
 name|bsb
 operator|.
-name|addGridded
+name|addButton
 argument_list|(
 name|apply
 argument_list|)
 expr_stmt|;
 name|bsb
 operator|.
-name|addGridded
+name|addButton
 argument_list|(
 name|cancel
 argument_list|)
@@ -2501,7 +2501,7 @@ argument_list|()
 expr_stmt|;
 name|bsb
 operator|.
-name|addGridded
+name|addButton
 argument_list|(
 name|help
 argument_list|)

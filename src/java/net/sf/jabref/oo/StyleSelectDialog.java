@@ -132,7 +132,7 @@ name|forms
 operator|.
 name|builder
 operator|.
-name|ButtonBarBuilder
+name|ButtonBarBuilder2
 import|;
 end_import
 
@@ -1891,11 +1891,11 @@ argument_list|(
 name|cancelListener
 argument_list|)
 expr_stmt|;
-name|ButtonBarBuilder
+name|ButtonBarBuilder2
 name|bb
 init|=
 operator|new
-name|ButtonBarBuilder
+name|ButtonBarBuilder2
 argument_list|()
 decl_stmt|;
 name|bb
@@ -1905,14 +1905,14 @@ argument_list|()
 expr_stmt|;
 name|bb
 operator|.
-name|addGridded
+name|addButton
 argument_list|(
 name|ok
 argument_list|)
 expr_stmt|;
 name|bb
 operator|.
-name|addGridded
+name|addButton
 argument_list|(
 name|cancel
 argument_list|)
@@ -3236,11 +3236,11 @@ literal|"Ok"
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|ButtonBarBuilder
+name|ButtonBarBuilder2
 name|bb
 init|=
 operator|new
-name|ButtonBarBuilder
+name|ButtonBarBuilder2
 argument_list|()
 decl_stmt|;
 name|bb
@@ -3250,7 +3250,7 @@ argument_list|()
 expr_stmt|;
 name|bb
 operator|.
-name|addGridded
+name|addButton
 argument_list|(
 name|ok
 argument_list|)

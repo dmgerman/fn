@@ -26,7 +26,7 @@ name|forms
 operator|.
 name|builder
 operator|.
-name|ButtonBarBuilder
+name|ButtonBarBuilder2
 import|;
 end_import
 
@@ -2274,7 +2274,7 @@ literal|"p,p,p,p,p,p,p,p,p,p"
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|//ButtonBarBuilder bb = new ButtonBarBuilder();
+comment|//ButtonBarBuilder2 bb = new ButtonBarBuilder2();
 name|DefaultFormBuilder
 name|bb
 init|=
@@ -3818,11 +3818,11 @@ name|nextLine
 argument_list|()
 expr_stmt|;
 block|}
-name|ButtonBarBuilder
+name|ButtonBarBuilder2
 name|bb
 init|=
 operator|new
-name|ButtonBarBuilder
+name|ButtonBarBuilder2
 argument_list|()
 decl_stmt|;
 name|JButton
@@ -4004,14 +4004,14 @@ argument_list|()
 expr_stmt|;
 name|bb
 operator|.
-name|addGridded
+name|addButton
 argument_list|(
 name|ok
 argument_list|)
 expr_stmt|;
 name|bb
 operator|.
-name|addGridded
+name|addButton
 argument_list|(
 name|cancel
 argument_list|)

@@ -92,7 +92,7 @@ name|forms
 operator|.
 name|builder
 operator|.
-name|ButtonBarBuilder
+name|ButtonBarBuilder2
 import|;
 end_import
 
@@ -491,11 +491,11 @@ operator|.
 name|SOUTH
 argument_list|)
 expr_stmt|;
-name|ButtonBarBuilder
+name|ButtonBarBuilder2
 name|bb
 init|=
 operator|new
-name|ButtonBarBuilder
+name|ButtonBarBuilder2
 argument_list|(
 name|buttons
 argument_list|)
@@ -525,21 +525,21 @@ argument_list|()
 expr_stmt|;
 name|bb
 operator|.
-name|addGridded
+name|addButton
 argument_list|(
 name|ok
 argument_list|)
 expr_stmt|;
 name|bb
 operator|.
-name|addGridded
+name|addButton
 argument_list|(
 name|revert
 argument_list|)
 expr_stmt|;
 name|bb
 operator|.
-name|addGridded
+name|addButton
 argument_list|(
 name|cancel
 argument_list|)
@@ -555,7 +555,7 @@ argument_list|)
 expr_stmt|;
 name|bb
 operator|.
-name|addGridded
+name|addButton
 argument_list|(
 name|helpBut
 argument_list|)
