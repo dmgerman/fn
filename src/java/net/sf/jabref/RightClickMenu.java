@@ -900,14 +900,14 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Open PDF or PS"
+literal|"Attach file"
 argument_list|)
 argument_list|,
 name|GUIGlobals
 operator|.
 name|getImage
 argument_list|(
-literal|"openFile"
+literal|"open"
 argument_list|)
 argument_list|)
 block|{
@@ -925,7 +925,7 @@ name|panel
 operator|.
 name|runCommand
 argument_list|(
-literal|"openFile"
+literal|"addFileLink"
 argument_list|)
 expr_stmt|;
 block|}
@@ -939,6 +939,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+comment|/*add(new AbstractAction(Globals.lang("Open PDF or PS"), GUIGlobals.getImage("openFile")) {             public void actionPerformed(ActionEvent e) {                 try {                     panel.runCommand("openFile");                 } catch (Throwable ex) {}             }         });*/
 name|add
 argument_list|(
 operator|new
