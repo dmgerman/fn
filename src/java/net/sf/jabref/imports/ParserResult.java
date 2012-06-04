@@ -92,6 +92,18 @@ name|BibtexEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|MetaData
+import|;
+end_import
+
 begin_class
 DECL|class|ParserResult
 specifier|public
@@ -137,12 +149,7 @@ name|base
 decl_stmt|;
 DECL|field|metaData
 specifier|private
-name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+name|MetaData
 name|metaData
 decl_stmt|;
 DECL|field|entryTypes
@@ -291,19 +298,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ParserResult (BibtexDatabase base, HashMap<String, String> metaData, HashMap<String, BibtexEntryType> entryTypes)
+DECL|method|ParserResult (BibtexDatabase base, MetaData metaData, HashMap<String, BibtexEntryType> entryTypes)
 specifier|public
 name|ParserResult
 parameter_list|(
 name|BibtexDatabase
 name|base
 parameter_list|,
-name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+name|MetaData
 name|metaData
 parameter_list|,
 name|HashMap
@@ -479,18 +481,29 @@ return|;
 block|}
 DECL|method|getMetaData ()
 specifier|public
-name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
+name|MetaData
 name|getMetaData
 parameter_list|()
 block|{
 return|return
 name|metaData
 return|;
+block|}
+DECL|method|setMetaData (MetaData md)
+specifier|public
+name|void
+name|setMetaData
+parameter_list|(
+name|MetaData
+name|md
+parameter_list|)
+block|{
+name|this
+operator|.
+name|metaData
+operator|=
+name|md
+expr_stmt|;
 block|}
 DECL|method|getEntryTypes ()
 specifier|public

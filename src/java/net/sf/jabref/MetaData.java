@@ -132,6 +132,13 @@ init|=
 literal|null
 decl_stmt|;
 comment|// The File where this base gets saved.
+DECL|field|groupTreeValid
+specifier|private
+name|boolean
+name|groupTreeValid
+init|=
+literal|true
+decl_stmt|;
 DECL|field|dbStrings
 specifier|private
 name|DBStrings
@@ -383,6 +390,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+try|try
+block|{
 name|groupsRoot
 operator|=
 name|VersionHandling
@@ -392,6 +401,22 @@ argument_list|(
 name|flatGroupsData
 argument_list|)
 expr_stmt|;
+name|groupTreeValid
+operator|=
+literal|true
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|IllegalArgumentException
+name|ex
+parameter_list|)
+block|{
+name|groupTreeValid
+operator|=
+literal|true
+expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * The MetaData object can be constructed with no data in it.      */
@@ -872,6 +897,7 @@ index|]
 argument_list|)
 return|;
 block|}
+comment|/**      * Parse the groups metadata string      * @param orderedData The vector of metadata strings      * @param db The BibtexDatabase this metadata belongs to      * @param version The group tree version      * @return true if parsing was successful, false otherwise      */
 DECL|method|putGroups (Vector<String> orderedData, BibtexDatabase db, int version)
 specifier|private
 name|void
@@ -905,6 +931,10 @@ argument_list|,
 name|version
 argument_list|)
 expr_stmt|;
+name|groupTreeValid
+operator|=
+literal|true
+expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
@@ -921,6 +951,10 @@ name|println
 argument_list|(
 name|e
 argument_list|)
+expr_stmt|;
+name|groupTreeValid
+operator|=
+literal|false
 expr_stmt|;
 block|}
 block|}
@@ -947,6 +981,10 @@ block|{
 name|groupsRoot
 operator|=
 name|root
+expr_stmt|;
+name|groupTreeValid
+operator|=
+literal|true
 expr_stmt|;
 block|}
 comment|/**      * Writes all data to the specified writer, using each object's toString()      * method.      */
@@ -1592,6 +1630,16 @@ name|dbStrings
 operator|=
 name|dbStrings
 expr_stmt|;
+block|}
+DECL|method|isGroupTreeValid ()
+specifier|public
+name|boolean
+name|isGroupTreeValid
+parameter_list|()
+block|{
+return|return
+name|groupTreeValid
+return|;
 block|}
 block|}
 end_class
