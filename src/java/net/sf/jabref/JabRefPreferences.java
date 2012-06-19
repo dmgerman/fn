@@ -3469,6 +3469,13 @@ name|get
 argument_list|(
 literal|"defaultOwner"
 argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\\\"
+argument_list|,
+literal|"\\\\\\\\"
+argument_list|)
 operator|+
 literal|":(\\d+)\\]"
 expr_stmt|;
@@ -5081,6 +5088,40 @@ block|{
 return|return
 name|defKeyBinds
 return|;
+block|}
+comment|/**      * Clear all preferences.      * @throws BackingStoreException      */
+DECL|method|clear ()
+specifier|public
+name|void
+name|clear
+parameter_list|()
+throws|throws
+name|BackingStoreException
+block|{
+name|prefs
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|clear (String key)
+specifier|public
+name|void
+name|clear
+parameter_list|(
+name|String
+name|key
+parameter_list|)
+throws|throws
+name|BackingStoreException
+block|{
+name|prefs
+operator|.
+name|remove
+argument_list|(
+name|key
+argument_list|)
+expr_stmt|;
 block|}
 comment|/**      * Calling this method will write all preferences into the preference store.      */
 DECL|method|flush ()
