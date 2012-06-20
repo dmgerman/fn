@@ -227,7 +227,7 @@ name|_alist
 return|;
 comment|/*        // Regular expresion for identifying the fields        Pattern pi = Pattern.compile("\\[\\w*\\]");        // Regular expresion for identifying the spacer        Pattern ps = Pattern.compile("\\].()*\\[");         // The matcher for the field        Matcher mi = pi.matcher(labelPattern);        // The matcher for the spacer char        Matcher ms = ps.matcher(labelPattern);         // Before we do anything, we add the parameter to the ArrayLIst        _alist.add(labelPattern);         // If we can find the spacer character        if(ms.find()){      String t_spacer = ms.group();       // Remove the `]' and `[' at the ends       // We cant imagine a spacer of omre than one character.       t_spacer = t_spacer.substring(1,2);       _alist.add(t_spacer);        }         while(mi.find()){      // Get the matched string      String t_str = mi.group();       int _sindex = 1;       int _eindex = t_str.length() -1;       // Remove the `[' and `]' at the ends       t_str = t_str.substring(_sindex, _eindex);      _alist.add(t_str);        }         return _alist;*/
 block|}
-comment|/**      * Generates a BibTeX label according to the pattern for a given entry type, and      * returns the<code>Bibtexentry</code> with the unique label.      * @param table a<code>LabelPattern</code>      * @param database a<code>BibtexDatabase</code>      * @param _entry a<code>BibtexEntry</code>      * @return modified Bibtexentry      */
+comment|/**      * Generates a BibTeX label according to the pattern for a given entry type, and      * returns the<code>Bibtexentry</code> with the unique label.      *       * The given database is used to avoid duplicate keys.      *       * @param table a<code>LabelPattern</code>      * @param database a<code>BibtexDatabase</code>      * @param _entry a<code>BibtexEntry</code>      * @return modified Bibtexentry      */
 DECL|method|makeLabel (LabelPattern table, BibtexDatabase database, BibtexEntry _entry)
 specifier|public
 specifier|static
@@ -642,6 +642,37 @@ argument_list|(
 name|oldKey
 argument_list|)
 condition|)
+block|{
+if|if
+condition|(
+name|_db
+operator|.
+name|getEntryById
+argument_list|(
+name|_entry
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+operator|==
+literal|null
+condition|)
+block|{
+comment|// entry does not (yet) exist in the database, just update the entry
+name|_entry
+operator|.
+name|setField
+argument_list|(
+name|BibtexFields
+operator|.
+name|KEY_FIELD
+argument_list|,
+name|_label
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|_db
 operator|.
 name|setCiteKeyForEntry
@@ -654,6 +685,8 @@ argument_list|,
 name|_label
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 block|}
 else|else
 block|{
@@ -770,6 +803,36 @@ name|oldKey
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|_db
+operator|.
+name|getEntryById
+argument_list|(
+name|_entry
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+operator|==
+literal|null
+condition|)
+block|{
+comment|// entry does not (yet) exist in the database, just update the entry
+name|_entry
+operator|.
+name|setField
+argument_list|(
+name|BibtexFields
+operator|.
+name|KEY_FIELD
+argument_list|,
+name|moddedKey
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|_db
 operator|.
 name|setCiteKeyForEntry
@@ -782,6 +845,7 @@ argument_list|,
 name|moddedKey
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return
