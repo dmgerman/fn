@@ -100,6 +100,18 @@ name|util
 operator|.
 name|logging
 operator|.
+name|Level
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|logging
+operator|.
 name|Logger
 import|;
 end_import
@@ -444,9 +456,15 @@ parameter_list|)
 block|{
 name|logger
 operator|.
-name|info
+name|log
 argument_list|(
-literal|"FileNotFound"
+name|Level
+operator|.
+name|SEVERE
+argument_list|,
+literal|"File not found"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
@@ -458,9 +476,15 @@ parameter_list|)
 block|{
 name|logger
 operator|.
-name|info
+name|log
 argument_list|(
-literal|"IOException"
+name|Level
+operator|.
+name|SEVERE
+argument_list|,
+literal|"Error opening file"
+argument_list|,
+name|e
 argument_list|)
 expr_stmt|;
 block|}
