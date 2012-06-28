@@ -739,7 +739,33 @@ condition|)
 block|{
 name|String
 name|relDir
-init|=
+decl_stmt|;
+if|if
+condition|(
+name|dir
+operator|.
+name|equals
+argument_list|(
+literal|"."
+argument_list|)
+condition|)
+block|{
+comment|// if dir is only "current" directory, just use its parent (== real current directory) as path
+name|relDir
+operator|=
+name|file
+operator|.
+name|getParent
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+name|relDir
+operator|=
 operator|new
 name|StringBuffer
 argument_list|(
@@ -766,7 +792,8 @@ argument_list|)
 operator|.
 name|toString
 argument_list|()
-decl_stmt|;
+expr_stmt|;
+block|}
 comment|// If this directory actually exists, it is very likely that the
 comment|// user wants us to use it:
 if|if
