@@ -1182,6 +1182,15 @@ argument_list|,
 name|builder
 argument_list|)
 expr_stmt|;
+name|addSettingsButton
+argument_list|(
+operator|new
+name|PushToTeXstudio
+argument_list|()
+argument_list|,
+name|builder
+argument_list|)
+expr_stmt|;
 comment|//builder.nextLine();
 name|builder
 operator|.

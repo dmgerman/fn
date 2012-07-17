@@ -523,6 +523,15 @@ name|getInstance
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|applications
+operator|.
+name|add
+argument_list|(
+operator|new
+name|PushToTeXstudio
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// Finally, sort the entries:
 comment|//Collections.sort(applications, new PushToApplicationComparator());
 block|}
