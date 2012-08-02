@@ -1200,7 +1200,7 @@ argument_list|()
 argument_list|,
 name|dialog
 argument_list|,
-name|frame
+name|dialog
 argument_list|)
 condition|)
 block|{
