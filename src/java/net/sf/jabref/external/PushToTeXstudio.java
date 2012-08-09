@@ -166,7 +166,7 @@ block|{
 return|return
 name|Globals
 operator|.
-name|menuTitle
+name|lang
 argument_list|(
 literal|"Insert selected citations into TeXstudio"
 argument_list|)
