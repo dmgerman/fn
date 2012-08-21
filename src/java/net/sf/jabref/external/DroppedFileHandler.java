@@ -2353,11 +2353,14 @@ index|[]
 name|messages
 init|=
 block|{
-literal|"How would you like to link to "
-operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"How would you like to link to '%0'?"
+argument_list|,
 name|linkFileName
-operator|+
-literal|"?"
+argument_list|)
 block|,
 name|optionsPanel
 block|}
