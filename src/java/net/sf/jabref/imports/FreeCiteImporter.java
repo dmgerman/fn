@@ -880,6 +880,13 @@ name|ln
 operator|.
 name|equals
 argument_list|(
+literal|"institution"
+argument_list|)
+operator|||
+name|ln
+operator|.
+name|equals
+argument_list|(
 literal|"location"
 argument_list|)
 operator|||
