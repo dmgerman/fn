@@ -2439,9 +2439,12 @@ operator|.
 name|parseWithFreeCiteButton
 condition|)
 block|{
+if|if
+condition|(
 name|parseWithFreeCiteAndAddEntries
 argument_list|()
-expr_stmt|;
+condition|)
+block|{
 name|okPressed
 operator|=
 literal|false
@@ -2452,10 +2455,11 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**   	 * tries to parse the pasted reference with freecite   	 */
+block|}
+comment|/**      * tries to parse the pasted reference with freecite      * @return true if successful, false otherwise      */
 DECL|method|parseWithFreeCiteAndAddEntries ()
 specifier|private
-name|void
+name|boolean
 name|parseWithFreeCiteAndAddEntries
 parameter_list|()
 block|{
@@ -2599,6 +2603,15 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+return|return
+literal|true
+return|;
+block|}
+else|else
+block|{
+return|return
+literal|false
+return|;
 block|}
 block|}
 comment|// ---------------------------------------------------------------------------

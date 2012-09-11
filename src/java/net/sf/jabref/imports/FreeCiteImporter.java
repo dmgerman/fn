@@ -110,6 +110,16 @@ begin_import
 import|import
 name|java
 operator|.
+name|net
+operator|.
+name|UnknownHostException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
 name|util
 operator|.
 name|ArrayList
@@ -473,7 +483,7 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|SocketException
+name|IOException
 name|e
 parameter_list|)
 block|{
