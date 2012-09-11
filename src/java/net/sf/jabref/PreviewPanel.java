@@ -240,6 +240,34 @@ name|FileListEditorTransferHandler
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|FileListEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|gui
+operator|.
+name|FileListTableModel
+import|;
+end_import
+
 begin_comment
 comment|/**  * Displays an BibtexEntry using the given layout format.  */
 end_comment
@@ -289,11 +317,15 @@ DECL|field|scrollPane
 name|JScrollPane
 name|scrollPane
 decl_stmt|;
+DECL|field|pdfPreviewPanel
+name|PdfPreviewPanel
+name|pdfPreviewPanel
+decl_stmt|;
 DECL|field|panel
 name|BasePanel
 name|panel
 decl_stmt|;
-comment|/** 	 *  	 * @param database 	 *            (may be null) Optionally used to resolve strings. 	 * @param entry 	 *            (may be null) If given this entry is shown otherwise you have 	 *            to call setEntry to make something visible. 	 * @param panel 	 *            (may be null) If not given no toolbar is shown on the right 	 *            hand side. 	 * @param metaData 	 *            (must be given) Used for resolving pdf directories for links. 	 * @param layoutFile 	 *            (must be given) Used for layout 	 */
+comment|/**      * @param database      *            (may be null) Optionally used to resolve strings.      * @param entry      *            (may be null) If given this entry is shown otherwise you have      *            to call setEntry to make something visible.      * @param panel      *            (may be null) If not given no toolbar is shown on the right      *            hand side.      * @param metaData      *            (must be given) Used for resolving pdf directories for links.      * @param layoutFile      *            (must be given) Used for layout      */
 DECL|method|PreviewPanel (BibtexDatabase database, BibtexEntry entry, BasePanel panel, MetaData metaData, String layoutFile)
 specifier|public
 name|PreviewPanel
@@ -316,11 +348,53 @@ parameter_list|)
 block|{
 name|this
 argument_list|(
+name|database
+argument_list|,
+name|entry
+argument_list|,
 name|panel
 argument_list|,
 name|metaData
 argument_list|,
 name|layoutFile
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+comment|/** 	 * @param database 	 *            (may be null) Optionally used to resolve strings. 	 * @param entry 	 *            (may be null) If given this entry is shown otherwise you have 	 *            to call setEntry to make something visible. 	 * @param panel 	 *            (may be null) If not given no toolbar is shown on the right 	 *            hand side. 	 * @param metaData 	 *            (must be given) Used for resolving pdf directories for links. 	 * @param layoutFile 	 *            (must be given) Used for layout 	 * @param withPDFPreview if true, a PDF preview is included in the PreviewPanel 	 */
+DECL|method|PreviewPanel (BibtexDatabase database, BibtexEntry entry, BasePanel panel, MetaData metaData, String layoutFile, boolean withPDFPreview)
+specifier|public
+name|PreviewPanel
+parameter_list|(
+name|BibtexDatabase
+name|database
+parameter_list|,
+name|BibtexEntry
+name|entry
+parameter_list|,
+name|BasePanel
+name|panel
+parameter_list|,
+name|MetaData
+name|metaData
+parameter_list|,
+name|String
+name|layoutFile
+parameter_list|,
+name|boolean
+name|withPDFPreview
+parameter_list|)
+block|{
+name|this
+argument_list|(
+name|panel
+argument_list|,
+name|metaData
+argument_list|,
+name|layoutFile
+argument_list|,
+name|withPDFPreview
 argument_list|)
 expr_stmt|;
 name|this
@@ -335,7 +409,7 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 *  	 * @param panel 	 *            (may be null) If not given no toolbar is shown on the right 	 *            hand side. 	 * @param metaData 	 *            (must be given) Used for resolving pdf directories for links. 	 * @param layoutFile 	 *            (must be given) Used for layout 	 */
+comment|/**      *       * @param panel      *            (may be null) If not given no toolbar is shown on the right      *            hand side.      * @param metaData      *            (must be given) Used for resolving pdf directories for links.      * @param layoutFile      *            (must be given) Used for layout      */
 DECL|method|PreviewPanel (BasePanel panel, MetaData metaData, String layoutFile)
 specifier|public
 name|PreviewPanel
@@ -350,6 +424,36 @@ name|String
 name|layoutFile
 parameter_list|)
 block|{
+name|this
+argument_list|(
+name|panel
+argument_list|,
+name|metaData
+argument_list|,
+name|layoutFile
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+comment|/** 	 *  	 * @param panel 	 *            (may be null) If not given no toolbar is shown on the right 	 *            hand side. 	 * @param metaData 	 *            (must be given) Used for resolving pdf directories for links. 	 * @param layoutFile 	 *            (must be given) Used for layout      * @param withPDFPreview if true, a PDF preview is included in the PreviewPanel.       * The user can override this setting by setting the config setting JabRefPreferences.PDF_PREVIEW to false.      */
+DECL|method|PreviewPanel (BasePanel panel, MetaData metaData, String layoutFile, boolean withPDFPreview)
+specifier|private
+name|PreviewPanel
+parameter_list|(
+name|BasePanel
+name|panel
+parameter_list|,
+name|MetaData
+name|metaData
+parameter_list|,
+name|String
+name|layoutFile
+parameter_list|,
+name|boolean
+name|withPDFPreview
+parameter_list|)
+block|{
 name|super
 argument_list|(
 operator|new
@@ -357,6 +461,22 @@ name|BorderLayout
 argument_list|()
 argument_list|,
 literal|true
+argument_list|)
+expr_stmt|;
+name|withPDFPreview
+operator|=
+name|withPDFPreview
+operator|&&
+name|JabRefPreferences
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|PDF_PREVIEW
 argument_list|)
 expr_stmt|;
 name|this
@@ -384,6 +504,31 @@ operator|=
 name|createPreviewPane
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|withPDFPreview
+condition|)
+block|{
+name|this
+operator|.
+name|pdfPreviewPanel
+operator|=
+operator|new
+name|PdfPreviewPanel
+argument_list|(
+name|metaData
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|this
+operator|.
+name|pdfPreviewPanel
+operator|=
+literal|null
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|panel
@@ -472,6 +617,63 @@ name|LINE_START
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+name|withPDFPreview
+condition|)
+block|{
+name|JSplitPane
+name|splitPane
+init|=
+operator|new
+name|JSplitPane
+argument_list|(
+name|JSplitPane
+operator|.
+name|HORIZONTAL_SPLIT
+argument_list|,
+name|scrollPane
+argument_list|,
+name|pdfPreviewPanel
+argument_list|)
+decl_stmt|;
+name|splitPane
+operator|.
+name|setOneTouchExpandable
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+comment|// int oneThird = panel.getWidth()/3;
+name|int
+name|oneThird
+init|=
+literal|400
+decl_stmt|;
+comment|// arbitrarily set as panel.getWidth() always
+comment|// returns 0 at this point
+name|splitPane
+operator|.
+name|setDividerLocation
+argument_list|(
+name|oneThird
+operator|*
+literal|2
+argument_list|)
+expr_stmt|;
+comment|// Provide minimum sizes for the two components in the split pane
+comment|//			Dimension minimumSize = new Dimension(oneThird * 2, 50);
+comment|//			scrollPane.setMinimumSize(minimumSize);
+comment|//			minimumSize = new Dimension(oneThird, 50);
+comment|//			pdfScrollPane.setMinimumSize(minimumSize);
+name|add
+argument_list|(
+name|splitPane
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|add
 argument_list|(
 name|scrollPane
@@ -481,6 +683,7 @@ operator|.
 name|CENTER
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|class|PrintAction
 class|class
@@ -1387,6 +1590,22 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+comment|// update pdf preview
+if|if
+condition|(
+name|pdfPreviewPanel
+operator|!=
+literal|null
+condition|)
+block|{
+name|pdfPreviewPanel
+operator|.
+name|updatePanel
+argument_list|(
+name|entry
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 DECL|method|hasEntry ()
 specifier|public
