@@ -1147,11 +1147,9 @@ name|LabelPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|Globals
+name|panel
 operator|.
-name|prefs
-operator|.
-name|getKeyPattern
+name|metaData
 argument_list|()
 argument_list|,
 name|panel
@@ -1456,11 +1454,9 @@ name|LabelPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|Globals
+name|panel
 operator|.
-name|prefs
-operator|.
-name|getKeyPattern
+name|metaData
 argument_list|()
 argument_list|,
 name|panel

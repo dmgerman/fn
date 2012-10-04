@@ -370,20 +370,6 @@ name|jabref
 operator|.
 name|labelPattern
 operator|.
-name|DefaultLabelPatterns
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|labelPattern
-operator|.
 name|LabelPattern
 import|;
 end_import
@@ -585,17 +571,6 @@ argument_list|>
 argument_list|(
 literal|5
 argument_list|)
-decl_stmt|;
-DECL|field|KEY_PATTERN
-specifier|private
-specifier|static
-specifier|final
-name|LabelPattern
-name|KEY_PATTERN
-init|=
-operator|new
-name|DefaultLabelPatterns
-argument_list|()
 decl_stmt|;
 DECL|field|keyPattern
 specifier|private
@@ -5338,6 +5313,7 @@ name|newBindings
 expr_stmt|;
 block|}
 block|}
+comment|/**          * Fetches key patterns from preferences          * Not cached          *           * @return LabelPattern containing all keys. Returned LabelPattern has no parent          */
 DECL|method|getKeyPattern ()
 specifier|public
 name|LabelPattern
@@ -5348,9 +5324,7 @@ name|keyPattern
 operator|=
 operator|new
 name|LabelPattern
-argument_list|(
-name|KEY_PATTERN
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|Preferences
 name|pre
@@ -5444,14 +5418,11 @@ literal|"BackingStoreException in JabRefPreferences.getKeyPattern"
 argument_list|)
 expr_stmt|;
 block|}
-comment|///
-comment|//keyPattern.addLabelPattern("article", "[author][year]");
-comment|//putKeyPattern(keyPattern);
-comment|///
 return|return
 name|keyPattern
 return|;
 block|}
+comment|/**          * Adds the given key pattern to the preferences          *           * @param pattern the pattern to store          */
 DECL|method|putKeyPattern (LabelPattern pattern)
 specifier|public
 name|void
@@ -5473,13 +5444,6 @@ operator|.
 name|getParent
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|parent
-operator|==
-literal|null
-condition|)
-return|return;
 comment|// Store overridden definitions to Preferences.
 name|Preferences
 name|pre
@@ -5535,50 +5499,44 @@ name|keySet
 argument_list|()
 control|)
 block|{
-if|if
-condition|(
-operator|!
-operator|(
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+name|value
+init|=
 name|pattern
 operator|.
 name|get
 argument_list|(
 name|s
 argument_list|)
-operator|)
-operator|.
-name|equals
-argument_list|(
-name|parent
-operator|.
-name|get
-argument_list|(
-name|s
-argument_list|)
-argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|value
+operator|!=
+literal|null
 condition|)
+block|{
+comment|// no default value
+comment|// the first entry in the array is the full pattern
+comment|// see net.sf.jabref.labelPattern.LabelPatternUtil.split(String)
 name|pre
 operator|.
 name|put
 argument_list|(
 name|s
 argument_list|,
-name|pattern
-operator|.
-name|getValue
-argument_list|(
-name|s
-argument_list|)
+name|value
 operator|.
 name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|restoreKeyBindings ()

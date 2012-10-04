@@ -1145,11 +1145,14 @@ name|LabelPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|Globals
+name|JabRef
 operator|.
-name|prefs
+name|jrf
 operator|.
-name|getKeyPattern
+name|basePanel
+argument_list|()
+operator|.
+name|metaData
 argument_list|()
 argument_list|,
 name|JabRef

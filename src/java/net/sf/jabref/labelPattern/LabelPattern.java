@@ -56,6 +56,16 @@ name|String
 argument_list|>
 argument_list|>
 block|{
+DECL|field|defaultPattern
+specifier|private
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+name|defaultPattern
+init|=
+literal|null
+decl_stmt|;
 comment|/**      * The parent of this LabelPattern.      */
 DECL|field|parent
 specifier|protected
@@ -195,7 +205,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Gets an object for a desired label from this LabelPattern or one of it's      * parents. This method first tries to obtain the object from this      * LabelPattern via the<code>get</code> method of<code>Hashtable</code>.      * If this fails, we try the parent.      *       * @param key      *            a<code>String</code>      * @return the object for the given key      * @throws NullPointerException      */
+comment|/**      * Gets an object for a desired label from this LabelPattern or one of it's      * parents. This method first tries to obtain the object from this      * LabelPattern via the<code>get</code> method of<code>Hashtable</code>.      * If this fails, we try the default.<br />      * If that fails, we try the parent.<br />      * If that fails, we return the DEFAULT_LABELPATTERN<br />      *       * @param key a<code>String</code>      * @return the list of Strings for the given key      */
 DECL|method|getValue (String key)
 specifier|public
 specifier|final
@@ -220,8 +230,6 @@ argument_list|(
 name|key
 argument_list|)
 decl_stmt|;
-comment|// throws the
-comment|// NullPointerException
 comment|// Test to see if we found anything
 if|if
 condition|(
@@ -230,6 +238,20 @@ operator|==
 literal|null
 condition|)
 block|{
+comment|// check default value
+name|result
+operator|=
+name|getDefaultValue
+argument_list|()
+expr_stmt|;
+if|if
+condition|(
+name|result
+operator|==
+literal|null
+condition|)
+block|{
+comment|// no default value, ask parent
 if|if
 condition|(
 name|parent
@@ -246,20 +268,19 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
+comment|// parent will definitely return something != null
 block|}
-if|if
-condition|(
-name|result
-operator|==
-literal|null
-condition|)
+else|else
 block|{
-comment|// Not found - return the default value
+comment|// we are the "last" parent
+comment|// we don't have anything left
+comment|// return the global default pattern
 return|return
 name|LabelPatternUtil
 operator|.
 name|DEFAULT_LABELPATTERN
 return|;
+block|}
 block|}
 block|}
 return|return
@@ -290,6 +311,52 @@ name|_obj
 operator|==
 literal|null
 return|;
+block|}
+comment|/**      * This method is called "...Value" to be in line with the other methods      * @return      */
+DECL|method|getDefaultValue ()
+specifier|public
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+name|getDefaultValue
+parameter_list|()
+block|{
+return|return
+name|this
+operator|.
+name|defaultPattern
+return|;
+block|}
+comment|/**      * Sets the DEFAULT PATTERN for this label pattern      * @param pattern the pattern to store      */
+DECL|method|setDefaultValue (String labelPattern)
+specifier|public
+name|void
+name|setDefaultValue
+parameter_list|(
+name|String
+name|labelPattern
+parameter_list|)
+block|{
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+name|split
+init|=
+name|LabelPatternUtil
+operator|.
+name|split
+argument_list|(
+name|labelPattern
+argument_list|)
+decl_stmt|;
+name|this
+operator|.
+name|defaultPattern
+operator|=
+name|split
+expr_stmt|;
 block|}
 block|}
 end_class

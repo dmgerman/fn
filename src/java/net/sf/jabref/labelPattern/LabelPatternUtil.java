@@ -153,7 +153,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * This method takes a string of the form [field1]spacer[field2]spacer[field3]...,      * where the fields are the (required) fields of a BibTex entry. The string is split      * into fields and spacers by recognizing the [ and ].      *      * @param labelPattern a<code>String</code>      * @return an<code>ArrayList</code> The first item of the list      * is a string representation of the key pattern (the parameter),      * the second item is the spacer character (a<code>String</code>).      */
+comment|/**      * This method takes a string of the form [field1]spacer[field2]spacer[field3]...,      * where the fields are the (required) fields of a BibTex entry. The string is split      * into fields and spacers by recognizing the [ and ].      *      * @param labelPattern a<code>String</code>      * @return an<code>ArrayList</code> The first item of the list      * is a string representation of the key pattern (the parameter),      * the remaining items are the fields      */
 DECL|method|split (String labelPattern)
 specifier|public
 specifier|static
@@ -227,15 +227,15 @@ name|_alist
 return|;
 comment|/*        // Regular expresion for identifying the fields        Pattern pi = Pattern.compile("\\[\\w*\\]");        // Regular expresion for identifying the spacer        Pattern ps = Pattern.compile("\\].()*\\[");         // The matcher for the field        Matcher mi = pi.matcher(labelPattern);        // The matcher for the spacer char        Matcher ms = ps.matcher(labelPattern);         // Before we do anything, we add the parameter to the ArrayLIst        _alist.add(labelPattern);         // If we can find the spacer character        if(ms.find()){      String t_spacer = ms.group();       // Remove the `]' and `[' at the ends       // We cant imagine a spacer of omre than one character.       t_spacer = t_spacer.substring(1,2);       _alist.add(t_spacer);        }         while(mi.find()){      // Get the matched string      String t_str = mi.group();       int _sindex = 1;       int _eindex = t_str.length() -1;       // Remove the `[' and `]' at the ends       t_str = t_str.substring(_sindex, _eindex);      _alist.add(t_str);        }         return _alist;*/
 block|}
-comment|/**      * Generates a BibTeX label according to the pattern for a given entry type, and      * returns the<code>Bibtexentry</code> with the unique label.      *       * The given database is used to avoid duplicate keys.      *       * @param table a<code>LabelPattern</code>      * @param database a<code>BibtexDatabase</code>      * @param _entry a<code>BibtexEntry</code>      * @return modified Bibtexentry      */
-DECL|method|makeLabel (LabelPattern table, BibtexDatabase database, BibtexEntry _entry)
+comment|/**      * Generates a BibTeX label according to the pattern for a given entry type, and      * returns the<code>Bibtexentry</code> with the unique label.      *       * The given database is used to avoid duplicate keys.      *       * @param database a<code>BibtexDatabase</code>      * @param _entry a<code>BibtexEntry</code>      * @return modified Bibtexentry      */
+DECL|method|makeLabel (MetaData metaData, BibtexDatabase database, BibtexEntry _entry)
 specifier|public
 specifier|static
 name|BibtexEntry
 name|makeLabel
 parameter_list|(
-name|LabelPattern
-name|table
+name|MetaData
+name|metaData
 parameter_list|,
 name|BibtexDatabase
 name|database
@@ -293,7 +293,10 @@ decl_stmt|;
 comment|// Get the arrayList corresponding to the type
 name|_al
 operator|=
-name|table
+name|metaData
+operator|.
+name|getLabelPattern
+argument_list|()
 operator|.
 name|getValue
 argument_list|(

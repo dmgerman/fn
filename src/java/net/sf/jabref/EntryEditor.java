@@ -7431,10 +7431,9 @@ name|LabelPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|prefs
+name|panel
 operator|.
-name|getKeyPattern
-argument_list|()
+name|metaData
 argument_list|,
 name|panel
 operator|.

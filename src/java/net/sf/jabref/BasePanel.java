@@ -4477,12 +4477,7 @@ name|LabelPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getKeyPattern
-argument_list|()
+name|metaData
 argument_list|,
 name|database
 argument_list|,
@@ -12215,9 +12210,15 @@ argument_list|()
 operator|.
 name|startsWith
 argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Saved database"
 argument_list|)
+argument_list|)
 condition|)
+empty_stmt|;
 name|frame
 operator|.
 name|output
@@ -13023,12 +13024,7 @@ name|LabelPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getKeyPattern
-argument_list|()
+name|metaData
 argument_list|,
 name|database
 argument_list|,

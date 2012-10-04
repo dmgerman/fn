@@ -1240,11 +1240,9 @@ name|LabelPatternUtil
 operator|.
 name|makeLabel
 argument_list|(
-name|Globals
+name|bibtexResult
 operator|.
-name|prefs
-operator|.
-name|getKeyPattern
+name|getMetaData
 argument_list|()
 argument_list|,
 name|toAddTo
