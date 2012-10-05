@@ -950,6 +950,17 @@ name|getPrintAction
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|menu
+operator|.
+name|add
+argument_list|(
+name|panel
+operator|.
+name|frame
+operator|.
+name|switchPreview
+argument_list|)
+expr_stmt|;
 return|return
 name|menu
 return|;
