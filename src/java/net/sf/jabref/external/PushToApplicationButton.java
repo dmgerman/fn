@@ -26,7 +26,7 @@ name|forms
 operator|.
 name|builder
 operator|.
-name|ButtonBarBuilder
+name|ButtonBarBuilder2
 import|;
 end_import
 
@@ -520,6 +520,15 @@ argument_list|(
 name|OpenOfficePanel
 operator|.
 name|getInstance
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|applications
+operator|.
+name|add
+argument_list|(
+operator|new
+name|PushToTeXstudio
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1261,11 +1270,11 @@ operator|.
 name|CENTER
 argument_list|)
 expr_stmt|;
-name|ButtonBarBuilder
+name|ButtonBarBuilder2
 name|bb
 init|=
 operator|new
-name|ButtonBarBuilder
+name|ButtonBarBuilder2
 argument_list|()
 decl_stmt|;
 name|JButton
@@ -1303,14 +1312,14 @@ argument_list|()
 expr_stmt|;
 name|bb
 operator|.
-name|addGridded
+name|addButton
 argument_list|(
 name|ok
 argument_list|)
 expr_stmt|;
 name|bb
 operator|.
-name|addGridded
+name|addButton
 argument_list|(
 name|cancel
 argument_list|)

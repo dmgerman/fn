@@ -947,7 +947,32 @@ operator|)
 condition|)
 block|{
 comment|// No file type was recognized. Try to find a usable file type based
-comment|// on the extension:
+comment|// on mime type:
+name|type
+operator|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getExternalFileTypeByMimeType
+argument_list|(
+name|getElementIfAvailable
+argument_list|(
+name|contents
+argument_list|,
+literal|2
+argument_list|)
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|type
+operator|==
+literal|null
+condition|)
+block|{
+comment|// No type could be found from mime type on the extension:
+comment|//System.out.println("Not found by mime: '"+getElementIfAvailable(contents, 2));
 name|ExternalFileType
 name|typeGuess
 init|=
@@ -1027,6 +1052,7 @@ name|type
 operator|=
 name|typeGuess
 expr_stmt|;
+block|}
 block|}
 return|return
 operator|new

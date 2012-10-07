@@ -2757,7 +2757,11 @@ operator|.
 name|getVisibleAmount
 argument_list|()
 operator|)
+operator|&&
+operator|!
+name|showingFloatSearch
 condition|)
+block|{
 name|scrollToCenter
 argument_list|(
 name|row
@@ -2765,6 +2769,7 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|scrollToCenter (int rowIndex, int vColIndex)
 specifier|public

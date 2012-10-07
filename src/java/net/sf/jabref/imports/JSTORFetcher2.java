@@ -190,6 +190,15 @@ name|JSTORFetcher2
 implements|implements
 name|EntryFetcher
 block|{
+DECL|field|CANCELLED
+specifier|protected
+specifier|static
+specifier|final
+name|String
+name|CANCELLED
+init|=
+literal|"__CANCELLED__"
+decl_stmt|;
 DECL|field|MAX_PAGES_TO_LOAD
 specifier|protected
 specifier|static
@@ -735,6 +744,27 @@ literal|null
 operator|)
 condition|)
 block|{
+comment|// If user has cancelled the import, return null to signal this:
+if|if
+condition|(
+operator|(
+name|count
+operator|==
+literal|1
+operator|)
+operator|&&
+operator|(
+name|nextPage
+operator|.
+name|equals
+argument_list|(
+name|CANCELLED
+argument_list|)
+operator|)
+condition|)
+return|return
+literal|null
+return|;
 comment|//System.out.println("JSTORFetcher2 getCitations numberofrefs=" + numberOfRefs[0]);
 comment|//System.out.println("JSTORFetcher2 getCitations numberofrefs=" + " refsRequested=" + numberOfRefs[1]);
 name|refsRequested
@@ -1009,7 +1039,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
-literal|null
+name|CANCELLED
 return|;
 block|}
 try|try

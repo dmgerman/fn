@@ -1792,6 +1792,12 @@ name|c
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|braces_level
+operator|==
+literal|0
+condition|)
 name|token_case
 operator|=
 name|Character
@@ -1800,6 +1806,14 @@ name|isUpperCase
 argument_list|(
 name|c
 argument_list|)
+expr_stmt|;
+else|else
+comment|// If this is a particle in braces, always treat it as if it starts with
+comment|// an upper case letter. Otherwise a name such as "{van den Bergen}, Hans"
+comment|// will not yield a proper last name:
+name|token_case
+operator|=
+literal|true
 expr_stmt|;
 name|first_letter_is_found
 operator|=

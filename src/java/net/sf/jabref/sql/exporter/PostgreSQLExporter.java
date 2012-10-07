@@ -185,7 +185,7 @@ name|createJDBCurl
 argument_list|(
 name|dbstrings
 argument_list|,
-literal|false
+literal|true
 argument_list|)
 decl_stmt|;
 name|String
@@ -399,7 +399,7 @@ literal|"database_id SERIAL NOT NULL, \n"
 operator|+
 literal|"database_name VARCHAR(64) NOT NULL, \n"
 operator|+
-literal|"md5_path VARCHAR(32) NOT NULL UNIQUE, \n"
+literal|"md5_path VARCHAR(32) NOT NULL, \n"
 operator|+
 literal|"PRIMARY KEY (database_id)\n );')"
 argument_list|)

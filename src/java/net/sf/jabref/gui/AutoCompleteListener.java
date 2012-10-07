@@ -1540,10 +1540,54 @@ argument_list|()
 operator|<
 literal|2
 condition|)
+block|{
+comment|// User typed the last character of the autocompleted word
+comment|// We have to replace the automcompletion word by the typed word.
+comment|// This helps if the user presses "space" after the completion
+comment|// "space" indicates that the user does NOT want the autocompletion,
+comment|// but the typed word
+name|String
+name|text
+init|=
+name|comp
+operator|.
+name|getText
+argument_list|()
+decl_stmt|;
+name|comp
+operator|.
+name|setText
+argument_list|(
+name|text
+operator|.
+name|substring
+argument_list|(
+literal|0
+argument_list|,
+name|lastCaretPosition
+operator|-
+name|lastBeginning
+operator|.
+name|length
+argument_list|()
+argument_list|)
+operator|+
+name|lastBeginning
+operator|+
+name|text
+operator|.
+name|substring
+argument_list|(
+name|lastCaretPosition
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|// there is no selected text, therefore we are not updating the selection
 name|toSetIn
 operator|=
 literal|null
 expr_stmt|;
+block|}
 return|return;
 block|}
 block|}

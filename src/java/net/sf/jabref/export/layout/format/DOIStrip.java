@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -44,12 +44,12 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|Util
 import|;
 end_import
 
 begin_comment
-comment|/**  * Will strip any prefixes from the DOI field, in order to output only the DOI number  *   * @author mark-schenk  *  */
+comment|/**  * Will strip any prefixes from the DOI field, in order to output only the DOI number  *   * @author mark-schenk   * @author olly98  *  */
 end_comment
 
 begin_class
@@ -80,101 +80,17 @@ return|return
 literal|null
 return|;
 block|}
-name|fieldText
-operator|=
-name|fieldText
-operator|.
-name|trim
-argument_list|()
-expr_stmt|;
-if|if
-condition|(
-name|fieldText
-operator|.
-name|length
-argument_list|()
-operator|==
-literal|0
-condition|)
+else|else
 block|{
 return|return
+name|Util
+operator|.
+name|getDOI
+argument_list|(
 name|fieldText
+argument_list|)
 return|;
 block|}
-comment|// If starts with '10.' it's fine
-if|if
-condition|(
-name|fieldText
-operator|.
-name|startsWith
-argument_list|(
-literal|"10."
-argument_list|)
-condition|)
-block|{
-return|return
-name|fieldText
-return|;
-block|}
-comment|// Remove possible 'doi:'
-if|if
-condition|(
-name|fieldText
-operator|.
-name|matches
-argument_list|(
-literal|"^doi:/*.*"
-argument_list|)
-condition|)
-block|{
-name|fieldText
-operator|=
-name|fieldText
-operator|.
-name|replaceFirst
-argument_list|(
-literal|"^doi:/*"
-argument_list|,
-literal|""
-argument_list|)
-expr_stmt|;
-return|return
-name|fieldText
-return|;
-block|}
-comment|// Remove possible 'http://dx.doi.org/' prefix
-if|if
-condition|(
-name|fieldText
-operator|.
-name|startsWith
-argument_list|(
-name|Globals
-operator|.
-name|DOI_LOOKUP_PREFIX
-argument_list|)
-condition|)
-block|{
-name|fieldText
-operator|=
-name|fieldText
-operator|.
-name|replaceFirst
-argument_list|(
-name|Globals
-operator|.
-name|DOI_LOOKUP_PREFIX
-argument_list|,
-literal|""
-argument_list|)
-expr_stmt|;
-return|return
-name|fieldText
-return|;
-block|}
-return|return
-name|fieldText
-return|;
 block|}
 block|}
 end_class

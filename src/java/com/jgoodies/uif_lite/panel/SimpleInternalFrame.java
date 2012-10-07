@@ -849,7 +849,7 @@ if|if
 condition|(
 name|LookUtils
 operator|.
-name|IS_LAF_WINDOWS_XP_ENABLED
+name|IS_OS_WINDOWS_MODERN
 condition|)
 name|c
 operator|=

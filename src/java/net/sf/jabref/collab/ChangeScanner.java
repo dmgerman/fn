@@ -403,16 +403,10 @@ argument_list|()
 expr_stmt|;
 name|mdInTemp
 operator|=
-operator|new
-name|MetaData
-argument_list|(
 name|pr
 operator|.
 name|getMetaData
 argument_list|()
-argument_list|,
-name|inTemp
-argument_list|)
 expr_stmt|;
 comment|// Parse the modified file.
 name|pr
@@ -444,16 +438,10 @@ decl_stmt|;
 name|MetaData
 name|mdOnDisk
 init|=
-operator|new
-name|MetaData
-argument_list|(
 name|pr
 operator|.
 name|getMetaData
 argument_list|()
-argument_list|,
-name|onDisk
-argument_list|)
 decl_stmt|;
 comment|// Sort both databases according to a common sort key.
 name|EntryComparator

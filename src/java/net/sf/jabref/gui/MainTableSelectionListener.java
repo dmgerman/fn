@@ -591,6 +591,8 @@ name|get
 argument_list|(
 literal|"preview0"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 block|,
 operator|new
@@ -618,6 +620,8 @@ name|get
 argument_list|(
 literal|"preview1"
 argument_list|)
+argument_list|,
+literal|true
 argument_list|)
 block|}
 expr_stmt|;

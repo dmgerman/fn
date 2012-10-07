@@ -370,20 +370,6 @@ name|jabref
 operator|.
 name|labelPattern
 operator|.
-name|DefaultLabelPatterns
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|labelPattern
-operator|.
 name|LabelPattern
 import|;
 end_import
@@ -461,6 +447,11 @@ DECL|field|EDIT_GROUP_MEMBERSHIP_MODE
 name|EDIT_GROUP_MEMBERSHIP_MODE
 init|=
 literal|"groupEditGroupMembershipMode"
+decl_stmt|,
+DECL|field|PDF_PREVIEW
+name|PDF_PREVIEW
+init|=
+literal|"pdfPreview"
 decl_stmt|,
 DECL|field|SHORTEST_TO_COMPLETE
 name|SHORTEST_TO_COMPLETE
@@ -594,17 +585,6 @@ argument_list|>
 argument_list|(
 literal|5
 argument_list|)
-decl_stmt|;
-DECL|field|KEY_PATTERN
-specifier|private
-specifier|static
-specifier|final
-name|LabelPattern
-name|KEY_PATTERN
-init|=
-operator|new
-name|DefaultLabelPatterns
-argument_list|()
 decl_stmt|;
 DECL|field|keyPattern
 specifier|private
@@ -984,6 +964,17 @@ literal|"-batch -eval"
 argument_list|)
 expr_stmt|;
 block|}
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|PDF_PREVIEW
+argument_list|,
+name|Boolean
+operator|.
+name|FALSE
+argument_list|)
+expr_stmt|;
 name|defaults
 operator|.
 name|put
@@ -2770,9 +2761,9 @@ literal|"<b><i>\\bibtextype</i><a name=\"\\bibtexkey\">\\begin{bibtexkey} (\\bib
 operator|+
 literal|"\\end{bibtexkey}</b><br>__NEWLINE__"
 operator|+
-literal|"\\begin{author} \\format[HTMLChars,AuthorAbbreviator,AuthorAndsReplacer]{\\author}<BR>\\end{author}__NEWLINE__"
+literal|"\\begin{author} \\format[Authors(LastFirst,Initials,Semicolon,Amp),HTMLChars]{\\author}<BR>\\end{author}__NEWLINE__"
 operator|+
-literal|"\\begin{editor} \\format[HTMLChars,AuthorAbbreviator,AuthorAndsReplacer]{\\editor} "
+literal|"\\begin{editor} \\format[Authors(LastFirst,Initials,Semicolon,Amp),HTMLChars]{\\editor} "
 operator|+
 literal|"<i>(\\format[IfPlural(Eds.,Ed.)]{\\editor})</i><BR>\\end{editor}__NEWLINE__"
 operator|+
@@ -2814,9 +2805,9 @@ literal|"<b><i>\\bibtextype</i><a name=\"\\bibtexkey\">\\begin{bibtexkey} (\\bib
 operator|+
 literal|"\\end{bibtexkey}</b><br>__NEWLINE__"
 operator|+
-literal|"\\begin{author} \\format[HTMLChars,AuthorAbbreviator,AuthorAndsReplacer]{\\author}<BR>\\end{author}__NEWLINE__"
+literal|"\\begin{author} \\format[Authors(LastFirst,Initials,Semicolon,Amp),HTMLChars]{\\author}<BR>\\end{author}__NEWLINE__"
 operator|+
-literal|"\\begin{editor} \\format[HTMLChars,AuthorAbbreviator,AuthorAndsReplacer]{\\editor} "
+literal|"\\begin{editor} \\format[Authors(LastFirst,Initials,Semicolon,Amp),HTMLChars]{\\editor} "
 operator|+
 literal|"<i>(\\format[IfPlural(Eds.,Ed.)]{\\editor})</i><BR>\\end{editor}__NEWLINE__"
 operator|+
@@ -3573,6 +3564,13 @@ operator|+
 name|get
 argument_list|(
 literal|"defaultOwner"
+argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\\\"
+argument_list|,
+literal|"\\\\\\\\"
 argument_list|)
 operator|+
 literal|":(\\d+)\\]"
@@ -5187,6 +5185,40 @@ return|return
 name|defKeyBinds
 return|;
 block|}
+comment|/**      * Clear all preferences.      * @throws BackingStoreException      */
+DECL|method|clear ()
+specifier|public
+name|void
+name|clear
+parameter_list|()
+throws|throws
+name|BackingStoreException
+block|{
+name|prefs
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|clear (String key)
+specifier|public
+name|void
+name|clear
+parameter_list|(
+name|String
+name|key
+parameter_list|)
+throws|throws
+name|BackingStoreException
+block|{
+name|prefs
+operator|.
+name|remove
+argument_list|(
+name|key
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Calling this method will write all preferences into the preference store.      */
 DECL|method|flush ()
 specifier|public
@@ -5386,6 +5418,7 @@ name|newBindings
 expr_stmt|;
 block|}
 block|}
+comment|/**          * Fetches key patterns from preferences          * Not cached          *           * @return LabelPattern containing all keys. Returned LabelPattern has no parent          */
 DECL|method|getKeyPattern ()
 specifier|public
 name|LabelPattern
@@ -5396,9 +5429,7 @@ name|keyPattern
 operator|=
 operator|new
 name|LabelPattern
-argument_list|(
-name|KEY_PATTERN
-argument_list|)
+argument_list|()
 expr_stmt|;
 name|Preferences
 name|pre
@@ -5492,14 +5523,11 @@ literal|"BackingStoreException in JabRefPreferences.getKeyPattern"
 argument_list|)
 expr_stmt|;
 block|}
-comment|///
-comment|//keyPattern.addLabelPattern("article", "[author][year]");
-comment|//putKeyPattern(keyPattern);
-comment|///
 return|return
 name|keyPattern
 return|;
 block|}
+comment|/**          * Adds the given key pattern to the preferences          *           * @param pattern the pattern to store          */
 DECL|method|putKeyPattern (LabelPattern pattern)
 specifier|public
 name|void
@@ -5521,13 +5549,6 @@ operator|.
 name|getParent
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|parent
-operator|==
-literal|null
-condition|)
-return|return;
 comment|// Store overridden definitions to Preferences.
 name|Preferences
 name|pre
@@ -5583,50 +5604,44 @@ name|keySet
 argument_list|()
 control|)
 block|{
-if|if
-condition|(
-operator|!
-operator|(
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
+name|value
+init|=
 name|pattern
 operator|.
 name|get
 argument_list|(
 name|s
 argument_list|)
-operator|)
-operator|.
-name|equals
-argument_list|(
-name|parent
-operator|.
-name|get
-argument_list|(
-name|s
-argument_list|)
-argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|value
+operator|!=
+literal|null
 condition|)
+block|{
+comment|// no default value
+comment|// the first entry in the array is the full pattern
+comment|// see net.sf.jabref.labelPattern.LabelPatternUtil.split(String)
 name|pre
 operator|.
 name|put
 argument_list|(
 name|s
 argument_list|,
-name|pattern
-operator|.
-name|getValue
-argument_list|(
-name|s
-argument_list|)
+name|value
 operator|.
 name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|restoreKeyBindings ()
@@ -6540,6 +6555,17 @@ argument_list|(
 literal|"Import into new database"
 argument_list|,
 literal|"ctrl alt I"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+name|FindUnlinkedFilesDialog
+operator|.
+name|ACTION_COMMAND
+argument_list|,
+literal|""
 argument_list|)
 expr_stmt|;
 name|defKeyBinds
