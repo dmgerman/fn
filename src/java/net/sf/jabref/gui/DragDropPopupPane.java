@@ -116,6 +116,18 @@ name|Globals
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefFrame
+import|;
+end_import
+
 begin_comment
 comment|/**  * Adds popup functionality to DragDropPane   *   * Code inspired by http://forums.devx.com/showthread.php?t=151270  */
 end_comment
@@ -135,24 +147,13 @@ name|popupMenu
 init|=
 literal|null
 decl_stmt|;
-DECL|field|databasePropertiesAction
-specifier|private
-name|AbstractAction
-name|databasePropertiesAction
-init|=
-literal|null
-decl_stmt|;
-DECL|field|bibtexKeyPatternAction
-specifier|private
-name|AbstractAction
-name|bibtexKeyPatternAction
-init|=
-literal|null
-decl_stmt|;
-DECL|method|DragDropPopupPane (AbstractAction databasePropertiesAction, AbstractAction bibtexKeyPatternAction)
+DECL|method|DragDropPopupPane (AbstractAction manageSelectorsAction, AbstractAction databasePropertiesAction, AbstractAction bibtexKeyPatternAction)
 specifier|public
 name|DragDropPopupPane
 parameter_list|(
+name|AbstractAction
+name|manageSelectorsAction
+parameter_list|,
 name|AbstractAction
 name|databasePropertiesAction
 parameter_list|,
@@ -162,18 +163,6 @@ parameter_list|)
 block|{
 name|super
 argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|databasePropertiesAction
-operator|=
-name|databasePropertiesAction
-expr_stmt|;
-name|this
-operator|.
-name|bibtexKeyPatternAction
-operator|=
-name|bibtexKeyPatternAction
 expr_stmt|;
 name|addMouseListener
 argument_list|(
@@ -205,14 +194,29 @@ block|}
 argument_list|)
 expr_stmt|;
 name|initPopupMenu
-argument_list|()
+argument_list|(
+name|manageSelectorsAction
+argument_list|,
+name|databasePropertiesAction
+argument_list|,
+name|bibtexKeyPatternAction
+argument_list|)
 expr_stmt|;
 block|}
-DECL|method|initPopupMenu ()
+DECL|method|initPopupMenu (AbstractAction manageSelectorsAction, AbstractAction databasePropertiesAction, AbstractAction bibtexKeyPatternAction)
 specifier|private
 name|void
 name|initPopupMenu
-parameter_list|()
+parameter_list|(
+name|AbstractAction
+name|manageSelectorsAction
+parameter_list|,
+name|AbstractAction
+name|databasePropertiesAction
+parameter_list|,
+name|AbstractAction
+name|bibtexKeyPatternAction
+parameter_list|)
 block|{
 name|popupMenu
 operator|=
@@ -274,6 +278,34 @@ operator|.
 name|add
 argument_list|(
 name|bibtexKeyPatternBtn
+argument_list|)
+expr_stmt|;
+name|JMenuItem
+name|manageSelectorsBtn
+init|=
+operator|new
+name|JMenuItem
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Manage content selectors"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|manageSelectorsBtn
+operator|.
+name|addActionListener
+argument_list|(
+name|manageSelectorsAction
+argument_list|)
+expr_stmt|;
+name|popupMenu
+operator|.
+name|add
+argument_list|(
+name|manageSelectorsBtn
 argument_list|)
 expr_stmt|;
 name|JMenuItem
@@ -374,15 +406,6 @@ literal|1
 condition|)
 block|{
 comment|// if is right-click
-if|if
-condition|(
-name|popupMenu
-operator|==
-literal|null
-condition|)
-name|initPopupMenu
-argument_list|()
-expr_stmt|;
 comment|// display popup near location of mouse click
 name|popupMenu
 operator|.

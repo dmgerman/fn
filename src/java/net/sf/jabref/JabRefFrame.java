@@ -2885,6 +2885,8 @@ operator|=
 operator|new
 name|DragDropPopupPane
 argument_list|(
+name|manageSelectors
+argument_list|,
 name|databaseProperties
 argument_list|,
 name|bibtexKeyPattern
