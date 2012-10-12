@@ -1094,7 +1094,7 @@ comment|// will have been inserted
 comment|// to prevent too long lines when the file was
 comment|// saved, and are not part of the data.
 block|}
-comment|/** 						 * A custom entry type can also be stored in a 						 *  						 * @comment: 						 */
+elseif|else
 if|if
 condition|(
 name|comment
@@ -1129,6 +1129,8 @@ name|ENTRYTYPE_FLAG
 argument_list|)
 condition|)
 block|{
+comment|// A custom entry type can also be stored in a
+comment|// "@comment"
 name|CustomEntryType
 name|typ
 init|=
@@ -1152,6 +1154,27 @@ name|toLowerCase
 argument_list|()
 argument_list|,
 name|typ
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// FIXME: user comments are simply dropped
+comment|// at least, we log that we ignored the comment
+name|Globals
+operator|.
+name|logger
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Dropped comment from database"
+argument_list|)
+operator|+
+literal|":"
+operator|+
+name|comment
 argument_list|)
 expr_stmt|;
 block|}
