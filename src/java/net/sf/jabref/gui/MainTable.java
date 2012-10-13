@@ -1431,7 +1431,7 @@ name|i
 operator|++
 control|)
 block|{
-comment|// Check if the Column is a RankingColumn
+comment|// Check if the Column is an extended RankingColumn (and not a compact-ranking column)
 comment|// If this is the case, set a certain Column-width,
 comment|// because the RankingIconColumn needs some more width
 if|if
@@ -1441,6 +1441,18 @@ operator|.
 name|isRankingColumn
 argument_list|(
 name|i
+argument_list|)
+operator|&&
+operator|!
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|SpecialFieldsUtils
+operator|.
+name|PREF_RANKING_COMPACT
 argument_list|)
 condition|)
 block|{

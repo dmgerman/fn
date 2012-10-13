@@ -56,18 +56,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibtexDatabase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|BibtexEntry
 import|;
 end_import
@@ -158,7 +146,7 @@ name|PREF_SPECIALFIELDSENABLED_DEFAULT
 init|=
 name|Boolean
 operator|.
-name|TRUE
+name|FALSE
 decl_stmt|;
 DECL|field|PREF_SHOWCOLUMN_RANKING
 specifier|public
@@ -179,6 +167,26 @@ init|=
 name|Boolean
 operator|.
 name|TRUE
+decl_stmt|;
+DECL|field|PREF_RANKING_COMPACT
+specifier|public
+specifier|final
+specifier|static
+name|String
+name|PREF_RANKING_COMPACT
+init|=
+literal|"compactRankingColumn"
+decl_stmt|;
+DECL|field|PREF_RANKING_COMPACT_DEFAULT
+specifier|public
+specifier|final
+specifier|static
+name|Boolean
+name|PREF_RANKING_COMPACT_DEFAULT
+init|=
+name|Boolean
+operator|.
+name|FALSE
 decl_stmt|;
 DECL|field|PREF_SHOWCOLUMN_PRIORITY
 specifier|public
@@ -771,6 +779,7 @@ name|ce
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** 	 * @param fieldName the fieldName 	 * @return an instance of that field. The returned object is a singleton. null is returned if fieldName does not indicate a special field 	 */
 DECL|method|getSpecialFieldInstanceFromFieldName (String fieldName)
 specifier|public
 specifier|static
@@ -858,6 +867,28 @@ return|return
 literal|null
 return|;
 block|}
+block|}
+comment|/** 	 * @param fieldName the name of the field to check 	 * @return true if given field is a special field, false otherwise 	 */
+DECL|method|isSpecialField (String fieldName)
+specifier|public
+specifier|static
+name|boolean
+name|isSpecialField
+parameter_list|(
+name|String
+name|fieldName
+parameter_list|)
+block|{
+return|return
+operator|(
+name|getSpecialFieldInstanceFromFieldName
+argument_list|(
+name|fieldName
+argument_list|)
+operator|!=
+literal|null
+operator|)
+return|;
 block|}
 DECL|method|keywordSyncEnabled ()
 specifier|public
