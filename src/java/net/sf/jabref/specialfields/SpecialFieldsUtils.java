@@ -258,7 +258,7 @@ name|PREF_AUTOSYNCSPECIALFIELDSTOKEYWORDS_DEFAULT
 init|=
 name|Boolean
 operator|.
-name|TRUE
+name|FALSE
 decl_stmt|;
 DECL|field|PREF_SERIALIZESPECIALFIELDS
 specifier|public
@@ -278,7 +278,7 @@ name|PREF_SERIALIZESPECIALFIELDS_DEFAULT
 init|=
 name|Boolean
 operator|.
-name|FALSE
+name|TRUE
 decl_stmt|;
 comment|/****************************************************/
 comment|/** generic treatment                              **/

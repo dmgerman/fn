@@ -2899,7 +2899,7 @@ name|SpecialFieldsUtils
 operator|.
 name|PREF_SHOWCOLUMN_PRIORITY
 argument_list|,
-name|newQualityColumn
+name|newPriorityColumn
 argument_list|)
 expr_stmt|;
 name|_prefs
@@ -2910,7 +2910,7 @@ name|SpecialFieldsUtils
 operator|.
 name|PREF_SHOWCOLUMN_QUALITY
 argument_list|,
-name|newPriorityColumn
+name|newQualityColumn
 argument_list|)
 expr_stmt|;
 name|_prefs
