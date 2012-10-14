@@ -181,13 +181,16 @@ name|String
 name|toSetIn
 init|=
 literal|null
-decl_stmt|,
+decl_stmt|;
 comment|// null indicates that there are no completions available
 DECL|field|lastBeginning
+specifier|protected
+name|String
 name|lastBeginning
 init|=
 literal|null
 decl_stmt|;
+comment|// the letters, the user has typed until know
 DECL|field|lastCaretPosition
 specifier|protected
 name|int
@@ -198,7 +201,7 @@ literal|1
 decl_stmt|;
 DECL|field|lastCompletions
 specifier|protected
-name|Object
+name|String
 index|[]
 name|lastCompletions
 init|=
@@ -323,6 +326,14 @@ operator|.
 name|getSource
 argument_list|()
 decl_stmt|;
+comment|// replace typed characters by characters from completion
+name|lastBeginning
+operator|=
+name|lastCompletions
+index|[
+name|lastShownCompletion
+index|]
+expr_stmt|;
 name|int
 name|end
 init|=
@@ -446,7 +457,6 @@ comment|//        }
 elseif|else
 if|if
 condition|(
-operator|(
 name|e
 operator|.
 name|getKeyChar
@@ -455,34 +465,44 @@ operator|==
 name|KeyEvent
 operator|.
 name|CHAR_UNDEFINED
-operator|)
-operator|&&
-operator|(
-operator|!
-operator|(
-operator|(
-name|e
-operator|.
-name|getModifiers
-argument_list|()
-operator||
-name|KeyEvent
-operator|.
-name|SHIFT_MASK
-operator|)
-operator|==
-name|KeyEvent
-operator|.
-name|SHIFT_MASK
-operator|)
-operator|)
 condition|)
 block|{
-comment|// if no character key is pressed, reset auto completion
-comment|// SHIFT is OK - there is no reset
-name|toSetIn
-operator|=
-literal|null
+if|if
+condition|(
+name|e
+operator|.
+name|getKeyCode
+argument_list|()
+operator|!=
+name|KeyEvent
+operator|.
+name|VK_SHIFT
+condition|)
+block|{
+comment|// shift is OK, everyhting else leads to a reset
+name|resetAutoCompletion
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+name|logger
+operator|.
+name|finest
+argument_list|(
+literal|"special case: shift pressed. No action."
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|logger
+operator|.
+name|finest
+argument_list|(
+literal|"special case: defined character, but not caught above"
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -548,15 +568,10 @@ expr_stmt|;
 name|String
 name|sno
 init|=
-call|(
-name|String
-call|)
-argument_list|(
 name|lastCompletions
 index|[
 name|lastShownCompletion
 index|]
-argument_list|)
 decl_stmt|;
 name|toSetIn
 operator|=
@@ -711,8 +726,8 @@ argument_list|()
 expr_stmt|;
 comment|//System.out.println("ToSetIn: '"+toSetIn+"'");
 block|}
-comment|/**      * If user cancels autocompletion by      *   a) entering another letter than the completed word (and there is no other auto completion)      *   b) space      * the casing of the letters has to be kept      *       * Global variable "lastBeginning" keeps track of typed letters.      * We rely on this variable to reconstruct the text       *       *       */
-DECL|method|setUnmodifiedTypedLetters (JTextComponent comp, boolean lastBeginningContainsTypedCharacter)
+comment|/**      * If user cancels autocompletion by      *   a) entering another letter than the completed word (and there is no other auto completion)      *   b) space      * the casing of the letters has to be kept      *       * Global variable "lastBeginning" keeps track of typed letters.      * We rely on this variable to reconstruct the text       *       * @param wordSeperatorTyped indicates whether the user has typed a white space character or a      */
+DECL|method|setUnmodifiedTypedLetters (JTextComponent comp, boolean lastBeginningContainsTypedCharacter, boolean wordSeperatorTyped)
 specifier|private
 name|void
 name|setUnmodifiedTypedLetters
@@ -722,8 +737,40 @@ name|comp
 parameter_list|,
 name|boolean
 name|lastBeginningContainsTypedCharacter
+parameter_list|,
+name|boolean
+name|wordSeperatorTyped
 parameter_list|)
 block|{
+if|if
+condition|(
+name|lastBeginning
+operator|==
+literal|null
+condition|)
+block|{
+name|logger
+operator|.
+name|finest
+argument_list|(
+literal|"no last beginning"
+argument_list|)
+expr_stmt|;
+comment|// There was no previous input (if the user typed a word, where no autocompletion is available)
+comment|// Thus, there is nothing to replace
+return|return;
+block|}
+name|logger
+operator|.
+name|finest
+argument_list|(
+literal|"lastBeginning:>"
+operator|+
+name|lastBeginning
+operator|+
+literal|"<"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|comp
@@ -732,25 +779,45 @@ name|getSelectedText
 argument_list|()
 operator|==
 literal|null
-operator|||
-name|lastBeginning
-operator|==
-literal|null
 condition|)
 block|{
-comment|// if there is no selection, then there is nothing to replace
-return|return;
-block|}
+comment|// if there is no selection
+comment|// the user has typed the complete word, but possibly with a different casing
+comment|// we need a replacement
+if|if
+condition|(
+name|wordSeperatorTyped
+condition|)
+block|{
 name|logger
 operator|.
 name|finest
 argument_list|(
-literal|"selected: "
+literal|"replacing complete word"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+comment|// if user did not press a white space character (space, ...),
+comment|// then we do not do anything
+return|return;
+block|}
+block|}
+else|else
+block|{
+name|logger
+operator|.
+name|finest
+argument_list|(
+literal|"selected text "
 operator|+
 name|comp
 operator|.
 name|getSelectedText
 argument_list|()
+operator|+
+literal|" will be removed"
 argument_list|)
 expr_stmt|;
 comment|// remove completion suggestion
@@ -761,6 +828,7 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 name|lastCaretPosition
 operator|=
 name|comp
@@ -873,7 +941,7 @@ operator|.
 name|getSource
 argument_list|()
 decl_stmt|;
-name|Object
+name|String
 index|[]
 name|completed
 init|=
@@ -1018,20 +1086,15 @@ expr_stmt|;
 name|String
 name|sno
 init|=
-call|(
-name|String
-call|)
-argument_list|(
 name|completed
 index|[
 name|no
 index|]
-argument_list|)
 decl_stmt|;
 comment|// these two lines obey the user's input
 comment|//toSetIn = Character.toString(ch);
 comment|//toSetIn = toSetIn.concat(sno.substring(cWord.length()));
-comment|// but we obey the completion
+comment|// BUT we obey the completion
 name|toSetIn
 operator|=
 name|sno
@@ -1159,6 +1222,17 @@ operator|.
 name|getKeyChar
 argument_list|()
 decl_stmt|;
+name|logger
+operator|.
+name|finest
+argument_list|(
+literal|"Appending>"
+operator|+
+name|ch
+operator|+
+literal|"<"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|cWord
@@ -1255,14 +1329,35 @@ name|SHIFT_MASK
 condition|)
 block|{
 comment|// plain key or SHIFT + key is pressed, no handling of CTRL+key,  META+key, ...
-comment|//if (Character.isLetter(ch) || Character.isDigit(ch)) {
 if|if
 condition|(
-name|ch
-operator|!=
-name|KeyEvent
+name|Character
 operator|.
-name|CHAR_UNDEFINED
+name|isLetter
+argument_list|(
+name|ch
+argument_list|)
+operator|||
+name|Character
+operator|.
+name|isDigit
+argument_list|(
+name|ch
+argument_list|)
+operator|||
+operator|(
+name|Character
+operator|.
+name|isWhitespace
+argument_list|(
+name|ch
+argument_list|)
+operator|&&
+name|completer
+operator|.
+name|isSingleUnitField
+argument_list|()
+operator|)
 condition|)
 block|{
 name|JTextComponent
@@ -1314,43 +1409,6 @@ literal|"<"
 argument_list|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|Character
-operator|.
-name|isWhitespace
-argument_list|(
-name|ch
-argument_list|)
-operator|&&
-operator|!
-name|completer
-operator|.
-name|isSingleUnitField
-argument_list|()
-condition|)
-block|{
-comment|// start a new search if end-of-field is reached
-comment|// replace displayed letters with typed letters
-name|setUnmodifiedTypedLetters
-argument_list|(
-operator|(
-name|JTextComponent
-operator|)
-name|e
-operator|.
-name|getSource
-argument_list|()
-argument_list|,
-literal|false
-argument_list|)
-expr_stmt|;
-name|toSetIn
-operator|=
-literal|null
-expr_stmt|;
-return|return;
-block|}
 comment|// The case-insensitive system is a bit tricky here
 comment|// If keyword is "TODO" and user types "tO", then this is treated as "continue" as the "O" matches the "O"
 comment|// If keyword is "TODO" and user types "To", then this is treated as "discont" as the "o" does NOT match the "O".
@@ -1384,18 +1442,6 @@ operator|)
 condition|)
 block|{
 comment|// User continues on the word that was suggested.
-if|if
-condition|(
-name|logger
-operator|.
-name|isLoggable
-argument_list|(
-name|Level
-operator|.
-name|FINEST
-argument_list|)
-condition|)
-block|{
 name|logger
 operator|.
 name|finest
@@ -1403,7 +1449,6 @@ argument_list|(
 literal|"cont"
 argument_list|)
 expr_stmt|;
-block|}
 name|toSetIn
 operator|=
 name|toSetIn
@@ -1499,7 +1544,7 @@ name|i
 operator|++
 control|)
 block|{
-name|Object
+name|String
 name|lastCompletion
 init|=
 name|lastCompletions
@@ -1510,12 +1555,7 @@ decl_stmt|;
 comment|//System.out.println("Completion["+i+"] = "+lastCompletion);
 if|if
 condition|(
-operator|(
-operator|(
-name|String
-operator|)
 name|lastCompletion
-operator|)
 operator|.
 name|endsWith
 argument_list|(
@@ -1671,7 +1711,7 @@ literal|"<"
 argument_list|)
 expr_stmt|;
 block|}
-name|Object
+name|String
 index|[]
 name|completed
 init|=
@@ -1710,15 +1750,10 @@ expr_stmt|;
 name|String
 name|sno
 init|=
-call|(
-name|String
-call|)
-argument_list|(
 name|completed
 index|[
 literal|0
 index|]
-argument_list|)
 decl_stmt|;
 comment|// toSetIn = string used for autocompletion last time
 comment|// this string has to be removed
@@ -1840,6 +1875,8 @@ argument_list|(
 name|comp
 argument_list|,
 literal|true
+argument_list|,
+literal|false
 argument_list|)
 expr_stmt|;
 name|e
@@ -1854,18 +1891,6 @@ expr_stmt|;
 return|return;
 block|}
 block|}
-if|if
-condition|(
-name|logger
-operator|.
-name|isLoggable
-argument_list|(
-name|Level
-operator|.
-name|FINEST
-argument_list|)
-condition|)
-block|{
 name|logger
 operator|.
 name|finest
@@ -1873,7 +1898,6 @@ argument_list|(
 literal|"case else"
 argument_list|)
 expr_stmt|;
-block|}
 name|comp
 operator|.
 name|replaceSelection
@@ -1901,6 +1925,18 @@ operator|new
 name|StringBuffer
 argument_list|()
 expr_stmt|;
+comment|// only "real characters" end up here
+assert|assert
+operator|(
+operator|!
+name|Character
+operator|.
+name|isISOControl
+argument_list|(
+name|ch
+argument_list|)
+operator|)
+assert|;
 name|currentword
 operator|.
 name|append
@@ -1919,6 +1955,33 @@ return|return;
 block|}
 else|else
 block|{
+if|if
+condition|(
+name|Character
+operator|.
+name|isWhitespace
+argument_list|(
+name|ch
+argument_list|)
+condition|)
+block|{
+assert|assert
+operator|(
+operator|!
+name|completer
+operator|.
+name|isSingleUnitField
+argument_list|()
+operator|)
+assert|;
+name|logger
+operator|.
+name|finest
+argument_list|(
+literal|"whitespace&& !singleUnitField"
+argument_list|)
+expr_stmt|;
+comment|// start a new search if end-of-field is reached
 comment|// replace displayed letters with typed letters
 name|setUnmodifiedTypedLetters
 argument_list|(
@@ -1931,18 +1994,80 @@ name|getSource
 argument_list|()
 argument_list|,
 literal|false
+argument_list|,
+literal|true
 argument_list|)
 expr_stmt|;
+name|resetAutoCompletion
+argument_list|()
+expr_stmt|;
+return|return;
+block|}
+name|logger
+operator|.
+name|finest
+argument_list|(
+literal|"No letter/digit/whitespace or CHAR_UNDEFINED"
+argument_list|)
+expr_stmt|;
+comment|// replace displayed letters with typed letters
+name|setUnmodifiedTypedLetters
+argument_list|(
+operator|(
+name|JTextComponent
+operator|)
+name|e
+operator|.
+name|getSource
+argument_list|()
+argument_list|,
+literal|false
+argument_list|,
+operator|!
+name|Character
+operator|.
+name|isISOControl
+argument_list|(
+name|ch
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|resetAutoCompletion
+argument_list|()
+expr_stmt|;
+return|return;
 block|}
 block|}
+name|resetAutoCompletion
+argument_list|()
+expr_stmt|;
+block|}
+comment|/**      * Resets the auto completion data in a way that no leftovers are there      */
+DECL|method|resetAutoCompletion ()
+specifier|private
+name|void
+name|resetAutoCompletion
+parameter_list|()
+block|{
+name|logger
+operator|.
+name|finest
+argument_list|(
+literal|"Resetting autocompletion"
+argument_list|)
+expr_stmt|;
 name|toSetIn
+operator|=
+literal|null
+expr_stmt|;
+name|lastBeginning
 operator|=
 literal|null
 expr_stmt|;
 block|}
 DECL|method|findCompletions (String beginning, JTextComponent comp)
 specifier|protected
-name|Object
+name|String
 index|[]
 name|findCompletions
 parameter_list|(
