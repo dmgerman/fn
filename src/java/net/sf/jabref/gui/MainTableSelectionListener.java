@@ -1380,6 +1380,17 @@ name|e
 operator|.
 name|isPopupTrigger
 argument_list|()
+operator|||
+operator|(
+name|e
+operator|.
+name|getButton
+argument_list|()
+operator|==
+name|MouseEvent
+operator|.
+name|BUTTON3
+operator|)
 condition|)
 block|{
 if|if

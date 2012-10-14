@@ -257,6 +257,16 @@ name|fileColumn
 decl_stmt|,
 name|arxivColumn
 decl_stmt|;
+DECL|field|showOneLetterHeadingForIconColumns
+specifier|private
+name|JCheckBox
+name|showOneLetterHeadingForIconColumns
+decl_stmt|;
+DECL|field|oldShowOneLetterHeadingForIconColumns
+specifier|private
+name|boolean
+name|oldShowOneLetterHeadingForIconColumns
+decl_stmt|;
 comment|/*** begin: special fields ***/
 DECL|field|specialFieldsEnabled
 DECL|field|rankingColumn
@@ -1060,6 +1070,19 @@ operator|.
 name|EAST
 argument_list|)
 expr_stmt|;
+name|showOneLetterHeadingForIconColumns
+operator|=
+operator|new
+name|JCheckBox
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Show one letter heading for icon columns"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|fileColumn
 operator|=
 operator|new
@@ -1126,8 +1149,6 @@ argument_list|,
 name|GUIGlobals
 operator|.
 name|specialFieldsHelp
-argument_list|,
-literal|"Help on key patterns"
 argument_list|)
 decl_stmt|;
 name|hlb
@@ -1440,7 +1461,7 @@ name|FormLayout
 argument_list|(
 literal|"8dlu, 8dlu, 8cm, 8dlu, left:pref"
 argument_list|,
-literal|"pref, pref, pref, pref, pref, pref, pref, pref, pref"
+literal|"pref, pref, pref, pref, pref, pref, pref, pref, pref, pref"
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1597,7 +1618,7 @@ name|specialTableColumnsBuilder
 operator|.
 name|add
 argument_list|(
-name|hlb
+name|showOneLetterHeadingForIconColumns
 argument_list|,
 name|cc
 operator|.
@@ -1606,6 +1627,24 @@ argument_list|(
 literal|1
 argument_list|,
 literal|9
+argument_list|,
+literal|5
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|specialTableColumnsBuilder
+operator|.
+name|add
+argument_list|(
+name|hlb
+argument_list|,
+name|cc
+operator|.
+name|xyw
+argument_list|(
+literal|1
+argument_list|,
+literal|10
 argument_list|,
 literal|2
 argument_list|)
@@ -2051,6 +2090,24 @@ name|oldSpecialFieldsEnabled
 argument_list|)
 expr_stmt|;
 comment|/*** end: special fields ***/
+name|oldShowOneLetterHeadingForIconColumns
+operator|=
+name|_prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|SHOWONELETTERHEADINGFORICONCOLUMNS
+argument_list|)
+expr_stmt|;
+name|showOneLetterHeadingForIconColumns
+operator|.
+name|setSelected
+argument_list|(
+name|oldShowOneLetterHeadingForIconColumns
+argument_list|)
+expr_stmt|;
 name|tableRows
 operator|.
 name|clear
@@ -3550,6 +3607,20 @@ argument_list|(
 literal|"arxivColumn"
 argument_list|,
 name|arxivColumn
+operator|.
+name|isSelected
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|_prefs
+operator|.
+name|putBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|SHOWONELETTERHEADINGFORICONCOLUMNS
+argument_list|,
+name|showOneLetterHeadingForIconColumns
 operator|.
 name|isSelected
 argument_list|()

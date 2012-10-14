@@ -126,6 +126,30 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|JabRef
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|SearchRuleSet
 import|;
 end_import
@@ -253,6 +277,8 @@ name|COL_DEFINITION_FIELD_SEPARATOR
 init|=
 literal|"/"
 decl_stmt|;
+comment|// Values to gather iconImages for those columns
+comment|// These values are also used to put a heading into the table; see getColumnName(int)
 specifier|public
 specifier|static
 specifier|final
@@ -290,7 +316,6 @@ block|{
 literal|"eprint"
 block|}
 decl_stmt|,
-comment|// Values to gather iconImages for those Columns
 DECL|field|RANKING
 name|RANKING
 init|=
@@ -438,6 +463,7 @@ operator|.
 name|length
 return|;
 block|}
+comment|/**      * @return the string that should be put in the column header      */
 DECL|method|getColumnName (int col)
 specifier|public
 name|String
@@ -471,6 +497,23 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|JabRef
+operator|.
+name|jrf
+operator|.
+name|prefs
+argument_list|()
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|SHOWONELETTERHEADINGFORICONCOLUMNS
+argument_list|)
+condition|)
+block|{
 return|return
 name|getIconTypeForColumn
 argument_list|(
@@ -490,6 +533,13 @@ operator|.
 name|toUpperCase
 argument_list|()
 return|;
+block|}
+else|else
+block|{
+return|return
+literal|null
+return|;
+block|}
 block|}
 else|else
 comment|// try to find an alternative fieldname (for display)
@@ -917,7 +967,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// prio might be null if fieldvalue is an invalid value, therefor we check for != null
+comment|// prio might be null if fieldvalue is an invalid value, therefore we check for != null
 name|o
 operator|=
 name|prio
