@@ -9525,7 +9525,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 	 * Returns a reg exp pattern in the form (w1) | (w2) | ... 	 * wi are escaped if no regex search is enabled 	 */
+comment|/** 	 * Returns a reg exp pattern in the form (w1)|(w2)| ... 	 * wi are escaped if no regex search is enabled 	 */
 DECL|method|getPatternForWords (ArrayList<String> words)
 specifier|public
 specifier|static
@@ -9683,7 +9683,6 @@ name|pattern
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|Globals
 operator|.
 name|prefs
@@ -9701,10 +9700,6 @@ operator|.
 name|compile
 argument_list|(
 name|searchPattern
-argument_list|,
-name|Pattern
-operator|.
-name|CASE_INSENSITIVE
 argument_list|)
 expr_stmt|;
 block|}
@@ -9717,6 +9712,10 @@ operator|.
 name|compile
 argument_list|(
 name|searchPattern
+argument_list|,
+name|Pattern
+operator|.
+name|CASE_INSENSITIVE
 argument_list|)
 expr_stmt|;
 block|}

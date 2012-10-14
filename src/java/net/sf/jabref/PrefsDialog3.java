@@ -949,48 +949,14 @@ expr_stmt|;
 comment|// lower.add(ok);
 comment|// lower.add(cancel);
 comment|// Key bindings:
-name|ActionMap
-name|am
-init|=
-name|chooser
+name|Util
 operator|.
-name|getActionMap
+name|bindCloseDialogKeyToCancelAction
+argument_list|(
+name|this
+operator|.
+name|getRootPane
 argument_list|()
-decl_stmt|;
-name|InputMap
-name|im
-init|=
-name|chooser
-operator|.
-name|getInputMap
-argument_list|(
-name|JComponent
-operator|.
-name|WHEN_IN_FOCUSED_WINDOW
-argument_list|)
-decl_stmt|;
-name|im
-operator|.
-name|put
-argument_list|(
-name|frame
-operator|.
-name|prefs
-argument_list|()
-operator|.
-name|getKey
-argument_list|(
-literal|"Close dialog"
-argument_list|)
-argument_list|,
-literal|"close"
-argument_list|)
-expr_stmt|;
-name|am
-operator|.
-name|put
-argument_list|(
-literal|"close"
 argument_list|,
 name|cancelAction
 argument_list|)

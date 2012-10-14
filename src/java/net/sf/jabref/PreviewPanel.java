@@ -950,6 +950,13 @@ name|getPrintAction
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|panel
+operator|!=
+literal|null
+condition|)
+block|{
 name|menu
 operator|.
 name|add
@@ -961,6 +968,7 @@ operator|.
 name|switchPreview
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|menu
 return|;
