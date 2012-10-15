@@ -186,7 +186,7 @@ name|PREF_RANKING_COMPACT_DEFAULT
 init|=
 name|Boolean
 operator|.
-name|FALSE
+name|TRUE
 decl_stmt|;
 DECL|field|PREF_SHOWCOLUMN_PRIORITY
 specifier|public
