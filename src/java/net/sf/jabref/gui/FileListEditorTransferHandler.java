@@ -291,6 +291,13 @@ specifier|private
 name|TransferHandler
 name|textTransferHandler
 decl_stmt|;
+DECL|field|dfh
+specifier|private
+name|DroppedFileHandler
+name|dfh
+init|=
+literal|null
+decl_stmt|;
 comment|/** 	 *  	 * @param frame 	 * @param entryContainer 	 * @param transferHandler is an instance of javax.swing.plaf.basic.BasicTextUI.TextTransferHandler. That class is not visible. Therefore, we have to "cheat" 	 */
 DECL|method|FileListEditorTransferHandler (JabRefFrame frame, EntryContainer entryContainer, TransferHandler textTransferHandler)
 specifier|public
@@ -675,9 +682,15 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|DroppedFileHandler
+if|if
+condition|(
 name|dfh
-init|=
+operator|==
+literal|null
+condition|)
+block|{
+name|dfh
+operator|=
 operator|new
 name|DroppedFileHandler
 argument_list|(
@@ -688,7 +701,8 @@ operator|.
 name|basePanel
 argument_list|()
 argument_list|)
-decl_stmt|;
+expr_stmt|;
+block|}
 name|dfh
 operator|.
 name|handleDroppedfile
