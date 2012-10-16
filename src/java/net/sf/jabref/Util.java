@@ -827,7 +827,7 @@ name|dateFormatter
 init|=
 literal|null
 decl_stmt|;
-comment|/* 	 * Colors are defined here. 	 *  	 */
+comment|/* 	 * Colors are defined here. 	 *   	 */
 DECL|field|fieldsCol
 specifier|public
 specifier|static
@@ -15332,6 +15332,28 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
+name|oldValue
+operator|==
+literal|null
+operator|)
+operator|&&
+operator|(
+name|newValue
+operator|==
+literal|null
+operator|)
+condition|)
+return|return;
+if|if
+condition|(
+operator|(
+name|oldValue
+operator|==
+literal|null
+operator|)
+operator|||
+operator|(
 operator|!
 name|oldValue
 operator|.
@@ -15339,6 +15361,7 @@ name|equals
 argument_list|(
 name|newValue
 argument_list|)
+operator|)
 condition|)
 block|{
 name|entry
@@ -15350,6 +15373,12 @@ argument_list|,
 name|newValue
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|ce
+operator|!=
+literal|null
+condition|)
 name|ce
 operator|.
 name|addEdit
@@ -15369,6 +15398,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|/** 	 * @param nc indicates the undo named compound. May be null 	 */
 DECL|method|updateField (BibtexEntry be, String field, String newValue, NamedCompound ce)
 specifier|public
 specifier|static
@@ -15402,6 +15432,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+comment|/** 	 * @param nc indicates the undo named compound. May be null 	 */
 DECL|method|updateField (BibtexEntry be, String field, String newValue, NamedCompound ce, Boolean nullFieldIfValueIsTheSame)
 specifier|public
 specifier|static
@@ -15503,6 +15534,12 @@ argument_list|,
 name|newValue
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|ce
+operator|!=
+literal|null
+condition|)
 name|ce
 operator|.
 name|addEdit

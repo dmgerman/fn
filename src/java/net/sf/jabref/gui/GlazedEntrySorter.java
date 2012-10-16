@@ -377,6 +377,17 @@ name|getEntry
 argument_list|()
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|index
+operator|!=
+operator|-
+literal|1
+condition|)
+block|{
+comment|// SpecialFieldUtils.syncSpecialFieldsFromKeywords update an entry during
+comment|// DatabaseChangeEvent.ADDED_ENTRY
+comment|// thus,
 name|list
 operator|.
 name|set
@@ -389,6 +400,7 @@ name|getEntry
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|list
 operator|.
