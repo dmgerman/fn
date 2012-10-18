@@ -960,29 +960,18 @@ argument_list|(
 name|editor
 argument_list|)
 expr_stmt|;
-name|JOptionPane
-operator|.
-name|showMessageDialog
-argument_list|(
+comment|//JOptionPane.showMessageDialog(frame, Globals.lang("File moved"),
+comment|//        Globals.lang("Move/Rename file"), JOptionPane.INFORMATION_MESSAGE);
 name|frame
-argument_list|,
+operator|.
+name|output
+argument_list|(
 name|Globals
 operator|.
 name|lang
 argument_list|(
 literal|"File moved"
 argument_list|)
-argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Move/Rename file"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
