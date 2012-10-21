@@ -5595,11 +5595,9 @@ name|boolean
 name|ignoreAutosave
 parameter_list|)
 block|{
-name|System
+name|Globals
 operator|.
-name|out
-operator|.
-name|println
+name|logger
 argument_list|(
 name|Globals
 operator|.
