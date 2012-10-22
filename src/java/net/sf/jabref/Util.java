@@ -10390,7 +10390,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/* 	 * This method "tidies" up e.g. a keyword string, by alphabetizing the words 	 * and removing all duplicates. 	 */
+comment|/** 	 * This method "tidies" up e.g. a keyword string, by alphabetizing the words 	 * and removing all duplicates. 	 * 	 * Currently not used anywhere 	 */
 DECL|method|sortWordsAndRemoveDuplicates (String text)
 specifier|public
 specifier|static
@@ -10401,18 +10401,19 @@ name|String
 name|text
 parameter_list|)
 block|{
+name|ArrayList
+argument_list|<
 name|String
-index|[]
+argument_list|>
 name|words
 init|=
-name|text
-operator|.
-name|split
+name|getSeparatedKeywords
 argument_list|(
-literal|", "
+name|text
 argument_list|)
 decl_stmt|;
-name|SortedSet
+comment|// by adding the words to a set, they are automatically sorted
+name|TreeSet
 argument_list|<
 name|String
 argument_list|>
@@ -10423,34 +10424,10 @@ name|TreeSet
 argument_list|<
 name|String
 argument_list|>
-argument_list|()
-decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|words
-operator|.
-name|length
-condition|;
-name|i
-operator|++
-control|)
-name|set
-operator|.
-name|add
 argument_list|(
 name|words
-index|[
-name|i
-index|]
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|StringBuffer
 name|sb
 init|=
