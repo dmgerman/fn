@@ -277,6 +277,15 @@ name|COL_DEFINITION_FIELD_SEPARATOR
 init|=
 literal|"/"
 decl_stmt|;
+DECL|field|ICON_COLUMN_PREFIX
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|ICON_COLUMN_PREFIX
+init|=
+literal|"iconcol:"
+decl_stmt|;
 comment|// Values to gather iconImages for those columns
 comment|// These values are also used to put a heading into the table; see getColumnName(int)
 specifier|public
@@ -644,6 +653,72 @@ return|;
 comment|/*String disName = BibtexFields.getFieldDisplayName(columns[col - padleft]) ;           if ( disName != null)           {             return disName ;           } */
 block|}
 comment|//return Util.nCase(columns[col - padleft]);
+block|}
+comment|/**      * Get the column title, or a string identifying the column if it is an icon      * column without a title.      * @param col The column number      * @return the String identifying the column      */
+DECL|method|getColumnType (int col)
+specifier|public
+name|String
+name|getColumnType
+parameter_list|(
+name|int
+name|col
+parameter_list|)
+block|{
+name|String
+name|name
+init|=
+name|getColumnName
+argument_list|(
+name|col
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|name
+operator|!=
+literal|null
+condition|)
+return|return
+name|name
+return|;
+name|String
+index|[]
+name|icon
+init|=
+name|getIconTypeForColumn
+argument_list|(
+name|col
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+operator|(
+name|icon
+operator|!=
+literal|null
+operator|)
+operator|&&
+operator|(
+name|icon
+operator|.
+name|length
+operator|>
+literal|0
+operator|)
+condition|)
+block|{
+return|return
+name|ICON_COLUMN_PREFIX
+operator|+
+name|icon
+index|[
+literal|0
+index|]
+return|;
+block|}
+return|return
+literal|null
+return|;
 block|}
 comment|/**      * This method returns a string array indicating the types of icons to be displayed in the given column.      * It returns null if the column is not an icon column, and thereby also serves to identify icon      * columns.      */
 DECL|method|getIconTypeForColumn (int col)
