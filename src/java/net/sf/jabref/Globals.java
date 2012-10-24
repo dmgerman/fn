@@ -1186,7 +1186,7 @@ specifier|final
 name|String
 name|SEPARATING_CHARS
 init|=
-literal|";.,\n "
+literal|";,\n "
 decl_stmt|;
 DECL|field|SEPARATING_CHARS_NOSPACE
 specifier|public
@@ -1195,7 +1195,7 @@ specifier|final
 name|String
 name|SEPARATING_CHARS_NOSPACE
 init|=
-literal|";.,\n"
+literal|";,\n"
 decl_stmt|;
 DECL|field|sidePaneManager
 specifier|public
