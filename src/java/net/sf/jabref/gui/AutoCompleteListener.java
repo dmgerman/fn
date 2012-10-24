@@ -1294,6 +1294,13 @@ name|KeyEvent
 name|e
 parameter_list|)
 block|{
+name|logger
+operator|.
+name|finest
+argument_list|(
+literal|"key typed event caught"
+argument_list|)
+expr_stmt|;
 name|char
 name|ch
 init|=

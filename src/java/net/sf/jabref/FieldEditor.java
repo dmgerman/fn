@@ -81,7 +81,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * FieldEditors is a common interface between the FieldTextField and FieldTextArea.  *   * @author $Author$  * @version $Revision$ ($Date$)  *  */
+comment|/**  * FieldEditors is a common interface between the FieldTextField and FieldTextArea.  */
 end_comment
 
 begin_interface
