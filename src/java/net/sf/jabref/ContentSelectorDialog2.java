@@ -364,16 +364,10 @@ argument_list|)
 decl_stmt|;
 DECL|field|fieldListModel
 name|DefaultListModel
-argument_list|<
-name|String
-argument_list|>
 name|fieldListModel
 init|=
 operator|new
 name|DefaultListModel
-argument_list|<
-name|String
-argument_list|>
 argument_list|()
 decl_stmt|,
 DECL|field|wordListModel
@@ -381,23 +375,14 @@ name|wordListModel
 init|=
 operator|new
 name|DefaultListModel
-argument_list|<
-name|String
-argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|fieldList
 name|JList
-argument_list|<
-name|String
-argument_list|>
 name|fieldList
 init|=
 operator|new
 name|JList
-argument_list|<
-name|String
-argument_list|>
 argument_list|(
 name|fieldListModel
 argument_list|)
@@ -407,9 +392,6 @@ name|wordList
 init|=
 operator|new
 name|JList
-argument_list|<
-name|String
-argument_list|>
 argument_list|(
 name|wordListModel
 argument_list|)
@@ -462,9 +444,6 @@ argument_list|<
 name|String
 argument_list|,
 name|DefaultListModel
-argument_list|<
-name|String
-argument_list|>
 argument_list|>
 name|wordListModels
 init|=
@@ -474,9 +453,6 @@ argument_list|<
 name|String
 argument_list|,
 name|DefaultListModel
-argument_list|<
-name|String
-argument_list|>
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -644,6 +620,9 @@ name|wordEditField
 operator|.
 name|setText
 argument_list|(
+operator|(
+name|String
+operator|)
 name|wordList
 operator|.
 name|getSelectedValue
@@ -713,6 +692,9 @@ decl_stmt|;
 name|String
 name|old
 init|=
+operator|(
+name|String
+operator|)
 name|wordList
 operator|.
 name|getSelectedValue
@@ -939,6 +921,9 @@ parameter_list|)
 block|{
 name|currentField
 operator|=
+operator|(
+name|String
+operator|)
 name|fieldList
 operator|.
 name|getSelectedValue
@@ -1442,8 +1427,6 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
-annotation|@
-name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1652,9 +1635,6 @@ continue|continue
 name|loop
 continue|;
 name|DefaultListModel
-argument_list|<
-name|String
-argument_list|>
 name|lm
 init|=
 name|wordListModels
@@ -1781,6 +1761,9 @@ block|{
 name|String
 name|word
 init|=
+operator|(
+name|String
+operator|)
 name|lm
 operator|.
 name|get
@@ -2056,9 +2039,6 @@ name|wordListModel
 operator|=
 operator|new
 name|DefaultListModel
-argument_list|<
-name|String
-argument_list|>
 argument_list|()
 expr_stmt|;
 name|wordList
@@ -2142,15 +2122,12 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|findPos (DefaultListModel<String> lm, String item)
+DECL|method|findPos (DefaultListModel lm, String item)
 specifier|private
 name|int
 name|findPos
 parameter_list|(
 name|DefaultListModel
-argument_list|<
-name|String
-argument_list|>
 name|lm
 parameter_list|,
 name|String
@@ -2178,6 +2155,9 @@ block|{
 name|String
 name|s
 init|=
+operator|(
+name|String
+operator|)
 name|lm
 operator|.
 name|get
