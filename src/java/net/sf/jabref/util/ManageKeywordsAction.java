@@ -771,7 +771,7 @@ operator|=
 operator|new
 name|JRadioButton
 argument_list|(
-literal|"Display keywords appearing in at least one entry"
+literal|"Display keywords appearing in ANY entry"
 argument_list|)
 expr_stmt|;
 name|ButtonGroup
@@ -2326,15 +2326,6 @@ name|separatedKeywords
 argument_list|)
 expr_stmt|;
 block|}
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"finished step 1"
-argument_list|)
-expr_stmt|;
 block|}
 for|for
 control|(
@@ -2352,15 +2343,6 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"finished step 2"
-argument_list|)
-expr_stmt|;
 block|}
 block|}
 end_class
