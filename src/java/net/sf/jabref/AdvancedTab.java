@@ -488,19 +488,10 @@ argument_list|)
 operator|+
 literal|": "
 operator|+
-operator|(
-name|Globals
+name|UIManager
 operator|.
-name|ON_WIN
-condition|?
-name|GUIGlobals
-operator|.
-name|windowsDefaultLookAndFeel
-else|:
-name|GUIGlobals
-operator|.
-name|linuxDefaultLookAndFeel
-operator|)
+name|getSystemLookAndFeelClassName
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|builder
