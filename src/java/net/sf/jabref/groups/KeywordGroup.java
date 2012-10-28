@@ -2064,18 +2064,43 @@ name|sb
 operator|.
 name|append
 argument_list|(
+literal|"</b> - "
+argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
 name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"</b> - dynamic group (<b>"
+literal|"dynamic group"
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"<b>"
+argument_list|)
+expr_stmt|;
+name|sb
 operator|.
 name|append
 argument_list|(
 name|m_searchField
 argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"</b>"
+argument_list|)
+expr_stmt|;
+name|sb
 operator|.
 name|append
 argument_list|(
@@ -2083,9 +2108,18 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"</b> contains<b>"
+literal|"contains"
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|sb
+operator|.
+name|append
+argument_list|(
+literal|"<b>"
+argument_list|)
+expr_stmt|;
+name|sb
 operator|.
 name|append
 argument_list|(
@@ -2096,6 +2130,8 @@ argument_list|(
 name|m_searchExpression
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|sb
 operator|.
 name|append
 argument_list|(
@@ -2117,11 +2153,16 @@ name|sb
 operator|.
 name|append
 argument_list|(
+literal|", "
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|", includes subgroups"
+literal|"includes subgroups"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2135,11 +2176,16 @@ name|sb
 operator|.
 name|append
 argument_list|(
+literal|", "
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|", refines supergroup"
+literal|"refines supergroup"
 argument_list|)
 argument_list|)
 expr_stmt|;

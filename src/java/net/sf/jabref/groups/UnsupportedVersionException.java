@@ -57,9 +57,12 @@ literal|"Unsupported version of class %0: %1"
 argument_list|,
 name|groupType
 argument_list|,
-literal|""
-operator|+
+name|Integer
+operator|.
+name|toString
+argument_list|(
 name|version
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

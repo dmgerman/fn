@@ -288,9 +288,12 @@ name|lang
 argument_list|(
 literal|"Failed to read groups data (unsupported version: %0)"
 argument_list|,
-literal|""
-operator|+
+name|Integer
+operator|.
+name|toString
+argument_list|(
 name|version
+argument_list|)
 argument_list|)
 argument_list|)
 throw|;

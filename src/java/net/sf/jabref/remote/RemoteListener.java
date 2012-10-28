@@ -946,20 +946,8 @@ argument_list|)
 condition|)
 block|{
 name|String
-name|error
+name|port
 init|=
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Cannot use port %0 for remote operation; another "
-operator|+
-literal|"application may be using it. Try specifying another port."
-argument_list|,
-operator|new
-name|String
-index|[]
-block|{
 name|String
 operator|.
 name|valueOf
@@ -973,7 +961,17 @@ argument_list|(
 literal|"remoteServerPort"
 argument_list|)
 argument_list|)
-block|}
+decl_stmt|;
+name|String
+name|error
+init|=
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Cannot use port %0 for remote operation; another application may be using it. Try specifying another port."
+argument_list|,
+name|port
 argument_list|)
 decl_stmt|;
 name|System

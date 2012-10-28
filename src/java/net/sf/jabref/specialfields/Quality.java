@@ -133,7 +133,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Toogle quality assured marking"
+literal|"Toogle quality assured"
 argument_list|)
 argument_list|)
 argument_list|)

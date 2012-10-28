@@ -262,7 +262,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Bibtexkey patterns"
+literal|"Bibtex key patterns"
 argument_list|)
 argument_list|)
 decl_stmt|;

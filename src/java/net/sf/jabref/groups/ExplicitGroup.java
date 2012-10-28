@@ -1159,11 +1159,16 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
+literal|"</b> -"
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"</b> - static group"
+literal|"static group"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1182,11 +1187,16 @@ name|sb
 operator|.
 name|append
 argument_list|(
+literal|", "
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|", includes subgroups"
+literal|"includes subgroups"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1200,11 +1210,16 @@ name|sb
 operator|.
 name|append
 argument_list|(
+literal|", "
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|", refines supergroup"
+literal|"refines supergroup"
 argument_list|)
 argument_list|)
 expr_stmt|;

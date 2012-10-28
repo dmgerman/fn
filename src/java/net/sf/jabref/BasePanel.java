@@ -8320,8 +8320,6 @@ name|frame
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//	            		  new SpecialFieldAction(frame, Priority.getInstance(), strPrio, false,
-comment|//	            				  Globals.lang("Set priority to").concat(" ").concat(strPrio), "Set priority %0 for %1 entries"));
 block|}
 for|for
 control|(
@@ -8356,9 +8354,6 @@ name|frame
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//	              actions.put(prio.getActionName(),
-comment|//	            		  new SpecialFieldAction(frame, Priority.getInstance(), strPrio, false,
-comment|//	            				  Globals.lang("Set ranking to").concat(" ").concat(strPrio), "Set rank %0 for %1 entries"));
 block|}
 name|actions
 operator|.

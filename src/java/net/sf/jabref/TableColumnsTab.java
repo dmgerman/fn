@@ -1290,7 +1290,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Show ranking"
+literal|"Show rank"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1333,7 +1333,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Compact ranking"
+literal|"Compact rank"
 argument_list|)
 argument_list|)
 expr_stmt|;

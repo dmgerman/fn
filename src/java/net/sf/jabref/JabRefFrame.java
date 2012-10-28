@@ -12838,7 +12838,7 @@ name|putValue
 argument_list|(
 name|NAME
 argument_list|,
-literal|"Bibtexkey patterns"
+literal|"Bibtex key patterns"
 argument_list|)
 expr_stmt|;
 block|}
