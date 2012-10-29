@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2012 Sarel Botha     This class has been copied from http://stackoverflow.com/a/5626340/873282      This program is free software: you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation, either version 3 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License     along with this program.  If not, see<http://www.gnu.org/licenses/>.  */
+comment|/*  Copyright (C) 2012 Sarel Botha     This class is based on http://stackoverflow.com/a/5626340/873282      This program is free software: you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation, either version 3 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License     along with this program.  If not, see<http://www.gnu.org/licenses/>.  */
 end_comment
 
 begin_package
@@ -133,6 +133,7 @@ name|illegalChars
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**  * Replaces illegal characters in given fileName by '_'  *   * @param badFileName the fileName to clean  * @return a clean filename  */
 DECL|method|cleanFileName (String badFileName)
 specifier|public
 specifier|static
@@ -203,6 +204,16 @@ operator|(
 name|char
 operator|)
 name|c
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|cleanName
+operator|.
+name|append
+argument_list|(
+literal|'_'
 argument_list|)
 expr_stmt|;
 block|}
