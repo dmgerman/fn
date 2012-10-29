@@ -226,6 +226,13 @@ argument_list|)
 expr_stmt|;
 name|tlb
 operator|.
+name|setFloatable
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|tlb
+operator|.
 name|add
 argument_list|(
 name|close

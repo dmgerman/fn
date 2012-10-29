@@ -1474,7 +1474,6 @@ argument_list|(
 name|gbl
 argument_list|)
 expr_stmt|;
-comment|//SidePaneHeader header = new SidePaneHeader("Search", GUIGlobals.searchIconFile, this);
 name|con
 operator|.
 name|gridwidth
@@ -1497,10 +1496,6 @@ name|weightx
 operator|=
 literal|1
 expr_stmt|;
-comment|//con.insets = new Insets(0, 0, 2,  0);
-comment|//gbl.setConstraints(header, con);
-comment|//add(header);
-comment|//con.insets = new Insets(0, 0, 0,  0);
 name|gbl
 operator|.
 name|setConstraints

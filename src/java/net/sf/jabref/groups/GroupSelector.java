@@ -2519,7 +2519,6 @@ argument_list|(
 name|gbl
 argument_list|)
 expr_stmt|;
-comment|/*SidePaneHeader header = new SidePaneHeader("Groups",                 GUIGlobals.groupsIconFile, this);         con.gridwidth = GridBagConstraints.REMAINDER;         gbl.setConstraints(header, con);         main.add(header);*/
 name|con
 operator|.
 name|fill
