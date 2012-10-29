@@ -250,23 +250,8 @@ DECL|field|encPrefix
 name|encPrefix
 init|=
 literal|"Encoding: "
-decl_stmt|,
-comment|// Part of the signature in written bib files.
-DECL|field|linuxDefaultLookAndFeel
-name|linuxDefaultLookAndFeel
-init|=
-literal|"com.jgoodies.looks.plastic.Plastic3DLookAndFeel"
-decl_stmt|,
-comment|//linuxDefaultLookAndFeel = "com.sun.java.swing.plaf.gtk.GTKLookAndFeel",
-comment|//linuxDefaultLookAndFeel = "org.jvnet.substance.skin.SubstanceCremeCoffeeLookAndFeel",
-comment|//linuxDefaultLookAndFeel = "org.jvnet.substance.skin.SubstanceNebulaLookAndFeel",
-comment|//linuxDefaultLookAndFeel = "org.jvnet.substance.skin.SubstanceBusinessLookAndFeel",
-DECL|field|windowsDefaultLookAndFeel
-name|windowsDefaultLookAndFeel
-init|=
-literal|"com.jgoodies.looks.windows.WindowsLookAndFeel"
 decl_stmt|;
-comment|//windowsDefaultLookAndFeel = "com.sun.java.swing.plaf.windows.WindowsLookAndFeel";
+comment|// Part of the signature in written bib files.
 DECL|field|CURRENTFONT
 specifier|public
 specifier|static
