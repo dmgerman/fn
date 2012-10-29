@@ -3942,11 +3942,32 @@ argument_list|(
 literal|"lookAndFeel"
 argument_list|)
 return|;
-return|return
+name|String
+name|systemLnF
+init|=
 name|UIManager
 operator|.
 name|getSystemLookAndFeelClassName
 argument_list|()
+decl_stmt|;
+comment|// At all cost, avoid ending up with the Metal look and feel:
+if|if
+condition|(
+name|systemLnF
+operator|.
+name|equals
+argument_list|(
+literal|"javax.swing.plaf.metal.MetalLookAndFeel"
+argument_list|)
+condition|)
+block|{
+name|systemLnF
+operator|=
+literal|"com.sun.java.swing.plaf.gtk.GTKLookAndFeel"
+expr_stmt|;
+block|}
+return|return
+name|systemLnF
 return|;
 block|}
 DECL|method|openWindow (Vector<ParserResult> loaded)
