@@ -20,7 +20,7 @@ name|java
 operator|.
 name|awt
 operator|.
-name|BorderLayout
+name|*
 import|;
 end_import
 
@@ -1137,13 +1137,33 @@ operator|.
 name|nextLine
 argument_list|()
 expr_stmt|;
+name|JPanel
+name|butpan
+init|=
+operator|new
+name|JPanel
+argument_list|()
+decl_stmt|;
+name|butpan
+operator|.
+name|setLayout
+argument_list|(
+operator|new
+name|GridLayout
+argument_list|(
+literal|2
+argument_list|,
+literal|3
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|addSettingsButton
 argument_list|(
 operator|new
 name|PushToLyx
 argument_list|()
 argument_list|,
-name|builder
+name|butpan
 argument_list|)
 expr_stmt|;
 name|addSettingsButton
@@ -1152,7 +1172,7 @@ operator|new
 name|PushToEmacs
 argument_list|()
 argument_list|,
-name|builder
+name|butpan
 argument_list|)
 expr_stmt|;
 name|addSettingsButton
@@ -1161,7 +1181,7 @@ operator|new
 name|PushToWinEdt
 argument_list|()
 argument_list|,
-name|builder
+name|butpan
 argument_list|)
 expr_stmt|;
 name|addSettingsButton
@@ -1170,7 +1190,7 @@ operator|new
 name|PushToVim
 argument_list|()
 argument_list|,
-name|builder
+name|butpan
 argument_list|)
 expr_stmt|;
 name|addSettingsButton
@@ -1179,7 +1199,7 @@ operator|new
 name|PushToLatexEditor
 argument_list|()
 argument_list|,
-name|builder
+name|butpan
 argument_list|)
 expr_stmt|;
 name|addSettingsButton
@@ -1188,10 +1208,32 @@ operator|new
 name|PushToTeXstudio
 argument_list|()
 argument_list|,
-name|builder
+name|butpan
 argument_list|)
 expr_stmt|;
-comment|//builder.nextLine();
+name|builder
+operator|.
+name|append
+argument_list|(
+operator|new
+name|JPanel
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|butpan
+argument_list|,
+literal|3
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|nextLine
+argument_list|()
+expr_stmt|;
 name|builder
 operator|.
 name|append
@@ -1241,7 +1283,7 @@ name|CENTER
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addSettingsButton (final PushToApplication pt, DefaultFormBuilder b)
+DECL|method|addSettingsButton (final PushToApplication pt, JPanel p)
 specifier|private
 name|void
 name|addSettingsButton
@@ -1250,22 +1292,20 @@ specifier|final
 name|PushToApplication
 name|pt
 parameter_list|,
-name|DefaultFormBuilder
-name|b
+name|JPanel
+name|p
 parameter_list|)
 block|{
-name|b
-operator|.
-name|append
-argument_list|(
+comment|//if (b.getColumn()< 2)
+comment|//    b.append(new JPanel());
+comment|//JPanel pan = new JPanel();
+comment|//pan.setLayout(new BorderLayout());
+comment|//pan.add(new JLabel(Globals.lang("Settings for %0", pt.getApplicationName())), BorderLayout.CENTER);
+name|JButton
+name|button
+init|=
 operator|new
-name|JPanel
-argument_list|()
-argument_list|)
-expr_stmt|;
-name|b
-operator|.
-name|append
+name|JButton
 argument_list|(
 name|Globals
 operator|.
@@ -1275,19 +1315,10 @@ literal|"Settings for %0"
 argument_list|,
 name|pt
 operator|.
-name|getName
+name|getApplicationName
 argument_list|()
 argument_list|)
-operator|+
-literal|":"
-argument_list|)
-expr_stmt|;
-name|JButton
-name|button
-init|=
-operator|new
-name|JButton
-argument_list|(
+argument_list|,
 name|pt
 operator|.
 name|getIcon
@@ -1328,18 +1359,19 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|b
+name|p
 operator|.
-name|append
+name|add
 argument_list|(
 name|button
 argument_list|)
 expr_stmt|;
-name|b
-operator|.
-name|nextLine
-argument_list|()
-expr_stmt|;
+comment|//, BorderLayout.CENTER);
+comment|//b.append(button);
+comment|//b.nextLine();
+comment|//b.append(pan);
+comment|//if (b.getColumn()>= 6)
+comment|//    b.nextLine();
 block|}
 DECL|method|setValues ()
 specifier|public
