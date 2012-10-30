@@ -386,15 +386,11 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Use the following delimiter character(s)"
+literal|"Use the following delimiter character(s):"
 argument_list|)
-operator|+
-literal|":"
 argument_list|)
 decl_stmt|;
-comment|// JZTODO lyrics
 DECL|field|ok
-DECL|field|cancel
 name|JButton
 name|ok
 init|=
@@ -409,6 +405,7 @@ literal|"Ok"
 argument_list|)
 argument_list|)
 decl_stmt|,
+DECL|field|cancel
 name|cancel
 init|=
 operator|new

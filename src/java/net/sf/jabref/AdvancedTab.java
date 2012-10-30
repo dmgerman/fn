@@ -1204,7 +1204,7 @@ argument_list|,
 name|port
 argument_list|)
 expr_stmt|;
-comment|/*JOptionPane.showMessageDialog(null, Globals.lang("You have changed the menu and label font size. "                         + "You must restart JabRef for this to come into effect."), Globals.lang("Changed font settings"),                         JOptionPane.WARNING_MESSAGE);*/
+comment|/*JOptionPane.showMessageDialog(null, Glbals.lang("You have changed the menu and label font size. "                         + "You must restart JabRef for this to come into effect."), Globals.lang("Changed font settings"),                         JOptionPane.WARNING_MESSAGE);*/
 block|}
 block|}
 catch|catch
