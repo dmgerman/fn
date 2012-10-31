@@ -650,7 +650,7 @@ operator|new
 name|CellConstraints
 argument_list|()
 decl_stmt|;
-comment|/*JLabel description = new JLabel("<HTML>"+Globals.lang("JabRef can switch journal names between "             +"abbreviated and full form. Since it knows only a limited number of journal names, "             +"you may need to add your own definitions.")+"</HTML>");*/
+comment|/*JLabel description = new JLabel("<HTML>"+Glbals.lang("JabRef can switch journal names between "             +"abbreviated and full form. Since it knows only a limited number of journal names, "             +"you may need to add your own definitions.")+"</HTML>");*/
 name|builder
 operator|.
 name|addSeparator

@@ -5505,20 +5505,23 @@ condition|)
 comment|// All entries had keys.
 name|output
 argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-operator|(
 name|bes
 operator|.
 name|length
 operator|>
 literal|1
-operator|)
 condition|?
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Copied keys"
+argument_list|)
 else|:
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Copied key"
 argument_list|)
 operator|+

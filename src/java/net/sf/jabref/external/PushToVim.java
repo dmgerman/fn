@@ -742,9 +742,9 @@ argument_list|(
 literal|"Could not connect to Vim server. Make sure that "
 operator|+
 literal|"Vim is running<BR>with correct server name."
+argument_list|)
 operator|+
 literal|"</HTML>"
-argument_list|)
 argument_list|,
 name|Globals
 operator|.
