@@ -1193,7 +1193,7 @@ name|LocalizationSupport
 operator|.
 name|message
 argument_list|(
-literal|"This_JabRef_version_is_trying_to_access_an_old_version_of_Mr._dLib's_webservice_that_is_not_working_any_more.\\nPlease_visit_http://jabref.sourceforge.net_or_http://www.mr-dlib.org_for_more_information_and_updates.\\n\\n\\n"
+literal|"This_JabRef_version_is_trying_to_access_an_old_version_of_Mr._dLib's_webservice_that_is_not_working_any_more.\nPlease_visit_http://jabref.sourceforge.net_or_http://www.mr-dlib.org_for_more_information_and_updates."
 argument_list|)
 argument_list|,
 name|LocalizationSupport
