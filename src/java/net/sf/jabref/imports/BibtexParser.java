@@ -3108,6 +3108,12 @@ name|c
 argument_list|)
 operator|||
 operator|(
+name|c
+operator|==
+literal|':'
+operator|)
+operator|||
+operator|(
 operator|(
 name|c
 operator|!=
