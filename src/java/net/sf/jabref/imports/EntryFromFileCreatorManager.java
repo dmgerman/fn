@@ -370,7 +370,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** 	 * Trys to add a entry for each file in the List. 	 *  	 * @param files 	 * @param database 	 * @param entryType 	 * @param changeListener 	 * @return List of unexcpected import event messages including failures. 	 */
+comment|/** 	 * Trys to add a entry for each file in the List. 	 *  	 * @param files 	 * @param database 	 * @param entryType 	 * @return List of unexcpected import event messages including failures. 	 */
 DECL|method|addEntrysFromFiles (List<File> files, BibtexDatabase database, BibtexEntryType entryType, boolean generateKeywordsFromPathToFile)
 specifier|public
 name|List
@@ -395,7 +395,19 @@ name|boolean
 name|generateKeywordsFromPathToFile
 parameter_list|)
 block|{
-return|return
+name|List
+argument_list|<
+name|String
+argument_list|>
+name|importGUIMessages
+init|=
+operator|new
+name|LinkedList
+argument_list|<
+name|String
+argument_list|>
+argument_list|()
+decl_stmt|;
 name|addEntrysFromFiles
 argument_list|(
 name|files
@@ -407,16 +419,18 @@ argument_list|,
 name|generateKeywordsFromPathToFile
 argument_list|,
 literal|null
+argument_list|,
+name|importGUIMessages
 argument_list|)
+expr_stmt|;
+return|return
+name|importGUIMessages
 return|;
 block|}
-comment|/** 	 * Tries to add a entry for each file in the List. 	 *  	 * @param files 	 * @param database 	 * @param entryType 	 * @param generateKeywordsFromPathToFile 	 * @param changeListener 	 * @return Returns list of unexpected import event - Messages including 	 *         failures 	 */
-DECL|method|addEntrysFromFiles (List<File> files, BibtexDatabase database, BibtexEntryType entryType, boolean generateKeywordsFromPathToFile, ChangeListener changeListener)
+comment|/** 	 * Tries to add a entry for each file in the List. 	 *  	 * @param files      * @param database 	 * @param entryType 	 * @param generateKeywordsFromPathToFile 	 * @param changeListener      * @param importGUIMessages list of unexpected import event - Messages including      	 *         failures 	 * @return Returns The number of entries added 	 */
+DECL|method|addEntrysFromFiles (List<File> files, BibtexDatabase database, BibtexEntryType entryType, boolean generateKeywordsFromPathToFile, ChangeListener changeListener, List<String> importGUIMessages)
 specifier|public
-name|List
-argument_list|<
-name|String
-argument_list|>
+name|int
 name|addEntrysFromFiles
 parameter_list|(
 name|List
@@ -436,20 +450,18 @@ name|generateKeywordsFromPathToFile
 parameter_list|,
 name|ChangeListener
 name|changeListener
-parameter_list|)
-block|{
+parameter_list|,
 name|List
 argument_list|<
 name|String
 argument_list|>
 name|importGUIMessages
+parameter_list|)
+block|{
+name|int
+name|count
 init|=
-operator|new
-name|LinkedList
-argument_list|<
-name|String
-argument_list|>
-argument_list|()
+literal|0
 decl_stmt|;
 for|for
 control|(
@@ -571,6 +583,10 @@ literal|": Insert into BibtexDatabase failed."
 argument_list|)
 expr_stmt|;
 block|}
+else|else
+name|count
+operator|++
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -608,7 +624,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|importGUIMessages
+name|count
 return|;
 block|}
 comment|/** 	 * Returns a {@link FileFilter} instance which will accept all files, for 	 * which a {@link EntryFromFileCreator} exists, that accepts the files.<br> 	 *<br> 	 * This {@link FileFilter} will be displayed in the GUI as 	 * "All supported files". 	 *  	 * @return A {@link FileFilter} that accepts all files for which creators 	 *         exist. 	 */
