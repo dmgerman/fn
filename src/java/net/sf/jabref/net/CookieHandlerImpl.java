@@ -179,18 +179,17 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+comment|/*(cookie.getURI().equals(                             existingCookie.getURI()))*/
 operator|(
 name|cookie
 operator|.
-name|getURI
-argument_list|()
+name|domain
 operator|.
 name|equals
 argument_list|(
 name|existingCookie
 operator|.
-name|getURI
-argument_list|()
+name|domain
 argument_list|)
 operator|)
 operator|&&
@@ -218,6 +217,7 @@ expr_stmt|;
 break|break;
 block|}
 block|}
+comment|//System.out.println(cookie.getName()+" : "+cookie.domain+" : "+cookie.toString());
 name|cache
 operator|.
 name|add
