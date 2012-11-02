@@ -654,6 +654,20 @@ name|UnlinkedPDFFileFilter
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|undo
+operator|.
+name|CountingUndoManager
+import|;
+end_import
+
 begin_comment
 comment|/**  * GUI Dialog for the feature "Find unlinked files".  *   * @author Nosh&Dan  * @version 25.11.2008 | 23:13:29  *  */
 end_comment
@@ -2476,6 +2490,11 @@ name|fileList
 argument_list|,
 name|database
 argument_list|,
+name|frame
+operator|.
+name|basePanel
+argument_list|()
+argument_list|,
 name|entryType
 argument_list|,
 name|checkBoxWhyIsThereNoGetSelectedStupidSwing
@@ -2711,13 +2730,6 @@ expr_stmt|;
 name|disOrEnableDialog
 argument_list|(
 literal|true
-argument_list|)
-expr_stmt|;
-name|buttonApply
-operator|.
-name|setEnabled
-argument_list|(
-literal|false
 argument_list|)
 expr_stmt|;
 name|setDefaultCloseOperation
