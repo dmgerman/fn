@@ -1208,6 +1208,21 @@ comment|//   the different lines are joined into one and thereby separated by " 
 name|proceedToNextNonEmptyLine
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|i
+operator|>=
+name|split
+operator|.
+name|length
+condition|)
+block|{
+comment|// PDF could not be parsed or is empty
+comment|// return empty list
+return|return
+name|res
+return|;
+block|}
 name|curString
 operator|=
 name|split
