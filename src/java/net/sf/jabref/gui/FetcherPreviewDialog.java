@@ -616,6 +616,27 @@ argument_list|(
 name|deselectAll
 argument_list|)
 expr_stmt|;
+name|builder
+operator|.
+name|getPanel
+argument_list|()
+operator|.
+name|setBorder
+argument_list|(
+name|BorderFactory
+operator|.
+name|createEmptyBorder
+argument_list|(
+literal|5
+argument_list|,
+literal|5
+argument_list|,
+literal|5
+argument_list|,
+literal|5
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|ButtonBarBuilder2
 name|bb
 init|=
@@ -993,7 +1014,7 @@ specifier|private
 name|boolean
 name|wanted
 init|=
-literal|true
+literal|false
 decl_stmt|;
 DECL|method|TableEntry (String id, JLabel preview)
 specifier|public
