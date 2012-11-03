@@ -1997,7 +1997,6 @@ name|String
 name|s
 parameter_list|)
 block|{
-comment|//Util.pr("\""+s+"\""+(SwingUtilities.isEventDispatchThread()));
 if|if
 condition|(
 operator|!
@@ -13607,6 +13606,11 @@ name|CannotUndoException
 name|ex
 parameter_list|)
 block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 name|frame
 operator|.
 name|output
