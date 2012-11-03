@@ -895,6 +895,13 @@ argument_list|(
 literal|'.'
 argument_list|)
 argument_list|)
+operator|.
+name|replaceAll
+argument_list|(
+literal|"/"
+argument_list|,
+literal|"."
+argument_list|)
 decl_stmt|;
 name|importer
 operator|.
