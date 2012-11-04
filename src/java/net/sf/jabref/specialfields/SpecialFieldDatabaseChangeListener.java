@@ -112,8 +112,6 @@ name|INSTANCE
 init|=
 literal|null
 decl_stmt|;
-annotation|@
-name|Override
 DECL|method|databaseChanged (DatabaseChangeEvent e)
 specifier|public
 name|void
@@ -176,6 +174,11 @@ name|entry
 argument_list|,
 name|nc
 argument_list|)
+expr_stmt|;
+name|nc
+operator|.
+name|end
+argument_list|()
 expr_stmt|;
 name|JabRef
 operator|.

@@ -163,8 +163,6 @@ operator|.
 name|updateEntryEditorIfShowing
 argument_list|()
 expr_stmt|;
-comment|//panel.updateViewToSelected();
-comment|/*SwingUtilities.invokeLater(new Runnable() {             public void run() {                 panel.updateViewToSelected();             }         });*/
 block|}
 DECL|method|redo ()
 specifier|public
@@ -188,8 +186,6 @@ operator|.
 name|updateEntryEditorIfShowing
 argument_list|()
 expr_stmt|;
-comment|//panel.updateViewToSelected();
-comment|/*SwingUtilities.invokeLater(new Runnable() {             public void run() {                 panel.updateViewToSelected();             }         });*/
 block|}
 DECL|method|markUnchanged ()
 specifier|public
