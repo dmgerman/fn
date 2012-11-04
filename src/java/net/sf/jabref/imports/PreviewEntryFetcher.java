@@ -102,6 +102,13 @@ name|ImportInspector
 name|inspector
 parameter_list|)
 function_decl|;
+comment|/**      * The number of entries a user can select for download without getting a warning message.      * @return the warning limit      */
+DECL|method|getWarningLimit ()
+specifier|public
+name|int
+name|getWarningLimit
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

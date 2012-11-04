@@ -279,6 +279,16 @@ name|stopFetching
 init|=
 literal|false
 decl_stmt|;
+DECL|method|getWarningLimit ()
+specifier|public
+name|int
+name|getWarningLimit
+parameter_list|()
+block|{
+return|return
+literal|10
+return|;
+block|}
 DECL|method|processQuery (String query, ImportInspector inspector, OutputPrinter status)
 specifier|public
 name|boolean
@@ -886,7 +896,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      *      * @param query      *            The search term to query JStor for.      * @return a list of IDs      * @throws java.io.IOException      */
+comment|/**      *      * @param query      *            The search term to query Google Scholar for.      * @return a list of IDs      * @throws java.io.IOException      */
 DECL|method|getCitations (String query)
 specifier|protected
 name|Map
@@ -1059,6 +1069,7 @@ operator|.
 name|getStringContent
 argument_list|()
 decl_stmt|;
+comment|//save("query.html", cont);
 name|Matcher
 name|m
 init|=
