@@ -3188,7 +3188,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Converts the text in 1st, 2nd, ... to real superscripts by wrapping in \textsuperscript{st}, ... 	 */
+comment|/** 	 * Converts HTML code to LaTeX code 	 */
 DECL|method|doConvertHTML (BibtexEntry entry, NamedCompound ce)
 specifier|private
 name|void
@@ -3207,14 +3207,6 @@ name|field
 init|=
 literal|"title"
 decl_stmt|;
-specifier|final
-name|HTMLConverter
-name|htmlConverter
-init|=
-operator|new
-name|HTMLConverter
-argument_list|()
-decl_stmt|;
 name|String
 name|oldValue
 init|=
@@ -3232,6 +3224,14 @@ operator|==
 literal|null
 condition|)
 return|return;
+specifier|final
+name|HTMLConverter
+name|htmlConverter
+init|=
+operator|new
+name|HTMLConverter
+argument_list|()
+decl_stmt|;
 name|String
 name|newValue
 init|=
