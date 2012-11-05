@@ -700,16 +700,6 @@ argument_list|(
 name|r
 argument_list|)
 decl_stmt|;
-name|byte
-index|[]
-name|buffer
-init|=
-operator|new
-name|byte
-index|[
-literal|512
-index|]
-decl_stmt|;
 name|String
 name|line
 decl_stmt|;
