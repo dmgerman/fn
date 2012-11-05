@@ -479,6 +479,14 @@ name|values
 argument_list|()
 control|)
 block|{
+if|if
+condition|(
+name|tp
+operator|.
+name|isVisibleAtNewEntryDialog
+argument_list|()
+condition|)
+block|{
 name|TypeButton
 name|b
 init|=
@@ -530,12 +538,14 @@ name|REMAINDER
 expr_stmt|;
 block|}
 else|else
+block|{
 name|con
 operator|.
 name|gridwidth
 operator|=
 literal|1
 expr_stmt|;
+block|}
 name|gbl
 operator|.
 name|setConstraints
@@ -552,6 +562,7 @@ argument_list|(
 name|b
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|pan
 operator|.

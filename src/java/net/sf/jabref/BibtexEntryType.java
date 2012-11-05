@@ -2409,6 +2409,15 @@ return|return
 literal|true
 return|;
 block|}
+specifier|public
+name|boolean
+name|isVisibleAtNewEntryDialog
+parameter_list|()
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 decl_stmt|;
 comment|/**      * This type is provided as an emergency choice if the user makes      * customization changes that remove the type of an entry.      */
@@ -2692,6 +2701,16 @@ literal|true
 return|;
 return|return
 literal|false
+return|;
+block|}
+DECL|method|isVisibleAtNewEntryDialog ()
+specifier|public
+name|boolean
+name|isVisibleAtNewEntryDialog
+parameter_list|()
+block|{
+return|return
+literal|true
 return|;
 block|}
 DECL|field|ALL_TYPES
