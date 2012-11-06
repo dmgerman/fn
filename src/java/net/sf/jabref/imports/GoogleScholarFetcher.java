@@ -257,6 +257,19 @@ argument_list|(
 literal|"<div class=\"gs_ri\">"
 argument_list|)
 decl_stmt|;
+DECL|field|LINK_PATTERN
+specifier|final
+specifier|static
+name|Pattern
+name|LINK_PATTERN
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"<h3 class=\"gs_rt\"><a href=\"([^\"]*)\">"
+argument_list|)
+decl_stmt|;
 DECL|field|TITLE_END_PATTERN
 specifier|final
 specifier|static
@@ -269,6 +282,25 @@ name|compile
 argument_list|(
 literal|"<div class=\"gs_fl\">"
 argument_list|)
+decl_stmt|;
+DECL|field|entryLinks
+specifier|protected
+name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|entryLinks
+init|=
+operator|new
+name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+argument_list|()
 decl_stmt|;
 comment|//final static Pattern NEXT_PAGE_PATTERN = Pattern.compile(
 comment|//        "<a href=\"([^\"]*)\"><span class=\"SPRITE_nav_next\"></span><br><span style=\".*\">Next</span></a>");
@@ -323,6 +355,11 @@ name|OutputPrinter
 name|status
 parameter_list|)
 block|{
+name|entryLinks
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
 name|stopFetching
 operator|=
 literal|false
@@ -487,6 +524,11 @@ name|keySet
 argument_list|()
 control|)
 block|{
+if|if
+condition|(
+name|stopFetching
+condition|)
+break|break;
 name|inspector
 operator|.
 name|setProgress
@@ -1251,6 +1293,39 @@ argument_list|,
 name|preview
 argument_list|)
 expr_stmt|;
+comment|// See if we can extract the link Google Scholar puts on the entry's title.
+comment|// That will be set as "url" for the entry if downloaded:
+name|Matcher
+name|linkMatcher
+init|=
+name|LINK_PATTERN
+operator|.
+name|matcher
+argument_list|(
+name|pText
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|linkMatcher
+operator|.
+name|find
+argument_list|()
+condition|)
+name|entryLinks
+operator|.
+name|put
+argument_list|(
+name|link
+argument_list|,
+name|linkMatcher
+operator|.
+name|group
+argument_list|(
+literal|1
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|lastRegionStart
 operator|=
 name|m
@@ -1399,6 +1474,46 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+comment|// If the entry's url field is not set, and we have stored an url for this
+comment|// entry, set it:
+if|if
+condition|(
+name|entry
+operator|.
+name|getField
+argument_list|(
+literal|"url"
+argument_list|)
+operator|==
+literal|null
+condition|)
+block|{
+name|String
+name|storedUrl
+init|=
+name|entryLinks
+operator|.
+name|get
+argument_list|(
+name|link
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|storedUrl
+operator|!=
+literal|null
+condition|)
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"url"
+argument_list|,
+name|storedUrl
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|entry
 return|;

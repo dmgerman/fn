@@ -5178,11 +5178,24 @@ name|link
 expr_stmt|;
 block|}
 comment|// converts doi-only link to full http address
+comment|// Morten Alver 6 Nov 2012: this extracts a nonfunctional DOI from some complete
+comment|// http addresses (e.g. http://onlinelibrary.wiley.com/doi/10.1002/rra.999/abstract, where
+comment|// the trailing "/abstract" is included but doesn't lead to a resolvable DOI).
+comment|// To prevent mangling of working URLs I'm disabling this check if the link is already
+comment|// a full http link:
 if|if
 condition|(
 name|checkForPlainDOI
 argument_list|(
 name|link
+argument_list|)
+operator|&&
+operator|!
+name|link
+operator|.
+name|startsWith
+argument_list|(
+literal|"http://"
 argument_list|)
 condition|)
 block|{
