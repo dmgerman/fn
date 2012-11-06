@@ -1194,6 +1194,11 @@ name|pFetcher
 operator|.
 name|getWarningLimit
 argument_list|()
+argument_list|,
+name|pFetcher
+operator|.
+name|getPreferredPreviewHeight
+argument_list|()
 argument_list|)
 decl_stmt|;
 operator|new

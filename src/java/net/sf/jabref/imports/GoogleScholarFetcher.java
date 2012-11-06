@@ -321,6 +321,16 @@ return|return
 literal|10
 return|;
 block|}
+DECL|method|getPreferredPreviewHeight ()
+specifier|public
+name|int
+name|getPreferredPreviewHeight
+parameter_list|()
+block|{
+return|return
+literal|100
+return|;
+block|}
 DECL|method|processQuery (String query, ImportInspector inspector, OutputPrinter status)
 specifier|public
 name|boolean

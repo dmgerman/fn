@@ -330,7 +330,7 @@ specifier|private
 name|int
 name|warningLimit
 decl_stmt|;
-DECL|method|FetcherPreviewDialog (JabRefFrame frame, int warningLimit)
+DECL|method|FetcherPreviewDialog (JabRefFrame frame, int warningLimit, int tableRowHeight)
 specifier|public
 name|FetcherPreviewDialog
 parameter_list|(
@@ -339,6 +339,9 @@ name|frame
 parameter_list|,
 name|int
 name|warningLimit
+parameter_list|,
+name|int
+name|tableRowHeight
 parameter_list|)
 block|{
 name|super
@@ -509,7 +512,7 @@ name|glTable
 operator|.
 name|setRowHeight
 argument_list|(
-literal|100
+name|tableRowHeight
 argument_list|)
 expr_stmt|;
 name|glTable

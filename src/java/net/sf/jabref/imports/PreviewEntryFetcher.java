@@ -109,6 +109,13 @@ name|int
 name|getWarningLimit
 parameter_list|()
 function_decl|;
+comment|/**      * The preferred table row height for the previews.      * @return the preferred height      */
+DECL|method|getPreferredPreviewHeight ()
+specifier|public
+name|int
+name|getPreferredPreviewHeight
+parameter_list|()
+function_decl|;
 block|}
 end_interface
 

@@ -350,7 +350,7 @@ specifier|final
 name|int
 name|WAIT_TIME
 init|=
-literal|100
+literal|200
 decl_stmt|;
 DECL|field|hits
 DECL|field|unparseable
@@ -419,20 +419,7 @@ argument_list|(
 literal|".*Results \\d+ - \\d+ of (\\d+,*\\d*).*"
 argument_list|)
 decl_stmt|;
-DECL|field|bibPattern
-specifier|private
-specifier|static
-specifier|final
-name|Pattern
-name|bibPattern
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|".*'(exportformats.cfm\\?id=\\d+&expformat=bibtex)'.*"
-argument_list|)
-decl_stmt|;
+comment|//private static final Pattern bibPattern = Pattern.compile(".*'(exportformats.cfm\\?id=\\d+&expformat=bibtex)'.*");
 DECL|field|fullCitationPattern
 specifier|private
 specifier|static
@@ -488,6 +475,20 @@ operator|.
 name|compile
 argument_list|(
 literal|"([A-Za-z]+ [0-9]{4})"
+argument_list|)
+decl_stmt|;
+DECL|field|absPattern
+specifier|private
+specifier|static
+specifier|final
+name|Pattern
+name|absPattern
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"<div .*?>(.*?)</div>"
 argument_list|)
 decl_stmt|;
 DECL|field|preview
@@ -695,24 +696,6 @@ argument_list|,
 literal|"Found"
 argument_list|,
 name|hitsPattern
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|hits
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|address
 argument_list|)
 expr_stmt|;
 name|int
@@ -989,6 +972,12 @@ name|keySet
 argument_list|()
 control|)
 block|{
+if|if
+condition|(
+operator|!
+name|shouldContinue
+condition|)
+break|break;
 name|boolean
 name|sel
 init|=
@@ -1047,6 +1036,16 @@ parameter_list|()
 block|{
 return|return
 literal|10
+return|;
+block|}
+DECL|method|getPreferredPreviewHeight ()
+specifier|public
+name|int
+name|getPreferredPreviewHeight
+parameter_list|()
+block|{
+return|return
+literal|75
 return|;
 block|}
 DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter status)
@@ -1839,21 +1838,42 @@ argument_list|(
 name|url
 argument_list|)
 decl_stmt|;
+name|Matcher
+name|absM
+init|=
+name|absPattern
+operator|.
+name|matcher
+argument_list|(
+name|page
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|absM
+operator|.
+name|find
+argument_list|()
+condition|)
+block|{
 name|entry
 operator|.
 name|setField
 argument_list|(
 literal|"abstract"
 argument_list|,
-name|convertHTMLChars
+name|absM
+operator|.
+name|group
 argument_list|(
-name|page
+literal|1
 argument_list|)
 operator|.
 name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|Thread
 operator|.
 name|sleep
@@ -2012,15 +2032,6 @@ operator|<
 literal|0
 condition|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|page
-argument_list|)
-expr_stmt|;
 throw|throw
 operator|new
 name|IOException
@@ -2449,10 +2460,7 @@ parameter_list|(
 name|int
 name|entriesImported
 parameter_list|)
-block|{
-comment|//System.out.println("Number of entries parsed: "+parsed);
-comment|//System.out.println("Parsing failed for "+unparseable+" entries");
-block|}
+block|{  	}
 comment|// This method is called by the dialog when the user has cancelled or
 comment|//signalled a stop. It is expected that any long-running fetch operations
 comment|//will stop after this method is called.
