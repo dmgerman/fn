@@ -1638,8 +1638,6 @@ name|update
 argument_list|()
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 DECL|method|searchText (ArrayList<String> words)
 specifier|public
 name|void

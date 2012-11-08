@@ -9562,8 +9562,10 @@ argument_list|(
 literal|0
 argument_list|)
 operator|.
-name|isEmpty
+name|length
 argument_list|()
+operator|==
+literal|0
 operator|)
 condition|)
 return|return

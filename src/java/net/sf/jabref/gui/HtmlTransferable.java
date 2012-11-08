@@ -159,8 +159,6 @@ operator|=
 name|plainText
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 DECL|method|getTransferDataFlavors ()
 specifier|public
 name|DataFlavor
@@ -175,8 +173,6 @@ name|clone
 argument_list|()
 return|;
 block|}
-annotation|@
-name|Override
 DECL|method|isDataFlavorSupported (DataFlavor flavor)
 specifier|public
 name|boolean
@@ -225,8 +221,6 @@ return|return
 literal|false
 return|;
 block|}
-annotation|@
-name|Override
 DECL|method|getTransferData (DataFlavor flavor)
 specifier|public
 name|Object

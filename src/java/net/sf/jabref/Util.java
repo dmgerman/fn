@@ -14992,8 +14992,10 @@ if|if
 condition|(
 name|value
 operator|.
-name|isEmpty
+name|length
 argument_list|()
+operator|==
+literal|0
 condition|)
 name|value
 operator|=

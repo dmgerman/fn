@@ -142,8 +142,6 @@ operator|=
 name|fileName
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 DECL|method|databaseChanged (DatabaseChangeEvent e)
 specifier|public
 name|void

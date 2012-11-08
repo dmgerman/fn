@@ -26,8 +26,6 @@ name|OutputPrinterToNull
 implements|implements
 name|OutputPrinter
 block|{
-annotation|@
-name|Override
 DECL|method|setStatus (String s)
 specifier|public
 name|void
@@ -37,8 +35,6 @@ name|String
 name|s
 parameter_list|)
 block|{ 	}
-annotation|@
-name|Override
 DECL|method|showMessage (Object message, String title, int msgType)
 specifier|public
 name|void
@@ -54,8 +50,6 @@ name|int
 name|msgType
 parameter_list|)
 block|{ 	}
-annotation|@
-name|Override
 DECL|method|showMessage (String string)
 specifier|public
 name|void

@@ -2395,7 +2395,7 @@ expr_stmt|;
 block|}
 block|}
 comment|//date = date.trim();
-comment|//if (!date.isEmpty()) {
+comment|//if (!date.length()==0) {
 name|entry
 operator|.
 name|setField

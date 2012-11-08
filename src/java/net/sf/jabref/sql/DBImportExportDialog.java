@@ -154,16 +154,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|Action
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|BorderFactory
 import|;
 end_import
@@ -267,20 +257,6 @@ operator|.
 name|table
 operator|.
 name|DefaultTableModel
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|w3c
-operator|.
-name|dom
-operator|.
-name|views
-operator|.
-name|AbstractView
 import|;
 end_import
 
@@ -1404,8 +1380,6 @@ name|dispose
 argument_list|()
 expr_stmt|;
 block|}
-annotation|@
-name|Override
 DECL|method|mouseClicked (MouseEvent e)
 specifier|public
 name|void
@@ -1445,8 +1419,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-annotation|@
-name|Override
 DECL|method|mouseEntered (MouseEvent arg0)
 specifier|public
 name|void
@@ -1458,8 +1430,6 @@ parameter_list|)
 block|{
 comment|// TODO Auto-generated method stub
 block|}
-annotation|@
-name|Override
 DECL|method|mouseExited (MouseEvent arg0)
 specifier|public
 name|void
@@ -1471,8 +1441,6 @@ parameter_list|)
 block|{
 comment|// TODO Auto-generated method stub
 block|}
-annotation|@
-name|Override
 DECL|method|mousePressed (MouseEvent arg0)
 specifier|public
 name|void
@@ -1484,8 +1452,6 @@ parameter_list|)
 block|{
 comment|// TODO Auto-generated method stub
 block|}
-annotation|@
-name|Override
 DECL|method|mouseReleased (MouseEvent arg0)
 specifier|public
 name|void
@@ -1497,8 +1463,6 @@ parameter_list|)
 block|{
 comment|// TODO Auto-generated method stub
 block|}
-annotation|@
-name|Override
 DECL|method|keyPressed (KeyEvent arg0)
 specifier|public
 name|void
@@ -1510,8 +1474,6 @@ parameter_list|)
 block|{
 comment|// TODO Auto-generated method stub
 block|}
-annotation|@
-name|Override
 DECL|method|keyReleased (KeyEvent arg0)
 specifier|public
 name|void
@@ -1523,8 +1485,6 @@ parameter_list|)
 block|{
 comment|// TODO Auto-generated method stub
 block|}
-annotation|@
-name|Override
 DECL|method|keyTyped (KeyEvent arg0)
 specifier|public
 name|void

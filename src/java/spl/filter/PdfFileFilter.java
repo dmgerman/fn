@@ -81,8 +81,10 @@ literal|null
 operator|||
 name|path
 operator|.
-name|isEmpty
+name|length
 argument_list|()
+operator|==
+literal|0
 operator|||
 operator|!
 name|path
