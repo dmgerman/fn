@@ -1996,6 +1996,113 @@ condition|)
 return|return
 literal|null
 return|;
+comment|// clean up title
+name|String
+name|title
+init|=
+operator|(
+name|String
+operator|)
+name|entry
+operator|.
+name|getField
+argument_list|(
+literal|"title"
+argument_list|)
+decl_stmt|;
+comment|// USe the alt-text and replace image links
+name|title
+operator|=
+name|title
+operator|.
+name|replaceAll
+argument_list|(
+literal|"[ ]?img src=.+alt=\"(.+)\">[ ]?"
+argument_list|,
+literal|"\\$$1\\$"
+argument_list|)
+expr_stmt|;
+comment|// Try to sort out most of the /spl / conversions
+comment|// Deal with this specific nested type first
+name|title
+operator|=
+name|title
+operator|.
+name|replaceAll
+argument_list|(
+literal|"/sub /spl infin//"
+argument_list|,
+literal|"\\$_\\\\infty\\$"
+argument_list|)
+expr_stmt|;
+name|title
+operator|=
+name|title
+operator|.
+name|replaceAll
+argument_list|(
+literal|"/sup /spl infin//"
+argument_list|,
+literal|"\\$\\^\\\\infty\\$"
+argument_list|)
+expr_stmt|;
+comment|// Replace general expressions
+name|title
+operator|=
+name|title
+operator|.
+name|replaceAll
+argument_list|(
+literal|"/[sS]pl ([a-zA-Z]+)/"
+argument_list|,
+literal|"\\$\\\\$1\\$"
+argument_list|)
+expr_stmt|;
+comment|// Deal with subscripts and superscripts
+name|title
+operator|=
+name|title
+operator|.
+name|replaceAll
+argument_list|(
+literal|"/sup ([0-9\\+\\.\\(\\)]+)/"
+argument_list|,
+literal|"\\$\\^$1\\$"
+argument_list|)
+expr_stmt|;
+name|title
+operator|=
+name|title
+operator|.
+name|replaceAll
+argument_list|(
+literal|"/sub ([0-9\\+\\.\\(\\)]+)/"
+argument_list|,
+literal|"\\$_$1\\$"
+argument_list|)
+expr_stmt|;
+comment|// Replace \infin with \infty
+name|title
+operator|=
+name|title
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\\\infin"
+argument_list|,
+literal|"\\\\infty"
+argument_list|)
+expr_stmt|;
+comment|// Write back
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"title"
+argument_list|,
+name|title
+argument_list|)
+expr_stmt|;
 comment|// clean up author
 name|String
 name|author
