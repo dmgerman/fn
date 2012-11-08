@@ -4034,7 +4034,7 @@ name|allText
 operator|.
 name|indexOf
 argument_list|(
-literal|"<div class=\"abstract"
+literal|"id=\"abstract-1\""
 argument_list|,
 name|piv
 argument_list|)
