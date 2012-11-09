@@ -374,7 +374,7 @@ literal|"188"
 block|,
 literal|"frac14"
 block|,
-literal|""
+literal|"\\$\\sfrac\\{1\\}\\{4\\}\\$"
 block|}
 block|,
 comment|// vulgar fraction one quarter
@@ -384,7 +384,7 @@ literal|"189"
 block|,
 literal|"frac12"
 block|,
-literal|""
+literal|"\\$\\sfrac\\{1\\}\\{2\\}\\$"
 block|}
 block|,
 comment|// vulgar fraction one half
@@ -394,7 +394,7 @@ literal|"190"
 block|,
 literal|"frac34"
 block|,
-literal|""
+literal|"\\$\\sfrac\\{3\\}\\{4\\}\\$"
 block|}
 block|,
 comment|// vulgar fraction three quarters
@@ -445,7 +445,7 @@ literal|"195"
 block|,
 literal|"Atilde"
 block|,
-literal|""
+literal|"\\\\~\\{A\\}"
 block|}
 block|,
 comment|// latin capital letter A with tilde,
@@ -586,7 +586,7 @@ literal|"209"
 block|,
 literal|"Ntilde"
 block|,
-literal|""
+literal|"\\\\~\\{N\\}"
 block|}
 block|,
 comment|// latin capital letter N with tilde,
@@ -626,7 +626,7 @@ literal|"213"
 block|,
 literal|"Otilde"
 block|,
-literal|""
+literal|"\\\\~\\{O\\}"
 block|}
 block|,
 comment|// latin capital letter O with tilde,
@@ -767,7 +767,7 @@ literal|"227"
 block|,
 literal|"atilde"
 block|,
-literal|""
+literal|"\\\\~\\{a\\}"
 block|}
 block|,
 comment|// latin small letter a with tilde,
@@ -777,7 +777,7 @@ literal|"228"
 block|,
 literal|"auml"
 block|,
-literal|""
+literal|"\\\\\"\\{a\\}"
 block|}
 block|,
 comment|// latin small letter a with diaeresis,
@@ -848,7 +848,7 @@ literal|"235"
 block|,
 literal|"euml"
 block|,
-literal|""
+literal|"\\\\\"\\{e\\}"
 block|}
 block|,
 comment|// latin small letter e with diaeresis,
@@ -888,7 +888,7 @@ literal|"239"
 block|,
 literal|"iuml"
 block|,
-literal|""
+literal|"\\\\\"\\{i\\}"
 block|}
 block|,
 comment|// latin small letter i with diaeresis,
@@ -947,7 +947,7 @@ literal|"245"
 block|,
 literal|"otilde"
 block|,
-literal|""
+literal|"\\\\~\\{o\\}"
 block|}
 block|,
 comment|// latin small letter o with tilde,
@@ -957,7 +957,7 @@ literal|"246"
 block|,
 literal|"ouml"
 block|,
-literal|""
+literal|"\\\\\"\\{o\\}"
 block|}
 block|,
 comment|// latin small letter o with diaeresis,
@@ -1017,7 +1017,7 @@ literal|"252"
 block|,
 literal|"uuml"
 block|,
-literal|""
+literal|"\\\\\"\\{u\\}"
 block|}
 block|,
 comment|// latin small letter u with diaeresis,
@@ -1047,7 +1047,7 @@ literal|"255"
 block|,
 literal|"yuml"
 block|,
-literal|""
+literal|"\\\\\"\\{y\\}"
 block|}
 block|,
 comment|// latin small letter y with diaeresis,
@@ -2324,7 +2324,7 @@ literal|"376"
 block|,
 literal|"Yuml"
 block|,
-literal|""
+literal|"\\\\\"\\{Y\\}"
 block|}
 block|,
 comment|// latin capital letter Y with diaeresis,
@@ -2373,7 +2373,7 @@ literal|"8201"
 block|,
 literal|"thinsp"
 block|,
-literal|""
+literal|"\\\\hspace\\{0.167em\\}"
 block|}
 block|,
 comment|// thin space, U+2009 ISOpub
