@@ -476,7 +476,7 @@ literal|"198"
 block|,
 literal|"AElig"
 block|,
-literal|""
+literal|"\\{\\\\AE\\}"
 block|}
 block|,
 comment|// latin capital letter AE
@@ -798,7 +798,7 @@ literal|"230"
 block|,
 literal|"aelig"
 block|,
-literal|""
+literal|"\\{\\\\ae\\}"
 block|}
 block|,
 comment|// latin small letter ae
@@ -2284,7 +2284,7 @@ literal|"338"
 block|,
 literal|"OElig"
 block|,
-literal|""
+literal|"\\{\\\\OE\\}"
 block|}
 block|,
 comment|// latin capital ligature OE,
@@ -2294,7 +2294,7 @@ literal|"339"
 block|,
 literal|"oelig"
 block|,
-literal|""
+literal|"\\{\\\\oe\\}"
 block|}
 block|,
 comment|// latin small ligature oe, U+0153 ISOlat2
@@ -2559,11 +2559,38 @@ block|}
 block|,
 comment|// Percent
 block|{
+literal|"43"
+block|,
+literal|""
+block|,
+literal|"\\+"
+block|}
+block|,
+comment|// Plus
+block|{
+literal|"123"
+block|,
+literal|""
+block|,
+literal|"\\{"
+block|}
+block|,
+comment|// Left curly bracket
+block|{
+literal|"125"
+block|,
+literal|""
+block|,
+literal|"\\}"
+block|}
+block|,
+comment|// Right curly bracket
+block|{
 literal|"305"
 block|,
 literal|"inodot"
 block|,
-literal|"\\\\i"
+literal|"\\{\\\\i\\}"
 block|}
 block|,
 comment|// Small i without the dot
@@ -2576,6 +2603,33 @@ literal|"'"
 block|}
 block|,
 comment|// Can be solved better as it is a combining accent
+block|{
+literal|"774"
+block|,
+literal|""
+block|,
+literal|""
+block|}
+block|,
+comment|// FIX: Breve - Can be solved better as it is a combining accent
+block|{
+literal|"776"
+block|,
+literal|""
+block|,
+literal|""
+block|}
+block|,
+comment|// FIX: Diaeresis - Can be solved better as it is a combining accent
+block|{
+literal|"780"
+block|,
+literal|""
+block|,
+literal|""
+block|}
+block|,
+comment|// FIX: Caron - Can be solved better as it is a combining accent
 block|{
 literal|"8208"
 block|,
