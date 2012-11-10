@@ -76,10 +76,6 @@ name|LayoutFormatter
 import|;
 end_import
 
-begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Mar 26, 2006  * Time: 8:05:08 PM  * To change this template use File | Settings | File Templates.  */
-end_comment
-
 begin_class
 DECL|class|HTMLConverter
 specifier|public
@@ -89,6 +85,9 @@ implements|implements
 name|LayoutFormatter
 block|{
 comment|/*   Portions Â© International Organization for Standardization 1986:      Permission to copy in any form is granted for use with      conforming SGML systems and applications as defined in      ISO 8879, provided this notice is included in all copies.     */
+comment|// most of the LaTeX commands can be read at http://en.wikibooks.org/wiki/LaTeX/Accents
+comment|// The symbols can be looked at http://www.fileformat.info/info/unicode/char/a4/index.htm. Replace "a4" with the U+ number
+comment|// http://detexify.kirelabs.org/classify.html and http://www.ctan.org/tex-archive/info/symbols/comprehensive/ might help to find the right LaTeX command
 DECL|field|conversionList
 specifier|private
 name|String
@@ -116,7 +115,7 @@ literal|"161"
 block|,
 literal|"iexcl"
 block|,
-literal|""
+literal|"\\\\textexclamdown"
 block|}
 block|,
 comment|// inverted exclamation mark, U+00A1 ISOnum
@@ -134,7 +133,7 @@ literal|"163"
 block|,
 literal|"pound"
 block|,
-literal|""
+literal|"\\\\pounds"
 block|}
 block|,
 comment|// pound sign, U+00A3 ISOnum
@@ -190,7 +189,7 @@ literal|"169"
 block|,
 literal|"copy"
 block|,
-literal|""
+literal|"\\\\copyright"
 block|}
 block|,
 comment|// copyright sign, U+00A9 ISOnum
@@ -199,7 +198,7 @@ literal|"170"
 block|,
 literal|"ordf"
 block|,
-literal|""
+literal|"\\\\textordfeminine"
 block|}
 block|,
 comment|// feminine ordinal indicator, U+00AA ISOnum
@@ -208,7 +207,7 @@ literal|"171"
 block|,
 literal|"laquo"
 block|,
-literal|""
+literal|"\\\\guillemotleft"
 block|}
 block|,
 comment|// left-pointing double angle quotation mark
@@ -237,7 +236,7 @@ literal|"174"
 block|,
 literal|"reg"
 block|,
-literal|""
+literal|"\\textregistered"
 block|}
 block|,
 comment|// registered sign = registered trade mark sign,
@@ -344,7 +343,7 @@ literal|"185"
 block|,
 literal|"sup1"
 block|,
-literal|""
+literal|"\\\\textsuperscript\\{1\\}"
 block|}
 block|,
 comment|// superscript one = superscript digit one,
@@ -354,7 +353,7 @@ literal|"186"
 block|,
 literal|"ordm"
 block|,
-literal|""
+literal|"\\\\textordmasculine"
 block|}
 block|,
 comment|// masculine ordinal indicator,
@@ -364,7 +363,7 @@ literal|"187"
 block|,
 literal|"raquo"
 block|,
-literal|""
+literal|"\\\\guillemotright"
 block|}
 block|,
 comment|// right-pointing double angle quotation mark
@@ -414,7 +413,7 @@ literal|"192"
 block|,
 literal|"Agrave"
 block|,
-literal|""
+literal|"\\\\`\\{A\\}"
 block|}
 block|,
 comment|// latin capital letter A with grave
@@ -487,7 +486,7 @@ literal|"199"
 block|,
 literal|"Ccedil"
 block|,
-literal|""
+literal|"\\\\c\\{C\\}"
 block|}
 block|,
 comment|// latin capital letter C with cedilla,
@@ -497,7 +496,7 @@ literal|"200"
 block|,
 literal|"Egrave"
 block|,
-literal|""
+literal|"\\\\`\\{E\\}"
 block|}
 block|,
 comment|// latin capital letter E with grave,
@@ -537,7 +536,7 @@ literal|"204"
 block|,
 literal|"Igrave"
 block|,
-literal|""
+literal|"\\\\`\\{I\\}"
 block|}
 block|,
 comment|// latin capital letter I with grave,
@@ -596,7 +595,7 @@ literal|"210"
 block|,
 literal|"Ograve"
 block|,
-literal|""
+literal|"\\\\`\\{O\\}"
 block|}
 block|,
 comment|// latin capital letter O with grave,
@@ -666,7 +665,7 @@ literal|"217"
 block|,
 literal|"Ugrave"
 block|,
-literal|""
+literal|"\\\\`\\{U\\}"
 block|}
 block|,
 comment|// latin capital letter U with grave,
@@ -726,7 +725,7 @@ literal|"223"
 block|,
 literal|"szlig"
 block|,
-literal|""
+literal|"\\\\ss\\{\\}"
 block|}
 block|,
 comment|// latin small letter sharp s = ess-zed,
@@ -736,7 +735,7 @@ literal|"224"
 block|,
 literal|"agrave"
 block|,
-literal|""
+literal|"\\\\`\\{a\\}"
 block|}
 block|,
 comment|// latin small letter a with grave
@@ -808,7 +807,7 @@ literal|"231"
 block|,
 literal|"ccedil"
 block|,
-literal|""
+literal|"\\\\c\\{c\\}"
 block|}
 block|,
 comment|// latin small letter c with cedilla,
@@ -818,7 +817,7 @@ literal|"232"
 block|,
 literal|"egrave"
 block|,
-literal|""
+literal|"\\\\`\\{e\\}"
 block|}
 block|,
 comment|// latin small letter e with grave,
@@ -858,7 +857,7 @@ literal|"236"
 block|,
 literal|"igrave"
 block|,
-literal|""
+literal|"\\\\`\\{i\\}"
 block|}
 block|,
 comment|// latin small letter i with grave,
@@ -917,7 +916,7 @@ literal|"242"
 block|,
 literal|"ograve"
 block|,
-literal|""
+literal|"\\\\`\\{o\\}"
 block|}
 block|,
 comment|// latin small letter o with grave,
@@ -987,7 +986,7 @@ literal|"249"
 block|,
 literal|"ugrave"
 block|,
-literal|""
+literal|"\\\\`\\{u\\}"
 block|}
 block|,
 comment|// latin small letter u with grave,
@@ -1650,7 +1649,7 @@ literal|"8482"
 block|,
 literal|"trade"
 block|,
-literal|""
+literal|"\\texttrademark"
 block|}
 block|,
 comment|// trade mark sign, U+2122 ISOnum
@@ -1671,7 +1670,7 @@ literal|"8592"
 block|,
 literal|"larr"
 block|,
-literal|""
+literal|"\\\\leftarrow"
 block|}
 block|,
 comment|// leftwards arrow, U+2190 ISOnum
@@ -1680,7 +1679,7 @@ literal|"8593"
 block|,
 literal|"uarr"
 block|,
-literal|""
+literal|"\\\\uparrow"
 block|}
 block|,
 comment|// upwards arrow, U+2191 ISOnum
@@ -1689,7 +1688,7 @@ literal|"8594"
 block|,
 literal|"rarr"
 block|,
-literal|""
+literal|"\\\\rightarrow"
 block|}
 block|,
 comment|// rightwards arrow, U+2192 ISOnum
@@ -1698,7 +1697,7 @@ literal|"8595"
 block|,
 literal|"darr"
 block|,
-literal|""
+literal|"\\\\downarrow"
 block|}
 block|,
 comment|// downwards arrow, U+2193 ISOnum
@@ -1726,7 +1725,7 @@ literal|"8656"
 block|,
 literal|"lArr"
 block|,
-literal|""
+literal|"\\\\Leftarrow"
 block|}
 block|,
 comment|// leftwards double arrow, U+21D0 ISOtech
@@ -1736,7 +1735,7 @@ literal|"8657"
 block|,
 literal|"uArr"
 block|,
-literal|""
+literal|"\\\\Uparrow"
 block|}
 block|,
 comment|// upwards double arrow, U+21D1 ISOamsa
@@ -1745,7 +1744,7 @@ literal|"8658"
 block|,
 literal|"rArr"
 block|,
-literal|""
+literal|"\\\\Rightarrow"
 block|}
 block|,
 comment|// rightwards double arrow,
@@ -1785,7 +1784,7 @@ literal|"8706"
 block|,
 literal|"part"
 block|,
-literal|""
+literal|"\\$\\\\partial\\$"
 block|}
 block|,
 comment|// partial differential, U+2202 ISOtech
@@ -1794,7 +1793,7 @@ literal|"8707"
 block|,
 literal|"exist"
 block|,
-literal|""
+literal|"\\$\\\\exists\\$"
 block|}
 block|,
 comment|// there exists, U+2203 ISOtech
@@ -1803,7 +1802,7 @@ literal|"8709"
 block|,
 literal|"empty"
 block|,
-literal|""
+literal|"\\$\\\\emptyset\\$"
 block|}
 block|,
 comment|// empty set = null set = diameter,
@@ -1823,7 +1822,7 @@ literal|"8712"
 block|,
 literal|"isin"
 block|,
-literal|""
+literal|"\\$\\\\in\\$"
 block|}
 block|,
 comment|// element of, U+2208 ISOtech
@@ -1832,7 +1831,7 @@ literal|"8713"
 block|,
 literal|"notin"
 block|,
-literal|""
+literal|"\\$\\\\notin\\$"
 block|}
 block|,
 comment|// not an element of, U+2209 ISOtech
@@ -1841,7 +1840,7 @@ literal|"8715"
 block|,
 literal|"ni"
 block|,
-literal|""
+literal|"\\$\\\\ni\\$"
 block|}
 block|,
 comment|// contains as member, U+220B ISOtech
@@ -1918,7 +1917,7 @@ literal|"8736"
 block|,
 literal|"ang"
 block|,
-literal|""
+literal|"\\$\\\\angle\\$"
 block|}
 block|,
 comment|// angle, U+2220 ISOamso
@@ -1927,7 +1926,7 @@ literal|"8743"
 block|,
 literal|"and"
 block|,
-literal|""
+literal|"\\$\\\\land\\$"
 block|}
 block|,
 comment|// logical and = wedge, U+2227 ISOtech
@@ -1936,7 +1935,7 @@ literal|"8744"
 block|,
 literal|"or"
 block|,
-literal|""
+literal|"\\$\\\\lor\\$"
 block|}
 block|,
 comment|// logical or = vee, U+2228 ISOtech
@@ -1945,7 +1944,7 @@ literal|"8745"
 block|,
 literal|"cap"
 block|,
-literal|""
+literal|"\\$\\\\cap\\$"
 block|}
 block|,
 comment|// intersection = cap, U+2229 ISOtech
@@ -1954,7 +1953,7 @@ literal|"8746"
 block|,
 literal|"cup"
 block|,
-literal|""
+literal|"\\$\\\\cup\\$"
 block|}
 block|,
 comment|// union = cup, U+222A ISOtech
@@ -1963,7 +1962,7 @@ literal|"8747"
 block|,
 literal|"int"
 block|,
-literal|""
+literal|"\\$\\\\int\\$"
 block|}
 block|,
 comment|// integral, U+222B ISOtech
@@ -1972,16 +1971,16 @@ literal|"8756"
 block|,
 literal|"there4"
 block|,
-literal|""
+literal|"\\$\\\\uptherefore\\$"
 block|}
 block|,
-comment|// therefore, U+2234 ISOtech
+comment|// therefore, U+2234 ISOtech; only in LaTeX package MnSymbol
 block|{
 literal|"8764"
 block|,
 literal|"sim"
 block|,
-literal|""
+literal|"\\$\\\\sim\\$"
 block|}
 block|,
 comment|// tilde operator = varies with = similar to,
@@ -2105,7 +2104,7 @@ literal|"8855"
 block|,
 literal|"otimes"
 block|,
-literal|""
+literal|"\\$\\\\otimes\\$"
 block|}
 block|,
 comment|// circled times = vector product,
