@@ -2502,7 +2502,7 @@ expr_stmt|;
 block|}
 block|}
 comment|//date = date.trim();
-comment|//if (!date.length()==0) {
+comment|//if (!date.isEmpty()) {
 name|entry
 operator|.
 name|setField

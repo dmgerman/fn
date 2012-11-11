@@ -22,16 +22,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|FileNotFoundException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|IOException
 import|;
 end_import
@@ -42,7 +32,27 @@ name|java
 operator|.
 name|io
 operator|.
+name|FileNotFoundException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
 name|InputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|OutputStreamWriter
 import|;
 end_import
 
@@ -98,6 +108,16 @@ end_import
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Scanner
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -136,6 +156,30 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibtexFields
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|GUIGlobals
 import|;
 end_import
@@ -160,7 +204,73 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|JabRef
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|OutputPrinter
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|imports
+operator|.
+name|BibtexParser
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|imports
+operator|.
+name|EntryFetcher
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|imports
+operator|.
+name|ImportInspector
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Util
 import|;
 end_import
 
@@ -181,6 +291,8 @@ name|URL_PATTERN
 init|=
 literal|"http://dx.doi.org/%s"
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|stopFetching ()
 specifier|public
 name|void
@@ -189,6 +301,8 @@ parameter_list|()
 block|{
 comment|// nothing needed as the fetching is a single HTTP GET
 block|}
+annotation|@
+name|Override
 DECL|method|processQuery (String query, ImportInspector inspector, OutputPrinter status)
 specifier|public
 name|boolean
@@ -429,6 +543,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTitle ()
 specifier|public
 name|String
@@ -439,6 +555,8 @@ return|return
 literal|"DOI to BibTeX"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeyName ()
 specifier|public
 name|String
@@ -449,6 +567,8 @@ return|return
 literal|"DOItoBibTeX"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getIcon ()
 specifier|public
 name|URL
@@ -466,6 +586,8 @@ literal|"www"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getHelpPage ()
 specifier|public
 name|String
@@ -476,6 +598,8 @@ return|return
 literal|"DOItoBibTeXHelp.html"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getOptionsPanel ()
 specifier|public
 name|JPanel

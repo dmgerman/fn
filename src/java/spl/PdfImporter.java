@@ -1970,12 +1970,11 @@ name|string
 operator|!=
 literal|null
 operator|&&
+operator|!
 name|string
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 return|;
 block|}
 DECL|method|createNewEntry ()

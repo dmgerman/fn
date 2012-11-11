@@ -253,6 +253,8 @@ name|URL_PATTERN
 init|=
 literal|"http://manas.tungare.name/software/isbn-to-bibtex/isbn-service?isbn=%s"
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|stopFetching ()
 specifier|public
 name|void
@@ -261,6 +263,8 @@ parameter_list|()
 block|{
 comment|// nothing needed as the fetching is a single HTTP GET
 block|}
+annotation|@
+name|Override
 DECL|method|processQuery (String query, ImportInspector inspector, OutputPrinter status)
 specifier|public
 name|boolean
@@ -500,6 +504,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTitle ()
 specifier|public
 name|String
@@ -510,6 +516,8 @@ return|return
 literal|"ISBN to BibTeX"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeyName ()
 specifier|public
 name|String
@@ -520,6 +528,8 @@ return|return
 literal|"ISBNtoBibTeX"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getIcon ()
 specifier|public
 name|URL
@@ -537,6 +547,8 @@ literal|"www"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getHelpPage ()
 specifier|public
 name|String
@@ -547,6 +559,8 @@ return|return
 literal|"ISBNtoBibTeXHelp.html"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getOptionsPanel ()
 specifier|public
 name|JPanel

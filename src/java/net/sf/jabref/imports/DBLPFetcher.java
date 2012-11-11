@@ -187,6 +187,8 @@ operator|new
 name|DBLPHelper
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|stopFetching ()
 specifier|public
 name|void
@@ -198,6 +200,8 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|processQuery (String query, ImportInspector inspector, OutputPrinter status)
 specifier|public
 name|boolean
@@ -643,6 +647,8 @@ name|toString
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTitle ()
 specifier|public
 name|String
@@ -653,6 +659,8 @@ return|return
 literal|"DBLP"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeyName ()
 specifier|public
 name|String
@@ -663,6 +671,8 @@ return|return
 literal|"DBLP"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getIcon ()
 specifier|public
 name|URL
@@ -678,6 +688,8 @@ literal|"www"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getHelpPage ()
 specifier|public
 name|String
@@ -688,6 +700,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getOptionsPanel ()
 specifier|public
 name|JPanel
