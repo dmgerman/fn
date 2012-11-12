@@ -15368,7 +15368,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * @param nc indicates the undo named compound. May be null 	 */
+comment|/** 	 * @param ce indicates the undo named compound. May be null 	 */
 DECL|method|updateField (BibtexEntry be, String field, String newValue, NamedCompound ce)
 specifier|public
 specifier|static
@@ -15402,7 +15402,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * @param nc indicates the undo named compound. May be null 	 */
+comment|/** 	 * @param ce indicates the undo named compound. May be null 	 */
 DECL|method|updateField (BibtexEntry be, String field, String newValue, NamedCompound ce, Boolean nullFieldIfValueIsTheSame)
 specifier|public
 specifier|static
