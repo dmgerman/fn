@@ -712,7 +712,7 @@ name|put
 argument_list|(
 literal|"author"
 argument_list|,
-literal|"</h3>\\s+(.+)<br />"
+literal|"</h3>\\s*(.+)"
 argument_list|)
 expr_stmt|;
 name|fieldPatterns
@@ -752,13 +752,14 @@ argument_list|,
 literal|"Page\\(s\\):\\s*(\\d+)\\s*-\\s*(\\d*)"
 argument_list|)
 expr_stmt|;
+comment|//fieldPatterns.put("doi", "Digital Object Identifier:\\s*<a href=.*>(.+)</a>");
 name|fieldPatterns
 operator|.
 name|put
 argument_list|(
 literal|"doi"
 argument_list|,
-literal|"Digital Object Identifier:\\s*<a href=.*>(.+)</a>"
+literal|"<a href=\"http://dx.doi.org/(.+)\" target"
 argument_list|)
 expr_stmt|;
 block|}
@@ -2065,7 +2066,7 @@ name|title
 operator|.
 name|replaceAll
 argument_list|(
-literal|"/sup ([0-9\\+\\.\\(\\)]+)/"
+literal|"/sup (.+)/"
 argument_list|,
 literal|"\\$\\^$1\\$"
 argument_list|)
@@ -2076,9 +2077,21 @@ name|title
 operator|.
 name|replaceAll
 argument_list|(
-literal|"/sub ([0-9\\+\\.\\(\\)]+)/"
+literal|"/sub (.+)/"
 argument_list|,
 literal|"\\$_$1\\$"
+argument_list|)
+expr_stmt|;
+comment|// Deal with the form (sub)k(/sub)
+name|title
+operator|=
+name|title
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\(sup\\)(.+)\\(/sup\\)"
+argument_list|,
+literal|"\\$\\^$1\\$"
 argument_list|)
 expr_stmt|;
 comment|// Replace \infin with \infty

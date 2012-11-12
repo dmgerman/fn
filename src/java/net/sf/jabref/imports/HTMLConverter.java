@@ -2646,7 +2646,16 @@ literal|""
 block|,
 literal|"-"
 block|}
+block|,
 comment|// Hyphen
+block|{
+literal|"8729"
+block|,
+literal|""
+block|,
+literal|"\\$\\\\bullet\\$"
+block|}
+comment|// Bullet operator
 block|}
 decl_stmt|;
 DECL|field|escapedSymbols
