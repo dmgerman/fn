@@ -88,6 +88,7 @@ comment|/*   Portions Â© International Organization for Standardization 1986: 
 comment|// most of the LaTeX commands can be read at http://en.wikibooks.org/wiki/LaTeX/Accents
 comment|// The symbols can be looked at http://www.fileformat.info/info/unicode/char/a4/index.htm. Replace "a4" with the U+ number
 comment|// http://detexify.kirelabs.org/classify.html and http://www.ctan.org/tex-archive/info/symbols/comprehensive/ might help to find the right LaTeX command
+comment|// http://llg.cubic.org/docs/ent2latex.html is also useful
 DECL|field|conversionList
 specifier|private
 name|String
@@ -179,7 +180,7 @@ literal|"168"
 block|,
 literal|"uml"
 block|,
-literal|""
+literal|"\\\\\"\\{\\}"
 block|}
 block|,
 comment|// diaeresis = spacing diaeresis,
@@ -217,7 +218,7 @@ literal|"172"
 block|,
 literal|"not"
 block|,
-literal|""
+literal|"\\$\\\\neg\\$"
 block|}
 block|,
 comment|// not sign, U+00AC ISOnum
@@ -226,7 +227,7 @@ literal|"173"
 block|,
 literal|"shy"
 block|,
-literal|""
+literal|"\\\\-"
 block|}
 block|,
 comment|// soft hyphen = discretionary hyphen,
@@ -236,7 +237,7 @@ literal|"174"
 block|,
 literal|"reg"
 block|,
-literal|"\\textregistered"
+literal|"\\\\textregistered"
 block|}
 block|,
 comment|// registered sign = registered trade mark sign,
@@ -246,7 +247,7 @@ literal|"175"
 block|,
 literal|"macr"
 block|,
-literal|""
+literal|"\\\\=\\{\\}"
 block|}
 block|,
 comment|// macron = spacing macron = overline
@@ -295,7 +296,7 @@ literal|"180"
 block|,
 literal|"acute"
 block|,
-literal|""
+literal|"\\\\'\\{\\}"
 block|}
 block|,
 comment|// acute accent = spacing acute,
@@ -334,7 +335,7 @@ literal|"184"
 block|,
 literal|"cedil"
 block|,
-literal|""
+literal|"\\\\c\\{\\}"
 block|}
 block|,
 comment|// cedilla = spacing cedilla, U+00B8 ISOdia
@@ -434,7 +435,7 @@ literal|"194"
 block|,
 literal|"Acirc"
 block|,
-literal|""
+literal|"\\\\\\^\\{A\\}"
 block|}
 block|,
 comment|// latin capital letter A with circumflex,
@@ -516,7 +517,7 @@ literal|"202"
 block|,
 literal|"Ecirc"
 block|,
-literal|""
+literal|"\\\\\\^\\{E\\}"
 block|}
 block|,
 comment|// latin capital letter E with circumflex,
@@ -526,7 +527,7 @@ literal|"203"
 block|,
 literal|"Euml"
 block|,
-literal|"\\\"\\{E\\}"
+literal|"\\\\\"\\{E\\}"
 block|}
 block|,
 comment|// latin capital letter E with diaeresis,
@@ -556,7 +557,7 @@ literal|"206"
 block|,
 literal|"Icirc"
 block|,
-literal|""
+literal|"\\\\\\^\\{I\\}"
 block|}
 block|,
 comment|// latin capital letter I with circumflex,
@@ -566,7 +567,7 @@ literal|"207"
 block|,
 literal|"Iuml"
 block|,
-literal|"\\\"\\{I\\}"
+literal|"\\\\\"\\{I\\}"
 block|}
 block|,
 comment|// latin capital letter I with diaeresis,
@@ -576,7 +577,7 @@ literal|"208"
 block|,
 literal|"ETH"
 block|,
-literal|""
+literal|"\\{\\\\DH\\}"
 block|}
 block|,
 comment|// latin capital letter ETH, U+00D0 ISOlat1
@@ -615,7 +616,7 @@ literal|"212"
 block|,
 literal|"Ocirc"
 block|,
-literal|""
+literal|"\\\\\\^\\{O\\}"
 block|}
 block|,
 comment|// latin capital letter O with circumflex,
@@ -685,7 +686,7 @@ literal|"219"
 block|,
 literal|"Ucirc"
 block|,
-literal|""
+literal|"\\\\\\^\\{U\\}"
 block|}
 block|,
 comment|// latin capital letter U with circumflex,
@@ -715,7 +716,7 @@ literal|"222"
 block|,
 literal|"THORN"
 block|,
-literal|""
+literal|"\\{\\\\TH\\}"
 block|}
 block|,
 comment|// latin capital letter THORN,
@@ -756,7 +757,7 @@ literal|"226"
 block|,
 literal|"acirc"
 block|,
-literal|""
+literal|"\\\\\\^\\{a\\}"
 block|}
 block|,
 comment|// latin small letter a with circumflex,
@@ -837,7 +838,7 @@ literal|"234"
 block|,
 literal|"ecirc"
 block|,
-literal|""
+literal|"\\\\\\^\\{e\\}"
 block|}
 block|,
 comment|// latin small letter e with circumflex,
@@ -877,7 +878,7 @@ literal|"238"
 block|,
 literal|"icirc"
 block|,
-literal|""
+literal|"\\\\\\^\\{i\\}"
 block|}
 block|,
 comment|// latin small letter i with circumflex,
@@ -887,7 +888,7 @@ literal|"239"
 block|,
 literal|"iuml"
 block|,
-literal|"\\\\\"\\{i\\}"
+literal|"\\\\\"\\{\\\\i\\}"
 block|}
 block|,
 comment|// latin small letter i with diaeresis,
@@ -897,7 +898,7 @@ literal|"240"
 block|,
 literal|"eth"
 block|,
-literal|""
+literal|"\\\\dh"
 block|}
 block|,
 comment|// latin small letter eth, U+00F0 ISOlat1
@@ -936,7 +937,7 @@ literal|"244"
 block|,
 literal|"ocirc"
 block|,
-literal|""
+literal|"\\\\\\^\\{o\\}"
 block|}
 block|,
 comment|// latin small letter o with circumflex,
@@ -966,7 +967,7 @@ literal|"247"
 block|,
 literal|"divide"
 block|,
-literal|""
+literal|"/"
 block|}
 block|,
 comment|// division sign, U+00F7 ISOnum
@@ -1006,7 +1007,7 @@ literal|"251"
 block|,
 literal|"ucirc"
 block|,
-literal|""
+literal|"\\\\\\^\\{u\\}"
 block|}
 block|,
 comment|// latin small letter u with circumflex,
@@ -1036,7 +1037,7 @@ literal|"254"
 block|,
 literal|"thorn"
 block|,
-literal|""
+literal|"\\{\\\\th\\}"
 block|}
 block|,
 comment|// latin small letter thorn,
@@ -1056,7 +1057,7 @@ literal|"402"
 block|,
 literal|"fnof"
 block|,
-literal|""
+literal|"\\$f\\$"
 block|}
 block|,
 comment|// latin small f with hook = function
@@ -1453,7 +1454,7 @@ literal|"962"
 block|,
 literal|"sigmaf"
 block|,
-literal|""
+literal|"\\$\\\\varsigma\\$"
 block|}
 block|,
 comment|// greek small letter final sigma,
@@ -1529,7 +1530,7 @@ literal|"977"
 block|,
 literal|"thetasym"
 block|,
-literal|""
+literal|"\\$\\\\vartheta\\$"
 block|}
 block|,
 comment|// greek small letter theta symbol,
@@ -1570,7 +1571,7 @@ literal|"8230"
 block|,
 literal|"hellip"
 block|,
-literal|""
+literal|"\\{\\\\ldots\\}"
 block|}
 block|,
 comment|// horizontal ellipsis = three dot leader,
@@ -1580,7 +1581,7 @@ literal|"8242"
 block|,
 literal|"prime"
 block|,
-literal|""
+literal|"\\$\\\\prime\\$"
 block|}
 block|,
 comment|// prime = minutes = feet, U+2032 ISOtech
@@ -1589,7 +1590,7 @@ literal|"8243"
 block|,
 literal|"Prime"
 block|,
-literal|""
+literal|"\\$\\{''\\}\\$"
 block|}
 block|,
 comment|// double prime = seconds = inches,
@@ -1599,7 +1600,7 @@ literal|"8254"
 block|,
 literal|"oline"
 block|,
-literal|""
+literal|"\\\\=\\{\\}"
 block|}
 block|,
 comment|// overline = spacing overscore,
@@ -1609,7 +1610,7 @@ literal|"8260"
 block|,
 literal|"frasl"
 block|,
-literal|""
+literal|"/"
 block|}
 block|,
 comment|// fraction slash, U+2044 NEW
@@ -1619,7 +1620,7 @@ literal|"8472"
 block|,
 literal|"weierp"
 block|,
-literal|""
+literal|"\\$\\\\wp\\$"
 block|}
 block|,
 comment|// script capital P = power set
@@ -1658,7 +1659,7 @@ literal|"8501"
 block|,
 literal|"alefsym"
 block|,
-literal|""
+literal|"\\$\\\\aleph\\$"
 block|}
 block|,
 comment|// alef symbol = first transfinite cardinal,
@@ -2245,7 +2246,7 @@ literal|"34"
 block|,
 literal|"quot"
 block|,
-literal|"\\\""
+literal|"\""
 block|}
 block|,
 comment|// quotation mark = APL quote,
@@ -2616,7 +2617,7 @@ literal|"774"
 block|,
 literal|""
 block|,
-literal|""
+literal|"\\\\u\\{\\}"
 block|}
 block|,
 comment|// FIX: Breve - Can be solved better as it is a combining accent
@@ -2625,7 +2626,7 @@ literal|"776"
 block|,
 literal|""
 block|,
-literal|""
+literal|"\\\\\"\\{\\}"
 block|}
 block|,
 comment|// FIX: Diaeresis - Can be solved better as it is a combining accent
@@ -2634,7 +2635,7 @@ literal|"780"
 block|,
 literal|""
 block|,
-literal|""
+literal|"\\\\v\\{\\}"
 block|}
 block|,
 comment|// FIX: Caron - Can be solved better as it is a combining accent
