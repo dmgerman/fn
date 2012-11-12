@@ -124,7 +124,7 @@ literal|"162"
 block|,
 literal|"cent"
 block|,
-literal|""
+literal|"\\\\textcent"
 block|}
 block|,
 comment|// cent sign, U+00A2 ISOnum
@@ -151,7 +151,7 @@ literal|"165"
 block|,
 literal|"yen"
 block|,
-literal|""
+literal|"\\\\textyen"
 block|}
 block|,
 comment|// yen sign = yuan sign, U+00A5 ISOnum
@@ -170,7 +170,7 @@ literal|"167"
 block|,
 literal|"sect"
 block|,
-literal|""
+literal|"\\{\\\\S\\}"
 block|}
 block|,
 comment|// section sign, U+00A7 ISOnum
@@ -314,7 +314,7 @@ literal|"182"
 block|,
 literal|"para"
 block|,
-literal|""
+literal|"\\{\\\\P\\}"
 block|}
 block|,
 comment|// pilcrow sign = paragraph sign,
@@ -324,7 +324,7 @@ literal|"183"
 block|,
 literal|"middot"
 block|,
-literal|""
+literal|"\\\\textperiodcenter"
 block|}
 block|,
 comment|// middle dot = Georgian comma
@@ -403,7 +403,7 @@ literal|"191"
 block|,
 literal|"iquest"
 block|,
-literal|""
+literal|"\\\\textquestiondown"
 block|}
 block|,
 comment|// inverted question mark
@@ -654,7 +654,7 @@ literal|"216"
 block|,
 literal|"Oslash"
 block|,
-literal|""
+literal|"\\{\\\\O\\{\\}\\}"
 block|}
 block|,
 comment|// latin capital letter O with stroke
@@ -975,7 +975,7 @@ literal|"248"
 block|,
 literal|"oslash"
 block|,
-literal|""
+literal|"\\\\o\\{\\}"
 block|}
 block|,
 comment|// latin small letter o with stroke,
@@ -1549,7 +1549,7 @@ literal|"982"
 block|,
 literal|"piv"
 block|,
-literal|""
+literal|"\\$\\\\varphi\\$"
 block|}
 block|,
 comment|// greek pi symbol, U+03D6 ISOgrk3
@@ -1559,7 +1559,7 @@ literal|"8226"
 block|,
 literal|"bull"
 block|,
-literal|""
+literal|"\\$\\\\bullet\\$"
 block|}
 block|,
 comment|// bullet = black small circle,
@@ -1629,7 +1629,7 @@ literal|"8465"
 block|,
 literal|"image"
 block|,
-literal|""
+literal|"\\{\\$\\\\Im\\$\\}"
 block|}
 block|,
 comment|// blackletter capital I = imaginary part,
@@ -1639,7 +1639,7 @@ literal|"8476"
 block|,
 literal|"real"
 block|,
-literal|""
+literal|"\\{\\$\\\\Re\\$\\}"
 block|}
 block|,
 comment|// blackletter capital R = real part symbol,
@@ -1649,7 +1649,7 @@ literal|"8482"
 block|,
 literal|"trade"
 block|,
-literal|"\\texttrademark"
+literal|"\\\\texttrademark"
 block|}
 block|,
 comment|// trade mark sign, U+2122 ISOnum
@@ -1670,7 +1670,7 @@ literal|"8592"
 block|,
 literal|"larr"
 block|,
-literal|"\\\\leftarrow"
+literal|"\\$\\\\leftarrow\\$"
 block|}
 block|,
 comment|// leftwards arrow, U+2190 ISOnum
@@ -1679,7 +1679,7 @@ literal|"8593"
 block|,
 literal|"uarr"
 block|,
-literal|"\\\\uparrow"
+literal|"\\$\\\\uparrow\\$"
 block|}
 block|,
 comment|// upwards arrow, U+2191 ISOnum
@@ -1688,7 +1688,7 @@ literal|"8594"
 block|,
 literal|"rarr"
 block|,
-literal|"\\\\rightarrow"
+literal|"\\$\\\\rightarrow\\$"
 block|}
 block|,
 comment|// rightwards arrow, U+2192 ISOnum
@@ -1697,7 +1697,7 @@ literal|"8595"
 block|,
 literal|"darr"
 block|,
-literal|"\\\\downarrow"
+literal|"\\$\\\\downarrow\\$"
 block|}
 block|,
 comment|// downwards arrow, U+2193 ISOnum
@@ -1706,7 +1706,7 @@ literal|"8596"
 block|,
 literal|"harr"
 block|,
-literal|""
+literal|"\\$\\\\leftrightarrow\\$"
 block|}
 block|,
 comment|// left right arrow, U+2194 ISOamsa
@@ -1725,7 +1725,7 @@ literal|"8656"
 block|,
 literal|"lArr"
 block|,
-literal|"\\\\Leftarrow"
+literal|"\\{\\$\\\\Leftarrow\\$\\}"
 block|}
 block|,
 comment|// leftwards double arrow, U+21D0 ISOtech
@@ -1735,7 +1735,7 @@ literal|"8657"
 block|,
 literal|"uArr"
 block|,
-literal|"\\\\Uparrow"
+literal|"\\{\\$\\\\Uparrow\\$\\}"
 block|}
 block|,
 comment|// upwards double arrow, U+21D1 ISOamsa
@@ -1744,7 +1744,7 @@ literal|"8658"
 block|,
 literal|"rArr"
 block|,
-literal|"\\\\Rightarrow"
+literal|"\\{\\$\\\\Rightarrow\\$\\}"
 block|}
 block|,
 comment|// rightwards double arrow,
@@ -1755,7 +1755,7 @@ literal|"8659"
 block|,
 literal|"dArr"
 block|,
-literal|""
+literal|"\\{\\$\\\\Downarrow\\$\\}"
 block|}
 block|,
 comment|// downwards double arrow, U+21D3 ISOamsa
@@ -1764,7 +1764,7 @@ literal|"8660"
 block|,
 literal|"hArr"
 block|,
-literal|""
+literal|"\\{\\$\\\\Leftrightarrow\\$\\}"
 block|}
 block|,
 comment|// left right double arrow,
@@ -1812,7 +1812,7 @@ literal|"8711"
 block|,
 literal|"nabla"
 block|,
-literal|""
+literal|"\\$\\\\nabla\\$"
 block|}
 block|,
 comment|// nabla = backward difference,
@@ -1880,7 +1880,7 @@ literal|"8727"
 block|,
 literal|"lowast"
 block|,
-literal|""
+literal|"\\$\\\\ast\\$"
 block|}
 block|,
 comment|// asterisk operator, U+2217 ISOtech
@@ -1991,7 +1991,7 @@ literal|"8773"
 block|,
 literal|"cong"
 block|,
-literal|""
+literal|"\\$\\\\cong\\$"
 block|}
 block|,
 comment|// approximately equal to, U+2245 ISOtech
@@ -2000,7 +2000,7 @@ literal|"8776"
 block|,
 literal|"asymp"
 block|,
-literal|""
+literal|"\\$\\\\approx\\$"
 block|}
 block|,
 comment|// almost equal to = asymptotic to,
@@ -2010,7 +2010,7 @@ literal|"8800"
 block|,
 literal|"ne"
 block|,
-literal|""
+literal|"\\$\\\\neq\\$"
 block|}
 block|,
 comment|// not equal to, U+2260 ISOtech
@@ -2019,7 +2019,7 @@ literal|"8801"
 block|,
 literal|"equiv"
 block|,
-literal|""
+literal|"\\$\\\\equiv\\$"
 block|}
 block|,
 comment|// identical to, U+2261 ISOtech
@@ -2047,7 +2047,7 @@ literal|"8834"
 block|,
 literal|"sub"
 block|,
-literal|""
+literal|"\\$\\\\subset\\$"
 block|}
 block|,
 comment|// subset of, U+2282 ISOtech
@@ -2056,7 +2056,7 @@ literal|"8835"
 block|,
 literal|"sup"
 block|,
-literal|""
+literal|"\\$\\\\supset\\$"
 block|}
 block|,
 comment|// superset of, U+2283 ISOtech
@@ -2075,7 +2075,7 @@ literal|"8838"
 block|,
 literal|"sube"
 block|,
-literal|""
+literal|"\\$\\\\subseteq\\$"
 block|}
 block|,
 comment|// subset of or equal to, U+2286 ISOtech
@@ -2084,7 +2084,7 @@ literal|"8839"
 block|,
 literal|"supe"
 block|,
-literal|""
+literal|"\\$\\\\supseteq\\$"
 block|}
 block|,
 comment|// superset of or equal to,
@@ -2114,7 +2114,7 @@ literal|"8869"
 block|,
 literal|"perp"
 block|,
-literal|""
+literal|"\\$\\\\perp\\$"
 block|}
 block|,
 comment|// up tack = orthogonal to = perpendicular,
@@ -2124,7 +2124,7 @@ literal|"8901"
 block|,
 literal|"sdot"
 block|,
-literal|""
+literal|"\\$\\\\cdot\\$"
 block|}
 block|,
 comment|// dot operator, U+22C5 ISOamsb
@@ -2135,7 +2135,7 @@ literal|"8968"
 block|,
 literal|"lceil"
 block|,
-literal|""
+literal|"\\$\\\\lceil\\$"
 block|}
 block|,
 comment|// left ceiling = apl upstile,
@@ -2145,7 +2145,7 @@ literal|"8969"
 block|,
 literal|"rceil"
 block|,
-literal|""
+literal|"\\$\\\\rceil\\$"
 block|}
 block|,
 comment|// right ceiling, U+2309 ISOamsc
@@ -2154,7 +2154,7 @@ literal|"8970"
 block|,
 literal|"lfloor"
 block|,
-literal|""
+literal|"\\$\\\\lfloor\\$"
 block|}
 block|,
 comment|// left floor = apl downstile,
@@ -2164,7 +2164,7 @@ literal|"8971"
 block|,
 literal|"rfloor"
 block|,
-literal|""
+literal|"\\$\\\\rfloor\\$"
 block|}
 block|,
 comment|// right floor, U+230B ISOamsc
@@ -2173,7 +2173,7 @@ literal|"9001"
 block|,
 literal|"lang"
 block|,
-literal|""
+literal|"\\$\\\\langle\\$"
 block|}
 block|,
 comment|// left-pointing angle bracket = bra,
@@ -2184,7 +2184,7 @@ literal|"9002"
 block|,
 literal|"rang"
 block|,
-literal|""
+literal|"\\$\\\\rangle\\$"
 block|}
 block|,
 comment|// right-pointing angle bracket = ket,
@@ -2196,7 +2196,7 @@ literal|"9674"
 block|,
 literal|"loz"
 block|,
-literal|""
+literal|"\\$\\\\lozenge\\$"
 block|}
 block|,
 comment|// lozenge, U+25CA ISOpub
@@ -2245,7 +2245,7 @@ literal|"34"
 block|,
 literal|"quot"
 block|,
-literal|"\""
+literal|"\\\""
 block|}
 block|,
 comment|// quotation mark = APL quote,
@@ -2255,7 +2255,7 @@ literal|"38"
 block|,
 literal|"amp"
 block|,
-literal|"&"
+literal|"\\\\&"
 block|}
 block|,
 comment|// ampersand, U+0026 ISOnum
@@ -2264,7 +2264,7 @@ literal|"60"
 block|,
 literal|"lt"
 block|,
-literal|"<"
+literal|"\\$<\\$"
 block|}
 block|,
 comment|// less-than sign, U+003C ISOnum
@@ -2273,7 +2273,7 @@ literal|"62"
 block|,
 literal|"gt"
 block|,
-literal|">"
+literal|"\\$>\\$"
 block|}
 block|,
 comment|// greater-than sign, U+003E ISOnum
@@ -2334,7 +2334,7 @@ literal|"710"
 block|,
 literal|"circ"
 block|,
-literal|""
+literal|"\\\\textasciicircum"
 block|}
 block|,
 comment|// modifier letter circumflex accent,
@@ -2344,7 +2344,7 @@ literal|"732"
 block|,
 literal|"tilde"
 block|,
-literal|""
+literal|"\\\\textasciitilde"
 block|}
 block|,
 comment|// small tilde, U+02DC ISOdia
@@ -2494,7 +2494,7 @@ literal|"8224"
 block|,
 literal|"dagger"
 block|,
-literal|""
+literal|"\\\\dag"
 block|}
 block|,
 comment|// dagger, U+2020 ISOpub
@@ -2503,7 +2503,7 @@ literal|"8225"
 block|,
 literal|"Dagger"
 block|,
-literal|""
+literal|"\\\\ddag"
 block|}
 block|,
 comment|// double dagger, U+2021 ISOpub
@@ -2512,7 +2512,7 @@ literal|"8240"
 block|,
 literal|"permil"
 block|,
-literal|""
+literal|"\\\\textperthousand"
 block|}
 block|,
 comment|// per mille sign, U+2030 ISOtech
@@ -2571,7 +2571,7 @@ literal|"123"
 block|,
 literal|""
 block|,
-literal|"\\{"
+literal|"\\\\\\{"
 block|}
 block|,
 comment|// Left curly bracket
@@ -2580,7 +2580,7 @@ literal|"125"
 block|,
 literal|""
 block|,
-literal|"\\}"
+literal|"\\\\\\}"
 block|}
 block|,
 comment|// Right curly bracket
