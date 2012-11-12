@@ -464,7 +464,7 @@ literal|"197"
 block|,
 literal|"Aring"
 block|,
-literal|""
+literal|"\\{\\\\AA\\}"
 block|}
 block|,
 comment|// latin capital letter A with ring above
@@ -786,7 +786,7 @@ literal|"229"
 block|,
 literal|"aring"
 block|,
-literal|""
+literal|"\\{\\\\aa\\}"
 block|}
 block|,
 comment|// latin small letter a with ring above
@@ -2584,6 +2584,15 @@ literal|"\\\\\\}"
 block|}
 block|,
 comment|// Right curly bracket
+block|{
+literal|"146"
+block|,
+literal|""
+block|,
+literal|"'"
+block|}
+block|,
+comment|// Private use two ???
 block|{
 literal|"305"
 block|,
