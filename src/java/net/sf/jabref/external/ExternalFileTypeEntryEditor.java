@@ -152,7 +152,7 @@ name|forms
 operator|.
 name|builder
 operator|.
-name|ButtonBarBuilder2
+name|ButtonBarBuilder
 import|;
 end_import
 
@@ -723,11 +723,11 @@ name|browseBut
 argument_list|)
 expr_stmt|;
 block|}
-name|ButtonBarBuilder2
+name|ButtonBarBuilder
 name|bb
 init|=
 operator|new
-name|ButtonBarBuilder2
+name|ButtonBarBuilder
 argument_list|()
 decl_stmt|;
 name|bb

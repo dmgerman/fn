@@ -174,7 +174,7 @@ name|forms
 operator|.
 name|builder
 operator|.
-name|ButtonBarBuilder2
+name|ButtonBarBuilder
 import|;
 end_import
 
@@ -1294,11 +1294,11 @@ name|scrollPane
 argument_list|)
 expr_stmt|;
 comment|// progressArea.setPreferredSize(new Dimension(300, 300));
-name|ButtonBarBuilder2
+name|ButtonBarBuilder
 name|bb
 init|=
 operator|new
-name|ButtonBarBuilder2
+name|ButtonBarBuilder
 argument_list|()
 decl_stmt|;
 name|bb
