@@ -3707,6 +3707,13 @@ name|equalsIgnoreCase
 argument_list|(
 literal|"IET Conference Publications"
 argument_list|)
+operator|||
+name|typeName
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"VDE Conference Publications"
+argument_list|)
 condition|)
 block|{
 name|type
