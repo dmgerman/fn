@@ -3688,6 +3688,13 @@ name|equalsIgnoreCase
 argument_list|(
 literal|"IBM Journals&amp; Magazines"
 argument_list|)
+operator|||
+name|typeName
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"TUP Journals&amp; Magazines"
+argument_list|)
 condition|)
 block|{
 name|type
