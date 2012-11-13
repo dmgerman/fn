@@ -2640,6 +2640,15 @@ block|}
 block|,
 comment|// FIX: Caron - Can be solved better as it is a combining accent
 block|{
+literal|"2013"
+block|,
+literal|""
+block|,
+literal|""
+block|}
+block|,
+comment|// NKO letter FA
+block|{
 literal|"8208"
 block|,
 literal|""
@@ -2655,7 +2664,16 @@ literal|""
 block|,
 literal|"\\$\\\\bullet\\$"
 block|}
+block|,
 comment|// Bullet operator
+block|{
+literal|"10877"
+block|,
+literal|"les"
+block|,
+literal|"\\$\\\\leqslant\\$"
+block|}
+comment|// Less than slanted equal -- requires amssymb
 block|}
 decl_stmt|;
 DECL|field|escapedSymbols
