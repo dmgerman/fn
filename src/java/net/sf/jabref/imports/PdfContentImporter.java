@@ -190,6 +190,18 @@ name|OutputPrinter
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
 comment|/**  * PdfContentImporter parses data of the first page of the PDF and creates a BibTeX entry.  *   * Currently, Springer and IEEE formats are supported.  *   * Integrating XMP support is future work  *   * @author koppor  *  */
 end_comment
@@ -219,6 +231,17 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
+decl_stmt|;
+comment|// we can store the DOItoBibTeXFetcher as single reference as the fetcher doesn't hold internal state
+DECL|field|doiToBibTeXFetcher
+specifier|private
+specifier|static
+name|DOItoBibTeXFetcher
+name|doiToBibTeXFetcher
+init|=
+operator|new
+name|DOItoBibTeXFetcher
+argument_list|()
 decl_stmt|;
 comment|/* global variables holding the state of the current parse run 	 * needed to be able to generate methods such as "fillCurStringWithNonEmptyLines" 	 */
 comment|// input split into several lines
@@ -957,6 +980,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+specifier|final
 name|ArrayList
 argument_list|<
 name|BibtexEntry
@@ -1104,6 +1128,110 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
+name|String
+name|doi
+init|=
+name|Util
+operator|.
+name|getDOI
+argument_list|(
+name|textResult
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|doi
+operator|.
+name|length
+argument_list|()
+operator|<
+name|textResult
+operator|.
+name|length
+argument_list|()
+condition|)
+block|{
+comment|// A DOI was found in the text
+comment|// We do NO parsing of the text, but use the DOI fetcher
+name|ImportInspector
+name|i
+init|=
+operator|new
+name|ImportInspector
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|void
+name|toFront
+parameter_list|()
+block|{ 					}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|setProgress
+parameter_list|(
+name|int
+name|current
+parameter_list|,
+name|int
+name|max
+parameter_list|)
+block|{ 					}
+annotation|@
+name|Override
+specifier|public
+name|void
+name|addEntry
+parameter_list|(
+name|BibtexEntry
+name|entry
+parameter_list|)
+block|{
+comment|// add the entry to the result object
+name|res
+operator|.
+name|add
+argument_list|(
+name|entry
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+decl_stmt|;
+name|doiToBibTeXFetcher
+operator|.
+name|processQuery
+argument_list|(
+name|doi
+argument_list|,
+name|i
+argument_list|,
+name|status
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+name|res
+operator|.
+name|size
+argument_list|()
+operator|!=
+literal|0
+condition|)
+block|{
+comment|// if something has been found, return the result
+return|return
+name|res
+return|;
+block|}
+else|else
+block|{
+comment|// otherwise, we just parse the PDF
+block|}
+block|}
 name|String
 name|author
 init|=

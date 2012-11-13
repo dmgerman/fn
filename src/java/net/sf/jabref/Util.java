@@ -158,6 +158,16 @@ name|java
 operator|.
 name|net
 operator|.
+name|URLConnection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
 name|URLDecoder
 import|;
 end_import
@@ -14885,7 +14895,7 @@ literal|".*"
 argument_list|)
 return|;
 block|}
-comment|/**    	 * Remove the http://... from DOI    	 *     	 * @param doi - may not be null    	 * @return first DOI in the given String (without http://... prefix)    	 */
+comment|/**    	 * Remove the http://... from DOI    	 *     	 * @param doi - may not be null    	 * @return first DOI in the given String (without http://... prefix). If no DOI exists, the complete string is returned    	 */
 DECL|method|getDOI (String doi)
 specifier|public
 specifier|static
