@@ -2137,6 +2137,32 @@ operator|!=
 literal|null
 condition|)
 block|{
+if|if
+condition|(
+name|author
+operator|.
+name|indexOf
+argument_list|(
+literal|"a href="
+argument_list|)
+operator|>=
+literal|0
+condition|)
+block|{
+comment|// Author parsing failed because it was empty
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"author"
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+comment|// Maybe not needed anymore due to another change
+block|}
+else|else
+block|{
 name|author
 operator|=
 name|author
@@ -2201,6 +2227,7 @@ argument_list|,
 name|author
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// clean up month
 name|String
@@ -4120,6 +4147,18 @@ literal|"author"
 argument_list|)
 operator|==
 literal|null
+operator|||
+name|entry
+operator|.
+name|getField
+argument_list|(
+literal|"author"
+argument_list|)
+operator|.
+name|startsWith
+argument_list|(
+literal|"a href"
+argument_list|)
 condition|)
 block|{
 comment|// Fix for some documents without authors
