@@ -325,7 +325,7 @@ literal|"183"
 block|,
 literal|"middot"
 block|,
-literal|"\\\\textperiodcenter"
+literal|"\\$\\\\cdot\\$"
 block|}
 block|,
 comment|// middle dot = Georgian comma
@@ -2568,6 +2568,15 @@ block|}
 block|,
 comment|// Plus
 block|{
+literal|"95"
+block|,
+literal|""
+block|,
+literal|"\\\\_"
+block|}
+block|,
+comment|// Underscore
+block|{
 literal|"123"
 block|,
 literal|""
@@ -2868,6 +2877,18 @@ operator|new
 name|StringBuffer
 argument_list|()
 decl_stmt|;
+comment|// Deal with the form<sup>k</sup>
+name|text
+operator|=
+name|text
+operator|.
+name|replaceAll
+argument_list|(
+literal|"<sup>([^<]+)</sup>"
+argument_list|,
+literal|"\\$\\^$1\\$"
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|int
@@ -2977,7 +2998,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"&#([x]*\\p{XDigit}+);"
+literal|"&#([x]*)([0]*)(\\p{XDigit}+);"
 argument_list|)
 decl_stmt|;
 name|Matcher
@@ -2998,6 +3019,8 @@ name|find
 argument_list|()
 condition|)
 block|{
+comment|//	    System.err.println("Found pattern: " + m.group(1));
+comment|//      System.err.println("Found pattern: " + m.group(2));
 name|int
 name|num
 init|=
@@ -3017,6 +3040,13 @@ argument_list|(
 literal|"x"
 argument_list|,
 literal|"#"
+argument_list|)
+operator|+
+name|m
+operator|.
+name|group
+argument_list|(
+literal|3
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3045,6 +3075,20 @@ argument_list|(
 literal|1
 argument_list|)
 operator|+
+name|m
+operator|.
+name|group
+argument_list|(
+literal|2
+argument_list|)
+operator|+
+name|m
+operator|.
+name|group
+argument_list|(
+literal|3
+argument_list|)
+operator|+
 literal|";"
 argument_list|,
 name|numSymbols
@@ -3071,6 +3115,20 @@ operator|.
 name|group
 argument_list|(
 literal|1
+argument_list|)
+operator|+
+name|m
+operator|.
+name|group
+argument_list|(
+literal|2
+argument_list|)
+operator|+
+name|m
+operator|.
+name|group
+argument_list|(
+literal|3
 argument_list|)
 operator|+
 literal|": "

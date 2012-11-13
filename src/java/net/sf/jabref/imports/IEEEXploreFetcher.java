@@ -721,7 +721,7 @@ name|put
 argument_list|(
 literal|"volume"
 argument_list|,
-literal|"Volume:\\s*(\\d+)"
+literal|"Volume:\\s*([A-Za-z-]*\\d+)"
 argument_list|)
 expr_stmt|;
 name|fieldPatterns
@@ -2018,7 +2018,7 @@ name|title
 operator|.
 name|replaceAll
 argument_list|(
-literal|"[ ]?img src=.+alt=\"(.+)\">[ ]?"
+literal|"[ ]?img src=.+alt=\"([^\"]+)\">[ ]?"
 argument_list|,
 literal|"\\$$1\\$"
 argument_list|)
@@ -2066,7 +2066,7 @@ name|title
 operator|.
 name|replaceAll
 argument_list|(
-literal|"/sup (.+)/"
+literal|"/sup ([^/]+)/"
 argument_list|,
 literal|"\\$\\^$1\\$"
 argument_list|)
@@ -2077,19 +2077,19 @@ name|title
 operator|.
 name|replaceAll
 argument_list|(
-literal|"/sub (.+)/"
+literal|"/sub ([^/]+)/"
 argument_list|,
 literal|"\\$_$1\\$"
 argument_list|)
 expr_stmt|;
-comment|// Deal with the form (sub)k(/sub)
+comment|// Deal with the form (sup)k(/sup)
 name|title
 operator|=
 name|title
 operator|.
 name|replaceAll
 argument_list|(
-literal|"\\(sup\\)(.+)\\(/sup\\)"
+literal|"\\(sup\\)([^/]+)\\(/sup\\)"
 argument_list|,
 literal|"\\$\\^$1\\$"
 argument_list|)
@@ -2136,6 +2136,32 @@ name|author
 operator|!=
 literal|null
 condition|)
+block|{
+if|if
+condition|(
+name|author
+operator|.
+name|indexOf
+argument_list|(
+literal|"a href="
+argument_list|)
+operator|>=
+literal|0
+condition|)
+block|{
+comment|// Author parsing failed because it was empty
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"author"
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+comment|// Maybe not needed anymore due to another change
+block|}
+else|else
 block|{
 name|author
 operator|=
@@ -2201,6 +2227,7 @@ argument_list|,
 name|author
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// clean up month
 name|String
@@ -4127,6 +4154,18 @@ literal|"author"
 argument_list|)
 operator|==
 literal|null
+operator|||
+name|entry
+operator|.
+name|getField
+argument_list|(
+literal|"author"
+argument_list|)
+operator|.
+name|startsWith
+argument_list|(
+literal|"a href"
+argument_list|)
 condition|)
 block|{
 comment|// Fix for some documents without authors
@@ -4187,13 +4226,11 @@ condition|)
 block|{
 name|index
 operator|=
-name|allText
+name|text
 operator|.
 name|indexOf
 argument_list|(
-literal|"id=\"abstract-1\""
-argument_list|,
-name|piv
+literal|"id=\"abstract"
 argument_list|)
 expr_stmt|;
 if|if
@@ -4205,7 +4242,7 @@ condition|)
 block|{
 name|endIndex
 operator|=
-name|allText
+name|text
 operator|.
 name|indexOf
 argument_list|(
@@ -4216,13 +4253,9 @@ argument_list|)
 operator|+
 literal|6
 expr_stmt|;
-name|piv
-operator|=
-name|endIndex
-expr_stmt|;
 name|text
 operator|=
-name|allText
+name|text
 operator|.
 name|substring
 argument_list|(
@@ -4249,17 +4282,39 @@ name|find
 argument_list|()
 condition|)
 block|{
+comment|// Clean-up abstract
+name|String
+name|abstr
+init|=
+name|absMatcher
+operator|.
+name|group
+argument_list|(
+literal|1
+argument_list|)
+decl_stmt|;
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"<span class='snippet'>([\\w]+)</span>"
+argument_list|,
+literal|"$1"
+argument_list|)
+expr_stmt|;
 name|entry
 operator|.
 name|setField
 argument_list|(
 literal|"abstract"
 argument_list|,
-name|absMatcher
+name|htmlConverter
 operator|.
-name|group
+name|format
 argument_list|(
-literal|1
+name|abstr
 argument_list|)
 argument_list|)
 expr_stmt|;
