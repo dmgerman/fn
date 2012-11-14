@@ -100,7 +100,7 @@ comment|/*   Portions Â© International Organization for Standardization 1986: 
 comment|// most of the LaTeX commands can be read at http://en.wikibooks.org/wiki/LaTeX/Accents
 comment|// The symbols can be looked at http://www.fileformat.info/info/unicode/char/a4/index.htm. Replace "a4" with the U+ number
 comment|// http://detexify.kirelabs.org/classify.html and http://www.ctan.org/tex-archive/info/symbols/comprehensive/ might help to find the right LaTeX command
-comment|// http://llg.cubic.org/docs/ent2latex.html is also useful
+comment|// http://llg.cubic.org/docs/ent2latex.html and http://www.w3.org/TR/xml-entity-names/byalpha.html are also useful
 DECL|field|conversionList
 specifier|private
 name|String
@@ -155,7 +155,7 @@ literal|"164"
 block|,
 literal|"curren"
 block|,
-literal|""
+literal|"\\\\textcurrency"
 block|}
 block|,
 comment|// currency sign, U+00A4 ISOnum
@@ -173,7 +173,7 @@ literal|"166"
 block|,
 literal|"brvbar"
 block|,
-literal|""
+literal|"\\\\textbrokenbar"
 block|}
 block|,
 comment|// broken bar = broken vertical bar,
@@ -1552,7 +1552,7 @@ literal|"978"
 block|,
 literal|"upsih"
 block|,
-literal|""
+literal|"\\{\\$\\\\Upsilon\\$\\}"
 block|}
 block|,
 comment|// greek upsilon with hook symbol,
@@ -2079,7 +2079,7 @@ literal|"8836"
 block|,
 literal|"nsub"
 block|,
-literal|""
+literal|"\\$\\\\nsubset\\$"
 block|}
 block|,
 comment|// not a subset of, U+2284 ISOamsn
@@ -2316,7 +2316,7 @@ literal|"352"
 block|,
 literal|"Scaron"
 block|,
-literal|""
+literal|"\\\\v\\{S\\}"
 block|}
 block|,
 comment|// latin capital letter S with caron,
@@ -2326,7 +2326,7 @@ literal|"353"
 block|,
 literal|"scaron"
 block|,
-literal|""
+literal|"\\\\v\\{s\\}"
 block|}
 block|,
 comment|// latin small letter s with caron,
@@ -2449,7 +2449,7 @@ literal|"8216"
 block|,
 literal|"lsquo"
 block|,
-literal|"`"
+literal|"\\\\textquoteleft"
 block|}
 block|,
 comment|// left single quotation mark,
@@ -2459,7 +2459,7 @@ literal|"8217"
 block|,
 literal|"rsquo"
 block|,
-literal|"'"
+literal|"\\\\textquoteright"
 block|}
 block|,
 comment|// right single quotation mark,
@@ -2469,7 +2469,7 @@ literal|"8218"
 block|,
 literal|"sbquo"
 block|,
-literal|""
+literal|"\\\\quotesinglbase"
 block|}
 block|,
 comment|// single low-9 quotation mark, U+201A NEW
@@ -2478,7 +2478,7 @@ literal|"8220"
 block|,
 literal|"ldquo"
 block|,
-literal|"``"
+literal|"\\\\textquotedblleft"
 block|}
 block|,
 comment|// left double quotation mark,
@@ -2488,7 +2488,7 @@ literal|"8221"
 block|,
 literal|"rdquo"
 block|,
-literal|"''"
+literal|"\\\\textquotedblright"
 block|}
 block|,
 comment|// right double quotation mark,
@@ -2498,7 +2498,7 @@ literal|"8222"
 block|,
 literal|"bdquo"
 block|,
-literal|""
+literal|"\\\\quotedblbase"
 block|}
 block|,
 comment|// double low-9 quotation mark, U+201E NEW
@@ -2534,7 +2534,7 @@ literal|"8249"
 block|,
 literal|"lsaquo"
 block|,
-literal|""
+literal|"\\\\guilsinglleft"
 block|}
 block|,
 comment|// single left-pointing angle quotation mark,
@@ -2545,7 +2545,7 @@ literal|"8250"
 block|,
 literal|"rsaquo"
 block|,
-literal|""
+literal|"\\\\guilsinglright"
 block|}
 block|,
 comment|// single right-pointing angle quotation mark,
@@ -2573,7 +2573,7 @@ comment|// Percent
 block|{
 literal|"43"
 block|,
-literal|""
+literal|"plus"
 block|,
 literal|"\\+"
 block|}
@@ -2582,7 +2582,7 @@ comment|// Plus
 block|{
 literal|"95"
 block|,
-literal|""
+literal|"lowbar"
 block|,
 literal|"\\\\_"
 block|}
@@ -2591,7 +2591,7 @@ comment|// Underscore
 block|{
 literal|"123"
 block|,
-literal|""
+literal|"lbrace"
 block|,
 literal|"\\\\\\{"
 block|}
@@ -2600,7 +2600,7 @@ comment|// Left curly bracket
 block|{
 literal|"125"
 block|,
-literal|""
+literal|"rbrace"
 block|,
 literal|"\\\\\\}"
 block|}
@@ -2616,6 +2616,15 @@ block|}
 block|,
 comment|// Private use two ???
 block|{
+literal|"264"
+block|,
+literal|"Ccirc"
+block|,
+literal|"\\\\\\^\\{C\\}"
+block|}
+block|,
+comment|// capital C with circumflex
+block|{
 literal|"305"
 block|,
 literal|"inodot"
@@ -2627,7 +2636,7 @@ comment|// Small i without the dot
 block|{
 literal|"321"
 block|,
-literal|""
+literal|"Lstrok"
 block|,
 literal|"\\{\\\\L\\}"
 block|}
@@ -2636,12 +2645,30 @@ comment|// upper case l with stroke
 block|{
 literal|"322"
 block|,
-literal|""
+literal|"lstrok"
 block|,
 literal|"\\{\\\\l\\}"
 block|}
 block|,
 comment|// lower case l with stroke
+block|{
+literal|"536"
+block|,
+literal|""
+block|,
+literal|"\\\\cb\\{S\\}"
+block|}
+block|,
+comment|// capital letter S with comma below, require combelow
+block|{
+literal|"537"
+block|,
+literal|""
+block|,
+literal|"\\\\cb\\{s\\}"
+block|}
+block|,
+comment|// small letter S with comma below, require combelow
 block|{
 literal|"769"
 block|,
@@ -2661,6 +2688,15 @@ block|}
 block|,
 comment|// FIX: Breve - Can be solved better as it is a combining accent
 block|{
+literal|"775"
+block|,
+literal|""
+block|,
+literal|"\\\\\\.\\{\\}"
+block|}
+block|,
+comment|// FIX: Dot above - Can be solved better as it is a combining accent
+block|{
 literal|"776"
 block|,
 literal|""
@@ -2679,6 +2715,15 @@ block|}
 block|,
 comment|// FIX: Caron - Can be solved better as it is a combining accent
 block|{
+literal|"807"
+block|,
+literal|""
+block|,
+literal|"\\\\c\\{\\}"
+block|}
+block|,
+comment|// FIX: Cedilla - Can be solved better as it is a combining accent
+block|{
 literal|"949"
 block|,
 literal|"epsi"
@@ -2687,6 +2732,15 @@ literal|"\\$\\\\epsilon\\$"
 block|}
 block|,
 comment|// Epsilon - double check
+block|{
+literal|"1013"
+block|,
+literal|"epsiv"
+block|,
+literal|"\\$\\\\varepsilonup\\$"
+block|}
+block|,
+comment|// lunate epsilon, requires txfonts
 block|{
 literal|"2013"
 block|,
@@ -2744,7 +2798,7 @@ comment|// script small l
 block|{
 literal|"8491"
 block|,
-literal|""
+literal|"angst"
 block|,
 literal|"\\{\\\\AA\\}"
 block|}
@@ -2753,7 +2807,7 @@ comment|// Angstrom
 block|{
 literal|"8729"
 block|,
-literal|""
+literal|"bullet"
 block|,
 literal|"\\$\\\\bullet\\$"
 block|}
@@ -2771,7 +2825,7 @@ comment|// almost equal to = asymptotic to,
 block|{
 literal|"8810"
 block|,
-literal|""
+literal|"ll"
 block|,
 literal|"\\$\\\\ll\\$"
 block|}
@@ -2780,12 +2834,31 @@ comment|// Much less than
 block|{
 literal|"8811"
 block|,
-literal|""
+literal|"gg"
 block|,
 literal|"\\$\\\\gg\\$"
 block|}
 block|,
 comment|// Much greater than
+block|{
+literal|"9426"
+block|,
+literal|""
+block|,
+literal|"\\\\copyright"
+block|}
+block|,
+comment|// circled small letter C
+block|{
+literal|"9653"
+block|,
+literal|"utri"
+block|,
+literal|"\\$\\\\triangle\\$"
+block|}
+block|,
+comment|// White up-pointing small triangle -- \vartriangle probably
+comment|// better but requires amssymb
 block|{
 literal|"10877"
 block|,
