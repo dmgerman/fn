@@ -2769,7 +2769,7 @@ name|isAbsolute
 argument_list|()
 operator|)
 condition|)
-return|return;
+continue|continue;
 name|String
 name|newFilename
 init|=
@@ -2830,6 +2830,19 @@ name|FILE_FIELD
 argument_list|)
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|expandedOldFile
+operator|.
+name|getParent
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+comment|// something went wrong. Just skipt his entry
+continue|continue;
+block|}
 name|String
 name|newPath
 init|=
@@ -2866,7 +2879,7 @@ argument_list|()
 condition|)
 comment|// we do not overwrite files
 comment|// TODO: we could check here if the newPath file is linked with the current entry. And if not, we could add a link
-return|return;
+continue|continue;
 comment|//do rename
 name|boolean
 name|renameSuccesfull
