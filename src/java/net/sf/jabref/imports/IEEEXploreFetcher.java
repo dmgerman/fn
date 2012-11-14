@@ -382,6 +382,24 @@ name|IEEEXploreFetcher
 implements|implements
 name|EntryFetcher
 block|{
+DECL|field|caseKeeperList
+specifier|final
+name|CaseKeeperList
+name|caseKeeperList
+init|=
+operator|new
+name|CaseKeeperList
+argument_list|()
+decl_stmt|;
+DECL|field|caseKeeper
+specifier|final
+name|CaseKeeper
+name|caseKeeper
+init|=
+operator|new
+name|CaseKeeper
+argument_list|()
+decl_stmt|;
 DECL|field|dialog
 name|ImportInspector
 name|dialog
@@ -689,6 +707,7 @@ argument_list|(
 literal|"<a href=\".*arnumber=(\\d+).*\">"
 argument_list|)
 decl_stmt|;
+comment|// Common words in IEEE Xplore that should always be
 DECL|method|IEEEXploreFetcher ()
 specifier|public
 name|IEEEXploreFetcher
@@ -2104,6 +2123,20 @@ argument_list|(
 literal|"\\\\infin"
 argument_list|,
 literal|"\\\\infty"
+argument_list|)
+expr_stmt|;
+comment|// Automatic case keeping
+name|title
+operator|=
+name|caseKeeper
+operator|.
+name|format
+argument_list|(
+name|title
+argument_list|,
+name|caseKeeperList
+operator|.
+name|wordListIEEEXplore
 argument_list|)
 expr_stmt|;
 comment|// Write back
