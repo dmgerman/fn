@@ -1941,6 +1941,13 @@ operator|.
 name|lang
 argument_list|(
 literal|"%0 entries needed a clean up"
+argument_list|,
+name|Integer
+operator|.
+name|toString
+argument_list|(
+name|modifiedEntriesCount
+argument_list|)
 argument_list|)
 expr_stmt|;
 break|break;
