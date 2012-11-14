@@ -2037,7 +2037,7 @@ name|title
 operator|.
 name|replaceAll
 argument_list|(
-literal|"[ ]?img src=.+alt=\"([^\"]+)\">[ ]?"
+literal|"[ ]?img src=[^ ]+ alt=\"([^\"]+)\">[ ]?"
 argument_list|,
 literal|"\\$$1\\$"
 argument_list|)
@@ -2073,12 +2073,24 @@ name|title
 operator|.
 name|replaceAll
 argument_list|(
-literal|"/[sS]pl ([a-zA-Z]+)/"
+literal|"/[sS]pl ([^/]+)/"
 argument_list|,
 literal|"\\$\\\\$1\\$"
 argument_list|)
 expr_stmt|;
 comment|// Deal with subscripts and superscripts
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"useConvertToEquation"
+argument_list|)
+condition|)
+block|{
 name|title
 operator|=
 name|title
@@ -2087,7 +2099,7 @@ name|replaceAll
 argument_list|(
 literal|"/sup ([^/]+)/"
 argument_list|,
-literal|"\\$\\^$1\\$"
+literal|"\\$\\^\\{$1\\}\\$"
 argument_list|)
 expr_stmt|;
 name|title
@@ -2098,9 +2110,35 @@ name|replaceAll
 argument_list|(
 literal|"/sub ([^/]+)/"
 argument_list|,
-literal|"\\$_$1\\$"
+literal|"\\$_\\{$1\\}\\$"
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|title
+operator|=
+name|title
+operator|.
+name|replaceAll
+argument_list|(
+literal|"/sup ([^/]+)/"
+argument_list|,
+literal|"\\\\textsuperscript\\{$1\\}"
+argument_list|)
+expr_stmt|;
+name|title
+operator|=
+name|title
+operator|.
+name|replaceAll
+argument_list|(
+literal|"/sub ([^/]+)/"
+argument_list|,
+literal|"\\\\textsubscript\\{$1\\}"
+argument_list|)
+expr_stmt|;
+block|}
 comment|// Deal with the form (sup)k(/sup)
 name|title
 operator|=
@@ -2126,6 +2164,18 @@ literal|"\\\\infty"
 argument_list|)
 expr_stmt|;
 comment|// Automatic case keeping
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"useCaseKeeperOnSearch"
+argument_list|)
+condition|)
+block|{
 name|title
 operator|=
 name|caseKeeper
@@ -2139,6 +2189,7 @@ operator|.
 name|wordListIEEEXplore
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Write back
 name|entry
 operator|.

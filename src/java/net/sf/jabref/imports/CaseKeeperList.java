@@ -312,6 +312,10 @@ block|,
 literal|"Carlo"
 block|,
 literal|"DVFS"
+block|,
+literal|"RNS"
+block|,
+literal|"LNS"
 block|}
 decl_stmt|;
 comment|// List of all keyword lists

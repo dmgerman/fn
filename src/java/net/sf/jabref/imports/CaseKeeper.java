@@ -130,21 +130,21 @@ name|i
 operator|++
 control|)
 block|{
-comment|// Add {} if the character before is a space, -, or } but not if it is followed by a }
+comment|// Add {} if the character before is a space, -, /, or } or if it is at the start of the string but not if it is followed by a }
 name|text
 operator|=
 name|text
 operator|.
 name|replaceAll
 argument_list|(
-literal|"([ -\\}])"
+literal|"(^|[- /}])"
 operator|+
 name|listOfWords
 index|[
 name|i
 index|]
 operator|+
-literal|"([^}])"
+literal|"($|[^}])"
 argument_list|,
 literal|"$1\\{"
 operator|+
@@ -154,58 +154,6 @@ name|i
 index|]
 operator|+
 literal|"\\}$2"
-argument_list|)
-expr_stmt|;
-comment|// Or if it is the first word and ends with a space or -
-name|text
-operator|=
-name|text
-operator|.
-name|replaceAll
-argument_list|(
-literal|"^"
-operator|+
-name|listOfWords
-index|[
-name|i
-index|]
-operator|+
-literal|"([ -])"
-argument_list|,
-literal|"\\{"
-operator|+
-name|listOfWords
-index|[
-name|i
-index|]
-operator|+
-literal|"\\}$1"
-argument_list|)
-expr_stmt|;
-comment|// Or if it is the last word and the character before is a space, -, or }
-name|text
-operator|=
-name|text
-operator|.
-name|replaceAll
-argument_list|(
-literal|"([ -\\}])"
-operator|+
-name|listOfWords
-index|[
-name|i
-index|]
-operator|+
-literal|"$"
-argument_list|,
-literal|"$1\\{"
-operator|+
-name|listOfWords
-index|[
-name|i
-index|]
-operator|+
-literal|"\\}"
 argument_list|)
 expr_stmt|;
 block|}
