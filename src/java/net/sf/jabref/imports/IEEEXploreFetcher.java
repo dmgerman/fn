@@ -3806,6 +3806,13 @@ name|equalsIgnoreCase
 argument_list|(
 literal|"TUP Journals&amp; Magazines"
 argument_list|)
+operator|||
+name|typeName
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"BIAI Journals&amp; Magazines"
+argument_list|)
 condition|)
 block|{
 name|type
@@ -3919,6 +3926,13 @@ operator|.
 name|equalsIgnoreCase
 argument_list|(
 literal|"Wiley-IEEE Press eBook Chapters"
+argument_list|)
+operator|||
+name|typeName
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"MIT Press eBook Chapters"
 argument_list|)
 condition|)
 block|{
