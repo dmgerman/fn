@@ -2207,7 +2207,7 @@ literal|"9824"
 block|,
 literal|"spades"
 block|,
-literal|""
+literal|"\\$\\\\spadesuit\\$"
 block|}
 block|,
 comment|// black spade suit, U+2660 ISOpub
@@ -2217,7 +2217,7 @@ literal|"9827"
 block|,
 literal|"clubs"
 block|,
-literal|""
+literal|"\\$\\\\clubsuit\\$"
 block|}
 block|,
 comment|// black club suit = shamrock,
@@ -2227,7 +2227,7 @@ literal|"9829"
 block|,
 literal|"hearts"
 block|,
-literal|""
+literal|"\\$\\\\heartsuit\\$"
 block|}
 block|,
 comment|// black heart suit = valentine,
@@ -2237,7 +2237,7 @@ literal|"9830"
 block|,
 literal|"diams"
 block|,
-literal|""
+literal|"\\$\\\\diamondsuit\\$"
 block|}
 block|,
 comment|// black diamond suit, U+2666 ISOpub
@@ -2698,28 +2698,28 @@ literal|"8459"
 block|,
 literal|"Hscr"
 block|,
-literal|""
+literal|"\\$\\\\mathcal\\{H\\}\\$"
 block|}
 block|,
-comment|// script capital H
+comment|// script capital H -- possibly use \mathscr
 block|{
 literal|"8460"
 block|,
 literal|""
 block|,
-literal|""
+literal|"\\$\\\\mathbb\\{H\\}\\$"
 block|}
 block|,
-comment|// black letter capital H
+comment|// black letter capital H -- requires e.g. amsfonts
 block|{
 literal|"8466"
 block|,
 literal|"Lscr"
 block|,
-literal|""
+literal|"\\$\\\\mathcal\\{L\\}\\$"
 block|}
 block|,
-comment|// script capital L
+comment|// script capital L -- possibly use \mathscr
 block|{
 literal|"8467"
 block|,
@@ -2790,7 +2790,16 @@ literal|"ges"
 block|,
 literal|"\\$\\\\geqslant\\$"
 block|}
+block|,
 comment|// Less than slanted equal -- requires amssymb
+block|{
+literal|"119978"
+block|,
+literal|"Oscr"
+block|,
+literal|"\\$\\\\mathcal\\{O\\}\\$"
+block|}
+comment|// script capital O -- possibly use \mathscr
 block|}
 decl_stmt|;
 DECL|field|escapedSymbols
