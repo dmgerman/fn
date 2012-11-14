@@ -967,7 +967,7 @@ literal|"247"
 block|,
 literal|"divide"
 block|,
-literal|"/"
+literal|"\\$\\\\div\\$"
 block|}
 block|,
 comment|// division sign, U+00F7 ISOnum
@@ -2613,6 +2613,24 @@ block|}
 block|,
 comment|// Small i without the dot
 block|{
+literal|"321"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\L\\}"
+block|}
+block|,
+comment|// upper case l with stroke
+block|{
+literal|"322"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\l\\}"
+block|}
+block|,
+comment|// lower case l with stroke
+block|{
 literal|"769"
 block|,
 literal|""
@@ -2649,6 +2667,15 @@ block|}
 block|,
 comment|// FIX: Caron - Can be solved better as it is a combining accent
 block|{
+literal|"949"
+block|,
+literal|"epsi"
+block|,
+literal|"\\$\\\\epsilon\\$"
+block|}
+block|,
+comment|// Epsilon - double check
+block|{
 literal|"2013"
 block|,
 literal|""
@@ -2660,12 +2687,57 @@ comment|// NKO letter FA
 block|{
 literal|"8208"
 block|,
-literal|""
+literal|"hyphen"
 block|,
 literal|"-"
 block|}
 block|,
 comment|// Hyphen
+block|{
+literal|"8459"
+block|,
+literal|"Hscr"
+block|,
+literal|""
+block|}
+block|,
+comment|// script capital H
+block|{
+literal|"8460"
+block|,
+literal|""
+block|,
+literal|""
+block|}
+block|,
+comment|// black letter capital H
+block|{
+literal|"8466"
+block|,
+literal|"Lscr"
+block|,
+literal|""
+block|}
+block|,
+comment|// script capital L
+block|{
+literal|"8467"
+block|,
+literal|"lscr"
+block|,
+literal|"\\{\\\\ell\\}"
+block|}
+block|,
+comment|// script small l
+block|{
+literal|"8491"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\AA\\}"
+block|}
+block|,
+comment|// Angstrom
 block|{
 literal|"8729"
 block|,
@@ -2676,11 +2748,47 @@ block|}
 block|,
 comment|// Bullet operator
 block|{
+literal|"8776"
+block|,
+literal|"ap"
+block|,
+literal|"\\$\\\\approx\\$"
+block|}
+block|,
+comment|// almost equal to = asymptotic to,
+block|{
+literal|"8810"
+block|,
+literal|""
+block|,
+literal|"\\$\\\\ll\\$"
+block|}
+block|,
+comment|// Much less than
+block|{
+literal|"8811"
+block|,
+literal|""
+block|,
+literal|"\\$\\\\gg\\$"
+block|}
+block|,
+comment|// Much greater than
+block|{
 literal|"10877"
 block|,
 literal|"les"
 block|,
 literal|"\\$\\\\leqslant\\$"
+block|}
+block|,
+comment|// Less than slanted equal -- requires amssymb
+block|{
+literal|"10878"
+block|,
+literal|"ges"
+block|,
+literal|"\\$\\\\geqslant\\$"
 block|}
 comment|// Less than slanted equal -- requires amssymb
 block|}
@@ -2877,7 +2985,7 @@ operator|new
 name|StringBuffer
 argument_list|()
 decl_stmt|;
-comment|// Deal with the form<sup>k</sup>
+comment|// Deal with the form<sup>k</sup>and<sub>k</sub>
 name|text
 operator|=
 name|text
@@ -2886,7 +2994,18 @@ name|replaceAll
 argument_list|(
 literal|"<sup>([^<]+)</sup>"
 argument_list|,
-literal|"\\$\\^$1\\$"
+literal|"\\$\\^\\{$1\\}\\$"
+argument_list|)
+expr_stmt|;
+name|text
+operator|=
+name|text
+operator|.
+name|replaceAll
+argument_list|(
+literal|"<sub>([^<]+)</sub>"
+argument_list|,
+literal|"\\$_\\{$1\\}\\$"
 argument_list|)
 expr_stmt|;
 for|for
