@@ -2994,7 +2994,7 @@ name|replaceAll
 argument_list|(
 literal|"<sup>([^<]+)</sup>"
 argument_list|,
-literal|"\\$\\^\\{$1\\}\\$"
+literal|"\\\\textsuperscript\\{$1\\}"
 argument_list|)
 expr_stmt|;
 name|text
@@ -3005,7 +3005,7 @@ name|replaceAll
 argument_list|(
 literal|"<sub>([^<]+)</sub>"
 argument_list|,
-literal|"\\$_\\{$1\\}\\$"
+literal|"\\\\textsubscript\\{$1\\}"
 argument_list|)
 expr_stmt|;
 for|for
