@@ -2614,28 +2614,6 @@ operator|new
 name|BibtexKeyPatternAction
 argument_list|()
 decl_stmt|,
-DECL|field|upgradeExternalLinks
-name|upgradeExternalLinks
-init|=
-operator|new
-name|GeneralAction
-argument_list|(
-literal|"upgradeLinks"
-argument_list|,
-literal|"Upgrade external links"
-argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Upgrade external PDF/PS links to use the '%0' field."
-argument_list|,
-name|GUIGlobals
-operator|.
-name|FILE_FIELD
-argument_list|)
-argument_list|)
-decl_stmt|,
 DECL|field|errorConsole
 name|errorConsole
 init|=
@@ -7788,14 +7766,6 @@ operator|.
 name|add
 argument_list|(
 name|integrityCheckAction
-argument_list|)
-expr_stmt|;
-comment|//checkAndFix.addSeparator();
-name|checkAndFix
-operator|.
-name|add
-argument_list|(
-name|upgradeExternalLinks
 argument_list|)
 expr_stmt|;
 name|tools
