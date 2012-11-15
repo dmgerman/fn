@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -2556,7 +2556,7 @@ literal|"8364"
 block|,
 literal|"euro"
 block|,
-literal|""
+literal|"\\\\texteuro"
 block|}
 block|,
 comment|// euro sign, U+20AC NEW
@@ -2570,6 +2570,33 @@ literal|"\\\\%"
 block|}
 block|,
 comment|// Percent
+block|{
+literal|"39"
+block|,
+literal|""
+block|,
+literal|"'"
+block|}
+block|,
+comment|// Apostrophe
+block|{
+literal|"40"
+block|,
+literal|""
+block|,
+literal|"("
+block|}
+block|,
+comment|// Left bracket
+block|{
+literal|"41"
+block|,
+literal|""
+block|,
+literal|")"
+block|}
+block|,
+comment|// Right bracket
 block|{
 literal|"43"
 block|,
@@ -2606,6 +2633,7 @@ literal|"\\\\\\}"
 block|}
 block|,
 comment|// Right curly bracket
+comment|// {"141", "", ""}, // Reverse line feed
 block|{
 literal|"146"
 block|,
@@ -2741,15 +2769,7 @@ literal|"\\$\\\\varepsilonup\\$"
 block|}
 block|,
 comment|// lunate epsilon, requires txfonts
-block|{
-literal|"2013"
-block|,
-literal|""
-block|,
-literal|""
-block|}
-block|,
-comment|// NKO letter FA
+comment|// {"2013", "", ""},    // NKO letter FA
 block|{
 literal|"8208"
 block|,
