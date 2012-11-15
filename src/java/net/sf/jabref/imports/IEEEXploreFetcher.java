@@ -759,7 +759,7 @@ name|put
 argument_list|(
 literal|"year"
 argument_list|,
-literal|"Publication Year:\\s*(\\d{4})"
+literal|"(?:Copyright|Publication) Year:\\s*(\\d{4})"
 argument_list|)
 expr_stmt|;
 name|fieldPatterns
@@ -2030,6 +2030,13 @@ argument_list|(
 literal|"title"
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|title
+operator|!=
+literal|null
+condition|)
+block|{
 comment|// USe the alt-text and replace image links
 name|title
 operator|=
@@ -2113,6 +2120,28 @@ argument_list|,
 literal|"\\$_\\{$1\\}\\$"
 argument_list|)
 expr_stmt|;
+name|title
+operator|=
+name|title
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\(sup\\)([^(]+)\\(/sup\\)"
+argument_list|,
+literal|"\\$\\^\\{$1\\}\\$"
+argument_list|)
+expr_stmt|;
+name|title
+operator|=
+name|title
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\(sub\\)([^(]+)\\(/sub\\)"
+argument_list|,
+literal|"\\_\\{$1\\}\\$"
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
@@ -2138,19 +2167,29 @@ argument_list|,
 literal|"\\\\textsubscript\\{$1\\}"
 argument_list|)
 expr_stmt|;
-block|}
-comment|// Deal with the form (sup)k(/sup)
 name|title
 operator|=
 name|title
 operator|.
 name|replaceAll
 argument_list|(
-literal|"\\(sup\\)([^/]+)\\(/sup\\)"
+literal|"\\(sup\\)([^(]+)\\(/sup\\)"
 argument_list|,
-literal|"\\$\\^$1\\$"
+literal|"\\\\textsuperscript\\{$1\\}"
 argument_list|)
 expr_stmt|;
+name|title
+operator|=
+name|title
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\(sub\\)([^(]+)\\(/sub\\)"
+argument_list|,
+literal|"\\\\textsubscript\\{$1\\}"
+argument_list|)
+expr_stmt|;
+block|}
 comment|// Replace \infin with \infty
 name|title
 operator|=
@@ -2200,6 +2239,7 @@ argument_list|,
 name|title
 argument_list|)
 expr_stmt|;
+block|}
 comment|// clean up author
 name|String
 name|author
@@ -3537,6 +3577,191 @@ name|fullName
 argument_list|)
 expr_stmt|;
 block|}
+comment|// clean up abstract
+name|String
+name|abstr
+init|=
+operator|(
+name|String
+operator|)
+name|entry
+operator|.
+name|getField
+argument_list|(
+literal|"abstract"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|abstr
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// Try to sort out most of the /spl / conversions
+comment|// Deal with this specific nested type first
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"/sub /spl infin//"
+argument_list|,
+literal|"\\$_\\\\infty\\$"
+argument_list|)
+expr_stmt|;
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"/sup /spl infin//"
+argument_list|,
+literal|"\\$\\^\\\\infty\\$"
+argument_list|)
+expr_stmt|;
+comment|// Replace general expressions
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"/[sS]pl ([^/]+)/"
+argument_list|,
+literal|"\\$\\\\$1\\$"
+argument_list|)
+expr_stmt|;
+comment|// Deal with subscripts and superscripts
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"useConvertToEquation"
+argument_list|)
+condition|)
+block|{
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"/sup ([^/]+)/"
+argument_list|,
+literal|"\\$\\^\\{$1\\}\\$"
+argument_list|)
+expr_stmt|;
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"/sub ([^/]+)/"
+argument_list|,
+literal|"\\$_\\{$1\\}\\$"
+argument_list|)
+expr_stmt|;
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\(sup\\)([^(]+)\\(/sup\\)"
+argument_list|,
+literal|"\\$\\^\\{$1\\}\\$"
+argument_list|)
+expr_stmt|;
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\(sub\\)([^(]+)\\(/sub\\)"
+argument_list|,
+literal|"\\_\\{$1\\}\\$"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"/sup ([^/]+)/"
+argument_list|,
+literal|"\\\\textsuperscript\\{$1\\}"
+argument_list|)
+expr_stmt|;
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"/sub ([^/]+)/"
+argument_list|,
+literal|"\\\\textsubscript\\{$1\\}"
+argument_list|)
+expr_stmt|;
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\(sup\\)([^(]+)\\(/sup\\)"
+argument_list|,
+literal|"\\\\textsuperscript\\{$1\\}"
+argument_list|)
+expr_stmt|;
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\(sub\\)([^(]+)\\(/sub\\)"
+argument_list|,
+literal|"\\\\textsubscript\\{$1\\}"
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Replace \infin with \infty
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\\\infin"
+argument_list|,
+literal|"\\\\infty"
+argument_list|)
+expr_stmt|;
+comment|// Write back
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"abstract"
+argument_list|,
+name|abstr
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|entry
 return|;
@@ -3877,6 +4102,13 @@ name|equalsIgnoreCase
 argument_list|(
 literal|"IEEE Standards"
 argument_list|)
+operator|||
+name|typeName
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"Standards"
+argument_list|)
 condition|)
 block|{
 name|type
@@ -4043,6 +4275,27 @@ argument_list|(
 literal|"publisher"
 argument_list|,
 literal|"Wiley-IEEE Press"
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|typeName
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"MIT Press eBook Chapters"
+argument_list|)
+condition|)
+block|{
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"publisher"
+argument_list|,
+literal|"MIT Press"
 argument_list|)
 expr_stmt|;
 block|}
