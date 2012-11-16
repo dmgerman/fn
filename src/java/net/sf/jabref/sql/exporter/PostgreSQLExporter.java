@@ -295,15 +295,6 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
-name|url
-operator|+=
-literal|"/"
-operator|+
-name|dbStrings
-operator|.
-name|getDatabase
-argument_list|()
-expr_stmt|;
 name|conn
 operator|=
 name|DriverManager
