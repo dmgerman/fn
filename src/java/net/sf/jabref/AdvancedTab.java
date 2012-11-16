@@ -1204,6 +1204,13 @@ argument_list|(
 literal|"useConvertToEquation"
 argument_list|)
 expr_stmt|;
+name|useConvertToEquation
+operator|.
+name|setSelected
+argument_list|(
+name|oldConvertToEquation
+argument_list|)
+expr_stmt|;
 name|oldCaseKeeperOnSearch
 operator|=
 name|Globals
@@ -1213,6 +1220,13 @@ operator|.
 name|getBoolean
 argument_list|(
 literal|"useCaseKeeperOnSearch"
+argument_list|)
+expr_stmt|;
+name|useCaseKeeperOnSearch
+operator|.
+name|setSelected
+argument_list|(
+name|oldCaseKeeperOnSearch
 argument_list|)
 expr_stmt|;
 block|}
