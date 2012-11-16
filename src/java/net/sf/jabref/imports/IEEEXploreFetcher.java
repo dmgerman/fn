@@ -1085,6 +1085,45 @@ return|return
 literal|false
 return|;
 block|}
+if|if
+condition|(
+name|page
+operator|.
+name|indexOf
+argument_list|(
+literal|"Error Page"
+argument_list|)
+operator|>=
+literal|0
+condition|)
+block|{
+name|status
+operator|.
+name|showMessage
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Intermittent errors on the IEEE Xplore server. Please try again in a while."
+argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Search IEEEXplore"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|INFORMATION_MESSAGE
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
 name|hits
 operator|=
 name|getNumberOfHits
