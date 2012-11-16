@@ -101,6 +101,9 @@ comment|// most of the LaTeX commands can be read at http://en.wikibooks.org/wik
 comment|// The symbols can be looked at http://www.fileformat.info/info/unicode/char/a4/index.htm. Replace "a4" with the U+ number
 comment|// http://detexify.kirelabs.org/classify.html and http://www.ctan.org/tex-archive/info/symbols/comprehensive/ might help to find the right LaTeX command
 comment|// http://llg.cubic.org/docs/ent2latex.html and http://www.w3.org/TR/xml-entity-names/byalpha.html are also useful
+comment|// An array of arrays of strings in the format:
+comment|// {"decimal number of HTML entity", "text HTML entity", "corresponding LaTeX command"}
+comment|// Leaving a field empty is OK as it then will not be included
 DECL|field|conversionList
 specifier|private
 name|String
@@ -3100,6 +3103,8 @@ name|StringBuffer
 argument_list|()
 decl_stmt|;
 comment|// Deal with the form<sup>k</sup>and<sub>k</sub>
+comment|// If the result is in text or equation form can be controlled
+comment|// From the "Advanced settings" tab
 if|if
 condition|(
 name|Globals
@@ -3160,6 +3165,9 @@ literal|"\\\\textsubscript\\{$1\\}"
 argument_list|)
 expr_stmt|;
 block|}
+comment|// TODO: maybe rewrite this based on regular expressions instead
+comment|// Note that (at least) the IEEE Xplore fetcher must be fixed as it relies on the current way to
+comment|// remove tags for its image alt-tag to equation converter
 for|for
 control|(
 name|int
@@ -3226,6 +3234,7 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
+comment|// Handle text based HTML entities
 name|Set
 argument_list|<
 name|String
@@ -3262,6 +3271,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Handle numerical HTML entities
 name|Pattern
 name|escapedPattern
 init|=
@@ -3379,7 +3389,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"HTML escaped char not converted "
+literal|"HTML escaped char not converted: "
 operator|+
 name|m
 operator|.
@@ -3402,7 +3412,7 @@ argument_list|(
 literal|3
 argument_list|)
 operator|+
-literal|": "
+literal|" = "
 operator|+
 name|Integer
 operator|.
@@ -3447,7 +3457,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"HTML escaped char not converted "
+literal|"HTML escaped char not converted: "
 operator|+
 name|m
 operator|.
