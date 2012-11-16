@@ -382,6 +382,24 @@ name|IEEEXploreFetcher
 implements|implements
 name|EntryFetcher
 block|{
+DECL|field|caseKeeperList
+specifier|final
+name|CaseKeeperList
+name|caseKeeperList
+init|=
+operator|new
+name|CaseKeeperList
+argument_list|()
+decl_stmt|;
+DECL|field|caseKeeper
+specifier|final
+name|CaseKeeper
+name|caseKeeper
+init|=
+operator|new
+name|CaseKeeper
+argument_list|()
+decl_stmt|;
 DECL|field|dialog
 name|ImportInspector
 name|dialog
@@ -689,6 +707,7 @@ argument_list|(
 literal|"<a href=\".*arnumber=(\\d+).*\">"
 argument_list|)
 decl_stmt|;
+comment|// Common words in IEEE Xplore that should always be
 DECL|method|IEEEXploreFetcher ()
 specifier|public
 name|IEEEXploreFetcher
@@ -712,7 +731,7 @@ name|put
 argument_list|(
 literal|"author"
 argument_list|,
-literal|"</h3>\\s+(.+)<br />"
+literal|"</h3>\\s*(.+)"
 argument_list|)
 expr_stmt|;
 name|fieldPatterns
@@ -721,7 +740,7 @@ name|put
 argument_list|(
 literal|"volume"
 argument_list|,
-literal|"Volume:\\s*(\\d+)"
+literal|"Volume:\\s*([A-Za-z-]*\\d+)"
 argument_list|)
 expr_stmt|;
 name|fieldPatterns
@@ -740,7 +759,7 @@ name|put
 argument_list|(
 literal|"year"
 argument_list|,
-literal|"Publication Year:\\s*(\\d{4})"
+literal|"(?:Copyright|Publication) Year:\\s*(\\d{4})"
 argument_list|)
 expr_stmt|;
 name|fieldPatterns
@@ -752,13 +771,14 @@ argument_list|,
 literal|"Page\\(s\\):\\s*(\\d+)\\s*-\\s*(\\d*)"
 argument_list|)
 expr_stmt|;
+comment|//fieldPatterns.put("doi", "Digital Object Identifier:\\s*<a href=.*>(.+)</a>");
 name|fieldPatterns
 operator|.
 name|put
 argument_list|(
 literal|"doi"
 argument_list|,
-literal|"Digital Object Identifier:\\s*<a href=.*>(.+)</a>"
+literal|"<a href=\"http://dx.doi.org/(.+)\" target"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1047,6 +1067,45 @@ argument_list|(
 literal|"No entries found for the search string '%0'"
 argument_list|,
 name|terms
+argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Search IEEEXplore"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|INFORMATION_MESSAGE
+argument_list|)
+expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
+if|if
+condition|(
+name|page
+operator|.
+name|indexOf
+argument_list|(
+literal|"Error Page"
+argument_list|)
+operator|>=
+literal|0
+condition|)
+block|{
+name|status
+operator|.
+name|showMessage
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Intermittent errors on the IEEE Xplore server. Please try again in a while."
 argument_list|)
 argument_list|,
 name|Globals
@@ -2010,6 +2069,13 @@ argument_list|(
 literal|"title"
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|title
+operator|!=
+literal|null
+condition|)
+block|{
 comment|// USe the alt-text and replace image links
 name|title
 operator|=
@@ -2017,7 +2083,7 @@ name|title
 operator|.
 name|replaceAll
 argument_list|(
-literal|"[ ]?img src=.+alt=\"(.+)\">[ ]?"
+literal|"[ ]?img src=[^ ]+ alt=\"([^\"]+)\">[ ]?"
 argument_list|,
 literal|"\\$$1\\$"
 argument_list|)
@@ -2053,21 +2119,33 @@ name|title
 operator|.
 name|replaceAll
 argument_list|(
-literal|"/[sS]pl ([a-zA-Z]+)/"
+literal|"/[sS]pl ([^/]+)/"
 argument_list|,
 literal|"\\$\\\\$1\\$"
 argument_list|)
 expr_stmt|;
 comment|// Deal with subscripts and superscripts
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"useConvertToEquation"
+argument_list|)
+condition|)
+block|{
 name|title
 operator|=
 name|title
 operator|.
 name|replaceAll
 argument_list|(
-literal|"/sup ([0-9\\+\\.\\(\\)]+)/"
+literal|"/sup ([^/]+)/"
 argument_list|,
-literal|"\\$\\^$1\\$"
+literal|"\\$\\^\\{$1\\}\\$"
 argument_list|)
 expr_stmt|;
 name|title
@@ -2076,11 +2154,81 @@ name|title
 operator|.
 name|replaceAll
 argument_list|(
-literal|"/sub ([0-9\\+\\.\\(\\)]+)/"
+literal|"/sub ([^/]+)/"
 argument_list|,
-literal|"\\$_$1\\$"
+literal|"\\$_\\{$1\\}\\$"
 argument_list|)
 expr_stmt|;
+name|title
+operator|=
+name|title
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\(sup\\)([^(]+)\\(/sup\\)"
+argument_list|,
+literal|"\\$\\^\\{$1\\}\\$"
+argument_list|)
+expr_stmt|;
+name|title
+operator|=
+name|title
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\(sub\\)([^(]+)\\(/sub\\)"
+argument_list|,
+literal|"\\_\\{$1\\}\\$"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|title
+operator|=
+name|title
+operator|.
+name|replaceAll
+argument_list|(
+literal|"/sup ([^/]+)/"
+argument_list|,
+literal|"\\\\textsuperscript\\{$1\\}"
+argument_list|)
+expr_stmt|;
+name|title
+operator|=
+name|title
+operator|.
+name|replaceAll
+argument_list|(
+literal|"/sub ([^/]+)/"
+argument_list|,
+literal|"\\\\textsubscript\\{$1\\}"
+argument_list|)
+expr_stmt|;
+name|title
+operator|=
+name|title
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\(sup\\)([^(]+)\\(/sup\\)"
+argument_list|,
+literal|"\\\\textsuperscript\\{$1\\}"
+argument_list|)
+expr_stmt|;
+name|title
+operator|=
+name|title
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\(sub\\)([^(]+)\\(/sub\\)"
+argument_list|,
+literal|"\\\\textsubscript\\{$1\\}"
+argument_list|)
+expr_stmt|;
+block|}
 comment|// Replace \infin with \infty
 name|title
 operator|=
@@ -2093,6 +2241,33 @@ argument_list|,
 literal|"\\\\infty"
 argument_list|)
 expr_stmt|;
+comment|// Automatic case keeping
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"useCaseKeeperOnSearch"
+argument_list|)
+condition|)
+block|{
+name|title
+operator|=
+name|caseKeeper
+operator|.
+name|format
+argument_list|(
+name|title
+argument_list|,
+name|caseKeeperList
+operator|.
+name|wordListIEEEXplore
+argument_list|)
+expr_stmt|;
+block|}
 comment|// Write back
 name|entry
 operator|.
@@ -2103,6 +2278,7 @@ argument_list|,
 name|title
 argument_list|)
 expr_stmt|;
+block|}
 comment|// clean up author
 name|String
 name|author
@@ -2123,6 +2299,32 @@ name|author
 operator|!=
 literal|null
 condition|)
+block|{
+if|if
+condition|(
+name|author
+operator|.
+name|indexOf
+argument_list|(
+literal|"a href="
+argument_list|)
+operator|>=
+literal|0
+condition|)
+block|{
+comment|// Author parsing failed because it was empty
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"author"
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
+comment|// Maybe not needed anymore due to another change
+block|}
+else|else
 block|{
 name|author
 operator|=
@@ -2188,6 +2390,7 @@ argument_list|,
 name|author
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// clean up month
 name|String
@@ -3413,6 +3616,191 @@ name|fullName
 argument_list|)
 expr_stmt|;
 block|}
+comment|// clean up abstract
+name|String
+name|abstr
+init|=
+operator|(
+name|String
+operator|)
+name|entry
+operator|.
+name|getField
+argument_list|(
+literal|"abstract"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|abstr
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// Try to sort out most of the /spl / conversions
+comment|// Deal with this specific nested type first
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"/sub /spl infin//"
+argument_list|,
+literal|"\\$_\\\\infty\\$"
+argument_list|)
+expr_stmt|;
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"/sup /spl infin//"
+argument_list|,
+literal|"\\$\\^\\\\infty\\$"
+argument_list|)
+expr_stmt|;
+comment|// Replace general expressions
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"/[sS]pl ([^/]+)/"
+argument_list|,
+literal|"\\$\\\\$1\\$"
+argument_list|)
+expr_stmt|;
+comment|// Deal with subscripts and superscripts
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"useConvertToEquation"
+argument_list|)
+condition|)
+block|{
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"/sup ([^/]+)/"
+argument_list|,
+literal|"\\$\\^\\{$1\\}\\$"
+argument_list|)
+expr_stmt|;
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"/sub ([^/]+)/"
+argument_list|,
+literal|"\\$_\\{$1\\}\\$"
+argument_list|)
+expr_stmt|;
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\(sup\\)([^(]+)\\(/sup\\)"
+argument_list|,
+literal|"\\$\\^\\{$1\\}\\$"
+argument_list|)
+expr_stmt|;
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\(sub\\)([^(]+)\\(/sub\\)"
+argument_list|,
+literal|"\\_\\{$1\\}\\$"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"/sup ([^/]+)/"
+argument_list|,
+literal|"\\\\textsuperscript\\{$1\\}"
+argument_list|)
+expr_stmt|;
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"/sub ([^/]+)/"
+argument_list|,
+literal|"\\\\textsubscript\\{$1\\}"
+argument_list|)
+expr_stmt|;
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\(sup\\)([^(]+)\\(/sup\\)"
+argument_list|,
+literal|"\\\\textsuperscript\\{$1\\}"
+argument_list|)
+expr_stmt|;
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\(sub\\)([^(]+)\\(/sub\\)"
+argument_list|,
+literal|"\\\\textsubscript\\{$1\\}"
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Replace \infin with \infty
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\\\infin"
+argument_list|,
+literal|"\\\\infty"
+argument_list|)
+expr_stmt|;
+comment|// Write back
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"abstract"
+argument_list|,
+name|abstr
+argument_list|)
+expr_stmt|;
+block|}
 return|return
 name|entry
 return|;
@@ -3675,6 +4063,20 @@ name|equalsIgnoreCase
 argument_list|(
 literal|"IBM Journals&amp; Magazines"
 argument_list|)
+operator|||
+name|typeName
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"TUP Journals&amp; Magazines"
+argument_list|)
+operator|||
+name|typeName
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"BIAI Journals&amp; Magazines"
+argument_list|)
 condition|)
 block|{
 name|type
@@ -3707,6 +4109,13 @@ name|equalsIgnoreCase
 argument_list|(
 literal|"IET Conference Publications"
 argument_list|)
+operator|||
+name|typeName
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"VDE Conference Publications"
+argument_list|)
 condition|)
 block|{
 name|type
@@ -3731,6 +4140,13 @@ operator|.
 name|equalsIgnoreCase
 argument_list|(
 literal|"IEEE Standards"
+argument_list|)
+operator|||
+name|typeName
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"Standards"
 argument_list|)
 condition|)
 block|{
@@ -3781,6 +4197,13 @@ operator|.
 name|equalsIgnoreCase
 argument_list|(
 literal|"Wiley-IEEE Press eBook Chapters"
+argument_list|)
+operator|||
+name|typeName
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"MIT Press eBook Chapters"
 argument_list|)
 condition|)
 block|{
@@ -3891,6 +4314,27 @@ argument_list|(
 literal|"publisher"
 argument_list|,
 literal|"Wiley-IEEE Press"
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|typeName
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"MIT Press eBook Chapters"
+argument_list|)
+condition|)
+block|{
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"publisher"
+argument_list|,
+literal|"MIT Press"
 argument_list|)
 expr_stmt|;
 block|}
@@ -4100,6 +4544,18 @@ literal|"author"
 argument_list|)
 operator|==
 literal|null
+operator|||
+name|entry
+operator|.
+name|getField
+argument_list|(
+literal|"author"
+argument_list|)
+operator|.
+name|startsWith
+argument_list|(
+literal|"a href"
+argument_list|)
 condition|)
 block|{
 comment|// Fix for some documents without authors
@@ -4160,13 +4616,11 @@ condition|)
 block|{
 name|index
 operator|=
-name|allText
+name|text
 operator|.
 name|indexOf
 argument_list|(
-literal|"id=\"abstract-1\""
-argument_list|,
-name|piv
+literal|"id=\"abstract"
 argument_list|)
 expr_stmt|;
 if|if
@@ -4178,7 +4632,7 @@ condition|)
 block|{
 name|endIndex
 operator|=
-name|allText
+name|text
 operator|.
 name|indexOf
 argument_list|(
@@ -4189,13 +4643,9 @@ argument_list|)
 operator|+
 literal|6
 expr_stmt|;
-name|piv
-operator|=
-name|endIndex
-expr_stmt|;
 name|text
 operator|=
-name|allText
+name|text
 operator|.
 name|substring
 argument_list|(
@@ -4222,17 +4672,39 @@ name|find
 argument_list|()
 condition|)
 block|{
+comment|// Clean-up abstract
+name|String
+name|abstr
+init|=
+name|absMatcher
+operator|.
+name|group
+argument_list|(
+literal|1
+argument_list|)
+decl_stmt|;
+name|abstr
+operator|=
+name|abstr
+operator|.
+name|replaceAll
+argument_list|(
+literal|"<span class='snippet'>([\\w]+)</span>"
+argument_list|,
+literal|"$1"
+argument_list|)
+expr_stmt|;
 name|entry
 operator|.
 name|setField
 argument_list|(
 literal|"abstract"
 argument_list|,
-name|absMatcher
+name|htmlConverter
 operator|.
-name|group
+name|format
 argument_list|(
-literal|1
+name|abstr
 argument_list|)
 argument_list|)
 expr_stmt|;

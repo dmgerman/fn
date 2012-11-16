@@ -126,7 +126,7 @@ name|forms
 operator|.
 name|builder
 operator|.
-name|ButtonBarBuilder2
+name|ButtonBarBuilder
 import|;
 end_import
 
@@ -2608,11 +2608,11 @@ name|wordEditField
 argument_list|)
 expr_stmt|;
 comment|// Add buttons:
-name|ButtonBarBuilder2
+name|ButtonBarBuilder
 name|bsb
 init|=
 operator|new
-name|ButtonBarBuilder2
+name|ButtonBarBuilder
 argument_list|(
 name|buttonPan
 argument_list|)

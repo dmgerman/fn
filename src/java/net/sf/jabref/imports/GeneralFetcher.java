@@ -1163,7 +1163,45 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
+name|frame
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Please enter a search string"
+argument_list|)
+argument_list|)
+expr_stmt|;
 return|return;
+block|}
+if|if
+condition|(
+name|frame
+operator|.
+name|basePanel
+argument_list|()
+operator|==
+literal|null
+condition|)
+block|{
+name|frame
+operator|.
+name|output
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Please open or start a new database before searching"
+argument_list|)
+argument_list|)
+expr_stmt|;
+return|return;
+block|}
 comment|// We have two categories of fetchers. One category can show previews first and ask the
 comment|// user which ones to download:
 if|if

@@ -122,7 +122,7 @@ name|forms
 operator|.
 name|builder
 operator|.
-name|ButtonBarBuilder2
+name|ButtonBarBuilder
 import|;
 end_import
 
@@ -369,11 +369,11 @@ name|cancelAction
 argument_list|)
 expr_stmt|;
 comment|//buttons.add(ok);
-name|ButtonBarBuilder2
+name|ButtonBarBuilder
 name|bb
 init|=
 operator|new
-name|ButtonBarBuilder2
+name|ButtonBarBuilder
 argument_list|(
 name|buttons
 argument_list|)

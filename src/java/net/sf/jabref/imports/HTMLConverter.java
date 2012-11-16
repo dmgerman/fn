@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -76,6 +76,18 @@ name|LayoutFormatter
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
 begin_class
 DECL|class|HTMLConverter
 specifier|public
@@ -88,6 +100,10 @@ comment|/*   Portions Â© International Organization for Standardization 1986: 
 comment|// most of the LaTeX commands can be read at http://en.wikibooks.org/wiki/LaTeX/Accents
 comment|// The symbols can be looked at http://www.fileformat.info/info/unicode/char/a4/index.htm. Replace "a4" with the U+ number
 comment|// http://detexify.kirelabs.org/classify.html and http://www.ctan.org/tex-archive/info/symbols/comprehensive/ might help to find the right LaTeX command
+comment|// http://llg.cubic.org/docs/ent2latex.html and http://www.w3.org/TR/xml-entity-names/byalpha.html are also useful
+comment|// An array of arrays of strings in the format:
+comment|// {"decimal number of HTML entity", "text HTML entity", "corresponding LaTeX command"}
+comment|// Leaving a field empty is OK as it then will not be included
 DECL|field|conversionList
 specifier|private
 name|String
@@ -142,7 +158,7 @@ literal|"164"
 block|,
 literal|"curren"
 block|,
-literal|""
+literal|"\\\\textcurrency"
 block|}
 block|,
 comment|// currency sign, U+00A4 ISOnum
@@ -160,7 +176,7 @@ literal|"166"
 block|,
 literal|"brvbar"
 block|,
-literal|""
+literal|"\\\\textbrokenbar"
 block|}
 block|,
 comment|// broken bar = broken vertical bar,
@@ -179,7 +195,7 @@ literal|"168"
 block|,
 literal|"uml"
 block|,
-literal|""
+literal|"\\\\\"\\{\\}"
 block|}
 block|,
 comment|// diaeresis = spacing diaeresis,
@@ -217,7 +233,7 @@ literal|"172"
 block|,
 literal|"not"
 block|,
-literal|""
+literal|"\\$\\\\neg\\$"
 block|}
 block|,
 comment|// not sign, U+00AC ISOnum
@@ -226,7 +242,7 @@ literal|"173"
 block|,
 literal|"shy"
 block|,
-literal|""
+literal|"\\\\-"
 block|}
 block|,
 comment|// soft hyphen = discretionary hyphen,
@@ -236,7 +252,7 @@ literal|"174"
 block|,
 literal|"reg"
 block|,
-literal|"\\textregistered"
+literal|"\\\\textregistered"
 block|}
 block|,
 comment|// registered sign = registered trade mark sign,
@@ -246,7 +262,7 @@ literal|"175"
 block|,
 literal|"macr"
 block|,
-literal|""
+literal|"\\\\=\\{\\}"
 block|}
 block|,
 comment|// macron = spacing macron = overline
@@ -295,7 +311,7 @@ literal|"180"
 block|,
 literal|"acute"
 block|,
-literal|""
+literal|"\\\\'\\{\\}"
 block|}
 block|,
 comment|// acute accent = spacing acute,
@@ -324,7 +340,7 @@ literal|"183"
 block|,
 literal|"middot"
 block|,
-literal|"\\\\textperiodcenter"
+literal|"\\$\\\\cdot\\$"
 block|}
 block|,
 comment|// middle dot = Georgian comma
@@ -334,7 +350,7 @@ literal|"184"
 block|,
 literal|"cedil"
 block|,
-literal|""
+literal|"\\\\c\\{\\}"
 block|}
 block|,
 comment|// cedilla = spacing cedilla, U+00B8 ISOdia
@@ -434,7 +450,7 @@ literal|"194"
 block|,
 literal|"Acirc"
 block|,
-literal|""
+literal|"\\\\\\^\\{A\\}"
 block|}
 block|,
 comment|// latin capital letter A with circumflex,
@@ -464,7 +480,7 @@ literal|"197"
 block|,
 literal|"Aring"
 block|,
-literal|""
+literal|"\\{\\\\AA\\}"
 block|}
 block|,
 comment|// latin capital letter A with ring above
@@ -516,7 +532,7 @@ literal|"202"
 block|,
 literal|"Ecirc"
 block|,
-literal|""
+literal|"\\\\\\^\\{E\\}"
 block|}
 block|,
 comment|// latin capital letter E with circumflex,
@@ -526,7 +542,7 @@ literal|"203"
 block|,
 literal|"Euml"
 block|,
-literal|"\\\"\\{E\\}"
+literal|"\\\\\"\\{E\\}"
 block|}
 block|,
 comment|// latin capital letter E with diaeresis,
@@ -556,7 +572,7 @@ literal|"206"
 block|,
 literal|"Icirc"
 block|,
-literal|""
+literal|"\\\\\\^\\{I\\}"
 block|}
 block|,
 comment|// latin capital letter I with circumflex,
@@ -566,7 +582,7 @@ literal|"207"
 block|,
 literal|"Iuml"
 block|,
-literal|"\\\"\\{I\\}"
+literal|"\\\\\"\\{I\\}"
 block|}
 block|,
 comment|// latin capital letter I with diaeresis,
@@ -576,7 +592,7 @@ literal|"208"
 block|,
 literal|"ETH"
 block|,
-literal|""
+literal|"\\{\\\\DH\\}"
 block|}
 block|,
 comment|// latin capital letter ETH, U+00D0 ISOlat1
@@ -615,7 +631,7 @@ literal|"212"
 block|,
 literal|"Ocirc"
 block|,
-literal|""
+literal|"\\\\\\^\\{O\\}"
 block|}
 block|,
 comment|// latin capital letter O with circumflex,
@@ -685,7 +701,7 @@ literal|"219"
 block|,
 literal|"Ucirc"
 block|,
-literal|""
+literal|"\\\\\\^\\{U\\}"
 block|}
 block|,
 comment|// latin capital letter U with circumflex,
@@ -715,7 +731,7 @@ literal|"222"
 block|,
 literal|"THORN"
 block|,
-literal|""
+literal|"\\{\\\\TH\\}"
 block|}
 block|,
 comment|// latin capital letter THORN,
@@ -756,7 +772,7 @@ literal|"226"
 block|,
 literal|"acirc"
 block|,
-literal|""
+literal|"\\\\\\^\\{a\\}"
 block|}
 block|,
 comment|// latin small letter a with circumflex,
@@ -786,7 +802,7 @@ literal|"229"
 block|,
 literal|"aring"
 block|,
-literal|""
+literal|"\\{\\\\aa\\}"
 block|}
 block|,
 comment|// latin small letter a with ring above
@@ -837,7 +853,7 @@ literal|"234"
 block|,
 literal|"ecirc"
 block|,
-literal|""
+literal|"\\\\\\^\\{e\\}"
 block|}
 block|,
 comment|// latin small letter e with circumflex,
@@ -877,7 +893,7 @@ literal|"238"
 block|,
 literal|"icirc"
 block|,
-literal|""
+literal|"\\\\\\^\\{i\\}"
 block|}
 block|,
 comment|// latin small letter i with circumflex,
@@ -887,7 +903,7 @@ literal|"239"
 block|,
 literal|"iuml"
 block|,
-literal|"\\\\\"\\{i\\}"
+literal|"\\\\\"\\{\\\\i\\}"
 block|}
 block|,
 comment|// latin small letter i with diaeresis,
@@ -897,7 +913,7 @@ literal|"240"
 block|,
 literal|"eth"
 block|,
-literal|""
+literal|"\\\\dh"
 block|}
 block|,
 comment|// latin small letter eth, U+00F0 ISOlat1
@@ -936,7 +952,7 @@ literal|"244"
 block|,
 literal|"ocirc"
 block|,
-literal|""
+literal|"\\\\\\^\\{o\\}"
 block|}
 block|,
 comment|// latin small letter o with circumflex,
@@ -966,7 +982,7 @@ literal|"247"
 block|,
 literal|"divide"
 block|,
-literal|""
+literal|"\\$\\\\div\\$"
 block|}
 block|,
 comment|// division sign, U+00F7 ISOnum
@@ -1006,7 +1022,7 @@ literal|"251"
 block|,
 literal|"ucirc"
 block|,
-literal|""
+literal|"\\\\\\^\\{u\\}"
 block|}
 block|,
 comment|// latin small letter u with circumflex,
@@ -1036,7 +1052,7 @@ literal|"254"
 block|,
 literal|"thorn"
 block|,
-literal|""
+literal|"\\{\\\\th\\}"
 block|}
 block|,
 comment|// latin small letter thorn,
@@ -1056,7 +1072,7 @@ literal|"402"
 block|,
 literal|"fnof"
 block|,
-literal|""
+literal|"\\$f\\$"
 block|}
 block|,
 comment|// latin small f with hook = function
@@ -1453,7 +1469,7 @@ literal|"962"
 block|,
 literal|"sigmaf"
 block|,
-literal|""
+literal|"\\$\\\\varsigma\\$"
 block|}
 block|,
 comment|// greek small letter final sigma,
@@ -1529,7 +1545,7 @@ literal|"977"
 block|,
 literal|"thetasym"
 block|,
-literal|""
+literal|"\\$\\\\vartheta\\$"
 block|}
 block|,
 comment|// greek small letter theta symbol,
@@ -1539,7 +1555,7 @@ literal|"978"
 block|,
 literal|"upsih"
 block|,
-literal|""
+literal|"\\{\\$\\\\Upsilon\\$\\}"
 block|}
 block|,
 comment|// greek upsilon with hook symbol,
@@ -1570,7 +1586,7 @@ literal|"8230"
 block|,
 literal|"hellip"
 block|,
-literal|""
+literal|"\\{\\\\ldots\\}"
 block|}
 block|,
 comment|// horizontal ellipsis = three dot leader,
@@ -1580,7 +1596,7 @@ literal|"8242"
 block|,
 literal|"prime"
 block|,
-literal|""
+literal|"\\$\\\\prime\\$"
 block|}
 block|,
 comment|// prime = minutes = feet, U+2032 ISOtech
@@ -1589,7 +1605,7 @@ literal|"8243"
 block|,
 literal|"Prime"
 block|,
-literal|""
+literal|"\\$\\{''\\}\\$"
 block|}
 block|,
 comment|// double prime = seconds = inches,
@@ -1599,7 +1615,7 @@ literal|"8254"
 block|,
 literal|"oline"
 block|,
-literal|""
+literal|"\\\\=\\{\\}"
 block|}
 block|,
 comment|// overline = spacing overscore,
@@ -1609,7 +1625,7 @@ literal|"8260"
 block|,
 literal|"frasl"
 block|,
-literal|""
+literal|"/"
 block|}
 block|,
 comment|// fraction slash, U+2044 NEW
@@ -1619,7 +1635,7 @@ literal|"8472"
 block|,
 literal|"weierp"
 block|,
-literal|""
+literal|"\\$\\\\wp\\$"
 block|}
 block|,
 comment|// script capital P = power set
@@ -1658,7 +1674,7 @@ literal|"8501"
 block|,
 literal|"alefsym"
 block|,
-literal|""
+literal|"\\$\\\\aleph\\$"
 block|}
 block|,
 comment|// alef symbol = first transfinite cardinal,
@@ -2066,7 +2082,7 @@ literal|"8836"
 block|,
 literal|"nsub"
 block|,
-literal|""
+literal|"\\$\\\\nsubset\\$"
 block|}
 block|,
 comment|// not a subset of, U+2284 ISOamsn
@@ -2206,7 +2222,7 @@ literal|"9824"
 block|,
 literal|"spades"
 block|,
-literal|""
+literal|"\\$\\\\spadesuit\\$"
 block|}
 block|,
 comment|// black spade suit, U+2660 ISOpub
@@ -2216,7 +2232,7 @@ literal|"9827"
 block|,
 literal|"clubs"
 block|,
-literal|""
+literal|"\\$\\\\clubsuit\\$"
 block|}
 block|,
 comment|// black club suit = shamrock,
@@ -2226,7 +2242,7 @@ literal|"9829"
 block|,
 literal|"hearts"
 block|,
-literal|""
+literal|"\\$\\\\heartsuit\\$"
 block|}
 block|,
 comment|// black heart suit = valentine,
@@ -2236,7 +2252,7 @@ literal|"9830"
 block|,
 literal|"diams"
 block|,
-literal|""
+literal|"\\$\\\\diamondsuit\\$"
 block|}
 block|,
 comment|// black diamond suit, U+2666 ISOpub
@@ -2245,7 +2261,7 @@ literal|"34"
 block|,
 literal|"quot"
 block|,
-literal|"\\\""
+literal|"\""
 block|}
 block|,
 comment|// quotation mark = APL quote,
@@ -2303,7 +2319,7 @@ literal|"352"
 block|,
 literal|"Scaron"
 block|,
-literal|""
+literal|"\\\\v\\{S\\}"
 block|}
 block|,
 comment|// latin capital letter S with caron,
@@ -2313,7 +2329,7 @@ literal|"353"
 block|,
 literal|"scaron"
 block|,
-literal|""
+literal|"\\\\v\\{s\\}"
 block|}
 block|,
 comment|// latin small letter s with caron,
@@ -2436,7 +2452,7 @@ literal|"8216"
 block|,
 literal|"lsquo"
 block|,
-literal|"`"
+literal|"\\\\textquoteleft"
 block|}
 block|,
 comment|// left single quotation mark,
@@ -2446,7 +2462,7 @@ literal|"8217"
 block|,
 literal|"rsquo"
 block|,
-literal|"'"
+literal|"\\\\textquoteright"
 block|}
 block|,
 comment|// right single quotation mark,
@@ -2456,7 +2472,7 @@ literal|"8218"
 block|,
 literal|"sbquo"
 block|,
-literal|""
+literal|"\\\\quotesinglbase"
 block|}
 block|,
 comment|// single low-9 quotation mark, U+201A NEW
@@ -2465,7 +2481,7 @@ literal|"8220"
 block|,
 literal|"ldquo"
 block|,
-literal|"``"
+literal|"\\\\textquotedblleft"
 block|}
 block|,
 comment|// left double quotation mark,
@@ -2475,7 +2491,7 @@ literal|"8221"
 block|,
 literal|"rdquo"
 block|,
-literal|"''"
+literal|"\\\\textquotedblright"
 block|}
 block|,
 comment|// right double quotation mark,
@@ -2485,7 +2501,7 @@ literal|"8222"
 block|,
 literal|"bdquo"
 block|,
-literal|""
+literal|"\\\\quotedblbase"
 block|}
 block|,
 comment|// double low-9 quotation mark, U+201E NEW
@@ -2521,7 +2537,7 @@ literal|"8249"
 block|,
 literal|"lsaquo"
 block|,
-literal|""
+literal|"\\\\guilsinglleft"
 block|}
 block|,
 comment|// single left-pointing angle quotation mark,
@@ -2532,7 +2548,7 @@ literal|"8250"
 block|,
 literal|"rsaquo"
 block|,
-literal|""
+literal|"\\\\guilsinglright"
 block|}
 block|,
 comment|// single right-pointing angle quotation mark,
@@ -2543,7 +2559,7 @@ literal|"8364"
 block|,
 literal|"euro"
 block|,
-literal|""
+literal|"\\\\texteuro"
 block|}
 block|,
 comment|// euro sign, U+20AC NEW
@@ -2558,18 +2574,54 @@ block|}
 block|,
 comment|// Percent
 block|{
-literal|"43"
+literal|"39"
 block|,
 literal|""
+block|,
+literal|"'"
+block|}
+block|,
+comment|// Apostrophe
+block|{
+literal|"40"
+block|,
+literal|""
+block|,
+literal|"("
+block|}
+block|,
+comment|// Left bracket
+block|{
+literal|"41"
+block|,
+literal|""
+block|,
+literal|")"
+block|}
+block|,
+comment|// Right bracket
+block|{
+literal|"43"
+block|,
+literal|"plus"
 block|,
 literal|"\\+"
 block|}
 block|,
 comment|// Plus
 block|{
+literal|"95"
+block|,
+literal|"lowbar"
+block|,
+literal|"\\\\_"
+block|}
+block|,
+comment|// Underscore
+block|{
 literal|"123"
 block|,
-literal|""
+literal|"lbrace"
 block|,
 literal|"\\\\\\{"
 block|}
@@ -2578,12 +2630,31 @@ comment|// Left curly bracket
 block|{
 literal|"125"
 block|,
-literal|""
+literal|"rbrace"
 block|,
 literal|"\\\\\\}"
 block|}
 block|,
 comment|// Right curly bracket
+comment|// {"141", "", ""}, // Reverse line feed
+block|{
+literal|"146"
+block|,
+literal|""
+block|,
+literal|"'"
+block|}
+block|,
+comment|// Private use two ???
+block|{
+literal|"264"
+block|,
+literal|"Ccirc"
+block|,
+literal|"\\\\\\^\\{C\\}"
+block|}
+block|,
+comment|// capital C with circumflex
 block|{
 literal|"305"
 block|,
@@ -2593,6 +2664,42 @@ literal|"\\{\\\\i\\}"
 block|}
 block|,
 comment|// Small i without the dot
+block|{
+literal|"321"
+block|,
+literal|"Lstrok"
+block|,
+literal|"\\{\\\\L\\}"
+block|}
+block|,
+comment|// upper case l with stroke
+block|{
+literal|"322"
+block|,
+literal|"lstrok"
+block|,
+literal|"\\{\\\\l\\}"
+block|}
+block|,
+comment|// lower case l with stroke
+block|{
+literal|"536"
+block|,
+literal|""
+block|,
+literal|"\\\\cb\\{S\\}"
+block|}
+block|,
+comment|// capital letter S with comma below, require combelow
+block|{
+literal|"537"
+block|,
+literal|""
+block|,
+literal|"\\\\cb\\{s\\}"
+block|}
+block|,
+comment|// small letter S with comma below, require combelow
 block|{
 literal|"769"
 block|,
@@ -2607,16 +2714,25 @@ literal|"774"
 block|,
 literal|""
 block|,
-literal|""
+literal|"\\\\u\\{\\}"
 block|}
 block|,
 comment|// FIX: Breve - Can be solved better as it is a combining accent
+block|{
+literal|"775"
+block|,
+literal|""
+block|,
+literal|"\\\\\\.\\{\\}"
+block|}
+block|,
+comment|// FIX: Dot above - Can be solved better as it is a combining accent
 block|{
 literal|"776"
 block|,
 literal|""
 block|,
-literal|""
+literal|"\\\\\"\\{\\}"
 block|}
 block|,
 comment|// FIX: Diaeresis - Can be solved better as it is a combining accent
@@ -2625,18 +2741,173 @@ literal|"780"
 block|,
 literal|""
 block|,
-literal|""
+literal|"\\\\v\\{\\}"
 block|}
 block|,
 comment|// FIX: Caron - Can be solved better as it is a combining accent
 block|{
-literal|"8208"
+literal|"807"
 block|,
 literal|""
 block|,
+literal|"\\\\c\\{\\}"
+block|}
+block|,
+comment|// FIX: Cedilla - Can be solved better as it is a combining accent
+block|{
+literal|"949"
+block|,
+literal|"epsi"
+block|,
+literal|"\\$\\\\epsilon\\$"
+block|}
+block|,
+comment|// Epsilon - double check
+block|{
+literal|"1013"
+block|,
+literal|"epsiv"
+block|,
+literal|"\\$\\\\varepsilonup\\$"
+block|}
+block|,
+comment|// lunate epsilon, requires txfonts
+comment|// {"2013", "", ""},    // NKO letter FA
+block|{
+literal|"8208"
+block|,
+literal|"hyphen"
+block|,
 literal|"-"
 block|}
+block|,
 comment|// Hyphen
+block|{
+literal|"8459"
+block|,
+literal|"Hscr"
+block|,
+literal|"\\$\\\\mathcal\\{H\\}\\$"
+block|}
+block|,
+comment|// script capital H -- possibly use \mathscr
+block|{
+literal|"8460"
+block|,
+literal|""
+block|,
+literal|"\\$\\\\mathbb\\{H\\}\\$"
+block|}
+block|,
+comment|// black letter capital H -- requires e.g. amsfonts
+block|{
+literal|"8466"
+block|,
+literal|"Lscr"
+block|,
+literal|"\\$\\\\mathcal\\{L\\}\\$"
+block|}
+block|,
+comment|// script capital L -- possibly use \mathscr
+block|{
+literal|"8467"
+block|,
+literal|"lscr"
+block|,
+literal|"\\{\\\\ell\\}"
+block|}
+block|,
+comment|// script small l
+block|{
+literal|"8491"
+block|,
+literal|"angst"
+block|,
+literal|"\\{\\\\AA\\}"
+block|}
+block|,
+comment|// Angstrom
+block|{
+literal|"8729"
+block|,
+literal|"bullet"
+block|,
+literal|"\\$\\\\bullet\\$"
+block|}
+block|,
+comment|// Bullet operator
+block|{
+literal|"8776"
+block|,
+literal|"ap"
+block|,
+literal|"\\$\\\\approx\\$"
+block|}
+block|,
+comment|// almost equal to = asymptotic to,
+block|{
+literal|"8810"
+block|,
+literal|"ll"
+block|,
+literal|"\\$\\\\ll\\$"
+block|}
+block|,
+comment|// Much less than
+block|{
+literal|"8811"
+block|,
+literal|"gg"
+block|,
+literal|"\\$\\\\gg\\$"
+block|}
+block|,
+comment|// Much greater than
+block|{
+literal|"9426"
+block|,
+literal|""
+block|,
+literal|"\\\\copyright"
+block|}
+block|,
+comment|// circled small letter C
+block|{
+literal|"9653"
+block|,
+literal|"utri"
+block|,
+literal|"\\$\\\\triangle\\$"
+block|}
+block|,
+comment|// White up-pointing small triangle -- \vartriangle probably
+comment|// better but requires amssymb
+block|{
+literal|"10877"
+block|,
+literal|"les"
+block|,
+literal|"\\$\\\\leqslant\\$"
+block|}
+block|,
+comment|// Less than slanted equal -- requires amssymb
+block|{
+literal|"10878"
+block|,
+literal|"ges"
+block|,
+literal|"\\$\\\\geqslant\\$"
+block|}
+block|,
+comment|// Less than slanted equal -- requires amssymb
+block|{
+literal|"119978"
+block|,
+literal|"Oscr"
+block|,
+literal|"\\$\\\\mathcal\\{O\\}\\$"
+block|}
+comment|// script capital O -- possibly use \mathscr
 block|}
 decl_stmt|;
 DECL|field|escapedSymbols
@@ -2831,6 +3102,72 @@ operator|new
 name|StringBuffer
 argument_list|()
 decl_stmt|;
+comment|// Deal with the form<sup>k</sup>and<sub>k</sub>
+comment|// If the result is in text or equation form can be controlled
+comment|// From the "Advanced settings" tab
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"useConvertToEquation"
+argument_list|)
+condition|)
+block|{
+name|text
+operator|=
+name|text
+operator|.
+name|replaceAll
+argument_list|(
+literal|"<sup>([^<]+)</sup>"
+argument_list|,
+literal|"\\$\\^\\{$1\\}\\$"
+argument_list|)
+expr_stmt|;
+name|text
+operator|=
+name|text
+operator|.
+name|replaceAll
+argument_list|(
+literal|"<sub>([^<]+)</sub>"
+argument_list|,
+literal|"\\$_\\{$1\\}\\$"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
+name|text
+operator|=
+name|text
+operator|.
+name|replaceAll
+argument_list|(
+literal|"<sup>([^<]+)</sup>"
+argument_list|,
+literal|"\\\\textsuperscript\\{$1\\}"
+argument_list|)
+expr_stmt|;
+name|text
+operator|=
+name|text
+operator|.
+name|replaceAll
+argument_list|(
+literal|"<sub>([^<]+)</sub>"
+argument_list|,
+literal|"\\\\textsubscript\\{$1\\}"
+argument_list|)
+expr_stmt|;
+block|}
+comment|// TODO: maybe rewrite this based on regular expressions instead
+comment|// Note that (at least) the IEEE Xplore fetcher must be fixed as it relies on the current way to
+comment|// remove tags for its image alt-tag to equation converter
 for|for
 control|(
 name|int
@@ -2897,6 +3234,7 @@ operator|.
 name|toString
 argument_list|()
 expr_stmt|;
+comment|// Handle text based HTML entities
 name|Set
 argument_list|<
 name|String
@@ -2933,6 +3271,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|// Handle numerical HTML entities
 name|Pattern
 name|escapedPattern
 init|=
@@ -2940,7 +3279,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"&#([x]*\\p{XDigit}+);"
+literal|"&#([x]*)([0]*)(\\p{XDigit}+);"
 argument_list|)
 decl_stmt|;
 name|Matcher
@@ -2961,6 +3300,8 @@ name|find
 argument_list|()
 condition|)
 block|{
+comment|//	    System.err.println("Found pattern: " + m.group(1));
+comment|//      System.err.println("Found pattern: " + m.group(2));
 name|int
 name|num
 init|=
@@ -2980,6 +3321,13 @@ argument_list|(
 literal|"x"
 argument_list|,
 literal|"#"
+argument_list|)
+operator|+
+name|m
+operator|.
+name|group
+argument_list|(
+literal|3
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3008,6 +3356,20 @@ argument_list|(
 literal|1
 argument_list|)
 operator|+
+name|m
+operator|.
+name|group
+argument_list|(
+literal|2
+argument_list|)
+operator|+
+name|m
+operator|.
+name|group
+argument_list|(
+literal|3
+argument_list|)
+operator|+
 literal|";"
 argument_list|,
 name|numSymbols
@@ -3027,7 +3389,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"HTML escaped char not converted "
+literal|"HTML escaped char not converted: "
 operator|+
 name|m
 operator|.
@@ -3036,7 +3398,21 @@ argument_list|(
 literal|1
 argument_list|)
 operator|+
-literal|": "
+name|m
+operator|.
+name|group
+argument_list|(
+literal|2
+argument_list|)
+operator|+
+name|m
+operator|.
+name|group
+argument_list|(
+literal|3
+argument_list|)
+operator|+
+literal|" = "
 operator|+
 name|Integer
 operator|.
@@ -3081,7 +3457,7 @@ name|err
 operator|.
 name|println
 argument_list|(
-literal|"HTML escaped char not converted "
+literal|"HTML escaped char not converted: "
 operator|+
 name|m
 operator|.

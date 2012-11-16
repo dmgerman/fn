@@ -92,7 +92,7 @@ name|forms
 operator|.
 name|builder
 operator|.
-name|ButtonBarBuilder2
+name|ButtonBarBuilder
 import|;
 end_import
 
@@ -679,11 +679,11 @@ argument_list|,
 literal|3
 argument_list|)
 expr_stmt|;
-name|ButtonBarBuilder2
+name|ButtonBarBuilder
 name|bb
 init|=
 operator|new
-name|ButtonBarBuilder2
+name|ButtonBarBuilder
 argument_list|()
 decl_stmt|;
 name|bb

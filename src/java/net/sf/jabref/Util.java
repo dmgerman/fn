@@ -158,6 +158,16 @@ name|java
 operator|.
 name|net
 operator|.
+name|URLConnection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
 name|URLDecoder
 import|;
 end_import
@@ -9636,6 +9646,39 @@ index|[]
 name|fields
 parameter_list|)
 block|{
+return|return
+name|upgradePdfPsToFile
+argument_list|(
+name|database
+operator|.
+name|getEntryMap
+argument_list|()
+operator|.
+name|values
+argument_list|()
+argument_list|,
+name|fields
+argument_list|)
+return|;
+block|}
+comment|/**      * Collect file links from the given set of fields, and add them to the list contained      * in the field GUIGlobals.FILE_FIELD.      * @param entries The entries to modify.      * @param fields The fields to find links in.      * @return A CompoundEdit specifying the undo operation for the whole operation.      */
+DECL|method|upgradePdfPsToFile (Collection<BibtexEntry> entries, String[] fields)
+specifier|public
+specifier|static
+name|NamedCompound
+name|upgradePdfPsToFile
+parameter_list|(
+name|Collection
+argument_list|<
+name|BibtexEntry
+argument_list|>
+name|entries
+parameter_list|,
+name|String
+index|[]
+name|fields
+parameter_list|)
+block|{
 name|NamedCompound
 name|ce
 init|=
@@ -9655,13 +9698,7 @@ control|(
 name|BibtexEntry
 name|entry
 range|:
-name|database
-operator|.
-name|getEntryMap
-argument_list|()
-operator|.
-name|values
-argument_list|()
+name|entries
 control|)
 block|{
 name|FileListTableModel
@@ -14885,7 +14922,7 @@ literal|".*"
 argument_list|)
 return|;
 block|}
-comment|/**    	 * Remove the http://... from DOI    	 *     	 * @param doi - may not be null    	 * @return first DOI in the given String (without http://... prefix)    	 */
+comment|/**    	 * Remove the http://... from DOI    	 *     	 * @param doi - may not be null    	 * @return first DOI in the given String (without http://... prefix). If no DOI exists, the complete string is returned    	 */
 DECL|method|getDOI (String doi)
 specifier|public
 specifier|static
@@ -15368,7 +15405,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * @param nc indicates the undo named compound. May be null 	 */
+comment|/** 	 * @param ce indicates the undo named compound. May be null 	 */
 DECL|method|updateField (BibtexEntry be, String field, String newValue, NamedCompound ce)
 specifier|public
 specifier|static
@@ -15402,7 +15439,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * @param nc indicates the undo named compound. May be null 	 */
+comment|/** 	 * @param ce indicates the undo named compound. May be null 	 */
 DECL|method|updateField (BibtexEntry be, String field, String newValue, NamedCompound ce, Boolean nullFieldIfValueIsTheSame)
 specifier|public
 specifier|static
@@ -15588,6 +15625,102 @@ argument_list|,
 name|cancelAction
 argument_list|)
 expr_stmt|;
+block|}
+comment|/** 	 * Download the URL and return contents as a String. 	 * @param source 	 * @return 	 * @throws IOException 	 */
+DECL|method|getResults (URLConnection source)
+specifier|public
+specifier|static
+name|String
+name|getResults
+parameter_list|(
+name|URLConnection
+name|source
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|InputStream
+name|in
+init|=
+name|source
+operator|.
+name|getInputStream
+argument_list|()
+decl_stmt|;
+name|StringBuffer
+name|sb
+init|=
+operator|new
+name|StringBuffer
+argument_list|()
+decl_stmt|;
+name|byte
+index|[]
+name|buffer
+init|=
+operator|new
+name|byte
+index|[
+literal|256
+index|]
+decl_stmt|;
+while|while
+condition|(
+literal|true
+condition|)
+block|{
+name|int
+name|bytesRead
+init|=
+name|in
+operator|.
+name|read
+argument_list|(
+name|buffer
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|bytesRead
+operator|==
+operator|-
+literal|1
+condition|)
+break|break;
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|bytesRead
+condition|;
+name|i
+operator|++
+control|)
+name|sb
+operator|.
+name|append
+argument_list|(
+operator|(
+name|char
+operator|)
+name|buffer
+index|[
+name|i
+index|]
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|sb
+operator|.
+name|toString
+argument_list|()
+return|;
 block|}
 block|}
 end_class
