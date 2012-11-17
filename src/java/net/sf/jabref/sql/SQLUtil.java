@@ -871,7 +871,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** 	 * This routine returns the JDBC url corresponding to the DBStrings input. 	 *  	 * @param dbstrings 	 *            The DBStrings to use to make the connection 	 * @return The JDBC url corresponding to the input DBStrings 	 */
+comment|/** 	 * This routine returns the JDBC url corresponding to the DBStrings input. 	 *  	 * @param dbStrings 	 *            The DBStrings to use to make the connection 	 * @return The JDBC url corresponding to the input DBStrings 	 */
 DECL|method|createJDBCurl (DBStrings dbStrings, boolean withDBName)
 specifier|public
 specifier|static
