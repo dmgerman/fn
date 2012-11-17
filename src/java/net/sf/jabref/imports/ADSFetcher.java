@@ -282,7 +282,7 @@ name|getKeyName
 parameter_list|()
 block|{
 return|return
-literal|"Fetch ADS from DOI"
+literal|"ADS from ADS-DOI"
 return|;
 block|}
 DECL|method|getTitle ()
