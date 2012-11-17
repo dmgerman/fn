@@ -193,7 +193,7 @@ name|javaVersion
 operator|.
 name|compareTo
 argument_list|(
-literal|"1.5"
+literal|"1.6"
 argument_list|)
 operator|<
 literal|0
@@ -204,13 +204,13 @@ name|javaVersionWarning
 init|=
 literal|"\n"
 operator|+
-literal|"WARNING: You are running Java version 1.4 or lower ("
+literal|"WARNING: You are running Java version 1.6 or lower ("
 operator|+
 name|javaVersion
 operator|+
 literal|" to be exact).\n"
 operator|+
-literal|"         JabRef needs at least a Java Runtime Environment 1.5 or higher.\n"
+literal|"         JabRef needs at least a Java Runtime Environment 1.6 or higher.\n"
 operator|+
 literal|"         JabRef should not start properly and output an error message\n"
 operator|+
@@ -752,7 +752,7 @@ name|javaVersion
 operator|+
 literal|") is not high enough to run JabRef.\n"
 operator|+
-literal|"Please update your Java Runtime Environment to a version 1.5 or higher.\n"
+literal|"Please update your Java Runtime Environment to a version 1.6 or higher.\n"
 decl_stmt|;
 name|System
 operator|.
@@ -775,7 +775,7 @@ literal|"<html>You are using Java version "
 operator|+
 name|javaVersion
 operator|+
-literal|", but JabRef needs version 1.5 or higher."
+literal|", but JabRef needs version 1.6 or higher."
 operator|+
 literal|"<p>Please update your Java Runtime Environment.</p>"
 operator|+
