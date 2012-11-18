@@ -3655,6 +3655,31 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+comment|// The following sets up integration with Unity's global menu, but currently (Nov 18, 2012)
+comment|// this doesn't work with OpenJDK 6 (leads to crash), only with 7.
+name|String
+name|javaVersion
+init|=
+name|System
+operator|.
+name|getProperty
+argument_list|(
+literal|"java.version"
+argument_list|,
+literal|null
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|javaVersion
+operator|.
+name|compareTo
+argument_list|(
+literal|"1.7"
+argument_list|)
+operator|>=
+literal|0
+condition|)
 name|ApplicationMenu
 operator|.
 name|tryInstall
