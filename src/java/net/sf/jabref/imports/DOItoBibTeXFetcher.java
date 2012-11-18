@@ -418,6 +418,13 @@ argument_list|(
 name|bibtexString
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|entry
+operator|!=
+literal|null
+condition|)
+block|{
 comment|// Optionally add curly brackets around key words to keep the case
 name|String
 name|title
@@ -483,6 +490,13 @@ expr_stmt|;
 return|return
 literal|true
 return|;
+block|}
+else|else
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 annotation|@
 name|Override
