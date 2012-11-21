@@ -2610,6 +2610,87 @@ block|}
 block|,
 comment|// Plus
 block|{
+literal|"44"
+block|,
+literal|"comma"
+block|,
+literal|","
+block|}
+block|,
+comment|// Comma
+block|{
+literal|"45"
+block|,
+literal|"hyphen"
+block|,
+literal|"-"
+block|}
+block|,
+comment|// Hyphen
+block|{
+literal|"46"
+block|,
+literal|"period"
+block|,
+literal|"\\."
+block|}
+block|,
+comment|// Period
+block|{
+literal|"47"
+block|,
+literal|"slash"
+block|,
+literal|"/"
+block|}
+block|,
+comment|// Slash (solidus)
+block|{
+literal|"58"
+block|,
+literal|"colon"
+block|,
+literal|":"
+block|}
+block|,
+comment|// Colon
+block|{
+literal|"59"
+block|,
+literal|"semi"
+block|,
+literal|";"
+block|}
+block|,
+comment|// Semi colon
+block|{
+literal|"91"
+block|,
+literal|"lsqb"
+block|,
+literal|"\\["
+block|}
+block|,
+comment|// Left square bracket
+block|{
+literal|"92"
+block|,
+literal|"bsol"
+block|,
+literal|"\\\\textbackslash"
+block|}
+block|,
+comment|// Backslash
+block|{
+literal|"93"
+block|,
+literal|"rsqb"
+block|,
+literal|"\\]"
+block|}
+block|,
+comment|// Right square bracket
+block|{
 literal|"95"
 block|,
 literal|"lowbar"
@@ -2626,7 +2707,7 @@ block|,
 literal|"\\\\\\{"
 block|}
 block|,
-comment|// Left curly bracket
+comment|// Left curly bracket&lcub; ??
 block|{
 literal|"125"
 block|,
@@ -2635,7 +2716,7 @@ block|,
 literal|"\\\\\\}"
 block|}
 block|,
-comment|// Right curly bracket
+comment|// Right curly bracket&rcub; ??
 comment|// {"141", "", ""}, // Reverse line feed
 block|{
 literal|"146"
@@ -2782,6 +2863,15 @@ literal|"-"
 block|}
 block|,
 comment|// Hyphen
+block|{
+literal|"8451"
+block|,
+literal|""
+block|,
+literal|"\\$\\\\deg\\$\\{C\\}"
+block|}
+block|,
+comment|// Degree Celsius
 block|{
 literal|"8459"
 block|,
@@ -3424,6 +3514,18 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// Remove $$ in case of two adjacent conversions
+name|text
+operator|=
+name|text
+operator|.
+name|replace
+argument_list|(
+literal|"$$"
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
 comment|// Find non-covered special characters with alphabetic codes
 name|escapedPattern
 operator|=
