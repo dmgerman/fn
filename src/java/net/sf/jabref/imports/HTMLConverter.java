@@ -2728,6 +2728,15 @@ block|}
 block|,
 comment|// Private use two ???
 block|{
+literal|"150"
+block|,
+literal|""
+block|,
+literal|"--"
+block|}
+block|,
+comment|// En dash
+block|{
 literal|"264"
 block|,
 literal|"Ccirc"
@@ -2781,6 +2790,15 @@ literal|"\\\\cb\\{s\\}"
 block|}
 block|,
 comment|// small letter S with comma below, require combelow
+block|{
+literal|"768"
+block|,
+literal|""
+block|,
+literal|"\\\\`\\{\\}"
+block|}
+block|,
+comment|// FIX: Grave - Can be solved better as it is a combining accent
 block|{
 literal|"769"
 block|,
@@ -2853,7 +2871,7 @@ literal|"\\$\\\\varepsilonup\\$"
 block|}
 block|,
 comment|// lunate epsilon, requires txfonts
-comment|// {"2013", "", ""},    // NKO letter FA
+comment|// {"2013", "", ""},    // NKO letter FA -- Maybe en dash = 0x2013?
 block|{
 literal|"8208"
 block|,
@@ -2909,6 +2927,15 @@ block|}
 block|,
 comment|// script small l
 block|{
+literal|"8469"
+block|,
+literal|"lscr"
+block|,
+literal|"\\$\\\\mathbb\\{N\\}\\$"
+block|}
+block|,
+comment|// double struck capital N -- requires e.g. amsfonts
+block|{
 literal|"8491"
 block|,
 literal|"angst"
@@ -2926,6 +2953,15 @@ literal|"\\$\\\\bullet\\$"
 block|}
 block|,
 comment|// Bullet operator
+block|{
+literal|"8771"
+block|,
+literal|"sime"
+block|,
+literal|"\\$\\\\simeq\\$"
+block|}
+block|,
+comment|// almost equal to = asymptotic to,
 block|{
 literal|"8776"
 block|,
@@ -2953,6 +2989,15 @@ literal|"\\$\\\\gg\\$"
 block|}
 block|,
 comment|// Much greater than
+block|{
+literal|"8819"
+block|,
+literal|"gsim"
+block|,
+literal|"\\$\\\\gtrsim\\$"
+block|}
+block|,
+comment|// Greater than or equivalent to
 block|{
 literal|"9426"
 block|,
