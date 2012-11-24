@@ -797,6 +797,11 @@ argument_list|()
 expr_stmt|;
 name|Globals
 operator|.
+name|setupLogging
+argument_list|()
+expr_stmt|;
+name|Globals
+operator|.
 name|prefs
 operator|=
 name|prefs

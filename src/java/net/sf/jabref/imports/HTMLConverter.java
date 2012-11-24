@@ -2610,6 +2610,87 @@ block|}
 block|,
 comment|// Plus
 block|{
+literal|"44"
+block|,
+literal|"comma"
+block|,
+literal|","
+block|}
+block|,
+comment|// Comma
+block|{
+literal|"45"
+block|,
+literal|"hyphen"
+block|,
+literal|"-"
+block|}
+block|,
+comment|// Hyphen
+block|{
+literal|"46"
+block|,
+literal|"period"
+block|,
+literal|"\\."
+block|}
+block|,
+comment|// Period
+block|{
+literal|"47"
+block|,
+literal|"slash"
+block|,
+literal|"/"
+block|}
+block|,
+comment|// Slash (solidus)
+block|{
+literal|"58"
+block|,
+literal|"colon"
+block|,
+literal|":"
+block|}
+block|,
+comment|// Colon
+block|{
+literal|"59"
+block|,
+literal|"semi"
+block|,
+literal|";"
+block|}
+block|,
+comment|// Semi colon
+block|{
+literal|"91"
+block|,
+literal|"lsqb"
+block|,
+literal|"\\["
+block|}
+block|,
+comment|// Left square bracket
+block|{
+literal|"92"
+block|,
+literal|"bsol"
+block|,
+literal|"\\\\textbackslash"
+block|}
+block|,
+comment|// Backslash
+block|{
+literal|"93"
+block|,
+literal|"rsqb"
+block|,
+literal|"\\]"
+block|}
+block|,
+comment|// Right square bracket
+block|{
 literal|"95"
 block|,
 literal|"lowbar"
@@ -2626,7 +2707,7 @@ block|,
 literal|"\\\\\\{"
 block|}
 block|,
-comment|// Left curly bracket
+comment|// Left curly bracket&lcub; ??
 block|{
 literal|"125"
 block|,
@@ -2635,7 +2716,7 @@ block|,
 literal|"\\\\\\}"
 block|}
 block|,
-comment|// Right curly bracket
+comment|// Right curly bracket&rcub; ??
 comment|// {"141", "", ""}, // Reverse line feed
 block|{
 literal|"146"
@@ -2646,6 +2727,15 @@ literal|"'"
 block|}
 block|,
 comment|// Private use two ???
+block|{
+literal|"150"
+block|,
+literal|""
+block|,
+literal|"--"
+block|}
+block|,
+comment|// En dash
 block|{
 literal|"264"
 block|,
@@ -2700,6 +2790,15 @@ literal|"\\\\cb\\{s\\}"
 block|}
 block|,
 comment|// small letter S with comma below, require combelow
+block|{
+literal|"768"
+block|,
+literal|""
+block|,
+literal|"\\\\`\\{\\}"
+block|}
+block|,
+comment|// FIX: Grave - Can be solved better as it is a combining accent
 block|{
 literal|"769"
 block|,
@@ -2772,7 +2871,7 @@ literal|"\\$\\\\varepsilonup\\$"
 block|}
 block|,
 comment|// lunate epsilon, requires txfonts
-comment|// {"2013", "", ""},    // NKO letter FA
+comment|// {"2013", "", ""},    // NKO letter FA -- Maybe en dash = 0x2013?
 block|{
 literal|"8208"
 block|,
@@ -2782,6 +2881,15 @@ literal|"-"
 block|}
 block|,
 comment|// Hyphen
+block|{
+literal|"8451"
+block|,
+literal|""
+block|,
+literal|"\\$\\\\deg\\$\\{C\\}"
+block|}
+block|,
+comment|// Degree Celsius
 block|{
 literal|"8459"
 block|,
@@ -2819,6 +2927,15 @@ block|}
 block|,
 comment|// script small l
 block|{
+literal|"8469"
+block|,
+literal|"lscr"
+block|,
+literal|"\\$\\\\mathbb\\{N\\}\\$"
+block|}
+block|,
+comment|// double struck capital N -- requires e.g. amsfonts
+block|{
 literal|"8491"
 block|,
 literal|"angst"
@@ -2836,6 +2953,15 @@ literal|"\\$\\\\bullet\\$"
 block|}
 block|,
 comment|// Bullet operator
+block|{
+literal|"8771"
+block|,
+literal|"sime"
+block|,
+literal|"\\$\\\\simeq\\$"
+block|}
+block|,
+comment|// almost equal to = asymptotic to,
 block|{
 literal|"8776"
 block|,
@@ -2863,6 +2989,15 @@ literal|"\\$\\\\gg\\$"
 block|}
 block|,
 comment|// Much greater than
+block|{
+literal|"8819"
+block|,
+literal|"gsim"
+block|,
+literal|"\\$\\\\gtrsim\\$"
+block|}
+block|,
+comment|// Greater than or equivalent to
 block|{
 literal|"9426"
 block|,
@@ -3424,6 +3559,18 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// Remove $$ in case of two adjacent conversions
+name|text
+operator|=
+name|text
+operator|.
+name|replace
+argument_list|(
+literal|"$$"
+argument_list|,
+literal|""
+argument_list|)
+expr_stmt|;
 comment|// Find non-covered special characters with alphabetic codes
 name|escapedPattern
 operator|=

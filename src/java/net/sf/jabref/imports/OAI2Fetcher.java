@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -353,7 +353,7 @@ specifier|private
 name|OutputPrinter
 name|status
 decl_stmt|;
-comment|/**      * some archives - like arxive.org - might expect of you to wait some time       */
+comment|/**      * some archives - like ArXiv.org - might expect of you to wait some time       */
 DECL|method|shouldWait ()
 specifier|private
 name|boolean
@@ -685,6 +685,7 @@ name|dot
 operator|<
 name|slash
 condition|)
+block|{
 name|key
 operator|=
 name|key
@@ -708,6 +709,7 @@ name|length
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|key
 return|;
@@ -762,7 +764,7 @@ literal|""
 argument_list|)
 return|;
 block|}
-comment|/**      * Import an entry from an OAI2 archive. The BibtexEntry provided has to      * have the field OAI2_IDENTIFIER_FIELD set to the search string.      *       * @param key      *            The OAI2 key to fetch from ArXiv.      * @return The imnported BibtexEntry or null if none.      */
+comment|/**      * Import an entry from an OAI2 archive. The BibtexEntry provided has to      * have the field OAI2_IDENTIFIER_FIELD set to the search string.      *       * @param key      *            The OAI2 key to fetch from ArXiv.      * @return The imported BibtexEntry or null if none.      */
 DECL|method|importOai2Entry (String key)
 specifier|public
 name|BibtexEntry
@@ -1361,7 +1363,9 @@ condition|(
 operator|!
 name|shouldContinue
 condition|)
+block|{
 break|break;
+block|}
 comment|/* query the archive and load the results into the BibtexEntry */
 name|BibtexEntry
 name|be
@@ -1376,12 +1380,14 @@ condition|(
 name|shouldWait
 argument_list|()
 condition|)
+block|{
 name|lastCall
 operator|=
 operator|new
 name|Date
 argument_list|()
 expr_stmt|;
+block|}
 comment|/* add the entry to the inspection dialog */
 if|if
 condition|(
@@ -1389,6 +1395,7 @@ name|be
 operator|!=
 literal|null
 condition|)
+block|{
 name|dialog
 operator|.
 name|addEntry
@@ -1396,6 +1403,7 @@ argument_list|(
 name|be
 argument_list|)
 expr_stmt|;
+block|}
 comment|/* update the dialogs progress bar */
 name|dialog
 operator|.
@@ -1429,7 +1437,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Error while fetching from OIA2"
+literal|"Error while fetching from OAI2"
 argument_list|)
 operator|+
 literal|": "

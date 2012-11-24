@@ -781,6 +781,15 @@ argument_list|,
 literal|"<a href=\"http://dx.doi.org/(.+)\" target"
 argument_list|)
 expr_stmt|;
+name|fieldPatterns
+operator|.
+name|put
+argument_list|(
+literal|"url"
+argument_list|,
+literal|"<a href=\"(/stamp/stamp[^\"]+)"
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|getOptionsPanel ()
 specifier|public
@@ -3798,6 +3807,39 @@ argument_list|(
 literal|"abstract"
 argument_list|,
 name|abstr
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Clean up url
+name|String
+name|url
+init|=
+operator|(
+name|String
+operator|)
+name|entry
+operator|.
+name|getField
+argument_list|(
+literal|"url"
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|url
+operator|!=
+literal|null
+condition|)
+block|{
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"url"
+argument_list|,
+literal|"http://ieeexplore.ieee.org"
+operator|+
+name|url
 argument_list|)
 expr_stmt|;
 block|}

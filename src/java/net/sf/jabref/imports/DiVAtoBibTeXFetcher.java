@@ -167,10 +167,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|DOItoBibTeXFetcher
+DECL|class|DiVAtoBibTeXFetcher
 specifier|public
 class|class
-name|DOItoBibTeXFetcher
+name|DiVAtoBibTeXFetcher
 implements|implements
 name|EntryFetcher
 block|{
@@ -181,7 +181,16 @@ specifier|final
 name|String
 name|URL_PATTERN
 init|=
-literal|"http://dx.doi.org/%s"
+literal|"http://www.diva-portal.org/smash/getreferences?referenceFormat=BibTex&pids=%s"
+decl_stmt|;
+DECL|field|ABSTRACT_URL_PATTERN
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|ABSTRACT_URL_PATTERN
+init|=
+literal|"http://www.diva-portal.org/smash/record.jsf?pid=%s"
 decl_stmt|;
 DECL|field|caseKeeper
 specifier|final
@@ -334,15 +343,7 @@ return|return
 literal|false
 return|;
 block|}
-name|conn
-operator|.
-name|setRequestProperty
-argument_list|(
-literal|"Accept"
-argument_list|,
-literal|"text/bibliography; style=bibtex"
-argument_list|)
-expr_stmt|;
+comment|// conn.setRequestProperty("Accept", "text/bibliography; style=bibtex");
 name|String
 name|bibtexString
 decl_stmt|;
@@ -372,7 +373,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Unknown DOI: '%0'."
+literal|"Unknown DiVA entry: '%0'."
 argument_list|,
 name|query
 argument_list|)
@@ -381,7 +382,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Get BibTeX entry from DOI"
+literal|"Get BibTeX entry from DiVA"
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -492,11 +493,9 @@ literal|true
 return|;
 block|}
 else|else
-block|{
 return|return
 literal|false
 return|;
-block|}
 block|}
 annotation|@
 name|Override
@@ -507,7 +506,7 @@ name|getTitle
 parameter_list|()
 block|{
 return|return
-literal|"DOI to BibTeX"
+literal|"DiVA"
 return|;
 block|}
 annotation|@
@@ -519,7 +518,7 @@ name|getKeyName
 parameter_list|()
 block|{
 return|return
-literal|"DOItoBibTeX"
+literal|"DiVAtoBibTeX"
 return|;
 block|}
 annotation|@
@@ -550,7 +549,7 @@ name|getHelpPage
 parameter_list|()
 block|{
 return|return
-literal|"DOItoBibTeXHelp.html"
+literal|"DiVAtoBibTeXHelp.html"
 return|;
 block|}
 annotation|@
