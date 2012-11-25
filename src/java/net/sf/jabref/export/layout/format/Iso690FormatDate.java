@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  * iso690FormatDate.java  *  * Creado el 10 de septiembre de 2009, 16:07  *  * Copyright 2009, Laura Hernández Gómez  *  * This file is part of Plugin ISO 690.  *  *  Plugin ISO 690 is free software: you can redistribute it and/or modify  *  it under the terms of the GNU General Public License as published by  *  the Free Software Foundation, either version 3 of the License, or  *  (at your option) any later version.  *  *  Plugin ISO 690 is distributed in the hope that it will be useful,  *  but WITHOUT ANY WARRANTY; without even the implied warranty of  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  *  GNU General Public License for more details.  *  *  You should have received a copy of the GNU General Public License  *  along with Plugin ISO 690.  If not, see<http://www.gnu.org/licenses/>.  */
+comment|/*  * iso690FormatDate.java  *  * Creado el 10 de septiembre de 2009, 16:07  *  * Copyright 2009, Laura HernÃ¡ndez GÃ³mez  *  * This file is part of Plugin ISO 690.  *  *  Plugin ISO 690 is free software: you can redistribute it and/or modify  *  it under the terms of the GNU General Public License as published by  *  the Free Software Foundation, either version 3 of the License, or  *  (at your option) any later version.  *  *  Plugin ISO 690 is distributed in the hope that it will be useful,  *  but WITHOUT ANY WARRANTY; without even the implied warranty of  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  *  GNU General Public License for more details.  *  *  You should have received a copy of the GNU General Public License  *  along with Plugin ISO 690.  If not, see<http://www.gnu.org/licenses/>.  */
 end_comment
 
 begin_package
@@ -122,7 +122,7 @@ operator|==
 literal|1
 condition|)
 block|{
-comment|//sólo pone el año
+comment|//sÃ³lo pone el aÃ±o
 name|sb
 operator|.
 name|append
@@ -147,8 +147,8 @@ operator|==
 literal|2
 condition|)
 block|{
-comment|//primer campo mes, segundo campo año
-comment|//cambiamos al formato año - mes
+comment|//primer campo mes, segundo campo aÃ±o
+comment|//cambiamos al formato aÃ±o - mes
 name|sb
 operator|.
 name|append
@@ -183,8 +183,8 @@ operator|==
 literal|3
 condition|)
 block|{
-comment|//primer campo día, segundo campo mes y tercer campo año
-comment|// cambiamos al formato año-mes-día
+comment|//primer campo dÃ­a, segundo campo mes y tercer campo aÃ±o
+comment|// cambiamos al formato aÃ±o-mes-dÃ­a
 name|sb
 operator|.
 name|append
