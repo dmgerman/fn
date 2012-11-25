@@ -101,6 +101,7 @@ comment|// most of the LaTeX commands can be read at http://en.wikibooks.org/wik
 comment|// The symbols can be looked at http://www.fileformat.info/info/unicode/char/a4/index.htm. Replace "a4" with the U+ number
 comment|// http://detexify.kirelabs.org/classify.html and http://www.ctan.org/tex-archive/info/symbols/comprehensive/ might help to find the right LaTeX command
 comment|// http://llg.cubic.org/docs/ent2latex.html and http://www.w3.org/TR/xml-entity-names/byalpha.html are also useful
+comment|// as well as http://www.w3.org/Math/characters/unicode.xml
 comment|// An array of arrays of strings in the format:
 comment|// {"decimal number of HTML entity", "text HTML entity", "corresponding LaTeX command"}
 comment|// Leaving a field empty is OK as it then will not be included
@@ -1502,6 +1503,15 @@ literal|"\\$\\\\upsilon\\$"
 block|}
 block|,
 comment|// greek small letter upsilon,
+block|{
+literal|""
+block|,
+literal|"upsi"
+block|,
+literal|"\\$\\\\upsilon\\$"
+block|}
+block|,
+comment|// alias
 comment|//                                   U+03C5 ISOgrk3
 block|{
 literal|"966"
@@ -2746,6 +2756,33 @@ block|}
 block|,
 comment|// capital C with circumflex
 block|{
+literal|"265"
+block|,
+literal|"ccirc"
+block|,
+literal|"\\\\\\^\\{c\\}"
+block|}
+block|,
+comment|// small C with circumflex
+block|{
+literal|"266"
+block|,
+literal|"Cdot"
+block|,
+literal|"\\\\\\.\\{C\\}"
+block|}
+block|,
+comment|// capital C with dot above
+block|{
+literal|"267"
+block|,
+literal|"cdot"
+block|,
+literal|"\\\\\\.\\{c\\}"
+block|}
+block|,
+comment|// small C with dot above
+block|{
 literal|"305"
 block|,
 literal|"inodot"
@@ -2791,69 +2828,6 @@ block|}
 block|,
 comment|// small letter S with comma below, require combelow
 block|{
-literal|"768"
-block|,
-literal|""
-block|,
-literal|"\\\\`\\{\\}"
-block|}
-block|,
-comment|// FIX: Grave - Can be solved better as it is a combining accent
-block|{
-literal|"769"
-block|,
-literal|""
-block|,
-literal|"'"
-block|}
-block|,
-comment|// Can be solved better as it is a combining accent
-block|{
-literal|"774"
-block|,
-literal|""
-block|,
-literal|"\\\\u\\{\\}"
-block|}
-block|,
-comment|// FIX: Breve - Can be solved better as it is a combining accent
-block|{
-literal|"775"
-block|,
-literal|""
-block|,
-literal|"\\\\\\.\\{\\}"
-block|}
-block|,
-comment|// FIX: Dot above - Can be solved better as it is a combining accent
-block|{
-literal|"776"
-block|,
-literal|""
-block|,
-literal|"\\\\\"\\{\\}"
-block|}
-block|,
-comment|// FIX: Diaeresis - Can be solved better as it is a combining accent
-block|{
-literal|"780"
-block|,
-literal|""
-block|,
-literal|"\\\\v\\{\\}"
-block|}
-block|,
-comment|// FIX: Caron - Can be solved better as it is a combining accent
-block|{
-literal|"807"
-block|,
-literal|""
-block|,
-literal|"\\\\c\\{\\}"
-block|}
-block|,
-comment|// FIX: Cedilla - Can be solved better as it is a combining accent
-block|{
 literal|"949"
 block|,
 literal|"epsi"
@@ -2871,7 +2845,17 @@ literal|"\\$\\\\varepsilonup\\$"
 block|}
 block|,
 comment|// lunate epsilon, requires txfonts
+block|{
+literal|"1082"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\cyrchar\\\\cyrk\\}"
+block|}
+block|,
+comment|// Cyrillic small KA
 comment|// {"2013", "", ""},    // NKO letter FA -- Maybe en dash = 0x2013?
+comment|// {"2014", "", ""},    // NKO letter FA -- Maybe em dash = 0x2014?
 block|{
 literal|"8208"
 block|,
@@ -2936,6 +2920,15 @@ block|}
 block|,
 comment|// double struck capital N -- requires e.g. amsfonts
 block|{
+literal|"8486"
+block|,
+literal|""
+block|,
+literal|"\\$\\{\\\\Omega\\}\\$"
+block|}
+block|,
+comment|// Omega
+block|{
 literal|"8491"
 block|,
 literal|"angst"
@@ -2990,6 +2983,15 @@ block|}
 block|,
 comment|// Much greater than
 block|{
+literal|""
+block|,
+literal|"Gt"
+block|,
+literal|"\\$\\\\gg\\$"
+block|}
+block|,
+comment|// Much greater than
+block|{
 literal|"8819"
 block|,
 literal|"gsim"
@@ -2999,6 +3001,24 @@ block|}
 block|,
 comment|// Greater than or equivalent to
 block|{
+literal|"8882"
+block|,
+literal|"vltri"
+block|,
+literal|"\\$\\\\triangleleft\\$"
+block|}
+block|,
+comment|// Left triangle
+block|{
+literal|"8883"
+block|,
+literal|"vrtri"
+block|,
+literal|"\\$\\\\triangleright\\$"
+block|}
+block|,
+comment|// Right triangle
+block|{
 literal|"9426"
 block|,
 literal|""
@@ -3007,6 +3027,15 @@ literal|"\\\\copyright"
 block|}
 block|,
 comment|// circled small letter C
+block|{
+literal|"9633"
+block|,
+literal|"square"
+block|,
+literal|"\\$\\\\square\\$"
+block|}
+block|,
+comment|// White square
 block|{
 literal|"9653"
 block|,
@@ -3045,6 +3074,84 @@ block|}
 comment|// script capital O -- possibly use \mathscr
 block|}
 decl_stmt|;
+comment|// List of combining accents
+DECL|field|accentList
+specifier|private
+name|String
+index|[]
+index|[]
+name|accentList
+init|=
+operator|new
+name|String
+index|[]
+index|[]
+block|{
+block|{
+literal|"768"
+block|,
+literal|"`"
+block|}
+block|,
+comment|// Grave
+block|{
+literal|"769"
+block|,
+literal|"'"
+block|}
+block|,
+comment|//
+block|{
+literal|"771"
+block|,
+literal|"~"
+block|}
+block|,
+comment|// Tilde
+block|{
+literal|"774"
+block|,
+literal|"u"
+block|}
+block|,
+comment|// Breve
+block|{
+literal|"775"
+block|,
+literal|"."
+block|}
+block|,
+comment|// Dot above
+block|{
+literal|"776"
+block|,
+literal|"\""
+block|}
+block|,
+comment|// Diaeresis
+block|{
+literal|"778"
+block|,
+literal|"a"
+block|}
+block|,
+comment|// Ring
+block|{
+literal|"780"
+block|,
+literal|"v"
+block|}
+block|,
+comment|// Caron
+block|{
+literal|"807"
+block|,
+literal|"c"
+block|}
+block|,
+comment|// Cedilla
+block|}
+decl_stmt|;
 DECL|field|escapedSymbols
 specifier|private
 name|HashMap
@@ -3059,6 +3166,25 @@ operator|new
 name|HashMap
 argument_list|<
 name|String
+argument_list|,
+name|String
+argument_list|>
+argument_list|()
+decl_stmt|;
+DECL|field|escapedAccents
+specifier|private
+name|HashMap
+argument_list|<
+name|Integer
+argument_list|,
+name|String
+argument_list|>
+name|escapedAccents
+init|=
+operator|new
+name|HashMap
+argument_list|<
+name|Integer
 argument_list|,
 name|String
 argument_list|>
@@ -3210,6 +3336,50 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|accentList
+operator|.
+name|length
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|escapedAccents
+operator|.
+name|put
+argument_list|(
+name|Integer
+operator|.
+name|decode
+argument_list|(
+name|accentList
+index|[
+name|i
+index|]
+index|[
+literal|0
+index|]
+argument_list|)
+argument_list|,
+name|accentList
+index|[
+name|i
+index|]
+index|[
+literal|1
+index|]
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 DECL|method|format (String text)
@@ -3414,7 +3584,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"&#([x]*)([0]*)(\\p{XDigit}+);"
+literal|"(.)&#([x]*)([0]*)(\\p{XDigit}+);"
 argument_list|)
 decl_stmt|;
 name|Matcher
@@ -3448,7 +3618,7 @@ name|m
 operator|.
 name|group
 argument_list|(
-literal|1
+literal|2
 argument_list|)
 operator|.
 name|replace
@@ -3462,7 +3632,7 @@ name|m
 operator|.
 name|group
 argument_list|(
-literal|3
+literal|4
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3488,8 +3658,59 @@ name|m
 operator|.
 name|group
 argument_list|(
+literal|2
+argument_list|)
+operator|+
+name|m
+operator|.
+name|group
+argument_list|(
+literal|3
+argument_list|)
+operator|+
+name|m
+operator|.
+name|group
+argument_list|(
+literal|4
+argument_list|)
+operator|+
+literal|";"
+argument_list|,
+name|numSymbols
+operator|.
+name|get
+argument_list|(
+name|num
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|escapedAccents
+operator|.
+name|containsKey
+argument_list|(
+name|num
+argument_list|)
+condition|)
+block|{
+name|text
+operator|=
+name|text
+operator|.
+name|replaceAll
+argument_list|(
+name|m
+operator|.
+name|group
+argument_list|(
 literal|1
 argument_list|)
+operator|+
+literal|"&#"
 operator|+
 name|m
 operator|.
@@ -3505,14 +3726,34 @@ argument_list|(
 literal|3
 argument_list|)
 operator|+
+name|m
+operator|.
+name|group
+argument_list|(
+literal|4
+argument_list|)
+operator|+
 literal|";"
 argument_list|,
-name|numSymbols
+literal|"\\\\"
+operator|+
+name|escapedAccents
 operator|.
 name|get
 argument_list|(
 name|num
 argument_list|)
+operator|+
+literal|"\\{"
+operator|+
+name|m
+operator|.
+name|group
+argument_list|(
+literal|1
+argument_list|)
+operator|+
+literal|"\\}"
 argument_list|)
 expr_stmt|;
 block|}
@@ -3530,13 +3771,6 @@ name|m
 operator|.
 name|group
 argument_list|(
-literal|1
-argument_list|)
-operator|+
-name|m
-operator|.
-name|group
-argument_list|(
 literal|2
 argument_list|)
 operator|+
@@ -3545,6 +3779,13 @@ operator|.
 name|group
 argument_list|(
 literal|3
+argument_list|)
+operator|+
+name|m
+operator|.
+name|group
+argument_list|(
+literal|4
 argument_list|)
 operator|+
 literal|" = "
