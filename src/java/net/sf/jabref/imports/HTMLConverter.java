@@ -1559,6 +1559,24 @@ literal|"\\$\\\\vartheta\\$"
 block|}
 block|,
 comment|// greek small letter theta symbol,
+block|{
+literal|""
+block|,
+literal|"thetav"
+block|,
+literal|"\\$\\\\vartheta\\$"
+block|}
+block|,
+comment|// greek small letter theta symbol,
+block|{
+literal|""
+block|,
+literal|"vartheta"
+block|,
+literal|"\\$\\\\vartheta\\$"
+block|}
+block|,
+comment|// greek small letter theta symbol,
 comment|//                                   U+03D1 NEW
 block|{
 literal|"978"
@@ -2701,6 +2719,15 @@ block|}
 block|,
 comment|// Right square bracket
 block|{
+literal|"94"
+block|,
+literal|"Hat"
+block|,
+literal|"\\\\\\^\\{\\}"
+block|}
+block|,
+comment|// Circumflex
+block|{
 literal|"95"
 block|,
 literal|"lowbar"
@@ -2710,6 +2737,15 @@ block|}
 block|,
 comment|// Underscore
 block|{
+literal|"96"
+block|,
+literal|"grave"
+block|,
+literal|"\\\\`\\{\\}"
+block|}
+block|,
+comment|// Grave
+block|{
 literal|"123"
 block|,
 literal|"lbrace"
@@ -2717,7 +2753,43 @@ block|,
 literal|"\\\\\\{"
 block|}
 block|,
-comment|// Left curly bracket&lcub; ??
+comment|// Left curly bracket
+block|{
+literal|""
+block|,
+literal|"lcub"
+block|,
+literal|"\\\\\\{"
+block|}
+block|,
+comment|// Left curly bracket
+block|{
+literal|"124"
+block|,
+literal|"vert"
+block|,
+literal|"\\|"
+block|}
+block|,
+comment|// Vertical bar
+block|{
+literal|""
+block|,
+literal|"verbar"
+block|,
+literal|"\\|"
+block|}
+block|,
+comment|// Vertical bar
+block|{
+literal|""
+block|,
+literal|"VerticalLine"
+block|,
+literal|"\\|"
+block|}
+block|,
+comment|// Vertical bar
 block|{
 literal|"125"
 block|,
@@ -2726,7 +2798,25 @@ block|,
 literal|"\\\\\\}"
 block|}
 block|,
-comment|// Right curly bracket&rcub; ??
+comment|// Right curly bracket
+block|{
+literal|""
+block|,
+literal|"rcub"
+block|,
+literal|"\\\\\\}"
+block|}
+block|,
+comment|// Right curly bracket
+block|{
+literal|"138"
+block|,
+literal|""
+block|,
+literal|"\\\\v\\{S\\}"
+block|}
+block|,
+comment|// Line tabulation set
 comment|// {"141", "", ""}, // Reverse line feed
 block|{
 literal|"145"
@@ -2774,6 +2864,33 @@ block|}
 block|,
 comment|// En dash
 block|{
+literal|"154"
+block|,
+literal|""
+block|,
+literal|"\\\\v\\{s\\}"
+block|}
+block|,
+comment|// Single character introducer
+block|{
+literal|"262"
+block|,
+literal|"Cacute"
+block|,
+literal|"\\\\'\\{C\\}"
+block|}
+block|,
+comment|// capital C with acute
+block|{
+literal|"263"
+block|,
+literal|"cacute"
+block|,
+literal|"\\\\'\\{c\\}"
+block|}
+block|,
+comment|// small C with acute
+block|{
 literal|"264"
 block|,
 literal|"Ccirc"
@@ -2810,9 +2927,54 @@ block|}
 block|,
 comment|// small C with dot above
 block|{
+literal|"268"
+block|,
+literal|"Ccaron"
+block|,
+literal|"\\\\v\\{C\\}"
+block|}
+block|,
+comment|// capital C with caron
+block|{
+literal|"269"
+block|,
+literal|"ccaron"
+block|,
+literal|"\\\\v\\{c\\}"
+block|}
+block|,
+comment|// small C with caron
+block|{
+literal|"298"
+block|,
+literal|"Imacr"
+block|,
+literal|"\\\\=\\{I\\}"
+block|}
+block|,
+comment|// capital I with macron
+block|{
+literal|"299"
+block|,
+literal|"imacr"
+block|,
+literal|"\\\\=\\{\\\\i\\}"
+block|}
+block|,
+comment|// small i with macron
+block|{
 literal|"305"
 block|,
 literal|"inodot"
+block|,
+literal|"\\{\\\\i\\}"
+block|}
+block|,
+comment|// Small i without the dot
+block|{
+literal|""
+block|,
+literal|"imath"
 block|,
 literal|"\\{\\\\i\\}"
 block|}
@@ -2854,6 +3016,60 @@ literal|"\\\\cb\\{s\\}"
 block|}
 block|,
 comment|// small letter S with comma below, require combelow
+block|{
+literal|"727"
+block|,
+literal|"caron"
+block|,
+literal|"\\\\v\\{\\}"
+block|}
+block|,
+comment|// Caron
+block|{
+literal|""
+block|,
+literal|"Hacek"
+block|,
+literal|"\\\\v\\{\\}"
+block|}
+block|,
+comment|// Caron
+block|{
+literal|"728"
+block|,
+literal|"breve"
+block|,
+literal|"\\\\u\\{\\}"
+block|}
+block|,
+comment|// Breve
+block|{
+literal|""
+block|,
+literal|"Breve"
+block|,
+literal|"\\\\u\\{\\}"
+block|}
+block|,
+comment|// Breve
+block|{
+literal|"729"
+block|,
+literal|"dot"
+block|,
+literal|"\\\\\\.\\{\\}"
+block|}
+block|,
+comment|// Dot above
+block|{
+literal|"730"
+block|,
+literal|"ring"
+block|,
+literal|"\\\\r\\{\\}"
+block|}
+block|,
+comment|// Ring above
 block|{
 literal|"949"
 block|,
@@ -2931,7 +3147,7 @@ comment|// script capital H -- possibly use \mathscr
 block|{
 literal|"8460"
 block|,
-literal|""
+literal|"Hfr"
 block|,
 literal|"\\$\\\\mathbb\\{H\\}\\$"
 block|}
@@ -2949,7 +3165,7 @@ comment|// script capital L -- possibly use \mathscr
 block|{
 literal|"8467"
 block|,
-literal|"lscr"
+literal|"ell"
 block|,
 literal|"\\{\\\\ell\\}"
 block|}
@@ -2958,7 +3174,7 @@ comment|// script small l
 block|{
 literal|"8469"
 block|,
-literal|"lscr"
+literal|"naturals"
 block|,
 literal|"\\$\\\\mathbb\\{N\\}\\$"
 block|}
@@ -2982,6 +3198,24 @@ literal|"\\{\\\\AA\\}"
 block|}
 block|,
 comment|// Angstrom
+block|{
+literal|"8496"
+block|,
+literal|"Escr"
+block|,
+literal|"\\$\\\\mathcal\\{E\\}\\$"
+block|}
+block|,
+comment|// script capital E
+block|{
+literal|"8714"
+block|,
+literal|""
+block|,
+literal|"\\$\\\\in\\$"
+block|}
+block|,
+comment|// Small element in
 block|{
 literal|"8729"
 block|,
@@ -3722,7 +3956,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"(.)&#([x]*)([0]*)(\\p{XDigit}+);"
+literal|"&#([x]*)([0]*)(\\p{XDigit}+);"
 argument_list|)
 decl_stmt|;
 name|Matcher
@@ -3735,6 +3969,114 @@ argument_list|(
 name|text
 argument_list|)
 decl_stmt|;
+while|while
+condition|(
+name|m
+operator|.
+name|find
+argument_list|()
+condition|)
+block|{
+comment|//	    System.err.println("Found pattern: " + m.group(1));
+comment|//      System.err.println("Found pattern: " + m.group(2));
+name|int
+name|num
+init|=
+name|Integer
+operator|.
+name|decode
+argument_list|(
+name|m
+operator|.
+name|group
+argument_list|(
+literal|1
+argument_list|)
+operator|.
+name|replace
+argument_list|(
+literal|"x"
+argument_list|,
+literal|"#"
+argument_list|)
+operator|+
+name|m
+operator|.
+name|group
+argument_list|(
+literal|3
+argument_list|)
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|numSymbols
+operator|.
+name|containsKey
+argument_list|(
+name|num
+argument_list|)
+condition|)
+block|{
+name|text
+operator|=
+name|text
+operator|.
+name|replaceAll
+argument_list|(
+literal|"&#"
+operator|+
+name|m
+operator|.
+name|group
+argument_list|(
+literal|1
+argument_list|)
+operator|+
+name|m
+operator|.
+name|group
+argument_list|(
+literal|2
+argument_list|)
+operator|+
+name|m
+operator|.
+name|group
+argument_list|(
+literal|3
+argument_list|)
+operator|+
+literal|";"
+argument_list|,
+name|numSymbols
+operator|.
+name|get
+argument_list|(
+name|num
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+name|escapedPattern
+operator|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"(.)&#([x]*)([0]*)(\\p{XDigit}+);"
+argument_list|)
+expr_stmt|;
+name|m
+operator|=
+name|escapedPattern
+operator|.
+name|matcher
+argument_list|(
+name|text
+argument_list|)
+expr_stmt|;
 while|while
 condition|(
 name|m
@@ -3824,22 +4166,41 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-elseif|else
-if|if
-condition|(
-name|escapedAccents
+block|}
+name|escapedPattern
+operator|=
+name|Pattern
 operator|.
-name|containsKey
+name|compile
 argument_list|(
-name|num
+literal|"&#([x]*)([0]*)(\\p{XDigit}+);"
 argument_list|)
+expr_stmt|;
+name|m
+operator|=
+name|escapedPattern
+operator|.
+name|matcher
+argument_list|(
+name|text
+argument_list|)
+expr_stmt|;
+while|while
+condition|(
+name|m
+operator|.
+name|find
+argument_list|()
 condition|)
 block|{
-name|text
-operator|=
-name|text
+comment|//	    System.err.println("Found pattern: " + m.group(1));
+comment|//      System.err.println("Found pattern: " + m.group(2));
+name|int
+name|num
+init|=
+name|Integer
 operator|.
-name|replaceAll
+name|decode
 argument_list|(
 name|m
 operator|.
@@ -3847,14 +4208,12 @@ name|group
 argument_list|(
 literal|1
 argument_list|)
-operator|+
-literal|"&#"
-operator|+
-name|m
 operator|.
-name|group
+name|replace
 argument_list|(
-literal|2
+literal|"x"
+argument_list|,
+literal|"#"
 argument_list|)
 operator|+
 name|m
@@ -3863,40 +4222,8 @@ name|group
 argument_list|(
 literal|3
 argument_list|)
-operator|+
-name|m
-operator|.
-name|group
-argument_list|(
-literal|4
 argument_list|)
-operator|+
-literal|";"
-argument_list|,
-literal|"\\\\"
-operator|+
-name|escapedAccents
-operator|.
-name|get
-argument_list|(
-name|num
-argument_list|)
-operator|+
-literal|"\\{"
-operator|+
-name|m
-operator|.
-name|group
-argument_list|(
-literal|1
-argument_list|)
-operator|+
-literal|"\\}"
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
+decl_stmt|;
 name|System
 operator|.
 name|err
@@ -3909,6 +4236,13 @@ name|m
 operator|.
 name|group
 argument_list|(
+literal|1
+argument_list|)
+operator|+
+name|m
+operator|.
+name|group
+argument_list|(
 literal|2
 argument_list|)
 operator|+
@@ -3917,13 +4251,6 @@ operator|.
 name|group
 argument_list|(
 literal|3
-argument_list|)
-operator|+
-name|m
-operator|.
-name|group
-argument_list|(
-literal|4
 argument_list|)
 operator|+
 literal|" = "
@@ -3936,7 +4263,6 @@ name|num
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 comment|// Remove $$ in case of two adjacent conversions
 name|text
