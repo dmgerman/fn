@@ -123,6 +123,8 @@ literal|"ATPG"
 block|,
 literal|"ATSC"
 block|,
+literal|"ATV"
+block|,
 literal|"AVC"
 block|,
 literal|"AWGN"
@@ -195,7 +197,11 @@ literal|"CDMA"
 block|,
 literal|"CD"
 block|,
+literal|"CDC"
+block|,
 literal|"CDR"
+block|,
+literal|"CERN"
 block|,
 literal|"CFAR"
 block|,
@@ -207,7 +213,11 @@ literal|"CMOS"
 block|,
 literal|"CMRR"
 block|,
+literal|"CMS"
+block|,
 literal|"CNN"
+block|,
+literal|"CO2"
 block|,
 literal|"CORDIC"
 block|,
@@ -239,6 +249,8 @@ literal|"CSP"
 block|,
 literal|"CT"
 block|,
+literal|"CUDA"
+block|,
 literal|"Carlo"
 block|,
 literal|"Cauer"
@@ -256,6 +268,8 @@ block|,
 literal|"DAB"
 block|,
 literal|"DAC"
+block|,
+literal|"DBMS"
 block|,
 literal|"DCT"
 block|,
@@ -280,6 +294,8 @@ block|,
 literal|"DFE"
 block|,
 literal|"DFT"
+block|,
+literal|"DGPS"
 block|,
 literal|"DHT"
 block|,
@@ -386,6 +402,8 @@ block|,
 literal|"FBAR"
 block|,
 literal|"FDE"
+block|,
+literal|"FDI"
 block|,
 literal|"FDTD"
 block|,
@@ -497,6 +515,8 @@ literal|"HD"
 block|,
 literal|"HDD"
 block|,
+literal|"HDI"
+block|,
 literal|"HDL"
 block|,
 literal|"HEMT"
@@ -514,6 +534,10 @@ block|,
 literal|"HSPA"
 block|,
 literal|"HSDPA"
+block|,
+literal|"HVAC"
+block|,
+literal|"HVDC"
 block|,
 literal|"HW"
 block|,
@@ -581,6 +605,8 @@ block|,
 literal|"IMT-A"
 block|,
 comment|// IMT-Advanced
+literal|"IMU"
+block|,
 literal|"INL"
 block|,
 literal|"IO"
@@ -611,6 +637,8 @@ literal|"InGaN"
 block|,
 literal|"InP"
 block|,
+literal|"InSAR"
+block|,
 literal|"J2EE"
 block|,
 literal|"JEDEC"
@@ -635,6 +663,8 @@ literal|"LC"
 block|,
 literal|"LCD"
 block|,
+literal|"LCG"
+block|,
 literal|"LDA"
 block|,
 literal|"LDD"
@@ -646,6 +676,12 @@ block|,
 literal|"LED"
 block|,
 literal|"LFSR"
+block|,
+literal|"LHC"
+block|,
+literal|"LIDAR"
+block|,
+literal|"LiDAR"
 block|,
 literal|"LLC"
 block|,
@@ -717,6 +753,8 @@ literal|"MIMO"
 block|,
 literal|"MISO"
 block|,
+literal|"MIT"
+block|,
 literal|"ML"
 block|,
 literal|"MMIC"
@@ -762,6 +800,8 @@ block|,
 literal|"MTD"
 block|,
 literal|"MTI"
+block|,
+literal|"MV"
 block|,
 literal|"MVC"
 block|,
@@ -859,6 +899,8 @@ literal|"PHD"
 block|,
 literal|"PHY"
 block|,
+literal|"PIC"
+block|,
 literal|"PID"
 block|,
 literal|"PLC"
@@ -878,6 +920,8 @@ block|,
 literal|"PSK"
 block|,
 literal|"PSNR"
+block|,
+literal|"PSO"
 block|,
 literal|"PSRR"
 block|,
@@ -914,6 +958,8 @@ literal|"QR"
 block|,
 literal|"QRD"
 block|,
+literal|"QRS"
+block|,
 literal|"QoS"
 block|,
 literal|"RAD"
@@ -921,6 +967,8 @@ block|,
 literal|"RAKE"
 block|,
 literal|"RAM"
+block|,
+literal|"RBF"
 block|,
 literal|"RC"
 block|,
@@ -976,6 +1024,8 @@ literal|"Reed"
 block|,
 literal|"Remez"
 block|,
+literal|"Riccati"
+block|,
 literal|"SAR"
 block|,
 literal|"SAT"
@@ -992,6 +1042,8 @@ literal|"SDRAM"
 block|,
 literal|"SDR"
 block|,
+literal|"SDRE"
+block|,
 literal|"SFDR"
 block|,
 literal|"SIC"
@@ -1003,6 +1055,8 @@ block|,
 literal|"SINAD"
 block|,
 literal|"SINR"
+block|,
+literal|"SINS"
 block|,
 literal|"SISO"
 block|,
@@ -1022,9 +1076,13 @@ literal|"SOI"
 block|,
 literal|"SONET"
 block|,
+literal|"SPS"
+block|,
 literal|"SPT"
 block|,
 literal|"SRAM"
+block|,
+literal|"SQL"
 block|,
 literal|"SQNR"
 block|,
@@ -1035,6 +1093,8 @@ block|,
 literal|"SVM"
 block|,
 literal|"SW"
+block|,
+literal|"Schottky"
 block|,
 literal|"SerDes"
 block|,
@@ -1096,11 +1156,15 @@ literal|"UAV"
 block|,
 literal|"UHF"
 block|,
+literal|"UKF"
+block|,
 literal|"ULSI"
 block|,
 literal|"UML"
 block|,
 literal|"UMTS"
+block|,
+literal|"UPS"
 block|,
 literal|"USB"
 block|,
@@ -1137,6 +1201,8 @@ block|,
 literal|"VQ"
 block|,
 literal|"VSB"
+block|,
+literal|"VTOL"
 block|,
 literal|"Vdd"
 block|,
@@ -1190,7 +1256,11 @@ literal|"XOR"
 block|,
 literal|"Xilinx"
 block|,
+literal|"ZCS"
+block|,
 literal|"ZF"
+block|,
+literal|"ZVS"
 block|,
 literal|"ZigBee"
 block|,
@@ -1201,6 +1271,8 @@ block|,
 literal|"dB"
 block|,
 literal|"eV"
+block|,
+literal|"kA"
 block|,
 literal|"keV"
 block|,
