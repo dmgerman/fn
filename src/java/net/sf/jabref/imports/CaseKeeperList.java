@@ -207,6 +207,8 @@ literal|"CFAR"
 block|,
 literal|"CIC"
 block|,
+literal|"CLB"
+block|,
 literal|"CMFB"
 block|,
 literal|"CMOS"
@@ -436,6 +438,8 @@ block|,
 literal|"FRM"
 block|,
 literal|"FSK"
+block|,
+literal|"FSM"
 block|,
 literal|"FTTC"
 block|,
@@ -707,6 +711,8 @@ literal|"LTE"
 block|,
 literal|"LTI"
 block|,
+literal|"LUT"
+block|,
 literal|"LVDC"
 block|,
 literal|"LVDS"
@@ -917,6 +923,8 @@ literal|"POTS"
 block|,
 literal|"PQFP"
 block|,
+literal|"PRPG"
+block|,
 literal|"PSK"
 block|,
 literal|"PSNR"
@@ -943,6 +951,10 @@ block|,
 literal|"QAM"
 block|,
 literal|"QC-LDPC"
+block|,
+literal|"QCA"
+block|,
+literal|"QDI"
 block|,
 literal|"QFP"
 block|,
@@ -1043,6 +1055,8 @@ block|,
 literal|"SDR"
 block|,
 literal|"SDRE"
+block|,
+literal|"SEU"
 block|,
 literal|"SFDR"
 block|,
