@@ -132,7 +132,7 @@ literal|"161"
 block|,
 literal|"iexcl"
 block|,
-literal|"\\\\textexclamdown"
+literal|"\\{\\\\textexclamdown\\}"
 block|}
 block|,
 comment|// inverted exclamation mark, U+00A1 ISOnum
@@ -141,7 +141,7 @@ literal|"162"
 block|,
 literal|"cent"
 block|,
-literal|"\\\\textcent"
+literal|"\\{\\\\textcent\\}"
 block|}
 block|,
 comment|// cent sign, U+00A2 ISOnum
@@ -150,7 +150,7 @@ literal|"163"
 block|,
 literal|"pound"
 block|,
-literal|"\\\\pounds"
+literal|"\\{\\\\pounds\\}"
 block|}
 block|,
 comment|// pound sign, U+00A3 ISOnum
@@ -159,7 +159,7 @@ literal|"164"
 block|,
 literal|"curren"
 block|,
-literal|"\\\\textcurrency"
+literal|"\\{\\\\textcurrency\\}"
 block|}
 block|,
 comment|// currency sign, U+00A4 ISOnum
@@ -168,7 +168,7 @@ literal|"165"
 block|,
 literal|"yen"
 block|,
-literal|"\\\\textyen"
+literal|"\\{\\\\textyen\\}"
 block|}
 block|,
 comment|// yen sign = yuan sign, U+00A5 ISOnum
@@ -177,7 +177,7 @@ literal|"166"
 block|,
 literal|"brvbar"
 block|,
-literal|"\\\\textbrokenbar"
+literal|"\\{\\\\textbrokenbar\\}"
 block|}
 block|,
 comment|// broken bar = broken vertical bar,
@@ -206,7 +206,7 @@ literal|"169"
 block|,
 literal|"copy"
 block|,
-literal|"\\\\copyright"
+literal|"\\{\\\\copyright\\}"
 block|}
 block|,
 comment|// copyright sign, U+00A9 ISOnum
@@ -215,7 +215,7 @@ literal|"170"
 block|,
 literal|"ordf"
 block|,
-literal|"\\\\textordfeminine"
+literal|"\\{\\\\textordfeminine\\}"
 block|}
 block|,
 comment|// feminine ordinal indicator, U+00AA ISOnum
@@ -224,7 +224,7 @@ literal|"171"
 block|,
 literal|"laquo"
 block|,
-literal|"\\\\guillemotleft"
+literal|"\\{\\\\guillemotleft\\}"
 block|}
 block|,
 comment|// left-pointing double angle quotation mark
@@ -253,7 +253,7 @@ literal|"174"
 block|,
 literal|"reg"
 block|,
-literal|"\\\\textregistered"
+literal|"\\{\\\\textregistered\\}"
 block|}
 block|,
 comment|// registered sign = registered trade mark sign,
@@ -370,7 +370,7 @@ literal|"186"
 block|,
 literal|"ordm"
 block|,
-literal|"\\\\textordmasculine"
+literal|"\\{\\\\textordmasculine\\}"
 block|}
 block|,
 comment|// masculine ordinal indicator,
@@ -380,7 +380,7 @@ literal|"187"
 block|,
 literal|"raquo"
 block|,
-literal|"\\\\guillemotright"
+literal|"\\{\\\\guillemotright\\}"
 block|}
 block|,
 comment|// right-pointing double angle quotation mark
@@ -420,7 +420,7 @@ literal|"191"
 block|,
 literal|"iquest"
 block|,
-literal|"\\\\textquestiondown"
+literal|"\\{\\\\textquestiondown\\}"
 block|}
 block|,
 comment|// inverted question mark
@@ -914,7 +914,7 @@ literal|"240"
 block|,
 literal|"eth"
 block|,
-literal|"\\\\dh"
+literal|"\\{\\\\dh\\}"
 block|}
 block|,
 comment|// latin small letter eth, U+00F0 ISOlat1
@@ -1675,7 +1675,7 @@ literal|"8482"
 block|,
 literal|"trade"
 block|,
-literal|"\\\\texttrademark"
+literal|"\\{\\\\texttrademark\\}"
 block|}
 block|,
 comment|// trade mark sign, U+2122 ISOnum
@@ -2360,7 +2360,7 @@ literal|"710"
 block|,
 literal|"circ"
 block|,
-literal|"\\\\textasciicircum"
+literal|"\\{\\\\textasciicircum\\}"
 block|}
 block|,
 comment|// modifier letter circumflex accent,
@@ -2370,7 +2370,7 @@ literal|"732"
 block|,
 literal|"tilde"
 block|,
-literal|"\\\\textasciitilde"
+literal|"\\{\\\\textasciitilde\\}"
 block|}
 block|,
 comment|// small tilde, U+02DC ISOdia
@@ -2462,7 +2462,7 @@ literal|"8216"
 block|,
 literal|"lsquo"
 block|,
-literal|"\\\\textquoteleft"
+literal|"\\{\\\\textquoteleft\\}"
 block|}
 block|,
 comment|// left single quotation mark,
@@ -2472,7 +2472,7 @@ literal|"8217"
 block|,
 literal|"rsquo"
 block|,
-literal|"\\\\textquoteright"
+literal|"\\{\\\\textquoteright\\}"
 block|}
 block|,
 comment|// right single quotation mark,
@@ -2482,7 +2482,7 @@ literal|"8218"
 block|,
 literal|"sbquo"
 block|,
-literal|"\\\\quotesinglbase"
+literal|"\\{\\\\quotesinglbase\\}"
 block|}
 block|,
 comment|// single low-9 quotation mark, U+201A NEW
@@ -2491,7 +2491,7 @@ literal|"8220"
 block|,
 literal|"ldquo"
 block|,
-literal|"\\\\textquotedblleft"
+literal|"\\{\\\\textquotedblleft\\}"
 block|}
 block|,
 comment|// left double quotation mark,
@@ -2501,7 +2501,7 @@ literal|"8221"
 block|,
 literal|"rdquo"
 block|,
-literal|"\\\\textquotedblright"
+literal|"\\{\\\\textquotedblright\\}"
 block|}
 block|,
 comment|// right double quotation mark,
@@ -2511,7 +2511,7 @@ literal|"8222"
 block|,
 literal|"bdquo"
 block|,
-literal|"\\\\quotedblbase"
+literal|"\\{\\\\quotedblbase\\}"
 block|}
 block|,
 comment|// double low-9 quotation mark, U+201E NEW
@@ -2520,7 +2520,7 @@ literal|"8224"
 block|,
 literal|"dagger"
 block|,
-literal|"\\\\dag"
+literal|"\\{\\\\dag\\}"
 block|}
 block|,
 comment|// dagger, U+2020 ISOpub
@@ -2529,7 +2529,7 @@ literal|"8225"
 block|,
 literal|"Dagger"
 block|,
-literal|"\\\\ddag"
+literal|"\\{\\\\ddag\\}"
 block|}
 block|,
 comment|// double dagger, U+2021 ISOpub
@@ -2538,7 +2538,7 @@ literal|"8240"
 block|,
 literal|"permil"
 block|,
-literal|"\\\\textperthousand"
+literal|"\\{\\\\textperthousand\\}"
 block|}
 block|,
 comment|// per mille sign, U+2030 ISOtech
@@ -2547,7 +2547,7 @@ literal|"8249"
 block|,
 literal|"lsaquo"
 block|,
-literal|"\\\\guilsinglleft"
+literal|"\\{\\\\guilsinglleft\\}"
 block|}
 block|,
 comment|// single left-pointing angle quotation mark,
@@ -2558,7 +2558,7 @@ literal|"8250"
 block|,
 literal|"rsaquo"
 block|,
-literal|"\\\\guilsinglright"
+literal|"\\{\\\\guilsinglright\\}"
 block|}
 block|,
 comment|// single right-pointing angle quotation mark,
@@ -2569,7 +2569,7 @@ literal|"8364"
 block|,
 literal|"euro"
 block|,
-literal|"\\\\texteuro"
+literal|"\\{\\\\texteuro\\}"
 block|}
 block|,
 comment|// euro sign, U+20AC NEW
@@ -2687,7 +2687,7 @@ literal|"92"
 block|,
 literal|"bsol"
 block|,
-literal|"\\\\textbackslash"
+literal|"\\{\\\\textbackslash\\}"
 block|}
 block|,
 comment|// Backslash
@@ -2729,6 +2729,15 @@ block|,
 comment|// Right curly bracket&rcub; ??
 comment|// {"141", "", ""}, // Reverse line feed
 block|{
+literal|"145"
+block|,
+literal|""
+block|,
+literal|"`"
+block|}
+block|,
+comment|// Apostrophe
+block|{
 literal|"146"
 block|,
 literal|""
@@ -2736,7 +2745,25 @@ block|,
 literal|"'"
 block|}
 block|,
-comment|// Private use two ???
+comment|// Apostrophe
+block|{
+literal|"147"
+block|,
+literal|""
+block|,
+literal|"``"
+block|}
+block|,
+comment|// Quotation mark
+block|{
+literal|"148"
+block|,
+literal|""
+block|,
+literal|"''"
+block|}
+block|,
+comment|// Quotation mark
 block|{
 literal|"150"
 block|,
@@ -2846,6 +2873,15 @@ block|}
 block|,
 comment|// lunate epsilon, requires txfonts
 block|{
+literal|"1055"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\cyrchar\\\\CYRP\\}"
+block|}
+block|,
+comment|// Cyrillic capital Pe
+block|{
 literal|"1082"
 block|,
 literal|""
@@ -2853,7 +2889,7 @@ block|,
 literal|"\\{\\\\cyrchar\\\\cyrk\\}"
 block|}
 block|,
-comment|// Cyrillic small KA
+comment|// Cyrillic small Ka
 comment|// {"2013", "", ""},    // NKO letter FA -- Maybe en dash = 0x2013?
 comment|// {"2014", "", ""},    // NKO letter FA -- Maybe em dash = 0x2014?
 block|{
@@ -2865,6 +2901,15 @@ literal|"-"
 block|}
 block|,
 comment|// Hyphen
+block|{
+literal|"8229"
+block|,
+literal|"nldr"
+block|,
+literal|"\\.\\."
+block|}
+block|,
+comment|// Double dots - en leader
 block|{
 literal|"8451"
 block|,
@@ -2947,6 +2992,15 @@ block|}
 block|,
 comment|// Bullet operator
 block|{
+literal|"8758"
+block|,
+literal|"ratio"
+block|,
+literal|":"
+block|}
+block|,
+comment|// Colon/ratio
+block|{
 literal|"8771"
 block|,
 literal|"sime"
@@ -2968,6 +3022,15 @@ block|{
 literal|"8810"
 block|,
 literal|"ll"
+block|,
+literal|"\\$\\\\ll\\$"
+block|}
+block|,
+comment|// Much less than
+block|{
+literal|""
+block|,
+literal|"Lt"
 block|,
 literal|"\\$\\\\ll\\$"
 block|}
@@ -3019,11 +3082,29 @@ block|}
 block|,
 comment|// Right triangle
 block|{
+literal|"8896"
+block|,
+literal|"xwedge"
+block|,
+literal|"\\$\\\\bigwedge\\$"
+block|}
+block|,
+comment|// Big wedge
+block|{
+literal|"8897"
+block|,
+literal|"xvee"
+block|,
+literal|"\\$\\\\bigvee\\$"
+block|}
+block|,
+comment|// Big vee
+block|{
 literal|"9426"
 block|,
 literal|""
 block|,
-literal|"\\\\copyright"
+literal|"\\{\\\\copyright\\}"
 block|}
 block|,
 comment|// circled small letter C
@@ -3100,7 +3181,14 @@ block|,
 literal|"'"
 block|}
 block|,
-comment|//
+comment|// Acute
+block|{
+literal|"770"
+block|,
+literal|"\\^"
+block|}
+block|,
+comment|// Circumflex
 block|{
 literal|"771"
 block|,
@@ -3108,6 +3196,20 @@ literal|"~"
 block|}
 block|,
 comment|// Tilde
+block|{
+literal|"772"
+block|,
+literal|"="
+block|}
+block|,
+comment|// Macron
+block|{
+literal|"773"
+block|,
+literal|"="
+block|}
+block|,
+comment|// Overline - not completely correct
 block|{
 literal|"774"
 block|,
@@ -3118,7 +3220,7 @@ comment|// Breve
 block|{
 literal|"775"
 block|,
-literal|"."
+literal|"\\."
 block|}
 block|,
 comment|// Dot above
@@ -3130,12 +3232,26 @@ block|}
 block|,
 comment|// Diaeresis
 block|{
+literal|"777"
+block|,
+literal|"h"
+block|}
+block|,
+comment|// Hook above
+block|{
 literal|"778"
 block|,
 literal|"a"
 block|}
 block|,
-comment|// Ring
+comment|// Ring  r??
+block|{
+literal|"779"
+block|,
+literal|"H"
+block|}
+block|,
+comment|// Double acute
 block|{
 literal|"780"
 block|,
@@ -3143,6 +3259,28 @@ literal|"v"
 block|}
 block|,
 comment|// Caron
+block|{
+literal|"781"
+block|,
+literal|"\\|"
+block|}
+block|,
+comment|// Vertical line above
+comment|// {"782", ""},     // Double vertical line above
+block|{
+literal|"783"
+block|,
+literal|"G"
+block|}
+block|,
+comment|// Double grave
+block|{
+literal|"803"
+block|,
+literal|"d"
+block|}
+block|,
+comment|// Dot below
 block|{
 literal|"807"
 block|,
