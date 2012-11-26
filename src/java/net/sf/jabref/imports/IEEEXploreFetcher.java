@@ -4386,6 +4386,7 @@ name|equalsIgnoreCase
 argument_list|(
 literal|"IEEE USA Books&amp; eBooks"
 argument_list|)
+condition|)
 block|{
 name|entry
 operator|.
