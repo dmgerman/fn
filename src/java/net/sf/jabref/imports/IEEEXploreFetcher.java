@@ -3830,6 +3830,13 @@ argument_list|,
 literal|"http://ieeexplore.ieee.org"
 operator|+
 name|url
+operator|.
+name|replace
+argument_list|(
+literal|"tp=&"
+argument_list|,
+literal|""
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
