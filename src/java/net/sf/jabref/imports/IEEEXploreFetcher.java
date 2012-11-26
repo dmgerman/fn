@@ -150,16 +150,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|net
-operator|.
-name|URLEncoder
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|util
 operator|.
 name|ArrayList
@@ -4247,6 +4237,13 @@ name|equalsIgnoreCase
 argument_list|(
 literal|"MIT Press eBook Chapters"
 argument_list|)
+operator|||
+name|typeName
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"IEEE USA Books&amp; eBooks"
+argument_list|)
 condition|)
 block|{
 name|type
@@ -4377,6 +4374,26 @@ argument_list|(
 literal|"publisher"
 argument_list|,
 literal|"MIT Press"
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|typeName
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"IEEE USA Books&amp; eBooks"
+argument_list|)
+block|{
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"publisher"
+argument_list|,
+literal|"IEEE USA"
 argument_list|)
 expr_stmt|;
 block|}
@@ -4597,6 +4614,18 @@ operator|.
 name|startsWith
 argument_list|(
 literal|"a href"
+argument_list|)
+operator|||
+name|entry
+operator|.
+name|getField
+argument_list|(
+literal|"author"
+argument_list|)
+operator|.
+name|startsWith
+argument_list|(
+literal|"Topic(s)"
 argument_list|)
 condition|)
 block|{
