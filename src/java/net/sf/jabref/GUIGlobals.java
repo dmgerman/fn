@@ -1882,7 +1882,7 @@ operator|=
 operator|new
 name|Font
 argument_list|(
-literal|"arial"
+literal|"dialog"
 argument_list|,
 name|Font
 operator|.
@@ -1892,7 +1892,7 @@ name|Font
 operator|.
 name|BOLD
 argument_list|,
-literal|24
+literal|18
 argument_list|)
 expr_stmt|;
 name|fieldNameFont
