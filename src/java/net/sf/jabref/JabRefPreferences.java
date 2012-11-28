@@ -2487,6 +2487,17 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+literal|"preferUrlDoi"
+argument_list|,
+name|Boolean
+operator|.
+name|FALSE
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
 literal|"fileColumn"
 argument_list|,
 name|Boolean
