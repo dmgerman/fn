@@ -2352,6 +2352,18 @@ name|author
 operator|.
 name|replaceAll
 argument_list|(
+literal|"([^;]+),([^;]+),([^;]+)"
+argument_list|,
+literal|"$1,$3,$2"
+argument_list|)
+expr_stmt|;
+comment|// Change order in case of Jr. etc
+name|author
+operator|=
+name|author
+operator|.
+name|replaceAll
+argument_list|(
 literal|"  "
 argument_list|,
 literal|" "
@@ -2385,7 +2397,29 @@ name|author
 operator|.
 name|replaceAll
 argument_list|(
-literal|"[,;]$"
+literal|" ,"
+argument_list|,
+literal|","
+argument_list|)
+expr_stmt|;
+name|author
+operator|=
+name|author
+operator|.
+name|replaceAll
+argument_list|(
+literal|"  "
+argument_list|,
+literal|" "
+argument_list|)
+expr_stmt|;
+name|author
+operator|=
+name|author
+operator|.
+name|replaceAll
+argument_list|(
+literal|"[ ,;]+$"
 argument_list|,
 literal|""
 argument_list|)
