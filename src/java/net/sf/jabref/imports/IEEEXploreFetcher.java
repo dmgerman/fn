@@ -735,7 +735,13 @@ block|{
 name|super
 argument_list|()
 expr_stmt|;
-comment|// CookieHandler.setDefault(cm);
+name|CookieHandler
+operator|.
+name|setDefault
+argument_list|(
+name|cm
+argument_list|)
+expr_stmt|;
 name|fieldPatterns
 operator|.
 name|put
