@@ -390,7 +390,7 @@ literal|"188"
 block|,
 literal|"frac14"
 block|,
-literal|"\\$\\sfrac\\{1\\}\\{4\\}\\$"
+literal|"\\$\\\\sfrac\\{1\\}\\{4\\}\\$"
 block|}
 block|,
 comment|// vulgar fraction one quarter
@@ -400,7 +400,7 @@ literal|"189"
 block|,
 literal|"frac12"
 block|,
-literal|"\\$\\sfrac\\{1\\}\\{2\\}\\$"
+literal|"\\$\\\\sfrac\\{1\\}\\{2\\}\\$"
 block|}
 block|,
 comment|// vulgar fraction one half
@@ -410,7 +410,7 @@ literal|"190"
 block|,
 literal|"frac34"
 block|,
-literal|"\\$\\sfrac\\{3\\}\\{4\\}\\$"
+literal|"\\$\\\\sfrac\\{3\\}\\{4\\}\\$"
 block|}
 block|,
 comment|// vulgar fraction three quarters
