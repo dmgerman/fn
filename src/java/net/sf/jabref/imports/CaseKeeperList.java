@@ -189,9 +189,13 @@ literal|"Butterworth"
 block|,
 literal|"CAD"
 block|,
+literal|"CAS"
+block|,
 literal|"CATV"
 block|,
 literal|"CBR"
+block|,
+literal|"CCD"
 block|,
 literal|"CDMA"
 block|,
@@ -252,6 +256,8 @@ block|,
 literal|"CT"
 block|,
 literal|"CUDA"
+block|,
+literal|"CW"
 block|,
 literal|"Carlo"
 block|,
@@ -560,6 +566,8 @@ literal|"Hilbert"
 block|,
 literal|"Hz"
 block|,
+literal|"I-V"
+block|,
 literal|"I/O"
 block|,
 literal|"I/Q"
@@ -701,6 +709,8 @@ literal|"LNA"
 block|,
 literal|"LNS"
 block|,
+literal|"LS"
+block|,
 literal|"LSB"
 block|,
 literal|"LTCC"
@@ -732,6 +742,8 @@ block|,
 literal|"MAP"
 block|,
 literal|"MASH"
+block|,
+literal|"MBE"
 block|,
 literal|"MC"
 block|,
@@ -780,6 +792,8 @@ block|,
 literal|"MPEG"
 block|,
 literal|"MPI"
+block|,
+literal|"MPPC"
 block|,
 literal|"MPSoC"
 block|,
@@ -909,6 +923,8 @@ literal|"PIC"
 block|,
 literal|"PID"
 block|,
+literal|"PIN"
+block|,
 literal|"PLC"
 block|,
 literal|"PLL"
@@ -957,6 +973,8 @@ block|,
 literal|"QDI"
 block|,
 literal|"QFP"
+block|,
+literal|"QMF"
 block|,
 literal|"QNN"
 block|,
@@ -1050,6 +1068,8 @@ literal|"SDF"
 block|,
 literal|"SDH"
 block|,
+literal|"SDP"
+block|,
 literal|"SDRAM"
 block|,
 literal|"SDR"
@@ -1085,6 +1105,8 @@ block|,
 literal|"SNDR"
 block|,
 literal|"SNR"
+block|,
+literal|"SOCP"
 block|,
 literal|"SOI"
 block|,
@@ -1244,7 +1266,11 @@ literal|"WFTA"
 block|,
 literal|"WLAN"
 block|,
+literal|"WLS"
+block|,
 literal|"WPAN"
+block|,
+literal|"WSN"
 block|,
 literal|"WWW"
 block|,
