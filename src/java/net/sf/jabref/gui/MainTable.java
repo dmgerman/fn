@@ -2582,6 +2582,26 @@ name|getSelected
 argument_list|()
 return|;
 block|}
+comment|/**      * Selects the given row      *      * @param row the row to select      */
+DECL|method|setSelected (int row)
+specifier|public
+name|void
+name|setSelected
+parameter_list|(
+name|int
+name|row
+parameter_list|)
+block|{
+name|selectionModel
+operator|.
+name|setSelectionInterval
+argument_list|(
+name|row
+argument_list|,
+name|row
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|findEntry (BibtexEntry entry)
 specifier|public
 name|int
