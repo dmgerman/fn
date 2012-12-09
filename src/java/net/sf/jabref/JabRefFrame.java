@@ -10106,7 +10106,7 @@ if|if
 condition|(
 name|dialog
 operator|.
-name|okPressed
+name|generatePressed
 argument_list|()
 condition|)
 block|{

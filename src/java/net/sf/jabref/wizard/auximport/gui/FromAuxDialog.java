@@ -520,10 +520,10 @@ operator|new
 name|JPanel
 argument_list|()
 decl_stmt|;
-DECL|field|okButton
+DECL|field|generateButton
 specifier|private
 name|JButton
-name|okButton
+name|generateButton
 init|=
 operator|new
 name|JButton
@@ -538,10 +538,10 @@ operator|new
 name|JButton
 argument_list|()
 decl_stmt|;
-DECL|field|generateButton
+DECL|field|parseButton
 specifier|private
 name|JButton
-name|generateButton
+name|parseButton
 init|=
 operator|new
 name|JButton
@@ -582,10 +582,10 @@ specifier|private
 name|JTabbedPane
 name|parentTabbedPane
 decl_stmt|;
-DECL|field|okPressed
+DECL|field|generatePressed
 specifier|private
 name|boolean
-name|okPressed
+name|generatePressed
 init|=
 literal|false
 decl_stmt|;
@@ -688,7 +688,7 @@ name|BorderLayout
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|okButton
+name|generateButton
 operator|.
 name|setText
 argument_list|(
@@ -696,23 +696,23 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Ok"
+literal|"Generate"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|okButton
+name|generateButton
 operator|.
 name|setEnabled
 argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
-name|okButton
+name|generateButton
 operator|.
 name|addActionListener
 argument_list|(
 operator|new
-name|FromAuxDialog_ok_actionAdapter
+name|FromAuxDialog_generate_actionAdapter
 argument_list|(
 name|this
 argument_list|)
@@ -741,7 +741,7 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|generateButton
+name|parseButton
 operator|.
 name|setText
 argument_list|(
@@ -749,16 +749,16 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Generate"
+literal|"Parse"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|generateButton
+name|parseButton
 operator|.
 name|addActionListener
 argument_list|(
 operator|new
-name|FromAuxDialog_generate_actionAdapter
+name|FromAuxDialog_parse_actionAdapter
 argument_list|(
 name|this
 argument_list|)
@@ -812,7 +812,7 @@ name|bb
 operator|.
 name|addButton
 argument_list|(
-name|generateButton
+name|parseButton
 argument_list|)
 expr_stmt|;
 name|bb
@@ -824,7 +824,7 @@ name|bb
 operator|.
 name|addButton
 argument_list|(
-name|okButton
+name|generateButton
 argument_list|)
 expr_stmt|;
 name|bb
@@ -1364,10 +1364,8 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Unknown bibtex entries"
+literal|"Result"
 argument_list|)
-operator|+
-literal|":"
 argument_list|)
 expr_stmt|;
 name|b
@@ -1439,34 +1437,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|ok_actionPerformed (ActionEvent e)
-name|void
-name|ok_actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
-block|{
-name|okPressed
-operator|=
-literal|true
-expr_stmt|;
-name|dispose
-argument_list|()
-expr_stmt|;
-block|}
-DECL|method|Cancel_actionPerformed (ActionEvent e)
-name|void
-name|Cancel_actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
-block|{
-name|dispose
-argument_list|()
-expr_stmt|;
-block|}
 DECL|method|generate_actionPerformed (ActionEvent e)
 name|void
 name|generate_actionPerformed
@@ -1475,7 +1445,35 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-name|generateButton
+name|generatePressed
+operator|=
+literal|true
+expr_stmt|;
+name|dispose
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|cancel_actionPerformed (ActionEvent e)
+name|void
+name|cancel_actionPerformed
+parameter_list|(
+name|ActionEvent
+name|e
+parameter_list|)
+block|{
+name|dispose
+argument_list|()
+expr_stmt|;
+block|}
+DECL|method|parse_actionPerformed (ActionEvent e)
+name|void
+name|parse_actionPerformed
+parameter_list|(
+name|ActionEvent
+name|e
+parameter_list|)
+block|{
+name|parseButton
 operator|.
 name|setEnabled
 argument_list|(
@@ -1707,7 +1705,7 @@ name|nested
 argument_list|)
 expr_stmt|;
 block|}
-name|okButton
+name|generateButton
 operator|.
 name|setEnabled
 argument_list|(
@@ -1716,7 +1714,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// the generated database contains no entries -> no active ok-button
+comment|// the generated database contains no entries -> no active generate-button
 if|if
 condition|(
 name|auxParser
@@ -1744,7 +1742,7 @@ literal|"empty database"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|okButton
+name|generateButton
 operator|.
 name|setEnabled
 argument_list|(
@@ -1752,7 +1750,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-name|generateButton
+name|parseButton
 operator|.
 name|setEnabled
 argument_list|(
@@ -1760,14 +1758,14 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|okPressed ()
+DECL|method|generatePressed ()
 specifier|public
 name|boolean
-name|okPressed
+name|generatePressed
 parameter_list|()
 block|{
 return|return
-name|okPressed
+name|generatePressed
 return|;
 block|}
 DECL|method|getGenerateDB ()
@@ -1908,9 +1906,9 @@ comment|// ----------- helper class -------------------
 end_comment
 
 begin_class
-DECL|class|FromAuxDialog_ok_actionAdapter
+DECL|class|FromAuxDialog_generate_actionAdapter
 class|class
-name|FromAuxDialog_ok_actionAdapter
+name|FromAuxDialog_generate_actionAdapter
 implements|implements
 name|java
 operator|.
@@ -1924,8 +1922,8 @@ DECL|field|adaptee
 name|FromAuxDialog
 name|adaptee
 decl_stmt|;
-DECL|method|FromAuxDialog_ok_actionAdapter (FromAuxDialog adaptee)
-name|FromAuxDialog_ok_actionAdapter
+DECL|method|FromAuxDialog_generate_actionAdapter (FromAuxDialog adaptee)
+name|FromAuxDialog_generate_actionAdapter
 parameter_list|(
 name|FromAuxDialog
 name|adaptee
@@ -1949,7 +1947,7 @@ parameter_list|)
 block|{
 name|adaptee
 operator|.
-name|ok_actionPerformed
+name|generate_actionPerformed
 argument_list|(
 name|e
 argument_list|)
@@ -2000,7 +1998,7 @@ parameter_list|)
 block|{
 name|adaptee
 operator|.
-name|Cancel_actionPerformed
+name|cancel_actionPerformed
 argument_list|(
 name|e
 argument_list|)
@@ -2010,9 +2008,9 @@ block|}
 end_class
 
 begin_class
-DECL|class|FromAuxDialog_generate_actionAdapter
+DECL|class|FromAuxDialog_parse_actionAdapter
 class|class
-name|FromAuxDialog_generate_actionAdapter
+name|FromAuxDialog_parse_actionAdapter
 implements|implements
 name|java
 operator|.
@@ -2026,8 +2024,8 @@ DECL|field|adaptee
 name|FromAuxDialog
 name|adaptee
 decl_stmt|;
-DECL|method|FromAuxDialog_generate_actionAdapter (FromAuxDialog adaptee)
-name|FromAuxDialog_generate_actionAdapter
+DECL|method|FromAuxDialog_parse_actionAdapter (FromAuxDialog adaptee)
+name|FromAuxDialog_parse_actionAdapter
 parameter_list|(
 name|FromAuxDialog
 name|adaptee
@@ -2051,7 +2049,7 @@ parameter_list|)
 block|{
 name|adaptee
 operator|.
-name|generate_actionPerformed
+name|parse_actionPerformed
 argument_list|(
 name|e
 argument_list|)
