@@ -2602,6 +2602,28 @@ name|row
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Adds the given row to the selection      * @param row the row to add to the selection      */
+DECL|method|addSelection (int row)
+specifier|public
+name|void
+name|addSelection
+parameter_list|(
+name|int
+name|row
+parameter_list|)
+block|{
+name|this
+operator|.
+name|selectionModel
+operator|.
+name|addSelectionInterval
+argument_list|(
+name|row
+argument_list|,
+name|row
+argument_list|)
+expr_stmt|;
+block|}
 DECL|method|findEntry (BibtexEntry entry)
 specifier|public
 name|int
