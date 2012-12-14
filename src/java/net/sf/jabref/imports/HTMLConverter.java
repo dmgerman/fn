@@ -671,7 +671,7 @@ literal|"216"
 block|,
 literal|"Oslash"
 block|,
-literal|"\\{\\\\O\\{\\}\\}"
+literal|"\\{\\\\O\\}"
 block|}
 block|,
 comment|// latin capital letter O with stroke
@@ -992,7 +992,7 @@ literal|"248"
 block|,
 literal|"oslash"
 block|,
-literal|"\\{\\\\o\\{\\}\\}"
+literal|"\\{\\\\o\\}"
 block|}
 block|,
 comment|// latin small letter o with stroke,
@@ -2873,6 +2873,24 @@ block|}
 block|,
 comment|// Single character introducer
 block|{
+literal|"260"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\k\\{A\\}\\}"
+block|}
+block|,
+comment|// capital A with ogonek
+block|{
+literal|"261"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\k\\{a\\}\\}"
+block|}
+block|,
+comment|// small a with ogonek
+block|{
 literal|"262"
 block|,
 literal|"Cacute"
@@ -2945,6 +2963,24 @@ block|}
 block|,
 comment|// small C with caron
 block|{
+literal|"280"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\k\\{E\\}\\}"
+block|}
+block|,
+comment|// capital E with ogonek
+block|{
+literal|"281"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\k\\{e\\}\\}"
+block|}
+block|,
+comment|// small e with ogonek
+block|{
 literal|"298"
 block|,
 literal|"Imacr"
@@ -2962,6 +2998,33 @@ literal|"\\{\\\\=\\{\\\\i\\}\\}"
 block|}
 block|,
 comment|// small i with macron
+block|{
+literal|"302"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\k\\{I\\}\\}"
+block|}
+block|,
+comment|// capital I with ogonek
+block|{
+literal|"303"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\k\\{i\\}\\}"
+block|}
+block|,
+comment|// small i with ogonek
+block|{
+literal|"304"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\.\\{I\\}\\}"
+block|}
+block|,
+comment|// capital I with dot above
 block|{
 literal|"305"
 block|,
@@ -2999,6 +3062,60 @@ block|}
 block|,
 comment|// lower case l with stroke
 block|{
+literal|"370"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\k\\{U\\}\\}"
+block|}
+block|,
+comment|// capital U with ogonek
+block|{
+literal|"371"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\k\\{u\\}\\}"
+block|}
+block|,
+comment|// small u with ogonek
+block|{
+literal|"490"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\k\\{O\\}\\}"
+block|}
+block|,
+comment|// capital letter O with ogonek
+block|{
+literal|"491"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\k\\{o\\}\\}"
+block|}
+block|,
+comment|// small letter o with ogonek
+block|{
+literal|"492"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\k\\{\\\\=\\{O\\}\\}\\}"
+block|}
+block|,
+comment|// capital letter O with ogonek and macron
+block|{
+literal|"493"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\k\\{\\\\=\\{o\\}\\}\\}"
+block|}
+block|,
+comment|// small letter o with ogonek and macron
+block|{
 literal|"536"
 block|,
 literal|""
@@ -3016,6 +3133,24 @@ literal|"\\{\\\\cb\\{s\\}\\}"
 block|}
 block|,
 comment|// small letter S with comma below, require combelow
+block|{
+literal|"538"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\cb\\{T\\}\\}"
+block|}
+block|,
+comment|// capital letter T with comma below, require combelow
+block|{
+literal|"539"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\cb\\{t\\}\\}"
+block|}
+block|,
+comment|// small letter T with comma below, require combelow
 block|{
 literal|"727"
 block|,
@@ -3070,6 +3205,15 @@ literal|"\\{\\\\r\\{\\}\\}"
 block|}
 block|,
 comment|// Ring above
+block|{
+literal|"731"
+block|,
+literal|""
+block|,
+literal|"\\{\\\\k\\{\\}\\}"
+block|}
+block|,
+comment|// Ogonek
 block|{
 literal|"949"
 block|,
@@ -3500,7 +3644,13 @@ literal|"\\|"
 block|}
 block|,
 comment|// Vertical line above
-comment|// {"782", ""},     // Double vertical line above
+block|{
+literal|"782"
+block|,
+literal|"U"
+block|}
+block|,
+comment|// Double vertical line above
 block|{
 literal|"783"
 block|,
@@ -3509,6 +3659,85 @@ block|}
 block|,
 comment|// Double grave
 block|{
+literal|"784"
+block|,
+literal|"textdotbreve"
+block|}
+block|,
+comment|// Candrabindu
+block|{
+literal|"785"
+block|,
+literal|"t"
+block|}
+block|,
+comment|// Inverted breve
+comment|//        {"786", ""},    // Turned comma above
+comment|//        {"787", ""},    // Comma above
+comment|//        {"788", ""},    // Reversed comma above
+comment|//        {"789", ""},    // Comma above right
+block|{
+literal|"790"
+block|,
+literal|"textsubgrave"
+block|}
+block|,
+comment|// Grave accent below -requires tipa
+block|{
+literal|"791"
+block|,
+literal|"textsubacute"
+block|}
+block|,
+comment|// Acute accent below - requires tipa
+block|{
+literal|"792"
+block|,
+literal|"textadvancing"
+block|}
+block|,
+comment|// Left tack below - requires tipa
+block|{
+literal|"793"
+block|,
+literal|"textretracting"
+block|}
+block|,
+comment|// Right tack below - requires tipa
+comment|//        {"794", ""},    // Left angle above
+comment|//        {"795", ""},    // Horn
+block|{
+literal|"796"
+block|,
+literal|"textsublhalfring"
+block|}
+block|,
+comment|// Left half ring below - requires tipa
+block|{
+literal|"797"
+block|,
+literal|"textraising"
+block|}
+block|,
+comment|// Up tack below - requires tipa
+block|{
+literal|"798"
+block|,
+literal|"textlowering"
+block|}
+block|,
+comment|// Down tack below - requires tipa
+block|{
+literal|"799"
+block|,
+literal|"textsubplus"
+block|}
+block|,
+comment|// Plus sign below - requires tipa
+comment|//        {"800", ""},    // Minus sign below
+comment|//        {"801", ""},    // Palatalized hook below
+comment|//        {"802", ""},    // Retroflex hook below
+block|{
 literal|"803"
 block|,
 literal|"d"
@@ -3516,12 +3745,237 @@ block|}
 block|,
 comment|// Dot below
 block|{
+literal|"804"
+block|,
+literal|"textsubumlaut"
+block|}
+block|,
+comment|// Diaeresis below - requires tipa
+block|{
+literal|"805"
+block|,
+literal|"textsubring"
+block|}
+block|,
+comment|// Ring below - requires tipa
+block|{
+literal|"806"
+block|,
+literal|"cb"
+block|}
+block|,
+comment|// Comma below - requires combelow
+block|{
 literal|"807"
 block|,
 literal|"c"
 block|}
 block|,
 comment|// Cedilla
+block|{
+literal|"808"
+block|,
+literal|"k"
+block|}
+block|,
+comment|// Ogonek
+block|{
+literal|"809"
+block|,
+literal|"textsyllabic"
+block|}
+block|,
+comment|// Vertical line below - requires tipa
+block|{
+literal|"810"
+block|,
+literal|"textsubbridge"
+block|}
+block|,
+comment|// Bridge below - requires tipa
+block|{
+literal|"811"
+block|,
+literal|"textsubw"
+block|}
+block|,
+comment|// Inverted double arch below - requires tipa
+block|{
+literal|"812"
+block|,
+literal|"textsubwedge"
+block|}
+block|,
+comment|// Caron below
+block|{
+literal|"813"
+block|,
+literal|"textsubcircum"
+block|}
+block|,
+comment|// Circumflex accent below - requires tipa
+comment|//        {"814", ""},    // Breve below
+block|{
+literal|"815"
+block|,
+literal|"textsubarch"
+block|}
+block|,
+comment|// Inverted breve below - requires tipa
+block|{
+literal|"816"
+block|,
+literal|"textsubtilde"
+block|}
+block|,
+comment|// Tilde below - requires tipa
+block|{
+literal|"817"
+block|,
+literal|"b"
+block|}
+block|,
+comment|// Macron below - not completely correct
+block|{
+literal|"818"
+block|,
+literal|"b"
+block|}
+block|,
+comment|// Underline
+block|{
+literal|"819"
+block|,
+literal|"subdoublebar"
+block|}
+block|,
+comment|// Double low line -- requires extraipa
+block|{
+literal|"820"
+block|,
+literal|"textsuperimposetilde"
+block|}
+block|,
+comment|// Tilde overlay - requires tipa
+comment|//        {"821", ""},    // Short stroke overlay
+comment|//        {"822", ""},    // Long stroke overlay
+comment|//        {"823", ""},    // Short solidus overlay
+comment|//        {"824", ""},    // Long solidus overlay
+block|{
+literal|"825"
+block|,
+literal|"textsubrhalfring"
+block|}
+block|,
+comment|// Right half ring below - requires tipa
+block|{
+literal|"826"
+block|,
+literal|"textinvsubbridge"
+block|}
+block|,
+comment|// inverted bridge below - requires tipa
+block|{
+literal|"827"
+block|,
+literal|"textsubsquare"
+block|}
+block|,
+comment|// Square below - requires tipa
+block|{
+literal|"828"
+block|,
+literal|"textseagull"
+block|}
+block|,
+comment|// Seagull below - requires tipa
+block|{
+literal|"829"
+block|,
+literal|"textovercross"
+block|}
+block|,
+comment|// X above - requires tipa
+comment|//        {"830", ""},    // Vertical tilde
+comment|//        {"831", ""},    // Double overline
+comment|//        {"832", ""},    // Grave tone mark
+comment|//        {"833", ""},    // Acute tone mark
+comment|//        {"834", ""},    // Greek perispomeni
+comment|//        {"835", ""},    // Greek koronis
+comment|//        {"836", ""},    // Greek dialytika tonos
+comment|//        {"837", ""},    // Greek ypogegrammeni
+block|{
+literal|"838"
+block|,
+literal|"overbridge"
+block|}
+block|,
+comment|// Bridge above - requires extraipa
+block|{
+literal|"839"
+block|,
+literal|"subdoublebar"
+block|}
+block|,
+comment|// Equals sign below - requires extraipa
+block|{
+literal|"840"
+block|,
+literal|"subdoublevert"
+block|}
+block|,
+comment|// Double vertical line below - requires extraipa
+block|{
+literal|"841"
+block|,
+literal|"subcorner"
+block|}
+block|,
+comment|// Left angle below - requires extraipa
+block|{
+literal|"842"
+block|,
+literal|"crtilde"
+block|}
+block|,
+comment|// Not tilde above - requires extraipa
+block|{
+literal|"843"
+block|,
+literal|"dottedtilde"
+block|}
+block|,
+comment|// Homothetic above - requires extraipa
+block|{
+literal|"844"
+block|,
+literal|"doubletilde"
+block|}
+block|,
+comment|// Almost equal to above - requires extraipa
+block|{
+literal|"845"
+block|,
+literal|"spreadlips"
+block|}
+block|,
+comment|// Left right arrow below - requires extraipa
+block|{
+literal|"846"
+block|,
+literal|"whistle"
+block|}
+block|,
+comment|// Upwards arrow below - requires extraipa
+comment|//        {"864", ""},    // Double tilde
+comment|//        {"865", ""},    // Double inverted breve
+block|{
+literal|"866"
+block|,
+literal|"sliding"
+block|}
+block|,
+comment|// Double rightwards arrow below - requires extraipa
 block|}
 decl_stmt|;
 DECL|field|escapedSymbols
@@ -4126,6 +4580,141 @@ name|num
 argument_list|)
 condition|)
 block|{
+if|if
+condition|(
+name|m
+operator|.
+name|group
+argument_list|(
+literal|1
+argument_list|)
+operator|.
+name|equals
+argument_list|(
+literal|"i"
+argument_list|)
+condition|)
+block|{
+name|text
+operator|=
+name|text
+operator|.
+name|replaceAll
+argument_list|(
+name|m
+operator|.
+name|group
+argument_list|(
+literal|1
+argument_list|)
+operator|+
+literal|"&#"
+operator|+
+name|m
+operator|.
+name|group
+argument_list|(
+literal|2
+argument_list|)
+operator|+
+name|m
+operator|.
+name|group
+argument_list|(
+literal|3
+argument_list|)
+operator|+
+name|m
+operator|.
+name|group
+argument_list|(
+literal|4
+argument_list|)
+operator|+
+literal|";"
+argument_list|,
+literal|"\\{\\\\"
+operator|+
+name|escapedAccents
+operator|.
+name|get
+argument_list|(
+name|num
+argument_list|)
+operator|+
+literal|"\\{\\\\i\\}\\}"
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|m
+operator|.
+name|group
+argument_list|(
+literal|1
+argument_list|)
+operator|.
+name|equals
+argument_list|(
+literal|"j"
+argument_list|)
+condition|)
+block|{
+name|text
+operator|=
+name|text
+operator|.
+name|replaceAll
+argument_list|(
+name|m
+operator|.
+name|group
+argument_list|(
+literal|1
+argument_list|)
+operator|+
+literal|"&#"
+operator|+
+name|m
+operator|.
+name|group
+argument_list|(
+literal|2
+argument_list|)
+operator|+
+name|m
+operator|.
+name|group
+argument_list|(
+literal|3
+argument_list|)
+operator|+
+name|m
+operator|.
+name|group
+argument_list|(
+literal|4
+argument_list|)
+operator|+
+literal|";"
+argument_list|,
+literal|"\\{\\\\"
+operator|+
+name|escapedAccents
+operator|.
+name|get
+argument_list|(
+name|num
+argument_list|)
+operator|+
+literal|"\\{\\\\j\\}\\}"
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|text
 operator|=
 name|text
@@ -4185,6 +4774,7 @@ operator|+
 literal|"\\}\\}"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|escapedPattern
