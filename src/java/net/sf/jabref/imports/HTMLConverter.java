@@ -1759,11 +1759,11 @@ literal|"8629"
 block|,
 literal|"crarr"
 block|,
-literal|""
+literal|"\\$\\\\dlsh\\$"
 block|}
 block|,
 comment|// downwards arrow with corner leftwards
-comment|//                                    = carriage return, U+21B5 NEW
+comment|//                                    = carriage return, U+21B5 NEW - require mathabx
 block|{
 literal|"8656"
 block|,
@@ -2875,7 +2875,7 @@ comment|// Single character introducer
 block|{
 literal|"260"
 block|,
-literal|""
+literal|"Aogon"
 block|,
 literal|"\\{\\\\k\\{A\\}\\}"
 block|}
@@ -2884,7 +2884,7 @@ comment|// capital A with ogonek
 block|{
 literal|"261"
 block|,
-literal|""
+literal|"aogon"
 block|,
 literal|"\\{\\\\k\\{a\\}\\}"
 block|}
@@ -2963,9 +2963,27 @@ block|}
 block|,
 comment|// small C with caron
 block|{
+literal|"272"
+block|,
+literal|"Dstrok"
+block|,
+literal|"\\{\\\\DJ\\}"
+block|}
+block|,
+comment|// capital D with stroke
+block|{
+literal|"273"
+block|,
+literal|"dstrok"
+block|,
+literal|"\\{\\\\dj\\}"
+block|}
+block|,
+comment|// small d with stroke
+block|{
 literal|"280"
 block|,
-literal|""
+literal|"Eogon"
 block|,
 literal|"\\{\\\\k\\{E\\}\\}"
 block|}
@@ -2974,7 +2992,7 @@ comment|// capital E with ogonek
 block|{
 literal|"281"
 block|,
-literal|""
+literal|"eogon"
 block|,
 literal|"\\{\\\\k\\{e\\}\\}"
 block|}
@@ -3001,7 +3019,7 @@ comment|// small i with macron
 block|{
 literal|"302"
 block|,
-literal|""
+literal|"Iogon"
 block|,
 literal|"\\{\\\\k\\{I\\}\\}"
 block|}
@@ -3010,7 +3028,7 @@ comment|// capital I with ogonek
 block|{
 literal|"303"
 block|,
-literal|""
+literal|"iogon"
 block|,
 literal|"\\{\\\\k\\{i\\}\\}"
 block|}
@@ -3019,7 +3037,7 @@ comment|// small i with ogonek
 block|{
 literal|"304"
 block|,
-literal|""
+literal|"Idot"
 block|,
 literal|"\\{\\\\.\\{I\\}\\}"
 block|}
@@ -3064,7 +3082,7 @@ comment|// lower case l with stroke
 block|{
 literal|"370"
 block|,
-literal|""
+literal|"Uogon"
 block|,
 literal|"\\{\\\\k\\{U\\}\\}"
 block|}
@@ -3073,7 +3091,7 @@ comment|// capital U with ogonek
 block|{
 literal|"371"
 block|,
-literal|""
+literal|"uogon"
 block|,
 literal|"\\{\\\\k\\{u\\}\\}"
 block|}
@@ -3082,7 +3100,7 @@ comment|// small u with ogonek
 block|{
 literal|"490"
 block|,
-literal|""
+literal|"Oogon"
 block|,
 literal|"\\{\\\\k\\{O\\}\\}"
 block|}
@@ -3091,7 +3109,7 @@ comment|// capital letter O with ogonek
 block|{
 literal|"491"
 block|,
-literal|""
+literal|"oogon"
 block|,
 literal|"\\{\\\\k\\{o\\}\\}"
 block|}
@@ -3208,12 +3226,21 @@ comment|// Ring above
 block|{
 literal|"731"
 block|,
-literal|""
+literal|"ogon"
 block|,
 literal|"\\{\\\\k\\{\\}\\}"
 block|}
 block|,
 comment|// Ogonek
+block|{
+literal|"733"
+block|,
+literal|"dblac"
+block|,
+literal|"\\{\\\\H\\{\\}\\}"
+block|}
+block|,
+comment|// Double acute
 block|{
 literal|"949"
 block|,
@@ -3252,6 +3279,51 @@ block|,
 comment|// Cyrillic small Ka
 comment|// {"2013", "", ""},    // NKO letter FA -- Maybe en dash = 0x2013?
 comment|// {"2014", "", ""},    // NKO letter FA -- Maybe em dash = 0x2014?
+block|{
+literal|"8192"
+block|,
+literal|""
+block|,
+literal|"\\\\hspace\\{0.5em\\}"
+block|}
+block|,
+comment|// en quad
+block|{
+literal|"8193"
+block|,
+literal|""
+block|,
+literal|"\\\\hspace\\{1em\\}"
+block|}
+block|,
+comment|// em quad
+block|{
+literal|"8196"
+block|,
+literal|""
+block|,
+literal|"\\\\hspace\\{0.333em\\}"
+block|}
+block|,
+comment|// Three-Per-Em Space
+block|{
+literal|"8197"
+block|,
+literal|""
+block|,
+literal|"\\\\hspace\\{0.25em\\}"
+block|}
+block|,
+comment|// Four-Per-Em Space
+block|{
+literal|"8198"
+block|,
+literal|""
+block|,
+literal|"\\\\hspace\\{0.167em\\}"
+block|}
+block|,
+comment|// Six-Per-Em Space
 block|{
 literal|"8208"
 block|,
@@ -3351,6 +3423,123 @@ literal|"\\$\\\\mathcal\\{E\\}\\$"
 block|}
 block|,
 comment|// script capital E
+block|{
+literal|"8531"
+block|,
+literal|"frac13"
+block|,
+literal|"\\$\\\\sfrac\\{1\\}\\{3\\}\\$"
+block|}
+block|,
+comment|// Vulgar fraction one third
+block|{
+literal|"8532"
+block|,
+literal|"frac23"
+block|,
+literal|"\\$\\\\sfrac\\{2\\}\\{3\\}\\$"
+block|}
+block|,
+comment|// Vulgar fraction two thirds
+block|{
+literal|"8533"
+block|,
+literal|"frac15"
+block|,
+literal|"\\$\\\\sfrac\\{1\\}\\{5\\}\\$"
+block|}
+block|,
+comment|// Vulgar fraction one fifth
+block|{
+literal|"8534"
+block|,
+literal|"frac25"
+block|,
+literal|"\\$\\\\sfrac\\{2\\}\\{5\\}\\$"
+block|}
+block|,
+comment|// Vulgar fraction two fifths
+block|{
+literal|"8535"
+block|,
+literal|"frac35"
+block|,
+literal|"\\$\\\\sfrac\\{3\\}\\{5\\}\\$"
+block|}
+block|,
+comment|// Vulgar fraction three fifths
+block|{
+literal|"8536"
+block|,
+literal|"frac45"
+block|,
+literal|"\\$\\\\sfrac\\{4\\}\\{5\\}\\$"
+block|}
+block|,
+comment|// Vulgar fraction four fifths
+block|{
+literal|"8537"
+block|,
+literal|"frac16"
+block|,
+literal|"\\$\\\\sfrac\\{1\\}\\{6\\}\\$"
+block|}
+block|,
+comment|// Vulgar fraction one sixth
+block|{
+literal|"8538"
+block|,
+literal|"frac56"
+block|,
+literal|"\\$\\\\sfrac\\{5\\}\\{6\\}\\$"
+block|}
+block|,
+comment|// Vulgar fraction five sixths
+block|{
+literal|"8539"
+block|,
+literal|"frac18"
+block|,
+literal|"\\$\\\\sfrac\\{1\\}\\{8\\}\\$"
+block|}
+block|,
+comment|// Vulgar fraction one eighth
+block|{
+literal|"8540"
+block|,
+literal|"frac38"
+block|,
+literal|"\\$\\\\sfrac\\{3\\}\\{8\\}\\$"
+block|}
+block|,
+comment|// Vulgar fraction three eighths
+block|{
+literal|"8541"
+block|,
+literal|"frac58"
+block|,
+literal|"\\$\\\\sfrac\\{5\\}\\{8\\}\\$"
+block|}
+block|,
+comment|// Vulgar fraction five eighths
+block|{
+literal|"8542"
+block|,
+literal|"frac78"
+block|,
+literal|"\\$\\\\sfrac\\{7\\}\\{8\\}\\$"
+block|}
+block|,
+comment|// Vulgar fraction seven eighths
+block|{
+literal|"8710"
+block|,
+literal|""
+block|,
+literal|"\\$\\\\triangle\\$"
+block|}
+block|,
+comment|// Increment - could use a more appropriate symbol
 block|{
 literal|"8714"
 block|,
