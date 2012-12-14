@@ -889,11 +889,10 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Remove unneccessary $, {, and }"
+literal|"Remove unneccessary $, {, and } and move adjacent numbers into equations"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// and move adjacent numbers into equations"));
 name|optionsPanel
 operator|=
 operator|new
@@ -3922,6 +3921,109 @@ argument_list|(
 literal|"\\}([- /])?\\{"
 argument_list|,
 literal|"$1"
+argument_list|)
+expr_stmt|;
+comment|// Move numbers, +, -, /, and brackets into equations
+comment|// System.err.println(newValue);
+name|newValue
+operator|=
+name|newValue
+operator|.
+name|replaceAll
+argument_list|(
+literal|"(([^$]|\\\\\\$)*)\\$"
+argument_list|,
+literal|"$1@@"
+argument_list|)
+expr_stmt|;
+comment|// Replace $, but not \$ with @@
+comment|// System.err.println(newValue);
+name|newValue
+operator|=
+name|newValue
+operator|.
+name|replaceAll
+argument_list|(
+literal|"([^@]*)@@([^@]*)@@"
+argument_list|,
+literal|"$1\\$$2@@"
+argument_list|)
+expr_stmt|;
+comment|// Replace every other @@ with $
+comment|// System.err.println(newValue);
+comment|//newValue = newValue.replaceAll("([0-9\\(\\.]+) \\$","\\$$1\\\\ "); // Move numbers followed by a space left of $ inside the equation, e.g., 0.35 $\mu$m
+comment|// System.err.println(newValue);
+name|newValue
+operator|=
+name|newValue
+operator|.
+name|replaceAll
+argument_list|(
+literal|"([0-9\\(\\.]+[ ]?[-+/]?[ ]?)\\$"
+argument_list|,
+literal|"\\$$1"
+argument_list|)
+expr_stmt|;
+comment|// Move numbers, possibly with operators +, -, or /,  left of $ into the equation
+comment|// System.err.println(newValue);
+name|newValue
+operator|=
+name|newValue
+operator|.
+name|replaceAll
+argument_list|(
+literal|"@@([ ]?[-+/]?[ ]?[0-9\\)\\.]+)"
+argument_list|,
+literal|" $1@@"
+argument_list|)
+expr_stmt|;
+comment|// Move numbers right of @@ into the equation
+comment|// System.err.println(newValue);
+name|newValue
+operator|=
+name|newValue
+operator|.
+name|replace
+argument_list|(
+literal|"@@"
+argument_list|,
+literal|"$"
+argument_list|)
+expr_stmt|;
+comment|// Replace all @@ with $
+comment|// System.err.println(newValue);
+name|newValue
+operator|=
+name|newValue
+operator|.
+name|replace
+argument_list|(
+literal|"  "
+argument_list|,
+literal|" "
+argument_list|)
+expr_stmt|;
+comment|// Clean up
+name|newValue
+operator|=
+name|newValue
+operator|.
+name|replace
+argument_list|(
+literal|"$$"
+argument_list|,
+literal|"$"
+argument_list|)
+expr_stmt|;
+name|newValue
+operator|=
+name|newValue
+operator|.
+name|replace
+argument_list|(
+literal|" )$"
+argument_list|,
+literal|")$"
 argument_list|)
 expr_stmt|;
 if|if
