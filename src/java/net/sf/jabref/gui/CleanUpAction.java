@@ -3919,14 +3919,7 @@ argument_list|)
 operator|.
 name|replaceAll
 argument_list|(
-literal|"(\\{.*[^\\\\][\\w]*)\\}([- /]?)\\{"
-argument_list|,
-literal|"$1$2"
-argument_list|)
-operator|.
-name|replaceAll
-argument_list|(
-literal|"([^\\\\])\\{\\}"
+literal|"(?<!\\\\[\\p{Alpha}]{0,100}\\{[^\\}]{0,100})\\}([-/ ]?)\\{"
 argument_list|,
 literal|"$1"
 argument_list|)
