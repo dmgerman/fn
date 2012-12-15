@@ -400,6 +400,15 @@ operator|new
 name|CaseKeeper
 argument_list|()
 decl_stmt|;
+DECL|field|unitFormatter
+specifier|final
+name|UnitFormatter
+name|unitFormatter
+init|=
+operator|new
+name|UnitFormatter
+argument_list|()
+decl_stmt|;
 DECL|field|dialog
 name|ImportInspector
 name|dialog
@@ -2250,6 +2259,29 @@ argument_list|,
 literal|"\\\\infty"
 argument_list|)
 expr_stmt|;
+comment|// Unit formatting
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"useUnitFormatterOnSearch"
+argument_list|)
+condition|)
+block|{
+name|title
+operator|=
+name|unitFormatter
+operator|.
+name|format
+argument_list|(
+name|title
+argument_list|)
+expr_stmt|;
+block|}
 comment|// Automatic case keeping
 if|if
 condition|(

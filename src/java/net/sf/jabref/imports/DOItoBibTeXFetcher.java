@@ -192,6 +192,15 @@ operator|new
 name|CaseKeeper
 argument_list|()
 decl_stmt|;
+DECL|field|unitFormatter
+specifier|final
+name|UnitFormatter
+name|unitFormatter
+init|=
+operator|new
+name|UnitFormatter
+argument_list|()
+decl_stmt|;
 annotation|@
 name|Override
 DECL|method|stopFetching ()
@@ -446,6 +455,30 @@ operator|!=
 literal|null
 condition|)
 block|{
+comment|// Unit formatting
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"useUnitFormatterOnSearch"
+argument_list|)
+condition|)
+block|{
+name|title
+operator|=
+name|unitFormatter
+operator|.
+name|format
+argument_list|(
+name|title
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Case keeping
 if|if
 condition|(
 name|Globals
