@@ -122,14 +122,14 @@ name|i
 operator|++
 control|)
 block|{
-comment|// Add {} if the character before is a space, -, /, (, [, or } or if it is at the start of the string but not if it is followed by a }
+comment|// Add {} if the character before is a space, -, /, (, [, ", or } or if it is at the start of the string but not if it is followed by a }
 name|text
 operator|=
 name|text
 operator|.
 name|replaceAll
 argument_list|(
-literal|"(^|[- /\\[(}])"
+literal|"(^|[- /\\[(}\"])"
 operator|+
 name|listOfWords
 index|[

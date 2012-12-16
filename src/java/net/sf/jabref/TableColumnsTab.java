@@ -2252,9 +2252,18 @@ name|specialFieldsEnabled
 operator|.
 name|setSelected
 argument_list|(
+operator|!
 name|oldSpecialFieldsEnabled
 argument_list|)
 expr_stmt|;
+name|specialFieldsEnabled
+operator|.
+name|setSelected
+argument_list|(
+name|oldSpecialFieldsEnabled
+argument_list|)
+expr_stmt|;
+comment|// Call twice to make sure the ChangeListener is triggered
 comment|/*** end: special fields ***/
 name|oldShowOneLetterHeadingForIconColumns
 operator|=

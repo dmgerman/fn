@@ -122,6 +122,26 @@ name|java
 operator|.
 name|net
 operator|.
+name|CookieHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|CookieManager
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
 name|MalformedURLException
 import|;
 end_import
@@ -143,16 +163,6 @@ operator|.
 name|net
 operator|.
 name|URLConnection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URLEncoder
 import|;
 end_import
 
@@ -478,6 +488,15 @@ literal|"BibTeX importer"
 argument_list|)
 argument_list|)
 decl_stmt|;
+DECL|field|cm
+specifier|private
+name|CookieManager
+name|cm
+init|=
+operator|new
+name|CookieManager
+argument_list|()
+decl_stmt|;
 DECL|field|MAX_FETCH
 specifier|private
 specifier|static
@@ -724,6 +743,13 @@ parameter_list|()
 block|{
 name|super
 argument_list|()
+expr_stmt|;
+name|CookieHandler
+operator|.
+name|setDefault
+argument_list|(
+name|cm
+argument_list|)
 expr_stmt|;
 name|fieldPatterns
 operator|.
@@ -3906,6 +3932,13 @@ argument_list|,
 literal|"http://ieeexplore.ieee.org"
 operator|+
 name|url
+operator|.
+name|replace
+argument_list|(
+literal|"tp=&"
+argument_list|,
+literal|""
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -4313,6 +4346,13 @@ name|equalsIgnoreCase
 argument_list|(
 literal|"MIT Press eBook Chapters"
 argument_list|)
+operator|||
+name|typeName
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"IEEE USA Books&amp; eBooks"
+argument_list|)
 condition|)
 block|{
 name|type
@@ -4443,6 +4483,27 @@ argument_list|(
 literal|"publisher"
 argument_list|,
 literal|"MIT Press"
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|typeName
+operator|.
+name|equalsIgnoreCase
+argument_list|(
+literal|"IEEE USA Books&amp; eBooks"
+argument_list|)
+condition|)
+block|{
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"publisher"
+argument_list|,
+literal|"IEEE USA"
 argument_list|)
 expr_stmt|;
 block|}
@@ -4663,6 +4724,18 @@ operator|.
 name|startsWith
 argument_list|(
 literal|"a href"
+argument_list|)
+operator|||
+name|entry
+operator|.
+name|getField
+argument_list|(
+literal|"author"
+argument_list|)
+operator|.
+name|startsWith
+argument_list|(
+literal|"Topic(s)"
 argument_list|)
 condition|)
 block|{
