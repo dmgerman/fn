@@ -28,16 +28,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Comparator
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -139,6 +129,9 @@ comment|// Weber
 literal|"Wh"
 block|,
 comment|// Watt hours
+literal|"bar"
+block|,
+comment|// bar
 literal|"b"
 block|,
 comment|// bit
@@ -157,6 +150,9 @@ comment|//decibel
 literal|"eV"
 block|,
 comment|// electron volts
+literal|"inch"
+block|,
+comment|// inch
 literal|"kat"
 block|,
 comment|// katal
@@ -441,7 +437,7 @@ name|text
 operator|.
 name|replaceAll
 argument_list|(
-literal|"([0-9,\\.]+)("
+literal|"([0-9])("
 operator|+
 name|listOfWords
 index|[
@@ -460,7 +456,7 @@ name|text
 operator|.
 name|replaceAll
 argument_list|(
-literal|"([0-9,\\.]+)-("
+literal|"([0-9])-("
 operator|+
 name|listOfWords
 index|[
@@ -479,7 +475,7 @@ name|text
 operator|.
 name|replaceAll
 argument_list|(
-literal|"([0-9,\\.]+) ("
+literal|"([0-9]) ("
 operator|+
 name|listOfWords
 index|[
