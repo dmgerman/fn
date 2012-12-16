@@ -361,7 +361,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Use Emacs keybindings"
+literal|"Use Emacs key bindings"
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -632,7 +632,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Must choose exactly two entries to merge."
+literal|"You have to choose exactly two entries to merge."
 argument_list|)
 argument_list|,
 name|Globals
@@ -2098,7 +2098,9 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Error in entry: "
+literal|"Error in entry"
+operator|+
+literal|": "
 operator|+
 name|ex
 operator|.
@@ -2938,7 +2940,9 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Error in entry: "
+literal|"Error in entry"
+operator|+
+literal|": "
 operator|+
 name|ex
 operator|.
