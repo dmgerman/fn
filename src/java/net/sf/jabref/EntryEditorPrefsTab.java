@@ -70,6 +70,22 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|xnap
+operator|.
+name|commons
+operator|.
+name|gui
+operator|.
+name|shortcut
+operator|.
+name|EmacsKeyBindings
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -143,9 +159,12 @@ decl_stmt|,
 name|showSource
 decl_stmt|,
 DECL|field|defSource
+DECL|field|emacsMode
 DECL|field|disableOnMultiple
 DECL|field|autoComplete
 name|defSource
+decl_stmt|,
+name|emacsMode
 decl_stmt|,
 name|disableOnMultiple
 decl_stmt|,
@@ -330,6 +349,19 @@ operator|.
 name|lang
 argument_list|(
 literal|"Show BibTeX source panel"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|emacsMode
+operator|=
+operator|new
+name|JCheckBox
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Use Emacs keybindings"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -617,6 +649,7 @@ init|=
 operator|new
 name|FormLayout
 argument_list|(
+comment|// columns
 literal|"8dlu, left:pref, 8dlu, fill:150dlu, 4dlu, fill:pref"
 argument_list|,
 comment|// 4dlu, left:pref, 4dlu",
@@ -624,10 +657,10 @@ comment|// rows  1 to 10
 literal|"pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, "
 operator|+
 comment|// rows 11 to 20
-literal|"pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, pref, pref, pref, "
+literal|"pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, pref, "
 operator|+
-comment|// rows 21 to 26
-literal|"6dlu, pref, pref, pref, pref"
+comment|// rows 21 to 27
+literal|"pref, pref, 6dlu, pref, pref, pref, pref"
 argument_list|)
 decl_stmt|;
 name|DefaultFormBuilder
@@ -735,6 +768,22 @@ argument_list|)
 expr_stmt|;
 name|builder
 operator|.
+name|add
+argument_list|(
+name|emacsMode
+argument_list|,
+name|cc
+operator|.
+name|xy
+argument_list|(
+literal|2
+argument_list|,
+literal|11
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
 name|addSeparator
 argument_list|(
 name|Globals
@@ -750,7 +799,7 @@ name|xyw
 argument_list|(
 literal|1
 argument_list|,
-literal|11
+literal|13
 argument_list|,
 literal|5
 argument_list|)
@@ -768,7 +817,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|13
+literal|15
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -862,7 +911,7 @@ name|xyw
 argument_list|(
 literal|2
 argument_list|,
-literal|15
+literal|17
 argument_list|,
 literal|3
 argument_list|)
@@ -885,7 +934,7 @@ name|xyw
 argument_list|(
 literal|2
 argument_list|,
-literal|17
+literal|19
 argument_list|,
 literal|4
 argument_list|)
@@ -903,7 +952,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|18
+literal|20
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -919,7 +968,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|19
+literal|21
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -935,7 +984,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|20
+literal|22
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -956,7 +1005,7 @@ name|xyw
 argument_list|(
 literal|2
 argument_list|,
-literal|22
+literal|24
 argument_list|,
 literal|4
 argument_list|)
@@ -974,7 +1023,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|23
+literal|25
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -990,7 +1039,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|24
+literal|26
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1006,7 +1055,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|25
+literal|27
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1085,6 +1134,20 @@ operator|.
 name|getBoolean
 argument_list|(
 literal|"showSource"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|emacsMode
+operator|.
+name|setSelected
+argument_list|(
+name|_prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EDITOR_EMACS_KEYBINDINGS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1318,6 +1381,62 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|_prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EDITOR_EMACS_KEYBINDINGS
+argument_list|)
+operator|!=
+name|emacsMode
+operator|.
+name|isSelected
+argument_list|()
+condition|)
+block|{
+comment|// user has changed settings of EMACS mode
+comment|// immediately apply the change
+if|if
+condition|(
+name|emacsMode
+operator|.
+name|isSelected
+argument_list|()
+condition|)
+block|{
+name|EmacsKeyBindings
+operator|.
+name|load
+argument_list|()
+expr_stmt|;
+block|}
+else|else
+block|{
+name|EmacsKeyBindings
+operator|.
+name|unload
+argument_list|()
+expr_stmt|;
+block|}
+name|_prefs
+operator|.
+name|putBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EDITOR_EMACS_KEYBINDINGS
+argument_list|,
+name|emacsMode
+operator|.
+name|isSelected
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 name|_prefs
 operator|.
 name|putBoolean
