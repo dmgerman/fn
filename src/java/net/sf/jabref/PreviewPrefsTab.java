@@ -108,6 +108,20 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|help
+operator|.
+name|HelpAction
+import|;
+end_import
+
 begin_class
 DECL|class|PreviewPrefsTab
 specifier|public
