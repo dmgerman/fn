@@ -1784,13 +1784,39 @@ argument_list|(
 name|file
 argument_list|)
 expr_stmt|;
-comment|// Register so we get notifications about outside changes to the file.
 if|if
 condition|(
 name|file
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+if|if
+condition|(
+operator|!
+name|database
+operator|.
+name|getEntries
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+comment|// if the database is not empty and no file is assigned,
+comment|// the database came from an import and has to be treated somehow
+comment|// -> mark as changed
+name|this
+operator|.
+name|baseChanged
+operator|=
+literal|true
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+comment|// Register so we get notifications about outside changes to the file.
 try|try
 block|{
 name|fileMonitorHandle
@@ -1812,7 +1838,18 @@ parameter_list|(
 name|IOException
 name|ex
 parameter_list|)
-block|{             }
+block|{
+name|System
+operator|.
+name|err
+operator|.
+name|println
+argument_list|(
+name|ex
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 DECL|method|isBaseChanged ()
 specifier|public
