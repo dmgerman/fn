@@ -13298,12 +13298,25 @@ name|void
 name|showIfMinimizedToSysTray
 parameter_list|()
 block|{
+comment|// TODO: does not work correctly when a dialog is shown
+comment|// Workaround: put into invokeLater queue before a dialog is added to that queue
+if|if
+condition|(
+operator|!
+name|this
+operator|.
+name|isVisible
+argument_list|()
+condition|)
+block|{
+comment|// isVisible() is false if minimized to systray
 if|if
 condition|(
 name|sysTray
 operator|!=
 literal|null
 condition|)
+block|{
 name|sysTray
 operator|.
 name|setTrayIconVisible
@@ -13311,31 +13324,21 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 name|setVisible
 argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|SwingUtilities
+name|this
 operator|.
-name|invokeLater
-argument_list|(
-operator|new
-name|Runnable
+name|isActive
 argument_list|()
-block|{
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
+expr_stmt|;
 name|toFront
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-argument_list|)
-expr_stmt|;
 block|}
 comment|/*private class ForegroundLabel extends JLabel {          public ForegroundLabel(String s) {              super(s);              setFont(new Font("plain", Font.BOLD, 70));              setHorizontalAlignment(JLabel.CENTER);          }          public void paint(Graphics g) {             Graphics2D g2 = (Graphics2D)g;             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);             super.paint(g2);    //To change body of overridden methods use File | Settings | File Templates.         }     }       */
 DECL|class|MyGlassPane
