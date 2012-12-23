@@ -100,20 +100,6 @@ name|TextAction
 import|;
 end_import
 
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|text
-operator|.
-name|html
-operator|.
-name|HTMLEditorKit
-import|;
-end_import
-
 begin_class
 annotation|@
 name|SuppressWarnings
@@ -125,7 +111,7 @@ specifier|public
 class|class
 name|MyEditorKit
 extends|extends
-name|HTMLEditorKit
+name|LargeHTMLEditorKit
 block|{
 DECL|class|MyNextVisualPositionAction
 specifier|public

@@ -216,6 +216,18 @@ name|HTMLEditorKit
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|GUIGlobals
+import|;
+end_import
+
 begin_comment
 comment|/**  * An extended {@link HTMLEditorKit} that allow faster  * rendering of large html files and allow zooming of content.  * @author Alessio Pollero  * @version 1.0  */
 end_comment
@@ -616,9 +628,17 @@ decl_stmt|;
 if|if
 condition|(
 name|scale
-operator|!=
+operator|==
 literal|null
 condition|)
+block|{
+return|return
+name|GUIGlobals
+operator|.
+name|zoomLevel
+return|;
+block|}
+else|else
 block|{
 return|return
 name|scale
@@ -627,9 +647,6 @@ name|doubleValue
 argument_list|()
 return|;
 block|}
-return|return
-literal|1
-return|;
 block|}
 annotation|@
 name|Override

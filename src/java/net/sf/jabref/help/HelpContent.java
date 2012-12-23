@@ -219,7 +219,7 @@ name|VERTICAL_SCROLLBAR_AS_NEEDED
 argument_list|,
 name|JScrollPane
 operator|.
-name|HORIZONTAL_SCROLLBAR_NEVER
+name|HORIZONTAL_SCROLLBAR_AS_NEEDED
 argument_list|)
 expr_stmt|;
 name|pane

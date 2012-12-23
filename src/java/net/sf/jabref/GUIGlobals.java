@@ -326,6 +326,18 @@ argument_list|,
 literal|25
 argument_list|)
 decl_stmt|;
+DECL|field|zoomLevel
+specifier|public
+specifier|static
+name|Double
+name|zoomLevel
+init|=
+operator|new
+name|Double
+argument_list|(
+literal|1.0
+argument_list|)
+decl_stmt|;
 comment|// Divider size for BaseFrame split pane. 0 means non-resizable.
 specifier|public
 specifier|static
