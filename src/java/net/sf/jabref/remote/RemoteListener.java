@@ -455,6 +455,34 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
+comment|// put "bringToFront" in the queue
+comment|// it has to happen before the call to import as the import might open a dialog
+comment|// --> Globals.prefs.getBoolean("useImportInspectionDialog")
+comment|// this dialog has to be shown AFTER JabRef has been brought to front
+name|SwingUtilities
+operator|.
+name|invokeLater
+argument_list|(
+operator|new
+name|Runnable
+argument_list|()
+block|{
+specifier|public
+name|void
+name|run
+parameter_list|()
+block|{
+name|jabref
+operator|.
+name|jrf
+operator|.
+name|showIfMinimizedToSysTray
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
 for|for
 control|(
 name|int
@@ -636,30 +664,6 @@ name|newSocket
 operator|.
 name|close
 argument_list|()
-expr_stmt|;
-name|SwingUtilities
-operator|.
-name|invokeLater
-argument_list|(
-operator|new
-name|Runnable
-argument_list|()
-block|{
-specifier|public
-name|void
-name|run
-parameter_list|()
-block|{
-name|jabref
-operator|.
-name|jrf
-operator|.
-name|showIfMinimizedToSysTray
-argument_list|()
-expr_stmt|;
-block|}
-block|}
-argument_list|)
 expr_stmt|;
 block|}
 catch|catch

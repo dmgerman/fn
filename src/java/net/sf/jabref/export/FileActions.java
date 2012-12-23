@@ -1070,6 +1070,13 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+name|encoding
+operator|!=
+literal|null
+condition|)
+block|{
 name|System
 operator|.
 name|err
@@ -1088,6 +1095,7 @@ name|length
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 comment|// we must catch all exceptions to be able notify users that
 comment|// saving failed, no matter what the reason was
 comment|// (and they won't just quit JabRef thinking
