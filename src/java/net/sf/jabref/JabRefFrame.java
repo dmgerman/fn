@@ -3722,7 +3722,8 @@ name|star
 init|=
 name|bp
 operator|.
-name|baseChanged
+name|isBaseChanged
+argument_list|()
 condition|?
 literal|"*"
 else|:
@@ -4403,7 +4404,8 @@ argument_list|(
 name|i
 argument_list|)
 operator|.
-name|baseChanged
+name|isBaseChanged
+argument_list|()
 condition|)
 block|{
 name|tabbedPane
@@ -9672,7 +9674,8 @@ condition|(
 name|basePanel
 argument_list|()
 operator|.
-name|baseChanged
+name|isBaseChanged
+argument_list|()
 condition|)
 block|{
 name|int

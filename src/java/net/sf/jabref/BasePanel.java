@@ -1395,12 +1395,15 @@ decl_stmt|;
 comment|//ExampleFileFilter fileFilter;
 comment|// File filter for .bib files.
 DECL|field|baseChanged
-DECL|field|nonUndoableChange
+specifier|private
 name|boolean
 name|baseChanged
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
+DECL|field|nonUndoableChange
+specifier|private
+name|boolean
 name|nonUndoableChange
 init|=
 literal|false
@@ -1707,6 +1710,35 @@ name|String
 name|encoding
 parameter_list|)
 block|{
+assert|assert
+operator|(
+name|frame
+operator|!=
+literal|null
+operator|)
+assert|;
+assert|assert
+operator|(
+name|db
+operator|!=
+literal|null
+operator|)
+assert|;
+comment|//file may be null
+assert|assert
+operator|(
+name|encoding
+operator|!=
+literal|null
+operator|)
+assert|;
+assert|assert
+operator|(
+name|metaData
+operator|!=
+literal|null
+operator|)
+assert|;
 name|this
 operator|.
 name|encoding
