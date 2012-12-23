@@ -278,7 +278,9 @@ init|=
 literal|"This file was created with JabRef"
 decl_stmt|;
 comment|// Size of help window.
+specifier|public
 specifier|static
+specifier|final
 name|Dimension
 DECL|field|helpSize
 name|helpSize
