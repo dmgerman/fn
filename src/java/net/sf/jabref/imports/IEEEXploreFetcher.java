@@ -2328,10 +2328,6 @@ operator|.
 name|format
 argument_list|(
 name|title
-argument_list|,
-name|caseKeeperList
-operator|.
-name|wordListIEEEXplore
 argument_list|)
 expr_stmt|;
 block|}

@@ -221,6 +221,8 @@ literal|"CMRR"
 block|,
 literal|"CMS"
 block|,
+literal|"CNF"
+block|,
 literal|"CNN"
 block|,
 literal|"CO2"
@@ -232,6 +234,8 @@ block|,
 literal|"CP"
 block|,
 literal|"CPE"
+block|,
+literal|"CPM"
 block|,
 literal|"CPLD"
 block|,
@@ -413,6 +417,8 @@ literal|"FDE"
 block|,
 literal|"FDI"
 block|,
+literal|"FDMA"
+block|,
 literal|"FDTD"
 block|,
 literal|"FEC"
@@ -458,6 +464,8 @@ block|,
 literal|"Fokker"
 block|,
 literal|"Fourier"
+block|,
+literal|"Frobenius"
 block|,
 literal|"GALS"
 block|,
@@ -537,6 +545,8 @@ literal|"HSPA"
 block|,
 literal|"HSDPA"
 block|,
+literal|"HTML"
+block|,
 literal|"HVAC"
 block|,
 literal|"HVDC"
@@ -548,6 +558,8 @@ block|,
 literal|"Hadamard"
 block|,
 literal|"Hamming"
+block|,
+literal|"Hankel"
 block|,
 literal|"Hartley"
 block|,
@@ -578,7 +590,11 @@ literal|"IDFT"
 block|,
 literal|"IEC"
 block|,
+literal|"IEE"
+block|,
 literal|"IEEE"
+block|,
+literal|"IET"
 block|,
 literal|"IFFT"
 block|,
@@ -632,6 +648,8 @@ block|,
 literal|"ISO"
 block|,
 literal|"ISS"
+block|,
+literal|"ITE"
 block|,
 literal|"InGaAs"
 block|,
@@ -725,6 +743,8 @@ literal|"Lempel"
 block|,
 literal|"Lyapunov"
 block|,
+literal|"M2M"
+block|,
 literal|"MAC"
 block|,
 literal|"MANET"
@@ -762,6 +782,8 @@ block|,
 literal|"MIT"
 block|,
 literal|"ML"
+block|,
+literal|"MLSD"
 block|,
 literal|"MMIC"
 block|,
@@ -891,6 +913,8 @@ literal|"PCMCIA"
 block|,
 literal|"PC"
 block|,
+literal|"PDF"
+block|,
 literal|"PDP"
 block|,
 literal|"PET"
@@ -930,6 +954,8 @@ block|,
 literal|"PSO"
 block|,
 literal|"PSRR"
+block|,
+literal|"PTL"
 block|,
 literal|"PV"
 block|,
@@ -1132,6 +1158,8 @@ literal|"SystemC"
 block|,
 literal|"TCP"
 block|,
+literal|"TDC"
+block|,
 literal|"TDM"
 block|,
 literal|"TDMA"
@@ -1291,6 +1319,641 @@ block|,
 literal|"xDSL"
 block|}
 decl_stmt|;
+comment|// Weekdays and months
+DECL|field|wordListDayMonth
+specifier|public
+name|String
+index|[]
+name|wordListDayMonth
+init|=
+operator|new
+name|String
+index|[]
+block|{
+literal|"Monday"
+block|,
+literal|"Tuesday"
+block|,
+literal|"Wednesday"
+block|,
+literal|"Thursday"
+block|,
+literal|"Friday"
+block|,
+literal|"Saturday"
+block|,
+literal|"Sunday"
+block|,
+literal|"January"
+block|,
+literal|"February"
+block|,
+literal|"March"
+block|,
+literal|"April"
+block|,
+literal|"May"
+block|,
+literal|"June"
+block|,
+literal|"July"
+block|,
+literal|"August"
+block|,
+literal|"September"
+block|,
+literal|"October"
+block|,
+literal|"November"
+block|,
+literal|"December"
+block|}
+decl_stmt|;
+DECL|field|wordListCountries
+specifier|private
+name|String
+index|[]
+name|wordListCountries
+init|=
+operator|new
+name|String
+index|[]
+block|{
+literal|"Andorra"
+block|,
+literal|"United Arab Emirates"
+block|,
+literal|"UAE"
+block|,
+literal|"Afghanistan"
+block|,
+literal|"Antigua and Barbuda"
+block|,
+literal|"Anguilla"
+block|,
+literal|"Albania"
+block|,
+literal|"Armenia"
+block|,
+literal|"Netherlands Antilles"
+block|,
+literal|"Angola"
+block|,
+literal|"Antarctica"
+block|,
+literal|"Argentina"
+block|,
+literal|"American Samoa"
+block|,
+literal|"Austria"
+block|,
+literal|"Australia"
+block|,
+literal|"Aruba"
+block|,
+literal|"Aland Islands"
+block|,
+literal|"Aland"
+block|,
+literal|"Azerbaijan"
+block|,
+literal|"Bosnia and Herzegovina"
+block|,
+literal|"Barbados"
+block|,
+literal|"Bangladesh"
+block|,
+literal|"Belgium"
+block|,
+literal|"Burkina Faso"
+block|,
+literal|"Bulgaria"
+block|,
+literal|"Bahrain"
+block|,
+literal|"Burundi"
+block|,
+literal|"Benin"
+block|,
+literal|"Saint Barthelemy"
+block|,
+literal|"Bermuda"
+block|,
+literal|"Brunei"
+block|,
+literal|"Bolivia"
+block|,
+literal|"British Antarctic Territory"
+block|,
+literal|"Brazil"
+block|,
+literal|"Bahamas"
+block|,
+literal|"Bhutan"
+block|,
+literal|"Bouvet Island"
+block|,
+literal|"Botswana"
+block|,
+literal|"Belarus"
+block|,
+literal|"Belize"
+block|,
+literal|"Canada"
+block|,
+literal|"Cocos Islands"
+block|,
+literal|"Keeling Islands"
+block|,
+literal|"Congo"
+block|,
+literal|"Congo - Kinshasa"
+block|,
+literal|"Central African Republic"
+block|,
+literal|"Congo - Brazzaville"
+block|,
+literal|"Democratic Republic of Congo"
+block|,
+literal|"Switzerland"
+block|,
+literal|"Cote d'Ivoire"
+block|,
+literal|"Cook Islands"
+block|,
+literal|"Chile"
+block|,
+literal|"Cameroon"
+block|,
+literal|"China"
+block|,
+literal|"Colombia"
+block|,
+literal|"Costa Rica"
+block|,
+literal|"Serbia and Montenegro"
+block|,
+literal|"Canton and Enderbury Islands"
+block|,
+literal|"Cuba"
+block|,
+literal|"Cape Verde"
+block|,
+literal|"Christmas Island"
+block|,
+literal|"Cyprus"
+block|,
+literal|"Czech Republic"
+block|,
+literal|"East Germany"
+block|,
+literal|"Germany"
+block|,
+literal|"Djibouti"
+block|,
+literal|"Denmark"
+block|,
+literal|"Dominica"
+block|,
+literal|"Dominican Republic"
+block|,
+literal|"Algeria"
+block|,
+literal|"Ecuador"
+block|,
+literal|"Estonia"
+block|,
+literal|"Egypt"
+block|,
+literal|"Western Sahara"
+block|,
+literal|"Eritrea"
+block|,
+literal|"Spain"
+block|,
+literal|"Ethiopia"
+block|,
+literal|"Finland"
+block|,
+literal|"Fiji"
+block|,
+literal|"Falkland Islands"
+block|,
+literal|"Micronesia"
+block|,
+literal|"Faroe Islands"
+block|,
+literal|"French Southern and Antarctic Territories"
+block|,
+literal|"France"
+block|,
+literal|"Metropolitan France"
+block|,
+literal|"Gabon"
+block|,
+literal|"United Kingdom"
+block|,
+literal|"Great Britain"
+block|,
+literal|"Britain"
+block|,
+literal|"England"
+block|,
+literal|"Wales"
+block|,
+literal|"Scotland"
+block|,
+literal|"Northern Ireland"
+block|,
+literal|"Grenada"
+block|,
+literal|"Georgia"
+block|,
+literal|"French Guiana"
+block|,
+literal|"Guernsey"
+block|,
+literal|"Ghana"
+block|,
+literal|"Gibraltar"
+block|,
+literal|"Greenland"
+block|,
+literal|"Gambia"
+block|,
+literal|"Guinea"
+block|,
+literal|"Guadeloupe"
+block|,
+literal|"Equatorial Guinea"
+block|,
+literal|"Greece"
+block|,
+literal|"South Georgia and the South Sandwich Islands"
+block|,
+literal|"Guatemala"
+block|,
+literal|"Guam"
+block|,
+literal|"Guinea-Bissau"
+block|,
+literal|"Guyana"
+block|,
+literal|"Hong Kong SAR China"
+block|,
+literal|"Heard Island and McDonald Islands"
+block|,
+literal|"Honduras"
+block|,
+literal|"Croatia"
+block|,
+literal|"Haiti"
+block|,
+literal|"Hungary"
+block|,
+literal|"Indonesia"
+block|,
+literal|"Ireland"
+block|,
+literal|"Israel"
+block|,
+literal|"Isle of Man"
+block|,
+literal|"India"
+block|,
+literal|"British Indian Ocean Territory"
+block|,
+literal|"Iraq"
+block|,
+literal|"Iran"
+block|,
+literal|"Iceland"
+block|,
+literal|"Italy"
+block|,
+literal|"Jersey"
+block|,
+literal|"Jamaica"
+block|,
+literal|"Jordan"
+block|,
+literal|"Japan"
+block|,
+literal|"Johnston Island"
+block|,
+literal|"Kenya"
+block|,
+literal|"Kyrgyzstan"
+block|,
+literal|"Cambodia"
+block|,
+literal|"Kiribati"
+block|,
+literal|"Comoros"
+block|,
+literal|"Saint Kitts and Nevis"
+block|,
+literal|"North Korea"
+block|,
+literal|"South Korea"
+block|,
+literal|"Kuwait"
+block|,
+literal|"Cayman Islands"
+block|,
+literal|"Kazakhstan"
+block|,
+literal|"Laos"
+block|,
+literal|"Lebanon"
+block|,
+literal|"Saint Lucia"
+block|,
+literal|"Liechtenstein"
+block|,
+literal|"Sri Lanka"
+block|,
+literal|"Liberia"
+block|,
+literal|"Lesotho"
+block|,
+literal|"Lithuania"
+block|,
+literal|"Luxembourg"
+block|,
+literal|"Latvia"
+block|,
+literal|"Libya"
+block|,
+literal|"Morocco"
+block|,
+literal|"Monaco"
+block|,
+literal|"Moldova"
+block|,
+literal|"Montenegro"
+block|,
+literal|"Saint Martin"
+block|,
+literal|"Madagascar"
+block|,
+literal|"Marshall Islands"
+block|,
+literal|"Midway Islands"
+block|,
+literal|"Macedonia"
+block|,
+literal|"Mali"
+block|,
+literal|"Myanmar"
+block|,
+literal|"Burma"
+block|,
+literal|"Mongolia"
+block|,
+literal|"Macau SAR China"
+block|,
+literal|"Northern Mariana Islands"
+block|,
+literal|"Martinique"
+block|,
+literal|"Mauritania"
+block|,
+literal|"Montserrat"
+block|,
+literal|"Malta"
+block|,
+literal|"Mauritius"
+block|,
+literal|"Maldives"
+block|,
+literal|"Malawi"
+block|,
+literal|"Mexico"
+block|,
+literal|"Malaysia"
+block|,
+literal|"Mozambique"
+block|,
+literal|"Namibia"
+block|,
+literal|"New Caledonia"
+block|,
+literal|"Niger"
+block|,
+literal|"Norfolk Island"
+block|,
+literal|"Nigeria"
+block|,
+literal|"Nicaragua"
+block|,
+literal|"Netherlands"
+block|,
+literal|"Norway"
+block|,
+literal|"Nepal"
+block|,
+literal|"Dronning Maud Land"
+block|,
+literal|"Nauru"
+block|,
+literal|"Neutral Zone"
+block|,
+literal|"Niue"
+block|,
+literal|"New Zealand"
+block|,
+literal|"Oman"
+block|,
+literal|"Panama"
+block|,
+literal|"Pacific Islands Trust Territory"
+block|,
+literal|"Peru"
+block|,
+literal|"French Polynesia"
+block|,
+literal|"Papua New Guinea"
+block|,
+literal|"Philippines"
+block|,
+literal|"Pakistan"
+block|,
+literal|"Poland"
+block|,
+literal|"Saint Pierre and Miquelon"
+block|,
+literal|"Pitcairn Islands"
+block|,
+literal|"Puerto Rico"
+block|,
+literal|"Palestinian Territories"
+block|,
+literal|"Portugal"
+block|,
+literal|"U.S. Miscellaneous Pacific Islands"
+block|,
+literal|"Palau"
+block|,
+literal|"Paraguay"
+block|,
+literal|"Panama Canal Zone"
+block|,
+literal|"Qatar"
+block|,
+literal|"Reunion"
+block|,
+literal|"Romania"
+block|,
+literal|"Serbia"
+block|,
+literal|"Russia"
+block|,
+literal|"Rwanda"
+block|,
+literal|"Saudi Arabia"
+block|,
+literal|"Solomon Islands"
+block|,
+literal|"Seychelles"
+block|,
+literal|"Sudan"
+block|,
+literal|"Sweden"
+block|,
+literal|"Singapore"
+block|,
+literal|"Saint Helena"
+block|,
+literal|"Slovenia"
+block|,
+literal|"Svalbard and Jan Mayen"
+block|,
+literal|"Svalbard"
+block|,
+literal|"Jan Mayen"
+block|,
+literal|"Slovakia"
+block|,
+literal|"Sierra Leone"
+block|,
+literal|"San Marino"
+block|,
+literal|"Senegal"
+block|,
+literal|"Somalia"
+block|,
+literal|"Suriname"
+block|,
+literal|"Sao Tome and Principe"
+block|,
+literal|"Union of Soviet Socialist Republics"
+block|,
+literal|"USSR"
+block|,
+literal|"El Salvador"
+block|,
+literal|"Syria"
+block|,
+literal|"Swaziland"
+block|,
+literal|"Turks and Caicos Islands"
+block|,
+literal|"Chad"
+block|,
+literal|"French Southern Territories"
+block|,
+literal|"Togo"
+block|,
+literal|"Thailand"
+block|,
+literal|"Tajikistan"
+block|,
+literal|"Tokelau"
+block|,
+literal|"Timor-Leste"
+block|,
+literal|"Turkmenistan"
+block|,
+literal|"Tunisia"
+block|,
+literal|"Tonga"
+block|,
+literal|"Turkey"
+block|,
+literal|"Trinidad and Tobago"
+block|,
+literal|"Tuvalu"
+block|,
+literal|"Taiwan"
+block|,
+literal|"Tanzania"
+block|,
+literal|"Ukraine"
+block|,
+literal|"Uganda"
+block|,
+literal|"U.S. Minor Outlying Islands"
+block|,
+literal|"United States"
+block|,
+literal|"USA"
+block|,
+literal|"Uruguay"
+block|,
+literal|"Uzbekistan"
+block|,
+literal|"Vatican City"
+block|,
+literal|"Saint Vincent and the Grenadines"
+block|,
+literal|"North Vietnam"
+block|,
+literal|"Venezuela"
+block|,
+literal|"British Virgin Islands"
+block|,
+literal|"U.S. Virgin Islands"
+block|,
+literal|"Vietnam"
+block|,
+literal|"Vanuatu"
+block|,
+literal|"Wallis and Futuna"
+block|,
+literal|"Wake Island"
+block|,
+literal|"Samoa"
+block|,
+literal|"People's Democratic Republic of Yemen"
+block|,
+literal|"Yemen"
+block|,
+literal|"Yugoslavia"
+block|,
+literal|"Mayotte"
+block|,
+literal|"South Africa"
+block|,
+literal|"Zambia"
+block|,
+literal|"Zimbabwe"
+block|,
+literal|"Asia"
+block|,
+literal|"Oceania"
+block|,
+literal|"Europe"
+block|,
+literal|"America"
+block|,
+literal|"Africa"
+block|,
+literal|"South America"
+block|,
+literal|"North America"
+block|}
+decl_stmt|;
 comment|// List of all keyword lists
 DECL|field|allLists
 specifier|private
@@ -1305,6 +1968,27 @@ index|[]
 index|[]
 block|{
 name|wordListIEEEXplore
+block|,
+name|wordListDayMonth
+block|,
+name|wordListCountries
+block|}
+decl_stmt|;
+DECL|field|genericLists
+specifier|private
+name|String
+index|[]
+index|[]
+name|genericLists
+init|=
+operator|new
+name|String
+index|[]
+index|[]
+block|{
+name|wordListDayMonth
+block|,
+name|wordListCountries
 block|}
 decl_stmt|;
 DECL|method|CaseKeeperList ()
