@@ -2593,6 +2593,15 @@ block|,
 comment|// euro sign, U+20AC NEW
 comment|/* Manually added */
 block|{
+literal|"24"
+block|,
+literal|"dollar"
+block|,
+literal|"\\\\$"
+block|}
+block|,
+comment|// Percent
+block|{
 literal|"37"
 block|,
 literal|"percnt"
@@ -2604,7 +2613,7 @@ comment|// Percent
 block|{
 literal|"39"
 block|,
-literal|""
+literal|"apos"
 block|,
 literal|"'"
 block|}
@@ -2613,7 +2622,7 @@ comment|// Apostrophe
 block|{
 literal|"40"
 block|,
-literal|""
+literal|"lpar"
 block|,
 literal|"("
 block|}
@@ -2622,7 +2631,7 @@ comment|// Left bracket
 block|{
 literal|"41"
 block|,
-literal|""
+literal|"rpar"
 block|,
 literal|")"
 block|}
@@ -2691,6 +2700,15 @@ literal|";"
 block|}
 block|,
 comment|// Semi colon
+block|{
+literal|"61"
+block|,
+literal|"equals"
+block|,
+literal|"="
+block|}
+block|,
+comment|// Equals to
 block|{
 literal|"91"
 block|,
@@ -3097,6 +3115,24 @@ literal|"\\{\\\\k\\{u\\}\\}"
 block|}
 block|,
 comment|// small u with ogonek
+block|{
+literal|"381"
+block|,
+literal|"Zcaron"
+block|,
+literal|"\\{\\\\v\\{Z\\}\\}"
+block|}
+block|,
+comment|// capital Z with caron
+block|{
+literal|"382"
+block|,
+literal|"zcaron"
+block|,
+literal|"\\{\\\\v\\{z\\}\\}"
+block|}
+block|,
+comment|// small z with caron
 block|{
 literal|"490"
 block|,
@@ -3550,6 +3586,15 @@ block|}
 block|,
 comment|// Small element in
 block|{
+literal|"8723"
+block|,
+literal|"mp"
+block|,
+literal|"\\$\\\\mp\\$"
+block|}
+block|,
+comment|// Minus-plus
+block|{
 literal|"8729"
 block|,
 literal|"bullet"
@@ -3622,6 +3667,15 @@ block|}
 block|,
 comment|// Much greater than
 block|{
+literal|"8818"
+block|,
+literal|"lsim"
+block|,
+literal|"\\$\\\\lesssim\\$"
+block|}
+block|,
+comment|// Less than or equivalent to
+block|{
 literal|"8819"
 block|,
 literal|"gsim"
@@ -3630,6 +3684,33 @@ literal|"\\$\\\\gtrsim\\$"
 block|}
 block|,
 comment|// Greater than or equivalent to
+block|{
+literal|"8862"
+block|,
+literal|"boxplus"
+block|,
+literal|"\\$\\\\boxplus\\$"
+block|}
+block|,
+comment|// Boxed plus -- requires amssymb
+block|{
+literal|"8863"
+block|,
+literal|"boxminus"
+block|,
+literal|"\\$\\\\boxminus\\$"
+block|}
+block|,
+comment|// Boxed minus -- requires amssymb
+block|{
+literal|"8864"
+block|,
+literal|"boxtimes"
+block|,
+literal|"\\$\\\\boxtimes\\$"
+block|}
+block|,
+comment|// Boxed times -- requires amssymb
 block|{
 literal|"8882"
 block|,
@@ -3669,7 +3750,7 @@ comment|// Big vee
 block|{
 literal|"9426"
 block|,
-literal|""
+literal|"circledc"
 block|,
 literal|"\\{\\\\copyright\\}"
 block|}
@@ -3684,6 +3765,15 @@ literal|"\\$\\\\square\\$"
 block|}
 block|,
 comment|// White square
+block|{
+literal|"9651"
+block|,
+literal|"xutri"
+block|,
+literal|"\\$\\\\bigtriangleup\\$"
+block|}
+block|,
+comment|// White up-pointing big triangle
 block|{
 literal|"9653"
 block|,
@@ -3719,7 +3809,16 @@ literal|"Oscr"
 block|,
 literal|"\\$\\\\mathcal\\{O\\}\\$"
 block|}
+block|,
 comment|// script capital O -- possibly use \mathscr
+block|{
+literal|"119984"
+block|,
+literal|"Uscr"
+block|,
+literal|"\\$\\\\mathcal\\{U\\}\\$"
+block|}
+comment|// script capital U -- possibly use \mathscr
 block|}
 decl_stmt|;
 comment|// List of combining accents
@@ -4578,7 +4677,7 @@ name|text
 operator|=
 name|text
 operator|.
-name|replaceAll
+name|replace
 argument_list|(
 name|pattern
 argument_list|,
