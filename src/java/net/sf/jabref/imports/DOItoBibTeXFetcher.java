@@ -228,6 +228,121 @@ name|OutputPrinter
 name|status
 parameter_list|)
 block|{
+name|BibtexEntry
+name|entry
+init|=
+name|getEntryFromDOI
+argument_list|(
+name|query
+argument_list|,
+name|status
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|entry
+operator|!=
+literal|null
+condition|)
+block|{
+name|inspector
+operator|.
+name|addEntry
+argument_list|(
+name|entry
+argument_list|)
+expr_stmt|;
+return|return
+literal|true
+return|;
+block|}
+else|else
+block|{
+return|return
+literal|false
+return|;
+block|}
+block|}
+annotation|@
+name|Override
+DECL|method|getTitle ()
+specifier|public
+name|String
+name|getTitle
+parameter_list|()
+block|{
+return|return
+literal|"DOI to BibTeX"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getKeyName ()
+specifier|public
+name|String
+name|getKeyName
+parameter_list|()
+block|{
+return|return
+literal|"DOItoBibTeX"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getIcon ()
+specifier|public
+name|URL
+name|getIcon
+parameter_list|()
+block|{
+comment|// no special icon for this fetcher available.
+comment|// Therefore, we return some kind of default icon
+return|return
+name|GUIGlobals
+operator|.
+name|getIconUrl
+argument_list|(
+literal|"www"
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getHelpPage ()
+specifier|public
+name|String
+name|getHelpPage
+parameter_list|()
+block|{
+return|return
+literal|"DOItoBibTeXHelp.html"
+return|;
+block|}
+annotation|@
+name|Override
+DECL|method|getOptionsPanel ()
+specifier|public
+name|JPanel
+name|getOptionsPanel
+parameter_list|()
+block|{
+comment|// no additional options available
+return|return
+literal|null
+return|;
+block|}
+DECL|method|getEntryFromDOI (String doi, OutputPrinter status)
+specifier|public
+name|BibtexEntry
+name|getEntryFromDOI
+parameter_list|(
+name|String
+name|doi
+parameter_list|,
+name|OutputPrinter
+name|status
+parameter_list|)
+block|{
 name|String
 name|q
 decl_stmt|;
@@ -239,7 +354,7 @@ name|URLEncoder
 operator|.
 name|encode
 argument_list|(
-name|query
+name|doi
 argument_list|,
 literal|"UTF-8"
 argument_list|)
@@ -252,25 +367,13 @@ name|e
 parameter_list|)
 block|{
 comment|// this should never happen
-name|status
-operator|.
-name|setStatus
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Error"
-argument_list|)
-argument_list|)
-expr_stmt|;
 name|e
 operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
 return|return
-literal|false
+literal|null
 return|;
 block|}
 name|String
@@ -312,7 +415,7 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 return|return
-literal|false
+literal|null
 return|;
 block|}
 name|URLConnection
@@ -340,7 +443,7 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 return|return
-literal|false
+literal|null
 return|;
 block|}
 name|conn
@@ -373,6 +476,13 @@ name|FileNotFoundException
 name|e
 parameter_list|)
 block|{
+if|if
+condition|(
+name|status
+operator|!=
+literal|null
+condition|)
+block|{
 name|status
 operator|.
 name|showMessage
@@ -383,7 +493,7 @@ name|lang
 argument_list|(
 literal|"Unknown DOI: '%0'."
 argument_list|,
-name|query
+name|doi
 argument_list|)
 argument_list|,
 name|Globals
@@ -398,8 +508,9 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
+block|}
 return|return
-literal|false
+literal|null
 return|;
 block|}
 catch|catch
@@ -414,7 +525,7 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 return|return
-literal|false
+literal|null
 return|;
 block|}
 name|BibtexEntry
@@ -511,92 +622,9 @@ name|title
 argument_list|)
 expr_stmt|;
 block|}
-comment|// Do not use the provided key
-comment|// entry.setField(BibtexFields.KEY_FIELD,null);
-name|inspector
-operator|.
-name|addEntry
-argument_list|(
+block|}
+return|return
 name|entry
-argument_list|)
-expr_stmt|;
-return|return
-literal|true
-return|;
-block|}
-else|else
-block|{
-return|return
-literal|false
-return|;
-block|}
-block|}
-annotation|@
-name|Override
-DECL|method|getTitle ()
-specifier|public
-name|String
-name|getTitle
-parameter_list|()
-block|{
-return|return
-literal|"DOI to BibTeX"
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getKeyName ()
-specifier|public
-name|String
-name|getKeyName
-parameter_list|()
-block|{
-return|return
-literal|"DOItoBibTeX"
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getIcon ()
-specifier|public
-name|URL
-name|getIcon
-parameter_list|()
-block|{
-comment|// no special icon for this fetcher available.
-comment|// Therefore, we return some kind of default icon
-return|return
-name|GUIGlobals
-operator|.
-name|getIconUrl
-argument_list|(
-literal|"www"
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getHelpPage ()
-specifier|public
-name|String
-name|getHelpPage
-parameter_list|()
-block|{
-return|return
-literal|"DOItoBibTeXHelp.html"
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getOptionsPanel ()
-specifier|public
-name|JPanel
-name|getOptionsPanel
-parameter_list|()
-block|{
-comment|// no additional options available
-return|return
-literal|null
 return|;
 block|}
 block|}
