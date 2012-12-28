@@ -4605,6 +4605,19 @@ name|ParserResult
 argument_list|>
 argument_list|()
 decl_stmt|;
+name|List
+argument_list|<
+name|ParserResult
+argument_list|>
+name|toOpenTab
+init|=
+operator|new
+name|ArrayList
+argument_list|<
+name|ParserResult
+argument_list|>
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|loaded
@@ -4674,68 +4687,31 @@ name|isPostponedAutosaveFound
 argument_list|()
 condition|)
 block|{
-name|MetaData
-name|metaData
-init|=
-name|pr
-operator|.
-name|getMetaData
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
-name|metaData
-operator|==
-literal|null
-condition|)
-name|metaData
-operator|=
-operator|new
-name|MetaData
-argument_list|()
-expr_stmt|;
-name|String
-name|encoding
-init|=
 name|pr
 operator|.
-name|getEncoding
+name|toOpenTab
 argument_list|()
-decl_stmt|;
-if|if
-condition|(
-name|encoding
-operator|==
-literal|null
 condition|)
-name|encoding
-operator|=
-name|Globals
+block|{
+comment|// things to be appended to an opened tab should be done after opening all tabs
+comment|// add them to the list
+name|toOpenTab
 operator|.
-name|prefs
-operator|.
-name|get
+name|add
 argument_list|(
-literal|"defaultEncoding"
+name|pr
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
 name|jrf
 operator|.
-name|addTab
+name|addParserResult
 argument_list|(
 name|pr
-operator|.
-name|getDatabase
-argument_list|()
-argument_list|,
-name|pr
-operator|.
-name|getFile
-argument_list|()
-argument_list|,
-name|metaData
-argument_list|,
-name|encoding
 argument_list|,
 name|first
 argument_list|)
@@ -4744,6 +4720,7 @@ name|first
 operator|=
 literal|false
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -4764,6 +4741,29 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+comment|// finally add things to the currently opened tab
+for|for
+control|(
+name|ParserResult
+name|pr
+range|:
+name|toOpenTab
+control|)
+block|{
+name|jrf
+operator|.
+name|addParserResult
+argument_list|(
+name|pr
+argument_list|,
+name|first
+argument_list|)
+expr_stmt|;
+name|first
+operator|=
+literal|false
+expr_stmt|;
 block|}
 if|if
 condition|(
@@ -5170,7 +5170,10 @@ comment|// After adding the databases, go through each and see if
 comment|// any post open actions need to be done. For instance, checking
 comment|// if we found new entry types that can be imported, or checking
 comment|// if the database contents should be modified due to new features
-comment|// in this version of JabRef:
+comment|// in this version of JabRef.
+comment|// Note that we have to check whether i does not go over baseCount().
+comment|// This is because importToOpen might have been used, which adds to
+comment|// loaded, but not to baseCount()
 for|for
 control|(
 name|int
@@ -5178,12 +5181,23 @@ name|i
 init|=
 literal|0
 init|;
+operator|(
 name|i
 operator|<
 name|loaded
 operator|.
 name|size
 argument_list|()
+operator|)
+operator|&&
+operator|(
+name|i
+operator|<
+name|jrf
+operator|.
+name|baseCount
+argument_list|()
+operator|)
 condition|;
 name|i
 operator|++
