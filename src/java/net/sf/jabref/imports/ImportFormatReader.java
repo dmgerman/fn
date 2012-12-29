@@ -317,6 +317,15 @@ name|MsBibImporter
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|formats
+operator|.
+name|add
+argument_list|(
+operator|new
+name|BibtexImporter
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|/**      * Get import formats that are plug-ins      */
 name|JabRefPlugin
 name|jabrefPlugin
