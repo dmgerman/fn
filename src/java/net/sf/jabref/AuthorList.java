@@ -3362,7 +3362,7 @@ comment|// nested construct is there, check for "proper" nesting
 name|int
 name|i
 init|=
-literal|1
+literal|0
 decl_stmt|;
 name|int
 name|level
