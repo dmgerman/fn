@@ -3291,7 +3291,7 @@ name|jr_part
 argument_list|)
 return|;
 block|}
-comment|/** 		 * Creates the Author object. If any part of the name is absent,<CODE>null</CODE> 		 * must be passes; otherwise other methods may return erroneous results. 		 *  		 * @param first 		 *            the first name of the author (may consist of several 		 *            tokens, like "Charles Louis Xavier Joseph" in "Charles 		 *            Louis Xavier Joseph de la Vall{\'e}e Poussin") 		 * @param firstabbr 		 *            the abbreviated first name of the author (may consist of 		 *            several tokens, like "C. L. X. J." in "Charles Louis 		 *            Xavier Joseph de la Vall{\'e}e Poussin"). It is a 		 *            responsibility of the caller to create a reasonable 		 *            abbreviation of the first name. 		 * @param von 		 *            the von part of the author's name (may consist of several 		 *            tokens, like "de la" in "Charles Louis Xavier Joseph de la 		 *            Vall{\'e}e Poussin") 		 * @param last 		 *            the lats name of the author (may consist of several 		 *            tokens, like "Vall{\'e}e Poussin" in "Charles Louis Xavier 		 *            Joseph de la Vall{\'e}e Poussin") 		 * @param jr 		 *            the junior part of the author's name (may consist of 		 *            several tokens, like "Jr. III" in "Smith, Jr. III, John") 		 */
+comment|/** 		 * Creates the Author object. If any part of the name is absent,<CODE>null</CODE> 		 * must be passed; otherwise other methods may return erroneous results. 		 *  		 * @param first 		 *            the first name of the author (may consist of several 		 *            tokens, like "Charles Louis Xavier Joseph" in "Charles 		 *            Louis Xavier Joseph de la Vall{\'e}e Poussin") 		 * @param firstabbr 		 *            the abbreviated first name of the author (may consist of 		 *            several tokens, like "C. L. X. J." in "Charles Louis 		 *            Xavier Joseph de la Vall{\'e}e Poussin"). It is a 		 *            responsibility of the caller to create a reasonable 		 *            abbreviation of the first name. 		 * @param von 		 *            the von part of the author's name (may consist of several 		 *            tokens, like "de la" in "Charles Louis Xavier Joseph de la 		 *            Vall{\'e}e Poussin") 		 * @param last 		 *            the lats name of the author (may consist of several 		 *            tokens, like "Vall{\'e}e Poussin" in "Charles Louis Xavier 		 *            Joseph de la Vall{\'e}e Poussin") 		 * @param jr 		 *            the junior part of the author's name (may consist of 		 *            several tokens, like "Jr. III" in "Smith, Jr. III, John") 		 */
 DECL|method|Author (String first, String firstabbr, String von, String last, String jr)
 specifier|public
 name|Author
@@ -3371,7 +3371,15 @@ literal|0
 decl_stmt|;
 name|loop
 label|:
-do|do
+while|while
+condition|(
+name|i
+operator|<
+name|s
+operator|.
+name|length
+argument_list|()
+condition|)
 block|{
 name|char
 name|c
@@ -3420,18 +3428,7 @@ name|i
 operator|++
 expr_stmt|;
 block|}
-do|while
-condition|(
-name|i
-operator|<
-name|s
-operator|.
-name|length
-argument_list|()
-operator|-
-literal|1
-condition|)
-do|;
+empty_stmt|;
 return|return
 operator|(
 name|level
