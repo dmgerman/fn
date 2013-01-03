@@ -1144,22 +1144,25 @@ comment|// with a unique command string. This causes the appropriate
 comment|// BasePanel's runCommand() method to be called with that command.
 comment|// Note: GeneralAction's constructor automatically gets translations
 comment|// for the name and message strings.
-comment|// References to the toggle buttons in the toolbar:
+comment|/* References to the toggle buttons in the toolbar */
+comment|// the groups interface
 DECL|field|groupToggle
-DECL|field|searchToggle
-DECL|field|previewToggle
-DECL|field|highlightAny
 specifier|public
 name|JToggleButton
 name|groupToggle
-decl_stmt|,
+decl_stmt|;
+DECL|field|searchToggle
+DECL|field|previewToggle
+DECL|field|highlightAny
+DECL|field|highlightAll
+specifier|public
+name|JToggleButton
 name|searchToggle
 decl_stmt|,
 name|previewToggle
 decl_stmt|,
 name|highlightAny
 decl_stmt|,
-DECL|field|highlightAll
 name|highlightAll
 decl_stmt|;
 name|OpenDatabaseAction

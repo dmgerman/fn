@@ -706,6 +706,10 @@ name|NamedCompound
 import|;
 end_import
 
+begin_comment
+comment|/**  * The whole UI component holding the groups tree and the buttons  */
+end_comment
+
 begin_class
 DECL|class|GroupSelector
 specifier|public
