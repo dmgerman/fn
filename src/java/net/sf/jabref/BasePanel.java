@@ -9761,16 +9761,6 @@ argument_list|(
 name|be
 argument_list|)
 expr_stmt|;
-comment|// Set Self-Created entries to have a high quality
-name|be
-operator|.
-name|setField
-argument_list|(
-literal|"quality"
-argument_list|,
-literal|"1"
-argument_list|)
-expr_stmt|;
 return|return
 name|be
 return|;
