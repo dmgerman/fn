@@ -10640,6 +10640,10 @@ operator|.
 name|entryListComplete
 argument_list|()
 expr_stmt|;
+comment|// On the one hand, the following statement could help at issues when JabRef is minimized to the systray
+comment|// On the other hand, users might dislake modality and this is not required to let the GUI work.
+comment|// Therefore, it is disabled.
+comment|// diag.setModal(true);
 name|Util
 operator|.
 name|placeDialog
