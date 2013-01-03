@@ -362,7 +362,7 @@ literal|"  * ...user mailing-list at http://sf.net/mailarchive/forum.php?forum_n
 operator|+
 literal|"If you do not find a solution there, please let us know about the problem by writing a bug report.\n"
 operator|+
-literal|"You can find our bug tracker at http://sourceforge.net/tracker/?atid=600306&group_id=92314\n\n"
+literal|"You can find our bug tracker at http://sourceforge.net/p/jabref/bugs/\n\n"
 operator|+
 literal|"  * If the bug has already been reported there, please add your comments to the existing bug.\n"
 operator|+
@@ -461,7 +461,7 @@ literal|"<li>...user mailing-list at<b>http://sf.net/mailarchive/forum.php?forum
 operator|+
 literal|"If you do not find a solution there, please let us know about the problem by writing a bug report.<br>"
 operator|+
-literal|"You can find our bug tracker at<b>http://sourceforge.net/tracker/?atid=600306&group_id=92314</b>.<br>"
+literal|"You can find our bug tracker at<a href=\"http://sourceforge.net/p/jabref/bugs/\"><b>http://sourceforge.net/p/jabref/bugs/</b></a>.<br>"
 operator|+
 literal|"<ul><li>If the bug has already been reported there, please add your comments to the existing bug.<br>"
 operator|+
