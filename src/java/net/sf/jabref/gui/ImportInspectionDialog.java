@@ -4119,7 +4119,7 @@ condition|)
 block|{
 comment|// The entry has no key, so it can't be added to the
 comment|// group.
-comment|// The best course of ation is probably to ask the
+comment|// The best course of action is probably to ask the
 comment|// user if a key should be generated
 comment|// immediately.
 name|int
@@ -4173,7 +4173,7 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-comment|// If the key was list, or has been list now, go ahead:
+comment|// If the key existed, or exists now, go ahead:
 if|if
 condition|(
 name|entry
