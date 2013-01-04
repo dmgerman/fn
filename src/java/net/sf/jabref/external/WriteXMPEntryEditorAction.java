@@ -186,6 +186,7 @@ literal|"Write XMP"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// normally, this call should be without "Globals.lang". However, the string "Write XMP" is also used in non-menu places and therefore, the translation must be also available at Globals.lang()
 name|putValue
 argument_list|(
 name|SMALL_ICON
