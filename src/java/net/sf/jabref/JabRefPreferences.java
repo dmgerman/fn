@@ -6813,14 +6813,23 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|// character last read
+comment|// -1 if end of stream
+comment|// initialization necessary, because of Java compiler
 name|int
 name|c
+init|=
+operator|-
+literal|1
 decl_stmt|;
+comment|// last character was escape symbol
 name|boolean
 name|escape
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
+comment|// true if a ";" is found
+name|boolean
 name|done
 init|=
 literal|false
@@ -6938,16 +6947,34 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 return|return
 name|res
 operator|.
 name|toString
 argument_list|()
 return|;
-else|else
+block|}
+elseif|else
+if|if
+condition|(
+name|c
+operator|==
+operator|-
+literal|1
+condition|)
+block|{
+comment|// end of stream
 return|return
 literal|null
 return|;
+block|}
+else|else
+block|{
+return|return
+literal|""
+return|;
+block|}
 block|}
 DECL|method|makeEscape (String s)
 specifier|private

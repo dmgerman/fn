@@ -8231,7 +8231,13 @@ argument_list|(
 name|pluginMenu
 argument_list|)
 expr_stmt|;
-comment|//options.add(selectKeys);
+name|options
+operator|.
+name|add
+argument_list|(
+name|selectKeys
+argument_list|)
+expr_stmt|;
 name|mb
 operator|.
 name|add
@@ -9960,7 +9966,7 @@ name|setDefaultCloseOperation
 argument_list|(
 name|JFrame
 operator|.
-name|EXIT_ON_CLOSE
+name|DISPOSE_ON_CLOSE
 argument_list|)
 expr_stmt|;
 name|d
