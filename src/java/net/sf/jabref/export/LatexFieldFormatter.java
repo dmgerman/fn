@@ -105,6 +105,20 @@ name|neverFailOnHashes
 init|=
 literal|false
 decl_stmt|;
+DECL|field|valueDelimiters
+specifier|private
+specifier|static
+name|char
+index|[]
+name|valueDelimiters
+init|=
+block|{
+literal|'"'
+block|,
+literal|'"'
+block|}
+decl_stmt|;
+comment|//TODO JK: Make configurable
 DECL|method|setNeverFailOnHashes (boolean neverFailOnHashes)
 specifier|public
 name|void
@@ -135,6 +149,25 @@ parameter_list|)
 throws|throws
 name|IllegalArgumentException
 block|{
+if|if
+condition|(
+name|text
+operator|==
+literal|null
+condition|)
+return|return
+name|valueDelimiters
+index|[
+literal|0
+index|]
+operator|+
+literal|""
+operator|+
+name|valueDelimiters
+index|[
+literal|1
+index|]
+return|;
 if|if
 condition|(
 name|Globals
@@ -364,42 +397,19 @@ operator|=
 operator|new
 name|StringBuffer
 argument_list|(
-literal|"{"
+name|valueDelimiters
+index|[
+literal|0
+index|]
 argument_list|)
 expr_stmt|;
 comment|// No formatting at all for these fields, to allow custom formatting?
 comment|//if (Globals.prefs.getBoolean("preserveFieldFormatting"))
 comment|//  sb.append(text);
 comment|//else
-if|if
-condition|(
-operator|!
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|isNonWrappableField
-argument_list|(
-name|fieldName
-argument_list|)
-condition|)
-name|sb
-operator|.
-name|append
-argument_list|(
-name|Util
-operator|.
-name|wrap2
-argument_list|(
-name|text
-argument_list|,
-name|GUIGlobals
-operator|.
-name|LINE_LENGTH
-argument_list|)
-argument_list|)
-expr_stmt|;
-else|else
+comment|//if (!Globals.prefs.isNonWrappableField(fieldName))
+comment|//    sb.append(Util.wrap2(text, GUIGlobals.LINE_LENGTH));
+comment|//else
 name|sb
 operator|.
 name|append
@@ -411,7 +421,10 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|'}'
+name|valueDelimiters
+index|[
+literal|1
+index|]
 argument_list|)
 expr_stmt|;
 return|return
@@ -709,34 +722,9 @@ literal|1
 expr_stmt|;
 comment|//if (tell++> 10) System.exit(0);
 block|}
-if|if
-condition|(
-operator|!
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|isNonWrappableField
-argument_list|(
-name|fieldName
-argument_list|)
-condition|)
-return|return
-name|Util
-operator|.
-name|wrap2
-argument_list|(
-name|sb
-operator|.
-name|toString
-argument_list|()
-argument_list|,
-name|GUIGlobals
-operator|.
-name|LINE_LENGTH
-argument_list|)
-return|;
-else|else
+comment|//if (!Globals.prefs.isNonWrappableField(fieldName))
+comment|//    return Util.wrap2(sb.toString(), GUIGlobals.LINE_LENGTH);
+comment|//else
 return|return
 name|sb
 operator|.
@@ -764,7 +752,10 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|'{'
+name|valueDelimiters
+index|[
+literal|0
+index|]
 argument_list|)
 expr_stmt|;
 name|boolean
@@ -1092,7 +1083,10 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|'}'
+name|valueDelimiters
+index|[
+literal|1
+index|]
 argument_list|)
 expr_stmt|;
 block|}

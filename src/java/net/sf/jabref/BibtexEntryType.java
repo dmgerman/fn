@@ -161,15 +161,17 @@ operator|new
 name|String
 index|[]
 block|{
+literal|"volume"
+block|,
 literal|"number"
+block|,
+literal|"pages"
 block|,
 literal|"month"
 block|,
-literal|"part"
-block|,
-literal|"eid"
-block|,
 literal|"note"
+block|,
+comment|//- "volume", "pages", "part", "eid"
 block|}
 return|;
 block|}
@@ -191,10 +193,7 @@ block|,
 literal|"journal"
 block|,
 literal|"year"
-block|,
-literal|"volume"
-block|,
-literal|"pages"
+comment|//+ "volume", "pages"
 block|}
 return|;
 block|}
@@ -283,8 +282,6 @@ literal|"author"
 block|,
 literal|"howpublished"
 block|,
-literal|"lastchecked"
-block|,
 literal|"address"
 block|,
 literal|"month"
@@ -292,6 +289,7 @@ block|,
 literal|"year"
 block|,
 literal|"note"
+comment|//+ "lastchecked"
 block|}
 return|;
 block|}
@@ -367,7 +365,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Inbook"
+literal|"InBook"
 return|;
 block|}
 specifier|public
@@ -385,8 +383,6 @@ literal|"volume"
 block|,
 literal|"number"
 block|,
-literal|"pages"
-block|,
 literal|"series"
 block|,
 literal|"type"
@@ -398,6 +394,7 @@ block|,
 literal|"month"
 block|,
 literal|"note"
+comment|//+ "pages"
 block|}
 return|;
 block|}
@@ -584,8 +581,6 @@ literal|"volume"
 block|,
 literal|"number"
 block|,
-literal|"pages"
-block|,
 literal|"series"
 block|,
 literal|"address"
@@ -595,6 +590,7 @@ block|,
 literal|"month"
 block|,
 literal|"note"
+comment|//+ pages
 block|}
 return|;
 block|}
@@ -727,7 +723,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Incollection"
+literal|"InCollection"
 return|;
 block|}
 specifier|public
@@ -973,7 +969,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Inproceedings"
+literal|"InProceedings"
 return|;
 block|}
 specifier|public
@@ -1305,7 +1301,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Techreport"
+literal|"TechReport"
 return|;
 block|}
 specifier|public
@@ -1415,7 +1411,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Mastersthesis"
+literal|"MastersThesis"
 return|;
 block|}
 specifier|public
@@ -1523,7 +1519,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-literal|"Phdthesis"
+literal|"PhdThesis"
 return|;
 block|}
 specifier|public
