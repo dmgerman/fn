@@ -119,6 +119,20 @@ literal|"Automatically set file links"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|putValue
+argument_list|(
+name|ACCELERATOR_KEY
+argument_list|,
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Automatically link files"
+argument_list|)
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
