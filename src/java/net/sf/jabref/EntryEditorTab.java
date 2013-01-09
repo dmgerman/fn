@@ -379,6 +379,14 @@ name|activeField
 init|=
 literal|null
 decl_stmt|;
+comment|// UGLY HACK to have a pointer to the fileListEditor to call autoSetLinks()
+DECL|field|fileListEditor
+specifier|public
+name|FileListEditor
+name|fileListEditor
+init|=
+literal|null
+decl_stmt|;
 DECL|method|EntryEditorTab ()
 specifier|protected
 name|EntryEditorTab
@@ -970,6 +978,13 @@ literal|null
 argument_list|,
 name|parent
 argument_list|)
+expr_stmt|;
+name|fileListEditor
+operator|=
+operator|(
+name|FileListEditor
+operator|)
+name|ta
 expr_stmt|;
 name|defaultHeight
 operator|=
