@@ -401,6 +401,8 @@ name|valueDelimiters
 index|[
 literal|0
 index|]
+operator|+
+literal|""
 argument_list|)
 expr_stmt|;
 comment|// No formatting at all for these fields, to allow custom formatting?
