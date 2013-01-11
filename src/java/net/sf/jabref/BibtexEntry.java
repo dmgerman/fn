@@ -1648,7 +1648,22 @@ argument_list|(
 name|name
 argument_list|)
 decl_stmt|;
-comment|//if (o != null) {
+if|if
+condition|(
+name|o
+operator|!=
+literal|null
+operator|||
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"includeEmptyFields"
+argument_list|)
+condition|)
+block|{
 if|if
 condition|(
 name|isNotFirst
@@ -1741,8 +1756,11 @@ block|}
 return|return
 literal|true
 return|;
-comment|//} else
-comment|//    return false;
+block|}
+else|else
+return|return
+literal|false
+return|;
 block|}
 comment|/**      * Returns a clone of this entry. Useful for copying.      */
 DECL|method|clone ()
