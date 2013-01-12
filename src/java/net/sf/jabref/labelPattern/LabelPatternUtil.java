@@ -506,6 +506,7 @@ name|toString
 argument_list|()
 return|;
 block|}
+comment|/**      * Will remove diacritics from the content.      *      * Replaces umlaut: \"x with xe, e.g. \"o -> oe, \"u -> ue, etc.      * Removes all other diacritics: \?x -> x, e.g. \'a -> a, etc.      *      * @param content The content.      * @return The content without diacritics.      */
 DECL|method|removeDiacritics (String content)
 specifier|private
 specifier|static
@@ -597,11 +598,12 @@ return|return
 name|content
 return|;
 block|}
-DECL|method|unifyUmlaut (String content)
+comment|/**      * Unifies umlauts.      *      * Replaces: $\ddot{\mathrm{X}}$ (an alternative umlaut) with: {\"X}      * Replaces: \?{X} and \?X with {\?X}, where ? is a diacritic symbol      *      * @param content The content.      * @return The content with unified diacritics.      */
+DECL|method|unifyDiacritics (String content)
 specifier|private
 specifier|static
 name|String
-name|unifyUmlaut
+name|unifyDiacritics
 parameter_list|(
 name|String
 name|content
@@ -628,20 +630,21 @@ argument_list|)
 operator|.
 name|replaceAll
 argument_list|(
-literal|"\\{?(\\\\[^\\-a-zA-Z])([a-zA-Z])\\}?"
+literal|"(\\\\[^\\-a-zA-Z])\\{?([a-zA-Z])\\}?"
 argument_list|,
 literal|"{$1$2}"
 argument_list|)
 return|;
 block|}
-DECL|method|isInsitution (String content)
+comment|/**      * Check if a value is institution.      *      * This is usable for distinguishing between persons and institutions in      * the author or editor fields.      *      * A person:      *   - "John Doe"      *   - "Doe, John"      *      * An institution:      *   - "{The Big Company or Institution Inc.}"      *   - "{The Big Company or Institution Inc. (BCI)}"      *      * @param author Author or editor.      * @return True if the author or editor is an institution.      */
+DECL|method|isInsitution (String author)
 specifier|private
 specifier|static
 name|boolean
 name|isInsitution
 parameter_list|(
 name|String
-name|content
+name|author
 parameter_list|)
 block|{
 name|Author
@@ -651,7 +654,7 @@ name|AuthorList
 operator|.
 name|getAuthorList
 argument_list|(
-name|content
+name|author
 argument_list|)
 operator|.
 name|getAuthor
@@ -660,7 +663,7 @@ literal|0
 argument_list|)
 decl_stmt|;
 return|return
-name|content
+name|author
 operator|.
 name|charAt
 argument_list|(
@@ -669,11 +672,11 @@ argument_list|)
 operator|==
 literal|'{'
 operator|&&
-name|content
+name|author
 operator|.
 name|charAt
 argument_list|(
-name|content
+name|author
 operator|.
 name|length
 argument_list|()
@@ -706,7 +709,7 @@ literal|null
 return|;
 name|content
 operator|=
-name|unifyUmlaut
+name|unifyDiacritics
 argument_list|(
 name|content
 argument_list|)
@@ -1550,7 +1553,7 @@ name|_alist
 return|;
 comment|/*        // Regular expresion for identifying the fields        Pattern pi = Pattern.compile("\\[\\w*\\]");        // Regular expresion for identifying the spacer        Pattern ps = Pattern.compile("\\].()*\\[");         // The matcher for the field        Matcher mi = pi.matcher(labelPattern);        // The matcher for the spacer char        Matcher ms = ps.matcher(labelPattern);         // Before we do anything, we add the parameter to the ArrayLIst        _alist.add(labelPattern);         // If we can find the spacer character        if(ms.find()){      String t_spacer = ms.group();       // Remove the `]' and `[' at the ends       // We cant imagine a spacer of omre than one character.       t_spacer = t_spacer.substring(1,2);       _alist.add(t_spacer);        }         while(mi.find()){      // Get the matched string      String t_str = mi.group();       int _sindex = 1;       int _eindex = t_str.length() -1;       // Remove the `[' and `]' at the ends       t_str = t_str.substring(_sindex, _eindex);      _alist.add(t_str);        }         return _alist;*/
 block|}
-comment|/**      * Generates a BibTeX label according to the pattern for a given entry type, and      * returns the<code>Bibtexentry</code> with the unique label.      *       * The given database is used to avoid duplicate keys.      *       * @param database a<code>BibtexDatabase</code>      * @param _entry a<code>BibtexEntry</code>      * @return modified Bibtexentry      */
+comment|/**      * Generates a BibTeX label according to the pattern for a given entry type, and      * returns the<code>Bibtexentry</code> with the unique label.      *      * The given database is used to avoid duplicate keys.      *      * @param database a<code>BibtexDatabase</code>      * @param _entry a<code>BibtexEntry</code>      * @return modified Bibtexentry      */
 DECL|method|makeLabel (MetaData metaData, BibtexDatabase database, BibtexEntry _entry)
 specifier|public
 specifier|static
@@ -5230,7 +5233,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * auth.etal format:      * Isaac Newton and James Maxwell and Albert Einstein (1960)      * Isaac Newton and James Maxwell (1960)      *  give:      * Newton.etal      * Newton.Maxwell      */
+comment|/**      * auth.etal, authEtAl, ... format:      * Isaac Newton and James Maxwell and Albert Einstein (1960)      * Isaac Newton and James Maxwell (1960)      *      *  auth.etal give (delim=".", append=".etal"):      * Newton.etal      * Newton.Maxwell      *      *  authEtAl give (delim="", append="EtAl"):      * NewtonEtAl      * NewtonMaxwell      */
 DECL|method|authEtal (String authorField, String delim, String append)
 specifier|private
 specifier|static

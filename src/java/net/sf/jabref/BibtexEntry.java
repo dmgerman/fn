@@ -161,6 +161,7 @@ name|searchHit
 decl_stmt|,
 name|groupHit
 decl_stmt|;
+comment|/** Display name map for entry field names. */
 DECL|field|tagDisplayNameMap
 specifier|private
 specifier|static
@@ -182,6 +183,7 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
+comment|/** The maximum length of a field name to properly make the alignment of the      *  equal sign. */
 DECL|field|maxFieldLength
 specifier|private
 specifier|static
@@ -191,6 +193,7 @@ name|maxFieldLength
 decl_stmt|;
 static|static
 block|{
+comment|// The field name display map.
 name|tagDisplayNameMap
 operator|.
 name|put
@@ -236,6 +239,9 @@ argument_list|,
 literal|"ISSN"
 argument_list|)
 expr_stmt|;
+comment|// Looking for the longest field name.
+comment|// XXX JK: Look for all used field names not only defined once, since
+comment|//         there may be some unofficial field name used.
 name|int
 name|max
 init|=
@@ -334,16 +340,17 @@ operator|=
 name|max
 expr_stmt|;
 block|}
-DECL|method|getTagDisplayName (final String tag)
+comment|/**      * Get display version of a entry field.      *      * BibTeX is case-insensitive therefore there is no difference between:      * howpublished, HOWPUBLISHED, HowPublished, etc. Since the camel case      * version is the most easy to read this should be the one written in the      * *.bib file. Since there is no way how do detect multi-word strings by      * default the first character will be made uppercase. In other characters      * case needs to be changed the {@link #tagDisplayNameMap} will be used.       *      * @param field The name of the field.      * @return The display version of the field name.      */
+DECL|method|getFieldDisplayName (final String field)
 specifier|private
 specifier|static
 specifier|final
 name|String
-name|getTagDisplayName
+name|getFieldDisplayName
 parameter_list|(
 specifier|final
 name|String
-name|tag
+name|field
 parameter_list|)
 block|{
 name|String
@@ -358,7 +365,7 @@ name|i
 init|=
 name|maxFieldLength
 operator|-
-name|tag
+name|field
 operator|.
 name|length
 argument_list|()
@@ -380,7 +387,7 @@ name|tagDisplayNameMap
 operator|.
 name|containsKey
 argument_list|(
-name|tag
+name|field
 operator|.
 name|toLowerCase
 argument_list|()
@@ -391,7 +398,7 @@ name|tagDisplayNameMap
 operator|.
 name|get
 argument_list|(
-name|tag
+name|field
 operator|.
 name|toLowerCase
 argument_list|()
@@ -401,7 +408,7 @@ name|suffix
 return|;
 return|return
 operator|(
-name|tag
+name|field
 operator|.
 name|charAt
 argument_list|(
@@ -414,7 +421,7 @@ operator|.
 name|toUpperCase
 argument_list|()
 operator|+
-name|tag
+name|field
 operator|.
 name|substring
 argument_list|(
@@ -1313,6 +1320,7 @@ argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
+comment|// Sorting in alphabetic order.
 for|for
 control|(
 name|int
@@ -1413,6 +1421,7 @@ argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
+comment|// Sorting in alphabetic order.
 for|for
 control|(
 name|int
@@ -1698,7 +1707,7 @@ name|write
 argument_list|(
 literal|"  "
 operator|+
-name|getTagDisplayName
+name|getFieldDisplayName
 argument_list|(
 name|name
 argument_list|)

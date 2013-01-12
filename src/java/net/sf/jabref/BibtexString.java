@@ -24,6 +24,7 @@ specifier|public
 class|class
 name|BibtexString
 block|{
+comment|/**      * Type of a \@String.      *      * Differentiate a \@String based on its usage:      *      * - {@link #AUTHOR}: prefix "a", for author and editor fields.      * - {@link #INSTITUTION}: prefix "i", for institution and organization      *                         field      * - {@link #PUBLISHER}: prefix "p", for publisher fields      * - {@link #OTHER}: no prefix, for any field      *      * Examples:      *      * \@String { aKahle    = "Kahle, Brewster " } -> author      * \@String { aStallman = "Stallman, Richard" } -> author      * \@String { iMIT      = "{Massachusetts Institute of Technology ({MIT})}" } -> institution      * \@String { pMIT      = "{Massachusetts Institute of Technology ({MIT}) press}" } -> publisher      * \@String { anct      = "Anecdote" } -> other      * \@String { eg        = "for example" } -> other      * \@String { et        = " and " } -> other      * \@String { lBigMac   = "Big Mac" } -> other      *      * Usage:      *      * \@Misc {      *   title       = "The GNU Project"      *   author      = aStallman # et # aKahle      *   institution = iMIT      *   publisher   = pMIT      *   note        = "Just " # eg      * }      *      * @author Jan Kubovy<jan@kubovy.eu>      */
 DECL|enum|Type
 specifier|public
 enum|enum
