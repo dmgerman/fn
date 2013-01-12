@@ -14,6 +14,10 @@ name|jabref
 package|;
 end_package
 
+begin_comment
+comment|/**  * This class models a BibTex String ("@String")  */
+end_comment
+
 begin_class
 DECL|class|BibtexString
 specifier|public
@@ -81,6 +85,20 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|name
+operator|.
+name|length
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+return|return
+name|OTHER
+return|;
+block|}
+if|if
+condition|(
 operator|!
 operator|(
 name|name
@@ -141,13 +159,6 @@ argument_list|)
 operator|+
 literal|""
 argument_list|)
-operator|&&
-name|name
-operator|.
-name|length
-argument_list|()
-operator|>
-literal|0
 condition|)
 return|return
 name|t
@@ -296,13 +307,6 @@ operator|.
 name|get
 argument_list|(
 name|name
-operator|.
-name|charAt
-argument_list|(
-literal|0
-argument_list|)
-operator|+
-literal|""
 argument_list|)
 expr_stmt|;
 block|}

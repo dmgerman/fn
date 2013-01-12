@@ -44,6 +44,10 @@ name|Locale
 import|;
 end_import
 
+begin_comment
+comment|/**  * Provides a list of known entry types  *  * The list of optional and required fields is derived from http://en.wikipedia.org/wiki/BibTeX#Entry_types  */
+end_comment
+
 begin_class
 DECL|class|BibtexEntryType
 specifier|public

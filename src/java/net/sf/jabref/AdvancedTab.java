@@ -1104,8 +1104,10 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Value delimiter:"
+literal|"Value delimiter"
 argument_list|)
+operator|+
+literal|":"
 argument_list|)
 argument_list|)
 expr_stmt|;
