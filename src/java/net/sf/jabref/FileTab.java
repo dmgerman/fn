@@ -1087,7 +1087,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Export options"
+literal|"Field saving options"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1122,7 +1122,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Value delimiter"
+literal|"Field value delimiter. E.g., \"author={x}\" or \"author='x'\""
 argument_list|)
 operator|+
 literal|":"
