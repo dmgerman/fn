@@ -4688,7 +4688,7 @@ name|text
 operator|.
 name|replaceAll
 argument_list|(
-literal|"<sup>([^<]+)</sup>"
+literal|"<[ ]?sup>([^<]+)</sup>"
 argument_list|,
 literal|"\\$\\^\\{$1\\}\\$"
 argument_list|)
@@ -4699,7 +4699,7 @@ name|text
 operator|.
 name|replaceAll
 argument_list|(
-literal|"<sub>([^<]+)</sub>"
+literal|"<[ ]?sub>([^<]+)</sub>"
 argument_list|,
 literal|"\\$_\\{$1\\}\\$"
 argument_list|)
@@ -4713,7 +4713,7 @@ name|text
 operator|.
 name|replaceAll
 argument_list|(
-literal|"<sup>([^<]+)</sup>"
+literal|"<[ ]?sup>([^<]+)</sup>"
 argument_list|,
 literal|"\\\\textsuperscript\\{$1\\}"
 argument_list|)
@@ -4724,7 +4724,7 @@ name|text
 operator|.
 name|replaceAll
 argument_list|(
-literal|"<sub>([^<]+)</sub>"
+literal|"<[ ]?sub>([^<]+)</sub>"
 argument_list|,
 literal|"\\\\textsubscript\\{$1\\}"
 argument_list|)
