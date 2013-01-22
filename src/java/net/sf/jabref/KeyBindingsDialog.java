@@ -72,6 +72,28 @@ name|java
 operator|.
 name|util
 operator|.
+name|Map
+operator|.
+name|Entry
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Set
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|TreeMap
 import|;
 end_import
@@ -135,10 +157,15 @@ import|;
 end_import
 
 begin_comment
-comment|//
+comment|/**  * Dialog to customize key bindings  */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|class|KeyBindingsDialog
 class|class
 name|KeyBindingsDialog
@@ -146,15 +173,20 @@ extends|extends
 name|JDialog
 block|{
 DECL|field|table
+specifier|private
 name|KeystrokeTable
 name|table
 decl_stmt|;
 DECL|field|tableModel
+specifier|private
 name|KeystrokeTableModel
 name|tableModel
 decl_stmt|;
 comment|//JList list = new JList();
+comment|// displays the key binding of the currently selected entry
+comment|// currently not displayed as it does not get updated
 DECL|field|keyTF
+specifier|private
 name|JTextField
 name|keyTF
 init|=
@@ -166,6 +198,7 @@ DECL|field|ok
 DECL|field|cancel
 DECL|field|grabB
 DECL|field|defB
+specifier|private
 name|JButton
 name|ok
 decl_stmt|,
@@ -175,8 +208,10 @@ name|grabB
 decl_stmt|,
 name|defB
 decl_stmt|;
+comment|// stores the user-selected key bindings
 DECL|field|bindHM
-DECL|field|defBinds
+specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -184,22 +219,26 @@ argument_list|,
 name|String
 argument_list|>
 name|bindHM
-decl_stmt|,
+decl_stmt|;
+comment|// stores default key bindings
+DECL|field|defBinds
+specifier|private
+name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|defBinds
 decl_stmt|;
 DECL|field|clickedSave
+specifier|private
 name|boolean
 name|clickedSave
 init|=
 literal|false
 decl_stmt|;
-DECL|field|selectedRow
-name|int
-name|selectedRow
-init|=
-operator|-
-literal|1
-decl_stmt|;
+comment|/**    * Checked by the caller whether user has confirmed the change    * @return true if the user wants the keybindings to be stored    */
 DECL|method|getAction ()
 name|boolean
 name|getAction
@@ -209,6 +248,7 @@ return|return
 name|clickedSave
 return|;
 block|}
+comment|/**    * Used by the caller to retrieve the keybindings    */
 DECL|method|getNewKeyBindings ()
 name|HashMap
 argument_list|<
@@ -282,6 +322,9 @@ expr_stmt|;
 name|bindHM
 operator|=
 name|name2binding
+expr_stmt|;
+name|setupTable
+argument_list|()
 expr_stmt|;
 name|setList
 argument_list|()
@@ -393,7 +436,6 @@ name|JBM_CustomKeyBindingsListener
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|/*grabB.addActionListener(new ActionListener() {       public void actionPerformed(ActionEvent e) {         selectedRow = (table.getSelectedRows())[0];         Util.pr(""+selectedRow);       }     });*/
 name|buttonBox
 operator|.
 name|add
@@ -445,6 +487,19 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|Util
+operator|.
+name|bindCloseDialogKeyToCancelAction
+argument_list|(
+name|getRootPane
+argument_list|()
+argument_list|,
+name|cancel
+operator|.
+name|getAction
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|addWindowListener
 argument_list|(
 operator|new
@@ -471,7 +526,53 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|setupTable ()
+specifier|private
+name|void
+name|setupTable
+parameter_list|()
+block|{
+name|table
+operator|=
+operator|new
+name|KeystrokeTable
+argument_list|()
+expr_stmt|;
+comment|//table.setCellSelectionEnabled(false);
+name|table
+operator|.
+name|setRowSelectionAllowed
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+name|table
+operator|.
+name|setColumnSelectionAllowed
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|table
+operator|.
+name|setSelectionMode
+argument_list|(
+name|ListSelectionModel
+operator|.
+name|SINGLE_SELECTION
+argument_list|)
+expr_stmt|;
+name|table
+operator|.
+name|setAutoCreateRowSorter
+argument_list|(
+literal|true
+argument_list|)
+expr_stmt|;
+comment|// TODO: setup so that clicking on list will display the current binding
+block|}
 DECL|method|setTop ()
+specifier|private
 name|void
 name|setTop
 parameter_list|()
@@ -529,11 +630,9 @@ name|NORTH
 argument_list|)
 expr_stmt|;
 block|}
-comment|//##################################################
-comment|// respond to grabKey and display the key binding
-comment|//##################################################
+comment|/**    * respond to grabKey and display the key binding    */
 DECL|class|JBM_CustomKeyBindingsListener
-specifier|public
+specifier|private
 class|class
 name|JBM_CustomKeyBindingsListener
 extends|extends
@@ -564,11 +663,6 @@ operator|<
 literal|0
 condition|)
 return|return;
-comment|//Util.pr("dei"+selectedRow+" "+table.getSelectedRow());
-comment|//Object[] selected = list.getSelectedValues();
-comment|//if (selected.length == 0) {
-comment|//  return;
-comment|//}
 name|String
 name|code
 init|=
@@ -616,9 +710,12 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
+operator|(
+operator|(
 operator|(
 name|kc
-operator|<
+operator|>=
 name|KeyEvent
 operator|.
 name|VK_F1
@@ -626,26 +723,28 @@ operator|)
 operator|&&
 operator|(
 name|kc
-operator|>
+operator|<=
 name|KeyEvent
 operator|.
 name|VK_F12
 operator|)
-operator|&&
+operator|)
+operator|||
 operator|(
 name|kc
-operator|!=
+operator|==
 name|KeyEvent
 operator|.
 name|VK_ESCAPE
 operator|)
-operator|&&
+operator|||
 operator|(
 name|kc
-operator|!=
+operator|==
 name|KeyEvent
 operator|.
 name|VK_DELETE
+operator|)
 operator|)
 condition|)
 block|{
@@ -808,10 +907,9 @@ expr_stmt|;
 comment|//table.setValueAt(newKey, );
 block|}
 block|}
-comment|//##################################################
-comment|// put the corresponding key binding into keyTF
-comment|//##################################################
+comment|/**    * put the corresponding key binding into keyTF    */
 DECL|class|MyListSelectionListener
+specifier|private
 class|class
 name|MyListSelectionListener
 implements|implements
@@ -901,8 +999,9 @@ block|}
 block|}
 block|}
 block|}
-comment|//setup so that clicking on list will display the current binding
+comment|/**    * Puts the content of bindHM into the table    */
 DECL|method|setList ()
+specifier|private
 name|void
 name|setList
 parameter_list|()
@@ -1065,38 +1164,13 @@ name|sorted
 argument_list|)
 expr_stmt|;
 name|table
-operator|=
-operator|new
-name|KeystrokeTable
+operator|.
+name|setModel
 argument_list|(
 name|tableModel
 argument_list|)
 expr_stmt|;
-comment|//table.setCellSelectionEnabled(false);
-name|table
-operator|.
-name|setRowSelectionAllowed
-argument_list|(
-literal|true
-argument_list|)
-expr_stmt|;
-name|table
-operator|.
-name|setColumnSelectionAllowed
-argument_list|(
-literal|false
-argument_list|)
-expr_stmt|;
-name|table
-operator|.
-name|setSelectionMode
-argument_list|(
-name|ListSelectionModel
-operator|.
-name|SINGLE_SELECTION
-argument_list|)
-expr_stmt|;
-comment|//list.setModel(listModel);
+comment|// has to be done each time as the columnModel is dependend on the tableModel
 name|TableColumnModel
 name|cm
 init|=
@@ -1133,35 +1207,27 @@ operator|.
 name|KEYBIND_COL_1
 argument_list|)
 expr_stmt|;
-name|table
-operator|.
-name|setRowSelectionInterval
-argument_list|(
-literal|0
-argument_list|,
-literal|0
-argument_list|)
-expr_stmt|;
-comment|//select the first entry
+comment|//    table.setRowSelectionInterval(0, 0); //select the first entry
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|class|KeystrokeTable
+specifier|private
 class|class
 name|KeystrokeTable
 extends|extends
 name|JTable
 block|{
-DECL|method|KeystrokeTable (KeystrokeTableModel model)
+DECL|method|KeystrokeTable ()
 specifier|public
 name|KeystrokeTable
-parameter_list|(
-name|KeystrokeTableModel
-name|model
-parameter_list|)
+parameter_list|()
 block|{
 name|super
-argument_list|(
-name|model
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|isCellEditable (int row, int col)
@@ -1208,7 +1274,13 @@ index|]
 return|;
 block|}
 block|}
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|class|KeystrokeTableModel
+specifier|private
 class|class
 name|KeystrokeTableModel
 extends|extends
@@ -1422,6 +1494,7 @@ block|}
 block|}
 comment|// listners
 DECL|method|setButtons ()
+specifier|private
 name|void
 name|setButtons
 parameter_list|()
@@ -1450,7 +1523,7 @@ name|clickedSave
 operator|=
 literal|true
 expr_stmt|;
-comment|// message: key bindings will take into effect next time you start JBM
+comment|// also displays message: key bindings will take into effect next time you start JBM
 block|}
 block|}
 argument_list|)
@@ -1478,7 +1551,6 @@ name|clickedSave
 operator|=
 literal|false
 expr_stmt|;
-comment|//System.exit(-1);//get rid of this
 block|}
 block|}
 argument_list|)
@@ -1499,13 +1571,242 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-comment|/*Object[] selected = list.getSelectedValues();         if (selected.length == 0) {           return;         }         keyTF.setText(setToDefault( (String) list.getSelectedValue()));*/
+name|int
+index|[]
+name|selected
+init|=
+name|table
+operator|.
+name|getSelectedRows
+argument_list|()
+decl_stmt|;
+if|if
+condition|(
+name|selected
+operator|.
+name|length
+operator|==
+literal|0
+condition|)
+block|{
+name|int
+name|answer
+init|=
+name|JOptionPane
+operator|.
+name|showOptionDialog
+argument_list|(
+name|KeyBindingsDialog
+operator|.
+name|this
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"All key bindings will be reset to their defaults."
+argument_list|)
+operator|+
+literal|" "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Continue?"
+argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Resetting all key bindings"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|YES_NO_OPTION
+argument_list|,
+name|JOptionPane
+operator|.
+name|QUESTION_MESSAGE
+argument_list|,
+literal|null
+argument_list|,
+operator|new
+name|String
+index|[]
+block|{
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Ok"
+argument_list|)
+block|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Cancel"
+argument_list|)
+block|}
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Ok"
+argument_list|)
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|answer
+operator|==
+name|JOptionPane
+operator|.
+name|YES_OPTION
+condition|)
+block|{
+name|bindHM
+operator|.
+name|clear
+argument_list|()
+expr_stmt|;
+name|Set
+argument_list|<
+name|Entry
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+argument_list|>
+name|entrySet
+init|=
+name|defBinds
+operator|.
+name|entrySet
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|Entry
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|entry
+range|:
+name|entrySet
+control|)
+block|{
+name|bindHM
+operator|.
+name|put
+argument_list|(
+name|entry
+operator|.
+name|getKey
+argument_list|()
+argument_list|,
+name|entry
+operator|.
+name|getValue
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+name|setList
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+for|for
+control|(
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|selected
+operator|.
+name|length
+condition|;
+name|i
+operator|++
+control|)
+block|{
+name|int
+name|row
+init|=
+name|selected
+index|[
+name|i
+index|]
+decl_stmt|;
+name|String
+name|name
+init|=
+operator|(
+name|String
+operator|)
+name|table
+operator|.
+name|getValueAt
+argument_list|(
+name|row
+argument_list|,
+literal|0
+argument_list|)
+decl_stmt|;
+name|String
+name|newKey
+init|=
+name|setToDefault
+argument_list|(
+name|name
+argument_list|)
+decl_stmt|;
+name|keyTF
+operator|.
+name|setText
+argument_list|(
+name|newKey
+argument_list|)
+expr_stmt|;
+name|table
+operator|.
+name|setValueAt
+argument_list|(
+name|newKey
+argument_list|,
+name|row
+argument_list|,
+literal|1
+argument_list|)
+expr_stmt|;
+name|table
+operator|.
+name|repaint
+argument_list|()
+expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**    * Resets a single accelerator key    * @param name the action name    * @return the default accelerator key    */
 DECL|method|setToDefault (String name)
+specifier|private
 name|String
 name|setToDefault
 parameter_list|(

@@ -266,8 +266,6 @@ decl_stmt|;
 DECL|field|oldUseDef
 DECL|field|oldBiblMode
 DECL|field|oldConvertToEquation
-DECL|field|oldCaseKeeperOnSearch
-DECL|field|oldUnitFormatterOnSearch
 name|boolean
 name|oldUseDef
 decl_stmt|,
@@ -277,6 +275,8 @@ literal|false
 decl_stmt|,
 name|oldConvertToEquation
 decl_stmt|,
+DECL|field|oldCaseKeeperOnSearch
+DECL|field|oldUnitFormatterOnSearch
 name|oldCaseKeeperOnSearch
 decl_stmt|,
 name|oldUnitFormatterOnSearch
