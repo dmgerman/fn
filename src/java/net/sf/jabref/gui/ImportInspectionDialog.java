@@ -933,8 +933,8 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
 DECL|field|generate
+name|Globals
 operator|.
 name|lang
 argument_list|(
