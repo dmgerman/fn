@@ -1034,6 +1034,35 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+literal|"useProxy"
+argument_list|,
+name|Boolean
+operator|.
+name|FALSE
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"proxyHostname"
+argument_list|,
+literal|"my proxy host"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"proxyPort"
+argument_list|,
+literal|"my proxy port"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
 name|PDF_PREVIEW
 argument_list|,
 name|Boolean
