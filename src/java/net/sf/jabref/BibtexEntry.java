@@ -358,6 +358,22 @@ name|suffix
 init|=
 literal|""
 decl_stmt|;
+if|if
+condition|(
+name|JabRef
+operator|.
+name|jrf
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|WRITEFIELD_ADDSPACES
+argument_list|)
+condition|)
+block|{
 for|for
 control|(
 name|int
@@ -381,6 +397,26 @@ name|suffix
 operator|+=
 literal|" "
 expr_stmt|;
+block|}
+name|String
+name|res
+decl_stmt|;
+if|if
+condition|(
+name|JabRef
+operator|.
+name|jrf
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|WRITEFIELD_CAMELCASENAME
+argument_list|)
+condition|)
+block|{
 if|if
 condition|(
 name|tagDisplayNameMap
@@ -393,7 +429,9 @@ name|toLowerCase
 argument_list|()
 argument_list|)
 condition|)
-return|return
+block|{
+name|res
+operator|=
 name|tagDisplayNameMap
 operator|.
 name|get
@@ -405,8 +443,12 @@ argument_list|()
 argument_list|)
 operator|+
 name|suffix
-return|;
-return|return
+expr_stmt|;
+block|}
+else|else
+block|{
+name|res
+operator|=
 operator|(
 name|field
 operator|.
@@ -429,6 +471,20 @@ literal|1
 argument_list|)
 operator|+
 name|suffix
+expr_stmt|;
+block|}
+block|}
+else|else
+block|{
+name|res
+operator|=
+name|field
+operator|+
+name|suffix
+expr_stmt|;
+block|}
+return|return
+name|res
 return|;
 block|}
 DECL|method|BibtexEntry ()
@@ -1273,6 +1329,7 @@ init|=
 literal|false
 decl_stmt|;
 comment|// Write required fields first.
+comment|// Thereby, write the title field first.
 name|hasWritten
 operator|=
 name|hasWritten
