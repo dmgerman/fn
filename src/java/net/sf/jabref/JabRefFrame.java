@@ -10226,9 +10226,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Database has changed. Do you want to save "
-operator|+
-literal|"before closing?"
+literal|"Database has changed. Do you want to save before closing?"
 argument_list|)
 argument_list|,
 name|Globals
