@@ -793,14 +793,13 @@ if|if
 condition|(
 name|prefs
 operator|.
-name|get
+name|getBoolean
 argument_list|(
-literal|"proxyHostname"
+literal|"useProxy"
 argument_list|)
-operator|!=
-literal|null
 condition|)
 block|{
+comment|// NetworkTab.java ensures that proxyHostname and proxyPort are not null
 name|System
 operator|.
 name|getProperties
@@ -835,6 +834,7 @@ literal|"proxyPort"
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// currently, the following cannot be configured
 if|if
 condition|(
 name|prefs
