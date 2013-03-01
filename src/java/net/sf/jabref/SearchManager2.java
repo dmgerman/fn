@@ -2213,7 +2213,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Search Specified Field(s)"
+literal|"Search specified field(s)"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2233,7 +2233,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Search All Fields"
+literal|"Search all fields"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3979,14 +3979,14 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Search Specified Field(s)"
+literal|"Search specified field(s)"
 argument_list|)
 else|:
 name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Search All Fields"
+literal|"Search all fields"
 argument_list|)
 argument_list|)
 expr_stmt|;

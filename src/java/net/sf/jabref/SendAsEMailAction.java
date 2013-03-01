@@ -253,10 +253,8 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"No entries selected"
+literal|"No entries selected."
 argument_list|)
-operator|+
-literal|"."
 expr_stmt|;
 return|return;
 block|}

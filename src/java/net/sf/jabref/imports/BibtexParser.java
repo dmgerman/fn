@@ -1258,7 +1258,9 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|/*_pr.addWarning(Globals.lang("duplicate BibTeX key") + ": " 								+ be.getCiteKey() + " (" 								+ Globals.lang("grouping may not work for this entry") + ")");                        */
+comment|// _pr.addWarning(Globals.lang("duplicate BibTeX key") + ": "
+comment|//	+ be.getCiteKey() + " ("
+comment|//	+ Globals.lang("grouping may not work for this entry") + ")");
 elseif|else
 if|if
 condition|(

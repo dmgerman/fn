@@ -1622,7 +1622,9 @@ literal|"Back"
 argument_list|)
 argument_list|)
 decl_stmt|,
-comment|/*cut = new GeneralAction("cut", "Cut", Globals.lang("Cut"),          GUIGlobals.cutIconFile,          prefs.getKey("Cut")),*/
+comment|//cut = new GeneralAction("cut", "Cut", Globals.lang("Cut"),
+comment|//   GUIGlobals.cutIconFile,
+comment|//   prefs.getKey("Cut")),
 DECL|field|delete
 name|delete
 init|=
@@ -1648,7 +1650,9 @@ literal|"Delete"
 argument_list|)
 argument_list|)
 decl_stmt|,
-comment|/*copy = new GeneralAction("copy", "Copy", Globals.lang("Copy"),                                GUIGlobals.copyIconFile,                                prefs.getKey("Copy")),*/
+comment|//copy = new GeneralAction("copy", "Copy", Globals.lang("Copy"),
+comment|//                         GUIGlobals.copyIconFile,
+comment|//                         prefs.getKey("Copy")),
 DECL|field|copy
 name|copy
 init|=

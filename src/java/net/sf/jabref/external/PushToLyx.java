@@ -328,7 +328,8 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
-comment|/*new Timeout(2000, t, Globals.lang("Error")+": "+             Globals.lang("unable to access LyX-pipe"));*/
+comment|//new Timeout(2000, t, Globals.lang("Error")+": "+
+comment|//Globals.lang("unable to access LyX-pipe"));
 try|try
 block|{
 name|t

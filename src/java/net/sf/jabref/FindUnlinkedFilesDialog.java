@@ -1316,7 +1316,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Select All"
+literal|"Select all"
 argument_list|)
 argument_list|)
 block|{
@@ -1379,7 +1379,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Unselect All"
+literal|"Unselect all"
 argument_list|)
 argument_list|)
 block|{
@@ -1443,7 +1443,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Expand All"
+literal|"Expand all"
 argument_list|)
 argument_list|)
 block|{
@@ -1503,7 +1503,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Collapse All"
+literal|"Collapse all"
 argument_list|)
 argument_list|)
 block|{

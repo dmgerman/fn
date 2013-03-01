@@ -316,7 +316,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Connect to SQL Database"
+literal|"Connect to SQL database"
 argument_list|)
 argument_list|,
 literal|true

@@ -770,7 +770,7 @@ operator|=
 operator|new
 name|JButton
 argument_list|(
-literal|"OK"
+literal|"Ok"
 argument_list|)
 expr_stmt|;
 name|cancel

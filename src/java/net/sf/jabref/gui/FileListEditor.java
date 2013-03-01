@@ -420,7 +420,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Move/rename file"
+literal|"Move/Rename file"
 argument_list|)
 argument_list|)
 decl_stmt|;
