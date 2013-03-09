@@ -6817,7 +6817,7 @@ name|put
 argument_list|(
 literal|"Write XMP"
 argument_list|,
-literal|"ctrl F4"
+literal|"ctrl F7"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds
