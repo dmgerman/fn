@@ -760,13 +760,14 @@ argument_list|,
 literal|"<a\\s*href=[^<]+>\\s*(.+)\\s*</a>"
 argument_list|)
 expr_stmt|;
+comment|//fieldPatterns.put("author", "</h3>\\s*(.+)");
 name|fieldPatterns
 operator|.
 name|put
 argument_list|(
 literal|"author"
 argument_list|,
-literal|"</h3>\\s*(.+)"
+literal|"(?s)</h3>\\s*(.+)</br>"
 argument_list|)
 expr_stmt|;
 name|fieldPatterns
@@ -2389,6 +2390,17 @@ comment|// Maybe not needed anymore due to another change
 block|}
 else|else
 block|{
+name|author
+operator|=
+name|author
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\s+"
+argument_list|,
+literal|" "
+argument_list|)
+expr_stmt|;
 name|author
 operator|=
 name|author

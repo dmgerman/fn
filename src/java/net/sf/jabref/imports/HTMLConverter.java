@@ -5377,8 +5377,9 @@ specifier|final
 name|int
 name|MAX_TAG_LENGTH
 init|=
-literal|30
+literal|100
 decl_stmt|;
+comment|/*private final int MAX_TAG_LENGTH = 30;*/
 comment|/*private final int MAX_CHAR_LENGTH = 10;      private int readHtmlChar(String text, StringBuffer sb, int position) {         // Have just read the< character that starts the tag.         int index = text.indexOf(';', position);         if ((index> position)&& (index-position< MAX_CHAR_LENGTH)) {         	//String code = text.substring(position, index);             //System.out.println("Removed code: "+text.substring(position, index));             return index; // Just skip the tag.         } else return position; // Don't do anything.     }*/
 DECL|method|readTag (String text, StringBuffer sb, int position)
 specifier|private
