@@ -151,7 +151,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Renders a GroupTreeNode using its group's getName() method, rather that its  * toString() method.  *   * @author jzieren  */
+comment|/**  * Renders a GroupTreeNode using its group's getName() method, rather that its  * toString() method.  *  * @author jzieren  */
 end_comment
 
 begin_class
@@ -865,7 +865,7 @@ return|return
 name|c
 return|;
 block|}
-comment|/**      * For use when dragging: The sepcified cell is always rendered as selected.      *       * @param cell      *            The cell over which the user is currently dragging.      */
+comment|/**      * For use when dragging: The sepcified cell is always rendered as selected.      *      * @param cell      *            The cell over which the user is currently dragging.      */
 DECL|method|setHighlight1Cell (Object cell)
 name|void
 name|setHighlight1Cell
@@ -915,7 +915,7 @@ operator|=
 name|cells
 expr_stmt|;
 block|}
-comment|/**      * Highlights the specified cells (by drawing a border around it),       * or disables highlight if highlightBorderCell == null.      */
+comment|/**      * Highlights the specified cells (by drawing a border around it),      * or disables highlight if highlightBorderCell == null.      */
 DECL|method|setHighlightBorderCell (Object highlightBorderCell)
 name|void
 name|setHighlightBorderCell
