@@ -244,6 +244,13 @@ name|void
 name|init
 parameter_list|()
 block|{
+name|database
+operator|=
+name|panel
+operator|.
+name|getDatabase
+argument_list|()
+expr_stmt|;
 comment|// Get entries and check if it makes sense to perform this operation
 name|entries
 operator|=
@@ -261,13 +268,6 @@ operator|==
 literal|0
 condition|)
 block|{
-name|database
-operator|=
-name|panel
-operator|.
-name|getDatabase
-argument_list|()
-expr_stmt|;
 name|entries
 operator|=
 name|database
