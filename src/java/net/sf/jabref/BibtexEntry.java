@@ -239,6 +239,15 @@ argument_list|,
 literal|"ISSN"
 argument_list|)
 expr_stmt|;
+name|tagDisplayNameMap
+operator|.
+name|put
+argument_list|(
+literal|"UNKNOWN"
+argument_list|,
+literal|"UNKNOWN"
+argument_list|)
+expr_stmt|;
 comment|// Looking for the longest field name.
 comment|// XXX JK: Look for all used field names not only defined once, since
 comment|//         there may be some unofficial field name used.
@@ -341,18 +350,33 @@ name|max
 expr_stmt|;
 block|}
 comment|/**      * Get display version of a entry field.      *      * BibTeX is case-insensitive therefore there is no difference between:      * howpublished, HOWPUBLISHED, HowPublished, etc. Since the camel case      * version is the most easy to read this should be the one written in the      * *.bib file. Since there is no way how do detect multi-word strings by      * default the first character will be made uppercase. In other characters      * case needs to be changed the {@link #tagDisplayNameMap} will be used.       *      * @param field The name of the field.      * @return The display version of the field name.      */
-DECL|method|getFieldDisplayName (final String field)
+DECL|method|getFieldDisplayName (String field)
 specifier|private
 specifier|static
 specifier|final
 name|String
 name|getFieldDisplayName
 parameter_list|(
-specifier|final
 name|String
 name|field
 parameter_list|)
 block|{
+if|if
+condition|(
+name|field
+operator|.
+name|length
+argument_list|()
+operator|==
+literal|0
+condition|)
+block|{
+comment|// hard coded "UNKNOWN" is assigned to a field without any name
+name|field
+operator|=
+literal|"UNKNOWN"
+expr_stmt|;
+block|}
 name|String
 name|suffix
 init|=
