@@ -262,8 +262,11 @@ specifier|final
 name|String
 name|SINGLE_CIT_ENC
 init|=
-literal|"http://www.jstor.org/action/exportSingleCitation?singleCitation=true&suffix="
+comment|//"http://www.jstor.org/action/exportSingleCitation?singleCitation=true&suffix=";
+literal|"http://www.jstor.org/action/exportSingleCitation?singleCitation=true&doi=10.2307/"
 decl_stmt|;
+comment|// suffix doesn't work anymore (March 2013), changed to doi=10.2307/citations but only if it a doi
+comment|// to be improved...
 comment|//"http%3A%2F%2Fwww.jstor.org%2Faction%2FexportSingleCitation%3FsingleCitation"
 comment|//+"%3Dtrue%26suffix%3D";
 DECL|field|idPattern
