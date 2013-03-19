@@ -3512,13 +3512,15 @@ operator|.
 name|FALSE
 argument_list|)
 expr_stmt|;
+comment|// Curly brackets ({}) are the default delimiters, not quotes (") as these cause trouble when they appear within the field value:
+comment|// Currently, JabRef does not escape them
 name|defaults
 operator|.
 name|put
 argument_list|(
 literal|"valueDelimiters"
 argument_list|,
-literal|0
+literal|1
 argument_list|)
 expr_stmt|;
 name|defaults
