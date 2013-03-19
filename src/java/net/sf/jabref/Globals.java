@@ -1149,6 +1149,8 @@ name|autoSaveManager
 init|=
 literal|null
 decl_stmt|;
+comment|// In the main program, this field is initialized in JabRef.java
+comment|// Each test case initializes this field if required
 DECL|field|prefs
 specifier|public
 specifier|static
