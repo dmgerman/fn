@@ -477,6 +477,11 @@ name|EDITOR_EMACS_KEYBINDINGS
 init|=
 literal|"editorEMACSkeyBindings"
 decl_stmt|,
+DECL|field|EDITOR_EMACS_KEYBINDINGS_REBIND_CA
+name|EDITOR_EMACS_KEYBINDINGS_REBIND_CA
+init|=
+literal|"editorEMACSkeyBindingsRebindCA"
+decl_stmt|,
 DECL|field|SHORTEST_TO_COMPLETE
 name|SHORTEST_TO_COMPLETE
 init|=
@@ -1879,6 +1884,17 @@ argument_list|,
 name|Boolean
 operator|.
 name|FALSE
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|EDITOR_EMACS_KEYBINDINGS_REBIND_CA
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
 argument_list|)
 expr_stmt|;
 name|defaults
@@ -3512,13 +3528,15 @@ operator|.
 name|FALSE
 argument_list|)
 expr_stmt|;
+comment|// Curly brackets ({}) are the default delimiters, not quotes (") as these cause trouble when they appear within the field value:
+comment|// Currently, JabRef does not escape them
 name|defaults
 operator|.
 name|put
 argument_list|(
 literal|"valueDelimiters"
 argument_list|,
-literal|0
+literal|1
 argument_list|)
 expr_stmt|;
 name|defaults

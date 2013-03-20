@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2013 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -160,11 +160,14 @@ name|showSource
 decl_stmt|,
 DECL|field|defSource
 DECL|field|emacsMode
+DECL|field|emacsRebindCtrlA
 DECL|field|disableOnMultiple
 DECL|field|autoComplete
 name|defSource
 decl_stmt|,
 name|emacsMode
+decl_stmt|,
+name|emacsRebindCtrlA
 decl_stmt|,
 name|disableOnMultiple
 decl_stmt|,
@@ -365,6 +368,19 @@ literal|"Use Emacs key bindings"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|emacsRebindCtrlA
+operator|=
+operator|new
+name|JCheckBox
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Rebind C-a, too"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|disableOnMultiple
 operator|=
 operator|new
@@ -552,14 +568,6 @@ argument_list|(
 name|autoCompFirstNameMode_Both
 argument_list|)
 expr_stmt|;
-name|autoCompFields
-operator|=
-operator|new
-name|JTextField
-argument_list|(
-literal|40
-argument_list|)
-expr_stmt|;
 name|Insets
 name|marg
 init|=
@@ -568,7 +576,7 @@ name|Insets
 argument_list|(
 literal|0
 argument_list|,
-literal|12
+literal|20
 argument_list|,
 literal|3
 argument_list|,
@@ -611,6 +619,52 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+argument_list|)
+expr_stmt|;
+name|emacsRebindCtrlA
+operator|.
+name|setMargin
+argument_list|(
+name|marg
+argument_list|)
+expr_stmt|;
+comment|// We need a listener on showSource to enable and disable the source panel-related choices:
+name|emacsMode
+operator|.
+name|addChangeListener
+argument_list|(
+operator|new
+name|ChangeListener
+argument_list|()
+block|{
+specifier|public
+name|void
+name|stateChanged
+parameter_list|(
+name|ChangeEvent
+name|event
+parameter_list|)
+block|{
+name|emacsRebindCtrlA
+operator|.
+name|setEnabled
+argument_list|(
+name|emacsMode
+operator|.
+name|isSelected
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+argument_list|)
+expr_stmt|;
+name|autoCompFields
+operator|=
+operator|new
+name|JTextField
+argument_list|(
+literal|40
 argument_list|)
 expr_stmt|;
 comment|// We need a listener on autoComplete to enable and disable the
@@ -657,10 +711,10 @@ comment|// rows  1 to 10
 literal|"pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, "
 operator|+
 comment|// rows 11 to 20
-literal|"pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, pref, "
+literal|"pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, pref, 6dlu, "
 operator|+
-comment|// rows 21 to 27
-literal|"pref, pref, 6dlu, pref, pref, pref, pref"
+comment|// rows 21 to 29
+literal|"pref, pref, pref, pref, 6dlu, pref, pref, pref, pref"
 argument_list|)
 decl_stmt|;
 name|DefaultFormBuilder
@@ -784,6 +838,22 @@ argument_list|)
 expr_stmt|;
 name|builder
 operator|.
+name|add
+argument_list|(
+name|emacsRebindCtrlA
+argument_list|,
+name|cc
+operator|.
+name|xy
+argument_list|(
+literal|2
+argument_list|,
+literal|13
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
 name|addSeparator
 argument_list|(
 name|Globals
@@ -799,7 +869,7 @@ name|xyw
 argument_list|(
 literal|1
 argument_list|,
-literal|13
+literal|15
 argument_list|,
 literal|5
 argument_list|)
@@ -817,7 +887,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|15
+literal|17
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -911,7 +981,7 @@ name|xyw
 argument_list|(
 literal|2
 argument_list|,
-literal|17
+literal|19
 argument_list|,
 literal|3
 argument_list|)
@@ -934,7 +1004,7 @@ name|xyw
 argument_list|(
 literal|2
 argument_list|,
-literal|19
+literal|21
 argument_list|,
 literal|4
 argument_list|)
@@ -952,7 +1022,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|20
+literal|22
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -968,7 +1038,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|21
+literal|23
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -984,7 +1054,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|22
+literal|24
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1005,7 +1075,7 @@ name|xyw
 argument_list|(
 literal|2
 argument_list|,
-literal|24
+literal|26
 argument_list|,
 literal|4
 argument_list|)
@@ -1023,7 +1093,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|25
+literal|27
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1039,7 +1109,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|26
+literal|28
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1055,7 +1125,7 @@ name|xy
 argument_list|(
 literal|2
 argument_list|,
-literal|27
+literal|29
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1148,6 +1218,20 @@ argument_list|(
 name|JabRefPreferences
 operator|.
 name|EDITOR_EMACS_KEYBINDINGS
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|emacsRebindCtrlA
+operator|.
+name|setSelected
+argument_list|(
+name|_prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EDITOR_EMACS_KEYBINDINGS_REBIND_CA
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1341,7 +1425,18 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// Autocomplete fields is only enabled when autocompletion is:
+comment|// similar for emacs CTRL-a and emacs mode
+name|emacsRebindCtrlA
+operator|.
+name|setEnabled
+argument_list|(
+name|emacsMode
+operator|.
+name|isSelected
+argument_list|()
+argument_list|)
+expr_stmt|;
+comment|// Autocomplete fields is only enabled when autocompletion is selected
 name|setAutoCompleteElementsEnabled
 argument_list|(
 name|autoComplete
@@ -1381,8 +1476,10 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
+name|boolean
+name|emacsModeChanged
+init|=
+operator|(
 name|_prefs
 operator|.
 name|getBoolean
@@ -1396,10 +1493,68 @@ name|emacsMode
 operator|.
 name|isSelected
 argument_list|()
+operator|)
+decl_stmt|;
+name|boolean
+name|emacsRebindCtrlAChanged
+init|=
+operator|(
+name|_prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EDITOR_EMACS_KEYBINDINGS_REBIND_CA
+argument_list|)
+operator|!=
+name|emacsRebindCtrlA
+operator|.
+name|isSelected
+argument_list|()
+operator|)
+decl_stmt|;
+if|if
+condition|(
+name|emacsModeChanged
+operator|||
+name|emacsRebindCtrlAChanged
 condition|)
 block|{
-comment|// user has changed settings of EMACS mode
+name|_prefs
+operator|.
+name|putBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EDITOR_EMACS_KEYBINDINGS
+argument_list|,
+name|emacsMode
+operator|.
+name|isSelected
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|_prefs
+operator|.
+name|putBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EDITOR_EMACS_KEYBINDINGS_REBIND_CA
+argument_list|,
+name|emacsRebindCtrlA
+operator|.
+name|isSelected
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// immediately apply the change
+if|if
+condition|(
+name|emacsModeChanged
+condition|)
+block|{
 if|if
 condition|(
 name|emacsMode
@@ -1422,20 +1577,30 @@ name|unload
 argument_list|()
 expr_stmt|;
 block|}
-name|_prefs
-operator|.
-name|putBoolean
-argument_list|(
-name|JabRefPreferences
-operator|.
-name|EDITOR_EMACS_KEYBINDINGS
-argument_list|,
+block|}
+else|else
+block|{
+comment|// only rebinding of CTRL+a changed
+assert|assert
+operator|(
 name|emacsMode
 operator|.
 name|isSelected
 argument_list|()
-argument_list|)
+operator|)
+assert|;
+comment|// we simply reload the emacs mode to activate the CTRL+a change
+name|EmacsKeyBindings
+operator|.
+name|unload
+argument_list|()
 expr_stmt|;
+name|EmacsKeyBindings
+operator|.
+name|load
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 name|_prefs
 operator|.
