@@ -2304,6 +2304,31 @@ literal|"Write XMP"
 argument_list|)
 argument_list|)
 decl_stmt|,
+DECL|field|openFolder
+name|openFolder
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"openFolder"
+argument_list|,
+literal|"Open folder"
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Open folder"
+argument_list|)
+argument_list|,
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Open folder"
+argument_list|)
+argument_list|)
+decl_stmt|,
 DECL|field|openFile
 name|openFile
 init|=
@@ -8058,6 +8083,13 @@ name|tools
 operator|.
 name|add
 argument_list|(
+name|openFolder
+argument_list|)
+expr_stmt|;
+name|tools
+operator|.
+name|add
+argument_list|(
 name|openFile
 argument_list|)
 expr_stmt|;
@@ -9121,6 +9153,13 @@ name|tlb
 operator|.
 name|addAction
 argument_list|(
+name|openFolder
+argument_list|)
+expr_stmt|;
+name|tlb
+operator|.
+name|addAction
+argument_list|(
 name|openFile
 argument_list|)
 expr_stmt|;
@@ -9347,6 +9386,8 @@ comment|/* openSpires wasn't being supported so no point in supporting 			 * ope
 name|openPdf
 block|,
 name|openUrl
+block|,
+name|openFolder
 block|,
 name|openFile
 block|,
