@@ -114,7 +114,7 @@ name|layout
 operator|.
 name|format
 argument_list|(
-literal|"Rï¿½flexions sur le timing de la quantitï¿½"
+literal|"RÃ©flexions sur le timing de la quantitÃ©"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -250,7 +250,7 @@ name|layout
 operator|.
 name|format
 argument_list|(
-literal|"Rï¿½flexions sur le timing de la quantitï¿½ \\ae should be ï¿½"
+literal|"RÃ©flexions sur le timing de la quantitÃ© \\ae should be Ã¦"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -292,7 +292,7 @@ literal|"\\'{o}"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// ï¿½
+comment|// Ã³
 name|assertEquals
 argument_list|(
 literal|"\\'f2"
@@ -305,7 +305,7 @@ literal|"\\`{o}"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// ï¿½
+comment|// Ã²
 name|assertEquals
 argument_list|(
 literal|"\\'f4"
@@ -318,7 +318,7 @@ literal|"\\^{o}"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// ï¿½
+comment|// Ã´
 name|assertEquals
 argument_list|(
 literal|"\\'f6"
@@ -331,7 +331,7 @@ literal|"\\\"{o}"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// ï¿½
+comment|// Ã¶
 name|assertEquals
 argument_list|(
 literal|"\\u245o"
@@ -344,7 +344,7 @@ literal|"\\~{o}"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// ï¿½
+comment|// Ãµ
 name|assertEquals
 argument_list|(
 literal|"\\u333o"
@@ -381,7 +381,7 @@ literal|"\\c{c}"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// ï¿½
+comment|// Ã§
 name|assertEquals
 argument_list|(
 literal|"{\\uc2\\u339oe}"
@@ -418,7 +418,7 @@ literal|"\\ae"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// ï¿½
+comment|// Ã¦
 name|assertEquals
 argument_list|(
 literal|"{\\uc2\\u198AE}"
@@ -431,7 +431,7 @@ literal|"\\AE"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// ï¿½
+comment|// Ã
 name|assertEquals
 argument_list|(
 literal|""
@@ -470,7 +470,7 @@ literal|"\\H{a}"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// ï¿½ // ???
+comment|// Ã£ // ???
 name|assertEquals
 argument_list|(
 literal|""
@@ -521,7 +521,7 @@ literal|"\\aa"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// ï¿½
+comment|// Ã¥
 name|assertEquals
 argument_list|(
 literal|""
@@ -534,7 +534,7 @@ literal|"\\AA"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// ï¿½
+comment|// Ã
 name|assertEquals
 argument_list|(
 literal|""
@@ -547,7 +547,7 @@ literal|"\\o"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// ï¿½
+comment|// Ã¸
 name|assertEquals
 argument_list|(
 literal|""
@@ -560,7 +560,7 @@ literal|"\\O"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// ï¿½
+comment|// Ã
 name|assertEquals
 argument_list|(
 literal|""
@@ -597,7 +597,7 @@ literal|"\\ss"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// ï¿½
+comment|// Ã
 name|assertEquals
 argument_list|(
 literal|""
@@ -610,7 +610,7 @@ literal|"?`"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// ï¿½
+comment|// Â¿
 name|assertEquals
 argument_list|(
 literal|""
@@ -623,7 +623,7 @@ literal|"!`"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// ï¿½
+comment|// Â¡
 name|assertEquals
 argument_list|(
 literal|""
@@ -660,7 +660,7 @@ literal|"\\S"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// ï¿½
+comment|// Â§
 name|assertEquals
 argument_list|(
 literal|""
@@ -673,7 +673,7 @@ literal|"\\P"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// ï¿½
+comment|// Â¶
 name|assertEquals
 argument_list|(
 literal|""
@@ -686,7 +686,7 @@ literal|"\\copyright"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// ï¿½
+comment|// Â©
 name|assertEquals
 argument_list|(
 literal|""
@@ -699,7 +699,7 @@ literal|"\\pounds"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// ï¿½
+comment|// Â£
 block|}
 block|}
 end_class
