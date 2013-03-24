@@ -998,9 +998,10 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-name|Globals
+name|JabRefPreferences
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|MARKING_WITH_NUMBER_PATTERN
 argument_list|)
@@ -1764,9 +1765,10 @@ return|;
 if|if
 condition|(
 operator|!
-name|Globals
+name|JabRefPreferences
 operator|.
-name|prefs
+name|getInstance
+argument_list|()
 operator|.
 name|getBoolean
 argument_list|(

@@ -32,6 +32,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|BibtexEntry
 import|;
 end_import
@@ -72,6 +84,22 @@ name|LabelPatternUtilTest
 extends|extends
 name|TestCase
 block|{
+DECL|method|setUp ()
+specifier|public
+name|void
+name|setUp
+parameter_list|()
+block|{
+name|LabelPatternUtil
+operator|.
+name|setDataBase
+argument_list|(
+operator|new
+name|BibtexDatabase
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Test for https://sourceforge.net/forum/message.php?msg_id=4498555      * Test the Labelmaker and all kind of accents      * Ã Ã¡ Ä Ä Ã Ã© Ã Ã­ Ä¹ Äº Å Å Ã Ã³ Å Å Å Å Ã Ãº Ã Ã½ Å¹ Åº        */
 DECL|method|testMakeLabelAndCheckLegalKeys ()
 specifier|public

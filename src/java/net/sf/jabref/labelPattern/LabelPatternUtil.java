@@ -191,6 +191,22 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * Required fro LabelPatternUtilTest      *       * @param db the DB to use as global database      */
+DECL|method|setDataBase (BibtexDatabase db)
+specifier|public
+specifier|static
+name|void
+name|setDataBase
+parameter_list|(
+name|BibtexDatabase
+name|db
+parameter_list|)
+block|{
+name|_db
+operator|=
+name|db
+expr_stmt|;
+block|}
 DECL|method|normalize (String content)
 specifier|private
 specifier|static
@@ -4238,9 +4254,9 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Tests whether a given label is unique.      * @param label a<code>String</code>      * @return<code>true</code> if and only if the<code>label</code> is unique      */
+comment|/**      * Tests whether a given label is unique.      *       * This method is private as it is currently used nowhere.      * The issue with this method is that it uses the global variable "_db", which might be undefined when calling the method.      *      * @param label a<code>String</code>      * @return<code>true</code> if and only if the<code>label</code> is unique      */
 DECL|method|isLabelUnique (String label)
-specifier|public
+specifier|private
 specifier|static
 name|boolean
 name|isLabelUnique
