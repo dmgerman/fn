@@ -5512,7 +5512,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autolinkExactKeyOnly"
+name|JabRefPreferences
+operator|.
+name|AUTOLINK_EXACT_KEY_ONLY
 argument_list|)
 decl_stmt|;
 comment|// Now look for keys

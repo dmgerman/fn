@@ -1572,7 +1572,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autolinkExactKeyOnly"
+name|JabRefPreferences
+operator|.
+name|AUTOLINK_EXACT_KEY_ONLY
 argument_list|)
 condition|)
 name|matchExactKeyOnly
@@ -1703,7 +1705,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"autolinkExactKeyOnly"
+name|JabRefPreferences
+operator|.
+name|AUTOLINK_EXACT_KEY_ONLY
 argument_list|,
 name|matchExactKeyOnly
 operator|.

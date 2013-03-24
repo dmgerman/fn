@@ -3428,7 +3428,7 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-literal|"autolinkExactKeyOnly"
+name|AUTOLINK_EXACT_KEY_ONLY
 argument_list|,
 name|Boolean
 operator|.
@@ -4130,6 +4130,15 @@ name|String
 name|USE_REG_EXP_SEARCH_KEY
 init|=
 literal|"useRegExpSearch"
+decl_stmt|;
+DECL|field|AUTOLINK_EXACT_KEY_ONLY
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|AUTOLINK_EXACT_KEY_ONLY
+init|=
+literal|"autolinkExactKeyOnly"
 decl_stmt|;
 DECL|field|EMAIL_SUBJECT
 specifier|public

@@ -493,7 +493,7 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 operator|+
-literal|"/graphicsDir/subDir/testHipKro03test.jpg"
+literal|"/graphicsDir/subDir/HipKro03test.jpg"
 argument_list|)
 argument_list|)
 argument_list|)
@@ -517,7 +517,7 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 operator|+
-literal|"/graphicsDir/subDir/testHipKro03test.png"
+literal|"/graphicsDir/subDir/HipKro03test.png"
 argument_list|)
 argument_list|)
 argument_list|)
