@@ -107,13 +107,13 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Réflexions sur le timing de la quantité"
+literal|"RÃ©flexions sur le timing de la quantitÃ©"
 argument_list|,
 name|layout
 operator|.
 name|format
 argument_list|(
-literal|"Réflexions sur le timing de la quantité"
+literal|"RÃ©flexions sur le timing de la quantitÃ©"
 argument_list|)
 argument_list|)
 expr_stmt|;

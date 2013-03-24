@@ -125,7 +125,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Test for OAI2-Handler and Fetcher.  *   * @author Ulrich St&auml;rk  * @author Christian Kopf  * @author Christopher Oezbek  *   * @version $Revision$ ($Date$)  *   */
+comment|/**  * Test for OAI2-Handler and Fetcher.  *  * @author Ulrich St&auml;rk  * @author Christian Kopf  * @author Christopher Oezbek  *  * @version $Revision$ ($Date$)  *  */
 end_comment
 
 begin_class
@@ -311,7 +311,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"G. F. Giudice and A. Riotto and A. Zaffaroni and J. López-Peña"
+literal|"G. F. Giudice and A. Riotto and A. Zaffaroni and J. LÃ³pez-PeÃ±a"
 argument_list|,
 name|be
 operator|.
@@ -525,7 +525,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Javier López Peña and Gabriel Navarro"
+literal|"Javier LÃ³pez PeÃ±a and Gabriel Navarro"
 argument_list|,
 name|be
 operator|.
@@ -741,7 +741,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Javier López Peña and Gabriel Navarro"
+literal|"Javier LÃ³pez PeÃ±a and Gabriel Navarro"
 argument_list|,
 name|be
 operator|.

@@ -364,7 +364,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Prechelt, Lutz and Universität Karlsruhe. Fakultät für Informatik"
+literal|"Prechelt, Lutz and UniversitÃ¤t Karlsruhe. FakultÃ¤t fÃ¼r Informatik"
 argument_list|,
 name|entry
 operator|.
