@@ -134,7 +134,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRefFrame
+name|JabRefPreferences
 import|;
 end_import
 
@@ -582,6 +582,20 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|GROUP_SHOW_NUMBER_OF_ELEMENTS
+argument_list|)
+condition|)
+block|{
+if|if
+condition|(
 name|group
 operator|instanceof
 name|ExplicitGroup
@@ -683,6 +697,7 @@ argument_list|(
 literal|"]"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(

@@ -2097,6 +2097,19 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
+name|GROUP_SHOW_NUMBER_OF_ELEMENTS
+argument_list|,
+name|Boolean
+operator|.
+name|FALSE
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
 literal|"autoAssignGroup"
 argument_list|,
 name|Boolean
@@ -4157,6 +4170,15 @@ name|String
 name|OPEN_FOLDERS_OF_ATTACHED_FILES
 init|=
 literal|"openFoldersOfAttachedFiles"
+decl_stmt|;
+DECL|field|GROUP_SHOW_NUMBER_OF_ELEMENTS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|GROUP_SHOW_NUMBER_OF_ELEMENTS
+init|=
+literal|"groupShowNumberOfElements"
 decl_stmt|;
 DECL|method|putBracesAroundCapitals (String fieldName)
 specifier|public
