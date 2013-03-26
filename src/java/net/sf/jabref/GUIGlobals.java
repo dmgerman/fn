@@ -1138,7 +1138,15 @@ argument_list|,
 literal|"no"
 argument_list|)
 expr_stmt|;
-comment|//LANGUAGES.put("EspaÃ±ol", "es"); // Not complete
+name|LANGUAGES
+operator|.
+name|put
+argument_list|(
+literal|"EspaÃ±ol"
+argument_list|,
+literal|"es"
+argument_list|)
+expr_stmt|;
 comment|//LANGUAGES.put("Polski", "pl");
 name|LANGUAGES
 operator|.
