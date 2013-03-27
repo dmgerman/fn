@@ -16841,14 +16841,15 @@ name|diag
 argument_list|)
 return|;
 block|}
-DECL|method|openFolder (String link)
+comment|/**      * Opens a file browser of the folder of the given file. If possible, the file is selected      * @param fileLink the location of the file      * @throws IOException      */
+DECL|method|openFolderAndSelectFile (String fileLink)
 specifier|public
 specifier|static
 name|void
-name|openFolder
+name|openFolderAndSelectFile
 parameter_list|(
 name|String
-name|link
+name|fileLink
 parameter_list|)
 throws|throws
 name|IOException
@@ -16860,9 +16861,9 @@ operator|.
 name|ON_WIN
 condition|)
 block|{
-name|openFolderOnWindows
+name|openFolderAndSelectFileOnWindows
 argument_list|(
-name|link
+name|fileLink
 argument_list|)
 expr_stmt|;
 block|}
@@ -16874,29 +16875,29 @@ operator|.
 name|ON_LINUX
 condition|)
 block|{
-name|openFolderOnLinux
+name|openFolderAndSelectFileOnLinux
 argument_list|(
-name|link
+name|fileLink
 argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
-name|openFolderGeneric
+name|openFolderAndSelectFileGeneric
 argument_list|(
-name|link
+name|fileLink
 argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|openFolderOnLinux (String link)
+DECL|method|openFolderAndSelectFileOnLinux (String fileLink)
 specifier|private
 specifier|static
 name|void
-name|openFolderOnLinux
+name|openFolderAndSelectFileOnLinux
 parameter_list|(
 name|String
-name|link
+name|fileLink
 parameter_list|)
 throws|throws
 name|IOException
@@ -16933,7 +16934,7 @@ name|cmd
 operator|=
 literal|"nautilus "
 operator|+
-name|link
+name|fileLink
 expr_stmt|;
 block|}
 elseif|else
@@ -16951,7 +16952,7 @@ name|cmd
 operator|=
 literal|"dolphin --select "
 operator|+
-name|link
+name|fileLink
 expr_stmt|;
 block|}
 else|else
@@ -16960,13 +16961,13 @@ name|cmd
 operator|=
 literal|"xdg-open "
 operator|+
-name|link
+name|fileLink
 operator|.
 name|substring
 argument_list|(
 literal|0
 argument_list|,
-name|link
+name|fileLink
 operator|.
 name|lastIndexOf
 argument_list|(
@@ -16988,18 +16989,27 @@ name|cmd
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|openFolderGeneric (String link)
+DECL|method|openFolderAndSelectFileGeneric (String fileLink)
 specifier|private
 specifier|static
 name|void
-name|openFolderGeneric
+name|openFolderAndSelectFileGeneric
 parameter_list|(
 name|String
-name|link
+name|fileLink
 parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|File
+name|f
+init|=
+operator|new
+name|File
+argument_list|(
+name|fileLink
+argument_list|)
+decl_stmt|;
 name|Desktop
 operator|.
 name|getDesktop
@@ -17007,33 +17017,18 @@ argument_list|()
 operator|.
 name|open
 argument_list|(
-operator|new
-name|File
-argument_list|(
-name|link
+name|f
 operator|.
-name|substring
-argument_list|(
-literal|0
-argument_list|,
-name|link
-operator|.
-name|lastIndexOf
-argument_list|(
-name|File
-operator|.
-name|separator
-argument_list|)
-argument_list|)
-argument_list|)
+name|getParentFile
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|openFolderOnWindows (String link)
+DECL|method|openFolderAndSelectFileOnWindows (String link)
 specifier|private
 specifier|static
 name|void
-name|openFolderOnWindows
+name|openFolderAndSelectFileOnWindows
 parameter_list|(
 name|String
 name|link
