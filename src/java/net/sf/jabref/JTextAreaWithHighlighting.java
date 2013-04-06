@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -50,13 +50,11 @@ end_import
 
 begin_import
 import|import
-name|java
+name|javax
 operator|.
-name|util
+name|swing
 operator|.
-name|regex
-operator|.
-name|Pattern
+name|AbstractAction
 import|;
 end_import
 
@@ -66,7 +64,17 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|*
+name|JTextArea
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|KeyStroke
 import|;
 end_import
 
@@ -139,6 +147,18 @@ operator|.
 name|text
 operator|.
 name|Highlighter
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|text
+operator|.
+name|Keymap
 import|;
 end_import
 
@@ -493,12 +513,15 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|// Bind the redo action to ctl-Y
-name|getInputMap
-argument_list|()
-operator|.
-name|put
-argument_list|(
+comment|// Bind the redo action to ctrl-Y
+name|boolean
+name|bind
+init|=
+literal|true
+decl_stmt|;
+name|KeyStroke
+name|redoKey
+init|=
 name|Globals
 operator|.
 name|prefs
@@ -507,10 +530,105 @@ name|getKey
 argument_list|(
 literal|"Redo"
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EDITOR_EMACS_KEYBINDINGS
+argument_list|)
+condition|)
+block|{
+comment|// If emacs is enabled, check if we have a conflict at keys
+comment|// If yes, do not bind
+comment|// Typically, we have: CTRL+y is "yank" in emacs and REDO in 'normal' settings
+comment|// The Emacs key bindings are stored in the keymap, not in the input map.
+name|Keymap
+name|keymap2
+init|=
+name|getKeymap
+argument_list|()
+decl_stmt|;
+name|KeyStroke
+index|[]
+name|keys
+init|=
+name|keymap2
+operator|.
+name|getBoundKeyStrokes
+argument_list|()
+decl_stmt|;
+name|int
+name|i
+init|=
+literal|0
+decl_stmt|;
+while|while
+condition|(
+operator|(
+name|i
+operator|<
+name|keys
+operator|.
+name|length
+operator|)
+operator|&&
+operator|(
+operator|!
+name|keys
+index|[
+name|i
+index|]
+operator|.
+name|equals
+argument_list|(
+name|redoKey
+argument_list|)
+operator|)
+condition|)
+block|{
+name|i
+operator|++
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|i
+operator|<
+name|keys
+operator|.
+name|length
+condition|)
+block|{
+comment|// conflict found -> do not bind
+name|bind
+operator|=
+literal|false
+expr_stmt|;
+block|}
+block|}
+if|if
+condition|(
+name|bind
+condition|)
+block|{
+name|getInputMap
+argument_list|()
+operator|.
+name|put
+argument_list|(
+name|redoKey
 argument_list|,
 literal|"Redo"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/** 	 * Highlight words in the Textarea 	 *  	 * @param words to highlight 	 */
 DECL|method|highLight (ArrayList<String> words)

@@ -933,8 +933,8 @@ init|=
 operator|new
 name|JButton
 argument_list|(
-name|Globals
 DECL|field|generate
+name|Globals
 operator|.
 name|lang
 argument_list|(
@@ -4301,20 +4301,6 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
-comment|// Let the autocompleters, if any, harvest words from
-comment|// the entry:
-name|Util
-operator|.
-name|updateCompletersForEntry
-argument_list|(
-name|panel
-operator|.
-name|getAutoCompleters
-argument_list|()
-argument_list|,
-name|entry
-argument_list|)
-expr_stmt|;
 name|ce
 operator|.
 name|addEdit
@@ -6812,7 +6798,7 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-name|FileListEditor
+name|Util
 operator|.
 name|autoSetLinks
 argument_list|(

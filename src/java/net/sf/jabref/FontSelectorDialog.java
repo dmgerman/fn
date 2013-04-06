@@ -957,7 +957,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"OK"
+literal|"Ok"
 argument_list|)
 argument_list|)
 expr_stmt|;

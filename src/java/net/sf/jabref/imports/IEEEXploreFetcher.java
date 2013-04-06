@@ -410,6 +410,15 @@ operator|new
 name|CaseKeeper
 argument_list|()
 decl_stmt|;
+DECL|field|unitFormatter
+specifier|final
+name|UnitFormatter
+name|unitFormatter
+init|=
+operator|new
+name|UnitFormatter
+argument_list|()
+decl_stmt|;
 DECL|field|dialog
 name|ImportInspector
 name|dialog
@@ -751,13 +760,14 @@ argument_list|,
 literal|"<a\\s*href=[^<]+>\\s*(.+)\\s*</a>"
 argument_list|)
 expr_stmt|;
+comment|//fieldPatterns.put("author", "</h3>\\s*(.+)");
 name|fieldPatterns
 operator|.
 name|put
 argument_list|(
 literal|"author"
 argument_list|,
-literal|"</h3>\\s*(.+)"
+literal|"(?s)</h3>\\s*(.+)</br>"
 argument_list|)
 expr_stmt|;
 name|fieldPatterns
@@ -2276,6 +2286,29 @@ argument_list|,
 literal|"\\\\infty"
 argument_list|)
 expr_stmt|;
+comment|// Unit formatting
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"useUnitFormatterOnSearch"
+argument_list|)
+condition|)
+block|{
+name|title
+operator|=
+name|unitFormatter
+operator|.
+name|format
+argument_list|(
+name|title
+argument_list|)
+expr_stmt|;
+block|}
 comment|// Automatic case keeping
 if|if
 condition|(
@@ -2296,10 +2329,6 @@ operator|.
 name|format
 argument_list|(
 name|title
-argument_list|,
-name|caseKeeperList
-operator|.
-name|wordListIEEEXplore
 argument_list|)
 expr_stmt|;
 block|}
@@ -2361,6 +2390,17 @@ comment|// Maybe not needed anymore due to another change
 block|}
 else|else
 block|{
+name|author
+operator|=
+name|author
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\s+"
+argument_list|,
+literal|" "
+argument_list|)
+expr_stmt|;
 name|author
 operator|=
 name|author

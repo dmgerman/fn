@@ -124,6 +124,25 @@ operator|=
 name|newValue
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|getPresentationName ()
+specifier|public
+name|String
+name|getPresentationName
+parameter_list|()
+block|{
+return|return
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"change key"
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|getUndoPresentationName ()
 specifier|public
 name|String
@@ -148,6 +167,8 @@ literal|"change key"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRedoPresentationName ()
 specifier|public
 name|String

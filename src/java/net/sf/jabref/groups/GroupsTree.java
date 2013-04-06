@@ -357,6 +357,7 @@ operator|new
 name|GroupTreeCellRenderer
 argument_list|()
 decl_stmt|;
+comment|/** 	 * @param groupSelector the parent UI component 	 */
 DECL|method|GroupsTree (GroupSelector groupSelector)
 specifier|public
 name|GroupsTree
@@ -365,7 +366,7 @@ name|GroupSelector
 name|groupSelector
 parameter_list|)
 block|{
-comment|// Adjust hight according to http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4760081
+comment|// Adjust height according to http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=4760081
 name|FontMetrics
 name|metrics
 init|=

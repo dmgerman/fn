@@ -1149,6 +1149,8 @@ name|autoSaveManager
 init|=
 literal|null
 decl_stmt|;
+comment|// In the main program, this field is initialized in JabRef.java
+comment|// Each test case initializes this field if required
 DECL|field|prefs
 specifier|public
 specifier|static
@@ -1183,6 +1185,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|ON_MAC
 DECL|field|ON_WIN
+DECL|field|ON_LINUX
 specifier|public
 specifier|static
 specifier|final
@@ -1205,6 +1208,15 @@ operator|.
 name|startsWith
 argument_list|(
 literal|"Windows"
+argument_list|)
+decl_stmt|,
+name|ON_LINUX
+init|=
+name|osName
+operator|.
+name|startsWith
+argument_list|(
+literal|"Linux"
 argument_list|)
 decl_stmt|;
 DECL|field|SKIP_WORDS

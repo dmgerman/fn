@@ -486,7 +486,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"This is a<p>text "
+literal|"This is a<br>text "
 argument_list|,
 name|layoutText
 argument_list|)

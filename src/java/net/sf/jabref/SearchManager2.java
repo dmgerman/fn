@@ -2213,7 +2213,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Search Specified Field(s)"
+literal|"Search specified field(s)"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2233,7 +2233,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Search All Fields"
+literal|"Search all fields"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2932,6 +2932,18 @@ operator|.
 name|setEnabled
 argument_list|(
 literal|true
+argument_list|)
+expr_stmt|;
+name|frame
+operator|.
+name|basePanel
+argument_list|()
+operator|.
+name|mainTable
+operator|.
+name|setSelected
+argument_list|(
+literal|0
 argument_list|)
 expr_stmt|;
 block|}
@@ -3967,14 +3979,14 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Search Specified Field(s)"
+literal|"Search specified field(s)"
 argument_list|)
 else|:
 name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Search All Fields"
+literal|"Search all fields"
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -65,7 +65,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author jzieren  *   */
+comment|/**  * @author jzieren  *  */
 end_comment
 
 begin_class
@@ -1341,6 +1341,19 @@ parameter_list|()
 block|{
 return|return
 name|ID
+return|;
+block|}
+DECL|method|getNumEntries ()
+specifier|public
+name|int
+name|getNumEntries
+parameter_list|()
+block|{
+return|return
+name|m_entries
+operator|.
+name|size
+argument_list|()
 return|;
 block|}
 block|}

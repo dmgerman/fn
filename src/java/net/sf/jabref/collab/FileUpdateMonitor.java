@@ -80,6 +80,18 @@ name|Iterator
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|logging
+operator|.
+name|Logger
+import|;
+end_import
+
 begin_comment
 comment|/**  * This thread monitors a set of files, each associated with a FileUpdateListener, for changes * in the file's last modification time stamp. The  */
 end_comment
@@ -92,6 +104,24 @@ name|FileUpdateMonitor
 extends|extends
 name|Thread
 block|{
+DECL|field|logger
+specifier|private
+specifier|static
+name|Logger
+name|logger
+init|=
+name|Logger
+operator|.
+name|getLogger
+argument_list|(
+name|FileUpdateMonitor
+operator|.
+name|class
+operator|.
+name|getName
+argument_list|()
+argument_list|)
+decl_stmt|;
 DECL|field|WAIT
 specifier|final
 name|int
@@ -243,7 +273,26 @@ parameter_list|(
 name|InterruptedException
 name|ex
 parameter_list|)
-block|{       }
+block|{
+name|logger
+operator|.
+name|finest
+argument_list|(
+literal|"FileUpdateMonitor has been interrupted."
+argument_list|)
+expr_stmt|;
+comment|/*  the (?) correct way to interrupt threads, according to     	   *  http://www.roseindia.net/javatutorials/shutting_down_threads_cleanly.shtml     	   */
+name|Thread
+operator|.
+name|currentThread
+argument_list|()
+operator|.
+name|interrupt
+argument_list|()
+expr_stmt|;
+comment|// very important
+break|break;
+block|}
 block|}
 block|}
 comment|/**    * Cause the thread to stop monitoring. It will finish the current round before stopping.    */

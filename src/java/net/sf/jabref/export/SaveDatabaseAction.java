@@ -330,7 +330,9 @@ literal|0
 index|]
 argument_list|)
 decl_stmt|;
-comment|/*  int choice = JOptionPane.showConfirmDialog(frame, Globals.lang("File has been updated externally. " +"Are you sure you want to save?"), Globals.lang("File updated externally"),                JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);*/
+comment|//  int choice = JOptionPane.showConfirmDialog(frame, Globals.lang("File has been updated externally. "
+comment|// +"Are you sure you want to save?"), Globals.lang("File updated externally"),
+comment|// JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 if|if
 condition|(
 name|answer

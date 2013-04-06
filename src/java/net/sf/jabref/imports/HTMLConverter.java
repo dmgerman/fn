@@ -2593,6 +2593,15 @@ block|,
 comment|// euro sign, U+20AC NEW
 comment|/* Manually added */
 block|{
+literal|"24"
+block|,
+literal|"dollar"
+block|,
+literal|"\\\\$"
+block|}
+block|,
+comment|// Percent
+block|{
 literal|"37"
 block|,
 literal|"percnt"
@@ -2604,7 +2613,7 @@ comment|// Percent
 block|{
 literal|"39"
 block|,
-literal|""
+literal|"apos"
 block|,
 literal|"'"
 block|}
@@ -2613,7 +2622,7 @@ comment|// Apostrophe
 block|{
 literal|"40"
 block|,
-literal|""
+literal|"lpar"
 block|,
 literal|"("
 block|}
@@ -2622,7 +2631,7 @@ comment|// Left bracket
 block|{
 literal|"41"
 block|,
-literal|""
+literal|"rpar"
 block|,
 literal|")"
 block|}
@@ -2691,6 +2700,15 @@ literal|";"
 block|}
 block|,
 comment|// Semi colon
+block|{
+literal|"61"
+block|,
+literal|"equals"
+block|,
+literal|"="
+block|}
+block|,
+comment|// Equals to
 block|{
 literal|"91"
 block|,
@@ -3097,6 +3115,24 @@ literal|"\\{\\\\k\\{u\\}\\}"
 block|}
 block|,
 comment|// small u with ogonek
+block|{
+literal|"381"
+block|,
+literal|"Zcaron"
+block|,
+literal|"\\{\\\\v\\{Z\\}\\}"
+block|}
+block|,
+comment|// capital Z with caron
+block|{
+literal|"382"
+block|,
+literal|"zcaron"
+block|,
+literal|"\\{\\\\v\\{z\\}\\}"
+block|}
+block|,
+comment|// small z with caron
 block|{
 literal|"490"
 block|,
@@ -3550,6 +3586,15 @@ block|}
 block|,
 comment|// Small element in
 block|{
+literal|"8723"
+block|,
+literal|"mp"
+block|,
+literal|"\\$\\\\mp\\$"
+block|}
+block|,
+comment|// Minus-plus
+block|{
 literal|"8729"
 block|,
 literal|"bullet"
@@ -3622,6 +3667,15 @@ block|}
 block|,
 comment|// Much greater than
 block|{
+literal|"8818"
+block|,
+literal|"lsim"
+block|,
+literal|"\\$\\\\lesssim\\$"
+block|}
+block|,
+comment|// Less than or equivalent to
+block|{
 literal|"8819"
 block|,
 literal|"gsim"
@@ -3630,6 +3684,33 @@ literal|"\\$\\\\gtrsim\\$"
 block|}
 block|,
 comment|// Greater than or equivalent to
+block|{
+literal|"8862"
+block|,
+literal|"boxplus"
+block|,
+literal|"\\$\\\\boxplus\\$"
+block|}
+block|,
+comment|// Boxed plus -- requires amssymb
+block|{
+literal|"8863"
+block|,
+literal|"boxminus"
+block|,
+literal|"\\$\\\\boxminus\\$"
+block|}
+block|,
+comment|// Boxed minus -- requires amssymb
+block|{
+literal|"8864"
+block|,
+literal|"boxtimes"
+block|,
+literal|"\\$\\\\boxtimes\\$"
+block|}
+block|,
+comment|// Boxed times -- requires amssymb
 block|{
 literal|"8882"
 block|,
@@ -3669,7 +3750,7 @@ comment|// Big vee
 block|{
 literal|"9426"
 block|,
-literal|""
+literal|"circledc"
 block|,
 literal|"\\{\\\\copyright\\}"
 block|}
@@ -3684,6 +3765,15 @@ literal|"\\$\\\\square\\$"
 block|}
 block|,
 comment|// White square
+block|{
+literal|"9651"
+block|,
+literal|"xutri"
+block|,
+literal|"\\$\\\\bigtriangleup\\$"
+block|}
+block|,
+comment|// White up-pointing big triangle
 block|{
 literal|"9653"
 block|,
@@ -3719,7 +3809,16 @@ literal|"Oscr"
 block|,
 literal|"\\$\\\\mathcal\\{O\\}\\$"
 block|}
+block|,
 comment|// script capital O -- possibly use \mathscr
+block|{
+literal|"119984"
+block|,
+literal|"Uscr"
+block|,
+literal|"\\$\\\\mathcal\\{U\\}\\$"
+block|}
+comment|// script capital U -- possibly use \mathscr
 block|}
 decl_stmt|;
 comment|// List of combining accents
@@ -4224,6 +4323,25 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
+DECL|field|unicodeSymbols
+specifier|private
+name|HashMap
+argument_list|<
+name|Character
+argument_list|,
+name|String
+argument_list|>
+name|unicodeSymbols
+init|=
+operator|new
+name|HashMap
+argument_list|<
+name|Character
+argument_list|,
+name|String
+argument_list|>
+argument_list|()
+decl_stmt|;
 DECL|method|HTMLConverter ()
 specifier|public
 name|HTMLConverter
@@ -4349,6 +4467,70 @@ literal|2
 index|]
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|Integer
+operator|.
+name|decode
+argument_list|(
+name|conversionList
+index|[
+name|i
+index|]
+index|[
+literal|0
+index|]
+argument_list|)
+operator|.
+name|intValue
+argument_list|()
+operator|>
+literal|128
+condition|)
+block|{
+name|Character
+name|c
+init|=
+operator|new
+name|Character
+argument_list|(
+operator|(
+name|char
+operator|)
+name|Integer
+operator|.
+name|decode
+argument_list|(
+name|conversionList
+index|[
+name|i
+index|]
+index|[
+literal|0
+index|]
+argument_list|)
+operator|.
+name|intValue
+argument_list|()
+argument_list|)
+decl_stmt|;
+name|unicodeSymbols
+operator|.
+name|put
+argument_list|(
+name|c
+argument_list|,
+name|conversionList
+index|[
+name|i
+index|]
+index|[
+literal|2
+index|]
+argument_list|)
+expr_stmt|;
+comment|// System.err.println(Integer.decode(conversionList[i][0]).toString() + ": " + c.toString() + ": "+ conversionList[i][2]);
+block|}
 block|}
 block|}
 block|}
@@ -4397,6 +4579,69 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|formatUnicode (String text)
+specifier|public
+name|String
+name|formatUnicode
+parameter_list|(
+name|String
+name|text
+parameter_list|)
+block|{
+if|if
+condition|(
+name|text
+operator|==
+literal|null
+condition|)
+return|return
+literal|null
+return|;
+name|Set
+argument_list|<
+name|Character
+argument_list|>
+name|chars
+init|=
+name|unicodeSymbols
+operator|.
+name|keySet
+argument_list|()
+decl_stmt|;
+for|for
+control|(
+name|Character
+name|character
+range|:
+name|chars
+control|)
+block|{
+comment|// System.err.println(new Integer((int) character).toString() + ": " + character.toString() + ": " + unicodeSymbols.get(character));
+name|text
+operator|=
+name|text
+operator|.
+name|replaceAll
+argument_list|(
+name|character
+operator|.
+name|toString
+argument_list|()
+argument_list|,
+name|unicodeSymbols
+operator|.
+name|get
+argument_list|(
+name|character
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+return|return
+name|text
+return|;
+block|}
+empty_stmt|;
 DECL|method|format (String text)
 specifier|public
 name|String
@@ -4443,7 +4688,7 @@ name|text
 operator|.
 name|replaceAll
 argument_list|(
-literal|"<sup>([^<]+)</sup>"
+literal|"<[ ]?sup>([^<]+)</sup>"
 argument_list|,
 literal|"\\$\\^\\{$1\\}\\$"
 argument_list|)
@@ -4454,7 +4699,7 @@ name|text
 operator|.
 name|replaceAll
 argument_list|(
-literal|"<sub>([^<]+)</sub>"
+literal|"<[ ]?sub>([^<]+)</sub>"
 argument_list|,
 literal|"\\$_\\{$1\\}\\$"
 argument_list|)
@@ -4468,7 +4713,7 @@ name|text
 operator|.
 name|replaceAll
 argument_list|(
-literal|"<sup>([^<]+)</sup>"
+literal|"<[ ]?sup>([^<]+)</sup>"
 argument_list|,
 literal|"\\\\textsuperscript\\{$1\\}"
 argument_list|)
@@ -4479,7 +4724,7 @@ name|text
 operator|.
 name|replaceAll
 argument_list|(
-literal|"<sub>([^<]+)</sub>"
+literal|"<[ ]?sub>([^<]+)</sub>"
 argument_list|,
 literal|"\\\\textsubscript\\{$1\\}"
 argument_list|)
@@ -5132,8 +5377,9 @@ specifier|final
 name|int
 name|MAX_TAG_LENGTH
 init|=
-literal|30
+literal|100
 decl_stmt|;
+comment|/*private final int MAX_TAG_LENGTH = 30;*/
 comment|/*private final int MAX_CHAR_LENGTH = 10;      private int readHtmlChar(String text, StringBuffer sb, int position) {         // Have just read the< character that starts the tag.         int index = text.indexOf(';', position);         if ((index> position)&& (index-position< MAX_CHAR_LENGTH)) {         	//String code = text.substring(position, index);             //System.out.println("Removed code: "+text.substring(position, index));             return index; // Just skip the tag.         } else return position; // Don't do anything.     }*/
 DECL|method|readTag (String text, StringBuffer sb, int position)
 specifier|private

@@ -788,7 +788,7 @@ name|Util
 operator|.
 name|checkLegalKey
 argument_list|(
-literal|"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
+literal|"Ã¯Â¿Â½Ã¯Â¿Â½Ã¯Â¿Â½Ã¯Â¿Â½Ã¯Â¿Â½Ã¯Â¿Â½"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -811,7 +811,7 @@ name|void
 name|testReplaceSpecialCharacters
 parameter_list|()
 block|{
-comment|// Shouldn't German ï¿½ be resolved to Ae
+comment|// Shouldn't German Ã¯Â¿Â½ be resolved to Ae
 name|assertEquals
 argument_list|(
 literal|"AeaeaAAA"
@@ -820,7 +820,7 @@ name|Util
 operator|.
 name|replaceSpecialCharacters
 argument_list|(
-literal|"ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
+literal|"Ã¯Â¿Â½Ã¯Â¿Â½Ã¯Â¿Â½Ã¯Â¿Â½Ã¯Â¿Â½Ã¯Â¿Â½"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1088,7 +1088,7 @@ parameter_list|(
 name|NullPointerException
 name|npe
 parameter_list|)
-block|{ 			 		}
+block|{  		}
 block|}
 DECL|field|database
 name|BibtexDatabase
@@ -3438,7 +3438,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Tests Util.checkForDOI(...) for right functionality       */
+comment|/**      * Tests Util.checkForDOI(...) for right functionality      */
 DECL|method|testCheckForDoi ()
 specifier|public
 name|void
@@ -3513,7 +3513,7 @@ name|Util
 operator|.
 name|checkForDOIwithHTTPprefix
 argument_list|(
-literal|"thfjtfjglkjjlkkölm5476576658796"
+literal|"thfjtfjglkjjlkkÃ¶lm5476576658796"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3554,7 +3554,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Tests Util.parseDOI(...) for right functionality       */
+comment|/**      * Tests Util.parseDOI(...) for right functionality      */
 DECL|method|testParseDoi ()
 specifier|public
 name|void

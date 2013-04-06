@@ -418,7 +418,18 @@ argument_list|(
 name|colorPanel
 argument_list|)
 expr_stmt|;
-comment|/*builder.appendSeparator(Globals.lang("Custom icon theme"));         builder.append(useCustomIconTheme);         builder.nextLine();         JPanel p2 = new JPanel();         lab = new JLabel(Globals.lang("Custom icon theme file")+":");         p2.add(lab);         p2.add(customIconThemeFile);         BrowseAction browse = new BrowseAction(null, customIconThemeFile, false);         JButton browseBut = new JButton(Globals.lang("Browse"));         browseBut.addActionListener(browse);         p2.add(browseBut);         builder.append(p2);           */
+comment|//builder.appendSeparator(Globals.lang("Custom icon theme"));
+comment|//builder.append(useCustomIconTheme);
+comment|//builder.nextLine();
+comment|//JPanel p2 = new JPanel();
+comment|//lab = new JLabel(Globals.lang("Custom icon theme file")+":");
+comment|//p2.add(lab);
+comment|//p2.add(customIconThemeFile);
+comment|//BrowseAction browse = new BrowseAction(null, customIconThemeFile, false);
+comment|//JButton browseBut = new JButton(Globals.lang("Browse"));
+comment|//browseBut.addActionListener(browse);
+comment|//p2.add(browseBut);
+comment|//builder.append(p2);
 name|JPanel
 name|upper
 init|=

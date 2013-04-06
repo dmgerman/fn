@@ -48,6 +48,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|Util
 import|;
 end_import
@@ -124,6 +136,25 @@ operator|=
 name|newValue
 expr_stmt|;
 block|}
+annotation|@
+name|Override
+DECL|method|getPresentationName ()
+specifier|public
+name|String
+name|getPresentationName
+parameter_list|()
+block|{
+return|return
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"change field"
+argument_list|)
+return|;
+block|}
+annotation|@
+name|Override
 DECL|method|getUndoPresentationName ()
 specifier|public
 name|String
@@ -131,9 +162,25 @@ name|getUndoPresentationName
 parameter_list|()
 block|{
 return|return
-literal|"Undo: change field"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Undo"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"change field"
+argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRedoPresentationName ()
 specifier|public
 name|String
@@ -141,7 +188,21 @@ name|getRedoPresentationName
 parameter_list|()
 block|{
 return|return
-literal|"Redo: change field"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Redo"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"change field"
+argument_list|)
 return|;
 block|}
 DECL|method|undo ()

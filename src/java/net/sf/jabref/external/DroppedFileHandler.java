@@ -1941,7 +1941,9 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * @return true if user pushed "OK", false otherwise      */
+comment|//
+comment|// @return true if user pushed "Ok", false otherwise
+comment|//
 DECL|method|showLinkMoveCopyRenameDialog (String linkFileName, ExternalFileType fileType, BibtexEntry entry, boolean newEntry, final boolean multipleEntries, BibtexDatabase database)
 specifier|public
 name|boolean
@@ -2061,7 +2063,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"File directory is not set or does not exist."
+literal|"File directory is not set or does not exist!"
 argument_list|)
 argument_list|)
 expr_stmt|;

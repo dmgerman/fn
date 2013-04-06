@@ -119,7 +119,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A base class for Testing in JabRef that comes along with some useful  * functions.  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  * A base class for Testing in JabRef that comes along with some useful  * functions.  */
 end_comment
 
 begin_class
@@ -376,6 +376,11 @@ specifier|private
 name|boolean
 name|oldUseRegExp
 decl_stmt|;
+DECL|field|oldAutoLinkExcatKeyOnly
+specifier|private
+name|boolean
+name|oldAutoLinkExcatKeyOnly
+decl_stmt|;
 DECL|method|getBibtexEntry ()
 specifier|public
 specifier|static
@@ -515,6 +520,19 @@ operator|.
 name|USE_REG_EXP_SEARCH_KEY
 argument_list|)
 expr_stmt|;
+name|oldAutoLinkExcatKeyOnly
+operator|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|AUTOLINK_EXACT_KEY_ONLY
+argument_list|)
+expr_stmt|;
 name|oldPdfDirectory
 operator|=
 name|Globals
@@ -535,6 +553,19 @@ argument_list|(
 name|JabRefPreferences
 operator|.
 name|USE_REG_EXP_SEARCH_KEY
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|putBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|AUTOLINK_EXACT_KEY_ONLY
 argument_list|,
 literal|false
 argument_list|)
@@ -856,7 +887,7 @@ name|File
 argument_list|(
 name|graphicsSubDir
 argument_list|,
-literal|"testHipKro03test.jpg"
+literal|"HipKro03test.jpg"
 argument_list|)
 decl_stmt|;
 name|jpg
@@ -872,7 +903,7 @@ name|File
 argument_list|(
 name|graphicsSubDir
 argument_list|,
-literal|"testHipKro03test.png"
+literal|"HipKro03test.png"
 argument_list|)
 decl_stmt|;
 name|png
@@ -903,6 +934,19 @@ block|{
 name|deleteRecursive
 argument_list|(
 name|root
+argument_list|)
+expr_stmt|;
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|putBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|AUTOLINK_EXACT_KEY_ONLY
+argument_list|,
+name|oldAutoLinkExcatKeyOnly
 argument_list|)
 expr_stmt|;
 name|Globals

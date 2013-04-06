@@ -1172,7 +1172,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Error converting Bibtex to XMP: %0"
+literal|"Error converting BibTeX to XMP: %0"
 argument_list|,
 name|e
 operator|.

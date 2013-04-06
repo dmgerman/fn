@@ -349,21 +349,21 @@ name|assertNameFormatA
 argument_list|(
 literal|"Victor, P.~{\\'E}?"
 argument_list|,
-literal|"Paul {\\'E}mile Victor and and de la Cierva y Codorn{\\\\i}u, Juan"
+literal|"Paul {\\'E}mile Victor and and de la Cierva y Codorn{\\â\\i}u, Juan"
 argument_list|)
 expr_stmt|;
 name|assertNameFormatB
 argument_list|(
 literal|"P.~{\\'E}. Victor"
 argument_list|,
-literal|"Paul {\\'E}mile Victor and and de la Cierva y Codorn{\\\\i}u, Juan"
+literal|"Paul {\\'E}mile Victor and and de la Cierva y Codorn{\\â\\i}u, Juan"
 argument_list|)
 expr_stmt|;
 name|assertNameFormatC
 argument_list|(
 literal|"Paul~{\\'E}mile Victor"
 argument_list|,
-literal|"Paul {\\'E}mile Victor and and de la Cierva y Codorn{\\\\i}u, Juan"
+literal|"Paul {\\'E}mile Victor and and de la Cierva y Codorn{\\â\\i}u, Juan"
 argument_list|)
 expr_stmt|;
 block|}

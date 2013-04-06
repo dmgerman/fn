@@ -116,6 +116,15 @@ name|MedlineHandler
 extends|extends
 name|DefaultHandler
 block|{
+DECL|field|htmlConverter
+specifier|static
+name|HTMLConverter
+name|htmlConverter
+init|=
+operator|new
+name|HTMLConverter
+argument_list|()
+decl_stmt|;
 DECL|field|bibitems
 name|ArrayList
 argument_list|<
@@ -1383,6 +1392,10 @@ name|setField
 argument_list|(
 literal|"author"
 argument_list|,
+name|htmlConverter
+operator|.
+name|formatUnicode
+argument_list|(
 name|ImportFormatReader
 operator|.
 name|expandAuthorInitials
@@ -1390,7 +1403,9 @@ argument_list|(
 name|author
 argument_list|)
 argument_list|)
+argument_list|)
 expr_stmt|;
+comment|// b.setField("author",Util.replaceSpecialCharacters(ImportFormatReader.expandAuthorInitials(author)));
 name|author
 operator|=
 literal|""
@@ -1412,9 +1427,15 @@ name|setField
 argument_list|(
 literal|"title"
 argument_list|,
+name|htmlConverter
+operator|.
+name|formatUnicode
+argument_list|(
 name|title
 argument_list|)
+argument_list|)
 expr_stmt|;
+comment|// if (!title.equals("")) b.setField("title",Util.replaceSpecialCharacters(title));
 if|if
 condition|(
 operator|!

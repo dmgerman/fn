@@ -205,7 +205,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A single tab displayed in the EntryEditor holding several FieldEditors.  *  * @author $Author$  * @version $Revision$ ($Date$)  *  */
+comment|/**  * A single tab displayed in the EntryEditor holding several FieldEditors.  *   * Used in Biblatex mode (called from setupFiledPanels())  */
 end_comment
 
 begin_class
@@ -278,6 +278,14 @@ DECL|field|activeField
 specifier|private
 name|FieldEditor
 name|activeField
+init|=
+literal|null
+decl_stmt|;
+comment|// UGLY HACK to have a pointer to the fileListEditor to call autoSetLinks()
+DECL|field|fileListEditor
+specifier|public
+name|FileListEditor
+name|fileListEditor
 init|=
 literal|null
 decl_stmt|;
@@ -851,6 +859,7 @@ name|GUIGlobals
 operator|.
 name|FILE_LIST_EDITOR
 condition|)
+block|{
 name|ta
 operator|=
 operator|new
@@ -873,6 +882,14 @@ argument_list|,
 name|parent
 argument_list|)
 expr_stmt|;
+name|fileListEditor
+operator|=
+operator|(
+name|FileListEditor
+operator|)
+name|ta
+expr_stmt|;
+block|}
 else|else
 block|{
 name|ta

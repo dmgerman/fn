@@ -1125,7 +1125,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Please select an importer"
+literal|"Please select an importer."
 argument_list|)
 argument_list|)
 expr_stmt|;

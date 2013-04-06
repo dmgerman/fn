@@ -22,6 +22,18 @@ end_package
 
 begin_import
 import|import
+name|java
+operator|.
+name|util
+operator|.
+name|logging
+operator|.
+name|Logger
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -49,7 +61,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Transform a LaTeX-String to RTF.  *   * This method will:  *   *   1.) Remove LaTeX-Command sequences.  *     *   2.) Replace LaTeX-Special chars with RTF aquivalents.  *     *   3.) Replace emph and textit and textbf with their RTF replacements.  *     *   4.) Take special care to save all unicode characters correctly.  *  *   5.) Replace --- by \emdash and -- by \endash.  *   * @author $Author$  * @version $Revision$ ($Date$)  *  */
+comment|/**  * Transform a LaTeX-String to RTF.  *   * This method will:  *   *   1.) Remove LaTeX-Command sequences.  *     *   2.) Replace LaTeX-Special chars with RTF aquivalents.  *     *   3.) Replace emph and textit and textbf with their RTF replacements.  *     *   4.) Take special care to save all unicode characters correctly.  *  *   5.) Replace --- by \emdash and -- by \endash.  */
 end_comment
 
 begin_class
@@ -60,6 +72,25 @@ name|RTFChars
 implements|implements
 name|LayoutFormatter
 block|{
+comment|// Instantiate logger:
+DECL|field|logger
+specifier|private
+specifier|static
+name|Logger
+name|logger
+init|=
+name|Logger
+operator|.
+name|getLogger
+argument_list|(
+name|RTFChars
+operator|.
+name|class
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+decl_stmt|;
 DECL|method|format (String field)
 specifier|public
 name|String
@@ -110,7 +141,55 @@ name|i
 operator|++
 control|)
 block|{
-comment|/*System.out.println("incommand="+incommand+". escaped="+escaped                             +". currentCommand='"+(currentCommand!=null?currentCommand.toString():"")+"'");             System.out.println("sb: '"+sb.toString()+"'");*/
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"incommand="
+operator|+
+name|incommand
+operator|+
+literal|". escaped="
+operator|+
+name|escaped
+operator|+
+literal|". currentCommand='"
+operator|+
+operator|(
+name|currentCommand
+operator|!=
+literal|null
+condition|?
+name|currentCommand
+operator|.
+name|toString
+argument_list|()
+else|:
+literal|""
+operator|)
+operator|+
+literal|"'"
+argument_list|)
+expr_stmt|;
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"sb: '"
+operator|+
+name|sb
+operator|.
+name|toString
+argument_list|()
+operator|+
+literal|"'"
+argument_list|)
+expr_stmt|;
+comment|/**/
 name|char
 name|c
 init|=
@@ -121,7 +200,24 @@ argument_list|(
 name|i
 argument_list|)
 decl_stmt|;
-comment|//System.out.println("Char: '"+((char)c)+"'");
+name|System
+operator|.
+name|out
+operator|.
+name|println
+argument_list|(
+literal|"Char: '"
+operator|+
+operator|(
+operator|(
+name|char
+operator|)
+name|c
+operator|)
+operator|+
+literal|"'"
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|escaped
@@ -325,6 +421,8 @@ argument_list|(
 name|field
 argument_list|,
 name|i
+argument_list|,
+literal|true
 argument_list|)
 decl_stmt|;
 name|i
@@ -435,6 +533,11 @@ argument_list|)
 expr_stmt|;
 else|else
 block|{
+assert|assert
+operator|(
+name|incommand
+operator|)
+assert|;
 comment|// First test for braces that may be part of a LaTeX command:
 if|if
 condition|(
@@ -542,9 +645,17 @@ break|;
 if|if
 condition|(
 operator|(
+operator|(
 name|c
 operator|==
 literal|'{'
+operator|)
+operator|||
+operator|(
+name|c
+operator|==
+literal|' '
+operator|)
 operator|)
 operator|&&
 operator|(
@@ -599,6 +710,12 @@ argument_list|(
 name|field
 argument_list|,
 name|i
+argument_list|,
+operator|(
+name|c
+operator|==
+literal|'{'
+operator|)
 argument_list|)
 decl_stmt|;
 name|i
@@ -611,7 +728,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"}{\\i "
+literal|"{\\i "
 argument_list|)
 operator|.
 name|append
@@ -623,7 +740,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"}{"
+literal|"}"
 argument_list|)
 expr_stmt|;
 block|}
@@ -646,6 +763,12 @@ argument_list|(
 name|field
 argument_list|,
 name|i
+argument_list|,
+operator|(
+name|c
+operator|==
+literal|'{'
+operator|)
 argument_list|)
 decl_stmt|;
 name|i
@@ -658,7 +781,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"}{\\b "
+literal|"{\\b "
 argument_list|)
 operator|.
 name|append
@@ -670,9 +793,31 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"}{"
+literal|"}"
 argument_list|)
 expr_stmt|;
+block|}
+else|else
+block|{
+name|logger
+operator|.
+name|fine
+argument_list|(
+literal|"Unknown command "
+operator|+
+name|command
+argument_list|)
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|c
+operator|==
+literal|' '
+condition|)
+block|{
+comment|// command was separated with the content by ' '
+comment|// We have to add the space a
 block|}
 block|}
 else|else
@@ -807,7 +952,8 @@ literal|"{\\\\rdblquote}"
 argument_list|)
 return|;
 block|}
-DECL|method|getPart (String text, int i)
+comment|/** 	 * @param text the text to extract the part from 	 * @param i the position to start 	 * @param commandNestedInBraces true if the command is nested in braces (\emph{xy}), false if spaces are sued (\emph xy)  	 * @return a tuple of number of added characters and the extracted part 	 */
+DECL|method|getPart (String text, int i, boolean commandNestedInBraces)
 specifier|private
 name|IntAndString
 name|getPart
@@ -817,6 +963,9 @@ name|text
 parameter_list|,
 name|int
 name|i
+parameter_list|,
+name|boolean
+name|commandNestedInBraces
 parameter_list|)
 block|{
 name|char
@@ -834,6 +983,8 @@ operator|new
 name|StringBuffer
 argument_list|()
 decl_stmt|;
+name|loop
+label|:
 while|while
 condition|(
 operator|(
@@ -864,25 +1015,40 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
-if|if
+switch|switch
 condition|(
 name|c
-operator|==
-literal|'}'
 condition|)
+block|{
+case|case
+literal|'}'
+case|:
 name|count
 operator|--
 expr_stmt|;
-elseif|else
-if|if
-condition|(
-name|c
-operator|==
+break|break;
+case|case
 literal|'{'
-condition|)
+case|:
 name|count
 operator|++
 expr_stmt|;
+break|break;
+case|case
+literal|' '
+case|:
+if|if
+condition|(
+name|commandNestedInBraces
+condition|)
+block|{
+comment|// in any case, a space terminates the loop
+break|break
+name|loop
+break|;
+block|}
+break|break;
+block|}
 name|part
 operator|.
 name|append
@@ -891,6 +1057,15 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
+name|String
+name|res
+init|=
+name|part
+operator|.
+name|toString
+argument_list|()
+decl_stmt|;
+comment|// the wrong "}" at the end is removed by "format(res)"
 return|return
 operator|new
 name|IntAndString
@@ -902,10 +1077,7 @@ argument_list|()
 argument_list|,
 name|format
 argument_list|(
-name|part
-operator|.
-name|toString
-argument_list|()
+name|res
 argument_list|)
 argument_list|)
 return|;
