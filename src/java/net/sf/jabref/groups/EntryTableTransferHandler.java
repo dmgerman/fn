@@ -358,6 +358,16 @@ begin_import
 import|import
 name|spl
 operator|.
+name|PdfImporter
+operator|.
+name|ImportPdfFilesResult
+import|;
+end_import
+
+begin_import
+import|import
+name|spl
+operator|.
 name|Tools
 import|;
 end_import
@@ -1543,9 +1553,8 @@ parameter_list|()
 block|{
 comment|// Done by MrDlib
 specifier|final
-name|String
-index|[]
-name|newfileNames
+name|ImportPdfFilesResult
+name|importRes
 init|=
 operator|new
 name|PdfImporter
@@ -1568,7 +1577,9 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|newfileNames
+name|importRes
+operator|.
+name|noPdfFiles
 operator|.
 name|length
 operator|>
@@ -1577,7 +1588,9 @@ condition|)
 block|{
 name|loadOrImportFiles
 argument_list|(
-name|newfileNames
+name|importRes
+operator|.
+name|noPdfFiles
 argument_list|,
 name|dropRow
 argument_list|)
