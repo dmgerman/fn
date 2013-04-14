@@ -151,9 +151,6 @@ decl_stmt|;
 DECL|field|valueDelimiter
 specifier|private
 name|JComboBox
-argument_list|<
-name|String
-argument_list|>
 name|valueDelimiter
 decl_stmt|;
 specifier|private
@@ -436,9 +433,6 @@ name|valueDelimiter
 operator|=
 operator|new
 name|JComboBox
-argument_list|<
-name|String
-argument_list|>
 argument_list|(
 operator|new
 name|String
