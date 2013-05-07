@@ -308,14 +308,17 @@ argument_list|()
 operator|.
 name|exec
 argument_list|(
+operator|new
+name|String
+index|[]
+block|{
 name|winEdt
-operator|+
-literal|" "
-operator|+
+block|,
 name|toSend
 operator|.
 name|toString
 argument_list|()
+block|}
 argument_list|)
 expr_stmt|;
 block|}
