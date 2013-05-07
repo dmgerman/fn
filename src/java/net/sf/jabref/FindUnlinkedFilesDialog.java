@@ -654,20 +654,6 @@ name|UnlinkedPDFFileFilter
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|undo
-operator|.
-name|CountingUndoManager
-import|;
-end_import
-
 begin_comment
 comment|/**  * GUI Dialog for the feature "Find unlinked files".  *   * @author Nosh&Dan  * @version 25.11.2008 | 23:13:29  *  */
 end_comment
@@ -707,8 +693,16 @@ specifier|final
 name|String
 name|ACTION_TITLE
 init|=
-literal|"Find unlinked Files..."
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Find unlinked files"
+argument_list|)
+operator|+
+literal|"..."
 decl_stmt|;
+comment|// this entry is NOT in Menu_en.properties as the same string also appears in JabRef_en.properties
 DECL|field|ACTION_ICON
 specifier|public
 specifier|static
@@ -725,7 +719,12 @@ specifier|final
 name|String
 name|ACTION_SHORT_DESCRIPTION
 init|=
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Searches for unlinked PDF files on the file system"
+argument_list|)
 decl_stmt|;
 DECL|field|GLOBAL_PREFS_WORKING_DIRECTORY_KEY
 specifier|private
