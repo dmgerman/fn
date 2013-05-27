@@ -317,22 +317,23 @@ specifier|private
 name|int
 name|result
 decl_stmt|;
-DECL|field|dropRow
-specifier|private
-name|int
-name|dropRow
-decl_stmt|;
 DECL|field|fileName
 specifier|private
 name|String
 name|fileName
 decl_stmt|;
-DECL|method|ImportDialog (int dropRow, String fileName)
+comment|// indicates whether the drop target is a row in the table or whether other kinds of imports are used
+DECL|field|targetIsARow
+specifier|private
+name|Boolean
+name|targetIsARow
+decl_stmt|;
+DECL|method|ImportDialog (boolean targetIsARow, String fileName)
 specifier|public
 name|ImportDialog
 parameter_list|(
-name|int
-name|dropRow
+name|boolean
+name|targetIsARow
 parameter_list|,
 name|String
 name|fileName
@@ -340,9 +341,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|dropRow
+name|targetIsARow
 operator|=
-name|dropRow
+name|targetIsARow
 expr_stmt|;
 name|contentPane
 operator|=
@@ -1035,15 +1036,12 @@ operator|.
 name|SOUTH
 argument_list|)
 expr_stmt|;
-comment|//$$$setupUI$$$();
-comment|//this.setText();
 if|if
 condition|(
+operator|!
 name|this
 operator|.
-name|dropRow
-operator|<
-literal|0
+name|targetIsARow
 condition|)
 block|{
 name|this
