@@ -988,9 +988,46 @@ literal|"userFileDirIndividual"
 argument_list|)
 argument_list|)
 decl_stmt|;
+comment|// File dir setting
+name|Vector
+argument_list|<
+name|String
+argument_list|>
+name|fileDIL
+init|=
+name|metaData
+operator|.
+name|getData
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"userFileDirInd_Legacy"
+argument_list|)
+argument_list|)
+decl_stmt|;
+comment|// Legacy file dir setting for backward comp.
 if|if
 condition|(
 name|fileDI
+operator|==
+literal|null
+condition|)
+block|{
+name|oldFileIndvVal
+operator|=
+name|fileDirIndv
+operator|.
+name|getText
+argument_list|()
+expr_stmt|;
+comment|// Record individual file dir setting as originally empty if reading from legacy setting
+if|if
+condition|(
+name|fileDIL
 operator|==
 literal|null
 condition|)
@@ -1001,6 +1038,38 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
+else|else
+block|{
+comment|// Insert path from legacy setting if possible
+comment|// Better be a little careful about how many entries the Vector has:
+if|if
+condition|(
+name|fileDIL
+operator|.
+name|size
+argument_list|()
+operator|>=
+literal|1
+condition|)
+name|fileDirIndv
+operator|.
+name|setText
+argument_list|(
+operator|(
+name|fileDIL
+operator|.
+name|get
+argument_list|(
+literal|0
+argument_list|)
+operator|)
+operator|.
+name|trim
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 else|else
 block|{
 comment|// Better be a little careful about how many entries the Vector has:
@@ -1030,6 +1099,14 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|oldFileIndvVal
+operator|=
+name|fileDirIndv
+operator|.
+name|getText
+argument_list|()
+expr_stmt|;
+comment|// Record individual file dir setting normally if reading from ordinary setting
 block|}
 name|Vector
 argument_list|<
@@ -1202,13 +1279,6 @@ expr_stmt|;
 block|}
 comment|// Store original values to see if they get changed:
 name|oldFileVal
-operator|=
-name|fileDir
-operator|.
-name|getText
-argument_list|()
-expr_stmt|;
-name|oldFileIndvVal
 operator|=
 name|fileDir
 operator|.
