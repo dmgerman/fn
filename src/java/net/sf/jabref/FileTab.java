@@ -471,7 +471,7 @@ literal|"Include empty fields"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|camelCase
+name|sameColumn
 operator|=
 operator|new
 name|JCheckBox
@@ -484,7 +484,7 @@ literal|"Start field contents in same column"
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|sameColumn
+name|camelCase
 operator|=
 operator|new
 name|JCheckBox
