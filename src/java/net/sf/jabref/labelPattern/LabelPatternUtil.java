@@ -4180,10 +4180,13 @@ operator|++
 expr_stmt|;
 block|}
 return|return
+name|keepLettersAndDigitsOnly
+argument_list|(
 name|_sbvalue
 operator|.
 name|toString
 argument_list|()
+argument_list|)
 return|;
 block|}
 DECL|method|keepLettersAndDigitsOnly (String in)

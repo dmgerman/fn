@@ -14880,6 +14880,8 @@ name|targetName
 return|;
 block|}
 comment|// DOI-regexp provided by http://stackoverflow.com/a/10324802/873282
+comment|// Some DOI's are not caught by the regexp in the above link, i.e. 10.1002/(SICI)1522-2594(199911)42:5<952::AID-MRM16>3.0.CO;2-S
+comment|// Removed<> from non-permitted characters
 DECL|field|REGEXP_PLAINDOI
 specifier|private
 specifier|static
@@ -14887,7 +14889,7 @@ specifier|final
 name|String
 name|REGEXP_PLAINDOI
 init|=
-literal|"\\b(10[.][0-9]{4,}(?:[.][0-9]+)*/(?:(?![\"&\\'<>])\\S)+)\\b"
+literal|"\\b(10[.][0-9]{4,}(?:[.][0-9]+)*/(?:(?![\"&\\'])\\S)+)\\b"
 decl_stmt|;
 DECL|field|REGEXP_DOI_WITH_HTTP_PREFIX
 specifier|private
