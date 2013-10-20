@@ -40,6 +40,18 @@ name|GUIGlobals
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class provides the reformatting needed when reading BibTeX fields formatted  * in JabRef style. The reformatting must undo all formatting done by JabRef when  * writing the same fields.  */
 end_comment
@@ -181,7 +193,7 @@ operator|)
 condition|)
 block|{
 comment|// We have either \n\t followed by non-whitespace, or \n\t at the
-comment|// end. Bothe cases indicate a wrap made by JabRef. Remove and insert space if necessary.
+comment|// end. Both cases indicate a wrap made by JabRef. Remove and insert space if necessary.
 name|content
 operator|.
 name|deleteCharAt
@@ -522,65 +534,58 @@ literal|'\n'
 operator|)
 condition|)
 block|{
-comment|// We have a line break not followed by another line break. This is probably a normal
-comment|// line break made by whatever other editor, so we will remove the line break.
-name|content
-operator|.
-name|deleteCharAt
-argument_list|(
+comment|// We have a line break not followed by another line break.
+comment|// Interpretation before JabRef 2.10:
+comment|//   line break made by whatever other editor, so we will remove the line break.
+comment|// Current interpretation:
+comment|//   keep line break
 name|i
-argument_list|)
-expr_stmt|;
-comment|// If the line break is not accompanied by other whitespace we must add a space:
-if|if
-condition|(
-operator|!
-name|Character
-operator|.
-name|isWhitespace
-argument_list|(
-name|content
-operator|.
-name|charAt
-argument_list|(
-name|i
-argument_list|)
-argument_list|)
-operator|&&
-comment|// No whitespace after?
-operator|(
-name|i
-operator|>
-literal|0
-operator|)
-operator|&&
-operator|!
-name|Character
-operator|.
-name|isWhitespace
-argument_list|(
-name|content
-operator|.
-name|charAt
-argument_list|(
-name|i
-operator|-
-literal|1
-argument_list|)
-argument_list|)
-condition|)
-comment|// No whitespace before?
-name|content
-operator|.
-name|insert
-argument_list|(
-name|i
-argument_list|,
-literal|' '
-argument_list|)
+operator|++
 expr_stmt|;
 block|}
-comment|//else if ((content.length()>i+1)&& (content.charAt(i+1)=='\n'))
+elseif|else
+if|if
+condition|(
+operator|(
+name|content
+operator|.
+name|length
+argument_list|()
+operator|>
+name|i
+operator|+
+literal|1
+operator|)
+operator|&&
+operator|(
+name|content
+operator|.
+name|charAt
+argument_list|(
+name|i
+operator|+
+literal|1
+argument_list|)
+operator|==
+literal|'\n'
+operator|)
+condition|)
+block|{
+comment|// we have a line break followed by another line break.
+comment|// This is a linebreak was manually input by the user
+comment|// Handling before JabRef 2.10:
+comment|//   just delete the additional linebreak
+comment|//   content.deleteCharAt(i+1);
+comment|// Current interpretation:
+comment|//   keep line break
+name|i
+operator|++
+expr_stmt|;
+comment|// do not handle \n again
+name|i
+operator|++
+expr_stmt|;
+block|}
 else|else
 name|i
 operator|++
@@ -675,6 +680,9 @@ name|i
 operator|++
 expr_stmt|;
 block|}
+comment|// normalize to linebreaks of the operating system
+comment|// not necessary as linebreaks are normalized during writing (at LatexFieldFormatter)
+comment|//content = new StringBuffer(content.toString().replaceAll("\n", Globals.NEWLINE));
 return|return
 name|content
 return|;
@@ -808,14 +816,29 @@ argument_list|(
 literal|'\t'
 argument_list|)
 expr_stmt|;
-name|addWrappedLine
-argument_list|(
-name|res
-argument_list|,
+name|String
+name|line
+init|=
 name|lines
 index|[
 name|i
 index|]
+decl_stmt|;
+comment|// remove all whitespace at the end of the string, this especially includes \r created when the field content has \r\n as line separator
+name|line
+operator|=
+name|Util
+operator|.
+name|rtrim
+argument_list|(
+name|line
+argument_list|)
+expr_stmt|;
+name|addWrappedLine
+argument_list|(
+name|res
+argument_list|,
+name|line
 argument_list|,
 name|wrapAmount
 argument_list|)
