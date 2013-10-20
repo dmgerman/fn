@@ -194,6 +194,43 @@ name|text
 argument_list|)
 expr_stmt|;
 block|}
+comment|// normalize newlines
+if|if
+condition|(
+operator|!
+name|text
+operator|.
+name|contains
+argument_list|(
+name|Globals
+operator|.
+name|NEWLINE
+argument_list|)
+operator|&&
+name|text
+operator|.
+name|contains
+argument_list|(
+literal|"\n"
+argument_list|)
+condition|)
+block|{
+comment|// if we don't have real new lines, but pseudo newlines, we replace them
+comment|// On Win 8.1, this is always true for multiline fields
+name|text
+operator|=
+name|text
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\n"
+argument_list|,
+name|Globals
+operator|.
+name|NEWLINE
+argument_list|)
+expr_stmt|;
+block|}
 comment|// If the field is non-standard, we will just append braces,
 comment|// wrap and write.
 name|boolean
@@ -407,6 +444,7 @@ comment|// No formatting at all for these fields, to allow custom formatting?
 comment|//if (Globals.prefs.getBoolean("preserveFieldFormatting"))
 comment|//  sb.append(text);
 comment|//else
+comment|// currently, we do not do any more wrapping
 comment|//if (!Globals.prefs.isNonWrappableField(fieldName))
 comment|//    sb.append(Util.wrap2(text, GUIGlobals.LINE_LENGTH));
 comment|//else
@@ -559,7 +597,7 @@ operator|.
 name|length
 argument_list|()
 expr_stmt|;
-comment|// No more occurences found.
+comment|// No more occurrences found.
 name|pos2
 operator|=
 operator|-
@@ -674,7 +712,7 @@ name|pos1
 operator|)
 condition|)
 comment|// We check that the string label is not empty. That means
-comment|// an occurence of ## will simply be ignored. Should it instead
+comment|// an occurrence of ## will simply be ignored. Should it instead
 comment|// cause an error message?
 name|writeStringLabel
 argument_list|(
@@ -726,9 +764,12 @@ literal|1
 expr_stmt|;
 comment|//if (tell++> 10) System.exit(0);
 block|}
-comment|//if (!Globals.prefs.isNonWrappableField(fieldName))
-comment|//    return Util.wrap2(sb.toString(), GUIGlobals.LINE_LENGTH);
-comment|//else
+comment|// currently, we do not add newlines and new formatting
+comment|//if (!Globals.prefs.isNonWrappableField(fieldName)) {
+comment|// introduce a line break to be read at the parser
+comment|// the old code called Util.wrap2(sb.toString(), GUIGlobals.LINE_LENGTH), but that lead to ugly .tex
+comment|// alternative: return sb.toString().replaceAll(Globals.NEWLINE, Globals.NEWLINE + Globals.NEWLINE);
+comment|//} else
 return|return
 name|sb
 operator|.

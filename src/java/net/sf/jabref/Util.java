@@ -1752,6 +1752,27 @@ return|return
 name|s
 return|;
 block|}
+DECL|method|rtrim (String s)
+specifier|public
+specifier|static
+name|String
+name|rtrim
+parameter_list|(
+name|String
+name|s
+parameter_list|)
+block|{
+return|return
+name|s
+operator|.
+name|replaceAll
+argument_list|(
+literal|"\\s+$"
+argument_list|,
+literal|""
+argument_list|)
+return|;
+block|}
 comment|/** 	 * This method returns a String similar to the one passed in, except that it 	 * is molded into a form that is acceptable for bibtex. 	 *  	 * Watch-out that the returned string might be of length 0 afterwards. 	 *  	 * @param key 	 *            mayBeNull 	 */
 DECL|method|checkLegalKey (String key)
 specifier|public
