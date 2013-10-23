@@ -233,6 +233,16 @@ name|getAllFieldNames
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|uniqueInsert
+argument_list|(
+name|allFields
+argument_list|,
+name|BibtexFields
+operator|.
+name|getAllPrivateFieldNames
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 comment|/** 	 *  	 * @return All existent fields for a bibtex entry 	 */
 DECL|method|getAllFields ()
@@ -398,6 +408,15 @@ index|[
 name|i
 index|]
 argument_list|)
+condition|)
+if|if
+condition|(
+name|array
+index|[
+name|i
+index|]
+operator|!=
+literal|"#"
 condition|)
 name|list
 operator|.
