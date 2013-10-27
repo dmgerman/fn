@@ -128,18 +128,6 @@ name|BibtexFields
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
 begin_comment
 comment|/**  *   * @author pattonlk  *   *         Reestructured by ifsteinm. Jan 20th Now it is possible to export more  *         than one jabref database. BD creation, insertions and queries where  *         reformulated to accomodate the changes. The changes include a  *         refactory on import/export to SQL module, creating many other classes  *         making them more readable This class just support Exporters and  *         Importers  */
 end_comment
@@ -411,12 +399,16 @@ argument_list|)
 condition|)
 if|if
 condition|(
+operator|!
 name|array
 index|[
 name|i
 index|]
-operator|!=
+operator|.
+name|equals
+argument_list|(
 literal|"#"
+argument_list|)
 condition|)
 name|list
 operator|.
