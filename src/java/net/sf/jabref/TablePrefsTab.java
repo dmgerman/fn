@@ -1357,7 +1357,9 @@ name|_prefs
 operator|.
 name|get
 argument_list|(
-literal|"priSort"
+name|JabRefPreferences
+operator|.
+name|PRIMARY_SORT_FIELD
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1369,7 +1371,9 @@ name|_prefs
 operator|.
 name|get
 argument_list|(
-literal|"secSort"
+name|JabRefPreferences
+operator|.
+name|SECONDARY_SORT_FIELD
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1381,7 +1385,9 @@ name|_prefs
 operator|.
 name|get
 argument_list|(
-literal|"terSort"
+name|JabRefPreferences
+operator|.
+name|TERTIARY_SORT_FIELD
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1513,7 +1519,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"priDescending"
+name|JabRefPreferences
+operator|.
+name|PRIMARY_SORT_DESCENDING
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1525,7 +1533,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"secDescending"
+name|JabRefPreferences
+operator|.
+name|SECONDARY_SORT_DESCENDING
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1537,7 +1547,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"terDescending"
+name|JabRefPreferences
+operator|.
+name|TERTIARY_SORT_DESCENDING
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1709,7 +1721,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"priDescending"
+name|JabRefPreferences
+operator|.
+name|PRIMARY_SORT_DESCENDING
 argument_list|,
 name|priDesc
 operator|.
@@ -1721,7 +1735,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"secDescending"
+name|JabRefPreferences
+operator|.
+name|SECONDARY_SORT_DESCENDING
 argument_list|,
 name|secDesc
 operator|.
@@ -1733,7 +1749,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"terDescending"
+name|JabRefPreferences
+operator|.
+name|TERTIARY_SORT_DESCENDING
 argument_list|,
 name|terDesc
 operator|.
@@ -1741,15 +1759,17 @@ name|isSelected
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// _prefs.put("secSort",
+comment|// _prefs.put(JabRefPreferences.SECONDARY_SORT_FIELD,
 comment|// GUIGlobals.ALL_FIELDS[secSort.getSelectedIndex()]);
-comment|// _prefs.put("terSort",
+comment|// _prefs.put(JabRefPreferences.TERTIARY_SORT_FIELD,
 comment|// GUIGlobals.ALL_FIELDS[terSort.getSelectedIndex()]);
 name|_prefs
 operator|.
 name|put
 argument_list|(
-literal|"priSort"
+name|JabRefPreferences
+operator|.
+name|PRIMARY_SORT_FIELD
 argument_list|,
 name|priField
 operator|.
@@ -1767,7 +1787,9 @@ name|_prefs
 operator|.
 name|put
 argument_list|(
-literal|"secSort"
+name|JabRefPreferences
+operator|.
+name|SECONDARY_SORT_FIELD
 argument_list|,
 name|secField
 operator|.
@@ -1785,7 +1807,9 @@ name|_prefs
 operator|.
 name|put
 argument_list|(
-literal|"terSort"
+name|JabRefPreferences
+operator|.
+name|TERTIARY_SORT_FIELD
 argument_list|,
 name|terField
 operator|.
