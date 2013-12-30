@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2012 JabRef contributors.  This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or  (at your option) any later version.   This program is distributed in the hope that it will be useful,  but WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License for more details.   You should have received a copy of the GNU General Public License along  with this program; if not, write to the Free Software Foundation, Inc.,  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -408,11 +408,11 @@ specifier|public
 class|class
 name|JabRefPreferences
 block|{
+DECL|field|CUSTOM_TYPE_NAME
 specifier|public
 specifier|final
 specifier|static
 name|String
-DECL|field|CUSTOM_TYPE_NAME
 name|CUSTOM_TYPE_NAME
 init|=
 literal|"customTypeName_"
@@ -702,6 +702,7 @@ name|Object
 argument_list|>
 argument_list|()
 decl_stmt|;
+DECL|field|keyBinds
 specifier|public
 name|HashMap
 argument_list|<
@@ -709,7 +710,6 @@ name|String
 argument_list|,
 name|String
 argument_list|>
-DECL|field|keyBinds
 name|keyBinds
 init|=
 operator|new
@@ -779,7 +779,7 @@ specifier|public
 name|CustomExportList
 name|customExports
 decl_stmt|;
-comment|/** Set with all custom {@link net.sf.jabref.imports.ImportFormat}s */
+comment|/**      * Set with all custom {@link net.sf.jabref.imports.ImportFormat}s      */
 DECL|field|customImports
 specifier|public
 name|CustomImportList
@@ -889,15 +889,310 @@ name|singleton
 operator|==
 literal|null
 condition|)
+block|{
 name|singleton
 operator|=
 operator|new
 name|JabRefPreferences
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|singleton
 return|;
+block|}
+comment|// Upgrade the preferences for the current version
+comment|// The old preference is kept in case an old version of JabRef is used with
+comment|// these preferences, but it is only used when the new preference does not
+comment|// exist
+DECL|method|upgradeOldPreferences ()
+specifier|private
+name|void
+name|upgradeOldPreferences
+parameter_list|()
+block|{
+if|if
+condition|(
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|SAVE_IN_SPECIFIED_ORDER
+argument_list|,
+literal|null
+argument_list|)
+operator|==
+literal|null
+condition|)
+block|{
+if|if
+condition|(
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"saveInStandardOrder"
+argument_list|,
+literal|false
+argument_list|)
+condition|)
+block|{
+name|putBoolean
+argument_list|(
+name|SAVE_IN_SPECIFIED_ORDER
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|put
+argument_list|(
+name|SAVE_PRIMARY_SORT_FIELD
+argument_list|,
+literal|"author"
+argument_list|)
+expr_stmt|;
+name|put
+argument_list|(
+name|SAVE_SECONDARY_SORT_FIELD
+argument_list|,
+literal|"editor"
+argument_list|)
+expr_stmt|;
+name|put
+argument_list|(
+name|SAVE_TERTIARY_SORT_FIELD
+argument_list|,
+literal|"year"
+argument_list|)
+expr_stmt|;
+name|putBoolean
+argument_list|(
+name|SAVE_PRIMARY_SORT_DESCENDING
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|putBoolean
+argument_list|(
+name|SAVE_SECONDARY_SORT_DESCENDING
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|putBoolean
+argument_list|(
+name|SAVE_TERTIARY_SORT_DESCENDING
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"saveInTitleOrder"
+argument_list|,
+literal|false
+argument_list|)
+condition|)
+block|{
+comment|// saveInTitleOrder => title, author, editor
+name|putBoolean
+argument_list|(
+name|SAVE_IN_SPECIFIED_ORDER
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|put
+argument_list|(
+name|SAVE_PRIMARY_SORT_FIELD
+argument_list|,
+literal|"title"
+argument_list|)
+expr_stmt|;
+name|put
+argument_list|(
+name|SAVE_SECONDARY_SORT_FIELD
+argument_list|,
+literal|"author"
+argument_list|)
+expr_stmt|;
+name|put
+argument_list|(
+name|SAVE_TERTIARY_SORT_FIELD
+argument_list|,
+literal|"editor"
+argument_list|)
+expr_stmt|;
+name|putBoolean
+argument_list|(
+name|SAVE_PRIMARY_SORT_DESCENDING
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|putBoolean
+argument_list|(
+name|SAVE_SECONDARY_SORT_DESCENDING
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|putBoolean
+argument_list|(
+name|SAVE_TERTIARY_SORT_DESCENDING
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+block|}
+if|if
+condition|(
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|EXPORT_IN_SPECIFIED_ORDER
+argument_list|,
+literal|null
+argument_list|)
+operator|==
+literal|null
+condition|)
+block|{
+if|if
+condition|(
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"exportInStandardOrder"
+argument_list|,
+literal|false
+argument_list|)
+condition|)
+block|{
+name|putBoolean
+argument_list|(
+name|EXPORT_IN_SPECIFIED_ORDER
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|put
+argument_list|(
+name|EXPORT_PRIMARY_SORT_FIELD
+argument_list|,
+literal|"author"
+argument_list|)
+expr_stmt|;
+name|put
+argument_list|(
+name|EXPORT_SECONDARY_SORT_FIELD
+argument_list|,
+literal|"editor"
+argument_list|)
+expr_stmt|;
+name|put
+argument_list|(
+name|EXPORT_TERTIARY_SORT_FIELD
+argument_list|,
+literal|"year"
+argument_list|)
+expr_stmt|;
+name|putBoolean
+argument_list|(
+name|EXPORT_PRIMARY_SORT_DESCENDING
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|putBoolean
+argument_list|(
+name|EXPORT_SECONDARY_SORT_DESCENDING
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|putBoolean
+argument_list|(
+name|EXPORT_TERTIARY_SORT_DESCENDING
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"exportInTitleOrder"
+argument_list|,
+literal|false
+argument_list|)
+condition|)
+block|{
+comment|// exportInTitleOrder => title, author, editor
+name|putBoolean
+argument_list|(
+name|EXPORT_IN_SPECIFIED_ORDER
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
+name|put
+argument_list|(
+name|EXPORT_PRIMARY_SORT_FIELD
+argument_list|,
+literal|"title"
+argument_list|)
+expr_stmt|;
+name|put
+argument_list|(
+name|EXPORT_SECONDARY_SORT_FIELD
+argument_list|,
+literal|"author"
+argument_list|)
+expr_stmt|;
+name|put
+argument_list|(
+name|EXPORT_TERTIARY_SORT_FIELD
+argument_list|,
+literal|"editor"
+argument_list|)
+expr_stmt|;
+name|putBoolean
+argument_list|(
+name|EXPORT_PRIMARY_SORT_DESCENDING
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|putBoolean
+argument_list|(
+name|EXPORT_SECONDARY_SORT_DESCENDING
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+name|putBoolean
+argument_list|(
+name|EXPORT_TERTIARY_SORT_DESCENDING
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 comment|// The constructor is made private to enforce this as a singleton class:
 DECL|method|JabRefPreferences ()
@@ -945,6 +1240,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+comment|// load user preferences
 name|prefs
 operator|=
 name|Preferences
@@ -955,6 +1251,9 @@ name|JabRef
 operator|.
 name|class
 argument_list|)
+expr_stmt|;
+name|upgradeOldPreferences
+argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -4502,6 +4801,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|putBracesAroundCapitalsFields
 operator|.
 name|add
@@ -4515,6 +4815,7 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|nonWrappableFields
 operator|.
@@ -4565,6 +4866,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|nonWrappableFields
 operator|.
 name|add
@@ -4578,6 +4880,7 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|getValueDelimiters (int index)
@@ -4614,7 +4917,7 @@ argument_list|)
 index|]
 return|;
 block|}
-comment|/**      * Check whether a key is set (differently from null).      * @param key The key to check.      * @return true if the key is set, false otherwise.      */
+comment|/**      * Check whether a key is set (differently from null).      *      * @param key The key to check.      * @return true if the key is set, false otherwise.      */
 DECL|method|hasKey (String key)
 specifier|public
 name|boolean
@@ -5010,7 +5313,7 @@ name|key
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Puts a string array into the Preferences, by linking its elements      * with ';' into a single string. Escape characters make the process      * transparent even if strings contain ';'.      */
+comment|/**      * Puts a string array into the Preferences, by linking its elements with      * ';' into a single string. Escape characters make the process transparent      * even if strings contain ';'.      */
 DECL|method|putStringArray (String key, String[] value)
 specifier|public
 name|void
@@ -5158,9 +5461,11 @@ name|names
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|StringReader
 name|rd
 init|=
@@ -5216,7 +5521,7 @@ parameter_list|(
 name|IOException
 name|ex
 parameter_list|)
-block|{}
+block|{         }
 name|String
 index|[]
 name|res
@@ -5246,6 +5551,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|res
 index|[
 name|i
@@ -5258,11 +5564,12 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|res
 return|;
 block|}
-comment|/**      * Looks up a color definition in preferences, and returns the Color object.      * @param key The key for this setting.      * @return The color corresponding to the setting.      */
+comment|/**      * Looks up a color definition in preferences, and returns the Color object.      *      * @param key The key for this setting.      * @return The color corresponding to the setting.      */
 DECL|method|getColor (String key)
 specifier|public
 name|Color
@@ -5362,7 +5669,7 @@ index|]
 argument_list|)
 return|;
 block|}
-comment|/**      * Set the default value for a key. This is useful for plugins that need to      * add default values for the prefs keys they use.      * @param key The preferences key.      * @param value The default value.      */
+comment|/**      * Set the default value for a key. This is useful for plugins that need to      * add default values for the prefs keys they use.      *      * @param key The preferences key.      * @param value The default value.      */
 DECL|method|putDefaultValue (String key, Object value)
 specifier|public
 name|void
@@ -5385,7 +5692,7 @@ name|value
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Stores a color in preferences.      * @param key The key for this setting.      * @param color The Color to store.      */
+comment|/**      * Stores a color in preferences.      *      * @param key The key for this setting.      * @param color The Color to store.      */
 DECL|method|putColor (String key, Color color)
 specifier|public
 name|void
@@ -5475,7 +5782,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Looks up a color definition in preferences, and returns an array containing the RGB values.      * @param value The key for this setting.      * @return The RGB values corresponding to this color setting.      */
+comment|/**      * Looks up a color definition in preferences, and returns an array      * containing the RGB values.      *      * @param value The key for this setting.      * @return The RGB values corresponding to this color setting.      */
 DECL|method|getRgb (String value)
 specifier|public
 name|int
@@ -5556,7 +5863,7 @@ return|return
 name|values
 return|;
 block|}
-comment|/**      * Returns the KeyStroke for this binding, as defined by the      * defaults, or in the Preferences.      */
+comment|/**      * Returns the KeyStroke for this binding, as defined by the defaults, or in      * the Preferences.      */
 DECL|method|getKey (String bindName)
 specifier|public
 name|KeyStroke
@@ -5634,6 +5941,7 @@ name|Globals
 operator|.
 name|ON_MAC
 condition|)
+block|{
 return|return
 name|getKeyForMac
 argument_list|(
@@ -5645,7 +5953,9 @@ name|s
 argument_list|)
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 name|KeyStroke
 operator|.
@@ -5655,7 +5965,8 @@ name|s
 argument_list|)
 return|;
 block|}
-comment|/**      * Returns the KeyStroke for this binding, as defined by the      * defaults, or in the Preferences, but adapted for Mac users,      * with the Command key preferred instead of Control.      */
+block|}
+comment|/**      * Returns the KeyStroke for this binding, as defined by the defaults, or in      * the Preferences, but adapted for Mac users, with the Command key      * preferred instead of Control.      */
 DECL|method|getKeyForMac (KeyStroke ks)
 specifier|private
 name|KeyStroke
@@ -5671,9 +5982,11 @@ name|ks
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|int
 name|keyCode
 init|=
@@ -5808,7 +6121,7 @@ return|return
 name|defKeyBinds
 return|;
 block|}
-comment|/**      * Clear all preferences.      * @throws BackingStoreException      */
+comment|/**      * Clear all preferences.      *      * @throws BackingStoreException      */
 DECL|method|clear ()
 specifier|public
 name|void
@@ -5906,7 +6219,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Stores new key bindings into Preferences, provided they      * actually differ from the old ones.      */
+comment|/**      * Stores new key bindings into Preferences, provided they actually differ      * from the old ones.      */
 DECL|method|setNewKeyBindings (HashMap<String, String> newBindings)
 specifier|public
 name|void
@@ -6041,7 +6354,7 @@ name|newBindings
 expr_stmt|;
 block|}
 block|}
-comment|/**          * Fetches key patterns from preferences          * Not cached          *           * @return LabelPattern containing all keys. Returned LabelPattern has no parent          */
+comment|/**      * Fetches key patterns from preferences Not cached      *      * @return LabelPattern containing all keys. Returned LabelPattern has no      * parent      */
 DECL|method|getKeyPattern ()
 specifier|public
 name|LabelPattern
@@ -6093,6 +6406,7 @@ name|length
 operator|>
 literal|0
 condition|)
+block|{
 for|for
 control|(
 name|int
@@ -6109,6 +6423,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|keyPattern
 operator|.
 name|addLabelPattern
@@ -6132,6 +6447,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+block|}
 catch|catch
 parameter_list|(
 name|BackingStoreException
@@ -6150,7 +6467,7 @@ return|return
 name|keyPattern
 return|;
 block|}
-comment|/**          * Adds the given key pattern to the preferences          *           * @param pattern the pattern to store          */
+comment|/**      * Adds the given key pattern to the preferences      *      * @param pattern the pattern to store      */
 DECL|method|putKeyPattern (LabelPattern pattern)
 specifier|public
 name|void
@@ -6342,6 +6659,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|keyBinds
 operator|.
 name|put
@@ -6357,6 +6675,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|setDefaultKeyBindings ()
 specifier|private
@@ -7335,10 +7654,12 @@ condition|(
 operator|!
 name|escape
 condition|)
+block|{
 name|escape
 operator|=
 literal|true
 expr_stmt|;
+block|}
 else|else
 block|{
 name|escape
@@ -7368,11 +7689,14 @@ condition|(
 operator|!
 name|escape
 condition|)
+block|{
 name|done
 operator|=
 literal|true
 expr_stmt|;
+block|}
 else|else
+block|{
 name|res
 operator|.
 name|append
@@ -7380,6 +7704,7 @@ argument_list|(
 literal|';'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -7498,6 +7823,7 @@ operator|==
 literal|';'
 operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -7505,6 +7831,7 @@ argument_list|(
 literal|'\\'
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
@@ -7523,7 +7850,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Stores all information about the entry type in preferences, with      * the tag given by number.      */
+comment|/**      * Stores all information about the entry type in preferences, with the tag      * given by number.      */
 DECL|method|storeCustomEntryType (CustomEntryType tp, int number)
 specifier|public
 name|void
@@ -7593,7 +7920,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Retrieves all information about the entry type in preferences,      * with the tag given by number.      */
+comment|/**      * Retrieves all information about the entry type in preferences, with the      * tag given by number.      */
 DECL|method|getCustomEntryType (int number)
 specifier|public
 name|CustomEntryType
@@ -7655,9 +7982,11 @@ name|name
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 if|if
 condition|(
 name|priOpt
@@ -8306,7 +8635,7 @@ index|]
 argument_list|)
 return|;
 block|}
-comment|/**      * Look up the external file type registered with this name, if any.      * @param name The file type name.      * @return The ExternalFileType registered, or null if none.      */
+comment|/**      * Look up the external file type registered with this name, if any.      *      * @param name The file type name.      * @return The ExternalFileType registered, or null if none.      */
 DECL|method|getExternalFileTypeByName (String name)
 specifier|public
 name|ExternalFileType
@@ -8356,9 +8685,11 @@ argument_list|(
 name|name
 argument_list|)
 condition|)
+block|{
 return|return
 name|type
 return|;
+block|}
 block|}
 comment|// Return an instance that signifies an unknown file type:
 return|return
@@ -8369,7 +8700,7 @@ name|name
 argument_list|)
 return|;
 block|}
-comment|/**      * Look up the external file type registered for this extension, if any.      * @param extension The file extension.      * @return The ExternalFileType registered, or null if none.      */
+comment|/**      * Look up the external file type registered for this extension, if any.      *      * @param extension The file extension.      * @return The ExternalFileType registered, or null if none.      */
 DECL|method|getExternalFileTypeByExt (String extension)
 specifier|public
 name|ExternalFileType
@@ -8428,15 +8759,17 @@ argument_list|(
 name|extension
 argument_list|)
 condition|)
+block|{
 return|return
 name|type
 return|;
+block|}
 block|}
 return|return
 literal|null
 return|;
 block|}
-comment|/**      * Look up the external file type registered for this filename, if any.      * @param filename The name of the file whose type to look up.      * @return The ExternalFileType registered, or null if none.      */
+comment|/**      * Look up the external file type registered for this filename, if any.      *      * @param filename The name of the file whose type to look up.      * @return The ExternalFileType registered, or null if none.      */
 DECL|method|getExternalFileTypeForName (String filename)
 specifier|public
 name|ExternalFileType
@@ -8547,7 +8880,7 @@ return|return
 name|foundType
 return|;
 block|}
-comment|/**      * Look up the external file type registered for this MIME type, if any.      * @param mimeType The MIME type.      * @return The ExternalFileType registered, or null if none. For the mime type "text/html",      *   a valid file type is guaranteed to be returned.      */
+comment|/**      * Look up the external file type registered for this MIME type, if any.      *      * @param mimeType The MIME type.      * @return The ExternalFileType registered, or null if none. For the mime      * type "text/html", a valid file type is guaranteed to be returned.      */
 DECL|method|getExternalFileTypeByMimeType (String mimeType)
 specifier|public
 name|ExternalFileType
@@ -8606,9 +8939,11 @@ argument_list|(
 name|mimeType
 argument_list|)
 condition|)
+block|{
 return|return
 name|type
 return|;
+block|}
 block|}
 if|if
 condition|(
@@ -8619,15 +8954,19 @@ argument_list|(
 literal|"text/html"
 argument_list|)
 condition|)
+block|{
 return|return
 name|HTML_FALLBACK_TYPE
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
 block|}
-comment|/**      * Reset the List of external file types after user customization.      * @param types The new List of external file types. This is the complete list, not      *  just new entries.      */
+block|}
+comment|/**      * Reset the List of external file types after user customization.      *      * @param types The new List of external file types. This is the complete      * list, not just new entries.      */
 DECL|method|setExternalFileTypes (List<ExternalFileType> types)
 specifier|public
 name|void
@@ -8758,6 +9097,7 @@ argument_list|(
 name|type
 argument_list|)
 condition|)
+block|{
 name|unchanged
 operator|.
 name|add
@@ -8765,6 +9105,7 @@ argument_list|(
 name|type
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|// It was modified. Remove its entry from the defaults list, since
@@ -8896,7 +9237,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Set up the list of external file types, either from default values, or from values      * recorded in Preferences.      */
+comment|/**      * Set up the list of external file types, either from default values, or      * from values recorded in Preferences.      */
 DECL|method|updateExternalFileTypes ()
 specifier|public
 name|void
@@ -9055,6 +9396,7 @@ name|toRemove
 operator|!=
 literal|null
 condition|)
+block|{
 name|types
 operator|.
 name|remove
@@ -9062,6 +9404,7 @@ argument_list|(
 name|toRemove
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -9160,7 +9503,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Removes all information about custom entry types with tags of      * @param number or higher.      */
+comment|/**      * Removes all information about custom entry types with tags of      *      * @param number or higher.      */
 DECL|method|purgeCustomEntryTypes (int number)
 specifier|public
 name|void
@@ -9199,7 +9542,7 @@ name|number
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Removes all entries keyed by prefix+number, where number      * is equal to or higher than the given number.      * @param number or higher.      */
+comment|/**      * Removes all entries keyed by prefix+number, where number is equal to or      * higher than the given number.      *      * @param number or higher.      */
 DECL|method|purgeSeries (String prefix, int number)
 specifier|public
 name|void
@@ -9248,9 +9591,11 @@ name|tabList
 operator|==
 literal|null
 condition|)
+block|{
 name|updateEntryEditorTabList
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|tabList
 return|;
@@ -9326,7 +9671,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**        * Imports Preferences from an XML file.        *        * @param filename String File to import from        */
+comment|/**      * Imports Preferences from an XML file.      *      * @param filename String File to import from      */
 DECL|method|importPreferences (String filename)
 specifier|public
 name|void
@@ -9384,7 +9729,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * Determines whether the given field should be written without any sort of wrapping.      * @param fieldName The field name.      * @return true if the field should not be wrapped.      */
+comment|/**      * Determines whether the given field should be written without any sort of      * wrapping.      *      * @param fieldName The field name.      * @return true if the field should not be wrapped.      */
 DECL|method|isNonWrappableField (String fieldName)
 specifier|public
 name|boolean
