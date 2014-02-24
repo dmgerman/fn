@@ -735,6 +735,17 @@ argument_list|(
 literal|"<a href=\".*arnumber=(\\d+).*\">"
 argument_list|)
 decl_stmt|;
+DECL|field|authorPattern
+name|Pattern
+name|authorPattern
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|"<span id=\"preferredName\" class=\"(.*)\">"
+argument_list|)
+decl_stmt|;
 comment|// Common words in IEEE Xplore that should always be
 DECL|method|IEEEXploreFetcher ()
 specifier|public
@@ -761,15 +772,8 @@ literal|"<a\\s*href=[^<]+>\\s*(.+)\\s*</a>"
 argument_list|)
 expr_stmt|;
 comment|//fieldPatterns.put("author", "</h3>\\s*(.+)");
-name|fieldPatterns
-operator|.
-name|put
-argument_list|(
-literal|"author"
-argument_list|,
-literal|"(?s)</h3>\\s*(.+)</br>"
-argument_list|)
-expr_stmt|;
+comment|//fieldPatterns.put("author", "(?s)</h3>\\s*(.+)</br>");
+comment|// fieldPatterns.put("author", "<span id=\"preferredName\" class=\"(.+)\">");
 name|fieldPatterns
 operator|.
 name|put
@@ -2344,163 +2348,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// clean up author
-name|String
-name|author
-init|=
-operator|(
-name|String
-operator|)
-name|entry
-operator|.
-name|getField
-argument_list|(
-literal|"author"
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|author
-operator|!=
-literal|null
-condition|)
-block|{
-if|if
-condition|(
-name|author
-operator|.
-name|indexOf
-argument_list|(
-literal|"a href="
-argument_list|)
-operator|>=
-literal|0
-condition|)
-block|{
-comment|// Author parsing failed because it was empty
-name|entry
-operator|.
-name|setField
-argument_list|(
-literal|"author"
-argument_list|,
-literal|""
-argument_list|)
-expr_stmt|;
-comment|// Maybe not needed anymore due to another change
-block|}
-else|else
-block|{
-name|author
-operator|=
-name|author
-operator|.
-name|replaceAll
-argument_list|(
-literal|"\\s+"
-argument_list|,
-literal|" "
-argument_list|)
-expr_stmt|;
-name|author
-operator|=
-name|author
-operator|.
-name|replaceAll
-argument_list|(
-literal|"\\."
-argument_list|,
-literal|". "
-argument_list|)
-expr_stmt|;
-name|author
-operator|=
-name|author
-operator|.
-name|replaceAll
-argument_list|(
-literal|"([^;]+),([^;]+),([^;]+)"
-argument_list|,
-literal|"$1,$3,$2"
-argument_list|)
-expr_stmt|;
-comment|// Change order in case of Jr. etc
-name|author
-operator|=
-name|author
-operator|.
-name|replaceAll
-argument_list|(
-literal|"  "
-argument_list|,
-literal|" "
-argument_list|)
-expr_stmt|;
-name|author
-operator|=
-name|author
-operator|.
-name|replaceAll
-argument_list|(
-literal|"\\. -"
-argument_list|,
-literal|".-"
-argument_list|)
-expr_stmt|;
-name|author
-operator|=
-name|author
-operator|.
-name|replaceAll
-argument_list|(
-literal|"; "
-argument_list|,
-literal|" and "
-argument_list|)
-expr_stmt|;
-name|author
-operator|=
-name|author
-operator|.
-name|replaceAll
-argument_list|(
-literal|" ,"
-argument_list|,
-literal|","
-argument_list|)
-expr_stmt|;
-name|author
-operator|=
-name|author
-operator|.
-name|replaceAll
-argument_list|(
-literal|"  "
-argument_list|,
-literal|" "
-argument_list|)
-expr_stmt|;
-name|author
-operator|=
-name|author
-operator|.
-name|replaceAll
-argument_list|(
-literal|"[ ,;]+$"
-argument_list|,
-literal|""
-argument_list|)
-expr_stmt|;
-name|entry
-operator|.
-name|setField
-argument_list|(
-literal|"author"
-argument_list|,
-name|author
-argument_list|)
-expr_stmt|;
-block|}
-block|}
+comment|/*   	String author = (String)entry.getField("author");     	if (author != null) { 	    if (author.indexOf("a href=")>= 0) {  // Author parsing failed because it was empty 		entry.setField("author","");  // Maybe not needed anymore due to another change 	    } else { 	    	author = author.replaceAll("\\s+", " "); 	    	author = author.replaceAll("\\.", ". "); 	    	author = author.replaceAll("([^;]+),([^;]+),([^;]+)","$1,$3,$2"); // Change order in case of Jr. etc 	    	author = author.replaceAll("  ", " "); 	    	author = author.replaceAll("\\. -", ".-");                 author = author.replaceAll("; ", " and "); 	    	author = author.replaceAll(" ,", ","); 	    	author = author.replaceAll("  ", " "); 	    	author = author.replaceAll("[ ,;]+$", ""); 	    	entry.setField("author", author); 	    } 	}*/
 comment|// clean up month
 name|String
 name|month
@@ -4711,6 +4559,88 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|Matcher
+name|authorMatcher
+init|=
+name|authorPattern
+operator|.
+name|matcher
+argument_list|(
+name|text
+argument_list|)
+decl_stmt|;
+comment|// System.out.println(text);
+name|StringBuffer
+name|authorNames
+init|=
+operator|new
+name|StringBuffer
+argument_list|(
+literal|""
+argument_list|)
+decl_stmt|;
+name|int
+name|authorCount
+init|=
+literal|0
+decl_stmt|;
+while|while
+condition|(
+name|authorMatcher
+operator|.
+name|find
+argument_list|()
+condition|)
+block|{
+if|if
+condition|(
+name|authorCount
+operator|>=
+literal|1
+condition|)
+block|{
+name|authorNames
+operator|.
+name|append
+argument_list|(
+literal|" and "
+argument_list|)
+expr_stmt|;
+block|}
+name|authorNames
+operator|.
+name|append
+argument_list|(
+name|htmlConverter
+operator|.
+name|format
+argument_list|(
+name|authorMatcher
+operator|.
+name|group
+argument_list|(
+literal|1
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+comment|//System.out.println(authorCount + ": " + authorMatcher.group(1));
+name|authorCount
+operator|++
+expr_stmt|;
+block|}
+name|entry
+operator|.
+name|setField
+argument_list|(
+literal|"author"
+argument_list|,
+name|authorNames
+operator|.
+name|toString
+argument_list|()
+argument_list|)
+expr_stmt|;
 if|if
 condition|(
 name|entry

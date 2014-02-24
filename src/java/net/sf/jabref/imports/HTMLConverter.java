@@ -327,6 +327,15 @@ block|}
 block|,
 comment|// micro sign, U+00B5 ISOnum
 block|{
+literal|""
+block|,
+literal|"mu"
+block|,
+literal|"\\$\\\\mu\\$"
+block|}
+block|,
+comment|// micro sign, U+00B5 ISOnum
+block|{
 literal|"182"
 block|,
 literal|"para"
@@ -2173,7 +2182,6 @@ block|}
 block|,
 comment|// dot operator, U+22C5 ISOamsb
 comment|/* dot operator is NOT the same character as U+00B7 middle dot */
-comment|/* Miscellaneous Technical */
 block|{
 literal|"8968"
 block|,
@@ -2212,6 +2220,7 @@ literal|"\\$\\\\rfloor\\$"
 block|}
 block|,
 comment|// right floor, U+230B ISOamsc
+comment|/* Miscellaneous Technical */
 block|{
 literal|"9001"
 block|,
@@ -3098,6 +3107,24 @@ block|}
 block|,
 comment|// lower case l with stroke
 block|{
+literal|"348"
+block|,
+literal|"Scirc"
+block|,
+literal|"\\{\\\\\\^\\{S\\}\\}"
+block|}
+block|,
+comment|// upper case S with circumflex
+block|{
+literal|"349"
+block|,
+literal|"scirc"
+block|,
+literal|"\\{\\\\\\^\\{s\\}\\}"
+block|}
+block|,
+comment|// lower case s with circumflex
+block|{
 literal|"370"
 block|,
 literal|"Uogon"
@@ -3379,6 +3406,15 @@ block|}
 block|,
 comment|// Double dots - en leader
 block|{
+literal|"8450"
+block|,
+literal|"complexes"
+block|,
+literal|"\\$\\\\mathbb\\{C\\}\\$"
+block|}
+block|,
+comment|// double struck capital C -- requires e.g. amsfonts
+block|{
 literal|"8451"
 block|,
 literal|""
@@ -3432,6 +3468,24 @@ literal|"\\$\\\\mathbb\\{N\\}\\$"
 block|}
 block|,
 comment|// double struck capital N -- requires e.g. amsfonts
+block|{
+literal|"8474"
+block|,
+literal|"Qopf"
+block|,
+literal|"\\$\\\\mathbb\\{Q\\}\\$"
+block|}
+block|,
+comment|// double struck capital Q -- requires e.g. amsfonts
+block|{
+literal|"8477"
+block|,
+literal|"reals"
+block|,
+literal|"\\$\\\\mathbb\\{R\\}\\$"
+block|}
+block|,
+comment|// double struck capital R -- requires e.g. amsfonts
 block|{
 literal|"8486"
 block|,
@@ -3747,6 +3801,34 @@ literal|"\\$\\\\bigvee\\$"
 block|}
 block|,
 comment|// Big vee
+block|{
+literal|"8942"
+block|,
+literal|"vdots"
+block|,
+literal|"\\$\\\\vdots\\$"
+block|}
+block|,
+comment|// vertical ellipsis U+22EE
+block|{
+literal|"8943"
+block|,
+literal|"cdots"
+block|,
+literal|"\\$\\\\cdots\\$"
+block|}
+block|,
+comment|// midline horizontal ellipsis U+22EF
+comment|/*{"8944", "", "\\$\\\\ddots\\$"}, // up right diagonal ellipsis U+22F0 */
+block|{
+literal|"8945"
+block|,
+literal|"ddots"
+block|,
+literal|"\\$\\\\ddots\\$"
+block|}
+block|,
+comment|// down right diagonal ellipsis U+22F1
 block|{
 literal|"9426"
 block|,
