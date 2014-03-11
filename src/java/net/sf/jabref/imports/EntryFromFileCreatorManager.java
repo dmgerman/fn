@@ -564,6 +564,23 @@ if|if
 condition|(
 name|database
 operator|.
+name|getEntryById
+argument_list|(
+name|entry
+operator|.
+name|getId
+argument_list|()
+argument_list|)
+operator|==
+literal|null
+condition|)
+block|{
+comment|// Work around SIDE EFFECT of creator.createEntry. The EntryFromPDFCreator also creates the entry in the table
+comment|// Therefore, we only insert the entry if it is not already present
+if|if
+condition|(
+name|database
+operator|.
 name|insertEntry
 argument_list|(
 name|entry
@@ -611,6 +628,7 @@ name|panel
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else
