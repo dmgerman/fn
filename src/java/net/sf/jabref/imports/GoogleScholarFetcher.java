@@ -241,7 +241,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"<a href=\"([^\"]*)\">[A-Za-z ]*BibTeX"
+literal|"<a href=\"([^\"]*)\"[^>]*>[A-Za-z ]*BibTeX"
 argument_list|)
 decl_stmt|;
 DECL|field|TITLE_START_PATTERN
