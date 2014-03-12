@@ -93,6 +93,30 @@ literal|true
 return|;
 comment|// this is discouraged except for demonstration purposes
 block|}
+annotation|@
+name|Override
+DECL|method|importEntries (InputStream in, OutputPrinter status)
+specifier|public
+name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
+name|importEntries
+parameter_list|(
+name|InputStream
+name|in
+parameter_list|,
+name|OutputPrinter
+name|status
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+comment|// MUST BE IMPLEMENTED
+return|return
+literal|null
+return|;
+block|}
 DECL|method|importEntries (InputStream stream)
 specifier|public
 name|List
