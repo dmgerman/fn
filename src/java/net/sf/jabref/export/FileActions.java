@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2011 JabRef contributors.  This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or  (at your option) any later version.   This program is distributed in the hope that it will be useful,  but WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  GNU General Public License for more details.   You should have received a copy of the GNU General Public License along  with this program; if not, write to the Free Software Foundation, Inc.,  51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.  */
 end_comment
 
 begin_package
@@ -485,7 +485,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Write all strings in alphabetical order, modified to produce a safe (for BibTeX) order of the strings      * if they reference each other.      * @param fw The Writer to send the output to.      * @param database The database whose strings we should write.      * @throws IOException If anthing goes wrong in writing.      */
+comment|/**      * Write all strings in alphabetical order, modified to produce a safe (for      * BibTeX) order of the strings if they reference each other.      *      * @param fw The Writer to send the output to.      * @param database The database whose strings we should write.      * @throws IOException If anthing goes wrong in writing.      */
 DECL|method|writeStrings (Writer fw, BibtexDatabase database)
 specifier|private
 specifier|static
@@ -702,6 +702,7 @@ argument_list|()
 operator|==
 name|t
 condition|)
+block|{
 name|writeString
 argument_list|(
 name|fw
@@ -713,6 +714,7 @@ argument_list|,
 name|maxKeyLength
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|fw
@@ -856,6 +858,7 @@ name|referred
 operator|!=
 literal|null
 condition|)
+block|{
 name|writeString
 argument_list|(
 name|fw
@@ -870,6 +873,7 @@ argument_list|,
 name|maxKeyLength
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -925,10 +929,12 @@ condition|;
 name|i
 operator|--
 control|)
+block|{
 name|suffix
 operator|+=
 literal|" "
 expr_stmt|;
+block|}
 name|fw
 operator|.
 name|write
@@ -1020,6 +1026,7 @@ throw|;
 block|}
 block|}
 else|else
+block|{
 name|fw
 operator|.
 name|write
@@ -1027,6 +1034,7 @@ argument_list|(
 literal|"{}"
 argument_list|)
 expr_stmt|;
+block|}
 name|fw
 operator|.
 name|write
@@ -1040,7 +1048,7 @@ argument_list|)
 expr_stmt|;
 comment|// + Globals.NEWLINE);
 block|}
-comment|/**      * Writes the JabRef signature and the encoding.      *      * @param encoding String the name of the encoding, which is part of the header.      */
+comment|/**      * Writes the JabRef signature and the encoding.      *      * @param encoding String the name of the encoding, which is part of the      * header.      */
 DECL|method|writeBibFileHeader (Writer out, String encoding)
 specifier|private
 specifier|static
@@ -1106,7 +1114,7 @@ name|NEWLINE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Saves the database to file. Two boolean values indicate whether      * only entries with a nonzero Globals.SEARCH value and only      * entries with a nonzero Globals.GROUPSEARCH value should be      * saved. This can be used to let the user save only the results of      * a search. False and false means all entries are saved.      */
+comment|/**      * Saves the database to file. Two boolean values indicate whether only      * entries with a nonzero Globals.SEARCH value and only entries with a      * nonzero Globals.GROUPSEARCH value should be saved. This can be used to      * let the user save only the results of a search. False and false means all      * entries are saved.      */
 DECL|method|saveDatabase (BibtexDatabase database, MetaData metaData, File file, JabRefPreferences prefs, boolean checkSearch, boolean checkGroup, String encoding, boolean suppressBackup)
 specifier|public
 specifier|static
@@ -1171,10 +1179,12 @@ if|if
 condition|(
 name|suppressBackup
 condition|)
+block|{
 name|backup
 operator|=
 literal|false
 expr_stmt|;
+block|}
 name|SaveSession
 name|session
 decl_stmt|;
@@ -1620,23 +1630,6 @@ return|return
 name|session
 return|;
 block|}
-DECL|enum|SaveOrder
-specifier|private
-enum|enum
-name|SaveOrder
-block|{
-DECL|enumConstant|Standard
-DECL|enumConstant|Original
-DECL|enumConstant|Title
-DECL|enumConstant|TableSort
-name|Standard
-block|,
-name|Original
-block|,
-name|Title
-block|,
-name|TableSort
-block|}
 DECL|class|SaveSettings
 specifier|private
 specifier|static
@@ -1675,82 +1668,233 @@ name|boolean
 name|isSaveOperation
 parameter_list|)
 block|{
-comment|/* four options:         	 * 1. ordered by author/editor/year (saveInStandardOrder)         	 * 2. original order (saveInOriginalOrder) -- not hit here as SaveSettings is not called in that case         	 * 3. current table sort order (*everything else*)         	 * 4. ordered by title (saveInTitleOrder)         	 */
-name|SaveOrder
-name|saveOrder
-decl_stmt|;
-name|String
-name|prefix
-init|=
+comment|/* three options:              * 1. original order (saveInOriginalOrder) -- not hit here as SaveSettings is not called in that case              * 2. current table sort order              * 3. ordered by specified order              */
+comment|// This case should never behit as SaveSettings() is never called if InOriginalOrder is true
+assert|assert
 name|isSaveOperation
-condition|?
-literal|"save"
-else|:
-literal|"export"
-decl_stmt|;
-if|if
-condition|(
+operator|&&
+operator|!
 name|Globals
 operator|.
 name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-name|prefix
-operator|+
-literal|"InStandardOrder"
+name|JabRefPreferences
+operator|.
+name|SAVE_IN_ORIGINAL_ORDER
+argument_list|)
+assert|;
+assert|assert
+operator|!
+name|isSaveOperation
+operator|&&
+operator|!
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EXPORT_IN_ORIGINAL_ORDER
+argument_list|)
+assert|;
+if|if
+condition|(
+name|isSaveOperation
+operator|&&
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|SAVE_IN_SPECIFIED_ORDER
 argument_list|)
 condition|)
 block|{
-name|saveOrder
+name|pri
 operator|=
-name|SaveOrder
+name|Globals
 operator|.
-name|Standard
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|SAVE_PRIMARY_SORT_FIELD
+argument_list|)
+expr_stmt|;
+name|sec
+operator|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|SAVE_SECONDARY_SORT_FIELD
+argument_list|)
+expr_stmt|;
+name|ter
+operator|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|SAVE_TERTIARY_SORT_FIELD
+argument_list|)
+expr_stmt|;
+name|priD
+operator|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|SAVE_PRIMARY_SORT_DESCENDING
+argument_list|)
+expr_stmt|;
+name|secD
+operator|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|SAVE_SECONDARY_SORT_DESCENDING
+argument_list|)
+expr_stmt|;
+name|terD
+operator|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|SAVE_TERTIARY_SORT_DESCENDING
+argument_list|)
 expr_stmt|;
 block|}
 elseif|else
 if|if
 condition|(
+operator|!
+name|isSaveOperation
+operator|&&
 name|Globals
 operator|.
 name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-name|prefix
-operator|+
-literal|"InTitleOrder"
+name|JabRefPreferences
+operator|.
+name|EXPORT_IN_SPECIFIED_ORDER
 argument_list|)
 condition|)
 block|{
-name|saveOrder
+name|pri
 operator|=
-name|SaveOrder
+name|Globals
 operator|.
-name|Title
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EXPORT_PRIMARY_SORT_FIELD
+argument_list|)
 expr_stmt|;
-comment|//        	} else if (Globals.prefs.getBoolean(prefix + "InOriginalOrder")) {
-comment|// this case is never hit as SaveSettings() is never called if InOriginalOrder is true
-comment|//        		saveOrder = SaveOrder.Original;
+name|sec
+operator|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EXPORT_SECONDARY_SORT_FIELD
+argument_list|)
+expr_stmt|;
+name|ter
+operator|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EXPORT_TERTIARY_SORT_FIELD
+argument_list|)
+expr_stmt|;
+name|priD
+operator|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EXPORT_PRIMARY_SORT_DESCENDING
+argument_list|)
+expr_stmt|;
+name|secD
+operator|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EXPORT_SECONDARY_SORT_DESCENDING
+argument_list|)
+expr_stmt|;
+name|terD
+operator|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EXPORT_TERTIARY_SORT_DESCENDING
+argument_list|)
+expr_stmt|;
 block|}
 else|else
 block|{
-name|saveOrder
-operator|=
-name|SaveOrder
-operator|.
-name|TableSort
-expr_stmt|;
-block|}
-switch|switch
-condition|(
-name|saveOrder
-condition|)
-block|{
-case|case
-name|TableSort
-case|:
 comment|// The setting is to save according to the current table order.
 name|pri
 operator|=
@@ -1760,7 +1904,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"priSort"
+name|JabRefPreferences
+operator|.
+name|PRIMARY_SORT_FIELD
 argument_list|)
 expr_stmt|;
 name|sec
@@ -1771,10 +1917,11 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"secSort"
+name|JabRefPreferences
+operator|.
+name|SECONDARY_SORT_FIELD
 argument_list|)
 expr_stmt|;
-comment|// sorted as they appear on the screen.
 name|ter
 operator|=
 name|Globals
@@ -1783,7 +1930,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"terSort"
+name|JabRefPreferences
+operator|.
+name|TERTIARY_SORT_FIELD
 argument_list|)
 expr_stmt|;
 name|priD
@@ -1794,7 +1943,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"priDescending"
+name|JabRefPreferences
+operator|.
+name|PRIMARY_SORT_DESCENDING
 argument_list|)
 expr_stmt|;
 name|secD
@@ -1805,7 +1956,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"secDescending"
+name|JabRefPreferences
+operator|.
+name|SECONDARY_SORT_DESCENDING
 argument_list|)
 expr_stmt|;
 name|terD
@@ -1816,69 +1969,11 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"terDescending"
+name|JabRefPreferences
+operator|.
+name|TERTIARY_SORT_DESCENDING
 argument_list|)
 expr_stmt|;
-break|break;
-case|case
-name|Title
-case|:
-comment|// The setting is to not save in standard order, but in title order: title, author, editor
-name|pri
-operator|=
-literal|"title"
-expr_stmt|;
-name|sec
-operator|=
-literal|"author"
-expr_stmt|;
-name|ter
-operator|=
-literal|"editor"
-expr_stmt|;
-name|priD
-operator|=
-literal|false
-expr_stmt|;
-name|secD
-operator|=
-literal|false
-expr_stmt|;
-name|terD
-operator|=
-literal|false
-expr_stmt|;
-break|break;
-case|case
-name|Standard
-case|:
-default|default:
-comment|// required to get rid of Java compile errors
-name|pri
-operator|=
-literal|"author"
-expr_stmt|;
-name|sec
-operator|=
-literal|"editor"
-expr_stmt|;
-name|ter
-operator|=
-literal|"year"
-expr_stmt|;
-name|priD
-operator|=
-literal|false
-expr_stmt|;
-name|secD
-operator|=
-literal|false
-expr_stmt|;
-name|terD
-operator|=
-literal|true
-expr_stmt|;
-break|break;
 block|}
 block|}
 block|}
@@ -1930,6 +2025,7 @@ if|if
 condition|(
 name|isSaveOperation
 condition|)
+block|{
 name|comparators
 operator|.
 name|add
@@ -1939,6 +2035,7 @@ name|CrossRefEntryComparator
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|comparators
 operator|.
 name|add
@@ -2007,7 +2104,7 @@ return|return
 name|comparators
 return|;
 block|}
-comment|/** 	 * Saves the database to file, including only the entries included in the 	 * supplied input array bes. 	 *  	 * @return A List containing warnings, if any. 	 */
+comment|/**      * Saves the database to file, including only the entries included in the      * supplied input array bes.      *      * @return A List containing warnings, if any.      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -2213,6 +2310,7 @@ operator|>
 literal|0
 operator|)
 condition|)
+block|{
 for|for
 control|(
 name|int
@@ -2240,6 +2338,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|FieldFormatter
 name|ff
@@ -2500,7 +2599,7 @@ return|return
 name|session
 return|;
 block|}
-comment|/**      * This method attempts to get a Reader for the file path given, either by      * loading it as a resource (from within jar), or as a normal file.      * If unsuccessful (e.g. file not found), an IOException is thrown.      */
+comment|/**      * This method attempts to get a Reader for the file path given, either by      * loading it as a resource (from within jar), or as a normal file. If      * unsuccessful (e.g. file not found), an IOException is thrown.      */
 DECL|method|getReader (String name)
 specifier|public
 specifier|static
@@ -2631,7 +2730,7 @@ return|return
 name|reader
 return|;
 block|}
-comment|/*     * We have begun to use getSortedEntries() for both database save operations     * and non-database save operations.  In a non-database save operation     * (such as the exportDatabase call), we do not wish to use the     * global preference of saving in standard order.     */
+comment|/*      * We have begun to use getSortedEntries() for both database save operations      * and non-database save operations.  In a non-database save operation      * (such as the exportDatabase call), we do not wish to use the      * global preference of saving in standard order.      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -2779,6 +2878,7 @@ name|keySet
 operator|==
 literal|null
 condition|)
+block|{
 name|keySet
 operator|=
 name|database
@@ -2786,6 +2886,7 @@ operator|.
 name|getKeySet
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|keySet
@@ -2837,7 +2938,7 @@ return|return
 name|sorter
 return|;
 block|}
-comment|/**       * @return true iff the entry has a nonzero value in its field.      */
+comment|/**      * @return true iff the entry has a nonzero value in its field.      */
 DECL|method|nonZeroField (BibtexEntry be, String field)
 specifier|private
 specifier|static
