@@ -160,39 +160,6 @@ name|currentAssignment
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|UndoableChangeAssignment (Set<BibtexEntry> previousAssignment, Set<BibtexEntry> currentAssignment, GroupTreeNode node)
-specifier|public
-name|UndoableChangeAssignment
-parameter_list|(
-name|Set
-argument_list|<
-name|BibtexEntry
-argument_list|>
-name|previousAssignment
-parameter_list|,
-name|Set
-argument_list|<
-name|BibtexEntry
-argument_list|>
-name|currentAssignment
-parameter_list|,
-name|GroupTreeNode
-name|node
-parameter_list|)
-block|{
-name|this
-argument_list|(
-name|previousAssignment
-argument_list|,
-name|currentAssignment
-argument_list|)
-expr_stmt|;
-name|setEditedNode
-argument_list|(
-name|node
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**      * Sets the node of the group that was edited. If this node was not      * specified at construction time, this method has to be called before this      * instance may be used.      *       * @param node      *            The node whose assignments were edited.      */
 DECL|method|setEditedNode (GroupTreeNode node)
 specifier|public

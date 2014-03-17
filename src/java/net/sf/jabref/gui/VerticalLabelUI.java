@@ -229,38 +229,6 @@ operator|=
 name|clockwise
 expr_stmt|;
 block|}
-comment|/**     * @see ComponentUI#createUI(javax.swing.JComponent)      */
-DECL|method|createUI (JComponent c)
-specifier|public
-specifier|static
-name|ComponentUI
-name|createUI
-parameter_list|(
-name|JComponent
-name|c
-parameter_list|)
-block|{
-if|if
-condition|(
-name|System
-operator|.
-name|getSecurityManager
-argument_list|()
-operator|!=
-literal|null
-condition|)
-block|{
-return|return
-name|SAFE_VERTICAL_LABEL_UI
-return|;
-block|}
-else|else
-block|{
-return|return
-name|verticalLabelUI
-return|;
-block|}
-block|}
 comment|/**     * Overridden to always return -1, since a vertical label does not have a     * meaningful baseline.     *      * @see ComponentUI#getBaseline(JComponent, int, int)     */
 annotation|@
 name|Override
