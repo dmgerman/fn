@@ -1004,10 +1004,6 @@ argument_list|(
 name|cl
 argument_list|,
 operator|new
-name|Object
-index|[]
-block|{
-operator|new
 name|File
 argument_list|(
 name|pathToExecutable
@@ -1018,7 +1014,6 @@ argument_list|()
 operator|.
 name|toURL
 argument_list|()
-block|}
 argument_list|)
 expr_stmt|;
 block|}

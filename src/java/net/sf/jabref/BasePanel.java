@@ -7953,12 +7953,7 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-operator|new
-name|BibtexEntry
-index|[]
-block|{
 name|bibEntry
-block|}
 argument_list|)
 argument_list|,
 literal|false

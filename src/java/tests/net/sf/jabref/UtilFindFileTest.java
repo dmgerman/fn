@@ -371,12 +371,7 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-operator|new
-name|BibtexEntry
-index|[]
-block|{
 name|entry
-block|}
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -389,14 +384,9 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-operator|new
-name|String
-index|[]
-block|{
 literal|"jpg"
-block|,
+argument_list|,
 literal|"pdf"
-block|}
 argument_list|)
 decl_stmt|;
 name|Collection
@@ -411,10 +401,6 @@ name|asList
 argument_list|(
 operator|new
 name|File
-index|[]
-block|{
-operator|new
-name|File
 argument_list|(
 name|root
 operator|.
@@ -423,7 +409,7 @@ argument_list|()
 operator|+
 literal|"/pdfs/"
 argument_list|)
-block|,
+argument_list|,
 operator|new
 name|File
 argument_list|(
@@ -434,7 +420,6 @@ argument_list|()
 operator|+
 literal|"/graphicsDir/"
 argument_list|)
-block|}
 argument_list|)
 decl_stmt|;
 name|Map

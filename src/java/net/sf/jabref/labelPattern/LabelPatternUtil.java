@@ -740,14 +740,9 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
-operator|new
-name|String
-index|[]
-block|{
 literal|"press"
-block|,
+argument_list|,
 literal|"the"
-block|}
 argument_list|)
 decl_stmt|;
 name|content

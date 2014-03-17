@@ -953,16 +953,8 @@ operator|=
 name|targetClass
 operator|.
 name|getDeclaredConstructor
-argument_list|(
-operator|new
-name|Class
-argument_list|<
-name|?
-argument_list|>
-index|[]
-block|{}
-block|)
-empty_stmt|;
+argument_list|()
+expr_stmt|;
 name|constructor
 operator|.
 name|setAccessible
@@ -975,12 +967,7 @@ operator|=
 name|constructor
 operator|.
 name|newInstance
-argument_list|(
-operator|new
-name|Object
-index|[]
-block|{}
-argument_list|)
+argument_list|()
 expr_stmt|;
 block|}
 catch|catch
@@ -1001,9 +988,6 @@ return|return
 name|instance
 return|;
 block|}
-end_class
-
-begin_function
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -1117,9 +1101,6 @@ block|}
 block|}
 block|)
 function|;
-end_function
-
-begin_return
 return|return
 operator|new
 name|ArrayList
@@ -1147,11 +1128,12 @@ argument_list|()
 index|]
 argument_list|)
 return|;
-end_return
+block|}
+end_class
 
 begin_function
-unit|} 	 	private
 DECL|method|getInstanceFromNonDefaultConstructor (Class<T> targetClass)
+specifier|private
 specifier|static
 parameter_list|<
 name|T
