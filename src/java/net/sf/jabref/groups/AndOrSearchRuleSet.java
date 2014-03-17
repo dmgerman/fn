@@ -63,7 +63,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Subclass of SearchRuleSet that ANDs or ORs between its rules, eturning 0 or  * 1.  */
+comment|/**  * Subclass of SearchRuleSet that ANDs or ORs between its rules, returning 0 or  * 1.  */
 end_comment
 
 begin_class

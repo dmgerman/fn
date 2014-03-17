@@ -1169,32 +1169,15 @@ argument_list|)
 expr_stmt|;
 for|for
 control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|constructors
-operator|.
-name|length
-condition|;
-name|i
-operator|++
-control|)
-block|{
 name|Constructor
 argument_list|<
 name|?
 argument_list|>
 name|constructor
-init|=
+range|:
 name|constructors
-index|[
-name|i
-index|]
-decl_stmt|;
+control|)
+block|{
 name|constructor
 operator|.
 name|setAccessible
@@ -1216,7 +1199,7 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-comment|/** 				 * Trying to invoke constructor with<code>null</code> values. 				 */
+comment|/**                  * Trying to invoke constructor with<code>null</code> values.                  */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -1250,8 +1233,8 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{ 			}
-comment|/** 			 * Creating proper instances for the parameter types. 			 */
+block|{             }
+comment|/**              * Creating proper instances for the parameter types.              */
 name|Object
 index|[]
 name|arguments
