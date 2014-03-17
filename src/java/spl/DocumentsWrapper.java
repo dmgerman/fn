@@ -682,7 +682,8 @@ argument_list|()
 return|;
 block|}
 DECL|method|sortAuthors (List<Bean> authors)
-specifier|private
+specifier|protected
+specifier|static
 name|List
 argument_list|<
 name|Bean
