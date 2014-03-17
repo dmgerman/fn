@@ -11152,8 +11152,8 @@ name|c
 argument_list|)
 expr_stmt|;
 comment|// Check if we are entering an escape sequence:
-if|if
-condition|(
+name|escaped
+operator|=
 operator|(
 name|c
 operator|==
@@ -11162,15 +11162,6 @@ operator|)
 operator|&&
 operator|!
 name|escaped
-condition|)
-name|escaped
-operator|=
-literal|true
-expr_stmt|;
-else|else
-name|escaped
-operator|=
-literal|false
 expr_stmt|;
 block|}
 comment|// Check if we have an unclosed brace:

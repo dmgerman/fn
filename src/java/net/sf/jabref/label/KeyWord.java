@@ -157,8 +157,7 @@ name|String
 name|matchWord
 parameter_list|)
 block|{
-if|if
-condition|(
+return|return
 name|contains
 argument_list|(
 name|matchWord
@@ -166,14 +165,6 @@ operator|.
 name|toLowerCase
 argument_list|()
 argument_list|)
-condition|)
-block|{
-return|return
-literal|true
-return|;
-block|}
-return|return
-literal|false
 return|;
 block|}
 DECL|method|isKeyWordMatchCase (String matchWord)
@@ -185,20 +176,11 @@ name|String
 name|matchWord
 parameter_list|)
 block|{
-if|if
-condition|(
+return|return
 name|contains
 argument_list|(
 name|matchWord
 argument_list|)
-condition|)
-block|{
-return|return
-literal|true
-return|;
-block|}
-return|return
-literal|false
 return|;
 block|}
 block|}

@@ -2884,8 +2884,7 @@ name|int
 name|flagID
 parameter_list|)
 block|{
-if|if
-condition|(
+return|return
 operator|(
 name|flag
 operator|&
@@ -2893,12 +2892,6 @@ name|flagID
 operator|)
 operator|==
 name|flagID
-condition|)
-return|return
-literal|true
-return|;
-return|return
-literal|false
 return|;
 block|}
 comment|// -----------------------------------------------------------------------

@@ -398,20 +398,13 @@ name|boolean
 name|specifiedYears
 parameter_list|()
 block|{
-if|if
-condition|(
+return|return
 name|searchTerm
 operator|.
 name|matches
 argument_list|(
 literal|"year=[0-9]{4}-[0-9]{4}"
 argument_list|)
-condition|)
-return|return
-literal|true
-return|;
-return|return
-literal|false
 return|;
 block|}
 DECL|method|fieldYear ()
