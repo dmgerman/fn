@@ -2731,8 +2731,6 @@ name|equals
 argument_list|(
 literal|"InternetSite"
 argument_list|)
-operator|==
-literal|true
 operator|||
 name|sourceType
 operator|.
@@ -2740,8 +2738,6 @@ name|equals
 argument_list|(
 literal|"DocumentFromInternetSite"
 argument_list|)
-operator|==
-literal|true
 operator|)
 operator|&&
 name|bibtex
@@ -2853,8 +2849,6 @@ name|equals
 argument_list|(
 literal|"ElectronicSource"
 argument_list|)
-operator|==
-literal|true
 operator|||
 name|sourceType
 operator|.
@@ -2862,8 +2856,6 @@ name|equals
 argument_list|(
 literal|"Art"
 argument_list|)
-operator|==
-literal|true
 operator|||
 name|sourceType
 operator|.
@@ -2871,8 +2863,6 @@ name|equals
 argument_list|(
 literal|"Misc"
 argument_list|)
-operator|==
-literal|true
 operator|)
 operator|&&
 name|bibtex
@@ -2931,8 +2921,6 @@ name|equals
 argument_list|(
 literal|"SoundRecording"
 argument_list|)
-operator|==
-literal|true
 operator|&&
 name|bibtex
 operator|.
@@ -3044,8 +3032,6 @@ name|equals
 argument_list|(
 literal|"Interview"
 argument_list|)
-operator|==
-literal|true
 operator|&&
 name|bibtex
 operator|.
@@ -6406,9 +6392,8 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|First
-operator|==
-literal|false
 condition|)
 name|allAuthors
 operator|+=

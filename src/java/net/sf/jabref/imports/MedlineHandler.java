@@ -586,8 +586,6 @@ literal|"Year"
 argument_list|)
 operator|&&
 name|inPubDate
-operator|==
-literal|true
 condition|)
 block|{
 name|inYear
@@ -606,8 +604,6 @@ literal|"MedlineDate"
 argument_list|)
 operator|&&
 name|inPubDate
-operator|==
-literal|true
 condition|)
 block|{
 name|inMedlineDate
@@ -648,8 +644,6 @@ literal|"Month"
 argument_list|)
 operator|&&
 name|inPubDate
-operator|==
-literal|true
 condition|)
 block|{
 name|inMonth

@@ -577,10 +577,6 @@ argument_list|)
 operator|==
 literal|'='
 operator|)
-operator|&&
-operator|(
-literal|true
-operator|)
 condition|)
 block|{
 name|mEQUAL
@@ -603,10 +599,6 @@ literal|1
 argument_list|)
 operator|==
 literal|'"'
-operator|)
-operator|&&
-operator|(
-literal|true
 operator|)
 condition|)
 block|{

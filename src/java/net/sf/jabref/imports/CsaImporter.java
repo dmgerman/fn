@@ -1477,9 +1477,8 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
 name|first
-operator|==
-literal|false
 condition|)
 block|{
 throw|throw
@@ -1503,8 +1502,6 @@ elseif|else
 if|if
 condition|(
 name|first
-operator|==
-literal|true
 condition|)
 block|{
 throw|throw

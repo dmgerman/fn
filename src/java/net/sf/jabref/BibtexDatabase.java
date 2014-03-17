@@ -1955,12 +1955,8 @@ block|}
 if|if
 condition|(
 name|duplicate
-operator|==
-literal|true
 operator|&&
 name|issueWarning
-operator|==
-literal|true
 condition|)
 block|{
 name|JOptionPane
