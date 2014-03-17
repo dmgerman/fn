@@ -1832,16 +1832,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|ex
-parameter_list|)
-block|{
-throw|throw
-name|ex
-throw|;
-block|}
 finally|finally
 block|{
 try|try
