@@ -98,6 +98,16 @@ return|return
 literal|"unknown"
 return|;
 block|}
+DECL|method|describeOptionalFields ()
+specifier|public
+name|String
+name|describeOptionalFields
+parameter_list|()
+block|{
+return|return
+literal|"unknown"
+return|;
+block|}
 DECL|method|hasAllRequiredFields (BibtexEntry entry, BibtexDatabase database)
 specifier|public
 name|boolean
@@ -114,6 +124,15 @@ return|return
 literal|true
 return|;
 block|}
+DECL|method|save (Writer out)
+specifier|public
+name|void
+name|save
+parameter_list|(
+name|Writer
+name|out
+parameter_list|)
+block|{     }
 block|}
 end_class
 

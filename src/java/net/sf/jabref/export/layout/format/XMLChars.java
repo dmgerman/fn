@@ -154,6 +154,17 @@ name|XMLChars
 implements|implements
 name|LayoutFormatter
 block|{
+DECL|field|pattern
+name|Pattern
+name|pattern
+init|=
+name|Pattern
+operator|.
+name|compile
+argument_list|(
+literal|".*\\{\\\\.*[a-zA-Z]\\}.*"
+argument_list|)
+decl_stmt|;
 DECL|method|format (String fieldText)
 specifier|public
 name|String
