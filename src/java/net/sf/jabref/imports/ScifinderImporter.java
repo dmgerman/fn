@@ -430,12 +430,10 @@ if|if
 condition|(
 name|field
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|":"
 argument_list|)
-operator|>=
-literal|0
 condition|)
 block|{
 name|String

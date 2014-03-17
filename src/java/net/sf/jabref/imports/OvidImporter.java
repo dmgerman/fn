@@ -587,25 +587,21 @@ argument_list|)
 operator|==
 literal|0
 operator|&&
+operator|!
 name|fieldName
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"Author Keywords"
 argument_list|)
-operator|==
-operator|-
-literal|1
 operator|&&
+operator|!
 name|fieldName
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"Author e-mail"
 argument_list|)
-operator|==
-operator|-
-literal|1
 decl_stmt|;
 comment|// Remove unnecessary dots at the end of lines, unless this is the author field,
 comment|// in which case a dot at the end could be significant:
@@ -1280,12 +1276,10 @@ if|if
 condition|(
 name|content
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"Book"
 argument_list|)
-operator|>=
-literal|0
 condition|)
 name|h
 operator|.
@@ -1301,12 +1295,10 @@ if|if
 condition|(
 name|content
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"Journal"
 argument_list|)
-operator|>=
-literal|0
 condition|)
 name|h
 operator|.
@@ -1322,12 +1314,10 @@ if|if
 condition|(
 name|content
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"Conference Paper"
 argument_list|)
-operator|>=
-literal|0
 condition|)
 name|h
 operator|.

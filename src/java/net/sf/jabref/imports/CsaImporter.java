@@ -1562,23 +1562,19 @@ condition|(
 operator|(
 name|type
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"article"
 argument_list|)
-operator|>=
-literal|0
 operator|)
 operator|||
 operator|(
 name|type
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"journal article"
 argument_list|)
-operator|>=
-literal|0
 operator|)
 condition|)
 block|{
