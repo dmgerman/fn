@@ -2336,8 +2336,9 @@ argument_list|>
 name|xmpEntriesInFile
 parameter_list|)
 block|{
-if|if
-condition|(
+return|return
+operator|!
+operator|(
 operator|(
 name|xmpEntriesInFile
 operator|==
@@ -2352,18 +2353,8 @@ argument_list|()
 operator|==
 literal|0
 operator|)
-condition|)
-block|{
-return|return
-literal|false
+operator|)
 return|;
-block|}
-else|else
-block|{
-return|return
-literal|true
-return|;
-block|}
 block|}
 DECL|method|getEntryTable ()
 specifier|public
