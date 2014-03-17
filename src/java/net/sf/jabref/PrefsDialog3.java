@@ -269,6 +269,9 @@ name|parent
 expr_stmt|;
 specifier|final
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|chooser
 decl_stmt|;
 name|JButton
@@ -675,6 +678,9 @@ name|chooser
 operator|=
 operator|new
 name|JList
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|names
 argument_list|)
@@ -742,9 +748,6 @@ return|return;
 name|String
 name|o
 init|=
-operator|(
-name|String
-operator|)
 name|chooser
 operator|.
 name|getSelectedValue
