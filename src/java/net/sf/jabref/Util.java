@@ -4197,8 +4197,6 @@ operator|)
 condition|)
 block|{
 comment|// Open the file:
-try|try
-block|{
 name|String
 name|filePath
 init|=
@@ -4443,18 +4441,6 @@ block|}
 return|return
 literal|true
 return|;
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-throw|throw
-name|e
-throw|;
-comment|/*e.printStackTrace(); 				System.err.println("An error occured on the command: " + fileType.getOpenWith() 					+ " #" + link); 				System.err.println(e.getMessage());*/
-block|}
 block|}
 else|else
 block|{
