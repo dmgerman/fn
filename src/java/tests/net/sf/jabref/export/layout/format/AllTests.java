@@ -146,15 +146,6 @@ name|suite
 operator|.
 name|addTestSuite
 argument_list|(
-name|ResolvePDFTest
-operator|.
-name|class
-argument_list|)
-expr_stmt|;
-name|suite
-operator|.
-name|addTestSuite
-argument_list|(
 name|DOICheckTest
 operator|.
 name|class
