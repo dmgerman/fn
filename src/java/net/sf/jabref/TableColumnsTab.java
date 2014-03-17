@@ -1348,13 +1348,11 @@ operator|.
 name|setEnabled
 argument_list|(
 name|isEnabled
-condition|?
+operator|&&
 name|rankingColumn
 operator|.
 name|isSelected
 argument_list|()
-else|:
-literal|false
 argument_list|)
 expr_stmt|;
 name|qualityColumn
