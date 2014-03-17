@@ -14,6 +14,16 @@ name|jabref
 package|;
 end_package
 
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|Writer
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class is used to represent an unknown entry type, e.g. encountered  * during bibtex parsing. The only known information is the type name.  * This is useful if the bibtex file contains type definitions that are used  * in the file - because the entries will be parsed before the type definitions  * are found. In the meantime, the entries will be assigned an   * UnknownEntryType giving the name.  */
 end_comment
@@ -98,16 +108,6 @@ return|return
 literal|"unknown"
 return|;
 block|}
-DECL|method|describeOptionalFields ()
-specifier|public
-name|String
-name|describeOptionalFields
-parameter_list|()
-block|{
-return|return
-literal|"unknown"
-return|;
-block|}
 DECL|method|hasAllRequiredFields (BibtexEntry entry, BibtexDatabase database)
 specifier|public
 name|boolean
@@ -124,15 +124,6 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|save (Writer out)
-specifier|public
-name|void
-name|save
-parameter_list|(
-name|Writer
-name|out
-parameter_list|)
-block|{     }
 block|}
 end_class
 
