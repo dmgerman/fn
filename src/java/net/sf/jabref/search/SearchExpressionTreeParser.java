@@ -283,9 +283,6 @@ operator|)
 condition|?
 literal|null
 else|:
-operator|(
-name|AST
-operator|)
 name|_t
 decl_stmt|;
 name|boolean
@@ -1179,9 +1176,6 @@ operator|)
 condition|?
 literal|null
 else|:
-operator|(
-name|AST
-operator|)
 name|_t
 decl_stmt|;
 try|try

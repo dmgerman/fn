@@ -208,12 +208,7 @@ name|println
 argument_list|(
 literal|"Char: '"
 operator|+
-operator|(
-operator|(
-name|char
-operator|)
 name|c
-operator|)
 operator|+
 literal|"'"
 argument_list|)

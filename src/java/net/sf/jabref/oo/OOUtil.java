@@ -278,9 +278,6 @@ comment|// Backup the value of the uniq field, just in case the entry already ha
 name|String
 name|oldUniqVal
 init|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField
@@ -361,9 +358,6 @@ block|{
 name|XParagraphCursor
 name|parCursor
 init|=
-operator|(
-name|XParagraphCursor
-operator|)
 name|UnoRuntime
 operator|.
 name|queryInterface
@@ -378,9 +372,6 @@ decl_stmt|;
 name|XPropertySet
 name|props
 init|=
-operator|(
-name|XPropertySet
-operator|)
 name|UnoRuntime
 operator|.
 name|queryInterface
@@ -886,9 +877,6 @@ comment|// (which is the string we just inserted) to be bold
 name|XPropertySet
 name|xCursorProps
 init|=
-operator|(
-name|XPropertySet
-operator|)
 name|UnoRuntime
 operator|.
 name|queryInterface
@@ -1173,9 +1161,6 @@ expr_stmt|;
 name|XParagraphCursor
 name|parCursor
 init|=
-operator|(
-name|XParagraphCursor
-operator|)
 name|UnoRuntime
 operator|.
 name|queryInterface
@@ -1192,9 +1177,6 @@ comment|// (which is the string we just inserted) to be bold
 name|XPropertySet
 name|props
 init|=
-operator|(
-name|XPropertySet
-operator|)
 name|UnoRuntime
 operator|.
 name|queryInterface
@@ -1264,9 +1246,6 @@ block|{
 name|XPropertySet
 name|props
 init|=
-operator|(
-name|XPropertySet
-operator|)
 name|UnoRuntime
 operator|.
 name|queryInterface
@@ -1302,9 +1281,6 @@ block|{
 name|XPropertySet
 name|props
 init|=
-operator|(
-name|XPropertySet
-operator|)
 name|UnoRuntime
 operator|.
 name|queryInterface

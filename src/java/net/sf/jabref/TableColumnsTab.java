@@ -793,17 +793,12 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-operator|(
-operator|(
-name|String
-operator|)
 name|getValueAt
 argument_list|(
 name|row
 argument_list|,
 literal|1
 argument_list|)
-operator|)
 operator|.
 name|equals
 argument_list|(

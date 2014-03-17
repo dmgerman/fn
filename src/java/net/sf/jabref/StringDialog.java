@@ -1367,12 +1367,7 @@ comment|// Change name of string.
 if|if
 condition|(
 operator|!
-operator|(
-operator|(
-name|String
-operator|)
 name|value
-operator|)
 operator|.
 name|equals
 argument_list|(
@@ -1635,12 +1630,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-operator|(
-operator|(
-name|String
-operator|)
 name|value
-operator|)
 operator|.
 name|equals
 argument_list|(

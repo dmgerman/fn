@@ -1530,9 +1530,6 @@ comment|// to see an example
 name|String
 name|title
 init|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField

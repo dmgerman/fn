@@ -2663,9 +2663,6 @@ name|action
 init|=
 name|add
 condition|?
-operator|(
-name|AbstractAction
-operator|)
 operator|new
 name|AddToGroupAction
 argument_list|(
@@ -2676,9 +2673,6 @@ argument_list|,
 name|panel
 argument_list|)
 else|:
-operator|(
-name|AbstractAction
-operator|)
 operator|new
 name|RemoveFromGroupAction
 argument_list|(

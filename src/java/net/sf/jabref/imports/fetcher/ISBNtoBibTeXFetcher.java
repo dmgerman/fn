@@ -516,9 +516,6 @@ comment|// Optionally add curly brackets around key words to keep the case
 name|String
 name|title
 init|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField

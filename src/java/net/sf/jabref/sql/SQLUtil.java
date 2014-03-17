@@ -956,17 +956,12 @@ block|{
 name|ResultSet
 name|rs
 init|=
-operator|(
-operator|(
-name|Statement
-operator|)
 name|executeQueryWithResults
 argument_list|(
 name|conn
 argument_list|,
 name|query
 argument_list|)
-operator|)
 operator|.
 name|getResultSet
 argument_list|()

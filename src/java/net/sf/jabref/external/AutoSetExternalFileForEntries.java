@@ -713,9 +713,6 @@ operator|!=
 literal|null
 operator|)
 condition|?
-operator|(
-name|String
-operator|)
 name|old
 else|:
 literal|""

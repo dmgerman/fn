@@ -2040,9 +2040,6 @@ name|sb
 operator|.
 name|append
 argument_list|(
-operator|(
-name|char
-operator|)
 name|buffer
 index|[
 name|i
@@ -2108,9 +2105,6 @@ comment|// clean up title
 name|String
 name|title
 init|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField
@@ -2353,9 +2347,6 @@ comment|// clean up month
 name|String
 name|month
 init|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField

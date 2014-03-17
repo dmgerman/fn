@@ -1038,9 +1038,6 @@ comment|// Convert from HTML and optionally add curly brackets around key words 
 name|String
 name|title
 init|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField
@@ -1139,9 +1136,6 @@ block|}
 name|String
 name|abstr
 init|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField
