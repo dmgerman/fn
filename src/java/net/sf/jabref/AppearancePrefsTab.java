@@ -281,7 +281,7 @@ argument_list|)
 decl_stmt|;
 name|builder
 operator|.
-name|setLeadingColumnOffset
+name|leadingColumnOffset
 argument_list|(
 literal|2
 argument_list|)

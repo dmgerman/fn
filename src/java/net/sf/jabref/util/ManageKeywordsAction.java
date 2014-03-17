@@ -1219,13 +1219,15 @@ name|arg0
 parameter_list|)
 block|{
 comment|// keywordList.getSelectedIndices(); does not work, therefore we operate on the values
+name|List
+argument_list|<
 name|Object
-index|[]
+argument_list|>
 name|values
 init|=
 name|keywordList
 operator|.
-name|getSelectedValues
+name|getSelectedValuesList
 argument_list|()
 decl_stmt|;
 name|List

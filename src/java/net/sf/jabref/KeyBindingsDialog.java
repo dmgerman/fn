@@ -52,17 +52,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
+name|*
 import|;
 end_import
 
@@ -75,26 +65,6 @@ operator|.
 name|Map
 operator|.
 name|Entry
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|TreeMap
 import|;
 end_import
 
@@ -948,13 +918,15 @@ name|getSource
 argument_list|()
 decl_stmt|;
 comment|// Get all selected items
+name|List
+argument_list|<
 name|Object
-index|[]
+argument_list|>
 name|selected
 init|=
 name|list
 operator|.
-name|getSelectedValues
+name|getSelectedValuesList
 argument_list|()
 decl_stmt|;
 comment|// Iterate all selected items
