@@ -1015,8 +1015,6 @@ condition|(
 name|sel
 condition|)
 block|{
-try|try
-block|{
 name|BibtexEntry
 name|entry
 init|=
@@ -1173,19 +1171,6 @@ name|addEntry
 argument_list|(
 name|entry
 argument_list|)
-expr_stmt|;
-block|}
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
 expr_stmt|;
 block|}
 block|}
@@ -1910,8 +1895,6 @@ parameter_list|,
 name|boolean
 name|abs
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 try|try
 block|{

@@ -1983,8 +1983,9 @@ name|PersistenceTableColumnListener
 operator|.
 name|ACTIVATE_PREF_KEY
 argument_list|,
-operator|new
 name|Boolean
+operator|.
+name|valueOf
 argument_list|(
 name|PersistenceTableColumnListener
 operator|.
@@ -6120,8 +6121,6 @@ parameter_list|(
 name|String
 name|key
 parameter_list|)
-throws|throws
-name|BackingStoreException
 block|{
 name|prefs
 operator|.

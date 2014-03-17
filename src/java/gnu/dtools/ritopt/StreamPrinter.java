@@ -129,8 +129,6 @@ specifier|public
 name|void
 name|start
 parameter_list|()
-throws|throws
-name|InterruptedException
 block|{
 name|thread
 operator|.

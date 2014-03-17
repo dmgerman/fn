@@ -748,8 +748,6 @@ parameter_list|(
 name|Reader
 name|in
 parameter_list|)
-throws|throws
-name|FileNotFoundException
 block|{
 name|BufferedReader
 name|reader

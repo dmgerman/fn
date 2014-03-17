@@ -2194,9 +2194,7 @@ argument_list|)
 expr_stmt|;
 name|standardNumber
 operator|=
-operator|new
-name|String
-argument_list|()
+literal|""
 expr_stmt|;
 if|if
 condition|(

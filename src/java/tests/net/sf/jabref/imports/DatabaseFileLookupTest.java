@@ -924,14 +924,6 @@ name|targetClass
 parameter_list|)
 throws|throws
 name|IllegalArgumentException
-throws|,
-name|InstantiationException
-throws|,
-name|IllegalAccessException
-throws|,
-name|InvocationTargetException
-throws|,
-name|NoSuchMethodException
 block|{
 name|T
 name|instance

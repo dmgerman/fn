@@ -688,8 +688,6 @@ parameter_list|,
 name|URLConnection
 name|conn
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 for|for
 control|(

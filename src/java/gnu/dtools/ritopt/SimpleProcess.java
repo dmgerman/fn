@@ -148,8 +148,6 @@ parameter_list|,
 name|PrintStream
 name|yourError
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|super
 argument_list|()

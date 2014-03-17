@@ -355,7 +355,7 @@ control|(
 name|BibtexEntry
 name|entry
 range|:
-name|getDatabse
+name|getDatabase
 argument_list|()
 operator|.
 name|getEntries
@@ -523,7 +523,7 @@ control|(
 name|BibtexEntry
 name|entry
 range|:
-name|getDatabse
+name|getDatabase
 argument_list|()
 operator|.
 name|getEntries
@@ -646,7 +646,7 @@ control|(
 name|BibtexEntry
 name|entry
 range|:
-name|getDatabse
+name|getDatabase
 argument_list|()
 operator|.
 name|getEntries
@@ -778,7 +778,7 @@ control|(
 name|BibtexEntry
 name|entry
 range|:
-name|getDatabse
+name|getDatabase
 argument_list|()
 operator|.
 name|getEntries
@@ -1585,10 +1585,10 @@ name|closeJabRef
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|getDatabse ()
+DECL|method|getDatabase ()
 specifier|private
 name|BibtexDatabase
-name|getDatabse
+name|getDatabase
 parameter_list|()
 block|{
 name|Globals

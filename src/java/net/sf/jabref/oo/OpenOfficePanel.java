@@ -1226,8 +1226,6 @@ specifier|private
 name|void
 name|initPanel
 parameter_list|()
-throws|throws
-name|Exception
 block|{
 name|useDefaultAuthoryearStyle
 operator|=
@@ -5100,8 +5098,6 @@ name|ActionEvent
 name|actionEvent
 parameter_list|)
 block|{
-try|try
-block|{
 name|Globals
 operator|.
 name|prefs
@@ -5168,19 +5164,6 @@ literal|"Cleared connection settings."
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|BackingStoreException
-name|ex
-parameter_list|)
-block|{
-name|ex
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 block|}
 argument_list|)

@@ -1508,56 +1508,12 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
-try|try
-block|{
 name|session
 operator|.
 name|cancel
 argument_list|()
 expr_stmt|;
 comment|// repairAfterError(file, backup, INIT_OK);
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-comment|// Argh, another error? Can we do anything?
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-throw|throw
-operator|new
-name|SaveException
-argument_list|(
-name|ex
-operator|.
-name|getMessage
-argument_list|()
-operator|+
-literal|"\n"
-operator|+
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Warning: could not complete file repair; your file may "
-operator|+
-literal|"have been corrupted. Error message"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-throw|;
-block|}
 throw|throw
 operator|new
 name|SaveException
@@ -2441,56 +2397,12 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
-try|try
-block|{
 name|session
 operator|.
 name|cancel
 argument_list|()
 expr_stmt|;
 comment|//repairAfterError(file, backup, status);
-block|}
-catch|catch
-parameter_list|(
-name|IOException
-name|e
-parameter_list|)
-block|{
-comment|// Argh, another error? Can we do anything?
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-throw|throw
-operator|new
-name|SaveException
-argument_list|(
-name|ex
-operator|.
-name|getMessage
-argument_list|()
-operator|+
-literal|"\n"
-operator|+
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Warning: could not complete file repair; your file may "
-operator|+
-literal|"have been corrupted. Error message"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-throw|;
-block|}
 throw|throw
 operator|new
 name|SaveException
