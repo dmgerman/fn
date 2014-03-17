@@ -678,8 +678,9 @@ argument_list|)
 expr_stmt|;
 name|comparatorChooser
 operator|=
-operator|new
-name|MyTableComparatorChooser
+name|this
+operator|.
+name|createTableComparatorChooser
 argument_list|(
 name|this
 argument_list|,
@@ -3626,18 +3627,13 @@ name|value
 parameter_list|)
 block|{          }
 block|}
-DECL|class|MyTableComparatorChooser
-class|class
-name|MyTableComparatorChooser
-extends|extends
+DECL|method|createTableComparatorChooser (JTable table, SortedList<BibtexEntry> list, Object sortingStrategy)
+specifier|public
 name|TableComparatorChooser
 argument_list|<
 name|BibtexEntry
 argument_list|>
-block|{
-DECL|method|MyTableComparatorChooser (JTable table, SortedList<BibtexEntry> list, Object sortingStrategy)
-specifier|public
-name|MyTableComparatorChooser
+name|createTableComparatorChooser
 parameter_list|(
 name|JTable
 name|table
@@ -3652,7 +3648,16 @@ name|Object
 name|sortingStrategy
 parameter_list|)
 block|{
-name|super
+specifier|final
+name|TableComparatorChooser
+argument_list|<
+name|BibtexEntry
+argument_list|>
+name|result
+init|=
+name|TableComparatorChooser
+operator|.
+name|install
 argument_list|(
 name|table
 argument_list|,
@@ -3660,9 +3665,9 @@ name|list
 argument_list|,
 name|sortingStrategy
 argument_list|)
-expr_stmt|;
-comment|// We need to reset the stack of sorted list each time sorting order
-comment|// changes, or the sorting breaks down:
+decl_stmt|;
+name|result
+operator|.
 name|addSortActionListener
 argument_list|(
 operator|new
@@ -3677,7 +3682,8 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-comment|//System.out.println("...");
+comment|// We need to reset the stack of sorted list each time sorting order
+comment|// changes, or the sorting breaks down:
 name|refreshSorting
 argument_list|()
 expr_stmt|;
@@ -3685,7 +3691,9 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-block|}
+return|return
+name|result
+return|;
 block|}
 comment|/**      * Morten Alver: This override is a workaround NullPointerException when      * dragging stuff into the table. I found this in a forum, but have no idea      * why it works.      * @param newUI      */
 DECL|method|setUI (TableUI newUI)

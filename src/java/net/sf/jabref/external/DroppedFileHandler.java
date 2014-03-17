@@ -82,6 +82,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|jgoodies
+operator|.
+name|forms
+operator|.
+name|factories
+operator|.
+name|Borders
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -447,8 +461,12 @@ argument_list|)
 decl_stmt|;
 name|builder
 operator|.
-name|setDefaultDialogBorder
-argument_list|()
+name|border
+argument_list|(
+name|Borders
+operator|.
+name|DIALOG
+argument_list|)
 expr_stmt|;
 name|CellConstraints
 name|cc
