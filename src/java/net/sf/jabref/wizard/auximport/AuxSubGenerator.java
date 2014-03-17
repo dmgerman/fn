@@ -813,35 +813,16 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-name|Iterator
-argument_list|<
-name|String
-argument_list|>
-name|it
-init|=
-name|mySet
-operator|.
-name|iterator
-argument_list|()
-decl_stmt|;
 comment|// forall bibtex keys (found in aux-file) try to find an equivalent
 comment|// entry into reference database
-while|while
-condition|(
-name|it
-operator|.
-name|hasNext
-argument_list|()
-condition|)
-block|{
+for|for
+control|(
 name|String
 name|str
-init|=
-name|it
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
+range|:
+name|mySet
+control|)
+block|{
 name|BibtexEntry
 name|entry
 init|=
@@ -918,7 +899,7 @@ argument_list|(
 name|crossref
 argument_list|)
 decl_stmt|;
-comment|/**                * [ 1717849 ] Patch for aux import by Kai Eckert                */
+comment|/**                    * [ 1717849 ] Patch for aux import by Kai Eckert                    */
 if|if
 condition|(
 name|refEntry

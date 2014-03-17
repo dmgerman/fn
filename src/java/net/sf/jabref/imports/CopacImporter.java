@@ -473,24 +473,13 @@ name|BibtexEntry
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|Iterator
-argument_list|<
+for|for
+control|(
 name|String
-argument_list|>
-name|it
-init|=
+name|entry
+range|:
 name|entries
-operator|.
-name|iterator
-argument_list|()
-decl_stmt|;
-while|while
-condition|(
-name|it
-operator|.
-name|hasNext
-argument_list|()
-condition|)
+control|)
 block|{
 comment|// Copac does not contain enough information on the type of the
 comment|// document. A book is assumed.
@@ -513,10 +502,7 @@ name|String
 index|[]
 name|lines
 init|=
-name|it
-operator|.
-name|next
-argument_list|()
+name|entry
 operator|.
 name|split
 argument_list|(
