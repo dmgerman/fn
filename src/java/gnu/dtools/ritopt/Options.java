@@ -1339,20 +1339,9 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
-name|e
+name|ignored
 parameter_list|)
-block|{
-throw|throw
-operator|new
-name|OptionProcessingException
-argument_list|(
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-throw|;
-block|}
+block|{              }
 block|}
 block|}
 comment|/**      * Loads all options and their modules from an options file.      *      * @param filename  The options filename to write.      */
@@ -1463,20 +1452,9 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
-name|e
+name|ignored
 parameter_list|)
-block|{
-throw|throw
-operator|new
-name|OptionProcessingException
-argument_list|(
-name|e
-operator|.
-name|getMessage
-argument_list|()
-argument_list|)
-throw|;
-block|}
+block|{                              }
 block|}
 block|}
 comment|/**      * Processes an array of strings representing command line arguments.      *      * @param args arguments to process.      *      * @return The leftover arguments.      */
