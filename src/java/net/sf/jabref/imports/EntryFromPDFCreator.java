@@ -612,9 +612,6 @@ argument_list|,
 literal|"timestamp"
 argument_list|,
 name|date
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

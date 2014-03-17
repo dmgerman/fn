@@ -480,9 +480,6 @@ name|getField
 argument_list|(
 literal|"title"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 else|else
@@ -494,9 +491,6 @@ name|getField
 argument_list|(
 literal|"title"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 block|}
 if|if
@@ -527,9 +521,6 @@ name|getField
 argument_list|(
 literal|"publisher"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 else|else
@@ -541,9 +532,6 @@ name|getField
 argument_list|(
 literal|"publisher"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 block|}
 if|if
@@ -565,9 +553,6 @@ name|getField
 argument_list|(
 literal|"bibtexkey"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -597,9 +582,6 @@ name|getField
 argument_list|(
 literal|"place"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 else|else
@@ -611,9 +593,6 @@ name|getField
 argument_list|(
 literal|"place"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 block|}
 name|date
@@ -651,9 +630,6 @@ name|getField
 argument_list|(
 literal|"author"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
@@ -1017,9 +993,6 @@ name|getField
 argument_list|(
 literal|"year"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 operator|)
 expr_stmt|;
 if|if
@@ -1043,9 +1016,6 @@ name|getField
 argument_list|(
 literal|"month"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 return|return
 name|result

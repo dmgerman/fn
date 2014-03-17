@@ -142,9 +142,6 @@ operator|.
 name|getField
 argument_list|(
 name|field
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 operator|!=
 literal|null
@@ -167,13 +164,7 @@ operator|.
 name|getField
 argument_list|(
 name|field
-operator|.
-name|toString
-argument_list|()
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 operator|.
 name|indexOf
 argument_list|(
@@ -197,13 +188,7 @@ operator|.
 name|getField
 argument_list|(
 name|field
-operator|.
-name|toString
-argument_list|()
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 operator|.
 name|toLowerCase
 argument_list|()
@@ -232,9 +217,6 @@ block|{
 name|hitInField
 operator|=
 name|field
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 return|return
 literal|true

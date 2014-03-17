@@ -1952,9 +1952,6 @@ name|getField
 argument_list|(
 literal|"bibtexkey"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -1977,9 +1974,6 @@ name|getField
 argument_list|(
 literal|"language"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
@@ -2001,9 +1995,6 @@ name|getField
 argument_list|(
 literal|"title"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2024,9 +2015,6 @@ name|getField
 argument_list|(
 literal|"year"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2047,9 +2035,6 @@ name|getField
 argument_list|(
 literal|"month"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2074,9 +2059,6 @@ name|MSBIB
 operator|+
 literal|"day"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2101,9 +2083,6 @@ name|MSBIB
 operator|+
 literal|"shorttitle"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2124,9 +2103,6 @@ name|getField
 argument_list|(
 literal|"note"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2150,9 +2126,6 @@ name|getField
 argument_list|(
 literal|"pages"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
@@ -2174,9 +2147,6 @@ name|getField
 argument_list|(
 literal|"volume"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2201,9 +2171,6 @@ name|MSBIB
 operator|+
 literal|"numberofvolume"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2224,9 +2191,6 @@ name|getField
 argument_list|(
 literal|"edition"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 name|standardNumber
 operator|=
@@ -2256,9 +2220,6 @@ name|getField
 argument_list|(
 literal|"isbn"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 comment|/* SM: 2010.10: lower case */
 if|if
@@ -2283,9 +2244,6 @@ name|getField
 argument_list|(
 literal|"issn"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 comment|/* SM: 2010.10: lower case */
 if|if
@@ -2310,9 +2268,6 @@ name|getField
 argument_list|(
 literal|"lccn"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 comment|/* SM: 2010.10: lower case */
 if|if
@@ -2336,9 +2291,6 @@ name|getField
 argument_list|(
 literal|"mrnumber"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 comment|/* SM: 2010.10 begin DOI support */
 if|if
@@ -2362,9 +2314,6 @@ name|getField
 argument_list|(
 literal|"doi"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 comment|/* SM: 2010.10 end DOI support */
 if|if
@@ -2399,9 +2348,6 @@ name|getField
 argument_list|(
 literal|"publisher"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2422,9 +2368,6 @@ name|getField
 argument_list|(
 literal|"address"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2445,9 +2388,6 @@ name|getField
 argument_list|(
 literal|"booktitle"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2468,9 +2408,6 @@ name|getField
 argument_list|(
 literal|"chapter"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2491,9 +2428,6 @@ name|getField
 argument_list|(
 literal|"journal"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2514,9 +2448,6 @@ name|getField
 argument_list|(
 literal|"number"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2541,9 +2472,6 @@ name|MSBIB
 operator|+
 literal|"periodical"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2564,9 +2492,6 @@ name|getField
 argument_list|(
 literal|"booktitle"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2587,9 +2512,6 @@ name|getField
 argument_list|(
 literal|"school"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2610,9 +2532,6 @@ name|getField
 argument_list|(
 literal|"institution"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 comment|/* SM: 2010.10 Modified for default source types */
 if|if
@@ -2634,9 +2553,6 @@ name|getField
 argument_list|(
 literal|"type"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 else|else
 block|{
@@ -2757,9 +2673,6 @@ name|getField
 argument_list|(
 literal|"title"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2784,9 +2697,6 @@ name|MSBIB
 operator|+
 literal|"accessed"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2808,9 +2718,6 @@ name|getField
 argument_list|(
 literal|"url"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 comment|/* SM: 2010.10: lower case */
 if|if
@@ -2836,9 +2743,6 @@ name|MSBIB
 operator|+
 literal|"productioncompany"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2882,9 +2786,6 @@ name|getField
 argument_list|(
 literal|"title"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2909,9 +2810,6 @@ name|MSBIB
 operator|+
 literal|"medium"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2939,9 +2837,6 @@ name|getField
 argument_list|(
 literal|"title"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2966,9 +2861,6 @@ name|MSBIB
 operator|+
 literal|"recordingnumber"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -2993,9 +2885,6 @@ name|MSBIB
 operator|+
 literal|"theater"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -3020,9 +2909,6 @@ name|MSBIB
 operator|+
 literal|"distributor"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -3050,9 +2936,6 @@ name|getField
 argument_list|(
 literal|"title"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -3077,9 +2960,6 @@ name|MSBIB
 operator|+
 literal|"broadcaster"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -3104,9 +2984,6 @@ name|MSBIB
 operator|+
 literal|"station"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -3131,9 +3008,6 @@ name|MSBIB
 operator|+
 literal|"type"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -3158,9 +3032,6 @@ name|MSBIB
 operator|+
 literal|"patentnumber"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -3185,9 +3056,6 @@ name|MSBIB
 operator|+
 literal|"court"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -3212,9 +3080,6 @@ name|MSBIB
 operator|+
 literal|"reporter"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -3239,9 +3104,6 @@ name|MSBIB
 operator|+
 literal|"casenumber"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -3266,9 +3128,6 @@ name|MSBIB
 operator|+
 literal|"abbreviatedcasenumber"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -3289,9 +3148,6 @@ name|getField
 argument_list|(
 literal|"series"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -3312,9 +3168,6 @@ name|getField
 argument_list|(
 literal|"abstract"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -3335,9 +3188,6 @@ name|getField
 argument_list|(
 literal|"keywords"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -3358,9 +3208,6 @@ name|getField
 argument_list|(
 literal|"crossref"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -3381,9 +3228,6 @@ name|getField
 argument_list|(
 literal|"howpublished"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -3404,9 +3248,6 @@ name|getField
 argument_list|(
 literal|"affiliation"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -3427,9 +3268,6 @@ name|getField
 argument_list|(
 literal|"contents"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -3450,9 +3288,6 @@ name|getField
 argument_list|(
 literal|"copyright"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -3473,9 +3308,6 @@ name|getField
 argument_list|(
 literal|"price"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -3496,9 +3328,6 @@ name|getField
 argument_list|(
 literal|"size"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 comment|/* SM: 2010.10 end intype, paper support */
 if|if
@@ -3520,9 +3349,6 @@ name|getField
 argument_list|(
 literal|"intype"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -3543,9 +3369,6 @@ name|getField
 argument_list|(
 literal|"paper"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 if|if
 condition|(
@@ -3568,9 +3391,6 @@ name|getField
 argument_list|(
 literal|"author"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
@@ -3594,9 +3414,6 @@ name|getField
 argument_list|(
 literal|"editor"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
@@ -4343,9 +4160,6 @@ name|getField
 argument_list|(
 literal|"year"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 operator|)
 expr_stmt|;
 if|if
@@ -4369,9 +4183,6 @@ name|getField
 argument_list|(
 literal|"month"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 return|return
 name|result

@@ -518,9 +518,6 @@ operator|.
 name|next
 argument_list|()
 operator|.
-name|toString
-argument_list|()
-operator|.
 name|split
 argument_list|(
 literal|"\n"

@@ -4645,9 +4645,6 @@ operator|.
 name|isDisplayableField
 argument_list|(
 name|field
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -4658,9 +4655,6 @@ operator|.
 name|getField
 argument_list|(
 name|field
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 operator|==
 literal|null
@@ -4676,18 +4670,12 @@ argument_list|(
 name|entry
 argument_list|,
 name|field
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 name|entry
 operator|.
 name|getField
 argument_list|(
 name|field
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 argument_list|,
 literal|null
@@ -4699,9 +4687,6 @@ operator|.
 name|clearField
 argument_list|(
 name|field
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|anyChanged
@@ -4730,9 +4715,6 @@ operator|.
 name|getField
 argument_list|(
 name|field
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 operator|!=
 name|nu
@@ -4740,9 +4722,6 @@ operator|.
 name|getField
 argument_list|(
 name|field
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -4754,9 +4733,6 @@ operator|.
 name|getField
 argument_list|(
 name|field
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// Test if the field is legally set.
@@ -4771,9 +4747,6 @@ argument_list|(
 name|toSet
 argument_list|,
 name|field
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|compound
@@ -4786,18 +4759,12 @@ argument_list|(
 name|entry
 argument_list|,
 name|field
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 name|entry
 operator|.
 name|getField
 argument_list|(
 name|field
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 argument_list|,
 name|toSet
@@ -4809,9 +4776,6 @@ operator|.
 name|setField
 argument_list|(
 name|field
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 name|toSet
 argument_list|)
@@ -6712,9 +6676,6 @@ operator|.
 name|getFieldName
 argument_list|()
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 operator|)
 expr_stmt|;

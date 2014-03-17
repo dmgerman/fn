@@ -533,9 +533,6 @@ name|getField
 argument_list|(
 literal|"author"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -734,9 +731,6 @@ name|getField
 argument_list|(
 literal|"title"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -749,9 +743,6 @@ name|getField
 argument_list|(
 literal|"author"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -764,9 +755,6 @@ name|getField
 argument_list|(
 literal|"year"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|Thread
@@ -821,9 +809,6 @@ name|getField
 argument_list|(
 literal|"title"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|Thread

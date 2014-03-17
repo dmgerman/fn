@@ -363,9 +363,6 @@ name|orderedData
 operator|.
 name|firstElement
 argument_list|()
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -812,9 +809,6 @@ operator|=
 name|file
 operator|.
 name|getParent
-argument_list|()
-operator|.
-name|toString
 argument_list|()
 expr_stmt|;
 block|}

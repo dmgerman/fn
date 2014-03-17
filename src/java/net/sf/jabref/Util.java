@@ -8788,9 +8788,6 @@ if|if
 condition|(
 name|longName
 operator|.
-name|toString
-argument_list|()
-operator|.
 name|startsWith
 argument_list|(
 name|dir

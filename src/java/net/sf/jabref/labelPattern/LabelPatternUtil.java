@@ -1682,9 +1682,6 @@ name|get
 argument_list|(
 name|i
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -2311,9 +2308,6 @@ index|[]
 name|words
 init|=
 name|label
-operator|.
-name|toString
-argument_list|()
 operator|.
 name|replaceAll
 argument_list|(
@@ -3114,9 +3108,6 @@ name|getField
 argument_list|(
 literal|"editor"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 return|;
 block|}
@@ -3140,9 +3131,6 @@ name|getField
 argument_list|(
 literal|"editor"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 return|;
 block|}
@@ -3166,9 +3154,6 @@ name|getField
 argument_list|(
 literal|"editor"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 return|;
 comment|// Last author's last name
@@ -3193,9 +3178,6 @@ name|getField
 argument_list|(
 literal|"editor"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 return|;
 block|}
@@ -3219,9 +3201,6 @@ name|getField
 argument_list|(
 literal|"editor"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 return|;
 block|}
@@ -3247,9 +3226,6 @@ name|getField
 argument_list|(
 literal|"editor"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 decl_stmt|;
 return|return
@@ -3299,9 +3275,6 @@ name|getField
 argument_list|(
 literal|"editor"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 name|num
 argument_list|)
@@ -3354,9 +3327,6 @@ name|getField
 argument_list|(
 literal|"editor"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 name|Integer
 operator|.
@@ -3413,9 +3383,6 @@ name|getField
 argument_list|(
 literal|"editor"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 decl_stmt|;
 return|return
@@ -3450,9 +3417,6 @@ name|getField
 argument_list|(
 literal|"editor"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 decl_stmt|;
 return|return
@@ -3504,9 +3468,6 @@ name|getField
 argument_list|(
 literal|"editor"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -3980,9 +3941,6 @@ name|getField
 argument_list|(
 literal|"title"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|StringBuffer

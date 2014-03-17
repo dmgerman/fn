@@ -156,9 +156,6 @@ operator|new
 name|StringTokenizer
 argument_list|(
 name|fieldValue
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 name|Globals
 operator|.

@@ -1157,9 +1157,6 @@ operator|.
 name|getField
 argument_list|(
 name|field
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 operator|.
 name|equals
@@ -1169,9 +1166,6 @@ operator|.
 name|getField
 argument_list|(
 name|field
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 argument_list|)
 condition|)
@@ -1181,9 +1175,6 @@ argument_list|(
 literal|"e and e2 differ in field "
 operator|+
 name|field
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

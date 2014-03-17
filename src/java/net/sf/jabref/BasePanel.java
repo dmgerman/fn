@@ -7468,9 +7468,6 @@ name|getField
 argument_list|(
 literal|"eprint"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 elseif|else
@@ -7503,9 +7500,6 @@ name|getField
 argument_list|(
 literal|"slaccitation"
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 expr_stmt|;
 if|if
