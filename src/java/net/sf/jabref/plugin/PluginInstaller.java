@@ -2391,9 +2391,6 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
-return|return
-literal|null
-return|;
 block|}
 block|}
 block|}

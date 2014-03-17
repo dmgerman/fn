@@ -191,7 +191,7 @@ block|}
 catch|catch
 parameter_list|(
 name|InterruptedException
-name|ie
+name|ignored
 parameter_list|)
 block|{}
 comment|// Center the window on the screen.
@@ -381,7 +381,7 @@ block|}
 catch|catch
 parameter_list|(
 name|InterruptedException
-name|e
+name|ignored
 parameter_list|)
 block|{}
 block|}

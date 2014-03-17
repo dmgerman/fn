@@ -961,7 +961,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|e
+name|ignored
 parameter_list|)
 block|{}
 name|testPanel
@@ -2677,7 +2677,7 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
-name|ex
+name|ignored
 parameter_list|)
 block|{}
 name|fieldList
@@ -2964,7 +2964,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|ex
+name|ignored
 parameter_list|)
 block|{}
 block|}
@@ -3112,7 +3112,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|ex
+name|ignored
 parameter_list|)
 block|{}
 block|}

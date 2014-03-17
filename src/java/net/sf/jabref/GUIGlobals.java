@@ -1547,7 +1547,7 @@ block|}
 catch|catch
 parameter_list|(
 name|MalformedURLException
-name|e
+name|ignored
 parameter_list|)
 block|{ 				}
 if|if

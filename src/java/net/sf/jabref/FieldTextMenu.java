@@ -666,7 +666,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|ex
+name|ignored
 parameter_list|)
 block|{}
 block|}
@@ -755,7 +755,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|ex
+name|ignored
 parameter_list|)
 block|{}
 block|}

@@ -2500,7 +2500,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|e
+name|ignored
 parameter_list|)
 block|{ 			}
 comment|// Then check whether this is a user defined formatter

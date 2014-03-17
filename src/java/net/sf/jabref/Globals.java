@@ -2693,7 +2693,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Throwable
-name|t
+name|ignored
 parameter_list|)
 block|{  		}
 return|return

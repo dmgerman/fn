@@ -608,7 +608,7 @@ block|}
 catch|catch
 parameter_list|(
 name|ArrayIndexOutOfBoundsException
-name|ex
+name|ignored
 parameter_list|)
 block|{         }
 name|bibitems

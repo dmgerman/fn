@@ -1279,7 +1279,7 @@ block|}
 catch|catch
 parameter_list|(
 name|VMException
-name|e
+name|ignored
 parameter_list|)
 block|{  			}
 block|}

@@ -1249,7 +1249,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|e
+name|ignored
 parameter_list|)
 block|{ 			}
 block|}
@@ -5960,7 +5960,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|e
+name|ignored
 parameter_list|)
 block|{}
 name|newPanel

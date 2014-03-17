@@ -363,7 +363,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|ex
+name|ignore
 parameter_list|)
 block|{          }
 block|}

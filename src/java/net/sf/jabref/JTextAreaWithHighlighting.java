@@ -439,7 +439,7 @@ block|}
 catch|catch
 parameter_list|(
 name|CannotUndoException
-name|e
+name|ignored
 parameter_list|)
 block|{                         }
 block|}
@@ -506,7 +506,7 @@ block|}
 catch|catch
 parameter_list|(
 name|CannotRedoException
-name|e
+name|ignored
 parameter_list|)
 block|{                         }
 block|}

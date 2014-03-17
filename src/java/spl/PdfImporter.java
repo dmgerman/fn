@@ -792,7 +792,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|f
+name|ignored
 parameter_list|)
 block|{}
 block|}
@@ -1089,7 +1089,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|f
+name|ignored
 parameter_list|)
 block|{}
 block|}

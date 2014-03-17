@@ -796,7 +796,7 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
-name|ioe
+name|ignored
 parameter_list|)
 block|{}
 block|}

@@ -5328,7 +5328,7 @@ block|}
 catch|catch
 parameter_list|(
 name|UnsupportedEncodingException
-name|e
+name|ignored
 parameter_list|)
 block|{ 		}
 comment|/** 		 * Fix for: [ 1574773 ] sanitizeUrl() breaks ftp:// and file:/// 		 *  		 * http://sourceforge.net/tracker/index.php?func=detail&aid=1574773&group_id=92314&atid=600306 		 */
@@ -13647,7 +13647,7 @@ block|}
 catch|catch
 parameter_list|(
 name|NumberFormatException
-name|e
+name|ignored
 parameter_list|)
 block|{ 		}
 return|return
@@ -14424,7 +14424,7 @@ block|}
 catch|catch
 parameter_list|(
 name|InterruptedException
-name|ex
+name|ignored
 parameter_list|)
 block|{}
 block|}

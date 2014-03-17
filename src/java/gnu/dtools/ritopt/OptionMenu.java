@@ -589,7 +589,7 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
-name|e
+name|ignored
 parameter_list|)
 block|{ }
 block|}

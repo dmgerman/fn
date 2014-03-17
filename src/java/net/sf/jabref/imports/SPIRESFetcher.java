@@ -354,7 +354,7 @@ block|}
 catch|catch
 parameter_list|(
 name|UnsupportedEncodingException
-name|e
+name|ignored
 parameter_list|)
 block|{ 		}
 name|StringBuffer

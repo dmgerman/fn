@@ -5519,7 +5519,7 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
-name|ex
+name|ignored
 parameter_list|)
 block|{         }
 name|String

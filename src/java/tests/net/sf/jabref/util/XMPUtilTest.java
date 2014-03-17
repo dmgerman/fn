@@ -7641,7 +7641,7 @@ block|}
 catch|catch
 parameter_list|(
 name|EncryptionNotSupportedException
-name|e
+name|ignored
 parameter_list|)
 block|{ 		}
 try|try
@@ -7665,7 +7665,7 @@ block|}
 catch|catch
 parameter_list|(
 name|EncryptionNotSupportedException
-name|e
+name|ignored
 parameter_list|)
 block|{ 		}
 block|}

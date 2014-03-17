@@ -6289,7 +6289,7 @@ block|}
 catch|catch
 parameter_list|(
 name|NoSuchMethodError
-name|ex
+name|ignore
 parameter_list|)
 block|{                              }
 name|OOUtil

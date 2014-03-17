@@ -2253,7 +2253,7 @@ block|}
 catch|catch
 parameter_list|(
 name|BadLocationException
-name|ex
+name|ignore
 parameter_list|)
 block|{         }
 return|return

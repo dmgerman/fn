@@ -275,7 +275,7 @@ block|}
 catch|catch
 parameter_list|(
 name|NullPointerException
-name|npe
+name|ignored
 parameter_list|)
 block|{  		}
 block|}

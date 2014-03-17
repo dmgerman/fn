@@ -91,7 +91,7 @@ block|}
 catch|catch
 parameter_list|(
 name|ExitException
-name|e
+name|ignored
 parameter_list|)
 block|{ 		}
 finally|finally
