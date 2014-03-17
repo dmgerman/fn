@@ -164,20 +164,6 @@ name|UndoableFieldChange
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|CaseChanger
-import|;
-end_import
-
 begin_comment
 comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Sep 16, 2005  * Time: 10:49:08 PM  * To browseOld this template use File | Settings | File Templates.  */
 end_comment

@@ -60,16 +60,6 @@ name|java
 operator|.
 name|awt
 operator|.
-name|GridLayout
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
 name|Insets
 import|;
 end_import

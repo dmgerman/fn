@@ -260,18 +260,6 @@ name|Map
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|prefs
-operator|.
-name|BackingStoreException
-import|;
-end_import
-
 begin_comment
 comment|/**  * This test panel can be opened by reflection from JabRef, passing the JabRefFrame as an  * argument to the start() method. It displays buttons for testing interaction functions  * between JabRef and OpenOffice.  */
 end_comment

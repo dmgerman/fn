@@ -154,16 +154,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|Action
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|BorderFactory
 import|;
 end_import
@@ -267,20 +257,6 @@ operator|.
 name|table
 operator|.
 name|DefaultTableModel
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|w3c
-operator|.
-name|dom
-operator|.
-name|views
-operator|.
-name|AbstractView
 import|;
 end_import
 

@@ -24,18 +24,6 @@ name|Comparator
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Pattern
-import|;
-end_import
-
 begin_class
 DECL|class|BibtexStringComparator
 specifier|public

@@ -114,16 +114,6 @@ name|java
 operator|.
 name|net
 operator|.
-name|URLConnection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
 name|URLEncoder
 import|;
 end_import
@@ -145,16 +135,6 @@ operator|.
 name|util
 operator|.
 name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|StringTokenizer
 import|;
 end_import
 

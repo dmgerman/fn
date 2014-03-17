@@ -114,20 +114,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|specialfields
-operator|.
-name|SpecialFieldsUtils
-import|;
-end_import
-
-begin_import
-import|import
 name|com
 operator|.
 name|jgoodies
@@ -137,20 +123,6 @@ operator|.
 name|builder
 operator|.
 name|DefaultFormBuilder
-import|;
-end_import
-
-begin_import
-import|import
-name|com
-operator|.
-name|jgoodies
-operator|.
-name|forms
-operator|.
-name|layout
-operator|.
-name|CellConstraints
 import|;
 end_import
 

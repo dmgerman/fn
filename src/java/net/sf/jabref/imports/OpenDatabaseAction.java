@@ -84,16 +84,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Iterator
 import|;
 end_import
@@ -233,20 +223,6 @@ operator|.
 name|specialfields
 operator|.
 name|SpecialFieldsUtils
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|undo
-operator|.
-name|NamedCompound
 import|;
 end_import
 

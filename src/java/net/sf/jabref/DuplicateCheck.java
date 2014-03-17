@@ -34,16 +34,6 @@ name|HashSet
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
 begin_comment
 comment|/**  * This class contains utility method for duplicate checking of entries.  */
 end_comment

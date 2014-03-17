@@ -112,31 +112,11 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
 operator|.
 name|BorderFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|ButtonGroup
 import|;
 end_import
 
@@ -167,16 +147,6 @@ operator|.
 name|swing
 operator|.
 name|JPanel
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JRadioButton
 import|;
 end_import
 

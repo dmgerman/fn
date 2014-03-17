@@ -114,24 +114,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|export
-operator|.
-name|layout
-operator|.
-name|format
-operator|.
-name|RemoveLatexCommands
-import|;
-end_import
-
-begin_import
-import|import
 name|java
 operator|.
 name|io

@@ -48,26 +48,6 @@ name|MainTable
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
 begin_comment
 comment|/**  * Created by IntelliJ IDEA.  * User: Christoph Arbeit  * Date: 10.09.2010  * Time: 14:02:55  * To change this template use File | Settings | File Templates.  */
 end_comment

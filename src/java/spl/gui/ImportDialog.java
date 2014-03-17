@@ -76,18 +76,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
 name|spl
 operator|.
 name|listener
@@ -113,18 +101,6 @@ operator|.
 name|swing
 operator|.
 name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|border
-operator|.
-name|TitledBorder
 import|;
 end_import
 
@@ -157,16 +133,6 @@ operator|.
 name|io
 operator|.
 name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ResourceBundle
 import|;
 end_import
 

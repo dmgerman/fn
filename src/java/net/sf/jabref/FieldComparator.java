@@ -68,16 +68,6 @@ name|Comparator
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Locale
-import|;
-end_import
-
 begin_comment
 comment|/**  *   * A comparator for BibtexEntry fields  *   * Initial Version:  *   * @author alver  * @version Date: Oct 13, 2005 Time: 10:10:04 PM To  *   * Current Version:  *   * @author $Author$  * @version $Revision$ ($Date$)  *   * TODO: Testcases  *   */
 end_comment
