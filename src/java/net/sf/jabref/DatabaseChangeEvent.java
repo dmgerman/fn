@@ -37,7 +37,6 @@ name|CHANGED_ENTRY
 block|,
 name|CHANGING_ENTRY
 block|}
-empty_stmt|;
 DECL|field|entry
 specifier|private
 name|BibtexEntry

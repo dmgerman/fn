@@ -4723,7 +4723,6 @@ return|return
 name|text
 return|;
 block|}
-empty_stmt|;
 DECL|method|format (String text)
 specifier|public
 name|String

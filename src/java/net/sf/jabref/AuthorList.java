@@ -3428,7 +3428,6 @@ name|i
 operator|++
 expr_stmt|;
 block|}
-empty_stmt|;
 return|return
 operator|(
 name|level

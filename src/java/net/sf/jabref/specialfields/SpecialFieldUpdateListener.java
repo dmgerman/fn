@@ -285,7 +285,6 @@ name|SpecialFieldUpdateListener
 argument_list|()
 expr_stmt|;
 block|}
-empty_stmt|;
 return|return
 name|INSTANCE
 return|;
