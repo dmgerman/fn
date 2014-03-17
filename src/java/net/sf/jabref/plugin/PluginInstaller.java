@@ -1656,6 +1656,7 @@ name|in
 operator|!=
 literal|null
 condition|)
+block|{
 try|try
 block|{
 name|in
@@ -1667,12 +1668,11 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
-name|ex
+name|ignore
 parameter_list|)
 block|{
-return|return
-name|UNABLE_TO_COPY_FILE
-return|;
+comment|// UNABLE_TO_COPY_FILE;
+block|}
 block|}
 if|if
 condition|(
@@ -1680,6 +1680,7 @@ name|out
 operator|!=
 literal|null
 condition|)
+block|{
 try|try
 block|{
 name|out
@@ -1691,12 +1692,11 @@ block|}
 catch|catch
 parameter_list|(
 name|IOException
-name|ex
+name|ignore
 parameter_list|)
 block|{
-return|return
-name|UNABLE_TO_COPY_FILE
-return|;
+comment|// UNABLE_TO_COPY_FILE;
+block|}
 block|}
 block|}
 return|return
