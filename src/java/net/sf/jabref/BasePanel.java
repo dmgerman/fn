@@ -5021,10 +5021,6 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-literal|true
-condition|)
 name|frame
 operator|.
 name|getSearchManager

@@ -7179,11 +7179,6 @@ name|name
 argument_list|)
 expr_stmt|;
 comment|// get XTextContent interface
-if|if
-condition|(
-literal|true
-condition|)
-block|{
 name|XTextContent
 name|xTextContent
 init|=
@@ -7367,7 +7362,6 @@ name|length
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 name|position
