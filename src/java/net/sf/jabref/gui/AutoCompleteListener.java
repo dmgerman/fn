@@ -646,13 +646,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// replace suffix with new suffix
-name|int
-name|deletedChars
-init|=
-name|oldSelectionEnd
-operator|-
-name|oldSelectionStart
-decl_stmt|;
 name|alltext
 operator|.
 name|delete

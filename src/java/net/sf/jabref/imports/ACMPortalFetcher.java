@@ -1383,11 +1383,6 @@ name|boolean
 name|abs
 parameter_list|)
 block|{
-name|String
-name|ID
-init|=
-literal|""
-decl_stmt|;
 comment|// Get ID
 name|Matcher
 name|idMatcher
@@ -1407,15 +1402,14 @@ name|find
 argument_list|()
 condition|)
 block|{
-name|ID
-operator|=
+return|return
 name|idMatcher
 operator|.
 name|group
 argument_list|(
 literal|1
 argument_list|)
-expr_stmt|;
+return|;
 block|}
 else|else
 block|{
@@ -1434,9 +1428,6 @@ return|return
 literal|null
 return|;
 block|}
-return|return
-name|ID
-return|;
 block|}
 DECL|method|getNextEntryURL (String allText, int startIndex, int entryNumber, Map<String,JLabel> entries)
 specifier|private
