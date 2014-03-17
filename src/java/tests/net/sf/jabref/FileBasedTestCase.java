@@ -147,8 +147,11 @@ block|{
 if|if
 condition|(
 name|path1
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|path2
+argument_list|)
 condition|)
 return|return;
 if|if
@@ -163,9 +166,13 @@ operator|==
 literal|null
 operator|)
 operator|&&
+operator|!
 name|path1
-operator|!=
+operator|.
+name|equals
+argument_list|(
 name|path2
+argument_list|)
 condition|)
 name|fail
 argument_list|(

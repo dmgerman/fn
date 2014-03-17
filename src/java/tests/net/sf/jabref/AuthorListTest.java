@@ -109,7 +109,9 @@ name|fixAuthor_Natbib
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|AuthorList
 operator|.
 name|fixAuthor_Natbib
@@ -127,6 +129,7 @@ literal|" and "
 operator|)
 operator|+
 literal|"John Smith and Black Brown, Peter"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -258,7 +261,9 @@ literal|true
 argument_list|,
 literal|false
 argument_list|)
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|AuthorList
 operator|.
 name|fixAuthor_firstNameFirstCommas
@@ -280,6 +285,7 @@ argument_list|,
 literal|true
 argument_list|,
 literal|false
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -445,7 +451,9 @@ literal|true
 argument_list|,
 literal|true
 argument_list|)
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|AuthorList
 operator|.
 name|fixAuthor_firstNameFirstCommas
@@ -467,6 +475,7 @@ argument_list|,
 literal|true
 argument_list|,
 literal|true
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -617,7 +626,9 @@ name|fixAuthor_firstNameFirst
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|AuthorList
 operator|.
 name|fixAuthor_firstNameFirst
@@ -635,6 +646,7 @@ literal|" and "
 operator|)
 operator|+
 literal|"John Smith and Black Brown, Peter"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -762,8 +774,11 @@ expr_stmt|;
 name|assertTrue
 argument_list|(
 name|a
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|b
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -964,8 +979,11 @@ expr_stmt|;
 name|assertTrue
 argument_list|(
 name|a
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|b
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -1113,7 +1131,9 @@ name|fixAuthor_lastNameFirst
 argument_list|(
 literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|)
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|AuthorList
 operator|.
 name|fixAuthor_lastNameFirst
@@ -1131,6 +1151,7 @@ literal|" and "
 operator|)
 operator|+
 literal|"John Smith and Black Brown, Peter"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1201,7 +1222,9 @@ literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
 literal|false
 argument_list|)
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|AuthorList
 operator|.
 name|fixAuthor_lastNameFirst
@@ -1221,6 +1244,7 @@ operator|+
 literal|"John Smith and Black Brown, Peter"
 argument_list|,
 literal|false
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1291,7 +1315,9 @@ literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
 literal|true
 argument_list|)
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|AuthorList
 operator|.
 name|fixAuthor_lastNameFirst
@@ -1311,6 +1337,7 @@ operator|+
 literal|"John Smith and Black Brown, Peter"
 argument_list|,
 literal|true
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1375,7 +1402,9 @@ literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
 literal|false
 argument_list|)
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|AuthorList
 operator|.
 name|fixAuthor_lastNameOnlyCommas
@@ -1395,6 +1424,7 @@ operator|+
 literal|"John Smith and Black Brown, Peter"
 argument_list|,
 literal|false
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1467,7 +1497,9 @@ literal|"John von Neumann and John Smith and Black Brown, Peter"
 argument_list|,
 literal|true
 argument_list|)
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|AuthorList
 operator|.
 name|fixAuthor_lastNameOnlyCommas
@@ -1487,6 +1519,7 @@ operator|+
 literal|"John Smith and Black Brown, Peter"
 argument_list|,
 literal|true
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2216,11 +2249,14 @@ name|al
 operator|.
 name|getAuthorsNatbib
 argument_list|()
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|al
 operator|.
 name|getAuthorsNatbib
 argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

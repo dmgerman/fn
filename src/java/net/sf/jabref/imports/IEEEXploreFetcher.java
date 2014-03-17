@@ -2788,8 +2788,11 @@ name|type
 operator|.
 name|getName
 argument_list|()
-operator|==
+operator|.
+name|equals
+argument_list|(
 literal|"Article"
+argument_list|)
 condition|)
 block|{
 name|sourceField
@@ -2811,8 +2814,11 @@ name|type
 operator|.
 name|getName
 argument_list|()
-operator|==
+operator|.
+name|equals
+argument_list|(
 literal|"Inproceedings"
+argument_list|)
 condition|)
 block|{
 name|sourceField
@@ -2843,8 +2849,11 @@ name|type
 operator|.
 name|getName
 argument_list|()
-operator|==
+operator|.
+name|equals
+argument_list|(
 literal|"Article"
+argument_list|)
 condition|)
 block|{
 name|int
@@ -2950,8 +2959,11 @@ name|getField
 argument_list|(
 literal|"note"
 argument_list|)
-operator|==
+operator|.
+name|equals
+argument_list|(
 literal|"Early Access"
+argument_list|)
 condition|)
 block|{
 name|entry
@@ -3231,8 +3243,11 @@ name|type
 operator|.
 name|getName
 argument_list|()
-operator|==
+operator|.
+name|equals
+argument_list|(
 literal|"Article"
+argument_list|)
 condition|)
 block|{
 name|fullName
@@ -3298,8 +3313,11 @@ name|type
 operator|.
 name|getName
 argument_list|()
-operator|==
+operator|.
+name|equals
+argument_list|(
 literal|"Inproceedings"
+argument_list|)
 condition|)
 block|{
 name|Matcher

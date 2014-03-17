@@ -161,14 +161,12 @@ condition|)
 block|{
 name|command
 operator|=
-operator|new
 name|Character
+operator|.
+name|toString
 argument_list|(
 name|shortOption
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 block|}
 else|else

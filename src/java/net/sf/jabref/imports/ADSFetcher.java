@@ -766,8 +766,11 @@ name|reader
 operator|.
 name|getLocalName
 argument_list|()
-operator|==
+operator|.
+name|equals
+argument_list|(
 literal|"abstract"
+argument_list|)
 condition|)
 block|{
 name|isAbstract

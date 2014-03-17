@@ -859,11 +859,14 @@ argument_list|)
 index|[
 literal|0
 index|]
-operator|==
+operator|.
+name|equals
+argument_list|(
 name|RANKING
 index|[
 literal|0
 index|]
+argument_list|)
 condition|)
 block|{
 return|return
