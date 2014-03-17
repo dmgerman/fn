@@ -1061,9 +1061,7 @@ operator|.
 name|put
 argument_list|(
 operator|(
-name|Globals
-operator|.
-name|prefs
+name|JabRefPreferences
 operator|.
 name|CUSTOM_TAB_NAME
 operator|+
@@ -1083,9 +1081,7 @@ operator|.
 name|put
 argument_list|(
 operator|(
-name|Globals
-operator|.
-name|prefs
+name|JabRefPreferences
 operator|.
 name|CUSTOM_TAB_FIELDS
 operator|+
@@ -1108,9 +1104,7 @@ name|prefs
 operator|.
 name|purgeSeries
 argument_list|(
-name|Globals
-operator|.
-name|prefs
+name|JabRefPreferences
 operator|.
 name|CUSTOM_TAB_NAME
 argument_list|,
@@ -1123,9 +1117,7 @@ name|prefs
 operator|.
 name|purgeSeries
 argument_list|(
-name|Globals
-operator|.
-name|prefs
+name|JabRefPreferences
 operator|.
 name|CUSTOM_TAB_FIELDS
 argument_list|,
@@ -1341,9 +1333,7 @@ name|defaults
 operator|.
 name|get
 argument_list|(
-name|Globals
-operator|.
-name|prefs
+name|JabRefPreferences
 operator|.
 name|CUSTOM_TAB_NAME
 operator|+
@@ -1376,9 +1366,7 @@ name|defaults
 operator|.
 name|get
 argument_list|(
-name|Globals
-operator|.
-name|prefs
+name|JabRefPreferences
 operator|.
 name|CUSTOM_TAB_FIELDS
 operator|+

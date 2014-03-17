@@ -1070,7 +1070,7 @@ name|SidePaneManager
 name|manager
 parameter_list|)
 block|{
-name|this
+name|OpenOfficePanel
 operator|.
 name|frame
 operator|=

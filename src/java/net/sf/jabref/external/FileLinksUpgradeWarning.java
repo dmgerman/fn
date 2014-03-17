@@ -966,9 +966,7 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-name|Globals
-operator|.
-name|prefs
+name|JabRefPreferences
 operator|.
 name|CUSTOM_TAB_FIELDS
 operator|+
@@ -1016,9 +1014,7 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-name|Globals
-operator|.
-name|prefs
+name|JabRefPreferences
 operator|.
 name|CUSTOM_TAB_FIELDS
 operator|+
