@@ -1352,9 +1352,6 @@ name|entryNumber
 init|=
 name|firstEntryNumber
 decl_stmt|;
-name|String
-name|entry
-decl_stmt|;
 while|while
 condition|(
 name|getNextEntryURL
@@ -1386,11 +1383,6 @@ name|boolean
 name|abs
 parameter_list|)
 block|{
-name|String
-name|bibAddr
-init|=
-literal|""
-decl_stmt|;
 name|String
 name|ID
 init|=
@@ -1424,7 +1416,6 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("To fetch: " + bibAddr);
 block|}
 else|else
 block|{
@@ -1443,8 +1434,6 @@ return|return
 literal|null
 return|;
 block|}
-comment|// fetch bibtex record
-comment|//bibAddr = bibtexUrl + ID + bibtexUrlEnd;
 return|return
 name|ID
 return|;

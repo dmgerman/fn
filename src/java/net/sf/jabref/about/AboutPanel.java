@@ -708,8 +708,6 @@ literal|null
 decl_stmt|;
 name|AboutTextLine
 name|aLine
-init|=
-literal|null
 decl_stmt|;
 name|int
 name|index

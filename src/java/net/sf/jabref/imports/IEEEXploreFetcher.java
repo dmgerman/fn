@@ -3573,9 +3573,6 @@ comment|// clean up abstract
 name|String
 name|abstr
 init|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField
@@ -3758,9 +3755,6 @@ comment|// Clean up url
 name|String
 name|url
 init|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField

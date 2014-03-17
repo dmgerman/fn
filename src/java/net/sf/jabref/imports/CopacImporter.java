@@ -883,7 +883,7 @@ name|String
 name|separator
 parameter_list|)
 block|{
-name|Object
+name|String
 name|o
 init|=
 name|b
@@ -905,9 +905,6 @@ name|setField
 argument_list|(
 name|field
 argument_list|,
-operator|(
-name|String
-operator|)
 name|o
 operator|+
 name|separator

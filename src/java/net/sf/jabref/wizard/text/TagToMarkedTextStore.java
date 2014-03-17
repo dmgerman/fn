@@ -352,9 +352,6 @@ block|{
 name|TMarkedStoreItem
 name|item
 init|=
-operator|(
-name|TMarkedStoreItem
-operator|)
 name|du2
 decl_stmt|;
 name|doc

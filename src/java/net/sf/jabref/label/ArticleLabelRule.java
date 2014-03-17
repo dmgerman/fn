@@ -90,23 +90,19 @@ name|newLabel
 init|=
 literal|""
 decl_stmt|;
-name|String
-name|author
-init|=
-literal|""
-decl_stmt|;
 comment|//## to be done: i need to check if the key is unique else need to make another one with suffix
 try|try
 block|{
+name|String
 name|author
-operator|=
+init|=
 name|oldEntry
 operator|.
 name|getField
 argument_list|(
 literal|"author"
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|String
 index|[]
 name|tokens

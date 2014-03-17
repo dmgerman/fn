@@ -245,6 +245,9 @@ name|table
 decl_stmt|;
 DECL|field|tableModel
 name|EventTableModel
+argument_list|<
+name|CitEntry
+argument_list|>
 name|tableModel
 decl_stmt|;
 DECL|field|ok
@@ -406,6 +409,9 @@ name|tableModel
 operator|=
 operator|new
 name|EventTableModel
+argument_list|<
+name|CitEntry
+argument_list|>
 argument_list|(
 name|list
 argument_list|,

@@ -196,6 +196,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|List
 import|;
 end_import
@@ -460,15 +470,15 @@ decl_stmt|;
 DECL|field|fieldList
 specifier|private
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|fieldList
 decl_stmt|;
 DECL|field|overRadio
-DECL|field|appRadio
 specifier|private
 name|JRadioButton
 name|overRadio
-decl_stmt|,
-name|appRadio
 decl_stmt|;
 DECL|field|testPanel
 specifier|private
@@ -1264,6 +1274,9 @@ name|fieldList
 operator|=
 operator|new
 name|JList
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|getAllFields
 argument_list|()
@@ -1379,8 +1392,9 @@ name|this
 argument_list|)
 expr_stmt|;
 comment|// Radio buttons
+name|JRadioButton
 name|appRadio
-operator|=
+init|=
 operator|new
 name|JRadioButton
 argument_list|(
@@ -1391,7 +1405,7 @@ argument_list|(
 literal|"Append"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|appRadio
 operator|.
 name|setToolTipText
@@ -1678,11 +1692,6 @@ operator|.
 name|EAST
 argument_list|)
 expr_stmt|;
-name|boolean
-name|loaded
-init|=
-literal|false
-decl_stmt|;
 name|JLabel
 name|desc
 init|=
@@ -2137,9 +2146,6 @@ block|{
 name|String
 name|type
 init|=
-operator|(
-name|String
-operator|)
 name|fieldList
 operator|.
 name|getSelectedValue
@@ -2618,7 +2624,6 @@ comment|// ---------------------------------------------------------------------
 comment|// update the bibtex source view and available List
 DECL|method|updateSourceView ()
 specifier|private
-specifier|final
 name|void
 name|updateSourceView
 parameter_list|()
@@ -2689,7 +2694,6 @@ block|}
 comment|// ---------------------------------------------------------------------------
 DECL|method|getAllFields ()
 specifier|private
-specifier|final
 name|String
 index|[]
 name|getAllFields
@@ -2735,38 +2739,24 @@ operator|.
 name|getAllFieldNames
 argument_list|()
 decl_stmt|;
-for|for
-control|(
-name|String
-name|aReq
-range|:
+name|Collections
+operator|.
+name|addAll
+argument_list|(
+name|f
+argument_list|,
 name|req
-control|)
-block|{
-name|f
-operator|.
-name|add
-argument_list|(
-name|aReq
 argument_list|)
 expr_stmt|;
-block|}
-for|for
-control|(
-name|String
-name|anOpt
-range|:
+name|Collections
+operator|.
+name|addAll
+argument_list|(
+name|f
+argument_list|,
 name|opt
-control|)
-block|{
-name|f
-operator|.
-name|add
-argument_list|(
-name|anOpt
 argument_list|)
 expr_stmt|;
-block|}
 for|for
 control|(
 name|String
@@ -2972,10 +2962,6 @@ block|{
 name|String
 name|chosen
 init|=
-literal|null
-decl_stmt|;
-name|chosen
-operator|=
 name|FileDialogs
 operator|.
 name|getNewFile
@@ -2994,7 +2980,7 @@ name|OPEN_DIALOG
 argument_list|,
 literal|false
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|chosen
@@ -3244,9 +3230,6 @@ name|getElementAt
 argument_list|(
 name|lastIndex
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 decl_stmt|;
 name|marked
 operator|.
@@ -3272,9 +3255,6 @@ name|getElementAt
 argument_list|(
 name|index
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 decl_stmt|;
 name|marked
 operator|.
