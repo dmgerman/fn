@@ -193,7 +193,7 @@ if|if
 condition|(
 name|textPre
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"#"
 operator|+
@@ -201,8 +201,6 @@ name|namePost
 operator|+
 literal|"#"
 argument_list|)
-operator|>=
-literal|0
 condition|)
 block|{
 name|res

@@ -248,12 +248,10 @@ if|if
 condition|(
 name|str
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 name|SEPARATOR
 argument_list|)
-operator|>=
-literal|0
 condition|)
 return|return
 literal|true

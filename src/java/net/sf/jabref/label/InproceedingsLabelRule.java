@@ -333,14 +333,13 @@ operator|!=
 literal|null
 operator|&&
 operator|(
+operator|!
 name|tempString
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"null"
 argument_list|)
-operator|<
-literal|0
 operator|)
 condition|)
 block|{

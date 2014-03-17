@@ -9448,12 +9448,10 @@ if|if
 condition|(
 name|genFields
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"abstract"
 argument_list|)
-operator|>=
-literal|0
 condition|)
 block|{
 comment|// pr(genFields+"\t"+genFields.indexOf("abstract"));
@@ -9478,12 +9476,10 @@ if|if
 condition|(
 name|genFields
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|";abstract;"
 argument_list|)
-operator|>=
-literal|0
 condition|)
 block|{
 name|newGen

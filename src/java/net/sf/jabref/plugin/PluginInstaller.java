@@ -2718,7 +2718,7 @@ operator|.
 name|getPath
 argument_list|()
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 name|PluginCore
 operator|.
@@ -2727,8 +2727,6 @@ operator|.
 name|getPath
 argument_list|()
 argument_list|)
-operator|>=
-literal|0
 condition|)
 continue|continue;
 comment|// This must be a loaded user dir plugin that's been deleted.

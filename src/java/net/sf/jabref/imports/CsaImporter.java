@@ -1729,12 +1729,10 @@ if|if
 condition|(
 name|fstr
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|";"
 argument_list|)
-operator|>=
-literal|0
 condition|)
 name|fstr
 operator|=

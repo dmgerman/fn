@@ -1216,12 +1216,10 @@ if|if
 condition|(
 name|entirePage
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 name|noAccessIndicator
 argument_list|)
-operator|>=
-literal|0
 condition|)
 block|{
 name|noAccessFound

@@ -2176,12 +2176,10 @@ operator|&&
 operator|(
 name|curString
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"IEEE"
 argument_list|)
-operator|>=
-literal|0
 operator|)
 condition|)
 block|{

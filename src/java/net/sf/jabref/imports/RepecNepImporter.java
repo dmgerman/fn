@@ -366,21 +366,17 @@ block|}
 return|return
 name|startOfMessage
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"NEP: New Economics Papers"
 argument_list|)
-operator|>=
-literal|0
 operator|||
 name|startOfMessage
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"nep.repec.org"
 argument_list|)
-operator|>=
-literal|0
 return|;
 block|}
 DECL|method|startsWithKeyword (Collection<String> keywords)
@@ -1409,12 +1405,10 @@ operator|-
 literal|1
 index|]
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"MM"
 argument_list|)
-operator|>=
-literal|0
 condition|)
 block|{
 name|be

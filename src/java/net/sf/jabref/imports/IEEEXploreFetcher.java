@@ -1015,12 +1015,10 @@ if|if
 condition|(
 name|page
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"You have entered an invalid search"
 argument_list|)
-operator|>=
-literal|0
 condition|)
 block|{
 name|status
@@ -1056,12 +1054,10 @@ if|if
 condition|(
 name|page
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"Bad request"
 argument_list|)
-operator|>=
-literal|0
 condition|)
 block|{
 name|status
@@ -1097,12 +1093,10 @@ if|if
 condition|(
 name|page
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"No results were found."
 argument_list|)
-operator|>=
-literal|0
 condition|)
 block|{
 name|status
@@ -1138,12 +1132,10 @@ if|if
 condition|(
 name|page
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"Error Page"
 argument_list|)
-operator|>=
-literal|0
 condition|)
 block|{
 name|status

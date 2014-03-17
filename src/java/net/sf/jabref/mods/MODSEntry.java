@@ -840,15 +840,13 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|authors
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|" and "
 argument_list|)
-operator|==
-operator|-
-literal|1
 condition|)
 block|{
 if|if

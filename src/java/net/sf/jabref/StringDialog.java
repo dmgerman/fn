@@ -1435,12 +1435,10 @@ operator|)
 name|value
 operator|)
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|" "
 argument_list|)
-operator|>=
-literal|0
 condition|)
 block|{
 name|JOptionPane
@@ -1479,12 +1477,10 @@ operator|)
 name|value
 operator|)
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"#"
 argument_list|)
-operator|>=
-literal|0
 condition|)
 block|{
 name|JOptionPane
@@ -2125,12 +2121,10 @@ if|if
 condition|(
 name|name
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"#"
 argument_list|)
-operator|>=
-literal|0
 condition|)
 block|{
 name|JOptionPane
@@ -2164,12 +2158,10 @@ if|if
 condition|(
 name|name
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|" "
 argument_list|)
-operator|>=
-literal|0
 condition|)
 block|{
 name|JOptionPane

@@ -1363,12 +1363,10 @@ operator|&&
 operator|(
 name|auth
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|" [Ed]"
 argument_list|)
-operator|>=
-literal|0
 operator|)
 condition|)
 block|{

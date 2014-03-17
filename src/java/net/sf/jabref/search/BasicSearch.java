@@ -625,12 +625,10 @@ operator|||
 operator|(
 name|fieldContent
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 name|s
 argument_list|)
-operator|>=
-literal|0
 operator|)
 expr_stmt|;
 block|}

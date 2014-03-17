@@ -1336,15 +1336,13 @@ index|[
 name|i
 index|]
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 name|HIDEFONTS
 index|[
 name|j
 index|]
 argument_list|)
-operator|>=
-literal|0
 condition|)
 break|break;
 block|}

@@ -2140,7 +2140,7 @@ name|Globals
 operator|.
 name|SPECIAL_COMMAND_CHARS
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 name|String
 operator|.
@@ -2149,8 +2149,6 @@ argument_list|(
 name|c
 argument_list|)
 argument_list|)
-operator|>=
-literal|0
 operator|)
 condition|)
 block|{
@@ -2198,15 +2196,13 @@ name|Globals
 operator|.
 name|SPECIAL_COMMAND_CHARS
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 name|currentCommand
 operator|.
 name|toString
 argument_list|()
 argument_list|)
-operator|>=
-literal|0
 operator|)
 condition|)
 block|{

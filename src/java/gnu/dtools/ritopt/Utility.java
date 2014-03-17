@@ -60,7 +60,7 @@ if|if
 condition|(
 name|check
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 name|list
 operator|.
@@ -73,9 +73,6 @@ operator|+
 literal|1
 argument_list|)
 argument_list|)
-operator|!=
-operator|-
-literal|1
 condition|)
 return|return
 literal|true
