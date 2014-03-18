@@ -83,7 +83,7 @@ operator|=
 operator|new
 name|File
 argument_list|(
-literal|"src/tests/net/sf/jabref/imports/unlinkedFilesTestFolder/pdfInDatabase.pdf"
+literal|"src/resources/tests/net/sf/jabref/imports/unlinkedFilesTestFolder/pdfInDatabase.pdf"
 argument_list|)
 expr_stmt|;
 name|fileNotInDatabase
@@ -91,7 +91,7 @@ operator|=
 operator|new
 name|File
 argument_list|(
-literal|"src/tests/net/sf/jabref/imports/unlinkedFilesTestFolder/pdfNotInDatabase.pdf"
+literal|"src/resources/tests/net/sf/jabref/imports/unlinkedFilesTestFolder/pdfNotInDatabase.pdf"
 argument_list|)
 expr_stmt|;
 name|existingFolder
@@ -99,7 +99,7 @@ operator|=
 operator|new
 name|File
 argument_list|(
-literal|"src/tests/net/sf/jabref/imports/unlinkedFilesTestFolder"
+literal|"src/resources/tests/net/sf/jabref/imports/unlinkedFilesTestFolder"
 argument_list|)
 expr_stmt|;
 name|notExistingFolder

@@ -7593,7 +7593,7 @@ name|XMPUtil
 operator|.
 name|readXMP
 argument_list|(
-literal|"src/tests/encrypted.pdf"
+literal|"src/resources/tests/encrypted.pdf"
 argument_list|)
 expr_stmt|;
 name|fail
@@ -7612,7 +7612,7 @@ name|XMPUtil
 operator|.
 name|writeXMP
 argument_list|(
-literal|"src/tests/encrypted.pdf"
+literal|"src/resources/tests/encrypted.pdf"
 argument_list|,
 name|t1BibtexEntry
 argument_list|()
@@ -7654,7 +7654,7 @@ argument_list|(
 operator|new
 name|FileReader
 argument_list|(
-literal|"src/tests/net/sf/jabref/util/twente.bib"
+literal|"src/resources/tests/net/sf/jabref/util/twente.bib"
 argument_list|)
 argument_list|)
 decl_stmt|;

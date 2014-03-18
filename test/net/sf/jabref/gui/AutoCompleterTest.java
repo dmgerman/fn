@@ -279,7 +279,7 @@ specifier|final
 name|String
 name|PATH_TO_TEST_BIBTEX
 init|=
-literal|"src/tests/net/sf/jabref/bibtexFiles/test.bib"
+literal|"src/resources/tests/net/sf/jabref/bibtexFiles/test.bib"
 decl_stmt|;
 DECL|method|testAutoCompleterFactory ()
 specifier|public

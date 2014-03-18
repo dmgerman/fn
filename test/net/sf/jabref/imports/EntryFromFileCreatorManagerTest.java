@@ -200,7 +200,7 @@ operator|=
 operator|new
 name|File
 argument_list|(
-literal|"src/tests/net/sf/jabref/imports/unlinkedFilesTestFolder/pdfInDatabase.pdf"
+literal|"src/resources/tests/net/sf/jabref/imports/unlinkedFilesTestFolder/pdfInDatabase.pdf"
 argument_list|)
 expr_stmt|;
 name|notExistingFile
@@ -208,7 +208,7 @@ operator|=
 operator|new
 name|File
 argument_list|(
-literal|"src/tests/net/sf/jabref/imports/unlinkedFilesTestFolder/null.pdf"
+literal|"src/resources/tests/net/sf/jabref/imports/unlinkedFilesTestFolder/null.pdf"
 argument_list|)
 expr_stmt|;
 name|pdfNotInDatabase
@@ -216,7 +216,7 @@ operator|=
 operator|new
 name|File
 argument_list|(
-literal|"src/tests/net/sf/jabref/imports/unlinkedFilesTestFolder/pdfNotInDatabase.pdf"
+literal|"src/resources/tests/net/sf/jabref/imports/unlinkedFilesTestFolder/pdfNotInDatabase.pdf"
 argument_list|)
 expr_stmt|;
 name|manager1
@@ -235,7 +235,7 @@ argument_list|(
 operator|new
 name|FileReader
 argument_list|(
-literal|"src/tests/net/sf/jabref/util/unlinkedFilesTestBib.bib"
+literal|"src/resources/tests/net/sf/jabref/util/unlinkedFilesTestBib.bib"
 argument_list|)
 argument_list|)
 decl_stmt|;

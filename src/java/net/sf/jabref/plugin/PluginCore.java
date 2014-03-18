@@ -511,7 +511,7 @@ argument_list|(
 operator|new
 name|File
 argument_list|(
-literal|"./src/plugins"
+literal|"./src/resources/plugins"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -591,7 +591,7 @@ name|File
 argument_list|(
 name|parent
 argument_list|,
-literal|"/src/plugins"
+literal|"/src/resources/plugins"
 argument_list|)
 argument_list|)
 expr_stmt|;

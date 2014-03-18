@@ -135,7 +135,7 @@ operator|=
 operator|new
 name|File
 argument_list|(
-literal|"src/tests/net/sf/jabref/imports/unlinkedFilesTestFolder/pdfNotInDatabase.pdf"
+literal|"src/resources/tests/net/sf/jabref/imports/unlinkedFilesTestFolder/pdfNotInDatabase.pdf"
 argument_list|)
 expr_stmt|;
 name|notExistingPDF
@@ -143,7 +143,7 @@ operator|=
 operator|new
 name|File
 argument_list|(
-literal|"src/tests/net/sf/jabref/imports/unlinkedFilesTestFolder/null.pdf"
+literal|"src/resources/tests/net/sf/jabref/imports/unlinkedFilesTestFolder/null.pdf"
 argument_list|)
 expr_stmt|;
 block|}

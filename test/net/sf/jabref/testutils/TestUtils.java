@@ -51,7 +51,7 @@ specifier|final
 name|String
 name|PATH_TO_TEST_BIBTEX
 init|=
-literal|"src/tests/net/sf/jabref/bibtexFiles/test.bib"
+literal|"src/resources/tests/net/sf/jabref/bibtexFiles/test.bib"
 decl_stmt|;
 comment|/** 	 * Returns a full configured and initialized instance of JabRef. As long as 	 * {@link TestUtils#closeJabRef()} wasn't called this method returns the 	 * same instance. 	 *  	 * @see TestUtils#closeJabRef() 	 */
 DECL|method|getInitializedJabRef ()
