@@ -880,12 +880,6 @@ name|con
 operator|.
 name|weighty
 operator|=
-literal|0
-expr_stmt|;
-name|con
-operator|.
-name|weighty
-operator|=
 literal|1
 expr_stmt|;
 name|con
