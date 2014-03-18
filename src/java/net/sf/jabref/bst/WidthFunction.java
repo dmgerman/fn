@@ -156,11 +156,7 @@ name|stack
 operator|.
 name|push
 argument_list|(
-operator|new
-name|Integer
-argument_list|(
 literal|0
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return;
@@ -168,9 +164,6 @@ block|}
 name|stack
 operator|.
 name|push
-argument_list|(
-operator|new
-name|Integer
 argument_list|(
 name|BibtexWidth
 operator|.
@@ -182,7 +175,6 @@ operator|)
 name|o1
 argument_list|,
 name|vm
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

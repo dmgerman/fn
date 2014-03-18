@@ -4541,9 +4541,6 @@ block|{
 name|Character
 name|c
 init|=
-operator|new
-name|Character
-argument_list|(
 operator|(
 name|char
 operator|)
@@ -4559,7 +4556,6 @@ argument_list|)
 operator|.
 name|intValue
 argument_list|()
-argument_list|)
 decl_stmt|;
 name|unicodeSymbols
 operator|.

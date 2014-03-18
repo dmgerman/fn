@@ -4750,12 +4750,7 @@ name|this
 operator|.
 name|enable
 operator|=
-name|Boolean
-operator|.
-name|valueOf
-argument_list|(
 name|enable
-argument_list|)
 expr_stmt|;
 block|}
 DECL|method|actionPerformed (ActionEvent event)
@@ -4855,12 +4850,7 @@ name|glTable
 operator|.
 name|setValueAt
 argument_list|(
-name|Boolean
-operator|.
-name|valueOf
-argument_list|(
 literal|false
-argument_list|)
 argument_list|,
 name|i
 argument_list|,

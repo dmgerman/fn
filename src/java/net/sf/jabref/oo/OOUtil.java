@@ -888,9 +888,6 @@ name|setPropertyValue
 argument_list|(
 literal|"CharWeight"
 argument_list|,
-operator|new
-name|Float
-argument_list|(
 name|com
 operator|.
 name|sun
@@ -903,7 +900,6 @@ name|FontWeight
 operator|.
 name|BOLD
 argument_list|)
-argument_list|)
 expr_stmt|;
 else|else
 name|xCursorProps
@@ -912,9 +908,6 @@ name|setPropertyValue
 argument_list|(
 literal|"CharWeight"
 argument_list|,
-operator|new
-name|Float
-argument_list|(
 name|com
 operator|.
 name|sun
@@ -926,7 +919,6 @@ operator|.
 name|FontWeight
 operator|.
 name|NORMAL
-argument_list|)
 argument_list|)
 expr_stmt|;
 if|if

@@ -1353,11 +1353,7 @@ name|notMatched
 operator|.
 name|add
 argument_list|(
-operator|new
-name|Integer
-argument_list|(
 name|piv1
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

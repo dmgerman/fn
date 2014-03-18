@@ -1515,14 +1515,10 @@ operator|)
 operator|.
 name|compareTo
 argument_list|(
-operator|new
-name|Integer
-argument_list|(
 name|other
 operator|.
 name|begin
 argument_list|()
-argument_list|)
 argument_list|)
 return|;
 block|}

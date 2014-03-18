@@ -544,14 +544,10 @@ condition|)
 block|{
 name|value
 operator|=
-operator|new
-name|Long
-argument_list|(
 name|entry
 operator|.
 name|getSize
 argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 return|return

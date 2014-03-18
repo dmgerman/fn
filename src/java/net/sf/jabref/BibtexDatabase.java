@@ -2061,9 +2061,6 @@ name|put
 argument_list|(
 name|key
 argument_list|,
-operator|new
-name|Integer
-argument_list|(
 name|allKeys
 operator|.
 name|get
@@ -2076,7 +2073,6 @@ argument_list|()
 operator|+
 literal|1
 argument_list|)
-argument_list|)
 expr_stmt|;
 comment|// incrementInteger( allKeys.get(key)));
 block|}
@@ -2087,11 +2083,7 @@ name|put
 argument_list|(
 name|key
 argument_list|,
-operator|new
-name|Integer
-argument_list|(
 literal|1
-argument_list|)
 argument_list|)
 expr_stmt|;
 return|return
@@ -2171,9 +2163,6 @@ name|put
 argument_list|(
 name|key
 argument_list|,
-operator|new
-name|Integer
-argument_list|(
 operator|(
 name|tI
 operator|)
@@ -2182,7 +2171,6 @@ name|intValue
 argument_list|()
 operator|-
 literal|1
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//decrementInteger( tI ));

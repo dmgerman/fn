@@ -3925,6 +3925,7 @@ return|;
 block|}
 block|}
 DECL|class|JournalEntry
+specifier|static
 class|class
 name|JournalEntry
 implements|implements

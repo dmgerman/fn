@@ -1281,11 +1281,7 @@ name|left
 operator|.
 name|add
 argument_list|(
-operator|new
-name|Integer
-argument_list|(
 name|current
-argument_list|)
 argument_list|)
 expr_stmt|;
 while|while
@@ -1312,11 +1308,7 @@ name|right
 operator|.
 name|add
 argument_list|(
-operator|new
-name|Integer
-argument_list|(
 name|current
-argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Then we throw an exception if the error criteria are met.

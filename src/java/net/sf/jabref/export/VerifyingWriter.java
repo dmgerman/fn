@@ -227,15 +227,11 @@ name|problemCharacters
 operator|.
 name|add
 argument_list|(
-operator|new
-name|Character
-argument_list|(
 name|str
 operator|.
 name|charAt
 argument_list|(
 name|i
-argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;

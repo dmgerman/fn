@@ -1121,12 +1121,7 @@ argument_list|()
 operator|+
 literal|1
 operator|<=
-name|Integer
-operator|.
-name|valueOf
-argument_list|(
 name|refsRequested
-argument_list|)
 operator|)
 condition|)
 block|{
@@ -1181,12 +1176,7 @@ argument_list|()
 operator|+
 literal|1
 operator|<=
-name|Integer
-operator|.
-name|valueOf
-argument_list|(
 name|refsRequested
-argument_list|)
 operator|)
 condition|)
 do|;

@@ -4196,20 +4196,18 @@ block|{
 comment|// zoomLevel not yet set, calculate it based on the first found font
 name|zoomLevel
 operator|=
-operator|new
-name|Double
-argument_list|(
+operator|(
+name|double
+operator|)
 name|fontSize
-argument_list|)
 operator|/
-operator|new
-name|Double
-argument_list|(
+operator|(
+name|double
+operator|)
 name|font
 operator|.
 name|getSize
 argument_list|()
-argument_list|)
 expr_stmt|;
 block|}
 name|font
