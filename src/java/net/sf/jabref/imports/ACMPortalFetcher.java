@@ -1841,7 +1841,7 @@ name|out
 operator|.
 name|printf
 argument_list|(
-literal|"Citation Unmatched %d\n"
+literal|"Citation Unmatched %d%n"
 argument_list|,
 name|entryNumber
 argument_list|)
