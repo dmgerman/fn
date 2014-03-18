@@ -401,7 +401,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Try to read the given BibTexEntry from the XMP-stream of the given 	 * inputstream containing a PDF-file. 	 *  	 * @param file 	 *            The inputstream to read from. 	 *  	 * @throws IOException 	 *             Throws an IOException if the file cannot be read, so the user 	 *             than remove a lock or cancel the operation. 	 */
+comment|/** 	 * Try to read the given BibTexEntry from the XMP-stream of the given 	 * inputstream containing a PDF-file. 	 *  	 * @param inputStream 	 *            The inputstream to read from. 	 *  	 * @throws IOException 	 *             Throws an IOException if the file cannot be read, so the user 	 *             than remove a lock or cancel the operation. 	 */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -900,7 +900,7 @@ literal|null
 operator|)
 return|;
 block|}
-comment|/** 	 * Helper function for retrieving a BibtexEntry from the DublinCore metadata 	 * in a PDF file. 	 *  	 * To understand how to get hold of a XMPSchemaDublinCore have a look in the 	 * test cases for XMPUtil. 	 *  	 * The BibtexEntry is build by mapping individual fields in the dublin core 	 * (like creator, title, subject) to fields in a bibtex entry. 	 *  	 * @param di 	 *            The document information from which to build a BibtexEntry. 	 *  	 * @return The bibtex entry found in the document information. 	 */
+comment|/** 	 * Helper function for retrieving a BibtexEntry from the DublinCore metadata 	 * in a PDF file. 	 *  	 * To understand how to get hold of a XMPSchemaDublinCore have a look in the 	 * test cases for XMPUtil. 	 *  	 * The BibtexEntry is build by mapping individual fields in the dublin core 	 * (like creator, title, subject) to fields in a bibtex entry. 	 *  	 * @param dcSchema 	 *            The document information from which to build a BibtexEntry. 	 *  	 * @return The bibtex entry found in the document information. 	 */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -925,6 +925,9 @@ argument_list|()
 decl_stmt|;
 comment|/** 		 * Contributor -> Editor 		 */
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|contributors
 init|=
 name|dcSchema
@@ -940,6 +943,9 @@ literal|null
 condition|)
 block|{
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|it
 init|=
 name|contributors
@@ -1016,6 +1022,9 @@ expr_stmt|;
 block|}
 comment|/** 		 * Author -> Creator 		 */
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|creators
 init|=
 name|dcSchema
@@ -1031,6 +1040,9 @@ literal|null
 condition|)
 block|{
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|it
 init|=
 name|creators
@@ -1107,6 +1119,9 @@ expr_stmt|;
 block|}
 comment|/** 		 * Year + Month -> Date 		 */
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|dates
 init|=
 name|dcSchema
@@ -1133,17 +1148,12 @@ block|{
 name|String
 name|date
 init|=
-operator|(
-operator|(
-name|String
-operator|)
 name|dates
 operator|.
 name|get
 argument_list|(
 literal|0
 argument_list|)
-operator|)
 operator|.
 name|trim
 argument_list|()
@@ -1286,6 +1296,9 @@ argument_list|)
 expr_stmt|;
 comment|/** 		 * Publisher -> Publisher 		 */
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|publishers
 init|=
 name|dcSchema
@@ -1301,6 +1314,9 @@ literal|null
 condition|)
 block|{
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|it
 init|=
 name|dcSchema
@@ -1380,6 +1396,9 @@ expr_stmt|;
 block|}
 comment|/** 		 * Relation -> bibtexkey 		 *  		 * We abuse the relationship attribute to store all other values in the 		 * bibtex document 		 */
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|relationships
 init|=
 name|dcSchema
@@ -1396,22 +1415,15 @@ condition|)
 block|{
 for|for
 control|(
-name|Object
-name|relationship
+name|String
+name|r
 range|:
 name|relationships
 control|)
 block|{
-name|s
-operator|=
-operator|(
-name|String
-operator|)
-name|relationship
-expr_stmt|;
 if|if
 condition|(
-name|s
+name|r
 operator|.
 name|startsWith
 argument_list|(
@@ -1419,9 +1431,9 @@ literal|"bibtex/"
 argument_list|)
 condition|)
 block|{
-name|s
+name|r
 operator|=
-name|s
+name|r
 operator|.
 name|substring
 argument_list|(
@@ -1434,7 +1446,7 @@ expr_stmt|;
 name|int
 name|i
 init|=
-name|s
+name|r
 operator|.
 name|indexOf
 argument_list|(
@@ -1453,7 +1465,7 @@ name|entry
 operator|.
 name|setField
 argument_list|(
-name|s
+name|r
 operator|.
 name|substring
 argument_list|(
@@ -1462,7 +1474,7 @@ argument_list|,
 name|i
 argument_list|)
 argument_list|,
-name|s
+name|r
 operator|.
 name|substring
 argument_list|(
@@ -1524,6 +1536,9 @@ argument_list|)
 expr_stmt|;
 comment|/** 		 * Subject -> Keywords 		 */
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|subjects
 init|=
 name|dcSchema
@@ -1539,6 +1554,9 @@ literal|null
 condition|)
 block|{
 name|Iterator
+argument_list|<
+name|String
+argument_list|>
 name|it
 init|=
 name|subjects
@@ -1638,6 +1656,9 @@ argument_list|)
 expr_stmt|;
 comment|/** 		 * Type -> Type 		 */
 name|List
+argument_list|<
+name|String
+argument_list|>
 name|l
 init|=
 name|dcSchema
@@ -1661,9 +1682,6 @@ condition|)
 block|{
 name|s
 operator|=
-operator|(
-name|String
-operator|)
 name|l
 operator|.
 name|get
@@ -1774,7 +1792,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Write the given BibtexEntries as XMP-metadata text to the given stream. 	 *  	 * The text that is written to the stream contains a complete XMP-document. 	 *  	 * @param bibtexEntries 	 *            The BibtexEntries to write XMP-metadata for. 	 * @param database 	 *            maybenull An optional database which the given bibtex entries 	 *            belong to, which will be used to resolve strings. If the 	 *            database is null the strings will not be resolved. 	 * @throws TransformerException 	 *             Thrown if the bibtexEntries could not transformed to XMP. 	 * @throws IOException 	 *             Thrown if an IOException occured while writing to the stream. 	 *  	 * @see #toXMP(Collection, OutputStream) if you don't need strings to be 	 *      resolved. 	 */
+comment|/** 	 * Write the given BibtexEntries as XMP-metadata text to the given stream. 	 *  	 * The text that is written to the stream contains a complete XMP-document. 	 *  	 * @param bibtexEntries 	 *            The BibtexEntries to write XMP-metadata for. 	 * @param database 	 *            maybenull An optional database which the given bibtex entries 	 *            belong to, which will be used to resolve strings. If the 	 *            database is null the strings will not be resolved. 	 * @throws TransformerException 	 *             Thrown if the bibtexEntries could not transformed to XMP. 	 * @throws IOException 	 *             Thrown if an IOException occured while writing to the stream. 	 *  	 * @see #toXMP(java.util.Collection, net.sf.jabref.BibtexDatabase) if you don't need strings to be 	 *      resolved. 	 */
 DECL|method|toXMP (Collection<BibtexEntry> bibtexEntries, BibtexDatabase database, OutputStream outputStream)
 specifier|public
 specifier|static
@@ -2214,7 +2232,7 @@ argument_list|)
 condition|)
 block|{
 name|String
-name|o
+name|authors
 init|=
 name|entry
 operator|.
@@ -2224,11 +2242,6 @@ name|field
 argument_list|)
 decl_stmt|;
 comment|/** 				 * Editor -> Contributor 				 *  				 * Field: dc:contributor 				 *  				 * Type: bag ProperName 				 *  				 * Category: External 				 *  				 * Description: Contributors to the resource (other than the 				 * authors). 				 *  				 * Bibtex-Fields used: editor 				 */
-name|String
-name|authors
-init|=
-name|o
-decl_stmt|;
 name|AuthorList
 name|list
 init|=
@@ -2295,7 +2308,7 @@ argument_list|)
 condition|)
 block|{
 name|String
-name|o
+name|authors
 init|=
 name|entry
 operator|.
@@ -2303,11 +2316,6 @@ name|getField
 argument_list|(
 name|field
 argument_list|)
-decl_stmt|;
-name|String
-name|authors
-init|=
-name|o
 decl_stmt|;
 name|AuthorList
 name|list
@@ -2805,6 +2813,9 @@ expr_stmt|;
 block|}
 comment|// Remove all current Dublin-Core schemas
 name|List
+argument_list|<
+name|XMPSchema
+argument_list|>
 name|schemas
 init|=
 name|meta
@@ -2818,21 +2829,13 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|Object
+name|XMPSchema
 name|schema
 range|:
 name|schemas
 control|)
 block|{
-name|XMPSchema
-name|bib
-init|=
-operator|(
-name|XMPSchema
-operator|)
 name|schema
-decl_stmt|;
-name|bib
 operator|.
 name|getElement
 argument_list|()
@@ -2842,7 +2845,7 @@ argument_list|()
 operator|.
 name|removeChild
 argument_list|(
-name|bib
+name|schema
 operator|.
 name|getElement
 argument_list|()
@@ -3130,7 +3133,7 @@ name|SuppressWarnings
 argument_list|(
 literal|"unchecked"
 argument_list|)
-DECL|method|writeXMP (File file, Collection<BibtexEntry> bibtexEntries, BibtexDatabase databasee, boolean writePDFInfo)
+DECL|method|writeXMP (File file, Collection<BibtexEntry> bibtexEntries, BibtexDatabase database, boolean writePDFInfo)
 specifier|public
 specifier|static
 name|void
@@ -3146,7 +3149,7 @@ argument_list|>
 name|bibtexEntries
 parameter_list|,
 name|BibtexDatabase
-name|databasee
+name|database
 parameter_list|,
 name|boolean
 name|writePDFInfo
@@ -3158,13 +3161,13 @@ name|TransformerException
 block|{
 if|if
 condition|(
-name|databasee
+name|database
 operator|!=
 literal|null
 condition|)
 name|bibtexEntries
 operator|=
-name|databasee
+name|database
 operator|.
 name|resolveForStrings
 argument_list|(
@@ -3312,6 +3315,9 @@ argument_list|)
 expr_stmt|;
 comment|// Remove all current Bibtex-schemas
 name|List
+argument_list|<
+name|XMPSchema
+argument_list|>
 name|schemas
 init|=
 name|meta
@@ -3323,21 +3329,13 @@ operator|.
 name|NAMESPACE
 argument_list|)
 decl_stmt|;
-name|Iterator
-name|it
-init|=
+for|for
+control|(
+name|XMPSchema
+name|schema
+range|:
 name|schemas
-operator|.
-name|iterator
-argument_list|()
-decl_stmt|;
-while|while
-condition|(
-name|it
-operator|.
-name|hasNext
-argument_list|()
-condition|)
+control|)
 block|{
 name|XMPSchemaBibtex
 name|bib
@@ -3345,10 +3343,7 @@ init|=
 operator|(
 name|XMPSchemaBibtex
 operator|)
-name|it
-operator|.
-name|next
-argument_list|()
+name|schema
 decl_stmt|;
 name|bib
 operator|.
@@ -3367,32 +3362,14 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|it
-operator|=
-name|bibtexEntries
-operator|.
-name|iterator
-argument_list|()
-expr_stmt|;
-while|while
-condition|(
-name|it
-operator|.
-name|hasNext
-argument_list|()
-condition|)
-block|{
+for|for
+control|(
 name|BibtexEntry
 name|e
-init|=
-operator|(
-name|BibtexEntry
-operator|)
-name|it
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
+range|:
+name|bibtexEntries
+control|)
+block|{
 name|XMPSchemaBibtex
 name|bibtex
 init|=

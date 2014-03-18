@@ -155,6 +155,9 @@ class|class
 name|OOBibStyle
 implements|implements
 name|Comparable
+argument_list|<
+name|OOBibStyle
+argument_list|>
 block|{
 DECL|field|UNDEFINED_CITATION_MARKER
 specifier|public
@@ -1361,7 +1364,7 @@ block|}
 block|}
 block|}
 comment|/**      * Parse a line providing a property name and value.      * @param line The line containing the formatter names.      * @throws IOException      */
-DECL|method|handlePropertiesLine (String line, HashMap map)
+DECL|method|handlePropertiesLine (String line, HashMap<String, Object> map)
 specifier|private
 name|void
 name|handlePropertiesLine
@@ -1370,6 +1373,11 @@ name|String
 name|line
 parameter_list|,
 name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|Object
+argument_list|>
 name|map
 parameter_list|)
 throws|throws
@@ -4291,23 +4299,15 @@ name|name
 argument_list|)
 return|;
 block|}
-DECL|method|compareTo (Object o)
+DECL|method|compareTo (OOBibStyle other)
 specifier|public
 name|int
 name|compareTo
 parameter_list|(
-name|Object
-name|o
-parameter_list|)
-block|{
 name|OOBibStyle
 name|other
-init|=
-operator|(
-name|OOBibStyle
-operator|)
-name|o
-decl_stmt|;
+parameter_list|)
+block|{
 return|return
 name|getName
 argument_list|()

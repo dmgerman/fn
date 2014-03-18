@@ -778,6 +778,9 @@ class|class
 name|CitEntry
 implements|implements
 name|Comparable
+argument_list|<
+name|CitEntry
+argument_list|>
 block|{
 DECL|field|refMarkName
 DECL|field|pageInfo
@@ -976,23 +979,15 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|compareTo (Object o)
+DECL|method|compareTo (CitEntry other)
 specifier|public
 name|int
 name|compareTo
 parameter_list|(
-name|Object
-name|o
-parameter_list|)
-block|{
 name|CitEntry
 name|other
-init|=
-operator|(
-name|CitEntry
-operator|)
-name|o
-decl_stmt|;
+parameter_list|)
+block|{
 return|return
 name|this
 operator|.
