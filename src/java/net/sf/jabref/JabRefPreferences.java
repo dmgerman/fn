@@ -6411,14 +6411,6 @@ name|keyPattern
 operator|=
 name|pattern
 expr_stmt|;
-name|LabelPattern
-name|parent
-init|=
-name|pattern
-operator|.
-name|getParent
-argument_list|()
-decl_stmt|;
 comment|// Store overridden definitions to Preferences.
 name|Preferences
 name|pre

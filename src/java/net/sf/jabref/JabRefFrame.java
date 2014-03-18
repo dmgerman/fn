@@ -13416,15 +13416,11 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-specifier|final
-name|JabRefPreferences
-name|prefs
-init|=
 name|JabRefPreferences
 operator|.
 name|getInstance
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 if|if
 condition|(
 name|bibtexKeyPatternDialog

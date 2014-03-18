@@ -4875,9 +4875,6 @@ name|void
 name|action
 parameter_list|()
 block|{
-name|MergeEntriesDialog
-name|med
-init|=
 operator|new
 name|MergeEntriesDialog
 argument_list|(
@@ -4885,7 +4882,7 @@ name|BasePanel
 operator|.
 name|this
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 block|}
 block|}
 argument_list|)
