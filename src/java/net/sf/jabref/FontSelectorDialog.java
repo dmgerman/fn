@@ -547,6 +547,9 @@ name|familyList
 operator|=
 operator|new
 name|JList
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|getFontList
 argument_list|()
@@ -602,6 +605,9 @@ name|sizeList
 operator|=
 operator|new
 name|JList
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|sizes
 argument_list|)
@@ -650,6 +656,9 @@ name|styleList
 operator|=
 operator|new
 name|JList
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|styles
 argument_list|)
@@ -1166,6 +1175,9 @@ decl_stmt|;
 DECL|field|familyList
 specifier|private
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|familyList
 decl_stmt|;
 DECL|field|sizeField
@@ -1176,6 +1188,9 @@ decl_stmt|;
 DECL|field|sizeList
 specifier|private
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|sizeList
 decl_stmt|;
 DECL|field|styleField
@@ -1186,6 +1201,9 @@ decl_stmt|;
 DECL|field|styleList
 specifier|private
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|styleList
 decl_stmt|;
 DECL|field|preview
@@ -1774,9 +1792,6 @@ block|{
 name|String
 name|family
 init|=
-operator|(
-name|String
-operator|)
 name|familyList
 operator|.
 name|getSelectedValue
@@ -1807,9 +1822,6 @@ block|{
 name|String
 name|size
 init|=
-operator|(
-name|String
-operator|)
 name|sizeList
 operator|.
 name|getSelectedValue
@@ -1840,9 +1852,6 @@ block|{
 name|String
 name|style
 init|=
-operator|(
-name|String
-operator|)
 name|styleList
 operator|.
 name|getSelectedValue

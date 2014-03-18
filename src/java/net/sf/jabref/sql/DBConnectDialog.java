@@ -190,10 +190,16 @@ decl_stmt|;
 comment|// input fields
 DECL|field|cmbServerType
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 name|cmbServerType
 init|=
 operator|new
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|txtServerHostname

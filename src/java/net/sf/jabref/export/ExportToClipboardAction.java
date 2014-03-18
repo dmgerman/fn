@@ -322,10 +322,16 @@ operator|++
 expr_stmt|;
 block|}
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|list
 init|=
 operator|new
 name|JList
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|array
 argument_list|)
@@ -575,11 +581,11 @@ name|entries
 argument_list|)
 expr_stmt|;
 comment|// Read the file and put the contents on the clipboard:
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|reader
@@ -713,7 +719,6 @@ argument_list|(
 literal|"Error exporting to clipboard"
 argument_list|)
 expr_stmt|;
-return|return;
 block|}
 finally|finally
 block|{

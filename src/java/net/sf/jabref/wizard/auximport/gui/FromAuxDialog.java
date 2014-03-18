@@ -471,10 +471,16 @@ decl_stmt|;
 DECL|field|dbChooser
 specifier|private
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 name|dbChooser
 init|=
 operator|new
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|auxFileField
@@ -482,14 +488,12 @@ specifier|private
 name|JTextField
 name|auxFileField
 decl_stmt|;
-DECL|field|browseAuxFileButton
-specifier|private
-name|JButton
-name|browseAuxFileButton
-decl_stmt|;
 DECL|field|notFoundList
 specifier|private
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|notFoundList
 decl_stmt|;
 DECL|field|statusInfos
@@ -1138,8 +1142,9 @@ argument_list|,
 literal|25
 argument_list|)
 expr_stmt|;
+name|JButton
 name|browseAuxFileButton
-operator|=
+init|=
 operator|new
 name|JButton
 argument_list|(
@@ -1150,7 +1155,7 @@ argument_list|(
 literal|"Browse"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|browseAuxFileButton
 operator|.
 name|addActionListener
@@ -1168,6 +1173,9 @@ name|notFoundList
 operator|=
 operator|new
 name|JList
+argument_list|<
+name|String
+argument_list|>
 argument_list|()
 expr_stmt|;
 name|JScrollPane
@@ -1855,6 +1863,7 @@ block|}
 comment|// ---------------------------------------------------------------------------
 comment|/**      * Action used to produce a "Browse" button for one of the text fields.      */
 DECL|class|BrowseAction
+specifier|static
 class|class
 name|BrowseAction
 extends|extends
@@ -1912,10 +1921,6 @@ block|{
 name|String
 name|chosen
 init|=
-literal|null
-decl_stmt|;
-name|chosen
-operator|=
 name|FileDialogs
 operator|.
 name|getNewFile
@@ -1939,7 +1944,7 @@ name|OPEN_DIALOG
 argument_list|,
 literal|false
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|chosen
