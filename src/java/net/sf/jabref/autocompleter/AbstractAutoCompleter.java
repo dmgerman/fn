@@ -325,7 +325,10 @@ argument_list|(
 operator|new
 name|String
 index|[
-literal|0
+name|res
+operator|.
+name|size
+argument_list|()
 index|]
 argument_list|)
 return|;
@@ -365,7 +368,10 @@ argument_list|(
 operator|new
 name|String
 index|[
-literal|0
+name|subset
+operator|.
+name|size
+argument_list|()
 index|]
 argument_list|)
 return|;

@@ -2563,8 +2563,12 @@ name|toArray
 argument_list|(
 operator|new
 name|LayoutFormatter
-index|[]
-block|{}
+index|[
+name|results
+operator|.
+name|size
+argument_list|()
+index|]
 argument_list|)
 return|;
 block|}

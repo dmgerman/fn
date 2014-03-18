@@ -677,8 +677,12 @@ name|toArray
 argument_list|(
 operator|new
 name|Importer
-index|[]
-block|{}
+index|[
+name|this
+operator|.
+name|size
+argument_list|()
+index|]
 argument_list|)
 decl_stmt|;
 for|for

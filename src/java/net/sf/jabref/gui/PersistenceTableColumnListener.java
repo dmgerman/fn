@@ -334,7 +334,10 @@ argument_list|(
 operator|new
 name|String
 index|[
-literal|0
+name|storedColumns
+operator|.
+name|size
+argument_list|()
 index|]
 argument_list|)
 argument_list|)
@@ -354,7 +357,10 @@ argument_list|(
 operator|new
 name|String
 index|[
-literal|0
+name|columnsWidths
+operator|.
+name|size
+argument_list|()
 index|]
 argument_list|)
 argument_list|)

@@ -848,8 +848,12 @@ name|toArray
 argument_list|(
 operator|new
 name|PluginLocation
-index|[]
-block|{}
+index|[
+name|plugins
+operator|.
+name|size
+argument_list|()
+index|]
 argument_list|)
 argument_list|)
 expr_stmt|;

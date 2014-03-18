@@ -4589,7 +4589,10 @@ argument_list|(
 operator|new
 name|BibtexEntry
 index|[
-literal|0
+name|toRemove
+operator|.
+name|size
+argument_list|()
 index|]
 argument_list|)
 argument_list|)
@@ -4616,7 +4619,10 @@ argument_list|(
 operator|new
 name|BibtexEntry
 index|[
-literal|0
+name|toAdd
+operator|.
+name|size
+argument_list|()
 index|]
 argument_list|)
 argument_list|)
