@@ -2062,9 +2062,6 @@ name|get
 argument_list|(
 name|key
 argument_list|)
-operator|.
-name|intValue
-argument_list|()
 operator|+
 literal|1
 argument_list|)
@@ -2155,12 +2152,7 @@ name|put
 argument_list|(
 name|key
 argument_list|,
-operator|(
 name|tI
-operator|)
-operator|.
-name|intValue
-argument_list|()
 operator|-
 literal|1
 argument_list|)

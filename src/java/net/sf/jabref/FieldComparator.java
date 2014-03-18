@@ -605,9 +605,6 @@ expr_stmt|;
 name|f2
 operator|=
 name|i1
-operator|.
-name|intValue
-argument_list|()
 operator|+
 literal|1
 expr_stmt|;
@@ -629,9 +626,6 @@ expr_stmt|;
 name|f1
 operator|=
 name|i2
-operator|.
-name|intValue
-argument_list|()
 operator|+
 literal|1
 expr_stmt|;
