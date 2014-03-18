@@ -575,11 +575,11 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|alltext
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|comp
 operator|.
@@ -1114,11 +1114,11 @@ literal|"<"
 argument_list|)
 expr_stmt|;
 block|}
-name|StringBuffer
+name|StringBuilder
 name|alltext
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|comp
 operator|.

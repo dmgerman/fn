@@ -258,11 +258,11 @@ name|String
 name|getProblemCharacters
 parameter_list|()
 block|{
-name|StringBuffer
+name|StringBuilder
 name|chars
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 for|for

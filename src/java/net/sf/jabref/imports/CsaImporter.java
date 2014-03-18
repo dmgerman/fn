@@ -382,11 +382,11 @@ name|String
 name|note
 parameter_list|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|notebuf
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 if|if
@@ -522,11 +522,11 @@ return|return
 name|fstr
 return|;
 block|}
-name|StringBuffer
+name|StringBuilder
 name|date
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|String

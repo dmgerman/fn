@@ -1848,11 +1848,11 @@ literal|0
 condition|)
 block|{
 comment|// set comment if present
-name|StringBuffer
+name|StringBuilder
 name|s
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 for|for
