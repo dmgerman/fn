@@ -1488,7 +1488,7 @@ operator|=
 name|EMACS_KEY_BINDINGS_BASE
 expr_stmt|;
 block|}
-name|JTC
+name|JTextComponent
 operator|.
 name|loadKeymap
 argument_list|(

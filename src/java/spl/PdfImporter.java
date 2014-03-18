@@ -2214,7 +2214,7 @@ operator|.
 name|getMode
 argument_list|()
 operator|!=
-name|panel
+name|BasePanel
 operator|.
 name|SHOWING_EDITOR
 condition|)
@@ -2223,7 +2223,7 @@ name|panel
 operator|.
 name|setMode
 argument_list|(
-name|panel
+name|BasePanel
 operator|.
 name|WILL_SHOW_EDITOR
 argument_list|)

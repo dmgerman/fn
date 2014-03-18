@@ -262,8 +262,6 @@ argument_list|()
 decl_stmt|;
 name|authors
 operator|=
-name|this
-operator|.
 name|sortAuthors
 argument_list|(
 name|authors
