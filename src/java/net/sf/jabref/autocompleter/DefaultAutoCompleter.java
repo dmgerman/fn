@@ -141,13 +141,9 @@ decl_stmt|;
 if|if
 condition|(
 name|fieldValue
-operator|==
+operator|!=
 literal|null
 condition|)
-block|{
-return|return;
-block|}
-else|else
 block|{
 name|StringTokenizer
 name|tok

@@ -1508,7 +1508,6 @@ operator|.
 name|rejectDrop
 argument_list|()
 expr_stmt|;
-return|return;
 block|}
 block|}
 end_class

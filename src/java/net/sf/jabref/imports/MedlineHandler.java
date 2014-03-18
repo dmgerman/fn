@@ -1082,7 +1082,6 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-return|return;
 block|}
 DECL|method|join (Object[] sa,String delim)
 name|String

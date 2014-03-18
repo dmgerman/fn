@@ -352,7 +352,6 @@ operator|.
 name|consume
 argument_list|()
 expr_stmt|;
-return|return;
 block|}
 comment|// Cycle through alternative completions when user presses PGUP/PGDN:
 elseif|else
@@ -1263,7 +1262,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-return|return;
 block|}
 block|}
 DECL|method|keyTyped (KeyEvent e)

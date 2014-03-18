@@ -317,7 +317,6 @@ name|couldNotWrite
 operator|=
 literal|true
 expr_stmt|;
-return|return;
 block|}
 block|}
 block|}

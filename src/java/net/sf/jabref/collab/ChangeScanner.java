@@ -2777,6 +2777,7 @@ return|return;
 block|}
 if|if
 condition|(
+operator|!
 name|groupsTmp
 operator|.
 name|equals
@@ -2784,7 +2785,7 @@ argument_list|(
 name|groupsDisk
 argument_list|)
 condition|)
-return|return;
+block|{
 name|changes
 operator|.
 name|add
@@ -2798,7 +2799,6 @@ name|groupsTmp
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return;
 comment|//
 comment|//        if (((vOnTmp == null) || (vOnTmp.size()==0))&& ((vOnDisk == null) || (vOnDisk.size()==0))) {
 comment|//            // No groups defined in either the tmp or disk version.
@@ -2847,6 +2847,11 @@ comment|//            AbstractGroup group = (AbstractGroup)vOnDisk.firstElement(
 comment|//            vOnDisk.removeElementAt(0);
 comment|//            changes.add(new GroupAddOrRemove(group, true));
 comment|//        }
+block|}
+else|else
+block|{
+return|return;
+block|}
 block|}
 DECL|interface|DisplayResultCallback
 specifier|public

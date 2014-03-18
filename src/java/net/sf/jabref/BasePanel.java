@@ -2926,13 +2926,8 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|!
 name|goOn
 condition|)
-block|{
-return|return;
-block|}
-else|else
 block|{
 comment|// Create a CompoundEdit to make the action undoable.
 name|NamedCompound
@@ -7186,7 +7181,6 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
-return|return;
 block|}
 else|else
 name|output

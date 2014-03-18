@@ -571,7 +571,6 @@ name|e
 argument_list|)
 throw|;
 block|}
-return|return;
 block|}
 DECL|method|addResourceFile (String name, String resource, ZipOutputStream out)
 specifier|private

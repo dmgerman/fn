@@ -357,7 +357,6 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return;
 block|}
 catch|catch
 parameter_list|(

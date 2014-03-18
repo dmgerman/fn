@@ -369,7 +369,6 @@ argument_list|()
 argument_list|)
 throw|;
 block|}
-return|return;
 block|}
 block|}
 end_class

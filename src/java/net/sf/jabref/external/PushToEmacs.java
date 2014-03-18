@@ -920,7 +920,6 @@ name|couldNotConnect
 operator|=
 literal|true
 expr_stmt|;
-return|return;
 block|}
 block|}
 block|}
@@ -955,7 +954,6 @@ name|couldNotRunClient
 operator|=
 literal|true
 expr_stmt|;
-return|return;
 block|}
 catch|catch
 parameter_list|(

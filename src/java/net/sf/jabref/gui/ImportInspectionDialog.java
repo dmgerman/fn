@@ -5598,7 +5598,6 @@ argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
-return|return;
 block|}
 block|}
 DECL|method|mousePressed (MouseEvent e)

@@ -4339,7 +4339,6 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
-return|return;
 block|}
 catch|catch
 parameter_list|(
