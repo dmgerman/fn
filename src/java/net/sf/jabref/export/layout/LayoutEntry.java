@@ -2254,8 +2254,6 @@ parameter_list|,
 name|String
 name|classPrefix
 parameter_list|)
-throws|throws
-name|Exception
 block|{
 name|ArrayList
 argument_list|<

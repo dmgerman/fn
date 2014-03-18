@@ -2549,8 +2549,6 @@ name|DBImportExportDialog
 name|dialogo
 parameter_list|)
 throws|throws
-name|SQLException
-throws|,
 name|Exception
 block|{
 name|String
@@ -2725,8 +2723,6 @@ name|DBStrings
 name|dbStrings
 parameter_list|)
 throws|throws
-name|SQLException
-throws|,
 name|Exception
 block|{
 name|ResultSet
@@ -2871,8 +2867,6 @@ parameter_list|,
 name|String
 name|desiredName
 parameter_list|)
-throws|throws
-name|SQLException
 block|{
 return|return
 name|desiredName

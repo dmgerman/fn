@@ -195,8 +195,6 @@ name|context
 parameter_list|)
 throws|throws
 name|IllegalArgumentException
-throws|,
-name|PatternSyntaxException
 block|{
 name|super
 argument_list|(
@@ -236,8 +234,6 @@ name|compilePattern
 parameter_list|()
 throws|throws
 name|IllegalArgumentException
-throws|,
-name|PatternSyntaxException
 block|{
 name|m_pattern
 operator|=

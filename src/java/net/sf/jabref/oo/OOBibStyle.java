@@ -1226,8 +1226,6 @@ parameter_list|(
 name|String
 name|line
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|int
 name|index
@@ -1380,8 +1378,6 @@ name|Object
 argument_list|>
 name|map
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|int
 name|index
@@ -1581,8 +1577,6 @@ parameter_list|(
 name|String
 name|line
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 if|if
 condition|(

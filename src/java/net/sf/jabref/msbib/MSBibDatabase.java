@@ -183,8 +183,6 @@ parameter_list|(
 name|InputStream
 name|stream
 parameter_list|)
-throws|throws
-name|IOException
 block|{
 name|importEntries
 argument_list|(

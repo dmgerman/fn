@@ -254,8 +254,6 @@ name|String
 name|uniquefier
 parameter_list|)
 throws|throws
-name|UndefinedParagraphFormatException
-throws|,
 name|Exception
 block|{
 specifier|final
@@ -341,8 +339,6 @@ name|String
 name|parStyle
 parameter_list|)
 throws|throws
-name|UndefinedParagraphFormatException
-throws|,
 name|Exception
 block|{
 name|XParagraphCursor
