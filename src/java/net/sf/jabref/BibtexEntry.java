@@ -1869,8 +1869,6 @@ specifier|public
 name|Object
 name|clone
 parameter_list|()
-throws|throws
-name|CloneNotSupportedException
 block|{
 name|BibtexEntry
 name|clone
