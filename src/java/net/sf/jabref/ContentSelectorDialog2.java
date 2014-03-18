@@ -1732,9 +1732,6 @@ block|{
 name|String
 name|word
 init|=
-operator|(
-name|String
-operator|)
 name|lm
 operator|.
 name|get
