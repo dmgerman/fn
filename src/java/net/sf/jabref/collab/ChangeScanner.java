@@ -2753,10 +2753,6 @@ operator|(
 name|groupsTmp
 operator|==
 literal|null
-operator|&&
-name|groupsDisk
-operator|!=
-literal|null
 operator|)
 condition|)
 block|{
@@ -2799,58 +2795,6 @@ name|groupsTmp
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//
-comment|//        if (((vOnTmp == null) || (vOnTmp.size()==0))&& ((vOnDisk == null) || (vOnDisk.size()==0))) {
-comment|//            // No groups defined in either the tmp or disk version.
-comment|//            return;
-comment|//        }
-comment|//
-comment|//        // To avoid checking for null all the time, make empty vectors to replace null refs. We clone
-comment|//        // non-null vectors so we can remove the elements as we finish with them.
-comment|//        if (vOnDisk == null)
-comment|//            vOnDisk = new Vector(0);
-comment|//        else
-comment|//            vOnDisk = (Vector)vOnDisk.clone();
-comment|//        if (vOnTmp == null)
-comment|//            vOnTmp = new Vector(0);
-comment|//        else
-comment|//            vOnTmp = (Vector)vOnTmp.clone();
-comment|//        if (vInMem == null)
-comment|//            vInMem = new Vector(0);
-comment|//        else
-comment|//            vInMem = (Vector)vInMem.clone();
-comment|//
-comment|//        // If the tmp version has groups, iterate through these and compare with disk version:
-comment|//        while (vOnTmp.size()>= 1) {
-comment|//            AbstractGroup group = (AbstractGroup)vOnTmp.firstElement();
-comment|//            vOnTmp.removeElementAt(0);
-comment|//            int pos = GroupSelector.findGroupByName(vOnDisk,group.getName());
-comment|//            if (pos == -1) {
-comment|//                // Couldn't find the group.
-comment|//                changes.add(new GroupAddOrRemove(group, false));
-comment|//            } else {
-comment|//                AbstractGroup diskGroup = (AbstractGroup)vOnDisk.elementAt(pos);
-comment|//
-comment|//                if (!diskGroup.equals(group)) {
-comment|//                    // Group has changed.
-comment|//                    changes.add(new GroupChange(inMem, group, diskGroup));
-comment|//                }
-comment|//
-comment|//                // Remove this group, since it's been accounted for.
-comment|//                vOnDisk.remove(pos);
-comment|//            }
-comment|//        }
-comment|//
-comment|//        // If there are entries left in the disk version, these must have been added.
-comment|//        while (vOnDisk.size()>= 1) {
-comment|//            AbstractGroup group = (AbstractGroup)vOnDisk.firstElement();
-comment|//            vOnDisk.removeElementAt(0);
-comment|//            changes.add(new GroupAddOrRemove(group, true));
-comment|//        }
-block|}
-else|else
-block|{
-return|return;
 block|}
 block|}
 DECL|interface|DisplayResultCallback
