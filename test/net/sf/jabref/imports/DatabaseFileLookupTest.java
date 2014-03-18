@@ -650,6 +650,11 @@ name|treeNode
 argument_list|)
 expr_stmt|;
 comment|/** 		 * Select all nodes manually. 		 */
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"unchecked"
+argument_list|)
 name|Enumeration
 argument_list|<
 name|CheckableTreeNode
@@ -1262,9 +1267,7 @@ parameter_list|(
 name|Exception
 name|e
 parameter_list|)
-block|{
-continue|continue;
-block|}
+block|{             }
 block|}
 return|return
 literal|null
