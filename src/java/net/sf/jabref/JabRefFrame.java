@@ -11411,8 +11411,6 @@ init|=
 literal|false
 decl_stmt|;
 comment|// Check for duplicates among the current entries:
-name|loop
-label|:
 for|for
 control|(
 name|String
@@ -11544,9 +11542,7 @@ break|break
 name|mainLoop
 break|;
 block|}
-break|break
-name|loop
-break|;
+break|break;
 block|}
 block|}
 if|if

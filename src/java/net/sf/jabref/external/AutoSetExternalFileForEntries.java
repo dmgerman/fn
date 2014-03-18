@@ -1090,7 +1090,6 @@ name|brokenLinks
 operator|++
 expr_stmt|;
 block|}
-continue|continue;
 block|}
 block|}
 block|}

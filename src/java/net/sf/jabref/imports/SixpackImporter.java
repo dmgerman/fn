@@ -612,8 +612,6 @@ name|entry
 init|=
 literal|null
 decl_stmt|;
-name|lines
-label|:
 while|while
 condition|(
 operator|(
@@ -662,9 +660,7 @@ name|length
 operator|<
 literal|2
 condition|)
-continue|continue
-name|lines
-continue|;
+continue|continue;
 comment|// Avoid ArrayIndexOutOfBoundsException
 name|BibtexEntryType
 name|typ

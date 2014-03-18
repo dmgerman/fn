@@ -250,9 +250,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
-block|{
-continue|continue;
-block|}
+block|{             }
 elseif|else
 if|if
 condition|(

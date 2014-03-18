@@ -4388,8 +4388,6 @@ argument_list|)
 decl_stmt|;
 comment|// First check if any entries have keys set already. If so, possibly remove
 comment|// them from consideration, or warn about overwriting keys.
-name|loop
-label|:
 for|for
 control|(
 name|Iterator
@@ -4544,9 +4542,7 @@ return|return;
 block|}
 comment|// No need to check more entries, because the user has already confirmed
 comment|// that it's ok to overwrite keys:
-break|break
-name|loop
-break|;
+break|break;
 block|}
 block|}
 block|}

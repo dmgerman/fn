@@ -1574,8 +1574,6 @@ literal|true
 expr_stmt|;
 block|}
 comment|// Cycle through all fields that we have created listmodels for:
-name|loop
-label|:
 for|for
 control|(
 name|String
@@ -1603,9 +1601,7 @@ argument_list|(
 name|fieldName
 argument_list|)
 condition|)
-continue|continue
-name|loop
-continue|;
+continue|continue;
 name|DefaultListModel
 argument_list|<
 name|String

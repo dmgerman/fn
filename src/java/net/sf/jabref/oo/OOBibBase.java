@@ -4811,8 +4811,6 @@ name|found
 init|=
 literal|false
 decl_stmt|;
-name|bases
-label|:
 for|for
 control|(
 name|BibtexDatabase
@@ -4865,9 +4863,7 @@ name|found
 operator|=
 literal|true
 expr_stmt|;
-break|break
-name|bases
-break|;
+break|break;
 block|}
 block|}
 if|if
@@ -8125,8 +8121,6 @@ range|:
 name|keys
 control|)
 block|{
-name|bases
-label|:
 for|for
 control|(
 name|BibtexDatabase
@@ -8164,9 +8158,7 @@ name|entry
 argument_list|)
 argument_list|)
 expr_stmt|;
-break|break
-name|bases
-break|;
+break|break;
 block|}
 block|}
 block|}

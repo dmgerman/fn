@@ -250,8 +250,6 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
-name|find
-label|:
 for|for
 control|(
 name|int
@@ -291,9 +289,7 @@ name|number
 operator|==
 name|yearFound
 condition|)
-continue|continue
-name|find
-continue|;
+continue|continue;
 if|if
 condition|(
 name|number
@@ -345,9 +341,7 @@ operator|=
 operator|-
 literal|1
 expr_stmt|;
-break|break
-name|find
-break|;
+break|break;
 comment|// Give up, both seem good enough.
 block|}
 elseif|else
@@ -549,8 +543,6 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
-name|checkScope
-label|:
 for|for
 control|(
 name|int
@@ -629,9 +621,7 @@ name|found
 operator|=
 name|i
 expr_stmt|;
-break|break
-name|checkScope
-break|;
+break|break;
 block|}
 block|}
 if|if

@@ -1250,9 +1250,7 @@ expr_stmt|;
 name|piv2
 operator|++
 expr_stmt|;
-continue|continue
-name|mainLoop
-continue|;
+continue|continue;
 block|}
 comment|// No? Then check if another entry matches exactly.
 if|if
@@ -1774,8 +1772,6 @@ name|found
 init|=
 literal|0
 decl_stmt|;
-name|loop
-label|:
 for|for
 control|(
 name|int
@@ -1838,9 +1834,7 @@ name|comp
 operator|>
 literal|1
 condition|)
-break|break
-name|loop
-break|;
+break|break;
 block|}
 return|return
 name|neu

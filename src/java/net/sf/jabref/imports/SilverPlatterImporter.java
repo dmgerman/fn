@@ -440,8 +440,6 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|entryLoop
-label|:
 for|for
 control|(
 name|String
@@ -462,9 +460,7 @@ argument_list|()
 operator|<
 literal|6
 condition|)
-continue|continue
-name|entryLoop
-continue|;
+continue|continue;
 comment|//System.out.println("'"+entries[i]+"'");
 name|h
 operator|.
@@ -482,8 +478,6 @@ argument_list|(
 literal|"__NEWFIELD__"
 argument_list|)
 decl_stmt|;
-name|fieldLoop
-label|:
 for|for
 control|(
 name|String
@@ -501,9 +495,7 @@ argument_list|()
 operator|<
 literal|6
 condition|)
-continue|continue
-name|fieldLoop
-continue|;
+continue|continue;
 comment|//System.out.println(">"+fields[j]+"<");
 name|String
 name|s

@@ -892,8 +892,6 @@ operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-name|nextField
-label|:
 for|for
 control|(
 name|String
@@ -1539,9 +1537,6 @@ argument_list|,
 name|month
 argument_list|)
 expr_stmt|;
-continue|continue
-name|nextField
-continue|;
 block|}
 block|}
 elseif|else
@@ -1604,7 +1599,6 @@ name|Type
 operator|=
 literal|"article"
 expr_stmt|;
-continue|continue;
 block|}
 else|else
 block|{
@@ -1678,9 +1672,7 @@ argument_list|(
 literal|"FN"
 argument_list|)
 condition|)
-continue|continue
-name|nextField
-continue|;
+continue|continue;
 name|hm
 operator|.
 name|put

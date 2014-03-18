@@ -14367,8 +14367,6 @@ name|found
 init|=
 literal|false
 decl_stmt|;
-name|inner
-label|:
 for|for
 control|(
 name|String
@@ -14391,9 +14389,7 @@ name|found
 operator|=
 literal|true
 expr_stmt|;
-break|break
-name|inner
-break|;
+break|break;
 block|}
 block|}
 if|if

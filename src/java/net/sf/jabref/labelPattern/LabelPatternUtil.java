@@ -4047,9 +4047,7 @@ argument_list|()
 operator|==
 literal|0
 condition|)
-continue|continue
-name|mainl
-continue|;
+continue|continue;
 for|for
 control|(
 name|int

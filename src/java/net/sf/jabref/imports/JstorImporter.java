@@ -249,8 +249,6 @@ operator|.
 name|readLine
 argument_list|()
 expr_stmt|;
-name|mainloop
-label|:
 while|while
 condition|(
 operator|(
@@ -284,9 +282,7 @@ argument_list|(
 literal|"-----------------------------"
 argument_list|)
 condition|)
-break|break
-name|mainloop
-break|;
+break|break;
 name|String
 index|[]
 name|fields
@@ -610,7 +606,7 @@ parameter_list|(
 name|ArrayIndexOutOfBoundsException
 name|ignored
 parameter_list|)
-block|{         }
+block|{             }
 name|bibitems
 operator|.
 name|add

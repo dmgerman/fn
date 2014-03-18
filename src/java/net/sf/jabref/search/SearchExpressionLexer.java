@@ -373,8 +373,6 @@ name|theRetToken
 init|=
 literal|null
 decl_stmt|;
-name|tryAgain
-label|:
 for|for
 control|(
 init|;
@@ -673,9 +671,7 @@ name|_returnToken
 operator|==
 literal|null
 condition|)
-continue|continue
-name|tryAgain
-continue|;
+continue|continue;
 comment|// found SKIP token
 name|_ttype
 operator|=
@@ -1534,8 +1530,6 @@ name|_saveIndex
 argument_list|)
 expr_stmt|;
 block|{
-name|_loop28
-label|:
 do|do
 block|{
 if|if
@@ -1561,9 +1555,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-break|break
-name|_loop28
-break|;
+break|break;
 block|}
 block|}
 do|while
@@ -1809,8 +1801,6 @@ name|_cnt33
 init|=
 literal|0
 decl_stmt|;
-name|_loop33
-label|:
 do|do
 block|{
 if|if
@@ -1843,9 +1833,7 @@ operator|>=
 literal|1
 condition|)
 block|{
-break|break
-name|_loop33
-break|;
+break|break;
 block|}
 else|else
 block|{
