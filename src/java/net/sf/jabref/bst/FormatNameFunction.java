@@ -255,9 +255,6 @@ decl_stmt|;
 if|if
 condition|(
 name|name
-operator|.
-name|intValue
-argument_list|()
 operator|>
 name|a
 operator|.
@@ -287,9 +284,6 @@ operator|.
 name|getAuthor
 argument_list|(
 name|name
-operator|.
-name|intValue
-argument_list|()
 operator|-
 literal|1
 argument_list|)

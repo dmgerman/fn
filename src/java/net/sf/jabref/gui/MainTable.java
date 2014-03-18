@@ -3814,17 +3814,12 @@ literal|1
 return|;
 else|else
 return|return
-operator|(
 name|l
 operator|.
 name|get
 argument_list|(
 name|number
 argument_list|)
-operator|)
-operator|.
-name|intValue
-argument_list|()
 return|;
 block|}
 DECL|method|getTableColumnListener ()

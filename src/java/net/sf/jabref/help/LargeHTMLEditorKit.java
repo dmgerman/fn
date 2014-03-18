@@ -642,9 +642,6 @@ else|else
 block|{
 return|return
 name|scale
-operator|.
-name|doubleValue
-argument_list|()
 return|;
 block|}
 block|}

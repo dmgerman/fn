@@ -7618,14 +7618,9 @@ operator|.
 name|setSearchHit
 argument_list|(
 operator|(
-operator|(
 name|Boolean
 operator|)
 name|value
-operator|)
-operator|.
-name|booleanValue
-argument_list|()
 argument_list|)
 expr_stmt|;
 name|entries

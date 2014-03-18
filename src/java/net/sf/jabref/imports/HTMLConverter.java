@@ -4531,9 +4531,6 @@ index|[
 literal|0
 index|]
 argument_list|)
-operator|.
-name|intValue
-argument_list|()
 operator|>
 literal|128
 condition|)

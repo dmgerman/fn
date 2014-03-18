@@ -1994,14 +1994,9 @@ return|;
 else|else
 return|return
 operator|(
-operator|(
 name|Integer
 operator|)
 name|o
-operator|)
-operator|.
-name|intValue
-argument_list|()
 return|;
 block|}
 comment|//========================================================
@@ -2143,9 +2138,6 @@ comment|// if(allKeys.get(key) instanceof Integer)
 if|if
 condition|(
 name|tI
-operator|.
-name|intValue
-argument_list|()
 operator|==
 literal|1
 condition|)

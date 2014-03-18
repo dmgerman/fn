@@ -4879,7 +4879,6 @@ parameter_list|)
 block|{
 return|return
 operator|(
-operator|(
 name|Boolean
 operator|)
 name|defaults
@@ -4888,10 +4887,6 @@ name|get
 argument_list|(
 name|key
 argument_list|)
-operator|)
-operator|.
-name|booleanValue
-argument_list|()
 return|;
 block|}
 DECL|method|getDouble (String key)
@@ -4928,7 +4923,6 @@ parameter_list|)
 block|{
 return|return
 operator|(
-operator|(
 name|Double
 operator|)
 name|defaults
@@ -4937,10 +4931,6 @@ name|get
 argument_list|(
 name|key
 argument_list|)
-operator|)
-operator|.
-name|doubleValue
-argument_list|()
 return|;
 block|}
 DECL|method|getInt (String key)
@@ -4977,7 +4967,6 @@ parameter_list|)
 block|{
 return|return
 operator|(
-operator|(
 name|Integer
 operator|)
 name|defaults
@@ -4986,10 +4975,6 @@ name|get
 argument_list|(
 name|key
 argument_list|)
-operator|)
-operator|.
-name|intValue
-argument_list|()
 return|;
 block|}
 DECL|method|getByteArray (String key)

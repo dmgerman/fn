@@ -1099,9 +1099,6 @@ decl_stmt|;
 if|if
 condition|(
 name|ch
-operator|.
-name|charValue
-argument_list|()
 operator|==
 literal|'-'
 condition|)

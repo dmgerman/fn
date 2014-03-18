@@ -1400,9 +1400,6 @@ decl_stmt|;
 name|piv1
 operator|=
 name|integ
-operator|.
-name|intValue
-argument_list|()
 expr_stmt|;
 comment|// These two variables will keep track of which entry most closely matches the
 comment|// one we're looking at, in case none matches completely.
