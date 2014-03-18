@@ -63,7 +63,6 @@ extends|extends
 name|TestCase
 block|{
 DECL|method|assertBibtexWidth (final int i, final String string)
-specifier|public
 name|void
 name|assertBibtexWidth
 parameter_list|(

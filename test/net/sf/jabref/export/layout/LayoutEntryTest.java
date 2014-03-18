@@ -594,6 +594,10 @@ decl_stmt|;
 comment|// check
 name|assertTrue
 argument_list|(
+literal|"Actual message: "
+operator|+
+name|result
+argument_list|,
 name|result
 operator|.
 name|contains
@@ -849,6 +853,11 @@ literal|false
 argument_list|)
 expr_stmt|;
 name|String
+name|highlightColor
+init|=
+literal|"#3399FF;"
+decl_stmt|;
+name|String
 name|result
 init|=
 name|this
@@ -865,7 +874,27 @@ decl_stmt|;
 name|String
 name|expected
 init|=
-literal|"<font face=\"arial\"><BR><BR><b>Abstract:</b> In this paper, we initiate a formal<span style=\"background-color:#FF4500;\">study</span> of security on<span style=\"background-color:#FF4500;\">Android</span>: Google's new<span style=\"background-color:#FF4500;\">open</span>-source platform for mobile devices. Tags: Paper<span style=\"background-color:#FF4500;\">android</span> google<span style=\"background-color:#FF4500;\">Open</span>-Source Devices</font>"
+literal|"<font face=\"arial\"><BR><BR><b>Abstract:</b> In this paper, we initiate a formal<span style=\"background-color:"
+operator|+
+name|highlightColor
+operator|+
+literal|"\">study</span> of security on<span style=\"background-color:"
+operator|+
+name|highlightColor
+operator|+
+literal|"\">Android</span>: Google's new<span style=\"background-color:"
+operator|+
+name|highlightColor
+operator|+
+literal|"\">open</span>-source platform for mobile devices. Tags: Paper<span style=\"background-color:"
+operator|+
+name|highlightColor
+operator|+
+literal|"\">android</span> google<span style=\"background-color:"
+operator|+
+name|highlightColor
+operator|+
+literal|"\">Open</span>-Source Devices</font>"
 decl_stmt|;
 comment|// check
 name|assertEquals
