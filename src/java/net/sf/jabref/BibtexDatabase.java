@@ -647,13 +647,6 @@ operator|.
 name|keySet
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|keySet
-operator|!=
-literal|null
-condition|)
-block|{
 for|for
 control|(
 name|String
@@ -717,7 +710,6 @@ name|back
 operator|=
 name|entry
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}
@@ -2294,12 +2286,6 @@ name|BibtexFields
 operator|.
 name|KEY_FIELD
 argument_list|)
-operator|&&
-operator|(
-name|database
-operator|!=
-literal|null
-operator|)
 condition|)
 block|{
 name|Object

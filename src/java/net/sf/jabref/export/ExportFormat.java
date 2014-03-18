@@ -1120,13 +1120,6 @@ argument_list|(
 name|formatterFile
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|in
-operator|!=
-literal|null
-condition|)
-block|{
 comment|// Ok, we found and opened the file. Read all contents:
 name|StringBuilder
 name|sb
@@ -1272,7 +1265,6 @@ argument_list|,
 name|contents
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

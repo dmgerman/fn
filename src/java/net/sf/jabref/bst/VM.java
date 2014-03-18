@@ -3683,13 +3683,6 @@ return|;
 block|}
 if|if
 condition|(
-name|o2
-operator|instanceof
-name|Integer
-condition|)
-block|{
-if|if
-condition|(
 name|context
 operator|!=
 literal|null
@@ -3746,10 +3739,6 @@ argument_list|)
 expr_stmt|;
 return|return
 literal|true
-return|;
-block|}
-return|return
-literal|false
 return|;
 block|}
 return|return

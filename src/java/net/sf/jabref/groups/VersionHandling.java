@@ -150,8 +150,6 @@ argument_list|(
 literal|3
 operator|*
 name|i
-operator|+
-literal|0
 argument_list|)
 expr_stmt|;
 name|name

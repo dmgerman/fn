@@ -187,13 +187,6 @@ operator|.
 name|keySet
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|keySet
-operator|!=
-literal|null
-condition|)
-block|{
 for|for
 control|(
 name|String
@@ -214,7 +207,6 @@ name|aKeySet
 argument_list|)
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 comment|// Sort the list so it is ordered according to creation (or read) order
 comment|// when the table is unsorted.

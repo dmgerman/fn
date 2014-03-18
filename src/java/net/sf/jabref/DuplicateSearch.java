@@ -213,12 +213,6 @@ if|if
 condition|(
 operator|(
 name|keys
-operator|==
-literal|null
-operator|)
-operator|||
-operator|(
-name|keys
 operator|.
 name|length
 operator|<

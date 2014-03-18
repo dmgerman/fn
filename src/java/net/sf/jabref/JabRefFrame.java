@@ -11360,11 +11360,6 @@ block|}
 else|else
 block|{
 comment|// Import into current database.
-name|boolean
-name|checkForDuplicates
-init|=
-literal|true
-decl_stmt|;
 name|BasePanel
 name|basePanel
 init|=
@@ -11416,11 +11411,6 @@ init|=
 literal|false
 decl_stmt|;
 comment|// Check for duplicates among the current entries:
-if|if
-condition|(
-name|checkForDuplicates
-condition|)
-block|{
 name|loop
 label|:
 for|for
@@ -11557,7 +11547,6 @@ block|}
 break|break
 name|loop
 break|;
-block|}
 block|}
 block|}
 if|if
