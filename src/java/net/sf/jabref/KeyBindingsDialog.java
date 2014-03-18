@@ -147,11 +147,6 @@ specifier|private
 name|KeystrokeTable
 name|table
 decl_stmt|;
-DECL|field|tableModel
-specifier|private
-name|KeystrokeTableModel
-name|tableModel
-decl_stmt|;
 comment|//JList list = new JList();
 comment|// displays the key binding of the currently selected entry
 comment|// currently not displayed as it does not get updated
@@ -165,17 +160,18 @@ name|JTextField
 argument_list|()
 decl_stmt|;
 DECL|field|ok
-DECL|field|cancel
-DECL|field|grabB
-DECL|field|defB
 specifier|private
 name|JButton
 name|ok
-decl_stmt|,
+decl_stmt|;
+DECL|field|cancel
+specifier|private
+name|JButton
 name|cancel
-decl_stmt|,
-name|grabB
-decl_stmt|,
+decl_stmt|;
+DECL|field|defB
+specifier|private
+name|JButton
 name|defB
 decl_stmt|;
 comment|// stores the user-selected key bindings
@@ -371,8 +367,9 @@ literal|"Cancel"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|JButton
 name|grabB
-operator|=
+init|=
 operator|new
 name|JButton
 argument_list|(
@@ -383,7 +380,7 @@ argument_list|(
 literal|"Grab"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|defB
 operator|=
 operator|new
@@ -1116,14 +1113,15 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+name|KeystrokeTableModel
 name|tableModel
-operator|=
+init|=
 operator|new
 name|KeystrokeTableModel
 argument_list|(
 name|sorted
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|table
 operator|.
 name|setModel

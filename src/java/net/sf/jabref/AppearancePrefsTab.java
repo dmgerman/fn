@@ -142,31 +142,6 @@ decl_stmt|,
 name|overrideFonts
 decl_stmt|;
 comment|//, useCustomIconTheme;
-DECL|field|gbl
-specifier|private
-name|GridBagLayout
-name|gbl
-init|=
-operator|new
-name|GridBagLayout
-argument_list|()
-decl_stmt|;
-DECL|field|fontButton
-specifier|private
-name|JButton
-name|fontButton
-init|=
-operator|new
-name|JButton
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Set table font"
-argument_list|)
-argument_list|)
-decl_stmt|;
 DECL|field|colorPanel
 specifier|private
 name|ColorSetupPanel
@@ -387,6 +362,20 @@ operator|.
 name|nextLine
 argument_list|()
 expr_stmt|;
+name|JButton
+name|fontButton
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Set table font"
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|builder
 operator|.
 name|append
@@ -453,6 +442,13 @@ name|iconCol
 init|=
 operator|new
 name|JPanel
+argument_list|()
+decl_stmt|;
+name|GridBagLayout
+name|gbl
+init|=
+operator|new
+name|GridBagLayout
 argument_list|()
 decl_stmt|;
 name|upper

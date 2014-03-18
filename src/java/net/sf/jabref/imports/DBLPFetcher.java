@@ -133,6 +133,7 @@ block|{
 DECL|field|URL_START
 specifier|private
 specifier|final
+specifier|static
 name|String
 name|URL_START
 init|=
@@ -141,6 +142,7 @@ decl_stmt|;
 DECL|field|URL_PART1
 specifier|private
 specifier|final
+specifier|static
 name|String
 name|URL_PART1
 init|=
@@ -149,6 +151,7 @@ decl_stmt|;
 DECL|field|URL_END
 specifier|private
 specifier|final
+specifier|static
 name|String
 name|URL_END
 init|=

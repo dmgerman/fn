@@ -312,11 +312,6 @@ name|ok_pressed
 init|=
 literal|false
 decl_stmt|;
-DECL|field|parent
-specifier|private
-name|JabRefFrame
-name|parent
-decl_stmt|;
 DECL|field|flds
 name|String
 index|[]
@@ -368,10 +363,6 @@ argument_list|)
 argument_list|,
 literal|true
 argument_list|)
-expr_stmt|;
-name|parent
-operator|=
-name|parent_
 expr_stmt|;
 name|bg
 operator|.
@@ -527,7 +518,7 @@ name|im
 operator|.
 name|put
 argument_list|(
-name|parent
+name|parent_
 operator|.
 name|prefs
 operator|.
@@ -1058,7 +1049,7 @@ name|placeDialog
 argument_list|(
 name|this
 argument_list|,
-name|parent
+name|parent_
 argument_list|)
 expr_stmt|;
 block|}

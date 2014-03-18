@@ -143,11 +143,6 @@ name|encoding
 init|=
 literal|null
 decl_stmt|;
-DECL|field|cm
-specifier|private
-name|CookieHandler
-name|cm
-decl_stmt|;
 comment|/**      * URL download to a string. After construction, call download() and then getStringContent().      * @param _source The URL to download.      */
 DECL|method|URLDownload (URL _source)
 specifier|public
@@ -235,6 +230,9 @@ block|{
 try|try
 block|{
 comment|// This should set up JabRef to receive cookies properly
+name|CookieHandler
+name|cm
+decl_stmt|;
 if|if
 condition|(
 operator|(

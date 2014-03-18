@@ -39,10 +39,12 @@ argument_list|<
 name|BibtexEntry
 argument_list|>
 block|{
-DECL|field|crossRefField
+DECL|field|CROSS_REF_FIELD
 specifier|private
+specifier|static
+specifier|final
 name|String
-name|crossRefField
+name|CROSS_REF_FIELD
 init|=
 literal|"crossref"
 decl_stmt|;
@@ -67,7 +69,7 @@ name|e1
 operator|.
 name|getField
 argument_list|(
-name|crossRefField
+name|CROSS_REF_FIELD
 argument_list|)
 decl_stmt|,
 name|f2
@@ -76,7 +78,7 @@ name|e2
 operator|.
 name|getField
 argument_list|(
-name|crossRefField
+name|CROSS_REF_FIELD
 argument_list|)
 decl_stmt|;
 if|if

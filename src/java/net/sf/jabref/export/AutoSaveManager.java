@@ -124,13 +124,6 @@ name|t
 init|=
 literal|null
 decl_stmt|;
-DECL|field|task
-specifier|private
-name|TimerTask
-name|task
-init|=
-literal|null
-decl_stmt|;
 DECL|method|AutoSaveManager (JabRefFrame frame)
 specifier|public
 name|AutoSaveManager
@@ -152,12 +145,13 @@ name|void
 name|startAutoSaveTimer
 parameter_list|()
 block|{
+name|TimerTask
 name|task
-operator|=
+init|=
 operator|new
 name|AutoSaveTask
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|t
 operator|=
 operator|new

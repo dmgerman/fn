@@ -279,20 +279,10 @@ name|preferUrl
 decl_stmt|,
 name|preferDoi
 decl_stmt|;
-DECL|field|preferUrlDoiGroup
-specifier|private
-name|ButtonGroup
-name|preferUrlDoiGroup
-decl_stmt|;
 DECL|field|showOneLetterHeadingForIconColumns
 specifier|private
 name|JCheckBox
 name|showOneLetterHeadingForIconColumns
-decl_stmt|;
-DECL|field|oldShowOneLetterHeadingForIconColumns
-specifier|private
-name|boolean
-name|oldShowOneLetterHeadingForIconColumns
 decl_stmt|;
 comment|/*** begin: special fields ***/
 DECL|field|specialFieldsEnabled
@@ -348,12 +338,6 @@ decl_stmt|,
 name|oldSyncKeyWords
 decl_stmt|,
 name|oldWriteSpecialFields
-decl_stmt|;
-DECL|field|hlb
-specifier|private
-specifier|final
-name|JButton
-name|hlb
 decl_stmt|;
 comment|/*** end: special fields ***/
 DECL|class|TableRow
@@ -1170,12 +1154,13 @@ literal|"Show DOI first"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|ButtonGroup
 name|preferUrlDoiGroup
-operator|=
+init|=
 operator|new
 name|ButtonGroup
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|preferUrlDoiGroup
 operator|.
 name|add
@@ -1261,8 +1246,9 @@ operator|.
 name|specialFieldsHelp
 argument_list|)
 decl_stmt|;
+name|JButton
 name|hlb
-operator|=
+init|=
 operator|new
 name|JButton
 argument_list|(
@@ -1273,7 +1259,7 @@ argument_list|(
 literal|"helpSmall"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|hlb
 operator|.
 name|setToolTipText
@@ -2272,8 +2258,9 @@ argument_list|)
 expr_stmt|;
 comment|// Call twice to make sure the ChangeListener is triggered
 comment|/*** end: special fields ***/
+name|boolean
 name|oldShowOneLetterHeadingForIconColumns
-operator|=
+init|=
 name|_prefs
 operator|.
 name|getBoolean
@@ -2282,7 +2269,7 @@ name|JabRefPreferences
 operator|.
 name|SHOWONELETTERHEADINGFORICONCOLUMNS
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|showOneLetterHeadingForIconColumns
 operator|.
 name|setSelected

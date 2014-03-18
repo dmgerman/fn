@@ -52,6 +52,8 @@ name|LayoutFormatter
 block|{
 DECL|field|unitList
 specifier|private
+specifier|static
+specifier|final
 name|String
 index|[]
 name|unitList
@@ -181,6 +183,8 @@ block|}
 decl_stmt|;
 DECL|field|unitPrefixList
 specifier|private
+specifier|static
+specifier|final
 name|String
 index|[]
 name|unitPrefixList
@@ -259,18 +263,14 @@ block|}
 decl_stmt|;
 DECL|field|unitCombinations
 specifier|private
+specifier|static
+specifier|final
 name|String
 index|[]
 name|unitCombinations
 decl_stmt|;
-DECL|method|UnitFormatter ()
-specifier|public
-name|UnitFormatter
-parameter_list|()
+static|static
 block|{
-name|super
-argument_list|()
-expr_stmt|;
 name|int
 name|uLLength
 init|=

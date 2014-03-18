@@ -480,11 +480,6 @@ specifier|private
 name|JRadioButton
 name|overRadio
 decl_stmt|;
-DECL|field|testPanel
-specifier|private
-name|OverlayPanel
-name|testPanel
-decl_stmt|;
 DECL|field|entry
 specifier|private
 name|BibtexEntry
@@ -974,8 +969,9 @@ name|Exception
 name|ignored
 parameter_list|)
 block|{}
+name|OverlayPanel
 name|testPanel
-operator|=
+init|=
 operator|new
 name|OverlayPanel
 argument_list|(
@@ -988,7 +984,7 @@ argument_list|(
 literal|"Text_Input_Area"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|testPanel
 operator|.
 name|setPreferredSize

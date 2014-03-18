@@ -58,14 +58,6 @@ name|BibtexEntry
 index|[]
 name|entryArray
 decl_stmt|;
-comment|//static BibtexEntry[] DUMMY = new BibtexEntry[0];
-DECL|field|outdated
-specifier|private
-name|boolean
-name|outdated
-init|=
-literal|false
-decl_stmt|;
 DECL|field|changed
 specifier|private
 name|boolean
@@ -119,13 +111,6 @@ operator|.
 name|keySet
 argument_list|()
 decl_stmt|;
-if|if
-condition|(
-name|keySet
-operator|!=
-literal|null
-condition|)
-block|{
 for|for
 control|(
 name|String
@@ -155,7 +140,6 @@ expr_stmt|;
 name|index
 argument_list|()
 expr_stmt|;
-block|}
 block|}
 DECL|method|index ()
 specifier|public
@@ -258,6 +242,11 @@ name|boolean
 name|isOutdated
 parameter_list|()
 block|{
+name|boolean
+name|outdated
+init|=
+literal|false
+decl_stmt|;
 return|return
 name|outdated
 return|;

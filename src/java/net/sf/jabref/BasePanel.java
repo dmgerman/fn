@@ -1727,13 +1727,6 @@ DECL|field|metaData
 name|MetaData
 name|metaData
 decl_stmt|;
-DECL|field|suppressOutput
-specifier|private
-name|boolean
-name|suppressOutput
-init|=
-literal|false
-decl_stmt|;
 DECL|field|actions
 specifier|private
 name|HashMap
@@ -2139,6 +2132,11 @@ name|String
 name|s
 parameter_list|)
 block|{
+name|boolean
+name|suppressOutput
+init|=
+literal|false
+decl_stmt|;
 if|if
 condition|(
 operator|!

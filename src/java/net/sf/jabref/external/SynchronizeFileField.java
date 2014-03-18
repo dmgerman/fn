@@ -316,18 +316,6 @@ name|checkExisting
 init|=
 literal|true
 decl_stmt|;
-DECL|field|brokenLinks
-DECL|field|entriesChangedCount
-specifier|private
-name|int
-name|brokenLinks
-init|=
-literal|0
-decl_stmt|,
-name|entriesChangedCount
-init|=
-literal|0
-decl_stmt|;
 DECL|method|SynchronizeFileField (BasePanel panel)
 specifier|public
 name|SynchronizeFileField
@@ -576,10 +564,11 @@ name|progress
 init|=
 literal|0
 decl_stmt|;
+name|int
 name|brokenLinks
-operator|=
+init|=
 literal|0
-expr_stmt|;
+decl_stmt|;
 specifier|final
 name|NamedCompound
 name|ce
@@ -1507,6 +1496,11 @@ operator|!
 name|goOn
 condition|)
 return|return;
+name|int
+name|entriesChangedCount
+init|=
+literal|0
+decl_stmt|;
 name|panel
 operator|.
 name|output

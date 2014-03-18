@@ -190,13 +190,6 @@ name|PdfPreviewPanel
 extends|extends
 name|JPanel
 block|{
-DECL|field|document
-specifier|private
-name|PDDocument
-name|document
-init|=
-literal|null
-decl_stmt|;
 DECL|field|picLabel
 specifier|private
 name|JLabel
@@ -271,6 +264,11 @@ argument_list|()
 expr_stmt|;
 return|return;
 block|}
+name|PDDocument
+name|document
+init|=
+literal|null
+decl_stmt|;
 try|try
 block|{
 name|document
