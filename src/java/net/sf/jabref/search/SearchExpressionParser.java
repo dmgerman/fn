@@ -2710,7 +2710,6 @@ block|}
 DECL|method|mk_tokenSet_0 ()
 specifier|private
 specifier|static
-specifier|final
 name|long
 index|[]
 name|mk_tokenSet_0
@@ -2747,7 +2746,6 @@ decl_stmt|;
 DECL|method|mk_tokenSet_1 ()
 specifier|private
 specifier|static
-specifier|final
 name|long
 index|[]
 name|mk_tokenSet_1
@@ -2784,7 +2782,6 @@ decl_stmt|;
 DECL|method|mk_tokenSet_2 ()
 specifier|private
 specifier|static
-specifier|final
 name|long
 index|[]
 name|mk_tokenSet_2

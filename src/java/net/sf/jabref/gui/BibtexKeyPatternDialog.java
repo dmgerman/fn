@@ -346,7 +346,6 @@ expr_stmt|;
 block|}
 DECL|method|init ()
 specifier|private
-specifier|final
 name|void
 name|init
 parameter_list|()

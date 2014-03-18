@@ -1113,12 +1113,10 @@ operator|.
 name|toLowerCase
 argument_list|()
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"journal"
 argument_list|)
-operator|>=
-literal|0
 condition|)
 name|Type
 operator|=

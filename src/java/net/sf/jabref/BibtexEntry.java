@@ -353,7 +353,6 @@ comment|/**      * Get display version of a entry field.      *      * BibTeX is
 DECL|method|getFieldDisplayName (String field)
 specifier|private
 specifier|static
-specifier|final
 name|String
 name|getFieldDisplayName
 parameter_list|(

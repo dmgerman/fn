@@ -151,6 +151,9 @@ decl_stmt|;
 DECL|field|valueDelimiter
 specifier|private
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 name|valueDelimiter
 decl_stmt|;
 specifier|private
@@ -184,11 +187,6 @@ name|origAutoSaveSetting
 init|=
 literal|false
 decl_stmt|;
-DECL|field|autosaveHelp
-specifier|private
-name|HelpAction
-name|autosaveHelp
-decl_stmt|;
 DECL|method|FileTab (JabRefFrame frame, JabRefPreferences prefs)
 specifier|public
 name|FileTab
@@ -208,8 +206,9 @@ name|_frame
 operator|=
 name|frame
 expr_stmt|;
+name|HelpAction
 name|autosaveHelp
-operator|=
+init|=
 operator|new
 name|HelpAction
 argument_list|(
@@ -230,7 +229,7 @@ argument_list|(
 literal|"helpSmall"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|openLast
 operator|=
 operator|new
@@ -305,6 +304,9 @@ name|valueDelimiter
 operator|=
 operator|new
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 operator|new
 name|String

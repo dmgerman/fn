@@ -1839,7 +1839,6 @@ comment|// ---------------------------------------------------------------------
 DECL|method|getField ( String name )
 specifier|private
 specifier|static
-specifier|final
 name|BibtexSingleField
 name|getField
 parameter_list|(

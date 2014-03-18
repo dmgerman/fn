@@ -1223,15 +1223,13 @@ name|existingKeywords
 operator|!=
 literal|null
 operator|&&
+operator|!
 name|existingKeywords
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 name|value
 argument_list|)
-operator|==
-operator|-
-literal|1
 condition|)
 block|{
 name|existingKeywords

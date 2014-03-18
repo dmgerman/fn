@@ -696,7 +696,6 @@ block|}
 comment|// ----------------------------------------------------------------------------
 DECL|method|loadAboutText ()
 specifier|private
-specifier|final
 name|void
 name|loadAboutText
 parameter_list|()
