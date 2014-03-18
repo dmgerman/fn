@@ -294,10 +294,16 @@ argument_list|)
 expr_stmt|;
 comment|// Use glazed lists to get a sorted view of the entries:
 name|BasicEventList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|entryList
 init|=
 operator|new
 name|BasicEventList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// Set up a list of all entries, if keySet==null, or the entries whose

@@ -651,6 +651,9 @@ argument_list|)
 expr_stmt|;
 comment|/** 		 * Select all nodes manually. 		 */
 name|Enumeration
+argument_list|<
+name|CheckableTreeNode
+argument_list|>
 name|enumeration
 init|=
 name|treeNode
@@ -669,9 +672,6 @@ block|{
 name|CheckableTreeNode
 name|nextElement
 init|=
-operator|(
-name|CheckableTreeNode
-operator|)
 name|enumeration
 operator|.
 name|nextElement
@@ -725,7 +725,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Connector-Method for the private method 	 * {@link FindUnlinkedFilesDialog#getFileListFromNode()} of the dialog 	 * {@link FindUnlinkedFilesDialog}.<br> 	 *<br> 	 * This method uses<b>reflection</b> to get access to that method. 	 *  	 * @see FindUnlinkedFilesDialog#getFileListFromNode() 	 */
+comment|/** 	 * Connector-Method for the private method 	 * {@link FindUnlinkedFilesDialog#getFileListFromNode(net.sf.jabref.FindUnlinkedFilesDialog.CheckableTreeNode)} of the dialog 	 * {@link FindUnlinkedFilesDialog}.<br> 	 *<br> 	 * This method uses<b>reflection</b> to get access to that method. 	 *  	 * @see FindUnlinkedFilesDialog#getFileListFromNode(net.sf.jabref.FindUnlinkedFilesDialog.CheckableTreeNode) 	 */
 DECL|method|getFileListFromNode (CheckableTreeNode node)
 specifier|private
 name|List

@@ -1607,6 +1607,9 @@ continue|continue
 name|loop
 continue|;
 name|DefaultListModel
+argument_list|<
+name|String
+argument_list|>
 name|lm
 init|=
 name|wordListModels
@@ -2097,12 +2100,15 @@ block|}
 block|}
 block|}
 block|}
-DECL|method|findPos (DefaultListModel lm, String item)
+DECL|method|findPos (DefaultListModel<String> lm, String item)
 specifier|private
 name|int
 name|findPos
 parameter_list|(
 name|DefaultListModel
+argument_list|<
+name|String
+argument_list|>
 name|lm
 parameter_list|,
 name|String
@@ -2130,9 +2136,6 @@ block|{
 name|String
 name|s
 init|=
-operator|(
-name|String
-operator|)
 name|lm
 operator|.
 name|get

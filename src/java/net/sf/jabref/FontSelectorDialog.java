@@ -746,9 +746,6 @@ name|styleField
 operator|.
 name|setText
 argument_list|(
-operator|(
-name|String
-operator|)
 name|styleList
 operator|.
 name|getSelectedValue
@@ -1419,7 +1416,7 @@ return|;
 comment|//return Toolkit.getDefaultToolkit().getFontList();
 block|}
 block|}
-DECL|method|createTextFieldAndListPanel (String label,JTextField textField, JList list)
+DECL|method|createTextFieldAndListPanel (String label,JTextField textField, JList<String> list)
 specifier|private
 name|JPanel
 name|createTextFieldAndListPanel
@@ -1431,6 +1428,9 @@ name|JTextField
 name|textField
 parameter_list|,
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|list
 parameter_list|)
 block|{

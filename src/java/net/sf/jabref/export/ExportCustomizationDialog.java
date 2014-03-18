@@ -705,10 +705,18 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 name|EventTableModel
+argument_list|<
+name|String
+index|[]
+argument_list|>
 name|tableModel
 init|=
 operator|new
 name|EventTableModel
+argument_list|<
+name|String
+index|[]
+argument_list|>
 argument_list|(
 name|Globals
 operator|.
@@ -1031,6 +1039,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|class|ExportTableFormat
+specifier|static
 class|class
 name|ExportTableFormat
 implements|implements

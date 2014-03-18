@@ -909,11 +909,17 @@ decl_stmt|;
 DECL|field|comboBoxFileTypeSelection
 specifier|protected
 name|JComboBox
+argument_list|<
+name|FileFilter
+argument_list|>
 name|comboBoxFileTypeSelection
 decl_stmt|;
 DECL|field|comboBoxEntryTypeSelection
 specifier|protected
 name|JComboBox
+argument_list|<
+name|BibtexEntryTypeWrapper
+argument_list|>
 name|comboBoxEntryTypeSelection
 decl_stmt|;
 DECL|field|progressBarSearching
@@ -956,11 +962,6 @@ specifier|private
 name|Action
 name|actionCollapseTree
 decl_stmt|;
-DECL|field|actionListenerImportEntrys
-specifier|private
-name|ActionListener
-name|actionListenerImportEntrys
-decl_stmt|;
 DECL|field|dialogPositionListener
 specifier|private
 name|ComponentListener
@@ -986,7 +987,7 @@ name|checkBoxWhyIsThereNoGetSelectedStupidSwing
 init|=
 literal|false
 decl_stmt|;
-comment|/** 	 * For Unit-testing only.<i>Don't remove!</i><br> 	 * Used via reflection in {@link DatabaseFileLookupTest} to construct this 	 * class. 	 */
+comment|/** 	 * For Unit-testing only.<i>Don't remove!</i><br> 	 * Used via reflection in {@link net.sf.jabref.imports.DatabaseFileLookup} to construct this 	 * class. 	 */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -1591,7 +1592,7 @@ block|}
 block|}
 expr_stmt|;
 block|}
-comment|/** 	 * Stores the working directory path for this view in the global 	 * preferences. 	 *  	 * @param A 	 *            directory that is used as the working directory in this view. 	 */
+comment|/** 	 * Stores the working directory path for this view in the global 	 * preferences. 	 *  	 * @param lastSelectedDirectory 	 *            directory that is used as the working directory in this view. 	 */
 DECL|method|storeLastSelectedDirectory (File lastSelectedDirectory)
 specifier|private
 name|void
@@ -2282,7 +2283,7 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * This will start the import of all file of all selected nodes in this 	 * dialogs tree view.<br> 	 *<br> 	 * The import itself will run in a seperate thread, whilst this dialog will 	 * be showing a progress bar, until the thread has finished its work.<br> 	 *<br> 	 * When the import has finished, the {@link #importFinishedHandler(List)} is 	 * invoked. 	 */
+comment|/** 	 * This will start the import of all file of all selected nodes in this 	 * dialogs tree view.<br> 	 *<br> 	 * The import itself will run in a seperate thread, whilst this dialog will 	 * be showing a progress bar, until the thread has finished its work.<br> 	 *<br> 	 * When the import has finished, the {@link #importFinishedHandler(int, java.util.List)} is 	 * invoked. 	 */
 DECL|method|startImport ()
 specifier|protected
 name|void
@@ -2571,11 +2572,11 @@ operator|>
 literal|0
 condition|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|warningInfo
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|warningInfo
@@ -2879,8 +2880,9 @@ block|}
 argument_list|)
 expr_stmt|;
 comment|/** 		 * Action for the button "Import...".<br> 		 *<br> 		 * Actions on this button will start the import of all file of all 		 * selected nodes in this dialogs tree view.<br> 		 */
+name|ActionListener
 name|actionListenerImportEntrys
-operator|=
+init|=
 operator|new
 name|ActionListener
 argument_list|()
@@ -2898,7 +2900,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-expr_stmt|;
+decl_stmt|;
 name|buttonApply
 operator|.
 name|addActionListener
@@ -5391,6 +5393,9 @@ name|comboBoxFileTypeSelection
 operator|=
 operator|new
 name|JComboBox
+argument_list|<
+name|FileFilter
+argument_list|>
 argument_list|(
 name|vector
 argument_list|)
@@ -5587,6 +5592,9 @@ name|comboBoxEntryTypeSelection
 operator|=
 operator|new
 name|JComboBox
+argument_list|<
+name|BibtexEntryTypeWrapper
+argument_list|>
 argument_list|(
 name|list
 argument_list|)
@@ -6165,7 +6173,7 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 		 * @param directory 		 * @param length 		 */
+comment|/** 		 * @param aDirectory 		 * @param fileCount 		 */
 DECL|method|FileNodeWrapper (File aDirectory, int fileCount)
 specifier|public
 name|FileNodeWrapper

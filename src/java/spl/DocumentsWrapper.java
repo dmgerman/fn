@@ -156,6 +156,9 @@ specifier|public
 name|List
 argument_list|<
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 argument_list|>
 name|getDocuments
 parameter_list|()
@@ -163,6 +166,9 @@ block|{
 name|List
 argument_list|<
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 argument_list|>
 name|documents
 init|=
@@ -170,6 +176,9 @@ operator|new
 name|ArrayList
 argument_list|<
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 argument_list|>
 argument_list|()
 decl_stmt|;

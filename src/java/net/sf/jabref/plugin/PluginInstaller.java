@@ -2767,6 +2767,9 @@ class|class
 name|NameAndVersion
 implements|implements
 name|Comparable
+argument_list|<
+name|NameAndVersion
+argument_list|>
 block|{
 DECL|field|name
 name|String
@@ -2832,23 +2835,15 @@ operator|=
 name|file
 expr_stmt|;
 block|}
-DECL|method|compareTo (Object o)
+DECL|method|compareTo (NameAndVersion oth)
 specifier|public
 name|int
 name|compareTo
 parameter_list|(
-name|Object
-name|o
-parameter_list|)
-block|{
 name|NameAndVersion
 name|oth
-init|=
-operator|(
-name|NameAndVersion
-operator|)
-name|o
-decl_stmt|;
+parameter_list|)
+block|{
 if|if
 condition|(
 operator|!
@@ -2941,6 +2936,9 @@ class|class
 name|VersionNumber
 implements|implements
 name|Comparable
+argument_list|<
+name|VersionNumber
+argument_list|>
 block|{
 DECL|field|ZERO
 specifier|public
@@ -3028,23 +3026,15 @@ comment|// Do nothing
 block|}
 block|}
 block|}
-DECL|method|compareTo (Object o)
+DECL|method|compareTo (VersionNumber oth)
 specifier|public
 name|int
 name|compareTo
 parameter_list|(
-name|Object
-name|o
-parameter_list|)
-block|{
 name|VersionNumber
 name|oth
-init|=
-operator|(
-name|VersionNumber
-operator|)
-name|o
-decl_stmt|;
+parameter_list|)
+block|{
 for|for
 control|(
 name|int
@@ -3196,12 +3186,12 @@ name|toString
 argument_list|()
 return|;
 block|}
-DECL|method|equals (Object o)
+DECL|method|equals (VersionNumber o)
 specifier|public
 name|boolean
 name|equals
 parameter_list|(
-name|Object
+name|VersionNumber
 name|o
 parameter_list|)
 block|{
