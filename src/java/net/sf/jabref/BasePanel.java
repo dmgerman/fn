@@ -3465,6 +3465,22 @@ literal|"KeyCollisionException... this shouldn't happen."
 argument_list|)
 expr_stmt|;
 block|}
+catch|catch
+parameter_list|(
+name|CloneNotSupportedException
+name|e
+parameter_list|)
+block|{
+throw|throw
+operator|new
+name|RuntimeException
+argument_list|(
+literal|"should not happen"
+argument_list|,
+name|e
+argument_list|)
+throw|;
+block|}
 block|}
 name|ce
 operator|.
