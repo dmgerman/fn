@@ -495,6 +495,12 @@ name|Change
 argument_list|>
 name|e
 init|=
+operator|(
+name|Enumeration
+argument_list|<
+name|Change
+argument_list|>
+operator|)
 name|children
 argument_list|()
 decl_stmt|;

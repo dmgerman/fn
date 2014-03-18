@@ -907,10 +907,16 @@ argument_list|()
 condition|)
 block|{
 name|JList
+argument_list|<
+name|?
+argument_list|>
 name|list
 init|=
 operator|(
 name|JList
+argument_list|<
+name|?
+argument_list|>
 operator|)
 name|evt
 operator|.
@@ -920,7 +926,7 @@ decl_stmt|;
 comment|// Get all selected items
 name|List
 argument_list|<
-name|Object
+name|?
 argument_list|>
 name|selected
 init|=

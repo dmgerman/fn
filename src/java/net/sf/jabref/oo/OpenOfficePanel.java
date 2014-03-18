@@ -3399,6 +3399,9 @@ name|getSystemClassLoader
 argument_list|()
 decl_stmt|;
 name|Class
+argument_list|<
+name|URLClassLoader
+argument_list|>
 name|sysclass
 init|=
 name|URLClassLoader

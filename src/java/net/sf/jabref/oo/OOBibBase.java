@@ -963,6 +963,9 @@ operator|)
 name|loader
 decl_stmt|;
 name|Class
+argument_list|<
+name|URLClassLoader
+argument_list|>
 name|sysclass
 init|=
 name|URLClassLoader
@@ -980,14 +983,9 @@ name|getDeclaredMethod
 argument_list|(
 literal|"addURL"
 argument_list|,
-operator|new
-name|Class
-index|[]
-block|{
 name|URL
 operator|.
 name|class
-block|}
 argument_list|)
 decl_stmt|;
 name|method
