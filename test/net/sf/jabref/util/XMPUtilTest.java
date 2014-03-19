@@ -5325,7 +5325,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Inproceedings"
+literal|"InProceedings"
 argument_list|,
 name|dcSchema
 operator|.
@@ -5808,7 +5808,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Inproceedings"
+literal|"InProceedings"
 argument_list|,
 name|dcSchema
 operator|.
