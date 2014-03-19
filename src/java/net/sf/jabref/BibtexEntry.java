@@ -383,9 +383,7 @@ literal|""
 decl_stmt|;
 if|if
 condition|(
-name|JabRef
-operator|.
-name|jrf
+name|Globals
 operator|.
 name|prefs
 operator|.
@@ -426,9 +424,7 @@ name|res
 decl_stmt|;
 if|if
 condition|(
-name|JabRef
-operator|.
-name|jrf
+name|Globals
 operator|.
 name|prefs
 operator|.
