@@ -976,7 +976,9 @@ argument_list|()
 operator|.
 name|getStringArray
 argument_list|(
-literal|"xmpPrivacyFilters"
+name|JabRefPreferences
+operator|.
+name|XMP_PRIVACY_FILTERS
 argument_list|)
 decl_stmt|;
 name|Collections
@@ -1077,7 +1079,9 @@ name|prefs
 operator|.
 name|hasKey
 argument_list|(
-literal|"xmpPrivacyFilters"
+name|JabRefPreferences
+operator|.
+name|XMP_PRIVACY_FILTERS
 argument_list|)
 operator|)
 condition|)
@@ -1133,7 +1137,9 @@ argument_list|()
 operator|.
 name|putStringArray
 argument_list|(
-literal|"xmpPrivacyFilters"
+name|JabRefPreferences
+operator|.
+name|XMP_PRIVACY_FILTERS
 argument_list|,
 name|tableRows
 operator|.

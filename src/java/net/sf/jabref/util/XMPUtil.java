@@ -2190,7 +2190,9 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"xmpPrivacyFilters"
+name|JabRefPreferences
+operator|.
+name|XMP_PRIVACY_FILTERS
 argument_list|)
 argument_list|)
 argument_list|)

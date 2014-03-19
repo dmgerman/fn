@@ -611,6 +611,24 @@ literal|'}'
 block|}
 block|}
 decl_stmt|;
+DECL|field|XMP_PRIVACY_FILTERS
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|XMP_PRIVACY_FILTERS
+init|=
+literal|"xmpPrivacyFilters"
+decl_stmt|;
+DECL|field|USE_XMP_PRIVACY_FILTER
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|USE_XMP_PRIVACY_FILTER
+init|=
+literal|"useXmpPrivacyFilter"
+decl_stmt|;
 DECL|field|WRAPPED_USERNAME
 DECL|field|MARKING_WITH_NUMBER_PATTERN
 specifier|public
@@ -1912,7 +1930,7 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-literal|"xmpPrivacyFilters"
+name|XMP_PRIVACY_FILTERS
 argument_list|,
 literal|"pdf;timestamp;keywords;owner;note;review"
 argument_list|)
@@ -1921,7 +1939,7 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-literal|"useXmpPrivacyFilter"
+name|USE_XMP_PRIVACY_FILTER
 argument_list|,
 name|Boolean
 operator|.
@@ -4753,7 +4771,9 @@ name|String
 name|key
 parameter_list|)
 block|{
-return|return
+name|String
+name|result
+init|=
 name|prefs
 operator|.
 name|get
@@ -4770,6 +4790,10 @@ argument_list|(
 name|key
 argument_list|)
 argument_list|)
+decl_stmt|;
+comment|//System.out.println("READ PREF [" + key + "]=" + result);
+return|return
+name|result
 return|;
 block|}
 DECL|method|get (String key, String def)
@@ -4986,6 +5010,7 @@ name|String
 name|value
 parameter_list|)
 block|{
+comment|//System.out.println("WRITE PREF [" + key + "]=" + value);
 name|prefs
 operator|.
 name|put
@@ -5139,11 +5164,11 @@ operator|>
 literal|0
 condition|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|linked
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 for|for
