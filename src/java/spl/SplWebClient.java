@@ -72,18 +72,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|bind
-operator|.
-name|JAXB
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|sciplore
@@ -417,10 +405,9 @@ try|try
 block|{
 if|if
 condition|(
+operator|!
 name|isWebServiceAvailable
 argument_list|()
-operator|==
-literal|false
 condition|)
 block|{
 if|if
@@ -458,10 +445,9 @@ return|;
 block|}
 if|if
 condition|(
+operator|!
 name|isMetaDataServiceAvailable
 argument_list|()
-operator|==
-literal|false
 condition|)
 block|{
 return|return

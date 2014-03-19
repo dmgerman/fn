@@ -648,13 +648,10 @@ if|if
 condition|(
 literal|"L O OE AE AA"
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 name|s
 argument_list|)
-operator|!=
-operator|-
-literal|1
 condition|)
 name|sb
 operator|.
@@ -682,13 +679,10 @@ if|if
 condition|(
 literal|"l o oe ae aa"
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 name|s
 argument_list|)
-operator|!=
-operator|-
-literal|1
 condition|)
 name|sb
 operator|.
@@ -705,13 +699,10 @@ if|if
 condition|(
 literal|"i j ss"
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 name|s
 argument_list|)
-operator|!=
-operator|-
-literal|1
 condition|)
 block|{
 name|sb

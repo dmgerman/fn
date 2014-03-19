@@ -484,9 +484,6 @@ block|{
 name|String
 name|typeName
 init|=
-operator|(
-name|String
-operator|)
 name|listModel
 operator|.
 name|get
@@ -585,19 +582,7 @@ parameter_list|(
 name|ListSelectionEvent
 name|e
 parameter_list|)
-block|{
-if|if
-condition|(
-name|e
-operator|.
-name|getValueIsAdjusting
-argument_list|()
-condition|)
-block|{
-return|return;
-block|}
-comment|//
-block|}
+block|{      }
 DECL|method|enable (String typeName, boolean isChanged)
 specifier|public
 name|void

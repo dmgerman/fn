@@ -522,15 +522,13 @@ operator|.
 name|getMessage
 argument_list|()
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 name|fileType
 operator|.
 name|getOpenWith
 argument_list|()
 argument_list|)
-operator|>=
-literal|0
 operator|)
 condition|)
 block|{

@@ -195,15 +195,6 @@ operator|new
 name|CopyAction
 argument_list|()
 decl_stmt|;
-DECL|field|pasteAct
-specifier|private
-name|PasteAction
-name|pasteAct
-init|=
-operator|new
-name|PasteAction
-argument_list|()
-decl_stmt|;
 DECL|method|FieldTextMenu (FieldEditor fieldComponent)
 specifier|public
 name|FieldTextMenu
@@ -217,6 +208,13 @@ operator|=
 name|fieldComponent
 expr_stmt|;
 comment|// copy/paste Menu
+name|PasteAction
+name|pasteAct
+init|=
+operator|new
+name|PasteAction
+argument_list|()
+decl_stmt|;
 name|inputMenu
 operator|.
 name|add
@@ -666,7 +664,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|ex
+name|ignored
 parameter_list|)
 block|{}
 block|}
@@ -755,7 +753,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|ex
+name|ignored
 parameter_list|)
 block|{}
 block|}

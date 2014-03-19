@@ -52,16 +52,6 @@ name|java
 operator|.
 name|awt
 operator|.
-name|Insets
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
 name|event
 operator|.
 name|ActionEvent
@@ -77,16 +67,6 @@ operator|.
 name|event
 operator|.
 name|ActionListener
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashSet
 import|;
 end_import
 

@@ -792,7 +792,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|f
+name|ignored
 parameter_list|)
 block|{}
 block|}
@@ -1089,7 +1089,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|f
+name|ignored
 parameter_list|)
 block|{}
 block|}
@@ -2214,7 +2214,7 @@ operator|.
 name|getMode
 argument_list|()
 operator|!=
-name|panel
+name|BasePanel
 operator|.
 name|SHOWING_EDITOR
 condition|)
@@ -2223,7 +2223,7 @@ name|panel
 operator|.
 name|setMode
 argument_list|(
-name|panel
+name|BasePanel
 operator|.
 name|WILL_SHOW_EDITOR
 argument_list|)
@@ -2336,8 +2336,9 @@ argument_list|>
 name|xmpEntriesInFile
 parameter_list|)
 block|{
-if|if
-condition|(
+return|return
+operator|!
+operator|(
 operator|(
 name|xmpEntriesInFile
 operator|==
@@ -2352,18 +2353,8 @@ argument_list|()
 operator|==
 literal|0
 operator|)
-condition|)
-block|{
-return|return
-literal|false
+operator|)
 return|;
-block|}
-else|else
-block|{
-return|return
-literal|true
-return|;
-block|}
 block|}
 DECL|method|getEntryTable ()
 specifier|public

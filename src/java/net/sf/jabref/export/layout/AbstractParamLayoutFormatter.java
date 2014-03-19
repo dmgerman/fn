@@ -54,6 +54,7 @@ block|{
 DECL|field|SEPARATOR
 specifier|private
 specifier|static
+specifier|final
 name|char
 name|SEPARATOR
 init|=

@@ -511,7 +511,7 @@ argument_list|(
 operator|new
 name|File
 argument_list|(
-literal|"./src/plugins"
+literal|"./src/resources/plugins"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -591,7 +591,7 @@ name|File
 argument_list|(
 name|parent
 argument_list|,
-literal|"/src/plugins"
+literal|"/src/resources/plugins"
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -848,8 +848,12 @@ name|toArray
 argument_list|(
 operator|new
 name|PluginLocation
-index|[]
-block|{}
+index|[
+name|plugins
+operator|.
+name|size
+argument_list|()
+index|]
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -893,7 +897,10 @@ name|size
 argument_list|()
 argument_list|)
 argument_list|)
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|":\n"
 argument_list|)
 expr_stmt|;

@@ -72,16 +72,6 @@ name|java
 operator|.
 name|net
 operator|.
-name|SocketException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
 name|URL
 import|;
 end_import
@@ -103,16 +93,6 @@ operator|.
 name|net
 operator|.
 name|URLEncoder
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|UnknownHostException
 import|;
 end_import
 

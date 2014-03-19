@@ -150,8 +150,6 @@ argument_list|(
 literal|3
 operator|*
 name|i
-operator|+
-literal|0
 argument_list|)
 expr_stmt|;
 name|name
@@ -747,9 +745,6 @@ name|elementAt
 argument_list|(
 name|i
 argument_list|)
-operator|.
-name|toString
-argument_list|()
 expr_stmt|;
 comment|// This allows to read databases that have been modified by, e.g., BibDesk
 name|s

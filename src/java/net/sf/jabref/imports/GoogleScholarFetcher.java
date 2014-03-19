@@ -58,20 +58,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|NameListNormalizer
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -1530,9 +1516,6 @@ comment|// to see an example
 name|String
 name|title
 init|=
-operator|(
-name|String
-operator|)
 name|entry
 operator|.
 name|getField

@@ -66,18 +66,6 @@ name|util
 operator|.
 name|zip
 operator|.
-name|Deflater
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|zip
-operator|.
 name|ZipEntry
 import|;
 end_import
@@ -691,7 +679,6 @@ name|e
 argument_list|)
 throw|;
 block|}
-return|return;
 block|}
 DECL|method|addResourceFile (String name, String resource, ZipOutputStream out)
 specifier|private

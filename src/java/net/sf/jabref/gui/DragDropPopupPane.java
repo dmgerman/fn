@@ -116,18 +116,6 @@ name|Globals
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefFrame
-import|;
-end_import
-
 begin_comment
 comment|/**  * Adds popup functionality to DragDropPane   *   * Code inspired by http://forums.devx.com/showthread.php?t=151270  */
 end_comment

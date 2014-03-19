@@ -253,6 +253,9 @@ block|{
 DECL|field|warnings
 specifier|private
 name|JList
+argument_list|<
+name|IntegrityMessage
+argument_list|>
 name|warnings
 decl_stmt|;
 DECL|field|warningData
@@ -274,11 +277,6 @@ DECL|field|applyButton
 specifier|private
 name|JButton
 name|applyButton
-decl_stmt|;
-DECL|field|fixButton
-specifier|private
-name|JButton
-name|fixButton
 decl_stmt|;
 DECL|field|basePanel
 specifier|private
@@ -317,6 +315,9 @@ name|warnings
 operator|=
 operator|new
 name|JList
+argument_list|<
+name|IntegrityMessage
+argument_list|>
 argument_list|(
 name|warningData
 argument_list|)
@@ -446,8 +447,9 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|JButton
 name|fixButton
-operator|=
+init|=
 operator|new
 name|JButton
 argument_list|(
@@ -458,7 +460,7 @@ argument_list|(
 literal|"Suggest"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|fixButton
 operator|.
 name|setEnabled

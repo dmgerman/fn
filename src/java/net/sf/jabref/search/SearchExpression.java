@@ -144,13 +144,6 @@ name|ast
 init|=
 literal|null
 decl_stmt|;
-DECL|field|prefs
-specifier|private
-name|JabRefPreferences
-name|prefs
-init|=
-literal|null
-decl_stmt|;
 DECL|method|SearchExpression (JabRefPreferences prefs, Hashtable<String, String> searchOptions)
 specifier|public
 name|SearchExpression
@@ -173,12 +166,6 @@ name|RecognitionException
 throws|,
 name|PatternSyntaxException
 block|{
-name|this
-operator|.
-name|prefs
-operator|=
-name|prefs
-expr_stmt|;
 comment|// parse search expression
 name|SearchExpressionParser
 name|parser
@@ -208,8 +195,6 @@ name|parser
 operator|.
 name|caseSensitive
 operator|=
-name|this
-operator|.
 name|prefs
 operator|.
 name|getBoolean
@@ -221,8 +206,6 @@ name|parser
 operator|.
 name|regex
 operator|=
-name|this
-operator|.
 name|prefs
 operator|.
 name|getBoolean

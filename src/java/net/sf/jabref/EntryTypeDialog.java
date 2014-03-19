@@ -153,6 +153,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|COLNUM
 specifier|private
+specifier|static
 specifier|final
 name|int
 name|COLNUM

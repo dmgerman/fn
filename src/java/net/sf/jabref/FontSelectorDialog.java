@@ -547,6 +547,9 @@ name|familyList
 operator|=
 operator|new
 name|JList
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|getFontList
 argument_list|()
@@ -602,6 +605,9 @@ name|sizeList
 operator|=
 operator|new
 name|JList
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|sizes
 argument_list|)
@@ -650,6 +656,9 @@ name|styleList
 operator|=
 operator|new
 name|JList
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|styles
 argument_list|)
@@ -737,9 +746,6 @@ name|styleField
 operator|.
 name|setText
 argument_list|(
-operator|(
-name|String
-operator|)
 name|styleList
 operator|.
 name|getSelectedValue
@@ -1166,6 +1172,9 @@ decl_stmt|;
 DECL|field|familyList
 specifier|private
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|familyList
 decl_stmt|;
 DECL|field|sizeField
@@ -1176,6 +1185,9 @@ decl_stmt|;
 DECL|field|sizeList
 specifier|private
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|sizeList
 decl_stmt|;
 DECL|field|styleField
@@ -1186,6 +1198,9 @@ decl_stmt|;
 DECL|field|styleList
 specifier|private
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|styleList
 decl_stmt|;
 DECL|field|preview
@@ -1336,15 +1351,13 @@ index|[
 name|i
 index|]
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 name|HIDEFONTS
 index|[
 name|j
 index|]
 argument_list|)
-operator|>=
-literal|0
 condition|)
 break|break;
 block|}
@@ -1403,7 +1416,7 @@ return|;
 comment|//return Toolkit.getDefaultToolkit().getFontList();
 block|}
 block|}
-DECL|method|createTextFieldAndListPanel (String label,JTextField textField, JList list)
+DECL|method|createTextFieldAndListPanel (String label,JTextField textField, JList<String> list)
 specifier|private
 name|JPanel
 name|createTextFieldAndListPanel
@@ -1415,6 +1428,9 @@ name|JTextField
 name|textField
 parameter_list|,
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|list
 parameter_list|)
 block|{
@@ -1776,9 +1792,6 @@ block|{
 name|String
 name|family
 init|=
-operator|(
-name|String
-operator|)
 name|familyList
 operator|.
 name|getSelectedValue
@@ -1809,9 +1822,6 @@ block|{
 name|String
 name|size
 init|=
-operator|(
-name|String
-operator|)
 name|sizeList
 operator|.
 name|getSelectedValue
@@ -1842,9 +1852,6 @@ block|{
 name|String
 name|style
 init|=
-operator|(
-name|String
-operator|)
 name|styleList
 operator|.
 name|getSelectedValue

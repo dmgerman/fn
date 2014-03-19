@@ -253,12 +253,10 @@ operator|.
 name|toLowerCase
 argument_list|()
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"<pubmedarticle>"
 argument_list|)
-operator|>=
-literal|0
 condition|)
 return|return
 literal|true

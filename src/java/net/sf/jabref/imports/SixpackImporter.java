@@ -248,12 +248,10 @@ if|if
 condition|(
 name|str
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 name|SEPARATOR
 argument_list|)
-operator|>=
-literal|0
 condition|)
 return|return
 literal|true
@@ -614,8 +612,6 @@ name|entry
 init|=
 literal|null
 decl_stmt|;
-name|lines
-label|:
 while|while
 condition|(
 operator|(
@@ -664,9 +660,7 @@ name|length
 operator|<
 literal|2
 condition|)
-continue|continue
-name|lines
-continue|;
+continue|continue;
 comment|// Avoid ArrayIndexOutOfBoundsException
 name|BibtexEntryType
 name|typ

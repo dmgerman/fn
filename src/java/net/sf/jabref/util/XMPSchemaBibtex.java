@@ -1270,7 +1270,9 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"xmpPrivacyFilters"
+name|JabRefPreferences
+operator|.
+name|XMP_PRIVACY_FILTERS
 argument_list|)
 argument_list|)
 argument_list|)
@@ -1458,11 +1460,11 @@ name|hasTextContent
 init|=
 literal|false
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|buffer
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|NodeList

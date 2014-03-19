@@ -141,13 +141,9 @@ decl_stmt|;
 if|if
 condition|(
 name|fieldValue
-operator|==
+operator|!=
 literal|null
 condition|)
-block|{
-return|return;
-block|}
-else|else
 block|{
 name|StringTokenizer
 name|tok
@@ -156,9 +152,6 @@ operator|new
 name|StringTokenizer
 argument_list|(
 name|fieldValue
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 name|Globals
 operator|.

@@ -185,8 +185,6 @@ parameter_list|)
 block|{
 name|String
 name|chosen
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(

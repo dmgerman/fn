@@ -178,11 +178,12 @@ name|INSPIREFetcher
 implements|implements
 name|EntryFetcher
 block|{
-DECL|field|inspireHost
+DECL|field|INSPIRE_HOST
 specifier|private
 specifier|static
+specifier|final
 name|String
-name|inspireHost
+name|INSPIRE_HOST
 init|=
 literal|"inspirebeta.net"
 decl_stmt|;
@@ -241,7 +242,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|inspireHost
+name|INSPIRE_HOST
 argument_list|)
 operator|.
 name|append
@@ -297,7 +298,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Constructs a INSPIRE query url from slaccitation field 	 *  	 * @param slaccitation 	 * @return query string 	 * 	public static String constructUrlFromSlaccitation(String slaccitation) { 		String cmd = "j"; 		String key = slaccitation.replaceAll("^%%CITATION = ", "").replaceAll( 				";%%$", ""); 		if (key.matches("^\\w*-\\w*[ /].*")) 			cmd = "eprint"; 		try { 			key = URLEncoder.encode(key, "UTF-8"); 		} catch (UnsupportedEncodingException e) { 		} 		StringBuffer sb = new StringBuffer("http://").append(inspireHost) 				.append("/"); 		sb.append("spires/find/hep/www").append("?"); 		sb.append("rawcmd=find+").append(cmd).append("+"); 		sb.append(key); 		return sb.toString(); 	}  	/** 	 * Construct an INSPIRE query url from eprint field 	 *  	 * @param eprint 	 * @return query string 	 * 	public static String constructUrlFromEprint(String eprint) { 		String key = eprint.replaceAll(" [.*]$", ""); 		try { 			key = URLEncoder.encode(key, "UTF-8"); 		} catch (UnsupportedEncodingException e) { 			return ""; 		} 		StringBuffer sb = new StringBuffer("http://").append(inspireHost) 				.append("/"); 		sb.append("spires/find/hep/www").append("?"); 		sb.append("rawcmd=find+eprint+"); 		sb.append(key); 		return sb.toString(); 	}*/
+comment|/** 	 * Constructs a INSPIRE query url from slaccitation field 	 *  	 * @param slaccitation 	 * @return query string 	 * 	public static String constructUrlFromSlaccitation(String slaccitation) { 		String cmd = "j"; 		String key = slaccitation.replaceAll("^%%CITATION = ", "").replaceAll( 				";%%$", ""); 		if (key.matches("^\\w*-\\w*[ /].*")) 			cmd = "eprint"; 		try { 			key = URLEncoder.encode(key, "UTF-8"); 		} catch (UnsupportedEncodingException e) { 		} 		StringBuffer sb = new StringBuffer("http://").append(INSPIRE_HOST) 				.append("/"); 		sb.append("spires/find/hep/www").append("?"); 		sb.append("rawcmd=find+").append(cmd).append("+"); 		sb.append(key); 		return sb.toString(); 	}  	/** 	 * Construct an INSPIRE query url from eprint field 	 *  	 * @param eprint 	 * @return query string 	 * 	public static String constructUrlFromEprint(String eprint) { 		String key = eprint.replaceAll(" [.*]$", ""); 		try { 			key = URLEncoder.encode(key, "UTF-8"); 		} catch (UnsupportedEncodingException e) { 			return ""; 		} 		StringBuffer sb = new StringBuffer("http://").append(INSPIRE_HOST) 				.append("/"); 		sb.append("spires/find/hep/www").append("?"); 		sb.append("rawcmd=find+eprint+"); 		sb.append(key); 		return sb.toString(); 	}*/
 comment|/** 	 * Import an entry from an OAI2 archive. The BibtexEntry provided has to 	 * have the field OAI2_IDENTIFIER_FIELD set to the search string. 	 *  	 * @param key 	 *            The OAI2 key to fetch from ArXiv. 	 * @return The imnported BibtexEntry or null if none. 	 */
 DECL|method|importInspireEntries (String key, OutputPrinter frame)
 specifier|private

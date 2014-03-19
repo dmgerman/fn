@@ -24,18 +24,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|imports
 operator|.
 name|ImportFormatReader
@@ -155,11 +143,6 @@ name|encoding
 init|=
 literal|null
 decl_stmt|;
-DECL|field|cm
-specifier|private
-name|CookieHandler
-name|cm
-decl_stmt|;
 comment|/**      * URL download to a string. After construction, call download() and then getStringContent().      * @param _source The URL to download.      */
 DECL|method|URLDownload (URL _source)
 specifier|public
@@ -247,6 +230,9 @@ block|{
 try|try
 block|{
 comment|// This should set up JabRef to receive cookies properly
+name|CookieHandler
+name|cm
+decl_stmt|;
 if|if
 condition|(
 operator|(
@@ -469,7 +455,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|e
+name|ignored
 parameter_list|)
 block|{               }
 block|}
@@ -554,7 +540,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|e
+name|ignored
 parameter_list|)
 block|{               }
 block|}

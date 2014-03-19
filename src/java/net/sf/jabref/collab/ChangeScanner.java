@@ -958,32 +958,12 @@ comment|// Loop through the metadata entries of the "tmp" database, looking for
 comment|// matches
 for|for
 control|(
-name|Iterator
-name|i
-init|=
-name|inTemp
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
 name|String
 name|key
-init|=
-operator|(
-name|String
-operator|)
-name|i
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
+range|:
+name|inTemp
+control|)
+block|{
 comment|// See if the key is missing in the disk database:
 name|Vector
 argument_list|<
@@ -1061,32 +1041,12 @@ block|}
 comment|// See if there are unhandled keys in the disk database:
 for|for
 control|(
-name|Iterator
-name|i
-init|=
-name|onDisk
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
 name|String
 name|key
-init|=
-operator|(
-name|String
-operator|)
-name|i
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
+range|:
+name|onDisk
+control|)
+block|{
 if|if
 condition|(
 operator|!
@@ -1290,9 +1250,7 @@ expr_stmt|;
 name|piv2
 operator|++
 expr_stmt|;
-continue|continue
-name|mainLoop
-continue|;
+continue|continue;
 block|}
 comment|// No? Then check if another entry matches exactly.
 if|if
@@ -1393,11 +1351,7 @@ name|notMatched
 operator|.
 name|add
 argument_list|(
-operator|new
-name|Integer
-argument_list|(
 name|piv1
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -1444,9 +1398,6 @@ decl_stmt|;
 name|piv1
 operator|=
 name|integ
-operator|.
-name|intValue
-argument_list|()
 expr_stmt|;
 comment|// These two variables will keep track of which entry most closely matches the
 comment|// one we're looking at, in case none matches completely.
@@ -1821,8 +1772,6 @@ name|found
 init|=
 literal|0
 decl_stmt|;
-name|loop
-label|:
 for|for
 control|(
 name|int
@@ -1885,9 +1834,7 @@ name|comp
 operator|>
 literal|1
 condition|)
-break|break
-name|loop
-break|;
+break|break;
 block|}
 return|return
 name|neu
@@ -2537,32 +2484,12 @@ block|{
 comment|// Still one or more non-matched strings. So they must have been removed.
 for|for
 control|(
-name|Iterator
-argument_list|<
-name|String
-argument_list|>
-name|i
-init|=
-name|notMatched
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
-control|)
-block|{
 name|String
 name|nmId
-init|=
-name|i
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
+range|:
+name|notMatched
+control|)
+block|{
 name|BibtexString
 name|tmp
 init|=
@@ -2618,35 +2545,15 @@ comment|// Finally, see if there are remaining strings in the disk database. The
 comment|// must have been added.
 for|for
 control|(
-name|Iterator
-argument_list|<
 name|String
-argument_list|>
-name|i
-init|=
+name|diskId
+range|:
 name|onDisk
 operator|.
 name|getStringKeySet
 argument_list|()
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
-name|String
-name|diskId
-init|=
-name|i
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -2723,35 +2630,15 @@ literal|null
 return|;
 for|for
 control|(
-name|Iterator
-argument_list|<
 name|String
-argument_list|>
-name|i
-init|=
+name|key
+range|:
 name|base
 operator|.
 name|getStringKeySet
 argument_list|()
-operator|.
-name|iterator
-argument_list|()
-init|;
-name|i
-operator|.
-name|hasNext
-argument_list|()
-condition|;
 control|)
 block|{
-name|String
-name|key
-init|=
-name|i
-operator|.
-name|next
-argument_list|()
-decl_stmt|;
 name|BibtexString
 name|bs
 init|=
@@ -2860,10 +2747,6 @@ operator|(
 name|groupsTmp
 operator|==
 literal|null
-operator|&&
-name|groupsDisk
-operator|!=
-literal|null
 operator|)
 condition|)
 block|{
@@ -2884,6 +2767,7 @@ return|return;
 block|}
 if|if
 condition|(
+operator|!
 name|groupsTmp
 operator|.
 name|equals
@@ -2891,7 +2775,7 @@ argument_list|(
 name|groupsDisk
 argument_list|)
 condition|)
-return|return;
+block|{
 name|changes
 operator|.
 name|add
@@ -2905,55 +2789,7 @@ name|groupsTmp
 argument_list|)
 argument_list|)
 expr_stmt|;
-return|return;
-comment|//
-comment|//        if (((vOnTmp == null) || (vOnTmp.size()==0))&& ((vOnDisk == null) || (vOnDisk.size()==0))) {
-comment|//            // No groups defined in either the tmp or disk version.
-comment|//            return;
-comment|//        }
-comment|//
-comment|//        // To avoid checking for null all the time, make empty vectors to replace null refs. We clone
-comment|//        // non-null vectors so we can remove the elements as we finish with them.
-comment|//        if (vOnDisk == null)
-comment|//            vOnDisk = new Vector(0);
-comment|//        else
-comment|//            vOnDisk = (Vector)vOnDisk.clone();
-comment|//        if (vOnTmp == null)
-comment|//            vOnTmp = new Vector(0);
-comment|//        else
-comment|//            vOnTmp = (Vector)vOnTmp.clone();
-comment|//        if (vInMem == null)
-comment|//            vInMem = new Vector(0);
-comment|//        else
-comment|//            vInMem = (Vector)vInMem.clone();
-comment|//
-comment|//        // If the tmp version has groups, iterate through these and compare with disk version:
-comment|//        while (vOnTmp.size()>= 1) {
-comment|//            AbstractGroup group = (AbstractGroup)vOnTmp.firstElement();
-comment|//            vOnTmp.removeElementAt(0);
-comment|//            int pos = GroupSelector.findGroupByName(vOnDisk,group.getName());
-comment|//            if (pos == -1) {
-comment|//                // Couldn't find the group.
-comment|//                changes.add(new GroupAddOrRemove(group, false));
-comment|//            } else {
-comment|//                AbstractGroup diskGroup = (AbstractGroup)vOnDisk.elementAt(pos);
-comment|//
-comment|//                if (!diskGroup.equals(group)) {
-comment|//                    // Group has changed.
-comment|//                    changes.add(new GroupChange(inMem, group, diskGroup));
-comment|//                }
-comment|//
-comment|//                // Remove this group, since it's been accounted for.
-comment|//                vOnDisk.remove(pos);
-comment|//            }
-comment|//        }
-comment|//
-comment|//        // If there are entries left in the disk version, these must have been added.
-comment|//        while (vOnDisk.size()>= 1) {
-comment|//            AbstractGroup group = (AbstractGroup)vOnDisk.firstElement();
-comment|//            vOnDisk.removeElementAt(0);
-comment|//            changes.add(new GroupAddOrRemove(group, true));
-comment|//        }
+block|}
 block|}
 DECL|interface|DisplayResultCallback
 specifier|public

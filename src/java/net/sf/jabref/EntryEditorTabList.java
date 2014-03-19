@@ -134,9 +134,7 @@ name|prefs
 operator|.
 name|hasKey
 argument_list|(
-name|Globals
-operator|.
-name|prefs
+name|JabRefPreferences
 operator|.
 name|CUSTOM_TAB_NAME
 operator|+
@@ -153,9 +151,7 @@ name|prefs
 operator|.
 name|hasKey
 argument_list|(
-name|Globals
-operator|.
-name|prefs
+name|JabRefPreferences
 operator|.
 name|CUSTOM_TAB_NAME
 operator|+
@@ -171,9 +167,7 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-name|Globals
-operator|.
-name|prefs
+name|JabRefPreferences
 operator|.
 name|CUSTOM_TAB_NAME
 operator|+
@@ -188,9 +182,7 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-name|Globals
-operator|.
-name|prefs
+name|JabRefPreferences
 operator|.
 name|CUSTOM_TAB_FIELDS
 operator|+
@@ -245,9 +237,7 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-name|Globals
-operator|.
-name|prefs
+name|JabRefPreferences
 operator|.
 name|CUSTOM_TAB_NAME
 operator|+
@@ -267,9 +257,7 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-name|Globals
-operator|.
-name|prefs
+name|JabRefPreferences
 operator|.
 name|CUSTOM_TAB_NAME
 operator|+
@@ -286,9 +274,7 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-name|Globals
-operator|.
-name|prefs
+name|JabRefPreferences
 operator|.
 name|CUSTOM_TAB_FIELDS
 operator|+

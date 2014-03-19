@@ -41,6 +41,9 @@ class|class
 name|ComparableMark
 implements|implements
 name|Comparable
+argument_list|<
+name|ComparableMark
+argument_list|>
 block|{
 DECL|field|name
 name|String
@@ -74,23 +77,15 @@ operator|=
 name|position
 expr_stmt|;
 block|}
-DECL|method|compareTo (Object o)
+DECL|method|compareTo (ComparableMark other)
 specifier|public
 name|int
 name|compareTo
 parameter_list|(
-name|Object
-name|o
-parameter_list|)
-block|{
 name|ComparableMark
 name|other
-init|=
-operator|(
-name|ComparableMark
-operator|)
-name|o
-decl_stmt|;
+parameter_list|)
+block|{
 if|if
 condition|(
 name|position

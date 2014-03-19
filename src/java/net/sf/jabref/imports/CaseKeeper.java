@@ -107,19 +107,10 @@ expr_stmt|;
 comment|// For each word in the list
 for|for
 control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
+name|String
+name|listOfWord
+range|:
 name|listOfWords
-operator|.
-name|length
-condition|;
-name|i
-operator|++
 control|)
 block|{
 comment|// Add {} if the character before is a space, -, /, (, [, ", or } or if it is at the start of the string but not if it is followed by a }
@@ -131,19 +122,13 @@ name|replaceAll
 argument_list|(
 literal|"(^|[- /\\[(}\"])"
 operator|+
-name|listOfWords
-index|[
-name|i
-index|]
+name|listOfWord
 operator|+
 literal|"($|[^}])"
 argument_list|,
 literal|"$1\\{"
 operator|+
-name|listOfWords
-index|[
-name|i
-index|]
+name|listOfWord
 operator|+
 literal|"\\}$2"
 argument_list|)

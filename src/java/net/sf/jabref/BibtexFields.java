@@ -76,6 +76,16 @@ name|java
 operator|.
 name|util
 operator|.
+name|Collections
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
 name|HashMap
 import|;
 end_import
@@ -1540,34 +1550,15 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
-for|for
-control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
-name|numFields
+name|Collections
 operator|.
-name|length
-condition|;
-name|i
-operator|++
-control|)
-block|{
-name|nF
-operator|.
-name|add
+name|addAll
 argument_list|(
+name|nF
+argument_list|,
 name|numFields
-index|[
-name|i
-index|]
 argument_list|)
 expr_stmt|;
-block|}
 comment|// Look through all registered fields, and activate numeric sorting if necessary:
 for|for
 control|(
@@ -1851,7 +1842,6 @@ comment|// ---------------------------------------------------------------------
 DECL|method|getField ( String name )
 specifier|private
 specifier|static
-specifier|final
 name|BibtexSingleField
 name|getField
 parameter_list|(
@@ -2884,8 +2874,7 @@ name|int
 name|flagID
 parameter_list|)
 block|{
-if|if
-condition|(
+return|return
 operator|(
 name|flag
 operator|&
@@ -2893,12 +2882,6 @@ name|flagID
 operator|)
 operator|==
 name|flagID
-condition|)
-return|return
-literal|true
-return|;
-return|return
-literal|false
 return|;
 block|}
 comment|// -----------------------------------------------------------------------

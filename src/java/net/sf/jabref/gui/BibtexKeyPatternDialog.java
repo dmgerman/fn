@@ -98,16 +98,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|ActionMap
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|BorderFactory
 import|;
 end_import
@@ -118,27 +108,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|InputMap
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|JButton
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JComponent
 import|;
 end_import
 
@@ -159,16 +129,6 @@ operator|.
 name|swing
 operator|.
 name|JPanel
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JRootPane
 import|;
 end_import
 
@@ -386,7 +346,6 @@ expr_stmt|;
 block|}
 DECL|method|init ()
 specifier|private
-specifier|final
 name|void
 name|init
 parameter_list|()

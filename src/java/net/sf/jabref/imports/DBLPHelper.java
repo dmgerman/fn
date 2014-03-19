@@ -161,8 +161,6 @@ specifier|final
 name|String
 name|page
 parameter_list|)
-throws|throws
-name|DBLPParseException
 block|{
 specifier|final
 name|List

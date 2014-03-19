@@ -68,16 +68,6 @@ name|Comparator
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Locale
-import|;
-end_import
-
 begin_comment
 comment|/**  *   * A comparator for BibtexEntry fields  *   * Initial Version:  *   * @author alver  * @version Date: Oct 13, 2005 Time: 10:10:04 PM To  *   * Current Version:  *   * @author $Author$  * @version $Revision$ ($Date$)  *   * TODO: Testcases  *   */
 end_comment
@@ -494,9 +484,6 @@ block|{
 comment|/* 			 * [ 1535044 ] Month sorting 			 *  			 * http://sourceforge.net/tracker/index.php?func=detail&aid=1535044&group_id=92314&atid=600306 			 */
 name|f1
 operator|=
-operator|new
-name|Integer
-argument_list|(
 name|Util
 operator|.
 name|getMonthNumber
@@ -506,13 +493,9 @@ name|String
 operator|)
 name|f1
 argument_list|)
-argument_list|)
 expr_stmt|;
 name|f2
 operator|=
-operator|new
-name|Integer
-argument_list|(
 name|Util
 operator|.
 name|getMonthNumber
@@ -521,7 +504,6 @@ operator|(
 name|String
 operator|)
 name|f2
-argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -622,16 +604,9 @@ name|i1
 expr_stmt|;
 name|f2
 operator|=
-operator|new
-name|Integer
-argument_list|(
 name|i1
-operator|.
-name|intValue
-argument_list|()
 operator|+
 literal|1
-argument_list|)
 expr_stmt|;
 block|}
 elseif|else
@@ -650,16 +625,9 @@ name|i2
 expr_stmt|;
 name|f1
 operator|=
-operator|new
-name|Integer
-argument_list|(
 name|i2
-operator|.
-name|intValue
-argument_list|()
 operator|+
 literal|1
-argument_list|)
 expr_stmt|;
 block|}
 comment|// Else none of them were parseable, and we can fall back on comparing strings.
@@ -837,19 +805,10 @@ parameter_list|)
 block|{
 for|for
 control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
+name|String
+name|aField
+range|:
 name|field
-operator|.
-name|length
-condition|;
-name|i
-operator|++
 control|)
 block|{
 name|Object
@@ -859,10 +818,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|field
-index|[
-name|i
-index|]
+name|aField
 argument_list|)
 decl_stmt|;
 if|if

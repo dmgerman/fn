@@ -74,18 +74,6 @@ name|awt
 operator|.
 name|image
 operator|.
-name|FilteredImageSource
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|image
-operator|.
 name|ImageProducer
 import|;
 end_import
@@ -708,7 +696,6 @@ block|}
 comment|// ----------------------------------------------------------------------------
 DECL|method|loadAboutText ()
 specifier|private
-specifier|final
 name|void
 name|loadAboutText
 parameter_list|()
@@ -720,8 +707,6 @@ literal|null
 decl_stmt|;
 name|AboutTextLine
 name|aLine
-init|=
-literal|null
 decl_stmt|;
 name|int
 name|index
@@ -1709,7 +1694,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Exception
-name|e
+name|ignored
 parameter_list|)
 block|{           }
 block|}

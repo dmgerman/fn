@@ -118,13 +118,6 @@ name|couldNotWrite
 init|=
 literal|false
 decl_stmt|;
-DECL|field|message
-specifier|private
-name|String
-name|message
-init|=
-literal|""
-decl_stmt|;
 DECL|method|pushEntries (BibtexDatabase database, final BibtexEntry[] entries, final String keyString, MetaData metaData)
 specifier|public
 name|void
@@ -317,7 +310,6 @@ name|couldNotWrite
 operator|=
 literal|true
 expr_stmt|;
-return|return;
 block|}
 block|}
 block|}
@@ -508,6 +500,11 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|String
+name|message
+init|=
+literal|""
+decl_stmt|;
 name|panel
 operator|.
 name|output

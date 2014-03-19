@@ -148,6 +148,9 @@ literal|null
 decl_stmt|;
 DECL|field|encoding
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 name|encoding
 decl_stmt|;
 DECL|field|ok
@@ -263,6 +266,9 @@ name|encoding
 operator|=
 operator|new
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|Globals
 operator|.

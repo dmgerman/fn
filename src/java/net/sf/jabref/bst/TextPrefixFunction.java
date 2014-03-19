@@ -204,14 +204,9 @@ operator|.
 name|textPrefix
 argument_list|(
 operator|(
-operator|(
 name|Integer
 operator|)
 name|o1
-operator|)
-operator|.
-name|intValue
-argument_list|()
 argument_list|,
 operator|(
 name|String

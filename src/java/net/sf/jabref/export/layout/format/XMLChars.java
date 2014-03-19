@@ -116,18 +116,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Pattern
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -166,17 +154,6 @@ name|XMLChars
 implements|implements
 name|LayoutFormatter
 block|{
-DECL|field|pattern
-name|Pattern
-name|pattern
-init|=
-name|Pattern
-operator|.
-name|compile
-argument_list|(
-literal|".*\\{\\\\.*[a-zA-Z]\\}.*"
-argument_list|)
-decl_stmt|;
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -399,11 +376,11 @@ literal|true
 expr_stmt|;
 block|}
 block|}
-name|StringBuffer
+name|StringBuilder
 name|buffer
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|fieldText
 operator|.

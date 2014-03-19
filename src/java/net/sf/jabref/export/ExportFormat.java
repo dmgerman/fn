@@ -1120,13 +1120,6 @@ argument_list|(
 name|formatterFile
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|in
-operator|!=
-literal|null
-condition|)
-block|{
 comment|// Ok, we found and opened the file. Read all contents:
 name|StringBuilder
 name|sb
@@ -1181,28 +1174,16 @@ decl_stmt|;
 comment|// Go through each line:
 for|for
 control|(
-name|int
-name|i
-init|=
-literal|0
-init|;
-name|i
-operator|<
+name|String
+name|line1
+range|:
 name|lines
-operator|.
-name|length
-condition|;
-name|i
-operator|++
 control|)
 block|{
 name|String
 name|line
 init|=
-name|lines
-index|[
-name|i
-index|]
+name|line1
 operator|.
 name|trim
 argument_list|()
@@ -1284,7 +1265,6 @@ argument_list|,
 name|contents
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

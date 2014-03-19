@@ -156,6 +156,9 @@ specifier|public
 name|List
 argument_list|<
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 argument_list|>
 name|getDocuments
 parameter_list|()
@@ -163,6 +166,9 @@ block|{
 name|List
 argument_list|<
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 argument_list|>
 name|documents
 init|=
@@ -170,6 +176,9 @@ operator|new
 name|ArrayList
 argument_list|<
 name|Vector
+argument_list|<
+name|String
+argument_list|>
 argument_list|>
 argument_list|()
 decl_stmt|;
@@ -253,8 +262,6 @@ argument_list|()
 decl_stmt|;
 name|authors
 operator|=
-name|this
-operator|.
 name|sortAuthors
 argument_list|(
 name|authors
@@ -682,7 +689,8 @@ argument_list|()
 return|;
 block|}
 DECL|method|sortAuthors (List<Bean> authors)
-specifier|private
+specifier|protected
+specifier|static
 name|List
 argument_list|<
 name|Bean

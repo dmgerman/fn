@@ -319,6 +319,9 @@ argument_list|)
 decl_stmt|;
 DECL|field|fetcherChoice
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 name|fetcherChoice
 decl_stmt|;
 DECL|field|optionsCards
@@ -503,6 +506,9 @@ name|fetcherChoice
 operator|=
 operator|new
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|choices
 argument_list|)
@@ -875,12 +881,6 @@ operator|.
 name|weightx
 operator|=
 literal|1
-expr_stmt|;
-name|con
-operator|.
-name|weighty
-operator|=
-literal|0
 expr_stmt|;
 name|con
 operator|.
@@ -1753,6 +1753,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|class|EntryFetcherComparator
+specifier|static
 class|class
 name|EntryFetcherComparator
 implements|implements

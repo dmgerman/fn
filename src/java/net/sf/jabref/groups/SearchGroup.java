@@ -881,12 +881,8 @@ name|searchOptions
 argument_list|,
 name|entry
 argument_list|)
-operator|==
+operator|!=
 literal|0
-condition|?
-literal|false
-else|:
-literal|true
 return|;
 block|}
 DECL|method|contains (BibtexEntry entry)

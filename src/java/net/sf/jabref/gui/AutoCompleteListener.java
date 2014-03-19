@@ -110,18 +110,6 @@ name|util
 operator|.
 name|logging
 operator|.
-name|ConsoleHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
 name|Level
 import|;
 end_import
@@ -364,7 +352,6 @@ operator|.
 name|consume
 argument_list|()
 expr_stmt|;
-return|return;
 block|}
 comment|// Cycle through alternative completions when user presses PGUP/PGDN:
 elseif|else
@@ -587,11 +574,11 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|alltext
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|comp
 operator|.
@@ -658,13 +645,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// replace suffix with new suffix
-name|int
-name|deletedChars
-init|=
-name|oldSelectionEnd
-operator|-
-name|oldSelectionStart
-decl_stmt|;
 name|alltext
 operator|.
 name|delete
@@ -1133,11 +1113,11 @@ literal|"<"
 argument_list|)
 expr_stmt|;
 block|}
-name|StringBuffer
+name|StringBuilder
 name|alltext
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|comp
 operator|.
@@ -1282,7 +1262,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-return|return;
 block|}
 block|}
 DECL|method|keyTyped (KeyEvent e)
@@ -2253,7 +2232,7 @@ block|}
 catch|catch
 parameter_list|(
 name|BadLocationException
-name|ex
+name|ignore
 parameter_list|)
 block|{         }
 return|return

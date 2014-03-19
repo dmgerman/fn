@@ -188,6 +188,7 @@ name|docin
 operator|!=
 literal|null
 operator|&&
+operator|!
 name|docin
 operator|.
 name|getDocumentElement
@@ -200,8 +201,6 @@ name|contains
 argument_list|(
 literal|"Sources"
 argument_list|)
-operator|==
-literal|false
 condition|)
 return|return
 literal|false

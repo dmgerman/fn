@@ -24,18 +24,6 @@ name|Comparator
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|Pattern
-import|;
-end_import
-
 begin_class
 DECL|class|BibtexStringComparator
 specifier|public
@@ -193,7 +181,7 @@ if|if
 condition|(
 name|textPre
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"#"
 operator|+
@@ -201,8 +189,6 @@ name|namePost
 operator|+
 literal|"#"
 argument_list|)
-operator|>=
-literal|0
 condition|)
 block|{
 name|res

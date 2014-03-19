@@ -1367,12 +1367,7 @@ comment|// Change name of string.
 if|if
 condition|(
 operator|!
-operator|(
-operator|(
-name|String
-operator|)
 name|value
-operator|)
 operator|.
 name|equals
 argument_list|(
@@ -1440,12 +1435,10 @@ operator|)
 name|value
 operator|)
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|" "
 argument_list|)
-operator|>=
-literal|0
 condition|)
 block|{
 name|JOptionPane
@@ -1484,12 +1477,10 @@ operator|)
 name|value
 operator|)
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"#"
 argument_list|)
-operator|>=
-literal|0
 condition|)
 block|{
 name|JOptionPane
@@ -1635,12 +1626,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-operator|(
-operator|(
-name|String
-operator|)
 name|value
-operator|)
 operator|.
 name|equals
 argument_list|(
@@ -2135,12 +2121,10 @@ if|if
 condition|(
 name|name
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|"#"
 argument_list|)
-operator|>=
-literal|0
 condition|)
 block|{
 name|JOptionPane
@@ -2174,12 +2158,10 @@ if|if
 condition|(
 name|name
 operator|.
-name|indexOf
+name|contains
 argument_list|(
 literal|" "
 argument_list|)
-operator|>=
-literal|0
 condition|)
 block|{
 name|JOptionPane
@@ -2722,7 +2704,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Throwable
-name|ex
+name|ignored
 parameter_list|)
 block|{}
 block|}
@@ -2793,7 +2775,7 @@ block|}
 catch|catch
 parameter_list|(
 name|Throwable
-name|ex
+name|ignored
 parameter_list|)
 block|{}
 block|}

@@ -178,16 +178,6 @@ name|AnimationListener
 implements|,
 name|ActionListener
 block|{
-DECL|field|textPane
-specifier|private
-name|JEditorPane
-name|textPane
-decl_stmt|;
-DECL|field|scroller
-specifier|private
-name|JScrollPane
-name|scroller
-decl_stmt|;
 DECL|field|cards
 specifier|private
 name|CardLayout
@@ -197,11 +187,6 @@ DECL|field|close
 specifier|private
 name|JButton
 name|close
-decl_stmt|;
-DECL|field|license
-specifier|private
-name|JButton
-name|license
 decl_stmt|;
 DECL|field|about
 specifier|private
@@ -252,12 +237,13 @@ name|this
 argument_list|)
 expr_stmt|;
 comment|// scrallable html infos
+name|JEditorPane
 name|textPane
-operator|=
+init|=
 operator|new
 name|JEditorPane
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|textPane
 operator|.
 name|setEditable
@@ -358,15 +344,15 @@ literal|"Couldn't find file: About.html"
 argument_list|)
 expr_stmt|;
 block|}
+name|JScrollPane
 name|scroller
-operator|=
+init|=
 operator|new
 name|JScrollPane
 argument_list|(
 name|textPane
 argument_list|)
-expr_stmt|;
-comment|//, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS) ;
+decl_stmt|;
 name|scroller
 operator|.
 name|setPreferredSize
@@ -507,8 +493,9 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|JButton
 name|license
-operator|=
+init|=
 operator|new
 name|JButton
 argument_list|(
@@ -519,7 +506,7 @@ argument_list|(
 literal|"License"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|license
 operator|.
 name|addActionListener
