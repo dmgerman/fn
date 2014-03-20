@@ -89,44 +89,16 @@ name|void
 name|testOneAuthorSimpleName
 parameter_list|()
 block|{
-name|String
-name|name
-init|=
-literal|"Lastname, Name"
-decl_stmt|;
-name|AuthorLastFirstAbbreviator
-name|ab
-init|=
-operator|new
-name|AuthorLastFirstAbbreviator
-argument_list|()
-decl_stmt|;
-name|String
-name|result
-init|=
-name|ab
-operator|.
-name|format
-argument_list|(
-name|name
-argument_list|)
-decl_stmt|;
-comment|//Expected Results:
-name|String
-name|expectedResult
-init|=
-literal|"Lastname, N."
-decl_stmt|;
-comment|//Verifies the functionality:
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Abbreviator Test"
 argument_list|,
-name|result
+literal|"Lastname, N."
 argument_list|,
-name|expectedResult
+name|abbreviate
+argument_list|(
+literal|"Lastname, Name"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -137,44 +109,16 @@ name|void
 name|testOneAuthorCommonName
 parameter_list|()
 block|{
-name|String
-name|name
-init|=
-literal|"Lastname, Name Middlename"
-decl_stmt|;
-name|AuthorLastFirstAbbreviator
-name|ab
-init|=
-operator|new
-name|AuthorLastFirstAbbreviator
-argument_list|()
-decl_stmt|;
-name|String
-name|result
-init|=
-name|ab
-operator|.
-name|format
-argument_list|(
-name|name
-argument_list|)
-decl_stmt|;
-comment|//Expected Results:
-name|String
-name|expectedResult
-init|=
-literal|"Lastname, N. M."
-decl_stmt|;
-comment|//Verifies the functionality:
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Abbreviator Test"
 argument_list|,
-name|result
+literal|"Lastname, N. M."
 argument_list|,
-name|expectedResult
+name|abbreviate
+argument_list|(
+literal|"Lastname, Name Middlename"
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -186,43 +130,25 @@ name|testTwoAuthorsCommonName
 parameter_list|()
 block|{
 name|String
-name|name
-init|=
-literal|"Lastname, Name Middlename and Sobrenome, Nome Nomedomeio"
-decl_stmt|;
-name|AuthorLastFirstAbbreviator
-name|ab
-init|=
-operator|new
-name|AuthorLastFirstAbbreviator
-argument_list|()
-decl_stmt|;
-name|String
 name|result
 init|=
-name|ab
-operator|.
-name|format
+name|abbreviate
 argument_list|(
-name|name
+literal|"Lastname, Name Middlename and Sobrenome, Nome Nomedomeio"
 argument_list|)
 decl_stmt|;
-comment|//Expected Results:
 name|String
 name|expectedResult
 init|=
 literal|"Lastname, N. M. and Sobrenome, N. N."
 decl_stmt|;
-comment|//Verifies the functionality:
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 literal|"Abbreviator Test"
 argument_list|,
-name|result
-argument_list|,
 name|expectedResult
+argument_list|,
+name|result
 argument_list|)
 expr_stmt|;
 block|}
@@ -233,18 +159,13 @@ name|void
 name|testJrAuthor
 parameter_list|()
 block|{
-name|String
-name|name
-init|=
-literal|"Other, Jr., Anthony N."
-decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|"Other, A. N."
 argument_list|,
 name|abbreviate
 argument_list|(
-name|name
+literal|"Other, Jr., Anthony N."
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -255,20 +176,11 @@ name|void
 name|testFormat
 parameter_list|()
 block|{
-name|LayoutFormatter
-name|a
-init|=
-operator|new
-name|AuthorLastFirstAbbreviator
-argument_list|()
-decl_stmt|;
 name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|a
-operator|.
-name|format
+name|abbreviate
 argument_list|(
 literal|""
 argument_list|)
@@ -278,9 +190,7 @@ name|assertEquals
 argument_list|(
 literal|"Someone, V. S."
 argument_list|,
-name|a
-operator|.
-name|format
+name|abbreviate
 argument_list|(
 literal|"Someone, Van Something"
 argument_list|)
@@ -290,9 +200,7 @@ name|assertEquals
 argument_list|(
 literal|"Smith, J."
 argument_list|,
-name|a
-operator|.
-name|format
+name|abbreviate
 argument_list|(
 literal|"Smith, John"
 argument_list|)
@@ -302,9 +210,7 @@ name|assertEquals
 argument_list|(
 literal|"von Neumann, J. and Smith, J. and Black Brown, P."
 argument_list|,
-name|a
-operator|.
-name|format
+name|abbreviate
 argument_list|(
 literal|"von Neumann, John and Smith, John and Black Brown, Peter"
 argument_list|)
