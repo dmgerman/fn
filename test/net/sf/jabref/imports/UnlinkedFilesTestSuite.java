@@ -89,7 +89,7 @@ name|suite
 operator|.
 name|addTestSuite
 argument_list|(
-name|UnlinkedFilesCrawlerTest
+name|ImportDataTest
 operator|.
 name|class
 argument_list|)

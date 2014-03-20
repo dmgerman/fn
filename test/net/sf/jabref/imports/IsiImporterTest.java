@@ -112,20 +112,6 @@ name|OutputPrinterToNull
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|imports
-operator|.
-name|IsiImporter
-import|;
-end_import
-
 begin_comment
 comment|/**  * Test cases for the IsiImporter  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
 end_comment
