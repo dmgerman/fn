@@ -72,16 +72,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -180,7 +170,7 @@ name|jabref
 operator|.
 name|util
 operator|.
-name|CaseChanger
+name|CaseChangers
 import|;
 end_import
 
@@ -583,17 +573,13 @@ condition|)
 block|{
 name|s
 operator|=
-name|CaseChanger
+name|CaseChangers
+operator|.
+name|UPPER_EACH_FIRST_SKIP_SMALL_WORDS
 operator|.
 name|changeCase
 argument_list|(
 name|s
-argument_list|,
-name|CaseChanger
-operator|.
-name|UPPER_EACH_FIRST
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 name|map
@@ -2318,12 +2304,6 @@ argument_list|(
 name|s
 argument_list|,
 literal|" and "
-argument_list|,
-literal|0
-argument_list|,
-name|s
-operator|.
-name|length
 argument_list|)
 return|;
 block|}

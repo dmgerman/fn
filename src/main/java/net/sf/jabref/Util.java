@@ -7987,6 +7987,35 @@ name|toString
 argument_list|()
 return|;
 block|}
+DECL|method|join (String[] strings, String separator)
+specifier|public
+specifier|static
+name|String
+name|join
+parameter_list|(
+name|String
+index|[]
+name|strings
+parameter_list|,
+name|String
+name|separator
+parameter_list|)
+block|{
+return|return
+name|join
+argument_list|(
+name|strings
+argument_list|,
+name|separator
+argument_list|,
+literal|0
+argument_list|,
+name|strings
+operator|.
+name|length
+argument_list|)
+return|;
+block|}
 comment|/**     * Converts a relative filename to an absolute one, if necessary. Returns     * null if the file does not exist.<br/>     *      * Uses<ul>     *<li>the default directory associated with the extension of the file</li>     *<li>the standard file directory</li>     *<li>the directory of the bib file</li>     *</ul>     *      * @param metaData     *            The MetaData for the database this file belongs to.     * @param name     *            The file name, may also be a relative path to the file     */
 DECL|method|expandFilename (final MetaData metaData, String name)
 specifier|public

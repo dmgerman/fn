@@ -51,10 +51,10 @@ import|;
 end_import
 
 begin_class
-DECL|class|BibtexCaseChangerTest
+DECL|class|BibtexCaseChangersTest
 specifier|public
 class|class
-name|BibtexCaseChangerTest
+name|BibtexCaseChangersTest
 extends|extends
 name|TestCase
 block|{

@@ -641,7 +641,7 @@ expr_stmt|;
 return|return
 name|s
 return|;
-comment|//caseChanger.changeCase(s, CaseChanger.UPPER_EACH_FIRST);
+comment|//caseChanger.changeCase(s, CaseChangers.UPPER_EACH_FIRST);
 block|}
 DECL|method|readJournalList (String resourceFileName)
 specifier|public
