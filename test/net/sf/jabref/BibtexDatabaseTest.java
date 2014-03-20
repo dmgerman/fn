@@ -105,8 +105,6 @@ name|void
 name|testResolveStrings
 parameter_list|()
 throws|throws
-name|FileNotFoundException
-throws|,
 name|IOException
 block|{
 name|ParserResult

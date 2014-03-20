@@ -66,20 +66,6 @@ name|JabRefPreferences
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|imports
-operator|.
-name|EntryFromPDFCreator
-import|;
-end_import
-
 begin_comment
 comment|/**  *   * @version 11.11.2008 | 22:16  *   */
 end_comment
