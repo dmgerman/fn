@@ -165,10 +165,10 @@ literal|"10.1145/354401.354407"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// Does not work if the string does not start with a 10
+comment|// Works even when having a / at the front
 name|assertEquals
 argument_list|(
-literal|"/10.1145/354401.354407"
+literal|"http://dx.doi.org/10.1145/354401.354407"
 argument_list|,
 name|lf
 operator|.

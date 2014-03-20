@@ -14676,7 +14676,6 @@ condition|)
 return|return
 literal|false
 return|;
-else|else
 return|return
 name|check
 operator|.
@@ -14710,7 +14709,6 @@ condition|)
 return|return
 literal|false
 return|;
-else|else
 return|return
 name|check
 operator|.
@@ -14877,7 +14875,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      *       * @param fileName      * @param fileType      * @param destFilename      * @param edits      * @return      */
+comment|/**      *       * @param fileName      * @param destFilename      * @return      */
 DECL|method|renameFile (String fileName, String destFilename)
 specifier|public
 specifier|static
@@ -15504,11 +15502,11 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 while|while

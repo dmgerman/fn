@@ -72,38 +72,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|export
-operator|.
-name|layout
-operator|.
-name|Layout
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|export
-operator|.
-name|layout
-operator|.
-name|LayoutHelper
-import|;
-end_import
-
-begin_import
-import|import
 name|junit
 operator|.
 name|framework
@@ -428,17 +396,7 @@ operator|.
 name|FORMATTER_PACKAGE
 argument_list|)
 decl_stmt|;
-name|StringBuffer
-name|sb
-init|=
-operator|new
-name|StringBuffer
-argument_list|()
-decl_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
+return|return
 name|layout
 operator|.
 name|doLayout
@@ -449,13 +407,6 @@ literal|null
 argument_list|,
 name|wordsToHighlight
 argument_list|)
-argument_list|)
-expr_stmt|;
-return|return
-name|sb
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 comment|/*************************/
@@ -589,7 +540,7 @@ decl_stmt|;
 name|String
 name|containing
 init|=
-literal|"<span style=\"background-color:#FF4500;\">Google</span>"
+literal|"<span style=\"background-color:#3399FF;\">Google</span>"
 decl_stmt|;
 comment|// check
 name|assertTrue
@@ -681,12 +632,12 @@ decl_stmt|;
 name|String
 name|containing
 init|=
-literal|"<span style=\"background-color:#FF4500;\">Android</span>"
+literal|"<span style=\"background-color:#3399FF;\">Android</span>"
 decl_stmt|;
 name|String
 name|containing2
 init|=
-literal|"<span style=\"background-color:#FF4500;\">study</span>"
+literal|"<span style=\"background-color:#3399FF;\">study</span>"
 decl_stmt|;
 comment|// check
 name|assertTrue
@@ -777,7 +728,7 @@ decl_stmt|;
 name|String
 name|expected
 init|=
-literal|"<font face=\"arial\"><BR><BR><b>Abstract:</b> In this paper, we initiate a formal study of security on Android: Google's new open-source platform for mobile devices. Tags: Paper android<span style=\"background-color:#FF4500;\">google</span> Open-Source Devices</font>"
+literal|"<font face=\"arial\"><BR><BR><b>Abstract:</b> In this paper, we initiate a formal study of security on Android: Google's new open-source platform for mobile devices. Tags: Paper android<span style=\"background-color:#3399FF;\">google</span> Open-Source Devices</font>"
 decl_stmt|;
 comment|// check
 name|assertEquals

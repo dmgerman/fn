@@ -229,22 +229,6 @@ operator|+
 literal|"}\n"
 return|;
 block|}
-DECL|method|t1BibtexEntry ()
-specifier|public
-name|BibtexEntry
-name|t1BibtexEntry
-parameter_list|()
-throws|throws
-name|IOException
-block|{
-return|return
-name|bibtexString2BibtexEntry
-argument_list|(
-name|t1BibtexString
-argument_list|()
-argument_list|)
-return|;
-block|}
 DECL|method|bibtexString2BibtexEntry (String s)
 specifier|public
 specifier|static
@@ -359,17 +343,7 @@ operator|.
 name|FORMATTER_PACKAGE
 argument_list|)
 decl_stmt|;
-name|StringBuffer
-name|sb
-init|=
-operator|new
-name|StringBuffer
-argument_list|()
-decl_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
+return|return
 name|layout
 operator|.
 name|doLayout
@@ -378,13 +352,6 @@ name|be
 argument_list|,
 literal|null
 argument_list|)
-argument_list|)
-expr_stmt|;
-return|return
-name|sb
-operator|.
-name|toString
-argument_list|()
 return|;
 block|}
 DECL|method|testLayoutBibtextype ()
