@@ -70,30 +70,6 @@ name|Map
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Util
-import|;
-end_import
-
 begin_comment
 comment|/**  * Testing Util.findFile for finding files based on regular expressions.  *   * @author Christopher Oezbek<oezi@oezi.de>  */
 end_comment
@@ -694,10 +670,8 @@ index|]
 block|}
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertNull
 argument_list|(
-literal|null
-argument_list|,
 name|fullPath
 argument_list|)
 expr_stmt|;
@@ -900,10 +874,8 @@ index|]
 block|}
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertNull
 argument_list|(
-literal|null
-argument_list|,
 name|fullPath
 argument_list|)
 expr_stmt|;
@@ -986,10 +958,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Not found
-name|assertEqualPaths
+name|assertNull
 argument_list|(
-literal|null
-argument_list|,
 name|Util
 operator|.
 name|findFile
