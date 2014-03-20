@@ -142,16 +142,6 @@ specifier|private
 name|BibtexDatabase
 name|_db
 decl_stmt|;
-DECL|field|_meta
-specifier|private
-name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|_meta
-decl_stmt|;
 DECL|field|entryTypes
 specifier|private
 name|HashMap
@@ -560,11 +550,11 @@ block|{
 name|int
 name|c
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 if|if
@@ -695,8 +685,14 @@ name|BibtexDatabase
 argument_list|()
 expr_stmt|;
 comment|// Bibtex related contents.
-name|_meta
-operator|=
+name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
+name|meta
+init|=
 operator|new
 name|HashMap
 argument_list|<
@@ -705,8 +701,7 @@ argument_list|,
 name|String
 argument_list|>
 argument_list|()
-expr_stmt|;
-comment|// Metadata in comments for Bibkeeper.
+decl_stmt|;
 name|entryTypes
 operator|=
 operator|new
@@ -756,10 +751,6 @@ expr_stmt|;
 name|setMajorMinorVersions
 argument_list|()
 expr_stmt|;
-block|}
-else|else
-block|{
-comment|// No version number found. However, we have only
 block|}
 name|skipWhitespace
 argument_list|()
@@ -1077,7 +1068,7 @@ name|pos
 operator|>
 literal|0
 condition|)
-name|_meta
+name|meta
 operator|.
 name|put
 argument_list|(
@@ -1376,7 +1367,7 @@ argument_list|(
 operator|new
 name|MetaData
 argument_list|(
-name|_meta
+name|meta
 argument_list|,
 name|_db
 argument_list|)
@@ -1647,13 +1638,9 @@ expr_stmt|;
 name|String
 name|key
 init|=
-literal|null
-decl_stmt|;
-name|key
-operator|=
 name|parseKey
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 operator|(
@@ -1921,11 +1908,11 @@ block|{
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|value
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|int
@@ -2340,11 +2327,11 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|StringBuffer
+name|StringBuilder
 name|token
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 literal|20
 argument_list|)
@@ -2912,11 +2899,11 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|StringBuffer
+name|StringBuilder
 name|token
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 literal|20
 argument_list|)
@@ -3907,11 +3894,11 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|StringBuffer
+name|StringBuilder
 name|headerText
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|boolean
