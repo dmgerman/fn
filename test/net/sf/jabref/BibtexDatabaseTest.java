@@ -117,7 +117,7 @@ argument_list|(
 operator|new
 name|FileReader
 argument_list|(
-literal|"src/resources/tests/net/sf/jabref/util/twente.bib"
+literal|"src/test/resources/net/sf/jabref/util/twente.bib"
 argument_list|)
 argument_list|)
 decl_stmt|;

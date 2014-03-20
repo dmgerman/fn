@@ -54,7 +54,7 @@ init|=
 operator|new
 name|File
 argument_list|(
-literal|"src/resources/tests/net/sf/jabref/imports/unlinkedFilesTestFolder/pdfInDatabase.pdf"
+literal|"src/test/resources/net/sf/jabref/imports/unlinkedFilesTestFolder/pdfInDatabase.pdf"
 argument_list|)
 decl_stmt|;
 DECL|field|FILE_NOT_IN_DATABASE
@@ -67,7 +67,7 @@ init|=
 operator|new
 name|File
 argument_list|(
-literal|"src/resources/tests/net/sf/jabref/imports/unlinkedFilesTestFolder/pdfNotInDatabase.pdf"
+literal|"src/test/resources/net/sf/jabref/imports/unlinkedFilesTestFolder/pdfNotInDatabase.pdf"
 argument_list|)
 decl_stmt|;
 DECL|field|EXISTING_FOLDER
@@ -80,7 +80,7 @@ init|=
 operator|new
 name|File
 argument_list|(
-literal|"src/resources/tests/net/sf/jabref/imports/unlinkedFilesTestFolder"
+literal|"src/test/resources/net/sf/jabref/imports/unlinkedFilesTestFolder"
 argument_list|)
 decl_stmt|;
 DECL|field|NOT_EXISTING_FOLDER
@@ -106,7 +106,7 @@ init|=
 operator|new
 name|File
 argument_list|(
-literal|"src/resources/tests/net/sf/jabref/imports/unlinkedFilesTestFolder/null.pdf"
+literal|"src/test/resources/net/sf/jabref/imports/unlinkedFilesTestFolder/null.pdf"
 argument_list|)
 decl_stmt|;
 DECL|field|UNLINKED_FILES_TEST_BIB
@@ -119,7 +119,7 @@ init|=
 operator|new
 name|File
 argument_list|(
-literal|"src/resources/tests/net/sf/jabref/util/unlinkedFilesTestBib.bib"
+literal|"src/test/resources/net/sf/jabref/util/unlinkedFilesTestBib.bib"
 argument_list|)
 decl_stmt|;
 comment|/** 	 * Tests the testing environment. 	 */

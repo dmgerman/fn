@@ -484,6 +484,15 @@ name|XMPUtilTest
 extends|extends
 name|TestCase
 block|{
+DECL|field|SRC_TEST_ESOURCES_ENCRYPTED_PDF
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|SRC_TEST_ESOURCES_ENCRYPTED_PDF
+init|=
+literal|"src/test/esources/encrypted.pdf"
+decl_stmt|;
 comment|/** 	 * Wrap bibtex-data (<bibtex:author>...) into an rdf:Description. 	 *  	 * @param bibtex 	 * @return 	 */
 DECL|method|bibtexDescription (String bibtex)
 specifier|public
@@ -7502,7 +7511,7 @@ name|XMPUtil
 operator|.
 name|readXMP
 argument_list|(
-literal|"src/resources/tests/encrypted.pdf"
+name|SRC_TEST_ESOURCES_ENCRYPTED_PDF
 argument_list|)
 expr_stmt|;
 name|fail
@@ -7521,7 +7530,7 @@ name|XMPUtil
 operator|.
 name|writeXMP
 argument_list|(
-literal|"src/resources/tests/encrypted.pdf"
+name|SRC_TEST_ESOURCES_ENCRYPTED_PDF
 argument_list|,
 name|t1BibtexEntry
 argument_list|()
@@ -7563,7 +7572,7 @@ argument_list|(
 operator|new
 name|FileReader
 argument_list|(
-literal|"src/resources/tests/net/sf/jabref/util/twente.bib"
+literal|"src/test/resources/net/sf/jabref/util/twente.bib"
 argument_list|)
 argument_list|)
 decl_stmt|;
