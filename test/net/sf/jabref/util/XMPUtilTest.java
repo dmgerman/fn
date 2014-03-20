@@ -491,7 +491,7 @@ specifier|final
 name|String
 name|SRC_TEST_ESOURCES_ENCRYPTED_PDF
 init|=
-literal|"src/test/esources/encrypted.pdf"
+literal|"src/test/resources/encrypted.pdf"
 decl_stmt|;
 comment|/** 	 * Wrap bibtex-data (<bibtex:author>...) into an rdf:Description. 	 *  	 * @param bibtex 	 * @return 	 */
 DECL|method|bibtexDescription (String bibtex)
