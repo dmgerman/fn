@@ -1198,7 +1198,10 @@ name|fParts
 index|[
 name|i
 index|]
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"."
 argument_list|)
 expr_stmt|;
@@ -1463,7 +1466,10 @@ operator|.
 name|append
 argument_list|(
 literal|" "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|parts
 index|[
 name|i

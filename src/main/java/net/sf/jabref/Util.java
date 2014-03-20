@@ -9924,7 +9924,10 @@ operator|.
 name|append
 argument_list|(
 literal|"&#"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 operator|(
 name|int
 operator|)
@@ -9934,7 +9937,10 @@ name|charAt
 argument_list|(
 name|i
 argument_list|)
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|";"
 argument_list|)
 expr_stmt|;

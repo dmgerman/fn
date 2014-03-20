@@ -267,9 +267,15 @@ operator|.
 name|append
 argument_list|(
 literal|"<"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|tagName
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|">"
 argument_list|)
 expr_stmt|;
@@ -468,7 +474,10 @@ operator|.
 name|append
 argument_list|(
 literal|" "
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|xc
 operator|.
 name|format
@@ -505,9 +514,15 @@ operator|.
 name|append
 argument_list|(
 literal|"</"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|tagName
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|">\n       "
 argument_list|)
 expr_stmt|;
@@ -517,9 +532,15 @@ operator|.
 name|append
 argument_list|(
 literal|"</"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|tagName
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|">"
 argument_list|)
 expr_stmt|;
