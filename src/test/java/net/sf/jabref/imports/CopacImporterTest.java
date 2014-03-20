@@ -157,20 +157,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|tearDown ()
-specifier|protected
-name|void
-name|tearDown
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|super
-operator|.
-name|tearDown
-argument_list|()
-expr_stmt|;
-block|}
 DECL|method|testIsRecognizedFormat ()
 specifier|public
 name|void
