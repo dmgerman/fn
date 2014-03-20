@@ -1122,7 +1122,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Journal Of Physics-condensed Matter"
+literal|"Journal of Physics-condensed Matter"
 argument_list|,
 name|a
 operator|.
