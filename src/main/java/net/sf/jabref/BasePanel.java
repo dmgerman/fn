@@ -8872,7 +8872,7 @@ name|Util
 operator|.
 name|pr
 argument_list|(
-literal|"No action defined for'"
+literal|"No action defined for '"
 operator|+
 name|command
 operator|+
