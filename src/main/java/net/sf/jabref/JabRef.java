@@ -1157,7 +1157,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/* 		 * Make sure of a proper cleanup when quitting (e.g. deleting temporary 		 * files). 		 *  		 * CO 2007-07-12: Since this is deprecated, commented out: 		 *  		 * System.runFinalizersOnExit(true); 		 *  		 */
 name|openWindow
 argument_list|(
 name|processArguments
