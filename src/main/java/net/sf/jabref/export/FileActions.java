@@ -1570,7 +1570,7 @@ name|isSaveOperation
 parameter_list|)
 block|{
 comment|/* three options:              * 1. original order (saveInOriginalOrder) -- not hit here as SaveSettings is not called in that case              * 2. current table sort order              * 3. ordered by specified order              */
-comment|// This case should never behit as SaveSettings() is never called if InOriginalOrder is true
+comment|// This case should never be hit as SaveSettings() is never called if InOriginalOrder is true
 assert|assert
 name|isSaveOperation
 operator|&&
