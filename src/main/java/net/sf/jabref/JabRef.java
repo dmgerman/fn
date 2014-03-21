@@ -1157,6 +1157,34 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+comment|// override used newline character with the one stored in the preferences
+comment|// The preferences return the system newline character sequence as default
+name|Globals
+operator|.
+name|NEWLINE
+operator|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|get
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|NEWLINE
+argument_list|)
+expr_stmt|;
+name|Globals
+operator|.
+name|NEWLINE_LENGTH
+operator|=
+name|Globals
+operator|.
+name|NEWLINE
+operator|.
+name|length
+argument_list|()
+expr_stmt|;
 name|openWindow
 argument_list|(
 name|processArguments

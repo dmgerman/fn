@@ -1483,10 +1483,10 @@ specifier|static
 name|SidePaneManager
 name|sidePaneManager
 decl_stmt|;
+comment|// will be overridden in initialization due to feature #857
 DECL|field|NEWLINE
 specifier|public
 specifier|static
-specifier|final
 name|String
 name|NEWLINE
 init|=
@@ -1500,16 +1500,10 @@ decl_stmt|;
 DECL|field|NEWLINE_LENGTH
 specifier|public
 specifier|static
-specifier|final
 name|int
 name|NEWLINE_LENGTH
 init|=
-name|System
-operator|.
-name|getProperty
-argument_list|(
-literal|"line.separator"
-argument_list|)
+name|NEWLINE
 operator|.
 name|length
 argument_list|()
