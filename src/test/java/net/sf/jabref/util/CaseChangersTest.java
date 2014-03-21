@@ -86,11 +86,11 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Upper Each First and of the Skipped"
+literal|"Title"
 argument_list|,
 name|CaseChangers
 operator|.
-name|UPPER_EACH_FIRST_SKIP_SMALL_WORDS
+name|TITLE
 operator|.
 name|getName
 argument_list|()
@@ -265,10 +265,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|testChangeCaseUpperEachFirstSkipSmallerWords ()
+DECL|method|testChangeCaseTitle ()
 specifier|public
 name|void
-name|testChangeCaseUpperEachFirstSkipSmallerWords
+name|testChangeCaseTitle
 parameter_list|()
 block|{
 name|assertEquals
@@ -277,7 +277,7 @@ literal|""
 argument_list|,
 name|CaseChangers
 operator|.
-name|UPPER_EACH_FIRST_SKIP_SMALL_WORDS
+name|TITLE
 operator|.
 name|changeCase
 argument_list|(
@@ -287,43 +287,43 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Upper Each First and"
+literal|"Upper Each First"
 argument_list|,
 name|CaseChangers
 operator|.
-name|UPPER_EACH_FIRST_SKIP_SMALL_WORDS
+name|TITLE
 operator|.
 name|changeCase
 argument_list|(
-literal|"upper each First and"
+literal|"upper each first"
 argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Upper Each First and"
+literal|"An Upper Each First And"
 argument_list|,
 name|CaseChangers
 operator|.
-name|UPPER_EACH_FIRST_SKIP_SMALL_WORDS
+name|TITLE
 operator|.
 name|changeCase
 argument_list|(
-literal|"upper each First aNd"
+literal|"an upper each first and"
 argument_list|)
 argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|"Upper Each First and"
+literal|"An Upper Each of the and First And"
 argument_list|,
 name|CaseChangers
 operator|.
-name|UPPER_EACH_FIRST_SKIP_SMALL_WORDS
+name|TITLE
 operator|.
 name|changeCase
 argument_list|(
-literal|"upper each First AND"
+literal|"an upper each of the and first and"
 argument_list|)
 argument_list|)
 expr_stmt|;

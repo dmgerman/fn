@@ -575,7 +575,7 @@ name|s
 operator|=
 name|CaseChangers
 operator|.
-name|UPPER_EACH_FIRST_SKIP_SMALL_WORDS
+name|TITLE
 operator|.
 name|changeCase
 argument_list|(
