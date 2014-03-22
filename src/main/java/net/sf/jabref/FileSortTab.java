@@ -121,6 +121,11 @@ comment|/**  * Preference tab for file sorting options.  */
 end_comment
 
 begin_class
+annotation|@
+name|SuppressWarnings
+argument_list|(
+literal|"serial"
+argument_list|)
 DECL|class|FileSortTab
 specifier|public
 class|class
