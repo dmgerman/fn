@@ -286,13 +286,29 @@ argument_list|(
 name|p
 argument_list|)
 operator|==
+literal|' '
+operator|||
+name|and
+operator|.
+name|equals
+argument_list|(
+literal|" "
+argument_list|)
+operator|&&
+name|content
+operator|.
+name|charAt
+argument_list|(
+name|p
+argument_list|)
+operator|==
 literal|'a'
 operator|||
 name|and
 operator|.
 name|equals
 argument_list|(
-literal|"a"
+literal|" a"
 argument_list|)
 operator|&&
 name|content
@@ -308,7 +324,7 @@ name|and
 operator|.
 name|equals
 argument_list|(
-literal|"an"
+literal|" an"
 argument_list|)
 operator|&&
 name|content
@@ -338,7 +354,7 @@ name|and
 operator|.
 name|equals
 argument_list|(
-literal|"and"
+literal|" and"
 argument_list|)
 operator|&&
 name|content
@@ -483,7 +499,7 @@ name|normalized
 operator|.
 name|append
 argument_list|(
-name|isInsitution
+name|isInstitution
 argument_list|(
 name|tokens
 operator|.
@@ -653,11 +669,11 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Check if a value is institution.      *      * This is usable for distinguishing between persons and institutions in      * the author or editor fields.      *      * A person:      *   - "John Doe"      *   - "Doe, John"      *      * An institution:      *   - "{The Big Company or Institution Inc.}"      *   - "{The Big Company or Institution Inc. (BCI)}"      *      * @param author Author or editor.      * @return True if the author or editor is an institution.      */
-DECL|method|isInsitution (String author)
+DECL|method|isInstitution (String author)
 specifier|private
 specifier|static
 name|boolean
-name|isInsitution
+name|isInstitution
 parameter_list|(
 name|String
 name|author

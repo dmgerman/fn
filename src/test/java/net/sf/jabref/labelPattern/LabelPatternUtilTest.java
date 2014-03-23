@@ -98,6 +98,48 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+DECL|method|testAndInAuthorName ()
+specifier|public
+name|void
+name|testAndInAuthorName
+parameter_list|()
+block|{
+name|BibtexEntry
+name|entry0
+init|=
+name|BibtexParser
+operator|.
+name|singleFromString
+argument_list|(
+literal|"@ARTICLE{kohn, author={Simon Holland}, year={2000}}"
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"Holland"
+argument_list|,
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Util
+operator|.
+name|checkLegalKey
+argument_list|(
+name|LabelPatternUtil
+operator|.
+name|makeLabel
+argument_list|(
+name|entry0
+argument_list|,
+literal|"auth"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 comment|/**      * Test for https://sourceforge.net/forum/message.php?msg_id=4498555      * Test the Labelmaker and all kind of accents      * Ã Ã¡ Ä Ä Ã Ã© Ã Ã­ Ä¹ Äº Å Å Ã Ã³ Å Å Å Å Ã Ãº Ã Ã½ Å¹ Åº        */
 DECL|method|testMakeLabelAndCheckLegalKeys ()
 specifier|public
