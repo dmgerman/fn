@@ -174,15 +174,6 @@ operator|new
 name|ForwardAction
 argument_list|()
 decl_stmt|;
-DECL|field|contents
-specifier|private
-name|ContentsAction
-name|contents
-init|=
-operator|new
-name|ContentsAction
-argument_list|()
-decl_stmt|;
 comment|// Initializes, but does not show the help dialog.
 DECL|method|HelpDialog (JabRefFrame bf)
 specifier|public
@@ -261,6 +252,13 @@ operator|.
 name|addSeparator
 argument_list|()
 expr_stmt|;
+name|ContentsAction
+name|contents
+init|=
+operator|new
+name|ContentsAction
+argument_list|()
+decl_stmt|;
 name|tlb
 operator|.
 name|add
