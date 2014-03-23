@@ -7,26 +7,6 @@ begin_comment
 comment|// created by : r.nagel 04.11.2004
 end_comment
 
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// function : supports an underlying text for jcomponents
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
-begin_comment
-comment|// modified :
-end_comment
-
-begin_comment
-comment|//
-end_comment
-
 begin_package
 DECL|package|net.sf.jabref.wizard.text.gui
 package|package
@@ -46,46 +26,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|Color
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|Dimension
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|Font
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|Graphics
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -93,6 +33,20 @@ operator|.
 name|*
 import|;
 end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|*
+import|;
+end_import
+
+begin_comment
+comment|/**  * Supports an underlying text for JComponent  */
+end_comment
 
 begin_class
 DECL|class|OverlayPanel
@@ -107,12 +61,12 @@ specifier|private
 name|JLabel
 name|label
 decl_stmt|;
-DECL|method|OverlayPanel (JComponent container, String text)
+DECL|method|OverlayPanel (JComponent overlay, String text)
 specifier|public
 name|OverlayPanel
 parameter_list|(
 name|JComponent
-name|container
+name|overlay
 parameter_list|,
 name|String
 name|text
@@ -134,11 +88,6 @@ argument_list|(
 name|layout
 argument_list|)
 expr_stmt|;
-name|JComponent
-name|overlay
-init|=
-name|container
-decl_stmt|;
 name|label
 operator|=
 operator|new
@@ -164,7 +113,6 @@ literal|18
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//    label.setForeground(Color.lightGray);
 name|label
 operator|.
 name|setForeground
@@ -313,7 +261,6 @@ name|g
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*   // it doesn't work well   public void addMouseListener(MouseListener listener)   {     overlay.addMouseListener(listener);     super.addMouseListener(listener);   } */
 block|}
 end_class
 

@@ -328,7 +328,7 @@ operator|.
 name|defaultPattern
 return|;
 block|}
-comment|/**      * Sets the DEFAULT PATTERN for this label pattern      * @param pattern the pattern to store      */
+comment|/**      * Sets the DEFAULT PATTERN for this label pattern      * @param labelPattern the pattern to store      */
 DECL|method|setDefaultValue (String labelPattern)
 specifier|public
 name|void

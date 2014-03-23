@@ -125,7 +125,7 @@ literal|10
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** appends a selection propertie for tag */
+comment|/** appends a selection property for tag */
 DECL|method|appendPosition (String tag, int start, int end)
 specifier|public
 name|void
@@ -337,23 +337,18 @@ comment|// iterate over all saved selections
 for|for
 control|(
 name|TMarkedStoreItem
-name|du2
+name|item
 range|:
 name|ll
 control|)
 block|{
 if|if
 condition|(
-name|du2
+name|item
 operator|!=
 literal|null
 condition|)
 block|{
-name|TMarkedStoreItem
-name|item
-init|=
-name|du2
-decl_stmt|;
 name|doc
 operator|.
 name|setCharacterAttributes
