@@ -629,6 +629,8 @@ name|getSortedEntries
 argument_list|(
 name|database
 argument_list|,
+name|metaData
+argument_list|,
 name|entryIds
 argument_list|,
 literal|false

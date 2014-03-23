@@ -501,6 +501,8 @@ name|getSortedEntries
 argument_list|(
 name|database
 argument_list|,
+name|metaData
+argument_list|,
 name|keySet
 argument_list|,
 literal|false
