@@ -294,7 +294,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/** 	 * Returns a EntryFromFileCreator object that is capable of creating a 	 * BibtexEntry for the given File. 	 *  	 * @param pdfFile 	 * @return null if there is no EntryFromFileCreator for this File. 	 */
+comment|/** 	 * Returns a EntryFromFileCreator object that is capable of creating a 	 * BibtexEntry for the given File. 	 *  	 * @param file the pdf file 	 * @return null if there is no EntryFromFileCreator for this File. 	 */
 DECL|method|getEntryCreator (File file)
 specifier|public
 name|EntryFromFileCreator
@@ -770,7 +770,7 @@ block|}
 block|}
 return|;
 block|}
-comment|/** 	 * Returns a list of all {@link FileFilter} instances (i.e. 	 * {@link EntryFromFileCreator}, plus the file filter that comes with the 	 * {@link #getFileFilter()} method, plus the {@link EntryFromAnyFileCreator} 	 * file filter. 	 *  	 * @return A List of all known possible file filters. 	 */
+comment|/** 	 * Returns a list of all {@link FileFilter} instances (i.e. 	 * {@link EntryFromFileCreator}, plus the file filter that comes with the 	 * {@link #getFileFilter()} method. 	 *  	 * @return A List of all known possible file filters. 	 */
 DECL|method|getFileFilterList ()
 specifier|public
 name|List

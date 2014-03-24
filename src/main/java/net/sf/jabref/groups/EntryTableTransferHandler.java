@@ -466,7 +466,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Overriden to indicate which types of drags are supported (only LINK). 	 *  	 * @override 	 */
+comment|/** 	 * Overriden to indicate which types of drags are supported (only LINK). 	 */
+annotation|@
+name|Override
 DECL|method|getSourceActions (JComponent c)
 specifier|public
 name|int
@@ -784,7 +786,9 @@ return|return
 literal|false
 return|;
 block|}
-comment|/** 	 * This method is called to query whether the transfer can be imported. 	 *  	 * Will return true for urls, strings, javaFileLists 	 *  	 * @override 	 */
+comment|/** 	 * This method is called to query whether the transfer can be imported. 	 *  	 * Will return true for urls, strings, javaFileLists 	 */
+annotation|@
+name|Override
 DECL|method|canImport (JComponent comp, DataFlavor[] transferFlavors)
 specifier|public
 name|boolean

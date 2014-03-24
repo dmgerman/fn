@@ -65,7 +65,7 @@ specifier|public
 name|V
 name|v
 decl_stmt|;
-comment|/** 	 * Constructor that sets the given p and v values. 	 *  	 * @param p 	 * @param v 	 */
+comment|/** 	 * Constructor that sets the given p and v values. 	 *  	 * @param p first element 	 * @param v second element 	 */
 DECL|method|Pair (P p, V v)
 specifier|public
 name|Pair
@@ -90,7 +90,7 @@ operator|=
 name|v
 expr_stmt|;
 block|}
-comment|/** 	 * Returns a comparator that compares by p. 	 *  	 * @param<V> 	 *            The V type is not important for this method. 	 * @param 	 *<P> 	 *            The P type of the pair needs to be comparable. 	 * @return A comparator for the p in a pair. 	 */
+comment|/** 	 * Returns a comparator that compares by p. 	 *  	 *            The P type of the pair needs to be comparable. 	 * @return A comparator for the p in a pair. 	 */
 DECL|method|pCompare ()
 specifier|public
 specifier|static
@@ -166,7 +166,7 @@ block|}
 block|}
 return|;
 block|}
-comment|/** 	 * Given a comparator for p elements, returns a Comparator for pairs which 	 * uses this given comparator to make the comparison. 	 *  	 * @param<V> 	 *            The V-Type of the Pair. 	 * @param 	 *<P> 	 *            The P-Type of the Pair. 	 * @param comp 	 *            A comparator which will be wrapped so that it can be used to 	 *            compare 	 * @return A comparator for Pairs of type P and V which makes use of the 	 *         given comparator. 	 */
+comment|/** 	 * Given a comparator for p elements, returns a Comparator for pairs which 	 * uses this given comparator to make the comparison. 	 *  	 * @param comp 	 *            A comparator which will be wrapped so that it can be used to 	 *            compare 	 * @return A comparator for Pairs of type P and V which makes use of the 	 *         given comparator. 	 */
 DECL|method|pCompare ( final Comparator<P> comp)
 specifier|public
 specifier|static
@@ -273,7 +273,7 @@ name|p
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Returns a list of pairs with P and V being switched. 	 *  	 * @param 	 *<P> 	 * @param<V> 	 * @param list 	 * @return 	 */
+comment|/** 	 * Returns a list of pairs with P and V being switched. 	 *  	 * @param list 	 * @return 	 */
 DECL|method|flipList (List<Pair<P, V>> list)
 specifier|public
 specifier|static
@@ -354,7 +354,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/** 	 * Given a collection of Pair<P,V> it will put all V values that have the 	 * same P-value together in a set and return a collection of those sets with 	 * their associated P. 	 *  	 * Example: 	 *  	 *<pre> 	 * Collection&lt;Pair&lt;Integer, String&gt;&gt; c = new LinkedList&lt;Pair&lt;Integer, String&gt;&gt;(); 	 * c.add(new Pair&lt;Integer, String&gt;(3,&quot;Hallo&quot;)); 	 * c.add(new Pair&lt;Integer, String&gt;(4,&quot;Bye&quot;)); 	 * c.add(new Pair&lt;Integer, String&gt;(3,&quot;Adios&quot;)); 	 *  	 * Collection&lt;Pair&lt;Integer, Set&lt;String&gt;&gt;&gt; result = Pair.disjointPartition(c); 	 *  	 * result == [(3, [&quot;Hallo&quot;,&quot;Adios&quot;]), (4, [&quot;Bye&quot;])] 	 *</pre> 	 *  	 * @param 	 *<P> 	 * @param<V> 	 * @param list 	 * @return 	 */
+comment|/** 	 * Given a collection of Pair<P,V> it will put all V values that have the 	 * same P-value together in a set and return a collection of those sets with 	 * their associated P. 	 *  	 * Example: 	 *  	 *<pre> 	 * Collection&lt;Pair&lt;Integer, String&gt;&gt; c = new LinkedList&lt;Pair&lt;Integer, String&gt;&gt;(); 	 * c.add(new Pair&lt;Integer, String&gt;(3,&quot;Hallo&quot;)); 	 * c.add(new Pair&lt;Integer, String&gt;(4,&quot;Bye&quot;)); 	 * c.add(new Pair&lt;Integer, String&gt;(3,&quot;Adios&quot;)); 	 *  	 * Collection&lt;Pair&lt;Integer, Set&lt;String&gt;&gt;&gt; result = Pair.disjointPartition(c); 	 *  	 * result == [(3, [&quot;Hallo&quot;,&quot;Adios&quot;]), (4, [&quot;Bye&quot;])] 	 *</pre> 	 *  	 * @param list 	 * @return 	 */
 DECL|method|disjointPartition ( List<Pair<P, V>> list)
 specifier|public
 specifier|static
@@ -717,7 +717,7 @@ block|}
 block|}
 empty_stmt|;
 block|}
-comment|/** 	 * Given a comparator for v elements, returns a Comparator for pairs which 	 * uses this given comparator to make the comparison. 	 *  	 * @param 	 *<P> 	 * The P-Type of the Pair. 	 * @param<V> 	 *            The V-Type of the Pair. 	 * @param vComp 	 *            A comparator which will be wrapped so that it can be used to 	 *            compare 	 * @return A comparator for Pairs of type P and V which makes use of the 	 *         given comparator. 	 */
+comment|/** 	 * Given a comparator for v elements, returns a Comparator for pairs which 	 * uses this given comparator to make the comparison. 	 *  	 * @param vComp 	 *            A comparator which will be wrapped so that it can be used to 	 *            compare 	 * @return A comparator for Pairs of type P and V which makes use of the 	 *         given comparator. 	 */
 DECL|method|vCompare ( final Comparator<V> vComp)
 specifier|public
 specifier|static
@@ -797,7 +797,7 @@ block|}
 block|}
 empty_stmt|;
 block|}
-comment|/** 	 * Takes a list of P and list of V and returns a list of Pair<P,V>. If the 	 * lengths of the lists differ missing values are padded by null. 	 *  	 * @param 	 *<P> 	 * @param<V> 	 * @param ps 	 * @param vs 	 * @return 	 */
+comment|/** 	 * Takes a list of P and list of V and returns a list of Pair<P,V>. If the 	 * lengths of the lists differ missing values are padded by null. 	 *  	 * @param ps 	 * @param vs 	 * @return 	 */
 DECL|method|zip (List<P> ps, List<V> vs)
 specifier|public
 specifier|static
@@ -956,7 +956,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/** 	 * Unzips the given pair list by returning a list of the p values. 	 *  	 * @param 	 *<P> 	 * @param<V> 	 * @param list 	 * @return 	 */
+comment|/** 	 * Unzips the given pair list by returning a list of the p values. 	 *  	 * @param list 	 * @return 	 */
 DECL|method|pList (List<? extends Pair<P, ?>> list)
 specifier|public
 specifier|static
@@ -1023,7 +1023,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/** 	 * Unzips the given pair by return a list of the v values. 	 *  	 * @param<V> 	 * @param list 	 * @return 	 */
+comment|/** 	 * Unzips the given pair by return a list of the v values. 	 *  	 * @param list 	 * @return 	 */
 DECL|method|vList (List<? extends Pair<?, V>> list)
 specifier|public
 specifier|static

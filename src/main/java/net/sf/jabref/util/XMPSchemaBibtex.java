@@ -182,7 +182,7 @@ name|NAMESPACE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Create schema from an existing XML element. 	 *  	 * @param element 	 *            The existing XML element. 	 */
+comment|/** 	 * Create schema from an existing XML element. 	 *  	 * @param e 	 *            The existing XML element. 	 */
 DECL|method|XMPSchemaBibtex (Element e, String namespace)
 specifier|public
 name|XMPSchemaBibtex
@@ -219,7 +219,7 @@ operator|+
 name|propertyName
 return|;
 block|}
-comment|/** 	 *  	 * @param field 	 * @return 	 * @derived Uses XMPSchema methods 	 */
+comment|/**      * Uses XMPSchema methods 	 *  	 * @param field 	 * @return 	 */
 DECL|method|getPersonList (String field)
 specifier|public
 name|List
@@ -239,7 +239,7 @@ name|field
 argument_list|)
 return|;
 block|}
-comment|/** 	 *  	 * @param field 	 * @param value 	 * @derived Uses XMPSchema methods 	 */
+comment|/** 	 * Uses XMPSchema methods      * 	 * @param field 	 * @param value 	 */
 DECL|method|setPersonList (String field, String value)
 specifier|public
 name|void

@@ -1819,7 +1819,6 @@ name|scrollPane
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * @noinspection ALL      */
 DECL|method|$$$getRootComponent$$$ ()
 specifier|public
 name|JComponent

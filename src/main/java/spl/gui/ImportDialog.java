@@ -1564,7 +1564,6 @@ return|return
 name|result
 return|;
 block|}
-comment|/**      * @noinspection ALL      */
 DECL|method|$$$getRootComponent$$$ ()
 specifier|public
 name|JComponent

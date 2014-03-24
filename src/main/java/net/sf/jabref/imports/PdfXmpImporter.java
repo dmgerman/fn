@@ -150,7 +150,9 @@ name|in
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Returns whether the given stream contains data that is a.) a pdf and b.) 	 * contains at least one BibtexEntry. 	 *  	 * @override 	 */
+comment|/** 	 * Returns whether the given stream contains data that is a.) a pdf and b.) 	 * contains at least one BibtexEntry. 	 */
+annotation|@
+name|Override
 DECL|method|isRecognizedFormat (InputStream in)
 specifier|public
 name|boolean
@@ -171,7 +173,7 @@ name|in
 argument_list|)
 return|;
 block|}
-comment|/** 	 * String used to identify this import filter on the command line. 	 *  	 * @override 	 * @return "xmp" 	 */
+comment|/** 	 * String used to identify this import filter on the command line. 	 *  	 * @return "xmp" 	 */
 DECL|method|getCLIid ()
 specifier|public
 name|String

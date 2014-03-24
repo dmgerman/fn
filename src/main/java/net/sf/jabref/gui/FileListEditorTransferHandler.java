@@ -264,7 +264,7 @@ name|dfh
 init|=
 literal|null
 decl_stmt|;
-comment|/** 	 *  	 * @param frame 	 * @param entryContainer 	 * @param transferHandler is an instance of javax.swing.plaf.basic.BasicTextUI.TextTransferHandler. That class is not visible. Therefore, we have to "cheat" 	 */
+comment|/** 	 *  	 * @param frame 	 * @param entryContainer 	 * @param textTransferHandler is an instance of javax.swing.plaf.basic.BasicTextUI.TextTransferHandler. That class is not visible. Therefore, we have to "cheat" 	 */
 DECL|method|FileListEditorTransferHandler (JabRefFrame frame, EntryContainer entryContainer, TransferHandler textTransferHandler)
 specifier|public
 name|FileListEditorTransferHandler
@@ -784,7 +784,9 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * This method is called to query whether the transfer can be imported.      *      * Will return true for urls, strings, javaFileLists      *      * @override      */
+comment|/**      * This method is called to query whether the transfer can be imported.      *      * Will return true for urls, strings, javaFileLists      */
+annotation|@
+name|Override
 DECL|method|canImport (JComponent comp, DataFlavor[] transferFlavors)
 specifier|public
 name|boolean
