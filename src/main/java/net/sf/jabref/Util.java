@@ -13880,7 +13880,7 @@ name|res
 return|;
 block|}
 DECL|method|encodeString (String s)
-specifier|private
+specifier|public
 specifier|static
 name|String
 name|encodeString
