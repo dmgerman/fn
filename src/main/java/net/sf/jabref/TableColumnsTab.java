@@ -293,6 +293,9 @@ decl_stmt|;
 DECL|field|listOfFileColumns
 specifier|private
 name|JList
+argument_list|<
+name|String
+argument_list|>
 name|listOfFileColumns
 decl_stmt|;
 DECL|field|preferUrl
@@ -1357,6 +1360,9 @@ name|listOfFileColumns
 operator|=
 operator|new
 name|JList
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|fileTypeNames
 argument_list|)
