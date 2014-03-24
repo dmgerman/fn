@@ -2556,7 +2556,7 @@ return|return
 name|res
 return|;
 block|}
-comment|/** 	 * Returns a HashMap containing all words used in the database in the given 	 * field type. Characters in 	 *  	 * @param remove 	 *            are not included. 	 * @param db 	 *            a<code>BibtexDatabase</code> value 	 * @param field 	 *            a<code>String</code> value 	 * @param remove 	 *            a<code>String</code> value 	 * @return a<code>HashSet</code> value 	 */
+comment|/** 	 * Returns a HashMap containing all words used in the database in the given 	 * field type. Characters in<code>remove</code> are not included. 	 *  	 * @param db 	 *            a<code>BibtexDatabase</code> value 	 * @param field 	 *            a<code>String</code> value 	 * @param remove 	 *            a<code>String</code> value 	 * @return a<code>HashSet</code> value 	 */
 DECL|method|findAllWordsInField (BibtexDatabase db, String field, String remove)
 specifier|public
 specifier|static
@@ -8456,7 +8456,7 @@ return|return
 name|file
 return|;
 block|}
-comment|/** 	 * Converts an absolute filename to a relative one, if necessary. 	 * Returns the parameter fileName itself if no shortening is possible  	 *  	 * This method works correctly only if dirs are sorted decent in their length 	 * i.e. /home/user/literature/important before /home/user/literature  	 *  	 * @param dirs: directories to check.  	 */
+comment|/** 	 * Converts an absolute filename to a relative one, if necessary. 	 * Returns the parameter fileName itself if no shortening is possible  	 *  	 * This method works correctly only if dirs are sorted decent in their length 	 * i.e. /home/user/literature/important before /home/user/literature  	 *      * @param fileName the file name to be shortened 	 * @param dirs directories to check. 	 */
 DECL|method|shortenFileName (File fileName, String[] dirs)
 specifier|public
 specifier|static

@@ -129,7 +129,7 @@ name|cleaned
 return|;
 block|}
 block|}
-comment|/** 	 * 	 * @param a 	 *            string with the user query 	 * @return a string with the user query, but compatible with dblp.org 	 */
+comment|/** 	 * 	 * @param query 	 *            string with the user query 	 * @return a string with the user query, but compatible with dblp.org 	 */
 DECL|method|cleanDBLPQuery (String query)
 specifier|public
 name|String
@@ -148,7 +148,7 @@ name|query
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Takes an HTML file (as String) as input and extracts the bibtex 	 * information. After that, it will convert it into a BibtexEntry and return 	 * it (them). 	 * 	 * @param html 	 *            page as String 	 * @return list of BibtexEntry 	 */
+comment|/** 	 * Takes an HTML file (as String) as input and extracts the bibtex 	 * information. After that, it will convert it into a BibtexEntry and return 	 * it (them). 	 * 	 * @param page 	 *            page as String 	 * @return list of BibtexEntry 	 */
 DECL|method|getBibTexFromPage (final String page)
 specifier|public
 name|List
@@ -349,9 +349,7 @@ name|String
 name|bibEntry
 parameter_list|)
 block|{
-name|String
-name|retStr
-init|=
+return|return
 name|bibEntry
 operator|.
 name|replaceFirst
@@ -360,9 +358,6 @@ literal|"<a href=\".*\">DBLP</a>"
 argument_list|,
 literal|"DBLP"
 argument_list|)
-decl_stmt|;
-return|return
-name|retStr
 return|;
 block|}
 block|}

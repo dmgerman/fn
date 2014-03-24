@@ -96,7 +96,7 @@ name|FileFilter
 name|getFileFilter
 parameter_list|()
 function_decl|;
-comment|/** 	 * Perform the export. 	 *  	 * @param database 	 *            The database to export from.      * @param metaData      *            The database's metadata. 	 * @param file 	 *            The filename to write to. 	 * @param encoding 	 *            The encoding to use. 	 * @param entryIds 	 *            (may be null) A Set containing the IDs of all entries that 	 *            should be exported. If null, all entries will be exported. 	 * @throws Exception 	 * @see #performExport(BibtexDatabase, Set, Writer) 	 */
+comment|/** 	 * Perform the export. 	 *  	 * @param database 	 *            The database to export from.      * @param metaData      *            The database's metadata. 	 * @param file 	 *            The filename to write to. 	 * @param encoding 	 *            The encoding to use. 	 * @param entryIds 	 *            (may be null) A Set containing the IDs of all entries that 	 *            should be exported. If null, all entries will be exported. 	 * @throws Exception 	 */
 DECL|method|performExport (BibtexDatabase database, MetaData metaData, String file, String encoding, Set<String> entryIds)
 name|void
 name|performExport

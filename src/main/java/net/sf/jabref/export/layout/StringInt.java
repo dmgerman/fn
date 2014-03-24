@@ -111,7 +111,7 @@ comment|/*======================================================================
 end_comment
 
 begin_comment
-comment|/**  * String and integer value.  *  * @author     wegnerj  * @license GPL  * @cvsversion    $Revision$, $Date$  */
+comment|/**  * String and integer value.  *  * @author     wegnerj  * @license GPL  * @version    $Revision$, $Date$  */
 end_comment
 
 begin_class
@@ -142,7 +142,7 @@ name|i
 decl_stmt|;
 comment|//~ Constructors ///////////////////////////////////////////////////////////
 comment|/*-------------------------------------------------------------------------*      * constructor      *------------------------------------------------------------------------- */
-comment|/**      *  Constructor for the StringString object      *      * @param  _s1  Description of the Parameter      * @param  _s2  Description of the Parameter      */
+comment|/**      *  Constructor for the StringString object      *      * @param  _s  Description of the Parameter      * @param  _i  Description of the Parameter      */
 DECL|method|StringInt (String _s, int _i)
 specifier|public
 name|StringInt

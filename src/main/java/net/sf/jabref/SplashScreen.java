@@ -303,7 +303,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**      * Constructs and displays a SplashWindow.<p>      * This method is useful for startup splashs.      * Dispose the returned frame to get rid of the splash window.<p>      *      * @param splashImage The image to be displayed.      * @return Returns the frame that owns the SplashWindow.      */
+comment|/**      * Constructs and displays a SplashWindow.<p>      * This method is useful for startup splashs.      * Dispose the returned frame to get rid of the splash window.<p>      *      * @return Returns the frame that owns the SplashWindow.      */
 DECL|method|splash ()
 specifier|public
 specifier|static
