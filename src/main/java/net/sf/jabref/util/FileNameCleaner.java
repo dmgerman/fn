@@ -26,6 +26,10 @@ name|Arrays
 import|;
 end_import
 
+begin_comment
+comment|/**  * Replaces illegal characters in given file paths.  */
+end_comment
+
 begin_class
 DECL|class|FileNameCleaner
 specifier|public
@@ -133,7 +137,7 @@ name|illegalChars
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**  * Replaces illegal characters in given fileName by '_'  *   * @param badFileName the fileName to clean  * @return a clean filename  */
+comment|/**      * Replaces illegal characters in given fileName by '_'      *      * @param badFileName the fileName to clean      * @return a clean filename      */
 DECL|method|cleanFileName (String badFileName)
 specifier|public
 specifier|static
