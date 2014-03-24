@@ -256,7 +256,7 @@ return|return
 name|fieldText
 return|;
 block|}
-comment|/**      * @param sb      * @param fieldText      */
+comment|/**      * @param sb      * @param author      * @param position      */
 DECL|method|singleAuthor (StringBuffer sb, String author, int position)
 specifier|protected
 name|void
