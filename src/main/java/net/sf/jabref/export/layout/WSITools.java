@@ -131,7 +131,7 @@ comment|/*======================================================================
 end_comment
 
 begin_comment
-comment|/**  * JabRef helper methods.  *  * @author     wegnerj  * @license GPL  * @version    $Revision$, $Date$  */
+comment|/**  * JabRef helper methods.  *  * @author     wegnerj  * @version    $Revision$, $Date$  */
 end_comment
 
 begin_class

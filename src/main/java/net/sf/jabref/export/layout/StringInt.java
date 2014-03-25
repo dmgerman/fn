@@ -111,7 +111,7 @@ comment|/*======================================================================
 end_comment
 
 begin_comment
-comment|/**  * String and integer value.  *  * @author     wegnerj  * @license GPL  * @version    $Revision$, $Date$  */
+comment|/**  * String and integer value.  *  * @author     wegnerj  * @version    $Revision$, $Date$  */
 end_comment
 
 begin_class

@@ -678,7 +678,7 @@ name|nc
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * updates field values according to keywords 	 *  	 * @param nc indicates the undo named compound. May be null 	 */
+comment|/** 	 * updates field values according to keywords 	 *  	 * @param ce indicates the undo named compound. May be null 	 */
 DECL|method|syncSpecialFieldsFromKeywords (BibtexEntry be, NamedCompound ce)
 specifier|public
 specifier|static
