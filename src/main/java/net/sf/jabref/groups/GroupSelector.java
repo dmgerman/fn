@@ -4431,7 +4431,7 @@ name|repaint
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      *       * @param deletion != addition      */
+comment|/**      *       * @param node deletion != addition      */
 DECL|method|updateGroupContent (GroupTreeNode node)
 specifier|private
 name|void

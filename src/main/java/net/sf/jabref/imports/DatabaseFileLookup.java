@@ -264,7 +264,7 @@ name|FILE_FIELD
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Returns whether the File<code>aFile</code> is present in the database 	 * as an attached File to an {@link BibtexEntry}.<br> 	 *<br> 	 * To do this, the field specified by the key<b>file</b> will be searched 	 * for the provided file for every {@link BibtexEntry} in the database.<br> 	 *<br> 	 * For the matching, the absolute file paths will be used. 	 *  	 * @param file 	 *            A {@link File} Object. 	 * @return<code>true</code>, if the file Object is stored in at least one 	 *         entry in the database, otherwise<code>false</code>. 	 */
+comment|/** 	 * Returns whether the File<code>aFile</code> is present in the database 	 * as an attached File to an {@link BibtexEntry}.<br> 	 *<br> 	 * To do this, the field specified by the key<b>file</b> will be searched 	 * for the provided file for every {@link BibtexEntry} in the database.<br> 	 *<br> 	 * For the matching, the absolute file paths will be used. 	 *  	 * @param aFile 	 *            A {@link File} Object. 	 * @return<code>true</code>, if the file Object is stored in at least one 	 *         entry in the database, otherwise<code>false</code>. 	 */
 DECL|method|lookupDatabase (File aFile)
 specifier|public
 name|boolean

@@ -1922,7 +1922,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Query whether the last operation was successful.      *      * @returns true if the last Save/SaveAs operation completed successfully, false otherwise.      */
+comment|/**      * Query whether the last operation was successful.      *      * @return true if the last Save/SaveAs operation completed successfully, false otherwise.      */
 DECL|method|isSuccess ()
 specifier|public
 name|boolean
@@ -1933,7 +1933,7 @@ return|return
 name|success
 return|;
 block|}
-comment|/**      * Query whether the last operation was cancelled.      *      * @returns true if the last Save/SaveAs operation was cancelled from the file dialog or from another       * query dialog, false otherwise.      */
+comment|/**      * Query whether the last operation was cancelled.      *      * @return true if the last Save/SaveAs operation was cancelled from the file dialog or from another      * query dialog, false otherwise.      */
 DECL|method|isCancelled ()
 specifier|public
 name|boolean

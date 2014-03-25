@@ -396,7 +396,7 @@ name|DROP_ALLOWED
 init|=
 literal|true
 decl_stmt|;
-comment|/** 	 * Construct the transfer handler. 	 *  	 * @param entryTable 	 *            The table this transfer handler should operate on. This 	 *            argument is allowed to equal 	 * @null, in which case the transfer handler can assume that it works for a 	 *        JabRef instance with no databases open, attached to the empty 	 *        tabbed pane. 	 * @param frame 	 *            The JabRefFrame instance. 	 * @param panel 	 *            The BasePanel this transferhandler works for. 	 */
+comment|/**      * Construct the transfer handler.      *      * @param entryTable The table this transfer handler should operate on. This argument is allowed to equal null,      *                   in which case the transfer handler can assume that it works for a JabRef instance      *                   with no databases open, attached to the empty tabbed pane.      * @param frame      The JabRefFrame instance.      * @param panel      The BasePanel this transferhandler works for.      */
 DECL|method|EntryTableTransferHandler (MainTable entryTable, JabRefFrame frame, BasePanel panel)
 specifier|public
 name|EntryTableTransferHandler

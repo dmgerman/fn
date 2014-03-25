@@ -919,7 +919,7 @@ return|return
 name|url
 return|;
 block|}
-comment|/** 	 * Process a query and returns only the first result of a result set as a 	 * String. To be used when it is certain that only one String (single cell) 	 * will be returned from the DB 	 *  	 * @param out 	 *            The output (PrintStream or Connection) object to which the DML 	 *            should be sent 	 * @param query 	 *            The query statements to be processed 	 * @return String with the result returned from the database 	 * @throws SQLException 	 */
+comment|/** 	 * Process a query and returns only the first result of a result set as a 	 * String. To be used when it is certain that only one String (single cell) 	 * will be returned from the DB 	 *  	 * @param conn 	 *            The Connection object to which the DML should be sent 	 * @param query 	 *            The query statements to be processed 	 * @return String with the result returned from the database 	 * @throws SQLException 	 */
 DECL|method|processQueryWithSingleResult (Connection conn, String query)
 specifier|public
 specifier|static
