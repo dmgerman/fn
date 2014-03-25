@@ -721,7 +721,7 @@ operator|new
 name|CardLayout
 argument_list|()
 decl_stmt|;
-comment|/**          * Shows a group add/edit dialog.          *          * @param jabrefFrame          *            The parent frame.          * @param defaultField          *            The default grouping field.          * @param editedGroup          *            The group being edited, or null if a new group is to be          *            created.          */
+comment|/**          * Shows a group add/edit dialog.          *          * @param jabrefFrame          *            The parent frame.          * @param basePanel          *            The default grouping field.          * @param editedGroup          *            The group being edited, or null if a new group is to be          *            created.          */
 DECL|method|GroupDialog (JabRefFrame jabrefFrame, BasePanel basePanel, AbstractGroup editedGroup)
 specifier|public
 name|GroupDialog

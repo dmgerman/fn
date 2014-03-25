@@ -374,7 +374,7 @@ specifier|public
 class|class
 name|Globals
 block|{
-comment|/** 	 * {@link Control} class allowing properties bundles to be in different encodings. 	 *  	 * @see http://stackoverflow.com/questions/4659929/how-to-use-utf-8-in-resource-properties-with-resourcebundle 	 */
+comment|/** 	 * {@link Control} class allowing properties bundles to be in different encodings. 	 *  	 * @see<a href="http://stackoverflow.com/questions/4659929/how-to-use-utf-8-in-resource-properties-with-resourcebundle">utf-8 and property files</a> 	 */
 DECL|class|EncodingControl
 specifier|private
 specifier|static

@@ -460,7 +460,7 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/** 	 * Method for the exportDatabase methods. 	 *  	 * @param dbtype 	 *            The DBTYPE of the database 	 * @param database 	 *            The BibtexDatabase to export 	 * @param metaData 	 *            The MetaData object containing the groups information 	 * @param keySet 	 *            The set of IDs of the entries to export. 	 * @param out 	 *            The output (PrintStream or Connection) object to which the DML 	 *            should be written. 	 */
+comment|/** 	 * Method for the exportDatabase methods. 	 *  	 * @param database 	 *            The DBTYPE of the database 	 * @param database 	 *            The BibtexDatabase to export 	 * @param metaData 	 *            The MetaData object containing the groups information 	 * @param keySet 	 *            The set of IDs of the entries to export. 	 * @param out 	 *            The output (PrintStream or Connection) object to which the DML 	 *            should be written. 	 */
 DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, Set<String> keySet, Object out, String dbName)
 specifier|private
 name|void
@@ -1447,7 +1447,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Recursive worker method for the populateGroupsTable methods. 	 *  	 * @param cursor 	 *            The current GroupTreeNode in the GroupsTree 	 * @param parentID 	 *            The integer ID associated with the cursors's parent node 	 * @param ID 	 *            The integer value to associate with the cursor 	 * @param out 	 *            The output (PrintStream or Connection) object to which the DML 	 *            should be written. 	 * @param database_id 	 *            Id of jabref database to which the groups/entries are part of 	 */
+comment|/** 	 * Recursive worker method for the populateGroupsTable methods. 	 *  	 * @param cursor 	 *            The current GroupTreeNode in the GroupsTree 	 * @param parentID 	 *            The integer ID associated with the cursors's parent node 	 * @param currentID 	 *            The integer value to associate with the cursor 	 * @param out 	 *            The output (PrintStream or Connection) object to which the DML 	 *            should be written. 	 * @param database_id 	 *            Id of jabref database to which the groups/entries are part of 	 */
 DECL|method|populateGroupsTable (GroupTreeNode cursor, int parentID, int currentID, Object out, int database_id)
 specifier|private
 name|int
