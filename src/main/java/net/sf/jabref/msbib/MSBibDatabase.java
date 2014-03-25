@@ -22,16 +22,6 @@ name|java
 operator|.
 name|io
 operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
 name|InputStream
 import|;
 end_import
@@ -143,7 +133,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author S M Mahbub Murshed (udvranto@yahoo.com)  *  * @version 2.0.0  * @see<a href="http://mahbub.wordpress.com/2007/03/24/details-of-microsoft-office-2007-bibliographic-format-compared-to-bibtex/">ms office 2007 bibliography format compared to bibtex</a>  * @see<a href="http://mahbub.wordpress.com/2007/03/22/deciphering-microsoft-office-2007-bibliography-format/">deciphering ms office 2007 bibliography format</a>  *   * Date: May 15, 2007; May 03, 2007  *   * History:  * May 03, 2007 - Added suport for export  * May 15, 2007 - Added suport for import  */
+comment|/**  * Date: May 15, 2007; May 03, 2007  *  * History:  * May 03, 2007 - Added suport for export  * May 15, 2007 - Added suport for import  *  * @author S M Mahbub Murshed (udvranto@yahoo.com)  * @version 2.0.0  * @see<a href="http://mahbub.wordpress.com/2007/03/24/details-of-microsoft-office-2007-bibliographic-format-compared-to-bibtex/">ms office 2007 bibliography format compared to bibtex</a>  * @see<a href="http://mahbub.wordpress.com/2007/03/22/deciphering-microsoft-office-2007-bibliography-format/">deciphering ms office 2007 bibliography format</a>  */
 end_comment
 
 begin_class
