@@ -54,6 +54,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|Util
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|imports
 operator|.
 name|BibtexParser
@@ -111,7 +123,7 @@ name|BibtexParser
 operator|.
 name|singleFromString
 argument_list|(
-literal|"@ARTICLE{kohn, author={Simon Holland}, year={2000}}"
+literal|"@ARTICLE{kohn, author={Simon Holland}}"
 argument_list|)
 decl_stmt|;
 name|assertEquals
@@ -135,6 +147,47 @@ argument_list|(
 name|entry0
 argument_list|,
 literal|"auth"
+argument_list|)
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|testAndAuthorNames ()
+specifier|public
+name|void
+name|testAndAuthorNames
+parameter_list|()
+block|{
+name|String
+name|bibtexString
+init|=
+literal|"@ARTICLE{whatevery, author={Mari D. Herland and Mona-Iren Hauge and Ingeborg M. Helgeland}}"
+decl_stmt|;
+name|BibtexEntry
+name|entry
+init|=
+name|BibtexParser
+operator|.
+name|singleFromString
+argument_list|(
+name|bibtexString
+argument_list|)
+decl_stmt|;
+name|assertEquals
+argument_list|(
+literal|"HerlandHaugeHelgeland"
+argument_list|,
+name|Util
+operator|.
+name|checkLegalKey
+argument_list|(
+name|LabelPatternUtil
+operator|.
+name|makeLabel
+argument_list|(
+name|entry
+argument_list|,
+literal|"authors3"
 argument_list|)
 argument_list|)
 argument_list|)
