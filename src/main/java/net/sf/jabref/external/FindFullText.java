@@ -257,6 +257,15 @@ name|SpringerLinkPdfDownload
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|finders
+operator|.
+name|add
+argument_list|(
+operator|new
+name|ACSPdfDownload
+argument_list|()
+argument_list|)
+expr_stmt|;
 block|}
 DECL|method|findFullText (BibtexEntry entry)
 specifier|public
