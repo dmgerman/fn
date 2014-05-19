@@ -572,6 +572,16 @@ DECL|field|EXPORT_TERTIARY_SORT_DESCENDING
 name|EXPORT_TERTIARY_SORT_DESCENDING
 init|=
 literal|"exportTerDescending"
+decl_stmt|,
+DECL|field|WRITEFIELD_SORTSTYLE
+name|WRITEFIELD_SORTSTYLE
+init|=
+literal|"writefieldSortStyle"
+decl_stmt|,
+DECL|field|WRITEFIELD_USERDEFINEDORDER
+name|WRITEFIELD_USERDEFINEDORDER
+init|=
+literal|"writefieldUserdefinedOrder"
 decl_stmt|;
 comment|// This String is used in the encoded list in prefs of external file type
 comment|// modifications, in order to indicate a removed default file type:
@@ -3636,6 +3646,26 @@ argument_list|,
 name|Boolean
 operator|.
 name|TRUE
+argument_list|)
+expr_stmt|;
+comment|//behavior of JabRef before LWang_AdjustableFieldOrder 1
+comment|//0 sorted order (2.10 default), 1 unsorted order (2.9.2 default), 2 user defined
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|WRITEFIELD_SORTSTYLE
+argument_list|,
+literal|0
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|WRITEFIELD_USERDEFINEDORDER
+argument_list|,
+literal|"author;title;journal;year;volume;number;pages;month;note;volume;pages;part;eid"
 argument_list|)
 expr_stmt|;
 name|defaults
