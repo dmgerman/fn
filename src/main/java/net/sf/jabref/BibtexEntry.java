@@ -1368,6 +1368,7 @@ argument_list|,
 name|write
 argument_list|)
 expr_stmt|;
+break|break;
 case|case
 literal|2
 case|:
@@ -1380,6 +1381,7 @@ argument_list|,
 name|write
 argument_list|)
 expr_stmt|;
+break|break;
 block|}
 block|}
 comment|/**      * user defined order      * @param out      * @param ff A formatter to filter field contents before writing      * @param write True if this is a write, false if it is a display. The write will not include non-writeable fields if it is a write, otherwise non-displayable fields will be ignored. Refer to GUIGlobals for isWriteableField(String) and isDisplayableField(String).      * @throws IOException      */
