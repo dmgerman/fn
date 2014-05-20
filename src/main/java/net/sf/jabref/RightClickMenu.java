@@ -317,10 +317,13 @@ argument_list|)
 decl_stmt|;
 DECL|field|groupAdd
 DECL|field|groupRemove
+DECL|field|groupMoveTo
 name|JMenuItem
 name|groupAdd
 decl_stmt|,
 name|groupRemove
+decl_stmt|,
+name|groupMoveTo
 decl_stmt|;
 name|JCheckBoxMenuItem
 DECL|field|floatMarked
@@ -1835,6 +1838,8 @@ argument_list|(
 name|groupRemove
 argument_list|)
 expr_stmt|;
+name|groupMoveTo
+operator|=
 name|add
 argument_list|(
 operator|new
@@ -1844,7 +1849,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Remove from group"
+literal|"move to group"
 argument_list|)
 argument_list|)
 block|{
@@ -1862,7 +1867,7 @@ name|panel
 operator|.
 name|runCommand
 argument_list|(
-literal|"removeFromGroup"
+literal|"moveToGroup"
 argument_list|)
 expr_stmt|;
 block|}
@@ -1885,6 +1890,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
+argument_list|)
+expr_stmt|;
+name|add
+argument_list|(
+name|groupMoveTo
 argument_list|)
 expr_stmt|;
 name|floatMarked

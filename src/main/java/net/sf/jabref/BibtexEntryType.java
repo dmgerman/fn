@@ -167,9 +167,9 @@ index|[]
 block|{
 literal|"volume"
 block|,
-literal|"number"
-block|,
 literal|"pages"
+block|,
+literal|"number"
 block|,
 literal|"month"
 block|,
