@@ -194,10 +194,10 @@ name|XMPSchemaBibtexTest
 extends|extends
 name|TestCase
 block|{
-DECL|method|assertEquals (BibtexEntry e, BibtexEntry x)
+DECL|method|assertEqualsBibtexEntry (BibtexEntry e, BibtexEntry x)
 specifier|public
 name|void
-name|assertEquals
+name|assertEqualsBibtexEntry
 parameter_list|(
 name|BibtexEntry
 name|e
@@ -1573,7 +1573,7 @@ operator|.
 name|getBibtexEntry
 argument_list|()
 decl_stmt|;
-name|assertEquals
+name|assertEqualsBibtexEntry
 argument_list|(
 name|e
 argument_list|,

@@ -2458,7 +2458,7 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-name|assertEquals
+name|assertEqualsBibtexEntry
 argument_list|(
 name|e
 argument_list|,
@@ -2639,7 +2639,7 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-name|assertEquals
+name|assertEqualsBibtexEntry
 argument_list|(
 name|t2BibtexEntry
 argument_list|()
@@ -2885,7 +2885,7 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-name|assertEquals
+name|assertEqualsBibtexEntry
 argument_list|(
 name|t1BibtexEntry
 argument_list|()
@@ -3501,7 +3501,7 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-name|assertEquals
+name|assertEqualsBibtexEntry
 argument_list|(
 name|toSet
 argument_list|,
@@ -4186,7 +4186,7 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
-name|assertEquals
+name|assertEqualsBibtexEntry
 argument_list|(
 name|e
 argument_list|,
@@ -4194,10 +4194,10 @@ name|x
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|assertEquals (BibtexEntry expected, BibtexEntry actual)
+DECL|method|assertEqualsBibtexEntry (BibtexEntry expected, BibtexEntry actual)
 specifier|public
 name|void
-name|assertEquals
+name|assertEqualsBibtexEntry
 parameter_list|(
 name|BibtexEntry
 name|expected
@@ -4807,7 +4807,7 @@ operator|=
 name|tmp
 expr_stmt|;
 block|}
-name|assertEquals
+name|assertEqualsBibtexEntry
 argument_list|(
 name|t2BibtexEntry
 argument_list|()
@@ -4815,7 +4815,7 @@ argument_list|,
 name|a
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertEqualsBibtexEntry
 argument_list|(
 name|t3BibtexEntry
 argument_list|()
@@ -4943,7 +4943,7 @@ operator|=
 name|tmp
 expr_stmt|;
 block|}
-name|assertEquals
+name|assertEqualsBibtexEntry
 argument_list|(
 name|t2BibtexEntry
 argument_list|()
@@ -4951,7 +4951,7 @@ argument_list|,
 name|a
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertEqualsBibtexEntry
 argument_list|(
 name|t3BibtexEntry
 argument_list|()
@@ -5113,7 +5113,7 @@ name|getKeywords
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertEqualsBibtexEntry
 argument_list|(
 name|t3BibtexEntry
 argument_list|()
@@ -5421,7 +5421,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertEqualsBibtexEntry
 argument_list|(
 name|t3BibtexEntry
 argument_list|()
@@ -5597,7 +5597,7 @@ name|getKeywords
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertEqualsBibtexEntry
 argument_list|(
 name|t3BibtexEntry
 argument_list|()
@@ -5904,7 +5904,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertEqualsBibtexEntry
 argument_list|(
 name|t3BibtexEntry
 argument_list|()
@@ -6358,7 +6358,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertEqualsBibtexEntry
 argument_list|(
 name|t1BibtexEntry
 argument_list|()
@@ -6529,7 +6529,7 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
-name|assertEquals
+name|assertEqualsBibtexEntry
 argument_list|(
 name|e
 argument_list|,
@@ -6782,7 +6782,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertEqualsBibtexEntry
 argument_list|(
 name|t1BibtexEntry
 argument_list|()
@@ -6939,7 +6939,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertEqualsBibtexEntry
 argument_list|(
 name|t1BibtexEntry
 argument_list|()
@@ -7038,7 +7038,7 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertEqualsBibtexEntry
 argument_list|(
 name|t2BibtexEntry
 argument_list|()
@@ -7279,14 +7279,14 @@ argument_list|,
 literal|"July"
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertEqualsBibtexEntry
 argument_list|(
 name|t1
 argument_list|,
 name|a
 argument_list|)
 expr_stmt|;
-name|assertEquals
+name|assertEqualsBibtexEntry
 argument_list|(
 name|t3
 argument_list|,
