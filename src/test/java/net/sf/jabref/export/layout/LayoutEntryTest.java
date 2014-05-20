@@ -16,26 +16,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|StringReader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -72,16 +52,80 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|TestCase
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|StringReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
 import|;
 end_import
 
 begin_comment
-comment|/**  * The test class LayoutEntryTest test the net.sf.jabref.export.layout.LayoutEntry.  * Indirectly the net.sf.jabref.export.layout.Layout is testet too.  *   * The LayoutEntry creates a human readable String assinged with html formaters.  * To test the Highlighting Feature, an instance of LayoutEntry will be instatiated via Layout and LayoutHelper.  * With these instance the doLayout() Method is called several times for each test case.   * To simulate a search, a BibtexEntry will be created, wich will be used by LayoutEntry.  * The definiton of the search is set by  *   * LayoutEntry.setWordsToHighlight(words); and   * Globals.prefs.putBoolean("caseSensitiveSearch", false);  *   * There are five test cases:  * - The shown result text has no words which should be highlighted.  * - There is one word which will be highlighted ignoring case sensitivity.    * - There are two words which will be highlighted ignoring case sensitivity.  * - There is one word which will be highlighted case sensitivity.  * - There are more words which will be highlighted case sensitivity.  *   * @author Arne  *  */
+comment|/**  * The test class LayoutEntryTest test the net.sf.jabref.export.layout.LayoutEntry.  * Indirectly the net.sf.jabref.export.layout.Layout is testet too.  *<p/>  * The LayoutEntry creates a human readable String assinged with html formaters.  * To test the Highlighting Feature, an instance of LayoutEntry will be instatiated via Layout and LayoutHelper.  * With these instance the doLayout() Method is called several times for each test case.  * To simulate a search, a BibtexEntry will be created, wich will be used by LayoutEntry.  * The definiton of the search is set by  *<p/>  * LayoutEntry.setWordsToHighlight(words); and  * Globals.prefs.putBoolean("caseSensitiveSearch", false);  *<p/>  * There are five test cases:  * - The shown result text has no words which should be highlighted.  * - There is one word which will be highlighted ignoring case sensitivity.  * - There are two words which will be highlighted ignoring case sensitivity.  * - There is one word which will be highlighted case sensitivity.  * - There are more words which will be highlighted case sensitivity.  *  * @author Arne  */
 end_comment
 
 begin_class
@@ -89,28 +133,23 @@ DECL|class|LayoutEntryTest
 specifier|public
 class|class
 name|LayoutEntryTest
-extends|extends
-name|TestCase
 block|{
 DECL|field|mBTE
 specifier|private
 name|BibtexEntry
 name|mBTE
 decl_stmt|;
-comment|/** 	 * Initialize Preferences. 	 */
+comment|/**      * Initialize Preferences.      */
+annotation|@
+name|Before
 DECL|method|setUp ()
-specifier|protected
+specifier|public
 name|void
 name|setUp
 parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|super
-operator|.
-name|setUp
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|Globals
@@ -412,7 +451,11 @@ block|}
 comment|/*************************/
 comment|/****** tests Cases ******/
 comment|/*************************/
-comment|/** 	 * @throws Exception 	 */
+comment|/**      * @throws Exception      */
+annotation|@
+name|Test
+annotation|@
+name|Ignore
 DECL|method|testNoHighlighting ()
 specifier|public
 name|void
@@ -473,7 +516,9 @@ name|result
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * @throws Exception 	 */
+comment|/**      * @throws Exception      */
+annotation|@
+name|Test
 DECL|method|testHighlightingOneWordCaseInsesitive ()
 specifier|public
 name|void
@@ -558,7 +603,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * @throws Exception 	 */
+comment|/**      * @throws Exception      */
+annotation|@
+name|Test
 DECL|method|testHighlightingTwoWordsCaseInsesitive ()
 specifier|public
 name|void
@@ -661,7 +708,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * @throws Exception 	 */
+comment|/**      * @throws Exception      */
+annotation|@
+name|Test
 DECL|method|testHighlightingOneWordCaseSesitive ()
 specifier|public
 name|void
@@ -739,7 +788,9 @@ name|result
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * @throws Exception 	 */
+comment|/**      * @throws Exception      */
+annotation|@
+name|Test
 DECL|method|testHighlightingMoreWordsCaseSesitive ()
 specifier|public
 name|void

@@ -18,16 +18,6 @@ end_package
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -46,14 +36,36 @@ name|NameFormat
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
 begin_class
 DECL|class|BibtexNameLayoutFormatterTest
 specifier|public
 class|class
 name|BibtexNameLayoutFormatterTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 DECL|method|testFormatStringStringBibtexEntry ()
 specifier|public
 name|void
@@ -164,6 +176,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testFormat ()
 specifier|public
 name|void

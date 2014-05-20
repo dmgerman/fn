@@ -12,11 +12,55 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|TestCase
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
 import|;
 end_import
 
@@ -29,9 +73,9 @@ DECL|class|DuplicateCheckTest
 specifier|public
 class|class
 name|DuplicateCheckTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Before
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -48,6 +92,10 @@ name|getInstance
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+annotation|@
+name|Ignore
 DECL|method|testDuplicateDetection ()
 specifier|public
 name|void

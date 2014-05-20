@@ -14,40 +14,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|parsers
-operator|.
-name|SAXParser
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|parsers
-operator|.
-name|SAXParserFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -84,29 +50,31 @@ end_import
 
 begin_import
 import|import
-name|net
+name|org
 operator|.
-name|sf
+name|junit
 operator|.
-name|jabref
-operator|.
-name|imports
-operator|.
-name|OAI2Fetcher
+name|Before
 import|;
 end_import
 
 begin_import
 import|import
-name|net
+name|org
 operator|.
-name|sf
+name|junit
 operator|.
-name|jabref
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|imports
+name|junit
 operator|.
-name|OAI2Handler
+name|Test
 import|;
 end_import
 
@@ -122,8 +90,56 @@ name|SAXException
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|parsers
+operator|.
+name|SAXParser
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|parsers
+operator|.
+name|SAXParserFactory
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
 begin_comment
-comment|/**  * Test for OAI2-Handler and Fetcher.  *  * @author Ulrich St&auml;rk  * @author Christian Kopf  * @author Christopher Oezbek  *  * @version $Revision$ ($Date$)  *  */
+comment|/**  * Test for OAI2-Handler and Fetcher.  *  * @author Ulrich St&auml;rk  * @author Christian Kopf  * @author Christopher Oezbek  * @version $Revision$ ($Date$)  */
 end_comment
 
 begin_class
@@ -131,8 +147,6 @@ DECL|class|OAI2ImportTest
 specifier|public
 class|class
 name|OAI2ImportTest
-extends|extends
-name|TestCase
 block|{
 DECL|field|handler
 name|OAI2Handler
@@ -152,8 +166,10 @@ specifier|protected
 name|SAXParser
 name|saxParser
 decl_stmt|;
+annotation|@
+name|Before
 DECL|method|setUp ()
-specifier|protected
+specifier|public
 name|void
 name|setUp
 parameter_list|()
@@ -201,6 +217,8 @@ name|be
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testCorrectLineBreaks ()
 specifier|public
 name|void
@@ -268,6 +286,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testParse ()
 specifier|public
 name|void
@@ -440,6 +460,8 @@ argument_list|()
 throw|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testOai22xml ()
 specifier|public
 name|void
@@ -494,6 +516,8 @@ argument_list|()
 throw|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testOai23xml ()
 specifier|public
 name|void
@@ -548,6 +572,8 @@ argument_list|()
 throw|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testUrlConstructor ()
 specifier|public
 name|void
@@ -586,6 +612,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testFixKey ()
 specifier|public
 name|void
@@ -677,6 +705,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+annotation|@
+name|Ignore
 DECL|method|testOnline ()
 specifier|public
 name|void

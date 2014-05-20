@@ -14,6 +14,50 @@ end_package
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexDatabase
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -53,41 +97,19 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Assert
 operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexDatabase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexEntry
+name|*
 import|;
 end_import
 
 begin_comment
-comment|/**  *   * @version 11.11.2008 | 21:51:54  *   */
+comment|/**  * @version 11.11.2008 | 21:51:54  */
 end_comment
 
 begin_class
@@ -95,9 +117,9 @@ DECL|class|EntryFromFileCreatorManagerTest
 specifier|public
 class|class
 name|EntryFromFileCreatorManagerTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 DECL|method|testGetCreator ()
 specifier|public
 name|void
@@ -159,6 +181,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+annotation|@
+name|Ignore
 DECL|method|testAddEntrysFromFiles ()
 specifier|public
 name|void
@@ -248,7 +274,7 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-comment|/** 		 * One file doesn't exist, so adding it as an entry should lead to an 		 * error message. 		 */
+comment|/**          * One file doesn't exist, so adding it as an entry should lead to an          * error message.          */
 name|assertEquals
 argument_list|(
 literal|1

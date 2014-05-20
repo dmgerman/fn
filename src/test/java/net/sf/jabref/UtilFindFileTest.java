@@ -12,6 +12,16 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -70,8 +80,20 @@ name|Map
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|*
+import|;
+end_import
+
 begin_comment
-comment|/**  * Testing Util.findFile for finding files based on regular expressions.  *   * @author Christopher Oezbek<oezi@oezi.de>  */
+comment|/**  * Testing Util.findFile for finding files based on regular expressions.  *  * @author Christopher Oezbek<oezi@oezi.de>  */
 end_comment
 
 begin_class
@@ -110,7 +132,9 @@ literal|true
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Test that more than one slash is taken to mean that a relative path is to 	 * be returned. 	 *  	 * @throws IOException 	 */
+comment|/**      * Test that more than one slash is taken to mean that a relative path is to      * be returned.      *      * @throws IOException      */
+annotation|@
+name|Test
 DECL|method|testFindFileRelative ()
 specifier|public
 name|void
@@ -216,6 +240,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testFindPdf ()
 specifier|public
 name|void
@@ -327,6 +353,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testFindAssociatedFiles ()
 specifier|public
 name|void
@@ -506,6 +534,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testFindPdfInMultiple ()
 specifier|public
 name|void
@@ -923,6 +953,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testFindFile ()
 specifier|public
 name|void

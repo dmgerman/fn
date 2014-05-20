@@ -14,16 +14,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|security
-operator|.
-name|Permission
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -34,8 +24,18 @@ name|JabRef
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|security
+operator|.
+name|Permission
+import|;
+end_import
+
 begin_comment
-comment|/**  * UtilsClass for UnitTests.  *   * @author kahlert, cordes  *   */
+comment|/**  * UtilsClass for UnitTests.  *  * @author kahlert, cordes  */
 end_comment
 
 begin_class
@@ -53,7 +53,7 @@ name|PATH_TO_TEST_BIBTEX
 init|=
 literal|"src/test/resources/net/sf/jabref/bibtexFiles/test.bib"
 decl_stmt|;
-comment|/** 	 * Returns a full configured and initialized instance of JabRef. As long as 	 * {@link TestUtils#closeJabRef()} wasn't called this method returns the 	 * same instance. 	 *  	 * @see TestUtils#closeJabRef() 	 */
+comment|/**      * Returns a full configured and initialized instance of JabRef. As long as      * {@link TestUtils#closeJabRef()} wasn't called this method returns the      * same instance.      *      * @see TestUtils#closeJabRef()      */
 DECL|method|getInitializedJabRef ()
 specifier|public
 specifier|static
@@ -91,7 +91,7 @@ parameter_list|(
 name|ExitException
 name|ignored
 parameter_list|)
-block|{ 		}
+block|{         }
 finally|finally
 block|{
 name|enableSystemExit
@@ -109,7 +109,7 @@ return|return
 name|jabref
 return|;
 block|}
-comment|/** 	 * Closes the current instance of JabRef. 	 */
+comment|/**      * Closes the current instance of JabRef.      */
 DECL|method|closeJabRef ()
 specifier|public
 specifier|static
@@ -152,7 +152,7 @@ class|class
 name|ExitException
 extends|extends
 name|SecurityException
-block|{ 	}
+block|{     }
 DECL|method|disableSystemExit ()
 specifier|private
 specifier|static

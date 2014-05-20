@@ -22,16 +22,6 @@ end_package
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -48,42 +38,28 @@ end_import
 
 begin_import
 import|import
-name|net
+name|org
 operator|.
-name|sf
+name|junit
 operator|.
-name|jabref
-operator|.
-name|export
-operator|.
-name|layout
-operator|.
-name|format
-operator|.
-name|AuthorAbbreviator
+name|Test
 import|;
 end_import
 
 begin_import
-import|import
-name|net
+import|import static
+name|org
 operator|.
-name|sf
+name|junit
 operator|.
-name|jabref
+name|Assert
 operator|.
-name|export
-operator|.
-name|layout
-operator|.
-name|format
-operator|.
-name|AuthorLastFirstAbbreviator
+name|assertEquals
 import|;
 end_import
 
 begin_comment
-comment|/**  *   * Is the save as the AuthorLastFirstAbbreviator.  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  * Is the save as the AuthorLastFirstAbbreviator.  *  * @author $Author$  * @version $Revision$ ($Date$)  */
 end_comment
 
 begin_class
@@ -91,9 +67,9 @@ DECL|class|AuthorAbbreviatorTest
 specifier|public
 class|class
 name|AuthorAbbreviatorTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 DECL|method|testFormat ()
 specifier|public
 name|void

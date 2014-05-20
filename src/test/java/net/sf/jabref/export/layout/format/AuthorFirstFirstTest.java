@@ -22,34 +22,28 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
-operator|.
-name|TestCase
+name|Test
 import|;
 end_import
 
 begin_import
-import|import
-name|net
+import|import static
+name|org
 operator|.
-name|sf
+name|junit
 operator|.
-name|jabref
+name|Assert
 operator|.
-name|export
-operator|.
-name|layout
-operator|.
-name|format
-operator|.
-name|AuthorFirstFirst
+name|assertEquals
 import|;
 end_import
 
 begin_comment
-comment|/**  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  * @author $Author$  * @version $Revision$ ($Date$)  */
 end_comment
 
 begin_class
@@ -57,10 +51,10 @@ DECL|class|AuthorFirstFirstTest
 specifier|public
 class|class
 name|AuthorFirstFirstTest
-extends|extends
-name|TestCase
 block|{
-comment|/** 	 * Test method for 	 * {@link net.sf.jabref.export.layout.format.AuthorFirstFirst#format(java.lang.String)}. 	 */
+comment|/**      * Test method for      * {@link net.sf.jabref.export.layout.format.AuthorFirstFirst#format(java.lang.String)}.      */
+annotation|@
+name|Test
 DECL|method|testFormat ()
 specifier|public
 name|void

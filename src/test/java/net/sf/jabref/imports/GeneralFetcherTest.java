@@ -14,38 +14,6 @@ end_package
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JButton
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JTextField
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|TestUtils
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -82,11 +50,53 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|TestUtils
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|After
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|TestCase
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|*
 import|;
 end_import
 
@@ -100,8 +110,32 @@ name|ArrayList
 import|;
 end_import
 
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertNotNull
+import|;
+end_import
+
 begin_comment
-comment|/**  * Tests GeneralFetcher  *   * @author Dennis Hartrampf, Ines Moosdorf  */
+comment|/**  * Tests GeneralFetcher  *  * @author Dennis Hartrampf, Ines Moosdorf  */
 end_comment
 
 begin_class
@@ -109,8 +143,6 @@ DECL|class|GeneralFetcherTest
 specifier|public
 class|class
 name|GeneralFetcherTest
-extends|extends
-name|TestCase
 block|{
 DECL|field|jrf
 specifier|static
@@ -132,7 +164,9 @@ specifier|static
 name|ACMPortalFetcher
 name|acmpf
 decl_stmt|;
-comment|/** 	 * Tests the reset-button. Types a text into tf, pushs reset and check tf's 	 * text 	 *  	 * @throws Exception 	 */
+comment|/**      * Tests the reset-button. Types a text into tf, pushs reset and check tf's      * text      *      * @throws Exception      */
+annotation|@
+name|Test
 DECL|method|testResetButton ()
 specifier|public
 name|void
@@ -228,7 +262,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Get an instance of JabRef via its singleton and get a GeneralFetcher and an ACMPortalFetcher 	 */
+comment|/**      * Get an instance of JabRef via its singleton and get a GeneralFetcher and an ACMPortalFetcher      */
+annotation|@
+name|Before
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -299,6 +335,8 @@ name|al
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|After
 DECL|method|tearDown ()
 specifier|public
 name|void

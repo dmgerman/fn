@@ -16,22 +16,12 @@ name|java
 operator|.
 name|awt
 operator|.
-name|Component
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|Container
+name|*
 import|;
 end_import
 
 begin_comment
-comment|/**  * Provides helper methods for unit testing such as methods for making testing  * of GUIs easier.  *   * @author Dennis Hartrampf, Ines Moosdorf  */
+comment|/**  * Provides helper methods for unit testing such as methods for making testing  * of GUIs easier.  *  * @author Dennis Hartrampf, Ines Moosdorf  */
 end_comment
 
 begin_class
@@ -40,7 +30,7 @@ specifier|public
 class|class
 name|TestUtils
 block|{
-comment|/** 	 * Get a Component by name. 	 *  	 * @param parent 	 *            The parent Component, where to search in. 	 * @param name 	 *            The name of the Component to find. 	 * @return The Component with the given name or null if no 	 *         such Component. 	 */
+comment|/**      * Get a Component by name.      *      * @param parent The parent Component, where to search in.      * @param name   The name of the Component to find.      * @return The Component with the given name or null if no      * such Component.      */
 DECL|method|getChildNamed (Component parent, String name)
 specifier|public
 specifier|static

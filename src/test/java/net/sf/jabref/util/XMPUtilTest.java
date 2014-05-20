@@ -14,235 +14,13 @@ end_package
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|io
+name|sf
 operator|.
-name|ByteArrayInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|ByteArrayOutputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|FileNotFoundException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|FileReader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|FileWriter
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|InputStreamReader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|OutputStreamWriter
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|PrintStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|Reader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|StringReader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|StringWriter
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
+name|jabref
 operator|.
 name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|transform
-operator|.
-name|TransformerException
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|AuthorList
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Util
 import|;
 end_import
 
@@ -276,48 +54,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|EncryptionNotSupportedException
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|XMPSchemaBibtex
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|util
-operator|.
-name|XMPUtil
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -326,63 +62,7 @@ name|jempbox
 operator|.
 name|xmp
 operator|.
-name|XMPMetadata
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jempbox
-operator|.
-name|xmp
-operator|.
-name|XMPSchema
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jempbox
-operator|.
-name|xmp
-operator|.
-name|XMPSchemaBasic
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jempbox
-operator|.
-name|xmp
-operator|.
-name|XMPSchemaDublinCore
-import|;
-end_import
-
-begin_import
-import|import
-name|org
-operator|.
-name|apache
-operator|.
-name|jempbox
-operator|.
-name|xmp
-operator|.
-name|XMPSchemaMediaManagement
+name|*
 import|;
 end_import
 
@@ -472,8 +152,92 @@ name|XMLUtil
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|After
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|transform
+operator|.
+name|TransformerException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|*
+import|;
+end_import
+
 begin_comment
-comment|/**  *   * Limitations: The test suite only handles UTF8. Not UTF16.  *   * @author Christopher Oezbek<oezi@oezi.de>  */
+comment|/**  * Limitations: The test suite only handles UTF8. Not UTF16.  *  * @author Christopher Oezbek<oezi@oezi.de>  */
 end_comment
 
 begin_class
@@ -481,8 +245,6 @@ DECL|class|XMPUtilTest
 specifier|public
 class|class
 name|XMPUtilTest
-extends|extends
-name|TestCase
 block|{
 DECL|field|SRC_TEST_ESOURCES_ENCRYPTED_PDF
 specifier|public
@@ -493,7 +255,7 @@ name|SRC_TEST_ESOURCES_ENCRYPTED_PDF
 init|=
 literal|"src/test/resources/encrypted.pdf"
 decl_stmt|;
-comment|/** 	 * Wrap bibtex-data (<bibtex:author>...) into an rdf:Description. 	 *  	 * @param bibtex 	 * @return 	 */
+comment|/**      * Wrap bibtex-data (<bibtex:author>...) into an rdf:Description.      *      * @param bibtex      * @return      */
 DECL|method|bibtexDescription (String bibtex)
 specifier|public
 specifier|static
@@ -514,7 +276,7 @@ operator|+
 literal|"</rdf:Description>\n"
 return|;
 block|}
-comment|/** 	 * Wrap bibtex-descriptions (rdf:Description) into the xpacket header. 	 *  	 * @param bibtexDescriptions 	 * @return 	 */
+comment|/**      * Wrap bibtex-descriptions (rdf:Description) into the xpacket header.      *      * @param bibtexDescriptions      * @return      */
 DECL|method|bibtexXPacket (String bibtexDescriptions)
 specifier|public
 specifier|static
@@ -588,7 +350,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Write a manually constructed xmp-string to file 	 *  	 * @param xmpString 	 * @throws Exception 	 */
+comment|/**      * Write a manually constructed xmp-string to file      *      * @param xmpString      * @throws Exception      */
 DECL|method|writeManually (File tempFile, String xmpString)
 specifier|public
 name|void
@@ -1198,12 +960,14 @@ literal|"<bibtex:abstract>The success of the Linux operating system has demonstr
 argument_list|)
 return|;
 block|}
-comment|/** 	 * The PDF file that basically all operations are done upon. 	 */
+comment|/**      * The PDF file that basically all operations are done upon.      */
 DECL|field|pdfFile
 name|File
 name|pdfFile
 decl_stmt|;
-comment|/** 	 * Create a temporary PDF-file with a single empty page. 	 */
+comment|/**      * Create a temporary PDF-file with a single empty page.      */
+annotation|@
+name|Before
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -1345,7 +1109,9 @@ name|String
 index|[]
 name|privacyFilters
 decl_stmt|;
-comment|/** 	 * Delete the temporary file. 	 */
+comment|/**      * Delete the temporary file.      */
+annotation|@
+name|After
 DECL|method|tearDown ()
 specifier|public
 name|void
@@ -1378,7 +1144,9 @@ name|privacyFilters
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Most basic test for reading. 	 *  	 * @throws Exception 	 */
+comment|/**      * Most basic test for reading.      *      * @throws Exception      */
+annotation|@
+name|Test
 DECL|method|testReadXMPSimple ()
 specifier|public
 name|void
@@ -1497,7 +1265,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Is UTF8 handling working? This is because Java by default uses the 	 * platform encoding or a special UTF-kind. 	 *  	 * @throws Exception 	 */
+comment|/**      * Is UTF8 handling working? This is because Java by default uses the      * platform encoding or a special UTF-kind.      *      * @throws Exception      */
+annotation|@
+name|Test
 DECL|method|testReadXMPUTF8 ()
 specifier|public
 name|void
@@ -1616,7 +1386,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Make sure that the privacy filter works. 	 *  	 * @throws IOException 	 *             Should not happen. 	 * @throws TransformerException 	 *             Should not happen. 	 */
+comment|/**      * Make sure that the privacy filter works.      *      * @throws IOException          Should not happen.      * @throws TransformerException Should not happen.      */
+annotation|@
+name|Test
 DECL|method|testPrivacyFilter ()
 specifier|public
 name|void
@@ -1882,7 +1654,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Are authors and editors correctly read? 	 *  	 * @throws Exception 	 */
+comment|/**      * Are authors and editors correctly read?      *      * @throws Exception      */
+annotation|@
+name|Test
 DECL|method|testReadXMPSeq ()
 specifier|public
 name|void
@@ -2015,7 +1789,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Is the XMPEntryType correctly set? 	 *  	 * @throws Exception 	 */
+comment|/**      * Is the XMPEntryType correctly set?      *      * @throws Exception      */
+annotation|@
+name|Test
 DECL|method|testReadXMPEntryType ()
 specifier|public
 name|void
@@ -2224,7 +2000,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Test whether the helper function work correctly. 	 *  	 * @throws Exception 	 */
+comment|/**      * Test whether the helper function work correctly.      *      * @throws Exception      */
+annotation|@
+name|Test
 DECL|method|testWriteReadManually ()
 specifier|public
 name|void
@@ -2323,7 +2101,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Test that readXMP and writeXMP work together. 	 *  	 * @throws Exception 	 */
+comment|/**      * Test that readXMP and writeXMP work together.      *      * @throws Exception      */
+annotation|@
+name|Test
 DECL|method|testReadWriteXMP ()
 specifier|public
 name|void
@@ -2466,7 +2246,9 @@ name|x
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Are newlines in the XML processed correctly? 	 *  	 * @throws Exception 	 */
+comment|/**      * Are newlines in the XML processed correctly?      *      * @throws Exception      */
+annotation|@
+name|Test
 DECL|method|testNewlineHandling ()
 specifier|public
 name|void
@@ -2577,7 +2359,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Test whether XMP.readFile can deal with text-properties that are not 	 * element-nodes, but attribute-nodes 	 *  	 * @throws Exception 	 */
+comment|/**      * Test whether XMP.readFile can deal with text-properties that are not      * element-nodes, but attribute-nodes      *      * @throws Exception      */
+annotation|@
+name|Test
 DECL|method|testAttributeRead ()
 specifier|public
 name|void
@@ -2648,6 +2432,8 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testEmpty ()
 specifier|public
 name|void
@@ -2669,7 +2455,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Tests whether writing BibTex.xmp will preserve existing XMP-descriptions. 	 *  	 * @throws Exception 	 *             (indicating an failure) 	 */
+comment|/**      * Tests whether writing BibTex.xmp will preserve existing XMP-descriptions.      *      * @throws Exception (indicating an failure)      */
+annotation|@
+name|Test
 DECL|method|testSimpleUpdate ()
 specifier|public
 name|void
@@ -4051,7 +3839,9 @@ block|}
 block|}
 block|}
 block|}
-comment|/** 	 * Is XML in text properties properly escaped? 	 *  	 * @throws Exception 	 *  	 */
+comment|/**      * Is XML in text properties properly escaped?      *      * @throws Exception      */
+annotation|@
+name|Test
 DECL|method|testXMLEscape ()
 specifier|public
 name|void
@@ -4308,7 +4098,7 @@ else|else
 block|{
 name|assertEquals
 argument_list|(
-literal|""
+literal|"comparing "
 operator|+
 name|field
 argument_list|,
@@ -4349,7 +4139,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 *  	 * @depends XMPUtilTest.testReadMultiple() 	 */
+comment|/**      * @depends XMPUtilTest.testReadMultiple()      */
+annotation|@
+name|Test
 DECL|method|testXMPreadString ()
 specifier|public
 name|void
@@ -4708,7 +4500,9 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Tests whether it is possible to read several BibtexEntries 	 *  	 * @throws Exception 	 *  	 */
+comment|/**      * Tests whether it is possible to read several BibtexEntries      *      * @throws Exception      */
+annotation|@
+name|Test
 DECL|method|testReadMultiple ()
 specifier|public
 name|void
@@ -4824,7 +4618,9 @@ name|b
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Tests whether it is possible to write several Bibtexentries 	 *  	 * @throws TransformerException 	 * @throws IOException 	 *  	 */
+comment|/**      * Tests whether it is possible to write several Bibtexentries      *      * @throws TransformerException      * @throws IOException      */
+annotation|@
+name|Test
 DECL|method|testWriteMultiple ()
 specifier|public
 name|void
@@ -4960,6 +4756,8 @@ name|b
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testReadWriteDC ()
 specifier|public
 name|void
@@ -5407,7 +5205,7 @@ literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/** 			 * Bibtexkey, Journal, pdf, booktitle 			 */
+comment|/**              * Bibtexkey, Journal, pdf, booktitle              */
 name|assertEquals
 argument_list|(
 literal|4
@@ -5444,6 +5242,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testWriteSingleUpdatesDCAndInfo ()
 specifier|public
 name|void
@@ -5890,7 +5690,7 @@ literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/** 			 * Bibtexkey, Journal, pdf, booktitle 			 */
+comment|/**              * Bibtexkey, Journal, pdf, booktitle              */
 name|assertEquals
 argument_list|(
 literal|4
@@ -5927,6 +5727,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testReadRawXMP ()
 specifier|public
 name|void
@@ -6218,7 +6020,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Test whether the command-line client works correctly with writing a 	 * single entry 	 *  	 * @throws Exception 	 *  	 */
+comment|/**      * Test whether the command-line client works correctly with writing a      * single entry      *      * @throws Exception      */
+annotation|@
+name|Test
 DECL|method|testCommandLineSingleBib ()
 specifier|public
 name|void
@@ -6392,7 +6196,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 *  	 *  	 * @depends XMPUtil.writeXMP 	 *  	 */
+comment|/**      * @depends XMPUtil.writeXMP      */
+annotation|@
+name|Test
 DECL|method|testCommandLineSinglePdf ()
 specifier|public
 name|void
@@ -6797,7 +6603,11 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Test whether the command-line client can pick one of several entries from 	 * a bibtex file 	 *  	 * @throws Exception 	 *  	 */
+comment|/**      * Test whether the command-line client can pick one of several entries from      * a bibtex file      *      * @throws Exception      */
+annotation|@
+name|Test
+annotation|@
+name|Ignore
 DECL|method|testCommandLineByKey ()
 specifier|public
 name|void
@@ -6881,6 +6691,8 @@ name|s
 argument_list|)
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|XMPUtil
 operator|.
 name|main
@@ -6903,6 +6715,9 @@ argument_list|()
 block|}
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|System
 operator|.
 name|setOut
@@ -6915,6 +6730,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 comment|// PDF should be annotated:
 name|List
 argument_list|<
@@ -6980,6 +6796,8 @@ name|s
 argument_list|)
 argument_list|)
 expr_stmt|;
+try|try
+block|{
 name|XMPUtil
 operator|.
 name|main
@@ -7002,6 +6820,9 @@ argument_list|()
 block|}
 argument_list|)
 expr_stmt|;
+block|}
+finally|finally
+block|{
 name|System
 operator|.
 name|setOut
@@ -7014,6 +6835,7 @@ operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 comment|// PDF should be annotated:
 name|List
 argument_list|<
@@ -7073,7 +6895,11 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Test whether the command-line client can deal with several bibtex 	 * entries. 	 *  	 */
+comment|/**      * Test whether the command-line client can deal with several bibtex      * entries.      */
+annotation|@
+name|Test
+annotation|@
+name|Ignore
 DECL|method|testCommandLineSeveral ()
 specifier|public
 name|void
@@ -7314,7 +7140,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Test that readXMP and writeXMP work together. 	 *  	 * @throws Exception 	 */
+comment|/**      * Test that readXMP and writeXMP work together.      *      * @throws Exception      */
+annotation|@
+name|Test
 DECL|method|testResolveStrings ()
 specifier|public
 name|void
@@ -7483,7 +7311,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Test that we cannot use encrypted PDFs. 	 */
+comment|/**      * Test that we cannot use encrypted PDFs.      */
+annotation|@
+name|Test
 DECL|method|testEncryption ()
 specifier|public
 name|void
@@ -7523,7 +7353,7 @@ parameter_list|(
 name|EncryptionNotSupportedException
 name|ignored
 parameter_list|)
-block|{ 		}
+block|{         }
 try|try
 block|{
 name|XMPUtil
@@ -7547,17 +7377,17 @@ parameter_list|(
 name|EncryptionNotSupportedException
 name|ignored
 parameter_list|)
-block|{ 		}
+block|{         }
 block|}
-comment|/** 	 * A better testcase for resolveStrings. Makes sure that also the document 	 * information and dublin core are written correctly. 	 *  	 * Data was contributed by Philip K.F. Hï¿½lzenspies (p.k.f.holzenspies [at] utwente.nl). 	 *  	 * @throws IOException 	 * @throws FileNotFoundException 	 * @throws TransformerException 	 *  	 */
+comment|/**      * A better testcase for resolveStrings. Makes sure that also the document      * information and dublin core are written correctly.      *<p/>      * Data was contributed by Philip K.F. Hï¿½lzenspies (p.k.f.holzenspies [at] utwente.nl).      *      * @throws IOException      * @throws TransformerException      */
+annotation|@
+name|Test
 DECL|method|testResolveStrings2 ()
 specifier|public
 name|void
 name|testResolveStrings2
 parameter_list|()
 throws|throws
-name|FileNotFoundException
-throws|,
 name|IOException
 throws|,
 name|TransformerException
@@ -7911,7 +7741,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Read the contents of a reader as one string 	 *  	 * @param reader 	 * @return 	 * @throws IOException 	 */
+comment|/**      * Read the contents of a reader as one string      *      * @param reader      * @return      * @throws IOException      */
 DECL|method|slurp (Reader reader)
 specifier|public
 specifier|static

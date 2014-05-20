@@ -22,16 +22,6 @@ end_package
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -48,24 +38,28 @@ end_import
 
 begin_import
 import|import
-name|net
+name|org
 operator|.
-name|sf
+name|junit
 operator|.
-name|jabref
+name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
 operator|.
-name|export
+name|junit
 operator|.
-name|layout
+name|Assert
 operator|.
-name|format
-operator|.
-name|AuthorAndsReplacer
+name|assertEquals
 import|;
 end_import
 
 begin_comment
-comment|/**  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  * @author $Author$  * @version $Revision$ ($Date$)  */
 end_comment
 
 begin_class
@@ -73,10 +67,10 @@ DECL|class|AuthorAndsReplacerTest
 specifier|public
 class|class
 name|AuthorAndsReplacerTest
-extends|extends
-name|TestCase
 block|{
-comment|/** 	 * Test method for 	 * {@link net.sf.jabref.export.layout.format.AuthorAndsReplacer#format(java.lang.String)}. 	 */
+comment|/**      * Test method for      * {@link net.sf.jabref.export.layout.format.AuthorAndsReplacer#format(java.lang.String)}.      */
+annotation|@
+name|Test
 DECL|method|testFormat ()
 specifier|public
 name|void

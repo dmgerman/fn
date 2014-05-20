@@ -12,11 +12,69 @@ end_package
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|awt
+name|sf
 operator|.
-name|Container
+name|jabref
+operator|.
+name|imports
+operator|.
+name|BibtexParser
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|imports
+operator|.
+name|ParserResult
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|*
 import|;
 end_import
 
@@ -26,7 +84,7 @@ name|java
 operator|.
 name|awt
 operator|.
-name|Dialog
+name|*
 import|;
 end_import
 
@@ -72,59 +130,23 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|swing
+name|util
 operator|.
-name|JDialog
+name|List
 import|;
 end_import
 
 begin_import
-import|import
-name|javax
+import|import static
+name|org
 operator|.
-name|swing
-operator|.
-name|JWindow
-import|;
-end_import
-
-begin_import
-import|import
 name|junit
 operator|.
-name|framework
+name|Assert
 operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|imports
-operator|.
-name|BibtexParser
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|imports
-operator|.
-name|ParserResult
+name|*
 import|;
 end_import
 
@@ -133,9 +155,9 @@ DECL|class|UtilTest
 specifier|public
 class|class
 name|UtilTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 DECL|method|testNCase ()
 specifier|public
 name|void
@@ -191,6 +213,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testGetPublicationDate ()
 specifier|public
 name|void
@@ -300,6 +324,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testCheckName ()
 specifier|public
 name|void
@@ -367,6 +393,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testCreateNeutralId ()
 specifier|public
 name|void
@@ -428,6 +456,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
+annotation|@
+name|Ignore
 DECL|method|testPlaceDialog ()
 specifier|public
 name|void
@@ -552,6 +584,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testParseField ()
 specifier|public
 name|void
@@ -633,6 +667,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testShaveString ()
 specifier|public
 name|void
@@ -736,6 +772,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+annotation|@
+name|Ignore
 DECL|method|testCheckLegalKey ()
 specifier|public
 name|void
@@ -791,6 +831,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+annotation|@
+name|Ignore
 DECL|method|testReplaceSpecialCharacters ()
 specifier|public
 name|void
@@ -823,6 +867,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testJoin ()
 specifier|public
 name|void
@@ -942,6 +988,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testStripBrackets ()
 specifier|public
 name|void
@@ -1074,7 +1122,7 @@ parameter_list|(
 name|NullPointerException
 name|ignored
 parameter_list|)
-block|{  		}
+block|{          }
 block|}
 DECL|field|database
 name|BibtexDatabase
@@ -1084,6 +1132,8 @@ DECL|field|entry
 name|BibtexEntry
 name|entry
 decl_stmt|;
+annotation|@
+name|Before
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -1211,6 +1261,8 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testParseMethodCalls ()
 specifier|public
 name|void
@@ -1620,6 +1672,10 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+annotation|@
+name|Ignore
 DECL|method|testFieldAndFormat ()
 specifier|public
 name|void
@@ -1755,6 +1811,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+annotation|@
+name|Ignore
 DECL|method|testUserFieldAndFormat ()
 specifier|public
 name|void
@@ -1982,6 +2042,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testExpandBrackets ()
 specifier|public
 name|void
@@ -2085,6 +2147,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testSanitizeUrl ()
 specifier|public
 name|void
@@ -2151,7 +2215,7 @@ literal|"\\url{www.vg.no/fil%20e.html}"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/**              * DOI Test cases              */
+comment|/**          * DOI Test cases          */
 name|assertEquals
 argument_list|(
 literal|"http://dx.doi.org/10.1109/VLHCC.2004.20"
@@ -2200,7 +2264,7 @@ literal|"doi:10.1109/VLHCC.2004.20"
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/**              * Additional testcases provided by Hannes Restel and Micha Beckmann.              */
+comment|/**          * Additional testcases provided by Hannes Restel and Micha Beckmann.          */
 name|assertEquals
 argument_list|(
 literal|"ftp://www.vg.no"
@@ -2274,6 +2338,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|test2to4DigitsYear ()
 specifier|public
 name|void
@@ -2602,6 +2668,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testToMonthNumber ()
 specifier|public
 name|void
@@ -3345,6 +3413,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testToUpperCharFirst ()
 specifier|public
 name|void
@@ -3425,6 +3495,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Tests Util.checkForDOI(...) for right functionality      */
+annotation|@
+name|Test
 DECL|method|testCheckForDoi ()
 specifier|public
 name|void
@@ -3541,6 +3613,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Tests Util.parseDOI(...) for right functionality      */
+annotation|@
+name|Test
 DECL|method|testParseDoi ()
 specifier|public
 name|void

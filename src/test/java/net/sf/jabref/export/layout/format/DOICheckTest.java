@@ -18,16 +18,6 @@ end_package
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -44,19 +34,33 @@ end_import
 
 begin_import
 import|import
-name|net
+name|org
 operator|.
-name|sf
+name|junit
 operator|.
-name|jabref
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|export
+name|junit
 operator|.
-name|layout
+name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
 operator|.
-name|format
+name|junit
 operator|.
-name|DOICheck
+name|Assert
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -65,9 +69,11 @@ DECL|class|DOICheckTest
 specifier|public
 class|class
 name|DOICheckTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
+annotation|@
+name|Ignore
 DECL|method|testFormat ()
 specifier|public
 name|void

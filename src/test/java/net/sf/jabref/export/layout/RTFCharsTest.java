@@ -16,32 +16,6 @@ end_package
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|export
-operator|.
-name|layout
-operator|.
-name|LayoutFormatter
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -58,14 +32,46 @@ name|RTFChars
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
 begin_class
 DECL|class|RTFCharsTest
 specifier|public
 class|class
 name|RTFCharsTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 DECL|method|testBasicFormat ()
 specifier|public
 name|void
@@ -141,6 +147,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testLaTeXHighlighting ()
 specifier|public
 name|void
@@ -227,6 +235,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+annotation|@
+name|Ignore
 DECL|method|testComplicated ()
 specifier|public
 name|void
@@ -265,6 +277,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+annotation|@
+name|Ignore
 DECL|method|testSpecialCharacters ()
 specifier|public
 name|void

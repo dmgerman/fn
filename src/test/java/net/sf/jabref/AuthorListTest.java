@@ -12,28 +12,28 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
-operator|.
-name|TestCase
+name|Test
 import|;
 end_import
 
 begin_import
-import|import
-name|net
+import|import static
+name|org
 operator|.
-name|sf
+name|junit
 operator|.
-name|jabref
+name|Assert
 operator|.
-name|AuthorList
+name|*
 import|;
 end_import
 
 begin_comment
-comment|/**  *   * @see net.sf.jabref.AuthorList Class tested.  *   * @author Christopher Oezbek<oezi@oezi.de>  *   * @version 0.1 - Still fails for stuff in AuthorList that is ambiguous  */
+comment|/**  * @author Christopher Oezbek<oezi@oezi.de>  * @version 0.1 - Still fails for stuff in AuthorList that is ambiguous  * @see net.sf.jabref.AuthorList Class tested.  */
 end_comment
 
 begin_class
@@ -41,9 +41,9 @@ DECL|class|AuthorListTest
 specifier|public
 class|class
 name|AuthorListTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 DECL|method|testFixAuthor_Natbib ()
 specifier|public
 name|void
@@ -132,6 +132,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testGetAuthorList ()
 specifier|public
 name|void
@@ -174,6 +176,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testFixAuthor_firstNameFirstCommas ()
 specifier|public
 name|void
@@ -561,6 +565,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testFixAuthor_firstNameFirst ()
 specifier|public
 name|void
@@ -649,6 +655,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testFixAuthor_lastNameFirstCommas ()
 specifier|public
 name|void
@@ -1066,6 +1074,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testFixAuthor_lastNameFirst ()
 specifier|public
 name|void
@@ -1340,6 +1350,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testFixAuthor_lastNameOnlyCommas ()
 specifier|public
 name|void
@@ -1537,6 +1549,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testFixAuthorForAlphabetization ()
 specifier|public
 name|void
@@ -1616,6 +1630,8 @@ name|size
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Test
 DECL|method|testSize ()
 specifier|public
 name|void
@@ -1770,6 +1786,8 @@ literal|" and Albert Einstein"
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testGetAuthor ()
 specifier|public
 name|void
@@ -1799,7 +1817,7 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{ 		}
+block|{         }
 name|AuthorList
 operator|.
 name|Author
@@ -2146,6 +2164,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testGetAuthorsNatbib ()
 specifier|public
 name|void
@@ -2258,6 +2278,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testGetAuthorsLastOnly ()
 specifier|public
 name|void
@@ -2407,6 +2429,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testGetAuthorsLastFirst ()
 specifier|public
 name|void
@@ -2770,6 +2794,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testGetAuthorsLastFirstAnds ()
 specifier|public
 name|void
@@ -2913,6 +2939,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testGetAuthorsFirstFirst ()
 specifier|public
 name|void
@@ -3248,6 +3276,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testGetAuthorsFirstFirstAnds ()
 specifier|public
 name|void
@@ -3315,6 +3345,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testGetAuthorsForAlphabetization ()
 specifier|public
 name|void
@@ -3382,6 +3414,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testRemoveStartAndEndBraces ()
 specifier|public
 name|void

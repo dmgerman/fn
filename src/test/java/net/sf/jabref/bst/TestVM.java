@@ -14,66 +14,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|StringReader
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -156,14 +96,86 @@ name|RecognitionException
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|StringReader
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Collection
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Vector
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|*
+import|;
+end_import
+
 begin_class
 DECL|class|TestVM
 specifier|public
 class|class
 name|TestVM
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 DECL|method|testAbbrv ()
 specifier|public
 name|void
@@ -240,6 +252,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testVMSimple ()
 specifier|public
 name|void
@@ -387,6 +401,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testLabel ()
 specifier|public
 name|void
@@ -456,6 +472,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testQuote ()
 specifier|public
 name|void
@@ -509,6 +527,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testVMFunction1 ()
 specifier|public
 name|void
@@ -606,6 +626,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testVMExecuteSimple ()
 specifier|public
 name|void
@@ -887,6 +909,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testVMIfSkipPop ()
 specifier|public
 name|void
@@ -1104,6 +1128,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testVMArithmetic ()
 specifier|public
 name|void
@@ -1233,9 +1259,11 @@ parameter_list|(
 name|VMException
 name|ignored
 parameter_list|)
-block|{  			}
+block|{              }
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testNumNames ()
 specifier|public
 name|void
@@ -1365,6 +1393,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testVMStringOps1 ()
 specifier|public
 name|void
@@ -1543,6 +1573,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testSubstring ()
 specifier|public
 name|void
@@ -1742,6 +1774,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testEmpty ()
 specifier|public
 name|void
@@ -1894,6 +1928,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testDuplicateEmptyPopSwapIf ()
 specifier|public
 name|void
@@ -1993,6 +2029,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testChangeCase ()
 specifier|public
 name|void
@@ -2126,6 +2164,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testTextLength ()
 specifier|public
 name|void
@@ -2303,6 +2343,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testVMIntToStr ()
 specifier|public
 name|void
@@ -2387,6 +2429,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testVMChrToInt ()
 specifier|public
 name|void
@@ -2516,6 +2560,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testSort ()
 specifier|public
 name|void
@@ -2683,6 +2729,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testBuildIn ()
 specifier|public
 name|void
@@ -2749,6 +2797,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testVariables ()
 specifier|public
 name|void
@@ -2802,6 +2852,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testWhile ()
 specifier|public
 name|void
@@ -2924,6 +2976,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testType ()
 specifier|public
 name|void
@@ -3073,6 +3127,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testMissing ()
 specifier|public
 name|void
@@ -3212,6 +3268,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testFormatName ()
 specifier|public
 name|void
@@ -3385,6 +3443,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testCallType ()
 specifier|public
 name|void
@@ -3501,6 +3561,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testIterate ()
 specifier|public
 name|void
@@ -3653,6 +3715,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testWidth ()
 specifier|public
 name|void
@@ -3831,6 +3895,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testVMSwap ()
 specifier|public
 name|void
@@ -3994,6 +4060,8 @@ operator|+
 literal|"  url = {http://james.howison.name/publications.html}}\n"
 return|;
 block|}
+annotation|@
+name|Test
 DECL|method|testHypthenatedName ()
 specifier|public
 name|void

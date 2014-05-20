@@ -14,39 +14,35 @@ end_package
 
 begin_import
 import|import
-name|net
+name|org
 operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|bst
-operator|.
-name|BibtexPurify
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|bst
-operator|.
-name|Warn
-import|;
-end_import
-
-begin_import
-import|import
 name|junit
 operator|.
-name|framework
+name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
 operator|.
-name|TestCase
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
 import|;
 end_import
 
@@ -55,9 +51,9 @@ DECL|class|BibtexPurifyTest
 specifier|public
 class|class
 name|BibtexPurifyTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 DECL|method|testPurify ()
 specifier|public
 name|void

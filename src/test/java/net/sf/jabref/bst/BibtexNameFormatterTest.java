@@ -14,16 +14,6 @@ end_package
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -36,29 +26,35 @@ end_import
 
 begin_import
 import|import
-name|net
+name|org
 operator|.
-name|sf
+name|junit
 operator|.
-name|jabref
-operator|.
-name|bst
-operator|.
-name|BibtexNameFormatter
+name|Test
 import|;
 end_import
 
 begin_import
-import|import
-name|net
+import|import static
+name|org
 operator|.
-name|sf
+name|junit
 operator|.
-name|jabref
+name|Assert
 operator|.
-name|bst
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
 operator|.
-name|Warn
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
 import|;
 end_import
 
@@ -67,9 +63,9 @@ DECL|class|BibtexNameFormatterTest
 specifier|public
 class|class
 name|BibtexNameFormatterTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 DECL|method|testFormatName ()
 specifier|public
 name|void
@@ -492,6 +488,8 @@ literal|"{vv~}{ll}{, jj}{, f}?"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testConsumeToMatchingBrace ()
 specifier|public
 name|void
@@ -613,6 +611,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testGetFirstCharOfString ()
 specifier|public
 name|void
@@ -680,6 +680,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testNumberOfChars ()
 specifier|public
 name|void

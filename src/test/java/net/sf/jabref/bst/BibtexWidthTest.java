@@ -14,44 +14,40 @@ end_package
 
 begin_import
 import|import
-name|net
+name|org
 operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|bst
-operator|.
-name|BibtexWidth
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|bst
-operator|.
-name|Warn
-import|;
-end_import
-
-begin_import
-import|import
 name|junit
 operator|.
-name|framework
+name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
 operator|.
-name|TestCase
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
 import|;
 end_import
 
 begin_comment
-comment|/**  * How to create these test using Bibtex:  *   * Execute this charWidth.bst with the following charWidth.aux:  *   *   *<code>  ENTRY{}{}{}  FUNCTION{test}  {  "i" width$ int.to.str$ write$ newline$  "0I~ " width$ int.to.str$ write$ newline$  "Hi Hi " width$ int.to.str$ write$ newline$  "{\oe}" width$ int.to.str$ write$ newline$  "Hi {\oe   }Hi " width$ int.to.str$ write$ newline$  }  READ  EXECUTE{test}</code>  *   *<code>  \bibstyle{charWidth}  \citation{canh05}  \bibdata{test}  \bibcite{canh05}{CMM{$^{+}$}05}</code>  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  * How to create these test using Bibtex:  *<p/>  * Execute this charWidth.bst with the following charWidth.aux:  *<p/>  *<p/>  *<code>  * ENTRY{}{}{}  * FUNCTION{test}  * {  * "i" width$ int.to.str$ write$ newline$  * "0I~ " width$ int.to.str$ write$ newline$  * "Hi Hi " width$ int.to.str$ write$ newline$  * "{\oe}" width$ int.to.str$ write$ newline$  * "Hi {\oe   }Hi " width$ int.to.str$ write$ newline$  * }  * READ  * EXECUTE{test}  *</code>  *<p/>  *<code>  * \bibstyle{charWidth}  * \citation{canh05}  * \bibdata{test}  * \bibcite{canh05}{CMM{$^{+}$}05}  *</code>  *  * @author $Author$  * @version $Revision$ ($Date$)  */
 end_comment
 
 begin_class
@@ -59,8 +55,6 @@ DECL|class|BibtexWidthTest
 specifier|public
 class|class
 name|BibtexWidthTest
-extends|extends
-name|TestCase
 block|{
 DECL|method|assertBibtexWidth (final int i, final String string)
 name|void
@@ -114,6 +108,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testWidth ()
 specifier|public
 name|void
@@ -184,6 +180,8 @@ literal|"Jonathan Meyer and Charles Louis Xavier Joseph de la Vall{\\'e}e Poussi
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testGetCharWidth ()
 specifier|public
 name|void

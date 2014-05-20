@@ -14,6 +14,38 @@ end_package
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -43,77 +75,31 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Assert
 operator|.
-name|TestCase
+name|assertEquals
 import|;
 end_import
 
 begin_import
-import|import
-name|net
+import|import static
+name|org
 operator|.
-name|sf
+name|junit
 operator|.
-name|jabref
+name|Assert
 operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|OutputPrinterToNull
+name|assertTrue
 import|;
 end_import
 
 begin_comment
-comment|/**  * Test cases for the IsiImporter  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  * Test cases for the IsiImporter  *  * @author $Author$  * @version $Revision$ ($Date$)  */
 end_comment
 
 begin_class
@@ -121,22 +107,17 @@ DECL|class|IsiImporterTest
 specifier|public
 class|class
 name|IsiImporterTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Before
 DECL|method|setUp ()
-specifier|protected
+specifier|public
 name|void
 name|setUp
 parameter_list|()
 throws|throws
 name|Exception
 block|{
-name|super
-operator|.
-name|setUp
-argument_list|()
-expr_stmt|;
 if|if
 condition|(
 name|Globals
@@ -157,20 +138,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|tearDown ()
-specifier|protected
-name|void
-name|tearDown
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|super
-operator|.
-name|tearDown
-argument_list|()
-expr_stmt|;
-block|}
+annotation|@
+name|Test
 DECL|method|testIsRecognizedFormat ()
 specifier|public
 name|void
@@ -255,6 +224,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testProcessSubSup ()
 specifier|public
 name|void
@@ -559,6 +530,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testImportEntries ()
 specifier|public
 name|void
@@ -716,6 +689,8 @@ argument_list|)
 expr_stmt|;
 comment|// What todo with PD and UT?
 block|}
+annotation|@
+name|Test
 DECL|method|testImportEntriesINSPEC ()
 specifier|public
 name|void
@@ -998,6 +973,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testImportEntriesWOS ()
 specifier|public
 name|void
@@ -1133,6 +1110,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testIsiAuthorsConvert ()
 specifier|public
 name|void
@@ -1164,6 +1143,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testMonthConvert ()
 specifier|public
 name|void
@@ -1267,6 +1248,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testIsiAuthorConvert ()
 specifier|public
 name|void
@@ -1382,14 +1365,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|testGetExtensions ()
-specifier|public
-name|void
-name|testGetExtensions
-parameter_list|()
-block|{
-comment|// new IsiImporter().getExtensions();
-block|}
+annotation|@
+name|Test
 DECL|method|testGetIsCustomImporter ()
 specifier|public
 name|void
@@ -1414,6 +1391,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testImportIEEEExport ()
 specifier|public
 name|void
@@ -1652,6 +1631,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testImportEntriesMedline ()
 specifier|public
 name|void

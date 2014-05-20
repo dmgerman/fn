@@ -14,6 +14,16 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -23,17 +33,31 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Assert
 operator|.
-name|TestCase
+name|assertFalse
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertTrue
 import|;
 end_import
 
 begin_comment
-comment|/**  *   * @author Nosh&Dan  * @version 09.11.2008 | 19:41:40  *   */
+comment|/**  * @author Nosh&Dan  * @version 09.11.2008 | 19:41:40  */
 end_comment
 
 begin_class
@@ -41,8 +65,6 @@ DECL|class|ImportDataTest
 specifier|public
 class|class
 name|ImportDataTest
-extends|extends
-name|TestCase
 block|{
 DECL|field|FILE_IN_DATABASE
 specifier|public
@@ -122,7 +144,9 @@ argument_list|(
 literal|"src/test/resources/net/sf/jabref/util/unlinkedFilesTestBib.bib"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Tests the testing environment. 	 */
+comment|/**      * Tests the testing environment.      */
+annotation|@
+name|Test
 DECL|method|testTestingEnvironment ()
 specifier|public
 name|void
@@ -178,6 +202,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testOpenNotExistingDirectory ()
 specifier|public
 name|void

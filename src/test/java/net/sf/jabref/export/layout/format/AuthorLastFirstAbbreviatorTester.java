@@ -18,60 +18,38 @@ end_package
 
 begin_import
 import|import
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
 operator|.
 name|Assert
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
 operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|export
-operator|.
-name|layout
-operator|.
-name|LayoutFormatter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|export
-operator|.
-name|layout
-operator|.
-name|format
-operator|.
-name|AuthorLastFirstAbbreviator
+name|assertEquals
 import|;
 end_import
 
 begin_comment
-comment|/**  * Test case  that verifies the functionalities of the  * formater AuthorLastFirstAbbreviator.  *   * @author Carlos Silla  * @author Christopher Oezbek<oezi@oezi.de>  */
+comment|/**  * Test case  that verifies the functionalities of the  * formater AuthorLastFirstAbbreviator.  *  * @author Carlos Silla  * @author Christopher Oezbek<oezi@oezi.de>  */
 end_comment
 
 begin_class
@@ -79,10 +57,10 @@ DECL|class|AuthorLastFirstAbbreviatorTester
 specifier|public
 class|class
 name|AuthorLastFirstAbbreviatorTester
-extends|extends
-name|TestCase
 block|{
-comment|/** 	 * Verifies the Abbreviation of one single author with a simple name. 	 *  	 * Ex: Lastname, Name 	 */
+comment|/**      * Verifies the Abbreviation of one single author with a simple name.      *<p/>      * Ex: Lastname, Name      */
+annotation|@
+name|Test
 DECL|method|testOneAuthorSimpleName ()
 specifier|public
 name|void
@@ -102,7 +80,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Verifies the Abbreviation of one single author with a common name. 	 *  	 * Ex: Lastname, Name Middlename 	 */
+comment|/**      * Verifies the Abbreviation of one single author with a common name.      *<p/>      * Ex: Lastname, Name Middlename      */
+annotation|@
+name|Test
 DECL|method|testOneAuthorCommonName ()
 specifier|public
 name|void
@@ -122,7 +102,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Verifies the Abbreviation of two single with a common name. 	 *  	 * Ex: Lastname, Name Middlename 	 */
+comment|/**      * Verifies the Abbreviation of two single with a common name.      *<p/>      * Ex: Lastname, Name Middlename      */
+annotation|@
+name|Test
 DECL|method|testTwoAuthorsCommonName ()
 specifier|public
 name|void
@@ -152,7 +134,11 @@ name|result
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Testcase for  	 * http://sourceforge.net/tracker/index.php?func=detail&aid=1466924&group_id=92314&atid=600306 	 */
+comment|/**      * Testcase for      * http://sourceforge.net/tracker/index.php?func=detail&aid=1466924&group_id=92314&atid=600306      */
+annotation|@
+name|Test
+annotation|@
+name|Ignore
 DECL|method|testJrAuthor ()
 specifier|public
 name|void
@@ -171,6 +157,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testFormat ()
 specifier|public
 name|void

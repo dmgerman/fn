@@ -12,84 +12,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|StringReader
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexDatabase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -116,6 +38,58 @@ name|ParserResult
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|After
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|StringReader
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|*
+import|;
+end_import
+
 begin_comment
 comment|/**  * A base class for Testing in JabRef that comes along with some useful  * functions.  */
 end_comment
@@ -125,10 +99,8 @@ DECL|class|FileBasedTestCase
 specifier|public
 class|class
 name|FileBasedTestCase
-extends|extends
-name|TestCase
 block|{
-comment|/** 	 * Will check if two paths are the same. 	 */
+comment|/**      * Will check if two paths are the same.      */
 DECL|method|assertEqualPaths (String path1, String path2)
 specifier|public
 specifier|static
@@ -174,7 +146,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Creates a temp directory in the System temp directory. 	 *  	 * Taken from 	 * http://forum.java.sun.com/thread.jspa?threadID=470197&messageID=2169110 	 *  	 * Author: jfbriere 	 *  	 * @return returns null if directory could not created. 	 */
+comment|/**      * Creates a temp directory in the System temp directory.      *<p/>      * Taken from      * http://forum.java.sun.com/thread.jspa?threadID=470197&messageID=2169110      *<p/>      * Author: jfbriere      *      * @return returns null if directory could not created.      */
 DECL|method|createTempDir (String prefix)
 specifier|public
 specifier|static
@@ -194,7 +166,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Creates a temp directory in a given directory. 	 *  	 * Taken from 	 * http://forum.java.sun.com/thread.jspa?threadID=470197&messageID=2169110 	 *  	 * Author: jfbriere 	 *  	 * @param directory 	 *            MayBeNull - null indicates that the system tmp directory 	 *            should be used. 	 *  	 * @return returns null if directory could not created. 	 */
+comment|/**      * Creates a temp directory in a given directory.      *<p/>      * Taken from      * http://forum.java.sun.com/thread.jspa?threadID=470197&messageID=2169110      *<p/>      * Author: jfbriere      *      * @param directory MayBeNull - null indicates that the system tmp directory      *                  should be used.      * @return returns null if directory could not created.      */
 DECL|method|createTempDir (String prefix, File directory)
 specifier|public
 specifier|static
@@ -261,7 +233,7 @@ literal|null
 return|;
 block|}
 block|}
-comment|/** 	 * Deletes a directory or file 	 *  	 * Taken from 	 * http://forum.java.sun.com/thread.jspa?threadID=470197&messageID=2169110 	 *  	 * Author: jfbriere 	 *  	 * @param file 	 */
+comment|/**      * Deletes a directory or file      *<p/>      * Taken from      * http://forum.java.sun.com/thread.jspa?threadID=470197&messageID=2169110      *<p/>      * Author: jfbriere      *      * @param file      */
 DECL|method|deleteRecursive (File file)
 specifier|public
 specifier|static
@@ -452,6 +424,8 @@ return|return
 name|entry
 return|;
 block|}
+annotation|@
+name|Before
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -887,6 +861,8 @@ argument_list|()
 throw|;
 block|}
 block|}
+annotation|@
+name|After
 DECL|method|tearDown ()
 specifier|public
 name|void
@@ -936,14 +912,6 @@ name|oldPdfDirectory
 argument_list|)
 expr_stmt|;
 comment|// TODO: This is not a great way to do this, sure ;-)
-block|}
-DECL|method|testVoid ()
-specifier|public
-name|void
-name|testVoid
-parameter_list|()
-block|{
-comment|// to remove warning
 block|}
 block|}
 end_class

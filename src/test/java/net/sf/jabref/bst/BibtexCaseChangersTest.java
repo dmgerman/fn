@@ -14,39 +14,35 @@ end_package
 
 begin_import
 import|import
-name|net
+name|org
 operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|bst
-operator|.
-name|BibtexCaseChanger
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|bst
-operator|.
-name|Warn
-import|;
-end_import
-
-begin_import
-import|import
 name|junit
 operator|.
-name|framework
+name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
 operator|.
-name|TestCase
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
 import|;
 end_import
 
@@ -55,9 +51,9 @@ DECL|class|BibtexCaseChangersTest
 specifier|public
 class|class
 name|BibtexCaseChangersTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 DECL|method|testChangeCase ()
 specifier|public
 name|void
@@ -408,6 +404,8 @@ literal|"On Notions of Information Transfer in {VLSI} Circuits"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testColon ()
 specifier|public
 name|void

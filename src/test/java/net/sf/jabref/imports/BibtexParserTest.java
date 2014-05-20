@@ -14,6 +14,50 @@ end_package
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexEntryType
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -63,69 +107,19 @@ import|;
 end_import
 
 begin_import
-import|import
+import|import static
+name|org
+operator|.
 name|junit
 operator|.
-name|framework
+name|Assert
 operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|imports
-operator|.
-name|BibtexParser
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|imports
-operator|.
-name|ParserResult
+name|*
 import|;
 end_import
 
 begin_comment
-comment|/**  * Test the BibtexParser  *   * @version $revision: 1.1$ $date: $  *   * @author Christopher Oezbek<oezi@oezi.de>  */
+comment|/**  * Test the BibtexParser  *  * @author Christopher Oezbek<oezi@oezi.de>  * @version $revision: 1.1$ $date: $  */
 end_comment
 
 begin_class
@@ -133,9 +127,9 @@ DECL|class|BibtexParserTest
 specifier|public
 class|class
 name|BibtexParserTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 DECL|method|testParseReader ()
 specifier|public
 name|void
@@ -250,6 +244,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testBibtexParser ()
 specifier|public
 name|void
@@ -275,8 +271,10 @@ parameter_list|(
 name|NullPointerException
 name|ignored
 parameter_list|)
-block|{  		}
+block|{          }
 block|}
+annotation|@
+name|Test
 DECL|method|testIsRecognizedFormat ()
 specifier|public
 name|void
@@ -472,6 +470,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testFromString ()
 specifier|public
 name|void
@@ -615,13 +615,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testFromSingle2 ()
 specifier|public
 name|void
 name|testFromSingle2
 parameter_list|()
 block|{
-comment|/** 		 * More 		 */
+comment|/**          * More          */
 name|Collection
 argument_list|<
 name|BibtexEntry
@@ -788,6 +790,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testFromStringSingle ()
 specifier|public
 name|void
@@ -903,6 +907,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testParse ()
 specifier|public
 name|void
@@ -1028,6 +1034,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testParse2 ()
 specifier|public
 name|void
@@ -1178,7 +1186,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 	 * Test for [ 1594123 ] Failure to import big numbers 	 *  	 * Issue Reported by Ulf Martin. 	 *  	 * @throws IOException 	 */
+comment|/**      * Test for [ 1594123 ] Failure to import big numbers      *<p/>      * Issue Reported by Ulf Martin.      *      * @throws IOException      */
+annotation|@
+name|Test
 DECL|method|testBigNumbers ()
 specifier|public
 name|void
@@ -1271,6 +1281,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testBigNumbers2 ()
 specifier|public
 name|void
@@ -1441,6 +1453,10 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+annotation|@
+name|Ignore
 DECL|method|testNewlineHandling ()
 specifier|public
 name|void
@@ -1571,7 +1587,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Test for [2022983] 	 *  	 * @author Uwe Kuehn 	 * @author Andrei Haralevich 	 */
+comment|/**      * Test for [2022983]      *      * @author Uwe Kuehn      * @author Andrei Haralevich      */
+annotation|@
+name|Test
 DECL|method|testFileNaming ()
 specifier|public
 name|void
@@ -1609,7 +1627,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Test for [2022983] 	 *  	 * @author Uwe Kuehn 	 * @author Andrei Haralevich 	 */
+comment|/**      * Test for [2022983]      *      * @author Uwe Kuehn      * @author Andrei Haralevich      */
+annotation|@
+name|Test
 DECL|method|testFileNaming1 ()
 specifier|public
 name|void
@@ -1647,7 +1667,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Test for [2022983] 	 *  	 * @author Uwe Kuehn 	 * @author Andrei Haralevich 	 */
+comment|/**      * Test for [2022983]      *      * @author Uwe Kuehn      * @author Andrei Haralevich      */
+annotation|@
+name|Test
+annotation|@
+name|Ignore
 DECL|method|testFileNaming3 ()
 specifier|public
 name|void

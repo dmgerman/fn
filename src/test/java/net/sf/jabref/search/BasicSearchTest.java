@@ -14,16 +14,6 @@ end_package
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -36,15 +26,23 @@ end_import
 
 begin_import
 import|import
-name|net
+name|org
 operator|.
-name|sf
+name|junit
 operator|.
-name|jabref
+name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
 operator|.
-name|search
+name|junit
 operator|.
-name|BasicSearch
+name|Assert
+operator|.
+name|assertEquals
 import|;
 end_import
 
@@ -57,9 +55,9 @@ DECL|class|BasicSearchTest
 specifier|public
 class|class
 name|BasicSearchTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Test
 DECL|method|testBasicSearchParsing ()
 specifier|public
 name|void

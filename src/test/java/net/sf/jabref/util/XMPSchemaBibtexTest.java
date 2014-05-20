@@ -14,87 +14,13 @@ end_package
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|io
+name|sf
 operator|.
-name|ByteArrayInputStream
-import|;
-end_import
-
-begin_import
-import|import
-name|java
+name|jabref
 operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|parsers
-operator|.
-name|DocumentBuilder
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|parsers
-operator|.
-name|DocumentBuilderFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|xml
-operator|.
-name|parsers
-operator|.
-name|ParserConfigurationException
-import|;
-end_import
-
-begin_import
-import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
+name|BibtexEntry
 import|;
 end_import
 
@@ -106,7 +32,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibtexEntry
+name|FileBasedTestCase
 import|;
 end_import
 
@@ -135,6 +61,16 @@ operator|.
 name|xmp
 operator|.
 name|XMPMetadata
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -176,13 +112,89 @@ end_import
 
 begin_import
 import|import
-name|net
+name|javax
 operator|.
-name|sf
+name|xml
 operator|.
-name|jabref
+name|parsers
 operator|.
-name|FileBasedTestCase
+name|DocumentBuilder
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|parsers
+operator|.
+name|DocumentBuilderFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|xml
+operator|.
+name|parsers
+operator|.
+name|ParserConfigurationException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|ByteArrayInputStream
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Map
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|*
 import|;
 end_import
 
@@ -191,8 +203,6 @@ DECL|class|XMPSchemaBibtexTest
 specifier|public
 class|class
 name|XMPSchemaBibtexTest
-extends|extends
-name|TestCase
 block|{
 DECL|method|assertEqualsBibtexEntry (BibtexEntry e, BibtexEntry x)
 specifier|public
@@ -281,34 +291,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|setUp ()
-specifier|protected
-name|void
-name|setUp
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|super
-operator|.
-name|setUp
-argument_list|()
-expr_stmt|;
-block|}
-DECL|method|tearDown ()
-specifier|protected
-name|void
-name|tearDown
-parameter_list|()
-throws|throws
-name|Exception
-block|{
-name|super
-operator|.
-name|tearDown
-argument_list|()
-expr_stmt|;
-block|}
+annotation|@
+name|Test
 DECL|method|testXMPSchemaBibtexXMPMetadata ()
 specifier|public
 name|void
@@ -355,6 +339,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testXMPSchemaBibtexElement ()
 specifier|public
 name|void
@@ -427,6 +413,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testGetSetPersonList ()
 specifier|public
 name|void
@@ -600,6 +588,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testSetGetTextPropertyString ()
 specifier|public
 name|void
@@ -727,6 +717,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testSetGetBagListString ()
 specifier|public
 name|void
@@ -1048,6 +1040,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Test
 DECL|method|testGetSequenceListString ()
 specifier|public
 name|void
@@ -1339,14 +1333,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|testSetRemoveGetSequenceDateListString ()
-specifier|public
-name|void
-name|testSetRemoveGetSequenceDateListString
-parameter_list|()
-block|{
-comment|// We don't use this...
-block|}
+annotation|@
+name|Test
 DECL|method|testGetAllProperties ()
 specifier|public
 name|void
@@ -1524,6 +1512,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testSetBibtexEntry ()
 specifier|public
 name|void
@@ -1581,6 +1571,8 @@ name|e2
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testGetTextContent ()
 specifier|public
 name|void

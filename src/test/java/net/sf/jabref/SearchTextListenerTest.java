@@ -12,11 +12,21 @@ end_package
 
 begin_import
 import|import
-name|java
+name|org
 operator|.
-name|util
+name|junit
 operator|.
-name|ArrayList
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Test
 import|;
 end_import
 
@@ -48,59 +58,23 @@ end_import
 
 begin_import
 import|import
-name|net
+name|java
 operator|.
-name|sf
+name|util
 operator|.
-name|jabref
-operator|.
-name|FieldTextArea
+name|ArrayList
 import|;
 end_import
 
 begin_import
-import|import
-name|net
+import|import static
+name|org
 operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
 name|junit
 operator|.
-name|framework
+name|Assert
 operator|.
-name|TestCase
+name|assertEquals
 import|;
 end_import
 
@@ -109,9 +83,9 @@ DECL|class|SearchTextListenerTest
 specifier|public
 class|class
 name|SearchTextListenerTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Before
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -135,6 +109,8 @@ name|setUpIconTheme
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testHighlighting ()
 specifier|public
 name|void
@@ -417,6 +393,8 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testHighlightingContentIndependence ()
 specifier|public
 name|void
@@ -536,6 +514,8 @@ name|textThree
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testHighlightingInvalidParameter ()
 specifier|public
 name|void

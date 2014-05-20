@@ -14,16 +14,6 @@ end_package
 
 begin_import
 import|import
-name|junit
-operator|.
-name|framework
-operator|.
-name|TestCase
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -74,15 +64,45 @@ end_import
 
 begin_import
 import|import
-name|net
+name|org
 operator|.
-name|sf
+name|junit
 operator|.
-name|jabref
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
 operator|.
-name|labelPattern
+name|junit
 operator|.
-name|LabelPatternUtil
+name|Test
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|fail
 import|;
 end_import
 
@@ -91,9 +111,9 @@ DECL|class|LabelPatternUtilTest
 specifier|public
 class|class
 name|LabelPatternUtilTest
-extends|extends
-name|TestCase
 block|{
+annotation|@
+name|Before
 DECL|method|setUp ()
 specifier|public
 name|void
@@ -110,6 +130,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testAndInAuthorName ()
 specifier|public
 name|void
@@ -152,6 +174,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testAndAuthorNames ()
 specifier|public
 name|void
@@ -193,7 +217,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test for https://sourceforge.net/forum/message.php?msg_id=4498555      * Test the Labelmaker and all kind of accents      * Ã Ã¡ Ä Ä Ã Ã© Ã Ã­ Ä¹ Äº Å Å Ã Ã³ Å Å Å Å Ã Ãº Ã Ã½ Å¹ Åº        */
+comment|/**      * Test for https://sourceforge.net/forum/message.php?msg_id=4498555      * Test the Labelmaker and all kind of accents      * Ã Ã¡ Ä Ä Ã Ã© Ã Ã­ Ä¹ Äº Å Å Ã Ã³ Å Å Å Å Ã Ãº Ã Ã½ Å¹ Åº      */
+annotation|@
+name|Test
 DECL|method|testMakeLabelAndCheckLegalKeys ()
 specifier|public
 name|void
@@ -611,6 +637,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Test the Labelmaker and with accent grave      * Chars to test: "ÃÃÃÃÃ";      */
+annotation|@
+name|Test
 DECL|method|testMakeLabelAndCheckLegalKeysAccentGrave ()
 specifier|public
 name|void
@@ -789,7 +817,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Tests if checkLegalKey replaces Non-ASCII chars.      * There are quite a few chars that should be replaced. Perhaps there is a better method than the current.      * @see net.sf.jabref.Util#checkLegalKey(String)      */
+comment|/**      * Tests if checkLegalKey replaces Non-ASCII chars.      * There are quite a few chars that should be replaced. Perhaps there is a better method than the current.      *      * @see net.sf.jabref.Util#checkLegalKey(String)      */
+annotation|@
+name|Test
 DECL|method|testCheckLegalKey ()
 specifier|public
 name|void
@@ -1117,6 +1147,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
 DECL|method|testFirstAuthor ()
 specifier|public
 name|void
@@ -1192,6 +1224,8 @@ name|ignored
 parameter_list|)
 block|{          }
 block|}
+annotation|@
+name|Test
 DECL|method|testAuthIniN ()
 specifier|public
 name|void
@@ -1368,6 +1402,8 @@ name|ignored
 parameter_list|)
 block|{          }
 block|}
+annotation|@
+name|Test
 DECL|method|testFirstPage ()
 specifier|public
 name|void
@@ -1478,6 +1514,8 @@ name|ignored
 parameter_list|)
 block|{          }
 block|}
+annotation|@
+name|Test
 DECL|method|testLastPage ()
 specifier|public
 name|void
