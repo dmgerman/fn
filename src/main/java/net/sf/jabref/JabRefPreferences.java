@@ -582,6 +582,11 @@ DECL|field|WRITEFIELD_USERDEFINEDORDER
 name|WRITEFIELD_USERDEFINEDORDER
 init|=
 literal|"writefieldUserdefinedOrder"
+decl_stmt|,
+DECL|field|WRITEFIELD_WRAPFIELD
+name|WRITEFIELD_WRAPFIELD
+init|=
+literal|"wrapFieldLine"
 decl_stmt|;
 comment|// This String is used in the encoded list in prefs of external file type
 comment|// modifications, in order to indicate a removed default file type:
@@ -3666,6 +3671,17 @@ argument_list|(
 name|WRITEFIELD_USERDEFINEDORDER
 argument_list|,
 literal|"author;title;journal;year;volume;number;pages;month;note;volume;pages;part;eid"
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+name|WRITEFIELD_WRAPFIELD
+argument_list|,
+name|Boolean
+operator|.
+name|FALSE
 argument_list|)
 expr_stmt|;
 name|defaults

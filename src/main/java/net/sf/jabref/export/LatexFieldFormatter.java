@@ -70,6 +70,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|Util
 import|;
 end_import
@@ -429,13 +441,50 @@ literal|""
 argument_list|)
 expr_stmt|;
 comment|// No formatting at all for these fields, to allow custom formatting?
-comment|//if (Globals.prefs.getBoolean("preserveFieldFormatting"))
-comment|//  sb.append(text);
-comment|//else
-comment|// currently, we do not do any more wrapping
-comment|//if (!Globals.prefs.isNonWrappableField(fieldName))
-comment|//    sb.append(Util.wrap2(text, GUIGlobals.LINE_LENGTH));
-comment|//else
+comment|//            if (Globals.prefs.getBoolean("preserveFieldFormatting"))
+comment|//              sb.append(text);
+comment|//            else
+comment|//             currently, we do not do any more wrapping
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|WRITEFIELD_WRAPFIELD
+argument_list|)
+operator|&&
+operator|!
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|isNonWrappableField
+argument_list|(
+name|fieldName
+argument_list|)
+condition|)
+name|sb
+operator|.
+name|append
+argument_list|(
+name|Util
+operator|.
+name|wrap2
+argument_list|(
+name|text
+argument_list|,
+name|GUIGlobals
+operator|.
+name|LINE_LENGTH
+argument_list|)
+argument_list|)
+expr_stmt|;
+else|else
 name|sb
 operator|.
 name|append
@@ -753,11 +802,49 @@ expr_stmt|;
 comment|//if (tell++> 10) System.exit(0);
 block|}
 comment|// currently, we do not add newlines and new formatting
-comment|//if (!Globals.prefs.isNonWrappableField(fieldName)) {
-comment|// introduce a line break to be read at the parser
-comment|// the old code called Util.wrap2(sb.toString(), GUIGlobals.LINE_LENGTH), but that lead to ugly .tex
-comment|// alternative: return sb.toString().replaceAll(Globals.NEWLINE, Globals.NEWLINE + Globals.NEWLINE);
-comment|//} else
+if|if
+condition|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|WRITEFIELD_WRAPFIELD
+argument_list|)
+operator|&&
+operator|!
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|isNonWrappableField
+argument_list|(
+name|fieldName
+argument_list|)
+condition|)
+block|{
+comment|//             introduce a line break to be read at the parser
+return|return
+name|Util
+operator|.
+name|wrap2
+argument_list|(
+name|sb
+operator|.
+name|toString
+argument_list|()
+argument_list|,
+name|GUIGlobals
+operator|.
+name|LINE_LENGTH
+argument_list|)
+return|;
+comment|//, but that lead to ugly .tex
+block|}
+else|else
 return|return
 name|sb
 operator|.

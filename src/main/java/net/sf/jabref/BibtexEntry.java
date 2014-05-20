@@ -1382,7 +1382,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** old style ver<=2.9.2, write fields in the order of requiredFields, optionalFields and other fields, but does not sort the fields.      * @param out      * @param ff A formatter to filter field contents before writing      * @param write True if this is a write, false if it is a display. The write will not include non-writeable fields if it is a write, otherwise non-displayable fields will be ignored. Refer to GUIGlobals for isWriteableField(String) and isDisplayableField(String).      * @throws IOException      */
+comment|/**      * user defined order      * @param out      * @param ff A formatter to filter field contents before writing      * @param write True if this is a write, false if it is a display. The write will not include non-writeable fields if it is a write, otherwise non-displayable fields will be ignored. Refer to GUIGlobals for isWriteableField(String) and isDisplayableField(String).      * @throws IOException      */
 DECL|method|writeUserOrder (Writer out, FieldFormatter ff, boolean write)
 specifier|private
 name|void
@@ -1693,7 +1693,7 @@ name|NEWLINE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** old style ver<=2.9.2, write fields in the order of requiredFields, optionalFields and other fields, but does not sort the fields.      * @param out      * @param ff A formatter to filter field contents before writing      * @param write True if this is a write, false if it is a display. The write will not include non-writeable fields if it is a write, otherwise non-displayable fields will be ignored. Refer to GUIGlobals for isWriteableField(String) and isDisplayableField(String).      * @throws IOException      */
+comment|/**       * old style ver<=2.9.2, write fields in the order of requiredFields, optionalFields and other fields, but does not sort the fields.      * @param out      * @param ff A formatter to filter field contents before writing      * @param write True if this is a write, false if it is a display. The write will not include non-writeable fields if it is a write, otherwise non-displayable fields will be ignored. Refer to GUIGlobals for isWriteableField(String) and isDisplayableField(String).      * @throws IOException      */
 DECL|method|writeUnsorted (Writer out, FieldFormatter ff, boolean write)
 specifier|private
 name|void
