@@ -1461,6 +1461,16 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
+name|StringIndexOutOfBoundsException
+name|ex
+parameter_list|)
+block|{
+throw|throw
+name|ex
+throw|;
+block|}
+catch|catch
+parameter_list|(
 name|Exception
 name|ex
 parameter_list|)
