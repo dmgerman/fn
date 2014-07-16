@@ -1089,6 +1089,8 @@ block|{
 name|getTestEntry
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|PreviewPanel
 name|testPanel
 init|=
@@ -1145,6 +1147,41 @@ name|PLAIN_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
+catch|catch
+parameter_list|(
+name|StringIndexOutOfBoundsException
+name|ex
+parameter_list|)
+block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+literal|null
+argument_list|,
+literal|"Parsing error: illegal backslash expression.\n"
+operator|+
+name|ex
+operator|.
+name|getMessage
+argument_list|()
+operator|+
+literal|"\nLook at stderr for details."
+argument_list|,
+literal|"Parsing error"
+argument_list|,
+name|JOptionPane
+operator|.
+name|WARNING_MESSAGE
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 block|}
 argument_list|)
 expr_stmt|;
@@ -1167,6 +1204,8 @@ block|{
 name|getTestEntry
 argument_list|()
 expr_stmt|;
+try|try
+block|{
 name|PreviewPanel
 name|testPanel
 init|=
@@ -1226,6 +1265,41 @@ operator|.
 name|PLAIN_MESSAGE
 argument_list|)
 expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|StringIndexOutOfBoundsException
+name|ex
+parameter_list|)
+block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+literal|null
+argument_list|,
+literal|"Parsing error: illegal backslash expression.\n"
+operator|+
+name|ex
+operator|.
+name|getMessage
+argument_list|()
+operator|+
+literal|"\nLook at stderr for details."
+argument_list|,
+literal|"Parsing error"
+argument_list|,
+name|JOptionPane
+operator|.
+name|WARNING_MESSAGE
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
