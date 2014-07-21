@@ -68,6 +68,32 @@ name|JOptionPane
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|com
+operator|.
+name|sun
+operator|.
+name|star
+operator|.
+name|ui
+operator|.
+name|GlobalAcceleratorConfiguration
+import|;
+end_import
+
 begin_comment
 comment|/**  * Helper class to get a Layout object.  *   *<code>  * LayoutHelper helper = new LayoutHelper(...a reader...);  * Layout layout = helper.getLayoutFromText();  *</code>  *  */
 end_comment
@@ -1301,9 +1327,14 @@ throw|throw
 operator|new
 name|StringIndexOutOfBoundsException
 argument_list|(
-literal|"Backslash parsing error near "
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Backslash parsing error near"
+argument_list|)
 operator|+
-literal|"\'"
+literal|" \'"
 operator|+
 name|lastFive
 operator|.
