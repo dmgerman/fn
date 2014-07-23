@@ -1164,20 +1164,50 @@ name|showMessageDialog
 argument_list|(
 literal|null
 argument_list|,
-literal|"Parsing error: illegal backslash expression.\n"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Parsing error"
+argument_list|)
+operator|+
+literal|": "
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"illegal backslash expression"
+argument_list|)
+operator|+
+literal|".\n"
 operator|+
 name|ex
 operator|.
 name|getMessage
 argument_list|()
 operator|+
-literal|"\nLook at stderr for details."
+literal|"\n"
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Look at stderr for details"
+argument_list|)
+operator|+
+literal|"."
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Parsing error"
+argument_list|)
 argument_list|,
 name|JOptionPane
 operator|.
-name|WARNING_MESSAGE
+name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
@@ -1296,7 +1326,7 @@ literal|"Parsing error"
 argument_list|,
 name|JOptionPane
 operator|.
-name|WARNING_MESSAGE
+name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 block|}
