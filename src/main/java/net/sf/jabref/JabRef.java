@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2014 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -899,6 +899,12 @@ condition|(
 name|personalJournalList
 operator|!=
 literal|null
+operator|&&
+operator|!
+name|personalJournalList
+operator|.
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 try|try
@@ -923,10 +929,48 @@ name|FileNotFoundException
 name|e
 parameter_list|)
 block|{
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+literal|null
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Journal_file_not_found"
+operator|+
+literal|": "
+operator|+
 name|e
 operator|.
-name|printStackTrace
+name|getMessage
 argument_list|()
+argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Error_opening_file"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|ERROR_MESSAGE
+argument_list|)
+expr_stmt|;
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|put
+argument_list|(
+literal|"personalJournalList"
+argument_list|,
+literal|""
+argument_list|)
 expr_stmt|;
 block|}
 block|}
