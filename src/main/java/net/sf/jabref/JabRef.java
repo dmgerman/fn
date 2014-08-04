@@ -939,7 +939,8 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Journal_file_not_found"
+literal|"Journal file not found"
+argument_list|)
 operator|+
 literal|": "
 operator|+
@@ -947,13 +948,12 @@ name|e
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
 argument_list|,
 name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Error_opening_file"
+literal|"Error opening file"
 argument_list|)
 argument_list|,
 name|JOptionPane

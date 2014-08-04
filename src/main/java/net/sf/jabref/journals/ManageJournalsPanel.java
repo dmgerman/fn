@@ -1523,7 +1523,8 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Error_opening_file"
+literal|"Error opening file"
+argument_list|)
 operator|+
 literal|": "
 operator|+
@@ -1531,13 +1532,12 @@ name|ex
 operator|.
 name|getMessage
 argument_list|()
-argument_list|)
 argument_list|,
 name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Error_opening_file"
+literal|"Error opening file"
 argument_list|)
 argument_list|,
 name|JOptionPane
