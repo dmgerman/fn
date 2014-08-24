@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2014 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -281,6 +281,7 @@ index|[]
 name|fields
 decl_stmt|;
 DECL|field|parent
+specifier|private
 name|EntryEditor
 name|parent
 decl_stmt|;
@@ -318,12 +319,7 @@ name|fileListEditor
 init|=
 literal|null
 decl_stmt|;
-DECL|method|EntryEditorTab ()
-specifier|protected
-name|EntryEditorTab
-parameter_list|()
-block|{      }
-DECL|method|EntryEditorTab (JabRefFrame frame, BasePanel panel, List<String> fields, EntryEditor parent, boolean addKeyField, String name)
+DECL|method|EntryEditorTab (JabRefFrame frame, BasePanel panel, List<String> fields, EntryEditor parent, boolean addKeyField, boolean compressed, String name)
 specifier|public
 name|EntryEditorTab
 parameter_list|(
@@ -344,6 +340,9 @@ name|parent
 parameter_list|,
 name|boolean
 name|addKeyField
+parameter_list|,
+name|boolean
+name|compressed
 parameter_list|,
 name|String
 name|name
@@ -397,6 +396,8 @@ name|panel
 argument_list|,
 name|addKeyField
 argument_list|,
+name|compressed
+argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
@@ -409,7 +410,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setupPanel (JabRefFrame frame, BasePanel bPanel, boolean addKeyField, String title)
+DECL|method|setupPanel (JabRefFrame frame, BasePanel bPanel, boolean addKeyField, boolean compressed, String title)
 name|void
 name|setupPanel
 parameter_list|(
@@ -421,6 +422,9 @@ name|bPanel
 parameter_list|,
 name|boolean
 name|addKeyField
+parameter_list|,
+name|boolean
+name|compressed
 parameter_list|,
 name|String
 name|title
@@ -732,10 +736,25 @@ argument_list|(
 name|title
 argument_list|)
 expr_stmt|;
+name|int
+name|fieldsPerRow
+init|=
+name|compressed
+condition|?
+literal|2
+else|:
+literal|1
+decl_stmt|;
 comment|//String rowSpec = "left:pref, 4dlu, fill:pref:grow, 4dlu, fill:pref";
 name|String
 name|colSpec
 init|=
+name|compressed
+condition|?
+literal|"fill:pref, 1dlu, fill:10dlu:grow, 1dlu, fill:pref, "
+operator|+
+literal|"8dlu, fill:pref, 1dlu, fill:10dlu:grow, 1dlu, fill:pref"
+else|:
 literal|"fill:pref, 1dlu, fill:pref:grow, 1dlu, fill:pref"
 decl_stmt|;
 name|StringBuffer
@@ -745,12 +764,39 @@ operator|new
 name|StringBuffer
 argument_list|()
 decl_stmt|;
+name|int
+name|rows
+init|=
+operator|(
+name|int
+operator|)
+name|Math
+operator|.
+name|ceil
+argument_list|(
+operator|(
+name|double
+operator|)
+name|fields
+operator|.
+name|length
+operator|/
+name|fieldsPerRow
+argument_list|)
+decl_stmt|;
 for|for
 control|(
-name|String
-name|field
-range|:
-name|fields
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|rows
+condition|;
+name|i
+operator|++
 control|)
 block|{
 name|sb
@@ -772,7 +818,16 @@ argument_list|(
 literal|"4dlu, fill:pref"
 argument_list|)
 expr_stmt|;
-else|else
+elseif|else
+if|if
+condition|(
+name|sb
+operator|.
+name|length
+argument_list|()
+operator|>=
+literal|2
+condition|)
 name|sb
 operator|.
 name|delete
@@ -1049,6 +1104,11 @@ operator|=
 name|ta
 expr_stmt|;
 comment|//System.out.println(fields[i]+": "+BibtexFields.getFieldWeight(fields[i]));
+if|if
+condition|(
+operator|!
+name|compressed
+condition|)
 name|ta
 operator|.
 name|getPane
@@ -1147,6 +1207,18 @@ name|pan
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|(
+name|i
+operator|+
+literal|1
+operator|)
+operator|%
+name|fieldsPerRow
+operator|==
+literal|0
+condition|)
 name|builder
 operator|.
 name|nextLine
@@ -1713,6 +1785,16 @@ parameter_list|()
 block|{
 return|return
 name|scrollPane
+return|;
+block|}
+DECL|method|getParent ()
+specifier|public
+name|EntryEditor
+name|getParent
+parameter_list|()
+block|{
+return|return
+name|parent
 return|;
 block|}
 comment|/** 	 * Set up key bindings and focus listener for the FieldEditor. 	 *  	 * @param component 	 */
