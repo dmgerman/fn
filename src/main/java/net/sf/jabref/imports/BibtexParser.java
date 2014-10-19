@@ -3860,7 +3860,18 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|". "
+literal|":"
+operator|+
+name|be
+operator|.
+name|getField
+argument_list|(
+name|BibtexFields
+operator|.
+name|KEY_FIELD
+argument_list|)
+operator|+
+literal|" . "
 operator|+
 name|Globals
 operator|.
