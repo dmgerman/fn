@@ -797,10 +797,17 @@ name|IOException
 name|exc
 parameter_list|)
 block|{
+name|Globals
+operator|.
+name|logger
+argument_list|(
+literal|"Could not open Zip-archive: \n"
+operator|+
 name|exc
 operator|.
-name|printStackTrace
+name|getMessage
 argument_list|()
+argument_list|)
 expr_stmt|;
 name|JOptionPane
 operator|.
