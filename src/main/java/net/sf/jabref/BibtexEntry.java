@@ -1314,6 +1314,15 @@ argument_list|(
 literal|"date"
 argument_list|)
 decl_stmt|;
+if|if
+condition|(
+name|date
+operator|==
+literal|null
+condition|)
+return|return
+literal|null
+return|;
 comment|// Create date format matching dates with year and month
 name|DateFormat
 name|df
