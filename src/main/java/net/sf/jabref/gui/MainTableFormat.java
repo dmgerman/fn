@@ -1428,7 +1428,7 @@ name|o
 operator|=
 name|be
 operator|.
-name|getField
+name|getFieldOrAlias
 argument_list|(
 name|fld
 index|[
@@ -1663,7 +1663,7 @@ operator|&&
 operator|(
 name|be
 operator|.
-name|getField
+name|getFieldOrAlias
 argument_list|(
 name|field
 argument_list|)

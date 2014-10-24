@@ -3598,7 +3598,7 @@ name|ss
 init|=
 name|_entry
 operator|.
-name|getField
+name|getFieldOrAlias
 argument_list|(
 literal|"year"
 argument_list|)
@@ -3820,7 +3820,7 @@ name|o
 init|=
 name|entry
 operator|.
-name|getField
+name|getFieldOrAlias
 argument_list|(
 name|field
 argument_list|)

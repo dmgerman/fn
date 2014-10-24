@@ -62,8 +62,6 @@ literal|"title"
 block|,
 literal|"journaltitle"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
@@ -116,8 +114,6 @@ block|,
 literal|"eid"
 block|,
 literal|"issue"
-block|,
-literal|"date"
 block|,
 literal|"month"
 block|,
@@ -174,12 +170,6 @@ block|,
 literal|"eid"
 block|,
 literal|"issue"
-block|,
-literal|"date"
-block|,
-literal|"month"
-block|,
-literal|"year"
 block|,
 literal|"pages"
 block|,
@@ -270,8 +260,6 @@ literal|"author"
 block|,
 literal|"title"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
@@ -332,6 +320,10 @@ block|,
 literal|"series"
 block|,
 literal|"number"
+block|,
+literal|"month"
+block|,
+literal|"year"
 block|,
 literal|"note"
 block|,
@@ -487,8 +479,6 @@ literal|"title"
 block|,
 literal|"booktitle"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
@@ -583,6 +573,8 @@ block|,
 literal|"url"
 block|,
 literal|"urldate"
+block|,
+literal|"year"
 block|}
 return|;
 block|}
@@ -912,8 +904,6 @@ literal|"editor"
 block|,
 literal|"title"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
@@ -944,6 +934,8 @@ block|,
 literal|"location"
 block|,
 literal|"chapter"
+block|,
+literal|"year"
 block|,
 literal|"pages"
 block|,
@@ -1071,8 +1063,6 @@ literal|"editor"
 block|,
 literal|"title"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
@@ -1161,6 +1151,8 @@ block|,
 literal|"url"
 block|,
 literal|"urldate"
+block|,
+literal|"year"
 block|}
 return|;
 block|}
@@ -1286,8 +1278,6 @@ literal|"title"
 block|,
 literal|"booktitle"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
@@ -1378,6 +1368,8 @@ block|,
 literal|"url"
 block|,
 literal|"urldate"
+block|,
+literal|"year"
 block|}
 return|;
 block|}
@@ -1605,8 +1597,6 @@ literal|"editor"
 block|,
 literal|"title"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
@@ -1669,6 +1659,8 @@ block|,
 literal|"url"
 block|,
 literal|"urldate"
+block|,
+literal|"year"
 block|}
 return|;
 block|}
@@ -1782,8 +1774,6 @@ literal|"editor"
 block|,
 literal|"title"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
@@ -1816,8 +1806,6 @@ block|,
 literal|"organization"
 block|,
 literal|"location"
-block|,
-literal|"date"
 block|,
 literal|"month"
 block|,
@@ -1945,8 +1933,6 @@ literal|"editor"
 block|,
 literal|"title"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|,
 literal|"url"
@@ -1975,8 +1961,6 @@ block|,
 literal|"note"
 block|,
 literal|"organization"
-block|,
-literal|"date"
 block|,
 literal|"month"
 block|,
@@ -2084,8 +2068,6 @@ literal|"title"
 block|,
 literal|"number"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
@@ -2114,8 +2096,6 @@ block|,
 literal|"location"
 block|,
 literal|"note"
-block|,
-literal|"date"
 block|,
 literal|"month"
 block|,
@@ -2239,8 +2219,6 @@ literal|"editor"
 block|,
 literal|"title"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
@@ -2277,8 +2255,6 @@ block|,
 literal|"number"
 block|,
 literal|"issue"
-block|,
-literal|"date"
 block|,
 literal|"month"
 block|,
@@ -2508,8 +2484,6 @@ literal|"editor"
 block|,
 literal|"title"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
@@ -2562,6 +2536,8 @@ block|,
 literal|"location"
 block|,
 literal|"month"
+block|,
+literal|"year"
 block|,
 literal|"isbn"
 block|,
@@ -2711,8 +2687,6 @@ literal|"title"
 block|,
 literal|"booktitle"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
@@ -2769,6 +2743,8 @@ block|,
 literal|"location"
 block|,
 literal|"month"
+block|,
+literal|"year"
 block|,
 literal|"isbn"
 block|,
@@ -3118,8 +3094,6 @@ literal|"type"
 block|,
 literal|"institution"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
@@ -3150,6 +3124,8 @@ block|,
 literal|"location"
 block|,
 literal|"month"
+block|,
+literal|"year"
 block|,
 literal|"isrn"
 block|,
@@ -3385,8 +3361,6 @@ literal|"type"
 block|,
 literal|"institution"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
@@ -3413,6 +3387,8 @@ block|,
 literal|"location"
 block|,
 literal|"month"
+block|,
+literal|"year"
 block|,
 literal|"chapter"
 block|,
@@ -3542,8 +3518,6 @@ literal|"author"
 block|,
 literal|"title"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
@@ -3570,8 +3544,6 @@ block|,
 literal|"note"
 block|,
 literal|"location"
-block|,
-literal|"date"
 block|,
 literal|"month"
 block|,
@@ -3885,8 +3857,6 @@ literal|"title"
 block|,
 literal|"institution"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
@@ -3915,6 +3885,8 @@ block|,
 literal|"location"
 block|,
 literal|"month"
+block|,
+literal|"year"
 block|,
 literal|"chapter"
 block|,
@@ -4049,8 +4021,6 @@ literal|"title"
 block|,
 literal|"institution"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
@@ -4079,6 +4049,8 @@ block|,
 literal|"location"
 block|,
 literal|"month"
+block|,
+literal|"year"
 block|,
 literal|"chapter"
 block|,
@@ -4213,8 +4185,6 @@ literal|"title"
 block|,
 literal|"institution"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
@@ -4247,6 +4217,8 @@ block|,
 literal|"location"
 block|,
 literal|"month"
+block|,
+literal|"year"
 block|,
 literal|"isrn"
 block|,
