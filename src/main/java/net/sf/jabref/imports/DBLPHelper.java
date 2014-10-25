@@ -180,7 +180,7 @@ specifier|final
 name|String
 name|startPattern
 init|=
-literal|"<pre>"
+literal|"<pre class=\"verbatim select-on-click\">"
 decl_stmt|;
 specifier|final
 name|String
