@@ -2247,12 +2247,15 @@ operator|.
 name|getName
 argument_list|()
 return|;
+comment|// TODO: Changed this to also consider alias fields, which is the expected
+comment|// behavior for the preview layout and for the check whatever all fields are present.
+comment|// But there might be unwanted side-effects?!
 name|Object
 name|o
 init|=
 name|bibtex
 operator|.
-name|getField
+name|getFieldOrAlias
 argument_list|(
 name|field
 argument_list|)
