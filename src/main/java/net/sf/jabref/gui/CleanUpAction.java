@@ -4780,7 +4780,7 @@ name|UndoableFieldChange
 argument_list|(
 name|entry
 argument_list|,
-literal|"date"
+literal|"year"
 argument_list|,
 name|oldYear
 argument_list|,
@@ -4797,7 +4797,7 @@ name|UndoableFieldChange
 argument_list|(
 name|entry
 argument_list|,
-literal|"date"
+literal|"month"
 argument_list|,
 name|oldMonth
 argument_list|,
