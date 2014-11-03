@@ -816,7 +816,7 @@ name|o
 init|=
 name|entry
 operator|.
-name|getField
+name|getFieldOrAlias
 argument_list|(
 name|aField
 argument_list|)
