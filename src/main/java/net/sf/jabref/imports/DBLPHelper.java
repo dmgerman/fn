@@ -250,7 +250,7 @@ name|entry1
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("'" + entry1 + "'");
+comment|// System.out.println("'" + entry1 + "'");
 comment|// let's see whether there is another entry (crossref)
 name|tmpStr
 operator|=
