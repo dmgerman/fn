@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2014 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -239,6 +239,7 @@ DECL|field|inPubMedID
 DECL|field|inDescriptorName
 DECL|field|inDoi
 DECL|field|inPii
+DECL|field|inPmc
 name|inPubMedID
 init|=
 literal|false
@@ -252,6 +253,10 @@ init|=
 literal|false
 decl_stmt|,
 name|inPii
+init|=
+literal|false
+decl_stmt|,
+name|inPmc
 init|=
 literal|false
 decl_stmt|,
@@ -411,6 +416,7 @@ decl_stmt|,
 DECL|field|pubmedid
 DECL|field|doi
 DECL|field|pii
+DECL|field|pmc
 DECL|field|majorTopic
 DECL|field|minorTopics
 DECL|field|language
@@ -424,6 +430,10 @@ init|=
 literal|""
 decl_stmt|,
 name|pii
+init|=
+literal|""
+decl_stmt|,
+name|pmc
 init|=
 literal|""
 decl_stmt|,
@@ -1064,6 +1074,20 @@ name|inPii
 operator|=
 literal|true
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|value
+operator|.
+name|equals
+argument_list|(
+literal|"pmc"
+argument_list|)
+condition|)
+name|inPmc
+operator|=
+literal|true
+expr_stmt|;
 block|}
 block|}
 elseif|else
@@ -1685,6 +1709,25 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
+name|pmc
+operator|.
+name|equals
+argument_list|(
+literal|""
+argument_list|)
+condition|)
+name|b
+operator|.
+name|setField
+argument_list|(
+literal|"pmc"
+argument_list|,
+name|pmc
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
 name|affiliation
 operator|.
 name|equals
@@ -1765,6 +1808,10 @@ operator|=
 literal|""
 expr_stmt|;
 name|pii
+operator|=
+literal|""
+expr_stmt|;
+name|pmc
 operator|=
 literal|""
 expr_stmt|;
@@ -2425,6 +2472,15 @@ name|inPii
 operator|=
 literal|false
 expr_stmt|;
+elseif|else
+if|if
+condition|(
+name|inPmc
+condition|)
+name|inPmc
+operator|=
+literal|false
+expr_stmt|;
 block|}
 block|}
 DECL|method|characters ( char[] data, int start, int length )
@@ -2872,6 +2928,25 @@ name|inPii
 condition|)
 block|{
 name|pii
+operator|=
+operator|new
+name|String
+argument_list|(
+name|data
+argument_list|,
+name|start
+argument_list|,
+name|length
+argument_list|)
+expr_stmt|;
+block|}
+elseif|else
+if|if
+condition|(
+name|inPmc
+condition|)
+block|{
+name|pmc
 operator|=
 operator|new
 name|String
