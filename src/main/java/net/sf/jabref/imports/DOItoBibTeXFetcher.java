@@ -464,9 +464,11 @@ name|bibtexString
 operator|=
 name|Util
 operator|.
-name|getResults
+name|getResultsWithEncoding
 argument_list|(
 name|conn
+argument_list|,
+literal|"UTF8"
 argument_list|)
 expr_stmt|;
 block|}
@@ -528,6 +530,19 @@ return|return
 literal|null
 return|;
 block|}
+comment|//Usually includes an en-dash in the page range. Char is in cp1252 but not
+comment|// ISO 8859-1 (which is what latex expects). For convenience replace here.
+name|bibtexString
+operator|=
+name|bibtexString
+operator|.
+name|replaceAll
+argument_list|(
+literal|"(pages=\\{[0-9]+)\u2013([0-9]+\\})"
+argument_list|,
+literal|"$1--$2"
+argument_list|)
+expr_stmt|;
 name|BibtexEntry
 name|entry
 init|=
