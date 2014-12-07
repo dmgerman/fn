@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2012 JabRef contributors.     This program is free software: you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation, either version 3 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License     along with this program.  If not, see<http://www.gnu.org/licenses/>. */
+comment|/*  Copyright (C) 2014 JabRef contributors.     This program is free software: you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation, either version 3 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License     along with this program.  If not, see<http://www.gnu.org/licenses/>. */
 end_comment
 
 begin_package
@@ -464,9 +464,11 @@ name|bibtexString
 operator|=
 name|Util
 operator|.
-name|getResults
+name|getResultsWithEncoding
 argument_list|(
 name|conn
+argument_list|,
+literal|"UTF8"
 argument_list|)
 expr_stmt|;
 block|}
@@ -528,6 +530,19 @@ return|return
 literal|null
 return|;
 block|}
+comment|//Usually includes an en-dash in the page range. Char is in cp1252 but not
+comment|// ISO 8859-1 (which is what latex expects). For convenience replace here.
+name|bibtexString
+operator|=
+name|bibtexString
+operator|.
+name|replaceAll
+argument_list|(
+literal|"(pages=\\{[0-9]+)\u2013([0-9]+\\})"
+argument_list|,
+literal|"$1--$2"
+argument_list|)
+expr_stmt|;
 name|BibtexEntry
 name|entry
 init|=
