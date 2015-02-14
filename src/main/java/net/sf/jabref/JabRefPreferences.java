@@ -5825,23 +5825,6 @@ expr_stmt|;
 comment|// So, if this happens, we add the default value to the current
 comment|// hashmap, so this doesn't happen again, and so this binding
 comment|// will appear in the KeyBindingsDialog.
-name|keyBinds
-operator|.
-name|put
-argument_list|(
-name|bindName
-argument_list|,
-name|s
-argument_list|)
-expr_stmt|;
-block|}
-if|if
-condition|(
-name|s
-operator|==
-literal|null
-condition|)
-block|{
 name|Globals
 operator|.
 name|logger
@@ -5851,6 +5834,20 @@ operator|+
 name|bindName
 operator|+
 literal|"\""
+argument_list|)
+expr_stmt|;
+name|s
+operator|=
+literal|"Not associated"
+expr_stmt|;
+comment|// if the item of menu not in defKeyBind list
+name|keyBinds
+operator|.
+name|put
+argument_list|(
+name|bindName
+argument_list|,
+name|s
 argument_list|)
 expr_stmt|;
 block|}
