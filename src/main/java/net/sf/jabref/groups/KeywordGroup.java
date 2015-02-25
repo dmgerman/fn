@@ -40,18 +40,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|PatternSyntaxException
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -1813,17 +1801,8 @@ name|boolean
 name|regExp
 parameter_list|)
 block|{
-name|StringBuffer
-name|sb
-init|=
-operator|new
-name|StringBuffer
-argument_list|()
-decl_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
+return|return
+operator|(
 name|regExp
 condition|?
 name|Globals
@@ -1857,17 +1836,11 @@ argument_list|(
 name|expr
 argument_list|)
 argument_list|)
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
+operator|)
+operator|+
 literal|" ("
-argument_list|)
-operator|.
-name|append
-argument_list|(
+operator|+
+operator|(
 name|caseSensitive
 condition|?
 name|Globals
@@ -1883,17 +1856,11 @@ name|lang
 argument_list|(
 literal|"case insensitive"
 argument_list|)
-argument_list|)
-operator|.
-name|append
-argument_list|(
+operator|)
+operator|+
 literal|"). "
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
+operator|+
+operator|(
 name|regExp
 condition|?
 name|Globals
@@ -1934,13 +1901,7 @@ argument_list|(
 name|expr
 argument_list|)
 argument_list|)
-argument_list|)
-expr_stmt|;
-return|return
-name|sb
-operator|.
-name|toString
-argument_list|()
+operator|)
 return|;
 block|}
 DECL|method|getShortDescription ()

@@ -2052,8 +2052,6 @@ operator|(
 name|saveOrderConfig
 operator|.
 name|saveInSpecifiedOrder
-operator|==
-literal|true
 operator|)
 assert|;
 name|saveInSpecifiedOrder

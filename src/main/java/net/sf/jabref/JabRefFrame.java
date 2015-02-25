@@ -5470,14 +5470,9 @@ name|getDeclaredMethod
 argument_list|(
 literal|"openAction"
 argument_list|,
-operator|new
-name|Class
-index|[]
-block|{
 name|String
 operator|.
 name|class
-block|}
 argument_list|)
 block|}
 decl_stmt|;

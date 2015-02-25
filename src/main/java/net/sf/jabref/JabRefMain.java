@@ -303,15 +303,10 @@ name|getMethod
 argument_list|(
 literal|"main"
 argument_list|,
-operator|new
-name|Class
-index|[]
-block|{
 name|args
 operator|.
 name|getClass
 argument_list|()
-block|}
 argument_list|)
 decl_stmt|;
 name|method

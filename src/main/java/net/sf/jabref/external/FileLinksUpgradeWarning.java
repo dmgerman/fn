@@ -395,76 +395,6 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
-name|StringBuilder
-name|sb
-init|=
-operator|new
-name|StringBuilder
-argument_list|(
-literal|"<html>"
-argument_list|)
-decl_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"This database was written using an older version of JabRef."
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"<br>"
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"The current version features a new way of handling links to external files.<br>"
-operator|+
-literal|"To take advantage of this, your links must be changed into the new format, and<br>"
-operator|+
-literal|"JabRef must be configured to show the new links."
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"<p>"
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Do you want JabRef to do the following operations?"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|sb
-operator|.
-name|append
-argument_list|(
-literal|"</html>"
-argument_list|)
-expr_stmt|;
 name|JPanel
 name|message
 init|=
@@ -496,10 +426,38 @@ argument_list|(
 operator|new
 name|JLabel
 argument_list|(
-name|sb
+literal|"<html>"
+operator|+
+name|Globals
 operator|.
-name|toString
-argument_list|()
+name|lang
+argument_list|(
+literal|"This database was written using an older version of JabRef."
+argument_list|)
+operator|+
+literal|"<br>"
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"The current version features a new way of handling links to external files.<br>"
+operator|+
+literal|"To take advantage of this, your links must be changed into the new format, and<br>"
+operator|+
+literal|"JabRef must be configured to show the new links."
+argument_list|)
+operator|+
+literal|"<p>"
+operator|+
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Do you want JabRef to do the following operations?"
+argument_list|)
+operator|+
+literal|"</html>"
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -1695,11 +1695,10 @@ argument_list|)
 decl_stmt|;
 assert|assert
 operator|(
+operator|!
 name|saveOrderConfig
 operator|.
 name|saveInOriginalOrder
-operator|==
-literal|false
 operator|)
 assert|;
 assert|assert
@@ -1707,8 +1706,6 @@ operator|(
 name|saveOrderConfig
 operator|.
 name|saveInSpecifiedOrder
-operator|==
-literal|true
 operator|)
 assert|;
 name|pri
