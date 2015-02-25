@@ -288,27 +288,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|HashSet
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|LinkedHashMap
 import|;
 end_import
 
@@ -1640,7 +1620,7 @@ argument_list|<
 name|String
 argument_list|>
 argument_list|(
-name|entry
+name|BibtexEntry
 operator|.
 name|FieldAliasesOldToNew
 operator|.
@@ -1738,7 +1718,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|entry
+name|BibtexEntry
 operator|.
 name|FieldAliasesNewToOld
 operator|.
@@ -1751,7 +1731,7 @@ name|optionalFieldsAndAliases
 operator|.
 name|add
 argument_list|(
-name|entry
+name|BibtexEntry
 operator|.
 name|FieldAliasesNewToOld
 operator|.

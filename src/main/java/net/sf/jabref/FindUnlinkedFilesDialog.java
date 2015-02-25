@@ -2572,31 +2572,17 @@ operator|>
 literal|0
 condition|)
 block|{
-name|StringBuilder
-name|warningInfo
-init|=
-operator|new
-name|StringBuilder
-argument_list|()
-decl_stmt|;
-name|warningInfo
+name|JOptionPane
 operator|.
-name|append
+name|showMessageDialog
 argument_list|(
+name|this
+argument_list|,
 literal|"The import finished with warnings:\n"
-argument_list|)
-expr_stmt|;
-name|warningInfo
-operator|.
-name|append
-argument_list|(
+operator|+
 literal|"There "
-argument_list|)
-expr_stmt|;
-name|warningInfo
-operator|.
-name|append
-argument_list|(
+operator|+
+operator|(
 name|errors
 operator|.
 name|size
@@ -2607,22 +2593,14 @@ condition|?
 literal|"were "
 else|:
 literal|"was "
-argument_list|)
-expr_stmt|;
-name|warningInfo
-operator|.
-name|append
-argument_list|(
+operator|)
+operator|+
 name|errors
 operator|.
 name|size
 argument_list|()
-argument_list|)
-expr_stmt|;
-name|warningInfo
-operator|.
-name|append
-argument_list|(
+operator|+
+operator|(
 name|errors
 operator|.
 name|size
@@ -2633,12 +2611,9 @@ condition|?
 literal|" files"
 else|:
 literal|" file"
-argument_list|)
-expr_stmt|;
-name|warningInfo
-operator|.
-name|append
-argument_list|(
+operator|)
+operator|+
+operator|(
 name|errors
 operator|.
 name|size
@@ -2649,25 +2624,9 @@ condition|?
 literal|" which"
 else|:
 literal|" that"
-argument_list|)
-expr_stmt|;
-name|warningInfo
-operator|.
-name|append
-argument_list|(
+operator|)
+operator|+
 literal|" could not be imported."
-argument_list|)
-expr_stmt|;
-name|JOptionPane
-operator|.
-name|showMessageDialog
-argument_list|(
-name|this
-argument_list|,
-name|warningInfo
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 name|Globals
 operator|.

@@ -4555,7 +4555,7 @@ name|String
 argument_list|>
 name|alias
 range|:
-name|entry
+name|BibtexEntry
 operator|.
 name|FieldAliasesOldToNew
 operator|.
