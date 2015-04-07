@@ -452,7 +452,7 @@ name|setRequestProperty
 argument_list|(
 literal|"Accept"
 argument_list|,
-literal|"text/bibliography; style=bibtex"
+literal|"application/x-bibtex"
 argument_list|)
 expr_stmt|;
 name|String
