@@ -883,7 +883,7 @@ literal|"236"
 block|,
 literal|"igrave"
 block|,
-literal|"\\{\\\\`\\{\\\\i\\}\\}"
+literal|"\\{\\\\`\\{i\\}\\}"
 block|}
 block|,
 comment|// latin small letter i with grave,
@@ -893,7 +893,7 @@ literal|"237"
 block|,
 literal|"iacute"
 block|,
-literal|"\\{\\\\'\\{\\\\i\\}\\}"
+literal|"\\{\\\\'\\{i\\}\\}"
 block|}
 block|,
 comment|// latin small letter i with acute,
@@ -903,7 +903,7 @@ literal|"238"
 block|,
 literal|"icirc"
 block|,
-literal|"\\{\\\\\\^\\{\\\\i\\}\\}"
+literal|"\\{\\\\\\^\\{i\\}\\}"
 block|}
 block|,
 comment|// latin small letter i with circumflex,
@@ -913,7 +913,7 @@ literal|"239"
 block|,
 literal|"iuml"
 block|,
-literal|"\\{\\\\\"\\{\\\\i\\}\\}"
+literal|"\\{\\\\\"\\{i\\}\\}"
 block|}
 block|,
 comment|// latin small letter i with diaeresis,
@@ -1077,6 +1077,24 @@ block|}
 block|,
 comment|// latin small letter y with diaeresis,
 comment|//                                 U+00FF ISOlat1
+block|{
+literal|"332"
+block|,
+literal|"Omacro"
+block|,
+literal|"\\{\\\\=\\{O\\}\\}"
+block|}
+block|,
+comment|// the small letter o with macron
+block|{
+literal|"333"
+block|,
+literal|"omacro"
+block|,
+literal|"\\{\\\\=\\{o\\}\\}"
+block|}
+block|,
+comment|// the big letter O with macron
 block|{
 literal|"402"
 block|,

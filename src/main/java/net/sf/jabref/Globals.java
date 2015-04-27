@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -8179,8 +8179,16 @@ argument_list|)
 expr_stmt|;
 comment|// Use UNICODE characters for RTF-Chars which can not be found in the
 comment|// standard codepage
-comment|// RTFCHARS.put("`A", "\\u192"); // "Agrave" exists in standard
-comment|// codepage
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"`A"
+argument_list|,
+literal|"\\u192A"
+argument_list|)
+expr_stmt|;
+comment|// "Agrave"
 name|RTFCHARS
 operator|.
 name|put
@@ -8191,8 +8199,16 @@ literal|"\\u193A"
 argument_list|)
 expr_stmt|;
 comment|// "Aacute"
-comment|// RTFCHARS.put("^A", "\\u194"); // "Acirc" exists in standard
-comment|// codepage
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"^A"
+argument_list|,
+literal|"\\u194A"
+argument_list|)
+expr_stmt|;
+comment|// "Acirc"
 name|RTFCHARS
 operator|.
 name|put
@@ -8203,8 +8219,16 @@ literal|"\\u195A"
 argument_list|)
 expr_stmt|;
 comment|// "Atilde"
-comment|// RTFCHARS.put("\"A", "\\u196"); // "Auml" exists in standard
-comment|// codepage
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"\"A"
+argument_list|,
+literal|"\\u196A"
+argument_list|)
+expr_stmt|;
+comment|// "Auml"
 name|RTFCHARS
 operator|.
 name|put
@@ -8215,13 +8239,14 @@ literal|"\\u197A"
 argument_list|)
 expr_stmt|;
 comment|// "Aring"
+comment|// RTFCHARS.put("AE", "{\\uc2\\u198AE}"); // "AElig"
 name|RTFCHARS
 operator|.
 name|put
 argument_list|(
 literal|"AE"
 argument_list|,
-literal|"{\\uc2\\u198AE}"
+literal|"{\\u198A}"
 argument_list|)
 expr_stmt|;
 comment|// "AElig"
@@ -8235,8 +8260,16 @@ literal|"\\u199C"
 argument_list|)
 expr_stmt|;
 comment|// "Ccedil"
-comment|// RTFCHARS.put("`E", "\\u200"); // "Egrave" exists in standard
-comment|// codepage
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"`E"
+argument_list|,
+literal|"\\u200E"
+argument_list|)
+expr_stmt|;
+comment|// "Egrave"
 name|RTFCHARS
 operator|.
 name|put
@@ -8247,12 +8280,36 @@ literal|"\\u201E"
 argument_list|)
 expr_stmt|;
 comment|// "Eacute"
-comment|// RTFCHARS.put("^E", "\\u202"); // "Ecirc" exists in standard
-comment|// codepage
-comment|// RTFCHARS.put("\"E", "\\u203"); // "Euml" exists in standard
-comment|// codepage
-comment|// RTFCHARS.put("`I", "\\u204"); // "Igrave" exists in standard
-comment|// codepage
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"^E"
+argument_list|,
+literal|"\\u202E"
+argument_list|)
+expr_stmt|;
+comment|// "Ecirc"
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"\"E"
+argument_list|,
+literal|"\\u203E"
+argument_list|)
+expr_stmt|;
+comment|// "Euml"
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"`I"
+argument_list|,
+literal|"\\u204I"
+argument_list|)
+expr_stmt|;
+comment|// "Igrave
 name|RTFCHARS
 operator|.
 name|put
@@ -8263,10 +8320,26 @@ literal|"\\u205I"
 argument_list|)
 expr_stmt|;
 comment|// "Iacute"
-comment|// RTFCHARS.put("^I", "\\u206"); // "Icirc" exists in standard
-comment|// codepage
-comment|// RTFCHARS.put("\"I", "\\u207"); // "Iuml" exists in standard
-comment|// codepage
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"^I"
+argument_list|,
+literal|"\\u206I"
+argument_list|)
+expr_stmt|;
+comment|// "Icirc"
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"\"I"
+argument_list|,
+literal|"\\u207I"
+argument_list|)
+expr_stmt|;
+comment|// "Iuml"
 name|RTFCHARS
 operator|.
 name|put
@@ -8287,8 +8360,16 @@ literal|"\\u209N"
 argument_list|)
 expr_stmt|;
 comment|// "Ntilde"
-comment|// RTFCHARS.put("`O", "\\u210"); // "Ograve" exists in standard
-comment|// codepage
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"`O"
+argument_list|,
+literal|"\\u210O"
+argument_list|)
+expr_stmt|;
+comment|// "Ograve"
 name|RTFCHARS
 operator|.
 name|put
@@ -8299,8 +8380,16 @@ literal|"\\u211O"
 argument_list|)
 expr_stmt|;
 comment|// "Oacute"
-comment|// RTFCHARS.put("^O", "\\u212"); // "Ocirc" exists in standard
-comment|// codepage
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"^O"
+argument_list|,
+literal|"\\u212O"
+argument_list|)
+expr_stmt|;
+comment|// "Ocirc"
 name|RTFCHARS
 operator|.
 name|put
@@ -8311,21 +8400,30 @@ literal|"\\u213O"
 argument_list|)
 expr_stmt|;
 comment|// "Otilde"
-comment|// RTFCHARS.put("\"O", "\\u214"); // "Ouml" exists in standard
-comment|// codepage
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"\"O"
+argument_list|,
+literal|"\\u214O"
+argument_list|)
+expr_stmt|;
+comment|// "Ouml"
 comment|// According to ISO 8859-1 the "\times" symbol should be placed here
 comment|// (#215).
 comment|// Omitting this, because it is a mathematical symbol.
-comment|//RTFCHARS.put("O", "\\u216O"); // "Oslash"
 name|RTFCHARS
 operator|.
 name|put
 argument_list|(
 literal|"O"
 argument_list|,
-literal|"\\'d8"
+literal|"\\u216O"
 argument_list|)
 expr_stmt|;
+comment|// "Oslash"
+comment|//  RTFCHARS.put("O", "\\'d8");
 name|RTFCHARS
 operator|.
 name|put
@@ -8335,8 +8433,16 @@ argument_list|,
 literal|"\\'f8"
 argument_list|)
 expr_stmt|;
-comment|// RTFCHARS.put("`U", "\\u217"); // "Ugrave" exists in standard
-comment|// codepage
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"`U"
+argument_list|,
+literal|"\\u217U"
+argument_list|)
+expr_stmt|;
+comment|// "Ugrave"
 name|RTFCHARS
 operator|.
 name|put
@@ -8347,10 +8453,26 @@ literal|"\\u218U"
 argument_list|)
 expr_stmt|;
 comment|// "Uacute"
-comment|// RTFCHARS.put("^U", "\\u219"); // "Ucirc" exists in standard
-comment|// codepage
-comment|// RTFCHARS.put("\"U", "\\u220"); // "Uuml" exists in standard
-comment|// codepage
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"^U"
+argument_list|,
+literal|"\\u219U"
+argument_list|)
+expr_stmt|;
+comment|// "Ucirc"
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"\"U"
+argument_list|,
+literal|"\\u220U"
+argument_list|)
+expr_stmt|;
+comment|// "Uuml"
 name|RTFCHARS
 operator|.
 name|put
@@ -8382,8 +8504,16 @@ argument_list|)
 expr_stmt|;
 comment|// "szlig"
 comment|//RTFCHARS.put("ss", "AFFEN"); // "szlig"
-comment|// RTFCHARS.put("`a", "\\u224"); // "agrave" exists in standard
-comment|// codepage
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"`a"
+argument_list|,
+literal|"\\u224a"
+argument_list|)
+expr_stmt|;
+comment|// "agrave"
 name|RTFCHARS
 operator|.
 name|put
@@ -8394,8 +8524,16 @@ literal|"\\u225a"
 argument_list|)
 expr_stmt|;
 comment|// "aacute"
-comment|// RTFCHARS.put("^a", "\\u226"); // "acirc" exists in standard
-comment|// codepage
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"^a"
+argument_list|,
+literal|"\\u226a"
+argument_list|)
+expr_stmt|;
+comment|// "acirc"
 name|RTFCHARS
 operator|.
 name|put
@@ -8406,8 +8544,16 @@ literal|"\\u227a"
 argument_list|)
 expr_stmt|;
 comment|// "atilde"
-comment|// RTFCHARS.put("\"a", "\\u228"); // "auml" exists in standard
-comment|// codepage
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"\"a"
+argument_list|,
+literal|"\\u228a"
+argument_list|)
+expr_stmt|;
+comment|// "auml"
 name|RTFCHARS
 operator|.
 name|put
@@ -8418,16 +8564,17 @@ literal|"\\u229a"
 argument_list|)
 expr_stmt|;
 comment|// "aring"
+comment|//  RTFCHARS.put("ae", "{\\uc2\\u230ae}"); // "aelig" \\u230e6
 name|RTFCHARS
 operator|.
 name|put
 argument_list|(
 literal|"ae"
 argument_list|,
-literal|"{\\uc2\\u230ae}"
+literal|"{\\u230a}"
 argument_list|)
 expr_stmt|;
-comment|// "aelig"
+comment|// "aelig" \\u230e6
 name|RTFCHARS
 operator|.
 name|put
@@ -8438,8 +8585,16 @@ literal|"\\u231c"
 argument_list|)
 expr_stmt|;
 comment|// "ccedil"
-comment|// RTFCHARS.put("`e", "\\u232"); // "egrave" exists in standard
-comment|// codepage
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"`e"
+argument_list|,
+literal|"\\u232e"
+argument_list|)
+expr_stmt|;
+comment|// "egrave"
 name|RTFCHARS
 operator|.
 name|put
@@ -8450,12 +8605,36 @@ literal|"\\u233e"
 argument_list|)
 expr_stmt|;
 comment|// "eacute"
-comment|// RTFCHARS.put("^e", "\\u234"); // "ecirc" exists in standard
-comment|// codepage
-comment|// RTFCHARS.put("\"e", "\\u235"); // "euml" exists in standard
-comment|// codepage
-comment|// RTFCHARS.put("`i", "\\u236"); // "igrave" exists in standard
-comment|// codepage
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"^e"
+argument_list|,
+literal|"\\u234e"
+argument_list|)
+expr_stmt|;
+comment|// "ecirc"
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"\"e"
+argument_list|,
+literal|"\\u235e"
+argument_list|)
+expr_stmt|;
+comment|// "euml"
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"`i"
+argument_list|,
+literal|"\\u236i"
+argument_list|)
+expr_stmt|;
+comment|// "igrave"
 name|RTFCHARS
 operator|.
 name|put
@@ -8466,10 +8645,26 @@ literal|"\\u237i"
 argument_list|)
 expr_stmt|;
 comment|// "iacute"
-comment|// RTFCHARS.put("^i", "\\u238"); // "icirc" exists in standard
-comment|// codepage
-comment|// RTFCHARS.put("\"i", "\\u239"); // "iuml" exists in standard
-comment|// codepage
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"^i"
+argument_list|,
+literal|"\\u238i"
+argument_list|)
+expr_stmt|;
+comment|// "icirc"
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"\"i"
+argument_list|,
+literal|"\\u239i"
+argument_list|)
+expr_stmt|;
+comment|// "iuml"
 name|RTFCHARS
 operator|.
 name|put
@@ -8480,10 +8675,26 @@ literal|"\\u240d"
 argument_list|)
 expr_stmt|;
 comment|// "eth"
-comment|// RTFCHARS.put("~n", "\\u241"); // "ntilde" exists in standard
-comment|// codepage
-comment|// RTFCHARS.put("`o", "\\u242"); // "ograve" exists in standard
-comment|// codepage
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"~n"
+argument_list|,
+literal|"\\u241n"
+argument_list|)
+expr_stmt|;
+comment|// "ntilde"
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"`o"
+argument_list|,
+literal|"\\u242o"
+argument_list|)
+expr_stmt|;
+comment|// "ograve"
 name|RTFCHARS
 operator|.
 name|put
@@ -8494,8 +8705,16 @@ literal|"\\u243o"
 argument_list|)
 expr_stmt|;
 comment|// "oacute"
-comment|// RTFCHARS.put("^o", "\\u244"); // "ocirc" exists in standard
-comment|// codepage
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"^o"
+argument_list|,
+literal|"\\u244o"
+argument_list|)
+expr_stmt|;
+comment|// "ocirc"
 name|RTFCHARS
 operator|.
 name|put
@@ -8506,14 +8725,39 @@ literal|"\\u245o"
 argument_list|)
 expr_stmt|;
 comment|// "otilde"
-comment|// RTFCHARS.put("\"o", "\\u246"); // "ouml" exists in standard
-comment|// codepage
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"\"o"
+argument_list|,
+literal|"\\u246o"
+argument_list|)
+expr_stmt|;
+comment|// "ouml"
 comment|// According to ISO 8859-1 the "\div" symbol should be placed here
 comment|// (#247).
 comment|// Omitting this, because it is a mathematical symbol.
-comment|//RTFCHARS.put("o", "\\u248o"); // "oslash"
-comment|// RTFCHARS.put("`u", "\\u249"); // "ugrave" exists in standard
-comment|// codepage
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"o"
+argument_list|,
+literal|"\\u248o"
+argument_list|)
+expr_stmt|;
+comment|// "oslash"
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"`u"
+argument_list|,
+literal|"\\u249u"
+argument_list|)
+expr_stmt|;
+comment|// "ugrave"
 name|RTFCHARS
 operator|.
 name|put
@@ -8524,8 +8768,16 @@ literal|"\\u250u"
 argument_list|)
 expr_stmt|;
 comment|// "uacute"
-comment|// RTFCHARS.put("^u", "\\u251"); // "ucirc" exists in standard
-comment|// codepage
+name|RTFCHARS
+operator|.
+name|put
+argument_list|(
+literal|"^u"
+argument_list|,
+literal|"\\u251u"
+argument_list|)
+expr_stmt|;
+comment|// "ucirc"
 comment|// RTFCHARS.put("\"u", "\\u252"); // "uuml" exists in standard
 comment|// codepage
 name|RTFCHARS
