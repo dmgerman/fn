@@ -2590,6 +2590,17 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+literal|"toolbarVisible"
+argument_list|,
+name|Boolean
+operator|.
+name|TRUE
+argument_list|)
+expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
 literal|"searchPanelVisible"
 argument_list|,
 name|Boolean

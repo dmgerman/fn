@@ -2209,6 +2209,31 @@ literal|"Edit strings"
 argument_list|)
 argument_list|)
 decl_stmt|,
+DECL|field|toggleToolbar
+name|toggleToolbar
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"toggleToolbar"
+argument_list|,
+literal|"Hide/show toolbar"
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Hide/show toolbar"
+argument_list|)
+argument_list|,
+name|prefs
+operator|.
+name|getKey
+argument_list|(
+literal|"Hide/show toolbar"
+argument_list|)
+argument_list|)
+decl_stmt|,
 DECL|field|toggleGroups
 name|toggleGroups
 init|=
@@ -3382,6 +3407,21 @@ argument_list|()
 expr_stmt|;
 name|initActions
 argument_list|()
+expr_stmt|;
+comment|// Show the toolbar if it was visible at last shutdown:
+name|tlb
+operator|.
+name|setVisible
+argument_list|(
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"toolbarVisible"
+argument_list|)
+argument_list|)
 expr_stmt|;
 name|setBounds
 argument_list|(
@@ -5026,6 +5066,18 @@ name|Frame
 operator|.
 name|MAXIMIZED_BOTH
 operator|)
+argument_list|)
+expr_stmt|;
+name|prefs
+operator|.
+name|putBoolean
+argument_list|(
+literal|"toolbarVisible"
+argument_list|,
+name|tlb
+operator|.
+name|isVisible
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|prefs
@@ -8070,6 +8122,13 @@ name|view
 operator|.
 name|addSeparator
 argument_list|()
+expr_stmt|;
+name|view
+operator|.
+name|add
+argument_list|(
+name|toggleToolbar
+argument_list|)
 expr_stmt|;
 name|view
 operator|.
