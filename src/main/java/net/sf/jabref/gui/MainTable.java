@@ -2809,9 +2809,14 @@ argument_list|)
 expr_stmt|;
 name|setRowHeight
 argument_list|(
-name|GUIGlobals
+name|Globals
 operator|.
-name|TABLE_ROW_PADDING
+name|prefs
+operator|.
+name|getInt
+argument_list|(
+literal|"tableRowPadding"
+argument_list|)
 operator|+
 name|GUIGlobals
 operator|.

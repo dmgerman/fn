@@ -171,9 +171,12 @@ name|boolean
 name|oldOverrideFontSize
 decl_stmt|;
 DECL|field|fontSize
+DECL|field|rowPadding
 specifier|private
 name|JTextField
 name|fontSize
+decl_stmt|,
+name|rowPadding
 decl_stmt|;
 comment|//, customIconThemeFile;
 comment|/**      * Customization of appearance parameters.      *      * @param prefs a<code>JabRefPreferences</code> value      */
@@ -198,6 +201,15 @@ argument_list|)
 expr_stmt|;
 comment|// Font sizes:
 name|fontSize
+operator|=
+operator|new
+name|JTextField
+argument_list|(
+literal|5
+argument_list|)
+expr_stmt|;
+comment|// Row padding size:
+name|rowPadding
 operator|=
 operator|new
 name|JTextField
@@ -350,6 +362,50 @@ argument_list|)
 expr_stmt|;
 comment|//builder.append(antialias);
 comment|//builder.nextLine();
+name|JPanel
+name|p2
+init|=
+operator|new
+name|JPanel
+argument_list|()
+decl_stmt|;
+name|p2
+operator|.
+name|add
+argument_list|(
+operator|new
+name|JLabel
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Table row height padding"
+argument_list|)
+operator|+
+literal|":"
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|p2
+operator|.
+name|add
+argument_list|(
+name|rowPadding
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|append
+argument_list|(
+name|p2
+argument_list|)
+expr_stmt|;
+name|builder
+operator|.
+name|nextLine
+argument_list|()
+expr_stmt|;
 name|builder
 operator|.
 name|append
@@ -627,6 +683,20 @@ literal|"menuFontSize"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|rowPadding
+operator|.
+name|setText
+argument_list|(
+literal|""
+operator|+
+name|_prefs
+operator|.
+name|getInt
+argument_list|(
+literal|"tableRowPadding"
+argument_list|)
+argument_list|)
+expr_stmt|;
 name|oldMenuFontSize
 operator|=
 name|_prefs
@@ -848,24 +918,67 @@ name|printStackTrace
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-DECL|method|readyToClose ()
-specifier|public
-name|boolean
-name|readyToClose
-parameter_list|()
-block|{
 try|try
 block|{
-comment|// Test if font size is a number:
+name|int
+name|padding
+init|=
 name|Integer
 operator|.
 name|parseInt
 argument_list|(
-name|fontSize
+name|rowPadding
 operator|.
 name|getText
 argument_list|()
+argument_list|)
+decl_stmt|;
+name|_prefs
+operator|.
+name|putInt
+argument_list|(
+literal|"tableRowPadding"
+argument_list|,
+name|padding
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|NumberFormatException
+name|ex
+parameter_list|)
+block|{
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+DECL|method|validateIntegerField (String fieldName, String fieldValue, String errorTitle)
+specifier|private
+name|boolean
+name|validateIntegerField
+parameter_list|(
+name|String
+name|fieldName
+parameter_list|,
+name|String
+name|fieldValue
+parameter_list|,
+name|String
+name|errorTitle
+parameter_list|)
+block|{
+try|try
+block|{
+comment|// Test if the field value is a number:
+name|Integer
+operator|.
+name|parseInt
+argument_list|(
+name|fieldValue
 argument_list|)
 expr_stmt|;
 block|}
@@ -894,7 +1007,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Menu and label font size"
+name|fieldName
 argument_list|)
 operator|+
 literal|"'"
@@ -903,7 +1016,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Changed font settings"
+name|errorTitle
 argument_list|)
 argument_list|,
 name|JOptionPane
@@ -911,6 +1024,60 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+return|return
+literal|false
+return|;
+block|}
+return|return
+literal|true
+return|;
+block|}
+DECL|method|readyToClose ()
+specifier|public
+name|boolean
+name|readyToClose
+parameter_list|()
+block|{
+comment|// Test if font size is a number:
+if|if
+condition|(
+name|validateIntegerField
+argument_list|(
+literal|"Menu and label font size"
+argument_list|,
+name|fontSize
+operator|.
+name|getText
+argument_list|()
+argument_list|,
+literal|"Changed font settings"
+argument_list|)
+operator|==
+literal|false
+condition|)
+block|{
+return|return
+literal|false
+return|;
+block|}
+comment|// Test if row padding is a number:
+if|if
+condition|(
+name|validateIntegerField
+argument_list|(
+literal|"Table row height padding"
+argument_list|,
+name|rowPadding
+operator|.
+name|getText
+argument_list|()
+argument_list|,
+literal|"Changed table appearance settings"
+argument_list|)
+operator|==
+literal|false
+condition|)
+block|{
 return|return
 literal|false
 return|;
