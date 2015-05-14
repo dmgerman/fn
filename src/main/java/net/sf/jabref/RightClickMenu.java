@@ -1960,7 +1960,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"move to group"
+literal|"Move to group"
 argument_list|)
 argument_list|)
 block|{
