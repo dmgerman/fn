@@ -74,6 +74,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|BorderFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|ImageIcon
 import|;
 end_import
@@ -253,6 +263,14 @@ name|tlb
 argument_list|)
 expr_stmt|;
 comment|// setBorder(BorderFactory.createEtchedBorder());
+name|setBorder
+argument_list|(
+name|BorderFactory
+operator|.
+name|createEmptyBorder
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// setBorder(BorderFactory.createMatteBorder(1,1,1,1,java.awt.Color.green));
 comment|// setPreferredSize(new java.awt.Dimension
 comment|// (GUIGlobals.SPLIT_PANE_DIVIDER_LOCATION, 200));

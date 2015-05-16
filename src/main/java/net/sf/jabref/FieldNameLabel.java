@@ -112,27 +112,16 @@ operator|.
 name|entryEditorLabelColor
 argument_list|)
 expr_stmt|;
+comment|//  setBorder(BorderFactory.createMatteBorder(1,0,0,0, Color.GRAY));
+comment|//setBorder(BorderFactory.createEtchedBorder());
 name|setBorder
 argument_list|(
 name|BorderFactory
 operator|.
-name|createMatteBorder
-argument_list|(
-literal|1
-argument_list|,
-literal|0
-argument_list|,
-literal|0
-argument_list|,
-literal|0
-argument_list|,
-name|Color
-operator|.
-name|GRAY
-argument_list|)
+name|createEmptyBorder
+argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//setBorder(BorderFactory.createEtchedBorder());
 block|}
 DECL|method|paintComponent (Graphics g)
 specifier|public
