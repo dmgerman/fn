@@ -10188,7 +10188,11 @@ name|tabbedPane
 operator|.
 name|add
 argument_list|(
+literal|"<html><div style='padding:2px 5px;'>"
+operator|+
 name|title
+operator|+
+literal|"</div></html>"
 argument_list|,
 name|bp
 argument_list|)

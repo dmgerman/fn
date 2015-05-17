@@ -2799,6 +2799,17 @@ operator|.
 name|TABLE_ROW_PADDING
 argument_list|)
 expr_stmt|;
+name|defaults
+operator|.
+name|put
+argument_list|(
+literal|"tableShowGrid"
+argument_list|,
+name|Boolean
+operator|.
+name|FALSE
+argument_list|)
+expr_stmt|;
 comment|// Main table color settings:
 name|defaults
 operator|.

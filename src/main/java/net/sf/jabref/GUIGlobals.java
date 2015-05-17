@@ -413,7 +413,7 @@ comment|// + 15 for possible scrollbar.
 DECL|field|TABLE_ROW_PADDING
 name|TABLE_ROW_PADDING
 init|=
-literal|4
+literal|8
 decl_stmt|,
 DECL|field|KEYBIND_COL_0
 name|KEYBIND_COL_0
