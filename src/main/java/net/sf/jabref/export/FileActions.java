@@ -434,6 +434,17 @@ specifier|public
 class|class
 name|FileActions
 block|{
+DECL|enum|DatabaseSaveType
+specifier|public
+enum|enum
+name|DatabaseSaveType
+block|{
+DECL|enumConstant|DEFAULT
+DECL|enumConstant|PLAIN_BIBTEX
+name|DEFAULT
+block|,
+name|PLAIN_BIBTEX
+block|}
 DECL|field|refPat
 specifier|private
 specifier|static
@@ -2185,7 +2196,7 @@ name|comparators
 return|;
 block|}
 comment|/**      * Saves the database to file, including only the entries included in the      * supplied input array bes.      *      * @return A List containing warnings, if any.      */
-DECL|method|savePartOfDatabase (BibtexDatabase database, MetaData metaData, File file, JabRefPreferences prefs, BibtexEntry[] bes, String encoding, boolean writePlainBibtex)
+DECL|method|savePartOfDatabase (BibtexDatabase database, MetaData metaData, File file, JabRefPreferences prefs, BibtexEntry[] bes, String encoding, DatabaseSaveType saveType)
 specifier|public
 specifier|static
 name|SaveSession
@@ -2210,8 +2221,8 @@ parameter_list|,
 name|String
 name|encoding
 parameter_list|,
-name|boolean
-name|writePlainBibtex
+name|DatabaseSaveType
+name|saveType
 parameter_list|)
 throws|throws
 name|SaveException
@@ -2303,8 +2314,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|!
-name|writePlainBibtex
+name|saveType
+operator|!=
+name|DatabaseSaveType
+operator|.
+name|PLAIN_BIBTEX
 condition|)
 block|{
 comment|// Write signature.
@@ -2504,8 +2518,11 @@ block|}
 comment|// Write meta data.
 if|if
 condition|(
-operator|!
-name|writePlainBibtex
+name|saveType
+operator|!=
+name|DatabaseSaveType
+operator|.
+name|PLAIN_BIBTEX
 operator|&&
 name|metaData
 operator|!=

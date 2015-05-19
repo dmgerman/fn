@@ -630,6 +630,22 @@ name|jabref
 operator|.
 name|export
 operator|.
+name|FileActions
+operator|.
+name|DatabaseSaveType
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|export
+operator|.
 name|layout
 operator|.
 name|Layout
@@ -2351,7 +2367,11 @@ argument_list|,
 operator|new
 name|SaveSelectedAction
 argument_list|(
-literal|false
+name|FileActions
+operator|.
+name|DatabaseSaveType
+operator|.
+name|DEFAULT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2364,7 +2384,11 @@ argument_list|,
 operator|new
 name|SaveSelectedAction
 argument_list|(
-literal|true
+name|FileActions
+operator|.
+name|DatabaseSaveType
+operator|.
+name|PLAIN_BIBTEX
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -9135,7 +9159,7 @@ block|}
 comment|//  }
 comment|//}).start();
 block|}
-DECL|method|saveDatabase (File file, boolean selectedOnly, String encoding, boolean savePlainBibtex)
+DECL|method|saveDatabase (File file, boolean selectedOnly, String encoding, FileActions.DatabaseSaveType saveType)
 specifier|private
 name|boolean
 name|saveDatabase
@@ -9149,8 +9173,10 @@ parameter_list|,
 name|String
 name|encoding
 parameter_list|,
-name|boolean
-name|savePlainBibtex
+name|FileActions
+operator|.
+name|DatabaseSaveType
+name|saveType
 parameter_list|)
 throws|throws
 name|SaveException
@@ -9219,7 +9245,7 @@ argument_list|()
 argument_list|,
 name|encoding
 argument_list|,
-name|savePlainBibtex
+name|saveType
 argument_list|)
 expr_stmt|;
 block|}
@@ -9612,7 +9638,7 @@ name|selectedOnly
 argument_list|,
 name|newEncoding
 argument_list|,
-name|savePlainBibtex
+name|saveType
 argument_list|)
 return|;
 block|}
@@ -14882,24 +14908,24 @@ name|SaveSelectedAction
 extends|extends
 name|BaseAction
 block|{
-DECL|field|savePlainBibtex
+DECL|field|saveType
 specifier|private
-name|boolean
-name|savePlainBibtex
+name|DatabaseSaveType
+name|saveType
 decl_stmt|;
-DECL|method|SaveSelectedAction (boolean savePlainBibtex)
+DECL|method|SaveSelectedAction (DatabaseSaveType saveType)
 specifier|public
 name|SaveSelectedAction
 parameter_list|(
-name|boolean
-name|savePlainBibtex
+name|DatabaseSaveType
+name|saveType
 parameter_list|)
 block|{
 name|this
 operator|.
-name|savePlainBibtex
+name|saveType
 operator|=
-name|savePlainBibtex
+name|saveType
 expr_stmt|;
 block|}
 DECL|method|action ()
@@ -15021,7 +15047,7 @@ argument_list|(
 literal|"defaultEncoding"
 argument_list|)
 argument_list|,
-name|savePlainBibtex
+name|saveType
 argument_list|)
 expr_stmt|;
 comment|//runCommand("save");
