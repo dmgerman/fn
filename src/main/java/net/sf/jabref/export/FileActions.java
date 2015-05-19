@@ -2185,7 +2185,7 @@ name|comparators
 return|;
 block|}
 comment|/**      * Saves the database to file, including only the entries included in the      * supplied input array bes.      *      * @return A List containing warnings, if any.      */
-DECL|method|savePartOfDatabase (BibtexDatabase database, MetaData metaData, File file, JabRefPreferences prefs, BibtexEntry[] bes, String encoding)
+DECL|method|savePartOfDatabase (BibtexDatabase database, MetaData metaData, File file, JabRefPreferences prefs, BibtexEntry[] bes, String encoding, boolean writePlainBibtex)
 specifier|public
 specifier|static
 name|SaveSession
@@ -2209,6 +2209,9 @@ name|bes
 parameter_list|,
 name|String
 name|encoding
+parameter_list|,
+name|boolean
+name|writePlainBibtex
 parameter_list|)
 throws|throws
 name|SaveException
@@ -2298,6 +2301,12 @@ operator|.
 name|getWriter
 argument_list|()
 decl_stmt|;
+if|if
+condition|(
+operator|!
+name|writePlainBibtex
+condition|)
+block|{
 comment|// Write signature.
 name|writeBibFileHeader
 argument_list|(
@@ -2306,6 +2315,7 @@ argument_list|,
 name|encoding
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Write preamble if there is one.
 name|writePreamble
 argument_list|(
@@ -2494,6 +2504,9 @@ block|}
 comment|// Write meta data.
 if|if
 condition|(
+operator|!
+name|writePlainBibtex
+operator|&&
 name|metaData
 operator|!=
 literal|null
