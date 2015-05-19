@@ -1461,6 +1461,31 @@ literal|"saveAs"
 argument_list|)
 argument_list|)
 decl_stmt|,
+DECL|field|saveSelectedAsPlain
+name|saveSelectedAsPlain
+init|=
+operator|new
+name|GeneralAction
+argument_list|(
+literal|"saveSelectedAsPlain"
+argument_list|,
+literal|"Save selected as plain BibTeX ..."
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Save selected as plain BibTeX ..."
+argument_list|)
+argument_list|,
+name|GUIGlobals
+operator|.
+name|getIconUrl
+argument_list|(
+literal|"saveAs"
+argument_list|)
+argument_list|)
+decl_stmt|,
 DECL|field|exportAll
 name|exportAll
 init|=
@@ -7410,6 +7435,13 @@ operator|.
 name|add
 argument_list|(
 name|saveSelectedAs
+argument_list|)
+expr_stmt|;
+name|file
+operator|.
+name|add
+argument_list|(
+name|saveSelectedAsPlain
 argument_list|)
 expr_stmt|;
 name|file

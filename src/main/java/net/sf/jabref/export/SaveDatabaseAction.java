@@ -1062,6 +1062,12 @@ name|getSelectedEntries
 argument_list|()
 argument_list|,
 name|encoding
+argument_list|,
+name|FileActions
+operator|.
+name|DatabaseSaveType
+operator|.
+name|DEFAULT
 argument_list|)
 expr_stmt|;
 block|}
