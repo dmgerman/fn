@@ -1064,6 +1064,13 @@ operator|.
 name|length
 argument_list|()
 expr_stmt|;
+if|if
+condition|(
+name|Globals
+operator|.
+name|ON_WIN
+condition|)
+block|{
 comment|// Set application user model id so that pinning JabRef to the Win7/8 taskbar works
 comment|// Based on http://stackoverflow.com/a/1928830
 name|setCurrentProcessExplicitAppUserModelID
@@ -1076,6 +1083,7 @@ name|VERSION
 argument_list|)
 expr_stmt|;
 comment|//System.out.println(getCurrentProcessExplicitAppUserModelID());
+block|}
 name|openWindow
 argument_list|(
 name|processArguments
@@ -1202,6 +1210,13 @@ parameter_list|)
 function_decl|;
 static|static
 block|{
+if|if
+condition|(
+name|Globals
+operator|.
+name|ON_WIN
+condition|)
+block|{
 name|Native
 operator|.
 name|register
@@ -1209,6 +1224,7 @@ argument_list|(
 literal|"shell32"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|processArguments (String[] args, boolean initialStartup)
 specifier|public
