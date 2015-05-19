@@ -419,6 +419,8 @@ argument_list|,
 name|message
 argument_list|)
 decl_stmt|;
+comment|// Keep the formatting of these lines. Otherwise, strings have to be translated again.
+comment|// See updated JabRef_en.properties modifications by python syncLang.py -s -u
 name|b
 operator|.
 name|append
@@ -441,11 +443,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"The current version features a new way of handling links to external files.<br>"
-operator|+
-literal|"To take advantage of this, your links must be changed into the new format, and<br>"
-operator|+
-literal|"JabRef must be configured to show the new links."
+literal|"The current version features a new way of handling links to external files.<br>To take advantage of this, your links must be changed into the new format, and<br>JabRef must be configured to show the new links."
 argument_list|)
 operator|+
 literal|"<p>"
