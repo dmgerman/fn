@@ -44,7 +44,12 @@ parameter_list|()
 block|{
 name|TEXT_DONE_PATTERN
 operator|=
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"Set rank %0 for %1 entries"
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getInstance ()

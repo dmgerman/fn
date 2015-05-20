@@ -8225,7 +8225,12 @@ argument_list|(
 literal|"Marked entries as relevant"
 argument_list|)
 argument_list|,
-literal|"Marked %0 entries as relevant"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Toggled relevance for %0 entries"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -8284,7 +8289,12 @@ argument_list|(
 literal|"Marked entries' quality as good"
 argument_list|)
 argument_list|,
-literal|"Set quality of %0 entries to good"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Toggled quality for %0 entries"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -8343,7 +8353,12 @@ argument_list|(
 literal|"Marked entries as printed"
 argument_list|)
 argument_list|,
-literal|"Marked %0 entries as printed"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Toggled print status for %0 entries"
+argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
