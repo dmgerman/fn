@@ -9682,6 +9682,8 @@ name|saveAs
 argument_list|,
 name|saveSelectedAs
 argument_list|,
+name|saveSelectedAsPlain
+argument_list|,
 name|undo
 argument_list|,
 name|redo
