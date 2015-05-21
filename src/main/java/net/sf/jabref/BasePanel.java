@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -7930,29 +7930,48 @@ block|{
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
-name|output
-argument_list|(
+name|String
+name|outputStr
+decl_stmt|;
+if|if
+condition|(
+name|besLength
+operator|==
+literal|1
+condition|)
+block|{
+name|outputStr
+operator|=
 name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Marked selected"
+literal|"Marked selected entry"
 argument_list|)
-operator|+
-literal|" "
-operator|+
+expr_stmt|;
+block|}
+else|else
+block|{
+name|outputStr
+operator|=
 name|Globals
 operator|.
 name|lang
+argument_list|(
+literal|"Marked all %0 selected entries"
+argument_list|,
+name|Integer
+operator|.
+name|toString
 argument_list|(
 name|besLength
-operator|>
-literal|0
-condition|?
-literal|"entry"
-else|:
-literal|"entries"
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+name|output
+argument_list|(
+name|outputStr
 argument_list|)
 expr_stmt|;
 block|}
@@ -8043,31 +8062,52 @@ expr_stmt|;
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
-name|output
-argument_list|(
+name|String
+name|outputStr
+decl_stmt|;
+if|if
+condition|(
+name|bes
+operator|.
+name|length
+operator|==
+literal|1
+condition|)
+block|{
+name|outputStr
+operator|=
 name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Unmarked selected"
+literal|"Unmarked selected entry"
 argument_list|)
-operator|+
-literal|" "
-operator|+
+expr_stmt|;
+block|}
+else|else
+block|{
+name|outputStr
+operator|=
 name|Globals
 operator|.
 name|lang
+argument_list|(
+literal|"Unmarked all %0 selected entries"
+argument_list|,
+name|Integer
+operator|.
+name|toString
 argument_list|(
 name|bes
 operator|.
 name|length
-operator|>
-literal|0
-condition|?
-literal|"entry"
-else|:
-literal|"entries"
 argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
+name|output
+argument_list|(
+name|outputStr
 argument_list|)
 expr_stmt|;
 block|}
@@ -8160,6 +8200,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+comment|// Note that we can't put the number of entries that have been reverted into the undoText as the concrete number cannot be injected
 name|actions
 operator|.
 name|put
@@ -8212,7 +8253,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Marked entries as relevant"
+literal|"Toggle relevance"
 argument_list|)
 argument_list|,
 name|Globals
@@ -8276,7 +8317,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Marked entries' quality as good"
+literal|"Toggle quality"
 argument_list|)
 argument_list|,
 name|Globals
@@ -8340,7 +8381,7 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Marked entries as printed"
+literal|"Toggle print status"
 argument_list|)
 argument_list|,
 name|Globals
