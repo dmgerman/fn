@@ -12062,6 +12062,7 @@ name|newValue
 argument_list|)
 expr_stmt|;
 block|}
+comment|/**      * SIDE EFFECT: Unselectes given entry      */
 DECL|method|unmarkEntry (BibtexEntry be, boolean onlyMaxLevel, BibtexDatabase database, NamedCompound ce)
 specifier|public
 specifier|static

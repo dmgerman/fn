@@ -1713,6 +1713,7 @@ name|row
 argument_list|)
 return|;
 block|}
+comment|/**      * @return the return value is never null      */
 DECL|method|getSelectedEntries ()
 specifier|public
 name|BibtexEntry
@@ -2628,6 +2629,7 @@ name|OTHER
 return|;
 block|}
 block|}
+comment|/**      * Use with caution! If you modify an entry in the table, the selection changes      *       * You can avoid it with      *<code>.getSelected().getReadWriteLock().writeLock().lock()</code>      *   and then<code>.unlock()</code>      */
 DECL|method|getSelected ()
 specifier|public
 name|EventList
