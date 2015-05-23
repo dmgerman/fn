@@ -11741,6 +11741,7 @@ name|date
 argument_list|)
 return|;
 block|}
+comment|/** 	 * @param increment whether the given increment should be added to the current one. Currently never used in JabRef 	 */
 DECL|method|markEntry (BibtexEntry be, int markIncrement, boolean increment, NamedCompound ce)
 specifier|public
 specifier|static
