@@ -991,8 +991,9 @@ operator|!=
 literal|null
 condition|)
 block|{
-if|if
-condition|(
+name|String
+name|marked
+init|=
 name|be
 operator|.
 name|getField
@@ -1001,8 +1002,22 @@ name|BibtexFields
 operator|.
 name|MARKED
 argument_list|)
+decl_stmt|;
+comment|// We have to check for "" too as the marked field may be empty
+if|if
+condition|(
+operator|(
+name|marked
 operator|==
 literal|null
+operator|)
+operator|||
+operator|(
+name|marked
+operator|.
+name|isEmpty
+argument_list|()
+operator|)
 condition|)
 block|{
 name|add
