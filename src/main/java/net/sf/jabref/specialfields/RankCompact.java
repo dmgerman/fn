@@ -341,7 +341,7 @@ argument_list|)
 expr_stmt|;
 name|TEXT_DONE_PATTERN
 operator|=
-literal|"Set rank %0 for %1 entries"
+literal|"Set rank to '%0' for %1 entries"
 expr_stmt|;
 block|}
 DECL|method|getInstance ()

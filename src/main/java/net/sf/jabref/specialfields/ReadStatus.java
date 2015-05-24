@@ -248,7 +248,7 @@ argument_list|)
 expr_stmt|;
 name|TEXT_DONE_PATTERN
 operator|=
-literal|"Set read status '%0' for %1 entries"
+literal|"Set read status to '%0' for %1 entries"
 expr_stmt|;
 block|}
 DECL|method|getInstance ()
