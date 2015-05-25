@@ -5851,9 +5851,15 @@ argument_list|(
 name|bindName
 argument_list|)
 expr_stmt|;
-comment|// So, if this happens, we add the default value to the current
-comment|// hashmap, so this doesn't happen again, and so this binding
-comment|// will appear in the KeyBindingsDialog.
+if|if
+condition|(
+name|s
+operator|==
+literal|null
+condition|)
+block|{
+comment|// there isn't even a default value
+comment|// Output error
 name|Globals
 operator|.
 name|logger
@@ -5865,11 +5871,15 @@ operator|+
 literal|"\""
 argument_list|)
 expr_stmt|;
+comment|// fall back to a default value
 name|s
 operator|=
 literal|"Not associated"
 expr_stmt|;
-comment|// if the item of menu not in defKeyBind list
+block|}
+comment|// So, if there is no configured key binding, we add the fallback value to the current
+comment|// hashmap, so this doesn't happen again, and so this binding
+comment|// will appear in the KeyBindingsDialog.
 name|keyBinds
 operator|.
 name|put
