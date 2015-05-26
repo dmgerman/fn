@@ -7424,9 +7424,9 @@ name|put
 argument_list|(
 name|FindUnlinkedFilesDialog
 operator|.
-name|ACTION_COMMAND
+name|ACTION_KEYBINDING_ACTION
 argument_list|,
-literal|""
+literal|"shift F7"
 argument_list|)
 expr_stmt|;
 name|defKeyBinds

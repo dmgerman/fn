@@ -3019,7 +3019,7 @@ name|getKey
 argument_list|(
 name|FindUnlinkedFilesDialog
 operator|.
-name|ACTION_COMMAND
+name|ACTION_KEYBINDING_ACTION
 argument_list|)
 argument_list|)
 decl_stmt|;
