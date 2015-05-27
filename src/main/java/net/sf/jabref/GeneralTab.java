@@ -288,10 +288,16 @@ decl_stmt|;
 DECL|field|language
 specifier|private
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 name|language
 init|=
 operator|new
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|GUIGlobals
 operator|.
@@ -315,6 +321,9 @@ name|encodings
 init|=
 operator|new
 name|JComboBox
+argument_list|<
+name|String
+argument_list|>
 argument_list|(
 name|Globals
 operator|.

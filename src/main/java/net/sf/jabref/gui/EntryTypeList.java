@@ -484,9 +484,6 @@ block|{
 name|String
 name|typeName
 init|=
-operator|(
-name|String
-operator|)
 name|listModel
 operator|.
 name|get
