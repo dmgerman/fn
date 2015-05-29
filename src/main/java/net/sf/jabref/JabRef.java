@@ -3615,10 +3615,16 @@ block|{
 try|try
 block|{
 name|String
-name|systemLnF
+name|lookFeel
 decl_stmt|;
-comment|// * Look first into the Preferences
-comment|// * Fallback to the System Look& Fell
+name|String
+name|systemLnF
+init|=
+name|UIManager
+operator|.
+name|getSystemLookAndFeelClassName
+argument_list|()
+decl_stmt|;
 if|if
 condition|(
 name|Globals
@@ -3631,17 +3637,15 @@ literal|"useDefaultLookAndFeel"
 argument_list|)
 condition|)
 block|{
-name|systemLnF
+comment|// Use system Look& Feel by default
+name|lookFeel
 operator|=
-name|UIManager
-operator|.
-name|getSystemLookAndFeelClassName
-argument_list|()
+name|systemLnF
 expr_stmt|;
 block|}
 else|else
 block|{
-name|systemLnF
+name|lookFeel
 operator|=
 name|Globals
 operator|.
@@ -3656,7 +3660,7 @@ block|}
 comment|// At all cost, avoid ending up with the Metal look and feel:
 if|if
 condition|(
-name|systemLnF
+name|lookFeel
 operator|.
 name|equals
 argument_list|(
@@ -3703,6 +3707,23 @@ expr_stmt|;
 block|}
 else|else
 block|{
+try|try
+block|{
+name|UIManager
+operator|.
+name|setLookAndFeel
+argument_list|(
+name|lookFeel
+argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|ClassNotFoundException
+name|e
+parameter_list|)
+block|{
+comment|// specified look and feel does not exist on the classpath, so use system l&f
 name|UIManager
 operator|.
 name|setLookAndFeel
@@ -3710,6 +3731,45 @@ argument_list|(
 name|systemLnF
 argument_list|)
 expr_stmt|;
+comment|// also set system l&f as default
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|put
+argument_list|(
+literal|"lookAndFeel"
+argument_list|,
+name|systemLnF
+argument_list|)
+expr_stmt|;
+comment|// notify the user
+name|JOptionPane
+operator|.
+name|showMessageDialog
+argument_list|(
+name|jrf
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Unable to find the requested Look& Feel and thus the default one is used."
+argument_list|)
+argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Warning"
+argument_list|)
+argument_list|,
+name|JOptionPane
+operator|.
+name|WARNING_MESSAGE
+argument_list|)
+expr_stmt|;
+block|}
 block|}
 block|}
 catch|catch
