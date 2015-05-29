@@ -3719,10 +3719,11 @@ expr_stmt|;
 block|}
 catch|catch
 parameter_list|(
-name|ClassNotFoundException
+name|Exception
 name|e
 parameter_list|)
 block|{
+comment|// javax.swing.UnsupportedLookAndFeelException (sure; see bug #1278) or ClassNotFoundException (unsure) may be thrown
 comment|// specified look and feel does not exist on the classpath, so use system l&f
 name|UIManager
 operator|.
