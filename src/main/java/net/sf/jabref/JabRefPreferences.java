@@ -7143,6 +7143,15 @@ name|defKeyBinds
 operator|.
 name|put
 argument_list|(
+literal|"Open folder"
+argument_list|,
+literal|"ctrl shift O"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
 literal|"Open PDF or PS"
 argument_list|,
 literal|"shift F5"
@@ -7499,6 +7508,15 @@ argument_list|(
 literal|"Minimize to system tray"
 argument_list|,
 literal|"ctrl alt W"
+argument_list|)
+expr_stmt|;
+name|defKeyBinds
+operator|.
+name|put
+argument_list|(
+literal|"Hide/show toolbar"
+argument_list|,
+literal|"ctrl alt T"
 argument_list|)
 expr_stmt|;
 block|}
