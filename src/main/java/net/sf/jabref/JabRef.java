@@ -1687,6 +1687,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+comment|// Set up custom or default icon theme
+comment|// Has to be done here as openBibFile requires an initialized icon theme (due to the implementation of special fields)
+name|GUIGlobals
+operator|.
+name|setUpIconTheme
+argument_list|()
+expr_stmt|;
 comment|// Vector to put imported/loaded database(s) in.
 name|Vector
 argument_list|<
@@ -3993,11 +4000,7 @@ name|performCompatibilityUpdate
 argument_list|()
 expr_stmt|;
 comment|// Set up custom or default icon theme:
-name|GUIGlobals
-operator|.
-name|setUpIconTheme
-argument_list|()
-expr_stmt|;
+comment|// This is now done at processArguments
 comment|// TODO: remove temporary registering of external file types?
 name|Globals
 operator|.
