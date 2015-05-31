@@ -133,9 +133,10 @@ name|parentFrame
 init|=
 literal|null
 decl_stmt|;
-DECL|method|MacAdapter (JabRefFrame inputFrame)
+DECL|method|registerMacEvents (JabRefFrame inputFrame)
 specifier|public
-name|MacAdapter
+name|void
+name|registerMacEvents
 parameter_list|(
 name|JabRefFrame
 name|inputFrame
