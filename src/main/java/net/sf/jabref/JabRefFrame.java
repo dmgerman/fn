@@ -3320,9 +3320,6 @@ argument_list|,
 name|bibtexKeyPattern
 argument_list|)
 expr_stmt|;
-name|macOSXRegistration
-argument_list|()
-expr_stmt|;
 name|UIManager
 operator|.
 name|put
@@ -3879,6 +3876,12 @@ block|}
 block|}
 block|}
 argument_list|)
+expr_stmt|;
+comment|//Note: The registration of Apple event is at the end of initialization, because
+comment|//if the events happen too early (ie when the window is not initialized yet), the
+comment|//opened (double-clicked) documents are not displayed.
+name|macOSXRegistration
+argument_list|()
 expr_stmt|;
 block|}
 DECL|method|setWindowTitle ()
