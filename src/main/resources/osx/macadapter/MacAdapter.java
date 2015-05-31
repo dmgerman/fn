@@ -186,6 +186,15 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+name|FullScreenUtilities
+operator|.
+name|setWindowCanFullScreen
+argument_list|(
+name|parentFrame
+argument_list|,
+literal|true
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
