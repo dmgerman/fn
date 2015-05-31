@@ -5484,6 +5484,11 @@ name|getMessage
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|ex
+operator|.
+name|printStackTrace
+argument_list|()
+expr_stmt|;
 return|return
 name|pr
 return|;
