@@ -4703,9 +4703,10 @@ return|;
 block|}
 comment|// General info dialog.  The MacAdapter calls this method when "Quit"
 comment|// is selected from the application menu, Cmd-Q is pressed, or "Quit" is selected from the Dock.
+comment|// The function returns a boolean indicating if quitting is ok or not.
 DECL|method|quit ()
 specifier|public
-name|void
+name|boolean
 name|quit
 parameter_list|()
 block|{
@@ -4831,7 +4832,9 @@ operator|=
 literal|false
 expr_stmt|;
 comment|// The user has cancelled.
-return|return;
+return|return
+literal|false
+return|;
 block|}
 if|if
 condition|(
@@ -4998,7 +5001,9 @@ operator|.
 name|cancelled
 argument_list|()
 condition|)
-return|return;
+return|return
+literal|false
+return|;
 comment|// The user clicked cancel.
 block|}
 block|}
@@ -5302,15 +5307,13 @@ operator|.
 name|flush
 argument_list|()
 expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
-comment|// End program.
+return|return
+literal|true
+return|;
 block|}
+return|return
+literal|false
+return|;
 block|}
 DECL|method|initLayout ()
 specifier|private

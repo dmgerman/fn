@@ -244,21 +244,34 @@ block|}
 block|}
 annotation|@
 name|Override
-DECL|method|handleQuitRequestWith (QuitEvent arg0, QuitResponse arg1)
+DECL|method|handleQuitRequestWith (QuitEvent evt, QuitResponse resp)
 specifier|public
 name|void
 name|handleQuitRequestWith
 parameter_list|(
 name|QuitEvent
-name|arg0
+name|evt
 parameter_list|,
 name|QuitResponse
-name|arg1
+name|resp
 parameter_list|)
 block|{
+if|if
+condition|(
 name|parentFrame
 operator|.
 name|quit
+argument_list|()
+condition|)
+name|resp
+operator|.
+name|performQuit
+argument_list|()
+expr_stmt|;
+else|else
+name|resp
+operator|.
+name|cancelQuit
 argument_list|()
 expr_stmt|;
 block|}
