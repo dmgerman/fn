@@ -130,6 +130,8 @@ DECL|field|parentFrame
 specifier|private
 name|JabRefFrame
 name|parentFrame
+init|=
+literal|null
 decl_stmt|;
 DECL|method|MacAdapter (JabRefFrame inputFrame)
 specifier|public
@@ -196,6 +198,13 @@ name|OpenFilesEvent
 name|event
 parameter_list|)
 block|{
+if|if
+condition|(
+name|parentFrame
+operator|!=
+literal|null
+condition|)
+block|{
 name|List
 argument_list|<
 name|File
@@ -224,7 +233,6 @@ condition|;
 name|i
 operator|++
 control|)
-block|{
 name|parentFrame
 operator|.
 name|openAction
@@ -259,6 +267,13 @@ block|{
 if|if
 condition|(
 name|parentFrame
+operator|!=
+literal|null
+condition|)
+block|{
+if|if
+condition|(
+name|parentFrame
 operator|.
 name|quit
 argument_list|()
@@ -275,6 +290,7 @@ name|cancelQuit
 argument_list|()
 expr_stmt|;
 block|}
+block|}
 annotation|@
 name|Override
 DECL|method|handleAbout (AboutEvent arg0)
@@ -286,6 +302,12 @@ name|AboutEvent
 name|arg0
 parameter_list|)
 block|{
+if|if
+condition|(
+name|parentFrame
+operator|!=
+literal|null
+condition|)
 name|parentFrame
 operator|.
 name|about
@@ -303,6 +325,12 @@ name|PreferencesEvent
 name|arg0
 parameter_list|)
 block|{
+if|if
+condition|(
+name|parentFrame
+operator|!=
+literal|null
+condition|)
 name|parentFrame
 operator|.
 name|preferences
