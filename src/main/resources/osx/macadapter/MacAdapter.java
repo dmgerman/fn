@@ -149,6 +149,36 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+name|Application
+operator|.
+name|getApplication
+argument_list|()
+operator|.
+name|setAboutHandler
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+name|Application
+operator|.
+name|getApplication
+argument_list|()
+operator|.
+name|setPreferencesHandler
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+name|Application
+operator|.
+name|getApplication
+argument_list|()
+operator|.
+name|setQuitHandler
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -222,7 +252,11 @@ name|QuitResponse
 name|arg1
 parameter_list|)
 block|{
-comment|// TODO Auto-generated method stub
+name|parentFrame
+operator|.
+name|quit
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -235,7 +269,11 @@ name|AboutEvent
 name|arg0
 parameter_list|)
 block|{
-comment|// TODO Auto-generated method stub
+name|parentFrame
+operator|.
+name|about
+argument_list|()
+expr_stmt|;
 block|}
 annotation|@
 name|Override
@@ -248,7 +286,11 @@ name|PreferencesEvent
 name|arg0
 parameter_list|)
 block|{
-comment|// TODO Auto-generated method stub
+name|parentFrame
+operator|.
+name|preferences
+argument_list|()
+expr_stmt|;
 block|}
 block|}
 end_class

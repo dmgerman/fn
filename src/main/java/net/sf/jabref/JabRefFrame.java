@@ -4182,7 +4182,7 @@ literal|"search"
 argument_list|)
 expr_stmt|;
 block|}
-comment|// The OSXAdapter calls this method when a ".bib" file has been double-clicked from the Finder.
+comment|// The MacAdapter calls this method when a ".bib" file has been double-clicked from the Finder.
 DECL|method|openAction (String filePath)
 specifier|public
 name|void
@@ -4361,7 +4361,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|// General info dialog.  The OSXAdapter calls this method when "About OSXAdapter"
+comment|// General info dialog.  The MacAdapter calls this method when "About"
 comment|// is selected from the application menu.
 DECL|method|about ()
 specifier|public
@@ -4587,7 +4587,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|// General preferences dialog.  The OSXAdapter calls this method when "Preferences..."
+comment|// General preferences dialog.  The MacAdapter calls this method when "Preferences..."
 comment|// is selected from the application menu.
 DECL|method|preferences ()
 specifier|public
@@ -4701,7 +4701,7 @@ return|return
 name|prefs
 return|;
 block|}
-comment|// General info dialog.  The OSXAdapter calls this method when "Quit OSXAdapter"
+comment|// General info dialog.  The MacAdapter calls this method when "Quit"
 comment|// is selected from the application menu, Cmd-Q is pressed, or "Quit" is selected from the Dock.
 DECL|method|quit ()
 specifier|public
