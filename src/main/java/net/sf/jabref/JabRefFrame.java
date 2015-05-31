@@ -6968,6 +6968,35 @@ block|}
 block|}
 else|else
 block|{
+comment|// QUICK HACK to solve bug #1277
+if|if
+condition|(
+name|e
+operator|.
+name|getActionCommand
+argument_list|()
+operator|.
+name|equals
+argument_list|(
+literal|"Hide/show toolbar"
+argument_list|)
+condition|)
+block|{
+comment|// code copied from BasePanel.java, action "toggleToolbar"
+name|tlb
+operator|.
+name|setVisible
+argument_list|(
+operator|!
+name|tlb
+operator|.
+name|isVisible
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+else|else
+block|{
 name|Util
 operator|.
 name|pr
@@ -6976,11 +7005,10 @@ literal|"Action '"
 operator|+
 name|command
 operator|+
-literal|"' must be disabled when no "
-operator|+
-literal|"database is open."
+literal|"' must be disabled when no database is open."
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
