@@ -586,29 +586,12 @@ operator|.
 name|nextWordAction
 argument_list|)
 block|,
-operator|new
-name|JTextComponent
-operator|.
-name|KeyBinding
-argument_list|(
-name|KeyStroke
-operator|.
-name|getKeyStroke
-argument_list|(
-name|KeyEvent
-operator|.
-name|VK_F
-argument_list|,
-name|InputEvent
-operator|.
-name|CTRL_MASK
-argument_list|)
-argument_list|,
-name|DefaultEditorKit
-operator|.
-name|forwardAction
-argument_list|)
-block|,
+comment|// CTRL+F is also used for "search", which is used more often than going forward one letter
+comment|// Therefore, we just disalbe this key
+comment|//		new JTextComponent.
+comment|//			KeyBinding(KeyStroke.getKeyStroke(KeyEvent.VK_F,
+comment|//											  InputEvent.CTRL_MASK),
+comment|//					   DefaultEditorKit.forwardAction),
 operator|new
 name|JTextComponent
 operator|.
