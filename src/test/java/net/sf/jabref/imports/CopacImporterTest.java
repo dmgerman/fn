@@ -202,7 +202,7 @@ name|class
 operator|.
 name|getResourceAsStream
 argument_list|(
-literal|"IsiImporterTestINSPEC.isi"
+literal|"IsiImporterTestInspec.isi"
 argument_list|)
 argument_list|)
 argument_list|)
