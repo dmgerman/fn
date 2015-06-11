@@ -116,11 +116,15 @@ parameter_list|)
 block|{
 name|assertNotNull
 argument_list|(
+literal|"first path must not be null"
+argument_list|,
 name|path1
 argument_list|)
 expr_stmt|;
 name|assertNotNull
 argument_list|(
+literal|"second path must not be null"
+argument_list|,
 name|path2
 argument_list|)
 expr_stmt|;
