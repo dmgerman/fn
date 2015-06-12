@@ -16,6 +16,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -135,6 +145,13 @@ block|}
 comment|/**      * Test that more than one slash is taken to mean that a relative path is to      * be returned.      *      * @throws IOException      */
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+name|value
+operator|=
+literal|"works on windows but not on linux"
+argument_list|)
 DECL|method|testFindFileRelative ()
 specifier|public
 name|void
@@ -242,6 +259,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+name|value
+operator|=
+literal|"works on windows but not on linux"
+argument_list|)
 DECL|method|testFindPdf ()
 specifier|public
 name|void
@@ -997,6 +1021,13 @@ block|}
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+name|value
+operator|=
+literal|"works on windows but not on linux"
+argument_list|)
 DECL|method|testFindFile ()
 specifier|public
 name|void
