@@ -53,12 +53,12 @@ name|PATH_TO_TEST_BIBTEX
 init|=
 literal|"src/test/resources/net/sf/jabref/bibtexFiles/test.bib"
 decl_stmt|;
-comment|/**      * Returns a full configured and initialized instance of JabRef. As long as      * {@link TestUtils#closeJabRef()} wasn't called this method returns the      * same instance.      *      * @see TestUtils#closeJabRef()      */
-DECL|method|getInitializedJabRef ()
+comment|/**      * Initialize JabRef. Can be cleaned up with      * {@link TestUtils#closeJabRef()}      *      * @see TestUtils#closeJabRef()      */
+DECL|method|initJabRef ()
 specifier|public
 specifier|static
-name|JabRef
-name|getInitializedJabRef
+name|void
+name|initJabRef
 parameter_list|()
 block|{
 name|disableSystemExit
@@ -91,23 +91,13 @@ parameter_list|(
 name|ExitException
 name|ignored
 parameter_list|)
-block|{         }
+block|{          }
 finally|finally
 block|{
 name|enableSystemExit
 argument_list|()
 expr_stmt|;
 block|}
-name|JabRef
-name|jabref
-init|=
-name|JabRef
-operator|.
-name|singleton
-decl_stmt|;
-return|return
-name|jabref
-return|;
 block|}
 comment|/**      * Closes the current instance of JabRef.      */
 DECL|method|closeJabRef ()
@@ -131,7 +121,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|jabref
+name|JabRef
 operator|.
 name|jrf
 operator|.

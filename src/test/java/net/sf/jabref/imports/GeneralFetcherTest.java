@@ -286,8 +286,6 @@ name|jrf
 operator|=
 name|JabRef
 operator|.
-name|singleton
-operator|.
 name|jrf
 expr_stmt|;
 name|spm

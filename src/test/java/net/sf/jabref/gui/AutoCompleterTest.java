@@ -1304,14 +1304,11 @@ name|testEntryEditorForNameFieldAutoCompleter
 parameter_list|()
 block|{
 comment|// construct an EntryEditor ...
-name|JabRef
-name|jabref
-init|=
 name|TestUtils
 operator|.
-name|getInitializedJabRef
+name|initJabRef
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|BibtexEntry
 name|bibtexEntry
 init|=
@@ -1345,11 +1342,11 @@ init|=
 operator|new
 name|EntryEditor
 argument_list|(
-name|jabref
+name|JabRef
 operator|.
 name|jrf
 argument_list|,
-name|jabref
+name|JabRef
 operator|.
 name|jrf
 operator|.
@@ -1381,7 +1378,7 @@ comment|// test content of stored words in autocompleter ...
 name|AbstractAutoCompleter
 name|autoCompleter
 init|=
-name|jabref
+name|JabRef
 operator|.
 name|jrf
 operator|.
@@ -1428,14 +1425,11 @@ name|testEntryEditorForFieldAnotherAutoCompleter
 parameter_list|()
 block|{
 comment|// construct an EntryEditor ...
-name|JabRef
-name|jabref
-init|=
 name|TestUtils
 operator|.
-name|getInitializedJabRef
+name|initJabRef
 argument_list|()
-decl_stmt|;
+expr_stmt|;
 name|BibtexEntry
 name|bibtexEntry
 init|=
@@ -1469,11 +1463,11 @@ init|=
 operator|new
 name|EntryEditor
 argument_list|(
-name|jabref
+name|JabRef
 operator|.
 name|jrf
 argument_list|,
-name|jabref
+name|JabRef
 operator|.
 name|jrf
 operator|.
@@ -1505,7 +1499,7 @@ comment|// test content of stored words in autocompleter ...
 name|AbstractAutoCompleter
 name|autoCompleter
 init|=
-name|jabref
+name|JabRef
 operator|.
 name|jrf
 operator|.
