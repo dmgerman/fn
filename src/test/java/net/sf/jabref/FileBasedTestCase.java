@@ -100,56 +100,6 @@ specifier|public
 class|class
 name|FileBasedTestCase
 block|{
-comment|/**      * Will check if two paths are the same.      */
-DECL|method|assertEqualPaths (String path1, String path2)
-specifier|public
-specifier|static
-name|void
-name|assertEqualPaths
-parameter_list|(
-name|String
-name|path1
-parameter_list|,
-name|String
-name|path2
-parameter_list|)
-block|{
-name|assertNotNull
-argument_list|(
-literal|"first path must not be null"
-argument_list|,
-name|path1
-argument_list|)
-expr_stmt|;
-name|assertNotNull
-argument_list|(
-literal|"second path must not be null"
-argument_list|,
-name|path2
-argument_list|)
-expr_stmt|;
-name|assertEquals
-argument_list|(
-name|path1
-operator|.
-name|replaceAll
-argument_list|(
-literal|"\\\\"
-argument_list|,
-literal|"/"
-argument_list|)
-argument_list|,
-name|path2
-operator|.
-name|replaceAll
-argument_list|(
-literal|"\\\\"
-argument_list|,
-literal|"/"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**      * Creates a temp directory in the System temp directory.      *<p/>      * Taken from      * http://forum.java.sun.com/thread.jspa?threadID=470197&messageID=2169110      *<p/>      * Author: jfbriere      *      * @return returns null if directory could not created.      */
 DECL|method|createTempDir (String prefix)
 specifier|public
