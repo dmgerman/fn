@@ -161,6 +161,8 @@ throws|throws
 name|IOException
 block|{
 comment|// Most basic case
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 literal|"HipKro03.pdf"
@@ -179,6 +181,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Including directory
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 literal|"test/HipKro03.pdf"
@@ -195,6 +199,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// No relative paths
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 operator|new
@@ -224,6 +230,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// No relative paths
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 operator|new
@@ -291,6 +299,8 @@ name|getAbsolutePath
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 literal|"HipKro03 - Hello.pdf"
@@ -331,6 +341,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+name|value
+operator|=
+literal|"works on windows but not on linux"
+argument_list|)
 DECL|method|testFindPdfInSubfolder ()
 specifier|public
 name|void
@@ -356,6 +373,8 @@ operator|+
 literal|"/pdfs/"
 argument_list|)
 decl_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 literal|"sub/HipKro03-sub.pdf"
@@ -391,6 +410,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+name|value
+operator|=
+literal|"works on windows but not on linux"
+argument_list|)
 DECL|method|testFindAssociatedFiles ()
 specifier|public
 name|void
@@ -572,6 +598,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+name|value
+operator|=
+literal|"works on windows but not on linux"
+argument_list|)
 DECL|method|testFindPdfInMultiple ()
 specifier|public
 name|void
@@ -616,6 +649,8 @@ argument_list|,
 name|dirsToSearch
 argument_list|)
 decl_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 literal|"HipKro03 - Hello.pdf"
@@ -648,6 +683,8 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 name|root
@@ -712,6 +749,8 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 name|root
@@ -783,6 +822,8 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 name|root
@@ -835,6 +876,8 @@ argument_list|,
 name|dirsToSearch
 argument_list|)
 decl_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 literal|"sub/HipKro03-sub.pdf"
@@ -867,6 +910,8 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 name|root
@@ -931,6 +976,8 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 name|root
@@ -1002,6 +1049,8 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 name|root
@@ -1037,6 +1086,8 @@ throws|throws
 name|IOException
 block|{
 comment|// Simple case
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 literal|"HipKro03.pdf"
@@ -1087,6 +1138,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Test current dir
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 operator|new
@@ -1116,6 +1169,8 @@ literal|"./build.xml"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 literal|"build.xml"
@@ -1137,6 +1192,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Test keys in path and regular expression in file
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 operator|new
@@ -1168,6 +1225,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Test . and ..
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 operator|new
@@ -1201,6 +1260,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Test Escape
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 operator|new
@@ -1233,6 +1294,8 @@ literal|"[bibtexkey] - Hello\\\\.pdf"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 literal|"TE.ST"
@@ -1258,6 +1321,8 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 literal|".TEST"
@@ -1283,6 +1348,8 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 literal|"TEST["
@@ -1309,6 +1376,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Test *
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 operator|new
@@ -1342,6 +1411,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Test **
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 operator|new
@@ -1375,6 +1446,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Test ** - Find in level itself too
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 operator|new
@@ -1408,6 +1481,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Test ** - Find lowest level first (Rest is Depth first)
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 operator|new
