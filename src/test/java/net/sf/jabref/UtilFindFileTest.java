@@ -250,7 +250,6 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-block|{
 name|String
 name|pdf
 init|=
@@ -290,6 +289,13 @@ name|getAbsolutePath
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|assertNotNull
+argument_list|(
+literal|"expanded file must not be null"
+argument_list|,
+name|fullPath
+argument_list|)
+expr_stmt|;
 name|assertTrue
 argument_list|(
 name|fullPath
@@ -299,6 +305,13 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+DECL|method|testFindPdfInSubfolder ()
+specifier|public
+name|void
+name|testFindPdfInSubfolder
+parameter_list|()
 block|{
 name|String
 name|pdf
@@ -351,7 +364,6 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 annotation|@
 name|Test
