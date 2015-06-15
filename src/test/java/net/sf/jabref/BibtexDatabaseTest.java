@@ -44,6 +44,26 @@ name|org
 operator|.
 name|junit
 operator|.
+name|After
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Before
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -96,6 +116,40 @@ specifier|public
 class|class
 name|BibtexDatabaseTest
 block|{
+annotation|@
+name|Before
+DECL|method|setup ()
+specifier|public
+name|void
+name|setup
+parameter_list|()
+block|{
+name|Globals
+operator|.
+name|prefs
+operator|=
+name|JabRefPreferences
+operator|.
+name|getInstance
+argument_list|()
+expr_stmt|;
+comment|// set preferences for this test
+block|}
+annotation|@
+name|After
+DECL|method|teardown ()
+specifier|public
+name|void
+name|teardown
+parameter_list|()
+block|{
+name|Globals
+operator|.
+name|prefs
+operator|=
+literal|null
+expr_stmt|;
+block|}
 comment|/**      * Some basic test cases for resolving strings.      *      * @throws FileNotFoundException      * @throws IOException      */
 annotation|@
 name|Test
