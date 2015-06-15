@@ -295,7 +295,7 @@ name|setRequestProperty
 argument_list|(
 literal|"User-Agent"
 argument_list|,
-literal|"Jabref"
+literal|"JabRef"
 argument_list|)
 expr_stmt|;
 comment|// this does network i/o: GET + read returned headers
