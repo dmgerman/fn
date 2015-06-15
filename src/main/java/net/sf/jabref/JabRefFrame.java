@@ -3882,17 +3882,9 @@ comment|//if the events happen too early (ie when the window is not initialized 
 comment|//opened (double-clicked) documents are not displayed.
 if|if
 condition|(
-name|System
+name|Globals
 operator|.
-name|getProperty
-argument_list|(
-literal|"os.name"
-argument_list|)
-operator|.
-name|equals
-argument_list|(
-literal|"Mac OS X"
-argument_list|)
+name|ON_MAC
 condition|)
 block|{
 try|try
