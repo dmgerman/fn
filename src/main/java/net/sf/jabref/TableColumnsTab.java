@@ -2880,7 +2880,7 @@ name|getBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SHOWONELETTERHEADINGFORICONCOLUMNS
+name|SHOW_ONE_LETTER_HEADING_FOR_ICON_COLUMNS
 argument_list|)
 decl_stmt|;
 name|showOneLetterHeadingForIconColumns
@@ -4520,7 +4520,7 @@ name|putBoolean
 argument_list|(
 name|JabRefPreferences
 operator|.
-name|SHOWONELETTERHEADINGFORICONCOLUMNS
+name|SHOW_ONE_LETTER_HEADING_FOR_ICON_COLUMNS
 argument_list|,
 name|showOneLetterHeadingForIconColumns
 operator|.

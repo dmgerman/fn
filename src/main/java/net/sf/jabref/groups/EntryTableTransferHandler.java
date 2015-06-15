@@ -1909,18 +1909,19 @@ argument_list|()
 expr_stmt|;
 comment|// System.out.println("Import url: " + dropLink.toString());
 comment|// System.out.println("Temp file: "+tmpfile.getAbsolutePath());
-operator|new
 name|URLDownload
+operator|.
+name|buildMonitoredDownload
 argument_list|(
 name|entryTable
 argument_list|,
 name|dropLink
-argument_list|,
-name|tmpfile
 argument_list|)
 operator|.
-name|download
-argument_list|()
+name|downloadToFile
+argument_list|(
+name|tmpfile
+argument_list|)
 expr_stmt|;
 comment|// Import into new if entryTable==null, otherwise into current database:
 name|ImportMenuItem

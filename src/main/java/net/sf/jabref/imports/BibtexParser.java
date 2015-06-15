@@ -189,6 +189,21 @@ name|LOOKAHEAD
 init|=
 literal|64
 decl_stmt|;
+DECL|field|autoDoubleBraces
+specifier|private
+specifier|final
+name|boolean
+name|autoDoubleBraces
+init|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"autoDoubleBraces"
+argument_list|)
+decl_stmt|;
 DECL|method|BibtexParser (Reader in)
 specifier|public
 name|BibtexParser
@@ -2129,14 +2144,7 @@ comment|// Util.pr("Returning field content: "+value.toString());
 comment|// Check if we are to strip extra pairs of braces before returning:
 if|if
 condition|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-literal|"autoDoubleBraces"
-argument_list|)
+name|autoDoubleBraces
 condition|)
 block|{
 comment|// Do it:

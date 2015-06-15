@@ -525,9 +525,9 @@ try|try
 block|{
 name|i1
 operator|=
-name|Integer
+name|Util
 operator|.
-name|parseInt
+name|intValueOf
 argument_list|(
 operator|(
 name|String
@@ -548,9 +548,9 @@ try|try
 block|{
 name|i2
 operator|=
-name|Integer
+name|Util
 operator|.
-name|parseInt
+name|intValueOf
 argument_list|(
 operator|(
 name|String

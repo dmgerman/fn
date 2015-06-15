@@ -407,8 +407,8 @@ name|PDF_PREVIEW
 init|=
 literal|"pdfPreview"
 decl_stmt|,
-DECL|field|SHOWONELETTERHEADINGFORICONCOLUMNS
-name|SHOWONELETTERHEADINGFORICONCOLUMNS
+DECL|field|SHOW_ONE_LETTER_HEADING_FOR_ICON_COLUMNS
+name|SHOW_ONE_LETTER_HEADING_FOR_ICON_COLUMNS
 init|=
 literal|"showOneLetterHeadingForIconColumns"
 decl_stmt|,
@@ -3251,7 +3251,7 @@ name|defaults
 operator|.
 name|put
 argument_list|(
-name|SHOWONELETTERHEADINGFORICONCOLUMNS
+name|SHOW_ONE_LETTER_HEADING_FOR_ICON_COLUMNS
 argument_list|,
 name|Boolean
 operator|.
