@@ -664,6 +664,20 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|imports
+operator|.
+name|ParserResult
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|journals
 operator|.
 name|JournalAbbreviations
@@ -4646,7 +4660,7 @@ name|be
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Returns false if the contents of the source panel has not been validated,      * true othervise.      */
+comment|/**      * Returns false if the contents of the source panel has not been validated,      * true otherwise.      */
 DECL|method|lastSourceAccepted ()
 specifier|public
 name|boolean
@@ -4704,13 +4718,18 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-name|BibtexDatabase
-name|db
+name|ParserResult
+name|parserResult
 init|=
 name|bp
 operator|.
 name|parse
 argument_list|()
+decl_stmt|;
+name|BibtexDatabase
+name|db
+init|=
+name|parserResult
 operator|.
 name|getDatabase
 argument_list|()
@@ -4740,6 +4759,32 @@ argument_list|()
 operator|<
 literal|1
 condition|)
+block|{
+if|if
+condition|(
+name|parserResult
+operator|.
+name|hasWarnings
+argument_list|()
+condition|)
+block|{
+comment|// put the warning into as exception text -> it will be displayed to the user
+throw|throw
+operator|new
+name|Exception
+argument_list|(
+name|parserResult
+operator|.
+name|warnings
+argument_list|()
+index|[
+literal|0
+index|]
+argument_list|)
+throw|;
+block|}
+else|else
+block|{
 throw|throw
 operator|new
 name|Exception
@@ -4747,6 +4792,8 @@ argument_list|(
 literal|"No entries found."
 argument_list|)
 throw|;
+block|}
+block|}
 name|NamedCompound
 name|compound
 init|=

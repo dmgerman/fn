@@ -107,9 +107,7 @@ literal|"some/file"
 argument_list|,
 name|cli
 operator|.
-name|importFile
-operator|.
-name|getStringValue
+name|getFileImport
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -127,9 +125,7 @@ literal|"some/export/file"
 argument_list|,
 name|cli
 operator|.
-name|exportFile
-operator|.
-name|getStringValue
+name|getFileExport
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -181,9 +177,7 @@ literal|"some/file"
 argument_list|,
 name|cli
 operator|.
-name|importFile
-operator|.
-name|getStringValue
+name|getFileImport
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -201,9 +195,7 @@ literal|"some/export/file"
 argument_list|,
 name|cli
 operator|.
-name|exportFile
-operator|.
-name|getStringValue
+name|getFileExport
 argument_list|()
 argument_list|)
 expr_stmt|;
