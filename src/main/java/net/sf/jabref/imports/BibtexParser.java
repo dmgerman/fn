@@ -194,15 +194,6 @@ specifier|private
 specifier|final
 name|boolean
 name|autoDoubleBraces
-init|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getBoolean
-argument_list|(
-literal|"autoDoubleBraces"
-argument_list|)
 decl_stmt|;
 DECL|method|BibtexParser (Reader in)
 specifier|public
@@ -244,6 +235,17 @@ name|getInstance
 argument_list|()
 expr_stmt|;
 block|}
+name|autoDoubleBraces
+operator|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+literal|"autoDoubleBraces"
+argument_list|)
+expr_stmt|;
 name|_in
 operator|=
 operator|new
