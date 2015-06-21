@@ -868,7 +868,7 @@ specifier|public
 class|class
 name|Util
 block|{
-comment|/** 	 * A static Object for date formatting. Please do not create the object 	 * here, because there are some references from the Globals class..... 	 *  	 */
+comment|/**      * A static Object for date formatting. Please do not create the object      * here, because there are some references from the Globals class.....      *       */
 DECL|field|dateFormatter
 specifier|private
 specifier|static
@@ -877,7 +877,7 @@ name|dateFormatter
 init|=
 literal|null
 decl_stmt|;
-comment|/* 	 * Colors are defined here. 	 *   	 */
+comment|/*      * Colors are defined here.      *        */
 DECL|field|fieldsCol
 specifier|public
 specifier|static
@@ -894,7 +894,7 @@ argument_list|,
 literal|200
 argument_list|)
 decl_stmt|;
-comment|/* 	 * Integer values for indicating result of duplicate check (for entries): 	 *  	 */
+comment|/*      * Integer values for indicating result of duplicate check (for entries):      *       */
 DECL|field|TYPE_MISMATCH
 DECL|field|NOT_EQUAL
 DECL|field|EQUAL
@@ -1174,7 +1174,7 @@ operator|++
 argument_list|)
 return|;
 block|}
-comment|/** 	 * This method sets the location of a Dialog such that it is centered with 	 * regard to another window, but not outside the screen on the left and the 	 * top. 	 */
+comment|/**      * This method sets the location of a Dialog such that it is centered with      * regard to another window, but not outside the screen on the left and the      * top.      */
 DECL|method|placeDialog (java.awt.Dialog diag, java.awt.Container win)
 specifier|public
 specifier|static
@@ -1204,7 +1204,7 @@ name|win
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * This method translates a field or string from Bibtex notation, with 	 * possibly text contained in " " or { }, and string references, 	 * concatenated by '#' characters, into Bibkeeper notation, where string 	 * references are enclosed in a pair of '#' characters. 	 */
+comment|/**      * This method translates a field or string from Bibtex notation, with      * possibly text contained in " " or { }, and string references,      * concatenated by '#' characters, into Bibkeeper notation, where string      * references are enclosed in a pair of '#' characters.      */
 DECL|method|parseField (String content)
 specifier|public
 specifier|static
@@ -1369,7 +1369,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Will return the publication date of the given bibtex entry in conformance 	 * to ISO 8601, i.e. either YYYY or YYYY-MM. 	 *  	 * @param entry 	 * @return will return the publication date of the entry or null if no year 	 *         was found. 	 */
+comment|/**      * Will return the publication date of the given bibtex entry in conformance      * to ISO 8601, i.e. either YYYY or YYYY-MM.      *       * @param entry      * @return will return the publication date of the entry or null if no year      *         was found.      */
 DECL|method|getPublicationDate (BibtexEntry entry)
 specifier|public
 specifier|static
@@ -1716,7 +1716,7 @@ literal|""
 argument_list|)
 return|;
 block|}
-comment|/** 	 * This method returns a String similar to the one passed in, except that it 	 * is molded into a form that is acceptable for bibtex. 	 *  	 * Watch-out that the returned string might be of length 0 afterwards. 	 *  	 * @param key 	 *            mayBeNull 	 */
+comment|/**      * This method returns a String similar to the one passed in, except that it      * is molded into a form that is acceptable for bibtex.      *       * Watch-out that the returned string might be of length 0 afterwards.      *       * @param key      *            mayBeNull      */
 DECL|method|checkLegalKey (String key)
 specifier|public
 specifier|static
@@ -1967,7 +1967,7 @@ return|return
 name|newKeyS
 return|;
 block|}
-comment|/** 	 * Replace non-english characters like umlauts etc. with a sensible letter 	 * or letter combination that bibtex can accept. The basis for replacement 	 * is the HashMap GLobals.UNICODE_CHARS. 	 */
+comment|/**      * Replace non-english characters like umlauts etc. with a sensible letter      * or letter combination that bibtex can accept. The basis for replacement      * is the HashMap GLobals.UNICODE_CHARS.      */
 DECL|method|replaceSpecialCharacters (String s)
 specifier|public
 specifier|static
@@ -2524,7 +2524,7 @@ return|return
 name|res
 return|;
 block|}
-comment|/** 	 * Returns a HashMap containing all words used in the database in the given 	 * field type. Characters in<code>remove</code> are not included. 	 *  	 * @param db 	 *            a<code>BibtexDatabase</code> value 	 * @param field 	 *            a<code>String</code> value 	 * @param remove 	 *            a<code>String</code> value 	 * @return a<code>HashSet</code> value 	 */
+comment|/**      * Returns a HashMap containing all words used in the database in the given      * field type. Characters in<code>remove</code> are not included.      *       * @param db      *            a<code>BibtexDatabase</code> value      * @param field      *            a<code>String</code> value      * @param remove      *            a<code>String</code> value      * @return a<code>HashSet</code> value      */
 DECL|method|findAllWordsInField (BibtexDatabase db, String field, String remove)
 specifier|public
 specifier|static
@@ -2812,7 +2812,7 @@ return|return
 name|res
 return|;
 block|}
-comment|/** 	 * Takes a String array and returns a string with the array's elements 	 * delimited by a certain String. 	 *  	 * @param strs 	 *            String array to convert. 	 * @param delimiter 	 *            String to use as delimiter. 	 * @return Delimited String. 	 */
+comment|/**      * Takes a String array and returns a string with the array's elements      * delimited by a certain String.      *       * @param strs      *            String array to convert.      * @param delimiter      *            String to use as delimiter.      * @return Delimited String.      */
 DECL|method|stringArrayToDelimited (String[] strs, String delimiter)
 specifier|public
 specifier|static
@@ -2925,7 +2925,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Takes a delimited string, splits it and returns 	 *  	 * @param names 	 *            a<code>String</code> value 	 * @return a<code>String[]</code> value 	 */
+comment|/**      * Takes a delimited string, splits it and returns      *       * @param names      *            a<code>String</code> value      * @return a<code>String[]</code> value      */
 DECL|method|delimToStringArray (String names, String delimiter)
 specifier|public
 specifier|static
@@ -3104,7 +3104,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Open a http/pdf/ps viewer for the given link string. 	 */
+comment|/**      * Open a http/pdf/ps viewer for the given link string.      */
 DECL|method|openExternalViewer (MetaData metaData, String link, String fieldName)
 specifier|public
 specifier|static
@@ -3500,7 +3500,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-comment|/* 					 * cmdArray[0] = Globals.prefs.get("psviewer"); cmdArray[1] = 					 * link; Process child = Runtime.getRuntime().exec( 					 * cmdArray[0] + " " + cmdArray[1]); 					 */
+comment|/*                      * cmdArray[0] = Globals.prefs.get("psviewer"); cmdArray[1] =                      * link; Process child = Runtime.getRuntime().exec(                      * cmdArray[0] + " " + cmdArray[1]);                      */
 block|}
 else|else
 block|{
@@ -3689,7 +3689,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
-comment|/* 					 * String[] spl = link.split("\\\\"); StringBuffer sb = new 					 * StringBuffer(); for (int i = 0; i< spl.length; i++) { if 					 * (i> 0) sb.append("\\"); if (spl[i].indexOf(" ")>= 0) 					 * spl[i] = "\"" + spl[i] + "\""; sb.append(spl[i]); } 					 * //pr(sb.toString()); link = sb.toString(); 					 *  					 * String cmd = "cmd.exe /c start " + link; 					 *  					 * Process child = Runtime.getRuntime().exec(cmd); 					 */
+comment|/*                      * String[] spl = link.split("\\\\"); StringBuffer sb = new                      * StringBuffer(); for (int i = 0; i< spl.length; i++) { if                      * (i> 0) sb.append("\\"); if (spl[i].indexOf(" ")>= 0)                      * spl[i] = "\"" + spl[i] + "\""; sb.append(spl[i]); }                      * //pr(sb.toString()); link = sb.toString();                      *                       * String cmd = "cmd.exe /c start " + link;                      *                       * Process child = Runtime.getRuntime().exec(cmd);                      */
 block|}
 else|else
 block|{
@@ -3824,7 +3824,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Opens a file on a Windows system, using its default viewer. 	 *  	 * @param link 	 *            The file name. 	 * @param localFile 	 *            true if it is a local file, not an URL. 	 * @throws IOException 	 */
+comment|/**      * Opens a file on a Windows system, using its default viewer.      *       * @param link      *            The file name.      * @param localFile      *            true if it is a local file, not an URL.      * @throws IOException      */
 DECL|method|openFileOnWindows (String link, boolean localFile)
 specifier|public
 specifier|static
@@ -3840,7 +3840,7 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|/* 		 * if (localFile) { String[] spl = link.split("\\\\"); StringBuffer sb = 		 * new StringBuffer(); for (int i = 0; i< spl.length; i++) { if (i> 0) 		 * sb.append("\\"); if (spl[i].indexOf(" ")>= 0) spl[i] = "\"" + spl[i] + 		 * "\""; sb.append(spl[i]); } link = sb.toString(); } 		 */
+comment|/*          * if (localFile) { String[] spl = link.split("\\\\"); StringBuffer sb =          * new StringBuffer(); for (int i = 0; i< spl.length; i++) { if (i> 0)          * sb.append("\\"); if (spl[i].indexOf(" ")>= 0) spl[i] = "\"" + spl[i] +          * "\""; sb.append(spl[i]); } link = sb.toString(); }          */
 name|link
 operator|=
 name|link
@@ -3952,7 +3952,7 @@ name|link
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Open an external file, attempting to use the correct viewer for it. 	 *  	 * @param metaData 	 *            The MetaData for the database this file belongs to. 	 * @param link 	 *            The file name.      * @return false if the link couldn't be resolved, true otherwise. 	 */
+comment|/**      * Open an external file, attempting to use the correct viewer for it.      *       * @param metaData      *            The MetaData for the database this file belongs to.      * @param link      *            The file name.      * @return false if the link couldn't be resolved, true otherwise.      */
 DECL|method|openExternalFileAnyFormat (final MetaData metaData, String link, final ExternalFileType fileType)
 specifier|public
 specifier|static
@@ -5016,7 +5016,7 @@ return|;
 block|}
 block|}
 block|}
-comment|/** 	 * Make sure an URL is "portable", in that it doesn't contain bad characters 	 * that break the open command in some OSes. 	 *  	 * A call to this method will also remove \\url{} enclosings and clean DOI links. 	 *  	 * @param link :the URL to sanitize. 	 * @return Sanitized URL 	 */
+comment|/**      * Make sure an URL is "portable", in that it doesn't contain bad characters      * that break the open command in some OSes.      *       * A call to this method will also remove \\url{} enclosings and clean DOI links. 	 *  	 * @param link :the URL to sanitize. 	 * @return Sanitized URL 	 */
 DECL|method|sanitizeUrl (String link)
 specifier|public
 specifier|static
@@ -5163,8 +5163,8 @@ parameter_list|(
 name|UnsupportedEncodingException
 name|ignored
 parameter_list|)
-block|{ 		}
-comment|/** 		 * Fix for: [ 1574773 ] sanitizeUrl() breaks ftp:// and file:/// 		 *  		 * http://sourceforge.net/tracker/index.php?func=detail&aid=1574773&group_id=92314&atid=600306 		 */
+block|{         }
+comment|/**          * Fix for: [ 1574773 ] sanitizeUrl() breaks ftp:// and file:///          *           * http://sourceforge.net/tracker/index.php?func=detail&aid=1574773&group_id=92314&atid=600306          */
 try|try
 block|{
 return|return
@@ -5193,7 +5193,7 @@ name|link
 return|;
 block|}
 block|}
-comment|/** 	 * Returns the extension of a file or null if the file does not have one (no . in name). 	 *  	 * @param file 	 *  	 * @return The extension, trimmed and in lowercase. 	 */
+comment|/**      * Returns the extension of a file or null if the file does not have one (no . in name).      *       * @param file      *       * @return The extension, trimmed and in lowercase.      */
 DECL|method|getFileExtension (File file)
 specifier|public
 specifier|static
@@ -5647,7 +5647,7 @@ argument_list|(
 literal|"\\[.*?\\]"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Takes a string that contains bracketed expression and expands each of 	 * these using getFieldAndFormat. 	 * 	 * Unknown Bracket expressions are silently dropped. 	 * 	 * @param bracketString 	 * @param entry 	 * @param database 	 * @return 	 */
+comment|/**      * Takes a string that contains bracketed expression and expands each of      * these using getFieldAndFormat.      *      * Unknown Bracket expressions are silently dropped.      *      * @param bracketString      * @param entry      * @param database      * @return      */
 DECL|method|expandBrackets (String bracketString, BibtexEntry entry, BibtexDatabase database)
 specifier|public
 specifier|static
@@ -5738,7 +5738,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Concatenate all strings in the array from index 'from' to 'to' (excluding 	 * to) with the given separator. 	 *  	 * Example: 	 *  	 * String[] s = "ab/cd/ed".split("/"); join(s, "\\", 0, s.length) -> 	 * "ab\\cd\\ed" 	 *  	 * @param strings 	 * @param separator 	 * @param from 	 * @param to 	 *            Excluding strings[to] 	 * @return 	 */
+comment|/**      * Concatenate all strings in the array from index 'from' to 'to' (excluding      * to) with the given separator.      *       * Example:      *       * String[] s = "ab/cd/ed".split("/"); join(s, "\\", 0, s.length) ->      * "ab\\cd\\ed"      *       * @param strings      * @param separator      * @param from      * @param to      *            Excluding strings[to]      * @return      */
 DECL|method|join (String[] strings, String separator, int from, int to)
 specifier|public
 specifier|static
@@ -5884,7 +5884,7 @@ name|length
 argument_list|)
 return|;
 block|}
-comment|/**     * Converts a relative filename to an absolute one, if necessary. Returns     * null if the file does not exist.<br/>     *      * Uses<ul>     *<li>the default directory associated with the extension of the file</li>     *<li>the standard file directory</li>     *<li>the directory of the bib file</li>     *</ul>     *      * @param metaData     *            The MetaData for the database this file belongs to.     * @param name     *            The file name, may also be a relative path to the file     */
+comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.<br/>      *       * Uses<ul>      *<li>the default directory associated with the extension of the file</li>      *<li>the standard file directory</li>      *<li>the directory of the bib file</li>      *</ul>      *       * @param metaData      *            The MetaData for the database this file belongs to.      * @param name      *            The file name, may also be a relative path to the file      */
 DECL|method|expandFilename (final MetaData metaData, String name)
 specifier|public
 specifier|static
@@ -6063,7 +6063,7 @@ name|dirs
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Converts a relative filename to an absolute one, if necessary. Returns 	 * null if the file does not exist. 	 *  	 * Will look in each of the given dirs starting from the beginning and 	 * returning the first found file to match if any. 	 */
+comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.      *       * Will look in each of the given dirs starting from the beginning and      * returning the first found file to match if any.      */
 DECL|method|expandFilename (String name, String[] dir)
 specifier|public
 specifier|static
@@ -6120,7 +6120,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** 	 * Converts a relative filename to an absolute one, if necessary. Returns 	 * null if the file does not exist. 	 */
+comment|/**      * Converts a relative filename to an absolute one, if necessary. Returns      * null if the file does not exist.      */
 DECL|method|expandFilename (String name, String dir)
 specifier|public
 specifier|static
@@ -6324,7 +6324,7 @@ return|return
 name|file
 return|;
 block|}
-comment|/** 	 * Converts an absolute filename to a relative one, if necessary. 	 * Returns the parameter fileName itself if no shortening is possible  	 *  	 * This method works correctly only if dirs are sorted decent in their length 	 * i.e. /home/user/literature/important before /home/user/literature  	 *      * @param fileName the file name to be shortened 	 * @param dirs directories to check. 	 */
+comment|/**      * Converts an absolute filename to a relative one, if necessary.      * Returns the parameter fileName itself if no shortening is possible       *       * This method works correctly only if dirs are sorted decent in their length      * i.e. /home/user/literature/important before /home/user/literature       *      * @param fileName the file name to be shortened      * @param dirs directories to check.      */
 DECL|method|shortenFileName (File fileName, String[] dirs)
 specifier|public
 specifier|static
@@ -6632,7 +6632,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Sets empty or non-existing owner fields of bibtex entries inside a List 	 * to a specified default value. Timestamp field is also set. Preferences 	 * are checked to see if these options are enabled. 	 *  	 * @param bibs 	 *            List of bibtex entries 	 */
+comment|/**      * Sets empty or non-existing owner fields of bibtex entries inside a List      * to a specified default value. Timestamp field is also set. Preferences      * are checked to see if these options are enabled.      *       * @param bibs      *            List of bibtex entries      */
 DECL|method|setAutomaticFields (Collection<BibtexEntry> bibs, boolean overwriteOwner, boolean overwriteTimestamp, boolean markEntries)
 specifier|public
 specifier|static
@@ -6810,7 +6810,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Sets empty or non-existing owner fields of a bibtex entry to a specified 	 * default value. Timestamp field is also set. Preferences are checked to 	 * see if these options are enabled. 	 *  	 * @param entry 	 *            The entry to set fields for.      * @param overwriteOwner      *              Indicates whether owner should be set if it is already set.      * @param overwriteTimestamp      *              Indicates whether timestamp should be set if it is already set. 	 */
+comment|/**      * Sets empty or non-existing owner fields of a bibtex entry to a specified      * default value. Timestamp field is also set. Preferences are checked to      * see if these options are enabled.      *       * @param entry      *            The entry to set fields for.      * @param overwriteOwner      *              Indicates whether owner should be set if it is already set.      * @param overwriteTimestamp      *              Indicates whether timestamp should be set if it is already set.      */
 DECL|method|setAutomaticFields (BibtexEntry entry, boolean overwriteOwner, boolean overwriteTimestamp)
 specifier|public
 specifier|static
@@ -6991,7 +6991,7 @@ name|timeStamp
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Copies a file. 	 *  	 * @param source 	 *            File Source file 	 * @param dest 	 *            File Destination file 	 * @param deleteIfExists 	 *            boolean Determines whether the copy goes on even if the file 	 *            exists. 	 * @throws IOException 	 * @return boolean Whether the copy succeeded, or was stopped due to the 	 *         file already existing. 	 */
+comment|/**      * Copies a file.      *       * @param source      *            File Source file      * @param dest      *            File Destination file      * @param deleteIfExists      *            boolean Determines whether the copy goes on even if the file      *            exists.      * @throws IOException      * @return boolean Whether the copy succeeded, or was stopped due to the      *         file already existing.      */
 DECL|method|copyFile (File source, File dest, boolean deleteIfExists)
 specifier|public
 specifier|static
@@ -7130,7 +7130,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/** 	 * This method is called at startup, and makes necessary adaptations to 	 * preferences for users from an earlier version of Jabref. 	 */
+comment|/**      * This method is called at startup, and makes necessary adaptations to      * preferences for users from an earlier version of Jabref.      */
 DECL|method|performCompatibilityUpdate ()
 specifier|public
 specifier|static
@@ -7564,7 +7564,7 @@ name|ce
 return|;
 block|}
 comment|// -------------------------------------------------------------------------------
-comment|/** 	 * extends the filename with a default Extension, if no Extension '.x' could 	 * be found 	 */
+comment|/**      * extends the filename with a default Extension, if no Extension '.x' could      * be found      */
 DECL|method|getCorrectFileName (String orgName, String defaultExtension)
 specifier|public
 specifier|static
@@ -7623,7 +7623,7 @@ return|return
 name|back
 return|;
 block|}
-comment|/** 	 * Quotes each and every character, e.g. '!' as&#33;. Used for verbatim 	 * display of arbitrary strings that may contain HTML entities. 	 */
+comment|/**      * Quotes each and every character, e.g. '!' as&#33;. Used for verbatim      * display of arbitrary strings that may contain HTML entities.      */
 DECL|method|quoteForHTML (String s)
 specifier|public
 specifier|static
@@ -7721,7 +7721,7 @@ literal|0
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Quote special characters. 	 *  	 * @param s 	 *            The String which may contain special characters. 	 * @param specials 	 *            A String containing all special characters except the quoting 	 *            character itself, which is automatically quoted. 	 * @param quoteChar 	 *            The quoting character. 	 * @param linewrap 	 *            The number of characters after which a linebreak is inserted 	 *            (this linebreak is undone by unquote()). Set to 0 to disable. 	 * @return A String with every special character (including the quoting 	 *         character itself) quoted. 	 */
+comment|/**      * Quote special characters.      *       * @param s      *            The String which may contain special characters.      * @param specials      *            A String containing all special characters except the quoting      *            character itself, which is automatically quoted.      * @param quoteChar      *            The quoting character.      * @param linewrap      *            The number of characters after which a linebreak is inserted      *            (this linebreak is undone by unquote()). Set to 0 to disable.      * @return A String with every special character (including the quoting      *         character itself) quoted.      */
 DECL|method|quote (String s, String specials, char quoteChar, int linewrap)
 specifier|public
 specifier|static
@@ -7876,7 +7876,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Unquote special characters. 	 *  	 * @param s 	 *            The String which may contain quoted special characters. 	 * @param quoteChar 	 *            The quoting character. 	 * @return A String with all quoted characters unquoted. 	 */
+comment|/**      * Unquote special characters.      *       * @param s      *            The String which may contain quoted special characters.      * @param quoteChar      *            The quoting character.      * @return A String with all quoted characters unquoted.      */
 DECL|method|unquote (String s, char quoteChar)
 specifier|public
 specifier|static
@@ -7989,7 +7989,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Quote all regular expression meta characters in s, in order to search for 	 * s literally. 	 */
+comment|/**      * Quote all regular expression meta characters in s, in order to search for      * s literally.      */
 DECL|method|quoteMeta (String s)
 specifier|public
 specifier|static
@@ -8085,7 +8085,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * This method "tidies" up e.g. a keyword string, by alphabetizing the words 	 * and removing all duplicates. 	 * 	 * Currently not used anywhere 	 */
+comment|/**      * This method "tidies" up e.g. a keyword string, by alphabetizing the words      * and removing all duplicates.      *      * Currently not used anywhere      */
 DECL|method|sortWordsAndRemoveDuplicates (String text)
 specifier|public
 specifier|static
@@ -8200,7 +8200,7 @@ else|:
 literal|""
 return|;
 block|}
-comment|/** 	 * Warns the user of undesired side effects of an explicit 	 * assignment/removal of entries to/from this group. Currently there are 	 * four types of groups: AllEntriesGroup, SearchGroup - do not support 	 * explicit assignment. ExplicitGroup - never modifies entries. KeywordGroup - 	 * only this modifies entries upon assignment/removal. Modifications are 	 * acceptable unless they affect a standard field (such as "author") besides 	 * the "keywords" field. 	 *  	 * @param parent 	 *            The Component used as a parent when displaying a confirmation 	 *            dialog. 	 * @return true if the assignment has no undesired side effects, or the user 	 *         chose to perform it anyway. false otherwise (this indicates that 	 *         the user has aborted the assignment). 	 */
+comment|/**      * Warns the user of undesired side effects of an explicit      * assignment/removal of entries to/from this group. Currently there are      * four types of groups: AllEntriesGroup, SearchGroup - do not support      * explicit assignment. ExplicitGroup - never modifies entries. KeywordGroup -      * only this modifies entries upon assignment/removal. Modifications are      * acceptable unless they affect a standard field (such as "author") besides      * the "keywords" field.      *       * @param parent      *            The Component used as a parent when displaying a confirmation      *            dialog.      * @return true if the assignment has no undesired side effects, or the user      *         chose to perform it anyway. false otherwise (this indicates that      *         the user has aborted the assignment).      */
 DECL|method|warnAssignmentSideEffects (AbstractGroup[] groups, BibtexEntry[] entries, BibtexDatabase db, Component parent)
 specifier|public
 specifier|static
@@ -8478,7 +8478,7 @@ argument_list|(
 literal|"[A-Z]+"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Wrap all uppercase letters, or sequences of uppercase letters, in curly 	 * braces. Ignore letters within a pair of # character, as these are part of 	 * a string label that should not be modified. 	 *  	 * @param s 	 *            The string to modify. 	 * @return The resulting string after wrapping capitals. 	 */
+comment|/**      * Wrap all uppercase letters, or sequences of uppercase letters, in curly      * braces. Ignore letters within a pair of # character, as these are part of      * a string label that should not be modified.      *       * @param s      *            The string to modify.      * @return The resulting string after wrapping capitals.      */
 DECL|method|putBracesAroundCapitals (String s)
 specifier|public
 specifier|static
@@ -8710,7 +8710,7 @@ operator|.
 name|toString
 argument_list|()
 return|;
-comment|/* 		 * if (s.length() == 0) return s; // Protect against ArrayIndexOutOf.... 		 * StringBuffer buf = new StringBuffer(); 		 *  		 * Matcher mcr = titleCapitalPattern.matcher(s.substring(1)); while 		 * (mcr.find()) { String replaceStr = mcr.group(); 		 * mcr.appendReplacement(buf, "{" + replaceStr + "}"); } 		 * mcr.appendTail(buf); return s.substring(0, 1) + buf.toString(); 		 */
+comment|/*          * if (s.length() == 0) return s; // Protect against ArrayIndexOutOf....          * StringBuffer buf = new StringBuffer();          *           * Matcher mcr = titleCapitalPattern.matcher(s.substring(1)); while          * (mcr.find()) { String replaceStr = mcr.group();          * mcr.appendReplacement(buf, "{" + replaceStr + "}"); }          * mcr.appendTail(buf); return s.substring(0, 1) + buf.toString();          */
 block|}
 DECL|field|bracedTitleCapitalPattern
 specifier|static
@@ -8724,7 +8724,7 @@ argument_list|(
 literal|"\\{[A-Z]+\\}"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * This method looks for occurences of capital letters enclosed in an 	 * arbitrary number of pairs of braces, e.g. "{AB}" or "{{T}}". All of these 	 * pairs of braces are removed. 	 *  	 * @param s 	 *            The String to analyze. 	 * @return A new String with braces removed. 	 */
+comment|/**      * This method looks for occurences of capital letters enclosed in an      * arbitrary number of pairs of braces, e.g. "{AB}" or "{{T}}". All of these      * pairs of braces are removed.      *       * @param s      *            The String to analyze.      * @return A new String with braces removed.      */
 DECL|method|removeBracesAroundCapitals (String s)
 specifier|public
 specifier|static
@@ -8769,7 +8769,7 @@ return|return
 name|s
 return|;
 block|}
-comment|/** 	 * This method looks for occurences of capital letters enclosed in one pair 	 * of braces, e.g. "{AB}". All these are replaced by only the capitals in 	 * between the braces. 	 *  	 * @param s 	 *            The String to analyze. 	 * @return A new String with braces removed. 	 */
+comment|/**      * This method looks for occurences of capital letters enclosed in one pair      * of braces, e.g. "{AB}". All these are replaced by only the capitals in      * between the braces.      *       * @param s      *            The String to analyze.      * @return A new String with braces removed.      */
 DECL|method|removeSingleBracesAroundCapitals (String s)
 specifier|public
 specifier|static
@@ -8849,7 +8849,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * This method looks up what kind of external binding is used for the given 	 * field, and constructs on OpenFileFilter suitable for browsing for an 	 * external file. 	 *  	 * @param fieldName 	 *            The BibTeX field in question. 	 * @return The file filter. 	 */
+comment|/**      * This method looks up what kind of external binding is used for the given      * field, and constructs on OpenFileFilter suitable for browsing for an      * external file.      *       * @param fieldName      *            The BibTeX field in question.      * @return The file filter.      */
 DECL|method|getFileFilterForField (String fieldName)
 specifier|public
 specifier|static
@@ -8933,7 +8933,7 @@ return|return
 name|off
 return|;
 block|}
-comment|/** 	 * This method can be used to display a "rich" error dialog which offers the 	 * entire stack trace for an exception. 	 *  	 * @param parent 	 * @param e 	 */
+comment|/**      * This method can be used to display a "rich" error dialog which offers the      * entire stack trace for an exception.      *       * @param parent      * @param e      */
 DECL|method|showQuickErrorDialog (JFrame parent, String title, Exception e)
 specifier|public
 specifier|static
@@ -9437,7 +9437,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Creates a String containing the current date (and possibly time), 	 * formatted according to the format set in preferences under the key 	 * "timeStampFormat". 	 *  	 * @return The date string. 	 */
+comment|/**      * Creates a String containing the current date (and possibly time),      * formatted according to the format set in preferences under the key      * "timeStampFormat".      *       * @return The date string.      */
 DECL|method|easyDateFormat ()
 specifier|public
 specifier|static
@@ -9455,7 +9455,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Creates a readable Date string from the parameter date. The format is set 	 * in preferences under the key "timeStampFormat". 	 *  	 * @return The formatted date string. 	 */
+comment|/**      * Creates a readable Date string from the parameter date. The format is set      * in preferences under the key "timeStampFormat".      *       * @return The formatted date string.      */
 DECL|method|easyDateFormat (Date date)
 specifier|public
 specifier|static
@@ -9504,7 +9504,7 @@ name|date
 argument_list|)
 return|;
 block|}
-comment|/** 	 * @param increment whether the given increment should be added to the current one. Currently never used in JabRef 	 */
+comment|/**      * @param increment whether the given increment should be added to the current one. Currently never used in JabRef      */
 DECL|method|markEntry (BibtexEntry be, int markIncrement, boolean increment, NamedCompound ce)
 specifier|public
 specifier|static
@@ -10129,7 +10129,7 @@ comment|// Do nothing.
 block|}
 block|}
 block|}
-comment|/*int piv = 0, hit; 			StringBuffer sb = new StringBuffer(); 			while ((hit = s.indexOf(G047749118118 			1110lobals.prefs.WRAPPED_USERNAME, piv))>= 0) { 				if (hit> 0) 					sb.append(s.substring(piv, hit)); 				piv = hit + Globals.prefs.WRAPPED_USERNAME.length(); 			} 			if (piv< s.length() - 1) { 				sb.append(s.substring(piv)); 			} 			String newVal = sb.length()> 0 ? sb.toString() : null;*/
+comment|/*int piv = 0, hit;             StringBuffer sb = new StringBuffer();             while ((hit = s.indexOf(G047749118118             1110lobals.prefs.WRAPPED_USERNAME, piv))>= 0) {             	if (hit> 0)             		sb.append(s.substring(piv, hit));             	piv = hit + Globals.prefs.WRAPPED_USERNAME.length();             }             if (piv< s.length() - 1) {             	sb.append(s.substring(piv));             }             String newVal = sb.length()> 0 ? sb.toString() : null;*/
 name|ce
 operator|.
 name|addEdit
@@ -10169,7 +10169,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * An entry is marked with a "0", not in the new style with user names. We 	 * want to unmark it as transparently as possible. Since this shouldn't 	 * happen too often, we do it by scanning the "owner" fields of the entire 	 * database, collecting all user names. We then mark the entry for all users 	 * except the current one. Thus only the user who unmarks will see that it 	 * is unmarked, and we get rid of the old-style marking. 	 *  	 * @param be 	 * @param ce 	 */
+comment|/**      * An entry is marked with a "0", not in the new style with user names. We      * want to unmark it as transparently as possible. Since this shouldn't      * happen too often, we do it by scanning the "owner" fields of the entire      * database, collecting all user names. We then mark the entry for all users      * except the current one. Thus only the user who unmarks will see that it      * is unmarked, and we get rid of the old-style marking.      *       * @param be      * @param ce      */
 DECL|method|unmarkOldStyle (BibtexEntry be, BibtexDatabase database, NamedCompound ce)
 specifier|private
 specifier|static
@@ -10479,7 +10479,7 @@ return|return
 literal|0
 return|;
 block|}
-comment|/** 	 * Set a given field to a given value for all entries in a Collection. This 	 * method DOES NOT update any UndoManager, but returns a relevant 	 * CompoundEdit that should be registered by the caller. 	 *  	 * @param entries 	 *            The entries to set the field for. 	 * @param field 	 *            The name of the field to set. 	 * @param text 	 *            The value to set. This value can be null, indicating that the 	 *            field should be cleared. 	 * @param overwriteValues 	 *            Indicate whether the value should be set even if an entry 	 *            already has the field set. 	 * @return A CompoundEdit for the entire operation. 	 */
+comment|/**      * Set a given field to a given value for all entries in a Collection. This      * method DOES NOT update any UndoManager, but returns a relevant      * CompoundEdit that should be registered by the caller.      *       * @param entries      *            The entries to set the field for.      * @param field      *            The name of the field to set.      * @param text      *            The value to set. This value can be null, indicating that the      *            field should be cleared.      * @param overwriteValues      *            Indicate whether the value should be set even if an entry      *            already has the field set.      * @return A CompoundEdit for the entire operation.      */
 DECL|method|massSetField (Collection<BibtexEntry> entries, String field, String text, boolean overwriteValues)
 specifier|public
 specifier|static
@@ -10777,7 +10777,7 @@ return|return
 name|ce
 return|;
 block|}
-comment|/** 	 * Make a list of supported character encodings that can encode all 	 * characters in the given String. 	 *  	 * @param characters 	 *            A String of characters that should be supported by the 	 *            encodings. 	 * @return A List of character encodings 	 */
+comment|/**      * Make a list of supported character encodings that can encode all      * characters in the given String.      *       * @param characters      *            A String of characters that should be supported by the      *            encodings.      * @return A List of character encodings      */
 DECL|method|findEncodingsForString (String characters)
 specifier|public
 specifier|static
@@ -10867,7 +10867,7 @@ return|return
 name|encodings
 return|;
 block|}
-comment|/** 	 * Will convert a two digit year using the following scheme (describe at 	 * http://www.filemaker.com/help/02-Adding%20and%20view18.html): 	 *  	 * If a two digit year is encountered they are matched against the last 69 	 * years and future 30 years. 	 *  	 * For instance if it is the year 1992 then entering 23 is taken to be 1923 	 * but if you enter 23 in 1993 then it will evaluate to 2023. 	 *  	 * @param year 	 *            The year to convert to 4 digits. 	 * @return 	 */
+comment|/**      * Will convert a two digit year using the following scheme (describe at      * http://www.filemaker.com/help/02-Adding%20and%20view18.html):      *       * If a two digit year is encountered they are matched against the last 69      * years and future 30 years.      *       * For instance if it is the year 1992 then entering 23 is taken to be 1923      * but if you enter 23 in 1993 then it will evaluate to 2023.      *       * @param year      *            The year to convert to 4 digits.      * @return      */
 DECL|method|toFourDigitYear (String year)
 specifier|public
 specifier|static
@@ -10915,7 +10915,7 @@ specifier|static
 name|int
 name|thisYear
 decl_stmt|;
-comment|/** 	 * Will convert a two digit year using the following scheme (describe at 	 * http://www.filemaker.com/help/02-Adding%20and%20view18.html): 	 *  	 * If a two digit year is encountered they are matched against the last 69 	 * years and future 30 years. 	 *  	 * For instance if it is the year 1992 then entering 23 is taken to be 1923 	 * but if you enter 23 in 1993 then it will evaluate to 2023. 	 *  	 * @param year 	 *            The year to convert to 4 digits. 	 * @return 	 */
+comment|/**      * Will convert a two digit year using the following scheme (describe at      * http://www.filemaker.com/help/02-Adding%20and%20view18.html):      *       * If a two digit year is encountered they are matched against the last 69      * years and future 30 years.      *       * For instance if it is the year 1992 then entering 23 is taken to be 1923      * but if you enter 23 in 1993 then it will evaluate to 2023.      *       * @param year      *            The year to convert to 4 digits.      * @return      */
 DECL|method|toFourDigitYear (String year, int thisYear)
 specifier|public
 specifier|static
@@ -11082,8 +11082,8 @@ name|year
 return|;
 block|}
 block|}
-comment|/** 	 * From http://stackoverflow.com/questions/1030479/most-efficient-way-of-converting-string-to-integer-in-java 	 * 	 * @param str 	 * @return 	 */
-DECL|method|intValueOf ( String str )
+comment|/**      * From http://stackoverflow.com/questions/1030479/most-efficient-way-of-converting-string-to-integer-in-java      *      * @param str      * @return      */
+DECL|method|intValueOf (String str)
 specifier|public
 specifier|static
 name|int
@@ -11818,7 +11818,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Static equals that can also return the right result when one of the 	 * objects is null. 	 *  	 * @param one 	 *            The object whose equals method is called if the first is not 	 *            null. 	 * @param two 	 *            The object passed to the first one if the first is not null. 	 * @return<code>one == null ? two == null : one.equals(two);</code> 	 */
+comment|/**      * Static equals that can also return the right result when one of the      * objects is null.      *       * @param one      *            The object whose equals method is called if the first is not      *            null.      * @param two      *            The object passed to the first one if the first is not null.      * @return<code>one == null ? two == null : one.equals(two);</code>      */
 DECL|method|equals (Object one, Object two)
 specifier|public
 specifier|static
@@ -11849,7 +11849,7 @@ name|two
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Returns the given string but with the first character turned into an 	 * upper case character. 	 *  	 * Example: testTest becomes TestTest 	 *  	 * @param string 	 *            The string to change the first character to upper case to. 	 * @return A string has the first character turned to upper case and the 	 *         rest unchanged from the given one. 	 */
+comment|/**      * Returns the given string but with the first character turned into an      * upper case character.      *       * Example: testTest becomes TestTest      *       * @param string      *            The string to change the first character to upper case to.      * @return A string has the first character turned to upper case and the      *         rest unchanged from the given one.      */
 DECL|method|toUpperFirstLetter (String string)
 specifier|public
 specifier|static
@@ -12019,7 +12019,7 @@ parameter_list|(
 name|InterruptedException
 name|ignored
 parameter_list|)
-block|{}
+block|{             }
 block|}
 return|return
 literal|true
@@ -12482,7 +12482,7 @@ argument_list|(
 name|REGEXP_PLAINDOI
 argument_list|)
 decl_stmt|;
-comment|/**    	 * Check if the String matches a DOI (with http://...)    	 */
+comment|/**      * Check if the String matches a DOI (with http://...)      */
 DECL|method|checkForDOIwithHTTPprefix (String check)
 specifier|public
 specifier|static
@@ -12538,7 +12538,7 @@ literal|".*"
 argument_list|)
 return|;
 block|}
-comment|/**    	 * Remove the http://... from DOI    	 *     	 * @param doi - may not be null    	 * @return first DOI in the given String (without http://... prefix). If no DOI exists, the complete string is returned    	 */
+comment|/**      * Remove the http://... from DOI      *       * @param doi - may not be null      * @return first DOI in the given String (without http://... prefix). If no DOI exists, the complete string is returned      */
 DECL|method|getDOI (String doi)
 specifier|public
 specifier|static
@@ -13021,7 +13021,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * @param ce indicates the undo named compound. May be null 	 */
+comment|/**      * @param ce indicates the undo named compound. May be null      */
 DECL|method|updateField (BibtexEntry be, String field, String newValue, NamedCompound ce)
 specifier|public
 specifier|static
@@ -13055,7 +13055,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * @param ce indicates the undo named compound. May be null 	 */
+comment|/**      * @param ce indicates the undo named compound. May be null      */
 DECL|method|updateField (BibtexEntry be, String field, String newValue, NamedCompound ce, Boolean nullFieldIfValueIsTheSame)
 specifier|public
 specifier|static
@@ -13182,7 +13182,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Binds ESC-Key to cancel button 	 * @param rootPane the pane to bind the action to. Typically, this variable is retrieved by this.getRootPane(); 	 * @param cancelAction the action to bind 	 */
+comment|/**      * Binds ESC-Key to cancel button      * @param rootPane the pane to bind the action to. Typically, this variable is retrieved by this.getRootPane();      * @param cancelAction the action to bind      */
 DECL|method|bindCloseDialogKeyToCancelAction (JRootPane rootPane, Action cancelAction)
 specifier|public
 specifier|static
@@ -13242,7 +13242,7 @@ name|cancelAction
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Download the URL and return contents as a String. 	 * @param source 	 * @return 	 * @throws IOException 	 */
+comment|/**      * Download the URL and return contents as a String.      * @param source      * @return      * @throws IOException      */
 DECL|method|getResults (URLConnection source)
 specifier|public
 specifier|static
@@ -13264,7 +13264,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Download the URL using specified encoding and return contents as a String. 	 * @param source          * encoding 	 * @return 	 * @throws IOException 	 */
+comment|/**      * Download the URL using specified encoding and return contents as a String.      * @param source      * encoding      * @return      * @throws IOException      */
 DECL|method|getResultsWithEncoding (URLConnection source, String encoding)
 specifier|public
 specifier|static
@@ -14988,7 +14988,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/** 	 * Accepts a string like [author:lower] or [title:abbr] or [auth], 	 * whereas the first part signifies the bibtex-field to get, or the key generator      * field marker to use, while the others are the modifiers that will be applied. 	 * 	 * @param fieldAndFormat 	 * @param entry 	 * @param database 	 * @return 	 */
+comment|/**      * Accepts a string like [author:lower] or [title:abbr] or [auth],      * whereas the first part signifies the bibtex-field to get, or the key generator      * field marker to use, while the others are the modifiers that will be applied.      *      * @param fieldAndFormat      * @param entry      * @param database      * @return      */
 DECL|method|getFieldAndFormat (String fieldAndFormat, BibtexEntry entry, BibtexDatabase database)
 specifier|public
 specifier|static
@@ -15175,7 +15175,7 @@ return|return
 name|fieldValue
 return|;
 block|}
-comment|/** 	 * Removes optional square brackets from the string s 	 * 	 * @param s 	 * @return 	 */
+comment|/**      * Removes optional square brackets from the string s      *      * @param s      * @return      */
 DECL|method|stripBrackets (String s)
 specifier|public
 specifier|static

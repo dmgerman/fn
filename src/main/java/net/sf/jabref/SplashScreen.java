@@ -193,7 +193,7 @@ parameter_list|(
 name|InterruptedException
 name|ignored
 parameter_list|)
-block|{}
+block|{         }
 comment|// Center the window on the screen.
 name|int
 name|imgWidth
@@ -383,7 +383,7 @@ parameter_list|(
 name|InterruptedException
 name|ignored
 parameter_list|)
-block|{}
+block|{                     }
 block|}
 block|}
 block|}

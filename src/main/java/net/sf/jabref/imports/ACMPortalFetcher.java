@@ -1294,7 +1294,7 @@ name|piv
 init|=
 literal|0
 decl_stmt|;
-DECL|method|parse (String text, int startIndex, int firstEntryNumber, Map<String,JLabel> entries)
+DECL|method|parse (String text, int startIndex, int firstEntryNumber, Map<String, JLabel> entries)
 specifier|private
 name|void
 name|parse
@@ -1403,7 +1403,7 @@ literal|null
 return|;
 block|}
 block|}
-DECL|method|getNextEntryURL (String allText, int startIndex, int entryNumber, Map<String,JLabel> entries)
+DECL|method|getNextEntryURL (String allText, int startIndex, int entryNumber, Map<String, JLabel> entries)
 specifier|private
 name|boolean
 name|getNextEntryURL
@@ -2583,7 +2583,7 @@ parameter_list|(
 name|int
 name|entriesImported
 parameter_list|)
-block|{  	}
+block|{      }
 comment|// This method is called by the dialog when the user has cancelled or
 comment|//signalled a stop. It is expected that any long-running fetch operations
 comment|//will stop after this method is called.

@@ -266,7 +266,7 @@ parameter_list|,
 name|boolean
 name|newV
 parameter_list|)
-block|{}
+block|{     }
 DECL|method|firePropertyChange (String propertyName, Object old, Object newV)
 specifier|public
 name|void
@@ -281,7 +281,7 @@ parameter_list|,
 name|Object
 name|newV
 parameter_list|)
-block|{}
+block|{     }
 comment|/* For enabling the renderer to handle icons. */
 DECL|method|setValue (Object value)
 specifier|protected

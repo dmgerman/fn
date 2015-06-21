@@ -418,7 +418,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*if(xmlDocument.getPublishdate() != null&& xmlDocument.getPublishdate().getYear() != null&& !xmlDocument.getPublishdate().getYear().equalsIgnoreCase("null")){                 vector.add(xmlDocument.getPublishdate().getYear());             }*/
+comment|/*if(xmlDocument.getPublishdate() != null&& xmlDocument.getPublishdate().getYear() != null&& !xmlDocument.getPublishdate().getYear().equalsIgnoreCase("null")){             vector.add(xmlDocument.getPublishdate().getYear());         }*/
 else|else
 block|{
 name|vector

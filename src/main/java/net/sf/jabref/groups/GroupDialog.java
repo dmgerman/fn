@@ -721,7 +721,7 @@ operator|new
 name|CardLayout
 argument_list|()
 decl_stmt|;
-comment|/**          * Shows a group add/edit dialog.          *          * @param jabrefFrame          *            The parent frame.          * @param basePanel          *            The default grouping field.          * @param editedGroup          *            The group being edited, or null if a new group is to be          *            created.          */
+comment|/**      * Shows a group add/edit dialog.      *      * @param jabrefFrame      *            The parent frame.      * @param basePanel      *            The default grouping field.      * @param editedGroup      *            The group being edited, or null if a new group is to be      *            created.      */
 DECL|method|GroupDialog (JabRefFrame jabrefFrame, BasePanel basePanel, AbstractGroup editedGroup)
 specifier|public
 name|GroupDialog
@@ -2734,7 +2734,7 @@ name|okEnabled
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**          * This is used when a group is converted and the new group supports          * explicit adding of entries: All entries that match the previous group are          * added to the new group.          */
+comment|/**      * This is used when a group is converted and the new group supports      * explicit adding of entries: All entries that match the previous group are      * added to the new group.      */
 DECL|method|addPreviousEntries ()
 specifier|private
 name|void
@@ -2909,7 +2909,7 @@ block|}
 end_class
 
 begin_function
-unit|}          protected
+unit|}      protected
 DECL|method|setDescription (String description)
 name|void
 name|setDescription
@@ -3119,7 +3119,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**          * Returns an undo object for adding the edited group's entries to the new          * group, or null if this did not occur.          */
+comment|/**      * Returns an undo object for adding the edited group's entries to the new      * group, or null if this did not occur.      */
 end_comment
 
 begin_function
@@ -3196,7 +3196,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**          * Returns the int representing the selected hierarchical group context.          */
+comment|/**      * Returns the int representing the selected hierarchical group context.      */
 end_comment
 
 begin_function

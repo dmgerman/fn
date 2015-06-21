@@ -551,7 +551,7 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
-comment|/*panel.database().removeEntry(memEntry.getId());     try {       diskEntry.setId(Util.createNeutralId());     } catch (KeyCollisionException ex) {}     panel.database().removeEntry(memEntry.getId());*/
+comment|/*panel.database().removeEntry(memEntry.getId());         try {           diskEntry.setId(Util.createNeutralId());         } catch (KeyCollisionException ex) {}         panel.database().removeEntry(memEntry.getId());*/
 return|return
 name|allAccepted
 return|;
@@ -881,7 +881,7 @@ expr_stmt|;
 else|else
 block|{
 comment|// No value in memory.
-comment|/*if ((onTmp != null)&& !onTmp.equals(inMem))           text.append("<H2>"+Globals.lang("You have cleared this field. Original value")+":</H2>"                       +" "+onTmp);*/
+comment|/*if ((onTmp != null)&& !onTmp.equals(inMem))                   text.append("<H2>"+Globals.lang("You have cleared this field. Original value")+":</H2>"                               +" "+onTmp);*/
 block|}
 name|tp
 operator|.

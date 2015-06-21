@@ -411,7 +411,7 @@ argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
-comment|/* 		 * The following line makes sure focus cycles inside tab instead of 		 * being lost to other parts of the frame: 		 */
+comment|/*          * The following line makes sure focus cycles inside tab instead of          * being lost to other parts of the frame:          */
 name|scrollPane
 operator|.
 name|setFocusCycleRoot
@@ -1284,7 +1284,7 @@ argument_list|,
 name|tf
 argument_list|)
 expr_stmt|;
-comment|/* 			 * If the key field is the only field, we should have only one 			 * editor, and this one should be set as active initially: 			 */
+comment|/*              * If the key field is the only field, we should have only one              * editor, and this one should be set as active initially:              */
 if|if
 condition|(
 name|editors
@@ -1464,7 +1464,7 @@ name|markBaseChanged
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * Only sets the activeField variable but does not focus it. 	 *  	 * Call activate afterwards. 	 *  	 * @param c 	 */
+comment|/**      * Only sets the activeField variable but does not focus it.      *       * Call activate afterwards.      *       * @param c      */
 DECL|method|setActive (FieldEditor c)
 specifier|public
 name|void
@@ -1524,7 +1524,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|/** 			 * Corrected to fix [ 1594169 ] Entry editor: navigation between panels 			 */
+comment|/**              * Corrected to fix [ 1594169 ] Entry editor: navigation between panels              */
 operator|new
 name|FocusRequester
 argument_list|(
@@ -1536,7 +1536,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Reset all fields from the data in the BibtexEntry. 	 *  	 */
+comment|/**      * Reset all fields from the data in the BibtexEntry.      *       */
 DECL|method|updateAll ()
 specifier|public
 name|void
@@ -1807,7 +1807,7 @@ return|return
 name|parent
 return|;
 block|}
-comment|/** 	 * Set up key bindings and focus listener for the FieldEditor. 	 *  	 * @param component 	 */
+comment|/**      * Set up key bindings and focus listener for the FieldEditor.      *       * @param component      */
 DECL|method|setupJTextComponent (final JComponent component, final AutoCompleteListener acl)
 specifier|public
 name|void

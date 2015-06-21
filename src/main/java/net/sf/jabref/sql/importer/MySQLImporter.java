@@ -120,8 +120,8 @@ DECL|method|MySQLImporter ()
 specifier|private
 name|MySQLImporter
 parameter_list|()
-block|{ 	}
-comment|/** 	 *  	 * @return The singleton instance of the MySQLImporter 	 */
+block|{     }
+comment|/**      *       * @return The singleton instance of the MySQLImporter      */
 DECL|method|getInstance ()
 specifier|public
 specifier|static

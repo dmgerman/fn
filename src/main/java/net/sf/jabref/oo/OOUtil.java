@@ -415,7 +415,7 @@ name|parStyle
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Insert a text with formatting indicated by HTML-like tags, into a text at          * the position given by a cursor.      * @param text The text to insert in.      * @param cursor The cursor giving the insert location.      * @param lText The marked-up text to insert.      * @param parStyle The name of the paragraph style to use.      * @throws Exception      */
+comment|/**      * Insert a text with formatting indicated by HTML-like tags, into a text at      * the position given by a cursor.      * @param text The text to insert in.      * @param cursor The cursor giving the insert location.      * @param lText The marked-up text to insert.      * @param parStyle The name of the paragraph style to use.      * @throws Exception      */
 DECL|method|insertOOFormattedTextAtCurrentLocation (XText text, XTextCursor cursor, String lText, String parStyle)
 specifier|public
 specifier|static

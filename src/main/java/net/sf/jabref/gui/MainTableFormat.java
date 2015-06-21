@@ -750,7 +750,7 @@ operator|.
 name|toString
 argument_list|()
 return|;
-comment|/*String disName = BibtexFields.getFieldDisplayName(columns[col - padleft]) ;           if ( disName != null)           {             return disName ;           } */
+comment|/*String disName = BibtexFields.getFieldDisplayName(columns[col - padleft]) ;             if ( disName != null)             {               return disName ;             } */
 block|}
 comment|//return Util.nCase(columns[col - padleft]);
 block|}

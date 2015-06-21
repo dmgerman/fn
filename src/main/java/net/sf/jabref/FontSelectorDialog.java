@@ -421,7 +421,7 @@ name|updateText
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**          * update button's text content from the current button's font.          */
+comment|/**      * update button's text content from the current button's font.      */
 DECL|method|updateText ()
 specifier|private
 name|void
@@ -516,7 +516,7 @@ name|styleString
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**          * button's action-listener ; open a FontSelectorDialog          */
+comment|/**      * button's action-listener ; open a FontSelectorDialog      */
 DECL|class|ActionHandler
 class|class
 name|ActionHandler
@@ -966,7 +966,7 @@ name|listPanel
 argument_list|)
 expr_stmt|;
 comment|//preview = new JLabel("Font Preview");
-comment|/* --------------------------------------------------------                    |  Experimental addition by Morten Alver. I want to    |                    |  enable antialiasing in the preview field, since I'm |                    |  working on introducing this in the table view.      |                    -------------------------------------------------------- */
+comment|/* --------------------------------------------------------            |  Experimental addition by Morten Alver. I want to    |            |  enable antialiasing in the preview field, since I'm |            |  working on introducing this in the table view.      |            -------------------------------------------------------- */
 name|preview
 operator|=
 operator|new
@@ -1383,7 +1383,7 @@ specifier|private
 name|JButton
 name|cancel
 decl_stmt|;
-comment|/**          * For some reason the default Java fonts show up in the          * list with .bold, .bolditalic, and .italic extensions.          */
+comment|/**      * For some reason the default Java fonts show up in the      * list with .bold, .bolditalic, and .italic extensions.      */
 DECL|field|HIDEFONTS
 specifier|private
 specifier|static

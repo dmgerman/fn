@@ -30,7 +30,7 @@ specifier|public
 class|class
 name|BibtexWidth
 block|{
-comment|/* 	 * Quoted from Bibtex: 	 *  	 * Now we initialize the system-dependent |char_width| array, for which 	 * |space| is the only |white_space| character given a nonzero printing 	 * width. The widths here are taken from Stanford's June~'87 $cmr10$~font 	 * and represent hundredths of a point (rounded), but since they're used 	 * only for relative comparisons, the units have no meaning. 	 */
+comment|/*      * Quoted from Bibtex:      *       * Now we initialize the system-dependent |char_width| array, for which      * |space| is the only |white_space| character given a nonzero printing      * width. The widths here are taken from Stanford's June~'87 $cmr10$~font      * and represent hundredths of a point (rounded), but since they're used      * only for relative comparisons, the units have no meaning.      */
 DECL|field|widths
 specifier|static
 name|int
@@ -916,7 +916,7 @@ literal|0
 return|;
 block|}
 block|}
-comment|/** 	 *  	 * @param toMeasure 	 * @param warn 	 *            may-be-null 	 * @return 	 */
+comment|/**      *       * @param toMeasure      * @param warn      *            may-be-null      * @return      */
 DECL|method|width (String toMeasure, Warn warn)
 specifier|public
 specifier|static
@@ -930,7 +930,7 @@ name|Warn
 name|warn
 parameter_list|)
 block|{
-comment|/* 		 * From Bibtex: We use the natural width for all but special characters, 		 * and we complain if the string isn't brace-balanced. 		 */
+comment|/*          * From Bibtex: We use the natural width for all but special characters,          * and we complain if the string isn't brace-balanced.          */
 name|int
 name|i
 init|=
@@ -963,7 +963,7 @@ name|result
 init|=
 literal|0
 decl_stmt|;
-comment|/* 		 * From Bibtex: 		 *  		 * We use the natural widths of all characters except that some 		 * characters have no width: braces, control sequences (except for the 		 * usual 13 accented and foreign characters, whose widths are given in 		 * the next module), and |white_space| following control sequences (even 		 * a null control sequence). 		 *  		 */
+comment|/*          * From Bibtex:          *           * We use the natural widths of all characters except that some          * characters have no width: braces, control sequences (except for the          * usual 13 accented and foreign characters, whose widths are given in          * the next module), and |white_space| following control sequences (even          * a null control sequence).          *           */
 while|while
 condition|(
 name|i

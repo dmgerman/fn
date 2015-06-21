@@ -179,7 +179,7 @@ block|{
 comment|//      System.out.println( e1 ) ;
 comment|//      e1.printStackTrace();
 comment|//      Logger.global.info( e1.getMessage() ) ;
-return|return ;
+return|return;
 block|}
 try|try
 block|{

@@ -66,7 +66,7 @@ specifier|public
 class|class
 name|GoogleUrlCleaner
 block|{
-comment|/*     public static void main(String[] args) {         System.out.println(cleanUrl("https://www.google.hr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&ved=0CC0QFjAA&url=http%3A%2F%2Fdl.acm.org%2Fcitation.cfm%3Fid%3D321811&ei=gHDRUa-IKobotQbMy4GAAg&usg=AFQjCNEBJPUimu-bAns6lSLe-kszz4AiGA&sig2=DotF0pIZD8OhjDcSHPlBbQ"));         System.out.println(cleanUrl("http://dl.acm.org/citation.cfm?id=321811"));         System.out.println(cleanUrl("test text"));         System.out.println(cleanUrl(" "));         System.out.println(cleanUrl(""));         System.out.println(cleanUrl(null));    } */
+comment|/*         public static void main(String[] args) {             System.out.println(cleanUrl("https://www.google.hr/url?sa=t&rct=j&q=&esrc=s&source=web&cd=1&cad=rja&ved=0CC0QFjAA&url=http%3A%2F%2Fdl.acm.org%2Fcitation.cfm%3Fid%3D321811&ei=gHDRUa-IKobotQbMy4GAAg&usg=AFQjCNEBJPUimu-bAns6lSLe-kszz4AiGA&sig2=DotF0pIZD8OhjDcSHPlBbQ"));             System.out.println(cleanUrl("http://dl.acm.org/citation.cfm?id=321811"));             System.out.println(cleanUrl("test text"));             System.out.println(cleanUrl(" "));             System.out.println(cleanUrl(""));             System.out.println(cleanUrl(null));        }     */
 comment|// clean Google URL
 DECL|method|cleanUrl (String dirty)
 specifier|public

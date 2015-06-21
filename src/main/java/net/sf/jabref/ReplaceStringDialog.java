@@ -245,8 +245,8 @@ operator|new
 name|JPanel
 argument_list|()
 decl_stmt|;
-name|JCheckBox
 DECL|field|selOnly
+name|JCheckBox
 name|selOnly
 init|=
 operator|new

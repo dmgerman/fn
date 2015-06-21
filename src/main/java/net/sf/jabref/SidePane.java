@@ -189,7 +189,7 @@ name|weightx
 operator|=
 literal|1
 expr_stmt|;
-comment|/* 		 * Added Scrollpane to fix:  		 */
+comment|/*          * Added Scrollpane to fix:           */
 name|JScrollPane
 name|sp
 init|=

@@ -645,7 +645,7 @@ name|CURRENTFONT
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*public void paint(Graphics g) { 		Graphics2D g2 = (Graphics2D) g; 		if (antialias) 			g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON); 		super.paint(g2); 	}*/
+comment|/*public void paint(Graphics g) {     	Graphics2D g2 = (Graphics2D) g;     	if (antialias)     		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);     	super.paint(g2);     }*/
 DECL|method|paste (String textToInsert)
 specifier|public
 name|void

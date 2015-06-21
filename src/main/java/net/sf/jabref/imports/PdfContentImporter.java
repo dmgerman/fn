@@ -243,7 +243,7 @@ operator|new
 name|DOItoBibTeXFetcher
 argument_list|()
 decl_stmt|;
-comment|/* global variables holding the state of the current parse run 	 * needed to be able to generate methods such as "fillCurStringWithNonEmptyLines" 	 */
+comment|/* global variables holding the state of the current parse run      * needed to be able to generate methods such as "fillCurStringWithNonEmptyLines"      */
 comment|// input split into several lines
 DECL|field|split
 specifier|private
@@ -288,7 +288,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/** 	 * Removes all non-letter characters at the end 	 *  	 * EXCEPTION: a closing bracket is NOT removed 	 *  	 * @param input 	 * @return 	 * TODO Additionally repalce multiple subsequent spaces by one space 	 */
+comment|/**      * Removes all non-letter characters at the end      *       * EXCEPTION: a closing bracket is NOT removed      *       * @param input      * @return      * TODO Additionally repalce multiple subsequent spaces by one space      */
 DECL|method|removeNonLettersAtEnd (String input)
 specifier|private
 name|String
@@ -1154,7 +1154,7 @@ specifier|public
 name|void
 name|toFront
 parameter_list|()
-block|{ 					}
+block|{                     }
 annotation|@
 name|Override
 specifier|public
@@ -1167,7 +1167,7 @@ parameter_list|,
 name|int
 name|max
 parameter_list|)
-block|{ 					}
+block|{                     }
 annotation|@
 name|Override
 specifier|public
@@ -2579,7 +2579,7 @@ return|return
 name|res
 return|;
 block|}
-comment|/** 	 * Extract the year out of curString (if it is not yet defined) 	 */
+comment|/**      * Extract the year out of curString (if it is not yet defined)      */
 DECL|method|extractYear ()
 specifier|private
 name|void
@@ -2641,7 +2641,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * PDFTextStripper normally does NOT produce multiple empty lines  	 * (besides at strange PDFs). These strange PDFs are handled here: 	 * proceed to next non-empty line 	 */
+comment|/**      * PDFTextStripper normally does NOT produce multiple empty lines       * (besides at strange PDFs). These strange PDFs are handled here:      * proceed to next non-empty line      */
 DECL|method|proceedToNextNonEmptyLine ()
 specifier|private
 name|void
@@ -2679,7 +2679,7 @@ operator|++
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Fill curString with lines until "" is found 	 * No trailing space is added 	 * i is advanced to the next non-empty line (ignoring white space) 	 *  	 * Lines containing only white spaces are ignored, 	 * but NOT considered as "" 	 *  	 * Uses GLOBAL variables split, curLine, i 	 */
+comment|/**      * Fill curString with lines until "" is found      * No trailing space is added      * i is advanced to the next non-empty line (ignoring white space)      *       * Lines containing only white spaces are ignored,      * but NOT considered as ""      *       * Uses GLOBAL variables split, curLine, i      */
 DECL|method|fillCurStringWithNonEmptyLines ()
 specifier|private
 name|void
@@ -2782,7 +2782,7 @@ name|proceedToNextNonEmptyLine
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * resets curString 	 * curString now contains the last block (until "" reached) 	 * Trailing space is added 	 *  	 * invariant before/after: i points to line before the last handled block 	 */
+comment|/**      * resets curString      * curString now contains the last block (until "" reached)      * Trailing space is added      *       * invariant before/after: i points to line before the last handled block      */
 DECL|method|readLastBlock ()
 specifier|private
 name|void

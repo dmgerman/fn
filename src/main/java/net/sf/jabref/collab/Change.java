@@ -182,7 +182,7 @@ operator|=
 name|a
 expr_stmt|;
 block|}
-comment|/**    * This method is used to disable the "accept" box if the parent has been set to "not accepted".    * Thus the user can disable e.g. an entry change without having to disable all field changes.    * @return boolean false if the parent overrides by not being accepted.    */
+comment|/**      * This method is used to disable the "accept" box if the parent has been set to "not accepted".      * Thus the user can disable e.g. an entry change without having to disable all field changes.      * @return boolean false if the parent overrides by not being accepted.      */
 DECL|method|isAcceptable ()
 specifier|public
 name|boolean
@@ -222,14 +222,14 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**    * This method returns a JComponent detailing the nature of the change.    * @return JComponent    */
+comment|/**      * This method returns a JComponent detailing the nature of the change.      * @return JComponent      */
 DECL|method|description ()
 specifier|abstract
 name|JComponent
 name|description
 parameter_list|()
 function_decl|;
-comment|/**   * Perform the change. This method is responsible for adding a proper undo edit to   * the NamedCompound, so the change can be undone.   * @param panel BasePanel The tab where the database lives.   * @param secondary BibtexDatabase The "tmp" database for which the change   *   should also be made.   * @param undoEdit NamedCompound The compound to hold the undo edits.   * @return true if all changes were made, false if not all were accepted.   */
+comment|/**      * Perform the change. This method is responsible for adding a proper undo edit to      * the NamedCompound, so the change can be undone.      * @param panel BasePanel The tab where the database lives.      * @param secondary BibtexDatabase The "tmp" database for which the change      *   should also be made.      * @param undoEdit NamedCompound The compound to hold the undo edits.      * @return true if all changes were made, false if not all were accepted.      */
 DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|abstract
 name|boolean

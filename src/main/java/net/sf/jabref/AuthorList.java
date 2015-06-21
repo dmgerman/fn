@@ -428,7 +428,7 @@ name|AuthorList
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/** 	 * Parses the parameter strings and stores preformatted author information. 	 *  	 * Don't call this constructor directly but rather use the getAuthorList() 	 * method which caches its results. 	 *  	 * @param bibtex_authors 	 *            contents of either<CODE>author</CODE> or<CODE>editor</CODE> 	 *            bibtex field. 	 */
+comment|/**      * Parses the parameter strings and stores preformatted author information.      *       * Don't call this constructor directly but rather use the getAuthorList()      * method which caches its results.      *       * @param bibtex_authors      *            contents of either<CODE>author</CODE> or<CODE>editor</CODE>      *            bibtex field.      */
 DECL|method|AuthorList (String bibtex_authors)
 specifier|protected
 name|AuthorList
@@ -503,7 +503,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|/** 	 * Retrieve an AuthorList for the given string of authors or editors. 	 *  	 * This function tries to cache AuthorLists by string passed in. 	 *  	 * @param authors 	 *            The string of authors or editors in bibtex format to parse. 	 * @return An AuthorList object representing the given authors. 	 */
+comment|/**      * Retrieve an AuthorList for the given string of authors or editors.      *       * This function tries to cache AuthorLists by string passed in.      *       * @param authors      *            The string of authors or editors in bibtex format to parse.      * @return An AuthorList object representing the given authors.      */
 DECL|method|getAuthorList (String authors)
 specifier|public
 specifier|static
@@ -553,7 +553,7 @@ return|return
 name|authorList
 return|;
 block|}
-comment|/** 	 * This is a convenience method for getAuthorsFirstFirst() 	 *  	 * @see net.sf.jabref.AuthorList#getAuthorsFirstFirst 	 */
+comment|/**      * This is a convenience method for getAuthorsFirstFirst()      *       * @see net.sf.jabref.AuthorList#getAuthorsFirstFirst      */
 DECL|method|fixAuthor_firstNameFirstCommas (String authors, boolean abbr, boolean oxfordComma)
 specifier|public
 specifier|static
@@ -584,7 +584,7 @@ name|oxfordComma
 argument_list|)
 return|;
 block|}
-comment|/** 	 * This is a convenience method for getAuthorsFirstFirstAnds() 	 *  	 * @see net.sf.jabref.AuthorList#getAuthorsFirstFirstAnds 	 */
+comment|/**      * This is a convenience method for getAuthorsFirstFirstAnds()      *       * @see net.sf.jabref.AuthorList#getAuthorsFirstFirstAnds      */
 DECL|method|fixAuthor_firstNameFirst (String authors)
 specifier|public
 specifier|static
@@ -605,7 +605,7 @@ name|getAuthorsFirstFirstAnds
 argument_list|()
 return|;
 block|}
-comment|/** 	 * This is a convenience method for getAuthorsLastFirst() 	 *  	 * @see net.sf.jabref.AuthorList#getAuthorsLastFirst 	 */
+comment|/**      * This is a convenience method for getAuthorsLastFirst()      *       * @see net.sf.jabref.AuthorList#getAuthorsLastFirst      */
 DECL|method|fixAuthor_lastNameFirstCommas (String authors, boolean abbr, boolean oxfordComma)
 specifier|public
 specifier|static
@@ -636,7 +636,7 @@ name|oxfordComma
 argument_list|)
 return|;
 block|}
-comment|/** 	 * This is a convenience method for getAuthorsLastFirstAnds(true) 	 *  	 * @see net.sf.jabref.AuthorList#getAuthorsLastFirstAnds 	 */
+comment|/**      * This is a convenience method for getAuthorsLastFirstAnds(true)      *       * @see net.sf.jabref.AuthorList#getAuthorsLastFirstAnds      */
 DECL|method|fixAuthor_lastNameFirst (String authors)
 specifier|public
 specifier|static
@@ -659,7 +659,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/** 	 * This is a convenience method for getAuthorsLastFirstAnds() 	 *  	 * @see net.sf.jabref.AuthorList#getAuthorsLastFirstAnds 	 */
+comment|/**      * This is a convenience method for getAuthorsLastFirstAnds()      *       * @see net.sf.jabref.AuthorList#getAuthorsLastFirstAnds      */
 DECL|method|fixAuthor_lastNameFirst (String authors, boolean abbreviate)
 specifier|public
 specifier|static
@@ -685,7 +685,7 @@ name|abbreviate
 argument_list|)
 return|;
 block|}
-comment|/** 	 * This is a convenience method for getAuthorsLastOnly() 	 *  	 * @see net.sf.jabref.AuthorList#getAuthorsLastOnly 	 */
+comment|/**      * This is a convenience method for getAuthorsLastOnly()      *       * @see net.sf.jabref.AuthorList#getAuthorsLastOnly      */
 DECL|method|fixAuthor_lastNameOnlyCommas (String authors, boolean oxfordComma)
 specifier|public
 specifier|static
@@ -711,7 +711,7 @@ name|oxfordComma
 argument_list|)
 return|;
 block|}
-comment|/** 	 * This is a convenience method for getAuthorsForAlphabetization() 	 *  	 * @see net.sf.jabref.AuthorList#getAuthorsForAlphabetization 	 */
+comment|/**      * This is a convenience method for getAuthorsForAlphabetization()      *       * @see net.sf.jabref.AuthorList#getAuthorsForAlphabetization      */
 DECL|method|fixAuthorForAlphabetization (String authors)
 specifier|public
 specifier|static
@@ -732,7 +732,7 @@ name|getAuthorsForAlphabetization
 argument_list|()
 return|;
 block|}
-comment|/** 	 * This is a convenience method for getAuthorsNatbib() 	 *  	 * @see net.sf.jabref.AuthorList#getAuthorsNatbib 	 */
+comment|/**      * This is a convenience method for getAuthorsNatbib()      *       * @see net.sf.jabref.AuthorList#getAuthorsNatbib      */
 DECL|method|fixAuthor_Natbib (String authors)
 specifier|public
 specifier|static
@@ -755,7 +755,7 @@ name|getAuthorsNatbib
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Parses one author name and returns preformatted information. 	 *  	 * @return Preformatted author name;<CODE>null</CODE> if author name is 	 *         empty. 	 */
+comment|/**      * Parses one author name and returns preformatted information.      *       * @return Preformatted author name;<CODE>null</CODE> if author name is      *         empty.      */
 DECL|method|getAuthor ()
 specifier|private
 name|Author
@@ -1447,7 +1447,7 @@ operator|)
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Concatenates list of tokens from 'tokens' Vector. Tokens are separated by 	 * spaces or dashes, dependeing on stored in 'tokens'. Callers always ensure 	 * that start< end; thus, there exists at least one token to be 	 * concatenated. 	 *  	 * @param start 	 *            index of the first token to be concatenated in 'tokens' Vector 	 *            (always divisible by TOKEN_GROUP_LENGTH). 	 * @param end 	 *            index of the first token not to be concatenated in 'tokens' 	 *            Vector (always divisible by TOKEN_GROUP_LENGTH). 	 * @param offset 	 *            offset within token group (used to request concatenation of 	 *            either full tokens or abbreviation). 	 * @param dot_after 	 *<CODE>true</CODE> -- add period after each token,<CODE>false</CODE> -- 	 *            do not add. 	 * @return the result of concatenation. 	 */
+comment|/**      * Concatenates list of tokens from 'tokens' Vector. Tokens are separated by      * spaces or dashes, dependeing on stored in 'tokens'. Callers always ensure      * that start< end; thus, there exists at least one token to be      * concatenated.      *       * @param start      *            index of the first token to be concatenated in 'tokens' Vector      *            (always divisible by TOKEN_GROUP_LENGTH).      * @param end      *            index of the first token not to be concatenated in 'tokens'      *            Vector (always divisible by TOKEN_GROUP_LENGTH).      * @param offset      *            offset within token group (used to request concatenation of      *            either full tokens or abbreviation).      * @param dot_after      *<CODE>true</CODE> -- add period after each token,<CODE>false</CODE> --      *            do not add.      * @return the result of concatenation.      */
 DECL|method|concatTokens (int start, int end, int offset, boolean dot_after)
 specifier|private
 name|String
@@ -1569,7 +1569,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Parses the next token. 	 *<p> 	 * The string being parsed is stored in global variable<CODE>orig</CODE>, 	 * and position which parsing has to start from is stored in global variable 	 *<CODE>token_end</CODE>; thus,<CODE>token_end</CODE> has to be set 	 * to 0 before the first invocation. Procedure updates<CODE>token_end</CODE>; 	 * thus, subsequent invocations do not require any additional variable 	 * settings. 	 *<p> 	 * The type of the token is returned; if it is<CODE>TOKEN_WORD</CODE>, 	 * additional information is given in global variables<CODE>token_start</CODE>, 	 *<CODE>token_end</CODE>,<CODE>token_abbr</CODE>,<CODE>token_term</CODE>, 	 * and<CODE>token_case</CODE>; namely:<CODE>orig.substring(token_start,token_end)</CODE> 	 * is the thext of the token,<CODE>orig.substring(token_start,token_abbr)</CODE> 	 * is the token abbreviation,<CODE>token_term</CODE> contains token 	 * terminator (space or dash), and<CODE>token_case</CODE> is<CODE>true</CODE>, 	 * if token is upper-case and<CODE>false</CODE> if token is lower-case. 	 *  	 * @return<CODE>TOKEN_EOF</CODE> -- no more tokens,<CODE>TOKEN_COMMA</CODE> -- 	 *         token is comma,<CODE>TOKEN_AND</CODE> -- token is the word 	 *         "and" (or "And", or "aND", etc.),<CODE>TOKEN_WORD</CODE> -- 	 *         token is a word; additional information is given in global 	 *         variables<CODE>token_start</CODE>,<CODE>token_end</CODE>, 	 *<CODE>token_abbr</CODE>,<CODE>token_term</CODE>, and 	 *<CODE>token_case</CODE>. 	 */
+comment|/**      * Parses the next token.      *<p>      * The string being parsed is stored in global variable<CODE>orig</CODE>,      * and position which parsing has to start from is stored in global variable      *<CODE>token_end</CODE>; thus,<CODE>token_end</CODE> has to be set      * to 0 before the first invocation. Procedure updates<CODE>token_end</CODE>;      * thus, subsequent invocations do not require any additional variable      * settings.      *<p>      * The type of the token is returned; if it is<CODE>TOKEN_WORD</CODE>,      * additional information is given in global variables<CODE>token_start</CODE>,      *<CODE>token_end</CODE>,<CODE>token_abbr</CODE>,<CODE>token_term</CODE>,      * and<CODE>token_case</CODE>; namely:<CODE>orig.substring(token_start,token_end)</CODE>      * is the thext of the token,<CODE>orig.substring(token_start,token_abbr)</CODE>      * is the token abbreviation,<CODE>token_term</CODE> contains token      * terminator (space or dash), and<CODE>token_case</CODE> is<CODE>true</CODE>,      * if token is upper-case and<CODE>false</CODE> if token is lower-case.      *       * @return<CODE>TOKEN_EOF</CODE> -- no more tokens,<CODE>TOKEN_COMMA</CODE> --      *         token is comma,<CODE>TOKEN_AND</CODE> -- token is the word      *         "and" (or "And", or "aND", etc.),<CODE>TOKEN_WORD</CODE> --      *         token is a word; additional information is given in global      *         variables<CODE>token_start</CODE>,<CODE>token_end</CODE>,      *<CODE>token_abbr</CODE>,<CODE>token_term</CODE>, and      *<CODE>token_case</CODE>.      */
 DECL|method|getToken ()
 specifier|private
 name|int
@@ -1970,7 +1970,7 @@ return|return
 name|TOKEN_WORD
 return|;
 block|}
-comment|/** 	 * Returns the number of author names in this object. 	 *  	 * @return the number of author names in this object. 	 */
+comment|/**      * Returns the number of author names in this object.      *       * @return the number of author names in this object.      */
 DECL|method|size ()
 specifier|public
 name|int
@@ -1984,7 +1984,7 @@ name|size
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Returns the<CODE>Author</CODE> object for the i-th author. 	 *  	 * @param i 	 *            Index of the author (from 0 to<CODE>size()-1</CODE>). 	 * @return the<CODE>Author</CODE> object. 	 */
+comment|/**      * Returns the<CODE>Author</CODE> object for the i-th author.      *       * @param i      *            Index of the author (from 0 to<CODE>size()-1</CODE>).      * @return the<CODE>Author</CODE> object.      */
 DECL|method|getAuthor (int i)
 specifier|public
 name|Author
@@ -2003,7 +2003,7 @@ name|i
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Returns the list of authors in "natbib" format. 	 *<p> 	 *<ul> 	 *<li>"John Smith" -> "Smith"</li> 	 *<li>"John Smith and Black Brown, Peter" ==> "Smith and Black Brown"</li> 	 *<li>"John von Neumann and John Smith and Black Brown, Peter" ==> "von 	 * Neumann et al."</li> 	 *</ul> 	 *  	 * @return formatted list of authors. 	 */
+comment|/**      * Returns the list of authors in "natbib" format.      *<p>      *<ul>      *<li>"John Smith" -> "Smith"</li>      *<li>"John Smith and Black Brown, Peter" ==> "Smith and Black Brown"</li>      *<li>"John von Neumann and John Smith and Black Brown, Peter" ==> "von      * Neumann et al."</li>      *</ul>      *       * @return formatted list of authors.      */
 DECL|method|getAuthorsNatbib ()
 specifier|public
 name|String
@@ -2106,7 +2106,7 @@ return|return
 name|authorsNatbib
 return|;
 block|}
-comment|/** 	 * Returns the list of authors separated by commas with last name only; If 	 * the list consists of three or more authors, "and" is inserted before the 	 * last author's name. 	 *<p> 	 *  	 *<ul> 	 *<li> "John Smith" ==> "Smith"</li> 	 *<li> "John Smith and Black Brown, Peter" ==> "Smith and Black Brown"</li> 	 *<li> "John von Neumann and John Smith and Black Brown, Peter" ==> "von 	 * Neumann, Smith and Black Brown".</li> 	 *</ul> 	 *  	 * @param oxfordComma 	 *            Whether to put a comma before the and at the end. 	 *  	 * @see<a href="http://en.wikipedia.org/wiki/Serial_comma">serial comma for an detailed explaination about the Oxford comma.</a> 	 *  	 * @return formatted list of authors. 	 */
+comment|/**      * Returns the list of authors separated by commas with last name only; If      * the list consists of three or more authors, "and" is inserted before the      * last author's name.      *<p>      *       *<ul>      *<li> "John Smith" ==> "Smith"</li>      *<li> "John Smith and Black Brown, Peter" ==> "Smith and Black Brown"</li>      *<li> "John von Neumann and John Smith and Black Brown, Peter" ==> "von      * Neumann, Smith and Black Brown".</li>      *</ul>      *       * @param oxfordComma      *            Whether to put a comma before the and at the end.      *       * @see<a href="http://en.wikipedia.org/wiki/Serial_comma">serial comma for an detailed explaination about the Oxford comma.</a>      *       * @return formatted list of authors.      */
 DECL|method|getAuthorsLastOnly (boolean oxfordComma)
 specifier|public
 name|String
@@ -2273,7 +2273,7 @@ name|abbrInt
 index|]
 return|;
 block|}
-comment|/** 	 * Returns the list of authors separated by commas with first names after 	 * last name; first names are abbreviated or not depending on parameter. If 	 * the list consists of three or more authors, "and" is inserted before the 	 * last author's name. 	 *<p> 	 *  	 *<ul> 	 *<li> "John Smith" ==> "Smith, John" or "Smith, J."</li> 	 *<li> "John Smith and Black Brown, Peter" ==> "Smith, John and Black 	 * Brown, Peter" or "Smith, J. and Black Brown, P."</li> 	 *<li> "John von Neumann and John Smith and Black Brown, Peter" ==> "von 	 * Neumann, John, Smith, John and Black Brown, Peter" or "von Neumann, J., 	 * Smith, J. and Black Brown, P.".</li> 	 *</ul> 	 *  	 * @param abbreviate 	 *            whether to abbreivate first names. 	 *  	 * @param oxfordComma 	 *            Whether to put a comma before the and at the end. 	 *  	 * @see<a href="http://en.wikipedia.org/wiki/Serial_comma">serial comma for an detailed explaination about the Oxford comma.</a> 	 *  	 * @return formatted list of authors. 	 */
+comment|/**      * Returns the list of authors separated by commas with first names after      * last name; first names are abbreviated or not depending on parameter. If      * the list consists of three or more authors, "and" is inserted before the      * last author's name.      *<p>      *       *<ul>      *<li> "John Smith" ==> "Smith, John" or "Smith, J."</li>      *<li> "John Smith and Black Brown, Peter" ==> "Smith, John and Black      * Brown, Peter" or "Smith, J. and Black Brown, P."</li>      *<li> "John von Neumann and John Smith and Black Brown, Peter" ==> "von      * Neumann, John, Smith, John and Black Brown, Peter" or "von Neumann, J.,      * Smith, J. and Black Brown, P.".</li>      *</ul>      *       * @param abbreviate      *            whether to abbreivate first names.      *       * @param oxfordComma      *            Whether to put a comma before the and at the end.      *       * @see<a href="http://en.wikipedia.org/wiki/Serial_comma">serial comma for an detailed explaination about the Oxford comma.</a>      *       * @return formatted list of authors.      */
 DECL|method|getAuthorsLastFirst (boolean abbreviate, boolean oxfordComma)
 specifier|public
 name|String
@@ -2472,7 +2472,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Returns the list of authors separated by "and"s with first names after 	 * last name; first names are not abbreviated. 	 *<p> 	 *<ul> 	 *<li>"John Smith" ==> "Smith, John"</li> 	 *<li>"John Smith and Black Brown, Peter" ==> "Smith, John and Black 	 * Brown, Peter"</li> 	 *<li>"John von Neumann and John Smith and Black Brown, Peter" ==> "von 	 * Neumann, John and Smith, John and Black Brown, Peter".</li> 	 *</ul> 	 *  	 * @return formatted list of authors. 	 */
+comment|/**      * Returns the list of authors separated by "and"s with first names after      * last name; first names are not abbreviated.      *<p>      *<ul>      *<li>"John Smith" ==> "Smith, John"</li>      *<li>"John Smith and Black Brown, Peter" ==> "Smith, John and Black      * Brown, Peter"</li>      *<li>"John von Neumann and John Smith and Black Brown, Peter" ==> "von      * Neumann, John and Smith, John and Black Brown, Peter".</li>      *</ul>      *       * @return formatted list of authors.      */
 DECL|method|getAuthorsLastFirstAnds (boolean abbreviate)
 specifier|public
 name|String
@@ -2719,7 +2719,7 @@ name|abbrInt
 index|]
 return|;
 block|}
-comment|/** 	 * Returns the list of authors separated by commas with first names before 	 * last name; first names are abbreviated or not depending on parameter. If 	 * the list consists of three or more authors, "and" is inserted before the 	 * last author's name. 	 *<p> 	 *<ul> 	 *<li>"John Smith" ==> "John Smith" or "J. Smith"</li> 	 *<li>"John Smith and Black Brown, Peter" ==> "John Smith and Peter Black 	 * Brown" or "J. Smith and P. Black Brown"</li> 	 *<li> "John von Neumann and John Smith and Black Brown, Peter" ==> "John 	 * von Neumann, John Smith and Peter Black Brown" or "J. von Neumann, J. 	 * Smith and P. Black Brown"</li> 	 *</ul> 	 *  	 * @param abbr 	 *            whether to abbreivate first names. 	 *  	 * @param oxfordComma 	 *            Whether to put a comma before the and at the end. 	 *  	 * @see<a href="http://en.wikipedia.org/wiki/Serial_comma">serial comma for an detailed explaination about the Oxford comma.</a> 	 *  	 * @return formatted list of authors. 	 */
+comment|/**      * Returns the list of authors separated by commas with first names before      * last name; first names are abbreviated or not depending on parameter. If      * the list consists of three or more authors, "and" is inserted before the      * last author's name.      *<p>      *<ul>      *<li>"John Smith" ==> "John Smith" or "J. Smith"</li>      *<li>"John Smith and Black Brown, Peter" ==> "John Smith and Peter Black      * Brown" or "J. Smith and P. Black Brown"</li>      *<li> "John von Neumann and John Smith and Black Brown, Peter" ==> "John      * von Neumann, John Smith and Peter Black Brown" or "J. von Neumann, J.      * Smith and P. Black Brown"</li>      *</ul>      *       * @param abbr      *            whether to abbreivate first names.      *       * @param oxfordComma      *            Whether to put a comma before the and at the end.      *       * @see<a href="http://en.wikipedia.org/wiki/Serial_comma">serial comma for an detailed explaination about the Oxford comma.</a>      *       * @return formatted list of authors.      */
 DECL|method|getAuthorsFirstFirst (boolean abbr, boolean oxfordComma)
 specifier|public
 name|String
@@ -2905,7 +2905,7 @@ name|abbrInt
 index|]
 return|;
 block|}
-comment|/** 	 * Compare this object with the given one.  	 *  	 * Will return true iff the other object is an Author and all fields are identical on a string comparison. 	 */
+comment|/**      * Compare this object with the given one.       *       * Will return true iff the other object is an Author and all fields are identical on a string comparison.      */
 DECL|method|equals (Object o)
 specifier|public
 name|boolean
@@ -2950,7 +2950,7 @@ name|authors
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Returns the list of authors separated by "and"s with first names before 	 * last name; first names are not abbreviated. 	 *<p> 	 *<ul> 	 *<li>"John Smith" ==> "John Smith"</li> 	 *<li>"John Smith and Black Brown, Peter" ==> "John Smith and Peter Black 	 * Brown"</li> 	 *<li>"John von Neumann and John Smith and Black Brown, Peter" ==> "John 	 * von Neumann and John Smith and Peter Black Brown"</li> 	 *</li> 	 *  	 * @return formatted list of authors. 	 */
+comment|/**      * Returns the list of authors separated by "and"s with first names before      * last name; first names are not abbreviated.      *<p>      *<ul>      *<li>"John Smith" ==> "John Smith"</li>      *<li>"John Smith and Black Brown, Peter" ==> "John Smith and Peter Black      * Brown"</li>      *<li>"John von Neumann and John Smith and Black Brown, Peter" ==> "John      * von Neumann and John Smith and Peter Black Brown"</li>      *</li>      *       * @return formatted list of authors.      */
 DECL|method|getAuthorsFirstFirstAnds ()
 specifier|public
 name|String
@@ -3048,7 +3048,7 @@ return|return
 name|authorsFirstFirstAnds
 return|;
 block|}
-comment|/** 	 * Returns the list of authors in a form suitable for alphabetization. This 	 * means that last names come first, never preceded by "von" particles, and 	 * that any braces are removed. First names are abbreviated so the same name 	 * is treated similarly if abbreviated in one case and not in another. This 	 * form is not intended to be suitable for presentation, only for sorting. 	 *  	 *<p> 	 *<ul> 	 *<li>"John Smith" ==> "Smith, J.";</li> 	 *  	 *  	 * @return formatted list of authors 	 */
+comment|/**      * Returns the list of authors in a form suitable for alphabetization. This      * means that last names come first, never preceded by "von" particles, and      * that any braces are removed. First names are abbreviated so the same name      * is treated similarly if abbreviated in one case and not in another. This      * form is not intended to be suitable for presentation, only for sorting.      *       *<p>      *<ul>      *<li>"John Smith" ==> "Smith, J.";</li>      *       *       * @return formatted list of authors      */
 DECL|method|getAuthorsForAlphabetization ()
 specifier|public
 name|String
@@ -3141,7 +3141,7 @@ return|return
 name|authorsAlph
 return|;
 block|}
-comment|/** 	 * This is an immutable class that keeps information regarding single 	 * author. It is just a container for the information, with very simple 	 * methods to access it. 	 *<p> 	 * Current usage: only methods<code>getLastOnly</code>, 	 *<code>getFirstLast</code>, and<code>getLastFirst</code> are used; 	 * all other methods are provided for completeness. 	 */
+comment|/**      * This is an immutable class that keeps information regarding single      * author. It is just a container for the information, with very simple      * methods to access it.      *<p>      * Current usage: only methods<code>getLastOnly</code>,      *<code>getFirstLast</code>, and<code>getLastFirst</code> are used;      * all other methods are provided for completeness.      */
 DECL|class|Author
 specifier|public
 specifier|static
@@ -3178,7 +3178,7 @@ specifier|final
 name|String
 name|jr_part
 decl_stmt|;
-comment|/** 		 * Compare this object with the given one.  		 *  		 * Will return true iff the other object is an Author and all fields are identical on a string comparison. 		 */
+comment|/**          * Compare this object with the given one.           *           * Will return true iff the other object is an Author and all fields are identical on a string comparison.          */
 DECL|method|equals (Object o)
 specifier|public
 name|boolean
@@ -3267,7 +3267,7 @@ name|jr_part
 argument_list|)
 return|;
 block|}
-comment|/** 		 * Creates the Author object. If any part of the name is absent,<CODE>null</CODE> 		 * must be passed; otherwise other methods may return erroneous results. 		 *  		 * @param first 		 *            the first name of the author (may consist of several 		 *            tokens, like "Charles Louis Xavier Joseph" in "Charles 		 *            Louis Xavier Joseph de la Vall{\'e}e Poussin") 		 * @param firstabbr 		 *            the abbreviated first name of the author (may consist of 		 *            several tokens, like "C. L. X. J." in "Charles Louis 		 *            Xavier Joseph de la Vall{\'e}e Poussin"). It is a 		 *            responsibility of the caller to create a reasonable 		 *            abbreviation of the first name. 		 * @param von 		 *            the von part of the author's name (may consist of several 		 *            tokens, like "de la" in "Charles Louis Xavier Joseph de la 		 *            Vall{\'e}e Poussin") 		 * @param last 		 *            the lats name of the author (may consist of several 		 *            tokens, like "Vall{\'e}e Poussin" in "Charles Louis Xavier 		 *            Joseph de la Vall{\'e}e Poussin") 		 * @param jr 		 *            the junior part of the author's name (may consist of 		 *            several tokens, like "Jr. III" in "Smith, Jr. III, John") 		 */
+comment|/**          * Creates the Author object. If any part of the name is absent,<CODE>null</CODE>          * must be passed; otherwise other methods may return erroneous results.          *           * @param first          *            the first name of the author (may consist of several          *            tokens, like "Charles Louis Xavier Joseph" in "Charles          *            Louis Xavier Joseph de la Vall{\'e}e Poussin")          * @param firstabbr          *            the abbreviated first name of the author (may consist of          *            several tokens, like "C. L. X. J." in "Charles Louis          *            Xavier Joseph de la Vall{\'e}e Poussin"). It is a          *            responsibility of the caller to create a reasonable          *            abbreviation of the first name.          * @param von          *            the von part of the author's name (may consist of several          *            tokens, like "de la" in "Charles Louis Xavier Joseph de la          *            Vall{\'e}e Poussin")          * @param last          *            the lats name of the author (may consist of several          *            tokens, like "Vall{\'e}e Poussin" in "Charles Louis Xavier          *            Joseph de la Vall{\'e}e Poussin")          * @param jr          *            the junior part of the author's name (may consist of          *            several tokens, like "Jr. III" in "Smith, Jr. III, John")          */
 DECL|method|Author (String first, String firstabbr, String von, String last, String jr)
 specifier|public
 name|Author
@@ -3324,7 +3324,7 @@ name|jr
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 		 *  		 * @return true if the brackets in s are properly paired 		 */
+comment|/**          *           * @return true if the brackets in s are properly paired          */
 DECL|method|properBrackets (String s)
 specifier|private
 name|boolean
@@ -3412,7 +3412,7 @@ literal|0
 operator|)
 return|;
 block|}
-comment|/** 		 * Removes start and end brace at a string 		 *  		 * E.g.,  		 *   * {Vall{\'e}e Poussin} -> Vall{\'e}e Poussin 		 *   * {Vall{\'e}e} {Poussin} -> Vall{\'e}e Poussin 		 *   * Vall{\'e}e Poussin -> Vall{\'e}e Poussin 		 */
+comment|/**          * Removes start and end brace at a string          *           * E.g.,           *   * {Vall{\'e}e Poussin} -> Vall{\'e}e Poussin          *   * {Vall{\'e}e} {Poussin} -> Vall{\'e}e Poussin          *   * Vall{\'e}e Poussin -> Vall{\'e}e Poussin          */
 DECL|method|removeStartAndEndBraces (String name)
 specifier|private
 name|String
@@ -3653,7 +3653,7 @@ name|name
 return|;
 block|}
 block|}
-comment|/** 		 * Returns the first name of the author stored in this object ("First"). 		 *  		 * @return first name of the author (may consist of several tokens) 		 */
+comment|/**          * Returns the first name of the author stored in this object ("First").          *           * @return first name of the author (may consist of several tokens)          */
 DECL|method|getFirst ()
 specifier|public
 name|String
@@ -3664,7 +3664,7 @@ return|return
 name|first_part
 return|;
 block|}
-comment|/** 		 * Returns the abbreviated first name of the author stored in this 		 * object ("F."). 		 *  		 * @return abbreviated first name of the author (may consist of several 		 *         tokens) 		 */
+comment|/**          * Returns the abbreviated first name of the author stored in this          * object ("F.").          *           * @return abbreviated first name of the author (may consist of several          *         tokens)          */
 DECL|method|getFirstAbbr ()
 specifier|public
 name|String
@@ -3675,7 +3675,7 @@ return|return
 name|first_abbr
 return|;
 block|}
-comment|/** 		 * Returns the von part of the author's name stored in this object 		 * ("von"). 		 *  		 * @return von part of the author's name (may consist of several tokens) 		 */
+comment|/**          * Returns the von part of the author's name stored in this object          * ("von").          *           * @return von part of the author's name (may consist of several tokens)          */
 DECL|method|getVon ()
 specifier|public
 name|String
@@ -3686,7 +3686,7 @@ return|return
 name|von_part
 return|;
 block|}
-comment|/** 		 * Returns the last name of the author stored in this object ("Last"). 		 *  		 * @return last name of the author (may consist of several tokens) 		 */
+comment|/**          * Returns the last name of the author stored in this object ("Last").          *           * @return last name of the author (may consist of several tokens)          */
 DECL|method|getLast ()
 specifier|public
 name|String
@@ -3697,7 +3697,7 @@ return|return
 name|last_part
 return|;
 block|}
-comment|/** 		 * Returns the junior part of the author's name stored in this object 		 * ("Jr"). 		 *  		 * @return junior part of the author's name (may consist of several 		 *         tokens) or null if the author does not have a Jr. Part 		 */
+comment|/**          * Returns the junior part of the author's name stored in this object          * ("Jr").          *           * @return junior part of the author's name (may consist of several          *         tokens) or null if the author does not have a Jr. Part          */
 DECL|method|getJr ()
 specifier|public
 name|String
@@ -3708,7 +3708,7 @@ return|return
 name|jr_part
 return|;
 block|}
-comment|/** 		 * Returns von-part followed by last name ("von Last"). If both fields 		 * were specified as<CODE>null</CODE>, the empty string<CODE>""</CODE> 		 * is returned. 		 *  		 * @return 'von Last' 		 */
+comment|/**          * Returns von-part followed by last name ("von Last"). If both fields          * were specified as<CODE>null</CODE>, the empty string<CODE>""</CODE>          * is returned.          *           * @return 'von Last'          */
 DECL|method|getLastOnly ()
 specifier|public
 name|String
@@ -3753,7 +3753,7 @@ operator|)
 return|;
 block|}
 block|}
-comment|/** 		 * Returns the author's name in form 'von Last, Jr., First' with the 		 * first name full or abbreviated depending on parameter. 		 *  		 * @param abbr 		 *<CODE>true</CODE> - abbreviate first name,<CODE>false</CODE> - 		 *            do not abbreviate 		 * @return 'von Last, Jr., First' (if<CODE>abbr==false</CODE>) or 		 *         'von Last, Jr., F.' (if<CODE>abbr==true</CODE>) 		 */
+comment|/**          * Returns the author's name in form 'von Last, Jr., First' with the          * first name full or abbreviated depending on parameter.          *           * @param abbr          *<CODE>true</CODE> - abbreviate first name,<CODE>false</CODE> -          *            do not abbreviate          * @return 'von Last, Jr., First' (if<CODE>abbr==false</CODE>) or          *         'von Last, Jr., F.' (if<CODE>abbr==true</CODE>)          */
 DECL|method|getLastFirst (boolean abbr)
 specifier|public
 name|String
@@ -3818,7 +3818,7 @@ return|return
 name|res
 return|;
 block|}
-comment|/** 		 * Returns the author's name in form 'First von Last, Jr.' with the 		 * first name full or abbreviated depending on parameter. 		 *  		 * @param abbr 		 *<CODE>true</CODE> - abbreviate first name,<CODE>false</CODE> - 		 *            do not abbreviate 		 * @return 'First von Last, Jr.' (if<CODE>abbr==false</CODE>) or 'F. 		 *         von Last, Jr.' (if<CODE>abbr==true</CODE>) 		 */
+comment|/**          * Returns the author's name in form 'First von Last, Jr.' with the          * first name full or abbreviated depending on parameter.          *           * @param abbr          *<CODE>true</CODE> - abbreviate first name,<CODE>false</CODE> -          *            do not abbreviate          * @return 'First von Last, Jr.' (if<CODE>abbr==false</CODE>) or 'F.          *         von Last, Jr.' (if<CODE>abbr==true</CODE>)          */
 DECL|method|getFirstLast (boolean abbr)
 specifier|public
 name|String
@@ -3891,7 +3891,7 @@ return|return
 name|res
 return|;
 block|}
-comment|/** 		 * Returns the name as "Last, Jr, F." omitting the von-part and removing 		 * starting braces. 		 *  		 * @return "Last, Jr, F." as described above or "" if all these parts 		 *         are empty. 		 */
+comment|/**          * Returns the name as "Last, Jr, F." omitting the von-part and removing          * starting braces.          *           * @return "Last, Jr, F." as described above or "" if all these parts          *         are empty.          */
 DECL|method|getNameForAlphabetization ()
 specifier|public
 name|String

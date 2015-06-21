@@ -633,7 +633,7 @@ name|FieldListener
 extends|extends
 name|FocusAdapter
 block|{
-comment|/*        * Focus listener that fires the storeFieldAction when a FieldTextArea        * loses focus.        */
+comment|/*         * Focus listener that fires the storeFieldAction when a FieldTextArea         * loses focus.         */
 DECL|method|focusLost (FocusEvent e)
 specifier|public
 name|void

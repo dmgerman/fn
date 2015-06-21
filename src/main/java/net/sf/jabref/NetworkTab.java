@@ -156,9 +156,9 @@ name|JPanel
 implements|implements
 name|PrefsTab
 block|{
+DECL|field|useProxy
 specifier|private
 name|JCheckBox
-DECL|field|useProxy
 name|useProxy
 decl_stmt|;
 DECL|field|defProxyHostname

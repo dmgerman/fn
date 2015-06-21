@@ -304,7 +304,7 @@ specifier|public
 class|class
 name|Globals
 block|{
-comment|/** 	 * {@link Control} class allowing properties bundles to be in different encodings. 	 *  	 * @see<a href="http://stackoverflow.com/questions/4659929/how-to-use-utf-8-in-resource-properties-with-resourcebundle">utf-8 and property files</a> 	 */
+comment|/**      * {@link Control} class allowing properties bundles to be in different encodings.      *       * @see<a href="http://stackoverflow.com/questions/4659929/how-to-use-utf-8-in-resource-properties-with-resourcebundle">utf-8 and property files</a>      */
 DECL|class|EncodingControl
 specifier|private
 specifier|static
@@ -577,7 +577,7 @@ name|JOURNALS_FILE_BUILTIN
 init|=
 literal|"/resource/journalList.txt"
 decl_stmt|;
-comment|/* 	 * some extra field definitions 	 */
+comment|/*      * some extra field definitions      */
 DECL|field|additionalFields
 specifier|public
 specifier|static
@@ -1167,7 +1167,6 @@ argument_list|)
 decl_stmt|;
 DECL|field|ON_MAC
 DECL|field|ON_WIN
-DECL|field|ON_LINUX
 specifier|public
 specifier|static
 specifier|final
@@ -1192,6 +1191,7 @@ argument_list|(
 literal|"Windows"
 argument_list|)
 decl_stmt|,
+DECL|field|ON_LINUX
 name|ON_LINUX
 init|=
 name|osName
@@ -1288,7 +1288,7 @@ operator|.
 name|GLOBAL_LOGGER_NAME
 argument_list|)
 decl_stmt|;
-comment|/** 	 * true if we have unix newlines 	 */
+comment|/**      * true if we have unix newlines      */
 DECL|field|UNIX_NEWLINE
 specifier|public
 specifier|static
@@ -1303,7 +1303,7 @@ argument_list|(
 literal|"\n"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * 	"Fieldname" to indicate that a field should be treated as a bibtex  	 * string. Used when writing database to file. 	 */
+comment|/**      * 	"Fieldname" to indicate that a field should be treated as a bibtex       * string. Used when writing database to file.      */
 DECL|field|BIBTEX_STRING
 specifier|public
 specifier|static
@@ -1444,7 +1444,7 @@ name|SEVERE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Should be only called once 	 */
+comment|/**      * Should be only called once      */
 DECL|method|turnOnConsoleLogging ()
 specifier|public
 specifier|static
@@ -1472,7 +1472,7 @@ name|consoleHandler
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Should be only called once 	 */
+comment|/**      * Should be only called once      */
 DECL|method|turnOnFileLogging ()
 specifier|public
 specifier|static
@@ -2260,7 +2260,7 @@ operator|.
 name|OTHER
 return|;
 block|}
-comment|/* 		 * if(type.equals("article")) return BibtexEntryType.ARTICLE; else 		 * if(type.equals("book")) return BibtexEntryType.BOOK; else 		 * if(type.equals("inproceedings")) return 		 * BibtexEntryType.INPROCEEDINGS; 		 */
+comment|/*          * if(type.equals("article")) return BibtexEntryType.ARTICLE; else          * if(type.equals("book")) return BibtexEntryType.BOOK; else          * if(type.equals("inproceedings")) return          * BibtexEntryType.INPROCEEDINGS;          */
 block|}
 DECL|field|SPECIAL_COMMAND_CHARS
 specifier|public
@@ -2442,7 +2442,7 @@ parameter_list|(
 name|Throwable
 name|ignored
 parameter_list|)
-block|{  		}
+block|{              }
 return|return
 name|SHORTCUT_MASK
 return|;
@@ -9833,7 +9833,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 	 * Returns a reg exp pattern in the form (w1)|(w2)| ... 	 * wi are escaped if no regex search is enabled 	 */
+comment|/**      * Returns a reg exp pattern in the form (w1)|(w2)| ...      * wi are escaped if no regex search is enabled      */
 DECL|method|getPatternForWords (ArrayList<String> words)
 specifier|public
 specifier|static
@@ -10031,7 +10031,7 @@ return|return
 name|pattern
 return|;
 block|}
-comment|/** 	 * With Java 7, one could directly set a format for the SimpleFormatter 	 * (http://stackoverflow.com/a/10722260/873282) and use that in a StreamHandler. 	 * As JabRef is compatible with Java6, we have to write our own Handler 	 */
+comment|/**      * With Java 7, one could directly set a format for the SimpleFormatter      * (http://stackoverflow.com/a/10722260/873282) and use that in a StreamHandler.      * As JabRef is compatible with Java6, we have to write our own Handler      */
 DECL|class|StdoutConsoleHandler
 specifier|private
 specifier|static

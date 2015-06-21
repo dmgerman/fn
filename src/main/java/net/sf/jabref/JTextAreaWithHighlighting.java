@@ -630,7 +630,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Highlight words in the Textarea 	 *  	 * @param words to highlight 	 */
+comment|/**      * Highlight words in the Textarea      *       * @param words to highlight      */
 DECL|method|highLight (ArrayList<String> words)
 specifier|private
 name|void

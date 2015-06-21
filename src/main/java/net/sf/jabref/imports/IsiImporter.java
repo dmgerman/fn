@@ -138,7 +138,7 @@ name|IsiImporter
 extends|extends
 name|ImportFormat
 block|{
-comment|/** 	 * Return the name of this import format. 	 */
+comment|/**      * Return the name of this import format.      */
 DECL|method|getFormatName ()
 specifier|public
 name|String
@@ -149,7 +149,7 @@ return|return
 literal|"ISI"
 return|;
 block|}
-comment|/* 	 * (non-Javadoc) 	 *  	 * @see net.sf.jabref.imports.ImportFormat#getCLIId() 	 */
+comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
 DECL|method|getCLIId ()
 specifier|public
 name|String
@@ -175,7 +175,7 @@ argument_list|(
 literal|"FN ISI Export Format|VR 1.|PY \\d{4}"
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Check whether the source is in the correct format for this importer. 	 */
+comment|/**      * Check whether the source is in the correct format for this importer.      */
 DECL|method|isRecognizedFormat (InputStream stream)
 specifier|public
 name|boolean
@@ -231,7 +231,7 @@ literal|50
 operator|)
 condition|)
 block|{
-comment|/** 			 * The following line gives false positives for RIS files, so it 			 * should not be uncommented. The hypen is a characteristic of the 			 * RIS format. 			 *  			 * str = str.replace(" - ", "") 			 */
+comment|/**              * The following line gives false positives for RIS files, so it              * should not be uncommented. The hypen is a characteristic of the              * RIS format.              *               * str = str.replace(" - ", "")              */
 if|if
 condition|(
 name|isiPattern
@@ -547,7 +547,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/** 	 * Parse the entries in the source, and return a List of BibtexEntry 	 * objects. 	 */
+comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
@@ -1940,7 +1940,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** 	 * Will expand ISI first names. 	 *  	 * Fixed bug from: 	 * http://sourceforge.net/tracker/index.php?func=detail&aid=1542552&group_id=92314&atid=600306 	 *  	 */
+comment|/**      * Will expand ISI first names.      *       * Fixed bug from:      * http://sourceforge.net/tracker/index.php?func=detail&aid=1542552&group_id=92314&atid=600306      *       */
 DECL|method|isiAuthorConvert (String author)
 specifier|public
 specifier|static

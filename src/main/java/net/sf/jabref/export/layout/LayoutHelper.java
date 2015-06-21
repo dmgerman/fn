@@ -991,7 +991,7 @@ name|_eof
 operator|=
 literal|true
 expr_stmt|;
-comment|/* 				 * CO 2006-11-11: Added check for null, otherwise a Layout that 				 * finishs with a curly brace throws a NPE 				 */
+comment|/*                  * CO 2006-11-11: Added check for null, otherwise a Layout that                  * finishs with a curly brace throws a NPE                  */
 if|if
 condition|(
 name|buffer
@@ -1133,7 +1133,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** 	 *  	 */
+comment|/**      *       */
 DECL|method|parseField ()
 specifier|private
 name|void

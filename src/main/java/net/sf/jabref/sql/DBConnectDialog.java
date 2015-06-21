@@ -417,7 +417,7 @@ init|=
 literal|false
 decl_stmt|;
 comment|/** Creates a new instance of DBConnectDialog */
-DECL|method|DBConnectDialog ( JFrame parent, DBStrings dbs)
+DECL|method|DBConnectDialog (JFrame parent, DBStrings dbs)
 specifier|public
 name|DBConnectDialog
 parameter_list|(

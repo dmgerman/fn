@@ -198,7 +198,7 @@ argument_list|(
 literal|10
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Customization of external program paths. 	 */
+comment|/**      * Customization of external program paths.      */
 DECL|method|XmpPrefsTab ()
 specifier|public
 name|XmpPrefsTab
@@ -953,7 +953,7 @@ literal|true
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Load settings from the preferences and initialize the table. 	 */
+comment|/**      * Load settings from the preferences and initialize the table.      */
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -1015,7 +1015,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Store changes to table preferences. This method is called when the user 	 * clicks Ok. 	 *  	 */
+comment|/**      * Store changes to table preferences. This method is called when the user      * clicks Ok.      *       */
 DECL|method|storeSettings ()
 specifier|public
 name|void

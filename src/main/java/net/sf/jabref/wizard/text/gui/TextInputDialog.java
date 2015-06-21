@@ -1044,7 +1044,7 @@ name|okPressed
 init|=
 literal|false
 decl_stmt|;
-DECL|method|TextInputDialog ( JabRefFrame frame, BasePanel panel, String title, boolean modal, BibtexEntry bibEntry )
+DECL|method|TextInputDialog (JabRefFrame frame, BasePanel panel, String title, boolean modal, BibtexEntry bibEntry)
 specifier|public
 name|TextInputDialog
 parameter_list|(
@@ -1127,7 +1127,7 @@ name|updateSourceView
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|jbInit ( JabRefFrame parent )
+DECL|method|jbInit (JabRefFrame parent)
 specifier|private
 name|void
 name|jbInit
@@ -1479,7 +1479,7 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{}
+block|{         }
 name|OverlayPanel
 name|testPanel
 init|=
@@ -2243,7 +2243,7 @@ literal|5
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/*infoText.setEditable(false);     infoText.setBackground(GUIGlobals.infoField);     infoText.setBorder(new EtchedBorder(EtchedBorder.LOWERED));     infoText.setPreferredSize( new Dimension(220, 50));     infoText.setMinimumSize( new Dimension(180, 50));*/
+comment|/*infoText.setEditable(false);         infoText.setBackground(GUIGlobals.infoField);         infoText.setBorder(new EtchedBorder(EtchedBorder.LOWERED));         infoText.setPreferredSize( new Dimension(220, 50));         infoText.setMinimumSize( new Dimension(180, 50));*/
 name|rawPanel
 operator|.
 name|add
@@ -2450,7 +2450,7 @@ expr_stmt|;
 block|}
 comment|// ---------------------------------------------------------------------------
 comment|// ---------------------------------------------------------------------------
-DECL|method|addStylesToDocument ( StyledDocument doc )
+DECL|method|addStylesToDocument (StyledDocument doc)
 specifier|protected
 name|void
 name|addStylesToDocument
@@ -2880,7 +2880,7 @@ block|}
 comment|// ---------------------------------------------------------------------------
 comment|//  ActionListener
 comment|//  handling of buttons-click actions
-DECL|method|actionPerformed ( ActionEvent e )
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -3191,7 +3191,7 @@ parameter_list|(
 name|IOException
 name|ignored
 parameter_list|)
-block|{}
+block|{         }
 name|fieldList
 operator|.
 name|clearSelection
@@ -3333,7 +3333,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed ( ActionEvent e )
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -3424,7 +3424,7 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{}
+block|{                 }
 block|}
 block|}
 block|}
@@ -3455,7 +3455,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed ( ActionEvent e )
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -3568,7 +3568,7 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{}
+block|{             }
 block|}
 block|}
 comment|// ---------------------------------------------------------------------------
@@ -3598,7 +3598,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed ( ActionEvent e )
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -3641,7 +3641,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed ( ActionEvent e )
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -3649,7 +3649,7 @@ parameter_list|(
 name|ActionEvent
 name|e
 parameter_list|)
-block|{}
+block|{         }
 block|}
 comment|// ---------------------------------------------------------------------------
 DECL|class|FieldListSelectionHandler
@@ -3666,7 +3666,7 @@ init|=
 operator|-
 literal|1
 decl_stmt|;
-DECL|method|valueChanged ( ListSelectionEvent e )
+DECL|method|valueChanged (ListSelectionEvent e)
 specifier|public
 name|void
 name|valueChanged
@@ -3831,7 +3831,7 @@ argument_list|(
 literal|"wrong"
 argument_list|)
 decl_stmt|;
-DECL|method|SimpleCellRenderer ( Font normFont )
+DECL|method|SimpleCellRenderer (Font normFont)
 specifier|public
 name|SimpleCellRenderer
 parameter_list|(
@@ -3855,8 +3855,8 @@ name|ITALIC
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* This is the only method defined by ListCellRenderer.  We just      * reconfigure the Jlabel each time we're called.      */
-DECL|method|getListCellRendererComponent ( JList list, Object value, int index, boolean iss, boolean chf )
+comment|/* This is the only method defined by ListCellRenderer.  We just          * reconfigure the Jlabel each time we're called.          */
+DECL|method|getListCellRendererComponent ( JList list, Object value, int index, boolean iss, boolean chf)
 specifier|public
 name|Component
 name|getListCellRendererComponent
@@ -3881,7 +3881,7 @@ name|chf
 parameter_list|)
 comment|// the list and the cell have the focus
 block|{
-comment|/* The DefaultListCellRenderer class will take care of        * the JLabels text property, it's foreground and background        * colors, and so on.        */
+comment|/* The DefaultListCellRenderer class will take care of              * the JLabels text property, it's foreground and background              * colors, and so on.              */
 name|super
 operator|.
 name|getListCellRendererComponent
@@ -3897,7 +3897,7 @@ argument_list|,
 name|chf
 argument_list|)
 expr_stmt|;
-comment|/* We additionally set the JLabels icon property here.        */
+comment|/* We additionally set the JLabels icon property here.              */
 name|String
 name|s
 init|=
@@ -3979,7 +3979,7 @@ name|FieldListMouseListener
 extends|extends
 name|MouseAdapter
 block|{
-DECL|method|mouseClicked ( MouseEvent e )
+DECL|method|mouseClicked (MouseEvent e)
 specifier|public
 name|void
 name|mouseClicked
@@ -4023,7 +4023,7 @@ specifier|private
 name|JPopupMenu
 name|popMenu
 decl_stmt|;
-DECL|method|PopupListener ( JPopupMenu menu )
+DECL|method|PopupListener (JPopupMenu menu)
 specifier|public
 name|PopupListener
 parameter_list|(
@@ -4036,7 +4036,7 @@ operator|=
 name|menu
 expr_stmt|;
 block|}
-DECL|method|mousePressed ( MouseEvent e )
+DECL|method|mousePressed (MouseEvent e)
 specifier|public
 name|void
 name|mousePressed
@@ -4051,7 +4051,7 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|mouseReleased ( MouseEvent e )
+DECL|method|mouseReleased (MouseEvent e)
 specifier|public
 name|void
 name|mouseReleased
@@ -4066,7 +4066,7 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|maybeShowPopup ( MouseEvent e )
+DECL|method|maybeShowPopup (MouseEvent e)
 specifier|private
 name|void
 name|maybeShowPopup
@@ -4123,7 +4123,7 @@ name|BasicAction
 extends|extends
 name|AbstractAction
 block|{
-DECL|method|BasicAction ( String text, String description, URL icon )
+DECL|method|BasicAction (String text, String description, URL icon)
 specifier|public
 name|BasicAction
 parameter_list|(
@@ -4166,7 +4166,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BasicAction ( String text, String description, URL icon, KeyStroke key )
+DECL|method|BasicAction (String text, String description, URL icon, KeyStroke key)
 specifier|public
 name|BasicAction
 parameter_list|(
@@ -4219,7 +4219,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BasicAction ( String text )
+DECL|method|BasicAction (String text)
 specifier|public
 name|BasicAction
 parameter_list|(
@@ -4238,7 +4238,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BasicAction ( String text, KeyStroke key )
+DECL|method|BasicAction (String text, KeyStroke key)
 specifier|public
 name|BasicAction
 parameter_list|(
@@ -4267,7 +4267,7 @@ name|key
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|actionPerformed ( ActionEvent e )
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 specifier|abstract
 name|void

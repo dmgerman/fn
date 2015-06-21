@@ -64,7 +64,7 @@ operator|new
 name|DBLPQueryCleaner
 argument_list|()
 decl_stmt|;
-comment|/* 	 * This is a small helper class that cleans the user submitted query. Right 	 * now, we cannot search for ":" on dblp.org. So, we remove colons from the 	 * user submitted search string. Also, the search is case sensitive if we 	 * use capitals. So, we better change the text to lower case. 	 */
+comment|/*      * This is a small helper class that cleans the user submitted query. Right      * now, we cannot search for ":" on dblp.org. So, we remove colons from the      * user submitted search string. Also, the search is case sensitive if we      * use capitals. So, we better change the text to lower case.      */
 DECL|class|DBLPQueryCleaner
 class|class
 name|DBLPQueryCleaner
@@ -129,7 +129,7 @@ name|cleaned
 return|;
 block|}
 block|}
-comment|/** 	 * 	 * @param query 	 *            string with the user query 	 * @return a string with the user query, but compatible with dblp.org 	 */
+comment|/**      *      * @param query      *            string with the user query      * @return a string with the user query, but compatible with dblp.org      */
 DECL|method|cleanDBLPQuery (String query)
 specifier|public
 name|String
@@ -148,7 +148,7 @@ name|query
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Takes an HTML file (as String) as input and extracts the bibtex 	 * information. After that, it will convert it into a BibtexEntry and return 	 * it (them). 	 * 	 * @param page 	 *            page as String 	 * @return list of BibtexEntry 	 */
+comment|/**      * Takes an HTML file (as String) as input and extracts the bibtex      * information. After that, it will convert it into a BibtexEntry and return      * it (them).      *      * @param page      *            page as String      * @return list of BibtexEntry      */
 DECL|method|getBibTexFromPage (final String page)
 specifier|public
 name|List

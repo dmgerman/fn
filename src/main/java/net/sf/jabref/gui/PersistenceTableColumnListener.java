@@ -138,7 +138,7 @@ specifier|final
 name|MainTable
 name|mainTable
 decl_stmt|;
-comment|/** 	 * @param mainTable 	 */
+comment|/**      * @param mainTable      */
 DECL|method|PersistenceTableColumnListener (final MainTable mainTable)
 specifier|public
 name|PersistenceTableColumnListener
@@ -155,7 +155,7 @@ operator|=
 name|mainTable
 expr_stmt|;
 block|}
-comment|/** 	 * update columns names and their width, store it in the global prefs. 	 */
+comment|/**      * update columns names and their width, store it in the global prefs.      */
 DECL|method|updateColumnPrefs ()
 specifier|private
 name|void
@@ -376,7 +376,7 @@ name|ncWidth
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * @see javax.swing.event.TableColumnModelListener#columnAdded(javax.swing.event.TableColumnModelEvent) 	 */
+comment|/**      * @see javax.swing.event.TableColumnModelListener#columnAdded(javax.swing.event.TableColumnModelEvent)      */
 DECL|method|columnAdded (TableColumnModelEvent e)
 specifier|public
 name|void
@@ -399,7 +399,7 @@ name|updateColumnPrefs
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * @see javax.swing.event.TableColumnModelListener#columnMarginChanged(javax.swing.event.ChangeEvent) 	 */
+comment|/**      * @see javax.swing.event.TableColumnModelListener#columnMarginChanged(javax.swing.event.ChangeEvent)      */
 DECL|method|columnMarginChanged (ChangeEvent e)
 specifier|public
 name|void
@@ -422,7 +422,7 @@ name|updateColumnPrefs
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * @see javax.swing.event.TableColumnModelListener#columnMoved(javax.swing.event.TableColumnModelEvent) 	 */
+comment|/**      * @see javax.swing.event.TableColumnModelListener#columnMoved(javax.swing.event.TableColumnModelEvent)      */
 DECL|method|columnMoved (TableColumnModelEvent e)
 specifier|public
 name|void
@@ -459,7 +459,7 @@ name|updateColumnPrefs
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * @see javax.swing.event.TableColumnModelListener#columnRemoved(javax.swing.event.TableColumnModelEvent) 	 */
+comment|/**      * @see javax.swing.event.TableColumnModelListener#columnRemoved(javax.swing.event.TableColumnModelEvent)      */
 DECL|method|columnRemoved (TableColumnModelEvent e)
 specifier|public
 name|void
@@ -482,7 +482,7 @@ name|updateColumnPrefs
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * @see javax.swing.event.TableColumnModelListener#columnSelectionChanged(javax.swing.event.ListSelectionEvent) 	 */
+comment|/**      * @see javax.swing.event.TableColumnModelListener#columnSelectionChanged(javax.swing.event.ListSelectionEvent)      */
 DECL|method|columnSelectionChanged (ListSelectionEvent e)
 specifier|public
 name|void

@@ -165,7 +165,7 @@ DECL|field|externalFileType
 name|ExternalFileType
 name|externalFileType
 decl_stmt|;
-comment|/** 	 * Constructor.<br> 	 * Forces subclasses to provide an {@link ExternalFileType} instance, which 	 * they build on. 	 *  	 * @param externalFileType 	 */
+comment|/**      * Constructor.<br>      * Forces subclasses to provide an {@link ExternalFileType} instance, which      * they build on.      *       * @param externalFileType      */
 DECL|method|EntryFromFileCreator (ExternalFileType externalFileType)
 specifier|public
 name|EntryFromFileCreator
@@ -191,7 +191,7 @@ name|File
 name|f
 parameter_list|)
 function_decl|;
-comment|/** 	 *<p> 	 * To support platform independence, a creator must define what types of 	 * files it accepts on it's own. 	 *</p> 	 *<p> 	 * Basically, accepting files which end with the file extension that is 	 * described in the nested {@link #externalFileType} would work on windows 	 * systems. This is also the recommended criterion, on which files should be 	 * accepted. 	 *</p> 	 *<p> 	 * However, defining what types of files this creator accepts, is a property 	 * of<i>entry creators</i>, that is left to the user. 	 *</p> 	 */
+comment|/**      *<p>      * To support platform independence, a creator must define what types of      * files it accepts on it's own.      *</p>      *<p>      * Basically, accepting files which end with the file extension that is      * described in the nested {@link #externalFileType} would work on windows      * systems. This is also the recommended criterion, on which files should be      * accepted.      *</p>      *<p>      * However, defining what types of files this creator accepts, is a property      * of<i>entry creators</i>, that is left to the user.      *</p>      */
 DECL|method|accept (File f)
 specifier|public
 specifier|abstract
@@ -202,7 +202,7 @@ name|File
 name|f
 parameter_list|)
 function_decl|;
-comment|/** 	 * Name of this import format. 	 *  	 *<p> 	 * The name must be unique. 	 *</p> 	 *  	 * @return format name, must be unique and not<code>null</code> 	 */
+comment|/**      * Name of this import format.      *       *<p>      * The name must be unique.      *</p>      *       * @return format name, must be unique and not<code>null</code>      */
 DECL|method|getFormatName ()
 specifier|public
 specifier|abstract
@@ -210,7 +210,7 @@ name|String
 name|getFormatName
 parameter_list|()
 function_decl|;
-comment|/** 	 * Create one BibtexEntry containing information regarding the given File. 	 *  	 * @param f 	 * @param addPathTokensAsKeywords 	 * @return 	 */
+comment|/**      * Create one BibtexEntry containing information regarding the given File.      *       * @param f      * @param addPathTokensAsKeywords      * @return      */
 DECL|method|createEntry (File f, boolean addPathTokensAsKeywords)
 specifier|public
 name|BibtexEntry
@@ -327,7 +327,7 @@ return|return
 name|externalFileType
 return|;
 block|}
-comment|/** 	 * Splits the path to the file and builds a keywords String in the format 	 * that is used by Jabref. 	 *  	 * @param absolutePath 	 * @return 	 */
+comment|/**      * Splits the path to the file and builds a keywords String in the format      * that is used by Jabref.      *       * @param absolutePath      * @return      */
 DECL|method|extractPathesToKeyWordsfield (String absolutePath)
 specifier|private
 name|String

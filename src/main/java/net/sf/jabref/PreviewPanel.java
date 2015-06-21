@@ -258,7 +258,7 @@ name|SearchTextListener
 implements|,
 name|EntryContainer
 block|{
-comment|/** 	 * The bibtex entry currently shown 	 */
+comment|/**      * The bibtex entry currently shown      */
 DECL|field|entry
 name|BibtexEntry
 name|entry
@@ -267,7 +267,7 @@ DECL|field|metaData
 name|MetaData
 name|metaData
 decl_stmt|;
-comment|/** 	 * If a database is set, the preview will attempt to resolve strings in the 	 * previewed entry using that database. 	 */
+comment|/**      * If a database is set, the preview will attempt to resolve strings in the      * previewed entry using that database.      */
 DECL|field|database
 name|BibtexDatabase
 name|database
@@ -334,7 +334,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * @param database 	 *            (may be null) Optionally used to resolve strings. 	 * @param entry 	 *            (may be null) If given this entry is shown otherwise you have 	 *            to call setEntry to make something visible. 	 * @param panel 	 *            (may be null) If not given no toolbar is shown on the right 	 *            hand side. 	 * @param metaData 	 *            (must be given) Used for resolving pdf directories for links. 	 * @param layoutFile 	 *            (must be given) Used for layout 	 * @param withPDFPreview if true, a PDF preview is included in the PreviewPanel 	 */
+comment|/**      * @param database      *            (may be null) Optionally used to resolve strings.      * @param entry      *            (may be null) If given this entry is shown otherwise you have      *            to call setEntry to make something visible.      * @param panel      *            (may be null) If not given no toolbar is shown on the right      *            hand side.      * @param metaData      *            (must be given) Used for resolving pdf directories for links.      * @param layoutFile      *            (must be given) Used for layout      * @param withPDFPreview if true, a PDF preview is included in the PreviewPanel      */
 DECL|method|PreviewPanel (BibtexDatabase database, BibtexEntry entry, BasePanel panel, MetaData metaData, String layoutFile, boolean withPDFPreview)
 specifier|public
 name|PreviewPanel
@@ -408,7 +408,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 *  	 * @param panel 	 *            (may be null) If not given no toolbar is shown on the right 	 *            hand side. 	 * @param metaData 	 *            (must be given) Used for resolving pdf directories for links. 	 * @param layoutFile 	 *            (must be given) Used for layout      * @param withPDFPreview if true, a PDF preview is included in the PreviewPanel.       * The user can override this setting by setting the config setting JabRefPreferences.PDF_PREVIEW to false.      */
+comment|/**      *       * @param panel      *            (may be null) If not given no toolbar is shown on the right      *            hand side.      * @param metaData      *            (must be given) Used for resolving pdf directories for links.      * @param layoutFile      *            (must be given) Used for layout      * @param withPDFPreview if true, a PDF preview is included in the PreviewPanel.       * The user can override this setting by setting the config setting JabRefPreferences.PDF_PREVIEW to false.      */
 DECL|method|PreviewPanel (BasePanel panel, MetaData metaData, String layoutFile, boolean withPDFPreview)
 specifier|private
 name|PreviewPanel
@@ -560,7 +560,7 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
-comment|/* 		 * If we have been given a panel and the preference option 		 * previewPrintButton is set, show the tool bar 		 */
+comment|/*          * If we have been given a panel and the preference option          * previewPrintButton is set, show the tool bar          */
 if|if
 condition|(
 name|panel
@@ -1618,7 +1618,7 @@ literal|null
 operator|)
 return|;
 block|}
-comment|/** 	 * The PreviewPanel has registered itself as an event listener with the 	 * currently displayed BibtexEntry. If the entry changes, an event is 	 * received here, and we can update the preview immediately. 	 */
+comment|/**      * The PreviewPanel has registered itself as an event listener with the      * currently displayed BibtexEntry. If the entry changes, an event is      * received here, and we can update the preview immediately.      */
 DECL|method|vetoableChange (PropertyChangeEvent evt)
 specifier|public
 name|void

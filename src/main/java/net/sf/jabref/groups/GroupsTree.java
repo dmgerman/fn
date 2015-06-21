@@ -301,7 +301,7 @@ name|minAutoscrollInterval
 init|=
 literal|50L
 decl_stmt|;
-comment|/** 	 * the point on which the cursor is currently idling during a drag 	 * operation. 	 */
+comment|/**      * the point on which the cursor is currently idling during a drag      * operation.      */
 DECL|field|idlePoint
 specifier|private
 name|Point
@@ -357,7 +357,7 @@ operator|new
 name|GroupTreeCellRenderer
 argument_list|()
 decl_stmt|;
-comment|/** 	 * @param groupSelector the parent UI component 	 */
+comment|/**      * @param groupSelector the parent UI component      */
 DECL|method|GroupsTree (GroupSelector groupSelector)
 specifier|public
 name|GroupsTree
@@ -1535,7 +1535,7 @@ block|}
 end_catch
 
 begin_function
-unit|}  	public
+unit|}      public
 DECL|method|dragExit (DropTargetEvent dte)
 name|void
 name|dragExit
@@ -2234,7 +2234,7 @@ block|}
 end_function
 
 begin_comment
-comment|/** 	 * Returns true if the node specified by path has at least one descendant 	 * that is currently expanded. 	 */
+comment|/**      * Returns true if the node specified by path has at least one descendant      * that is currently expanded.      */
 end_comment
 
 begin_function
@@ -2328,7 +2328,7 @@ block|}
 end_function
 
 begin_comment
-comment|/** 	 * Returns true if the node specified by path has at least one descendant 	 * that is currently collapsed. 	 */
+comment|/**      * Returns true if the node specified by path has at least one descendant      * that is currently collapsed.      */
 end_comment
 
 begin_function

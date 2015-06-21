@@ -218,7 +218,7 @@ name|entry
 operator|==
 literal|null
 condition|)
-return|return ;
+return|return;
 name|Object
 name|data
 init|=
@@ -329,7 +329,7 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** fills the class Vector (of IntegrityMessage Objects) which did inform about   *  failures, hints....   *  The Authors or Editors field could be invalid -> try to detect it!   *  Knuth, Donald E. and Kurt Cobain and A. Einstein = N,NNaNNaNN   */
+comment|/** fills the class Vector (of IntegrityMessage Objects) which did inform about      *  failures, hints....      *  The Authors or Editors field could be invalid -> try to detect it!      *  Knuth, Donald E. and Kurt Cobain and A. Einstein = N,NNaNNaNN      */
 DECL|method|authorNameCheck (String names, String fieldName, BibtexEntry entry)
 specifier|private
 name|void
@@ -434,7 +434,7 @@ name|mode
 operator|=
 literal|0
 expr_stmt|;
-break|break ;
+break|break;
 case|case
 literal|' '
 case|:
@@ -472,7 +472,7 @@ operator|-
 literal|1
 expr_stmt|;
 comment|// blank processed
-break|break ;
+break|break;
 case|case
 literal|'a'
 case|:
@@ -487,7 +487,7 @@ name|mode
 operator|=
 literal|2
 expr_stmt|;
-break|break ;
+break|break;
 case|case
 literal|'n'
 case|:
@@ -501,7 +501,7 @@ name|mode
 operator|=
 literal|3
 expr_stmt|;
-break|break ;
+break|break;
 case|case
 literal|'d'
 case|:
@@ -515,8 +515,8 @@ name|mode
 operator|=
 literal|5
 expr_stmt|;
-break|break ;
-default|default :
+break|break;
+default|default:
 name|mode
 operator|=
 literal|1
@@ -639,7 +639,7 @@ argument_list|)
 expr_stmt|;
 comment|//        back.add("bad end (" +fieldName +" field)");
 block|}
-comment|/*if (structure.indexOf("NN,NN")> -1)       {         messages.add( new IntegrityMessage( IntegrityMessage.NAME_SEMANTIC_WARNING,                                             entry, fieldName, null))  ;  //        back.add("something could be wrong in " +fieldName +" field") ;       } */
+comment|/*if (structure.indexOf("NN,NN")> -1)             {               messages.add( new IntegrityMessage( IntegrityMessage.NAME_SEMANTIC_WARNING,                                                   entry, fieldName, null))  ;              //        back.add("something could be wrong in " +fieldName +" field") ;             } */
 block|}
 comment|//    messages.add( new IntegrityMessage( IntegrityMessage.NAME_END_WARNING,
 comment|//                                        entry, fieldName, null))  ;
@@ -748,7 +748,7 @@ operator|--
 expr_stmt|;
 comment|//            lastWasSpace = true ;
 block|}
-break|break ;
+break|break;
 case|case
 literal|'{'
 case|:
@@ -756,13 +756,13 @@ comment|// open {
 name|mode
 operator|++
 expr_stmt|;
-break|break ;
+break|break;
 case|case
 literal|' '
 case|:
 comment|//          lastWasSpace = true ;
-break|break ;
-default|default :
+break|break;
+default|default:
 if|if
 condition|(
 name|mode
@@ -801,7 +801,7 @@ operator|>
 literal|0
 condition|)
 block|{
-comment|/*         Morten Alver (2006.10.10):          Disabling this warning because we have a feature for automatically adding         braces when saving, which makes this warning misleading. It could be modified         to suggest to use this feature if not enabled, and not give a warning if the         feature is enabled.          messages.add( new IntegrityMessage( IntegrityMessage.UPPER_AND_LOWER_HINT,                                         entry, fieldName, null))  ;*/
+comment|/*             Morten Alver (2006.10.10):              Disabling this warning because we have a feature for automatically adding             braces when saving, which makes this warning misleading. It could be modified             to suggest to use this feature if not enabled, and not give a warning if the             feature is enabled.              messages.add( new IntegrityMessage( IntegrityMessage.UPPER_AND_LOWER_HINT,                                             entry, fieldName, null))  ;*/
 block|}
 block|}
 comment|/** Checks, if the number String contains a four digit year */

@@ -1235,7 +1235,7 @@ operator|new
 name|FocusAdapter
 argument_list|()
 block|{
-comment|/** 		 * Adds the text value to the list 		 */
+comment|/**              * Adds the text value to the list              */
 specifier|public
 name|void
 name|focusLost

@@ -30,7 +30,7 @@ specifier|public
 class|class
 name|BibtexPurify
 block|{
-comment|/** 	 *  	 * @param toPurify 	 * @param warn 	 *            may-be-null 	 * @return 	 */
+comment|/**      *       * @param toPurify      * @param warn      *            may-be-null      * @return      */
 DECL|method|purify (String toPurify, Warn warn)
 specifier|public
 specifier|static

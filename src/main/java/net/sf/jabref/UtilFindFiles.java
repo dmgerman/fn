@@ -120,7 +120,7 @@ specifier|public
 class|class
 name|UtilFindFiles
 block|{
-comment|/** 	 * Searches the given directory and subdirectories for a pdf file with name 	 * as given + ".pdf" 	 */
+comment|/**      * Searches the given directory and subdirectories for a pdf file with name      * as given + ".pdf"      */
 DECL|method|findPdf (String key, String extension, String directory, OpenFileFilter off)
 specifier|public
 specifier|static
@@ -141,7 +141,7 @@ name|off
 parameter_list|)
 block|{
 comment|// String filename = key + "."+extension;
-comment|/* 		 * Simon Fischer's patch for replacing a regexp in keys before 		 * converting to filename: 		 * 		 * String regex = Globals.prefs.get("basenamePatternRegex"); if ((regex != 		 * null)&& (regex.trim().length()> 0)) { String replacement = 		 * Globals.prefs.get("basenamePatternReplacement"); key = 		 * key.replaceAll(regex, replacement); } 		 */
+comment|/*          * Simon Fischer's patch for replacing a regexp in keys before          * converting to filename:          *          * String regex = Globals.prefs.get("basenamePatternRegex"); if ((regex !=          * null)&& (regex.trim().length()> 0)) { String replacement =          * Globals.prefs.get("basenamePatternReplacement"); key =          * key.replaceAll(regex, replacement); }          */
 if|if
 condition|(
 operator|!
@@ -388,7 +388,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/** 	 * New version of findPdf that uses findFiles. 	 * 	 * The search pattern will be read from the preferences. 	 * 	 * The [extension]-tags in this pattern will be replace by the given 	 * extension parameter. 	 * 	 */
+comment|/**      * New version of findPdf that uses findFiles.      *      * The search pattern will be read from the preferences.      *      * The [extension]-tags in this pattern will be replace by the given      * extension parameter.      *      */
 DECL|method|findPdf (BibtexEntry entry, String extension, String directory)
 specifier|public
 specifier|static
@@ -421,7 +421,7 @@ block|}
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Convenience method for findPDF. Can search multiple PDF directories. 	 */
+comment|/**      * Convenience method for findPDF. Can search multiple PDF directories.      */
 DECL|method|findPdf (BibtexEntry entry, String extension, String[] directories)
 specifier|public
 specifier|static
@@ -621,7 +621,7 @@ name|directories
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Searches the given directory and file name pattern for a file for the 	 * bibtexentry. 	 * 	 * Used to fix: 	 * 	 * http://sourceforge.net/tracker/index.php?func=detail&aid=1503410&group_id=92314&atid=600309 	 * 	 * Requirements: 	 *  - Be able to find the associated PDF in a set of given directories. 	 *  - Be able to return a relative path or absolute path. 	 *  - Be fast. 	 *  - Allow for flexible naming schemes in the PDFs. 	 * 	 * Syntax scheme for file: 	 *<ul> 	 *<li>* Any subDir</li> 	 *<li>** Any subDir (recursiv)</li> 	 *<li>[key] Key from bibtex file and database</li> 	 *<li>.* Anything else is taken to be a Regular expression.</li> 	 *</ul> 	 * 	 * @param entry 	 *            non-null 	 * @param database 	 *            non-null 	 * @param directory 	 *            A set of root directories to start the search from. Paths are 	 *            returned relative to these directories if relative is set to 	 *            true. These directories will not be expanded or anything. Use 	 *            the file attribute for this. 	 * @param file 	 *            non-null 	 * 	 * @param relative 	 *            whether to return relative file paths or absolute ones 	 * 	 * @return Will return the first file found to match the given criteria or 	 *         null if none was found. 	 */
+comment|/**      * Searches the given directory and file name pattern for a file for the      * bibtexentry.      *      * Used to fix:      *      * http://sourceforge.net/tracker/index.php?func=detail&aid=1503410&group_id=92314&atid=600309      *      * Requirements:      *  - Be able to find the associated PDF in a set of given directories.      *  - Be able to return a relative path or absolute path.      *  - Be fast.      *  - Allow for flexible naming schemes in the PDFs.      *      * Syntax scheme for file:      *<ul>      *<li>* Any subDir</li>      *<li>** Any subDir (recursiv)</li>      *<li>[key] Key from bibtex file and database</li>      *<li>.* Anything else is taken to be a Regular expression.</li>      *</ul>      *      * @param entry      *            non-null      * @param database      *            non-null      * @param directory      *            A set of root directories to start the search from. Paths are      *            returned relative to these directories if relative is set to      *            true. These directories will not be expanded or anything. Use      *            the file attribute for this.      * @param file      *            non-null      *      * @param relative      *            whether to return relative file paths or absolute ones      *      * @return Will return the first file found to match the given criteria or      *         null if none was found.      */
 DECL|method|findFile (BibtexEntry entry, BibtexDatabase database, String[] directory, String file, boolean relative)
 specifier|public
 specifier|static
@@ -685,7 +685,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** 	 * Convenience function for absolute search. 	 * 	 * Uses findFile(BibtexEntry, BibtexDatabase, (String)null, String, false). 	 */
+comment|/**      * Convenience function for absolute search.      *      * Uses findFile(BibtexEntry, BibtexDatabase, (String)null, String, false).      */
 DECL|method|findFile (BibtexEntry entry, BibtexDatabase database, String file)
 specifier|public
 specifier|static
@@ -720,7 +720,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Internal Version of findFile, which also accepts a current directory to 	 * base the search on. 	 * 	 */
+comment|/**      * Internal Version of findFile, which also accepts a current directory to      * base the search on.      *      */
 DECL|method|findFile (BibtexEntry entry, BibtexDatabase database, String directory, String file, boolean relative)
 specifier|public
 specifier|static
@@ -821,7 +821,7 @@ condition|)
 block|{
 try|try
 block|{
-comment|/** 				 * [ 1601651 ] PDF subdirectory - missing first character 				 * 				 * http://sourceforge.net/tracker/index.php?func=detail&aid=1601651&group_id=92314&atid=600306 				 */
+comment|/**                  * [ 1601651 ] PDF subdirectory - missing first character                  *                  * http://sourceforge.net/tracker/index.php?func=detail&aid=1601651&group_id=92314&atid=600306                  */
 comment|// Changed by M. Alver 2007.01.04:
 comment|// Remove first character if it is a directory separator character:
 name|String
@@ -893,7 +893,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** 	 * The actual work-horse. Will find absolute filepaths starting from the 	 * given directory using the given regular expression string for search. 	 */
+comment|/**      * The actual work-horse. Will find absolute filepaths starting from the      * given directory using the given regular expression string for search.      */
 DECL|method|findFile (BibtexEntry entry, BibtexDatabase database, File directory, String file)
 specifier|protected
 specifier|static

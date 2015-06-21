@@ -153,7 +153,7 @@ name|content
 argument_list|)
 expr_stmt|;
 comment|// Listen for undo and redo events
-comment|/* 		 * getDocument().addUndoableEditListener(new UndoableEditListener() { 		 * public void undoableEditHappened(UndoableEditEvent evt) { 		 * undo.addEdit(evt.getEdit()); } }); 		 */
+comment|/*          * getDocument().addUndoableEditListener(new UndoableEditListener() {          * public void undoableEditHappened(UndoableEditEvent evt) {          * undo.addEdit(evt.getEdit()); } });          */
 name|updateFont
 argument_list|()
 expr_stmt|;
@@ -283,7 +283,7 @@ name|getPreferredSize
 argument_list|()
 return|;
 block|}
-comment|/* 	 * public void paint(Graphics g) { Graphics2D g2 = (Graphics2D) g; if 	 * (antialias) g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, 	 * RenderingHints.VALUE_ANTIALIAS_ON); super.paint(g2); } 	 */
+comment|/*      * public void paint(Graphics g) { Graphics2D g2 = (Graphics2D) g; if      * (antialias) g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,      * RenderingHints.VALUE_ANTIALIAS_ON); super.paint(g2); }      */
 DECL|method|getFieldName ()
 specifier|public
 name|String
@@ -493,7 +493,7 @@ name|void
 name|undo
 parameter_list|()
 block|{
-comment|/* 		 * try { if (undo.canUndo()) { undo.undo(); } } catch 		 * (CannotUndoException e) { } 		 */
+comment|/*          * try { if (undo.canUndo()) { undo.undo(); } } catch          * (CannotUndoException e) { }          */
 block|}
 DECL|method|hasRedoInformation ()
 specifier|public
@@ -512,7 +512,7 @@ name|void
 name|redo
 parameter_list|()
 block|{
-comment|/* 		 * try { if (undo.canRedo()) { undo.redo(); } } catch 		 * (CannotUndoException e) { } 		 */
+comment|/*          * try { if (undo.canRedo()) { undo.redo(); } } catch          * (CannotUndoException e) { }          */
 block|}
 DECL|method|addUndoableEditListener (UndoableEditListener listener)
 specifier|public

@@ -115,8 +115,8 @@ specifier|private
 name|String
 name|undoText
 decl_stmt|;
-comment|/** 	 *  	 * @param nullFieldIfValueIsTheSame - false also causes that doneTextPattern has two place holders %0 for the value and %1 for the sum of entries 	 * @param doneTextPattern - the pattern to use to update status information shown in MainFrame 	 */
-DECL|method|SpecialFieldAction ( JabRefFrame frame, SpecialField c, String value, boolean nullFieldIfValueIsTheSame, String undoText, String doneTextPattern )
+comment|/**      *       * @param nullFieldIfValueIsTheSame - false also causes that doneTextPattern has two place holders %0 for the value and %1 for the sum of entries      * @param doneTextPattern - the pattern to use to update status information shown in MainFrame      */
+DECL|method|SpecialFieldAction ( JabRefFrame frame, SpecialField c, String value, boolean nullFieldIfValueIsTheSame, String undoText, String doneTextPattern)
 specifier|public
 name|SpecialFieldAction
 parameter_list|(

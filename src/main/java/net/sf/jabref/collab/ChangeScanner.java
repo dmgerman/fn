@@ -1606,7 +1606,7 @@ argument_list|(
 name|ec
 argument_list|)
 expr_stmt|;
-comment|/*NamedCompound ce = new NamedCompound("Removed entry");           ce.addEdit(new UndoableInsertEntry(inMem, tmp.getEntryAt(piv1), panel));           ce.end();           changes.add(ce);*/
+comment|/*NamedCompound ce = new NamedCompound("Removed entry");                     ce.addEdit(new UndoableInsertEntry(inMem, tmp.getEntryAt(piv1), panel));                     ce.end();                     changes.add(ce);*/
 block|}
 block|}
 block|}
@@ -1739,7 +1739,7 @@ name|ec
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*NamedCompound ce = new NamedCompound("Added entry");           ce.addEdit(new UndoableRemoveEntry(inMem, disk.getEntryAt(i), panel));           ce.end();           changes.add(ce);*/
+comment|/*NamedCompound ce = new NamedCompound("Added entry");                     ce.addEdit(new UndoableRemoveEntry(inMem, disk.getEntryAt(i), panel));                     ce.end();                     changes.add(ce);*/
 block|}
 block|}
 comment|//System.out.println("Suspected new entries in file: "+(disk.getEntryCount()-used.size()));

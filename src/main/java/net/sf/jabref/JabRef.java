@@ -837,7 +837,7 @@ operator|.
 name|setLanguageDependentDefaultValues
 argument_list|()
 expr_stmt|;
-comment|/* 		 * The Plug-in System is started automatically on the first call to 		 * PluginCore.getManager(). 		 *  		 * Plug-ins are activated on the first call to their getInstance method. 		 */
+comment|/*          * The Plug-in System is started automatically on the first call to          * PluginCore.getManager().          *           * Plug-ins are activated on the first call to their getInstance method.          */
 comment|// Update which fields should be treated as numeric, based on preferences:
 name|BibtexFields
 operator|.
@@ -910,7 +910,7 @@ name|args
 argument_list|)
 condition|)
 block|{
-comment|/* 					 * We have successfully sent our command line options 					 * through the socket to another JabRef instance. So we 					 * assume it's all taken care of, and quit. 					 */
+comment|/*                      * We have successfully sent our command line options                      * through the socket to another JabRef instance. So we                      * assume it's all taken care of, and quit.                      */
 name|System
 operator|.
 name|out
@@ -945,7 +945,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/* 		 * See if the user has a personal journal list set up. If so, add these 		 * journal names and abbreviations to the list: 		 */
+comment|/*          * See if the user has a personal journal list set up. If so, add these          * journal names and abbreviations to the list:          */
 name|String
 name|personalJournalList
 init|=
@@ -4420,7 +4420,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
-comment|/*JOptionPane.showMessageDialog(null, Globals.lang("Please note that this "                 +"is an early beta version. Do not use it without backing up your files!"),                     Globals.lang("Beta version"), JOptionPane.WARNING_MESSAGE);*/
+comment|/*JOptionPane.showMessageDialog(null, Globals.lang("Please note that this "             +"is an early beta version. Do not use it without backing up your files!"),                 Globals.lang("Beta version"), JOptionPane.WARNING_MESSAGE);*/
 comment|// Start auto save timer:
 if|if
 condition|(

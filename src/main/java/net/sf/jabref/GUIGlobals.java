@@ -1310,7 +1310,7 @@ literal|"fieldEditorTextColor"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Read either the default icon theme, or a custom one. If loading of the custom theme 	 * fails, try to fall back on the default theme. 	 */
+comment|/**      * Read either the default icon theme, or a custom one. If loading of the custom theme      * fails, try to fall back on the default theme.      */
 DECL|method|setUpIconTheme ()
 specifier|public
 specifier|static
@@ -1521,7 +1521,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 	 * Looks up the URL for the image representing the given function, in the resource 	 * file listing images. 	 * @param name The name of the icon, such as "open", "save", "saveAs" etc. 	 * @return The URL to the actual image to use. 	 */
+comment|/**      * Looks up the URL for the image representing the given function, in the resource      * file listing images.      * @param name The name of the icon, such as "open", "save", "saveAs" etc.      * @return The URL to the actual image to use.      */
 DECL|method|getIconUrl (String name)
 specifier|public
 specifier|static
@@ -1587,7 +1587,7 @@ parameter_list|(
 name|MalformedURLException
 name|ignored
 parameter_list|)
-block|{ 				}
+block|{                 }
 if|if
 condition|(
 name|url
@@ -1623,7 +1623,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** 	 * Constructs an ImageIcon for the given function, using the image specified in 	 * the resource files resource/Icons_en.properties. 	 * @param name The name of the icon, such as "open", "save", "saveAs" etc. 	 * @return The ImageIcon for the function. 	 */
+comment|/**      * Constructs an ImageIcon for the given function, using the image specified in      * the resource files resource/Icons_en.properties.      * @param name The name of the icon, such as "open", "save", "saveAs" etc.      * @return The ImageIcon for the function.      */
 DECL|method|getImage (String name)
 specifier|public
 specifier|static
@@ -1681,7 +1681,7 @@ name|iconMap
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Read a typical java property file into a HashMap. Currently doesn't support escaping 	 * of the '=' character - it simply looks for the first '=' to determine where the key ends. 	 * Both the key and the value is trimmed for whitespace at the ends. 	 * @param file The URL to read information from. 	 * @param prefix A String to prefix to all values read. Can represent e.g. the directory 	 * where icon files are to be found. 	 * @return A HashMap containing all key-value pairs found. 	 * @throws IOException 	 */
+comment|/**      * Read a typical java property file into a HashMap. Currently doesn't support escaping      * of the '=' character - it simply looks for the first '=' to determine where the key ends.      * Both the key and the value is trimmed for whitespace at the ends.      * @param file The URL to read information from.      * @param prefix A String to prefix to all values read. Can represent e.g. the directory      * where icon files are to be found.      * @return A HashMap containing all key-value pairs found.      * @throws IOException      */
 DECL|method|readIconThemeFile (URL file, String prefix)
 specifier|private
 specifier|static
@@ -1941,7 +1941,7 @@ name|middle
 operator|)
 return|;
 block|}
-comment|/** 	 * Perform initializations that are only used in graphical mode. This is to prevent 	 * the "Xlib: connection to ":0.0" refused by server" error when access to the X server 	 * on Un*x is unavailable. 	 */
+comment|/**      * Perform initializations that are only used in graphical mode. This is to prevent      * the "Xlib: connection to ":0.0" refused by server" error when access to the X server      * on Un*x is unavailable.      */
 DECL|method|init ()
 specifier|public
 specifier|static

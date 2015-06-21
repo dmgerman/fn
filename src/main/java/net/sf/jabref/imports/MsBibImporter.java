@@ -215,7 +215,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/** 	 * String used to identify this import filter on the command line. 	 * @return "msbib" 	 */
+comment|/**      * String used to identify this import filter on the command line.      * @return "msbib"      */
 DECL|method|getCLIid ()
 specifier|public
 name|String

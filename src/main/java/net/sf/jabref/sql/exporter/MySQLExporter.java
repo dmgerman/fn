@@ -112,8 +112,8 @@ DECL|method|MySQLExporter ()
 specifier|private
 name|MySQLExporter
 parameter_list|()
-block|{ 	}
-comment|/** 	 *  	 * @return The singleton instance of the MySQLExporter 	 */
+block|{     }
+comment|/**      *       * @return The singleton instance of the MySQLExporter      */
 DECL|method|getInstance ()
 specifier|public
 specifier|static
@@ -239,7 +239,7 @@ return|return
 name|conn
 return|;
 block|}
-comment|/** 	 * Generates SQLnecessary to create all tables in a MySQL database, and 	 * writes it to appropriate output. 	 *  	 * @param out 	 *            The output (PrintStream or Connection) object to which the DML 	 *            should be written. 	 */
+comment|/**      * Generates SQLnecessary to create all tables in a MySQL database, and      * writes it to appropriate output.      *       * @param out      *            The output (PrintStream or Connection) object to which the DML      *            should be written.      */
 annotation|@
 name|Override
 DECL|method|createTables (Object out)

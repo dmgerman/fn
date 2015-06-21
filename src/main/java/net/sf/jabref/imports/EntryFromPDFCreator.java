@@ -287,7 +287,7 @@ return|return
 name|pdfFileType
 return|;
 block|}
-comment|/* 	 * (non-Javadoc) 	 *  	 * @see net.sf.jabref.imports.EntryFromFileCreator#accept(java.io.File) 	 *  	 * Accepts all Files having as suffix ".PDF" (in ignore case mode). 	 */
+comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.imports.EntryFromFileCreator#accept(java.io.File)      *       * Accepts all Files having as suffix ".PDF" (in ignore case mode).      */
 annotation|@
 name|Override
 DECL|method|accept (File f)
@@ -419,9 +419,9 @@ argument_list|(
 literal|0
 argument_list|)
 return|;
-comment|/*addEntryDataFromPDDocumentInformation(pdfFile, entry); 		addEntyDataFromXMP(pdfFile, entry);  		if (entry.getField("title") == null) { 			entry.setField("title", pdfFile.getName()); 		}  		return entry;*/
+comment|/*addEntryDataFromPDDocumentInformation(pdfFile, entry);         addEntyDataFromXMP(pdfFile, entry);          if (entry.getField("title") == null) {         	entry.setField("title", pdfFile.getName());         }          return entry;*/
 block|}
-comment|/** Adds entry data read from the PDDocument information of the file. 	 * @param pdfFile 	 * @param entry 	 */
+comment|/** Adds entry data read from the PDDocument information of the file.      * @param pdfFile      * @param entry      */
 DECL|method|addEntryDataFromPDDocumentInformation (File pdfFile, BibtexEntry entry)
 specifier|private
 name|void
@@ -601,7 +601,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/** 	 * Adds all data Found in all the entrys of this XMP file to the given 	 * entry. This was implemented without having much knowledge of the XMP 	 * format. 	 *  	 * @param aFile 	 * @param entry 	 */
+comment|/**      * Adds all data Found in all the entrys of this XMP file to the given      * entry. This was implemented without having much knowledge of the XMP      * format.      *       * @param aFile      * @param entry      */
 DECL|method|addEntyDataFromXMP (File aFile, BibtexEntry entry)
 specifier|private
 name|void

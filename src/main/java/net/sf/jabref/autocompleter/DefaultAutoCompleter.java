@@ -67,7 +67,7 @@ specifier|public
 name|String
 name|_fieldName
 decl_stmt|;
-comment|/** 	 * @see AutoCompleterFactory 	 */
+comment|/**      * @see AutoCompleterFactory      */
 DECL|method|DefaultAutoCompleter (String fieldName)
 specifier|protected
 name|DefaultAutoCompleter

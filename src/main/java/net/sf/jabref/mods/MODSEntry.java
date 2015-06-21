@@ -1025,7 +1025,7 @@ operator|.
 name|getName
 argument_list|()
 decl_stmt|;
-comment|/** 		 *<pre> String result; if (bibtexType.equals("Mastersthesis")) result = 		 * "theses"; else result = "conference publication"; // etc...</pre> 		 */
+comment|/**          *<pre> String result; if (bibtexType.equals("Mastersthesis")) result =          * "theses"; else result = "conference publication"; // etc...</pre>          */
 return|return
 name|bibtexType
 return|;
@@ -1831,7 +1831,7 @@ throw|;
 block|}
 comment|// return result;
 block|}
-comment|/** 	 * This method ensures that the output String has only      * valid XML unicode characters as specified by the      * XML 1.0 standard. For reference, please see      *<a href="http://www.w3.org/TR/2000/REC-xml-20001006#NT-Char">the      * standard</a>. This method will return an empty      * String if the input is null or empty.      *       * URL: http://cse-mjmcl.cse.bris.ac.uk/blog/2007/02/14/1171465494443.html      *      * @param in The String whose non-valid characters we want to remove.      * @return The in String, stripped of non-valid characters.      */
+comment|/**      * This method ensures that the output String has only      * valid XML unicode characters as specified by the      * XML 1.0 standard. For reference, please see      *<a href="http://www.w3.org/TR/2000/REC-xml-20001006#NT-Char">the      * standard</a>. This method will return an empty      * String if the input is null or empty.      *       * URL: http://cse-mjmcl.cse.bris.ac.uk/blog/2007/02/14/1171465494443.html      *      * @param in The String whose non-valid characters we want to remove.      * @return The in String, stripped of non-valid characters.      */
 DECL|method|stripNonValidXMLCharacters (String in)
 specifier|public
 name|String
@@ -1977,7 +1977,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/* 	 * render as XML 	 *  	 */
+comment|/*      * render as XML      *       */
 DECL|method|toString ()
 specifier|public
 name|String

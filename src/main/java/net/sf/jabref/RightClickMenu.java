@@ -360,8 +360,8 @@ name|groupRemove
 decl_stmt|,
 name|groupMoveTo
 decl_stmt|;
-name|JCheckBoxMenuItem
 DECL|field|floatMarked
+name|JCheckBoxMenuItem
 name|floatMarked
 init|=
 operator|new
@@ -659,7 +659,7 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-comment|/*SwingUtilities.invokeLater(new Runnable () {              public void run() {*/
+comment|/*SwingUtilities.invokeLater(new Runnable () {                 public void run() {*/
 try|try
 block|{
 name|panel
@@ -687,7 +687,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*}                }); */
+comment|/*}                 }); */
 block|}
 block|}
 argument_list|)

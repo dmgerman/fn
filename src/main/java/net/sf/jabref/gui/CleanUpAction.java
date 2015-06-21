@@ -2486,7 +2486,7 @@ name|unblock
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * Converts the text in 1st, 2nd, ... to real superscripts by wrapping in \textsuperscript{st}, ... 	 */
+comment|/**      * Converts the text in 1st, 2nd, ... to real superscripts by wrapping in \textsuperscript{st}, ...      */
 DECL|method|doCleanUpSuperscripts (BibtexEntry entry, NamedCompound ce)
 specifier|private
 name|void
@@ -3830,7 +3830,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Converts HTML code to LaTeX code 	 */
+comment|/**      * Converts HTML code to LaTeX code      */
 DECL|method|doConvertHTML (BibtexEntry entry, NamedCompound ce)
 specifier|private
 name|void
@@ -3925,7 +3925,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Converts Unicode characters to LaTeX code 	 */
+comment|/**      * Converts Unicode characters to LaTeX code      */
 DECL|method|doConvertUnicode (BibtexEntry entry, NamedCompound ce)
 specifier|private
 name|void
@@ -4036,7 +4036,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 	 * Adds curly brackets {} around keywords 	 */
+comment|/**      * Adds curly brackets {} around keywords      */
 DECL|method|doConvertCase (BibtexEntry entry, NamedCompound ce)
 specifier|private
 name|void
@@ -4428,7 +4428,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Converts to BibLatex format 	 */
+comment|/**      * Converts to BibLatex format      */
 DECL|method|doConvertToBiblatex (BibtexEntry entry, NamedCompound ce)
 specifier|private
 name|void

@@ -158,7 +158,7 @@ name|m_pattern
 init|=
 literal|null
 decl_stmt|;
-comment|/** 	 * Creates a KeywordGroup with the specified properties. 	 */
+comment|/**      * Creates a KeywordGroup with the specified properties.      */
 DECL|method|KeywordGroup (String name, String searchField, String searchExpression, boolean caseSensitive, boolean regExp, int context)
 specifier|public
 name|KeywordGroup
@@ -254,7 +254,7 @@ name|CASE_INSENSITIVE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Parses s and recreates the KeywordGroup from it. 	 *  	 * @param s 	 *            The String representation obtained from 	 *            KeywordGroup.toString() 	 */
+comment|/**      * Parses s and recreates the KeywordGroup from it.      *       * @param s      *            The String representation obtained from      *            KeywordGroup.toString()      */
 DECL|method|fromString (String s, BibtexDatabase db, int version)
 specifier|public
 specifier|static
@@ -616,7 +616,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/** 	 * @see net.sf.jabref.groups.AbstractGroup#getSearchRule() 	 */
+comment|/**      * @see net.sf.jabref.groups.AbstractGroup#getSearchRule()      */
 DECL|method|getSearchRule ()
 specifier|public
 name|SearchRule
@@ -627,7 +627,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/** 	 * Returns a String representation of this object that can be used to 	 * reconstruct it. 	 */
+comment|/**      * Returns a String representation of this object that can be used to      * reconstruct it.      */
 DECL|method|toString ()
 specifier|public
 name|String
@@ -1108,7 +1108,7 @@ name|getHierarchicalContext
 argument_list|()
 return|;
 block|}
-comment|/* 	 * (non-Javadoc) 	 *  	 * @see net.sf.jabref.groups.AbstractGroup#contains(java.util.Map, 	 *      net.sf.jabref.BibtexEntry) 	 */
+comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.groups.AbstractGroup#contains(java.util.Map,      *      net.sf.jabref.BibtexEntry)      */
 DECL|method|contains (Map<String, String> searchOptions, BibtexEntry entry)
 specifier|public
 name|boolean
@@ -1330,7 +1330,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/** 	 * Removes matches of searchString in the entry's field. This is only 	 * possible if the search expression is not a regExp. 	 */
+comment|/**      * Removes matches of searchString in the entry's field. This is only      * possible if the search expression is not a regExp.      */
 DECL|method|removeMatches (BibtexEntry entry)
 specifier|private
 name|void

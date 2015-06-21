@@ -2282,7 +2282,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**  * Cycle through all databases, and make sure everything is updated with  * the new type customization. This includes making sure all entries have  * a valid type, that no obsolete entry editors are around, and that  * the right-click menus' change type menu is up-to-date.  */
+comment|/**      * Cycle through all databases, and make sure everything is updated with      * the new type customization. This includes making sure all entries have      * a valid type, that no obsolete entry editors are around, and that      * the right-click menus' change type menu is up-to-date.      */
 DECL|method|updateTypesForEntries (String typeName)
 specifier|private
 name|void

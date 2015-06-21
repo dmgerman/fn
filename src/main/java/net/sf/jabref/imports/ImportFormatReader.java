@@ -312,7 +312,7 @@ name|BibtexImporter
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|/**      * Get import formats that are plug-ins      */
+comment|/**          * Get import formats that are plug-ins          */
 name|JabRefPlugin
 name|jabrefPlugin
 init|=
@@ -369,7 +369,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 	 * Get custom import formats 	 */
+comment|/**          * Get custom import formats          */
 for|for
 control|(
 name|CustomImportList
@@ -432,7 +432,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**    * Format for a given CLI-ID.    *     *<p>Will return the first format according to the default-order of    * format that matches the given ID.</p>    *     * @param cliId  CLI-Id    * @return  Import Format or<code>null</code> if none matches    */
+comment|/**      * Format for a given CLI-ID.      *       *<p>Will return the first format according to the default-order of      * format that matches the given ID.</p>      *       * @param cliId  CLI-Id      * @return  Import Format or<code>null</code> if none matches      */
 DECL|method|getByCliId (String cliId)
 specifier|public
 name|ImportFormat
@@ -788,7 +788,7 @@ return|return
 name|database
 return|;
 block|}
-comment|/**    * All custom importers.    *     *<p>Elements are in default order.</p>    *     * @return all custom importers, elements are of type InputFormat    */
+comment|/**      * All custom importers.      *       *<p>Elements are in default order.</p>      *       * @return all custom importers, elements are of type InputFormat      */
 DECL|method|getCustomImportFormats ()
 specifier|public
 name|SortedSet
@@ -840,7 +840,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**    * All built-in importers.    *     *<p>Elements are in default order.</p>    *     * @return all custom importers, elements are of type InputFormat    */
+comment|/**      * All built-in importers.      *       *<p>Elements are in default order.</p>      *       * @return all custom importers, elements are of type InputFormat      */
 DECL|method|getBuiltInInputFormats ()
 specifier|public
 name|SortedSet
@@ -893,7 +893,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/** 	 * All importers. 	 *  	 *<p> 	 * Elements are in default order. 	 *</p> 	 *  	 * @return all custom importers, elements are of type InputFormat 	 */
+comment|/**      * All importers.      *       *<p>      * Elements are in default order.      *</p>      *       * @return all custom importers, elements are of type InputFormat      */
 DECL|method|getImportFormats ()
 specifier|public
 name|SortedSet
@@ -909,7 +909,7 @@ operator|.
 name|formats
 return|;
 block|}
-comment|/**    * Human readable list of all known import formats (name and CLI Id).    *     *<p>List is in default-order.</p>    *     * @return  human readable list of all known import formats    */
+comment|/**      * Human readable list of all known import formats (name and CLI Id).      *       *<p>List is in default-order.</p>      *       * @return  human readable list of all known import formats      */
 DECL|method|getImportFormatList ()
 specifier|public
 name|String
@@ -1730,7 +1730,7 @@ return|return
 name|reader
 return|;
 block|}
-comment|/**    * Receives an ArrayList of BibtexEntry instances, iterates through them, and    * removes all entries that have no fields set. This is useful for rooting out    * an unsucessful import (wrong format) that returns a number of empty entries.    */
+comment|/**      * Receives an ArrayList of BibtexEntry instances, iterates through them, and      * removes all entries that have no fields set. This is useful for rooting out      * an unsucessful import (wrong format) that returns a number of empty entries.      */
 DECL|method|purgeEmptyEntries (Collection<BibtexEntry> entries)
 specifier|public
 specifier|static
@@ -1833,7 +1833,7 @@ name|parserResult
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Tries to import a file by iterating through the available import filters, 	 * and keeping the import that seems most promising. 	 *  	 * If all fails this method attempts to read this file as bibtex. 	 *  	 * @throws IOException  	 */
+comment|/**      * Tries to import a file by iterating through the available import filters,      * and keeping the import that seems most promising.      *       * If all fails this method attempts to read this file as bibtex.      *       * @throws IOException       */
 DECL|method|importUnknownFormat (String filename)
 specifier|public
 name|UnknownFormatImport

@@ -168,7 +168,7 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{          }
+block|{      }
 DECL|method|mouseEntered (MouseEvent e)
 specifier|public
 name|void
@@ -223,7 +223,7 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{         }
+block|{     }
 block|}
 end_class
 

@@ -171,7 +171,7 @@ return|return
 literal|"INSPEC"
 return|;
 block|}
-comment|/*    *  (non-Javadoc)    * @see net.sf.jabref.imports.ImportFormat#getCLIId()    */
+comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
 DECL|method|getCLIId ()
 specifier|public
 name|String
@@ -182,7 +182,7 @@ return|return
 literal|"inspec"
 return|;
 block|}
-comment|/**    * Check whether the source is in the correct format for this importer.    */
+comment|/**      * Check whether the source is in the correct format for this importer.      */
 DECL|method|isRecognizedFormat (InputStream stream)
 specifier|public
 name|boolean

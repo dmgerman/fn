@@ -30,7 +30,7 @@ specifier|public
 interface|interface
 name|SearchRule
 block|{
-DECL|method|applyRule (Map<String, String> searchStrings,BibtexEntry bibtexEntry)
+DECL|method|applyRule (Map<String, String> searchStrings, BibtexEntry bibtexEntry)
 specifier|public
 name|int
 name|applyRule

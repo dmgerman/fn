@@ -2232,7 +2232,7 @@ name|getAuthorsNatbib
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|/* 		 * [ 1465610 ] (Double-)Names containing hyphen (-) not handled correctly 		 */
+comment|/*          * [ 1465610 ] (Double-)Names containing hyphen (-) not handled correctly          */
 name|assertEquals
 argument_list|(
 literal|"Last-Name et al."

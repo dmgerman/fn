@@ -1794,7 +1794,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/** insert a field into the internal list */
-DECL|method|add ( BibtexSingleField field )
+DECL|method|add (BibtexSingleField field)
 specifier|private
 name|void
 name|add
@@ -1822,7 +1822,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** read a xml definiton file and put only NEW fields into the field list */
-DECL|method|readXML ( String resName )
+DECL|method|readXML (String resName)
 specifier|private
 name|void
 name|readXML
@@ -1969,7 +1969,7 @@ block|}
 comment|// --------------------------------------------------------------------------
 comment|//  the "static area"
 comment|// --------------------------------------------------------------------------
-DECL|method|getField ( String name )
+DECL|method|getField (String name)
 specifier|private
 specifier|static
 name|BibtexSingleField
@@ -2004,7 +2004,7 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|getFieldExtras ( String name )
+DECL|method|getFieldExtras (String name)
 specifier|public
 specifier|static
 name|String
@@ -2078,7 +2078,7 @@ operator|.
 name|STANDARD_EDITOR
 return|;
 block|}
-DECL|method|getFieldWeight ( String name )
+DECL|method|getFieldWeight (String name)
 specifier|public
 specifier|static
 name|double
@@ -2116,7 +2116,7 @@ operator|.
 name|DEFAULT_FIELD_WEIGHT
 return|;
 block|}
-DECL|method|setFieldWeight ( String fieldName, double weight )
+DECL|method|setFieldWeight (String fieldName, double weight)
 specifier|public
 specifier|static
 name|void
@@ -2153,7 +2153,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|getFieldLength ( String name )
+DECL|method|getFieldLength (String name)
 specifier|public
 specifier|static
 name|int
@@ -2192,7 +2192,7 @@ name|DEFAULT_FIELD_LENGTH
 return|;
 block|}
 comment|// returns an alternative name for the given fieldname
-DECL|method|getFieldDisplayName ( String fieldName )
+DECL|method|getFieldDisplayName (String fieldName)
 specifier|public
 specifier|static
 name|String
@@ -2228,7 +2228,7 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|isWriteableField ( String field )
+DECL|method|isWriteableField (String field)
 specifier|public
 specifier|static
 name|boolean
@@ -2264,7 +2264,7 @@ return|return
 literal|true
 return|;
 block|}
-DECL|method|isDisplayableField ( String field )
+DECL|method|isDisplayableField (String field)
 specifier|public
 specifier|static
 name|boolean
@@ -2300,8 +2300,8 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**    * Returns true if the given field is a standard Bibtex field.    *    * @param field a<code>String</code> value    * @return a<code>boolean</code> value    */
-DECL|method|isStandardField ( String field )
+comment|/**      * Returns true if the given field is a standard Bibtex field.      *      * @param field a<code>String</code> value      * @return a<code>boolean</code> value      */
+DECL|method|isStandardField (String field)
 specifier|public
 specifier|static
 name|boolean
@@ -2337,7 +2337,7 @@ return|return
 literal|false
 return|;
 block|}
-DECL|method|isNumeric ( String field )
+DECL|method|isNumeric (String field)
 specifier|public
 specifier|static
 name|boolean
@@ -2460,7 +2460,7 @@ argument_list|)
 return|;
 block|}
 comment|/** returns the fieldname of the entry at index t */
-DECL|method|getFieldName ( int t )
+DECL|method|getFieldName (int t)
 specifier|public
 specifier|static
 name|String
@@ -2495,7 +2495,7 @@ operator|.
 name|length
 return|;
 block|}
-comment|/*      public static int getPreferredFieldLength(String name) {      int l = DEFAULT_FIELD_LENGTH;      Object o = fieldLength.get(name.toLowerCase());      if (o != null)      l = ((Integer)o).intValue();      return l;      }*/
+comment|/*        public static int getPreferredFieldLength(String name) {        int l = DEFAULT_FIELD_LENGTH;        Object o = fieldLength.get(name.toLowerCase());        if (o != null)        l = ((Integer)o).intValue();        return l;        }*/
 comment|// --------------------------------------------------------------------------
 comment|// a container class for all properties of a bibtex-field
 comment|// --------------------------------------------------------------------------
@@ -2612,7 +2612,7 @@ comment|// a Hashmap for a lot of additional "not standard" properties
 comment|// todo: add the handling in a key=value manner
 comment|// private HashMap props = new HashMap() ;
 comment|// some constructors ;-)
-DECL|method|BibtexSingleField ( String fieldName )
+DECL|method|BibtexSingleField (String fieldName)
 specifier|public
 name|BibtexSingleField
 parameter_list|(
@@ -2625,7 +2625,7 @@ operator|=
 name|fieldName
 expr_stmt|;
 block|}
-DECL|method|BibtexSingleField ( String fieldName, boolean pStandard )
+DECL|method|BibtexSingleField (String fieldName, boolean pStandard)
 specifier|public
 name|BibtexSingleField
 parameter_list|(
@@ -2648,7 +2648,7 @@ name|STANDARD
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BibtexSingleField ( String fieldName, boolean pStandard, double pWeight)
+DECL|method|BibtexSingleField (String fieldName, boolean pStandard, double pWeight)
 specifier|public
 name|BibtexSingleField
 parameter_list|(
@@ -2678,7 +2678,7 @@ operator|=
 name|pWeight
 expr_stmt|;
 block|}
-DECL|method|BibtexSingleField ( String fieldName, boolean pStandard, int pLength)
+DECL|method|BibtexSingleField (String fieldName, boolean pStandard, int pLength)
 specifier|public
 name|BibtexSingleField
 parameter_list|(
@@ -2708,7 +2708,7 @@ operator|=
 name|pLength
 expr_stmt|;
 block|}
-DECL|method|BibtexSingleField ( String fieldName, boolean pStandard, double pWeight, int pLength)
+DECL|method|BibtexSingleField (String fieldName, boolean pStandard, double pWeight, int pLength)
 specifier|public
 name|BibtexSingleField
 parameter_list|(
@@ -2746,7 +2746,7 @@ name|pLength
 expr_stmt|;
 block|}
 comment|/** the constructor reads all neccessary data from the xml file */
-DECL|method|BibtexSingleField ( TXMLReader reader, Element node)
+DECL|method|BibtexSingleField (TXMLReader reader, Element node)
 specifier|public
 name|BibtexSingleField
 parameter_list|(
@@ -2955,7 +2955,7 @@ expr_stmt|;
 block|}
 comment|// -----------------------------------------------------------------------
 comment|// -----------------------------------------------------------------------
-DECL|method|setFlag ( boolean onOff, int flagID)
+DECL|method|setFlag (boolean onOff, int flagID)
 specifier|private
 name|void
 name|setFlag
@@ -2995,7 +2995,7 @@ operator|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|isSet ( int flagID )
+DECL|method|isSet (int flagID)
 specifier|private
 name|boolean
 name|isSet
@@ -3143,7 +3143,7 @@ argument_list|)
 return|;
 block|}
 comment|// -----------------------------------------------------------------------
-DECL|method|setAlternativeDisplayName ( String aName)
+DECL|method|setAlternativeDisplayName (String aName)
 specifier|public
 name|void
 name|setAlternativeDisplayName
@@ -3168,7 +3168,7 @@ name|alternativeDisplayName
 return|;
 block|}
 comment|// -----------------------------------------------------------------------
-DECL|method|setExtras ( String pExtras)
+DECL|method|setExtras (String pExtras)
 specifier|public
 name|void
 name|setExtras
@@ -3219,7 +3219,7 @@ name|editorType
 return|;
 block|}
 comment|// -----------------------------------------------------------------------
-DECL|method|setWeight ( double value )
+DECL|method|setWeight (double value)
 specifier|public
 name|void
 name|setWeight
@@ -3271,7 +3271,7 @@ return|return
 name|name
 return|;
 block|}
-comment|/**        * Set this field's numeric propery        * @param numeric true to indicate that this is a numeric field.        * @return this BibtexSingleField instance. Makes it easier to call this        *   method on the fly while initializing without using a local variable.        */
+comment|/**          * Set this field's numeric propery          * @param numeric true to indicate that this is a numeric field.          * @return this BibtexSingleField instance. Makes it easier to call this          *   method on the fly while initializing without using a local variable.          */
 DECL|method|setNumeric (boolean numeric)
 specifier|public
 name|BibtexSingleField

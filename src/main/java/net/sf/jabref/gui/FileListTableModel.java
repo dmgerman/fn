@@ -133,7 +133,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Data structure to contain a list of file links, parseable from a coded string.  * Doubles as a table model for the file list editor. */
+comment|/**  * Data structure to contain a list of file links, parseable from a coded string.  * Doubles as a table model for the file list editor.  */
 end_comment
 
 begin_class

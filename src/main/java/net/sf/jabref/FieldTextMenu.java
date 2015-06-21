@@ -301,7 +301,7 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{   }
+block|{     }
 DECL|method|mouseEntered (MouseEvent e)
 specifier|public
 name|void
@@ -310,7 +310,7 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{   }
+block|{     }
 DECL|method|mouseExited (MouseEvent e)
 specifier|public
 name|void
@@ -319,7 +319,7 @@ parameter_list|(
 name|MouseEvent
 name|e
 parameter_list|)
-block|{   }
+block|{     }
 DECL|method|mousePressed (MouseEvent e)
 specifier|public
 name|void
@@ -350,7 +350,7 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|maybeShowPopup ( MouseEvent e )
+DECL|method|maybeShowPopup (MouseEvent e)
 specifier|private
 name|void
 name|maybeShowPopup
@@ -606,7 +606,7 @@ parameter_list|)
 function_decl|;
 block|}
 comment|//---------------------------------------------------------------
-comment|/*class MenuHeaderAction extends BasicAction   {     public MenuHeaderAction(String comment)     {       super("Edit -" +comment);       this.setEnabled(false);     }      public void actionPerformed(ActionEvent e) { }   }     */
+comment|/*class MenuHeaderAction extends BasicAction     {       public MenuHeaderAction(String comment)       {         super("Edit -" +comment);         this.setEnabled(false);       }        public void actionPerformed(ActionEvent e) { }     }       */
 comment|// ---------------------------------------------------------------------------
 DECL|class|PasteAction
 class|class
@@ -689,7 +689,7 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{}
+block|{             }
 block|}
 block|}
 comment|// ---------------------------------------------------------------------------
@@ -778,7 +778,7 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{}
+block|{             }
 block|}
 block|}
 DECL|class|ReplaceAction

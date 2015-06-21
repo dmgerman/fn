@@ -169,7 +169,7 @@ parameter_list|,
 name|String
 name|systemId
 parameter_list|)
-block|{}
+block|{     }
 DECL|method|startDocument ()
 specifier|public
 name|void

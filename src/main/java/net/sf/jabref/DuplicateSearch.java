@@ -354,7 +354,7 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{}
+block|{                     }
 block|}
 block|}
 else|else

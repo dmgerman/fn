@@ -313,7 +313,7 @@ name|LayoutHelper
 operator|.
 name|IS_FIELD_START
 condition|)
-block|{ 		}
+block|{         }
 elseif|else
 if|if
 condition|(
@@ -325,7 +325,7 @@ name|LayoutHelper
 operator|.
 name|IS_FIELD_END
 condition|)
-block|{ 		}
+block|{         }
 elseif|else
 if|if
 condition|(
@@ -636,7 +636,7 @@ name|LayoutHelper
 operator|.
 name|IS_LAYOUT_TEXT
 condition|)
-block|{ 			}
+block|{             }
 elseif|else
 if|if
 condition|(
@@ -648,7 +648,7 @@ name|LayoutHelper
 operator|.
 name|IS_SIMPLE_FIELD
 condition|)
-block|{ 			}
+block|{             }
 elseif|else
 if|if
 condition|(
@@ -807,7 +807,7 @@ name|LayoutHelper
 operator|.
 name|IS_OPTION_FIELD
 condition|)
-block|{ 			}
+block|{             }
 comment|// else if (si.i == LayoutHelper.IS_OPTION_FIELD_PARAM)
 comment|// {
 comment|// }
@@ -969,7 +969,7 @@ literal|null
 argument_list|)
 return|;
 block|}
-DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database, ArrayList<String> wordsToHighlight )
+DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database, ArrayList<String> wordsToHighlight)
 specifier|public
 name|String
 name|doLayout
@@ -1430,7 +1430,7 @@ else|else
 block|{
 comment|//System.out.println("ENTRY-BLOCK: " +
 comment|//layoutEntries[i].doLayout(bibtex));
-comment|/* 							 * if fieldText is not null and the bibtexentry is marked 							 * as a searchhit, try to highlight the searched words 							 *  							*/
+comment|/*                              * if fieldText is not null and the bibtexentry is marked                              * as a searchhit, try to highlight the searched words                              *                              */
 if|if
 condition|(
 name|bibtex
@@ -1656,7 +1656,7 @@ return|;
 block|}
 block|}
 comment|// added section - begin (arudert)
-comment|/** 	 * Do layout for general formatters (no bibtex-entry fields). 	 *  	 * @param database 	 *            Bibtex Database 	 * @return 	 */
+comment|/**      * Do layout for general formatters (no bibtex-entry fields).      *       * @param database      *            Bibtex Database      * @return      */
 DECL|method|doLayout (BibtexDatabase database, String encoding)
 specifier|public
 name|String
@@ -2240,7 +2240,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** 	 * Return an array of LayoutFormatters found in the given formatterName 	 * string (in order of appearance). 	 *  	 */
+comment|/**      * Return an array of LayoutFormatters found in the given formatterName      * string (in order of appearance).      *       */
 DECL|method|getOptionalLayout (String formatterName, String classPrefix)
 specifier|public
 specifier|static
@@ -2437,7 +2437,7 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{ 			}
+block|{             }
 comment|// Then check whether this is a user defined formatter
 name|String
 name|formatterParameter

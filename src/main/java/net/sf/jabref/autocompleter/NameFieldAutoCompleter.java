@@ -109,7 +109,7 @@ name|autoCompFullFirstOnly
 decl_stmt|,
 name|autoCompShortFirstOnly
 decl_stmt|;
-comment|/** 	 * @see AutoCompleterFactory 	 */
+comment|/**      * @see AutoCompleterFactory      */
 DECL|method|NameFieldAutoCompleter (String fieldName)
 specifier|protected
 name|NameFieldAutoCompleter
@@ -500,7 +500,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/** 	 * SIDE EFFECT: sets class variable prefix 	 * Delimiter: " and " 	 *  	 * @return String without prefix 	 */
+comment|/**      * SIDE EFFECT: sets class variable prefix      * Delimiter: " and "      *       * @return String without prefix      */
 DECL|method|determinePrefixAndReturnRemainder_AND (String str)
 specifier|private
 name|String
@@ -566,7 +566,7 @@ return|return
 name|str
 return|;
 block|}
-comment|/** 	 * SIDE EFFECT: sets class variable prefix 	 * Delimiter: " " 	 *  	 * @return String without prefix 	 */
+comment|/**      * SIDE EFFECT: sets class variable prefix      * Delimiter: " "      *       * @return String without prefix      */
 DECL|method|determinePrefixAndReturnRemainder_SPACE (String str)
 specifier|private
 name|String

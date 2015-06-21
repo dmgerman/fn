@@ -298,7 +298,7 @@ name|secSort
 decl_stmt|,
 name|terSort
 decl_stmt|;
-comment|/** 	 * Customization of external program paths. 	 *  	 * @param prefs 	 *            a<code>JabRefPreferences</code> value 	 */
+comment|/**      * Customization of external program paths.      *       * @param prefs      *            a<code>JabRefPreferences</code> value      */
 DECL|method|TablePrefsTab (JabRefPreferences prefs, JabRefFrame frame)
 specifier|public
 name|TablePrefsTab
@@ -321,7 +321,7 @@ name|BorderLayout
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|/** 		 * Added Bibtexkey to combobox. 		 *  		 * [ 1540646 ] default sort order: bibtexkey 		 *  		 * http://sourceforge.net/tracker/index.php?func=detail&aid=1540646&group_id=92314&atid=600306 		 */
+comment|/**          * Added Bibtexkey to combobox.          *           * [ 1540646 ] default sort order: bibtexkey          *           * http://sourceforge.net/tracker/index.php?func=detail&aid=1540646&group_id=92314&atid=600306          */
 name|Vector
 argument_list|<
 name|String
@@ -1691,7 +1691,7 @@ name|numF
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Store changes to table preferences. This method is called when the user 	 * clicks Ok. 	 *  	 */
+comment|/**      * Store changes to table preferences. This method is called when the user      * clicks Ok.      *       */
 DECL|method|storeSettings ()
 specifier|public
 name|void

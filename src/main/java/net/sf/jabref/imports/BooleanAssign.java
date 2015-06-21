@@ -26,7 +26,7 @@ DECL|field|value
 name|boolean
 name|value
 decl_stmt|;
-comment|/** 	 * @param b 	 */
+comment|/**      * @param b      */
 DECL|method|BooleanAssign (boolean b)
 specifier|public
 name|BooleanAssign

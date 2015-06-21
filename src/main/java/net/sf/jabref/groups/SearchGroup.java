@@ -228,14 +228,14 @@ operator|new
 name|SearchExpressionTreeParser
 argument_list|()
 decl_stmt|;
-comment|/** 	 * If m_searchExpression is in valid syntax for advanced search,<b>this 	 *</b> will do the search; otherwise, either<b>RegExpRule</b> or 	 *<b>SimpleSearchRule</b> will be used. 	 */
+comment|/**      * If m_searchExpression is in valid syntax for advanced search,<b>this      *</b> will do the search; otherwise, either<b>RegExpRule</b> or      *<b>SimpleSearchRule</b> will be used.      */
 DECL|field|m_searchRule
 specifier|private
 specifier|final
 name|SearchRule
 name|m_searchRule
 decl_stmt|;
-comment|/** 	 * Creates a SearchGroup with the specified properties. 	 */
+comment|/**      * Creates a SearchGroup with the specified properties.      */
 DECL|method|SearchGroup (String name, String searchExpression, boolean caseSensitive, boolean regExp, int context)
 specifier|public
 name|SearchGroup
@@ -380,7 +380,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Parses s and recreates the SearchGroup from it. 	 *  	 * @param s 	 *            The String representation obtained from 	 *            SearchGroup.toString(), or null if incompatible 	 */
+comment|/**      * Parses s and recreates the SearchGroup from it.      *       * @param s      *            The String representation obtained from      *            SearchGroup.toString(), or null if incompatible      */
 DECL|method|fromString (String s, BibtexDatabase db, int version)
 specifier|public
 specifier|static
@@ -655,7 +655,7 @@ return|return
 name|ID
 return|;
 block|}
-comment|/** 	 * @see net.sf.jabref.groups.AbstractGroup#getSearchRule() 	 */
+comment|/**      * @see net.sf.jabref.groups.AbstractGroup#getSearchRule()      */
 DECL|method|getSearchRule ()
 specifier|public
 name|SearchRule
@@ -666,7 +666,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/** 	 * Returns a String representation of this object that can be used to 	 * reconstruct it. 	 */
+comment|/**      * Returns a String representation of this object that can be used to      * reconstruct it.      */
 DECL|method|toString ()
 specifier|public
 name|String
@@ -856,7 +856,7 @@ name|getHierarchicalContext
 argument_list|()
 return|;
 block|}
-comment|/* 	 * (non-Javadoc) 	 *  	 * @see net.sf.jabref.groups.AbstractGroup#contains(java.util.Map, 	 *      net.sf.jabref.BibtexEntry) 	 */
+comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.groups.AbstractGroup#contains(java.util.Map,      *      net.sf.jabref.BibtexEntry)      */
 DECL|method|contains (Map<String, String> searchOptions, BibtexEntry entry)
 specifier|public
 name|boolean

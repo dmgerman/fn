@@ -107,7 +107,7 @@ operator|.
 name|Importer
 argument_list|>
 block|{
-comment|/**    * Object with data for a custom importer.    *     *<p>Is also responsible for instantiating the class loader.</p>    */
+comment|/**      * Object with data for a custom importer.      *       *<p>Is also responsible for instantiating the class loader.</p>      */
 DECL|class|Importer
 specifier|public
 class|class
@@ -637,7 +637,7 @@ name|customImporter
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Adds an importer.    *     *<p>If an old one equal to the new one was contained, the old    * one is replaced.</p>    *     * @param customImporter new (version of an) importer    * @return  if the importer was contained    */
+comment|/**      * Adds an importer.      *       *<p>If an old one equal to the new one was contained, the old      * one is replaced.</p>      *       * @param customImporter new (version of an) importer      * @return  if the importer was contained      */
 DECL|method|replaceImporter (Importer customImporter)
 specifier|public
 name|boolean

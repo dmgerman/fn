@@ -371,7 +371,7 @@ name|e2
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* 		 * [ 1598777 ] Month sorting 		 *  		 * http://sourceforge.net/tracker/index.php?func=detail&aid=1598777&group_id=92314&atid=600306 		 */
+comment|/*          * [ 1598777 ] Month sorting          *           * http://sourceforge.net/tracker/index.php?func=detail&aid=1598777&group_id=92314&atid=600306          */
 name|int
 name|localMultiplier
 init|=
@@ -449,7 +449,7 @@ condition|(
 name|isYearField
 condition|)
 block|{
-comment|/* 			 * [ 1285977 ] Impossible to properly sort a numeric field 			 *  			 * http://sourceforge.net/tracker/index.php?func=detail&aid=1285977&group_id=92314&atid=600307 			 */
+comment|/*              * [ 1285977 ] Impossible to properly sort a numeric field              *               * http://sourceforge.net/tracker/index.php?func=detail&aid=1285977&group_id=92314&atid=600307              */
 name|f1
 operator|=
 name|Util
@@ -481,7 +481,7 @@ condition|(
 name|isMonthField
 condition|)
 block|{
-comment|/* 			 * [ 1535044 ] Month sorting 			 *  			 * http://sourceforge.net/tracker/index.php?func=detail&aid=1535044&group_id=92314&atid=600306 			 */
+comment|/*              * [ 1535044 ] Month sorting              *               * http://sourceforge.net/tracker/index.php?func=detail&aid=1535044&group_id=92314&atid=600306              */
 name|f1
 operator|=
 name|MonthUtil
@@ -839,7 +839,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** 	 * Returns the field this Comparator compares by. 	 *  	 * @return The field name. 	 */
+comment|/**      * Returns the field this Comparator compares by.      *       * @return The field name.      */
 DECL|method|getFieldName ()
 specifier|public
 name|String

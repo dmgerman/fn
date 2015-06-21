@@ -227,7 +227,7 @@ name|flavor
 block|}
 expr_stmt|;
 block|}
-comment|/** 	 * Creates this node and associates the specified group with it. 	 */
+comment|/**      * Creates this node and associates the specified group with it.      */
 DECL|method|GroupTreeNode (AbstractGroup group)
 specifier|public
 name|GroupTreeNode
@@ -242,7 +242,7 @@ name|group
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * @return The group associated with this node. 	 */
+comment|/**      * @return The group associated with this node.      */
 DECL|method|getGroup ()
 specifier|public
 name|AbstractGroup
@@ -257,7 +257,7 @@ name|getUserObject
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Associates the specified group with this node. 	 */
+comment|/**      * Associates the specified group with this node.      */
 DECL|method|setGroup (AbstractGroup group)
 specifier|public
 name|void
@@ -273,7 +273,7 @@ name|group
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Returns a textual representation of this node and its children. This 	 * representation contains both the tree structure and the textual 	 * representations of the group associated with each node. It thus allows a 	 * complete reconstruction of this object and its children. 	 */
+comment|/**      * Returns a textual representation of this node and its children. This      * representation contains both the tree structure and the textual      * representations of the group associated with each node. It thus allows a      * complete reconstruction of this object and its children.      */
 DECL|method|getTreeAsString ()
 specifier|public
 name|String
@@ -353,7 +353,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Creates a deep copy of this node and all of its children, including all 	 * groups. 	 *  	 * @return This object's deep copy. 	 */
+comment|/**      * Creates a deep copy of this node and all of its children, including all      * groups.      *       * @return This object's deep copy.      */
 DECL|method|deepCopy ()
 specifier|public
 name|GroupTreeNode
@@ -407,7 +407,7 @@ return|return
 name|copy
 return|;
 block|}
-comment|/**          * Update all groups, if necessary, to handle the situation where the group          * tree is applied to a different BibtexDatabase than it was created for. This          * is for instance used when updating the group tree due to an external change.          *          * @param db The database to refresh for.          */
+comment|/**      * Update all groups, if necessary, to handle the situation where the group      * tree is applied to a different BibtexDatabase than it was created for. This      * is for instance used when updating the group tree due to an external change.      *      * @param db The database to refresh for.      */
 DECL|method|refreshGroupsForNewDatabase (BibtexDatabase db)
 specifier|public
 name|void
@@ -463,7 +463,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * @return An indexed path from the root node to this node. The elements in 	 *         the returned array represent the child index of each node in the 	 *         path. If this node is the root node, the returned array has zero 	 *         elements. 	 */
+comment|/**      * @return An indexed path from the root node to this node. The elements in      *         the returned array represent the child index of each node in the      *         path. If this node is the root node, the returned array has zero      *         elements.      */
 DECL|method|getIndexedPath ()
 specifier|public
 name|int
@@ -534,7 +534,7 @@ return|return
 name|indexedPath
 return|;
 block|}
-comment|/** 	 * Returns the node indicated by the specified indexedPath, which contains 	 * child indices obtained e.g. by getIndexedPath(). 	 */
+comment|/**      * Returns the node indicated by the specified indexedPath, which contains      * child indices obtained e.g. by getIndexedPath().      */
 DECL|method|getNode (int[] indexedPath)
 specifier|public
 name|GroupTreeNode
@@ -573,7 +573,7 @@ return|return
 name|cursor
 return|;
 block|}
-comment|/** 	 * @param indexedPath 	 *            A sequence of child indices that describe a path from this 	 *            node to one of its desendants. Be aware that if<b>indexedPath 	 *</b> was obtained by getIndexedPath(), this node should 	 *            usually be the root node. 	 * @return The descendant found by evaluating<b>indexedPath</b>. If the 	 *         path could not be traversed completely (i.e. one of the child 	 *         indices did not exist), null will be returned. 	 */
+comment|/**      * @param indexedPath      *            A sequence of child indices that describe a path from this      *            node to one of its desendants. Be aware that if<b>indexedPath      *</b> was obtained by getIndexedPath(), this node should      *            usually be the root node.      * @return The descendant found by evaluating<b>indexedPath</b>. If the      *         path could not be traversed completely (i.e. one of the child      *         indices did not exist), null will be returned.      */
 DECL|method|getDescendant (int[] indexedPath)
 specifier|public
 name|GroupTreeNode
@@ -628,7 +628,7 @@ return|return
 name|cursor
 return|;
 block|}
-comment|/** 	 * A GroupTreeNode can create a SearchRule that finds elements contained in 	 * its own group, or the union of those elements in its own group and its 	 * children's groups (recursively), or the intersection of the elements in 	 * its own group and its parent's group. This setting is configured in the 	 * group contained in this node. 	 *  	 * @return A SearchRule that finds the desired elements. 	 */
+comment|/**      * A GroupTreeNode can create a SearchRule that finds elements contained in      * its own group, or the union of those elements in its own group and its      * children's groups (recursively), or the intersection of the elements in      * its own group and its parent's group. This setting is configured in the      * group contained in this node.      *       * @return A SearchRule that finds the desired elements.      */
 DECL|method|getSearchRule ()
 specifier|public
 name|SearchRule
@@ -892,7 +892,7 @@ name|children
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Scans the subtree rooted at this node. 	 *  	 * @return All groups that contain the specified entry. 	 */
+comment|/**      * Scans the subtree rooted at this node.      *       * @return All groups that contain the specified entry.      */
 DECL|method|getMatchingGroups (BibtexEntry entry)
 specifier|public
 name|AbstractGroup
@@ -1398,7 +1398,7 @@ return|return
 name|undo
 return|;
 block|}
-comment|/** 	 * @param path 	 *            A sequence of child indices that designate a node relative to 	 *            this node. 	 * @return The node designated by the specified path, or null if one or more 	 *         indices in the path could not be resolved. 	 */
+comment|/**      * @param path      *            A sequence of child indices that designate a node relative to      *            this node.      * @return The node designated by the specified path, or null if one or more      *         indices in the path could not be resolved.      */
 DECL|method|getChildAt (int[] path)
 specifier|public
 name|GroupTreeNode
@@ -1626,7 +1626,7 @@ return|return
 name|this
 return|;
 block|}
-comment|/** 	 * Recursively compares this node's group and all subgroups. 	 */
+comment|/**      * Recursively compares this node's group and all subgroups.      */
 DECL|method|equals (Object other)
 specifier|public
 name|boolean

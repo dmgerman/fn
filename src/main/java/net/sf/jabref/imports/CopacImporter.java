@@ -138,7 +138,7 @@ name|CopacImporter
 extends|extends
 name|ImportFormat
 block|{
-comment|/** 	 * Return the name of this import format. 	 */
+comment|/**      * Return the name of this import format.      */
 DECL|method|getFormatName ()
 specifier|public
 name|String
@@ -149,7 +149,7 @@ return|return
 literal|"Copac"
 return|;
 block|}
-comment|/* 	 * (non-Javadoc) 	 *  	 * @see net.sf.jabref.imports.ImportFormat#getCLIId() 	 */
+comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
 DECL|method|getCLIId ()
 specifier|public
 name|String
@@ -173,7 +173,7 @@ argument_list|(
 literal|"^\\s*TI- "
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Check whether the source is in the correct format for this importer. 	 */
+comment|/**      * Check whether the source is in the correct format for this importer.      */
 DECL|method|isRecognizedFormat (InputStream stream)
 specifier|public
 name|boolean
@@ -236,7 +236,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/** 	 * Parse the entries in the source, and return a List of BibtexEntry 	 * objects. 	 */
+comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List

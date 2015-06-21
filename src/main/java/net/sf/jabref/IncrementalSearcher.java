@@ -134,7 +134,7 @@ control|)
 block|{
 try|try
 block|{
-comment|/*Globals.logger("Searching field '"+fields[i].toString() 				       +"' for '" 				       +pattern.toString()+"'.");*/
+comment|/*Globals.logger("Searching field '"+fields[i].toString()                     	       +"' for '"                     	       +pattern.toString()+"'.");*/
 if|if
 condition|(
 name|bibtexEntry

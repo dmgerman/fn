@@ -799,7 +799,7 @@ name|name
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Returns the contents of the given field, its alias or null if both are 	 * not set. 	 *  	 * The following aliases are considered (old bibtex<-> new biblatex) based 	 * on the BibLatex documentation, chapter 2.2.5: 	 *  address<-> location 	 *  annote<-> annotation  	 *  archiveprefix<-> eprinttype  	 *  journal<-> journaltitle  	 *  key<-> sortkey  	 * 	pdf<-> file  	 * 	primaryclass<-> eprintclass  	 * 	school<-> institution  	 * These work bidirectional. 	 *  	 * Special attention is paid to dates: (see the BibLatex documentation, 	 * chapter 2.3.8)  	 * 	The fields 'year' and 'month' are used if the 'date' 	 * 	field is empty. Conversely, getFieldOrAlias("year") also tries to 	 * 	extract the year from the 'date' field (analogously for 'month'). 	 */
+comment|/**      * Returns the contents of the given field, its alias or null if both are      * not set.      *       * The following aliases are considered (old bibtex<-> new biblatex) based      * on the BibLatex documentation, chapter 2.2.5:      *  address<-> location      *  annote<-> annotation       *  archiveprefix<-> eprinttype       *  journal<-> journaltitle       *  key<-> sortkey       * 	pdf<-> file       * 	primaryclass<-> eprintclass       * 	school<-> institution       * These work bidirectional.      *       * Special attention is paid to dates: (see the BibLatex documentation,      * chapter 2.3.8)       * 	The fields 'year' and 'month' are used if the 'date'      * 	field is empty. Conversely, getFieldOrAlias("year") also tries to      * 	extract the year from the 'date' field (analogously for 'month').      */
 DECL|method|getFieldOrAlias (String name)
 specifier|public
 name|String

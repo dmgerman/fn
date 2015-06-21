@@ -3046,7 +3046,7 @@ DECL|method|AbbreviationsTableModel ()
 specifier|public
 name|AbbreviationsTableModel
 parameter_list|()
-block|{           }
+block|{          }
 DECL|method|setJournals (Map<String, String> journals)
 specifier|public
 name|void

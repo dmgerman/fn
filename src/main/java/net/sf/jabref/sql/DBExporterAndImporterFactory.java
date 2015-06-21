@@ -122,7 +122,7 @@ specifier|public
 class|class
 name|DBExporterAndImporterFactory
 block|{
-comment|/** 	 * All DBTypes must appear here. The enum items must be the 	 * names that appear in the combobox used to select the DB, 	 * because this text is used to choose which DBImporter/Exporter 	 * will be sent back to the requester 	 *  	 */
+comment|/**      * All DBTypes must appear here. The enum items must be the      * names that appear in the combobox used to select the DB,      * because this text is used to choose which DBImporter/Exporter      * will be sent back to the requester      *       */
 DECL|enum|DBType
 specifier|public
 enum|enum
@@ -171,7 +171,7 @@ name|dbType
 return|;
 block|}
 block|}
-comment|/** 	 * Returns a DBExporter object according to a given DBType 	 *  	 * @param type 	 * 		The type of the database selected 	 * @return The DBExporter object instance 	 */
+comment|/**      * Returns a DBExporter object according to a given DBType      *       * @param type      * 		The type of the database selected      * @return The DBExporter object instance      */
 DECL|method|getExporter (DBType type)
 specifier|public
 name|DBExporter
@@ -218,7 +218,7 @@ return|return
 name|exporter
 return|;
 block|}
-comment|/** 	 * Returns a DBExporter object according the type given as a String 	 *  	 * @param type 	 * 		The type of the DB as a String. (e.g. Postgresql, MySQL) 	 * @return The DBExporter object instance 	 */
+comment|/**      * Returns a DBExporter object according the type given as a String      *       * @param type      * 		The type of the DB as a String. (e.g. Postgresql, MySQL)      * @return The DBExporter object instance      */
 DECL|method|getExporter (String type)
 specifier|public
 name|DBExporter
@@ -245,7 +245,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Returns a DBImporter object according to a given DBType 	 *  	 * @param type 	 * 		The type of the database selected 	 * @return The DBImporter object instance 	 */
+comment|/**      * Returns a DBImporter object according to a given DBType      *       * @param type      * 		The type of the database selected      * @return The DBImporter object instance      */
 DECL|method|getImporter (DBType type)
 specifier|public
 name|DBImporter
@@ -292,7 +292,7 @@ return|return
 name|importer
 return|;
 block|}
-comment|/** 	 * Returns a DBImporter object according the type given as a String 	 *  	 * @param type 	 * 		The type of the DB as a String. (e.g. Postgresql, MySQL) 	 * @return The DBImporter object instance 	 */
+comment|/**      * Returns a DBImporter object according the type given as a String      *       * @param type      * 		The type of the DB as a String. (e.g. Postgresql, MySQL)      * @return The DBImporter object instance      */
 DECL|method|getImporter (String type)
 specifier|public
 name|DBImporter

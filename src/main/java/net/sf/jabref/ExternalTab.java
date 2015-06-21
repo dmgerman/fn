@@ -576,7 +576,7 @@ argument_list|(
 name|pan
 argument_list|)
 expr_stmt|;
-comment|/** 		 * Fix for [ 1749613 ] About translation 		 *  		 * https://sourceforge.net/tracker/index.php?func=detail&aid=1749613&group_id=92314&atid=600306 		 *  		 * Cannot really use %0 to refer to the file type, since this ruins translation. 		 */
+comment|/**          * Fix for [ 1749613 ] About translation          *           * https://sourceforge.net/tracker/index.php?func=detail&aid=1749613&group_id=92314&atid=600306          *           * Cannot really use %0 to refer to the file type, since this ruins translation.          */
 name|JLabel
 name|lab
 init|=

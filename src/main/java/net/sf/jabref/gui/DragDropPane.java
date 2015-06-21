@@ -705,7 +705,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * A glass panel which sets the marker for Dragging of Tabs. 	 *  	 */
+comment|/**      * A glass panel which sets the marker for Dragging of Tabs.      *       */
 DECL|class|MarkerPane
 class|class
 name|MarkerPane
@@ -814,7 +814,7 @@ argument_list|)
 expr_stmt|;
 comment|// draw the image at the middle of the given location
 block|}
-comment|/** 		 * Sets the new location, where the marker should be placed. 		 *  		 * @param pt the point for the marker 		 */
+comment|/**          * Sets the new location, where the marker should be placed.          *           * @param pt the point for the marker          */
 DECL|method|setPicLocation (Point pt)
 specifier|public
 name|void

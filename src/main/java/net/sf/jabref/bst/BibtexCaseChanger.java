@@ -444,7 +444,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * We're dealing with a special character (usually either an undotted `\i' 	 * or `\j', or an accent like one in Table~3.1 of the \LaTeX\ manual, or a 	 * foreign character like one in Table~3.2) if the first character after the 	 * |left_brace| is a |backslash|; the special character ends with the 	 * matching |right_brace|. How we handle what's in between depends on the 	 * special character. In general, this code will do reasonably well if there 	 * is other stuff, too, between braces, but it doesn't try to do anything 	 * special with |colon|s. 	 *  	 * @param c 	 * @param i 	 * @param format 	 * @return 	 */
+comment|/**      * We're dealing with a special character (usually either an undotted `\i'      * or `\j', or an accent like one in Table~3.1 of the \LaTeX\ manual, or a      * foreign character like one in Table~3.2) if the first character after the      * |left_brace| is a |backslash|; the special character ends with the      * matching |right_brace|. How we handle what's in between depends on the      * special character. In general, this code will do reasonably well if there      * is other stuff, too, between braces, but it doesn't try to do anything      * special with |colon|s.      *       * @param c      * @param i      * @param format      * @return      */
 DECL|method|convertSpecialChar (StringBuffer sb, char[] c, int i, char format)
 specifier|public
 name|int
@@ -604,7 +604,7 @@ return|return
 name|i
 return|;
 block|}
-comment|/** 	 * Convert the given string according to the format character (title, lower, 	 * up) and append the result to the stringBuffer, return the updated 	 * position. 	 *  	 * @param c 	 * @param pos 	 * @param s 	 * @param sb 	 * @param format 	 * @return 	 */
+comment|/**      * Convert the given string according to the format character (title, lower,      * up) and append the result to the stringBuffer, return the updated      * position.      *       * @param c      * @param pos      * @param s      * @param sb      * @param format      * @return      */
 DECL|method|convertAccented (char[] c, int pos, String s, StringBuffer sb, char format)
 name|int
 name|convertAccented

@@ -2294,7 +2294,7 @@ name|editSignalled
 argument_list|()
 expr_stmt|;
 block|}
-comment|/*                   if (isShowingEditor()) {                       new FocusRequester(splitPane.getBottomComponent());                       return;                   }                    frame.block();                 //(new Thread() {                 //public void run() {                 int clickedOn = -1;                 // We demand that one and only one row is selected.                 if (entryTable.getSelectedRowCount() == 1) {                   clickedOn = entryTable.getSelectedRow();                 }                 if (clickedOn>= 0) {                   String id = tableModel.getIdForRow(clickedOn);                   BibtexEntry be = database.getEntryById(id);                   showEntry(be);                    if (splitPane.getBottomComponent() != null) {                       new FocusRequester(splitPane.getBottomComponent());                   }                  }         frame.unblock();               }                 */
+comment|/*               if (isShowingEditor()) {                   new FocusRequester(splitPane.getBottomComponent());                   return;               }                frame.block();             //(new Thread() {             //public void run() {             int clickedOn = -1;             // We demand that one and only one row is selected.             if (entryTable.getSelectedRowCount() == 1) {               clickedOn = entryTable.getSelectedRow();             }             if (clickedOn>= 0) {               String id = tableModel.getIdForRow(clickedOn);               BibtexEntry be = database.getEntryById(id);               showEntry(be);                if (splitPane.getBottomComponent() != null) {                   new FocusRequester(splitPane.getBottomComponent());               }              }             frame.unblock();             }             */
 block|}
 argument_list|)
 expr_stmt|;
@@ -2783,7 +2783,7 @@ name|markBaseChanged
 argument_list|()
 expr_stmt|;
 comment|// Reselect the entry in the first prev. selected position:
-comment|/*if (row0>= entryTable.getRowCount())                             row0 = entryTable.getRowCount()-1;                         if (row0>= 0)                             entryTable.addRowSelectionInterval(row0, row0);*/
+comment|/*if (row0>= entryTable.getRowCount())                         row0 = entryTable.getRowCount()-1;                     if (row0>= 0)                         entryTable.addRowSelectionInterval(row0, row0);*/
 block|}
 block|}
 block|}
@@ -2972,7 +2972,7 @@ expr_stmt|;
 comment|//entryTable.clearSelection();
 block|}
 comment|// Reselect the entry in the first prev. selected position:
-comment|/*if (row0>= entryTable.getRowCount())                               row0 = entryTable.getRowCount()-1;                           if (row0>= 0) {                              final int toSel = row0;                             //                               SwingUtilities.invokeLater(new Runnable() {                                 public void run() {                                     entryTable.addRowSelectionInterval(toSel, toSel);                                     //entryTable.ensureVisible(toSel);                                 }                               });                             */
+comment|/*if (row0>= entryTable.getRowCount())                         row0 = entryTable.getRowCount()-1;                     if (row0>= 0) {                        final int toSel = row0;                       //                         SwingUtilities.invokeLater(new Runnable() {                           public void run() {                               entryTable.addRowSelectionInterval(toSel, toSel);                               //entryTable.ensureVisible(toSel);                           }                         });                       */
 block|}
 block|}
 block|}
@@ -3892,7 +3892,7 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-comment|/*boolean okToExport = null!=metaData.getFile();                     	if (!okToExport)                     	{                     		okToExport = false;                     		int response = JOptionPane.showConfirmDialog(null, "You need to save your database in the disk \n" +                     				"before saving. Save it now?", "Database is not saved",                     		        JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);                     			if(response == JOptionPane.YES_OPTION)                     			{                     				try {                     					saveAction.saveAs();                     					okToExport = (null!=metaData.getFile());                     				} catch (Throwable e) {                     				e.printStackTrace();                     			}                     		}                     	}                     	if (okToExport)                     	{*/
+comment|/*boolean okToExport = null!=metaData.getFile();                         if (!okToExport)                         {                         	okToExport = false;                         	int response = JOptionPane.showConfirmDialog(null, "You need to save your database in the disk \n" +                         			"before saving. Save it now?", "Database is not saved",                         	        JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);                         		if(response == JOptionPane.YES_OPTION)                         		{                         			try {                         				saveAction.saveAs();                         				okToExport = (null!=metaData.getFile());                         			} catch (Throwable e) {                         			e.printStackTrace();                         		}                         	}                         }                         if (okToExport)                         {*/
 name|frame
 operator|.
 name|output
@@ -4266,7 +4266,7 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
-return|return ;
+return|return;
 block|}
 name|frame
 operator|.
@@ -6130,7 +6130,7 @@ literal|"runAutomaticFileSearch"
 argument_list|)
 condition|)
 block|{
-comment|/*  The search can lead to an unexpected 100% CPU usage which is perceived                                          as a bug, if the search incidentally starts at a directory with lots                                          of stuff below. It is now disabled by default. */
+comment|/*  The search can lead to an unexpected 100% CPU usage which is perceived                                         as a bug, if the search incidentally starts at a directory with lots                                         of stuff below. It is now disabled by default. */
 comment|// see if we can fall back to a filename based on the bibtex key
 specifier|final
 name|Collection
@@ -7467,7 +7467,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|/* 		 *  It looks like this action was not being supported for SPIRES anyway 		 *  so we don't bother to implement it.         actions.put("openInspire", new BaseAction() {         	public void action() {         		BibtexEntry[] bes = mainTable.getSelectedEntries();                 if ((bes != null)&& (bes.length == 1)) {                 	Object link = null;                     if (bes[0].getField("eprint") != null)                       link = INSPIREFetcher.constructUrlFromEprint(bes[0].getField("eprint").toString());                     else if (bes[0].getField("slaccitation") != null)                         link = INSPIREFetcher.constructUrlFromSlaccitation(bes[0].getField("slaccitation").toString());                     if (link != null) {                       //output(Globals.lang("Calling external viewer..."));                       try {                         Util.openExternalViewer(metaData(), link.toString(), "url");                         output(Globals.lang("External viewer called")+".");                       } catch (IOException ex) {                           output(Globals.lang("Error") + ": " + ex.getMessage());                       }                     }                     else                         output(Globals.lang("No url defined")+".");                 } else                   output(Globals.lang("No entries or multiple entries selected."));             }         	}); 			*/
+comment|/*          *  It looks like this action was not being supported for SPIRES anyway          *  so we don't bother to implement it.         actions.put("openInspire", new BaseAction() {         	public void action() {         		BibtexEntry[] bes = mainTable.getSelectedEntries();                 if ((bes != null)&& (bes.length == 1)) {                 	Object link = null;                     if (bes[0].getField("eprint") != null)                       link = INSPIREFetcher.constructUrlFromEprint(bes[0].getField("eprint").toString());                     else if (bes[0].getField("slaccitation") != null)                         link = INSPIREFetcher.constructUrlFromSlaccitation(bes[0].getField("slaccitation").toString());                     if (link != null) {                       //output(Globals.lang("Calling external viewer..."));                       try {                         Util.openExternalViewer(metaData(), link.toString(), "url");                         output(Globals.lang("External viewer called")+".");                       } catch (IOException ex) {                           output(Globals.lang("Error") + ": " + ex.getMessage());                       }                     }                     else                         output(Globals.lang("No url defined")+".");                 } else                   output(Globals.lang("No entries or multiple entries selected."));             }         	});         	*/
 name|actions
 operator|.
 name|put
@@ -7683,7 +7683,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|/*actions.put("strictDupliCheck", new BaseAction() {                 public void action() {                   StrictDuplicateSearch ds = new StrictDuplicateSearch(BasePanel.this);                   ds.start();                 }               });*/
+comment|/*actions.put("strictDupliCheck", new BaseAction() {           public void action() {             StrictDuplicateSearch ds = new StrictDuplicateSearch(BasePanel.this);             ds.start();           }         });*/
 name|actions
 operator|.
 name|put
@@ -7835,7 +7835,7 @@ block|}
 argument_list|)
 expr_stmt|;
 comment|// The action starts the "import from plain text" dialog
-comment|/*actions.put("importPlainText", new BaseAction() {                       public void action()                       {                         BibtexEntry bibEntry = null ;                         // try to get the first marked entry                         BibtexEntry[] bes = entryTable.getSelectedEntries();                         if ((bes != null)&& (bes.length> 0))                           bibEntry = bes[0] ;                          if (bibEntry != null)                         {                           // Create an UndoableInsertEntry object.                           undoManager.addEdit(new UndoableInsertEntry(database, bibEntry, BasePanel.this));                            TextInputDialog tidialog = new TextInputDialog(frame, BasePanel.this,                                                                          "import", true,                                                                          bibEntry) ;                           Util.placeDialog(tidialog, BasePanel.this);                           tidialog.setVisible(true);                            if (tidialog.okPressed())                           {                             output(Globals.lang("changed ")+" '"                                    +bibEntry.getType().getName().toLowerCase()+"' "                                    +Globals.lang("entry")+".");                             refreshTable();                             int row = tableModel.getNumberFromName(bibEntry.getId());                              entryTable.clearSelection();                             entryTable.scrollTo(row);                             markBaseChanged(); // The database just changed.                             if (Globals.prefs.getBoolean("autoOpenForm"))                             {                                   showEntry(bibEntry);                             }                           }                         }                       }                   });                 */
+comment|/*actions.put("importPlainText", new BaseAction() {                 public void action()                 {                   BibtexEntry bibEntry = null ;                   // try to get the first marked entry                   BibtexEntry[] bes = entryTable.getSelectedEntries();                   if ((bes != null)&& (bes.length> 0))                     bibEntry = bes[0] ;                    if (bibEntry != null)                   {                     // Create an UndoableInsertEntry object.                     undoManager.addEdit(new UndoableInsertEntry(database, bibEntry, BasePanel.this));                      TextInputDialog tidialog = new TextInputDialog(frame, BasePanel.this,                                                                    "import", true,                                                                    bibEntry) ;                     Util.placeDialog(tidialog, BasePanel.this);                     tidialog.setVisible(true);                      if (tidialog.okPressed())                     {                       output(Globals.lang("changed ")+" '"                              +bibEntry.getType().getName().toLowerCase()+"' "                              +Globals.lang("entry")+".");                       refreshTable();                       int row = tableModel.getNumberFromName(bibEntry.getId());                        entryTable.clearSelection();                       entryTable.scrollTo(row);                       markBaseChanged(); // The database just changed.                       if (Globals.prefs.getBoolean("autoOpenForm"))                       {                             showEntry(bibEntry);                       }                     }                   }                 }             });           */
 name|actions
 operator|.
 name|put
@@ -8945,7 +8945,7 @@ argument_list|)
 expr_stmt|;
 comment|//actions.put("downloadFullText", new FindFullTextAction(this));
 block|}
-comment|/**      * This method is called from JabRefFrame is a database specific      * action is requested by the user. Runs the command if it is      * defined, or prints an error message to the standard error      * stream.      *      * @param _command The name of the command to run.     */
+comment|/**      * This method is called from JabRefFrame is a database specific      * action is requested by the user. Runs the command if it is      * defined, or prints an error message to the standard error      * stream.      *      * @param _command The name of the command to run.      */
 DECL|method|runCommand (String _command)
 specifier|public
 name|void
@@ -12866,7 +12866,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/* *      * Selects all entries with a non-zero value in the field      * @param field<code>String</code> field name.      */
-comment|/*    public void selectResults(String field) {       LinkedList intervals = new LinkedList();       int prevStart = -1, prevToSel = 0;       // First we build a list of intervals to select, without touching the table.       for (int i = 0; i< entryTable.getRowCount(); i++) {         String value = (String) (database.getEntryById                                  (tableModel.getIdForRow(i)))             .getField(field);         if ( (value != null)&& !value.equals("0")) {           if (prevStart< 0)             prevStart = i;           prevToSel = i;         }         else if (prevStart>= 0) {           intervals.add(new int[] {prevStart, prevToSel});           prevStart = -1;         }       }       // Then select those intervals, if any.       if (intervals.size()> 0) {         entryTable.setSelectionListenerEnabled(false);         entryTable.clearSelection();         for (Iterator i=intervals.iterator(); i.hasNext();) {           int[] interval = (int[])i.next();           entryTable.addRowSelectionInterval(interval[0], interval[1]);         }         entryTable.setSelectionListenerEnabled(true);       }   */
+comment|/*    public void selectResults(String field) {           LinkedList intervals = new LinkedList();           int prevStart = -1, prevToSel = 0;           // First we build a list of intervals to select, without touching the table.           for (int i = 0; i< entryTable.getRowCount(); i++) {             String value = (String) (database.getEntryById                                      (tableModel.getIdForRow(i)))                 .getField(field);             if ( (value != null)&& !value.equals("0")) {               if (prevStart< 0)                 prevStart = i;               prevToSel = i;             }             else if (prevStart>= 0) {               intervals.add(new int[] {prevStart, prevToSel});               prevStart = -1;             }           }           // Then select those intervals, if any.           if (intervals.size()> 0) {             entryTable.setSelectionListenerEnabled(false);             entryTable.clearSelection();             for (Iterator i=intervals.iterator(); i.hasNext();) {               int[] interval = (int[])i.next();               entryTable.addRowSelectionInterval(interval[0], interval[1]);             }             entryTable.setSelectionListenerEnabled(true);           }       */
 DECL|method|setSearchMatcher (SearchMatcher matcher)
 specifier|public
 name|void
@@ -13911,7 +13911,7 @@ parameter_list|,
 name|Transferable
 name|contents
 parameter_list|)
-block|{}
+block|{     }
 DECL|method|setEntryEditorEnabled (boolean enabled)
 specifier|public
 name|void
