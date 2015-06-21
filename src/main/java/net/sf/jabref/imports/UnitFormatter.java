@@ -352,7 +352,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|format (String text, String [] listOfWords)
+DECL|method|format (String text, String[] listOfWords)
 specifier|public
 name|String
 name|format

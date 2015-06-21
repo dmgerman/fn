@@ -217,7 +217,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test for https://sourceforge.net/forum/message.php?msg_id=4498555      * Test the Labelmaker and all kind of accents      * Ã Ã¡ Ä Ä Ã Ã© Ã Ã­ Ä¹ Äº Å Å Ã Ã³ Å Å Å Å Ã Ãº Ã Ã½ Å¹ Åº      */
+comment|/**      * Test for https://sourceforge.net/forum/message.php?msg_id=4498555      * Test the Labelmaker and all kind of accents      * Ã? Ã¡ Ä Ä Ã Ã© Ã? Ã­ Ä¹ Äº Å Å Ã Ã³ Å Å Å Å Ã Ãº Ã? Ã½ Å¹ Åº      */
 annotation|@
 name|Test
 DECL|method|testMakeLabelAndCheckLegalKeys ()
@@ -267,7 +267,7 @@ name|BibtexParser
 operator|.
 name|singleFromString
 argument_list|(
-literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
+literal|"@ARTICLE{kohn, author={Andreas Ã?Ã¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -335,7 +335,7 @@ name|BibtexParser
 operator|.
 name|singleFromString
 argument_list|(
-literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
+literal|"@ARTICLE{kohn, author={Andreas Ã?Ã¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -573,7 +573,7 @@ name|BibtexParser
 operator|.
 name|singleFromString
 argument_list|(
-literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
+literal|"@ARTICLE{kohn, author={Andreas Ã?Ã¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
 name|assertEquals
@@ -827,14 +827,14 @@ name|testCheckLegalKey
 parameter_list|()
 block|{
 comment|// not tested/ not in hashmap UNICODE_CHARS:
-comment|// Å Å   Å Å Å° Å±   Ä¿ Å   Ä¦ Ä§   Ã Ã° Ã Ã¾   Å Å   Ã Ã¦ Ã Ã¸ Ã Ã¥   Æ É Ä Ä   Å® Å¯	Ç¢ Ç£ Ç Ç Ç Ç
+comment|// Å? Å   Å? Å Å° Å±   Ä¿ Å   Ä¦ Ä§   Ã? Ã° Ã Ã¾   Å Å   Ã Ã¦ Ã Ã¸ Ã Ã¥   Æ? É Ä? Ä   Å® Å¯	Ç¢ Ç£ Ç Ç Ç Ç
 comment|//" Ç¢ Ç£ Ç Ç Ç Ç   " +
-comment|//"Ä Ä   Å® Å¯  " +
-comment|//"Å Å   Å Å Å° Å±   Ä¿ Å   Ä¦ Ä§   Ã Ã° Ã Ã¾   Å Å   Ã Ã¦ Ã Ã¸ Ã Ã¥   Æ É
+comment|//"Ä? Ä   Å® Å¯  " +
+comment|//"Å? Å   Å? Å Å° Å±   Ä¿ Å   Ä¦ Ä§   Ã? Ã° Ã Ã¾   Å Å   Ã Ã¦ Ã Ã¸ Ã Ã¥   Æ? É
 name|String
 name|accents
 init|=
-literal|"ÃÃ ÃÃ¨ÃÃ¬ÃÃ²ÃÃ¹ Ã Ã¢ Ä Ä Ã Ãª Ä Ä Ä¤ Ä¥ Ã Ã® Ä´ Äµ Ã Ã´ Å Å Ã Ã» Å´ Åµ Å¶ Å·"
+literal|"ÃÃ ÃÃ¨ÃÃ¬ÃÃ²ÃÃ¹ Ã Ã¢ Ä Ä Ã Ãª Ä Ä? Ä¤ Ä¥ Ã Ã® Ä´ Äµ Ã Ã´ Å Å? Ã Ã» Å´ Åµ Å¶ Å·"
 decl_stmt|;
 name|String
 name|expectedResult
@@ -861,7 +861,7 @@ argument_list|)
 expr_stmt|;
 name|accents
 operator|=
-literal|"ÃÃ¤ÃÃ«ÃÃ¯ÃÃ¶ÃÃ¼Å¸Ã¿"
+literal|"ÃÃ¤ÃÃ«Ã?Ã¯ÃÃ¶ÃÃ¼Å¸Ã¿"
 expr_stmt|;
 name|expectedResult
 operator|=
@@ -913,7 +913,7 @@ argument_list|)
 expr_stmt|;
 name|accents
 operator|=
-literal|"Ä Ä Ä Ä Ä Ä Ä¬ Ä­ Å Å Å¬ Å­"
+literal|"Ä Ä Ä Ä Ä Ä Ä¬ Ä­ Å Å? Å¬ Å­"
 expr_stmt|;
 name|expectedResult
 operator|=
@@ -992,7 +992,7 @@ argument_list|)
 expr_stmt|;
 name|accents
 operator|=
-literal|"Ä Ä Ä Ä Äª Ä« Å Å Åª Å« È² È³"
+literal|"Ä Ä? Ä Ä Äª Ä« Å Å? Åª Å« È² È³"
 expr_stmt|;
 name|expectedResult
 operator|=
@@ -1018,7 +1018,7 @@ argument_list|)
 expr_stmt|;
 name|accents
 operator|=
-literal|"Ç Ç Ä Ä Ä Ä Ä Ä Ç Ç Ä½ Ä¾ Å Å Ç Ç Å Å Å  Å¡ Å¤ Å¥ Ç Ç Å½ Å¾"
+literal|"Ç? Ç Ä Ä? Ä Ä? Ä Ä Ç? Ç? Ä½ Ä¾ Å Å Ç Ç Å Å Å  Å¡ Å¤ Å¥ Ç Ç Å½ Å¾"
 expr_stmt|;
 name|expectedResult
 operator|=
@@ -1070,7 +1070,7 @@ argument_list|)
 expr_stmt|;
 name|accents
 operator|=
-literal|"á¸ á¸ á¸¤ á¸¥ á¸¶ á¸· á¸¸ á¸¹ á¹ á¹ á¹ á¹ á¹ á¹ á¹ á¹ á¹¢ á¹£ á¹¬ á¹­"
+literal|"á¸ á¸? á¸¤ á¸¥ á¸¶ á¸· á¸¸ á¸¹ á¹ á¹ á¹ á¹ á¹ á¹ á¹ á¹? á¹¢ á¹£ á¹¬ á¹­"
 expr_stmt|;
 name|expectedResult
 operator|=
@@ -1097,19 +1097,19 @@ expr_stmt|;
 name|String
 name|totest
 init|=
-literal|"Ã Ã  Ã Ã¨ Ã Ã¬ Ã Ã² Ã Ã¹   Ã Ã¢ Ä Ä Ã Ãª Ä Ä Ä¤ Ä¥ Ã Ã® Ä´ Äµ Ã Ã´ Å Å Ã Ã» Å´ Åµ Å¶ Å·  Ã Ã¤ Ã Ã« Ã Ã¯ Ã Ã¶ Ã Ã¼ Å¸ Ã¿    "
+literal|"Ã Ã  Ã Ã¨ Ã Ã¬ Ã Ã² Ã Ã¹   Ã Ã¢ Ä Ä Ã Ãª Ä Ä? Ä¤ Ä¥ Ã Ã® Ä´ Äµ Ã Ã´ Å Å? Ã Ã» Å´ Åµ Å¶ Å·  Ã Ã¤ Ã Ã« Ã? Ã¯ Ã Ã¶ Ã Ã¼ Å¸ Ã¿    "
 operator|+
 literal|"Ã Ã£ áº¼ áº½ Ä¨ Ä© Ã Ã± Ã Ãµ Å¨ Å© á»¸ á»¹   Ã Ã§ Ä¢ Ä£ Ä¶ Ä· Ä» Ä¼ Å Å Å Å Å Å Å¢ Å£"
 operator|+
-literal|" Ç Ç Ä Ä Ä Ä Ä Ä Ç Ç Ä½ Ä¾ Å Å Ç Ç Å Å Å  Å¡ Å¤ Å¥ Ç Ç Å½ Å¾   "
+literal|" Ç? Ç Ä Ä? Ä Ä? Ä Ä Ç? Ç? Ä½ Ä¾ Å Å Ç Ç Å Å Å  Å¡ Å¤ Å¥ Ç Ç Å½ Å¾   "
 operator|+
-literal|"Ä Ä Ä Ä Äª Ä« Å Å Åª Å« È² È³"
+literal|"Ä Ä? Ä Ä Äª Ä« Å Å? Åª Å« È² È³"
 operator|+
-literal|"Ä Ä Ä Ä Ä Ä Ä¬ Ä­ Å Å Å¬ Å­   "
+literal|"Ä Ä Ä Ä Ä Ä Ä¬ Ä­ Å Å? Å¬ Å­   "
 operator|+
 literal|"Ä Ä Ä Ä Ä  Ä¡ Ä° Ä± Å» Å¼   Ä Ä Ä Ä Ä® Ä¯ Çª Ç« Å² Å³   "
 operator|+
-literal|"á¸ á¸ á¸¤ á¸¥ á¸¶ á¸· á¸¸ á¸¹ á¹ á¹ á¹ á¹ á¹ á¹ á¹ á¹ á¹¢ á¹£ á¹¬ á¹­   "
+literal|"á¸ á¸? á¸¤ á¸¥ á¸¶ á¸· á¸¸ á¸¹ á¹ á¹ á¹ á¹ á¹ á¹ á¹ á¹? á¹¢ á¹£ á¹¬ á¹­   "
 decl_stmt|;
 name|String
 name|expectedResults

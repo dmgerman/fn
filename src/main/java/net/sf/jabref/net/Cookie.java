@@ -108,7 +108,7 @@ operator|.
 name|US
 argument_list|)
 decl_stmt|;
-comment|/**    * Construct a cookie from the URI and header fields    *    * @param uri URI for cookie    * @param header Set of attributes in header    */
+comment|/**      * Construct a cookie from the URI and header fields      *      * @param uri URI for cookie      * @param header Set of attributes in header      */
 DECL|method|Cookie (URI uri, String header)
 specifier|public
 name|Cookie
@@ -518,7 +518,7 @@ return|return
 name|uri
 return|;
 block|}
-comment|/**    * Check if cookie isn't expired and if URI matches,    * should cookie be included in response.    *    * @param uri URI to check against    * @return true if match, false otherwise    */
+comment|/**      * Check if cookie isn't expired and if URI matches,      * should cookie be included in response.      *      * @param uri URI to check against      * @return true if match, false otherwise      */
 DECL|method|matches (URI uri)
 specifier|public
 name|boolean

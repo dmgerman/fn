@@ -45,7 +45,7 @@ specifier|public
 name|String
 name|_fieldName
 decl_stmt|;
-comment|/** 	 * @see AutoCompleterFactory 	 */
+comment|/**      * @see AutoCompleterFactory      */
 DECL|method|CrossrefAutoCompleter (String fieldName)
 specifier|protected
 name|CrossrefAutoCompleter

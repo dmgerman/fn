@@ -93,7 +93,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This thread monitors a set of files, each associated with a FileUpdateListener, for changes * in the file's last modification time stamp. The  */
+comment|/**  * This thread monitors a set of files, each associated with a FileUpdateListener, for changes  * in the file's last modification time stamp. The  */
 end_comment
 
 begin_class
@@ -281,7 +281,7 @@ argument_list|(
 literal|"FileUpdateMonitor has been interrupted."
 argument_list|)
 expr_stmt|;
-comment|/*  the (?) correct way to interrupt threads, according to     	   *  http://www.roseindia.net/javatutorials/shutting_down_threads_cleanly.shtml     	   */
+comment|/*  the (?) correct way to interrupt threads, according to                  *  http://www.roseindia.net/javatutorials/shutting_down_threads_cleanly.shtml                  */
 name|Thread
 operator|.
 name|currentThread
@@ -295,7 +295,7 @@ break|break;
 block|}
 block|}
 block|}
-comment|/**    * Cause the thread to stop monitoring. It will finish the current round before stopping.    */
+comment|/**      * Cause the thread to stop monitoring. It will finish the current round before stopping.      */
 DECL|method|stopMonitoring ()
 specifier|public
 name|void
@@ -307,7 +307,7 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
-comment|/**    * Add a new file to monitor. Returns a handle for accessing the entry.    * @param ul FileUpdateListener The listener to notify when the file changes.    * @param file File The file to monitor.    * @throws IOException if the file does not exist.    */
+comment|/**      * Add a new file to monitor. Returns a handle for accessing the entry.      * @param ul FileUpdateListener The listener to notify when the file changes.      * @param file File The file to monitor.      * @throws IOException if the file does not exist.      */
 DECL|method|addUpdateListener (FileUpdateListener ul, File file)
 specifier|public
 name|String
@@ -463,7 +463,7 @@ name|timeStamp
 operator|--
 expr_stmt|;
 block|}
-comment|/**    * Removes a listener from the monitor.    * @param handle String The handle for the listener to remove.    */
+comment|/**      * Removes a listener from the monitor.      * @param handle String The handle for the listener to remove.      */
 DECL|method|removeUpdateListener (String handle)
 specifier|public
 name|void
@@ -595,7 +595,7 @@ operator|=
 name|file
 expr_stmt|;
 block|}
-comment|/**    * Method for getting the temporary file used for this database. The tempfile    * is used for comparison with the changed on-disk version.    * @param key String The handle for this monitor.    * @throws IllegalArgumentException If the handle doesn't correspond to an entry.    * @return File The temporary file.    */
+comment|/**      * Method for getting the temporary file used for this database. The tempfile      * is used for comparison with the changed on-disk version.      * @param key String The handle for this monitor.      * @throws IllegalArgumentException If the handle doesn't correspond to an entry.      * @return File The temporary file.      */
 DECL|method|getTempFile (String key)
 specifier|public
 name|File
@@ -641,7 +641,7 @@ operator|.
 name|tmpFile
 return|;
 block|}
-comment|/**    * A class containing the File, the FileUpdateListener and the current time stamp for one file.    */
+comment|/**      * A class containing the File, the FileUpdateListener and the current time stamp for one file.      */
 DECL|class|Entry
 class|class
 name|Entry
@@ -712,7 +712,7 @@ name|copy
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Check if time stamp or the file size has changed.      * @throws IOException if the file does no longer exist.      * @return boolean true if the file has changed.      */
+comment|/**          * Check if time stamp or the file size has changed.          * @throws IOException if the file does no longer exist.          * @return boolean true if the file has changed.          */
 DECL|method|hasBeenUpdated ()
 specifier|public
 name|boolean
@@ -848,7 +848,7 @@ name|res
 return|;
 comment|//return true;
 block|}
-comment|/**      * Call the listener method to signal that the file has changed.      */
+comment|/**          * Call the listener method to signal that the file has changed.          */
 DECL|method|notifyListener ()
 specifier|public
 name|void
@@ -876,7 +876,7 @@ name|fileUpdated
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Call the listener method to signal that the file has been removed.      */
+comment|/**          * Call the listener method to signal that the file has been removed.          */
 DECL|method|notifyFileRemoved ()
 specifier|public
 name|void
@@ -889,7 +889,7 @@ name|fileRemoved
 argument_list|()
 expr_stmt|;
 block|}
-comment|/*public void finalize() {       try {         tmpFile.delete();       } catch (Throwable e) {         Globals.logger("Cannot delete temporary file '"+tmpFile.getPath()+"'");       }     }*/
+comment|/*public void finalize() {           try {             tmpFile.delete();           } catch (Throwable e) {             Globals.logger("Cannot delete temporary file '"+tmpFile.getPath()+"'");           }         }*/
 block|}
 DECL|method|getTempFile ()
 specifier|static

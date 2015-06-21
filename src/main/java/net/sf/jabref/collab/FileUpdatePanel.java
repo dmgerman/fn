@@ -350,7 +350,7 @@ return|return
 name|panel
 return|;
 block|}
-comment|/** 	 * Unregister when this component closes. We need that to avoid showing 	 * two such external change warnings at the same time, only the latest one. 	 */
+comment|/**      * Unregister when this component closes. We need that to avoid showing      * two such external change warnings at the same time, only the latest one.      */
 DECL|method|componentClosing ()
 specifier|public
 name|void
@@ -365,7 +365,7 @@ name|NAME
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * actionPerformed 	 *  	 * @param e 	 *            ActionEvent 	 */
+comment|/**      * actionPerformed      *       * @param e      *            ActionEvent      */
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

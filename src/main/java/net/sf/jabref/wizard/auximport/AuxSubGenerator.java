@@ -252,7 +252,7 @@ operator|=
 name|newRefDB
 expr_stmt|;
 block|}
-comment|/**    * parseAuxFile    * read the Aux file and fill up some intern data structures.    * Nested aux files (latex \\include) supported!    *    * @param filename String : Path to LatexAuxFile    * @return boolean, true = no error occurs    */
+comment|/**      * parseAuxFile      * read the Aux file and fill up some intern data structures.      * Nested aux files (latex \\include) supported!      *      * @param filename String : Path to LatexAuxFile      * @return boolean, true = no error occurs      */
 comment|// found at comp.text.tex
 comment|//> Can anyone tell be the information held within a .aux file?  Is there a
 comment|//> specific format to this file?
@@ -756,7 +756,7 @@ parameter_list|(
 name|IOException
 name|ignored
 parameter_list|)
-block|{}
+block|{                 }
 block|}
 name|fileIndex
 operator|++
@@ -767,7 +767,7 @@ return|return
 name|back
 return|;
 block|}
-comment|/**    * resolveTags    * Try to find an equivalent bibtex entry into reference database for all keys    * (found in aux file). This methode will fill up some intern data structures.....    */
+comment|/**      * resolveTags      * Try to find an equivalent bibtex entry into reference database for all keys      * (found in aux file). This methode will fill up some intern data structures.....      */
 DECL|method|resolveTags ()
 specifier|public
 specifier|final
@@ -872,7 +872,7 @@ argument_list|(
 name|crossref
 argument_list|)
 decl_stmt|;
-comment|/**                    * [ 1717849 ] Patch for aux import by Kai Eckert                    */
+comment|/**                      * [ 1717849 ] Patch for aux import by Kai Eckert                      */
 if|if
 condition|(
 name|refEntry
@@ -1172,7 +1172,7 @@ return|return
 name|notFoundList
 return|;
 block|}
-comment|/** returns the number of nested aux files, read by the last call of    *  generate method */
+comment|/** returns the number of nested aux files, read by the last call of      *  generate method */
 DECL|method|getNestedAuxCounter ()
 specifier|public
 name|int

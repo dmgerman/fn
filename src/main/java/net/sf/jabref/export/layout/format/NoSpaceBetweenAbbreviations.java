@@ -48,7 +48,7 @@ name|NoSpaceBetweenAbbreviations
 implements|implements
 name|LayoutFormatter
 block|{
-comment|/* 	 * Match '.' followed by spaces followed by uppercase char followed by '.' 	 * but don't include the last dot into the capturing group. 	 *  	 * Replace the match by removing the spaces. 	 *  	 * @see net.sf.jabref.export.layout.LayoutFormatter#format(java.lang.String) 	 */
+comment|/*      * Match '.' followed by spaces followed by uppercase char followed by '.'      * but don't include the last dot into the capturing group.      *       * Replace the match by removing the spaces.      *       * @see net.sf.jabref.export.layout.LayoutFormatter#format(java.lang.String)      */
 DECL|method|format (String fieldText)
 specifier|public
 name|String

@@ -307,7 +307,7 @@ name|ZipFileChooser
 extends|extends
 name|JDialog
 block|{
-comment|/**    * Table model for the ZIP archive contents.    *     *<p>Contains one row for each entry.    * Does not contain rows for directory entries.</p>    *     *<p>The columns contain information about ZIIP file entries:    *<ol><li>    *   name {@link String}    *</li><li>    *   time of last modification {@link Date}    *</li><li>    *   size (uncompressed) {@link Long}    *</li></ol></p>    */
+comment|/**      * Table model for the ZIP archive contents.      *       *<p>Contains one row for each entry.      * Does not contain rows for directory entries.</p>      *       *<p>The columns contain information about ZIIP file entries:      *<ol><li>      *   name {@link String}      *</li><li>      *   time of last modification {@link Date}      *</li><li>      *   size (uncompressed) {@link Long}      *</li></ol></p>      */
 DECL|class|ZipFileChooserTableModel
 class|class
 name|ZipFileChooserTableModel
@@ -388,7 +388,7 @@ operator|=
 name|zipFile
 expr_stmt|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see javax.swing.table.TableModel#getColumnCount()      */
+comment|/*          *  (non-Javadoc)          * @see javax.swing.table.TableModel#getColumnCount()          */
 DECL|method|getColumnCount ()
 specifier|public
 name|int
@@ -401,7 +401,7 @@ operator|.
 name|length
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see javax.swing.table.TableModel#getRowCount()      */
+comment|/*          *  (non-Javadoc)          * @see javax.swing.table.TableModel#getRowCount()          */
 DECL|method|getRowCount ()
 specifier|public
 name|int
@@ -416,7 +416,7 @@ operator|.
 name|length
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see javax.swing.table.TableModel#getColumnName(int)      */
+comment|/*          *  (non-Javadoc)          * @see javax.swing.table.TableModel#getColumnName(int)          */
 DECL|method|getColumnName (int col)
 specifier|public
 name|String
@@ -433,7 +433,7 @@ name|col
 index|]
 return|;
 block|}
-comment|/**      * Zip-File entry at the given row index.      *       * @param rowIndex  row index      * @return  Zip file entry      */
+comment|/**          * Zip-File entry at the given row index.          *           * @param rowIndex  row index          * @return  Zip file entry          */
 DECL|method|getZipEntry (int rowIndex)
 specifier|public
 name|ZipEntry
@@ -452,7 +452,7 @@ name|rowIndex
 index|]
 return|;
 block|}
-comment|/**      * Zip file which contains all entries of this model.      *       * @return zip file      */
+comment|/**          * Zip file which contains all entries of this model.          *           * @return zip file          */
 DECL|method|getZipFile ()
 specifier|public
 name|ZipFile
@@ -465,7 +465,7 @@ operator|.
 name|zipFile
 return|;
 block|}
-comment|/*      *  (non-Javadoc)      * @see javax.swing.table.TableModel#getValueAt(int, int)      */
+comment|/*          *  (non-Javadoc)          * @see javax.swing.table.TableModel#getValueAt(int, int)          */
 DECL|method|getValueAt (int rowIndex, int columnIndex)
 specifier|public
 name|Object
@@ -583,7 +583,7 @@ specifier|private
 name|ImportCustomizationDialog
 name|importCustomizationDialog
 decl_stmt|;
-comment|/*    *  (non-Javadoc)    * @see java.awt.Component#getSize()    */
+comment|/*      *  (non-Javadoc)      * @see java.awt.Component#getSize()      */
 DECL|method|getSize ()
 specifier|public
 name|Dimension
@@ -600,7 +600,7 @@ literal|300
 argument_list|)
 return|;
 block|}
-comment|/**    * Entries that can be selected with this dialog.    *     * @param zipFile  Zip-File    * @return  entries that can be selected    */
+comment|/**      * Entries that can be selected with this dialog.      *       * @param zipFile  Zip-File      * @return  entries that can be selected      */
 DECL|method|getSelectableZipEntries (ZipFile zipFile)
 specifier|private
 name|ZipEntry
@@ -697,7 +697,7 @@ index|]
 argument_list|)
 return|;
 block|}
-comment|/**    * New Zip file chooser.    *     * @param owner  Owner of the file chooser    * @param zipFile  Zip-Fle to choose from, must be readable    * @throws HeadlessException    */
+comment|/**      * New Zip file chooser.      *       * @param owner  Owner of the file chooser      * @param zipFile  Zip-Fle to choose from, must be readable      * @throws HeadlessException      */
 DECL|method|ZipFileChooser (ImportCustomizationDialog owner, ZipFile zipFile)
 specifier|public
 name|ZipFileChooser

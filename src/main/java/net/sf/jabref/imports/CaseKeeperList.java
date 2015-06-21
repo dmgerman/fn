@@ -1995,7 +1995,7 @@ DECL|method|CaseKeeperList ()
 specifier|public
 name|CaseKeeperList
 parameter_list|()
-block|{        }
+block|{      }
 comment|/* Return all lists concatenated      * Can be done faster once deciding on Java 6.0      * see: http://stackoverflow.com/questions/80476/how-to-concatenate-two-arrays-in-java      */
 DECL|method|getAll ()
 specifier|public

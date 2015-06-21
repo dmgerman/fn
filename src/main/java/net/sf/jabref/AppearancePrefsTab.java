@@ -641,7 +641,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|/*menuFontButton.addActionListener(new ActionListener() {          public void actionPerformed(ActionEvent e) {              Font f=new FontSelectorDialog                  (null, menuFont).getSelectedFont();              if(f==null)                  return;              else                  menuFont = f;          }          });*/
+comment|/*menuFontButton.addActionListener(new ActionListener() {              public void actionPerformed(ActionEvent e) {                  Font f=new FontSelectorDialog                      (null, menuFont).getSelectedFont();                  if(f==null)                      return;                  else                      menuFont = f;              }              });*/
 name|JPanel
 name|pan
 init|=

@@ -144,7 +144,7 @@ name|XMPSchemaBibtex
 extends|extends
 name|XMPSchema
 block|{
-comment|/** 	 * The namespace of this schema. 	 */
+comment|/**      * The namespace of this schema.      */
 DECL|field|NAMESPACE
 specifier|public
 specifier|static
@@ -163,7 +163,7 @@ name|KEY
 init|=
 literal|"bibtex"
 decl_stmt|;
-comment|/** 	 * Create a new empty XMPSchemaBibtex as a child in the given XMPMetadata. 	 *  	 * @param parent 	 */
+comment|/**      * Create a new empty XMPSchemaBibtex as a child in the given XMPMetadata.      *       * @param parent      */
 DECL|method|XMPSchemaBibtex (XMPMetadata parent)
 specifier|public
 name|XMPSchemaBibtex
@@ -182,7 +182,7 @@ name|NAMESPACE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Create schema from an existing XML element. 	 *  	 * @param e 	 *            The existing XML element. 	 */
+comment|/**      * Create schema from an existing XML element.      *       * @param e      *            The existing XML element.      */
 DECL|method|XMPSchemaBibtex (Element e, String namespace)
 specifier|public
 name|XMPSchemaBibtex
@@ -219,7 +219,7 @@ operator|+
 name|propertyName
 return|;
 block|}
-comment|/**      * Uses XMPSchema methods 	 *  	 * @param field 	 * @return 	 */
+comment|/**      * Uses XMPSchema methods      *       * @param field      * @return      */
 DECL|method|getPersonList (String field)
 specifier|public
 name|List
@@ -239,7 +239,7 @@ name|field
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Uses XMPSchema methods      * 	 * @param field 	 * @param value 	 */
+comment|/**      * Uses XMPSchema methods      *      * @param field      * @param value      */
 DECL|method|setPersonList (String field, String value)
 specifier|public
 name|void
@@ -706,7 +706,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** 	 * Returns a map of all properties and their values. LIs and bags in seqs 	 * are concatenated using " and ". 	 *  	 * @return Map from name of textproperty (String) to value (String). For 	 *         instance: "year" => "2005". Empty map if none found. 	 * @throws TransformerException 	 */
+comment|/**      * Returns a map of all properties and their values. LIs and bags in seqs      * are concatenated using " and ".      *       * @return Map from name of textproperty (String) to value (String). For      *         instance: "year" => "2005". Empty map if none found.      * @throws TransformerException      */
 DECL|method|getAllProperties (XMPSchema schema, String namespaceName)
 specifier|public
 specifier|static
@@ -1088,7 +1088,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/* 		 * Collapse Whitespace 		 *  		 * Quoting from 		 * http://www.gerg.ca/software/btOOL/doc/bt_postprocess.html:<cite> 		 * "The exact rules for collapsing whitespace are simple: non-space 		 * whitespace characters (tabs and newlines mainly) are converted to 		 * space, any strings of more than one space within are collapsed to a 		 * single space, and any leading or trailing spaces are deleted." 		 *</cite> 		 */
+comment|/*          * Collapse Whitespace          *           * Quoting from          * http://www.gerg.ca/software/btOOL/doc/bt_postprocess.html:<cite>          * "The exact rules for collapsing whitespace are simple: non-space          * whitespace characters (tabs and newlines mainly) are converted to          * space, any strings of more than one space within are collapsed to a          * single space, and any leading or trailing spaces are deleted."          *</cite>          */
 for|for
 control|(
 name|Map
@@ -1207,7 +1207,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 *  	 * @param entry 	 * @param database maybenull 	 */
+comment|/**      *       * @param entry      * @param database maybenull      */
 DECL|method|setBibtexEntry (BibtexEntry entry, BibtexDatabase database)
 specifier|public
 name|void
@@ -1444,7 +1444,7 @@ return|return
 name|e
 return|;
 block|}
-comment|/** 	 * Taken from DOM2Utils.java: 	 *  	 * JBoss, the OpenSource EJB server 	 *  	 * Distributable under LGPL license. See terms of license at gnu.org. 	 */
+comment|/**      * Taken from DOM2Utils.java:      *       * JBoss, the OpenSource EJB server      *       * Distributable under LGPL license. See terms of license at gnu.org.      */
 DECL|method|getTextContent (Node node)
 specifier|public
 specifier|static

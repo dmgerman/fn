@@ -85,7 +85,7 @@ specifier|public
 name|ExportFormatTemplateExtension
 name|extension
 decl_stmt|;
-comment|/** 	 * Load the plugin from the given extension. Might be null if extension 	 * could not be loaded. 	 *  	 * @param extension 	 * @return 	 */
+comment|/**      * Load the plugin from the given extension. Might be null if extension      * could not be loaded.      *       * @param extension      * @return      */
 DECL|method|getFormat ( ExportFormatTemplateExtension extension)
 specifier|public
 specifier|static

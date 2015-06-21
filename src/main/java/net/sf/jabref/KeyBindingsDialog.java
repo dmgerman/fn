@@ -394,7 +394,7 @@ name|clickedSave
 init|=
 literal|false
 decl_stmt|;
-comment|/**    * Checked by the caller whether user has confirmed the change    * @return true if the user wants the keybindings to be stored    */
+comment|/**      * Checked by the caller whether user has confirmed the change      * @return true if the user wants the keybindings to be stored      */
 DECL|method|getAction ()
 name|boolean
 name|getAction
@@ -404,7 +404,7 @@ return|return
 name|clickedSave
 return|;
 block|}
-comment|/**    * Used by the caller to retrieve the keybindings    */
+comment|/**      * Used by the caller to retrieve the keybindings      */
 DECL|method|getNewKeyBindings ()
 name|HashMap
 argument_list|<
@@ -787,7 +787,7 @@ name|NORTH
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * respond to grabKey and display the key binding    */
+comment|/**      * respond to grabKey and display the key binding      */
 DECL|class|JBM_CustomKeyBindingsListener
 specifier|private
 class|class
@@ -1064,7 +1064,7 @@ expr_stmt|;
 comment|//table.setValueAt(newKey, );
 block|}
 block|}
-comment|/**    * put the corresponding key binding into keyTF    */
+comment|/**      * put the corresponding key binding into keyTF      */
 DECL|class|MyListSelectionListener
 specifier|private
 class|class
@@ -1139,7 +1139,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/**    * Puts the content of bindHM into the table    */
+comment|/**      * Puts the content of bindHM into the table      */
 DECL|method|setList ()
 specifier|private
 name|void
@@ -1928,7 +1928,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Resets a single accelerator key    * @param name the action name    * @return the default accelerator key    */
+comment|/**      * Resets a single accelerator key      * @param name the action name      * @return the default accelerator key      */
 DECL|method|setToDefault (String name)
 specifier|private
 name|String
@@ -1961,7 +1961,7 @@ return|return
 name|defKey
 return|;
 block|}
-comment|/*        public static void main(String args[])        {     HashMap h=new HashMap();     h.put("new-bibtex","ctrl N");     h.put("edit-bibtex","ctrl E");     h.put("exit-bibtex","ctrl Q");     KeyBindingsDialog d= new KeyBindingsDialog(h);     d.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);     d.setSize(200,300);     d.setVisible(true);      }*/
+comment|/*          public static void main(String args[])          {       HashMap h=new HashMap();       h.put("new-bibtex","ctrl N");       h.put("edit-bibtex","ctrl E");       h.put("exit-bibtex","ctrl Q");       KeyBindingsDialog d= new KeyBindingsDialog(h);       d.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);       d.setSize(200,300);       d.setVisible(true);        }*/
 block|}
 end_class
 

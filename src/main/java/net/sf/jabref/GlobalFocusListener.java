@@ -76,7 +76,7 @@ DECL|method|GlobalFocusListener ()
 specifier|public
 name|GlobalFocusListener
 parameter_list|()
-block|{   }
+block|{     }
 DECL|method|focusGained (FocusEvent e)
 specifier|public
 name|void
@@ -113,7 +113,7 @@ parameter_list|(
 name|FocusEvent
 name|e
 parameter_list|)
-block|{   }
+block|{     }
 DECL|method|getFocused ()
 specifier|public
 name|JComponent

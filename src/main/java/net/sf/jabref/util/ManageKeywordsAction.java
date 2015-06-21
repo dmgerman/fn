@@ -1277,7 +1277,7 @@ parameter_list|(
 name|KeyEvent
 name|arg0
 parameter_list|)
-block|{}
+block|{             }
 specifier|public
 name|void
 name|keyReleased
@@ -1285,7 +1285,7 @@ parameter_list|(
 name|KeyEvent
 name|arg0
 parameter_list|)
-block|{}
+block|{             }
 specifier|public
 name|void
 name|keyPressed
@@ -1371,7 +1371,7 @@ parameter_list|(
 name|KeyEvent
 name|e
 parameter_list|)
-block|{}
+block|{             }
 specifier|public
 name|void
 name|keyReleased
@@ -1379,7 +1379,7 @@ parameter_list|(
 name|KeyEvent
 name|e
 parameter_list|)
-block|{}
+block|{             }
 specifier|public
 name|void
 name|keyPressed

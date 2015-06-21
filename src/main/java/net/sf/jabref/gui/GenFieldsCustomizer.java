@@ -1129,7 +1129,7 @@ operator|.
 name|updateEntryEditorTabList
 argument_list|()
 expr_stmt|;
-comment|/*     String delimStr = fieldsArea.getText().replaceAll("\\s+","")         .replaceAll("\\n+","").trim();     parent.prefs.putStringArray("generalFields", Util.delimToStringArray(delimStr, ";"));       */
+comment|/*         String delimStr = fieldsArea.getText().replaceAll("\\s+","")           .replaceAll("\\n+","").trim();         parent.prefs.putStringArray("generalFields", Util.delimToStringArray(delimStr, ";"));         */
 name|parent
 operator|.
 name|removeCachedEntryEditors

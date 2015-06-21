@@ -314,7 +314,7 @@ name|LOOKAHEAD
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Shortcut usage to create a Parser and read the input. 	 *  	 * @param in - 	 *            Reader to read from 	 * @throws IOException 	 */
+comment|/**      * Shortcut usage to create a Parser and read the input.      *       * @param in -      *            Reader to read from      * @throws IOException      */
 DECL|method|parse (Reader in)
 specifier|public
 specifier|static
@@ -343,7 +343,7 @@ name|parse
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Parses BibtexEntries from the given string and returns the collection of all entries found. 	 *  	 * @param bibtexString 	 *  	 * @return Returns null if an error occurred, returns an empty collection if no entries where found.  	 */
+comment|/**      * Parses BibtexEntries from the given string and returns the collection of all entries found.      *       * @param bibtexString      *       * @return Returns null if an error occurred, returns an empty collection if no entries where found.       */
 DECL|method|fromString (String bibtexString)
 specifier|public
 specifier|static
@@ -401,7 +401,7 @@ literal|null
 return|;
 block|}
 block|}
-comment|/** 	 * Parses BibtexEntries from the given string and returns one entry found (or null if none found) 	 *  	 * It is undetermined which entry is returned, so use this in case you know there is only one entry in the string. 	 *  	 * @param bibtexString 	 *  	 * @return The bibtexentry or null if non was found or an error occurred. 	 */
+comment|/**      * Parses BibtexEntries from the given string and returns one entry found (or null if none found)      *       * It is undetermined which entry is returned, so use this in case you know there is only one entry in the string.      *       * @param bibtexString      *       * @return The bibtexentry or null if non was found or an error occurred.      */
 DECL|method|singleFromString (String bibtexString)
 specifier|public
 specifier|static
@@ -455,7 +455,7 @@ name|next
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Check whether the source is in the correct format for this importer. 	 */
+comment|/**      * Check whether the source is in the correct format for this importer.      */
 DECL|method|isRecognizedFormat (Reader inOrig)
 specifier|public
 specifier|static
@@ -606,7 +606,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-comment|/* 			 * try { Thread.currentThread().sleep(500); } catch 			 * (InterruptedException ex) {} 			 */
+comment|/*              * try { Thread.currentThread().sleep(500); } catch              * (InterruptedException ex) {}              */
 break|break;
 block|}
 block|}
@@ -723,7 +723,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-comment|/* 			 * try { Thread.currentThread().sleep(500); } catch 			 * (InterruptedException ex) {} 			 */
+comment|/*              * try { Thread.currentThread().sleep(500); } catch              * (InterruptedException ex) {}              */
 break|break;
 block|}
 return|return
@@ -733,7 +733,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Will parse the BibTex-Data found when reading from reader. 	 *  	 * The reader will be consumed. 	 *  	 * Multiple calls to parse() return the same results 	 *  	 * @return ParserResult 	 * @throws IOException 	 */
+comment|/**      * Will parse the BibTex-Data found when reading from reader.      *       * The reader will be consumed.      *       * Multiple calls to parse() return the same results      *       * @return ParserResult      * @throws IOException      */
 DECL|method|parse ()
 specifier|public
 name|ParserResult
@@ -990,7 +990,7 @@ init|=
 name|parseBracketedTextExactly
 argument_list|()
 decl_stmt|;
-comment|/** 						 *  						 * Metadata are used to store Bibkeeper-specific 						 * information in .bib files. 						 *  						 * Metadata are stored in bibtex files in the format 						 *  						 * @comment{jabref-meta: type:data0;data1;data2;...} 						 *  						 * Each comment that starts with the META_FLAG is stored 						 * in the meta HashMap, with type as key. Unluckily, the 						 * old META_FLAG bibkeeper-meta: was used in JabRef 1.0 						 * and 1.1, so we need to support it as well. At least 						 * for a while. We'll always save with the new one. 						 */
+comment|/**                          *                           * Metadata are used to store Bibkeeper-specific                          * information in .bib files.                          *                           * Metadata are stored in bibtex files in the format                          *                           * @comment{jabref-meta: type:data0;data1;data2;...}                          *                           * Each comment that starts with the META_FLAG is stored                          * in the meta HashMap, with type as key. Unluckily, the                          * old META_FLAG bibkeeper-meta: was used in JabRef 1.0                          * and 1.1, so we need to support it as well. At least                          * for a while. We'll always save with the new one.                          */
 name|String
 name|comment
 init|=
@@ -1287,7 +1287,7 @@ name|isEntry
 condition|)
 comment|// True if not comment, preamble or string.
 block|{
-comment|/** 					 * Morten Alver 13 Aug 2006: Trying to make the parser more 					 * robust. If an exception is thrown when parsing an entry, 					 * drop the entry and try to resume parsing. Add a warning 					 * for the user. 					 *  					 * An alternative solution is to try rescuing the entry for 					 * which parsing failed, by returning the entry with the 					 * exception and adding it before parsing is continued. 					 */
+comment|/**                      * Morten Alver 13 Aug 2006: Trying to make the parser more                      * robust. If an exception is thrown when parsing an entry,                      * drop the entry and try to resume parsing. Add a warning                      * for the user.                      *                       * An alternative solution is to try rescuing the entry for                      * which parsing failed, by returning the entry with the                      * exception and adding it before parsing is continued.                      */
 try|try
 block|{
 name|BibtexEntry
@@ -2073,7 +2073,7 @@ name|text
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/* 				 *  				 * The following code doesn't handle {"} correctly: // value is 				 * a string consume('"'); 				 *  				 * while (!((peek() == '"')&& (j != '\\'))) { j = read(); if 				 * (_eof || (j == -1) || (j == 65535)) { throw new 				 * RuntimeException("Error in line "+line+ ": EOF in 				 * mid-string"); } 				 *  				 * value.append((char) j); } 				 *  				 * consume('"'); 				 */
+comment|/*                  *                   * The following code doesn't handle {"} correctly: // value is                  * a string consume('"');                  *                   * while (!((peek() == '"')&& (j != '\\'))) { j = read(); if                  * (_eof || (j == -1) || (j == 65535)) { throw new                  * RuntimeException("Error in line "+line+ ": EOF in                  * mid-string"); }                  *                   * value.append((char) j); }                  *                   * consume('"');                  */
 block|}
 elseif|else
 if|if
@@ -2138,7 +2138,7 @@ argument_list|(
 name|numString
 argument_list|)
 expr_stmt|;
-comment|/*                 try { 					// Fixme: What is this for? 					value.append(String.valueOf(Integer.parseInt(numString))); 				} catch (NumberFormatException e) { 					// If Integer could not be parsed then just add the text 					// Used to fix [ 1594123 ] Failure to import big numbers 					value.append(numString); 				} 				*/
+comment|/*                 try {                 	// Fixme: What is this for?                 	value.append(String.valueOf(Integer.parseInt(numString)));                 } catch (NumberFormatException e) {                 	// If Integer could not be parsed then just add the text                 	// Used to fix [ 1594123 ] Failure to import big numbers                 	value.append(numString);                 }                 */
 block|}
 elseif|else
 if|if
@@ -2316,11 +2316,11 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Originalinhalt nach parseFieldContent(String) verschoben. 	 * @return 	 * @throws IOException 	 */
+comment|/**      * Originalinhalt nach parseFieldContent(String) verschoben.      * @return      * @throws IOException      */
 comment|//	private String parseFieldContent() throws IOException {
 comment|//		return parseFieldContent(null);
 comment|//	}
-comment|/** 	 * Check if a string at any point has had more ending braces (}) than 	 * opening ones ({). Will e.g. return true for the string "DNA} blahblal 	 * {EPA" 	 *  	 * @param s 	 *            The string to check. 	 * @return true if at any index the brace count is negative. 	 */
+comment|/**      * Check if a string at any point has had more ending braces (}) than      * opening ones ({). Will e.g. return true for the string "DNA} blahblal      * {EPA"      *       * @param s      *            The string to check.      * @return true if at any index the brace count is negative.      */
 DECL|method|hasNegativeBraceCount (String s)
 specifier|private
 name|boolean
@@ -2396,7 +2396,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/** 	 * This method is used to parse string labels, field names, entry type and 	 * numbers outside brackets. 	 */
+comment|/**      * This method is used to parse string labels, field names, entry type and      * numbers outside brackets.      */
 DECL|method|parseTextToken ()
 specifier|private
 name|String
@@ -2534,7 +2534,7 @@ return|;
 block|}
 block|}
 block|}
-comment|/** 	 * Tries to restore the key 	 *  	 * @return rest of key on success, otherwise empty string 	 * @throws IOException 	 *             on Reader-Error 	 */
+comment|/**      * Tries to restore the key      *       * @return rest of key on success, otherwise empty string      * @throws IOException      *             on Reader-Error      */
 DECL|method|fixKey ()
 specifier|private
 name|String
@@ -2704,7 +2704,7 @@ operator|==
 literal|'\n'
 condition|)
 block|{
-comment|/*                          * found whitespaces, entryfieldname completed -> key in                          * keybuffer, skip whitespaces                          */
+comment|/*                      * found whitespaces, entryfieldname completed -> key in                      * keybuffer, skip whitespaces                      */
 name|StringBuilder
 name|newKey
 init|=
@@ -2855,7 +2855,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * removes whitespaces from<code>sb</code> 	 *  	 * @param sb 	 * @return 	 */
+comment|/**      * removes whitespaces from<code>sb</code>      *       * @param sb      * @return      */
 DECL|method|removeWhitespaces (StringBuilder sb)
 specifier|private
 name|StringBuilder
@@ -2924,7 +2924,7 @@ return|return
 name|newSb
 return|;
 block|}
-comment|/** 	 * pushes buffer back into input 	 *  	 * @param sb 	 * @throws IOException 	 *             can be thrown if buffer is bigger than LOOKAHEAD 	 */
+comment|/**      * pushes buffer back into input      *       * @param sb      * @throws IOException      *             can be thrown if buffer is bigger than LOOKAHEAD      */
 DECL|method|unreadBuffer (StringBuilder sb)
 specifier|private
 name|void
@@ -2968,7 +2968,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * This method is used to parse the bibtex key for an entry. 	 */
+comment|/**      * This method is used to parse the bibtex key for an entry.      */
 DECL|method|parseKey ()
 specifier|private
 name|String
@@ -3332,7 +3332,7 @@ operator|--
 expr_stmt|;
 comment|// If we encounter whitespace of any kind, read it as a
 comment|// simple space, and ignore any others that follow immediately.
-comment|/* 			 * if (j == '\n') { if (peek() == '\n') value.append('\n'); } else 			 */
+comment|/*              * if (j == '\n') { if (peek() == '\n') value.append('\n'); } else              */
 if|if
 condition|(
 name|Character

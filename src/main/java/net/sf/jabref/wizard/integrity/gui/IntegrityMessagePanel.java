@@ -642,7 +642,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// ------------------------------------------------------------------------
-DECL|method|updateView ( BibtexEntry entry )
+DECL|method|updateView (BibtexEntry entry)
 specifier|public
 name|void
 name|updateView
@@ -678,7 +678,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|updateView ( BibtexDatabase base )
+DECL|method|updateView (BibtexDatabase base)
 specifier|public
 name|void
 name|updateView
@@ -716,7 +716,7 @@ expr_stmt|;
 block|}
 comment|// ------------------------------------------------------------------------
 comment|//This method is required by ListSelectionListener.
-DECL|method|valueChanged ( ListSelectionEvent e )
+DECL|method|valueChanged (ListSelectionEvent e)
 specifier|public
 name|void
 name|valueChanged
@@ -818,7 +818,7 @@ block|}
 block|}
 comment|// --------------------------------------------------------------------------
 comment|// This methods are required by KeyListener
-DECL|method|keyPressed ( KeyEvent e )
+DECL|method|keyPressed (KeyEvent e)
 specifier|public
 name|void
 name|keyPressed
@@ -826,8 +826,8 @@ parameter_list|(
 name|KeyEvent
 name|e
 parameter_list|)
-block|{   }
-DECL|method|keyReleased ( KeyEvent e )
+block|{     }
+DECL|method|keyReleased (KeyEvent e)
 specifier|public
 name|void
 name|keyReleased
@@ -862,7 +862,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-DECL|method|keyTyped ( KeyEvent e )
+DECL|method|keyTyped (KeyEvent e)
 specifier|public
 name|void
 name|keyTyped
@@ -870,8 +870,8 @@ parameter_list|(
 name|KeyEvent
 name|e
 parameter_list|)
-block|{   }
-DECL|method|actionPerformed ( ActionEvent e )
+block|{     }
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -1082,7 +1082,7 @@ argument_list|(
 literal|"complete"
 argument_list|)
 decl_stmt|;
-DECL|method|getListCellRendererComponent ( JList list, Object value, int index, boolean iss, boolean chf )
+DECL|method|getListCellRendererComponent ( JList list, Object value, int index, boolean iss, boolean chf)
 specifier|public
 name|Component
 name|getListCellRendererComponent

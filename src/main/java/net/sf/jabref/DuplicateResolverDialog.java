@@ -1405,7 +1405,7 @@ parameter_list|(
 name|IOException
 name|ignored
 parameter_list|)
-block|{     }
+block|{         }
 block|}
 DECL|method|setEntries (BibtexEntry newOne, BibtexEntry newTwo)
 specifier|public

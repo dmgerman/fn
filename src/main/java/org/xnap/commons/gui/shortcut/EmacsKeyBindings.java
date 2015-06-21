@@ -1014,7 +1014,7 @@ block|,
 operator|new
 name|JEditorPane
 argument_list|()
-block|, 		}
+block|,     }
 decl_stmt|;
 DECL|field|logger
 specifier|private
@@ -1031,7 +1031,7 @@ operator|.
 name|class
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Loads the emacs keybindings for all common<code>JTextComponent</code>s. 	 *  	 * The shared keymap instances of the concrete subclasses of  	 * {@link JTextComponent} are fed with the keybindings. 	 * 	 * The original keybindings are stored in a backup array. 	 */
+comment|/**      * Loads the emacs keybindings for all common<code>JTextComponent</code>s.      *       * The shared keymap instances of the concrete subclasses of       * {@link JTextComponent} are fed with the keybindings.      *      * The original keybindings are stored in a backup array.      */
 DECL|method|load ()
 specifier|public
 specifier|static
@@ -1175,7 +1175,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Restores the original keybindings for the concrete subclasses of 	 * {@link JTextComponent}. 	 * 	 */
+comment|/**      * Restores the original keybindings for the concrete subclasses of      * {@link JTextComponent}.      *      */
 DECL|method|unload ()
 specifier|public
 specifier|static
@@ -2441,7 +2441,7 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{ 				}
+block|{                 }
 block|}
 block|}
 block|}
@@ -2705,7 +2705,7 @@ return|return
 name|jtc
 return|;
 block|}
-comment|/**     	 * Adds text to the front of the kill ring.     	 *<p>     	 * Deviating from the Emacs implementation we make sure the      	 * exact same text is not somewhere else in the ring.     	 */
+comment|/**          * Adds text to the front of the kill ring.          *<p>          * Deviating from the Emacs implementation we make sure the           * exact same text is not somewhere else in the ring.          */
 DECL|method|add (String text)
 name|void
 name|add
@@ -2770,7 +2770,7 @@ name|next
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**     	 * Returns an unmodifiable version of the ring list which contains     	 * the killed texts.     	 * @return the content of the kill ring     	 */
+comment|/**          * Returns an unmodifiable version of the ring list which contains          * the killed texts.          * @return the content of the kill ring          */
 DECL|method|getRing ()
 specifier|public
 name|List
@@ -2802,7 +2802,7 @@ name|isEmpty
 argument_list|()
 return|;
 block|}
-comment|/**     	 * Returns the next text element which is to be yank-popped.     	 * @return<code>null</code> if the ring is empty     	 */
+comment|/**          * Returns the next text element which is to be yank-popped.          * @return<code>null</code> if the ring is empty          */
 DECL|method|next ()
 name|String
 name|next
@@ -2883,7 +2883,7 @@ name|nm
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 		 * At first the same code as in {@link 		 * EmacsKeyBindings.DowncaseWordAction} is performed, to ensure the 		 * word is in lower case, then the first letter is capialized. 		 */
+comment|/**          * At first the same code as in {@link          * EmacsKeyBindings.DowncaseWordAction} is performed, to ensure the          * word is in lower case, then the first letter is capialized.          */
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void

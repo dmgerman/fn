@@ -886,7 +886,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Build a string listing of all available export formats. 	 *  	 * @param maxLineLength 	 *            The max line length before a line break must be added. 	 * @param linePrefix 	 *            If a line break is added, this prefix will be inserted at the 	 *            beginning of the next line. 	 * @return The string describing available formats. 	 */
+comment|/**      * Build a string listing of all available export formats.      *       * @param maxLineLength      *            The max line length before a line break must be added.      * @param linePrefix      *            If a line break is added, this prefix will be inserted at the      *            beginning of the next line.      * @return The string describing available formats.      */
 DECL|method|getConsoleExportList (int maxLineLength, int firstLineSubtr, String linePrefix)
 specifier|public
 specifier|static
@@ -1023,7 +1023,7 @@ name|exportFormats
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Look up the named export format. 	 *  	 * @param consoleName 	 *            The export name given in the JabRef console help information. 	 * @return The ExportFormat, or null if no exportformat with that name is 	 *         registered. 	 */
+comment|/**      * Look up the named export format.      *       * @param consoleName      *            The export name given in the JabRef console help information.      * @return The ExportFormat, or null if no exportformat with that name is      *         registered.      */
 DECL|method|getExportFormat (String consoleName)
 specifier|public
 specifier|static
@@ -1043,7 +1043,7 @@ name|consoleName
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Create an AbstractAction for performing an export operation. 	 *  	 * @param frame 	 *            The JabRefFrame of this JabRef instance. 	 * @param selectedOnly 	 *            true indicates that only selected entries should be exported, 	 *            false indicates that all entries should be exported. 	 * @return The action. 	 */
+comment|/**      * Create an AbstractAction for performing an export operation.      *       * @param frame      *            The JabRefFrame of this JabRef instance.      * @param selectedOnly      *            true indicates that only selected entries should be exported,      *            false indicates that all entries should be exported.      * @return The action.      */
 DECL|method|getExportAction (JabRefFrame frame, boolean selectedOnly)
 specifier|public
 specifier|static

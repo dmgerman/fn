@@ -294,7 +294,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/** 	 * Returns a EntryFromFileCreator object that is capable of creating a 	 * BibtexEntry for the given File. 	 *  	 * @param file the pdf file 	 * @return null if there is no EntryFromFileCreator for this File. 	 */
+comment|/**      * Returns a EntryFromFileCreator object that is capable of creating a      * BibtexEntry for the given File.      *       * @param file the pdf file      * @return null if there is no EntryFromFileCreator for this File.      */
 DECL|method|getEntryCreator (File file)
 specifier|public
 name|EntryFromFileCreator
@@ -348,7 +348,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** 	 * Trys to add a entry for each file in the List. 	 *  	 * @param files 	 * @param database 	 * @param entryType 	 * @return List of unexcpected import event messages including failures. 	 */
+comment|/**      * Trys to add a entry for each file in the List.      *       * @param files      * @param database      * @param entryType      * @return List of unexcpected import event messages including failures.      */
 DECL|method|addEntrysFromFiles (List<File> files, BibtexDatabase database, BibtexEntryType entryType, boolean generateKeywordsFromPathToFile)
 specifier|public
 name|List
@@ -407,7 +407,7 @@ return|return
 name|importGUIMessages
 return|;
 block|}
-comment|/** 	 * Tries to add a entry for each file in the List. 	 *  	 * @param files      * @param database      * @param panel 	 * @param entryType 	 * @param generateKeywordsFromPathToFile 	 * @param changeListener      * @param importGUIMessages list of unexpected import event - Messages including      	 *         failures 	 * @return Returns The number of entries added 	 */
+comment|/**      * Tries to add a entry for each file in the List.      *       * @param files      * @param database      * @param panel      * @param entryType      * @param generateKeywordsFromPathToFile      * @param changeListener      * @param importGUIMessages list of unexpected import event - Messages including      *         failures      * @return Returns The number of entries added      */
 DECL|method|addEntrysFromFiles (List<File> files, BibtexDatabase database, BasePanel panel, BibtexEntryType entryType, boolean generateKeywordsFromPathToFile, ChangeListener changeListener, List<String> importGUIMessages)
 specifier|public
 name|int
@@ -547,7 +547,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* 				 * TODO: database.insertEntry(BibtexEntry) is not sensible. Why 				 * does 'true' mean "There were duplicates", while 'false' means 				 * "Everything alright"? 				 */
+comment|/*                  * TODO: database.insertEntry(BibtexEntry) is not sensible. Why                  * does 'true' mean "There were duplicates", while 'false' means                  * "Everything alright"?                  */
 if|if
 condition|(
 name|database
@@ -708,7 +708,7 @@ return|return
 name|count
 return|;
 block|}
-comment|/** 	 * Returns a {@link FileFilter} instance which will accept all files, for 	 * which a {@link EntryFromFileCreator} exists, that accepts the files.<br> 	 *<br> 	 * This {@link FileFilter} will be displayed in the GUI as 	 * "All supported files". 	 *  	 * @return A {@link FileFilter} that accepts all files for which creators 	 *         exist. 	 */
+comment|/**      * Returns a {@link FileFilter} instance which will accept all files, for      * which a {@link EntryFromFileCreator} exists, that accepts the files.<br>      *<br>      * This {@link FileFilter} will be displayed in the GUI as      * "All supported files".      *       * @return A {@link FileFilter} that accepts all files for which creators      *         exist.      */
 DECL|method|getFileFilter ()
 specifier|public
 name|FileFilter
@@ -720,7 +720,7 @@ operator|new
 name|FileFilter
 argument_list|()
 block|{
-comment|/** 			 * Accepts all files, which are accepted by any known creator. 			 */
+comment|/**              * Accepts all files, which are accepted by any known creator.              */
 specifier|public
 name|boolean
 name|accept
@@ -770,7 +770,7 @@ block|}
 block|}
 return|;
 block|}
-comment|/** 	 * Returns a list of all {@link FileFilter} instances (i.e. 	 * {@link EntryFromFileCreator}, plus the file filter that comes with the 	 * {@link #getFileFilter()} method. 	 *  	 * @return A List of all known possible file filters. 	 */
+comment|/**      * Returns a list of all {@link FileFilter} instances (i.e.      * {@link EntryFromFileCreator}, plus the file filter that comes with the      * {@link #getFileFilter()} method.      *       * @return A List of all known possible file filters.      */
 DECL|method|getFileFilterList ()
 specifier|public
 name|List

@@ -120,7 +120,7 @@ name|put
 argument_list|(
 literal|"'A"
 argument_list|,
-literal|"Ã"
+literal|"Ã?"
 argument_list|)
 expr_stmt|;
 comment|// #193
@@ -240,7 +240,7 @@ name|put
 argument_list|(
 literal|"'I"
 argument_list|,
-literal|"Ã"
+literal|"Ã?"
 argument_list|)
 expr_stmt|;
 comment|// #205
@@ -260,7 +260,7 @@ name|put
 argument_list|(
 literal|"\"I"
 argument_list|,
-literal|"Ã"
+literal|"Ã?"
 argument_list|)
 expr_stmt|;
 comment|// #207
@@ -270,7 +270,7 @@ name|put
 argument_list|(
 literal|"DH"
 argument_list|,
-literal|"Ã"
+literal|"Ã?"
 argument_list|)
 expr_stmt|;
 comment|// #208
@@ -393,7 +393,7 @@ name|put
 argument_list|(
 literal|"'Y"
 argument_list|,
-literal|"Ã"
+literal|"Ã?"
 argument_list|)
 expr_stmt|;
 comment|// #221
@@ -748,7 +748,7 @@ name|put
 argument_list|(
 literal|"=a"
 argument_list|,
-literal|"Ä"
+literal|"Ä?"
 argument_list|)
 expr_stmt|;
 comment|// "amacr"
@@ -868,7 +868,7 @@ name|put
 argument_list|(
 literal|"vc"
 argument_list|,
-literal|"Ä"
+literal|"Ä?"
 argument_list|)
 expr_stmt|;
 comment|// "ccaron"
@@ -889,7 +889,7 @@ name|put
 argument_list|(
 literal|"DJ"
 argument_list|,
-literal|"Ä"
+literal|"Ä?"
 argument_list|)
 expr_stmt|;
 comment|// "Dstrok"
@@ -1019,7 +1019,7 @@ name|put
 argument_list|(
 literal|"^g"
 argument_list|,
-literal|"Ä"
+literal|"Ä?"
 argument_list|)
 expr_stmt|;
 comment|// "gcirc"
@@ -1334,7 +1334,7 @@ name|put
 argument_list|(
 literal|"L"
 argument_list|,
-literal|"Å"
+literal|"Å?"
 argument_list|)
 expr_stmt|;
 comment|// "Lstrok"
@@ -1445,7 +1445,7 @@ name|put
 argument_list|(
 literal|"=o"
 argument_list|,
-literal|"Å"
+literal|"Å?"
 argument_list|)
 expr_stmt|;
 comment|// "omacr"
@@ -1465,7 +1465,7 @@ name|put
 argument_list|(
 literal|"uo"
 argument_list|,
-literal|"Å"
+literal|"Å?"
 argument_list|)
 expr_stmt|;
 comment|// "obreve"
@@ -1475,7 +1475,7 @@ name|put
 argument_list|(
 literal|"HO"
 argument_list|,
-literal|"Å"
+literal|"Å?"
 argument_list|)
 expr_stmt|;
 comment|// "Odblac"
@@ -1605,7 +1605,7 @@ name|put
 argument_list|(
 literal|"^s"
 argument_list|,
-literal|"Å"
+literal|"Å?"
 argument_list|)
 expr_stmt|;
 comment|// "scirc"
@@ -2387,7 +2387,7 @@ argument_list|(
 name|command
 argument_list|)
 decl_stmt|;
-comment|/* If found, then use translated version. If not, 							 * then keep 							 * the text of the parameter intact. 							 */
+comment|/* If found, then use translated version. If not,                              * then keep                              * the text of the parameter intact.                              */
 if|if
 condition|(
 name|result
@@ -2662,10 +2662,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/* else if (c == '}') {                     System.out.printf("com term by }: '%s'\n", currentCommand.toString());                      argument = ""; 				}*/
+comment|/* else if (c == '}') {                     System.out.printf("com term by }: '%s'\n", currentCommand.toString());                      argument = "";                  }*/
 else|else
 block|{
-comment|/* 					 * TODO: this point is reached, apparently, if a command is 					 * terminated in a strange way, such as with "$\omega$". 					 * Also, the command "\&" causes us to get here. The former 					 * issue is maybe a little difficult to address, since it 					 * involves the LaTeX math mode. We don't have a complete 					 * LaTeX parser, so maybe it's better to ignore these 					 * commands? 					 */
+comment|/*                      * TODO: this point is reached, apparently, if a command is                      * terminated in a strange way, such as with "$\omega$".                      * Also, the command "\&" causes us to get here. The former                      * issue is maybe a little difficult to address, since it                      * involves the LaTeX math mode. We don't have a complete                      * LaTeX parser, so maybe it's better to ignore these                      * commands?                      */
 block|}
 name|incommand
 operator|=

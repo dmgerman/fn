@@ -171,7 +171,7 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{          }
+block|{                  }
 block|}
 if|if
 condition|(
@@ -219,7 +219,7 @@ return|return
 name|ready
 return|;
 block|}
-DECL|method|getNodes ( String name )
+DECL|method|getNodes (String name)
 specifier|public
 name|NodeList
 name|getNodes
@@ -238,7 +238,7 @@ argument_list|)
 return|;
 block|}
 comment|// ---------------------------------------------------------------------------
-DECL|method|getFirstElement ( Element element, String name )
+DECL|method|getFirstElement (Element element, String name)
 specifier|private
 name|Element
 name|getFirstElement
@@ -297,7 +297,7 @@ argument_list|)
 return|;
 block|}
 comment|/** returns all "plain" data of a subnode with name<name> */
-DECL|method|getSimpleElementText ( Element node, String name )
+DECL|method|getSimpleElementText (Element node, String name)
 specifier|public
 name|String
 name|getSimpleElementText
@@ -327,7 +327,7 @@ argument_list|)
 return|;
 block|}
 comment|/** collect all "plain" data of a xml node */
-DECL|method|getSimpleElementText ( Element node )
+DECL|method|getSimpleElementText (Element node)
 specifier|public
 name|String
 name|getSimpleElementText
@@ -411,7 +411,7 @@ block|}
 comment|// ---------------------------------------------------------------------------
 comment|// read some attributes
 comment|// --------------------------------------------------------------------------
-DECL|method|readIntegerAttribute ( Element node, String attrName, int defaultValue )
+DECL|method|readIntegerAttribute (Element node, String attrName, int defaultValue)
 specifier|public
 name|int
 name|readIntegerAttribute
@@ -482,7 +482,7 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{}
+block|{                     }
 block|}
 block|}
 block|}
@@ -490,7 +490,7 @@ return|return
 name|back
 return|;
 block|}
-DECL|method|readStringAttribute ( Element node, String attrName, String defaultValue )
+DECL|method|readStringAttribute (Element node, String attrName, String defaultValue)
 specifier|public
 name|String
 name|readStringAttribute
@@ -549,7 +549,7 @@ return|return
 name|defaultValue
 return|;
 block|}
-DECL|method|readDoubleAttribute ( Element node, String attrName, double defaultValue )
+DECL|method|readDoubleAttribute (Element node, String attrName, double defaultValue)
 specifier|public
 name|double
 name|readDoubleAttribute

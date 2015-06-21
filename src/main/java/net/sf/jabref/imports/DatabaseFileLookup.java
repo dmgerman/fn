@@ -215,7 +215,7 @@ name|String
 index|[]
 name|possibleFilePaths
 decl_stmt|;
-comment|/** 	 * Creates an instance by passing a {@link BibtexDatabase} which will be 	 * used for the searches. 	 *  	 * @param aDatabase 	 *            A {@link BibtexDatabase}. 	 */
+comment|/**      * Creates an instance by passing a {@link BibtexDatabase} which will be      * used for the searches.      *       * @param aDatabase      *            A {@link BibtexDatabase}.      */
 DECL|method|DatabaseFileLookup (BibtexDatabase aDatabase)
 specifier|public
 name|DatabaseFileLookup
@@ -264,7 +264,7 @@ name|FILE_FIELD
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Returns whether the File<code>aFile</code> is present in the database 	 * as an attached File to an {@link BibtexEntry}.<br> 	 *<br> 	 * To do this, the field specified by the key<b>file</b> will be searched 	 * for the provided file for every {@link BibtexEntry} in the database.<br> 	 *<br> 	 * For the matching, the absolute file paths will be used. 	 *  	 * @param aFile 	 *            A {@link File} Object. 	 * @return<code>true</code>, if the file Object is stored in at least one 	 *         entry in the database, otherwise<code>false</code>. 	 */
+comment|/**      * Returns whether the File<code>aFile</code> is present in the database      * as an attached File to an {@link BibtexEntry}.<br>      *<br>      * To do this, the field specified by the key<b>file</b> will be searched      * for the provided file for every {@link BibtexEntry} in the database.<br>      *<br>      * For the matching, the absolute file paths will be used.      *       * @param aFile      *            A {@link File} Object.      * @return<code>true</code>, if the file Object is stored in at least one      *         entry in the database, otherwise<code>false</code>.      */
 DECL|method|lookupDatabase (File aFile)
 specifier|public
 name|boolean
@@ -340,7 +340,7 @@ name|res
 return|;
 block|}
 block|}
-comment|/** 	 * Searches the specified {@link BibtexEntry}<code>anEntry</code> for the 	 * appearance of the specified {@link File}<code>aFile</code>.<br> 	 *<br> 	 * Therefore the<i>file</i>-field of the bibtex-entry will be searched for 	 * the absolute filepath of the searched file.<br> 	 *<br> 	 *  	 * @param aFile 	 *            A file that is searched in an bibtex-entry. 	 * @param anEntry 	 *            A bibtex-entry, in which the file is searched. 	 * @return<code>true</code>, if the bibtex entry stores the file in its 	 *<i>file</i>-field, otherwise<code>false</code>. 	 */
+comment|/**      * Searches the specified {@link BibtexEntry}<code>anEntry</code> for the      * appearance of the specified {@link File}<code>aFile</code>.<br>      *<br>      * Therefore the<i>file</i>-field of the bibtex-entry will be searched for      * the absolute filepath of the searched file.<br>      *<br>      *       * @param aFile      *            A file that is searched in an bibtex-entry.      * @param anEntry      *            A bibtex-entry, in which the file is searched.      * @return<code>true</code>, if the bibtex entry stores the file in its      *<i>file</i>-field, otherwise<code>false</code>.      */
 DECL|method|lookupEntry (File aFile, BibtexEntry anEntry)
 specifier|public
 name|boolean

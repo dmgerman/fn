@@ -49,7 +49,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** EntryCreator for any predefined ExternalFileType.  * This Creator accepts all files with the extension defined in the ExternalFileType. */
+comment|/** EntryCreator for any predefined ExternalFileType.  * This Creator accepts all files with the extension defined in the ExternalFileType.  */
 end_comment
 
 begin_class

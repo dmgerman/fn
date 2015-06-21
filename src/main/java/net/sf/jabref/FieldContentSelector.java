@@ -219,7 +219,7 @@ DECL|field|delimiter
 name|String
 name|delimiter
 decl_stmt|;
-comment|/** 	 *  	 * Create a new FieldContentSelector. 	 *  	 * @param frame 	 *            The one JabRef-Frame. 	 * @param panel 	 *            The basepanel the entry-editor is on. 	 * @param owner 	 *            The window/frame/dialog which should be the owner of the 	 *            content selector dialog. 	 * @param editor 	 *            The entry editor which will be appended by the text selected 	 *            by the user from the combobox. 	 * @param metaData 	 *            The metadata that contains the list of items to display in the 	 *            combobox under the key Globals.SELECTOR_META_PREFIX + 	 *            editor.getFieldName(). 	 * @param action 	 *            The action that will be performed to after an item from the 	 *            combobox has been appended to the text in the entryeditor. 	 * @param horizontalLayout 	 *            Whether to put a 2 pixel horizontal strut between combobox and 	 *            button. 	 */
+comment|/**      *       * Create a new FieldContentSelector.      *       * @param frame      *            The one JabRef-Frame.      * @param panel      *            The basepanel the entry-editor is on.      * @param owner      *            The window/frame/dialog which should be the owner of the      *            content selector dialog.      * @param editor      *            The entry editor which will be appended by the text selected      *            by the user from the combobox.      * @param metaData      *            The metadata that contains the list of items to display in the      *            combobox under the key Globals.SELECTOR_META_PREFIX +      *            editor.getFieldName().      * @param action      *            The action that will be performed to after an item from the      *            combobox has been appended to the text in the entryeditor.      * @param horizontalLayout      *            Whether to put a 2 pixel horizontal strut between combobox and      *            button.      */
 DECL|method|FieldContentSelector (JabRefFrame frame, final BasePanel panel, Window owner, final FieldEditor editor, final MetaData metaData, final AbstractAction action, boolean horizontalLayout, String delimiter)
 specifier|public
 name|FieldContentSelector
@@ -431,7 +431,7 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
-comment|/* 				 * These conditions signify arrow key navigation in the dropdown 				 * list, so we should not react to it. I'm not sure if this is 				 * well defined enough to be guaranteed to work everywhere. 				 */
+comment|/*                  * These conditions signify arrow key navigation in the dropdown                  * list, so we should not react to it. I'm not sure if this is                  * well defined enough to be guaranteed to work everywhere.                  */
 if|if
 condition|(
 name|e

@@ -190,8 +190,8 @@ DECL|method|SPIRESFetcher ()
 specifier|public
 name|SPIRESFetcher
 parameter_list|()
-block|{ 	}
-comment|/** 	 * Construct the query URL 	 *  	 * @param key 	 *            The key of the OAI2 entry that the url should poitn to. 	 *  	 * @return a String denoting the query URL 	 */
+block|{     }
+comment|/**      * Construct the query URL      *       * @param key      *            The key of the OAI2 entry that the url should poitn to.      *       * @return a String denoting the query URL      */
 DECL|method|constructUrl (String key)
 specifier|public
 name|String
@@ -248,7 +248,7 @@ operator|+
 literal|"&FORMAT=WWWBRIEFBIBTEX&SEQUENCE="
 return|;
 block|}
-comment|/** 	 * Constructs a SPIRES query url from slaccitation field 	 *  	 * @param slaccitation 	 * @return query string 	 */
+comment|/**      * Constructs a SPIRES query url from slaccitation field      *       * @param slaccitation      * @return query string      */
 DECL|method|constructUrlFromSlaccitation (String slaccitation)
 specifier|public
 specifier|static
@@ -315,7 +315,7 @@ parameter_list|(
 name|UnsupportedEncodingException
 name|ignored
 parameter_list|)
-block|{ 		}
+block|{         }
 return|return
 literal|"http://"
 operator|+
@@ -336,7 +336,7 @@ operator|+
 name|key
 return|;
 block|}
-comment|/** 	 * Construct an SPIRES query url from eprint field 	 *  	 * @param eprint 	 * @return query string 	 */
+comment|/**      * Construct an SPIRES query url from eprint field      *       * @param eprint      * @return query string      */
 DECL|method|constructUrlFromEprint (String eprint)
 specifier|public
 specifier|static
@@ -399,7 +399,7 @@ operator|+
 name|key
 return|;
 block|}
-comment|/** 	 * Import an entry from an OAI2 archive. The BibtexEntry provided has to 	 * have the field OAI2_IDENTIFIER_FIELD set to the search string. 	 *  	 * @param key 	 *            The OAI2 key to fetch from ArXiv. 	 * @return The imnported BibtexEntry or null if none. 	 */
+comment|/**      * Import an entry from an OAI2 archive. The BibtexEntry provided has to      * have the field OAI2_IDENTIFIER_FIELD set to the search string.      *       * @param key      *            The OAI2 key to fetch from ArXiv.      * @return The imnported BibtexEntry or null if none.      */
 DECL|method|importSpiresEntries (String key, OutputPrinter frame)
 specifier|private
 name|BibtexDatabase
@@ -586,7 +586,7 @@ comment|// Iterator<BibtexEntry> iter = db.getEntries().iterator();
 comment|// while (iter.hasNext())
 comment|// addSpiresURL(iter.next());
 comment|// }
-comment|/* 	 * @see net.sf.jabref.imports.EntryFetcher 	 */
+comment|/*      * @see net.sf.jabref.imports.EntryFetcher      */
 DECL|method|getHelpPage ()
 specifier|public
 name|String
@@ -649,13 +649,13 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/* 	 * @see net.sf.jabref.gui.ImportInspectionDialog.CallBack 	 */
+comment|/*      * @see net.sf.jabref.gui.ImportInspectionDialog.CallBack      */
 DECL|method|cancelled ()
 specifier|public
 name|void
 name|cancelled
 parameter_list|()
-block|{ 	}
+block|{     }
 DECL|method|done (int entriesImported)
 specifier|public
 name|void
@@ -664,14 +664,14 @@ parameter_list|(
 name|int
 name|entriesImported
 parameter_list|)
-block|{ 	}
+block|{     }
 DECL|method|stopFetching ()
 specifier|public
 name|void
 name|stopFetching
 parameter_list|()
-block|{ 	}
-comment|/* 	 * @see java.lang.Runnable 	 */
+block|{     }
+comment|/*      * @see java.lang.Runnable      */
 DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter frame)
 specifier|public
 name|boolean

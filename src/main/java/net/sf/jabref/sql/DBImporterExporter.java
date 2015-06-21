@@ -186,7 +186,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 	 * Returns a Jabref Database ID from the database in case the DB is already 	 * exported. In case the bib was already exported before, the method returns 	 * the id, otherwise it calls the method that inserts a new row and returns 	 * the ID for this new database 	 *  	 * @param metaData 	 *            The MetaData object containing the database information 	 * @param out 	 *            The output (PrintStream or Connection) object to which the DML 	 *            should be written. 	 * @return The ID of database row of the jabref database being exported 	 * @throws SQLException 	 */
+comment|/**      * Returns a Jabref Database ID from the database in case the DB is already      * exported. In case the bib was already exported before, the method returns      * the id, otherwise it calls the method that inserts a new row and returns      * the ID for this new database      *       * @param metaData      *            The MetaData object containing the database information      * @param out      *            The output (PrintStream or Connection) object to which the DML      *            should be written.      * @return The ID of database row of the jabref database being exported      * @throws SQLException      */
 DECL|method|getDatabaseIDByName (MetaData metaData, Object out, String dbName)
 specifier|public
 name|int
@@ -330,7 +330,7 @@ literal|"';"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Removes all records for the database being exported in case it was 	 * exported before. 	 *  	 * @param out 	 *            The output (PrintStream or Connection) object to which the DML 	 *            should be written. 	 * @param database_id 	 *            Id of the database being exported. 	 * @throws SQLException 	 */
+comment|/**      * Removes all records for the database being exported in case it was      * exported before.      *       * @param out      *            The output (PrintStream or Connection) object to which the DML      *            should be written.      * @param database_id      *            Id of the database being exported.      * @throws SQLException      */
 DECL|method|removeAllRecordsForAGivenDB (Object out, int database_id)
 specifier|public
 name|void
@@ -385,7 +385,7 @@ literal|"';"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * This method creates a new row into jabref_database table enabling to 	 * export more than one .bib 	 *  	 * @param metaData 	 *            The MetaData object containing the groups information 	 * @param out 	 *            The output (PrintStream or Connection) object to which the DML 	 *            should be written. 	 *  	 * @throws SQLException 	 */
+comment|/**      * This method creates a new row into jabref_database table enabling to      * export more than one .bib      *       * @param metaData      *            The MetaData object containing the groups information      * @param out      *            The output (PrintStream or Connection) object to which the DML      *            should be written.      *       * @throws SQLException      */
 DECL|method|insertJabRefDatabase (final MetaData metaData, Object out, String dbName)
 specifier|private
 name|void

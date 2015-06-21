@@ -474,7 +474,7 @@ name|format
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Tab to create custom Name Formatters 	 *  	 */
+comment|/**      * Tab to create custom Name Formatters      *       */
 DECL|method|NameFormatterTab (HelpDialog helpDialog)
 specifier|public
 name|NameFormatterTab
@@ -1481,7 +1481,7 @@ literal|true
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Store changes to table preferences. This method is called when the user 	 * clicks Ok. 	 *  	 */
+comment|/**      * Store changes to table preferences. This method is called when the user      * clicks Ok.      *       */
 DECL|method|storeSettings ()
 specifier|public
 name|void

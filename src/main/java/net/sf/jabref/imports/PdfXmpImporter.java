@@ -123,7 +123,7 @@ literal|"XMP-annotated PDF"
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Returns a list of all BibtexEntries found in the inputstream. 	 */
+comment|/**      * Returns a list of all BibtexEntries found in the inputstream.      */
 DECL|method|importEntries (InputStream in, OutputPrinter status)
 specifier|public
 name|List
@@ -150,7 +150,7 @@ name|in
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Returns whether the given stream contains data that is a.) a pdf and b.) 	 * contains at least one BibtexEntry. 	 */
+comment|/**      * Returns whether the given stream contains data that is a.) a pdf and b.)      * contains at least one BibtexEntry.      */
 annotation|@
 name|Override
 DECL|method|isRecognizedFormat (InputStream in)
@@ -173,7 +173,7 @@ name|in
 argument_list|)
 return|;
 block|}
-comment|/** 	 * String used to identify this import filter on the command line. 	 *  	 * @return "xmp" 	 */
+comment|/**      * String used to identify this import filter on the command line.      *       * @return "xmp"      */
 DECL|method|getCLIid ()
 specifier|public
 name|String

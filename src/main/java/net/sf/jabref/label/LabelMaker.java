@@ -251,7 +251,7 @@ argument_list|)
 return|;
 block|}
 comment|// there should be a default rule for any type
-DECL|method|addRule (LabelRule rule,BibtexEntryType type)
+DECL|method|addRule (LabelRule rule, BibtexEntryType type)
 specifier|public
 name|void
 name|addRule

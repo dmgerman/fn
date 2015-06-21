@@ -530,7 +530,7 @@ argument_list|(
 name|command
 argument_list|)
 decl_stmt|;
-comment|/* If found, then use translated version. If not, 							 * then keep 							 * the text of the parameter intact. 							 */
+comment|/* If found, then use translated version. If not,                              * then keep                              * the text of the parameter intact.                              */
 if|if
 condition|(
 name|result
@@ -928,10 +928,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/* else if (c == '}') {                     System.out.printf("com term by }: '%s'\n", currentCommand.toString());                      argument = ""; 				}*/
+comment|/* else if (c == '}') {                     System.out.printf("com term by }: '%s'\n", currentCommand.toString());                      argument = "";                  }*/
 else|else
 block|{
-comment|/* 					 * TODO: this point is reached, apparently, if a command is 					 * terminated in a strange way, such as with "$\omega$". 					 * Also, the command "\&" causes us to get here. The former 					 * issue is maybe a little difficult to address, since it 					 * involves the LaTeX math mode. We don't have a complete 					 * LaTeX parser, so maybe it's better to ignore these 					 * commands? 					 */
+comment|/*                      * TODO: this point is reached, apparently, if a command is                      * terminated in a strange way, such as with "$\omega$".                      * Also, the command "\&" causes us to get here. The former                      * issue is maybe a little difficult to address, since it                      * involves the LaTeX math mode. We don't have a complete                      * LaTeX parser, so maybe it's better to ignore these                      * commands?                      */
 block|}
 name|incommand
 operator|=

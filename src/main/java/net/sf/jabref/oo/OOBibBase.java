@@ -4750,7 +4750,7 @@ return|return
 name|name
 return|;
 block|}
-DECL|method|findCitedEntries (List<BibtexDatabase> databases, List<String> keys, HashMap<String,BibtexDatabase> linkSourceBase)
+DECL|method|findCitedEntries (List<BibtexDatabase> databases, List<String> keys, HashMap<String, BibtexDatabase> linkSourceBase)
 specifier|public
 name|LinkedHashMap
 argument_list|<
@@ -5031,7 +5031,7 @@ return|return
 name|keys
 return|;
 block|}
-DECL|method|getSortedEntriesFromSortedRefMarks (String[] names, Map<BibtexEntry,BibtexDatabase> entries, HashMap<String,BibtexDatabase> linkSourceBase)
+DECL|method|getSortedEntriesFromSortedRefMarks (String[] names, Map<BibtexEntry, BibtexDatabase> entries, HashMap<String, BibtexDatabase> linkSourceBase)
 specifier|public
 name|LinkedHashMap
 argument_list|<
@@ -5836,7 +5836,7 @@ name|trim
 argument_list|()
 return|;
 block|}
-DECL|method|insertFullReferenceAtCursor (XTextCursor cursor, Map<BibtexEntry,BibtexDatabase> entries, OOBibStyle style, String parFormat)
+DECL|method|insertFullReferenceAtCursor (XTextCursor cursor, Map<BibtexEntry, BibtexDatabase> entries, OOBibStyle style, String parFormat)
 specifier|public
 name|void
 name|insertFullReferenceAtCursor
@@ -6043,7 +6043,7 @@ parameter_list|(
 name|NoSuchMethodError
 name|ignore
 parameter_list|)
-block|{                              }
+block|{              }
 name|OOUtil
 operator|.
 name|insertFullReferenceAtCurrentLocation
@@ -6078,7 +6078,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|insertFullReferenceAtViewCursor (Map<BibtexEntry,BibtexDatabase> entries, OOBibStyle style, String parFormat)
+DECL|method|insertFullReferenceAtViewCursor (Map<BibtexEntry, BibtexDatabase> entries, OOBibStyle style, String parFormat)
 specifier|public
 name|void
 name|insertFullReferenceAtViewCursor
@@ -6620,7 +6620,7 @@ name|mxDocCursor
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|populateBibTextSection (Map<BibtexEntry,BibtexDatabase> entries, OOBibStyle style)
+DECL|method|populateBibTextSection (Map<BibtexEntry, BibtexDatabase> entries, OOBibStyle style)
 specifier|public
 name|void
 name|populateBibTextSection

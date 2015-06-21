@@ -413,7 +413,7 @@ operator|=
 literal|true
 expr_stmt|;
 block|}
-comment|/** 	 * Outputs the current configuration to be consumed later by the constructor 	 */
+comment|/**      * Outputs the current configuration to be consumed later by the constructor      */
 DECL|method|getVector ()
 specifier|public
 name|Vector

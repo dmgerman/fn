@@ -277,7 +277,7 @@ DECL|method|JournalAbbreviations ()
 specifier|public
 name|JournalAbbreviations
 parameter_list|()
-block|{              }
+block|{      }
 DECL|method|JournalAbbreviations (String resource)
 specifier|public
 name|JournalAbbreviations

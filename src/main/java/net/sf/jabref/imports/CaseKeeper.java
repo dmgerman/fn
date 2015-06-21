@@ -69,7 +69,7 @@ name|super
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|format (String text, String [] listOfWords)
+DECL|method|format (String text, String[] listOfWords)
 specifier|public
 name|String
 name|format

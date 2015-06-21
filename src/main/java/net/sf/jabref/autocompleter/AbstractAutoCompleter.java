@@ -199,7 +199,7 @@ argument_list|>
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/** 	 * Add a BibtexEntry to this autocompleter. The autocompleter (respectively 	 * to the concrete implementations of {@link AbstractAutoCompleter}) itself 	 * decides which information should be stored for later completion. 	 *  	 */
+comment|/**      * Add a BibtexEntry to this autocompleter. The autocompleter (respectively      * to the concrete implementations of {@link AbstractAutoCompleter}) itself      * decides which information should be stored for later completion.      *       */
 DECL|method|addBibtexEntry (BibtexEntry entry)
 specifier|abstract
 specifier|public
@@ -210,7 +210,7 @@ name|BibtexEntry
 name|entry
 parameter_list|)
 function_decl|;
-comment|/** 	 * States whether the field consists of multiple values (false) or of a single value (true) 	 *  	 * Symptom: if false, {@link net.sf.jabref.gui.AutoCompleteListener#getCurrentWord(JTextComponent comp)}  	 * returns current word only, if true, it returns the text beginning from the buffer 	 */
+comment|/**      * States whether the field consists of multiple values (false) or of a single value (true)      *       * Symptom: if false, {@link net.sf.jabref.gui.AutoCompleteListener#getCurrentWord(JTextComponent comp)}       * returns current word only, if true, it returns the text beginning from the buffer      */
 DECL|method|isSingleUnitField ()
 specifier|abstract
 specifier|public
@@ -218,7 +218,7 @@ name|boolean
 name|isSingleUnitField
 parameter_list|()
 function_decl|;
-comment|/** 	 * Returns one or more possible completions for a given String. The returned 	 * completion depends on which informations were stored while adding 	 * BibtexEntries by the used implementation of {@link AbstractAutoCompleter} 	 * . 	 *  	 * @see AbstractAutoCompleter#addBibtexEntry(BibtexEntry) 	 */
+comment|/**      * Returns one or more possible completions for a given String. The returned      * completion depends on which informations were stored while adding      * BibtexEntries by the used implementation of {@link AbstractAutoCompleter}      * .      *       * @see AbstractAutoCompleter#addBibtexEntry(BibtexEntry)      */
 DECL|method|complete (String str)
 specifier|public
 name|String
@@ -377,7 +377,7 @@ argument_list|)
 return|;
 block|}
 block|}
-comment|/** 	 * Increments the last character of a string. 	 *  	 * Example: incrementLastCharacter("abc") returns "abd". 	 */
+comment|/**      * Increments the last character of a string.      *       * Example: incrementLastCharacter("abc") returns "abd".      */
 DECL|method|incrementLastCharacter (String str)
 specifier|private
 specifier|static

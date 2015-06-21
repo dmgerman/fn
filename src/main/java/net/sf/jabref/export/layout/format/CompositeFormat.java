@@ -53,7 +53,7 @@ name|LayoutFormatter
 index|[]
 name|formatters
 decl_stmt|;
-comment|/** 	 * If called with this constructor, this formatter does nothing. 	 */
+comment|/**      * If called with this constructor, this formatter does nothing.      */
 DECL|method|CompositeFormat ()
 specifier|public
 name|CompositeFormat

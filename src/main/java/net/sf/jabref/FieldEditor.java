@@ -96,14 +96,14 @@ name|String
 name|getFieldName
 parameter_list|()
 function_decl|;
-comment|/* 	 * Returns the component to be added to a container. Might be a JScrollPane 	 * or the component itself. 	 */
+comment|/*      * Returns the component to be added to a container. Might be a JScrollPane      * or the component itself.      */
 DECL|method|getPane ()
 specifier|public
 name|JComponent
 name|getPane
 parameter_list|()
 function_decl|;
-comment|/* 	 * Returns the text component itself. 	 */
+comment|/*      * Returns the text component itself.      */
 DECL|method|getTextComponent ()
 specifier|public
 name|JComponent
@@ -164,7 +164,7 @@ name|String
 name|getText
 parameter_list|()
 function_decl|;
-comment|/** 	 * Sets the given text on the current field editor and marks this text 	 * editor as modified. 	 *  	 * @param newText 	 */
+comment|/**      * Sets the given text on the current field editor and marks this text      * editor as modified.      *       * @param newText      */
 DECL|method|setText (String newText)
 specifier|public
 name|void
@@ -210,7 +210,7 @@ name|void
 name|updateFont
 parameter_list|()
 function_decl|;
-comment|/** 	 * paste text into component, it should also take some selected text into 	 * account 	 */
+comment|/**      * paste text into component, it should also take some selected text into      * account      */
 DECL|method|paste (String textToInsert)
 specifier|public
 name|void
@@ -220,7 +220,7 @@ name|String
 name|textToInsert
 parameter_list|)
 function_decl|;
-comment|/** 	 * normally implemented in JTextArea and JTextField 	 *  	 * @return 	 */
+comment|/**      * normally implemented in JTextArea and JTextField      *       * @return      */
 DECL|method|getSelectedText ()
 specifier|public
 name|String

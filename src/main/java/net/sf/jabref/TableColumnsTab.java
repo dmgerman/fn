@@ -484,9 +484,6 @@ DECL|field|rankingColumn
 DECL|field|compactRankingColumn
 DECL|field|qualityColumn
 DECL|field|priorityColumn
-DECL|field|relevanceColumn
-DECL|field|printedColumn
-DECL|field|readStatusColumn
 specifier|private
 name|JCheckBox
 name|specialFieldsEnabled
@@ -499,6 +496,9 @@ name|qualityColumn
 decl_stmt|,
 name|priorityColumn
 decl_stmt|,
+DECL|field|relevanceColumn
+DECL|field|printedColumn
+DECL|field|readStatusColumn
 name|relevanceColumn
 decl_stmt|,
 name|printedColumn
@@ -517,12 +517,6 @@ DECL|field|oldSpecialFieldsEnabled
 DECL|field|oldRankingColumn
 DECL|field|oldCompcatRankingColumn
 DECL|field|oldQualityColumn
-DECL|field|oldPriorityColumn
-DECL|field|oldRelevanceColumn
-DECL|field|oldPrintedColumn
-DECL|field|oldReadStatusColumn
-DECL|field|oldSyncKeyWords
-DECL|field|oldWriteSpecialFields
 specifier|private
 name|boolean
 name|oldSpecialFieldsEnabled
@@ -533,6 +527,11 @@ name|oldCompcatRankingColumn
 decl_stmt|,
 name|oldQualityColumn
 decl_stmt|,
+DECL|field|oldPriorityColumn
+DECL|field|oldRelevanceColumn
+DECL|field|oldPrintedColumn
+DECL|field|oldReadStatusColumn
+DECL|field|oldSyncKeyWords
 name|oldPriorityColumn
 decl_stmt|,
 name|oldRelevanceColumn
@@ -543,6 +542,7 @@ name|oldReadStatusColumn
 decl_stmt|,
 name|oldSyncKeyWords
 decl_stmt|,
+DECL|field|oldWriteSpecialFields
 name|oldWriteSpecialFields
 decl_stmt|;
 comment|/*** end: special fields ***/

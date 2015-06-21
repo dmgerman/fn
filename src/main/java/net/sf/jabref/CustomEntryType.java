@@ -1126,7 +1126,7 @@ name|getRequiredFieldsString
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|/*StringBuffer sb = new StringBuffer(); 	for (int i=0; i<req.length; i++) { 	    sb.append(req[i]); 	    if (i<req.length-1) 		sb.append(";"); 	} 	out.write(sb.toString());*/
+comment|/*StringBuffer sb = new StringBuffer();         for (int i=0; i<req.length; i++) {             sb.append(req[i]);             if (i<req.length-1)         	sb.append(";");         }         out.write(sb.toString());*/
 name|out
 operator|.
 name|write

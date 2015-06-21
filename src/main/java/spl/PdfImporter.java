@@ -794,7 +794,7 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{}
+block|{                         }
 block|}
 if|if
 condition|(
@@ -1091,7 +1091,7 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{}
+block|{                         }
 block|}
 comment|// import failed -> generate default entry
 if|if

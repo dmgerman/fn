@@ -264,7 +264,7 @@ name|dfh
 init|=
 literal|null
 decl_stmt|;
-comment|/** 	 *  	 * @param frame 	 * @param entryContainer 	 * @param textTransferHandler is an instance of javax.swing.plaf.basic.BasicTextUI.TextTransferHandler. That class is not visible. Therefore, we have to "cheat" 	 */
+comment|/**      *       * @param frame      * @param entryContainer      * @param textTransferHandler is an instance of javax.swing.plaf.basic.BasicTextUI.TextTransferHandler. That class is not visible. Therefore, we have to "cheat"      */
 DECL|method|FileListEditorTransferHandler (JabRefFrame frame, EntryContainer entryContainer, TransferHandler textTransferHandler)
 specifier|public
 name|FileListEditorTransferHandler

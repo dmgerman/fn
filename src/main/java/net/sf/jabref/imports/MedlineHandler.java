@@ -344,7 +344,6 @@ DECL|field|number
 DECL|field|page
 DECL|field|medlineID
 DECL|field|url
-DECL|field|MedlineDate
 name|String
 name|month
 init|=
@@ -378,6 +377,7 @@ name|url
 init|=
 literal|""
 decl_stmt|,
+DECL|field|MedlineDate
 name|MedlineDate
 init|=
 literal|""
@@ -548,7 +548,7 @@ argument_list|(
 literal|"PubmedArticle"
 argument_list|)
 condition|)
-block|{}
+block|{         }
 elseif|else
 if|if
 condition|(
@@ -1107,7 +1107,7 @@ literal|true
 expr_stmt|;
 block|}
 block|}
-DECL|method|join (Object[] sa,String delim)
+DECL|method|join (Object[] sa, String delim)
 name|String
 name|join
 parameter_list|(
@@ -1240,7 +1240,7 @@ return|return
 name|out
 return|;
 block|}
-DECL|method|endElement ( String uri, String localName, String qName )
+DECL|method|endElement (String uri, String localName, String qName)
 specifier|public
 name|void
 name|endElement
@@ -2483,7 +2483,7 @@ literal|false
 expr_stmt|;
 block|}
 block|}
-DECL|method|characters ( char[] data, int start, int length )
+DECL|method|characters (char[] data, int start, int length)
 specifier|public
 name|void
 name|characters

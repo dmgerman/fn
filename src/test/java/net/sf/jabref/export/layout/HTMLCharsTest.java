@@ -284,7 +284,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/*      * Is missing a lot of test cases for the individual chars... 	 */
+comment|/*      * Is missing a lot of test cases for the individual chars...      */
 block|}
 end_class
 

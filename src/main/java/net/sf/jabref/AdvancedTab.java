@@ -603,7 +603,7 @@ parameter_list|(
 name|ClassNotFoundException
 name|e
 parameter_list|)
-block|{}
+block|{             }
 block|}
 name|className
 operator|=

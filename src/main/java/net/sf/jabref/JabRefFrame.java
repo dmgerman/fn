@@ -1189,8 +1189,8 @@ name|highlightAny
 decl_stmt|,
 name|highlightAll
 decl_stmt|;
-name|OpenDatabaseAction
 DECL|field|open
+name|OpenDatabaseAction
 name|open
 init|=
 operator|new
@@ -2160,7 +2160,7 @@ argument_list|)
 argument_list|)
 decl_stmt|,
 comment|//prefs.getKey("Open")),
-comment|/*remove = new GeneralAction("remove", "Remove", "Remove selected entries",         GUIGlobals.removeIconFile),*/
+comment|/*remove = new GeneralAction("remove", "Remove", "Remove selected entries",               GUIGlobals.removeIconFile),*/
 DECL|field|selectAll
 name|selectAll
 init|=
@@ -2565,7 +2565,7 @@ literal|"Open SPIRES entry"
 argument_list|)
 argument_list|)
 decl_stmt|,
-comment|/* 	   * It looks like this wasn't being implemented for spires anyway so we 	   * comment it out for now. 	   * 	  openInspire = new GeneralAction("openInspire", "Open INSPIRE entry",                                           Globals.lang("Open INSPIRE entry"),                                           prefs.getKey("Open INSPIRE entry")), 		*/
+comment|/*              * It looks like this wasn't being implemented for spires anyway so we              * comment it out for now.              *             openInspire = new GeneralAction("openInspire", "Open INSPIRE entry",                                                 Globals.lang("Open INSPIRE entry"),                                                 prefs.getKey("Open INSPIRE entry")),             */
 DECL|field|dupliCheck
 name|dupliCheck
 init|=
@@ -3538,7 +3538,7 @@ argument_list|(
 literal|"posY"
 argument_list|)
 decl_stmt|;
-comment|/*         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();         GraphicsDevice[] gs = ge.getScreenDevices();           // Get size of each screen         for (int i=0; i<gs.length; i++) {             DisplayMode dm = gs[i].getDisplayMode();             int screenWidth = dm.getWidth();             int screenHeight = dm.getHeight();             System.out.println(gs[i].getDefaultConfiguration().getBounds());         }*/
+comment|/*             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();             GraphicsDevice[] gs = ge.getScreenDevices();               // Get size of each screen             for (int i=0; i<gs.length; i++) {                 DisplayMode dm = gs[i].getDisplayMode();                 int screenWidth = dm.getWidth();                 int screenHeight = dm.getHeight();                 System.out.println(gs[i].getDefaultConfiguration().getBounds());             }*/
 comment|//
 comment|// Fix for [ 1738920 ] Windows Position in Multi-Monitor environment
 comment|//
@@ -4587,7 +4587,7 @@ parameter_list|(
 name|IOException
 name|ignored
 parameter_list|)
-block|{}
+block|{                         }
 block|}
 block|}
 block|}
@@ -4775,7 +4775,7 @@ return|return
 name|prefs
 return|;
 block|}
-comment|/**  * Tears down all things started by JabRef  *   * FIXME: Currently some threads remain and therefore hinder JabRef to be closed properly  *   * @param filenames the file names of all currently opened files - used for storing them if prefs openLastEdited is set to true  */
+comment|/**      * Tears down all things started by JabRef      *       * FIXME: Currently some threads remain and therefore hinder JabRef to be closed properly      *       * @param filenames the file names of all currently opened files - used for storing them if prefs openLastEdited is set to true      */
 DECL|method|tearDownJabRef (Vector<String> filenames)
 specifier|private
 name|void
@@ -5089,7 +5089,7 @@ name|flush
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**     * General info dialog.  The MacAdapter calls this method when "Quit"     * is selected from the application menu, Cmd-Q is pressed, or "Quit" is selected from the Dock.     * The function returns a boolean indicating if quitting is ok or not.     *      * Non-OSX JabRef calls this when choosing "Quit" from the menu     *      * SIDE EFFECT: tears down JabRef     *      * @return true if the user chose to quit; false otherwise     */
+comment|/**      * General info dialog.  The MacAdapter calls this method when "Quit"      * is selected from the application menu, Cmd-Q is pressed, or "Quit" is selected from the Dock.      * The function returns a boolean indicating if quitting is ok or not.      *       * Non-OSX JabRef calls this when choosing "Quit" from the menu      *       * SIDE EFFECT: tears down JabRef      *       * @return true if the user chose to quit; false otherwise      */
 DECL|method|quit ()
 specifier|public
 name|boolean
@@ -5558,7 +5558,7 @@ name|con
 argument_list|)
 expr_stmt|;
 comment|//getContentPane().add(lim);
-comment|/*       JPanel empt = new JPanel();       empt.setBackground(GUIGlobals.lightGray);       gbl.setConstraints(empt, con);            getContentPane().add(empt);        con.insets = new Insets(1,0,1,1);       con.anchor = GridBagConstraints.EAST;       con.weightx = 0;       gbl.setConstraints(searchManager, con);       getContentPane().add(searchManager);*/
+comment|/*           JPanel empt = new JPanel();           empt.setBackground(GUIGlobals.lightGray);           gbl.setConstraints(empt, con);                getContentPane().add(empt);            con.insets = new Insets(1,0,1,1);           con.anchor = GridBagConstraints.EAST;           con.weightx = 0;           gbl.setConstraints(searchManager, con);           getContentPane().add(searchManager);*/
 name|con
 operator|.
 name|gridwidth
@@ -6007,7 +6007,7 @@ name|INPROCEEDINGS
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Returns the indexed BasePanel.    * @param i Index of base    */
+comment|/**      * Returns the indexed BasePanel.      * @param i Index of base      */
 DECL|method|baseAt (int i)
 specifier|public
 name|BasePanel
@@ -6063,7 +6063,7 @@ name|bp
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Returns the currently viewed BasePanel.    */
+comment|/**      * Returns the currently viewed BasePanel.      */
 DECL|method|basePanel ()
 specifier|public
 name|BasePanel
@@ -6094,7 +6094,7 @@ name|getComponentCount
 argument_list|()
 return|;
 block|}
-comment|/**    * handle the color of active and inactive JTabbedPane tabs    */
+comment|/**      * handle the color of active and inactive JTabbedPane tabs      */
 DECL|method|markActiveBasePanel ()
 specifier|private
 name|void
@@ -6813,7 +6813,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/** This got removed when we introduced SearchManager2.        class IncrementalSearchAction extends AbstractAction {     public IncrementalSearchAction() {    super("Incremental search", new ImageIcon(GUIGlobals.searchIconFile));    putValue(SHORT_DESCRIPTION, Globals.lang("Start incremental search"));    putValue(ACCELERATOR_KEY, prefs.getKey("Incremental search"));     }     public void actionPerformed(ActionEvent e) {    if (tabbedPane.getTabCount()> 0)      searchManager.startIncrementalSearch();     }        }         class SearchAction extends AbstractAction {     public SearchAction() {    super("Search", new ImageIcon(GUIGlobals.searchIconFile));    putValue(SHORT_DESCRIPTION, Globals.lang("Start search"));    putValue(ACCELERATOR_KEY, prefs.getKey("Search"));     }     public void actionPerformed(ActionEvent e) {    if (tabbedPane.getTabCount()> 0)      searchManager.startSearch();     }        }    */
+comment|/** This got removed when we introduced SearchManager2.          class IncrementalSearchAction extends AbstractAction {       public IncrementalSearchAction() {      super("Incremental search", new ImageIcon(GUIGlobals.searchIconFile));      putValue(SHORT_DESCRIPTION, Globals.lang("Start incremental search"));      putValue(ACCELERATOR_KEY, prefs.getKey("Incremental search"));       }       public void actionPerformed(ActionEvent e) {      if (tabbedPane.getTabCount()> 0)        searchManager.startIncrementalSearch();       }          }           class SearchAction extends AbstractAction {       public SearchAction() {      super("Search", new ImageIcon(GUIGlobals.searchIconFile));      putValue(SHORT_DESCRIPTION, Globals.lang("Start search"));      putValue(ACCELERATOR_KEY, prefs.getKey("Search"));       }       public void actionPerformed(ActionEvent e) {      if (tabbedPane.getTabCount()> 0)        searchManager.startSearch();       }          }      */
 DECL|class|NewEntryAction
 class|class
 name|NewEntryAction
@@ -7064,8 +7064,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/*        private void setupDatabaseLayout() {     // This method is called whenever this frame has been provided     // with a database, and completes the layout.       if (file != null)    setTitle(GUIGlobals.baseTitle+file.getName());     else     setTitle(GUIGlobals.untitledTitle);      //DragNDropManager dndm = new DragNDropManager(this);      //setNonEmptyState();     Util.pr("JabRefFrame: Must set non-empty state.");     }*/
-comment|/**    * Refresh import menus.    */
+comment|/*          private void setupDatabaseLayout() {       // This method is called whenever this frame has been provided       // with a database, and completes the layout.         if (file != null)      setTitle(GUIGlobals.baseTitle+file.getName());       else       setTitle(GUIGlobals.untitledTitle);        //DragNDropManager dndm = new DragNDropManager(this);        //setNonEmptyState();       Util.pr("JabRefFrame: Must set non-empty state.");       }*/
+comment|/**      * Refresh import menus.      */
 DECL|method|setUpImportMenus ()
 specifier|public
 name|void
@@ -8344,7 +8344,7 @@ argument_list|(
 name|manageJournals
 argument_list|)
 expr_stmt|;
-comment|/*options.add(new AbstractAction("Font") {       public void actionPerformed(ActionEvent e) {           Font f=new FontSelectorDialog         (JabRefFrame.this, GUIGlobals.CURRENTFONT).getSelectedFont();        if(f==null)         return;        else         GUIGlobals.CURRENTFONT=f;        // updatefont        prefs.put("fontFamily", GUIGlobals.CURRENTFONT.getFamily());        prefs.putInt("fontStyle", GUIGlobals.CURRENTFONT.getStyle());        prefs.putInt("fontSize", GUIGlobals.CURRENTFONT.getSize());        if (tabbedPane.getTabCount()> 0) {         for (int i=0; i<tabbedPane.getTabCount(); i++) {          baseAt(i).entryTable.updateFont();          baseAt(i).refreshTable();         }        }       }       });*/
+comment|/*options.add(new AbstractAction("Font") {         public void actionPerformed(ActionEvent e) {             Font f=new FontSelectorDialog           (JabRefFrame.this, GUIGlobals.CURRENTFONT).getSelectedFont();          if(f==null)           return;          else           GUIGlobals.CURRENTFONT=f;          // updatefont          prefs.put("fontFamily", GUIGlobals.CURRENTFONT.getFamily());          prefs.putInt("fontStyle", GUIGlobals.CURRENTFONT.getStyle());          prefs.putInt("fontSize", GUIGlobals.CURRENTFONT.getSize());          if (tabbedPane.getTabCount()> 0) {           for (int i=0; i<tabbedPane.getTabCount(); i++) {            baseAt(i).entryTable.updateFont();            baseAt(i).refreshTable();           }          }         }         });*/
 name|pluginMenu
 operator|.
 name|add
@@ -9542,7 +9542,7 @@ name|importMenu
 argument_list|,
 name|exportMenu
 argument_list|,
-comment|/* openSpires wasn't being supported so no point in supporting 			 * openInspire */
+comment|/* openSpires wasn't being supported so no point in supporting                  * openInspire */
 name|openPdf
 argument_list|,
 name|openUrl
@@ -9816,7 +9816,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * This method causes all open BasePanels to set up their tables    * anew. When called from PrefsDialog3, this updates to the new    * settings.    */
+comment|/**      * This method causes all open BasePanels to set up their tables      * anew. When called from PrefsDialog3, this updates to the new      * settings.      */
 DECL|method|setupAllTables ()
 specifier|public
 name|void
@@ -10255,7 +10255,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**    * The action concerned with closing the window.    */
+comment|/**      * The action concerned with closing the window.      */
 DECL|class|CloseAction
 class|class
 name|CloseAction
@@ -10764,7 +10764,7 @@ argument_list|)
 expr_stmt|;
 comment|//putValue(MNEMONIC_KEY, GUIGlobals.newKeyCode);
 block|}
-DECL|method|actionPerformed ( ActionEvent e )
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -10923,7 +10923,7 @@ expr_stmt|;
 comment|//putValue( SHORT_DESCRIPTION, "integrity" ) ;  //Globals.lang( "integrity" ) ) ;
 comment|//putValue(MNEMONIC_KEY, GUIGlobals.newKeyCode);
 block|}
-DECL|method|actionPerformed ( ActionEvent e )
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed
@@ -11481,7 +11481,7 @@ literal|"defaultEncoding"
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|/*             if (prefs.getBoolean("autoComplete")) {             db.setCompleters(autoCompleters);             }        */
+comment|/*                   if (prefs.getBoolean("autoComplete")) {                   db.setCompleters(autoCompleters);                   }              */
 name|addedEntries
 operator|=
 name|database
@@ -12196,7 +12196,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Set the visibility of the progress bar in the right end of the       * status line at the bottom of the frame.       *       * If not called on the event dispatch thread, this method uses       * SwingUtilities.invokeLater() to do the actual operation on the EDT.       */
+comment|/** Set the visibility of the progress bar in the right end of the      * status line at the bottom of the frame.      *      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
 DECL|method|setProgressBarVisible (final boolean visible)
 specifier|public
 name|void
@@ -12247,7 +12247,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sets the current value of the progress bar.       *       * If not called on the event dispatch thread, this method uses       * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
+comment|/**      * Sets the current value of the progress bar.      *      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
 DECL|method|setProgressBarValue (final int value)
 specifier|public
 name|void
@@ -12349,7 +12349,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Sets the maximum value of the progress bar. Always call this method      * before using the progress bar, to set a maximum value appropriate to      * the task at hand.       *       * If not called on the event dispatch thread, this method uses       * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
+comment|/**      * Sets the maximum value of the progress bar. Always call this method      * before using the progress bar, to set a maximum value appropriate to      * the task at hand.      *      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
 DECL|method|setProgressBarMaximum (final int value)
 specifier|public
 name|void
@@ -12576,7 +12576,7 @@ parameter_list|(
 name|Throwable
 name|ignored
 parameter_list|)
-block|{}
+block|{                             }
 block|}
 block|}
 if|if
@@ -13139,7 +13139,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**    * Class for handling general actions; cut, copy and paste. The focused component is    * kept track of by Globals.focusListener, and we call the action stored under the    * relevant name in its action map.    */
+comment|/**      * Class for handling general actions; cut, copy and paste. The focused component is      * kept track of by Globals.focusListener, and we call the action stored under the      * relevant name in its action map.      */
 DECL|class|EditAction
 class|class
 name|EditAction
@@ -14065,7 +14065,7 @@ argument_list|(
 operator|new
 name|KeyAdapter
 argument_list|()
-block|{ }
+block|{             }
 argument_list|)
 expr_stmt|;
 name|addMouseListener
@@ -14073,10 +14073,10 @@ argument_list|(
 operator|new
 name|MouseAdapter
 argument_list|()
-block|{ }
+block|{             }
 argument_list|)
 expr_stmt|;
-comment|/*  infoLabel.setForeground(new Color(255, 100, 100, 124));          setLayout(new BorderLayout());         add(infoLabel, BorderLayout.CENTER);*/
+comment|/*  infoLabel.setForeground(new Color(255, 100, 100, 124));                setLayout(new BorderLayout());               add(infoLabel, BorderLayout.CENTER);*/
 name|super
 operator|.
 name|setCursor

@@ -2354,7 +2354,7 @@ parameter_list|(
 name|ActionEvent
 name|e
 parameter_list|)
-block|{ 	}
+block|{         }
 block|}
 DECL|field|removeStringAction
 name|RemoveStringAction
@@ -2637,7 +2637,7 @@ block|}
 block|}
 block|}
 block|}
-comment|/*    StringUpAction stringUpAction = new StringUpAction();     class StringUpAction extends AbstractAction { 	public StringUpAction() { 	    super("Move string up", 		  new ImageIcon(GUIGlobals.upIconFile)); 	    putValue(SHORT_DESCRIPTION, Globals.lang("Move string up")); 	} 	public void actionPerformed(ActionEvent e) { 	    int[] sel = table.getSelectedRows(); 	    if ((sel.length == 1)&& (sel[0]> 0)) {  		// Make sure no cell is being edited, as caused by the 		// keystroke. This makes the content hang on the screen. 		assureNotEditing(); 		// Store undo information: 		panel.undoManager.addEdit(new UndoableMoveString 					      (panel, base, sel[0], true));  		BibtexString bs = base.getString(sel[0]); 		base.removeString(sel[0]); 		try { 		    base.addString(bs, sel[0]-1); 		} catch (KeyCollisionException ex) {} 		table.revalidate(); 		table.setRowSelectionInterval(sel[0]-1, sel[0]-1); 		table.repaint(); 		panel.markBaseChanged(); 	    } 	}     }      StringDownAction stringDownAction = new StringDownAction();     class StringDownAction extends AbstractAction { 	public StringDownAction() { 	    super("Move string down", 		  new ImageIcon(GUIGlobals.downIconFile)); 	    putValue(SHORT_DESCRIPTION, Globals.lang("Move string down")); 	} 	public void actionPerformed(ActionEvent e) { 	    int[] sel = table.getSelectedRows(); 	    if ((sel.length == 1)&& (sel[0]+1< base.getStringCount())) {  		// Make sure no cell is being edited, as caused by the 		// keystroke. This makes the content hang on the screen. 		assureNotEditing();   		// Store undo information: 		panel.undoManager.addEdit(new UndoableMoveString 					      (panel, base, sel[0], false));   		BibtexString bs = base.getString(sel[0]); 		base.removeString(sel[0]); 		try { 		    base.addString(bs, sel[0]+1); 		} catch (KeyCollisionException ex) {} 		table.revalidate(); 		table.setRowSelectionInterval(sel[0]+1, sel[0]+1); 		table.repaint(); 		panel.markBaseChanged(); 	    }  	}     }*/
+comment|/*    StringUpAction stringUpAction = new StringUpAction();     class StringUpAction extends AbstractAction {     public StringUpAction() {         super("Move string up",     	  new ImageIcon(GUIGlobals.upIconFile));         putValue(SHORT_DESCRIPTION, Globals.lang("Move string up"));     }     public void actionPerformed(ActionEvent e) {         int[] sel = table.getSelectedRows();         if ((sel.length == 1)&& (sel[0]> 0)) {      	// Make sure no cell is being edited, as caused by the     	// keystroke. This makes the content hang on the screen.     	assureNotEditing();     	// Store undo information:     	panel.undoManager.addEdit(new UndoableMoveString     				      (panel, base, sel[0], true));      	BibtexString bs = base.getString(sel[0]);     	base.removeString(sel[0]);     	try {     	    base.addString(bs, sel[0]-1);     	} catch (KeyCollisionException ex) {}     	table.revalidate();     	table.setRowSelectionInterval(sel[0]-1, sel[0]-1);     	table.repaint();     	panel.markBaseChanged();         }     }     }      StringDownAction stringDownAction = new StringDownAction();     class StringDownAction extends AbstractAction {     public StringDownAction() {         super("Move string down",     	  new ImageIcon(GUIGlobals.downIconFile));         putValue(SHORT_DESCRIPTION, Globals.lang("Move string down"));     }     public void actionPerformed(ActionEvent e) {         int[] sel = table.getSelectedRows();         if ((sel.length == 1)&& (sel[0]+1< base.getStringCount())) {      	// Make sure no cell is being edited, as caused by the     	// keystroke. This makes the content hang on the screen.     	assureNotEditing();       	// Store undo information:     	panel.undoManager.addEdit(new UndoableMoveString     				      (panel, base, sel[0], false));       	BibtexString bs = base.getString(sel[0]);     	base.removeString(sel[0]);     	try {     	    base.addString(bs, sel[0]+1);     	} catch (KeyCollisionException ex) {}     	table.revalidate();     	table.setRowSelectionInterval(sel[0]+1, sel[0]+1);     	table.repaint();     	panel.markBaseChanged();         }      }     }*/
 DECL|field|undoAction
 name|UndoAction
 name|undoAction
@@ -2706,7 +2706,7 @@ parameter_list|(
 name|Throwable
 name|ignored
 parameter_list|)
-block|{}
+block|{             }
 block|}
 block|}
 DECL|field|redoAction
@@ -2777,7 +2777,7 @@ parameter_list|(
 name|Throwable
 name|ignored
 parameter_list|)
-block|{}
+block|{             }
 block|}
 block|}
 block|}

@@ -695,7 +695,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Change which entry this panel is operating on. This is used only when 	 * this panel is not attached to an entry editor. 	 */
+comment|/**      * Change which entry this panel is operating on. This is used only when      * this panel is not attached to an entry editor.      */
 DECL|method|setEntry (BibtexEntry entry, BibtexDatabase database)
 specifier|public
 name|void
@@ -1442,7 +1442,7 @@ operator|==
 literal|0
 condition|)
 return|return;
-comment|/* 		 * If this panel belongs in an entry editor, note which entry is 		 * currently shown: 		 */
+comment|/*          * If this panel belongs in an entry editor, note which entry is          * currently shown:          */
 specifier|final
 name|BibtexEntry
 name|targetEntry
@@ -1559,7 +1559,7 @@ operator|+=
 name|suffix
 expr_stmt|;
 block|}
-comment|/* 				 * [ 1548875 ] download pdf produces unsupported filename 				 *  				 * http://sourceforge.net/tracker/index.php?func=detail&aid=1548875&group_id=92314&atid=600306 				 *  				 */
+comment|/*                  * [ 1548875 ] download pdf produces unsupported filename                  *                   * http://sourceforge.net/tracker/index.php?func=detail&aid=1548875&group_id=92314&atid=600306                  *                   */
 if|if
 condition|(
 name|Globals
@@ -1950,7 +1950,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/* 					 * Check if we should update the editor text field, or 					 * update the target entry directly: 					 */
+comment|/*                      * Check if we should update the editor text field, or                      * update the target entry directly:                      */
 if|if
 condition|(
 name|entryEditor
@@ -1965,7 +1965,7 @@ operator|!=
 name|targetEntry
 condition|)
 block|{
-comment|/* 						 * Editor has probably changed to show a different 						 * entry. So we must update the target entry directly 						 * and not set the text of the editor. 						 */
+comment|/*                          * Editor has probably changed to show a different                          * entry. So we must update the target entry directly                          * and not set the text of the editor.                          */
 name|targetEntry
 operator|.
 name|setField
@@ -1996,7 +1996,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-comment|/* 						 * Need to set the fieldEditor first before running 						 * updateField-Action, because otherwise we might get a 						 * race condition. 						 *  						 * (Hopefully a) Fix for: [ 1545601 ] downloading pdf 						 * corrupts pdf field text 						 *  						 * http://sourceforge.net/tracker/index.php?func=detail&aid=1545601&group_id=92314&atid=600306 						 */
+comment|/*                          * Need to set the fieldEditor first before running                          * updateField-Action, because otherwise we might get a                          * race condition.                          *                           * (Hopefully a) Fix for: [ 1545601 ] downloading pdf                          * corrupts pdf field text                          *                           * http://sourceforge.net/tracker/index.php?func=detail&aid=1545601&group_id=92314&atid=600306                          */
 name|fieldEditor
 operator|.
 name|setText
@@ -2106,7 +2106,7 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * Starts a thread that searches the external file directory for the given 	 * field name, including subdirectories, and looks for files named after the 	 * current entry's bibtex key. Returns a reference to the thread for callers 	 * that may want to wait for the thread to finish (using join()). 	 *  	 * @param fieldName 	 *            The field to set. 	 * @param editor 	 *            An EntryEditor instance where to set the value found. 	 * @return A reference to the Thread that performs the operation. 	 */
+comment|/**      * Starts a thread that searches the external file directory for the given      * field name, including subdirectories, and looks for files named after the      * current entry's bibtex key. Returns a reference to the thread for callers      * that may want to wait for the thread to finish (using join()).      *       * @param fieldName      *            The field to set.      * @param editor      *            An EntryEditor instance where to set the value found.      * @return A reference to the Thread that performs the operation.      */
 DECL|method|autoSetFile (final String fieldName, final FieldEditor editor)
 specifier|public
 name|Thread
@@ -2210,7 +2210,7 @@ name|void
 name|run
 parameter_list|()
 block|{
-comment|/* 				 * Find the following directories to look in for: 				 *  				 * default directory for this field type. 				 *  				 * directory of bibtex-file. // NOT POSSIBLE at the moment. 				 *  				 * JabRef-directory. 				 */
+comment|/*                  * Find the following directories to look in for:                  *                   * default directory for this field type.                  *                   * directory of bibtex-file. // NOT POSSIBLE at the moment.                  *                   * JabRef-directory.                  */
 name|LinkedList
 argument_list|<
 name|String

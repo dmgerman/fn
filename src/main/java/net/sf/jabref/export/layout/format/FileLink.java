@@ -334,7 +334,7 @@ argument_list|,
 name|dirs
 argument_list|)
 decl_stmt|;
-comment|/* 		 * Stumbled over this while investigating 		 * 		 * https://sourceforge.net/tracker/index.php?func=detail&aid=1469903&group_id=92314&atid=600306 		 */
+comment|/*          * Stumbled over this while investigating          *          * https://sourceforge.net/tracker/index.php?func=detail&aid=1469903&group_id=92314&atid=600306          */
 if|if
 condition|(
 name|f

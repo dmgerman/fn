@@ -466,7 +466,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Overriden to indicate which types of drags are supported (only LINK). 	 */
+comment|/**      * Overriden to indicate which types of drags are supported (only LINK).      */
 annotation|@
 name|Override
 DECL|method|getSourceActions (JComponent c)
@@ -484,7 +484,7 @@ operator|.
 name|ACTION_LINK
 return|;
 block|}
-comment|/** 	 * This method is called when dragging stuff *from* the table. 	 */
+comment|/**      * This method is called when dragging stuff *from* the table.      */
 DECL|method|createTransferable (JComponent c)
 specifier|public
 name|Transferable
@@ -535,7 +535,7 @@ return|;
 comment|//.getTransferable();
 block|}
 block|}
-comment|/** 	 * This method is called when stuff is drag to the component. 	 *  	 * Imports the dropped URL or plain text as a new entry in the current 	 * database. 	 *  	 */
+comment|/**      * This method is called when stuff is drag to the component.      *       * Imports the dropped URL or plain text as a new entry in the current      * database.      *       */
 DECL|method|importData (JComponent comp, Transferable t)
 specifier|public
 name|boolean
@@ -786,7 +786,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/** 	 * This method is called to query whether the transfer can be imported. 	 *  	 * Will return true for urls, strings, javaFileLists 	 */
+comment|/**      * This method is called to query whether the transfer can be imported.      *       * Will return true for urls, strings, javaFileLists      */
 annotation|@
 name|Override
 DECL|method|canImport (JComponent comp, DataFlavor[] transferFlavors)
@@ -1179,7 +1179,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/** 	 * Translate a String describing a set of files or URLs dragged into JabRef      * into a List of File objects, taking care of URL special characters. 	 * 	 * @param s 	 *            String describing a set of files or URLs dragged into JabRef      * @return a List<File> containing the individual file objects.      * 	 */
+comment|/**      * Translate a String describing a set of files or URLs dragged into JabRef      * into a List of File objects, taking care of URL special characters.      *      * @param s      *            String describing a set of files or URLs dragged into JabRef      * @return a List<File> containing the individual file objects.      *      */
 DECL|method|getFilesFromDraggedFilesString (String s)
 specifier|public
 specifier|static
@@ -1377,7 +1377,7 @@ return|return
 name|files
 return|;
 block|}
-comment|/** 	 * Handle a String describing a set of files or URLs dragged into JabRef. 	 *  	 * @param s 	 *            String describing a set of files or URLs dragged into JabRef      * @param dropRow The row in the table where the files were dragged.      * @return success status for the operation      * 	 */
+comment|/**      * Handle a String describing a set of files or URLs dragged into JabRef.      *       * @param s      *            String describing a set of files or URLs dragged into JabRef      * @param dropRow The row in the table where the files were dragged.      * @return success status for the operation      *      */
 DECL|method|handleDraggedFilenames (String s, final int dropRow)
 specifier|private
 name|boolean
@@ -1403,7 +1403,7 @@ name|dropRow
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Handle a List containing File objects for a set of files to import. 	 *  	 * @param files 	 *            A List containing File instances pointing to files. 	 * @param dropRow @param dropRow The row in the table where the files were dragged.      * @return success status for the operation 	 */
+comment|/**      * Handle a List containing File objects for a set of files to import.      *       * @param files      *            A List containing File instances pointing to files.      * @param dropRow @param dropRow The row in the table where the files were dragged.      * @return success status for the operation      */
 DECL|method|handleDraggedFiles (List<File> files, final int dropRow)
 specifier|private
 name|boolean
@@ -1534,7 +1534,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/** 	 * Take a set of filenames. Those with names indicating bib files are opened 	 * as such if possible. All other files we will attempt to import into the 	 * current database. 	 *  	 * @param fileNames 	 *            The names of the files to open. 	 * @param dropRow success status for the operation 	 */
+comment|/**      * Take a set of filenames. Those with names indicating bib files are opened      * as such if possible. All other files we will attempt to import into the      * current database.      *       * @param fileNames      *            The names of the files to open.      * @param dropRow success status for the operation      */
 DECL|method|loadOrImportFiles (String[] fileNames, int dropRow)
 specifier|private
 name|void
@@ -1760,7 +1760,7 @@ comment|// Util.showQuickErrorDialog(frame, Globals.lang("Open database"), e);
 block|}
 continue|continue;
 block|}
-comment|/*              * This is a linkable file. If the user dropped it on an entry, we 			 * should offer options for autolinking to this files: 			 * 			 * TODO we should offer an option to highlight the row the user is on too. 			 */
+comment|/*              * This is a linkable file. If the user dropped it on an entry, we              * should offer options for autolinking to this files:              *              * TODO we should offer an option to highlight the row the user is on too.              */
 if|if
 condition|(
 name|fileType
@@ -1772,13 +1772,13 @@ operator|>=
 literal|0
 condition|)
 block|{
-comment|/* 				 * TODO: need to signal if this is a local or autodownloaded 				 * file 				 */
+comment|/*                  * TODO: need to signal if this is a local or autodownloaded                  * file                  */
 name|boolean
 name|local
 init|=
 literal|true
 decl_stmt|;
-comment|/* 				 * TODO: make this an instance variable? 				 */
+comment|/*                  * TODO: make this an instance variable?                  */
 name|DroppedFileHandler
 name|dfh
 init|=
@@ -1807,7 +1807,7 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-comment|/* 			if (extension.equals("pdf")) { 				Collection c; 				try { 					c = XMPUtil.readXMP(fileNames[i]); 				} catch (IOException e1) { 					c = null; 					frame.output(Globals.lang("No XMP metadata found in " + fileNames[i])); 				}  				if (c != null&& c.size()> 0) { 					Iterator it = c.iterator();  					BasePanel panel = frame.basePanel();  					if (panel == null) { 						// // Create a new, empty, database. 						BibtexDatabase database = new BibtexDatabase(); 						frame.addTab(database, null, null, Globals.prefs.get("defaultEncoding"), 							true); 						frame.output(Globals.lang("New database created.")); 						panel = frame.basePanel(); 					}  					BibtexDatabase database = frame.basePanel().database();  					NamedCompound ce = new NamedCompound(Glbals.lang("Drop PDF"));  					while (it.hasNext()) { 						BibtexEntry e = (BibtexEntry) it.next();  						try { 							e.setId(Util.createNeutralId()); 							database.insertEntry(e); 							ce.addEdit(new UndoableInsertEntry(database, e, panel)); 						} catch (Exception e2) { 							// Should not happen? 						} 					}  					ce.end(); 					panel.undoManager.addEdit(ce); 					panel.markBaseChanged(); 					continue; 				} 			} 			*/
+comment|/*             			if (extension.equals("pdf")) {             				Collection c;             				try {             					c = XMPUtil.readXMP(fileNames[i]);             				} catch (IOException e1) {             					c = null;             					frame.output(Globals.lang("No XMP metadata found in " + fileNames[i]));             				}              				if (c != null&& c.size()> 0) {             					Iterator it = c.iterator();              					BasePanel panel = frame.basePanel();              					if (panel == null) {             						// // Create a new, empty, database.             						BibtexDatabase database = new BibtexDatabase();             						frame.addTab(database, null, null, Globals.prefs.get("defaultEncoding"),             							true);             						frame.output(Globals.lang("New database created."));             						panel = frame.basePanel();             					}              					BibtexDatabase database = frame.basePanel().database();              					NamedCompound ce = new NamedCompound(Glbals.lang("Drop PDF"));              					while (it.hasNext()) {             						BibtexEntry e = (BibtexEntry) it.next();              						try {             							e.setId(Util.createNeutralId());             							database.insertEntry(e);             							ce.addEdit(new UndoableInsertEntry(database, e, panel));             						} catch (Exception e2) {             							// Should not happen?             						}             					}              					ce.end();             					panel.undoManager.addEdit(ce);             					panel.markBaseChanged();             					continue;             				}             			}             			*/
 name|notBibFiles
 operator|.
 name|add

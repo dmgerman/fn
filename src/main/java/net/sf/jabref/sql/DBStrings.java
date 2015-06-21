@@ -135,7 +135,7 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**     * Initializes the variables needed with defaults     */
+comment|/**      * Initializes the variables needed with defaults      */
 DECL|method|initialize ()
 specifier|public
 name|void

@@ -490,7 +490,7 @@ operator|<
 literal|3
 condition|)
 continue|continue;
-comment|/*            * Details of Refer format for Journal Article and Book:            *            * Generic Ref Journal Article Book Code Author %A Author Author Year %D            * Year Year Title %T Title Title Secondary Author %E Series Editor            * Secondary Title %B Journal Series Title Place Published %C City            * Publisher %I Publisher Volume %V Volume Volume Number of Volumes %6            * Number of Volumes Number %N Issue Pages %P Pages Number of Pages            * Edition %7 Edition Subsidiary Author %? Translator Alternate Title %J            * Alternate Journal Label %F Label Label Keywords %K Keywords Keywords            * Abstract %X Abstract Abstract Notes %O Notes Notes            */
+comment|/*                    * Details of Refer format for Journal Article and Book:                    *                    * Generic Ref Journal Article Book Code Author %A Author Author Year %D                    * Year Year Title %T Title Title Secondary Author %E Series Editor                    * Secondary Title %B Journal Series Title Place Published %C City                    * Publisher %I Publisher Volume %V Volume Volume Number of Volumes %6                    * Number of Volumes Number %N Issue Pages %P Pages Number of Pages                    * Edition %7 Edition Subsidiary Author %? Translator Alternate Title %J                    * Alternate Journal Label %F Label Label Keywords %K Keywords Keywords                    * Abstract %X Abstract Abstract Notes %O Notes Notes                    */
 name|String
 name|prefix
 init|=

@@ -207,13 +207,13 @@ operator|new
 name|VerticalLabelUI
 argument_list|()
 decl_stmt|;
-comment|/**     * Constructs a<code>VerticalLabelUI</code> with the default anticlockwise     * rotation     */
+comment|/**      * Constructs a<code>VerticalLabelUI</code> with the default anticlockwise      * rotation      */
 DECL|method|VerticalLabelUI ()
 specifier|public
 name|VerticalLabelUI
 parameter_list|()
-block|{    }
-comment|/**     * Constructs a<code>VerticalLabelUI</code> with the desired rotation.     *<P>     * @param clockwise true to rotate clockwise, false for anticlockwise     */
+block|{     }
+comment|/**      * Constructs a<code>VerticalLabelUI</code> with the desired rotation.      *<P>      * @param clockwise true to rotate clockwise, false for anticlockwise      */
 DECL|method|VerticalLabelUI (boolean clockwise)
 specifier|public
 name|VerticalLabelUI
@@ -229,7 +229,7 @@ operator|=
 name|clockwise
 expr_stmt|;
 block|}
-comment|/**     * @see ComponentUI#createUI(javax.swing.JComponent)      */
+comment|/**      * @see ComponentUI#createUI(javax.swing.JComponent)       */
 DECL|method|createUI (JComponent c)
 specifier|public
 specifier|static
@@ -261,7 +261,7 @@ name|verticalLabelUI
 return|;
 block|}
 block|}
-comment|/**     * Overridden to always return -1, since a vertical label does not have a     * meaningful baseline.     *      * @see ComponentUI#getBaseline(JComponent, int, int)     */
+comment|/**      * Overridden to always return -1, since a vertical label does not have a      * meaningful baseline.      *       * @see ComponentUI#getBaseline(JComponent, int, int)      */
 annotation|@
 name|Override
 DECL|method|getBaseline (JComponent c, int width, int height)
@@ -295,7 +295,7 @@ operator|-
 literal|1
 return|;
 block|}
-comment|/**     * Overridden to always return Component.BaselineResizeBehavior.OTHER,     * since a vertical label does not have a meaningful baseline      *      * @see ComponentUI#getBaselineResizeBehavior(javax.swing.JComponent)     */
+comment|/**      * Overridden to always return Component.BaselineResizeBehavior.OTHER,      * since a vertical label does not have a meaningful baseline       *       * @see ComponentUI#getBaselineResizeBehavior(javax.swing.JComponent)      */
 annotation|@
 name|Override
 DECL|method|getBaselineResizeBehavior ( JComponent c)
@@ -324,7 +324,7 @@ operator|.
 name|OTHER
 return|;
 block|}
-comment|/**     * Transposes the view rectangles as appropriate for a vertical view     * before invoking the super method and copies them after they have been     * altered by {@link SwingUtilities#layoutCompoundLabel(FontMetrics, String,     * Icon, int, int, int, int, Rectangle, Rectangle, Rectangle, int)}     */
+comment|/**      * Transposes the view rectangles as appropriate for a vertical view      * before invoking the super method and copies them after they have been      * altered by {@link SwingUtilities#layoutCompoundLabel(FontMetrics, String,      * Icon, int, int, int, int, Rectangle, Rectangle, Rectangle, int)}      */
 annotation|@
 name|Override
 DECL|method|layoutCL (JLabel label, FontMetrics fontMetrics, String text, Icon icon, Rectangle viewR, Rectangle iconR, Rectangle textR)
@@ -433,7 +433,7 @@ return|return
 name|text
 return|;
 block|}
-comment|/**     * Transforms the Graphics for vertical rendering and invokes the     * super method.     */
+comment|/**      * Transforms the Graphics for vertical rendering and invokes the      * super method.      */
 annotation|@
 name|Override
 DECL|method|paint (Graphics g, JComponent c)
@@ -537,7 +537,7 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**     * Returns a Dimension appropriate for vertical rendering     *      * @see ComponentUI#getPreferredSize(javax.swing.JComponent)     */
+comment|/**      * Returns a Dimension appropriate for vertical rendering      *       * @see ComponentUI#getPreferredSize(javax.swing.JComponent)      */
 annotation|@
 name|Override
 DECL|method|getPreferredSize (JComponent c)
@@ -561,7 +561,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**     * Returns a Dimension appropriate for vertical rendering     *      * @see ComponentUI#getMaximumSize(javax.swing.JComponent)     */
+comment|/**      * Returns a Dimension appropriate for vertical rendering      *       * @see ComponentUI#getMaximumSize(javax.swing.JComponent)      */
 annotation|@
 name|Override
 DECL|method|getMaximumSize (JComponent c)
@@ -585,7 +585,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/**     * Returns a Dimension appropriate for vertical rendering     *      * @see ComponentUI#getMinimumSize(javax.swing.JComponent)     */
+comment|/**      * Returns a Dimension appropriate for vertical rendering      *       * @see ComponentUI#getMinimumSize(javax.swing.JComponent)      */
 annotation|@
 name|Override
 DECL|method|getMinimumSize (JComponent c)

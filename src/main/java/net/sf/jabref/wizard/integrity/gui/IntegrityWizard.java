@@ -167,7 +167,7 @@ specifier|private
 name|IntegrityMessagePanel
 name|warnPanel
 decl_stmt|;
-DECL|method|IntegrityWizard ( JabRefFrame frame, BasePanel basePanel)
+DECL|method|IntegrityWizard (JabRefFrame frame, BasePanel basePanel)
 specifier|public
 name|IntegrityWizard
 parameter_list|(
@@ -574,7 +574,7 @@ expr_stmt|;
 block|}
 comment|// ---------------------------------------------------------------------------
 comment|// ---------------------------------------------------------------------------
-DECL|method|actionPerformed ( ActionEvent e )
+DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
 name|actionPerformed

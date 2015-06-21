@@ -130,7 +130,7 @@ name|warn
 argument_list|)
 return|;
 block|}
-comment|/** 	 *  	 * @param author 	 * @param format 	 * @param warn may-be-null 	 * @return 	 */
+comment|/**      *       * @param author      * @param format      * @param warn may-be-null      * @return      */
 DECL|method|formatName (Author author, String format, Warn warn)
 specifier|public
 specifier|static
@@ -1201,7 +1201,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Including the matching brace. 	 *  	 * @param sb 	 * @param c 	 * @param pos 	 * @return 	 *  	 * assert c[pos] == '{' 	 */
+comment|/**      * Including the matching brace.      *       * @param sb      * @param c      * @param pos      * @return      *       * assert c[pos] == '{'      */
 DECL|method|consumeToMatchingBrace (StringBuffer sb, char[] c, int pos)
 specifier|public
 specifier|static
@@ -1306,7 +1306,7 @@ operator|.
 name|length
 return|;
 block|}
-comment|/** 	 * Takes care of special characters too 	 *  	 * @param s 	 * @return 	 */
+comment|/**      * Takes care of special characters too      *       * @param s      * @return      */
 DECL|method|getFirstCharOfString (String s)
 specifier|public
 specifier|static

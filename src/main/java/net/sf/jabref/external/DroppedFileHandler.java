@@ -628,7 +628,7 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      *      * @param fileName      *        The name of the dragged file.      * @param fileType      *        The FileType associated with the file.      * @param localFile  *            Indicate whether this is a local file, or a remote file copied  *            to a local temporary file.      * @param entry      *        The target entry for the drop.      */
+comment|/**      *      * @param fileName      *        The name of the dragged file.      * @param fileType      *        The FileType associated with the file.      * @param localFile      *            Indicate whether this is a local file, or a remote file copied      *            to a local temporary file.      * @param entry      *        The target entry for the drop.      */
 DECL|method|handleDroppedfile (String fileName, ExternalFileType fileType, boolean localFile, BibtexEntry entry)
 specifier|public
 name|void

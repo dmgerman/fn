@@ -359,7 +359,7 @@ name|appendKeyGeneratorSettings
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * Store changes to table preferences. This method is called when 	 * the user clicks Ok. 	 * 	 */
+comment|/**      * Store changes to table preferences. This method is called when      * the user clicks Ok.      *      */
 DECL|method|storeSettings ()
 specifier|public
 name|void

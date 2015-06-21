@@ -63,7 +63,7 @@ import|;
 end_import
 
 begin_comment
-comment|/** Based on http://newsgroups.derkeiler.com/Archive/De/de.comp.lang.java/2010-04/msg00203.html */
+comment|/**  Based on http://newsgroups.derkeiler.com/Archive/De/de.comp.lang.java/2010-04/msg00203.html  */
 end_comment
 
 begin_class

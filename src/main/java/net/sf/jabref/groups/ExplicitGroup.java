@@ -1172,7 +1172,7 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|/*if (sameEntry == null) {                     System.out.println("Error: could not find entry '"+entry.getCiteKey()+"'");                 } else {                     System.out.println("'"+entry.getCiteKey()+"' ok");                 }*/
+comment|/*if (sameEntry == null) {                 System.out.println("Error: could not find entry '"+entry.getCiteKey()+"'");             } else {                 System.out.println("'"+entry.getCiteKey()+"' ok");             }*/
 name|newSet
 operator|.
 name|add

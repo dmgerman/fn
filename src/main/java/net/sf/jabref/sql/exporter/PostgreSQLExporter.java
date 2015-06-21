@@ -132,8 +132,8 @@ DECL|method|PostgreSQLExporter ()
 specifier|private
 name|PostgreSQLExporter
 parameter_list|()
-block|{ 	}
-comment|/** 	 *  	 * @return The singleton instance of the PostgreSQLExporter 	 */
+block|{     }
+comment|/**      *       * @return The singleton instance of the PostgreSQLExporter      */
 DECL|method|getInstance ()
 specifier|public
 specifier|static
@@ -364,7 +364,7 @@ literal|"Language plpgsql;"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Generates SQL necessary to create all tables in a MySQL database, and 	 * writes it to appropriate output. 	 *  	 * @param out 	 *            The output (PrintStream or Connection) object to which the DML 	 *            should be written. 	 */
+comment|/**      * Generates SQL necessary to create all tables in a MySQL database, and      * writes it to appropriate output.      *       * @param out      *            The output (PrintStream or Connection) object to which the DML      *            should be written.      */
 annotation|@
 name|Override
 DECL|method|createTables (Object out)

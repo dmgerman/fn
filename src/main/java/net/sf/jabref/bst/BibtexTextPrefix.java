@@ -30,7 +30,7 @@ specifier|public
 class|class
 name|BibtexTextPrefix
 block|{
-comment|/** 	 *  	 * @param numOfChars 	 * @param toPrefix 	 * @param warn may-be-null 	 * @return 	 */
+comment|/**      *       * @param numOfChars      * @param toPrefix      * @param warn may-be-null      * @return      */
 DECL|method|textPrefix (int numOfChars, String toPrefix, Warn warn)
 specifier|public
 specifier|static

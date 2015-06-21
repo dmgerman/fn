@@ -430,7 +430,7 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Used by SidePaneManager only, to keep track of visibility. 	 *  	 */
+comment|/**      * Used by SidePaneManager only, to keep track of visibility.      *       */
 DECL|method|setVisibility (boolean vis)
 name|void
 name|setVisibility
@@ -444,7 +444,7 @@ operator|=
 name|vis
 expr_stmt|;
 block|}
-comment|/** 	 * Used by SidePaneManager only, to keep track of visibility. 	 *  	 */
+comment|/**      * Used by SidePaneManager only, to keep track of visibility.      *       */
 DECL|method|hasVisibility ()
 name|boolean
 name|hasVisibility
@@ -480,20 +480,20 @@ return|return
 name|panel
 return|;
 block|}
-comment|/** 	 * Override this method if the component needs to make any changes before it 	 * can close. 	 */
+comment|/**      * Override this method if the component needs to make any changes before it      * can close.      */
 DECL|method|componentClosing ()
 specifier|public
 name|void
 name|componentClosing
 parameter_list|()
-block|{  	}
-comment|/** 	 * Override this method if the component needs to do any actions when 	 * opening. 	 */
+block|{      }
+comment|/**      * Override this method if the component needs to do any actions when      * opening.      */
 DECL|method|componentOpening ()
 specifier|public
 name|void
 name|componentOpening
 parameter_list|()
-block|{  	}
+block|{      }
 DECL|method|getMinimumSize ()
 specifier|public
 name|Dimension

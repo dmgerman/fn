@@ -91,7 +91,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Try to download fulltext PDF for selected entry(ies) by following URL or DOI link. */
+comment|/**  * Try to download fulltext PDF for selected entry(ies) by following URL or DOI link.  */
 end_comment
 
 begin_class

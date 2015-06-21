@@ -208,7 +208,7 @@ name|customExport
 init|=
 literal|false
 decl_stmt|;
-comment|/** 	 * Initialize another export format based on templates stored in dir with 	 * layoutFile lfFilename. 	 *  	 * @param displayName 	 *            Name to display to the user. 	 * @param consoleName 	 *            Name to call this format in the console. 	 * @param lfFileName 	 *            Name of the main layout file. 	 * @param directory 	 *            Directory in which to find the layout file. 	 * @param extension 	 *            Should contain the . (for instance .txt). 	 */
+comment|/**      * Initialize another export format based on templates stored in dir with      * layoutFile lfFilename.      *       * @param displayName      *            Name to display to the user.      * @param consoleName      *            Name to call this format in the console.      * @param lfFileName      *            Name of the main layout file.      * @param directory      *            Directory in which to find the layout file.      * @param extension      *            Should contain the . (for instance .txt).      */
 DECL|method|ExportFormat (String displayName, String consoleName, String lfFileName, String directory, String extension)
 specifier|public
 name|ExportFormat
@@ -268,7 +268,7 @@ parameter_list|()
 block|{
 comment|// intentionally empty
 block|}
-comment|/** 	 * Indicate whether this is a custom export. A custom export looks for its 	 * layout files using a normal file path, while a built-in export looks in 	 * the classpath. 	 *  	 * @param custom 	 *            true to indicate a custom export format. 	 */
+comment|/**      * Indicate whether this is a custom export. A custom export looks for its      * layout files using a normal file path, while a built-in export looks in      * the classpath.      *       * @param custom      *            true to indicate a custom export format.      */
 DECL|method|setCustomExport (boolean custom)
 specifier|public
 name|void
@@ -285,7 +285,7 @@ operator|=
 name|custom
 expr_stmt|;
 block|}
-comment|/** 	 * @see IExportFormat#getConsoleName() 	 */
+comment|/**      * @see IExportFormat#getConsoleName()      */
 DECL|method|getConsoleName ()
 specifier|public
 name|String
@@ -296,7 +296,7 @@ return|return
 name|consoleName
 return|;
 block|}
-comment|/** 	 * @see IExportFormat#getDisplayName() 	 */
+comment|/**      * @see IExportFormat#getDisplayName()      */
 DECL|method|getDisplayName ()
 specifier|public
 name|String
@@ -324,7 +324,7 @@ operator|=
 name|encoding
 expr_stmt|;
 block|}
-comment|/** 	 * This method should return a reader from which the given layout file can 	 * be read. 	 *  	 * This standard implementation of this method will use the 	 * {@link FileActions#getReader(String)} method. 	 *  	 * Subclasses of ExportFormat are free to override and provide their own 	 * implementation. 	 *  	 * @param filename 	 *            the file name 	 * @throws IOException 	 *             if the reader could not be created 	 *  	 * @return a newly created reader 	 */
+comment|/**      * This method should return a reader from which the given layout file can      * be read.      *       * This standard implementation of this method will use the      * {@link FileActions#getReader(String)} method.      *       * Subclasses of ExportFormat are free to override and provide their own      * implementation.      *       * @param filename      *            the file name      * @throws IOException      *             if the reader could not be created      *       * @return a newly created reader      */
 DECL|method|getReader (String filename)
 specifier|protected
 name|Reader
@@ -382,7 +382,7 @@ name|filename
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Perform the export of {@code database}. 	 *  	 * @param database 	 *            The database to export from.      * @param metaData      *            The database's meta data. 	 * @param file 	 *            the file to write the resulting export to 	 * @param encoding 	 *            The encoding of the database 	 * @param entryIds 	 *            Contains the IDs of all entries that should be exported. If 	 *<code>null</code>, all entries will be exported. 	 *  	 * @throws IOException 	 *             if a problem occurred while trying to write to {@code writer} 	 *             or read from required resources. 	 * @throws Exception 	 *             if any other error occurred during export. 	 *  	 * @see net.sf.jabref.export.IExportFormat#performExport(net.sf.jabref.BibtexDatabase, 	 *      net.sf.jabref.MetaData, java.lang.String, java.lang.String, java.util.Set) 	 */
+comment|/**      * Perform the export of {@code database}.      *       * @param database      *            The database to export from.      * @param metaData      *            The database's meta data.      * @param file      *            the file to write the resulting export to      * @param encoding      *            The encoding of the database      * @param entryIds      *            Contains the IDs of all entries that should be exported. If      *<code>null</code>, all entries will be exported.      *       * @throws IOException      *             if a problem occurred while trying to write to {@code writer}      *             or read from required resources.      * @throws Exception      *             if any other error occurred during export.      *       * @see net.sf.jabref.export.IExportFormat#performExport(net.sf.jabref.BibtexDatabase,      *      net.sf.jabref.MetaData, java.lang.String, java.lang.String, java.util.Set)      */
 DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, final String file, final String encoding, Set<String> entryIds)
 specifier|public
 name|void
@@ -616,7 +616,7 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* 		 * Write database entries; entries will be sorted as they appear on the 		 * screen, or sorted by author, depending on Preferences. We also supply 		 * the Set entries - if we are to export only certain entries, it will 		 * be non-null, and be used to choose entries. Otherwise, it will be 		 * null, and be ignored. 		 */
+comment|/*          * Write database entries; entries will be sorted as they appear on the          * screen, or sorted by author, depending on Preferences. We also supply          * the Set entries - if we are to export only certain entries, it will          * be non-null, and be used to choose entries. Otherwise, it will be          * null, and be ignored.          */
 name|List
 argument_list|<
 name|BibtexEntry
@@ -1345,7 +1345,7 @@ literal|false
 argument_list|)
 return|;
 block|}
-comment|/** 	 * @see net.sf.jabref.export.IExportFormat#getFileFilter() 	 */
+comment|/**      * @see net.sf.jabref.export.IExportFormat#getFileFilter()      */
 DECL|method|getFileFilter ()
 specifier|public
 name|FileFilter

@@ -809,7 +809,7 @@ name|repaint
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**    * valueChanged    *    * @param e TreeSelectionEvent    */
+comment|/**      * valueChanged      *      * @param e TreeSelectionEvent      */
 DECL|method|valueChanged (TreeSelectionEvent e)
 specifier|public
 name|void

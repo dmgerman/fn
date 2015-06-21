@@ -144,7 +144,7 @@ name|frame
 operator|=
 name|frame
 expr_stmt|;
-comment|/* 		 * Change by Morten Alver 2005.12.04: By postponing the updating of the 		 * side pane components, we get rid of the annoying latency when 		 * switching tabs: 		 */
+comment|/*          * Change by Morten Alver 2005.12.04: By postponing the updating of the          * side pane components, we get rid of the annoying latency when          * switching tabs:          */
 name|frame
 operator|.
 name|tabbedPane
@@ -1209,7 +1209,7 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Update all side pane components to show information from the given 	 * BasePanel. 	 *  	 * @param panel 	 */
+comment|/**      * Update all side pane components to show information from the given      * BasePanel.      *       * @param panel      */
 DECL|method|setActiveBasePanel (BasePanel panel)
 specifier|public
 name|void

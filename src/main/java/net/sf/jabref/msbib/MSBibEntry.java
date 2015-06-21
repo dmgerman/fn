@@ -918,7 +918,7 @@ DECL|method|MSBibEntry ()
 specifier|public
 name|MSBibEntry
 parameter_list|()
-block|{ 	}
+block|{     }
 DECL|method|MSBibEntry (BibtexEntry bibtex)
 specifier|public
 name|MSBibEntry
@@ -4563,7 +4563,7 @@ return|return
 name|result
 return|;
 block|}
-DECL|method|addField (Document d,Element parent, String name, String value)
+DECL|method|addField (Document d, Element parent, String name, String value)
 specifier|public
 name|void
 name|addField
@@ -4766,7 +4766,7 @@ name|authorTop
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addAdrress (Document d,Element parent, String address)
+DECL|method|addAdrress (Document d, Element parent, String address)
 specifier|public
 name|void
 name|addAdrress
@@ -4894,7 +4894,7 @@ name|address
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|addDate (Document d,Element parent, String date, String extra)
+DECL|method|addDate (Document d, Element parent, String date, String extra)
 specifier|public
 name|void
 name|addDate
@@ -5932,7 +5932,7 @@ throw|;
 block|}
 comment|// return null;
 block|}
-DECL|method|parseSingleStandardNumber (String type,String bibtype, String standardNum, HashMap<String, String> hm)
+DECL|method|parseSingleStandardNumber (String type, String bibtype, String standardNum, HashMap<String, String> hm)
 specifier|protected
 name|void
 name|parseSingleStandardNumber
@@ -7582,7 +7582,7 @@ return|return
 name|entry
 return|;
 block|}
-comment|/** 	 * This method ensures that the output String has only      * valid XML unicode characters as specified by the      * XML 1.0 standard. For reference, please see      *<a href="http://www.w3.org/TR/2000/REC-xml-20001006#NT-Char">the      * standard</a>. This method will return an empty      * String if the input is null or empty.      *       * URL: http://cse-mjmcl.cse.bris.ac.uk/blog/2007/02/14/1171465494443.html      *      * @param in The String whose non-valid characters we want to remove.      * @return The in String, stripped of non-valid characters.      */
+comment|/**      * This method ensures that the output String has only      * valid XML unicode characters as specified by the      * XML 1.0 standard. For reference, please see      *<a href="http://www.w3.org/TR/2000/REC-xml-20001006#NT-Char">the      * standard</a>. This method will return an empty      * String if the input is null or empty.      *       * URL: http://cse-mjmcl.cse.bris.ac.uk/blog/2007/02/14/1171465494443.html      *      * @param in The String whose non-valid characters we want to remove.      * @return The in String, stripped of non-valid characters.      */
 DECL|method|stripNonValidXMLCharacters (String in)
 specifier|public
 name|String
@@ -7728,7 +7728,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/* 	 * render as XML 	 *  	 * TODO This is untested. 	 */
+comment|/*      * render as XML      *       * TODO This is untested.      */
 DECL|method|toString ()
 specifier|public
 name|String

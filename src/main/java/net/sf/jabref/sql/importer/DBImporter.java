@@ -372,7 +372,7 @@ literal|"entries_id"
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Given a DBStrings it connects to the DB and returns the 	 * java.sql.Connection object 	 *  	 * @param dbstrings 	 *            The DBStrings to use to make the connection 	 * @return java.sql.Connection to the DB chosen 	 * @throws Exception 	 */
+comment|/**      * Given a DBStrings it connects to the DB and returns the      * java.sql.Connection object      *       * @param dbstrings      *            The DBStrings to use to make the connection      * @return java.sql.Connection to the DB chosen      * @throws Exception      */
 DECL|method|connectToDB (DBStrings dbstrings)
 specifier|protected
 specifier|abstract
@@ -385,7 +385,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/** 	 *  	 * @param conn 	 *            Connection object to the database 	 * @return A ResultSet with column name for the entries table 	 * @throws SQLException 	 */
+comment|/**      *       * @param conn      *            Connection object to the database      * @return A ResultSet with column name for the entries table      * @throws SQLException      */
 DECL|method|readColumnNames (Connection conn)
 specifier|protected
 specifier|abstract
@@ -398,7 +398,7 @@ parameter_list|)
 throws|throws
 name|SQLException
 function_decl|;
-comment|/** 	 * Worker method to perform the import from a database 	 *  	 * @param keySet 	 *            The set of IDs of the entries to export. 	 * @param dbs 	 *            The necessary database connection information 	 * @return An ArrayList containing pairs of Objects. Each position of the 	 *         ArrayList stores three Objects: a BibtexDatabase, a MetaData and 	 *         a String with the bib database name stored in the DBMS 	 * @throws Exception 	 */
+comment|/**      * Worker method to perform the import from a database      *       * @param keySet      *            The set of IDs of the entries to export.      * @param dbs      *            The necessary database connection information      * @return An ArrayList containing pairs of Objects. Each position of the      *         ArrayList stores three Objects: a BibtexDatabase, a MetaData and      *         a String with the bib database name stored in the DBMS      * @throws Exception      */
 DECL|method|performImport (Set<String> keySet, DBStrings dbs, List<String> listOfDBs)
 specifier|public
 name|ArrayList
@@ -1014,7 +1014,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/** 	 * Look up the group type name from the type ID in the database. 	 *  	 * @param groupId 	 *            The database's groups id 	 * @param conn 	 *            The database connection 	 *  	 * @return The name (JabRef type id) of the group type. 	 * @throws SQLException 	 */
+comment|/**      * Look up the group type name from the type ID in the database.      *       * @param groupId      *            The database's groups id      * @param conn      *            The database connection      *       * @return The name (JabRef type id) of the group type.      * @throws SQLException      */
 DECL|method|findGroupTypeName (String groupId, Connection conn)
 specifier|public
 name|String

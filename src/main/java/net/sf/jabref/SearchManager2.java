@@ -317,7 +317,7 @@ name|autoCompleteListener
 init|=
 literal|null
 decl_stmt|;
-comment|/** 	 * subscribed Objects 	 */
+comment|/**      * subscribed Objects      */
 DECL|field|listeners
 specifier|private
 name|Vector
@@ -1993,7 +1993,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Subscribe to the SearchListener and receive events, if the user searches for some thing. You 	 * will receive a list of words 	 *  	 * @param l 	 */
+comment|/**      * Subscribe to the SearchListener and receive events, if the user searches for some thing. You      * will receive a list of words      *       * @param l      */
 DECL|method|addSearchListener (SearchTextListener l)
 specifier|public
 name|void
@@ -2036,7 +2036,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Remove object from the SearchListener 	 * @param l 	 */
+comment|/**      * Remove object from the SearchListener      * @param l      */
 DECL|method|removeSearchListener (SearchTextListener l)
 specifier|public
 name|void
@@ -2054,7 +2054,7 @@ name|l
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * parse the search string for valid words and return a list of words 	 * Like "The great Vikinger" will be ["The","great","Vikinger"]  	 *  	 * @param t 	 * @return 	 */
+comment|/**      * parse the search string for valid words and return a list of words      * Like "The great Vikinger" will be ["The","great","Vikinger"]       *       * @param t      * @return      */
 DECL|method|getSearchwords (String t)
 specifier|private
 name|ArrayList
@@ -3564,7 +3564,7 @@ argument_list|()
 expr_stmt|;
 comment|// If this search type is disabled, remove reordering from
 comment|// all databases.
-comment|/*if ((panel != null)&& increment.isSelected()) {             clearSearch();         } */
+comment|/*if ((panel != null)&& increment.isSelected()) {                 clearSearch();             } */
 block|}
 block|}
 DECL|method|repeatIncremental ()
@@ -3877,7 +3877,7 @@ parameter_list|(
 name|KeyEvent
 name|e
 parameter_list|)
-block|{}
+block|{     }
 DECL|method|keyReleased (KeyEvent e)
 specifier|public
 name|void
@@ -3886,7 +3886,7 @@ parameter_list|(
 name|KeyEvent
 name|e
 parameter_list|)
-block|{}
+block|{     }
 DECL|method|caretUpdate (CaretEvent e)
 specifier|public
 name|void
@@ -3911,7 +3911,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/** Updates the text on the search button to reflect       * the type of search that will happen on click. */
+comment|/** Updates the text on the search button to reflect      * the type of search that will happen on click. */
 DECL|method|updateSearchButtonText ()
 specifier|private
 name|void

@@ -227,7 +227,7 @@ specifier|private
 name|ImportCustomizationDialog
 name|importCustomizationDialog
 decl_stmt|;
-comment|/*   *  (non-Javadoc)   * @see java.awt.Component#getSize()   */
+comment|/*     *  (non-Javadoc)     * @see java.awt.Component#getSize()     */
 DECL|method|getSize ()
 specifier|public
 name|Dimension
@@ -265,7 +265,7 @@ literal|2
 argument_list|)
 return|;
 block|}
-comment|/**    * Converts a path relative to a base-path into a class name.    *     * @param basePath  base path    * @param path  path that includes base-path as a prefix    * @return  class name    */
+comment|/**      * Converts a path relative to a base-path into a class name.      *       * @param basePath  base path      * @param path  path that includes base-path as a prefix      * @return  class name      */
 DECL|method|pathToClass (File basePath, File path)
 specifier|private
 name|String
@@ -356,7 +356,7 @@ return|return
 name|className
 return|;
 block|}
-comment|/**    * Adds an importer to the model that underlies the custom importers.    *     * @param importer  importer    */
+comment|/**      * Adds an importer to the model that underlies the custom importers.      *       * @param importer  importer      */
 DECL|method|addOrReplaceImporter (CustomImportList.Importer importer)
 name|void
 name|addOrReplaceImporter
@@ -397,7 +397,7 @@ name|fireTableDataChanged
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**    *     * @param frame_    * @throws HeadlessException    */
+comment|/**      *       * @param frame_      * @throws HeadlessException      */
 DECL|method|ImportCustomizationDialog (JabRefFrame frame_)
 specifier|public
 name|ImportCustomizationDialog
@@ -1627,7 +1627,7 @@ name|customImporterTable
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Table model for the custom importer table.    */
+comment|/**      * Table model for the custom importer table.      */
 DECL|class|ImportTableModel
 class|class
 name|ImportTableModel
