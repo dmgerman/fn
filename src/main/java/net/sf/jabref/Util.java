@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2012 JabRef contributors.     Copyright (C) 2015 Oliver Kopp      This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_comment
@@ -3372,29 +3372,8 @@ block|{
 comment|// html
 try|try
 block|{
-name|link
-operator|=
-name|sanitizeUrl
+name|openBrowser
 argument_list|(
-name|link
-argument_list|)
-expr_stmt|;
-name|ExternalFileType
-name|fileType
-init|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getExternalFileTypeByExt
-argument_list|(
-literal|"html"
-argument_list|)
-decl_stmt|;
-name|openExternalFilePlatformIndependent
-argument_list|(
-name|fileType
-argument_list|,
 name|link
 argument_list|)
 expr_stmt|;
@@ -4126,6 +4105,9 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+comment|// For URLs, other solutions are
+comment|//  * https://github.com/rajing/browserlauncher2, but it is not available in maven
+comment|//  * a the solution combining http://stackoverflow.com/a/5226244/873282 and http://stackoverflow.com/a/28807079/873282
 if|if
 condition|(
 name|Globals
@@ -15254,6 +15236,46 @@ argument_list|,
 name|endIndex
 argument_list|)
 return|;
+block|}
+comment|/**      * Opens the given URL using the system browser      *       * @param url the URL to open      * @throws IOException      */
+DECL|method|openBrowser (String url)
+specifier|public
+specifier|static
+name|void
+name|openBrowser
+parameter_list|(
+name|String
+name|url
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+name|url
+operator|=
+name|sanitizeUrl
+argument_list|(
+name|url
+argument_list|)
+expr_stmt|;
+name|ExternalFileType
+name|fileType
+init|=
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getExternalFileTypeByExt
+argument_list|(
+literal|"html"
+argument_list|)
+decl_stmt|;
+name|openExternalFilePlatformIndependent
+argument_list|(
+name|fileType
+argument_list|,
+name|url
+argument_list|)
+expr_stmt|;
 block|}
 block|}
 end_class

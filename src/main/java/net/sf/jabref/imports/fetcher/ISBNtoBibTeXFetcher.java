@@ -227,7 +227,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class uses Manas Tungare's ISBN to BibTeX Converter to convert an ISBN to a BibTeX entry<br />  * The online version of the converter is available at http://manas.tungare.name/software/isbn-to-bibtex/  */
+comment|/**  * This class uses Manas Tungare's ISBN to BibTeX Converter to convert an ISBN to a BibTeX entry<br />  * The online version of the converter is available at http://manas.tungare.name/software/isbn-to-bibtex/  * This was not approved by him, see discussion https://sourceforge.net/p/jabref/bugs/1241/.  * We are currently working on sorting things out  */
 end_comment
 
 begin_class
