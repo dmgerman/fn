@@ -223,14 +223,6 @@ name|text
 decl_stmt|,
 name|renameTo
 decl_stmt|;
-DECL|field|ok
-DECL|field|cancel
-specifier|private
-name|JButton
-name|ok
-decl_stmt|,
-name|cancel
-decl_stmt|;
 DECL|field|cancelled
 name|boolean
 name|cancelled
@@ -319,8 +311,9 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|JButton
 name|ok
-operator|=
+init|=
 operator|new
 name|JButton
 argument_list|(
@@ -331,9 +324,10 @@ argument_list|(
 literal|"Ok"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
+name|JButton
 name|cancel
-operator|=
+init|=
 operator|new
 name|JButton
 argument_list|(
@@ -344,7 +338,7 @@ argument_list|(
 literal|"Cancel"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|all
 operator|=
 operator|new
