@@ -7688,7 +7688,6 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|/*actions.put("strictDupliCheck", new BaseAction() {           public void action() {             StrictDuplicateSearch ds = new StrictDuplicateSearch(BasePanel.this);             ds.start();           }         });*/
 name|actions
 operator|.
 name|put
