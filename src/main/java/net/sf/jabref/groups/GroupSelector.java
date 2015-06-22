@@ -556,18 +556,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|ErrorMessageDisplay
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|GUIGlobals
 import|;
 end_import
@@ -711,8 +699,6 @@ implements|implements
 name|TreeSelectionListener
 implements|,
 name|ActionListener
-implements|,
-name|ErrorMessageDisplay
 block|{
 DECL|field|logger
 specifier|private
@@ -8783,52 +8769,6 @@ name|validateTree
 argument_list|()
 expr_stmt|;
 block|}
-block|}
-comment|/**      * This method is required by the ErrorMessageDisplay interface, and lets this class      * serve as a callback for regular expression exceptions happening in DatabaseSearch.      * @param errorMessage      */
-DECL|method|reportError (String errorMessage)
-specifier|public
-name|void
-name|reportError
-parameter_list|(
-name|String
-name|errorMessage
-parameter_list|)
-block|{
-comment|// this should never happen, since regular expressions are checked for
-comment|// correctness by the edit group dialog, and no other errors should
-comment|// occur in a search
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Error in group search: "
-operator|+
-name|errorMessage
-operator|+
-literal|". Please report this on www.sf.net/projects/jabref"
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * This method is required by the ErrorMessageDisplay interface, and lets this class      * serve as a callback for regular expression exceptions happening in DatabaseSearch.      * @param errorMessage      */
-DECL|method|reportError (String errorMessage, Exception exception)
-specifier|public
-name|void
-name|reportError
-parameter_list|(
-name|String
-name|errorMessage
-parameter_list|,
-name|Exception
-name|exception
-parameter_list|)
-block|{
-name|reportError
-argument_list|(
-name|errorMessage
-argument_list|)
-expr_stmt|;
 block|}
 comment|/**      * Highlight all groups that contain any/all of the specified entries.      * If entries is null or has zero length, highlight is cleared.      */
 DECL|method|showMatchingGroups (BibtexEntry[] entries, boolean requireAll)

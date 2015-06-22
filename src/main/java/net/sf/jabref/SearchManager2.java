@@ -277,8 +277,6 @@ implements|,
 name|ItemListener
 implements|,
 name|CaretListener
-implements|,
-name|ErrorMessageDisplay
 block|{
 DECL|field|frame
 specifier|private
@@ -3963,56 +3961,6 @@ name|lang
 argument_list|(
 literal|"Search all fields"
 argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * This method is required by the ErrorMessageDisplay interface, and lets this class      * serve as a callback for regular expression exceptions happening in DatabaseSearch.      * @param errorMessage      */
-DECL|method|reportError (String errorMessage)
-specifier|public
-name|void
-name|reportError
-parameter_list|(
-name|String
-name|errorMessage
-parameter_list|)
-block|{
-name|JOptionPane
-operator|.
-name|showMessageDialog
-argument_list|(
-name|panel
-argument_list|,
-name|errorMessage
-argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Search error"
-argument_list|)
-argument_list|,
-name|JOptionPane
-operator|.
-name|ERROR_MESSAGE
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * This method is required by the ErrorMessageDisplay interface, and lets this class      * serve as a callback for regular expression exceptions happening in DatabaseSearch.      * @param errorMessage      */
-DECL|method|reportError (String errorMessage, Exception exception)
-specifier|public
-name|void
-name|reportError
-parameter_list|(
-name|String
-name|errorMessage
-parameter_list|,
-name|Exception
-name|exception
-parameter_list|)
-block|{
-name|reportError
-argument_list|(
-name|errorMessage
 argument_list|)
 expr_stmt|;
 block|}
