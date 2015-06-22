@@ -36,7 +36,6 @@ name|LabelRule
 block|{
 comment|// the default rule is that it simply returns what it was given
 DECL|method|applyRule (BibtexEntry oldEntry)
-specifier|public
 name|String
 name|applyRule
 parameter_list|(

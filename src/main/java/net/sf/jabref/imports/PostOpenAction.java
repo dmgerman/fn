@@ -40,7 +40,6 @@ name|PostOpenAction
 block|{
 comment|/**      * This method is queried in order to find out whether the action needs to be      * performed or not.      * @param pr The result of the bib parse operation.      * @return true if the action should be called, false otherwise.      */
 DECL|method|isActionNecessary (ParserResult pr)
-specifier|public
 name|boolean
 name|isActionNecessary
 parameter_list|(
@@ -50,7 +49,6 @@ parameter_list|)
 function_decl|;
 comment|/**      * This method is called after the new database has been added to the GUI, if      * the isActionNecessary() method returned true.      *      * Note: if several such methods need to be called sequentially, it is      *       important that all implementations of this method do not return      *       until the operation is finished. If work needs to be off-loaded      *       into a worker thread, use Spin to do this synchronously.      *      * @param panel The BasePanel where the database is shown.      * @param pr The result of the bib parse operation.      */
 DECL|method|performAction (BasePanel panel, ParserResult pr)
-specifier|public
 name|void
 name|performAction
 parameter_list|(

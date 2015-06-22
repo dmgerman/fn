@@ -21,7 +21,6 @@ interface|interface
 name|CallBack
 block|{
 DECL|method|update ()
-specifier|public
 name|void
 name|update
 parameter_list|()

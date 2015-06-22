@@ -87,7 +87,6 @@ literal|" "
 decl_stmt|;
 DECL|interface|CaseChanger
 specifier|public
-specifier|static
 interface|interface
 name|CaseChanger
 block|{

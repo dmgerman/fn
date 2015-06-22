@@ -30,7 +30,6 @@ name|LayoutFormatter
 block|{
 comment|/**      * Failure Mode:      *<p>      * Formatters should be robust in the sense that they always return some      * relevant string.      *<p>      * If the formatter can detect an invalid input it should return the      * original string otherwise it may simply return a wrong output.      *       * @param fieldText      *            The text to layout.      * @return The layouted text.      */
 DECL|method|format (String fieldText)
-specifier|public
 name|String
 name|format
 parameter_list|(

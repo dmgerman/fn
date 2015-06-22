@@ -146,7 +146,6 @@ name|String
 name|dbType
 decl_stmt|;
 DECL|method|DBType (String dbType)
-specifier|private
 name|DBType
 parameter_list|(
 name|String

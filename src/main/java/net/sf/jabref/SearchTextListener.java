@@ -35,7 +35,6 @@ name|SearchTextListener
 block|{
 comment|/**      * Array of words that were searched for      *       * @param words null if nothing is searched for      */
 DECL|method|searchText (ArrayList<String> words)
-specifier|public
 name|void
 name|searchText
 parameter_list|(

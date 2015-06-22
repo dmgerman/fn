@@ -21,7 +21,6 @@ interface|interface
 name|DatabaseChangeListener
 block|{
 DECL|method|databaseChanged (DatabaseChangeEvent e)
-specifier|public
 name|void
 name|databaseChanged
 parameter_list|(

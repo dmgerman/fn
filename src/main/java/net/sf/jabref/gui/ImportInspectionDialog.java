@@ -814,13 +814,11 @@ name|OutputPrinter
 block|{
 DECL|interface|CallBack
 specifier|public
-specifier|static
 interface|interface
 name|CallBack
 block|{
 comment|/**          * This method is called by the dialog when the user has cancelled or          * signalled a stop. It is expected that any long-running fetch          * operations will stop after this method is called.          */
 DECL|method|stopFetching ()
-specifier|public
 name|void
 name|stopFetching
 parameter_list|()

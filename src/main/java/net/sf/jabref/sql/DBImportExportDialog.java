@@ -429,7 +429,6 @@ name|String
 name|dialogType
 decl_stmt|;
 DECL|method|DialogType (String dialogType)
-specifier|private
 name|DialogType
 parameter_list|(
 name|String

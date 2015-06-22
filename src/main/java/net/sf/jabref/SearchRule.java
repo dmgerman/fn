@@ -31,7 +31,6 @@ interface|interface
 name|SearchRule
 block|{
 DECL|method|applyRule (Map<String, String> searchStrings, BibtexEntry bibtexEntry)
-specifier|public
 name|int
 name|applyRule
 parameter_list|(
@@ -48,7 +47,6 @@ name|bibtexEntry
 parameter_list|)
 function_decl|;
 DECL|method|validateSearchStrings (Map<String, String> searchStrings)
-specifier|public
 name|boolean
 name|validateSearchStrings
 parameter_list|(
