@@ -406,8 +406,6 @@ name|SQLException
 block|{
 name|String
 name|path
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(

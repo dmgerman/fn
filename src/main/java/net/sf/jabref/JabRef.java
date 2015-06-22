@@ -2060,8 +2060,6 @@ literal|null
 decl_stmt|;
 name|IExportFormat
 name|format
-init|=
-literal|null
 decl_stmt|;
 comment|//read in the export format, take default format if no format entered
 switch|switch

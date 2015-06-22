@@ -71,8 +71,6 @@ parameter_list|)
 block|{
 name|int
 name|res
-init|=
-literal|0
 decl_stmt|;
 comment|// First check their names:
 name|String

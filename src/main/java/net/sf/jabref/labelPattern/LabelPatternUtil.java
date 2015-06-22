@@ -5139,8 +5139,6 @@ return|return
 name|author
 return|;
 return|return
-name|author
-operator|+=
 literal|"EtAl"
 return|;
 block|}

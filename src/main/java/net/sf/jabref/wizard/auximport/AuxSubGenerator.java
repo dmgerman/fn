@@ -302,8 +302,6 @@ decl_stmt|;
 comment|// while condition
 name|boolean
 name|weiter
-init|=
-literal|false
 decl_stmt|;
 comment|// return value -> default: no error
 name|boolean
@@ -314,8 +312,6 @@ decl_stmt|;
 comment|// fileopen status
 name|boolean
 name|loopFileOpen
-init|=
-literal|false
 decl_stmt|;
 comment|// the important tag
 name|pattern

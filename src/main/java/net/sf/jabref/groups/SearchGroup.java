@@ -278,8 +278,6 @@ expr_stmt|;
 comment|// create AST
 name|AST
 name|ast
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{

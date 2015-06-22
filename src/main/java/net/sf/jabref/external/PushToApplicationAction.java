@@ -413,8 +413,6 @@ argument_list|()
 decl_stmt|;
 name|String
 name|citeKey
-init|=
-literal|""
 decl_stmt|;
 comment|//, message = "";
 name|boolean

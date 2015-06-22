@@ -267,8 +267,6 @@ return|return;
 block|}
 name|PDDocument
 name|document
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{
@@ -327,8 +325,6 @@ argument_list|)
 decl_stmt|;
 name|BufferedImage
 name|image
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{

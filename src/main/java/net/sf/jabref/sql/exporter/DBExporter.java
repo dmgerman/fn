@@ -615,13 +615,9 @@ name|SQLException
 block|{
 name|String
 name|query
-init|=
-literal|""
 decl_stmt|;
 name|String
 name|val
-init|=
-literal|""
 decl_stmt|;
 name|String
 name|insert
@@ -1051,8 +1047,6 @@ name|SQLException
 block|{
 name|String
 name|query
-init|=
-literal|""
 decl_stmt|;
 name|ArrayList
 argument_list|<
@@ -2241,8 +2235,6 @@ argument_list|()
 expr_stmt|;
 name|BufferedOutputStream
 name|writer
-init|=
-literal|null
 decl_stmt|;
 name|writer
 operator|=
@@ -2258,8 +2250,6 @@ argument_list|)
 expr_stmt|;
 name|PrintStream
 name|fout
-init|=
-literal|null
 decl_stmt|;
 name|fout
 operator|=
@@ -2319,8 +2309,6 @@ name|Exception
 block|{
 name|String
 name|dbName
-init|=
-literal|""
 decl_stmt|;
 name|Connection
 name|conn

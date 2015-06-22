@@ -648,9 +648,6 @@ return|;
 comment|// possible month found in two places
 name|int
 name|idx
-init|=
-operator|-
-literal|1
 decl_stmt|;
 if|if
 condition|(

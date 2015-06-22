@@ -567,8 +567,6 @@ else|else
 block|{
 name|String
 name|argument
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(

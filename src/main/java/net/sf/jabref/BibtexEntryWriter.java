@@ -622,8 +622,6 @@ init|=
 literal|true
 decl_stmt|,
 name|previous
-init|=
-literal|true
 decl_stmt|;
 name|previous
 operator|=
@@ -1344,12 +1342,8 @@ block|}
 comment|// Then write remaining fields in alphabetic order.
 name|boolean
 name|first
-init|=
-literal|true
 decl_stmt|,
 name|previous
-init|=
-literal|true
 decl_stmt|;
 name|previous
 operator|=

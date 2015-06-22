@@ -2435,8 +2435,6 @@ name|IOException
 block|{
 name|Reader
 name|reader
-init|=
-literal|null
 decl_stmt|;
 comment|// Try loading as a resource first. This works for files inside the jar:
 name|URL

@@ -1433,10 +1433,6 @@ argument_list|(
 name|tmp
 argument_list|)
 expr_stmt|;
-name|tmp
-operator|=
-literal|""
-expr_stmt|;
 name|Arrays
 operator|.
 name|fill

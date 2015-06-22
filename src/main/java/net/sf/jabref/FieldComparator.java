@@ -650,8 +650,6 @@ comment|// Else none of them were parseable, and we can fall back on comparing s
 block|}
 name|int
 name|result
-init|=
-literal|0
 decl_stmt|;
 if|if
 condition|(

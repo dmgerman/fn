@@ -1283,9 +1283,6 @@ argument_list|()
 decl_stmt|;
 name|int
 name|ind
-init|=
-operator|-
-literal|1
 decl_stmt|,
 name|piv
 init|=

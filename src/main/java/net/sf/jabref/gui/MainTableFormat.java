@@ -1160,9 +1160,6 @@ condition|)
 block|{
 name|int
 name|hasField
-init|=
-operator|-
-literal|1
 decl_stmt|;
 name|int
 index|[]

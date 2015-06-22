@@ -6148,8 +6148,6 @@ parameter_list|)
 block|{
 name|File
 name|file
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -9551,8 +9549,6 @@ argument_list|)
 decl_stmt|;
 name|int
 name|prevMarkLevel
-init|=
-literal|0
 decl_stmt|;
 name|String
 name|newValue
@@ -14421,8 +14417,6 @@ argument_list|()
 decl_stmt|;
 name|String
 name|cmd
-init|=
-literal|""
 decl_stmt|;
 if|if
 condition|(

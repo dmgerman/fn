@@ -223,8 +223,6 @@ name|file
 decl_stmt|;
 name|boolean
 name|tryingAutosave
-init|=
-literal|false
 decl_stmt|;
 if|if
 condition|(

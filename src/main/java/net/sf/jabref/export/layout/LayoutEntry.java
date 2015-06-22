@@ -495,13 +495,9 @@ name|classPrefix_
 expr_stmt|;
 name|String
 name|blockStart
-init|=
-literal|null
 decl_stmt|;
 name|String
 name|blockEnd
-init|=
-literal|null
 decl_stmt|;
 name|StringInt
 name|si

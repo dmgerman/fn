@@ -160,12 +160,8 @@ expr_stmt|;
 comment|//declaramos y damos un valor para evitar problemas
 name|String
 name|name
-init|=
-literal|""
 decl_stmt|,
 name|surname
-init|=
-literal|""
 decl_stmt|;
 if|if
 condition|(

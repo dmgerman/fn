@@ -142,8 +142,6 @@ expr_stmt|;
 name|String
 index|[]
 name|split
-init|=
-literal|null
 decl_stmt|;
 comment|// Look for the year:
 name|String
@@ -440,8 +438,6 @@ block|}
 comment|// Look for Pages:
 name|String
 name|pages
-init|=
-literal|null
 decl_stmt|;
 name|String
 name|pagesRx
@@ -698,12 +694,8 @@ block|}
 comment|//String journalRx = "(\\.|\\n)\\s??([a-zA-Z\\. ]{8,30}+)((vol\\.|Vol\\.|Volume|volume))??(.??)(\\d{1,3})(\\.|,|\\s)";
 name|String
 name|journal
-init|=
-literal|null
 decl_stmt|,
 name|volume
-init|=
-literal|null
 decl_stmt|;
 name|String
 name|journalRx
@@ -923,10 +915,6 @@ block|}
 else|else
 block|{
 comment|// No journal found. Maybe the year precedes the volume? Try another regexp:
-name|journalRx
-operator|=
-literal|"(,|\\.|\\n)\\s??([a-zA-Z\\. ]{8,30}+)((.){0,2})\\s??(\\d{1,3})(\\.|,|\\s|:)"
-expr_stmt|;
 block|}
 comment|// Then try to find title and authors.
 name|Substring

@@ -521,8 +521,6 @@ literal|1
 return|;
 name|int
 name|result
-init|=
-literal|0
 decl_stmt|;
 comment|//String ours = ((String)e1.getField(sortField)).toLowerCase(),
 comment|//    theirs = ((String)e2.getField(sortField)).toLowerCase();

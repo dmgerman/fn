@@ -456,8 +456,6 @@ parameter_list|)
 block|{
 name|String
 name|identifier
-init|=
-literal|""
 decl_stmt|;
 try|try
 block|{

@@ -5425,11 +5425,6 @@ name|CLOSED_OPTION
 operator|)
 condition|)
 block|{
-name|close
-operator|=
-literal|false
-expr_stmt|;
-comment|// The user has cancelled.
 return|return
 literal|false
 return|;

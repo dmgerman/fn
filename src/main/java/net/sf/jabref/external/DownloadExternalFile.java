@@ -254,8 +254,6 @@ condition|)
 return|return;
 name|URL
 name|url
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{

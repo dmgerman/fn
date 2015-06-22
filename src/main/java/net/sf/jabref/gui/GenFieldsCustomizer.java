@@ -1317,12 +1317,8 @@ argument_list|()
 decl_stmt|;
 name|String
 name|name
-init|=
-literal|null
 decl_stmt|,
 name|fields
-init|=
-literal|null
 decl_stmt|;
 name|int
 name|i

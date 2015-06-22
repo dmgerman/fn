@@ -557,8 +557,6 @@ decl_stmt|;
 name|String
 index|[]
 name|s
-init|=
-literal|null
 decl_stmt|;
 while|while
 condition|(

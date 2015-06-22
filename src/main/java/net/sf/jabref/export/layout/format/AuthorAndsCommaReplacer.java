@@ -112,8 +112,6 @@ break|break;
 default|default:
 name|int
 name|i
-init|=
-literal|0
 decl_stmt|,
 name|x
 init|=

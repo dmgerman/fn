@@ -4335,8 +4335,6 @@ parameter_list|()
 block|{
 name|BibtexEntry
 name|bes
-init|=
-literal|null
 decl_stmt|;
 name|NamedCompound
 name|ce
@@ -14373,8 +14371,6 @@ argument_list|()
 decl_stmt|;
 name|String
 name|citeKey
-init|=
-literal|""
 decl_stmt|;
 comment|//, message = "";
 name|boolean

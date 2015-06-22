@@ -430,8 +430,6 @@ literal|1
 decl_stmt|;
 name|String
 name|nextPage
-init|=
-literal|null
 decl_stmt|;
 while|while
 condition|(

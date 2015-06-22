@@ -2743,8 +2743,6 @@ parameter_list|)
 block|{
 name|String
 name|chosen
-init|=
-literal|null
 decl_stmt|;
 name|chosen
 operator|=
@@ -2948,8 +2946,6 @@ parameter_list|)
 block|{
 name|String
 name|chosen
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(

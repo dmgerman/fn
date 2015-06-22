@@ -604,13 +604,9 @@ argument_list|)
 decl_stmt|;
 name|String
 name|s
-init|=
-literal|null
 decl_stmt|;
 name|BibtexEntry
 name|entry
-init|=
-literal|null
 decl_stmt|;
 while|while
 condition|(

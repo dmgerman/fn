@@ -292,8 +292,6 @@ argument_list|()
 expr_stmt|;
 name|BibtexSingleField
 name|dummy
-init|=
-literal|null
 decl_stmt|;
 comment|// FIRST: all standard fields
 comment|// These are the fields that BibTex might want to treat, so these

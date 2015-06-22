@@ -289,8 +289,6 @@ literal|"\n"
 expr_stmt|;
 name|int
 name|endpos
-init|=
-literal|0
 decl_stmt|;
 name|int
 name|matched

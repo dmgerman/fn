@@ -1103,8 +1103,6 @@ comment|// successive order from the beginning. Entries "further down" in the "d
 comment|// can also be matched.
 name|int
 name|piv1
-init|=
-literal|0
 decl_stmt|,
 name|piv2
 init|=
@@ -1406,9 +1404,6 @@ literal|0
 decl_stmt|;
 name|double
 name|comp
-init|=
-operator|-
-literal|1
 decl_stmt|;
 if|if
 condition|(

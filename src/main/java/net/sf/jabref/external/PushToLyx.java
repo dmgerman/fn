@@ -277,8 +277,6 @@ argument_list|)
 decl_stmt|;
 name|String
 name|citeStr
-init|=
-literal|""
 decl_stmt|;
 name|citeStr
 operator|=

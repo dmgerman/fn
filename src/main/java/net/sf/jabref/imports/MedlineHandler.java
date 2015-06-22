@@ -1225,8 +1225,6 @@ parameter_list|()
 block|{
 name|String
 name|out
-init|=
-literal|""
 decl_stmt|;
 comment|// PENDING jeffrey.kuhn@yale.edu 2005-05-27 : added call to fixPageRange
 name|out

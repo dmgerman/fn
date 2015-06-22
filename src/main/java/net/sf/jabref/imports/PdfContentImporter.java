@@ -988,8 +988,6 @@ argument_list|)
 decl_stmt|;
 name|PDDocument
 name|document
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{
@@ -1224,8 +1222,6 @@ block|}
 block|}
 name|String
 name|author
-init|=
-literal|null
 decl_stmt|;
 name|String
 name|editor
@@ -1249,8 +1245,6 @@ literal|null
 decl_stmt|;
 name|String
 name|title
-init|=
-literal|null
 decl_stmt|;
 name|String
 name|conference

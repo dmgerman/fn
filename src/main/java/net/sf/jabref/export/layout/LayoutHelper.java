@@ -1155,8 +1155,6 @@ literal|null
 decl_stmt|;
 name|char
 name|firstLetter
-init|=
-literal|' '
 decl_stmt|;
 name|String
 name|name
@@ -1330,10 +1328,6 @@ argument_list|)
 throw|;
 block|}
 comment|//System.out.println("NAME:" + name);
-name|buffer
-operator|=
-literal|null
-expr_stmt|;
 if|if
 condition|(
 name|firstLetter

@@ -2478,8 +2478,6 @@ return|return;
 block|}
 name|JMenu
 name|submenu
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(

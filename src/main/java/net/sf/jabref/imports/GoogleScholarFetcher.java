@@ -961,8 +961,6 @@ literal|1
 decl_stmt|;
 name|String
 name|nextPage
-init|=
-literal|null
 decl_stmt|;
 while|while
 condition|(
@@ -1103,8 +1101,6 @@ argument_list|)
 decl_stmt|;
 name|String
 name|pText
-init|=
-literal|null
 decl_stmt|;
 comment|//System.out.println("regionStart: "+m.start());
 name|String

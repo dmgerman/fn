@@ -494,8 +494,6 @@ expr_stmt|;
 block|}
 name|URI
 name|uriMailTo
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{

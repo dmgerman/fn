@@ -583,8 +583,6 @@ argument_list|()
 decl_stmt|;
 name|String
 name|extension
-init|=
-literal|""
 decl_stmt|;
 name|ExternalFileType
 name|fileType

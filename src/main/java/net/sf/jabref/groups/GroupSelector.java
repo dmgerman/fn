@@ -7909,8 +7909,6 @@ block|}
 block|}
 name|AbstractUndoableEdit
 name|undo
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -8043,8 +8041,6 @@ block|}
 block|}
 name|AbstractUndoableEdit
 name|undo
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -8177,8 +8173,6 @@ block|}
 block|}
 name|AbstractUndoableEdit
 name|undo
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -8310,8 +8304,6 @@ block|}
 block|}
 name|AbstractUndoableEdit
 name|undo
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(

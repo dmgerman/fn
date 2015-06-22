@@ -495,8 +495,6 @@ literal|null
 decl_stmt|;
 name|Reader
 name|reader
-init|=
-literal|null
 decl_stmt|;
 comment|// Check if this export filter has bundled name formatters:
 name|HashMap

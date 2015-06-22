@@ -1180,8 +1180,6 @@ name|getText
 argument_list|()
 decl_stmt|,
 name|retVal
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -1522,8 +1520,6 @@ argument_list|()
 expr_stmt|;
 name|String
 name|plannedName
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(

@@ -420,9 +420,6 @@ argument_list|)
 expr_stmt|;
 name|int
 name|c
-init|=
-operator|-
-literal|1
 decl_stmt|;
 while|while
 condition|(

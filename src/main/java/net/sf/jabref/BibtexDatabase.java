@@ -1639,8 +1639,6 @@ init|=
 literal|0
 decl_stmt|,
 name|next
-init|=
-literal|0
 decl_stmt|;
 while|while
 condition|(
@@ -1858,8 +1856,6 @@ block|{
 comment|// Globals.logger(" checkForDuplicateKeyAndAdd [oldKey = " + oldKey + "] [newKey = " + newKey + "]");
 name|boolean
 name|duplicate
-init|=
-literal|false
 decl_stmt|;
 if|if
 condition|(

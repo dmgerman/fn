@@ -4637,8 +4637,6 @@ argument_list|()
 decl_stmt|;
 name|boolean
 name|restartRequired
-init|=
-literal|false
 decl_stmt|;
 name|restartRequired
 operator|=

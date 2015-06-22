@@ -146,8 +146,6 @@ block|{
 comment|/*             This method is available for checking if a file can be of the MSBib type.             The effect of this method is primarily to avoid unnecessary processing of             files when searching for a suitable import format. If this method returns             false, the import routine will move on to the next import format.              The correct behaviour is to return false if it is certain that the file is             not of the MsBib type, and true otherwise. Returning true is the safe choice             if not certain.          */
 name|Document
 name|docin
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{

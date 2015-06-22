@@ -1517,8 +1517,6 @@ argument_list|<
 name|BibtexEntry
 argument_list|>
 name|xmpEntriesInFile
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{

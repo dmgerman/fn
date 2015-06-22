@@ -1017,8 +1017,6 @@ literal|1
 decl_stmt|;
 name|int
 name|first_part_end
-init|=
-literal|0
 decl_stmt|,
 name|von_part_end
 init|=

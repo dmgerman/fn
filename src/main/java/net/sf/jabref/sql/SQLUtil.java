@@ -272,8 +272,6 @@ literal|""
 decl_stmt|;
 name|String
 name|field
-init|=
-literal|""
 decl_stmt|;
 for|for
 control|(
@@ -432,8 +430,6 @@ literal|""
 decl_stmt|;
 name|String
 name|field
-init|=
-literal|""
 decl_stmt|;
 name|ListIterator
 argument_list|<
@@ -545,8 +541,6 @@ parameter_list|)
 block|{
 name|String
 name|currentField
-init|=
-literal|null
 decl_stmt|;
 for|for
 control|(
@@ -649,8 +643,6 @@ parameter_list|)
 block|{
 name|String
 name|msg
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -880,8 +872,6 @@ parameter_list|)
 block|{
 name|String
 name|url
-init|=
-literal|""
 decl_stmt|;
 name|url
 operator|=

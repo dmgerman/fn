@@ -2003,8 +2003,6 @@ argument_list|()
 decl_stmt|;
 name|int
 name|c
-init|=
-literal|'.'
 decl_stmt|;
 while|while
 condition|(
@@ -4080,10 +4078,6 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|keepon
-operator|=
-literal|false
-expr_stmt|;
 return|return
 literal|null
 return|;

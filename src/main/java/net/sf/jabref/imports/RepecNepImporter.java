@@ -672,8 +672,6 @@ block|{
 comment|// read single author
 name|String
 name|author
-init|=
-literal|null
 decl_stmt|;
 name|String
 name|institution
@@ -682,8 +680,6 @@ literal|null
 decl_stmt|;
 name|boolean
 name|institutionDone
-init|=
-literal|false
 decl_stmt|;
 if|if
 condition|(
@@ -1446,8 +1442,6 @@ condition|)
 block|{
 name|String
 name|content
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(

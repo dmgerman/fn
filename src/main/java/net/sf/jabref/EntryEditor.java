@@ -7479,9 +7479,6 @@ argument_list|)
 decl_stmt|;
 name|int
 name|newRow
-init|=
-operator|-
-literal|1
 decl_stmt|;
 if|if
 condition|(
@@ -7601,9 +7598,6 @@ argument_list|)
 decl_stmt|;
 name|int
 name|newRow
-init|=
-operator|-
-literal|1
 decl_stmt|;
 if|if
 condition|(

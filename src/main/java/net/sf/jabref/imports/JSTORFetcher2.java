@@ -677,8 +677,6 @@ index|]
 decl_stmt|;
 name|int
 name|refsRequested
-init|=
-literal|0
 decl_stmt|;
 name|int
 name|numberOfPagesRequested
@@ -687,8 +685,6 @@ name|MAX_PAGES_TO_LOAD
 decl_stmt|;
 name|String
 name|nextPage
-init|=
-literal|null
 decl_stmt|;
 while|while
 condition|(
@@ -889,8 +885,6 @@ literal|0
 decl_stmt|;
 name|int
 name|refsRequested
-init|=
-literal|0
 decl_stmt|;
 if|if
 condition|(

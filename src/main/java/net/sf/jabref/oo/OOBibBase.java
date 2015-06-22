@@ -732,8 +732,6 @@ argument_list|()
 decl_stmt|;
 name|XTextDocument
 name|selected
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
