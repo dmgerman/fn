@@ -103,12 +103,6 @@ name|String
 name|getKeyName
 parameter_list|()
 function_decl|;
-comment|/**      * Get the appropriate icon URL for this activeFetcher.      *       * @return The icon URL      */
-DECL|method|getIcon ()
-name|URL
-name|getIcon
-parameter_list|()
-function_decl|;
 comment|/**      * Get the name of the help page for this activeFetcher.      *       * If given, a question mark is displayed in the side pane which leads to      * the help page.      *       * @return The name of the help file or null if this activeFetcher does not have      *         any help.      */
 DECL|method|getHelpPage ()
 name|String

@@ -607,21 +607,6 @@ return|return
 literal|"Google Scholar"
 return|;
 block|}
-DECL|method|getIcon ()
-specifier|public
-name|URL
-name|getIcon
-parameter_list|()
-block|{
-return|return
-name|GUIGlobals
-operator|.
-name|getIconUrl
-argument_list|(
-literal|"www"
-argument_list|)
-return|;
-block|}
 DECL|method|getHelpPage ()
 specifier|public
 name|String

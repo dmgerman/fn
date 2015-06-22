@@ -128,18 +128,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Globals
 import|;
 end_import
@@ -611,25 +599,6 @@ parameter_list|()
 block|{
 return|return
 literal|"ISBNtoBibTeX"
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getIcon ()
-specifier|public
-name|URL
-name|getIcon
-parameter_list|()
-block|{
-comment|// no special icon for this fetcher available.
-comment|// Therefore, we return some kind of default icon
-return|return
-name|GUIGlobals
-operator|.
-name|getIconUrl
-argument_list|(
-literal|"www"
-argument_list|)
 return|;
 block|}
 annotation|@
