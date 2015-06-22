@@ -584,14 +584,11 @@ name|browse
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
 name|BrowseAction
+operator|.
+name|buildForDir
 argument_list|(
-literal|null
-argument_list|,
 name|fileDir
-argument_list|,
-literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;

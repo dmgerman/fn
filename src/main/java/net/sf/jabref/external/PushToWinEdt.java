@@ -516,14 +516,11 @@ expr_stmt|;
 name|BrowseAction
 name|action
 init|=
-operator|new
 name|BrowseAction
+operator|.
+name|buildForFile
 argument_list|(
-literal|null
-argument_list|,
 name|winEdtPath
-argument_list|,
-literal|false
 argument_list|)
 decl_stmt|;
 name|JButton
