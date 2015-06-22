@@ -144,11 +144,6 @@ argument_list|>
 argument_list|>
 argument_list|()
 decl_stmt|;
-DECL|field|data
-specifier|private
-name|StringReader
-name|data
-decl_stmt|;
 DECL|field|groupsRoot
 specifier|private
 name|GroupTreeNode
@@ -249,8 +244,9 @@ name|keySet
 argument_list|()
 control|)
 block|{
+name|StringReader
 name|data
-operator|=
+init|=
 operator|new
 name|StringReader
 argument_list|(
@@ -261,7 +257,7 @@ argument_list|(
 name|key
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|String
 name|unit
 decl_stmt|;

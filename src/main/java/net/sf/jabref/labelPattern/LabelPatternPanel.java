@@ -278,22 +278,6 @@ specifier|private
 name|HelpAction
 name|help
 decl_stmt|;
-DECL|field|btnDefaultAll
-DECL|field|btnDefault
-specifier|private
-name|JButton
-name|btnDefaultAll
-decl_stmt|,
-name|btnDefault
-decl_stmt|;
-DECL|field|lblEntryType
-DECL|field|lblKeyPattern
-specifier|private
-name|JLabel
-name|lblEntryType
-decl_stmt|,
-name|lblKeyPattern
-decl_stmt|;
 comment|// default pattern
 DECL|field|defaultPat
 specifier|protected
@@ -408,8 +392,9 @@ name|gbl
 argument_list|)
 expr_stmt|;
 comment|// The header - can be removed
+name|JLabel
 name|lblEntryType
-operator|=
+init|=
 operator|new
 name|JLabel
 argument_list|(
@@ -420,7 +405,7 @@ argument_list|(
 literal|"Entry type"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|Font
 name|f
 init|=
@@ -515,8 +500,9 @@ argument_list|(
 name|lblEntryType
 argument_list|)
 expr_stmt|;
+name|JLabel
 name|lblKeyPattern
-operator|=
+init|=
 operator|new
 name|JLabel
 argument_list|(
@@ -527,7 +513,7 @@ argument_list|(
 literal|"Key pattern"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|lblKeyPattern
 operator|.
 name|setFont
@@ -682,8 +668,9 @@ argument_list|,
 literal|5
 argument_list|)
 expr_stmt|;
+name|JButton
 name|btnDefault
-operator|=
+init|=
 operator|new
 name|JButton
 argument_list|(
@@ -694,7 +681,7 @@ argument_list|(
 literal|"Default"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|btnDefault
 operator|.
 name|addActionListener
@@ -958,8 +945,9 @@ name|help
 argument_list|)
 expr_stmt|;
 comment|// And finally a button to reset everything
+name|JButton
 name|btnDefaultAll
-operator|=
+init|=
 operator|new
 name|JButton
 argument_list|(
@@ -970,7 +958,7 @@ argument_list|(
 literal|"Reset all"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|con
 operator|.
 name|gridx

@@ -407,13 +407,6 @@ name|lastPressedTime
 init|=
 literal|0
 decl_stmt|;
-DECL|field|QUICK_JUMP_TIMEOUT
-specifier|private
-name|long
-name|QUICK_JUMP_TIMEOUT
-init|=
-literal|2000
-decl_stmt|;
 comment|//private int lastCharPressed = -1;
 DECL|method|MainTableSelectionListener (BasePanel panel, MainTable table)
 specifier|public
@@ -2814,6 +2807,11 @@ name|System
 operator|.
 name|currentTimeMillis
 argument_list|()
+decl_stmt|;
+name|long
+name|QUICK_JUMP_TIMEOUT
+init|=
+literal|2000
 decl_stmt|;
 if|if
 condition|(

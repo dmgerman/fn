@@ -76,10 +76,6 @@ name|IOException
 import|;
 end_import
 
-begin_comment
-comment|/**  * Created by IntelliJ IDEA.  * User: Christoph Arbeit  * Date: 28.09.2010  * Time: 12:06:57  * To change this template use File | Settings | File Templates.  */
-end_comment
-
 begin_class
 DECL|class|LabelLinkListener
 specifier|public
@@ -88,13 +84,9 @@ name|LabelLinkListener
 implements|implements
 name|MouseListener
 block|{
-DECL|field|link
-specifier|private
-name|String
-name|link
-decl_stmt|;
 DECL|field|component
 specifier|private
+specifier|final
 name|Component
 name|component
 decl_stmt|;
@@ -109,12 +101,6 @@ name|String
 name|link
 parameter_list|)
 block|{
-name|this
-operator|.
-name|link
-operator|=
-name|link
-expr_stmt|;
 name|this
 operator|.
 name|component

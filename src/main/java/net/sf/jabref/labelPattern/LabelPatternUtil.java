@@ -142,6 +142,7 @@ comment|// All single characters that we can use for extending a key to make it 
 DECL|field|CHARS
 specifier|private
 specifier|static
+specifier|final
 name|String
 name|CHARS
 init|=
