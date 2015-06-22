@@ -938,10 +938,16 @@ else|else
 block|{
 comment|// No listener found, thus we are the first instance to be
 comment|// started.
-name|remoteListener
+name|JabRefExecutorService
 operator|.
-name|start
-argument_list|()
+name|INSTANCE
+operator|.
+name|executeInOwnThread
+argument_list|(
+name|JabRef
+operator|.
+name|remoteListener
+argument_list|)
 expr_stmt|;
 block|}
 block|}

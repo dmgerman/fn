@@ -596,11 +596,18 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
+argument_list|(
 name|autoSetFile
 argument_list|(
 name|fieldName
 argument_list|,
 name|editor
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
@@ -818,9 +825,14 @@ name|FieldEditor
 name|editor
 parameter_list|)
 block|{
-operator|(
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
+argument_list|(
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
 specifier|public
@@ -1107,10 +1119,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-operator|)
-operator|.
-name|start
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 DECL|method|browseFile (final String fieldName, final FieldEditor editor)
@@ -1465,9 +1474,14 @@ name|targetEntry
 operator|=
 name|entry
 expr_stmt|;
-operator|(
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
+argument_list|(
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
 specifier|public
@@ -2020,7 +2034,7 @@ operator|.
 name|invokeLater
 argument_list|(
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
 specifier|public
@@ -2100,16 +2114,13 @@ block|}
 block|}
 block|}
 block|}
-operator|)
-operator|.
-name|start
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Starts a thread that searches the external file directory for the given      * field name, including subdirectories, and looks for files named after the      * current entry's bibtex key. Returns a reference to the thread for callers      * that may want to wait for the thread to finish (using join()).      *       * @param fieldName      *            The field to set.      * @param editor      *            An EntryEditor instance where to set the value found.      * @return A reference to the Thread that performs the operation.      */
+comment|/**      * Creates a Runnable that searches the external file directory for the given      * field name, including subdirectories, and looks for files named after the      * current entry's bibtex key.      *       * @param fieldName      *            The field to set.      * @param editor      *            An EntryEditor instance where to set the value found.      * @return A reference to the Runnable that can perform the operation.      */
 DECL|method|autoSetFile (final String fieldName, final FieldEditor editor)
 specifier|public
-name|Thread
+name|Runnable
 name|autoSetFile
 parameter_list|(
 specifier|final
@@ -2197,12 +2208,9 @@ operator|+
 literal|"'..."
 argument_list|)
 expr_stmt|;
-name|Thread
-name|t
-init|=
-operator|(
+return|return
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
 specifier|public
@@ -2210,7 +2218,7 @@ name|void
 name|run
 parameter_list|()
 block|{
-comment|/*                  * Find the following directories to look in for:                  *                   * default directory for this field type.                  *                   * directory of bibtex-file. // NOT POSSIBLE at the moment.                  *                   * JabRef-directory.                  */
+comment|/*                  * Find the following directories to look in for:                  *                  * default directory for this field type.                  *                  * directory of bibtex-file. // NOT POSSIBLE at the moment.                  *                  * JabRef-directory.                  */
 name|LinkedList
 argument_list|<
 name|String
@@ -2342,15 +2350,6 @@ expr_stmt|;
 block|}
 block|}
 block|}
-operator|)
-decl_stmt|;
-name|t
-operator|.
-name|start
-argument_list|()
-expr_stmt|;
-return|return
-name|t
 return|;
 block|}
 block|}

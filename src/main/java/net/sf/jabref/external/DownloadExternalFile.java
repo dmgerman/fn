@@ -444,9 +444,14 @@ init|=
 name|udl
 decl_stmt|;
 comment|//System.out.println("Time: "+(System.currentTimeMillis()-time));
-operator|(
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
+argument_list|(
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
 specifier|public
@@ -571,10 +576,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-operator|)
-operator|.
-name|start
-argument_list|()
+argument_list|)
 expr_stmt|;
 name|ExternalFileType
 name|suggestedType

@@ -16,7 +16,7 @@ comment|// modified : r.nagel 2.09.2004
 end_comment
 
 begin_comment
-comment|//            - new SearcherThread.setFinish() method
+comment|//            - new SearcherRunnable.setFinish() method
 end_comment
 
 begin_comment
@@ -105,8 +105,8 @@ DECL|class|DuplicateSearch
 specifier|public
 class|class
 name|DuplicateSearch
-extends|extends
-name|Thread
+implements|implements
+name|Runnable
 block|{
 DECL|field|panel
 name|BasePanel
@@ -266,26 +266,21 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
-name|SearcherThread
+name|SearcherRunnable
 name|st
 init|=
 operator|new
-name|SearcherThread
+name|SearcherRunnable
 argument_list|()
 decl_stmt|;
-name|st
+name|JabRefExecutorService
 operator|.
-name|setPriority
+name|INSTANCE
+operator|.
+name|executeWithLowPriorityInOwnThread
 argument_list|(
-name|Thread
-operator|.
-name|MIN_PRIORITY
-argument_list|)
-expr_stmt|;
 name|st
-operator|.
-name|start
-argument_list|()
+argument_list|)
 expr_stmt|;
 name|int
 name|current
@@ -731,14 +726,15 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-DECL|class|SearcherThread
+DECL|class|SearcherRunnable
 class|class
-name|SearcherThread
-extends|extends
-name|Thread
+name|SearcherRunnable
+implements|implements
+name|Runnable
 block|{
 DECL|field|finished
 specifier|private
+specifier|volatile
 name|boolean
 name|finished
 init|=

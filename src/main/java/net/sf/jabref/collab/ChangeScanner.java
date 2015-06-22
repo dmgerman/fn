@@ -209,8 +209,8 @@ DECL|class|ChangeScanner
 specifier|public
 class|class
 name|ChangeScanner
-extends|extends
-name|Thread
+implements|implements
+name|Runnable
 block|{
 DECL|field|MATCH_THRESHOLD
 specifier|final
@@ -237,32 +237,39 @@ literal|"title"
 block|}
 decl_stmt|;
 DECL|field|f
+specifier|final
 name|File
 name|f
 decl_stmt|;
 DECL|field|inMem
-DECL|field|inTemp
+specifier|final
 name|BibtexDatabase
 name|inMem
-decl_stmt|,
-name|inTemp
-init|=
-literal|null
 decl_stmt|;
 DECL|field|mdInMem
-DECL|field|mdInTemp
+specifier|final
 name|MetaData
 name|mdInMem
-decl_stmt|,
-name|mdInTemp
 decl_stmt|;
 DECL|field|panel
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|frame
+specifier|final
 name|JabRefFrame
 name|frame
+decl_stmt|;
+DECL|field|inTemp
+name|BibtexDatabase
+name|inTemp
+init|=
+literal|null
+decl_stmt|;
+DECL|field|mdInTemp
+name|MetaData
+name|mdInTemp
 decl_stmt|;
 comment|/**      * We create an ArrayList to hold the changes we find. These will be added in the form      * of UndoEdit objects. We instantiate these so that the changes found in the file on disk      * can be reproduced in memory by calling redo() on them. REDO, not UNDO!      */
 comment|//ArrayList changes = new ArrayList();
@@ -282,7 +289,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 comment|//  NamedCompound edit = new NamedCompound("Merged external changes")
-DECL|method|ChangeScanner (JabRefFrame frame, BasePanel bp)
+DECL|method|ChangeScanner (JabRefFrame frame, BasePanel bp, File file)
 specifier|public
 name|ChangeScanner
 parameter_list|(
@@ -291,9 +298,14 @@ name|frame
 parameter_list|,
 name|BasePanel
 name|bp
+parameter_list|,
+name|File
+name|file
 parameter_list|)
 block|{
 comment|//, BibtexDatabase inMem, MetaData mdInMem) {
+name|this
+operator|.
 name|panel
 operator|=
 name|bp
@@ -322,32 +334,11 @@ operator|.
 name|metaData
 argument_list|()
 expr_stmt|;
-comment|// Set low priority:
-name|setPriority
-argument_list|(
-name|Thread
-operator|.
-name|MIN_PRIORITY
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|changeScan (File f)
-specifier|public
-name|void
-name|changeScan
-parameter_list|(
-name|File
-name|f
-parameter_list|)
-block|{
 name|this
 operator|.
 name|f
 operator|=
-name|f
-expr_stmt|;
-name|start
-argument_list|()
+name|file
 expr_stmt|;
 block|}
 DECL|method|run ()
@@ -832,8 +823,11 @@ name|void
 name|storeTempDatabase
 parameter_list|()
 block|{
-operator|new
-name|Thread
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
 argument_list|(
 operator|new
 name|Runnable
@@ -910,9 +904,6 @@ block|}
 block|}
 block|}
 argument_list|)
-operator|.
-name|start
-argument_list|()
 expr_stmt|;
 block|}
 DECL|method|scanMetaData (MetaData inMem, MetaData inTemp, MetaData onDisk)
@@ -2793,12 +2784,10 @@ block|}
 block|}
 DECL|interface|DisplayResultCallback
 specifier|public
-specifier|static
 interface|interface
 name|DisplayResultCallback
 block|{
 DECL|method|scanResultsResolved (boolean resolved)
-specifier|public
 name|void
 name|scanResultsResolved
 parameter_list|(

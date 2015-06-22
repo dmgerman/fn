@@ -101,8 +101,8 @@ DECL|class|FileUpdateMonitor
 specifier|public
 class|class
 name|FileUpdateMonitor
-extends|extends
-name|Thread
+implements|implements
+name|Runnable
 block|{
 DECL|field|logger
 specifier|private
@@ -161,20 +161,10 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|running
+specifier|volatile
 name|boolean
 name|running
 decl_stmt|;
-DECL|method|FileUpdateMonitor ()
-specifier|public
-name|FileUpdateMonitor
-parameter_list|()
-block|{
-name|setPriority
-argument_list|(
-name|MIN_PRIORITY
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|run ()
 specifier|public
 name|void
@@ -262,6 +252,8 @@ block|}
 comment|// Sleep for a while before starting a new polling round.
 try|try
 block|{
+name|Thread
+operator|.
 name|sleep
 argument_list|(
 name|WAIT

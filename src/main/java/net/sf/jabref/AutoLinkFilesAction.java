@@ -238,6 +238,9 @@ literal|"Automatically set file links"
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|Runnable
+name|runnable
+init|=
 name|Util
 operator|.
 name|autoSetLinks
@@ -364,6 +367,15 @@ block|}
 block|}
 argument_list|,
 name|diag
+argument_list|)
+decl_stmt|;
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
+argument_list|(
+name|runnable
 argument_list|)
 expr_stmt|;
 block|}

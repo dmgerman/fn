@@ -239,11 +239,11 @@ name|lyxpipe
 init|=
 name|lp
 decl_stmt|;
-name|Thread
-name|t
-init|=
-operator|new
-name|Thread
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|executeAndWait
 argument_list|(
 operator|new
 name|Runnable
@@ -314,34 +314,7 @@ block|}
 block|}
 block|}
 argument_list|)
-decl_stmt|;
-name|t
-operator|.
-name|start
-argument_list|()
 expr_stmt|;
-comment|//new Timeout(2000, t, Globals.lang("Error")+": "+
-comment|//Globals.lang("unable to access LyX-pipe"));
-try|try
-block|{
-name|t
-operator|.
-name|join
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
 block|}
 DECL|method|getName ()
 specifier|public

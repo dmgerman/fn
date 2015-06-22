@@ -2621,15 +2621,17 @@ block|{
 if|if
 condition|(
 name|panel
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
-name|Thread
+return|return;
+block|}
+name|Runnable
 name|t
 init|=
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
 specifier|public
@@ -2651,7 +2653,6 @@ argument_list|(
 name|t
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
@@ -3636,7 +3637,7 @@ operator|.
 name|invokeLater
 argument_list|(
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
 specifier|public

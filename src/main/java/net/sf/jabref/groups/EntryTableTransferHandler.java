@@ -206,6 +206,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|JabRefExecutorService
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|JabRefFrame
 import|;
 end_import
@@ -1464,8 +1476,11 @@ block|}
 comment|// Try to load bib files normally, and import the rest into the current
 comment|// database.
 comment|// This process must be spun off into a background thread:
-operator|new
-name|Thread
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
 argument_list|(
 operator|new
 name|Runnable
@@ -1526,9 +1541,6 @@ comment|// Done by MrDlib
 block|}
 block|}
 argument_list|)
-operator|.
-name|start
-argument_list|()
 expr_stmt|;
 return|return
 literal|true

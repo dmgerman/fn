@@ -631,8 +631,8 @@ name|sel
 argument_list|)
 expr_stmt|;
 comment|// Start the autosetting process:
-name|Thread
-name|t
+name|Runnable
+name|r
 init|=
 name|Util
 operator|.
@@ -656,27 +656,15 @@ argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
-comment|// Wait for the autosetting to finish:
-try|try
-block|{
-name|t
+name|JabRefExecutorService
 operator|.
-name|join
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{
-name|e
+name|INSTANCE
 operator|.
-name|printStackTrace
-argument_list|()
+name|executeAndWait
+argument_list|(
+name|r
+argument_list|)
 expr_stmt|;
-block|}
 comment|/*                 progress += weightAutoSet;                 panel.frame().setProgressBarValue(progress);                  Object old = sel[i].getField(fieldName);                 FileListTableModel tableModel = new FileListTableModel();                 if (old != null)                     tableModel.setContent((String)old);                 Thread t = FileListEditor.autoSetLinks(sel[i], tableModel, null, null);                  if (!tableModel.getStringRepresentation().equals(old)) {                     String toSet = tableModel.getStringRepresentation();                     if (toSet.length() == 0)                         toSet = null;                     ce.addEdit(new UndoableFieldChange(sel[i], fieldName, old, toSet));                     sel[i].setField(fieldName, toSet);                     entriesChanged++;                 }             }    */
 block|}
 name|progress

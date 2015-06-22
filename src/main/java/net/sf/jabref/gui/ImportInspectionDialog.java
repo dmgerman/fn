@@ -4186,7 +4186,7 @@ operator|.
 name|invokeLater
 argument_list|(
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
 specifier|public
@@ -6617,6 +6617,12 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
+argument_list|(
 name|Util
 operator|.
 name|autoSetLinks
@@ -6695,6 +6701,7 @@ block|}
 block|}
 argument_list|,
 name|diag
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}

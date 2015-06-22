@@ -1340,10 +1340,14 @@ operator|new
 name|FileUpdateMonitor
 argument_list|()
 expr_stmt|;
-name|fileUpdateMonitor
+name|JabRefExecutorService
 operator|.
-name|start
-argument_list|()
+name|INSTANCE
+operator|.
+name|executeWithLowPriorityInOwnThread
+argument_list|(
+name|fileUpdateMonitor
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Initialize and start the autosave manager.      * @param frame The main frame.      */

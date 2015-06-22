@@ -709,8 +709,14 @@ name|arg0
 parameter_list|)
 block|{
 comment|// Background this, as it takes a while.
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
+argument_list|(
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
 specifier|public
@@ -805,9 +811,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-operator|.
-name|start
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}

@@ -2266,8 +2266,11 @@ block|{
 literal|1
 block|}
 expr_stmt|;
-operator|new
-name|Thread
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
 argument_list|(
 operator|new
 name|Runnable
@@ -2341,9 +2344,6 @@ expr_stmt|;
 block|}
 block|}
 argument_list|)
-operator|.
-name|start
-argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * This will start the import of all file of all selected nodes in this      * dialogs tree view.<br>      *<br>      * The import itself will run in a seperate thread, whilst this dialog will      * be showing a progress bar, until the thread has finished its work.<br>      *<br>      * When the import has finished, the {@link #importFinishedHandler(int, java.util.List)} is      * invoked.      */
@@ -2500,8 +2500,11 @@ block|{
 literal|1
 block|}
 expr_stmt|;
-operator|new
-name|Thread
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
 argument_list|(
 operator|new
 name|Runnable
@@ -2600,9 +2603,6 @@ expr_stmt|;
 block|}
 block|}
 argument_list|)
-operator|.
-name|start
-argument_list|()
 expr_stmt|;
 block|}
 comment|/**      *       * @param errors      */

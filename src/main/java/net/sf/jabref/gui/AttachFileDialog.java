@@ -523,6 +523,12 @@ name|ActionEvent
 name|event
 parameter_list|)
 block|{
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
+argument_list|(
 name|extPan
 operator|.
 name|autoSetFile
@@ -530,6 +536,7 @@ argument_list|(
 name|fieldName
 argument_list|,
 name|editor
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
