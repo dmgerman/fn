@@ -1024,12 +1024,7 @@ argument_list|)
 operator|.
 name|compareTo
 argument_list|(
-name|Integer
-operator|.
-name|valueOf
-argument_list|(
 name|pos2
-argument_list|)
 argument_list|)
 return|;
 block|}
