@@ -283,6 +283,7 @@ operator|.
 name|DoubleClickListener
 block|{
 DECL|field|list
+specifier|final
 name|JList
 name|list
 decl_stmt|;

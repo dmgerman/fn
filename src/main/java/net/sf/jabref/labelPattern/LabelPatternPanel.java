@@ -257,6 +257,7 @@ block|{
 comment|// used by both LabelPatternPanel and TabLabelPAttern
 DECL|field|gbl
 specifier|protected
+specifier|final
 name|GridBagLayout
 name|gbl
 init|=
@@ -266,6 +267,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|con
 specifier|protected
+specifier|final
 name|GridBagConstraints
 name|con
 init|=
@@ -275,12 +277,14 @@ argument_list|()
 decl_stmt|;
 DECL|field|help
 specifier|private
+specifier|final
 name|HelpAction
 name|help
 decl_stmt|;
 comment|// default pattern
 DECL|field|defaultPat
 specifier|protected
+specifier|final
 name|JTextField
 name|defaultPat
 init|=
@@ -291,6 +295,7 @@ decl_stmt|;
 comment|// one field for each type
 DECL|field|textFields
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String

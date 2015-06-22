@@ -474,6 +474,7 @@ name|FILE_FIELD
 block|}
 decl_stmt|;
 DECL|field|panel
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
@@ -497,6 +498,7 @@ comment|// padleft indicates how many columns (starting from left) are
 comment|// special columns (number column or icon column).
 DECL|field|iconCols
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|Integer
@@ -2783,11 +2785,13 @@ argument_list|>
 block|{
 DECL|field|ruleSet
 specifier|private
+specifier|final
 name|SearchRuleSet
 name|ruleSet
 decl_stmt|;
 DECL|field|searchOptions
 specifier|private
+specifier|final
 name|Hashtable
 argument_list|<
 name|String

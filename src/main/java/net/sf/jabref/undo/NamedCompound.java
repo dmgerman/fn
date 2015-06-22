@@ -61,6 +61,7 @@ extends|extends
 name|CompoundEdit
 block|{
 DECL|field|name
+specifier|final
 name|String
 name|name
 decl_stmt|;

@@ -66,6 +66,7 @@ name|BibtexEntry
 argument_list|>
 block|{
 DECL|field|authComp
+specifier|final
 name|FieldComparator
 name|authComp
 init|=
@@ -74,8 +75,10 @@ name|FieldComparator
 argument_list|(
 literal|"author"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|editorComp
+specifier|final
+name|FieldComparator
 name|editorComp
 init|=
 operator|new
@@ -83,8 +86,10 @@ name|FieldComparator
 argument_list|(
 literal|"editor"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|yearComp
+specifier|final
+name|FieldComparator
 name|yearComp
 init|=
 operator|new
@@ -92,8 +97,10 @@ name|FieldComparator
 argument_list|(
 literal|"year"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|titleComp
+specifier|final
+name|FieldComparator
 name|titleComp
 init|=
 operator|new

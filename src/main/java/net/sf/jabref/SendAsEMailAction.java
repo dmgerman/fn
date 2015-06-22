@@ -159,6 +159,7 @@ literal|null
 decl_stmt|;
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;

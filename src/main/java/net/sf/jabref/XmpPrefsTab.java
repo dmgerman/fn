@@ -164,10 +164,12 @@ name|int
 name|rowCount
 decl_stmt|;
 DECL|field|table
+specifier|final
 name|JTable
 name|table
 decl_stmt|;
 DECL|field|privacyFilterCheckBox
+specifier|final
 name|JCheckBox
 name|privacyFilterCheckBox
 init|=
@@ -183,6 +185,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|tableRows
+specifier|final
 name|Vector
 argument_list|<
 name|Object

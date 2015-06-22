@@ -130,6 +130,7 @@ name|SearchRule
 block|{
 DECL|field|treeParser
 specifier|private
+specifier|final
 name|SearchExpressionTreeParser
 name|treeParser
 init|=

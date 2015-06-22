@@ -29,6 +29,7 @@ block|{
 comment|// Common words in IEEE Xplore that should always be in the given case
 DECL|field|wordListIEEEXplore
 specifier|public
+specifier|final
 name|String
 index|[]
 name|wordListIEEEXplore
@@ -1322,6 +1323,7 @@ decl_stmt|;
 comment|// Weekdays and months
 DECL|field|wordListDayMonth
 specifier|public
+specifier|final
 name|String
 index|[]
 name|wordListDayMonth
@@ -1371,6 +1373,7 @@ block|}
 decl_stmt|;
 DECL|field|wordListCountries
 specifier|private
+specifier|final
 name|String
 index|[]
 name|wordListCountries
@@ -1957,6 +1960,7 @@ decl_stmt|;
 comment|// List of all keyword lists
 DECL|field|allLists
 specifier|private
+specifier|final
 name|String
 index|[]
 index|[]

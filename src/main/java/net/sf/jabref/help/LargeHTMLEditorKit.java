@@ -241,6 +241,7 @@ extends|extends
 name|HTMLEditorKit
 block|{
 DECL|field|factory
+specifier|final
 name|ViewFactory
 name|factory
 init|=

@@ -241,6 +241,7 @@ block|{
 DECL|field|logger
 specifier|private
 specifier|static
+specifier|final
 name|Logger
 name|logger
 init|=
@@ -257,11 +258,13 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|showDialog
+specifier|final
 name|boolean
 name|showDialog
 decl_stmt|;
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -270,6 +273,7 @@ comment|// upgrade actions etc. that may depend on the JabRef version that wrote
 DECL|field|postOpenActions
 specifier|private
 specifier|static
+specifier|final
 name|ArrayList
 argument_list|<
 name|PostOpenAction
@@ -767,14 +771,17 @@ implements|implements
 name|Runnable
 block|{
 DECL|field|bp
+specifier|final
 name|BasePanel
 name|bp
 decl_stmt|;
 DECL|field|raisePanel
+specifier|final
 name|boolean
 name|raisePanel
 decl_stmt|;
 DECL|field|file
+specifier|final
 name|File
 name|file
 decl_stmt|;

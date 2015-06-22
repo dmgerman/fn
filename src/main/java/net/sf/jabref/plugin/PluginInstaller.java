@@ -2762,10 +2762,12 @@ name|NameAndVersion
 argument_list|>
 block|{
 DECL|field|name
+specifier|final
 name|String
 name|name
 decl_stmt|;
 DECL|field|version
+specifier|final
 name|VersionNumber
 name|version
 decl_stmt|;
@@ -2776,10 +2778,12 @@ init|=
 literal|0
 decl_stmt|;
 DECL|field|inUserDirectory
+specifier|final
 name|boolean
 name|inUserDirectory
 decl_stmt|;
 DECL|field|file
+specifier|final
 name|File
 name|file
 decl_stmt|;
@@ -2944,6 +2948,7 @@ literal|"0"
 argument_list|)
 decl_stmt|;
 DECL|field|digits
+specifier|final
 name|List
 argument_list|<
 name|Integer

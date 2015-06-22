@@ -204,6 +204,7 @@ literal|null
 decl_stmt|;
 specifier|public
 specifier|static
+specifier|final
 name|ImageIcon
 DECL|field|groupRefiningIcon
 name|groupRefiningIcon
@@ -214,8 +215,12 @@ name|getImage
 argument_list|(
 literal|"groupRefining"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|groupIncludingIcon
+specifier|public
+specifier|static
+specifier|final
+name|ImageIcon
 name|groupIncludingIcon
 init|=
 name|GUIGlobals
@@ -224,8 +229,12 @@ name|getImage
 argument_list|(
 literal|"groupIncluding"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|groupRegularIcon
+specifier|public
+specifier|static
+specifier|final
+name|ImageIcon
 name|groupRegularIcon
 init|=
 literal|null

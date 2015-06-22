@@ -336,14 +336,17 @@ name|PreviewPanel
 name|preview
 decl_stmt|;
 DECL|field|table
+specifier|final
 name|MainTable
 name|table
 decl_stmt|;
 DECL|field|panel
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|tableRows
+specifier|final
 name|EventList
 argument_list|<
 name|BibtexEntry
@@ -383,6 +386,7 @@ comment|// with storing the last row number jumped to, this is used to let multi
 comment|// key strokes cycle between all entries starting with the same letter:
 DECL|field|lastPressed
 specifier|private
+specifier|final
 name|int
 index|[]
 name|lastPressed

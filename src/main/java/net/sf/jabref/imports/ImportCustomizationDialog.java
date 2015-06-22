@@ -215,6 +215,7 @@ name|customImporterTable
 decl_stmt|;
 DECL|field|prefs
 specifier|private
+specifier|final
 name|JabRefPreferences
 name|prefs
 init|=
@@ -224,6 +225,7 @@ name|prefs
 decl_stmt|;
 DECL|field|importCustomizationDialog
 specifier|private
+specifier|final
 name|ImportCustomizationDialog
 name|importCustomizationDialog
 decl_stmt|;
@@ -1636,6 +1638,7 @@ name|AbstractTableModel
 block|{
 DECL|field|columnNames
 specifier|private
+specifier|final
 name|String
 index|[]
 name|columnNames

@@ -77,6 +77,7 @@ name|icon
 decl_stmt|;
 DECL|field|label
 specifier|protected
+specifier|final
 name|JLabel
 name|label
 init|=

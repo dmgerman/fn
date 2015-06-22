@@ -258,6 +258,7 @@ name|EntryEditorTab
 block|{
 DECL|field|panel
 specifier|private
+specifier|final
 name|JPanel
 name|panel
 init|=
@@ -267,6 +268,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|scrollPane
 specifier|private
+specifier|final
 name|JScrollPane
 name|scrollPane
 init|=
@@ -286,17 +288,20 @@ argument_list|)
 decl_stmt|;
 DECL|field|fields
 specifier|private
+specifier|final
 name|String
 index|[]
 name|fields
 decl_stmt|;
 DECL|field|parent
 specifier|private
+specifier|final
 name|EntryEditor
 name|parent
 decl_stmt|;
 DECL|field|editors
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -2283,6 +2288,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|fieldListener
+specifier|final
 name|FocusListener
 name|fieldListener
 init|=

@@ -268,6 +268,7 @@ name|JDialog
 block|{
 comment|// labels
 DECL|field|lblServerType
+specifier|final
 name|JLabel
 name|lblServerType
 init|=
@@ -276,6 +277,7 @@ name|JLabel
 argument_list|()
 decl_stmt|;
 DECL|field|lblServerHostname
+specifier|final
 name|JLabel
 name|lblServerHostname
 init|=
@@ -284,6 +286,7 @@ name|JLabel
 argument_list|()
 decl_stmt|;
 DECL|field|lblDatabase
+specifier|final
 name|JLabel
 name|lblDatabase
 init|=
@@ -292,6 +295,7 @@ name|JLabel
 argument_list|()
 decl_stmt|;
 DECL|field|lblUsername
+specifier|final
 name|JLabel
 name|lblUsername
 init|=
@@ -300,6 +304,7 @@ name|JLabel
 argument_list|()
 decl_stmt|;
 DECL|field|lblPassword
+specifier|final
 name|JLabel
 name|lblPassword
 init|=
@@ -309,6 +314,7 @@ argument_list|()
 decl_stmt|;
 comment|// input fields
 DECL|field|cmbServerType
+specifier|final
 name|JComboBox
 name|cmbServerType
 init|=
@@ -317,6 +323,7 @@ name|JComboBox
 argument_list|()
 decl_stmt|;
 DECL|field|txtServerHostname
+specifier|final
 name|JTextField
 name|txtServerHostname
 init|=
@@ -327,6 +334,7 @@ literal|40
 argument_list|)
 decl_stmt|;
 DECL|field|txtDatabase
+specifier|final
 name|JTextField
 name|txtDatabase
 init|=
@@ -337,6 +345,7 @@ literal|40
 argument_list|)
 decl_stmt|;
 DECL|field|txtUsername
+specifier|final
 name|JTextField
 name|txtUsername
 init|=
@@ -347,6 +356,7 @@ literal|40
 argument_list|)
 decl_stmt|;
 DECL|field|pwdPassword
+specifier|final
 name|JPasswordField
 name|pwdPassword
 init|=
@@ -357,6 +367,7 @@ literal|40
 argument_list|)
 decl_stmt|;
 DECL|field|btnConnect
+specifier|final
 name|JButton
 name|btnConnect
 init|=
@@ -365,6 +376,7 @@ name|JButton
 argument_list|()
 decl_stmt|;
 DECL|field|btnCancel
+specifier|final
 name|JButton
 name|btnCancel
 init|=
@@ -374,6 +386,7 @@ argument_list|()
 decl_stmt|;
 comment|// array for holding components on left-hand and right-hand sides
 DECL|field|lhs
+specifier|final
 name|ArrayList
 argument_list|<
 name|JLabel
@@ -388,6 +401,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|rhs
+specifier|final
 name|ArrayList
 argument_list|<
 name|JComponent

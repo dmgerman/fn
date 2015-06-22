@@ -145,10 +145,12 @@ class|class
 name|ResolveDuplicateLabelDialog
 block|{
 DECL|field|diag
+specifier|final
 name|JDialog
 name|diag
 decl_stmt|;
 DECL|field|ok
+specifier|final
 name|JButton
 name|ok
 init|=
@@ -162,8 +164,10 @@ argument_list|(
 literal|"Ok"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|cancel
+specifier|final
+name|JButton
 name|cancel
 init|=
 operator|new
@@ -178,6 +182,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|cbs
+specifier|final
 name|List
 argument_list|<
 name|JCheckBox

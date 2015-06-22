@@ -294,11 +294,13 @@ name|ManagePluginsDialog
 block|{
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|diag
 specifier|private
+specifier|final
 name|JDialog
 name|diag
 decl_stmt|;
@@ -311,11 +313,15 @@ argument_list|>
 name|plugins
 decl_stmt|;
 DECL|field|table
-DECL|field|tableOther
 specifier|private
+specifier|final
 name|JTable
 name|table
-decl_stmt|,
+decl_stmt|;
+DECL|field|tableOther
+specifier|private
+specifier|final
+name|JTable
 name|tableOther
 decl_stmt|;
 DECL|method|ManagePluginsDialog (JabRefFrame frame)

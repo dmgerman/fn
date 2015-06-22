@@ -143,6 +143,7 @@ block|{
 DECL|field|logger
 specifier|private
 specifier|static
+specifier|final
 name|Logger
 name|logger
 init|=
@@ -159,6 +160,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|completer
+specifier|final
 name|AbstractAutoCompleter
 name|completer
 decl_stmt|;

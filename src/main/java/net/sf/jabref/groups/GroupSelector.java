@@ -703,6 +703,7 @@ block|{
 DECL|field|logger
 specifier|private
 specifier|static
+specifier|final
 name|Logger
 name|logger
 init|=
@@ -719,6 +720,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|newButton
+specifier|final
 name|JButton
 name|newButton
 init|=
@@ -732,8 +734,10 @@ argument_list|(
 literal|"new"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|helpButton
+specifier|final
+name|JButton
 name|helpButton
 init|=
 operator|new
@@ -746,8 +750,10 @@ argument_list|(
 literal|"help"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|refresh
+specifier|final
+name|JButton
 name|refresh
 init|=
 operator|new
@@ -760,8 +766,10 @@ argument_list|(
 literal|"refresh"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|autoGroup
+specifier|final
+name|JButton
 name|autoGroup
 init|=
 operator|new
@@ -774,8 +782,10 @@ argument_list|(
 literal|"autoGroup"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|openset
+specifier|final
+name|JButton
 name|openset
 init|=
 operator|new
@@ -810,10 +820,12 @@ name|GroupTreeNode
 name|groupsRoot
 decl_stmt|;
 DECL|field|sp
+specifier|final
 name|JScrollPane
 name|sp
 decl_stmt|;
 DECL|field|gbl
+specifier|final
 name|GridBagLayout
 name|gbl
 init|=
@@ -822,6 +834,7 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|con
+specifier|final
 name|GridBagConstraints
 name|con
 init|=
@@ -830,6 +843,7 @@ name|GridBagConstraints
 argument_list|()
 decl_stmt|;
 DECL|field|frame
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -838,6 +852,7 @@ name|String
 name|searchField
 decl_stmt|;
 DECL|field|groupsContextMenu
+specifier|final
 name|JPopupMenu
 name|groupsContextMenu
 init|=
@@ -846,6 +861,7 @@ name|JPopupMenu
 argument_list|()
 decl_stmt|;
 DECL|field|settings
+specifier|final
 name|JPopupMenu
 name|settings
 init|=
@@ -854,14 +870,19 @@ name|JPopupMenu
 argument_list|()
 decl_stmt|;
 DECL|field|hideNonHits
-DECL|field|grayOut
 specifier|private
+specifier|final
 name|JRadioButtonMenuItem
 name|hideNonHits
-decl_stmt|,
+decl_stmt|;
+DECL|field|grayOut
+specifier|private
+specifier|final
+name|JRadioButtonMenuItem
 name|grayOut
 decl_stmt|;
 DECL|field|andCb
+specifier|final
 name|JRadioButtonMenuItem
 name|andCb
 init|=
@@ -879,6 +900,7 @@ literal|true
 argument_list|)
 decl_stmt|;
 DECL|field|orCb
+specifier|final
 name|JRadioButtonMenuItem
 name|orCb
 init|=
@@ -896,6 +918,7 @@ literal|false
 argument_list|)
 decl_stmt|;
 DECL|field|floatCb
+specifier|final
 name|JRadioButtonMenuItem
 name|floatCb
 init|=
@@ -913,6 +936,7 @@ literal|true
 argument_list|)
 decl_stmt|;
 DECL|field|highlCb
+specifier|final
 name|JRadioButtonMenuItem
 name|highlCb
 init|=
@@ -930,6 +954,7 @@ literal|false
 argument_list|)
 decl_stmt|;
 DECL|field|invCb
+specifier|final
 name|JCheckBoxMenuItem
 name|invCb
 init|=
@@ -943,10 +968,12 @@ argument_list|(
 literal|"Inverted"
 argument_list|)
 argument_list|,
-DECL|field|select
 literal|false
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+DECL|field|select
+specifier|final
+name|JCheckBoxMenuItem
 name|select
 init|=
 operator|new
@@ -963,6 +990,7 @@ literal|false
 argument_list|)
 decl_stmt|;
 DECL|field|showOverlappingGroups
+specifier|final
 name|JCheckBoxMenuItem
 name|showOverlappingGroups
 init|=
@@ -979,6 +1007,7 @@ argument_list|)
 decl_stmt|;
 comment|// JZTODO lyrics
 DECL|field|showNumberOfElements
+specifier|final
 name|JCheckBoxMenuItem
 name|showNumberOfElements
 init|=
@@ -994,6 +1023,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|autoAssignGroup
+specifier|final
 name|JCheckBoxMenuItem
 name|autoAssignGroup
 init|=
@@ -1009,6 +1039,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|bgr
+specifier|final
 name|ButtonGroup
 name|bgr
 init|=
@@ -1017,6 +1048,7 @@ name|ButtonGroup
 argument_list|()
 decl_stmt|;
 DECL|field|visMode
+specifier|final
 name|ButtonGroup
 name|visMode
 init|=
@@ -1025,6 +1057,7 @@ name|ButtonGroup
 argument_list|()
 decl_stmt|;
 DECL|field|nonHits
+specifier|final
 name|ButtonGroup
 name|nonHits
 init|=
@@ -1033,6 +1066,7 @@ name|ButtonGroup
 argument_list|()
 decl_stmt|;
 DECL|field|expand
+specifier|final
 name|JButton
 name|expand
 init|=
@@ -1046,8 +1080,10 @@ argument_list|(
 literal|"down"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|reduce
+specifier|final
+name|JButton
 name|reduce
 init|=
 operator|new
@@ -1062,6 +1098,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|editModeCb
+specifier|final
 name|JCheckBoxMenuItem
 name|editModeCb
 init|=
@@ -1079,6 +1116,7 @@ literal|false
 argument_list|)
 decl_stmt|;
 DECL|field|editModeBorder
+specifier|final
 name|Border
 name|editModeBorder
 init|=
@@ -1130,6 +1168,7 @@ name|boolean
 name|editModeIndicator
 decl_stmt|;
 DECL|field|manager
+specifier|final
 name|SidePaneManager
 name|manager
 decl_stmt|;
@@ -5037,11 +5076,13 @@ name|AbstractWorker
 block|{
 DECL|field|rules
 specifier|private
+specifier|final
 name|SearchRuleSet
 name|rules
 decl_stmt|;
 DECL|field|searchTerm
 specifier|private
+specifier|final
 name|Hashtable
 argument_list|<
 name|String
@@ -5052,6 +5093,7 @@ name|searchTerm
 decl_stmt|;
 DECL|field|matches
 specifier|private
+specifier|final
 name|ArrayList
 argument_list|<
 name|BibtexEntry
@@ -5067,6 +5109,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|showOverlappingGroupsP
 specifier|private
+specifier|final
 name|boolean
 name|showOverlappingGroupsP
 decl_stmt|;
@@ -8528,6 +8571,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|moveSubmenu
+specifier|final
 name|JMenu
 name|moveSubmenu
 init|=
@@ -8543,6 +8587,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|sortSubmenu
+specifier|final
 name|JMenu
 name|sortSubmenu
 init|=

@@ -137,6 +137,7 @@ extends|extends
 name|JDialog
 block|{
 DECL|field|buttons
+specifier|final
 name|JPanel
 name|buttons
 init|=
@@ -145,6 +146,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|ok
+specifier|final
 name|JButton
 name|ok
 init|=
@@ -153,6 +155,7 @@ name|JButton
 argument_list|()
 decl_stmt|;
 DECL|field|cancel
+specifier|final
 name|JButton
 name|cancel
 init|=
@@ -177,6 +180,7 @@ name|TitledBorder
 name|titledBorder2
 decl_stmt|;
 DECL|field|jLabel1
+specifier|final
 name|JLabel
 name|jLabel1
 init|=
@@ -185,6 +189,7 @@ name|JLabel
 argument_list|()
 decl_stmt|;
 DECL|field|jPanel3
+specifier|final
 name|JPanel
 name|jPanel3
 init|=
@@ -193,6 +198,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|jPanel4
+specifier|final
 name|JPanel
 name|jPanel4
 init|=
@@ -201,6 +207,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|gridBagLayout1
+specifier|final
 name|GridBagLayout
 name|gridBagLayout1
 init|=
@@ -209,6 +216,7 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|jScrollPane1
+specifier|final
 name|JScrollPane
 name|jScrollPane1
 init|=
@@ -217,6 +225,7 @@ name|JScrollPane
 argument_list|()
 decl_stmt|;
 DECL|field|jLabel2
+specifier|final
 name|JLabel
 name|jLabel2
 init|=
@@ -225,6 +234,7 @@ name|JLabel
 argument_list|()
 decl_stmt|;
 DECL|field|fieldsArea
+specifier|final
 name|JTextArea
 name|fieldsArea
 init|=
@@ -233,6 +243,7 @@ name|JTextArea
 argument_list|()
 decl_stmt|;
 DECL|field|gridBagLayout2
+specifier|final
 name|GridBagLayout
 name|gridBagLayout2
 init|=
@@ -241,10 +252,12 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|parent
+specifier|final
 name|JabRefFrame
 name|parent
 decl_stmt|;
 DECL|field|revert
+specifier|final
 name|JButton
 name|revert
 init|=
@@ -254,6 +267,7 @@ argument_list|()
 decl_stmt|;
 comment|//EntryCustomizationDialog diag;
 DECL|field|help
+specifier|final
 name|HelpAction
 name|help
 decl_stmt|;
@@ -1426,6 +1440,7 @@ operator|.
 name|ActionListener
 block|{
 DECL|field|adaptee
+specifier|final
 name|GenFieldsCustomizer
 name|adaptee
 decl_stmt|;
@@ -1477,6 +1492,7 @@ operator|.
 name|ActionListener
 block|{
 DECL|field|adaptee
+specifier|final
 name|GenFieldsCustomizer
 name|adaptee
 decl_stmt|;
@@ -1528,6 +1544,7 @@ operator|.
 name|ActionListener
 block|{
 DECL|field|adaptee
+specifier|final
 name|GenFieldsCustomizer
 name|adaptee
 decl_stmt|;

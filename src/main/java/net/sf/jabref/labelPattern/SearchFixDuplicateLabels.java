@@ -110,6 +110,7 @@ name|AbstractWorker
 block|{
 DECL|field|panel
 specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;

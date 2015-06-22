@@ -200,6 +200,7 @@ comment|/**      * cookies can't save more than 200 citations      */
 DECL|field|MAX_CITATIONS
 specifier|protected
 specifier|static
+specifier|final
 name|int
 name|MAX_CITATIONS
 init|=

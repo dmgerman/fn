@@ -69,6 +69,7 @@ class|class
 name|SidePaneManager
 block|{
 DECL|field|frame
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -77,10 +78,12 @@ name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|sidep
+specifier|final
 name|SidePane
 name|sidep
 decl_stmt|;
 DECL|field|components
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -99,6 +102,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|componentNames
+specifier|final
 name|Map
 argument_list|<
 name|SidePaneComponent
@@ -117,6 +121,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|visible
+specifier|final
 name|List
 argument_list|<
 name|SidePaneComponent
@@ -922,6 +927,7 @@ argument_list|>
 block|{
 DECL|field|preferredPositions
 specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|String

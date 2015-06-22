@@ -151,6 +151,7 @@ name|EntryFromFileCreatorManager
 block|{
 DECL|field|entryCreators
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|EntryFromFileCreator

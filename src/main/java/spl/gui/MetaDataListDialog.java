@@ -363,6 +363,7 @@ name|xmlDocuments
 decl_stmt|;
 DECL|field|fileName
 specifier|private
+specifier|final
 name|String
 name|fileName
 decl_stmt|;
@@ -375,16 +376,19 @@ name|webserviceStatus
 decl_stmt|;
 DECL|field|thisDialog
 specifier|private
+specifier|final
 name|Component
 name|thisDialog
 decl_stmt|;
 DECL|field|showBlankButton
 specifier|private
+specifier|final
 name|boolean
 name|showBlankButton
 decl_stmt|;
 DECL|field|cardLayou
 specifier|private
+specifier|final
 name|CardLayout
 name|cardLayou
 init|=

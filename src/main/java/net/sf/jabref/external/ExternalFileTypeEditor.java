@@ -267,6 +267,7 @@ name|tableModel
 decl_stmt|;
 DECL|field|ok
 specifier|private
+specifier|final
 name|JButton
 name|ok
 init|=
@@ -280,8 +281,11 @@ argument_list|(
 literal|"Ok"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|cancel
+specifier|private
+specifier|final
+name|JButton
 name|cancel
 init|=
 operator|new
@@ -297,6 +301,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|add
 specifier|private
+specifier|final
 name|JButton
 name|add
 init|=
@@ -310,8 +315,11 @@ argument_list|(
 literal|"add"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|remove
+specifier|private
+specifier|final
+name|JButton
 name|remove
 init|=
 operator|new
@@ -324,8 +332,11 @@ argument_list|(
 literal|"remove"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|edit
+specifier|private
+specifier|final
+name|JButton
 name|edit
 init|=
 operator|new
@@ -338,8 +349,11 @@ argument_list|(
 literal|"edit"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|toDefaults
+specifier|private
+specifier|final
+name|JButton
 name|toDefaults
 init|=
 operator|new
@@ -355,6 +369,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|editListener
 specifier|private
+specifier|final
 name|EditListener
 name|editListener
 init|=
@@ -1413,6 +1428,7 @@ implements|implements
 name|TableCellRenderer
 block|{
 DECL|field|lab
+specifier|final
 name|JLabel
 name|lab
 init|=

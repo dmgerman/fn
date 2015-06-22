@@ -162,10 +162,12 @@ init|=
 literal|false
 decl_stmt|;
 DECL|field|diag
+specifier|final
 name|JDialog
 name|diag
 decl_stmt|;
 DECL|field|inPar
+specifier|final
 name|JRadioButton
 name|inPar
 init|=
@@ -179,8 +181,10 @@ argument_list|(
 literal|"Cite selected entries"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|inText
+specifier|final
+name|JRadioButton
 name|inText
 init|=
 operator|new
@@ -195,6 +199,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|pageInfo
+specifier|final
 name|JTextField
 name|pageInfo
 init|=
@@ -205,6 +210,7 @@ literal|15
 argument_list|)
 decl_stmt|;
 DECL|field|ok
+specifier|final
 name|JButton
 name|ok
 init|=
@@ -218,8 +224,10 @@ argument_list|(
 literal|"Ok"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|cancel
+specifier|final
+name|JButton
 name|cancel
 init|=
 operator|new

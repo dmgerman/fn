@@ -122,11 +122,13 @@ name|Runnable
 block|{
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|files
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|File

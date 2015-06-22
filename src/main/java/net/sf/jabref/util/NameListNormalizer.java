@@ -52,6 +52,7 @@ name|NameListNormalizer
 block|{
 DECL|field|lastFF
 specifier|static
+specifier|final
 name|Pattern
 name|lastFF
 init|=
@@ -64,6 +65,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|lastFdotF
 specifier|static
+specifier|final
 name|Pattern
 name|lastFdotF
 init|=
@@ -76,6 +78,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|FFlast
 specifier|static
+specifier|final
 name|Pattern
 name|FFlast
 init|=
@@ -88,6 +91,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|FdotFlast
 specifier|static
+specifier|final
 name|Pattern
 name|FdotFlast
 init|=
@@ -100,6 +104,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|singleName
 specifier|static
+specifier|final
 name|Pattern
 name|singleName
 init|=

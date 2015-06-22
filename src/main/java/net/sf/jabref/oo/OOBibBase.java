@@ -560,11 +560,13 @@ literal|null
 decl_stmt|;
 DECL|field|atEnd
 specifier|private
+specifier|final
 name|boolean
 name|atEnd
 decl_stmt|;
 DECL|field|entryComparator
 specifier|private
+specifier|final
 name|AlphanumericComparator
 name|entryComparator
 init|=
@@ -574,6 +576,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|yearComparator
 specifier|private
+specifier|final
 name|YearComparator
 name|yearComparator
 init|=
@@ -583,6 +586,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|uniquefiers
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String

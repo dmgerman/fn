@@ -201,6 +201,7 @@ extends|extends
 name|AbstractWorker
 block|{
 DECL|field|panel
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
@@ -984,7 +985,7 @@ init|=
 literal|7459164400811785958L
 decl_stmt|;
 DECL|field|okButton
-DECL|field|cancelButton
+specifier|final
 name|JButton
 name|okButton
 init|=
@@ -998,7 +999,10 @@ argument_list|(
 literal|"Ok"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+DECL|field|cancelButton
+specifier|final
+name|JButton
 name|cancelButton
 init|=
 operator|new
@@ -1017,6 +1021,7 @@ name|boolean
 name|canceled
 decl_stmt|;
 DECL|field|progressArea
+specifier|final
 name|JTextArea
 name|progressArea
 decl_stmt|;

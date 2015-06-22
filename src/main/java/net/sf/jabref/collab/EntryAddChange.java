@@ -85,15 +85,18 @@ extends|extends
 name|Change
 block|{
 DECL|field|diskEntry
+specifier|final
 name|BibtexEntry
 name|diskEntry
 decl_stmt|;
 comment|//  boolean isModifiedLocally, modificationsAgree;[[[[[[
 DECL|field|pp
+specifier|final
 name|PreviewPanel
 name|pp
 decl_stmt|;
 DECL|field|sp
+specifier|final
 name|JScrollPane
 name|sp
 decl_stmt|;

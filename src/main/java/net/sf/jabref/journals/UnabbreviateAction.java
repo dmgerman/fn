@@ -91,6 +91,7 @@ extends|extends
 name|AbstractWorker
 block|{
 DECL|field|panel
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;

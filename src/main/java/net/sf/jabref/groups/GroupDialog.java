@@ -408,6 +408,7 @@ decl_stmt|;
 comment|// for all types
 DECL|field|m_name
 specifier|private
+specifier|final
 name|JTextField
 name|m_name
 init|=
@@ -419,6 +420,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|m_explicitRadioButton
 specifier|private
+specifier|final
 name|JRadioButton
 name|m_explicitRadioButton
 init|=
@@ -435,6 +437,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|m_keywordsRadioButton
 specifier|private
+specifier|final
 name|JRadioButton
 name|m_keywordsRadioButton
 init|=
@@ -451,6 +454,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|m_searchRadioButton
 specifier|private
+specifier|final
 name|JRadioButton
 name|m_searchRadioButton
 init|=
@@ -467,6 +471,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|m_independentButton
 specifier|private
+specifier|final
 name|JRadioButton
 name|m_independentButton
 init|=
@@ -484,6 +489,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|m_intersectionButton
 specifier|private
+specifier|final
 name|JRadioButton
 name|m_intersectionButton
 init|=
@@ -501,6 +507,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|m_unionButton
 specifier|private
+specifier|final
 name|JRadioButton
 name|m_unionButton
 init|=
@@ -519,6 +526,7 @@ decl_stmt|;
 comment|// for KeywordGroup
 DECL|field|m_kgSearchField
 specifier|private
+specifier|final
 name|JTextField
 name|m_kgSearchField
 init|=
@@ -530,6 +538,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|m_kgSearchTerm
 specifier|private
+specifier|final
 name|FieldTextField
 name|m_kgSearchTerm
 init|=
@@ -545,6 +554,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|m_kgCaseSensitive
 specifier|private
+specifier|final
 name|JCheckBox
 name|m_kgCaseSensitive
 init|=
@@ -561,6 +571,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|m_kgRegExp
 specifier|private
+specifier|final
 name|JCheckBox
 name|m_kgRegExp
 init|=
@@ -578,6 +589,7 @@ decl_stmt|;
 comment|// for SearchGroup
 DECL|field|m_sgSearchExpression
 specifier|private
+specifier|final
 name|JTextField
 name|m_sgSearchExpression
 init|=
@@ -589,6 +601,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|m_sgCaseSensitive
 specifier|private
+specifier|final
 name|JCheckBox
 name|m_sgCaseSensitive
 init|=
@@ -605,6 +618,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|m_sgRegExp
 specifier|private
+specifier|final
 name|JCheckBox
 name|m_sgRegExp
 init|=
@@ -622,6 +636,7 @@ decl_stmt|;
 comment|// for all types
 DECL|field|m_ok
 specifier|private
+specifier|final
 name|JButton
 name|m_ok
 init|=
@@ -638,6 +653,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|m_optionsPanel
 specifier|private
+specifier|final
 name|JPanel
 name|m_optionsPanel
 init|=
@@ -647,6 +663,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|m_description
 specifier|private
+specifier|final
 name|JLabel
 name|m_description
 init|=
@@ -714,6 +731,7 @@ name|m_editedGroup
 decl_stmt|;
 DECL|field|m_optionsLayout
 specifier|private
+specifier|final
 name|CardLayout
 name|m_optionsLayout
 init|=

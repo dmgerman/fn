@@ -107,6 +107,7 @@ block|{
 DECL|field|logger
 specifier|private
 specifier|static
+specifier|final
 name|Logger
 name|logger
 init|=
@@ -143,6 +144,7 @@ init|=
 literal|0
 decl_stmt|;
 DECL|field|entries
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -639,6 +641,7 @@ class|class
 name|Entry
 block|{
 DECL|field|listener
+specifier|final
 name|FileUpdateListener
 name|listener
 decl_stmt|;
@@ -647,6 +650,7 @@ name|File
 name|file
 decl_stmt|;
 DECL|field|tmpFile
+specifier|final
 name|File
 name|tmpFile
 decl_stmt|;

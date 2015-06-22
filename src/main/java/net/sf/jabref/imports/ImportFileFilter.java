@@ -57,11 +57,13 @@ argument_list|>
 block|{
 DECL|field|format
 specifier|private
+specifier|final
 name|ImportFormat
 name|format
 decl_stmt|;
 DECL|field|name
 specifier|private
+specifier|final
 name|String
 name|name
 decl_stmt|;

@@ -91,6 +91,7 @@ extends|extends
 name|AbstractWorker
 block|{
 DECL|field|panel
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
@@ -101,6 +102,7 @@ init|=
 literal|""
 decl_stmt|;
 DECL|field|iso
+specifier|final
 name|boolean
 name|iso
 decl_stmt|;

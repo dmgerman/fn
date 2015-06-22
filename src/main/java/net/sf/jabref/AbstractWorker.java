@@ -39,11 +39,13 @@ name|CallBack
 block|{
 DECL|field|worker
 specifier|private
+specifier|final
 name|Worker
 name|worker
 decl_stmt|;
 DECL|field|callBack
 specifier|private
+specifier|final
 name|CallBack
 name|callBack
 decl_stmt|;

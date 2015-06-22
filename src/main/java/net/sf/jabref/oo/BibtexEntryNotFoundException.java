@@ -30,6 +30,7 @@ name|Exception
 block|{
 DECL|field|bibtexKey
 specifier|private
+specifier|final
 name|String
 name|bibtexKey
 decl_stmt|;

@@ -109,10 +109,12 @@ implements|implements
 name|ActionListener
 block|{
 DECL|field|prefs
+specifier|final
 name|JabRefPreferences
 name|prefs
 decl_stmt|;
 DECL|field|history
+specifier|final
 name|LinkedList
 argument_list|<
 name|String
@@ -127,6 +129,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|frame
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;

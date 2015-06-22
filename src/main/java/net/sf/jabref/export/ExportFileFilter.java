@@ -57,15 +57,20 @@ argument_list|>
 block|{
 DECL|field|format
 specifier|private
+specifier|final
 name|IExportFormat
 name|format
 decl_stmt|;
 DECL|field|extension
-DECL|field|name
 specifier|private
+specifier|final
 name|String
 name|extension
-decl_stmt|,
+decl_stmt|;
+DECL|field|name
+specifier|private
+specifier|final
+name|String
 name|name
 decl_stmt|;
 DECL|method|ExportFileFilter (IExportFormat format, String extension)

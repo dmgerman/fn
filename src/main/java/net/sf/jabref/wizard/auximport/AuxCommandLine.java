@@ -92,11 +92,13 @@ name|AuxCommandLine
 block|{
 DECL|field|auxName
 specifier|private
+specifier|final
 name|String
 name|auxName
 decl_stmt|;
 DECL|field|bib
 specifier|private
+specifier|final
 name|BibtexDatabase
 name|bib
 decl_stmt|;

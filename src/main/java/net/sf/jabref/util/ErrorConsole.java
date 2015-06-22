@@ -139,6 +139,7 @@ extends|extends
 name|Handler
 block|{
 DECL|field|errByteStream
+specifier|final
 name|ByteArrayOutputStream
 name|errByteStream
 init|=
@@ -147,6 +148,7 @@ name|ByteArrayOutputStream
 argument_list|()
 decl_stmt|;
 DECL|field|outByteStream
+specifier|final
 name|ByteArrayOutputStream
 name|outByteStream
 init|=
@@ -155,6 +157,7 @@ name|ByteArrayOutputStream
 argument_list|()
 decl_stmt|;
 DECL|field|logOutput
+specifier|final
 name|ArrayList
 argument_list|<
 name|String
@@ -181,6 +184,7 @@ init|=
 literal|true
 decl_stmt|;
 DECL|field|fmt
+specifier|final
 name|SimpleFormatter
 name|fmt
 init|=
@@ -558,6 +562,7 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|field|frame
+specifier|final
 name|JFrame
 name|frame
 decl_stmt|;
@@ -640,6 +645,7 @@ extends|extends
 name|PrintStream
 block|{
 DECL|field|out
+specifier|final
 name|PrintStream
 name|out
 decl_stmt|;

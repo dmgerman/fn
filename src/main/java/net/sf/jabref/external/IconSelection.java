@@ -276,6 +276,7 @@ name|DefaultListModel
 name|listModel
 decl_stmt|;
 DECL|field|ok
+specifier|final
 name|JButton
 name|ok
 init|=
@@ -289,8 +290,10 @@ argument_list|(
 literal|"Ok"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|cancel
+specifier|final
+name|JButton
 name|cancel
 init|=
 operator|new
@@ -321,6 +324,7 @@ literal|1
 decl_stmt|;
 DECL|field|parent
 specifier|private
+specifier|final
 name|JDialog
 name|parent
 decl_stmt|;
@@ -584,6 +588,7 @@ name|MyRenderer
 implements|implements
 name|ListCellRenderer
 block|{
+specifier|final
 name|JLabel
 name|comp
 init|=

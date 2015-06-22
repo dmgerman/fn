@@ -166,6 +166,7 @@ comment|// Should we clear the keys so new ones can be generated?
 DECL|field|MAX_ENTRIES_TO_LOAD
 specifier|protected
 specifier|static
+specifier|final
 name|int
 name|MAX_ENTRIES_TO_LOAD
 init|=
@@ -271,6 +272,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|entryLinks
 specifier|protected
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -1600,6 +1602,7 @@ block|}
 block|}
 DECL|field|inputPattern
 specifier|static
+specifier|final
 name|Pattern
 name|inputPattern
 init|=

@@ -142,6 +142,7 @@ argument_list|)
 block|;
 DECL|field|dbType
 specifier|private
+specifier|final
 name|String
 name|dbType
 decl_stmt|;

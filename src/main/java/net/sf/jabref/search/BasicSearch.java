@@ -138,11 +138,13 @@ name|SearchRule
 block|{
 DECL|field|caseSensitive
 specifier|private
+specifier|final
 name|boolean
 name|caseSensitive
 decl_stmt|;
 DECL|field|regExp
 specifier|private
+specifier|final
 name|boolean
 name|regExp
 decl_stmt|;
@@ -154,6 +156,7 @@ decl_stmt|;
 comment|//static RemoveBrackets removeLatexCommands = new RemoveBrackets();
 DECL|field|removeBrackets
 specifier|static
+specifier|final
 name|RemoveLatexCommands
 name|removeBrackets
 init|=

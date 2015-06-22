@@ -92,6 +92,7 @@ literal|100
 argument_list|)
 decl_stmt|;
 DECL|field|gridBagLayout
+specifier|final
 name|GridBagLayout
 name|gridBagLayout
 init|=
@@ -100,6 +101,7 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|constraint
+specifier|final
 name|GridBagConstraints
 name|constraint
 init|=
@@ -108,6 +110,7 @@ name|GridBagConstraints
 argument_list|()
 decl_stmt|;
 DECL|field|mainPanel
+specifier|final
 name|JPanel
 name|mainPanel
 init|=

@@ -77,6 +77,7 @@ decl_stmt|;
 comment|// localized menu string used at menu / button
 DECL|field|menuString
 specifier|private
+specifier|final
 name|String
 name|menuString
 decl_stmt|;
@@ -96,11 +97,13 @@ literal|null
 decl_stmt|;
 DECL|field|icon
 specifier|private
+specifier|final
 name|ImageIcon
 name|icon
 decl_stmt|;
 DECL|field|toolTipText
 specifier|private
+specifier|final
 name|String
 name|toolTipText
 decl_stmt|;

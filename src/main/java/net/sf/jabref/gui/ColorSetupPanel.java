@@ -138,6 +138,7 @@ literal|20
 decl_stmt|;
 DECL|field|buttons
 specifier|private
+specifier|final
 name|ArrayList
 argument_list|<
 name|ColorButton
@@ -618,6 +619,7 @@ name|ActionListener
 block|{
 DECL|field|button
 specifier|private
+specifier|final
 name|ColorButton
 name|button
 decl_stmt|;
@@ -699,11 +701,15 @@ operator|.
 name|white
 decl_stmt|;
 DECL|field|key
-DECL|field|name
 specifier|private
+specifier|final
 name|String
 name|key
-decl_stmt|,
+decl_stmt|;
+DECL|field|name
+specifier|private
+specifier|final
+name|String
 name|name
 decl_stmt|;
 DECL|method|ColorButton (String key, String name)

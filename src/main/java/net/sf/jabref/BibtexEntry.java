@@ -166,6 +166,7 @@ decl_stmt|;
 DECL|field|FieldAliasesOldToNew
 specifier|public
 specifier|static
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -187,6 +188,7 @@ comment|// Bibtex to BibLatex
 DECL|field|FieldAliasesNewToOld
 specifier|public
 specifier|static
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -382,6 +384,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|_changeSupport
+specifier|final
 name|VetoableChangeSupport
 name|_changeSupport
 init|=

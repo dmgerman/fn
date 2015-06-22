@@ -256,6 +256,7 @@ block|}
 DECL|field|refPat
 specifier|private
 specifier|static
+specifier|final
 name|Pattern
 name|refPat
 init|=

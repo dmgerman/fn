@@ -1363,6 +1363,7 @@ block|{
 DECL|field|logger
 specifier|private
 specifier|static
+specifier|final
 name|Logger
 name|logger
 init|=
@@ -1506,6 +1507,7 @@ decl_stmt|;
 comment|// Hashtable indexing the only search auto completer
 comment|// required for the SearchAutoCompleterUpdater
 DECL|field|searchAutoCompleterHM
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -1524,6 +1526,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|autoCompleters
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -1558,6 +1561,7 @@ decl_stmt|;
 comment|// The undo manager.
 DECL|field|undoManager
 specifier|public
+specifier|final
 name|CountingUndoManager
 name|undoManager
 init|=
@@ -1568,6 +1572,7 @@ name|this
 argument_list|)
 decl_stmt|;
 DECL|field|undoAction
+specifier|final
 name|UndoAction
 name|undoAction
 init|=
@@ -1576,6 +1581,7 @@ name|UndoAction
 argument_list|()
 decl_stmt|;
 DECL|field|redoAction
+specifier|final
 name|RedoAction
 name|redoAction
 init|=
@@ -1585,6 +1591,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|previousEntries
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|BibtexEntry
@@ -1597,8 +1604,14 @@ argument_list|<
 name|BibtexEntry
 argument_list|>
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|nextEntries
+specifier|private
+specifier|final
+name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|nextEntries
 init|=
 operator|new
@@ -1679,6 +1692,7 @@ decl_stmt|;
 comment|// To indicate which entry is currently shown.
 DECL|field|entryEditors
 specifier|public
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -1783,6 +1797,7 @@ name|metaData
 decl_stmt|;
 DECL|field|actions
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -14841,6 +14856,7 @@ name|BaseAction
 block|{
 DECL|field|saveType
 specifier|private
+specifier|final
 name|DatabaseSaveType
 name|saveType
 decl_stmt|;

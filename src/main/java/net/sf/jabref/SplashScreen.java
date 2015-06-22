@@ -112,6 +112,7 @@ name|Window
 block|{
 DECL|field|splashImage
 specifier|private
+specifier|final
 name|Image
 name|splashImage
 decl_stmt|;

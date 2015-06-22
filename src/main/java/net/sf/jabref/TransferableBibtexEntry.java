@@ -108,6 +108,7 @@ name|Transferable
 block|{
 DECL|field|data
 specifier|private
+specifier|final
 name|BibtexEntry
 index|[]
 name|data
@@ -115,6 +116,7 @@ decl_stmt|;
 DECL|field|entryFlavor
 specifier|public
 specifier|static
+specifier|final
 name|DataFlavor
 name|entryFlavor
 init|=

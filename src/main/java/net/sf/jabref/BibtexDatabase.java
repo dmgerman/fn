@@ -177,6 +177,7 @@ class|class
 name|BibtexDatabase
 block|{
 DECL|field|_entries
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -201,6 +202,7 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|_strings
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -233,6 +235,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|changeListeners
+specifier|final
 name|Set
 argument_list|<
 name|DatabaseChangeListener
@@ -256,6 +259,7 @@ decl_stmt|;
 comment|/**      * use a map instead of a set since i need to know how many of each key is      * inthere      */
 DECL|field|allKeys
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String

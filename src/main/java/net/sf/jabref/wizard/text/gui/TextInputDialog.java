@@ -906,6 +906,7 @@ name|ActionListener
 block|{
 DECL|field|okButton
 specifier|private
+specifier|final
 name|JButton
 name|okButton
 init|=
@@ -915,6 +916,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|cancelButton
 specifier|private
+specifier|final
 name|JButton
 name|cancelButton
 init|=
@@ -924,6 +926,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|insertButton
 specifier|private
+specifier|final
 name|JButton
 name|insertButton
 init|=
@@ -933,6 +936,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|parseWithFreeCiteButton
 specifier|private
+specifier|final
 name|JButton
 name|parseWithFreeCiteButton
 init|=
@@ -942,6 +946,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|panel1
 specifier|private
+specifier|final
 name|JPanel
 name|panel1
 init|=
@@ -951,6 +956,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|buttons
 specifier|private
+specifier|final
 name|JPanel
 name|buttons
 init|=
@@ -960,6 +966,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|rawPanel
 specifier|private
+specifier|final
 name|JPanel
 name|rawPanel
 init|=
@@ -969,6 +976,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|sourcePanel
 specifier|private
+specifier|final
 name|JPanel
 name|sourcePanel
 init|=
@@ -978,6 +986,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|warnPanel
 specifier|private
+specifier|final
 name|IntegrityMessagePanel
 name|warnPanel
 decl_stmt|;
@@ -993,11 +1002,13 @@ name|overRadio
 decl_stmt|;
 DECL|field|entry
 specifier|private
+specifier|final
 name|BibtexEntry
 name|entry
 decl_stmt|;
 DECL|field|inputMenu
 specifier|public
+specifier|final
 name|JPopupMenu
 name|inputMenu
 init|=
@@ -1023,17 +1034,20 @@ name|preview
 decl_stmt|;
 DECL|field|inputChanged
 specifier|private
+specifier|final
 name|boolean
 name|inputChanged
 decl_stmt|;
 comment|// input changed, fired by insert buttons
 DECL|field|marked
 specifier|private
+specifier|final
 name|TagToMarkedTextStore
 name|marked
 decl_stmt|;
 DECL|field|_frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|_frame
 decl_stmt|;
@@ -3799,16 +3813,19 @@ name|DefaultListCellRenderer
 block|{
 DECL|field|baseFont
 specifier|private
+specifier|final
 name|Font
 name|baseFont
 decl_stmt|;
 DECL|field|usedFont
 specifier|private
+specifier|final
 name|Font
 name|usedFont
 decl_stmt|;
 DECL|field|okIcon
 specifier|private
+specifier|final
 name|ImageIcon
 name|okIcon
 init|=
@@ -3821,6 +3838,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|needIcon
 specifier|private
+specifier|final
 name|ImageIcon
 name|needIcon
 init|=
@@ -4020,6 +4038,7 @@ name|MouseAdapter
 block|{
 DECL|field|popMenu
 specifier|private
+specifier|final
 name|JPopupMenu
 name|popMenu
 decl_stmt|;

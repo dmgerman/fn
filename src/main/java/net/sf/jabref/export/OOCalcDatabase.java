@@ -218,6 +218,7 @@ name|OOCalcDatabase
 block|{
 DECL|field|entries
 specifier|protected
+specifier|final
 name|Collection
 argument_list|<
 name|BibtexEntry

@@ -81,6 +81,7 @@ block|{
 DECL|field|WEBSERVICE_APP_ID
 specifier|public
 specifier|static
+specifier|final
 name|int
 name|WEBSERVICE_APP_ID
 init|=

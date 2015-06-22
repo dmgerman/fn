@@ -79,6 +79,7 @@ class|class
 name|TextAnalyzer
 block|{
 DECL|field|be
+specifier|final
 name|BibtexEntry
 name|be
 init|=
@@ -1432,10 +1433,13 @@ name|Substring
 argument_list|>
 block|{
 DECL|field|begin
-DECL|field|end
+specifier|final
 name|int
 name|begin
-decl_stmt|,
+decl_stmt|;
+DECL|field|end
+specifier|final
+name|int
 name|end
 decl_stmt|;
 DECL|method|Substring (String name, int begin, int end)

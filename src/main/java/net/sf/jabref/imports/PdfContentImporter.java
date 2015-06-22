@@ -217,6 +217,7 @@ block|{
 DECL|field|logger
 specifier|private
 specifier|static
+specifier|final
 name|Logger
 name|logger
 init|=
@@ -236,6 +237,7 @@ comment|// we can store the DOItoBibTeXFetcher as single reference as the fetche
 DECL|field|doiToBibTeXFetcher
 specifier|private
 specifier|static
+specifier|final
 name|DOItoBibTeXFetcher
 name|doiToBibTeXFetcher
 init|=

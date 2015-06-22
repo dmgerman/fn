@@ -222,6 +222,7 @@ name|OutputPrinter
 block|{
 DECL|field|entries
 specifier|protected
+specifier|final
 name|EventList
 argument_list|<
 name|TableEntry
@@ -238,11 +239,13 @@ decl_stmt|;
 comment|//protected SortedList<TableEntry> sortedList;
 DECL|field|glTable
 specifier|protected
+specifier|final
 name|JTable
 name|glTable
 decl_stmt|;
 DECL|field|ok
 specifier|protected
+specifier|final
 name|JButton
 name|ok
 init|=
@@ -256,8 +259,11 @@ argument_list|(
 literal|"Ok"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|cancel
+specifier|protected
+specifier|final
+name|JButton
 name|cancel
 init|=
 operator|new
@@ -273,6 +279,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|selectAll
 specifier|protected
+specifier|final
 name|JButton
 name|selectAll
 init|=
@@ -289,6 +296,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|deselectAll
 specifier|protected
+specifier|final
 name|JButton
 name|deselectAll
 init|=
@@ -312,11 +320,13 @@ literal|false
 decl_stmt|;
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|warningLimit
 specifier|private
+specifier|final
 name|int
 name|warningLimit
 decl_stmt|;
@@ -1053,11 +1063,13 @@ name|TableEntry
 block|{
 DECL|field|id
 specifier|private
+specifier|final
 name|String
 name|id
 decl_stmt|;
 DECL|field|preview
 specifier|private
+specifier|final
 name|JLabel
 name|preview
 decl_stmt|;
@@ -1136,6 +1148,7 @@ implements|implements
 name|TableCellRenderer
 block|{
 DECL|field|label
+specifier|final
 name|JLabel
 name|label
 init|=
@@ -1201,6 +1214,7 @@ extends|extends
 name|JTable
 block|{
 DECL|field|renderer
+specifier|final
 name|PreviewRenderer
 name|renderer
 init|=

@@ -84,6 +84,7 @@ name|AbstractParamLayoutFormatter
 block|{
 comment|/*     AuthorSort = [FirstFirst | LastFirst | LastFirstFirstFirst]     AuthorAbbr = [FullName | Initials | FirstInitial | MiddleInitial | InitialsNoSpace | LastName]     AuthorSep = [Comma | And | Colon | Semicolon | Sep=<string>]     AuthorLastSep = [And | Comma | Colon | Semicolon | Amp | Oxford | LastSep=<string>]     AuthorPunc = [FullPunc | NoPunc | NoComma | NoPeriod]     AuthorNumber = [inf |<number>]     AuthorNumberEtAl = [ {1} |<number>]     EtAlString = [ et al. | EtAl=<string>]     */
 specifier|static
+specifier|final
 name|ArrayList
 argument_list|<
 name|String
@@ -97,8 +98,14 @@ argument_list|<
 name|String
 argument_list|>
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|authorAbbr
+specifier|static
+specifier|final
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|authorAbbr
 init|=
 operator|new
@@ -107,8 +114,14 @@ argument_list|<
 name|String
 argument_list|>
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|authorPunc
+specifier|static
+specifier|final
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|authorPunc
 init|=
 operator|new
@@ -117,8 +130,14 @@ argument_list|<
 name|String
 argument_list|>
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|separators
+specifier|static
+specifier|final
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|separators
 init|=
 operator|new
@@ -127,8 +146,14 @@ argument_list|<
 name|String
 argument_list|>
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|lastSeparators
+specifier|static
+specifier|final
+name|ArrayList
+argument_list|<
+name|String
+argument_list|>
 name|lastSeparators
 init|=
 operator|new
@@ -140,6 +165,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|numberPattern
 specifier|static
+specifier|final
 name|Pattern
 name|numberPattern
 init|=
@@ -434,33 +460,40 @@ name|authorNumberEtAl
 init|=
 literal|1
 decl_stmt|;
+specifier|final
 name|String
 DECL|field|firstFirstSeparator
 name|firstFirstSeparator
 init|=
 literal|" "
-decl_stmt|,
+decl_stmt|;
 DECL|field|lastFirstSeparator
+name|String
 name|lastFirstSeparator
 init|=
 literal|", "
-decl_stmt|,
+decl_stmt|;
 DECL|field|separator
+name|String
 name|separator
 init|=
 name|COMMA
-decl_stmt|,
+decl_stmt|;
 DECL|field|lastSeparator
+name|String
 name|lastSeparator
 init|=
 name|AND
-decl_stmt|,
+decl_stmt|;
 DECL|field|etAlString
+name|String
 name|etAlString
 init|=
 literal|" et al."
-decl_stmt|,
+decl_stmt|;
 DECL|field|jrSeparator
+specifier|final
+name|String
 name|jrSeparator
 init|=
 literal|" "

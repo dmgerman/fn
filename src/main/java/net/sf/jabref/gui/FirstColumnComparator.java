@@ -63,6 +63,7 @@ argument_list|>
 block|{
 DECL|field|database
 specifier|private
+specifier|final
 name|BibtexDatabase
 name|database
 decl_stmt|;

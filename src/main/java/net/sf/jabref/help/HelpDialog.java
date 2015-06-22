@@ -148,16 +148,19 @@ name|HyperlinkListener
 block|{
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|content
 specifier|private
+specifier|final
 name|HelpContent
 name|content
 decl_stmt|;
 DECL|field|back
 specifier|private
+specifier|final
 name|BackAction
 name|back
 init|=
@@ -167,6 +170,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|forward
 specifier|private
+specifier|final
 name|ForwardAction
 name|forward
 init|=

@@ -58,6 +58,7 @@ comment|// the doubt range of the threshold:
 DECL|field|doubtRange
 specifier|public
 specifier|static
+specifier|final
 name|double
 name|doubtRange
 init|=
@@ -75,6 +76,7 @@ comment|// Weighting of all required fields
 comment|// Extra weighting of those fields that are most likely to provide correct duplicate detection:
 DECL|field|fieldWeights
 specifier|static
+specifier|final
 name|HashMap
 argument_list|<
 name|String

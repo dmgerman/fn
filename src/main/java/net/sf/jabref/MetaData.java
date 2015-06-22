@@ -121,6 +121,7 @@ literal|"keypatterndefault"
 decl_stmt|;
 DECL|field|metaData
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String

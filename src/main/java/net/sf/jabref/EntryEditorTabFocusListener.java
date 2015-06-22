@@ -115,6 +115,7 @@ name|d
 decl_stmt|;
 DECL|field|entryEditorTab
 specifier|private
+specifier|final
 name|EntryEditorTab
 name|entryEditorTab
 decl_stmt|;

@@ -107,6 +107,7 @@ literal|null
 decl_stmt|;
 DECL|field|citeCommand
 specifier|private
+specifier|final
 name|JTextField
 name|citeCommand
 init|=
@@ -118,6 +119,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|emacsPath
 specifier|private
+specifier|final
 name|JTextField
 name|emacsPath
 init|=
@@ -129,6 +131,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|additionalParams
 specifier|private
+specifier|final
 name|JTextField
 name|additionalParams
 init|=
@@ -140,6 +143,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|useEmacs23
 specifier|private
+specifier|final
 name|JCheckBox
 name|useEmacs23
 init|=

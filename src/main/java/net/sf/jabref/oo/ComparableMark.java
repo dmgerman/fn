@@ -46,10 +46,12 @@ name|ComparableMark
 argument_list|>
 block|{
 DECL|field|name
+specifier|final
 name|String
 name|name
 decl_stmt|;
 DECL|field|position
+specifier|final
 name|Point
 name|position
 decl_stmt|;

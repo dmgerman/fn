@@ -805,16 +805,19 @@ name|BibtexEntry
 name|entry
 decl_stmt|;
 DECL|field|type
+specifier|final
 name|BibtexEntryType
 name|type
 decl_stmt|;
 comment|// The action concerned with closing the window.
 DECL|field|closeAction
+specifier|final
 name|CloseAction
 name|closeAction
 decl_stmt|;
 comment|// The action that deletes the current entry, and closes the editor.
 DECL|field|deleteAction
+specifier|final
 name|DeleteAction
 name|deleteAction
 init|=
@@ -824,11 +827,13 @@ argument_list|()
 decl_stmt|;
 comment|// The action concerned with copying the BibTeX key to the clipboard.
 DECL|field|copyKeyAction
+specifier|final
 name|CopyKeyAction
 name|copyKeyAction
 decl_stmt|;
 comment|// The action concerned with copying the BibTeX key to the clipboard.
 DECL|field|nextEntryAction
+specifier|final
 name|AbstractAction
 name|nextEntryAction
 init|=
@@ -838,6 +843,7 @@ argument_list|()
 decl_stmt|;
 comment|// Actions for switching to next/previous entry.
 DECL|field|prevEntryAction
+specifier|final
 name|AbstractAction
 name|prevEntryAction
 init|=
@@ -848,11 +854,13 @@ decl_stmt|;
 comment|// The action concerned with storing a field value.
 DECL|field|storeFieldAction
 specifier|public
+specifier|final
 name|StoreFieldAction
 name|storeFieldAction
 decl_stmt|;
 comment|// The actions concerned with switching the panels.
 DECL|field|switchLeftAction
+specifier|final
 name|SwitchLeftAction
 name|switchLeftAction
 init|=
@@ -861,6 +869,7 @@ name|SwitchLeftAction
 argument_list|()
 decl_stmt|;
 DECL|field|switchRightAction
+specifier|final
 name|SwitchRightAction
 name|switchRightAction
 init|=
@@ -871,6 +880,7 @@ decl_stmt|;
 comment|// The action which generates a bibtexkey for this entry.
 DECL|field|generateKeyAction
 specifier|public
+specifier|final
 name|GenerateKeyAction
 name|generateKeyAction
 decl_stmt|;
@@ -894,10 +904,12 @@ argument_list|()
 decl_stmt|;
 DECL|field|writeXmp
 specifier|public
+specifier|final
 name|AbstractAction
 name|writeXmp
 decl_stmt|;
 DECL|field|saveDatabaseAction
+specifier|final
 name|SaveDatabaseAction
 name|saveDatabaseAction
 init|=
@@ -914,6 +926,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|srcPanel
+specifier|final
 name|JPanel
 name|srcPanel
 init|=
@@ -951,6 +964,7 @@ name|JToolBar
 name|tlb
 decl_stmt|;
 DECL|field|tabbed
+specifier|final
 name|JTabbedPane
 name|tabbed
 init|=
@@ -968,20 +982,24 @@ name|TypeButton
 name|typeButton
 decl_stmt|;
 DECL|field|frame
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|panel
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|ths
+specifier|final
 name|EntryEditor
 name|ths
 init|=
 name|this
 decl_stmt|;
 DECL|field|contentSelectors
+specifier|final
 name|HashSet
 argument_list|<
 name|FieldContentSelector
@@ -996,6 +1014,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|logger
+specifier|final
 name|Logger
 name|logger
 init|=
@@ -1026,6 +1045,7 @@ literal|false
 decl_stmt|;
 comment|// Indicates that we are about to go to the next or previous entry
 DECL|field|tabs
+specifier|final
 name|List
 argument_list|<
 name|Object
@@ -1072,14 +1092,17 @@ literal|1
 decl_stmt|;
 comment|// The index the source panel has in tabbed.
 DECL|field|prefs
+specifier|final
 name|JabRefPreferences
 name|prefs
 decl_stmt|;
 DECL|field|helpAction
+specifier|final
 name|HelpAction
 name|helpAction
 decl_stmt|;
 DECL|field|undoAction
+specifier|final
 name|UndoAction
 name|undoAction
 init|=
@@ -1088,6 +1111,7 @@ name|UndoAction
 argument_list|()
 decl_stmt|;
 DECL|field|redoAction
+specifier|final
 name|RedoAction
 name|redoAction
 init|=
@@ -1096,6 +1120,7 @@ name|RedoAction
 argument_list|()
 decl_stmt|;
 DECL|field|tabListener
+specifier|final
 name|TabListener
 name|tabListener
 init|=
@@ -7654,6 +7679,7 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|field|parent
+specifier|final
 name|JabRefFrame
 name|parent
 decl_stmt|;
@@ -8289,10 +8315,12 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|field|type
+specifier|final
 name|BibtexEntryType
 name|type
 decl_stmt|;
 DECL|field|panel
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;

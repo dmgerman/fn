@@ -400,6 +400,7 @@ name|SearchResultsDialog
 block|{
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -410,6 +411,7 @@ name|diag
 decl_stmt|;
 DECL|field|fields
 specifier|private
+specifier|final
 name|String
 index|[]
 name|fields
@@ -447,6 +449,7 @@ literal|2
 decl_stmt|;
 DECL|field|fileLabel
 specifier|private
+specifier|final
 name|JLabel
 name|fileLabel
 init|=
@@ -460,8 +463,11 @@ argument_list|(
 literal|"psSmall"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|urlLabel
+specifier|private
+specifier|final
+name|JLabel
 name|urlLabel
 init|=
 operator|new
@@ -477,6 +483,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|toRect
 specifier|protected
+specifier|final
 name|Rectangle
 name|toRect
 init|=
@@ -502,6 +509,7 @@ name|model
 decl_stmt|;
 DECL|field|entries
 specifier|private
+specifier|final
 name|EventList
 argument_list|<
 name|BibtexEntry
@@ -525,6 +533,7 @@ name|sortedEntries
 decl_stmt|;
 DECL|field|entryHome
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|BibtexEntry
@@ -549,6 +558,7 @@ name|entryTable
 decl_stmt|;
 DECL|field|contentPane
 specifier|protected
+specifier|final
 name|UIFSplitPane
 name|contentPane
 init|=

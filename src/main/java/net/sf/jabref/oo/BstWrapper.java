@@ -195,6 +195,7 @@ class|class
 name|BstWrapper
 block|{
 DECL|field|formatter
+specifier|final
 name|LayoutFormatter
 name|formatter
 init|=
@@ -278,6 +279,7 @@ return|;
 block|}
 DECL|field|bibitemTag
 specifier|static
+specifier|final
 name|Pattern
 name|bibitemTag
 init|=

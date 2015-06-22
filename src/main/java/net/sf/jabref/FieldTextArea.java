@@ -91,10 +91,12 @@ name|Dimension
 name|PREFERRED_SIZE
 decl_stmt|;
 DECL|field|sp
+specifier|final
 name|JScrollPane
 name|sp
 decl_stmt|;
 DECL|field|label
+specifier|final
 name|FieldNameLabel
 name|label
 decl_stmt|;

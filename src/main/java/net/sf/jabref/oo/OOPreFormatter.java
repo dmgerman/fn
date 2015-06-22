@@ -81,6 +81,7 @@ block|{
 DECL|field|CHARS
 specifier|public
 specifier|static
+specifier|final
 name|HashMap
 argument_list|<
 name|String

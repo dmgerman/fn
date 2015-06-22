@@ -66,6 +66,7 @@ name|SearchRule
 block|{
 DECL|field|ruleSet
 specifier|protected
+specifier|final
 name|Vector
 argument_list|<
 name|SearchRule

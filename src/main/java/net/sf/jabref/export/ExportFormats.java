@@ -205,6 +205,7 @@ block|{
 DECL|field|exportFormats
 specifier|private
 specifier|static
+specifier|final
 name|Map
 argument_list|<
 name|String

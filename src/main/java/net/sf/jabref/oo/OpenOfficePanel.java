@@ -377,14 +377,21 @@ specifier|static
 name|JButton
 DECL|field|connect
 name|connect
-decl_stmt|,
+decl_stmt|;
 DECL|field|manualConnect
+specifier|static
+name|JButton
 name|manualConnect
-decl_stmt|,
+decl_stmt|;
 DECL|field|selectDocument
+specifier|static
+name|JButton
 name|selectDocument
-decl_stmt|,
+decl_stmt|;
 DECL|field|setStyleFile
+specifier|static
+specifier|final
+name|JButton
 name|setStyleFile
 init|=
 operator|new
@@ -397,8 +404,11 @@ argument_list|(
 literal|"Select style"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|pushEntries
+specifier|static
+specifier|final
+name|JButton
 name|pushEntries
 init|=
 operator|new
@@ -411,8 +421,11 @@ argument_list|(
 literal|"Cite"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|pushEntriesInt
+specifier|static
+specifier|final
+name|JButton
 name|pushEntriesInt
 init|=
 operator|new
@@ -425,8 +438,11 @@ argument_list|(
 literal|"Cite in-text"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|pushEntriesEmpty
+specifier|static
+specifier|final
+name|JButton
 name|pushEntriesEmpty
 init|=
 operator|new
@@ -439,8 +455,11 @@ argument_list|(
 literal|"Insert empty citation"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|pushEntriesAdvanced
+specifier|static
+specifier|final
+name|JButton
 name|pushEntriesAdvanced
 init|=
 operator|new
@@ -453,8 +472,11 @@ argument_list|(
 literal|"Cite special"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|focus
+specifier|static
+specifier|final
+name|JButton
 name|focus
 init|=
 operator|new
@@ -462,11 +484,16 @@ name|JButton
 argument_list|(
 literal|"Focus OO document"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|update
+specifier|static
+name|JButton
 name|update
-decl_stmt|,
+decl_stmt|;
 DECL|field|insertFullRef
+specifier|static
+specifier|final
+name|JButton
 name|insertFullRef
 init|=
 operator|new
@@ -474,8 +501,11 @@ name|JButton
 argument_list|(
 literal|"Insert reference text"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|merge
+specifier|static
+specifier|final
+name|JButton
 name|merge
 init|=
 operator|new
@@ -488,8 +518,11 @@ argument_list|(
 literal|"Merge citations"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|manageCitations
+specifier|static
+specifier|final
+name|JButton
 name|manageCitations
 init|=
 operator|new
@@ -502,8 +535,11 @@ argument_list|(
 literal|"Manage citations"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|settingsB
+specifier|static
+specifier|final
+name|JButton
 name|settingsB
 init|=
 operator|new
@@ -516,8 +552,11 @@ argument_list|(
 literal|"Settings"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|help
+specifier|static
+specifier|final
+name|JButton
 name|help
 init|=
 operator|new
@@ -530,8 +569,11 @@ argument_list|(
 literal|"help"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|test
+specifier|static
+specifier|final
+name|JButton
 name|test
 init|=
 operator|new

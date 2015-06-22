@@ -181,6 +181,7 @@ block|{
 DECL|field|spiresHost
 specifier|private
 specifier|static
+specifier|final
 name|String
 name|spiresHost
 init|=

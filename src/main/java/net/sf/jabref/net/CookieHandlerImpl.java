@@ -72,6 +72,7 @@ comment|// "Long" term storage for cookies, not serialized so only
 comment|// for current JVM instance
 DECL|field|cache
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|Cookie

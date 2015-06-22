@@ -97,6 +97,7 @@ decl_stmt|;
 comment|/** This holds the new subtree (the root's modified children) to allow redo. */
 DECL|field|m_modifiedSubtree
 specifier|private
+specifier|final
 name|Vector
 argument_list|<
 name|TreeNode

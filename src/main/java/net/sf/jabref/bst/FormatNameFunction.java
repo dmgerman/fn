@@ -97,6 +97,7 @@ implements|implements
 name|BstFunction
 block|{
 DECL|field|vm
+specifier|final
 name|VM
 name|vm
 decl_stmt|;

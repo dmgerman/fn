@@ -31,6 +31,7 @@ class|class
 name|IncrementalSearcher
 block|{
 DECL|field|prefs
+specifier|final
 name|JabRefPreferences
 name|prefs
 decl_stmt|;

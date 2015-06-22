@@ -79,6 +79,7 @@ extends|extends
 name|DefaultHandler
 block|{
 DECL|field|entry
+specifier|final
 name|BibtexEntry
 name|entry
 decl_stmt|;

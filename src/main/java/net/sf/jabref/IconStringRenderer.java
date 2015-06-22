@@ -69,6 +69,7 @@ extends|extends
 name|DefaultTableCellRenderer
 block|{
 DECL|field|toolTip
+specifier|final
 name|String
 name|toolTip
 decl_stmt|;

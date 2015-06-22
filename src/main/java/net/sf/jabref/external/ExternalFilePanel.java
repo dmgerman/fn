@@ -298,11 +298,13 @@ name|entryEditor
 decl_stmt|;
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|off
 specifier|private
+specifier|final
 name|OpenFileFilter
 name|off
 decl_stmt|;
@@ -318,6 +320,7 @@ name|database
 decl_stmt|;
 DECL|field|metaData
 specifier|private
+specifier|final
 name|MetaData
 name|metaData
 decl_stmt|;

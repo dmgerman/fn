@@ -273,6 +273,7 @@ block|{
 DECL|field|applications
 specifier|public
 specifier|static
+specifier|final
 name|List
 argument_list|<
 name|PushToApplication
@@ -281,11 +282,13 @@ name|applications
 decl_stmt|;
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|pushActions
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|PushToApplication
@@ -321,6 +324,7 @@ literal|null
 decl_stmt|;
 DECL|field|actions
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|PushToApplication
@@ -370,6 +374,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|mAction
 specifier|private
+specifier|final
 name|MenuAction
 name|mAction
 init|=
@@ -379,6 +384,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|optPopup
 specifier|private
+specifier|final
 name|JPopupMenu
 name|optPopup
 init|=
@@ -388,6 +394,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|settings
 specifier|private
+specifier|final
 name|JMenuItem
 name|settings
 init|=
@@ -1557,6 +1564,7 @@ name|ActionListener
 block|{
 DECL|field|index
 specifier|private
+specifier|final
 name|int
 name|index
 decl_stmt|;

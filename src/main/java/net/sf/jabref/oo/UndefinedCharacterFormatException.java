@@ -29,6 +29,7 @@ extends|extends
 name|Exception
 block|{
 DECL|field|formatName
+specifier|final
 name|String
 name|formatName
 decl_stmt|;

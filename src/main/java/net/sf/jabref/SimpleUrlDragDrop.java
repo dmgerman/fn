@@ -167,6 +167,7 @@ block|{
 DECL|field|logger
 specifier|private
 specifier|static
+specifier|final
 name|Logger
 name|logger
 init|=
@@ -184,11 +185,13 @@ argument_list|)
 decl_stmt|;
 DECL|field|editor
 specifier|private
+specifier|final
 name|FieldEditor
 name|editor
 decl_stmt|;
 DECL|field|storeFieldAction
 specifier|private
+specifier|final
 name|StoreFieldAction
 name|storeFieldAction
 decl_stmt|;

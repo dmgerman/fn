@@ -305,10 +305,12 @@ extends|extends
 name|JDialog
 block|{
 DECL|field|main
+specifier|final
 name|JPanel
 name|main
 decl_stmt|;
 DECL|field|frame
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;

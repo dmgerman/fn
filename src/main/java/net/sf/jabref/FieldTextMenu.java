@@ -188,11 +188,13 @@ name|MouseListener
 block|{
 DECL|field|myFieldName
 specifier|private
+specifier|final
 name|FieldEditor
 name|myFieldName
 decl_stmt|;
 DECL|field|inputMenu
 specifier|private
+specifier|final
 name|JPopupMenu
 name|inputMenu
 init|=
@@ -202,6 +204,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|copyAct
 specifier|private
+specifier|final
 name|CopyAction
 name|copyAct
 init|=

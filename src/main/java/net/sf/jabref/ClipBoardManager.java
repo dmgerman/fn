@@ -137,6 +137,7 @@ block|{
 DECL|field|clipBoard
 specifier|public
 specifier|static
+specifier|final
 name|ClipBoardManager
 name|clipBoard
 init|=

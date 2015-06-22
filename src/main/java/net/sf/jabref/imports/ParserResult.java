@@ -113,6 +113,7 @@ block|{
 DECL|field|INVALID_FORMAT
 specifier|public
 specifier|static
+specifier|final
 name|ParserResult
 name|INVALID_FORMAT
 init|=
@@ -129,6 +130,7 @@ decl_stmt|;
 DECL|field|FILE_LOCKED
 specifier|public
 specifier|static
+specifier|final
 name|ParserResult
 name|FILE_LOCKED
 init|=
@@ -144,6 +146,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|base
 specifier|private
+specifier|final
 name|BibtexDatabase
 name|base
 decl_stmt|;
@@ -154,6 +157,7 @@ name|metaData
 decl_stmt|;
 DECL|field|entryTypes
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -171,6 +175,7 @@ literal|null
 decl_stmt|;
 DECL|field|warnings
 specifier|private
+specifier|final
 name|ArrayList
 argument_list|<
 name|String
@@ -186,6 +191,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|duplicateKeys
 specifier|private
+specifier|final
 name|ArrayList
 argument_list|<
 name|String

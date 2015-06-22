@@ -265,46 +265,74 @@ block|{
 comment|// Frame titles.
 specifier|public
 specifier|static
+specifier|final
 name|String
 DECL|field|frameTitle
 name|frameTitle
 init|=
 literal|"JabRef"
-decl_stmt|,
+decl_stmt|;
 DECL|field|version
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|version
 init|=
 name|Globals
 operator|.
 name|VERSION
-decl_stmt|,
+decl_stmt|;
 DECL|field|stringsTitle
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|stringsTitle
 init|=
 literal|"Strings for database"
-decl_stmt|,
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
 comment|//untitledStringsTitle = stringsTitle + Globals.lang("untitled"),
 DECL|field|untitledTitle
 name|untitledTitle
 init|=
 literal|"untitled"
-decl_stmt|,
+decl_stmt|;
 DECL|field|helpTitle
+specifier|public
+specifier|static
+name|String
 name|helpTitle
 init|=
 literal|"JabRef help"
-decl_stmt|,
+decl_stmt|;
 DECL|field|TYPE_HEADER
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|TYPE_HEADER
 init|=
 literal|"entrytype"
-decl_stmt|,
+decl_stmt|;
 DECL|field|NUMBER_COL
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|NUMBER_COL
 init|=
 literal|"#"
-decl_stmt|,
+decl_stmt|;
 DECL|field|encPrefix
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|encPrefix
 init|=
 literal|"Encoding: "
@@ -435,6 +463,7 @@ comment|// The max width of the combobox for content selectors.
 comment|// File names.
 specifier|public
 specifier|static
+specifier|final
 name|String
 comment|//configFile = "preferences.dat",
 DECL|field|backupExt
@@ -445,41 +474,60 @@ decl_stmt|;
 comment|// Image paths.
 specifier|public
 specifier|static
+specifier|final
 name|String
 DECL|field|imageSize
 name|imageSize
 init|=
 literal|"24"
-decl_stmt|,
+decl_stmt|;
 DECL|field|extension
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|extension
 init|=
 literal|".gif"
-decl_stmt|,
+decl_stmt|;
 DECL|field|ex
+specifier|public
+specifier|static
+name|String
 name|ex
 init|=
 name|imageSize
 operator|+
 name|extension
-decl_stmt|,
+decl_stmt|;
 DECL|field|pre
+specifier|public
+specifier|static
+name|String
 name|pre
 init|=
 literal|"/images/"
-decl_stmt|,
+decl_stmt|;
 DECL|field|helpPre
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|helpPre
 init|=
 literal|"/help/"
-decl_stmt|,
+decl_stmt|;
 DECL|field|fontPath
+specifier|public
+specifier|static
+name|String
 name|fontPath
 init|=
 literal|"/images/font/"
 decl_stmt|;
 DECL|field|tableIcons
 specifier|static
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -502,6 +550,7 @@ comment|// further below.
 DECL|field|activeEditor
 specifier|public
 specifier|static
+specifier|final
 name|Color
 name|activeEditor
 init|=
@@ -741,9 +790,13 @@ literal|30
 argument_list|,
 literal|30
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 comment|// Light gray background
 DECL|field|entryEditorLabelColor
+specifier|public
+specifier|static
+specifier|final
+name|Color
 name|entryEditorLabelColor
 init|=
 operator|new
@@ -755,9 +808,13 @@ literal|100
 argument_list|,
 literal|150
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 comment|// Empty field, blue.
 DECL|field|nullFieldColor
+specifier|public
+specifier|static
+specifier|final
+name|Color
 name|nullFieldColor
 init|=
 operator|new
@@ -769,9 +826,12 @@ literal|130
 argument_list|,
 literal|95
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 comment|// Valid field, green.
 DECL|field|gradientGray
+specifier|public
+specifier|static
+name|Color
 name|gradientGray
 init|=
 operator|new
@@ -783,9 +843,12 @@ literal|121
 argument_list|,
 literal|165
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 comment|// Title bar gradient color, sidepaneheader
 DECL|field|gradientBlue
+specifier|public
+specifier|static
+name|Color
 name|gradientBlue
 init|=
 operator|new
@@ -797,8 +860,12 @@ literal|27
 argument_list|,
 literal|102
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 comment|// Title bar gradient color, sidepaneheader
+specifier|public
+specifier|static
+specifier|final
+name|Color
 comment|//activeTabbed = Color.black,  // active Database (JTabbedPane)
 comment|//inActiveTabbed = Color.gray.darker(),  // inactive Database
 DECL|field|activeTabbed
@@ -808,17 +875,25 @@ name|entryEditorLabelColor
 operator|.
 name|darker
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 comment|// active Database (JTabbedPane)
 DECL|field|inActiveTabbed
+specifier|public
+specifier|static
+specifier|final
+name|Color
 name|inActiveTabbed
 init|=
 name|Color
 operator|.
 name|black
-decl_stmt|,
+decl_stmt|;
 comment|// inactive Database
 DECL|field|infoField
+specifier|public
+specifier|static
+specifier|final
+name|Color
 name|infoField
 init|=
 operator|new
@@ -858,6 +933,7 @@ decl_stmt|;
 DECL|field|META_FLAG
 specifier|public
 specifier|static
+specifier|final
 name|String
 name|META_FLAG
 init|=
@@ -866,6 +942,7 @@ decl_stmt|;
 DECL|field|META_FLAG_OLD
 specifier|public
 specifier|static
+specifier|final
 name|String
 name|META_FLAG_OLD
 init|=
@@ -874,6 +951,7 @@ decl_stmt|;
 DECL|field|ENTRYTYPE_FLAG
 specifier|public
 specifier|static
+specifier|final
 name|String
 name|ENTRYTYPE_FLAG
 init|=
@@ -969,6 +1047,7 @@ comment|//	Size constants for EntryTypeForm; small, medium and large.
 DECL|field|FORM_WIDTH
 specifier|public
 specifier|static
+specifier|final
 name|int
 index|[]
 name|FORM_WIDTH
@@ -987,6 +1066,7 @@ decl_stmt|;
 DECL|field|FORM_HEIGHT
 specifier|public
 specifier|static
+specifier|final
 name|int
 index|[]
 name|FORM_HEIGHT
@@ -1021,23 +1101,36 @@ comment|// Maximum
 DECL|field|DEFAULT_FIELD_LENGTH
 specifier|public
 specifier|static
+specifier|final
 name|int
 name|DEFAULT_FIELD_LENGTH
 init|=
 literal|100
-decl_stmt|,
+decl_stmt|;
 DECL|field|NUMBER_COL_LENGTH
+specifier|public
+specifier|static
+specifier|final
+name|int
 name|NUMBER_COL_LENGTH
 init|=
 literal|32
-decl_stmt|,
+decl_stmt|;
 DECL|field|WIDTH_ICON_COL_RANKING
+specifier|public
+specifier|static
+specifier|final
+name|int
 name|WIDTH_ICON_COL_RANKING
 init|=
 literal|35
-decl_stmt|,
+decl_stmt|;
 comment|// Width of Ranking Icon Column
 DECL|field|WIDTH_ICON_COL
+specifier|public
+specifier|static
+specifier|final
+name|int
 name|WIDTH_ICON_COL
 init|=
 literal|19

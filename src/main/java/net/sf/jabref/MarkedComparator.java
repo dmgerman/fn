@@ -40,6 +40,7 @@ name|BibtexEntry
 argument_list|>
 block|{
 DECL|field|next
+specifier|final
 name|Comparator
 argument_list|<
 name|BibtexEntry

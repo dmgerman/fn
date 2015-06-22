@@ -88,6 +88,7 @@ name|PushToApplication
 block|{
 DECL|field|lyxPipe
 specifier|private
+specifier|final
 name|JTextField
 name|lyxPipe
 init|=

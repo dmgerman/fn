@@ -96,6 +96,7 @@ name|CustomExportList
 block|{
 DECL|field|list
 specifier|private
+specifier|final
 name|EventList
 argument_list|<
 name|String
@@ -105,6 +106,7 @@ name|list
 decl_stmt|;
 DECL|field|sorted
 specifier|private
+specifier|final
 name|SortedList
 argument_list|<
 name|String
@@ -114,6 +116,7 @@ name|sorted
 decl_stmt|;
 DECL|field|formats
 specifier|private
+specifier|final
 name|TreeMap
 argument_list|<
 name|String

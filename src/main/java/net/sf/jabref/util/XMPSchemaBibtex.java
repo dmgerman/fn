@@ -1153,6 +1153,7 @@ block|}
 DECL|field|preserveWhiteSpace
 specifier|public
 specifier|static
+specifier|final
 name|HashSet
 argument_list|<
 name|String

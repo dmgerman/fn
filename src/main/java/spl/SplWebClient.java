@@ -333,6 +333,7 @@ block|{
 DECL|field|CLIENT
 specifier|private
 specifier|static
+specifier|final
 name|Client
 name|CLIENT
 init|=
@@ -361,6 +362,7 @@ block|}
 DECL|field|WEBRESOURCE
 specifier|private
 specifier|static
+specifier|final
 name|WebResource
 name|WEBRESOURCE
 init|=
@@ -374,6 +376,7 @@ decl_stmt|;
 DECL|field|INTERNETRESOURCE
 specifier|private
 specifier|static
+specifier|final
 name|WebResource
 name|INTERNETRESOURCE
 init|=

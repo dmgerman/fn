@@ -170,6 +170,7 @@ name|ActionListener
 block|{
 DECL|field|def
 specifier|protected
+specifier|final
 name|JButton
 name|def
 init|=

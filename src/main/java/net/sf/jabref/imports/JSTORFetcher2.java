@@ -182,6 +182,7 @@ decl_stmt|;
 DECL|field|MAX_PAGES_TO_LOAD
 specifier|protected
 specifier|static
+specifier|final
 name|int
 name|MAX_PAGES_TO_LOAD
 init|=
@@ -200,6 +201,7 @@ decl_stmt|;
 DECL|field|REFS_PER_PAGE
 specifier|protected
 specifier|static
+specifier|final
 name|int
 name|REFS_PER_PAGE
 init|=

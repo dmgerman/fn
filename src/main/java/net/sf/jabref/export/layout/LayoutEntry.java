@@ -219,11 +219,13 @@ name|layoutEntries
 decl_stmt|;
 DECL|field|type
 specifier|private
+specifier|final
 name|int
 name|type
 decl_stmt|;
 DECL|field|classPrefix
 specifier|private
+specifier|final
 name|String
 name|classPrefix
 decl_stmt|;

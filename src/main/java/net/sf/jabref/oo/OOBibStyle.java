@@ -175,6 +175,7 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|journals
+specifier|final
 name|SortedSet
 argument_list|<
 name|String
@@ -190,6 +191,7 @@ argument_list|()
 decl_stmt|;
 comment|// Formatter to be run on fields before they are used as part of citation marker:
 DECL|field|fieldFormatter
+specifier|final
 name|LayoutFormatter
 name|fieldFormatter
 init|=
@@ -203,6 +205,7 @@ name|defaultBibLayout
 decl_stmt|;
 comment|// reference layout mapped from entry type number:
 DECL|field|bibLayout
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -221,6 +224,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|properties
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -239,6 +243,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|citProperties
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -257,6 +262,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|numPattern
+specifier|final
 name|Pattern
 name|numPattern
 init|=
@@ -366,6 +372,7 @@ decl_stmt|;
 comment|//private Pattern quoted = Pattern.compile("\".*^\\\\\"");
 DECL|field|quoted
 specifier|private
+specifier|final
 name|Pattern
 name|quoted
 init|=

@@ -70,23 +70,28 @@ name|JDialog
 block|{
 comment|// A reference to the entry this object works on.
 DECL|field|base
+specifier|final
 name|BibtexDatabase
 name|base
 decl_stmt|;
 DECL|field|panel
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|baseFrame
+specifier|final
 name|JabRefFrame
 name|baseFrame
 decl_stmt|;
 DECL|field|prefs
+specifier|final
 name|JabRefPreferences
 name|prefs
 decl_stmt|;
 comment|// Layout objects.
 DECL|field|gbl
+specifier|final
 name|GridBagLayout
 name|gbl
 init|=
@@ -95,6 +100,7 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|con
+specifier|final
 name|GridBagConstraints
 name|con
 init|=
@@ -107,6 +113,7 @@ name|JLabel
 name|lab
 decl_stmt|;
 DECL|field|conPane
+specifier|final
 name|Container
 name|conPane
 init|=
@@ -115,6 +122,7 @@ argument_list|()
 decl_stmt|;
 comment|//JToolBar tlb = new JToolBar();
 DECL|field|pan
+specifier|final
 name|JPanel
 name|pan
 init|=
@@ -672,6 +680,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|storeFieldAction
+specifier|final
 name|StoreFieldAction
 name|storeFieldAction
 init|=
@@ -893,6 +902,7 @@ block|}
 block|}
 block|}
 DECL|field|undoAction
+specifier|final
 name|UndoAction
 name|undoAction
 init|=
@@ -959,6 +969,7 @@ block|{             }
 block|}
 block|}
 DECL|field|redoAction
+specifier|final
 name|RedoAction
 name|redoAction
 init|=
@@ -1026,6 +1037,7 @@ block|}
 block|}
 comment|// The action concerned with closing the window.
 DECL|field|closeAction
+specifier|final
 name|CloseAction
 name|closeAction
 init|=

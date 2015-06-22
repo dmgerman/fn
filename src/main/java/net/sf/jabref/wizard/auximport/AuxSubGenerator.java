@@ -162,6 +162,7 @@ name|AuxSubGenerator
 block|{
 DECL|field|mySet
 specifier|private
+specifier|final
 name|HashSet
 argument_list|<
 name|String
@@ -171,6 +172,7 @@ decl_stmt|;
 comment|// all unique bibtex keys in aux file
 DECL|field|notFoundList
 specifier|private
+specifier|final
 name|Vector
 argument_list|<
 name|String

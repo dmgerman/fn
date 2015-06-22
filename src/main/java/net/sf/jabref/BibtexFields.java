@@ -256,6 +256,7 @@ decl_stmt|;
 comment|// contains all bibtex-field objects (BibtexSingleField)
 DECL|field|fieldSet
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String

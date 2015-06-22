@@ -69,6 +69,7 @@ argument_list|>
 block|{
 DECL|field|hitOrMiss
 specifier|private
+specifier|final
 name|Matcher
 argument_list|<
 name|BibtexEntry

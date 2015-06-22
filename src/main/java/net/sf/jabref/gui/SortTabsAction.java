@@ -125,6 +125,7 @@ argument_list|>
 block|{
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;

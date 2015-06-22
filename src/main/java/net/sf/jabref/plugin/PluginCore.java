@@ -249,6 +249,7 @@ name|singleton
 decl_stmt|;
 DECL|field|userPluginDir
 specifier|static
+specifier|final
 name|File
 name|userPluginDir
 init|=

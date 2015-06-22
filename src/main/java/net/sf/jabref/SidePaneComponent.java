@@ -133,6 +133,7 @@ name|SimpleInternalFrame
 block|{
 DECL|field|close
 specifier|protected
+specifier|final
 name|JButton
 name|close
 init|=
@@ -149,6 +150,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|up
 specifier|protected
+specifier|final
 name|JButton
 name|up
 init|=
@@ -165,6 +167,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|down
 specifier|protected
+specifier|final
 name|JButton
 name|down
 init|=
@@ -188,6 +191,7 @@ literal|false
 decl_stmt|;
 DECL|field|manager
 specifier|protected
+specifier|final
 name|SidePaneManager
 name|manager
 decl_stmt|;

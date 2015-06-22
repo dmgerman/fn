@@ -64,6 +64,7 @@ name|AbstractAutoCompleter
 block|{
 DECL|field|_fieldName
 specifier|public
+specifier|final
 name|String
 name|_fieldName
 decl_stmt|;

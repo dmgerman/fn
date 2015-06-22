@@ -43,9 +43,10 @@ decl_stmt|;
 comment|// quick hack for outside modifications
 DECL|field|sortCriteria
 specifier|public
+specifier|final
 name|SortCriterion
-name|sortCriteria
 index|[]
+name|sortCriteria
 init|=
 operator|new
 name|SortCriterion

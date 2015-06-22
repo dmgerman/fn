@@ -175,6 +175,7 @@ name|CustomExportDialog
 extends|extends
 name|JDialog
 block|{
+specifier|final
 name|JTextField
 DECL|field|name
 name|name
@@ -184,8 +185,10 @@ name|JTextField
 argument_list|(
 literal|60
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|layoutFile
+specifier|final
+name|JTextField
 name|layoutFile
 init|=
 operator|new
@@ -193,8 +196,10 @@ name|JTextField
 argument_list|(
 literal|60
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|extension
+specifier|final
+name|JTextField
 name|extension
 init|=
 operator|new
@@ -203,6 +208,7 @@ argument_list|(
 literal|60
 argument_list|)
 decl_stmt|;
+specifier|final
 name|JLabel
 DECL|field|nl
 name|nl
@@ -219,8 +225,10 @@ argument_list|)
 operator|+
 literal|":"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|nr
+specifier|final
+name|JLabel
 name|nr
 init|=
 operator|new
@@ -235,8 +243,10 @@ argument_list|)
 operator|+
 literal|":"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|nf
+specifier|final
+name|JLabel
 name|nf
 init|=
 operator|new
@@ -252,6 +262,7 @@ operator|+
 literal|":"
 argument_list|)
 decl_stmt|;
+specifier|final
 name|JButton
 DECL|field|ok
 name|ok
@@ -266,8 +277,10 @@ argument_list|(
 literal|"Ok"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|cancel
+specifier|final
+name|JButton
 name|cancel
 init|=
 operator|new
@@ -280,8 +293,10 @@ argument_list|(
 literal|"Cancel"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|browse
+specifier|final
+name|JButton
 name|browse
 init|=
 operator|new
@@ -295,6 +310,7 @@ literal|"Browse"
 argument_list|)
 argument_list|)
 decl_stmt|;
+specifier|final
 name|JPanel
 DECL|field|main
 name|main
@@ -302,8 +318,10 @@ init|=
 operator|new
 name|JPanel
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|buttons
+specifier|final
+name|JPanel
 name|buttons
 init|=
 operator|new
@@ -324,6 +342,7 @@ name|index
 decl_stmt|;
 DECL|field|parent
 specifier|private
+specifier|final
 name|JabRefFrame
 name|parent
 decl_stmt|;
@@ -339,6 +358,7 @@ decl_stmt|,
 name|oldField
 decl_stmt|;
 DECL|field|gbl
+specifier|final
 name|GridBagLayout
 name|gbl
 init|=
@@ -347,6 +367,7 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|con
+specifier|final
 name|GridBagConstraints
 name|con
 init|=

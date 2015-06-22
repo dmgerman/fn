@@ -53,14 +53,17 @@ class|class
 name|Cookie
 block|{
 DECL|field|name
+specifier|final
 name|String
 name|name
 decl_stmt|;
 DECL|field|value
+specifier|final
 name|String
 name|value
 decl_stmt|;
 DECL|field|uri
+specifier|final
 name|URI
 name|uri
 decl_stmt|;
@@ -79,6 +82,7 @@ decl_stmt|;
 DECL|field|expiresFormat1
 specifier|private
 specifier|static
+specifier|final
 name|DateFormat
 name|expiresFormat1
 init|=
@@ -95,6 +99,7 @@ decl_stmt|;
 DECL|field|expiresFormat2
 specifier|private
 specifier|static
+specifier|final
 name|DateFormat
 name|expiresFormat2
 init|=

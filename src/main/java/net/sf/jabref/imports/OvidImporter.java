@@ -175,6 +175,7 @@ block|{
 DECL|field|ovid_src_pat
 specifier|public
 specifier|static
+specifier|final
 name|Pattern
 name|ovid_src_pat
 init|=
@@ -188,6 +189,7 @@ decl_stmt|;
 DECL|field|ovid_src_pat_no_issue
 specifier|public
 specifier|static
+specifier|final
 name|Pattern
 name|ovid_src_pat_no_issue
 init|=
@@ -201,6 +203,7 @@ decl_stmt|;
 DECL|field|ovid_src_pat_2
 specifier|public
 specifier|static
+specifier|final
 name|Pattern
 name|ovid_src_pat_2
 init|=
@@ -214,6 +217,7 @@ decl_stmt|;
 DECL|field|incollection_pat
 specifier|public
 specifier|static
+specifier|final
 name|Pattern
 name|incollection_pat
 init|=
@@ -229,6 +233,7 @@ decl_stmt|;
 DECL|field|book_pat
 specifier|public
 specifier|static
+specifier|final
 name|Pattern
 name|book_pat
 init|=

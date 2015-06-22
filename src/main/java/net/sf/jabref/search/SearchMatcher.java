@@ -60,6 +60,7 @@ block|{
 DECL|field|INSTANCE
 specifier|public
 specifier|static
+specifier|final
 name|SearchMatcher
 name|INSTANCE
 init|=

@@ -297,6 +297,7 @@ decl_stmt|;
 comment|// should really be handled with an enum
 DECL|field|type
 specifier|protected
+specifier|final
 name|String
 name|type
 init|=
@@ -321,6 +322,7 @@ literal|null
 decl_stmt|;
 DECL|field|handledExtensions
 specifier|protected
+specifier|final
 name|Set
 argument_list|<
 name|String
@@ -333,6 +335,7 @@ name|MODSEntry
 name|host
 decl_stmt|;
 DECL|field|extensionFields
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -344,6 +347,7 @@ decl_stmt|;
 DECL|field|BIBTEX
 specifier|public
 specifier|static
+specifier|final
 name|String
 name|BIBTEX
 init|=

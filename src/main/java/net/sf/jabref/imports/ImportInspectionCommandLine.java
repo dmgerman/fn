@@ -91,6 +91,7 @@ implements|implements
 name|ImportInspector
 block|{
 DECL|field|entries
+specifier|final
 name|List
 argument_list|<
 name|BibtexEntry
@@ -161,6 +162,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|field|status
+specifier|final
 name|OutputPrinter
 name|status
 init|=

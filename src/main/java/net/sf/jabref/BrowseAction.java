@@ -109,10 +109,12 @@ literal|null
 decl_stmt|;
 comment|//JDialog dialog=null;
 DECL|field|comp
+specifier|final
 name|JTextField
 name|comp
 decl_stmt|;
 DECL|field|dir
+specifier|final
 name|boolean
 name|dir
 decl_stmt|;

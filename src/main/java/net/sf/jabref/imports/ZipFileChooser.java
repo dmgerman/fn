@@ -316,6 +316,7 @@ name|AbstractTableModel
 block|{
 DECL|field|columnNames
 specifier|private
+specifier|final
 name|String
 index|[]
 name|columnNames
@@ -564,6 +565,7 @@ decl_stmt|;
 comment|/** shortcut to preferences */
 DECL|field|prefs
 specifier|private
+specifier|final
 name|JabRefPreferences
 name|prefs
 init|=
@@ -574,12 +576,14 @@ decl_stmt|;
 comment|/** this */
 DECL|field|zipFileChooser
 specifier|private
+specifier|final
 name|ZipFileChooser
 name|zipFileChooser
 decl_stmt|;
 comment|/** import customization dialog, owner of this dialog */
 DECL|field|importCustomizationDialog
 specifier|private
+specifier|final
 name|ImportCustomizationDialog
 name|importCustomizationDialog
 decl_stmt|;

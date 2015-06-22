@@ -144,11 +144,13 @@ name|FieldEditor
 block|{
 DECL|field|fieldName
 specifier|protected
+specifier|final
 name|String
 name|fieldName
 decl_stmt|;
 DECL|field|label
 specifier|protected
+specifier|final
 name|JLabel
 name|label
 decl_stmt|;

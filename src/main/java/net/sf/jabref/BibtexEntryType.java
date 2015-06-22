@@ -2650,6 +2650,7 @@ block|}
 DECL|field|ALL_TYPES
 specifier|public
 specifier|static
+specifier|final
 name|TreeMap
 argument_list|<
 name|String
@@ -2670,6 +2671,7 @@ decl_stmt|;
 DECL|field|STANDARD_TYPES
 specifier|public
 specifier|static
+specifier|final
 name|TreeMap
 argument_list|<
 name|String
@@ -2677,15 +2679,6 @@ argument_list|,
 name|BibtexEntryType
 argument_list|>
 name|STANDARD_TYPES
-init|=
-operator|new
-name|TreeMap
-argument_list|<
-name|String
-argument_list|,
-name|BibtexEntryType
-argument_list|>
-argument_list|()
 decl_stmt|;
 static|static
 block|{

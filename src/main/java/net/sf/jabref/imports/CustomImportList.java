@@ -518,6 +518,7 @@ block|}
 block|}
 DECL|field|prefs
 specifier|private
+specifier|final
 name|JabRefPreferences
 name|prefs
 decl_stmt|;

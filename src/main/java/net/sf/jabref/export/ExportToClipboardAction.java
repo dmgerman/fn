@@ -276,11 +276,13 @@ literal|null
 decl_stmt|;
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|database
 specifier|private
+specifier|final
 name|BibtexDatabase
 name|database
 decl_stmt|;

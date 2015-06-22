@@ -929,6 +929,7 @@ implements|implements
 name|OutputPrinter
 block|{
 DECL|field|contentPane
+specifier|final
 name|UIFSplitPane
 name|contentPane
 init|=
@@ -937,6 +938,7 @@ name|UIFSplitPane
 argument_list|()
 decl_stmt|;
 DECL|field|prefs
+specifier|final
 name|JabRefPreferences
 name|prefs
 init|=
@@ -1038,6 +1040,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|tlb
+specifier|final
 name|ToolBar
 name|tlb
 init|=
@@ -1046,6 +1049,7 @@ name|ToolBar
 argument_list|()
 decl_stmt|;
 DECL|field|mb
+specifier|final
 name|JMenuBar
 name|mb
 init|=
@@ -1054,6 +1058,7 @@ name|JMenuBar
 argument_list|()
 decl_stmt|;
 DECL|field|pluginMenu
+specifier|final
 name|JMenu
 name|pluginMenu
 init|=
@@ -1069,6 +1074,7 @@ init|=
 literal|false
 decl_stmt|;
 DECL|field|gbl
+specifier|final
 name|GridBagLayout
 name|gbl
 init|=
@@ -1077,6 +1083,7 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|con
+specifier|final
 name|GridBagConstraints
 name|con
 init|=
@@ -1085,7 +1092,7 @@ name|GridBagConstraints
 argument_list|()
 decl_stmt|;
 DECL|field|statusLine
-DECL|field|statusLabel
+specifier|final
 name|JLabel
 name|statusLine
 init|=
@@ -1098,7 +1105,10 @@ name|SwingConstants
 operator|.
 name|LEFT
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+DECL|field|statusLabel
+specifier|final
+name|JLabel
 name|statusLabel
 init|=
 operator|new
@@ -1119,6 +1129,7 @@ name|LEFT
 argument_list|)
 decl_stmt|;
 DECL|field|progressBar
+specifier|final
 name|JProgressBar
 name|progressBar
 init|=
@@ -1128,6 +1139,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|fileHistory
 specifier|private
+specifier|final
 name|FileHistory
 name|fileHistory
 init|=
@@ -1153,6 +1165,7 @@ decl_stmt|;
 comment|// The help window.
 DECL|field|helpDiag
 specifier|public
+specifier|final
 name|HelpDialog
 name|helpDiag
 init|=
@@ -1190,6 +1203,7 @@ decl_stmt|,
 name|highlightAll
 decl_stmt|;
 DECL|field|open
+specifier|final
 name|OpenDatabaseAction
 name|open
 init|=
@@ -1201,6 +1215,7 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
+specifier|final
 name|AbstractAction
 DECL|field|close
 name|close
@@ -1208,50 +1223,64 @@ init|=
 operator|new
 name|CloseDatabaseAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|quit
+specifier|final
+name|AbstractAction
 name|quit
 init|=
 operator|new
 name|CloseAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|selectKeys
+specifier|final
+name|AbstractAction
 name|selectKeys
 init|=
 operator|new
 name|SelectKeysAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|newDatabaseAction
+specifier|final
+name|AbstractAction
 name|newDatabaseAction
 init|=
 operator|new
 name|NewDatabaseAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|newSubDatabaseAction
+specifier|final
+name|AbstractAction
 name|newSubDatabaseAction
 init|=
 operator|new
 name|NewSubDatabaseAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|integrityCheckAction
+specifier|final
+name|AbstractAction
 name|integrityCheckAction
 init|=
 operator|new
 name|IntegrityCheckAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|forkMeOnGitHubAction
+specifier|final
+name|AbstractAction
 name|forkMeOnGitHubAction
 init|=
 operator|new
 name|ForkMeOnGitHubAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|help
+specifier|final
+name|AbstractAction
 name|help
 init|=
 operator|new
@@ -1279,8 +1308,10 @@ argument_list|(
 literal|"Help"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|contents
+specifier|final
+name|AbstractAction
 name|contents
 init|=
 operator|new
@@ -1308,8 +1339,10 @@ argument_list|(
 literal|"helpContents"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|about
+specifier|final
+name|AbstractAction
 name|about
 init|=
 operator|new
@@ -1337,8 +1370,10 @@ argument_list|(
 literal|"about"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|editEntry
+specifier|final
+name|AbstractAction
 name|editEntry
 init|=
 operator|new
@@ -1362,8 +1397,10 @@ argument_list|(
 literal|"Edit entry"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|focusTable
+specifier|final
+name|AbstractAction
 name|focusTable
 init|=
 operator|new
@@ -1387,8 +1424,10 @@ argument_list|(
 literal|"Focus entry table"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|save
+specifier|final
+name|AbstractAction
 name|save
 init|=
 operator|new
@@ -1412,8 +1451,10 @@ argument_list|(
 literal|"Save database"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|saveAs
+specifier|final
+name|AbstractAction
 name|saveAs
 init|=
 operator|new
@@ -1437,8 +1478,10 @@ argument_list|(
 literal|"Save database as ..."
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|saveAll
+specifier|final
+name|AbstractAction
 name|saveAll
 init|=
 operator|new
@@ -1448,8 +1491,10 @@ name|JabRefFrame
 operator|.
 name|this
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|saveSelectedAs
+specifier|final
+name|AbstractAction
 name|saveSelectedAs
 init|=
 operator|new
@@ -1473,8 +1518,10 @@ argument_list|(
 literal|"saveAs"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|saveSelectedAsPlain
+specifier|final
+name|AbstractAction
 name|saveSelectedAsPlain
 init|=
 operator|new
@@ -1498,8 +1545,10 @@ argument_list|(
 literal|"saveAs"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|exportAll
+specifier|final
+name|AbstractAction
 name|exportAll
 init|=
 name|ExportFormats
@@ -1510,8 +1559,10 @@ name|this
 argument_list|,
 literal|false
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|exportSelected
+specifier|final
+name|AbstractAction
 name|exportSelected
 init|=
 name|ExportFormats
@@ -1522,8 +1573,10 @@ name|this
 argument_list|,
 literal|true
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|importCurrent
+specifier|final
+name|AbstractAction
 name|importCurrent
 init|=
 name|ImportFormats
@@ -1534,8 +1587,10 @@ name|this
 argument_list|,
 literal|false
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|importNew
+specifier|final
+name|AbstractAction
 name|importNew
 init|=
 name|ImportFormats
@@ -1546,8 +1601,10 @@ name|this
 argument_list|,
 literal|true
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|nextTab
+specifier|final
+name|AbstractAction
 name|nextTab
 init|=
 operator|new
@@ -1555,8 +1612,10 @@ name|ChangeTabAction
 argument_list|(
 literal|true
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|prevTab
+specifier|final
+name|AbstractAction
 name|prevTab
 init|=
 operator|new
@@ -1564,8 +1623,10 @@ name|ChangeTabAction
 argument_list|(
 literal|false
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|sortTabs
+specifier|final
+name|AbstractAction
 name|sortTabs
 init|=
 operator|new
@@ -1573,8 +1634,10 @@ name|SortTabsAction
 argument_list|(
 name|this
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|undo
+specifier|final
+name|AbstractAction
 name|undo
 init|=
 operator|new
@@ -1598,8 +1661,10 @@ argument_list|(
 literal|"Undo"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|redo
+specifier|final
+name|AbstractAction
 name|redo
 init|=
 operator|new
@@ -1623,8 +1688,10 @@ argument_list|(
 literal|"Redo"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|forward
+specifier|final
+name|AbstractAction
 name|forward
 init|=
 operator|new
@@ -1650,8 +1717,10 @@ argument_list|(
 literal|"Forward"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|back
+specifier|final
+name|AbstractAction
 name|back
 init|=
 operator|new
@@ -1677,7 +1746,9 @@ argument_list|(
 literal|"Back"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+specifier|final
+name|AbstractAction
 comment|//cut = new GeneralAction("cut", "Cut", Globals.lang("Cut"),
 comment|//   GUIGlobals.cutIconFile,
 comment|//   prefs.getKey("Cut")),
@@ -1705,7 +1776,9 @@ argument_list|(
 literal|"Delete"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+specifier|final
+name|AbstractAction
 comment|//copy = new GeneralAction("copy", "Copy", Globals.lang("Copy"),
 comment|//                         GUIGlobals.copyIconFile,
 comment|//                         prefs.getKey("Copy")),
@@ -1724,8 +1797,10 @@ argument_list|(
 literal|"copy"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|paste
+specifier|final
+name|AbstractAction
 name|paste
 init|=
 operator|new
@@ -1740,8 +1815,10 @@ argument_list|(
 literal|"paste"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|cut
+specifier|final
+name|AbstractAction
 name|cut
 init|=
 operator|new
@@ -1756,8 +1833,10 @@ argument_list|(
 literal|"cut"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|mark
+specifier|final
+name|AbstractAction
 name|mark
 init|=
 operator|new
@@ -1781,8 +1860,10 @@ argument_list|(
 literal|"Mark entries"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|unmark
+specifier|final
+name|AbstractAction
 name|unmark
 init|=
 operator|new
@@ -1806,8 +1887,10 @@ argument_list|(
 literal|"Unmark entries"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|unmarkAll
+specifier|final
+name|AbstractAction
 name|unmarkAll
 init|=
 operator|new
@@ -1817,8 +1900,10 @@ literal|"unmarkAll"
 argument_list|,
 literal|"Unmark all"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|toggleRelevance
+specifier|final
+name|AbstractAction
 name|toggleRelevance
 init|=
 operator|new
@@ -1872,8 +1957,10 @@ operator|.
 name|getToolTipText
 argument_list|()
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|toggleQualityAssured
+specifier|final
+name|AbstractAction
 name|toggleQualityAssured
 init|=
 operator|new
@@ -1927,8 +2014,10 @@ operator|.
 name|getToolTipText
 argument_list|()
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|togglePrinted
+specifier|final
+name|AbstractAction
 name|togglePrinted
 init|=
 operator|new
@@ -1982,7 +2071,9 @@ operator|.
 name|getToolTipText
 argument_list|()
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+specifier|final
+name|AbstractAction
 comment|//    	priority = new GeneralAction("setPriority", "Set priority",
 comment|//    			                                            Globals.lang("Set priority")),
 DECL|field|manageSelectors
@@ -1995,22 +2086,28 @@ literal|"manageSelectors"
 argument_list|,
 literal|"Manage content selectors"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|saveSessionAction
+specifier|final
+name|AbstractAction
 name|saveSessionAction
 init|=
 operator|new
 name|SaveSessionAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|loadSessionAction
+specifier|final
+name|AbstractAction
 name|loadSessionAction
 init|=
 operator|new
 name|LoadSessionAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|incrementalSearch
+specifier|final
+name|AbstractAction
 name|incrementalSearch
 init|=
 operator|new
@@ -2034,8 +2131,10 @@ argument_list|(
 literal|"Incremental search"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|normalSearch
+specifier|final
+name|AbstractAction
 name|normalSearch
 init|=
 operator|new
@@ -2059,8 +2158,10 @@ argument_list|(
 literal|"Search"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|toggleSearch
+specifier|final
+name|AbstractAction
 name|toggleSearch
 init|=
 operator|new
@@ -2077,8 +2178,10 @@ argument_list|(
 literal|"Toggle search panel"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|copyKey
+specifier|final
+name|AbstractAction
 name|copyKey
 init|=
 operator|new
@@ -2095,7 +2198,9 @@ argument_list|(
 literal|"Copy BibTeX key"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+specifier|final
+name|AbstractAction
 comment|//"Put a BibTeX reference to the selected entries on the clipboard",
 DECL|field|copyCiteKey
 name|copyCiteKey
@@ -2115,8 +2220,10 @@ argument_list|(
 literal|"Copy \\cite{BibTeX key}"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|copyKeyAndTitle
+specifier|final
+name|AbstractAction
 name|copyKeyAndTitle
 init|=
 operator|new
@@ -2133,8 +2240,10 @@ argument_list|(
 literal|"Copy BibTeX key and title"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|mergeDatabaseAction
+specifier|final
+name|AbstractAction
 name|mergeDatabaseAction
 init|=
 operator|new
@@ -2158,7 +2267,9 @@ argument_list|(
 literal|"open"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+specifier|final
+name|AbstractAction
 comment|//prefs.getKey("Open")),
 comment|/*remove = new GeneralAction("remove", "Remove", "Remove selected entries",               GUIGlobals.removeIconFile),*/
 DECL|field|selectAll
@@ -2178,8 +2289,10 @@ argument_list|(
 literal|"Select all"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|replaceAll
+specifier|final
+name|AbstractAction
 name|replaceAll
 init|=
 operator|new
@@ -2196,8 +2309,10 @@ argument_list|(
 literal|"Replace string"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|editPreamble
+specifier|final
+name|AbstractAction
 name|editPreamble
 init|=
 operator|new
@@ -2221,8 +2336,10 @@ argument_list|(
 literal|"Edit preamble"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|editStrings
+specifier|final
+name|AbstractAction
 name|editStrings
 init|=
 operator|new
@@ -2246,8 +2363,10 @@ argument_list|(
 literal|"Edit strings"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|toggleToolbar
+specifier|final
+name|AbstractAction
 name|toggleToolbar
 init|=
 operator|new
@@ -2271,8 +2390,10 @@ argument_list|(
 literal|"Hide/show toolbar"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|toggleGroups
+specifier|final
+name|AbstractAction
 name|toggleGroups
 init|=
 operator|new
@@ -2296,8 +2417,10 @@ argument_list|(
 literal|"Toggle groups interface"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|togglePreview
+specifier|final
+name|AbstractAction
 name|togglePreview
 init|=
 operator|new
@@ -2321,8 +2444,10 @@ argument_list|(
 literal|"Toggle entry preview"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|toggleHighlightAny
+specifier|final
+name|AbstractAction
 name|toggleHighlightAny
 init|=
 operator|new
@@ -2346,8 +2471,10 @@ argument_list|(
 literal|"groupsHighlightAny"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|toggleHighlightAll
+specifier|final
+name|AbstractAction
 name|toggleHighlightAll
 init|=
 operator|new
@@ -2371,8 +2498,10 @@ argument_list|(
 literal|"groupsHighlightAll"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|switchPreview
+specifier|final
+name|AbstractAction
 name|switchPreview
 init|=
 operator|new
@@ -2389,8 +2518,10 @@ argument_list|(
 literal|"Switch preview layout"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|makeKeyAction
+specifier|final
+name|AbstractAction
 name|makeKeyAction
 init|=
 operator|new
@@ -2414,8 +2545,10 @@ argument_list|(
 literal|"Autogenerate BibTeX keys"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|writeXmpAction
+specifier|final
+name|AbstractAction
 name|writeXmpAction
 init|=
 operator|new
@@ -2439,8 +2572,10 @@ argument_list|(
 literal|"Write XMP"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|openFolder
+specifier|final
+name|AbstractAction
 name|openFolder
 init|=
 operator|new
@@ -2464,8 +2599,10 @@ argument_list|(
 literal|"Open folder"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|openFile
+specifier|final
+name|AbstractAction
 name|openFile
 init|=
 operator|new
@@ -2489,8 +2626,10 @@ argument_list|(
 literal|"Open file"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|openPdf
+specifier|final
+name|AbstractAction
 name|openPdf
 init|=
 operator|new
@@ -2514,8 +2653,10 @@ argument_list|(
 literal|"Open PDF or PS"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|openUrl
+specifier|final
+name|AbstractAction
 name|openUrl
 init|=
 operator|new
@@ -2539,8 +2680,10 @@ argument_list|(
 literal|"Open URL or DOI"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|openSpires
+specifier|final
+name|AbstractAction
 name|openSpires
 init|=
 operator|new
@@ -2564,7 +2707,9 @@ argument_list|(
 literal|"Open SPIRES entry"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+specifier|final
+name|AbstractAction
 comment|/*              * It looks like this wasn't being implemented for spires anyway so we              * comment it out for now.              *             openInspire = new GeneralAction("openInspire", "Open INSPIRE entry",                                                 Globals.lang("Open INSPIRE entry"),                                                 prefs.getKey("Open INSPIRE entry")),             */
 DECL|field|dupliCheck
 name|dupliCheck
@@ -2576,7 +2721,9 @@ literal|"dupliCheck"
 argument_list|,
 literal|"Find duplicates"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+specifier|final
+name|AbstractAction
 comment|//strictDupliCheck = new GeneralAction("strictDupliCheck", "Find and remove exact duplicates"),
 DECL|field|plainTextImport
 name|plainTextImport
@@ -2595,22 +2742,28 @@ argument_list|(
 literal|"New from plain text"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|customExpAction
+specifier|final
+name|AbstractAction
 name|customExpAction
 init|=
 operator|new
 name|CustomizeExportsAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|customImpAction
+specifier|final
+name|AbstractAction
 name|customImpAction
 init|=
 operator|new
 name|CustomizeImportsAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|customFileTypesAction
+specifier|final
+name|AbstractAction
 name|customFileTypesAction
 init|=
 name|ExternalFileTypeEditor
@@ -2619,8 +2772,9 @@ name|getAction
 argument_list|(
 name|this
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|exportToClipboard
+name|AbstractAction
 name|exportToClipboard
 init|=
 operator|new
@@ -2630,7 +2784,9 @@ literal|"exportToClipboard"
 argument_list|,
 literal|"Export selected entries to clipboard"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+specifier|final
+name|AbstractAction
 comment|//expandEndnoteZip = new ExpandEndnoteFilters(this),
 DECL|field|autoSetPdf
 name|autoSetPdf
@@ -2658,8 +2814,10 @@ argument_list|(
 literal|"Synchronize PDF"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|autoSetPs
+specifier|final
+name|AbstractAction
 name|autoSetPs
 init|=
 operator|new
@@ -2685,8 +2843,10 @@ argument_list|(
 literal|"Synchronize PS"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|autoSetFile
+specifier|final
+name|AbstractAction
 name|autoSetFile
 init|=
 operator|new
@@ -2710,8 +2870,10 @@ argument_list|(
 literal|"Synchronize files"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|abbreviateMedline
+specifier|final
+name|AbstractAction
 name|abbreviateMedline
 init|=
 operator|new
@@ -2728,8 +2890,10 @@ argument_list|(
 literal|"Abbreviate journal names of the selected entries (MEDLINE abbreviation)"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|abbreviateIso
+specifier|final
+name|AbstractAction
 name|abbreviateIso
 init|=
 operator|new
@@ -2755,8 +2919,10 @@ argument_list|(
 literal|"Abbreviate"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|unabbreviate
+specifier|final
+name|AbstractAction
 name|unabbreviate
 init|=
 operator|new
@@ -2782,8 +2948,10 @@ argument_list|(
 literal|"Unabbreviate"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|manageJournals
+specifier|final
+name|AbstractAction
 name|manageJournals
 init|=
 operator|new
@@ -2791,22 +2959,28 @@ name|ManageJournalsAction
 argument_list|(
 name|this
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|databaseProperties
+specifier|final
+name|AbstractAction
 name|databaseProperties
 init|=
 operator|new
 name|DatabasePropertiesAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|bibtexKeyPattern
+specifier|final
+name|AbstractAction
 name|bibtexKeyPattern
 init|=
 operator|new
 name|BibtexKeyPatternAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|errorConsole
+specifier|final
+name|AbstractAction
 name|errorConsole
 init|=
 name|Globals
@@ -2817,8 +2991,9 @@ name|getAction
 argument_list|(
 name|this
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|test
+name|AbstractAction
 name|test
 init|=
 operator|new
@@ -2828,8 +3003,10 @@ literal|"test"
 argument_list|,
 literal|"Test"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|dbConnect
+specifier|final
+name|AbstractAction
 name|dbConnect
 init|=
 operator|new
@@ -2853,8 +3030,10 @@ argument_list|(
 literal|"dbConnect"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|dbExport
+specifier|final
+name|AbstractAction
 name|dbExport
 init|=
 operator|new
@@ -2878,8 +3057,10 @@ argument_list|(
 literal|"dbExport"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|Cleanup
+specifier|final
+name|AbstractAction
 name|Cleanup
 init|=
 operator|new
@@ -2907,8 +3088,10 @@ operator|(
 literal|"cleanupentries"
 operator|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|mergeEntries
+specifier|final
+name|AbstractAction
 name|mergeEntries
 init|=
 operator|new
@@ -2932,8 +3115,10 @@ argument_list|(
 literal|"mergeentries"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|dbImport
+specifier|final
+name|AbstractAction
 name|dbImport
 init|=
 operator|new
@@ -2944,7 +3129,9 @@ argument_list|)
 operator|.
 name|getAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+specifier|final
+name|AbstractAction
 comment|//downloadFullText = new GeneralAction("downloadFullText", "Look up full text document",
 comment|//        Globals.lang("Follow DOI or URL link and try to locate PDF full text document")),
 DECL|field|increaseFontSize
@@ -2953,15 +3140,19 @@ init|=
 operator|new
 name|IncreaseTableFontSizeAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|decreseFontSize
+specifier|final
+name|AbstractAction
 name|decreseFontSize
 init|=
 operator|new
 name|DecreaseTableFontSizeAction
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|installPlugin
+specifier|final
+name|AbstractAction
 name|installPlugin
 init|=
 operator|new
@@ -2969,8 +3160,10 @@ name|PluginInstallerAction
 argument_list|(
 name|this
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|resolveDuplicateKeys
+specifier|final
+name|AbstractAction
 name|resolveDuplicateKeys
 init|=
 operator|new
@@ -2996,6 +3189,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|massSetField
+specifier|final
 name|MassSetFieldAction
 name|massSetField
 init|=
@@ -3006,6 +3200,7 @@ name|this
 argument_list|)
 decl_stmt|;
 DECL|field|manageKeywords
+specifier|final
 name|ManageKeywordsAction
 name|manageKeywords
 init|=
@@ -3016,6 +3211,7 @@ name|this
 argument_list|)
 decl_stmt|;
 DECL|field|findUnlinkedFiles
+specifier|final
 name|GeneralAction
 name|findUnlinkedFiles
 init|=
@@ -3049,6 +3245,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|autoLinkFile
+specifier|final
 name|AutoLinkFilesAction
 name|autoLinkFile
 init|=
@@ -3061,6 +3258,7 @@ name|PushToApplicationButton
 name|pushExternalButton
 decl_stmt|;
 DECL|field|fetchers
+specifier|final
 name|List
 argument_list|<
 name|EntryFetcher
@@ -3075,6 +3273,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|fetcherActions
+specifier|final
 name|List
 argument_list|<
 name|Action
@@ -3100,6 +3299,7 @@ name|groupSelector
 decl_stmt|;
 comment|// The menus for importing/appending other formats
 DECL|field|importMenu
+specifier|final
 name|JMenu
 name|importMenu
 init|=
@@ -3107,32 +3307,39 @@ name|subMenu
 argument_list|(
 literal|"Import into current database"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|importNewMenu
+specifier|final
+name|JMenu
 name|importNewMenu
 init|=
 name|subMenu
 argument_list|(
 literal|"Import into new database"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|exportMenu
+specifier|final
+name|JMenu
 name|exportMenu
 init|=
 name|subMenu
 argument_list|(
 literal|"Export"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|customExportMenu
+name|JMenu
 name|customExportMenu
 init|=
 name|subMenu
 argument_list|(
 literal|"Custom export"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|newDatabaseMenu
+specifier|final
+name|JMenu
 name|newDatabaseMenu
 init|=
 name|subMenu
@@ -3142,6 +3349,7 @@ argument_list|)
 decl_stmt|;
 comment|// Other submenus
 DECL|field|checkAndFix
+specifier|final
 name|JMenu
 name|checkAndFix
 init|=
@@ -3152,6 +3360,7 @@ argument_list|)
 decl_stmt|;
 comment|// The action for adding a new entry of unspecified type.
 DECL|field|newEntryAction
+specifier|final
 name|NewEntryAction
 name|newEntryAction
 init|=
@@ -3167,6 +3376,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|newSpecificEntryAction
+specifier|final
 name|NewEntryAction
 index|[]
 name|newSpecificEntryAction
@@ -6327,6 +6537,7 @@ name|MnemonicAwareAction
 block|{
 DECL|field|command
 specifier|private
+specifier|final
 name|String
 name|command
 decl_stmt|;
@@ -10332,6 +10543,7 @@ block|}
 block|}
 comment|// The action for closing the current database and leaving the window open.
 DECL|field|closeDatabaseAction
+specifier|final
 name|CloseDatabaseAction
 name|closeDatabaseAction
 init|=
@@ -11010,6 +11222,7 @@ block|}
 block|}
 comment|// The action for opening the preferences dialog.
 DECL|field|showPrefs
+specifier|final
 name|AbstractAction
 name|showPrefs
 init|=
@@ -13018,6 +13231,7 @@ name|MnemonicAwareAction
 block|{
 DECL|field|next
 specifier|private
+specifier|final
 name|boolean
 name|next
 decl_stmt|;
@@ -13153,6 +13367,7 @@ name|MnemonicAwareAction
 block|{
 DECL|field|command
 specifier|private
+specifier|final
 name|String
 name|command
 decl_stmt|;

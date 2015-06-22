@@ -55,6 +55,7 @@ argument_list|>
 block|{
 DECL|field|fields
 specifier|private
+specifier|final
 name|String
 index|[]
 name|fields

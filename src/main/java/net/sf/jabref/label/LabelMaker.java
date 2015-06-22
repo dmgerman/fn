@@ -287,6 +287,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|ruleTable
 specifier|protected
+specifier|final
 name|Hashtable
 argument_list|<
 name|String

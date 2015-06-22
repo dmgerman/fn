@@ -98,6 +98,7 @@ name|ActionListener
 block|{
 DECL|field|entry
 specifier|private
+specifier|final
 name|BibtexEntry
 name|entry
 decl_stmt|;

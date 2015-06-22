@@ -201,6 +201,7 @@ name|indexDraggedTab
 decl_stmt|;
 comment|// The index of the tab we drag at the moment
 DECL|field|markerPane
+specifier|final
 name|MarkerPane
 name|markerPane
 decl_stmt|;
@@ -719,6 +720,7 @@ name|locationP
 decl_stmt|;
 DECL|field|markerImg
 specifier|private
+specifier|final
 name|Image
 name|markerImg
 decl_stmt|;

@@ -189,6 +189,7 @@ decl_stmt|;
 DECL|field|verticalLabelUI
 specifier|protected
 specifier|static
+specifier|final
 name|VerticalLabelUI
 name|verticalLabelUI
 init|=

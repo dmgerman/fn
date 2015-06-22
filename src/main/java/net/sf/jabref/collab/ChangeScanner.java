@@ -274,6 +274,7 @@ decl_stmt|;
 comment|/**      * We create an ArrayList to hold the changes we find. These will be added in the form      * of UndoEdit objects. We instantiate these so that the changes found in the file on disk      * can be reproduced in memory by calling redo() on them. REDO, not UNDO!      */
 comment|//ArrayList changes = new ArrayList();
 DECL|field|changes
+specifier|final
 name|DefaultMutableTreeNode
 name|changes
 init|=

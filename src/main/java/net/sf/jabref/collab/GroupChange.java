@@ -144,6 +144,7 @@ name|m_changedGroups
 decl_stmt|;
 DECL|field|tmpGroupRoot
 specifier|private
+specifier|final
 name|GroupTreeNode
 name|tmpGroupRoot
 decl_stmt|;

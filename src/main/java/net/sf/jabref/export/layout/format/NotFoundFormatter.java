@@ -62,6 +62,7 @@ name|LayoutFormatter
 block|{
 DECL|field|notFound
 specifier|private
+specifier|final
 name|String
 name|notFound
 decl_stmt|;

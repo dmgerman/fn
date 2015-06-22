@@ -192,6 +192,7 @@ name|JPanel
 block|{
 DECL|field|picLabel
 specifier|private
+specifier|final
 name|JLabel
 name|picLabel
 decl_stmt|;

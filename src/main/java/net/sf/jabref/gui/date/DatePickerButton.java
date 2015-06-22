@@ -150,6 +150,7 @@ name|ActionListener
 block|{
 DECL|field|datePicker
 specifier|private
+specifier|final
 name|DatePicker
 name|datePicker
 init|=
@@ -159,6 +160,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|panel
 specifier|private
+specifier|final
 name|JPanel
 name|panel
 init|=
@@ -168,6 +170,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|editor
 specifier|private
+specifier|final
 name|FieldEditor
 name|editor
 decl_stmt|;

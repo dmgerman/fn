@@ -524,6 +524,7 @@ name|MnemonicAwareAction
 block|{
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -565,6 +566,7 @@ name|cancelled
 decl_stmt|;
 DECL|field|sortedKeywordsOfAllEntriesBeforeUpdateByUser
 specifier|private
+specifier|final
 name|TreeSet
 argument_list|<
 name|String

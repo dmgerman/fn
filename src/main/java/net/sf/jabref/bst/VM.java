@@ -287,6 +287,7 @@ implements|implements
 name|Warn
 block|{
 DECL|field|out
+specifier|final
 name|PrintStream
 name|out
 init|=
@@ -301,6 +302,7 @@ name|Identifier
 block|{
 DECL|field|name
 specifier|public
+specifier|final
 name|String
 name|name
 decl_stmt|;
@@ -337,6 +339,7 @@ name|Variable
 block|{
 DECL|field|name
 specifier|public
+specifier|final
 name|String
 name|name
 decl_stmt|;
@@ -401,6 +404,7 @@ literal|1
 decl_stmt|;
 DECL|field|buildInFunctions
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -1301,6 +1305,7 @@ operator|new
 name|BstFunction
 argument_list|()
 block|{
+specifier|final
 name|Pattern
 name|p
 init|=
@@ -3736,6 +3741,7 @@ literal|false
 return|;
 block|}
 DECL|field|tree
+specifier|final
 name|CommonTree
 name|tree
 decl_stmt|;
@@ -4243,6 +4249,7 @@ implements|implements
 name|BstFunction
 block|{
 DECL|field|replacement
+specifier|final
 name|String
 name|replacement
 decl_stmt|;
@@ -4777,6 +4784,7 @@ implements|implements
 name|BstFunction
 block|{
 DECL|field|tree
+specifier|final
 name|Tree
 name|tree
 decl_stmt|;
@@ -5432,10 +5440,12 @@ name|e
 expr_stmt|;
 block|}
 DECL|field|entry
+specifier|final
 name|BibtexEntry
 name|entry
 decl_stmt|;
 DECL|field|strings
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -5454,6 +5464,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|fields
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -5472,6 +5483,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|integers
+specifier|final
 name|Map
 argument_list|<
 name|String

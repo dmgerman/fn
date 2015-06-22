@@ -173,6 +173,7 @@ block|{
 comment|//~ Methods ////////////////////////////////////////////////////////////////
 DECL|field|xc
 specifier|static
+specifier|final
 name|XMLChars
 name|xc
 init|=

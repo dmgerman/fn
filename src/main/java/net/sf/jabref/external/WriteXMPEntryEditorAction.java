@@ -136,11 +136,13 @@ name|AbstractAction
 block|{
 DECL|field|panel
 specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|editor
 specifier|private
+specifier|final
 name|EntryEditor
 name|editor
 decl_stmt|;
@@ -522,6 +524,7 @@ name|AbstractWorker
 block|{
 DECL|field|files
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|File
@@ -530,6 +533,7 @@ name|files
 decl_stmt|;
 DECL|field|entry
 specifier|private
+specifier|final
 name|BibtexEntry
 name|entry
 decl_stmt|;

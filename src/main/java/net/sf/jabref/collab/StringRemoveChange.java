@@ -121,13 +121,17 @@ extends|extends
 name|Change
 block|{
 DECL|field|string
-DECL|field|inMem
+specifier|final
 name|BibtexString
 name|string
-decl_stmt|,
+decl_stmt|;
+DECL|field|inMem
+specifier|final
+name|BibtexString
 name|inMem
 decl_stmt|;
 DECL|field|tp
+specifier|final
 name|InfoPane
 name|tp
 init|=
@@ -136,6 +140,7 @@ name|InfoPane
 argument_list|()
 decl_stmt|;
 DECL|field|sp
+specifier|final
 name|JScrollPane
 name|sp
 init|=
@@ -147,6 +152,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|tmpString
 specifier|private
+specifier|final
 name|BibtexString
 name|tmpString
 decl_stmt|;

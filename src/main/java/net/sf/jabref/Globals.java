@@ -508,22 +508,30 @@ literal|1
 decl_stmt|;
 specifier|public
 specifier|static
+specifier|final
 name|int
 DECL|field|FUTURE_YEAR
 name|FUTURE_YEAR
 init|=
 literal|2050
-decl_stmt|,
+decl_stmt|;
 comment|// Needs to give a year definitely in the future.
 comment|// Used for guessing the
 comment|// year field when parsing textual data. :-)
 DECL|field|STANDARD_EXPORT_COUNT
+specifier|public
+specifier|static
+name|int
 name|STANDARD_EXPORT_COUNT
 init|=
 literal|5
-decl_stmt|,
+decl_stmt|;
 comment|// The number of standard export formats.
 DECL|field|METADATA_LINE_LENGTH
+specifier|public
+specifier|static
+specifier|final
+name|int
 name|METADATA_LINE_LENGTH
 init|=
 literal|70
@@ -572,6 +580,7 @@ decl_stmt|;
 DECL|field|JOURNALS_FILE_BUILTIN
 specifier|public
 specifier|static
+specifier|final
 name|String
 name|JOURNALS_FILE_BUILTIN
 init|=
@@ -608,6 +617,7 @@ decl_stmt|;
 DECL|field|importFormatReader
 specifier|public
 specifier|static
+specifier|final
 name|ImportFormatReader
 name|importFormatReader
 init|=
@@ -622,15 +632,24 @@ name|ErrorConsole
 name|errorConsole
 decl_stmt|;
 DECL|field|VERSION
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|VERSION
+decl_stmt|;
 DECL|field|BUILD
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|BUILD
+decl_stmt|;
 DECL|field|BUILD_DATE
 specifier|public
 specifier|static
+specifier|final
 name|String
-name|VERSION
-decl_stmt|,
-name|BUILD
-decl_stmt|,
 name|BUILD_DATE
 decl_stmt|;
 static|static
@@ -722,13 +741,19 @@ init|=
 literal|"net.sf.jabref.export.layout.format."
 decl_stmt|;
 DECL|field|ENCODINGS
-DECL|field|ALL_ENCODINGS
 specifier|public
 specifier|static
+specifier|final
 name|String
 index|[]
 name|ENCODINGS
-decl_stmt|,
+decl_stmt|;
+DECL|field|ALL_ENCODINGS
+specifier|public
+specifier|static
+specifier|final
+name|String
+index|[]
 name|ALL_ENCODINGS
 init|=
 comment|// (String[])
@@ -796,6 +821,7 @@ decl_stmt|;
 DECL|field|ENCODING_NAMES_LOOKUP
 specifier|public
 specifier|static
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -1270,6 +1296,7 @@ comment|// Instantiate logger:
 DECL|field|logger
 specifier|private
 specifier|static
+specifier|final
 name|Logger
 name|logger
 init|=
@@ -2258,6 +2285,7 @@ block|}
 DECL|field|SPECIAL_COMMAND_CHARS
 specifier|public
 specifier|static
+specifier|final
 name|String
 name|SPECIAL_COMMAND_CHARS
 init|=
@@ -2286,6 +2314,7 @@ decl_stmt|;
 DECL|field|HTMLCHARS
 specifier|public
 specifier|static
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -2306,6 +2335,7 @@ decl_stmt|;
 DECL|field|XML_CHARS
 specifier|public
 specifier|static
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -2326,6 +2356,7 @@ decl_stmt|;
 DECL|field|ASCII2XML_CHARS
 specifier|public
 specifier|static
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -2346,6 +2377,7 @@ decl_stmt|;
 DECL|field|UNICODE_CHARS
 specifier|public
 specifier|static
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -2366,6 +2398,7 @@ decl_stmt|;
 DECL|field|RTFCHARS
 specifier|public
 specifier|static
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -2386,6 +2419,7 @@ decl_stmt|;
 DECL|field|URL_CHARS
 specifier|public
 specifier|static
+specifier|final
 name|HashMap
 argument_list|<
 name|String

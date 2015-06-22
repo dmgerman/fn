@@ -78,6 +78,7 @@ literal|null
 decl_stmt|;
 DECL|field|icon
 specifier|private
+specifier|final
 name|ImageIcon
 name|icon
 init|=

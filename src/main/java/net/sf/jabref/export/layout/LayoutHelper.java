@@ -185,6 +185,7 @@ name|_in
 decl_stmt|;
 DECL|field|parsedEntries
 specifier|private
+specifier|final
 name|Vector
 argument_list|<
 name|StringInt

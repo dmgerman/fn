@@ -208,11 +208,13 @@ name|PrefsTab
 block|{
 DECL|field|_prefs
 specifier|private
+specifier|final
 name|JabRefPreferences
 name|_prefs
 decl_stmt|;
 DECL|field|dontOverwrite
 specifier|private
+specifier|final
 name|JCheckBox
 name|dontOverwrite
 init|=
@@ -226,8 +228,11 @@ argument_list|(
 literal|"Do not overwrite existing keys"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|warnBeforeOverwriting
+specifier|private
+specifier|final
+name|JCheckBox
 name|warnBeforeOverwriting
 init|=
 operator|new
@@ -240,8 +245,11 @@ argument_list|(
 literal|"Warn before overwriting existing keys"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|generateOnSave
+specifier|private
+specifier|final
+name|JCheckBox
 name|generateOnSave
 init|=
 operator|new
@@ -254,8 +262,11 @@ argument_list|(
 literal|"Generate keys before saving (for entries without a key)"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|autoGenerateOnImport
+specifier|private
+specifier|final
+name|JCheckBox
 name|autoGenerateOnImport
 init|=
 operator|new
@@ -270,6 +281,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 specifier|private
+specifier|final
 name|JRadioButton
 DECL|field|letterStartA
 name|letterStartA
@@ -284,8 +296,11 @@ argument_list|(
 literal|"Ensure unique keys using letters (a, b, ...)"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|letterStartB
+specifier|private
+specifier|final
+name|JRadioButton
 name|letterStartB
 init|=
 operator|new
@@ -298,8 +313,11 @@ argument_list|(
 literal|"Ensure unique keys using letters (b, c, ...)"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|alwaysAddLetter
+specifier|private
+specifier|final
+name|JRadioButton
 name|alwaysAddLetter
 init|=
 operator|new
@@ -315,6 +333,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|KeyPatternRegex
 specifier|private
+specifier|final
 name|JTextField
 name|KeyPatternRegex
 init|=
@@ -326,6 +345,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|KeyPatternReplacement
 specifier|private
+specifier|final
 name|JTextField
 name|KeyPatternReplacement
 init|=

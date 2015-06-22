@@ -373,6 +373,7 @@ block|{
 comment|// private String [] preferedOrder = {"author", "title", "journal", "booktitle", "volume", "number", "pages", "year", "month"};
 DECL|field|columnHeadings
 specifier|private
+specifier|final
 name|String
 index|[]
 name|columnHeadings
@@ -442,11 +443,13 @@ name|preview
 decl_stmt|;
 DECL|field|panel
 specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -465,6 +468,7 @@ name|identical
 decl_stmt|;
 DECL|field|cc
 specifier|private
+specifier|final
 name|CellConstraints
 name|cc
 init|=
@@ -474,6 +478,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|mergedEntry
 specifier|private
+specifier|final
 name|BibtexEntry
 name|mergedEntry
 init|=

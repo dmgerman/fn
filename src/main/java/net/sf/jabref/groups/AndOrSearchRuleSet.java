@@ -74,11 +74,15 @@ extends|extends
 name|SearchRuleSet
 block|{
 DECL|field|and
-DECL|field|invert
 specifier|private
+specifier|final
 name|boolean
 name|and
-decl_stmt|,
+decl_stmt|;
+DECL|field|invert
+specifier|private
+specifier|final
+name|boolean
 name|invert
 decl_stmt|;
 DECL|method|AndOrSearchRuleSet (boolean and, boolean invert)

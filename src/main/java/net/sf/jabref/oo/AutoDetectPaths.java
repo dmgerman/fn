@@ -182,6 +182,7 @@ name|prog
 decl_stmt|;
 DECL|field|parent
 specifier|private
+specifier|final
 name|JDialog
 name|parent
 decl_stmt|;

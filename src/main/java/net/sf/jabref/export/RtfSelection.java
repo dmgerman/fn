@@ -91,6 +91,7 @@ name|supportedFlavors
 decl_stmt|;
 DECL|field|content
 specifier|private
+specifier|final
 name|String
 name|content
 decl_stmt|;

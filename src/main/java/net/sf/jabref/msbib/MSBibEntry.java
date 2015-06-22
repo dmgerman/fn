@@ -347,6 +347,7 @@ literal|null
 decl_stmt|;
 DECL|field|GUID
 specifier|protected
+specifier|final
 name|String
 name|GUID
 init|=

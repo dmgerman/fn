@@ -37,6 +37,7 @@ block|{
 DECL|field|INSTANCE
 specifier|public
 specifier|static
+specifier|final
 name|JabRefExecutorService
 name|INSTANCE
 init|=

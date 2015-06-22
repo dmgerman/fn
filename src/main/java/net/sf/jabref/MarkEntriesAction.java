@@ -78,6 +78,7 @@ name|ActionListener
 block|{
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -88,6 +89,7 @@ name|level
 decl_stmt|;
 DECL|field|menuItem
 specifier|private
+specifier|final
 name|JMenuItem
 name|menuItem
 decl_stmt|;

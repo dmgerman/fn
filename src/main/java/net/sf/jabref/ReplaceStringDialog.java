@@ -127,6 +127,7 @@ name|ReplaceStringDialog
 extends|extends
 name|JDialog
 block|{
+specifier|final
 name|JTextField
 DECL|field|fields
 name|fields
@@ -138,8 +139,10 @@ literal|""
 argument_list|,
 literal|30
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|from
+specifier|final
+name|JTextField
 name|from
 init|=
 operator|new
@@ -149,8 +152,10 @@ literal|""
 argument_list|,
 literal|30
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|to
+specifier|final
+name|JTextField
 name|to
 init|=
 operator|new
@@ -161,6 +166,7 @@ argument_list|,
 literal|30
 argument_list|)
 decl_stmt|;
+specifier|final
 name|JLabel
 DECL|field|fl
 name|fl
@@ -177,8 +183,10 @@ argument_list|)
 operator|+
 literal|":"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|tl
+specifier|final
+name|JLabel
 name|tl
 init|=
 operator|new
@@ -194,6 +202,7 @@ operator|+
 literal|":"
 argument_list|)
 decl_stmt|;
+specifier|final
 name|JButton
 DECL|field|ok
 name|ok
@@ -208,8 +217,10 @@ argument_list|(
 literal|"Ok"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|cancel
+specifier|final
+name|JButton
 name|cancel
 init|=
 operator|new
@@ -223,6 +234,7 @@ literal|"Cancel"
 argument_list|)
 argument_list|)
 decl_stmt|;
+specifier|final
 name|JPanel
 DECL|field|settings
 name|settings
@@ -230,15 +242,19 @@ init|=
 operator|new
 name|JPanel
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|main
+specifier|final
+name|JPanel
 name|main
 init|=
 operator|new
 name|JPanel
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|opt
+specifier|final
+name|JPanel
 name|opt
 init|=
 operator|new
@@ -246,6 +262,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|selOnly
+specifier|final
 name|JCheckBox
 name|selOnly
 init|=
@@ -262,6 +279,7 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
+specifier|final
 name|JRadioButton
 DECL|field|allFi
 name|allFi
@@ -278,8 +296,10 @@ argument_list|)
 argument_list|,
 literal|true
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|field
+specifier|final
+name|JRadioButton
 name|field
 init|=
 operator|new
@@ -298,6 +318,7 @@ literal|false
 argument_list|)
 decl_stmt|;
 DECL|field|bg
+specifier|final
 name|ButtonGroup
 name|bg
 init|=
@@ -327,6 +348,7 @@ decl_stmt|,
 name|s2
 decl_stmt|;
 DECL|field|gbl
+specifier|final
 name|GridBagLayout
 name|gbl
 init|=
@@ -335,6 +357,7 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|con
+specifier|final
 name|GridBagConstraints
 name|con
 init|=

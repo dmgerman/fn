@@ -56,6 +56,7 @@ argument_list|)
 block|;
 DECL|field|prefix
 specifier|private
+specifier|final
 name|String
 name|prefix
 decl_stmt|;

@@ -176,6 +176,7 @@ name|JournalAbbreviations
 block|{
 DECL|field|TOOLTIPTEXT
 specifier|static
+specifier|final
 name|String
 name|TOOLTIPTEXT
 init|=
@@ -202,6 +203,7 @@ operator|+
 literal|".</HTML>"
 decl_stmt|;
 DECL|field|fullNameKeyed
+specifier|final
 name|TreeMap
 argument_list|<
 name|String
@@ -220,6 +222,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|abbrNameKeyed
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -238,6 +241,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|abbrNoDotsToAbbr
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -256,6 +260,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|all
+specifier|final
 name|TreeMap
 argument_list|<
 name|String

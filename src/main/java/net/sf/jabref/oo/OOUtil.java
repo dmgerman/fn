@@ -302,6 +302,7 @@ name|OOUtil
 block|{
 DECL|field|htmlTag
 specifier|static
+specifier|final
 name|Pattern
 name|htmlTag
 init|=
@@ -314,6 +315,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|postformatter
 specifier|static
+specifier|final
 name|OOPreFormatter
 name|postformatter
 init|=

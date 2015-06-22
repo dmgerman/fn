@@ -44,6 +44,7 @@ name|Runnable
 block|{
 DECL|field|comp
 specifier|private
+specifier|final
 name|Component
 name|comp
 decl_stmt|;

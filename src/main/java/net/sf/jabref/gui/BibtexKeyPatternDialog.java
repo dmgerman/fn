@@ -254,6 +254,7 @@ name|panel
 decl_stmt|;
 DECL|field|labelPatternPanel
 specifier|private
+specifier|final
 name|LabelPatternPanel
 name|labelPatternPanel
 decl_stmt|;

@@ -60,11 +60,13 @@ name|AbstractAction
 block|{
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|actionName
 specifier|private
+specifier|final
 name|String
 name|actionName
 decl_stmt|;

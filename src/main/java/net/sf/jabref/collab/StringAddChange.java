@@ -85,10 +85,12 @@ extends|extends
 name|Change
 block|{
 DECL|field|string
+specifier|final
 name|BibtexString
 name|string
 decl_stmt|;
 DECL|field|tp
+specifier|final
 name|InfoPane
 name|tp
 init|=
@@ -97,6 +99,7 @@ name|InfoPane
 argument_list|()
 decl_stmt|;
 DECL|field|sp
+specifier|final
 name|JScrollPane
 name|sp
 init|=

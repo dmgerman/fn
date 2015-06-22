@@ -70,6 +70,7 @@ name|FilterReader
 block|{
 DECL|field|in
 specifier|protected
+specifier|final
 name|BufferedReader
 name|in
 decl_stmt|;

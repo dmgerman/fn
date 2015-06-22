@@ -231,10 +231,12 @@ implements|implements
 name|ActionListener
 block|{
 DECL|field|frame
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|openInNew
+specifier|final
 name|boolean
 name|openInNew
 decl_stmt|;
@@ -245,6 +247,7 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|importer
+specifier|final
 name|ImportFormat
 name|importer
 decl_stmt|;

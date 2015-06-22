@@ -58,6 +58,7 @@ name|JPanel
 block|{
 DECL|field|label
 specifier|private
+specifier|final
 name|JLabel
 name|label
 decl_stmt|;

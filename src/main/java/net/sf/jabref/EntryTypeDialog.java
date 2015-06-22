@@ -144,6 +144,7 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|cancelAction
+specifier|final
 name|CancelAction
 name|cancelAction
 init|=
@@ -172,6 +173,7 @@ name|TypeButton
 argument_list|>
 block|{
 DECL|field|type
+specifier|final
 name|BibtexEntryType
 name|type
 decl_stmt|;

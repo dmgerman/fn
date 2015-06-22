@@ -54,6 +54,7 @@ name|BibtexEntry
 block|{
 DECL|field|key
 specifier|private
+specifier|final
 name|String
 name|key
 decl_stmt|;

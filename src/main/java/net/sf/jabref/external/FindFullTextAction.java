@@ -104,6 +104,7 @@ name|AbstractWorker
 block|{
 DECL|field|basePanel
 specifier|private
+specifier|final
 name|BasePanel
 name|basePanel
 decl_stmt|;

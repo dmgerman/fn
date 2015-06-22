@@ -162,6 +162,7 @@ operator|.
 name|FileFilter
 block|{
 DECL|field|externalFileType
+specifier|final
 name|ExternalFileType
 name|externalFileType
 decl_stmt|;

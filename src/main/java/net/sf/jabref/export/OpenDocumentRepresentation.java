@@ -218,6 +218,7 @@ name|OpenDocumentRepresentation
 block|{
 DECL|field|entries
 specifier|protected
+specifier|final
 name|Collection
 argument_list|<
 name|BibtexEntry
@@ -226,6 +227,7 @@ name|entries
 decl_stmt|;
 DECL|field|database
 specifier|private
+specifier|final
 name|BibtexDatabase
 name|database
 decl_stmt|;

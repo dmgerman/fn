@@ -279,6 +279,7 @@ implements|implements
 name|ActionListener
 block|{
 DECL|field|tf
+specifier|final
 name|JTextField
 name|tf
 init|=
@@ -287,6 +288,7 @@ name|JTextField
 argument_list|()
 decl_stmt|;
 DECL|field|pan
+specifier|final
 name|JPanel
 name|pan
 init|=
@@ -295,6 +297,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|gbl
+specifier|final
 name|GridBagLayout
 name|gbl
 init|=
@@ -303,6 +306,7 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|con
+specifier|final
 name|GridBagConstraints
 name|con
 init|=
@@ -311,7 +315,7 @@ name|GridBagConstraints
 argument_list|()
 decl_stmt|;
 DECL|field|go
-DECL|field|helpBut
+specifier|final
 name|JButton
 name|go
 init|=
@@ -325,13 +329,15 @@ argument_list|(
 literal|"Fetch"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+DECL|field|helpBut
+specifier|final
+name|JButton
 name|helpBut
 init|=
 operator|new
 name|JButton
 argument_list|(
-DECL|field|reset
 name|GUIGlobals
 operator|.
 name|getImage
@@ -339,7 +345,10 @@ argument_list|(
 literal|"helpSmall"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+DECL|field|reset
+specifier|final
+name|JButton
 name|reset
 init|=
 operator|new
@@ -354,10 +363,12 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|fetcherChoice
+specifier|final
 name|JComboBox
 name|fetcherChoice
 decl_stmt|;
 DECL|field|optionsCards
+specifier|final
 name|CardLayout
 name|optionsCards
 init|=
@@ -366,6 +377,7 @@ name|CardLayout
 argument_list|()
 decl_stmt|;
 DECL|field|optionsPanel
+specifier|final
 name|JPanel
 name|optionsPanel
 init|=
@@ -376,6 +388,7 @@ name|optionsCards
 argument_list|)
 decl_stmt|;
 DECL|field|optPanel
+specifier|final
 name|JPanel
 name|optPanel
 init|=
@@ -392,14 +405,17 @@ name|HelpAction
 name|help
 decl_stmt|;
 DECL|field|sidePaneManager
+specifier|final
 name|SidePaneManager
 name|sidePaneManager
 decl_stmt|;
 DECL|field|action
+specifier|final
 name|Action
 name|action
 decl_stmt|;
 DECL|field|frame
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -408,6 +424,7 @@ name|EntryFetcher
 name|activeFetcher
 decl_stmt|;
 DECL|field|fetcherArray
+specifier|final
 name|EntryFetcher
 index|[]
 name|fetcherArray

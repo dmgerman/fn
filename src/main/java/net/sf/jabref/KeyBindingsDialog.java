@@ -342,6 +342,7 @@ comment|// displays the key binding of the currently selected entry
 comment|// currently not displayed as it does not get updated
 DECL|field|keyTF
 specifier|private
+specifier|final
 name|JTextField
 name|keyTF
 init|=
@@ -351,16 +352,19 @@ argument_list|()
 decl_stmt|;
 DECL|field|ok
 specifier|private
+specifier|final
 name|JButton
 name|ok
 decl_stmt|;
 DECL|field|cancel
 specifier|private
+specifier|final
 name|JButton
 name|cancel
 decl_stmt|;
 DECL|field|defB
 specifier|private
+specifier|final
 name|JButton
 name|defB
 decl_stmt|;
@@ -379,6 +383,7 @@ decl_stmt|;
 comment|// stores default key bindings
 DECL|field|defBinds
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -1428,6 +1433,7 @@ extends|extends
 name|AbstractTableModel
 block|{
 DECL|field|data
+specifier|final
 name|String
 index|[]
 index|[]

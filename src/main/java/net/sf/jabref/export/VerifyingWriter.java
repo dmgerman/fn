@@ -115,6 +115,7 @@ literal|true
 decl_stmt|;
 DECL|field|problemCharacters
 specifier|private
+specifier|final
 name|TreeSet
 argument_list|<
 name|Character

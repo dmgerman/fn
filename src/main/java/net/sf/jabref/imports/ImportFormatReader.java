@@ -107,6 +107,7 @@ block|{
 DECL|field|BIBTEX_FORMAT
 specifier|public
 specifier|static
+specifier|final
 name|String
 name|BIBTEX_FORMAT
 init|=
@@ -115,6 +116,7 @@ decl_stmt|;
 comment|/** all import formats, in the default order of import formats */
 DECL|field|formats
 specifier|private
+specifier|final
 name|SortedSet
 argument_list|<
 name|ImportFormat
@@ -1800,11 +1802,13 @@ name|UnknownFormatImport
 block|{
 DECL|field|format
 specifier|public
+specifier|final
 name|String
 name|format
 decl_stmt|;
 DECL|field|parserResult
 specifier|public
+specifier|final
 name|ParserResult
 name|parserResult
 decl_stmt|;

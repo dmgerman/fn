@@ -128,6 +128,7 @@ name|MnemonicAwareAction
 block|{
 DECL|field|diag
 specifier|private
+specifier|final
 name|HelpDialog
 name|diag
 decl_stmt|;

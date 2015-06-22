@@ -107,6 +107,7 @@ literal|null
 decl_stmt|;
 DECL|field|vimPath
 specifier|private
+specifier|final
 name|JTextField
 name|vimPath
 init|=
@@ -115,8 +116,11 @@ name|JTextField
 argument_list|(
 literal|30
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|vimServer
+specifier|private
+specifier|final
+name|JTextField
 name|vimServer
 init|=
 operator|new
@@ -124,8 +128,11 @@ name|JTextField
 argument_list|(
 literal|30
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|citeCommand
+specifier|private
+specifier|final
+name|JTextField
 name|citeCommand
 init|=
 operator|new

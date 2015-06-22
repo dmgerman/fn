@@ -37,6 +37,7 @@ argument_list|>
 block|{
 DECL|field|considerRefs
 specifier|protected
+specifier|final
 name|boolean
 name|considerRefs
 decl_stmt|;

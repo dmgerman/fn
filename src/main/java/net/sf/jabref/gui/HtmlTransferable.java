@@ -126,11 +126,13 @@ block|}
 decl_stmt|;
 DECL|field|htmlText
 specifier|private
+specifier|final
 name|String
 name|htmlText
 decl_stmt|;
 DECL|field|plainText
 specifier|private
+specifier|final
 name|String
 name|plainText
 decl_stmt|;

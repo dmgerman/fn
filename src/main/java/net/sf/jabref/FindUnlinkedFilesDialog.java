@@ -5846,6 +5846,7 @@ literal|3737245079578074387L
 decl_stmt|;
 DECL|field|fsv
 specifier|protected
+specifier|final
 name|FileSystemView
 name|fsv
 init|=

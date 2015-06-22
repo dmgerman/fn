@@ -383,6 +383,7 @@ literal|".jstyle"
 decl_stmt|;
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -406,6 +407,7 @@ name|table
 decl_stmt|;
 DECL|field|contentPane
 specifier|private
+specifier|final
 name|UIFSplitPane
 name|contentPane
 init|=
@@ -435,6 +437,7 @@ name|selectionModel
 decl_stmt|;
 DECL|field|popup
 specifier|private
+specifier|final
 name|JPopupMenu
 name|popup
 init|=
@@ -444,6 +447,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|edit
 specifier|private
+specifier|final
 name|JMenuItem
 name|edit
 init|=
@@ -460,6 +464,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|useDefaultAuthoryear
 specifier|private
+specifier|final
 name|JRadioButton
 name|useDefaultAuthoryear
 init|=
@@ -473,8 +478,11 @@ argument_list|(
 literal|"Default style (author-year citations)"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|useDefaultNumerical
+specifier|private
+specifier|final
+name|JRadioButton
 name|useDefaultNumerical
 init|=
 operator|new
@@ -487,8 +495,11 @@ argument_list|(
 literal|"Default style (numerical citations)"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|chooseDirectly
+specifier|private
+specifier|final
+name|JRadioButton
 name|chooseDirectly
 init|=
 operator|new
@@ -503,8 +514,11 @@ argument_list|)
 operator|+
 literal|":"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|setDirectory
+specifier|private
+specifier|final
+name|JRadioButton
 name|setDirectory
 init|=
 operator|new
@@ -522,14 +536,18 @@ argument_list|)
 decl_stmt|;
 DECL|field|directFile
 specifier|private
+specifier|final
 name|JTextField
 name|directFile
 init|=
 operator|new
 name|JTextField
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|styleDir
+specifier|private
+specifier|final
+name|JTextField
 name|styleDir
 init|=
 operator|new
@@ -538,6 +556,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|browseDirectFile
 specifier|private
+specifier|final
 name|JButton
 name|browseDirectFile
 init|=
@@ -551,8 +570,11 @@ argument_list|(
 literal|"Browse"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|browseStyleDir
+specifier|private
+specifier|final
+name|JButton
 name|browseStyleDir
 init|=
 operator|new
@@ -565,8 +587,11 @@ argument_list|(
 literal|"Browse"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|showDefaultAuthoryearStyle
+specifier|private
+specifier|final
+name|JButton
 name|showDefaultAuthoryearStyle
 init|=
 operator|new
@@ -579,8 +604,11 @@ argument_list|(
 literal|"View"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|showDefaultNumericalStyle
+specifier|private
+specifier|final
+name|JButton
 name|showDefaultNumericalStyle
 init|=
 operator|new
@@ -600,6 +628,7 @@ name|preview
 decl_stmt|;
 DECL|field|toRect
 specifier|private
+specifier|final
 name|Rectangle
 name|toRect
 init|=
@@ -617,6 +646,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|ok
 specifier|private
+specifier|final
 name|JButton
 name|ok
 init|=
@@ -630,8 +660,11 @@ argument_list|(
 literal|"Ok"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|cancel
+specifier|private
+specifier|final
+name|JButton
 name|cancel
 init|=
 operator|new
@@ -647,6 +680,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|prevEntry
 specifier|private
+specifier|final
 name|BibtexEntry
 name|prevEntry
 init|=

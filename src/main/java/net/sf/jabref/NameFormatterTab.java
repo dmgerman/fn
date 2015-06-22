@@ -380,6 +380,7 @@ literal|false
 decl_stmt|;
 DECL|field|table
 specifier|private
+specifier|final
 name|JTable
 name|table
 decl_stmt|;
@@ -393,6 +394,7 @@ literal|1
 decl_stmt|;
 DECL|field|tableRows
 specifier|private
+specifier|final
 name|Vector
 argument_list|<
 name|TableRow

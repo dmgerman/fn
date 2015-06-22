@@ -225,6 +225,7 @@ literal|1
 decl_stmt|;
 DECL|field|fieldContentParser
 specifier|private
+specifier|final
 name|FieldContentParser
 name|fieldContentParser
 init|=

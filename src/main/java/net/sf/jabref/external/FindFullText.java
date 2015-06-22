@@ -221,6 +221,7 @@ init|=
 literal|5
 decl_stmt|;
 DECL|field|finders
+specifier|final
 name|List
 argument_list|<
 name|FullTextFinder
@@ -978,6 +979,7 @@ name|FindResult
 block|{
 DECL|field|url
 specifier|public
+specifier|final
 name|URL
 name|url
 decl_stmt|;
@@ -990,6 +992,7 @@ literal|null
 decl_stmt|;
 DECL|field|status
 specifier|public
+specifier|final
 name|int
 name|status
 decl_stmt|;

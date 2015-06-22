@@ -137,6 +137,7 @@ decl_stmt|;
 comment|/**      *  Description of the Field      */
 DECL|field|i
 specifier|public
+specifier|final
 name|int
 name|i
 decl_stmt|;

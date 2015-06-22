@@ -104,6 +104,7 @@ decl_stmt|;
 comment|//static RemoveBrackets removeBrackets = new RemoveBrackets();
 DECL|field|removeBrackets
 specifier|static
+specifier|final
 name|RemoveLatexCommands
 name|removeBrackets
 init|=

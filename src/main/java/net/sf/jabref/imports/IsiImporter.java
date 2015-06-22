@@ -257,6 +257,7 @@ return|;
 block|}
 DECL|field|subsupPattern
 specifier|static
+specifier|final
 name|Pattern
 name|subsupPattern
 init|=

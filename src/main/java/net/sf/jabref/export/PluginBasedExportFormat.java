@@ -82,6 +82,7 @@ name|ExportFormat
 block|{
 DECL|field|extension
 specifier|public
+specifier|final
 name|ExportFormatTemplateExtension
 name|extension
 decl_stmt|;

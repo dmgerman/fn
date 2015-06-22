@@ -144,6 +144,7 @@ decl_stmt|;
 comment|// stores the strings as is
 DECL|field|_index_casesensitive
 specifier|private
+specifier|final
 name|TreeSet
 argument_list|<
 name|String
@@ -160,6 +161,7 @@ decl_stmt|;
 comment|// stores strings in lowercase
 DECL|field|_index_caseinsensitive
 specifier|private
+specifier|final
 name|TreeSet
 argument_list|<
 name|String
@@ -176,6 +178,7 @@ decl_stmt|;
 comment|// stores for a lowercase string the possible expanded strings
 DECL|field|_possibleStringsForSearchString
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String

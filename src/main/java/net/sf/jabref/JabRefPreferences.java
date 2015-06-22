@@ -654,19 +654,24 @@ init|=
 literal|"newline"
 decl_stmt|;
 DECL|field|WRAPPED_USERNAME
-DECL|field|MARKING_WITH_NUMBER_PATTERN
 specifier|public
 name|String
 name|WRAPPED_USERNAME
-decl_stmt|,
+decl_stmt|;
+DECL|field|MARKING_WITH_NUMBER_PATTERN
+specifier|public
+specifier|final
+name|String
 name|MARKING_WITH_NUMBER_PATTERN
 decl_stmt|;
 DECL|field|prefs
+specifier|final
 name|Preferences
 name|prefs
 decl_stmt|;
 DECL|field|defaults
 specifier|public
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -702,8 +707,16 @@ argument_list|,
 name|String
 argument_list|>
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|defKeyBinds
+specifier|public
+specifier|final
+name|HashMap
+argument_list|<
+name|String
+argument_list|,
+name|String
+argument_list|>
 name|defKeyBinds
 init|=
 operator|new
@@ -717,6 +730,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|putBracesAroundCapitalsFields
 specifier|private
+specifier|final
 name|HashSet
 argument_list|<
 name|String
@@ -734,6 +748,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|nonWrappableFields
 specifier|private
+specifier|final
 name|HashSet
 argument_list|<
 name|String
@@ -758,12 +773,14 @@ decl_stmt|;
 comment|// Object containing custom export formats:
 DECL|field|customExports
 specifier|public
+specifier|final
 name|CustomExportList
 name|customExports
 decl_stmt|;
 comment|/**      * Set with all custom {@link net.sf.jabref.imports.ImportFormat}s      */
 DECL|field|customImports
 specifier|public
+specifier|final
 name|CustomImportList
 name|customImports
 decl_stmt|;
@@ -778,6 +795,7 @@ decl_stmt|;
 comment|// Map containing all registered external file types:
 DECL|field|externalFileTypes
 specifier|private
+specifier|final
 name|TreeSet
 argument_list|<
 name|ExternalFileType

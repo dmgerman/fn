@@ -246,6 +246,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|groupingField
 specifier|private
+specifier|final
 name|JTextField
 name|groupingField
 init|=
@@ -257,6 +258,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|keywordSeparator
 specifier|private
+specifier|final
 name|JTextField
 name|keywordSeparator
 init|=

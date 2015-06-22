@@ -661,11 +661,13 @@ argument_list|()
 decl_stmt|;
 DECL|field|panel
 specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;

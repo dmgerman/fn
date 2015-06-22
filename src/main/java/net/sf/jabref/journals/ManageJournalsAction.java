@@ -89,6 +89,7 @@ extends|extends
 name|MnemonicAwareAction
 block|{
 DECL|field|frame
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;

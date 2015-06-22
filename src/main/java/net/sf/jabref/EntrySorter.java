@@ -42,6 +42,7 @@ argument_list|>
 name|set
 decl_stmt|;
 DECL|field|comp
+specifier|final
 name|Comparator
 argument_list|<
 name|BibtexEntry

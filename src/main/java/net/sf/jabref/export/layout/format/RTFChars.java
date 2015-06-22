@@ -76,6 +76,7 @@ comment|// Instantiate logger:
 DECL|field|logger
 specifier|private
 specifier|static
+specifier|final
 name|Logger
 name|logger
 init|=
@@ -1063,10 +1064,12 @@ name|IntAndString
 block|{
 DECL|field|i
 specifier|public
+specifier|final
 name|int
 name|i
 decl_stmt|;
 DECL|field|s
+specifier|final
 name|String
 name|s
 decl_stmt|;

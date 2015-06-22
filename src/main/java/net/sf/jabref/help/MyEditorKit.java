@@ -122,11 +122,13 @@ name|TextAction
 block|{
 DECL|field|textActn
 specifier|private
+specifier|final
 name|Action
 name|textActn
 decl_stmt|;
 DECL|field|direction
 specifier|private
+specifier|final
 name|int
 name|direction
 decl_stmt|;

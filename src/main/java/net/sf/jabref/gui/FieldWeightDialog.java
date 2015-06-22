@@ -183,10 +183,12 @@ extends|extends
 name|JDialog
 block|{
 DECL|field|frame
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|sliders
+specifier|final
 name|HashMap
 argument_list|<
 name|JSlider
@@ -205,6 +207,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|ok
+specifier|final
 name|JButton
 name|ok
 init|=
@@ -218,8 +221,10 @@ argument_list|(
 literal|"Ok"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|cancel
+specifier|final
+name|JButton
 name|cancel
 init|=
 operator|new
@@ -688,10 +693,12 @@ class|class
 name|SliderInfo
 block|{
 DECL|field|fieldName
+specifier|final
 name|String
 name|fieldName
 decl_stmt|;
 DECL|field|originalValue
+specifier|final
 name|int
 name|originalValue
 decl_stmt|;

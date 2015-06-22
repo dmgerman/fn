@@ -337,6 +337,7 @@ literal|1000L
 decl_stmt|;
 DECL|field|groupSelector
 specifier|private
+specifier|final
 name|GroupSelector
 name|groupSelector
 decl_stmt|;

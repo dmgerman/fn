@@ -125,6 +125,7 @@ literal|null
 decl_stmt|;
 DECL|field|citeCommand
 specifier|private
+specifier|final
 name|JTextField
 name|citeCommand
 init|=
@@ -136,6 +137,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|progPath
 specifier|private
+specifier|final
 name|JTextField
 name|progPath
 init|=

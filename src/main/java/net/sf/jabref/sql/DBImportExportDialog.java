@@ -314,17 +314,20 @@ name|KeyListener
 block|{
 DECL|field|diag
 specifier|private
+specifier|final
 name|JDialog
 name|diag
 decl_stmt|;
 DECL|field|table
 specifier|private
+specifier|final
 name|JTable
 name|table
 decl_stmt|;
 comment|// IMPORT
 DECL|field|listOfDBs
 specifier|public
+specifier|final
 name|List
 argument_list|<
 name|String
@@ -425,6 +428,7 @@ argument_list|)
 block|;
 DECL|field|dialogType
 specifier|private
+specifier|final
 name|String
 name|dialogType
 decl_stmt|;

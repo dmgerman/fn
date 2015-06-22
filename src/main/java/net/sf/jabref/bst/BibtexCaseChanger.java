@@ -23,10 +23,12 @@ class|class
 name|BibtexCaseChanger
 block|{
 DECL|field|s
+specifier|final
 name|String
 name|s
 decl_stmt|;
 DECL|field|format
+specifier|final
 name|char
 name|format
 decl_stmt|;
@@ -37,10 +39,12 @@ init|=
 literal|true
 decl_stmt|;
 DECL|field|n
+specifier|final
 name|int
 name|n
 decl_stmt|;
 DECL|field|warn
+specifier|final
 name|Warn
 name|warn
 decl_stmt|;

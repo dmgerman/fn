@@ -1019,6 +1019,7 @@ decl_stmt|;
 DECL|field|logger
 specifier|private
 specifier|static
+specifier|final
 name|Log
 name|logger
 init|=
@@ -2634,6 +2635,7 @@ name|jtc
 decl_stmt|;
 DECL|field|ring
 specifier|private
+specifier|final
 name|LinkedList
 argument_list|<
 name|String

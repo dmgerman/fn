@@ -81,6 +81,7 @@ name|layoutEntries
 decl_stmt|;
 DECL|field|missingFormatters
 specifier|private
+specifier|final
 name|ArrayList
 argument_list|<
 name|String

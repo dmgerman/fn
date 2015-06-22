@@ -96,6 +96,7 @@ name|IntegrityCheck
 block|{
 DECL|field|messages
 specifier|private
+specifier|final
 name|Vector
 argument_list|<
 name|IntegrityMessage

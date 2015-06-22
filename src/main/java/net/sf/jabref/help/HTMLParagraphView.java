@@ -72,6 +72,7 @@ block|{
 DECL|field|MAX_VIEW_SIZE
 specifier|public
 specifier|static
+specifier|final
 name|int
 name|MAX_VIEW_SIZE
 init|=

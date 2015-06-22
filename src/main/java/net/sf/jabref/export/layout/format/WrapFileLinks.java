@@ -161,6 +161,7 @@ literal|null
 decl_stmt|;
 DECL|field|replacements
 specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -1127,6 +1128,7 @@ name|FormatEntry
 block|{
 DECL|field|type
 specifier|private
+specifier|final
 name|int
 name|type
 decl_stmt|;

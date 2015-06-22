@@ -86,11 +86,13 @@ name|Runnable
 block|{
 DECL|field|operation
 specifier|private
+specifier|final
 name|PushToApplication
 name|operation
 decl_stmt|;
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
