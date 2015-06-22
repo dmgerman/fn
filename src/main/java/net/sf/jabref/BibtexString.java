@@ -76,7 +76,6 @@ block|}
 DECL|method|get (String name)
 specifier|public
 specifier|static
-specifier|final
 name|Type
 name|get
 parameter_list|(
