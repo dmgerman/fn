@@ -678,19 +678,13 @@ name|str
 argument_list|)
 expr_stmt|;
 block|}
-name|String
-index|[]
-name|res
-init|=
+return|return
 name|super
 operator|.
 name|complete
 argument_list|(
 name|str
 argument_list|)
-decl_stmt|;
-return|return
-name|res
 return|;
 block|}
 DECL|method|getFieldName ()

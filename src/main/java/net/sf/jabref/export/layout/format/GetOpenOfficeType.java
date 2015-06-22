@@ -142,14 +142,9 @@ name|String
 name|fieldText
 parameter_list|)
 block|{
-name|String
-name|fieldEntry
-init|=
-name|fieldText
-decl_stmt|;
 if|if
 condition|(
-name|fieldEntry
+name|fieldText
 operator|.
 name|equalsIgnoreCase
 argument_list|(
@@ -161,7 +156,7 @@ literal|"7"
 return|;
 if|if
 condition|(
-name|fieldEntry
+name|fieldText
 operator|.
 name|equalsIgnoreCase
 argument_list|(
@@ -173,7 +168,7 @@ literal|"1"
 return|;
 if|if
 condition|(
-name|fieldEntry
+name|fieldText
 operator|.
 name|equalsIgnoreCase
 argument_list|(
@@ -185,7 +180,7 @@ literal|"2"
 return|;
 if|if
 condition|(
-name|fieldEntry
+name|fieldText
 operator|.
 name|equalsIgnoreCase
 argument_list|(
@@ -197,7 +192,7 @@ literal|"5"
 return|;
 if|if
 condition|(
-name|fieldEntry
+name|fieldText
 operator|.
 name|equalsIgnoreCase
 argument_list|(
@@ -209,7 +204,7 @@ literal|"5"
 return|;
 if|if
 condition|(
-name|fieldEntry
+name|fieldText
 operator|.
 name|equalsIgnoreCase
 argument_list|(
@@ -221,7 +216,7 @@ literal|"6"
 return|;
 if|if
 condition|(
-name|fieldEntry
+name|fieldText
 operator|.
 name|equalsIgnoreCase
 argument_list|(
@@ -233,7 +228,7 @@ literal|"8"
 return|;
 if|if
 condition|(
-name|fieldEntry
+name|fieldText
 operator|.
 name|equalsIgnoreCase
 argument_list|(
@@ -245,7 +240,7 @@ literal|"9"
 return|;
 if|if
 condition|(
-name|fieldEntry
+name|fieldText
 operator|.
 name|equalsIgnoreCase
 argument_list|(
@@ -257,7 +252,7 @@ literal|"10"
 return|;
 if|if
 condition|(
-name|fieldEntry
+name|fieldText
 operator|.
 name|equalsIgnoreCase
 argument_list|(
@@ -269,7 +264,7 @@ literal|"10"
 return|;
 if|if
 condition|(
-name|fieldEntry
+name|fieldText
 operator|.
 name|equalsIgnoreCase
 argument_list|(
@@ -281,7 +276,7 @@ literal|"9"
 return|;
 if|if
 condition|(
-name|fieldEntry
+name|fieldText
 operator|.
 name|equalsIgnoreCase
 argument_list|(
@@ -293,7 +288,7 @@ literal|"3"
 return|;
 if|if
 condition|(
-name|fieldEntry
+name|fieldText
 operator|.
 name|equalsIgnoreCase
 argument_list|(
@@ -305,7 +300,7 @@ literal|"13"
 return|;
 if|if
 condition|(
-name|fieldEntry
+name|fieldText
 operator|.
 name|equalsIgnoreCase
 argument_list|(

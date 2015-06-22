@@ -4955,9 +4955,8 @@ name|String
 name|key
 parameter_list|)
 block|{
-name|String
-name|result
-init|=
+comment|//System.out.println("READ PREF [" + key + "]=" + result);
+return|return
 name|prefs
 operator|.
 name|get
@@ -4974,10 +4973,6 @@ argument_list|(
 name|key
 argument_list|)
 argument_list|)
-decl_stmt|;
-comment|//System.out.println("READ PREF [" + key + "]=" + result);
-return|return
-name|result
 return|;
 block|}
 DECL|method|get (String key, String def)

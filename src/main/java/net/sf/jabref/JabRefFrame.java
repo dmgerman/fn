@@ -12116,12 +12116,6 @@ name|boolean
 name|intoNew_
 parameter_list|)
 block|{
-specifier|final
-name|boolean
-name|intoNew
-init|=
-name|intoNew_
-decl_stmt|;
 name|importMenu
 operator|.
 name|removeAll
@@ -12139,7 +12133,7 @@ name|JabRefFrame
 operator|.
 name|this
 argument_list|,
-name|intoNew
+name|intoNew_
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -12205,7 +12199,7 @@ name|JabRefFrame
 operator|.
 name|this
 argument_list|,
-name|intoNew
+name|intoNew_
 argument_list|,
 name|imFo
 argument_list|)
@@ -12270,7 +12264,7 @@ name|JabRefFrame
 operator|.
 name|this
 argument_list|,
-name|intoNew
+name|intoNew_
 argument_list|,
 name|imFo
 argument_list|)

@@ -497,19 +497,6 @@ name|Reader
 name|reader
 decl_stmt|;
 comment|// Check if this export filter has bundled name formatters:
-name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|customNameFormatters
-init|=
-name|readFormatterFile
-argument_list|(
-name|lfFileName
-argument_list|)
-decl_stmt|;
 comment|// Set a global field, so all layouts have access to the custom name formatters:
 name|Globals
 operator|.
@@ -517,7 +504,10 @@ name|prefs
 operator|.
 name|customExportNameFormatters
 operator|=
-name|customNameFormatters
+name|readFormatterFile
+argument_list|(
+name|lfFileName
+argument_list|)
 expr_stmt|;
 name|ArrayList
 argument_list|<

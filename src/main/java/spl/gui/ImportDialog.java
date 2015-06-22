@@ -1004,17 +1004,12 @@ argument_list|)
 expr_stmt|;
 block|}
 name|String
-name|fileName1
-init|=
-name|fileName
-decl_stmt|;
-name|String
 name|name
 init|=
 operator|new
 name|File
 argument_list|(
-name|fileName1
+name|fileName
 argument_list|)
 operator|.
 name|getName
@@ -1047,7 +1042,7 @@ argument_list|(
 operator|new
 name|File
 argument_list|(
-name|fileName1
+name|fileName
 argument_list|)
 operator|.
 name|getName

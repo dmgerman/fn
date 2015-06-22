@@ -498,14 +498,9 @@ condition|)
 continue|continue;
 comment|//System.out.println(">"+fields[j]+"<");
 name|String
-name|s
-init|=
-name|field
-decl_stmt|;
-name|String
 name|f3
 init|=
-name|s
+name|field
 operator|.
 name|substring
 argument_list|(
@@ -517,7 +512,7 @@ decl_stmt|;
 name|String
 name|frest
 init|=
-name|s
+name|field
 operator|.
 name|substring
 argument_list|(

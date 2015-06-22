@@ -1632,9 +1632,7 @@ name|row
 operator|++
 expr_stmt|;
 block|}
-name|DefaultTableModel
-name|tableModel
-init|=
+return|return
 operator|new
 name|DefaultTableModel
 argument_list|(
@@ -1676,9 +1674,6 @@ literal|false
 return|;
 block|}
 block|}
-decl_stmt|;
-return|return
-name|tableModel
 return|;
 block|}
 block|}

@@ -1723,9 +1723,7 @@ return|;
 block|}
 else|else
 block|{
-name|ParserResult
-name|pr
-init|=
+return|return
 operator|new
 name|ParserResult
 argument_list|(
@@ -1744,9 +1742,6 @@ name|BibtexEntryType
 argument_list|>
 argument_list|()
 argument_list|)
-decl_stmt|;
-return|return
-name|pr
 return|;
 block|}
 block|}

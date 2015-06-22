@@ -1449,17 +1449,13 @@ argument_list|()
 control|)
 block|{
 name|String
-name|s
-init|=
-name|s1
-decl_stmt|,
 name|text
 init|=
 name|textFields
 operator|.
 name|get
 argument_list|(
-name|s
+name|s1
 argument_list|)
 operator|.
 name|getText
@@ -1482,7 +1478,7 @@ name|keypatterns
 operator|.
 name|addLabelPattern
 argument_list|(
-name|s
+name|s1
 argument_list|,
 name|text
 argument_list|)

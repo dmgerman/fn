@@ -1963,9 +1963,7 @@ expr_stmt|;
 block|}
 comment|// Replace non-english characters like umlauts etc. with a sensible
 comment|// letter or letter combination that bibtex can accept.
-name|String
-name|newKeyS
-init|=
+return|return
 name|replaceSpecialCharacters
 argument_list|(
 name|newKey
@@ -1973,9 +1971,6 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
-decl_stmt|;
-return|return
-name|newKeyS
 return|;
 block|}
 comment|/**      * Replace non-english characters like umlauts etc. with a sensible letter      * or letter combination that bibtex can accept. The basis for replacement      * is the HashMap GLobals.UNICODE_CHARS.      */
@@ -5233,9 +5228,7 @@ argument_list|(
 literal|'.'
 argument_list|)
 decl_stmt|;
-name|String
-name|extension
-init|=
+return|return
 operator|(
 operator|(
 name|pos
@@ -5271,9 +5264,6 @@ name|toLowerCase
 argument_list|()
 else|:
 literal|null
-decl_stmt|;
-return|return
-name|extension
 return|;
 block|}
 DECL|method|parseMethodsCalls (String calls)
@@ -7425,14 +7415,9 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|String
-name|s
-init|=
-name|o
-decl_stmt|;
 if|if
 condition|(
-name|s
+name|o
 operator|.
 name|trim
 argument_list|()
@@ -7449,7 +7434,7 @@ init|=
 operator|new
 name|File
 argument_list|(
-name|s
+name|o
 argument_list|)
 decl_stmt|;
 name|FileListEntry
@@ -7463,7 +7448,7 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|s
+name|o
 argument_list|,
 name|Globals
 operator|.
@@ -10453,9 +10438,7 @@ condition|)
 block|{
 try|try
 block|{
-name|int
-name|value
-init|=
+return|return
 name|Integer
 operator|.
 name|parseInt
@@ -10467,9 +10450,6 @@ argument_list|(
 literal|1
 argument_list|)
 argument_list|)
-decl_stmt|;
-return|return
-name|value
 return|;
 block|}
 catch|catch
@@ -12735,18 +12715,13 @@ name|destFilename
 argument_list|)
 decl_stmt|;
 comment|// Rename file (or directory)
-name|boolean
-name|success
-init|=
+return|return
 name|fromFile
 operator|.
 name|renameTo
 argument_list|(
 name|toFile
 argument_list|)
-decl_stmt|;
-return|return
-name|success
 return|;
 block|}
 DECL|method|getSeparatedKeywords (String keywords)

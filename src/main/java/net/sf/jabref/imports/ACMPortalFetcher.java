@@ -581,16 +581,6 @@ name|OutputPrinter
 name|status
 parameter_list|)
 block|{
-name|FetcherPreviewDialog
-name|preview1
-init|=
-name|preview
-decl_stmt|;
-name|OutputPrinter
-name|status1
-init|=
-name|status
-decl_stmt|;
 name|this
 operator|.
 name|terms

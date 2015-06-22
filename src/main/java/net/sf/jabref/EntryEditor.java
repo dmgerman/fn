@@ -3424,9 +3424,7 @@ name|ext
 block|}
 argument_list|)
 expr_stmt|;
-name|ExternalFilePanel
-name|pan
-init|=
+return|return
 operator|new
 name|ExternalFilePanel
 argument_list|(
@@ -3445,9 +3443,6 @@ name|off
 argument_list|,
 name|ed
 argument_list|)
-decl_stmt|;
-return|return
-name|pan
 return|;
 block|}
 comment|/*          * else if ((s != null)&& s.equals("browsePs")) { ExternalFilePanel pan =          * new ExternalFilePanel(frame, this, "ps", off, ed); return pan; }          */

@@ -173,16 +173,11 @@ argument_list|,
 literal|"SHOW columns FROM entries;"
 argument_list|)
 decl_stmt|;
-name|ResultSet
-name|rs
-init|=
+return|return
 name|statement
 operator|.
 name|getResultSet
 argument_list|()
-decl_stmt|;
-return|return
-name|rs
 return|;
 block|}
 DECL|method|connectToDB (DBStrings dbstrings)
@@ -223,9 +218,7 @@ operator|.
 name|newInstance
 argument_list|()
 expr_stmt|;
-name|Connection
-name|conn
-init|=
+return|return
 name|DriverManager
 operator|.
 name|getConnection
@@ -242,9 +235,6 @@ operator|.
 name|getPassword
 argument_list|()
 argument_list|)
-decl_stmt|;
-return|return
-name|conn
 return|;
 block|}
 block|}

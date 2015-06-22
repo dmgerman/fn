@@ -331,9 +331,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-name|Layout
-name|layout
-init|=
+return|return
 operator|new
 name|Layout
 argument_list|(
@@ -341,9 +339,6 @@ name|parsedEntries
 argument_list|,
 name|classPrefix
 argument_list|)
-decl_stmt|;
-return|return
-name|layout
 return|;
 block|}
 DECL|method|getCurrentGroup ()

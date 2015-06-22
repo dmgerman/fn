@@ -1455,9 +1455,7 @@ block|}
 block|}
 block|}
 comment|// Putting parts together.
-name|String
-name|result
-init|=
+return|return
 operator|(
 name|university
 operator|==
@@ -1502,9 +1500,6 @@ literal|""
 else|:
 name|department
 operator|)
-decl_stmt|;
-return|return
-name|result
 return|;
 block|}
 comment|/**      * This method takes a string of the form [field1]spacer[field2]spacer[field3]...,      * where the fields are the (required) fields of a BibTex entry. The string is split      * into fields and spacers by recognizing the [ and ].      *      * @param labelPattern a<code>String</code>      * @return an<code>ArrayList</code> The first item of the list      * is a string representation of the key pattern (the parameter),      * the remaining items are the fields      */

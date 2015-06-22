@@ -1377,17 +1377,12 @@ argument_list|()
 condition|;
 control|)
 block|{
-name|Integer
-name|integ
-init|=
+name|piv1
+operator|=
 name|it
 operator|.
 name|next
 argument_list|()
-decl_stmt|;
-name|piv1
-operator|=
-name|integ
 expr_stmt|;
 comment|// These two variables will keep track of which entry most closely matches the
 comment|// one we're looking at, in case none matches completely.

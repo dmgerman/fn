@@ -1211,9 +1211,7 @@ name|find
 argument_list|()
 condition|)
 block|{
-name|String
-name|newQuery
-init|=
+return|return
 name|JSTOR_URL
 operator|+
 name|m
@@ -1222,9 +1220,6 @@ name|group
 argument_list|(
 literal|1
 argument_list|)
-decl_stmt|;
-return|return
-name|newQuery
 return|;
 block|}
 else|else

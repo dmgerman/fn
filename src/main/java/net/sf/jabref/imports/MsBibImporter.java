@@ -248,21 +248,13 @@ operator|new
 name|MSBibDatabase
 argument_list|()
 decl_stmt|;
-name|List
-argument_list|<
-name|BibtexEntry
-argument_list|>
-name|entries
-init|=
+return|return
 name|dbase
 operator|.
 name|importEntries
 argument_list|(
 name|in
 argument_list|)
-decl_stmt|;
-return|return
-name|entries
 return|;
 block|}
 DECL|method|getFormatName ()

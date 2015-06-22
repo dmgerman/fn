@@ -406,9 +406,7 @@ operator|-
 literal|1
 argument_list|)
 decl_stmt|;
-name|String
-name|ender
-init|=
+return|return
 name|str
 operator|.
 name|substring
@@ -436,9 +434,6 @@ operator|+
 literal|1
 argument_list|)
 argument_list|)
-decl_stmt|;
-return|return
-name|ender
 return|;
 block|}
 DECL|method|stringMinLength (String str)

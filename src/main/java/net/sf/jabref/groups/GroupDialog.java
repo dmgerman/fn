@@ -772,11 +772,6 @@ name|m_basePanel
 operator|=
 name|basePanel
 expr_stmt|;
-name|JabRefFrame
-name|m_parent
-init|=
-name|jabrefFrame
-decl_stmt|;
 name|m_editedGroup
 operator|=
 name|editedGroup
@@ -964,7 +959,7 @@ argument_list|(
 operator|new
 name|FieldContentSelector
 argument_list|(
-name|m_parent
+name|jabrefFrame
 argument_list|,
 name|m_basePanel
 argument_list|,
@@ -1608,7 +1603,7 @@ name|placeDialog
 argument_list|(
 name|this
 argument_list|,
-name|m_parent
+name|jabrefFrame
 argument_list|)
 expr_stmt|;
 comment|// add listeners

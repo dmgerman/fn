@@ -243,13 +243,8 @@ name|boolean
 name|isOutdated
 parameter_list|()
 block|{
-name|boolean
-name|outdated
-init|=
-literal|false
-decl_stmt|;
 return|return
-name|outdated
+literal|false
 return|;
 block|}
 DECL|method|getIdAt (int pos)

@@ -3495,14 +3495,9 @@ name|String
 name|language
 parameter_list|)
 block|{
-name|int
-name|iLCID
-init|=
-literal|0
-decl_stmt|;
 comment|// TODO: add lanaguage to LCID mapping
 return|return
-name|iLCID
+literal|0
 return|;
 block|}
 comment|// http://www.microsoft.com/globaldev/reference/lcid-all.mspx
@@ -3515,14 +3510,9 @@ name|int
 name|LCID
 parameter_list|)
 block|{
-name|String
-name|language
-init|=
-literal|"english"
-decl_stmt|;
 comment|// TODO: add lanaguage to LCID mapping
 return|return
-name|language
+literal|"english"
 return|;
 block|}
 DECL|method|getSpecificAuthors (String type, Element authors, String _bcol)

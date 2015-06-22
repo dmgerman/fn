@@ -8892,12 +8892,6 @@ name|String
 name|_command
 parameter_list|)
 block|{
-specifier|final
-name|String
-name|command
-init|=
-name|_command
-decl_stmt|;
 comment|//(new Thread() {
 comment|//  public void run() {
 if|if
@@ -8906,7 +8900,7 @@ name|actions
 operator|.
 name|get
 argument_list|(
-name|command
+name|_command
 argument_list|)
 operator|==
 literal|null
@@ -8917,7 +8911,7 @@ name|pr
 argument_list|(
 literal|"No action defined for '"
 operator|+
-name|command
+name|_command
 operator|+
 literal|"'"
 argument_list|)
@@ -8931,7 +8925,7 @@ name|actions
 operator|.
 name|get
 argument_list|(
-name|command
+name|_command
 argument_list|)
 decl_stmt|;
 try|try

@@ -1018,9 +1018,8 @@ name|BibtexEntry
 name|bibtex
 parameter_list|)
 block|{
-name|String
-name|bibtexType
-init|=
+comment|/**          *<pre> String result; if (bibtexType.equals("Mastersthesis")) result =          * "theses"; else result = "conference publication"; // etc...</pre>          */
+return|return
 name|bibtex
 operator|.
 name|getType
@@ -1028,10 +1027,6 @@ argument_list|()
 operator|.
 name|getName
 argument_list|()
-decl_stmt|;
-comment|/**          *<pre> String result; if (bibtexType.equals("Mastersthesis")) result =          * "theses"; else result = "conference publication"; // etc...</pre>          */
-return|return
-name|bibtexType
 return|;
 block|}
 DECL|method|getDOMrepresentation ()

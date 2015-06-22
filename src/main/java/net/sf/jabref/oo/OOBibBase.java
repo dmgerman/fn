@@ -4988,11 +4988,6 @@ argument_list|,
 name|bookmark
 argument_list|)
 decl_stmt|;
-name|String
-name|name
-init|=
-name|name1
-decl_stmt|;
 name|List
 argument_list|<
 name|String
@@ -5001,7 +4996,7 @@ name|newKeys
 init|=
 name|parseRefMarkName
 argument_list|(
-name|name
+name|name1
 argument_list|)
 decl_stmt|;
 for|for
