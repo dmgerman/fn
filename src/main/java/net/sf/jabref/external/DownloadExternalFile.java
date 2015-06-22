@@ -1621,7 +1621,6 @@ interface|interface
 name|DownloadCallback
 block|{
 DECL|method|downloadComplete (FileListEntry file)
-specifier|public
 name|void
 name|downloadComplete
 parameter_list|(

@@ -61,7 +61,6 @@ extends|extends
 name|EntryFetcher
 block|{
 DECL|method|processQueryGetPreview (String query, FetcherPreviewDialog preview, OutputPrinter status)
-specifier|public
 name|boolean
 name|processQueryGetPreview
 parameter_list|(
@@ -76,7 +75,6 @@ name|status
 parameter_list|)
 function_decl|;
 DECL|method|getEntries (Map<String, Boolean> selection, ImportInspector inspector)
-specifier|public
 name|void
 name|getEntries
 parameter_list|(
@@ -94,14 +92,12 @@ parameter_list|)
 function_decl|;
 comment|/**      * The number of entries a user can select for download without getting a warning message.      * @return the warning limit      */
 DECL|method|getWarningLimit ()
-specifier|public
 name|int
 name|getWarningLimit
 parameter_list|()
 function_decl|;
 comment|/**      * The preferred table row height for the previews.      * @return the preferred height      */
 DECL|method|getPreferredPreviewHeight ()
-specifier|public
 name|int
 name|getPreferredPreviewHeight
 parameter_list|()
