@@ -11901,12 +11901,6 @@ if|if
 condition|(
 operator|(
 name|c
-operator|!=
-literal|null
-operator|)
-operator|&&
-operator|(
-name|c
 operator|instanceof
 name|EntryEditor
 operator|)
@@ -11947,12 +11941,6 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
-operator|(
-name|c
-operator|!=
-literal|null
-operator|)
-operator|&&
 operator|(
 name|c
 operator|instanceof

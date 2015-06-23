@@ -646,12 +646,6 @@ parameter_list|)
 block|{
 if|if
 condition|(
-operator|(
-name|bean
-operator|==
-literal|null
-operator|)
-operator|||
 operator|!
 operator|(
 name|bean
