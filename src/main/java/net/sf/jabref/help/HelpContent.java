@@ -225,11 +225,11 @@ name|JScrollPane
 argument_list|(
 name|this
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|VERTICAL_SCROLLBAR_AS_NEEDED
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|HORIZONTAL_SCROLLBAR_AS_NEEDED
 argument_list|)

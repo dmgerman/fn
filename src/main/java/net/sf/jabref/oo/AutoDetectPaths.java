@@ -1795,7 +1795,7 @@ init|=
 operator|new
 name|JProgressBar
 argument_list|(
-name|JProgressBar
+name|SwingConstants
 operator|.
 name|HORIZONTAL
 argument_list|)

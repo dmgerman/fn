@@ -20,27 +20,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|JPanel
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JLabel
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JCheckBox
+name|*
 import|;
 end_import
 
@@ -178,7 +158,7 @@ name|cb
 operator|.
 name|setHorizontalAlignment
 argument_list|(
-name|JLabel
+name|SwingConstants
 operator|.
 name|LEFT
 argument_list|)

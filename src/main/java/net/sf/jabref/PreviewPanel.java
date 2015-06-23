@@ -555,11 +555,11 @@ name|JScrollPane
 argument_list|(
 name|previewPane
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|VERTICAL_SCROLLBAR_AS_NEEDED
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|HORIZONTAL_SCROLLBAR_NEVER
 argument_list|)
@@ -1019,7 +1019,7 @@ init|=
 operator|new
 name|JToolBar
 argument_list|(
-name|JToolBar
+name|SwingConstants
 operator|.
 name|VERTICAL
 argument_list|)

@@ -4829,11 +4829,11 @@ name|JScrollPane
 argument_list|(
 name|jp
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|VERTICAL_SCROLLBAR_AS_NEEDED
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|HORIZONTAL_SCROLLBAR_NEVER
 argument_list|)
@@ -10648,7 +10648,7 @@ name|d
 operator|.
 name|setDefaultCloseOperation
 argument_list|(
-name|JFrame
+name|WindowConstants
 operator|.
 name|DISPOSE_ON_CLOSE
 argument_list|)

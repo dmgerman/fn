@@ -32,6 +32,18 @@ name|awt
 operator|.
 name|event
 operator|.
+name|InputEvent
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|awt
+operator|.
+name|event
+operator|.
 name|KeyEvent
 import|;
 end_import
@@ -6344,7 +6356,7 @@ operator|.
 name|getModifiers
 argument_list|()
 operator|&
-name|KeyEvent
+name|InputEvent
 operator|.
 name|CTRL_MASK
 operator|)
@@ -6371,7 +6383,7 @@ operator|.
 name|getModifiers
 argument_list|()
 operator|&
-name|KeyEvent
+name|InputEvent
 operator|.
 name|SHIFT_MASK
 operator|)
@@ -6383,7 +6395,7 @@ name|modifiers
 operator|=
 name|modifiers
 operator||
-name|KeyEvent
+name|InputEvent
 operator|.
 name|SHIFT_MASK
 expr_stmt|;
@@ -6396,7 +6408,7 @@ operator|.
 name|getModifiers
 argument_list|()
 operator|&
-name|KeyEvent
+name|InputEvent
 operator|.
 name|ALT_MASK
 operator|)
@@ -6408,7 +6420,7 @@ name|modifiers
 operator|=
 name|modifiers
 operator||
-name|KeyEvent
+name|InputEvent
 operator|.
 name|ALT_MASK
 expr_stmt|;

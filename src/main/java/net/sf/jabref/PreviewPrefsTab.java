@@ -832,7 +832,7 @@ init|=
 operator|new
 name|JSeparator
 argument_list|(
-name|JSeparator
+name|SwingConstants
 operator|.
 name|HORIZONTAL
 argument_list|)

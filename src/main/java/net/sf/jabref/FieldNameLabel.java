@@ -94,7 +94,7 @@ name|super
 argument_list|(
 name|name
 argument_list|,
-name|JLabel
+name|SwingConstants
 operator|.
 name|LEFT
 argument_list|)

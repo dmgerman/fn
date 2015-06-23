@@ -861,7 +861,7 @@ name|m_description
 operator|.
 name|setVerticalAlignment
 argument_list|(
-name|JLabel
+name|SwingConstants
 operator|.
 name|TOP
 argument_list|)
@@ -1504,11 +1504,11 @@ name|JScrollPane
 argument_list|(
 name|m_description
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|VERTICAL_SCROLLBAR_AS_NEEDED
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|HORIZONTAL_SCROLLBAR_AS_NEEDED
 argument_list|)
