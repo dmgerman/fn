@@ -693,14 +693,14 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|write (byte buf[], int off, int len)
+DECL|method|write (byte[] buf, int off, int len)
 specifier|public
 name|void
 name|write
 parameter_list|(
 name|byte
-name|buf
 index|[]
+name|buf
 parameter_list|,
 name|int
 name|off

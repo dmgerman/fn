@@ -3470,8 +3470,8 @@ name|e
 parameter_list|)
 block|{
 name|int
-name|selected
 index|[]
+name|selected
 init|=
 name|colSetup
 operator|.
@@ -3508,8 +3508,8 @@ operator|)
 condition|)
 block|{
 name|boolean
-name|newSelected
 index|[]
+name|newSelected
 init|=
 operator|new
 name|boolean
@@ -3669,8 +3669,8 @@ name|e
 parameter_list|)
 block|{
 name|int
-name|selected
 index|[]
+name|selected
 init|=
 name|colSetup
 operator|.
@@ -3695,8 +3695,8 @@ operator|-
 literal|1
 decl_stmt|;
 name|boolean
-name|newSelected
 index|[]
+name|newSelected
 init|=
 operator|new
 name|boolean

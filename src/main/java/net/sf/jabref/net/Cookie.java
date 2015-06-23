@@ -130,8 +130,8 @@ name|header
 parameter_list|)
 block|{
 name|String
-name|attributes
 index|[]
+name|attributes
 init|=
 name|header
 operator|.
