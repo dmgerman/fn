@@ -221,11 +221,6 @@ name|char
 name|c
 parameter_list|)
 block|{
-name|int
-name|intValueOfChar
-init|=
-name|c
-decl_stmt|;
 return|return
 name|Arrays
 operator|.
@@ -235,7 +230,10 @@ name|FileNameCleaner
 operator|.
 name|ILLEGAL_CHARS
 argument_list|,
-name|intValueOfChar
+operator|(
+name|int
+operator|)
+name|c
 argument_list|)
 operator|<
 literal|0
