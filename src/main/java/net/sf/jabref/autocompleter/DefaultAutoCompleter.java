@@ -18,16 +18,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|StringTokenizer
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -50,23 +40,32 @@ name|Globals
 import|;
 end_import
 
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|StringTokenizer
+import|;
+end_import
+
 begin_comment
-comment|/**  * Stores all words which are separated by Globals.SEPARATING_CHARS. This  * autocompleter only processes the field which is given by the fieldname.  *   * @author kahlert, cordes  *   */
+comment|/**  * Stores all words which are separated by Globals.SEPARATING_CHARS. This  * autocompleter only processes the field which is given by the fieldname.  *  * @author kahlert, cordes  */
 end_comment
 
 begin_class
 DECL|class|DefaultAutoCompleter
-specifier|public
 class|class
 name|DefaultAutoCompleter
 extends|extends
 name|AbstractAutoCompleter
 block|{
-DECL|field|_fieldName
+DECL|field|fieldName
 specifier|private
 specifier|final
 name|String
-name|_fieldName
+name|fieldName
 decl_stmt|;
 comment|/**      * @see AutoCompleterFactory      */
 DECL|method|DefaultAutoCompleter (String fieldName)
@@ -76,7 +75,9 @@ name|String
 name|fieldName
 parameter_list|)
 block|{
-name|_fieldName
+name|this
+operator|.
+name|fieldName
 operator|=
 name|fieldName
 expr_stmt|;
@@ -95,27 +96,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|complete (String s)
-specifier|public
-name|String
-index|[]
-name|complete
-parameter_list|(
-name|String
-name|s
-parameter_list|)
-block|{
-return|return
-name|super
-operator|.
-name|complete
-argument_list|(
-name|s
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|addBibtexEntry (BibtexEntry entry)
 specifier|public
 name|void
@@ -128,10 +108,12 @@ block|{
 if|if
 condition|(
 name|entry
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
+return|return;
+block|}
 name|String
 name|fieldValue
 init|=
@@ -139,7 +121,7 @@ name|entry
 operator|.
 name|getField
 argument_list|(
-name|_fieldName
+name|fieldName
 argument_list|)
 decl_stmt|;
 if|if
@@ -183,7 +165,6 @@ argument_list|(
 name|word
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

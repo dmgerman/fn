@@ -348,7 +348,7 @@ name|jabref
 operator|.
 name|autocompleter
 operator|.
-name|AbstractAutoCompleter
+name|AutoCompleter
 import|;
 end_import
 
@@ -1346,7 +1346,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|AbstractAutoCompleter
+name|AutoCompleter
 name|autoComp
 init|=
 name|JabRef
@@ -1356,7 +1356,10 @@ operator|.
 name|basePanel
 argument_list|()
 operator|.
-name|getAutoCompleter
+name|getAutoCompleters
+argument_list|()
+operator|.
+name|get
 argument_list|(
 literal|"keywords"
 argument_list|)

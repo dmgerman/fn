@@ -392,7 +392,7 @@ name|jabref
 operator|.
 name|autocompleter
 operator|.
-name|AbstractAutoCompleter
+name|AutoCompleter
 import|;
 end_import
 
@@ -6950,12 +6950,15 @@ name|setValidBackgroundColor
 argument_list|()
 expr_stmt|;
 comment|// See if we need to update an AutoCompleter instance:
-name|AbstractAutoCompleter
+name|AutoCompleter
 name|aComp
 init|=
 name|panel
 operator|.
-name|getAutoCompleter
+name|getAutoCompleters
+argument_list|()
+operator|.
+name|get
 argument_list|(
 name|fe
 operator|.

@@ -50,7 +50,7 @@ name|jabref
 operator|.
 name|autocompleter
 operator|.
-name|AbstractAutoCompleter
+name|AutoCompleter
 import|;
 end_import
 
@@ -126,7 +126,7 @@ decl_stmt|;
 DECL|field|completer
 specifier|private
 specifier|final
-name|AbstractAutoCompleter
+name|AutoCompleter
 name|completer
 decl_stmt|;
 comment|// These variables keep track of the situation from time to time.
@@ -186,11 +186,11 @@ name|nextFocusListener
 init|=
 literal|null
 decl_stmt|;
-DECL|method|AutoCompleteListener (AbstractAutoCompleter completer)
+DECL|method|AutoCompleteListener (AutoCompleter completer)
 specifier|public
 name|AutoCompleteListener
 parameter_list|(
-name|AbstractAutoCompleter
+name|AutoCompleter
 name|completer
 parameter_list|)
 block|{

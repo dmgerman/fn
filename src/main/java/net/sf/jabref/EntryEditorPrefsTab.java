@@ -70,6 +70,20 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|autocompleter
+operator|.
+name|AutoCompleterFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|org
 operator|.
 name|xnap
@@ -81,20 +95,6 @@ operator|.
 name|shortcut
 operator|.
 name|EmacsKeyBindings
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|autocompleter
-operator|.
-name|AbstractAutoCompleter
 import|;
 end_import
 
@@ -2024,7 +2024,7 @@ expr_stmt|;
 block|}
 block|}
 comment|// the autocompleter has to be updated to the new min length to complete
-name|AbstractAutoCompleter
+name|AutoCompleterFactory
 operator|.
 name|SHORTEST_TO_COMPLETE
 operator|=

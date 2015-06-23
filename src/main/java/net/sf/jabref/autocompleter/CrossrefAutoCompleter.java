@@ -29,36 +29,16 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Crossref autocompleter stores info from the key field.  *   * @author kahlert, cordes  *   */
+comment|/**  * Crossref autocompleter stores info from the key field.  *  * @author kahlert, cordes  */
 end_comment
 
 begin_class
 DECL|class|CrossrefAutoCompleter
-specifier|public
 class|class
 name|CrossrefAutoCompleter
 extends|extends
 name|AbstractAutoCompleter
 block|{
-DECL|field|_fieldName
-specifier|private
-specifier|final
-name|String
-name|_fieldName
-decl_stmt|;
-comment|/**      * @see AutoCompleterFactory      */
-DECL|method|CrossrefAutoCompleter (String fieldName)
-name|CrossrefAutoCompleter
-parameter_list|(
-name|String
-name|fieldName
-parameter_list|)
-block|{
-name|_fieldName
-operator|=
-name|fieldName
-expr_stmt|;
-block|}
 annotation|@
 name|Override
 DECL|method|isSingleUnitField ()
@@ -69,27 +49,6 @@ parameter_list|()
 block|{
 return|return
 literal|false
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|complete (String s)
-specifier|public
-name|String
-index|[]
-name|complete
-parameter_list|(
-name|String
-name|s
-parameter_list|)
-block|{
-return|return
-name|super
-operator|.
-name|complete
-argument_list|(
-name|s
-argument_list|)
 return|;
 block|}
 annotation|@
@@ -106,10 +65,12 @@ block|{
 if|if
 condition|(
 name|entry
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
+return|return;
+block|}
 name|String
 name|key
 init|=
@@ -133,7 +94,6 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
-block|}
 block|}
 block|}
 block|}

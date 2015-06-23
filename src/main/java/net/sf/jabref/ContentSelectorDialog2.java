@@ -2143,8 +2143,15 @@ expr_stmt|;
 block|}
 name|panel
 operator|.
-name|addContentSelectorValuesToAutoCompleters
+name|getAutoCompleters
 argument_list|()
+operator|.
+name|addContentSelectorValuesToAutoCompleters
+argument_list|(
+name|panel
+operator|.
+name|metaData
+argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Set the contents of the field selector list.      *      */

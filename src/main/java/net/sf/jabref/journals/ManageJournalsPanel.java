@@ -2742,6 +2742,9 @@ argument_list|(
 name|i
 argument_list|)
 operator|.
+name|getAutoCompleters
+argument_list|()
+operator|.
 name|addJournalListToAutoCompleter
 argument_list|()
 expr_stmt|;

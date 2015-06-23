@@ -65,12 +65,11 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Interprets the given values as names and stores them in different  * permutations so we can complete by beginning with last name or first name.  *   * @author kahlert, cordes  *   */
+comment|/**  * Interprets the given values as names and stores them in different  * permutations so we can complete by beginning with last name or first name.  *  * @author kahlert, cordes  */
 end_comment
 
 begin_class
 DECL|class|NameFieldAutoCompleter
-specifier|public
 class|class
 name|NameFieldAutoCompleter
 extends|extends
@@ -90,13 +89,6 @@ name|boolean
 name|lastNameOnlyAndSeparationBySpace
 decl_stmt|;
 comment|// true if only last names should be completed and there is NO separation by " and ", but by " "
-DECL|field|prefix
-specifier|private
-name|String
-name|prefix
-init|=
-literal|""
-decl_stmt|;
 DECL|field|autoCompFF
 specifier|private
 specifier|final
@@ -120,6 +112,13 @@ specifier|private
 specifier|final
 name|boolean
 name|autoCompShortFirstOnly
+decl_stmt|;
+DECL|field|prefix
+specifier|private
+name|String
+name|prefix
+init|=
+literal|""
 decl_stmt|;
 comment|/**      * @see AutoCompleterFactory      */
 DECL|method|NameFieldAutoCompleter (String fieldName)
@@ -298,10 +297,12 @@ block|{
 if|if
 condition|(
 name|entry
-operator|!=
+operator|==
 literal|null
 condition|)
 block|{
+return|return;
+block|}
 for|for
 control|(
 name|String
@@ -514,15 +515,17 @@ block|}
 block|}
 block|}
 block|}
-block|}
-comment|/**      * SIDE EFFECT: sets class variable prefix      * Delimiter: " and "      *       * @return String without prefix      */
-DECL|method|determinePrefixAndReturnRemainder_AND (String str)
+comment|/**      * SIDE EFFECT: sets class variable prefix      * Delimiter: " and " or " "      *      * @return String without prefix      */
+DECL|method|determinePrefixAndReturnRemainder (String str, String delimiter)
 specifier|private
 name|String
-name|determinePrefixAndReturnRemainder_AND
+name|determinePrefixAndReturnRemainder
 parameter_list|(
 name|String
 name|str
+parameter_list|,
+name|String
+name|delimiter
 parameter_list|)
 block|{
 name|int
@@ -535,7 +538,7 @@ argument_list|()
 operator|.
 name|lastIndexOf
 argument_list|(
-literal|" and "
+name|delimiter
 argument_list|)
 decl_stmt|;
 if|if
@@ -555,7 +558,10 @@ literal|0
 argument_list|,
 name|index
 operator|+
-literal|5
+name|delimiter
+operator|.
+name|length
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|str
@@ -566,70 +572,10 @@ name|substring
 argument_list|(
 name|index
 operator|+
-literal|5
-argument_list|)
-expr_stmt|;
-block|}
-else|else
-block|{
-name|prefix
-operator|=
-literal|""
-expr_stmt|;
-block|}
-return|return
-name|str
-return|;
-block|}
-comment|/**      * SIDE EFFECT: sets class variable prefix      * Delimiter: " "      *       * @return String without prefix      */
-DECL|method|determinePrefixAndReturnRemainder_SPACE (String str)
-specifier|private
-name|String
-name|determinePrefixAndReturnRemainder_SPACE
-parameter_list|(
-name|String
-name|str
-parameter_list|)
-block|{
-name|int
-name|index
-init|=
-name|str
+name|delimiter
 operator|.
-name|lastIndexOf
-argument_list|(
-literal|" "
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|index
-operator|>=
-literal|0
-condition|)
-block|{
-name|prefix
-operator|=
-name|str
-operator|.
-name|substring
-argument_list|(
-literal|0
-argument_list|,
-name|index
-operator|+
-literal|1
-argument_list|)
-expr_stmt|;
-name|str
-operator|=
-name|str
-operator|.
-name|substring
-argument_list|(
-name|index
-operator|+
-literal|1
+name|length
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
@@ -657,7 +603,7 @@ name|str
 parameter_list|)
 block|{
 comment|// Normally, one would implement that using
-comment|// class inheritance. But this seemed to overengineered
+comment|// class inheritance. But this seemed overengineered
 if|if
 condition|(
 name|this
@@ -667,9 +613,11 @@ condition|)
 block|{
 name|str
 operator|=
-name|determinePrefixAndReturnRemainder_SPACE
+name|determinePrefixAndReturnRemainder
 argument_list|(
 name|str
+argument_list|,
+literal|" "
 argument_list|)
 expr_stmt|;
 block|}
@@ -677,9 +625,11 @@ else|else
 block|{
 name|str
 operator|=
-name|determinePrefixAndReturnRemainder_AND
+name|determinePrefixAndReturnRemainder
 argument_list|(
 name|str
+argument_list|,
+literal|" and "
 argument_list|)
 expr_stmt|;
 block|}

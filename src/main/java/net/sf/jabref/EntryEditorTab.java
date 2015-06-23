@@ -136,7 +136,7 @@ name|jabref
 operator|.
 name|autocompleter
 operator|.
-name|AbstractAutoCompleter
+name|AutoCompleter
 import|;
 end_import
 
@@ -1002,12 +1002,15 @@ name|ta
 argument_list|)
 decl_stmt|;
 comment|// Add autocompleter listener, if required for this field:
-name|AbstractAutoCompleter
+name|AutoCompleter
 name|autoComp
 init|=
 name|bPanel
 operator|.
-name|getAutoCompleter
+name|getAutoCompleters
+argument_list|()
+operator|.
+name|get
 argument_list|(
 name|fields
 index|[
