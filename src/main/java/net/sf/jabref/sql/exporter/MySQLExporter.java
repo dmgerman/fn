@@ -224,7 +224,7 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|+
-literal|"`"
+literal|'`'
 argument_list|)
 expr_stmt|;
 name|SQLUtil
@@ -240,7 +240,7 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|+
-literal|"`"
+literal|'`'
 argument_list|)
 expr_stmt|;
 return|return

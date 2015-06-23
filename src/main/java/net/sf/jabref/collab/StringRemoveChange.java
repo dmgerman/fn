@@ -195,7 +195,7 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 expr_stmt|;
 name|this
 operator|.

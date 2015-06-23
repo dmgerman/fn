@@ -934,7 +934,7 @@ argument_list|(
 name|preamble
 argument_list|)
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 name|errorMessage
 argument_list|,

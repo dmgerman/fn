@@ -661,7 +661,7 @@ operator|.
 name|toString
 argument_list|()
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 name|option
 expr_stmt|;
@@ -835,7 +835,7 @@ name|tmp
 operator|=
 name|parameter
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 name|option
 expr_stmt|;
@@ -1349,7 +1349,7 @@ argument_list|,
 literal|" "
 argument_list|)
 operator|+
-literal|"\'"
+literal|'\''
 argument_list|)
 throw|;
 block|}

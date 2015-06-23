@@ -479,7 +479,7 @@ name|field
 operator|=
 name|field
 operator|+
-literal|"_"
+literal|'_'
 expr_stmt|;
 block|}
 name|str
@@ -717,7 +717,7 @@ literal|"SELECT * FROM "
 operator|+
 name|tableName
 operator|+
-literal|";"
+literal|';'
 decl_stmt|;
 name|Statement
 name|res
@@ -919,7 +919,7 @@ operator|+
 operator|(
 name|withDBName
 condition|?
-literal|"/"
+literal|'/'
 operator|+
 name|dbStrings
 operator|.

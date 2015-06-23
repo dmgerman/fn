@@ -1133,7 +1133,7 @@ argument_list|(
 literal|"Status"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|,
 name|SwingConstants
 operator|.
@@ -10493,7 +10493,7 @@ name|title
 operator|=
 name|title
 operator|+
-literal|"*"
+literal|'*'
 expr_stmt|;
 block|}
 block|}
@@ -10710,7 +10710,7 @@ argument_list|(
 literal|"Your new key bindings have been stored."
 argument_list|)
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 name|Globals
 operator|.
@@ -11117,7 +11117,7 @@ argument_list|(
 literal|"Closed database"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 name|System
@@ -12072,14 +12072,14 @@ argument_list|(
 literal|"with"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|database
 operator|.
 name|getEntryCount
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -12088,7 +12088,7 @@ argument_list|(
 literal|"entries into new database"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -12399,7 +12399,7 @@ argument_list|(
 literal|"with"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 operator|(
 name|database
@@ -12410,7 +12410,7 @@ operator|-
 name|oldCount
 operator|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -12419,7 +12419,7 @@ argument_list|(
 literal|"entries into new database"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -13191,7 +13191,7 @@ argument_list|(
 literal|"Not saved (empty session)"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -13259,7 +13259,7 @@ argument_list|(
 literal|"Saved session"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}

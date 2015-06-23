@@ -1636,7 +1636,7 @@ operator|.
 name|toString
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 comment|// If we were trying to load a custom theme, try the default one as a fallback:
@@ -1784,7 +1784,7 @@ literal|" '"
 operator|+
 name|path
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 block|}
@@ -2103,7 +2103,7 @@ argument_list|(
 literal|"language"
 argument_list|)
 operator|+
-literal|"/"
+literal|'/'
 decl_stmt|;
 if|if
 condition|(

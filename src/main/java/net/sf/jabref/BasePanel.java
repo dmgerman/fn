@@ -2454,7 +2454,7 @@ argument_list|(
 literal|"Copied"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 operator|(
 name|bes
@@ -2485,7 +2485,7 @@ argument_list|(
 literal|"entry"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 operator|)
 argument_list|)
 expr_stmt|;
@@ -2592,7 +2592,7 @@ argument_list|(
 literal|"Copied cell contents"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -2730,7 +2730,7 @@ argument_list|(
 literal|"Cut_pr"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 operator|(
 name|bes
@@ -2760,7 +2760,7 @@ literal|"entry"
 argument_list|)
 operator|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 name|ce
@@ -2922,7 +2922,7 @@ argument_list|(
 literal|"Deleted"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 operator|(
 name|bes
@@ -2952,7 +2952,7 @@ literal|"entry"
 argument_list|)
 operator|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 name|ce
@@ -3402,7 +3402,7 @@ argument_list|(
 literal|"Pasted"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 operator|(
 name|bes
@@ -3434,7 +3434,7 @@ literal|"entry"
 argument_list|)
 operator|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 name|markBaseChanged
@@ -4012,7 +4012,7 @@ argument_list|(
 name|preamble
 argument_list|)
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 name|errorMessage
 argument_list|,
@@ -4110,7 +4110,7 @@ argument_list|(
 name|preamble
 argument_list|)
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 name|errorMessage
 argument_list|,
@@ -4302,11 +4302,11 @@ argument_list|(
 literal|"Generating BibTeX key for"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|numSelected
 operator|+
-literal|" "
+literal|' '
 operator|+
 operator|(
 name|numSelected
@@ -4792,11 +4792,11 @@ argument_list|(
 literal|"Generated BibTeX key for"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|numSelected
 operator|+
-literal|" "
+literal|' '
 operator|+
 operator|(
 name|numSelected
@@ -5257,7 +5257,7 @@ else|:
 literal|"Copied key"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -5285,7 +5285,7 @@ name|size
 argument_list|()
 operator|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -5294,13 +5294,13 @@ argument_list|(
 literal|"out of"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|bes
 operator|.
 name|length
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -5309,7 +5309,7 @@ argument_list|(
 literal|"entries have undefined BibTeX key"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -5506,7 +5506,7 @@ operator|.
 name|toString
 argument_list|()
 operator|+
-literal|"}"
+literal|'}'
 argument_list|)
 decl_stmt|;
 name|Toolkit
@@ -5561,7 +5561,7 @@ argument_list|(
 literal|"Copied key"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -5589,7 +5589,7 @@ name|size
 argument_list|()
 operator|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -5598,13 +5598,13 @@ argument_list|(
 literal|"out of"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|bes
 operator|.
 name|length
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -5613,7 +5613,7 @@ argument_list|(
 literal|"entries have undefined BibTeX key"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -5839,7 +5839,7 @@ else|:
 literal|"Copied key"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -5860,7 +5860,7 @@ operator|(
 name|copied
 operator|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -5869,13 +5869,13 @@ argument_list|(
 literal|"out of"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|bes
 operator|.
 name|length
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -5884,7 +5884,7 @@ argument_list|(
 literal|"entries have undefined BibTeX key"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -6105,7 +6105,7 @@ argument_list|(
 literal|"External viewer called"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -6556,7 +6556,7 @@ argument_list|(
 literal|"External viewer called"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 return|return;
@@ -6624,7 +6624,7 @@ argument_list|(
 literal|"External viewer called"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -6664,7 +6664,7 @@ argument_list|(
 literal|"No pdf or ps defined, and no file matching Bibtex key found"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -7150,7 +7150,7 @@ argument_list|(
 literal|"External viewer called"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -7315,7 +7315,7 @@ argument_list|(
 literal|"External viewer called"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -7353,7 +7353,7 @@ argument_list|(
 literal|"No url defined"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -7525,7 +7525,7 @@ argument_list|(
 literal|"External viewer called"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -7565,7 +7565,7 @@ argument_list|(
 literal|"No url defined"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -7725,11 +7725,11 @@ argument_list|(
 literal|"Replaced"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|counter
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -7744,7 +7744,7 @@ else|:
 literal|"occurences"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 if|if
@@ -9125,7 +9125,7 @@ literal|"No action defined for '"
 operator|+
 name|_command
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 block|}
@@ -9960,7 +9960,7 @@ argument_list|(
 literal|"entry"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 comment|// We are going to select the new entry. Before that, make sure that we are in
@@ -10431,7 +10431,7 @@ argument_list|(
 literal|"entry"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 name|markBaseChanged
@@ -12948,7 +12948,7 @@ name|this
 argument_list|,
 name|oldTitle
 operator|+
-literal|"*"
+literal|'*'
 argument_list|,
 name|frame
 operator|.
@@ -13501,13 +13501,13 @@ argument_list|(
 literal|"for"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|bes
 operator|.
 name|length
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -13516,7 +13516,7 @@ argument_list|(
 literal|"entries"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 name|ce
@@ -13569,7 +13569,7 @@ argument_list|(
 literal|"Really delete the selected"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -13578,7 +13578,7 @@ argument_list|(
 literal|"entry"
 argument_list|)
 operator|+
-literal|"?"
+literal|'?'
 decl_stmt|,
 name|title
 init|=
@@ -13605,11 +13605,11 @@ argument_list|(
 literal|"Really delete the selected"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|numberOfEntries
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -13618,7 +13618,7 @@ argument_list|(
 literal|"entries"
 argument_list|)
 operator|+
-literal|"?"
+literal|'?'
 expr_stmt|;
 name|title
 operator|=
@@ -14074,7 +14074,7 @@ argument_list|(
 literal|"Nothing to undo"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -14181,7 +14181,7 @@ argument_list|(
 literal|"Nothing to redo"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -14732,7 +14732,7 @@ name|result
 operator|.
 name|append
 argument_list|(
-literal|","
+literal|','
 argument_list|)
 operator|.
 name|append
@@ -15243,7 +15243,7 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-literal|"'"
+literal|'\''
 operator|+
 name|expFile
 operator|.

@@ -1041,7 +1041,7 @@ condition|)
 block|{
 name|result
 operator|+=
-literal|"-"
+literal|'-'
 operator|+
 name|bibtex
 operator|.

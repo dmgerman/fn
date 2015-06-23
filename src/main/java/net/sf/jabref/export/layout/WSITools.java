@@ -206,7 +206,7 @@ name|buf
 operator|=
 name|buf
 operator|+
-literal|"\n"
+literal|'\n'
 expr_stmt|;
 name|StringTokenizer
 name|st
@@ -275,7 +275,7 @@ literal|"Warning: tokenize \""
 operator|+
 name|s
 operator|+
-literal|"\""
+literal|'"'
 argument_list|)
 expr_stmt|;
 name|vcr
@@ -287,7 +287,7 @@ name|s
 operator|=
 name|s
 operator|+
-literal|"\n"
+literal|'\n'
 expr_stmt|;
 name|int
 name|endpos

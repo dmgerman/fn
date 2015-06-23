@@ -1091,7 +1091,7 @@ decl_stmt|;
 name|String
 name|footer
 init|=
-literal|"\n"
+literal|'\n'
 operator|+
 name|importFormatsList
 operator|+

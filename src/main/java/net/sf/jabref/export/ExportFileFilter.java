@@ -108,7 +108,7 @@ literal|" (*"
 operator|+
 name|extension
 operator|+
-literal|")"
+literal|')'
 expr_stmt|;
 block|}
 DECL|method|getExportFormat ()

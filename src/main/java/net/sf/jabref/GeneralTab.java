@@ -478,7 +478,7 @@ argument_list|(
 literal|"Mark new entries with owner name"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|)
 expr_stmt|;
 name|useTimeStamp
@@ -502,7 +502,7 @@ argument_list|(
 literal|"Date format"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|)
 expr_stmt|;
 name|useTimeStamp
@@ -1147,7 +1147,7 @@ argument_list|(
 literal|"Field name"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|)
 expr_stmt|;
 name|builder
@@ -1263,7 +1263,7 @@ argument_list|(
 literal|"Language"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|)
 expr_stmt|;
 name|builder
@@ -1299,7 +1299,7 @@ argument_list|(
 literal|"Default encoding"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|)
 expr_stmt|;
 name|builder
@@ -2012,11 +2012,11 @@ name|_prefs
 operator|.
 name|WRAPPED_USERNAME
 operator|=
-literal|"["
+literal|'['
 operator|+
 name|owner
 operator|+
-literal|"]"
+literal|']'
 expr_stmt|;
 name|_prefs
 operator|.

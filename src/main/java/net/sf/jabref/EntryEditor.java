@@ -3162,7 +3162,7 @@ argument_list|(
 name|dir
 argument_list|)
 argument_list|,
-literal|"."
+literal|'.'
 operator|+
 name|fieldName
 argument_list|,
@@ -3261,7 +3261,7 @@ specifier|final
 name|String
 name|ext
 init|=
-literal|"."
+literal|'.'
 operator|+
 name|fieldName
 operator|.
@@ -5118,7 +5118,7 @@ argument_list|(
 literal|"Stored entry"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -6187,7 +6187,7 @@ argument_list|(
 literal|"Deleted"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.

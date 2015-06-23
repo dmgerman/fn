@@ -2545,7 +2545,7 @@ argument_list|(
 literal|"Really delete the selected"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 operator|(
 operator|(
@@ -2577,7 +2577,7 @@ literal|"entry"
 argument_list|)
 operator|)
 operator|+
-literal|"?"
+literal|'?'
 decl_stmt|;
 name|int
 name|answer

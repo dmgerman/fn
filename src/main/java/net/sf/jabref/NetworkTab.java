@@ -401,7 +401,7 @@ argument_list|(
 literal|"Host"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|)
 decl_stmt|;
 name|builder
@@ -445,7 +445,7 @@ argument_list|(
 literal|"Port"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|)
 decl_stmt|;
 name|builder

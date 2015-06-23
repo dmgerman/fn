@@ -412,7 +412,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"|"
+literal|'|'
 argument_list|)
 expr_stmt|;
 block|}
@@ -420,14 +420,14 @@ block|}
 name|String
 name|extensionRegExp
 init|=
-literal|"("
+literal|'('
 operator|+
 name|sb
 operator|.
 name|toString
 argument_list|()
 operator|+
-literal|")"
+literal|')'
 decl_stmt|;
 return|return
 name|RegExpFileSearch
@@ -877,7 +877,7 @@ argument_list|(
 literal|1
 argument_list|)
 operator|+
-literal|"/"
+literal|'/'
 operator|+
 name|m
 operator|.
@@ -995,7 +995,7 @@ name|File
 argument_list|(
 name|dirToProcess
 operator|+
-literal|"/"
+literal|'/'
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -1317,7 +1317,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"^"
+literal|'^'
 operator|+
 name|filenameToLookFor
 operator|.
@@ -1328,7 +1328,7 @@ argument_list|,
 literal|"\\\\"
 argument_list|)
 operator|+
-literal|"$"
+literal|'$'
 argument_list|,
 name|Pattern
 operator|.

@@ -991,7 +991,7 @@ block|{
 return|return
 name|year
 operator|+
-literal|"-"
+literal|'-'
 operator|+
 name|month
 operator|.
@@ -1830,7 +1830,7 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|":"
+literal|':'
 operator|+
 name|getField
 argument_list|(
@@ -1984,7 +1984,7 @@ index|[
 literal|2
 index|]
 operator|+
-literal|")"
+literal|')'
 decl_stmt|;
 if|if
 condition|(

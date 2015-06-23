@@ -535,7 +535,7 @@ argument_list|(
 literal|"language"
 argument_list|)
 operator|+
-literal|"/"
+literal|'/'
 decl_stmt|;
 if|if
 condition|(
@@ -634,7 +634,7 @@ operator|.
 name|toString
 argument_list|()
 operator|+
-literal|"#"
+literal|'#'
 operator|+
 name|reference
 argument_list|)
@@ -768,7 +768,7 @@ operator|.
 name|getFile
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 block|}

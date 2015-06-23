@@ -1297,7 +1297,7 @@ argument_list|(
 literal|"Sort the following fields as numeric fields"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|)
 expr_stmt|;
 name|builder2

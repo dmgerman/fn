@@ -1268,7 +1268,7 @@ argument_list|(
 name|dir
 argument_list|)
 argument_list|,
-literal|"."
+literal|'.'
 operator|+
 name|fieldName
 argument_list|,
@@ -1546,7 +1546,7 @@ condition|)
 block|{
 name|suffix
 operator|=
-literal|"."
+literal|'.'
 operator|+
 name|fieldName
 operator|.
@@ -2229,7 +2229,7 @@ name|toUpperCase
 argument_list|()
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 return|return
@@ -2254,7 +2254,7 @@ literal|" '"
 operator|+
 name|o
 operator|+
-literal|"."
+literal|'.'
 operator|+
 name|fieldName
 operator|+
@@ -2381,7 +2381,7 @@ name|toUpperCase
 argument_list|()
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -2401,7 +2401,7 @@ name|toUpperCase
 argument_list|()
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}

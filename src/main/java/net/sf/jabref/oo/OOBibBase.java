@@ -1642,7 +1642,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|","
+literal|','
 argument_list|)
 expr_stmt|;
 block|}
@@ -2669,7 +2669,7 @@ index|[
 name|j
 index|]
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 name|System
@@ -2685,7 +2685,7 @@ index|[
 name|i
 index|]
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 name|cEntries
@@ -2811,7 +2811,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|","
+literal|','
 argument_list|)
 expr_stmt|;
 block|}
@@ -4830,11 +4830,11 @@ name|OOBibBase
 operator|.
 name|BIB_CITATION
 operator|+
-literal|"_"
+literal|'_'
 operator|+
 name|type
 operator|+
-literal|"_"
+literal|'_'
 operator|+
 name|bibtexKey
 decl_stmt|;
@@ -4856,11 +4856,11 @@ name|BIB_CITATION
 operator|+
 name|i
 operator|+
-literal|"_"
+literal|'_'
 operator|+
 name|type
 operator|+
-literal|"_"
+literal|'_'
 operator|+
 name|bibtexKey
 expr_stmt|;
@@ -8389,7 +8389,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|","
+literal|','
 argument_list|)
 expr_stmt|;
 block|}

@@ -936,7 +936,7 @@ argument_list|(
 literal|"Copied"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 operator|(
 name|bes
@@ -967,7 +967,7 @@ argument_list|(
 literal|"entry"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 operator|)
 argument_list|)
 expr_stmt|;

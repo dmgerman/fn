@@ -522,7 +522,7 @@ argument_list|(
 literal|"Listen for remote operation on port"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|)
 expr_stmt|;
 name|useNativeFileDialogOnMac
@@ -898,7 +898,7 @@ argument_list|(
 literal|"Class name"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|)
 expr_stmt|;
 name|pan2
@@ -2018,7 +2018,7 @@ argument_list|(
 literal|"Remote server port"
 argument_list|)
 operator|+
-literal|"'"
+literal|'\''
 argument_list|,
 name|Globals
 operator|.
@@ -2065,7 +2065,7 @@ argument_list|(
 literal|"Remote server port"
 argument_list|)
 operator|+
-literal|"'"
+literal|'\''
 argument_list|,
 name|Globals
 operator|.

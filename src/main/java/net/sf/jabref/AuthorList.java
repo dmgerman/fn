@@ -2423,7 +2423,7 @@ name|res
 operator|.
 name|append
 argument_list|(
-literal|","
+literal|','
 argument_list|)
 expr_stmt|;
 block|}
@@ -2615,7 +2615,7 @@ name|res
 operator|.
 name|append
 argument_list|(
-literal|","
+literal|','
 argument_list|)
 expr_stmt|;
 block|}
@@ -3075,7 +3075,7 @@ name|res
 operator|.
 name|append
 argument_list|(
-literal|","
+literal|','
 argument_list|)
 expr_stmt|;
 block|}
@@ -3801,7 +3801,7 @@ name|b
 operator|.
 name|append
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 expr_stmt|;
 block|}
@@ -3981,7 +3981,7 @@ name|von_part
 else|:
 name|von_part
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|last_part
 operator|)
@@ -4091,7 +4091,7 @@ literal|""
 else|:
 name|first_abbr
 operator|+
-literal|" "
+literal|' '
 operator|)
 operator|+
 name|res
@@ -4110,7 +4110,7 @@ literal|""
 else|:
 name|first_part
 operator|+
-literal|" "
+literal|' '
 operator|)
 operator|+
 name|res
@@ -4321,7 +4321,7 @@ operator|.
 name|getFirst
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 name|System
@@ -4343,7 +4343,7 @@ operator|.
 name|getLast
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 name|System
@@ -4365,7 +4365,7 @@ operator|.
 name|getJr
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 name|System
@@ -4387,7 +4387,7 @@ operator|.
 name|getVon
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 block|}

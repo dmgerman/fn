@@ -1782,7 +1782,7 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-literal|"'"
+literal|'\''
 operator|+
 name|f
 operator|.

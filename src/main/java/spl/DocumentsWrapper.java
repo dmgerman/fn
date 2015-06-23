@@ -501,7 +501,7 @@ operator|.
 name|trim
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
 block|}
 if|if
@@ -532,7 +532,7 @@ operator|.
 name|trim
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
 block|}
 if|if
@@ -563,7 +563,7 @@ operator|.
 name|trim
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
 block|}
 if|if
@@ -594,7 +594,7 @@ operator|.
 name|trim
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
 block|}
 if|if
@@ -625,7 +625,7 @@ operator|.
 name|trim
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
 block|}
 return|return

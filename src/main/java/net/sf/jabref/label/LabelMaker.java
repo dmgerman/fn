@@ -184,7 +184,7 @@ name|modKey
 init|=
 name|newKey
 operator|+
-literal|"a"
+literal|'a'
 decl_stmt|;
 while|while
 condition|(

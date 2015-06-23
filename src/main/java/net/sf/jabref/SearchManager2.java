@@ -3795,7 +3795,7 @@ name|panel
 operator|.
 name|output
 argument_list|(
-literal|"'"
+literal|'\''
 operator|+
 name|text
 operator|+
@@ -3808,7 +3808,7 @@ argument_list|(
 literal|"Incremental search failed. Repeat to search from top."
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 name|incSearchPos
@@ -3902,7 +3902,7 @@ name|panel
 operator|.
 name|output
 argument_list|(
-literal|"'"
+literal|'\''
 operator|+
 name|text
 operator|+
@@ -3942,7 +3942,7 @@ name|panel
 operator|.
 name|output
 argument_list|(
-literal|"'"
+literal|'\''
 operator|+
 name|text
 operator|+
@@ -3955,7 +3955,7 @@ argument_list|(
 literal|"found"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}

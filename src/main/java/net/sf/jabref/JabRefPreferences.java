@@ -4726,14 +4726,14 @@ argument_list|()
 expr_stmt|;
 name|WRAPPED_USERNAME
 operator|=
-literal|"["
+literal|'['
 operator|+
 name|get
 argument_list|(
 literal|"defaultOwner"
 argument_list|)
 operator|+
-literal|"]"
+literal|']'
 expr_stmt|;
 name|MARKING_WITH_NUMBER_PATTERN
 operator|=
@@ -4864,14 +4864,14 @@ name|FILE_FIELD
 operator|+
 literal|"Directory"
 operator|+
-literal|"-"
+literal|'-'
 operator|+
 name|get
 argument_list|(
 literal|"defaultOwner"
 argument_list|)
 operator|+
-literal|"@"
+literal|'@'
 operator|+
 name|InetAddress
 operator|.
@@ -4895,14 +4895,14 @@ name|FILE_FIELD
 operator|+
 literal|"Directory"
 operator|+
-literal|"-"
+literal|'-'
 operator|+
 name|get
 argument_list|(
 literal|"defaultOwner"
 argument_list|)
 operator|+
-literal|"-"
+literal|'-'
 operator|+
 name|InetAddress
 operator|.
@@ -4940,7 +4940,7 @@ name|FILE_FIELD
 operator|+
 literal|"Directory"
 operator|+
-literal|"-"
+literal|'-'
 operator|+
 name|get
 argument_list|(
@@ -4960,7 +4960,7 @@ name|FILE_FIELD
 operator|+
 literal|"Directory"
 operator|+
-literal|"-"
+literal|'-'
 operator|+
 name|get
 argument_list|(
@@ -5771,7 +5771,7 @@ name|linked
 operator|.
 name|append
 argument_list|(
-literal|";"
+literal|';'
 argument_list|)
 expr_stmt|;
 block|}
@@ -6266,7 +6266,7 @@ literal|"Could not get key binding for \""
 operator|+
 name|bindName
 operator|+
-literal|"\""
+literal|'"'
 argument_list|)
 expr_stmt|;
 comment|// fall back to a default value

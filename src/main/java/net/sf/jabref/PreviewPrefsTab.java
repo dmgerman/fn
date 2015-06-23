@@ -1235,7 +1235,7 @@ operator|.
 name|getMessage
 argument_list|()
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 name|Globals
 operator|.
@@ -1244,7 +1244,7 @@ argument_list|(
 literal|"Look at stderr for details"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|,
 name|Globals
 operator|.

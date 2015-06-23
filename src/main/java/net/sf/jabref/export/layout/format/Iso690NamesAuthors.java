@@ -289,7 +289,7 @@ operator|.
 name|toUpperCase
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|author
 index|[
@@ -347,7 +347,7 @@ operator|.
 name|trim
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|author
 index|[
@@ -371,7 +371,7 @@ operator|.
 name|toUpperCase
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|author
 index|[

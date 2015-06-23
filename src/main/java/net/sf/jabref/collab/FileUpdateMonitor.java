@@ -869,7 +869,7 @@ operator|.
 name|getPath
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 block|}

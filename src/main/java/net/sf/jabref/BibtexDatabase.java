@@ -1967,7 +1967,7 @@ argument_list|(
 literal|"Warning there is a duplicate key"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 operator|+
 name|newKey
 argument_list|,

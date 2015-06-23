@@ -1174,7 +1174,7 @@ index|[
 literal|0
 index|]
 operator|+
-literal|"."
+literal|'.'
 expr_stmt|;
 break|break;
 case|case
@@ -1196,7 +1196,7 @@ index|[
 literal|1
 index|]
 operator|+
-literal|"."
+literal|'.'
 expr_stmt|;
 break|break;
 case|case
@@ -1225,7 +1225,7 @@ index|[
 literal|2
 index|]
 operator|+
-literal|"."
+literal|'.'
 expr_stmt|;
 break|break;
 default|default:

@@ -417,7 +417,7 @@ condition|)
 block|{
 name|jabrefDBs
 operator|+=
-literal|"'"
+literal|'\''
 operator|+
 name|itLista
 operator|.
@@ -443,7 +443,7 @@ operator|-
 literal|1
 argument_list|)
 operator|+
-literal|")"
+literal|')'
 expr_stmt|;
 name|ResultSet
 name|rsDatabase
@@ -823,7 +823,7 @@ literal|"strings WHERE database_id='"
 operator|+
 name|database_id
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 decl_stmt|;
 while|while

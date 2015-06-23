@@ -226,7 +226,7 @@ operator|=
 operator|new
 name|FieldNameLabel
 argument_list|(
-literal|" "
+literal|' '
 operator|+
 name|Util
 operator|.
@@ -235,7 +235,7 @@ argument_list|(
 name|fieldName
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 argument_list|)
 expr_stmt|;
 name|setBackground

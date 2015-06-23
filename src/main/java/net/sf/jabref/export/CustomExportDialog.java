@@ -227,7 +227,7 @@ argument_list|(
 literal|"Export name"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|)
 decl_stmt|;
 DECL|field|nr
@@ -246,7 +246,7 @@ argument_list|(
 literal|"Main layout file"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|)
 decl_stmt|;
 DECL|field|nf
@@ -265,7 +265,7 @@ argument_list|(
 literal|"File extension"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|)
 decl_stmt|;
 specifier|private
@@ -1265,7 +1265,7 @@ block|}
 else|else
 block|{
 return|return
-literal|"."
+literal|'.'
 operator|+
 name|ext
 return|;

@@ -222,7 +222,7 @@ name|XMPSchemaBibtex
 operator|.
 name|KEY
 operator|+
-literal|":"
+literal|':'
 operator|+
 name|propertyName
 return|;

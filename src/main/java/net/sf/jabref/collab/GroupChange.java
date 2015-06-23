@@ -448,14 +448,14 @@ literal|"<html>"
 operator|+
 name|name
 operator|+
-literal|"."
+literal|'.'
 operator|+
 operator|(
 name|m_changedGroups
 operator|!=
 literal|null
 condition|?
-literal|" "
+literal|' '
 operator|+
 literal|"Accepting the change replaces the complete "
 operator|+

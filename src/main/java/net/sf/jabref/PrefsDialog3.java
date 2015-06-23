@@ -1181,7 +1181,7 @@ name|PrefsDialog3
 operator|.
 name|this
 argument_list|,
-literal|"'"
+literal|'\''
 operator|+
 name|file
 operator|.

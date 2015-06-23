@@ -1636,7 +1636,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|","
+literal|','
 argument_list|)
 expr_stmt|;
 block|}
@@ -2695,7 +2695,7 @@ literal|"bibtex/"
 operator|+
 name|field
 operator|+
-literal|"/"
+literal|'/'
 operator|+
 name|o
 argument_list|)

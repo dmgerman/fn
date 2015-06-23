@@ -188,7 +188,7 @@ literal|"Modified entry: '"
 operator|+
 name|key
 operator|+
-literal|"'"
+literal|'\''
 expr_stmt|;
 block|}
 name|this
@@ -756,7 +756,7 @@ name|append
 argument_list|(
 literal|":</H3>"
 operator|+
-literal|" "
+literal|' '
 argument_list|)
 operator|.
 name|append
@@ -826,7 +826,7 @@ name|append
 argument_list|(
 literal|":</H3>"
 operator|+
-literal|" "
+literal|' '
 argument_list|)
 operator|.
 name|append
@@ -871,7 +871,7 @@ name|append
 argument_list|(
 literal|":</H3>"
 operator|+
-literal|" "
+literal|' '
 argument_list|)
 operator|.
 name|append

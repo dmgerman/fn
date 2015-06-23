@@ -637,7 +637,7 @@ argument_list|(
 literal|"Main file directory"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|)
 decl_stmt|;
 name|builder
@@ -1063,7 +1063,7 @@ argument_list|(
 literal|"Main PDF directory"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|)
 expr_stmt|;
 name|builder
@@ -1132,7 +1132,7 @@ argument_list|(
 literal|"Main PS directory"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|)
 expr_stmt|;
 name|builder

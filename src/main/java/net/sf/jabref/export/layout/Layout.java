@@ -291,7 +291,7 @@ name|println
 argument_list|(
 name|blockStart
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 name|si
 operator|.

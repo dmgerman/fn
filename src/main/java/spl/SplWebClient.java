@@ -860,7 +860,7 @@ operator|.
 name|getValue
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|temp
 operator|.

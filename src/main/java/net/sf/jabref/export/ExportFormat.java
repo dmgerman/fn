@@ -375,7 +375,7 @@ literal|""
 else|:
 name|directory
 operator|+
-literal|"/"
+literal|'/'
 operator|)
 expr_stmt|;
 block|}
@@ -788,7 +788,7 @@ name|getReader
 argument_list|(
 name|lfFileName
 operator|+
-literal|"."
+literal|'.'
 operator|+
 name|type
 operator|+

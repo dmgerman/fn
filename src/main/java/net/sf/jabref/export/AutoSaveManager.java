@@ -338,7 +338,7 @@ literal|".$"
 operator|+
 name|n
 operator|+
-literal|"$"
+literal|'$'
 argument_list|)
 return|;
 block|}

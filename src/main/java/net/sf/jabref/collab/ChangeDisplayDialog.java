@@ -313,7 +313,7 @@ argument_list|(
 literal|"Select the tree nodes to view and accept or reject changes"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 decl_stmt|;
 DECL|field|selected

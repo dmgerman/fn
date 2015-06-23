@@ -642,14 +642,14 @@ name|query
 operator|=
 name|insert
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 name|entry
 operator|.
 name|getId
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 literal|", (SELECT entry_types_id FROM entry_types WHERE label='"
 operator|+
@@ -671,7 +671,7 @@ operator|.
 name|getCiteKey
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 expr_stmt|;
 for|for
 control|(
@@ -772,11 +772,11 @@ name|query
 operator|=
 name|query
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 name|val
 operator|+
-literal|"'"
+literal|'\''
 expr_stmt|;
 block|}
 else|else
@@ -879,7 +879,7 @@ literal|"VALUES ("
 operator|+
 literal|"(SELECT entries_id FROM entries WHERE jabref_eid="
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 name|be
 operator|.
@@ -894,19 +894,19 @@ literal|"), "
 operator|+
 literal|"(SELECT groups_id FROM groups WHERE database_id="
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 name|database_id
 operator|+
 literal|"' AND parent_id="
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 name|parentID
 operator|+
 literal|"' AND label="
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 name|grp
 operator|.
@@ -1313,7 +1313,7 @@ name|query
 operator|=
 name|insert
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 name|val
 operator|.
@@ -1323,7 +1323,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 expr_stmt|;
 for|for
 control|(
@@ -1341,7 +1341,7 @@ literal|", '"
 operator|+
 name|aFieldRequirement
 operator|+
-literal|"'"
+literal|'\''
 expr_stmt|;
 block|}
 name|query
@@ -1433,7 +1433,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 expr_stmt|;
 block|}
 name|SQLUtil
@@ -1701,11 +1701,11 @@ name|searchField
 operator|!=
 literal|null
 condition|?
-literal|"'"
+literal|'\''
 operator|+
 name|searchField
 operator|+
-literal|"'"
+literal|'\''
 else|:
 literal|"NULL"
 operator|)
@@ -1717,11 +1717,11 @@ name|searchExpr
 operator|!=
 literal|null
 condition|?
-literal|"'"
+literal|'\''
 operator|+
 name|searchExpr
 operator|+
-literal|"'"
+literal|'\''
 else|:
 literal|"NULL"
 operator|)
@@ -1733,11 +1733,11 @@ name|caseSens
 operator|!=
 literal|null
 condition|?
-literal|"'"
+literal|'\''
 operator|+
 name|caseSens
 operator|+
-literal|"'"
+literal|'\''
 else|:
 literal|"NULL"
 operator|)
@@ -1749,11 +1749,11 @@ name|reg_exp
 operator|!=
 literal|null
 condition|?
-literal|"'"
+literal|'\''
 operator|+
 name|reg_exp
 operator|+
-literal|"'"
+literal|'\''
 else|:
 literal|"NULL"
 operator|)
@@ -2054,7 +2054,7 @@ name|insert
 operator|+
 literal|"'@PREAMBLE', "
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 name|Util
 operator|.
@@ -2072,7 +2072,7 @@ argument_list|)
 operator|+
 literal|"', "
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 name|database_id
 operator|+
@@ -2114,7 +2114,7 @@ name|dml
 init|=
 name|insert
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 name|Util
 operator|.
@@ -2132,7 +2132,7 @@ argument_list|)
 operator|+
 literal|"', "
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 name|Util
 operator|.
@@ -2150,11 +2150,11 @@ argument_list|)
 operator|+
 literal|"', "
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 name|database_id
 operator|+
-literal|"'"
+literal|'\''
 operator|+
 literal|");"
 decl_stmt|;

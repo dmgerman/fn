@@ -175,7 +175,7 @@ literal|": '"
 operator|+
 name|tmp
 operator|+
-literal|"'"
+literal|'\''
 expr_stmt|;
 name|this
 operator|.

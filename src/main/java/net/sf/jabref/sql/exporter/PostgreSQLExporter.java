@@ -251,7 +251,7 @@ operator|.
 name|getDatabase
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 operator|)
 operator|.

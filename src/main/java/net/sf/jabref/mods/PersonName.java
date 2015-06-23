@@ -311,7 +311,7 @@ control|)
 block|{
 name|middleName
 operator|+=
-literal|" "
+literal|' '
 operator|+
 name|v
 operator|.
@@ -373,7 +373,7 @@ condition|)
 block|{
 name|result
 operator|+=
-literal|" "
+literal|' '
 operator|+
 name|middleName
 expr_stmt|;
@@ -484,7 +484,7 @@ name|fullName
 operator|+=
 name|givenName
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
 block|}
 if|if
@@ -506,7 +506,7 @@ name|fullName
 operator|+=
 name|middleName
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
 block|}
 if|if

@@ -329,7 +329,7 @@ condition|)
 block|{
 name|value
 operator|=
-literal|"."
+literal|'.'
 operator|+
 name|value
 expr_stmt|;
@@ -593,7 +593,7 @@ block|{
 return|return
 name|name
 operator|+
-literal|"="
+literal|'='
 operator|+
 name|value
 return|;

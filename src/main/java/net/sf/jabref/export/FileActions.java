@@ -236,7 +236,7 @@ name|fw
 operator|.
 name|write
 argument_list|(
-literal|"}"
+literal|'}'
 operator|+
 name|Globals
 operator|.
@@ -749,7 +749,7 @@ argument_list|(
 literal|"The # character is not allowed in BibTeX strings unless escaped as in '\\#'."
 argument_list|)
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 name|Globals
 operator|.
@@ -820,13 +820,13 @@ name|out
 operator|.
 name|write
 argument_list|(
-literal|" "
+literal|' '
 operator|+
 name|GUIGlobals
 operator|.
 name|version
 operator|+
-literal|"."
+literal|'.'
 operator|+
 name|Globals
 operator|.

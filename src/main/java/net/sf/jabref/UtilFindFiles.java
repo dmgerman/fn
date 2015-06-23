@@ -991,7 +991,7 @@ argument_list|(
 literal|1
 argument_list|)
 operator|+
-literal|"/"
+literal|'/'
 operator|+
 name|m
 operator|.
@@ -1109,7 +1109,7 @@ name|File
 argument_list|(
 name|dirToProcess
 operator|+
-literal|"/"
+literal|'/'
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -1560,7 +1560,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"^"
+literal|'^'
 operator|+
 name|filenameToLookFor
 operator|.
@@ -1571,7 +1571,7 @@ argument_list|,
 literal|"\\\\"
 argument_list|)
 operator|+
-literal|"$"
+literal|'$'
 argument_list|)
 decl_stmt|;
 name|File
@@ -1759,7 +1759,7 @@ name|startsWith
 argument_list|(
 name|key
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 operator|&&
 name|off

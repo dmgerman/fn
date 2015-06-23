@@ -719,7 +719,7 @@ argument_list|(
 literal|"The # character is not allowed in BibTeX strings unless escaped as in '\\#'."
 argument_list|)
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 name|Globals
 operator|.
@@ -728,7 +728,7 @@ argument_list|(
 literal|"In JabRef, use pairs of # characters to indicate a string."
 argument_list|)
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 name|Globals
 operator|.

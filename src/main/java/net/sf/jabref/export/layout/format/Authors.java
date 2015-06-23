@@ -1701,7 +1701,7 @@ name|lastNamePart
 operator|=
 name|von
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|lastNamePart
 expr_stmt|;

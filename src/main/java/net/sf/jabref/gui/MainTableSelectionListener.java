@@ -1802,7 +1802,7 @@ argument_list|(
 literal|"External viewer called"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 name|Object
@@ -1830,7 +1830,7 @@ literal|"Error: no link to "
 operator|+
 name|fieldName
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 return|return;

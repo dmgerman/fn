@@ -172,7 +172,7 @@ block|{
 name|String
 name|javaVersionWarning
 init|=
-literal|"\n"
+literal|'\n'
 operator|+
 literal|"WARNING: You are running Java version 1.6 or lower ("
 operator|+
@@ -239,7 +239,7 @@ name|out
 operator|.
 name|println
 argument_list|(
-literal|"\n"
+literal|'\n'
 operator|+
 literal|"WARNING: You are not running a Java version from Oracle (or Sun Microsystems).\n"
 operator|+
@@ -247,7 +247,7 @@ literal|"         Your java vendor is: "
 operator|+
 name|javaVendor
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 literal|"         If JabRef crashes please consider switching to an Oracle Java Runtime.\n"
 operator|+
@@ -315,7 +315,7 @@ name|getCause
 argument_list|()
 argument_list|)
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 literal|"Please first check if this problem and a solution is already known. Find our...\n"
 operator|+
@@ -339,13 +339,13 @@ literal|"  * Java Version: "
 operator|+
 name|javaVersion
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 literal|"  * Java Vendor: "
 operator|+
 name|javaVendor
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 literal|"  * Operating System: "
 operator|+
@@ -462,7 +462,7 @@ argument_list|(
 literal|"os.version"
 argument_list|)
 operator|+
-literal|")"
+literal|')'
 operator|+
 literal|"<li>Hardware Architecture: "
 operator|+
@@ -711,7 +711,7 @@ argument_list|(
 name|e
 argument_list|)
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 literal|"This means that your Java version ("
 operator|+

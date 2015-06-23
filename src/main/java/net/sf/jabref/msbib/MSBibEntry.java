@@ -1307,7 +1307,7 @@ name|address
 operator|+=
 name|state
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
 block|}
 if|if
@@ -1510,7 +1510,7 @@ name|dateAccessed
 operator|+=
 name|month
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
 block|}
 if|if
@@ -4308,7 +4308,7 @@ condition|)
 block|{
 name|result
 operator|+=
-literal|"-"
+literal|'-'
 operator|+
 name|bibtex
 operator|.
@@ -6148,7 +6148,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|":"
+literal|':'
 operator|+
 name|type
 operator|+

@@ -2143,7 +2143,7 @@ argument_list|(
 name|name
 argument_list|)
 operator|+
-literal|"'"
+literal|'\''
 argument_list|,
 name|JOptionPane
 operator|.

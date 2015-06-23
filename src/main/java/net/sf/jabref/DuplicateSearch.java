@@ -708,7 +708,7 @@ operator|.
 name|size
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.

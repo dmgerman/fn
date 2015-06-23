@@ -439,7 +439,7 @@ name|out
 operator|.
 name|write
 argument_list|(
-literal|"@"
+literal|'@'
 operator|+
 name|entry
 operator|.
@@ -449,7 +449,7 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|"{"
+literal|'{'
 argument_list|)
 expr_stmt|;
 name|String
@@ -485,7 +485,7 @@ else|:
 name|str
 operator|)
 operator|+
-literal|","
+literal|','
 operator|+
 name|Globals
 operator|.
@@ -833,7 +833,7 @@ else|:
 literal|""
 operator|)
 operator|+
-literal|"}"
+literal|'}'
 operator|+
 name|Globals
 operator|.
@@ -861,7 +861,7 @@ name|out
 operator|.
 name|write
 argument_list|(
-literal|"@"
+literal|'@'
 operator|+
 name|entry
 operator|.
@@ -878,7 +878,7 @@ operator|.
 name|US
 argument_list|)
 operator|+
-literal|"{"
+literal|'{'
 argument_list|)
 expr_stmt|;
 name|String
@@ -914,7 +914,7 @@ else|:
 name|str
 operator|)
 operator|+
-literal|","
+literal|','
 operator|+
 name|Globals
 operator|.
@@ -1181,7 +1181,7 @@ else|:
 literal|""
 operator|)
 operator|+
-literal|"}"
+literal|'}'
 operator|+
 name|Globals
 operator|.
@@ -1208,7 +1208,7 @@ name|out
 operator|.
 name|write
 argument_list|(
-literal|"@"
+literal|'@'
 operator|+
 name|entry
 operator|.
@@ -1218,7 +1218,7 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|"{"
+literal|'{'
 argument_list|)
 expr_stmt|;
 name|String
@@ -1254,7 +1254,7 @@ else|:
 name|str
 operator|)
 operator|+
-literal|","
+literal|','
 operator|+
 name|Globals
 operator|.
@@ -1493,7 +1493,7 @@ else|:
 literal|""
 operator|)
 operator|+
-literal|"}"
+literal|'}'
 operator|+
 name|Globals
 operator|.
@@ -1555,7 +1555,7 @@ name|out
 operator|.
 name|write
 argument_list|(
-literal|","
+literal|','
 operator|+
 name|Globals
 operator|.

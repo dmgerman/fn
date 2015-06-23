@@ -151,7 +151,7 @@ name|JLabel
 argument_list|(
 name|message
 operator|+
-literal|"\n"
+literal|'\n'
 argument_list|)
 decl_stmt|;
 name|cb

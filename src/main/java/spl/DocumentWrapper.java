@@ -378,11 +378,11 @@ name|value
 operator|=
 name|value
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|seperator
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
 block|}
 else|else
@@ -681,7 +681,7 @@ operator|.
 name|trim
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
 block|}
 if|if
@@ -712,7 +712,7 @@ operator|.
 name|trim
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
 block|}
 if|if
@@ -743,7 +743,7 @@ operator|.
 name|trim
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
 block|}
 if|if
@@ -774,7 +774,7 @@ operator|.
 name|trim
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
 block|}
 if|if
@@ -805,7 +805,7 @@ operator|.
 name|trim
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
 block|}
 return|return

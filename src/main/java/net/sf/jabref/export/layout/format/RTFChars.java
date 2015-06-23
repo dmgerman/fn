@@ -173,7 +173,7 @@ else|:
 literal|""
 operator|)
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 name|System
@@ -189,7 +189,7 @@ operator|.
 name|toString
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 comment|/**/
@@ -213,7 +213,7 @@ literal|"Char: '"
 operator|+
 name|c
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 if|if
@@ -750,7 +750,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"}"
+literal|'}'
 argument_list|)
 expr_stmt|;
 block|}
@@ -803,7 +803,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"}"
+literal|'}'
 argument_list|)
 expr_stmt|;
 block|}

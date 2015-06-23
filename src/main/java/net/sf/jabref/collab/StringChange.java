@@ -197,7 +197,7 @@ literal|": '"
 operator|+
 name|label
 operator|+
-literal|"'"
+literal|'\''
 expr_stmt|;
 name|this
 operator|.

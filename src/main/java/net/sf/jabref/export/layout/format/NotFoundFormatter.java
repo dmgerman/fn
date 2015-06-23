@@ -103,7 +103,7 @@ name|fieldText
 parameter_list|)
 block|{
 return|return
-literal|"["
+literal|'['
 operator|+
 name|Globals
 operator|.

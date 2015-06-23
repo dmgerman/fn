@@ -733,7 +733,7 @@ literal|"lastBeginning:>"
 operator|+
 name|lastBeginning
 operator|+
-literal|"<"
+literal|'<'
 argument_list|)
 expr_stmt|;
 if|if
@@ -1001,7 +1001,7 @@ literal|"currentword:>"
 operator|+
 name|currentword
 operator|+
-literal|"<"
+literal|'<'
 argument_list|)
 expr_stmt|;
 name|AutoCompleteListener
@@ -1014,7 +1014,7 @@ literal|"prefix:>"
 operator|+
 name|prefix
 operator|+
-literal|"<"
+literal|'<'
 argument_list|)
 expr_stmt|;
 name|AutoCompleteListener
@@ -1027,7 +1027,7 @@ literal|"cword:>"
 operator|+
 name|cWord
 operator|+
-literal|"<"
+literal|'<'
 argument_list|)
 expr_stmt|;
 block|}
@@ -1112,7 +1112,7 @@ literal|"toSetIn:>"
 operator|+
 name|toSetIn
 operator|+
-literal|"<"
+literal|'<'
 argument_list|)
 expr_stmt|;
 block|}
@@ -1217,7 +1217,7 @@ literal|"Appending>"
 operator|+
 name|ch
 operator|+
-literal|"<"
+literal|'<'
 argument_list|)
 expr_stmt|;
 if|if
@@ -1413,7 +1413,7 @@ literal|"toSetIn:>"
 operator|+
 name|toSetIn
 operator|+
-literal|"<"
+literal|'<'
 argument_list|)
 expr_stmt|;
 block|}
@@ -1715,7 +1715,7 @@ literal|"toSetIn:>"
 operator|+
 name|toSetIn
 operator|+
-literal|"<"
+literal|'<'
 argument_list|)
 expr_stmt|;
 name|AutoCompleteListener
@@ -1728,7 +1728,7 @@ literal|"lastBeginning:>"
 operator|+
 name|lastBeginning
 operator|+
-literal|"<"
+literal|'<'
 argument_list|)
 expr_stmt|;
 block|}

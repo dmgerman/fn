@@ -3156,7 +3156,7 @@ operator|=
 operator|new
 name|JMenu
 argument_list|(
-literal|"["
+literal|'['
 operator|+
 name|node
 operator|.
@@ -3166,7 +3166,7 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|"]"
+literal|']'
 argument_list|)
 expr_stmt|;
 comment|// setEnabled(true) is done above/below if at least one menu
