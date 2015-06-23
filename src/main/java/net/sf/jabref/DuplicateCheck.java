@@ -1001,15 +1001,7 @@ argument_list|(
 name|to
 argument_list|)
 operator|)
-condition|)
-block|{
-name|score
-operator|++
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
+operator|||
 operator|(
 name|en
 operator|==

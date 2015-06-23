@@ -215,24 +215,8 @@ name|setSaveInOriginalOrder
 argument_list|()
 expr_stmt|;
 block|}
-elseif|else
-if|if
-condition|(
-literal|"specified"
-operator|.
-name|equals
-argument_list|(
-name|choice
-argument_list|)
-condition|)
-block|{
-name|setSaveInSpecifiedOrder
-argument_list|()
-expr_stmt|;
-block|}
 else|else
 block|{
-comment|// fallback
 name|setSaveInSpecifiedOrder
 argument_list|()
 expr_stmt|;

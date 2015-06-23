@@ -393,32 +393,7 @@ name|disk
 operator|.
 name|isEmpty
 argument_list|()
-condition|)
-block|{
-comment|// Added externally.
-name|add
-argument_list|(
-operator|new
-name|FieldChange
-argument_list|(
-name|field
-argument_list|,
-name|memEntry
-argument_list|,
-name|tmpEntry
-argument_list|,
-name|mem
-argument_list|,
-name|tmp
-argument_list|,
-name|disk
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
+operator|||
 operator|(
 name|disk
 operator|==
@@ -450,7 +425,7 @@ name|isEmpty
 argument_list|()
 condition|)
 block|{
-comment|// Deleted externally and not locally.
+comment|// Added externally.
 name|add
 argument_list|(
 operator|new

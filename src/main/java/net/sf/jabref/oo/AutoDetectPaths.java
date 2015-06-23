@@ -1521,19 +1521,7 @@ name|equals
 argument_list|(
 literal|"program files"
 argument_list|)
-condition|)
-block|{
-name|dirList
-operator|.
-name|add
-argument_list|(
-name|dir
-argument_list|)
-expr_stmt|;
-block|}
-elseif|else
-if|if
-condition|(
+operator|||
 name|dir
 operator|.
 name|getName

@@ -313,11 +313,7 @@ operator|==
 name|LayoutHelper
 operator|.
 name|IS_FIELD_START
-condition|)
-block|{         }
-elseif|else
-if|if
-condition|(
+operator|||
 name|si
 operator|.
 name|i
@@ -636,11 +632,7 @@ operator|==
 name|LayoutHelper
 operator|.
 name|IS_LAYOUT_TEXT
-condition|)
-block|{             }
-elseif|else
-if|if
-condition|(
+operator|||
 name|si
 operator|.
 name|i
