@@ -115,6 +115,7 @@ name|LargeHTMLEditorKit
 block|{
 DECL|class|MyNextVisualPositionAction
 specifier|public
+specifier|static
 class|class
 name|MyNextVisualPositionAction
 extends|extends

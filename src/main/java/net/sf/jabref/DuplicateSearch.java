@@ -910,6 +910,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|DuplicateCallBack
+specifier|static
 class|class
 name|DuplicateCallBack
 implements|implements

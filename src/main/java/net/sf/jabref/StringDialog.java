@@ -2360,6 +2360,7 @@ name|this
 argument_list|)
 decl_stmt|;
 DECL|class|StoreContentAction
+specifier|static
 class|class
 name|StoreContentAction
 extends|extends

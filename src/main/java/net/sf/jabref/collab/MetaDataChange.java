@@ -534,6 +534,7 @@ literal|true
 return|;
 block|}
 DECL|class|MetaDataChangeUnit
+specifier|static
 class|class
 name|MetaDataChangeUnit
 block|{

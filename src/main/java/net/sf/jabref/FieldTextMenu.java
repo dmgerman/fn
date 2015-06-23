@@ -474,6 +474,7 @@ block|}
 comment|// ---------------------------------------------------------------------------
 DECL|class|BasicAction
 specifier|abstract
+specifier|static
 class|class
 name|BasicAction
 extends|extends

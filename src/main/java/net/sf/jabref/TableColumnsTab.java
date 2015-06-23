@@ -592,6 +592,7 @@ name|oldWriteSpecialFields
 decl_stmt|;
 comment|/*** end: special fields ***/
 DECL|class|TableRow
+specifier|static
 class|class
 name|TableRow
 block|{

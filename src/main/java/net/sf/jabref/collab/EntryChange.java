@@ -578,6 +578,7 @@ argument_list|)
 return|;
 block|}
 DECL|class|FieldChange
+specifier|static
 class|class
 name|FieldChange
 extends|extends

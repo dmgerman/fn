@@ -657,6 +657,7 @@ return|;
 block|}
 comment|/**      * A class containing the File, the FileUpdateListener and the current time stamp for one file.      */
 DECL|class|Entry
+specifier|static
 class|class
 name|Entry
 block|{

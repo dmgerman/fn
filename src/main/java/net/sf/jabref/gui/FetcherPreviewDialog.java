@@ -1074,6 +1074,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|class|TableEntry
+specifier|static
 class|class
 name|TableEntry
 block|{
@@ -1158,6 +1159,7 @@ return|;
 block|}
 block|}
 DECL|class|PreviewRenderer
+specifier|static
 class|class
 name|PreviewRenderer
 implements|implements
@@ -1412,6 +1414,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|EntryTableFormat
+specifier|static
 class|class
 name|EntryTableFormat
 implements|implements

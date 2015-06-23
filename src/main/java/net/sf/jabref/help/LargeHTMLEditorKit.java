@@ -529,6 +529,7 @@ block|}
 block|}
 DECL|class|HTMLBlockView
 specifier|private
+specifier|static
 class|class
 name|HTMLBlockView
 extends|extends

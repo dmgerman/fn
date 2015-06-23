@@ -14586,6 +14586,7 @@ block|}
 comment|/*private class ForegroundLabel extends JLabel {          public ForegroundLabel(String s) {              super(s);              setFont(new Font("plain", Font.BOLD, 70));              setHorizontalAlignment(JLabel.CENTER);          }          public void paint(Graphics g) {             Graphics2D g2 = (Graphics2D)g;             g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);             super.paint(g2);    //To change body of overridden methods use File | Settings | File Templates.         }     }       */
 DECL|class|MyGlassPane
 specifier|private
+specifier|static
 class|class
 name|MyGlassPane
 extends|extends

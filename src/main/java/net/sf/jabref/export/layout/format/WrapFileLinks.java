@@ -1181,6 +1181,7 @@ block|}
 comment|/**      * This class defines the building blocks of a parsed format strings. Each FormatEntry      * represents either a literal string or a piece of information pertaining to the file      * link to be exported or to the iteration through a series of file links. For literal      * strings this class encapsulates the literal itself, while for other types of information,      * only a type code is provided, and the subclass needs to fill in the proper information      * based on the file link to be exported or the iteration status.      */
 DECL|class|FormatEntry
 specifier|protected
+specifier|static
 class|class
 name|FormatEntry
 block|{

@@ -162,6 +162,7 @@ init|=
 literal|3
 decl_stmt|;
 DECL|class|TypeButton
+specifier|static
 class|class
 name|TypeButton
 extends|extends

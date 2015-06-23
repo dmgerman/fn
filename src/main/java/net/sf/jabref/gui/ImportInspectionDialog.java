@@ -4749,6 +4749,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|MyTable
+specifier|static
 class|class
 name|MyTable
 extends|extends
@@ -4791,6 +4792,7 @@ return|;
 block|}
 block|}
 DECL|class|MyTableModel
+specifier|static
 class|class
 name|MyTableModel
 extends|extends

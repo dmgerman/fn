@@ -3043,6 +3043,7 @@ block|{
 comment|// nothing to do
 block|}
 DECL|class|ChangeTypeAction
+specifier|static
 class|class
 name|ChangeTypeAction
 extends|extends

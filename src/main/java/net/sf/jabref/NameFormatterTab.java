@@ -419,6 +419,7 @@ literal|10
 argument_list|)
 decl_stmt|;
 DECL|class|TableRow
+specifier|static
 class|class
 name|TableRow
 block|{

@@ -1085,6 +1085,7 @@ return|;
 block|}
 DECL|class|IntAndString
 specifier|private
+specifier|static
 class|class
 name|IntAndString
 block|{

@@ -651,6 +651,7 @@ block|}
 comment|// All writes to this print stream are copied to two print streams
 DECL|class|TeeStream
 specifier|public
+specifier|static
 class|class
 name|TeeStream
 extends|extends
