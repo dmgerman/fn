@@ -182,6 +182,8 @@ operator|=
 name|doneTextPattern
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|action ()
 specifier|public
 name|void
@@ -217,7 +219,9 @@ name|bes
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 for|for
 control|(
 name|BibtexEntry
@@ -291,6 +295,7 @@ if|if
 condition|(
 name|nullFieldIfValueIsTheSame
 condition|)
+block|{
 name|outText
 operator|=
 name|Globals
@@ -309,7 +314,9 @@ name|length
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|outText
 operator|=
 name|Globals
@@ -330,6 +337,7 @@ name|length
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|frame
 operator|.
 name|output

@@ -219,11 +219,13 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|setText
 argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
+block|}
 name|this
 operator|.
 name|prefs
@@ -296,11 +298,13 @@ argument_list|()
 expr_stmt|;
 block|}
 else|else
+block|{
 name|setEnabled
 argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Adds the file name to the top of the menu. If it already is in      * the menu, it is merely moved to the top.      *      * @param filename a<code>String</code> value      */
 DECL|method|newFile (String filename)
@@ -341,6 +345,7 @@ argument_list|(
 name|filename
 argument_list|)
 condition|)
+block|{
 name|history
 operator|.
 name|remove
@@ -349,6 +354,7 @@ name|i
 operator|--
 argument_list|)
 expr_stmt|;
+block|}
 name|i
 operator|++
 expr_stmt|;
@@ -390,11 +396,13 @@ operator|!
 name|isEnabled
 argument_list|()
 condition|)
+block|{
 name|setEnabled
 argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|setItems ()
 specifier|private
@@ -614,6 +622,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|names
 index|[
 name|i
@@ -626,6 +635,7 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
+block|}
 name|prefs
 operator|.
 name|putStringArray
@@ -637,6 +647,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -747,6 +759,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run

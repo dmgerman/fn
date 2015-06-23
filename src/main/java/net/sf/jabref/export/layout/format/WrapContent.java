@@ -60,6 +60,8 @@ name|after
 init|=
 literal|null
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|setArgument (String arg)
 specifier|public
 name|void
@@ -73,6 +75,8 @@ name|String
 index|[]
 name|parts
 init|=
+name|AbstractParamLayoutFormatter
+operator|.
 name|parseArgument
 argument_list|(
 name|arg
@@ -86,7 +90,9 @@ name|length
 operator|<
 literal|2
 condition|)
+block|{
 return|return;
+block|}
 name|before
 operator|=
 name|parts
@@ -102,6 +108,8 @@ literal|1
 index|]
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -117,9 +125,11 @@ name|before
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 if|if
 condition|(
 name|fieldText
@@ -129,10 +139,13 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 else|else
+block|{
 return|return
 name|before
 operator|+
@@ -140,6 +153,7 @@ name|fieldText
 operator|+
 name|after
 return|;
+block|}
 block|}
 block|}
 end_class

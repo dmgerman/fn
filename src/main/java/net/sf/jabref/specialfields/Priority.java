@@ -306,11 +306,15 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|Priority
+operator|.
 name|INSTANCE
 operator|==
 literal|null
 condition|)
 block|{
+name|Priority
+operator|.
 name|INSTANCE
 operator|=
 operator|new
@@ -319,9 +323,13 @@ argument_list|()
 expr_stmt|;
 block|}
 return|return
+name|Priority
+operator|.
 name|INSTANCE
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getFieldName ()
 specifier|public
 name|String
@@ -334,6 +342,8 @@ operator|.
 name|FIELDNAME_PRIORITY
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRepresentingIcon ()
 specifier|public
 name|ImageIcon
@@ -346,6 +356,8 @@ operator|.
 name|icon
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getToolTip ()
 specifier|public
 name|String
@@ -361,6 +373,8 @@ literal|"Priority"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getMenuString ()
 specifier|public
 name|String

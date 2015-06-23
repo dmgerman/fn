@@ -158,9 +158,11 @@ name|groups
 operator|.
 name|get
 argument_list|(
+operator|(
 literal|3
 operator|*
 name|i
+operator|)
 operator|+
 literal|1
 argument_list|)
@@ -171,9 +173,11 @@ name|groups
 operator|.
 name|get
 argument_list|(
+operator|(
 literal|3
 operator|*
 name|i
+operator|)
 operator|+
 literal|2
 argument_list|)
@@ -360,6 +364,8 @@ block|{
 name|String
 name|subtree
 init|=
+name|Version0_1
+operator|.
 name|getSubtree
 argument_list|(
 name|s
@@ -367,6 +373,8 @@ argument_list|)
 decl_stmt|;
 name|newNode
 operator|=
+name|Version0_1
+operator|.
 name|fromString
 argument_list|(
 name|subtree
@@ -412,6 +420,8 @@ else|else
 block|{
 name|i
 operator|=
+name|Version0_1
+operator|.
 name|indexOfUnquoted
 argument_list|(
 name|s
@@ -442,6 +452,7 @@ name|i
 operator|>=
 literal|0
 condition|)
+block|{
 name|s
 operator|=
 name|s
@@ -453,11 +464,14 @@ operator|+
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|s
 operator|=
 literal|""
 expr_stmt|;
+block|}
 name|newNode
 operator|=
 operator|new
@@ -489,12 +503,14 @@ name|root
 operator|==
 literal|null
 condition|)
-comment|// first node will be root
+block|{
 name|root
 operator|=
 name|newNode
 expr_stmt|;
+block|}
 else|else
+block|{
 name|root
 operator|.
 name|add
@@ -502,6 +518,7 @@ argument_list|(
 name|newNode
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|root
@@ -574,6 +591,7 @@ name|level
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|s
 operator|.
@@ -584,6 +602,7 @@ argument_list|,
 name|i
 argument_list|)
 return|;
+block|}
 break|break;
 block|}
 operator|++
@@ -653,9 +672,11 @@ argument_list|)
 operator|==
 name|c
 condition|)
+block|{
 return|return
 name|i
 return|;
+block|}
 block|}
 operator|++
 name|i
@@ -763,7 +784,9 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 continue|continue;
+block|}
 name|spaceIndex
 operator|=
 name|s
@@ -779,6 +802,7 @@ name|spaceIndex
 operator|<=
 literal|0
 condition|)
+block|{
 throw|throw
 operator|new
 name|Exception
@@ -787,6 +811,7 @@ literal|"bad format"
 argument_list|)
 throw|;
 comment|// JZTODO lyrics
+block|}
 name|level
 operator|=
 name|Integer
@@ -860,6 +885,7 @@ operator|.
 name|getLevel
 argument_list|()
 condition|)
+block|{
 name|cursor
 operator|=
 operator|(
@@ -870,6 +896,7 @@ operator|.
 name|getParent
 argument_list|()
 expr_stmt|;
+block|}
 name|cursor
 operator|.
 name|add

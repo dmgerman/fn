@@ -165,6 +165,8 @@ name|buf
 parameter_list|)
 block|{
 return|return
+name|WSITools
+operator|.
 name|tokenize
 argument_list|(
 name|vcr

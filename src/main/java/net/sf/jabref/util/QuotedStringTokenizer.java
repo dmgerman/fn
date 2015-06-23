@@ -104,13 +104,17 @@ name|m_index
 argument_list|)
 argument_list|)
 operator|&&
+operator|(
 name|m_index
 operator|<
 name|m_contentLength
+operator|)
 condition|)
+block|{
 operator|++
 name|m_index
 expr_stmt|;
+block|}
 block|}
 DECL|method|nextToken ()
 specifier|public
@@ -161,7 +165,7 @@ name|m_index
 operator|<
 name|m_contentLength
 condition|)
-comment|// sanity check
+block|{
 name|sb
 operator|.
 name|append
@@ -175,6 +179,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// ignore for delimiter search!
+block|}
 block|}
 elseif|else
 if|if
@@ -195,9 +200,11 @@ expr_stmt|;
 block|}
 do|while
 condition|(
+operator|(
 name|m_index
 operator|<
 name|m_contentLength
+operator|)
 operator|&&
 name|isDelimiter
 argument_list|(
@@ -218,6 +225,7 @@ argument_list|()
 return|;
 block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -225,6 +233,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 operator|++
 name|m_index
 expr_stmt|;

@@ -584,6 +584,8 @@ name|requestFocus
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|hyperlinkUpdate (HyperlinkEvent e)
 specifier|public
 name|void
@@ -657,6 +659,8 @@ expr_stmt|;
 comment|// , new ImageIcon(GUIGlobals.closeIconFile));
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -668,6 +672,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -707,6 +713,8 @@ argument_list|)
 expr_stmt|;
 comment|// putValue(SHORT_DESCRIPTION, "Show the previous page");
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -757,6 +765,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -807,6 +817,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

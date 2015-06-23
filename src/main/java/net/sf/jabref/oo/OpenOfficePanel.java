@@ -313,6 +313,8 @@ name|postLayoutSupported
 decl_stmt|;
 static|static
 block|{
+name|OpenOfficePanel
+operator|.
 name|postLayoutSupported
 operator|=
 literal|true
@@ -353,6 +355,8 @@ name|NoSuchMethodError
 name|ex
 parameter_list|)
 block|{
+name|OpenOfficePanel
+operator|.
 name|postLayoutSupported
 operator|=
 literal|false
@@ -695,17 +699,25 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|OpenOfficePanel
+operator|.
 name|instance
 operator|==
 literal|null
 condition|)
+block|{
+name|OpenOfficePanel
+operator|.
 name|instance
 operator|=
 operator|new
 name|OpenOfficePanel
 argument_list|()
 expr_stmt|;
+block|}
 return|return
+name|OpenOfficePanel
+operator|.
 name|instance
 return|;
 block|}
@@ -730,6 +742,8 @@ literal|"/images/connect_no.png"
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|OpenOfficePanel
+operator|.
 name|connect
 operator|=
 operator|new
@@ -738,6 +752,8 @@ argument_list|(
 name|connectImage
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|manualConnect
 operator|=
 operator|new
@@ -746,6 +762,8 @@ argument_list|(
 name|connectImage
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|connect
 operator|.
 name|setToolTipText
@@ -758,6 +776,8 @@ literal|"Connect"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|manualConnect
 operator|.
 name|setToolTipText
@@ -770,6 +790,8 @@ literal|"Manual connect"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|selectDocument
 operator|=
 operator|new
@@ -783,6 +805,8 @@ literal|"open"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|selectDocument
 operator|.
 name|setToolTipText
@@ -795,6 +819,8 @@ literal|"Select Writer document"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|update
 operator|=
 operator|new
@@ -808,6 +834,8 @@ literal|"refresh"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|update
 operator|.
 name|setToolTipText
@@ -1076,6 +1104,8 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|styleFile
 operator|=
 name|Globals
@@ -1088,6 +1118,8 @@ literal|"ooBibliographyStyleFile"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getSidePaneComponent ()
 specifier|public
 name|SidePaneComponent
@@ -1098,6 +1130,8 @@ return|return
 name|comp
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|init (JabRefFrame frame, SidePaneManager manager)
 specifier|public
 name|void
@@ -1173,6 +1207,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getMenuItem ()
 specifier|public
 name|JMenuItem
@@ -1190,6 +1226,7 @@ argument_list|(
 literal|"showOOPanel"
 argument_list|)
 condition|)
+block|{
 name|manager
 operator|.
 name|show
@@ -1198,6 +1235,7 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|JMenuItem
 name|item
 init|=
@@ -1227,6 +1265,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1251,6 +1291,8 @@ return|return
 name|item
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getShortcutKey ()
 specifier|public
 name|String
@@ -1267,6 +1309,8 @@ name|void
 name|initPanel
 parameter_list|()
 block|{
+name|OpenOfficePanel
+operator|.
 name|useDefaultAuthoryearStyle
 operator|=
 name|Globals
@@ -1278,6 +1322,8 @@ argument_list|(
 literal|"ooUseDefaultAuthoryearStyle"
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|useDefaultNumericalStyle
 operator|=
 name|Globals
@@ -1296,6 +1342,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1312,6 +1360,8 @@ expr_stmt|;
 block|}
 block|}
 decl_stmt|;
+name|OpenOfficePanel
+operator|.
 name|connect
 operator|.
 name|addActionListener
@@ -1319,6 +1369,8 @@ argument_list|(
 name|al
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|manualConnect
 operator|.
 name|addActionListener
@@ -1327,6 +1379,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1344,6 +1398,8 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|selectDocument
 operator|.
 name|setToolTipText
@@ -1356,6 +1412,8 @@ literal|"Select which open Writer document to work on"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|selectDocument
 operator|.
 name|addActionListener
@@ -1364,6 +1422,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1374,11 +1434,15 @@ parameter_list|)
 block|{
 try|try
 block|{
+name|OpenOfficePanel
+operator|.
 name|ooBase
 operator|.
 name|selectDocument
 argument_list|()
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|frame
 operator|.
 name|output
@@ -1392,6 +1456,8 @@ argument_list|)
 operator|+
 literal|": "
 operator|+
+name|OpenOfficePanel
+operator|.
 name|ooBase
 operator|.
 name|getCurrentDocumentTitle
@@ -1409,6 +1475,8 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|frame
 argument_list|,
 name|ex
@@ -1433,6 +1501,8 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|setStyleFile
 operator|.
 name|addActionListener
@@ -1441,6 +1511,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1461,8 +1533,12 @@ operator|=
 operator|new
 name|StyleSelectDialog
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|frame
 argument_list|,
+name|OpenOfficePanel
+operator|.
 name|styleFile
 argument_list|)
 expr_stmt|;
@@ -1482,6 +1558,8 @@ name|isOkPressed
 argument_list|()
 condition|)
 block|{
+name|OpenOfficePanel
+operator|.
 name|useDefaultAuthoryearStyle
 operator|=
 name|Globals
@@ -1493,6 +1571,8 @@ argument_list|(
 literal|"ooUseDefaultAuthoryearStyle"
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|useDefaultNumericalStyle
 operator|=
 name|Globals
@@ -1504,6 +1584,8 @@ argument_list|(
 literal|"ooUseDefaultNumericalStyle"
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|styleFile
 operator|=
 name|Globals
@@ -1538,6 +1620,8 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|pushEntries
 operator|.
 name|setToolTipText
@@ -1550,6 +1634,8 @@ literal|"Cite selected entries"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|pushEntries
 operator|.
 name|addActionListener
@@ -1558,6 +1644,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1579,6 +1667,8 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|pushEntriesInt
 operator|.
 name|setToolTipText
@@ -1591,6 +1681,8 @@ literal|"Cite selected entries with in-text citation"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|pushEntriesInt
 operator|.
 name|addActionListener
@@ -1599,6 +1691,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1620,6 +1714,8 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|pushEntriesEmpty
 operator|.
 name|setToolTipText
@@ -1632,6 +1728,8 @@ literal|"Insert a citation without text (the entry will appear in the reference 
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|pushEntriesEmpty
 operator|.
 name|addActionListener
@@ -1640,6 +1738,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1661,6 +1761,8 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|pushEntriesAdvanced
 operator|.
 name|setToolTipText
@@ -1673,6 +1775,8 @@ literal|"Cite selected entries with extra information"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|pushEntriesAdvanced
 operator|.
 name|addActionListener
@@ -1681,6 +1785,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1702,6 +1808,8 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|focus
 operator|.
 name|addActionListener
@@ -1710,6 +1818,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1718,6 +1828,8 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+name|OpenOfficePanel
+operator|.
 name|ooBase
 operator|.
 name|setFocus
@@ -1727,6 +1839,8 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|update
 operator|.
 name|setToolTipText
@@ -1746,6 +1860,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1760,19 +1876,27 @@ try|try
 block|{
 if|if
 condition|(
+name|OpenOfficePanel
+operator|.
 name|style
 operator|==
 literal|null
 condition|)
+block|{
 name|readStyleFile
 argument_list|()
 expr_stmt|;
+block|}
 else|else
+block|{
+name|OpenOfficePanel
+operator|.
 name|style
 operator|.
 name|ensureUpToDate
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1784,6 +1908,8 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|frame
 argument_list|,
 name|Globals
@@ -1807,6 +1933,8 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
+name|OpenOfficePanel
+operator|.
 name|ooBase
 operator|.
 name|updateSortedReferenceMarks
@@ -1835,21 +1963,29 @@ name|String
 argument_list|>
 name|unresolvedKeys
 init|=
+name|OpenOfficePanel
+operator|.
 name|ooBase
 operator|.
 name|refreshCiteMarkers
 argument_list|(
 name|databases
 argument_list|,
+name|OpenOfficePanel
+operator|.
 name|style
 argument_list|)
 decl_stmt|;
+name|OpenOfficePanel
+operator|.
 name|ooBase
 operator|.
 name|rebuildBibTextSection
 argument_list|(
 name|databases
 argument_list|,
+name|OpenOfficePanel
+operator|.
 name|style
 argument_list|)
 expr_stmt|;
@@ -1868,6 +2004,8 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|frame
 argument_list|,
 name|Globals
@@ -1942,6 +2080,8 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|frame
 argument_list|,
 name|Globals
@@ -1984,6 +2124,8 @@ block|}
 block|}
 block|}
 decl_stmt|;
+name|OpenOfficePanel
+operator|.
 name|update
 operator|.
 name|addActionListener
@@ -1991,6 +2133,8 @@ argument_list|(
 name|updateAction
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|insertFullRef
 operator|.
 name|addActionListener
@@ -1999,6 +2143,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2029,6 +2175,8 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|merge
 operator|.
 name|setToolTipText
@@ -2041,6 +2189,8 @@ literal|"Combine pairs of citations that are separated by spaces only"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|merge
 operator|.
 name|addActionListener
@@ -2049,6 +2199,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2059,6 +2211,8 @@ parameter_list|)
 block|{
 try|try
 block|{
+name|OpenOfficePanel
+operator|.
 name|ooBase
 operator|.
 name|combineCiteMarkers
@@ -2066,6 +2220,8 @@ argument_list|(
 name|getBaseList
 argument_list|()
 argument_list|,
+name|OpenOfficePanel
+operator|.
 name|style
 argument_list|)
 expr_stmt|;
@@ -2098,6 +2254,8 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|settingsB
 operator|.
 name|addActionListener
@@ -2106,6 +2264,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2121,6 +2281,8 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|help
 operator|.
 name|addActionListener
@@ -2136,6 +2298,8 @@ literal|"OpenOfficeIntegration.html"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|manageCitations
 operator|.
 name|addActionListener
@@ -2144,6 +2308,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2160,8 +2326,12 @@ init|=
 operator|new
 name|CitationManager
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|frame
 argument_list|,
+name|OpenOfficePanel
+operator|.
 name|ooBase
 argument_list|)
 decl_stmt|;
@@ -2187,6 +2357,8 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|test
 operator|.
 name|addActionListener
@@ -2195,6 +2367,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2230,6 +2404,8 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|selectDocument
 operator|.
 name|setEnabled
@@ -2237,6 +2413,8 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|pushEntries
 operator|.
 name|setEnabled
@@ -2244,6 +2422,8 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|pushEntriesInt
 operator|.
 name|setEnabled
@@ -2251,6 +2431,8 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|pushEntriesEmpty
 operator|.
 name|setEnabled
@@ -2258,6 +2440,8 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|pushEntriesAdvanced
 operator|.
 name|setEnabled
@@ -2265,6 +2449,8 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|focus
 operator|.
 name|setEnabled
@@ -2272,6 +2458,8 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|update
 operator|.
 name|setEnabled
@@ -2279,6 +2467,8 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|insertFullRef
 operator|.
 name|setEnabled
@@ -2286,6 +2476,8 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|merge
 operator|.
 name|setEnabled
@@ -2293,6 +2485,8 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|manageCitations
 operator|.
 name|setEnabled
@@ -2300,6 +2494,8 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|test
 operator|.
 name|setEnabled
@@ -2360,6 +2556,8 @@ name|bb
 operator|.
 name|append
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|connect
 argument_list|)
 expr_stmt|;
@@ -2367,6 +2565,8 @@ name|bb
 operator|.
 name|append
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|manualConnect
 argument_list|)
 expr_stmt|;
@@ -2374,6 +2574,8 @@ name|bb
 operator|.
 name|append
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|selectDocument
 argument_list|)
 expr_stmt|;
@@ -2381,6 +2583,8 @@ name|bb
 operator|.
 name|append
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|update
 argument_list|)
 expr_stmt|;
@@ -2388,6 +2592,8 @@ name|bb
 operator|.
 name|append
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|help
 argument_list|)
 expr_stmt|;
@@ -2408,6 +2614,8 @@ name|b
 operator|.
 name|append
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|setStyleFile
 argument_list|)
 expr_stmt|;
@@ -2415,6 +2623,8 @@ name|b
 operator|.
 name|append
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|pushEntries
 argument_list|)
 expr_stmt|;
@@ -2422,6 +2632,8 @@ name|b
 operator|.
 name|append
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|pushEntriesInt
 argument_list|)
 expr_stmt|;
@@ -2429,6 +2641,8 @@ name|b
 operator|.
 name|append
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|pushEntriesAdvanced
 argument_list|)
 expr_stmt|;
@@ -2436,6 +2650,8 @@ name|b
 operator|.
 name|append
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|pushEntriesEmpty
 argument_list|)
 expr_stmt|;
@@ -2443,6 +2659,8 @@ name|b
 operator|.
 name|append
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|merge
 argument_list|)
 expr_stmt|;
@@ -2450,6 +2668,8 @@ name|b
 operator|.
 name|append
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|manageCitations
 argument_list|)
 expr_stmt|;
@@ -2457,6 +2677,8 @@ name|b
 operator|.
 name|append
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|settingsB
 argument_list|)
 expr_stmt|;
@@ -2502,6 +2724,8 @@ operator|.
 name|CENTER
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|frame
 operator|.
 name|getTabbedPane
@@ -2528,6 +2752,8 @@ argument_list|,
 literal|"Refresh OO"
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|frame
 operator|.
 name|getTabbedPane
@@ -2597,6 +2823,8 @@ literal|0
 init|;
 name|i
 operator|<
+name|OpenOfficePanel
+operator|.
 name|frame
 operator|.
 name|baseCount
@@ -2605,10 +2833,13 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|databases
 operator|.
 name|add
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|frame
 operator|.
 name|baseAt
@@ -2621,11 +2852,15 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 else|else
+block|{
 name|databases
 operator|.
 name|add
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|frame
 operator|.
 name|basePanel
@@ -2635,6 +2870,7 @@ name|database
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|databases
 return|;
@@ -2731,7 +2967,9 @@ condition|(
 operator|!
 name|autoDetected
 condition|)
+block|{
 return|return;
+block|}
 comment|// User clicked Auto, and the system successfully detected paths:
 name|unoilDir
 operator|=
@@ -2781,7 +3019,9 @@ condition|(
 operator|!
 name|dialogOkPressed
 condition|)
+block|{
 return|return;
+block|}
 name|String
 name|ooPath
 init|=
@@ -2984,6 +3224,7 @@ operator|.
 name|exists
 argument_list|()
 condition|)
+block|{
 throw|throw
 operator|new
 name|Exception
@@ -3006,6 +3247,7 @@ name|getPath
 argument_list|()
 argument_list|)
 throw|;
+block|}
 name|jarList
 index|[
 name|i
@@ -3023,6 +3265,8 @@ name|toURL
 argument_list|()
 expr_stmt|;
 block|}
+name|OpenOfficePanel
+operator|.
 name|addURL
 argument_list|(
 name|jarList
@@ -3081,6 +3325,8 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+name|OpenOfficePanel
+operator|.
 name|ooBase
 operator|==
 literal|null
@@ -3092,11 +3338,16 @@ throw|;
 block|}
 if|if
 condition|(
+name|OpenOfficePanel
+operator|.
 name|ooBase
 operator|.
 name|isConnectedToDocument
 argument_list|()
 condition|)
+block|{
+name|OpenOfficePanel
+operator|.
 name|frame
 operator|.
 name|output
@@ -3110,13 +3361,18 @@ argument_list|)
 operator|+
 literal|": "
 operator|+
+name|OpenOfficePanel
+operator|.
 name|ooBase
 operator|.
 name|getCurrentDocumentTitle
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Enable actions that depend on Connect:
+name|OpenOfficePanel
+operator|.
 name|selectDocument
 operator|.
 name|setEnabled
@@ -3124,6 +3380,8 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|pushEntries
 operator|.
 name|setEnabled
@@ -3131,6 +3389,8 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|pushEntriesInt
 operator|.
 name|setEnabled
@@ -3138,6 +3398,8 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|pushEntriesEmpty
 operator|.
 name|setEnabled
@@ -3145,6 +3407,8 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|pushEntriesAdvanced
 operator|.
 name|setEnabled
@@ -3152,6 +3416,8 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|focus
 operator|.
 name|setEnabled
@@ -3159,6 +3425,8 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|update
 operator|.
 name|setEnabled
@@ -3166,6 +3434,8 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|insertFullRef
 operator|.
 name|setEnabled
@@ -3173,6 +3443,8 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|merge
 operator|.
 name|setEnabled
@@ -3180,6 +3452,8 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|manageCitations
 operator|.
 name|setEnabled
@@ -3187,6 +3461,8 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|test
 operator|.
 name|setEnabled
@@ -3217,6 +3493,8 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|frame
 argument_list|,
 name|Globals
@@ -3236,6 +3514,8 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|frame
 argument_list|,
 name|Globals
@@ -3258,6 +3538,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -3267,6 +3549,8 @@ block|{
 try|try
 block|{
 comment|// Connect:
+name|OpenOfficePanel
+operator|.
 name|ooBase
 operator|=
 operator|new
@@ -3284,6 +3568,8 @@ name|Throwable
 name|e
 parameter_list|)
 block|{
+name|OpenOfficePanel
+operator|.
 name|ooBase
 operator|=
 literal|null
@@ -3306,6 +3592,8 @@ name|Exception
 block|{
 if|if
 condition|(
+name|OpenOfficePanel
+operator|.
 name|useDefaultAuthoryearStyle
 condition|)
 block|{
@@ -3318,6 +3606,8 @@ name|class
 operator|.
 name|getResource
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|defaultAuthorYearStylePath
 argument_list|)
 decl_stmt|;
@@ -3333,6 +3623,8 @@ name|openStream
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|OpenOfficePanel
+operator|.
 name|style
 operator|=
 operator|new
@@ -3345,6 +3637,8 @@ block|}
 elseif|else
 if|if
 condition|(
+name|OpenOfficePanel
+operator|.
 name|useDefaultNumericalStyle
 condition|)
 block|{
@@ -3357,6 +3651,8 @@ name|class
 operator|.
 name|getResource
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|defaultNumericalStylePath
 argument_list|)
 decl_stmt|;
@@ -3372,6 +3668,8 @@ name|openStream
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|OpenOfficePanel
+operator|.
 name|style
 operator|=
 operator|new
@@ -3383,6 +3681,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|OpenOfficePanel
+operator|.
 name|style
 operator|=
 operator|new
@@ -3391,6 +3691,8 @@ argument_list|(
 operator|new
 name|File
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|styleFile
 argument_list|)
 argument_list|)
@@ -3461,6 +3763,8 @@ name|getDeclaredMethod
 argument_list|(
 literal|"addURL"
 argument_list|,
+name|OpenOfficePanel
+operator|.
 name|parameters
 argument_list|)
 decl_stmt|;
@@ -3478,6 +3782,7 @@ name|anU
 range|:
 name|u
 control|)
+block|{
 name|method
 operator|.
 name|invoke
@@ -3487,6 +3792,7 @@ argument_list|,
 name|anU
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -3590,6 +3896,8 @@ init|=
 operator|new
 name|JDialog
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|frame
 argument_list|,
 name|Globals
@@ -3906,6 +4214,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -3971,6 +4281,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -4020,6 +4332,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -4151,6 +4465,8 @@ name|diag
 operator|.
 name|setLocationRelativeTo
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|frame
 argument_list|)
 expr_stmt|;
@@ -4180,6 +4496,8 @@ block|{
 if|if
 condition|(
 operator|!
+name|OpenOfficePanel
+operator|.
 name|ooBase
 operator|.
 name|isConnectedToDocument
@@ -4190,6 +4508,8 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|frame
 argument_list|,
 name|Globals
@@ -4231,6 +4551,8 @@ init|=
 operator|new
 name|AdvancedCiteDialog
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|frame
 argument_list|)
 decl_stmt|;
@@ -4246,7 +4568,9 @@ operator|.
 name|cancelled
 argument_list|()
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|acd
@@ -4259,6 +4583,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|pageInfo
 operator|=
 name|acd
@@ -4266,6 +4591,7 @@ operator|.
 name|getPageInfo
 argument_list|()
 expr_stmt|;
+block|}
 name|inParenthesis
 operator|=
 name|acd
@@ -4277,6 +4603,8 @@ block|}
 name|BasePanel
 name|panel
 init|=
+name|OpenOfficePanel
+operator|.
 name|frame
 operator|.
 name|basePanel
@@ -4320,13 +4648,19 @@ try|try
 block|{
 if|if
 condition|(
+name|OpenOfficePanel
+operator|.
 name|style
 operator|==
 literal|null
 condition|)
+block|{
 name|readStyleFile
 argument_list|()
 expr_stmt|;
+block|}
+name|OpenOfficePanel
+operator|.
 name|ooBase
 operator|.
 name|insertEntry
@@ -4338,6 +4672,8 @@ argument_list|,
 name|getBaseList
 argument_list|()
 argument_list|,
+name|OpenOfficePanel
+operator|.
 name|style
 argument_list|,
 name|inParenthesis
@@ -4367,6 +4703,8 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|frame
 argument_list|,
 name|Globals
@@ -4448,6 +4786,8 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|frame
 argument_list|,
 name|Globals
@@ -4485,6 +4825,8 @@ comment|/*boolean hadBib = ooBase.createBibTextSection(true);             if (ha
 name|BasePanel
 name|panel
 init|=
+name|OpenOfficePanel
+operator|.
 name|frame
 operator|.
 name|basePanel
@@ -4563,12 +4905,16 @@ name|database
 argument_list|)
 expr_stmt|;
 block|}
+name|OpenOfficePanel
+operator|.
 name|ooBase
 operator|.
 name|insertFullReferenceAtViewCursor
 argument_list|(
 name|entries
 argument_list|,
+name|OpenOfficePanel
+operator|.
 name|style
 argument_list|,
 literal|"Default"
@@ -4614,6 +4960,8 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|frame
 argument_list|,
 literal|"<html>"
@@ -4669,6 +5017,8 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|frame
 argument_list|,
 literal|"<html>"
@@ -4722,6 +5072,8 @@ block|{
 name|BasePanel
 name|panel
 init|=
+name|OpenOfficePanel
+operator|.
 name|frame
 operator|.
 name|basePanel
@@ -4848,6 +5200,8 @@ name|key
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|ooBase
 operator|.
 name|insertMarkedUpTextAtViewCursor
@@ -4993,6 +5347,7 @@ argument_list|(
 literal|"useAllOpenBases"
 argument_list|)
 condition|)
+block|{
 name|useAllBases
 operator|.
 name|setSelected
@@ -5000,7 +5355,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|useActiveBase
 operator|.
 name|setSelected
@@ -5008,6 +5365,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 name|autoSync
 operator|.
 name|addActionListener
@@ -5016,6 +5374,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -5050,6 +5410,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -5084,6 +5446,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -5119,6 +5483,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -5181,6 +5547,8 @@ argument_list|(
 literal|"ooJurtPath"
 argument_list|)
 expr_stmt|;
+name|OpenOfficePanel
+operator|.
 name|frame
 operator|.
 name|output
@@ -5239,10 +5607,14 @@ name|menu
 operator|.
 name|show
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|settingsB
 argument_list|,
 literal|0
 argument_list|,
+name|OpenOfficePanel
+operator|.
 name|settingsB
 operator|.
 name|getHeight
@@ -5267,6 +5639,8 @@ specifier|final
 name|BibtexDatabase
 name|database
 init|=
+name|OpenOfficePanel
+operator|.
 name|frame
 operator|.
 name|basePanel
@@ -5296,6 +5670,8 @@ init|=
 operator|new
 name|AdvancedCiteDialog
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|frame
 argument_list|)
 decl_stmt|;
@@ -5311,7 +5687,9 @@ operator|.
 name|cancelled
 argument_list|()
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|acd
@@ -5324,6 +5702,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|pageInfo
 operator|=
 name|acd
@@ -5331,6 +5710,7 @@ operator|.
 name|getPageInfo
 argument_list|()
 expr_stmt|;
+block|}
 name|inParenthesis
 operator|=
 name|acd
@@ -5341,6 +5721,8 @@ expr_stmt|;
 comment|//}
 try|try
 block|{
+name|OpenOfficePanel
+operator|.
 name|ooBase
 operator|.
 name|insertEntry
@@ -5352,6 +5734,8 @@ argument_list|,
 name|getBaseList
 argument_list|()
 argument_list|,
+name|OpenOfficePanel
+operator|.
 name|style
 argument_list|,
 name|inParenthesis
@@ -5419,6 +5803,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getName ()
 specifier|public
 name|String
@@ -5429,6 +5815,8 @@ return|return
 literal|"Push to OpenOffice"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getApplicationName ()
 specifier|public
 name|String
@@ -5439,6 +5827,8 @@ return|return
 literal|"OpenOffice"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTooltip ()
 specifier|public
 name|String
@@ -5449,6 +5839,8 @@ return|return
 literal|"Push selection to OpenOffice"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getIcon ()
 specifier|public
 name|Icon
@@ -5464,6 +5856,8 @@ literal|"openoffice"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeyStrokeName ()
 specifier|public
 name|String
@@ -5474,6 +5868,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getSettingsPanel ()
 specifier|public
 name|JPanel
@@ -5593,6 +5989,8 @@ name|SOUTH
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -5614,6 +6012,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|pushEntries (BibtexDatabase bibtexDatabase, BibtexEntry[] entries, String s, MetaData metaData)
 specifier|public
 name|void
@@ -5635,6 +6035,8 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|OpenOfficePanel
+operator|.
 name|ooBase
 operator|==
 literal|null
@@ -5648,6 +6050,8 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+name|OpenOfficePanel
+operator|.
 name|ooBase
 operator|!=
 literal|null
@@ -5657,13 +6061,17 @@ try|try
 block|{
 if|if
 condition|(
+name|OpenOfficePanel
+operator|.
 name|style
 operator|==
 literal|null
 condition|)
+block|{
 name|readStyleFile
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -5675,6 +6083,8 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
+name|OpenOfficePanel
+operator|.
 name|frame
 argument_list|,
 name|Globals
@@ -5714,6 +6124,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|operationCompleted (BasePanel basePanel)
 specifier|public
 name|void
@@ -5723,6 +6135,8 @@ name|BasePanel
 name|basePanel
 parameter_list|)
 block|{      }
+annotation|@
+name|Override
 DECL|method|requiresBibtexKeys ()
 specifier|public
 name|boolean
@@ -5763,6 +6177,8 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getName ()
 specifier|public
 name|String

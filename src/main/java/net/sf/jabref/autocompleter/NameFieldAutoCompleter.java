@@ -262,6 +262,8 @@ name|AUTOCOMPLETE_FIRSTNAME_MODE_ONLY_FULL
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|isSingleUnitField ()
 specifier|public
 name|boolean
@@ -283,6 +285,8 @@ operator|.
 name|lastNameOnlyAndSeparationBySpace
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|addBibtexEntry (BibtexEntry entry)
 specifier|public
 name|void
@@ -641,6 +645,8 @@ return|return
 name|str
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|complete (String str)
 specifier|public
 name|String

@@ -125,6 +125,8 @@ argument_list|(
 name|i
 argument_list|)
 operator|==
+name|AbstractParamLayoutFormatter
+operator|.
 name|SEPARATOR
 operator|)
 operator|&&
@@ -185,10 +187,12 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|escaped
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -208,6 +212,7 @@ argument_list|)
 operator|==
 literal|'n'
 condition|)
+block|{
 name|current
 operator|.
 name|append
@@ -215,6 +220,7 @@ argument_list|(
 literal|'\n'
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -227,6 +233,7 @@ argument_list|)
 operator|==
 literal|'t'
 condition|)
+block|{
 name|current
 operator|.
 name|append
@@ -234,6 +241,7 @@ argument_list|(
 literal|'\t'
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 if|if
@@ -260,6 +268,7 @@ operator|!=
 literal|'"'
 operator|)
 condition|)
+block|{
 name|current
 operator|.
 name|append
@@ -267,6 +276,7 @@ argument_list|(
 literal|'\\'
 argument_list|)
 expr_stmt|;
+block|}
 name|current
 operator|.
 name|append
@@ -286,6 +296,7 @@ literal|false
 expr_stmt|;
 block|}
 else|else
+block|{
 name|current
 operator|.
 name|append
@@ -298,6 +309,7 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|parts
 operator|.

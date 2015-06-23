@@ -219,6 +219,8 @@ literal|".ods"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, final String file, final String encoding, Set<String> keySet)
 specifier|public
 name|void
@@ -249,6 +251,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|OpenDocumentSpreadsheetCreator
+operator|.
 name|exportOpenDocumentSpreadsheet
 argument_list|(
 operator|new
@@ -450,6 +454,8 @@ argument_list|()
 expr_stmt|;
 comment|// Add manifest (required for OOo 2.0) and "meta.xml": These are in the
 comment|// resource/ods directory, and are copied verbatim into the zip file.
+name|OpenDocumentSpreadsheetCreator
+operator|.
 name|addResourceFile
 argument_list|(
 literal|"meta.xml"
@@ -459,6 +465,8 @@ argument_list|,
 name|out
 argument_list|)
 expr_stmt|;
+name|OpenDocumentSpreadsheetCreator
+operator|.
 name|addResourceFile
 argument_list|(
 literal|"META-INF/manifest.xml"
@@ -513,6 +521,8 @@ argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
+name|OpenDocumentSpreadsheetCreator
+operator|.
 name|exportOpenDocumentSpreadsheetXML
 argument_list|(
 name|tmpFile
@@ -536,6 +546,8 @@ name|tmpFile
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|OpenDocumentSpreadsheetCreator
+operator|.
 name|storeOpenDocumentSpreadsheetFile
 argument_list|(
 name|file
@@ -711,6 +723,8 @@ argument_list|(
 name|zipEntry
 argument_list|)
 expr_stmt|;
+name|OpenDocumentSpreadsheetCreator
+operator|.
 name|addFromResource
 argument_list|(
 name|resource
@@ -796,7 +810,9 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 break|break;
+block|}
 name|out
 operator|.
 name|write

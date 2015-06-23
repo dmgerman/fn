@@ -90,6 +90,8 @@ name|HandleDuplicateWarnings
 implements|implements
 name|PostOpenAction
 block|{
+annotation|@
+name|Override
 DECL|method|isActionNecessary (ParserResult pr)
 specifier|public
 name|boolean
@@ -106,6 +108,8 @@ name|hasDuplicateKeys
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|performAction (BasePanel panel, ParserResult pr)
 specifier|public
 name|void

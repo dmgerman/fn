@@ -342,6 +342,8 @@ operator|=
 name|file
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -717,6 +719,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -834,6 +838,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1011,6 +1017,7 @@ argument_list|(
 name|vit
 argument_list|)
 condition|)
+block|{
 name|mdc
 operator|.
 name|insertMetaDataChange
@@ -1020,6 +1027,7 @@ argument_list|,
 name|vod
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Remember that we've handled this one:
 name|handledOnDisk
 operator|.
@@ -1075,6 +1083,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|changes
 operator|.
 name|add
@@ -1082,6 +1091,7 @@ argument_list|(
 name|mdc
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|scanEntries (EntrySorter mem, EntrySorter tmp, EntrySorter disk)
 specifier|private
@@ -1247,12 +1257,14 @@ if|if
 condition|(
 name|piv2
 operator|<
+operator|(
 name|disk
 operator|.
 name|getEntryCount
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 for|for
@@ -1287,6 +1299,7 @@ operator|+
 name|i
 argument_list|)
 condition|)
+block|{
 name|comp
 operator|=
 name|DuplicateCheck
@@ -1308,12 +1321,15 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|comp
 operator|=
 operator|-
 literal|1
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|comp
@@ -1404,12 +1420,14 @@ if|if
 condition|(
 name|piv2
 operator|<
+operator|(
 name|disk
 operator|.
 name|getEntryCount
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 for|for
@@ -1466,11 +1484,13 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|comp
 operator|=
 operator|-
 literal|1
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|comp
@@ -1816,7 +1836,9 @@ name|comp
 operator|>
 literal|1
 condition|)
+block|{
 break|break;
+block|}
 block|}
 return|return
 name|neu
@@ -1887,6 +1909,7 @@ argument_list|(
 name|disk
 argument_list|)
 condition|)
+block|{
 name|changes
 operator|.
 name|add
@@ -1902,6 +1925,7 @@ name|disk
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -1982,7 +2006,9 @@ operator|==
 literal|0
 operator|)
 condition|)
+block|{
 return|return;
+block|}
 name|HashSet
 argument_list|<
 name|Object
@@ -2150,6 +2176,7 @@ name|mem
 operator|!=
 literal|null
 condition|)
+block|{
 name|changes
 operator|.
 name|add
@@ -2183,7 +2210,9 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|changes
 operator|.
 name|add
@@ -2214,6 +2243,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|used
 operator|.
@@ -2607,9 +2637,11 @@ argument_list|(
 name|name
 argument_list|)
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 for|for
 control|(
 name|String
@@ -2704,25 +2736,35 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|groupsTmp
 operator|==
 literal|null
+operator|)
 operator|&&
+operator|(
 name|groupsDisk
 operator|==
 literal|null
+operator|)
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
+operator|(
 operator|(
 name|groupsTmp
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|groupsDisk
 operator|==
 literal|null
+operator|)
 operator|)
 operator|||
 operator|(

@@ -153,6 +153,8 @@ comment|// to be safe, we keep this call nevertheless
 comment|// (this is the null check for getHeaderValue())
 if|if
 condition|(
+name|PreventDraggingJTableHeader
+operator|.
 name|isUnnamed
 argument_list|(
 name|column
@@ -254,6 +256,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|PreventDraggingJTableHeader
+operator|.
 name|preventDragBeforeIndex
 argument_list|(
 name|this
@@ -405,9 +409,11 @@ operator|.
 name|PREF_SHOWCOLUMN_RANKING
 argument_list|)
 condition|)
+block|{
 name|count
 operator|++
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|Globals
@@ -421,9 +427,11 @@ operator|.
 name|PREF_SHOWCOLUMN_RELEVANCE
 argument_list|)
 condition|)
+block|{
 name|count
 operator|++
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|Globals
@@ -437,9 +445,11 @@ operator|.
 name|PREF_SHOWCOLUMN_QUALITY
 argument_list|)
 condition|)
+block|{
 name|count
 operator|++
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|Globals
@@ -453,9 +463,11 @@ operator|.
 name|PREF_SHOWCOLUMN_PRIORITY
 argument_list|)
 condition|)
+block|{
 name|count
 operator|++
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|Globals
@@ -469,9 +481,11 @@ operator|.
 name|PREF_SHOWCOLUMN_PRINTED
 argument_list|)
 condition|)
+block|{
 name|count
 operator|++
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|Globals
@@ -485,9 +499,11 @@ operator|.
 name|PREF_SHOWCOLUMN_READ
 argument_list|)
 condition|)
+block|{
 name|count
 operator|++
 expr_stmt|;
+block|}
 block|}
 return|return
 name|count
@@ -504,12 +520,14 @@ name|column
 parameter_list|)
 block|{
 return|return
+operator|(
 name|column
 operator|.
 name|getHeaderValue
 argument_list|()
 operator|==
 literal|null
+operator|)
 operator|||
 literal|""
 operator|.
@@ -577,16 +595,20 @@ comment|// found the element in the view ...
 comment|// ... and check if it should not be dragged
 if|if
 condition|(
+operator|(
 name|col
 operator|.
 name|getModelIndex
 argument_list|()
 operator|==
 name|mColIndex
+operator|)
 operator|&&
+operator|(
 name|c
 operator|<=
 name|toIndex
+operator|)
 condition|)
 block|{
 comment|// Util.pr("prevented! viewIndex = " + c + " modelIndex = "

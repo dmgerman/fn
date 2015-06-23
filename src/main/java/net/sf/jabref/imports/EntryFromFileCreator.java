@@ -193,6 +193,8 @@ name|f
 parameter_list|)
 function_decl|;
 comment|/**      *<p>      * To support platform independence, a creator must define what types of      * files it accepts on it's own.      *</p>      *<p>      * Basically, accepting files which end with the file extension that is      * described in the nested {@link #externalFileType} would work on windows      * systems. This is also the recommended criterion, on which files should be      * accepted.      *</p>      *<p>      * However, defining what types of files this creator accepts, is a property      * of<i>entry creators</i>, that is left to the user.      *</p>      */
+annotation|@
+name|Override
 DECL|method|accept (File f)
 specifier|public
 specifier|abstract
@@ -226,9 +228,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|f
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|f
@@ -567,9 +571,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|value
 operator|==
 literal|null
+operator|)
 operator|||
 literal|""
 operator|.
@@ -578,7 +584,9 @@ argument_list|(
 name|value
 argument_list|)
 condition|)
+block|{
 return|return;
+block|}
 name|String
 name|oVal
 init|=
@@ -715,6 +723,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String

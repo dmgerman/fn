@@ -452,6 +452,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -566,6 +568,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -595,6 +599,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -645,7 +651,9 @@ name|chosenStr
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|File
 name|chosen
 init|=
@@ -1222,9 +1230,11 @@ argument_list|(
 literal|"."
 argument_list|)
 condition|)
+block|{
 return|return
 name|ext
 return|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1235,6 +1245,7 @@ argument_list|(
 literal|"*."
 argument_list|)
 condition|)
+block|{
 return|return
 name|ext
 operator|.
@@ -1243,12 +1254,15 @@ argument_list|(
 literal|1
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|"."
 operator|+
 name|ext
 return|;
+block|}
 block|}
 block|}
 end_class

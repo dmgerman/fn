@@ -44,6 +44,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JOptionPane
 import|;
 end_import
@@ -126,6 +136,8 @@ name|frame
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SMALL_ICON
 argument_list|,
 name|operation
@@ -136,6 +148,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|operation
@@ -146,6 +160,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|operation
@@ -163,8 +179,11 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|Globals
@@ -180,6 +199,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|this
 operator|.
 name|operation
@@ -187,6 +207,8 @@ operator|=
 name|operation
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -210,7 +232,9 @@ name|panel
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 comment|// Check if any entries are selected:
 name|entries
 operator|=
@@ -246,6 +270,8 @@ name|String
 operator|)
 name|getValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|)
 argument_list|,
@@ -264,6 +290,7 @@ operator|.
 name|requiresBibtexKeys
 argument_list|()
 condition|)
+block|{
 for|for
 control|(
 name|BibtexEntry
@@ -317,6 +344,8 @@ name|String
 operator|)
 name|getValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|)
 argument_list|,
@@ -326,6 +355,7 @@ name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
 return|return;
+block|}
 block|}
 block|}
 comment|// All set, call the operation in a new thread:
@@ -339,6 +369,8 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -377,6 +409,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -442,9 +476,11 @@ expr_stmt|;
 comment|// if the key is empty we give a warning and ignore this entry
 if|if
 condition|(
+operator|(
 name|citeKey
 operator|==
 literal|null
+operator|)
 operator|||
 name|citeKey
 operator|.
@@ -453,7 +489,9 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 continue|continue;
+block|}
 if|if
 condition|(
 name|first

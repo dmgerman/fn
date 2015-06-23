@@ -241,6 +241,8 @@ operator|new
 name|MouseMotionAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|mouseDragged
@@ -310,13 +312,17 @@ block|{
 comment|//We are at tab tragging
 if|if
 condition|(
+operator|(
 name|indexDraggedTab
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|indexActTab
 operator|>=
 literal|0
+operator|)
 condition|)
 block|{
 comment|//Is it a valid scenario?
@@ -385,6 +391,7 @@ if|if
 condition|(
 name|toTheLeft
 condition|)
+block|{
 name|markerPane
 operator|.
 name|setPicLocation
@@ -407,7 +414,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//Set pic to the left of the tab at the mouse position
+block|}
 else|else
+block|{
 name|markerPane
 operator|.
 name|setPicLocation
@@ -434,6 +443,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//Set pic to the right of the tab at the mouse position
+block|}
 name|markerPane
 operator|.
 name|setVisible
@@ -484,6 +494,8 @@ operator|new
 name|MouseAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|mouseReleased
@@ -529,17 +541,23 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|indexDraggedTab
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|indexActTab
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|indexDraggedTab
 operator|!=
 name|indexActTab
+operator|)
 condition|)
 block|{
 comment|//Is it a valid scenario?
@@ -623,6 +641,7 @@ if|if
 condition|(
 name|toTheLeft
 operator|&&
+operator|(
 name|indexActTab
 operator|<
 operator|(
@@ -633,19 +652,23 @@ operator|.
 name|getTabCount
 argument_list|()
 operator|)
+operator|)
 condition|)
-comment|// The mouse is at the left side of a tab except the last one
+block|{
 name|newTabPos
 operator|=
 name|indexActTab
 expr_stmt|;
+block|}
 else|else
+block|{
 name|newTabPos
 operator|=
 name|indexActTab
 operator|+
 literal|1
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -654,22 +677,27 @@ if|if
 condition|(
 name|toTheLeft
 operator|&&
+operator|(
 name|indexActTab
 operator|>
 literal|0
+operator|)
 condition|)
-comment|// The mouse is at the left side of a tab except the first one
+block|{
 name|newTabPos
 operator|=
 name|indexActTab
 operator|-
 literal|1
 expr_stmt|;
+block|}
 else|else
+block|{
 name|newTabPos
 operator|=
 name|indexActTab
 expr_stmt|;
+block|}
 block|}
 name|insertTab
 argument_list|(

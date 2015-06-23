@@ -200,6 +200,7 @@ argument_list|,
 name|modKey
 argument_list|)
 condition|)
+block|{
 name|modKey
 operator|=
 name|newKey
@@ -211,6 +212,7 @@ operator|++
 operator|)
 operator|)
 expr_stmt|;
+block|}
 block|}
 comment|//newEntry.setField(Globals.KEY_FIELD, newKey);
 comment|// ...

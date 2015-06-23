@@ -365,6 +365,8 @@ name|initialSelection
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setVisible (boolean visible)
 specifier|public
 name|void
@@ -420,6 +422,7 @@ name|selected
 operator|>=
 literal|0
 condition|)
+block|{
 return|return
 name|iconKeys
 operator|.
@@ -428,10 +431,13 @@ argument_list|(
 name|selected
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 DECL|method|init (String initialSelection)
 specifier|private
@@ -531,6 +537,7 @@ argument_list|(
 name|initialSelection
 argument_list|)
 condition|)
+block|{
 name|initSelIndex
 operator|=
 name|iconKeys
@@ -540,6 +547,7 @@ argument_list|()
 operator|-
 literal|1
 expr_stmt|;
+block|}
 block|}
 name|iconSet
 operator|.
@@ -624,6 +632,8 @@ name|CENTER
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Component
 name|getListCellRendererComponent
@@ -743,6 +753,7 @@ name|initSelIndex
 operator|>=
 literal|0
 condition|)
+block|{
 name|icons
 operator|.
 name|setSelectedIndex
@@ -750,6 +761,7 @@ argument_list|(
 name|initSelIndex
 argument_list|)
 expr_stmt|;
+block|}
 name|icons
 operator|.
 name|setCellRenderer
@@ -837,6 +849,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -858,6 +872,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|selected
 operator|=
 name|icons
@@ -865,6 +880,7 @@ operator|.
 name|getSelectedIndex
 argument_list|()
 expr_stmt|;
+block|}
 name|dispose
 argument_list|()
 expr_stmt|;
@@ -880,6 +896,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed

@@ -668,6 +668,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -1324,6 +1326,8 @@ name|CENTER
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -1519,6 +1523,8 @@ name|oldUnitFormatterOnSearch
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -1608,6 +1614,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|Globals
 operator|.
 name|journalAbbrev
@@ -1618,6 +1625,7 @@ argument_list|(
 literal|"/resource/IEEEJournalList.txt"
 argument_list|)
 expr_stmt|;
+block|}
 try|try
 block|{
 name|int
@@ -1922,6 +1930,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|readyToClose ()
 specifier|public
 name|boolean
@@ -1945,18 +1955,24 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|portNumber
 operator|>
 literal|1024
+operator|)
 operator|&&
+operator|(
 name|portNumber
 operator|<=
 literal|65535
+operator|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
 comment|// Ok, the number was legal.
+block|}
 else|else
 block|{
 name|JOptionPane
@@ -2047,6 +2063,8 @@ literal|false
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getTabName ()
 specifier|public
 name|String

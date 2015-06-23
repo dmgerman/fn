@@ -232,6 +232,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|text
 operator|.
 name|append
@@ -266,7 +267,9 @@ argument_list|(
 literal|"</CODE>"
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|text
 operator|.
 name|append
@@ -289,6 +292,7 @@ argument_list|(
 literal|"</H3>"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -305,6 +309,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|text
 operator|.
 name|append
@@ -339,6 +344,7 @@ argument_list|(
 literal|"</CODE>"
 argument_list|)
 expr_stmt|;
+block|}
 comment|//tp.setContentType("text/html");
 name|tp
 operator|.
@@ -351,6 +357,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|boolean
@@ -407,6 +415,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|description ()
 name|JComponent
 name|description

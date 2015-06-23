@@ -82,6 +82,8 @@ operator|=
 name|fieldName
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|isSingleUnitField ()
 specifier|public
 name|boolean
@@ -92,6 +94,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|complete (String s)
 specifier|public
 name|String

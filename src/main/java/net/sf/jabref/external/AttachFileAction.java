@@ -119,6 +119,8 @@ operator|=
 name|panel
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|action ()
 specifier|public
 name|void
@@ -136,8 +138,10 @@ name|length
 operator|!=
 literal|1
 condition|)
+block|{
 return|return;
 comment|// TODO: display error message?
+block|}
 name|entry
 operator|=
 name|panel
@@ -226,6 +230,7 @@ name|oldVal
 operator|!=
 literal|null
 condition|)
+block|{
 name|model
 operator|.
 name|setContent
@@ -233,6 +238,7 @@ argument_list|(
 name|oldVal
 argument_list|)
 expr_stmt|;
+block|}
 name|model
 operator|.
 name|addEntry

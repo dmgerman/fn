@@ -402,6 +402,8 @@ argument_list|()
 expr_stmt|;
 name|option
 operator|=
+name|LayoutEntry
+operator|.
 name|getOptionalLayout
 argument_list|(
 name|v
@@ -449,6 +451,7 @@ name|invalidFormatter
 operator|==
 literal|null
 condition|)
+block|{
 name|invalidFormatter
 operator|=
 operator|new
@@ -458,6 +461,7 @@ name|String
 argument_list|>
 argument_list|()
 expr_stmt|;
+block|}
 name|invalidFormatter
 operator|.
 name|add
@@ -740,6 +744,7 @@ name|LayoutHelper
 operator|.
 name|IS_GROUP_END
 condition|)
+block|{
 name|le
 operator|=
 operator|new
@@ -754,7 +759,9 @@ operator|.
 name|IS_GROUP_START
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|le
 operator|=
 operator|new
@@ -769,6 +776,7 @@ operator|.
 name|IS_FIELD_START
 argument_list|)
 expr_stmt|;
+block|}
 name|tmpEntries
 operator|.
 name|add
@@ -901,6 +909,7 @@ name|invalidFormatter
 operator|==
 literal|null
 condition|)
+block|{
 name|invalidFormatter
 operator|=
 operator|new
@@ -912,6 +921,7 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 name|invalidFormatter
 operator|.
 name|addAll
@@ -1023,10 +1033,12 @@ name|value
 operator|==
 literal|null
 condition|)
+block|{
 name|value
 operator|=
 literal|""
 expr_stmt|;
+block|}
 comment|// If a post formatter has been set, call it:
 if|if
 condition|(
@@ -1034,6 +1046,7 @@ name|postFormatter
 operator|!=
 literal|null
 condition|)
+block|{
 name|value
 operator|=
 name|postFormatter
@@ -1043,6 +1056,7 @@ argument_list|(
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|value
 return|;
@@ -1137,7 +1151,9 @@ name|field
 operator|==
 literal|null
 condition|)
+block|{
 break|break;
+block|}
 block|}
 block|}
 else|else
@@ -1185,7 +1201,9 @@ name|field
 operator|!=
 literal|null
 condition|)
+block|{
 break|break;
+block|}
 block|}
 block|}
 if|if
@@ -1612,6 +1630,7 @@ name|postFormatter
 operator|!=
 literal|null
 condition|)
+block|{
 name|fieldEntry
 operator|=
 name|postFormatter
@@ -1621,6 +1640,7 @@ argument_list|(
 name|fieldEntry
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|fieldEntry
 return|;
@@ -1809,6 +1829,7 @@ name|postFormatter
 operator|!=
 literal|null
 condition|)
+block|{
 name|field
 operator|=
 name|postFormatter
@@ -1818,6 +1839,7 @@ argument_list|(
 name|field
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|field
 return|;
@@ -1946,11 +1968,15 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|LayoutEntry
+operator|.
 name|pluginLayoutFormatter
 operator|==
 literal|null
 condition|)
 block|{
+name|LayoutEntry
+operator|.
 name|pluginLayoutFormatter
 operator|=
 operator|new
@@ -2015,6 +2041,7 @@ name|name
 operator|==
 literal|null
 condition|)
+block|{
 name|name
 operator|=
 name|e
@@ -2022,6 +2049,7 @@ operator|.
 name|getId
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|formatter
@@ -2029,6 +2057,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|LayoutEntry
+operator|.
 name|pluginLayoutFormatter
 operator|.
 name|put
@@ -2046,6 +2076,8 @@ comment|// We need to make a new instance of this LayoutFormatter, in case it is
 comment|// parameter-accepting layout formatter:
 if|if
 condition|(
+name|LayoutEntry
+operator|.
 name|pluginLayoutFormatter
 operator|.
 name|containsKey
@@ -2062,6 +2094,8 @@ name|LayoutFormatter
 argument_list|>
 name|c
 init|=
+name|LayoutEntry
+operator|.
 name|pluginLayoutFormatter
 operator|.
 name|get
@@ -2097,6 +2131,8 @@ argument_list|()
 expr_stmt|;
 block|}
 return|return
+name|LayoutEntry
+operator|.
 name|pluginLayoutFormatter
 operator|.
 name|get
@@ -2106,9 +2142,11 @@ argument_list|)
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 DECL|method|getLayoutFormatterByClassName (String className, String classPrefix)
 specifier|public
@@ -2381,6 +2419,8 @@ block|{
 name|LayoutFormatter
 name|f
 init|=
+name|LayoutEntry
+operator|.
 name|getLayoutFormatterByClassName
 argument_list|(
 name|className
@@ -2405,6 +2445,7 @@ name|length
 operator|>=
 literal|2
 condition|)
+block|{
 operator|(
 operator|(
 name|ParamLayoutFormatter
@@ -2420,6 +2461,7 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|results
 operator|.
@@ -2481,6 +2523,8 @@ comment|// Last load from plug-ins
 name|LayoutFormatter
 name|f
 init|=
+name|LayoutEntry
+operator|.
 name|getLayoutFormatterFromPlugins
 argument_list|(
 name|className
@@ -2615,9 +2659,11 @@ name|toHighlight
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 name|text
 return|;
+block|}
 name|Matcher
 name|matcher
 init|=

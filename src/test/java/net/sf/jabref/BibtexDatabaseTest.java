@@ -54,6 +54,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Before
 import|;
 end_import
@@ -183,6 +193,8 @@ operator|.
 name|getDatabase
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Arvind"
@@ -195,6 +207,8 @@ literal|"#Arvind#"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Patterson, David"
@@ -207,6 +221,8 @@ literal|"#Patterson#"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Arvind and Patterson, David"
@@ -220,6 +236,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Strings that are not found return just the given string.
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"#unknown#"

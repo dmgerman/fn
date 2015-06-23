@@ -181,6 +181,8 @@ operator|new
 name|XMLChars
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -327,6 +329,8 @@ name|sb
 operator|.
 name|append
 argument_list|(
+name|CreateDocBookAuthors
+operator|.
 name|xc
 operator|.
 name|format
@@ -381,6 +385,8 @@ name|sb
 operator|.
 name|append
 argument_list|(
+name|CreateDocBookAuthors
+operator|.
 name|xc
 operator|.
 name|format
@@ -435,6 +441,8 @@ name|sb
 operator|.
 name|append
 argument_list|(
+name|CreateDocBookAuthors
+operator|.
 name|xc
 operator|.
 name|format
@@ -479,6 +487,8 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
+name|CreateDocBookAuthors
+operator|.
 name|xc
 operator|.
 name|format
@@ -503,13 +513,16 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|al
 operator|.
 name|size
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -527,7 +540,9 @@ argument_list|(
 literal|">\n       "
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -545,6 +560,7 @@ argument_list|(
 literal|">"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * @param sb      * @param author      */

@@ -76,6 +76,16 @@ name|ActionEvent
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|Action
+import|;
+end_import
+
 begin_comment
 comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: Sep 22, 2005  * Time: 10:45:02 PM  * To browseOld this template use File | Settings | File Templates.  */
 end_comment
@@ -106,6 +116,8 @@ argument_list|()
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|Globals
@@ -123,6 +135,8 @@ operator|=
 name|frame
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent actionEvent)
 specifier|public
 name|void

@@ -82,6 +82,8 @@ operator|=
 name|database
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|compare (BibtexEntry e1, BibtexEntry e2)
 specifier|public
 name|int
@@ -112,9 +114,11 @@ argument_list|(
 name|database
 argument_list|)
 condition|)
+block|{
 name|score1
 operator|++
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|e2
@@ -124,9 +128,11 @@ argument_list|(
 name|database
 argument_list|)
 condition|)
+block|{
 name|score2
 operator|++
 expr_stmt|;
+block|}
 return|return
 name|score1
 operator|-

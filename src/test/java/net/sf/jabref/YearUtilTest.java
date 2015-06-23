@@ -16,6 +16,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -88,6 +98,8 @@ name|void
 name|test2to4DigitsYear
 parameter_list|()
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"1990"
@@ -100,6 +112,8 @@ literal|"1990"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"190"
@@ -112,6 +126,8 @@ literal|"190"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"1990"
@@ -126,6 +142,8 @@ literal|1990
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"1990"
@@ -140,6 +158,8 @@ literal|1991
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"2020"
@@ -154,6 +174,8 @@ literal|1990
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"1921"
@@ -168,6 +190,8 @@ literal|1990
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"1922"
@@ -182,6 +206,8 @@ literal|1990
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"2022"
@@ -196,6 +222,8 @@ literal|1992
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"1999"
@@ -210,6 +238,8 @@ literal|2001
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"1931"
@@ -224,6 +254,8 @@ literal|2001
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"2031"
@@ -238,6 +270,8 @@ literal|2001
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"1932"
@@ -252,6 +286,8 @@ literal|2001
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"1944"
@@ -266,6 +302,8 @@ literal|2001
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"2011"
@@ -326,6 +364,8 @@ name|i
 operator|++
 control|)
 block|{
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 literal|""
@@ -374,6 +414,8 @@ name|i
 operator|++
 control|)
 block|{
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 literal|""
@@ -395,9 +437,11 @@ operator|.
 name|format
 argument_list|(
 operator|(
+operator|(
 name|d2
 operator|-
 name|i
+operator|)
 operator|+
 literal|100
 operator|)

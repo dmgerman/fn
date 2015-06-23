@@ -651,6 +651,7 @@ literal|1
 argument_list|)
 argument_list|)
 condition|)
+block|{
 name|colNames
 operator|.
 name|add
@@ -663,6 +664,7 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|rsColumns
 operator|.

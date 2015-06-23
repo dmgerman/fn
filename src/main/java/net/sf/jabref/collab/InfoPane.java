@@ -80,6 +80,8 @@ literal|"text/html"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|paint (Graphics g)
 specifier|public
 name|void

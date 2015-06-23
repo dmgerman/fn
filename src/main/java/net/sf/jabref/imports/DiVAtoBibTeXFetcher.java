@@ -286,6 +286,8 @@ name|String
 operator|.
 name|format
 argument_list|(
+name|DiVAtoBibTeXFetcher
+operator|.
 name|URL_PATTERN
 argument_list|,
 name|q
@@ -558,9 +560,11 @@ literal|true
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 annotation|@
 name|Override

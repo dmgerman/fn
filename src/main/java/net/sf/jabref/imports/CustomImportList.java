@@ -361,6 +361,8 @@ name|basePath
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|equals (Object o)
 specifier|public
 name|boolean
@@ -371,13 +373,17 @@ name|o
 parameter_list|)
 block|{
 return|return
+operator|(
 name|o
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|o
 operator|instanceof
 name|Importer
+operator|)
 operator|&&
 name|this
 operator|.
@@ -398,6 +404,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|hashCode ()
 specifier|public
 name|int
@@ -411,6 +419,8 @@ name|hashCode
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|compareTo (Importer o)
 specifier|public
 name|int
@@ -435,6 +445,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String

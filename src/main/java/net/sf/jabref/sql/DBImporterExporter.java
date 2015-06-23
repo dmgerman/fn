@@ -247,6 +247,7 @@ operator|.
 name|next
 argument_list|()
 condition|)
+block|{
 return|return
 name|rs
 operator|.
@@ -255,6 +256,7 @@ argument_list|(
 literal|"database_id"
 argument_list|)
 return|;
+block|}
 else|else
 block|{
 name|insertJabRefDatabase
@@ -416,11 +418,14 @@ operator|.
 name|getFile
 argument_list|()
 condition|)
+block|{
 name|path
 operator|=
 name|dbName
 expr_stmt|;
+block|}
 else|else
+block|{
 name|path
 operator|=
 name|metaData
@@ -431,6 +436,7 @@ operator|.
 name|getAbsolutePath
 argument_list|()
 expr_stmt|;
+block|}
 name|SQLUtil
 operator|.
 name|processQuery

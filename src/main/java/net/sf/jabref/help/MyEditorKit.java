@@ -171,6 +171,8 @@ operator|=
 name|direction
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -283,6 +285,8 @@ name|Action
 index|[]
 name|myActions
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getActions ()
 specifier|public
 name|Action

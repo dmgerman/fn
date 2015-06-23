@@ -167,6 +167,8 @@ specifier|volatile
 name|boolean
 name|running
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -230,11 +232,13 @@ operator|.
 name|hasBeenUpdated
 argument_list|()
 condition|)
+block|{
 name|e
 operator|.
 name|notifyListener
 argument_list|()
 expr_stmt|;
+block|}
 comment|//else
 comment|//System.out.println("File '"+e.file.getPath()+"' not modified.");
 block|}
@@ -268,6 +272,8 @@ name|InterruptedException
 name|ex
 parameter_list|)
 block|{
+name|FileUpdateMonitor
+operator|.
 name|logger
 operator|.
 name|finest
@@ -325,6 +331,7 @@ operator|.
 name|exists
 argument_list|()
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -332,6 +339,7 @@ argument_list|(
 literal|"File not found"
 argument_list|)
 throw|;
+block|}
 name|no
 operator|++
 expr_stmt|;
@@ -389,9 +397,11 @@ name|o
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 comment|//	    throw new IllegalArgumentException("Entry not found");
 try|try
 block|{
@@ -445,7 +455,9 @@ name|o
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 operator|(
 operator|(
 name|Entry
@@ -502,6 +514,7 @@ name|o
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -509,6 +522,7 @@ argument_list|(
 literal|"Entry not found"
 argument_list|)
 throw|;
+block|}
 name|Entry
 name|entry
 init|=
@@ -547,6 +561,7 @@ operator|.
 name|exists
 argument_list|()
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -554,6 +569,7 @@ argument_list|(
 literal|"File not found"
 argument_list|)
 throw|;
+block|}
 name|Object
 name|o
 init|=
@@ -570,6 +586,7 @@ name|o
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -577,6 +594,7 @@ argument_list|(
 literal|"Entry not found"
 argument_list|)
 throw|;
+block|}
 operator|(
 operator|(
 name|Entry
@@ -617,6 +635,7 @@ name|o
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -624,6 +643,7 @@ argument_list|(
 literal|"Entry not found"
 argument_list|)
 throw|;
+block|}
 return|return
 operator|(
 operator|(
@@ -696,6 +716,8 @@ argument_list|()
 expr_stmt|;
 name|tmpFile
 operator|=
+name|FileUpdateMonitor
+operator|.
 name|getTempFile
 argument_list|()
 expr_stmt|;
@@ -739,6 +761,7 @@ name|modified
 operator|==
 literal|0L
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -746,14 +769,19 @@ argument_list|(
 literal|"File deleted"
 argument_list|)
 throw|;
+block|}
 return|return
+operator|(
 name|timeStamp
 operator|!=
 name|modified
+operator|)
 operator|||
+operator|(
 name|fileSize
 operator|!=
 name|fileSizeNow
+operator|)
 return|;
 block|}
 DECL|method|updateTimeStamp ()
@@ -775,9 +803,11 @@ name|timeStamp
 operator|==
 literal|0L
 condition|)
+block|{
 name|notifyFileRemoved
 argument_list|()
 expr_stmt|;
+block|}
 name|fileSize
 operator|=
 name|file

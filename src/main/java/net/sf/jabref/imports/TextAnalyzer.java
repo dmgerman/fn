@@ -288,7 +288,9 @@ name|number
 operator|==
 name|yearFound
 condition|)
+block|{
 continue|continue;
+block|}
 if|if
 condition|(
 name|number
@@ -607,9 +609,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|second
 operator|-
 name|first
+operator|)
 operator|>
 literal|3
 condition|)
@@ -854,6 +858,7 @@ argument_list|(
 literal|"v"
 argument_list|)
 condition|)
+block|{
 name|journal
 operator|=
 name|clean
@@ -868,6 +873,7 @@ name|pos
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|pos
 operator|=
@@ -952,12 +958,14 @@ name|usedPart
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|ss
 operator|.
 name|begin
 argument_list|()
 operator|-
 name|piv
+operator|)
 operator|>
 literal|10
 condition|)
@@ -1012,12 +1020,14 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|text
 operator|.
 name|length
 argument_list|()
 operator|-
 name|piv
+operator|)
 operator|>
 literal|10
 condition|)
@@ -1103,6 +1113,7 @@ name|length
 operator|<
 literal|2
 condition|)
+block|{
 return|return
 operator|new
 name|String
@@ -1110,6 +1121,7 @@ index|[
 literal|0
 index|]
 return|;
+block|}
 name|String
 index|[]
 name|out
@@ -1248,12 +1260,14 @@ condition|(
 operator|!
 name|found
 operator|&&
+operator|(
 name|left
 operator|<
 name|s
 operator|.
 name|length
 argument_list|()
+operator|)
 condition|)
 block|{
 name|char
@@ -1305,14 +1319,18 @@ operator|==
 literal|')'
 operator|)
 condition|)
+block|{
 name|left
 operator|++
 expr_stmt|;
+block|}
 else|else
+block|{
 name|found
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 name|found
 operator|=
@@ -1323,9 +1341,11 @@ condition|(
 operator|!
 name|found
 operator|&&
+operator|(
 name|right
 operator|>
 name|left
+operator|)
 condition|)
 block|{
 name|char
@@ -1377,14 +1397,18 @@ operator|==
 literal|'('
 operator|)
 condition|)
+block|{
 name|right
 operator|--
 expr_stmt|;
+block|}
 else|else
+block|{
 name|found
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 comment|//Util.pr(s+"\n"+left+" "+right);
 return|return
@@ -1477,6 +1501,8 @@ return|return
 name|end
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|compareTo (Substring other)
 specifier|public
 name|int

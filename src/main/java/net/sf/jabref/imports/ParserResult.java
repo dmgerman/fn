@@ -596,6 +596,7 @@ argument_list|(
 name|s
 argument_list|)
 condition|)
+block|{
 name|warnings
 operator|.
 name|add
@@ -603,6 +604,7 @@ argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|hasWarnings ()
 specifier|public
@@ -658,6 +660,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|s
 index|[
 name|i
@@ -670,6 +673,7 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|s
 return|;
@@ -694,6 +698,7 @@ argument_list|(
 name|key
 argument_list|)
 condition|)
+block|{
 name|duplicateKeys
 operator|.
 name|add
@@ -701,6 +706,7 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Query whether any duplicated BibTeX keys have been found in the database.      * @return true if there is at least one duplicate key.      */
 DECL|method|hasDuplicateKeys ()

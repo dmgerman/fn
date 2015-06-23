@@ -553,6 +553,8 @@ name|super
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|startElement (String uri, String localName, String qName, Attributes atts)
 specifier|public
 name|void
@@ -1090,10 +1092,12 @@ argument_list|(
 literal|"doi"
 argument_list|)
 condition|)
+block|{
 name|inDoi
 operator|=
 literal|true
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1104,10 +1108,12 @@ argument_list|(
 literal|"pii"
 argument_list|)
 condition|)
+block|{
 name|inPii
 operator|=
 literal|true
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1118,10 +1124,12 @@ argument_list|(
 literal|"pmc"
 argument_list|)
 condition|)
+block|{
 name|inPmc
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 block|}
 elseif|else
@@ -1272,6 +1280,8 @@ return|return
 name|out
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|endElement (String uri, String localName, String qName)
 specifier|public
 name|void
@@ -1388,13 +1398,17 @@ operator|.
 name|hasNext
 argument_list|()
 condition|)
+block|{
 name|sb
 operator|.
 name|append
 argument_list|(
+name|MedlineHandler
+operator|.
 name|KEYWORD_SEPARATOR
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|keywords
 operator|=
@@ -1441,6 +1455,8 @@ name|setField
 argument_list|(
 literal|"author"
 argument_list|,
+name|MedlineHandler
+operator|.
 name|htmlConverter
 operator|.
 name|formatUnicode
@@ -1470,12 +1486,15 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|b
 operator|.
 name|setField
 argument_list|(
 literal|"title"
 argument_list|,
+name|MedlineHandler
+operator|.
 name|htmlConverter
 operator|.
 name|formatUnicode
@@ -1484,6 +1503,7 @@ name|title
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 comment|// if (!title.equals("")) b.setField("title",Util.replaceSpecialCharacters(title));
 if|if
 condition|(
@@ -1495,6 +1515,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|b
 operator|.
 name|setField
@@ -1504,6 +1525,7 @@ argument_list|,
 name|journal
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -1514,6 +1536,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|b
 operator|.
 name|setField
@@ -1523,6 +1546,7 @@ argument_list|,
 name|year
 argument_list|)
 expr_stmt|;
+block|}
 comment|// PENDING jeffrey.kuhn@yale.edu 2005-05-27 : added call to fixPageRange
 if|if
 condition|(
@@ -1534,6 +1558,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|b
 operator|.
 name|setField
@@ -1546,6 +1571,7 @@ name|page
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -1556,6 +1582,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|b
 operator|.
 name|setField
@@ -1565,6 +1592,7 @@ argument_list|,
 name|volume
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -1575,6 +1603,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|b
 operator|.
 name|setField
@@ -1584,6 +1613,7 @@ argument_list|,
 name|language
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -1594,6 +1624,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|b
 operator|.
 name|setField
@@ -1603,6 +1634,7 @@ argument_list|,
 name|pst
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -1613,6 +1645,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|b
 operator|.
 name|setField
@@ -1629,6 +1662,7 @@ literal|"\\\\%"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -1639,6 +1673,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|b
 operator|.
 name|setField
@@ -1648,6 +1683,7 @@ argument_list|,
 name|keywords
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -1658,6 +1694,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|b
 operator|.
 name|setField
@@ -1667,6 +1704,7 @@ argument_list|,
 name|month
 argument_list|)
 expr_stmt|;
+block|}
 comment|//if (!url.equals("")) b.setField("url",url);
 if|if
 condition|(
@@ -1678,6 +1716,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|b
 operator|.
 name|setField
@@ -1687,6 +1726,7 @@ argument_list|,
 name|number
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -1729,6 +1769,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|b
 operator|.
 name|setField
@@ -1738,6 +1779,7 @@ argument_list|,
 name|pii
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -1748,6 +1790,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|b
 operator|.
 name|setField
@@ -1757,6 +1800,7 @@ argument_list|,
 name|pmc
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -1799,6 +1843,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|b
 operator|.
 name|setField
@@ -1808,6 +1853,7 @@ argument_list|,
 name|pubmedid
 argument_list|)
 expr_stmt|;
+block|}
 name|bibitems
 operator|.
 name|add
@@ -2141,13 +2187,16 @@ comment|// forename sometimes has initials with " " in middle: is pattern [A-Z] 
 comment|// when above is the case replace it with initials
 if|if
 condition|(
+operator|(
 name|forename
 operator|.
 name|length
 argument_list|()
 operator|==
 literal|3
+operator|)
 operator|&&
+operator|(
 name|forename
 operator|.
 name|charAt
@@ -2156,6 +2205,7 @@ literal|1
 argument_list|)
 operator|==
 literal|' '
+operator|)
 condition|)
 block|{
 name|forename
@@ -2175,6 +2225,7 @@ argument_list|)
 operator|>
 literal|0
 condition|)
+block|{
 name|author
 operator|=
 literal|"{"
@@ -2183,11 +2234,14 @@ name|lastname
 operator|+
 literal|"}"
 expr_stmt|;
+block|}
 else|else
+block|{
 name|author
 operator|=
 name|lastname
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|suffix
@@ -2197,6 +2251,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|author
 operator|=
 name|author
@@ -2205,6 +2260,7 @@ literal|", "
 operator|+
 name|suffix
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|forename
@@ -2214,6 +2270,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|author
 operator|=
 name|author
@@ -2222,6 +2279,7 @@ literal|", "
 operator|+
 name|forename
 expr_stmt|;
+block|}
 comment|//author = initials + " " + lastname;
 name|authors
 operator|.
@@ -2261,10 +2319,12 @@ argument_list|(
 literal|"DescriptorName"
 argument_list|)
 condition|)
+block|{
 name|inDescriptorName
 operator|=
 literal|false
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -2275,10 +2335,12 @@ argument_list|(
 literal|"QualifierName"
 argument_list|)
 condition|)
+block|{
 name|inQualifierName
 operator|=
 literal|false
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -2303,6 +2365,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|descriptors
 operator|.
 name|add
@@ -2310,7 +2373,9 @@ argument_list|(
 name|majorTopic
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|descriptors
 operator|.
 name|add
@@ -2322,6 +2387,7 @@ operator|+
 name|minorTopics
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -2491,30 +2557,38 @@ if|if
 condition|(
 name|inDoi
 condition|)
+block|{
 name|inDoi
 operator|=
 literal|false
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
 name|inPii
 condition|)
+block|{
 name|inPii
 operator|=
 literal|false
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
 name|inPmc
 condition|)
+block|{
 name|inPmc
 operator|=
 literal|false
 expr_stmt|;
 block|}
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|characters (char[] data, int start, int length)
 specifier|public
 name|void
@@ -2835,12 +2909,14 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|minorTopics
 operator|=
 name|minorTopics
 operator|+
 literal|"/"
 expr_stmt|;
+block|}
 name|minorTopics
 operator|=
 name|minorTopics

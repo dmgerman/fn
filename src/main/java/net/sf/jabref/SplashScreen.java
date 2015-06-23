@@ -231,6 +231,8 @@ expr_stmt|;
 comment|/* Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();         setLocation(             (screenDim.width - imgWidth) / 2,             (screenDim.height - imgHeight) / 2         );         */
 block|}
 comment|/**      * Updates the display area of the window.      */
+annotation|@
+name|Override
 DECL|method|update (Graphics g)
 specifier|public
 name|void
@@ -259,6 +261,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Paints the image on the window.      */
+annotation|@
+name|Override
 DECL|method|paint (Graphics g)
 specifier|public
 name|void

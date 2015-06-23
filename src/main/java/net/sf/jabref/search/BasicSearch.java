@@ -235,6 +235,8 @@ name|bibtexEntry
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|validateSearchStrings (Map<String, String> searchStrings)
 specifier|public
 name|boolean
@@ -370,6 +372,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|applyRule (Map<String, String> searchStrings, BibtexEntry bibtexEntry)
 specifier|public
 name|int
@@ -441,6 +445,7 @@ if|if
 condition|(
 name|regExp
 condition|)
+block|{
 try|try
 block|{
 name|pattern
@@ -502,6 +507,7 @@ return|return
 literal|0
 return|;
 block|}
+block|}
 comment|//print(words);
 comment|// We need match for all words:
 name|boolean
@@ -552,6 +558,8 @@ condition|)
 block|{
 name|fieldContent
 operator|=
+name|BasicSearch
+operator|.
 name|removeBrackets
 operator|.
 name|format
@@ -567,6 +575,7 @@ condition|(
 operator|!
 name|caseSensitive
 condition|)
+block|{
 name|fieldContent
 operator|=
 name|fieldContent
@@ -574,6 +583,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 expr_stmt|;
+block|}
 name|int
 name|index
 init|=
@@ -654,6 +664,8 @@ index|]
 operator|.
 name|matcher
 argument_list|(
+name|BasicSearch
+operator|.
 name|removeBrackets
 operator|.
 name|format
@@ -698,10 +710,12 @@ condition|(
 operator|!
 name|aMatchFound
 condition|)
+block|{
 return|return
 literal|0
 return|;
 comment|// Didn't match all words.
+block|}
 block|}
 return|return
 literal|1
@@ -791,10 +805,12 @@ operator|==
 literal|'\\'
 operator|)
 condition|)
+block|{
 name|escaped
 operator|=
 literal|true
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|// See if we have reached the end of a word:

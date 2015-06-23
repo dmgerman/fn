@@ -117,6 +117,8 @@ index|[]
 name|FLAVORS
 init|=
 block|{
+name|HtmlTransferable
+operator|.
 name|HTML_FLAVOR
 block|,
 name|DataFlavor
@@ -171,6 +173,8 @@ name|getTransferDataFlavors
 parameter_list|()
 block|{
 return|return
+name|HtmlTransferable
+operator|.
 name|FLAVORS
 operator|.
 name|clone
@@ -193,6 +197,8 @@ control|(
 name|DataFlavor
 name|FLAVOR
 range|:
+name|HtmlTransferable
+operator|.
 name|FLAVORS
 control|)
 block|{
@@ -236,8 +242,12 @@ name|flavor
 operator|.
 name|equals
 argument_list|(
+name|HtmlTransferable
+operator|.
 name|FLAVORS
 index|[
+name|HtmlTransferable
+operator|.
 name|STRING
 index|]
 argument_list|)
@@ -254,8 +264,12 @@ name|flavor
 operator|.
 name|equals
 argument_list|(
+name|HtmlTransferable
+operator|.
 name|FLAVORS
 index|[
+name|HtmlTransferable
+operator|.
 name|HTML
 index|]
 argument_list|)

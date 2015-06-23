@@ -134,6 +134,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|WindowConstants
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -469,6 +479,8 @@ name|this
 operator|.
 name|setDefaultCloseOperation
 argument_list|(
+name|WindowConstants
+operator|.
 name|DISPOSE_ON_CLOSE
 argument_list|)
 expr_stmt|;
@@ -497,6 +509,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -600,6 +614,8 @@ name|cancelAction
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setVisible (boolean visible)
 specifier|public
 name|void
@@ -613,6 +629,7 @@ if|if
 condition|(
 name|visible
 condition|)
+block|{
 name|super
 operator|.
 name|setVisible
@@ -620,6 +637,7 @@ argument_list|(
 name|visible
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class

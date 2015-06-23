@@ -415,6 +415,8 @@ init|=
 operator|new
 name|JTextField
 argument_list|(
+name|GroupDialog
+operator|.
 name|TEXTFIELD_LENGTH
 argument_list|)
 decl_stmt|;
@@ -533,6 +535,8 @@ init|=
 operator|new
 name|JTextField
 argument_list|(
+name|GroupDialog
+operator|.
 name|TEXTFIELD_LENGTH
 argument_list|)
 decl_stmt|;
@@ -596,6 +600,8 @@ init|=
 operator|new
 name|JTextField
 argument_list|(
+name|GroupDialog
+operator|.
 name|TEXTFIELD_LENGTH
 argument_list|)
 decl_stmt|;
@@ -671,6 +677,8 @@ operator|new
 name|JLabel
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Dimension
 name|getPreferredSize
@@ -885,6 +893,8 @@ argument_list|()
 argument_list|,
 literal|""
 operator|+
+name|GroupDialog
+operator|.
 name|INDEX_EXPLICITGROUP
 argument_list|)
 expr_stmt|;
@@ -1019,6 +1029,8 @@ argument_list|()
 argument_list|,
 literal|""
 operator|+
+name|GroupDialog
+operator|.
 name|INDEX_KEYWORDGROUP
 argument_list|)
 expr_stmt|;
@@ -1099,6 +1111,8 @@ argument_list|()
 argument_list|,
 literal|""
 operator|+
+name|GroupDialog
+operator|.
 name|INDEX_SEARCHGROUP
 argument_list|)
 expr_stmt|;
@@ -1499,6 +1513,8 @@ operator|.
 name|HORIZONTAL_SCROLLBAR_AS_NEEDED
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Dimension
 name|getPreferredSize
@@ -1614,6 +1630,8 @@ operator|new
 name|ItemListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|itemStateChanged
@@ -1659,6 +1677,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1729,6 +1749,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1811,9 +1833,11 @@ name|m_editedGroup
 operator|!=
 literal|null
 condition|)
+block|{
 name|addPreviousEntries
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 elseif|else
@@ -1873,13 +1897,17 @@ expr_stmt|;
 if|if
 condition|(
 operator|(
+operator|(
 name|m_editedGroup
 operator|instanceof
 name|ExplicitGroup
+operator|)
 operator|||
+operator|(
 name|m_editedGroup
 operator|instanceof
 name|SearchGroup
+operator|)
 operator|)
 operator|&&
 name|m_resultingGroup
@@ -1966,6 +1994,8 @@ operator|new
 name|CaretListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|caretUpdate
@@ -1987,6 +2017,8 @@ operator|new
 name|ItemListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|itemStateChanged
@@ -2297,6 +2329,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|m_optionsLayout
 operator|.
 name|show
@@ -2307,10 +2340,13 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
+name|GroupDialog
+operator|.
 name|INDEX_EXPLICITGROUP
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -2319,6 +2355,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|m_optionsLayout
 operator|.
 name|show
@@ -2329,10 +2366,13 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
+name|GroupDialog
+operator|.
 name|INDEX_KEYWORDGROUP
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -2341,6 +2381,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|m_optionsLayout
 operator|.
 name|show
@@ -2351,10 +2392,13 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
+name|GroupDialog
+operator|.
 name|INDEX_SEARCHGROUP
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|updateComponents ()
 specifier|private
@@ -2452,12 +2496,14 @@ name|okEnabled
 operator|=
 name|okEnabled
 operator|&&
+operator|(
 name|s2
 operator|.
 name|length
 argument_list|()
 operator|>
 literal|0
+operator|)
 expr_stmt|;
 if|if
 condition|(
@@ -2595,12 +2641,14 @@ name|okEnabled
 operator|=
 name|okEnabled
 operator|&
+operator|(
 name|s1
 operator|.
 name|length
 argument_list|()
 operator|>
 literal|0
+operator|)
 expr_stmt|;
 if|if
 condition|(
@@ -2798,7 +2846,9 @@ name|JOptionPane
 operator|.
 name|NO_OPTION
 condition|)
+block|{
 return|return;
+block|}
 name|Vector
 argument_list|<
 name|BibtexEntry
@@ -2835,6 +2885,7 @@ argument_list|(
 name|entry
 argument_list|)
 condition|)
+block|{
 name|vec
 operator|.
 name|add
@@ -2842,6 +2893,7 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -2897,7 +2949,9 @@ operator|,
 name|this
 block|)
 block|)
-function|return;
+block|{
+return|return;
+block|}
 comment|// the undo information for a conversion to an ExplicitGroup is
 comment|// contained completely in the UndoableModifyGroup object.
 if|if
@@ -2909,6 +2963,7 @@ operator|instanceof
 name|ExplicitGroup
 operator|)
 condition|)
+block|{
 name|m_undoAddPreviousEntires
 operator|=
 name|m_resultingGroup
@@ -2918,6 +2973,7 @@ argument_list|(
 name|entries
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 end_class
 
@@ -3002,6 +3058,7 @@ name|i
 operator|>
 literal|0
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -3009,6 +3066,7 @@ argument_list|(
 literal|"<br>"
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
@@ -3060,9 +3118,11 @@ operator|instanceof
 name|PatternSyntaxException
 operator|)
 condition|)
+block|{
 return|return
 name|s
 return|;
+block|}
 name|int
 name|lastNewline
 init|=
@@ -3085,18 +3145,25 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|lastNewline
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|hat
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|hat
 operator|>
 name|lastNewline
+operator|)
 condition|)
+block|{
 return|return
 name|s
 operator|.
@@ -3125,6 +3192,7 @@ argument_list|,
 literal|"&nbsp;"
 argument_list|)
 return|;
+block|}
 return|return
 name|s
 return|;
@@ -3226,11 +3294,13 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 return|return
 name|AbstractGroup
 operator|.
 name|INDEPENDENT
 return|;
+block|}
 if|if
 condition|(
 name|m_intersectionButton
@@ -3238,11 +3308,13 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 return|return
 name|AbstractGroup
 operator|.
 name|REFINING
 return|;
+block|}
 if|if
 condition|(
 name|m_unionButton
@@ -3250,11 +3322,13 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 return|return
 name|AbstractGroup
 operator|.
 name|INCLUDING
 return|;
+block|}
 return|return
 name|AbstractGroup
 operator|.

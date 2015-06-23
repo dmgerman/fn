@@ -114,6 +114,8 @@ specifier|public
 name|AlphanumericComparator
 parameter_list|()
 block|{      }
+annotation|@
+name|Override
 DECL|method|compare (BibtexEntry o1, BibtexEntry o2)
 specifier|public
 name|int
@@ -145,9 +147,11 @@ name|comp
 operator|!=
 literal|0
 condition|)
+block|{
 return|return
 name|comp
 return|;
+block|}
 comment|// Editor as second criterion:
 name|comp
 operator|=
@@ -166,9 +170,11 @@ name|comp
 operator|!=
 literal|0
 condition|)
+block|{
 return|return
 name|comp
 return|;
+block|}
 comment|// Year as next criterion:
 name|comp
 operator|=
@@ -187,9 +193,11 @@ name|comp
 operator|!=
 literal|0
 condition|)
+block|{
 return|return
 name|comp
 return|;
+block|}
 comment|// Title as next criterion:
 name|comp
 operator|=
@@ -208,9 +216,11 @@ name|comp
 operator|!=
 literal|0
 condition|)
+block|{
 return|return
 name|comp
 return|;
+block|}
 comment|// Bibtex key as next criterion:
 return|return
 name|compare
@@ -252,6 +262,7 @@ name|k2
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|k1
 operator|.
@@ -260,10 +271,13 @@ argument_list|(
 name|k2
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|1
 return|;
+block|}
 block|}
 elseif|else
 if|if
@@ -272,14 +286,18 @@ name|k2
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 operator|-
 literal|1
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|0
 return|;
+block|}
 block|}
 block|}
 end_class

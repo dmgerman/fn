@@ -401,6 +401,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setFont (Font font)
 specifier|public
 name|void
@@ -452,6 +454,8 @@ name|PLAIN
 case|:
 name|styleString
 operator|=
+name|FontSelector
+operator|.
 name|PLAIN
 expr_stmt|;
 break|break;
@@ -462,6 +466,8 @@ name|BOLD
 case|:
 name|styleString
 operator|=
+name|FontSelector
+operator|.
 name|BOLD
 expr_stmt|;
 break|break;
@@ -472,6 +478,8 @@ name|ITALIC
 case|:
 name|styleString
 operator|=
+name|FontSelector
+operator|.
 name|ITALIC
 expr_stmt|;
 break|break;
@@ -486,6 +494,8 @@ name|ITALIC
 case|:
 name|styleString
 operator|=
+name|FontSelector
+operator|.
 name|BOLD_ITALIC
 expr_stmt|;
 break|break;
@@ -523,6 +533,8 @@ name|ActionHandler
 implements|implements
 name|ActionListener
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent evt)
 specifier|public
 name|void
@@ -799,12 +811,20 @@ index|[]
 name|styles
 init|=
 block|{
+name|FontSelectorDialog
+operator|.
 name|PLAIN
 block|,
+name|FontSelectorDialog
+operator|.
 name|BOLD
 block|,
+name|FontSelectorDialog
+operator|.
 name|ITALIC
 block|,
+name|FontSelectorDialog
+operator|.
 name|BOLD_ITALIC
 block|}
 decl_stmt|;
@@ -989,6 +1009,8 @@ init|=
 operator|-
 literal|4191591634265068189L
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|paint
@@ -1282,9 +1304,11 @@ condition|(
 operator|!
 name|isOK
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|int
 name|size
 decl_stmt|;
@@ -1510,6 +1534,8 @@ literal|0
 init|;
 name|j
 operator|<
+name|FontSelectorDialog
+operator|.
 name|HIDEFONTS
 operator|.
 name|length
@@ -1527,22 +1553,29 @@ index|]
 operator|.
 name|contains
 argument_list|(
+name|FontSelectorDialog
+operator|.
 name|HIDEFONTS
 index|[
 name|j
 index|]
 argument_list|)
 condition|)
+block|{
 break|break;
+block|}
 block|}
 if|if
 condition|(
 name|j
 operator|==
+name|FontSelectorDialog
+operator|.
 name|HIDEFONTS
 operator|.
 name|length
 condition|)
+block|{
 name|nameVector
 operator|.
 name|addElement
@@ -1553,6 +1586,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|String
 index|[]
@@ -1894,6 +1928,8 @@ name|ActionHandler
 implements|implements
 name|ActionListener
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent evt)
 specifier|public
 name|void
@@ -1912,9 +1948,11 @@ argument_list|()
 operator|==
 name|ok
 condition|)
+block|{
 name|ok
 argument_list|()
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1925,9 +1963,11 @@ argument_list|()
 operator|==
 name|cancel
 condition|)
+block|{
 name|cancel
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|class|ListHandler
@@ -1936,6 +1976,8 @@ name|ListHandler
 implements|implements
 name|ListSelectionListener
 block|{
+annotation|@
+name|Override
 DECL|method|valueChanged (ListSelectionEvent evt)
 specifier|public
 name|void
@@ -1977,6 +2019,7 @@ name|family
 operator|!=
 literal|null
 condition|)
+block|{
 name|familyField
 operator|.
 name|setText
@@ -1985,6 +2028,7 @@ name|family
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 elseif|else
 if|if
 condition|(
@@ -2010,6 +2054,7 @@ name|size
 operator|!=
 literal|null
 condition|)
+block|{
 name|sizeField
 operator|.
 name|setText
@@ -2017,6 +2062,7 @@ argument_list|(
 name|size
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -2043,6 +2089,7 @@ name|style
 operator|!=
 literal|null
 condition|)
+block|{
 name|styleField
 operator|.
 name|setText
@@ -2050,6 +2097,7 @@ argument_list|(
 name|style
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|updatePreview
 argument_list|()

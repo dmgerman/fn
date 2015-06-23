@@ -48,6 +48,8 @@ name|DefaultLabelRule
 block|{
 comment|// this is the rule used handle articles
 comment|// we try (first author)/(year)
+annotation|@
+name|Override
 DECL|method|applyRule (BibtexEntry oldEntry)
 specifier|public
 name|String
@@ -133,6 +135,7 @@ name|authorTokens
 operator|!=
 literal|null
 condition|)
+block|{
 name|newLabel
 operator|+=
 name|authorTokens
@@ -143,6 +146,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(

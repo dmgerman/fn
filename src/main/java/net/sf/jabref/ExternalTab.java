@@ -397,6 +397,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -485,6 +487,8 @@ operator|new
 name|ItemListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|itemStateChanged
@@ -1368,6 +1372,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1408,6 +1414,8 @@ comment|//b.append(pan);
 comment|//if (b.getColumn()>= 6)
 comment|//    b.nextLine();
 block|}
+annotation|@
+name|Override
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -1565,6 +1573,7 @@ operator|.
 name|USE_REG_EXP_SEARCH_KEY
 argument_list|)
 condition|)
+block|{
 name|useRegExpComboBox
 operator|.
 name|setSelected
@@ -1572,6 +1581,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1584,6 +1594,7 @@ operator|.
 name|AUTOLINK_EXACT_KEY_ONLY
 argument_list|)
 condition|)
+block|{
 name|matchExactKeyOnly
 operator|.
 name|setSelected
@@ -1591,7 +1602,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|matchStartsWithKey
 operator|.
 name|setSelected
@@ -1600,6 +1613,9 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -1775,6 +1791,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|readyToClose ()
 specifier|public
 name|boolean
@@ -1785,6 +1803,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTabName ()
 specifier|public
 name|String

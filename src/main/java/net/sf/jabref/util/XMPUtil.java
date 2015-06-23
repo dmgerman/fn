@@ -313,6 +313,8 @@ throws|throws
 name|IOException
 block|{
 return|return
+name|XMPUtil
+operator|.
 name|readXMP
 argument_list|(
 operator|new
@@ -344,6 +346,8 @@ name|IOException
 throws|,
 name|TransformerException
 block|{
+name|XMPUtil
+operator|.
 name|writeXMP
 argument_list|(
 operator|new
@@ -386,6 +390,8 @@ decl_stmt|;
 try|try
 block|{
 return|return
+name|XMPUtil
+operator|.
 name|readXMP
 argument_list|(
 name|is
@@ -470,6 +476,8 @@ block|}
 name|XMPMetadata
 name|meta
 init|=
+name|XMPUtil
+operator|.
 name|getXMPMetadata
 argument_list|(
 name|document
@@ -566,6 +574,8 @@ decl_stmt|;
 name|BibtexEntry
 name|entry
 init|=
+name|XMPUtil
+operator|.
 name|getBibtexEntryFromDublinCore
 argument_list|(
 name|dc
@@ -577,6 +587,7 @@ name|entry
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|.
 name|add
@@ -584,6 +595,7 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -600,6 +612,8 @@ block|{
 name|BibtexEntry
 name|entry
 init|=
+name|XMPUtil
+operator|.
 name|getBibtexEntryFromDocumentInformation
 argument_list|(
 name|document
@@ -614,6 +628,7 @@ name|entry
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|.
 name|add
@@ -621,6 +636,7 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 finally|finally
@@ -631,11 +647,13 @@ name|document
 operator|!=
 literal|null
 condition|)
+block|{
 name|document
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|// return null, if no metadata was found
 if|if
@@ -647,9 +665,11 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 return|return
 name|result
 return|;
@@ -691,6 +711,7 @@ name|s
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -700,6 +721,7 @@ argument_list|,
 name|s
 argument_list|)
 expr_stmt|;
+block|}
 name|s
 operator|=
 name|di
@@ -713,6 +735,7 @@ name|s
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -722,6 +745,7 @@ argument_list|,
 name|s
 argument_list|)
 expr_stmt|;
+block|}
 name|s
 operator|=
 name|di
@@ -735,6 +759,7 @@ name|s
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -744,6 +769,7 @@ argument_list|,
 name|s
 argument_list|)
 expr_stmt|;
+block|}
 name|s
 operator|=
 name|di
@@ -757,6 +783,7 @@ name|s
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -766,6 +793,7 @@ argument_list|,
 name|s
 argument_list|)
 expr_stmt|;
+block|}
 name|COSDictionary
 name|dict
 init|=
@@ -861,6 +889,7 @@ name|type
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setType
@@ -869,7 +898,9 @@ name|type
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 else|else
+block|{
 name|entry
 operator|.
 name|setField
@@ -879,6 +910,7 @@ argument_list|,
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// Return null if no values were found
@@ -1007,6 +1039,7 @@ name|sb
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -1019,6 +1052,7 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**          * Author -> Creator          */
 name|List
@@ -1104,6 +1138,7 @@ name|sb
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -1116,6 +1151,7 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**          * Year + Month -> Date          */
 name|List
@@ -1133,16 +1169,20 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|dates
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|dates
 operator|.
 name|size
 argument_list|()
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|String
@@ -1260,6 +1300,7 @@ name|s
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -1269,6 +1310,7 @@ argument_list|,
 name|s
 argument_list|)
 expr_stmt|;
+block|}
 comment|/**          * Identifier -> DOI          */
 name|s
 operator|=
@@ -1283,6 +1325,7 @@ name|s
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -1292,6 +1335,7 @@ argument_list|,
 name|s
 argument_list|)
 expr_stmt|;
+block|}
 comment|/**          * Publisher -> Publisher          */
 name|List
 argument_list|<
@@ -1379,6 +1423,7 @@ name|sb
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -1391,6 +1436,7 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**          * Relation -> bibtexkey          *           * We abuse the relationship attribute to store all other values in the          * bibtex document          */
 name|List
@@ -1500,6 +1546,7 @@ name|s
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -1509,6 +1556,7 @@ argument_list|,
 name|s
 argument_list|)
 expr_stmt|;
+block|}
 comment|/**          * Source -> Source          */
 name|s
 operator|=
@@ -1523,6 +1571,7 @@ name|s
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -1532,6 +1581,7 @@ argument_list|,
 name|s
 argument_list|)
 expr_stmt|;
+block|}
 comment|/**          * Subject -> Keywords          */
 name|List
 argument_list|<
@@ -1616,6 +1666,7 @@ name|sb
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -1628,6 +1679,7 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**          * Title -> Title          */
 name|s
@@ -1643,6 +1695,7 @@ name|s
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -1652,6 +1705,7 @@ argument_list|,
 name|s
 argument_list|)
 expr_stmt|;
+block|}
 comment|/**          * Type -> Type          */
 name|List
 argument_list|<
@@ -1666,16 +1720,20 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|l
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|l
 operator|.
 name|size
 argument_list|()
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|s
@@ -1710,6 +1768,7 @@ name|type
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setType
@@ -1717,6 +1776,7 @@ argument_list|(
 name|type
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return
@@ -1778,6 +1838,8 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+name|XMPUtil
+operator|.
 name|writeXMP
 argument_list|(
 name|file
@@ -1820,6 +1882,7 @@ name|database
 operator|!=
 literal|null
 condition|)
+block|{
 name|bibtexEntries
 operator|=
 name|database
@@ -1831,6 +1894,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 name|XMPMetadata
 name|x
 init|=
@@ -1906,6 +1970,8 @@ operator|new
 name|ByteArrayOutputStream
 argument_list|()
 decl_stmt|;
+name|XMPUtil
+operator|.
 name|toXMP
 argument_list|(
 name|bibtexEntries
@@ -1983,6 +2049,8 @@ argument_list|)
 throw|;
 block|}
 return|return
+name|XMPUtil
+operator|.
 name|getXMPMetadata
 argument_list|(
 name|document
@@ -1997,11 +2065,13 @@ name|document
 operator|!=
 literal|null
 condition|)
+block|{
 name|document
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|getXMPMetadata (PDDocument document)
@@ -2101,6 +2171,8 @@ decl_stmt|;
 try|try
 block|{
 return|return
+name|XMPUtil
+operator|.
 name|readRawXMP
 argument_list|(
 name|is
@@ -2137,6 +2209,7 @@ name|database
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|=
 name|database
@@ -2148,6 +2221,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Query privacy filter settings
 name|JabRefPreferences
 name|prefs
@@ -2651,6 +2725,7 @@ name|o
 operator|!=
 literal|null
 condition|)
+block|{
 name|dcSchema
 operator|.
 name|addType
@@ -2661,6 +2736,7 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Try to write the given BibTexEntry as a DublinCore XMP Schema      *       * Existing DublinCore schemas in the document are not modified.      *       * @param document      *            The pdf document to write to.      * @param entry      *            The Bibtex entry that is written as a schema.      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @throws IOException      * @throws TransformerException      */
 DECL|method|writeDublinCore (PDDocument document, BibtexEntry entry, BibtexDatabase database)
@@ -2703,6 +2779,8 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+name|XMPUtil
+operator|.
 name|writeDublinCore
 argument_list|(
 name|document
@@ -2748,6 +2826,7 @@ name|database
 operator|!=
 literal|null
 condition|)
+block|{
 name|entries
 operator|=
 name|database
@@ -2759,6 +2838,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 name|PDDocumentCatalog
 name|catalog
 init|=
@@ -2869,6 +2949,8 @@ argument_list|(
 name|meta
 argument_list|)
 decl_stmt|;
+name|XMPUtil
+operator|.
 name|writeToDCSchema
 argument_list|(
 name|dcSchema
@@ -2965,6 +3047,7 @@ name|database
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|=
 name|database
@@ -2976,6 +3059,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Query privacy filter settings
 name|JabRefPreferences
 name|prefs
@@ -3316,6 +3400,7 @@ name|database
 operator|!=
 literal|null
 condition|)
+block|{
 name|bibtexEntries
 operator|=
 name|database
@@ -3327,6 +3412,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 name|PDDocument
 name|document
 init|=
@@ -3366,14 +3452,18 @@ if|if
 condition|(
 name|writePDFInfo
 operator|&&
+operator|(
 name|bibtexEntries
 operator|.
 name|size
 argument_list|()
 operator|==
 literal|1
+operator|)
 condition|)
 block|{
+name|XMPUtil
+operator|.
 name|writeDocumentInformation
 argument_list|(
 name|document
@@ -3389,6 +3479,8 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+name|XMPUtil
+operator|.
 name|writeDublinCore
 argument_list|(
 name|document
@@ -3817,6 +3909,8 @@ block|{
 case|case
 literal|0
 case|:
+name|XMPUtil
+operator|.
 name|usage
 argument_list|()
 expr_stmt|;
@@ -4009,6 +4103,8 @@ block|}
 block|}
 else|else
 block|{
+name|XMPUtil
+operator|.
 name|usage
 argument_list|()
 expr_stmt|;
@@ -4214,6 +4310,8 @@ expr_stmt|;
 block|}
 break|break;
 block|}
+name|XMPUtil
+operator|.
 name|usage
 argument_list|()
 expr_stmt|;
@@ -4248,6 +4346,8 @@ literal|".pdf"
 argument_list|)
 condition|)
 block|{
+name|XMPUtil
+operator|.
 name|usage
 argument_list|()
 expr_stmt|;
@@ -4351,6 +4451,8 @@ block|}
 break|break;
 block|}
 default|default:
+name|XMPUtil
+operator|.
 name|usage
 argument_list|()
 expr_stmt|;

@@ -252,16 +252,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Calendar
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Collection
 import|;
 end_import
@@ -965,6 +955,8 @@ specifier|final
 name|int
 name|MAX_MARKING_LEVEL
 init|=
+name|Util
+operator|.
 name|MARK_COLOR_LEVELS
 operator|-
 literal|1
@@ -976,6 +968,8 @@ specifier|final
 name|int
 name|IMPORT_MARK_LEVEL
 init|=
+name|Util
+operator|.
 name|MARK_COLOR_LEVELS
 decl_stmt|;
 DECL|field|markNumberPattern
@@ -1006,6 +1000,8 @@ operator|.
 name|getInstance
 argument_list|()
 expr_stmt|;
+name|Util
+operator|.
 name|idFormat
 operator|.
 name|setMinimumIntegerDigits
@@ -1013,6 +1009,8 @@ argument_list|(
 literal|8
 argument_list|)
 expr_stmt|;
+name|Util
+operator|.
 name|idFormat
 operator|.
 name|setGroupingUsed
@@ -1029,6 +1027,8 @@ name|getMinimumIntegerDigits
 parameter_list|()
 block|{
 return|return
+name|Util
+operator|.
 name|idFormat
 operator|.
 name|getMinimumIntegerDigits
@@ -1074,6 +1074,7 @@ argument_list|()
 operator|>
 literal|1
 condition|)
+block|{
 return|return
 name|s
 operator|.
@@ -1102,13 +1103,16 @@ operator|.
 name|toLowerCase
 argument_list|()
 return|;
+block|}
 else|else
+block|{
 return|return
 name|s
 operator|.
 name|toUpperCase
 argument_list|()
 return|;
+block|}
 block|}
 DECL|method|checkName (String s)
 specifier|public
@@ -1123,12 +1127,14 @@ block|{
 comment|// Append '.bib' to the string unless it ends with that.
 if|if
 condition|(
+operator|(
 name|s
 operator|.
 name|length
 argument_list|()
 operator|<
 literal|4
+operator|)
 operator|||
 operator|!
 name|s
@@ -1176,10 +1182,14 @@ name|createNeutralId
 parameter_list|()
 block|{
 return|return
+name|Util
+operator|.
 name|idFormat
 operator|.
 name|format
 argument_list|(
+name|Util
+operator|.
 name|idCounter
 operator|++
 argument_list|)
@@ -1235,9 +1245,11 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|content
 return|;
+block|}
 name|String
 index|[]
 name|strings
@@ -1295,19 +1307,25 @@ decl_stmt|;
 comment|// String reference or not?
 if|if
 condition|(
+operator|(
 name|c
 operator|==
 literal|'{'
+operator|)
 operator|||
+operator|(
 name|c
 operator|==
 literal|'"'
+operator|)
 condition|)
 block|{
 name|result
 operator|.
 name|append
 argument_list|(
+name|Util
+operator|.
 name|shaveString
 argument_list|(
 name|string
@@ -1322,6 +1340,8 @@ comment|// a pure number, it is not.
 name|String
 name|s2
 init|=
+name|Util
+operator|.
 name|shaveString
 argument_list|(
 name|s
@@ -1407,9 +1427,11 @@ name|o
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|String
 name|year
 init|=
@@ -1496,9 +1518,11 @@ name|s
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|char
 name|ch
 decl_stmt|,
@@ -1560,20 +1584,26 @@ argument_list|(
 name|ch
 argument_list|)
 condition|)
+block|{
 name|beg
 operator|++
 expr_stmt|;
+block|}
 else|else
+block|{
 name|begok
 operator|=
 literal|true
 expr_stmt|;
 block|}
+block|}
 else|else
+block|{
 name|begok
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 while|while
 condition|(
@@ -1585,9 +1615,11 @@ if|if
 condition|(
 name|end
 operator|>
+operator|(
 name|beg
 operator|+
 literal|1
+operator|)
 condition|)
 block|{
 name|ch
@@ -1610,28 +1642,36 @@ argument_list|(
 name|ch
 argument_list|)
 condition|)
+block|{
 name|end
 operator|--
 expr_stmt|;
+block|}
 else|else
+block|{
 name|endok
 operator|=
 literal|true
 expr_stmt|;
 block|}
+block|}
 else|else
+block|{
 name|endok
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
 name|end
 operator|>
+operator|(
 name|beg
 operator|+
 literal|1
+operator|)
 condition|)
 block|{
 name|ch
@@ -1746,9 +1786,11 @@ name|key
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 if|if
 condition|(
 operator|!
@@ -1841,6 +1883,7 @@ operator|!=
 literal|','
 operator|)
 condition|)
+block|{
 name|newKey
 operator|.
 name|append
@@ -1848,6 +1891,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|newKey
@@ -1955,6 +1999,7 @@ operator|!=
 literal|'\''
 operator|)
 condition|)
+block|{
 name|newKey
 operator|.
 name|append
@@ -1963,9 +2008,12 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 comment|// Replace non-english characters like umlauts etc. with a sensible
 comment|// letter or letter combination that bibtex can accept.
 return|return
+name|Util
+operator|.
 name|replaceSpecialCharacters
 argument_list|(
 name|newKey
@@ -2098,15 +2146,21 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|p
 operator|<=
 literal|0
+operator|)
 operator|||
+operator|(
 name|p
 operator|<=
 literal|20
+operator|)
 condition|)
+block|{
 break|break;
+block|}
 name|int
 name|lbreak
 init|=
@@ -2301,7 +2355,9 @@ name|length
 argument_list|()
 operator|)
 condition|)
+block|{
 break|break;
+block|}
 name|int
 name|lbreak
 init|=
@@ -2366,6 +2422,7 @@ operator|==
 literal|'\t'
 operator|)
 condition|)
+block|{
 name|out
 operator|.
 name|insert
@@ -2375,6 +2432,7 @@ argument_list|,
 literal|"\n\t"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -2510,10 +2568,13 @@ operator|.
 name|hasMoreTokens
 argument_list|()
 condition|)
+block|{
 name|res
 operator|.
 name|add
 argument_list|(
+name|Util
+operator|.
 name|nCase
 argument_list|(
 name|tok
@@ -2526,6 +2587,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return
@@ -2628,10 +2690,13 @@ operator|.
 name|hasMoreTokens
 argument_list|()
 condition|)
+block|{
 name|res
 operator|.
 name|add
 argument_list|(
+name|Util
+operator|.
 name|nCase
 argument_list|(
 name|tok
@@ -2644,6 +2709,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return
@@ -2805,6 +2871,7 @@ operator|>
 literal|0
 operator|)
 condition|)
+block|{
 name|res
 operator|.
 name|add
@@ -2812,6 +2879,7 @@ argument_list|(
 name|lastName
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -2851,9 +2919,11 @@ operator|==
 literal|0
 operator|)
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 if|if
 condition|(
 name|strs
@@ -2862,12 +2932,14 @@ name|length
 operator|==
 literal|1
 condition|)
+block|{
 return|return
 name|strs
 index|[
 literal|0
 index|]
 return|;
+block|}
 name|StringBuffer
 name|sb
 init|=
@@ -2884,11 +2956,13 @@ literal|0
 init|;
 name|i
 operator|<
+operator|(
 name|strs
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|;
 name|i
 operator|++
@@ -2954,9 +3028,11 @@ name|names
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 return|return
 name|names
 operator|.
@@ -3004,12 +3080,14 @@ operator|++
 expr_stmt|;
 while|while
 condition|(
+operator|(
 name|i
 operator|<
 name|text
 operator|.
 name|length
 argument_list|()
+operator|)
 operator|&&
 name|Character
 operator|.
@@ -3053,9 +3131,11 @@ condition|(
 operator|!
 name|terminateOnEndBraceOnly
 operator|&&
+operator|(
 name|count
 operator|==
 literal|0
+operator|)
 operator|&&
 name|Character
 operator|.
@@ -3074,16 +3154,22 @@ break|break;
 block|}
 if|if
 condition|(
+operator|(
 name|c
 operator|==
 literal|'}'
+operator|)
 operator|&&
+operator|(
 operator|--
 name|count
 operator|<
 literal|0
+operator|)
 condition|)
+block|{
 break|break;
+block|}
 elseif|else
 if|if
 condition|(
@@ -3091,9 +3177,11 @@ name|c
 operator|==
 literal|'{'
 condition|)
+block|{
 name|count
 operator|++
 expr_stmt|;
+block|}
 name|part
 operator|.
 name|append
@@ -3163,6 +3251,8 @@ decl_stmt|;
 name|File
 name|file
 init|=
+name|Util
+operator|.
 name|expandFilename
 argument_list|(
 name|link
@@ -3256,10 +3346,12 @@ argument_list|(
 literal|"pdf"
 argument_list|)
 condition|)
+block|{
 name|fieldName
 operator|=
 literal|"pdf"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -3278,11 +3370,13 @@ literal|"ps"
 argument_list|)
 operator|||
 operator|(
+operator|(
 name|split
 operator|.
 name|length
 operator|>=
 literal|3
+operator|)
 operator|&&
 name|split
 index|[
@@ -3299,10 +3393,12 @@ literal|"ps"
 argument_list|)
 operator|)
 condition|)
+block|{
 name|fieldName
 operator|=
 literal|"ps"
 expr_stmt|;
+block|}
 block|}
 block|}
 elseif|else
@@ -3340,6 +3436,8 @@ literal|"url"
 expr_stmt|;
 name|link
 operator|=
+name|Util
+operator|.
 name|sanitizeUrl
 argument_list|(
 name|link
@@ -3380,6 +3478,8 @@ block|{
 comment|// html
 try|try
 block|{
+name|Util
+operator|.
 name|openBrowser
 argument_list|(
 name|link
@@ -3501,6 +3601,8 @@ operator|.
 name|ON_WIN
 condition|)
 block|{
+name|Util
+operator|.
 name|openFileOnWindows
 argument_list|(
 name|link
@@ -3690,6 +3792,8 @@ operator|.
 name|ON_WIN
 condition|)
 block|{
+name|Util
+operator|.
 name|openFileOnWindows
 argument_list|(
 name|link
@@ -3988,6 +4092,8 @@ literal|false
 decl_stmt|;
 if|if
 condition|(
+name|Util
+operator|.
 name|remoteLinkPattern
 operator|.
 name|matcher
@@ -4029,6 +4135,8 @@ block|{
 name|File
 name|tmp
 init|=
+name|Util
+operator|.
 name|expandFilename
 argument_list|(
 name|metaData
@@ -4042,10 +4150,12 @@ name|tmp
 operator|!=
 literal|null
 condition|)
+block|{
 name|file
 operator|=
 name|tmp
 expr_stmt|;
+block|}
 block|}
 comment|// Check if we have arrived at a file type, and either an http link or an existing file:
 if|if
@@ -4079,6 +4189,8 @@ operator|.
 name|getPath
 argument_list|()
 decl_stmt|;
+name|Util
+operator|.
 name|openExternalFilePlatformIndependent
 argument_list|(
 name|fileType
@@ -4220,6 +4332,8 @@ operator|)
 condition|)
 block|{
 comment|// Application is specified. Use it:
+name|Util
+operator|.
 name|openFileWithApplicationOnWindows
 argument_list|(
 name|filePath
@@ -4232,6 +4346,9 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
+name|Util
+operator|.
 name|openFileOnWindows
 argument_list|(
 name|filePath
@@ -4239,6 +4356,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -4270,6 +4388,7 @@ operator|>
 literal|0
 operator|)
 condition|)
+block|{
 name|openWith
 operator|=
 name|fileType
@@ -4282,7 +4401,9 @@ argument_list|(
 literal|" "
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|openWith
 operator|=
 operator|new
@@ -4292,6 +4413,7 @@ block|{
 literal|"xdg-open"
 block|}
 expr_stmt|;
+block|}
 name|String
 index|[]
 name|cmdArray
@@ -4475,6 +4597,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -4482,6 +4606,8 @@ parameter_list|()
 block|{
 try|try
 block|{
+name|Util
+operator|.
 name|openExternalFileAnyFormat
 argument_list|(
 name|metaData
@@ -4765,6 +4891,8 @@ argument_list|)
 expr_stmt|;
 comment|// Finally, open the file:
 return|return
+name|Util
+operator|.
 name|openExternalFileAnyFormat
 argument_list|(
 name|metaData
@@ -4992,6 +5120,8 @@ argument_list|()
 expr_stmt|;
 comment|// Finally, open the link:
 return|return
+name|Util
+operator|.
 name|openExternalFileAnyFormat
 argument_list|(
 name|metaData
@@ -5060,6 +5190,7 @@ argument_list|(
 literal|"}"
 argument_list|)
 condition|)
+block|{
 name|link
 operator|=
 name|link
@@ -5076,6 +5207,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|link
@@ -5115,6 +5247,8 @@ comment|// To prevent mangling of working URLs I'm disabling this check if the l
 comment|// a full http link:
 if|if
 condition|(
+name|Util
+operator|.
 name|checkForPlainDOI
 argument_list|(
 name|link
@@ -5135,6 +5269,8 @@ name|Globals
 operator|.
 name|DOI_LOOKUP_PREFIX
 operator|+
+name|Util
+operator|.
 name|getDOI
 argument_list|(
 name|link
@@ -5241,12 +5377,14 @@ operator|&&
 operator|(
 name|pos
 operator|<
+operator|(
 name|name
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 operator|)
 operator|)
 condition|?
@@ -5345,11 +5483,13 @@ operator|++
 expr_stmt|;
 while|while
 condition|(
+operator|(
 name|i
 operator|<
 name|c
 operator|.
 name|length
+operator|)
 operator|&&
 operator|(
 name|Character
@@ -5362,12 +5502,14 @@ name|i
 index|]
 argument_list|)
 operator|||
+operator|(
 name|c
 index|[
 name|i
 index|]
 operator|==
 literal|'.'
+operator|)
 operator|)
 condition|)
 block|{
@@ -5377,18 +5519,22 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|i
 operator|<
 name|c
 operator|.
 name|length
+operator|)
 operator|&&
+operator|(
 name|c
 index|[
 name|i
 index|]
 operator|==
 literal|'('
+operator|)
 condition|)
 block|{
 name|String
@@ -5446,26 +5592,33 @@ literal|false
 decl_stmt|;
 while|while
 condition|(
+operator|(
+operator|(
 name|i
 operator|+
 literal|1
+operator|)
 operator|<
 name|c
 operator|.
 name|length
+operator|)
 operator|&&
 operator|!
 operator|(
 operator|!
 name|escaped
 operator|&&
+operator|(
 name|c
 index|[
 name|i
 index|]
 operator|==
 literal|'"'
+operator|)
 operator|&&
+operator|(
 name|c
 index|[
 name|i
@@ -5474,6 +5627,7 @@ literal|1
 index|]
 operator|==
 literal|')'
+operator|)
 operator|)
 condition|)
 block|{
@@ -5494,10 +5648,12 @@ name|escaped
 expr_stmt|;
 block|}
 else|else
+block|{
 name|escaped
 operator|=
 literal|false
 expr_stmt|;
+block|}
 name|i
 operator|++
 expr_stmt|;
@@ -5539,18 +5695,22 @@ name|i
 decl_stmt|;
 while|while
 condition|(
+operator|(
 name|i
 operator|<
 name|c
 operator|.
 name|length
+operator|)
 operator|&&
+operator|(
 name|c
 index|[
 name|i
 index|]
 operator|!=
 literal|')'
+operator|)
 condition|)
 block|{
 name|i
@@ -5671,6 +5831,8 @@ block|{
 name|Matcher
 name|m
 init|=
+name|Util
+operator|.
 name|squareBracketsPattern
 operator|.
 name|matcher
@@ -5696,6 +5858,8 @@ block|{
 name|String
 name|replacement
 init|=
+name|Util
+operator|.
 name|getFieldAndFormat
 argument_list|(
 name|m
@@ -5714,10 +5878,12 @@ name|replacement
 operator|==
 literal|null
 condition|)
+block|{
 name|replacement
 operator|=
 literal|""
 expr_stmt|;
+block|}
 name|m
 operator|.
 name|appendReplacement
@@ -5765,19 +5931,25 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|strings
 operator|.
 name|length
 operator|==
 literal|0
+operator|)
 operator|||
+operator|(
 name|from
 operator|>=
 name|to
+operator|)
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 name|from
 operator|=
 name|Math
@@ -5818,9 +5990,11 @@ name|from
 init|;
 name|i
 operator|<
+operator|(
 name|to
 operator|-
 literal|1
+operator|)
 condition|;
 name|i
 operator|++
@@ -5874,6 +6048,8 @@ name|separator
 parameter_list|)
 block|{
 return|return
+name|Util
+operator|.
 name|join
 argument_list|(
 name|strings
@@ -5926,12 +6102,14 @@ operator|&&
 operator|(
 name|pos
 operator|<
+operator|(
 name|name
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 operator|)
 operator|)
 condition|?
@@ -5999,6 +6177,7 @@ name|aDir
 range|:
 name|dir
 control|)
+block|{
 if|if
 condition|(
 operator|!
@@ -6009,6 +6188,7 @@ argument_list|(
 name|aDir
 argument_list|)
 condition|)
+block|{
 name|al
 operator|.
 name|add
@@ -6016,6 +6196,8 @@ argument_list|(
 name|aDir
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 for|for
 control|(
 name|String
@@ -6023,6 +6205,7 @@ name|aFileDir
 range|:
 name|fileDir
 control|)
+block|{
 if|if
 condition|(
 operator|!
@@ -6033,6 +6216,7 @@ argument_list|(
 name|aFileDir
 argument_list|)
 condition|)
+block|{
 name|al
 operator|.
 name|add
@@ -6040,6 +6224,8 @@ argument_list|(
 name|aFileDir
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 name|String
 index|[]
 name|dirs
@@ -6059,6 +6245,8 @@ index|]
 argument_list|)
 decl_stmt|;
 return|return
+name|Util
+operator|.
 name|expandFilename
 argument_list|(
 name|name
@@ -6100,6 +6288,8 @@ block|{
 name|File
 name|result
 init|=
+name|Util
+operator|.
 name|expandFilename
 argument_list|(
 name|name
@@ -6143,20 +6333,26 @@ name|file
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|name
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|name
 operator|.
 name|length
 argument_list|()
 operator|==
 literal|0
+operator|)
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 else|else
 block|{
 name|file
@@ -6197,13 +6393,16 @@ literal|"file.separator"
 argument_list|)
 argument_list|)
 condition|)
+block|{
 name|name
 operator|=
 name|dir
 operator|+
 name|name
 expr_stmt|;
+block|}
 else|else
+block|{
 name|name
 operator|=
 name|dir
@@ -6217,6 +6416,7 @@ argument_list|)
 operator|+
 name|name
 expr_stmt|;
+block|}
 comment|// System.out.println("expanded to: "+name);
 comment|// if (name.startsWith("ftp"))
 name|file
@@ -6234,9 +6434,11 @@ operator|.
 name|exists
 argument_list|()
 condition|)
+block|{
 return|return
 name|file
 return|;
+block|}
 comment|// Ok, try to fix / and \ problems:
 if|if
 condition|(
@@ -6289,6 +6491,7 @@ expr_stmt|;
 block|}
 block|}
 else|else
+block|{
 name|name
 operator|=
 name|name
@@ -6300,6 +6503,7 @@ argument_list|,
 literal|"/"
 argument_list|)
 expr_stmt|;
+block|}
 comment|// System.out.println("expandFilename: "+name);
 name|file
 operator|=
@@ -6317,10 +6521,12 @@ operator|.
 name|exists
 argument_list|()
 condition|)
+block|{
 name|file
 operator|=
 literal|null
 expr_stmt|;
+block|}
 block|}
 return|return
 name|file
@@ -6343,20 +6549,26 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|fileName
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|fileName
 operator|.
 name|length
 argument_list|()
 operator|==
 literal|0
+operator|)
 condition|)
+block|{
 return|return
 name|fileName
 return|;
+block|}
 if|if
 condition|(
 operator|!
@@ -6371,9 +6583,11 @@ operator|==
 literal|null
 operator|)
 condition|)
+block|{
 return|return
 name|fileName
 return|;
+block|}
 for|for
 control|(
 name|String
@@ -6392,6 +6606,8 @@ block|{
 name|File
 name|result
 init|=
+name|Util
+operator|.
 name|shortenFileName
 argument_list|(
 name|fileName
@@ -6417,9 +6633,11 @@ name|fileName
 argument_list|)
 operator|)
 condition|)
+block|{
 return|return
 name|result
 return|;
+block|}
 block|}
 block|}
 return|return
@@ -6441,20 +6659,26 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|fileName
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|fileName
 operator|.
 name|length
 argument_list|()
 operator|==
 literal|0
+operator|)
 condition|)
+block|{
 return|return
 name|fileName
 return|;
+block|}
 if|if
 condition|(
 operator|!
@@ -6463,13 +6687,17 @@ operator|.
 name|isAbsolute
 argument_list|()
 operator|||
+operator|(
 name|dir
 operator|==
 literal|null
+operator|)
 condition|)
+block|{
 return|return
 name|fileName
 return|;
+block|}
 name|String
 name|longName
 decl_stmt|;
@@ -6524,6 +6752,7 @@ literal|"file.separator"
 argument_list|)
 argument_list|)
 condition|)
+block|{
 name|dir
 operator|=
 name|dir
@@ -6538,6 +6767,7 @@ literal|"file.separator"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|longName
@@ -6684,6 +6914,8 @@ decl_stmt|;
 name|String
 name|timestamp
 init|=
+name|Util
+operator|.
 name|easyDateFormat
 argument_list|()
 decl_stmt|;
@@ -6722,7 +6954,9 @@ operator|||
 name|markEntries
 operator|)
 condition|)
+block|{
 return|return;
+block|}
 comment|// Iterate through all entries
 for|for
 control|(
@@ -6774,6 +7008,8 @@ literal|null
 operator|)
 operator|)
 decl_stmt|;
+name|Util
+operator|.
 name|setAutomaticFields
 argument_list|(
 name|curEntry
@@ -6793,12 +7029,15 @@ if|if
 condition|(
 name|markEntries
 condition|)
+block|{
 name|Util
 operator|.
 name|markEntry
 argument_list|(
 name|curEntry
 argument_list|,
+name|Util
+operator|.
 name|IMPORT_MARK_LEVEL
 argument_list|,
 literal|false
@@ -6810,6 +7049,7 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * Sets empty or non-existing owner fields of a bibtex entry to a specified      * default value. Timestamp field is also set. Preferences are checked to      * see if these options are enabled.      *       * @param entry      *            The entry to set fields for.      * @param overwriteOwner      *              Indicates whether owner should be set if it is already set.      * @param overwriteTimestamp      *              Indicates whether timestamp should be set if it is already set.      */
@@ -6844,6 +7084,8 @@ decl_stmt|;
 name|String
 name|timestamp
 init|=
+name|Util
+operator|.
 name|easyDateFormat
 argument_list|()
 decl_stmt|;
@@ -6915,6 +7157,8 @@ literal|null
 operator|)
 operator|)
 decl_stmt|;
+name|Util
+operator|.
 name|setAutomaticFields
 argument_list|(
 name|entry
@@ -6983,6 +7227,7 @@ if|if
 condition|(
 name|setTimeStamp
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -6992,6 +7237,7 @@ argument_list|,
 name|timeStamp
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Copies a file.      *       * @param source      *            File Source file      * @param dest      *            File Destination file      * @param deleteIfExists      *            boolean Determines whether the copy goes on even if the file      *            exists.      * @throws IOException      * @return boolean Whether the copy succeeded, or was stopped due to the      *         file already existing.      */
 DECL|method|copyFile (File source, File dest, boolean deleteIfExists)
@@ -7038,10 +7284,12 @@ condition|(
 operator|!
 name|deleteIfExists
 condition|)
+block|{
 return|return
 literal|false
 return|;
 comment|// else dest.delete();
+block|}
 block|}
 name|in
 operator|=
@@ -7178,10 +7426,12 @@ argument_list|(
 literal|"abstract"
 argument_list|)
 condition|)
+block|{
 name|newGen
 operator|=
 literal|""
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -7240,12 +7490,14 @@ argument_list|(
 literal|";abstract"
 argument_list|)
 operator|==
+operator|(
 name|genFields
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|9
+operator|)
 condition|)
 block|{
 name|newGen
@@ -7261,10 +7513,12 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|newGen
 operator|=
 name|genFields
 expr_stmt|;
+block|}
 comment|// pr(newGen);
 name|Globals
 operator|.
@@ -7295,6 +7549,8 @@ name|fields
 parameter_list|)
 block|{
 return|return
+name|Util
+operator|.
 name|upgradePdfPsToFile
 argument_list|(
 name|database
@@ -7581,9 +7837,11 @@ name|orgName
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 name|String
 name|back
 init|=
@@ -7608,6 +7866,7 @@ name|t
 operator|<
 literal|1
 condition|)
+block|{
 name|back
 operator|=
 name|back
@@ -7616,6 +7875,7 @@ literal|"."
 operator|+
 name|defaultExtension
 expr_stmt|;
+block|}
 return|return
 name|back
 return|;
@@ -7706,6 +7966,8 @@ name|quoteChar
 parameter_list|)
 block|{
 return|return
+name|Util
+operator|.
 name|quote
 argument_list|(
 name|s
@@ -7785,6 +8047,7 @@ argument_list|)
 expr_stmt|;
 name|isSpecial
 operator|=
+operator|(
 name|specials
 operator|.
 name|indexOf
@@ -7793,32 +8056,43 @@ name|c
 argument_list|)
 operator|>=
 literal|0
+operator|)
 operator|||
+operator|(
 name|c
 operator|==
 name|quoteChar
+operator|)
 expr_stmt|;
 comment|// linebreak?
 if|if
 condition|(
+operator|(
 name|linewrap
 operator|>
 literal|0
+operator|)
 operator|&&
+operator|(
 operator|(
 operator|++
 name|linelength
 operator|>=
 name|linewrap
+operator|)
 operator|||
 operator|(
 name|isSpecial
 operator|&&
+operator|(
 name|linelength
 operator|>=
+operator|(
 name|linewrap
 operator|-
 literal|1
+operator|)
+operator|)
 operator|)
 operator|)
 condition|)
@@ -7941,7 +8215,7 @@ name|c
 operator|!=
 literal|'\n'
 condition|)
-comment|// ...unless newline
+block|{
 name|sb
 operator|.
 name|append
@@ -7949,6 +8223,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 name|quoted
 operator|=
 literal|false
@@ -8099,6 +8374,8 @@ name|String
 argument_list|>
 name|words
 init|=
+name|Util
+operator|.
 name|getSeparatedKeywords
 argument_list|(
 name|text
@@ -8159,6 +8436,7 @@ argument_list|()
 operator|>
 literal|2
 condition|)
+block|{
 name|sb
 operator|.
 name|delete
@@ -8176,6 +8454,7 @@ name|length
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|result
 init|=
@@ -8275,8 +8554,10 @@ argument_list|(
 literal|"keywords"
 argument_list|)
 condition|)
+block|{
 continue|continue;
 comment|// this is not undesired
+block|}
 for|for
 control|(
 name|int
@@ -8335,10 +8616,12 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 literal|true
 return|;
 comment|// no side effects
+block|}
 comment|// show a warning, then return
 name|StringBuffer
 name|message
@@ -8369,6 +8652,7 @@ condition|;
 operator|++
 name|i
 control|)
+block|{
 name|message
 operator|.
 name|append
@@ -8386,6 +8670,7 @@ argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
+block|}
 name|message
 operator|.
 name|append
@@ -8546,9 +8831,11 @@ name|c
 operator|==
 literal|'{'
 condition|)
+block|{
 name|inBrace
 operator|++
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -8556,9 +8843,11 @@ name|c
 operator|==
 literal|'}'
 condition|)
+block|{
 name|inBrace
 operator|--
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -8571,11 +8860,13 @@ operator|==
 literal|'#'
 operator|)
 condition|)
+block|{
 name|inString
 operator|=
 operator|!
 name|inString
 expr_stmt|;
+block|}
 comment|// See if we should start bracing:
 if|if
 condition|(
@@ -8694,6 +8985,7 @@ if|if
 condition|(
 name|isBracing
 condition|)
+block|{
 name|buf
 operator|.
 name|append
@@ -8701,6 +8993,7 @@ argument_list|(
 literal|'}'
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|buf
 operator|.
@@ -8743,6 +9036,8 @@ condition|(
 operator|(
 name|s
 operator|=
+name|Util
+operator|.
 name|removeSingleBracesAroundCapitals
 argument_list|(
 name|s
@@ -8781,6 +9076,8 @@ block|{
 name|Matcher
 name|mcr
 init|=
+name|Util
+operator|.
 name|bracedTitleCapitalPattern
 operator|.
 name|matcher
@@ -8892,6 +9189,7 @@ argument_list|(
 literal|"browseDocZip"
 argument_list|)
 condition|)
+block|{
 name|off
 operator|=
 operator|new
@@ -8913,7 +9211,9 @@ literal|".bz2"
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|off
 operator|=
 operator|new
@@ -8927,6 +9227,7 @@ name|ext
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|off
 return|;
@@ -9178,6 +9479,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -9334,12 +9637,14 @@ if|if
 condition|(
 name|charsLeft
 operator|<
+operator|(
 name|word
 operator|.
 name|length
 argument_list|()
 operator|+
 literal|1
+operator|)
 condition|)
 block|{
 name|sb
@@ -9363,9 +9668,11 @@ operator|.
 name|length
 argument_list|()
 operator|>=
+operator|(
 name|lineWidth
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 name|sb
@@ -9445,6 +9752,8 @@ parameter_list|()
 block|{
 comment|// Date today = new Date();
 return|return
+name|Util
+operator|.
 name|easyDateFormat
 argument_list|(
 operator|new
@@ -9467,6 +9776,8 @@ block|{
 comment|// first use, create an instance
 if|if
 condition|(
+name|Util
+operator|.
 name|dateFormatter
 operator|==
 literal|null
@@ -9484,6 +9795,8 @@ argument_list|(
 literal|"timeStampFormat"
 argument_list|)
 decl_stmt|;
+name|Util
+operator|.
 name|dateFormatter
 operator|=
 operator|new
@@ -9494,6 +9807,8 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
+name|Util
+operator|.
 name|dateFormatter
 operator|.
 name|format
@@ -9641,6 +9956,8 @@ name|Math
 operator|.
 name|min
 argument_list|(
+name|Util
+operator|.
 name|MAX_MARKING_LEVEL
 argument_list|,
 name|prevMarkLevel
@@ -9659,6 +9976,8 @@ block|{
 name|Matcher
 name|m
 init|=
+name|Util
+operator|.
 name|markNumberPattern
 operator|.
 name|matcher
@@ -9713,6 +10032,8 @@ name|Math
 operator|.
 name|min
 argument_list|(
+name|Util
+operator|.
 name|MAX_MARKING_LEVEL
 argument_list|,
 name|prevMarkLevel
@@ -9753,6 +10074,7 @@ name|newValue
 operator|==
 literal|null
 condition|)
+block|{
 name|newValue
 operator|=
 name|Globals
@@ -9783,6 +10105,7 @@ name|markIncrement
 operator|+
 literal|"]"
 expr_stmt|;
+block|}
 name|ce
 operator|.
 name|addEdit
@@ -9884,6 +10207,8 @@ operator|!
 name|onlyMaxLevel
 condition|)
 block|{
+name|Util
+operator|.
 name|unmarkOldStyle
 argument_list|(
 name|be
@@ -9928,6 +10253,7 @@ condition|(
 operator|!
 name|onlyMaxLevel
 condition|)
+block|{
 name|newValue
 operator|=
 name|s
@@ -9955,14 +10281,19 @@ name|length
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 return|return;
+block|}
 block|}
 else|else
 block|{
 name|Matcher
 name|m
 init|=
+name|Util
+operator|.
 name|markNumberPattern
 operator|.
 name|matcher
@@ -10003,6 +10334,8 @@ operator|||
 operator|(
 name|prevMarkLevel
 operator|==
+name|Util
+operator|.
 name|MARK_COLOR_LEVELS
 operator|)
 condition|)
@@ -10013,6 +10346,7 @@ name|prevMarkLevel
 operator|>
 literal|1
 condition|)
+block|{
 name|newValue
 operator|=
 name|s
@@ -10041,6 +10375,7 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 name|String
@@ -10113,7 +10448,9 @@ block|}
 block|}
 block|}
 else|else
+block|{
 return|return;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -10224,6 +10561,7 @@ name|o
 operator|!=
 literal|null
 condition|)
+block|{
 name|owners
 operator|.
 name|add
@@ -10232,6 +10570,7 @@ name|o
 argument_list|)
 expr_stmt|;
 comment|// System.out.println("Owner: "+entry.getField(Globals.OWNER));
+block|}
 block|}
 name|owners
 operator|.
@@ -10304,10 +10643,12 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 name|newVal
 operator|=
 literal|null
 expr_stmt|;
+block|}
 name|ce
 operator|.
 name|addEdit
@@ -10374,9 +10715,11 @@ name|fieldVal
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|0
 return|;
+block|}
 name|String
 name|s
 init|=
@@ -10394,9 +10737,11 @@ argument_list|(
 literal|"0"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|1
 return|;
+block|}
 name|int
 name|index
 init|=
@@ -10417,12 +10762,16 @@ name|index
 operator|>=
 literal|0
 condition|)
+block|{
 return|return
 literal|1
 return|;
+block|}
 name|Matcher
 name|m
 init|=
+name|Util
+operator|.
 name|markNumberPattern
 operator|.
 name|matcher
@@ -10466,9 +10815,11 @@ return|;
 block|}
 block|}
 else|else
+block|{
 return|return
 literal|0
 return|;
+block|}
 block|}
 comment|/**      * Set a given field to a given value for all entries in a Collection. This      * method DOES NOT update any UndoManager, but returns a relevant      * CompoundEdit that should be registered by the caller.      *       * @param entries      *            The entries to set the field for.      * @param field      *            The name of the field to set.      * @param text      *            The value to set. This value can be null, indicating that the      *            field should be cleared.      * @param overwriteValues      *            Indicate whether the value should be set even if an entry      *            already has the field set.      * @return A CompoundEdit for the entire operation.      */
 DECL|method|massSetField (Collection<BibtexEntry> entries, String field, String text, boolean overwriteValues)
@@ -10550,13 +10901,16 @@ operator|>
 literal|0
 operator|)
 condition|)
+block|{
 continue|continue;
+block|}
 if|if
 condition|(
 name|text
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -10566,7 +10920,9 @@ argument_list|,
 name|text
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|entry
 operator|.
 name|clearField
@@ -10574,6 +10930,7 @@ argument_list|(
 name|field
 argument_list|)
 expr_stmt|;
+block|}
 name|ce
 operator|.
 name|addEdit
@@ -10674,7 +11031,9 @@ operator|==
 literal|0
 operator|)
 condition|)
+block|{
 continue|continue;
+block|}
 comment|// If we are not allowed to overwrite values, check if there is a
 comment|// nonempy value already for this entry for the new field:
 name|String
@@ -10707,7 +11066,9 @@ operator|>
 literal|0
 operator|)
 condition|)
+block|{
 continue|continue;
+block|}
 name|entry
 operator|.
 name|setField
@@ -10841,6 +11202,7 @@ argument_list|(
 name|characters
 argument_list|)
 condition|)
+block|{
 name|encodings
 operator|.
 name|add
@@ -10853,6 +11215,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|encodings
@@ -10890,10 +11253,13 @@ name|ch
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|str
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 operator|(
 name|end
 operator|=
@@ -10904,7 +11270,10 @@ argument_list|()
 operator|)
 operator|==
 literal|0
+operator|)
 operator|||
+operator|(
+operator|(
 operator|(
 operator|(
 name|ch
@@ -10918,10 +11287,13 @@ argument_list|)
 operator|)
 operator|<
 literal|'0'
+operator|)
 operator|||
+operator|(
 name|ch
 operator|>
 literal|'9'
+operator|)
 operator|)
 operator|&&
 operator|(
@@ -10934,11 +11306,14 @@ operator|==
 literal|'-'
 operator|)
 operator|||
+operator|(
 operator|++
 name|idx
 operator|==
 name|end
+operator|)
 operator|||
+operator|(
 operator|(
 operator|(
 name|ch
@@ -10952,13 +11327,18 @@ argument_list|)
 operator|)
 operator|<
 literal|'0'
+operator|)
 operator|||
+operator|(
 name|ch
 operator|>
 literal|'9'
 operator|)
 operator|)
+operator|)
+operator|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|NumberFormatException
@@ -10966,6 +11346,7 @@ argument_list|(
 name|str
 argument_list|)
 throw|;
+block|}
 for|for
 control|(
 init|;
@@ -10988,6 +11369,7 @@ name|idx
 operator|==
 name|end
 condition|)
+block|{
 return|return
 name|sign
 condition|?
@@ -10996,8 +11378,10 @@ else|:
 operator|-
 name|ival
 return|;
+block|}
 if|if
 condition|(
+operator|(
 operator|(
 name|ch
 operator|=
@@ -11010,11 +11394,15 @@ argument_list|)
 operator|)
 operator|<
 literal|'0'
+operator|)
 operator|||
+operator|(
 name|ch
 operator|>
 literal|'9'
+operator|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|NumberFormatException
@@ -11022,6 +11410,7 @@ argument_list|(
 name|str
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 comment|/**      * Encodes a two-dimensional String array into a single string, using ':' and      * ';' as separators. The characters ':' and ';' are escaped with '\'.      * @param values The String array.      * @return The encoded String.      */
@@ -11065,6 +11454,8 @@ name|sb
 operator|.
 name|append
 argument_list|(
+name|Util
+operator|.
 name|encodeStringArray
 argument_list|(
 name|values
@@ -11078,12 +11469,15 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|values
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -11091,6 +11485,7 @@ argument_list|(
 literal|';'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb
@@ -11139,6 +11534,8 @@ name|sb
 operator|.
 name|append
 argument_list|(
+name|Util
+operator|.
 name|encodeString
 argument_list|(
 name|entry
@@ -11152,12 +11549,15 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|entry
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -11165,6 +11565,7 @@ argument_list|(
 literal|':'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb
@@ -11353,6 +11754,7 @@ argument_list|()
 expr_stmt|;
 block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -11360,6 +11762,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 name|escaped
 operator|=
 literal|false
@@ -11374,6 +11777,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|thisEntry
 operator|.
 name|add
@@ -11384,6 +11788,7 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|thisEntry
@@ -11393,6 +11798,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|newList
 operator|.
 name|add
@@ -11400,6 +11806,7 @@ argument_list|(
 name|thisEntry
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Convert to String[][]:
 name|String
 index|[]
@@ -11514,9 +11921,11 @@ name|s
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|StringBuilder
 name|sb
 init|=
@@ -11572,6 +11981,7 @@ operator|==
 literal|'\\'
 operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -11579,6 +11989,7 @@ argument_list|(
 literal|'\\'
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
@@ -11642,11 +12053,13 @@ name|string
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
 argument_list|()
 throw|;
+block|}
 if|if
 condition|(
 name|string
@@ -11656,9 +12069,11 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|string
 return|;
+block|}
 return|return
 name|Character
 operator|.
@@ -11999,6 +12414,7 @@ condition|(
 operator|!
 name|found
 condition|)
+block|{
 name|al
 operator|.
 name|add
@@ -12006,6 +12422,7 @@ argument_list|(
 name|anAll
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|al
@@ -12242,6 +12659,8 @@ name|REGEXP_DOI_WITH_HTTP_PREFIX
 init|=
 literal|"http[s]?://[^\\s]*?"
 operator|+
+name|Util
+operator|.
 name|REGEXP_PLAINDOI
 decl_stmt|;
 DECL|field|PATTERN_PLAINDOI
@@ -12255,6 +12674,8 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
+name|Util
+operator|.
 name|REGEXP_PLAINDOI
 argument_list|)
 decl_stmt|;
@@ -12270,9 +12691,11 @@ name|check
 parameter_list|)
 block|{
 return|return
+operator|(
 name|check
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|check
 operator|.
@@ -12280,6 +12703,8 @@ name|matches
 argument_list|(
 literal|".*"
 operator|+
+name|Util
+operator|.
 name|REGEXP_DOI_WITH_HTTP_PREFIX
 operator|+
 literal|".*"
@@ -12298,9 +12723,11 @@ name|check
 parameter_list|)
 block|{
 return|return
+operator|(
 name|check
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|check
 operator|.
@@ -12308,6 +12735,8 @@ name|matches
 argument_list|(
 literal|".*"
 operator|+
+name|Util
+operator|.
 name|REGEXP_PLAINDOI
 operator|+
 literal|".*"
@@ -12328,6 +12757,8 @@ block|{
 name|Matcher
 name|matcher
 init|=
+name|Util
+operator|.
 name|PATTERN_PLAINDOI
 operator|.
 name|matcher
@@ -12394,6 +12825,8 @@ name|value
 operator|.
 name|replaceAll
 argument_list|(
+name|Util
+operator|.
 name|REGEXP_DOI_WITH_HTTP_PREFIX
 argument_list|,
 literal|""
@@ -12405,6 +12838,8 @@ name|value
 operator|.
 name|replaceAll
 argument_list|(
+name|Util
+operator|.
 name|REGEXP_PLAINDOI
 argument_list|,
 literal|""
@@ -12424,10 +12859,12 @@ operator|.
 name|isEmpty
 argument_list|()
 condition|)
+block|{
 name|value
 operator|=
 literal|null
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -12543,9 +12980,11 @@ name|keywords
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 name|res
 return|;
+block|}
 comment|// _NOSPACE is a hack to support keywords such as "choreography transactions"
 comment|// a more intelligent algorithm would check for the separator chosen (SEPARATING_CHARS_NOSPACE)
 comment|// if nothing is found, " " is likely to be the separating char.
@@ -12608,6 +13047,8 @@ name|be
 parameter_list|)
 block|{
 return|return
+name|Util
+operator|.
 name|getSeparatedKeywords
 argument_list|(
 name|be
@@ -12738,7 +13179,9 @@ operator|==
 literal|null
 operator|)
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 operator|(
@@ -12773,6 +13216,7 @@ name|ce
 operator|!=
 literal|null
 condition|)
+block|{
 name|ce
 operator|.
 name|addEdit
@@ -12790,6 +13234,7 @@ name|newValue
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * @param ce indicates the undo named compound. May be null      */
@@ -12812,6 +13257,8 @@ name|NamedCompound
 name|ce
 parameter_list|)
 block|{
+name|Util
+operator|.
 name|updateField
 argument_list|(
 name|be
@@ -12899,7 +13346,9 @@ operator|==
 literal|null
 operator|)
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 operator|(
@@ -12934,6 +13383,7 @@ name|ce
 operator|!=
 literal|null
 condition|)
+block|{
 name|ce
 operator|.
 name|addEdit
@@ -12951,6 +13401,7 @@ name|newValue
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * Binds ESC-Key to cancel button      * @param rootPane the pane to bind the action to. Typically, this variable is retrieved by this.getRootPane();      * @param cancelAction the action to bind      */
@@ -13027,6 +13478,8 @@ throws|throws
 name|IOException
 block|{
 return|return
+name|Util
+operator|.
 name|getResultsWithEncoding
 argument_list|(
 name|source
@@ -13116,7 +13569,9 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 break|break;
+block|}
 name|sb
 operator|.
 name|append
@@ -13420,6 +13875,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -13570,6 +14027,8 @@ else|else
 block|{
 name|result
 operator|=
+name|Util
+operator|.
 name|findAssociatedFiles
 argument_list|(
 name|entries
@@ -13631,6 +14090,7 @@ name|oldVal
 operator|!=
 literal|null
 condition|)
+block|{
 name|tableModel
 operator|.
 name|setContent
@@ -13638,6 +14098,7 @@ argument_list|(
 name|oldVal
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -13784,6 +14245,7 @@ operator|&&
 operator|(
 name|index
 operator|<
+operator|(
 name|f
 operator|.
 name|getPath
@@ -13793,6 +14255,7 @@ name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 operator|)
 condition|)
 block|{
@@ -13880,10 +14343,12 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 name|newVal
 operator|=
 literal|null
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|ce
@@ -13943,6 +14408,7 @@ name|changedEntries
 operator|!=
 literal|null
 condition|)
+block|{
 name|changedEntries
 operator|.
 name|add
@@ -13950,6 +14416,7 @@ argument_list|(
 name|anEntry
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -13972,6 +14439,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -13983,17 +14452,20 @@ name|diag
 operator|!=
 literal|null
 condition|)
+block|{
 name|diag
 operator|.
 name|dispose
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|callback
 operator|!=
 literal|null
 condition|)
+block|{
 name|callback
 operator|.
 name|actionPerformed
@@ -14009,6 +14481,7 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -14085,6 +14558,8 @@ name|entry
 argument_list|)
 expr_stmt|;
 return|return
+name|Util
+operator|.
 name|autoSetLinks
 argument_list|(
 name|entries
@@ -14123,6 +14598,8 @@ operator|.
 name|ON_WIN
 condition|)
 block|{
+name|Util
+operator|.
 name|openFolderAndSelectFileOnWindows
 argument_list|(
 name|fileLink
@@ -14137,6 +14614,8 @@ operator|.
 name|ON_LINUX
 condition|)
 block|{
+name|Util
+operator|.
 name|openFolderAndSelectFileOnLinux
 argument_list|(
 name|fileLink
@@ -14145,6 +14624,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|Util
+operator|.
 name|openFolderAndSelectFileGeneric
 argument_list|(
 name|fileLink
@@ -14762,6 +15243,8 @@ parameter_list|)
 block|{
 name|fieldAndFormat
 operator|=
+name|Util
+operator|.
 name|stripBrackets
 argument_list|(
 name|fieldAndFormat
@@ -14866,6 +15349,7 @@ name|fieldValue
 operator|==
 literal|null
 condition|)
+block|{
 name|fieldValue
 operator|=
 name|LabelPatternUtil
@@ -14877,31 +15361,40 @@ argument_list|,
 name|beforeColon
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|fieldValue
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 if|if
 condition|(
+operator|(
 name|afterColon
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|afterColon
 operator|.
 name|length
 argument_list|()
 operator|==
 literal|0
+operator|)
 condition|)
+block|{
 return|return
 name|fieldValue
 return|;
+block|}
 name|String
 index|[]
 name|parts
@@ -15007,6 +15500,8 @@ name|IOException
 block|{
 name|url
 operator|=
+name|Util
+operator|.
 name|sanitizeUrl
 argument_list|(
 name|url
@@ -15024,6 +15519,8 @@ argument_list|(
 literal|"html"
 argument_list|)
 decl_stmt|;
+name|Util
+operator|.
 name|openExternalFilePlatformIndependent
 argument_list|(
 name|fileType

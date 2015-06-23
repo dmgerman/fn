@@ -390,6 +390,8 @@ name|zipFile
 expr_stmt|;
 block|}
 comment|/*          *  (non-Javadoc)          * @see javax.swing.table.TableModel#getColumnCount()          */
+annotation|@
+name|Override
 DECL|method|getColumnCount ()
 specifier|public
 name|int
@@ -403,6 +405,8 @@ name|length
 return|;
 block|}
 comment|/*          *  (non-Javadoc)          * @see javax.swing.table.TableModel#getRowCount()          */
+annotation|@
+name|Override
 DECL|method|getRowCount ()
 specifier|public
 name|int
@@ -418,6 +422,8 @@ name|length
 return|;
 block|}
 comment|/*          *  (non-Javadoc)          * @see javax.swing.table.TableModel#getColumnName(int)          */
+annotation|@
+name|Override
 DECL|method|getColumnName (int col)
 specifier|public
 name|String
@@ -467,6 +473,8 @@ name|zipFile
 return|;
 block|}
 comment|/*          *  (non-Javadoc)          * @see javax.swing.table.TableModel#getValueAt(int, int)          */
+annotation|@
+name|Override
 DECL|method|getValueAt (int rowIndex, int columnIndex)
 specifier|public
 name|Object
@@ -559,6 +567,7 @@ block|}
 comment|/** table of Zip entries */
 DECL|field|table
 specifier|private
+specifier|final
 name|JTable
 name|table
 decl_stmt|;
@@ -588,6 +597,8 @@ name|ImportCustomizationDialog
 name|importCustomizationDialog
 decl_stmt|;
 comment|/*      *  (non-Javadoc)      * @see java.awt.Component#getSize()      */
+annotation|@
+name|Override
 DECL|method|getSize ()
 specifier|public
 name|Dimension
@@ -764,6 +775,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -802,6 +815,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed

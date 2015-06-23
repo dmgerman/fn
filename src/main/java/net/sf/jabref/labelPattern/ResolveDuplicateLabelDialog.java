@@ -390,6 +390,8 @@ operator|new
 name|MetaData
 argument_list|()
 argument_list|,
+name|ResolveDuplicateLabelDialog
+operator|.
 name|layout
 argument_list|)
 decl_stmt|;
@@ -534,6 +536,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -563,6 +567,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -587,6 +593,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed

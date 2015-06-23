@@ -294,6 +294,7 @@ name|AbstractWorker
 block|{
 DECL|field|logger
 specifier|private
+specifier|final
 name|Logger
 name|logger
 init|=
@@ -407,6 +408,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|CleanUpAction
+operator|.
 name|AKS_AUTO_NAMING_PDFS_AGAIN
 argument_list|,
 name|Boolean
@@ -418,6 +421,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_SUPERSCRIPTS
 argument_list|,
 name|Boolean
@@ -429,6 +434,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_DOI
 argument_list|,
 name|Boolean
@@ -440,6 +447,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_MONTH
 argument_list|,
 name|Boolean
@@ -451,6 +460,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_PAGENUMBERS
 argument_list|,
 name|Boolean
@@ -462,6 +473,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_MAKEPATHSRELATIVE
 argument_list|,
 name|Boolean
@@ -473,6 +486,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_RENAMEPDF
 argument_list|,
 name|Boolean
@@ -484,6 +499,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_RENAMEPDF_ONLYRELATIVE_PATHS
 argument_list|,
 name|Boolean
@@ -495,6 +512,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_UPGRADE_EXTERNAL_LINKS
 argument_list|,
 name|Boolean
@@ -506,6 +525,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_MAKEPATHSRELATIVE
 argument_list|,
 name|Boolean
@@ -517,6 +538,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_HTML
 argument_list|,
 name|Boolean
@@ -528,6 +551,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_CASE
 argument_list|,
 name|Boolean
@@ -539,6 +564,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_LATEX
 argument_list|,
 name|Boolean
@@ -550,6 +577,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_UNITS
 argument_list|,
 name|Boolean
@@ -561,6 +590,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_UNICODE
 argument_list|,
 name|Boolean
@@ -572,6 +603,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_CONVERTTOBIBLATEX
 argument_list|,
 name|Boolean
@@ -1296,6 +1329,8 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_SUPERSCRIPTS
 argument_list|)
 argument_list|)
@@ -1310,6 +1345,8 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_DOI
 argument_list|)
 argument_list|)
@@ -1324,6 +1361,8 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_MONTH
 argument_list|)
 argument_list|)
@@ -1338,6 +1377,8 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_PAGENUMBERS
 argument_list|)
 argument_list|)
@@ -1352,6 +1393,8 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_MAKEPATHSRELATIVE
 argument_list|)
 argument_list|)
@@ -1366,6 +1409,8 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_RENAMEPDF
 argument_list|)
 argument_list|)
@@ -1380,6 +1425,8 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_RENAMEPDF_ONLYRELATIVE_PATHS
 argument_list|)
 argument_list|)
@@ -1404,6 +1451,8 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_UPGRADE_EXTERNAL_LINKS
 argument_list|)
 argument_list|)
@@ -1418,6 +1467,8 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_HTML
 argument_list|)
 argument_list|)
@@ -1432,6 +1483,8 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_CASE
 argument_list|)
 argument_list|)
@@ -1446,6 +1499,8 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_LATEX
 argument_list|)
 argument_list|)
@@ -1460,6 +1515,8 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_UNITS
 argument_list|)
 argument_list|)
@@ -1474,6 +1531,8 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_UNICODE
 argument_list|)
 argument_list|)
@@ -1488,6 +1547,8 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_CONVERTTOBIBLATEX
 argument_list|)
 argument_list|)
@@ -1505,6 +1566,8 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_SUPERSCRIPTS
 argument_list|,
 name|cleanUpSuperscrips
@@ -1519,6 +1582,8 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_DOI
 argument_list|,
 name|cleanUpDOI
@@ -1533,6 +1598,8 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_MONTH
 argument_list|,
 name|cleanUpMonth
@@ -1547,6 +1614,8 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_PAGENUMBERS
 argument_list|,
 name|cleanUpPageNumbers
@@ -1561,6 +1630,8 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_MAKEPATHSRELATIVE
 argument_list|,
 name|cleanUpMakePathsRelative
@@ -1575,6 +1646,8 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_RENAMEPDF
 argument_list|,
 name|cleanUpRenamePDF
@@ -1589,6 +1662,8 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_RENAMEPDF_ONLYRELATIVE_PATHS
 argument_list|,
 name|cleanUpRenamePDFonlyRelativePaths
@@ -1603,6 +1678,8 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_UPGRADE_EXTERNAL_LINKS
 argument_list|,
 name|cleanUpUpgradeExternalLinks
@@ -1617,6 +1694,8 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_HTML
 argument_list|,
 name|cleanUpHTML
@@ -1631,6 +1710,8 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_CASE
 argument_list|,
 name|cleanUpCase
@@ -1645,6 +1726,8 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_LATEX
 argument_list|,
 name|cleanUpLaTeX
@@ -1659,6 +1742,8 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_UNITS
 argument_list|,
 name|cleanUpUnits
@@ -1673,6 +1758,8 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_UNICODE
 argument_list|,
 name|cleanUpUnicode
@@ -1687,6 +1774,8 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|CLEANUP_CONVERTTOBIBLATEX
 argument_list|,
 name|cleanUpBiblatex
@@ -1760,6 +1849,8 @@ DECL|field|numSelected
 name|int
 name|numSelected
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|init ()
 specifier|public
 name|void
@@ -1848,6 +1939,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -1858,7 +1951,9 @@ if|if
 condition|(
 name|cancelled
 condition|)
+block|{
 return|return;
+block|}
 name|int
 name|choice
 init|=
@@ -1985,6 +2080,8 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|AKS_AUTO_NAMING_PDFS_AGAIN
 argument_list|)
 condition|)
@@ -2042,17 +2139,21 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|Globals
 operator|.
 name|prefs
 operator|.
 name|putBoolean
 argument_list|(
+name|CleanUpAction
+operator|.
 name|AKS_AUTO_NAMING_PDFS_AGAIN
 argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|answer
@@ -2174,6 +2275,7 @@ if|if
 condition|(
 name|choiceCleanUpSuperscripts
 condition|)
+block|{
 name|doCleanUpSuperscripts
 argument_list|(
 name|entry
@@ -2181,10 +2283,12 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|choiceCleanUpDOI
 condition|)
+block|{
 name|doCleanUpDOI
 argument_list|(
 name|entry
@@ -2192,10 +2296,12 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|choiceCleanUpMonth
 condition|)
+block|{
 name|doCleanUpMonth
 argument_list|(
 name|entry
@@ -2203,10 +2309,12 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|choiceCleanUpPageNumbers
 condition|)
+block|{
 name|doCleanUpPageNumbers
 argument_list|(
 name|entry
@@ -2214,6 +2322,7 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+block|}
 name|fixWrongFileEntries
 argument_list|(
 name|entry
@@ -2225,6 +2334,7 @@ if|if
 condition|(
 name|choiceMakePathsRelative
 condition|)
+block|{
 name|doMakePathsRelative
 argument_list|(
 name|entry
@@ -2232,10 +2342,12 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|choiceRenamePDF
 condition|)
+block|{
 name|doRenamePDFs
 argument_list|(
 name|entry
@@ -2243,10 +2355,12 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|choiceConvertHTML
 condition|)
+block|{
 name|doConvertHTML
 argument_list|(
 name|entry
@@ -2254,10 +2368,12 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|choiceConvertUnits
 condition|)
+block|{
 name|doConvertUnits
 argument_list|(
 name|entry
@@ -2265,10 +2381,12 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|choiceConvertCase
 condition|)
+block|{
 name|doConvertCase
 argument_list|(
 name|entry
@@ -2276,10 +2394,12 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|choiceConvertLaTeX
 condition|)
+block|{
 name|doConvertLaTeX
 argument_list|(
 name|entry
@@ -2287,10 +2407,12 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|choiceConvertUnicode
 condition|)
+block|{
 name|doConvertUnicode
 argument_list|(
 name|entry
@@ -2298,10 +2420,12 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|choiceConvertToBiblatex
 condition|)
+block|{
 name|doConvertToBiblatex
 argument_list|(
 name|entry
@@ -2309,6 +2433,7 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+block|}
 name|ce
 operator|.
 name|end
@@ -2337,6 +2462,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void
@@ -2523,7 +2650,9 @@ name|oldValue
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|String
 name|newValue
 init|=
@@ -2946,7 +3075,9 @@ name|oldValue
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|String
 name|newValue
 init|=
@@ -3028,7 +3159,9 @@ name|oldValue
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|FileListTableModel
 name|flModel
 init|=
@@ -3234,7 +3367,9 @@ name|oldValue
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|FileListTableModel
 name|flModel
 init|=
@@ -3442,7 +3577,9 @@ name|oldValue
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|FileListTableModel
 name|flModel
 init|=
@@ -3523,7 +3660,9 @@ name|isAbsolute
 argument_list|()
 operator|)
 condition|)
+block|{
 continue|continue;
+block|}
 name|String
 name|newFilename
 init|=
@@ -3631,9 +3770,11 @@ operator|.
 name|exists
 argument_list|()
 condition|)
+block|{
 comment|// we do not overwrite files
 comment|// TODO: we could check here if the newPath file is linked with the current entry. And if not, we could add a link
 continue|continue;
+block|}
 comment|//do rename
 name|boolean
 name|renameSuccesfull
@@ -4501,20 +4642,26 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|oldValue
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|oldValue
 operator|.
 name|length
 argument_list|()
 operator|>
 literal|0
+operator|)
 operator|&&
+operator|(
 name|newValue
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 comment|// There is content in the old field and no value in the new, so just copy
@@ -4575,6 +4722,7 @@ block|}
 comment|// Dates: create date out of year and month, save it and delete old fields
 if|if
 condition|(
+operator|(
 name|entry
 operator|.
 name|getField
@@ -4583,7 +4731,9 @@ literal|"date"
 argument_list|)
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|entry
 operator|.
 name|getField
@@ -4595,6 +4745,7 @@ name|length
 argument_list|()
 operator|==
 literal|0
+operator|)
 condition|)
 block|{
 name|String

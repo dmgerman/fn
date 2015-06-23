@@ -693,6 +693,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -716,6 +718,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -739,6 +743,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -765,6 +771,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -790,6 +798,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -813,6 +823,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -977,6 +989,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1014,6 +1028,7 @@ name|row
 operator|>=
 literal|0
 condition|)
+block|{
 name|setRowSelectionInterval
 argument_list|(
 name|row
@@ -1021,6 +1036,7 @@ argument_list|,
 name|row
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -1052,6 +1068,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1096,6 +1114,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1143,6 +1163,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1189,6 +1211,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1285,6 +1309,8 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
+name|FileListEditor
+operator|.
 name|logger
 operator|.
 name|fine
@@ -1475,6 +1501,8 @@ return|return
 name|tableModel
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getFieldName ()
 specifier|public
 name|String
@@ -1486,6 +1514,8 @@ name|fieldName
 return|;
 block|}
 comment|/*       * Returns the component to be added to a container. Might be a JScrollPane     * or the component itself.     */
+annotation|@
+name|Override
 DECL|method|getPane ()
 specifier|public
 name|JComponent
@@ -1497,6 +1527,8 @@ name|panel
 return|;
 block|}
 comment|/*      * Returns the text component itself.     */
+annotation|@
+name|Override
 DECL|method|getTextComponent ()
 specifier|public
 name|JComponent
@@ -1507,6 +1539,8 @@ return|return
 name|this
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getLabel ()
 specifier|public
 name|JLabel
@@ -1517,6 +1551,8 @@ return|return
 name|label
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setLabelColor (Color c)
 specifier|public
 name|void
@@ -1534,6 +1570,8 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getText ()
 specifier|public
 name|String
@@ -1547,6 +1585,8 @@ name|getStringRepresentation
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setText (String newText)
 specifier|public
 name|void
@@ -1564,6 +1604,8 @@ name|newText
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|append (String text)
 specifier|public
 name|void
@@ -1573,12 +1615,16 @@ name|String
 name|text
 parameter_list|)
 block|{      }
+annotation|@
+name|Override
 DECL|method|updateFont ()
 specifier|public
 name|void
 name|updateFont
 parameter_list|()
 block|{      }
+annotation|@
+name|Override
 DECL|method|paste (String textToInsert)
 specifier|public
 name|void
@@ -1588,6 +1634,8 @@ name|String
 name|textToInsert
 parameter_list|)
 block|{      }
+annotation|@
+name|Override
 DECL|method|getSelectedText ()
 specifier|public
 name|String
@@ -1620,10 +1668,12 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 name|row
 operator|=
 literal|0
 expr_stmt|;
+block|}
 name|FileListEntry
 name|entry
 init|=
@@ -1646,6 +1696,7 @@ argument_list|,
 literal|true
 argument_list|)
 condition|)
+block|{
 name|tableModel
 operator|.
 name|addEntry
@@ -1655,6 +1706,7 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
 name|entryEditor
 operator|.
 name|updateField
@@ -1694,6 +1746,7 @@ name|rows
 operator|!=
 literal|null
 condition|)
+block|{
 for|for
 control|(
 name|int
@@ -1723,6 +1776,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|entryEditor
 operator|.
@@ -1767,7 +1821,9 @@ operator|<
 literal|2
 operator|)
 condition|)
+block|{
 return|return;
+block|}
 name|int
 name|toIdx
 init|=
@@ -1787,6 +1843,7 @@ operator|.
 name|getRowCount
 argument_list|()
 condition|)
+block|{
 name|toIdx
 operator|-=
 name|tableModel
@@ -1794,12 +1851,14 @@ operator|.
 name|getRowCount
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|toIdx
 operator|<
 literal|0
 condition|)
+block|{
 name|toIdx
 operator|+=
 name|tableModel
@@ -1807,6 +1866,7 @@ operator|.
 name|getRowCount
 argument_list|()
 expr_stmt|;
+block|}
 name|FileListEntry
 name|entry
 init|=
@@ -1892,6 +1952,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|editor
 operator|.
 name|setEntry
@@ -1899,6 +1960,7 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
 name|editor
 operator|.
 name|setVisible
@@ -1915,11 +1977,13 @@ operator|.
 name|okPressed
 argument_list|()
 condition|)
+block|{
 name|tableModel
 operator|.
 name|fireTableDataChanged
 argument_list|()
 expr_stmt|;
+block|}
 name|entryEditor
 operator|.
 name|updateField
@@ -1986,6 +2050,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2034,6 +2100,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|frame
 operator|.
 name|output
@@ -2055,6 +2122,7 @@ literal|"No files found."
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|,
@@ -2198,6 +2266,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * This is the callback method that the DownloadExternalFile class uses to report the result      * of a download operation. This call may never come, if the user cancelled the operation.      * @param file The FileListEntry linking to the resulting local file.      */
+annotation|@
+name|Override
 DECL|method|downloadComplete (FileListEntry file)
 specifier|public
 name|void
@@ -2233,6 +2303,8 @@ name|TableClickListener
 extends|extends
 name|MouseAdapter
 block|{
+annotation|@
+name|Override
 DECL|method|mouseClicked (MouseEvent e)
 specifier|public
 name|void
@@ -2310,12 +2382,16 @@ operator|.
 name|isPopupTrigger
 argument_list|()
 condition|)
+block|{
 name|processPopupTrigger
 argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|mousePressed (MouseEvent e)
 specifier|public
 name|void
@@ -2332,12 +2408,16 @@ operator|.
 name|isPopupTrigger
 argument_list|()
 condition|)
+block|{
 name|processPopupTrigger
 argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|mouseReleased (MouseEvent e)
 specifier|public
 name|void
@@ -2354,11 +2434,13 @@ operator|.
 name|isPopupTrigger
 argument_list|()
 condition|)
+block|{
 name|processPopupTrigger
 argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|processPopupTrigger (MouseEvent e)
 specifier|private
@@ -2416,6 +2498,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|hasUndoInformation ()
 specifier|public
 name|boolean
@@ -2426,12 +2510,16 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|undo ()
 specifier|public
 name|void
 name|undo
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 DECL|method|hasRedoInformation ()
 specifier|public
 name|boolean
@@ -2442,12 +2530,16 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|redo ()
 specifier|public
 name|void
 name|redo
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 DECL|method|addUndoableEditListener (UndoableEditListener listener)
 specifier|public
 name|void
@@ -2457,6 +2549,8 @@ name|UndoableEditListener
 name|listener
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 DECL|method|setAutoCompleteListener (AutoCompleteListener listener)
 specifier|public
 name|void
@@ -2466,30 +2560,40 @@ name|AutoCompleteListener
 name|listener
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 DECL|method|clearAutoCompleteSuggestion ()
 specifier|public
 name|void
 name|clearAutoCompleteSuggestion
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 DECL|method|setActiveBackgroundColor ()
 specifier|public
 name|void
 name|setActiveBackgroundColor
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 DECL|method|setValidBackgroundColor ()
 specifier|public
 name|void
 name|setValidBackgroundColor
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 DECL|method|setInvalidBackgroundColor ()
 specifier|public
 name|void
 name|setInvalidBackgroundColor
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 DECL|method|updateFontColor ()
 specifier|public
 name|void

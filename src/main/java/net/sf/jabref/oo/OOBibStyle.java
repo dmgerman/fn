@@ -364,6 +364,7 @@ name|MIN_VALUE
 decl_stmt|;
 DECL|field|COMBINED_ENTRIES_SEPARATOR
 specifier|private
+specifier|final
 name|String
 name|COMBINED_ENTRIES_SEPARATOR
 init|=
@@ -408,6 +409,8 @@ name|styleFile
 operator|=
 name|styleFile
 expr_stmt|;
+name|OOBibStyle
+operator|.
 name|styleFileModificationTime
 operator|=
 operator|(
@@ -828,9 +831,11 @@ operator|!
 name|isUpToDate
 argument_list|()
 condition|)
+block|{
 name|reload
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|/**      * If this style was initialized from a file on disk, reload the style      * information.      * @throws Exception      */
 DECL|method|reload ()
@@ -848,6 +853,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|OOBibStyle
+operator|.
 name|styleFileModificationTime
 operator|=
 operator|(
@@ -888,13 +895,17 @@ operator|.
 name|lastModified
 argument_list|()
 operator|==
+name|OOBibStyle
+operator|.
 name|styleFileModificationTime
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 DECL|method|readFormatFile (Reader in)
 specifier|private
@@ -962,6 +973,8 @@ decl_stmt|;
 name|int
 name|mode
 init|=
+name|OOBibStyle
+operator|.
 name|NONE
 decl_stmt|;
 for|for
@@ -1004,6 +1017,7 @@ operator|==
 literal|'\r'
 operator|)
 condition|)
+block|{
 name|line
 operator|=
 name|line
@@ -1020,6 +1034,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Check for empty line or comment:
 if|if
 condition|(
@@ -1046,7 +1061,9 @@ operator|==
 literal|'#'
 operator|)
 condition|)
+block|{
 continue|continue;
+block|}
 comment|// Check if we should change mode:
 if|if
 condition|(
@@ -1054,12 +1071,16 @@ name|line
 operator|.
 name|equals
 argument_list|(
+name|OOBibStyle
+operator|.
 name|NAME_MARK
 argument_list|)
 condition|)
 block|{
 name|mode
 operator|=
+name|OOBibStyle
+operator|.
 name|NAME
 expr_stmt|;
 continue|continue;
@@ -1071,12 +1092,16 @@ name|line
 operator|.
 name|equals
 argument_list|(
+name|OOBibStyle
+operator|.
 name|LAYOUT_MRK
 argument_list|)
 condition|)
 block|{
 name|mode
 operator|=
+name|OOBibStyle
+operator|.
 name|LAYOUT
 expr_stmt|;
 continue|continue;
@@ -1088,12 +1113,16 @@ name|line
 operator|.
 name|equals
 argument_list|(
+name|OOBibStyle
+operator|.
 name|PROPERTIES_MARK
 argument_list|)
 condition|)
 block|{
 name|mode
 operator|=
+name|OOBibStyle
+operator|.
 name|PROPERTIES
 expr_stmt|;
 continue|continue;
@@ -1105,12 +1134,16 @@ name|line
 operator|.
 name|equals
 argument_list|(
+name|OOBibStyle
+operator|.
 name|CITATION_MARK
 argument_list|)
 condition|)
 block|{
 name|mode
 operator|=
+name|OOBibStyle
+operator|.
 name|CITATION
 expr_stmt|;
 continue|continue;
@@ -1122,12 +1155,16 @@ name|line
 operator|.
 name|equals
 argument_list|(
+name|OOBibStyle
+operator|.
 name|JOURNALS_MARK
 argument_list|)
 condition|)
 block|{
 name|mode
 operator|=
+name|OOBibStyle
+operator|.
 name|JOURNALS
 expr_stmt|;
 continue|continue;
@@ -1152,6 +1189,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|name
 operator|=
 name|line
@@ -1159,6 +1197,7 @@ operator|.
 name|trim
 argument_list|()
 expr_stmt|;
+block|}
 case|case
 name|LAYOUT
 case|:
@@ -1206,12 +1245,16 @@ if|if
 condition|(
 name|mode
 operator|!=
+name|OOBibStyle
+operator|.
 name|NONE
 condition|)
+block|{
 name|valid
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 comment|/**      * After initalizing this style from a file, this method can be used to check      * whether the file appeared to be a proper style file.      * @return true if the file could be parsed as a style file, false otherwise.      */
 DECL|method|isValid ()
@@ -1255,12 +1298,14 @@ operator|&&
 operator|(
 name|index
 operator|<
+operator|(
 name|line
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 operator|)
 condition|)
 block|{
@@ -1291,6 +1336,8 @@ argument_list|)
 operator|.
 name|equals
 argument_list|(
+name|OOBibStyle
+operator|.
 name|DEFAULT_MARK
 argument_list|)
 decl_stmt|;
@@ -1336,11 +1383,14 @@ if|if
 condition|(
 name|setDefault
 condition|)
+block|{
 name|defaultBibLayout
 operator|=
 name|layout
 expr_stmt|;
+block|}
 else|else
+block|{
 name|bibLayout
 operator|.
 name|put
@@ -1353,6 +1403,7 @@ argument_list|,
 name|layout
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1407,12 +1458,14 @@ operator|&&
 operator|(
 name|index
 operator|<=
+operator|(
 name|line
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 operator|)
 condition|)
 block|{
@@ -1470,6 +1523,7 @@ operator|.
 name|matches
 argument_list|()
 condition|)
+block|{
 name|value
 operator|=
 name|value
@@ -1492,6 +1546,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 name|Object
 name|toSet
 init|=
@@ -1536,12 +1591,14 @@ argument_list|(
 literal|"true"
 argument_list|)
 condition|)
+block|{
 name|toSet
 operator|=
 name|Boolean
 operator|.
 name|TRUE
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1558,12 +1615,14 @@ argument_list|(
 literal|"false"
 argument_list|)
 condition|)
+block|{
 name|toSet
 operator|=
 name|Boolean
 operator|.
 name|FALSE
 expr_stmt|;
+block|}
 name|map
 operator|.
 name|put
@@ -1597,6 +1656,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|journals
 operator|.
 name|add
@@ -1607,6 +1667,7 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|getReferenceFormat (String type)
 specifier|public
@@ -1636,13 +1697,17 @@ name|l
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|l
 return|;
+block|}
 else|else
+block|{
 return|return
 name|defaultBibLayout
 return|;
+block|}
 block|}
 comment|/**      * Get the array of elements composing the reference for a given entry type.      * @param bibType The OO type number.      * @return The format definition.      public PropertyValue[][] getReferenceFormat(short bibType) {         Object o = bibLayout.get(new Short(bibType));         if (o != null)             return (PropertyValue[][])o;         else             return defaultBibLayout;     }*/
 comment|/**      * Format a number-based citation marker for the given number.      * @param number The citation numbers.      * @return The text for the citation.      */
@@ -1841,11 +1906,13 @@ condition|(
 operator|(
 name|i
 operator|<
+operator|(
 name|lNum
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 operator|)
 operator|&&
 operator|(
@@ -1856,15 +1923,19 @@ operator|+
 literal|1
 index|]
 operator|==
+operator|(
 name|i1
 operator|+
 literal|1
 operator|)
+operator|)
 condition|)
+block|{
 name|combineFrom
 operator|=
 name|i1
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|// Add single entry:
@@ -1874,6 +1945,7 @@ name|i
 operator|>
 literal|0
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1889,6 +1961,7 @@ literal|"CitationSeparator"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
@@ -1910,6 +1983,8 @@ name|i
 index|]
 argument_list|)
 else|:
+name|OOBibStyle
+operator|.
 name|UNDEFINED_CITATION_MARKER
 argument_list|)
 expr_stmt|;
@@ -1927,11 +2002,13 @@ condition|(
 operator|(
 name|i
 operator|==
+operator|(
 name|lNum
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 operator|)
 operator|||
 operator|(
@@ -1942,9 +2019,11 @@ operator|+
 literal|1
 index|]
 operator|!=
+operator|(
 name|i1
 operator|+
 literal|1
+operator|)
 operator|)
 condition|)
 block|{
@@ -1954,6 +2033,7 @@ name|written
 operator|>
 literal|0
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1969,6 +2049,7 @@ literal|"CitationSeparator"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -1978,11 +2059,15 @@ literal|0
 operator|)
 operator|&&
 operator|(
+operator|(
+operator|(
 name|i1
 operator|+
 literal|1
+operator|)
 operator|-
 name|combineFrom
+operator|)
 operator|>=
 name|minGroupingCount
 operator|)
@@ -2053,6 +2138,7 @@ name|jj
 operator|<
 name|i1
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -2068,6 +2154,7 @@ literal|"CitationSeparator"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|written
 operator|++
 expr_stmt|;
@@ -2578,9 +2665,11 @@ operator|&&
 operator|(
 name|i
 operator|>
+operator|(
 name|piv
 operator|+
 literal|1
+operator|)
 operator|)
 condition|)
 block|{
@@ -2636,9 +2725,11 @@ operator|&&
 operator|(
 name|i
 operator|>
+operator|(
 name|piv
 operator|+
 literal|1
+operator|)
 operator|)
 condition|)
 block|{
@@ -2714,6 +2805,7 @@ if|if
 condition|(
 name|inParenthesis
 condition|)
+block|{
 return|return
 name|getAuthorYearParenthesisMarker
 argument_list|(
@@ -2826,6 +2918,7 @@ argument_list|,
 name|unlimAuthors
 argument_list|)
 return|;
+block|}
 else|else
 block|{
 name|String
@@ -2860,10 +2953,12 @@ name|alsInText
 operator|!=
 literal|null
 condition|)
+block|{
 name|authorLastSeparator
 operator|=
 name|alsInText
 expr_stmt|;
+block|}
 return|return
 name|getAuthorYearInTextMarker
 argument_list|(
@@ -3180,13 +3275,16 @@ name|entry
 operator|==
 literal|null
 condition|)
+block|{
 continue|continue;
+block|}
 if|if
 condition|(
 name|j
 operator|>
 literal|0
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -3194,6 +3292,7 @@ argument_list|(
 name|citationSeparator
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|author
 init|=
@@ -3273,12 +3372,14 @@ while|while
 condition|(
 name|i
 operator|<
+operator|(
 name|al
 operator|.
 name|size
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 name|sb
@@ -3374,6 +3475,7 @@ name|year
 operator|!=
 literal|null
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -3381,6 +3483,7 @@ argument_list|(
 name|year
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -3398,6 +3501,7 @@ operator|!=
 literal|null
 operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -3408,6 +3512,7 @@ name|j
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|sb
 operator|.
@@ -3537,13 +3642,16 @@ index|]
 operator|==
 literal|null
 condition|)
+block|{
 continue|continue;
+block|}
 if|if
 condition|(
 name|i
 operator|>
 literal|0
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -3551,6 +3659,7 @@ argument_list|(
 name|citationSeparator
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|author
 init|=
@@ -3592,6 +3701,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -3604,6 +3714,7 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -3642,12 +3753,14 @@ while|while
 condition|(
 name|j
 operator|<
+operator|(
 name|al
 operator|.
 name|size
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 name|sb
@@ -3753,6 +3866,7 @@ name|year
 operator|!=
 literal|null
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -3760,6 +3874,7 @@ argument_list|(
 name|year
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -3777,6 +3892,7 @@ operator|!=
 literal|null
 operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -3787,6 +3903,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
@@ -3878,6 +3995,7 @@ name|fieldFormatter
 operator|!=
 literal|null
 condition|)
+block|{
 name|content
 operator|=
 name|fieldFormatter
@@ -3887,6 +4005,7 @@ argument_list|(
 name|content
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|content
 return|;
@@ -3950,6 +4069,7 @@ operator|!=
 literal|null
 operator|)
 operator|&&
+operator|(
 name|a
 operator|.
 name|getVon
@@ -3959,6 +4079,7 @@ name|length
 argument_list|()
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|String
@@ -4068,6 +4189,7 @@ name|bracketAfter
 return|;
 block|}
 else|else
+block|{
 return|return
 name|citation
 operator|+
@@ -4078,6 +4200,7 @@ argument_list|)
 operator|+
 name|pageInfo
 return|;
+block|}
 block|}
 comment|/**      * Convenience method for checking the property for whether we use number citations or      * author-year citations.      * @return true if we use numbered citations, false otherwise.      */
 DECL|method|isNumberEntries ()
@@ -4289,6 +4412,8 @@ name|name
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|compareTo (OOBibStyle other)
 specifier|public
 name|int
@@ -4311,6 +4436,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|equals (Object o)
 specifier|public
 name|boolean

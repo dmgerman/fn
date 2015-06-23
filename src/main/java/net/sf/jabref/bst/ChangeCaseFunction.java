@@ -90,6 +90,8 @@ operator|=
 name|vm
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|execute (BstEntry context)
 specifier|public
 name|void
@@ -148,10 +150,13 @@ if|if
 condition|(
 operator|!
 operator|(
+operator|(
 name|o1
 operator|instanceof
 name|String
+operator|)
 operator|&&
+operator|(
 operator|(
 operator|(
 name|String
@@ -163,6 +168,7 @@ name|length
 argument_list|()
 operator|==
 literal|1
+operator|)
 operator|)
 condition|)
 block|{

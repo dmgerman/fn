@@ -1025,6 +1025,7 @@ name|Globals
 operator|.
 name|ON_MAC
 condition|)
+block|{
 name|b
 operator|.
 name|setMargin
@@ -1032,6 +1033,7 @@ argument_list|(
 name|marg
 argument_list|)
 expr_stmt|;
+block|}
 name|add
 argument_list|(
 name|b
@@ -1062,6 +1064,8 @@ specifier|final
 name|JMenu
 name|pluginMenu
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Plugins"
@@ -3303,6 +3307,8 @@ specifier|final
 name|JMenu
 name|importMenu
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Import into current database"
@@ -3313,6 +3319,8 @@ specifier|final
 name|JMenu
 name|importNewMenu
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Import into new database"
@@ -3323,6 +3331,8 @@ specifier|final
 name|JMenu
 name|exportMenu
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Export"
@@ -3332,6 +3342,8 @@ DECL|field|customExportMenu
 name|JMenu
 name|customExportMenu
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Custom export"
@@ -3342,6 +3354,8 @@ specifier|final
 name|JMenu
 name|newDatabaseMenu
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"New database"
@@ -3353,6 +3367,8 @@ specifier|final
 name|JMenu
 name|checkAndFix
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Legacy tools..."
@@ -3618,6 +3634,8 @@ operator|new
 name|WindowAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|windowClosing
@@ -3812,12 +3830,14 @@ name|bounds
 operator|.
 name|x
 condition|)
+block|{
 name|posX
 operator|=
 name|bounds
 operator|.
 name|x
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|posY
@@ -3826,12 +3846,14 @@ name|bounds
 operator|.
 name|y
 condition|)
+block|{
 name|posY
 operator|=
 name|bounds
 operator|.
 name|y
 expr_stmt|;
+block|}
 name|int
 name|height
 init|=
@@ -3857,9 +3879,11 @@ decl_stmt|;
 comment|//if (posX< )
 if|if
 condition|(
+operator|(
 name|posX
 operator|+
 name|sizeX
+operator|)
 operator|>
 name|width
 condition|)
@@ -3902,9 +3926,11 @@ block|}
 block|}
 if|if
 condition|(
+operator|(
 name|posY
 operator|+
 name|sizeY
+operator|)
 operator|>
 name|height
 condition|)
@@ -3983,6 +4009,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -4458,6 +4486,7 @@ argument_list|(
 literal|"searchPanelVisible"
 argument_list|)
 condition|)
+block|{
 name|sidePaneManager
 operator|.
 name|show
@@ -4465,6 +4494,7 @@ argument_list|(
 literal|"search"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// The MacAdapter calls this method when a ".bib" file has been double-clicked from the Finder.
 DECL|method|openAction (String filePath)
@@ -4583,6 +4613,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -4633,6 +4665,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -4739,6 +4773,8 @@ operator|.
 name|HyperlinkListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|hyperlinkUpdate
@@ -4889,6 +4925,8 @@ operator|new
 name|AbstractWorker
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -4934,12 +4972,16 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|prefsDialog
 operator|.
 name|setValues
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|update
@@ -5010,12 +5052,14 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|basePanel
 argument_list|()
 operator|.
 name|saveDividerLocation
 argument_list|()
 expr_stmt|;
+block|}
 name|prefs
 operator|.
 name|putInt
@@ -5138,6 +5182,7 @@ name|width
 operator|>
 literal|0
 condition|)
+block|{
 name|prefs
 operator|.
 name|putInt
@@ -5147,6 +5192,7 @@ argument_list|,
 name|width
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|prefs
@@ -5270,6 +5316,7 @@ name|autoSaveManager
 operator|!=
 literal|null
 condition|)
+block|{
 name|Globals
 operator|.
 name|autoSaveManager
@@ -5277,6 +5324,7 @@ operator|.
 name|clearAutoSaves
 argument_list|()
 expr_stmt|;
+block|}
 comment|// Let the search interface store changes to prefs.
 comment|// But which one? Let's use the one that is visible.
 if|if
@@ -5594,10 +5642,12 @@ operator|.
 name|cancelled
 argument_list|()
 condition|)
+block|{
 return|return
 literal|false
 return|;
 comment|// The user clicked cancel.
+block|}
 block|}
 block|}
 name|tearDownJabRef
@@ -6339,6 +6389,7 @@ operator|<
 name|len
 operator|)
 condition|)
+block|{
 name|tabbedPane
 operator|.
 name|setForegroundAt
@@ -6350,6 +6401,7 @@ operator|.
 name|inActiveTabbed
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -6365,6 +6417,7 @@ operator|<
 name|len
 operator|)
 condition|)
+block|{
 name|tabbedPane
 operator|.
 name|setForegroundAt
@@ -6376,6 +6429,7 @@ operator|.
 name|activeTabbed
 argument_list|)
 expr_stmt|;
+block|}
 name|lastTabbedPanelSelectionIndex
 operator|=
 name|now
@@ -6570,6 +6624,8 @@ name|command
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|text
@@ -6577,6 +6633,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -6626,6 +6684,8 @@ name|command
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|text
@@ -6633,6 +6693,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|key
@@ -6640,6 +6702,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -6664,6 +6728,8 @@ parameter_list|)
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|text
@@ -6698,6 +6764,8 @@ name|command
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|text
@@ -6705,6 +6773,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|key
@@ -6747,15 +6817,21 @@ name|icon
 operator|!=
 literal|null
 condition|)
+block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SMALL_ICON
 argument_list|,
 name|icon
 argument_list|)
 expr_stmt|;
+block|}
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|text
@@ -6763,6 +6839,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -6813,15 +6891,21 @@ name|icon
 operator|!=
 literal|null
 condition|)
+block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SMALL_ICON
 argument_list|,
 name|icon
 argument_list|)
 expr_stmt|;
+block|}
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|text
@@ -6829,6 +6913,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -6841,6 +6927,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|key
@@ -6889,15 +6977,21 @@ name|icon
 operator|!=
 literal|null
 condition|)
+block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SMALL_ICON
 argument_list|,
 name|icon
 argument_list|)
 expr_stmt|;
+block|}
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|text
@@ -6905,6 +6999,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -6917,12 +7013,16 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -7063,6 +7163,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"New entry"
@@ -7070,6 +7172,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|key
@@ -7077,6 +7181,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -7099,6 +7205,8 @@ block|{
 comment|// This action leads to the creation of a specific entry.
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|Util
@@ -7128,6 +7236,8 @@ block|{
 comment|// This action leads to the creation of a specific entry.
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|Util
@@ -7140,6 +7250,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|key
@@ -7150,6 +7262,8 @@ operator|=
 name|type_
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -7312,6 +7426,8 @@ expr_stmt|;
 name|JMenu
 name|file
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"File"
@@ -7319,6 +7435,8 @@ argument_list|)
 decl_stmt|,
 name|sessions
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Sessions"
@@ -7326,6 +7444,8 @@ argument_list|)
 decl_stmt|,
 name|edit
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Edit"
@@ -7333,6 +7453,8 @@ argument_list|)
 decl_stmt|,
 name|search
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Search"
@@ -7340,6 +7462,8 @@ argument_list|)
 decl_stmt|,
 name|bibtex
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"BibTeX"
@@ -7347,6 +7471,8 @@ argument_list|)
 decl_stmt|,
 name|view
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"View"
@@ -7354,6 +7480,8 @@ argument_list|)
 decl_stmt|,
 name|tools
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Tools"
@@ -7362,6 +7490,8 @@ decl_stmt|,
 comment|//web = subMenu("Web search"),
 name|options
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Options"
@@ -7369,6 +7499,8 @@ argument_list|)
 decl_stmt|,
 name|newSpec
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"New entry..."
@@ -7376,6 +7508,8 @@ argument_list|)
 decl_stmt|,
 name|helpMenu
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Help"
@@ -7678,6 +7812,8 @@ expr_stmt|;
 name|JMenu
 name|markSpecific
 init|=
+name|JabRefFrame
+operator|.
 name|subMenu
 argument_list|(
 literal|"Mark specific color"
@@ -7699,6 +7835,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|markSpecific
 operator|.
 name|add
@@ -7715,6 +7852,7 @@ name|getMenuItem
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|edit
 operator|.
 name|add
@@ -8727,6 +8865,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|res
 operator|=
 operator|new
@@ -8735,6 +8874,7 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|res
 return|;
@@ -9336,6 +9476,7 @@ name|Globals
 operator|.
 name|ON_MAC
 condition|)
+block|{
 name|searchToggle
 operator|.
 name|setMargin
@@ -9343,6 +9484,7 @@ argument_list|(
 name|marg
 argument_list|)
 expr_stmt|;
+block|}
 name|tlb
 operator|.
 name|add
@@ -9372,6 +9514,7 @@ name|Globals
 operator|.
 name|ON_MAC
 condition|)
+block|{
 name|previewToggle
 operator|.
 name|setMargin
@@ -9379,6 +9522,7 @@ argument_list|(
 name|marg
 argument_list|)
 expr_stmt|;
+block|}
 name|tlb
 operator|.
 name|add
@@ -9413,6 +9557,7 @@ name|Globals
 operator|.
 name|ON_MAC
 condition|)
+block|{
 name|groupToggle
 operator|.
 name|setMargin
@@ -9420,6 +9565,7 @@ argument_list|(
 name|marg
 argument_list|)
 expr_stmt|;
+block|}
 name|tlb
 operator|.
 name|add
@@ -9449,6 +9595,7 @@ name|Globals
 operator|.
 name|ON_MAC
 condition|)
+block|{
 name|highlightAny
 operator|.
 name|setMargin
@@ -9456,6 +9603,7 @@ argument_list|(
 name|marg
 argument_list|)
 expr_stmt|;
+block|}
 name|tlb
 operator|.
 name|add
@@ -9485,6 +9633,7 @@ name|Globals
 operator|.
 name|ON_MAC
 condition|)
+block|{
 name|highlightAll
 operator|.
 name|setMargin
@@ -9492,6 +9641,7 @@ argument_list|(
 name|marg
 argument_list|)
 expr_stmt|;
+block|}
 name|tlb
 operator|.
 name|add
@@ -9577,6 +9727,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -9869,6 +10021,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -9916,6 +10070,7 @@ name|o
 operator|instanceof
 name|Action
 condition|)
+block|{
 operator|(
 operator|(
 name|Action
@@ -9928,12 +10083,14 @@ argument_list|(
 name|enabled
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|o
 operator|instanceof
 name|Component
 condition|)
+block|{
 operator|(
 operator|(
 name|Component
@@ -9946,6 +10103,7 @@ argument_list|(
 name|enabled
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|field|previousTabCount
@@ -9982,6 +10140,8 @@ name|previousTabCount
 operator|=
 name|tabCount
 expr_stmt|;
+name|JabRefFrame
+operator|.
 name|setEnabled
 argument_list|(
 name|openDatabaseOnlyActions
@@ -9991,6 +10151,8 @@ operator|>
 literal|0
 argument_list|)
 expr_stmt|;
+name|JabRefFrame
+operator|.
 name|setEnabled
 argument_list|(
 name|severalDatabasesOnlyActions
@@ -10108,18 +10270,21 @@ name|metaData
 operator|==
 literal|null
 condition|)
+block|{
 name|metaData
 operator|=
 operator|new
 name|MetaData
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|encoding
 operator|==
 literal|null
 condition|)
+block|{
 name|encoding
 operator|=
 name|Globals
@@ -10131,6 +10296,7 @@ argument_list|(
 literal|"defaultEncoding"
 argument_list|)
 expr_stmt|;
+block|}
 name|BasePanel
 name|bp
 init|=
@@ -10336,6 +10502,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -10477,6 +10645,8 @@ parameter_list|()
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Quit"
@@ -10484,6 +10654,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -10496,6 +10668,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|prefs
@@ -10509,6 +10683,8 @@ expr_stmt|;
 comment|//putValue(ACCELERATOR_KEY, KeyStroke.getKeyStroke(KeyEvent.VK_Q,
 comment|//    Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -10569,6 +10745,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Close database"
@@ -10576,6 +10754,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -10588,6 +10768,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|prefs
@@ -10599,6 +10781,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -10731,12 +10915,14 @@ operator|.
 name|isSuccess
 argument_list|()
 condition|)
+block|{
 comment|// The action either not cancelled or unsuccessful.
 comment|// Break!
 name|close
 operator|=
 literal|false
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -10860,6 +11046,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"New database"
@@ -10867,6 +11055,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -10879,6 +11069,8 @@ argument_list|)
 expr_stmt|;
 comment|//putValue(MNEMONIC_KEY, GUIGlobals.newKeyCode);
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -10954,6 +11146,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"New subdatabase based on AUX file"
@@ -10961,6 +11155,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -10973,6 +11169,8 @@ argument_list|)
 expr_stmt|;
 comment|//putValue(MNEMONIC_KEY, GUIGlobals.newKeyCode);
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -11132,6 +11330,8 @@ expr_stmt|;
 comment|//putValue( SHORT_DESCRIPTION, "integrity" ) ;  //Globals.lang( "integrity" ) ) ;
 comment|//putValue(MNEMONIC_KEY, GUIGlobals.newKeyCode);
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -11248,6 +11448,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Preferences"
@@ -11255,6 +11457,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -11266,6 +11470,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -11346,6 +11552,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -11462,6 +11670,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -11507,16 +11717,20 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|bibentries
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|bibentries
 operator|.
 name|size
 argument_list|()
 operator|==
 literal|0
+operator|)
 condition|)
 block|{
 comment|// No entries found. We need a message for this.
@@ -11728,6 +11942,7 @@ name|filename
 operator|!=
 literal|null
 condition|)
+block|{
 name|output
 argument_list|(
 name|Globals
@@ -11769,6 +11984,7 @@ operator|+
 literal|"."
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -12053,6 +12269,7 @@ name|filename
 operator|!=
 literal|null
 condition|)
+block|{
 name|output
 argument_list|(
 name|Globals
@@ -12098,6 +12315,7 @@ operator|+
 literal|"."
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return
@@ -12215,11 +12433,13 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|submenu
 operator|.
 name|addSeparator
 argument_list|()
 expr_stmt|;
+block|}
 name|submenu
 operator|.
 name|add
@@ -12418,6 +12638,7 @@ operator|.
 name|isEventDispatchThread
 argument_list|()
 condition|)
+block|{
 name|progressBar
 operator|.
 name|setVisible
@@ -12425,7 +12646,9 @@ argument_list|(
 name|visible
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|SwingUtilities
 operator|.
 name|invokeLater
@@ -12434,6 +12657,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -12450,6 +12675,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Sets the current value of the progress bar.      *      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
 DECL|method|setProgressBarValue (final int value)
@@ -12469,6 +12695,7 @@ operator|.
 name|isEventDispatchThread
 argument_list|()
 condition|)
+block|{
 name|progressBar
 operator|.
 name|setValue
@@ -12476,7 +12703,9 @@ argument_list|(
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|SwingUtilities
 operator|.
 name|invokeLater
@@ -12485,6 +12714,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -12501,6 +12732,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Sets the indeterminate status of the progress bar.      *      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
 DECL|method|setProgressBarIndeterminate (final boolean value)
@@ -12520,6 +12752,7 @@ operator|.
 name|isEventDispatchThread
 argument_list|()
 condition|)
+block|{
 name|progressBar
 operator|.
 name|setIndeterminate
@@ -12527,7 +12760,9 @@ argument_list|(
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|SwingUtilities
 operator|.
 name|invokeLater
@@ -12536,6 +12771,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -12552,6 +12789,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Sets the maximum value of the progress bar. Always call this method      * before using the progress bar, to set a maximum value appropriate to      * the task at hand.      *      * If not called on the event dispatch thread, this method uses      * SwingUtilities.invokeLater() to do the actual operation on the EDT.      */
 DECL|method|setProgressBarMaximum (final int value)
@@ -12571,6 +12809,7 @@ operator|.
 name|isEventDispatchThread
 argument_list|()
 condition|)
+block|{
 name|progressBar
 operator|.
 name|setMaximum
@@ -12578,7 +12817,9 @@ argument_list|(
 name|value
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|SwingUtilities
 operator|.
 name|invokeLater
@@ -12587,6 +12828,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -12603,6 +12846,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|class|SaveSessionAction
 class|class
@@ -12627,6 +12871,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Save session"
@@ -12634,6 +12880,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|prefs
@@ -12645,6 +12893,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -12938,6 +13188,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Load session"
@@ -12945,6 +13197,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|prefs
@@ -12956,6 +13210,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -12993,12 +13249,16 @@ if|if
 condition|(
 name|running
 condition|)
+block|{
 return|return;
+block|}
 else|else
+block|{
 name|running
 operator|=
 literal|true
 expr_stmt|;
+block|}
 name|output
 argument_list|(
 name|Globals
@@ -13019,6 +13279,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -13077,6 +13339,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|currentFiles
 operator|.
 name|add
@@ -13093,6 +13356,7 @@ name|getPath
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|int
@@ -13234,6 +13498,8 @@ parameter_list|)
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|next
@@ -13252,6 +13518,8 @@ expr_stmt|;
 comment|//Util.pr(""+prefs.getKey("Next tab"));
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 operator|(
@@ -13274,6 +13542,8 @@ operator|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -13398,6 +13668,8 @@ argument_list|)
 decl_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|nName
@@ -13405,6 +13677,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|prefs
@@ -13417,6 +13691,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -13430,6 +13706,8 @@ expr_stmt|;
 comment|//putValue(ACCELERATOR_KEY,
 comment|//         (next?prefs.getKey("Next tab"):prefs.getKey("Previous tab")));
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -13499,12 +13777,16 @@ parameter_list|()
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Manage custom exports"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -13547,12 +13829,16 @@ parameter_list|()
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Manage custom imports"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -13595,12 +13881,16 @@ parameter_list|()
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Customize entry types"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -13654,12 +13944,16 @@ parameter_list|()
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Set up general fields"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -13719,12 +14013,16 @@ parameter_list|()
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Database properties"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -13740,6 +14038,7 @@ name|propertiesDialog
 operator|==
 literal|null
 condition|)
+block|{
 name|propertiesDialog
 operator|=
 operator|new
@@ -13750,6 +14049,7 @@ operator|.
 name|this
 argument_list|)
 expr_stmt|;
+block|}
 name|propertiesDialog
 operator|.
 name|setPanel
@@ -13797,12 +14097,16 @@ parameter_list|()
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Bibtex key patterns"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -13884,6 +14188,8 @@ parameter_list|()
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Increase table font size"
@@ -13891,6 +14197,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|Globals
@@ -13904,6 +14212,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -14002,6 +14312,8 @@ parameter_list|()
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Decrease table font size"
@@ -14009,6 +14321,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|Globals
@@ -14022,6 +14336,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -14047,7 +14363,9 @@ name|currentSize
 operator|<
 literal|2
 condition|)
+block|{
 return|return;
+block|}
 name|GUIGlobals
 operator|.
 name|CURRENTFONT
@@ -14127,6 +14445,8 @@ parameter_list|()
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Minimize to system tray"
@@ -14134,6 +14454,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|Globals
@@ -14147,6 +14469,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -14162,6 +14486,7 @@ name|sysTray
 operator|==
 literal|null
 condition|)
+block|{
 name|sysTray
 operator|=
 operator|new
@@ -14172,6 +14497,7 @@ operator|.
 name|this
 argument_list|)
 expr_stmt|;
+block|}
 name|SwingUtilities
 operator|.
 name|invokeLater
@@ -14180,6 +14506,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -14302,6 +14630,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Override isOpaque() to prevent the glasspane from hiding the window contents:
+annotation|@
+name|Override
 DECL|method|isOpaque ()
 specifier|public
 name|boolean
@@ -14313,6 +14643,8 @@ literal|false
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|showMessage (Object message, String title, int msgType)
 specifier|public
 name|void
@@ -14342,6 +14674,8 @@ name|msgType
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setStatus (String s)
 specifier|public
 name|void
@@ -14357,6 +14691,8 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|showMessage (String message)
 specifier|public
 name|void

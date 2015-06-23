@@ -1294,6 +1294,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -1328,6 +1330,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -1362,6 +1366,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -1396,6 +1402,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -1447,6 +1455,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -1481,6 +1491,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -1664,6 +1676,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -1909,6 +1923,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1998,6 +2014,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2062,6 +2080,8 @@ argument_list|,
 name|i
 argument_list|)
 expr_stmt|;
+name|GroupSelector
+operator|.
 name|logger
 operator|.
 name|fine
@@ -2079,6 +2099,8 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|GroupSelector
+operator|.
 name|logger
 operator|.
 name|fine
@@ -2111,6 +2133,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2200,6 +2224,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -3452,6 +3478,8 @@ operator|new
 name|MouseAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|mousePressed
@@ -3475,6 +3503,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|mouseReleased
@@ -3498,6 +3528,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|mouseClicked
@@ -3561,13 +3593,16 @@ return|return;
 block|}
 if|if
 condition|(
+operator|(
 name|e
 operator|.
 name|getClickCount
 argument_list|()
 operator|==
 literal|2
+operator|)
 operator|&&
+operator|(
 name|e
 operator|.
 name|getButton
@@ -3576,6 +3611,7 @@ operator|==
 name|MouseEvent
 operator|.
 name|BUTTON1
+operator|)
 condition|)
 block|{
 comment|// edit
@@ -3591,13 +3627,16 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|e
 operator|.
 name|getClickCount
 argument_list|()
 operator|==
 literal|1
+operator|)
 operator|&&
+operator|(
 name|e
 operator|.
 name|getButton
@@ -3606,6 +3645,7 @@ operator|==
 name|MouseEvent
 operator|.
 name|BUTTON1
+operator|)
 condition|)
 block|{
 name|annotationEvent
@@ -3628,6 +3668,8 @@ operator|new
 name|PopupMenuListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|popupMenuWillBecomeVisible
@@ -3638,6 +3680,8 @@ parameter_list|)
 block|{
 comment|// nothing to do
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|popupMenuWillBecomeInvisible
@@ -3654,6 +3698,8 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|popupMenuCanceled
@@ -4549,6 +4595,8 @@ name|entry
 argument_list|)
 condition|)
 block|{
+name|GroupSelector
+operator|.
 name|logger
 operator|.
 name|fine
@@ -4571,6 +4619,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|GroupSelector
+operator|.
 name|logger
 operator|.
 name|fine
@@ -4601,6 +4651,7 @@ operator|.
 name|isEmpty
 argument_list|()
 condition|)
+block|{
 name|undoRemove
 operator|=
 name|node
@@ -4622,6 +4673,7 @@ index|]
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 comment|// If there are entries to add
 if|if
 condition|(
@@ -4631,6 +4683,7 @@ operator|.
 name|isEmpty
 argument_list|()
 condition|)
+block|{
 name|undoAdd
 operator|=
 name|node
@@ -4652,6 +4705,7 @@ index|]
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Remember undo information
 if|if
 condition|(
@@ -4782,6 +4836,8 @@ name|GroupTreeNode
 name|node
 parameter_list|)
 block|{
+name|GroupSelector
+operator|.
 name|logger
 operator|.
 name|fine
@@ -4789,6 +4845,8 @@ argument_list|(
 literal|"annotationEvent"
 argument_list|)
 expr_stmt|;
+name|GroupSelector
+operator|.
 name|logger
 operator|.
 name|fine
@@ -4827,6 +4885,8 @@ block|}
 comment|//    private void annotationEvent() {
 comment|//        this.annotationEvent((GroupTreeNode) ((groupsTree.getSelectionPaths())[0].getLastPathComponent()));
 comment|//    }
+annotation|@
+name|Override
 DECL|method|valueChanged (TreeSelectionEvent e)
 specifier|public
 name|void
@@ -4859,23 +4919,30 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|selection
 operator|==
 literal|null
-operator|||
-name|selection
-operator|.
-name|length
-operator|==
-literal|0
+operator|)
 operator|||
 operator|(
 name|selection
 operator|.
 name|length
 operator|==
+literal|0
+operator|)
+operator|||
+operator|(
+operator|(
+name|selection
+operator|.
+name|length
+operator|==
 literal|1
+operator|)
 operator|&&
+operator|(
 operator|(
 operator|(
 name|GroupTreeNode
@@ -4893,6 +4960,7 @@ name|getGroup
 argument_list|()
 operator|instanceof
 name|AllEntriesGroup
+operator|)
 operator|)
 condition|)
 block|{
@@ -5155,6 +5223,8 @@ name|isSelected
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -5220,6 +5290,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void
@@ -5474,6 +5546,8 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -6210,6 +6284,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -6416,6 +6492,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -6630,6 +6708,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -6798,6 +6878,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -6951,6 +7033,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -7103,6 +7187,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -7318,6 +7404,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent ae)
 specifier|public
 name|void
@@ -7418,6 +7506,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent ae)
 specifier|public
 name|void
@@ -7513,6 +7603,8 @@ literal|"Clear highlight"
 argument_list|)
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -7554,6 +7646,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent ae)
 specifier|public
 name|void
@@ -7623,6 +7717,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent ae)
 specifier|public
 name|void
@@ -7692,6 +7788,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -7740,6 +7838,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -7788,6 +7888,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -7836,6 +7938,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -7919,6 +8023,7 @@ name|canMoveUp
 argument_list|()
 operator|||
 operator|(
+operator|(
 name|undo
 operator|=
 name|node
@@ -7932,6 +8037,7 @@ argument_list|)
 operator|)
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 name|frame
@@ -8051,6 +8157,7 @@ name|canMoveDown
 argument_list|()
 operator|||
 operator|(
+operator|(
 name|undo
 operator|=
 name|node
@@ -8064,6 +8171,7 @@ argument_list|)
 operator|)
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 name|frame
@@ -8183,6 +8291,7 @@ name|canMoveLeft
 argument_list|()
 operator|||
 operator|(
+operator|(
 name|undo
 operator|=
 name|node
@@ -8196,6 +8305,7 @@ argument_list|)
 operator|)
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 name|frame
@@ -8314,6 +8424,7 @@ name|canMoveRight
 argument_list|()
 operator|||
 operator|(
+operator|(
 name|undo
 operator|=
 name|node
@@ -8327,6 +8438,7 @@ argument_list|)
 operator|)
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 name|frame
@@ -8631,6 +8743,8 @@ argument_list|)
 return|;
 block|}
 comment|/** panel may be null to indicate that no file is currently open. */
+annotation|@
+name|Override
 DECL|method|setActiveBasePanel (BasePanel panel)
 specifier|public
 name|void
@@ -8823,15 +8937,19 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|entries
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|entries
 operator|.
 name|length
 operator|==
 literal|0
+operator|)
 condition|)
 block|{
 comment|// nothing selected
@@ -8972,11 +9090,13 @@ if|if
 condition|(
 name|requireAll
 operator|&&
+operator|(
 name|i
 operator|>=
 name|entries
 operator|.
 name|length
+operator|)
 condition|)
 comment|// did not break from loop
 block|{

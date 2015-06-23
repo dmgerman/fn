@@ -170,6 +170,7 @@ name|PreviewEntryFetcher
 block|{
 DECL|field|dialog
 specifier|private
+specifier|final
 name|ImportInspector
 name|dialog
 init|=
@@ -341,6 +342,8 @@ specifier|final
 name|int
 name|MAX_FETCH
 init|=
+name|ACMPortalFetcher
+operator|.
 name|perPage
 decl_stmt|;
 comment|// only one page. Otherwise, the user will get blocked by ACM. 100 has been the old setting. See Bug 3532752 - https://sourceforge.net/tracker/index.php?func=detail&aid=3532752&group_id=92314&atid=600306
@@ -475,6 +478,8 @@ argument_list|(
 literal|"<div .*?>(.*?)</div>"
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getOptionsPanel ()
 specifier|public
 name|JPanel
@@ -554,6 +559,8 @@ return|return
 name|pan
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|processQueryGetPreview (String query, FetcherPreviewDialog preview, OutputPrinter status)
 specifier|public
 name|boolean
@@ -665,6 +672,8 @@ name|page
 argument_list|,
 literal|"Found"
 argument_list|,
+name|ACMPortalFetcher
+operator|.
 name|hitsPattern
 argument_list|)
 decl_stmt|;
@@ -767,6 +776,8 @@ name|page
 argument_list|,
 literal|"Results"
 argument_list|,
+name|ACMPortalFetcher
+operator|.
 name|maxHitsPattern
 argument_list|)
 expr_stmt|;
@@ -799,6 +810,8 @@ expr_stmt|;
 comment|//address = makeUrl(firstEntry);
 name|firstEntry
 operator|+=
+name|ACMPortalFetcher
+operator|.
 name|perPage
 expr_stmt|;
 block|}
@@ -916,6 +929,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getEntries (Map<String, Boolean> selection, ImportInspector inspector)
 specifier|public
 name|void
@@ -1128,6 +1143,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getWarningLimit ()
 specifier|public
 name|int
@@ -1138,6 +1155,8 @@ return|return
 literal|10
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getPreferredPreviewHeight ()
 specifier|public
 name|int
@@ -1148,6 +1167,8 @@ return|return
 literal|75
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter status)
 specifier|public
 name|boolean
@@ -1182,11 +1203,15 @@ init|=
 operator|new
 name|StringBuilder
 argument_list|(
+name|ACMPortalFetcher
+operator|.
 name|startUrl
 argument_list|)
 operator|.
 name|append
 argument_list|(
+name|ACMPortalFetcher
+operator|.
 name|searchUrlPart
 argument_list|)
 decl_stmt|;
@@ -1225,6 +1250,8 @@ name|sb
 operator|.
 name|append
 argument_list|(
+name|ACMPortalFetcher
+operator|.
 name|searchUrlPartII
 argument_list|)
 expr_stmt|;
@@ -1255,6 +1282,8 @@ name|sb
 operator|.
 name|append
 argument_list|(
+name|ACMPortalFetcher
+operator|.
 name|endUrl
 argument_list|)
 expr_stmt|;
@@ -1339,6 +1368,8 @@ comment|// Get ID
 name|Matcher
 name|idMatcher
 init|=
+name|ACMPortalFetcher
+operator|.
 name|idPattern
 operator|.
 name|matcher
@@ -1462,6 +1493,8 @@ comment|// Always try RIS import first
 name|Matcher
 name|fullCitation
 init|=
+name|ACMPortalFetcher
+operator|.
 name|fullCitationPattern
 operator|.
 name|matcher
@@ -1634,6 +1667,8 @@ comment|// Find title:
 name|Matcher
 name|titM
 init|=
+name|ACMPortalFetcher
+operator|.
 name|titlePattern
 operator|.
 name|matcher
@@ -1676,6 +1711,8 @@ comment|// Find month and year:
 name|Matcher
 name|mY
 init|=
+name|ACMPortalFetcher
+operator|.
 name|monthYearPattern
 operator|.
 name|matcher
@@ -1820,12 +1857,18 @@ init|=
 operator|new
 name|URL
 argument_list|(
+name|ACMPortalFetcher
+operator|.
 name|startUrl
 operator|+
+name|ACMPortalFetcher
+operator|.
 name|bibtexUrl
 operator|+
 name|ID
 operator|+
+name|ACMPortalFetcher
+operator|.
 name|bibtexUrlEnd
 argument_list|)
 decl_stmt|;
@@ -1901,6 +1944,8 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
+name|ACMPortalFetcher
+operator|.
 name|WAIT_TIME
 argument_list|)
 expr_stmt|;
@@ -1916,8 +1961,12 @@ operator|=
 operator|new
 name|URL
 argument_list|(
+name|ACMPortalFetcher
+operator|.
 name|startUrl
 operator|+
+name|ACMPortalFetcher
+operator|.
 name|abstractUrl
 operator|+
 name|ID
@@ -1934,6 +1983,8 @@ decl_stmt|;
 name|Matcher
 name|absM
 init|=
+name|ACMPortalFetcher
+operator|.
 name|absPattern
 operator|.
 name|matcher
@@ -1971,6 +2022,8 @@ name|Thread
 operator|.
 name|sleep
 argument_list|(
+name|ACMPortalFetcher
+operator|.
 name|WAIT_TIME
 argument_list|)
 expr_stmt|;
@@ -1994,10 +2047,14 @@ name|println
 argument_list|(
 literal|"Bad Bibtex record read at: "
 operator|+
+name|ACMPortalFetcher
+operator|.
 name|bibtexUrl
 operator|+
 name|ID
 operator|+
+name|ACMPortalFetcher
+operator|.
 name|bibtexUrlEnd
 argument_list|)
 expr_stmt|;
@@ -2493,6 +2550,8 @@ name|toString
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTitle ()
 specifier|public
 name|String
@@ -2503,6 +2562,8 @@ return|return
 literal|"ACM Portal"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getHelpPage ()
 specifier|public
 name|String
@@ -2513,6 +2574,8 @@ return|return
 literal|"ACMPortalHelp.html"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeyName ()
 specifier|public
 name|String
@@ -2550,6 +2613,8 @@ block|{      }
 comment|// This method is called by the dialog when the user has cancelled or
 comment|//signalled a stop. It is expected that any long-running fetch operations
 comment|//will stop after this method is called.
+annotation|@
+name|Override
 DECL|method|stopFetching ()
 specifier|public
 name|void

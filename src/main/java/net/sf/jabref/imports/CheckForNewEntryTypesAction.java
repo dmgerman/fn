@@ -94,6 +94,8 @@ name|CheckForNewEntryTypesAction
 implements|implements
 name|PostOpenAction
 block|{
+annotation|@
+name|Override
 DECL|method|isActionNecessary (ParserResult pr)
 specifier|public
 name|boolean
@@ -156,11 +158,13 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|i
 operator|.
 name|remove
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 return|return
 name|pr
@@ -174,6 +178,8 @@ operator|>
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|performAction (BasePanel panel, ParserResult pr)
 specifier|public
 name|void

@@ -68,6 +68,8 @@ operator|new
 name|GroupMatcher
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|matches (BibtexEntry entry)
 specifier|public
 name|boolean

@@ -75,6 +75,7 @@ block|{
 comment|//~ Instance fields ////////////////////////////////////////////////////////
 DECL|field|layoutEntries
 specifier|private
+specifier|final
 name|LayoutEntry
 index|[]
 name|layoutEntries
@@ -226,13 +227,17 @@ condition|)
 block|{
 if|if
 condition|(
+operator|(
 name|blockStart
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|blockEntries
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 if|if
@@ -356,13 +361,17 @@ condition|)
 block|{
 if|if
 condition|(
+operator|(
 name|blockStart
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|blockEntries
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 if|if
@@ -652,10 +661,12 @@ name|fieldText
 operator|==
 literal|null
 condition|)
+block|{
 name|fieldText
 operator|=
 literal|""
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append

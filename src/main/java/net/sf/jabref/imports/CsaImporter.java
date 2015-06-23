@@ -310,6 +310,8 @@ literal|"December"
 block|}
 decl_stmt|;
 comment|/**      * Return the name of this import format.      */
+annotation|@
+name|Override
 DECL|method|getFormatName ()
 specifier|public
 name|String
@@ -321,6 +323,8 @@ literal|"CSA"
 return|;
 block|}
 comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
+annotation|@
+name|Override
 DECL|method|getCLIId ()
 specifier|public
 name|String
@@ -357,9 +361,11 @@ name|str
 operator|!=
 literal|null
 condition|)
+block|{
 name|line
 operator|++
 expr_stmt|;
+block|}
 return|return
 name|str
 return|;
@@ -469,6 +475,8 @@ decl_stmt|;
 name|Matcher
 name|pm
 init|=
+name|CsaImporter
+operator|.
 name|DATE_PATTERN
 operator|.
 name|matcher
@@ -545,6 +553,7 @@ name|day
 operator|==
 literal|null
 condition|)
+block|{
 name|day
 operator|=
 name|pm
@@ -554,6 +563,7 @@ argument_list|(
 literal|5
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -566,15 +576,19 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|fstr
 return|;
 comment|// possible day found in two places
+block|}
 if|if
 condition|(
+operator|(
 name|day
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|day
@@ -601,10 +615,12 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|day
 operator|=
 literal|null
 expr_stmt|;
+block|}
 name|String
 name|mon
 init|=
@@ -621,6 +637,7 @@ name|mon
 operator|==
 literal|null
 condition|)
+block|{
 name|mon
 operator|=
 name|pm
@@ -630,6 +647,7 @@ argument_list|(
 literal|4
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -642,10 +660,12 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|fstr
 return|;
 comment|// possible month found in two places
+block|}
 name|int
 name|idx
 decl_stmt|;
@@ -666,6 +686,8 @@ argument_list|()
 decl_stmt|;
 name|idx
 operator|=
+name|CsaImporter
+operator|.
 name|MONS
 operator|.
 name|indexOf
@@ -680,10 +702,11 @@ operator|==
 operator|-
 literal|1
 condition|)
-comment|// not legal month, error
+block|{
 return|return
 name|fstr
 return|;
+block|}
 name|date
 operator|.
 name|append
@@ -710,6 +733,8 @@ name|put
 argument_list|(
 literal|"month"
 argument_list|,
+name|CsaImporter
+operator|.
 name|MONTHS
 index|[
 name|idx
@@ -724,10 +749,11 @@ name|day
 operator|!=
 literal|null
 condition|)
-comment|// day found but not month, error
+block|{
 return|return
 name|fstr
 return|;
+block|}
 name|String
 name|year
 init|=
@@ -754,9 +780,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|day
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|day
@@ -875,6 +903,7 @@ comment|//		System.out.println(year + " != " + oyear);
 block|}
 block|}
 else|else
+block|{
 name|hm
 operator|.
 name|put
@@ -884,6 +913,7 @@ argument_list|,
 name|year
 argument_list|)
 expr_stmt|;
+block|}
 name|int
 name|len
 init|=
@@ -908,6 +938,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|newf
 operator|.
 name|append
@@ -925,6 +956,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|pm
@@ -934,6 +966,7 @@ argument_list|()
 operator|<
 name|len
 condition|)
+block|{
 name|newf
 operator|.
 name|append
@@ -951,6 +984,7 @@ name|len
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|newf
 operator|.
@@ -959,6 +993,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Check whether the source is in the correct format for this importer.      */
+annotation|@
+name|Override
 DECL|method|isRecognizedFormat (InputStream stream)
 specifier|public
 name|boolean
@@ -1011,15 +1047,19 @@ argument_list|(
 literal|"DN: Database Name"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 return|return
 literal|false
 return|;
 block|}
 comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
+annotation|@
+name|Override
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
@@ -1119,16 +1159,20 @@ condition|)
 block|{
 if|if
 condition|(
+operator|(
 name|str
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|str
 operator|.
 name|length
 argument_list|()
 operator|==
 literal|0
+operator|)
 condition|)
 block|{
 comment|// end of record
@@ -1178,6 +1222,7 @@ argument_list|(
 literal|"article"
 argument_list|)
 operator|&&
+operator|(
 name|hm
 operator|.
 name|get
@@ -1186,6 +1231,7 @@ literal|"booktitle"
 argument_list|)
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|String
@@ -1265,8 +1311,10 @@ name|str
 operator|==
 literal|null
 condition|)
+block|{
 break|break;
 comment|// end of file
+block|}
 name|str
 operator|=
 name|readLine
@@ -1285,6 +1333,8 @@ comment|// save this before reading field contents
 name|Matcher
 name|fm
 init|=
+name|CsaImporter
+operator|.
 name|FIELD_PATTERN
 operator|.
 name|matcher
@@ -1354,9 +1404,10 @@ argument_list|(
 literal|"    "
 argument_list|)
 condition|)
-comment|// field contents?
+block|{
 break|break;
 comment|// nope
+block|}
 if|if
 condition|(
 name|sb
@@ -1427,6 +1478,8 @@ block|}
 comment|// replace [Lt] with<
 name|fm
 operator|=
+name|CsaImporter
+operator|.
 name|LT_PATTERN
 operator|.
 name|matcher
@@ -1441,6 +1494,7 @@ operator|.
 name|find
 argument_list|()
 condition|)
+block|{
 name|fstr
 operator|=
 name|fm
@@ -1450,6 +1504,7 @@ argument_list|(
 literal|"<"
 argument_list|)
 expr_stmt|;
+block|}
 comment|// check for start of new record
 if|if
 condition|(
@@ -1621,9 +1676,11 @@ argument_list|(
 literal|"book monograph"
 argument_list|)
 operator|&&
+operator|(
 name|Type
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 name|Type
@@ -1642,9 +1699,11 @@ argument_list|(
 literal|"report"
 argument_list|)
 operator|&&
+operator|(
 name|Type
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 name|Type
@@ -1681,10 +1740,12 @@ argument_list|(
 literal|"AB"
 argument_list|)
 condition|)
+block|{
 name|ftype
 operator|=
 literal|"abstract"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1695,10 +1756,12 @@ argument_list|(
 literal|"AF"
 argument_list|)
 condition|)
+block|{
 name|ftype
 operator|=
 literal|"affiliation"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1723,6 +1786,7 @@ argument_list|(
 literal|";"
 argument_list|)
 condition|)
+block|{
 name|fstr
 operator|=
 name|fstr
@@ -1735,6 +1799,7 @@ literal|" and "
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 elseif|else
 if|if
 condition|(
@@ -1745,10 +1810,12 @@ argument_list|(
 literal|"CA"
 argument_list|)
 condition|)
+block|{
 name|ftype
 operator|=
 literal|"organization"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1759,10 +1826,12 @@ argument_list|(
 literal|"DE"
 argument_list|)
 condition|)
+block|{
 name|ftype
 operator|=
 literal|"keywords"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1773,10 +1842,12 @@ argument_list|(
 literal|"DO"
 argument_list|)
 condition|)
+block|{
 name|ftype
 operator|=
 literal|"doi"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1787,10 +1858,12 @@ argument_list|(
 literal|"ED"
 argument_list|)
 condition|)
+block|{
 name|ftype
 operator|=
 literal|"editor"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1801,10 +1874,12 @@ argument_list|(
 literal|"IB"
 argument_list|)
 condition|)
+block|{
 name|ftype
 operator|=
 literal|"ISBN"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1815,10 +1890,12 @@ argument_list|(
 literal|"IS"
 argument_list|)
 condition|)
+block|{
 name|ftype
 operator|=
 literal|"ISSN"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1829,10 +1906,12 @@ argument_list|(
 literal|"JN"
 argument_list|)
 condition|)
+block|{
 name|ftype
 operator|=
 literal|"journal"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1843,10 +1922,12 @@ argument_list|(
 literal|"LA"
 argument_list|)
 condition|)
+block|{
 name|ftype
 operator|=
 literal|"language"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1857,10 +1938,12 @@ argument_list|(
 literal|"PB"
 argument_list|)
 condition|)
+block|{
 name|ftype
 operator|=
 literal|"publisher"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1986,6 +2069,7 @@ argument_list|(
 literal|"[URL:"
 argument_list|)
 condition|)
+block|{
 name|urls
 operator|.
 name|append
@@ -2001,6 +2085,7 @@ literal|5
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -2049,12 +2134,15 @@ if|if
 condition|(
 name|ii
 operator|<
+operator|(
 name|lines
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|urls
 operator|.
 name|append
@@ -2063,7 +2151,9 @@ literal|"\n"
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 else|else
+block|{
 name|urls
 operator|.
 name|append
@@ -2074,6 +2164,7 @@ name|ii
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|fstr
 operator|=
@@ -2103,6 +2194,8 @@ comment|// compact vol(no):page-page:
 name|Matcher
 name|pm
 init|=
+name|CsaImporter
+operator|.
 name|VOLNOPP_PATTERN
 operator|.
 name|matcher
@@ -2173,6 +2266,8 @@ block|}
 comment|// pages
 name|pm
 operator|=
+name|CsaImporter
+operator|.
 name|PAGES_PATTERN
 operator|.
 name|matcher
@@ -2204,6 +2299,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|pages
 operator|.
 name|append
@@ -2211,6 +2307,7 @@ argument_list|(
 literal|","
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|pp
 init|=
@@ -2227,6 +2324,7 @@ name|pp
 operator|==
 literal|null
 condition|)
+block|{
 name|pp
 operator|=
 name|pm
@@ -2236,12 +2334,14 @@ argument_list|(
 literal|2
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|pp
 operator|==
 literal|null
 condition|)
+block|{
 name|pp
 operator|=
 name|pm
@@ -2251,6 +2351,7 @@ argument_list|(
 literal|3
 argument_list|)
 expr_stmt|;
+block|}
 name|pages
 operator|.
 name|append
@@ -2269,6 +2370,8 @@ argument_list|)
 expr_stmt|;
 name|pm
 operator|=
+name|CsaImporter
+operator|.
 name|PAGES_PATTERN
 operator|.
 name|matcher
@@ -2286,6 +2389,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -2298,9 +2402,12 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 comment|// volume:
 name|pm
 operator|=
+name|CsaImporter
+operator|.
 name|VOLUME_PATTERN
 operator|.
 name|matcher
@@ -2343,6 +2450,8 @@ block|}
 comment|// number:
 name|pm
 operator|=
+name|CsaImporter
+operator|.
 name|NUMBER_PATTERN
 operator|.
 name|matcher
@@ -2419,6 +2528,7 @@ operator|.
 name|find
 argument_list|()
 condition|)
+block|{
 name|fstr
 operator|=
 name|pm
@@ -2428,6 +2538,7 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|fstr
@@ -2437,8 +2548,10 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 continue|continue;
 comment|//		    System.out.println("SOURCE: \"" + fstr + "\"");
+block|}
 block|}
 elseif|else
 if|if
@@ -2450,10 +2563,12 @@ argument_list|(
 literal|"TI"
 argument_list|)
 condition|)
+block|{
 name|ftype
 operator|=
 literal|"title"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -2464,8 +2579,10 @@ argument_list|(
 literal|"RE"
 argument_list|)
 condition|)
+block|{
 continue|continue;
 comment|// throw away References
+block|}
 if|if
 condition|(
 name|ftype
@@ -2501,6 +2618,7 @@ expr_stmt|;
 block|}
 block|}
 else|else
+block|{
 name|str
 operator|=
 name|readLine
@@ -2508,6 +2626,7 @@ argument_list|(
 name|in
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|bibitems

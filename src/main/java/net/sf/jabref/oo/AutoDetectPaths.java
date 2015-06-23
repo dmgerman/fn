@@ -211,12 +211,16 @@ try|try
 block|{
 if|if
 condition|(
+name|AutoDetectPaths
+operator|.
 name|checkAutoDetectedPaths
 argument_list|()
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 name|init
 argument_list|()
 expr_stmt|;
@@ -249,6 +253,8 @@ literal|false
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -281,6 +287,8 @@ return|return
 name|fileSearchCancelled
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|init ()
 specifier|public
 name|void
@@ -313,6 +321,8 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void
@@ -344,6 +354,8 @@ name|File
 argument_list|>
 name|progFiles
 init|=
+name|AutoDetectPaths
+operator|.
 name|findProgramFilesDir
 argument_list|()
 decl_stmt|;
@@ -356,9 +368,11 @@ if|if
 condition|(
 name|fileSearchCancelled
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 for|for
 control|(
 name|File
@@ -382,7 +396,9 @@ name|sOffice
 operator|!=
 literal|null
 condition|)
+block|{
 break|break;
+block|}
 block|}
 if|if
 condition|(
@@ -452,6 +468,8 @@ operator|.
 name|FileFilter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|accept
@@ -467,6 +485,8 @@ name|isDirectory
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getDescription
@@ -509,6 +529,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|sOffice
 operator|=
 name|jfc
@@ -517,15 +538,18 @@ name|getSelectedFile
 argument_list|()
 expr_stmt|;
 block|}
+block|}
 if|if
 condition|(
 name|sOffice
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|Globals
 operator|.
 name|prefs
@@ -563,9 +587,11 @@ if|if
 condition|(
 name|fileSearchCancelled
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|File
 name|jurt
 init|=
@@ -583,9 +609,11 @@ if|if
 condition|(
 name|fileSearchCancelled
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 if|if
 condition|(
 operator|(
@@ -634,9 +662,11 @@ literal|true
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 elseif|else
 if|if
@@ -714,9 +744,11 @@ if|if
 condition|(
 name|fileSearchCancelled
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 if|if
 condition|(
 name|sOffice
@@ -760,9 +792,11 @@ if|if
 condition|(
 name|fileSearchCancelled
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 comment|//System.out.println("Searching for jurt.jar");
 name|File
 name|jurt
@@ -779,9 +813,11 @@ if|if
 condition|(
 name|fileSearchCancelled
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 if|if
 condition|(
 operator|(
@@ -830,14 +866,18 @@ literal|true
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|false
 return|;
 block|}
+block|}
 else|else
+block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 else|else
 block|{
@@ -865,9 +905,11 @@ if|if
 condition|(
 name|fileSearchCancelled
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 if|if
 condition|(
 name|inUsr
@@ -894,18 +936,22 @@ name|inUsr
 operator|!=
 literal|null
 condition|)
+block|{
 name|usrRoot
 operator|=
 literal|"/usr/lib64"
 expr_stmt|;
 block|}
+block|}
 if|if
 condition|(
 name|fileSearchCancelled
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|File
 name|inOpt
 init|=
@@ -924,9 +970,11 @@ if|if
 condition|(
 name|fileSearchCancelled
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 if|if
 condition|(
 operator|(
@@ -1063,9 +1111,11 @@ literal|true
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 elseif|else
 if|if
@@ -1200,9 +1250,11 @@ name|JOptionPane
 operator|.
 name|CANCEL_OPTION
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 else|else
 block|{
 if|if
@@ -1236,9 +1288,11 @@ block|}
 block|}
 block|}
 else|else
+block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 block|}
 DECL|method|setupPreferencesForOO (String usrRoot, File inUsr)
@@ -1291,9 +1345,11 @@ if|if
 condition|(
 name|fileSearchCancelled
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|File
 name|jurt
 init|=
@@ -1312,9 +1368,11 @@ if|if
 condition|(
 name|fileSearchCancelled
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 if|if
 condition|(
 operator|(
@@ -1363,9 +1421,11 @@ literal|true
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 comment|/**      * Search for Program files directory.      * @return the File pointing to the Program files directory, or null if not found.      *   Since we are not including a library for Windows integration, this method can't      *   find the Program files dir in localized Windows installations.      */
 DECL|method|findProgramFilesDir ()
@@ -1416,6 +1476,8 @@ operator|new
 name|FileFilter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|accept
@@ -1457,6 +1519,7 @@ argument_list|(
 literal|"program files"
 argument_list|)
 condition|)
+block|{
 name|dirList
 operator|.
 name|add
@@ -1464,6 +1527,7 @@ argument_list|(
 name|dir
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1480,6 +1544,7 @@ argument_list|(
 literal|"program files (x86)"
 argument_list|)
 condition|)
+block|{
 name|dirList
 operator|.
 name|add
@@ -1487,6 +1552,7 @@ argument_list|(
 name|dir
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|dirList
@@ -1584,9 +1650,11 @@ argument_list|()
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 comment|/**      * Search for a file, starting at the given directory.      * @param startDir The starting point.      * @param filename The name of the file to search for.      * @return The directory where the file was first found, or null if not found.      */
 DECL|method|findFileDir (File startDir, String filename)
@@ -1605,9 +1673,11 @@ if|if
 condition|(
 name|fileSearchCancelled
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|File
 index|[]
 name|files
@@ -1623,9 +1693,11 @@ name|files
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|File
 name|result
 init|=
@@ -1643,9 +1715,11 @@ if|if
 condition|(
 name|fileSearchCancelled
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 if|if
 condition|(
 name|file
@@ -1669,7 +1743,9 @@ name|result
 operator|!=
 literal|null
 condition|)
+block|{
 break|break;
+block|}
 block|}
 elseif|else
 if|if
@@ -1755,6 +1831,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1827,6 +1905,7 @@ if|if
 condition|(
 name|includeCancelButton
 condition|)
+block|{
 name|prog
 operator|.
 name|add
@@ -1838,6 +1917,7 @@ operator|.
 name|SOUTH
 argument_list|)
 expr_stmt|;
+block|}
 name|prog
 operator|.
 name|add

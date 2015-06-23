@@ -216,6 +216,8 @@ name|_storeFieldAction
 expr_stmt|;
 block|}
 comment|/*      * (non-Javadoc)      *       * @see java.awt.dnd.DropTargetListener#dragEnter(java.awt.dnd.DropTargetDragEvent)      */
+annotation|@
+name|Override
 DECL|method|dragEnter (DropTargetDragEvent dtde)
 specifier|public
 name|void
@@ -226,6 +228,8 @@ name|dtde
 parameter_list|)
 block|{     }
 comment|/*      * (non-Javadoc)      *       * @see java.awt.dnd.DropTargetListener#dragOver(java.awt.dnd.DropTargetDragEvent)      */
+annotation|@
+name|Override
 DECL|method|dragOver (DropTargetDragEvent dtde)
 specifier|public
 name|void
@@ -236,6 +240,8 @@ name|dtde
 parameter_list|)
 block|{     }
 comment|/*      * (non-Javadoc)      *       * @see java.awt.dnd.DropTargetListener#dropActionChanged(java.awt.dnd.DropTargetDragEvent)      */
+annotation|@
+name|Override
 DECL|method|dropActionChanged (DropTargetDragEvent dtde)
 specifier|public
 name|void
@@ -246,6 +252,8 @@ name|dtde
 parameter_list|)
 block|{     }
 comment|/*      * (non-Javadoc)      *       * @see java.awt.dnd.DropTargetListener#dragExit(java.awt.dnd.DropTargetEvent)      */
+annotation|@
+name|Override
 DECL|method|dragExit (DropTargetEvent dte)
 specifier|public
 name|void
@@ -256,6 +264,8 @@ name|dte
 parameter_list|)
 block|{     }
 comment|/*      * (non-Javadoc)      *       * @see java.awt.dnd.DropTargetListener#drop(java.awt.dnd.DropTargetDropEvent)      */
+annotation|@
+name|Override
 DECL|method|drop (DropTargetDropEvent dtde)
 specifier|public
 name|void
@@ -305,6 +315,8 @@ name|ClassNotFoundException
 name|e
 parameter_list|)
 block|{
+name|SimpleUrlDragDrop
+operator|.
 name|logger
 operator|.
 name|log
@@ -396,6 +408,8 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+name|SimpleUrlDragDrop
+operator|.
 name|logger
 operator|.
 name|log
@@ -416,6 +430,8 @@ name|IOException
 name|ioex
 parameter_list|)
 block|{
+name|SimpleUrlDragDrop
+operator|.
 name|logger
 operator|.
 name|log

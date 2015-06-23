@@ -145,9 +145,11 @@ name|l
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 if|if
 condition|(
 name|l
@@ -179,10 +181,12 @@ argument_list|(
 literal|"</pre>"
 argument_list|)
 condition|)
+block|{
 name|pre
 operator|=
 literal|false
 expr_stmt|;
+block|}
 block|}
 do|while
 condition|(
@@ -209,9 +213,11 @@ name|in
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 comment|//System.out.println(in);
 if|if
 condition|(
@@ -236,10 +242,14 @@ argument_list|)
 return|;
 block|}
 else|else
+block|{
 return|return
 name|in
 return|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|read ()
 specifier|public
 name|int
@@ -273,10 +283,12 @@ name|line
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 operator|-
 literal|1
 return|;
+block|}
 block|}
 if|if
 condition|(

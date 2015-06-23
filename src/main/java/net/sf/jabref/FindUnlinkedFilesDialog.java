@@ -542,6 +542,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|WindowConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|event
 operator|.
 name|ChangeEvent
@@ -1136,6 +1146,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Close dialog when pressing escape      */
+annotation|@
+name|Override
 DECL|method|createRootPane ()
 specifier|protected
 name|JRootPane
@@ -1149,6 +1161,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1235,6 +1249,8 @@ name|prefs
 operator|.
 name|put
 argument_list|(
+name|FindUnlinkedFilesDialog
+operator|.
 name|GLOBAL_PREFS_DIALOG_SIZE_KEY
 argument_list|,
 name|store
@@ -1257,6 +1273,8 @@ name|prefs
 operator|.
 name|get
 argument_list|(
+name|FindUnlinkedFilesDialog
+operator|.
 name|GLOBAL_PREFS_DIALOG_SIZE_KEY
 argument_list|)
 decl_stmt|;
@@ -1391,6 +1409,8 @@ name|serialVersionUID
 init|=
 literal|9153126361571985383L
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1455,6 +1475,8 @@ init|=
 operator|-
 literal|9012913268030356450L
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1519,6 +1541,8 @@ init|=
 operator|-
 literal|4794088095435302433L
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1578,6 +1602,8 @@ name|serialVersionUID
 init|=
 literal|6007246730370326456L
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1684,6 +1710,8 @@ name|prefs
 operator|.
 name|put
 argument_list|(
+name|FindUnlinkedFilesDialog
+operator|.
 name|GLOBAL_PREFS_WORKING_DIRECTORY_KEY
 argument_list|,
 name|lastSelectedDirectory
@@ -1710,6 +1738,8 @@ name|prefs
 operator|.
 name|get
 argument_list|(
+name|FindUnlinkedFilesDialog
+operator|.
 name|GLOBAL_PREFS_WORKING_DIRECTORY_KEY
 argument_list|)
 decl_stmt|;
@@ -1719,6 +1749,7 @@ name|workingDirectory
 operator|==
 literal|null
 condition|)
+block|{
 name|workingDirectory
 operator|=
 name|Globals
@@ -1730,6 +1761,7 @@ argument_list|(
 literal|"workingDirectory"
 argument_list|)
 expr_stmt|;
+block|}
 name|lastSelectedDirectory
 operator|=
 operator|new
@@ -1745,6 +1777,7 @@ operator|.
 name|isFile
 argument_list|()
 condition|)
+block|{
 name|lastSelectedDirectory
 operator|=
 name|lastSelectedDirectory
@@ -1752,6 +1785,7 @@ operator|.
 name|getParentFile
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|lastSelectedDirectory
 return|;
@@ -1839,9 +1873,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|path
 operator|==
 literal|null
+operator|)
 operator|||
 name|path
 operator|.
@@ -1850,6 +1886,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|fileChooser
 operator|.
 name|setCurrentDirectory
@@ -1857,7 +1894,9 @@ argument_list|(
 name|lastSelectedDirectory
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|fileChooser
 operator|.
 name|setCurrentDirectory
@@ -1869,6 +1908,7 @@ name|path
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|int
 name|result
 init|=
@@ -2276,6 +2316,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -2314,6 +2356,8 @@ name|counter
 init|=
 literal|0
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -2364,6 +2408,8 @@ return|return;
 block|}
 name|setDefaultCloseOperation
 argument_list|(
+name|WindowConstants
+operator|.
 name|DO_NOTHING_ON_CLOSE
 argument_list|)
 expr_stmt|;
@@ -2392,9 +2438,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|fileList
 operator|==
 literal|null
+operator|)
 operator|||
 name|fileList
 operator|.
@@ -2510,6 +2558,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -2557,6 +2607,8 @@ name|counter
 init|=
 literal|0
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -2623,16 +2675,20 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|errors
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|errors
 operator|.
 name|size
 argument_list|()
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|JOptionPane
@@ -2739,6 +2795,8 @@ argument_list|)
 expr_stmt|;
 name|setDefaultCloseOperation
 argument_list|(
+name|WindowConstants
+operator|.
 name|DISPOSE_ON_CLOSE
 argument_list|)
 expr_stmt|;
@@ -2855,6 +2913,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2886,6 +2946,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2909,6 +2971,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2938,6 +3002,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -3057,9 +3123,11 @@ name|file
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|nodeFile
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|nodeFile
 operator|.
@@ -3125,9 +3193,11 @@ expr_stmt|;
 comment|// remove empty parent node
 while|while
 condition|(
+operator|(
 name|parent
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|parent
 operator|.
@@ -3523,6 +3593,8 @@ operator|new
 name|ItemListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|itemStateChanged
@@ -3874,6 +3946,8 @@ literal|0
 argument_list|)
 decl_stmt|;
 comment|// 		x, y, w, h, wx,wy,ix,iy
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -3909,6 +3983,8 @@ argument_list|,
 literal|10
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -3944,6 +4020,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -3979,6 +4057,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4022,6 +4102,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4055,6 +4137,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4090,6 +4174,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4135,6 +4221,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4180,6 +4268,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4225,6 +4315,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4270,6 +4362,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4305,6 +4399,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4340,6 +4436,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4375,6 +4473,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4410,6 +4510,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4455,6 +4557,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4490,6 +4594,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4525,6 +4631,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4560,6 +4668,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4595,6 +4705,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4640,6 +4752,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4685,6 +4799,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4720,6 +4836,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4756,6 +4874,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4802,6 +4922,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4848,6 +4970,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -5082,36 +5206,42 @@ name|fill
 operator|!=
 literal|null
 condition|)
+block|{
 name|constraints
 operator|.
 name|fill
 operator|=
 name|fill
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|insets
 operator|!=
 literal|null
 condition|)
+block|{
 name|constraints
 operator|.
 name|insets
 operator|=
 name|insets
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|anchor
 operator|!=
 literal|null
 condition|)
+block|{
 name|constraints
 operator|.
 name|anchor
 operator|=
 name|anchor
 expr_stmt|;
+block|}
 name|layout
 operator|.
 name|setConstraints
@@ -5143,6 +5273,8 @@ operator|new
 name|MouseAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|mousePressed
@@ -5227,9 +5359,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|userObject
 operator|instanceof
 name|FileNodeWrapper
+operator|)
 operator|&&
 name|node
 operator|.
@@ -5657,6 +5791,7 @@ name|entryType
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 name|Globals
 operator|.
@@ -5665,6 +5800,7 @@ argument_list|(
 literal|"<No selection>"
 argument_list|)
 return|;
+block|}
 return|return
 name|entryType
 operator|.
@@ -5855,6 +5991,8 @@ operator|.
 name|getFileSystemView
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getTreeCellRendererComponent (final JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocus)
 specifier|public
 name|Component
@@ -5997,6 +6135,8 @@ operator|new
 name|GridBagLayout
 argument_list|()
 decl_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -6028,6 +6168,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -6109,6 +6251,8 @@ operator|+
 literal|")"
 argument_list|)
 decl_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl

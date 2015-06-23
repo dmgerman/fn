@@ -1011,6 +1011,7 @@ name|hasMoreElements
 argument_list|()
 condition|;
 control|)
+block|{
 name|currentID
 operator|=
 name|populateEntryGroupsTable
@@ -1029,6 +1030,7 @@ argument_list|,
 name|database_id
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|currentID
 return|;
@@ -1624,6 +1626,7 @@ name|searchField
 operator|!=
 literal|null
 condition|)
+block|{
 name|searchField
 operator|=
 name|Util
@@ -1637,12 +1640,14 @@ argument_list|,
 literal|'\\'
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|searchExpr
 operator|!=
 literal|null
 condition|)
+block|{
 name|searchExpr
 operator|=
 name|Util
@@ -1656,6 +1661,7 @@ argument_list|,
 literal|'\\'
 argument_list|)
 expr_stmt|;
+block|}
 name|SQLUtil
 operator|.
 name|processQuery
@@ -1853,6 +1859,7 @@ name|hasMoreElements
 argument_list|()
 condition|;
 control|)
+block|{
 name|currentID
 operator|=
 name|populateGroupsTable
@@ -1872,6 +1879,7 @@ argument_list|,
 name|database_id
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|currentID
 return|;
@@ -2228,11 +2236,13 @@ operator|.
 name|exists
 argument_list|()
 condition|)
+block|{
 name|outfile
 operator|.
 name|delete
 argument_list|()
 expr_stmt|;
+block|}
 name|BufferedOutputStream
 name|writer
 decl_stmt|;
@@ -2469,6 +2479,7 @@ if|if
 condition|(
 name|redisplay
 condition|)
+block|{
 name|exportDatabaseToDBMS
 argument_list|(
 name|database
@@ -2482,6 +2493,7 @@ argument_list|,
 name|frame
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -2679,6 +2691,7 @@ block|}
 block|}
 block|}
 else|else
+block|{
 name|dbName
 operator|=
 name|JOptionPane
@@ -2696,6 +2709,7 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|dbName
 return|;
@@ -2861,6 +2875,7 @@ name|desiredName
 parameter_list|)
 block|{
 return|return
+operator|(
 name|desiredName
 operator|.
 name|trim
@@ -2870,6 +2885,7 @@ name|length
 argument_list|()
 operator|>
 literal|1
+operator|)
 operator|&&
 operator|!
 name|dbNames

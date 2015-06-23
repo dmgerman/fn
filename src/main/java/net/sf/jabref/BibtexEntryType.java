@@ -71,6 +71,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -80,6 +82,8 @@ return|return
 literal|"Other"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -94,6 +98,8 @@ literal|0
 index|]
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -108,6 +114,8 @@ literal|0
 index|]
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -117,6 +125,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -145,6 +155,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -154,6 +166,8 @@ return|return
 literal|"Article"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -179,6 +193,8 @@ comment|//- "volume", "pages", "part", "eid"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -201,6 +217,8 @@ comment|//+ "volume", "pages"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -210,6 +228,8 @@ return|return
 literal|"AUTHOR, TITLE, JOURNAL and YEAR"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -262,6 +282,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -271,6 +293,8 @@ return|return
 literal|"Booklet"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -297,6 +321,8 @@ comment|//+ "lastchecked"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -312,6 +338,8 @@ literal|"title"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -321,6 +349,8 @@ return|return
 literal|"TITLE"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -363,6 +393,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -372,6 +404,8 @@ return|return
 literal|"InBook"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -402,6 +436,8 @@ comment|//+ "pages"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -454,6 +490,8 @@ literal|"publisher"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -465,6 +503,8 @@ operator|+
 literal|"EDITOR and/or AUTHOR"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -543,6 +583,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -552,6 +594,8 @@ return|return
 literal|"Book"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -580,6 +624,8 @@ comment|//+ pages
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -603,6 +649,8 @@ literal|"author"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -624,6 +672,8 @@ literal|"author/editor"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -633,6 +683,8 @@ return|return
 literal|"TITLE, PUBLISHER, YEAR, and an EDITOR and/or AUTHOR"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -695,6 +747,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -704,6 +758,8 @@ return|return
 literal|"InCollection"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -739,6 +795,8 @@ literal|"note"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -762,6 +820,8 @@ literal|"year"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -771,6 +831,8 @@ return|return
 literal|"AUTHOR, TITLE, BOOKTITLE, PUBLISHER and YEAR"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -821,6 +883,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -830,6 +894,8 @@ return|return
 literal|"Conference"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -863,6 +929,8 @@ literal|"note"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -884,6 +952,8 @@ literal|"year"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -893,6 +963,8 @@ return|return
 literal|"AUTHOR, TITLE, BOOKTITLE and YEAR"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -941,6 +1013,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -950,6 +1024,8 @@ return|return
 literal|"InProceedings"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -983,6 +1059,8 @@ literal|"note"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1004,6 +1082,8 @@ literal|"year"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -1013,6 +1093,8 @@ return|return
 literal|"AUTHOR, TITLE, BOOKTITLE and YEAR"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -1061,6 +1143,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -1070,6 +1154,8 @@ return|return
 literal|"Proceedings"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1101,6 +1187,8 @@ literal|"organization"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1118,6 +1206,8 @@ literal|"year"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -1127,6 +1217,8 @@ return|return
 literal|"TITLE and YEAR"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -1171,6 +1263,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -1180,6 +1274,8 @@ return|return
 literal|"Manual"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1207,6 +1303,8 @@ literal|"note"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1222,6 +1320,8 @@ literal|"title"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -1231,6 +1331,8 @@ return|return
 literal|"TITLE"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -1273,6 +1375,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -1282,6 +1386,8 @@ return|return
 literal|"TechReport"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1305,6 +1411,8 @@ literal|"note"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1326,6 +1434,8 @@ literal|"year"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -1335,6 +1445,8 @@ return|return
 literal|"AUTHOR, TITLE, INSTITUTION and YEAR"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -1383,6 +1495,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -1392,6 +1506,8 @@ return|return
 literal|"MastersThesis"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1413,6 +1529,8 @@ literal|"note"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1434,6 +1552,8 @@ literal|"year"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -1443,6 +1563,8 @@ return|return
 literal|"AUTHOR, TITLE, SCHOOL and YEAR"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -1491,6 +1613,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -1500,6 +1624,8 @@ return|return
 literal|"PhdThesis"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1521,6 +1647,8 @@ literal|"note"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1542,6 +1670,8 @@ literal|"year"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -1551,6 +1681,8 @@ return|return
 literal|"AUTHOR, TITLE, SCHOOL and YEAR"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -1599,6 +1731,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -1608,6 +1742,8 @@ return|return
 literal|"Unpublished"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1625,6 +1761,8 @@ literal|"year"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1644,6 +1782,8 @@ literal|"note"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -1653,6 +1793,8 @@ return|return
 literal|"AUTHOR, TITLE and NOTE"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -1699,6 +1841,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -1708,6 +1852,8 @@ return|return
 literal|"Periodical"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1739,6 +1885,8 @@ literal|"url"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1756,6 +1904,8 @@ literal|"year"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -1765,6 +1915,8 @@ return|return
 literal|"TITLE and YEAR"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -1809,6 +1961,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -1818,6 +1972,8 @@ return|return
 literal|"Patent"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1857,6 +2013,8 @@ literal|"url"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1878,6 +2036,8 @@ literal|"yearfiled"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -1887,6 +2047,8 @@ return|return
 literal|"NATIONALITY, NUMBER, YEAR or YEARFILED"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -1945,6 +2107,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -1954,6 +2118,8 @@ return|return
 literal|"Standard"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1989,6 +2155,8 @@ literal|"url"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2027,6 +2195,8 @@ literal|"organization/institution"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -2036,6 +2206,8 @@ return|return
 literal|"TITLE, ORGANIZATION or INSTITUTION"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -2094,6 +2266,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -2103,6 +2277,8 @@ return|return
 literal|"Electronic"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2136,6 +2312,8 @@ literal|"url"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2146,6 +2324,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -2155,6 +2335,8 @@ return|return
 literal|"None"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -2195,6 +2377,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -2204,6 +2388,8 @@ return|return
 literal|"Misc"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2229,6 +2415,8 @@ literal|"note"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2239,6 +2427,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -2248,6 +2438,8 @@ return|return
 literal|"None"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -2289,6 +2481,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -2298,6 +2492,8 @@ return|return
 literal|"IEEEtranBSTCTL"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2333,6 +2529,8 @@ literal|"ctlname_url_prefix"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2343,6 +2541,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -2352,6 +2552,8 @@ return|return
 literal|"None"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -2367,6 +2569,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isVisibleAtNewEntryDialog
@@ -2390,6 +2594,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -2399,6 +2605,8 @@ return|return
 literal|"Typeless"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2409,6 +2617,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2419,6 +2629,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -2428,6 +2640,8 @@ return|return
 literal|"None"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -2452,6 +2666,8 @@ name|String
 name|getName
 parameter_list|()
 function_decl|;
+annotation|@
+name|Override
 DECL|method|compareTo (BibtexEntryType o)
 specifier|public
 name|int
@@ -2563,9 +2779,11 @@ name|req
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 for|for
 control|(
 name|String
@@ -2573,6 +2791,7 @@ name|aReq
 range|:
 name|req
 control|)
+block|{
 if|if
 condition|(
 name|aReq
@@ -2582,9 +2801,12 @@ argument_list|(
 name|field
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
+block|}
 return|return
 literal|false
 return|;
@@ -2611,9 +2833,11 @@ name|opt
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 for|for
 control|(
 name|String
@@ -2621,6 +2845,7 @@ name|anOpt
 range|:
 name|opt
 control|)
+block|{
 if|if
 condition|(
 name|anOpt
@@ -2630,9 +2855,12 @@ argument_list|(
 name|field
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
+block|}
 return|return
 literal|false
 return|;
@@ -2696,189 +2924,271 @@ literal|"biblatexMode"
 argument_list|)
 condition|)
 block|{
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
 argument_list|(
 literal|"article"
 argument_list|,
+name|BibtexEntryType
+operator|.
 name|ARTICLE
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
 argument_list|(
 literal|"inbook"
 argument_list|,
+name|BibtexEntryType
+operator|.
 name|INBOOK
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
 argument_list|(
 literal|"book"
 argument_list|,
+name|BibtexEntryType
+operator|.
 name|BOOK
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
 argument_list|(
 literal|"booklet"
 argument_list|,
+name|BibtexEntryType
+operator|.
 name|BOOKLET
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
 argument_list|(
 literal|"incollection"
 argument_list|,
+name|BibtexEntryType
+operator|.
 name|INCOLLECTION
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
 argument_list|(
 literal|"conference"
 argument_list|,
+name|BibtexEntryType
+operator|.
 name|CONFERENCE
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
 argument_list|(
 literal|"inproceedings"
 argument_list|,
+name|BibtexEntryType
+operator|.
 name|INPROCEEDINGS
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
 argument_list|(
 literal|"proceedings"
 argument_list|,
+name|BibtexEntryType
+operator|.
 name|PROCEEDINGS
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
 argument_list|(
 literal|"manual"
 argument_list|,
+name|BibtexEntryType
+operator|.
 name|MANUAL
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
 argument_list|(
 literal|"mastersthesis"
 argument_list|,
+name|BibtexEntryType
+operator|.
 name|MASTERSTHESIS
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
 argument_list|(
 literal|"phdthesis"
 argument_list|,
+name|BibtexEntryType
+operator|.
 name|PHDTHESIS
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
 argument_list|(
 literal|"techreport"
 argument_list|,
+name|BibtexEntryType
+operator|.
 name|TECHREPORT
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
 argument_list|(
 literal|"unpublished"
 argument_list|,
+name|BibtexEntryType
+operator|.
 name|UNPUBLISHED
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
 argument_list|(
 literal|"patent"
 argument_list|,
+name|BibtexEntryType
+operator|.
 name|PATENT
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
 argument_list|(
 literal|"standard"
 argument_list|,
+name|BibtexEntryType
+operator|.
 name|STANDARD
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
 argument_list|(
 literal|"electronic"
 argument_list|,
+name|BibtexEntryType
+operator|.
 name|ELECTRONIC
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
 argument_list|(
 literal|"periodical"
 argument_list|,
+name|BibtexEntryType
+operator|.
 name|PERIODICAL
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
 argument_list|(
 literal|"misc"
 argument_list|,
+name|BibtexEntryType
+operator|.
 name|MISC
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
 argument_list|(
 literal|"other"
 argument_list|,
+name|BibtexEntryType
+operator|.
 name|OTHER
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
 argument_list|(
 literal|"ieeetranbstctl"
 argument_list|,
+name|BibtexEntryType
+operator|.
 name|IEEETRANBSTCTL
 argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -2890,6 +3200,8 @@ operator|.
 name|ARTICLE
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -2901,6 +3213,8 @@ operator|.
 name|BOOK
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -2912,6 +3226,8 @@ operator|.
 name|INBOOK
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -2923,6 +3239,8 @@ operator|.
 name|BOOKINBOOK
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -2934,6 +3252,8 @@ operator|.
 name|SUPPBOOK
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -2945,6 +3265,8 @@ operator|.
 name|BOOKLET
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -2956,6 +3278,8 @@ operator|.
 name|COLLECTION
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -2967,6 +3291,8 @@ operator|.
 name|INCOLLECTION
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -2978,6 +3304,8 @@ operator|.
 name|SUPPCOLLECTION
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -2989,6 +3317,8 @@ operator|.
 name|MANUAL
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -3000,6 +3330,8 @@ operator|.
 name|MISC
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -3011,6 +3343,8 @@ operator|.
 name|ONLINE
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -3022,6 +3356,8 @@ operator|.
 name|PATENT
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -3033,6 +3369,8 @@ operator|.
 name|PERIODICAL
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -3044,6 +3382,8 @@ operator|.
 name|SUPPPERIODICAL
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -3055,6 +3395,8 @@ operator|.
 name|PROCEEDINGS
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -3066,6 +3408,8 @@ operator|.
 name|INPROCEEDINGS
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -3077,6 +3421,8 @@ operator|.
 name|REFERENCE
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -3088,6 +3434,8 @@ operator|.
 name|INREFERENCE
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -3099,6 +3447,8 @@ operator|.
 name|REPORT
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -3110,6 +3460,8 @@ operator|.
 name|SET
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -3121,6 +3473,8 @@ operator|.
 name|THESIS
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -3132,6 +3486,8 @@ operator|.
 name|UNPUBLISHED
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -3143,6 +3499,8 @@ operator|.
 name|CONFERENCE
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -3154,6 +3512,8 @@ operator|.
 name|ELECTRONIC
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -3165,6 +3525,8 @@ operator|.
 name|MASTERSTHESIS
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -3176,6 +3538,8 @@ operator|.
 name|PHDTHESIS
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -3187,6 +3551,8 @@ operator|.
 name|TECHREPORT
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -3198,6 +3564,8 @@ operator|.
 name|WWW
 argument_list|)
 expr_stmt|;
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -3222,6 +3590,8 @@ argument_list|,
 name|BibtexEntryType
 argument_list|>
 argument_list|(
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 argument_list|)
 expr_stmt|;
@@ -3241,6 +3611,8 @@ comment|//Util.pr("'"+name+"'");
 name|Object
 name|o
 init|=
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|get
@@ -3261,16 +3633,20 @@ name|o
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 else|else
+block|{
 return|return
 operator|(
 name|BibtexEntryType
 operator|)
 name|o
 return|;
+block|}
 block|}
 comment|/**      * This method returns the standard BibtexEntryType for the      * name of a type, or null if it does not exist.      */
 DECL|method|getStandardType (String name)
@@ -3287,6 +3663,8 @@ comment|//Util.pr("'"+name+"'");
 name|Object
 name|o
 init|=
+name|BibtexEntryType
+operator|.
 name|STANDARD_TYPES
 operator|.
 name|get
@@ -3303,16 +3681,20 @@ name|o
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 else|else
+block|{
 return|return
 operator|(
 name|BibtexEntryType
 operator|)
 name|o
 return|;
+block|}
 block|}
 comment|/**      * Removes a customized entry type from the type map. If this type      * overrode a standard type, we reinstate the standard one.      *      * @param name The customized entry type to remove.      */
 DECL|method|removeType (String name)
@@ -3335,6 +3717,8 @@ name|toLowerCase
 argument_list|()
 decl_stmt|;
 comment|//System.out.println(ALL_TYPES.size());
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|remove
@@ -3345,6 +3729,8 @@ expr_stmt|;
 comment|//System.out.println(ALL_TYPES.size());
 if|if
 condition|(
+name|BibtexEntryType
+operator|.
 name|STANDARD_TYPES
 operator|.
 name|get
@@ -3357,12 +3743,16 @@ condition|)
 block|{
 comment|// In this case the user has removed a customized version
 comment|// of a standard type. We reinstate the standard type.
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
 argument_list|(
 name|nm
 argument_list|,
+name|BibtexEntryType
+operator|.
 name|STANDARD_TYPES
 operator|.
 name|get
@@ -3408,6 +3798,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|put
@@ -3445,6 +3837,8 @@ name|String
 argument_list|>
 name|i
 init|=
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|keySet
@@ -3470,6 +3864,8 @@ block|{
 name|Object
 name|o
 init|=
+name|BibtexEntryType
+operator|.
 name|ALL_TYPES
 operator|.
 name|get

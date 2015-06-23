@@ -201,6 +201,8 @@ name|frame
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|init ()
 specifier|public
 name|void
@@ -230,9 +232,11 @@ argument_list|()
 operator|==
 literal|null
 condition|)
+block|{
 name|saveAs
 argument_list|()
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|// Check for external modifications:
@@ -375,6 +379,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -453,6 +459,8 @@ operator|.
 name|DisplayResultCallback
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|scanResultsResolved
@@ -489,6 +497,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -646,6 +656,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void
@@ -738,6 +750,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|frame
 operator|.
 name|output
@@ -752,6 +765,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -986,6 +1002,7 @@ condition|(
 operator|!
 name|selectedOnly
 condition|)
+block|{
 name|session
 operator|=
 name|FileActions
@@ -1017,7 +1034,9 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|session
 operator|=
 name|FileActions
@@ -1054,6 +1073,7 @@ operator|.
 name|DEFAULT
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1187,11 +1207,13 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|ex
 operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
+block|}
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -1468,10 +1490,12 @@ argument_list|)
 return|;
 block|}
 else|else
+block|{
 name|commit
 operator|=
 literal|false
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -1482,10 +1506,12 @@ name|JOptionPane
 operator|.
 name|CANCEL_OPTION
 condition|)
+block|{
 name|commit
 operator|=
 literal|false
 expr_stmt|;
+block|}
 block|}
 try|try
 block|{
@@ -1509,11 +1535,13 @@ expr_stmt|;
 comment|// Make sure to remember which encoding we used.
 block|}
 else|else
+block|{
 name|session
 operator|.
 name|cancel
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1588,10 +1616,12 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|commit
 operator|=
 literal|false
 expr_stmt|;
+block|}
 block|}
 return|return
 name|commit

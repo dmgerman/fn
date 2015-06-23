@@ -885,11 +885,15 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|JabRefPreferences
+operator|.
 name|singleton
 operator|==
 literal|null
 condition|)
 block|{
+name|JabRefPreferences
+operator|.
 name|singleton
 operator|=
 operator|new
@@ -898,6 +902,8 @@ argument_list|()
 expr_stmt|;
 block|}
 return|return
+name|JabRefPreferences
+operator|.
 name|singleton
 return|;
 block|}
@@ -917,6 +923,8 @@ name|prefs
 operator|.
 name|get
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SAVE_IN_SPECIFIED_ORDER
 argument_list|,
 literal|null
@@ -939,6 +947,8 @@ condition|)
 block|{
 name|putBoolean
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SAVE_IN_SPECIFIED_ORDER
 argument_list|,
 literal|true
@@ -946,6 +956,8 @@ argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SAVE_PRIMARY_SORT_FIELD
 argument_list|,
 literal|"author"
@@ -953,6 +965,8 @@ argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SAVE_SECONDARY_SORT_FIELD
 argument_list|,
 literal|"editor"
@@ -960,6 +974,8 @@ argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SAVE_TERTIARY_SORT_FIELD
 argument_list|,
 literal|"year"
@@ -967,6 +983,8 @@ argument_list|)
 expr_stmt|;
 name|putBoolean
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SAVE_PRIMARY_SORT_DESCENDING
 argument_list|,
 literal|false
@@ -974,6 +992,8 @@ argument_list|)
 expr_stmt|;
 name|putBoolean
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SAVE_SECONDARY_SORT_DESCENDING
 argument_list|,
 literal|false
@@ -981,6 +1001,8 @@ argument_list|)
 expr_stmt|;
 name|putBoolean
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SAVE_TERTIARY_SORT_DESCENDING
 argument_list|,
 literal|false
@@ -1003,6 +1025,8 @@ block|{
 comment|// saveInTitleOrder => title, author, editor
 name|putBoolean
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SAVE_IN_SPECIFIED_ORDER
 argument_list|,
 literal|true
@@ -1010,6 +1034,8 @@ argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SAVE_PRIMARY_SORT_FIELD
 argument_list|,
 literal|"title"
@@ -1017,6 +1043,8 @@ argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SAVE_SECONDARY_SORT_FIELD
 argument_list|,
 literal|"author"
@@ -1024,6 +1052,8 @@ argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SAVE_TERTIARY_SORT_FIELD
 argument_list|,
 literal|"editor"
@@ -1031,6 +1061,8 @@ argument_list|)
 expr_stmt|;
 name|putBoolean
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SAVE_PRIMARY_SORT_DESCENDING
 argument_list|,
 literal|false
@@ -1038,6 +1070,8 @@ argument_list|)
 expr_stmt|;
 name|putBoolean
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SAVE_SECONDARY_SORT_DESCENDING
 argument_list|,
 literal|false
@@ -1045,6 +1079,8 @@ argument_list|)
 expr_stmt|;
 name|putBoolean
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SAVE_TERTIARY_SORT_DESCENDING
 argument_list|,
 literal|false
@@ -1058,6 +1094,8 @@ name|prefs
 operator|.
 name|get
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EXPORT_IN_SPECIFIED_ORDER
 argument_list|,
 literal|null
@@ -1080,6 +1118,8 @@ condition|)
 block|{
 name|putBoolean
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EXPORT_IN_SPECIFIED_ORDER
 argument_list|,
 literal|true
@@ -1087,6 +1127,8 @@ argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EXPORT_PRIMARY_SORT_FIELD
 argument_list|,
 literal|"author"
@@ -1094,6 +1136,8 @@ argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EXPORT_SECONDARY_SORT_FIELD
 argument_list|,
 literal|"editor"
@@ -1101,6 +1145,8 @@ argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EXPORT_TERTIARY_SORT_FIELD
 argument_list|,
 literal|"year"
@@ -1108,6 +1154,8 @@ argument_list|)
 expr_stmt|;
 name|putBoolean
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EXPORT_PRIMARY_SORT_DESCENDING
 argument_list|,
 literal|false
@@ -1115,6 +1163,8 @@ argument_list|)
 expr_stmt|;
 name|putBoolean
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EXPORT_SECONDARY_SORT_DESCENDING
 argument_list|,
 literal|false
@@ -1122,6 +1172,8 @@ argument_list|)
 expr_stmt|;
 name|putBoolean
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EXPORT_TERTIARY_SORT_DESCENDING
 argument_list|,
 literal|false
@@ -1144,6 +1196,8 @@ block|{
 comment|// exportInTitleOrder => title, author, editor
 name|putBoolean
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EXPORT_IN_SPECIFIED_ORDER
 argument_list|,
 literal|true
@@ -1151,6 +1205,8 @@ argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EXPORT_PRIMARY_SORT_FIELD
 argument_list|,
 literal|"title"
@@ -1158,6 +1214,8 @@ argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EXPORT_SECONDARY_SORT_FIELD
 argument_list|,
 literal|"author"
@@ -1165,6 +1223,8 @@ argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EXPORT_TERTIARY_SORT_FIELD
 argument_list|,
 literal|"editor"
@@ -1172,6 +1232,8 @@ argument_list|)
 expr_stmt|;
 name|putBoolean
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EXPORT_PRIMARY_SORT_DESCENDING
 argument_list|,
 literal|false
@@ -1179,6 +1241,8 @@ argument_list|)
 expr_stmt|;
 name|putBoolean
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EXPORT_SECONDARY_SORT_DESCENDING
 argument_list|,
 literal|false
@@ -1186,6 +1250,8 @@ argument_list|)
 expr_stmt|;
 name|putBoolean
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EXPORT_TERTIARY_SORT_DESCENDING
 argument_list|,
 literal|false
@@ -1276,6 +1342,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EMACS_PATH
 argument_list|,
 literal|"emacsclient"
@@ -1285,6 +1353,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EMACS_23
 argument_list|,
 literal|true
@@ -1294,6 +1364,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EMACS_ADDITIONAL_PARAMETERS
 argument_list|,
 literal|"-n -e"
@@ -1359,6 +1431,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EMACS_PATH
 argument_list|,
 literal|"emacsclient.exe"
@@ -1368,6 +1442,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EMACS_23
 argument_list|,
 literal|true
@@ -1377,6 +1453,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EMACS_ADDITIONAL_PARAMETERS
 argument_list|,
 literal|"-n -e"
@@ -1420,6 +1498,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EMACS_PATH
 argument_list|,
 literal|"gnuclient"
@@ -1429,6 +1509,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EMACS_23
 argument_list|,
 literal|false
@@ -1438,6 +1520,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EMACS_ADDITIONAL_PARAMETERS
 argument_list|,
 literal|"-batch -eval"
@@ -1477,6 +1561,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|PDF_PREVIEW
 argument_list|,
 name|Boolean
@@ -1717,6 +1803,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|PRIMARY_SORT_FIELD
 argument_list|,
 literal|"author"
@@ -1726,6 +1814,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|PRIMARY_SORT_DESCENDING
 argument_list|,
 name|Boolean
@@ -1737,6 +1827,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SECONDARY_SORT_FIELD
 argument_list|,
 literal|"year"
@@ -1746,6 +1838,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SECONDARY_SORT_DESCENDING
 argument_list|,
 name|Boolean
@@ -1757,6 +1851,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|TERTIARY_SORT_FIELD
 argument_list|,
 literal|"author"
@@ -1766,6 +1862,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|TERTIARY_SORT_DESCENDING
 argument_list|,
 name|Boolean
@@ -1777,6 +1875,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SAVE_IN_ORIGINAL_ORDER
 argument_list|,
 name|Boolean
@@ -1788,6 +1888,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SAVE_IN_SPECIFIED_ORDER
 argument_list|,
 name|Boolean
@@ -1799,6 +1901,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SAVE_PRIMARY_SORT_FIELD
 argument_list|,
 literal|"bibtexkey"
@@ -1808,6 +1912,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SAVE_PRIMARY_SORT_DESCENDING
 argument_list|,
 name|Boolean
@@ -1819,6 +1925,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SAVE_SECONDARY_SORT_FIELD
 argument_list|,
 literal|"author"
@@ -1828,6 +1936,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SAVE_SECONDARY_SORT_DESCENDING
 argument_list|,
 name|Boolean
@@ -1839,6 +1949,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SAVE_TERTIARY_SORT_FIELD
 argument_list|,
 literal|""
@@ -1848,6 +1960,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SAVE_TERTIARY_SORT_DESCENDING
 argument_list|,
 name|Boolean
@@ -1859,6 +1973,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EXPORT_IN_ORIGINAL_ORDER
 argument_list|,
 name|Boolean
@@ -1870,6 +1986,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EXPORT_IN_SPECIFIED_ORDER
 argument_list|,
 name|Boolean
@@ -1881,6 +1999,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EXPORT_PRIMARY_SORT_FIELD
 argument_list|,
 literal|"bibtexkey"
@@ -1890,6 +2010,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EXPORT_PRIMARY_SORT_DESCENDING
 argument_list|,
 name|Boolean
@@ -1901,6 +2023,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EXPORT_SECONDARY_SORT_FIELD
 argument_list|,
 literal|"author"
@@ -1910,6 +2034,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EXPORT_SECONDARY_SORT_DESCENDING
 argument_list|,
 name|Boolean
@@ -1921,6 +2047,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EXPORT_TERTIARY_SORT_FIELD
 argument_list|,
 literal|""
@@ -1930,6 +2058,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EXPORT_TERTIARY_SORT_DESCENDING
 argument_list|,
 name|Boolean
@@ -1941,6 +2071,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|NEWLINE
 argument_list|,
 name|System
@@ -2004,6 +2136,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|XMP_PRIVACY_FILTERS
 argument_list|,
 literal|"pdf;timestamp;keywords;owner;note;review"
@@ -2013,6 +2147,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|USE_XMP_PRIVACY_FILTER
 argument_list|,
 name|Boolean
@@ -2348,6 +2484,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EDITOR_EMACS_KEYBINDINGS
 argument_list|,
 name|Boolean
@@ -2359,6 +2497,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EDITOR_EMACS_KEYBINDINGS_REBIND_CA
 argument_list|,
 name|Boolean
@@ -2414,6 +2554,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SHORTEST_TO_COMPLETE
 argument_list|,
 literal|2
@@ -2423,8 +2565,12 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|AUTOCOMPLETE_FIRSTNAME_MODE
 argument_list|,
+name|JabRefPreferences
+operator|.
 name|AUTOCOMPLETE_FIRSTNAME_MODE_BOTH
 argument_list|)
 expr_stmt|;
@@ -2562,6 +2708,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|GROUP_SHOW_NUMBER_OF_ELEMENTS
 argument_list|,
 name|Boolean
@@ -2593,6 +2741,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|EDIT_GROUP_MEMBERSHIP_MODE
 argument_list|,
 name|Boolean
@@ -3269,6 +3419,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|SHOW_ONE_LETTER_HEADING_FOR_ICON_COLUMNS
 argument_list|,
 name|Boolean
@@ -3707,6 +3859,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|UPDATE_TIMESTAMP
 argument_list|,
 name|Boolean
@@ -3730,6 +3884,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|WRITEFIELD_ADDSPACES
 argument_list|,
 name|Boolean
@@ -3741,6 +3897,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|WRITEFIELD_CAMELCASENAME
 argument_list|,
 name|Boolean
@@ -3754,6 +3912,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|WRITEFIELD_SORTSTYLE
 argument_list|,
 literal|0
@@ -3763,6 +3923,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|WRITEFIELD_USERDEFINEDORDER
 argument_list|,
 literal|"author;title;journal;year;volume;number;pages;month;note;volume;pages;part;eid"
@@ -3772,6 +3934,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|WRITEFIELD_WRAPFIELD
 argument_list|,
 name|Boolean
@@ -3966,6 +4130,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|AUTOLINK_EXACT_KEY_ONLY
 argument_list|,
 name|Boolean
@@ -4399,6 +4565,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|DEFAULT_REG_EXP_SEARCH_EXPRESSION_KEY
 argument_list|,
 name|defaultExpression
@@ -4408,6 +4576,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|REG_EXP_SEARCH_EXPRESSION_KEY
 argument_list|,
 name|defaultExpression
@@ -4417,6 +4587,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|USE_REG_EXP_SEARCH_KEY
 argument_list|,
 name|Boolean
@@ -4612,6 +4784,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|CUSTOM_TAB_NAME
 operator|+
 literal|"_def0"
@@ -4628,6 +4802,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|CUSTOM_TAB_FIELDS
 operator|+
 literal|"_def0"
@@ -4642,6 +4818,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|CUSTOM_TAB_FIELDS
 operator|+
 literal|"_def1"
@@ -4653,6 +4831,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|CUSTOM_TAB_NAME
 operator|+
 literal|"_def1"
@@ -4670,6 +4850,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|CUSTOM_TAB_FIELDS
 operator|+
 literal|"_def2"
@@ -4681,6 +4863,8 @@ name|defaults
 operator|.
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|CUSTOM_TAB_NAME
 operator|+
 literal|"_def2"
@@ -4914,6 +5098,8 @@ name|getValueDelimiters
 parameter_list|()
 block|{
 return|return
+name|JabRefPreferences
+operator|.
 name|VALUE_DELIMITERS
 index|[
 name|getInt
@@ -5359,11 +5545,13 @@ literal|0
 init|;
 name|i
 operator|<
+operator|(
 name|value
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|;
 name|i
 operator|++
@@ -6307,6 +6495,8 @@ name|LabelPattern
 name|getKeyPattern
 parameter_list|()
 block|{
+name|JabRefPreferences
+operator|.
 name|keyPattern
 operator|=
 operator|new
@@ -6361,6 +6551,8 @@ range|:
 name|keys
 control|)
 block|{
+name|JabRefPreferences
+operator|.
 name|keyPattern
 operator|.
 name|addLabelPattern
@@ -6395,6 +6587,8 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
+name|JabRefPreferences
+operator|.
 name|keyPattern
 return|;
 block|}
@@ -6408,6 +6602,8 @@ name|LabelPattern
 name|pattern
 parameter_list|)
 block|{
+name|JabRefPreferences
+operator|.
 name|keyPattern
 operator|=
 name|pattern
@@ -7822,6 +8018,8 @@ name|number
 decl_stmt|;
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|CUSTOM_TYPE_NAME
 operator|+
 name|nr
@@ -7834,6 +8032,8 @@ argument_list|)
 expr_stmt|;
 name|put
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|CUSTOM_TYPE_REQ
 operator|+
 name|nr
@@ -7847,6 +8047,8 @@ expr_stmt|;
 comment|//tp.getRequiredFields());
 name|putStringArray
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|CUSTOM_TYPE_OPT
 operator|+
 name|nr
@@ -7859,6 +8061,8 @@ argument_list|)
 expr_stmt|;
 name|putStringArray
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|CUSTOM_TYPE_PRIOPT
 operator|+
 name|nr
@@ -7892,6 +8096,8 @@ name|name
 init|=
 name|get
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|CUSTOM_TYPE_NAME
 operator|+
 name|nr
@@ -7903,6 +8109,8 @@ name|req
 init|=
 name|getStringArray
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|CUSTOM_TYPE_REQ
 operator|+
 name|nr
@@ -7912,6 +8120,8 @@ name|opt
 init|=
 name|getStringArray
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|CUSTOM_TYPE_OPT
 operator|+
 name|nr
@@ -7921,6 +8131,8 @@ name|priOpt
 init|=
 name|getStringArray
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|CUSTOM_TYPE_PRIOPT
 operator|+
 name|nr
@@ -9015,6 +9227,8 @@ operator|.
 name|getName
 argument_list|()
 block|,
+name|JabRefPreferences
+operator|.
 name|FILE_TYPE_REMOVED_FLAG
 block|}
 expr_stmt|;
@@ -9129,6 +9343,8 @@ index|]
 operator|.
 name|equals
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|FILE_TYPE_REMOVED_FLAG
 argument_list|)
 operator|)
@@ -9294,6 +9510,8 @@ parameter_list|)
 block|{
 name|purgeSeries
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|CUSTOM_TYPE_NAME
 argument_list|,
 name|number
@@ -9301,6 +9519,8 @@ argument_list|)
 expr_stmt|;
 name|purgeSeries
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|CUSTOM_TYPE_REQ
 argument_list|,
 name|number
@@ -9308,6 +9528,8 @@ argument_list|)
 expr_stmt|;
 name|purgeSeries
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|CUSTOM_TYPE_OPT
 argument_list|,
 name|number
@@ -9315,6 +9537,8 @@ argument_list|)
 expr_stmt|;
 name|purgeSeries
 argument_list|(
+name|JabRefPreferences
+operator|.
 name|CUSTOM_TYPE_PRIOPT
 argument_list|,
 name|number

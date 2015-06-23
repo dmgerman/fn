@@ -78,6 +78,8 @@ init|=
 literal|"yyyy.MM.dd hh:mm:ss z"
 decl_stmt|;
 comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.export.layout.LayoutFormatter#format(java.lang.String)      */
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -90,13 +92,17 @@ block|{
 name|String
 name|format
 init|=
+name|CurrentDate
+operator|.
 name|defaultFormat
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|fieldText
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 literal|""

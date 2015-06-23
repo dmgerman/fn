@@ -961,6 +961,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1031,6 +1033,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1101,6 +1105,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1109,6 +1115,8 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+name|PreviewPrefsTab
+operator|.
 name|getTestEntry
 argument_list|()
 expr_stmt|;
@@ -1122,6 +1130,8 @@ name|PreviewPanel
 argument_list|(
 literal|null
 argument_list|,
+name|PreviewPrefsTab
+operator|.
 name|entry
 argument_list|,
 literal|null
@@ -1246,6 +1256,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1254,6 +1266,8 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+name|PreviewPrefsTab
+operator|.
 name|getTestEntry
 argument_list|()
 expr_stmt|;
@@ -1267,6 +1281,8 @@ name|PreviewPanel
 argument_list|(
 literal|null
 argument_list|,
+name|PreviewPrefsTab
+operator|.
 name|entry
 argument_list|,
 literal|null
@@ -1367,13 +1383,21 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|PreviewPrefsTab
+operator|.
 name|entry
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
+name|PreviewPrefsTab
+operator|.
 name|entry
 return|;
+block|}
+name|PreviewPrefsTab
+operator|.
 name|entry
 operator|=
 operator|new
@@ -1392,6 +1416,8 @@ literal|"article"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|PreviewPrefsTab
+operator|.
 name|entry
 operator|.
 name|setField
@@ -1403,6 +1429,8 @@ argument_list|,
 literal|"conceicao1997"
 argument_list|)
 expr_stmt|;
+name|PreviewPrefsTab
+operator|.
 name|entry
 operator|.
 name|setField
@@ -1412,6 +1440,8 @@ argument_list|,
 literal|"Luis E. C. Conceic{\\~a}o and Terje van der Meeren and Johan A. J. Verreth and M S. Evjen and D. F. Houlihan and H. J. Fyhn"
 argument_list|)
 expr_stmt|;
+name|PreviewPrefsTab
+operator|.
 name|entry
 operator|.
 name|setField
@@ -1421,6 +1451,8 @@ argument_list|,
 literal|"Amino acid metabolism and protein turnover in larval turbot (Scophthalmus maximus) fed natural zooplankton or Artemia"
 argument_list|)
 expr_stmt|;
+name|PreviewPrefsTab
+operator|.
 name|entry
 operator|.
 name|setField
@@ -1430,6 +1462,8 @@ argument_list|,
 literal|"1997"
 argument_list|)
 expr_stmt|;
+name|PreviewPrefsTab
+operator|.
 name|entry
 operator|.
 name|setField
@@ -1439,6 +1473,8 @@ argument_list|,
 literal|"Marine Biology"
 argument_list|)
 expr_stmt|;
+name|PreviewPrefsTab
+operator|.
 name|entry
 operator|.
 name|setField
@@ -1448,6 +1484,8 @@ argument_list|,
 literal|"January"
 argument_list|)
 expr_stmt|;
+name|PreviewPrefsTab
+operator|.
 name|entry
 operator|.
 name|setField
@@ -1457,6 +1495,8 @@ argument_list|,
 literal|"2"
 argument_list|)
 expr_stmt|;
+name|PreviewPrefsTab
+operator|.
 name|entry
 operator|.
 name|setField
@@ -1466,6 +1506,8 @@ argument_list|,
 literal|"123"
 argument_list|)
 expr_stmt|;
+name|PreviewPrefsTab
+operator|.
 name|entry
 operator|.
 name|setField
@@ -1475,6 +1517,8 @@ argument_list|,
 literal|"conceicao1997.pdf"
 argument_list|)
 expr_stmt|;
+name|PreviewPrefsTab
+operator|.
 name|entry
 operator|.
 name|setField
@@ -1484,6 +1528,8 @@ argument_list|,
 literal|"255--265"
 argument_list|)
 expr_stmt|;
+name|PreviewPrefsTab
+operator|.
 name|entry
 operator|.
 name|setField
@@ -1493,6 +1539,8 @@ argument_list|,
 literal|"energetics, artemia, metabolism, amino acid, turbot"
 argument_list|)
 expr_stmt|;
+name|PreviewPrefsTab
+operator|.
 name|entry
 operator|.
 name|setField
@@ -1502,6 +1550,8 @@ argument_list|,
 literal|"http://ejournals.ebsco.com/direct.asp?ArticleID=TYY4NT82XA9H7R8PFPPV"
 argument_list|)
 expr_stmt|;
+name|PreviewPrefsTab
+operator|.
 name|entry
 operator|.
 name|setField
@@ -1550,9 +1600,13 @@ literal|"relatively low protein turnover, while at a later stage (Day 17), a muc
 argument_list|)
 expr_stmt|;
 return|return
+name|PreviewPrefsTab
+operator|.
 name|entry
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -1612,6 +1666,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -1671,6 +1727,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|readyToClose ()
 specifier|public
 name|boolean
@@ -1681,6 +1739,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTabName ()
 specifier|public
 name|String

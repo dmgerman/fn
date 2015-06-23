@@ -92,6 +92,8 @@ name|toString
 argument_list|()
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|format (String field)
 specifier|public
 name|String
@@ -267,13 +269,17 @@ operator|!
 name|incommand
 operator|&&
 operator|(
+operator|(
 name|c
 operator|==
 literal|'{'
+operator|)
 operator|||
+operator|(
 name|c
 operator|==
 literal|'}'
+operator|)
 operator|)
 condition|)
 block|{
@@ -365,16 +371,20 @@ if|if
 condition|(
 name|i
 operator|>=
+operator|(
 name|field
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 break|break
 name|testCharCom
 break|;
+block|}
 name|String
 name|command
 init|=
@@ -466,6 +476,7 @@ name|result
 operator|!=
 literal|null
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -473,6 +484,7 @@ argument_list|(
 name|result
 argument_list|)
 expr_stmt|;
+block|}
 name|incommand
 operator|=
 literal|false
@@ -516,6 +528,7 @@ literal|'}'
 operator|)
 operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -523,6 +536,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 assert|assert
@@ -624,16 +638,20 @@ if|if
 condition|(
 name|i
 operator|>=
+operator|(
 name|field
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 break|break
 name|testContent
 break|;
+block|}
 if|if
 condition|(
 operator|(
@@ -791,6 +809,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|RTFChars
+operator|.
 name|logger
 operator|.
 name|fine
@@ -813,6 +833,7 @@ comment|// We have to add the space a
 block|}
 block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -820,6 +841,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|incommand
 operator|=
@@ -863,6 +885,7 @@ name|c
 operator|<
 literal|128
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -870,7 +893,9 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -891,6 +916,7 @@ argument_list|(
 literal|'?'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb

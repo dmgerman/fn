@@ -230,6 +230,8 @@ name|ImportCustomizationDialog
 name|importCustomizationDialog
 decl_stmt|;
 comment|/*     *  (non-Javadoc)     * @see java.awt.Component#getSize()     */
+annotation|@
+name|Override
 DECL|method|getSize ()
 specifier|public
 name|Dimension
@@ -340,9 +342,11 @@ name|lastDot
 operator|<
 literal|0
 condition|)
+block|{
 return|return
 name|className
 return|;
+block|}
 name|className
 operator|=
 name|className
@@ -456,6 +460,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -529,6 +535,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|chosenFileStr
 operator|=
 name|FileDialogs
@@ -558,6 +565,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|chosenFileStr
@@ -718,6 +726,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -957,6 +967,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1106,6 +1118,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1212,6 +1226,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1676,6 +1692,8 @@ literal|"Contained in"
 argument_list|)
 block|}
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getValueAt (int rowIndex, int columnIndex)
 specifier|public
 name|Object
@@ -1770,6 +1788,8 @@ return|return
 name|value
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnCount ()
 specifier|public
 name|int
@@ -1782,6 +1802,8 @@ operator|.
 name|length
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRowCount ()
 specifier|public
 name|int
@@ -1799,6 +1821,8 @@ name|size
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnName (int col)
 specifier|public
 name|String

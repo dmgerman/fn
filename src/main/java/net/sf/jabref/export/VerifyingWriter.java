@@ -162,6 +162,8 @@ name|newEncoder
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|write (String str)
 specifier|public
 name|void
@@ -224,6 +226,7 @@ name|i
 argument_list|)
 argument_list|)
 condition|)
+block|{
 name|problemCharacters
 operator|.
 name|add
@@ -236,6 +239,7 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|couldEncodeAll
 operator|=

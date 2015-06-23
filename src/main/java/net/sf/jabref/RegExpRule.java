@@ -125,6 +125,8 @@ operator|=
 name|caseSensitive
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|validateSearchStrings (Map<String, String> searchStrings)
 specifier|public
 name|boolean
@@ -168,6 +170,7 @@ condition|(
 operator|!
 name|m_caseSensitiveSearch
 condition|)
+block|{
 name|flags
 operator|=
 name|Pattern
@@ -175,6 +178,7 @@ operator|.
 name|CASE_INSENSITIVE
 expr_stmt|;
 comment|// testing
+block|}
 try|try
 block|{
 name|Pattern
@@ -204,6 +208,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|applyRule (Map<String, String> searchStrings, BibtexEntry bibtexEntry)
 specifier|public
 name|int
@@ -252,6 +258,7 @@ condition|(
 operator|!
 name|m_caseSensitiveSearch
 condition|)
+block|{
 name|flags
 operator|=
 name|Pattern
@@ -259,6 +266,7 @@ operator|.
 name|CASE_INSENSITIVE
 expr_stmt|;
 comment|// testing
+block|}
 comment|//System.out.println(searchString);
 name|Pattern
 name|pattern
@@ -354,6 +362,8 @@ name|pattern
 operator|.
 name|matcher
 argument_list|(
+name|RegExpRule
+operator|.
 name|removeBrackets
 operator|.
 name|format
@@ -372,9 +382,11 @@ operator|.
 name|find
 argument_list|()
 condition|)
+block|{
 name|score
 operator|++
 expr_stmt|;
+block|}
 block|}
 block|}
 catch|catch

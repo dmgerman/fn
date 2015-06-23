@@ -237,10 +237,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|res
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|res
 operator|.
 name|trim
@@ -250,8 +253,11 @@ name|length
 argument_list|()
 operator|==
 literal|0
+operator|)
 condition|)
+block|{
 return|return;
+block|}
 name|URL
 name|url
 decl_stmt|;
@@ -455,6 +461,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -495,6 +503,7 @@ name|isVisible
 argument_list|()
 operator|)
 condition|)
+block|{
 name|editor
 operator|.
 name|setVisible
@@ -504,6 +513,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -563,6 +573,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -691,11 +703,14 @@ name|length
 operator|==
 literal|0
 condition|)
+block|{
 name|directory
 operator|=
 literal|null
 expr_stmt|;
+block|}
 else|else
+block|{
 name|directory
 operator|=
 name|fDirectory
@@ -703,6 +718,7 @@ index|[
 literal|0
 index|]
 expr_stmt|;
+block|}
 specifier|final
 name|String
 name|suggestDir
@@ -798,6 +814,8 @@ operator|new
 name|ConfirmCloseFileListEntryEditor
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|confirmClose
@@ -918,9 +936,11 @@ name|OK_OPTION
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -930,7 +950,7 @@ condition|(
 operator|!
 name|dontShowDialog
 condition|)
-comment|// If an error occured with the URL, this flag may have been set
+block|{
 name|editor
 operator|.
 name|setVisible
@@ -940,8 +960,11 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 return|return;
+block|}
 comment|// Editor closed. Go on:
 if|if
 condition|(
@@ -1002,6 +1025,7 @@ literal|"file.separator"
 argument_list|)
 argument_list|)
 condition|)
+block|{
 name|dirPrefix
 operator|=
 name|directory
@@ -1013,17 +1037,22 @@ argument_list|(
 literal|"file.separator"
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|dirPrefix
 operator|=
 name|directory
 expr_stmt|;
 block|}
+block|}
 else|else
+block|{
 name|dirPrefix
 operator|=
 literal|null
 expr_stmt|;
+block|}
 try|try
 block|{
 name|boolean
@@ -1145,11 +1174,13 @@ if|if
 condition|(
 name|downloadFinished
 condition|)
+block|{
 name|tmp
 operator|.
 name|delete
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * Construct a File object pointing to the file linked, whether the link is      * absolute or relative to the main directory.      *      * @param directory The main directory.      * @param link      The absolute or relative link.      * @return The expanded File.      */
@@ -1289,12 +1320,14 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|plannedName
 operator|+=
 literal|"."
 operator|+
 name|suffix
 expr_stmt|;
+block|}
 comment|/*         * [ 1548875 ] download pdf produces unsupported filename         *         * http://sourceforge.net/tracker/index.php?func=detail&aid=1548875&group_id=92314&atid=600306         *         */
 if|if
 condition|(
@@ -1387,12 +1420,14 @@ operator|.
 name|length
 argument_list|()
 operator|<
+operator|(
 name|link
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 operator|)
 condition|)
 block|{
@@ -1456,6 +1491,7 @@ operator|||
 operator|(
 name|index
 operator|==
+operator|(
 name|strippedLink
 operator|.
 name|length
@@ -1463,13 +1499,16 @@ argument_list|()
 operator|-
 literal|1
 operator|)
+operator|)
 condition|)
-comment|// No occurence, or at the end
+block|{
 name|suffix
 operator|=
 literal|null
 expr_stmt|;
+block|}
 else|else
+block|{
 name|suffix
 operator|=
 name|strippedLink
@@ -1481,6 +1520,7 @@ operator|+
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|Globals
@@ -1523,12 +1563,14 @@ operator|||
 operator|(
 name|index
 operator|==
+operator|(
 name|strippedLink
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 operator|)
 condition|)
 block|{
@@ -1546,14 +1588,18 @@ argument_list|)
 operator|>
 literal|0
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 else|else
+block|{
 return|return
 name|suffix
 return|;
 comment|// return the first one we found, anyway.
+block|}
 block|}
 else|else
 block|{
@@ -1577,10 +1623,13 @@ argument_list|)
 operator|>
 literal|0
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 else|else
+block|{
 return|return
 name|link
 operator|.
@@ -1591,6 +1640,7 @@ operator|+
 literal|1
 argument_list|)
 return|;
+block|}
 block|}
 block|}
 block|}

@@ -567,9 +567,11 @@ expr_stmt|;
 comment|/*          * If we have been given a panel and the preference option          * previewPrintButton is set, show the tool bar          */
 if|if
 condition|(
+operator|(
 name|panel
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|JabRefPreferences
 operator|.
@@ -691,6 +693,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -703,6 +707,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|//DocumentPrinter printerService;
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent arg0)
 specifier|public
 name|void
@@ -723,6 +729,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -835,12 +843,14 @@ name|printAction
 operator|==
 literal|null
 condition|)
+block|{
 name|printAction
 operator|=
 operator|new
 name|PrintAction
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|printAction
 return|;
@@ -875,6 +885,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -886,6 +898,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -928,12 +942,14 @@ name|closeAction
 operator|==
 literal|null
 condition|)
+block|{
 name|closeAction
 operator|=
 operator|new
 name|CloseAction
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|closeAction
 return|;
@@ -1145,6 +1161,7 @@ name|comp
 range|:
 name|comps
 control|)
+block|{
 operator|(
 operator|(
 name|JComponent
@@ -1157,6 +1174,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|tlb
 return|;
@@ -1173,6 +1191,8 @@ operator|new
 name|JEditorPane
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Dimension
 name|getPreferredScrollableViewportSize
@@ -1240,6 +1260,8 @@ operator|new
 name|HyperlinkListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|hyperlinkUpdate
@@ -1439,6 +1461,7 @@ name|entry
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|removePropertyChangeListener
@@ -1446,6 +1469,7 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+block|}
 name|newEntry
 operator|.
 name|addPropertyChangeListener
@@ -1490,6 +1514,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getEntry ()
 specifier|public
 name|BibtexEntry
@@ -1579,6 +1605,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1627,6 +1655,8 @@ operator|)
 return|;
 block|}
 comment|/**      * The PreviewPanel has registered itself as an event listener with the      * currently displayed BibtexEntry. If the entry changes, an event is      * received here, and we can update the preview immediately.      */
+annotation|@
+name|Override
 DECL|method|vetoableChange (PropertyChangeEvent evt)
 specifier|public
 name|void

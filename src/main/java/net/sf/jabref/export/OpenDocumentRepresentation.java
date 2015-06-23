@@ -327,6 +327,7 @@ name|keySet
 operator|==
 literal|null
 condition|)
+block|{
 name|entryList
 operator|.
 name|addAll
@@ -337,6 +338,7 @@ name|getEntries
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 for|for
@@ -346,6 +348,7 @@ name|key
 range|:
 name|keySet
 control|)
+block|{
 name|entryList
 operator|.
 name|add
@@ -358,6 +361,7 @@ name|key
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|entries
 operator|=

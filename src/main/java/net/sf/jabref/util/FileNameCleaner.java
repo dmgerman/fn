@@ -177,6 +177,8 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+name|FileNameCleaner
+operator|.
 name|isCharLegal
 argument_list|(
 name|c
@@ -222,9 +224,6 @@ block|{
 name|int
 name|intValueOfChar
 init|=
-operator|(
-name|int
-operator|)
 name|c
 decl_stmt|;
 return|return
@@ -232,6 +231,8 @@ name|Arrays
 operator|.
 name|binarySearch
 argument_list|(
+name|FileNameCleaner
+operator|.
 name|ILLEGAL_CHARS
 argument_list|,
 name|intValueOfChar

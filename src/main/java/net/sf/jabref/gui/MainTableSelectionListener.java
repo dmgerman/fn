@@ -633,6 +633,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|listChanged (ListEvent<BibtexEntry> e)
 specifier|public
 name|void
@@ -695,8 +697,10 @@ name|newSelected
 operator|!=
 literal|null
 condition|)
+block|{
 return|return;
 comment|// More than one new selected. Do nothing.
+block|}
 else|else
 block|{
 if|if
@@ -711,6 +715,7 @@ operator|.
 name|size
 argument_list|()
 condition|)
+block|{
 name|newSelected
 operator|=
 name|selected
@@ -723,6 +728,7 @@ name|getIndex
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -820,12 +826,13 @@ operator|!=
 literal|null
 operator|)
 condition|)
-comment|//&& (oldEditor != newEditor))
+block|{
 name|oldEditor
 operator|.
 name|setMovingToDifferentEntry
 argument_list|()
 expr_stmt|;
+block|}
 comment|// Show the new editor unless it was already visible:
 if|if
 condition|(
@@ -850,6 +857,7 @@ name|visName
 operator|!=
 literal|null
 condition|)
+block|{
 name|newEditor
 operator|.
 name|setVisiblePanel
@@ -857,6 +865,7 @@ argument_list|(
 name|visName
 argument_list|)
 expr_stmt|;
+block|}
 name|panel
 operator|.
 name|showEntryEditor
@@ -872,6 +881,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -964,8 +975,10 @@ name|repeats
 operator|>
 literal|0
 condition|)
+block|{
 return|return;
 comment|// We've already waited once. Give up on this selection.
+block|}
 name|Timer
 name|t
 init|=
@@ -978,6 +991,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1071,6 +1086,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1118,6 +1135,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1241,6 +1260,8 @@ name|editor
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|mouseReleased (MouseEvent e)
 specifier|public
 name|void
@@ -1316,6 +1337,7 @@ name|iconType
 operator|==
 literal|null
 condition|)
+block|{
 name|processPopupTrigger
 argument_list|(
 name|e
@@ -1323,7 +1345,9 @@ argument_list|,
 name|row
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|showIconRightClickMenu
 argument_list|(
 name|e
@@ -1335,6 +1359,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|mousePressed (MouseEvent e)
 specifier|public
 name|void
@@ -1346,6 +1373,8 @@ parameter_list|)
 block|{
 comment|// all handling is done in "mouseReleased"
 block|}
+annotation|@
+name|Override
 DECL|method|mouseClicked (MouseEvent e)
 specifier|public
 name|void
@@ -1448,7 +1477,9 @@ operator|.
 name|BUTTON1
 operator|)
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|iconType
@@ -1594,8 +1625,10 @@ name|value
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
 comment|// No icon here, so we do nothing.
+block|}
 specifier|final
 name|BibtexEntry
 name|entry
@@ -1632,6 +1665,7 @@ condition|;
 name|i
 operator|--
 control|)
+block|{
 if|if
 condition|(
 name|entry
@@ -1646,10 +1680,13 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|hasField
 operator|=
 name|i
 expr_stmt|;
+block|}
+block|}
 if|if
 condition|(
 name|hasField
@@ -1657,7 +1694,9 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 return|return;
+block|}
 specifier|final
 name|String
 name|fieldName
@@ -1677,9 +1716,11 @@ block|{}
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|hasField
 operator|==
 literal|0
+operator|)
 operator|&&
 name|iconType
 index|[
@@ -1693,11 +1734,13 @@ operator|.
 name|FILE_FIELD
 argument_list|)
 operator|&&
+operator|(
 name|iconType
 operator|.
 name|length
 operator|>
 literal|1
+operator|)
 condition|)
 block|{
 name|fileTypes
@@ -1735,6 +1778,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -2086,10 +2131,12 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|selRow
 operator|==
 operator|-
 literal|1
+operator|)
 operator|||
 comment|// (getSelectedRowCount() == 0))
 operator|!
@@ -2362,6 +2409,7 @@ operator|==
 literal|0
 operator|)
 condition|)
+block|{
 name|description
 operator|=
 name|flEntry
@@ -2369,6 +2417,7 @@ operator|.
 name|getLink
 argument_list|()
 expr_stmt|;
+block|}
 name|menu
 operator|.
 name|add
@@ -2582,6 +2631,7 @@ if|if
 condition|(
 name|previewActive
 condition|)
+block|{
 name|panel
 operator|.
 name|showPreview
@@ -2589,12 +2639,15 @@ argument_list|(
 name|preview
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|panel
 operator|.
 name|hideBottomComponent
 argument_list|()
 expr_stmt|;
+block|}
 name|panel
 operator|.
 name|adjustSplitter
@@ -2607,6 +2660,8 @@ name|table
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|mouseEntered (MouseEvent e)
 specifier|public
 name|void
@@ -2616,6 +2671,8 @@ name|MouseEvent
 name|e
 parameter_list|)
 block|{      }
+annotation|@
+name|Override
 DECL|method|mouseExited (MouseEvent e)
 specifier|public
 name|void
@@ -2693,20 +2750,26 @@ if|if
 condition|(
 name|activePreview
 operator|<
+operator|(
 name|previewPanel
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|activePreview
 operator|++
 expr_stmt|;
+block|}
 else|else
+block|{
 name|activePreview
 operator|=
 literal|0
 expr_stmt|;
+block|}
 name|Globals
 operator|.
 name|prefs
@@ -2764,6 +2827,8 @@ block|}
 block|}
 block|}
 comment|/**      * Receive key event on the main table. If the key is a letter or a digit,      * we should select the first entry in the table which starts with the given      * letter in the column by which the table is sorted.      * @param e The KeyEvent      */
+annotation|@
+name|Override
 DECL|method|keyTyped (KeyEvent e)
 specifier|public
 name|void
@@ -2819,17 +2884,21 @@ literal|2000
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|time
 operator|-
 name|lastPressedTime
+operator|)
 operator|>
 name|QUICK_JUMP_TIMEOUT
 condition|)
+block|{
 name|lastPressedCount
 operator|=
 literal|0
 expr_stmt|;
 comment|// Reset last pressed character
+block|}
 comment|// Update timestamp:
 name|lastPressedTime
 operator|=
@@ -2852,6 +2921,7 @@ name|lastPressed
 operator|.
 name|length
 condition|)
+block|{
 name|lastPressed
 index|[
 name|lastPressedCount
@@ -2860,6 +2930,7 @@ index|]
 operator|=
 name|c
 expr_stmt|;
+block|}
 name|int
 name|sortingColumn
 init|=
@@ -2877,8 +2948,10 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 return|return;
 comment|// No sorting? TODO: look up by author, etc.?
+block|}
 comment|// TODO: the following lookup should be done by a faster algorithm,
 comment|// such as binary search. But the table may not be sorted properly,
 comment|// due to marked entries, search etc., which rules out the binary search.
@@ -2935,7 +3008,9 @@ name|o
 operator|==
 literal|null
 condition|)
+block|{
 continue|continue;
+block|}
 name|String
 name|s
 init|=
@@ -2956,6 +3031,7 @@ argument_list|()
 operator|>=
 name|lastPressedCount
 condition|)
+block|{
 for|for
 control|(
 name|int
@@ -2985,16 +3061,20 @@ index|[
 name|j
 index|]
 condition|)
+block|{
 break|break;
 comment|// Escape the loop immediately when we find a mismatch
+block|}
 elseif|else
 if|if
 condition|(
 name|j
 operator|==
+operator|(
 name|lastPressedCount
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 comment|// We found a match:
@@ -3020,6 +3100,7 @@ block|}
 comment|//if ((s.length()>= 1)&& (s.charAt(0) == c)) {
 comment|//}
 block|}
+block|}
 comment|// Finished, no result. If we didn't start at the beginning of
 comment|// the table, try that. Otherwise, exit the while loop.
 if|if
@@ -3028,15 +3109,19 @@ name|startRow
 operator|>
 literal|0
 condition|)
+block|{
 name|startRow
 operator|=
 literal|0
 expr_stmt|;
+block|}
 else|else
+block|{
 name|done
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 block|}
 elseif|else
@@ -3058,6 +3143,8 @@ literal|0
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|keyReleased (KeyEvent e)
 specifier|public
 name|void
@@ -3067,6 +3154,8 @@ name|KeyEvent
 name|e
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 DECL|method|keyPressed (KeyEvent e)
 specifier|public
 name|void
@@ -3076,6 +3165,8 @@ name|KeyEvent
 name|e
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 DECL|method|focusGained (FocusEvent e)
 specifier|public
 name|void
@@ -3085,6 +3176,8 @@ name|FocusEvent
 name|e
 parameter_list|)
 block|{      }
+annotation|@
+name|Override
 DECL|method|focusLost (FocusEvent e)
 specifier|public
 name|void

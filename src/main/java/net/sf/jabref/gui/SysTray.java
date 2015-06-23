@@ -167,6 +167,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -183,6 +185,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -362,6 +366,7 @@ operator|.
 name|isSupported
 argument_list|()
 condition|)
+block|{
 name|tray
 operator|=
 name|SystemTray
@@ -369,6 +374,7 @@ operator|.
 name|getSystemTray
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 DECL|method|setTrayIconVisible (boolean visible)
 specifier|public
@@ -385,13 +391,16 @@ name|tray
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 try|try
 block|{
 if|if
 condition|(
 name|visible
 condition|)
+block|{
 name|tray
 operator|.
 name|add
@@ -399,7 +408,9 @@ argument_list|(
 name|icon
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|tray
 operator|.
 name|remove
@@ -407,6 +418,7 @@ argument_list|(
 name|icon
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(

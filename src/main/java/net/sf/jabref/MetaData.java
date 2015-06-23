@@ -234,6 +234,7 @@ name|inData
 operator|!=
 literal|null
 condition|)
+block|{
 for|for
 control|(
 name|String
@@ -336,6 +337,7 @@ argument_list|()
 operator|>=
 literal|1
 condition|)
+block|{
 name|groupsVersionOnDisk
 operator|=
 name|Integer
@@ -348,6 +350,7 @@ name|firstElement
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -399,11 +402,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 comment|// this possibly handles import of a previous groups version
 if|if
 condition|(
 name|groupsTreePresent
 condition|)
+block|{
 name|putGroups
 argument_list|(
 name|treeGroupsData
@@ -413,14 +418,17 @@ argument_list|,
 name|groupsVersionOnDisk
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
 name|groupsTreePresent
 operator|&&
+operator|(
 name|flatGroupsData
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 try|try
@@ -557,6 +565,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * @return Iterator on all keys stored in the metadata      */
+annotation|@
+name|Override
 DECL|method|iterator ()
 specifier|public
 name|Iterator
@@ -829,10 +839,12 @@ operator|.
 name|exists
 argument_list|()
 condition|)
+block|{
 name|dir
 operator|=
 name|relDir
 expr_stmt|;
+block|}
 block|}
 name|dirs
 operator|.
@@ -864,6 +876,7 @@ name|dir
 operator|!=
 literal|null
 condition|)
+block|{
 name|dirs
 operator|.
 name|add
@@ -871,6 +884,7 @@ argument_list|(
 name|dir
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Check if the bib file location should be included, and if so, if it is set:
 if|if
@@ -884,10 +898,12 @@ argument_list|(
 literal|"bibLocationAsFileDir"
 argument_list|)
 operator|&&
+operator|(
 name|getFile
 argument_list|()
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 comment|// Check if we should add it as primary file dir (first in the list) or not:
@@ -902,6 +918,7 @@ argument_list|(
 literal|"bibLocAsPrimaryDir"
 argument_list|)
 condition|)
+block|{
 name|dirs
 operator|.
 name|add
@@ -915,7 +932,9 @@ name|getParent
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|dirs
 operator|.
 name|add
@@ -927,6 +946,7 @@ name|getParent
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|dirs
@@ -1207,16 +1227,20 @@ comment|// write groups if present. skip this if only the root node exists
 comment|// (which is always the AllEntriesGroup).
 if|if
 condition|(
+operator|(
 name|groupsRoot
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|groupsRoot
 operator|.
 name|getChildCount
 argument_list|()
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|StringBuffer
@@ -1596,12 +1620,14 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 return|return
 name|res
 operator|.
 name|toString
 argument_list|()
 return|;
+block|}
 return|return
 literal|null
 return|;
@@ -1719,6 +1745,8 @@ name|key
 operator|.
 name|startsWith
 argument_list|(
+name|MetaData
+operator|.
 name|PREFIX_KEYPATTERN
 argument_list|)
 condition|)
@@ -1741,6 +1769,8 @@ name|key
 operator|.
 name|substring
 argument_list|(
+name|MetaData
+operator|.
 name|PREFIX_KEYPATTERN
 operator|.
 name|length
@@ -1771,6 +1801,8 @@ name|defaultPattern
 init|=
 name|getData
 argument_list|(
+name|MetaData
+operator|.
 name|KEYPATTERNDEFAULT
 argument_list|)
 decl_stmt|;
@@ -1842,6 +1874,8 @@ name|key
 operator|.
 name|startsWith
 argument_list|(
+name|MetaData
+operator|.
 name|PREFIX_KEYPATTERN
 argument_list|)
 condition|)
@@ -1868,6 +1902,8 @@ block|{
 name|String
 name|metaDataKey
 init|=
+name|MetaData
+operator|.
 name|PREFIX_KEYPATTERN
 operator|+
 name|key
@@ -1943,6 +1979,8 @@ name|this
 operator|.
 name|remove
 argument_list|(
+name|MetaData
+operator|.
 name|KEYPATTERNDEFAULT
 argument_list|)
 expr_stmt|;
@@ -1981,6 +2019,8 @@ name|this
 operator|.
 name|putData
 argument_list|(
+name|MetaData
+operator|.
 name|KEYPATTERNDEFAULT
 argument_list|,
 name|data

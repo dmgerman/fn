@@ -89,6 +89,8 @@ name|toolTip
 expr_stmt|;
 block|}
 comment|/*      * @see TableCellRenderer#getTableCellRendererComponent(JTable, Object, boolean, boolean, int, int)      */
+annotation|@
+name|Override
 DECL|method|getTableCellRendererComponent (JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 specifier|public
 name|Component

@@ -190,8 +190,12 @@ operator|new
 name|DataFlavor
 index|[]
 block|{
+name|TransferableEntrySelection
+operator|.
 name|flavorInternal
 block|,
+name|TransferableEntrySelection
+operator|.
 name|flavorExternal
 block|}
 expr_stmt|;
@@ -250,14 +254,17 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|i
 operator|+
 literal|1
+operator|)
 operator|<
 name|selectedEntries
 operator|.
 name|length
 condition|)
+block|{
 name|keys
 operator|.
 name|append
@@ -265,6 +272,7 @@ argument_list|(
 literal|","
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|selectedEntriesCiteKeys
 operator|=
@@ -274,6 +282,8 @@ name|toString
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTransferDataFlavors ()
 specifier|public
 name|DataFlavor
@@ -282,9 +292,13 @@ name|getTransferDataFlavors
 parameter_list|()
 block|{
 return|return
+name|TransferableEntrySelection
+operator|.
 name|flavors
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isDataFlavorSupported (DataFlavor someFlavor)
 specifier|public
 name|boolean
@@ -299,6 +313,8 @@ name|someFlavor
 operator|.
 name|equals
 argument_list|(
+name|TransferableEntrySelection
+operator|.
 name|flavorInternal
 argument_list|)
 operator|||
@@ -306,10 +322,14 @@ name|someFlavor
 operator|.
 name|equals
 argument_list|(
+name|TransferableEntrySelection
+operator|.
 name|flavorExternal
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTransferData (DataFlavor someFlavor)
 specifier|public
 name|Object
@@ -331,6 +351,7 @@ argument_list|(
 name|someFlavor
 argument_list|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|UnsupportedFlavorException
@@ -338,18 +359,23 @@ argument_list|(
 name|someFlavor
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 name|someFlavor
 operator|.
 name|equals
 argument_list|(
+name|TransferableEntrySelection
+operator|.
 name|flavorInternal
 argument_list|)
 condition|)
+block|{
 return|return
 name|this
 return|;
+block|}
 name|String
 name|s
 init|=
@@ -371,6 +397,8 @@ name|s
 operator|.
 name|getBytes
 argument_list|(
+name|TransferableEntrySelection
+operator|.
 name|flavorExternal
 operator|.
 name|getParameter

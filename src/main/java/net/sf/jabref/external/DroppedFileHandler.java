@@ -743,7 +743,9 @@ name|database
 argument_list|()
 argument_list|)
 condition|)
+block|{
 return|return;
+block|}
 comment|/*          * Ok, we're ready to go. See first if we need to do a file copy before          * linking:          */
 name|boolean
 name|success
@@ -1021,7 +1023,9 @@ name|database
 argument_list|()
 argument_list|)
 condition|)
+block|{
 return|return;
+block|}
 comment|/*          * Ok, we're ready to go. See first if we need to do a file copy before          * linking:          */
 name|boolean
 name|success
@@ -1952,6 +1956,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 if|if
 condition|(
 operator|new
@@ -1972,6 +1977,7 @@ operator|=
 name|i
 expr_stmt|;
 break|break;
+block|}
 block|}
 if|if
 condition|(
@@ -2083,6 +2089,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -2280,6 +2288,8 @@ argument_list|()
 operator|.
 name|getBoolean
 argument_list|(
+name|DroppedFileHandler
+operator|.
 name|DFH_LEAVE
 argument_list|)
 argument_list|)
@@ -2295,6 +2305,8 @@ argument_list|()
 operator|.
 name|getBoolean
 argument_list|(
+name|DroppedFileHandler
+operator|.
 name|DFH_COPY
 argument_list|)
 argument_list|)
@@ -2310,6 +2322,8 @@ argument_list|()
 operator|.
 name|getBoolean
 argument_list|(
+name|DroppedFileHandler
+operator|.
 name|DFH_MOVE
 argument_list|)
 argument_list|)
@@ -2325,6 +2339,8 @@ argument_list|()
 operator|.
 name|getBoolean
 argument_list|(
+name|DroppedFileHandler
+operator|.
 name|DFH_RENAME
 argument_list|)
 argument_list|)
@@ -2405,6 +2421,8 @@ argument_list|()
 operator|.
 name|putBoolean
 argument_list|(
+name|DroppedFileHandler
+operator|.
 name|DFH_LEAVE
 argument_list|,
 name|linkInPlace
@@ -2420,6 +2438,8 @@ argument_list|()
 operator|.
 name|putBoolean
 argument_list|(
+name|DroppedFileHandler
+operator|.
 name|DFH_COPY
 argument_list|,
 name|copyRadioButton
@@ -2435,6 +2455,8 @@ argument_list|()
 operator|.
 name|putBoolean
 argument_list|(
+name|DroppedFileHandler
+operator|.
 name|DFH_MOVE
 argument_list|,
 name|moveRadioButton
@@ -2450,6 +2472,8 @@ argument_list|()
 operator|.
 name|putBoolean
 argument_list|(
+name|DroppedFileHandler
+operator|.
 name|DFH_RENAME
 argument_list|,
 name|renameCheckBox
@@ -2527,6 +2551,7 @@ name|oldValue
 operator|!=
 literal|null
 condition|)
+block|{
 name|tm
 operator|.
 name|setContent
@@ -2534,6 +2559,7 @@ argument_list|(
 name|oldValue
 argument_list|)
 expr_stmt|;
+block|}
 comment|// If avoidDuplicate==true, we should check if this file is already linked:
 if|if
 condition|(
@@ -2694,7 +2720,9 @@ argument_list|(
 name|absName
 argument_list|)
 condition|)
+block|{
 return|return;
+block|}
 block|}
 block|}
 name|tm
@@ -2838,6 +2866,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 if|if
 condition|(
 operator|new
@@ -2858,6 +2887,7 @@ operator|=
 name|i
 expr_stmt|;
 break|break;
+block|}
 block|}
 if|if
 condition|(
@@ -3042,6 +3072,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 if|if
 condition|(
 operator|new
@@ -3062,6 +3093,7 @@ operator|=
 name|i
 expr_stmt|;
 break|break;
+block|}
 block|}
 if|if
 condition|(
@@ -3205,9 +3237,11 @@ name|JOptionPane
 operator|.
 name|NO_OPTION
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 try|try
 block|{

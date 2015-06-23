@@ -109,6 +109,8 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|applyRule (Map<String, String> searchString, BibtexEntry bibtexEntry)
 specifier|public
 name|int
@@ -171,6 +173,8 @@ return|return
 name|score
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|validateSearchStrings (Map<String, String> searchStrings)
 specifier|public
 name|boolean
@@ -217,9 +221,11 @@ argument_list|(
 name|searchStrings
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 return|return
 literal|true

@@ -654,6 +654,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -671,7 +673,9 @@ operator|.
 name|isEnabled
 argument_list|()
 condition|)
+block|{
 return|return;
+block|}
 comment|// If necessary, ask the external confirm object whether we are ready to close.
 if|if
 condition|(
@@ -709,7 +713,9 @@ argument_list|(
 name|testEntry
 argument_list|)
 condition|)
+block|{
 return|return;
+block|}
 block|}
 name|diag
 operator|.
@@ -746,6 +752,8 @@ operator|new
 name|ItemListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|itemStateChanged
@@ -759,6 +767,7 @@ condition|(
 operator|!
 name|okDisabledExternally
 condition|)
+block|{
 name|ok
 operator|.
 name|setEnabled
@@ -771,6 +780,7 @@ operator|!=
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -854,6 +864,7 @@ if|if
 condition|(
 name|showOpenButton
 condition|)
+block|{
 name|builder
 operator|.
 name|append
@@ -861,6 +872,7 @@ argument_list|(
 name|open
 argument_list|)
 expr_stmt|;
+block|}
 name|builder
 operator|.
 name|nextLine
@@ -1029,6 +1041,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1051,6 +1065,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1137,6 +1153,8 @@ operator|new
 name|DocumentListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|insertUpdate
@@ -1149,6 +1167,8 @@ name|checkExtension
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeUpdate
@@ -1157,6 +1177,8 @@ name|DocumentEvent
 name|documentEvent
 parameter_list|)
 block|{             }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|changedUpdate
@@ -1245,6 +1267,8 @@ operator|new
 name|WindowAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|windowActivated
@@ -1273,6 +1297,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1360,6 +1386,8 @@ block|{
 comment|// Check if this looks like a remote link:
 if|if
 condition|(
+name|FileListEntryEditor
+operator|.
 name|remoteLinkPattern
 operator|.
 name|matcher
@@ -1433,6 +1461,7 @@ name|type
 operator|!=
 literal|null
 condition|)
+block|{
 name|types
 operator|.
 name|setSelectedItem
@@ -1440,6 +1469,7 @@ argument_list|(
 name|type
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|openFile ()
@@ -1465,6 +1495,7 @@ name|type
 operator|!=
 literal|null
 condition|)
+block|{
 try|try
 block|{
 name|Util
@@ -1493,6 +1524,7 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|setExternalConfirm (ConfirmCloseFileListEntryEditor eC)
@@ -1603,10 +1635,12 @@ if|if
 condition|(
 name|visible
 condition|)
+block|{
 name|okPressed
 operator|=
 literal|false
 expr_stmt|;
+block|}
 name|diag
 operator|.
 name|setVisible
@@ -1622,9 +1656,11 @@ name|isVisible
 parameter_list|()
 block|{
 return|return
+operator|(
 name|diag
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|diag
 operator|.
@@ -1709,6 +1745,7 @@ operator|instanceof
 name|UnknownExternalFileType
 operator|)
 condition|)
+block|{
 name|types
 operator|.
 name|setSelectedItem
@@ -1719,7 +1756,7 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// If the entry has a link but not a file type, try to deduce the file type:
+block|}
 elseif|else
 if|if
 condition|(
@@ -1933,6 +1970,7 @@ condition|(
 operator|!
 name|found
 condition|)
+block|{
 name|entry
 operator|.
 name|setLink
@@ -1946,6 +1984,7 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 catch|catch
@@ -2044,6 +2083,8 @@ operator|=
 name|comp
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

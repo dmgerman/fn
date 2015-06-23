@@ -160,6 +160,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -176,6 +178,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -364,6 +368,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|System
 operator|.
 name|err
@@ -377,6 +382,7 @@ operator|+
 literal|"' unknown."
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|hide (String name)
 specifier|public
@@ -414,6 +420,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|System
 operator|.
 name|err
@@ -427,6 +434,7 @@ operator|+
 literal|"' unknown."
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|register (String name, SidePaneComponent comp)
 specifier|public
@@ -638,7 +646,9 @@ name|comp
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|visible
@@ -1318,6 +1328,7 @@ name|width
 operator|>
 literal|0
 condition|)
+block|{
 name|frame
 operator|.
 name|contentPane
@@ -1327,7 +1338,9 @@ argument_list|(
 name|width
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|frame
 operator|.
 name|contentPane
@@ -1345,6 +1358,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 else|else
 block|{
 if|if
@@ -1354,6 +1368,7 @@ operator|.
 name|isVisible
 argument_list|()
 condition|)
+block|{
 name|Globals
 operator|.
 name|prefs
@@ -1370,6 +1385,7 @@ name|getDividerLocation
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|sidep
 operator|.
 name|setVisible

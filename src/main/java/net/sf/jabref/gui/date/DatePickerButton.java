@@ -228,6 +228,8 @@ operator|=
 name|pEditor
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

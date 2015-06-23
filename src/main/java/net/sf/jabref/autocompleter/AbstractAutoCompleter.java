@@ -234,14 +234,18 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|AbstractAutoCompleter
+operator|.
 name|stringMinLength
 argument_list|(
 name|str
 argument_list|)
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|String
 name|lstr
 init|=
@@ -264,6 +268,8 @@ comment|// user typed in lower case word -> we do an case-insenstive search
 name|String
 name|ender
 init|=
+name|AbstractAutoCompleter
+operator|.
 name|incrementLastCharacter
 argument_list|(
 name|lstr
@@ -343,6 +349,8 @@ comment|// we assume user wants to have exact search
 name|String
 name|ender
 init|=
+name|AbstractAutoCompleter
+operator|.
 name|incrementLastCharacter
 argument_list|(
 name|str
@@ -473,6 +481,8 @@ operator|.
 name|length
 argument_list|()
 operator|>=
+name|AbstractAutoCompleter
+operator|.
 name|SHORTEST_WORD
 condition|)
 block|{

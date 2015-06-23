@@ -65,6 +65,8 @@ operator|=
 name|next
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|compare (BibtexEntry e1, BibtexEntry e2)
 specifier|public
 name|int
@@ -83,9 +85,11 @@ name|e1
 operator|==
 name|e2
 condition|)
+block|{
 return|return
 literal|0
 return|;
+block|}
 name|int
 name|mrk1
 init|=
@@ -111,6 +115,7 @@ name|mrk1
 operator|==
 name|mrk2
 condition|)
+block|{
 return|return
 operator|(
 name|next
@@ -134,12 +139,15 @@ name|e2
 argument_list|)
 operator|)
 return|;
+block|}
 else|else
+block|{
 return|return
 name|mrk2
 operator|-
 name|mrk1
 return|;
+block|}
 block|}
 DECL|method|idCompare (BibtexEntry b1, BibtexEntry b2)
 specifier|private

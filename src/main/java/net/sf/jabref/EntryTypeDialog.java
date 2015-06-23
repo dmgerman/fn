@@ -198,6 +198,8 @@ operator|=
 name|type_
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|compareTo (TypeButton o)
 specifier|public
 name|int
@@ -257,6 +259,8 @@ operator|new
 name|WindowAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|windowClosing
@@ -524,6 +528,8 @@ if|if
 condition|(
 name|col
 operator|==
+name|EntryTypeDialog
+operator|.
 name|COLNUM
 condition|)
 block|{
@@ -600,6 +606,8 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -669,6 +677,8 @@ comment|//  new ImageIcon(GUIGlobals.imagepath+GUIGlobals.closeIconFile));
 comment|//putValue(SHORT_DESCRIPTION, "Cancel");
 comment|//putValue(MNEMONIC_KEY, GUIGlobals.closeKeyCode);
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

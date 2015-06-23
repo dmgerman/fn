@@ -186,6 +186,8 @@ operator|new
 name|WindowAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|windowClosing
@@ -202,6 +204,8 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|windowOpened
@@ -225,6 +229,8 @@ operator|new
 name|LayoutFocusTraversalPolicy
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|protected
 name|boolean
 name|accept
@@ -642,6 +648,8 @@ extends|extends
 name|FocusAdapter
 block|{
 comment|/*         * Focus listener that fires the storeFieldAction when a FieldTextArea         * loses focus.         */
+annotation|@
+name|Override
 DECL|method|focusLost (FocusEvent e)
 specifier|public
 name|void
@@ -659,6 +667,7 @@ operator|.
 name|isTemporary
 argument_list|()
 condition|)
+block|{
 name|storeFieldAction
 operator|.
 name|actionPerformed
@@ -677,6 +686,7 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|field|storeFieldAction
@@ -706,12 +716,16 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 literal|"Store field value"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -741,6 +755,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|toSet
 operator|=
 name|ed
@@ -748,6 +763,7 @@ operator|.
 name|getText
 argument_list|()
 expr_stmt|;
+block|}
 comment|// We check if the field has changed, since we don't want to mark the
 comment|// base as changed unless we have a real change.
 if|if
@@ -888,11 +904,13 @@ operator|.
 name|hasFocus
 argument_list|()
 condition|)
+block|{
 name|ed
 operator|.
 name|setActiveBackgroundColor
 argument_list|()
 expr_stmt|;
+block|}
 name|panel
 operator|.
 name|markBaseChanged
@@ -935,12 +953,16 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 literal|"Undo"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1002,12 +1024,16 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 literal|"Redo"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1069,6 +1095,8 @@ expr_stmt|;
 comment|//, new ImageIcon(GUIGlobals.closeIconFile));
 comment|//putValue(SHORT_DESCRIPTION, "Close window (Ctrl-Q)");
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

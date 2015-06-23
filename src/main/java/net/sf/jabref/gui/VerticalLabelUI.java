@@ -252,12 +252,16 @@ literal|null
 condition|)
 block|{
 return|return
+name|VerticalLabelUI
+operator|.
 name|SAFE_VERTICAL_LABEL_UI
 return|;
 block|}
 else|else
 block|{
 return|return
+name|VerticalLabelUI
+operator|.
 name|verticalLabelUI
 return|;
 block|}

@@ -706,6 +706,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -1553,6 +1555,8 @@ name|nextLine
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -1860,6 +1864,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -2232,11 +2238,13 @@ if|if
 condition|(
 name|updateSpecialFields
 condition|)
+block|{
 name|_prefs
 operator|.
 name|updateSpecialFieldHandling
 argument_list|()
 expr_stmt|;
+block|}
 comment|// See if we should start or stop the auto save manager:
 if|if
 condition|(
@@ -2276,6 +2284,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|readyToClose ()
 specifier|public
 name|boolean
@@ -2286,6 +2296,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTabName ()
 specifier|public
 name|String

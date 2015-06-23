@@ -286,6 +286,8 @@ name|custom
 expr_stmt|;
 block|}
 comment|/**      * @see IExportFormat#getConsoleName()      */
+annotation|@
+name|Override
 DECL|method|getConsoleName ()
 specifier|public
 name|String
@@ -297,6 +299,8 @@ name|consoleName
 return|;
 block|}
 comment|/**      * @see IExportFormat#getDisplayName()      */
+annotation|@
+name|Override
 DECL|method|getDisplayName ()
 specifier|public
 name|String
@@ -383,6 +387,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Perform the export of {@code database}.      *       * @param database      *            The database to export from.      * @param metaData      *            The database's meta data.      * @param file      *            the file to write the resulting export to      * @param encoding      *            The encoding of the database      * @param entryIds      *            Contains the IDs of all entries that should be exported. If      *<code>null</code>, all entries will be exported.      *       * @throws IOException      *             if a problem occurred while trying to write to {@code writer}      *             or read from required resources.      * @throws Exception      *             if any other error occurred during export.      *       * @see net.sf.jabref.export.IExportFormat#performExport(net.sf.jabref.BibtexDatabase,      *      net.sf.jabref.MetaData, java.lang.String, java.lang.String, java.util.Set)      */
+annotation|@
+name|Override
 DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, final String file, final String encoding, Set<String> entryIds)
 specifier|public
 name|void
@@ -471,6 +477,7 @@ name|ss
 operator|==
 literal|null
 condition|)
+block|{
 name|ss
 operator|=
 name|getSaveSession
@@ -480,6 +487,7 @@ argument_list|,
 name|outFile
 argument_list|)
 expr_stmt|;
+block|}
 name|VerifyingWriter
 name|ps
 init|=
@@ -754,6 +762,7 @@ argument_list|(
 name|type
 argument_list|)
 condition|)
+block|{
 name|layout
 operator|=
 name|layouts
@@ -763,6 +772,7 @@ argument_list|(
 name|type
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 try|try
@@ -820,6 +830,7 @@ name|layout
 operator|!=
 literal|null
 condition|)
+block|{
 name|missingFormatters
 operator|.
 name|addAll
@@ -830,6 +841,7 @@ name|getMissingFormatters
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1017,6 +1029,7 @@ operator|.
 name|hasNext
 argument_list|()
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1024,6 +1037,7 @@ argument_list|(
 literal|", "
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|System
 operator|.
@@ -1188,7 +1202,9 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 continue|continue;
+block|}
 name|int
 name|index
 init|=
@@ -1209,9 +1225,11 @@ literal|0
 operator|)
 operator|&&
 operator|(
+operator|(
 name|index
 operator|+
 literal|1
+operator|)
 operator|<
 name|line
 operator|.
@@ -1279,6 +1297,7 @@ name|in
 operator|!=
 literal|null
 condition|)
+block|{
 try|try
 block|{
 name|in
@@ -1298,6 +1317,7 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -1334,6 +1354,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * @see net.sf.jabref.export.IExportFormat#getFileFilter()      */
+annotation|@
+name|Override
 DECL|method|getFileFilter ()
 specifier|public
 name|FileFilter
@@ -1346,6 +1368,7 @@ name|fileFilter
 operator|==
 literal|null
 condition|)
+block|{
 name|fileFilter
 operator|=
 operator|new
@@ -1356,6 +1379,7 @@ argument_list|,
 name|extension
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|fileFilter
 return|;

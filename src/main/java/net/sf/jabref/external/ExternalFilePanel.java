@@ -517,6 +517,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -562,6 +564,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -591,6 +595,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -625,6 +631,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -671,6 +679,7 @@ name|editor
 operator|!=
 literal|null
 condition|)
+block|{
 operator|(
 operator|(
 name|JComponent
@@ -704,6 +713,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Change which entry this panel is operating on. This is used only when      * this panel is not attached to an entry editor.      */
 DECL|method|setEntry (BibtexEntry entry, BibtexDatabase database)
@@ -806,6 +816,7 @@ name|frame
 operator|!=
 literal|null
 condition|)
+block|{
 name|frame
 operator|.
 name|output
@@ -813,6 +824,7 @@ argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|pushXMP (final String fieldName, final FieldEditor editor)
 specifier|public
@@ -838,6 +850,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -900,10 +914,12 @@ name|tmp
 operator|!=
 literal|null
 condition|)
+block|{
 name|file
 operator|=
 name|tmp
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -1163,6 +1179,7 @@ name|length
 operator|>
 literal|0
 condition|)
+block|{
 name|directory
 operator|=
 name|dirs
@@ -1171,6 +1188,7 @@ literal|0
 index|]
 expr_stmt|;
 comment|// Default to the first directory in the list
+block|}
 name|String
 name|dir
 init|=
@@ -1208,11 +1226,14 @@ name|directory
 operator|!=
 literal|null
 condition|)
+block|{
 name|dir
 operator|=
 name|directory
 expr_stmt|;
+block|}
 else|else
+block|{
 name|dir
 operator|=
 name|Globals
@@ -1230,6 +1251,7 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|String
 name|chosenFile
@@ -1365,6 +1387,7 @@ name|relPath
 expr_stmt|;
 block|}
 else|else
+block|{
 name|retVal
 operator|=
 name|newFile
@@ -1372,6 +1395,7 @@ operator|.
 name|getPath
 argument_list|()
 expr_stmt|;
+block|}
 name|editor
 operator|.
 name|setText
@@ -1437,10 +1461,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|res
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|res
 operator|.
 name|trim
@@ -1450,8 +1477,11 @@ name|length
 argument_list|()
 operator|==
 literal|0
+operator|)
 condition|)
+block|{
 return|return;
+block|}
 comment|/*          * If this panel belongs in an entry editor, note which entry is          * currently shown:          */
 specifier|final
 name|BibtexEntry
@@ -1463,6 +1493,7 @@ name|entryEditor
 operator|!=
 literal|null
 condition|)
+block|{
 name|targetEntry
 operator|=
 name|entryEditor
@@ -1470,11 +1501,14 @@ operator|.
 name|getEntry
 argument_list|()
 expr_stmt|;
+block|}
 else|else
+block|{
 name|targetEntry
 operator|=
 name|entry
 expr_stmt|;
+block|}
 name|JabRefExecutorService
 operator|.
 name|INSTANCE
@@ -1509,6 +1543,7 @@ name|suffix
 operator|==
 literal|null
 condition|)
+block|{
 name|suffix
 operator|=
 literal|"."
@@ -1518,6 +1553,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 expr_stmt|;
+block|}
 name|String
 name|plannedName
 decl_stmt|;
@@ -1528,6 +1564,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|plannedName
 operator|=
 name|getKey
@@ -1535,6 +1572,7 @@ argument_list|()
 operator|+
 name|suffix
 expr_stmt|;
+block|}
 else|else
 block|{
 name|plannedName
@@ -1555,9 +1593,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|plannedName
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|off
@@ -1567,10 +1607,12 @@ argument_list|(
 name|plannedName
 argument_list|)
 condition|)
+block|{
 name|plannedName
 operator|+=
 name|suffix
 expr_stmt|;
+block|}
 block|}
 comment|/*                  * [ 1548875 ] download pdf produces unsupported filename                  *                   * http://sourceforge.net/tracker/index.php?func=detail&aid=1548875&group_id=92314&atid=600306                  *                   */
 if|if
@@ -1616,6 +1658,8 @@ return|return
 name|plannedName
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1733,6 +1777,7 @@ name|length
 operator|>
 literal|0
 condition|)
+block|{
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -1765,7 +1810,9 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -1793,6 +1840,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+block|}
 return|return;
 block|}
 name|File
@@ -1966,16 +2014,20 @@ block|}
 comment|/*                      * Check if we should update the editor text field, or                      * update the target entry directly:                      */
 if|if
 condition|(
+operator|(
 name|entryEditor
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|entryEditor
 operator|.
 name|getEntry
 argument_list|()
 operator|!=
 name|targetEntry
+operator|)
 condition|)
 block|{
 comment|/*                          * Editor has probably changed to show a different                          * entry. So we must update the target entry directly                          * and not set the text of the editor.                          */
@@ -2036,6 +2088,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -2212,6 +2266,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -2302,6 +2358,7 @@ name|entryEditor
 operator|!=
 literal|null
 condition|)
+block|{
 name|entryEditor
 operator|.
 name|updateField
@@ -2309,6 +2366,7 @@ argument_list|(
 name|editor
 argument_list|)
 expr_stmt|;
+block|}
 name|output
 argument_list|(
 name|Globals

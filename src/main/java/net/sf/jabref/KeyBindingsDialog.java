@@ -668,6 +668,8 @@ operator|new
 name|WindowAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|windowClosing
@@ -800,6 +802,8 @@ name|JBM_CustomKeyBindingsListener
 extends|extends
 name|KeyAdapter
 block|{
+annotation|@
+name|Override
 DECL|method|keyPressed (KeyEvent evt)
 specifier|public
 name|void
@@ -824,7 +828,9 @@ name|selRow
 operator|<
 literal|0
 condition|)
+block|{
 return|return;
+block|}
 name|String
 name|code
 init|=
@@ -1078,6 +1084,8 @@ implements|implements
 name|ListSelectionListener
 block|{
 comment|// This method is called each time the user changes the set of selected items
+annotation|@
+name|Override
 DECL|method|valueChanged (ListSelectionEvent evt)
 specifier|public
 name|void
@@ -1282,6 +1290,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|sorted
 operator|.
 name|put
@@ -1300,6 +1309,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 name|KeystrokeTableModel
 name|tableModel
 init|=
@@ -1376,6 +1386,8 @@ name|super
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|isCellEditable (int row, int col)
 specifier|public
 name|boolean
@@ -1515,6 +1527,8 @@ block|}
 comment|//for (int i=0; i<trData.length; i++)
 comment|//  trData[i] = Globals.lang(data[i][0]);
 block|}
+annotation|@
+name|Override
 DECL|method|isCellEditable (int row, int col)
 specifier|public
 name|boolean
@@ -1531,6 +1545,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnName (int col)
 specifier|public
 name|String
@@ -1562,6 +1578,8 @@ argument_list|)
 operator|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnCount ()
 specifier|public
 name|int
@@ -1572,6 +1590,8 @@ return|return
 literal|2
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRowCount ()
 specifier|public
 name|int
@@ -1584,6 +1604,8 @@ operator|.
 name|length
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getValueAt (int rowIndex, int columnIndex)
 specifier|public
 name|Object
@@ -1609,6 +1631,8 @@ return|;
 comment|//else
 comment|//return data[rowIndex][0];
 block|}
+annotation|@
+name|Override
 DECL|method|setValueAt (Object o, int row, int col)
 specifier|public
 name|void
@@ -1654,6 +1678,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1683,6 +1709,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1710,6 +1738,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed

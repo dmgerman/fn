@@ -100,6 +100,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|ImageIcon
 import|;
 end_import
@@ -278,6 +288,7 @@ argument_list|()
 operator|instanceof
 name|JTextComponent
 condition|)
+block|{
 name|inputMenu
 operator|.
 name|add
@@ -296,6 +307,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|mouseClicked (MouseEvent e)
 specifier|public
 name|void
@@ -305,6 +319,8 @@ name|MouseEvent
 name|e
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 DECL|method|mouseEntered (MouseEvent e)
 specifier|public
 name|void
@@ -314,6 +330,8 @@ name|MouseEvent
 name|e
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 DECL|method|mouseExited (MouseEvent e)
 specifier|public
 name|void
@@ -323,6 +341,8 @@ name|MouseEvent
 name|e
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 DECL|method|mousePressed (MouseEvent e)
 specifier|public
 name|void
@@ -338,6 +358,8 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|mouseReleased (MouseEvent e)
 specifier|public
 name|void
@@ -402,6 +424,7 @@ name|txt
 operator|!=
 literal|null
 condition|)
+block|{
 if|if
 condition|(
 name|txt
@@ -411,10 +434,13 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|cStat
 operator|=
 literal|true
 expr_stmt|;
+block|}
+block|}
 name|copyAct
 operator|.
 name|setEnabled
@@ -485,6 +511,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -531,6 +559,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|key
@@ -538,6 +568,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -591,12 +623,16 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 specifier|abstract
@@ -637,6 +673,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -664,6 +702,7 @@ name|data
 operator|!=
 literal|null
 condition|)
+block|{
 if|if
 condition|(
 name|data
@@ -673,12 +712,14 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 if|if
 condition|(
 name|myFieldName
 operator|!=
 literal|null
 condition|)
+block|{
 name|myFieldName
 operator|.
 name|paste
@@ -686,6 +727,9 @@ argument_list|(
 name|data
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -722,6 +766,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -756,6 +802,7 @@ name|data
 operator|!=
 literal|null
 condition|)
+block|{
 if|if
 condition|(
 name|data
@@ -765,6 +812,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|ClipBoardManager
 operator|.
 name|clipBoard
@@ -774,6 +822,8 @@ argument_list|(
 name|data
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 catch|catch
@@ -802,6 +852,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -813,6 +865,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent evt)
 specifier|public
 name|void
@@ -879,6 +933,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -890,6 +946,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent evt)
 specifier|public
 name|void

@@ -1255,6 +1255,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1327,6 +1329,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1353,6 +1357,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|old
 operator|=
 operator|new
@@ -1364,6 +1369,7 @@ name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|name
 init|=
@@ -1418,6 +1424,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1444,6 +1452,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|old
 operator|=
 operator|new
@@ -1455,6 +1464,7 @@ name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|name
 init|=
@@ -1519,6 +1529,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1612,6 +1624,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1657,6 +1671,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2325,9 +2341,11 @@ literal|false
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 block|}
 return|return
@@ -2385,6 +2403,7 @@ comment|//    return; // Nothing to do.
 comment|//}
 block|}
 else|else
+block|{
 name|f
 operator|=
 operator|new
@@ -2396,6 +2415,7 @@ name|getText
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|f
@@ -2507,6 +2527,7 @@ name|fw
 operator|!=
 literal|null
 condition|)
+block|{
 try|try
 block|{
 name|fw
@@ -2528,6 +2549,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+block|}
 name|String
 name|filename
 init|=
@@ -2545,10 +2567,12 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|filename
 operator|=
 literal|null
 expr_stmt|;
+block|}
 name|Globals
 operator|.
 name|prefs
@@ -2618,6 +2642,7 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 name|Globals
 operator|.
 name|prefs
@@ -2629,6 +2654,7 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 name|String
@@ -2732,6 +2758,8 @@ operator|=
 name|tc
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2766,7 +2794,9 @@ name|chosen
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|File
 name|toFile
 decl_stmt|;
@@ -2816,8 +2846,11 @@ name|toName
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 else|else
+block|{
 name|toFile
 operator|=
 operator|new
@@ -2826,6 +2859,7 @@ argument_list|(
 name|toName
 argument_list|)
 expr_stmt|;
+block|}
 name|URLDownload
 operator|.
 name|buildMonitoredDownload
@@ -2935,6 +2969,8 @@ operator|=
 name|tc
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2951,6 +2987,7 @@ if|if
 condition|(
 name|dir
 condition|)
+block|{
 name|chosen
 operator|=
 name|FileDialogs
@@ -2979,7 +3016,9 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|chosen
 operator|=
 name|FileDialogs
@@ -3008,6 +3047,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|chosen
@@ -3166,6 +3206,8 @@ return|return
 name|journals
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnCount ()
 specifier|public
 name|int
@@ -3176,6 +3218,8 @@ return|return
 literal|2
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRowCount ()
 specifier|public
 name|int
@@ -3189,6 +3233,8 @@ name|size
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getValueAt (int row, int col)
 specifier|public
 name|Object
@@ -3207,6 +3253,7 @@ name|col
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|journals
 operator|.
@@ -3217,7 +3264,9 @@ argument_list|)
 operator|.
 name|name
 return|;
+block|}
 else|else
+block|{
 return|return
 name|journals
 operator|.
@@ -3229,6 +3278,9 @@ operator|.
 name|abbreviation
 return|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|setValueAt (Object object, int row, int col)
 specifier|public
 name|void
@@ -3260,6 +3312,7 @@ name|col
 operator|==
 literal|0
 condition|)
+block|{
 name|entry
 operator|.
 name|name
@@ -3269,7 +3322,9 @@ name|String
 operator|)
 name|object
 expr_stmt|;
+block|}
 else|else
+block|{
 name|entry
 operator|.
 name|abbreviation
@@ -3280,6 +3335,9 @@ operator|)
 name|object
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|getColumnName (int i)
 specifier|public
 name|String
@@ -3296,6 +3354,8 @@ name|i
 index|]
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isCellEditable (int i, int i1)
 specifier|public
 name|boolean
@@ -3323,6 +3383,8 @@ operator|new
 name|MouseAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|mouseClicked
@@ -3462,6 +3524,8 @@ block|}
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -3854,6 +3918,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -3971,6 +4037,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -4073,6 +4141,8 @@ operator|=
 name|abbreviation
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|compareTo (JournalEntry other)
 specifier|public
 name|int

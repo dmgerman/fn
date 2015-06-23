@@ -172,10 +172,12 @@ argument_list|(
 name|searchString
 argument_list|)
 condition|)
+block|{
 name|found
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -199,10 +201,12 @@ name|toLowerCase
 argument_list|()
 argument_list|)
 condition|)
+block|{
 name|found
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(

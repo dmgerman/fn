@@ -108,6 +108,8 @@ name|PdfXmpImporter
 extends|extends
 name|ImportFormat
 block|{
+annotation|@
+name|Override
 DECL|method|getFormatName ()
 specifier|public
 name|String
@@ -124,6 +126,8 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Returns a list of all BibtexEntries found in the inputstream.      */
+annotation|@
+name|Override
 DECL|method|importEntries (InputStream in, OutputPrinter status)
 specifier|public
 name|List

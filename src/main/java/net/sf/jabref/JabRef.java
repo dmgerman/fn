@@ -559,6 +559,8 @@ index|[]
 name|args
 parameter_list|)
 block|{
+name|JabRef
+operator|.
 name|singleton
 operator|=
 name|this
@@ -883,6 +885,8 @@ literal|"useRemoteServer"
 argument_list|)
 condition|)
 block|{
+name|JabRef
+operator|.
 name|remoteListener
 operator|=
 name|RemoteListener
@@ -894,6 +898,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|JabRef
+operator|.
 name|remoteListener
 operator|==
 literal|null
@@ -964,9 +970,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|personalJournalList
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|personalJournalList
@@ -1079,6 +1087,8 @@ condition|)
 block|{
 comment|// Set application user model id so that pinning JabRef to the Win7/8 taskbar works
 comment|// Based on http://stackoverflow.com/a/1928830
+name|JabRef
+operator|.
 name|setCurrentProcessExplicitAppUserModelID
 argument_list|(
 literal|"JabRef."
@@ -1150,6 +1160,8 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|JabRef
+operator|.
 name|GetCurrentProcessExplicitAppUserModelID
 argument_list|(
 name|r
@@ -1199,6 +1211,8 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|JabRef
+operator|.
 name|SetCurrentProcessExplicitAppUserModelID
 argument_list|(
 operator|new
@@ -1213,6 +1227,7 @@ argument_list|()
 operator|!=
 literal|0
 condition|)
+block|{
 throw|throw
 operator|new
 name|RuntimeException
@@ -1222,6 +1237,7 @@ operator|+
 name|appID
 argument_list|)
 throw|;
+block|}
 block|}
 DECL|method|GetCurrentProcessExplicitAppUserModelID (PointerByReference appID)
 specifier|private
@@ -1359,6 +1375,8 @@ condition|)
 block|{
 try|try
 block|{
+name|JabRef
+operator|.
 name|splashScreen
 operator|=
 name|SplashScreen
@@ -1715,8 +1733,11 @@ if|if
 condition|(
 name|bibExtension
 condition|)
+block|{
 name|pr
 operator|=
+name|JabRef
+operator|.
 name|openBibFile
 argument_list|(
 name|aLeftOver
@@ -1724,6 +1745,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -1765,6 +1787,8 @@ block|{
 name|ParserResult
 name|res
 init|=
+name|JabRef
+operator|.
 name|importToOpenBase
 argument_list|(
 name|aLeftOver
@@ -1776,6 +1800,7 @@ name|res
 operator|!=
 literal|null
 condition|)
+block|{
 name|loaded
 operator|.
 name|add
@@ -1783,7 +1808,9 @@ argument_list|(
 name|res
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|loaded
 operator|.
 name|add
@@ -1795,6 +1822,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 elseif|else
 if|if
 condition|(
@@ -1804,6 +1832,7 @@ name|ParserResult
 operator|.
 name|FILE_LOCKED
 condition|)
+block|{
 name|loaded
 operator|.
 name|add
@@ -1811,6 +1840,7 @@ argument_list|(
 name|pr
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 if|if
@@ -1849,6 +1879,8 @@ block|{
 name|ParserResult
 name|pr
 init|=
+name|JabRef
+operator|.
 name|importFile
 argument_list|(
 name|filenameString
@@ -1860,6 +1892,7 @@ name|pr
 operator|!=
 literal|null
 condition|)
+block|{
 name|loaded
 operator|.
 name|add
@@ -1867,6 +1900,7 @@ argument_list|(
 name|pr
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -1885,6 +1919,8 @@ block|{
 name|ParserResult
 name|res
 init|=
+name|JabRef
+operator|.
 name|importToOpenBase
 argument_list|(
 name|cli
@@ -1899,6 +1935,7 @@ name|res
 operator|!=
 literal|null
 condition|)
+block|{
 name|loaded
 operator|.
 name|add
@@ -1906,6 +1943,7 @@ argument_list|(
 name|res
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -1938,6 +1976,7 @@ name|res
 operator|!=
 literal|null
 condition|)
+block|{
 name|loaded
 operator|.
 name|add
@@ -1945,6 +1984,7 @@ argument_list|(
 name|res
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -2041,16 +2081,20 @@ comment|//newBase contains only match entries
 comment|//export database
 if|if
 condition|(
+operator|(
 name|newBase
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|newBase
 operator|.
 name|getEntryCount
 argument_list|()
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|String
@@ -2246,6 +2290,7 @@ expr_stmt|;
 block|}
 block|}
 else|else
+block|{
 name|System
 operator|.
 name|err
@@ -2264,6 +2309,7 @@ operator|+
 name|formatName
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/*end if newBase != null*/
 else|else
@@ -2462,6 +2508,7 @@ operator|.
 name|couldEncodeAll
 argument_list|()
 condition|)
+block|{
 name|System
 operator|.
 name|err
@@ -2498,6 +2545,7 @@ name|getProblemCharacters
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|session
 operator|.
 name|commit
@@ -2542,6 +2590,7 @@ block|}
 block|}
 block|}
 else|else
+block|{
 name|System
 operator|.
 name|err
@@ -2556,6 +2605,7 @@ literal|"The output option depends on a valid import option."
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -2603,6 +2653,7 @@ operator|.
 name|isAbsolute
 argument_list|()
 condition|)
+block|{
 name|theFile
 operator|=
 name|theFile
@@ -2610,6 +2661,7 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 expr_stmt|;
+block|}
 name|MetaData
 name|metaData
 init|=
@@ -2760,6 +2812,7 @@ expr_stmt|;
 block|}
 block|}
 else|else
+block|{
 name|System
 operator|.
 name|err
@@ -2783,7 +2836,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 else|else
+block|{
 name|System
 operator|.
 name|err
@@ -2798,6 +2853,7 @@ literal|"The output option depends on a valid import option."
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|//Util.pr(": Finished export");
 if|if
@@ -3037,6 +3093,7 @@ operator|.
 name|couldEncodeAll
 argument_list|()
 condition|)
+block|{
 name|System
 operator|.
 name|err
@@ -3073,6 +3130,7 @@ name|getProblemCharacters
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|session
 operator|.
 name|commit
@@ -3122,6 +3180,7 @@ condition|(
 operator|!
 name|notSavedMsg
 condition|)
+block|{
 name|System
 operator|.
 name|out
@@ -3137,17 +3196,22 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 else|else
+block|{
 name|usageMsg
 operator|=
 literal|true
 expr_stmt|;
 block|}
+block|}
 else|else
+block|{
 name|usageMsg
 operator|=
 literal|true
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|usageMsg
@@ -3210,9 +3274,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|fetchCommand
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|fetchCommand
@@ -3222,6 +3288,7 @@ argument_list|(
 literal|":"
 argument_list|)
 operator|||
+operator|(
 name|fetchCommand
 operator|.
 name|split
@@ -3232,6 +3299,7 @@ operator|.
 name|length
 operator|!=
 literal|2
+operator|)
 condition|)
 block|{
 name|System
@@ -3341,6 +3409,7 @@ name|toLowerCase
 argument_list|()
 argument_list|)
 condition|)
+block|{
 name|fetcher
 operator|=
 name|e
@@ -3348,6 +3417,7 @@ operator|.
 name|getEntryFetcher
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -3480,16 +3550,20 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|result
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|result
 operator|.
 name|size
 argument_list|()
 operator|==
 literal|0
+operator|)
 condition|)
 block|{
 name|System
@@ -3665,6 +3739,8 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
+name|JabRef
+operator|.
 name|jrf
 argument_list|,
 name|Globals
@@ -4055,9 +4131,11 @@ argument_list|(
 name|fileToOpen
 argument_list|)
 condition|)
+block|{
 continue|continue
 name|lastEdLoop
 continue|;
+block|}
 block|}
 if|if
 condition|(
@@ -4070,6 +4148,8 @@ block|{
 name|ParserResult
 name|pr
 init|=
+name|JabRef
+operator|.
 name|openBibFile
 argument_list|(
 name|name
@@ -4126,6 +4206,7 @@ name|ParserResult
 operator|.
 name|FILE_LOCKED
 condition|)
+block|{
 name|loaded
 operator|.
 name|add
@@ -4133,6 +4214,7 @@ argument_list|(
 name|pr
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -4178,6 +4260,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//Util.pr(": Initializing frame");
+name|JabRef
+operator|.
 name|jrf
 operator|=
 operator|new
@@ -4318,6 +4402,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|JabRef
+operator|.
 name|jrf
 operator|.
 name|addParserResult
@@ -4362,6 +4448,8 @@ range|:
 name|toOpenTab
 control|)
 block|{
+name|JabRef
+operator|.
 name|jrf
 operator|.
 name|addParserResult
@@ -4383,6 +4471,9 @@ operator|.
 name|isLoadSession
 argument_list|()
 condition|)
+block|{
+name|JabRef
+operator|.
 name|jrf
 operator|.
 name|loadSessionAction
@@ -4398,6 +4489,8 @@ name|event
 operator|.
 name|ActionEvent
 argument_list|(
+name|JabRef
+operator|.
 name|jrf
 argument_list|,
 literal|0
@@ -4406,19 +4499,26 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
+name|JabRef
+operator|.
 name|splashScreen
 operator|!=
 literal|null
 condition|)
 block|{
 comment|// do this only if splashscreen was actually created
+name|JabRef
+operator|.
 name|splashScreen
 operator|.
 name|dispose
 argument_list|()
 expr_stmt|;
+name|JabRef
+operator|.
 name|splashScreen
 operator|=
 literal|null
@@ -4437,13 +4537,17 @@ argument_list|(
 literal|"autoSave"
 argument_list|)
 condition|)
+block|{
 name|Globals
 operator|.
 name|startAutoSaveManager
 argument_list|(
+name|JabRef
+operator|.
 name|jrf
 argument_list|)
 expr_stmt|;
+block|}
 comment|// If we are set to remember the window location, we also remember the maximised
 comment|// state. This needs to be set after the window has been made visible, so we
 comment|// do it here:
@@ -4459,6 +4563,8 @@ literal|"windowMaximised"
 argument_list|)
 condition|)
 block|{
+name|JabRef
+operator|.
 name|jrf
 operator|.
 name|setExtendedState
@@ -4469,6 +4575,8 @@ name|MAXIMIZED_BOTH
 argument_list|)
 expr_stmt|;
 block|}
+name|JabRef
+operator|.
 name|jrf
 operator|.
 name|setVisible
@@ -4488,6 +4596,8 @@ literal|"windowMaximised"
 argument_list|)
 condition|)
 block|{
+name|JabRef
+operator|.
 name|jrf
 operator|.
 name|setExtendedState
@@ -4501,6 +4611,8 @@ block|}
 comment|// TEST TEST TEST TEST TEST TEST
 name|startSidePanePlugins
 argument_list|(
+name|JabRef
+operator|.
 name|jrf
 argument_list|)
 expr_stmt|;
@@ -4545,6 +4657,8 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
+name|JabRef
+operator|.
 name|jrf
 argument_list|,
 name|message
@@ -4636,6 +4750,8 @@ name|Math
 operator|.
 name|min
 argument_list|(
+name|JabRef
+operator|.
 name|MAX_DIALOG_WARNINGS
 argument_list|,
 name|wrns
@@ -4646,6 +4762,7 @@ condition|;
 name|j
 operator|++
 control|)
+block|{
 name|wrn
 operator|.
 name|append
@@ -4673,12 +4790,15 @@ argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|wrns
 operator|.
 name|length
 operator|>
+name|JabRef
+operator|.
 name|MAX_DIALOG_WARNINGS
 condition|)
 block|{
@@ -4721,6 +4841,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|wrn
 operator|.
 name|deleteCharAt
@@ -4733,6 +4854,9 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
+name|JabRef
+operator|.
 name|jrf
 operator|.
 name|showBaseAt
@@ -4744,6 +4868,8 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
+name|JabRef
+operator|.
 name|jrf
 argument_list|,
 name|wrn
@@ -4804,6 +4930,8 @@ operator|&&
 operator|(
 name|i
 operator|<
+name|JabRef
+operator|.
 name|jrf
 operator|.
 name|baseCount
@@ -4827,6 +4955,8 @@ decl_stmt|;
 name|BasePanel
 name|panel
 init|=
+name|JabRef
+operator|.
 name|jrf
 operator|.
 name|baseAt
@@ -4865,6 +4995,8 @@ init|=
 operator|new
 name|AutosaveStartupPrompter
 argument_list|(
+name|JabRef
+operator|.
 name|jrf
 argument_list|,
 name|postponed
@@ -4888,6 +5020,8 @@ operator|>
 literal|0
 condition|)
 block|{
+name|JabRef
+operator|.
 name|jrf
 operator|.
 name|tabbedPane
@@ -4904,6 +5038,8 @@ operator|(
 operator|(
 name|BasePanel
 operator|)
+name|JabRef
+operator|.
 name|jrf
 operator|.
 name|tabbedPane
@@ -5309,6 +5445,7 @@ name|aWarn
 range|:
 name|warn
 control|)
+block|{
 name|System
 operator|.
 name|out
@@ -5327,6 +5464,7 @@ operator|+
 name|aWarn
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|pr
@@ -5484,6 +5622,8 @@ index|[
 literal|0
 index|]
 argument_list|,
+name|JabRef
+operator|.
 name|jrf
 argument_list|)
 expr_stmt|;
@@ -5520,6 +5660,8 @@ literal|"user.home"
 argument_list|)
 argument_list|)
 argument_list|,
+name|JabRef
+operator|.
 name|jrf
 argument_list|)
 expr_stmt|;
@@ -5749,6 +5891,8 @@ block|{
 name|ParserResult
 name|result
 init|=
+name|JabRef
+operator|.
 name|importFile
 argument_list|(
 name|argument
@@ -5760,6 +5904,7 @@ name|result
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|.
 name|setToOpenTab
@@ -5767,6 +5912,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|result
 return|;

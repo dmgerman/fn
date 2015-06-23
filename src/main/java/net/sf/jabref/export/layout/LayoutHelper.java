@@ -180,6 +180,7 @@ literal|null
 decl_stmt|;
 DECL|field|_in
 specifier|private
+specifier|final
 name|PushbackReader
 name|_in
 decl_stmt|;
@@ -279,6 +280,8 @@ name|si
 operator|.
 name|i
 operator|==
+name|LayoutHelper
+operator|.
 name|IS_SIMPLE_FIELD
 operator|)
 operator|||
@@ -287,6 +290,8 @@ name|si
 operator|.
 name|i
 operator|==
+name|LayoutHelper
+operator|.
 name|IS_FIELD_START
 operator|)
 operator|||
@@ -295,6 +300,8 @@ name|si
 operator|.
 name|i
 operator|==
+name|LayoutHelper
+operator|.
 name|IS_FIELD_END
 operator|)
 operator|||
@@ -303,6 +310,8 @@ name|si
 operator|.
 name|i
 operator|==
+name|LayoutHelper
+operator|.
 name|IS_GROUP_START
 operator|)
 operator|||
@@ -311,6 +320,8 @@ name|si
 operator|.
 name|i
 operator|==
+name|LayoutHelper
+operator|.
 name|IS_GROUP_END
 operator|)
 condition|)
@@ -349,6 +360,8 @@ name|getCurrentGroup
 parameter_list|()
 block|{
 return|return
+name|LayoutHelper
+operator|.
 name|currentGroup
 return|;
 block|}
@@ -362,6 +375,8 @@ name|String
 name|newGroup
 parameter_list|)
 block|{
+name|LayoutHelper
+operator|.
 name|currentGroup
 operator|=
 name|newGroup
@@ -670,6 +685,8 @@ name|StringInt
 argument_list|(
 name|tmp
 argument_list|,
+name|LayoutHelper
+operator|.
 name|IS_OPTION_FIELD
 argument_list|)
 argument_list|)
@@ -744,13 +761,17 @@ comment|//if (buffer != null)
 comment|//{
 if|if
 condition|(
+operator|(
 name|c
 operator|==
 literal|']'
+operator|)
 operator|&&
+operator|(
 name|buffer
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 comment|// changed section end - arudert
@@ -836,6 +857,8 @@ name|StringInt
 argument_list|(
 name|tmp
 argument_list|,
+name|LayoutHelper
+operator|.
 name|IS_OPTION_FIELD
 argument_list|)
 argument_list|)
@@ -876,6 +899,7 @@ name|buffer
 operator|==
 literal|null
 condition|)
+block|{
 name|buffer
 operator|=
 operator|new
@@ -884,6 +908,7 @@ argument_list|(
 literal|100
 argument_list|)
 expr_stmt|;
+block|}
 name|buffer
 operator|.
 name|append
@@ -994,6 +1019,7 @@ name|buffer
 operator|!=
 literal|null
 condition|)
+block|{
 name|parsedEntries
 operator|.
 name|add
@@ -1006,10 +1032,13 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
+name|LayoutHelper
+operator|.
 name|IS_LAYOUT_TEXT
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 literal|null
 return|;
@@ -1052,6 +1081,8 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
+name|LayoutHelper
+operator|.
 name|IS_LAYOUT_TEXT
 argument_list|)
 argument_list|)
@@ -1343,6 +1374,8 @@ block|{
 comment|// get field name
 name|getBracketedField
 argument_list|(
+name|LayoutHelper
+operator|.
 name|IS_FIELD_START
 argument_list|)
 expr_stmt|;
@@ -1362,6 +1395,8 @@ block|{
 comment|// get field name
 name|getBracketedField
 argument_list|(
+name|LayoutHelper
+operator|.
 name|IS_GROUP_START
 argument_list|)
 expr_stmt|;
@@ -1397,6 +1432,8 @@ comment|// get format parameter
 comment|// get field name
 name|getBracketedOptionField
 argument_list|(
+name|LayoutHelper
+operator|.
 name|IS_OPTION_FIELD
 argument_list|)
 expr_stmt|;
@@ -1407,6 +1444,8 @@ block|{
 comment|// get field name
 name|getBracketedField
 argument_list|(
+name|LayoutHelper
+operator|.
 name|IS_OPTION_FIELD
 argument_list|)
 expr_stmt|;
@@ -1436,6 +1475,8 @@ name|StringInt
 argument_list|(
 name|name
 argument_list|,
+name|LayoutHelper
+operator|.
 name|IS_FILENAME
 argument_list|)
 argument_list|)
@@ -1465,6 +1506,8 @@ name|StringInt
 argument_list|(
 name|name
 argument_list|,
+name|LayoutHelper
+operator|.
 name|IS_FILEPATH
 argument_list|)
 argument_list|)
@@ -1493,6 +1536,8 @@ block|{
 comment|// get field name
 name|getBracketedField
 argument_list|(
+name|LayoutHelper
+operator|.
 name|IS_FIELD_END
 argument_list|)
 expr_stmt|;
@@ -1512,6 +1557,8 @@ block|{
 comment|// get field name
 name|getBracketedField
 argument_list|(
+name|LayoutHelper
+operator|.
 name|IS_GROUP_END
 argument_list|)
 expr_stmt|;
@@ -1540,6 +1587,8 @@ name|StringInt
 argument_list|(
 name|name
 argument_list|,
+name|LayoutHelper
+operator|.
 name|IS_ENCODING_NAME
 argument_list|)
 argument_list|)
@@ -1557,6 +1606,8 @@ name|StringInt
 argument_list|(
 name|name
 argument_list|,
+name|LayoutHelper
+operator|.
 name|IS_SIMPLE_FIELD
 argument_list|)
 argument_list|)

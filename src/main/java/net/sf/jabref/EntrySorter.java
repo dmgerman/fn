@@ -309,17 +309,23 @@ name|entryArray
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|entryArray
 operator|.
 name|length
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|0
 return|;
 block|}
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|databaseChanged (DatabaseChangeEvent e)
 specifier|public
 name|void

@@ -67,6 +67,8 @@ name|SimpleCsvImporter
 extends|extends
 name|ImportFormat
 block|{
+annotation|@
+name|Override
 DECL|method|getFormatName ()
 specifier|public
 name|String
@@ -77,6 +79,8 @@ return|return
 literal|"Simple CSV Importer"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isRecognizedFormat (InputStream stream)
 specifier|public
 name|boolean

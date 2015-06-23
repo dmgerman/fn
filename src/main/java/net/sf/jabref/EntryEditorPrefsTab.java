@@ -638,6 +638,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -676,6 +678,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -716,6 +720,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -1204,6 +1210,8 @@ name|CENTER
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -1333,6 +1341,7 @@ argument_list|(
 literal|"autoCompFF"
 argument_list|)
 condition|)
+block|{
 name|autoCompFF
 operator|.
 name|setSelected
@@ -1340,6 +1349,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1350,6 +1360,7 @@ argument_list|(
 literal|"autoCompLF"
 argument_list|)
 condition|)
+block|{
 name|autoCompLF
 operator|.
 name|setSelected
@@ -1357,7 +1368,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|autoCompBoth
 operator|.
 name|setSelected
@@ -1365,6 +1378,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 name|oldAutoCompFF
 operator|=
 name|autoCompFF
@@ -1397,6 +1411,7 @@ operator|.
 name|AUTOCOMPLETE_FIRSTNAME_MODE_ONLY_ABBR
 argument_list|)
 condition|)
+block|{
 name|autoCompFirstNameMode_Abbr
 operator|.
 name|setSelected
@@ -1404,6 +1419,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1423,6 +1439,7 @@ operator|.
 name|AUTOCOMPLETE_FIRSTNAME_MODE_ONLY_FULL
 argument_list|)
 condition|)
+block|{
 name|autoCompFirstNameMode_Full
 operator|.
 name|setSelected
@@ -1430,7 +1447,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|autoCompFirstNameMode_Both
 operator|.
 name|setSelected
@@ -1438,6 +1457,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 comment|// one field less than the option is enough. If one filed changes, another one also changes.
 name|oldAutoCompFModeAbbr
 operator|=
@@ -1485,6 +1505,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -1820,6 +1842,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|_prefs
 operator|.
 name|put
@@ -1833,6 +1856,7 @@ operator|.
 name|AUTOCOMPLETE_FIRSTNAME_MODE_ONLY_ABBR
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1841,6 +1865,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|_prefs
 operator|.
 name|put
@@ -1854,7 +1879,9 @@ operator|.
 name|AUTOCOMPLETE_FIRSTNAME_MODE_ONLY_FULL
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|_prefs
 operator|.
 name|put
@@ -1868,6 +1895,7 @@ operator|.
 name|AUTOCOMPLETE_FIRSTNAME_MODE_BOTH
 argument_list|)
 expr_stmt|;
+block|}
 comment|// We need to remove all entry editors from cache if the source panel setting
 comment|// or the autocompletion settings have been changed:
 if|if
@@ -2000,6 +2028,8 @@ name|getValue
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|readyToClose ()
 specifier|public
 name|boolean
@@ -2010,6 +2040,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTabName ()
 specifier|public
 name|String

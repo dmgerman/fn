@@ -138,6 +138,8 @@ return|return
 name|text
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|format (String text)
 specifier|public
 name|String

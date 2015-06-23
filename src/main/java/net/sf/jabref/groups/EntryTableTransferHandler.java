@@ -501,6 +501,8 @@ name|ACTION_LINK
 return|;
 block|}
 comment|/**      * This method is called when dragging stuff *from* the table.      */
+annotation|@
+name|Override
 DECL|method|createTransferable (JComponent c)
 specifier|public
 name|Transferable
@@ -552,6 +554,8 @@ comment|//.getTransferable();
 block|}
 block|}
 comment|/**      * This method is called when stuff is drag to the component.      *       * Imports the dropped URL or plain text as a new entry in the current      * database.      *       */
+annotation|@
+name|Override
 DECL|method|importData (JComponent comp, Transferable t)
 specifier|public
 name|boolean
@@ -821,11 +825,15 @@ block|{
 if|if
 condition|(
 operator|!
+name|EntryTableTransferHandler
+operator|.
 name|DROP_ALLOWED
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 comment|// accept this if any input flavor matches any of our supported flavors
 for|for
 control|(
@@ -860,9 +868,11 @@ operator|.
 name|javaFileListFlavor
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 comment|// System.out.println("drop type forbidden");
 comment|// nope, never heard of this type
@@ -876,6 +886,8 @@ name|draggingFile
 init|=
 literal|false
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|exportAsDrag (JComponent comp, InputEvent e, int action)
 specifier|public
 name|void
@@ -992,6 +1004,8 @@ name|ACTION_LINK
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|exportDone (JComponent source, Transferable data, int action)
 specifier|protected
 name|void
@@ -1020,6 +1034,8 @@ name|action
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|exportToClipboard (JComponent comp, Clipboard clip, int action)
 specifier|public
 name|void
@@ -1085,10 +1101,12 @@ argument_list|,
 name|dropRow
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
 comment|// If not, handle it in the normal way...
+block|}
 block|}
 elseif|else
 if|if
@@ -1315,6 +1333,7 @@ name|fl
 operator|!=
 literal|null
 condition|)
+block|{
 name|line
 operator|=
 name|fl
@@ -1322,6 +1341,7 @@ operator|.
 name|getPath
 argument_list|()
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1332,6 +1352,7 @@ argument_list|(
 literal|"file:"
 argument_list|)
 condition|)
+block|{
 name|line
 operator|=
 name|line
@@ -1341,8 +1362,11 @@ argument_list|(
 literal|5
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 continue|continue;
+block|}
 comment|// Under Gnome, the link is given as file:///...., so we
 comment|// need to strip the extra slashes:
 if|if
@@ -1354,6 +1378,7 @@ argument_list|(
 literal|"//"
 argument_list|)
 condition|)
+block|{
 name|line
 operator|=
 name|line
@@ -1363,6 +1388,7 @@ argument_list|(
 literal|2
 argument_list|)
 expr_stmt|;
+block|}
 name|File
 name|f
 init|=
@@ -1410,6 +1436,8 @@ block|{
 return|return
 name|handleDraggedFiles
 argument_list|(
+name|EntryTableTransferHandler
+operator|.
 name|getFilesFromDraggedFilesString
 argument_list|(
 name|s
@@ -1490,6 +1518,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1779,13 +1809,17 @@ block|}
 comment|/*              * This is a linkable file. If the user dropped it on an entry, we              * should offer options for autolinking to this files:              *              * TODO we should offer an option to highlight the row the user is on too.              */
 if|if
 condition|(
+operator|(
 name|fileType
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|dropRow
 operator|>=
 literal|0
+operator|)
 condition|)
 block|{
 comment|/*                  * TODO: need to signal if this is a local or autodownloaded                  * file                  */

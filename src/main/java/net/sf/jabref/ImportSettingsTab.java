@@ -426,6 +426,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -720,6 +722,8 @@ name|CENTER
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -736,6 +740,8 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
+name|ImportSettingsTab
+operator|.
 name|PREF_IMPORT_ALWAYSUSE
 argument_list|)
 argument_list|)
@@ -749,6 +755,8 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
+name|ImportSettingsTab
+operator|.
 name|PREF_IMPORT_DEFAULT_PDF_IMPORT_STYLE
 argument_list|)
 decl_stmt|;
@@ -856,11 +864,15 @@ name|prefs
 operator|.
 name|get
 argument_list|(
+name|ImportSettingsTab
+operator|.
 name|PREF_IMPORT_FILENAMEPATTERN
 argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -873,6 +885,8 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
+name|ImportSettingsTab
+operator|.
 name|PREF_IMPORT_ALWAYSUSE
 argument_list|,
 name|useDefaultPDFImportStyle
@@ -884,6 +898,8 @@ expr_stmt|;
 name|int
 name|style
 init|=
+name|ImportSettingsTab
+operator|.
 name|DEFAULT_STYLE
 decl_stmt|;
 if|if
@@ -893,12 +909,14 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|style
 operator|=
 name|ImportDialog
 operator|.
 name|NOMETA
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -907,12 +925,14 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|style
 operator|=
 name|ImportDialog
 operator|.
 name|XMP
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -921,12 +941,14 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|style
 operator|=
 name|ImportDialog
 operator|.
 name|CONTENT
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -935,12 +957,14 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|style
 operator|=
 name|ImportDialog
 operator|.
 name|MRDLIB
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -949,12 +973,14 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|style
 operator|=
 name|ImportDialog
 operator|.
 name|ONLYATTACH
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -963,18 +989,22 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|style
 operator|=
 name|ImportDialog
 operator|.
 name|UPDATEEMPTYFIELDS
 expr_stmt|;
+block|}
 name|Globals
 operator|.
 name|prefs
 operator|.
 name|putInt
 argument_list|(
+name|ImportSettingsTab
+operator|.
 name|PREF_IMPORT_DEFAULT_PDF_IMPORT_STYLE
 argument_list|,
 name|style
@@ -986,6 +1016,8 @@ name|prefs
 operator|.
 name|put
 argument_list|(
+name|ImportSettingsTab
+operator|.
 name|PREF_IMPORT_FILENAMEPATTERN
 argument_list|,
 name|fileNamePattern
@@ -995,6 +1027,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|readyToClose ()
 specifier|public
 name|boolean
@@ -1005,6 +1039,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTabName ()
 specifier|public
 name|String
@@ -1042,6 +1078,8 @@ literal|0
 init|;
 name|i
 operator|<
+name|ImportSettingsTab
+operator|.
 name|DEFAULT_FILENAMEPATTERNS
 operator|.
 name|length
@@ -1057,6 +1095,8 @@ init|=
 operator|new
 name|JMenuItem
 argument_list|(
+name|ImportSettingsTab
+operator|.
 name|DEFAULT_FILENAMEPATTERNS_DISPLAY
 index|[
 name|i
@@ -1067,6 +1107,8 @@ specifier|final
 name|String
 name|toSet
 init|=
+name|ImportSettingsTab
+operator|.
 name|DEFAULT_FILENAMEPATTERNS
 index|[
 name|i
@@ -1080,6 +1122,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed

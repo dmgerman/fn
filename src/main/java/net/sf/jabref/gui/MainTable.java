@@ -505,6 +505,8 @@ decl_stmt|;
 comment|// Constant to indicate that an icon cell renderer should be used.
 static|static
 block|{
+name|MainTable
+operator|.
 name|updateRenderers
 argument_list|()
 expr_stmt|;
@@ -745,11 +747,13 @@ argument_list|(
 literal|"tableShowGrid"
 argument_list|)
 condition|)
+block|{
 name|setShowGrid
 argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 name|setShowGrid
@@ -882,6 +886,7 @@ argument_list|(
 literal|"floatMarkedEntries"
 argument_list|)
 condition|)
+block|{
 name|sortedForMarking
 operator|.
 name|setComparator
@@ -889,7 +894,9 @@ argument_list|(
 name|markingComparator
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|sortedForMarking
 operator|.
 name|setComparator
@@ -897,6 +904,7 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 name|sortedForMarking
 operator|.
 name|getReadWriteLock
@@ -1138,6 +1146,8 @@ return|return
 name|pane
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getCellRenderer (int row, int column)
 specifier|public
 name|TableCellRenderer
@@ -1159,6 +1169,8 @@ decl_stmt|;
 name|DefaultTableCellRenderer
 name|renderer
 init|=
+name|MainTable
+operator|.
 name|defRenderer
 decl_stmt|;
 name|int
@@ -1183,9 +1195,11 @@ argument_list|,
 name|searchMatcher
 argument_list|)
 condition|)
+block|{
 name|score
 operator|++
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -1198,10 +1212,12 @@ argument_list|,
 name|groupMatcher
 argument_list|)
 condition|)
+block|{
 name|score
 operator|+=
 literal|2
 expr_stmt|;
+block|}
 comment|// Now, a grayed out renderer is for entries with -1, and
 comment|// a very grayed out one for entries with -2
 if|if
@@ -1219,6 +1235,8 @@ operator|==
 literal|0
 condition|)
 block|{
+name|MainTable
+operator|.
 name|veryGrayedOutNumberRenderer
 operator|.
 name|setNumber
@@ -1228,14 +1246,20 @@ argument_list|)
 expr_stmt|;
 name|renderer
 operator|=
+name|MainTable
+operator|.
 name|veryGrayedOutNumberRenderer
 expr_stmt|;
 block|}
 else|else
+block|{
 name|renderer
 operator|=
+name|MainTable
+operator|.
 name|veryGrayedOutRenderer
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -1253,6 +1277,8 @@ operator|==
 literal|0
 condition|)
 block|{
+name|MainTable
+operator|.
 name|grayedOutNumberRenderer
 operator|.
 name|setNumber
@@ -1262,14 +1288,20 @@ argument_list|)
 expr_stmt|;
 name|renderer
 operator|=
+name|MainTable
+operator|.
 name|grayedOutNumberRenderer
 expr_stmt|;
 block|}
 else|else
+block|{
 name|renderer
 operator|=
+name|MainTable
+operator|.
 name|grayedOutRenderer
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -1289,6 +1321,8 @@ name|row
 argument_list|)
 condition|)
 block|{
+name|MainTable
+operator|.
 name|incRenderer
 operator|.
 name|setNumber
@@ -1298,11 +1332,15 @@ argument_list|)
 expr_stmt|;
 name|renderer
 operator|=
+name|MainTable
+operator|.
 name|incRenderer
 expr_stmt|;
 block|}
 else|else
 block|{
+name|MainTable
+operator|.
 name|compRenderer
 operator|.
 name|setNumber
@@ -1340,6 +1378,8 @@ argument_list|)
 expr_stmt|;
 name|renderer
 operator|=
+name|MainTable
+operator|.
 name|markedNumberRenderers
 index|[
 name|marking
@@ -1347,6 +1387,8 @@ operator|-
 literal|1
 index|]
 expr_stmt|;
+name|MainTable
+operator|.
 name|markedNumberRenderers
 index|[
 name|marking
@@ -1361,10 +1403,14 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|renderer
 operator|=
+name|MainTable
+operator|.
 name|compRenderer
 expr_stmt|;
+block|}
 block|}
 name|renderer
 operator|.
@@ -1386,30 +1432,45 @@ if|if
 condition|(
 name|status
 operator|==
+name|MainTable
+operator|.
 name|REQUIRED
 condition|)
+block|{
 name|renderer
 operator|=
+name|MainTable
+operator|.
 name|reqRenderer
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
 name|status
 operator|==
+name|MainTable
+operator|.
 name|OPTIONAL
 condition|)
+block|{
 name|renderer
 operator|=
+name|MainTable
+operator|.
 name|optRenderer
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
 name|status
 operator|==
+name|MainTable
+operator|.
 name|BOOLEAN
 condition|)
+block|{
 name|renderer
 operator|=
 operator|(
@@ -1422,6 +1483,7 @@ operator|.
 name|class
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// For MARKED feature:
 name|int
@@ -1462,6 +1524,8 @@ argument_list|)
 expr_stmt|;
 name|renderer
 operator|=
+name|MainTable
+operator|.
 name|markedRenderers
 index|[
 name|marking
@@ -1897,6 +1961,7 @@ name|name
 operator|!=
 literal|null
 condition|)
+block|{
 name|fields
 operator|.
 name|add
@@ -1907,6 +1972,7 @@ name|toLowerCase
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|fields
@@ -2231,6 +2297,7 @@ operator|.
 name|ICON_COLUMN_PREFIX
 argument_list|)
 condition|)
+block|{
 name|index
 operator|=
 name|tableFormat
@@ -2243,6 +2310,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 for|for
@@ -2332,6 +2400,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2636,6 +2706,8 @@ argument_list|)
 condition|)
 block|{
 return|return
+name|MainTable
+operator|.
 name|REQUIRED
 return|;
 block|}
@@ -2650,10 +2722,14 @@ argument_list|)
 condition|)
 block|{
 return|return
+name|MainTable
+operator|.
 name|OPTIONAL
 return|;
 block|}
 return|return
+name|MainTable
+operator|.
 name|OTHER
 return|;
 block|}
@@ -2665,6 +2741,8 @@ parameter_list|)
 block|{
 comment|//System.out.println("Exception: getCellStatus");
 return|return
+name|MainTable
+operator|.
 name|OTHER
 return|;
 block|}
@@ -2985,8 +3063,10 @@ argument_list|()
 operator|)
 operator|||
 operator|(
+operator|(
 name|y
 operator|>
+operator|(
 name|vert
 operator|.
 name|getValue
@@ -2997,9 +3077,11 @@ operator|.
 name|getVisibleAmount
 argument_list|()
 operator|)
+operator|)
 operator|&&
 operator|!
 name|showingFloatSearch
+operator|)
 condition|)
 block|{
 name|scrollToCenter
@@ -3242,6 +3324,8 @@ name|void
 name|updateRenderers
 parameter_list|()
 block|{
+name|MainTable
+operator|.
 name|defRenderer
 operator|=
 operator|new
@@ -3269,6 +3353,8 @@ expr_stmt|;
 name|Color
 name|sel
 init|=
+name|MainTable
+operator|.
 name|defRenderer
 operator|.
 name|getTableCellRendererComponent
@@ -3291,6 +3377,8 @@ operator|.
 name|getBackground
 argument_list|()
 decl_stmt|;
+name|MainTable
+operator|.
 name|reqRenderer
 operator|=
 operator|new
@@ -3315,6 +3403,8 @@ literal|"tableText"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|MainTable
+operator|.
 name|optRenderer
 operator|=
 operator|new
@@ -3339,12 +3429,16 @@ literal|"tableText"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|MainTable
+operator|.
 name|incRenderer
 operator|=
 operator|new
 name|IncompleteRenderer
 argument_list|()
 expr_stmt|;
+name|MainTable
+operator|.
 name|compRenderer
 operator|=
 operator|new
@@ -3360,6 +3454,8 @@ literal|"tableBackground"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|MainTable
+operator|.
 name|grayedOutNumberRenderer
 operator|=
 operator|new
@@ -3375,6 +3471,8 @@ literal|"grayedOutBackground"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|MainTable
+operator|.
 name|veryGrayedOutNumberRenderer
 operator|=
 operator|new
@@ -3390,6 +3488,8 @@ literal|"veryGrayedOutBackground"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|MainTable
+operator|.
 name|grayedOutRenderer
 operator|=
 operator|new
@@ -3413,6 +3513,8 @@ argument_list|(
 literal|"grayedOutText"
 argument_list|)
 argument_list|,
+name|MainTable
+operator|.
 name|mixColors
 argument_list|(
 name|Globals
@@ -3428,6 +3530,8 @@ name|sel
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|MainTable
+operator|.
 name|veryGrayedOutRenderer
 operator|=
 operator|new
@@ -3451,6 +3555,8 @@ argument_list|(
 literal|"veryGrayedOutText"
 argument_list|)
 argument_list|,
+name|MainTable
+operator|.
 name|mixColors
 argument_list|(
 name|Globals
@@ -3466,6 +3572,8 @@ name|sel
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|MainTable
+operator|.
 name|markedRenderers
 operator|=
 operator|new
@@ -3476,6 +3584,8 @@ operator|.
 name|MARK_COLOR_LEVELS
 index|]
 expr_stmt|;
+name|MainTable
+operator|.
 name|markedNumberRenderers
 operator|=
 operator|new
@@ -3517,6 +3627,8 @@ operator|+
 name|i
 argument_list|)
 decl_stmt|;
+name|MainTable
+operator|.
 name|markedRenderers
 index|[
 name|i
@@ -3536,6 +3648,8 @@ argument_list|(
 literal|"tableText"
 argument_list|)
 argument_list|,
+name|MainTable
+operator|.
 name|mixColors
 argument_list|(
 name|Globals
@@ -3553,6 +3667,8 @@ name|sel
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|MainTable
+operator|.
 name|markedNumberRenderers
 index|[
 name|i
@@ -3688,6 +3804,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValue (Object value)
 specifier|protected
 name|void
@@ -3743,6 +3861,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValue (Object value)
 specifier|protected
 name|void
@@ -3800,6 +3920,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -3822,6 +3944,8 @@ name|result
 return|;
 block|}
 comment|/**      * Morten Alver: This override is a workaround NullPointerException when      * dragging stuff into the table. I found this in a forum, but have no idea      * why it works.      * @param newUI      */
+annotation|@
+name|Override
 DECL|method|setUI (TableUI newUI)
 specifier|public
 name|void
@@ -3934,11 +4058,14 @@ argument_list|()
 operator|<=
 name|number
 condition|)
+block|{
 return|return
 operator|-
 literal|1
 return|;
+block|}
 else|else
+block|{
 return|return
 name|l
 operator|.
@@ -3947,6 +4074,7 @@ argument_list|(
 name|number
 argument_list|)
 return|;
+block|}
 block|}
 DECL|method|getTableColumnListener ()
 specifier|public

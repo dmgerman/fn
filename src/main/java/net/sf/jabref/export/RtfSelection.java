@@ -144,6 +144,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|isDataFlavorSupported (DataFlavor flavor)
 specifier|public
 name|boolean
@@ -171,6 +173,8 @@ name|stringFlavor
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTransferDataFlavors ()
 specifier|public
 name|java
@@ -189,6 +193,8 @@ return|return
 name|supportedFlavors
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTransferData (DataFlavor flavor)
 specifier|public
 name|Object

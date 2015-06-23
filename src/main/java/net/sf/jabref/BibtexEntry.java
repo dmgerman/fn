@@ -209,6 +209,8 @@ decl_stmt|;
 comment|// BibLatex to Bibtex
 static|static
 block|{
+name|BibtexEntry
+operator|.
 name|FieldAliasesOldToNew
 operator|.
 name|put
@@ -218,6 +220,8 @@ argument_list|,
 literal|"location"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesNewToOld
 operator|.
 name|put
@@ -227,6 +231,8 @@ argument_list|,
 literal|"address"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesOldToNew
 operator|.
 name|put
@@ -236,6 +242,8 @@ argument_list|,
 literal|"annotation"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesNewToOld
 operator|.
 name|put
@@ -245,6 +253,8 @@ argument_list|,
 literal|"annote"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesOldToNew
 operator|.
 name|put
@@ -254,6 +264,8 @@ argument_list|,
 literal|"eprinttype"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesNewToOld
 operator|.
 name|put
@@ -263,6 +275,8 @@ argument_list|,
 literal|"archiveprefix"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesOldToNew
 operator|.
 name|put
@@ -272,6 +286,8 @@ argument_list|,
 literal|"journaltitle"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesNewToOld
 operator|.
 name|put
@@ -281,6 +297,8 @@ argument_list|,
 literal|"journal"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesOldToNew
 operator|.
 name|put
@@ -290,6 +308,8 @@ argument_list|,
 literal|"sortkey"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesNewToOld
 operator|.
 name|put
@@ -299,6 +319,8 @@ argument_list|,
 literal|"key"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesOldToNew
 operator|.
 name|put
@@ -308,6 +330,8 @@ argument_list|,
 literal|"file"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesNewToOld
 operator|.
 name|put
@@ -317,6 +341,8 @@ argument_list|,
 literal|"pdf"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesOldToNew
 operator|.
 name|put
@@ -326,6 +352,8 @@ argument_list|,
 literal|"eprintclass"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesNewToOld
 operator|.
 name|put
@@ -335,6 +363,8 @@ argument_list|,
 literal|"primaryclass"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesOldToNew
 operator|.
 name|put
@@ -344,6 +374,8 @@ argument_list|,
 literal|"institution"
 argument_list|)
 expr_stmt|;
+name|BibtexEntry
+operator|.
 name|FieldAliasesNewToOld
 operator|.
 name|put
@@ -743,6 +775,8 @@ try|try
 block|{
 name|firePropertyChangedEvent
 argument_list|(
+name|BibtexEntry
+operator|.
 name|ID_FIELD
 argument_list|,
 name|_id
@@ -822,20 +856,26 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|fieldValue
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|fieldValue
 operator|.
 name|length
 argument_list|()
 operator|>
 literal|0
+operator|)
 condition|)
+block|{
 return|return
 name|fieldValue
 return|;
+block|}
 comment|// No value of this field found, so look at the alias
 comment|// Create bidirectional dictionary between field names and their aliases
 name|Map
@@ -859,6 +899,8 @@ name|aliases
 operator|.
 name|putAll
 argument_list|(
+name|BibtexEntry
+operator|.
 name|FieldAliasesOldToNew
 argument_list|)
 expr_stmt|;
@@ -866,6 +908,8 @@ name|aliases
 operator|.
 name|putAll
 argument_list|(
+name|BibtexEntry
+operator|.
 name|FieldAliasesNewToOld
 argument_list|)
 expr_stmt|;
@@ -885,12 +929,14 @@ name|aliasForField
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|getField
 argument_list|(
 name|aliasForField
 argument_list|)
 return|;
+block|}
 comment|// So we did not found the field itself or its alias...
 comment|// Finally, handle dates
 if|if
@@ -990,9 +1036,11 @@ name|date
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 comment|// Create date format matching dates with year and month
 name|DateFormat
 name|df
@@ -1072,6 +1120,7 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|source
 operator|.
 name|length
@@ -1081,12 +1130,14 @@ name|pos
 operator|.
 name|getIndex
 argument_list|()
+operator|)
 operator|==
 name|FORMAT1
 operator|.
 name|length
 argument_list|()
 condition|)
+block|{
 return|return
 name|sdf1
 operator|.
@@ -1097,6 +1148,7 @@ argument_list|,
 name|pos
 argument_list|)
 return|;
+block|}
 return|return
 name|sdf2
 operator|.
@@ -1146,6 +1198,7 @@ argument_list|(
 literal|"year"
 argument_list|)
 condition|)
+block|{
 return|return
 name|Integer
 operator|.
@@ -1161,6 +1214,7 @@ name|YEAR
 argument_list|)
 argument_list|)
 return|;
+block|}
 if|if
 condition|(
 name|name
@@ -1170,6 +1224,7 @@ argument_list|(
 literal|"month"
 argument_list|)
 condition|)
+block|{
 return|return
 name|Integer
 operator|.
@@ -1188,6 +1243,7 @@ literal|1
 argument_list|)
 return|;
 comment|// Shift by 1 since in this calendar Jan = 0
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1240,6 +1296,7 @@ argument_list|(
 literal|"year"
 argument_list|)
 condition|)
+block|{
 return|return
 name|Integer
 operator|.
@@ -1255,6 +1312,7 @@ name|YEAR
 argument_list|)
 argument_list|)
 return|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1341,6 +1399,8 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|BibtexEntry
+operator|.
 name|ID_FIELD
 operator|.
 name|equals
@@ -1435,6 +1495,8 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|BibtexEntry
+operator|.
 name|ID_FIELD
 operator|.
 name|equals
@@ -1591,12 +1653,14 @@ operator|!=
 literal|null
 operator|)
 operator|&&
+operator|(
 name|value
 operator|.
 name|length
 argument_list|()
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 return|return
@@ -1714,6 +1778,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Returns a clone of this entry. Useful for copying.      */
+annotation|@
+name|Override
 DECL|method|clone ()
 specifier|public
 name|Object
@@ -1750,6 +1816,8 @@ return|return
 name|clone
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String
@@ -1875,6 +1943,7 @@ condition|;
 operator|++
 name|i
 control|)
+block|{
 if|if
 condition|(
 name|s
@@ -1884,6 +1953,7 @@ index|]
 operator|==
 literal|null
 condition|)
+block|{
 name|s
 index|[
 name|i
@@ -1891,6 +1961,8 @@ index|]
 operator|=
 literal|"N/A"
 expr_stmt|;
+block|}
+block|}
 name|String
 name|text
 init|=
@@ -1917,20 +1989,26 @@ literal|")"
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|maxCharacters
 operator|<=
 literal|0
+operator|)
 operator|||
+operator|(
 name|text
 operator|.
 name|length
 argument_list|()
 operator|<=
 name|maxCharacters
+operator|)
 condition|)
+block|{
 return|return
 name|text
 return|;
+block|}
 return|return
 name|text
 operator|.

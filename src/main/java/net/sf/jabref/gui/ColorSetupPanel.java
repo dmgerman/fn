@@ -638,6 +638,8 @@ operator|=
 name|button
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -673,6 +675,7 @@ name|chosen
 operator|!=
 literal|null
 condition|)
+block|{
 name|button
 operator|.
 name|setColor
@@ -680,6 +683,7 @@ argument_list|(
 name|chosen
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * A button to display the chosen color, and hold key information about a color setting.      * Includes a method to produce a Default button for this setting.      */
@@ -777,6 +781,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -818,6 +824,8 @@ return|return
 name|key
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getName ()
 specifier|public
 name|String
@@ -854,6 +862,8 @@ operator|=
 name|color
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|paintIcon (Component c, Graphics g, int x, int y)
 specifier|public
 name|void
@@ -909,6 +919,8 @@ name|height
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getIconWidth ()
 specifier|public
 name|int
@@ -916,9 +928,13 @@ name|getIconWidth
 parameter_list|()
 block|{
 return|return
+name|ColorSetupPanel
+operator|.
 name|ICON_WIDTH
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getIconHeight ()
 specifier|public
 name|int
@@ -926,6 +942,8 @@ name|getIconHeight
 parameter_list|()
 block|{
 return|return
+name|ColorSetupPanel
+operator|.
 name|ICON_HEIGHT
 return|;
 block|}

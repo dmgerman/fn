@@ -247,6 +247,8 @@ return|return
 name|list
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|databaseChanged (DatabaseChangeEvent e)
 specifier|public
 name|void

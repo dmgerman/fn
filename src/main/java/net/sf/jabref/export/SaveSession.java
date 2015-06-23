@@ -199,8 +199,12 @@ name|File
 operator|.
 name|createTempFile
 argument_list|(
+name|SaveSession
+operator|.
 name|TEMP_PREFIX
 argument_list|,
+name|SaveSession
+operator|.
 name|TEMP_SUFFIX
 argument_list|)
 expr_stmt|;
@@ -292,7 +296,9 @@ name|file
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|file
@@ -395,11 +401,13 @@ argument_list|,
 literal|10
 argument_list|)
 condition|)
+block|{
 throw|throw
 name|SaveException
 operator|.
 name|FILE_LOCKED
 throw|;
+block|}
 block|}
 block|}
 catch|catch
@@ -516,6 +524,8 @@ operator|.
 name|getPath
 argument_list|()
 operator|+
+name|SaveSession
+operator|.
 name|LOCKFILE_SUFFIX
 argument_list|)
 decl_stmt|;
@@ -603,6 +613,8 @@ operator|.
 name|getPath
 argument_list|()
 operator|+
+name|SaveSession
+operator|.
 name|LOCKFILE_SUFFIX
 argument_list|)
 decl_stmt|;

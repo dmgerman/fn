@@ -304,6 +304,8 @@ operator|=
 name|panel
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|init ()
 specifier|public
 name|void
@@ -347,6 +349,7 @@ name|optDiag
 operator|==
 literal|null
 condition|)
+block|{
 name|optDiag
 operator|=
 operator|new
@@ -360,6 +363,7 @@ argument_list|,
 name|fieldName
 argument_list|)
 expr_stmt|;
+block|}
 name|Util
 operator|.
 name|placeDialog
@@ -439,6 +443,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -674,7 +680,9 @@ operator|&&
 operator|!
 name|overWriteAllowed
 condition|)
+block|{
 continue|continue;
+block|}
 name|extPan
 operator|.
 name|setEntry
@@ -1093,6 +1101,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void
@@ -1104,7 +1114,9 @@ condition|(
 operator|!
 name|goOn
 condition|)
+block|{
 return|return;
+block|}
 name|panel
 operator|.
 name|output
@@ -1286,6 +1298,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1312,6 +1326,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1730,6 +1746,8 @@ name|pack
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setVisible (boolean visible)
 specifier|public
 name|void
@@ -1743,10 +1761,12 @@ if|if
 condition|(
 name|visible
 condition|)
+block|{
 name|canceled
 operator|=
 literal|true
 expr_stmt|;
+block|}
 name|String
 index|[]
 name|dirs

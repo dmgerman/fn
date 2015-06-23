@@ -352,6 +352,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|ActionMap
 import|;
 end_import
@@ -493,6 +503,16 @@ operator|.
 name|swing
 operator|.
 name|KeyStroke
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|SwingConstants
 import|;
 end_import
 
@@ -1289,6 +1309,7 @@ argument_list|(
 literal|"defaultShowSource"
 argument_list|)
 condition|)
+block|{
 name|tabbed
 operator|.
 name|setSelectedIndex
@@ -1296,6 +1317,7 @@ argument_list|(
 name|sourceIndex
 argument_list|)
 expr_stmt|;
+block|}
 name|updateAllFields
 argument_list|()
 expr_stmt|;
@@ -1339,6 +1361,7 @@ name|fields
 operator|!=
 literal|null
 condition|)
+block|{
 name|fieldList
 operator|=
 name|java
@@ -1352,6 +1375,7 @@ argument_list|(
 name|fields
 argument_list|)
 expr_stmt|;
+block|}
 name|reqPan
 operator|=
 operator|new
@@ -1385,12 +1409,14 @@ name|fileListEditor
 operator|!=
 literal|null
 condition|)
+block|{
 name|fileListEditor
 operator|=
 name|reqPan
 operator|.
 name|fileListEditor
 expr_stmt|;
+block|}
 name|tabbed
 operator|.
 name|addTab
@@ -1508,12 +1534,14 @@ name|fileListEditor
 operator|!=
 literal|null
 condition|)
+block|{
 name|fileListEditor
 operator|=
 name|optPan
 operator|.
 name|fileListEditor
 expr_stmt|;
+block|}
 name|tabbed
 operator|.
 name|addTab
@@ -1603,12 +1631,14 @@ name|fileListEditor
 operator|!=
 literal|null
 condition|)
+block|{
 name|fileListEditor
 operator|=
 name|optPan
 operator|.
 name|fileListEditor
 expr_stmt|;
+block|}
 name|tabbed
 operator|.
 name|addTab
@@ -1769,6 +1799,7 @@ argument_list|(
 name|field
 argument_list|)
 condition|)
+block|{
 name|optionalFieldsAndAliases
 operator|.
 name|add
@@ -1783,6 +1814,7 @@ name|field
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Get all optional fields which are deprecated
 name|Set
@@ -1850,12 +1882,14 @@ name|fileListEditor
 operator|!=
 literal|null
 condition|)
+block|{
 name|fileListEditor
 operator|=
 name|optPan
 operator|.
 name|fileListEditor
 expr_stmt|;
+block|}
 name|tabbed
 operator|.
 name|addTab
@@ -1957,12 +1991,14 @@ name|fileListEditor
 operator|!=
 literal|null
 condition|)
+block|{
 name|fileListEditor
 operator|=
 name|optPan
 operator|.
 name|fileListEditor
 expr_stmt|;
+block|}
 name|tabbed
 operator|.
 name|addTab
@@ -2071,12 +2107,14 @@ name|fileListEditor
 operator|!=
 literal|null
 condition|)
+block|{
 name|fileListEditor
 operator|=
 name|newTab
 operator|.
 name|fileListEditor
 expr_stmt|;
+block|}
 name|tabbed
 operator|.
 name|addTab
@@ -2198,6 +2236,8 @@ name|type
 return|;
 block|}
 comment|/**      * @return reference to the currently edited entry      */
+annotation|@
+name|Override
 DECL|method|getEntry ()
 specifier|public
 name|BibtexEntry
@@ -2691,6 +2731,7 @@ name|comp
 range|:
 name|comps
 control|)
+block|{
 operator|(
 operator|(
 name|JComponent
@@ -2703,6 +2744,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 name|leftPan
 operator|.
 name|add
@@ -2841,6 +2883,8 @@ operator|new
 name|MouseAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|mouseClicked
@@ -3215,6 +3259,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -3240,6 +3286,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|dir
 operator|=
 name|prefs
@@ -3255,6 +3302,7 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|chosenFile
 init|=
@@ -3389,6 +3437,7 @@ argument_list|(
 literal|"browseDocZip"
 argument_list|)
 condition|)
+block|{
 name|off
 operator|=
 operator|new
@@ -3410,7 +3459,9 @@ literal|".bz2"
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|off
 operator|=
 operator|new
@@ -3424,6 +3475,7 @@ name|ext
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 operator|new
 name|ExternalFilePanel
@@ -3539,6 +3591,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -3585,9 +3639,11 @@ name|button
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 DECL|method|setupSourcePanel ()
 specifier|private
@@ -3809,6 +3865,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -3845,6 +3903,7 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 name|panel
 operator|.
 name|mainTable
@@ -3856,6 +3915,7 @@ argument_list|,
 name|row
 argument_list|)
 expr_stmt|;
+block|}
 comment|//scrollTo(row);
 name|panel
 operator|.
@@ -4265,6 +4325,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|requestFocus ()
 specifier|public
 name|void
@@ -4300,6 +4362,7 @@ name|activeTab
 operator|instanceof
 name|EntryEditorTab
 condition|)
+block|{
 operator|(
 operator|(
 name|EntryEditorTab
@@ -4310,7 +4373,9 @@ operator|.
 name|activate
 argument_list|()
 expr_stmt|;
+block|}
 else|else
+block|{
 operator|new
 name|FocusRequester
 argument_list|(
@@ -4319,7 +4384,10 @@ argument_list|)
 expr_stmt|;
 comment|// ((JComponent)activeTab).requestFocus();
 block|}
+block|}
 comment|/**      * Reports the enabled status of the editor, as set by setEnabled()      */
+annotation|@
+name|Override
 DECL|method|isEnabled ()
 specifier|public
 name|boolean
@@ -4334,6 +4402,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Sets the enabled status of all text fields of the entry editor.      */
+annotation|@
+name|Override
 DECL|method|setEnabled (boolean enabled)
 specifier|public
 name|void
@@ -4462,6 +4532,7 @@ name|comp
 operator|instanceof
 name|FieldEditor
 condition|)
+block|{
 operator|(
 operator|(
 name|FieldEditor
@@ -4472,6 +4543,7 @@ operator|.
 name|clearAutoCompleteSuggestion
 argument_list|()
 expr_stmt|;
+block|}
 name|storeFieldAction
 operator|.
 name|actionPerformed
@@ -4614,6 +4686,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|tabbed
 operator|.
 name|setSelectedIndex
@@ -4621,6 +4694,7 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Updates this editor to show the given entry, regardless of type      * correspondence.      *       * @param be      *            a<code>BibtexEntry</code> value      */
 DECL|method|switchTo (BibtexEntry be)
@@ -4702,11 +4776,13 @@ argument_list|()
 operator|==
 name|srcPanel
 condition|)
+block|{
 name|storeSource
 argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|lastSourceAccepted
 return|;
@@ -4769,6 +4845,7 @@ argument_list|()
 operator|>
 literal|1
 condition|)
+block|{
 throw|throw
 operator|new
 name|Exception
@@ -4776,6 +4853,7 @@ argument_list|(
 literal|"More than one entry found."
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 name|db
@@ -4888,9 +4966,11 @@ decl_stmt|;
 name|boolean
 name|emptyWarning
 init|=
+operator|(
 name|newKey
 operator|==
 literal|null
+operator|)
 operator|||
 name|newKey
 operator|.
@@ -5022,9 +5102,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|oldValue
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|oldValue
@@ -5145,9 +5227,11 @@ condition|(
 operator|!
 name|anyChanged
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 name|panel
 operator|.
 name|undoManager
@@ -5247,6 +5331,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -5551,6 +5637,7 @@ name|contentSelector
 range|:
 name|contentSelectors
 control|)
+block|{
 name|contentSelector
 operator|.
 name|rebuildComboBox
@@ -5558,7 +5645,10 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+block|}
 comment|/**      * Update the JTextArea when a field has changed.      *       * @see java.beans.VetoableChangeListener#vetoableChange(java.beans.PropertyChangeEvent)      */
+annotation|@
+name|Override
 DECL|method|vetoableChange (PropertyChangeEvent e)
 specifier|public
 name|void
@@ -5681,6 +5771,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -5708,6 +5800,7 @@ operator|.
 name|keySet
 argument_list|()
 control|)
+block|{
 name|typeMenu
 operator|.
 name|add
@@ -5726,6 +5819,7 @@ name|panel
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|typeMenu
 operator|.
 name|show
@@ -5781,6 +5875,8 @@ argument_list|)
 expr_stmt|;
 name|setHorizontalAlignment
 argument_list|(
+name|SwingConstants
+operator|.
 name|RIGHT
 argument_list|)
 expr_stmt|;
@@ -5890,6 +5986,7 @@ operator|.
 name|keySet
 argument_list|()
 control|)
+block|{
 name|typeMenu
 operator|.
 name|add
@@ -5908,6 +6005,7 @@ name|panel
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|typeMenu
 operator|.
 name|show
@@ -5924,6 +6022,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|paintComponent (Graphics g)
 specifier|public
 name|void
@@ -5976,6 +6076,8 @@ extends|extends
 name|FocusAdapter
 block|{
 comment|/*          * Focus listener that fires the storeFieldAction when a FieldTextArea          * loses focus.          */
+annotation|@
+name|Override
 DECL|method|focusGained (FocusEvent e)
 specifier|public
 name|void
@@ -5985,6 +6087,8 @@ name|FocusEvent
 name|e
 parameter_list|)
 block|{         }
+annotation|@
+name|Override
 DECL|method|focusLost (FocusEvent e)
 specifier|public
 name|void
@@ -6003,6 +6107,7 @@ operator|.
 name|isTemporary
 argument_list|()
 condition|)
+block|{
 name|updateField
 argument_list|(
 name|e
@@ -6013,12 +6118,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 DECL|class|TabListener
 class|class
 name|TabListener
 implements|implements
 name|ChangeListener
 block|{
+annotation|@
+name|Override
 DECL|method|stateChanged (ChangeEvent e)
 specifier|public
 name|void
@@ -6036,6 +6144,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -6061,6 +6171,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -6085,6 +6197,7 @@ name|activeTab
 operator|instanceof
 name|EntryEditorTab
 condition|)
+block|{
 operator|(
 operator|(
 name|EntryEditorTab
@@ -6095,6 +6208,7 @@ operator|.
 name|updateAll
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -6131,6 +6245,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -6142,6 +6258,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -6167,7 +6285,9 @@ condition|(
 operator|!
 name|goOn
 condition|)
+block|{
 return|return;
+block|}
 name|panel
 operator|.
 name|entryEditorClosing
@@ -6266,6 +6386,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -6277,6 +6399,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -6305,6 +6429,7 @@ if|if
 condition|(
 name|lastSourceAccepted
 condition|)
+block|{
 name|panel
 operator|.
 name|entryEditorClosing
@@ -6315,7 +6440,9 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 else|else
+block|{
 name|panel
 operator|.
 name|entryEditorClosing
@@ -6325,6 +6452,7 @@ operator|.
 name|this
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|class|CopyKeyAction
@@ -6345,6 +6473,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 literal|"Copy BibTeX key to clipboard (Ctrl-K)"
@@ -6352,6 +6482,8 @@ argument_list|)
 expr_stmt|;
 comment|// putValue(MNEMONIC_KEY, GUIGlobals.copyKeyCode);
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -6390,6 +6522,7 @@ name|s
 operator|!=
 literal|null
 condition|)
+block|{
 name|Toolkit
 operator|.
 name|getDefaultToolkit
@@ -6405,6 +6538,7 @@ argument_list|,
 name|ss
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|class|StoreFieldAction
@@ -6426,12 +6560,16 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 literal|"Store field value"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -6497,10 +6635,12 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|newValue
 operator|=
 literal|null
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -6538,8 +6678,10 @@ name|newValue
 argument_list|)
 operator|)
 condition|)
+block|{
 return|return;
 comment|// No change.
+block|}
 comment|// Make sure the key is legal:
 name|String
 name|cleaned
@@ -6636,10 +6778,13 @@ if|if
 condition|(
 name|isDuplicate
 condition|)
+block|{
 name|warnDuplicateBibtexkey
 argument_list|()
 expr_stmt|;
+block|}
 else|else
+block|{
 name|panel
 operator|.
 name|output
@@ -6652,6 +6797,7 @@ literal|"BibTeX key is unique."
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -6740,19 +6886,23 @@ operator|>
 literal|0
 operator|)
 condition|)
+block|{
 comment|// fe.setLabelColor(GUIGlobals.entryEditorLabelColor);
 name|fe
 operator|.
 name|setValidBackgroundColor
 argument_list|()
 expr_stmt|;
+block|}
 else|else
+block|{
 comment|// fe.setLabelColor(GUIGlobals.nullFieldColor);
 name|fe
 operator|.
 name|setValidBackgroundColor
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|fe
@@ -6763,11 +6913,13 @@ operator|.
 name|hasFocus
 argument_list|()
 condition|)
+block|{
 name|fe
 operator|.
 name|setActiveBackgroundColor
 argument_list|()
 expr_stmt|;
+block|}
 name|updateSource
 argument_list|()
 expr_stmt|;
@@ -6918,6 +7070,7 @@ name|toSet
 operator|!=
 literal|null
 condition|)
+block|{
 operator|(
 operator|new
 name|LatexFieldFormatter
@@ -6934,6 +7087,7 @@ name|getFieldName
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|oldValue
 init|=
@@ -6953,6 +7107,7 @@ name|toSet
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -6965,7 +7120,9 @@ argument_list|,
 name|toSet
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|entry
 operator|.
 name|clearField
@@ -6976,6 +7133,7 @@ name|getFieldName
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -6993,19 +7151,23 @@ operator|>
 literal|0
 operator|)
 condition|)
+block|{
 comment|// fe.setLabelColor(GUIGlobals.entryEditorLabelColor);
 name|fe
 operator|.
 name|setValidBackgroundColor
 argument_list|()
 expr_stmt|;
+block|}
 else|else
+block|{
 comment|// fe.setLabelColor(GUIGlobals.nullFieldColor);
 name|fe
 operator|.
 name|setValidBackgroundColor
 argument_list|()
 expr_stmt|;
+block|}
 comment|// See if we need to update an AutoCompleter instance:
 name|AbstractAutoCompleter
 name|aComp
@@ -7026,6 +7188,7 @@ name|aComp
 operator|!=
 literal|null
 condition|)
+block|{
 name|aComp
 operator|.
 name|addBibtexEntry
@@ -7033,6 +7196,7 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Add an UndoableFieldChange to the baseframe's undoManager.
 name|UndoableFieldChange
 name|undoableFieldChange
@@ -7168,6 +7332,7 @@ operator|.
 name|hasFocus
 argument_list|()
 condition|)
+block|{
 name|fe
 operator|.
 name|setBackground
@@ -7177,6 +7342,7 @@ operator|.
 name|activeEditor
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -7237,6 +7403,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -7299,6 +7467,8 @@ literal|"Switch to the panel to the left"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -7367,6 +7537,8 @@ literal|"Switch to the panel to the right"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -7446,6 +7618,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -7457,6 +7631,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -7496,12 +7672,14 @@ operator|.
 name|getEntryCount
 argument_list|()
 condition|)
+block|{
 name|newRow
 operator|=
 name|thisRow
 operator|+
 literal|1
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -7509,14 +7687,18 @@ name|thisRow
 operator|>
 literal|0
 condition|)
+block|{
 name|newRow
 operator|=
 literal|0
 expr_stmt|;
+block|}
 else|else
+block|{
 return|return;
 comment|// newRow is still -1, so we can assume the database has
 comment|// only one entry.
+block|}
 name|scrollTo
 argument_list|(
 name|newRow
@@ -7565,6 +7747,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -7576,6 +7760,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -7610,12 +7796,14 @@ operator|)
 operator|>=
 literal|0
 condition|)
+block|{
 name|newRow
 operator|=
 name|thisRow
 operator|-
 literal|1
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -7632,6 +7820,7 @@ operator|-
 literal|1
 operator|)
 condition|)
+block|{
 name|newRow
 operator|=
 name|panel
@@ -7643,12 +7832,15 @@ argument_list|()
 operator|-
 literal|1
 expr_stmt|;
+block|}
 else|else
+block|{
 return|return;
 comment|// newRow is still -1, so we can assume the database has
 comment|// only one entry.
 comment|// id = panel.tableModel.getIdForRow(newRow);
 comment|// switchTo(id);
+block|}
 name|scrollTo
 argument_list|(
 name|newRow
@@ -7714,6 +7906,8 @@ expr_stmt|;
 comment|// selectedEntry = newEntry ;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -7726,6 +7920,8 @@ argument_list|)
 expr_stmt|;
 comment|// putValue(MNEMONIC_KEY, GUIGlobals.showGenKeyCode);
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -7857,6 +8053,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|Globals
 operator|.
 name|prefs
@@ -7868,6 +8065,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|answer
@@ -8010,12 +8208,16 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 literal|"Undo"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -8068,12 +8270,16 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 literal|"Redo"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -8118,6 +8324,8 @@ literal|"Save database"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -8176,12 +8384,14 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 comment|// Source panel.
 name|updateField
 argument_list|(
 name|activeTab
 argument_list|)
 expr_stmt|;
+block|}
 try|try
 block|{
 name|panel
@@ -8206,6 +8416,8 @@ name|ExternalViewerListener
 extends|extends
 name|MouseAdapter
 block|{
+annotation|@
+name|Override
 DECL|method|mouseClicked (MouseEvent evt)
 specifier|public
 name|void
@@ -8248,7 +8460,9 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 return|return;
+block|}
 name|tf
 operator|.
 name|selectAll
@@ -8349,6 +8563,8 @@ operator|=
 name|bp
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent evt)
 specifier|public
 name|void
@@ -8424,6 +8640,8 @@ parameter_list|()
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SMALL_ICON
 argument_list|,
 name|GUIGlobals
@@ -8436,6 +8654,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -8449,6 +8669,8 @@ literal|" (Alt-F)"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void

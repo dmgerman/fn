@@ -496,8 +496,12 @@ specifier|static
 name|String
 name|ex
 init|=
+name|GUIGlobals
+operator|.
 name|imageSize
 operator|+
+name|GUIGlobals
+operator|.
 name|extension
 decl_stmt|;
 DECL|field|pre
@@ -587,6 +591,8 @@ block|{
 name|Object
 name|o
 init|=
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|get
@@ -617,12 +623,14 @@ literal|null
 return|;
 block|}
 else|else
+block|{
 return|return
 operator|(
 name|JLabel
 operator|)
 name|o
 return|;
+block|}
 block|}
 comment|//Help files (in HTML format):
 specifier|public
@@ -871,6 +879,8 @@ comment|//inActiveTabbed = Color.gray.darker(),  // inactive Database
 DECL|field|activeTabbed
 name|activeTabbed
 init|=
+name|GUIGlobals
+operator|.
 name|entryEditorLabelColor
 operator|.
 name|darker
@@ -1206,6 +1216,8 @@ argument_list|>
 argument_list|()
 expr_stmt|;
 comment|// LANGUAGES contains mappings for supported languages.
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1215,6 +1227,8 @@ argument_list|,
 literal|"en"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1224,6 +1238,8 @@ argument_list|,
 literal|"da"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1233,6 +1249,8 @@ argument_list|,
 literal|"de"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1242,6 +1260,8 @@ argument_list|,
 literal|"fr"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1251,6 +1271,8 @@ argument_list|,
 literal|"it"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1260,6 +1282,8 @@ argument_list|,
 literal|"ja"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1269,6 +1293,8 @@ argument_list|,
 literal|"nl"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1278,6 +1304,8 @@ argument_list|,
 literal|"no"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1288,6 +1316,8 @@ literal|"es"
 argument_list|)
 expr_stmt|;
 comment|//LANGUAGES.put("Polski", "pl");
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1297,6 +1327,8 @@ argument_list|,
 literal|"tr"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1306,6 +1338,8 @@ argument_list|,
 literal|"zh"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1315,6 +1349,8 @@ argument_list|,
 literal|"vi"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1324,6 +1360,8 @@ argument_list|,
 literal|"in"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1333,6 +1371,8 @@ argument_list|,
 literal|"pt_BR"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1343,6 +1383,8 @@ literal|"ru"
 argument_list|)
 expr_stmt|;
 comment|// Set up entry editor colors, first time:
+name|GUIGlobals
+operator|.
 name|updateEntryEditorColors
 argument_list|()
 expr_stmt|;
@@ -1354,6 +1396,8 @@ name|void
 name|updateEntryEditorColors
 parameter_list|()
 block|{
+name|GUIGlobals
+operator|.
 name|activeBackground
 operator|=
 name|JabRefPreferences
@@ -1366,6 +1410,8 @@ argument_list|(
 literal|"activeFieldEditorBackgroundColor"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|validFieldBackgroundColor
 operator|=
 name|JabRefPreferences
@@ -1378,6 +1424,8 @@ argument_list|(
 literal|"validFieldBackgroundColor"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|invalidFieldBackgroundColor
 operator|=
 name|JabRefPreferences
@@ -1390,6 +1438,8 @@ argument_list|(
 literal|"invalidFieldBackgroundColor"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|editorTextColor
 operator|=
 name|JabRefPreferences
@@ -1469,6 +1519,7 @@ name|filename
 operator|!=
 literal|null
 condition|)
+block|{
 try|try
 block|{
 name|File
@@ -1531,10 +1582,15 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+block|}
 try|try
 block|{
+name|GUIGlobals
+operator|.
 name|iconMap
 operator|=
+name|GUIGlobals
+operator|.
 name|readIconThemeFile
 argument_list|(
 name|resource
@@ -1579,10 +1635,15 @@ name|resource
 operator|!=
 name|defaultResource
 condition|)
+block|{
 try|try
 block|{
+name|GUIGlobals
+operator|.
 name|iconMap
 operator|=
+name|GUIGlobals
+operator|.
 name|readIconThemeFile
 argument_list|(
 name|defaultResource
@@ -1614,6 +1675,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
 comment|/**      * Looks up the URL for the image representing the given function, in the resource      * file listing images.      * @param name The name of the icon, such as "open", "save", "saveAs" etc.      * @return The URL to the actual image to use.      */
 DECL|method|getIconUrl (String name)
 specifier|public
@@ -1627,6 +1689,8 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|GUIGlobals
+operator|.
 name|iconMap
 operator|.
 name|containsKey
@@ -1638,6 +1702,8 @@ block|{
 name|String
 name|path
 init|=
+name|GUIGlobals
+operator|.
 name|iconMap
 operator|.
 name|get
@@ -1663,6 +1729,7 @@ name|url
 operator|==
 literal|null
 condition|)
+block|{
 comment|// This may be a resource outside of the jar file, so we try a general URL:
 try|try
 block|{
@@ -1681,12 +1748,14 @@ name|MalformedURLException
 name|ignored
 parameter_list|)
 block|{                 }
+block|}
 if|if
 condition|(
 name|url
 operator|==
 literal|null
 condition|)
+block|{
 name|System
 operator|.
 name|err
@@ -1707,14 +1776,17 @@ operator|+
 literal|"'"
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|url
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 comment|/**      * Constructs an ImageIcon for the given function, using the image specified in      * the resource files resource/Icons_en.properties.      * @param name The name of the icon, such as "open", "save", "saveAs" etc.      * @return The ImageIcon for the function.      */
 DECL|method|getImage (String name)
@@ -1730,6 +1802,8 @@ block|{
 name|URL
 name|u
 init|=
+name|GUIGlobals
+operator|.
 name|getIconUrl
 argument_list|(
 name|name
@@ -1743,6 +1817,8 @@ condition|?
 operator|new
 name|ImageIcon
 argument_list|(
+name|GUIGlobals
+operator|.
 name|getIconUrl
 argument_list|(
 name|name
@@ -1770,6 +1846,8 @@ name|Collections
 operator|.
 name|unmodifiableMap
 argument_list|(
+name|GUIGlobals
+operator|.
 name|iconMap
 argument_list|)
 return|;
@@ -1850,6 +1928,7 @@ operator|!=
 operator|-
 literal|1
 condition|)
+block|{
 name|buffer
 operator|.
 name|append
@@ -1860,6 +1939,7 @@ operator|)
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 index|[]
 name|lines
@@ -1961,11 +2041,13 @@ name|in
 operator|!=
 literal|null
 condition|)
+block|{
 name|in
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -2021,13 +2103,17 @@ argument_list|(
 literal|"en/"
 argument_list|)
 condition|)
+block|{
 name|middle
 operator|=
 literal|""
 expr_stmt|;
 comment|// english in base help dir.
+block|}
 return|return
 operator|(
+name|GUIGlobals
+operator|.
 name|helpPre
 operator|+
 name|middle
@@ -2042,6 +2128,8 @@ name|void
 name|init
 parameter_list|()
 block|{
+name|GUIGlobals
+operator|.
 name|typeNameFont
 operator|=
 operator|new
@@ -2060,6 +2148,8 @@ argument_list|,
 literal|18
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|fieldNameFont
 operator|=
 operator|new
@@ -2086,6 +2176,8 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
+name|GUIGlobals
+operator|.
 name|getImage
 argument_list|(
 literal|"pdfSmall"
@@ -2106,6 +2198,8 @@ operator|+
 literal|" PDF"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2120,6 +2214,8 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
+name|GUIGlobals
+operator|.
 name|getImage
 argument_list|(
 literal|"wwwSmall"
@@ -2140,6 +2236,8 @@ operator|+
 literal|" URL"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2154,6 +2252,8 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
+name|GUIGlobals
+operator|.
 name|getImage
 argument_list|(
 literal|"citeseer"
@@ -2174,6 +2274,8 @@ operator|+
 literal|" CiteSeer URL"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2188,6 +2290,8 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
+name|GUIGlobals
+operator|.
 name|getImage
 argument_list|(
 literal|"arxiv"
@@ -2208,6 +2312,8 @@ operator|+
 literal|" ArXiv URL"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2222,6 +2328,8 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
+name|GUIGlobals
+operator|.
 name|getImage
 argument_list|(
 literal|"doiSmall"
@@ -2249,6 +2357,8 @@ literal|"web link"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2263,6 +2373,8 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
+name|GUIGlobals
+operator|.
 name|getImage
 argument_list|(
 literal|"psSmall"
@@ -2283,6 +2395,8 @@ operator|+
 literal|" PS"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2297,6 +2411,8 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
+name|GUIGlobals
+operator|.
 name|getImage
 argument_list|(
 literal|"psSmall"
@@ -2315,6 +2431,8 @@ literal|"Open folder"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2331,6 +2449,8 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
+name|GUIGlobals
+operator|.
 name|getImage
 argument_list|(
 literal|"psSmall"
@@ -2349,6 +2469,8 @@ literal|"Open file"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2403,6 +2525,8 @@ literal|" file"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2443,6 +2567,8 @@ name|getToolTip
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2482,6 +2608,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//tableIcons.put("quality", lab);
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2522,6 +2650,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//        lab.setName("0");
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2561,6 +2691,8 @@ name|getToolTip
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2600,6 +2732,8 @@ name|getToolTip
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2639,6 +2773,8 @@ name|getToolTip
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put

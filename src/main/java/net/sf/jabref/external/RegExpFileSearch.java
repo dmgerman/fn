@@ -217,6 +217,8 @@ name|out
 operator|.
 name|println
 argument_list|(
+name|RegExpFileSearch
+operator|.
 name|findFiles
 argument_list|(
 name|entry
@@ -312,6 +314,8 @@ name|put
 argument_list|(
 name|entry
 argument_list|,
+name|RegExpFileSearch
+operator|.
 name|findFiles
 argument_list|(
 name|entry
@@ -402,6 +406,7 @@ operator|.
 name|hasNext
 argument_list|()
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -409,6 +414,7 @@ argument_list|(
 literal|"|"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|String
 name|extensionRegExp
@@ -423,6 +429,8 @@ operator|+
 literal|")"
 decl_stmt|;
 return|return
+name|RegExpFileSearch
+operator|.
 name|findFile
 argument_list|(
 name|entry
@@ -498,6 +506,8 @@ name|File
 argument_list|>
 name|tmp
 init|=
+name|RegExpFileSearch
+operator|.
 name|findFile
 argument_list|(
 name|entry
@@ -522,6 +532,7 @@ name|tmp
 operator|!=
 literal|null
 condition|)
+block|{
 name|res
 operator|.
 name|addAll
@@ -529,6 +540,7 @@ argument_list|(
 name|tmp
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|res
@@ -614,6 +626,8 @@ return|;
 block|}
 name|res
 operator|=
+name|RegExpFileSearch
+operator|.
 name|findFile
 argument_list|(
 name|entry
@@ -654,6 +668,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 try|try
 block|{
 comment|/**                      * [ 1601651 ] PDF subdirectory - missing first character                      *                      * http://sourceforge.net/tracker/index.php?func=detail&aid=1601651&group_id=92314&atid=600306                      */
@@ -707,6 +722,7 @@ operator|.
 name|separatorChar
 operator|)
 condition|)
+block|{
 name|tmp
 operator|=
 name|tmp
@@ -716,6 +732,7 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 name|res
 operator|.
 name|set
@@ -741,6 +758,7 @@ operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return
@@ -902,9 +920,11 @@ name|length
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|res
 return|;
+block|}
 if|if
 condition|(
 name|fileParts
@@ -923,11 +943,13 @@ literal|0
 init|;
 name|i
 operator|<
+operator|(
 name|fileParts
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|;
 name|i
 operator|++
@@ -1080,6 +1102,8 @@ name|res
 operator|.
 name|addAll
 argument_list|(
+name|RegExpFileSearch
+operator|.
 name|findFile
 argument_list|(
 name|entry
@@ -1179,8 +1203,9 @@ name|subDirs
 operator|==
 literal|null
 condition|)
-comment|// No permission?
+block|{
 continue|continue;
+block|}
 name|toDo
 operator|.
 name|addAll
@@ -1209,11 +1234,15 @@ operator|.
 name|isDirectory
 argument_list|()
 condition|)
+block|{
 continue|continue;
+block|}
 name|res
 operator|.
 name|addAll
 argument_list|(
+name|RegExpFileSearch
+operator|.
 name|findFile
 argument_list|(
 name|entry
@@ -1251,6 +1280,8 @@ name|replaceAll
 argument_list|(
 literal|"\\[extension\\]"
 argument_list|,
+name|RegExpFileSearch
+operator|.
 name|EXT_MARKER
 argument_list|)
 decl_stmt|;
@@ -1270,6 +1301,8 @@ argument_list|)
 operator|.
 name|replaceAll
 argument_list|(
+name|RegExpFileSearch
+operator|.
 name|EXT_MARKER
 argument_list|,
 name|extensionRegExp
@@ -1313,6 +1346,8 @@ operator|new
 name|FilenameFilter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|accept
@@ -1341,9 +1376,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|matches
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|(
 name|matches
@@ -1353,6 +1390,7 @@ operator|>
 literal|0
 operator|)
 condition|)
+block|{
 name|Collections
 operator|.
 name|addAll
@@ -1362,6 +1400,7 @@ argument_list|,
 name|matches
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|res
 return|;

@@ -218,17 +218,25 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|ErrorConsole
+operator|.
 name|instance
 operator|==
 literal|null
 condition|)
+block|{
+name|ErrorConsole
+operator|.
 name|instance
 operator|=
 operator|new
 name|ErrorConsole
 argument_list|()
 expr_stmt|;
+block|}
 return|return
+name|ErrorConsole
+operator|.
 name|instance
 return|;
 block|}
@@ -586,6 +594,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -603,6 +613,8 @@ operator|=
 name|frame
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -672,6 +684,8 @@ operator|=
 name|out2
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|write (byte buf[], int off, int len)
 specifier|public
 name|void
@@ -720,6 +734,8 @@ name|ignored
 parameter_list|)
 block|{             }
 block|}
+annotation|@
+name|Override
 DECL|method|flush ()
 specifier|public
 name|void
@@ -792,6 +808,8 @@ operator|.
 name|size
 argument_list|()
 operator|<
+name|ErrorConsole
+operator|.
 name|MAXLOGLINES
 condition|)
 block|{
@@ -817,6 +835,8 @@ operator|.
 name|size
 argument_list|()
 operator|>
+name|ErrorConsole
+operator|.
 name|MAXLOGLINES
 condition|)
 block|{

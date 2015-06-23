@@ -114,6 +114,8 @@ operator|=
 name|be
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|startDocument ()
 specifier|public
 name|void
@@ -129,6 +131,8 @@ name|StringBuffer
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|characters (char[] ch, int start, int length)
 specifier|public
 name|void
@@ -159,6 +163,8 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|startElement (String uri, String localName, String qualifiedName, Attributes attributes)
 specifier|public
 name|void
@@ -186,6 +192,8 @@ name|StringBuffer
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|endElement (String uri, String localName, String qualifiedName)
 specifier|public
 name|void
@@ -460,9 +468,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|year
 operator|==
 literal|null
+operator|)
 operator|||
 name|year
 operator|.
@@ -603,6 +613,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|authors
 operator|.
 name|append
@@ -610,6 +621,7 @@ argument_list|(
 literal|" and "
 argument_list|)
 expr_stmt|;
+block|}
 name|authors
 operator|.
 name|append
@@ -619,6 +631,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|endDocument ()
 specifier|public
 name|void

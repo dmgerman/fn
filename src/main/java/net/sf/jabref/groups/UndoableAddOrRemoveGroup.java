@@ -169,6 +169,8 @@ name|m_subtreeBackup
 operator|=
 name|editType
 operator|!=
+name|UndoableAddOrRemoveGroup
+operator|.
 name|REMOVE_NODE_KEEP_CHILDREN
 condition|?
 name|editedNode
@@ -199,6 +201,8 @@ name|getIndexedPath
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getUndoPresentationName ()
 specifier|public
 name|String
@@ -277,6 +281,8 @@ operator|+
 literal|")"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRedoPresentationName ()
 specifier|public
 name|String
@@ -297,6 +303,8 @@ name|getName
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|undo ()
 specifier|public
 name|void
@@ -314,6 +322,8 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|redo ()
 specifier|public
 name|void
@@ -368,15 +378,18 @@ literal|0
 init|;
 name|i
 operator|<
+operator|(
 name|m_pathToNode
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|;
 operator|++
 name|i
 control|)
+block|{
 name|cursor
 operator|=
 operator|(
@@ -392,6 +405,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|undo
@@ -434,9 +448,11 @@ name|childIndex
 init|;
 name|i
 operator|<
+operator|(
 name|childIndex
 operator|+
 name|m_subtreeRootChildCount
+operator|)
 condition|;
 operator|++
 name|i
@@ -543,6 +559,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|cursor
 operator|.
 name|insert
@@ -558,6 +575,7 @@ argument_list|,
 name|childIndex
 argument_list|)
 expr_stmt|;
+block|}
 break|break;
 case|case
 name|REMOVE_NODE_AND_CHILDREN
@@ -576,11 +594,13 @@ if|if
 condition|(
 name|m_revalidate
 condition|)
+block|{
 name|m_groupSelector
 operator|.
 name|revalidateGroups
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Call this method to decide if the group list should be immediately      * revalidated by this operation. Default is true.      *       * @param val      *            a<code>boolean</code> value      */
 DECL|method|setRevalidate (boolean val)

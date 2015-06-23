@@ -402,6 +402,8 @@ name|handledExtensions
 operator|.
 name|add
 argument_list|(
+name|MODSEntry
+operator|.
 name|BIBTEX
 operator|+
 literal|"publisher"
@@ -411,6 +413,8 @@ name|handledExtensions
 operator|.
 name|add
 argument_list|(
+name|MODSEntry
+operator|.
 name|BIBTEX
 operator|+
 literal|"title"
@@ -420,6 +424,8 @@ name|handledExtensions
 operator|.
 name|add
 argument_list|(
+name|MODSEntry
+operator|.
 name|BIBTEX
 operator|+
 literal|"bibtexkey"
@@ -429,6 +435,8 @@ name|handledExtensions
 operator|.
 name|add
 argument_list|(
+name|MODSEntry
+operator|.
 name|BIBTEX
 operator|+
 literal|"author"
@@ -472,6 +480,7 @@ if|if
 condition|(
 name|CHARFORMAT
 condition|)
+block|{
 name|title
 operator|=
 name|chars
@@ -486,7 +495,9 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|title
 operator|=
 name|bibtex
@@ -496,6 +507,7 @@ argument_list|(
 literal|"title"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -513,6 +525,7 @@ if|if
 condition|(
 name|CHARFORMAT
 condition|)
+block|{
 name|publisher
 operator|=
 name|chars
@@ -527,7 +540,9 @@ literal|"publisher"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|publisher
 operator|=
 name|bibtex
@@ -537,6 +552,7 @@ argument_list|(
 literal|"publisher"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -549,6 +565,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|id
 operator|=
 name|bibtex
@@ -558,6 +575,7 @@ argument_list|(
 literal|"bibtexkey"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -574,6 +592,7 @@ if|if
 condition|(
 name|CHARFORMAT
 condition|)
+block|{
 name|place
 operator|=
 name|chars
@@ -588,7 +607,9 @@ literal|"place"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|place
 operator|=
 name|bibtex
@@ -598,6 +619,7 @@ argument_list|(
 literal|"place"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|date
 operator|=
@@ -624,6 +646,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|authors
 operator|=
 name|getAuthors
@@ -636,8 +659,10 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
+operator|(
 name|bibtex
 operator|.
 name|getType
@@ -646,7 +671,9 @@ operator|==
 name|BibtexEntryType
 operator|.
 name|ARTICLE
+operator|)
 operator|||
+operator|(
 name|bibtex
 operator|.
 name|getType
@@ -655,6 +682,7 @@ operator|==
 name|BibtexEntryType
 operator|.
 name|INPROCEEDINGS
+operator|)
 condition|)
 block|{
 name|host
@@ -713,6 +741,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|host
 operator|.
 name|volume
@@ -724,6 +753,7 @@ argument_list|(
 literal|"volume"
 argument_list|)
 expr_stmt|;
+block|}
 name|host
 operator|.
 name|issuance
@@ -741,6 +771,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|host
 operator|.
 name|pages
@@ -756,6 +787,7 @@ literal|"pages"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|populateExtensionFields
 argument_list|(
@@ -795,6 +827,8 @@ argument_list|)
 decl_stmt|;
 name|field
 operator|=
+name|MODSEntry
+operator|.
 name|BIBTEX
 operator|+
 name|field
@@ -857,6 +891,7 @@ if|if
 condition|(
 name|CHARFORMAT
 condition|)
+block|{
 name|result
 operator|.
 name|add
@@ -873,7 +908,9 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|result
 operator|.
 name|add
@@ -885,6 +922,7 @@ name|authors
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -911,6 +949,7 @@ if|if
 condition|(
 name|CHARFORMAT
 condition|)
+block|{
 name|result
 operator|.
 name|add
@@ -927,7 +966,9 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|result
 operator|.
 name|add
@@ -939,6 +980,7 @@ name|name
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return
@@ -971,6 +1013,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|+=
 operator|(
@@ -982,6 +1025,7 @@ literal|"year"
 argument_list|)
 operator|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -993,6 +1037,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|+=
 literal|"-"
@@ -1004,6 +1049,7 @@ argument_list|(
 literal|"month"
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|result
 return|;
@@ -1753,7 +1799,9 @@ argument_list|(
 name|field
 argument_list|)
 condition|)
+block|{
 continue|continue;
+block|}
 name|Element
 name|theData
 init|=
@@ -1854,9 +1902,11 @@ decl_stmt|;
 comment|// Used to reference the current character.
 if|if
 condition|(
+operator|(
 name|in
 operator|==
 literal|null
+operator|)
 operator|||
 operator|(
 literal|""
@@ -1867,10 +1917,12 @@ name|in
 argument_list|)
 operator|)
 condition|)
+block|{
 return|return
 literal|""
 return|;
 comment|// vacancy test.
+block|}
 for|for
 control|(
 name|int
@@ -1961,6 +2013,7 @@ literal|0x10FFFF
 operator|)
 operator|)
 condition|)
+block|{
 name|out
 operator|.
 name|append
@@ -1968,6 +2021,7 @@ argument_list|(
 name|current
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|out
@@ -1977,6 +2031,8 @@ argument_list|()
 return|;
 block|}
 comment|/*      * render as XML      *       */
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String

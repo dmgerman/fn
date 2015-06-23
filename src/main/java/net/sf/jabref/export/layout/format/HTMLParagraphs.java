@@ -77,6 +77,8 @@ specifier|static
 name|Pattern
 name|beforeNewLines
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -109,11 +111,15 @@ return|;
 block|}
 if|if
 condition|(
+name|HTMLParagraphs
+operator|.
 name|beforeNewLines
 operator|==
 literal|null
 condition|)
 block|{
+name|HTMLParagraphs
+operator|.
 name|beforeNewLines
 operator|=
 name|Pattern
@@ -127,6 +133,8 @@ block|}
 name|Matcher
 name|m
 init|=
+name|HTMLParagraphs
+operator|.
 name|beforeNewLines
 operator|.
 name|matcher

@@ -170,13 +170,16 @@ parameter_list|()
 block|{
 return|return
 operator|(
+operator|(
 name|xmlDocument
 operator|.
 name|getTitle
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|xmlDocument
 operator|.
 name|getTitle
@@ -186,6 +189,7 @@ name|getValue
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|xmlDocument
@@ -245,13 +249,16 @@ parameter_list|()
 block|{
 return|return
 operator|(
+operator|(
 name|xmlDocument
 operator|.
 name|getAbstract
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 operator|(
 operator|(
 name|Abstract
@@ -266,6 +273,7 @@ name|getValue
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 operator|(
@@ -415,13 +423,16 @@ parameter_list|()
 block|{
 return|return
 operator|(
+operator|(
 name|xmlDocument
 operator|.
 name|getAuthors
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|xmlDocument
 operator|.
 name|getAuthors
@@ -431,6 +442,7 @@ name|getCollection
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|xmlDocument
@@ -488,13 +500,16 @@ parameter_list|()
 block|{
 return|return
 operator|(
+operator|(
 name|xmlDocument
 operator|.
 name|getDoi
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|this
 operator|.
 name|getSimpleTypeValue
@@ -506,6 +521,7 @@ argument_list|()
 argument_list|)
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|this
@@ -565,6 +581,7 @@ parameter_list|()
 block|{
 return|return
 operator|(
+operator|(
 name|this
 operator|.
 name|getSimpleTypeValue
@@ -576,6 +593,7 @@ argument_list|()
 argument_list|)
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|this
@@ -625,9 +643,11 @@ name|author
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 name|String
 name|result
 init|=
@@ -645,6 +665,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|=
 name|result
@@ -662,6 +683,7 @@ argument_list|()
 operator|+
 literal|" "
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|getSimpleTypeValue
@@ -674,6 +696,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|=
 name|result
@@ -691,6 +714,7 @@ argument_list|()
 operator|+
 literal|" "
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|getSimpleTypeValue
@@ -703,6 +727,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|=
 name|result
@@ -720,6 +745,7 @@ argument_list|()
 operator|+
 literal|" "
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|getSimpleTypeValue
@@ -732,6 +758,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|=
 name|result
@@ -749,6 +776,7 @@ argument_list|()
 operator|+
 literal|" "
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|getSimpleTypeValue
@@ -761,6 +789,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|=
 name|result
@@ -778,6 +807,7 @@ argument_list|()
 operator|+
 literal|" "
 expr_stmt|;
+block|}
 return|return
 name|result
 operator|.
@@ -796,9 +826,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|bean
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 operator|(
@@ -807,9 +839,11 @@ operator|instanceof
 name|SimpleTypeElementBean
 operator|)
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|SimpleTypeElementBean
 name|simpleTypeElementBean
 init|=
@@ -820,12 +854,14 @@ name|bean
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|simpleTypeElementBean
 operator|.
 name|getValue
 argument_list|()
 operator|==
 literal|null
+operator|)
 operator|||
 name|simpleTypeElementBean
 operator|.
@@ -837,6 +873,7 @@ argument_list|(
 literal|"null"
 argument_list|)
 operator|||
+operator|(
 name|simpleTypeElementBean
 operator|.
 name|getValue
@@ -846,10 +883,13 @@ name|length
 argument_list|()
 operator|<=
 literal|0
+operator|)
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 return|return
 name|simpleTypeElementBean
 operator|.

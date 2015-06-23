@@ -94,6 +94,8 @@ operator|=
 name|hitOrMiss
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|compare (BibtexEntry o1, BibtexEntry o2)
 specifier|public
 name|int
@@ -112,9 +114,11 @@ name|hitOrMiss
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|0
 return|;
+block|}
 name|boolean
 name|hit1
 init|=
@@ -140,10 +144,13 @@ name|hit1
 operator|==
 name|hit2
 condition|)
+block|{
 return|return
 literal|0
 return|;
+block|}
 else|else
+block|{
 return|return
 name|hit1
 condition|?
@@ -152,6 +159,7 @@ literal|1
 else|:
 literal|1
 return|;
+block|}
 block|}
 block|}
 end_class

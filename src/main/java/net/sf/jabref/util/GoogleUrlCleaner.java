@@ -80,20 +80,26 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|dirty
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|dirty
 operator|.
 name|length
 argument_list|()
 operator|==
 literal|0
+operator|)
 condition|)
+block|{
 return|return
 name|dirty
 return|;
+block|}
 try|try
 block|{
 name|URL
@@ -121,9 +127,11 @@ name|query
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 name|dirty
 return|;
+block|}
 comment|// split parameters
 name|String
 index|[]
@@ -142,9 +150,11 @@ name|pairs
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 name|dirty
 return|;
+block|}
 for|for
 control|(
 name|String
@@ -180,6 +190,7 @@ argument_list|(
 literal|"url"
 argument_list|)
 condition|)
+block|{
 return|return
 name|URLDecoder
 operator|.
@@ -197,6 +208,7 @@ argument_list|,
 literal|"UTF-8"
 argument_list|)
 return|;
+block|}
 block|}
 block|}
 catch|catch

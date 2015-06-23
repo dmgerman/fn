@@ -776,6 +776,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -814,6 +816,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -839,6 +843,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -865,10 +871,12 @@ name|selectedIcon
 operator|!=
 literal|null
 condition|)
+block|{
 name|initSel
 operator|=
 name|selectedIcon
 expr_stmt|;
+block|}
 name|IconSelection
 name|ic
 init|=
@@ -978,6 +986,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|insertUpdate
@@ -992,6 +1002,8 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeUpdate
@@ -1006,6 +1018,8 @@ name|documentEvent
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|changedUpdate
@@ -1030,6 +1044,7 @@ name|dParent
 operator|!=
 literal|null
 condition|)
+block|{
 name|diag
 operator|=
 operator|new
@@ -1047,7 +1062,9 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|diag
 operator|=
 operator|new
@@ -1065,6 +1082,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 name|diag
 operator|.
 name|getContentPane
@@ -1128,6 +1146,7 @@ name|dParent
 operator|!=
 literal|null
 condition|)
+block|{
 name|diag
 operator|.
 name|setLocationRelativeTo
@@ -1135,7 +1154,9 @@ argument_list|(
 name|dParent
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|diag
 operator|.
 name|setLocationRelativeTo
@@ -1144,6 +1165,7 @@ name|fParent
 argument_list|)
 expr_stmt|;
 comment|//Util.placeDialog(diag, parent);
+block|}
 name|setValues
 argument_list|(
 name|entry
@@ -1184,10 +1206,12 @@ if|if
 condition|(
 name|visible
 condition|)
+block|{
 name|okPressed
 operator|=
 literal|false
 expr_stmt|;
+block|}
 name|diag
 operator|.
 name|setVisible
@@ -1269,6 +1293,7 @@ operator|==
 literal|0
 operator|)
 condition|)
+block|{
 name|useDefault
 operator|.
 name|setSelected
@@ -1276,7 +1301,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|other
 operator|.
 name|setSelected
@@ -1284,6 +1311,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 name|selectedIcon
 operator|=
 literal|null
@@ -1358,6 +1386,7 @@ operator|==
 literal|'.'
 operator|)
 condition|)
+block|{
 name|entry
 operator|.
 name|setExtension
@@ -1370,7 +1399,9 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|entry
 operator|.
 name|setExtension
@@ -1378,12 +1409,14 @@ argument_list|(
 name|ext
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|selectedIcon
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setIconName
@@ -1391,6 +1424,7 @@ argument_list|(
 name|selectedIcon
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -1439,6 +1473,7 @@ operator|==
 literal|0
 operator|)
 condition|)
+block|{
 name|entry
 operator|.
 name|setOpenWith
@@ -1446,7 +1481,9 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|entry
 operator|.
 name|setOpenWith
@@ -1460,6 +1497,7 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|okPressed ()
@@ -1502,6 +1540,8 @@ operator|=
 name|comp
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

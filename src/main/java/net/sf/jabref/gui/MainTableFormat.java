@@ -126,18 +126,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|JabRef
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|JabRefPreferences
 import|;
 end_import
@@ -563,6 +551,8 @@ operator|=
 name|panel
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnCount ()
 specifier|public
 name|int
@@ -578,6 +568,8 @@ name|length
 return|;
 block|}
 comment|/**      * @return the string that should be put in the column header      */
+annotation|@
+name|Override
 DECL|method|getColumnName (int col)
 specifier|public
 name|String
@@ -696,6 +688,7 @@ name|i
 operator|>
 literal|0
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -703,6 +696,7 @@ argument_list|(
 literal|'/'
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|disName
 init|=
@@ -722,6 +716,7 @@ name|disName
 operator|!=
 literal|null
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -729,7 +724,9 @@ argument_list|(
 name|disName
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -745,6 +742,7 @@ index|]
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb
@@ -780,9 +778,11 @@ name|name
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|name
 return|;
+block|}
 name|String
 index|[]
 name|icon
@@ -810,6 +810,8 @@ operator|)
 condition|)
 block|{
 return|return
+name|MainTableFormat
+operator|.
 name|ICON_COLUMN_PREFIX
 operator|+
 name|icon
@@ -853,6 +855,7 @@ name|o
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 operator|(
 name|String
@@ -860,10 +863,13 @@ index|[]
 operator|)
 name|o
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 comment|/**      * Finds the column index for the given column name.      * @param colName The column name      * @return The column index if any, or -1 if no column has that name.      */
 DECL|method|getColumnIndex (String colName)
@@ -908,11 +914,13 @@ argument_list|(
 name|colName
 argument_list|)
 condition|)
+block|{
 return|return
 name|i
 operator|+
 name|padleft
 return|;
+block|}
 block|}
 return|return
 operator|-
@@ -955,6 +963,8 @@ index|]
 operator|.
 name|equals
 argument_list|(
+name|MainTableFormat
+operator|.
 name|RANKING
 index|[
 literal|0
@@ -1110,6 +1120,8 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnValue (BibtexEntry be, int col)
 specifier|public
 name|Object
@@ -1185,9 +1197,11 @@ name|hasField
 operator|<
 literal|0
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 comment|// Ok, so we are going to display an icon. Find out which one, and return it:
 if|if
 condition|(
@@ -1254,6 +1268,8 @@ index|]
 operator|.
 name|equals
 argument_list|(
+name|MainTableFormat
+operator|.
 name|PRIORITY
 index|[
 literal|0
@@ -1310,6 +1326,8 @@ index|]
 operator|.
 name|equals
 argument_list|(
+name|MainTableFormat
+operator|.
 name|RANKING
 index|[
 literal|0
@@ -1365,6 +1383,8 @@ index|]
 operator|.
 name|equals
 argument_list|(
+name|MainTableFormat
+operator|.
 name|READ
 index|[
 literal|0
@@ -1495,6 +1515,7 @@ operator|.
 name|TYPE_HEADER
 argument_list|)
 condition|)
+block|{
 name|o
 operator|=
 name|be
@@ -1505,6 +1526,7 @@ operator|.
 name|getName
 argument_list|()
 expr_stmt|;
+block|}
 else|else
 block|{
 name|o
@@ -1531,9 +1553,11 @@ argument_list|(
 literal|"Author"
 argument_list|)
 operator|&&
+operator|(
 name|o
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|o
@@ -1579,9 +1603,11 @@ block|{
 if|if
 condition|(
 operator|(
+operator|(
 name|col
 operator|-
 name|padleft
+operator|)
 operator|==
 name|nameCol
 index|[
@@ -1637,13 +1663,16 @@ if|if
 condition|(
 name|namesAsIs
 condition|)
+block|{
 return|return
 name|o
 return|;
+block|}
 if|if
 condition|(
 name|namesNatbib
 condition|)
+block|{
 name|o
 operator|=
 name|AuthorList
@@ -1656,11 +1685,13 @@ operator|)
 name|o
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
 name|namesLastOnly
 condition|)
+block|{
 name|o
 operator|=
 name|AuthorList
@@ -1675,11 +1706,13 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
 name|namesFf
 condition|)
+block|{
 name|o
 operator|=
 name|AuthorList
@@ -1696,11 +1729,13 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
 name|namesLf
 condition|)
+block|{
 name|o
 operator|=
 name|AuthorList
@@ -1717,6 +1752,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|o
 return|;
@@ -1776,19 +1812,25 @@ comment|// Otherwise returns -1. When field indicates one or more file types,
 comment|// returns the index of the first present file type.
 if|if
 condition|(
+operator|(
 name|be
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|field
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|field
 operator|.
 name|length
 operator|<
 literal|1
+operator|)
 condition|)
 block|{
 return|return
@@ -2113,6 +2155,8 @@ index|]
 operator|.
 name|split
 argument_list|(
+name|MainTableFormat
+operator|.
 name|COL_DEFINITION_FIELD_SEPARATOR
 argument_list|)
 decl_stmt|;
@@ -2274,6 +2318,7 @@ operator|.
 name|PREF_SHOWCOLUMN_RANKING
 argument_list|)
 condition|)
+block|{
 name|iconCols
 operator|.
 name|put
@@ -2281,9 +2326,12 @@ argument_list|(
 name|coln
 operator|++
 argument_list|,
+name|MainTableFormat
+operator|.
 name|RANKING
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|Globals
@@ -2297,6 +2345,7 @@ operator|.
 name|PREF_SHOWCOLUMN_RELEVANCE
 argument_list|)
 condition|)
+block|{
 name|iconCols
 operator|.
 name|put
@@ -2304,9 +2353,12 @@ argument_list|(
 name|coln
 operator|++
 argument_list|,
+name|MainTableFormat
+operator|.
 name|RELEVANCE
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|Globals
@@ -2320,6 +2372,7 @@ operator|.
 name|PREF_SHOWCOLUMN_QUALITY
 argument_list|)
 condition|)
+block|{
 name|iconCols
 operator|.
 name|put
@@ -2327,9 +2380,12 @@ argument_list|(
 name|coln
 operator|++
 argument_list|,
+name|MainTableFormat
+operator|.
 name|QUALITY
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|Globals
@@ -2343,6 +2399,7 @@ operator|.
 name|PREF_SHOWCOLUMN_PRIORITY
 argument_list|)
 condition|)
+block|{
 name|iconCols
 operator|.
 name|put
@@ -2350,9 +2407,12 @@ argument_list|(
 name|coln
 operator|++
 argument_list|,
+name|MainTableFormat
+operator|.
 name|PRIORITY
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|Globals
@@ -2366,6 +2426,7 @@ operator|.
 name|PREF_SHOWCOLUMN_PRINTED
 argument_list|)
 condition|)
+block|{
 name|iconCols
 operator|.
 name|put
@@ -2373,9 +2434,12 @@ argument_list|(
 name|coln
 operator|++
 argument_list|,
+name|MainTableFormat
+operator|.
 name|PRINTED
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|Globals
@@ -2389,6 +2453,7 @@ operator|.
 name|PREF_SHOWCOLUMN_READ
 argument_list|)
 condition|)
+block|{
 name|iconCols
 operator|.
 name|put
@@ -2396,9 +2461,12 @@ argument_list|(
 name|coln
 operator|++
 argument_list|,
+name|MainTableFormat
+operator|.
 name|READ
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -2411,6 +2479,7 @@ argument_list|(
 literal|"fileColumn"
 argument_list|)
 condition|)
+block|{
 name|iconCols
 operator|.
 name|put
@@ -2418,9 +2487,12 @@ argument_list|(
 name|coln
 operator|++
 argument_list|,
+name|MainTableFormat
+operator|.
 name|FILE
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|Globals
@@ -2432,6 +2504,7 @@ argument_list|(
 literal|"pdfColumn"
 argument_list|)
 condition|)
+block|{
 name|iconCols
 operator|.
 name|put
@@ -2439,9 +2512,12 @@ argument_list|(
 name|coln
 operator|++
 argument_list|,
+name|MainTableFormat
+operator|.
 name|PDF
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|Globals
@@ -2473,6 +2549,8 @@ argument_list|(
 name|coln
 operator|++
 argument_list|,
+name|MainTableFormat
+operator|.
 name|DOI_FIRST
 argument_list|)
 expr_stmt|;
@@ -2486,6 +2564,8 @@ argument_list|(
 name|coln
 operator|++
 argument_list|,
+name|MainTableFormat
+operator|.
 name|URL_FIRST
 argument_list|)
 expr_stmt|;
@@ -2502,6 +2582,7 @@ argument_list|(
 literal|"arxivColumn"
 argument_list|)
 condition|)
+block|{
 name|iconCols
 operator|.
 name|put
@@ -2509,9 +2590,12 @@ argument_list|(
 name|coln
 operator|++
 argument_list|,
+name|MainTableFormat
+operator|.
 name|ARXIV
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|Globals
@@ -2756,6 +2840,8 @@ argument_list|<
 name|BibtexEntry
 argument_list|>
 block|{
+annotation|@
+name|Override
 DECL|method|matches (BibtexEntry object)
 specifier|public
 name|boolean
@@ -2826,6 +2912,8 @@ operator|=
 name|searchOptions
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|matches (BibtexEntry entry)
 specifier|public
 name|boolean

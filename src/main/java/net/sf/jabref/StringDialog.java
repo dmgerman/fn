@@ -146,6 +146,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|ActionMap
 import|;
 end_import
@@ -548,6 +558,8 @@ operator|new
 name|WindowAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|windowClosing
@@ -575,6 +587,8 @@ operator|new
 name|LayoutFocusTraversalPolicy
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|protected
 name|boolean
 name|accept
@@ -692,6 +706,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|table
 operator|.
 name|setRowSelectionInterval
@@ -701,6 +716,7 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
 name|gbl
 operator|.
 name|setConstraints
@@ -951,6 +967,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|setTitle
 argument_list|(
 name|Globals
@@ -973,7 +990,9 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|setTitle
 argument_list|(
 name|Globals
@@ -997,6 +1016,7 @@ name|untitledTitle
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|class|StringTable
 class|class
@@ -1303,6 +1323,8 @@ operator|=
 name|base
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getValueAt (int row, int col)
 specifier|public
 name|Object
@@ -1351,6 +1373,8 @@ argument_list|()
 operator|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValueAt (Object value, int row, int col)
 specifier|public
 name|void
@@ -1412,6 +1436,7 @@ operator|)
 name|value
 argument_list|)
 condition|)
+block|{
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -1439,6 +1464,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1724,6 +1750,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnCount ()
 specifier|public
 name|int
@@ -1734,6 +1762,8 @@ return|return
 literal|2
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRowCount ()
 specifier|public
 name|int
@@ -1747,6 +1777,8 @@ name|length
 return|;
 comment|//base.getStringCount();
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnName (int col)
 specifier|public
 name|String
@@ -1780,6 +1812,8 @@ argument_list|)
 operator|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isCellEditable (int row, int col)
 specifier|public
 name|boolean
@@ -1914,6 +1948,8 @@ expr_stmt|;
 comment|//, new ImageIcon(GUIGlobals.closeIconFile));
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -1931,6 +1967,8 @@ operator|=
 name|parent
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2050,6 +2088,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -2067,6 +2107,8 @@ operator|=
 name|parent
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2099,7 +2141,9 @@ name|name
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|isNumber
@@ -2348,6 +2392,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -2365,6 +2411,8 @@ operator|=
 name|parent
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2419,6 +2467,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -2436,6 +2486,8 @@ operator|=
 name|parent
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2643,6 +2695,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|table
 operator|.
 name|setRowSelectionInterval
@@ -2654,6 +2707,7 @@ argument_list|)
 expr_stmt|;
 comment|//table.repaint();
 comment|//panel.markBaseChanged();
+block|}
 block|}
 block|}
 block|}
@@ -2693,6 +2747,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -2704,6 +2760,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2765,6 +2823,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -2776,6 +2836,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

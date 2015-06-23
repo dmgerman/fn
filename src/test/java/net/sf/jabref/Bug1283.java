@@ -16,6 +16,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -58,6 +68,8 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|Assert
+operator|.
 name|assertFalse
 argument_list|(
 name|MonthUtil

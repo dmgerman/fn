@@ -289,8 +289,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|AdvancedCiteDialog
+operator|.
 name|defaultInPar
 condition|)
+block|{
 name|inPar
 operator|.
 name|setSelected
@@ -298,7 +301,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|inText
 operator|.
 name|setSelected
@@ -306,6 +311,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 name|inPar
 operator|.
 name|addChangeListener
@@ -314,6 +320,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -322,6 +330,8 @@ name|ChangeEvent
 name|changeEvent
 parameter_list|)
 block|{
+name|AdvancedCiteDialog
+operator|.
 name|defaultInPar
 operator|=
 name|inPar
@@ -516,6 +526,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -571,6 +583,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed

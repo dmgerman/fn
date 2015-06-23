@@ -223,7 +223,9 @@ name|links
 operator|==
 literal|null
 condition|)
+block|{
 continue|continue;
+block|}
 name|model
 operator|.
 name|setContent
@@ -248,6 +250,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|files
 operator|.
 name|add
@@ -260,6 +263,7 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|files
@@ -303,6 +307,7 @@ name|prog
 operator|!=
 literal|null
 condition|)
+block|{
 name|SwingUtilities
 operator|.
 name|invokeLater
@@ -311,6 +316,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -344,6 +351,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 name|Set
 argument_list|<
 name|String
@@ -414,12 +422,14 @@ operator|&&
 operator|(
 name|pos
 operator|<
+operator|(
 name|name
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 operator|)
 operator|)
 condition|?
@@ -487,6 +497,7 @@ name|aDir
 range|:
 name|dir
 control|)
+block|{
 if|if
 condition|(
 operator|!
@@ -497,6 +508,7 @@ argument_list|(
 name|aDir
 argument_list|)
 condition|)
+block|{
 name|al
 operator|.
 name|add
@@ -504,6 +516,8 @@ argument_list|(
 name|aDir
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 for|for
 control|(
 name|String
@@ -511,6 +525,7 @@ name|aFileDir
 range|:
 name|fileDir
 control|)
+block|{
 if|if
 condition|(
 operator|!
@@ -521,6 +536,7 @@ argument_list|(
 name|aFileDir
 argument_list|)
 condition|)
+block|{
 name|al
 operator|.
 name|add
@@ -528,6 +544,8 @@ argument_list|(
 name|aFileDir
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 name|String
 index|[]
 name|dirs
@@ -567,10 +585,12 @@ name|tmp
 operator|!=
 literal|null
 condition|)
+block|{
 name|file
 operator|=
 name|tmp
 expr_stmt|;
+block|}
 comment|// Check if we have arrived at an existing file:
 if|if
 condition|(
@@ -643,11 +663,13 @@ if|if
 condition|(
 name|deleteOriginalFiles
 condition|)
+block|{
 name|file
 operator|.
 name|delete
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -682,6 +704,7 @@ name|prog
 operator|!=
 literal|null
 condition|)
+block|{
 name|SwingUtilities
 operator|.
 name|invokeLater
@@ -690,6 +713,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -706,6 +731,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else
@@ -912,6 +938,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -942,6 +970,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed

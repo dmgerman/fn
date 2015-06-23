@@ -270,6 +270,8 @@ argument_list|(
 operator|new
 name|MetaDataChangeUnit
 argument_list|(
+name|MetaDataChange
+operator|.
 name|ADD
 argument_list|,
 name|key
@@ -295,6 +297,8 @@ argument_list|(
 operator|new
 name|MetaDataChangeUnit
 argument_list|(
+name|MetaDataChange
+operator|.
 name|REMOVE
 argument_list|,
 name|key
@@ -326,6 +330,8 @@ argument_list|(
 operator|new
 name|MetaDataChangeUnit
 argument_list|(
+name|MetaDataChange
+operator|.
 name|MODIFY
 argument_list|,
 name|key
@@ -335,6 +341,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|description ()
 name|JComponent
 name|description
@@ -405,6 +413,8 @@ return|return
 name|sp
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|boolean

@@ -695,6 +695,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1474,6 +1476,7 @@ name|trim
 argument_list|()
 argument_list|)
 condition|)
+block|{
 name|keypatterns
 operator|.
 name|addLabelPattern
@@ -1483,6 +1486,7 @@ argument_list|,
 name|text
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// default value
 name|String
@@ -1622,6 +1626,7 @@ argument_list|(
 name|fieldName
 argument_list|)
 condition|)
+block|{
 name|tf
 operator|.
 name|setText
@@ -1629,6 +1634,7 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|//System.out.println(":: "+_keypatterns.getValue(fieldName).get(0).toString());

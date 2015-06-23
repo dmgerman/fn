@@ -484,6 +484,8 @@ specifier|final
 name|int
 name|perPage
 init|=
+name|IEEEXploreFetcher
+operator|.
 name|MAX_FETCH
 decl_stmt|;
 DECL|field|hits
@@ -819,6 +821,8 @@ literal|"<a href=\"(/stamp/stamp[^\"]+)"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getOptionsPanel ()
 specifier|public
 name|JPanel
@@ -920,6 +924,8 @@ return|return
 name|pan
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter status)
 specifier|public
 name|boolean
@@ -1182,6 +1188,8 @@ if|if
 condition|(
 name|hits
 operator|>
+name|IEEEXploreFetcher
+operator|.
 name|MAX_FETCH
 condition|)
 block|{
@@ -1212,6 +1220,8 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
+name|IEEEXploreFetcher
+operator|.
 name|MAX_FETCH
 argument_list|)
 block|}
@@ -1231,6 +1241,8 @@ argument_list|)
 expr_stmt|;
 name|hits
 operator|=
+name|IEEEXploreFetcher
+operator|.
 name|MAX_FETCH
 expr_stmt|;
 block|}
@@ -1254,9 +1266,11 @@ while|while
 condition|(
 name|shouldContinue
 operator|&&
+operator|(
 name|firstEntry
 operator|<
 name|hits
+operator|)
 condition|)
 block|{
 name|pageNumber
@@ -1285,7 +1299,9 @@ condition|(
 operator|!
 name|shouldContinue
 condition|)
+block|{
 break|break;
+block|}
 name|parse
 argument_list|(
 name|dialog
@@ -1392,6 +1408,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTitle ()
 specifier|public
 name|String
@@ -1402,6 +1420,8 @@ return|return
 literal|"IEEEXplore"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getHelpPage ()
 specifier|public
 name|String
@@ -1412,6 +1432,8 @@ return|return
 literal|"IEEEXploreHelp.html"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeyName ()
 specifier|public
 name|String
@@ -1423,6 +1445,8 @@ literal|"IEEEXplore"
 return|;
 block|}
 comment|/**      * This method is called by the dialog when the user has cancelled the import.      */
+annotation|@
+name|Override
 DECL|method|stopFetching ()
 specifier|public
 name|void
@@ -1444,6 +1468,8 @@ name|startIndex
 parameter_list|)
 block|{
 return|return
+name|IEEEXploreFetcher
+operator|.
 name|START_URL
 operator|+
 name|terms
@@ -1517,6 +1543,7 @@ decl_stmt|;
 while|while
 condition|(
 operator|(
+operator|(
 name|id
 operator|=
 name|parseNextEntryId
@@ -1528,6 +1555,7 @@ argument_list|)
 operator|)
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|shouldContinue
 condition|)
@@ -1703,9 +1731,11 @@ operator|.
 name|isEmpty
 argument_list|()
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|URLConnection
 name|conn
 decl_stmt|;
@@ -1716,6 +1746,8 @@ operator|=
 operator|new
 name|URL
 argument_list|(
+name|IEEEXploreFetcher
+operator|.
 name|IMPORT_URL
 argument_list|)
 operator|.
@@ -1919,7 +1951,9 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 break|break;
+block|}
 for|for
 control|(
 name|int
@@ -1934,6 +1968,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1944,6 +1979,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|System
 operator|.
@@ -1996,9 +2032,11 @@ name|entry
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 comment|// clean up title
 name|String
 name|title
@@ -2487,10 +2525,12 @@ literal|","
 expr_stmt|;
 block|}
 else|else
+block|{
 name|date
 operator|+=
 literal|","
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -3190,10 +3230,12 @@ name|id
 operator|!=
 literal|null
 condition|)
+block|{
 name|fullName
 operator|=
 name|id
 expr_stmt|;
+block|}
 block|}
 block|}
 if|if
@@ -3458,12 +3500,14 @@ argument_list|(
 literal|"Conference Record"
 argument_list|)
 condition|)
+block|{
 name|fullName
 operator|=
 literal|"Proc. "
 operator|+
 name|fullName
 expr_stmt|;
+block|}
 block|}
 name|entry
 operator|.
@@ -3736,13 +3780,17 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|index
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|endIndex
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|String
@@ -3842,13 +3890,17 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|index
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|endIndex
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|endIndex
@@ -4421,12 +4473,14 @@ argument_list|(
 literal|"pages"
 argument_list|)
 operator|&&
+operator|(
 name|fieldMatcher
 operator|.
 name|groupCount
 argument_list|()
 operator|==
 literal|2
+operator|)
 condition|)
 block|{
 name|entry
@@ -4539,6 +4593,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|entry
 operator|.
 name|getField
@@ -4547,6 +4602,7 @@ literal|"author"
 argument_list|)
 operator|==
 literal|null
+operator|)
 operator|||
 name|entry
 operator|.
@@ -4586,6 +4642,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|entry
 operator|.
 name|getType
@@ -4597,6 +4654,7 @@ name|getStandardType
 argument_list|(
 literal|"inproceedings"
 argument_list|)
+operator|)
 operator|&&
 name|entry
 operator|.
@@ -4837,6 +4895,7 @@ operator|.
 name|find
 argument_list|()
 condition|)
+block|{
 return|return
 name|Integer
 operator|.
@@ -4850,7 +4909,9 @@ literal|1
 argument_list|)
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -4863,6 +4924,7 @@ literal|"Could not parse number of hits"
 argument_list|)
 argument_list|)
 throw|;
+block|}
 block|}
 comment|/**      * Download the URL and return contents as a String.      * @param source      * @return      * @throws IOException      */
 DECL|method|getResults (URL source)
@@ -4923,7 +4985,9 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 break|break;
+block|}
 for|for
 control|(
 name|int
@@ -4938,6 +5002,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|sb
 operator|.
 name|append
@@ -4951,6 +5016,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb
@@ -5023,7 +5089,9 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 break|break;
+block|}
 for|for
 control|(
 name|int
@@ -5038,6 +5106,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|sb
 operator|.
 name|append
@@ -5051,6 +5120,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb

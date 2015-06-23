@@ -154,6 +154,8 @@ operator|=
 name|bp
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -220,7 +222,9 @@ operator|<
 literal|2
 operator|)
 condition|)
+block|{
 return|return;
+block|}
 name|bes
 operator|=
 operator|new
@@ -247,6 +251,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|bes
 index|[
 name|i
@@ -267,6 +272,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 name|SearcherRunnable
 name|st
 init|=
@@ -545,11 +551,13 @@ name|DuplicateResolverDialog
 operator|.
 name|AUTOREMOVE_EXACT
 condition|)
+block|{
 name|autoRemoveExactDuplicates
 operator|=
 literal|true
 expr_stmt|;
 comment|// Remember choice
+block|}
 block|}
 elseif|else
 if|if
@@ -616,6 +624,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -741,6 +751,8 @@ name|finished
 init|=
 literal|false
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -757,11 +769,13 @@ init|;
 operator|(
 name|i
 operator|<
+operator|(
 name|bes
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 operator|)
 operator|&&
 operator|!
@@ -989,6 +1003,8 @@ return|return
 name|reply
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void

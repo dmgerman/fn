@@ -249,6 +249,8 @@ operator|=
 name|panel
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|init ()
 specifier|public
 name|void
@@ -442,6 +444,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -453,7 +457,9 @@ condition|(
 operator|!
 name|goOn
 condition|)
+block|{
 return|return;
+block|}
 for|for
 control|(
 name|BibtexEntry
@@ -519,6 +525,7 @@ name|f
 operator|!=
 literal|null
 condition|)
+block|{
 name|files
 operator|.
 name|add
@@ -526,6 +533,7 @@ argument_list|(
 name|f
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Then check the "file" field:
 name|dirs
 operator|=
@@ -652,6 +660,7 @@ name|f
 operator|!=
 literal|null
 condition|)
+block|{
 name|files
 operator|.
 name|add
@@ -659,6 +668,7 @@ argument_list|(
 name|f
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -709,6 +719,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 for|for
 control|(
 name|File
@@ -854,6 +865,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
 if|if
 condition|(
 name|optDiag
@@ -923,6 +935,8 @@ name|done
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void
@@ -934,7 +948,9 @@ condition|(
 operator|!
 name|goOn
 condition|)
+block|{
 return|return;
+block|}
 name|panel
 operator|.
 name|output
@@ -1062,6 +1078,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1093,6 +1111,8 @@ init|=
 operator|-
 literal|338601477652815366L
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed

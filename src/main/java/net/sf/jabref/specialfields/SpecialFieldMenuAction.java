@@ -110,6 +110,8 @@ name|getActionName
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent evt)
 specifier|public
 name|void

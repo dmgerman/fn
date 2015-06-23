@@ -610,6 +610,7 @@ name|title
 operator|!=
 literal|null
 condition|)
+block|{
 name|this
 operator|.
 name|title
@@ -620,6 +621,7 @@ argument_list|(
 name|title
 argument_list|)
 expr_stmt|;
+block|}
 for|for
 control|(
 name|String
@@ -627,6 +629,7 @@ name|field
 range|:
 name|fields
 control|)
+block|{
 name|listModel
 operator|.
 name|addElement
@@ -634,6 +637,7 @@ argument_list|(
 name|field
 argument_list|)
 expr_stmt|;
+block|}
 name|list
 operator|=
 operator|new
@@ -1136,6 +1140,7 @@ name|idx
 operator|>=
 literal|0
 condition|)
+block|{
 name|list
 operator|.
 name|setSelectedIndex
@@ -1143,6 +1148,7 @@ argument_list|(
 name|idx
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Make sure it is visible:
 name|JViewport
 name|viewport
@@ -1187,9 +1193,11 @@ name|o
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 return|return
 operator|(
 name|String
@@ -1197,6 +1205,8 @@ operator|)
 name|o
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setEnabled (boolean en)
 specifier|public
 name|void
@@ -1212,6 +1222,7 @@ name|input
 operator|!=
 literal|null
 condition|)
+block|{
 name|input
 operator|.
 name|setEnabled
@@ -1219,12 +1230,14 @@ argument_list|(
 name|en
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|sel
 operator|!=
 literal|null
 condition|)
+block|{
 name|sel
 operator|.
 name|setEnabled
@@ -1232,6 +1245,7 @@ argument_list|(
 name|en
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|up
@@ -1295,6 +1309,7 @@ name|field
 range|:
 name|fields
 control|)
+block|{
 name|newListModel
 operator|.
 name|addElement
@@ -1302,6 +1317,7 @@ argument_list|(
 name|field
 argument_list|)
 expr_stmt|;
+block|}
 name|this
 operator|.
 name|listModel
@@ -1315,6 +1331,7 @@ name|modelListener
 range|:
 name|modelListeners
 control|)
+block|{
 name|newListModel
 operator|.
 name|addListDataListener
@@ -1322,6 +1339,7 @@ argument_list|(
 name|modelListener
 argument_list|)
 expr_stmt|;
+block|}
 name|list
 operator|.
 name|setModel
@@ -1351,6 +1369,7 @@ if|if
 condition|(
 name|forceLowerCase
 condition|)
+block|{
 name|s
 operator|=
 name|s
@@ -1358,6 +1377,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|s
@@ -1374,7 +1394,9 @@ argument_list|(
 name|s
 argument_list|)
 condition|)
+block|{
 return|return;
+block|}
 name|String
 name|testString
 init|=
@@ -1514,10 +1536,12 @@ name|length
 operator|>
 literal|0
 condition|)
+block|{
 name|changesMade
 operator|=
 literal|true
 expr_stmt|;
+block|}
 for|for
 control|(
 name|int
@@ -1534,6 +1558,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|listModel
 operator|.
 name|removeElementAt
@@ -1550,6 +1575,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|activate ()
 specifier|public
@@ -1737,7 +1763,9 @@ name|oldIdx
 operator|<
 literal|0
 condition|)
+block|{
 return|return;
+block|}
 name|String
 name|o
 init|=
@@ -1802,6 +1830,8 @@ name|newInd
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1952,10 +1982,12 @@ operator|==
 literal|0
 operator|)
 condition|)
+block|{
 comment|// These conditions signify arrow key navigation in the dropdown list, so we should
 comment|// not react to it. I'm not sure if this is well defined enough to be guaranteed to work
 comment|// everywhere.
 return|return;
+block|}
 name|String
 name|s
 init|=

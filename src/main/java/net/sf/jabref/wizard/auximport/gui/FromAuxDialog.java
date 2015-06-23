@@ -1033,6 +1033,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1114,10 +1116,12 @@ operator|.
 name|basePanel
 argument_list|()
 condition|)
+block|{
 name|toSelect
 operator|=
 name|i
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -1125,6 +1129,7 @@ name|toSelect
 operator|>=
 literal|0
 condition|)
+block|{
 name|dbChooser
 operator|.
 name|setSelectedIndex
@@ -1132,6 +1137,7 @@ argument_list|(
 name|toSelect
 argument_list|)
 expr_stmt|;
+block|}
 name|auxFileField
 operator|=
 operator|new
@@ -1908,6 +1914,8 @@ operator|=
 name|tc
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2012,6 +2020,8 @@ operator|=
 name|adaptee
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2064,6 +2074,8 @@ operator|=
 name|adaptee
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2116,6 +2128,8 @@ operator|=
 name|adaptee
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

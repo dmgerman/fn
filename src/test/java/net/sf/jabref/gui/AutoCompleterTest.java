@@ -114,6 +114,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Ignore
 import|;
 end_import
@@ -253,9 +263,13 @@ name|AutoCompleterFactory
 operator|.
 name|getFor
 argument_list|(
+name|AutoCompleterTest
+operator|.
 name|AUTHOR_FIELD
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|autoCompleter
@@ -269,9 +283,13 @@ name|AutoCompleterFactory
 operator|.
 name|getFor
 argument_list|(
+name|AutoCompleterTest
+operator|.
 name|OTHER_FIELD
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|autoCompleter
@@ -295,6 +313,8 @@ name|AutoCompleterFactory
 operator|.
 name|getFor
 argument_list|(
+name|AutoCompleterTest
+operator|.
 name|OTHER_FIELD
 argument_list|)
 decl_stmt|;
@@ -318,6 +338,8 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"authentication"
@@ -333,6 +355,8 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -347,6 +371,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"authentication"
@@ -362,6 +388,8 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -377,6 +405,8 @@ name|length
 argument_list|)
 expr_stmt|;
 comment|// 1 for case-sensitive search, 2 for case insensitive search (Authornames also included)
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -392,6 +422,8 @@ name|length
 argument_list|)
 expr_stmt|;
 comment|// "Aut" triggers case-sensitive search, now only "Authornames" is returned
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"context"
@@ -407,6 +439,8 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -421,6 +455,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -435,6 +471,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -465,6 +503,8 @@ name|AutoCompleterFactory
 operator|.
 name|getFor
 argument_list|(
+name|AutoCompleterTest
+operator|.
 name|CROSSREF_FIELD
 argument_list|)
 decl_stmt|;
@@ -488,6 +528,8 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"1102917"
@@ -503,6 +545,8 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -517,6 +561,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"1102917"
@@ -532,6 +578,8 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -546,6 +594,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -560,6 +610,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -590,6 +642,8 @@ name|AutoCompleterFactory
 operator|.
 name|getFor
 argument_list|(
+name|AutoCompleterTest
+operator|.
 name|ENTIRE_FIELD
 argument_list|)
 decl_stmt|;
@@ -613,6 +667,8 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Personal Ubiquitous Comput."
@@ -628,6 +684,8 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -642,6 +700,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Personal Ubiquitous Comput."
@@ -657,6 +717,8 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -671,6 +733,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -685,6 +749,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -724,6 +790,8 @@ name|AutoCompleterFactory
 operator|.
 name|getFor
 argument_list|(
+name|AutoCompleterTest
+operator|.
 name|AUTHOR_FIELD
 argument_list|)
 decl_stmt|;
@@ -852,6 +920,8 @@ operator|.
 name|AUTOCOMPLETE_FIRSTNAME_MODE_BOTH
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Kostakos, V."
@@ -867,6 +937,8 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -881,6 +953,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Kostakos, V."
@@ -896,6 +970,8 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -910,6 +986,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Kostakos, Vassilis"
@@ -925,6 +1003,8 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -939,6 +1019,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Vassilis Kostakos"
@@ -954,6 +1036,8 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -968,6 +1052,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -982,6 +1068,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|0
@@ -996,6 +1084,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Eric von Hippel"
@@ -1011,6 +1101,8 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1025,6 +1117,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"von Hippel, E."
@@ -1040,6 +1134,8 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -1054,6 +1150,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Reagle, Jr., J. M."
@@ -1069,6 +1167,8 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -1083,6 +1183,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Reagle, Jr., Joseph M."
@@ -1098,6 +1200,8 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1112,6 +1216,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Joseph M. Reagle, Jr."
@@ -1127,6 +1233,8 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1141,6 +1249,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"van den Huevel, Jr., J. A."
@@ -1156,6 +1266,8 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -1170,6 +1282,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Johan A van den Huevel, Jr."
@@ -1185,6 +1299,8 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1199,6 +1315,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Jr. Sherry, John F."
@@ -1214,6 +1332,8 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1228,6 +1348,8 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Sherry, John F., J."
@@ -1243,6 +1365,8 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -1407,6 +1531,8 @@ argument_list|(
 literal|"author"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|autoCompleter
@@ -1417,6 +1543,8 @@ literal|"Hans Meiser"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|autoCompleter
@@ -1535,6 +1663,8 @@ argument_list|(
 literal|"journal"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|autoCompleter
@@ -1572,6 +1702,8 @@ init|=
 operator|new
 name|File
 argument_list|(
+name|AutoCompleterTest
+operator|.
 name|PATH_TO_TEST_BIBTEX
 argument_list|)
 decl_stmt|;

@@ -234,6 +234,8 @@ name|URL_BIBTEX
 init|=
 literal|"http://www.jstor.org/browse/citations.txt?exportFormat=bibtex&exportAction=Display&frame=noframe&dpi=3&config=jstor&viewCitations=1&View=View"
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getHelpPage ()
 specifier|public
 name|String
@@ -244,6 +246,8 @@ return|return
 literal|"JSTOR.html"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeyName ()
 specifier|public
 name|String
@@ -254,6 +258,8 @@ return|return
 literal|"JSTOR"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getOptionsPanel ()
 specifier|public
 name|JPanel
@@ -265,6 +271,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTitle ()
 specifier|public
 name|String
@@ -275,6 +283,8 @@ return|return
 literal|"JSTOR"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|stopFetching ()
 specifier|public
 name|void
@@ -283,6 +293,8 @@ parameter_list|()
 block|{
 comment|// cannot be interrupted
 block|}
+annotation|@
+name|Override
 DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter status)
 specifier|public
 name|boolean
@@ -447,6 +459,8 @@ init|=
 operator|new
 name|URL
 argument_list|(
+name|JSTORFetcher
+operator|.
 name|URL_BIBTEX
 argument_list|)
 decl_stmt|;
@@ -540,6 +554,8 @@ init|=
 operator|new
 name|URL
 argument_list|(
+name|JSTORFetcher
+operator|.
 name|URL_TICKET
 argument_list|)
 decl_stmt|;
@@ -552,8 +568,12 @@ name|openConnection
 argument_list|()
 decl_stmt|;
 return|return
+name|JSTORFetcher
+operator|.
 name|getCookie
 argument_list|(
+name|JSTORFetcher
+operator|.
 name|COOKIE_TICKET
 argument_list|,
 name|conn
@@ -584,6 +604,8 @@ name|urlQuery
 operator|=
 literal|"http://www.jstor.org/search/BasicResults?hp="
 operator|+
+name|JSTORFetcher
+operator|.
 name|MAX_CITATIONS
 operator|+
 literal|"&si=1&gw=jtx&jtxsi=1&jcpsi=1&artsi=1&Query="
@@ -641,8 +663,12 @@ name|ticket
 argument_list|)
 expr_stmt|;
 return|return
+name|JSTORFetcher
+operator|.
 name|getCookie
 argument_list|(
+name|JSTORFetcher
+operator|.
 name|COOKIE_CITATIONS
 argument_list|,
 name|conn
@@ -697,13 +723,17 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|headerName
 operator|==
 literal|null
+operator|)
 operator|&&
+operator|(
 name|headerValue
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 comment|// No more headers
@@ -711,9 +741,11 @@ break|break;
 block|}
 if|if
 condition|(
+operator|(
 name|headerName
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|headerName
 operator|.

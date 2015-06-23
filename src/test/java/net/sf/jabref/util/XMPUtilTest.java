@@ -168,6 +168,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Before
 import|;
 end_import
@@ -499,11 +509,13 @@ name|document
 operator|!=
 literal|null
 condition|)
+block|{
 name|document
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|bibtexString2BibtexEntry (String s)
@@ -546,6 +558,8 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -650,6 +664,8 @@ throws|throws
 name|IOException
 block|{
 return|return
+name|XMPUtilTest
+operator|.
 name|bibtexString2BibtexEntry
 argument_list|(
 name|t1BibtexString
@@ -692,6 +708,8 @@ throws|throws
 name|IOException
 block|{
 return|return
+name|XMPUtilTest
+operator|.
 name|bibtexEntry2BibtexString
 argument_list|(
 name|t2BibtexEntry
@@ -904,6 +922,8 @@ throws|throws
 name|IOException
 block|{
 return|return
+name|XMPUtilTest
+operator|.
 name|bibtexEntry2BibtexString
 argument_list|(
 name|t3BibtexEntry
@@ -918,6 +938,8 @@ name|t3XMP
 parameter_list|()
 block|{
 return|return
+name|XMPUtilTest
+operator|.
 name|bibtexDescription
 argument_list|(
 literal|"<bibtex:title>Hypersonic ultra-sound</bibtex:title>\n"
@@ -1031,11 +1053,13 @@ name|pdf
 operator|!=
 literal|null
 condition|)
+block|{
 name|pdf
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|// Don't forget to initialize the preferences
 if|if
@@ -1168,8 +1192,12 @@ name|writeManually
 argument_list|(
 name|pdfFile
 argument_list|,
+name|XMPUtilTest
+operator|.
 name|bibtexXPacket
 argument_list|(
+name|XMPUtilTest
+operator|.
 name|bibtexDescription
 argument_list|(
 name|bibtex
@@ -1193,6 +1221,8 @@ name|getAbsoluteFile
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1213,11 +1243,15 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertNotNull
 argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"OezbekC06"
@@ -1228,6 +1262,8 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"2003"
@@ -1240,6 +1276,8 @@ literal|"year"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Beach sand convolution by surf-wave optimzation"
@@ -1252,6 +1290,8 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|BibtexEntryType
@@ -1289,8 +1329,12 @@ name|writeManually
 argument_list|(
 name|pdfFile
 argument_list|,
+name|XMPUtilTest
+operator|.
 name|bibtexXPacket
 argument_list|(
+name|XMPUtilTest
+operator|.
 name|bibtexDescription
 argument_list|(
 name|bibtex
@@ -1314,6 +1358,8 @@ name|getAbsoluteFile
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1334,11 +1380,15 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertNotNull
 argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"OezbekC06"
@@ -1349,6 +1399,8 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"2003"
@@ -1361,6 +1413,8 @@ literal|"year"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"ï¿½ptï¿½mzï¿½tï¿½ï¿½n"
@@ -1373,6 +1427,8 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|BibtexEntryType
@@ -1462,6 +1518,8 @@ name|getAbsoluteFile
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1512,6 +1570,8 @@ literal|"year"
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|expectedFields
@@ -1583,6 +1643,8 @@ name|getAbsoluteFile
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1614,6 +1676,8 @@ operator|.
 name|getAllFields
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|8
@@ -1692,8 +1756,12 @@ name|writeManually
 argument_list|(
 name|pdfFile
 argument_list|,
+name|XMPUtilTest
+operator|.
 name|bibtexXPacket
 argument_list|(
+name|XMPUtilTest
+operator|.
 name|bibtexDescription
 argument_list|(
 name|bibtex
@@ -1717,6 +1785,8 @@ name|getAbsoluteFile
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1737,11 +1807,15 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertNotNull
 argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Clarkson06"
@@ -1752,6 +1826,8 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Kelly Clarkson and Ozzy Osbourne"
@@ -1764,6 +1840,8 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Huey Duck and Dewey Duck and Louie Duck"
@@ -1776,6 +1854,8 @@ literal|"editor"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|BibtexEntryType
@@ -1809,8 +1889,12 @@ name|writeManually
 argument_list|(
 name|pdfFile
 argument_list|,
+name|XMPUtilTest
+operator|.
 name|bibtexXPacket
 argument_list|(
+name|XMPUtilTest
+operator|.
 name|bibtexDescription
 argument_list|(
 name|bibtex
@@ -1834,6 +1918,8 @@ name|getAbsoluteFile
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -1854,11 +1940,15 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertNotNull
 argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|BibtexEntryType
@@ -1974,6 +2064,8 @@ literal|"UTF8"
 argument_list|)
 decl_stmt|;
 return|return
+name|XMPUtilTest
+operator|.
 name|slurp
 argument_list|(
 name|is
@@ -1993,11 +2085,13 @@ name|document
 operator|!=
 literal|null
 condition|)
+block|{
 name|document
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * Test whether the helper function work correctly.      *      * @throws Exception      */
@@ -2024,8 +2118,12 @@ name|writeManually
 argument_list|(
 name|pdfFile
 argument_list|,
+name|XMPUtilTest
+operator|.
 name|bibtexXPacket
 argument_list|(
+name|XMPUtilTest
+operator|.
 name|bibtexDescription
 argument_list|(
 name|bibtex
@@ -2033,16 +2131,24 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
+name|XMPUtilTest
+operator|.
 name|bibtexXPacket
 argument_list|(
+name|XMPUtilTest
+operator|.
 name|bibtexDescription
 argument_list|(
 name|bibtex
 argument_list|)
 argument_list|)
 argument_list|,
+name|XMPUtilTest
+operator|.
 name|readManually
 argument_list|(
 name|pdfFile
@@ -2075,8 +2181,12 @@ name|writeManually
 argument_list|(
 name|pdfFile
 argument_list|,
+name|XMPUtilTest
+operator|.
 name|bibtexXPacket
 argument_list|(
+name|XMPUtilTest
+operator|.
 name|bibtexDescription
 argument_list|(
 name|bibtex
@@ -2084,16 +2194,24 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
+name|XMPUtilTest
+operator|.
 name|bibtexXPacket
 argument_list|(
+name|XMPUtilTest
+operator|.
 name|bibtexDescription
 argument_list|(
 name|bibtex
 argument_list|)
 argument_list|)
 argument_list|,
+name|XMPUtilTest
+operator|.
 name|readManually
 argument_list|(
 name|pdfFile
@@ -2170,6 +2288,8 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -2218,6 +2338,8 @@ name|getAbsoluteFile
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -2271,8 +2393,12 @@ name|writeManually
 argument_list|(
 name|pdfFile
 argument_list|,
+name|XMPUtilTest
+operator|.
 name|bibtexXPacket
 argument_list|(
+name|XMPUtilTest
+operator|.
 name|bibtexDescription
 argument_list|(
 name|bibtex
@@ -2296,6 +2422,8 @@ name|getAbsoluteFile
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -2316,11 +2444,15 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertNotNull
 argument_list|(
 name|e
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Hallo World this is not an exercise ."
@@ -2333,6 +2465,8 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Hallo World this is not an exercise ."
@@ -2345,6 +2479,8 @@ literal|"tabs"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"\n\nAbstract preserve\n\t Whitespace\n\n"
@@ -2381,6 +2517,8 @@ name|writeManually
 argument_list|(
 name|pdfFile
 argument_list|,
+name|XMPUtilTest
+operator|.
 name|bibtexXPacket
 argument_list|(
 name|bibtex
@@ -2403,6 +2541,8 @@ name|getAbsoluteFile
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -2442,6 +2582,8 @@ parameter_list|()
 throws|throws
 name|Exception
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|null
@@ -2519,6 +2661,8 @@ name|writeManually
 argument_list|(
 name|pdfFile
 argument_list|,
+name|XMPUtilTest
+operator|.
 name|bibtexXPacket
 argument_list|(
 name|s
@@ -2526,6 +2670,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Nothing there yet, but should not crash
+name|Assert
+operator|.
 name|assertNull
 argument_list|(
 name|XMPUtil
@@ -2600,6 +2746,8 @@ name|writeManually
 argument_list|(
 name|pdfFile
 argument_list|,
+name|XMPUtilTest
+operator|.
 name|bibtexXPacket
 argument_list|(
 name|s
@@ -2608,6 +2756,8 @@ argument_list|)
 expr_stmt|;
 comment|// Title is Questionnaire.pdf so the DublinCore fallback should hit
 comment|// in...
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -2653,6 +2803,8 @@ name|getAbsoluteFile
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -2794,6 +2946,8 @@ operator|.
 name|getSchemas
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|4
@@ -2815,6 +2969,8 @@ operator|.
 name|NAMESPACE
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -2836,6 +2992,8 @@ operator|.
 name|NAMESPACE
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -2859,6 +3017,8 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"application/pdf"
@@ -2880,6 +3040,8 @@ operator|.
 name|NAMESPACE
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -2903,6 +3065,8 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Acrobat PDFMaker 7.0.7"
@@ -3014,6 +3178,8 @@ operator|.
 name|getCreateDate
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|c
@@ -3035,6 +3201,8 @@ name|YEAR
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|c
@@ -3056,6 +3224,8 @@ name|MONTH
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|c
@@ -3077,6 +3247,8 @@ name|DATE
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|c
@@ -3098,6 +3270,8 @@ name|HOUR
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|c
@@ -3119,6 +3293,8 @@ name|MINUTE
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|c
@@ -3140,6 +3316,8 @@ name|SECOND
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|c
@@ -3167,6 +3345,8 @@ operator|.
 name|NAMESPACE
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -3190,6 +3370,8 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"17"
@@ -3269,6 +3451,8 @@ name|getAbsoluteFile
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -3409,6 +3593,8 @@ operator|.
 name|getSchemas
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|4
@@ -3430,6 +3616,8 @@ operator|.
 name|NAMESPACE
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -3451,6 +3639,8 @@ operator|.
 name|NAMESPACE
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -3474,6 +3664,8 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"application/pdf"
@@ -3495,6 +3687,8 @@ operator|.
 name|NAMESPACE
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -3518,6 +3712,8 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Acrobat PDFMaker 7.0.7"
@@ -3627,6 +3823,8 @@ operator|.
 name|getCreateDate
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|c
@@ -3648,6 +3846,8 @@ name|YEAR
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|c
@@ -3669,6 +3869,8 @@ name|MONTH
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|c
@@ -3690,6 +3892,8 @@ name|DATE
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|c
@@ -3711,6 +3915,8 @@ name|HOUR
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|c
@@ -3732,6 +3938,8 @@ name|MINUTE
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|c
@@ -3753,6 +3961,8 @@ name|SECOND
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|c
@@ -3780,6 +3990,8 @@ operator|.
 name|NAMESPACE
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -3803,6 +4015,8 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"17"
@@ -3908,6 +4122,8 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -3956,6 +4172,8 @@ name|getAbsoluteFile
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -3996,6 +4214,8 @@ name|BibtexEntry
 name|actual
 parameter_list|)
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|expected
@@ -4009,6 +4229,8 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|expected
@@ -4086,6 +4308,8 @@ name|field
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|expectedAuthors
@@ -4096,6 +4320,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"comparing "
@@ -4119,6 +4345,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|expected
@@ -4186,6 +4414,8 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -4209,6 +4439,8 @@ literal|null
 argument_list|)
 decl_stmt|;
 comment|/* Test minimal syntaxical completeness */
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 literal|0
@@ -4221,6 +4453,8 @@ literal|"xpacket"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 literal|0
@@ -4233,8 +4467,11 @@ literal|"adobe:ns:meta"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
+operator|(
 literal|0
 operator|<
 name|xmp
@@ -4243,7 +4480,9 @@ name|indexOf
 argument_list|(
 literal|"<bibtex:bibtexkey>canh05</bibtex:bibtexkey>"
 argument_list|)
+operator|)
 operator|||
+operator|(
 literal|0
 operator|<
 name|xmp
@@ -4252,8 +4491,11 @@ name|indexOf
 argument_list|(
 literal|"bibtex:bibtexkey="
 argument_list|)
+operator|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 literal|0
@@ -4266,8 +4508,11 @@ literal|"<rdf:li>Norton Bar</rdf:li>"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
+operator|(
 literal|0
 operator|<
 name|xmp
@@ -4276,7 +4521,9 @@ name|indexOf
 argument_list|(
 literal|"id='W5M0MpCehiHzreSzNTczkc9d'?>"
 argument_list|)
+operator|)
 operator|||
+operator|(
 literal|0
 operator|<
 name|xmp
@@ -4285,10 +4532,14 @@ name|indexOf
 argument_list|(
 literal|"id=\"W5M0MpCehiHzreSzNTczkc9d\"?>"
 argument_list|)
+operator|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
+operator|(
 literal|0
 operator|<
 name|xmp
@@ -4297,7 +4548,9 @@ name|indexOf
 argument_list|(
 literal|"xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'"
 argument_list|)
+operator|)
 operator|||
+operator|(
 literal|0
 operator|<
 name|xmp
@@ -4306,8 +4559,11 @@ name|indexOf
 argument_list|(
 literal|"xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\""
 argument_list|)
+operator|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 literal|0
@@ -4320,8 +4576,11 @@ literal|"<rdf:Description"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
+operator|(
 literal|0
 operator|<
 name|xmp
@@ -4330,7 +4589,9 @@ name|indexOf
 argument_list|(
 literal|"<?xpacket end='w'?>"
 argument_list|)
+operator|)
 operator|||
+operator|(
 literal|0
 operator|<
 name|xmp
@@ -4339,6 +4600,7 @@ name|indexOf
 argument_list|(
 literal|"<?xpacket end=\"w\"?>"
 argument_list|)
+operator|)
 argument_list|)
 expr_stmt|;
 comment|/* Test contents of string */
@@ -4362,6 +4624,8 @@ argument_list|(
 name|pdfFile
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -4419,6 +4683,8 @@ operator|=
 name|tmp
 expr_stmt|;
 block|}
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"canh05"
@@ -4429,6 +4695,8 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"K. Crowston and H. Annabi"
@@ -4441,6 +4709,8 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Title A"
@@ -4453,6 +4723,8 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|BibtexEntryType
@@ -4465,6 +4737,8 @@ name|getType
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"foo"
@@ -4475,6 +4749,8 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Norton Bar"
@@ -4487,6 +4763,8 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|BibtexEntryType
@@ -4524,6 +4802,8 @@ name|writeManually
 argument_list|(
 name|pdfFile
 argument_list|,
+name|XMPUtilTest
+operator|.
 name|bibtexXPacket
 argument_list|(
 name|bibtex
@@ -4544,6 +4824,8 @@ argument_list|(
 name|pdfFile
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -4682,6 +4964,8 @@ argument_list|(
 name|pdfFile
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -4842,6 +5126,8 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Kelly Clarkson and Ozzy Osbourne"
@@ -4855,6 +5141,8 @@ name|getAuthor
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Hypersonic ultra-sound"
@@ -4868,6 +5156,8 @@ name|getTitle
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Huey Duck and Dewey Duck and Louie Duck"
@@ -4883,6 +5173,8 @@ literal|"bibtex/editor"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Clarkson06"
@@ -4898,6 +5190,8 @@ literal|"bibtex/bibtexkey"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"peanut,butter,jelly"
@@ -4950,6 +5244,8 @@ operator|==
 literal|null
 condition|)
 block|{
+name|Assert
+operator|.
 name|fail
 argument_list|()
 expr_stmt|;
@@ -4999,6 +5295,8 @@ argument_list|(
 literal|"http://purl.org/dc/elements/1.1/"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -5023,11 +5321,15 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertNotNull
 argument_list|(
 name|dcSchema
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Hypersonic ultra-sound"
@@ -5038,6 +5340,8 @@ name|getTitle
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"1982-07"
@@ -5055,6 +5359,8 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Kelly Clarkson"
@@ -5070,6 +5376,8 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Ozzy Osbourne"
@@ -5085,6 +5393,8 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Huey Duck"
@@ -5100,6 +5410,8 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Dewey Duck"
@@ -5115,6 +5427,8 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Louie Duck"
@@ -5130,6 +5444,8 @@ literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"InProceedings"
@@ -5145,6 +5461,8 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"bibtex/bibtexkey/Clarkson06"
@@ -5160,6 +5478,8 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"peanut"
@@ -5175,6 +5495,8 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"butter"
@@ -5190,6 +5512,8 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"jelly"
@@ -5206,6 +5530,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/**              * Bibtexkey, Journal, pdf, booktitle              */
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|4
@@ -5328,6 +5654,8 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Kelly Clarkson and Ozzy Osbourne"
@@ -5341,6 +5669,8 @@ name|getAuthor
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Hypersonic ultra-sound"
@@ -5354,6 +5684,8 @@ name|getTitle
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Huey Duck and Dewey Duck and Louie Duck"
@@ -5369,6 +5701,8 @@ literal|"bibtex/editor"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Clarkson06"
@@ -5384,6 +5718,8 @@ literal|"bibtex/bibtexkey"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"peanut,butter,jelly"
@@ -5436,6 +5772,8 @@ operator|==
 literal|null
 condition|)
 block|{
+name|Assert
+operator|.
 name|fail
 argument_list|()
 expr_stmt|;
@@ -5484,6 +5822,8 @@ argument_list|(
 literal|"http://purl.org/dc/elements/1.1/"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -5508,11 +5848,15 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertNotNull
 argument_list|(
 name|dcSchema
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Hypersonic ultra-sound"
@@ -5523,6 +5867,8 @@ name|getTitle
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"1982-07"
@@ -5540,6 +5886,8 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Kelly Clarkson"
@@ -5555,6 +5903,8 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Ozzy Osbourne"
@@ -5570,6 +5920,8 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Huey Duck"
@@ -5585,6 +5937,8 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Dewey Duck"
@@ -5600,6 +5954,8 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Louie Duck"
@@ -5615,6 +5971,8 @@ literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"InProceedings"
@@ -5630,6 +5988,8 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"bibtex/bibtexkey/Clarkson06"
@@ -5645,6 +6005,8 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"peanut"
@@ -5660,6 +6022,8 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"butter"
@@ -5675,6 +6039,8 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"jelly"
@@ -5691,6 +6057,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|/**              * Bibtexkey, Journal, pdf, booktitle              */
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|4
@@ -5779,6 +6147,8 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -5832,6 +6202,8 @@ operator|.
 name|getSchemas
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -5853,6 +6225,8 @@ operator|.
 name|NAMESPACE
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -5889,6 +6263,8 @@ argument_list|(
 literal|"author"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|4
@@ -5899,6 +6275,8 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"K. Crowston"
@@ -5911,6 +6289,8 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"H. Annabi"
@@ -5923,6 +6303,8 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"J. Howison"
@@ -5935,6 +6317,8 @@ literal|2
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"C. Masango"
@@ -5947,6 +6331,8 @@ literal|3
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Article"
@@ -5959,6 +6345,8 @@ literal|"entrytype"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Effective work practices for floss development: A model and propositions"
@@ -5971,6 +6359,8 @@ literal|"title"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Hawaii International Conference On System Sciences (HICSS)"
@@ -5983,6 +6373,8 @@ literal|"booktitle"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"2005"
@@ -5995,6 +6387,8 @@ literal|"year"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"oezbek"
@@ -6007,6 +6401,8 @@ literal|"owner"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"http://james.howison.name/publications.html"
@@ -6152,6 +6548,8 @@ argument_list|(
 name|pdfFile
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -6184,11 +6582,13 @@ name|fileWriter
 operator|!=
 literal|null
 condition|)
+block|{
 name|fileWriter
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 name|tempBib
 operator|.
 name|delete
@@ -6314,6 +6714,8 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -6425,6 +6827,8 @@ name|toString
 argument_list|()
 decl_stmt|;
 comment|/* Test minimal syntaxical completeness */
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 literal|0
@@ -6437,6 +6841,8 @@ literal|"xpacket"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 literal|0
@@ -6449,8 +6855,11 @@ literal|"adobe:ns:meta"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
+operator|(
 literal|0
 operator|<
 name|xmp
@@ -6459,7 +6868,9 @@ name|indexOf
 argument_list|(
 literal|"<bibtex:bibtexkey>canh05</bibtex:bibtexkey>"
 argument_list|)
+operator|)
 operator|||
+operator|(
 literal|0
 operator|<
 name|xmp
@@ -6468,8 +6879,11 @@ name|indexOf
 argument_list|(
 literal|"bibtex:bibtexkey="
 argument_list|)
+operator|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 literal|0
@@ -6482,8 +6896,11 @@ literal|"<rdf:li>K. Crowston</rdf:li>"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
+operator|(
 literal|0
 operator|<
 name|xmp
@@ -6492,7 +6909,9 @@ name|indexOf
 argument_list|(
 literal|"id='W5M0MpCehiHzreSzNTczkc9d'?>"
 argument_list|)
+operator|)
 operator|||
+operator|(
 literal|0
 operator|<
 name|xmp
@@ -6501,10 +6920,14 @@ name|indexOf
 argument_list|(
 literal|"id=\"W5M0MpCehiHzreSzNTczkc9d\"?>"
 argument_list|)
+operator|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
+operator|(
 literal|0
 operator|<
 name|xmp
@@ -6513,7 +6936,9 @@ name|indexOf
 argument_list|(
 literal|"xmlns:rdf='http://www.w3.org/1999/02/22-rdf-syntax-ns#'"
 argument_list|)
+operator|)
 operator|||
+operator|(
 literal|0
 operator|<
 name|xmp
@@ -6522,8 +6947,11 @@ name|indexOf
 argument_list|(
 literal|"xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\""
 argument_list|)
+operator|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 literal|0
@@ -6536,8 +6964,11 @@ literal|"<rdf:Description"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
+operator|(
 literal|0
 operator|<
 name|xmp
@@ -6546,7 +6977,9 @@ name|indexOf
 argument_list|(
 literal|"<?xpacket end='w'?>"
 argument_list|)
+operator|)
 operator|||
+operator|(
 literal|0
 operator|<
 name|xmp
@@ -6555,6 +6988,7 @@ name|indexOf
 argument_list|(
 literal|"<?xpacket end=\"w\"?>"
 argument_list|)
+operator|)
 argument_list|)
 expr_stmt|;
 comment|/* Test contents of string */
@@ -6578,6 +7012,8 @@ argument_list|(
 name|pdfFile
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -6745,6 +7181,8 @@ argument_list|(
 name|pdfFile
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -6850,6 +7288,8 @@ argument_list|(
 name|pdfFile
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -6883,11 +7323,13 @@ name|fileWriter
 operator|!=
 literal|null
 condition|)
+block|{
 name|fileWriter
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 name|tempBib
 operator|.
 name|delete
@@ -7026,6 +7468,8 @@ argument_list|(
 name|pdfFile
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -7128,11 +7572,13 @@ name|fileWriter
 operator|!=
 literal|null
 condition|)
+block|{
 name|fileWriter
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 name|tempBib
 operator|.
 name|delete
@@ -7217,6 +7663,8 @@ operator|.
 name|getEntries
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -7268,6 +7716,8 @@ name|getAbsoluteFile
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -7288,6 +7738,8 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|AuthorList
@@ -7341,9 +7793,13 @@ name|XMPUtil
 operator|.
 name|readXMP
 argument_list|(
+name|XMPUtilTest
+operator|.
 name|SRC_TEST_ESOURCES_ENCRYPTED_PDF
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|fail
 argument_list|()
 expr_stmt|;
@@ -7360,6 +7816,8 @@ name|XMPUtil
 operator|.
 name|writeXMP
 argument_list|(
+name|XMPUtilTest
+operator|.
 name|SRC_TEST_ESOURCES_ENCRYPTED_PDF
 argument_list|,
 name|t1BibtexEntry
@@ -7368,6 +7826,8 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|fail
 argument_list|()
 expr_stmt|;
@@ -7406,6 +7866,8 @@ literal|"src/test/resources/net/sf/jabref/util/twente.bib"
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Arvind"
@@ -7471,6 +7933,8 @@ argument_list|(
 literal|0
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|originalAuthors
@@ -7504,6 +7968,8 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|originalAuthors
@@ -7534,6 +8000,8 @@ name|getDocumentInformation
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|originalAuthors
@@ -7575,6 +8043,8 @@ operator|==
 literal|null
 condition|)
 block|{
+name|Assert
+operator|.
 name|fail
 argument_list|()
 expr_stmt|;
@@ -7622,6 +8092,8 @@ argument_list|(
 literal|"http://purl.org/dc/elements/1.1/"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|1
@@ -7646,11 +8118,15 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertNotNull
 argument_list|(
 name|dcSchema
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"David Patterson"
@@ -7666,6 +8142,8 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Arvind"
@@ -7681,6 +8159,8 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"Krste Asanov\\'\\i{}c"
@@ -7705,6 +8185,8 @@ argument_list|(
 name|dcSchema
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|originalAuthors

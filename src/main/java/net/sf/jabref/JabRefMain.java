@@ -335,6 +335,8 @@ name|errorMessage
 init|=
 literal|"\nERROR while starting or running JabRef:\n\n"
 operator|+
+name|JabRefMain
+operator|.
 name|exceptionToString
 argument_list|(
 name|e
@@ -427,6 +429,8 @@ literal|"text/html"
 argument_list|,
 literal|"<html>The following error occurred while running JabRef:<p><font color=\"red\">"
 operator|+
+name|JabRefMain
+operator|.
 name|exceptionToString
 argument_list|(
 name|e
@@ -730,6 +734,8 @@ block|{
 name|String
 name|errorMessage
 init|=
+name|JabRefMain
+operator|.
 name|exceptionToString
 argument_list|(
 name|e

@@ -132,6 +132,8 @@ return|return
 name|extension
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|accept (File file)
 specifier|public
 name|boolean
@@ -148,10 +150,13 @@ operator|.
 name|isDirectory
 argument_list|()
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 else|else
+block|{
 return|return
 name|file
 operator|.
@@ -167,6 +172,9 @@ name|extension
 argument_list|)
 return|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|getDescription ()
 specifier|public
 name|String
@@ -177,6 +185,8 @@ return|return
 name|name
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|compareTo (ExportFileFilter o)
 specifier|public
 name|int

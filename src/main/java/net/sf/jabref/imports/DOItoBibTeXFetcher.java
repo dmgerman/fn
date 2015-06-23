@@ -352,6 +352,8 @@ name|String
 operator|.
 name|format
 argument_list|(
+name|DOItoBibTeXFetcher
+operator|.
 name|URL_PATTERN
 argument_list|,
 name|q

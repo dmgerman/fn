@@ -44,6 +44,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JFileChooser
 import|;
 end_import
@@ -191,6 +201,8 @@ name|frame
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Unpack EndNote filter set"
@@ -198,6 +210,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -211,6 +225,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -255,7 +271,9 @@ name|filename
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 comment|//if (!filename.substring(4).equalsIgnoreCase(".zip"))
 comment|//    filename += ".zip";
 name|file
@@ -319,7 +337,9 @@ name|JOptionPane
 operator|.
 name|OK_OPTION
 condition|)
+block|{
 return|return;
+block|}
 block|}
 comment|// Spin off the GUI thread, and run the run() method.
 operator|(
@@ -343,6 +363,8 @@ literal|null
 expr_stmt|;
 block|}
 comment|/**      * Worker method.      */
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void

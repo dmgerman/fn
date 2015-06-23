@@ -146,20 +146,6 @@ name|*
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|collab
-operator|.
-name|FileUpdateMonitor
-import|;
-end_import
-
 begin_comment
 comment|/**  * Class for importing BibTeX-files.  *   * Use:  *   * BibtexParser parser = new BibtexParser(reader);  *   * ParserResult result = parser.parse();  *   * or  *   * ParserResult result = BibtexParser.parse(reader);  *   * Can be used stand-alone.  *   * @author David Weitzman  * @author Nizar N. Batada  * @author Morten O. Alver  * @author Christopher Oezbek   */
 end_comment
@@ -191,6 +177,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|_in
 specifier|private
+specifier|final
 name|PushbackReader
 name|_in
 decl_stmt|;
@@ -311,6 +298,8 @@ name|PushbackReader
 argument_list|(
 name|in
 argument_list|,
+name|BibtexParser
+operator|.
 name|LOOKAHEAD
 argument_list|)
 expr_stmt|;
@@ -419,6 +408,8 @@ name|BibtexEntry
 argument_list|>
 name|c
 init|=
+name|BibtexParser
+operator|.
 name|fromString
 argument_list|(
 name|bibtexString
@@ -518,9 +509,11 @@ operator|.
 name|find
 argument_list|()
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -533,9 +526,11 @@ operator|.
 name|SIGNATURE
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 return|return
 literal|false
@@ -600,6 +595,7 @@ block|{
 continue|continue;
 block|}
 else|else
+block|{
 comment|// found non-whitespace char
 comment|// Util.pr("SkipWhitespace, stops: "+c);
 name|unread
@@ -607,6 +603,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 comment|/*              * try { Thread.currentThread().sleep(500); } catch              * (InterruptedException ex) {}              */
 break|break;
 block|}
@@ -638,6 +635,7 @@ name|j
 operator|!=
 literal|' '
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -648,6 +646,7 @@ operator|)
 name|j
 argument_list|)
 expr_stmt|;
+block|}
 while|while
 condition|(
 literal|true
@@ -704,6 +703,7 @@ name|c
 operator|!=
 literal|' '
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -714,9 +714,11 @@ operator|)
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 continue|continue;
 block|}
 else|else
+block|{
 comment|// found non-whitespace char
 comment|// Util.pr("SkipWhitespace, stops: "+c);
 name|unread
@@ -724,6 +726,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 comment|/*              * try { Thread.currentThread().sleep(500); } catch              * (InterruptedException ex) {}              */
 break|break;
 block|}
@@ -750,9 +753,11 @@ name|_pr
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|_pr
 return|;
+block|}
 name|_db
 operator|=
 operator|new
@@ -851,7 +856,9 @@ condition|(
 operator|!
 name|found
 condition|)
+block|{
 break|break;
+block|}
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
@@ -1098,6 +1105,7 @@ operator|.
 name|META_FLAG
 argument_list|)
 condition|)
+block|{
 name|rest
 operator|=
 name|comment
@@ -1112,7 +1120,9 @@ name|length
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|rest
 operator|=
 name|comment
@@ -1127,6 +1137,7 @@ name|length
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|int
 name|pos
 init|=
@@ -1143,6 +1154,7 @@ name|pos
 operator|>
 literal|0
 condition|)
+block|{
 name|meta
 operator|.
 name|put
@@ -1170,6 +1182,7 @@ comment|// We remove all line breaks in the metadata - these
 comment|// will have been inserted
 comment|// to prevent too long lines when the file was
 comment|// saved, and are not part of the data.
+block|}
 block|}
 elseif|else
 if|if
@@ -1313,7 +1326,7 @@ if|if
 condition|(
 name|duplicateKey
 condition|)
-comment|// JZTODO lyrics
+block|{
 name|_pr
 operator|.
 name|addDuplicateKey
@@ -1324,18 +1337,18 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// _pr.addWarning(Globals.lang("duplicate BibTeX key") + ": "
-comment|//	+ be.getCiteKey() + " ("
-comment|//	+ Globals.lang("grouping may not work for this entry") + ")");
+block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|be
 operator|.
 name|getCiteKey
 argument_list|()
 operator|==
 literal|null
+operator|)
 operator|||
 name|be
 operator|.
@@ -1388,6 +1401,8 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
+name|BibtexParser
+operator|.
 name|logger
 operator|.
 name|log
@@ -1529,9 +1544,11 @@ name|c
 operator|==
 literal|'\n'
 condition|)
+block|{
 name|line
 operator|++
 expr_stmt|;
+block|}
 return|return
 name|c
 return|;
@@ -1553,9 +1570,11 @@ name|c
 operator|==
 literal|'\n'
 condition|)
+block|{
 name|line
 operator|--
 expr_stmt|;
+block|}
 name|_in
 operator|.
 name|unread
@@ -1718,9 +1737,11 @@ operator|!=
 literal|'\r'
 operator|)
 condition|)
+block|{
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
+block|}
 name|String
 name|key
 init|=
@@ -1742,10 +1763,12 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|key
 operator|=
 literal|null
 expr_stmt|;
+block|}
 name|result
 operator|.
 name|setField
@@ -1793,11 +1816,13 @@ name|c
 operator|==
 literal|','
 condition|)
+block|{
 name|consume
 argument_list|(
 literal|','
 argument_list|)
 expr_stmt|;
+block|}
 name|skipWhitespace
 argument_list|()
 expr_stmt|;
@@ -1923,6 +1948,7 @@ argument_list|)
 operator|==
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -1932,6 +1958,7 @@ argument_list|,
 name|content
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|// The following hack enables the parser to deal with multiple
@@ -1959,6 +1986,7 @@ argument_list|(
 literal|"editor"
 argument_list|)
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -1977,6 +2005,7 @@ operator|+
 name|content
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -2170,6 +2199,7 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -2185,6 +2215,7 @@ operator|+
 literal|"by a missing comma between two fields."
 argument_list|)
 throw|;
+block|}
 name|value
 operator|.
 name|append
@@ -2360,9 +2391,11 @@ argument_list|)
 operator|==
 literal|'{'
 condition|)
+block|{
 name|count
 operator|++
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -2375,18 +2408,22 @@ argument_list|)
 operator|==
 literal|'}'
 condition|)
+block|{
 name|count
 operator|--
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|count
 operator|<
 literal|0
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 name|i
 operator|++
 expr_stmt|;
@@ -2582,22 +2619,30 @@ block|}
 do|while
 condition|(
 operator|(
+operator|(
 name|currentChar
 operator|!=
 literal|','
+operator|)
 operator|&&
+operator|(
 name|currentChar
 operator|!=
 literal|'\n'
+operator|)
 operator|&&
+operator|(
 name|currentChar
 operator|!=
 literal|'='
+operator|)
 operator|)
 operator|&&
 operator|(
 name|lookahead_used
 operator|<
+name|BibtexParser
+operator|.
 name|LOOKAHEAD
 operator|)
 condition|)
@@ -2675,9 +2720,11 @@ condition|(
 operator|!
 name|matchedAlpha
 operator|&&
+operator|(
 name|currentChar
 operator|==
 literal|' '
+operator|)
 condition|)
 block|{
 continue|continue;
@@ -2694,13 +2741,17 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|currentChar
 operator|==
 literal|' '
+operator|)
 operator|||
+operator|(
 name|currentChar
 operator|==
 literal|'\n'
+operator|)
 condition|)
 block|{
 comment|/*                      * found whitespaces, entryfieldname completed -> key in                      * keybuffer, skip whitespaces                      */
@@ -2911,6 +2962,7 @@ argument_list|(
 name|current
 argument_list|)
 condition|)
+block|{
 name|newSb
 operator|.
 name|append
@@ -2918,6 +2970,7 @@ argument_list|(
 name|current
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|newSb
@@ -3183,6 +3236,7 @@ return|;
 comment|// throw new NoLabelException(token.toString());
 block|}
 else|else
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -3205,6 +3259,7 @@ operator|+
 literal|"allowed in bibtex keys."
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 block|}
@@ -3316,9 +3371,11 @@ name|j
 operator|==
 literal|'{'
 condition|)
+block|{
 name|brackets
 operator|++
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -3326,9 +3383,11 @@ name|j
 operator|==
 literal|'}'
 condition|)
+block|{
 name|brackets
 operator|--
 expr_stmt|;
+block|}
 comment|// If we encounter whitespace of any kind, read it as a
 comment|// simple space, and ignore any others that follow immediately.
 comment|/*              * if (j == '\n') { if (peek() == '\n') value.append('\n'); } else              */
@@ -3409,6 +3468,7 @@ expr_stmt|;
 block|}
 block|}
 else|else
+block|{
 name|value
 operator|.
 name|append
@@ -3419,6 +3479,7 @@ operator|)
 name|j
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|consume
 argument_list|(
@@ -3514,9 +3575,11 @@ name|j
 operator|==
 literal|'{'
 condition|)
+block|{
 name|brackets
 operator|++
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -3524,9 +3587,11 @@ name|j
 operator|==
 literal|'}'
 condition|)
+block|{
 name|brackets
 operator|--
 expr_stmt|;
+block|}
 name|value
 operator|.
 name|append
@@ -3632,9 +3697,11 @@ name|j
 operator|==
 literal|'{'
 condition|)
+block|{
 name|brackets
 operator|++
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -3642,9 +3709,11 @@ name|j
 operator|==
 literal|'}'
 condition|)
+block|{
 name|brackets
 operator|--
 expr_stmt|;
+block|}
 name|value
 operator|.
 name|append
@@ -3769,10 +3838,12 @@ operator|==
 literal|65535
 operator|)
 condition|)
+block|{
 name|_eof
 operator|=
 literal|true
 expr_stmt|;
+block|}
 comment|// Return true if we actually found the character we were looking for:
 return|return
 name|c
@@ -4051,9 +4122,11 @@ literal|'%'
 operator|)
 operator|)
 condition|)
+block|{
 name|read
 argument_list|()
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -4127,6 +4200,7 @@ operator|-
 literal|1
 operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -4137,6 +4211,7 @@ operator|)
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|versionNum
 init|=
@@ -4288,6 +4363,7 @@ operator|.
 name|matches
 argument_list|()
 condition|)
+block|{
 if|if
 condition|(
 name|m
@@ -4333,6 +4409,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 if|if
 condition|(
 name|m2
@@ -4340,6 +4417,7 @@ operator|.
 name|matches
 argument_list|()
 condition|)
+block|{
 if|if
 condition|(
 name|m2
@@ -4367,6 +4445,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

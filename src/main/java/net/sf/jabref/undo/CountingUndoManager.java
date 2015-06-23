@@ -107,6 +107,8 @@ operator|=
 name|basePanel
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|addEdit (UndoableEdit edit)
 specifier|public
 specifier|synchronized
@@ -129,6 +131,8 @@ name|edit
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|undo ()
 specifier|public
 specifier|synchronized
@@ -152,6 +156,8 @@ name|updateEntryEditorIfShowing
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|redo ()
 specifier|public
 specifier|synchronized

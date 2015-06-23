@@ -464,6 +464,8 @@ range|:
 name|plugins
 control|)
 block|{
+name|PushToApplicationButton
+operator|.
 name|applications
 operator|.
 name|add
@@ -475,6 +477,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+name|PushToApplicationButton
+operator|.
 name|applications
 operator|.
 name|add
@@ -484,6 +488,8 @@ name|PushToLyx
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|PushToApplicationButton
+operator|.
 name|applications
 operator|.
 name|add
@@ -493,6 +499,8 @@ name|PushToEmacs
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|PushToApplicationButton
+operator|.
 name|applications
 operator|.
 name|add
@@ -502,6 +510,8 @@ name|PushToWinEdt
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|PushToApplicationButton
+operator|.
 name|applications
 operator|.
 name|add
@@ -511,6 +521,8 @@ name|PushToLatexEditor
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|PushToApplicationButton
+operator|.
 name|applications
 operator|.
 name|add
@@ -520,6 +532,8 @@ name|PushToVim
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|PushToApplicationButton
+operator|.
 name|applications
 operator|.
 name|add
@@ -530,6 +544,8 @@ name|getInstance
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|PushToApplicationButton
+operator|.
 name|applications
 operator|.
 name|add
@@ -602,6 +618,8 @@ argument_list|(
 operator|new
 name|ImageIcon
 argument_list|(
+name|PushToApplicationButton
+operator|.
 name|ARROW_ICON
 argument_list|)
 argument_list|)
@@ -838,6 +856,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -871,6 +891,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|PushToApplicationButton
+operator|.
 name|showSettingsDialog
 argument_list|(
 name|frame
@@ -1064,6 +1086,8 @@ return|return
 name|mAction
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1198,6 +1222,7 @@ name|parent
 operator|instanceof
 name|JDialog
 condition|)
+block|{
 name|dg
 operator|=
 operator|new
@@ -1218,7 +1243,9 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|dg
 operator|=
 operator|new
@@ -1239,6 +1266,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 specifier|final
 name|JDialog
 name|diag
@@ -1382,6 +1410,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1413,6 +1443,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1483,6 +1515,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1511,6 +1545,7 @@ name|parent
 operator|instanceof
 name|JDialog
 condition|)
+block|{
 name|diag
 operator|.
 name|setLocationRelativeTo
@@ -1521,7 +1556,9 @@ operator|)
 name|parent
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|diag
 operator|.
 name|setLocationRelativeTo
@@ -1532,6 +1569,7 @@ operator|)
 name|parent
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Show the dialog:
 name|diag
 operator|.
@@ -1583,6 +1621,8 @@ operator|=
 name|index
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1615,6 +1655,8 @@ name|MenuButtonActionListener
 implements|implements
 name|ActionListener
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1631,9 +1673,11 @@ name|popup
 operator|==
 literal|null
 condition|)
+block|{
 name|buildPopupMenu
 argument_list|()
 expr_stmt|;
+block|}
 name|popup
 operator|.
 name|show
@@ -1663,6 +1707,8 @@ parameter_list|()
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|Globals
@@ -1687,6 +1733,8 @@ parameter_list|)
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|Globals
@@ -1700,6 +1748,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1726,6 +1776,8 @@ name|PushButtonMouseListener
 extends|extends
 name|MouseAdapter
 block|{
+annotation|@
+name|Override
 DECL|method|mousePressed (MouseEvent event)
 specifier|public
 name|void
@@ -1742,12 +1794,16 @@ operator|.
 name|isPopupTrigger
 argument_list|()
 condition|)
+block|{
 name|processPopupTrigger
 argument_list|(
 name|event
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|mouseClicked (MouseEvent event)
 specifier|public
 name|void
@@ -1764,12 +1820,16 @@ operator|.
 name|isPopupTrigger
 argument_list|()
 condition|)
+block|{
 name|processPopupTrigger
 argument_list|(
 name|event
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|mouseReleased (MouseEvent event)
 specifier|public
 name|void
@@ -1786,11 +1846,13 @@ operator|.
 name|isPopupTrigger
 argument_list|()
 condition|)
+block|{
 name|processPopupTrigger
 argument_list|(
 name|event
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|processPopupTrigger (MouseEvent e)
 specifier|private
@@ -1822,6 +1884,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|optPopup
 operator|.
 name|show
@@ -1841,6 +1904,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 comment|/**      * Comparator for sorting the selection according to name.      */
 DECL|class|PushToApplicationComparator
 specifier|static
@@ -1852,6 +1916,8 @@ argument_list|<
 name|PushToApplication
 argument_list|>
 block|{
+annotation|@
+name|Override
 DECL|method|compare (PushToApplication one, PushToApplication two)
 specifier|public
 name|int

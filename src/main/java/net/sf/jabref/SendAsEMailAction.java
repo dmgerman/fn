@@ -178,6 +178,8 @@ operator|=
 name|frame
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -218,7 +220,9 @@ name|panel
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|panel
@@ -403,6 +407,8 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+name|SendAsEMailAction
+operator|.
 name|logger
 operator|.
 name|fine
@@ -593,6 +599,8 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void

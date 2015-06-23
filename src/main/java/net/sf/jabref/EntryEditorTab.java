@@ -122,16 +122,6 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|BorderFactory
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
 name|InputMap
 import|;
 end_import
@@ -369,6 +359,7 @@ name|fields
 operator|!=
 literal|null
 condition|)
+block|{
 name|this
 operator|.
 name|fields
@@ -387,7 +378,9 @@ argument_list|()
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|this
 operator|.
 name|fields
@@ -397,6 +390,7 @@ name|String
 index|[]
 block|{}
 expr_stmt|;
+block|}
 name|this
 operator|.
 name|parent
@@ -826,6 +820,7 @@ if|if
 condition|(
 name|addKeyField
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -833,6 +828,7 @@ argument_list|(
 literal|"4dlu, fill:pref"
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -843,6 +839,7 @@ argument_list|()
 operator|>=
 literal|2
 condition|)
+block|{
 name|sb
 operator|.
 name|delete
@@ -860,6 +857,7 @@ name|length
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|rowSpec
 init|=
@@ -1114,16 +1112,19 @@ name|i
 operator|==
 literal|0
 condition|)
+block|{
 name|activeField
 operator|=
 name|ta
 expr_stmt|;
+block|}
 comment|//System.out.println(fields[i]+": "+BibtexFields.getFieldWeight(fields[i]));
 if|if
 condition|(
 operator|!
 name|compressed
 condition|)
+block|{
 name|ta
 operator|.
 name|getPane
@@ -1147,6 +1148,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|builder
 operator|.
 name|append
@@ -1163,6 +1165,7 @@ name|ex
 operator|==
 literal|null
 condition|)
+block|{
 name|builder
 operator|.
 name|append
@@ -1175,6 +1178,7 @@ argument_list|,
 literal|3
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 name|builder
@@ -1225,20 +1229,24 @@ block|}
 if|if
 condition|(
 operator|(
+operator|(
 name|i
 operator|+
 literal|1
 operator|)
 operator|%
 name|fieldsPerRow
+operator|)
 operator|==
 literal|0
 condition|)
+block|{
 name|builder
 operator|.
 name|nextLine
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|// Add the edit field for Bibtex-key.
 if|if
@@ -1299,10 +1307,12 @@ argument_list|()
 operator|==
 literal|1
 condition|)
+block|{
 name|activeField
 operator|=
 name|tf
 expr_stmt|;
+block|}
 name|builder
 operator|.
 name|nextLine
@@ -1404,9 +1414,11 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 return|return
+operator|(
 name|entryValue
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|entryValue
@@ -1630,6 +1642,7 @@ name|getText
 argument_list|()
 argument_list|)
 condition|)
+block|{
 name|editor
 operator|.
 name|setText
@@ -1637,6 +1650,7 @@ argument_list|(
 name|toSet
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|this
 operator|.
@@ -1675,9 +1689,11 @@ argument_list|(
 name|field
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|FieldEditor
 name|ed
 init|=
@@ -1750,17 +1766,21 @@ operator|.
 name|hasFocus
 argument_list|()
 condition|)
+block|{
 name|ed
 operator|.
 name|setActiveBackgroundColor
 argument_list|()
 expr_stmt|;
+block|}
 else|else
+block|{
 name|ed
 operator|.
 name|setValidBackgroundColor
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|setEnabled (boolean enabled)
@@ -1865,6 +1885,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|component
 operator|.
 name|addFocusListener
@@ -1872,6 +1893,7 @@ argument_list|(
 name|fieldListener
 argument_list|)
 expr_stmt|;
+block|}
 name|InputMap
 name|im
 init|=

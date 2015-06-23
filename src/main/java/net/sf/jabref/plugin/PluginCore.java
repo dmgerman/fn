@@ -531,6 +531,8 @@ name|directoriesToSearch
 operator|.
 name|add
 argument_list|(
+name|PluginCore
+operator|.
 name|userPluginDir
 argument_list|)
 expr_stmt|;
@@ -653,6 +655,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -660,6 +663,7 @@ argument_list|(
 literal|','
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
@@ -728,6 +732,8 @@ block|{
 name|PluginLocation
 name|location
 init|=
+name|PluginCore
+operator|.
 name|getLocationInsideJar
 argument_list|(
 name|jarLocation
@@ -741,6 +747,7 @@ name|location
 operator|!=
 literal|null
 condition|)
+block|{
 name|plugins
 operator|.
 name|add
@@ -748,6 +755,7 @@ argument_list|(
 name|location
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -1004,11 +1012,15 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|PluginCore
+operator|.
 name|singleton
 operator|==
 literal|null
 condition|)
 block|{
+name|PluginCore
+operator|.
 name|singleton
 operator|=
 name|PluginCore
@@ -1018,6 +1030,8 @@ argument_list|()
 expr_stmt|;
 block|}
 return|return
+name|PluginCore
+operator|.
 name|singleton
 return|;
 block|}

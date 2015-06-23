@@ -92,6 +92,8 @@ operator|=
 name|comparators
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|compare (T o1, T o2)
 specifier|public
 name|int
@@ -135,9 +137,11 @@ name|res
 operator|!=
 literal|0
 condition|)
+block|{
 return|return
 name|res
 return|;
+block|}
 block|}
 return|return
 literal|0

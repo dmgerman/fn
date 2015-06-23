@@ -103,6 +103,8 @@ specifier|public
 name|YearComparator
 parameter_list|()
 block|{      }
+annotation|@
+name|Override
 DECL|method|compare (BibtexEntry o1, BibtexEntry o2)
 specifier|public
 name|int
@@ -134,9 +136,11 @@ name|comp
 operator|!=
 literal|0
 condition|)
+block|{
 return|return
 name|comp
 return|;
+block|}
 comment|// TODO: Is it a good idea to try editor if author fields are equal?
 comment|// Author as next criterion:
 name|comp
@@ -156,9 +160,11 @@ name|comp
 operator|!=
 literal|0
 condition|)
+block|{
 return|return
 name|comp
 return|;
+block|}
 comment|// Editor as next criterion:
 return|return
 name|editorComp

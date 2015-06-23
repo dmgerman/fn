@@ -178,6 +178,8 @@ argument_list|)
 decl_stmt|;
 static|static
 block|{
+name|Authors
+operator|.
 name|authorOrder
 operator|.
 name|add
@@ -185,6 +187,8 @@ argument_list|(
 literal|"firstfirst"
 argument_list|)
 expr_stmt|;
+name|Authors
+operator|.
 name|authorOrder
 operator|.
 name|add
@@ -192,6 +196,8 @@ argument_list|(
 literal|"lastfirst"
 argument_list|)
 expr_stmt|;
+name|Authors
+operator|.
 name|authorOrder
 operator|.
 name|add
@@ -199,6 +205,8 @@ argument_list|(
 literal|"lastfirstfirstfirst"
 argument_list|)
 expr_stmt|;
+name|Authors
+operator|.
 name|authorAbbr
 operator|.
 name|add
@@ -206,6 +214,8 @@ argument_list|(
 literal|"fullname"
 argument_list|)
 expr_stmt|;
+name|Authors
+operator|.
 name|authorAbbr
 operator|.
 name|add
@@ -213,6 +223,8 @@ argument_list|(
 literal|"initials"
 argument_list|)
 expr_stmt|;
+name|Authors
+operator|.
 name|authorAbbr
 operator|.
 name|add
@@ -220,6 +232,8 @@ argument_list|(
 literal|"firstinitial"
 argument_list|)
 expr_stmt|;
+name|Authors
+operator|.
 name|authorAbbr
 operator|.
 name|add
@@ -227,6 +241,8 @@ argument_list|(
 literal|"middleinitial"
 argument_list|)
 expr_stmt|;
+name|Authors
+operator|.
 name|authorAbbr
 operator|.
 name|add
@@ -234,6 +250,8 @@ argument_list|(
 literal|"lastname"
 argument_list|)
 expr_stmt|;
+name|Authors
+operator|.
 name|authorAbbr
 operator|.
 name|add
@@ -241,6 +259,8 @@ argument_list|(
 literal|"initialsnospace"
 argument_list|)
 expr_stmt|;
+name|Authors
+operator|.
 name|authorPunc
 operator|.
 name|add
@@ -248,6 +268,8 @@ argument_list|(
 literal|"fullpunc"
 argument_list|)
 expr_stmt|;
+name|Authors
+operator|.
 name|authorPunc
 operator|.
 name|add
@@ -255,6 +277,8 @@ argument_list|(
 literal|"nopunc"
 argument_list|)
 expr_stmt|;
+name|Authors
+operator|.
 name|authorPunc
 operator|.
 name|add
@@ -262,6 +286,8 @@ argument_list|(
 literal|"nocomma"
 argument_list|)
 expr_stmt|;
+name|Authors
+operator|.
 name|authorPunc
 operator|.
 name|add
@@ -269,6 +295,8 @@ argument_list|(
 literal|"noperiod"
 argument_list|)
 expr_stmt|;
+name|Authors
+operator|.
 name|separators
 operator|.
 name|add
@@ -276,6 +304,8 @@ argument_list|(
 literal|"comma"
 argument_list|)
 expr_stmt|;
+name|Authors
+operator|.
 name|separators
 operator|.
 name|add
@@ -283,6 +313,8 @@ argument_list|(
 literal|"and"
 argument_list|)
 expr_stmt|;
+name|Authors
+operator|.
 name|separators
 operator|.
 name|add
@@ -290,6 +322,8 @@ argument_list|(
 literal|"colon"
 argument_list|)
 expr_stmt|;
+name|Authors
+operator|.
 name|separators
 operator|.
 name|add
@@ -297,6 +331,8 @@ argument_list|(
 literal|"semicolon"
 argument_list|)
 expr_stmt|;
+name|Authors
+operator|.
 name|separators
 operator|.
 name|add
@@ -304,6 +340,8 @@ argument_list|(
 literal|"sep"
 argument_list|)
 expr_stmt|;
+name|Authors
+operator|.
 name|lastSeparators
 operator|.
 name|add
@@ -311,6 +349,8 @@ argument_list|(
 literal|"and"
 argument_list|)
 expr_stmt|;
+name|Authors
+operator|.
 name|lastSeparators
 operator|.
 name|add
@@ -318,6 +358,8 @@ argument_list|(
 literal|"colon"
 argument_list|)
 expr_stmt|;
+name|Authors
+operator|.
 name|lastSeparators
 operator|.
 name|add
@@ -325,6 +367,8 @@ argument_list|(
 literal|"semicolon"
 argument_list|)
 expr_stmt|;
+name|Authors
+operator|.
 name|lastSeparators
 operator|.
 name|add
@@ -332,6 +376,8 @@ argument_list|(
 literal|"amp"
 argument_list|)
 expr_stmt|;
+name|Authors
+operator|.
 name|lastSeparators
 operator|.
 name|add
@@ -339,6 +385,8 @@ argument_list|(
 literal|"oxford"
 argument_list|)
 expr_stmt|;
+name|Authors
+operator|.
 name|lastSeparators
 operator|.
 name|add
@@ -402,6 +450,8 @@ DECL|field|flMode
 name|int
 name|flMode
 init|=
+name|Authors
+operator|.
 name|FIRST_FIRST
 decl_stmt|;
 name|boolean
@@ -477,12 +527,16 @@ DECL|field|separator
 name|String
 name|separator
 init|=
+name|Authors
+operator|.
 name|COMMA
 decl_stmt|;
 DECL|field|lastSeparator
 name|String
 name|lastSeparator
 init|=
+name|Authors
+operator|.
 name|AND
 decl_stmt|;
 DECL|field|etAlString
@@ -498,6 +552,8 @@ name|jrSeparator
 init|=
 literal|" "
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|setArgument (String arg)
 specifier|public
 name|void
@@ -511,6 +567,8 @@ name|String
 index|[]
 name|parts
 init|=
+name|AbstractParamLayoutFormatter
+operator|.
 name|parseArgument
 argument_list|(
 name|arg
@@ -574,6 +632,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|handleArgument
 argument_list|(
 name|part
@@ -581,6 +640,7 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|handleArgument (String key, String value)
@@ -597,6 +657,8 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|Authors
+operator|.
 name|authorOrder
 operator|.
 name|contains
@@ -620,10 +682,14 @@ argument_list|,
 literal|"FirstFirst"
 argument_list|)
 condition|)
+block|{
 name|flMode
 operator|=
+name|Authors
+operator|.
 name|FIRST_FIRST
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -634,10 +700,14 @@ argument_list|,
 literal|"LastFirst"
 argument_list|)
 condition|)
+block|{
 name|flMode
 operator|=
+name|Authors
+operator|.
 name|LAST_FIRST
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -648,14 +718,20 @@ argument_list|,
 literal|"LastFirstFirstFirst"
 argument_list|)
 condition|)
+block|{
 name|flMode
 operator|=
+name|Authors
+operator|.
 name|LF_FF
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
 condition|(
+name|Authors
+operator|.
 name|authorAbbr
 operator|.
 name|contains
@@ -785,6 +861,8 @@ block|}
 elseif|else
 if|if
 condition|(
+name|Authors
+operator|.
 name|authorPunc
 operator|.
 name|contains
@@ -884,6 +962,8 @@ comment|// AuthorLastSep = [And | Comma | Colon | Semicolon | Amp | Oxford | las
 elseif|else
 if|if
 condition|(
+name|Authors
+operator|.
 name|separators
 operator|.
 name|contains
@@ -897,6 +977,8 @@ name|toLowerCase
 argument_list|()
 argument_list|)
 operator|||
+name|Authors
+operator|.
 name|lastSeparators
 operator|.
 name|contains
@@ -929,6 +1011,8 @@ condition|)
 block|{
 name|separator
 operator|=
+name|Authors
+operator|.
 name|COMMA
 expr_stmt|;
 name|setSep
@@ -937,10 +1021,14 @@ literal|true
 expr_stmt|;
 block|}
 else|else
+block|{
 name|lastSeparator
 operator|=
+name|Authors
+operator|.
 name|COMMA
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -961,6 +1049,8 @@ condition|)
 block|{
 name|separator
 operator|=
+name|Authors
+operator|.
 name|AND
 expr_stmt|;
 name|setSep
@@ -969,10 +1059,14 @@ literal|true
 expr_stmt|;
 block|}
 else|else
+block|{
 name|lastSeparator
 operator|=
+name|Authors
+operator|.
 name|AND
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -993,6 +1087,8 @@ condition|)
 block|{
 name|separator
 operator|=
+name|Authors
+operator|.
 name|COLON
 expr_stmt|;
 name|setSep
@@ -1001,10 +1097,14 @@ literal|true
 expr_stmt|;
 block|}
 else|else
+block|{
 name|lastSeparator
 operator|=
+name|Authors
+operator|.
 name|COLON
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -1025,6 +1125,8 @@ condition|)
 block|{
 name|separator
 operator|=
+name|Authors
+operator|.
 name|SEMICOLON
 expr_stmt|;
 name|setSep
@@ -1033,10 +1135,14 @@ literal|true
 expr_stmt|;
 block|}
 else|else
+block|{
 name|lastSeparator
 operator|=
+name|Authors
+operator|.
 name|SEMICOLON
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -1051,6 +1157,8 @@ condition|)
 block|{
 name|lastSeparator
 operator|=
+name|Authors
+operator|.
 name|OXFORD
 expr_stmt|;
 block|}
@@ -1067,6 +1175,8 @@ condition|)
 block|{
 name|lastSeparator
 operator|=
+name|Authors
+operator|.
 name|AMP
 expr_stmt|;
 block|}
@@ -1159,6 +1269,8 @@ block|}
 elseif|else
 if|if
 condition|(
+name|Authors
+operator|.
 name|numberPattern
 operator|.
 name|matcher
@@ -1203,10 +1315,12 @@ literal|true
 expr_stmt|;
 block|}
 else|else
+block|{
 name|authorNumberEtAl
 operator|=
 name|num
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * Check for case-insensitive equality between two strings after removing      * white space at the beginning and end of the first string.      * @param one The first string - whitespace is trimmed      * @param two The second string      * @return true if the strings are deemed equal      */
@@ -1234,6 +1348,8 @@ name|two
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -1317,6 +1433,8 @@ argument_list|,
 operator|(
 name|flMode
 operator|==
+name|Authors
+operator|.
 name|FIRST_FIRST
 operator|)
 operator|||
@@ -1324,6 +1442,8 @@ operator|(
 operator|(
 name|flMode
 operator|==
+name|Authors
+operator|.
 name|LF_FF
 operator|)
 operator|&&
@@ -1339,13 +1459,16 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|al
 operator|.
 name|size
 argument_list|()
 operator|-
 literal|2
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1353,18 +1476,22 @@ argument_list|(
 name|separator
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|al
 operator|.
 name|size
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1372,6 +1499,7 @@ argument_list|(
 name|lastSeparator
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else
@@ -1409,6 +1537,7 @@ name|i
 operator|>
 literal|0
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1416,6 +1545,7 @@ argument_list|(
 name|separator
 argument_list|)
 expr_stmt|;
+block|}
 name|addSingleName
 argument_list|(
 name|sb
@@ -1429,6 +1559,8 @@ argument_list|)
 argument_list|,
 name|flMode
 operator|==
+name|Authors
+operator|.
 name|FIRST_FIRST
 argument_list|)
 expr_stmt|;
@@ -1506,6 +1638,7 @@ operator|>
 literal|0
 operator|)
 condition|)
+block|{
 name|lastNamePart
 operator|=
 name|von
@@ -1514,6 +1647,7 @@ literal|" "
 operator|+
 name|lastNamePart
 expr_stmt|;
+block|}
 name|String
 name|jr
 init|=
@@ -1539,6 +1673,7 @@ operator|>
 literal|0
 operator|)
 condition|)
+block|{
 name|lastNamePart
 operator|=
 name|lastNamePart
@@ -1547,6 +1682,7 @@ name|jrSeparator
 operator|+
 name|jr
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|abbreviate
@@ -1578,6 +1714,7 @@ operator|>
 literal|2
 operator|)
 condition|)
+block|{
 name|firstNamePart
 operator|=
 name|firstNamePart
@@ -1589,6 +1726,7 @@ argument_list|,
 literal|2
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1668,6 +1806,7 @@ condition|(
 operator|!
 name|abbrDots
 condition|)
+block|{
 name|firstNamePart
 operator|=
 name|firstNamePart
@@ -1679,11 +1818,13 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
 name|abbrSpaces
 condition|)
+block|{
 name|firstNamePart
 operator|=
 name|firstNamePart
@@ -1695,6 +1836,7 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(

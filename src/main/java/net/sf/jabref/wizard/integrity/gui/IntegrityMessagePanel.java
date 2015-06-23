@@ -722,6 +722,8 @@ expr_stmt|;
 block|}
 comment|// ------------------------------------------------------------------------
 comment|//This method is required by ListSelectionListener.
+annotation|@
+name|Override
 DECL|method|valueChanged (ListSelectionEvent e)
 specifier|public
 name|void
@@ -824,6 +826,8 @@ block|}
 block|}
 comment|// --------------------------------------------------------------------------
 comment|// This methods are required by KeyListener
+annotation|@
+name|Override
 DECL|method|keyPressed (KeyEvent e)
 specifier|public
 name|void
@@ -833,6 +837,8 @@ name|KeyEvent
 name|e
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 DECL|method|keyReleased (KeyEvent e)
 specifier|public
 name|void
@@ -868,6 +874,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|keyTyped (KeyEvent e)
 specifier|public
 name|void
@@ -877,6 +885,8 @@ name|KeyEvent
 name|e
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1088,6 +1098,8 @@ argument_list|(
 literal|"complete"
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getListCellRendererComponent ( JList list, Object value, int index, boolean iss, boolean chf)
 specifier|public
 name|Component
@@ -1173,11 +1185,13 @@ name|id
 operator|<
 literal|1000
 condition|)
+block|{
 name|setIcon
 argument_list|(
 name|infoIcon
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1185,17 +1199,21 @@ name|id
 operator|<
 literal|2000
 condition|)
+block|{
 name|setIcon
 argument_list|(
 name|warnIcon
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|setIcon
 argument_list|(
 name|failIcon
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return

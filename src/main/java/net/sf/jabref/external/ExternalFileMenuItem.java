@@ -250,6 +250,8 @@ operator|=
 name|fieldName
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -395,12 +397,14 @@ operator|&&
 operator|(
 name|pos
 operator|<
+operator|(
 name|name
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 operator|)
 operator|)
 condition|?
@@ -445,6 +449,7 @@ name|type
 operator|instanceof
 name|UnknownExternalFileType
 condition|)
+block|{
 return|return
 name|Util
 operator|.
@@ -464,7 +469,9 @@ operator|)
 name|type
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 name|Util
 operator|.
@@ -477,6 +484,7 @@ argument_list|,
 name|type
 argument_list|)
 return|;
+block|}
 block|}
 catch|catch
 parameter_list|(

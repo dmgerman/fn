@@ -153,6 +153,8 @@ operator|=
 name|panel
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getUndoPresentationName ()
 specifier|public
 name|String
@@ -181,6 +183,8 @@ literal|"change string content"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRedoPresentationName ()
 specifier|public
 name|String
@@ -209,6 +213,8 @@ literal|"change string content"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|undo ()
 specifier|public
 name|void
@@ -230,6 +236,7 @@ if|if
 condition|(
 name|nameChange
 condition|)
+block|{
 name|string
 operator|.
 name|setName
@@ -237,7 +244,9 @@ argument_list|(
 name|oldValue
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|string
 operator|.
 name|setContent
@@ -245,12 +254,15 @@ argument_list|(
 name|oldValue
 argument_list|)
 expr_stmt|;
+block|}
 name|panel
 operator|.
 name|updateStringDialog
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|redo ()
 specifier|public
 name|void
@@ -272,6 +284,7 @@ if|if
 condition|(
 name|nameChange
 condition|)
+block|{
 name|string
 operator|.
 name|setName
@@ -279,7 +292,9 @@ argument_list|(
 name|newValue
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|string
 operator|.
 name|setContent
@@ -287,6 +302,7 @@ argument_list|(
 name|newValue
 argument_list|)
 expr_stmt|;
+block|}
 name|panel
 operator|.
 name|updateStringDialog

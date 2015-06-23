@@ -309,6 +309,8 @@ operator|new
 name|JComboBox
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Dimension
 name|getPreferredSize
@@ -332,6 +334,7 @@ name|GUIGlobals
 operator|.
 name|MAX_CONTENT_SELECTOR_WIDTH
 condition|)
+block|{
 name|parents
 operator|.
 name|width
@@ -340,6 +343,7 @@ name|GUIGlobals
 operator|.
 name|MAX_CONTENT_SELECTOR_WIDTH
 expr_stmt|;
+block|}
 return|return
 name|parents
 return|;
@@ -431,6 +435,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -461,7 +467,9 @@ operator|==
 literal|0
 operator|)
 condition|)
+block|{
 return|return;
+block|}
 name|selectionMade
 argument_list|()
 expr_stmt|;
@@ -500,6 +508,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -531,6 +541,7 @@ if|if
 condition|(
 name|horizontalLayout
 condition|)
+block|{
 name|add
 argument_list|(
 name|Box
@@ -548,6 +559,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|JButton
 name|manage
 init|=
@@ -584,6 +596,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -670,7 +684,9 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 return|return;
+block|}
 name|String
 name|chosen
 init|=
@@ -684,9 +700,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|chosen
 operator|==
 literal|null
+operator|)
 operator|||
 name|chosen
 operator|.
@@ -695,7 +713,9 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 return|return;
+block|}
 comment|// The following is not possible at the moment since the
 comment|// combobox cannot be edited!
 comment|// User edited in a new word. Add it.
@@ -715,6 +735,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|editor
 operator|.
 name|append
@@ -726,6 +747,7 @@ operator|.
 name|delimiter
 argument_list|)
 expr_stmt|;
+block|}
 name|editor
 operator|.
 name|append
@@ -747,6 +769,7 @@ name|action
 operator|!=
 literal|null
 condition|)
+block|{
 name|action
 operator|.
 name|actionPerformed
@@ -762,6 +785,7 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Transfer focus to the editor.
 name|editor
 operator|.
@@ -821,6 +845,7 @@ name|item
 range|:
 name|items
 control|)
+block|{
 name|comboBox
 operator|.
 name|addItem
@@ -828,6 +853,7 @@ argument_list|(
 name|item
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// Not used since the comboBox is not editable

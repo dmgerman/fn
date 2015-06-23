@@ -238,6 +238,8 @@ literal|"title"
 block|,
 literal|"year"
 block|,
+name|BibtexFields
+operator|.
 name|KEY_FIELD
 block|}
 decl_stmt|;
@@ -1047,6 +1049,8 @@ operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
+name|BibtexFields
+operator|.
 name|KEY_FIELD
 argument_list|,
 literal|true
@@ -1366,6 +1370,8 @@ operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
+name|BibtexFields
+operator|.
 name|OWNER
 argument_list|,
 literal|false
@@ -1397,6 +1403,8 @@ operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
+name|BibtexFields
+operator|.
 name|TIMESTAMP
 argument_list|,
 literal|false
@@ -1428,6 +1436,8 @@ operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
+name|BibtexFields
+operator|.
 name|ENTRYTYPE
 argument_list|,
 literal|false
@@ -1450,6 +1460,8 @@ operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
+name|BibtexFields
+operator|.
 name|SEARCH
 argument_list|,
 literal|false
@@ -1484,6 +1496,8 @@ operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
+name|BibtexFields
+operator|.
 name|GROUPSEARCH
 argument_list|,
 literal|false
@@ -1518,6 +1532,8 @@ operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
+name|BibtexFields
+operator|.
 name|MARKED
 argument_list|,
 literal|false
@@ -1664,7 +1680,9 @@ name|numFields
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 comment|// Build a Set of field names for the fields that should be sorted numerically:
 name|HashSet
 argument_list|<
@@ -1694,6 +1712,8 @@ control|(
 name|String
 name|fieldName
 range|:
+name|BibtexFields
+operator|.
 name|runtime
 operator|.
 name|fieldSet
@@ -1705,6 +1725,8 @@ block|{
 name|BibtexSingleField
 name|field
 init|=
+name|BibtexFields
+operator|.
 name|runtime
 operator|.
 name|fieldSet
@@ -1779,6 +1801,8 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|BibtexFields
+operator|.
 name|runtime
 operator|.
 name|fieldSet
@@ -1986,6 +2010,8 @@ literal|null
 condition|)
 block|{
 return|return
+name|BibtexFields
+operator|.
 name|runtime
 operator|.
 name|fieldSet
@@ -2016,6 +2042,8 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
+name|BibtexFields
+operator|.
 name|getField
 argument_list|(
 name|name
@@ -2052,6 +2080,8 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
+name|BibtexFields
+operator|.
 name|getField
 argument_list|(
 name|name
@@ -2090,6 +2120,8 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
+name|BibtexFields
+operator|.
 name|getField
 argument_list|(
 name|name
@@ -2131,6 +2163,8 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
+name|BibtexFields
+operator|.
 name|getField
 argument_list|(
 name|fieldName
@@ -2165,6 +2199,8 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
+name|BibtexFields
+operator|.
 name|getField
 argument_list|(
 name|name
@@ -2204,6 +2240,8 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
+name|BibtexFields
+operator|.
 name|getField
 argument_list|(
 name|fieldName
@@ -2240,6 +2278,8 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
+name|BibtexFields
+operator|.
 name|getField
 argument_list|(
 name|field
@@ -2276,6 +2316,8 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
+name|BibtexFields
+operator|.
 name|getField
 argument_list|(
 name|field
@@ -2313,6 +2355,8 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
+name|BibtexFields
+operator|.
 name|getField
 argument_list|(
 name|field
@@ -2349,6 +2393,8 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
+name|BibtexFields
+operator|.
 name|getField
 argument_list|(
 name|field
@@ -2382,6 +2428,8 @@ name|getAllFieldNames
 parameter_list|()
 block|{
 return|return
+name|BibtexFields
+operator|.
 name|runtime
 operator|.
 name|PUBLIC_FIELDS
@@ -2414,6 +2462,8 @@ control|(
 name|BibtexSingleField
 name|sField
 range|:
+name|BibtexFields
+operator|.
 name|runtime
 operator|.
 name|fieldSet
@@ -2470,6 +2520,8 @@ name|t
 parameter_list|)
 block|{
 return|return
+name|BibtexFields
+operator|.
 name|runtime
 operator|.
 name|PUBLIC_FIELDS
@@ -2487,6 +2539,8 @@ name|numberOfPublicFields
 parameter_list|()
 block|{
 return|return
+name|BibtexFields
+operator|.
 name|runtime
 operator|.
 name|PUBLIC_FIELDS
@@ -2545,8 +2599,12 @@ specifier|private
 name|int
 name|flag
 init|=
+name|BibtexSingleField
+operator|.
 name|DISPLAYABLE
 operator||
+name|BibtexSingleField
+operator|.
 name|WRITEABLE
 decl_stmt|;
 DECL|field|length
@@ -2643,6 +2701,8 @@ name|setFlag
 argument_list|(
 name|pStandard
 argument_list|,
+name|BibtexSingleField
+operator|.
 name|STANDARD
 argument_list|)
 expr_stmt|;
@@ -2669,6 +2729,8 @@ name|setFlag
 argument_list|(
 name|pStandard
 argument_list|,
+name|BibtexSingleField
+operator|.
 name|STANDARD
 argument_list|)
 expr_stmt|;
@@ -2699,6 +2761,8 @@ name|setFlag
 argument_list|(
 name|pStandard
 argument_list|,
+name|BibtexSingleField
+operator|.
 name|STANDARD
 argument_list|)
 expr_stmt|;
@@ -2732,6 +2796,8 @@ name|setFlag
 argument_list|(
 name|pStandard
 argument_list|,
+name|BibtexSingleField
+operator|.
 name|STANDARD
 argument_list|)
 expr_stmt|;
@@ -2759,8 +2825,12 @@ block|{
 comment|// default is: not standard, public, displayable and writable
 name|flag
 operator|=
+name|BibtexSingleField
+operator|.
 name|DISPLAYABLE
 operator||
+name|BibtexSingleField
+operator|.
 name|WRITEABLE
 expr_stmt|;
 name|name
@@ -3023,6 +3093,8 @@ block|{
 return|return
 name|isSet
 argument_list|(
+name|BibtexSingleField
+operator|.
 name|STANDARD
 argument_list|)
 return|;
@@ -3037,6 +3109,8 @@ name|flag
 operator|=
 name|flag
 operator||
+name|BibtexSingleField
+operator|.
 name|PRIVATE
 expr_stmt|;
 block|}
@@ -3049,6 +3123,8 @@ block|{
 return|return
 name|isSet
 argument_list|(
+name|BibtexSingleField
+operator|.
 name|PRIVATE
 argument_list|)
 return|;
@@ -3063,6 +3139,8 @@ name|setFlag
 argument_list|(
 literal|false
 argument_list|,
+name|BibtexSingleField
+operator|.
 name|PRIVATE
 argument_list|)
 expr_stmt|;
@@ -3077,6 +3155,8 @@ return|return
 operator|!
 name|isSet
 argument_list|(
+name|BibtexSingleField
+operator|.
 name|PRIVATE
 argument_list|)
 return|;
@@ -3094,6 +3174,8 @@ name|setFlag
 argument_list|(
 name|value
 argument_list|,
+name|BibtexSingleField
+operator|.
 name|DISPLAYABLE
 argument_list|)
 expr_stmt|;
@@ -3107,6 +3189,8 @@ block|{
 return|return
 name|isSet
 argument_list|(
+name|BibtexSingleField
+operator|.
 name|DISPLAYABLE
 argument_list|)
 return|;
@@ -3124,6 +3208,8 @@ name|setFlag
 argument_list|(
 name|value
 argument_list|,
+name|BibtexSingleField
+operator|.
 name|WRITEABLE
 argument_list|)
 expr_stmt|;
@@ -3137,6 +3223,8 @@ block|{
 return|return
 name|isSet
 argument_list|(
+name|BibtexSingleField
+operator|.
 name|WRITEABLE
 argument_list|)
 return|;

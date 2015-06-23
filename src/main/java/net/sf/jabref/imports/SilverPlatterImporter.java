@@ -161,6 +161,8 @@ extends|extends
 name|ImportFormat
 block|{
 comment|/**      * Return the name of this import format.      */
+annotation|@
+name|Override
 DECL|method|getFormatName ()
 specifier|public
 name|String
@@ -172,6 +174,8 @@ literal|"SilverPlatter"
 return|;
 block|}
 comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
+annotation|@
+name|Override
 DECL|method|getCLIId ()
 specifier|public
 name|String
@@ -183,6 +187,8 @@ literal|"silverplatter"
 return|;
 block|}
 comment|/**      * Check whether the source is in the correct format for this importer.      */
+annotation|@
+name|Override
 DECL|method|isRecognizedFormat (InputStream stream)
 specifier|public
 name|boolean
@@ -251,10 +257,12 @@ operator|.
 name|find
 argument_list|()
 condition|)
+block|{
 return|return
 literal|false
 return|;
 comment|// This is an inspec file, so return false.
+block|}
 if|if
 condition|(
 operator|(
@@ -282,15 +290,19 @@ literal|"TI:  "
 argument_list|)
 operator|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 return|return
 literal|false
 return|;
 block|}
 comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
+annotation|@
+name|Override
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
@@ -373,6 +385,7 @@ argument_list|()
 operator|<
 literal|2
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -385,7 +398,9 @@ argument_list|(
 name|str
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -398,6 +413,7 @@ argument_list|(
 name|str
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|in
 operator|.
@@ -460,7 +476,9 @@ argument_list|()
 operator|<
 literal|6
 condition|)
+block|{
 continue|continue;
+block|}
 comment|//System.out.println("'"+entries[i]+"'");
 name|h
 operator|.
@@ -495,7 +513,9 @@ argument_list|()
 operator|<
 literal|6
 condition|)
+block|{
 continue|continue;
+block|}
 comment|//System.out.println(">"+fields[j]+"<");
 name|String
 name|f3
@@ -528,6 +548,7 @@ argument_list|(
 literal|"TI"
 argument_list|)
 condition|)
+block|{
 name|h
 operator|.
 name|put
@@ -537,7 +558,7 @@ argument_list|,
 name|frest
 argument_list|)
 expr_stmt|;
-comment|//else if(f3.equals("PY")) h.put("year", frest);
+block|}
 elseif|else
 if|if
 condition|(
@@ -616,6 +637,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|h
 operator|.
 name|put
@@ -645,6 +667,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 elseif|else
 if|if
 condition|(
@@ -655,6 +678,7 @@ argument_list|(
 literal|"AB"
 argument_list|)
 condition|)
+block|{
 name|h
 operator|.
 name|put
@@ -664,6 +688,7 @@ argument_list|,
 name|frest
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -967,9 +992,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|m
 operator|+
 literal|2
+operator|)
 operator|<
 name|frest
 operator|.
@@ -1074,10 +1101,12 @@ argument_list|(
 literal|"Monograph"
 argument_list|)
 condition|)
+block|{
 name|Type
 operator|=
 literal|"book"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1088,10 +1117,12 @@ argument_list|(
 literal|"Dissertation"
 argument_list|)
 condition|)
+block|{
 name|Type
 operator|=
 literal|"phdthesis"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1105,10 +1136,12 @@ argument_list|(
 literal|"journal"
 argument_list|)
 condition|)
+block|{
 name|Type
 operator|=
 literal|"article"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1139,6 +1172,7 @@ literal|true
 expr_stmt|;
 block|}
 else|else
+block|{
 name|Type
 operator|=
 name|frest
@@ -1150,6 +1184,7 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 if|if
@@ -1213,6 +1248,7 @@ name|inPos
 operator|>
 literal|1
 condition|)
+block|{
 name|h
 operator|.
 name|put
@@ -1229,12 +1265,14 @@ name|inPos
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|pgPos
 operator|>
 name|inPos
 condition|)
+block|{
 name|h
 operator|.
 name|put
@@ -1256,6 +1294,7 @@ literal|"--"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|BibtexEntry

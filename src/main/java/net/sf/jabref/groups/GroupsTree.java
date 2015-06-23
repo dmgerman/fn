@@ -495,6 +495,8 @@ name|DISCONTIGUOUS_TREE_SELECTION
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|dragEnter (DragSourceDragEvent dsde)
 specifier|public
 name|void
@@ -507,6 +509,8 @@ block|{
 comment|// ignore
 block|}
 comment|/** This is for moving of nodes within myself */
+annotation|@
+name|Override
 DECL|method|dragOver (DragSourceDragEvent dsde)
 specifier|public
 name|void
@@ -585,9 +589,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|target
 operator|==
 literal|null
+operator|)
 operator|||
 name|dragNode
 operator|.
@@ -596,9 +602,11 @@ argument_list|(
 name|target
 argument_list|)
 operator|||
+operator|(
 name|dragNode
 operator|==
 name|target
+operator|)
 condition|)
 block|{
 name|dsde
@@ -628,6 +636,8 @@ name|DefaultMoveDrop
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|dropActionChanged (DragSourceDragEvent dsde)
 specifier|public
 name|void
@@ -639,6 +649,8 @@ parameter_list|)
 block|{
 comment|// ignore
 block|}
+annotation|@
+name|Override
 DECL|method|dragDropEnd (DragSourceDropEvent dsde)
 specifier|public
 name|void
@@ -653,6 +665,8 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|dragExit (DragSourceEvent dse)
 specifier|public
 name|void
@@ -664,6 +678,8 @@ parameter_list|)
 block|{
 comment|// ignore
 block|}
+annotation|@
+name|Override
 DECL|method|dragEnter (DropTargetDragEvent dtde)
 specifier|public
 name|void
@@ -676,6 +692,8 @@ block|{
 comment|// ignore
 block|}
 comment|/** This handles dragging of nodes (from myself) or entries (from the table) */
+annotation|@
+name|Override
 DECL|method|dragOver (DropTargetDragEvent dtde)
 specifier|public
 name|void
@@ -709,10 +727,12 @@ name|idlePoint
 operator|==
 literal|null
 condition|)
+block|{
 name|idlePoint
 operator|=
 name|cursor
 expr_stmt|;
+block|}
 comment|// determine node over which the user is dragging
 specifier|final
 name|TreePath
@@ -853,6 +873,7 @@ block|}
 comment|// auto open
 if|if
 condition|(
+operator|(
 name|Math
 operator|.
 name|abs
@@ -866,8 +887,12 @@ operator|.
 name|x
 argument_list|)
 operator|<
+name|GroupsTree
+operator|.
 name|idleMargin
+operator|)
 operator|&&
+operator|(
 name|Math
 operator|.
 name|abs
@@ -881,15 +906,22 @@ operator|.
 name|y
 argument_list|)
 operator|<
+name|GroupsTree
+operator|.
 name|idleMargin
+operator|)
 condition|)
 block|{
 if|if
 condition|(
+operator|(
 name|currentTime
 operator|-
 name|idleStartTime
+operator|)
 operator|>=
+name|GroupsTree
+operator|.
 name|idleTimeToExpandNode
 condition|)
 block|{
@@ -922,13 +954,21 @@ block|}
 comment|// autoscrolling
 if|if
 condition|(
+operator|(
 name|currentTime
 operator|-
+name|GroupsTree
+operator|.
 name|lastDragAutoscroll
+operator|)
 operator|<
+name|GroupsTree
+operator|.
 name|minAutoscrollInterval
 condition|)
+block|{
 return|return;
+block|}
 specifier|final
 name|Rectangle
 name|r
@@ -940,6 +980,7 @@ specifier|final
 name|boolean
 name|scrollUp
 init|=
+operator|(
 name|cursor
 operator|.
 name|y
@@ -947,13 +988,18 @@ operator|-
 name|r
 operator|.
 name|y
+operator|)
 operator|<
+name|GroupsTree
+operator|.
 name|dragScrollActivationMargin
 decl_stmt|;
 specifier|final
 name|boolean
 name|scrollDown
 init|=
+operator|(
+operator|(
 name|r
 operator|.
 name|y
@@ -961,17 +1007,22 @@ operator|+
 name|r
 operator|.
 name|height
+operator|)
 operator|-
 name|cursor
 operator|.
 name|y
+operator|)
 operator|<
+name|GroupsTree
+operator|.
 name|dragScrollActivationMargin
 decl_stmt|;
 specifier|final
 name|boolean
 name|scrollLeft
 init|=
+operator|(
 name|cursor
 operator|.
 name|x
@@ -979,13 +1030,18 @@ operator|-
 name|r
 operator|.
 name|x
+operator|)
 operator|<
+name|GroupsTree
+operator|.
 name|dragScrollActivationMargin
 decl_stmt|;
 specifier|final
 name|boolean
 name|scrollRight
 init|=
+operator|(
+operator|(
 name|r
 operator|.
 name|x
@@ -993,17 +1049,22 @@ operator|+
 name|r
 operator|.
 name|width
+operator|)
 operator|-
 name|cursor
 operator|.
 name|x
+operator|)
 operator|<
+name|GroupsTree
+operator|.
 name|dragScrollActivationMargin
 decl_stmt|;
 if|if
 condition|(
 name|scrollUp
 condition|)
+block|{
 name|r
 operator|.
 name|translate
@@ -1011,14 +1072,18 @@ argument_list|(
 literal|0
 argument_list|,
 operator|-
+name|GroupsTree
+operator|.
 name|dragScrollDistance
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
 name|scrollDown
 condition|)
+block|{
 name|r
 operator|.
 name|translate
@@ -1026,48 +1091,63 @@ argument_list|(
 literal|0
 argument_list|,
 operator|+
+name|GroupsTree
+operator|.
 name|dragScrollDistance
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|scrollLeft
 condition|)
+block|{
 name|r
 operator|.
 name|translate
 argument_list|(
 operator|-
+name|GroupsTree
+operator|.
 name|dragScrollDistance
 argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
 name|scrollRight
 condition|)
+block|{
 name|r
 operator|.
 name|translate
 argument_list|(
 operator|+
+name|GroupsTree
+operator|.
 name|dragScrollDistance
 argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
 name|scrollRectToVisible
 argument_list|(
 name|r
 argument_list|)
 expr_stmt|;
+name|GroupsTree
+operator|.
 name|lastDragAutoscroll
 operator|=
 name|currentTime
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|dropActionChanged (DropTargetDragEvent dtde)
 specifier|public
 name|void
@@ -1079,6 +1159,8 @@ parameter_list|)
 block|{
 comment|// ignore
 block|}
+annotation|@
+name|Override
 DECL|method|drop (DropTargetDropEvent dtde)
 specifier|public
 name|void
@@ -1393,9 +1475,11 @@ argument_list|(
 name|entry
 argument_list|)
 condition|)
+block|{
 operator|++
 name|assignedEntries
 expr_stmt|;
+block|}
 block|}
 comment|// warn if assignment has undesired side effects (modifies a
 comment|// field != keywords)
@@ -1431,8 +1515,10 @@ operator|.
 name|frame
 block|)
 block|)
+block|{
 return|return;
 comment|// user aborted operation
+block|}
 comment|// if an editor is showing, its fields must be updated
 comment|// after the assignment, and before that, the current
 comment|// edit has to be stored:
@@ -1463,6 +1549,7 @@ name|undo
 operator|instanceof
 name|UndoableChangeAssignment
 condition|)
+block|{
 operator|(
 operator|(
 name|UndoableChangeAssignment
@@ -1475,6 +1562,7 @@ argument_list|(
 name|target
 argument_list|)
 expr_stmt|;
+block|}
 name|dtde
 operator|.
 name|getDropTargetContext
@@ -1536,8 +1624,10 @@ block|}
 end_catch
 
 begin_function
-unit|}      public
+unit|}      @
+name|Override
 DECL|method|dragExit (DropTargetEvent dte)
+specifier|public
 name|void
 name|dragExit
 parameter_list|(
@@ -1554,6 +1644,8 @@ block|}
 end_function
 
 begin_function
+annotation|@
+name|Override
 DECL|method|dragGestureRecognized (DragGestureEvent dge)
 specifier|public
 name|void
@@ -1575,8 +1667,10 @@ name|selectedNode
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
 comment|// nothing to transfer (select manually?)
+block|}
 name|Cursor
 name|cursor
 init|=
@@ -1961,8 +2055,10 @@ operator|.
 name|isLeaf
 argument_list|()
 condition|)
+block|{
 return|return;
 comment|// nothing to sort
+block|}
 name|GroupTreeNode
 name|child1
 decl_stmt|,
@@ -2163,6 +2259,7 @@ name|hasMoreElements
 argument_list|()
 condition|;
 control|)
+block|{
 name|expandPath
 argument_list|(
 operator|new
@@ -2178,6 +2275,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 end_function
 
@@ -2214,6 +2312,7 @@ name|hasMoreElements
 argument_list|()
 condition|;
 control|)
+block|{
 name|collapsePath
 argument_list|(
 operator|new
@@ -2231,6 +2330,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 end_function
 
@@ -2294,8 +2394,10 @@ operator|.
 name|isLeaf
 argument_list|()
 condition|)
+block|{
 continue|continue;
 comment|// don't care about this case
+block|}
 name|TreePath
 name|pathToChild
 init|=
@@ -2318,9 +2420,11 @@ argument_list|(
 name|pathToChild
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 return|return
 literal|false
@@ -2388,8 +2492,10 @@ operator|.
 name|isLeaf
 argument_list|()
 condition|)
+block|{
 continue|continue;
 comment|// don't care about this case
+block|}
 name|TreePath
 name|pathToChild
 init|=
@@ -2412,9 +2518,11 @@ argument_list|(
 name|pathToChild
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 return|return
 literal|false

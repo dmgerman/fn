@@ -176,6 +176,8 @@ name|scroller
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|paint (Graphics g)
 specifier|public
 name|void
@@ -216,9 +218,11 @@ name|dim
 operator|.
 name|width
 operator|>
+operator|(
 name|len
 operator|+
 literal|10
+operator|)
 operator|)
 condition|)
 block|{

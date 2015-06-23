@@ -221,6 +221,8 @@ operator|new
 name|AbstractTableModel
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getRowCount
@@ -230,6 +232,8 @@ return|return
 name|rowCount
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getColumnCount
@@ -239,6 +243,8 @@ return|return
 literal|1
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|getValueAt
@@ -259,9 +265,11 @@ operator|.
 name|size
 argument_list|()
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 name|Object
 name|rowContent
 init|=
@@ -278,13 +286,17 @@ name|rowContent
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 return|return
 name|rowContent
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getColumnName
@@ -302,6 +314,8 @@ literal|"Field to filter"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Class
 argument_list|<
@@ -319,6 +333,8 @@ operator|.
 name|class
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isCellEditable
@@ -334,6 +350,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setValueAt
@@ -679,6 +697,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -690,6 +710,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -716,7 +738,9 @@ name|length
 operator|==
 literal|0
 condition|)
+block|{
 return|return;
+block|}
 for|for
 control|(
 name|int
@@ -775,11 +799,13 @@ name|length
 operator|>
 literal|1
 condition|)
+block|{
 name|table
 operator|.
 name|clearSelection
 argument_list|()
 expr_stmt|;
+block|}
 name|table
 operator|.
 name|revalidate
@@ -821,6 +847,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -832,6 +860,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -894,18 +924,21 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
 name|rows
 index|[
 name|i
 index|]
 operator|+
 name|i
+operator|)
 operator|<
 name|tableRows
 operator|.
 name|size
 argument_list|()
 condition|)
+block|{
 name|tableRows
 operator|.
 name|add
@@ -921,6 +954,7 @@ literal|""
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 name|rowCount
 operator|+=
 name|rows
@@ -935,11 +969,13 @@ name|length
 operator|>
 literal|1
 condition|)
+block|{
 name|table
 operator|.
 name|clearSelection
 argument_list|()
 expr_stmt|;
+block|}
 name|table
 operator|.
 name|revalidate
@@ -957,6 +993,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Load settings from the preferences and initialize the table.      */
+annotation|@
+name|Override
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -1019,6 +1057,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Store changes to table preferences. This method is called when the user      * clicks Ok.      *       */
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -1124,6 +1164,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|tableRows
 operator|.
 name|removeElementAt
@@ -1131,6 +1172,7 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Finally, we store the new preferences.
 name|JabRefPreferences
@@ -1176,6 +1218,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|readyToClose ()
 specifier|public
 name|boolean
@@ -1186,6 +1230,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTabName ()
 specifier|public
 name|String

@@ -852,6 +852,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1273,6 +1275,7 @@ operator|.
 name|hasNext
 argument_list|()
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1280,6 +1283,7 @@ argument_list|(
 literal|";"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|sb
 operator|.
@@ -1454,6 +1458,8 @@ operator|=
 name|adaptee
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1506,6 +1512,8 @@ operator|=
 name|adaptee
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1558,6 +1566,8 @@ operator|=
 name|adaptee
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

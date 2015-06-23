@@ -170,6 +170,8 @@ name|String
 name|systemId
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 DECL|method|startDocument ()
 specifier|public
 name|void
@@ -186,12 +188,16 @@ argument_list|>
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|endDocument ()
 specifier|public
 name|void
 name|endDocument
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 DECL|method|characters (char ch[], int start, int length)
 specifier|public
 name|void
@@ -229,6 +235,8 @@ operator|+=
 name|s
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|startElement (String uri, String local, String raw, Attributes atts)
 specifier|public
 name|void
@@ -466,6 +474,8 @@ operator|=
 literal|""
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|endElement (String uri, String local, String raw)
 specifier|public
 name|void

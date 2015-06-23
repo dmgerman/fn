@@ -39,6 +39,8 @@ argument_list|<
 name|BibtexEntry
 argument_list|>
 block|{
+annotation|@
+name|Override
 DECL|method|compare (BibtexEntry one, BibtexEntry two)
 specifier|public
 name|int

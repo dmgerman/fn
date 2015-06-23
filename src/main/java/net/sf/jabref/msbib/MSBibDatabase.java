@@ -227,6 +227,7 @@ name|keySet
 operator|==
 literal|null
 condition|)
+block|{
 name|keySet
 operator|=
 name|bibtex
@@ -234,6 +235,7 @@ operator|.
 name|getKeySet
 argument_list|()
 expr_stmt|;
+block|}
 name|addEntries
 argument_list|(
 name|bibtex
@@ -375,11 +377,13 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|bibitems
 return|;
 comment|//    	if(docin!= null&& docin.getDocumentElement().getTagName().contains("Sources") == false)
 comment|//    		return bibitems;
+block|}
 name|NodeList
 name|sourceList
 init|=

@@ -112,6 +112,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|BorderFactory
 import|;
 end_import
@@ -694,6 +704,8 @@ operator|new
 name|AbstractTableModel
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getRowCount
@@ -703,6 +715,8 @@ return|return
 name|rowCount
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|int
 name|getColumnCount
@@ -712,6 +726,8 @@ return|return
 literal|2
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Object
 name|getValueAt
@@ -729,6 +745,7 @@ name|row
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 operator|(
 name|column
@@ -744,6 +761,7 @@ operator|+
 name|ncWidth
 operator|)
 return|;
+block|}
 name|row
 operator|--
 expr_stmt|;
@@ -756,9 +774,11 @@ operator|.
 name|size
 argument_list|()
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 name|Object
 name|rowContent
 init|=
@@ -775,9 +795,11 @@ name|rowContent
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 name|TableRow
 name|tr
 init|=
@@ -830,6 +852,8 @@ literal|null
 return|;
 comment|// Unreachable.
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getColumnName
@@ -860,6 +884,8 @@ argument_list|)
 operator|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|Class
 argument_list|<
@@ -877,18 +903,24 @@ name|column
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|String
 operator|.
 name|class
 return|;
+block|}
 else|else
+block|{
 return|return
 name|Integer
 operator|.
 name|class
 return|;
 block|}
+block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isCellEditable
@@ -917,6 +949,8 @@ operator|)
 operator|)
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|setValueAt
@@ -945,6 +979,7 @@ operator|.
 name|size
 argument_list|()
 condition|)
+block|{
 name|tableRows
 operator|.
 name|add
@@ -959,6 +994,7 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -1030,6 +1066,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|setValueAt
 argument_list|(
 literal|""
@@ -1044,6 +1081,7 @@ literal|1
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 else|else
 block|{
 if|if
@@ -1052,6 +1090,7 @@ name|value
 operator|==
 literal|null
 condition|)
+block|{
 name|rowContent
 operator|.
 name|length
@@ -1059,7 +1098,9 @@ operator|=
 operator|-
 literal|1
 expr_stmt|;
+block|}
 else|else
+block|{
 name|rowContent
 operator|.
 name|length
@@ -1074,6 +1115,7 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -1665,6 +1707,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -1774,6 +1818,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -2489,6 +2535,8 @@ name|CENTER
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -2975,6 +3023,7 @@ name|lengths
 operator|.
 name|length
 condition|)
+block|{
 name|tableRows
 operator|.
 name|add
@@ -2999,7 +3048,9 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|tableRows
 operator|.
 name|add
@@ -3014,6 +3065,7 @@ index|]
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|rowCount
 operator|=
@@ -3059,6 +3111,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -3070,6 +3124,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -3096,7 +3152,9 @@ name|length
 operator|==
 literal|0
 condition|)
+block|{
 return|return;
+block|}
 name|int
 name|offs
 init|=
@@ -3174,11 +3232,13 @@ name|length
 operator|>
 literal|1
 condition|)
+block|{
 name|colSetup
 operator|.
 name|clearSelection
 argument_list|()
 expr_stmt|;
+block|}
 name|colSetup
 operator|.
 name|revalidate
@@ -3220,6 +3280,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -3231,6 +3293,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -3293,20 +3357,25 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
+operator|(
 name|rows
 index|[
 name|i
 index|]
 operator|+
 name|i
+operator|)
 operator|-
 literal|1
+operator|)
 operator|<
 name|tableRows
 operator|.
 name|size
 argument_list|()
 condition|)
+block|{
 name|tableRows
 operator|.
 name|add
@@ -3317,12 +3386,14 @@ name|max
 argument_list|(
 literal|0
 argument_list|,
+operator|(
 name|rows
 index|[
 name|i
 index|]
 operator|+
 name|i
+operator|)
 operator|-
 literal|1
 argument_list|)
@@ -3336,6 +3407,7 @@ name|DEFAULT_FIELD_LENGTH
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|rowCount
 operator|+=
@@ -3351,11 +3423,13 @@ name|length
 operator|>
 literal|1
 condition|)
+block|{
 name|colSetup
 operator|.
 name|clearSelection
 argument_list|()
 expr_stmt|;
+block|}
 name|colSetup
 operator|.
 name|revalidate
@@ -3412,32 +3486,44 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|i
 operator|<
 literal|0
+operator|)
 operator|||
+operator|(
 name|i
 operator|>=
 name|tableRows
 operator|.
 name|size
 argument_list|()
+operator|)
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
+operator|(
 name|j
 operator|<
 literal|0
+operator|)
 operator|||
+operator|(
 name|j
 operator|>=
 name|tableRows
 operator|.
 name|size
 argument_list|()
+operator|)
 condition|)
+block|{
 return|return;
+block|}
 name|TableRow
 name|tmp
 init|=
@@ -3498,6 +3584,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -3509,6 +3597,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -3538,18 +3628,22 @@ comment|// first element (#) not inside tableRows
 comment|// don't move if a selected element is at bounce
 if|if
 condition|(
+operator|(
 name|selected
 operator|.
 name|length
 operator|>
 literal|0
+operator|)
 operator|&&
+operator|(
 name|selected
 index|[
 literal|0
 index|]
 operator|>
 literal|1
+operator|)
 condition|)
 block|{
 name|boolean
@@ -3635,6 +3729,7 @@ index|[
 name|i
 index|]
 condition|)
+block|{
 name|colSetup
 operator|.
 name|removeRowSelectionInterval
@@ -3644,6 +3739,7 @@ argument_list|,
 name|i
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|colSetup
 operator|.
@@ -3687,6 +3783,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -3698,6 +3796,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -3749,12 +3849,15 @@ decl_stmt|;
 comment|// don't move if a selected element is at bounce
 if|if
 condition|(
+operator|(
 name|selected
 operator|.
 name|length
 operator|>
 literal|0
+operator|)
 operator|&&
+operator|(
 name|selected
 index|[
 name|last
@@ -3764,6 +3867,7 @@ name|tableRows
 operator|.
 name|size
 argument_list|()
+operator|)
 condition|)
 block|{
 for|for
@@ -3850,6 +3954,7 @@ index|[
 name|i
 index|]
 condition|)
+block|{
 name|colSetup
 operator|.
 name|removeRowSelectionInterval
@@ -3859,6 +3964,7 @@ argument_list|,
 name|i
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|colSetup
 operator|.
@@ -3899,6 +4005,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -3980,16 +4088,20 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|name
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|name
 operator|.
 name|length
 argument_list|()
 operator|!=
 literal|0
+operator|)
 condition|)
 block|{
 name|map
@@ -4019,6 +4131,8 @@ name|TableRow
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|int
 name|compare
@@ -4056,13 +4170,17 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|n1
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|n2
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 return|return
@@ -4121,6 +4239,8 @@ argument_list|)
 expr_stmt|;
 comment|//putValue(SHORT_DESCRIPTION, Globals.lang("Update to current column widths"));
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -4144,7 +4264,9 @@ name|panel
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|TableColumnModel
 name|colMod
 init|=
@@ -4261,6 +4383,7 @@ argument_list|(
 name|name
 argument_list|)
 condition|)
+block|{
 name|colSetup
 operator|.
 name|setValueAt
@@ -4274,6 +4397,7 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|// Doesn't match; search for a matching col in our table
@@ -4375,6 +4499,8 @@ block|}
 block|}
 block|}
 comment|/**      * Store changes to table preferences. This method is called when      * the user clicks Ok.      *      */
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -4942,6 +5068,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|tableRows
 operator|.
 name|removeElementAt
@@ -4949,10 +5076,13 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|i
 operator|++
 expr_stmt|;
+block|}
 block|}
 comment|// Then we make arrays
 name|String
@@ -5083,6 +5213,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|readyToClose ()
 specifier|public
 name|boolean
@@ -5093,6 +5225,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTabName ()
 specifier|public
 name|String

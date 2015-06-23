@@ -430,14 +430,24 @@ parameter_list|()
 block|{
 name|this
 argument_list|(
+name|OAI2Fetcher
+operator|.
 name|OAI2_ARXIV_HOST
 argument_list|,
+name|OAI2Fetcher
+operator|.
 name|OAI2_ARXIV_SCRIPT
 argument_list|,
+name|OAI2Fetcher
+operator|.
 name|OAI2_ARXIV_METADATAPREFIX
 argument_list|,
+name|OAI2Fetcher
+operator|.
 name|OAI2_ARXIV_PREFIXIDENTIFIER
 argument_list|,
+name|OAI2Fetcher
+operator|.
 name|OAI2_ARXIV_ARCHIVENAME
 argument_list|,
 literal|20000L
@@ -561,14 +571,18 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|dot
 operator|>
 operator|-
 literal|1
+operator|)
 operator|&&
+operator|(
 name|dot
 operator|<
 name|slash
+operator|)
 condition|)
 block|{
 name|key
@@ -662,6 +676,8 @@ block|{
 comment|/**          * Fix for problem reported in mailing-list:           *   https://sourceforge.net/forum/message.php?msg_id=4087158          */
 name|key
 operator|=
+name|OAI2Fetcher
+operator|.
 name|fixKey
 argument_list|(
 name|key
@@ -735,6 +751,8 @@ name|be
 operator|.
 name|setField
 argument_list|(
+name|OAI2Fetcher
+operator|.
 name|OAI2_IDENTIFIER_FIELD
 argument_list|,
 name|key
@@ -1007,6 +1025,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getHelpPage ()
 specifier|public
 name|String
@@ -1018,6 +1038,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeyName ()
 specifier|public
 name|String
@@ -1028,6 +1050,8 @@ return|return
 name|oai2ArchiveName
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getOptionsPanel ()
 specifier|public
 name|JPanel
@@ -1039,6 +1063,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTitle ()
 specifier|public
 name|String
@@ -1055,6 +1081,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter status)
 specifier|public
 name|boolean
@@ -1136,9 +1164,11 @@ condition|(
 name|shouldWait
 argument_list|()
 operator|&&
+operator|(
 name|lastCall
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|long
@@ -1325,6 +1355,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|stopFetching ()
 specifier|public
 name|void

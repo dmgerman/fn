@@ -157,6 +157,7 @@ literal|false
 decl_stmt|;
 DECL|field|clearKeys
 specifier|private
+specifier|final
 name|boolean
 name|clearKeys
 init|=
@@ -210,10 +211,14 @@ specifier|static
 name|String
 name|SEARCH_URL
 init|=
+name|GoogleScholarFetcher
+operator|.
 name|URL_START
 operator|+
 literal|"/scholar?q="
 operator|+
+name|GoogleScholarFetcher
+operator|.
 name|QUERY_MARKER
 operator|+
 literal|"&amp;hl=en&amp;btnG=Search"
@@ -299,6 +304,8 @@ name|stopFetching
 init|=
 literal|false
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getWarningLimit ()
 specifier|public
 name|int
@@ -309,6 +316,8 @@ return|return
 literal|10
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getPreferredPreviewHeight ()
 specifier|public
 name|int
@@ -319,6 +328,8 @@ return|return
 literal|100
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|processQuery (String query, ImportInspector inspector, OutputPrinter status)
 specifier|public
 name|boolean
@@ -338,6 +349,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|processQueryGetPreview (String query, FetcherPreviewDialog preview, OutputPrinter status)
 specifier|public
 name|boolean
@@ -449,6 +462,8 @@ literal|false
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getEntries (Map<String, Boolean> selection, ImportInspector inspector)
 specifier|public
 name|void
@@ -500,9 +515,11 @@ if|if
 condition|(
 name|isSelected
 condition|)
+block|{
 name|toDownload
 operator|++
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -510,7 +527,9 @@ name|toDownload
 operator|==
 literal|0
 condition|)
+block|{
 return|return;
+block|}
 for|for
 control|(
 name|String
@@ -526,7 +545,9 @@ if|if
 condition|(
 name|stopFetching
 condition|)
+block|{
 break|break;
+block|}
 name|inspector
 operator|.
 name|setProgress
@@ -587,6 +608,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getTitle ()
 specifier|public
 name|String
@@ -597,6 +620,8 @@ return|return
 literal|"Google Scholar"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeyName ()
 specifier|public
 name|String
@@ -607,6 +632,8 @@ return|return
 literal|"Google Scholar"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getHelpPage ()
 specifier|public
 name|String
@@ -617,6 +644,8 @@ return|return
 literal|"GoogleScholarHelp.html"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getOptionsPanel ()
 specifier|public
 name|JPanel
@@ -627,6 +656,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|stopFetching ()
 specifier|public
 name|void
@@ -711,6 +742,8 @@ argument_list|(
 operator|new
 name|URL
 argument_list|(
+name|GoogleScholarFetcher
+operator|.
 name|URL_SETTING
 argument_list|)
 argument_list|)
@@ -727,6 +760,8 @@ name|String
 argument_list|>
 name|formItems
 init|=
+name|GoogleScholarFetcher
+operator|.
 name|getFormElements
 argument_list|(
 name|settingsPage
@@ -761,6 +796,8 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
+name|GoogleScholarFetcher
+operator|.
 name|MAX_ENTRIES_TO_LOAD
 argument_list|)
 argument_list|)
@@ -771,6 +808,8 @@ init|=
 operator|new
 name|StringBuilder
 argument_list|(
+name|GoogleScholarFetcher
+operator|.
 name|URL_SETPREFS
 operator|+
 literal|"?"
@@ -836,6 +875,7 @@ operator|.
 name|hasNext
 argument_list|()
 condition|)
+block|{
 name|ub
 operator|.
 name|append
@@ -843,6 +883,7 @@ argument_list|(
 literal|"&"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|ub
 operator|.
@@ -923,10 +964,14 @@ try|try
 block|{
 name|urlQuery
 operator|=
+name|GoogleScholarFetcher
+operator|.
 name|SEARCH_URL
 operator|.
 name|replace
 argument_list|(
+name|GoogleScholarFetcher
+operator|.
 name|QUERY_MARKER
 argument_list|,
 name|URLEncoder
@@ -982,7 +1027,9 @@ if|if
 condition|(
 name|stopFetching
 condition|)
+block|{
 break|break;
+block|}
 block|}
 return|return
 name|res
@@ -1047,6 +1094,8 @@ comment|//save("query.html", cont);
 name|Matcher
 name|m
 init|=
+name|GoogleScholarFetcher
+operator|.
 name|BIBTEX_LINK_PATTERN
 operator|.
 name|matcher
@@ -1106,6 +1155,8 @@ decl_stmt|;
 name|Matcher
 name|titleS
 init|=
+name|GoogleScholarFetcher
+operator|.
 name|TITLE_START_PATTERN
 operator|.
 name|matcher
@@ -1116,6 +1167,8 @@ decl_stmt|;
 name|Matcher
 name|titleE
 init|=
+name|GoogleScholarFetcher
+operator|.
 name|TITLE_END_PATTERN
 operator|.
 name|matcher
@@ -1180,16 +1233,20 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|pText
 operator|=
 name|part
 expr_stmt|;
 block|}
+block|}
 else|else
+block|{
 name|pText
 operator|=
 name|link
 expr_stmt|;
+block|}
 name|pText
 operator|=
 name|pText
@@ -1228,6 +1285,8 @@ comment|// That will be set as "url" for the entry if downloaded:
 name|Matcher
 name|linkMatcher
 init|=
+name|GoogleScholarFetcher
+operator|.
 name|LINK_PATTERN
 operator|.
 name|matcher
@@ -1242,6 +1301,7 @@ operator|.
 name|find
 argument_list|()
 condition|)
+block|{
 name|entryLinks
 operator|.
 name|put
@@ -1256,6 +1316,7 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|lastRegionStart
 operator|=
 name|m
@@ -1288,6 +1349,8 @@ init|=
 operator|new
 name|URL
 argument_list|(
+name|GoogleScholarFetcher
+operator|.
 name|URL_START
 operator|+
 name|link
@@ -1383,6 +1446,7 @@ if|if
 condition|(
 name|clearKeys
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -1394,6 +1458,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 comment|// If the entry's url field is not set, and we have stored an url for this
 comment|// entry, set it:
 if|if
@@ -1424,6 +1489,7 @@ name|storedUrl
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -1433,6 +1499,7 @@ argument_list|,
 name|storedUrl
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Clean up some remaining HTML code from Elsevier(?) papers
 comment|// Search for: Poincare algebra
@@ -1612,6 +1679,8 @@ block|{
 name|Matcher
 name|m
 init|=
+name|GoogleScholarFetcher
+operator|.
 name|inputPattern
 operator|.
 name|matcher
@@ -1692,6 +1761,7 @@ operator|==
 literal|'"'
 operator|)
 condition|)
+block|{
 name|name
 operator|=
 name|name
@@ -1708,6 +1778,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|value
 init|=
@@ -1756,6 +1827,7 @@ operator|==
 literal|'"'
 operator|)
 condition|)
+block|{
 name|value
 operator|=
 name|value
@@ -1772,6 +1844,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 name|items
 operator|.
 name|put

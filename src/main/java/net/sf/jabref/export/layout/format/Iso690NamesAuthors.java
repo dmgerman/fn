@@ -54,6 +54,8 @@ specifier|public
 name|Iso690NamesAuthors
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 DECL|method|format (String s)
 specifier|public
 name|String
@@ -65,9 +67,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|s
 operator|==
 literal|null
+operator|)
 operator|||
 name|s
 operator|.
@@ -79,9 +83,11 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 name|StringBuilder
 name|sb
 init|=
@@ -461,11 +467,13 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|authors
 operator|.
 name|length
 operator|-
 literal|2
+operator|)
 condition|)
 block|{
 comment|//si hay mas de 2 autores, lo separamos por ", "
@@ -482,11 +490,13 @@ if|if
 condition|(
 name|i
 operator|==
+operator|(
 name|authors
 operator|.
 name|length
 operator|-
 literal|2
+operator|)
 condition|)
 block|{
 comment|// si hay 2 autores, lo separamos por " y "

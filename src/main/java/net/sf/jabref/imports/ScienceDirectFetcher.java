@@ -193,6 +193,8 @@ specifier|final
 name|String
 name|SEARCH_URL
 init|=
+name|ScienceDirectFetcher
+operator|.
 name|WEBSITE_URL
 operator|+
 literal|"/science/quicksearch?query="
@@ -219,6 +221,8 @@ name|compile
 argument_list|(
 literal|"<a href=\""
 operator|+
+name|ScienceDirectFetcher
+operator|.
 name|linkPrefix
 operator|.
 name|replaceAll
@@ -259,6 +263,8 @@ name|noAccessFound
 init|=
 literal|false
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getHelpPage ()
 specifier|public
 name|String
@@ -269,6 +275,8 @@ return|return
 literal|"ScienceDirect.html"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeyName ()
 specifier|public
 name|String
@@ -279,6 +287,8 @@ return|return
 literal|"ScienceDirect"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getOptionsPanel ()
 specifier|public
 name|JPanel
@@ -290,6 +300,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTitle ()
 specifier|public
 name|String
@@ -305,6 +317,8 @@ literal|"Search ScienceDirect"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|stopFetching ()
 specifier|public
 name|void
@@ -320,6 +334,8 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter status)
 specifier|public
 name|boolean
@@ -358,9 +374,11 @@ name|citations
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 if|if
 condition|(
 name|citations
@@ -417,7 +435,9 @@ if|if
 condition|(
 name|stopFetching
 condition|)
+block|{
 break|break;
+block|}
 name|BibtexEntry
 name|entry
 init|=
@@ -434,6 +454,7 @@ name|entry
 operator|!=
 literal|null
 condition|)
+block|{
 name|dialog
 operator|.
 name|addEntry
@@ -441,6 +462,7 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
 name|dialog
 operator|.
 name|setProgress
@@ -529,6 +551,8 @@ try|try
 block|{
 name|urlQuery
 operator|=
+name|ScienceDirectFetcher
+operator|.
 name|SEARCH_URL
 operator|+
 name|URLEncoder
@@ -568,6 +592,8 @@ operator|&&
 operator|(
 name|count
 operator|<
+name|ScienceDirectFetcher
+operator|.
 name|MAX_PAGES_TO_LOAD
 operator|)
 condition|)
@@ -641,6 +667,8 @@ comment|//String entirePage = cont;
 name|Matcher
 name|m
 init|=
+name|ScienceDirectFetcher
+operator|.
 name|linkPattern
 operator|.
 name|matcher
@@ -668,6 +696,8 @@ name|ids
 operator|.
 name|add
 argument_list|(
+name|ScienceDirectFetcher
+operator|.
 name|linkPrefix
 operator|+
 name|m
@@ -692,6 +722,8 @@ argument_list|)
 expr_stmt|;
 name|m
 operator|=
+name|ScienceDirectFetcher
+operator|.
 name|linkPattern
 operator|.
 name|matcher

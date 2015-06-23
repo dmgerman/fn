@@ -112,12 +112,14 @@ name|extension
 operator|==
 literal|null
 condition|)
+block|{
 name|off
 operator|=
 operator|new
 name|OpenFileFilter
 argument_list|()
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -131,6 +133,7 @@ operator|.
 name|NONE
 argument_list|)
 condition|)
+block|{
 name|off
 operator|=
 operator|new
@@ -139,9 +142,12 @@ argument_list|(
 name|extension
 argument_list|)
 expr_stmt|;
+block|}
 name|Object
 name|files
 init|=
+name|FileDialogs
+operator|.
 name|getNewFileImpl
 argument_list|(
 name|owner
@@ -235,6 +241,8 @@ name|updateWorkingDirectory
 parameter_list|)
 block|{
 return|return
+name|FileDialogs
+operator|.
 name|getNewFile
 argument_list|(
 name|owner
@@ -281,6 +289,8 @@ name|accessory
 parameter_list|)
 block|{
 return|return
+name|FileDialogs
+operator|.
 name|getNewFile
 argument_list|(
 name|owner
@@ -327,6 +337,8 @@ name|updateWorkingDirectory
 parameter_list|)
 block|{
 return|return
+name|FileDialogs
+operator|.
 name|getNewFile
 argument_list|(
 name|owner
@@ -370,6 +382,8 @@ name|updateWorkingDirectory
 parameter_list|)
 block|{
 return|return
+name|FileDialogs
+operator|.
 name|getNewFile
 argument_list|(
 name|owner
@@ -416,6 +430,8 @@ name|updateWorkingDirectory
 parameter_list|)
 block|{
 return|return
+name|FileDialogs
+operator|.
 name|getNewFile
 argument_list|(
 name|owner
@@ -478,12 +494,14 @@ name|extension
 operator|==
 literal|null
 condition|)
+block|{
 name|off
 operator|=
 operator|new
 name|OpenFileFilter
 argument_list|()
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -497,6 +515,7 @@ operator|.
 name|NONE
 argument_list|)
 condition|)
+block|{
 name|off
 operator|=
 operator|new
@@ -505,10 +524,13 @@ argument_list|(
 name|extension
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 operator|(
 name|String
 operator|)
+name|FileDialogs
+operator|.
 name|getNewFileImpl
 argument_list|(
 name|owner
@@ -588,6 +610,8 @@ argument_list|)
 condition|)
 block|{
 return|return
+name|FileDialogs
+operator|.
 name|getNewFileForMac
 argument_list|(
 name|owner
@@ -626,6 +650,7 @@ name|accessory
 operator|!=
 literal|null
 condition|)
+block|{
 name|fc
 operator|.
 name|setAccessory
@@ -633,6 +658,7 @@ argument_list|(
 name|accessory
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -646,6 +672,8 @@ comment|// bug in JGoodies Windows PLAF. This clause can be removed if the
 comment|// bug is fixed, but for now we just resort to the native file
 comment|// dialog, using the same method as is always used on Mac:
 return|return
+name|FileDialogs
+operator|.
 name|getNewFileForMac
 argument_list|(
 name|owner
@@ -766,9 +794,11 @@ name|JFileChooser
 operator|.
 name|APPROVE_OPTION
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 comment|// okay button
 name|File
 name|selectedFile
@@ -877,12 +907,14 @@ condition|(
 operator|!
 name|multipleSelection
 condition|)
+block|{
 return|return
 name|selectedFile
 operator|.
 name|getAbsolutePath
 argument_list|()
 return|;
+block|}
 else|else
 block|{
 name|File
@@ -922,6 +954,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|filenames
 index|[
 name|i
@@ -935,6 +968,7 @@ operator|.
 name|getAbsolutePath
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|filenames
 return|;

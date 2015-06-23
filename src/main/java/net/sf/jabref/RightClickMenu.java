@@ -456,6 +456,7 @@ argument_list|()
 operator|==
 literal|1
 condition|)
+block|{
 name|be
 operator|=
 name|panel
@@ -470,6 +471,7 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
 name|addPopupMenuListener
 argument_list|(
 name|this
@@ -495,6 +497,8 @@ literal|"copy"
 argument_list|)
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -519,6 +523,8 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
+name|RightClickMenu
+operator|.
 name|logger
 operator|.
 name|warning
@@ -554,6 +560,8 @@ literal|"paste"
 argument_list|)
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -578,6 +586,8 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
+name|RightClickMenu
+operator|.
 name|logger
 operator|.
 name|warning
@@ -613,6 +623,8 @@ literal|"cut"
 argument_list|)
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -637,6 +649,8 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
+name|RightClickMenu
+operator|.
 name|logger
 operator|.
 name|warning
@@ -672,6 +686,8 @@ literal|"delete"
 argument_list|)
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -697,6 +713,8 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
+name|RightClickMenu
+operator|.
 name|logger
 operator|.
 name|warning
@@ -729,6 +747,8 @@ literal|"Export to clipboard"
 argument_list|)
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -753,6 +773,8 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
+name|RightClickMenu
+operator|.
 name|logger
 operator|.
 name|warning
@@ -781,6 +803,8 @@ literal|"Send as email"
 argument_list|)
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -805,6 +829,8 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
+name|RightClickMenu
+operator|.
 name|logger
 operator|.
 name|warning
@@ -856,6 +882,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|markSpecific
 operator|.
 name|add
@@ -872,6 +899,7 @@ name|getMenuItem
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|multiple
@@ -897,6 +925,8 @@ literal|"markEntries"
 argument_list|)
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -921,6 +951,8 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
+name|RightClickMenu
+operator|.
 name|logger
 operator|.
 name|warning
@@ -961,6 +993,8 @@ literal|"unmarkEntries"
 argument_list|)
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -985,6 +1019,8 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
+name|RightClickMenu
+operator|.
 name|logger
 operator|.
 name|warning
@@ -1061,6 +1097,8 @@ literal|"markEntries"
 argument_list|)
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1085,6 +1123,8 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
+name|RightClickMenu
+operator|.
 name|logger
 operator|.
 name|warning
@@ -1133,6 +1173,8 @@ literal|"unmarkEntries"
 argument_list|)
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1157,6 +1199,8 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
+name|RightClickMenu
+operator|.
 name|logger
 operator|.
 name|warning
@@ -1205,6 +1249,8 @@ name|PREF_SHOWCOLUMN_RANKING
 argument_list|)
 condition|)
 block|{
+name|RightClickMenu
+operator|.
 name|populateSpecialFieldMenu
 argument_list|(
 name|this
@@ -1360,6 +1406,8 @@ name|PREF_SHOWCOLUMN_PRIORITY
 argument_list|)
 condition|)
 block|{
+name|RightClickMenu
+operator|.
 name|populateSpecialFieldMenu
 argument_list|(
 name|this
@@ -1398,6 +1446,8 @@ name|PREF_SHOWCOLUMN_READ
 argument_list|)
 condition|)
 block|{
+name|RightClickMenu
+operator|.
 name|populateSpecialFieldMenu
 argument_list|(
 name|this
@@ -1446,6 +1496,8 @@ literal|"openFolder"
 argument_list|)
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1470,6 +1522,8 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
+name|RightClickMenu
+operator|.
 name|logger
 operator|.
 name|warning
@@ -1505,6 +1559,8 @@ literal|"openExternalFile"
 argument_list|)
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1529,6 +1585,8 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
+name|RightClickMenu
+operator|.
 name|logger
 operator|.
 name|warning
@@ -1564,6 +1622,8 @@ literal|"open"
 argument_list|)
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1588,6 +1648,8 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
+name|RightClickMenu
+operator|.
 name|logger
 operator|.
 name|warning
@@ -1624,6 +1686,8 @@ literal|"www"
 argument_list|)
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1648,6 +1712,8 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
+name|RightClickMenu
+operator|.
 name|logger
 operator|.
 name|warning
@@ -1676,6 +1742,8 @@ literal|"Copy BibTeX key"
 argument_list|)
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1700,6 +1768,8 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
+name|RightClickMenu
+operator|.
 name|logger
 operator|.
 name|warning
@@ -1739,6 +1809,8 @@ operator|+
 literal|"}"
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1763,6 +1835,8 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
+name|RightClickMenu
+operator|.
 name|logger
 operator|.
 name|warning
@@ -1802,6 +1876,8 @@ literal|"Plain text import"
 argument_list|)
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1826,6 +1902,8 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
+name|RightClickMenu
+operator|.
 name|logger
 operator|.
 name|warning
@@ -1879,6 +1957,8 @@ literal|"Add to group"
 argument_list|)
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1905,6 +1985,8 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
+name|RightClickMenu
+operator|.
 name|logger
 operator|.
 name|warning
@@ -1941,6 +2023,8 @@ literal|"Remove from group"
 argument_list|)
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1965,6 +2049,8 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
+name|RightClickMenu
+operator|.
 name|logger
 operator|.
 name|warning
@@ -2000,6 +2086,8 @@ literal|"Move to group"
 argument_list|)
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2024,6 +2112,8 @@ name|Throwable
 name|ex
 parameter_list|)
 block|{
+name|RightClickMenu
+operator|.
 name|logger
 operator|.
 name|warning
@@ -2052,6 +2142,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2196,6 +2288,8 @@ expr_stmt|;
 block|}
 block|}
 comment|/**      * Set the dynamic contents of "Add to group ..." submenu.      */
+annotation|@
+name|Override
 DECL|method|popupMenuWillBecomeVisible (PopupMenuEvent e)
 specifier|public
 name|void
@@ -2314,9 +2408,11 @@ name|bes
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|JMenu
 name|groupMenu
 init|=
@@ -2467,6 +2563,7 @@ operator|.
 name|isEnabled
 argument_list|()
 condition|)
+block|{
 name|menu
 operator|.
 name|setEnabled
@@ -2474,6 +2571,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 return|return;
 block|}
 name|JMenu
@@ -2624,6 +2722,7 @@ condition|;
 operator|++
 name|i
 control|)
+block|{
 name|insertNodes
 argument_list|(
 name|submenu
@@ -2645,6 +2744,7 @@ argument_list|,
 name|move
 argument_list|)
 expr_stmt|;
+block|}
 name|menu
 operator|.
 name|add
@@ -2659,6 +2759,7 @@ operator|.
 name|isEnabled
 argument_list|()
 condition|)
+block|{
 name|menu
 operator|.
 name|setEnabled
@@ -2666,6 +2767,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/** Sets the font and icon to be used, depending on the group */
@@ -2900,6 +3002,8 @@ return|return
 name|action
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|popupMenuWillBecomeInvisible (PopupMenuEvent e)
 specifier|public
 name|void
@@ -2925,6 +3029,8 @@ name|groupRemoveMenu
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|popupMenuCanceled (PopupMenuEvent e)
 specifier|public
 name|void
@@ -2982,6 +3088,8 @@ operator|=
 name|bp
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent evt)
 specifier|public
 name|void

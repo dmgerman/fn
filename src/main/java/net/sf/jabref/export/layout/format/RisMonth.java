@@ -56,6 +56,8 @@ name|RisMonth
 implements|implements
 name|LayoutFormatter
 block|{
+annotation|@
+name|Override
 DECL|method|format (String month)
 specifier|public
 name|String
@@ -71,9 +73,11 @@ name|month
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 name|MonthUtil
 operator|.
 name|Month

@@ -164,10 +164,12 @@ name|length
 operator|>
 literal|1
 condition|)
+block|{
 name|andSep
 operator|=
 literal|true
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|/*             If there are no "and" separators in the original string, we assume it either means that             the author list is comma or semicolon separated or that it contains only a single name.             If there is a semicolon, we go by that. If not, we assume commas, and count the parts             separated by commas to determine which it is.             */
@@ -257,10 +259,12 @@ argument_list|()
 operator|>
 literal|3
 condition|)
+block|{
 name|authors
 operator|=
 name|a2
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -546,6 +550,8 @@ block|{
 name|String
 name|norm
 init|=
+name|NameListNormalizer
+operator|.
 name|normalizeName
 argument_list|(
 name|authors
@@ -565,12 +571,15 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|authors
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -578,6 +587,7 @@ argument_list|(
 literal|" and "
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb
@@ -599,6 +609,8 @@ block|{
 name|Matcher
 name|m
 init|=
+name|NameListNormalizer
+operator|.
 name|lastFF
 operator|.
 name|matcher
@@ -686,13 +698,16 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|initials
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -700,6 +715,7 @@ argument_list|(
 literal|' '
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb
@@ -710,6 +726,8 @@ return|;
 block|}
 name|m
 operator|=
+name|NameListNormalizer
+operator|.
 name|lastFdotF
 operator|.
 name|matcher
@@ -804,13 +822,16 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|initials
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -818,6 +839,7 @@ argument_list|(
 literal|' '
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb
@@ -828,6 +850,8 @@ return|;
 block|}
 name|m
 operator|=
+name|NameListNormalizer
+operator|.
 name|FFlast
 operator|.
 name|matcher
@@ -915,13 +939,16 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|initials
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -929,6 +956,7 @@ argument_list|(
 literal|' '
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb
@@ -939,6 +967,8 @@ return|;
 block|}
 name|m
 operator|=
+name|NameListNormalizer
+operator|.
 name|FdotFlast
 operator|.
 name|matcher
@@ -1033,13 +1063,16 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|initials
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1047,6 +1080,7 @@ argument_list|(
 literal|' '
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb
@@ -1083,13 +1117,16 @@ if|if
 condition|(
 name|index
 operator|==
+operator|(
 name|name
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|name
 operator|=
 name|name
@@ -1106,6 +1143,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 name|StringBuilder
 name|sb
 init|=
@@ -1195,6 +1233,7 @@ argument_list|()
 operator|==
 literal|1
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1210,7 +1249,9 @@ argument_list|(
 literal|"."
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -1221,16 +1262,20 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|fParts
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1240,12 +1285,15 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 else|else
 block|{
 comment|// Only a single part. Check if it looks like a name or initials:
 name|Matcher
 name|m2
 init|=
+name|NameListNormalizer
+operator|.
 name|singleName
 operator|.
 name|matcher
@@ -1263,6 +1311,7 @@ operator|.
 name|matches
 argument_list|()
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1273,6 +1322,7 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|// It looks like initials.
@@ -1332,13 +1382,16 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|initials
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1346,6 +1399,7 @@ argument_list|(
 literal|' '
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -1385,6 +1439,8 @@ control|)
 block|{
 name|m
 operator|=
+name|NameListNormalizer
+operator|.
 name|singleName
 operator|.
 name|matcher
@@ -1456,11 +1512,13 @@ literal|0
 init|;
 name|i
 operator|<
+operator|(
 name|parts
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|;
 name|i
 operator|++
@@ -1493,6 +1551,7 @@ argument_list|()
 operator|==
 literal|1
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1500,6 +1559,7 @@ argument_list|(
 literal|"."
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return

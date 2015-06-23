@@ -229,6 +229,8 @@ argument_list|()
 expr_stmt|;
 comment|// remember abstract syntax tree
 block|}
+annotation|@
+name|Override
 DECL|method|applyRule (Map<String, String> searchStrings, BibtexEntry bibtexEntry)
 specifier|public
 name|int
@@ -271,6 +273,8 @@ return|;
 comment|// this should never occur
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|validateSearchStrings (Map<String, String> searchStrings)
 specifier|public
 name|boolean

@@ -1980,6 +1980,7 @@ block|}
 decl_stmt|;
 DECL|field|genericLists
 specifier|private
+specifier|final
 name|String
 index|[]
 index|[]

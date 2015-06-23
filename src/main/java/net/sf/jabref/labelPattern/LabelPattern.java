@@ -164,9 +164,11 @@ argument_list|(
 name|type
 argument_list|)
 operator|&&
+operator|(
 name|parent
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|remove

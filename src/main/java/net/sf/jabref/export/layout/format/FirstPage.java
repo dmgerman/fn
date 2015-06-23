@@ -48,6 +48,8 @@ name|FirstPage
 implements|implements
 name|LayoutFormatter
 block|{
+annotation|@
+name|Override
 DECL|method|format (String s)
 specifier|public
 name|String
@@ -63,9 +65,11 @@ name|s
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 name|String
 index|[]
 name|pageParts
@@ -85,16 +89,20 @@ name|length
 operator|==
 literal|2
 condition|)
+block|{
 return|return
 name|pageParts
 index|[
 literal|0
 index|]
 return|;
+block|}
 else|else
+block|{
 return|return
 name|s
 return|;
+block|}
 block|}
 block|}
 end_class

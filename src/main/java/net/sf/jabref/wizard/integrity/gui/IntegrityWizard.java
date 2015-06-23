@@ -429,6 +429,7 @@ name|infoURL
 operator|!=
 literal|null
 condition|)
+block|{
 try|try
 block|{
 name|infoText
@@ -512,6 +513,7 @@ operator|=
 literal|null
 expr_stmt|;
 block|}
+block|}
 comment|// -----------------------------------------------------------------------
 comment|// content
 name|Container
@@ -576,6 +578,8 @@ expr_stmt|;
 block|}
 comment|// ---------------------------------------------------------------------------
 comment|// ---------------------------------------------------------------------------
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -626,6 +630,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run

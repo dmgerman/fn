@@ -351,11 +351,15 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|RankExtended
+operator|.
 name|INSTANCE
 operator|==
 literal|null
 condition|)
 block|{
+name|RankExtended
+operator|.
 name|INSTANCE
 operator|=
 operator|new
@@ -364,9 +368,13 @@ argument_list|()
 expr_stmt|;
 block|}
 return|return
+name|RankExtended
+operator|.
 name|INSTANCE
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRepresentingIcon ()
 specifier|public
 name|ImageIcon

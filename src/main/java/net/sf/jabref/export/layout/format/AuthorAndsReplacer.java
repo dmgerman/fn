@@ -49,6 +49,8 @@ implements|implements
 name|LayoutFormatter
 block|{
 comment|/* (non-Javadoc)      * @see net.sf.jabref.export.layout.LayoutFormatter#format(java.lang.String)      */
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -64,9 +66,11 @@ name|fieldText
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|String
 index|[]
 name|authors
@@ -143,9 +147,11 @@ literal|0
 init|;
 name|i
 operator|<
+operator|(
 name|x
 operator|-
 literal|2
+operator|)
 condition|;
 name|i
 operator|++

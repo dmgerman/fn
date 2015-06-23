@@ -454,6 +454,7 @@ call|(
 name|int
 call|)
 argument_list|(
+operator|(
 literal|100
 operator|*
 name|BibtexFields
@@ -462,6 +463,7 @@ name|getFieldWeight
 argument_list|(
 name|field
 argument_list|)
+operator|)
 operator|/
 name|GUIGlobals
 operator|.
@@ -532,6 +534,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -558,6 +562,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -654,6 +660,7 @@ block|{
 name|double
 name|weight
 init|=
+operator|(
 name|GUIGlobals
 operator|.
 name|MAX_FIELD_WEIGHT
@@ -663,6 +670,7 @@ name|slider
 operator|.
 name|getValue
 argument_list|()
+operator|)
 operator|)
 operator|/
 literal|100d

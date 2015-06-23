@@ -131,17 +131,25 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|MySQLImporter
+operator|.
 name|instance
 operator|==
 literal|null
 condition|)
+block|{
+name|MySQLImporter
+operator|.
 name|instance
 operator|=
 operator|new
 name|MySQLImporter
 argument_list|()
 expr_stmt|;
+block|}
 return|return
+name|MySQLImporter
+operator|.
 name|instance
 return|;
 block|}
@@ -180,6 +188,8 @@ name|getResultSet
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|connectToDB (DBStrings dbstrings)
 specifier|protected
 name|Connection

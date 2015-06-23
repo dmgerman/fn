@@ -42,6 +42,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Before
 import|;
 end_import
@@ -100,6 +110,7 @@ name|EntryFromPDFCreatorTest
 block|{
 DECL|field|entryCreator
 specifier|private
+specifier|final
 name|EntryFromPDFCreator
 name|entryCreator
 init|=
@@ -135,6 +146,8 @@ name|void
 name|testPDFFileFilter
 parameter_list|()
 block|{
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|entryCreator
@@ -149,6 +162,8 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|entryCreator
@@ -163,6 +178,8 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertFalse
 argument_list|(
 name|entryCreator
@@ -202,6 +219,8 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertNull
 argument_list|(
 name|entry
@@ -220,11 +239,15 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertNotNull
 argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|entry
@@ -240,6 +263,8 @@ literal|":PDF"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|ImportDataTest

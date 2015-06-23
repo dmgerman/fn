@@ -101,6 +101,8 @@ return|return
 name|format
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|accept (File file)
 specifier|public
 name|boolean
@@ -115,6 +117,8 @@ literal|true
 return|;
 comment|/*if (file.isDirectory())             return true;         else             return file.getPath().toLowerCase().endsWith(extension);*/
 block|}
+annotation|@
+name|Override
 DECL|method|getDescription ()
 specifier|public
 name|String
@@ -125,6 +129,8 @@ return|return
 name|name
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|compareTo (ImportFileFilter o)
 specifier|public
 name|int

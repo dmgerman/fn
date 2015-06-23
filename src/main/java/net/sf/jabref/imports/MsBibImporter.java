@@ -132,6 +132,8 @@ name|MsBibImporter
 extends|extends
 name|ImportFormat
 block|{
+annotation|@
+name|Override
 DECL|method|isRecognizedFormat (InputStream in)
 specifier|public
 name|boolean
@@ -182,9 +184,11 @@ return|;
 block|}
 if|if
 condition|(
+operator|(
 name|docin
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|docin
@@ -200,9 +204,11 @@ argument_list|(
 literal|"Sources"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 comment|//   		NodeList rootLst = docin.getElementsByTagName("b:Sources");
 comment|//   		if(rootLst.getLength()==0)
 comment|//   			rootLst = docin.getElementsByTagName("Sources");
@@ -224,6 +230,8 @@ return|return
 literal|"msbib"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|importEntries (InputStream in, OutputPrinter status)
 specifier|public
 name|List
@@ -257,6 +265,8 @@ name|in
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getFormatName ()
 specifier|public
 name|String

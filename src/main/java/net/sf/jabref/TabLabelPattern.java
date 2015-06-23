@@ -380,6 +380,8 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * Store changes to table preferences. This method is called when      * the user clicks Ok.      *      */
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -494,6 +496,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|Globals
 operator|.
 name|prefs
@@ -505,6 +508,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -924,6 +928,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -949,6 +955,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|readyToClose ()
 specifier|public
 name|boolean
@@ -959,6 +967,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -1072,6 +1082,7 @@ if|if
 condition|(
 name|alwaysAddLetter
 condition|)
+block|{
 name|this
 operator|.
 name|alwaysAddLetter
@@ -1081,11 +1092,13 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
 name|firstLetterA
 condition|)
+block|{
 name|this
 operator|.
 name|letterStartA
@@ -1095,7 +1108,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|this
 operator|.
 name|letterStartB
@@ -1105,6 +1120,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Warning before overwriting is only relevant if overwriting can happen:
 name|warnBeforeOverwriting
 operator|.
@@ -1148,6 +1164,8 @@ expr_stmt|;
 comment|//basenamePatternRegex.setText(Globals.prefs.get("basenamePatternRegex"));
 comment|//basenamePatternReplacement.setText(Globals.prefs.get("basenamePatternReplacement"));
 block|}
+annotation|@
+name|Override
 DECL|method|getTabName ()
 specifier|public
 name|String

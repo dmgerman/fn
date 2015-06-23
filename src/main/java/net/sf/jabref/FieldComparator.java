@@ -93,6 +93,8 @@ static|static
 block|{
 try|try
 block|{
+name|FieldComparator
+operator|.
 name|collator
 operator|=
 operator|new
@@ -126,6 +128,8 @@ name|ParseException
 name|e
 parameter_list|)
 block|{
+name|FieldComparator
+operator|.
 name|collator
 operator|=
 name|Collator
@@ -320,6 +324,8 @@ index|]
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|compare (BibtexEntry e1, BibtexEntry e2)
 specifier|public
 name|int
@@ -393,11 +399,13 @@ if|if
 condition|(
 name|isMonthField
 condition|)
+block|{
 name|localMultiplier
 operator|=
 operator|-
 name|localMultiplier
 expr_stmt|;
+block|}
 comment|// Catch all cases involving null:
 if|if
 condition|(
@@ -405,6 +413,7 @@ name|f1
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 name|f2
 operator|==
@@ -414,16 +423,19 @@ literal|0
 else|:
 name|localMultiplier
 return|;
+block|}
 if|if
 condition|(
 name|f2
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 operator|-
 name|localMultiplier
 return|;
+block|}
 comment|// Now we now that both f1 and f2 are != null
 if|if
 condition|(
@@ -585,13 +597,17 @@ comment|// Parsing failed.
 block|}
 if|if
 condition|(
+operator|(
 name|i2
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|i1
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 comment|// Ok, parsing was successful. Update f1 and f2:
@@ -791,6 +807,8 @@ argument_list|()
 decl_stmt|;
 name|result
 operator|=
+name|FieldComparator
+operator|.
 name|collator
 operator|.
 name|compare
@@ -841,9 +859,11 @@ name|o
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|o
 return|;
+block|}
 block|}
 return|return
 literal|null

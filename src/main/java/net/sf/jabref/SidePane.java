@@ -312,6 +312,8 @@ name|repaint
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|remove (Component c)
 specifier|public
 name|void
@@ -329,6 +331,8 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getMaximumSize ()
 specifier|public
 name|Dimension
@@ -340,6 +344,8 @@ name|getPreferredSize
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getPreferredSize ()
 specifier|public
 name|Dimension

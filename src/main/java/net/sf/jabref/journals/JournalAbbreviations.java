@@ -545,9 +545,11 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 if|if
 condition|(
 operator|!
@@ -593,6 +595,7 @@ name|s
 operator|!=
 literal|null
 condition|)
+block|{
 name|s
 operator|=
 name|s
@@ -600,10 +603,13 @@ operator|.
 name|toLowerCase
 argument_list|()
 expr_stmt|;
+block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|Object
 name|o
 init|=
@@ -630,14 +636,18 @@ argument_list|(
 name|s
 argument_list|)
 condition|)
+block|{
 name|o
 operator|=
 name|s
 expr_stmt|;
+block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 name|s
 operator|=
@@ -781,7 +791,9 @@ argument_list|(
 literal|"#"
 argument_list|)
 condition|)
+block|{
 continue|continue;
+block|}
 name|String
 index|[]
 name|parts
@@ -1024,9 +1036,11 @@ name|text
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|String
 name|origText
 init|=
@@ -1038,6 +1052,7 @@ name|database
 operator|!=
 literal|null
 condition|)
+block|{
 name|text
 operator|=
 name|database
@@ -1047,6 +1062,7 @@ argument_list|(
 name|text
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|isKnownName
@@ -1077,9 +1093,11 @@ name|newText
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|entry
 operator|.
 name|setField
@@ -1143,9 +1161,11 @@ name|newText
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|entry
 operator|.
 name|setField
@@ -1177,9 +1197,11 @@ literal|true
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 block|}
 comment|/**      * Unabbreviate the journal name of the given entry.      * @param entry The entry to be treated.      * @param fieldName The field name (e.g. "journal")      * @param ce If the entry is changed, add an edit to this compound.      * @return true if the entry was changed, false otherwise.      */
@@ -1217,9 +1239,11 @@ name|text
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|String
 name|origText
 init|=
@@ -1231,6 +1255,7 @@ name|database
 operator|!=
 literal|null
 condition|)
+block|{
 name|text
 operator|=
 name|database
@@ -1240,6 +1265,7 @@ argument_list|(
 name|text
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|isKnownName
@@ -1267,9 +1293,11 @@ name|newText
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|entry
 operator|.
 name|setField
@@ -1301,9 +1329,11 @@ literal|true
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 DECL|method|getJournals ()
 specifier|public
@@ -1363,6 +1393,8 @@ name|button
 operator|.
 name|setToolTipText
 argument_list|(
+name|JournalAbbreviations
+operator|.
 name|TOOLTIPTEXT
 argument_list|)
 expr_stmt|;
@@ -1379,6 +1411,8 @@ name|withDots
 init|=
 literal|true
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1658,6 +1692,8 @@ argument_list|)
 block|}
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isCellEditable

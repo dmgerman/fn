@@ -116,6 +116,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JOptionPane
 import|;
 end_import
@@ -291,6 +301,8 @@ static|static
 block|{
 comment|// Add the action for checking for new custom entry types loaded from
 comment|// the bib file:
+name|OpenDatabaseAction
+operator|.
 name|postOpenActions
 operator|.
 name|add
@@ -301,6 +313,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Add the action for the new external file handling system in version 2.3:
+name|OpenDatabaseAction
+operator|.
 name|postOpenActions
 operator|.
 name|add
@@ -311,6 +325,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Add the action for warning about and handling duplicate BibTeX keys:
+name|OpenDatabaseAction
+operator|.
 name|postOpenActions
 operator|.
 name|add
@@ -356,6 +372,8 @@ name|showDialog
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Open database"
@@ -363,6 +381,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|Globals
@@ -377,6 +397,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -388,6 +410,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -450,6 +474,7 @@ name|chosen
 operator|!=
 literal|null
 condition|)
+block|{
 for|for
 control|(
 name|String
@@ -464,6 +489,7 @@ name|aChosen
 operator|!=
 literal|null
 condition|)
+block|{
 name|filesToOpen
 operator|.
 name|add
@@ -476,6 +502,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+block|}
 comment|/*             String chosenFile = Globals.getNewFile(frame,                     new File(Globals.prefs.get("workingDirectory")), ".bib",                     JFileChooser.OPEN_DIALOG, true);              if (chosenFile != null) {                 fileToOpen = new File(chosenFile);             }*/
 block|}
 else|else
@@ -484,6 +512,8 @@ name|Util
 operator|.
 name|pr
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|)
 expr_stmt|;
@@ -678,6 +708,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -690,6 +722,7 @@ name|theFile
 range|:
 name|theFiles
 control|)
+block|{
 name|openIt
 argument_list|(
 name|theFile
@@ -697,6 +730,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -708,6 +742,7 @@ name|theFile
 range|:
 name|theFiles
 control|)
+block|{
 name|frame
 operator|.
 name|getFileHistory
@@ -721,6 +756,7 @@ name|getPath
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// If no files are remaining to open, this could mean that a file was
 comment|// already open. If so, we may have to raise the correct tab:
@@ -817,6 +853,8 @@ operator|=
 name|file
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -1092,12 +1130,14 @@ literal|1
 operator|)
 operator|&&
 operator|(
+operator|(
 name|System
 operator|.
 name|currentTimeMillis
 argument_list|()
 operator|-
 name|modTime
+operator|)
 operator|>
 name|SaveSession
 operator|.
@@ -1176,7 +1216,9 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 return|return;
+block|}
 block|}
 elseif|else
 if|if
@@ -1245,6 +1287,8 @@ try|try
 block|{
 name|pr
 operator|=
+name|OpenDatabaseAction
+operator|.
 name|loadDatabase
 argument_list|(
 name|fileToLoad
@@ -1385,17 +1429,21 @@ name|file
 expr_stmt|;
 block|}
 else|else
+block|{
 name|done
 operator|=
 literal|true
 expr_stmt|;
+block|}
 continue|continue;
 block|}
 else|else
+block|{
 name|done
 operator|=
 literal|true
 expr_stmt|;
+block|}
 specifier|final
 name|BasePanel
 name|panel
@@ -1413,11 +1461,13 @@ if|if
 condition|(
 name|tryingAutosave
 condition|)
+block|{
 name|panel
 operator|.
 name|markNonUndoableBaseChanged
 argument_list|()
 expr_stmt|;
+block|}
 comment|// After adding the database, go through our list and see if
 comment|// any post open actions need to be done. For instance, checking
 comment|// if we found new entry types that can be imported, or checking
@@ -1437,11 +1487,15 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
 parameter_list|()
 block|{
+name|OpenDatabaseAction
+operator|.
 name|performPostOpenActions
 argument_list|(
 name|panel
@@ -1480,6 +1534,8 @@ control|(
 name|PostOpenAction
 name|action
 range|:
+name|OpenDatabaseAction
+operator|.
 name|postOpenActions
 control|)
 block|{
@@ -1497,6 +1553,7 @@ if|if
 condition|(
 name|mustRaisePanel
 condition|)
+block|{
 name|panel
 operator|.
 name|frame
@@ -1510,6 +1567,7 @@ argument_list|(
 name|panel
 argument_list|)
 expr_stmt|;
+block|}
 name|action
 operator|.
 name|performAction
@@ -1590,6 +1648,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1618,6 +1678,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|wrn
 operator|.
 name|append
@@ -1645,6 +1706,7 @@ argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|wrn
@@ -1654,6 +1716,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|wrn
 operator|.
 name|deleteCharAt
@@ -1666,6 +1729,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Note to self or to someone else: The following line causes an
 comment|// ArrayIndexOutOfBoundsException in situations with a large number of
 comment|// warnings; approx. 5000 for the database I opened when I observed the problem
@@ -1835,6 +1899,8 @@ decl_stmt|;
 name|String
 name|suppliedEncoding
 init|=
+name|OpenDatabaseAction
+operator|.
 name|checkForEncoding
 argument_list|(
 name|utf8Reader
@@ -1867,6 +1933,8 @@ argument_list|)
 decl_stmt|;
 name|suppliedEncoding
 operator|=
+name|OpenDatabaseAction
+operator|.
 name|checkForEncoding
 argument_list|(
 name|utf16Reader
@@ -2011,6 +2079,8 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+name|OpenDatabaseAction
+operator|.
 name|logger
 operator|.
 name|fine
@@ -2035,6 +2105,7 @@ operator|.
 name|isGroupTreeValid
 argument_list|()
 condition|)
+block|{
 name|pr
 operator|.
 name|addWarning
@@ -2047,6 +2118,7 @@ literal|"Group tree could not be parsed. If you save the BibTeX database, all gr
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|pr
 return|;
@@ -2132,9 +2204,11 @@ argument_list|)
 operator|)
 operator|)
 condition|)
+block|{
 name|offset
 operator|++
 expr_stmt|;
+block|}
 else|else
 block|{
 name|headerText
@@ -2160,15 +2234,19 @@ argument_list|(
 name|piv
 argument_list|)
 condition|)
+block|{
 name|piv
 operator|++
 expr_stmt|;
+block|}
 else|else
+block|{
 comment|//if (((char)c) == '@')
 name|keepon
 operator|=
 literal|false
 expr_stmt|;
+block|}
 block|}
 comment|//System.out.println(headerText.toString());
 name|found
@@ -2254,9 +2332,11 @@ argument_list|(
 literal|0
 argument_list|)
 condition|)
+block|{
 break|break
 name|found
 break|;
+block|}
 for|for
 control|(
 name|int
@@ -2293,6 +2373,7 @@ argument_list|(
 name|i
 argument_list|)
 condition|)
+block|{
 break|break
 name|found
 break|;
@@ -2302,6 +2383,7 @@ comment|// doesn't
 comment|// seem
 comment|// to
 comment|// match.
+block|}
 block|}
 comment|// If ok, then read the rest of the line, which should contain the
 comment|// name

@@ -344,6 +344,8 @@ argument_list|()
 decl_stmt|;
 static|static
 block|{
+name|SplWebClient
+operator|.
 name|CLIENT
 operator|.
 name|setConnectTimeout
@@ -351,6 +353,8 @@ argument_list|(
 literal|1000
 argument_list|)
 expr_stmt|;
+name|SplWebClient
+operator|.
 name|CLIENT
 operator|.
 name|setReadTimeout
@@ -366,6 +370,8 @@ specifier|final
 name|WebResource
 name|WEBRESOURCE
 init|=
+name|SplWebClient
+operator|.
 name|CLIENT
 operator|.
 name|resource
@@ -380,6 +386,8 @@ specifier|final
 name|WebResource
 name|INTERNETRESOURCE
 init|=
+name|SplWebClient
+operator|.
 name|CLIENT
 operator|.
 name|resource
@@ -409,12 +417,16 @@ block|{
 if|if
 condition|(
 operator|!
+name|SplWebClient
+operator|.
 name|isWebServiceAvailable
 argument_list|()
 condition|)
 block|{
 if|if
 condition|(
+name|SplWebClient
+operator|.
 name|isInternetAvailable
 argument_list|()
 condition|)
@@ -436,6 +448,8 @@ block|}
 block|}
 if|if
 condition|(
+name|SplWebClient
+operator|.
 name|isWebServiceOutDated
 argument_list|()
 condition|)
@@ -449,6 +463,8 @@ block|}
 if|if
 condition|(
 operator|!
+name|SplWebClient
+operator|.
 name|isMetaDataServiceAvailable
 argument_list|()
 condition|)
@@ -543,6 +559,8 @@ expr_stmt|;
 name|ClientResponse
 name|response
 init|=
+name|SplWebClient
+operator|.
 name|WEBRESOURCE
 operator|.
 name|path
@@ -569,6 +587,7 @@ decl_stmt|;
 comment|//System.out.println(response.getEntity(String.class));
 if|if
 condition|(
+operator|(
 name|response
 operator|.
 name|getClientResponseStatus
@@ -579,6 +598,7 @@ operator|.
 name|Status
 operator|.
 name|OK
+operator|)
 operator|&&
 name|response
 operator|.
@@ -932,6 +952,8 @@ block|{
 name|ClientResponse
 name|response
 init|=
+name|SplWebClient
+operator|.
 name|WEBRESOURCE
 operator|.
 name|path
@@ -954,6 +976,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|response
 operator|.
 name|getClientResponseStatus
@@ -964,6 +987,7 @@ operator|.
 name|Status
 operator|.
 name|OK
+operator|)
 operator|&&
 name|response
 operator|.
@@ -1036,6 +1060,8 @@ block|{
 name|ClientResponse
 name|response
 init|=
+name|SplWebClient
+operator|.
 name|WEBRESOURCE
 operator|.
 name|path
@@ -1052,6 +1078,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|response
 operator|.
 name|getClientResponseStatus
@@ -1062,6 +1089,7 @@ operator|.
 name|Status
 operator|.
 name|OK
+operator|)
 operator|&&
 name|response
 operator|.
@@ -1083,9 +1111,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|entity
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|entity
 operator|.
@@ -1125,6 +1155,8 @@ block|{
 name|ClientResponse
 name|response
 init|=
+name|SplWebClient
+operator|.
 name|WEBRESOURCE
 operator|.
 name|path
@@ -1166,6 +1198,8 @@ block|{
 name|ClientResponse
 name|response
 init|=
+name|SplWebClient
+operator|.
 name|INTERNETRESOURCE
 operator|.
 name|get

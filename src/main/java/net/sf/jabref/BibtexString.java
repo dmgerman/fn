@@ -129,9 +129,11 @@ literal|""
 operator|)
 argument_list|)
 condition|)
+block|{
 return|return
 name|OTHER
 return|;
+block|}
 for|for
 control|(
 name|Type
@@ -161,9 +163,11 @@ operator|+
 literal|""
 argument_list|)
 condition|)
+block|{
 return|return
 name|t
 return|;
+block|}
 block|}
 return|return
 name|OTHER
@@ -345,6 +349,8 @@ operator|=
 name|content
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|clone ()
 specifier|public
 name|Object

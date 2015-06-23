@@ -530,6 +530,8 @@ name|serialVersionUID
 init|=
 literal|1L
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isCellEditable
@@ -639,6 +641,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -727,6 +731,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -954,6 +960,7 @@ operator|.
 name|IMPORTER
 argument_list|)
 condition|)
+block|{
 name|b
 operator|.
 name|addButton
@@ -961,7 +968,9 @@ argument_list|(
 name|importButton
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|b
 operator|.
 name|addButton
@@ -969,6 +978,7 @@ argument_list|(
 name|exportButton
 argument_list|)
 expr_stmt|;
+block|}
 name|b
 operator|.
 name|addRelatedGap
@@ -1091,6 +1101,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1114,6 +1126,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1137,6 +1151,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1170,6 +1186,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed

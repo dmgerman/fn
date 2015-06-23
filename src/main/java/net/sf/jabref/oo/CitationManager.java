@@ -536,6 +536,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -598,6 +600,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -911,13 +915,16 @@ if|if
 condition|(
 name|j
 operator|<
+operator|(
 name|keys
 operator|.
 name|size
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -925,6 +932,7 @@ argument_list|(
 literal|", "
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|keyString
 operator|=
@@ -970,15 +978,18 @@ literal|null
 operator|)
 operator|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 if|if
 condition|(
 name|pageInfo
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|pageInfo
 operator|.
@@ -989,11 +1000,16 @@ argument_list|)
 operator|!=
 literal|0
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|false
 return|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|compareTo (CitEntry other)
 specifier|public
 name|int
@@ -1026,6 +1042,8 @@ argument_list|<
 name|CitEntry
 argument_list|>
 block|{
+annotation|@
+name|Override
 DECL|method|getColumnCount ()
 specifier|public
 name|int
@@ -1036,6 +1054,8 @@ return|return
 literal|2
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnName (int i)
 specifier|public
 name|String
@@ -1073,6 +1093,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnValue (CitEntry citEntry, int i)
 specifier|public
 name|Object
@@ -1122,6 +1144,8 @@ name|TableClickListener
 extends|extends
 name|MouseAdapter
 block|{
+annotation|@
+name|Override
 DECL|method|mouseClicked (MouseEvent e)
 specifier|public
 name|void
@@ -1474,6 +1498,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1512,12 +1538,14 @@ argument_list|()
 expr_stmt|;
 block|}
 else|else
+block|{
 name|_entry
 operator|.
 name|pageInfo
 operator|=
 literal|null
 expr_stmt|;
+block|}
 name|tableModel
 operator|.
 name|fireTableDataChanged
@@ -1545,6 +1573,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed

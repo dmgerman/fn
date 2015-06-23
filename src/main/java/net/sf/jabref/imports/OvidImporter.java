@@ -247,6 +247,8 @@ decl_stmt|;
 comment|//   public static Pattern ovid_pat_inspec= Pattern.compile("Source ([
 comment|// \\w&\\-]+)");
 comment|/**      * Return the name of this import format.      */
+annotation|@
+name|Override
 DECL|method|getFormatName ()
 specifier|public
 name|String
@@ -258,6 +260,8 @@ literal|"Ovid"
 return|;
 block|}
 comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
+annotation|@
+name|Override
 DECL|method|getCLIId ()
 specifier|public
 name|String
@@ -282,6 +286,8 @@ literal|"<[0-9]+>"
 argument_list|)
 decl_stmt|;
 comment|/**      * Check whether the source is in the correct format for this importer.      */
+annotation|@
+name|Override
 DECL|method|isRecognizedFormat (InputStream stream)
 specifier|public
 name|boolean
@@ -339,6 +345,8 @@ condition|)
 block|{
 if|if
 condition|(
+name|OvidImporter
+operator|.
 name|ovidPattern
 operator|.
 name|matcher
@@ -349,9 +357,11 @@ operator|.
 name|find
 argument_list|()
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 name|i
 operator|++
 expr_stmt|;
@@ -361,6 +371,8 @@ literal|false
 return|;
 block|}
 comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
+annotation|@
+name|Override
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
@@ -431,13 +443,16 @@ condition|)
 block|{
 if|if
 condition|(
+operator|(
 name|line
 operator|.
 name|length
 argument_list|()
 operator|>
 literal|0
+operator|)
 operator|&&
+operator|(
 name|line
 operator|.
 name|charAt
@@ -446,6 +461,7 @@ literal|0
 argument_list|)
 operator|!=
 literal|' '
+operator|)
 condition|)
 block|{
 name|sb
@@ -583,6 +599,7 @@ comment|// Check if this is the author field (due to a minor special treatment f
 name|boolean
 name|isAuthor
 init|=
+operator|(
 name|fieldName
 operator|.
 name|indexOf
@@ -591,6 +608,7 @@ literal|"Author"
 argument_list|)
 operator|==
 literal|0
+operator|)
 operator|&&
 operator|!
 name|fieldName
@@ -622,6 +640,7 @@ argument_list|(
 literal|"."
 argument_list|)
 condition|)
+block|{
 name|content
 operator|=
 name|content
@@ -638,6 +657,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 comment|//fields[j] = fields[j].trim();
 if|if
 condition|(
@@ -690,6 +710,7 @@ argument_list|(
 literal|"."
 argument_list|)
 condition|)
+block|{
 name|content
 operator|=
 name|content
@@ -706,6 +727,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 name|h
 operator|.
 name|put
@@ -728,6 +750,7 @@ argument_list|)
 operator|==
 literal|0
 condition|)
+block|{
 name|h
 operator|.
 name|put
@@ -737,10 +760,7 @@ argument_list|,
 name|content
 argument_list|)
 expr_stmt|;
-comment|// The "Source" field is a complete mess - it can have several different formats,
-comment|// but since it can contain journal name, book title, year, month, volume etc. we
-comment|// must try to parse it. We use different regular expressions to check different
-comment|// possible formattings.
+block|}
 elseif|else
 if|if
 condition|(
@@ -762,6 +782,8 @@ condition|(
 operator|(
 name|matcher
 operator|=
+name|OvidImporter
+operator|.
 name|ovid_src_pat
 operator|.
 name|matcher
@@ -851,6 +873,8 @@ condition|(
 operator|(
 name|matcher
 operator|=
+name|OvidImporter
+operator|.
 name|ovid_src_pat_no_issue
 operator|.
 name|matcher
@@ -927,6 +951,8 @@ condition|(
 operator|(
 name|matcher
 operator|=
+name|OvidImporter
+operator|.
 name|ovid_src_pat_2
 operator|.
 name|matcher
@@ -1030,6 +1056,8 @@ condition|(
 operator|(
 name|matcher
 operator|=
+name|OvidImporter
+operator|.
 name|incollection_pat
 operator|.
 name|matcher
@@ -1140,6 +1168,8 @@ condition|(
 operator|(
 name|matcher
 operator|=
+name|OvidImporter
+operator|.
 name|book_pat
 operator|.
 name|matcher
@@ -1286,6 +1316,7 @@ argument_list|(
 literal|"Book"
 argument_list|)
 condition|)
+block|{
 name|h
 operator|.
 name|put
@@ -1295,6 +1326,7 @@ argument_list|,
 literal|"book"
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1305,6 +1337,7 @@ argument_list|(
 literal|"Journal"
 argument_list|)
 condition|)
+block|{
 name|h
 operator|.
 name|put
@@ -1314,6 +1347,7 @@ argument_list|,
 literal|"article"
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1324,6 +1358,7 @@ argument_list|(
 literal|"Conference Paper"
 argument_list|)
 condition|)
+block|{
 name|h
 operator|.
 name|put
@@ -1333,6 +1368,7 @@ argument_list|,
 literal|"inproceedings"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// Now we need to check if a book entry has given editors in the author field;
@@ -1405,6 +1441,7 @@ name|auth
 operator|!=
 literal|null
 condition|)
+block|{
 name|h
 operator|.
 name|put
@@ -1417,6 +1454,7 @@ name|auth
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|auth
 operator|=
 name|h
@@ -1432,6 +1470,7 @@ name|auth
 operator|!=
 literal|null
 condition|)
+block|{
 name|h
 operator|.
 name|put
@@ -1444,6 +1483,7 @@ name|auth
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Set the entrytype properly:
 name|String
 name|entryType
@@ -1650,6 +1690,7 @@ name|i
 operator|>
 literal|0
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1657,6 +1698,7 @@ argument_list|(
 literal|" and "
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
@@ -1684,10 +1726,12 @@ argument_list|()
 expr_stmt|;
 block|}
 else|else
+block|{
 name|names
 operator|=
 name|content
 expr_stmt|;
+block|}
 return|return
 name|AuthorList
 operator|.

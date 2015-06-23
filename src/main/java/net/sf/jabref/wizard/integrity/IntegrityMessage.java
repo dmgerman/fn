@@ -156,6 +156,8 @@ specifier|static
 name|int
 name|printMode
 init|=
+name|IntegrityMessage
+operator|.
 name|SINLGE_MODE
 decl_stmt|;
 DECL|field|type
@@ -205,6 +207,8 @@ name|int
 name|newMode
 parameter_list|)
 block|{
+name|IntegrityMessage
+operator|.
 name|printMode
 operator|=
 name|newMode
@@ -310,6 +314,8 @@ return|return
 name|back
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String
@@ -323,8 +329,12 @@ name|msg
 decl_stmt|;
 if|if
 condition|(
+name|IntegrityMessage
+operator|.
 name|printMode
 operator|==
+name|IntegrityMessage
+operator|.
 name|FULL_MODE
 condition|)
 block|{

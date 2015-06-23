@@ -129,6 +129,8 @@ extends|extends
 name|CreateDocBookAuthors
 block|{
 comment|//~ Methods ////////////////////////////////////////////////////////////////
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String

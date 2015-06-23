@@ -332,6 +332,8 @@ name|String
 operator|.
 name|format
 argument_list|(
+name|ISBNtoBibTeXFetcher
+operator|.
 name|URL_PATTERN
 argument_list|,
 name|q

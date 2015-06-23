@@ -976,6 +976,8 @@ argument_list|)
 operator|.
 name|desc
 argument_list|(
+name|JabRefCLI
+operator|.
 name|getExportMatchesSyntax
 argument_list|()
 argument_list|)

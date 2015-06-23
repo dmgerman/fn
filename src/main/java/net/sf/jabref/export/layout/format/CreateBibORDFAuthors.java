@@ -133,6 +133,8 @@ implements|implements
 name|LayoutFormatter
 block|{
 comment|//~ Methods ////////////////////////////////////////////////////////////////
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -230,12 +232,15 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|names
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -243,6 +248,7 @@ argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|fieldText

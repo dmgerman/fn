@@ -220,6 +220,8 @@ block|}
 return|return
 literal|"http://"
 operator|+
+name|SPIRESFetcher
+operator|.
 name|spiresHost
 operator|+
 literal|"/"
@@ -279,10 +281,12 @@ argument_list|(
 literal|"^\\w*-\\w*[ /].*"
 argument_list|)
 condition|)
+block|{
 name|cmd
 operator|=
 literal|"eprint"
 expr_stmt|;
+block|}
 try|try
 block|{
 name|key
@@ -306,6 +310,8 @@ block|{         }
 return|return
 literal|"http://"
 operator|+
+name|SPIRESFetcher
+operator|.
 name|spiresHost
 operator|+
 literal|"/"
@@ -373,6 +379,8 @@ block|}
 return|return
 literal|"http://"
 operator|+
+name|SPIRESFetcher
+operator|.
 name|spiresHost
 operator|+
 literal|"/"
@@ -574,6 +582,8 @@ comment|// while (iter.hasNext())
 comment|// addSpiresURL(iter.next());
 comment|// }
 comment|/*      * @see net.sf.jabref.imports.EntryFetcher      */
+annotation|@
+name|Override
 DECL|method|getHelpPage ()
 specifier|public
 name|String
@@ -584,6 +594,8 @@ return|return
 literal|"Spires.html"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeyName ()
 specifier|public
 name|String
@@ -594,6 +606,8 @@ return|return
 literal|"SPIRES"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getOptionsPanel ()
 specifier|public
 name|JPanel
@@ -605,6 +619,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTitle ()
 specifier|public
 name|String
@@ -637,6 +653,8 @@ name|int
 name|entriesImported
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 DECL|method|stopFetching ()
 specifier|public
 name|void
@@ -644,6 +662,8 @@ name|stopFetching
 parameter_list|()
 block|{     }
 comment|/*      * @see java.lang.Runnable      */
+annotation|@
+name|Override
 DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter frame)
 specifier|public
 name|boolean
@@ -697,6 +717,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 for|for
 control|(
 name|BibtexEntry
@@ -707,6 +728,7 @@ operator|.
 name|getEntries
 argument_list|()
 control|)
+block|{
 name|dialog
 operator|.
 name|addEntry
@@ -714,6 +736,8 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 comment|/* update the dialogs progress bar */
 comment|// dialog.setProgress(i + 1, keys.length);
 comment|/* inform the inspection dialog, that we're done */

@@ -135,6 +135,8 @@ operator|=
 name|entryEditorTab
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|focusGained (FocusEvent e)
 specifier|public
 name|void
@@ -226,6 +228,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|changedUpdate
@@ -238,6 +242,8 @@ name|fire
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|insertUpdate
@@ -250,6 +256,8 @@ name|fire
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeUpdate
@@ -357,6 +365,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|focusLost (FocusEvent e)
 specifier|public
 name|void
@@ -406,6 +416,7 @@ operator|.
 name|isTemporary
 argument_list|()
 condition|)
+block|{
 name|entryEditorTab
 operator|.
 name|getParent
@@ -419,6 +430,7 @@ name|getSource
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class

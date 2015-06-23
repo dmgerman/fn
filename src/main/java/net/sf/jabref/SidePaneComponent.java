@@ -498,6 +498,8 @@ name|void
 name|componentOpening
 parameter_list|()
 block|{      }
+annotation|@
+name|Override
 DECL|method|getMinimumSize ()
 specifier|public
 name|Dimension
@@ -515,6 +517,8 @@ name|CloseButtonListener
 implements|implements
 name|ActionListener
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -535,6 +539,8 @@ name|UpButtonListener
 implements|implements
 name|ActionListener
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -555,6 +561,8 @@ name|DownButtonListener
 implements|implements
 name|ActionListener
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

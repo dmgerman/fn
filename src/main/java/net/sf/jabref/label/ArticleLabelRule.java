@@ -62,6 +62,8 @@ name|DefaultLabelRule
 block|{
 comment|// this is the rule used handle articles
 comment|// we try (first author last name)/(year)/(first unique journal word)
+annotation|@
+name|Override
 DECL|method|applyRule (BibtexEntry oldEntry)
 specifier|public
 name|String
@@ -138,6 +140,7 @@ argument_list|)
 operator|>
 literal|0
 condition|)
+block|{
 name|tokens
 index|[
 literal|0
@@ -154,6 +157,7 @@ index|]
 argument_list|)
 expr_stmt|;
 comment|// convert lastname, firstname to firstname lastname
+block|}
 name|String
 index|[]
 name|firstAuthor
@@ -250,11 +254,13 @@ expr_stmt|;
 block|}
 block|}
 else|else
+block|{
 name|newLabel
 operator|=
 name|oldLabel
 expr_stmt|;
 comment|// don't make a key since there is no author
+block|}
 block|}
 catch|catch
 parameter_list|(

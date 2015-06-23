@@ -508,6 +508,7 @@ name|importer
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -517,6 +518,7 @@ operator|+
 name|format
 argument_list|)
 throw|;
+block|}
 name|List
 argument_list|<
 name|BibtexEntry
@@ -539,11 +541,15 @@ name|res
 operator|!=
 literal|null
 condition|)
+block|{
+name|ImportFormatReader
+operator|.
 name|purgeEmptyEntries
 argument_list|(
 name|res
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|res
 return|;
@@ -582,6 +588,7 @@ name|importer
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -591,6 +598,7 @@ operator|+
 name|format
 argument_list|)
 throw|;
+block|}
 return|return
 name|importFromFile
 argument_list|(
@@ -664,6 +672,7 @@ argument_list|(
 name|stream
 argument_list|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -676,6 +685,7 @@ literal|"Wrong file format"
 argument_list|)
 argument_list|)
 throw|;
+block|}
 name|stream
 operator|=
 operator|new
@@ -729,6 +739,8 @@ argument_list|>
 name|bibentries
 parameter_list|)
 block|{
+name|ImportFormatReader
+operator|.
 name|purgeEmptyEntries
 argument_list|(
 name|bibentries
@@ -984,6 +996,7 @@ condition|;
 name|j
 operator|++
 control|)
+block|{
 name|sb
 operator|.
 name|append
@@ -991,6 +1004,7 @@ argument_list|(
 literal|" "
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
@@ -1124,6 +1138,7 @@ name|length
 operator|>
 literal|1
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1131,6 +1146,7 @@ argument_list|(
 literal|", "
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 for|for
 control|(
@@ -1155,10 +1171,13 @@ name|j
 operator|==
 literal|1
 condition|)
+block|{
 name|sb
 operator|.
 name|append
 argument_list|(
+name|ImportFormatReader
+operator|.
 name|expandAll
 argument_list|(
 name|names
@@ -1168,7 +1187,9 @@ index|]
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -1179,16 +1200,20 @@ name|j
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|j
 operator|<
+operator|(
 name|names
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1196,6 +1221,7 @@ argument_list|(
 literal|", "
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else
@@ -1227,6 +1253,8 @@ name|sb
 operator|.
 name|append
 argument_list|(
+name|ImportFormatReader
+operator|.
 name|expandAll
 argument_list|(
 name|names
@@ -1277,12 +1305,15 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|authors
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1290,6 +1321,7 @@ argument_list|(
 literal|" and "
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb
@@ -1323,9 +1355,11 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|s
 return|;
+block|}
 comment|// If only one character (uppercase letter), add a dot and return immediately:
 if|if
 condition|(
@@ -1364,11 +1398,13 @@ argument_list|)
 argument_list|)
 operator|)
 condition|)
+block|{
 return|return
 name|s
 operator|+
 literal|"."
 return|;
+block|}
 name|StringBuffer
 name|sb
 init|=
@@ -1612,9 +1648,11 @@ literal|null
 return|;
 block|}
 else|else
+block|{
 return|return
 name|f
 return|;
+block|}
 block|}
 comment|//==================================================
 comment|// Set a field, unless the string to set is empty.
@@ -1645,6 +1683,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|be
 operator|.
 name|setField
@@ -1654,6 +1693,7 @@ argument_list|,
 name|content
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|getReader (File f, String encoding)
 specifier|public
@@ -1782,11 +1822,13 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 name|i
 operator|.
 name|remove
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|class|UnknownFormatImport
@@ -1915,6 +1957,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|ImportFormatReader
+operator|.
 name|purgeEmptyEntries
 argument_list|(
 name|entries
@@ -2059,6 +2103,8 @@ return|return
 operator|new
 name|UnknownFormatImport
 argument_list|(
+name|ImportFormatReader
+operator|.
 name|BIBTEX_FORMAT
 argument_list|,
 name|pr

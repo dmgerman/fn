@@ -325,6 +325,8 @@ comment|// Look through for instances of \bibitem :
 name|Matcher
 name|m
 init|=
+name|BstWrapper
+operator|.
 name|bibitemTag
 operator|.
 name|matcher
@@ -388,6 +390,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|endIndices
 operator|.
 name|add
@@ -398,6 +401,7 @@ name|start
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|System
 operator|.
 name|out
@@ -494,6 +498,7 @@ literal|1
 argument_list|)
 operator|)
 condition|)
+block|{
 name|endIndices
 operator|.
 name|add
@@ -501,6 +506,7 @@ argument_list|(
 name|lastI
 argument_list|)
 expr_stmt|;
+block|}
 for|for
 control|(
 name|int

@@ -306,6 +306,8 @@ DECL|field|status
 name|int
 name|status
 init|=
+name|DuplicateResolverDialog
+operator|.
 name|NOT_CHOSEN
 decl_stmt|;
 DECL|field|block
@@ -771,6 +773,8 @@ argument_list|(
 operator|(
 name|type
 operator|==
+name|DuplicateResolverDialog
+operator|.
 name|DUPLICATE_SEARCH
 operator|)
 condition|?
@@ -877,6 +881,8 @@ argument_list|(
 operator|(
 name|type
 operator|==
+name|DuplicateResolverDialog
+operator|.
 name|DUPLICATE_SEARCH
 operator|)
 condition|?
@@ -1034,6 +1040,7 @@ name|removeExact
 operator|!=
 literal|null
 condition|)
+block|{
 name|options
 operator|.
 name|add
@@ -1041,6 +1048,7 @@ argument_list|(
 name|removeExact
 argument_list|)
 expr_stmt|;
+block|}
 name|options
 operator|.
 name|add
@@ -1066,6 +1074,8 @@ if|if
 condition|(
 name|type
 operator|!=
+name|DuplicateResolverDialog
+operator|.
 name|IMPORT_CHECK
 condition|)
 block|{
@@ -1097,6 +1107,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1107,6 +1119,8 @@ parameter_list|)
 block|{
 name|status
 operator|=
+name|DuplicateResolverDialog
+operator|.
 name|KEEP_UPPER
 expr_stmt|;
 name|block
@@ -1128,6 +1142,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1138,6 +1154,8 @@ parameter_list|)
 block|{
 name|status
 operator|=
+name|DuplicateResolverDialog
+operator|.
 name|KEEP_LOWER
 expr_stmt|;
 name|block
@@ -1159,6 +1177,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1169,6 +1189,8 @@ parameter_list|)
 block|{
 name|status
 operator|=
+name|DuplicateResolverDialog
+operator|.
 name|KEEP_BOTH
 expr_stmt|;
 name|block
@@ -1188,6 +1210,7 @@ name|removeExact
 operator|!=
 literal|null
 condition|)
+block|{
 name|removeExact
 operator|.
 name|addActionListener
@@ -1196,6 +1219,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1206,6 +1231,8 @@ parameter_list|)
 block|{
 name|status
 operator|=
+name|DuplicateResolverDialog
+operator|.
 name|AUTOREMOVE_EXACT
 expr_stmt|;
 name|block
@@ -1219,6 +1246,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 name|cancel
 operator|.
 name|addActionListener
@@ -1227,6 +1255,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1237,6 +1267,8 @@ parameter_list|)
 block|{
 name|status
 operator|=
+name|DuplicateResolverDialog
+operator|.
 name|BREAK
 expr_stmt|;
 name|block
@@ -1455,6 +1487,8 @@ argument_list|)
 expr_stmt|;
 name|status
 operator|=
+name|DuplicateResolverDialog
+operator|.
 name|NOT_CHOSEN
 expr_stmt|;
 name|p1
@@ -1520,6 +1554,8 @@ name|one
 argument_list|,
 name|two
 argument_list|,
+name|DuplicateResolverDialog
+operator|.
 name|DUPLICATE_SEARCH
 argument_list|)
 decl_stmt|;
@@ -1566,6 +1602,8 @@ name|one
 argument_list|,
 name|two
 argument_list|,
+name|DuplicateResolverDialog
+operator|.
 name|DUPLICATE_SEARCH
 argument_list|)
 decl_stmt|;
@@ -1612,6 +1650,8 @@ name|existing
 argument_list|,
 name|imported
 argument_list|,
+name|DuplicateResolverDialog
+operator|.
 name|IMPORT_CHECK
 argument_list|)
 decl_stmt|;

@@ -163,6 +163,8 @@ name|DbImpAction
 extends|extends
 name|AbstractAction
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -177,6 +179,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|action ()
 specifier|public
 name|void

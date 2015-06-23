@@ -145,9 +145,11 @@ operator|.
 name|length
 argument_list|()
 operator|>
+operator|(
 name|i
 operator|+
 literal|1
+operator|)
 operator|)
 operator|&&
 operator|(
@@ -170,9 +172,11 @@ operator|.
 name|length
 argument_list|()
 operator|==
+operator|(
 name|i
 operator|+
 literal|2
+operator|)
 operator|)
 operator|||
 operator|!
@@ -264,9 +268,11 @@ operator|.
 name|length
 argument_list|()
 operator|>
+operator|(
 name|i
 operator|+
 literal|3
+operator|)
 operator|)
 operator|&&
 operator|(
@@ -371,9 +377,11 @@ operator|.
 name|length
 argument_list|()
 operator|>
+operator|(
 name|i
 operator|+
 literal|3
+operator|)
 operator|)
 operator|&&
 operator|(
@@ -462,9 +470,11 @@ operator|.
 name|length
 argument_list|()
 operator|>
+operator|(
 name|i
 operator|+
 literal|1
+operator|)
 operator|)
 operator|&&
 operator|(
@@ -515,9 +525,11 @@ operator|.
 name|length
 argument_list|()
 operator|>
+operator|(
 name|i
 operator|+
 literal|1
+operator|)
 operator|)
 operator|&&
 operator|(
@@ -552,9 +564,11 @@ operator|.
 name|length
 argument_list|()
 operator|>
+operator|(
 name|i
 operator|+
 literal|1
+operator|)
 operator|)
 operator|&&
 operator|(
@@ -587,10 +601,12 @@ operator|++
 expr_stmt|;
 block|}
 else|else
+block|{
 name|i
 operator|++
 expr_stmt|;
 comment|//content.deleteCharAt(i);
+block|}
 block|}
 elseif|else
 if|if
@@ -628,9 +644,11 @@ comment|// Yes, of course we have, but in Filenames it is nessary to have all sp
 comment|// This is the reason why the next lines are required
 if|if
 condition|(
+operator|(
 name|key
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|key
 operator|.
@@ -647,6 +665,7 @@ operator|++
 expr_stmt|;
 block|}
 else|else
+block|{
 name|content
 operator|.
 name|deleteCharAt
@@ -655,10 +674,13 @@ name|i
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 else|else
+block|{
 name|i
 operator|++
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -667,6 +689,7 @@ name|c
 operator|==
 literal|'\t'
 condition|)
+block|{
 comment|// Remove all tab characters that aren't associated with a line break.
 name|content
 operator|.
@@ -675,10 +698,13 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|i
 operator|++
 expr_stmt|;
+block|}
 block|}
 comment|// normalize to linebreaks of the operating system
 comment|// not necessary as linebreaks are normalized during writing (at LatexFieldFormatter)
@@ -738,6 +764,8 @@ operator|new
 name|StringBuffer
 argument_list|()
 decl_stmt|;
+name|FieldContentParser
+operator|.
 name|addWrappedLine
 argument_list|(
 name|res
@@ -834,6 +862,8 @@ argument_list|(
 name|line
 argument_list|)
 expr_stmt|;
+name|FieldContentParser
+operator|.
 name|addWrappedLine
 argument_list|(
 name|res
@@ -945,7 +975,9 @@ name|length
 argument_list|()
 operator|)
 condition|)
+block|{
 break|break;
+block|}
 name|res
 operator|.
 name|deleteCharAt

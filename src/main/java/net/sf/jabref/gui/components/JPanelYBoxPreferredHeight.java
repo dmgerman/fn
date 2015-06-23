@@ -36,6 +36,8 @@ name|JPanelYBoxPreferredHeight
 extends|extends
 name|JPanelYBox
 block|{
+annotation|@
+name|Override
 DECL|method|getMaximumSize ()
 specifier|public
 name|Dimension

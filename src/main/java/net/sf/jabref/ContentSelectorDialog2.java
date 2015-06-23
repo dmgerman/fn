@@ -795,6 +795,7 @@ name|fieldInd
 operator|>=
 literal|0
 condition|)
+block|{
 name|fieldList
 operator|.
 name|setSelectedIndex
@@ -802,6 +803,7 @@ argument_list|(
 name|fieldInd
 argument_list|)
 expr_stmt|;
+block|}
 name|pack
 argument_list|()
 expr_stmt|;
@@ -820,6 +822,8 @@ operator|new
 name|ListSelectionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|valueChanged
@@ -864,6 +868,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -885,6 +891,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1045,6 +1053,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1068,7 +1078,9 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 return|return;
+block|}
 name|wordListModel
 operator|.
 name|remove
@@ -1092,6 +1104,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|wordList
 operator|.
 name|setSelectedIndex
@@ -1113,6 +1126,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 argument_list|)
 expr_stmt|;
 name|fieldList
@@ -1123,6 +1137,8 @@ operator|new
 name|ListSelectionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|valueChanged
@@ -1163,6 +1179,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1252,6 +1270,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1278,6 +1298,8 @@ name|FocusAdapter
 argument_list|()
 block|{
 comment|/**              * Adds the text value to the list              */
+annotation|@
+name|Override
 specifier|public
 name|void
 name|focusLost
@@ -1427,6 +1449,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1450,7 +1474,9 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 return|return;
+block|}
 name|String
 name|fieldName
 init|=
@@ -1501,6 +1527,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|fieldList
 operator|.
 name|setSelectedIndex
@@ -1522,6 +1549,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 argument_list|)
 expr_stmt|;
 name|help
@@ -1532,6 +1560,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1563,6 +1593,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1620,6 +1652,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1701,6 +1735,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1769,6 +1805,7 @@ argument_list|(
 name|WORD_FIRSTLINE_TEXT
 argument_list|)
 condition|)
+block|{
 name|wordListModel
 operator|.
 name|add
@@ -1778,6 +1815,7 @@ argument_list|,
 name|WORD_FIRSTLINE_TEXT
 argument_list|)
 expr_stmt|;
+block|}
 name|wordList
 operator|.
 name|setSelectedIndex
@@ -1863,7 +1901,9 @@ argument_list|(
 name|fieldName
 argument_list|)
 condition|)
+block|{
 continue|continue;
+block|}
 name|DefaultListModel
 name|lm
 init|=
@@ -1889,6 +1929,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 while|while
 condition|(
 operator|(
@@ -1914,9 +1955,12 @@ argument_list|(
 name|WORD_FIRSTLINE_TEXT
 argument_list|)
 condition|)
+block|{
 name|start
 operator|++
 expr_stmt|;
+block|}
+block|}
 name|Vector
 argument_list|<
 name|String
@@ -1965,11 +2009,13 @@ literal|true
 expr_stmt|;
 block|}
 else|else
+block|{
 name|data
 operator|.
 name|clear
 argument_list|()
 expr_stmt|;
+block|}
 for|for
 control|(
 name|int
@@ -2013,6 +2059,7 @@ if|if
 condition|(
 name|newField
 condition|)
+block|{
 name|metaData
 operator|.
 name|putData
@@ -2026,6 +2073,7 @@ argument_list|,
 name|data
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// System.out.println("TODO: remove metadata for removed selector field.");
 name|panel

@@ -97,6 +97,8 @@ specifier|protected
 name|int
 name|m_context
 init|=
+name|AbstractGroup
+operator|.
 name|INDEPENDENT
 decl_stmt|;
 DECL|method|getTypeId ()
@@ -215,6 +217,7 @@ operator|.
 name|ID
 argument_list|)
 condition|)
+block|{
 return|return
 name|KeywordGroup
 operator|.
@@ -227,6 +230,7 @@ argument_list|,
 name|version
 argument_list|)
 return|;
+block|}
 if|if
 condition|(
 name|s
@@ -238,6 +242,7 @@ operator|.
 name|ID
 argument_list|)
 condition|)
+block|{
 return|return
 name|AllEntriesGroup
 operator|.
@@ -250,6 +255,7 @@ argument_list|,
 name|version
 argument_list|)
 return|;
+block|}
 if|if
 condition|(
 name|s
@@ -261,6 +267,7 @@ operator|.
 name|ID
 argument_list|)
 condition|)
+block|{
 return|return
 name|SearchGroup
 operator|.
@@ -273,6 +280,7 @@ argument_list|,
 name|version
 argument_list|)
 return|;
+block|}
 if|if
 condition|(
 name|s
@@ -284,6 +292,7 @@ operator|.
 name|ID
 argument_list|)
 condition|)
+block|{
 return|return
 name|ExplicitGroup
 operator|.
@@ -296,6 +305,7 @@ argument_list|,
 name|version
 argument_list|)
 return|;
+block|}
 return|return
 literal|null
 return|;
@@ -417,6 +427,7 @@ name|entry
 range|:
 name|entries
 control|)
+block|{
 if|if
 condition|(
 name|contains
@@ -424,9 +435,12 @@ argument_list|(
 name|entry
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
+block|}
 return|return
 literal|false
 return|;
@@ -449,6 +463,7 @@ name|entry
 range|:
 name|entries
 control|)
+block|{
 if|if
 condition|(
 operator|!
@@ -457,9 +472,12 @@ argument_list|(
 name|entry
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
+block|}
 return|return
 literal|true
 return|;
@@ -484,19 +502,33 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|context
 operator|!=
+name|AbstractGroup
+operator|.
 name|INDEPENDENT
+operator|)
 operator|&&
+operator|(
 name|context
 operator|!=
+name|AbstractGroup
+operator|.
 name|REFINING
+operator|)
 operator|&&
+operator|(
 name|context
 operator|!=
+name|AbstractGroup
+operator|.
 name|INCLUDING
+operator|)
 condition|)
+block|{
 return|return;
+block|}
 name|m_context
 operator|=
 name|context

@@ -61,6 +61,8 @@ name|void
 name|initJabRef
 parameter_list|()
 block|{
+name|TestUtils
+operator|.
 name|disableSystemExit
 argument_list|()
 expr_stmt|;
@@ -75,6 +77,8 @@ literal|"-p"
 block|,
 literal|" "
 block|,
+name|TestUtils
+operator|.
 name|PATH_TO_TEST_BIBTEX
 block|}
 decl_stmt|;
@@ -94,6 +98,8 @@ parameter_list|)
 block|{          }
 finally|finally
 block|{
+name|TestUtils
+operator|.
 name|enableSystemExit
 argument_list|()
 expr_stmt|;
@@ -158,6 +164,8 @@ operator|new
 name|SecurityManager
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|checkPermission

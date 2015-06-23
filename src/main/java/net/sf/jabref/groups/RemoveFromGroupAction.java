@@ -180,6 +180,8 @@ operator|=
 name|panel
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent evt)
 specifier|public
 name|void
@@ -223,12 +225,11 @@ name|frame
 argument_list|()
 block|)
 block|)
+block|{
 return|return;
-end_class
-
-begin_comment
 comment|// user aborted operation
-end_comment
+block|}
+end_class
 
 begin_decl_stmt
 name|AbstractUndoableEdit
@@ -253,12 +254,11 @@ name|undo
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
-end_if
-
-begin_comment
 comment|// no changed made
-end_comment
+block|}
+end_if
 
 begin_expr_stmt
 name|m_panel

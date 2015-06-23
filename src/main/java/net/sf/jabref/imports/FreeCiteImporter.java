@@ -601,6 +601,7 @@ while|while
 condition|(
 operator|!
 operator|(
+operator|(
 name|parser
 operator|.
 name|getEventType
@@ -609,6 +610,7 @@ operator|==
 name|XMLStreamConstants
 operator|.
 name|END_ELEMENT
+operator|)
 operator|&&
 name|parser
 operator|.

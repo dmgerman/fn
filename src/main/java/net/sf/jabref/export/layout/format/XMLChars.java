@@ -154,6 +154,8 @@ name|XMLChars
 implements|implements
 name|LayoutFormatter
 block|{
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -212,6 +214,7 @@ name|repl
 operator|!=
 literal|null
 condition|)
+block|{
 name|fieldText
 operator|=
 name|fieldText
@@ -223,6 +226,7 @@ argument_list|,
 name|repl
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|restFormat
@@ -470,9 +474,11 @@ block|}
 comment|// TODO: Check whether> 125 is correct here or whether it should rather be>=
 if|if
 condition|(
+operator|(
 name|code
 operator|>
 literal|125
+operator|)
 operator|||
 name|forceReplace
 index|[
@@ -562,6 +568,7 @@ name|repl
 operator|!=
 literal|null
 condition|)
+block|{
 name|fieldText
 operator|=
 name|fieldText
@@ -573,6 +580,7 @@ argument_list|,
 name|repl
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|fieldText

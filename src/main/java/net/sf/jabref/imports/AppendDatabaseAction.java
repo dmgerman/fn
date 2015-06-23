@@ -254,6 +254,8 @@ operator|=
 name|panel
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|action ()
 specifier|public
 name|void
@@ -344,7 +346,9 @@ name|chosen
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 for|for
 control|(
 name|String
@@ -352,6 +356,7 @@ name|aChosen
 range|:
 name|chosen
 control|)
+block|{
 name|filesToOpen
 operator|.
 name|add
@@ -363,6 +368,7 @@ name|aChosen
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Run the actual open in a thread to prevent the program
 comment|// locking until the file is loaded.
 name|JabRefExecutorService
@@ -375,6 +381,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -436,7 +444,9 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 return|return;
+block|}
 for|for
 control|(
 name|File
@@ -486,6 +496,8 @@ argument_list|,
 name|encoding
 argument_list|)
 decl_stmt|;
+name|AppendDatabaseAction
+operator|.
 name|mergeFromBibtex
 argument_list|(
 name|frame
@@ -891,6 +903,7 @@ name|appendedEntry
 range|:
 name|appendedEntries
 control|)
+block|{
 name|group
 operator|.
 name|addEntry
@@ -898,6 +911,7 @@ argument_list|(
 name|appendedEntry
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// groupsSelector is always created, even when no groups
 comment|// have been defined. therefore, no check for null is
@@ -964,7 +978,9 @@ operator|instanceof
 name|ExplicitGroup
 operator|)
 condition|)
+block|{
 continue|continue;
+block|}
 name|group
 operator|=
 operator|(

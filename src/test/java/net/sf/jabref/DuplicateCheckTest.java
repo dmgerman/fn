@@ -16,6 +16,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Before
 import|;
 end_import
@@ -152,6 +162,8 @@ argument_list|,
 literal|"Billy Bob"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|DuplicateCheck
@@ -174,6 +186,8 @@ argument_list|,
 literal|"James Joyce"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertFalse
 argument_list|(
 name|DuplicateCheck
@@ -204,6 +218,8 @@ operator|.
 name|BOOK
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertFalse
 argument_list|(
 name|DuplicateCheck
@@ -315,6 +331,8 @@ argument_list|,
 literal|"21"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|DuplicateCheck
@@ -336,6 +354,8 @@ argument_list|,
 literal|"22"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|DuplicateCheck
@@ -366,6 +386,8 @@ argument_list|,
 literal|"B"
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertFalse
 argument_list|(
 name|DuplicateCheck

@@ -1993,6 +1993,8 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
+name|BasePanel
+operator|.
 name|logger
 operator|.
 name|warning
@@ -2131,6 +2133,7 @@ condition|(
 operator|!
 name|suppressOutput
 condition|)
+block|{
 name|frame
 operator|.
 name|output
@@ -2138,6 +2141,7 @@ argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|setupActions ()
 specifier|private
@@ -2189,6 +2193,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -2217,6 +2223,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -2267,6 +2275,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -2328,6 +2338,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -2553,6 +2565,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -2734,6 +2748,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -2930,6 +2946,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -3228,10 +3246,12 @@ name|firstBE
 operator|==
 literal|null
 condition|)
+block|{
 name|firstBE
 operator|=
 name|be
 expr_stmt|;
+block|}
 name|Util
 operator|.
 name|setAutomaticFields
@@ -3414,6 +3434,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -3439,6 +3461,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -3516,6 +3540,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -3593,6 +3619,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -3634,6 +3662,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -3694,6 +3724,8 @@ init|=
 literal|false
 decl_stmt|;
 comment|// run first, in EDT:
+annotation|@
+name|Override
 specifier|public
 name|void
 name|init
@@ -3807,6 +3839,8 @@ expr_stmt|;
 block|}
 block|}
 comment|// run second, on a different thread:
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -3958,6 +3992,8 @@ expr_stmt|;
 block|}
 block|}
 comment|// run third, on EDT:
+annotation|@
+name|Override
 specifier|public
 name|void
 name|update
@@ -4135,6 +4171,8 @@ init|=
 literal|false
 decl_stmt|;
 comment|// Run first, in EDT:
+annotation|@
+name|Override
 specifier|public
 name|void
 name|init
@@ -4248,6 +4286,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Run second, on a different thread:
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -4324,12 +4364,14 @@ argument_list|(
 literal|"avoidOverwritingKey"
 argument_list|)
 condition|)
+block|{
 comment|// Remove the entry, because its key is already set:
 name|i
 operator|.
 name|remove
 argument_list|()
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -4397,6 +4439,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|Globals
 operator|.
 name|prefs
@@ -4408,6 +4451,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|answer
@@ -4461,6 +4505,7 @@ argument_list|(
 literal|"avoidOverwritingKey"
 argument_list|)
 condition|)
+block|{
 for|for
 control|(
 name|BibtexEntry
@@ -4502,6 +4547,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Finally, set the new keys:
 for|for
@@ -4579,6 +4625,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Run third, on EDT:
+annotation|@
+name|Override
 specifier|public
 name|void
 name|update
@@ -4633,6 +4681,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -4651,10 +4701,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|row
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|mainTable
 operator|.
 name|getSelectedRowCount
@@ -4664,7 +4717,9 @@ name|entries
 operator|.
 name|size
 argument_list|()
+operator|)
 condition|)
+block|{
 name|mainTable
 operator|.
 name|addRowSelectionInterval
@@ -4674,6 +4729,7 @@ argument_list|,
 name|row
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -4745,6 +4801,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -4772,6 +4830,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -4817,6 +4877,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -4853,6 +4915,7 @@ if|if
 condition|(
 name|on
 condition|)
+block|{
 name|frame
 operator|.
 name|getSearchManager
@@ -4861,6 +4924,7 @@ operator|.
 name|startSearch
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -4875,6 +4939,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -4919,6 +4985,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -4975,6 +5043,7 @@ name|be
 range|:
 name|bes
 control|)
+block|{
 if|if
 condition|(
 name|be
@@ -4988,6 +5057,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|keys
 operator|.
 name|add
@@ -5002,6 +5072,8 @@ name|KEY_FIELD
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 if|if
 condition|(
 name|keys
@@ -5117,6 +5189,7 @@ name|bes
 operator|.
 name|length
 condition|)
+block|{
 comment|// All entries had keys.
 name|output
 argument_list|(
@@ -5140,7 +5213,9 @@ operator|+
 literal|"."
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|output
 argument_list|(
 name|Globals
@@ -5193,6 +5268,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
 argument_list|)
 expr_stmt|;
 comment|// The action for copying a cite for the selected entry.
@@ -5206,6 +5282,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -5262,6 +5340,7 @@ name|be
 range|:
 name|bes
 control|)
+block|{
 if|if
 condition|(
 name|be
@@ -5275,6 +5354,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|keys
 operator|.
 name|add
@@ -5289,6 +5369,8 @@ name|KEY_FIELD
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 if|if
 condition|(
 name|keys
@@ -5408,6 +5490,7 @@ name|bes
 operator|.
 name|length
 condition|)
+block|{
 comment|// All entries had keys.
 name|output
 argument_list|(
@@ -5434,7 +5517,9 @@ operator|+
 literal|"."
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|output
 argument_list|(
 name|Globals
@@ -5487,6 +5572,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
 argument_list|)
 expr_stmt|;
 comment|// The action for copying the BibTeX key and the title for the first selected entry
@@ -5500,6 +5586,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -5598,6 +5686,7 @@ name|be
 range|:
 name|bes
 control|)
+block|{
 if|if
 condition|(
 name|be
@@ -5629,6 +5718,7 @@ name|database
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -5681,6 +5771,7 @@ name|bes
 operator|.
 name|length
 condition|)
+block|{
 comment|// All entries had keys.
 name|output
 argument_list|(
@@ -5704,7 +5795,9 @@ operator|+
 literal|"."
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|output
 argument_list|(
 name|Globals
@@ -5750,6 +5843,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
 argument_list|)
 expr_stmt|;
 name|actions
@@ -5777,6 +5871,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -5792,6 +5888,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -6258,6 +6356,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|result
 operator|=
 name|Util
@@ -6271,6 +6370,7 @@ argument_list|,
 name|dirs
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|result
@@ -6345,12 +6445,14 @@ operator|&&
 operator|(
 name|index
 operator|<
+operator|(
 name|filepath
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 operator|)
 condition|)
 block|{
@@ -6505,6 +6607,7 @@ expr_stmt|;
 block|}
 block|}
 else|else
+block|{
 name|output
 argument_list|(
 name|Globals
@@ -6518,7 +6621,9 @@ literal|"."
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 else|else
+block|{
 name|output
 argument_list|(
 name|Globals
@@ -6529,6 +6634,7 @@ literal|"No entries or multiple entries selected."
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -6560,6 +6666,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -6575,6 +6683,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -6731,6 +6841,7 @@ argument_list|()
 expr_stmt|;
 block|}
 else|else
+block|{
 name|output
 argument_list|(
 name|Globals
@@ -6741,6 +6852,7 @@ literal|"No entries or multiple entries selected."
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -6759,6 +6871,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -6774,6 +6888,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -6838,6 +6954,8 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+name|BasePanel
+operator|.
 name|logger
 operator|.
 name|fine
@@ -6868,6 +6986,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -7176,6 +7296,7 @@ expr_stmt|;
 block|}
 block|}
 else|else
+block|{
 name|output
 argument_list|(
 name|Globals
@@ -7190,7 +7311,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 else|else
+block|{
 name|output
 argument_list|(
 name|Globals
@@ -7201,6 +7324,7 @@ literal|"No entries or multiple entries selected."
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -7215,6 +7339,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -7265,6 +7391,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|link
 operator|=
 name|SPIRESFetcher
@@ -7282,6 +7409,7 @@ literal|"eprint"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -7297,6 +7425,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|link
 operator|=
 name|SPIRESFetcher
@@ -7314,6 +7443,7 @@ literal|"slaccitation"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|link
@@ -7378,6 +7508,7 @@ expr_stmt|;
 block|}
 block|}
 else|else
+block|{
 name|output
 argument_list|(
 name|Globals
@@ -7391,7 +7522,9 @@ literal|"."
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 else|else
+block|{
 name|output
 argument_list|(
 name|Globals
@@ -7402,6 +7535,7 @@ literal|"No entries or multiple entries selected."
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -7417,6 +7551,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -7446,7 +7582,9 @@ operator|.
 name|okPressed
 argument_list|()
 condition|)
+block|{
 return|return;
+block|}
 name|int
 name|counter
 init|=
@@ -7517,6 +7655,7 @@ name|be
 range|:
 name|bes
 control|)
+block|{
 name|counter
 operator|+=
 name|rsd
@@ -7528,6 +7667,7 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|output
 argument_list|(
@@ -7597,6 +7737,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -7631,6 +7773,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -7678,7 +7822,9 @@ name|tp
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|String
 name|id
 init|=
@@ -7798,6 +7944,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -7961,6 +8109,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -8339,6 +8489,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -8398,6 +8550,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -8484,6 +8638,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -8570,6 +8726,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -8594,6 +8752,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -8778,6 +8938,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -8802,6 +8964,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -8905,6 +9069,7 @@ argument_list|)
 operator|==
 literal|null
 condition|)
+block|{
 name|Util
 operator|.
 name|pr
@@ -8916,6 +9081,7 @@ operator|+
 literal|"'"
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 name|Object
@@ -8936,6 +9102,7 @@ name|o
 operator|instanceof
 name|BaseAction
 condition|)
+block|{
 operator|(
 operator|(
 name|BaseAction
@@ -8946,6 +9113,7 @@ operator|.
 name|action
 argument_list|()
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|// This part uses Spin's features:
@@ -9070,6 +9238,7 @@ condition|(
 operator|!
 name|selectedOnly
 condition|)
+block|{
 name|session
 operator|=
 name|FileActions
@@ -9095,7 +9264,9 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|session
 operator|=
 name|FileActions
@@ -9122,6 +9293,7 @@ argument_list|,
 name|saveType
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -9234,11 +9406,13 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|ex
 operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
+block|}
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -9517,10 +9691,12 @@ argument_list|)
 return|;
 block|}
 else|else
+block|{
 name|commit
 operator|=
 literal|false
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -9531,10 +9707,12 @@ name|JOptionPane
 operator|.
 name|CANCEL_OPTION
 condition|)
+block|{
 name|commit
 operator|=
 literal|false
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -9555,11 +9733,13 @@ expr_stmt|;
 comment|// Make sure to remember which encoding we used.
 block|}
 else|else
+block|{
 name|session
 operator|.
 name|cancel
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|commit
 return|;
@@ -9744,11 +9924,15 @@ if|if
 condition|(
 name|mode
 operator|!=
+name|BasePanel
+operator|.
 name|SHOWING_EDITOR
 condition|)
 block|{
 name|mode
 operator|=
+name|BasePanel
+operator|.
 name|WILL_SHOW_EDITOR
 expr_stmt|;
 block|}
@@ -9768,12 +9952,14 @@ name|row
 operator|>=
 literal|0
 condition|)
+block|{
 name|highlightEntry
 argument_list|(
 name|be
 argument_list|)
 expr_stmt|;
 comment|// Selects the entry. The selection listener will open the editor.
+block|}
 else|else
 block|{
 comment|// The entry is not visible in the table, perhaps due to a filtering search
@@ -9831,6 +10017,8 @@ name|GroupTreeUpdater
 implements|implements
 name|DatabaseChangeListener
 block|{
+annotation|@
+name|Override
 DECL|method|databaseChanged (DatabaseChangeEvent e)
 specifier|public
 name|void
@@ -9977,6 +10165,8 @@ name|SearchAutoCompleterUpdater
 implements|implements
 name|DatabaseChangeListener
 block|{
+annotation|@
+name|Override
 DECL|method|databaseChanged (DatabaseChangeEvent e)
 specifier|public
 name|void
@@ -10038,6 +10228,8 @@ name|AutoCompletersUpdater
 implements|implements
 name|DatabaseChangeListener
 block|{
+annotation|@
+name|Override
 DECL|method|databaseChanged (DatabaseChangeEvent e)
 specifier|public
 name|void
@@ -10129,6 +10321,7 @@ argument_list|(
 literal|"useOwner"
 argument_list|)
 condition|)
+block|{
 comment|// Set owner field to default value
 name|Util
 operator|.
@@ -10141,6 +10334,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Create an UndoableInsertEntry object.
 name|undoManager
 operator|.
@@ -10406,6 +10600,8 @@ name|BibtexEntry
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|listChanged
@@ -10428,6 +10624,7 @@ argument_list|(
 literal|"highlightGroupsMatchingAny"
 argument_list|)
 condition|)
+block|{
 name|getGroupSelector
 argument_list|()
 operator|.
@@ -10441,6 +10638,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -10453,6 +10651,7 @@ argument_list|(
 literal|"highlightGroupsMatchingAll"
 argument_list|)
 condition|)
+block|{
 name|getGroupSelector
 argument_list|()
 operator|.
@@ -10466,7 +10665,9 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 comment|// no highlight
 name|getGroupSelector
 argument_list|()
@@ -10478,6 +10679,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 expr_stmt|;
@@ -10501,6 +10703,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -10546,6 +10750,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -10591,6 +10797,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -10631,6 +10839,8 @@ operator|new
 name|KeyAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|keyPressed
@@ -10709,6 +10919,7 @@ name|node
 operator|!=
 literal|null
 condition|)
+block|{
 name|frame
 operator|.
 name|groupSelector
@@ -10720,6 +10931,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 break|break;
 case|case
 name|KeyEvent
@@ -10737,6 +10949,7 @@ name|node
 operator|!=
 literal|null
 condition|)
+block|{
 name|frame
 operator|.
 name|groupSelector
@@ -10748,6 +10961,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 break|break;
 case|case
 name|KeyEvent
@@ -10765,6 +10979,7 @@ name|node
 operator|!=
 literal|null
 condition|)
+block|{
 name|frame
 operator|.
 name|groupSelector
@@ -10776,6 +10991,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 break|break;
 case|case
 name|KeyEvent
@@ -10793,6 +11009,7 @@ name|node
 operator|!=
 literal|null
 condition|)
+block|{
 name|frame
 operator|.
 name|groupSelector
@@ -10804,6 +11021,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 break|break;
 case|case
 name|KeyEvent
@@ -10975,11 +11193,15 @@ if|if
 condition|(
 name|mode
 operator|==
+name|BasePanel
+operator|.
 name|SHOWING_PREVIEW
 condition|)
 block|{
 name|mode
 operator|=
+name|BasePanel
+operator|.
 name|SHOWING_NOTHING
 expr_stmt|;
 name|int
@@ -11000,6 +11222,7 @@ name|row
 operator|>=
 literal|0
 condition|)
+block|{
 name|mainTable
 operator|.
 name|setRowSelectionInterval
@@ -11010,22 +11233,28 @@ name|row
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 elseif|else
 if|if
 condition|(
 name|mode
 operator|==
+name|BasePanel
+operator|.
 name|SHOWING_EDITOR
 condition|)
 block|{
 name|mode
 operator|=
+name|BasePanel
+operator|.
 name|SHOWING_NOTHING
 expr_stmt|;
 comment|/*int row = mainTable.findEntry(currentEditor.entry);             if (row>= 0)                 mainTable.setRowSelectionInterval(row, row);             */
 comment|//showEntryEditor(currentEditor);
 block|}
 else|else
+block|{
 name|splitPane
 operator|.
 name|setBottomComponent
@@ -11033,6 +11262,7 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 name|setLayout
 argument_list|(
 operator|new
@@ -11386,6 +11616,7 @@ name|item
 range|:
 name|items
 control|)
+block|{
 name|ac
 operator|.
 name|addWordToIndex
@@ -11393,6 +11624,7 @@ argument_list|(
 name|item
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -11447,6 +11679,7 @@ name|journal
 range|:
 name|journals
 control|)
+block|{
 name|ac
 operator|.
 name|addWordToIndex
@@ -11454,6 +11687,7 @@ argument_list|(
 name|journal
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/*     public void refreshTable() {         //System.out.println("hiding="+hidingNonHits+"\tlastHits="+lastSearchHits);         // This method is called by EntryTypeForm when a field value is         // stored. The table is scheduled for repaint.         entryTable.assureNotEditing();         //entryTable.invalidate();         BibtexEntry[] bes = entryTable.getSelectedEntries();     if (hidingNonHits)         tableModel.update(lastSearchHits);     else         tableModel.update();     //tableModel.remap();         if ((bes != null)&& (bes.length> 0))             selectEntries(bes, 0);      //long toc = System.currentTimeMillis();     //	Util.pr("Refresh took: "+(toc-tic)+" ms");     } */
@@ -11469,11 +11703,13 @@ name|preambleEditor
 operator|!=
 literal|null
 condition|)
+block|{
 name|preambleEditor
 operator|.
 name|updatePreamble
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 DECL|method|assureStringDialogNotEditing ()
 specifier|public
@@ -11487,11 +11723,13 @@ name|stringDialog
 operator|!=
 literal|null
 condition|)
+block|{
 name|stringDialog
 operator|.
 name|assureNotEditing
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 DECL|method|updateStringDialog ()
 specifier|public
@@ -11505,11 +11743,13 @@ name|stringDialog
 operator|!=
 literal|null
 condition|)
+block|{
 name|stringDialog
 operator|.
 name|refreshTable
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 DECL|method|updateEntryPreviewToRow (BibtexEntry e)
 specifier|public
@@ -11536,6 +11776,8 @@ if|if
 condition|(
 name|mode
 operator|==
+name|BasePanel
+operator|.
 name|SHOWING_PREVIEW
 condition|)
 block|{
@@ -11625,9 +11867,11 @@ argument_list|()
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 DECL|method|moveFocusToEntryEditor ()
 specifier|public
@@ -11810,6 +12054,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|divLoc
 operator|=
 name|splitPane
@@ -11817,6 +12062,7 @@ operator|.
 name|getDividerLocation
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|entryEditors
@@ -11864,6 +12110,7 @@ name|visName
 operator|!=
 literal|null
 condition|)
+block|{
 name|form
 operator|.
 name|setVisiblePanel
@@ -11871,6 +12118,7 @@ argument_list|(
 name|visName
 argument_list|)
 expr_stmt|;
+block|}
 name|splitPane
 operator|.
 name|setBottomComponent
@@ -11903,6 +12151,7 @@ name|visName
 operator|!=
 literal|null
 condition|)
+block|{
 name|form
 operator|.
 name|setVisiblePanel
@@ -11910,6 +12159,7 @@ argument_list|(
 name|visName
 argument_list|)
 expr_stmt|;
+block|}
 name|splitPane
 operator|.
 name|setBottomComponent
@@ -11950,6 +12200,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|splitPane
 operator|.
 name|setDividerLocation
@@ -11971,6 +12222,7 @@ argument_list|)
 expr_stmt|;
 comment|//new FocusRequester(form);
 comment|//form.requestFocus();
+block|}
 name|newEntryShowing
 argument_list|(
 name|be
@@ -12142,8 +12394,11 @@ if|if
 condition|(
 name|mode
 operator|==
+name|BasePanel
+operator|.
 name|SHOWING_EDITOR
 condition|)
+block|{
 name|Globals
 operator|.
 name|prefs
@@ -12163,13 +12418,17 @@ name|getDividerLocation
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
 name|mode
 operator|==
+name|BasePanel
+operator|.
 name|SHOWING_PREVIEW
 condition|)
+block|{
 name|Globals
 operator|.
 name|prefs
@@ -12189,8 +12448,11 @@ name|getDividerLocation
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|mode
 operator|=
+name|BasePanel
+operator|.
 name|SHOWING_EDITOR
 expr_stmt|;
 name|currentEditor
@@ -12214,6 +12476,7 @@ operator|!=
 name|getShowing
 argument_list|()
 condition|)
+block|{
 name|newEntryShowing
 argument_list|(
 name|editor
@@ -12222,6 +12485,7 @@ name|getEntry
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|adjustSplitter
 argument_list|()
 expr_stmt|;
@@ -12238,6 +12502,8 @@ parameter_list|)
 block|{
 name|mode
 operator|=
+name|BasePanel
+operator|.
 name|SHOWING_PREVIEW
 expr_stmt|;
 name|currentPreview
@@ -12261,6 +12527,8 @@ parameter_list|()
 block|{
 name|mode
 operator|=
+name|BasePanel
+operator|.
 name|SHOWING_NOTHING
 expr_stmt|;
 name|splitPane
@@ -12378,6 +12646,8 @@ condition|(
 operator|(
 name|mode
 operator|==
+name|BasePanel
+operator|.
 name|SHOWING_EDITOR
 operator|)
 operator|&&
@@ -12410,6 +12680,8 @@ if|if
 condition|(
 name|mode
 operator|==
+name|BasePanel
+operator|.
 name|SHOWING_EDITOR
 condition|)
 block|{
@@ -12646,7 +12918,9 @@ literal|"Saved database"
 argument_list|)
 argument_list|)
 condition|)
+block|{
 empty_stmt|;
+block|}
 name|frame
 operator|.
 name|output
@@ -12715,6 +12989,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|frame
 operator|.
 name|setTabTitle
@@ -12736,7 +13011,9 @@ name|getAbsolutePath
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|frame
 operator|.
 name|setTabTitle
@@ -12755,6 +13032,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|frame
 operator|.
@@ -13078,7 +13356,9 @@ name|JOptionPane
 operator|.
 name|NO_OPTION
 condition|)
+block|{
 return|return;
+block|}
 block|}
 name|NamedCompound
 name|ce
@@ -13329,6 +13609,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|Globals
 operator|.
 name|prefs
@@ -13340,6 +13621,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 operator|(
 name|answer
@@ -13351,9 +13633,11 @@ operator|)
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 comment|/**      * If the relevant option is set, autogenerate keys for all entries that are      * lacking keys.      */
 DECL|method|autoGenerateKeysBeforeSaving ()
@@ -13541,8 +13825,11 @@ if|if
 condition|(
 name|mode
 operator|==
+name|BasePanel
+operator|.
 name|SHOWING_PREVIEW
 condition|)
+block|{
 name|Globals
 operator|.
 name|prefs
@@ -13562,13 +13849,17 @@ name|getDividerLocation
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
 name|mode
 operator|==
+name|BasePanel
+operator|.
 name|SHOWING_EDITOR
 condition|)
+block|{
 name|Globals
 operator|.
 name|prefs
@@ -13589,12 +13880,15 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 DECL|class|UndoAction
 class|class
 name|UndoAction
 extends|extends
 name|BaseAction
 block|{
+annotation|@
+name|Override
 DECL|method|action ()
 specifier|public
 name|void
@@ -13662,9 +13956,11 @@ argument_list|()
 expr_stmt|;
 block|}
 else|else
+block|{
 name|storeCurrentEdit
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 name|String
 name|name
@@ -13731,6 +14027,8 @@ name|RedoAction
 extends|extends
 name|BaseAction
 block|{
+annotation|@
+name|Override
 DECL|method|action ()
 specifier|public
 name|void
@@ -13831,6 +14129,8 @@ expr_stmt|;
 block|}
 block|}
 comment|// Method pertaining to the ClipboardOwner interface.
+annotation|@
+name|Override
 DECL|method|lostOwnership (Clipboard clipboard, Transferable contents)
 specifier|public
 name|void
@@ -13891,6 +14191,7 @@ argument_list|()
 operator|!=
 name|enabled
 condition|)
+block|{
 name|ed
 operator|.
 name|setEnabled
@@ -13898,6 +14199,7 @@ argument_list|(
 name|enabled
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|fileMonitorHandle ()
@@ -13910,6 +14212,8 @@ return|return
 name|fileMonitorHandle
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|fileUpdated ()
 specifier|public
 name|void
@@ -13920,8 +14224,10 @@ if|if
 condition|(
 name|saving
 condition|)
+block|{
 return|return;
 comment|// We are just saving the file, so this message is most likely due
+block|}
 comment|//if (updatedExternally) {
 comment|//  return;
 comment|//}
@@ -13961,6 +14267,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -14137,6 +14445,8 @@ expr_stmt|;
 comment|//System.out.println("No changes found.");
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|fileRemoved ()
 specifier|public
 name|void
@@ -14172,6 +14482,7 @@ name|fileMonitorHandle
 operator|!=
 literal|null
 condition|)
+block|{
 name|Globals
 operator|.
 name|fileUpdateMonitor
@@ -14181,6 +14492,7 @@ argument_list|(
 name|fileMonitorHandle
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Check if there is a FileUpdatePanel for this BasePanel being shown. If so,
 comment|// remove it:
 if|if
@@ -14317,9 +14629,11 @@ expr_stmt|;
 comment|// if the key is empty we give a warning and ignore this entry
 if|if
 condition|(
+operator|(
 name|citeKey
 operator|==
 literal|null
+operator|)
 operator|||
 name|citeKey
 operator|.
@@ -14328,7 +14642,9 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 continue|continue;
+block|}
 if|if
 condition|(
 name|first
@@ -14564,6 +14880,7 @@ name|GUIGlobals
 operator|.
 name|MAX_BACK_HISTORY_SIZE
 condition|)
+block|{
 name|previousEntries
 operator|.
 name|remove
@@ -14571,6 +14888,7 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|showing
 operator|=
@@ -14632,6 +14950,7 @@ name|showing
 operator|!=
 literal|null
 condition|)
+block|{
 name|nextEntries
 operator|.
 name|add
@@ -14639,6 +14958,7 @@ argument_list|(
 name|showing
 argument_list|)
 expr_stmt|;
+block|}
 name|backOrForwardInProgress
 operator|=
 literal|true
@@ -14702,6 +15022,7 @@ name|showing
 operator|!=
 literal|null
 condition|)
+block|{
 name|previousEntries
 operator|.
 name|add
@@ -14709,6 +15030,7 @@ argument_list|(
 name|showing
 argument_list|)
 expr_stmt|;
+block|}
 name|backOrForwardInProgress
 operator|=
 literal|true
@@ -14785,6 +15107,8 @@ operator|=
 name|saveType
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|action ()
 specifier|public
 name|void

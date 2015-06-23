@@ -422,6 +422,8 @@ name|this
 operator|.
 name|expires
 operator|=
+name|Cookie
+operator|.
 name|expiresFormat1
 operator|.
 name|parse
@@ -442,6 +444,8 @@ name|this
 operator|.
 name|expires
 operator|=
+name|Cookie
+operator|.
 name|expiresFormat2
 operator|.
 name|parse
@@ -574,6 +578,8 @@ name|path
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String

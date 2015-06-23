@@ -245,11 +245,13 @@ name|encoding
 operator|!=
 literal|null
 condition|)
+block|{
 name|setEncoding
 argument_list|(
 name|encoding
 argument_list|)
 expr_stmt|;
+block|}
 name|this
 operator|.
 name|extension

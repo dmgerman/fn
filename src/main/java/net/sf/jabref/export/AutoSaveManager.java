@@ -162,10 +162,6 @@ expr_stmt|;
 name|long
 name|interval
 init|=
-call|(
-name|long
-call|)
-argument_list|(
 literal|60000
 operator|*
 name|Globals
@@ -175,7 +171,6 @@ operator|.
 name|getInt
 argument_list|(
 literal|"autoSaveInterval"
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|t
@@ -208,6 +203,8 @@ name|AutoSaveTask
 extends|extends
 name|TimerTask
 block|{
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -246,6 +243,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|panels
 operator|.
 name|add
@@ -258,6 +256,7 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|int
 name|i
 init|=
@@ -289,6 +288,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|AutoSaveManager
+operator|.
 name|autoSave
 argument_list|(
 name|panel
@@ -354,6 +355,8 @@ block|{
 name|File
 name|backupFile
 init|=
+name|AutoSaveManager
+operator|.
 name|getAutoSaveFile
 argument_list|(
 name|panel
@@ -459,12 +462,16 @@ argument_list|()
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 name|File
 name|backupFile
 init|=
+name|AutoSaveManager
+operator|.
 name|getAutoSaveFile
 argument_list|(
 name|panel
@@ -489,9 +496,11 @@ argument_list|()
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 comment|/**      * Clean up by deleting the autosave files corresponding to all open files,      * if they exist.      */
 DECL|method|clearAutoSaves ()
@@ -530,6 +539,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|panels
 operator|.
 name|add
@@ -542,6 +552,7 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 for|for
 control|(
 name|BasePanel
@@ -550,6 +561,8 @@ range|:
 name|panels
 control|)
 block|{
+name|AutoSaveManager
+operator|.
 name|deleteAutoSaveFile
 argument_list|(
 name|panel
@@ -571,6 +584,8 @@ block|{
 name|File
 name|asFile
 init|=
+name|AutoSaveManager
+operator|.
 name|getAutoSaveFile
 argument_list|(
 name|f

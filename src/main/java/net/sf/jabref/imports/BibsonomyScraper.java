@@ -166,10 +166,14 @@ init|=
 operator|new
 name|URL
 argument_list|(
+name|BibsonomyScraper
+operator|.
 name|BIBSONOMY_SCRAPER
 operator|+
 name|entryUrl
 operator|+
+name|BibsonomyScraper
+operator|.
 name|BIBSONOMY_SCRAPER_POST
 argument_list|)
 decl_stmt|;
@@ -246,9 +250,11 @@ argument_list|()
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 catch|catch
 parameter_list|(

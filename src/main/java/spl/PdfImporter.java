@@ -516,12 +516,14 @@ name|panel
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
 return|;
+block|}
 name|ImportDialog
 name|importDialog
 init|=
@@ -1290,11 +1292,14 @@ expr_stmt|;
 comment|// to satisfy the Java compiler
 if|if
 condition|(
+operator|(
 name|document
 operator|!=
 literal|null
 comment|/*&& documents.getDocuments() != null&& documents.getDocuments().size()> 0*/
+operator|)
 operator|&&
+operator|(
 name|metaDataListDialog
 operator|.
 name|getResult
@@ -1303,6 +1308,7 @@ operator|==
 name|JOptionPane
 operator|.
 name|OK_OPTION
+operator|)
 condition|)
 block|{
 name|int
@@ -1545,11 +1551,14 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|document
 operator|==
 literal|null
 comment|/*|| document.getDocuments() == null || document.getDocuments().size()<= 0*/
+operator|)
 operator|&&
+operator|(
 name|metaDataListDialog
 operator|.
 name|getResult
@@ -1558,6 +1567,7 @@ operator|==
 name|JOptionPane
 operator|.
 name|OK_OPTION
+operator|)
 condition|)
 block|{
 name|entry
@@ -1641,11 +1651,14 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|document
 operator|!=
 literal|null
 comment|/*&& document.getDocuments() != null&& document.getDocuments().size()> 0*/
+operator|)
 operator|&&
+operator|(
 name|metaDataListDialog
 operator|.
 name|getResult
@@ -1654,6 +1667,7 @@ operator|==
 name|JOptionPane
 operator|.
 name|OK_OPTION
+operator|)
 condition|)
 block|{
 name|int
@@ -2025,9 +2039,11 @@ name|string
 parameter_list|)
 block|{
 return|return
+operator|(
 name|string
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|string

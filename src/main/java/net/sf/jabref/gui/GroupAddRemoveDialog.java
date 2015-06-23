@@ -456,6 +456,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -492,6 +494,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -586,6 +590,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -599,11 +605,13 @@ condition|(
 name|doAddOrRemove
 argument_list|()
 condition|)
+block|{
 name|diag
 operator|.
 name|dispose
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -616,6 +624,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -696,6 +706,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -791,6 +803,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -969,6 +983,8 @@ name|SelectionListener
 implements|implements
 name|TreeSelectionListener
 block|{
+annotation|@
+name|Override
 DECL|method|valueChanged (TreeSelectionEvent e)
 specifier|public
 name|void
@@ -1244,6 +1260,7 @@ argument_list|(
 name|group
 argument_list|)
 condition|)
+block|{
 name|c
 operator|.
 name|setForeground
@@ -1253,7 +1270,9 @@ operator|.
 name|black
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|c
 operator|.
 name|setForeground
@@ -1263,6 +1282,7 @@ operator|.
 name|gray
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|c
 return|;

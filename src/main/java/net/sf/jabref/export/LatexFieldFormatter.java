@@ -199,6 +199,8 @@ name|WRITEFIELD_WRAPFIELD
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|format (String text, String fieldName)
 specifier|public
 name|String
@@ -219,6 +221,7 @@ name|text
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 name|valueDelimitersZero
 operator|+
@@ -226,6 +229,7 @@ literal|""
 operator|+
 name|valueDelimitersOne
 return|;
+block|}
 if|if
 condition|(
 name|Globals
@@ -413,18 +417,22 @@ name|c
 operator|==
 literal|'{'
 condition|)
+block|{
 name|brc
 operator|++
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|c
 operator|==
 literal|'}'
 condition|)
+block|{
 name|brc
 operator|--
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|brc
@@ -445,15 +453,18 @@ name|brc
 operator|>
 literal|0
 condition|)
+block|{
 name|ok
 operator|=
 literal|false
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
 name|ok
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -461,6 +472,7 @@ argument_list|(
 literal|"Curly braces { and } must be balanced."
 argument_list|)
 throw|;
+block|}
 name|sb
 operator|=
 operator|new
@@ -490,6 +502,7 @@ argument_list|(
 name|fieldName
 argument_list|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -506,7 +519,9 @@ name|LINE_LENGTH
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -514,6 +529,7 @@ argument_list|(
 name|text
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
@@ -628,6 +644,7 @@ operator|++
 expr_stmt|;
 block|}
 else|else
+block|{
 name|goFrom
 operator|=
 name|pos1
@@ -635,6 +652,7 @@ operator|-
 literal|1
 expr_stmt|;
 comment|// Ends the loop.
+block|}
 block|}
 if|if
 condition|(
@@ -737,6 +755,7 @@ name|pos1
 operator|>
 name|pivot
 condition|)
+block|{
 name|writeText
 argument_list|(
 name|text
@@ -746,6 +765,7 @@ argument_list|,
 name|pos1
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -758,13 +778,16 @@ argument_list|()
 operator|)
 operator|&&
 operator|(
+operator|(
 name|pos2
 operator|-
 literal|1
+operator|)
 operator|>
 name|pos1
 operator|)
 condition|)
+block|{
 comment|// We check that the string label is not empty. That means
 comment|// an occurrence of ## will simply be ignored. Should it instead
 comment|// cause an error message?
@@ -785,9 +808,11 @@ name|pivot
 operator|)
 argument_list|,
 operator|(
+operator|(
 name|pos2
 operator|+
 literal|1
+operator|)
 operator|==
 name|text
 operator|.
@@ -796,6 +821,7 @@ argument_list|()
 operator|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|pos2
@@ -803,13 +829,16 @@ operator|>
 operator|-
 literal|1
 condition|)
+block|{
 name|pivot
 operator|=
 name|pos2
 operator|+
 literal|1
 expr_stmt|;
+block|}
 else|else
+block|{
 name|pivot
 operator|=
 name|pos1
@@ -817,6 +846,7 @@ operator|+
 literal|1
 expr_stmt|;
 comment|//if (tell++> 10) System.exit(0);
+block|}
 block|}
 comment|// currently, we do not add newlines and new formatting
 if|if
@@ -853,12 +883,14 @@ return|;
 comment|//, but that lead to ugly .tex
 block|}
 else|else
+block|{
 return|return
 name|sb
 operator|.
 name|toString
 argument_list|()
 return|;
+block|}
 block|}
 DECL|method|writeText (String text, int start_pos, int end_pos)
 specifier|private
@@ -965,6 +997,7 @@ condition|(
 operator|!
 name|inCommandOption
 condition|)
+block|{
 name|commandName
 operator|.
 name|append
@@ -972,6 +1005,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -1024,11 +1058,12 @@ operator|==
 literal|']'
 operator|)
 condition|)
+block|{
 name|inCommandOption
 operator|=
 literal|false
 expr_stmt|;
-comment|// Or the beginning of the command body:
+block|}
 elseif|else
 if|if
 condition|(
@@ -1107,9 +1142,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|nestedEnvironments
 operator|>
 literal|0
+operator|)
 operator|&&
 name|commandName
 operator|.
@@ -1188,6 +1225,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -1195,6 +1233,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 name|escape
 operator|=
 operator|(
@@ -1358,6 +1397,7 @@ operator|!=
 operator|-
 literal|1
 condition|)
+block|{
 name|left
 operator|.
 name|add
@@ -1365,6 +1405,7 @@ argument_list|(
 name|current
 argument_list|)
 expr_stmt|;
+block|}
 while|while
 condition|(
 operator|(
@@ -1385,6 +1426,7 @@ operator|!=
 operator|-
 literal|1
 condition|)
+block|{
 name|right
 operator|.
 name|add
@@ -1392,6 +1434,7 @@ argument_list|(
 name|current
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Then we throw an exception if the error criteria are met.
 if|if
 condition|(
@@ -1413,6 +1456,7 @@ operator|==
 literal|0
 operator|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -1420,6 +1464,7 @@ argument_list|(
 literal|"'}' character ends string prematurely."
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 operator|(
@@ -1447,6 +1492,7 @@ literal|0
 argument_list|)
 operator|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -1454,6 +1500,7 @@ argument_list|(
 literal|"'}' character ends string prematurely."
 argument_list|)
 throw|;
+block|}
 if|if
 condition|(
 name|left
@@ -1466,6 +1513,7 @@ operator|.
 name|size
 argument_list|()
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -1473,6 +1521,7 @@ argument_list|(
 literal|"Braces don't match."
 argument_list|)
 throw|;
+block|}
 block|}
 block|}
 end_class

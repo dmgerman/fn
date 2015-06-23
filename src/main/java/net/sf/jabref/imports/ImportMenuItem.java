@@ -335,6 +335,8 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -446,6 +448,8 @@ name|fileOk
 init|=
 literal|false
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|init ()
 specifier|public
 name|void
@@ -547,6 +551,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -558,7 +564,9 @@ condition|(
 operator|!
 name|fileOk
 condition|)
+block|{
 return|return;
+block|}
 comment|// We import all files and collect their results:
 name|List
 argument_list|<
@@ -776,6 +784,7 @@ condition|;
 name|j
 operator|++
 control|)
+block|{
 name|wrn
 operator|.
 name|append
@@ -803,6 +812,7 @@ argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|wrn
@@ -812,6 +822,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|wrn
 operator|.
 name|deleteCharAt
@@ -824,6 +835,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -852,6 +864,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void
@@ -863,7 +877,9 @@ condition|(
 operator|!
 name|fileOk
 condition|)
+block|{
 return|return;
+block|}
 comment|// TODO: undo is not handled properly here, except for the entries
 comment|// added by
 comment|//  the import inspection dialog.
@@ -1045,6 +1061,7 @@ argument_list|(
 literal|"unmarkAllEntriesBeforeImporting"
 argument_list|)
 condition|)
+block|{
 for|for
 control|(
 name|BibtexEntry
@@ -1069,6 +1086,7 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 for|for
 control|(
@@ -1134,10 +1152,12 @@ name|DuplicateResolverDialog
 operator|.
 name|DO_NOT_IMPORT
 condition|)
+block|{
 name|keepEntry
 operator|=
 literal|false
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|answer
@@ -1335,6 +1355,7 @@ name|importer
 operator|==
 literal|null
 condition|)
+block|{
 name|frame
 operator|.
 name|output
@@ -1347,6 +1368,7 @@ literal|"Could not find a suitable import format."
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|// Import in a specific format was specified. Check if we have stored error information:
@@ -1467,7 +1489,9 @@ name|importResult
 operator|==
 literal|null
 condition|)
+block|{
 continue|continue;
+block|}
 if|if
 condition|(
 name|ImportFormatReader
@@ -1696,9 +1720,11 @@ condition|(
 operator|!
 name|anythingUseful
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 if|if
 condition|(
 operator|(

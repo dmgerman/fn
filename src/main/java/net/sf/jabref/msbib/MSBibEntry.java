@@ -995,6 +995,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|value
 operator|=
 name|nodeLst
@@ -1007,6 +1008,7 @@ operator|.
 name|getTextContent
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|value
 return|;
@@ -1176,6 +1178,7 @@ name|temp
 operator|!=
 literal|null
 condition|)
+block|{
 name|pages
 operator|=
 operator|new
@@ -1184,6 +1187,7 @@ argument_list|(
 name|temp
 argument_list|)
 expr_stmt|;
+block|}
 name|volume
 operator|=
 name|getFromXml
@@ -1285,34 +1289,40 @@ name|city
 operator|!=
 literal|null
 condition|)
+block|{
 name|address
 operator|+=
 name|city
 operator|+
 literal|", "
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|state
 operator|!=
 literal|null
 condition|)
+block|{
 name|address
 operator|+=
 name|state
 operator|+
 literal|" "
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|country
 operator|!=
 literal|null
 condition|)
+block|{
 name|address
 operator|+=
 name|country
 expr_stmt|;
+block|}
 name|address
 operator|=
 name|address
@@ -1336,10 +1346,12 @@ argument_list|(
 literal|","
 argument_list|)
 condition|)
+block|{
 name|address
 operator|=
 literal|null
 expr_stmt|;
+block|}
 name|bookTitle
 operator|=
 name|getFromXml
@@ -1496,34 +1508,40 @@ name|month
 operator|!=
 literal|null
 condition|)
+block|{
 name|dateAccessed
 operator|+=
 name|month
 operator|+
 literal|" "
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|day
 operator|!=
 literal|null
 condition|)
+block|{
 name|dateAccessed
 operator|+=
 name|day
 operator|+
 literal|", "
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|year
 operator|!=
 literal|null
 condition|)
+block|{
 name|dateAccessed
 operator|+=
 name|year
 expr_stmt|;
+block|}
 name|dateAccessed
 operator|=
 name|dateAccessed
@@ -1547,10 +1565,12 @@ argument_list|(
 literal|","
 argument_list|)
 condition|)
+block|{
 name|dateAccessed
 operator|=
 literal|null
 expr_stmt|;
+block|}
 name|url
 operator|=
 name|getFromXml
@@ -1889,6 +1909,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|getAuthors
 argument_list|(
 call|(
@@ -1906,6 +1927,7 @@ argument_list|,
 name|_bcol
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|populateFromBibtex (BibtexEntry bibtex)
 specifier|protected
@@ -1935,6 +1957,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|tag
 operator|=
 name|bibtex
@@ -1944,6 +1967,7 @@ argument_list|(
 literal|"bibtexkey"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -1955,6 +1979,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|LCID
 operator|=
 name|getLCID
@@ -1967,6 +1992,7 @@ literal|"language"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -1978,6 +2004,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|title
 operator|=
 name|bibtex
@@ -1987,6 +2014,7 @@ argument_list|(
 literal|"title"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -1998,6 +2026,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|year
 operator|=
 name|bibtex
@@ -2007,6 +2036,7 @@ argument_list|(
 literal|"year"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2018,6 +2048,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|month
 operator|=
 name|bibtex
@@ -2027,6 +2058,7 @@ argument_list|(
 literal|"month"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2040,6 +2072,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|day
 operator|=
 name|bibtex
@@ -2051,6 +2084,7 @@ operator|+
 literal|"day"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2064,6 +2098,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|shortTitle
 operator|=
 name|bibtex
@@ -2075,6 +2110,7 @@ operator|+
 literal|"shorttitle"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2086,6 +2122,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|comments
 operator|=
 name|bibtex
@@ -2095,6 +2132,7 @@ argument_list|(
 literal|"note"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2106,6 +2144,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|pages
 operator|=
 operator|new
@@ -2119,6 +2158,7 @@ literal|"pages"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2130,6 +2170,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|volume
 operator|=
 name|bibtex
@@ -2139,6 +2180,7 @@ argument_list|(
 literal|"volume"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2152,6 +2194,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|numberOfVolumes
 operator|=
 name|bibtex
@@ -2163,6 +2206,7 @@ operator|+
 literal|"numberofvolume"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2174,6 +2218,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|edition
 operator|=
 name|bibtex
@@ -2183,6 +2228,7 @@ argument_list|(
 literal|"edition"
 argument_list|)
 expr_stmt|;
+block|}
 name|standardNumber
 operator|=
 literal|""
@@ -2198,7 +2244,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
-comment|/* SM: 2010.10: lower case */
+block|{
 name|standardNumber
 operator|+=
 literal|" ISBN: "
@@ -2211,6 +2257,7 @@ literal|"isbn"
 argument_list|)
 expr_stmt|;
 comment|/* SM: 2010.10: lower case */
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2222,7 +2269,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
-comment|/* SM: 2010.10: lower case */
+block|{
 name|standardNumber
 operator|+=
 literal|" ISSN: "
@@ -2235,6 +2282,7 @@ literal|"issn"
 argument_list|)
 expr_stmt|;
 comment|/* SM: 2010.10: lower case */
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2246,7 +2294,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
-comment|/* SM: 2010.10: lower case */
+block|{
 name|standardNumber
 operator|+=
 literal|" LCCN: "
@@ -2259,6 +2307,7 @@ literal|"lccn"
 argument_list|)
 expr_stmt|;
 comment|/* SM: 2010.10: lower case */
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2270,6 +2319,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|standardNumber
 operator|+=
 literal|" MRN: "
@@ -2281,6 +2331,7 @@ argument_list|(
 literal|"mrnumber"
 argument_list|)
 expr_stmt|;
+block|}
 comment|/* SM: 2010.10 begin DOI support */
 if|if
 condition|(
@@ -2293,6 +2344,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|standardNumber
 operator|+=
 literal|" DOI: "
@@ -2304,6 +2356,7 @@ argument_list|(
 literal|"doi"
 argument_list|)
 expr_stmt|;
+block|}
 comment|/* SM: 2010.10 end DOI support */
 if|if
 condition|(
@@ -2314,10 +2367,12 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|standardNumber
 operator|=
 literal|null
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2329,6 +2384,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|publisher
 operator|=
 name|bibtex
@@ -2338,6 +2394,7 @@ argument_list|(
 literal|"publisher"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2349,6 +2406,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|address
 operator|=
 name|bibtex
@@ -2358,6 +2416,7 @@ argument_list|(
 literal|"address"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2369,6 +2428,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|bookTitle
 operator|=
 name|bibtex
@@ -2378,6 +2438,7 @@ argument_list|(
 literal|"booktitle"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2389,6 +2450,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|chapterNumber
 operator|=
 name|bibtex
@@ -2398,6 +2460,7 @@ argument_list|(
 literal|"chapter"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2409,6 +2472,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|journalName
 operator|=
 name|bibtex
@@ -2418,6 +2482,7 @@ argument_list|(
 literal|"journal"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2429,6 +2494,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|issue
 operator|=
 name|bibtex
@@ -2438,6 +2504,7 @@ argument_list|(
 literal|"number"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2451,6 +2518,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|periodicalTitle
 operator|=
 name|bibtex
@@ -2462,6 +2530,7 @@ operator|+
 literal|"periodical"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2473,6 +2542,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|conferenceName
 operator|=
 name|bibtex
@@ -2482,6 +2552,7 @@ argument_list|(
 literal|"booktitle"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2493,6 +2564,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|department
 operator|=
 name|bibtex
@@ -2502,6 +2574,7 @@ argument_list|(
 literal|"school"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2513,6 +2586,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|institution
 operator|=
 name|bibtex
@@ -2522,6 +2596,7 @@ argument_list|(
 literal|"institution"
 argument_list|)
 expr_stmt|;
+block|}
 comment|/* SM: 2010.10 Modified for default source types */
 if|if
 condition|(
@@ -2534,6 +2609,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|thesisType
 operator|=
 name|bibtex
@@ -2543,6 +2619,7 @@ argument_list|(
 literal|"type"
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 if|if
@@ -2560,10 +2637,12 @@ argument_list|(
 literal|"techreport"
 argument_list|)
 condition|)
+block|{
 name|thesisType
 operator|=
 literal|"Tech. rep."
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -2580,10 +2659,12 @@ argument_list|(
 literal|"mastersthesis"
 argument_list|)
 condition|)
+block|{
 name|thesisType
 operator|=
 literal|"Master's thesis"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -2600,10 +2681,12 @@ argument_list|(
 literal|"phdthesis"
 argument_list|)
 condition|)
+block|{
 name|thesisType
 operator|=
 literal|"Ph.D. dissertation"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -2620,12 +2703,14 @@ argument_list|(
 literal|"unpublished"
 argument_list|)
 condition|)
+block|{
 name|thesisType
 operator|=
 literal|"unpublished"
 expr_stmt|;
 comment|//else if (bibtex.getType().getName().equalsIgnoreCase("manual"))
 comment|//	thesisType = "manual";
+block|}
 block|}
 if|if
 condition|(
@@ -2645,6 +2730,7 @@ literal|"DocumentFromInternetSite"
 argument_list|)
 operator|)
 operator|&&
+operator|(
 name|bibtex
 operator|.
 name|getField
@@ -2653,7 +2739,9 @@ literal|"title"
 argument_list|)
 operator|!=
 literal|null
+operator|)
 condition|)
+block|{
 name|internetSiteTitle
 operator|=
 name|bibtex
@@ -2663,6 +2751,7 @@ argument_list|(
 literal|"title"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2676,6 +2765,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|dateAccessed
 operator|=
 name|bibtex
@@ -2687,6 +2777,7 @@ operator|+
 literal|"accessed"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2698,7 +2789,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
-comment|/* SM: 2010.10: lower case */
+block|{
 name|url
 operator|=
 name|bibtex
@@ -2709,6 +2800,7 @@ literal|"url"
 argument_list|)
 expr_stmt|;
 comment|/* SM: 2010.10: lower case */
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2722,6 +2814,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|productionCompany
 operator|=
 name|bibtex
@@ -2733,6 +2826,7 @@ operator|+
 literal|"productioncompany"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -2758,6 +2852,7 @@ literal|"Misc"
 argument_list|)
 operator|)
 operator|&&
+operator|(
 name|bibtex
 operator|.
 name|getField
@@ -2766,7 +2861,9 @@ literal|"title"
 argument_list|)
 operator|!=
 literal|null
+operator|)
 condition|)
+block|{
 name|publicationTitle
 operator|=
 name|bibtex
@@ -2776,6 +2873,7 @@ argument_list|(
 literal|"title"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2789,6 +2887,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|medium
 operator|=
 name|bibtex
@@ -2800,6 +2899,7 @@ operator|+
 literal|"medium"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|sourceType
@@ -2809,6 +2909,7 @@ argument_list|(
 literal|"SoundRecording"
 argument_list|)
 operator|&&
+operator|(
 name|bibtex
 operator|.
 name|getField
@@ -2817,7 +2918,9 @@ literal|"title"
 argument_list|)
 operator|!=
 literal|null
+operator|)
 condition|)
+block|{
 name|albumTitle
 operator|=
 name|bibtex
@@ -2827,6 +2930,7 @@ argument_list|(
 literal|"title"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2840,6 +2944,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|recordingNumber
 operator|=
 name|bibtex
@@ -2851,6 +2956,7 @@ operator|+
 literal|"recordingnumber"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2864,6 +2970,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|theater
 operator|=
 name|bibtex
@@ -2875,6 +2982,7 @@ operator|+
 literal|"theater"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2888,6 +2996,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|distributor
 operator|=
 name|bibtex
@@ -2899,6 +3008,7 @@ operator|+
 literal|"distributor"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|sourceType
@@ -2908,6 +3018,7 @@ argument_list|(
 literal|"Interview"
 argument_list|)
 operator|&&
+operator|(
 name|bibtex
 operator|.
 name|getField
@@ -2916,7 +3027,9 @@ literal|"title"
 argument_list|)
 operator|!=
 literal|null
+operator|)
 condition|)
+block|{
 name|broadcastTitle
 operator|=
 name|bibtex
@@ -2926,6 +3039,7 @@ argument_list|(
 literal|"title"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2939,6 +3053,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|broadcaster
 operator|=
 name|bibtex
@@ -2950,6 +3065,7 @@ operator|+
 literal|"broadcaster"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2963,6 +3079,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|station
 operator|=
 name|bibtex
@@ -2974,6 +3091,7 @@ operator|+
 literal|"station"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -2987,6 +3105,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|type
 operator|=
 name|bibtex
@@ -2998,6 +3117,7 @@ operator|+
 literal|"type"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -3011,6 +3131,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|patentNumber
 operator|=
 name|bibtex
@@ -3022,6 +3143,7 @@ operator|+
 literal|"patentnumber"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -3035,6 +3157,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|court
 operator|=
 name|bibtex
@@ -3046,6 +3169,7 @@ operator|+
 literal|"court"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -3059,6 +3183,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|reporter
 operator|=
 name|bibtex
@@ -3070,6 +3195,7 @@ operator|+
 literal|"reporter"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -3083,6 +3209,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|caseNumber
 operator|=
 name|bibtex
@@ -3094,6 +3221,7 @@ operator|+
 literal|"casenumber"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -3107,6 +3235,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|abbreviatedCaseNumber
 operator|=
 name|bibtex
@@ -3118,6 +3247,7 @@ operator|+
 literal|"abbreviatedcasenumber"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -3129,6 +3259,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|bibTex_Series
 operator|=
 name|bibtex
@@ -3138,6 +3269,7 @@ argument_list|(
 literal|"series"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -3149,6 +3281,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|bibTex_Abstract
 operator|=
 name|bibtex
@@ -3158,6 +3291,7 @@ argument_list|(
 literal|"abstract"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -3169,6 +3303,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|bibTex_KeyWords
 operator|=
 name|bibtex
@@ -3178,6 +3313,7 @@ argument_list|(
 literal|"keywords"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -3189,6 +3325,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|bibTex_CrossRef
 operator|=
 name|bibtex
@@ -3198,6 +3335,7 @@ argument_list|(
 literal|"crossref"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -3209,6 +3347,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|bibTex_HowPublished
 operator|=
 name|bibtex
@@ -3218,6 +3357,7 @@ argument_list|(
 literal|"howpublished"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -3229,6 +3369,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|bibTex_Affiliation
 operator|=
 name|bibtex
@@ -3238,6 +3379,7 @@ argument_list|(
 literal|"affiliation"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -3249,6 +3391,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|bibTex_Contents
 operator|=
 name|bibtex
@@ -3258,6 +3401,7 @@ argument_list|(
 literal|"contents"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -3269,6 +3413,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|bibTex_Copyright
 operator|=
 name|bibtex
@@ -3278,6 +3423,7 @@ argument_list|(
 literal|"copyright"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -3289,6 +3435,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|bibTex_Price
 operator|=
 name|bibtex
@@ -3298,6 +3445,7 @@ argument_list|(
 literal|"price"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -3309,6 +3457,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|bibTex_Size
 operator|=
 name|bibtex
@@ -3318,6 +3467,7 @@ argument_list|(
 literal|"size"
 argument_list|)
 expr_stmt|;
+block|}
 comment|/* SM: 2010.10 end intype, paper support */
 if|if
 condition|(
@@ -3330,6 +3480,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|bibTex_InType
 operator|=
 name|bibtex
@@ -3339,6 +3490,7 @@ argument_list|(
 literal|"intype"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -3350,6 +3502,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|bibTex_Paper
 operator|=
 name|bibtex
@@ -3359,6 +3512,7 @@ argument_list|(
 literal|"paper"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -3370,6 +3524,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|authors
 operator|=
 name|getAuthors
@@ -3382,6 +3537,7 @@ literal|"author"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -3393,6 +3549,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|editors
 operator|=
 name|getAuthors
@@ -3405,6 +3562,7 @@ literal|"editor"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|FORMATXML
@@ -3457,9 +3615,11 @@ name|value
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|String
 name|result
 init|=
@@ -3562,9 +3722,11 @@ argument_list|()
 operator|<=
 literal|0
 condition|)
+block|{
 return|return
 name|result
 return|;
+block|}
 name|nodeLst
 operator|=
 operator|(
@@ -3597,9 +3759,11 @@ argument_list|()
 operator|<=
 literal|0
 condition|)
+block|{
 return|return
 name|result
 return|;
+block|}
 name|NodeList
 name|person
 init|=
@@ -3633,9 +3797,11 @@ argument_list|()
 operator|<=
 literal|0
 condition|)
+block|{
 return|return
 name|result
 return|;
+block|}
 name|result
 operator|=
 operator|new
@@ -3751,6 +3917,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|name
 operator|.
 name|setFirstname
@@ -3766,6 +3933,7 @@ name|getTextContent
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|middleName
@@ -3775,6 +3943,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|name
 operator|.
 name|setMiddlename
@@ -3790,6 +3959,7 @@ name|getTextContent
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|lastName
@@ -3799,6 +3969,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|name
 operator|.
 name|setSurname
@@ -3814,6 +3985,7 @@ name|getTextContent
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|result
 operator|.
 name|add
@@ -4116,6 +4288,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|+=
 operator|(
@@ -4127,6 +4300,7 @@ literal|"year"
 argument_list|)
 operator|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibtex
@@ -4138,6 +4312,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|+=
 literal|"-"
@@ -4149,6 +4324,7 @@ argument_list|(
 literal|"month"
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|result
 return|;
@@ -4187,10 +4363,12 @@ argument_list|(
 literal|"book"
 argument_list|)
 condition|)
+block|{
 name|result
 operator|=
 literal|"Book"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -4262,10 +4440,12 @@ argument_list|(
 literal|"article"
 argument_list|)
 condition|)
+block|{
 name|result
 operator|=
 literal|"JournalArticle"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -4458,10 +4638,12 @@ argument_list|(
 literal|"patent"
 argument_list|)
 condition|)
+block|{
 name|result
 operator|=
 literal|"Patent"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -4472,11 +4654,12 @@ argument_list|(
 literal|"misc"
 argument_list|)
 condition|)
+block|{
 name|result
 operator|=
 literal|"Misc"
 expr_stmt|;
-comment|/*SM: 2010.10 - bibtex @electronic */
+block|}
 elseif|else
 if|if
 condition|(
@@ -4578,7 +4761,9 @@ name|value
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|Element
 name|elem
 init|=
@@ -4647,7 +4832,9 @@ name|authorsLst
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|Element
 name|authorTop
 init|=
@@ -4778,7 +4965,9 @@ name|address
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 comment|// US address parser
 comment|// See documentation here http://regexlib.com/REDetails.aspx?regexp_id=472
 comment|// Pattern p = Pattern.compile("^(?n:(((?<address1>(\\d{1,5}(\\ 1\\/[234])?(\\x20[A-Z]([a-z])+)+ )|(P\\.O\\.\\ Box\\ \\d{1,5}))\\s{1,2}(?i:(?<address2>(((APT|B LDG|DEPT|FL|HNGR|LOT|PIER|RM|S(LIP|PC|T(E|OP))|TRLR|UNIT)\\x20\\w{1,5})|(BSMT|FRNT|LBBY|LOWR|OFC|PH|REAR|SIDE|UPPR)\\.?)\\s{1,2})?))?)(?<city>[A-Z]([a-z])+(\\.?)(\\x20[A-Z]([a-z])+){0,2})([,\\x20]+?)(?<state>A[LKSZRAP]|C[AOT]|D[EC]|F[LM]|G[AU]|HI|I[ADL N]|K[SY]|LA|M[ADEHINOPST]|N[CDEHJMVY]|O[HKR]|P[ARW]|RI|S[CD] |T[NX]|UT|V[AIT]|W[AIVY])([,\\x20]+?)(?<zipcode>(?!0{5})\\d{5}(-\\d {4})?)((([,\\x20]+?)(?<country>[A-Z]([a-z])+(\\.?)(\\x20[A-Z]([a-z])+){0,2}))?))$");
@@ -4814,12 +5003,14 @@ operator|.
 name|matches
 argument_list|()
 operator|&&
+operator|(
 name|m
 operator|.
 name|groupCount
 argument_list|()
 operator|>
 literal|3
+operator|)
 condition|)
 block|{
 name|addField
@@ -4872,6 +5063,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 comment|/* SM: 2010.10 generalized */
 name|addField
 argument_list|(
@@ -4884,6 +5076,7 @@ argument_list|,
 name|address
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|addDate (Document d, Element parent, String date, String extra)
 specifier|public
@@ -4909,7 +5102,9 @@ name|date
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 comment|// Allows 20.3-2007|||20/3-  2007 etc.
 comment|// (\d{1,2})\s?[.,-/]\s?(\d{1,2})\s?[.,-/]\s?(\d{2,4})
 comment|// 1-2 DIGITS SPACE SEPERATOR SPACE 1-2 DIGITS SPACE SEPERATOR SPACE 2-4 DIGITS
@@ -4941,12 +5136,14 @@ operator|.
 name|matches
 argument_list|()
 operator|&&
+operator|(
 name|m
 operator|.
 name|groupCount
 argument_list|()
 operator|>
 literal|3
+operator|)
 condition|)
 block|{
 name|addField
@@ -5080,6 +5277,7 @@ name|LCID
 operator|>=
 literal|0
 condition|)
+block|{
 name|addField
 argument_list|(
 name|d
@@ -5096,6 +5294,7 @@ name|LCID
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|addField
 argument_list|(
 name|d
@@ -5330,6 +5529,7 @@ name|pages
 operator|!=
 literal|null
 condition|)
+block|{
 name|addField
 argument_list|(
 name|d
@@ -5346,6 +5546,7 @@ literal|"-"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|addField
 argument_list|(
 name|d
@@ -5978,6 +6179,7 @@ operator|.
 name|matches
 argument_list|()
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -5992,6 +6194,7 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|parseStandardNumber (String standardNum, HashMap<String, String> hm)
 specifier|protected
@@ -6016,7 +6219,9 @@ name|standardNumber
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|parseSingleStandardNumber
 argument_list|(
 literal|"ISBN"
@@ -6107,7 +6312,9 @@ name|authorsLst
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|String
 name|allAuthors
 init|=
@@ -6131,10 +6338,12 @@ condition|(
 operator|!
 name|First
 condition|)
+block|{
 name|allAuthors
 operator|+=
 literal|" and "
 expr_stmt|;
+block|}
 name|allAuthors
 operator|+=
 name|name
@@ -6225,12 +6434,14 @@ argument_list|(
 literal|"Book"
 argument_list|)
 condition|)
+block|{
 name|bibtex
 operator|=
 name|BibtexEntryType
 operator|.
 name|BOOK
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -6241,12 +6452,14 @@ argument_list|(
 literal|"BookSection"
 argument_list|)
 condition|)
+block|{
 name|bibtex
 operator|=
 name|BibtexEntryType
 operator|.
 name|INBOOK
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -6257,12 +6470,14 @@ argument_list|(
 literal|"JournalArticle"
 argument_list|)
 condition|)
+block|{
 name|bibtex
 operator|=
 name|BibtexEntryType
 operator|.
 name|ARTICLE
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -6273,12 +6488,14 @@ argument_list|(
 literal|"ArticleInAPeriodical"
 argument_list|)
 condition|)
+block|{
 name|bibtex
 operator|=
 name|BibtexEntryType
 operator|.
 name|ARTICLE
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -6289,12 +6506,14 @@ argument_list|(
 literal|"ConferenceProceedings"
 argument_list|)
 condition|)
+block|{
 name|bibtex
 operator|=
 name|BibtexEntryType
 operator|.
 name|CONFERENCE
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -6305,12 +6524,14 @@ argument_list|(
 literal|"Report"
 argument_list|)
 condition|)
+block|{
 name|bibtex
 operator|=
 name|BibtexEntryType
 operator|.
 name|TECHREPORT
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -6321,12 +6542,14 @@ argument_list|(
 literal|"InternetSite"
 argument_list|)
 condition|)
+block|{
 name|bibtex
 operator|=
 name|BibtexEntryType
 operator|.
 name|OTHER
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -6337,12 +6560,14 @@ argument_list|(
 literal|"DocumentFromInternetSite"
 argument_list|)
 condition|)
+block|{
 name|bibtex
 operator|=
 name|BibtexEntryType
 operator|.
 name|OTHER
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -6353,12 +6578,14 @@ argument_list|(
 literal|"DocumentFromInternetSite"
 argument_list|)
 condition|)
+block|{
 name|bibtex
 operator|=
 name|BibtexEntryType
 operator|.
 name|OTHER
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -6369,12 +6596,14 @@ argument_list|(
 literal|"ElectronicSource"
 argument_list|)
 condition|)
+block|{
 name|bibtex
 operator|=
 name|BibtexEntryType
 operator|.
 name|OTHER
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -6385,12 +6614,14 @@ argument_list|(
 literal|"Art"
 argument_list|)
 condition|)
+block|{
 name|bibtex
 operator|=
 name|BibtexEntryType
 operator|.
 name|OTHER
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -6401,12 +6632,14 @@ argument_list|(
 literal|"SoundRecording"
 argument_list|)
 condition|)
+block|{
 name|bibtex
 operator|=
 name|BibtexEntryType
 operator|.
 name|OTHER
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -6417,12 +6650,14 @@ argument_list|(
 literal|"Performance"
 argument_list|)
 condition|)
+block|{
 name|bibtex
 operator|=
 name|BibtexEntryType
 operator|.
 name|OTHER
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -6433,12 +6668,14 @@ argument_list|(
 literal|"Film"
 argument_list|)
 condition|)
+block|{
 name|bibtex
 operator|=
 name|BibtexEntryType
 operator|.
 name|OTHER
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -6449,12 +6686,14 @@ argument_list|(
 literal|"Interview"
 argument_list|)
 condition|)
+block|{
 name|bibtex
 operator|=
 name|BibtexEntryType
 operator|.
 name|OTHER
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -6465,12 +6704,14 @@ argument_list|(
 literal|"Patent"
 argument_list|)
 condition|)
+block|{
 name|bibtex
 operator|=
 name|BibtexEntryType
 operator|.
 name|OTHER
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -6481,12 +6722,14 @@ argument_list|(
 literal|"Case"
 argument_list|)
 condition|)
+block|{
 name|bibtex
 operator|=
 name|BibtexEntryType
 operator|.
 name|OTHER
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -6497,19 +6740,23 @@ argument_list|(
 literal|"Misc"
 argument_list|)
 condition|)
+block|{
 name|bibtex
 operator|=
 name|BibtexEntryType
 operator|.
 name|MISC
 expr_stmt|;
+block|}
 else|else
+block|{
 name|bibtex
 operator|=
 name|BibtexEntryType
 operator|.
 name|MISC
 expr_stmt|;
+block|}
 return|return
 name|bibtex
 return|;
@@ -6535,6 +6782,7 @@ name|tag
 operator|==
 literal|null
 condition|)
+block|{
 name|entry
 operator|=
 operator|new
@@ -6550,7 +6798,9 @@ name|sourceType
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|entry
 operator|=
 operator|new
@@ -6565,6 +6815,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// id assumes an existing database so don't
+block|}
 comment|// Todo: add check for BibTexEntry types
 comment|//		BibtexEntry entry = new BibtexEntry();
 comment|//		if(sourceType.equals("Book"))
@@ -6628,6 +6879,7 @@ name|tag
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -6637,6 +6889,7 @@ argument_list|,
 name|tag
 argument_list|)
 expr_stmt|;
+block|}
 comment|//		if(GUID != null)
 comment|//			hm.put("GUID",GUID);
 if|if
@@ -6645,6 +6898,7 @@ name|LCID
 operator|>=
 literal|0
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -6657,12 +6911,14 @@ name|LCID
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|title
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -6672,12 +6928,14 @@ argument_list|,
 name|title
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|year
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -6687,12 +6945,14 @@ argument_list|,
 name|year
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|shortTitle
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -6704,12 +6964,14 @@ argument_list|,
 name|shortTitle
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|comments
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -6719,6 +6981,7 @@ argument_list|,
 name|comments
 argument_list|)
 expr_stmt|;
+block|}
 name|addAuthor
 argument_list|(
 name|hm
@@ -6886,6 +7149,7 @@ name|pages
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -6900,12 +7164,14 @@ literal|"--"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|volume
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -6915,12 +7181,14 @@ argument_list|,
 name|volume
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|numberOfVolumes
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -6932,12 +7200,14 @@ argument_list|,
 name|numberOfVolumes
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|edition
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -6947,12 +7217,14 @@ argument_list|,
 name|edition
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|edition
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -6962,6 +7234,7 @@ argument_list|,
 name|edition
 argument_list|)
 expr_stmt|;
+block|}
 name|parseStandardNumber
 argument_list|(
 name|standardNumber
@@ -6975,6 +7248,7 @@ name|publisher
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -6984,12 +7258,14 @@ argument_list|,
 name|publisher
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|publisher
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -6999,12 +7275,14 @@ argument_list|,
 name|publisher
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|address
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7014,12 +7292,14 @@ argument_list|,
 name|address
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bookTitle
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7029,12 +7309,14 @@ argument_list|,
 name|bookTitle
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|chapterNumber
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7044,12 +7326,14 @@ argument_list|,
 name|chapterNumber
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|journalName
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7059,12 +7343,14 @@ argument_list|,
 name|journalName
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|issue
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7074,12 +7360,14 @@ argument_list|,
 name|issue
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|month
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7089,12 +7377,14 @@ argument_list|,
 name|month
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|periodicalTitle
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7104,12 +7394,14 @@ argument_list|,
 name|periodicalTitle
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|conferenceName
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7119,12 +7411,14 @@ argument_list|,
 name|conferenceName
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|department
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7134,12 +7428,14 @@ argument_list|,
 name|department
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|institution
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7149,6 +7445,7 @@ argument_list|,
 name|institution
 argument_list|)
 expr_stmt|;
+block|}
 comment|//		if(thesisType !=null )
 comment|//			hm.put("type",thesisType);
 comment|//		if(internetSiteTitle !=null )
@@ -7159,6 +7456,7 @@ name|dateAccessed
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7170,12 +7468,14 @@ argument_list|,
 name|dateAccessed
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|url
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7185,12 +7485,14 @@ argument_list|,
 name|url
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|productionCompany
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7202,6 +7504,7 @@ argument_list|,
 name|productionCompany
 argument_list|)
 expr_stmt|;
+block|}
 comment|//		if(publicationTitle !=null )
 comment|//			hm.put("title",publicationTitle);
 if|if
@@ -7210,6 +7513,7 @@ name|medium
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7221,6 +7525,7 @@ argument_list|,
 name|medium
 argument_list|)
 expr_stmt|;
+block|}
 comment|//		if(albumTitle !=null )
 comment|//			hm.put("title",albumTitle);
 if|if
@@ -7229,6 +7534,7 @@ name|recordingNumber
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7240,12 +7546,14 @@ argument_list|,
 name|recordingNumber
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|theater
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7257,12 +7565,14 @@ argument_list|,
 name|theater
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|distributor
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7274,6 +7584,7 @@ argument_list|,
 name|distributor
 argument_list|)
 expr_stmt|;
+block|}
 comment|//		if(broadcastTitle !=null )
 comment|//			hm.put("title",broadcastTitle);
 if|if
@@ -7282,6 +7593,7 @@ name|broadcaster
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7293,12 +7605,14 @@ argument_list|,
 name|broadcaster
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|station
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7310,12 +7624,14 @@ argument_list|,
 name|station
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|type
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7327,12 +7643,14 @@ argument_list|,
 name|type
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|patentNumber
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7344,12 +7662,14 @@ argument_list|,
 name|patentNumber
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|court
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7361,12 +7681,14 @@ argument_list|,
 name|court
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|reporter
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7378,12 +7700,14 @@ argument_list|,
 name|reporter
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|caseNumber
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7395,12 +7719,14 @@ argument_list|,
 name|caseNumber
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|abbreviatedCaseNumber
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7412,12 +7738,14 @@ argument_list|,
 name|abbreviatedCaseNumber
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibTex_Series
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7427,12 +7755,14 @@ argument_list|,
 name|bibTex_Series
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibTex_Abstract
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7442,12 +7772,14 @@ argument_list|,
 name|bibTex_Abstract
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibTex_KeyWords
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7457,12 +7789,14 @@ argument_list|,
 name|bibTex_KeyWords
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibTex_CrossRef
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7472,12 +7806,14 @@ argument_list|,
 name|bibTex_CrossRef
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibTex_HowPublished
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7487,12 +7823,14 @@ argument_list|,
 name|bibTex_HowPublished
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibTex_Affiliation
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7502,12 +7840,14 @@ argument_list|,
 name|bibTex_Affiliation
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibTex_Contents
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7517,12 +7857,14 @@ argument_list|,
 name|bibTex_Contents
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibTex_Copyright
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7532,12 +7874,14 @@ argument_list|,
 name|bibTex_Copyright
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibTex_Price
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7547,12 +7891,14 @@ argument_list|,
 name|bibTex_Price
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|bibTex_Size
 operator|!=
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -7562,6 +7908,7 @@ argument_list|,
 name|bibTex_Size
 argument_list|)
 expr_stmt|;
+block|}
 name|entry
 operator|.
 name|setField
@@ -7597,9 +7944,11 @@ decl_stmt|;
 comment|// Used to reference the current character.
 if|if
 condition|(
+operator|(
 name|in
 operator|==
 literal|null
+operator|)
 operator|||
 operator|(
 literal|""
@@ -7610,10 +7959,12 @@ name|in
 argument_list|)
 operator|)
 condition|)
+block|{
 return|return
 literal|""
 return|;
 comment|// vacancy test.
+block|}
 for|for
 control|(
 name|int
@@ -7704,6 +8055,7 @@ literal|0x10FFFF
 operator|)
 operator|)
 condition|)
+block|{
 name|out
 operator|.
 name|append
@@ -7711,6 +8063,7 @@ argument_list|(
 name|current
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|out
@@ -7720,6 +8073,8 @@ argument_list|()
 return|;
 block|}
 comment|/*      * render as XML      *       * TODO This is untested.      */
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String

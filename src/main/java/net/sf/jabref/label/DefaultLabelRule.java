@@ -49,6 +49,8 @@ implements|implements
 name|LabelRule
 block|{
 comment|// the default rule is that oit simply returns what it was given
+annotation|@
+name|Override
 DECL|method|applyRule (BibtexEntry oldEntry)
 specifier|public
 name|String

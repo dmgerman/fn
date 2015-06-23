@@ -378,6 +378,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -412,6 +414,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -439,6 +443,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -464,6 +470,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -739,6 +747,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -829,9 +839,11 @@ operator|.
 name|isWanted
 argument_list|()
 condition|)
+block|{
 name|selected
 operator|++
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -890,9 +902,11 @@ name|YES_OPTION
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 DECL|method|getSelection ()
 specifier|public
@@ -929,6 +943,7 @@ name|e
 range|:
 name|entries
 control|)
+block|{
 name|selection
 operator|.
 name|put
@@ -943,6 +958,7 @@ name|isWanted
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|selection
 return|;
@@ -1156,6 +1172,8 @@ operator|new
 name|JLabel
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getTableCellRendererComponent (JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 specifier|public
 name|Component
@@ -1244,6 +1262,8 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getCellRenderer (int row, int column)
 specifier|public
 name|TableCellRenderer
@@ -1272,6 +1292,8 @@ name|renderer
 return|;
 block|}
 comment|/*          * public TableCellEditor getCellEditor() { return          * getDefaultEditor(Boolean.class); }          */
+annotation|@
+name|Override
 DECL|method|getColumnClass (int col)
 specifier|public
 name|Class
@@ -1290,18 +1312,24 @@ name|col
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|Boolean
 operator|.
 name|class
 return|;
+block|}
 else|else
+block|{
 return|return
 name|JLabel
 operator|.
 name|class
 return|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|isCellEditable (int row, int column)
 specifier|public
 name|boolean
@@ -1320,6 +1348,8 @@ operator|==
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValueAt (Object value, int row, int column)
 specifier|public
 name|void
@@ -1390,6 +1420,8 @@ argument_list|<
 name|TableEntry
 argument_list|>
 block|{
+annotation|@
+name|Override
 DECL|method|getColumnCount ()
 specifier|public
 name|int
@@ -1400,6 +1432,8 @@ return|return
 literal|2
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnName (int i)
 specifier|public
 name|String
@@ -1415,6 +1449,7 @@ name|i
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|Globals
 operator|.
@@ -1423,7 +1458,9 @@ argument_list|(
 literal|"Keep"
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 name|Globals
 operator|.
@@ -1433,6 +1470,9 @@ literal|"Preview"
 argument_list|)
 return|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|getColumnValue (TableEntry entry, int i)
 specifier|public
 name|Object
@@ -1451,6 +1491,7 @@ name|i
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|entry
 operator|.
@@ -1465,13 +1506,16 @@ name|Boolean
 operator|.
 name|FALSE
 return|;
+block|}
 else|else
+block|{
 return|return
 name|entry
 operator|.
 name|getPreview
 argument_list|()
 return|;
+block|}
 block|}
 block|}
 DECL|method|isOkPressed ()
@@ -1484,6 +1528,8 @@ return|return
 name|okPressed
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setStatus (String s)
 specifier|public
 name|void
@@ -1501,6 +1547,8 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|showMessage (Object message, String title, int msgType)
 specifier|public
 name|void
@@ -1530,6 +1578,8 @@ name|msgType
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|showMessage (String message)
 specifier|public
 name|void

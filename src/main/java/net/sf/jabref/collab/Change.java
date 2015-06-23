@@ -147,6 +147,8 @@ return|return
 name|name
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String
@@ -205,6 +207,7 @@ operator|instanceof
 name|Change
 operator|)
 condition|)
+block|{
 return|return
 operator|(
 operator|(
@@ -217,10 +220,13 @@ operator|.
 name|isAccepted
 argument_list|()
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 comment|/**      * This method returns a JComponent detailing the nature of the change.      * @return JComponent      */
 DECL|method|description ()

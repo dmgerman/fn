@@ -408,6 +408,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -439,7 +441,9 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 return|return;
+block|}
 name|ok_pressed
 operator|=
 literal|true
@@ -495,6 +499,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1180,6 +1186,7 @@ operator|.
 name|KEY_FIELD
 argument_list|)
 condition|)
+block|{
 name|counter
 operator|+=
 name|replaceField
@@ -1191,6 +1198,7 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else
@@ -1215,6 +1223,7 @@ operator|.
 name|KEY_FIELD
 argument_list|)
 condition|)
+block|{
 name|counter
 operator|+=
 name|replaceField
@@ -1226,6 +1235,7 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return
@@ -1263,9 +1273,11 @@ name|o
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|0
 return|;
+block|}
 name|String
 name|txt
 init|=

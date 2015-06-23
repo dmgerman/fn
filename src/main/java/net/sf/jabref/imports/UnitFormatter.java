@@ -274,6 +274,8 @@ block|{
 name|int
 name|uLLength
 init|=
+name|UnitFormatter
+operator|.
 name|unitList
 operator|.
 name|length
@@ -281,6 +283,8 @@ decl_stmt|;
 name|int
 name|uPLLength
 init|=
+name|UnitFormatter
+operator|.
 name|unitPrefixList
 operator|.
 name|length
@@ -330,20 +334,28 @@ name|j
 operator|++
 control|)
 block|{
+name|UnitFormatter
+operator|.
 name|unitCombinations
 index|[
+operator|(
 name|i
 operator|*
 name|uPLLength
+operator|)
 operator|+
 name|j
 index|]
 operator|=
+name|UnitFormatter
+operator|.
 name|unitPrefixList
 index|[
 name|j
 index|]
 operator|+
+name|UnitFormatter
+operator|.
 name|unitList
 index|[
 name|i
@@ -475,6 +487,8 @@ return|return
 name|text
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|format (String text)
 specifier|public
 name|String
@@ -502,6 +516,8 @@ name|format
 argument_list|(
 name|text
 argument_list|,
+name|UnitFormatter
+operator|.
 name|unitCombinations
 argument_list|)
 return|;

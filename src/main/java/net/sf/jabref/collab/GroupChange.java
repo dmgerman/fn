@@ -182,6 +182,8 @@ operator|=
 name|tmpGroupRoot
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|boolean
@@ -293,6 +295,7 @@ condition|;
 operator|++
 name|i
 control|)
+block|{
 name|root
 operator|.
 name|add
@@ -313,6 +316,7 @@ name|deepCopy
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 comment|// the group tree is now appled to a different BibtexDatabase than it was created
 comment|// for, which affects groups such as ExplicitGroup (which links to BibtexEntry objects).
 comment|// We must traverse the tree and refresh all groups:
@@ -339,6 +343,7 @@ argument_list|()
 operator|==
 name|root
 condition|)
+block|{
 name|panel
 operator|.
 name|getGroupSelector
@@ -347,6 +352,7 @@ operator|.
 name|revalidateGroups
 argument_list|()
 expr_stmt|;
+block|}
 name|undoEdit
 operator|.
 name|addEdit
@@ -395,6 +401,7 @@ condition|;
 operator|++
 name|i
 control|)
+block|{
 name|tmpGroupRoot
 operator|.
 name|add
@@ -415,6 +422,7 @@ name|deepCopy
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|tmpGroupRoot
 operator|.
 name|refreshGroupsForNewDatabase
@@ -426,6 +434,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|description ()
 name|JComponent
 name|description

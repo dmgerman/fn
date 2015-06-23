@@ -580,10 +580,12 @@ name|fetcherArray
 operator|.
 name|length
 condition|)
+block|{
 name|defaultFetcher
 operator|=
 literal|0
 expr_stmt|;
+block|}
 name|this
 operator|.
 name|activeFetcher
@@ -611,6 +613,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|optPanel
 operator|.
 name|add
@@ -627,6 +630,7 @@ operator|.
 name|CENTER
 argument_list|)
 expr_stmt|;
+block|}
 name|helpBut
 operator|.
 name|setEnabled
@@ -649,6 +653,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -750,6 +756,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|optPanel
 operator|.
 name|add
@@ -764,6 +771,7 @@ operator|.
 name|CENTER
 argument_list|)
 expr_stmt|;
+block|}
 name|revalidate
 argument_list|()
 expr_stmt|;
@@ -852,6 +860,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1188,6 +1198,8 @@ return|return
 name|action
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1325,6 +1337,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1359,6 +1373,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1383,7 +1399,9 @@ condition|(
 operator|!
 name|result
 condition|)
+block|{
 return|return;
+block|}
 name|dialog
 operator|.
 name|setLocationRelativeTo
@@ -1465,6 +1483,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1563,6 +1583,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1639,6 +1661,8 @@ expr_stmt|;
 comment|//if ((activeFetcher.getKeyName() != null)&& (activeFetcher.getKeyName().length()> 0))
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|Globals
@@ -1652,6 +1676,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1809,6 +1835,8 @@ argument_list|<
 name|EntryFetcher
 argument_list|>
 block|{
+annotation|@
+name|Override
 DECL|method|compare (EntryFetcher entryFetcher, EntryFetcher entryFetcher1)
 specifier|public
 name|int

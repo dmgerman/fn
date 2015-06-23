@@ -1280,6 +1280,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1353,6 +1355,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1379,6 +1383,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1475,6 +1481,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1735,6 +1743,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1786,6 +1796,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1837,6 +1849,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1920,6 +1934,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setVisible (boolean visible)
 specifier|public
 name|void
@@ -1933,9 +1949,11 @@ if|if
 condition|(
 name|visible
 condition|)
+block|{
 name|setValues
 argument_list|()
 expr_stmt|;
+block|}
 name|super
 operator|.
 name|setVisible
@@ -1970,6 +1988,8 @@ name|metaData
 operator|.
 name|getData
 argument_list|(
+name|DatabasePropertiesDialog
+operator|.
 name|SAVE_ORDER_CONFIG
 argument_list|)
 decl_stmt|;
@@ -2230,6 +2250,7 @@ name|fileD
 operator|==
 literal|null
 condition|)
+block|{
 name|fileDir
 operator|.
 name|setText
@@ -2237,6 +2258,7 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|// Better be a little careful about how many entries the Vector has:
@@ -2249,6 +2271,7 @@ argument_list|()
 operator|>=
 literal|1
 condition|)
+block|{
 name|fileDir
 operator|.
 name|setText
@@ -2266,6 +2289,7 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|Vector
 argument_list|<
@@ -2330,6 +2354,7 @@ name|fileDIL
 operator|==
 literal|null
 condition|)
+block|{
 name|fileDirIndv
 operator|.
 name|setText
@@ -2337,6 +2362,7 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|// Insert path from legacy setting if possible
@@ -2350,6 +2376,7 @@ argument_list|()
 operator|>=
 literal|1
 condition|)
+block|{
 name|fileDirIndv
 operator|.
 name|setText
@@ -2369,6 +2396,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 else|else
 block|{
 comment|// Better be a little careful about how many entries the Vector has:
@@ -2381,6 +2409,7 @@ argument_list|()
 operator|>=
 literal|1
 condition|)
+block|{
 name|fileDirIndv
 operator|.
 name|setText
@@ -2398,6 +2427,7 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|oldFileIndvVal
 operator|=
 name|fileDirIndv
@@ -2426,6 +2456,7 @@ name|pdfD
 operator|==
 literal|null
 condition|)
+block|{
 name|pdfDir
 operator|.
 name|setText
@@ -2433,6 +2464,7 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|// Better be a little careful about how many entries the Vector has:
@@ -2445,6 +2477,7 @@ argument_list|()
 operator|>=
 literal|1
 condition|)
+block|{
 name|pdfDir
 operator|.
 name|setText
@@ -2462,6 +2495,7 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|Vector
 argument_list|<
@@ -2482,6 +2516,7 @@ name|psD
 operator|==
 literal|null
 condition|)
+block|{
 name|psDir
 operator|.
 name|setText
@@ -2489,6 +2524,7 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|// Better be a little careful about how many entries the Vector has:
@@ -2501,6 +2537,7 @@ argument_list|()
 operator|>=
 literal|1
 condition|)
+block|{
 name|psDir
 operator|.
 name|setText
@@ -2518,6 +2555,7 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|Vector
 argument_list|<
@@ -2540,6 +2578,7 @@ name|prot
 operator|==
 literal|null
 condition|)
+block|{
 name|protect
 operator|.
 name|setSelected
@@ -2547,6 +2586,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 if|if
@@ -2558,6 +2598,7 @@ argument_list|()
 operator|>=
 literal|1
 condition|)
+block|{
 name|protect
 operator|.
 name|setSelected
@@ -2575,6 +2616,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Store original values to see if they get changed:
 name|oldFileVal
@@ -2627,6 +2669,8 @@ name|metaData
 operator|.
 name|remove
 argument_list|(
+name|DatabasePropertiesDialog
+operator|.
 name|SAVE_ORDER_CONFIG
 argument_list|)
 expr_stmt|;
@@ -2769,6 +2813,8 @@ name|metaData
 operator|.
 name|putData
 argument_list|(
+name|DatabasePropertiesDialog
+operator|.
 name|SAVE_ORDER_CONFIG
 argument_list|,
 name|serialized
@@ -2862,6 +2908,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|metaData
 operator|.
 name|remove
@@ -2876,6 +2923,7 @@ literal|"userFileDir"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Repeat for individual file dir - reuse 'text' and 'dir' vars
 name|dir
 operator|=
@@ -2933,6 +2981,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|metaData
 operator|.
 name|remove
@@ -2947,6 +2996,7 @@ literal|"userFileDirIndividual"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|dir
 operator|=
 operator|new
@@ -2996,6 +3046,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|metaData
 operator|.
 name|remove
@@ -3003,6 +3054,7 @@ argument_list|(
 literal|"pdfDirectory"
 argument_list|)
 expr_stmt|;
+block|}
 name|dir
 operator|=
 operator|new
@@ -3052,6 +3104,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|metaData
 operator|.
 name|remove
@@ -3059,6 +3112,7 @@ argument_list|(
 literal|"psDirectory"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|protect
@@ -3098,6 +3152,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|metaData
 operator|.
 name|remove
@@ -3107,6 +3162,7 @@ operator|.
 name|PROTECTED_FLAG_META
 argument_list|)
 expr_stmt|;
+block|}
 comment|// See if any of the values have been modified:
 name|boolean
 name|saveOrderConfigChanged
@@ -3236,11 +3292,13 @@ if|if
 condition|(
 name|changed
 condition|)
+block|{
 name|panel
 operator|.
 name|markNonUndoableBaseChanged
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class

@@ -167,6 +167,8 @@ block|}
 argument_list|)
 decl_stmt|;
 comment|/**      * Return the name of this import format.      */
+annotation|@
+name|Override
 DECL|method|getFormatName ()
 specifier|public
 name|String
@@ -178,6 +180,8 @@ literal|"Sixpack"
 return|;
 block|}
 comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
+annotation|@
+name|Override
 DECL|method|getCLIId ()
 specifier|public
 name|String
@@ -189,6 +193,8 @@ literal|"sixpack"
 return|;
 block|}
 comment|/**      * Check whether the source is in the correct format for this importer.      */
+annotation|@
+name|Override
 DECL|method|isRecognizedFormat (InputStream stream)
 specifier|public
 name|boolean
@@ -253,9 +259,11 @@ argument_list|(
 name|SEPARATOR
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 name|i
 operator|++
 expr_stmt|;
@@ -265,6 +273,8 @@ literal|false
 return|;
 block|}
 comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
+annotation|@
+name|Override
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
@@ -588,9 +598,11 @@ name|ln
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|String
 index|[]
 name|fieldDef
@@ -656,8 +668,10 @@ name|length
 operator|<
 literal|2
 condition|)
+block|{
 continue|continue;
 comment|// Avoid ArrayIndexOutOfBoundsException
+block|}
 name|BibtexEntryType
 name|typ
 init|=
@@ -698,10 +712,12 @@ argument_list|(
 literal|"Masterthesis"
 argument_list|)
 condition|)
+block|{
 name|type
 operator|=
 literal|"mastersthesis"
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|fields
@@ -714,10 +730,12 @@ argument_list|(
 literal|"PhD-Thesis"
 argument_list|)
 condition|)
+block|{
 name|type
 operator|=
 literal|"phdthesis"
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|fields
@@ -730,10 +748,12 @@ argument_list|(
 literal|"miscellaneous"
 argument_list|)
 condition|)
+block|{
 name|type
 operator|=
 literal|"misc"
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|fields
@@ -746,10 +766,12 @@ argument_list|(
 literal|"Conference"
 argument_list|)
 condition|)
+block|{
 name|type
 operator|=
 literal|"proceedings"
 expr_stmt|;
+block|}
 name|typ
 operator|=
 name|BibtexEntryType
@@ -840,6 +862,7 @@ argument_list|(
 literal|"editor"
 argument_list|)
 condition|)
+block|{
 name|ImportFormatReader
 operator|.
 name|setIfNecessary
@@ -868,6 +891,7 @@ literal|" and "
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -878,6 +902,7 @@ argument_list|(
 literal|"pages"
 argument_list|)
 condition|)
+block|{
 name|ImportFormatReader
 operator|.
 name|setIfNecessary
@@ -899,6 +924,7 @@ literal|"--"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -938,10 +964,12 @@ argument_list|(
 literal|"ps.gz"
 argument_list|)
 condition|)
+block|{
 name|fieldName
 operator|=
 literal|"ps"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -955,10 +983,12 @@ argument_list|(
 literal|"html"
 argument_list|)
 condition|)
+block|{
 name|fieldName
 operator|=
 literal|"url"
 expr_stmt|;
+block|}
 name|ImportFormatReader
 operator|.
 name|setIfNecessary
@@ -975,6 +1005,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|ImportFormatReader
 operator|.
 name|setIfNecessary
@@ -989,6 +1020,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|bibitems

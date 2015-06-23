@@ -103,6 +103,8 @@ static|static
 block|{
 comment|// Following character definitions contributed by Ervin Kolenovic:
 comment|// HTML named entities from #192 - #255 (UNICODE Latin-1)
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -113,16 +115,20 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #192
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
 argument_list|(
 literal|"'A"
 argument_list|,
-literal|"Ã?"
+literal|"ï¿½?"
 argument_list|)
 expr_stmt|;
 comment|// #193
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -133,6 +139,8 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #194
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -143,6 +151,8 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #195
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -153,6 +163,8 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #196
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -163,6 +175,8 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #197
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -173,6 +187,8 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #198
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -183,6 +199,8 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #199
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -193,6 +211,8 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #200
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -203,6 +223,8 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #201
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -213,6 +235,8 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #202
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -223,6 +247,8 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #203
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -233,16 +259,20 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #204
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
 argument_list|(
 literal|"'I"
 argument_list|,
-literal|"Ã?"
+literal|"ï¿½?"
 argument_list|)
 expr_stmt|;
 comment|// #205
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -253,26 +283,32 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #206
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
 argument_list|(
 literal|"\"I"
 argument_list|,
-literal|"Ã?"
+literal|"ï¿½?"
 argument_list|)
 expr_stmt|;
 comment|// #207
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
 argument_list|(
 literal|"DH"
 argument_list|,
-literal|"Ã?"
+literal|"ï¿½?"
 argument_list|)
 expr_stmt|;
 comment|// #208
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -283,6 +319,8 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #209
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -293,6 +331,8 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #210
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -303,6 +343,8 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #211
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -313,6 +355,8 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #212
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -323,6 +367,8 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #213
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -336,6 +382,8 @@ comment|// #214
 comment|// According to ISO 8859-1 the "\times" symbol should be placed here
 comment|// (#215).
 comment|// Omitting this, because it is a mathematical symbol.
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -346,6 +394,8 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #216
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -356,6 +406,8 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #217
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -366,6 +418,8 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #218
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -376,6 +430,8 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #219
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -386,16 +442,20 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #220
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
 argument_list|(
 literal|"'Y"
 argument_list|,
-literal|"Ã?"
+literal|"ï¿½?"
 argument_list|)
 expr_stmt|;
 comment|// #221
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -406,6 +466,8 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #222
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -416,6 +478,8 @@ literal|"Ã"
 argument_list|)
 expr_stmt|;
 comment|// #223
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -426,6 +490,8 @@ literal|"Ã "
 argument_list|)
 expr_stmt|;
 comment|// #224
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -436,6 +502,8 @@ literal|"Ã¡"
 argument_list|)
 expr_stmt|;
 comment|// #225
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -446,6 +514,8 @@ literal|"Ã¢"
 argument_list|)
 expr_stmt|;
 comment|// #226
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -456,6 +526,8 @@ literal|"Ã£"
 argument_list|)
 expr_stmt|;
 comment|// #227
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -466,6 +538,8 @@ literal|"Ã¤"
 argument_list|)
 expr_stmt|;
 comment|// #228
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -476,6 +550,8 @@ literal|"Ã¥"
 argument_list|)
 expr_stmt|;
 comment|// #229
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -486,6 +562,8 @@ literal|"Ã¦"
 argument_list|)
 expr_stmt|;
 comment|// #230
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -496,6 +574,8 @@ literal|"Ã§"
 argument_list|)
 expr_stmt|;
 comment|// #231
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -506,6 +586,8 @@ literal|"Ã¨"
 argument_list|)
 expr_stmt|;
 comment|// #232
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -516,6 +598,8 @@ literal|"Ã©"
 argument_list|)
 expr_stmt|;
 comment|// #233
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -526,6 +610,8 @@ literal|"Ãª"
 argument_list|)
 expr_stmt|;
 comment|// #234
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -536,6 +622,8 @@ literal|"Ã«"
 argument_list|)
 expr_stmt|;
 comment|// #235
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -546,6 +634,8 @@ literal|"Ã¬"
 argument_list|)
 expr_stmt|;
 comment|// #236
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -556,6 +646,8 @@ literal|"Ã­"
 argument_list|)
 expr_stmt|;
 comment|// #237
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -566,6 +658,8 @@ literal|"Ã®"
 argument_list|)
 expr_stmt|;
 comment|// #238
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -576,6 +670,8 @@ literal|"Ã¯"
 argument_list|)
 expr_stmt|;
 comment|// #239
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -586,6 +682,8 @@ literal|"Ã°"
 argument_list|)
 expr_stmt|;
 comment|// #240
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -596,6 +694,8 @@ literal|"Ã±"
 argument_list|)
 expr_stmt|;
 comment|// #241
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -606,6 +706,8 @@ literal|"Ã²"
 argument_list|)
 expr_stmt|;
 comment|// #242
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -616,6 +718,8 @@ literal|"Ã³"
 argument_list|)
 expr_stmt|;
 comment|// #243
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -626,6 +730,8 @@ literal|"Ã´"
 argument_list|)
 expr_stmt|;
 comment|// #244
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -636,6 +742,8 @@ literal|"Ãµ"
 argument_list|)
 expr_stmt|;
 comment|// #245
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -649,6 +757,8 @@ comment|// #246
 comment|// According to ISO 8859-1 the "\div" symbol should be placed here
 comment|// (#247).
 comment|// Omitting this, because it is a mathematical symbol.
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -659,6 +769,8 @@ literal|"Ã¸"
 argument_list|)
 expr_stmt|;
 comment|// #248
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -669,6 +781,8 @@ literal|"Ã¹"
 argument_list|)
 expr_stmt|;
 comment|// #249
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -679,6 +793,8 @@ literal|"Ãº"
 argument_list|)
 expr_stmt|;
 comment|// #250
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -689,6 +805,8 @@ literal|"Ã»"
 argument_list|)
 expr_stmt|;
 comment|// #251
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -699,6 +817,8 @@ literal|"Ã¼"
 argument_list|)
 expr_stmt|;
 comment|// #252
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -709,6 +829,8 @@ literal|"Ã½"
 argument_list|)
 expr_stmt|;
 comment|// #253
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -719,6 +841,8 @@ literal|"Ã¾"
 argument_list|)
 expr_stmt|;
 comment|// #254
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -731,6 +855,8 @@ expr_stmt|;
 comment|// #255
 comment|// HTML special characters without names (UNICODE Latin Extended-A),
 comment|// indicated by UNICODE number
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -741,16 +867,20 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "Amacr"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
 argument_list|(
 literal|"=a"
 argument_list|,
-literal|"Ä?"
+literal|"ï¿½?"
 argument_list|)
 expr_stmt|;
 comment|// "amacr"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -761,6 +891,8 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "Abreve"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -771,6 +903,8 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "abreve"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -781,6 +915,8 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "Aogon"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -791,6 +927,8 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "aogon"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -801,6 +939,8 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "Cacute"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -811,6 +951,8 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "cacute"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -821,6 +963,8 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "Ccirc"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -831,6 +975,8 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "ccirc"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -841,6 +987,8 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "Cdot"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -851,6 +999,8 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "cdot"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -861,16 +1011,20 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "Ccaron"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
 argument_list|(
 literal|"vc"
 argument_list|,
-literal|"Ä?"
+literal|"ï¿½?"
 argument_list|)
 expr_stmt|;
 comment|// "ccaron"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -882,16 +1036,20 @@ argument_list|)
 expr_stmt|;
 comment|// "Dcaron"
 comment|// Symbol #271 (dï¿½) has no special Latex command
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
 argument_list|(
 literal|"DJ"
 argument_list|,
-literal|"Ä?"
+literal|"ï¿½?"
 argument_list|)
 expr_stmt|;
 comment|// "Dstrok"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -902,6 +1060,8 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "dstrok"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -912,6 +1072,8 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "Emacr"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -922,6 +1084,8 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "emacr"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -932,6 +1096,8 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "Ebreve"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -942,6 +1108,8 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "ebreve"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -952,6 +1120,8 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "Edot"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -962,6 +1132,8 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "edot"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -972,6 +1144,8 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "Eogon"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -982,6 +1156,8 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "eogon"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -992,6 +1168,8 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "Ecaron"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1002,6 +1180,8 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "ecaron"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1012,16 +1192,20 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "Gcirc"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
 argument_list|(
 literal|"^g"
 argument_list|,
-literal|"Ä?"
+literal|"ï¿½?"
 argument_list|)
 expr_stmt|;
 comment|// "gcirc"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1032,6 +1216,8 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "Gbreve"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1042,6 +1228,8 @@ literal|"Ä"
 argument_list|)
 expr_stmt|;
 comment|// "gbreve"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1052,6 +1240,8 @@ literal|"Ä "
 argument_list|)
 expr_stmt|;
 comment|// "Gdot"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1062,6 +1252,8 @@ literal|"Ä¡"
 argument_list|)
 expr_stmt|;
 comment|// "gdot"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1072,6 +1264,8 @@ literal|"Ä¢"
 argument_list|)
 expr_stmt|;
 comment|// "Gcedil"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1082,6 +1276,8 @@ literal|"Ä£"
 argument_list|)
 expr_stmt|;
 comment|// "gacute"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1092,6 +1288,8 @@ literal|"Ä¤"
 argument_list|)
 expr_stmt|;
 comment|// "Hcirc"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1102,6 +1300,8 @@ literal|"Ä¥"
 argument_list|)
 expr_stmt|;
 comment|// "hcirc"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1112,6 +1312,8 @@ literal|"Ä¦"
 argument_list|)
 expr_stmt|;
 comment|// "Hstrok"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1122,6 +1324,8 @@ literal|"Ä§"
 argument_list|)
 expr_stmt|;
 comment|// "hstrok"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1132,6 +1336,8 @@ literal|"Ä¨"
 argument_list|)
 expr_stmt|;
 comment|// "Itilde"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1142,6 +1348,8 @@ literal|"Ä©"
 argument_list|)
 expr_stmt|;
 comment|// "itilde"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1152,6 +1360,8 @@ literal|"Äª"
 argument_list|)
 expr_stmt|;
 comment|// "Imacr"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1162,6 +1372,8 @@ literal|"Ä«"
 argument_list|)
 expr_stmt|;
 comment|// "imacr"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1172,6 +1384,8 @@ literal|"Ä¬"
 argument_list|)
 expr_stmt|;
 comment|// "Ibreve"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1182,6 +1396,8 @@ literal|"Ä­"
 argument_list|)
 expr_stmt|;
 comment|// "ibreve"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1192,6 +1408,8 @@ literal|"Ä®"
 argument_list|)
 expr_stmt|;
 comment|// "Iogon"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1202,6 +1420,8 @@ literal|"Ä¯"
 argument_list|)
 expr_stmt|;
 comment|// "iogon"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1212,6 +1432,8 @@ literal|"Ä°"
 argument_list|)
 expr_stmt|;
 comment|// "Idot"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1224,6 +1446,8 @@ expr_stmt|;
 comment|// "inodot"
 comment|// Symbol #306 (IJ) has no special Latex command
 comment|// Symbol #307 (ij) has no special Latex command
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1234,6 +1458,8 @@ literal|"Ä´"
 argument_list|)
 expr_stmt|;
 comment|// "Jcirc"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1244,6 +1470,8 @@ literal|"Äµ"
 argument_list|)
 expr_stmt|;
 comment|// "jcirc"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1254,6 +1482,8 @@ literal|"Ä¶"
 argument_list|)
 expr_stmt|;
 comment|// "Kcedil"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1265,6 +1495,8 @@ argument_list|)
 expr_stmt|;
 comment|// "kcedil"
 comment|// Symbol #312 (k) has no special Latex command
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1275,6 +1507,8 @@ literal|"Ä¹"
 argument_list|)
 expr_stmt|;
 comment|// "Lacute"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1285,6 +1519,8 @@ literal|"Äº"
 argument_list|)
 expr_stmt|;
 comment|// "lacute"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1295,6 +1531,8 @@ literal|"Ä»"
 argument_list|)
 expr_stmt|;
 comment|// "Lcedil"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1307,6 +1545,8 @@ expr_stmt|;
 comment|// "lcedil"
 comment|// Symbol #317 (Lï¿½) has no special Latex command
 comment|// Symbol #318 (lï¿½) has no special Latex command
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1317,6 +1557,8 @@ literal|"Ä¿"
 argument_list|)
 expr_stmt|;
 comment|// "Lmidot"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1327,16 +1569,20 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "lmidot"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
 argument_list|(
 literal|"L"
 argument_list|,
-literal|"Å?"
+literal|"ï¿½?"
 argument_list|)
 expr_stmt|;
 comment|// "Lstrok"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1347,6 +1593,8 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "lstrok"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1357,6 +1605,8 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "Nacute"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1367,6 +1617,8 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "nacute"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1377,6 +1629,8 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "Ncedil"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1387,6 +1641,8 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "ncedil"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1397,6 +1653,8 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "Ncaron"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1408,6 +1666,8 @@ argument_list|)
 expr_stmt|;
 comment|// "ncaron"
 comment|// Symbol #329 (ï¿½n) has no special Latex command
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1418,6 +1678,8 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "ENG"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1428,6 +1690,8 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "eng"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1438,16 +1702,20 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "Omacr"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
 argument_list|(
 literal|"=o"
 argument_list|,
-literal|"Å?"
+literal|"ï¿½?"
 argument_list|)
 expr_stmt|;
 comment|// "omacr"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1458,26 +1726,32 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "Obreve"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
 argument_list|(
 literal|"uo"
 argument_list|,
-literal|"Å?"
+literal|"ï¿½?"
 argument_list|)
 expr_stmt|;
 comment|// "obreve"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
 argument_list|(
 literal|"HO"
 argument_list|,
-literal|"Å?"
+literal|"ï¿½?"
 argument_list|)
 expr_stmt|;
 comment|// "Odblac"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1488,6 +1762,8 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "odblac"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1498,6 +1774,8 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "OElig"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1508,6 +1786,8 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "oelig"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1518,6 +1798,8 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "Racute"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1528,6 +1810,8 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "racute"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1538,6 +1822,8 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "Rcedil"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1548,6 +1834,8 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "rcedil"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1558,6 +1846,8 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "Rcaron"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1568,6 +1858,8 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "rcaron"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1578,6 +1870,8 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "Sacute"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1588,6 +1882,8 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "sacute"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1598,16 +1894,20 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "Scirc"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
 argument_list|(
 literal|"^s"
 argument_list|,
-literal|"Å?"
+literal|"ï¿½?"
 argument_list|)
 expr_stmt|;
 comment|// "scirc"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1618,6 +1918,8 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "Scedil"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1628,6 +1930,8 @@ literal|"Å"
 argument_list|)
 expr_stmt|;
 comment|// "scedil"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1638,6 +1942,8 @@ literal|"Å "
 argument_list|)
 expr_stmt|;
 comment|// "Scaron"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1648,6 +1954,8 @@ literal|"Å¡"
 argument_list|)
 expr_stmt|;
 comment|// "scaron"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1658,6 +1966,8 @@ literal|"Å¢"
 argument_list|)
 expr_stmt|;
 comment|// "Tcedil"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1668,6 +1978,8 @@ literal|"Å£"
 argument_list|)
 expr_stmt|;
 comment|// "tcedil"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1679,6 +1991,8 @@ argument_list|)
 expr_stmt|;
 comment|// "Tcaron"
 comment|// Symbol #357 (tï¿½) has no special Latex command
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1689,6 +2003,8 @@ literal|"Å¦"
 argument_list|)
 expr_stmt|;
 comment|// "Tstrok"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1699,6 +2015,8 @@ literal|"Å§"
 argument_list|)
 expr_stmt|;
 comment|// "tstrok"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1709,6 +2027,8 @@ literal|"Å¨"
 argument_list|)
 expr_stmt|;
 comment|// "Utilde"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1719,6 +2039,8 @@ literal|"Å©"
 argument_list|)
 expr_stmt|;
 comment|// "utilde"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1729,6 +2051,8 @@ literal|"Åª"
 argument_list|)
 expr_stmt|;
 comment|// "Umacr"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1739,6 +2063,8 @@ literal|"Å«"
 argument_list|)
 expr_stmt|;
 comment|// "umacr"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1749,6 +2075,8 @@ literal|"Å¬"
 argument_list|)
 expr_stmt|;
 comment|// "Ubreve"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1759,6 +2087,8 @@ literal|"Å­"
 argument_list|)
 expr_stmt|;
 comment|// "ubreve"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1769,6 +2099,8 @@ literal|"Å®"
 argument_list|)
 expr_stmt|;
 comment|// "Uring"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1779,6 +2111,8 @@ literal|"Å¯"
 argument_list|)
 expr_stmt|;
 comment|// "uring"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1789,6 +2123,8 @@ literal|"Å¯"
 argument_list|)
 expr_stmt|;
 comment|// "Odblac"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1799,6 +2135,8 @@ literal|"Å±"
 argument_list|)
 expr_stmt|;
 comment|// "odblac"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1809,6 +2147,8 @@ literal|"Å²"
 argument_list|)
 expr_stmt|;
 comment|// "Uogon"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1819,6 +2159,8 @@ literal|"Å³"
 argument_list|)
 expr_stmt|;
 comment|// "uogon"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1829,6 +2171,8 @@ literal|"Å´"
 argument_list|)
 expr_stmt|;
 comment|// "Wcirc"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1839,6 +2183,8 @@ literal|"Åµ"
 argument_list|)
 expr_stmt|;
 comment|// "wcirc"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1849,6 +2195,8 @@ literal|"Å¶"
 argument_list|)
 expr_stmt|;
 comment|// "Ycirc"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1859,6 +2207,8 @@ literal|"Å·"
 argument_list|)
 expr_stmt|;
 comment|// "ycirc"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1869,6 +2219,8 @@ literal|"Å¸"
 argument_list|)
 expr_stmt|;
 comment|// "Yuml"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1879,6 +2231,8 @@ literal|"Å¹"
 argument_list|)
 expr_stmt|;
 comment|// "Zacute"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1889,6 +2243,8 @@ literal|"Åº"
 argument_list|)
 expr_stmt|;
 comment|// "zacute"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1899,6 +2255,8 @@ literal|"Å»"
 argument_list|)
 expr_stmt|;
 comment|// "Zdot"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1909,6 +2267,8 @@ literal|"Å¼"
 argument_list|)
 expr_stmt|;
 comment|// "zdot"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1919,6 +2279,8 @@ literal|"Å½"
 argument_list|)
 expr_stmt|;
 comment|// "Zcaron"
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1930,6 +2292,8 @@ argument_list|)
 expr_stmt|;
 comment|// "zcaron"
 comment|// Symbol #383 (f) has no special Latex command
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|put
@@ -1941,6 +2305,8 @@ argument_list|)
 expr_stmt|;
 comment|// percent sign
 block|}
+annotation|@
+name|Override
 DECL|method|format (String field)
 specifier|public
 name|String
@@ -2062,6 +2428,8 @@ decl_stmt|;
 name|Object
 name|result
 init|=
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|get
@@ -2120,13 +2488,17 @@ operator|!
 name|incommand
 operator|&&
 operator|(
+operator|(
 name|c
 operator|==
 literal|'{'
+operator|)
 operator|||
+operator|(
 name|c
 operator|==
 literal|'}'
+operator|)
 operator|)
 condition|)
 block|{
@@ -2174,6 +2546,7 @@ condition|(
 operator|!
 name|incommand
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -2181,7 +2554,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-comment|// Else we are in a command, and should not keep the letter.
+block|}
 else|else
 block|{
 name|currentCommand
@@ -2225,16 +2598,20 @@ if|if
 condition|(
 name|i
 operator|>=
+operator|(
 name|field
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 break|break
 name|testCharCom
 break|;
+block|}
 name|String
 name|command
 init|=
@@ -2312,6 +2689,8 @@ block|}
 name|Object
 name|result
 init|=
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|get
@@ -2327,6 +2706,7 @@ name|result
 operator|!=
 literal|null
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -2337,6 +2717,7 @@ operator|)
 name|result
 argument_list|)
 expr_stmt|;
+block|}
 name|incommand
 operator|=
 literal|false
@@ -2351,9 +2732,11 @@ block|{
 comment|//	Are we already at the end of the string?
 if|if
 condition|(
+operator|(
 name|i
 operator|+
 literal|1
+operator|)
 operator|==
 name|field
 operator|.
@@ -2372,6 +2755,8 @@ decl_stmt|;
 name|Object
 name|result
 init|=
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|get
@@ -2627,6 +3012,8 @@ comment|// handle common case of general latex command
 name|Object
 name|result
 init|=
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|get
@@ -2685,6 +3072,8 @@ comment|// substitute the evaluated command and swallow the brace:
 name|Object
 name|result
 init|=
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|get
@@ -2727,6 +3116,8 @@ block|{
 name|Object
 name|result
 init|=
+name|OOPreFormatter
+operator|.
 name|CHARS
 operator|.
 name|get

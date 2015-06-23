@@ -922,66 +922,88 @@ block|{
 operator|new
 name|KillWordAction
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|killWordAction
 argument_list|)
 block|,
 operator|new
 name|BackwardKillWordAction
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|backwardKillWordAction
 argument_list|)
 block|,
 operator|new
 name|SetMarkCommandAction
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|setMarkCommandAction
 argument_list|)
 block|,
 operator|new
 name|KillRingSaveAction
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|killRingSaveAction
 argument_list|)
 block|,
 operator|new
 name|KillRegionAction
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|killRegionAction
 argument_list|)
 block|,
 operator|new
 name|KillLineAction
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|killLineAction
 argument_list|)
 block|,
 operator|new
 name|YankAction
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|yankAction
 argument_list|)
 block|,
 operator|new
 name|YankPopAction
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|yankPopAction
 argument_list|)
 block|,
 operator|new
 name|CapitalizeWordAction
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|capitalizeWordAction
 argument_list|)
 block|,
 operator|new
 name|DowncaseWordAction
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|downcaseWordAction
 argument_list|)
 block|,
 operator|new
 name|UpcaseWordAction
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|upcaseWordAction
 argument_list|)
 block|}
@@ -1040,9 +1062,13 @@ name|void
 name|load
 parameter_list|()
 block|{
+name|EmacsKeyBindings
+operator|.
 name|createBackup
 argument_list|()
 expr_stmt|;
+name|EmacsKeyBindings
+operator|.
 name|loadEmacsKeyBindings
 argument_list|()
 expr_stmt|;
@@ -1061,6 +1087,8 @@ name|JTextComponent
 operator|.
 name|getKeymap
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|JTCS
 index|[
 literal|0
@@ -1088,6 +1116,8 @@ control|(
 name|JTextComponent
 name|JTC
 range|:
+name|EmacsKeyBindings
+operator|.
 name|JTCS
 control|)
 block|{
@@ -1193,6 +1223,8 @@ literal|0
 init|;
 name|i
 operator|<
+name|EmacsKeyBindings
+operator|.
 name|JTCS
 operator|.
 name|length
@@ -1208,6 +1240,8 @@ name|JTextComponent
 operator|.
 name|getKeymap
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|JTCS
 index|[
 name|i
@@ -1230,6 +1264,8 @@ block|{
 name|Keymap
 name|current
 init|=
+name|EmacsKeyBindings
+operator|.
 name|JTCS
 index|[
 name|i
@@ -1314,6 +1350,8 @@ name|void
 name|loadEmacsKeyBindings
 parameter_list|()
 block|{
+name|EmacsKeyBindings
+operator|.
 name|logger
 operator|.
 name|debug
@@ -1326,6 +1364,8 @@ control|(
 name|JTextComponent
 name|JTC
 range|:
+name|EmacsKeyBindings
+operator|.
 name|JTCS
 control|)
 block|{
@@ -1349,6 +1389,8 @@ name|origActions
 operator|.
 name|length
 operator|+
+name|EmacsKeyBindings
+operator|.
 name|EMACS_ACTIONS
 operator|.
 name|length
@@ -1375,6 +1417,8 @@ name|System
 operator|.
 name|arraycopy
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|EMACS_ACTIONS
 argument_list|,
 literal|0
@@ -1385,6 +1429,8 @@ name|origActions
 operator|.
 name|length
 argument_list|,
+name|EmacsKeyBindings
+operator|.
 name|EMACS_ACTIONS
 operator|.
 name|length
@@ -1422,6 +1468,8 @@ block|{
 name|int
 name|size
 init|=
+name|EmacsKeyBindings
+operator|.
 name|EMACS_KEY_BINDINGS_BASE
 operator|.
 name|length
@@ -1442,6 +1490,8 @@ name|System
 operator|.
 name|arraycopy
 argument_list|(
+name|EmacsKeyBindings
+operator|.
 name|EMACS_KEY_BINDINGS_BASE
 argument_list|,
 literal|0
@@ -1450,6 +1500,8 @@ name|keybindings
 argument_list|,
 literal|0
 argument_list|,
+name|EmacsKeyBindings
+operator|.
 name|EMACS_KEY_BINDINGS_BASE
 operator|.
 name|length
@@ -1457,11 +1509,15 @@ argument_list|)
 expr_stmt|;
 name|keybindings
 index|[
+name|EmacsKeyBindings
+operator|.
 name|EMACS_KEY_BINDINGS_BASE
 operator|.
 name|length
 index|]
 operator|=
+name|EmacsKeyBindings
+operator|.
 name|EMACS_KEY_BINDING_C_A
 expr_stmt|;
 block|}
@@ -1469,6 +1525,8 @@ else|else
 block|{
 name|keybindings
 operator|=
+name|EmacsKeyBindings
+operator|.
 name|EMACS_KEY_BINDINGS_BASE
 expr_stmt|;
 block|}
@@ -1513,6 +1571,8 @@ name|nm
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1556,6 +1616,8 @@ argument_list|)
 expr_stmt|;
 name|offs
 operator|=
+name|EmacsKeyBindings
+operator|.
 name|getWordEnd
 argument_list|(
 name|jtc
@@ -1635,6 +1697,8 @@ name|nm
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1759,6 +1823,8 @@ name|nm
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1815,6 +1881,8 @@ name|nm
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2060,6 +2128,8 @@ name|nm
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2108,9 +2178,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|start
 operator|==
 name|end
+operator|)
 operator|&&
 name|jtc
 operator|.
@@ -2234,6 +2306,8 @@ name|nm
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2243,6 +2317,8 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+name|SetMarkCommandAction
+operator|.
 name|jtc
 operator|=
 name|getTextComponent
@@ -2252,13 +2328,19 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|SetMarkCommandAction
+operator|.
 name|jtc
 operator|!=
 literal|null
 condition|)
 block|{
+name|SetMarkCommandAction
+operator|.
 name|position
 operator|=
+name|SetMarkCommandAction
+operator|.
 name|jtc
 operator|.
 name|getCaretPosition
@@ -2278,14 +2360,22 @@ parameter_list|)
 block|{
 return|return
 operator|(
+operator|(
+name|SetMarkCommandAction
+operator|.
 name|jtc
 operator|==
 name|jt
+operator|)
 operator|&&
+operator|(
+name|SetMarkCommandAction
+operator|.
 name|position
 operator|!=
 operator|-
 literal|1
+operator|)
 operator|)
 return|;
 block|}
@@ -2296,10 +2386,14 @@ name|void
 name|reset
 parameter_list|()
 block|{
+name|SetMarkCommandAction
+operator|.
 name|jtc
 operator|=
 literal|null
 expr_stmt|;
+name|SetMarkCommandAction
+operator|.
 name|position
 operator|=
 operator|-
@@ -2314,6 +2408,8 @@ name|getCaretPosition
 parameter_list|()
 block|{
 return|return
+name|SetMarkCommandAction
+operator|.
 name|position
 return|;
 block|}
@@ -2364,6 +2460,8 @@ name|nm
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -2390,6 +2488,8 @@ condition|)
 block|{
 try|try
 block|{
+name|YankAction
+operator|.
 name|start
 operator|=
 name|jtc
@@ -2402,6 +2502,8 @@ operator|.
 name|paste
 argument_list|()
 expr_stmt|;
+name|YankAction
+operator|.
 name|end
 operator|=
 name|jtc
@@ -2420,8 +2522,12 @@ name|jtc
 operator|.
 name|getText
 argument_list|(
+name|YankAction
+operator|.
 name|start
 argument_list|,
+name|YankAction
+operator|.
 name|end
 argument_list|)
 argument_list|)
@@ -2474,6 +2580,8 @@ name|nm
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -2680,6 +2788,8 @@ name|getInstance
 parameter_list|()
 block|{
 return|return
+name|KillRing
+operator|.
 name|instance
 return|;
 block|}
@@ -2886,6 +2996,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**          * At first the same code as in {@link          * EmacsKeyBindings.DowncaseWordAction} is performed, to ensure the          * word is in lower case, then the first letter is capialized.          */
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -2924,6 +3036,8 @@ decl_stmt|;
 name|int
 name|end
 init|=
+name|EmacsKeyBindings
+operator|.
 name|getWordEnd
 argument_list|(
 name|jtc
@@ -3138,6 +3252,8 @@ name|nm
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -3175,6 +3291,8 @@ decl_stmt|;
 name|int
 name|end
 init|=
+name|EmacsKeyBindings
+operator|.
 name|getWordEnd
 argument_list|(
 name|jtc
@@ -3274,6 +3392,8 @@ name|nm
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -3311,6 +3431,8 @@ decl_stmt|;
 name|int
 name|end
 init|=
+name|EmacsKeyBindings
+operator|.
 name|getWordEnd
 argument_list|(
 name|jtc

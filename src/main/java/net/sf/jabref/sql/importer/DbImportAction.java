@@ -86,6 +86,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JOptionPane
 import|;
 end_import
@@ -377,12 +387,16 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Import from external SQL database"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -419,6 +433,8 @@ block|}
 block|}
 block|}
 comment|// run first, in EDT:
+annotation|@
+name|Override
 DECL|method|init ()
 specifier|public
 name|void
@@ -544,6 +560,8 @@ expr_stmt|;
 block|}
 block|}
 comment|// run second, on a different thread:
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -948,6 +966,8 @@ block|}
 block|}
 block|}
 comment|// run third, on EDT:
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void
@@ -960,7 +980,9 @@ name|databases
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 for|for
 control|(
 name|Object

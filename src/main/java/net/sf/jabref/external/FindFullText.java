@@ -346,12 +346,15 @@ name|resDoi
 operator|.
 name|status
 operator|==
+name|FindFullText
+operator|.
 name|FOUND_PDF
 condition|)
+block|{
 return|return
 name|resDoi
 return|;
-comment|// The DOI link failed, try falling back on the URL link, if defined:
+block|}
 elseif|else
 if|if
 condition|(
@@ -388,11 +391,15 @@ name|resUrl
 operator|.
 name|status
 operator|==
+name|FindFullText
+operator|.
 name|FOUND_PDF
 condition|)
+block|{
 return|return
 name|resUrl
 return|;
+block|}
 else|else
 block|{
 return|return
@@ -403,9 +410,11 @@ comment|// probably the most relevant.
 block|}
 block|}
 else|else
+block|{
 return|return
 name|resDoi
 return|;
+block|}
 block|}
 comment|// No DOI? Try URL:
 elseif|else
@@ -439,15 +448,19 @@ return|;
 block|}
 comment|// No URL either? Return error code.
 else|else
+block|{
 return|return
 operator|new
 name|FindResult
 argument_list|(
+name|FindFullText
+operator|.
 name|NO_URLS_DEFINED
 argument_list|,
 literal|null
 argument_list|)
 return|;
+block|}
 block|}
 DECL|method|lookForFullTextAtURL (String urlText)
 specifier|private
@@ -590,6 +603,8 @@ return|return
 operator|new
 name|FindResult
 argument_list|(
+name|FindFullText
+operator|.
 name|WRONG_MIME_TYPE
 argument_list|,
 name|url
@@ -612,6 +627,8 @@ return|return
 operator|new
 name|FindResult
 argument_list|(
+name|FindFullText
+operator|.
 name|IO_EXCEPTION
 argument_list|,
 name|url
@@ -626,25 +643,33 @@ condition|(
 operator|!
 name|domainKnown
 condition|)
+block|{
 return|return
 operator|new
 name|FindResult
 argument_list|(
+name|FindFullText
+operator|.
 name|UNKNOWN_DOMAIN
 argument_list|,
 name|url
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 operator|new
 name|FindResult
 argument_list|(
+name|FindFullText
+operator|.
 name|LINK_NOT_FOUND
 argument_list|,
 name|url
 argument_list|)
 return|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -803,14 +828,18 @@ comment|// the default page in the case of www.springerlink.com, not the article
 block|}
 block|}
 else|else
+block|{
 return|return
 name|url
 return|;
 block|}
+block|}
 else|else
+block|{
 return|return
 name|url
 return|;
+block|}
 block|}
 DECL|method|loadPage (URL url)
 specifier|public
@@ -907,6 +936,7 @@ operator|!=
 operator|-
 literal|1
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -917,6 +947,7 @@ operator|)
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|sb
 operator|.
@@ -925,10 +956,12 @@ argument_list|()
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
 comment|// TODO: are other types of connection (https?) relevant?
+block|}
 block|}
 finally|finally
 block|{
@@ -940,22 +973,26 @@ name|in
 operator|!=
 literal|null
 condition|)
+block|{
 name|in
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|huc
 operator|!=
 literal|null
 condition|)
+block|{
 name|huc
 operator|.
 name|disconnect
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1017,6 +1054,8 @@ name|this
 operator|.
 name|status
 operator|=
+name|FindFullText
+operator|.
 name|FOUND_PDF
 expr_stmt|;
 if|if
@@ -1025,6 +1064,7 @@ name|originalUrl
 operator|!=
 literal|null
 condition|)
+block|{
 name|host
 operator|=
 name|originalUrl
@@ -1032,6 +1072,7 @@ operator|.
 name|getHost
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 DECL|method|FindResult (int status, URL originalUrl)
 specifier|public
@@ -1062,6 +1103,7 @@ name|originalUrl
 operator|!=
 literal|null
 condition|)
+block|{
 name|this
 operator|.
 name|host
@@ -1071,6 +1113,7 @@ operator|.
 name|getHost
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|dumpToFile (String text, File f)

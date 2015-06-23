@@ -231,17 +231,21 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|ids
 operator|=
 name|id
 expr_stmt|;
+block|}
 else|else
+block|{
 name|ids
 operator|+=
 literal|","
 operator|+
 name|id
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * How many entries to query in one request      */
@@ -704,6 +708,8 @@ return|return
 name|result
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|stopFetching ()
 specifier|public
 name|void
@@ -715,6 +721,8 @@ operator|=
 literal|false
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getHelpPage ()
 specifier|public
 name|String
@@ -727,6 +735,8 @@ operator|.
 name|medlineHelp
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeyName ()
 specifier|public
 name|String
@@ -737,6 +747,8 @@ return|return
 literal|"Medline"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getOptionsPanel ()
 specifier|public
 name|JPanel
@@ -748,6 +760,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTitle ()
 specifier|public
 name|String
@@ -758,6 +772,8 @@ return|return
 literal|"Medline"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter frame)
 specifier|public
 name|boolean
@@ -950,6 +966,8 @@ if|if
 condition|(
 name|numberToFetch
 operator|>
+name|MedlineFetcher
+operator|.
 name|PACING
 condition|)
 block|{
@@ -1066,6 +1084,8 @@ name|numberToFetch
 condition|;
 name|i
 operator|+=
+name|MedlineFetcher
+operator|.
 name|PACING
 control|)
 block|{
@@ -1074,7 +1094,9 @@ condition|(
 operator|!
 name|shouldContinue
 condition|)
+block|{
 break|break;
+block|}
 name|int
 name|noToFetch
 init|=
@@ -1082,6 +1104,8 @@ name|Math
 operator|.
 name|min
 argument_list|(
+name|MedlineFetcher
+operator|.
 name|PACING
 argument_list|,
 name|numberToFetch

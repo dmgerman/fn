@@ -180,10 +180,12 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|freeform
 operator|=
 name|s
 expr_stmt|;
+block|}
 block|}
 DECL|method|getDOMrepresentation (Document d)
 specifier|public
@@ -326,9 +328,11 @@ name|freeform
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|freeform
 return|;
+block|}
 return|return
 operator|(
 name|start
@@ -339,6 +343,8 @@ name|end
 operator|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String

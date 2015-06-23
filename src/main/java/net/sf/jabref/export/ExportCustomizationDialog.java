@@ -315,6 +315,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -405,6 +407,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -428,7 +432,9 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 return|return;
+block|}
 name|String
 index|[]
 name|old
@@ -549,6 +555,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -574,7 +582,9 @@ name|length
 operator|==
 literal|0
 condition|)
+block|{
 return|return;
+block|}
 name|String
 index|[]
 index|[]
@@ -605,6 +615,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|entries
 index|[
 name|i
@@ -627,6 +638,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 for|for
 control|(
 name|int
@@ -643,6 +655,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|Globals
 operator|.
 name|prefs
@@ -657,6 +670,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 name|Globals
 operator|.
 name|prefs
@@ -677,6 +691,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -851,6 +867,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|table
 operator|.
 name|setRowSelectionInterval
@@ -860,6 +877,7 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Key bindings:
 name|ActionMap
 name|am
@@ -1062,6 +1080,8 @@ name|String
 index|[]
 argument_list|>
 block|{
+annotation|@
+name|Override
 DECL|method|getColumnValue (String[] strings, int i)
 specifier|public
 name|Object
@@ -1082,6 +1102,8 @@ name|i
 index|]
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnCount ()
 specifier|public
 name|int
@@ -1092,6 +1114,8 @@ return|return
 literal|3
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnName (int col)
 specifier|public
 name|String

@@ -18,35 +18,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|*
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|external
 operator|.
 name|ExternalFileType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|labelPattern
-operator|.
-name|LabelPatternUtil
 import|;
 end_import
 
@@ -157,6 +131,7 @@ literal|"file.separator"
 argument_list|)
 argument_list|)
 condition|)
+block|{
 name|directory
 operator|+=
 name|System
@@ -166,9 +141,12 @@ argument_list|(
 literal|"file.separator"
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|found
 init|=
+name|UtilFindFiles
+operator|.
 name|findInDir
 argument_list|(
 name|key
@@ -186,6 +164,7 @@ name|found
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|found
 operator|.
@@ -197,10 +176,13 @@ name|length
 argument_list|()
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 DECL|method|findFiles (Collection<String> extensions, Collection<File> directories)
 specifier|public
@@ -249,6 +231,8 @@ name|result
 operator|.
 name|addAll
 argument_list|(
+name|UtilFindFiles
+operator|.
 name|findFiles
 argument_list|(
 name|extensions
@@ -311,10 +295,12 @@ name|children
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 name|result
 return|;
 comment|// No permission?
+block|}
 for|for
 control|(
 name|File
@@ -335,6 +321,8 @@ name|result
 operator|.
 name|addAll
 argument_list|(
+name|UtilFindFiles
+operator|.
 name|findFiles
 argument_list|(
 name|extensions
@@ -406,6 +394,8 @@ name|directory
 parameter_list|)
 block|{
 return|return
+name|UtilFindFiles
+operator|.
 name|findPdf
 argument_list|(
 name|entry
@@ -498,6 +488,8 @@ name|extension
 argument_list|)
 expr_stmt|;
 return|return
+name|UtilFindFiles
+operator|.
 name|findFile
 argument_list|(
 name|entry
@@ -608,6 +600,8 @@ index|]
 argument_list|)
 decl_stmt|;
 return|return
+name|UtilFindFiles
+operator|.
 name|findPdf
 argument_list|(
 name|entry
@@ -656,6 +650,8 @@ block|{
 name|String
 name|result
 init|=
+name|UtilFindFiles
+operator|.
 name|findFile
 argument_list|(
 name|entry
@@ -703,6 +699,8 @@ name|file
 parameter_list|)
 block|{
 return|return
+name|UtilFindFiles
+operator|.
 name|findFile
 argument_list|(
 name|entry
@@ -781,12 +779,16 @@ operator|.
 name|exists
 argument_list|()
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|String
 name|found
 init|=
+name|UtilFindFiles
+operator|.
 name|findFile
 argument_list|(
 name|entry
@@ -800,9 +802,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|directory
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|relative
@@ -864,6 +868,7 @@ operator|.
 name|separatorChar
 operator|)
 condition|)
+block|{
 name|tmp
 operator|=
 name|tmp
@@ -873,6 +878,7 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|tmp
 return|;
@@ -1029,9 +1035,11 @@ name|length
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 if|if
 condition|(
 name|fileParts
@@ -1050,11 +1058,13 @@ literal|0
 init|;
 name|i
 operator|<
+operator|(
 name|fileParts
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|;
 name|i
 operator|++
@@ -1166,10 +1176,12 @@ name|subDirs
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
 comment|// No permission?
+block|}
 name|String
 name|restOfFileString
 init|=
@@ -1209,6 +1221,8 @@ block|{
 name|String
 name|result
 init|=
+name|UtilFindFiles
+operator|.
 name|findFile
 argument_list|(
 name|entry
@@ -1226,9 +1240,11 @@ name|result
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|result
 return|;
+block|}
 block|}
 block|}
 return|return
@@ -1291,6 +1307,8 @@ comment|// dir
 name|String
 name|result
 init|=
+name|UtilFindFiles
+operator|.
 name|findFile
 argument_list|(
 name|entry
@@ -1308,9 +1326,11 @@ name|result
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|result
 return|;
+block|}
 while|while
 condition|(
 operator|!
@@ -1341,8 +1361,9 @@ name|subDirs
 operator|==
 literal|null
 condition|)
-comment|// No permission?
+block|{
 continue|continue;
+block|}
 name|toDo
 operator|.
 name|addAll
@@ -1371,9 +1392,13 @@ operator|.
 name|isDirectory
 argument_list|()
 condition|)
+block|{
 continue|continue;
+block|}
 name|result
 operator|=
+name|UtilFindFiles
+operator|.
 name|findFile
 argument_list|(
 name|entry
@@ -1391,9 +1416,11 @@ name|result
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|result
 return|;
+block|}
 block|}
 block|}
 comment|// We already did the currentDirectory
@@ -1431,6 +1458,8 @@ operator|new
 name|FilenameFilter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|accept
@@ -1459,19 +1488,25 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|matches
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|matches
 operator|.
 name|length
 operator|==
 literal|0
+operator|)
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|directory
 operator|=
 name|matches
@@ -1487,9 +1522,11 @@ operator|.
 name|exists
 argument_list|()
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 comment|// End process directory information
 block|}
@@ -1549,6 +1586,8 @@ operator|new
 name|FilenameFilter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|accept
@@ -1577,19 +1616,25 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|matches
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|matches
 operator|.
 name|length
 operator|==
 literal|0
+operator|)
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 try|try
 block|{
 return|return
@@ -1638,10 +1683,12 @@ name|count
 operator|>
 literal|20
 condition|)
+block|{
 return|return
 literal|null
 return|;
 comment|// Make sure an infinite loop doesn't occur.
+block|}
 name|File
 name|f
 init|=
@@ -1666,11 +1713,13 @@ name|all
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
 comment|// An error occured. We may not have
 comment|// permission to list the files.
+block|}
 name|int
 name|numFiles
 init|=
@@ -1720,12 +1769,14 @@ argument_list|(
 name|name
 argument_list|)
 condition|)
+block|{
 return|return
 name|curFile
 operator|.
 name|getPath
 argument_list|()
 return|;
+block|}
 block|}
 elseif|else
 if|if
@@ -1739,6 +1790,8 @@ block|{
 name|String
 name|found
 init|=
+name|UtilFindFiles
+operator|.
 name|findInDir
 argument_list|(
 name|key
@@ -1761,9 +1814,11 @@ name|found
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|found
 return|;
+block|}
 block|}
 block|}
 return|return

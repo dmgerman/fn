@@ -54,6 +54,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Before
 import|;
 end_import
@@ -112,6 +122,8 @@ name|prefix
 parameter_list|)
 block|{
 return|return
+name|FileBasedTestCase
+operator|.
 name|createTempDir
 argument_list|(
 name|prefix
@@ -158,9 +170,11 @@ operator|.
 name|delete
 argument_list|()
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 if|if
 condition|(
 operator|!
@@ -169,9 +183,11 @@ operator|.
 name|mkdir
 argument_list|()
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 return|return
 name|tempFile
 return|;
@@ -221,6 +237,7 @@ name|fileArray
 operator|!=
 literal|null
 condition|)
+block|{
 for|for
 control|(
 name|File
@@ -228,11 +245,16 @@ name|aFileArray
 range|:
 name|fileArray
 control|)
+block|{
+name|FileBasedTestCase
+operator|.
 name|deleteRecursive
 argument_list|(
 name|aFileArray
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 block|}
 name|file
 operator|.
@@ -278,6 +300,8 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|FileBasedTestCase
+operator|.
 name|database
 operator|==
 literal|null
@@ -350,10 +374,14 @@ name|Exception
 name|e
 parameter_list|)
 block|{
+name|Assert
+operator|.
 name|fail
 argument_list|()
 expr_stmt|;
 block|}
+name|FileBasedTestCase
+operator|.
 name|database
 operator|=
 name|result
@@ -361,8 +389,12 @@ operator|.
 name|getDatabase
 argument_list|()
 expr_stmt|;
+name|FileBasedTestCase
+operator|.
 name|entry
 operator|=
+name|FileBasedTestCase
+operator|.
 name|database
 operator|.
 name|getEntriesByKey
@@ -375,6 +407,8 @@ index|]
 expr_stmt|;
 block|}
 return|return
+name|FileBasedTestCase
+operator|.
 name|entry
 return|;
 block|}
@@ -460,16 +494,26 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+name|FileBasedTestCase
+operator|.
 name|getBibtexEntry
 argument_list|()
 expr_stmt|;
+name|Assert
+operator|.
 name|assertNotNull
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|database
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertNotNull
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|)
 expr_stmt|;
@@ -478,6 +522,8 @@ try|try
 block|{
 name|root
 operator|=
+name|FileBasedTestCase
+operator|.
 name|createTempDir
 argument_list|(
 literal|"UtilFindFileTest"
@@ -508,6 +554,8 @@ argument_list|,
 literal|"Organization Science"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|subDir1
@@ -527,6 +575,8 @@ argument_list|,
 literal|"HipKro03 - Hello.pdf"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|pdf1
@@ -546,6 +596,8 @@ argument_list|,
 literal|"HipKro03 - Hello.pdf"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|pdf1a
@@ -565,6 +617,8 @@ argument_list|,
 literal|"pdfs"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|subDir2
@@ -584,6 +638,8 @@ argument_list|,
 literal|"sub"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|subsubDir1
@@ -603,6 +659,8 @@ argument_list|,
 literal|"HipKro03-sub.pdf"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|pdf2
@@ -622,6 +680,8 @@ argument_list|,
 literal|"2002"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|dir2002
@@ -641,6 +701,8 @@ argument_list|,
 literal|"2003"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|dir2003
@@ -660,6 +722,8 @@ argument_list|,
 literal|"Paper by HipKro03.pdf"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|pdf3
@@ -679,6 +743,8 @@ argument_list|,
 literal|"test"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|dirTest
@@ -698,6 +764,8 @@ argument_list|,
 literal|"HipKro03.pdf"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|pdf4
@@ -717,6 +785,8 @@ argument_list|,
 literal|".TEST"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|pdf5
@@ -736,6 +806,8 @@ argument_list|,
 literal|"TEST["
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|pdf6
@@ -755,6 +827,8 @@ argument_list|,
 literal|"TE.ST"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|pdf7
@@ -774,6 +848,8 @@ argument_list|,
 literal|"foo.dat"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|foo
@@ -793,6 +869,8 @@ argument_list|,
 literal|"graphicsDir"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|graphicsDir
@@ -812,6 +890,8 @@ argument_list|,
 literal|"subDir"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|graphicsSubDir
@@ -831,6 +911,8 @@ argument_list|,
 literal|"HipKro03test.jpg"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|jpg
@@ -850,6 +932,8 @@ argument_list|,
 literal|"HipKro03test.png"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|png
@@ -880,6 +964,8 @@ name|void
 name|tearDown
 parameter_list|()
 block|{
+name|FileBasedTestCase
+operator|.
 name|deleteRecursive
 argument_list|(
 name|root

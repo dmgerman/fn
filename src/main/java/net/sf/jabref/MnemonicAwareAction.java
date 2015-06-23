@@ -75,12 +75,16 @@ block|{
 comment|//super(icon);
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SMALL_ICON
 argument_list|,
 name|icon
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|putValue (String key, Object value)
 specifier|public
 name|void
@@ -187,10 +191,12 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|value
 operator|=
 name|name
 expr_stmt|;
+block|}
 block|}
 name|super
 operator|.

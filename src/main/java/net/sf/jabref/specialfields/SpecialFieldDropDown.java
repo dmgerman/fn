@@ -216,6 +216,7 @@ name|Globals
 operator|.
 name|ON_MAC
 condition|)
+block|{
 name|button
 operator|.
 name|setMargin
@@ -233,6 +234,7 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|button
 operator|.
 name|setBorder
@@ -412,6 +414,8 @@ operator|=
 name|button
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -579,6 +583,8 @@ operator|=
 name|actionName
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

@@ -189,10 +189,14 @@ specifier|static
 name|String
 name|SEARCH_URL
 init|=
+name|CiteSeerXFetcher
+operator|.
 name|URL_START
 operator|+
 literal|"/search?q="
 operator|+
+name|CiteSeerXFetcher
+operator|.
 name|QUERY_MARKER
 operator|+
 literal|"&submit=Search&sort=rlv&t=doc"
@@ -217,6 +221,8 @@ name|stopFetching
 init|=
 literal|false
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|processQuery (String query, ImportInspector inspector, OutputPrinter status)
 specifier|public
 name|boolean
@@ -261,7 +267,9 @@ if|if
 condition|(
 name|stopFetching
 condition|)
+block|{
 break|break;
+block|}
 name|BibtexEntry
 name|entry
 init|=
@@ -278,6 +286,7 @@ name|entry
 operator|!=
 literal|null
 condition|)
+block|{
 name|inspector
 operator|.
 name|addEntry
@@ -285,6 +294,7 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 literal|true
@@ -306,6 +316,8 @@ literal|false
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getTitle ()
 specifier|public
 name|String
@@ -316,6 +328,8 @@ return|return
 literal|"CiteSeerX"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeyName ()
 specifier|public
 name|String
@@ -326,6 +340,8 @@ return|return
 literal|"CiteSeerX"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getHelpPage ()
 specifier|public
 name|String
@@ -336,6 +352,8 @@ return|return
 literal|"CiteSeerHelp.html"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getOptionsPanel ()
 specifier|public
 name|JPanel
@@ -346,6 +364,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|stopFetching ()
 specifier|public
 name|void
@@ -392,10 +412,14 @@ try|try
 block|{
 name|urlQuery
 operator|=
+name|CiteSeerXFetcher
+operator|.
 name|SEARCH_URL
 operator|.
 name|replace
 argument_list|(
+name|CiteSeerXFetcher
+operator|.
 name|QUERY_MARKER
 argument_list|,
 name|URLEncoder
@@ -436,6 +460,8 @@ operator|&&
 operator|(
 name|count
 operator|<
+name|CiteSeerXFetcher
+operator|.
 name|MAX_PAGES_TO_LOAD
 operator|)
 condition|)
@@ -451,7 +477,9 @@ if|if
 condition|(
 name|stopFetching
 condition|)
+block|{
 break|break;
+block|}
 block|}
 return|return
 name|ids
@@ -514,6 +542,8 @@ comment|//System.out.println(cont);
 name|Matcher
 name|m
 init|=
+name|CiteSeerXFetcher
+operator|.
 name|CITE_LINK_PATTERN
 operator|.
 name|matcher
@@ -533,6 +563,8 @@ name|ids
 operator|.
 name|add
 argument_list|(
+name|CiteSeerXFetcher
+operator|.
 name|URL_START
 operator|+
 name|m
@@ -556,6 +588,8 @@ name|basePattern
 init|=
 literal|"<meta name=\""
 operator|+
+name|CiteSeerXFetcher
+operator|.
 name|QUERY_MARKER
 operator|+
 literal|"\" content=\"(.*)\" />"
@@ -570,10 +604,14 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
+name|CiteSeerXFetcher
+operator|.
 name|basePattern
 operator|.
 name|replace
 argument_list|(
+name|CiteSeerXFetcher
+operator|.
 name|QUERY_MARKER
 argument_list|,
 literal|"citation_title"
@@ -590,10 +628,14 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
+name|CiteSeerXFetcher
+operator|.
 name|basePattern
 operator|.
 name|replace
 argument_list|(
+name|CiteSeerXFetcher
+operator|.
 name|QUERY_MARKER
 argument_list|,
 literal|"citation_authors"
@@ -610,10 +652,14 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
+name|CiteSeerXFetcher
+operator|.
 name|basePattern
 operator|.
 name|replace
 argument_list|(
+name|CiteSeerXFetcher
+operator|.
 name|QUERY_MARKER
 argument_list|,
 literal|"citation_year"
@@ -671,6 +717,8 @@ comment|// Find title, and create entry if we do. Otherwise assume we didn't get
 name|Matcher
 name|m
 init|=
+name|CiteSeerXFetcher
+operator|.
 name|titlePattern
 operator|.
 name|matcher
@@ -715,6 +763,8 @@ expr_stmt|;
 comment|// Find authors:
 name|m
 operator|=
+name|CiteSeerXFetcher
+operator|.
 name|authorPattern
 operator|.
 name|matcher
@@ -758,6 +808,8 @@ block|}
 comment|// Find year:
 name|m
 operator|=
+name|CiteSeerXFetcher
+operator|.
 name|yearPattern
 operator|.
 name|matcher
@@ -772,6 +824,7 @@ operator|.
 name|find
 argument_list|()
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -786,9 +839,12 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Find abstract:
 name|m
 operator|=
+name|CiteSeerXFetcher
+operator|.
 name|abstractPattern
 operator|.
 name|matcher
@@ -803,6 +859,7 @@ operator|.
 name|find
 argument_list|()
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -817,14 +874,17 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|entry
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 block|}
 end_class

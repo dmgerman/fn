@@ -57,6 +57,8 @@ operator|=
 name|considerRefs
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|compare (BibtexString s1, BibtexString s2)
 specifier|public
 name|int
@@ -109,9 +111,11 @@ name|res
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|res
 return|;
+block|}
 comment|// Then, if we are supposed to, see if the ordering needs
 comment|// to be changed because of one string referring to the other.x
 if|if

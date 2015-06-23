@@ -54,6 +54,8 @@ name|defValue
 init|=
 literal|""
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|setArgument (String arg)
 specifier|public
 name|void
@@ -70,6 +72,8 @@ operator|=
 name|arg
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -80,9 +84,11 @@ name|fieldText
 parameter_list|)
 block|{
 return|return
+operator|(
 name|fieldText
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|(
 name|fieldText

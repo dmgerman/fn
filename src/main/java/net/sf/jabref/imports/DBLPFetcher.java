@@ -744,11 +744,15 @@ init|=
 operator|new
 name|StringBuffer
 argument_list|(
+name|DBLPFetcher
+operator|.
 name|URL_START
 argument_list|)
 operator|.
 name|append
 argument_list|(
+name|DBLPFetcher
+operator|.
 name|URL_PART1
 argument_list|)
 decl_stmt|;
@@ -773,6 +777,8 @@ name|sb
 operator|.
 name|append
 argument_list|(
+name|DBLPFetcher
+operator|.
 name|URL_END
 argument_list|)
 expr_stmt|;

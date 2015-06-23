@@ -174,6 +174,8 @@ name|sortField
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|compare (BibtexEntry e1, BibtexEntry e2)
 specifier|public
 name|int
@@ -194,9 +196,11 @@ name|e1
 operator|==
 name|e2
 condition|)
+block|{
 return|return
 literal|0
 return|;
+block|}
 comment|//Util.pr("EntryComparator: "+e1+" : "+e2);
 name|Object
 name|f1
@@ -229,6 +233,7 @@ name|f1
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 operator|(
 name|f2
@@ -261,7 +266,9 @@ name|e2
 argument_list|)
 operator|)
 return|;
+block|}
 else|else
+block|{
 return|return
 operator|(
 name|f2
@@ -294,6 +301,7 @@ else|:
 literal|1
 return|;
 block|}
+block|}
 comment|// If the field is author or editor, we rearrange names so they are
 comment|// sorted according to last name.
 if|if
@@ -319,6 +327,7 @@ name|f1
 operator|!=
 literal|null
 condition|)
+block|{
 name|f1
 operator|=
 name|AuthorList
@@ -334,6 +343,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 expr_stmt|;
+block|}
 comment|//ImportFormatReader.fixAuthor_lastNameFirst((String)f1);
 if|if
 condition|(
@@ -341,6 +351,7 @@ name|f2
 operator|!=
 literal|null
 condition|)
+block|{
 name|f2
 operator|=
 name|AuthorList
@@ -357,6 +368,7 @@ name|toLowerCase
 argument_list|()
 expr_stmt|;
 comment|//ImportFormatReader.fixAuthor_lastNameFirst((String)f2);
+block|}
 block|}
 elseif|else
 if|if
@@ -461,6 +473,7 @@ operator|==
 literal|null
 operator|)
 condition|)
+block|{
 return|return
 operator|(
 name|next
@@ -484,6 +497,7 @@ name|e2
 argument_list|)
 operator|)
 return|;
+block|}
 if|if
 condition|(
 operator|(
@@ -498,10 +512,12 @@ operator|==
 literal|null
 operator|)
 condition|)
+block|{
 return|return
 operator|-
 literal|1
 return|;
+block|}
 if|if
 condition|(
 operator|(
@@ -516,9 +532,11 @@ operator|!=
 literal|null
 operator|)
 condition|)
+block|{
 return|return
 literal|1
 return|;
+block|}
 name|int
 name|result
 decl_stmt|;
@@ -685,6 +703,7 @@ name|result
 operator|!=
 literal|0
 condition|)
+block|{
 return|return
 operator|(
 name|descending
@@ -696,12 +715,14 @@ name|result
 operator|)
 return|;
 comment|// Primary sort.
+block|}
 if|if
 condition|(
 name|next
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|next
 operator|.
@@ -713,6 +734,7 @@ name|e2
 argument_list|)
 return|;
 comment|// Secondary sort if existent.
+block|}
 else|else
 block|{
 return|return

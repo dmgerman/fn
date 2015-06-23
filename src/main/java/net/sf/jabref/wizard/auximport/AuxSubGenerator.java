@@ -376,6 +376,7 @@ name|path
 operator|!=
 literal|null
 condition|)
+block|{
 name|path
 operator|=
 name|path
@@ -384,11 +385,14 @@ name|File
 operator|.
 name|separator
 expr_stmt|;
+block|}
 else|else
+block|{
 name|path
 operator|=
 literal|""
 expr_stmt|;
+block|}
 name|nestedAuxCounter
 operator|=
 operator|-
@@ -726,10 +730,12 @@ block|}
 block|}
 comment|// line != null
 else|else
+block|{
 name|weiter
 operator|=
 literal|false
 expr_stmt|;
+block|}
 block|}
 comment|// end of while
 if|if
@@ -1066,12 +1072,14 @@ name|auxDB
 operator|==
 literal|null
 condition|)
+block|{
 name|auxDB
 operator|=
 operator|new
 name|BibtexDatabase
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|auxDB
 return|;

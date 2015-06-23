@@ -54,6 +54,8 @@ specifier|public
 name|Iso690FormatDate
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 DECL|method|format (String s)
 specifier|public
 name|String
@@ -65,9 +67,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|s
 operator|==
 literal|null
+operator|)
 operator|||
 name|s
 operator|.
@@ -79,9 +83,11 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 name|StringBuilder
 name|sb
 init|=

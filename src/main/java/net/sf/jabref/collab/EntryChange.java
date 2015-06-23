@@ -170,11 +170,14 @@ name|key
 operator|==
 literal|null
 condition|)
+block|{
 name|name
 operator|=
 literal|"Modified entry"
 expr_stmt|;
+block|}
 else|else
+block|{
 name|name
 operator|=
 literal|"Modified entry: '"
@@ -183,6 +186,7 @@ name|key
 operator|+
 literal|"'"
 expr_stmt|;
+block|}
 name|this
 operator|.
 name|memEntry
@@ -472,6 +476,8 @@ block|}
 comment|//Util.pr("Field: "+fld.next());
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|boolean
@@ -503,12 +509,6 @@ name|Change
 argument_list|>
 name|e
 init|=
-operator|(
-name|Enumeration
-argument_list|<
-name|Change
-argument_list|>
-operator|)
 name|children
 argument_list|()
 decl_stmt|;
@@ -542,6 +542,7 @@ operator|.
 name|isAccepted
 argument_list|()
 condition|)
+block|{
 name|c
 operator|.
 name|makeChange
@@ -553,17 +554,22 @@ argument_list|,
 name|undoEdit
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|allAccepted
 operator|=
 literal|false
 expr_stmt|;
+block|}
 block|}
 comment|/*panel.database().removeEntry(memEntry.getId());         try {           diskEntry.setId(Util.createNeutralId());         } catch (KeyCollisionException ex) {}         panel.database().removeEntry(memEntry.getId());*/
 return|return
 name|allAccepted
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|description ()
 name|JComponent
 name|description
@@ -756,6 +762,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|text
 operator|.
 name|append
@@ -785,7 +792,9 @@ argument_list|(
 name|onDisk
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|text
 operator|.
 name|append
@@ -808,6 +817,7 @@ argument_list|(
 literal|"</H3>"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -824,6 +834,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|text
 operator|.
 name|append
@@ -853,6 +864,7 @@ argument_list|(
 name|inMem
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -869,6 +881,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|text
 operator|.
 name|append
@@ -898,6 +911,7 @@ argument_list|(
 name|onTmp
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|// No value in memory.
@@ -921,6 +935,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|boolean
@@ -976,6 +992,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|description ()
 name|JComponent
 name|description

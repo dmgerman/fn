@@ -294,6 +294,8 @@ operator|new
 name|HyperlinkListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|hyperlinkUpdate
@@ -542,11 +544,13 @@ argument_list|(
 literal|"en/"
 argument_list|)
 condition|)
+block|{
 name|middle
 operator|=
 literal|""
 expr_stmt|;
 comment|// english in base help dir.
+block|}
 name|URL
 name|old
 init|=
@@ -603,6 +607,8 @@ literal|null
 condition|)
 block|{
 comment|// TODO show warning to user
+name|HelpContent
+operator|.
 name|log
 operator|.
 name|error
@@ -656,6 +662,7 @@ name|old
 operator|!=
 literal|null
 condition|)
+block|{
 name|history
 operator|.
 name|push
@@ -664,7 +671,10 @@ name|old
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 comment|/**      * Convenience method for setPage(String)      */
+annotation|@
+name|Override
 DECL|method|setPage (URL url)
 specifier|public
 name|void

@@ -334,6 +334,8 @@ operator|=
 name|panel
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|init ()
 specifier|public
 name|void
@@ -385,6 +387,7 @@ name|optDiag
 operator|==
 literal|null
 condition|)
+block|{
 name|optDiag
 operator|=
 operator|new
@@ -405,6 +408,7 @@ argument_list|,
 name|fieldName
 argument_list|)
 expr_stmt|;
+block|}
 name|Util
 operator|.
 name|placeDialog
@@ -475,6 +479,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -801,6 +807,7 @@ name|dirs1
 range|:
 name|dirsS
 control|)
+block|{
 name|dirs
 operator|.
 name|add
@@ -812,6 +819,7 @@ name|dirs1
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 for|for
 control|(
 name|int
@@ -861,9 +869,11 @@ if|if
 condition|(
 name|httpLink
 condition|)
+block|{
 continue|continue;
 comment|// Don't check the remote file.
 comment|// TODO: should there be an option to check remote links?
+block|}
 comment|// A variable to keep track of whether this link gets deleted:
 name|boolean
 name|deleted
@@ -1400,10 +1410,12 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 name|toSet
 operator|=
 literal|null
 expr_stmt|;
+block|}
 name|ce
 operator|.
 name|addEdit
@@ -1475,6 +1487,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void
@@ -1486,7 +1500,9 @@ condition|(
 operator|!
 name|goOn
 condition|)
+block|{
 return|return;
+block|}
 name|int
 name|entriesChangedCount
 init|=
@@ -1679,6 +1695,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1705,6 +1723,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2116,6 +2136,8 @@ name|pack
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setVisible (boolean visible)
 specifier|public
 name|void
@@ -2129,10 +2151,12 @@ if|if
 condition|(
 name|visible
 condition|)
+block|{
 name|canceled
 operator|=
 literal|true
 expr_stmt|;
+block|}
 name|String
 index|[]
 name|dirs

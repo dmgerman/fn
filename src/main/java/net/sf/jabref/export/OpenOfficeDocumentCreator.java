@@ -207,6 +207,8 @@ literal|".sxc"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, final String file, final String encoding, Set<String> keySet)
 specifier|public
 name|void
@@ -237,6 +239,8 @@ parameter_list|)
 throws|throws
 name|Exception
 block|{
+name|OpenOfficeDocumentCreator
+operator|.
 name|exportOpenOfficeCalc
 argument_list|(
 operator|new
@@ -333,6 +337,8 @@ argument_list|()
 expr_stmt|;
 comment|// Add manifest (required for OOo 2.0), "meta.xml", "mimetype" files. These are in the
 comment|// resource/openoffice directory, and are copied verbatim into the zip file.
+name|OpenOfficeDocumentCreator
+operator|.
 name|addResourceFile
 argument_list|(
 literal|"meta.xml"
@@ -342,6 +348,8 @@ argument_list|,
 name|out
 argument_list|)
 expr_stmt|;
+name|OpenOfficeDocumentCreator
+operator|.
 name|addResourceFile
 argument_list|(
 literal|"mimetype"
@@ -351,6 +359,8 @@ argument_list|,
 name|out
 argument_list|)
 expr_stmt|;
+name|OpenOfficeDocumentCreator
+operator|.
 name|addResourceFile
 argument_list|(
 literal|"META-INF/manifest.xml"
@@ -405,6 +415,8 @@ argument_list|,
 literal|null
 argument_list|)
 decl_stmt|;
+name|OpenOfficeDocumentCreator
+operator|.
 name|exportOpenOfficeCalcXML
 argument_list|(
 name|tmpFile
@@ -428,6 +440,8 @@ name|tmpFile
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|OpenOfficeDocumentCreator
+operator|.
 name|storeOpenOfficeFile
 argument_list|(
 name|file
@@ -603,6 +617,8 @@ argument_list|(
 name|zipEntry
 argument_list|)
 expr_stmt|;
+name|OpenOfficeDocumentCreator
+operator|.
 name|addFromResource
 argument_list|(
 name|resource
@@ -688,7 +704,9 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 break|break;
+block|}
 name|out
 operator|.
 name|write

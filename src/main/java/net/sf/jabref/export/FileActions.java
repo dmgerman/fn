@@ -345,6 +345,8 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
+name|FileActions
+operator|.
 name|previousStringType
 operator|=
 name|BibtexString
@@ -499,14 +501,18 @@ name|getName
 argument_list|()
 argument_list|)
 operator|&&
+operator|(
 name|bs
 operator|.
 name|getType
 argument_list|()
 operator|==
 name|t
+operator|)
 condition|)
 block|{
+name|FileActions
+operator|.
 name|writeString
 argument_list|(
 name|fw
@@ -587,6 +593,8 @@ condition|(
 operator|(
 name|m
 operator|=
+name|FileActions
+operator|.
 name|refPat
 operator|.
 name|matcher
@@ -663,6 +671,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|FileActions
+operator|.
 name|writeString
 argument_list|(
 name|fw
@@ -681,6 +691,8 @@ block|}
 block|}
 if|if
 condition|(
+name|FileActions
+operator|.
 name|previousStringType
 operator|!=
 name|bs
@@ -698,6 +710,8 @@ operator|.
 name|NEWLINE
 argument_list|)
 expr_stmt|;
+name|FileActions
+operator|.
 name|previousStringType
 operator|=
 name|bs
@@ -1077,6 +1091,8 @@ name|getWriter
 argument_list|()
 decl_stmt|;
 comment|// Write signature.
+name|FileActions
+operator|.
 name|writeBibFileHeader
 argument_list|(
 name|fw
@@ -1085,6 +1101,8 @@ name|encoding
 argument_list|)
 expr_stmt|;
 comment|// Write preamble if there is one.
+name|FileActions
+operator|.
 name|writePreamble
 argument_list|(
 name|fw
@@ -1096,6 +1114,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Write strings if there are any.
+name|FileActions
+operator|.
 name|writeStrings
 argument_list|(
 name|fw
@@ -1113,6 +1133,8 @@ name|BibtexEntry
 argument_list|>
 name|sorter
 init|=
+name|FileActions
+operator|.
 name|getSortedEntries
 argument_list|(
 name|database
@@ -1199,6 +1221,8 @@ condition|(
 name|checkSearch
 operator|&&
 operator|!
+name|FileActions
+operator|.
 name|nonZeroField
 argument_list|(
 name|be
@@ -1219,6 +1243,8 @@ condition|(
 name|checkGroup
 operator|&&
 operator|!
+name|FileActions
+operator|.
 name|nonZeroField
 argument_list|(
 name|be
@@ -2135,6 +2161,8 @@ name|PLAIN_BIBTEX
 condition|)
 block|{
 comment|// Write signature.
+name|FileActions
+operator|.
 name|writeBibFileHeader
 argument_list|(
 name|fw
@@ -2144,6 +2172,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Write preamble if there is one.
+name|FileActions
+operator|.
 name|writePreamble
 argument_list|(
 name|fw
@@ -2155,6 +2185,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Write strings if there are any.
+name|FileActions
+operator|.
 name|writeStrings
 argument_list|(
 name|fw
@@ -2175,6 +2207,8 @@ argument_list|>
 argument_list|>
 name|comparators
 init|=
+name|FileActions
+operator|.
 name|getSaveComparators
 argument_list|(
 literal|true
@@ -2313,15 +2347,19 @@ block|}
 comment|// Write meta data.
 if|if
 condition|(
+operator|(
 name|saveType
 operator|!=
 name|DatabaseSaveType
 operator|.
 name|PLAIN_BIBTEX
+operator|)
 operator|&&
+operator|(
 name|metaData
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 name|metaData
@@ -2714,6 +2752,8 @@ else|else
 block|{
 name|comparators
 operator|=
+name|FileActions
+operator|.
 name|getSaveComparators
 argument_list|(
 name|isSaveOperation

@@ -133,6 +133,8 @@ implements|implements
 name|LayoutFormatter
 block|{
 comment|//~ Methods ////////////////////////////////////////////////////////////////
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -151,9 +153,11 @@ argument_list|(
 literal|"Article"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|"7"
 return|;
+block|}
 if|if
 condition|(
 name|fieldText
@@ -163,9 +167,11 @@ argument_list|(
 literal|"Book"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|"1"
 return|;
+block|}
 if|if
 condition|(
 name|fieldText
@@ -175,9 +181,11 @@ argument_list|(
 literal|"Booklet"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|"2"
 return|;
+block|}
 if|if
 condition|(
 name|fieldText
@@ -187,9 +195,11 @@ argument_list|(
 literal|"Inbook"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|"5"
 return|;
+block|}
 if|if
 condition|(
 name|fieldText
@@ -199,9 +209,11 @@ argument_list|(
 literal|"Incollection"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|"5"
 return|;
+block|}
 if|if
 condition|(
 name|fieldText
@@ -211,9 +223,11 @@ argument_list|(
 literal|"Inproceedings"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|"6"
 return|;
+block|}
 if|if
 condition|(
 name|fieldText
@@ -223,9 +237,11 @@ argument_list|(
 literal|"Manual"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|"8"
 return|;
+block|}
 if|if
 condition|(
 name|fieldText
@@ -235,9 +251,11 @@ argument_list|(
 literal|"Mastersthesis"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|"9"
 return|;
+block|}
 if|if
 condition|(
 name|fieldText
@@ -247,9 +265,11 @@ argument_list|(
 literal|"Misc"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|"10"
 return|;
+block|}
 if|if
 condition|(
 name|fieldText
@@ -259,9 +279,11 @@ argument_list|(
 literal|"Other"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|"10"
 return|;
+block|}
 if|if
 condition|(
 name|fieldText
@@ -271,9 +293,11 @@ argument_list|(
 literal|"Phdthesis"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|"9"
 return|;
+block|}
 if|if
 condition|(
 name|fieldText
@@ -283,9 +307,11 @@ argument_list|(
 literal|"Proceedings"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|"3"
 return|;
+block|}
 if|if
 condition|(
 name|fieldText
@@ -295,9 +321,11 @@ argument_list|(
 literal|"Techreport"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|"13"
 return|;
+block|}
 if|if
 condition|(
 name|fieldText
@@ -307,9 +335,11 @@ argument_list|(
 literal|"Unpublished"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|"14"
 return|;
+block|}
 comment|// Default, Miscelaneous
 return|return
 literal|"10"

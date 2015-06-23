@@ -805,6 +805,8 @@ operator|new
 name|ListSelectionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|valueChanged
@@ -820,7 +822,9 @@ operator|.
 name|getValueIsAdjusting
 argument_list|()
 condition|)
+block|{
 return|return;
+block|}
 name|String
 name|o
 init|=
@@ -1102,6 +1106,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1145,7 +1151,9 @@ name|filename
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|File
 name|file
 init|=
@@ -1271,6 +1279,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1314,7 +1324,9 @@ name|filename
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 try|try
 block|{
 name|prefs
@@ -1424,6 +1436,8 @@ literal|"Ok"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1445,6 +1459,8 @@ name|ready
 init|=
 literal|true
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1546,6 +1562,8 @@ name|flush
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|update
@@ -1556,7 +1574,9 @@ condition|(
 operator|!
 name|ready
 condition|)
+block|{
 return|return;
+block|}
 name|setVisible
 argument_list|(
 literal|false
@@ -1690,6 +1710,8 @@ literal|"Cancel"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

@@ -652,6 +652,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -703,6 +705,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -754,6 +758,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1390,6 +1396,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -1436,6 +1444,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -1532,6 +1542,7 @@ argument_list|(
 literal|"namesAsIs"
 argument_list|)
 condition|)
+block|{
 name|namesAsIs
 operator|.
 name|setSelected
@@ -1539,6 +1550,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1549,6 +1561,7 @@ argument_list|(
 literal|"namesFf"
 argument_list|)
 condition|)
+block|{
 name|namesFf
 operator|.
 name|setSelected
@@ -1556,6 +1569,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1566,6 +1580,7 @@ argument_list|(
 literal|"namesNatbib"
 argument_list|)
 condition|)
+block|{
 name|namesNatbib
 operator|.
 name|setSelected
@@ -1573,7 +1588,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|namesFl
 operator|.
 name|setSelected
@@ -1581,6 +1598,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|_prefs
@@ -1590,6 +1608,7 @@ argument_list|(
 literal|"abbrAuthorNames"
 argument_list|)
 condition|)
+block|{
 name|abbrNames
 operator|.
 name|setSelected
@@ -1597,6 +1616,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1607,6 +1627,7 @@ argument_list|(
 literal|"namesLastOnly"
 argument_list|)
 condition|)
+block|{
 name|lastNamesOnly
 operator|.
 name|setSelected
@@ -1614,7 +1635,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|noAbbrNames
 operator|.
 name|setSelected
@@ -1622,6 +1645,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 name|priDesc
 operator|.
 name|setSelected
@@ -1725,6 +1749,7 @@ name|numF
 operator|==
 literal|null
 condition|)
+block|{
 name|numericFields
 operator|.
 name|setText
@@ -1732,7 +1757,9 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|numericFields
 operator|.
 name|setText
@@ -1741,7 +1768,10 @@ name|numF
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 comment|/**      * Store changes to table preferences. This method is called when the user      * clicks Ok.      *       */
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -1977,10 +2007,12 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 name|newVal
 operator|=
 literal|null
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -2044,6 +2076,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|readyToClose ()
 specifier|public
 name|boolean
@@ -2054,6 +2088,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTabName ()
 specifier|public
 name|String

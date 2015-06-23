@@ -230,6 +230,7 @@ name|aDatabase
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -237,6 +238,7 @@ argument_list|(
 literal|"Passing a 'null' BibtexDatabase."
 argument_list|)
 throw|;
+block|}
 name|entries
 operator|=
 name|aDatabase
@@ -355,17 +357,23 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|aFile
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|anEntry
 operator|==
 literal|null
+operator|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|FileListTableModel
 name|model
 init|=
@@ -380,6 +388,8 @@ name|anEntry
 operator|.
 name|getField
 argument_list|(
+name|DatabaseFileLookup
+operator|.
 name|KEY_FILE_FIELD
 argument_list|)
 decl_stmt|;
@@ -449,10 +459,12 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|expandedFilename
 operator|!=
 literal|null
 comment|// file exists
+operator|)
 operator|&&
 name|expandedFilename
 operator|.

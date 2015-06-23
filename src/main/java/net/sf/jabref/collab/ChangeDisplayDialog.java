@@ -554,6 +554,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -568,6 +570,7 @@ name|selected
 operator|!=
 literal|null
 condition|)
+block|{
 name|selected
 operator|.
 name|setAccepted
@@ -580,6 +583,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 argument_list|)
 expr_stmt|;
 name|cancel
@@ -590,6 +594,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -613,6 +619,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -691,6 +699,7 @@ operator|.
 name|isAccepted
 argument_list|()
 condition|)
+block|{
 name|allAccepted
 operator|=
 name|c
@@ -708,15 +717,18 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
 name|allAccepted
 condition|)
+block|{
 name|anyDisabled
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 name|ce
 operator|.
@@ -736,11 +748,13 @@ if|if
 condition|(
 name|anyDisabled
 condition|)
+block|{
 name|panel
 operator|.
 name|markBaseChanged
 argument_list|()
 expr_stmt|;
+block|}
 name|panel
 operator|.
 name|setUpdatedExternally
@@ -788,6 +802,7 @@ name|infoShown
 operator|!=
 literal|null
 condition|)
+block|{
 name|infoPanel
 operator|.
 name|remove
@@ -795,6 +810,7 @@ argument_list|(
 name|infoShown
 argument_list|)
 expr_stmt|;
+block|}
 name|infoShown
 operator|=
 name|comp
@@ -822,6 +838,8 @@ argument_list|()
 expr_stmt|;
 block|}
 comment|/**      * valueChanged      *      * @param e TreeSelectionEvent      */
+annotation|@
+name|Override
 DECL|method|valueChanged (TreeSelectionEvent e)
 specifier|public
 name|void

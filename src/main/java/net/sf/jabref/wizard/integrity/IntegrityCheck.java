@@ -219,7 +219,9 @@ name|entry
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|Object
 name|data
 init|=
@@ -236,6 +238,7 @@ name|data
 operator|!=
 literal|null
 condition|)
+block|{
 name|authorNameCheck
 argument_list|(
 name|data
@@ -248,6 +251,7 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
 name|data
 operator|=
 name|entry
@@ -263,6 +267,7 @@ name|data
 operator|!=
 literal|null
 condition|)
+block|{
 name|authorNameCheck
 argument_list|(
 name|data
@@ -275,6 +280,7 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
 name|data
 operator|=
 name|entry
@@ -290,6 +296,7 @@ name|data
 operator|!=
 literal|null
 condition|)
+block|{
 name|titleCheck
 argument_list|(
 name|data
@@ -302,6 +309,7 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
 name|data
 operator|=
 name|entry
@@ -317,6 +325,7 @@ name|data
 operator|!=
 literal|null
 condition|)
+block|{
 name|yearCheck
 argument_list|(
 name|data
@@ -329,6 +338,7 @@ argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/** fills the class Vector (of IntegrityMessage Objects) which did inform about      *  failures, hints....      *  The Authors or Editors field could be invalid -> try to detect it!      *  Knuth, Donald E. and Kurt Cobain and A. Einstein = N,NNaNNaNN      */
 DECL|method|authorNameCheck (String names, String fieldName, BibtexEntry entry)
@@ -408,7 +418,7 @@ name|mode
 operator|==
 literal|5
 condition|)
-comment|// "and"
+block|{
 name|structure
 operator|.
 name|append
@@ -416,7 +426,9 @@ argument_list|(
 literal|'a'
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|structure
 operator|.
 name|append
@@ -424,6 +436,7 @@ argument_list|(
 literal|'N'
 argument_list|)
 expr_stmt|;
+block|}
 name|structure
 operator|.
 name|append
@@ -445,7 +458,7 @@ name|mode
 operator|==
 literal|5
 condition|)
-comment|// "and"
+block|{
 name|structure
 operator|.
 name|append
@@ -453,6 +466,7 @@ argument_list|(
 literal|'a'
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -460,6 +474,7 @@ name|mode
 operator|!=
 literal|0
 condition|)
+block|{
 name|structure
 operator|.
 name|append
@@ -467,6 +482,7 @@ argument_list|(
 literal|'N'
 argument_list|)
 expr_stmt|;
+block|}
 name|mode
 operator|=
 operator|-
@@ -484,10 +500,12 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 name|mode
 operator|=
 literal|2
 expr_stmt|;
+block|}
 break|break;
 case|case
 literal|'n'
@@ -498,10 +516,12 @@ name|mode
 operator|==
 literal|2
 condition|)
+block|{
 name|mode
 operator|=
 literal|3
 expr_stmt|;
+block|}
 break|break;
 case|case
 literal|'d'
@@ -512,10 +532,12 @@ name|mode
 operator|==
 literal|3
 condition|)
+block|{
 name|mode
 operator|=
 literal|5
 expr_stmt|;
+block|}
 break|break;
 default|default:
 name|mode
@@ -530,7 +552,7 @@ name|mode
 operator|==
 literal|5
 condition|)
-comment|// "and"
+block|{
 name|structure
 operator|.
 name|append
@@ -538,6 +560,7 @@ argument_list|(
 literal|'a'
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -545,6 +568,7 @@ name|mode
 operator|!=
 literal|0
 condition|)
+block|{
 name|structure
 operator|.
 name|append
@@ -552,6 +576,7 @@ argument_list|(
 literal|'N'
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Check
 name|len
 operator|=
@@ -895,10 +920,12 @@ if|if
 condition|(
 name|fourDigitsBlock
 condition|)
+block|{
 name|containsFourDigits
 operator|=
 literal|true
 expr_stmt|;
+block|}
 name|digitCounter
 operator|=
 literal|0

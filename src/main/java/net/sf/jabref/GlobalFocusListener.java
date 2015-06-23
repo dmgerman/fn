@@ -77,6 +77,8 @@ specifier|public
 name|GlobalFocusListener
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 DECL|method|focusGained (FocusEvent e)
 specifier|public
 name|void
@@ -94,6 +96,7 @@ operator|.
 name|isTemporary
 argument_list|()
 condition|)
+block|{
 name|focused
 operator|=
 operator|(
@@ -105,6 +108,9 @@ name|getSource
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|focusLost (FocusEvent e)
 specifier|public
 name|void

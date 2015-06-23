@@ -158,6 +158,8 @@ operator|=
 name|sel
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTableCellRendererComponent (JTable table, Object o, boolean isSelected, boolean hasFocus, int row, int column)
 specifier|public
 name|Component
@@ -188,6 +190,7 @@ name|selBackground
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 name|super
 operator|.
@@ -206,6 +209,7 @@ argument_list|,
 name|column
 argument_list|)
 return|;
+block|}
 else|else
 block|{
 name|Component
@@ -232,6 +236,7 @@ if|if
 condition|(
 name|isSelected
 condition|)
+block|{
 name|c
 operator|.
 name|setBackground
@@ -239,7 +244,9 @@ argument_list|(
 name|selBackground
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|c
 operator|.
 name|setBackground
@@ -247,11 +254,14 @@ argument_list|(
 name|background
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|c
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|firePropertyChange (String propertyName, boolean old, boolean newV)
 specifier|public
 name|void
@@ -267,6 +277,8 @@ name|boolean
 name|newV
 parameter_list|)
 block|{     }
+annotation|@
+name|Override
 DECL|method|firePropertyChange (String propertyName, Object old, Object newV)
 specifier|public
 name|void
@@ -283,6 +295,8 @@ name|newV
 parameter_list|)
 block|{     }
 comment|/* For enabling the renderer to handle icons. */
+annotation|@
+name|Override
 DECL|method|setValue (Object value)
 specifier|protected
 name|void
@@ -357,11 +371,13 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|setText
 argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -382,6 +398,7 @@ name|value
 operator|!=
 literal|null
 condition|)
+block|{
 name|setText
 argument_list|(
 name|value
@@ -390,12 +407,15 @@ name|toString
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|setText
 argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/*  public void paint(Graphics g) {         Graphics2D g2 = (Graphics2D)g;         //System.out.println(antialiasing);         if (antialiasing) {             RenderingHints rh = g2.getRenderingHints();             rh.put(RenderingHints.KEY_ANTIALIASING,                 RenderingHints.VALUE_ANTIALIAS_ON);             rh.put(RenderingHints.KEY_RENDERING,                 RenderingHints.VALUE_RENDER_QUALITY);             g2.setRenderingHints(rh);         }           super.paint(g2);      }*/

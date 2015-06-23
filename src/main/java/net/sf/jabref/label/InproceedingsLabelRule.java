@@ -48,6 +48,8 @@ name|DefaultLabelRule
 block|{
 comment|// this is the rule used handle articles
 comment|// we try (first author)/(year)/(first unique booktitle word)
+annotation|@
+name|Override
 DECL|method|applyRule (BibtexEntry oldEntry)
 specifier|public
 name|String
@@ -248,9 +250,11 @@ literal|false
 decl_stmt|;
 while|while
 condition|(
+operator|(
 name|tempString
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|done
@@ -272,6 +276,7 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|tempString
 operator|.
 name|trim
@@ -281,6 +286,7 @@ name|length
 argument_list|()
 operator|>
 literal|3
+operator|)
 operator|&&
 operator|!
 name|KeyWord
@@ -328,9 +334,11 @@ block|}
 block|}
 if|if
 condition|(
+operator|(
 name|tempString
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|(
 operator|!

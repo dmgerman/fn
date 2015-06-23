@@ -100,6 +100,8 @@ operator|=
 name|formatters
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
