@@ -974,12 +974,11 @@ literal|null
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|missingFormatters
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|StringBuilder
@@ -1201,10 +1200,8 @@ if|if
 condition|(
 name|line
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 continue|continue;

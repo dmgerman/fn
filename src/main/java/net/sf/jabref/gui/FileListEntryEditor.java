@@ -1238,6 +1238,7 @@ literal|1
 operator|)
 operator|&&
 operator|(
+operator|!
 name|link
 operator|.
 name|getText
@@ -1246,10 +1247,8 @@ operator|.
 name|trim
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 condition|)
 block|{
@@ -1640,15 +1639,14 @@ literal|null
 operator|)
 operator|&&
 operator|(
+operator|!
 name|entry
 operator|.
 name|getLink
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 condition|)
 block|{
@@ -1989,10 +1987,8 @@ operator|.
 name|trim
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 comment|// Nothing in the field. Go to the last file dir used:

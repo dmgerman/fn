@@ -1375,12 +1375,11 @@ comment|// Now we've found all exact matches, look through the remaining entries
 comment|// for close matches.
 if|if
 condition|(
+operator|!
 name|notMatched
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 for|for
@@ -2283,12 +2282,11 @@ block|}
 comment|// See if we can detect a name change for those entries that we couldn't match.
 if|if
 condition|(
+operator|!
 name|notMatched
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 for|for
@@ -2493,12 +2491,11 @@ block|}
 block|}
 if|if
 condition|(
+operator|!
 name|notMatched
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 comment|// Still one or more non-matched strings. So they must have been removed.

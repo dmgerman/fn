@@ -708,12 +708,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|!
 name|matrix
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|DBImportExportDialog

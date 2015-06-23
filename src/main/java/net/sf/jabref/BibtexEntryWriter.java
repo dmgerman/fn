@@ -1664,10 +1664,8 @@ if|if
 condition|(
 name|field
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 comment|// hard coded "UNKNOWN" is assigned to a field without any name

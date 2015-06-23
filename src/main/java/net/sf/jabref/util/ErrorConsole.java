@@ -429,10 +429,8 @@ operator|.
 name|getText
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 operator|)
 condition|)
 block|{

@@ -2039,12 +2039,11 @@ block|}
 comment|// Remove those that should be removed:
 if|if
 condition|(
+operator|!
 name|toRemove
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 for|for

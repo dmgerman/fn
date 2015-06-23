@@ -1222,12 +1222,11 @@ block|}
 comment|// Write type definitions, if any:
 if|if
 condition|(
+operator|!
 name|types
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 for|for
@@ -2296,12 +2295,11 @@ block|}
 comment|// Write type definitions, if any:
 if|if
 condition|(
+operator|!
 name|types
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 for|for

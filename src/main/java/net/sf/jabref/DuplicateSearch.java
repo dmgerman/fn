@@ -638,12 +638,11 @@ block|{
 comment|// Now, do the actual removal:
 if|if
 condition|(
+operator|!
 name|toRemove
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 for|for

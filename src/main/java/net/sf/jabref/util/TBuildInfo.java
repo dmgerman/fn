@@ -199,12 +199,11 @@ condition|)
 block|{
 if|if
 condition|(
+operator|!
 name|buf
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 comment|// no empty lines

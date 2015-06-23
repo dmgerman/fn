@@ -100,10 +100,8 @@ if|if
 condition|(
 name|fieldText
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 return|return
@@ -173,12 +171,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|middle
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|s

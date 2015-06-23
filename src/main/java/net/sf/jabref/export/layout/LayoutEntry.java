@@ -1338,10 +1338,8 @@ operator|.
 name|trim
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 name|i
@@ -2157,12 +2155,11 @@ name|Exception
 block|{
 if|if
 condition|(
+operator|!
 name|className
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 try|try

@@ -1291,12 +1291,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|visible
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|boolean

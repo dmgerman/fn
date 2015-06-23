@@ -179,10 +179,8 @@ if|if
 condition|(
 name|data
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 throw|throw
