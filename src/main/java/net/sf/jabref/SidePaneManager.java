@@ -834,8 +834,10 @@ argument_list|(
 name|componentName
 argument_list|,
 name|index
-operator|++
 argument_list|)
+expr_stmt|;
+name|index
+operator|++
 expr_stmt|;
 block|}
 comment|// Split the map into a pair of parallel String arrays suitable for storage

@@ -953,10 +953,12 @@ argument_list|)
 decl_stmt|;
 comment|// setting values to ID and myID to be used in case of textual SQL
 comment|// export
+operator|++
+name|currentID
+expr_stmt|;
 name|int
 name|myID
 init|=
-operator|++
 name|currentID
 decl_stmt|;
 if|if
@@ -1862,6 +1864,9 @@ argument_list|()
 condition|;
 control|)
 block|{
+operator|++
+name|currentID
+expr_stmt|;
 name|currentID
 operator|=
 name|populateGroupsTable
@@ -1873,7 +1878,6 @@ argument_list|()
 argument_list|,
 name|myID
 argument_list|,
-operator|++
 name|currentID
 argument_list|,
 name|out

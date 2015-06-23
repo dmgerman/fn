@@ -208,9 +208,11 @@ operator|+
 operator|(
 operator|(
 name|c
+operator|)
+operator|)
+expr_stmt|;
+name|c
 operator|++
-operator|)
-operator|)
 expr_stmt|;
 block|}
 block|}

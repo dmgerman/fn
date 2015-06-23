@@ -2926,10 +2926,12 @@ block|{
 name|lastPressed
 index|[
 name|lastPressedCount
-operator|++
 index|]
 operator|=
 name|c
+expr_stmt|;
+name|lastPressedCount
+operator|++
 expr_stmt|;
 block|}
 name|int

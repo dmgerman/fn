@@ -1504,7 +1504,6 @@ block|{
 name|values
 index|[
 name|ii
-operator|++
 index|]
 operator|=
 name|String
@@ -1526,6 +1525,9 @@ argument_list|,
 literal|"Title"
 argument_list|)
 argument_list|)
+expr_stmt|;
+name|ii
+operator|++
 expr_stmt|;
 block|}
 name|JList

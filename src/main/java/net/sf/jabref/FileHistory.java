@@ -354,8 +354,10 @@ operator|.
 name|remove
 argument_list|(
 name|i
-operator|--
 argument_list|)
+expr_stmt|;
+name|i
+operator|--
 expr_stmt|;
 block|}
 name|i
@@ -448,8 +450,10 @@ name|next
 argument_list|()
 argument_list|,
 name|count
-operator|++
 argument_list|)
+expr_stmt|;
+name|count
+operator|++
 expr_stmt|;
 block|}
 block|}

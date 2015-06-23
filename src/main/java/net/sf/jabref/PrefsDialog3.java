@@ -720,13 +720,15 @@ decl_stmt|;
 name|names
 index|[
 name|i
-operator|++
 index|]
 operator|=
 name|tab
 operator|.
 name|getTabName
 argument_list|()
+expr_stmt|;
+name|i
+operator|++
 expr_stmt|;
 name|main
 operator|.

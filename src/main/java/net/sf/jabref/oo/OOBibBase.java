@@ -4600,13 +4600,15 @@ comment|//System.out.println(mark.getPosition().X+" -- "+mark.getPosition().Y+" 
 name|names
 index|[
 name|i
-operator|++
 index|]
 operator|=
 name|mark
 operator|.
 name|getName
 argument_list|()
+expr_stmt|;
+name|i
+operator|++
 expr_stmt|;
 block|}
 name|tvc
