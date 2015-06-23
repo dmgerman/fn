@@ -1643,9 +1643,9 @@ comment|// Util.pr("Finished string parsing.");
 name|String
 name|id
 init|=
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 decl_stmt|;
 return|return
@@ -1690,9 +1690,9 @@ block|{
 name|String
 name|id
 init|=
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 decl_stmt|;
 comment|// createId(tp, _db);

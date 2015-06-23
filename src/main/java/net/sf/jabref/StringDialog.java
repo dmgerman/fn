@@ -2271,9 +2271,9 @@ block|{
 name|String
 name|newId
 init|=
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 decl_stmt|;
 name|BibtexString

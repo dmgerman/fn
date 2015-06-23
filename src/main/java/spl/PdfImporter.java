@@ -1335,9 +1335,9 @@ comment|//Document document = documents/*.getDocuments().get(selected)*/;
 name|String
 name|id
 init|=
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 decl_stmt|;
 name|entry
@@ -2104,9 +2104,9 @@ comment|// Only if the dialog was not cancelled.
 name|String
 name|id
 init|=
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 decl_stmt|;
 specifier|final

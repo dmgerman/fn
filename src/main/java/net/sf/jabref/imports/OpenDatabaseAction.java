@@ -537,7 +537,7 @@ name|File
 argument_list|(
 name|Util
 operator|.
-name|checkName
+name|makeBibtexExtension
 argument_list|(
 name|e
 operator|.

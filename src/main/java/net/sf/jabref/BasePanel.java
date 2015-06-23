@@ -3265,9 +3265,9 @@ name|be
 operator|.
 name|setId
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -7800,9 +7800,9 @@ block|}
 name|String
 name|id
 init|=
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 decl_stmt|;
 name|BibtexEntry
@@ -9779,9 +9779,9 @@ comment|// Only if the dialog was not cancelled.
 name|String
 name|id
 init|=
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 decl_stmt|;
 specifier|final

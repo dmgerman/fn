@@ -297,9 +297,9 @@ comment|// The string was removed or renamed locally. We guess that it was remov
 name|String
 name|newId
 init|=
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 decl_stmt|;
 name|BibtexString
@@ -394,9 +394,9 @@ block|{
 name|String
 name|newId
 init|=
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 decl_stmt|;
 name|BibtexString

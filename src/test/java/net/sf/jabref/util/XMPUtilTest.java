@@ -234,18 +234,6 @@ name|*
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|*
-import|;
-end_import
-
 begin_comment
 comment|/**  * Limitations: The test suite only handles UTF8. Not UTF16.  *  * @author Christopher Oezbek<oezi@oezi.de>  */
 end_comment
@@ -729,9 +717,9 @@ init|=
 operator|new
 name|BibtexEntry
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|,
 name|BibtexEntryType

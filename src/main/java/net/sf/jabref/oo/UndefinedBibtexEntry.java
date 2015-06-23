@@ -36,7 +36,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|IdGenerator
 import|;
 end_import
 
@@ -67,9 +67,9 @@ parameter_list|)
 block|{
 name|super
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 expr_stmt|;

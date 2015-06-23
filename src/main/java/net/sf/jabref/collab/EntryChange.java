@@ -536,7 +536,7 @@ literal|false
 expr_stmt|;
 block|}
 block|}
-comment|/*panel.database().removeEntry(memEntry.getId());         try {           diskEntry.setId(Util.createNeutralId());         } catch (KeyCollisionException ex) {}         panel.database().removeEntry(memEntry.getId());*/
+comment|/*panel.database().removeEntry(memEntry.getId());         try {           diskEntry.setId(Util.next());         } catch (KeyCollisionException ex) {}         panel.database().removeEntry(memEntry.getId());*/
 return|return
 name|allAccepted
 return|;

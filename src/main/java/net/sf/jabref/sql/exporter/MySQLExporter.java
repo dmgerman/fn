@@ -56,7 +56,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|IdGenerator
 import|;
 end_import
 
@@ -321,7 +321,7 @@ literal|"entries_id      INTEGER         NOT NULL AUTO_INCREMENT, \n"
 operator|+
 literal|"jabref_eid      VARCHAR("
 operator|+
-name|Util
+name|IdGenerator
 operator|.
 name|getMinimumIntegerDigits
 argument_list|()

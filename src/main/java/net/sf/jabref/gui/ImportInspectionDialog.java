@@ -2783,9 +2783,9 @@ name|entry
 operator|.
 name|setId
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2953,9 +2953,9 @@ name|entry
 operator|.
 name|setId
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -4059,9 +4059,9 @@ name|entry
 operator|.
 name|setId
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
