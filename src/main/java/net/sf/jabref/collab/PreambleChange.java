@@ -227,10 +227,8 @@ operator|&&
 operator|!
 name|disk
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|text
@@ -304,10 +302,8 @@ operator|&&
 operator|!
 name|mem
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|text

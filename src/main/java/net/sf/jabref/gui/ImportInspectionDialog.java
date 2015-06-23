@@ -6244,10 +6244,8 @@ if|if
 condition|(
 name|result
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|entry

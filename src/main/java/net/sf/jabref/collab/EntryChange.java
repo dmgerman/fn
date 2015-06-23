@@ -387,10 +387,8 @@ operator|&&
 operator|!
 name|disk
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 comment|// Added externally.
@@ -432,10 +430,8 @@ operator|&&
 operator|!
 name|tmp
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 operator|&&
 operator|(
 name|mem
@@ -446,10 +442,8 @@ operator|&&
 operator|!
 name|mem
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 comment|// Deleted externally and not locally.
@@ -757,10 +751,8 @@ operator|&&
 operator|!
 name|onDisk
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|text
@@ -829,10 +821,8 @@ operator|&&
 operator|!
 name|inMem
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|text
@@ -876,10 +866,8 @@ operator|&&
 operator|!
 name|onTmp
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 name|text

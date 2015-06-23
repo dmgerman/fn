@@ -529,10 +529,6 @@ operator|==
 literal|null
 operator|)
 operator|||
-literal|""
-operator|.
-name|equals
-argument_list|(
 name|column
 operator|.
 name|getHeaderValue
@@ -540,7 +536,19 @@ argument_list|()
 operator|.
 name|toString
 argument_list|()
-argument_list|)
+operator|!=
+literal|null
+operator|&&
+name|column
+operator|.
+name|getHeaderValue
+argument_list|()
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|isEmpty
+argument_list|()
 return|;
 block|}
 comment|/**      * Transform model index<code>mColIndex</code> to a view based index and      * prevent dragging before model index<code>toIndex</code> (inclusive).      */

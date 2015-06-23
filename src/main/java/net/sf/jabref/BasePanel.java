@@ -13707,10 +13707,8 @@ operator|||
 operator|(
 name|oldKey
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 operator|)
 condition|)
 block|{
@@ -14637,10 +14635,8 @@ operator|)
 operator|||
 name|citeKey
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 continue|continue;

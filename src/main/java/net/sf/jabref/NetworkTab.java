@@ -644,10 +644,8 @@ operator|.
 name|trim
 argument_list|()
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 operator|)
 operator|||
 operator|(
@@ -662,10 +660,8 @@ operator|.
 name|trim
 argument_list|()
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 operator|)
 condition|)
 block|{

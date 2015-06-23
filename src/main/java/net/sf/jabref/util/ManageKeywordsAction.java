@@ -1087,10 +1087,8 @@ if|if
 condition|(
 name|text
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 comment|// no text to add, do nothing
