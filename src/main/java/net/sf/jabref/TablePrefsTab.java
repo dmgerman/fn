@@ -230,6 +230,7 @@ implements|implements
 name|PrefsTab
 block|{
 DECL|field|_prefs
+specifier|private
 specifier|final
 name|JabRefPreferences
 name|_prefs

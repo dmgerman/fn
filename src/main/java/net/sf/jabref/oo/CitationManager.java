@@ -220,21 +220,23 @@ end_comment
 
 begin_class
 DECL|class|CitationManager
-specifier|public
 class|class
 name|CitationManager
 block|{
 DECL|field|ooBase
+specifier|private
 specifier|final
 name|OOBibBase
 name|ooBase
 decl_stmt|;
 DECL|field|diag
+specifier|private
 specifier|final
 name|JDialog
 name|diag
 decl_stmt|;
 DECL|field|list
+specifier|private
 specifier|final
 name|EventList
 argument_list|<
@@ -243,10 +245,12 @@ argument_list|>
 name|list
 decl_stmt|;
 DECL|field|table
+specifier|private
 name|JTable
 name|table
 decl_stmt|;
 DECL|field|tableModel
+specifier|private
 name|EventTableModel
 argument_list|<
 name|CitEntry
@@ -254,6 +258,7 @@ argument_list|>
 name|tableModel
 decl_stmt|;
 DECL|field|ok
+specifier|private
 specifier|final
 name|JButton
 name|ok
@@ -270,6 +275,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|cancel
+specifier|private
 specifier|final
 name|JButton
 name|cancel
@@ -1034,6 +1040,7 @@ return|;
 block|}
 block|}
 DECL|class|CitEntryFormat
+specifier|private
 class|class
 name|CitEntryFormat
 implements|implements
@@ -1139,6 +1146,7 @@ block|}
 block|}
 block|}
 DECL|class|TableClickListener
+specifier|private
 class|class
 name|TableClickListener
 extends|extends

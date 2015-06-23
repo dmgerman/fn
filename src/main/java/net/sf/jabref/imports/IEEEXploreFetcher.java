@@ -380,6 +380,7 @@ name|CaseKeeperList
 argument_list|()
 decl_stmt|;
 DECL|field|caseKeeper
+specifier|private
 specifier|final
 name|CaseKeeper
 name|caseKeeper
@@ -389,6 +390,7 @@ name|CaseKeeper
 argument_list|()
 decl_stmt|;
 DECL|field|unitFormatter
+specifier|private
 specifier|final
 name|UnitFormatter
 name|unitFormatter
@@ -398,16 +400,19 @@ name|UnitFormatter
 argument_list|()
 decl_stmt|;
 DECL|field|dialog
+specifier|private
 name|ImportInspector
 name|dialog
 init|=
 literal|null
 decl_stmt|;
 DECL|field|status
+specifier|private
 name|OutputPrinter
 name|status
 decl_stmt|;
 DECL|field|htmlConverter
+specifier|private
 specifier|final
 name|HTMLConverter
 name|htmlConverter
@@ -652,6 +657,7 @@ literal|"\\s+(.+)"
 argument_list|)
 decl_stmt|;
 DECL|field|publicationPattern
+specifier|private
 specifier|final
 name|Pattern
 name|publicationPattern
@@ -664,6 +670,7 @@ literal|"(.*), \\d*\\.*\\s?(.*)"
 argument_list|)
 decl_stmt|;
 DECL|field|proceedingPattern
+specifier|private
 specifier|final
 name|Pattern
 name|proceedingPattern
@@ -687,6 +694,7 @@ literal|"<a href=\'(.+)\'>\\s*<span class=\"more\">View full.*</span></a>"
 argument_list|)
 decl_stmt|;
 DECL|field|abrvPattern
+specifier|private
 specifier|final
 name|String
 name|abrvPattern
@@ -705,6 +713,7 @@ literal|"<a href=\".*arnumber=(\\d+).*\">"
 argument_list|)
 decl_stmt|;
 DECL|field|authorPattern
+specifier|private
 specifier|final
 name|Pattern
 name|authorPattern
@@ -717,7 +726,7 @@ literal|"<span id=\"preferredName\" class=\"(.*)\">"
 argument_list|)
 decl_stmt|;
 DECL|field|IMPORT_URL
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -726,7 +735,7 @@ init|=
 literal|"http://ieeexplore.ieee.org/xpls/downloadCitations"
 decl_stmt|;
 DECL|field|START_URL
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -4928,7 +4937,7 @@ block|}
 block|}
 comment|/**      * Download the URL and return contents as a String.      * @param source      * @return      * @throws IOException      */
 DECL|method|getResults (URL source)
-specifier|public
+specifier|private
 name|String
 name|getResults
 parameter_list|(

@@ -284,18 +284,19 @@ end_comment
 
 begin_class
 DECL|class|ManageJournalsPanel
-specifier|public
 class|class
 name|ManageJournalsPanel
 extends|extends
 name|JPanel
 block|{
 DECL|field|frame
+specifier|private
 specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|personalFile
+specifier|private
 specifier|final
 name|JTextField
 name|personalFile
@@ -305,6 +306,7 @@ name|JTextField
 argument_list|()
 decl_stmt|;
 DECL|field|tableModel
+specifier|private
 specifier|final
 name|AbbreviationsTableModel
 name|tableModel
@@ -314,11 +316,13 @@ name|AbbreviationsTableModel
 argument_list|()
 decl_stmt|;
 DECL|field|userTable
+specifier|private
 name|JTable
 name|userTable
 decl_stmt|;
 comment|// builtInTable
 DECL|field|userPanel
+specifier|private
 specifier|final
 name|JPanel
 name|userPanel
@@ -328,11 +332,13 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|journalEditPanel
+specifier|private
 specifier|final
 name|JPanel
 name|journalEditPanel
 decl_stmt|;
 DECL|field|externalFilesPanel
+specifier|private
 specifier|final
 name|JPanel
 name|externalFilesPanel
@@ -342,6 +348,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|addExtPan
+specifier|private
 specifier|final
 name|JPanel
 name|addExtPan
@@ -351,6 +358,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|nameTf
+specifier|private
 specifier|final
 name|JTextField
 name|nameTf
@@ -360,6 +368,7 @@ name|JTextField
 argument_list|()
 decl_stmt|;
 DECL|field|newNameTf
+specifier|private
 specifier|final
 name|JTextField
 name|newNameTf
@@ -369,6 +378,7 @@ name|JTextField
 argument_list|()
 decl_stmt|;
 DECL|field|abbrTf
+specifier|private
 specifier|final
 name|JTextField
 name|abbrTf
@@ -378,6 +388,7 @@ name|JTextField
 argument_list|()
 decl_stmt|;
 DECL|field|externals
+specifier|private
 specifier|final
 name|List
 argument_list|<
@@ -394,11 +405,13 @@ argument_list|()
 decl_stmt|;
 comment|// To hold references to external journal lists.
 DECL|field|dialog
+specifier|private
 specifier|final
 name|JDialog
 name|dialog
 decl_stmt|;
 DECL|field|newFile
+specifier|private
 specifier|final
 name|JRadioButton
 name|newFile
@@ -415,6 +428,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|oldFile
+specifier|private
 specifier|final
 name|JRadioButton
 name|oldFile
@@ -431,6 +445,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|add
+specifier|private
 specifier|final
 name|JButton
 name|add
@@ -447,6 +462,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|remove
+specifier|private
 specifier|final
 name|JButton
 name|remove
@@ -463,6 +479,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|ok
+specifier|private
 specifier|final
 name|JButton
 name|ok
@@ -479,6 +496,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|cancel
+specifier|private
 specifier|final
 name|JButton
 name|cancel
@@ -495,6 +513,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|help
+specifier|private
 specifier|final
 name|JButton
 name|help
@@ -511,6 +530,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|browseOld
+specifier|private
 specifier|final
 name|JButton
 name|browseOld
@@ -527,6 +547,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|browseNew
+specifier|private
 specifier|final
 name|JButton
 name|browseNew
@@ -543,6 +564,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|addExt
+specifier|private
 specifier|final
 name|JButton
 name|addExt
@@ -559,6 +581,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|viewBuiltin
+specifier|private
 specifier|final
 name|JButton
 name|viewBuiltin
@@ -2095,7 +2118,7 @@ comment|//efe = new ExternalFileEntry();
 comment|//externals.add(efe);
 block|}
 DECL|method|setupUserTable ()
-specifier|public
+specifier|private
 name|void
 name|setupUserTable
 parameter_list|()
@@ -2209,7 +2232,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|readyToClose ()
-specifier|public
+specifier|private
 name|boolean
 name|readyToClose
 parameter_list|()
@@ -2353,7 +2376,7 @@ literal|true
 return|;
 block|}
 DECL|method|storeSettings ()
-specifier|public
+specifier|private
 name|void
 name|storeSettings
 parameter_list|()

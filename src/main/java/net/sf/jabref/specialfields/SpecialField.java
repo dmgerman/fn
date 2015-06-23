@@ -97,7 +97,6 @@ argument_list|>
 name|map
 decl_stmt|;
 DECL|method|setValues (List<SpecialFieldValue> values)
-specifier|protected
 name|void
 name|setValues
 parameter_list|(

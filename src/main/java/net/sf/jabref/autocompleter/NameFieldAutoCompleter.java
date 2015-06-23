@@ -123,7 +123,6 @@ name|autoCompShortFirstOnly
 decl_stmt|;
 comment|/**      * @see AutoCompleterFactory      */
 DECL|method|NameFieldAutoCompleter (String fieldName)
-specifier|protected
 name|NameFieldAutoCompleter
 parameter_list|(
 name|String

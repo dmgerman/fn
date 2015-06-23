@@ -62,7 +62,6 @@ end_import
 
 begin_class
 DECL|class|PreambleEditor
-specifier|public
 class|class
 name|PreambleEditor
 extends|extends
@@ -70,27 +69,32 @@ name|JDialog
 block|{
 comment|// A reference to the entry this object works on.
 DECL|field|base
+specifier|private
 specifier|final
 name|BibtexDatabase
 name|base
 decl_stmt|;
 DECL|field|panel
+specifier|private
 specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|baseFrame
+specifier|private
 specifier|final
 name|JabRefFrame
 name|baseFrame
 decl_stmt|;
 DECL|field|prefs
+specifier|private
 specifier|final
 name|JabRefPreferences
 name|prefs
 decl_stmt|;
 comment|// Layout objects.
 DECL|field|gbl
+specifier|private
 specifier|final
 name|GridBagLayout
 name|gbl
@@ -100,6 +104,7 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|con
+specifier|private
 specifier|final
 name|GridBagConstraints
 name|con
@@ -113,6 +118,7 @@ name|JLabel
 name|lab
 decl_stmt|;
 DECL|field|conPane
+specifier|private
 specifier|final
 name|Container
 name|conPane
@@ -122,6 +128,7 @@ argument_list|()
 decl_stmt|;
 comment|//JToolBar tlb = new JToolBar();
 DECL|field|pan
+specifier|private
 specifier|final
 name|JPanel
 name|pan
@@ -131,6 +138,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|ed
+specifier|private
 name|FieldEditor
 name|ed
 decl_stmt|;
@@ -642,6 +650,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|class|FieldListener
+specifier|private
 class|class
 name|FieldListener
 extends|extends
@@ -690,6 +699,7 @@ block|}
 block|}
 block|}
 DECL|field|storeFieldAction
+specifier|private
 specifier|final
 name|StoreFieldAction
 name|storeFieldAction
@@ -920,6 +930,7 @@ block|}
 block|}
 block|}
 DECL|field|undoAction
+specifier|private
 specifier|final
 name|UndoAction
 name|undoAction
@@ -991,6 +1002,7 @@ block|{             }
 block|}
 block|}
 DECL|field|redoAction
+specifier|private
 specifier|final
 name|RedoAction
 name|redoAction
@@ -1063,6 +1075,7 @@ block|}
 block|}
 comment|// The action concerned with closing the window.
 DECL|field|closeAction
+specifier|private
 specifier|final
 name|CloseAction
 name|closeAction

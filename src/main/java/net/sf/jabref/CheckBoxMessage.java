@@ -101,6 +101,7 @@ name|BorderLayout
 argument_list|()
 decl_stmt|;
 DECL|field|gbl
+specifier|private
 specifier|final
 name|GridBagLayout
 name|gbl
@@ -110,6 +111,7 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|con
+specifier|private
 specifier|final
 name|GridBagConstraints
 name|con
@@ -119,6 +121,7 @@ name|GridBagConstraints
 argument_list|()
 decl_stmt|;
 DECL|field|cb
+specifier|private
 specifier|final
 name|JCheckBox
 name|cb

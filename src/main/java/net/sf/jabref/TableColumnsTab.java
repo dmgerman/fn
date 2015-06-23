@@ -400,6 +400,7 @@ implements|implements
 name|PrefsTab
 block|{
 DECL|field|_prefs
+specifier|private
 specifier|final
 name|JabRefPreferences
 name|_prefs
@@ -3474,7 +3475,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|swap (int i, int j)
-specifier|protected
 name|void
 name|swap
 parameter_list|(

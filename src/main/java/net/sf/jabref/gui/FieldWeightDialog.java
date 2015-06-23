@@ -183,11 +183,13 @@ extends|extends
 name|JDialog
 block|{
 DECL|field|frame
+specifier|private
 specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|sliders
+specifier|private
 specifier|final
 name|HashMap
 argument_list|<
@@ -207,6 +209,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|ok
+specifier|private
 specifier|final
 name|JButton
 name|ok
@@ -223,6 +226,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|cancel
+specifier|private
 specifier|final
 name|JButton
 name|cancel
@@ -262,7 +266,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|FieldWeightDialog (JabRefFrame frame)
-specifier|public
+specifier|private
 name|FieldWeightDialog
 parameter_list|(
 name|JabRefFrame
@@ -329,7 +333,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|buildMainPanel ()
-specifier|public
+specifier|private
 name|JPanel
 name|buildMainPanel
 parameter_list|()
@@ -521,7 +525,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|buildButtonPanel ()
-specifier|public
+specifier|private
 name|JPanel
 name|buildButtonPanel
 parameter_list|()
@@ -618,7 +622,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|storeSettings ()
-specifier|public
+specifier|private
 name|void
 name|storeSettings
 parameter_list|()

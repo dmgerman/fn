@@ -115,6 +115,7 @@ name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|dupes
+specifier|private
 name|HashMap
 argument_list|<
 name|String

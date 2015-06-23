@@ -155,7 +155,7 @@ class|class
 name|BibtexEntry
 block|{
 DECL|field|ID_FIELD
-specifier|public
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -416,6 +416,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|_changeSupport
+specifier|private
 specifier|final
 name|VetoableChangeSupport
 name|_changeSupport
@@ -1565,7 +1566,6 @@ block|}
 block|}
 comment|/**      * Determines whether this entry has all the given fields present. If a non-null      * database argument is given, this method will try to look up missing fields in      * entries linked by the "crossref" field, if any.      *      * @param fields An array of field names to be checked.      * @param database The database in which to look up crossref'd entries, if any. This      *  argument can be null, meaning that no attempt will be made to follow crossrefs.      * @return true if all fields are set or could be resolved, false otherwise.      */
 DECL|method|allFieldsPresent (String[] fields, BibtexDatabase database)
-specifier|protected
 name|boolean
 name|allFieldsPresent
 parameter_list|(
@@ -1611,7 +1611,6 @@ literal|true
 return|;
 block|}
 DECL|method|atLeastOnePresent (String[] fields, BibtexDatabase database)
-specifier|protected
 name|boolean
 name|atLeastOnePresent
 parameter_list|(

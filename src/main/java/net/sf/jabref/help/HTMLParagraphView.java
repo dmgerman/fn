@@ -70,7 +70,7 @@ extends|extends
 name|ParagraphView
 block|{
 DECL|field|MAX_VIEW_SIZE
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -101,7 +101,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|class|HTMLFlowStrategy
-specifier|public
+specifier|private
 specifier|static
 class|class
 name|HTMLFlowStrategy

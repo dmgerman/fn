@@ -218,7 +218,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|compilePattern ()
-specifier|protected
+specifier|private
 name|void
 name|compilePattern
 parameter_list|()

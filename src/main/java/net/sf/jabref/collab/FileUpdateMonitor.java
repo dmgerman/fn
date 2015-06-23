@@ -124,6 +124,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|WAIT
+specifier|private
 specifier|final
 name|int
 name|WAIT
@@ -138,12 +139,14 @@ init|=
 literal|0
 decl_stmt|;
 DECL|field|no
+specifier|private
 name|int
 name|no
 init|=
 literal|0
 decl_stmt|;
 DECL|field|entries
+specifier|private
 specifier|final
 name|HashMap
 argument_list|<
@@ -163,6 +166,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|running
+specifier|private
 specifier|volatile
 name|boolean
 name|running
@@ -919,6 +923,7 @@ block|}
 comment|/*public void finalize() {           try {             tmpFile.delete();           } catch (Throwable e) {             Globals.logger("Cannot delete temporary file '"+tmpFile.getPath()+"'");           }         }*/
 block|}
 DECL|method|getTempFile ()
+specifier|private
 specifier|static
 specifier|synchronized
 name|File

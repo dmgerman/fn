@@ -87,13 +87,11 @@ name|AbstractGroup
 block|{
 comment|/** The group's name (every type of group has one). */
 DECL|field|m_name
-specifier|protected
 name|String
 name|m_name
 decl_stmt|;
 comment|/**      * The hierarchical context of the group (INDEPENDENT, REFINING, or      * INCLUDING). Defaults to INDEPENDENT, which will be used if and      * only if the context specified in the constructor is invalid.      */
 DECL|field|m_context
-specifier|protected
 name|int
 name|m_context
 init|=
@@ -109,7 +107,6 @@ name|getTypeId
 parameter_list|()
 function_decl|;
 DECL|method|AbstractGroup (String name, int context)
-specifier|public
 name|AbstractGroup
 parameter_list|(
 name|String
@@ -161,7 +158,6 @@ literal|2
 decl_stmt|;
 comment|/** Character used for quoting in the string representation. */
 DECL|field|QUOTE_CHAR
-specifier|protected
 specifier|static
 specifier|final
 name|char
@@ -171,7 +167,6 @@ literal|'\\'
 decl_stmt|;
 comment|/**      * For separating units (e.g. name, which every group has) in the string      * representation      */
 DECL|field|SEPARATOR
-specifier|protected
 specifier|static
 specifier|final
 name|String

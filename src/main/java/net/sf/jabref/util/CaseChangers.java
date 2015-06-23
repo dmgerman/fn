@@ -77,7 +77,7 @@ class|class
 name|CaseChangers
 block|{
 DECL|field|SPACE_SEPARATOR
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String

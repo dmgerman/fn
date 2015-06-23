@@ -720,6 +720,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|newButton
+specifier|private
 specifier|final
 name|JButton
 name|newButton
@@ -736,6 +737,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|helpButton
+specifier|private
 specifier|final
 name|JButton
 name|helpButton
@@ -752,6 +754,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|refresh
+specifier|private
 specifier|final
 name|JButton
 name|refresh
@@ -768,6 +771,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|autoGroup
+specifier|private
 specifier|final
 name|JButton
 name|autoGroup
@@ -784,6 +788,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|openset
+specifier|private
 specifier|final
 name|JButton
 name|openset
@@ -808,23 +813,28 @@ operator|.
 name|white
 decl_stmt|;
 DECL|field|groupsTree
+specifier|private
 name|GroupsTree
 name|groupsTree
 decl_stmt|;
 DECL|field|groupsTreeModel
+specifier|private
 name|DefaultTreeModel
 name|groupsTreeModel
 decl_stmt|;
 DECL|field|groupsRoot
+specifier|private
 name|GroupTreeNode
 name|groupsRoot
 decl_stmt|;
 DECL|field|sp
+specifier|private
 specifier|final
 name|JScrollPane
 name|sp
 decl_stmt|;
 DECL|field|gbl
+specifier|private
 specifier|final
 name|GridBagLayout
 name|gbl
@@ -834,6 +844,7 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|con
+specifier|private
 specifier|final
 name|GridBagConstraints
 name|con
@@ -852,6 +863,7 @@ name|String
 name|searchField
 decl_stmt|;
 DECL|field|groupsContextMenu
+specifier|private
 specifier|final
 name|JPopupMenu
 name|groupsContextMenu
@@ -861,6 +873,7 @@ name|JPopupMenu
 argument_list|()
 decl_stmt|;
 DECL|field|settings
+specifier|private
 specifier|final
 name|JPopupMenu
 name|settings
@@ -882,6 +895,7 @@ name|JRadioButtonMenuItem
 name|grayOut
 decl_stmt|;
 DECL|field|andCb
+specifier|private
 specifier|final
 name|JRadioButtonMenuItem
 name|andCb
@@ -900,6 +914,7 @@ literal|true
 argument_list|)
 decl_stmt|;
 DECL|field|orCb
+specifier|private
 specifier|final
 name|JRadioButtonMenuItem
 name|orCb
@@ -918,6 +933,7 @@ literal|false
 argument_list|)
 decl_stmt|;
 DECL|field|floatCb
+specifier|private
 specifier|final
 name|JRadioButtonMenuItem
 name|floatCb
@@ -936,6 +952,7 @@ literal|true
 argument_list|)
 decl_stmt|;
 DECL|field|highlCb
+specifier|private
 specifier|final
 name|JRadioButtonMenuItem
 name|highlCb
@@ -954,6 +971,7 @@ literal|false
 argument_list|)
 decl_stmt|;
 DECL|field|invCb
+specifier|private
 specifier|final
 name|JCheckBoxMenuItem
 name|invCb
@@ -972,6 +990,7 @@ literal|false
 argument_list|)
 decl_stmt|;
 DECL|field|select
+specifier|private
 specifier|final
 name|JCheckBoxMenuItem
 name|select
@@ -990,6 +1009,7 @@ literal|false
 argument_list|)
 decl_stmt|;
 DECL|field|showOverlappingGroups
+specifier|private
 specifier|final
 name|JCheckBoxMenuItem
 name|showOverlappingGroups
@@ -1007,6 +1027,7 @@ argument_list|)
 decl_stmt|;
 comment|// JZTODO lyrics
 DECL|field|showNumberOfElements
+specifier|private
 specifier|final
 name|JCheckBoxMenuItem
 name|showNumberOfElements
@@ -1023,6 +1044,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|autoAssignGroup
+specifier|private
 specifier|final
 name|JCheckBoxMenuItem
 name|autoAssignGroup
@@ -1039,6 +1061,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|bgr
+specifier|private
 specifier|final
 name|ButtonGroup
 name|bgr
@@ -1048,6 +1071,7 @@ name|ButtonGroup
 argument_list|()
 decl_stmt|;
 DECL|field|visMode
+specifier|private
 specifier|final
 name|ButtonGroup
 name|visMode
@@ -1057,6 +1081,7 @@ name|ButtonGroup
 argument_list|()
 decl_stmt|;
 DECL|field|nonHits
+specifier|private
 specifier|final
 name|ButtonGroup
 name|nonHits
@@ -1066,6 +1091,7 @@ name|ButtonGroup
 argument_list|()
 decl_stmt|;
 DECL|field|expand
+specifier|private
 specifier|final
 name|JButton
 name|expand
@@ -1082,6 +1108,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|reduce
+specifier|private
 specifier|final
 name|JButton
 name|reduce
@@ -1098,6 +1125,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|editModeCb
+specifier|private
 specifier|final
 name|JCheckBoxMenuItem
 name|editModeCb
@@ -1116,6 +1144,7 @@ literal|false
 argument_list|)
 decl_stmt|;
 DECL|field|editModeBorder
+specifier|private
 specifier|final
 name|Border
 name|editModeBorder
@@ -1164,10 +1193,12 @@ name|RED
 argument_list|)
 decl_stmt|;
 DECL|field|editModeIndicator
+specifier|private
 name|boolean
 name|editModeIndicator
 decl_stmt|;
 DECL|field|manager
+specifier|private
 specifier|final
 name|SidePaneManager
 name|manager
@@ -5410,7 +5441,7 @@ expr_stmt|;
 block|}
 comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and set the specified selection and expansion state.      * @param node If this is non-null, the view is scrolled to make it visible.      */
 DECL|method|revalidateGroups (TreePath[] selectionPaths, Enumeration<TreePath> expandedNodes, GroupTreeNode node)
-specifier|public
+specifier|private
 name|void
 name|revalidateGroups
 parameter_list|(
@@ -5524,7 +5555,7 @@ expr_stmt|;
 block|}
 comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and maintain the current selection and expansion state.      * @param node If this is non-null, the view is scrolled to make it visible.      */
 DECL|method|revalidateGroups (GroupTreeNode node)
-specifier|public
+specifier|private
 name|void
 name|revalidateGroups
 parameter_list|(
@@ -5849,7 +5880,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|setGroups (GroupTreeNode groupsRoot)
-specifier|public
+specifier|private
 name|void
 name|setGroups
 parameter_list|(
@@ -5965,7 +5996,6 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|field|m_node
-specifier|protected
 name|GroupTreeNode
 name|m_node
 init|=
@@ -6060,6 +6090,7 @@ return|;
 block|}
 block|}
 DECL|field|editGroupAction
+specifier|private
 specifier|final
 name|AbstractAction
 name|editGroupAction
@@ -6069,6 +6100,7 @@ name|EditGroupAction
 argument_list|()
 decl_stmt|;
 DECL|field|editGroupPopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|editGroupPopupAction
@@ -6078,6 +6110,7 @@ name|EditGroupAction
 argument_list|()
 decl_stmt|;
 DECL|field|addGroupPopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|addGroupPopupAction
@@ -6087,6 +6120,7 @@ name|AddGroupAction
 argument_list|()
 decl_stmt|;
 DECL|field|addSubgroupPopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|addSubgroupPopupAction
@@ -6096,6 +6130,7 @@ name|AddSubgroupAction
 argument_list|()
 decl_stmt|;
 DECL|field|removeGroupAndSubgroupsPopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|removeGroupAndSubgroupsPopupAction
@@ -6105,6 +6140,7 @@ name|RemoveGroupAndSubgroupsAction
 argument_list|()
 decl_stmt|;
 DECL|field|removeSubgroupsPopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|removeSubgroupsPopupAction
@@ -6114,6 +6150,7 @@ name|RemoveSubgroupsAction
 argument_list|()
 decl_stmt|;
 DECL|field|removeGroupKeepSubgroupsPopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|removeGroupKeepSubgroupsPopupAction
@@ -6123,6 +6160,7 @@ name|RemoveGroupKeepSubgroupsAction
 argument_list|()
 decl_stmt|;
 DECL|field|moveNodeUpPopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|moveNodeUpPopupAction
@@ -6132,6 +6170,7 @@ name|MoveNodeUpAction
 argument_list|()
 decl_stmt|;
 DECL|field|moveNodeDownPopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|moveNodeDownPopupAction
@@ -6141,6 +6180,7 @@ name|MoveNodeDownAction
 argument_list|()
 decl_stmt|;
 DECL|field|moveNodeLeftPopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|moveNodeLeftPopupAction
@@ -6150,6 +6190,7 @@ name|MoveNodeLeftAction
 argument_list|()
 decl_stmt|;
 DECL|field|moveNodeRightPopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|moveNodeRightPopupAction
@@ -6159,6 +6200,7 @@ name|MoveNodeRightAction
 argument_list|()
 decl_stmt|;
 DECL|field|moveNodeUpAction
+specifier|private
 specifier|final
 name|NodeAction
 name|moveNodeUpAction
@@ -6168,6 +6210,7 @@ name|MoveNodeUpAction
 argument_list|()
 decl_stmt|;
 DECL|field|moveNodeDownAction
+specifier|private
 specifier|final
 name|NodeAction
 name|moveNodeDownAction
@@ -6177,6 +6220,7 @@ name|MoveNodeDownAction
 argument_list|()
 decl_stmt|;
 DECL|field|moveNodeLeftAction
+specifier|private
 specifier|final
 name|NodeAction
 name|moveNodeLeftAction
@@ -6186,6 +6230,7 @@ name|MoveNodeLeftAction
 argument_list|()
 decl_stmt|;
 DECL|field|moveNodeRightAction
+specifier|private
 specifier|final
 name|NodeAction
 name|moveNodeRightAction
@@ -6195,6 +6240,7 @@ name|MoveNodeRightAction
 argument_list|()
 decl_stmt|;
 DECL|field|expandSubtreePopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|expandSubtreePopupAction
@@ -6204,6 +6250,7 @@ name|ExpandSubtreeAction
 argument_list|()
 decl_stmt|;
 DECL|field|collapseSubtreePopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|collapseSubtreePopupAction
@@ -6213,6 +6260,7 @@ name|CollapseSubtreeAction
 argument_list|()
 decl_stmt|;
 DECL|field|sortDirectSubgroupsPopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|sortDirectSubgroupsPopupAction
@@ -6222,6 +6270,7 @@ name|SortDirectSubgroupsAction
 argument_list|()
 decl_stmt|;
 DECL|field|sortAllSubgroupsPopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|sortAllSubgroupsPopupAction
@@ -6231,6 +6280,7 @@ name|SortAllSubgroupsAction
 argument_list|()
 decl_stmt|;
 DECL|field|addToGroup
+specifier|private
 specifier|final
 name|AddToGroupAction
 name|addToGroup
@@ -6242,6 +6292,7 @@ literal|false
 argument_list|)
 decl_stmt|;
 DECL|field|moveToGroup
+specifier|private
 specifier|final
 name|AddToGroupAction
 name|moveToGroup
@@ -6253,6 +6304,7 @@ literal|true
 argument_list|)
 decl_stmt|;
 DECL|field|removeFromGroup
+specifier|private
 specifier|final
 name|RemoveFromGroupAction
 name|removeFromGroup
@@ -8675,6 +8727,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|moveSubmenu
+specifier|private
 specifier|final
 name|JMenu
 name|moveSubmenu
@@ -8691,6 +8744,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|sortSubmenu
+specifier|private
 specifier|final
 name|JMenu
 name|sortSubmenu
@@ -9184,7 +9238,7 @@ expr_stmt|;
 block|}
 comment|/** Show groups that, if selected, would show at least one      * of the entries found in the specified search. */
 DECL|method|showOverlappingGroups (List<BibtexEntry> matches)
-specifier|protected
+specifier|private
 name|void
 name|showOverlappingGroups
 parameter_list|(

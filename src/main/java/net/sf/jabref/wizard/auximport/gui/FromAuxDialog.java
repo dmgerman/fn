@@ -2002,6 +2002,7 @@ operator|.
 name|ActionListener
 block|{
 DECL|field|adaptee
+specifier|private
 specifier|final
 name|FromAuxDialog
 name|adaptee
@@ -2056,6 +2057,7 @@ operator|.
 name|ActionListener
 block|{
 DECL|field|adaptee
+specifier|private
 specifier|final
 name|FromAuxDialog
 name|adaptee
@@ -2110,6 +2112,7 @@ operator|.
 name|ActionListener
 block|{
 DECL|field|adaptee
+specifier|private
 specifier|final
 name|FromAuxDialog
 name|adaptee

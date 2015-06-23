@@ -453,7 +453,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|getNewFile (JFrame owner, File directory, String extension, String description, int dialogType, boolean updateWorkingDirectory, boolean dirOnly, JComponent accessory)
-specifier|public
+specifier|private
 specifier|static
 name|String
 name|getNewFile
@@ -556,7 +556,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|getNewFileImpl (JFrame owner, File directory, String extension, String description, OpenFileFilter off, int dialogType, boolean updateWorkingDirectory, boolean dirOnly, boolean multipleSelection, JComponent accessory)
-specifier|public
+specifier|private
 specifier|static
 name|Object
 name|getNewFileImpl
@@ -975,7 +975,7 @@ return|;
 block|}
 block|}
 DECL|method|getNewFileForMac (JFrame owner, File directory, String extensions, int dialogType, boolean updateWorkingDirectory, boolean dirOnly, FilenameFilter filter)
-specifier|public
+specifier|private
 specifier|static
 name|String
 name|getNewFileForMac

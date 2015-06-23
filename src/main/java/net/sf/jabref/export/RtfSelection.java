@@ -74,17 +74,18 @@ end_import
 
 begin_class
 DECL|class|RtfSelection
-specifier|public
 class|class
 name|RtfSelection
 implements|implements
 name|Transferable
 block|{
 DECL|field|rtfFlavor
+specifier|private
 name|DataFlavor
 name|rtfFlavor
 decl_stmt|;
 DECL|field|supportedFlavors
+specifier|private
 name|DataFlavor
 index|[]
 name|supportedFlavors

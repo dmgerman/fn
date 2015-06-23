@@ -302,19 +302,20 @@ end_import
 
 begin_class
 DECL|class|ContentSelectorDialog2
-specifier|public
 class|class
 name|ContentSelectorDialog2
 extends|extends
 name|JDialog
 block|{
 DECL|field|wordEditFieldListener
+specifier|private
 name|ActionListener
 name|wordEditFieldListener
 init|=
 literal|null
 decl_stmt|;
 DECL|field|gbl
+specifier|private
 specifier|final
 name|GridBagLayout
 name|gbl
@@ -324,6 +325,7 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|con
+specifier|private
 specifier|final
 name|GridBagConstraints
 name|con
@@ -333,6 +335,7 @@ name|GridBagConstraints
 argument_list|()
 decl_stmt|;
 DECL|field|fieldPan
+specifier|private
 specifier|final
 name|JPanel
 name|fieldPan
@@ -342,6 +345,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|wordPan
+specifier|private
 specifier|final
 name|JPanel
 name|wordPan
@@ -351,6 +355,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|buttonPan
+specifier|private
 specifier|final
 name|JPanel
 name|buttonPan
@@ -360,6 +365,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|fieldNamePan
+specifier|private
 specifier|final
 name|JPanel
 name|fieldNamePan
@@ -369,6 +375,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|wordEditPan
+specifier|private
 specifier|final
 name|JPanel
 name|wordEditPan
@@ -388,8 +395,11 @@ name|lang
 argument_list|(
 literal|"<no field>"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|WORD_FIRSTLINE_TEXT
+specifier|private
+specifier|final
+name|String
 name|WORD_FIRSTLINE_TEXT
 init|=
 name|Globals
@@ -398,8 +408,11 @@ name|lang
 argument_list|(
 literal|"<select word>"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|FIELD_FIRST_LINE
+specifier|private
+specifier|final
+name|String
 name|FIELD_FIRST_LINE
 init|=
 name|Globals
@@ -410,37 +423,47 @@ literal|"<field name>"
 argument_list|)
 decl_stmt|;
 DECL|field|metaData
+specifier|private
 specifier|final
 name|MetaData
 name|metaData
 decl_stmt|;
 DECL|field|currentField
+specifier|private
 name|String
 name|currentField
 init|=
 literal|null
 decl_stmt|;
 DECL|field|fieldSet
-DECL|field|wordSet
 name|TreeSet
 argument_list|<
 name|String
 argument_list|>
 name|fieldSet
-decl_stmt|,
+decl_stmt|;
+DECL|field|wordSet
+specifier|private
+name|TreeSet
+argument_list|<
+name|String
+argument_list|>
 name|wordSet
 decl_stmt|;
 DECL|field|frame
+specifier|private
 specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|panel
+specifier|private
 specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|help
+specifier|private
 specifier|final
 name|JButton
 name|help
@@ -457,6 +480,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|newField
+specifier|private
 specifier|final
 name|JButton
 name|newField
@@ -473,6 +497,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|removeField
+specifier|private
 specifier|final
 name|JButton
 name|removeField
@@ -489,6 +514,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|newWord
+specifier|private
 specifier|final
 name|JButton
 name|newWord
@@ -505,6 +531,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|removeWord
+specifier|private
 specifier|final
 name|JButton
 name|removeWord
@@ -521,6 +548,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|ok
+specifier|private
 specifier|final
 name|JButton
 name|ok
@@ -537,6 +565,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|cancel
+specifier|private
 specifier|final
 name|JButton
 name|cancel
@@ -546,6 +575,7 @@ name|JButton
 argument_list|()
 decl_stmt|;
 DECL|field|apply
+specifier|private
 specifier|final
 name|JButton
 name|apply
@@ -562,6 +592,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|fieldListModel
+specifier|private
 specifier|final
 name|DefaultListModel
 name|fieldListModel
@@ -571,6 +602,7 @@ name|DefaultListModel
 argument_list|()
 decl_stmt|;
 DECL|field|wordListModel
+specifier|private
 name|DefaultListModel
 name|wordListModel
 init|=
@@ -579,6 +611,7 @@ name|DefaultListModel
 argument_list|()
 decl_stmt|;
 DECL|field|fieldList
+specifier|private
 specifier|final
 name|JList
 name|fieldList
@@ -590,6 +623,7 @@ name|fieldListModel
 argument_list|)
 decl_stmt|;
 DECL|field|wordList
+specifier|private
 specifier|final
 name|JList
 name|wordList
@@ -601,6 +635,7 @@ name|wordListModel
 argument_list|)
 decl_stmt|;
 DECL|field|fieldNameField
+specifier|private
 specifier|final
 name|JTextField
 name|fieldNameField
@@ -614,6 +649,7 @@ literal|20
 argument_list|)
 decl_stmt|;
 DECL|field|wordEditField
+specifier|private
 specifier|final
 name|JTextField
 name|wordEditField
@@ -627,6 +663,7 @@ literal|20
 argument_list|)
 decl_stmt|;
 DECL|field|fPane
+specifier|private
 specifier|final
 name|JScrollPane
 name|fPane
@@ -638,6 +675,7 @@ name|fieldList
 argument_list|)
 decl_stmt|;
 DECL|field|wPane
+specifier|private
 specifier|final
 name|JScrollPane
 name|wPane
@@ -649,6 +687,7 @@ name|wordList
 argument_list|)
 decl_stmt|;
 DECL|field|wordListModels
+specifier|private
 specifier|final
 name|HashMap
 argument_list|<
@@ -668,6 +707,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|removedFields
+specifier|private
 specifier|final
 name|ArrayList
 argument_list|<

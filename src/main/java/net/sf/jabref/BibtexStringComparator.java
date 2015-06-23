@@ -36,7 +36,7 @@ name|BibtexString
 argument_list|>
 block|{
 DECL|field|considerRefs
-specifier|protected
+specifier|private
 specifier|final
 name|boolean
 name|considerRefs

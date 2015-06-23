@@ -107,7 +107,6 @@ argument_list|(
 literal|"serial"
 argument_list|)
 DECL|class|MyEditorKit
-specifier|public
 class|class
 name|MyEditorKit
 extends|extends

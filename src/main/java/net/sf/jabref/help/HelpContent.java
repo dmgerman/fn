@@ -156,13 +156,13 @@ end_import
 
 begin_class
 DECL|class|HelpContent
-specifier|public
 class|class
 name|HelpContent
 extends|extends
 name|JTextPane
 block|{
 DECL|field|log
+specifier|private
 specifier|static
 specifier|final
 name|Log
@@ -178,6 +178,7 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|field|pane
+specifier|private
 specifier|final
 name|JScrollPane
 name|pane
@@ -201,6 +202,7 @@ argument_list|>
 name|forw
 decl_stmt|;
 DECL|field|prefs
+specifier|private
 specifier|final
 name|JabRefPreferences
 name|prefs

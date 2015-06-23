@@ -30,7 +30,6 @@ end_import
 
 begin_class
 DECL|class|JPanelYBoxPreferredHeight
-specifier|public
 class|class
 name|JPanelYBoxPreferredHeight
 extends|extends

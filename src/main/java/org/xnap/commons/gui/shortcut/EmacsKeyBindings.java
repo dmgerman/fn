@@ -289,7 +289,7 @@ class|class
 name|EmacsKeyBindings
 block|{
 DECL|field|killLineAction
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -298,7 +298,7 @@ init|=
 literal|"emacs-kill-line"
 decl_stmt|;
 DECL|field|killRingSaveAction
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -307,7 +307,7 @@ init|=
 literal|"emacs-kill-ring-save"
 decl_stmt|;
 DECL|field|killRegionAction
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -316,7 +316,7 @@ init|=
 literal|"emacs-kill-region"
 decl_stmt|;
 DECL|field|backwardKillWordAction
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -325,7 +325,7 @@ init|=
 literal|"emacs-backward-kill-word"
 decl_stmt|;
 DECL|field|capitalizeWordAction
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -334,7 +334,7 @@ init|=
 literal|"emacs-capitalize-word"
 decl_stmt|;
 DECL|field|downcaseWordAction
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -343,7 +343,7 @@ init|=
 literal|"emacs-downcase-word"
 decl_stmt|;
 DECL|field|killWordAction
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -352,7 +352,7 @@ init|=
 literal|"emacs-kill-word"
 decl_stmt|;
 DECL|field|setMarkCommandAction
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -361,7 +361,7 @@ init|=
 literal|"emacs-set-mark-command"
 decl_stmt|;
 DECL|field|yankAction
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -370,7 +370,7 @@ init|=
 literal|"emacs-yank"
 decl_stmt|;
 DECL|field|yankPopAction
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -379,7 +379,7 @@ init|=
 literal|"emacs-yank-pop"
 decl_stmt|;
 DECL|field|upcaseWordAction
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -388,7 +388,7 @@ init|=
 literal|"emacs-upcase-word"
 decl_stmt|;
 DECL|field|EMACS_KEY_BINDINGS_BASE
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|JTextComponent
@@ -879,7 +879,7 @@ argument_list|)
 block|,     }
 decl_stmt|;
 DECL|field|EMACS_KEY_BINDING_C_A
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|JTextComponent

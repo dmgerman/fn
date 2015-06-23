@@ -169,7 +169,7 @@ implements|implements
 name|EntryFetcher
 block|{
 DECL|field|MAX_PAGES_TO_LOAD
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -178,7 +178,7 @@ init|=
 literal|8
 decl_stmt|;
 DECL|field|WEBSITE_URL
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -187,7 +187,7 @@ init|=
 literal|"http://www.sciencedirect.com"
 decl_stmt|;
 DECL|field|SEARCH_URL
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -200,7 +200,7 @@ operator|+
 literal|"/science/quicksearch?query="
 decl_stmt|;
 DECL|field|linkPrefix
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -209,7 +209,7 @@ init|=
 literal|"http://www.sciencedirect.com/science?_ob=ArticleURL&"
 decl_stmt|;
 DECL|field|linkPattern
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -250,14 +250,14 @@ literal|"<a href=\"(.*)\">Next&gt;"
 argument_list|)
 decl_stmt|;
 DECL|field|stopFetching
-specifier|protected
+specifier|private
 name|boolean
 name|stopFetching
 init|=
 literal|false
 decl_stmt|;
 DECL|field|noAccessFound
-specifier|protected
+specifier|private
 name|boolean
 name|noAccessFound
 init|=
@@ -518,7 +518,7 @@ return|;
 block|}
 comment|/**      *      * @param query      *            The search term to query JStor for.      * @return a list of IDs      * @throws java.io.IOException      */
 DECL|method|getCitations (String query)
-specifier|protected
+specifier|private
 name|List
 argument_list|<
 name|String
@@ -626,7 +626,7 @@ throw|;
 block|}
 block|}
 DECL|method|getCitationsFromUrl (String urlQuery, List<String> ids)
-specifier|protected
+specifier|private
 name|String
 name|getCitationsFromUrl
 parameter_list|(

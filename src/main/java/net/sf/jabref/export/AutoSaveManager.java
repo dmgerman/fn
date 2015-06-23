@@ -198,6 +198,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|class|AutoSaveTask
+specifier|private
 class|class
 name|AutoSaveTask
 extends|extends
@@ -343,7 +344,7 @@ return|;
 block|}
 comment|/**      * Perform an autosave.      * @param panel The BasePanel to autosave for.      * @return true if successful, false otherwise.      */
 DECL|method|autoSave (BasePanel panel)
-specifier|public
+specifier|private
 specifier|static
 name|boolean
 name|autoSave

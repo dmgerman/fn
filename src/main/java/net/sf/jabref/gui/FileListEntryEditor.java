@@ -459,10 +459,12 @@ class|class
 name|FileListEntryEditor
 block|{
 DECL|field|diag
+specifier|private
 name|JDialog
 name|diag
 decl_stmt|;
 DECL|field|link
+specifier|private
 specifier|final
 name|JTextField
 name|link
@@ -472,6 +474,7 @@ name|JTextField
 argument_list|()
 decl_stmt|;
 DECL|field|description
+specifier|private
 specifier|final
 name|JTextField
 name|description
@@ -481,6 +484,7 @@ name|JTextField
 argument_list|()
 decl_stmt|;
 DECL|field|ok
+specifier|private
 specifier|final
 name|JButton
 name|ok
@@ -497,6 +501,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|cancel
+specifier|private
 specifier|final
 name|JButton
 name|cancel
@@ -513,6 +518,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|open
+specifier|private
 specifier|final
 name|JButton
 name|open
@@ -529,11 +535,13 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|types
+specifier|private
 specifier|final
 name|JComboBox
 name|types
 decl_stmt|;
 DECL|field|prog
+specifier|private
 specifier|final
 name|JProgressBar
 name|prog
@@ -547,6 +555,7 @@ name|HORIZONTAL
 argument_list|)
 decl_stmt|;
 DECL|field|downloadLabel
+specifier|private
 specifier|final
 name|JLabel
 name|downloadLabel
@@ -563,6 +572,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|externalConfirm
+specifier|private
 name|ConfirmCloseFileListEntryEditor
 name|externalConfirm
 init|=
@@ -602,7 +612,7 @@ init|=
 literal|false
 decl_stmt|;
 DECL|field|remoteLinkPattern
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -1473,7 +1483,7 @@ block|}
 block|}
 block|}
 DECL|method|openFile ()
-specifier|public
+specifier|private
 name|void
 name|openFile
 parameter_list|()
@@ -1669,7 +1679,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|setValues (FileListEntry entry)
-specifier|public
+specifier|private
 name|void
 name|setValues
 parameter_list|(
@@ -1788,7 +1798,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|storeSettings (FileListEntry entry)
-specifier|public
+specifier|private
 name|void
 name|storeSettings
 parameter_list|(

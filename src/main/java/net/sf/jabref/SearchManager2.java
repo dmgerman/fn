@@ -285,6 +285,7 @@ name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|gbl
+specifier|private
 specifier|final
 name|GridBagLayout
 name|gbl
@@ -294,6 +295,7 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|con
+specifier|private
 specifier|final
 name|GridBagConstraints
 name|con
@@ -303,17 +305,20 @@ name|GridBagConstraints
 argument_list|()
 decl_stmt|;
 DECL|field|incSearcher
+specifier|private
 specifier|final
 name|IncrementalSearcher
 name|incSearcher
 decl_stmt|;
 DECL|field|searchDialog
+specifier|private
 name|SearchResultsDialog
 name|searchDialog
 init|=
 literal|null
 decl_stmt|;
 DECL|field|autoCompleteListener
+specifier|private
 name|AutoCompleteListener
 name|autoCompleteListener
 init|=
@@ -1997,7 +2002,7 @@ expr_stmt|;
 block|}
 comment|/**      * Add the correct key listeners to the search text field, depending on whether      * and autocomplete listener has been set and whether incremental search      * is selected.      */
 DECL|method|updateKeyListeners ()
-specifier|protected
+specifier|private
 name|void
 name|updateKeyListeners
 parameter_list|()
@@ -2336,7 +2341,7 @@ expr_stmt|;
 block|}
 comment|/**      * Instantiate the search dialog, unless it has already been instantiated:      */
 DECL|method|instantiateSearchDialog ()
-specifier|protected
+specifier|private
 name|void
 name|instantiateSearchDialog
 parameter_list|()
@@ -3566,7 +3571,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|clearSearch ()
-specifier|public
+specifier|private
 name|void
 name|clearSearch
 parameter_list|()

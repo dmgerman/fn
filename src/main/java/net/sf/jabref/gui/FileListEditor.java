@@ -350,11 +350,13 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|label
+specifier|private
 specifier|final
 name|FieldNameLabel
 name|label
 decl_stmt|;
 DECL|field|editor
+specifier|private
 name|FileListEntryEditor
 name|editor
 init|=

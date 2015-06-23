@@ -57,6 +57,7 @@ implements|implements
 name|LayoutFormatter
 block|{
 DECL|field|i
+specifier|private
 name|int
 name|i
 decl_stmt|;

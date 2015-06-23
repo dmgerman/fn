@@ -107,6 +107,7 @@ class|class
 name|DocumentsWrapper
 block|{
 DECL|field|xmlDocuments
+specifier|private
 name|Document
 name|xmlDocuments
 decl_stmt|;
@@ -717,7 +718,6 @@ argument_list|()
 return|;
 block|}
 DECL|method|sortAuthors (List<Bean> authors)
-specifier|protected
 specifier|static
 name|List
 argument_list|<

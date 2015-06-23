@@ -86,7 +86,6 @@ end_comment
 
 begin_class
 DECL|class|PushToApplicationAction
-specifier|public
 class|class
 name|PushToApplicationAction
 extends|extends
@@ -429,7 +428,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getKeyString (BibtexEntry[] entries)
-specifier|protected
+specifier|private
 name|String
 name|getKeyString
 parameter_list|(

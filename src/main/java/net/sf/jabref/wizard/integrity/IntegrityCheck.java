@@ -205,7 +205,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|checkSingleEntry (BibtexEntry entry)
-specifier|public
+specifier|private
 name|void
 name|checkSingleEntry
 parameter_list|(

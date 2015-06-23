@@ -215,7 +215,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|CustomEntryType (String name_, String reqStr, String optStr)
-specifier|public
+specifier|private
 name|CustomEntryType
 parameter_list|(
 name|String
@@ -292,7 +292,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|parseRequiredFields (String reqStr)
-specifier|protected
+specifier|private
 name|void
 name|parseRequiredFields
 parameter_list|(
@@ -318,7 +318,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|parseRequiredFields (String[] parts)
-specifier|protected
+specifier|private
 name|void
 name|parseRequiredFields
 parameter_list|(
@@ -821,7 +821,7 @@ literal|true
 return|;
 block|}
 DECL|method|isCoupledFieldSet (String field, BibtexEntry entry, BibtexDatabase database)
-specifier|protected
+specifier|private
 name|boolean
 name|isCoupledFieldSet
 parameter_list|(

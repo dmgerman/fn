@@ -258,20 +258,27 @@ comment|// the following are indices in 'tokens' vector created during parsing o
 comment|// author name
 comment|// and later used to properly split author name into parts
 DECL|field|von_start
+specifier|private
 name|int
 name|von_start
-decl_stmt|,
+decl_stmt|;
 comment|// first lower-case token (-1 if all tokens upper-case)
 DECL|field|last_start
+specifier|private
+name|int
 name|last_start
-decl_stmt|,
+decl_stmt|;
 comment|// first upper-case token after first lower-case token (-1
+specifier|private
+name|int
 comment|// if does not exist)
 DECL|field|comma_first
 name|comma_first
-decl_stmt|,
+decl_stmt|;
 comment|// token after first comma (-1 if no commas)
 DECL|field|comma_second
+specifier|private
+name|int
 name|comma_second
 decl_stmt|;
 comment|// token after second comma (-1 if no commas or only one
@@ -452,6 +459,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|field|authorCache
+specifier|private
 specifier|static
 specifier|final
 name|WeakHashMap
@@ -473,7 +481,7 @@ argument_list|()
 decl_stmt|;
 comment|/**      * Parses the parameter strings and stores preformatted author information.      *       * Don't call this constructor directly but rather use the getAuthorList()      * method which caches its results.      *       * @param bibtex_authors      *            contents of either<CODE>author</CODE> or<CODE>editor</CODE>      *            bibtex field.      */
 DECL|method|AuthorList (String bibtex_authors)
-specifier|protected
+specifier|private
 name|AuthorList
 parameter_list|(
 name|String

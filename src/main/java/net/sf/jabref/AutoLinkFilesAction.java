@@ -104,7 +104,6 @@ end_comment
 
 begin_class
 DECL|class|AutoLinkFilesAction
-specifier|public
 class|class
 name|AutoLinkFilesAction
 extends|extends

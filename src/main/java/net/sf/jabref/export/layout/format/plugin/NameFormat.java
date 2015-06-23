@@ -98,7 +98,7 @@ init|=
 literal|"1@*@{ff }{vv }{ll}{, jj}@@*@1@{ff }{vv }{ll}{, jj}@*@, {ff }{vv }{ll}{, jj}"
 decl_stmt|;
 DECL|method|format (String toFormat, AuthorList al, String[] formats)
-specifier|public
+specifier|private
 name|String
 name|format
 parameter_list|(
@@ -549,6 +549,7 @@ argument_list|)
 return|;
 block|}
 DECL|field|parameter
+specifier|private
 name|String
 name|parameter
 init|=

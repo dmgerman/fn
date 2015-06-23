@@ -192,7 +192,6 @@ end_import
 
 begin_class
 DECL|class|ChangeDisplayDialog
-specifier|public
 class|class
 name|ChangeDisplayDialog
 extends|extends
@@ -206,16 +205,19 @@ name|BibtexDatabase
 name|secondary
 decl_stmt|;
 DECL|field|root
+specifier|private
 specifier|final
 name|DefaultMutableTreeNode
 name|root
 decl_stmt|;
 DECL|field|tree
+specifier|private
 specifier|final
 name|JTree
 name|tree
 decl_stmt|;
 DECL|field|infoPanel
+specifier|private
 specifier|final
 name|JPanel
 name|infoPanel
@@ -225,6 +227,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|buttonPanel
+specifier|private
 specifier|final
 name|JPanel
 name|buttonPanel
@@ -234,6 +237,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|infoBorder
+specifier|private
 specifier|final
 name|JPanel
 name|infoBorder
@@ -243,6 +247,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|ok
+specifier|private
 specifier|final
 name|JButton
 name|ok
@@ -259,6 +264,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|cancel
+specifier|private
 specifier|final
 name|JButton
 name|cancel
@@ -275,6 +281,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|cb
+specifier|private
 specifier|final
 name|JCheckBox
 name|cb
@@ -291,6 +298,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|rootInfo
+specifier|private
 specifier|final
 name|JLabel
 name|rootInfo
@@ -309,12 +317,14 @@ literal|"."
 argument_list|)
 decl_stmt|;
 DECL|field|selected
+specifier|private
 name|Change
 name|selected
 init|=
 literal|null
 decl_stmt|;
 DECL|field|infoShown
+specifier|private
 name|JComponent
 name|infoShown
 init|=

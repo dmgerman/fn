@@ -1848,7 +1848,7 @@ name|contentPane
 return|;
 block|}
 DECL|class|MyTableModel
-specifier|public
+specifier|private
 specifier|static
 class|class
 name|MyTableModel

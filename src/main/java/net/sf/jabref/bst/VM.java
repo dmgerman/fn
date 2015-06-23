@@ -287,6 +287,7 @@ implements|implements
 name|Warn
 block|{
 DECL|field|out
+specifier|private
 specifier|final
 name|PrintStream
 name|out
@@ -414,7 +415,7 @@ argument_list|>
 name|buildInFunctions
 decl_stmt|;
 DECL|field|file
-specifier|public
+specifier|private
 name|File
 name|file
 decl_stmt|;
@@ -470,7 +471,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|charStream2CommonTree (CharStream bst)
-specifier|public
+specifier|private
 specifier|static
 name|CommonTree
 name|charStream2CommonTree
@@ -529,7 +530,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|VM (CharStream bst)
-specifier|public
+specifier|private
 name|VM
 parameter_list|(
 name|CharStream
@@ -550,7 +551,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|VM (CommonTree tree)
-specifier|public
+specifier|private
 name|VM
 parameter_list|(
 name|CommonTree
@@ -3695,7 +3696,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|assign (BstEntry context, Object o1, Object o2)
-specifier|protected
+specifier|private
 name|boolean
 name|assign
 parameter_list|(
@@ -3895,6 +3896,7 @@ literal|false
 return|;
 block|}
 DECL|field|tree
+specifier|private
 specifier|final
 name|CommonTree
 name|tree
@@ -3905,6 +3907,7 @@ name|StringBuffer
 name|bbl
 decl_stmt|;
 DECL|field|preamble
+specifier|private
 name|String
 name|preamble
 decl_stmt|;
@@ -4846,7 +4849,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|executeInContext (Object o, BstEntry context)
-specifier|public
+specifier|private
 name|void
 name|executeInContext
 parameter_list|(
@@ -4910,7 +4913,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|execute (Tree child)
-specifier|public
+specifier|private
 name|void
 name|execute
 parameter_list|(
@@ -5222,7 +5225,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|execute (String name, BstEntry context)
-specifier|public
+specifier|private
 name|void
 name|execute
 parameter_list|(
@@ -5688,6 +5691,7 @@ return|;
 block|}
 block|}
 DECL|field|entries
+specifier|private
 name|Vector
 argument_list|<
 name|BstEntry
@@ -5695,6 +5699,7 @@ argument_list|>
 name|entries
 decl_stmt|;
 DECL|field|strings
+specifier|private
 name|Map
 argument_list|<
 name|String
@@ -5713,6 +5718,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|integers
+specifier|private
 name|Map
 argument_list|<
 name|String
@@ -5731,6 +5737,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|functions
+specifier|private
 name|Map
 argument_list|<
 name|String
@@ -5749,6 +5756,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|stack
+specifier|private
 name|Stack
 argument_list|<
 name|Object
@@ -5763,7 +5771,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|method|push (Integer integer)
-specifier|public
+specifier|private
 name|void
 name|push
 parameter_list|(
@@ -5780,7 +5788,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|push (String string)
-specifier|public
+specifier|private
 name|void
 name|push
 parameter_list|(
@@ -5797,7 +5805,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|push (Identifier identifier)
-specifier|public
+specifier|private
 name|void
 name|push
 parameter_list|(

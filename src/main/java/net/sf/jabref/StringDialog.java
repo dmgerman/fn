@@ -388,7 +388,6 @@ end_import
 
 begin_class
 DECL|class|StringDialog
-specifier|public
 class|class
 name|StringDialog
 extends|extends
@@ -396,26 +395,31 @@ name|JDialog
 block|{
 comment|// A reference to the entry this object works on.
 DECL|field|base
+specifier|private
 specifier|final
 name|BibtexDatabase
 name|base
 decl_stmt|;
 DECL|field|frame
+specifier|private
 specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|panel
+specifier|private
 specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|prefs
+specifier|private
 specifier|final
 name|JabRefPreferences
 name|prefs
 decl_stmt|;
 DECL|field|stringsSet
+specifier|private
 name|TreeSet
 argument_list|<
 name|BibtexString
@@ -424,12 +428,14 @@ name|stringsSet
 decl_stmt|;
 comment|// Our locally sorted set of strings.
 DECL|field|strings
+specifier|private
 name|Object
 index|[]
 name|strings
 decl_stmt|;
 comment|// Layout objects.
 DECL|field|gbl
+specifier|private
 specifier|final
 name|GridBagLayout
 name|gbl
@@ -439,6 +445,7 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|con
+specifier|private
 specifier|final
 name|GridBagConstraints
 name|con
@@ -452,6 +459,7 @@ name|JLabel
 name|lab
 decl_stmt|;
 DECL|field|conPane
+specifier|private
 specifier|final
 name|Container
 name|conPane
@@ -460,6 +468,7 @@ name|getContentPane
 argument_list|()
 decl_stmt|;
 DECL|field|tlb
+specifier|private
 specifier|final
 name|JToolBar
 name|tlb
@@ -469,6 +478,7 @@ name|JToolBar
 argument_list|()
 decl_stmt|;
 DECL|field|pan
+specifier|private
 specifier|final
 name|JPanel
 name|pan
@@ -478,11 +488,13 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|table
+specifier|private
 specifier|final
 name|StringTable
 name|table
 decl_stmt|;
 DECL|field|helpAction
+specifier|private
 specifier|final
 name|HelpAction
 name|helpAction
@@ -1832,7 +1844,7 @@ return|;
 block|}
 block|}
 DECL|method|isNumber (String name)
-specifier|protected
+specifier|private
 name|boolean
 name|isNumber
 parameter_list|(
@@ -1867,7 +1879,6 @@ return|;
 block|}
 block|}
 DECL|method|assureNotEditing ()
-specifier|protected
 name|void
 name|assureNotEditing
 parameter_list|()
@@ -1911,6 +1922,7 @@ block|}
 block|}
 comment|// The action concerned with closing the window.
 DECL|field|closeAction
+specifier|private
 specifier|final
 name|CloseAction
 name|closeAction
@@ -2045,6 +2057,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|newStringAction
+specifier|private
 specifier|final
 name|NewStringAction
 name|newStringAction
@@ -2425,6 +2438,7 @@ parameter_list|)
 block|{         }
 block|}
 DECL|field|removeStringAction
+specifier|private
 specifier|final
 name|RemoveStringAction
 name|removeStringAction
@@ -2715,6 +2729,7 @@ block|}
 block|}
 comment|/*    StringUpAction stringUpAction = new StringUpAction();     class StringUpAction extends AbstractAction {     public StringUpAction() {         super("Move string up",     	  new ImageIcon(GUIGlobals.upIconFile));         putValue(SHORT_DESCRIPTION, Globals.lang("Move string up"));     }     public void actionPerformed(ActionEvent e) {         int[] sel = table.getSelectedRows();         if ((sel.length == 1)&& (sel[0]> 0)) {      	// Make sure no cell is being edited, as caused by the     	// keystroke. This makes the content hang on the screen.     	assureNotEditing();     	// Store undo information:     	panel.undoManager.addEdit(new UndoableMoveString     				      (panel, base, sel[0], true));      	BibtexString bs = base.getString(sel[0]);     	base.removeString(sel[0]);     	try {     	    base.addString(bs, sel[0]-1);     	} catch (KeyCollisionException ex) {}     	table.revalidate();     	table.setRowSelectionInterval(sel[0]-1, sel[0]-1);     	table.repaint();     	panel.markBaseChanged();         }     }     }      StringDownAction stringDownAction = new StringDownAction();     class StringDownAction extends AbstractAction {     public StringDownAction() {         super("Move string down",     	  new ImageIcon(GUIGlobals.downIconFile));         putValue(SHORT_DESCRIPTION, Globals.lang("Move string down"));     }     public void actionPerformed(ActionEvent e) {         int[] sel = table.getSelectedRows();         if ((sel.length == 1)&& (sel[0]+1< base.getStringCount())) {      	// Make sure no cell is being edited, as caused by the     	// keystroke. This makes the content hang on the screen.     	assureNotEditing();       	// Store undo information:     	panel.undoManager.addEdit(new UndoableMoveString     				      (panel, base, sel[0], false));       	BibtexString bs = base.getString(sel[0]);     	base.removeString(sel[0]);     	try {     	    base.addString(bs, sel[0]+1);     	} catch (KeyCollisionException ex) {}     	table.revalidate();     	table.setRowSelectionInterval(sel[0]+1, sel[0]+1);     	table.repaint();     	panel.markBaseChanged();         }      }     }*/
 DECL|field|undoAction
+specifier|private
 specifier|final
 name|UndoAction
 name|undoAction
@@ -2791,6 +2806,7 @@ block|{             }
 block|}
 block|}
 DECL|field|redoAction
+specifier|private
 specifier|final
 name|RedoAction
 name|redoAction

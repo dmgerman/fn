@@ -133,6 +133,7 @@ implements|implements
 name|ParamLayoutFormatter
 block|{
 DECL|field|fileType
+specifier|private
 name|String
 name|fileType
 init|=

@@ -268,6 +268,7 @@ name|JDialog
 block|{
 comment|// labels
 DECL|field|lblServerType
+specifier|private
 specifier|final
 name|JLabel
 name|lblServerType
@@ -277,6 +278,7 @@ name|JLabel
 argument_list|()
 decl_stmt|;
 DECL|field|lblServerHostname
+specifier|private
 specifier|final
 name|JLabel
 name|lblServerHostname
@@ -286,6 +288,7 @@ name|JLabel
 argument_list|()
 decl_stmt|;
 DECL|field|lblDatabase
+specifier|private
 specifier|final
 name|JLabel
 name|lblDatabase
@@ -295,6 +298,7 @@ name|JLabel
 argument_list|()
 decl_stmt|;
 DECL|field|lblUsername
+specifier|private
 specifier|final
 name|JLabel
 name|lblUsername
@@ -304,6 +308,7 @@ name|JLabel
 argument_list|()
 decl_stmt|;
 DECL|field|lblPassword
+specifier|private
 specifier|final
 name|JLabel
 name|lblPassword
@@ -314,6 +319,7 @@ argument_list|()
 decl_stmt|;
 comment|// input fields
 DECL|field|cmbServerType
+specifier|private
 specifier|final
 name|JComboBox
 name|cmbServerType
@@ -323,6 +329,7 @@ name|JComboBox
 argument_list|()
 decl_stmt|;
 DECL|field|txtServerHostname
+specifier|private
 specifier|final
 name|JTextField
 name|txtServerHostname
@@ -334,6 +341,7 @@ literal|40
 argument_list|)
 decl_stmt|;
 DECL|field|txtDatabase
+specifier|private
 specifier|final
 name|JTextField
 name|txtDatabase
@@ -345,6 +353,7 @@ literal|40
 argument_list|)
 decl_stmt|;
 DECL|field|txtUsername
+specifier|private
 specifier|final
 name|JTextField
 name|txtUsername
@@ -356,6 +365,7 @@ literal|40
 argument_list|)
 decl_stmt|;
 DECL|field|pwdPassword
+specifier|private
 specifier|final
 name|JPasswordField
 name|pwdPassword
@@ -367,6 +377,7 @@ literal|40
 argument_list|)
 decl_stmt|;
 DECL|field|btnConnect
+specifier|private
 specifier|final
 name|JButton
 name|btnConnect
@@ -376,6 +387,7 @@ name|JButton
 argument_list|()
 decl_stmt|;
 DECL|field|btnCancel
+specifier|private
 specifier|final
 name|JButton
 name|btnCancel
@@ -386,6 +398,7 @@ argument_list|()
 decl_stmt|;
 comment|// array for holding components on left-hand and right-hand sides
 DECL|field|lhs
+specifier|private
 specifier|final
 name|ArrayList
 argument_list|<
@@ -401,6 +414,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|rhs
+specifier|private
 specifier|final
 name|ArrayList
 argument_list|<
@@ -416,6 +430,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|dbStrings
+specifier|private
 name|DBStrings
 name|dbStrings
 init|=
@@ -1478,7 +1493,7 @@ name|connectToDB
 return|;
 block|}
 DECL|method|setConnectToDB (boolean connectToDB)
-specifier|public
+specifier|private
 name|void
 name|setConnectToDB
 parameter_list|(

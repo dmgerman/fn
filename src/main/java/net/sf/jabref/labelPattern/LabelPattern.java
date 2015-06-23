@@ -68,7 +68,7 @@ literal|null
 decl_stmt|;
 comment|/**      * The parent of this LabelPattern.      */
 DECL|field|parent
-specifier|protected
+specifier|private
 name|LabelPattern
 name|parent
 init|=

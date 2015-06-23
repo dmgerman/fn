@@ -36,7 +36,6 @@ end_comment
 
 begin_class
 DECL|class|ComparableMark
-specifier|public
 class|class
 name|ComparableMark
 implements|implements
@@ -46,11 +45,13 @@ name|ComparableMark
 argument_list|>
 block|{
 DECL|field|name
+specifier|private
 specifier|final
 name|String
 name|name
 decl_stmt|;
 DECL|field|position
+specifier|private
 specifier|final
 name|Point
 name|position

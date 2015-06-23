@@ -106,10 +106,12 @@ implements|implements
 name|FocusListener
 block|{
 DECL|field|c
+specifier|private
 name|JTextComponent
 name|c
 decl_stmt|;
 DECL|field|d
+specifier|private
 name|DocumentListener
 name|d
 decl_stmt|;

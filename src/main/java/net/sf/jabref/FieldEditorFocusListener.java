@@ -54,7 +54,6 @@ end_comment
 
 begin_class
 DECL|class|FieldEditorFocusListener
-specifier|public
 class|class
 name|FieldEditorFocusListener
 implements|implements

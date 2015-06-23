@@ -1650,6 +1650,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|MenuButtonActionListener
+specifier|private
 class|class
 name|MenuButtonActionListener
 implements|implements
@@ -1907,6 +1908,7 @@ block|}
 block|}
 comment|/**      * Comparator for sorting the selection according to name.      */
 DECL|class|PushToApplicationComparator
+specifier|private
 specifier|static
 class|class
 name|PushToApplicationComparator

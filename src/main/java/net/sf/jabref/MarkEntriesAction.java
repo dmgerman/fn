@@ -83,6 +83,7 @@ name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|level
+specifier|private
 specifier|final
 name|int
 name|level

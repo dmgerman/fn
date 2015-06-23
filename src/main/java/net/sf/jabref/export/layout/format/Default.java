@@ -49,6 +49,7 @@ implements|implements
 name|ParamLayoutFormatter
 block|{
 DECL|field|defValue
+specifier|private
 name|String
 name|defValue
 init|=

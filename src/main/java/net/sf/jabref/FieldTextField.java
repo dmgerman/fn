@@ -143,19 +143,19 @@ implements|implements
 name|FieldEditor
 block|{
 DECL|field|fieldName
-specifier|protected
+specifier|private
 specifier|final
 name|String
 name|fieldName
 decl_stmt|;
 DECL|field|label
-specifier|protected
+specifier|private
 specifier|final
 name|JLabel
 name|label
 decl_stmt|;
 DECL|field|undo
-specifier|protected
+specifier|private
 name|UndoManager
 name|undo
 decl_stmt|;
@@ -284,7 +284,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|setupUndoRedo ()
-specifier|protected
+specifier|private
 name|void
 name|setupUndoRedo
 parameter_list|()

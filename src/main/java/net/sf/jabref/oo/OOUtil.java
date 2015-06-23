@@ -296,11 +296,11 @@ end_comment
 
 begin_class
 DECL|class|OOUtil
-specifier|public
 class|class
 name|OOUtil
 block|{
 DECL|field|htmlTag
+specifier|private
 specifier|static
 specifier|final
 name|Pattern

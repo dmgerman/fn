@@ -62,14 +62,13 @@ end_comment
 
 begin_class
 DECL|class|SPIRESBibtexFilterReader
-specifier|public
 class|class
 name|SPIRESBibtexFilterReader
 extends|extends
 name|FilterReader
 block|{
 DECL|field|in
-specifier|protected
+specifier|private
 specifier|final
 name|BufferedReader
 name|in

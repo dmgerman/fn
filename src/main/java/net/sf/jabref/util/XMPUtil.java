@@ -1854,7 +1854,7 @@ expr_stmt|;
 block|}
 comment|/**      * Write the given BibtexEntries as XMP-metadata text to the given stream.      *       * The text that is written to the stream contains a complete XMP-document.      *       * @param bibtexEntries      *            The BibtexEntries to write XMP-metadata for.      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      * @throws TransformerException      *             Thrown if the bibtexEntries could not transformed to XMP.      * @throws IOException      *             Thrown if an IOException occured while writing to the stream.      *       * @see #toXMP(java.util.Collection, net.sf.jabref.BibtexDatabase) if you don't need strings to be      *      resolved.      */
 DECL|method|toXMP (Collection<BibtexEntry> bibtexEntries, BibtexDatabase database, OutputStream outputStream)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|toXMP
@@ -2005,7 +2005,7 @@ block|}
 block|}
 comment|/**      * Will read the XMPMetadata from the given pdf file, closing the file      * afterwards.      *       * @param inputStream      *            The inputStream representing a PDF-file to read the      *            XMPMetadata from.      * @return The XMPMetadata object found in the file or null if none is      *         found.      * @throws IOException      */
 DECL|method|readRawXMP (InputStream inputStream)
-specifier|public
+specifier|private
 specifier|static
 name|XMPMetadata
 name|readRawXMP
@@ -2075,6 +2075,7 @@ block|}
 block|}
 block|}
 DECL|method|getXMPMetadata (PDDocument document)
+specifier|private
 specifier|static
 name|XMPMetadata
 name|getXMPMetadata
@@ -2189,6 +2190,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|writeToDCSchema (XMPSchemaDublinCore dcSchema, BibtexEntry entry, BibtexDatabase database)
+specifier|private
 specifier|static
 name|void
 name|writeToDCSchema
@@ -2798,7 +2800,7 @@ argument_list|(
 literal|"unchecked"
 argument_list|)
 DECL|method|writeDublinCore (PDDocument document, Collection<BibtexEntry> entries, BibtexDatabase database)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|writeDublinCore
@@ -3018,7 +3020,7 @@ expr_stmt|;
 block|}
 comment|/**      * Try to write the given BibTexEntry in the Document Information (the      * properties of the pdf).      *       * Existing fields values are overriden if the bibtex entry has the      * corresponding value set.      *       * @param document      *            The pdf document to write to.      * @param entry      *            The Bibtex entry that is written into the PDF properties. *      * @param database      *            maybenull An optional database which the given bibtex entries      *            belong to, which will be used to resolve strings. If the      *            database is null the strings will not be resolved.      */
 DECL|method|writeDocumentInformation (PDDocument document, BibtexEntry entry, BibtexDatabase database)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|writeDocumentInformation
@@ -3739,7 +3741,7 @@ block|}
 block|}
 comment|/**      * Print usage information for the command line tool xmpUtil.      *       * @see XMPUtil#main(String[])      */
 DECL|method|usage ()
-specifier|protected
+specifier|private
 specifier|static
 name|void
 name|usage

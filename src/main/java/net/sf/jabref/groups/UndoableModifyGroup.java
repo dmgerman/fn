@@ -42,7 +42,6 @@ end_import
 
 begin_class
 DECL|class|UndoableModifyGroup
-specifier|public
 class|class
 name|UndoableModifyGroup
 extends|extends

@@ -97,12 +97,14 @@ implements|implements
 name|SearchRule
 block|{
 DECL|field|m_caseSensitiveSearch
+specifier|private
 specifier|final
 name|boolean
 name|m_caseSensitiveSearch
 decl_stmt|;
 comment|//static RemoveBrackets removeBrackets = new RemoveBrackets();
 DECL|field|removeBrackets
+specifier|private
 specifier|static
 specifier|final
 name|RemoveLatexCommands
@@ -299,7 +301,7 @@ name|score
 return|;
 block|}
 DECL|method|searchFields (Set<String> fields, BibtexEntry bibtexEntry, Pattern pattern)
-specifier|protected
+specifier|private
 name|int
 name|searchFields
 parameter_list|(

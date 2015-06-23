@@ -149,6 +149,7 @@ extends|extends
 name|ImportFormat
 block|{
 DECL|field|SEPARATOR
+specifier|private
 specifier|final
 name|String
 name|SEPARATOR

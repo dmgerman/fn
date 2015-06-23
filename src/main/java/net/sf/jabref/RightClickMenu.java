@@ -264,16 +264,19 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|panel
+specifier|private
 specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|metaData
+specifier|private
 specifier|final
 name|MetaData
 name|metaData
 decl_stmt|;
 DECL|field|groupAddMenu
+specifier|private
 specifier|final
 name|JMenu
 name|groupAddMenu
@@ -290,6 +293,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|groupRemoveMenu
+specifier|private
 specifier|final
 name|JMenu
 name|groupRemoveMenu
@@ -306,6 +310,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|groupMoveMenu
+specifier|private
 specifier|final
 name|JMenu
 name|groupMoveMenu
@@ -323,6 +328,7 @@ argument_list|)
 decl_stmt|;
 comment|// JZTODO lyrics
 DECL|field|rankingMenu
+specifier|private
 specifier|final
 name|JMenu
 name|rankingMenu
@@ -332,6 +338,7 @@ name|JMenu
 argument_list|()
 decl_stmt|;
 DECL|field|priorityMenu
+specifier|private
 specifier|final
 name|JMenu
 name|priorityMenu
@@ -341,6 +348,7 @@ name|JMenu
 argument_list|()
 decl_stmt|;
 DECL|field|readStatusMenu
+specifier|private
 specifier|final
 name|JMenu
 name|readStatusMenu
@@ -350,6 +358,7 @@ name|JMenu
 argument_list|()
 decl_stmt|;
 DECL|field|typeMenu
+specifier|private
 specifier|final
 name|JMenu
 name|typeMenu
@@ -366,21 +375,25 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|groupAdd
+specifier|private
 specifier|final
 name|JMenuItem
 name|groupAdd
 decl_stmt|;
 DECL|field|groupRemove
+specifier|private
 specifier|final
 name|JMenuItem
 name|groupRemove
 decl_stmt|;
 DECL|field|groupMoveTo
+specifier|private
 specifier|final
 name|JMenuItem
 name|groupMoveTo
 decl_stmt|;
 DECL|field|floatMarked
+specifier|private
 specifier|final
 name|JCheckBoxMenuItem
 name|floatMarked
@@ -2181,7 +2194,7 @@ expr_stmt|;
 block|}
 comment|/**      * Remove all types from the menu. Then cycle through all available      * types, and add them.      */
 DECL|method|populateTypeMenu ()
-specifier|public
+specifier|private
 name|void
 name|populateTypeMenu
 parameter_list|()
@@ -2484,7 +2497,7 @@ return|;
 block|}
 comment|/**      * @param move For add: if true, remove from previous groups      */
 DECL|method|insertNodes (JMenu menu, GroupTreeNode node, BibtexEntry[] selection, boolean add, boolean move)
-specifier|public
+specifier|private
 name|void
 name|insertNodes
 parameter_list|(

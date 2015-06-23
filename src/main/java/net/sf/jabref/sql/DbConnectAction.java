@@ -158,6 +158,7 @@ argument_list|()
 return|;
 block|}
 DECL|class|DbImpAction
+specifier|private
 class|class
 name|DbImpAction
 extends|extends

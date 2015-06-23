@@ -242,7 +242,6 @@ end_comment
 
 begin_class
 DECL|class|EntryEditorTab
-specifier|public
 class|class
 name|EntryEditorTab
 block|{
@@ -420,6 +419,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|setupPanel (JabRefFrame frame, BasePanel bPanel, boolean addKeyField, boolean compressed, String title)
+specifier|private
 name|void
 name|setupPanel
 parameter_list|(
@@ -1340,11 +1340,12 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|entry
+specifier|private
 name|BibtexEntry
 name|entry
 decl_stmt|;
 DECL|method|getEntry ()
-specifier|public
+specifier|private
 name|BibtexEntry
 name|getEntry
 parameter_list|()
@@ -1354,6 +1355,7 @@ name|entry
 return|;
 block|}
 DECL|method|isFieldModified (FieldEditor f)
+specifier|private
 name|boolean
 name|isFieldModified
 parameter_list|(
@@ -1469,6 +1471,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|markBaseChanged ()
+specifier|private
 name|void
 name|markBaseChanged
 parameter_list|()
@@ -1568,7 +1571,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|field|updating
-specifier|protected
+specifier|private
 name|boolean
 name|updating
 init|=
@@ -1834,7 +1837,7 @@ return|;
 block|}
 comment|/**      * Set up key bindings and focus listener for the FieldEditor.      *       * @param component      */
 DECL|method|setupJTextComponent (final JComponent component, final AutoCompleteListener acl)
-specifier|public
+specifier|private
 name|void
 name|setupJTextComponent
 parameter_list|(
@@ -2310,6 +2313,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|fieldListener
+specifier|private
 specifier|final
 name|FocusListener
 name|fieldListener

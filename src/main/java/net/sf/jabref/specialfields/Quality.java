@@ -75,7 +75,7 @@ name|Quality
 name|INSTANCE
 decl_stmt|;
 DECL|method|Quality ()
-specifier|public
+specifier|private
 name|Quality
 parameter_list|()
 block|{

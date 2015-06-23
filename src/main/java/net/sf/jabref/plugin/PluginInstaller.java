@@ -217,7 +217,7 @@ class|class
 name|PluginInstaller
 block|{
 DECL|field|PLUGIN_XML_FILE
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -225,7 +225,7 @@ name|PLUGIN_XML_FILE
 init|=
 literal|"plugin.xml"
 decl_stmt|;
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -233,18 +233,26 @@ DECL|field|SUCCESS
 name|SUCCESS
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
 DECL|field|UNABLE_TO_CREATE_DIR
+specifier|private
+specifier|static
+specifier|final
+name|int
 name|UNABLE_TO_CREATE_DIR
 init|=
 literal|1
-decl_stmt|,
+decl_stmt|;
 DECL|field|UNABLE_TO_COPY_FILE
+specifier|private
+specifier|static
+specifier|final
+name|int
 name|UNABLE_TO_COPY_FILE
 init|=
 literal|2
 decl_stmt|;
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -252,28 +260,48 @@ DECL|field|NO_VERSIONS_INSTALLED
 name|NO_VERSIONS_INSTALLED
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
 DECL|field|NEWER_VERSION_INSTALLED
+specifier|private
+specifier|static
+specifier|final
+name|int
 name|NEWER_VERSION_INSTALLED
 init|=
 literal|1
-decl_stmt|,
+decl_stmt|;
 DECL|field|SAME_VERSION_INSTALLED
+specifier|private
+specifier|static
+specifier|final
+name|int
 name|SAME_VERSION_INSTALLED
 init|=
 literal|2
-decl_stmt|,
+decl_stmt|;
 DECL|field|OLDER_VERSION_INSTALLED
+specifier|private
+specifier|static
+specifier|final
+name|int
 name|OLDER_VERSION_INSTALLED
 init|=
 literal|3
-decl_stmt|,
+decl_stmt|;
 DECL|field|UNCONVENTIONAL_FILENAME
+specifier|public
+specifier|static
+specifier|final
+name|int
 name|UNCONVENTIONAL_FILENAME
 init|=
 literal|4
-decl_stmt|,
+decl_stmt|;
 DECL|field|UNKNOWN_VERSION
+specifier|private
+specifier|static
+specifier|final
+name|int
 name|UNKNOWN_VERSION
 init|=
 literal|5
@@ -286,13 +314,21 @@ DECL|field|NOT_LOADED
 name|NOT_LOADED
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
 DECL|field|LOADED
+specifier|private
+specifier|static
+specifier|final
+name|int
 name|LOADED
 init|=
 literal|1
-decl_stmt|,
+decl_stmt|;
 DECL|field|BAD
+specifier|private
+specifier|static
+specifier|final
+name|int
 name|BAD
 init|=
 literal|2
@@ -1007,7 +1043,7 @@ block|}
 block|}
 comment|/**      * Check the status of the named plugin - whether an older, the same or a      * newer version is already installed.      * @param f The plugin file.      * @return an integer indicating the status      */
 DECL|method|checkInstalledVersion (File f)
-specifier|public
+specifier|private
 specifier|static
 name|int
 name|checkInstalledVersion
@@ -1176,7 +1212,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|deleteOlderVersions (File f)
-specifier|public
+specifier|private
 specifier|static
 name|boolean
 name|deleteOlderVersions
@@ -1313,7 +1349,7 @@ return|;
 block|}
 comment|/**      * This method deletes a plugin file. If deletion fails - typically happens      * on Windows due to file locking - the file is scheduled for deletion on      * the next startup.      *      * @param f The file to delete.      * @return true if deletion was successful, false if scheduled for later.      */
 DECL|method|deletePluginFile (File f)
-specifier|public
+specifier|private
 specifier|static
 name|boolean
 name|deletePluginFile
@@ -1481,7 +1517,7 @@ return|;
 block|}
 block|}
 DECL|method|copyPlugin (JFrame frame, File source, String destFileName)
-specifier|public
+specifier|private
 specifier|static
 name|int
 name|copyPlugin
@@ -1718,7 +1754,7 @@ return|;
 block|}
 comment|/**      * Based on a plugin name, find all versions that are already present      * in the user plugin directory.      * @param pluginName The name of the plugin.      * @return A map of versions already present, linking to the file containing each.      */
 DECL|method|getInstalledVersions (final String pluginName)
-specifier|public
+specifier|private
 specifier|static
 name|Map
 argument_list|<
@@ -1871,7 +1907,7 @@ return|;
 block|}
 comment|/**      * Add the given filename to the list of plugins to be deleted on the next      * JabRef startup.      *      * @param filename The path to the file to delete.      */
 DECL|method|schedulePluginForDeletion (String filename)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|schedulePluginForDeletion
@@ -2061,7 +2097,7 @@ argument_list|)
 decl_stmt|;
 comment|/**      * Look inside a jar file, find the plugin.xml file, and use it to determine the name      * and version of the plugin.      *      * @param f The file to investigate.      * @return A string array containing the plugin name in the first element and      *   the version number in the second, or null if the filename couldn't be      *   interpreted.      *      */
 DECL|method|getNameAndVersion (File f)
-specifier|public
+specifier|private
 specifier|static
 name|String
 index|[]
@@ -2171,7 +2207,7 @@ block|}
 block|}
 comment|/**      * Take the name of a jar file and extract the plugin.xml file, if possible,      * to a temporary file.      * @param f The jar file to extract from.      * @return a temporary file to which the plugin.xml file has been copied.      */
 DECL|method|unpackPluginXML (File f)
-specifier|public
+specifier|private
 specifier|static
 name|File
 name|unpackPluginXML

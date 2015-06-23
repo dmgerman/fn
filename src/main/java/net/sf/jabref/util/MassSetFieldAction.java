@@ -224,6 +224,7 @@ decl_stmt|,
 name|renameTo
 decl_stmt|;
 DECL|field|cancelled
+specifier|private
 name|boolean
 name|cancelled
 init|=

@@ -94,7 +94,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|method|Priority ()
-specifier|public
+specifier|private
 name|Priority
 parameter_list|()
 block|{

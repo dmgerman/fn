@@ -632,7 +632,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|addImporter (Importer customImporter)
-specifier|public
+specifier|private
 name|void
 name|addImporter
 parameter_list|(

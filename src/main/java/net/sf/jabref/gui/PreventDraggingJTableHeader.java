@@ -94,7 +94,6 @@ end_comment
 
 begin_class
 DECL|class|PreventDraggingJTableHeader
-specifier|public
 class|class
 name|PreventDraggingJTableHeader
 extends|extends

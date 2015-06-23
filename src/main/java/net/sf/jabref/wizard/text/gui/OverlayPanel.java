@@ -50,7 +50,6 @@ end_comment
 
 begin_class
 DECL|class|OverlayPanel
-specifier|public
 class|class
 name|OverlayPanel
 extends|extends

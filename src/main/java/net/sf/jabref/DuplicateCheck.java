@@ -56,7 +56,7 @@ comment|// The overall threshold to signal a duplicate pair
 comment|// Non-required fields are investigated only if the required fields give a value within
 comment|// the doubt range of the threshold:
 DECL|field|doubtRange
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|double
@@ -65,6 +65,7 @@ init|=
 literal|0.05
 decl_stmt|;
 DECL|field|reqWeight
+specifier|private
 specifier|final
 specifier|static
 name|double
@@ -75,6 +76,7 @@ decl_stmt|;
 comment|// Weighting of all required fields
 comment|// Extra weighting of those fields that are most likely to provide correct duplicate detection:
 DECL|field|fieldWeights
+specifier|private
 specifier|static
 specifier|final
 name|HashMap
@@ -1110,7 +1112,7 @@ comment|// No duplicate found.
 block|}
 comment|/**      * Compare two strings on the basis of word-by-word correlation analysis.      * @param s1 The first string      * @param s2 The second string      * @param truncate if true, always truncate the longer of two words to be compared to      *   harmonize their length. If false, use interpolation to harmonize the strings.      * @return a value in the interval [0, 1] indicating the degree of match.      */
 DECL|method|correlateByWords (String s1, String s2, boolean truncate)
-specifier|public
+specifier|private
 specifier|static
 name|double
 name|correlateByWords
@@ -1238,7 +1240,7 @@ name|missRate
 return|;
 block|}
 DECL|method|correlateStrings (String s1, String s2, boolean truncate)
-specifier|public
+specifier|private
 specifier|static
 name|double
 name|correlateStrings

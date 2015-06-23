@@ -269,6 +269,7 @@ extends|extends
 name|AbstractWorker
 block|{
 DECL|field|message
+specifier|private
 name|String
 name|message
 init|=

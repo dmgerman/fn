@@ -108,7 +108,7 @@ name|UnlinkedFilesCrawler
 block|{
 comment|/**      * File filter, that accepts directorys only.      */
 DECL|field|directoryFilter
-specifier|public
+specifier|private
 specifier|final
 name|FileFilter
 name|directoryFilter

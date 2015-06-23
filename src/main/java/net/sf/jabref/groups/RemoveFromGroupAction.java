@@ -95,12 +95,12 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|field|m_node
-specifier|protected
+specifier|private
 name|GroupTreeNode
 name|m_node
 decl_stmt|;
 DECL|field|m_panel
-specifier|protected
+specifier|private
 name|BasePanel
 name|m_panel
 decl_stmt|;

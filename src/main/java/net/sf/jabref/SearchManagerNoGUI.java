@@ -98,7 +98,6 @@ end_comment
 
 begin_class
 DECL|class|SearchManagerNoGUI
-specifier|public
 class|class
 name|SearchManagerNoGUI
 block|{
@@ -121,6 +120,7 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|searchOptions
+specifier|private
 specifier|final
 name|Hashtable
 argument_list|<

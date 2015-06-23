@@ -26,11 +26,11 @@ end_import
 
 begin_class
 DECL|class|IncrementalSearcher
-specifier|public
 class|class
 name|IncrementalSearcher
 block|{
 DECL|field|prefs
+specifier|private
 specifier|final
 name|JabRefPreferences
 name|prefs
@@ -96,7 +96,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|searchFields (Set<String> fields, BibtexEntry bibtexEntry, String searchString)
-specifier|protected
+specifier|private
 name|boolean
 name|searchFields
 parameter_list|(

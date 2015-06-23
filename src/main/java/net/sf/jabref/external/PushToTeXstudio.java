@@ -235,7 +235,7 @@ literal|"Push to TeXstudio"
 return|;
 block|}
 DECL|method|defaultProgramPath ()
-specifier|protected
+specifier|private
 name|String
 name|defaultProgramPath
 parameter_list|()

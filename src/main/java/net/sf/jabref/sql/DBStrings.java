@@ -368,7 +368,7 @@ name|serverTypes
 return|;
 block|}
 DECL|method|setServerTypes (String[] serverTypes)
-specifier|public
+specifier|private
 name|void
 name|setServerTypes
 parameter_list|(
@@ -395,7 +395,7 @@ name|isInitialized
 return|;
 block|}
 DECL|method|isInitialized (boolean isInitialized)
-specifier|public
+specifier|private
 name|void
 name|isInitialized
 parameter_list|(

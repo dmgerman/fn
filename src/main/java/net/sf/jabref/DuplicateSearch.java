@@ -109,16 +109,19 @@ implements|implements
 name|Runnable
 block|{
 DECL|field|panel
+specifier|private
 specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|bes
+specifier|private
 name|BibtexEntry
 index|[]
 name|bes
 decl_stmt|;
 DECL|field|duplicates
+specifier|private
 specifier|final
 name|Vector
 argument_list|<
@@ -136,6 +139,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|autoRemoveExactDuplicates
+specifier|private
 name|boolean
 name|autoRemoveExactDuplicates
 init|=

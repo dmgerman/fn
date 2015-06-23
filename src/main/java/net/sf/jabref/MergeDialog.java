@@ -89,6 +89,7 @@ extends|extends
 name|JDialog
 block|{
 DECL|field|panel1
+specifier|private
 specifier|final
 name|JPanel
 name|panel1
@@ -98,6 +99,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|borderLayout1
+specifier|private
 specifier|final
 name|BorderLayout
 name|borderLayout1
@@ -107,6 +109,7 @@ name|BorderLayout
 argument_list|()
 decl_stmt|;
 DECL|field|jPanel1
+specifier|private
 specifier|final
 name|JPanel
 name|jPanel1
@@ -116,6 +119,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|jPanel2
+specifier|private
 specifier|final
 name|JPanel
 name|jPanel2
@@ -125,6 +129,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|ok
+specifier|private
 specifier|final
 name|JButton
 name|ok
@@ -134,6 +139,7 @@ name|JButton
 argument_list|()
 decl_stmt|;
 DECL|field|Cancel
+specifier|private
 specifier|final
 name|JButton
 name|Cancel
@@ -144,6 +150,7 @@ argument_list|()
 decl_stmt|;
 comment|//TitledBorder titledBorder1;
 DECL|field|entries
+specifier|private
 specifier|final
 name|JCheckBox
 name|entries
@@ -153,6 +160,7 @@ name|JCheckBox
 argument_list|()
 decl_stmt|;
 DECL|field|strings
+specifier|private
 specifier|final
 name|JCheckBox
 name|strings
@@ -162,6 +170,7 @@ name|JCheckBox
 argument_list|()
 decl_stmt|;
 DECL|field|gridBagLayout1
+specifier|private
 specifier|final
 name|GridBagLayout
 name|gridBagLayout1
@@ -171,6 +180,7 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|groups
+specifier|private
 specifier|final
 name|JCheckBox
 name|groups
@@ -180,6 +190,7 @@ name|JCheckBox
 argument_list|()
 decl_stmt|;
 DECL|field|selector
+specifier|private
 specifier|final
 name|JCheckBox
 name|selector
@@ -189,6 +200,7 @@ name|JCheckBox
 argument_list|()
 decl_stmt|;
 DECL|field|okPressed
+specifier|private
 name|boolean
 name|okPressed
 init|=
@@ -830,6 +842,7 @@ operator|.
 name|ActionListener
 block|{
 DECL|field|adaptee
+specifier|private
 specifier|final
 name|MergeDialog
 name|adaptee
@@ -884,6 +897,7 @@ operator|.
 name|ActionListener
 block|{
 DECL|field|adaptee
+specifier|private
 specifier|final
 name|MergeDialog
 name|adaptee

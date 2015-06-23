@@ -162,7 +162,7 @@ name|AccessLinksForEntries
 block|{
 comment|/**      * Look up all external files linked from (at least) one of the entries in a set.      * This method does not verify the links.      *      * @param entries The set of entries.      * @return A list of FileListEntry objects pointing to the external files.      */
 DECL|method|getExternalLinksForEntries (List<BibtexEntry> entries)
-specifier|public
+specifier|private
 specifier|static
 name|List
 argument_list|<
@@ -271,7 +271,7 @@ return|;
 block|}
 comment|/**      * Take a list of external links and copy the referred files to a given directory.      * This method should be run off the Event Dispatch Thread. A progress bar, if given,      * will be updated on the EDT.      *      * @param files The list of file links.      * @param toDir The directory to copy the files to.      * @param metaData The MetaData for the database containing the external links. This is needed      *  because the database might have its own file directory.      * @param prog A JProgressBar which will be updated to show the progress of the process.      *  This argument can be null if no progress bar is needed.      * @param deleteOriginalFiles if true, the files in their original locations will be deleted      *  after copying, for each file whose source directory is different from the destination      *  directory differs.      * @param callback An ActionListener which should be notified when the process is finished.      *  This parameter can be null if no callback is needed.      */
 DECL|method|copyExternalLinksToDirectory (final List<FileListEntry> files, File toDir, MetaData metaData, final JProgressBar prog, boolean deleteOriginalFiles, final ActionListener callback)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|copyExternalLinksToDirectory

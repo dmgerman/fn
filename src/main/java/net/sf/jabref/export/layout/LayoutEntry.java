@@ -186,7 +186,6 @@ end_comment
 
 begin_class
 DECL|class|LayoutEntry
-specifier|public
 class|class
 name|LayoutEntry
 block|{
@@ -955,7 +954,7 @@ name|formatter
 expr_stmt|;
 block|}
 DECL|method|doLayout (BibtexEntry bibtex, BibtexDatabase database)
-specifier|public
+specifier|private
 name|String
 name|doLayout
 parameter_list|(
@@ -1947,6 +1946,7 @@ return|;
 block|}
 comment|// added section - end (arudert)
 DECL|field|pluginLayoutFormatter
+specifier|private
 specifier|static
 name|Map
 argument_list|<
@@ -1957,7 +1957,7 @@ argument_list|>
 name|pluginLayoutFormatter
 decl_stmt|;
 DECL|method|getLayoutFormatterFromPlugins (String formatterName)
-specifier|public
+specifier|private
 specifier|static
 name|LayoutFormatter
 name|getLayoutFormatterFromPlugins
@@ -2149,7 +2149,7 @@ return|;
 block|}
 block|}
 DECL|method|getLayoutFormatterByClassName (String className, String classPrefix)
-specifier|public
+specifier|private
 specifier|static
 name|LayoutFormatter
 name|getLayoutFormatterByClassName
@@ -2278,7 +2278,7 @@ return|;
 block|}
 comment|/**      * Return an array of LayoutFormatters found in the given formatterName      * string (in order of appearance).      *       */
 DECL|method|getOptionalLayout (String formatterName, String classPrefix)
-specifier|public
+specifier|private
 specifier|static
 name|LayoutFormatter
 index|[]

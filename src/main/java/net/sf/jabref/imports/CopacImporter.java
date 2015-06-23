@@ -165,6 +165,7 @@ literal|"cpc"
 return|;
 block|}
 DECL|field|copacPattern
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -909,6 +910,7 @@ name|results
 return|;
 block|}
 DECL|method|setOrAppend (BibtexEntry b, String field, String value, String separator)
+specifier|private
 name|void
 name|setOrAppend
 parameter_list|(

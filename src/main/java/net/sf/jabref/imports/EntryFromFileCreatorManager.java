@@ -721,7 +721,7 @@ return|;
 block|}
 comment|/**      * Returns a {@link FileFilter} instance which will accept all files, for      * which a {@link EntryFromFileCreator} exists, that accepts the files.<br>      *<br>      * This {@link FileFilter} will be displayed in the GUI as      * "All supported files".      *       * @return A {@link FileFilter} that accepts all files for which creators      *         exist.      */
 DECL|method|getFileFilter ()
-specifier|public
+specifier|private
 name|FileFilter
 name|getFileFilter
 parameter_list|()

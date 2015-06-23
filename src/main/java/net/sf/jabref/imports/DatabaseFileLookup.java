@@ -148,7 +148,6 @@ end_comment
 
 begin_class
 DECL|class|DatabaseFileLookup
-specifier|public
 class|class
 name|DatabaseFileLookup
 block|{
@@ -344,7 +343,7 @@ block|}
 block|}
 comment|/**      * Searches the specified {@link BibtexEntry}<code>anEntry</code> for the      * appearance of the specified {@link File}<code>aFile</code>.<br>      *<br>      * Therefore the<i>file</i>-field of the bibtex-entry will be searched for      * the absolute filepath of the searched file.<br>      *<br>      *       * @param aFile      *            A file that is searched in an bibtex-entry.      * @param anEntry      *            A bibtex-entry, in which the file is searched.      * @return<code>true</code>, if the bibtex entry stores the file in its      *<i>file</i>-field, otherwise<code>false</code>.      */
 DECL|method|lookupEntry (File aFile, BibtexEntry anEntry)
-specifier|public
+specifier|private
 name|boolean
 name|lookupEntry
 parameter_list|(

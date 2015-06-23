@@ -91,6 +91,7 @@ implements|implements
 name|ImportInspector
 block|{
 DECL|field|entries
+specifier|private
 specifier|final
 name|List
 argument_list|<
@@ -166,6 +167,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|field|status
+specifier|private
 specifier|final
 name|OutputPrinter
 name|status

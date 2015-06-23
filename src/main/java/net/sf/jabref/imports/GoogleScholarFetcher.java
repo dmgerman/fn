@@ -165,7 +165,7 @@ literal|true
 decl_stmt|;
 comment|// Should we clear the keys so new ones can be generated?
 DECL|field|MAX_ENTRIES_TO_LOAD
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -174,6 +174,7 @@ init|=
 literal|50
 decl_stmt|;
 DECL|field|QUERY_MARKER
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -182,6 +183,7 @@ init|=
 literal|"___QUERY___"
 decl_stmt|;
 DECL|field|URL_START
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -190,6 +192,7 @@ init|=
 literal|"http://scholar.google.com"
 decl_stmt|;
 DECL|field|URL_SETTING
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -198,6 +201,7 @@ init|=
 literal|"http://scholar.google.com/scholar_settings"
 decl_stmt|;
 DECL|field|URL_SETPREFS
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -206,6 +210,7 @@ init|=
 literal|"http://scholar.google.com/scholar_setprefs"
 decl_stmt|;
 DECL|field|SEARCH_URL
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -224,6 +229,7 @@ operator|+
 literal|"&amp;hl=en&amp;btnG=Search"
 decl_stmt|;
 DECL|field|BIBTEX_LINK_PATTERN
+specifier|private
 specifier|final
 specifier|static
 name|Pattern
@@ -237,6 +243,7 @@ literal|"<a href=\"([^\"]*)\"[^>]*>[A-Za-z ]*BibTeX"
 argument_list|)
 decl_stmt|;
 DECL|field|TITLE_START_PATTERN
+specifier|private
 specifier|final
 specifier|static
 name|Pattern
@@ -250,6 +257,7 @@ literal|"<div class=\"gs_ri\">"
 argument_list|)
 decl_stmt|;
 DECL|field|LINK_PATTERN
+specifier|private
 specifier|final
 specifier|static
 name|Pattern
@@ -263,6 +271,7 @@ literal|"<h3 class=\"gs_rt\"><a href=\"([^\"]*)\">"
 argument_list|)
 decl_stmt|;
 DECL|field|TITLE_END_PATTERN
+specifier|private
 specifier|final
 specifier|static
 name|Pattern
@@ -276,7 +285,7 @@ literal|"<div class=\"gs_fl\">"
 argument_list|)
 decl_stmt|;
 DECL|field|entryLinks
-specifier|protected
+specifier|private
 specifier|final
 name|HashMap
 argument_list|<
@@ -298,7 +307,7 @@ decl_stmt|;
 comment|//final static Pattern NEXT_PAGE_PATTERN = Pattern.compile(
 comment|//        "<a href=\"([^\"]*)\"><span class=\"SPRITE_nav_next\"></span><br><span style=\".*\">Next</span></a>");
 DECL|field|stopFetching
-specifier|protected
+specifier|private
 name|boolean
 name|stopFetching
 init|=
@@ -710,7 +719,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|runConfig ()
-specifier|protected
+specifier|private
 name|void
 name|runConfig
 parameter_list|()
@@ -925,7 +934,7 @@ block|}
 block|}
 comment|/**      * @param query The search term to query Google Scholar for.      * @return a list of IDs      * @throws java.io.IOException      */
 DECL|method|getCitations (String query)
-specifier|protected
+specifier|private
 name|Map
 argument_list|<
 name|String
@@ -1051,7 +1060,7 @@ throw|;
 block|}
 block|}
 DECL|method|getCitationsFromUrl (String urlQuery, Map<String, JLabel> ids)
-specifier|protected
+specifier|private
 name|String
 name|getCitationsFromUrl
 parameter_list|(
@@ -1331,7 +1340,7 @@ literal|null
 return|;
 block|}
 DECL|method|downloadEntry (String link)
-specifier|protected
+specifier|private
 name|BibtexEntry
 name|downloadEntry
 parameter_list|(
@@ -1649,6 +1658,7 @@ return|;
 block|}
 block|}
 DECL|field|inputPattern
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -1662,7 +1672,7 @@ literal|"<input type=([^ ]+) name=([^ ]+) value=([^> ]+)"
 argument_list|)
 decl_stmt|;
 DECL|method|getFormElements (String page)
-specifier|public
+specifier|private
 specifier|static
 name|HashMap
 argument_list|<

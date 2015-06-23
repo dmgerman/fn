@@ -175,6 +175,7 @@ name|CustomExportDialog
 extends|extends
 name|JDialog
 block|{
+specifier|private
 specifier|final
 name|JTextField
 DECL|field|name
@@ -187,6 +188,7 @@ literal|60
 argument_list|)
 decl_stmt|;
 DECL|field|layoutFile
+specifier|private
 specifier|final
 name|JTextField
 name|layoutFile
@@ -198,6 +200,7 @@ literal|60
 argument_list|)
 decl_stmt|;
 DECL|field|extension
+specifier|private
 specifier|final
 name|JTextField
 name|extension
@@ -208,6 +211,7 @@ argument_list|(
 literal|60
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|final
 name|JLabel
 DECL|field|nl
@@ -227,6 +231,7 @@ literal|":"
 argument_list|)
 decl_stmt|;
 DECL|field|nr
+specifier|private
 specifier|final
 name|JLabel
 name|nr
@@ -245,6 +250,7 @@ literal|":"
 argument_list|)
 decl_stmt|;
 DECL|field|nf
+specifier|private
 specifier|final
 name|JLabel
 name|nf
@@ -262,6 +268,7 @@ operator|+
 literal|":"
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|final
 name|JButton
 DECL|field|ok
@@ -279,6 +286,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|cancel
+specifier|private
 specifier|final
 name|JButton
 name|cancel
@@ -295,6 +303,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|browse
+specifier|private
 specifier|final
 name|JButton
 name|browse
@@ -310,6 +319,7 @@ literal|"Browse"
 argument_list|)
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|final
 name|JPanel
 DECL|field|main
@@ -320,6 +330,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|buttons
+specifier|private
 specifier|final
 name|JPanel
 name|buttons
@@ -358,6 +369,7 @@ decl_stmt|,
 name|oldField
 decl_stmt|;
 DECL|field|gbl
+specifier|private
 specifier|final
 name|GridBagLayout
 name|gbl
@@ -367,6 +379,7 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|con
+specifier|private
 specifier|final
 name|GridBagConstraints
 name|con

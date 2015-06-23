@@ -180,7 +180,6 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|getSource ()
-specifier|public
 name|URL
 name|getSource
 parameter_list|()
@@ -276,7 +275,7 @@ block|{              }
 block|}
 block|}
 DECL|method|openConnection ()
-specifier|protected
+specifier|private
 name|URLConnection
 name|openConnection
 parameter_list|()

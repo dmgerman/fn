@@ -34,6 +34,7 @@ name|DatabaseChangeListener
 block|{
 comment|//TreeSet set;
 DECL|field|set
+specifier|private
 specifier|final
 name|ArrayList
 argument_list|<
@@ -42,6 +43,7 @@ argument_list|>
 name|set
 decl_stmt|;
 DECL|field|comp
+specifier|private
 specifier|final
 name|Comparator
 argument_list|<
@@ -50,11 +52,13 @@ argument_list|>
 name|comp
 decl_stmt|;
 DECL|field|idArray
+specifier|private
 name|String
 index|[]
 name|idArray
 decl_stmt|;
 DECL|field|entryArray
+specifier|private
 name|BibtexEntry
 index|[]
 name|entryArray
@@ -143,7 +147,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|index ()
-specifier|public
+specifier|private
 name|void
 name|index
 parameter_list|()

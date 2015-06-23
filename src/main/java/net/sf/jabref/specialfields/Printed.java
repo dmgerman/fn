@@ -75,7 +75,7 @@ name|Printed
 name|INSTANCE
 decl_stmt|;
 DECL|method|Printed ()
-specifier|public
+specifier|private
 name|Printed
 parameter_list|()
 block|{

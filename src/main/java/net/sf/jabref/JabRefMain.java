@@ -129,7 +129,7 @@ class|class
 name|JabRefMain
 block|{
 DECL|method|exceptionToString (Throwable t)
-specifier|public
+specifier|private
 specifier|static
 name|String
 name|exceptionToString

@@ -169,12 +169,14 @@ init|=
 literal|"??"
 decl_stmt|;
 DECL|field|name
+specifier|private
 name|String
 name|name
 init|=
 literal|null
 decl_stmt|;
 DECL|field|journals
+specifier|private
 specifier|final
 name|SortedSet
 argument_list|<
@@ -191,6 +193,7 @@ argument_list|()
 decl_stmt|;
 comment|// Formatter to be run on fields before they are used as part of citation marker:
 DECL|field|fieldFormatter
+specifier|private
 specifier|final
 name|LayoutFormatter
 name|fieldFormatter
@@ -200,11 +203,13 @@ name|OOPreFormatter
 argument_list|()
 decl_stmt|;
 DECL|field|defaultBibLayout
+specifier|private
 name|Layout
 name|defaultBibLayout
 decl_stmt|;
 comment|// reference layout mapped from entry type number:
 DECL|field|bibLayout
+specifier|private
 specifier|final
 name|HashMap
 argument_list|<
@@ -224,6 +229,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|properties
+specifier|private
 specifier|final
 name|HashMap
 argument_list|<
@@ -243,6 +249,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|citProperties
+specifier|private
 specifier|final
 name|HashMap
 argument_list|<
@@ -262,6 +269,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|numPattern
+specifier|private
 specifier|final
 name|Pattern
 name|numPattern
@@ -274,73 +282,116 @@ literal|"-?\\d+"
 argument_list|)
 decl_stmt|;
 DECL|field|valid
+specifier|private
 name|boolean
 name|valid
 init|=
 literal|false
 decl_stmt|;
 DECL|field|NONE
-DECL|field|LAYOUT
-DECL|field|PROPERTIES
-DECL|field|CITATION
-DECL|field|NAME
-DECL|field|JOURNALS
+specifier|private
 specifier|final
 specifier|static
 name|int
 name|NONE
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
+DECL|field|LAYOUT
+specifier|private
+specifier|final
+specifier|static
+name|int
 name|LAYOUT
 init|=
 literal|1
-decl_stmt|,
+decl_stmt|;
+DECL|field|PROPERTIES
+specifier|private
+specifier|final
+specifier|static
+name|int
 name|PROPERTIES
 init|=
 literal|2
-decl_stmt|,
+decl_stmt|;
+DECL|field|CITATION
+specifier|private
+specifier|final
+specifier|static
+name|int
 name|CITATION
 init|=
 literal|3
-decl_stmt|,
+decl_stmt|;
+DECL|field|NAME
+specifier|private
+specifier|final
+specifier|static
+name|int
 name|NAME
 init|=
 literal|4
-decl_stmt|,
+decl_stmt|;
+DECL|field|JOURNALS
+specifier|private
+specifier|final
+specifier|static
+name|int
 name|JOURNALS
 init|=
 literal|5
 decl_stmt|;
 DECL|field|LAYOUT_MRK
+specifier|private
 specifier|final
 specifier|static
 name|String
 name|LAYOUT_MRK
 init|=
 literal|"LAYOUT"
-decl_stmt|,
+decl_stmt|;
 DECL|field|PROPERTIES_MARK
+specifier|private
+specifier|final
+specifier|static
+name|String
 name|PROPERTIES_MARK
 init|=
 literal|"PROPERTIES"
-decl_stmt|,
+decl_stmt|;
 DECL|field|CITATION_MARK
+specifier|private
+specifier|final
+specifier|static
+name|String
 name|CITATION_MARK
 init|=
 literal|"CITATION"
-decl_stmt|,
+decl_stmt|;
 DECL|field|NAME_MARK
+specifier|private
+specifier|final
+specifier|static
+name|String
 name|NAME_MARK
 init|=
 literal|"NAME"
-decl_stmt|,
+decl_stmt|;
 DECL|field|JOURNALS_MARK
+specifier|private
+specifier|final
+specifier|static
+name|String
 name|JOURNALS_MARK
 init|=
 literal|"JOURNALS"
-decl_stmt|,
+decl_stmt|;
 DECL|field|DEFAULT_MARK
+specifier|private
+specifier|final
+specifier|static
+name|String
 name|DEFAULT_MARK
 init|=
 literal|"default"
@@ -839,7 +890,7 @@ block|}
 block|}
 comment|/**      * If this style was initialized from a file on disk, reload the style      * information.      * @throws Exception      */
 DECL|method|reload ()
-specifier|public
+specifier|private
 name|void
 name|reload
 parameter_list|()
@@ -877,7 +928,7 @@ block|}
 block|}
 comment|/**      * If this style was initialized from a file on disk, check whether the file      * is unmodified since initialization.      * @return true if the file has not been modified, false otherwise.      */
 DECL|method|isUpToDate ()
-specifier|public
+specifier|private
 name|boolean
 name|isUpToDate
 parameter_list|()
@@ -3156,7 +3207,7 @@ expr_stmt|;
 block|}
 comment|/**      * This method produces (Author, year) style citation strings in many different forms.      *      * @param entries The array of BibtexEntry to get fields from.      * @param authorField The bibtex field providing author names, e.g. "author" or "editor".      * @param yearField The bibtex field providing the year, e.g. "year".      * @param maxA The maximum number of authors to write out in full without using etal. Set to      *              -1 to always write out all authors.      * @param authorSep The String to add between author names except the last two, e.g. ", ".      * @param andString The String to add between the two last author names, e.g. "& ".      * @param etAlString The String to represent authors that are not mentioned, e.g. " et al."      * @param yearSep The String to separate authors from year, e.g. "; ".      * @param startBrace The opening parenthesis.      * @param endBrace The closing parenthesis.      * @param citationSeparator The String to separate citations from each other.      * @param uniquifiers Optional parameter to separate similar citations. Elements can be null if not needed.      * @return The formatted citation.      */
 DECL|method|getAuthorYearParenthesisMarker (BibtexEntry[] entries, BibtexDatabase database, String authorField, String yearField, int maxA, String authorSep, String andString, String etAlString, String yearSep, String startBrace, String endBrace, String citationSeparator, String[] uniquifiers, int[] unlimAuthors)
-specifier|public
+specifier|private
 name|String
 name|getAuthorYearParenthesisMarker
 parameter_list|(
@@ -3530,7 +3581,7 @@ return|;
 block|}
 comment|/**      * This method produces "Author (year)" style citation strings in many different forms.      *      * @param entries The array of BibtexEntry to get fields from.      * @param authorField The bibtex field providing author names, e.g. "author" or "editor".      * @param yearField The bibtex field providing the year, e.g. "year".      * @param maxA The maximum number of authors to write out in full without using etal. Set to      *              -1 to always write out all authors.      * @param authorSep The String to add between author names except the last two, e.g. ", ".      * @param andString The String to add between the two last author names, e.g. "& ".      * @param etAlString The String to represent authors that are not mentioned, e.g. " et al."      * @param yearSep The String to separate authors from year, e.g. "; ".      * @param startBrace The opening parenthesis.      * @param endBrace The closing parenthesis.      * @param uniquefiers Optional parameters to separate similar citations. Can be null if not needed.      * @return The formatted citation.      */
 DECL|method|getAuthorYearInTextMarker (BibtexEntry[] entries, BibtexDatabase database, String authorField, String yearField, int maxA, String authorSep, String andString, String etAlString, String yearSep, String startBrace, String endBrace, String citationSeparator, String[] uniquefiers, int[] unlimAuthors)
-specifier|public
+specifier|private
 name|String
 name|getAuthorYearInTextMarker
 parameter_list|(
@@ -3921,7 +3972,7 @@ return|;
 block|}
 comment|/**      * This method looks up a field for en entry in a database. Any number of backup fields can be used      * if the primary field is empty.      * @param entry The entry.      * @param database The database the entry belongs to.      * @param field The field, or succession of fields, to look up. If backup fields are needed, separate      *   field names by /. E.g. to use "author" with "editor" as backup, specify "author/editor".      * @return The resolved field content, or an empty string if the field(s) were empty.      */
 DECL|method|getCitationMarkerField (BibtexEntry entry, BibtexDatabase database, String field)
-specifier|public
+specifier|private
 name|String
 name|getCitationMarkerField
 parameter_list|(
@@ -4018,7 +4069,7 @@ return|;
 block|}
 comment|/**      * Look up the nth author and return the proper last name for citation markers.      * @param al The author list.      * @param number The number of the author to return.      * @return The author name, or an empty String if inapplicable.      */
 DECL|method|getAuthorLastName (AuthorList al, int number)
-specifier|public
+specifier|private
 name|String
 name|getAuthorLastName
 parameter_list|(

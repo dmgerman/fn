@@ -18,11 +18,11 @@ end_package
 
 begin_class
 DECL|class|BooleanAssign
-specifier|public
 class|class
 name|BooleanAssign
 block|{
 DECL|field|value
+specifier|private
 name|boolean
 name|value
 decl_stmt|;
@@ -42,7 +42,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|setValue (boolean value)
-specifier|public
+specifier|private
 name|void
 name|setValue
 parameter_list|(

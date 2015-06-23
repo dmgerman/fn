@@ -137,6 +137,7 @@ extends|extends
 name|JDialog
 block|{
 DECL|field|buttons
+specifier|private
 specifier|final
 name|JPanel
 name|buttons
@@ -146,6 +147,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|ok
+specifier|private
 specifier|final
 name|JButton
 name|ok
@@ -155,6 +157,7 @@ name|JButton
 argument_list|()
 decl_stmt|;
 DECL|field|cancel
+specifier|private
 specifier|final
 name|JButton
 name|cancel
@@ -164,6 +167,7 @@ name|JButton
 argument_list|()
 decl_stmt|;
 DECL|field|helpBut
+specifier|private
 name|JButton
 name|helpBut
 init|=
@@ -180,6 +184,7 @@ name|TitledBorder
 name|titledBorder2
 decl_stmt|;
 DECL|field|jLabel1
+specifier|private
 specifier|final
 name|JLabel
 name|jLabel1
@@ -189,6 +194,7 @@ name|JLabel
 argument_list|()
 decl_stmt|;
 DECL|field|jPanel3
+specifier|private
 specifier|final
 name|JPanel
 name|jPanel3
@@ -198,6 +204,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|jPanel4
+specifier|private
 specifier|final
 name|JPanel
 name|jPanel4
@@ -207,6 +214,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|gridBagLayout1
+specifier|private
 specifier|final
 name|GridBagLayout
 name|gridBagLayout1
@@ -216,6 +224,7 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|jScrollPane1
+specifier|private
 specifier|final
 name|JScrollPane
 name|jScrollPane1
@@ -225,6 +234,7 @@ name|JScrollPane
 argument_list|()
 decl_stmt|;
 DECL|field|jLabel2
+specifier|private
 specifier|final
 name|JLabel
 name|jLabel2
@@ -234,6 +244,7 @@ name|JLabel
 argument_list|()
 decl_stmt|;
 DECL|field|fieldsArea
+specifier|private
 specifier|final
 name|JTextArea
 name|fieldsArea
@@ -243,6 +254,7 @@ name|JTextArea
 argument_list|()
 decl_stmt|;
 DECL|field|gridBagLayout2
+specifier|private
 specifier|final
 name|GridBagLayout
 name|gridBagLayout2
@@ -252,11 +264,13 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|parent
+specifier|private
 specifier|final
 name|JabRefFrame
 name|parent
 decl_stmt|;
 DECL|field|revert
+specifier|private
 specifier|final
 name|JButton
 name|revert
@@ -267,6 +281,7 @@ argument_list|()
 decl_stmt|;
 comment|//EntryCustomizationDialog diag;
 DECL|field|help
+specifier|private
 specifier|final
 name|HelpAction
 name|help
@@ -1170,6 +1185,7 @@ expr_stmt|;
 comment|//diag.requestFocus();
 block|}
 DECL|method|setFieldsText ()
+specifier|private
 name|void
 name|setFieldsText
 parameter_list|()
@@ -1440,6 +1456,7 @@ operator|.
 name|ActionListener
 block|{
 DECL|field|adaptee
+specifier|private
 specifier|final
 name|GenFieldsCustomizer
 name|adaptee
@@ -1494,6 +1511,7 @@ operator|.
 name|ActionListener
 block|{
 DECL|field|adaptee
+specifier|private
 specifier|final
 name|GenFieldsCustomizer
 name|adaptee
@@ -1548,6 +1566,7 @@ operator|.
 name|ActionListener
 block|{
 DECL|field|adaptee
+specifier|private
 specifier|final
 name|GenFieldsCustomizer
 name|adaptee

@@ -195,22 +195,26 @@ class|class
 name|ExternalFileTypeEntryEditor
 block|{
 DECL|field|fParent
+specifier|private
 name|JFrame
 name|fParent
 init|=
 literal|null
 decl_stmt|;
 DECL|field|dParent
+specifier|private
 name|JDialog
 name|dParent
 init|=
 literal|null
 decl_stmt|;
 DECL|field|diag
+specifier|private
 name|JDialog
 name|diag
 decl_stmt|;
 DECL|field|extension
+specifier|private
 specifier|final
 name|JTextField
 name|extension
@@ -220,6 +224,7 @@ name|JTextField
 argument_list|()
 decl_stmt|;
 DECL|field|name
+specifier|private
 specifier|final
 name|JTextField
 name|name
@@ -229,6 +234,7 @@ name|JTextField
 argument_list|()
 decl_stmt|;
 DECL|field|mimeType
+specifier|private
 specifier|final
 name|JTextField
 name|mimeType
@@ -238,6 +244,7 @@ name|JTextField
 argument_list|()
 decl_stmt|;
 DECL|field|application
+specifier|private
 specifier|final
 name|JTextField
 name|application
@@ -247,12 +254,14 @@ name|JTextField
 argument_list|()
 decl_stmt|;
 DECL|field|selectedIcon
+specifier|private
 name|String
 name|selectedIcon
 init|=
 literal|null
 decl_stmt|;
 DECL|field|icon
+specifier|private
 specifier|final
 name|JButton
 name|icon
@@ -269,6 +278,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|ok
+specifier|private
 specifier|final
 name|JButton
 name|ok
@@ -285,6 +295,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|cancel
+specifier|private
 specifier|final
 name|JButton
 name|cancel
@@ -301,6 +312,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|useDefault
+specifier|private
 specifier|final
 name|JRadioButton
 name|useDefault
@@ -317,6 +329,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|other
+specifier|private
 specifier|final
 name|JRadioButton
 name|other
@@ -1221,7 +1234,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|setValues (ExternalFileType entry)
-specifier|public
+specifier|private
 name|void
 name|setValues
 parameter_list|(
@@ -1318,7 +1331,7 @@ literal|null
 expr_stmt|;
 block|}
 DECL|method|storeSettings (ExternalFileType entry)
-specifier|public
+specifier|private
 name|void
 name|storeSettings
 parameter_list|(

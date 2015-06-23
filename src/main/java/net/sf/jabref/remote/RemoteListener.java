@@ -200,7 +200,7 @@ init|=
 literal|false
 decl_stmt|;
 DECL|method|RemoteListener (JabRef jabref, ServerSocket socket)
-specifier|public
+specifier|private
 name|RemoteListener
 parameter_list|(
 name|JabRef

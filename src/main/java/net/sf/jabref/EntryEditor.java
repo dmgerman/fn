@@ -825,18 +825,21 @@ name|BibtexEntry
 name|entry
 decl_stmt|;
 DECL|field|type
+specifier|private
 specifier|final
 name|BibtexEntryType
 name|type
 decl_stmt|;
 comment|// The action concerned with closing the window.
 DECL|field|closeAction
+specifier|private
 specifier|final
 name|CloseAction
 name|closeAction
 decl_stmt|;
 comment|// The action that deletes the current entry, and closes the editor.
 DECL|field|deleteAction
+specifier|private
 specifier|final
 name|DeleteAction
 name|deleteAction
@@ -847,6 +850,7 @@ argument_list|()
 decl_stmt|;
 comment|// The action concerned with copying the BibTeX key to the clipboard.
 DECL|field|copyKeyAction
+specifier|private
 specifier|final
 name|CopyKeyAction
 name|copyKeyAction
@@ -923,7 +927,7 @@ name|AutoLinkAction
 argument_list|()
 decl_stmt|;
 DECL|field|writeXmp
-specifier|public
+specifier|private
 specifier|final
 name|AbstractAction
 name|writeXmp
@@ -946,6 +950,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|srcPanel
+specifier|private
 specifier|final
 name|JPanel
 name|srcPanel
@@ -955,16 +960,21 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|genPan
-DECL|field|optPan
-DECL|field|reqPan
-DECL|field|absPan
 name|EntryEditorTab
 name|genPan
-decl_stmt|,
+decl_stmt|;
+DECL|field|optPan
+specifier|private
+name|EntryEditorTab
 name|optPan
-decl_stmt|,
+decl_stmt|;
+DECL|field|reqPan
+specifier|private
+name|EntryEditorTab
 name|reqPan
-decl_stmt|,
+decl_stmt|;
+DECL|field|absPan
+name|EntryEditorTab
 name|absPan
 decl_stmt|;
 DECL|field|bibtexKey
@@ -976,14 +986,17 @@ name|FieldTextField
 name|tf
 decl_stmt|;
 DECL|field|source
+specifier|private
 name|JTextArea
 name|source
 decl_stmt|;
 DECL|field|tlb
+specifier|private
 name|JToolBar
 name|tlb
 decl_stmt|;
 DECL|field|tabbed
+specifier|private
 specifier|final
 name|JTabbedPane
 name|tabbed
@@ -998,6 +1011,7 @@ name|JLabel
 name|lab
 decl_stmt|;
 DECL|field|typeButton
+specifier|private
 name|TypeButton
 name|typeButton
 decl_stmt|;
@@ -1012,6 +1026,7 @@ name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|ths
+specifier|private
 specifier|final
 name|EntryEditor
 name|ths
@@ -1019,6 +1034,7 @@ init|=
 name|this
 decl_stmt|;
 DECL|field|contentSelectors
+specifier|private
 specifier|final
 name|HashSet
 argument_list|<
@@ -1034,6 +1050,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|logger
+specifier|private
 specifier|final
 name|Logger
 name|logger
@@ -1051,6 +1068,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|updateSource
+specifier|private
 name|boolean
 name|updateSource
 init|=
@@ -1058,6 +1076,7 @@ literal|true
 decl_stmt|;
 comment|// This can be set to false to stop the source
 DECL|field|movingToDifferentEntry
+specifier|private
 name|boolean
 name|movingToDifferentEntry
 init|=
@@ -1065,6 +1084,7 @@ literal|false
 decl_stmt|;
 comment|// Indicates that we are about to go to the next or previous entry
 DECL|field|tabs
+specifier|private
 specifier|final
 name|List
 argument_list|<
@@ -1082,6 +1102,7 @@ decl_stmt|;
 comment|// text area from gettin updated. This is used in cases where the source
 comment|// couldn't be parsed, and the user is given the option to edit it.
 DECL|field|lastSourceAccepted
+specifier|private
 name|boolean
 name|lastSourceAccepted
 init|=
@@ -1093,6 +1114,7 @@ comment|// at parsing the source was successful. It is used to determine whether
 comment|// dialog should close; it should stay open if the user received an error
 comment|// message about the source, whatever he or she chose to do about it.
 DECL|field|lastSourceStringAccepted
+specifier|private
 name|String
 name|lastSourceStringAccepted
 init|=
@@ -1112,6 +1134,7 @@ literal|1
 decl_stmt|;
 comment|// The index the source panel has in tabbed.
 DECL|field|prefs
+specifier|private
 specifier|final
 name|JabRefPreferences
 name|prefs
@@ -1122,6 +1145,7 @@ name|HelpAction
 name|helpAction
 decl_stmt|;
 DECL|field|undoAction
+specifier|private
 specifier|final
 name|UndoAction
 name|undoAction
@@ -1131,6 +1155,7 @@ name|UndoAction
 argument_list|()
 decl_stmt|;
 DECL|field|redoAction
+specifier|private
 specifier|final
 name|RedoAction
 name|redoAction
@@ -1140,6 +1165,7 @@ name|RedoAction
 argument_list|()
 decl_stmt|;
 DECL|field|tabListener
+specifier|private
 specifier|final
 name|TabListener
 name|tabListener
@@ -3970,7 +3996,7 @@ block|}
 block|}
 comment|/**      * NOTE: This method is only used for the source panel, not for the      * other tabs. Look at EntryEditorTab for the setup of text components      * in the other tabs.      */
 DECL|method|setupJTextComponent (JTextComponent ta)
-specifier|public
+specifier|private
 name|void
 name|setupJTextComponent
 parameter_list|(
@@ -4787,7 +4813,7 @@ return|;
 block|}
 comment|/*      * public boolean storeSourceIfNeeded() { if (tabbed.getSelectedIndex() ==      * sourceIndex) return storeSource(); else return true; }      */
 DECL|method|storeSource (boolean showError)
-specifier|public
+specifier|private
 name|boolean
 name|storeSource
 parameter_list|(
@@ -5495,7 +5521,7 @@ return|;
 block|}
 block|}
 DECL|method|setField (String fieldName, String newFieldData)
-specifier|public
+specifier|private
 name|void
 name|setField
 parameter_list|(
@@ -6066,6 +6092,7 @@ comment|//g2.drawString(label, -width - 7, 28);
 block|}
 block|}
 DECL|class|FieldListener
+specifier|private
 class|class
 name|FieldListener
 extends|extends
@@ -8405,6 +8432,7 @@ block|{             }
 block|}
 block|}
 DECL|class|ExternalViewerListener
+specifier|private
 class|class
 name|ExternalViewerListener
 extends|extends

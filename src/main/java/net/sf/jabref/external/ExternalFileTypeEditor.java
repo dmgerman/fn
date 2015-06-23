@@ -378,7 +378,7 @@ name|EditListener
 argument_list|()
 decl_stmt|;
 DECL|method|ExternalFileTypeEditor (JFrame frame)
-specifier|public
+specifier|private
 name|ExternalFileTypeEditor
 parameter_list|(
 name|JFrame
@@ -410,7 +410,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|ExternalFileTypeEditor (JDialog dialog)
-specifier|public
+specifier|private
 name|ExternalFileTypeEditor
 parameter_list|(
 name|JDialog
@@ -443,7 +443,7 @@ expr_stmt|;
 block|}
 comment|/**      * Update the editor to show the current settings in Preferences.      */
 DECL|method|setValues ()
-specifier|public
+specifier|private
 name|void
 name|setValues
 parameter_list|()
@@ -493,7 +493,7 @@ expr_stmt|;
 block|}
 comment|/**      * Store the list of external entry types to Preferences.      */
 DECL|method|storeSettings ()
-specifier|public
+specifier|private
 name|void
 name|storeSettings
 parameter_list|()
@@ -1193,6 +1193,7 @@ argument_list|)
 return|;
 block|}
 DECL|class|AddListener
+specifier|private
 class|class
 name|AddListener
 implements|implements
@@ -1263,6 +1264,7 @@ block|}
 block|}
 block|}
 DECL|class|RemoveListener
+specifier|private
 class|class
 name|RemoveListener
 implements|implements
@@ -1511,6 +1513,7 @@ return|;
 block|}
 block|}
 DECL|class|FileTypeTableModel
+specifier|private
 class|class
 name|FileTypeTableModel
 extends|extends

@@ -1584,7 +1584,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|parseString ()
-specifier|public
+specifier|private
 name|BibtexString
 name|parseString
 parameter_list|()
@@ -1661,7 +1661,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|parsePreamble ()
-specifier|public
+specifier|private
 name|String
 name|parsePreamble
 parameter_list|()
@@ -1677,7 +1677,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|parseEntry (BibtexEntryType tp)
-specifier|public
+specifier|private
 name|BibtexEntry
 name|parseEntry
 parameter_list|(
@@ -3911,7 +3911,7 @@ throw|;
 block|}
 block|}
 DECL|method|checkEntryTypes (ParserResult _pr)
-specifier|public
+specifier|private
 name|void
 name|checkEntryTypes
 parameter_list|(

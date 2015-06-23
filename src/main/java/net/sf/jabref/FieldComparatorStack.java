@@ -53,6 +53,7 @@ name|T
 argument_list|>
 block|{
 DECL|field|comparators
+specifier|private
 specifier|final
 name|List
 argument_list|<

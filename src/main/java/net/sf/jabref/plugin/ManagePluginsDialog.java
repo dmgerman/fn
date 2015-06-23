@@ -288,7 +288,6 @@ end_comment
 
 begin_class
 DECL|class|ManagePluginsDialog
-specifier|public
 class|class
 name|ManagePluginsDialog
 block|{
@@ -1440,7 +1439,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|installPlugin ()
-specifier|public
+specifier|private
 name|void
 name|installPlugin
 parameter_list|()
@@ -1539,7 +1538,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|downloadPlugin ()
-specifier|public
+specifier|private
 name|void
 name|downloadPlugin
 parameter_list|()
@@ -1614,7 +1613,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|installFromURL (URL url)
-specifier|public
+specifier|private
 name|void
 name|installFromURL
 parameter_list|(
@@ -1746,7 +1745,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|installFromFile (File file)
-specifier|public
+specifier|private
 name|void
 name|installFromFile
 parameter_list|(
@@ -1770,6 +1769,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|class|PluginTableFormat
+specifier|private
 class|class
 name|PluginTableFormat
 implements|implements

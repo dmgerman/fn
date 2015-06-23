@@ -368,12 +368,11 @@ end_comment
 
 begin_class
 DECL|class|StyleSelectDialog
-specifier|public
 class|class
 name|StyleSelectDialog
 block|{
 DECL|field|STYLE_FILE_EXTENSION
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -623,6 +622,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|preview
+specifier|private
 name|PreviewPanel
 name|preview
 decl_stmt|;
@@ -2540,7 +2540,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|storeSettings ()
-specifier|public
+specifier|private
 name|void
 name|storeSettings
 parameter_list|()
@@ -2680,7 +2680,7 @@ block|}
 block|}
 comment|/**      * Get the currently selected style.      * @return the selected style, or null if no style is selected.      */
 DECL|method|getSelectedStyle ()
-specifier|public
+specifier|private
 name|OOBibStyle
 name|getSelectedStyle
 parameter_list|()
@@ -3027,7 +3027,7 @@ name|okPressed
 return|;
 block|}
 DECL|method|tablePopup (MouseEvent e)
-specifier|protected
+specifier|private
 name|void
 name|tablePopup
 parameter_list|(
@@ -3057,7 +3057,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|displayDefaultStyle (boolean authoryear)
-specifier|protected
+specifier|private
 name|void
 name|displayDefaultStyle
 parameter_list|(
@@ -3421,6 +3421,7 @@ block|}
 block|}
 comment|/**      * The listener for the Glazed list monitoring the current selection.      * When selection changes, we need to update the preview panel.      */
 DECL|class|EntrySelectionListener
+specifier|private
 class|class
 name|EntrySelectionListener
 implements|implements

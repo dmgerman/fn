@@ -32,12 +32,14 @@ name|BibtexWidth
 block|{
 comment|/*      * Quoted from Bibtex:      *       * Now we initialize the system-dependent |char_width| array, for which      * |space| is the only |white_space| character given a nonzero printing      * width. The widths here are taken from Stanford's June~'87 $cmr10$~font      * and represent hundredths of a point (rounded), but since they're used      * only for relative comparisons, the units have no meaning.      */
 DECL|field|widths
+specifier|private
 specifier|static
 name|int
 index|[]
 name|widths
 decl_stmt|;
 DECL|method|getSpecialCharWidth (char[] c, int pos)
+specifier|private
 specifier|static
 name|int
 name|getSpecialCharWidth

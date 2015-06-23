@@ -78,24 +78,26 @@ end_import
 
 begin_class
 DECL|class|EntryAddChange
-specifier|public
 class|class
 name|EntryAddChange
 extends|extends
 name|Change
 block|{
 DECL|field|diskEntry
+specifier|private
 specifier|final
 name|BibtexEntry
 name|diskEntry
 decl_stmt|;
 comment|//  boolean isModifiedLocally, modificationsAgree;[[[[[[
 DECL|field|pp
+specifier|private
 specifier|final
 name|PreviewPanel
 name|pp
 decl_stmt|;
 DECL|field|sp
+specifier|private
 specifier|final
 name|JScrollPane
 name|sp

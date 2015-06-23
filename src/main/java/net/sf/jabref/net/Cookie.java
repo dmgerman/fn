@@ -48,21 +48,23 @@ end_import
 
 begin_class
 DECL|class|Cookie
-specifier|public
 class|class
 name|Cookie
 block|{
 DECL|field|name
+specifier|private
 specifier|final
 name|String
 name|name
 decl_stmt|;
 DECL|field|value
+specifier|private
 specifier|final
 name|String
 name|value
 decl_stmt|;
 DECL|field|uri
+specifier|private
 specifier|final
 name|URI
 name|uri
@@ -72,10 +74,12 @@ name|String
 name|domain
 decl_stmt|;
 DECL|field|expires
+specifier|private
 name|Date
 name|expires
 decl_stmt|;
 DECL|field|path
+specifier|private
 name|String
 name|path
 decl_stmt|;

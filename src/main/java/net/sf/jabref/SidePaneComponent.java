@@ -149,7 +149,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|up
-specifier|protected
+specifier|private
 specifier|final
 name|JButton
 name|up
@@ -166,7 +166,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|down
-specifier|protected
+specifier|private
 specifier|final
 name|JButton
 name|down
@@ -183,14 +183,14 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|visible
-specifier|protected
+specifier|private
 name|boolean
 name|visible
 init|=
 literal|false
 decl_stmt|;
 DECL|field|manager
-specifier|protected
+specifier|private
 specifier|final
 name|SidePaneManager
 name|manager
@@ -393,7 +393,6 @@ comment|// (GUIGlobals.SPLIT_PANE_DIVIDER_LOCATION, 200));
 comment|// Util.pr(""+GUIGlobals.SPLIT_PANE_DIVIDER_LOCATION);
 block|}
 DECL|method|hideAway ()
-specifier|public
 name|void
 name|hideAway
 parameter_list|()
@@ -407,7 +406,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|moveUp ()
-specifier|public
+specifier|private
 name|void
 name|moveUp
 parameter_list|()
@@ -421,7 +420,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|moveDown ()
-specifier|public
+specifier|private
 name|void
 name|moveDown
 parameter_list|()
@@ -512,6 +511,7 @@ argument_list|()
 return|;
 block|}
 DECL|class|CloseButtonListener
+specifier|private
 class|class
 name|CloseButtonListener
 implements|implements
@@ -534,6 +534,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|UpButtonListener
+specifier|private
 class|class
 name|UpButtonListener
 implements|implements
@@ -556,6 +557,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|DownButtonListener
+specifier|private
 class|class
 name|DownButtonListener
 implements|implements

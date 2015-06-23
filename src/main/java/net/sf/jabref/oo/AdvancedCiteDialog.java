@@ -144,11 +144,11 @@ end_comment
 
 begin_class
 DECL|class|AdvancedCiteDialog
-specifier|public
 class|class
 name|AdvancedCiteDialog
 block|{
 DECL|field|defaultInPar
+specifier|private
 specifier|static
 name|boolean
 name|defaultInPar
@@ -156,17 +156,20 @@ init|=
 literal|true
 decl_stmt|;
 DECL|field|okPressed
+specifier|private
 name|boolean
 name|okPressed
 init|=
 literal|false
 decl_stmt|;
 DECL|field|diag
+specifier|private
 specifier|final
 name|JDialog
 name|diag
 decl_stmt|;
 DECL|field|inPar
+specifier|private
 specifier|final
 name|JRadioButton
 name|inPar
@@ -183,6 +186,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|inText
+specifier|private
 specifier|final
 name|JRadioButton
 name|inText
@@ -199,6 +203,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|pageInfo
+specifier|private
 specifier|final
 name|JTextField
 name|pageInfo
@@ -210,6 +215,7 @@ literal|15
 argument_list|)
 decl_stmt|;
 DECL|field|ok
+specifier|private
 specifier|final
 name|JButton
 name|ok
@@ -226,6 +232,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|cancel
+specifier|private
 specifier|final
 name|JButton
 name|cancel

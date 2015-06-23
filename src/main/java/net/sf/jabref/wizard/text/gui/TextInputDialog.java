@@ -1017,7 +1017,7 @@ name|BibtexEntry
 name|entry
 decl_stmt|;
 DECL|field|inputMenu
-specifier|public
+specifier|private
 specifier|final
 name|JPopupMenu
 name|inputMenu
@@ -2479,7 +2479,7 @@ block|}
 comment|// ---------------------------------------------------------------------------
 comment|// ---------------------------------------------------------------------------
 DECL|method|addStylesToDocument (StyledDocument doc)
-specifier|protected
+specifier|private
 name|void
 name|addStylesToDocument
 parameter_list|(
@@ -4026,6 +4026,7 @@ block|}
 block|}
 comment|//---------------------------------------------------------------
 DECL|class|FieldListMouseListener
+specifier|private
 class|class
 name|FieldListMouseListener
 extends|extends

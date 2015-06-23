@@ -62,15 +62,18 @@ argument_list|)
 return|;
 block|}
 DECL|field|sb
+specifier|private
 name|StringBuffer
 name|sb
 decl_stmt|;
 DECL|field|col
+specifier|private
 name|int
 name|col
 decl_stmt|;
 comment|// First line usually starts about so much further to the right.
 DECL|field|STARTCOL
+specifier|private
 specifier|final
 name|int
 name|STARTCOL

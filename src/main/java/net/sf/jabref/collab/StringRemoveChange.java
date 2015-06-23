@@ -114,23 +114,25 @@ end_import
 
 begin_class
 DECL|class|StringRemoveChange
-specifier|public
 class|class
 name|StringRemoveChange
 extends|extends
 name|Change
 block|{
 DECL|field|string
+specifier|private
 specifier|final
 name|BibtexString
 name|string
 decl_stmt|;
 DECL|field|inMem
+specifier|private
 specifier|final
 name|BibtexString
 name|inMem
 decl_stmt|;
 DECL|field|tp
+specifier|private
 specifier|final
 name|InfoPane
 name|tp
@@ -140,6 +142,7 @@ name|InfoPane
 argument_list|()
 decl_stmt|;
 DECL|field|sp
+specifier|private
 specifier|final
 name|JScrollPane
 name|sp

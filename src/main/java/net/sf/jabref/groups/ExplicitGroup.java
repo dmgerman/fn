@@ -303,7 +303,7 @@ block|}
 block|}
 comment|/** Called only when created fromString */
 DECL|method|addEntries (QuotedStringTokenizer tok, BibtexDatabase db)
-specifier|protected
+specifier|private
 name|void
 name|addEntries
 parameter_list|(

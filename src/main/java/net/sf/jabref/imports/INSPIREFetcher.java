@@ -182,7 +182,7 @@ parameter_list|()
 block|{     }
 comment|/**      * Construct the query URL      *      * NOTE: we truncate at 1000 returned entries but its likely INSPIRE returns      * fewer anyway.  This shouldn't be a problem since users should probably do      * more specific searches.      *       * @param key      *            The key of the OAI2 entry that the url should poitn to.      *       * @return a String denoting the query URL      */
 DECL|method|constructUrl (String key)
-specifier|public
+specifier|private
 name|String
 name|constructUrl
 parameter_list|(

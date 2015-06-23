@@ -243,6 +243,7 @@ class|class
 name|PluginCore
 block|{
 DECL|field|singleton
+specifier|private
 specifier|static
 name|PluginManager
 name|singleton
@@ -267,6 +268,7 @@ literal|"/.jabref/plugins"
 argument_list|)
 decl_stmt|;
 DECL|method|getLocationInsideJar (String context, String manifest)
+specifier|private
 specifier|static
 name|PluginLocation
 name|getLocationInsideJar
@@ -424,6 +426,7 @@ literal|null
 return|;
 block|}
 DECL|method|initialize ()
+specifier|private
 specifier|static
 name|PluginManager
 name|initialize

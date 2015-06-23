@@ -30,7 +30,6 @@ end_comment
 
 begin_class
 DECL|class|MarkedComparator
-specifier|public
 class|class
 name|MarkedComparator
 implements|implements
@@ -40,6 +39,7 @@ name|BibtexEntry
 argument_list|>
 block|{
 DECL|field|next
+specifier|private
 specifier|final
 name|Comparator
 argument_list|<

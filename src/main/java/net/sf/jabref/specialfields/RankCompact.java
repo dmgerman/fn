@@ -73,7 +73,7 @@ init|=
 literal|null
 decl_stmt|;
 DECL|method|RankCompact ()
-specifier|public
+specifier|private
 name|RankCompact
 parameter_list|()
 block|{

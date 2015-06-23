@@ -40,7 +40,6 @@ end_import
 
 begin_class
 DECL|class|JPanelXBoxPreferredSize
-specifier|public
 class|class
 name|JPanelXBoxPreferredSize
 extends|extends

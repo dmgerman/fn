@@ -268,7 +268,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|storeOpenDocumentSpreadsheetFile (File file, InputStream source)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|storeOpenDocumentSpreadsheetFile
@@ -488,7 +488,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|exportOpenDocumentSpreadsheet (File file, BibtexDatabase database, Set<String> keySet)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|exportOpenDocumentSpreadsheet
@@ -563,7 +563,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|exportOpenDocumentSpreadsheetXML (File tmpFile, BibtexDatabase database, Set<String> keySet)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|exportOpenDocumentSpreadsheetXML

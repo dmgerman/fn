@@ -103,6 +103,7 @@ extends|extends
 name|OutputStreamWriter
 block|{
 DECL|field|encoder
+specifier|private
 name|CharsetEncoder
 name|encoder
 decl_stmt|;

@@ -51,6 +51,7 @@ class|class
 name|NameListNormalizer
 block|{
 DECL|field|lastFF
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -64,6 +65,7 @@ literal|"(\\p{javaUpperCase}[\\p{javaLowerCase}]+) (\\p{javaUpperCase}+)"
 argument_list|)
 decl_stmt|;
 DECL|field|lastFdotF
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -77,6 +79,7 @@ literal|"(\\p{javaUpperCase}[\\p{javaLowerCase}]+) ([\\. \\p{javaUpperCase}]+)"
 argument_list|)
 decl_stmt|;
 DECL|field|FFlast
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -90,6 +93,7 @@ literal|"(\\p{javaUpperCase}+) (\\p{javaUpperCase}[\\p{javaLowerCase}]+)"
 argument_list|)
 decl_stmt|;
 DECL|field|FdotFlast
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -103,6 +107,7 @@ literal|"([\\. \\p{javaUpperCase}]+) (\\p{javaUpperCase}[\\p{javaLowerCase}]+)"
 argument_list|)
 decl_stmt|;
 DECL|field|singleName
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -597,7 +602,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|normalizeName (String name)
-specifier|public
+specifier|private
 specifier|static
 name|String
 name|normalizeName

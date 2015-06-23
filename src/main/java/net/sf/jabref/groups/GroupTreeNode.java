@@ -176,7 +176,7 @@ name|DataFlavor
 name|flavor
 decl_stmt|;
 DECL|field|flavors
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|DataFlavor
@@ -661,7 +661,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|getSearchRule (int originalContext)
-specifier|protected
+specifier|private
 name|SearchRule
 name|getSearchRule
 parameter_list|(

@@ -186,7 +186,7 @@ name|EntryFetcher
 block|{
 comment|/**      * cookies can't save more than 200 citations      */
 DECL|field|MAX_CITATIONS
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -196,7 +196,7 @@ literal|200
 decl_stmt|;
 comment|/**      * Cookie key for Jstor ticket (authentication)      */
 DECL|field|COOKIE_TICKET
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -206,7 +206,7 @@ literal|"Jstor_Ticket"
 decl_stmt|;
 comment|/**      * location where the ticket is obtained      *       */
 DECL|field|URL_TICKET
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -216,7 +216,7 @@ literal|"http://www.jstor.org/search"
 decl_stmt|;
 comment|/**      * Cookie key for citations to be fetched      *       */
 DECL|field|COOKIE_CITATIONS
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -226,7 +226,7 @@ literal|"Jstor_citations0"
 decl_stmt|;
 comment|/**      * location where to obtain the citations cookie      *       */
 DECL|field|URL_BIBTEX
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -435,7 +435,7 @@ return|;
 block|}
 comment|/**      * Given a ticket an a list of citations, retrieve BibtexEntries from JStor      *       * @param ticket      *            A valid ticket as returned by openTicket()      * @param citations      *            A list of citations as returned by getCitations()      * @return A collection of BibtexEntries parsed from the bibtex returned by      *         JStor.      * @throws IOException      *             Most probably related to a problem connecting to JStor.      */
 DECL|method|getBibtexEntries (String ticket, String citations)
-specifier|protected
+specifier|private
 name|Collection
 argument_list|<
 name|BibtexEntry
@@ -541,7 +541,7 @@ block|}
 block|}
 comment|/**      *       * @return a Jstor ticket ID      * @throws IOException      */
 DECL|method|openTicket ()
-specifier|protected
+specifier|private
 name|String
 name|openTicket
 parameter_list|()
@@ -582,7 +582,7 @@ return|;
 block|}
 comment|/**      * requires a valid JStor Ticket ID      *       * @param query      *            The search term to query JStor for.      * @param ticket      *            JStor ticket      * @return cookie value of the key JSTORFetcher.COOKIE_CITATIONS. null if      *         search is empty or ticket is invalid      * @throws IOException      */
 DECL|method|getCitations (String ticket, String query)
-specifier|protected
+specifier|private
 name|String
 name|getCitations
 parameter_list|(
@@ -677,7 +677,7 @@ return|;
 block|}
 comment|/**      * evaluates the 'Set-Cookie'-Header of a HTTP response      *       * @param name      *            key of a cookie value      * @param conn      *            URLConnection      * @return cookie value referenced by the key. null if key not found      * @throws IOException      */
 DECL|method|getCookie (String name, URLConnection conn)
-specifier|public
+specifier|private
 specifier|static
 name|String
 name|getCookie

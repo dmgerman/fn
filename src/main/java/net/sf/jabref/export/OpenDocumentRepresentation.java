@@ -212,12 +212,11 @@ end_comment
 
 begin_class
 DECL|class|OpenDocumentRepresentation
-specifier|public
 class|class
 name|OpenDocumentRepresentation
 block|{
 DECL|field|entries
-specifier|protected
+specifier|private
 specifier|final
 name|Collection
 argument_list|<
@@ -1724,7 +1723,7 @@ name|result
 return|;
 block|}
 DECL|method|getField (BibtexEntry e, String field)
-specifier|protected
+specifier|private
 name|String
 name|getField
 parameter_list|(
@@ -1760,7 +1759,7 @@ name|s
 return|;
 block|}
 DECL|method|addTableCell (Document doc, Element parent, String content)
-specifier|protected
+specifier|private
 name|void
 name|addTableCell
 parameter_list|(

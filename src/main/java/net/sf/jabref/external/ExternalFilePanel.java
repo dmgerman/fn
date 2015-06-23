@@ -742,7 +742,7 @@ name|database
 expr_stmt|;
 block|}
 DECL|method|getDatabase ()
-specifier|public
+specifier|private
 name|BibtexDatabase
 name|getDatabase
 parameter_list|()
@@ -763,7 +763,7 @@ operator|)
 return|;
 block|}
 DECL|method|getEntry ()
-specifier|public
+specifier|private
 name|BibtexEntry
 name|getEntry
 parameter_list|()
@@ -784,7 +784,7 @@ operator|)
 return|;
 block|}
 DECL|method|getKey ()
-specifier|protected
+specifier|private
 name|Object
 name|getKey
 parameter_list|()
@@ -802,7 +802,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|output (String s)
-specifier|protected
+specifier|private
 name|void
 name|output
 parameter_list|(
@@ -827,7 +827,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|pushXMP (final String fieldName, final FieldEditor editor)
-specifier|public
+specifier|private
 name|void
 name|pushXMP
 parameter_list|(

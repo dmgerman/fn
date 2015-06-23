@@ -160,13 +160,14 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|completer
+specifier|private
 specifier|final
 name|AbstractAutoCompleter
 name|completer
 decl_stmt|;
 comment|// These variables keep track of the situation from time to time.
 DECL|field|toSetIn
-specifier|protected
+specifier|private
 name|String
 name|toSetIn
 init|=
@@ -174,7 +175,7 @@ literal|null
 decl_stmt|;
 comment|// null indicates that there are no completions available
 DECL|field|lastBeginning
-specifier|protected
+specifier|private
 name|String
 name|lastBeginning
 init|=
@@ -182,7 +183,7 @@ literal|null
 decl_stmt|;
 comment|// the letters, the user has typed until know
 DECL|field|lastCaretPosition
-specifier|protected
+specifier|private
 name|int
 name|lastCaretPosition
 init|=
@@ -190,7 +191,7 @@ operator|-
 literal|1
 decl_stmt|;
 DECL|field|lastCompletions
-specifier|protected
+specifier|private
 name|String
 index|[]
 name|lastCompletions
@@ -198,14 +199,14 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|lastShownCompletion
-specifier|protected
+specifier|private
 name|int
 name|lastShownCompletion
 init|=
 literal|0
 decl_stmt|;
 DECL|field|consumeEnterKey
-specifier|protected
+specifier|private
 name|boolean
 name|consumeEnterKey
 init|=
@@ -215,7 +216,7 @@ comment|// This field is set if the focus listener should call another focus lis
 comment|// after finishing. This is needed because the autocomplete listener must
 comment|// run before the focus listener responsible for storing the current edit.
 DECL|field|nextFocusListener
-specifier|protected
+specifier|private
 name|FocusListener
 name|nextFocusListener
 init|=
@@ -2138,7 +2139,7 @@ literal|null
 expr_stmt|;
 block|}
 DECL|method|findCompletions (String beginning, JTextComponent comp)
-specifier|protected
+specifier|private
 name|String
 index|[]
 name|findCompletions
@@ -2160,7 +2161,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|getCurrentWord (JTextComponent comp)
-specifier|protected
+specifier|private
 name|StringBuffer
 name|getCurrentWord
 parameter_list|(
@@ -2326,19 +2327,27 @@ name|res
 return|;
 block|}
 DECL|field|ANY_NAME
-DECL|field|FIRST_NAME
-DECL|field|LAST_NAME
+specifier|private
 specifier|final
 specifier|static
 name|int
 name|ANY_NAME
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
+DECL|field|FIRST_NAME
+specifier|private
+specifier|final
+specifier|static
+name|int
 name|FIRST_NAME
 init|=
 literal|1
-decl_stmt|,
+decl_stmt|;
+DECL|field|LAST_NAME
+specifier|final
+specifier|static
+name|int
 name|LAST_NAME
 init|=
 literal|2

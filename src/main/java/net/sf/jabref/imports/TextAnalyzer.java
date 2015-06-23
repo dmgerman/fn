@@ -74,11 +74,11 @@ end_import
 
 begin_class
 DECL|class|TextAnalyzer
-specifier|public
 class|class
 name|TextAnalyzer
 block|{
 DECL|field|be
+specifier|private
 specifier|final
 name|BibtexEntry
 name|be
@@ -110,7 +110,7 @@ name|be
 return|;
 block|}
 DECL|method|guessBibtexFields (String text)
-specifier|public
+specifier|private
 name|void
 name|guessBibtexFields
 parameter_list|(
@@ -1077,7 +1077,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|getMatches (String text, String regexp)
-specifier|public
+specifier|private
 name|String
 index|[]
 name|getMatches

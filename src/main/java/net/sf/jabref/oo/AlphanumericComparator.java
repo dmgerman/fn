@@ -56,7 +56,6 @@ end_comment
 
 begin_class
 DECL|class|AlphanumericComparator
-specifier|public
 class|class
 name|AlphanumericComparator
 implements|implements
@@ -66,6 +65,7 @@ name|BibtexEntry
 argument_list|>
 block|{
 DECL|field|authComp
+specifier|private
 specifier|final
 name|FieldComparator
 name|authComp
@@ -77,6 +77,7 @@ literal|"author"
 argument_list|)
 decl_stmt|;
 DECL|field|editorComp
+specifier|private
 specifier|final
 name|FieldComparator
 name|editorComp
@@ -88,6 +89,7 @@ literal|"editor"
 argument_list|)
 decl_stmt|;
 DECL|field|yearComp
+specifier|private
 specifier|final
 name|FieldComparator
 name|yearComp
@@ -99,6 +101,7 @@ literal|"year"
 argument_list|)
 decl_stmt|;
 DECL|field|titleComp
+specifier|private
 specifier|final
 name|FieldComparator
 name|titleComp

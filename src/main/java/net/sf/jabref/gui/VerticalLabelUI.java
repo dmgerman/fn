@@ -163,6 +163,7 @@ literal|false
 decl_stmt|;
 comment|// see comment in BasicLabelUI
 DECL|field|verticalViewR
+specifier|private
 name|Rectangle
 name|verticalViewR
 init|=
@@ -171,6 +172,7 @@ name|Rectangle
 argument_list|()
 decl_stmt|;
 DECL|field|verticalIconR
+specifier|private
 name|Rectangle
 name|verticalIconR
 init|=
@@ -179,6 +181,7 @@ name|Rectangle
 argument_list|()
 decl_stmt|;
 DECL|field|verticalTextR
+specifier|private
 name|Rectangle
 name|verticalTextR
 init|=
@@ -187,7 +190,7 @@ name|Rectangle
 argument_list|()
 decl_stmt|;
 DECL|field|verticalLabelUI
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|VerticalLabelUI
@@ -210,7 +213,7 @@ argument_list|()
 decl_stmt|;
 comment|/**      * Constructs a<code>VerticalLabelUI</code> with the default anticlockwise      * rotation      */
 DECL|method|VerticalLabelUI ()
-specifier|public
+specifier|private
 name|VerticalLabelUI
 parameter_list|()
 block|{     }

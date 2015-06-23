@@ -46,7 +46,6 @@ end_comment
 
 begin_class
 DECL|class|UndefinedBibtexEntry
-specifier|public
 class|class
 name|UndefinedBibtexEntry
 extends|extends

@@ -65,21 +65,21 @@ class|class
 name|PersonName
 block|{
 DECL|field|givenName
-specifier|protected
+specifier|private
 name|String
 name|givenName
 init|=
 literal|null
 decl_stmt|;
 DECL|field|surname
-specifier|protected
+specifier|private
 name|String
 name|surname
 init|=
 literal|null
 decl_stmt|;
 DECL|field|middleName
-specifier|protected
+specifier|private
 name|String
 name|middleName
 init|=
@@ -132,7 +132,7 @@ name|lastName
 expr_stmt|;
 block|}
 DECL|method|parseName (String author)
-specifier|protected
+specifier|private
 name|void
 name|parseName
 parameter_list|(

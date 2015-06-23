@@ -1874,7 +1874,7 @@ comment|//
 comment|// @return true if user pushed "Ok", false otherwise
 comment|//
 DECL|method|showLinkMoveCopyRenameDialog (String linkFileName, ExternalFileType fileType, BibtexEntry entry, boolean newEntry, final boolean multipleEntries, BibtexDatabase database)
-specifier|public
+specifier|private
 name|boolean
 name|showLinkMoveCopyRenameDialog
 parameter_list|(

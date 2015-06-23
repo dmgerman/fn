@@ -77,6 +77,7 @@ extends|extends
 name|JPanel
 block|{
 DECL|field|PREFERRED_SIZE
+specifier|private
 specifier|final
 name|Dimension
 name|PREFERRED_SIZE
@@ -92,6 +93,7 @@ literal|100
 argument_list|)
 decl_stmt|;
 DECL|field|gridBagLayout
+specifier|private
 specifier|final
 name|GridBagLayout
 name|gridBagLayout
@@ -101,6 +103,7 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|constraint
+specifier|private
 specifier|final
 name|GridBagConstraints
 name|constraint
@@ -110,6 +113,7 @@ name|GridBagConstraints
 argument_list|()
 decl_stmt|;
 DECL|field|mainPanel
+specifier|private
 specifier|final
 name|JPanel
 name|mainPanel

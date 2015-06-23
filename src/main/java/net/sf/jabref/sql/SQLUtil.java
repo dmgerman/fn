@@ -150,7 +150,7 @@ parameter_list|()
 block|{     }
 comment|/**      * loop through entry types to get required, optional, general and utility      * fields for this type.      */
 DECL|method|refreshFields ()
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|refreshFields
@@ -993,7 +993,7 @@ return|;
 block|}
 comment|/**      * Utility method for executing DML      *       * @param conn      *            The DML Connection object that will execute the SQL      * @param qry      *            The DML statements to be executed      */
 DECL|method|executeQuery (Connection conn, String qry)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|executeQuery
@@ -1058,7 +1058,7 @@ expr_stmt|;
 block|}
 comment|/**      * Utility method for executing DML      *       * @param conn      *            The DML Connection object that will execute the SQL      * @param qry      *            The DML statements to be executed      */
 DECL|method|executeQueryWithResults (Connection conn, String qry)
-specifier|public
+specifier|private
 specifier|static
 name|Statement
 name|executeQueryWithResults

@@ -234,7 +234,6 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|JTextAreaWithHighlighting (String text)
-specifier|public
 name|JTextAreaWithHighlighting
 parameter_list|(
 name|String
@@ -349,7 +348,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|setupUndoRedo ()
-specifier|protected
+specifier|private
 name|void
 name|setupUndoRedo
 parameter_list|()

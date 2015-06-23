@@ -190,11 +190,11 @@ end_comment
 
 begin_class
 DECL|class|BstWrapper
-specifier|public
 class|class
 name|BstWrapper
 block|{
 DECL|field|formatter
+specifier|private
 specifier|final
 name|LayoutFormatter
 name|formatter
@@ -204,6 +204,7 @@ name|FormatChars
 argument_list|()
 decl_stmt|;
 DECL|field|vm
+specifier|private
 name|VM
 name|vm
 init|=
@@ -278,6 +279,7 @@ argument_list|)
 return|;
 block|}
 DECL|field|bibitemTag
+specifier|private
 specifier|static
 specifier|final
 name|Pattern

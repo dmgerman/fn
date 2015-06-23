@@ -505,7 +505,7 @@ name|JabRefFrame
 name|jrf
 decl_stmt|;
 DECL|field|splashScreen
-specifier|public
+specifier|private
 specifier|static
 name|Frame
 name|splashScreen
@@ -513,13 +513,14 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|graphicFailure
+specifier|private
 name|boolean
 name|graphicFailure
 init|=
 literal|false
 decl_stmt|;
 DECL|field|MAX_DIALOG_WARNINGS
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -1199,7 +1200,7 @@ literal|"N/A"
 return|;
 block|}
 DECL|method|setCurrentProcessExplicitAppUserModelID (final String appID)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|setCurrentProcessExplicitAppUserModelID
@@ -3264,7 +3265,7 @@ return|;
 block|}
 comment|/**      * Run an entry fetcher from the command line.      *       * Note that this only works headlessly if the EntryFetcher does not show      * any GUI.      *       * @param fetchCommand      *            A string containing both the fetcher to use (id of      *            EntryFetcherExtension minus Fetcher) and the search query,      *            separated by a :      * @return A parser result containing the entries fetched or null if an      *         error occurred.      */
 DECL|method|fetch (String fetchCommand)
-specifier|protected
+specifier|private
 name|ParserResult
 name|fetch
 parameter_list|(
@@ -3953,7 +3954,7 @@ block|}
 block|}
 block|}
 DECL|method|openWindow (Vector<ParserResult> loaded)
-specifier|public
+specifier|private
 name|void
 name|openWindow
 parameter_list|(
@@ -5524,7 +5525,7 @@ return|;
 block|}
 block|}
 DECL|method|importFile (String argument)
-specifier|public
+specifier|private
 specifier|static
 name|ParserResult
 name|importFile
@@ -5879,7 +5880,7 @@ return|;
 block|}
 comment|/**      * Will open a file (like importFile), but will also request JabRef to focus on this database       * @param argument See importFile.      * @return ParserResult with setToOpenTab(true)      */
 DECL|method|importToOpenBase (String argument)
-specifier|public
+specifier|private
 specifier|static
 name|ParserResult
 name|importToOpenBase

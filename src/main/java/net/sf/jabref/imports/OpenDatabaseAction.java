@@ -268,6 +268,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|showDialog
+specifier|private
 specifier|final
 name|boolean
 name|showDialog

@@ -62,7 +62,7 @@ literal|','
 decl_stmt|;
 comment|/**      * Parse an argument string and return the parts of the argument. The parts are      * separated by commas, and escaped commas are reduced to literal commas.      * @param arg The argument string.      * @return An array of strings representing the parts of the argument.      */
 DECL|method|parseArgument (String arg)
-specifier|public
+specifier|protected
 specifier|static
 name|String
 index|[]

@@ -173,7 +173,7 @@ block|}
 block|}
 comment|/**      * Returns a DBExporter object according to a given DBType      *       * @param type      * 		The type of the database selected      * @return The DBExporter object instance      */
 DECL|method|getExporter (DBType type)
-specifier|public
+specifier|private
 name|DBExporter
 name|getExporter
 parameter_list|(
@@ -247,7 +247,7 @@ return|;
 block|}
 comment|/**      * Returns a DBImporter object according to a given DBType      *       * @param type      * 		The type of the database selected      * @return The DBImporter object instance      */
 DECL|method|getImporter (DBType type)
-specifier|public
+specifier|private
 name|DBImporter
 name|getImporter
 parameter_list|(

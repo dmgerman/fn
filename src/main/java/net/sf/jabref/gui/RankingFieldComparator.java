@@ -58,7 +58,6 @@ end_comment
 
 begin_class
 DECL|class|RankingFieldComparator
-specifier|public
 class|class
 name|RankingFieldComparator
 implements|implements

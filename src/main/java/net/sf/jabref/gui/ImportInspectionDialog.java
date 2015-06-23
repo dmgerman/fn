@@ -832,24 +832,24 @@ init|=
 name|this
 decl_stmt|;
 DECL|field|panel
-specifier|protected
+specifier|private
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|frame
-specifier|protected
+specifier|private
 specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|metaData
-specifier|protected
+specifier|private
 specifier|final
 name|MetaData
 name|metaData
 decl_stmt|;
 DECL|field|contentPane
-specifier|protected
+specifier|private
 specifier|final
 name|UIFSplitPane
 name|contentPane
@@ -863,13 +863,13 @@ name|VERTICAL_SPLIT
 argument_list|)
 decl_stmt|;
 DECL|field|glTable
-specifier|protected
+specifier|private
 specifier|final
 name|JTable
 name|glTable
 decl_stmt|;
 DECL|field|comparatorChooser
-specifier|protected
+specifier|private
 specifier|final
 name|TableComparatorChooser
 argument_list|<
@@ -878,7 +878,7 @@ argument_list|>
 name|comparatorChooser
 decl_stmt|;
 DECL|field|selectionModel
-specifier|protected
+specifier|private
 specifier|final
 name|EventSelectionModel
 argument_list|<
@@ -887,14 +887,14 @@ argument_list|>
 name|selectionModel
 decl_stmt|;
 DECL|field|fields
-specifier|protected
+specifier|private
 specifier|final
 name|String
 index|[]
 name|fields
 decl_stmt|;
 DECL|field|progressBar
-specifier|protected
+specifier|private
 specifier|final
 name|JProgressBar
 name|progressBar
@@ -908,7 +908,7 @@ name|HORIZONTAL
 argument_list|)
 decl_stmt|;
 DECL|field|ok
-specifier|protected
+specifier|private
 specifier|final
 name|JButton
 name|ok
@@ -925,7 +925,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|cancel
-specifier|protected
+specifier|private
 specifier|final
 name|JButton
 name|cancel
@@ -942,7 +942,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|generate
-specifier|protected
+specifier|private
 specifier|final
 name|JButton
 name|generate
@@ -959,7 +959,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|entries
-specifier|protected
+specifier|private
 specifier|final
 name|EventList
 argument_list|<
@@ -975,7 +975,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|sortedList
-specifier|protected
+specifier|private
 specifier|final
 name|SortedList
 argument_list|<
@@ -985,7 +985,7 @@ name|sortedList
 decl_stmt|;
 comment|/**      * Duplicate resolving may require deletion of old entries.      */
 DECL|field|entriesToDelete
-specifier|protected
+specifier|private
 specifier|final
 name|List
 argument_list|<
@@ -1001,13 +1001,13 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|undoName
-specifier|protected
+specifier|private
 specifier|final
 name|String
 name|undoName
 decl_stmt|;
 DECL|field|callBacks
-specifier|protected
+specifier|private
 specifier|final
 name|ArrayList
 argument_list|<
@@ -1023,13 +1023,13 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|newDatabase
-specifier|protected
+specifier|private
 specifier|final
 name|boolean
 name|newDatabase
 decl_stmt|;
 DECL|field|groupsAdd
-specifier|protected
+specifier|private
 specifier|final
 name|JMenu
 name|groupsAdd
@@ -1046,7 +1046,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|popup
-specifier|protected
+specifier|private
 specifier|final
 name|JPopupMenu
 name|popup
@@ -1056,7 +1056,7 @@ name|JPopupMenu
 argument_list|()
 decl_stmt|;
 DECL|field|selectAll
-specifier|protected
+specifier|private
 specifier|final
 name|JButton
 name|selectAll
@@ -1073,7 +1073,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|deselectAll
-specifier|protected
+specifier|private
 specifier|final
 name|JButton
 name|deselectAll
@@ -1090,7 +1090,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|deselectAllDuplicates
-specifier|protected
+specifier|private
 specifier|final
 name|JButton
 name|deselectAllDuplicates
@@ -1107,7 +1107,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|stop
-specifier|protected
+specifier|private
 specifier|final
 name|JButton
 name|stop
@@ -1124,7 +1124,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|delete
-specifier|protected
+specifier|private
 specifier|final
 name|JButton
 name|delete
@@ -1141,7 +1141,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|help
-specifier|protected
+specifier|private
 specifier|final
 name|JButton
 name|help
@@ -1158,13 +1158,13 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|preview
-specifier|protected
+specifier|private
 specifier|final
 name|PreviewPanel
 name|preview
 decl_stmt|;
 DECL|field|generatedKeys
-specifier|protected
+specifier|private
 name|boolean
 name|generatedKeys
 init|=
@@ -1174,14 +1174,14 @@ comment|// Set to true after keys have
 comment|// been
 comment|// generated.
 DECL|field|defaultSelected
-specifier|protected
+specifier|private
 name|boolean
 name|defaultSelected
 init|=
 literal|true
 decl_stmt|;
 DECL|field|toRect
-specifier|protected
+specifier|private
 specifier|final
 name|Rectangle
 name|toRect
@@ -1199,7 +1199,7 @@ literal|1
 argument_list|)
 decl_stmt|;
 DECL|field|groupAdditions
-specifier|protected
+specifier|private
 specifier|final
 name|Map
 argument_list|<
@@ -1225,7 +1225,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|autoGenerate
-specifier|protected
+specifier|private
 specifier|final
 name|JCheckBox
 name|autoGenerate
@@ -1251,7 +1251,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|duplLabel
-specifier|protected
+specifier|private
 specifier|final
 name|JLabel
 name|duplLabel
@@ -1268,7 +1268,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|fileLabel
-specifier|protected
+specifier|private
 specifier|final
 name|JLabel
 name|fileLabel
@@ -1285,7 +1285,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|pdfLabel
-specifier|protected
+specifier|private
 specifier|final
 name|JLabel
 name|pdfLabel
@@ -1302,7 +1302,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|psLabel
-specifier|protected
+specifier|private
 specifier|final
 name|JLabel
 name|psLabel
@@ -1319,7 +1319,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|urlLabel
-specifier|protected
+specifier|private
 specifier|final
 name|JLabel
 name|urlLabel
@@ -1336,39 +1336,54 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|DUPL_COL
-DECL|field|FILE_COL
-DECL|field|PDF_COL
-specifier|protected
+specifier|private
 specifier|final
 name|int
 name|DUPL_COL
 init|=
 literal|1
-decl_stmt|,
+decl_stmt|;
+DECL|field|FILE_COL
+specifier|private
+specifier|final
+name|int
 name|FILE_COL
 init|=
 literal|2
-decl_stmt|,
+decl_stmt|;
+DECL|field|PDF_COL
+specifier|private
+specifier|final
+name|int
 name|PDF_COL
 init|=
 operator|-
 literal|1
-decl_stmt|,
+decl_stmt|;
 comment|// 3,
 DECL|field|PS_COL
+specifier|private
+specifier|final
+name|int
 name|PS_COL
 init|=
 operator|-
 literal|2
-decl_stmt|,
+decl_stmt|;
 comment|// 4,
 DECL|field|URL_COL
+specifier|private
+specifier|final
+name|int
 name|URL_COL
 init|=
 literal|3
-decl_stmt|,
+decl_stmt|;
 comment|// 5,
 DECL|field|PAD
+specifier|private
+specifier|final
+name|int
 name|PAD
 init|=
 literal|4
@@ -2501,7 +2516,7 @@ block|}
 block|}
 comment|/**      * Checks if there are duplicates to the given entry in the Collection. Does      * not report the entry as duplicate of itself if it is in the Collection.      *       * @param entries      *            A Collection of BibtexEntry instances.      * @param entry      *            The entry to search for duplicates of.      * @return A possible duplicate, if any, or null if none were found.      */
 DECL|method|internalDuplicate (Collection<BibtexEntry> entries, BibtexEntry entry)
-specifier|protected
+specifier|private
 name|BibtexEntry
 name|internalDuplicate
 parameter_list|(
@@ -2556,7 +2571,7 @@ return|;
 block|}
 comment|/**      * Removes all selected entries from the table. Synchronizes on this.entries      * to prevent conflict with addition of new entries.      */
 DECL|method|removeSelectedEntries ()
-specifier|public
+specifier|private
 name|void
 name|removeSelectedEntries
 parameter_list|()
@@ -2778,7 +2793,7 @@ block|}
 block|}
 comment|/**      * This method returns a List containing all entries that are selected      * (checkbox checked).      *       * @return a List containing the selected entries.      */
 DECL|method|getSelectedEntries ()
-specifier|public
+specifier|private
 name|List
 argument_list|<
 name|BibtexEntry
@@ -2831,7 +2846,7 @@ return|;
 block|}
 comment|/**      * Generate key for the selected entry only.      */
 DECL|method|generateKeySelectedEntry ()
-specifier|public
+specifier|private
 name|void
 name|generateKeySelectedEntry
 parameter_list|()
@@ -2996,7 +3011,7 @@ expr_stmt|;
 block|}
 comment|/**      * Generate keys for all entries. All keys will be unique with respect to      * one another, and, if they are destined for an existing database, with      * respect to existing keys in the database.      */
 DECL|method|generateKeys (boolean addColumn)
-specifier|public
+specifier|private
 name|void
 name|generateKeys
 parameter_list|(
@@ -3187,7 +3202,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|insertNodes (JMenu menu, GroupTreeNode node)
-specifier|public
+specifier|private
 name|void
 name|insertNodes
 parameter_list|(
@@ -3400,7 +3415,7 @@ block|}
 block|}
 block|}
 DECL|method|getAction (GroupTreeNode node)
-specifier|protected
+specifier|private
 name|AbstractAction
 name|getAction
 parameter_list|(
@@ -3447,7 +3462,6 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|field|node
-specifier|protected
 specifier|final
 name|GroupTreeNode
 name|node
@@ -3599,6 +3613,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|class|OkListener
+specifier|private
 class|class
 name|OkListener
 implements|implements
@@ -4358,7 +4373,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|signalStopFetching ()
-specifier|protected
+specifier|private
 name|void
 name|signalStopFetching
 parameter_list|()
@@ -4379,7 +4394,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|setWidths ()
-specifier|protected
+specifier|private
 name|void
 name|setWidths
 parameter_list|()
@@ -4602,6 +4617,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|StopListener
+specifier|private
 class|class
 name|StopListener
 implements|implements
@@ -4627,6 +4643,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|CancelListener
+specifier|private
 class|class
 name|CancelListener
 implements|implements
@@ -4664,6 +4681,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|GenerateListener
+specifier|private
 class|class
 name|GenerateListener
 implements|implements
@@ -4749,6 +4767,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|MyTable
+specifier|private
 specifier|static
 class|class
 name|MyTable
@@ -4792,6 +4811,7 @@ return|;
 block|}
 block|}
 DECL|class|MyTableModel
+specifier|private
 specifier|static
 class|class
 name|MyTableModel
@@ -4842,7 +4862,6 @@ implements|implements
 name|ActionListener
 block|{
 DECL|field|enable
-specifier|protected
 specifier|final
 name|Boolean
 name|enable
@@ -4911,6 +4930,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|DeselectDuplicatesButtonListener
+specifier|private
 class|class
 name|DeselectDuplicatesButtonListener
 implements|implements
@@ -4980,6 +5000,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|EntrySelectionListener
+specifier|private
 class|class
 name|EntrySelectionListener
 implements|implements
@@ -7370,7 +7391,7 @@ argument_list|(
 literal|"unchecked"
 argument_list|)
 DECL|method|setupComparatorChooser ()
-specifier|protected
+specifier|private
 name|void
 name|setupComparatorChooser
 parameter_list|()
@@ -7838,6 +7859,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|EntryTableFormat
+specifier|private
 class|class
 name|EntryTableFormat
 implements|implements

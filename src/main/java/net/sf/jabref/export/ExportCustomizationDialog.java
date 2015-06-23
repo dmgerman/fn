@@ -173,11 +173,13 @@ extends|extends
 name|JDialog
 block|{
 DECL|field|frame
+specifier|private
 specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|addExport
+specifier|private
 specifier|final
 name|JButton
 name|addExport
@@ -194,6 +196,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|modify
+specifier|private
 specifier|final
 name|JButton
 name|modify
@@ -210,6 +213,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|remove
+specifier|private
 specifier|final
 name|JButton
 name|remove
@@ -226,6 +230,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|close
+specifier|private
 specifier|final
 name|JButton
 name|close
@@ -242,6 +247,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|help
+specifier|private
 specifier|final
 name|JButton
 name|help
@@ -258,6 +264,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|buttons
+specifier|private
 specifier|final
 name|JPanel
 name|buttons
@@ -267,6 +274,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|main
+specifier|private
 specifier|final
 name|JPanel
 name|main
@@ -276,6 +284,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|table
+specifier|private
 name|JTable
 name|table
 decl_stmt|;
@@ -1070,6 +1079,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|class|ExportTableFormat
+specifier|private
 specifier|static
 class|class
 name|ExportTableFormat

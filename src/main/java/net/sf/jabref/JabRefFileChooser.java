@@ -133,7 +133,7 @@ extends|extends
 name|JFileChooser
 block|{
 DECL|method|JabRefFileChooser ()
-specifier|public
+specifier|private
 name|JabRefFileChooser
 parameter_list|()
 block|{
@@ -280,7 +280,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|class|DoubleClickListener
-specifier|protected
 class|class
 name|DoubleClickListener
 extends|extends

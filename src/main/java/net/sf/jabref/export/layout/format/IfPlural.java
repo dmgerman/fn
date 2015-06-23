@@ -49,11 +49,13 @@ extends|extends
 name|AbstractParamLayoutFormatter
 block|{
 DECL|field|pluralText
-DECL|field|singularText
-specifier|protected
+specifier|private
 name|String
 name|pluralText
-decl_stmt|,
+decl_stmt|;
+DECL|field|singularText
+specifier|private
+name|String
 name|singularText
 decl_stmt|;
 annotation|@

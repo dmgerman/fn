@@ -272,7 +272,7 @@ block|}
 block|}
 decl_stmt|;
 DECL|field|BOOKLET
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|BibtexEntryType
@@ -1133,7 +1133,7 @@ block|}
 block|}
 decl_stmt|;
 DECL|field|PROCEEDINGS
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|BibtexEntryType
@@ -1253,7 +1253,7 @@ block|}
 block|}
 decl_stmt|;
 DECL|field|MANUAL
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|BibtexEntryType
@@ -1485,7 +1485,7 @@ block|}
 block|}
 decl_stmt|;
 DECL|field|MASTERSTHESIS
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|BibtexEntryType
@@ -1603,7 +1603,7 @@ block|}
 block|}
 decl_stmt|;
 DECL|field|PHDTHESIS
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|BibtexEntryType
@@ -1721,7 +1721,7 @@ block|}
 block|}
 decl_stmt|;
 DECL|field|UNPUBLISHED
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|BibtexEntryType
@@ -1831,7 +1831,7 @@ block|}
 block|}
 decl_stmt|;
 DECL|field|PERIODICAL
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|BibtexEntryType
@@ -1951,7 +1951,7 @@ block|}
 block|}
 decl_stmt|;
 DECL|field|PATENT
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|BibtexEntryType
@@ -2097,7 +2097,7 @@ block|}
 block|}
 decl_stmt|;
 DECL|field|STANDARD
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|BibtexEntryType
@@ -2256,7 +2256,7 @@ block|}
 block|}
 decl_stmt|;
 DECL|field|ELECTRONIC
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|BibtexEntryType
@@ -2471,7 +2471,7 @@ block|}
 decl_stmt|;
 comment|/**      * This type is used for IEEEtran.bst to control various       * be repeated or not. Not a very elegant solution, but it works...      */
 DECL|field|IEEETRANBSTCTL
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|BibtexEntryType
@@ -2897,7 +2897,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|STANDARD_TYPES
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|TreeMap

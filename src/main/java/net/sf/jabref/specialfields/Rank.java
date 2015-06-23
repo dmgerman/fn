@@ -38,7 +38,6 @@ extends|extends
 name|SpecialField
 block|{
 DECL|method|Rank ()
-specifier|public
 name|Rank
 parameter_list|()
 block|{

@@ -254,10 +254,12 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|tree
+specifier|private
 name|JTree
 name|tree
 decl_stmt|;
 DECL|field|ok
+specifier|private
 name|JButton
 name|ok
 decl_stmt|;
@@ -782,7 +784,7 @@ block|}
 comment|// If "expand" is true, all nodes in the tree area expanded
 comment|// otherwise all nodes in the tree are collapsed:
 DECL|method|expandAll (final JTree tree, final boolean expand)
-specifier|public
+specifier|private
 name|void
 name|expandAll
 parameter_list|(
@@ -978,6 +980,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|SelectionListener
+specifier|private
 class|class
 name|SelectionListener
 implements|implements
@@ -1029,7 +1032,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|doAddOrRemove ()
-specifier|protected
+specifier|private
 name|boolean
 name|doAddOrRemove
 parameter_list|()

@@ -279,6 +279,7 @@ implements|implements
 name|ActionListener
 block|{
 DECL|field|tf
+specifier|private
 specifier|final
 name|JTextField
 name|tf
@@ -288,6 +289,7 @@ name|JTextField
 argument_list|()
 decl_stmt|;
 DECL|field|pan
+specifier|private
 specifier|final
 name|JPanel
 name|pan
@@ -297,6 +299,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|gbl
+specifier|private
 specifier|final
 name|GridBagLayout
 name|gbl
@@ -306,6 +309,7 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|con
+specifier|private
 specifier|final
 name|GridBagConstraints
 name|con
@@ -315,6 +319,7 @@ name|GridBagConstraints
 argument_list|()
 decl_stmt|;
 DECL|field|go
+specifier|private
 specifier|final
 name|JButton
 name|go
@@ -331,6 +336,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|helpBut
+specifier|private
 specifier|final
 name|JButton
 name|helpBut
@@ -347,6 +353,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|reset
+specifier|private
 specifier|final
 name|JButton
 name|reset
@@ -363,11 +370,13 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|fetcherChoice
+specifier|private
 specifier|final
 name|JComboBox
 name|fetcherChoice
 decl_stmt|;
 DECL|field|optionsCards
+specifier|private
 specifier|final
 name|CardLayout
 name|optionsCards
@@ -377,6 +386,7 @@ name|CardLayout
 argument_list|()
 decl_stmt|;
 DECL|field|optionsPanel
+specifier|private
 specifier|final
 name|JPanel
 name|optionsPanel
@@ -388,6 +398,7 @@ name|optionsCards
 argument_list|)
 decl_stmt|;
 DECL|field|optPanel
+specifier|private
 specifier|final
 name|JPanel
 name|optPanel
@@ -401,29 +412,35 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|help
+specifier|private
 name|HelpAction
 name|help
 decl_stmt|;
 DECL|field|sidePaneManager
+specifier|private
 specifier|final
 name|SidePaneManager
 name|sidePaneManager
 decl_stmt|;
 DECL|field|action
+specifier|private
 specifier|final
 name|Action
 name|action
 decl_stmt|;
 DECL|field|frame
+specifier|private
 specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|activeFetcher
+specifier|private
 name|EntryFetcher
 name|activeFetcher
 decl_stmt|;
 DECL|field|fetcherArray
+specifier|private
 specifier|final
 name|EntryFetcher
 index|[]
@@ -1179,7 +1196,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getTextField ()
-specifier|public
+specifier|private
 name|JTextField
 name|getTextField
 parameter_list|()
@@ -1826,6 +1843,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|class|EntryFetcherComparator
+specifier|private
 specifier|static
 class|class
 name|EntryFetcherComparator

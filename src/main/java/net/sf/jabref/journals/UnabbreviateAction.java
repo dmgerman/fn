@@ -91,11 +91,13 @@ extends|extends
 name|AbstractWorker
 block|{
 DECL|field|panel
+specifier|private
 specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|message
+specifier|private
 name|String
 name|message
 init|=

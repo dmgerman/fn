@@ -175,6 +175,7 @@ class|class
 name|JournalAbbreviations
 block|{
 DECL|field|TOOLTIPTEXT
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -203,6 +204,7 @@ operator|+
 literal|".</HTML>"
 decl_stmt|;
 DECL|field|fullNameKeyed
+specifier|private
 specifier|final
 name|TreeMap
 argument_list|<
@@ -222,6 +224,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|abbrNameKeyed
+specifier|private
 specifier|final
 name|HashMap
 argument_list|<
@@ -241,6 +244,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|abbrNoDotsToAbbr
+specifier|private
 specifier|final
 name|HashMap
 argument_list|<
@@ -260,6 +264,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|all
+specifier|private
 specifier|final
 name|TreeMap
 argument_list|<
@@ -315,7 +320,7 @@ expr_stmt|;
 block|}
 comment|/**      * Get an iterator for the known journals in alphabetical order.      * @return Iterator for journal full names      */
 DECL|method|fullNameIterator ()
-specifier|public
+specifier|private
 name|Iterator
 argument_list|<
 name|String
@@ -334,7 +339,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|isKnownName (String journalName)
-specifier|public
+specifier|private
 name|boolean
 name|isKnownName
 parameter_list|(
@@ -388,7 +393,7 @@ operator|)
 return|;
 block|}
 DECL|method|isAbbreviatedName (String journalName)
-specifier|public
+specifier|private
 name|boolean
 name|isAbbreviatedName
 parameter_list|(
@@ -431,7 +436,7 @@ operator|)
 return|;
 block|}
 DECL|method|dotsToNodots (String name)
-specifier|public
+specifier|private
 name|String
 name|dotsToNodots
 parameter_list|(
@@ -570,7 +575,7 @@ return|;
 block|}
 comment|/**      * Attempts to get the full name of the abbreviation given. Returns null if no      * full name is known.      * @param journalName The abbreviation to resolve.      * @return The full name, or null if it couldn't be found.      */
 DECL|method|getFullName (String journalName)
-specifier|public
+specifier|private
 name|String
 name|getFullName
 parameter_list|(
@@ -745,7 +750,7 @@ expr_stmt|;
 block|}
 comment|/**      * Read the given file, which should contain a list of journal names and their      * abbreviations. Each line should be formatted as: "Full Journal Name=Abbr. Journal Name"      * @param in      */
 DECL|method|readJournalList (Reader in)
-specifier|public
+specifier|private
 name|void
 name|readJournalList
 parameter_list|(

@@ -260,6 +260,7 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|brokenLinkOptions
+specifier|private
 specifier|final
 name|Object
 index|[]

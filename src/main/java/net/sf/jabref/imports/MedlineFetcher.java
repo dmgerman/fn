@@ -250,7 +250,7 @@ block|}
 block|}
 comment|/**      * How many entries to query in one request      */
 DECL|field|PACING
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -259,6 +259,7 @@ init|=
 literal|20
 decl_stmt|;
 DECL|field|shouldContinue
+specifier|private
 name|boolean
 name|shouldContinue
 decl_stmt|;
@@ -271,7 +272,7 @@ name|ImportInspector
 name|dialog
 decl_stmt|;
 DECL|method|toSearchTerm (String in)
-specifier|public
+specifier|private
 name|String
 name|toSearchTerm
 parameter_list|(
@@ -372,7 +373,7 @@ return|;
 block|}
 comment|/**      * Gets the initial list of ids      */
 DECL|method|getIds (String term, int start, int pacing)
-specifier|public
+specifier|private
 name|SearchResult
 name|getIds
 parameter_list|(

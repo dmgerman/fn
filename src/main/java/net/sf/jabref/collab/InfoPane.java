@@ -58,7 +58,6 @@ end_import
 
 begin_class
 DECL|class|InfoPane
-specifier|public
 class|class
 name|InfoPane
 extends|extends

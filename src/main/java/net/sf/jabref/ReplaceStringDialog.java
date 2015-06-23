@@ -127,6 +127,7 @@ name|ReplaceStringDialog
 extends|extends
 name|JDialog
 block|{
+specifier|private
 specifier|final
 name|JTextField
 DECL|field|fields
@@ -141,6 +142,7 @@ literal|30
 argument_list|)
 decl_stmt|;
 DECL|field|from
+specifier|private
 specifier|final
 name|JTextField
 name|from
@@ -154,6 +156,7 @@ literal|30
 argument_list|)
 decl_stmt|;
 DECL|field|to
+specifier|private
 specifier|final
 name|JTextField
 name|to
@@ -166,6 +169,7 @@ argument_list|,
 literal|30
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|final
 name|JLabel
 DECL|field|fl
@@ -185,6 +189,7 @@ literal|":"
 argument_list|)
 decl_stmt|;
 DECL|field|tl
+specifier|private
 specifier|final
 name|JLabel
 name|tl
@@ -202,6 +207,7 @@ operator|+
 literal|":"
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|final
 name|JButton
 DECL|field|ok
@@ -219,6 +225,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|cancel
+specifier|private
 specifier|final
 name|JButton
 name|cancel
@@ -234,6 +241,7 @@ literal|"Cancel"
 argument_list|)
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|final
 name|JPanel
 DECL|field|settings
@@ -244,6 +252,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|main
+specifier|private
 specifier|final
 name|JPanel
 name|main
@@ -253,6 +262,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|opt
+specifier|private
 specifier|final
 name|JPanel
 name|opt
@@ -262,6 +272,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|selOnly
+specifier|private
 specifier|final
 name|JCheckBox
 name|selOnly
@@ -279,6 +290,7 @@ argument_list|,
 literal|false
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|final
 name|JRadioButton
 DECL|field|allFi
@@ -298,6 +310,7 @@ literal|true
 argument_list|)
 decl_stmt|;
 DECL|field|field
+specifier|private
 specifier|final
 name|JRadioButton
 name|field
@@ -318,6 +331,7 @@ literal|false
 argument_list|)
 decl_stmt|;
 DECL|field|bg
+specifier|private
 specifier|final
 name|ButtonGroup
 name|bg
@@ -334,6 +348,7 @@ init|=
 literal|false
 decl_stmt|;
 DECL|field|flds
+specifier|private
 name|String
 index|[]
 name|flds
@@ -341,13 +356,17 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|s1
-DECL|field|s2
+specifier|private
 name|String
 name|s1
-decl_stmt|,
+decl_stmt|;
+DECL|field|s2
+specifier|private
+name|String
 name|s2
 decl_stmt|;
 DECL|field|gbl
+specifier|private
 specifier|final
 name|GridBagLayout
 name|gbl
@@ -357,6 +376,7 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|con
+specifier|private
 specifier|final
 name|GridBagConstraints
 name|con
@@ -1093,7 +1113,7 @@ name|ok_pressed
 return|;
 block|}
 DECL|method|allFields ()
-specifier|public
+specifier|private
 name|boolean
 name|allFields
 parameter_list|()
@@ -1243,7 +1263,7 @@ name|counter
 return|;
 block|}
 DECL|method|replaceField (BibtexEntry be, String field, NamedCompound ce)
-specifier|public
+specifier|private
 name|int
 name|replaceField
 parameter_list|(

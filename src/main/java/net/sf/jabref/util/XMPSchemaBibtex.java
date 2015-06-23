@@ -155,7 +155,7 @@ init|=
 literal|"http://jabref.sourceforge.net/bibteXMP/"
 decl_stmt|;
 DECL|field|KEY
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -209,7 +209,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|makeProperty (String propertyName)
-specifier|protected
+specifier|private
 name|String
 name|makeProperty
 parameter_list|(
@@ -615,7 +615,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getContents (NodeList seqList)
-specifier|public
+specifier|private
 specifier|static
 name|String
 name|getContents
@@ -1203,7 +1203,7 @@ name|result
 return|;
 block|}
 DECL|field|preserveWhiteSpace
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|HashSet

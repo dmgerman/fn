@@ -75,7 +75,7 @@ name|Relevance
 name|INSTANCE
 decl_stmt|;
 DECL|method|Relevance ()
-specifier|public
+specifier|private
 name|Relevance
 parameter_list|()
 block|{

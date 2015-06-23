@@ -1707,7 +1707,7 @@ end_comment
 
 begin_function
 DECL|method|getSelectedNode ()
-specifier|public
+specifier|private
 name|GroupTreeNode
 name|getSelectedNode
 parameter_list|()
@@ -1895,7 +1895,7 @@ end_comment
 
 begin_function
 DECL|method|setHighlight1Cell (Object cell)
-specifier|public
+specifier|private
 name|void
 name|setHighlight1Cell
 parameter_list|(
@@ -2037,7 +2037,7 @@ end_comment
 
 begin_function
 DECL|method|sortWithoutRevalidate (GroupTreeNode node, boolean recursive)
-specifier|protected
+specifier|private
 name|void
 name|sortWithoutRevalidate
 parameter_list|(

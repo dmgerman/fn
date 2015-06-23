@@ -159,7 +159,7 @@ implements|implements
 name|EntryFetcher
 block|{
 DECL|field|MAX_PAGES_TO_LOAD
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -168,6 +168,7 @@ init|=
 literal|8
 decl_stmt|;
 DECL|field|QUERY_MARKER
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -176,6 +177,7 @@ init|=
 literal|"___QUERY___"
 decl_stmt|;
 DECL|field|URL_START
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -184,6 +186,7 @@ init|=
 literal|"http://citeseer.ist.psu.edu"
 decl_stmt|;
 DECL|field|SEARCH_URL
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -202,6 +205,7 @@ operator|+
 literal|"&submit=Search&sort=rlv&t=doc"
 decl_stmt|;
 DECL|field|CITE_LINK_PATTERN
+specifier|private
 specifier|final
 specifier|static
 name|Pattern
@@ -215,7 +219,7 @@ literal|"<a class=\"remove doc_details\" href=\"(.*)\">"
 argument_list|)
 decl_stmt|;
 DECL|field|stopFetching
-specifier|protected
+specifier|private
 name|boolean
 name|stopFetching
 init|=
@@ -379,7 +383,7 @@ expr_stmt|;
 block|}
 comment|/**      *      * @param query      *            The search term to query JStor for.      * @return a list of IDs      * @throws java.io.IOException      */
 DECL|method|getCitations (String query)
-specifier|protected
+specifier|private
 name|List
 argument_list|<
 name|String
@@ -501,7 +505,7 @@ throw|;
 block|}
 block|}
 DECL|method|getCitationsFromUrl (String urlQuery, List<String> ids)
-specifier|protected
+specifier|private
 name|String
 name|getCitationsFromUrl
 parameter_list|(
@@ -581,6 +585,7 @@ literal|null
 return|;
 block|}
 DECL|field|basePattern
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -595,6 +600,7 @@ operator|+
 literal|"\" content=\"(.*)\" />"
 decl_stmt|;
 DECL|field|titlePattern
+specifier|private
 specifier|final
 specifier|static
 name|Pattern
@@ -619,6 +625,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|authorPattern
+specifier|private
 specifier|final
 specifier|static
 name|Pattern
@@ -643,6 +650,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|yearPattern
+specifier|private
 specifier|final
 specifier|static
 name|Pattern
@@ -667,6 +675,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|abstractPattern
+specifier|private
 specifier|final
 specifier|static
 name|Pattern
@@ -680,7 +689,7 @@ literal|"<h3>Abstract</h3>\\s*<p>(.*)</p>"
 argument_list|)
 decl_stmt|;
 DECL|method|getSingleCitation (String urlString)
-specifier|protected
+specifier|private
 name|BibtexEntry
 name|getSingleCitation
 parameter_list|(

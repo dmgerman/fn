@@ -2978,7 +2978,7 @@ block|}
 end_class
 
 begin_function
-unit|}      protected
+unit|}      private
 DECL|method|setDescription (String description)
 name|void
 name|setDescription
@@ -3003,7 +3003,7 @@ end_function
 
 begin_function
 DECL|method|formatRegExException (String regExp, Exception e)
-specifier|protected
+specifier|private
 name|String
 name|formatRegExException
 parameter_list|(
@@ -3222,7 +3222,7 @@ end_comment
 
 begin_function
 DECL|method|setNameFontItalic (boolean italic)
-specifier|protected
+specifier|private
 name|void
 name|setNameFontItalic
 parameter_list|(
@@ -3282,7 +3282,7 @@ end_comment
 
 begin_function
 DECL|method|getContext ()
-specifier|protected
+specifier|private
 name|int
 name|getContext
 parameter_list|()
@@ -3340,7 +3340,7 @@ end_function
 
 begin_function
 DECL|method|setContext (int context)
-specifier|protected
+specifier|private
 name|void
 name|setContext
 parameter_list|(

@@ -82,11 +82,11 @@ end_comment
 
 begin_class
 DECL|class|DocumentWrapper
-specifier|public
 class|class
 name|DocumentWrapper
 block|{
 DECL|field|xmlDocument
+specifier|private
 name|Document
 name|xmlDocument
 decl_stmt|;
@@ -163,7 +163,7 @@ return|;
 block|}
 block|}
 DECL|method|hasTitle ()
-specifier|public
+specifier|private
 name|boolean
 name|hasTitle
 parameter_list|()
@@ -242,7 +242,7 @@ return|;
 block|}
 block|}
 DECL|method|hasAbstract ()
-specifier|public
+specifier|private
 name|boolean
 name|hasAbstract
 parameter_list|()
@@ -416,7 +416,7 @@ return|;
 block|}
 block|}
 DECL|method|hasAuthors ()
-specifier|public
+specifier|private
 name|boolean
 name|hasAuthors
 parameter_list|()
@@ -493,7 +493,7 @@ return|;
 block|}
 block|}
 DECL|method|hasDoi ()
-specifier|public
+specifier|private
 name|boolean
 name|hasDoi
 parameter_list|()
@@ -574,7 +574,7 @@ return|;
 block|}
 block|}
 DECL|method|hasYear ()
-specifier|public
+specifier|private
 name|boolean
 name|hasYear
 parameter_list|()

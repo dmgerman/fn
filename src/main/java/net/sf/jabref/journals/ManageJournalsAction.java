@@ -99,6 +99,7 @@ extends|extends
 name|MnemonicAwareAction
 block|{
 DECL|field|frame
+specifier|private
 specifier|final
 name|JabRefFrame
 name|frame

@@ -240,8 +240,7 @@ name|refDBase
 expr_stmt|;
 block|}
 DECL|method|setReferenceDatabase (BibtexDatabase newRefDB)
-specifier|public
-specifier|final
+specifier|private
 name|void
 name|setReferenceDatabase
 parameter_list|(
@@ -283,8 +282,7 @@ comment|//
 comment|// \\bibcite{x}{y}
 comment|//   x is a label for an item and y is the index in bibliography
 DECL|method|parseAuxFile (String filename)
-specifier|public
-specifier|final
+specifier|private
 name|boolean
 name|parseAuxFile
 parameter_list|(
@@ -773,8 +771,7 @@ return|;
 block|}
 comment|/**      * resolveTags      * Try to find an equivalent bibtex entry into reference database for all keys      * (found in aux file). This methode will fill up some intern data structures.....      */
 DECL|method|resolveTags ()
-specifier|public
-specifier|final
+specifier|private
 name|void
 name|resolveTags
 parameter_list|()

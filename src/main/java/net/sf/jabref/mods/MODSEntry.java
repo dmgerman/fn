@@ -229,7 +229,7 @@ class|class
 name|MODSEntry
 block|{
 DECL|field|entryType
-specifier|protected
+specifier|private
 name|String
 name|entryType
 init|=
@@ -237,12 +237,12 @@ literal|"mods"
 decl_stmt|;
 comment|// could also be relatedItem
 DECL|field|id
-specifier|protected
+specifier|private
 name|String
 name|id
 decl_stmt|;
 DECL|field|authors
-specifier|protected
+specifier|private
 name|List
 argument_list|<
 name|PersonName
@@ -253,42 +253,42 @@ literal|null
 decl_stmt|;
 comment|// should really be handled with an enum
 DECL|field|issuance
-specifier|protected
+specifier|private
 name|String
 name|issuance
 init|=
 literal|"monographic"
 decl_stmt|;
 DECL|field|pages
-specifier|protected
+specifier|private
 name|PageNumbers
 name|pages
 init|=
 literal|null
 decl_stmt|;
 DECL|field|publisher
-specifier|protected
+specifier|private
 name|String
 name|publisher
 init|=
 literal|null
 decl_stmt|;
 DECL|field|date
-specifier|protected
+specifier|private
 name|String
 name|date
 init|=
 literal|null
 decl_stmt|;
 DECL|field|place
-specifier|protected
+specifier|private
 name|String
 name|place
 init|=
 literal|null
 decl_stmt|;
 DECL|field|title
-specifier|protected
+specifier|private
 name|String
 name|title
 init|=
@@ -296,7 +296,7 @@ literal|null
 decl_stmt|;
 comment|// should really be handled with an enum
 DECL|field|type
-specifier|protected
+specifier|private
 specifier|final
 name|String
 name|type
@@ -304,24 +304,24 @@ init|=
 literal|"text"
 decl_stmt|;
 DECL|field|number
-specifier|protected
+specifier|private
 name|String
 name|number
 decl_stmt|;
 DECL|field|volume
-specifier|protected
+specifier|private
 name|String
 name|volume
 decl_stmt|;
 DECL|field|genre
-specifier|protected
+specifier|private
 name|String
 name|genre
 init|=
 literal|null
 decl_stmt|;
 DECL|field|handledExtensions
-specifier|protected
+specifier|private
 specifier|final
 name|Set
 argument_list|<
@@ -330,11 +330,12 @@ argument_list|>
 name|handledExtensions
 decl_stmt|;
 DECL|field|host
-specifier|protected
+specifier|private
 name|MODSEntry
 name|host
 decl_stmt|;
 DECL|field|extensionFields
+specifier|private
 specifier|final
 name|Map
 argument_list|<
@@ -345,7 +346,7 @@ argument_list|>
 name|extensionFields
 decl_stmt|;
 DECL|field|BIBTEX
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -362,7 +363,7 @@ init|=
 literal|false
 decl_stmt|;
 DECL|method|MODSEntry ()
-specifier|public
+specifier|private
 name|MODSEntry
 parameter_list|()
 block|{
@@ -449,7 +450,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|populateFromBibtex (BibtexEntry bibtex)
-specifier|protected
+specifier|private
 name|void
 name|populateFromBibtex
 parameter_list|(
@@ -796,7 +797,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|populateExtensionFields (BibtexEntry e)
-specifier|protected
+specifier|private
 name|void
 name|populateExtensionFields
 parameter_list|(
@@ -845,7 +846,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|getAuthors (String authors)
-specifier|protected
+specifier|private
 name|List
 argument_list|<
 name|PersonName
@@ -989,7 +990,7 @@ return|;
 block|}
 comment|/* construct a MODS date object */
 DECL|method|getDate (BibtexEntry bibtex)
-specifier|protected
+specifier|private
 name|String
 name|getDate
 parameter_list|(
@@ -1056,7 +1057,7 @@ return|;
 block|}
 comment|// must be from http://www.loc.gov/marc/sourcecode/genre/genrelist.html
 DECL|method|getMODSgenre (BibtexEntry bibtex)
-specifier|protected
+specifier|private
 name|String
 name|getMODSgenre
 parameter_list|(
@@ -1076,7 +1077,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|getDOMrepresentation ()
-specifier|public
+specifier|private
 name|Node
 name|getDOMrepresentation
 parameter_list|()
@@ -1880,7 +1881,7 @@ comment|// return result;
 block|}
 comment|/**      * This method ensures that the output String has only      * valid XML unicode characters as specified by the      * XML 1.0 standard. For reference, please see      *<a href="http://www.w3.org/TR/2000/REC-xml-20001006#NT-Char">the      * standard</a>. This method will return an empty      * String if the input is null or empty.      *       * URL: http://cse-mjmcl.cse.bris.ac.uk/blog/2007/02/14/1171465494443.html      *      * @param in The String whose non-valid characters we want to remove.      * @return The in String, stripped of non-valid characters.      */
 DECL|method|stripNonValidXMLCharacters (String in)
-specifier|public
+specifier|private
 name|String
 name|stripNonValidXMLCharacters
 parameter_list|(

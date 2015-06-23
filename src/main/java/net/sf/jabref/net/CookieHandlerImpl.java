@@ -62,7 +62,6 @@ end_comment
 
 begin_class
 DECL|class|CookieHandlerImpl
-specifier|public
 class|class
 name|CookieHandlerImpl
 extends|extends

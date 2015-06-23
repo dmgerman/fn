@@ -920,13 +920,14 @@ init|=
 literal|4
 decl_stmt|;
 DECL|field|idFormat
+specifier|private
 specifier|final
 specifier|static
 name|NumberFormat
 name|idFormat
 decl_stmt|;
 DECL|field|remoteLinkPattern
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -962,7 +963,7 @@ operator|-
 literal|1
 decl_stmt|;
 DECL|field|IMPORT_MARK_LEVEL
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -973,7 +974,7 @@ operator|.
 name|MARK_COLOR_LEVELS
 decl_stmt|;
 DECL|field|markNumberPattern
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -3938,7 +3939,7 @@ block|}
 block|}
 comment|/**      * Opens a file on a Windows system, using its default viewer.      *       * @param link      *            The file name.      * @param localFile      *            true if it is a local file, not an URL.      * @throws IOException      */
 DECL|method|openFileOnWindows (String link, boolean localFile)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|openFileOnWindows
@@ -4017,7 +4018,7 @@ expr_stmt|;
 block|}
 comment|/**      * Opens a file on a Windows system, using the given application.      *      * @param link The file name.      * @param application Link to the app that opens the file.      * @throws IOException      */
 DECL|method|openFileWithApplicationOnWindows (String link, String application)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|openFileWithApplicationOnWindows
@@ -5799,6 +5800,7 @@ name|result
 return|;
 block|}
 DECL|field|squareBracketsPattern
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -6645,7 +6647,7 @@ name|fileName
 return|;
 block|}
 DECL|method|shortenFileName (File fileName, String dir)
-specifier|public
+specifier|private
 specifier|static
 name|File
 name|shortenFileName
@@ -7982,7 +7984,7 @@ return|;
 block|}
 comment|/**      * Quote special characters.      *       * @param s      *            The String which may contain special characters.      * @param specials      *            A String containing all special characters except the quoting      *            character itself, which is automatically quoted.      * @param quoteChar      *            The quoting character.      * @param linewrap      *            The number of characters after which a linebreak is inserted      *            (this linebreak is undone by unquote()). Set to 0 to disable.      * @return A String with every special character (including the quoting      *         character itself) quoted.      */
 DECL|method|quote (String s, String specials, char quoteChar, int linewrap)
-specifier|public
+specifier|private
 specifier|static
 name|String
 name|quote
@@ -9003,6 +9005,7 @@ return|;
 comment|/*          * if (s.length() == 0) return s; // Protect against ArrayIndexOutOf....          * StringBuffer buf = new StringBuffer();          *           * Matcher mcr = titleCapitalPattern.matcher(s.substring(1)); while          * (mcr.find()) { String replaceStr = mcr.group();          * mcr.appendReplacement(buf, "{" + replaceStr + "}"); }          * mcr.appendTail(buf); return s.substring(0, 1) + buf.toString();          */
 block|}
 DECL|field|bracedTitleCapitalPattern
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -9064,7 +9067,7 @@ return|;
 block|}
 comment|/**      * This method looks for occurences of capital letters enclosed in one pair      * of braces, e.g. "{AB}". All these are replaced by only the capitals in      * between the braces.      *       * @param s      *            The String to analyze.      * @return A new String with braces removed.      */
 DECL|method|removeSingleBracesAroundCapitals (String s)
-specifier|public
+specifier|private
 specifier|static
 name|String
 name|removeSingleBracesAroundCapitals
@@ -11496,7 +11499,7 @@ return|;
 block|}
 comment|/**      * Encodes a String array into a single string, using ':' as separator.      * The characters ':' and ';' are escaped with '\'.      * @param entry The String array.      * @return The encoded String.      */
 DECL|method|encodeStringArray (String[] entry)
-specifier|public
+specifier|private
 specifier|static
 name|String
 name|encodeStringArray

@@ -224,7 +224,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|getName ()
-specifier|public
+specifier|private
 name|String
 name|getName
 parameter_list|()

@@ -52,7 +52,6 @@ end_import
 
 begin_class
 DECL|class|FirstColumnComparator
-specifier|public
 class|class
 name|FirstColumnComparator
 implements|implements

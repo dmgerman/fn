@@ -213,6 +213,7 @@ implements|implements
 name|Runnable
 block|{
 DECL|field|MATCH_THRESHOLD
+specifier|private
 specifier|final
 name|double
 name|MATCH_THRESHOLD
@@ -220,6 +221,7 @@ init|=
 literal|0.4
 decl_stmt|;
 DECL|field|sortBy
+specifier|private
 specifier|final
 name|String
 index|[]
@@ -237,43 +239,51 @@ literal|"title"
 block|}
 decl_stmt|;
 DECL|field|f
+specifier|private
 specifier|final
 name|File
 name|f
 decl_stmt|;
 DECL|field|inMem
+specifier|private
 specifier|final
 name|BibtexDatabase
 name|inMem
 decl_stmt|;
 DECL|field|mdInMem
+specifier|private
 specifier|final
 name|MetaData
 name|mdInMem
 decl_stmt|;
 DECL|field|panel
+specifier|private
 specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|frame
+specifier|private
 specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|inTemp
+specifier|private
 name|BibtexDatabase
 name|inTemp
 init|=
 literal|null
 decl_stmt|;
 DECL|field|mdInTemp
+specifier|private
 name|MetaData
 name|mdInTemp
 decl_stmt|;
 comment|/**      * We create an ArrayList to hold the changes we find. These will be added in the form      * of UndoEdit objects. We instantiate these so that the changes found in the file on disk      * can be reproduced in memory by calling redo() on them. REDO, not UNDO!      */
 comment|//ArrayList changes = new ArrayList();
 DECL|field|changes
+specifier|private
 specifier|final
 name|DefaultMutableTreeNode
 name|changes
@@ -2700,7 +2710,7 @@ return|;
 block|}
 comment|/**      * This method only detects wheter a change took place or not. It does not      * determine the type of change. This would be possible, but difficult to do      * properly, so I rather only report the change.      */
 DECL|method|scanGroups (MetaData inMem, MetaData onTmp, MetaData onDisk)
-specifier|public
+specifier|private
 name|void
 name|scanGroups
 parameter_list|(

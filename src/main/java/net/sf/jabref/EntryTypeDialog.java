@@ -138,12 +138,14 @@ name|ActionListener
 block|{
 comment|/*      * Dialog that prompts the user to choose a type for an entry.      * Returns null if cancelled.      */
 DECL|field|type
+specifier|private
 name|BibtexEntryType
 name|type
 init|=
 literal|null
 decl_stmt|;
 DECL|field|cancelAction
+specifier|private
 specifier|final
 name|CancelAction
 name|cancelAction

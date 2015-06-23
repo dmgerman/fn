@@ -90,7 +90,6 @@ end_import
 
 begin_class
 DECL|class|Change
-specifier|public
 specifier|abstract
 class|class
 name|Change
@@ -102,13 +101,13 @@ name|String
 name|name
 decl_stmt|;
 DECL|field|accepted
+specifier|private
 name|boolean
 name|accepted
 init|=
 literal|true
 decl_stmt|;
 DECL|method|Change ()
-specifier|public
 name|Change
 parameter_list|()
 block|{
@@ -118,7 +117,6 @@ literal|""
 expr_stmt|;
 block|}
 DECL|method|Change (String name)
-specifier|public
 name|Change
 parameter_list|(
 name|String
@@ -138,7 +136,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getName ()
-specifier|public
+specifier|private
 name|String
 name|getName
 parameter_list|()

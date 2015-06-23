@@ -52,7 +52,6 @@ end_import
 
 begin_class
 DECL|class|IsMarkedComparator
-specifier|public
 class|class
 name|IsMarkedComparator
 implements|implements

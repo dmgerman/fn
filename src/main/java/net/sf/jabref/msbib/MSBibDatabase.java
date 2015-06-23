@@ -143,7 +143,7 @@ class|class
 name|MSBibDatabase
 block|{
 DECL|field|entries
-specifier|protected
+specifier|private
 name|Set
 argument_list|<
 name|MSBibEntry

@@ -165,18 +165,21 @@ extends|extends
 name|AbstractWorker
 block|{
 DECL|field|foundPaths
+specifier|private
 name|boolean
 name|foundPaths
 init|=
 literal|false
 decl_stmt|;
 DECL|field|fileSearchCancelled
+specifier|private
 name|boolean
 name|fileSearchCancelled
 init|=
 literal|false
 decl_stmt|;
 DECL|field|prog
+specifier|private
 name|JDialog
 name|prog
 decl_stmt|;
@@ -336,7 +339,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|autoDetectPaths ()
-specifier|public
+specifier|private
 name|boolean
 name|autoDetectPaths
 parameter_list|()
@@ -1559,7 +1562,7 @@ name|dirList
 return|;
 block|}
 DECL|method|checkAutoDetectedPaths ()
-specifier|public
+specifier|private
 specifier|static
 name|boolean
 name|checkAutoDetectedPaths
@@ -1658,7 +1661,7 @@ block|}
 block|}
 comment|/**      * Search for a file, starting at the given directory.      * @param startDir The starting point.      * @param filename The name of the file to search for.      * @return The directory where the file was first found, or null if not found.      */
 DECL|method|findFileDir (File startDir, String filename)
-specifier|public
+specifier|private
 name|File
 name|findFileDir
 parameter_list|(

@@ -67,6 +67,7 @@ implements|implements
 name|FocusListener
 block|{
 DECL|field|focused
+specifier|private
 name|Component
 name|focused
 init|=

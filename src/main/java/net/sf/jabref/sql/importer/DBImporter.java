@@ -1018,7 +1018,7 @@ return|;
 block|}
 comment|/**      * Look up the group type name from the type ID in the database.      *       * @param groupId      *            The database's groups id      * @param conn      *            The database connection      *       * @return The name (JabRef type id) of the group type.      * @throws SQLException      */
 DECL|method|findGroupTypeName (String groupId, Connection conn)
-specifier|public
+specifier|private
 name|String
 name|findGroupTypeName
 parameter_list|(
@@ -1047,7 +1047,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|importGroupsTree (MetaData metaData, HashMap<String, BibtexEntry> entries, Connection conn, String database_id)
-specifier|public
+specifier|private
 name|void
 name|importGroupsTree
 parameter_list|(

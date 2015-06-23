@@ -172,6 +172,7 @@ init|=
 literal|"http://dx.doi.org/%s"
 decl_stmt|;
 DECL|field|caseKeeper
+specifier|private
 specifier|final
 name|CaseKeeper
 name|caseKeeper
@@ -181,6 +182,7 @@ name|CaseKeeper
 argument_list|()
 decl_stmt|;
 DECL|field|unitFormatter
+specifier|private
 specifier|final
 name|UnitFormatter
 name|unitFormatter
@@ -301,7 +303,7 @@ literal|null
 return|;
 block|}
 DECL|method|getEntryFromDOI (String doi, OutputPrinter status)
-specifier|public
+specifier|private
 name|BibtexEntry
 name|getEntryFromDOI
 parameter_list|(

@@ -74,7 +74,6 @@ end_comment
 
 begin_class
 DECL|class|Tools
-specifier|public
 class|class
 name|Tools
 block|{
@@ -625,7 +624,7 @@ name|link
 return|;
 block|}
 DECL|method|isAbsolutePath (String path)
-specifier|public
+specifier|private
 specifier|static
 name|boolean
 name|isAbsolutePath

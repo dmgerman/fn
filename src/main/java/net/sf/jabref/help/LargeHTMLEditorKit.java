@@ -234,13 +234,13 @@ end_comment
 
 begin_class
 DECL|class|LargeHTMLEditorKit
-specifier|public
 class|class
 name|LargeHTMLEditorKit
 extends|extends
 name|HTMLEditorKit
 block|{
 DECL|field|factory
+specifier|private
 specifier|final
 name|ViewFactory
 name|factory
@@ -262,6 +262,7 @@ name|factory
 return|;
 block|}
 DECL|class|MyViewFactory
+specifier|private
 class|class
 name|MyViewFactory
 extends|extends

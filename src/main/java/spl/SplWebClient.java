@@ -941,7 +941,7 @@ name|NO_METADATA
 return|;
 block|}
 DECL|method|isWebServiceOutDated ()
-specifier|public
+specifier|private
 specifier|static
 name|boolean
 name|isWebServiceOutDated
@@ -1049,7 +1049,7 @@ literal|false
 return|;
 block|}
 DECL|method|isMetaDataServiceAvailable ()
-specifier|public
+specifier|private
 specifier|static
 name|boolean
 name|isMetaDataServiceAvailable
@@ -1144,7 +1144,7 @@ literal|true
 return|;
 block|}
 DECL|method|isWebServiceAvailable ()
-specifier|public
+specifier|private
 specifier|static
 name|boolean
 name|isWebServiceAvailable
@@ -1187,7 +1187,7 @@ literal|true
 return|;
 block|}
 DECL|method|isInternetAvailable ()
-specifier|public
+specifier|private
 specifier|static
 name|boolean
 name|isInternetAvailable

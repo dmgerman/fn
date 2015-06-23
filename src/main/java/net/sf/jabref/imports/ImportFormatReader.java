@@ -436,7 +436,7 @@ block|}
 block|}
 comment|/**      * Format for a given CLI-ID.      *       *<p>Will return the first format according to the default-order of      * format that matches the given ID.</p>      *       * @param cliId  CLI-Id      * @return  Import Format or<code>null</code> if none matches      */
 DECL|method|getByCliId (String cliId)
-specifier|public
+specifier|private
 name|ImportFormat
 name|getByCliId
 parameter_list|(
@@ -1335,7 +1335,7 @@ return|;
 block|}
 comment|//------------------------------------------------------------------------------
 DECL|method|expandAll (String s)
-specifier|public
+specifier|private
 specifier|static
 name|String
 name|expandAll
@@ -1769,7 +1769,7 @@ return|;
 block|}
 comment|/**      * Receives an ArrayList of BibtexEntry instances, iterates through them, and      * removes all entries that have no fields set. This is useful for rooting out      * an unsucessful import (wrong format) that returns a number of empty entries.      */
 DECL|method|purgeEmptyEntries (Collection<BibtexEntry> entries)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|purgeEmptyEntries

@@ -947,6 +947,7 @@ operator|.
 name|prefs
 decl_stmt|;
 DECL|field|prefsDialog
+specifier|private
 name|PrefsDialog3
 name|prefsDialog
 init|=
@@ -972,6 +973,7 @@ name|tabbedPane
 decl_stmt|;
 comment|// initialized at constructor
 DECL|field|marg
+specifier|private
 specifier|final
 name|Insets
 name|marg
@@ -1051,6 +1053,7 @@ name|ToolBar
 argument_list|()
 decl_stmt|;
 DECL|field|mb
+specifier|private
 specifier|final
 name|JMenuBar
 name|mb
@@ -1060,6 +1063,7 @@ name|JMenuBar
 argument_list|()
 decl_stmt|;
 DECL|field|pluginMenu
+specifier|private
 specifier|final
 name|JMenu
 name|pluginMenu
@@ -1072,12 +1076,14 @@ literal|"Plugins"
 argument_list|)
 decl_stmt|;
 DECL|field|addedToPluginMenu
+specifier|private
 name|boolean
 name|addedToPluginMenu
 init|=
 literal|false
 decl_stmt|;
 DECL|field|gbl
+specifier|private
 specifier|final
 name|GridBagLayout
 name|gbl
@@ -1087,6 +1093,7 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|con
+specifier|private
 specifier|final
 name|GridBagConstraints
 name|con
@@ -1111,6 +1118,7 @@ name|LEFT
 argument_list|)
 decl_stmt|;
 DECL|field|statusLabel
+specifier|private
 specifier|final
 name|JLabel
 name|statusLabel
@@ -1133,6 +1141,7 @@ name|LEFT
 argument_list|)
 decl_stmt|;
 DECL|field|progressBar
+specifier|private
 specifier|final
 name|JProgressBar
 name|progressBar
@@ -1163,6 +1172,7 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|labelMaker
+specifier|private
 name|LabelMaker
 name|labelMaker
 decl_stmt|;
@@ -1219,6 +1229,7 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|final
 name|AbstractAction
 DECL|field|close
@@ -1229,6 +1240,7 @@ name|CloseDatabaseAction
 argument_list|()
 decl_stmt|;
 DECL|field|quit
+specifier|private
 specifier|final
 name|AbstractAction
 name|quit
@@ -1238,6 +1250,7 @@ name|CloseAction
 argument_list|()
 decl_stmt|;
 DECL|field|selectKeys
+specifier|private
 specifier|final
 name|AbstractAction
 name|selectKeys
@@ -1247,6 +1260,7 @@ name|SelectKeysAction
 argument_list|()
 decl_stmt|;
 DECL|field|newDatabaseAction
+specifier|private
 specifier|final
 name|AbstractAction
 name|newDatabaseAction
@@ -1256,6 +1270,7 @@ name|NewDatabaseAction
 argument_list|()
 decl_stmt|;
 DECL|field|newSubDatabaseAction
+specifier|private
 specifier|final
 name|AbstractAction
 name|newSubDatabaseAction
@@ -1265,6 +1280,7 @@ name|NewSubDatabaseAction
 argument_list|()
 decl_stmt|;
 DECL|field|integrityCheckAction
+specifier|private
 specifier|final
 name|AbstractAction
 name|integrityCheckAction
@@ -1274,6 +1290,7 @@ name|IntegrityCheckAction
 argument_list|()
 decl_stmt|;
 DECL|field|forkMeOnGitHubAction
+specifier|private
 specifier|final
 name|AbstractAction
 name|forkMeOnGitHubAction
@@ -1283,6 +1300,7 @@ name|ForkMeOnGitHubAction
 argument_list|()
 decl_stmt|;
 DECL|field|help
+specifier|private
 specifier|final
 name|AbstractAction
 name|help
@@ -1314,6 +1332,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|contents
+specifier|private
 specifier|final
 name|AbstractAction
 name|contents
@@ -1345,6 +1364,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|about
+specifier|private
 specifier|final
 name|AbstractAction
 name|about
@@ -1376,6 +1396,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|editEntry
+specifier|private
 specifier|final
 name|AbstractAction
 name|editEntry
@@ -1403,6 +1424,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|focusTable
+specifier|private
 specifier|final
 name|AbstractAction
 name|focusTable
@@ -1430,6 +1452,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|save
+specifier|private
 specifier|final
 name|AbstractAction
 name|save
@@ -1457,6 +1480,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|saveAs
+specifier|private
 specifier|final
 name|AbstractAction
 name|saveAs
@@ -1484,6 +1508,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|saveAll
+specifier|private
 specifier|final
 name|AbstractAction
 name|saveAll
@@ -1497,6 +1522,7 @@ name|this
 argument_list|)
 decl_stmt|;
 DECL|field|saveSelectedAs
+specifier|private
 specifier|final
 name|AbstractAction
 name|saveSelectedAs
@@ -1524,6 +1550,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|saveSelectedAsPlain
+specifier|private
 specifier|final
 name|AbstractAction
 name|saveSelectedAsPlain
@@ -1551,6 +1578,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|exportAll
+specifier|private
 specifier|final
 name|AbstractAction
 name|exportAll
@@ -1565,6 +1593,7 @@ literal|false
 argument_list|)
 decl_stmt|;
 DECL|field|exportSelected
+specifier|private
 specifier|final
 name|AbstractAction
 name|exportSelected
@@ -1579,6 +1608,7 @@ literal|true
 argument_list|)
 decl_stmt|;
 DECL|field|importCurrent
+specifier|private
 specifier|final
 name|AbstractAction
 name|importCurrent
@@ -1593,6 +1623,7 @@ literal|false
 argument_list|)
 decl_stmt|;
 DECL|field|importNew
+specifier|private
 specifier|final
 name|AbstractAction
 name|importNew
@@ -1629,6 +1660,7 @@ literal|false
 argument_list|)
 decl_stmt|;
 DECL|field|sortTabs
+specifier|private
 specifier|final
 name|AbstractAction
 name|sortTabs
@@ -1640,6 +1672,7 @@ name|this
 argument_list|)
 decl_stmt|;
 DECL|field|undo
+specifier|private
 specifier|final
 name|AbstractAction
 name|undo
@@ -1667,6 +1700,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|redo
+specifier|private
 specifier|final
 name|AbstractAction
 name|redo
@@ -1751,6 +1785,7 @@ literal|"Back"
 argument_list|)
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|final
 name|AbstractAction
 comment|//cut = new GeneralAction("cut", "Cut", Globals.lang("Cut"),
@@ -1781,6 +1816,7 @@ literal|"Delete"
 argument_list|)
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|final
 name|AbstractAction
 comment|//copy = new GeneralAction("copy", "Copy", Globals.lang("Copy"),
@@ -1803,6 +1839,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|paste
+specifier|private
 specifier|final
 name|AbstractAction
 name|paste
@@ -1821,6 +1858,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|cut
+specifier|private
 specifier|final
 name|AbstractAction
 name|cut
@@ -1839,6 +1877,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|mark
+specifier|private
 specifier|final
 name|AbstractAction
 name|mark
@@ -1866,6 +1905,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|unmark
+specifier|private
 specifier|final
 name|AbstractAction
 name|unmark
@@ -1893,6 +1933,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|unmarkAll
+specifier|private
 specifier|final
 name|AbstractAction
 name|unmarkAll
@@ -1906,6 +1947,7 @@ literal|"Unmark all"
 argument_list|)
 decl_stmt|;
 DECL|field|toggleRelevance
+specifier|private
 specifier|final
 name|AbstractAction
 name|toggleRelevance
@@ -1963,6 +2005,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|toggleQualityAssured
+specifier|private
 specifier|final
 name|AbstractAction
 name|toggleQualityAssured
@@ -2020,6 +2063,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|togglePrinted
+specifier|private
 specifier|final
 name|AbstractAction
 name|togglePrinted
@@ -2076,6 +2120,7 @@ name|getToolTipText
 argument_list|()
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|final
 name|AbstractAction
 comment|//    	priority = new GeneralAction("setPriority", "Set priority",
@@ -2092,6 +2137,7 @@ literal|"Manage content selectors"
 argument_list|)
 decl_stmt|;
 DECL|field|saveSessionAction
+specifier|private
 specifier|final
 name|AbstractAction
 name|saveSessionAction
@@ -2110,6 +2156,7 @@ name|LoadSessionAction
 argument_list|()
 decl_stmt|;
 DECL|field|incrementalSearch
+specifier|private
 specifier|final
 name|AbstractAction
 name|incrementalSearch
@@ -2137,6 +2184,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|normalSearch
+specifier|private
 specifier|final
 name|AbstractAction
 name|normalSearch
@@ -2164,6 +2212,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|toggleSearch
+specifier|private
 specifier|final
 name|AbstractAction
 name|toggleSearch
@@ -2184,6 +2233,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|copyKey
+specifier|private
 specifier|final
 name|AbstractAction
 name|copyKey
@@ -2203,6 +2253,7 @@ literal|"Copy BibTeX key"
 argument_list|)
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|final
 name|AbstractAction
 comment|//"Put a BibTeX reference to the selected entries on the clipboard",
@@ -2226,6 +2277,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|copyKeyAndTitle
+specifier|private
 specifier|final
 name|AbstractAction
 name|copyKeyAndTitle
@@ -2246,6 +2298,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|mergeDatabaseAction
+specifier|private
 specifier|final
 name|AbstractAction
 name|mergeDatabaseAction
@@ -2272,6 +2325,7 @@ literal|"open"
 argument_list|)
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|final
 name|AbstractAction
 comment|//prefs.getKey("Open")),
@@ -2295,6 +2349,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|replaceAll
+specifier|private
 specifier|final
 name|AbstractAction
 name|replaceAll
@@ -2315,6 +2370,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|editPreamble
+specifier|private
 specifier|final
 name|AbstractAction
 name|editPreamble
@@ -2342,6 +2398,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|editStrings
+specifier|private
 specifier|final
 name|AbstractAction
 name|editStrings
@@ -2369,6 +2426,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|toggleToolbar
+specifier|private
 specifier|final
 name|AbstractAction
 name|toggleToolbar
@@ -2396,6 +2454,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|toggleGroups
+specifier|private
 specifier|final
 name|AbstractAction
 name|toggleGroups
@@ -2423,6 +2482,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|togglePreview
+specifier|private
 specifier|final
 name|AbstractAction
 name|togglePreview
@@ -2450,6 +2510,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|toggleHighlightAny
+specifier|private
 specifier|final
 name|AbstractAction
 name|toggleHighlightAny
@@ -2477,6 +2538,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|toggleHighlightAll
+specifier|private
 specifier|final
 name|AbstractAction
 name|toggleHighlightAll
@@ -2524,6 +2586,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|makeKeyAction
+specifier|private
 specifier|final
 name|AbstractAction
 name|makeKeyAction
@@ -2551,6 +2614,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|writeXmpAction
+specifier|private
 specifier|final
 name|AbstractAction
 name|writeXmpAction
@@ -2578,6 +2642,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|openFolder
+specifier|private
 specifier|final
 name|AbstractAction
 name|openFolder
@@ -2605,6 +2670,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|openFile
+specifier|private
 specifier|final
 name|AbstractAction
 name|openFile
@@ -2632,6 +2698,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|openPdf
+specifier|private
 specifier|final
 name|AbstractAction
 name|openPdf
@@ -2659,6 +2726,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|openUrl
+specifier|private
 specifier|final
 name|AbstractAction
 name|openUrl
@@ -2686,6 +2754,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|openSpires
+specifier|private
 specifier|final
 name|AbstractAction
 name|openSpires
@@ -2712,6 +2781,7 @@ literal|"Open SPIRES entry"
 argument_list|)
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|final
 name|AbstractAction
 comment|/*              * It looks like this wasn't being implemented for spires anyway so we              * comment it out for now.              *             openInspire = new GeneralAction("openInspire", "Open INSPIRE entry",                                                 Globals.lang("Open INSPIRE entry"),                                                 prefs.getKey("Open INSPIRE entry")),             */
@@ -2726,6 +2796,7 @@ argument_list|,
 literal|"Find duplicates"
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|final
 name|AbstractAction
 comment|//strictDupliCheck = new GeneralAction("strictDupliCheck", "Find and remove exact duplicates"),
@@ -2748,6 +2819,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|customExpAction
+specifier|private
 specifier|final
 name|AbstractAction
 name|customExpAction
@@ -2757,6 +2829,7 @@ name|CustomizeExportsAction
 argument_list|()
 decl_stmt|;
 DECL|field|customImpAction
+specifier|private
 specifier|final
 name|AbstractAction
 name|customImpAction
@@ -2766,6 +2839,7 @@ name|CustomizeImportsAction
 argument_list|()
 decl_stmt|;
 DECL|field|customFileTypesAction
+specifier|private
 specifier|final
 name|AbstractAction
 name|customFileTypesAction
@@ -2789,6 +2863,7 @@ argument_list|,
 literal|"Export selected entries to clipboard"
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|final
 name|AbstractAction
 comment|//expandEndnoteZip = new ExpandEndnoteFilters(this),
@@ -2820,6 +2895,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|autoSetPs
+specifier|private
 specifier|final
 name|AbstractAction
 name|autoSetPs
@@ -2849,6 +2925,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|autoSetFile
+specifier|private
 specifier|final
 name|AbstractAction
 name|autoSetFile
@@ -2876,6 +2953,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|abbreviateMedline
+specifier|private
 specifier|final
 name|AbstractAction
 name|abbreviateMedline
@@ -2896,6 +2974,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|abbreviateIso
+specifier|private
 specifier|final
 name|AbstractAction
 name|abbreviateIso
@@ -2925,6 +3004,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|unabbreviate
+specifier|private
 specifier|final
 name|AbstractAction
 name|unabbreviate
@@ -2954,6 +3034,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|manageJournals
+specifier|private
 specifier|final
 name|AbstractAction
 name|manageJournals
@@ -2965,6 +3046,7 @@ name|this
 argument_list|)
 decl_stmt|;
 DECL|field|databaseProperties
+specifier|private
 specifier|final
 name|AbstractAction
 name|databaseProperties
@@ -2974,6 +3056,7 @@ name|DatabasePropertiesAction
 argument_list|()
 decl_stmt|;
 DECL|field|bibtexKeyPattern
+specifier|private
 specifier|final
 name|AbstractAction
 name|bibtexKeyPattern
@@ -2983,6 +3066,7 @@ name|BibtexKeyPatternAction
 argument_list|()
 decl_stmt|;
 DECL|field|errorConsole
+specifier|private
 specifier|final
 name|AbstractAction
 name|errorConsole
@@ -3009,6 +3093,7 @@ literal|"Test"
 argument_list|)
 decl_stmt|;
 DECL|field|dbConnect
+specifier|private
 specifier|final
 name|AbstractAction
 name|dbConnect
@@ -3036,6 +3121,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|dbExport
+specifier|private
 specifier|final
 name|AbstractAction
 name|dbExport
@@ -3063,6 +3149,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|Cleanup
+specifier|private
 specifier|final
 name|AbstractAction
 name|Cleanup
@@ -3094,6 +3181,7 @@ operator|)
 argument_list|)
 decl_stmt|;
 DECL|field|mergeEntries
+specifier|private
 specifier|final
 name|AbstractAction
 name|mergeEntries
@@ -3121,6 +3209,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|dbImport
+specifier|private
 specifier|final
 name|AbstractAction
 name|dbImport
@@ -3134,6 +3223,7 @@ operator|.
 name|getAction
 argument_list|()
 decl_stmt|;
+specifier|private
 specifier|final
 name|AbstractAction
 comment|//downloadFullText = new GeneralAction("downloadFullText", "Look up full text document",
@@ -3146,6 +3236,7 @@ name|IncreaseTableFontSizeAction
 argument_list|()
 decl_stmt|;
 DECL|field|decreseFontSize
+specifier|private
 specifier|final
 name|AbstractAction
 name|decreseFontSize
@@ -3155,6 +3246,7 @@ name|DecreaseTableFontSizeAction
 argument_list|()
 decl_stmt|;
 DECL|field|installPlugin
+specifier|private
 specifier|final
 name|AbstractAction
 name|installPlugin
@@ -3166,6 +3258,7 @@ name|this
 argument_list|)
 decl_stmt|;
 DECL|field|resolveDuplicateKeys
+specifier|private
 specifier|final
 name|AbstractAction
 name|resolveDuplicateKeys
@@ -3215,6 +3308,7 @@ name|this
 argument_list|)
 decl_stmt|;
 DECL|field|findUnlinkedFiles
+specifier|private
 specifier|final
 name|GeneralAction
 name|findUnlinkedFiles
@@ -3249,6 +3343,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|autoLinkFile
+specifier|private
 specifier|final
 name|AutoLinkFilesAction
 name|autoLinkFile
@@ -3258,10 +3353,12 @@ name|AutoLinkFilesAction
 argument_list|()
 decl_stmt|;
 DECL|field|pushExternalButton
+specifier|private
 name|PushToApplicationButton
 name|pushExternalButton
 decl_stmt|;
 DECL|field|fetchers
+specifier|private
 specifier|final
 name|List
 argument_list|<
@@ -3277,6 +3374,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|fetcherActions
+specifier|private
 specifier|final
 name|List
 argument_list|<
@@ -3303,6 +3401,7 @@ name|groupSelector
 decl_stmt|;
 comment|// The menus for importing/appending other formats
 DECL|field|importMenu
+specifier|private
 specifier|final
 name|JMenu
 name|importMenu
@@ -3315,6 +3414,7 @@ literal|"Import into current database"
 argument_list|)
 decl_stmt|;
 DECL|field|importNewMenu
+specifier|private
 specifier|final
 name|JMenu
 name|importNewMenu
@@ -3327,6 +3427,7 @@ literal|"Import into new database"
 argument_list|)
 decl_stmt|;
 DECL|field|exportMenu
+specifier|private
 specifier|final
 name|JMenu
 name|exportMenu
@@ -3350,6 +3451,7 @@ literal|"Custom export"
 argument_list|)
 decl_stmt|;
 DECL|field|newDatabaseMenu
+specifier|private
 specifier|final
 name|JMenu
 name|newDatabaseMenu
@@ -3363,6 +3465,7 @@ argument_list|)
 decl_stmt|;
 comment|// Other submenus
 DECL|field|checkAndFix
+specifier|private
 specifier|final
 name|JMenu
 name|checkAndFix
@@ -3376,6 +3479,7 @@ argument_list|)
 decl_stmt|;
 comment|// The action for adding a new entry of unspecified type.
 DECL|field|newEntryAction
+specifier|private
 specifier|final
 name|NewEntryAction
 name|newEntryAction
@@ -3392,6 +3496,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|newSpecificEntryAction
+specifier|private
 specifier|final
 name|NewEntryAction
 index|[]
@@ -9786,7 +9891,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|openDatabaseOnlyActions
-specifier|protected
+specifier|private
 name|List
 argument_list|<
 name|Object
@@ -9801,7 +9906,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|severalDatabasesOnlyActions
-specifier|protected
+specifier|private
 name|List
 argument_list|<
 name|Object
@@ -9816,7 +9921,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|method|initActions ()
-specifier|protected
+specifier|private
 name|void
 name|initActions
 parameter_list|()
@@ -10041,7 +10146,7 @@ expr_stmt|;
 block|}
 comment|/**      * Takes a list of Object and calls the method setEnabled on them, depending on whether it is an Action or a Component.      * @param list List that should contain Actions and Components.      * @param enabled       */
 DECL|method|setEnabled (List<Object> list, boolean enabled)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|setEnabled
@@ -10107,7 +10212,7 @@ block|}
 block|}
 block|}
 DECL|field|previousTabCount
-specifier|protected
+specifier|private
 name|int
 name|previousTabCount
 init|=
@@ -10116,7 +10221,7 @@ literal|1
 decl_stmt|;
 comment|/**      * Enable or Disable all actions based on the number of open tabs.      *       * The action that are affected are set in initActions.      */
 DECL|method|updateEnabledState ()
-specifier|protected
+specifier|private
 name|void
 name|updateEnabledState
 parameter_list|()
@@ -10714,6 +10819,7 @@ block|}
 block|}
 comment|// The action for closing the current database and leaving the window open.
 DECL|field|closeDatabaseAction
+specifier|private
 specifier|final
 name|CloseDatabaseAction
 name|closeDatabaseAction
@@ -11417,6 +11523,7 @@ block|}
 block|}
 comment|// The action for opening the preferences dialog.
 DECL|field|showPrefs
+specifier|private
 specifier|final
 name|AbstractAction
 name|showPrefs
@@ -11488,7 +11595,7 @@ block|}
 block|}
 comment|/**      * This method does the job of adding imported entries into the active      * database, or into a new one. It shows the ImportInspectionDialog if      * preferences indicate it should be used. Otherwise it imports directly.      *       * @param panel      *            The BasePanel to add to.      * @param entries      *            The entries to add.      * @param filename      *            Name of the file where the import came from.      * @param openInNew      *            Should the entries be imported into a new database?      */
 DECL|method|addImportedEntries (final BasePanel panel, final List<BibtexEntry> entries, String filename, final boolean openInNew)
-specifier|public
+specifier|private
 name|void
 name|addImportedEntries
 parameter_list|(
@@ -11698,7 +11805,7 @@ block|}
 block|}
 comment|/**      * Adds the entries to the database, possibly checking for duplicates first.      * @param filename If non-null, a message is printed to the status line describing      * how many entries were imported, and from which file. If null, the message will not      * be printed.      * @param intoNew Determines if the entries will be put in a new database or in the current      * one.      */
 DECL|method|addBibEntries (List<BibtexEntry> bibentries, String filename, boolean intoNew)
-specifier|public
+specifier|private
 name|int
 name|addBibEntries
 parameter_list|(

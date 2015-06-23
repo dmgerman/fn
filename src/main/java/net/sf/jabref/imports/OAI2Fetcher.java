@@ -193,7 +193,7 @@ implements|implements
 name|EntryFetcher
 block|{
 DECL|field|OAI2_ARXIV_PREFIXIDENTIFIER
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -202,7 +202,7 @@ init|=
 literal|"oai%3AarXiv.org%3A"
 decl_stmt|;
 DECL|field|OAI2_ARXIV_HOST
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -211,7 +211,7 @@ init|=
 literal|"export.arxiv.org"
 decl_stmt|;
 DECL|field|OAI2_ARXIV_SCRIPT
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -220,7 +220,7 @@ init|=
 literal|"oai2"
 decl_stmt|;
 DECL|field|OAI2_ARXIV_METADATAPREFIX
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -229,7 +229,7 @@ init|=
 literal|"arXiv"
 decl_stmt|;
 DECL|field|OAI2_ARXIV_ARCHIVENAME
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -238,7 +238,7 @@ init|=
 literal|"ArXiv.org"
 decl_stmt|;
 DECL|field|OAI2_IDENTIFIER_FIELD
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String

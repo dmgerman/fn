@@ -370,29 +370,35 @@ parameter_list|)
 block|{          }
 block|}
 DECL|field|comp
+specifier|private
 name|OOPanel
 name|comp
 decl_stmt|;
 DECL|field|diag
+specifier|private
 name|JDialog
 name|diag
 decl_stmt|;
+specifier|private
 specifier|static
 name|JButton
 DECL|field|connect
 name|connect
 decl_stmt|;
 DECL|field|manualConnect
+specifier|private
 specifier|static
 name|JButton
 name|manualConnect
 decl_stmt|;
 DECL|field|selectDocument
+specifier|private
 specifier|static
 name|JButton
 name|selectDocument
 decl_stmt|;
 DECL|field|setStyleFile
+specifier|private
 specifier|static
 specifier|final
 name|JButton
@@ -410,6 +416,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|pushEntries
+specifier|private
 specifier|static
 specifier|final
 name|JButton
@@ -427,6 +434,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|pushEntriesInt
+specifier|private
 specifier|static
 specifier|final
 name|JButton
@@ -444,6 +452,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|pushEntriesEmpty
+specifier|private
 specifier|static
 specifier|final
 name|JButton
@@ -461,6 +470,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|pushEntriesAdvanced
+specifier|private
 specifier|static
 specifier|final
 name|JButton
@@ -478,6 +488,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|focus
+specifier|private
 specifier|static
 specifier|final
 name|JButton
@@ -490,11 +501,13 @@ literal|"Focus OO document"
 argument_list|)
 decl_stmt|;
 DECL|field|update
+specifier|private
 specifier|static
 name|JButton
 name|update
 decl_stmt|;
 DECL|field|insertFullRef
+specifier|private
 specifier|static
 specifier|final
 name|JButton
@@ -507,6 +520,7 @@ literal|"Insert reference text"
 argument_list|)
 decl_stmt|;
 DECL|field|merge
+specifier|private
 specifier|static
 specifier|final
 name|JButton
@@ -524,6 +538,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|manageCitations
+specifier|private
 specifier|static
 specifier|final
 name|JButton
@@ -541,6 +556,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|settingsB
+specifier|private
 specifier|static
 specifier|final
 name|JButton
@@ -558,6 +574,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|help
+specifier|private
 specifier|static
 specifier|final
 name|JButton
@@ -575,6 +592,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|test
+specifier|private
 specifier|static
 specifier|final
 name|JButton
@@ -587,10 +605,13 @@ literal|"Test"
 argument_list|)
 decl_stmt|;
 DECL|field|inPar
-DECL|field|inText
+specifier|private
 name|JRadioButton
 name|inPar
-decl_stmt|,
+decl_stmt|;
+DECL|field|inText
+specifier|private
+name|JRadioButton
 name|inText
 decl_stmt|;
 DECL|field|settings
@@ -2773,7 +2794,7 @@ comment|//diag.pack();
 comment|//diag.setVisible(true);
 block|}
 DECL|method|getBaseList ()
-specifier|public
+specifier|private
 name|java
 operator|.
 name|util
@@ -2876,7 +2897,7 @@ name|databases
 return|;
 block|}
 DECL|method|connect (boolean auto)
-specifier|public
+specifier|private
 name|void
 name|connect
 parameter_list|(
@@ -3583,7 +3604,7 @@ block|}
 block|}
 comment|/**      * Read the style file. Record the last modified time of the file.      * @throws Exception      */
 DECL|method|readStyleFile ()
-specifier|public
+specifier|private
 name|void
 name|readStyleFile
 parameter_list|()
@@ -3719,7 +3740,7 @@ name|class
 block|}
 decl_stmt|;
 DECL|method|addURL (URL[] u)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|addURL
@@ -3817,7 +3838,7 @@ comment|//end try catch
 block|}
 comment|//end method
 DECL|method|updateConnectionParams (String ooPath, String ooExec, String ooJars, boolean oo3)
-specifier|public
+specifier|private
 name|void
 name|updateConnectionParams
 parameter_list|(
@@ -3880,7 +3901,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|showConnectDialog ()
-specifier|public
+specifier|private
 name|void
 name|showConnectDialog
 parameter_list|()
@@ -4479,7 +4500,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|pushEntries (boolean inParenthesis, boolean withText, boolean addPageInfo)
-specifier|public
+specifier|private
 name|void
 name|pushEntries
 parameter_list|(
@@ -4777,7 +4798,7 @@ block|}
 block|}
 block|}
 DECL|method|showConnectionLostErrorMessage ()
-specifier|public
+specifier|private
 name|void
 name|showConnectionLostErrorMessage
 parameter_list|()
@@ -4813,7 +4834,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|insertFullRefs ()
-specifier|public
+specifier|private
 name|void
 name|insertFullRefs
 parameter_list|()
@@ -5234,7 +5255,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|showSettingsPopup ()
-specifier|public
+specifier|private
 name|void
 name|showSettingsPopup
 parameter_list|()
@@ -5623,7 +5644,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|pushEntries (boolean inParenthesis, BibtexEntry[] entries)
-specifier|public
+specifier|private
 name|void
 name|pushEntries
 parameter_list|(

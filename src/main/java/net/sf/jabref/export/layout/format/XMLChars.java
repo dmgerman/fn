@@ -263,6 +263,7 @@ argument_list|)
 return|;
 block|}
 DECL|field|forceReplace
+specifier|private
 name|boolean
 index|[]
 name|forceReplace

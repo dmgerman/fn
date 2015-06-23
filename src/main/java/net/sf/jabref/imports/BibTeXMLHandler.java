@@ -106,7 +106,6 @@ end_comment
 
 begin_class
 DECL|class|BibTeXMLHandler
-specifier|public
 class|class
 name|BibTeXMLHandler
 extends|extends

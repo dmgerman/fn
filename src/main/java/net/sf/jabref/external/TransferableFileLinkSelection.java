@@ -167,6 +167,7 @@ implements|implements
 name|Transferable
 block|{
 DECL|field|fileList
+specifier|private
 specifier|final
 name|List
 argument_list|<

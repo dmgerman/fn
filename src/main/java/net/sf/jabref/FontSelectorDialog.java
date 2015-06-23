@@ -321,6 +321,7 @@ init|=
 literal|7745223550102664896L
 decl_stmt|;
 DECL|field|PLAIN
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -329,6 +330,7 @@ init|=
 literal|"plain"
 decl_stmt|;
 DECL|field|BOLD
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -337,6 +339,7 @@ init|=
 literal|"bold"
 decl_stmt|;
 DECL|field|BOLD_ITALIC
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -345,6 +348,7 @@ init|=
 literal|"bold-italic"
 decl_stmt|;
 DECL|field|ITALIC
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -376,7 +380,7 @@ expr_stmt|;
 block|}
 comment|/** init with the given font */
 DECL|method|FontSelector (Font font)
-specifier|public
+specifier|private
 name|FontSelector
 parameter_list|(
 name|Font
@@ -528,6 +532,7 @@ expr_stmt|;
 block|}
 comment|/**      * button's action-listener ; open a FontSelectorDialog      */
 DECL|class|ActionHandler
+specifier|private
 class|class
 name|ActionHandler
 implements|implements
@@ -602,6 +607,7 @@ operator|-
 literal|8670346696048738055L
 decl_stmt|;
 DECL|field|PLAIN
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -610,6 +616,7 @@ init|=
 literal|"plain"
 decl_stmt|;
 DECL|field|BOLD
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -618,6 +625,7 @@ init|=
 literal|"bold"
 decl_stmt|;
 DECL|field|BOLD_ITALIC
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -626,6 +634,7 @@ init|=
 literal|"bold-italic"
 decl_stmt|;
 DECL|field|ITALIC
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -1270,7 +1279,7 @@ expr_stmt|;
 comment|// show(); -> deprecated since 1.5
 block|}
 DECL|method|ok ()
-specifier|public
+specifier|private
 name|void
 name|ok
 parameter_list|()
@@ -1284,7 +1293,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|cancel ()
-specifier|public
+specifier|private
 name|void
 name|cancel
 parameter_list|()
@@ -1923,6 +1932,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|class|ActionHandler
+specifier|private
 class|class
 name|ActionHandler
 implements|implements
@@ -1971,6 +1981,7 @@ block|}
 block|}
 block|}
 DECL|class|ListHandler
+specifier|private
 class|class
 name|ListHandler
 implements|implements

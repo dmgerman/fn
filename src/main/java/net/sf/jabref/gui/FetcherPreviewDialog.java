@@ -221,7 +221,7 @@ implements|implements
 name|OutputPrinter
 block|{
 DECL|field|entries
-specifier|protected
+specifier|private
 specifier|final
 name|EventList
 argument_list|<
@@ -238,13 +238,13 @@ argument_list|()
 decl_stmt|;
 comment|//protected SortedList<TableEntry> sortedList;
 DECL|field|glTable
-specifier|protected
+specifier|private
 specifier|final
 name|JTable
 name|glTable
 decl_stmt|;
 DECL|field|ok
-specifier|protected
+specifier|private
 specifier|final
 name|JButton
 name|ok
@@ -261,7 +261,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|cancel
-specifier|protected
+specifier|private
 specifier|final
 name|JButton
 name|cancel
@@ -278,7 +278,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|selectAll
-specifier|protected
+specifier|private
 specifier|final
 name|JButton
 name|selectAll
@@ -295,7 +295,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|deselectAll
-specifier|protected
+specifier|private
 specifier|final
 name|JButton
 name|deselectAll
@@ -312,7 +312,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|okPressed
-specifier|protected
+specifier|private
 name|boolean
 name|okPressed
 init|=
@@ -814,7 +814,7 @@ expr_stmt|;
 block|}
 comment|/**      * Check whether a large number of entries are selected, and if so, ask the user whether      * to go on.      * @return true if we should go on      */
 DECL|method|verifySelection ()
-specifier|public
+specifier|private
 name|boolean
 name|verifySelection
 parameter_list|()
@@ -1029,7 +1029,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|setSelectionAll (boolean select)
-specifier|public
+specifier|private
 name|void
 name|setSelectionAll
 parameter_list|(
@@ -1414,6 +1414,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|EntryTableFormat
+specifier|private
 specifier|static
 class|class
 name|EntryTableFormat

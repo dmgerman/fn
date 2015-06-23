@@ -62,13 +62,13 @@ end_comment
 
 begin_class
 DECL|class|IconStringRenderer
-specifier|public
 class|class
 name|IconStringRenderer
 extends|extends
 name|DefaultTableCellRenderer
 block|{
 DECL|field|toolTip
+specifier|private
 specifier|final
 name|String
 name|toolTip

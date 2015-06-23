@@ -256,7 +256,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|storeOpenOfficeFile (File file, InputStream source)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|storeOpenOfficeFile
@@ -382,7 +382,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|exportOpenOfficeCalc (File file, BibtexDatabase database, Set<String> keySet)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|exportOpenOfficeCalc
@@ -457,7 +457,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|exportOpenOfficeCalcXML (File tmpFile, BibtexDatabase database, Set<String> keySet)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|exportOpenOfficeCalcXML

@@ -177,6 +177,7 @@ class|class
 name|BibtexDatabase
 block|{
 DECL|field|_entries
+specifier|private
 specifier|final
 name|Map
 argument_list|<
@@ -196,12 +197,14 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|_preamble
+specifier|private
 name|String
 name|_preamble
 init|=
 literal|null
 decl_stmt|;
 DECL|field|_strings
+specifier|private
 specifier|final
 name|HashMap
 argument_list|<
@@ -235,6 +238,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|changeListeners
+specifier|private
 specifier|final
 name|Set
 argument_list|<
@@ -1867,7 +1871,7 @@ comment|//############################################
 comment|// if the newkey already exists and is not the same as oldkey it will give a warning
 comment|// else it will add the newkey to the to set and remove the oldkey
 DECL|method|checkForDuplicateKeyAndAdd (String oldKey, String newKey, boolean issueWarning)
-specifier|public
+specifier|private
 name|boolean
 name|checkForDuplicateKeyAndAdd
 parameter_list|(
@@ -2194,7 +2198,7 @@ block|}
 block|}
 block|}
 DECL|method|fireDatabaseChanged (DatabaseChangeEvent e)
-specifier|public
+specifier|private
 name|void
 name|fireDatabaseChanged
 parameter_list|(

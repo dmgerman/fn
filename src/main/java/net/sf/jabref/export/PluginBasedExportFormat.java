@@ -81,7 +81,7 @@ extends|extends
 name|ExportFormat
 block|{
 DECL|field|extension
-specifier|public
+specifier|private
 specifier|final
 name|ExportFormatTemplateExtension
 name|extension
@@ -211,7 +211,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|PluginBasedExportFormat (String displayName, String consoleName, String layoutFileName, String fileExtension, String encoding, ExportFormatTemplateExtension extension)
-specifier|public
+specifier|private
 name|PluginBasedExportFormat
 parameter_list|(
 name|String

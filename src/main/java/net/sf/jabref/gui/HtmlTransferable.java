@@ -68,7 +68,6 @@ end_comment
 
 begin_class
 DECL|class|HtmlTransferable
-specifier|public
 class|class
 name|HtmlTransferable
 implements|implements
@@ -93,7 +92,7 @@ init|=
 literal|1
 decl_stmt|;
 DECL|field|HTML_FLAVOR
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|DataFlavor

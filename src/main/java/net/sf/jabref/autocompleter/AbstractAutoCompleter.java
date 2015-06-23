@@ -133,7 +133,7 @@ name|SHORTEST_TO_COMPLETE
 argument_list|)
 decl_stmt|;
 DECL|field|SHORTEST_WORD
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int

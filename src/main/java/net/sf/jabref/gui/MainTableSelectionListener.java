@@ -312,6 +312,7 @@ implements|,
 name|FocusListener
 block|{
 DECL|field|previewPanel
+specifier|private
 name|PreviewPanel
 index|[]
 name|previewPanel
@@ -319,6 +320,7 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|activePreview
+specifier|private
 name|int
 name|activePreview
 init|=
@@ -332,20 +334,24 @@ literal|"activePreview"
 argument_list|)
 decl_stmt|;
 DECL|field|preview
+specifier|private
 name|PreviewPanel
 name|preview
 decl_stmt|;
 DECL|field|table
+specifier|private
 specifier|final
 name|MainTable
 name|table
 decl_stmt|;
 DECL|field|panel
+specifier|private
 specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|tableRows
+specifier|private
 specifier|final
 name|EventList
 argument_list|<
@@ -2110,7 +2116,7 @@ block|}
 block|}
 comment|/**      * Process general right-click events on the table. Show the table context menu at      * the position where the user right-clicked.      * @param e The mouse event defining the popup trigger.      * @param row The row where the event occured.      */
 DECL|method|processPopupTrigger (MouseEvent e, int row)
-specifier|protected
+specifier|private
 name|void
 name|processPopupTrigger
 parameter_list|(

@@ -419,6 +419,7 @@ comment|//frame.getFileHistory().newFile(panel.fileToOpen.getPath());
 block|}
 block|}
 DECL|method|openIt (boolean importEntries, boolean importStrings, boolean importGroups, boolean importSelectorWords)
+specifier|private
 name|void
 name|openIt
 parameter_list|(
@@ -570,7 +571,7 @@ block|}
 block|}
 block|}
 DECL|method|mergeFromBibtex (JabRefFrame frame, BasePanel panel, ParserResult pr, boolean importEntries, boolean importStrings, boolean importGroups, boolean importSelectorWords)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|mergeFromBibtex

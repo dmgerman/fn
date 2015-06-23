@@ -376,11 +376,11 @@ end_comment
 
 begin_class
 DECL|class|OOBibBase
-specifier|public
 class|class
 name|OOBibBase
 block|{
 DECL|field|BIB_SECTION_NAME
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -389,6 +389,7 @@ init|=
 literal|"JR_bib"
 decl_stmt|;
 DECL|field|BIB_SECTION_END_NAME
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -397,6 +398,7 @@ init|=
 literal|"JR_bib_end"
 decl_stmt|;
 DECL|field|BIB_CITATION
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -405,7 +407,7 @@ init|=
 literal|"JR_cite"
 decl_stmt|;
 DECL|field|citePattern
-specifier|public
+specifier|private
 specifier|final
 name|Pattern
 name|citePattern
@@ -421,6 +423,7 @@ operator|+
 literal|"\\d*_(\\d*)_(.*)"
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|final
 specifier|static
 name|int
@@ -428,13 +431,21 @@ DECL|field|AUTHORYEAR_PAR
 name|AUTHORYEAR_PAR
 init|=
 literal|1
-decl_stmt|,
+decl_stmt|;
 DECL|field|AUTHORYEAR_INTEXT
+specifier|private
+specifier|final
+specifier|static
+name|int
 name|AUTHORYEAR_INTEXT
 init|=
 literal|2
-decl_stmt|,
+decl_stmt|;
 DECL|field|INVISIBLE_CIT
+specifier|private
+specifier|final
+specifier|static
+name|int
 name|INVISIBLE_CIT
 init|=
 literal|3
@@ -531,30 +542,35 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|xViewCursorSupplier
+specifier|private
 name|XTextViewCursorSupplier
 name|xViewCursorSupplier
 init|=
 literal|null
 decl_stmt|;
 DECL|field|xCurrentComponent
+specifier|private
 name|XComponent
 name|xCurrentComponent
 init|=
 literal|null
 decl_stmt|;
 DECL|field|xComponentLoader
+specifier|private
 name|XComponentLoader
 name|xComponentLoader
 init|=
 literal|null
 decl_stmt|;
 DECL|field|userProperties
+specifier|private
 name|XPropertyContainer
 name|userProperties
 init|=
 literal|null
 decl_stmt|;
 DECL|field|propertySet
+specifier|private
 name|XPropertySet
 name|propertySet
 init|=
@@ -937,7 +953,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|simpleBootstrap (String pathToExecutable)
-specifier|public
+specifier|private
 name|XDesktop
 name|simpleBootstrap
 parameter_list|(
@@ -1126,7 +1142,7 @@ name|xD
 return|;
 block|}
 DECL|method|getTextDocuments ()
-specifier|public
+specifier|private
 name|List
 argument_list|<
 name|XTextDocument
@@ -4324,7 +4340,7 @@ name|unresolvedKeys
 return|;
 block|}
 DECL|method|getSortedReferenceMarks (final XNameAccess nameAccess)
-specifier|public
+specifier|private
 name|String
 index|[]
 name|getSortedReferenceMarks
@@ -4745,7 +4761,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getUniqueReferenceMarkName (String bibtexKey, int type)
-specifier|public
+specifier|private
 name|String
 name|getUniqueReferenceMarkName
 parameter_list|(
@@ -4833,7 +4849,7 @@ name|name
 return|;
 block|}
 DECL|method|findCitedEntries (List<BibtexDatabase> databases, List<String> keys, HashMap<String, BibtexDatabase> linkSourceBase)
-specifier|public
+specifier|private
 name|LinkedHashMap
 argument_list|<
 name|BibtexEntry
@@ -4974,7 +4990,7 @@ name|entries
 return|;
 block|}
 DECL|method|findCitedKeys ()
-specifier|public
+specifier|private
 name|List
 argument_list|<
 name|String
@@ -5115,7 +5131,7 @@ name|keys
 return|;
 block|}
 DECL|method|getSortedEntriesFromSortedRefMarks (String[] names, Map<BibtexEntry, BibtexDatabase> entries, HashMap<String, BibtexDatabase> linkSourceBase)
-specifier|public
+specifier|private
 name|LinkedHashMap
 argument_list|<
 name|BibtexEntry
@@ -5379,7 +5395,7 @@ name|newList
 return|;
 block|}
 DECL|method|findPosition (XTextViewCursor cursor, XTextRange range)
-specifier|public
+specifier|private
 name|Point
 name|findPosition
 parameter_list|(
@@ -5501,7 +5517,7 @@ return|;
 block|}
 comment|/**      * Resolve the bibtex key from a citation reference marker name, and look up      * the index of the key in a list of keys.      * @param citRefName The name of the ReferenceMark representing the citation.      * @param keys A List of bibtex keys representing the entries in the bibliography.      * @return the indices of the cited keys, -1 if a key is not found. Returns null if the ref name      *   could not be resolved as a citation.      */
 DECL|method|findCitedEntryIndex (String citRefName, List<String> keys)
-specifier|public
+specifier|private
 name|int
 index|[]
 name|findCitedEntryIndex
@@ -5938,7 +5954,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|insertFullReferenceAtCursor (XTextCursor cursor, Map<BibtexEntry, BibtexDatabase> entries, OOBibStyle style, String parFormat)
-specifier|public
+specifier|private
 name|void
 name|insertFullReferenceAtCursor
 parameter_list|(
@@ -6276,7 +6292,7 @@ expr_stmt|;
 block|}
 comment|/**      * This method creates and inserts an XTextSection named as determined by the      * string BIB_SECTION_NAME.      * @param end true to indicate that the section should be put at the end of the document,      *  false to indicate that it should be put at the cursor position.      * @return true if the bibliography already existed, false otherwise..      * @throws Exception      */
 DECL|method|createBibTextSection (boolean end)
-specifier|public
+specifier|private
 name|boolean
 name|createBibTextSection
 parameter_list|(
@@ -6373,7 +6389,7 @@ literal|false
 return|;
 block|}
 DECL|method|createBibTextSection2 (boolean end)
-specifier|public
+specifier|private
 name|void
 name|createBibTextSection2
 parameter_list|(
@@ -6471,7 +6487,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|clearBibTextSectionContent2 ()
-specifier|public
+specifier|private
 name|void
 name|clearBibTextSectionContent2
 parameter_list|()
@@ -6750,7 +6766,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|populateBibTextSection (Map<BibtexEntry, BibtexDatabase> entries, OOBibStyle style)
-specifier|public
+specifier|private
 name|void
 name|populateBibTextSection
 parameter_list|(
@@ -6882,7 +6898,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|insertBookMark (String name, XTextCursor position)
-specifier|public
+specifier|private
 name|XTextContent
 name|insertBookMark
 parameter_list|(
@@ -6965,7 +6981,7 @@ name|xTextContent
 return|;
 block|}
 DECL|method|insertReferenceMark (String name, String citText, XTextCursor position, boolean withText, OOBibStyle style)
-specifier|public
+specifier|private
 name|void
 name|insertReferenceMark
 parameter_list|(
@@ -7400,7 +7416,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|insertFootnote (String name, String citText, XTextCursor position)
-specifier|public
+specifier|private
 name|void
 name|insertFootnote
 parameter_list|(
@@ -7549,7 +7565,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|removeBookMark (String name)
-specifier|public
+specifier|private
 name|void
 name|removeBookMark
 parameter_list|(
@@ -7623,7 +7639,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|removeReferenceMark (String name)
-specifier|public
+specifier|private
 name|void
 name|removeReferenceMark
 parameter_list|(
@@ -7698,7 +7714,7 @@ block|}
 block|}
 comment|/**      * Get the XTextRange corresponding to the named bookmark.      * @param name The name of the bookmark to find.      * @return The XTextRange for the bookmark.      * @throws Exception      */
 DECL|method|getBookmarkRange (String name)
-specifier|public
+specifier|private
 name|XTextRange
 name|getBookmarkRange
 parameter_list|(

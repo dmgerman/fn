@@ -61,6 +61,7 @@ implements|implements
 name|FilenameFilter
 block|{
 DECL|field|extSet
+specifier|private
 specifier|final
 name|HashSet
 argument_list|<
@@ -76,6 +77,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|desc
+specifier|private
 specifier|final
 name|String
 name|desc

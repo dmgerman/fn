@@ -236,6 +236,7 @@ init|=
 literal|"http://manas.tungare.name/software/isbn-to-bibtex/isbn-service?isbn=%s"
 decl_stmt|;
 DECL|field|caseKeeper
+specifier|private
 specifier|final
 name|CaseKeeper
 name|caseKeeper
@@ -245,6 +246,7 @@ name|CaseKeeper
 argument_list|()
 decl_stmt|;
 DECL|field|unitFormatter
+specifier|private
 specifier|final
 name|UnitFormatter
 name|unitFormatter

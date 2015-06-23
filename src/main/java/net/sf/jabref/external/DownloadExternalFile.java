@@ -1244,7 +1244,7 @@ return|;
 block|}
 comment|/**      * This is called by the download thread when download is completed.      */
 DECL|method|downloadFinished ()
-specifier|public
+specifier|private
 name|void
 name|downloadFinished
 parameter_list|()
@@ -1298,7 +1298,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getSuggestedFileName (String suffix)
-specifier|public
+specifier|private
 name|String
 name|getSuggestedFileName
 parameter_list|(
@@ -1374,7 +1374,7 @@ return|;
 block|}
 comment|/**      * Look for the last '.' in the link, and returnthe following characters.      * This gives the extension for most reasonably named links.      *      * @param link The link      * @return The suffix, excluding the dot (e.g. "pdf")      */
 DECL|method|getSuffix (final String link)
-specifier|public
+specifier|private
 name|String
 name|getSuffix
 parameter_list|(
@@ -1645,7 +1645,7 @@ block|}
 block|}
 block|}
 DECL|method|getFileDirectory (String link)
-specifier|public
+specifier|private
 name|String
 index|[]
 name|getFileDirectory

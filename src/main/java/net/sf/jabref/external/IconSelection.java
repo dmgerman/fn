@@ -254,17 +254,18 @@ end_comment
 
 begin_class
 DECL|class|IconSelection
-specifier|public
 class|class
 name|IconSelection
 extends|extends
 name|JDialog
 block|{
 DECL|field|icons
+specifier|private
 name|JList
 name|icons
 decl_stmt|;
 DECL|field|iconKeys
+specifier|private
 name|List
 argument_list|<
 name|String
@@ -272,10 +273,12 @@ argument_list|>
 name|iconKeys
 decl_stmt|;
 DECL|field|listModel
+specifier|private
 name|DefaultListModel
 name|listModel
 decl_stmt|;
 DECL|field|ok
+specifier|private
 specifier|final
 name|JButton
 name|ok
@@ -292,6 +295,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|cancel
+specifier|private
 specifier|final
 name|JButton
 name|cancel

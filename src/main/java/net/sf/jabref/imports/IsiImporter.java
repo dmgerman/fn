@@ -167,6 +167,7 @@ block|}
 comment|// 2006.09.05: Modified pattern to avoid false positives for other files due to an
 comment|// extra | at the end:
 DECL|field|isiPattern
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -266,6 +267,7 @@ literal|false
 return|;
 block|}
 DECL|field|subsupPattern
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -469,8 +471,8 @@ block|}
 block|}
 block|}
 DECL|method|processCapitalization (HashMap<String, String> map)
+specifier|private
 specifier|static
-specifier|public
 name|void
 name|processCapitalization
 parameter_list|(
@@ -1858,7 +1860,7 @@ name|bibitems
 return|;
 block|}
 DECL|method|parsePages (String value)
-specifier|public
+specifier|private
 specifier|static
 name|String
 name|parsePages
@@ -2252,7 +2254,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|isiAuthorsConvert (String[] authors)
-specifier|public
+specifier|private
 specifier|static
 name|String
 index|[]

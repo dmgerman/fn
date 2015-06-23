@@ -145,7 +145,7 @@ init|=
 literal|"importFileNamePattern"
 decl_stmt|;
 DECL|field|DEFAULT_FILENAMEPATTERNS_DISPLAY
-specifier|public
+specifier|private
 specifier|final
 specifier|static
 name|String

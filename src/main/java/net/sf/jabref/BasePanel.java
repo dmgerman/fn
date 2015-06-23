@@ -1300,9 +1300,6 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|SHOWING_NOTHING
-DECL|field|SHOWING_PREVIEW
-DECL|field|SHOWING_EDITOR
-DECL|field|WILL_SHOW_EDITOR
 specifier|public
 specifier|final
 specifier|static
@@ -1310,15 +1307,30 @@ name|int
 name|SHOWING_NOTHING
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
+DECL|field|SHOWING_PREVIEW
+specifier|private
+specifier|final
+specifier|static
+name|int
 name|SHOWING_PREVIEW
 init|=
 literal|1
-decl_stmt|,
+decl_stmt|;
+DECL|field|SHOWING_EDITOR
+specifier|public
+specifier|final
+specifier|static
+name|int
 name|SHOWING_EDITOR
 init|=
 literal|2
-decl_stmt|,
+decl_stmt|;
+DECL|field|WILL_SHOW_EDITOR
+specifier|public
+specifier|final
+specifier|static
+name|int
 name|WILL_SHOW_EDITOR
 init|=
 literal|3
@@ -1379,6 +1391,7 @@ name|UIFSplitPane
 argument_list|()
 decl_stmt|;
 DECL|field|splitPane
+specifier|private
 name|JSplitPane
 name|splitPane
 decl_stmt|;
@@ -1387,18 +1400,22 @@ name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|fileMonitorHandle
+specifier|private
 name|String
 name|fileMonitorHandle
 init|=
 literal|null
 decl_stmt|;
 DECL|field|saving
-DECL|field|updatedExternally
+specifier|private
 name|boolean
 name|saving
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
+DECL|field|updatedExternally
+specifier|private
+name|boolean
 name|updatedExternally
 init|=
 literal|false
@@ -1427,6 +1444,7 @@ decl_stmt|;
 comment|// Hashtable indexing the only search auto completer
 comment|// required for the SearchAutoCompleterUpdater
 DECL|field|searchAutoCompleterHM
+specifier|private
 specifier|final
 name|HashMap
 argument_list|<
@@ -1446,6 +1464,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|autoCompleters
+specifier|private
 specifier|final
 name|HashMap
 argument_list|<
@@ -1467,12 +1486,14 @@ decl_stmt|;
 comment|// Hashtable that holds as keys the names of the fields where
 comment|// autocomplete is active, and references to the autocompleter objects.
 DECL|field|searchCompleter
+specifier|private
 name|NameFieldAutoCompleter
 name|searchCompleter
 init|=
 literal|null
 decl_stmt|;
 DECL|field|searchCompleteListener
+specifier|private
 name|AutoCompleteListener
 name|searchCompleteListener
 init|=
@@ -1492,6 +1513,7 @@ name|this
 argument_list|)
 decl_stmt|;
 DECL|field|undoAction
+specifier|private
 specifier|final
 name|UndoAction
 name|undoAction
@@ -1501,6 +1523,7 @@ name|UndoAction
 argument_list|()
 decl_stmt|;
 DECL|field|redoAction
+specifier|private
 specifier|final
 name|RedoAction
 name|redoAction
@@ -1575,8 +1598,7 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|searchFilterList
-DECL|field|groupFilterList
-specifier|public
+specifier|private
 name|FilterList
 argument_list|<
 name|BibtexEntry
@@ -1584,7 +1606,13 @@ argument_list|>
 name|searchFilterList
 init|=
 literal|null
-decl_stmt|,
+decl_stmt|;
+DECL|field|groupFilterList
+specifier|private
+name|FilterList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|groupFilterList
 init|=
 literal|null
@@ -1595,6 +1623,7 @@ name|RightClickMenu
 name|rcm
 decl_stmt|;
 DECL|field|showing
+specifier|private
 name|BibtexEntry
 name|showing
 init|=
@@ -1636,6 +1665,7 @@ comment|//HashMap entryTypeForms = new HashMap();
 comment|// Hashmap to keep track of which entries currently have open
 comment|// EntryTypeForm dialogs.
 DECL|field|preambleEditor
+specifier|private
 name|PreambleEditor
 name|preambleEditor
 init|=
@@ -1643,6 +1673,7 @@ literal|null
 decl_stmt|;
 comment|// Keeps track of the preamble dialog if it is open.
 DECL|field|stringDialog
+specifier|private
 name|StringDialog
 name|stringDialog
 init|=
@@ -1650,53 +1681,69 @@ literal|null
 decl_stmt|;
 comment|// Keeps track of the string dialog if it is open.
 DECL|field|saveAction
+specifier|private
 name|SaveDatabaseAction
 name|saveAction
 decl_stmt|;
 DECL|field|cleanUpAction
+specifier|private
 name|CleanUpAction
 name|cleanUpAction
 decl_stmt|;
 comment|/**      * The group selector component for this database. Instantiated by the      * SidePaneManager if necessary, or from this class if merging groups from a      * different database.      */
 comment|//GroupSelector groupSelector;
-specifier|public
+specifier|private
 name|boolean
 DECL|field|showingSearch
 name|showingSearch
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
 DECL|field|showingGroup
+specifier|private
+name|boolean
 name|showingGroup
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
 DECL|field|sortingBySearchResults
+specifier|public
+name|boolean
 name|sortingBySearchResults
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
 DECL|field|coloringBySearchResults
+specifier|public
+name|boolean
 name|coloringBySearchResults
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
 DECL|field|hidingNonHits
+specifier|public
+name|boolean
 name|hidingNonHits
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
 DECL|field|sortingByGroup
+specifier|public
+name|boolean
 name|sortingByGroup
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
 DECL|field|sortingByCiteSeerResults
+specifier|public
+name|boolean
 name|sortingByCiteSeerResults
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
 DECL|field|coloringByGroup
+specifier|public
+name|boolean
 name|coloringByGroup
 init|=
 literal|false
@@ -1742,7 +1789,7 @@ name|sidePaneManager
 decl_stmt|;
 comment|/**      * Create a new BasePanel with an empty database.      * @param frame The application window.      */
 DECL|method|BasePanel (JabRefFrame frame)
-specifier|public
+specifier|private
 name|BasePanel
 parameter_list|(
 name|JabRefFrame
@@ -10449,7 +10496,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|createMainTable ()
-specifier|public
+specifier|private
 name|void
 name|createMainTable
 parameter_list|()
@@ -11359,7 +11406,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getAutoCompleters ()
-specifier|public
+specifier|private
 name|HashMap
 argument_list|<
 name|String
@@ -11911,7 +11958,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|isShowingEditor ()
-specifier|public
+specifier|private
 name|boolean
 name|isShowingEditor
 parameter_list|()
@@ -12944,7 +12991,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|markChangedOrUnChanged ()
-specifier|public
+specifier|private
 specifier|synchronized
 name|void
 name|markChangedOrUnChanged
@@ -13270,7 +13317,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|changeType (BibtexEntry[] bes, BibtexEntryType type)
-specifier|public
+specifier|private
 name|void
 name|changeType
 parameter_list|(
@@ -14142,7 +14189,7 @@ name|contents
 parameter_list|)
 block|{     }
 DECL|method|setEntryEditorEnabled (boolean enabled)
-specifier|public
+specifier|private
 name|void
 name|setEntryEditorEnabled
 parameter_list|(
@@ -14798,7 +14845,7 @@ name|saving
 return|;
 block|}
 DECL|method|getShowing ()
-specifier|public
+specifier|private
 name|BibtexEntry
 name|getShowing
 parameter_list|()

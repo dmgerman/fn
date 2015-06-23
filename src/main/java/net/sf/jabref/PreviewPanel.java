@@ -264,39 +264,46 @@ name|BibtexEntry
 name|entry
 decl_stmt|;
 DECL|field|metaData
+specifier|private
 name|MetaData
 name|metaData
 decl_stmt|;
 comment|/**      * If a database is set, the preview will attempt to resolve strings in the      * previewed entry using that database.      */
 DECL|field|database
+specifier|private
 name|BibtexDatabase
 name|database
 decl_stmt|;
 DECL|field|layout
+specifier|private
 name|Layout
 name|layout
 decl_stmt|;
 DECL|field|layoutFile
+specifier|private
 name|String
 name|layoutFile
 decl_stmt|;
 DECL|field|previewPane
-specifier|public
+specifier|private
 specifier|final
 name|JEditorPane
 name|previewPane
 decl_stmt|;
 DECL|field|scrollPane
+specifier|private
 specifier|final
 name|JScrollPane
 name|scrollPane
 decl_stmt|;
 DECL|field|pdfPreviewPanel
+specifier|private
 specifier|final
 name|PdfPreviewPanel
 name|pdfPreviewPanel
 decl_stmt|;
 DECL|field|panel
+specifier|private
 specifier|final
 name|BasePanel
 name|panel
@@ -828,11 +835,12 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|printAction
+specifier|private
 name|Action
 name|printAction
 decl_stmt|;
 DECL|method|getPrintAction ()
-specifier|public
+specifier|private
 name|Action
 name|getPrintAction
 parameter_list|()
@@ -917,6 +925,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|closeAction
+specifier|private
 name|Action
 name|closeAction
 decl_stmt|;
@@ -931,7 +940,7 @@ init|=
 literal|null
 decl_stmt|;
 DECL|method|getCloseAction ()
-specifier|public
+specifier|private
 name|Action
 name|getCloseAction
 parameter_list|()
@@ -955,6 +964,7 @@ name|closeAction
 return|;
 block|}
 DECL|method|createPopupMenu ()
+specifier|private
 name|JPopupMenu
 name|createPopupMenu
 parameter_list|()
@@ -998,6 +1008,7 @@ name|menu
 return|;
 block|}
 DECL|method|createToolBar ()
+specifier|private
 name|JToolBar
 name|createToolBar
 parameter_list|()
@@ -1180,6 +1191,7 @@ name|tlb
 return|;
 block|}
 DECL|method|createPreviewPane ()
+specifier|private
 name|JEditorPane
 name|createPreviewPane
 parameter_list|()
@@ -1384,7 +1396,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|readLayout ()
-specifier|public
+specifier|private
 name|void
 name|readLayout
 parameter_list|()

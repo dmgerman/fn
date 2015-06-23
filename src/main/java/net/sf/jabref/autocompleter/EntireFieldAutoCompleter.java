@@ -41,14 +41,13 @@ extends|extends
 name|AbstractAutoCompleter
 block|{
 DECL|field|_fieldName
-specifier|public
+specifier|private
 specifier|final
 name|String
 name|_fieldName
 decl_stmt|;
 comment|/**      * @see AutoCompleterFactory      */
 DECL|method|EntireFieldAutoCompleter (String fieldName)
-specifier|protected
 name|EntireFieldAutoCompleter
 parameter_list|(
 name|String

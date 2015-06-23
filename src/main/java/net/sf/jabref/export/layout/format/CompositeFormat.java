@@ -49,6 +49,7 @@ implements|implements
 name|LayoutFormatter
 block|{
 DECL|field|formatters
+specifier|private
 name|LayoutFormatter
 index|[]
 name|formatters

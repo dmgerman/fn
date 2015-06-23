@@ -46,7 +46,6 @@ end_comment
 
 begin_class
 DECL|class|UndoableMoveGroup
-specifier|public
 class|class
 name|UndoableMoveGroup
 extends|extends

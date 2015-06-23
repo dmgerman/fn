@@ -140,16 +140,17 @@ end_comment
 
 begin_class
 DECL|class|ResolveDuplicateLabelDialog
-specifier|public
 class|class
 name|ResolveDuplicateLabelDialog
 block|{
 DECL|field|diag
+specifier|private
 specifier|final
 name|JDialog
 name|diag
 decl_stmt|;
 DECL|field|ok
+specifier|private
 specifier|final
 name|JButton
 name|ok
@@ -166,6 +167,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|cancel
+specifier|private
 specifier|final
 name|JButton
 name|cancel
@@ -182,6 +184,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|cbs
+specifier|private
 specifier|final
 name|List
 argument_list|<
@@ -204,6 +207,7 @@ init|=
 literal|false
 decl_stmt|;
 DECL|field|layout
+specifier|private
 specifier|final
 specifier|static
 name|String

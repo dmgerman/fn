@@ -375,13 +375,13 @@ extends|extends
 name|TransferHandler
 block|{
 DECL|field|entryTable
-specifier|protected
+specifier|private
 specifier|final
 name|MainTable
 name|entryTable
 decl_stmt|;
 DECL|field|frame
-specifier|protected
+specifier|private
 specifier|final
 name|JabRefFrame
 name|frame
@@ -393,18 +393,18 @@ name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|urlFlavor
-specifier|protected
+specifier|private
 name|DataFlavor
 name|urlFlavor
 decl_stmt|;
 DECL|field|stringFlavor
-specifier|protected
+specifier|private
 specifier|final
 name|DataFlavor
 name|stringFlavor
 decl_stmt|;
 DECL|field|DROP_ALLOWED
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|boolean
@@ -881,6 +881,7 @@ literal|false
 return|;
 block|}
 DECL|field|draggingFile
+specifier|private
 name|boolean
 name|draggingFile
 init|=
@@ -1066,7 +1067,7 @@ expr_stmt|;
 block|}
 comment|// add-ons -----------------------
 DECL|method|handleDropTransfer (String dropStr, final int dropRow)
-specifier|protected
+specifier|private
 name|boolean
 name|handleDropTransfer
 parameter_list|(
@@ -1923,7 +1924,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|handleDropTransfer (URL dropLink, int dropRow)
-specifier|protected
+specifier|private
 name|boolean
 name|handleDropTransfer
 parameter_list|(

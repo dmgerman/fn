@@ -163,7 +163,7 @@ extends|extends
 name|DefaultTreeCellRenderer
 block|{
 DECL|field|MAX_DISPLAYED_LETTERS
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -173,14 +173,14 @@ literal|35
 decl_stmt|;
 comment|/** The cell over which the user is currently dragging */
 DECL|field|highlight1Cell
-specifier|protected
+specifier|private
 name|Object
 name|highlight1Cell
 init|=
 literal|null
 decl_stmt|;
 DECL|field|highlight2Cells
-specifier|protected
+specifier|private
 name|Object
 index|[]
 name|highlight2Cells
@@ -188,7 +188,7 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|highlight3Cells
-specifier|protected
+specifier|private
 name|Object
 index|[]
 name|highlight3Cells
@@ -196,13 +196,13 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|highlightBorderCell
-specifier|protected
+specifier|private
 name|Object
 name|highlightBorderCell
 init|=
 literal|null
 decl_stmt|;
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|ImageIcon
@@ -217,7 +217,7 @@ literal|"groupRefining"
 argument_list|)
 decl_stmt|;
 DECL|field|groupIncludingIcon
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|ImageIcon
@@ -231,7 +231,7 @@ literal|"groupIncluding"
 argument_list|)
 decl_stmt|;
 DECL|field|groupRegularIcon
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|ImageIcon

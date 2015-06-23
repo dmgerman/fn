@@ -73,6 +73,7 @@ implements|implements
 name|LayoutFormatter
 block|{
 DECL|field|beforeNewLines
+specifier|private
 specifier|static
 name|Pattern
 name|beforeNewLines

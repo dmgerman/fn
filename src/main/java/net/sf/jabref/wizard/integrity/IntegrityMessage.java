@@ -266,7 +266,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|getMessage ()
-specifier|public
+specifier|private
 name|String
 name|getMessage
 parameter_list|()

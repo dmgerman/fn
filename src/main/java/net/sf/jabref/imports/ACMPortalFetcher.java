@@ -187,6 +187,7 @@ name|HTMLConverter
 argument_list|()
 decl_stmt|;
 DECL|field|caseKeeper
+specifier|private
 specifier|final
 name|CaseKeeper
 name|caseKeeper
@@ -196,6 +197,7 @@ name|CaseKeeper
 argument_list|()
 decl_stmt|;
 DECL|field|unitFormatter
+specifier|private
 specifier|final
 name|UnitFormatter
 name|unitFormatter
@@ -2349,7 +2351,7 @@ throw|;
 block|}
 comment|/**      * Download the URL and return contents as a String.      * @param source      * @return      * @throws IOException      */
 DECL|method|getResults (URL source)
-specifier|public
+specifier|private
 name|String
 name|getResults
 parameter_list|(

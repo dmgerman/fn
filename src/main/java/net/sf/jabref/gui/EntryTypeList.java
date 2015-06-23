@@ -169,7 +169,7 @@ implements|,
 name|ActionListener
 block|{
 DECL|field|def
-specifier|protected
+specifier|private
 specifier|final
 name|JButton
 name|def

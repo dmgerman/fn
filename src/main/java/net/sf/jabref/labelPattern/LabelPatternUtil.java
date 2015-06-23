@@ -4169,6 +4169,7 @@ return|;
 block|}
 block|}
 DECL|method|getTitleWords (int number, BibtexEntry _entry)
+specifier|private
 specifier|static
 name|String
 name|getTitleWords
@@ -4408,6 +4409,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|keepLettersAndDigitsOnly (String in)
+specifier|private
 specifier|static
 name|String
 name|keepLettersAndDigitsOnly
@@ -4632,7 +4634,7 @@ return|;
 block|}
 comment|/**      * Gets the first name initals of the first author/editor      *       * @param authorField      *            a<code>String</code>      * @return the first name initial of an author/editor or "" if no author was found      *    This method is guaranteed to never return null.      *       * @throws NullPointerException      *             if authorField == null      */
 DECL|method|firstAuthorForenameInitials (String authorField)
-specifier|public
+specifier|private
 specifier|static
 name|String
 name|firstAuthorForenameInitials
@@ -4887,7 +4889,7 @@ block|}
 block|}
 comment|/**      * Gets the forename initals of the last author/editor      *       * @param authorField      *            a<code>String</code>      * @return the forename initial of an author/editor or "" if no author was found      *    This method is guaranteed to never return null.      *       * @throws NullPointerException      *             if authorField == null      */
 DECL|method|lastAuthorForenameInitials (String authorField)
-specifier|public
+specifier|private
 specifier|static
 name|String
 name|lastAuthorForenameInitials
@@ -6461,7 +6463,7 @@ block|}
 block|}
 comment|/**      * Parse a field marker with modifiers, possibly containing a parenthesised modifier,      * as well as escaped colons and parentheses.      * @param arg The argument string.      * @return An array of strings representing the parts of the marker      */
 DECL|method|parseFieldMarker (String arg)
-specifier|public
+specifier|private
 specifier|static
 name|String
 index|[]

@@ -459,45 +459,73 @@ name|tableColumnListener
 decl_stmt|;
 comment|// Constants used to define how a cell should be rendered.
 DECL|field|REQUIRED
-DECL|field|OPTIONAL
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
 name|REQUIRED
 init|=
 literal|1
-decl_stmt|,
+decl_stmt|;
+DECL|field|OPTIONAL
+specifier|private
+specifier|static
+specifier|final
+name|int
 name|OPTIONAL
 init|=
 literal|2
-decl_stmt|,
+decl_stmt|;
 DECL|field|REQ_STRING
+specifier|public
+specifier|static
+specifier|final
+name|int
 name|REQ_STRING
 init|=
 literal|1
-decl_stmt|,
+decl_stmt|;
 DECL|field|REQ_NUMBER
+specifier|public
+specifier|static
+specifier|final
+name|int
 name|REQ_NUMBER
 init|=
 literal|2
-decl_stmt|,
+decl_stmt|;
 DECL|field|OPT_STRING
+specifier|public
+specifier|static
+specifier|final
+name|int
 name|OPT_STRING
 init|=
 literal|3
-decl_stmt|,
+decl_stmt|;
 DECL|field|OTHER
+specifier|private
+specifier|static
+specifier|final
+name|int
 name|OTHER
 init|=
 literal|3
-decl_stmt|,
+decl_stmt|;
 DECL|field|BOOLEAN
+specifier|private
+specifier|static
+specifier|final
+name|int
 name|BOOLEAN
 init|=
 literal|4
-decl_stmt|,
+decl_stmt|;
 DECL|field|ICON_COL
+specifier|public
+specifier|static
+specifier|final
+name|int
 name|ICON_COL
 init|=
 literal|8
@@ -1539,7 +1567,7 @@ name|renderer
 return|;
 block|}
 DECL|method|setWidths ()
-specifier|public
+specifier|private
 name|void
 name|setWidths
 parameter_list|()
@@ -1847,7 +1875,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|getCurrentSortOrder ()
-specifier|public
+specifier|private
 name|List
 argument_list|<
 name|Boolean
@@ -1905,7 +1933,7 @@ name|order
 return|;
 block|}
 DECL|method|getCurrentSortFields ()
-specifier|public
+specifier|private
 name|List
 argument_list|<
 name|String
@@ -2644,7 +2672,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getCellStatus (int row, int col)
-specifier|public
+specifier|private
 name|int
 name|getCellStatus
 parameter_list|(
@@ -3781,7 +3809,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|setNumber (int number)
-specifier|protected
 name|void
 name|setNumber
 parameter_list|(
@@ -3838,7 +3865,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|setNumber (int number)
-specifier|protected
 name|void
 name|setNumber
 parameter_list|(
@@ -3874,7 +3900,7 @@ parameter_list|)
 block|{          }
 block|}
 DECL|method|createTableComparatorChooser (JTable table, SortedList<BibtexEntry> list, Object sortingStrategy)
-specifier|public
+specifier|private
 name|TableComparatorChooser
 argument_list|<
 name|BibtexEntry

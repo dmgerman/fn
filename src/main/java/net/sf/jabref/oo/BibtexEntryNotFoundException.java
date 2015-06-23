@@ -22,7 +22,6 @@ end_comment
 
 begin_class
 DECL|class|BibtexEntryNotFoundException
-specifier|public
 class|class
 name|BibtexEntryNotFoundException
 extends|extends

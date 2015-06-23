@@ -328,7 +328,7 @@ return|;
 block|}
 comment|/** collect all "plain" data of a xml node */
 DECL|method|getSimpleElementText (Element node)
-specifier|public
+specifier|private
 name|String
 name|getSimpleElementText
 parameter_list|(

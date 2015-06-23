@@ -343,14 +343,23 @@ specifier|public
 specifier|static
 name|Font
 name|CURRENTFONT
-decl_stmt|,
+decl_stmt|;
 DECL|field|typeNameFont
+specifier|public
+specifier|static
+name|Font
 name|typeNameFont
-decl_stmt|,
+decl_stmt|;
 DECL|field|jabRefFont
+specifier|public
+specifier|static
+name|Font
 name|jabRefFont
-decl_stmt|,
+decl_stmt|;
 DECL|field|fieldNameFont
+specifier|private
+specifier|static
+name|Font
 name|fieldNameFont
 decl_stmt|;
 comment|// Signature written at the top of the .bib file.
@@ -472,7 +481,7 @@ init|=
 literal|".bak"
 decl_stmt|;
 comment|// Image paths.
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -482,7 +491,7 @@ init|=
 literal|"24"
 decl_stmt|;
 DECL|field|extension
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -530,6 +539,7 @@ init|=
 literal|"/images/font/"
 decl_stmt|;
 DECL|field|tableIcons
+specifier|private
 specifier|static
 specifier|final
 name|HashMap
@@ -569,6 +579,7 @@ literal|255
 argument_list|)
 decl_stmt|;
 DECL|field|iconMap
+specifier|private
 specifier|static
 name|HashMap
 argument_list|<
@@ -1017,7 +1028,7 @@ init|=
 literal|"file"
 decl_stmt|;
 DECL|field|FOLDER_FIELD
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String

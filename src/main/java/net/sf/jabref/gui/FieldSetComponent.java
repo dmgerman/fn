@@ -325,7 +325,7 @@ implements|implements
 name|ActionListener
 block|{
 DECL|field|additionListeners
-specifier|protected
+specifier|private
 specifier|final
 name|Set
 argument_list|<
@@ -341,68 +341,64 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|list
-specifier|protected
 specifier|final
 name|JList
 name|list
 decl_stmt|;
 DECL|field|sp
-specifier|protected
+specifier|private
 name|JScrollPane
 name|sp
 init|=
 literal|null
 decl_stmt|;
 DECL|field|listModel
-specifier|protected
 name|DefaultListModel
 name|listModel
 decl_stmt|;
 DECL|field|sel
-specifier|protected
+specifier|private
 name|JComboBox
 name|sel
 decl_stmt|;
 DECL|field|input
-specifier|protected
+specifier|private
 name|JTextField
 name|input
 decl_stmt|;
 DECL|field|title
-specifier|protected
+specifier|private
 name|JLabel
 name|title
 init|=
 literal|null
 decl_stmt|;
 DECL|field|add
-specifier|protected
+specifier|private
 specifier|final
 name|JButton
 name|add
 decl_stmt|;
 DECL|field|remove
-specifier|protected
 specifier|final
 name|JButton
 name|remove
 decl_stmt|;
 DECL|field|up
-specifier|protected
+specifier|private
 name|JButton
 name|up
 init|=
 literal|null
 decl_stmt|;
 DECL|field|down
-specifier|protected
+specifier|private
 name|JButton
 name|down
 init|=
 literal|null
 decl_stmt|;
 DECL|field|gbl
-specifier|protected
 specifier|final
 name|GridBagLayout
 name|gbl
@@ -412,7 +408,6 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|con
-specifier|protected
 specifier|final
 name|GridBagConstraints
 name|con
@@ -422,20 +417,18 @@ name|GridBagConstraints
 argument_list|()
 decl_stmt|;
 DECL|field|forceLowerCase
-specifier|protected
 specifier|final
 name|boolean
 name|forceLowerCase
 decl_stmt|;
 DECL|field|changesMade
-specifier|protected
 name|boolean
 name|changesMade
 init|=
 literal|false
 decl_stmt|;
 DECL|field|modelListeners
-specifier|protected
+specifier|private
 specifier|final
 name|Set
 argument_list|<
@@ -497,7 +490,6 @@ expr_stmt|;
 block|}
 comment|/**      * Creates a new instance of FieldSetComponent without preset selection      * values. Replaces the JComboBox with a JTextField.      */
 DECL|method|FieldSetComponent (String title, List<String> fields, boolean arrows, boolean forceLowerCase)
-specifier|public
 name|FieldSetComponent
 parameter_list|(
 name|String
@@ -535,7 +527,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|FieldSetComponent (String title, List<String> fields, List<String> preset, String addText, String removeText, boolean arrows, boolean forceLowerCase)
-specifier|public
+specifier|private
 name|FieldSetComponent
 parameter_list|(
 name|String
@@ -1350,7 +1342,6 @@ expr_stmt|;
 block|}
 comment|/**      * This method is called when a new field should be added to the list. Performs validation of the       * field.      */
 DECL|method|addField (String s)
-specifier|protected
 name|void
 name|addField
 parameter_list|(
@@ -1469,7 +1460,6 @@ expr_stmt|;
 block|}
 comment|/**      * This method adds a new field to the list, without any regard to validation. This method can be      * useful for classes that overrides addField(s) to provide different validation.      */
 DECL|method|addFieldUncritically (String s)
-specifier|protected
 name|void
 name|addFieldUncritically
 parameter_list|(
@@ -1514,7 +1504,6 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|removeSelected ()
-specifier|protected
 name|void
 name|removeSelected
 parameter_list|()
@@ -1741,7 +1730,7 @@ expr_stmt|;
 block|}
 comment|/**      * If a field is selected in the list, move it dy positions.      */
 DECL|method|move (int dy)
-specifier|public
+specifier|private
 name|void
 name|move
 parameter_list|(

@@ -60,10 +60,13 @@ extends|extends
 name|DefaultTableCellRenderer
 block|{
 DECL|field|background
-DECL|field|selBackground
+specifier|private
 name|Color
 name|background
-decl_stmt|,
+decl_stmt|;
+DECL|field|selBackground
+specifier|private
+name|Color
 name|selBackground
 init|=
 literal|null

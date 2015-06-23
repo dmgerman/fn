@@ -139,6 +139,7 @@ extends|extends
 name|Handler
 block|{
 DECL|field|errByteStream
+specifier|private
 specifier|final
 name|ByteArrayOutputStream
 name|errByteStream
@@ -148,6 +149,7 @@ name|ByteArrayOutputStream
 argument_list|()
 decl_stmt|;
 DECL|field|outByteStream
+specifier|private
 specifier|final
 name|ByteArrayOutputStream
 name|outByteStream
@@ -157,6 +159,7 @@ name|ByteArrayOutputStream
 argument_list|()
 decl_stmt|;
 DECL|field|logOutput
+specifier|private
 specifier|final
 name|ArrayList
 argument_list|<
@@ -172,18 +175,21 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|logOutputCache
+specifier|private
 name|String
 name|logOutputCache
 init|=
 literal|""
 decl_stmt|;
 DECL|field|logOutputCacheRefreshNeeded
+specifier|private
 name|boolean
 name|logOutputCacheRefreshNeeded
 init|=
 literal|true
 decl_stmt|;
 DECL|field|fmt
+specifier|private
 specifier|final
 name|SimpleFormatter
 name|fmt
@@ -458,7 +464,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|displayErrorConsole (JFrame parent)
-specifier|public
+specifier|private
 name|void
 name|displayErrorConsole
 parameter_list|(

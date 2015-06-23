@@ -235,7 +235,7 @@ name|newRule
 expr_stmt|;
 block|}
 DECL|method|applyDefaultRule (BibtexEntry newEntry)
-specifier|public
+specifier|private
 name|String
 name|applyDefaultRule
 parameter_list|(
@@ -279,7 +279,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|field|defaultRule
-specifier|protected
+specifier|private
 name|LabelRule
 name|defaultRule
 init|=
@@ -288,7 +288,7 @@ name|ArticleLabelRule
 argument_list|()
 decl_stmt|;
 DECL|field|ruleTable
-specifier|protected
+specifier|private
 specifier|final
 name|Hashtable
 argument_list|<

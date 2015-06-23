@@ -155,7 +155,7 @@ implements|,
 name|ActionListener
 block|{
 DECL|field|frame
-specifier|protected
+specifier|private
 specifier|final
 name|JabRefFrame
 name|frame
@@ -179,46 +179,62 @@ name|GridBagConstraints
 argument_list|()
 decl_stmt|;
 DECL|field|reqComp
-DECL|field|optComp
-DECL|field|optComp2
-specifier|protected
+specifier|private
 name|FieldSetComponent
 name|reqComp
-decl_stmt|,
+decl_stmt|;
+DECL|field|optComp
+specifier|private
+name|FieldSetComponent
 name|optComp
-decl_stmt|,
+decl_stmt|;
+DECL|field|optComp2
+specifier|private
+name|FieldSetComponent
 name|optComp2
 decl_stmt|;
 DECL|field|typeComp
-specifier|protected
+specifier|private
 name|EntryTypeList
 name|typeComp
 decl_stmt|;
 DECL|field|ok
+specifier|private
+name|JButton
+name|ok
+decl_stmt|;
 DECL|field|cancel
+specifier|private
+name|JButton
+name|cancel
+decl_stmt|;
 DECL|field|apply
+specifier|private
+name|JButton
+name|apply
+decl_stmt|;
 DECL|field|helpButton
+specifier|protected
+name|JButton
+name|helpButton
+decl_stmt|;
 DECL|field|delete
+specifier|protected
+name|JButton
+name|delete
+decl_stmt|;
 DECL|field|importTypes
+specifier|protected
+name|JButton
+name|importTypes
+decl_stmt|;
 DECL|field|exportTypes
 specifier|protected
 name|JButton
-name|ok
-decl_stmt|,
-name|cancel
-decl_stmt|,
-name|apply
-decl_stmt|,
-name|helpButton
-decl_stmt|,
-name|delete
-decl_stmt|,
-name|importTypes
-decl_stmt|,
 name|exportTypes
 decl_stmt|;
 DECL|field|preset
-specifier|protected
+specifier|private
 specifier|final
 name|List
 argument_list|<
@@ -241,14 +257,14 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|lastSelected
-specifier|protected
+specifier|private
 name|String
 name|lastSelected
 init|=
 literal|null
 decl_stmt|;
 DECL|field|reqLists
-specifier|protected
+specifier|private
 specifier|final
 name|Map
 argument_list|<
@@ -274,7 +290,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|optLists
-specifier|protected
+specifier|private
 specifier|final
 name|Map
 argument_list|<
@@ -300,7 +316,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|opt2Lists
-specifier|protected
+specifier|private
 specifier|final
 name|Map
 argument_list|<
@@ -326,7 +342,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|defaulted
-specifier|protected
+specifier|private
 specifier|final
 name|Set
 argument_list|<
@@ -342,7 +358,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|changed
-specifier|protected
+specifier|private
 specifier|final
 name|Set
 argument_list|<
@@ -358,6 +374,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|biblatexMode
+specifier|private
 name|boolean
 name|biblatexMode
 decl_stmt|;
@@ -395,8 +412,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|initGui ()
-specifier|protected
-specifier|final
+specifier|private
 name|void
 name|initGui
 parameter_list|()
@@ -1535,7 +1551,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|applyChanges ()
-specifier|protected
+specifier|private
 name|void
 name|applyChanges
 parameter_list|()
@@ -2019,7 +2035,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|typeDeletion (String name)
-specifier|protected
+specifier|private
 name|void
 name|typeDeletion
 parameter_list|(
@@ -2171,7 +2187,7 @@ comment|//messageLabel.setText("'"+type.getName()+"' "+
 comment|//        Globals.lang("is a standard type."));
 block|}
 DECL|method|equalArrays (String[] one, String[] two)
-specifier|protected
+specifier|private
 name|boolean
 name|equalArrays
 parameter_list|(
@@ -2518,6 +2534,7 @@ block|}
 comment|// DEFAULT button pressed. Remember that this entry should be reset to default,
 comment|// unless changes are made later.
 DECL|class|DefaultListener
+specifier|private
 class|class
 name|DefaultListener
 implements|implements

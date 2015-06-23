@@ -158,7 +158,6 @@ end_comment
 
 begin_class
 DECL|class|SimpleUrlDragDrop
-specifier|public
 class|class
 name|SimpleUrlDragDrop
 implements|implements

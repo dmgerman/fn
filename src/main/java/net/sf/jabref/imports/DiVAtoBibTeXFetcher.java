@@ -181,6 +181,7 @@ init|=
 literal|"http://www.diva-portal.org/smash/record.jsf?pid=%s"
 decl_stmt|;
 DECL|field|caseKeeper
+specifier|private
 specifier|final
 name|CaseKeeper
 name|caseKeeper
@@ -190,6 +191,7 @@ name|CaseKeeper
 argument_list|()
 decl_stmt|;
 DECL|field|unitFormatter
+specifier|private
 specifier|final
 name|UnitFormatter
 name|unitFormatter
@@ -199,6 +201,7 @@ name|UnitFormatter
 argument_list|()
 decl_stmt|;
 DECL|field|htmlConverter
+specifier|private
 specifier|final
 name|HTMLConverter
 name|htmlConverter

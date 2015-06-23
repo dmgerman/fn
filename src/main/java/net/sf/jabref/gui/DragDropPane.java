@@ -180,7 +180,6 @@ end_comment
 
 begin_class
 DECL|class|DragDropPane
-specifier|public
 class|class
 name|DragDropPane
 extends|extends
@@ -201,13 +200,13 @@ name|indexDraggedTab
 decl_stmt|;
 comment|// The index of the tab we drag at the moment
 DECL|field|markerPane
+specifier|private
 specifier|final
 name|MarkerPane
 name|markerPane
 decl_stmt|;
 comment|// The glass panel for painting the position marker
 DECL|method|DragDropPane ()
-specifier|public
 name|DragDropPane
 parameter_list|()
 block|{

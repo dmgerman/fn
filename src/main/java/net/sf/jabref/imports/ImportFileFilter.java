@@ -44,7 +44,6 @@ end_comment
 
 begin_class
 DECL|class|ImportFileFilter
-specifier|public
 class|class
 name|ImportFileFilter
 extends|extends

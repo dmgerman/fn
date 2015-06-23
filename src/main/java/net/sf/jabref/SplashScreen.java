@@ -104,7 +104,6 @@ end_comment
 
 begin_class
 DECL|class|SplashScreen
-specifier|public
 class|class
 name|SplashScreen
 extends|extends
@@ -124,7 +123,7 @@ init|=
 literal|false
 decl_stmt|;
 DECL|method|SplashScreen (Frame owner)
-specifier|public
+specifier|private
 name|SplashScreen
 parameter_list|(
 name|Frame

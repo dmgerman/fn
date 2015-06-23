@@ -168,7 +168,6 @@ name|externalFileType
 decl_stmt|;
 comment|/**      * Constructor.<br>      * Forces subclasses to provide an {@link ExternalFileType} instance, which      * they build on.      *       * @param externalFileType      */
 DECL|method|EntryFromFileCreator (ExternalFileType externalFileType)
-specifier|public
 name|EntryFromFileCreator
 parameter_list|(
 name|ExternalFileType
@@ -444,7 +443,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|addFileInfo (BibtexEntry entry, File file)
-specifier|protected
+specifier|private
 name|void
 name|addFileInfo
 parameter_list|(
@@ -555,7 +554,6 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|appendToField (BibtexEntry entry, String field, String value)
-specifier|protected
 name|void
 name|appendToField
 parameter_list|(
@@ -645,7 +643,6 @@ block|}
 block|}
 block|}
 DECL|method|addEntrysToEntry (BibtexEntry entry, List<BibtexEntry> entrys)
-specifier|protected
 name|void
 name|addEntrysToEntry
 parameter_list|(
@@ -685,7 +682,6 @@ block|}
 block|}
 block|}
 DECL|method|addEntryDataToEntry (BibtexEntry entry, BibtexEntry e)
-specifier|protected
 name|void
 name|addEntryDataToEntry
 parameter_list|(

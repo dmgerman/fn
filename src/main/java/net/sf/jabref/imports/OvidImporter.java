@@ -173,7 +173,7 @@ extends|extends
 name|ImportFormat
 block|{
 DECL|field|ovid_src_pat
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -187,7 +187,7 @@ literal|"Source ([ \\w&\\-,:]+)\\.[ ]+([0-9]+)\\(([\\w\\-]+)\\):([0-9]+\\-?[0-9]
 argument_list|)
 decl_stmt|;
 DECL|field|ovid_src_pat_no_issue
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -201,7 +201,7 @@ literal|"Source ([ \\w&\\-,:]+)\\.[ ]+([0-9]+):([0-9]+\\-?[0-9]+?)\\,.*([0-9][0-
 argument_list|)
 decl_stmt|;
 DECL|field|ovid_src_pat_2
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -215,7 +215,7 @@ literal|"([ \\w&\\-,]+)\\. Vol ([0-9]+)\\(([\\w\\-]+)\\) ([A-Za-z]+) ([0-9][0-9]
 argument_list|)
 decl_stmt|;
 DECL|field|incollection_pat
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -231,7 +231,7 @@ literal|"([\\w, ]+): ([\\w, ]+)"
 argument_list|)
 decl_stmt|;
 DECL|field|book_pat
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -273,6 +273,7 @@ literal|"ovid"
 return|;
 block|}
 DECL|field|ovidPattern
+specifier|private
 specifier|static
 specifier|final
 name|Pattern

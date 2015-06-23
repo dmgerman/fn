@@ -298,18 +298,19 @@ end_comment
 
 begin_class
 DECL|class|PrefsDialog3
-specifier|public
 class|class
 name|PrefsDialog3
 extends|extends
 name|JDialog
 block|{
 DECL|field|main
+specifier|private
 specifier|final
 name|JPanel
 name|main
 decl_stmt|;
 DECL|field|frame
+specifier|private
 specifier|final
 name|JabRefFrame
 name|frame

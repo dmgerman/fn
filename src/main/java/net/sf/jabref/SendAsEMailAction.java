@@ -152,6 +152,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|message
+specifier|private
 name|String
 name|message
 init|=

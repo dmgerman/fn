@@ -157,7 +157,7 @@ class|class
 name|ImportFormats
 block|{
 DECL|method|createImportFileChooser (String currentDir)
-specifier|public
+specifier|private
 specifier|static
 name|JFileChooser
 name|createImportFileChooser

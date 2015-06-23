@@ -149,12 +149,14 @@ name|boolean
 name|regExp
 decl_stmt|;
 DECL|field|pattern
+specifier|private
 name|Pattern
 index|[]
 name|pattern
 decl_stmt|;
 comment|//static RemoveBrackets removeLatexCommands = new RemoveBrackets();
 DECL|field|removeBrackets
+specifier|private
 specifier|static
 specifier|final
 name|RemoveLatexCommands

@@ -159,7 +159,7 @@ implements|implements
 name|EntryFetcher
 block|{
 DECL|field|CANCELLED
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -168,7 +168,7 @@ init|=
 literal|"__CANCELLED__"
 decl_stmt|;
 DECL|field|MAX_PAGES_TO_LOAD
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -187,7 +187,7 @@ operator|*
 literal|25
 decl_stmt|;
 DECL|field|REFS_PER_PAGE
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -197,7 +197,7 @@ literal|25
 decl_stmt|;
 comment|// This is the current default of JSTOR;
 DECL|field|JSTOR_URL
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -206,7 +206,7 @@ init|=
 literal|"http://www.jstor.org"
 decl_stmt|;
 DECL|field|SEARCH_URL
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -219,7 +219,7 @@ operator|+
 literal|"/action/doBasicSearch?Query="
 decl_stmt|;
 DECL|field|SEARCH_URL_END
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -228,7 +228,7 @@ init|=
 literal|"&x=0&y=0&wc=on"
 decl_stmt|;
 DECL|field|SINGLE_CIT_ENC
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -242,7 +242,7 @@ comment|// to be improved...
 comment|//"http%3A%2F%2Fwww.jstor.org%2Faction%2FexportSingleCitation%3FsingleCitation"
 comment|//+"%3Dtrue%26suffix%3D";
 DECL|field|idPattern
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -256,7 +256,7 @@ literal|"<a class=\"title\" href=\"/stable/(\\d+)\\?"
 argument_list|)
 decl_stmt|;
 DECL|field|numberofhits
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -270,7 +270,7 @@ literal|"<span id=\"NumberOfHits\" name=\"(\\d+)\""
 argument_list|)
 decl_stmt|;
 DECL|field|nextPagePattern
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -284,7 +284,7 @@ literal|"<a href=\"(.*)\">Next&nbsp;&raquo;"
 argument_list|)
 decl_stmt|;
 DECL|field|noAccessIndicator
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -293,14 +293,14 @@ init|=
 literal|"We do not recognize you as having access to JSTOR"
 decl_stmt|;
 DECL|field|stopFetching
-specifier|protected
+specifier|private
 name|boolean
 name|stopFetching
 init|=
 literal|false
 decl_stmt|;
 DECL|field|noAccessFound
-specifier|protected
+specifier|private
 name|boolean
 name|noAccessFound
 init|=
@@ -595,7 +595,7 @@ return|;
 block|}
 comment|/**      *      * @param query      *            The search term to query JStor for.      * @return a list of IDs      * @throws java.io.IOException      */
 DECL|method|getCitations (String query, ImportInspector dialog, OutputPrinter status)
-specifier|protected
+specifier|private
 name|List
 argument_list|<
 name|String
@@ -820,7 +820,7 @@ throw|;
 block|}
 block|}
 DECL|method|getCitationsFromUrl (String urlQuery, List<String> ids, int count, String[] numberOfRefs, ImportInspector dialog, OutputPrinter status)
-specifier|protected
+specifier|private
 name|String
 name|getCitationsFromUrl
 parameter_list|(
@@ -1255,7 +1255,7 @@ return|;
 block|}
 block|}
 DECL|method|getSingleCitation (String cit)
-specifier|protected
+specifier|private
 name|BibtexEntry
 name|getSingleCitation
 parameter_list|(

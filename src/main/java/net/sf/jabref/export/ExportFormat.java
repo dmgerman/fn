@@ -171,22 +171,27 @@ implements|implements
 name|IExportFormat
 block|{
 DECL|field|displayName
+specifier|private
 name|String
 name|displayName
 decl_stmt|;
 DECL|field|consoleName
+specifier|private
 name|String
 name|consoleName
 decl_stmt|;
 DECL|field|lfFileName
+specifier|private
 name|String
 name|lfFileName
 decl_stmt|;
 DECL|field|directory
+specifier|private
 name|String
 name|directory
 decl_stmt|;
 DECL|field|extension
+specifier|private
 name|String
 name|extension
 decl_stmt|;
@@ -199,10 +204,12 @@ decl_stmt|;
 comment|// If this value is set, it will be used to override
 comment|// the default encoding for the basePanel.
 DECL|field|fileFilter
+specifier|private
 name|FileFilter
 name|fileFilter
 decl_stmt|;
 DECL|field|customExport
+specifier|private
 name|boolean
 name|customExport
 init|=
@@ -262,7 +269,6 @@ expr_stmt|;
 block|}
 comment|/** Empty default constructor for subclasses */
 DECL|method|ExportFormat ()
-specifier|protected
 name|ExportFormat
 parameter_list|()
 block|{
@@ -313,7 +319,6 @@ return|;
 block|}
 comment|/**      * Set an encoding which will be used in preference to the default value      * obtained from the basepanel.      * @param encoding The name of the encoding to use.      */
 DECL|method|setEncoding (String encoding)
-specifier|protected
 name|void
 name|setEncoding
 parameter_list|(
@@ -330,7 +335,6 @@ expr_stmt|;
 block|}
 comment|/**      * This method should return a reader from which the given layout file can      * be read.      *       * This standard implementation of this method will use the      * {@link FileActions#getReader(String)} method.      *       * Subclasses of ExportFormat are free to override and provide their own      * implementation.      *       * @param filename      *            the file name      * @throws IOException      *             if the reader could not be created      *       * @return a newly created reader      */
 DECL|method|getReader (String filename)
-specifier|protected
 name|Reader
 name|getReader
 parameter_list|(
@@ -1326,7 +1330,6 @@ name|formatters
 return|;
 block|}
 DECL|method|getSaveSession (final String encoding, final File outFile)
-specifier|protected
 name|SaveSession
 name|getSaveSession
 parameter_list|(
@@ -1385,7 +1388,6 @@ name|fileFilter
 return|;
 block|}
 DECL|method|finalizeSaveSession (final SaveSession ss)
-specifier|public
 name|void
 name|finalizeSaveSession
 parameter_list|(

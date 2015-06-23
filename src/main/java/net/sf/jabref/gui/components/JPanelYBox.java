@@ -44,7 +44,6 @@ end_comment
 
 begin_class
 DECL|class|JPanelYBox
-specifier|public
 class|class
 name|JPanelYBox
 extends|extends
@@ -52,7 +51,6 @@ name|JPanel
 block|{
 comment|/** Create the panel and set BoxLayout.Y_AXIS */
 DECL|method|JPanelYBox ()
-specifier|public
 name|JPanelYBox
 parameter_list|()
 block|{

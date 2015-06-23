@@ -1009,6 +1009,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|Indents
+specifier|private
 specifier|static
 class|class
 name|Indents

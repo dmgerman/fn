@@ -130,7 +130,6 @@ end_import
 
 begin_class
 DECL|class|GroupChange
-specifier|public
 class|class
 name|GroupChange
 extends|extends

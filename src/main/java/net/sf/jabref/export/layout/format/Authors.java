@@ -83,6 +83,7 @@ extends|extends
 name|AbstractParamLayoutFormatter
 block|{
 comment|/*     AuthorSort = [FirstFirst | LastFirst | LastFirstFirstFirst]     AuthorAbbr = [FullName | Initials | FirstInitial | MiddleInitial | InitialsNoSpace | LastName]     AuthorSep = [Comma | And | Colon | Semicolon | Sep=<string>]     AuthorLastSep = [And | Comma | Colon | Semicolon | Amp | Oxford | LastSep=<string>]     AuthorPunc = [FullPunc | NoPunc | NoComma | NoPeriod]     AuthorNumber = [inf |<number>]     AuthorNumberEtAl = [ {1} |<number>]     EtAlString = [ et al. | EtAl=<string>]     */
+specifier|private
 specifier|static
 specifier|final
 name|ArrayList
@@ -100,6 +101,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|authorAbbr
+specifier|private
 specifier|static
 specifier|final
 name|ArrayList
@@ -116,6 +118,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|authorPunc
+specifier|private
 specifier|static
 specifier|final
 name|ArrayList
@@ -132,6 +135,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|separators
+specifier|private
 specifier|static
 specifier|final
 name|ArrayList
@@ -148,6 +152,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|lastSeparators
+specifier|private
 specifier|static
 specifier|final
 name|ArrayList
@@ -164,6 +169,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|numberPattern
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -395,6 +401,7 @@ literal|"lastsep"
 argument_list|)
 expr_stmt|;
 block|}
+specifier|private
 specifier|final
 specifier|static
 name|int
@@ -402,17 +409,26 @@ DECL|field|FIRST_FIRST
 name|FIRST_FIRST
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
 DECL|field|LAST_FIRST
+specifier|private
+specifier|final
+specifier|static
+name|int
 name|LAST_FIRST
 init|=
 literal|1
-decl_stmt|,
+decl_stmt|;
 DECL|field|LF_FF
+specifier|private
+specifier|final
+specifier|static
+name|int
 name|LF_FF
 init|=
 literal|2
 decl_stmt|;
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -420,33 +436,54 @@ DECL|field|COMMA
 name|COMMA
 init|=
 literal|", "
-decl_stmt|,
+decl_stmt|;
 DECL|field|AMP
+specifier|private
+specifier|final
+specifier|static
+name|String
 name|AMP
 init|=
 literal|"& "
-decl_stmt|,
+decl_stmt|;
 DECL|field|COLON
+specifier|private
+specifier|final
+specifier|static
+name|String
 name|COLON
 init|=
 literal|": "
-decl_stmt|,
+decl_stmt|;
 DECL|field|SEMICOLON
+specifier|private
+specifier|final
+specifier|static
+name|String
 name|SEMICOLON
 init|=
 literal|"; "
-decl_stmt|,
+decl_stmt|;
 DECL|field|AND
+specifier|private
+specifier|final
+specifier|static
+name|String
 name|AND
 init|=
 literal|" and "
-decl_stmt|,
+decl_stmt|;
 DECL|field|OXFORD
+specifier|private
+specifier|final
+specifier|static
+name|String
 name|OXFORD
 init|=
 literal|", and "
 decl_stmt|;
 DECL|field|flMode
+specifier|private
 name|int
 name|flMode
 init|=
@@ -454,50 +491,64 @@ name|Authors
 operator|.
 name|FIRST_FIRST
 decl_stmt|;
+specifier|private
 name|boolean
 DECL|field|abbreviate
 name|abbreviate
 init|=
 literal|true
-decl_stmt|,
+decl_stmt|;
 DECL|field|firstInitialOnly
+specifier|private
+name|boolean
 name|firstInitialOnly
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
 DECL|field|middleInitial
+specifier|private
+name|boolean
 name|middleInitial
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
 DECL|field|lastNameOnly
+specifier|private
+name|boolean
 name|lastNameOnly
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
 DECL|field|abbrDots
+specifier|private
+name|boolean
 name|abbrDots
 init|=
 literal|true
-decl_stmt|,
+decl_stmt|;
 DECL|field|abbrSpaces
+specifier|private
+name|boolean
 name|abbrSpaces
 init|=
 literal|true
 decl_stmt|;
 DECL|field|setSep
+specifier|private
 name|boolean
 name|setSep
 init|=
 literal|false
 decl_stmt|;
 DECL|field|setMaxAuthors
+specifier|private
 name|boolean
 name|setMaxAuthors
 init|=
 literal|false
 decl_stmt|;
 DECL|field|maxAuthors
+specifier|private
 name|int
 name|maxAuthors
 init|=
@@ -505,11 +556,13 @@ operator|-
 literal|1
 decl_stmt|;
 DECL|field|authorNumberEtAl
+specifier|private
 name|int
 name|authorNumberEtAl
 init|=
 literal|1
 decl_stmt|;
+specifier|private
 specifier|final
 name|String
 DECL|field|firstFirstSeparator
@@ -518,12 +571,14 @@ init|=
 literal|" "
 decl_stmt|;
 DECL|field|lastFirstSeparator
+specifier|private
 name|String
 name|lastFirstSeparator
 init|=
 literal|", "
 decl_stmt|;
 DECL|field|separator
+specifier|private
 name|String
 name|separator
 init|=
@@ -532,6 +587,7 @@ operator|.
 name|COMMA
 decl_stmt|;
 DECL|field|lastSeparator
+specifier|private
 name|String
 name|lastSeparator
 init|=
@@ -540,12 +596,14 @@ operator|.
 name|AND
 decl_stmt|;
 DECL|field|etAlString
+specifier|private
 name|String
 name|etAlString
 init|=
 literal|" et al."
 decl_stmt|;
 DECL|field|jrSeparator
+specifier|private
 specifier|final
 name|String
 name|jrSeparator
@@ -1325,7 +1383,7 @@ block|}
 block|}
 comment|/**      * Check for case-insensitive equality between two strings after removing      * white space at the beginning and end of the first string.      * @param one The first string - whitespace is trimmed      * @param two The second string      * @return true if the strings are deemed equal      */
 DECL|method|comp (String one, String two)
-specifier|public
+specifier|private
 name|boolean
 name|comp
 parameter_list|(

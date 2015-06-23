@@ -69,6 +69,7 @@ class|class
 name|SidePaneManager
 block|{
 DECL|field|frame
+specifier|private
 specifier|final
 name|JabRefFrame
 name|frame
@@ -78,11 +79,13 @@ name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|sidep
+specifier|private
 specifier|final
 name|SidePane
 name|sidep
 decl_stmt|;
 DECL|field|components
+specifier|private
 specifier|final
 name|Map
 argument_list|<
@@ -102,6 +105,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|componentNames
+specifier|private
 specifier|final
 name|Map
 argument_list|<
@@ -121,6 +125,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|visible
+specifier|private
 specifier|final
 name|List
 argument_list|<
@@ -566,7 +571,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|getComponentName (SidePaneComponent comp)
-specifier|public
+specifier|private
 name|String
 name|getComponentName
 parameter_list|(
@@ -1233,7 +1238,7 @@ expr_stmt|;
 block|}
 comment|/**      * Update all side pane components to show information from the given      * BasePanel.      *       * @param panel      */
 DECL|method|setActiveBasePanel (BasePanel panel)
-specifier|public
+specifier|private
 name|void
 name|setActiveBasePanel
 parameter_list|(

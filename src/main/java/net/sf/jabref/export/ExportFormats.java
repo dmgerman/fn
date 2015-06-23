@@ -1739,7 +1739,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|createExportFileChooser (String currentDir)
-specifier|public
+specifier|private
 specifier|static
 name|JFileChooser
 name|createExportFileChooser

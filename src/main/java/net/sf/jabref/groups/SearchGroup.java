@@ -1374,7 +1374,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|describeNode (AST node, boolean regExp, boolean not, boolean and, boolean or)
-specifier|protected
+specifier|private
 specifier|static
 name|String
 name|describeNode

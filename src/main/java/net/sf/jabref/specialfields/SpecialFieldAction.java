@@ -105,6 +105,7 @@ name|SpecialField
 name|c
 decl_stmt|;
 DECL|field|value
+specifier|private
 specifier|final
 name|String
 name|value

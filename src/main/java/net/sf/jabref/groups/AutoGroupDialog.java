@@ -252,6 +252,7 @@ implements|implements
 name|CaretListener
 block|{
 DECL|field|remove
+specifier|private
 specifier|final
 name|JTextField
 name|remove
@@ -263,6 +264,7 @@ literal|60
 argument_list|)
 decl_stmt|;
 DECL|field|field
+specifier|private
 specifier|final
 name|JTextField
 name|field
@@ -274,6 +276,7 @@ literal|60
 argument_list|)
 decl_stmt|;
 DECL|field|deliminator
+specifier|private
 specifier|final
 name|JTextField
 name|deliminator
@@ -317,6 +320,7 @@ operator|+
 literal|":"
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|final
 name|JRadioButton
 DECL|field|keywords
@@ -334,6 +338,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|authors
+specifier|private
 specifier|final
 name|JRadioButton
 name|authors
@@ -350,6 +355,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|editors
+specifier|private
 specifier|final
 name|JRadioButton
 name|editors
@@ -366,6 +372,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|nd
+specifier|private
 specifier|final
 name|JCheckBox
 name|nd
@@ -382,6 +389,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|ok
+specifier|private
 specifier|final
 name|JButton
 name|ok
@@ -398,6 +406,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|cancel
+specifier|private
 specifier|final
 name|JButton
 name|cancel
@@ -414,6 +423,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|main
+specifier|private
 specifier|final
 name|JPanel
 name|main
@@ -423,6 +433,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|opt
+specifier|private
 specifier|final
 name|JPanel
 name|opt
@@ -1375,7 +1386,7 @@ name|oldRemove
 return|;
 block|}
 DECL|method|field ()
-specifier|public
+specifier|private
 name|String
 name|field
 parameter_list|()
@@ -1388,7 +1399,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|remove ()
-specifier|public
+specifier|private
 name|String
 name|remove
 parameter_list|()
@@ -1416,7 +1427,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|updateComponents ()
-specifier|protected
+specifier|private
 name|void
 name|updateComponents
 parameter_list|()

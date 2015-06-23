@@ -264,7 +264,7 @@ return|;
 block|}
 comment|/**      * @param sb      * @param author      * @param position      */
 DECL|method|singleAuthor (StringBuffer sb, String author, int position)
-specifier|protected
+specifier|private
 name|void
 name|singleAuthor
 parameter_list|(

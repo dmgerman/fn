@@ -184,7 +184,6 @@ end_import
 
 begin_class
 DECL|class|PdfPreviewPanel
-specifier|public
 class|class
 name|PdfPreviewPanel
 extends|extends

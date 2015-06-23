@@ -127,6 +127,7 @@ implements|implements
 name|DatabaseChangeListener
 block|{
 DECL|field|list
+specifier|private
 specifier|final
 name|EventList
 argument_list|<

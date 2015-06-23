@@ -430,19 +430,25 @@ literal|"journal"
 block|}
 decl_stmt|;
 DECL|field|FILE_COL
-DECL|field|URL_COL
-specifier|protected
+specifier|private
 specifier|final
 name|int
 name|FILE_COL
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
+DECL|field|URL_COL
+specifier|private
+specifier|final
+name|int
 name|URL_COL
 init|=
 literal|1
-decl_stmt|,
+decl_stmt|;
 DECL|field|PAD
+specifier|private
+specifier|final
+name|int
 name|PAD
 init|=
 literal|2
@@ -482,7 +488,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|toRect
-specifier|protected
+specifier|private
 specifier|final
 name|Rectangle
 name|toRect
@@ -557,7 +563,7 @@ name|JTable
 name|entryTable
 decl_stmt|;
 DECL|field|contentPane
-specifier|protected
+specifier|private
 specifier|final
 name|UIFSplitPane
 name|contentPane
@@ -571,6 +577,7 @@ name|VERTICAL_SPLIT
 argument_list|)
 decl_stmt|;
 DECL|field|preview
+specifier|private
 name|PreviewPanel
 name|preview
 decl_stmt|;
@@ -1248,7 +1255,7 @@ argument_list|(
 literal|"unchecked"
 argument_list|)
 DECL|method|setupComparatorChooser (TableComparatorChooser<BibtexEntry> comparatorChooser)
-specifier|protected
+specifier|private
 name|void
 name|setupComparatorChooser
 parameter_list|(
@@ -1467,7 +1474,7 @@ expr_stmt|;
 block|}
 comment|/**      * Set column widths according to which field is shown, and lock icon columns      * to a suitable width.      */
 DECL|method|setWidths ()
-specifier|protected
+specifier|private
 name|void
 name|setWidths
 parameter_list|()
@@ -2333,6 +2340,7 @@ block|}
 block|}
 comment|/**      * The listener for the Glazed list monitoring the current selection.      * When selection changes, we need to update the preview panel.      */
 DECL|class|EntrySelectionListener
+specifier|private
 class|class
 name|EntrySelectionListener
 implements|implements
@@ -2449,7 +2457,7 @@ block|}
 block|}
 comment|/**      * TableFormat for the table shown in the dialog. Handles the display of entry      * fields and icons for linked files and urls.      */
 DECL|class|EntryTableFormat
-specifier|public
+specifier|private
 class|class
 name|EntryTableFormat
 implements|implements

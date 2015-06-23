@@ -123,6 +123,7 @@ implements|implements
 name|PrefsTab
 block|{
 DECL|field|_prefs
+specifier|private
 specifier|final
 name|JabRefPreferences
 name|_prefs
@@ -140,6 +141,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|gbl
+specifier|private
 specifier|final
 name|GridBagLayout
 name|gbl
@@ -149,6 +151,7 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|con
+specifier|private
 specifier|final
 name|GridBagConstraints
 name|con
@@ -158,6 +161,7 @@ name|GridBagConstraints
 argument_list|()
 decl_stmt|;
 DECL|field|layout1
+specifier|private
 specifier|final
 name|JTextArea
 name|layout1
@@ -173,6 +177,7 @@ literal|1
 argument_list|)
 decl_stmt|;
 DECL|field|layout2
+specifier|private
 specifier|final
 name|JTextArea
 name|layout2
@@ -188,6 +193,7 @@ literal|1
 argument_list|)
 decl_stmt|;
 DECL|field|def1
+specifier|private
 specifier|final
 name|JButton
 name|def1
@@ -204,6 +210,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|def2
+specifier|private
 specifier|final
 name|JButton
 name|def2
@@ -220,6 +227,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|test1
+specifier|private
 specifier|final
 name|JButton
 name|test1
@@ -236,6 +244,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|test2
+specifier|private
 specifier|final
 name|JButton
 name|test2
@@ -256,6 +265,7 @@ name|JButton
 name|help
 decl_stmt|;
 DECL|field|p1
+specifier|private
 specifier|final
 name|JPanel
 name|p1
@@ -265,6 +275,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|p2
+specifier|private
 specifier|final
 name|JPanel
 name|p2
@@ -274,6 +285,7 @@ name|JPanel
 argument_list|()
 decl_stmt|;
 DECL|field|p3
+specifier|private
 specifier|final
 name|JPanel
 name|p3
@@ -287,6 +299,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|sp1
+specifier|private
 specifier|final
 name|JScrollPane
 name|sp1
@@ -298,6 +311,7 @@ name|layout1
 argument_list|)
 decl_stmt|;
 DECL|field|sp2
+specifier|private
 specifier|final
 name|JScrollPane
 name|sp2
@@ -309,6 +323,7 @@ name|layout2
 argument_list|)
 decl_stmt|;
 DECL|field|pdfPreview
+specifier|private
 specifier|final
 name|JCheckBox
 name|pdfPreview
@@ -1375,7 +1390,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getTestEntry ()
-specifier|public
+specifier|private
 specifier|static
 name|BibtexEntry
 name|getTestEntry

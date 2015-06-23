@@ -432,6 +432,7 @@ extends|extends
 name|DBImporterExporter
 block|{
 DECL|field|fieldStr
+specifier|private
 specifier|final
 name|String
 name|fieldStr
@@ -448,6 +449,7 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|dbNames
+specifier|private
 specifier|final
 name|ArrayList
 argument_list|<

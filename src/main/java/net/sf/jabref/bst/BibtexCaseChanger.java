@@ -23,32 +23,38 @@ class|class
 name|BibtexCaseChanger
 block|{
 DECL|field|s
+specifier|private
 specifier|final
 name|String
 name|s
 decl_stmt|;
 DECL|field|format
+specifier|private
 specifier|final
 name|char
 name|format
 decl_stmt|;
 DECL|field|prevColon
+specifier|private
 name|boolean
 name|prevColon
 init|=
 literal|true
 decl_stmt|;
 DECL|field|n
+specifier|private
 specifier|final
 name|int
 name|n
 decl_stmt|;
 DECL|field|warn
+specifier|private
 specifier|final
 name|Warn
 name|warn
 decl_stmt|;
 DECL|method|BibtexCaseChanger (String s, char format, Warn warn)
+specifier|private
 name|BibtexCaseChanger
 parameter_list|(
 name|String
@@ -376,12 +382,14 @@ argument_list|()
 return|;
 block|}
 DECL|field|braceLevel
+specifier|private
 name|int
 name|braceLevel
 init|=
 literal|0
 decl_stmt|;
 DECL|method|decrBraceLevel (String string, int braceLevel)
+specifier|private
 name|int
 name|decrBraceLevel
 parameter_list|(
@@ -468,7 +476,7 @@ block|}
 block|}
 comment|/**      * We're dealing with a special character (usually either an undotted `\i'      * or `\j', or an accent like one in Table~3.1 of the \LaTeX\ manual, or a      * foreign character like one in Table~3.2) if the first character after the      * |left_brace| is a |backslash|; the special character ends with the      * matching |right_brace|. How we handle what's in between depends on the      * special character. In general, this code will do reasonably well if there      * is other stuff, too, between braces, but it doesn't try to do anything      * special with |colon|s.      *       * @param c      * @param i      * @param format      * @return      */
 DECL|method|convertSpecialChar (StringBuffer sb, char[] c, int i, char format)
-specifier|public
+specifier|private
 name|int
 name|convertSpecialChar
 parameter_list|(
@@ -642,6 +650,7 @@ return|;
 block|}
 comment|/**      * Convert the given string according to the format character (title, lower,      * up) and append the result to the stringBuffer, return the updated      * position.      *       * @param c      * @param pos      * @param s      * @param sb      * @param format      * @return      */
 DECL|method|convertAccented (char[] c, int pos, String s, StringBuffer sb, char format)
+specifier|private
 name|int
 name|convertAccented
 parameter_list|(
@@ -813,6 +822,7 @@ name|pos
 return|;
 block|}
 DECL|method|convertNonControl (char[] c, int pos, StringBuffer sb, char format)
+specifier|private
 name|int
 name|convertNonControl
 parameter_list|(
@@ -888,7 +898,7 @@ name|pos
 return|;
 block|}
 DECL|field|TITLE_LOWERS
-specifier|public
+specifier|private
 specifier|final
 specifier|static
 name|char
@@ -897,7 +907,7 @@ init|=
 literal|'t'
 decl_stmt|;
 DECL|field|ALL_LOWERS
-specifier|public
+specifier|private
 specifier|final
 specifier|static
 name|char
@@ -906,7 +916,7 @@ init|=
 literal|'l'
 decl_stmt|;
 DECL|field|ALL_UPPERS
-specifier|public
+specifier|private
 specifier|final
 specifier|static
 name|char
@@ -915,6 +925,7 @@ init|=
 literal|'u'
 decl_stmt|;
 DECL|method|convertChar0 (char[] c, int i, StringBuffer sb, char format)
+specifier|private
 name|int
 name|convertChar0
 parameter_list|(

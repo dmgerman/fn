@@ -93,6 +93,7 @@ extends|extends
 name|BaseAction
 block|{
 DECL|field|entry
+specifier|private
 name|BibtexEntry
 name|entry
 init|=

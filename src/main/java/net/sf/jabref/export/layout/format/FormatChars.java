@@ -83,7 +83,7 @@ implements|implements
 name|LayoutFormatter
 block|{
 DECL|field|CHARS
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|HashMap
