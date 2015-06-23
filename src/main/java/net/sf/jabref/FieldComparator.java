@@ -464,7 +464,7 @@ block|{
 comment|/*              * [ 1285977 ] Impossible to properly sort a numeric field              *               * http://sourceforge.net/tracker/index.php?func=detail&aid=1285977&group_id=92314&atid=600307              */
 name|f1
 operator|=
-name|Util
+name|YearUtil
 operator|.
 name|toFourDigitYear
 argument_list|(
@@ -476,7 +476,7 @@ argument_list|)
 expr_stmt|;
 name|f2
 operator|=
-name|Util
+name|YearUtil
 operator|.
 name|toFourDigitYear
 argument_list|(
