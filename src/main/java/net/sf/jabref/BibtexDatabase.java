@@ -152,16 +152,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -220,20 +210,6 @@ argument_list|<
 name|String
 argument_list|,
 name|BibtexString
-argument_list|>
-argument_list|()
-decl_stmt|;
-DECL|field|_strings_
-name|Vector
-argument_list|<
-name|String
-argument_list|>
-name|_strings_
-init|=
-operator|new
-name|Vector
-argument_list|<
-name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
