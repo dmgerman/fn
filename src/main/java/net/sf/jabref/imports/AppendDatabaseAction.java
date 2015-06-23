@@ -199,7 +199,7 @@ DECL|class|AppendDatabaseAction
 specifier|public
 class|class
 name|AppendDatabaseAction
-extends|extends
+implements|implements
 name|BaseAction
 block|{
 DECL|field|frame

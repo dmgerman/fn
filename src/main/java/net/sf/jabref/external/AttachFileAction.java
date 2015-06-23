@@ -89,7 +89,7 @@ DECL|class|AttachFileAction
 specifier|public
 class|class
 name|AttachFileAction
-extends|extends
+implements|implements
 name|BaseAction
 block|{
 DECL|field|entry

@@ -83,7 +83,7 @@ DECL|class|SpecialFieldAction
 specifier|public
 class|class
 name|SpecialFieldAction
-extends|extends
+implements|implements
 name|BaseAction
 block|{
 DECL|field|frame

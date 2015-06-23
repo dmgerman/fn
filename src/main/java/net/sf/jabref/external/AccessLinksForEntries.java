@@ -760,7 +760,7 @@ specifier|public
 specifier|static
 class|class
 name|SaveWithLinkedFiles
-extends|extends
+implements|implements
 name|BaseAction
 block|{
 DECL|field|panel

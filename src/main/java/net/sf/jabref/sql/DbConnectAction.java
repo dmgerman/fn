@@ -121,7 +121,7 @@ DECL|class|DbConnectAction
 specifier|public
 class|class
 name|DbConnectAction
-extends|extends
+implements|implements
 name|BaseAction
 block|{
 DECL|field|panel

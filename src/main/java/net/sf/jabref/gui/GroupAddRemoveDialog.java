@@ -223,7 +223,7 @@ DECL|class|GroupAddRemoveDialog
 specifier|public
 class|class
 name|GroupAddRemoveDialog
-extends|extends
+implements|implements
 name|BaseAction
 block|{
 DECL|field|panel

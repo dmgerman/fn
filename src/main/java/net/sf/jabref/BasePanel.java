@@ -13931,7 +13931,7 @@ block|}
 DECL|class|UndoAction
 class|class
 name|UndoAction
-extends|extends
+implements|implements
 name|BaseAction
 block|{
 annotation|@
@@ -14071,7 +14071,7 @@ block|}
 DECL|class|RedoAction
 class|class
 name|RedoAction
-extends|extends
+implements|implements
 name|BaseAction
 block|{
 annotation|@
@@ -15124,7 +15124,7 @@ DECL|class|SaveSelectedAction
 specifier|private
 class|class
 name|SaveSelectedAction
-extends|extends
+implements|implements
 name|BaseAction
 block|{
 DECL|field|saveType
