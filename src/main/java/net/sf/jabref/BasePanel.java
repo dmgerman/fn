@@ -7977,7 +7977,7 @@ range|:
 name|bes
 control|)
 block|{
-name|Util
+name|EntryMarker
 operator|.
 name|unmarkEntry
 argument_list|(
@@ -8113,7 +8113,7 @@ name|getEntries
 argument_list|()
 control|)
 block|{
-name|Util
+name|EntryMarker
 operator|.
 name|unmarkEntry
 argument_list|(

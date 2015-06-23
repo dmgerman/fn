@@ -2753,7 +2753,7 @@ block|{
 name|String
 name|date
 init|=
-name|Util
+name|EasyDateFormat
 operator|.
 name|easyDateFormat
 argument_list|()

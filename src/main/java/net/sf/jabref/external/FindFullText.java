@@ -146,7 +146,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|DOIUtil
 import|;
 end_import
 
@@ -158,7 +158,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|Globals
 import|;
 end_import
 
@@ -342,7 +342,7 @@ condition|)
 block|{
 name|doiText
 operator|=
-name|Util
+name|DOIUtil
 operator|.
 name|getDOI
 argument_list|(

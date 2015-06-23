@@ -36,7 +36,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|EntryMarker
 import|;
 end_import
 
@@ -76,14 +76,14 @@ parameter_list|)
 block|{
 return|return
 operator|-
-name|Util
+name|EntryMarker
 operator|.
 name|isMarked
 argument_list|(
 name|e1
 argument_list|)
 operator|+
-name|Util
+name|EntryMarker
 operator|.
 name|isMarked
 argument_list|(

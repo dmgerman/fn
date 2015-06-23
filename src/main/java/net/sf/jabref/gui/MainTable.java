@@ -1399,7 +1399,7 @@ name|min
 argument_list|(
 name|marking
 argument_list|,
-name|Util
+name|EntryMarker
 operator|.
 name|MARK_COLOR_LEVELS
 argument_list|)
@@ -1545,7 +1545,7 @@ name|min
 argument_list|(
 name|marking
 argument_list|,
-name|Util
+name|EntryMarker
 operator|.
 name|MARK_COLOR_LEVELS
 argument_list|)
@@ -2968,7 +2968,7 @@ name|row
 argument_list|)
 decl_stmt|;
 return|return
-name|Util
+name|EntryMarker
 operator|.
 name|isMarked
 argument_list|(
@@ -3607,7 +3607,7 @@ operator|=
 operator|new
 name|GeneralRenderer
 index|[
-name|Util
+name|EntryMarker
 operator|.
 name|MARK_COLOR_LEVELS
 index|]
@@ -3619,7 +3619,7 @@ operator|=
 operator|new
 name|CompleteRenderer
 index|[
-name|Util
+name|EntryMarker
 operator|.
 name|MARK_COLOR_LEVELS
 index|]
@@ -3633,7 +3633,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|Util
+name|EntryMarker
 operator|.
 name|MARK_COLOR_LEVELS
 condition|;

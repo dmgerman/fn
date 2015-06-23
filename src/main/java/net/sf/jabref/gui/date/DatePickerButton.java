@@ -98,6 +98,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|EasyDateFormat
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|FieldEditor
 import|;
 end_import
@@ -111,18 +123,6 @@ operator|.
 name|jabref
 operator|.
 name|FocusRequester
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Util
 import|;
 end_import
 
@@ -258,7 +258,7 @@ name|editor
 operator|.
 name|setText
 argument_list|(
-name|Util
+name|EasyDateFormat
 operator|.
 name|easyDateFormat
 argument_list|(

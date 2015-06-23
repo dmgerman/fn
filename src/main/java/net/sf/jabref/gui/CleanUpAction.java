@@ -2814,7 +2814,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|Util
+name|DOIUtil
 operator|.
 name|checkForDOIwithHTTPprefix
 argument_list|(
@@ -2825,7 +2825,7 @@ block|{
 name|String
 name|newValue
 init|=
-name|Util
+name|DOIUtil
 operator|.
 name|getDOI
 argument_list|(
@@ -2861,7 +2861,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
-name|Util
+name|DOIUtil
 operator|.
 name|checkForPlainDOI
 argument_list|(
@@ -2882,7 +2882,7 @@ control|)
 block|{
 if|if
 condition|(
-name|Util
+name|DOIUtil
 operator|.
 name|checkForPlainDOI
 argument_list|(
@@ -2895,7 +2895,7 @@ argument_list|)
 argument_list|)
 condition|)
 block|{
-name|Util
+name|DOIUtil
 operator|.
 name|removeDOIfromBibtexEntryField
 argument_list|(
@@ -2923,7 +2923,7 @@ control|)
 block|{
 if|if
 condition|(
-name|Util
+name|DOIUtil
 operator|.
 name|checkForPlainDOI
 argument_list|(
@@ -2950,7 +2950,7 @@ decl_stmt|;
 name|String
 name|newValue
 init|=
-name|Util
+name|DOIUtil
 operator|.
 name|getDOI
 argument_list|(
@@ -2988,7 +2988,7 @@ argument_list|,
 name|newValue
 argument_list|)
 expr_stmt|;
-name|Util
+name|DOIUtil
 operator|.
 name|removeDOIfromBibtexEntryField
 argument_list|(

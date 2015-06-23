@@ -28,6 +28,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|DOIUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|export
 operator|.
 name|layout
@@ -45,18 +57,6 @@ operator|.
 name|jabref
 operator|.
 name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Util
 import|;
 end_import
 
@@ -111,7 +111,7 @@ return|;
 block|}
 if|if
 condition|(
-name|Util
+name|DOIUtil
 operator|.
 name|checkForDOIwithHTTPprefix
 argument_list|(
@@ -132,7 +132,7 @@ name|DOI_LOOKUP_PREFIX
 operator|.
 name|concat
 argument_list|(
-name|Util
+name|DOIUtil
 operator|.
 name|getDOI
 argument_list|(

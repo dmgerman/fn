@@ -28,11 +28,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
-operator|.
-name|layout
-operator|.
-name|LayoutFormatter
+name|DOIUtil
 import|;
 end_import
 
@@ -44,7 +40,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|export
+operator|.
+name|layout
+operator|.
+name|LayoutFormatter
 import|;
 end_import
 
@@ -85,7 +85,7 @@ block|}
 else|else
 block|{
 return|return
-name|Util
+name|DOIUtil
 operator|.
 name|getDOI
 argument_list|(

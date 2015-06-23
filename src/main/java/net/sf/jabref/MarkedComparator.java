@@ -93,7 +93,7 @@ block|}
 name|int
 name|mrk1
 init|=
-name|Util
+name|EntryMarker
 operator|.
 name|isMarked
 argument_list|(
@@ -102,7 +102,7 @@ argument_list|)
 decl_stmt|,
 name|mrk2
 init|=
-name|Util
+name|EntryMarker
 operator|.
 name|isMarked
 argument_list|(
