@@ -11335,9 +11335,8 @@ name|void
 name|instantiateSearchAutoCompleter
 parameter_list|()
 block|{
-name|AutoCompleter
-name|searchCompleter
-init|=
+name|searchAutoCompleter
+operator|=
 name|AutoCompleterFactory
 operator|.
 name|getFor
@@ -11346,7 +11345,7 @@ literal|"author"
 argument_list|,
 literal|"editor"
 argument_list|)
-decl_stmt|;
+expr_stmt|;
 for|for
 control|(
 name|BibtexEntry
@@ -11358,7 +11357,7 @@ name|getEntries
 argument_list|()
 control|)
 block|{
-name|searchCompleter
+name|searchAutoCompleter
 operator|.
 name|addBibtexEntry
 argument_list|(
@@ -11371,7 +11370,7 @@ operator|=
 operator|new
 name|AutoCompleteListener
 argument_list|(
-name|searchCompleter
+name|searchAutoCompleter
 argument_list|)
 expr_stmt|;
 name|searchCompleteListener
