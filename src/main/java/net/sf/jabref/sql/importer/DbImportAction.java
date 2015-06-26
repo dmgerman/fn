@@ -304,13 +304,6 @@ name|metaData
 init|=
 literal|null
 decl_stmt|;
-DECL|field|errorMessage
-specifier|private
-name|String
-name|errorMessage
-init|=
-literal|null
-decl_stmt|;
 DECL|field|connectToDB
 specifier|private
 name|boolean
@@ -904,15 +897,16 @@ name|preamble
 init|=
 literal|"Could not import from SQL database for the following reason:"
 decl_stmt|;
+name|String
 name|errorMessage
-operator|=
+init|=
 name|SQLUtil
 operator|.
 name|getExceptionMessage
 argument_list|(
 name|ex
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|dbs
 operator|.
 name|isConfigValid
