@@ -2422,7 +2422,7 @@ name|PAD
 condition|)
 block|{
 return|return
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(

@@ -260,7 +260,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|StringUtil
 import|;
 end_import
 
@@ -1633,7 +1633,7 @@ condition|)
 block|{
 name|searchField
 operator|=
-name|Util
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -1654,7 +1654,7 @@ condition|)
 block|{
 name|searchExpr
 operator|=
-name|Util
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -2060,7 +2060,7 @@ literal|"'@PREAMBLE', "
 operator|+
 literal|'\''
 operator|+
-name|Util
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -2120,7 +2120,7 @@ name|insert
 operator|+
 literal|'\''
 operator|+
-name|Util
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -2138,7 +2138,7 @@ literal|"', "
 operator|+
 literal|'\''
 operator|+
-name|Util
+name|StringUtil
 operator|.
 name|quote
 argument_list|(

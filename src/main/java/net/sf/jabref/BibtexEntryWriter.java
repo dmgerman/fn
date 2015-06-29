@@ -455,7 +455,7 @@ expr_stmt|;
 name|String
 name|str
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|shaveString
 argument_list|(
@@ -884,7 +884,7 @@ expr_stmt|;
 name|String
 name|str
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|shaveString
 argument_list|(
@@ -1224,7 +1224,7 @@ expr_stmt|;
 name|String
 name|str
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|shaveString
 argument_list|(

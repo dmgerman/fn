@@ -1773,7 +1773,7 @@ comment|//System.out.println("Defaulting: "+typeName);
 name|String
 name|nm
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
@@ -1928,7 +1928,7 @@ condition|?
 operator|new
 name|CustomEntryType
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
@@ -1948,7 +1948,7 @@ else|:
 operator|new
 name|CustomEntryType
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
@@ -2135,7 +2135,7 @@ argument_list|)
 operator|+
 literal|" '"
 operator|+
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
@@ -2174,7 +2174,7 @@ argument_list|)
 expr_stmt|;
 name|updateTypesForEntries
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(

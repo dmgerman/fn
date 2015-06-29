@@ -3006,7 +3006,7 @@ block|{
 name|String
 name|subName
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|getCorrectFileName
 argument_list|(
@@ -5312,7 +5312,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|Util
+name|FileBasedLock
 operator|.
 name|waitForFileLock
 argument_list|(

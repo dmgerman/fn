@@ -1154,7 +1154,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -1384,7 +1384,7 @@ init|=
 operator|new
 name|StringBuffer
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|quote
 argument_list|(

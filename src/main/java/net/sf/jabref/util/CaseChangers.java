@@ -28,7 +28,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|StringUtil
 import|;
 end_import
 
@@ -364,7 +364,7 @@ index|[
 name|i
 index|]
 operator|=
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
@@ -376,7 +376,7 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|Util
+name|StringUtil
 operator|.
 name|join
 argument_list|(
@@ -597,7 +597,7 @@ index|[
 name|i
 index|]
 operator|=
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
@@ -633,7 +633,7 @@ index|[
 name|i
 index|]
 operator|=
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
@@ -643,7 +643,7 @@ expr_stmt|;
 block|}
 block|}
 return|return
-name|Util
+name|StringUtil
 operator|.
 name|join
 argument_list|(

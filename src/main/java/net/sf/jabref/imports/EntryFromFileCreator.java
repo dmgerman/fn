@@ -62,6 +62,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|FileUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|GUIGlobals
 import|;
 end_import
@@ -87,18 +99,6 @@ operator|.
 name|jabref
 operator|.
 name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Util
 import|;
 end_import
 
@@ -499,7 +499,7 @@ decl_stmt|;
 name|File
 name|shortenedFileName
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|shortenFileName
 argument_list|(

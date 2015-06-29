@@ -470,9 +470,9 @@ literal|true
 expr_stmt|;
 name|flds
 operator|=
-name|Util
+name|StringUtil
 operator|.
-name|delimToStringArray
+name|split
 argument_list|(
 name|fields
 operator|.
@@ -1146,9 +1146,9 @@ name|fields
 parameter_list|()
 block|{
 return|return
-name|Util
+name|StringUtil
 operator|.
-name|delimToStringArray
+name|split
 argument_list|(
 name|field
 operator|.

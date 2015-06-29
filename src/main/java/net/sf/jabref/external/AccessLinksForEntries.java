@@ -567,7 +567,7 @@ decl_stmt|;
 name|File
 name|tmp
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -647,7 +647,7 @@ block|{
 try|try
 block|{
 comment|// Copy the file:
-name|Util
+name|FileUtil
 operator|.
 name|copyFile
 argument_list|(

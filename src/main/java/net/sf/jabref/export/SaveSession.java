@@ -24,7 +24,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|FileBasedLock
 import|;
 end_import
 
@@ -36,7 +36,19 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|FileUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
 import|;
 end_import
 
@@ -349,7 +361,7 @@ argument_list|)
 decl_stmt|;
 try|try
 block|{
-name|Util
+name|FileUtil
 operator|.
 name|copyFile
 argument_list|(
@@ -399,7 +411,7 @@ comment|// Oops, the lock file already existed. Try to wait it out:
 if|if
 condition|(
 operator|!
-name|Util
+name|FileBasedLock
 operator|.
 name|waitForFileLock
 argument_list|(
@@ -439,7 +451,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-name|Util
+name|FileUtil
 operator|.
 name|copyFile
 argument_list|(

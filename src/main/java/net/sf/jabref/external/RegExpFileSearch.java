@@ -30,6 +30,18 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|StringUtil
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -1065,7 +1077,7 @@ block|{
 name|String
 name|restOfFileString
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|join
 argument_list|(
@@ -1156,7 +1168,7 @@ expr_stmt|;
 name|String
 name|restOfFileString
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|join
 argument_list|(

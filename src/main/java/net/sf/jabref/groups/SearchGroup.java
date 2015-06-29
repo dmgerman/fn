@@ -522,7 +522,7 @@ return|return
 operator|new
 name|SearchGroup
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|unquote
 argument_list|(
@@ -533,7 +533,7 @@ operator|.
 name|QUOTE_CHAR
 argument_list|)
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|unquote
 argument_list|(
@@ -623,7 +623,7 @@ return|return
 operator|new
 name|SearchGroup
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|unquote
 argument_list|(
@@ -634,7 +634,7 @@ operator|.
 name|QUOTE_CHAR
 argument_list|)
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|unquote
 argument_list|(
@@ -706,7 +706,7 @@ name|SearchGroup
 operator|.
 name|ID
 operator|+
-name|Util
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -731,7 +731,7 @@ name|AbstractGroup
 operator|.
 name|SEPARATOR
 operator|+
-name|Util
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -1210,7 +1210,7 @@ name|lang
 argument_list|(
 literal|"This group contains entries in which any field contains the regular expression<b>%0</b>"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|quoteForHTML
 argument_list|(
@@ -1224,7 +1224,7 @@ name|lang
 argument_list|(
 literal|"This group contains entries in which any field contains the term<b>%0</b>"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|quoteForHTML
 argument_list|(
@@ -1758,7 +1758,7 @@ specifier|final
 name|String
 name|termQuoted
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|quoteForHTML
 argument_list|(
@@ -1780,7 +1780,7 @@ name|lang
 argument_list|(
 literal|"any field that matches the regular expression<b>%0</b>"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|quoteForHTML
 argument_list|(
@@ -1794,7 +1794,7 @@ name|lang
 argument_list|(
 literal|"the field<b>%0</b>"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|quoteForHTML
 argument_list|(
@@ -2053,7 +2053,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|quoteForHTML
 argument_list|(
@@ -2074,7 +2074,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|quoteForHTML
 argument_list|(
@@ -2131,7 +2131,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|quoteForHTML
 argument_list|(

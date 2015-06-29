@@ -148,7 +148,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
@@ -162,7 +162,7 @@ name|assertEquals
 argument_list|(
 literal|"Hello world"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
@@ -176,7 +176,7 @@ name|assertEquals
 argument_list|(
 literal|"A"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
@@ -190,7 +190,7 @@ name|assertEquals
 argument_list|(
 literal|"Aa"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
@@ -336,7 +336,7 @@ name|assertEquals
 argument_list|(
 literal|"aa.bib"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|makeBibtexExtension
 argument_list|(
@@ -350,7 +350,7 @@ name|assertEquals
 argument_list|(
 literal|".bib"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|makeBibtexExtension
 argument_list|(
@@ -364,7 +364,7 @@ name|assertEquals
 argument_list|(
 literal|"a.bib"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|makeBibtexExtension
 argument_list|(
@@ -378,7 +378,7 @@ name|assertEquals
 argument_list|(
 literal|"a.bib"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|makeBibtexExtension
 argument_list|(
@@ -392,7 +392,7 @@ name|assertEquals
 argument_list|(
 literal|"a.bb.bib"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|makeBibtexExtension
 argument_list|(
@@ -646,7 +646,7 @@ name|assertEquals
 argument_list|(
 literal|null
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|shaveString
 argument_list|(
@@ -660,7 +660,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|shaveString
 argument_list|(
@@ -674,7 +674,7 @@ name|assertEquals
 argument_list|(
 literal|"aaa"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|shaveString
 argument_list|(
@@ -688,7 +688,7 @@ name|assertEquals
 argument_list|(
 literal|"a"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|shaveString
 argument_list|(
@@ -702,7 +702,7 @@ name|assertEquals
 argument_list|(
 literal|"a"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|shaveString
 argument_list|(
@@ -716,7 +716,7 @@ name|assertEquals
 argument_list|(
 literal|"{a}"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|shaveString
 argument_list|(
@@ -730,7 +730,7 @@ name|assertEquals
 argument_list|(
 literal|"{a}"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|shaveString
 argument_list|(
@@ -744,7 +744,7 @@ name|assertEquals
 argument_list|(
 literal|"\"{a\"}"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|shaveString
 argument_list|(
@@ -885,7 +885,7 @@ name|assertEquals
 argument_list|(
 literal|"ab\\cd\\ed"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|join
 argument_list|(
@@ -907,7 +907,7 @@ name|assertEquals
 argument_list|(
 literal|"cd\\ed"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|join
 argument_list|(
@@ -929,7 +929,7 @@ name|assertEquals
 argument_list|(
 literal|"ed"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|join
 argument_list|(
@@ -951,7 +951,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|join
 argument_list|(
@@ -973,7 +973,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|join
 argument_list|(
@@ -1005,7 +1005,7 @@ name|assertEquals
 argument_list|(
 literal|"foo"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|stripBrackets
 argument_list|(
@@ -1019,7 +1019,7 @@ name|assertEquals
 argument_list|(
 literal|"[foo]"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|stripBrackets
 argument_list|(
@@ -1033,7 +1033,7 @@ name|assertEquals
 argument_list|(
 literal|"foo"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|stripBrackets
 argument_list|(
@@ -1047,7 +1047,7 @@ name|assertEquals
 argument_list|(
 literal|"foo"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|stripBrackets
 argument_list|(
@@ -1061,7 +1061,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|stripBrackets
 argument_list|(
@@ -1075,7 +1075,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|stripBrackets
 argument_list|(
@@ -1089,7 +1089,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|stripBrackets
 argument_list|(
@@ -1103,7 +1103,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|stripBrackets
 argument_list|(
@@ -1117,7 +1117,7 @@ name|assertEquals
 argument_list|(
 literal|"f[]f"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|stripBrackets
 argument_list|(
@@ -1127,7 +1127,7 @@ argument_list|)
 expr_stmt|;
 try|try
 block|{
-name|Util
+name|StringUtil
 operator|.
 name|stripBrackets
 argument_list|(
@@ -2483,7 +2483,7 @@ name|assertEquals
 argument_list|(
 literal|""
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|toUpperFirstLetter
 argument_list|(
@@ -2497,7 +2497,7 @@ name|assertEquals
 argument_list|(
 literal|"A"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|toUpperFirstLetter
 argument_list|(
@@ -2511,7 +2511,7 @@ name|assertEquals
 argument_list|(
 literal|"A"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|toUpperFirstLetter
 argument_list|(
@@ -2525,7 +2525,7 @@ name|assertEquals
 argument_list|(
 literal|"An"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|toUpperFirstLetter
 argument_list|(
@@ -2539,7 +2539,7 @@ name|assertEquals
 argument_list|(
 literal|"AN"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|toUpperFirstLetter
 argument_list|(
@@ -2553,7 +2553,7 @@ name|assertEquals
 argument_list|(
 literal|"TestTest"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|toUpperFirstLetter
 argument_list|(

@@ -896,7 +896,7 @@ block|{
 name|File
 name|tmp
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(

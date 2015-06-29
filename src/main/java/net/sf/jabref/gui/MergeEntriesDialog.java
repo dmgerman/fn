@@ -242,6 +242,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|StringUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|undo
 operator|.
 name|NamedCompound
@@ -1315,7 +1327,7 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|toUpperFirstLetter
 argument_list|(

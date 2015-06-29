@@ -3499,7 +3499,7 @@ decl_stmt|;
 name|String
 name|newFileName
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|shortenFileName
 argument_list|(
@@ -3763,7 +3763,7 @@ comment|//Create new Path based on old Path and new filename
 name|File
 name|expandedOldFile
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -3838,7 +3838,7 @@ comment|//do rename
 name|boolean
 name|renameSuccesfull
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|renameFile
 argument_list|(

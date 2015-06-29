@@ -389,7 +389,7 @@ block|{
 if|if
 condition|(
 operator|!
-name|Util
+name|FileBasedLock
 operator|.
 name|waitForFileLock
 argument_list|(
@@ -808,7 +808,7 @@ expr_stmt|;
 if|if
 condition|(
 operator|!
-name|Util
+name|FileBasedLock
 operator|.
 name|waitForFileLock
 argument_list|(

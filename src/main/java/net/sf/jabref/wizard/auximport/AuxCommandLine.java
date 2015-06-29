@@ -80,7 +80,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|StringUtil
 import|;
 end_import
 
@@ -115,7 +115,7 @@ parameter_list|)
 block|{
 name|auxName
 operator|=
-name|Util
+name|StringUtil
 operator|.
 name|getCorrectFileName
 argument_list|(

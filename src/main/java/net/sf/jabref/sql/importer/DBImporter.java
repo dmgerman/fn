@@ -1131,7 +1131,7 @@ argument_list|(
 literal|"label"
 argument_list|)
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|unquote
 argument_list|(
@@ -1145,7 +1145,7 @@ argument_list|,
 literal|'\\'
 argument_list|)
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|unquote
 argument_list|(
@@ -1223,7 +1223,7 @@ argument_list|(
 literal|"label"
 argument_list|)
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|unquote
 argument_list|(

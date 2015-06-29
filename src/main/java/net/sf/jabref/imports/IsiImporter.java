@@ -120,6 +120,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|StringUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|util
 operator|.
 name|CaseChangers
@@ -2341,7 +2353,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 return|return
-name|Util
+name|StringUtil
 operator|.
 name|join
 argument_list|(

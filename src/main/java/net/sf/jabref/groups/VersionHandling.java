@@ -58,7 +58,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|StringUtil
 import|;
 end_import
 
@@ -481,7 +481,7 @@ name|AbstractGroup
 operator|.
 name|fromString
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|unquote
 argument_list|(

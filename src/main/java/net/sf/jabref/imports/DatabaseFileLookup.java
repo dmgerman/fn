@@ -86,6 +86,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|FileUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|GUIGlobals
 import|;
 end_import
@@ -99,18 +111,6 @@ operator|.
 name|jabref
 operator|.
 name|JabRef
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Util
 import|;
 end_import
 
@@ -447,7 +447,7 @@ block|}
 name|File
 name|expandedFilename
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(

@@ -510,9 +510,9 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
-name|wrap2
+name|wrap
 argument_list|(
 name|text
 argument_list|,
@@ -869,9 +869,9 @@ condition|)
 block|{
 comment|//             introduce a line break to be read at the parser
 return|return
-name|Util
+name|StringUtil
 operator|.
-name|wrap2
+name|wrap
 argument_list|(
 name|sb
 operator|.
@@ -1275,7 +1275,7 @@ name|boolean
 name|last
 parameter_list|)
 block|{
-comment|//sb.append(Util.wrap2((first ? "" : " # ") + text.substring(start_pos, end_pos)
+comment|//sb.append(Util.wrap((first ? "" : " # ") + text.substring(start_pos, end_pos)
 comment|//		     + (last ? "" : " # "), GUIGlobals.LINE_LENGTH));
 name|putIn
 argument_list|(
@@ -1319,9 +1319,9 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
-name|wrap2
+name|wrap
 argument_list|(
 name|s
 argument_list|,

@@ -288,6 +288,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|StringUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|Util
 import|;
 end_import
@@ -3067,7 +3079,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|quoteForHTML
 argument_list|(
@@ -3088,7 +3100,7 @@ name|lang
 argument_list|(
 literal|"The regular expression<b>%0</b> is invalid%c"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|quoteForHTML
 argument_list|(

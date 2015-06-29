@@ -172,6 +172,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|FileUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|GUIGlobals
 import|;
 end_import
@@ -2077,7 +2089,7 @@ argument_list|)
 decl_stmt|;
 name|newFile
 operator|=
-name|Util
+name|FileUtil
 operator|.
 name|shortenFileName
 argument_list|(

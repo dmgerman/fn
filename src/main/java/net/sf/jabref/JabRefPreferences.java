@@ -40,18 +40,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|KeyEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|io
 operator|.
 name|File
@@ -8366,7 +8354,7 @@ return|return
 operator|new
 name|CustomEntryType
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
@@ -8421,7 +8409,7 @@ return|return
 operator|new
 name|CustomEntryType
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(

@@ -503,7 +503,7 @@ init|=
 operator|new
 name|TypeButton
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(

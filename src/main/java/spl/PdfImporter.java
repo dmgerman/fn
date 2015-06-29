@@ -905,7 +905,7 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|Util
+name|FileUtil
 operator|.
 name|shortenFileName
 argument_list|(

@@ -337,7 +337,7 @@ block|{
 name|String
 name|extension
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|getFileExtension
 argument_list|(
@@ -1185,7 +1185,7 @@ block|}
 name|String
 name|restOfFileString
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|join
 argument_list|(
@@ -1285,7 +1285,7 @@ expr_stmt|;
 name|String
 name|restOfFileString
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|join
 argument_list|(

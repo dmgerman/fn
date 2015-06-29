@@ -332,7 +332,7 @@ name|db
 operator|.
 name|getEntriesByKey
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|unquote
 argument_list|(
@@ -902,7 +902,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
@@ -1005,7 +1005,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|quote
 argument_list|(

@@ -854,7 +854,7 @@ comment|// Get an absolute path representation:
 name|File
 name|file
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(

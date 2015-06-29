@@ -318,7 +318,7 @@ decl_stmt|;
 name|File
 name|f
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -450,7 +450,7 @@ condition|)
 block|{
 name|f
 operator|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(

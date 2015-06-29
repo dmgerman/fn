@@ -14060,7 +14060,7 @@ literal|null
 operator|)
 operator|&&
 operator|!
-name|Util
+name|FileBasedLock
 operator|.
 name|waitForFileLock
 argument_list|(

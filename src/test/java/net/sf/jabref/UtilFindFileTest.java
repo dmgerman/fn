@@ -100,18 +100,6 @@ name|Map
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|*
-import|;
-end_import
-
 begin_comment
 comment|/**  * Testing Util.findFile for finding files based on regular expressions.  *  * @author Christopher Oezbek<oezi@oezi.de>  */
 end_comment
@@ -331,7 +319,7 @@ expr_stmt|;
 name|File
 name|fullPath
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -411,7 +399,7 @@ expr_stmt|;
 name|File
 name|fullPath
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -709,7 +697,7 @@ expr_stmt|;
 name|File
 name|fullPath
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -779,7 +767,7 @@ name|tmp
 expr_stmt|;
 name|fullPath
 operator|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -824,7 +812,7 @@ argument_list|)
 expr_stmt|;
 name|fullPath
 operator|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -850,7 +838,7 @@ argument_list|)
 expr_stmt|;
 name|fullPath
 operator|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -952,7 +940,7 @@ expr_stmt|;
 name|File
 name|fullPath
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -1022,7 +1010,7 @@ name|tmp
 expr_stmt|;
 name|fullPath
 operator|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -1067,7 +1055,7 @@ argument_list|)
 expr_stmt|;
 name|fullPath
 operator|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -1093,7 +1081,7 @@ argument_list|)
 expr_stmt|;
 name|fullPath
 operator|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(

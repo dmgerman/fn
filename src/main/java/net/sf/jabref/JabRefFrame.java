@@ -7859,7 +7859,7 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
@@ -7890,7 +7890,7 @@ name|Action
 operator|.
 name|NAME
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
@@ -14293,7 +14293,7 @@ expr_stmt|;
 name|String
 name|nName
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(

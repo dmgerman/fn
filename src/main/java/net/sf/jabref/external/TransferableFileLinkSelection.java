@@ -36,7 +36,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|GUIGlobals
+name|FileUtil
 import|;
 end_import
 
@@ -48,7 +48,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|GUIGlobals
 import|;
 end_import
 
@@ -261,7 +261,7 @@ decl_stmt|;
 name|File
 name|expLink
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(

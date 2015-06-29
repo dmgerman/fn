@@ -40,7 +40,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|StringUtil
 import|;
 end_import
 
@@ -2655,7 +2655,7 @@ block|{
 name|String
 name|part
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|getPart
 argument_list|(
@@ -2869,7 +2869,7 @@ block|{
 name|String
 name|part
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|getPart
 argument_list|(

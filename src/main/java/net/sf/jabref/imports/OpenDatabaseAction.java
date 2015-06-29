@@ -535,7 +535,7 @@ argument_list|(
 operator|new
 name|File
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|makeBibtexExtension
 argument_list|(
@@ -1103,7 +1103,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|Util
+name|FileBasedLock
 operator|.
 name|hasLockFile
 argument_list|(
@@ -1114,7 +1114,7 @@ block|{
 name|long
 name|modTime
 init|=
-name|Util
+name|FileBasedLock
 operator|.
 name|getLockFileTimeStamp
 argument_list|(
@@ -1208,7 +1208,7 @@ operator|.
 name|YES_OPTION
 condition|)
 block|{
-name|Util
+name|FileBasedLock
 operator|.
 name|deleteLockFile
 argument_list|(
@@ -1225,7 +1225,7 @@ elseif|else
 if|if
 condition|(
 operator|!
-name|Util
+name|FileBasedLock
 operator|.
 name|waitForFileLock
 argument_list|(

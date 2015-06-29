@@ -138,7 +138,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|StringUtil
 import|;
 end_import
 
@@ -705,7 +705,7 @@ name|protocol
 operator|.
 name|sendMessage
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|join
 argument_list|(

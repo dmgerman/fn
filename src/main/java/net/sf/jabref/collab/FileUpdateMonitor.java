@@ -24,7 +24,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|FileUtil
 import|;
 end_import
 
@@ -36,7 +36,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|Globals
 import|;
 end_import
 
@@ -731,7 +731,7 @@ try|try
 block|{
 name|res
 operator|=
-name|Util
+name|FileUtil
 operator|.
 name|copyFile
 argument_list|(
