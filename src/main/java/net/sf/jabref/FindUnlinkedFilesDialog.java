@@ -889,11 +889,6 @@ specifier|private
 name|JPanel
 name|panelImportArea
 decl_stmt|;
-DECL|field|mainArea
-specifier|private
-name|JPanel
-name|mainArea
-decl_stmt|;
 DECL|field|buttonBrowse
 specifier|private
 name|JButton
@@ -3333,12 +3328,6 @@ name|JPanel
 argument_list|()
 expr_stmt|;
 name|panelImportArea
-operator|=
-operator|new
-name|JPanel
-argument_list|()
-expr_stmt|;
-name|mainArea
 operator|=
 operator|new
 name|JPanel

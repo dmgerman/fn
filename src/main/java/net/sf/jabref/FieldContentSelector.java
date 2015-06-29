@@ -216,12 +216,6 @@ specifier|final
 name|Window
 name|owner
 decl_stmt|;
-DECL|field|panel
-specifier|private
-specifier|final
-name|BasePanel
-name|panel
-decl_stmt|;
 DECL|field|action
 specifier|private
 specifier|final
@@ -285,12 +279,6 @@ operator|.
 name|metaData
 operator|=
 name|metaData
-expr_stmt|;
-name|this
-operator|.
-name|panel
-operator|=
-name|panel
 expr_stmt|;
 name|this
 operator|.

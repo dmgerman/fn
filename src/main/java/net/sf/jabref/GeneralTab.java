@@ -342,12 +342,6 @@ specifier|final
 name|JabRefPreferences
 name|_prefs
 decl_stmt|;
-DECL|field|_frame
-specifier|private
-specifier|final
-name|JabRefFrame
-name|_frame
-decl_stmt|;
 DECL|field|language
 specifier|private
 specifier|final
@@ -402,10 +396,6 @@ block|{
 name|_prefs
 operator|=
 name|prefs
-expr_stmt|;
-name|_frame
-operator|=
-name|frame
 expr_stmt|;
 name|setLayout
 argument_list|(
