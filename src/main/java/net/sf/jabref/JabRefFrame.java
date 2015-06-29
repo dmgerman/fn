@@ -14615,10 +14615,8 @@ parameter_list|()
 block|{
 name|sysTray
 operator|.
-name|setTrayIconVisible
-argument_list|(
-literal|true
-argument_list|)
+name|show
+argument_list|()
 expr_stmt|;
 name|JabRefFrame
 operator|.
@@ -14662,10 +14660,8 @@ condition|)
 block|{
 name|sysTray
 operator|.
-name|setTrayIconVisible
-argument_list|(
-literal|false
-argument_list|)
+name|hide
+argument_list|()
 expr_stmt|;
 block|}
 name|setVisible
