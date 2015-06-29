@@ -146,6 +146,20 @@ name|void
 name|startAutoSaveTimer
 parameter_list|()
 block|{
+if|if
+condition|(
+name|t
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// shut down any previously set timer to not leak any timers
+name|t
+operator|.
+name|cancel
+argument_list|()
+expr_stmt|;
+block|}
 name|TimerTask
 name|task
 init|=
@@ -258,11 +272,6 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-name|int
-name|i
-init|=
-literal|0
-decl_stmt|;
 for|for
 control|(
 name|BasePanel
@@ -298,11 +307,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-else|else
-block|{                 }
-name|i
-operator|++
-expr_stmt|;
 block|}
 block|}
 block|}
