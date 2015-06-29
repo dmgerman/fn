@@ -665,7 +665,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|monitorInputStream (InputStream in)
-specifier|private
+specifier|protected
 name|InputStream
 name|monitorInputStream
 parameter_list|(
