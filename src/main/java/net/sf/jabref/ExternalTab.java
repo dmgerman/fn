@@ -258,18 +258,6 @@ specifier|final
 name|JCheckBox
 name|openFoldersOfAttachedFiles
 decl_stmt|;
-DECL|field|editFileTypes
-specifier|private
-specifier|final
-name|JButton
-name|editFileTypes
-decl_stmt|;
-DECL|field|regExpListener
-specifier|private
-specifier|final
-name|ItemListener
-name|regExpListener
-decl_stmt|;
 DECL|field|useRegExpComboBox
 specifier|private
 specifier|final
@@ -438,8 +426,9 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|JButton
 name|editFileTypes
-operator|=
+init|=
 operator|new
 name|JButton
 argument_list|(
@@ -450,7 +439,7 @@ argument_list|(
 literal|"Manage external file types"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|runAutoFileSearch
 operator|=
 operator|new
@@ -498,8 +487,9 @@ literal|"Use Regular Expression Search"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|ItemListener
 name|regExpListener
-operator|=
+init|=
 operator|new
 name|ItemListener
 argument_list|()
@@ -526,7 +516,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-expr_stmt|;
+decl_stmt|;
 name|useRegExpComboBox
 operator|.
 name|addItemListener

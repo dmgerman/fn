@@ -43,7 +43,7 @@ class|class
 name|RemoteListenerLifecycle
 block|{
 DECL|field|remoteListener
-specifier|public
+specifier|private
 specifier|static
 name|RemoteListener
 name|remoteListener

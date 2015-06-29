@@ -442,14 +442,6 @@ name|String
 argument_list|>
 name|fieldSet
 decl_stmt|;
-DECL|field|wordSet
-specifier|private
-name|TreeSet
-argument_list|<
-name|String
-argument_list|>
-name|wordSet
-decl_stmt|;
 DECL|field|frame
 specifier|private
 specifier|final
@@ -2407,8 +2399,12 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|TreeSet
+argument_list|<
+name|String
+argument_list|>
 name|wordSet
-operator|=
+init|=
 operator|new
 name|TreeSet
 argument_list|<
@@ -2417,7 +2413,7 @@ argument_list|>
 argument_list|(
 name|items
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|int
 name|index
 init|=

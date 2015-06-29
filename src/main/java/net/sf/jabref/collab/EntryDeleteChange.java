@@ -99,24 +99,6 @@ DECL|field|diskEntry
 name|BibtexEntry
 name|diskEntry
 decl_stmt|;
-DECL|field|isModifiedLocally
-specifier|private
-specifier|final
-name|boolean
-name|isModifiedLocally
-decl_stmt|;
-DECL|field|matchWithTmp
-specifier|private
-specifier|final
-name|double
-name|matchWithTmp
-decl_stmt|;
-DECL|field|pp
-specifier|private
-specifier|final
-name|PreviewPanel
-name|pp
-decl_stmt|;
 DECL|field|sp
 specifier|private
 specifier|final
@@ -153,8 +135,9 @@ name|tmpEntry
 expr_stmt|;
 comment|// Compare the deleted entry in memory with the one in the tmpfile. The
 comment|// entry could have been removed in memory.
+name|double
 name|matchWithTmp
-operator|=
+init|=
 name|DuplicateCheck
 operator|.
 name|compareEntriesStrictly
@@ -163,21 +146,23 @@ name|memEntry
 argument_list|,
 name|tmpEntry
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|// Check if it has been modified locally, since last tempfile was saved.
+name|boolean
 name|isModifiedLocally
-operator|=
+init|=
 operator|!
 operator|(
 name|matchWithTmp
 operator|>
 literal|1
 operator|)
-expr_stmt|;
+decl_stmt|;
 comment|//Util.pr("Modified entry: "+memEntry.getCiteKey()+"\n Modified locally: "+isModifiedLocally
 comment|//        +" Modifications agree: "+modificationsAgree);
+name|PreviewPanel
 name|pp
-operator|=
+init|=
 operator|new
 name|PreviewPanel
 argument_list|(
@@ -200,7 +185,7 @@ argument_list|(
 literal|"preview0"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|sp
 operator|=
 operator|new

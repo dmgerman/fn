@@ -109,12 +109,6 @@ specifier|final
 name|String
 name|mem
 decl_stmt|;
-DECL|field|tmp
-specifier|private
-specifier|final
-name|String
-name|tmp
-decl_stmt|;
 DECL|field|disk
 specifier|private
 specifier|final
@@ -194,12 +188,6 @@ operator|.
 name|mem
 operator|=
 name|mem
-expr_stmt|;
-name|this
-operator|.
-name|tmp
-operator|=
-name|tmp
 expr_stmt|;
 name|this
 operator|.

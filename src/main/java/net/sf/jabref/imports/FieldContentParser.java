@@ -24,31 +24,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Util
 import|;
 end_import
 
@@ -58,7 +34,6 @@ end_comment
 
 begin_class
 DECL|class|FieldContentParser
-specifier|public
 class|class
 name|FieldContentParser
 block|{

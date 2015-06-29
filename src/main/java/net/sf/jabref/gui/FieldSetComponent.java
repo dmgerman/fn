@@ -316,7 +316,6 @@ end_comment
 
 begin_class
 DECL|class|FieldSetComponent
-specifier|public
 class|class
 name|FieldSetComponent
 extends|extends
@@ -365,13 +364,6 @@ DECL|field|input
 specifier|private
 name|JTextField
 name|input
-decl_stmt|;
-DECL|field|title
-specifier|private
-name|JLabel
-name|title
-init|=
-literal|null
 decl_stmt|;
 DECL|field|add
 specifier|private
@@ -596,6 +588,11 @@ operator|new
 name|DefaultListModel
 argument_list|()
 expr_stmt|;
+name|JLabel
+name|title1
+init|=
+literal|null
+decl_stmt|;
 if|if
 condition|(
 name|title
@@ -603,9 +600,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-name|this
-operator|.
-name|title
+name|title1
 operator|=
 operator|new
 name|JLabel
@@ -707,9 +702,7 @@ name|REMAINDER
 expr_stmt|;
 if|if
 condition|(
-name|this
-operator|.
-name|title
+name|title1
 operator|!=
 literal|null
 condition|)
@@ -718,18 +711,14 @@ name|gbl
 operator|.
 name|setConstraints
 argument_list|(
-name|this
-operator|.
-name|title
+name|title1
 argument_list|,
 name|con
 argument_list|)
 expr_stmt|;
 name|add
 argument_list|(
-name|this
-operator|.
-name|title
+name|title1
 argument_list|)
 expr_stmt|;
 block|}

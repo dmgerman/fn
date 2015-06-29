@@ -66,20 +66,6 @@ specifier|private
 name|StringBuffer
 name|sb
 decl_stmt|;
-DECL|field|col
-specifier|private
-name|int
-name|col
-decl_stmt|;
-comment|// First line usually starts about so much further to the right.
-DECL|field|STARTCOL
-specifier|private
-specifier|final
-name|int
-name|STARTCOL
-init|=
-literal|4
-decl_stmt|;
 DECL|field|neverFailOnHashes
 specifier|private
 specifier|final
@@ -564,10 +550,6 @@ decl_stmt|;
 name|int
 name|pos2
 decl_stmt|;
-name|col
-operator|=
-name|STARTCOL
-expr_stmt|;
 comment|// Here we assume that the user encloses any bibtex strings in #, e.g.:
 comment|// #jan# - #feb#
 comment|// ...which will be written to the file like this:
@@ -940,11 +922,11 @@ name|nestedEnvironments
 init|=
 literal|0
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|commandName
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|char

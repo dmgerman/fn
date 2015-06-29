@@ -404,7 +404,7 @@ DECL|enumConstant|EXPORTER
 name|IMPORTER
 block|,
 name|EXPORTER
-block|;     }
+block|}
 DECL|method|DBImportExportDialog (JabRefFrame frame, Vector<Vector<String>> rows, DialogType dialogType)
 specifier|public
 name|DBImportExportDialog
@@ -1204,7 +1204,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|isImporter ()
-specifier|public
+specifier|private
 name|boolean
 name|isImporter
 parameter_list|()

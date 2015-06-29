@@ -304,9 +304,15 @@ operator|.
 name|append
 argument_list|(
 literal|"<bibo:contributor><foaf:Person foaf:name=\""
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|author
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"\"/></bibo:contributor>\n"
 argument_list|)
 expr_stmt|;
@@ -315,9 +321,15 @@ operator|.
 name|append
 argument_list|(
 literal|"<bibo:position>"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|position
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"</bibo:position>\n"
 argument_list|)
 expr_stmt|;

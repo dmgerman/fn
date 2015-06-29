@@ -299,21 +299,6 @@ operator|new
 name|GridBagConstraints
 argument_list|()
 decl_stmt|;
-DECL|field|first
-specifier|private
-name|JButton
-name|first
-decl_stmt|;
-DECL|field|second
-specifier|private
-name|JButton
-name|second
-decl_stmt|;
-DECL|field|both
-specifier|private
-name|JButton
-name|both
-decl_stmt|;
 DECL|field|cancel
 specifier|private
 specifier|final
@@ -383,11 +368,6 @@ name|boolean
 name|block
 init|=
 literal|true
-decl_stmt|;
-DECL|field|lab
-specifier|private
-name|TitleLabel
-name|lab
 decl_stmt|;
 DECL|method|DuplicateResolverDialog (JFrame frame, BibtexEntry one, BibtexEntry two, int type)
 specifier|public
@@ -504,6 +484,15 @@ name|int
 name|type
 parameter_list|)
 block|{
+name|JButton
+name|both
+decl_stmt|;
+name|JButton
+name|second
+decl_stmt|;
+name|JButton
+name|first
+decl_stmt|;
 switch|switch
 condition|(
 name|type
@@ -834,8 +823,9 @@ name|weighty
 operator|=
 literal|0
 expr_stmt|;
+name|TitleLabel
 name|lab
-operator|=
+init|=
 operator|new
 name|TitleLabel
 argument_list|(
@@ -856,7 +846,7 @@ argument_list|(
 literal|"Entry in current database"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|gbl
 operator|.
 name|setConstraints

@@ -181,7 +181,6 @@ implements|implements
 name|EntryFetcher
 block|{
 DECL|class|SearchResult
-specifier|protected
 class|class
 name|SearchResult
 block|{

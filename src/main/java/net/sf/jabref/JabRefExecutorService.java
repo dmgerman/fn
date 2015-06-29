@@ -345,7 +345,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|waitForThreadToFinish (Thread thread)
-specifier|public
+specifier|private
 name|void
 name|waitForThreadToFinish
 parameter_list|(

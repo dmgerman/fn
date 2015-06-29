@@ -211,12 +211,6 @@ specifier|final
 name|JabRefPreferences
 name|_prefs
 decl_stmt|;
-DECL|field|_frame
-specifier|private
-specifier|final
-name|JabRefFrame
-name|_frame
-decl_stmt|;
 DECL|field|saveInOriginalOrder
 specifier|private
 specifier|final
@@ -335,12 +329,6 @@ operator|.
 name|_prefs
 operator|=
 name|prefs
-expr_stmt|;
-name|this
-operator|.
-name|_frame
-operator|=
-name|frame
 expr_stmt|;
 name|FormLayout
 name|layout

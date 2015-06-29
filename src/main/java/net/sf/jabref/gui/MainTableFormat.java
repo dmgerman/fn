@@ -601,11 +601,6 @@ specifier|private
 name|boolean
 name|namesLastOnly
 decl_stmt|;
-DECL|field|showShort
-specifier|private
-name|boolean
-name|showShort
-decl_stmt|;
 DECL|method|MainTableFormat (BasePanel panel)
 specifier|public
 name|MainTableFormat
@@ -2265,8 +2260,9 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Read name format options:
+name|boolean
 name|showShort
-operator|=
+init|=
 name|Globals
 operator|.
 name|prefs
@@ -2275,8 +2271,7 @@ name|getBoolean
 argument_list|(
 literal|"showShort"
 argument_list|)
-expr_stmt|;
-comment|//MK:
+decl_stmt|;
 name|namesNatbib
 operator|=
 name|Globals

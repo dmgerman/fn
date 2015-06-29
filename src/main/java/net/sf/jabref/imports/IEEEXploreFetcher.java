@@ -339,18 +339,6 @@ operator|new
 name|UnitFormatter
 argument_list|()
 decl_stmt|;
-DECL|field|dialog
-specifier|private
-name|ImportInspector
-name|dialog
-init|=
-literal|null
-decl_stmt|;
-DECL|field|status
-specifier|private
-name|OutputPrinter
-name|status
-decl_stmt|;
 DECL|field|htmlConverter
 specifier|private
 specifier|final
@@ -633,14 +621,6 @@ argument_list|(
 literal|"<a href=\'(.+)\'>\\s*<span class=\"more\">View full.*</span></a>"
 argument_list|)
 decl_stmt|;
-DECL|field|abrvPattern
-specifier|private
-specifier|final
-name|String
-name|abrvPattern
-init|=
-literal|".*[^,] '?\\d+\\)?"
-decl_stmt|;
 DECL|field|ieeeArticleNumberPattern
 name|Pattern
 name|ieeeArticleNumberPattern
@@ -890,18 +870,6 @@ name|OutputPrinter
 name|status
 parameter_list|)
 block|{
-name|this
-operator|.
-name|dialog
-operator|=
-name|dialog
-expr_stmt|;
-name|this
-operator|.
-name|status
-operator|=
-name|status
-expr_stmt|;
 name|terms
 operator|=
 name|query
@@ -1861,11 +1829,11 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|char
@@ -2964,6 +2932,11 @@ name|matcher
 argument_list|(
 name|fullName
 argument_list|)
+decl_stmt|;
+name|String
+name|abrvPattern
+init|=
+literal|".*[^,] '?\\d+\\)?"
 decl_stmt|;
 if|if
 condition|(
@@ -4895,11 +4868,11 @@ operator|.
 name|openStream
 argument_list|()
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|byte
@@ -4999,11 +4972,11 @@ name|f
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|byte

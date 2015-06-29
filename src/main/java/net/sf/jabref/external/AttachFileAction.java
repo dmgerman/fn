@@ -92,13 +92,6 @@ name|AttachFileAction
 implements|implements
 name|BaseAction
 block|{
-DECL|field|entry
-specifier|private
-name|BibtexEntry
-name|entry
-init|=
-literal|null
-decl_stmt|;
 DECL|field|panel
 specifier|private
 specifier|final
@@ -143,8 +136,9 @@ block|{
 return|return;
 comment|// TODO: display error message?
 block|}
+name|BibtexEntry
 name|entry
-operator|=
+init|=
 name|panel
 operator|.
 name|getSelectedEntries
@@ -152,7 +146,7 @@ argument_list|()
 index|[
 literal|0
 index|]
-expr_stmt|;
+decl_stmt|;
 name|FileListEntry
 name|flEntry
 init|=

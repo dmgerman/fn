@@ -56,11 +56,6 @@ name|RemoveLatexCommands
 implements|implements
 name|LayoutFormatter
 block|{
-DECL|field|i
-specifier|private
-name|int
-name|i
-decl_stmt|;
 annotation|@
 name|Override
 DECL|method|format (String field)
@@ -72,11 +67,11 @@ name|String
 name|field
 parameter_list|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 literal|""
 argument_list|)
@@ -97,6 +92,9 @@ decl_stmt|,
 name|incommand
 init|=
 literal|false
+decl_stmt|;
+name|int
+name|i
 decl_stmt|;
 for|for
 control|(

@@ -30,7 +30,6 @@ end_import
 
 begin_interface
 DECL|interface|LabelRule
-specifier|public
 interface|interface
 name|LabelRule
 block|{

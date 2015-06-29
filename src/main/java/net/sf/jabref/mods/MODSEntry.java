@@ -224,7 +224,6 @@ end_comment
 
 begin_class
 DECL|class|MODSEntry
-specifier|public
 class|class
 name|MODSEntry
 block|{
@@ -280,28 +279,12 @@ name|date
 init|=
 literal|null
 decl_stmt|;
-DECL|field|place
-specifier|private
-name|String
-name|place
-init|=
-literal|null
-decl_stmt|;
 DECL|field|title
 specifier|private
 name|String
 name|title
 init|=
 literal|null
-decl_stmt|;
-comment|// should really be handled with an enum
-DECL|field|type
-specifier|private
-specifier|final
-name|String
-name|type
-init|=
-literal|"text"
 decl_stmt|;
 DECL|field|number
 specifier|private
@@ -589,6 +572,11 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|String
+name|place
+init|=
+literal|null
+decl_stmt|;
 if|if
 condition|(
 name|CHARFORMAT
@@ -1620,6 +1608,11 @@ name|createElement
 argument_list|(
 literal|"typeOfResource"
 argument_list|)
+decl_stmt|;
+name|String
+name|type
+init|=
+literal|"text"
 decl_stmt|;
 name|typeOfResource
 operator|.

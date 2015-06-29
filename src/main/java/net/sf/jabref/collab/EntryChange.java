@@ -113,36 +113,6 @@ name|EntryChange
 extends|extends
 name|Change
 block|{
-DECL|field|memEntry
-specifier|private
-specifier|final
-name|BibtexEntry
-name|memEntry
-decl_stmt|;
-DECL|field|tmpEntry
-specifier|private
-specifier|final
-name|BibtexEntry
-name|tmpEntry
-decl_stmt|;
-DECL|field|diskEntry
-specifier|private
-specifier|final
-name|BibtexEntry
-name|diskEntry
-decl_stmt|;
-DECL|field|isModifiedLocally
-specifier|private
-specifier|final
-name|boolean
-name|isModifiedLocally
-decl_stmt|;
-DECL|field|modificationsAgree
-specifier|private
-specifier|final
-name|boolean
-name|modificationsAgree
-decl_stmt|;
 DECL|method|EntryChange (BibtexEntry memEntry, BibtexEntry tmpEntry, BibtexEntry diskEntry)
 specifier|public
 name|EntryChange
@@ -191,28 +161,11 @@ operator|+
 literal|'\''
 expr_stmt|;
 block|}
-name|this
-operator|.
-name|memEntry
-operator|=
-name|memEntry
-expr_stmt|;
-name|this
-operator|.
-name|tmpEntry
-operator|=
-name|tmpEntry
-expr_stmt|;
-name|this
-operator|.
-name|diskEntry
-operator|=
-name|diskEntry
-expr_stmt|;
 comment|// We know that tmpEntry is not equal to diskEntry. Check if it has been modified
 comment|// locally as well, since last tempfile was saved.
+name|boolean
 name|isModifiedLocally
-operator|=
+init|=
 operator|!
 operator|(
 name|DuplicateCheck
@@ -226,11 +179,12 @@ argument_list|)
 operator|>
 literal|1
 operator|)
-expr_stmt|;
+decl_stmt|;
 comment|// Another (unlikely?) possibility is that both disk and mem version has been modified
 comment|// in the same way. Check for this, too.
+name|boolean
 name|modificationsAgree
-operator|=
+init|=
 operator|(
 name|DuplicateCheck
 operator|.
@@ -243,7 +197,7 @@ argument_list|)
 operator|>
 literal|1
 operator|)
-expr_stmt|;
+decl_stmt|;
 comment|//Util.pr("Modified entry: "+memEntry.getCiteKey()+"\n Modified locally: "+isModifiedLocally
 comment|//        +" Modifications agree: "+modificationsAgree);
 name|TreeSet
@@ -674,11 +628,11 @@ name|onDisk
 operator|=
 name|onDisk
 expr_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|text
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|text

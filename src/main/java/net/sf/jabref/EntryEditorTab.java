@@ -726,11 +726,11 @@ literal|"8dlu, fill:pref, 1dlu, fill:10dlu:grow, 1dlu, fill:pref"
 else|:
 literal|"fill:pref, 1dlu, fill:pref:grow, 1dlu, fill:pref"
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|int

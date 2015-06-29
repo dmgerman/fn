@@ -7955,11 +7955,11 @@ name|done
 init|=
 literal|false
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|res
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 while|while
@@ -8112,11 +8112,11 @@ name|String
 name|s
 parameter_list|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|int

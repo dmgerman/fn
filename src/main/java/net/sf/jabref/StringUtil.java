@@ -264,7 +264,7 @@ name|s
 return|;
 block|}
 DECL|method|rtrim (String s)
-specifier|public
+specifier|private
 specifier|static
 name|String
 name|rtrim
@@ -350,11 +350,11 @@ argument_list|,
 name|to
 argument_list|)
 expr_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 for|for

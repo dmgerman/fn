@@ -1046,7 +1046,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|isInteger (String s)
-specifier|public
+specifier|private
 specifier|static
 name|boolean
 name|isInteger

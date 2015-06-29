@@ -1720,11 +1720,11 @@ decl_stmt|;
 name|String
 name|_label
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|_sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|boolean
@@ -2452,11 +2452,11 @@ condition|)
 block|{
 comment|// Abbreviate - that is,
 comment|// System.out.println(_sbvalue.toString());
-name|StringBuffer
+name|StringBuilder
 name|abbr
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|String
@@ -5597,11 +5597,11 @@ argument_list|(
 name|authorField
 argument_list|)
 expr_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|author
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|String
@@ -5733,11 +5733,11 @@ argument_list|(
 name|authorField
 argument_list|)
 expr_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|author
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|String
@@ -5977,11 +5977,11 @@ argument_list|(
 name|authorField
 argument_list|)
 expr_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|author
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|String
@@ -6135,11 +6135,11 @@ argument_list|(
 name|authorField
 argument_list|)
 expr_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|author
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|String

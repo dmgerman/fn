@@ -272,11 +272,6 @@ name|String
 argument_list|>
 name|iconKeys
 decl_stmt|;
-DECL|field|listModel
-specifier|private
-name|DefaultListModel
-name|listModel
-decl_stmt|;
 DECL|field|ok
 specifier|private
 specifier|final
@@ -561,12 +556,13 @@ name|icon
 argument_list|)
 expr_stmt|;
 block|}
+name|DefaultListModel
 name|listModel
-operator|=
+init|=
 operator|new
 name|DefaultListModel
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|icons
 operator|=
 operator|new

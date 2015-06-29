@@ -150,7 +150,6 @@ end_comment
 
 begin_class
 DECL|class|OOBibStyle
-specifier|public
 class|class
 name|OOBibStyle
 implements|implements

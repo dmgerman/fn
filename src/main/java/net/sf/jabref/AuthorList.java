@@ -252,36 +252,6 @@ decl_stmt|;
 comment|// Character -- token
 comment|// terminator (either " " or
 comment|// "-")
-comment|// private static final int OFFSET_TOKEN_CASE = 3; // Boolean --
-comment|// true=uppercase, false=lowercase
-comment|// the following are indices in 'tokens' vector created during parsing of
-comment|// author name
-comment|// and later used to properly split author name into parts
-DECL|field|von_start
-specifier|private
-name|int
-name|von_start
-decl_stmt|;
-comment|// first lower-case token (-1 if all tokens upper-case)
-DECL|field|last_start
-specifier|private
-name|int
-name|last_start
-decl_stmt|;
-comment|// first upper-case token after first lower-case token (-1
-specifier|private
-name|int
-comment|// if does not exist)
-DECL|field|comma_first
-name|comma_first
-decl_stmt|;
-comment|// token after first comma (-1 if no commas)
-DECL|field|comma_second
-specifier|private
-name|int
-name|comma_second
-decl_stmt|;
-comment|// token after second comma (-1 if no commas or only one
 comment|// comma)
 comment|// Token types (returned by getToken procedure)
 DECL|field|TOKEN_EOF
@@ -843,26 +813,30 @@ argument_list|>
 argument_list|()
 expr_stmt|;
 comment|// initialization
+name|int
 name|von_start
-operator|=
+init|=
 operator|-
 literal|1
-expr_stmt|;
+decl_stmt|;
+name|int
 name|last_start
-operator|=
+init|=
 operator|-
 literal|1
-expr_stmt|;
+decl_stmt|;
+name|int
 name|comma_first
-operator|=
+init|=
 operator|-
 literal|1
-expr_stmt|;
+decl_stmt|;
+name|int
 name|comma_second
-operator|=
+init|=
 operator|-
 literal|1
-expr_stmt|;
+decl_stmt|;
 comment|// First step: collect tokens in 'tokens' Vector and calculate indices
 name|token_loop
 label|:

@@ -38,6 +38,7 @@ name|EasyDateFormat
 block|{
 comment|/**      * A static Object for date formatting. Please do not create the object      * here, because there are some references from the Globals class.....      */
 DECL|field|dateFormatter
+specifier|private
 specifier|static
 name|SimpleDateFormat
 name|dateFormatter

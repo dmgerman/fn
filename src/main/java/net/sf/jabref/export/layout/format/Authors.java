@@ -562,14 +562,6 @@ name|authorNumberEtAl
 init|=
 literal|1
 decl_stmt|;
-specifier|private
-specifier|final
-name|String
-DECL|field|firstFirstSeparator
-name|firstFirstSeparator
-init|=
-literal|" "
-decl_stmt|;
 DECL|field|lastFirstSeparator
 specifier|private
 name|String
@@ -601,14 +593,6 @@ name|String
 name|etAlString
 init|=
 literal|" et al."
-decl_stmt|;
-DECL|field|jrSeparator
-specifier|private
-specifier|final
-name|String
-name|jrSeparator
-init|=
-literal|" "
 decl_stmt|;
 annotation|@
 name|Override
@@ -1727,6 +1711,11 @@ argument_list|()
 operator|)
 condition|)
 block|{
+name|String
+name|jrSeparator
+init|=
+literal|" "
+decl_stmt|;
 name|lastNamePart
 operator|=
 name|lastNamePart
@@ -1916,6 +1905,11 @@ condition|(
 name|firstFirst
 condition|)
 block|{
+name|String
+name|firstFirstSeparator
+init|=
+literal|" "
+decl_stmt|;
 name|sb
 operator|.
 name|append

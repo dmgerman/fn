@@ -676,11 +676,11 @@ name|in
 argument_list|)
 decl_stmt|;
 specifier|final
-name|StringBuffer
+name|StringBuilder
 name|sbuf
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|char
@@ -738,11 +738,11 @@ name|String
 name|makeSearchURL
 parameter_list|()
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|DBLPFetcher
 operator|.

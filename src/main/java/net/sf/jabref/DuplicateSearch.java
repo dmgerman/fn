@@ -138,13 +138,6 @@ index|[]
 argument_list|>
 argument_list|()
 decl_stmt|;
-DECL|field|autoRemoveExactDuplicates
-specifier|private
-name|boolean
-name|autoRemoveExactDuplicates
-init|=
-literal|false
-decl_stmt|;
 DECL|method|DuplicateSearch (BasePanel bp)
 specifier|public
 name|DuplicateSearch
@@ -186,10 +179,11 @@ name|duplicateCounter
 init|=
 literal|0
 decl_stmt|;
+name|boolean
 name|autoRemoveExactDuplicates
-operator|=
+init|=
 literal|false
-expr_stmt|;
+decl_stmt|;
 name|panel
 operator|.
 name|output

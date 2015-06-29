@@ -933,11 +933,11 @@ literal|"0"
 argument_list|)
 decl_stmt|;
 comment|//System.out.println(gfs);
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|gfs
 argument_list|)

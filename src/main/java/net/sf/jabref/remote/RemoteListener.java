@@ -244,7 +244,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|closeServerSocket ()
-specifier|public
+specifier|private
 name|void
 name|closeServerSocket
 parameter_list|()

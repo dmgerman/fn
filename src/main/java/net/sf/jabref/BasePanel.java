@@ -12608,9 +12608,7 @@ literal|"Saved database"
 argument_list|)
 argument_list|)
 condition|)
-block|{
-empty_stmt|;
-block|}
+block|{         }
 name|frame
 operator|.
 name|output

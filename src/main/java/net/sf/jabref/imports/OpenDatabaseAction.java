@@ -1656,11 +1656,11 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|StringBuffer
+name|StringBuilder
 name|wrn
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 for|for
@@ -2139,11 +2139,11 @@ name|suppliedEncoding
 init|=
 literal|null
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|headerText
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 try|try
@@ -2389,11 +2389,11 @@ block|}
 comment|// If ok, then read the rest of the line, which should contain the
 comment|// name
 comment|// of the encoding:
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 while|while

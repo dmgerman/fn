@@ -249,11 +249,11 @@ name|BibtexEntry
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|BufferedReader
@@ -430,11 +430,11 @@ name|j
 operator|++
 control|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|current
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|fields
 index|[

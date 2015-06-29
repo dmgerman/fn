@@ -562,6 +562,7 @@ name|FileUpdateListener
 name|listener
 decl_stmt|;
 DECL|field|file
+specifier|final
 name|File
 name|file
 decl_stmt|;

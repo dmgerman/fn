@@ -279,13 +279,6 @@ operator|new
 name|JButton
 argument_list|()
 decl_stmt|;
-comment|//EntryCustomizationDialog diag;
-DECL|field|help
-specifier|private
-specifier|final
-name|HelpAction
-name|help
-decl_stmt|;
 DECL|method|GenFieldsCustomizer (JabRefFrame frame )
 specifier|public
 name|GenFieldsCustomizer
@@ -314,8 +307,9 @@ operator|=
 name|frame
 expr_stmt|;
 comment|//this.diag = diag;
+name|HelpAction
 name|help
-operator|=
+init|=
 operator|new
 name|HelpAction
 argument_list|(
@@ -336,7 +330,7 @@ argument_list|(
 literal|"helpSmall"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|helpBut
 operator|=
 operator|new

@@ -906,14 +906,6 @@ name|bcol
 init|=
 literal|"b:"
 decl_stmt|;
-DECL|field|FORMATXML
-specifier|private
-specifier|final
-name|boolean
-name|FORMATXML
-init|=
-literal|false
-decl_stmt|;
 DECL|method|MSBibEntry ()
 specifier|private
 name|MSBibEntry
@@ -3556,6 +3548,11 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+name|boolean
+name|FORMATXML
+init|=
+literal|false
+decl_stmt|;
 if|if
 condition|(
 name|FORMATXML
@@ -7784,11 +7781,11 @@ name|String
 name|in
 parameter_list|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|out
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 comment|// Used to hold the output.

@@ -358,11 +358,11 @@ parameter_list|)
 block|{
 comment|// try to extract the structure of author tag
 comment|// N = name, ","= seperator, "a" = and
-name|StringBuffer
+name|StringBuilder
 name|structure
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|int

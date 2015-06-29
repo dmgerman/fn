@@ -1251,11 +1251,11 @@ name|field
 argument_list|)
 expr_stmt|;
 block|}
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 literal|100
 argument_list|)

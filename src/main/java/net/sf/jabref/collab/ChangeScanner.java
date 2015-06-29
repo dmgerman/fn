@@ -212,14 +212,6 @@ name|ChangeScanner
 implements|implements
 name|Runnable
 block|{
-DECL|field|MATCH_THRESHOLD
-specifier|private
-specifier|final
-name|double
-name|MATCH_THRESHOLD
-init|=
-literal|0.4
-decl_stmt|;
 DECL|field|sortBy
 specifier|private
 specifier|final
@@ -1518,6 +1510,11 @@ expr_stmt|;
 block|}
 block|}
 block|}
+name|double
+name|MATCH_THRESHOLD
+init|=
+literal|0.4
+decl_stmt|;
 if|if
 condition|(
 name|bestMatch

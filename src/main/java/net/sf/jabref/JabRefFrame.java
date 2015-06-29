@@ -1709,11 +1709,6 @@ name|sysTray
 init|=
 literal|null
 decl_stmt|;
-DECL|field|labelMaker
-specifier|private
-name|LabelMaker
-name|labelMaker
-decl_stmt|;
 comment|// The help window.
 DECL|field|helpDiag
 specifier|public
@@ -6855,12 +6850,13 @@ name|initLabelMaker
 parameter_list|()
 block|{
 comment|// initialize the labelMaker
+name|LabelMaker
 name|labelMaker
-operator|=
+init|=
 operator|new
 name|LabelMaker
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|labelMaker
 operator|.
 name|addRule

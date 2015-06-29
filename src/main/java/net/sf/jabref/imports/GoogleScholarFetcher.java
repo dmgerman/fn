@@ -155,15 +155,6 @@ name|hasRunConfig
 init|=
 literal|false
 decl_stmt|;
-DECL|field|clearKeys
-specifier|private
-specifier|final
-name|boolean
-name|clearKeys
-init|=
-literal|true
-decl_stmt|;
-comment|// Should we clear the keys so new ones can be generated?
 DECL|field|MAX_ENTRIES_TO_LOAD
 specifier|private
 specifier|static
@@ -1450,6 +1441,11 @@ argument_list|()
 operator|.
 name|next
 argument_list|()
+decl_stmt|;
+name|boolean
+name|clearKeys
+init|=
+literal|true
 decl_stmt|;
 if|if
 condition|(

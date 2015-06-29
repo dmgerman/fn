@@ -179,14 +179,6 @@ name|file
 init|=
 literal|null
 decl_stmt|;
-DECL|field|FILENAME
-specifier|private
-specifier|final
-name|String
-name|FILENAME
-init|=
-literal|"/EndNote.zip"
-decl_stmt|;
 comment|/** Creates a new instance of ExpandEndnoteFilters */
 DECL|method|ExpandEndnoteFilters (JabRefFrame frame)
 specifier|public
@@ -374,6 +366,11 @@ name|void
 name|run
 parameter_list|()
 block|{
+name|String
+name|FILENAME
+init|=
+literal|"/EndNote.zip"
+decl_stmt|;
 name|ResourceExtractor
 name|re
 init|=

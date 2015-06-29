@@ -363,7 +363,15 @@ argument_list|(
 operator|new
 name|String
 index|[
-literal|0
+name|GUIGlobals
+operator|.
+name|LANGUAGES
+operator|.
+name|keySet
+argument_list|()
+operator|.
+name|size
+argument_list|()
 index|]
 argument_list|)
 argument_list|)

@@ -89,13 +89,6 @@ specifier|final
 name|BibtexEntry
 name|diskEntry
 decl_stmt|;
-comment|//  boolean isModifiedLocally, modificationsAgree;[[[[[[
-DECL|field|pp
-specifier|private
-specifier|final
-name|PreviewPanel
-name|pp
-decl_stmt|;
 DECL|field|sp
 specifier|private
 specifier|final
@@ -121,8 +114,9 @@ name|diskEntry
 operator|=
 name|diskEntry
 expr_stmt|;
+name|PreviewPanel
 name|pp
-operator|=
+init|=
 operator|new
 name|PreviewPanel
 argument_list|(
@@ -145,7 +139,7 @@ argument_list|(
 literal|"preview0"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|sp
 operator|=
 operator|new

@@ -616,11 +616,11 @@ argument_list|>
 name|wordsToHighlight
 parameter_list|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 literal|100
 argument_list|)
@@ -692,11 +692,11 @@ name|encoding
 parameter_list|)
 block|{
 comment|//System.out.println("LAYOUT: " + bibtex.getId());
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 literal|100
 argument_list|)

@@ -214,11 +214,11 @@ name|selectedEntries
 operator|=
 name|selectedEntries
 expr_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|keys
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 for|for

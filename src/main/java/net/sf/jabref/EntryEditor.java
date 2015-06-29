@@ -669,13 +669,6 @@ name|DeleteAction
 argument_list|()
 decl_stmt|;
 comment|// The action concerned with copying the BibTeX key to the clipboard.
-DECL|field|copyKeyAction
-specifier|private
-specifier|final
-name|CopyKeyAction
-name|copyKeyAction
-decl_stmt|;
-comment|// The action concerned with copying the BibTeX key to the clipboard.
 DECL|field|nextEntryAction
 specifier|final
 name|AbstractAction
@@ -783,16 +776,6 @@ DECL|field|genPan
 name|EntryEditorTab
 name|genPan
 decl_stmt|;
-DECL|field|optPan
-specifier|private
-name|EntryEditorTab
-name|optPan
-decl_stmt|;
-DECL|field|reqPan
-specifier|private
-name|EntryEditorTab
-name|reqPan
-decl_stmt|;
 DECL|field|absPan
 name|EntryEditorTab
 name|absPan
@@ -810,11 +793,6 @@ specifier|private
 name|JTextArea
 name|source
 decl_stmt|;
-DECL|field|tlb
-specifier|private
-name|JToolBar
-name|tlb
-decl_stmt|;
 DECL|field|tabbed
 specifier|private
 specifier|final
@@ -829,11 +807,6 @@ comment|// JTabbedPane.RIGHT);
 DECL|field|lab
 name|JLabel
 name|lab
-decl_stmt|;
-DECL|field|typeButton
-specifier|private
-name|TypeButton
-name|typeButton
 decl_stmt|;
 DECL|field|frame
 specifier|final
@@ -1072,12 +1045,13 @@ operator|new
 name|CloseAction
 argument_list|()
 expr_stmt|;
+name|CopyKeyAction
 name|copyKeyAction
-operator|=
+init|=
 operator|new
 name|CopyKeyAction
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|generateKeyAction
 operator|=
 operator|new
@@ -1222,8 +1196,9 @@ name|fields
 argument_list|)
 expr_stmt|;
 block|}
+name|EntryEditorTab
 name|reqPan
-operator|=
+init|=
 operator|new
 name|EntryEditorTab
 argument_list|(
@@ -1246,7 +1221,7 @@ argument_list|(
 literal|"Required fields"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|reqPan
@@ -1324,6 +1299,9 @@ literal|1
 operator|)
 condition|)
 block|{
+name|EntryEditorTab
+name|optPan
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -2129,8 +2107,9 @@ name|BorderLayout
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|JToolBar
 name|tlb
-operator|=
+init|=
 operator|new
 name|JToolBar
 argument_list|(
@@ -2138,7 +2117,7 @@ name|SwingConstants
 operator|.
 name|VERTICAL
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 comment|//tlb.putClientProperty(Options.HEADER_STYLE_KEY, HeaderStyle.BOTH);
 name|tlb
 operator|.
@@ -2481,8 +2460,9 @@ operator|.
 name|CENTER
 argument_list|)
 expr_stmt|;
+name|TypeButton
 name|typeButton
-operator|=
+init|=
 operator|new
 name|TypeButton
 argument_list|(
@@ -2494,7 +2474,7 @@ operator|.
 name|getName
 argument_list|()
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|tlb
 operator|.
 name|add
@@ -5962,6 +5942,7 @@ block|}
 block|}
 block|}
 DECL|class|TabListener
+specifier|private
 class|class
 name|TabListener
 implements|implements
