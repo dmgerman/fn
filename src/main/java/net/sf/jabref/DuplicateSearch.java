@@ -291,6 +291,8 @@ operator|.
 name|executeWithLowPriorityInOwnThread
 argument_list|(
 name|st
+argument_list|,
+literal|"Searcher"
 argument_list|)
 expr_stmt|;
 name|int

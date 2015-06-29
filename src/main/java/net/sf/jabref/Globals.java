@@ -1452,6 +1452,8 @@ argument_list|(
 name|Globals
 operator|.
 name|fileUpdateMonitor
+argument_list|,
+literal|"FileUpdateMonitor"
 argument_list|)
 expr_stmt|;
 block|}

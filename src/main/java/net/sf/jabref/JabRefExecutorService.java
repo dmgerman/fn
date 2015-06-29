@@ -54,7 +54,43 @@ init|=
 name|Executors
 operator|.
 name|newCachedThreadPool
+argument_list|(
+operator|new
+name|ThreadFactory
 argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|Thread
+name|newThread
+parameter_list|(
+name|Runnable
+name|r
+parameter_list|)
+block|{
+name|Thread
+name|thread
+init|=
+operator|new
+name|Thread
+argument_list|(
+name|r
+argument_list|)
+decl_stmt|;
+name|thread
+operator|.
+name|setName
+argument_list|(
+literal|"JabRef CachedThreadPool"
+argument_list|)
+expr_stmt|;
+return|return
+name|thread
+return|;
+block|}
+block|}
+argument_list|)
 decl_stmt|;
 DECL|field|startedThreads
 specifier|private
@@ -178,13 +214,16 @@ expr_stmt|;
 block|}
 block|}
 block|}
-DECL|method|executeWithLowPriorityInOwnThread (Runnable runnable)
+DECL|method|executeWithLowPriorityInOwnThread (Runnable runnable, String name)
 specifier|public
 name|void
 name|executeWithLowPriorityInOwnThread
 parameter_list|(
 name|Runnable
 name|runnable
+parameter_list|,
+name|String
+name|name
 parameter_list|)
 block|{
 name|Thread
@@ -200,7 +239,11 @@ name|thread
 operator|.
 name|setName
 argument_list|(
-literal|"JabRef low prio"
+literal|"JabRef - "
+operator|+
+name|name
+operator|+
+literal|" - low prio"
 argument_list|)
 expr_stmt|;
 name|startedThreads
@@ -225,31 +268,17 @@ name|start
 argument_list|()
 expr_stmt|;
 block|}
-DECL|method|executeInOwnThread (Runnable runnable)
+DECL|method|executeInOwnThread (Thread thread)
 specifier|public
 name|void
 name|executeInOwnThread
 parameter_list|(
-name|Runnable
-name|runnable
+name|Thread
+name|thread
 parameter_list|)
 block|{
-name|Thread
-name|thread
-init|=
-operator|new
-name|Thread
-argument_list|(
-name|runnable
-argument_list|)
-decl_stmt|;
-name|thread
-operator|.
-name|setName
-argument_list|(
-literal|"JabRef normal prio"
-argument_list|)
-expr_stmt|;
+comment|// this is a special case method for Threads that cannot be interrupted so easily
+comment|// this method should normally not be used
 name|startedThreads
 operator|.
 name|add
@@ -309,6 +338,21 @@ operator|.
 name|start
 argument_list|()
 expr_stmt|;
+name|waitForThreadToFinish
+argument_list|(
+name|thread
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|waitForThreadToFinish (Thread thread)
+specifier|public
+name|void
+name|waitForThreadToFinish
+parameter_list|(
+name|Thread
+name|thread
+parameter_list|)
+block|{
 while|while
 condition|(
 literal|true

@@ -125,23 +125,17 @@ argument_list|)
 decl_stmt|;
 DECL|field|WAIT
 specifier|private
+specifier|static
 specifier|final
 name|int
 name|WAIT
 init|=
 literal|4000
 decl_stmt|;
-DECL|field|tmpNum
-specifier|static
-name|int
-name|tmpNum
-init|=
-literal|0
-decl_stmt|;
-DECL|field|no
+DECL|field|numberOfUpdateListener
 specifier|private
 name|int
-name|no
+name|numberOfUpdateListener
 init|=
 literal|0
 decl_stmt|;
@@ -165,12 +159,6 @@ name|Entry
 argument_list|>
 argument_list|()
 decl_stmt|;
-DECL|field|running
-specifier|private
-specifier|volatile
-name|boolean
-name|running
-decl_stmt|;
 annotation|@
 name|Override
 DECL|method|run ()
@@ -179,14 +167,10 @@ name|void
 name|run
 parameter_list|()
 block|{
-name|running
-operator|=
-literal|true
-expr_stmt|;
 comment|// The running variable is used to make the thread stop when needed.
 while|while
 condition|(
-name|running
+literal|true
 condition|)
 block|{
 comment|//System.out.println("Polling...");
@@ -285,31 +269,9 @@ argument_list|(
 literal|"FileUpdateMonitor has been interrupted."
 argument_list|)
 expr_stmt|;
-comment|/*  the (?) correct way to interrupt threads, according to                  *  http://www.roseindia.net/javatutorials/shutting_down_threads_cleanly.shtml                  */
-name|Thread
-operator|.
-name|currentThread
-argument_list|()
-operator|.
-name|interrupt
-argument_list|()
-expr_stmt|;
-comment|// very important
-break|break;
+return|return;
 block|}
 block|}
-block|}
-comment|/**      * Cause the thread to stop monitoring. It will finish the current round before stopping.      */
-DECL|method|stopMonitoring ()
-specifier|public
-name|void
-name|stopMonitoring
-parameter_list|()
-block|{
-name|running
-operator|=
-literal|false
-expr_stmt|;
 block|}
 comment|/**      * Add a new file to monitor. Returns a handle for accessing the entry.      * @param ul FileUpdateListener The listener to notify when the file changes.      * @param file File The file to monitor.      * @throws IOException if the file does not exist.      */
 DECL|method|addUpdateListener (FileUpdateListener ul, File file)
@@ -326,7 +288,6 @@ parameter_list|)
 throws|throws
 name|IOException
 block|{
-comment|// System.out.println(file.getPath());
 if|if
 condition|(
 operator|!
@@ -344,7 +305,7 @@ literal|"File not found"
 argument_list|)
 throw|;
 block|}
-name|no
+name|numberOfUpdateListener
 operator|++
 expr_stmt|;
 name|String
@@ -352,7 +313,7 @@ name|key
 init|=
 literal|""
 operator|+
-name|no
+name|numberOfUpdateListener
 decl_stmt|;
 name|entries
 operator|.
@@ -539,76 +500,6 @@ name|entry
 operator|.
 name|updateTimeStamp
 argument_list|()
-expr_stmt|;
-block|}
-DECL|method|changeFile (String key, File file)
-specifier|public
-name|void
-name|changeFile
-parameter_list|(
-name|String
-name|key
-parameter_list|,
-name|File
-name|file
-parameter_list|)
-throws|throws
-name|IOException
-throws|,
-name|IllegalArgumentException
-block|{
-if|if
-condition|(
-operator|!
-name|file
-operator|.
-name|exists
-argument_list|()
-condition|)
-block|{
-throw|throw
-operator|new
-name|IOException
-argument_list|(
-literal|"File not found"
-argument_list|)
-throw|;
-block|}
-name|Object
-name|o
-init|=
-name|entries
-operator|.
-name|get
-argument_list|(
-name|key
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|o
-operator|==
-literal|null
-condition|)
-block|{
-throw|throw
-operator|new
-name|IllegalArgumentException
-argument_list|(
-literal|"Entry not found"
-argument_list|)
-throw|;
-block|}
-operator|(
-operator|(
-name|Entry
-operator|)
-name|o
-operator|)
-operator|.
-name|file
-operator|=
-name|file
 expr_stmt|;
 block|}
 comment|/**      * Method for getting the temporary file used for this database. The tempfile      * is used for comparison with the changed on-disk version.      * @param key String The handle for this monitor.      * @throws IllegalArgumentException If the handle doesn't correspond to an entry.      * @return File The temporary file.      */

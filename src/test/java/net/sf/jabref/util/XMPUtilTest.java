@@ -399,13 +399,7 @@ argument_list|(
 literal|"Error: Cannot add metadata to encrypted document."
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
+comment|//System.exit(1);
 block|}
 name|PDDocumentCatalog
 name|catalog
@@ -1998,13 +1992,7 @@ argument_list|(
 literal|"Error: Cannot add metadata to encrypted document."
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
+comment|//System.exit(1);
 block|}
 name|PDDocumentCatalog
 name|catalog
@@ -5106,13 +5094,7 @@ argument_list|(
 literal|"Error: Cannot add metadata to encrypted document."
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
+comment|//System.exit(1);
 block|}
 name|Assert
 operator|.
@@ -5634,13 +5616,7 @@ argument_list|(
 literal|"Error: Cannot add metadata to encrypted document."
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
-literal|1
-argument_list|)
-expr_stmt|;
+comment|//System.exit(1);
 block|}
 name|Assert
 operator|.
