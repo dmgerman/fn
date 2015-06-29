@@ -4740,52 +4740,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|field|aboutAction
-name|AboutAction
-name|aboutAction
-init|=
-operator|new
-name|AboutAction
-argument_list|()
-decl_stmt|;
-DECL|class|AboutAction
-class|class
-name|AboutAction
-extends|extends
-name|AbstractAction
-block|{
-DECL|method|AboutAction ()
-specifier|public
-name|AboutAction
-parameter_list|()
-block|{
-name|super
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"About JabRef"
-argument_list|)
-argument_list|)
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|actionPerformed (ActionEvent e)
-specifier|public
-name|void
-name|actionPerformed
-parameter_list|(
-name|ActionEvent
-name|e
-parameter_list|)
-block|{
-name|about
-argument_list|()
-expr_stmt|;
-block|}
-block|}
 comment|// General info dialog.  The MacAdapter calls this method when "About"
 comment|// is selected from the application menu.
 DECL|method|about ()
