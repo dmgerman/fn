@@ -96,6 +96,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -177,6 +187,8 @@ decl_stmt|;
 comment|/**      * Tests the reset-button. Types a text into tf, pushs reset and check tf's      * text      *      * @throws Exception      */
 annotation|@
 name|Test
+annotation|@
+name|Ignore
 DECL|method|testResetButton ()
 specifier|public
 name|void
