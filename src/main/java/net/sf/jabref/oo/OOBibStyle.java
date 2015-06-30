@@ -412,14 +412,6 @@ name|Long
 operator|.
 name|MIN_VALUE
 decl_stmt|;
-DECL|field|COMBINED_ENTRIES_SEPARATOR
-specifier|private
-specifier|final
-name|String
-name|COMBINED_ENTRIES_SEPARATOR
-init|=
-literal|"-"
-decl_stmt|;
 comment|//private Pattern quoted = Pattern.compile("\".*^\\\\\"");
 DECL|field|quoted
 specifier|private

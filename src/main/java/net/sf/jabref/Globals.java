@@ -2445,26 +2445,6 @@ name|SPECIAL_COMMAND_CHARS
 init|=
 literal|"\"`^~'c="
 decl_stmt|;
-DECL|field|HTML_CHARS
-specifier|public
-specifier|static
-name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|HTML_CHARS
-init|=
-operator|new
-name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-argument_list|()
-decl_stmt|;
 DECL|field|HTMLCHARS
 specifier|public
 specifier|static
@@ -2717,54 +2697,6 @@ argument_list|,
 literal|"%24"
 argument_list|)
 expr_stmt|;
-comment|// HTMLCHARS.put("\"a", "&auml;");
-comment|// HTMLCHARS.put("\"A", "&Auml;");
-comment|// HTMLCHARS.put("\"e", "&euml;");
-comment|// HTMLCHARS.put("\"E", "&Euml;");
-comment|// HTMLCHARS.put("\"i", "&iuml;");
-comment|// HTMLCHARS.put("\"I", "&Iuml;");
-comment|// HTMLCHARS.put("\"o", "&ouml;");
-comment|// HTMLCHARS.put("\"O", "&Ouml;");
-comment|// HTMLCHARS.put("\"u", "&uuml;");
-comment|// HTMLCHARS.put("\"U", "&Uuml;");
-comment|// HTMLCHARS.put("`a", "&agrave;");
-comment|// HTMLCHARS.put("`A", "&Agrave;");
-comment|// HTMLCHARS.put("`e", "&egrave;");
-comment|// HTMLCHARS.put("`E", "&Egrave;");
-comment|// HTMLCHARS.put("`i", "&igrave;");
-comment|// HTMLCHARS.put("`I", "&Igrave;");
-comment|// HTMLCHARS.put("`o", "&ograve;");
-comment|// HTMLCHARS.put("`O", "&Ograve;");
-comment|// HTMLCHARS.put("`u", "&ugrave;");
-comment|// HTMLCHARS.put("`U", "&Ugrave;");
-comment|// HTMLCHARS.put("'e", "&eacute;");
-comment|// HTMLCHARS.put("'E", "&Eacute;");
-comment|// HTMLCHARS.put("'i", "&iacute;");
-comment|// HTMLCHARS.put("'I", "&Iacute;");
-comment|// HTMLCHARS.put("'o", "&oacute;");
-comment|// HTMLCHARS.put("'O", "&Oacute;");
-comment|// HTMLCHARS.put("'u", "&uacute;");
-comment|// HTMLCHARS.put("'U", "&Uacute;");
-comment|// HTMLCHARS.put("'a", "&aacute;");
-comment|// HTMLCHARS.put("'A", "&Aacute;");
-comment|// HTMLCHARS.put("^a", "&ocirc;");
-comment|// HTMLCHARS.put("^A", "&Ocirc;");
-comment|// HTMLCHARS.put("^o", "&ocirc;");
-comment|// HTMLCHARS.put("^O", "&Ocirc;");
-comment|// HTMLCHARS.put("^u", "&ucirc;");
-comment|// HTMLCHARS.put("^U", "&Ucirc;");
-comment|// HTMLCHARS.put("^e", "&ecirc;");
-comment|// HTMLCHARS.put("^E", "&Ecirc;");
-comment|// HTMLCHARS.put("^i", "&icirc;");
-comment|// HTMLCHARS.put("^I", "&Icirc;");
-comment|// HTMLCHARS.put("~o", "&otilde;");
-comment|// HTMLCHARS.put("~O", "&Otilde;");
-comment|// HTMLCHARS.put("~n", "&ntilde;");
-comment|// HTMLCHARS.put("~N", "&Ntilde;");
-comment|// HTMLCHARS.put("~a", "&atilde;");
-comment|// HTMLCHARS.put("~A", "&Atilde;");
-comment|// HTMLCHARS.put("cc", "&ccedil;");
-comment|// HTMLCHARS.put("cC", "&Ccedil;");
 comment|// Following character definitions contributed by Ervin Kolenovic:
 comment|// HTML named entities from #192 - #255 (UNICODE Latin-1)
 name|Globals
