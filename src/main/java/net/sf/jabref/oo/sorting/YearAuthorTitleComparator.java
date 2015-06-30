@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.oo
+DECL|package|net.sf.jabref.oo.sorting
 package|package
 name|net
 operator|.
@@ -13,6 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|oo
+operator|.
+name|sorting
 package|;
 end_package
 
@@ -51,13 +53,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Comparator for sorting bibliography entries according to publication year. This is used to  * sort entries in multiple citations where the oldest publication should appear first.  */
+comment|/**  * Comparator for sorting bibliography entries according to publication year. This is used to  * sort entries in multiple citations where the oldest publication should appear first.  *  * Sort by ascending: YEAR, AUTHOR, TITLE  */
 end_comment
 
 begin_class
-DECL|class|YearComparator
+DECL|class|YearAuthorTitleComparator
+specifier|public
 class|class
-name|YearComparator
+name|YearAuthorTitleComparator
 implements|implements
 name|Comparator
 argument_list|<
@@ -76,16 +79,16 @@ argument_list|(
 literal|"author"
 argument_list|)
 decl_stmt|;
-DECL|field|editorComp
+DECL|field|titleComp
 specifier|private
 specifier|final
 name|FieldComparator
-name|editorComp
+name|titleComp
 init|=
 operator|new
 name|FieldComparator
 argument_list|(
-literal|"editor"
+literal|"title"
 argument_list|)
 decl_stmt|;
 DECL|field|yearComp
@@ -100,11 +103,6 @@ argument_list|(
 literal|"year"
 argument_list|)
 decl_stmt|;
-DECL|method|YearComparator ()
-specifier|public
-name|YearComparator
-parameter_list|()
-block|{      }
 annotation|@
 name|Override
 DECL|method|compare (BibtexEntry o1, BibtexEntry o2)
@@ -143,7 +141,6 @@ return|return
 name|comp
 return|;
 block|}
-comment|// TODO: Is it a good idea to try editor if author fields are equal?
 comment|// Author as next criterion:
 name|comp
 operator|=
@@ -169,7 +166,7 @@ return|;
 block|}
 comment|// Editor as next criterion:
 return|return
-name|editorComp
+name|titleComp
 operator|.
 name|compare
 argument_list|(

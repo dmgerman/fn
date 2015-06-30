@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.oo
+DECL|package|net.sf.jabref.oo.sorting
 package|package
 name|net
 operator|.
@@ -13,6 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|oo
+operator|.
+name|sorting
 package|;
 end_package
 
@@ -51,13 +53,14 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Comparator for sorting bibliography entries.  *  * TODO: is it sufficient with a hardcoded sort algorithm for the bibliography?  */
+comment|/**  * Comparator for sorting bibliography entries.  *  * Sort by ascending: AUTHOR, YEAR, TITLE  */
 end_comment
 
 begin_class
-DECL|class|AlphanumericComparator
+DECL|class|AuthorYearTitleComparator
+specifier|public
 class|class
-name|AlphanumericComparator
+name|AuthorYearTitleComparator
 implements|implements
 name|Comparator
 argument_list|<
@@ -74,18 +77,6 @@ operator|new
 name|FieldComparator
 argument_list|(
 literal|"author"
-argument_list|)
-decl_stmt|;
-DECL|field|editorComp
-specifier|private
-specifier|final
-name|FieldComparator
-name|editorComp
-init|=
-operator|new
-name|FieldComparator
-argument_list|(
-literal|"editor"
 argument_list|)
 decl_stmt|;
 DECL|field|yearComp
@@ -112,11 +103,6 @@ argument_list|(
 literal|"title"
 argument_list|)
 decl_stmt|;
-DECL|method|AlphanumericComparator ()
-specifier|public
-name|AlphanumericComparator
-parameter_list|()
-block|{      }
 annotation|@
 name|Override
 DECL|method|compare (BibtexEntry o1, BibtexEntry o2)
@@ -155,29 +141,6 @@ return|return
 name|comp
 return|;
 block|}
-comment|// Editor as second criterion:
-name|comp
-operator|=
-name|editorComp
-operator|.
-name|compare
-argument_list|(
-name|o1
-argument_list|,
-name|o2
-argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|comp
-operator|!=
-literal|0
-condition|)
-block|{
-return|return
-name|comp
-return|;
-block|}
 comment|// Year as next criterion:
 name|comp
 operator|=
@@ -202,8 +165,7 @@ name|comp
 return|;
 block|}
 comment|// Title as next criterion:
-name|comp
-operator|=
+return|return
 name|titleComp
 operator|.
 name|compare
@@ -212,105 +174,7 @@ name|o1
 argument_list|,
 name|o2
 argument_list|)
-expr_stmt|;
-if|if
-condition|(
-name|comp
-operator|!=
-literal|0
-condition|)
-block|{
-return|return
-name|comp
 return|;
-block|}
-comment|// Bibtex key as next criterion:
-return|return
-name|compare
-argument_list|(
-name|o1
-operator|.
-name|getCiteKey
-argument_list|()
-argument_list|,
-name|o2
-operator|.
-name|getCiteKey
-argument_list|()
-argument_list|)
-return|;
-block|}
-DECL|method|compare (String k1, String k2)
-specifier|private
-name|int
-name|compare
-parameter_list|(
-name|String
-name|k1
-parameter_list|,
-name|String
-name|k2
-parameter_list|)
-block|{
-if|if
-condition|(
-name|k1
-operator|==
-literal|null
-operator|&&
-name|k2
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-literal|0
-return|;
-comment|// none
-block|}
-elseif|else
-if|if
-condition|(
-name|k1
-operator|!=
-literal|null
-operator|&&
-name|k2
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-literal|1
-return|;
-comment|// k1 only
-block|}
-elseif|else
-if|if
-condition|(
-name|k1
-operator|==
-literal|null
-condition|)
-block|{
-return|return
-operator|-
-literal|1
-return|;
-comment|// k2 only
-block|}
-else|else
-block|{
-return|return
-name|k1
-operator|.
-name|compareTo
-argument_list|(
-name|k2
-argument_list|)
-return|;
-comment|// k1 and k2
-block|}
 block|}
 block|}
 end_class
