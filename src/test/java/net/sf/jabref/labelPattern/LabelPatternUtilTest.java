@@ -73,6 +73,18 @@ import|;
 end_import
 
 begin_import
+import|import static
+name|org
+operator|.
+name|junit
+operator|.
+name|Assert
+operator|.
+name|assertEquals
+import|;
+end_import
+
+begin_import
 import|import
 name|org
 operator|.
@@ -89,30 +101,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
 import|;
 end_import
 
@@ -231,7 +219,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Test for https://sourceforge.net/forum/message.php?msg_id=4498555      * Test the Labelmaker and all kind of accents      * ï¿½? Ã¡ Ä Ä Ã Ã© ï¿½? Ã­ Ä¹ Äº Å Å Ã Ã³ Å Å Å Å Ã Ãº ï¿½? Ã½ Å¹ Åº      */
+comment|/**      * Test for https://sourceforge.net/forum/message.php?msg_id=4498555      * Test the Labelmaker and all kind of accents      * Ã Ã¡ Ä Ä Ã Ã© Ã Ã­ Ä¹ Äº Å Å Ã Ã³ Å Å Å Å Ã Ãº Ã Ã½ Å¹ Åº      */
 annotation|@
 name|Test
 DECL|method|testMakeLabelAndCheckLegalKeys ()
@@ -283,7 +271,7 @@ name|BibtexParser
 operator|.
 name|singleFromString
 argument_list|(
-literal|"@ARTICLE{kohn, author={Andreas ï¿½?Ã¶ning}, year={2000}}"
+literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -355,7 +343,7 @@ name|BibtexParser
 operator|.
 name|singleFromString
 argument_list|(
-literal|"@ARTICLE{kohn, author={Andreas ï¿½?Ã¶ning}, year={2000}}"
+literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -607,7 +595,7 @@ name|BibtexParser
 operator|.
 name|singleFromString
 argument_list|(
-literal|"@ARTICLE{kohn, author={Andreas ï¿½?Ã¶ning}, year={2000}}"
+literal|"@ARTICLE{kohn, author={Andreas ÃÃ¶ning}, year={2000}}"
 argument_list|)
 expr_stmt|;
 name|Assert
@@ -866,8 +854,6 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/**      * Tests if checkLegalKey replaces Non-ASCII chars.      * There are quite a few chars that should be replaced. Perhaps there is a better method than the current.      *      * @see net.sf.jabref.Util#checkLegalKey(String)      */
-annotation|@
-name|Test
 DECL|method|testCheckLegalKey ()
 specifier|public
 name|void
@@ -875,22 +861,20 @@ name|testCheckLegalKey
 parameter_list|()
 block|{
 comment|// not tested/ not in hashmap UNICODE_CHARS:
-comment|// ï¿½? Å   ï¿½? Å Å° Å±   Ä¿ Å   Ä¦ Ä§   ï¿½? Ã° Ã Ã¾   Å Å   Ã Ã¦ Ã Ã¸ Ã Ã¥   ï¿½? É ï¿½? Ä   Å® Å¯	Ç¢ Ç£ Ç Ç Ç Ç
+comment|// Å Å   Å Å Å° Å±   Ä¿ Å   Ä¦ Ä§   Ã Ã° Ã Ã¾   Å Å   Ã Ã¦ Ã Ã¸ Ã Ã¥   Æ É Ä Ä   Å® Å¯	Ç¢ Ç£ Ç Ç Ç Ç
 comment|//" Ç¢ Ç£ Ç Ç Ç Ç   " +
-comment|//"ï¿½? Ä   Å® Å¯  " +
-comment|//"ï¿½? Å   ï¿½? Å Å° Å±   Ä¿ Å   Ä¦ Ä§   ï¿½? Ã° Ã Ã¾   Å Å   Ã Ã¦ Ã Ã¸ Ã Ã¥   ï¿½? É
+comment|//"Ä Ä   Å® Å¯  " +
+comment|//"Å Å   Å Å Å° Å±   Ä¿ Å   Ä¦ Ä§   Ã Ã° Ã Ã¾   Å Å   Ã Ã¦ Ã Ã¸ Ã Ã¥   Æ É
 name|String
 name|accents
 init|=
-literal|"ÃÃ ÃÃ¨ÃÃ¬ÃÃ²ÃÃ¹ Ã Ã¢ Ä Ä Ã Ãª Ä ï¿½? Ä¤ Ä¥ Ã Ã® Ä´ Äµ Ã Ã´ Å ï¿½? Ã Ã» Å´ Åµ Å¶ Å·"
+literal|"ÃÃ ÃÃ¨ÃÃ¬ÃÃ²ÃÃ¹ Ã Ã¢ Ä Ä Ã Ãª Ä Ä Ä¤ Ä¥ Ã Ã® Ä´ Äµ Ã Ã´ Å Å Ã Ã» Å´ Åµ Å¶ Å·"
 decl_stmt|;
 name|String
 name|expectedResult
 init|=
 literal|"AaEeIiOoUuAaCcEeGgHhIiJjOoSsUuWwYy"
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expectedResult
@@ -911,14 +895,12 @@ argument_list|)
 expr_stmt|;
 name|accents
 operator|=
-literal|"ÃÃ¤ÃÃ«ï¿½?Ã¯ÃÃ¶ÃÃ¼Å¸Ã¿"
+literal|"ÃÃ¤ÃÃ«ÃÃ¯ÃÃ¶ÃÃ¼Å¸Ã¿"
 expr_stmt|;
 name|expectedResult
 operator|=
 literal|"AeaeEeIiOeoeUeueYy"
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expectedResult
@@ -945,8 +927,6 @@ name|expectedResult
 operator|=
 literal|"CcGgKkLlNnRrSsTt"
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expectedResult
@@ -967,14 +947,12 @@ argument_list|)
 expr_stmt|;
 name|accents
 operator|=
-literal|"Ä Ä Ä Ä Ä Ä Ä¬ Ä­ Å ï¿½? Å¬ Å­"
+literal|"Ä Ä Ä Ä Ä Ä Ä¬ Ä­ Å Å Å¬ Å­"
 expr_stmt|;
 name|expectedResult
 operator|=
 literal|"AaEeGgIiOoUu"
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expectedResult
@@ -1001,8 +979,6 @@ name|expectedResult
 operator|=
 literal|"CcEeGgIiZz"
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expectedResult
@@ -1030,8 +1006,6 @@ operator|=
 literal|"AaEeIiOoUu"
 expr_stmt|;
 comment|// O or Q? o or q?
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expectedResult
@@ -1052,14 +1026,12 @@ argument_list|)
 expr_stmt|;
 name|accents
 operator|=
-literal|"Ä ï¿½? Ä Ä Äª Ä« Å ï¿½? Åª Å« È² È³"
+literal|"Ä Ä Ä Ä Äª Ä« Å Å Åª Å« È² È³"
 expr_stmt|;
 name|expectedResult
 operator|=
 literal|"AaEeIiOoUuYy"
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expectedResult
@@ -1080,14 +1052,12 @@ argument_list|)
 expr_stmt|;
 name|accents
 operator|=
-literal|"ï¿½? Ç Ä ï¿½? Ä ï¿½? Ä Ä ï¿½? ï¿½? Ä½ Ä¾ Å Å Ç Ç Å Å Å  Å¡ Å¤ Å¥ Ç Ç Å½ Å¾"
+literal|"Ç Ç Ä Ä Ä Ä Ä Ä Ç Ç Ä½ Ä¾ Å Å Ç Ç Å Å Å  Å¡ Å¤ Å¥ Ç Ç Å½ Å¾"
 expr_stmt|;
 name|expectedResult
 operator|=
 literal|"AaCcDdEeIiLlNnOoRrSsTtUuZz"
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expectedResult
@@ -1114,8 +1084,6 @@ name|accents
 operator|=
 literal|"ÃÃ£áº¼áº½Ä¨Ä©ÃÃ±ÃÃµÅ¨Å©á»¸á»¹"
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expectedResult
@@ -1136,14 +1104,12 @@ argument_list|)
 expr_stmt|;
 name|accents
 operator|=
-literal|"á¸ ï¿½? á¸¤ á¸¥ á¸¶ á¸· á¸¸ á¸¹ á¹ á¹ á¹ á¹ á¹ á¹ á¹ ï¿½? á¹¢ á¹£ á¹¬ á¹­"
+literal|"á¸ á¸ á¸¤ á¸¥ á¸¶ á¸· á¸¸ á¸¹ á¹ á¹ á¹ á¹ á¹ á¹ á¹ á¹ á¹¢ á¹£ á¹¬ á¹­"
 expr_stmt|;
 name|expectedResult
 operator|=
 literal|"DdHhLlLlMmNnRrRrSsTt"
 expr_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expectedResult
@@ -1165,19 +1131,19 @@ expr_stmt|;
 name|String
 name|totest
 init|=
-literal|"Ã Ã  Ã Ã¨ Ã Ã¬ Ã Ã² Ã Ã¹   Ã Ã¢ Ä Ä Ã Ãª Ä ï¿½? Ä¤ Ä¥ Ã Ã® Ä´ Äµ Ã Ã´ Å ï¿½? Ã Ã» Å´ Åµ Å¶ Å·  Ã Ã¤ Ã Ã« ï¿½? Ã¯ Ã Ã¶ Ã Ã¼ Å¸ Ã¿    "
+literal|"Ã Ã  Ã Ã¨ Ã Ã¬ Ã Ã² Ã Ã¹   Ã Ã¢ Ä Ä Ã Ãª Ä Ä Ä¤ Ä¥ Ã Ã® Ä´ Äµ Ã Ã´ Å Å Ã Ã» Å´ Åµ Å¶ Å·  Ã Ã¤ Ã Ã« Ã Ã¯ Ã Ã¶ Ã Ã¼ Å¸ Ã¿    "
 operator|+
 literal|"Ã Ã£ áº¼ áº½ Ä¨ Ä© Ã Ã± Ã Ãµ Å¨ Å© á»¸ á»¹   Ã Ã§ Ä¢ Ä£ Ä¶ Ä· Ä» Ä¼ Å Å Å Å Å Å Å¢ Å£"
 operator|+
-literal|" ï¿½? Ç Ä ï¿½? Ä ï¿½? Ä Ä ï¿½? ï¿½? Ä½ Ä¾ Å Å Ç Ç Å Å Å  Å¡ Å¤ Å¥ Ç Ç Å½ Å¾   "
+literal|" Ç Ç Ä Ä Ä Ä Ä Ä Ç Ç Ä½ Ä¾ Å Å Ç Ç Å Å Å  Å¡ Å¤ Å¥ Ç Ç Å½ Å¾   "
 operator|+
-literal|"Ä ï¿½? Ä Ä Äª Ä« Å ï¿½? Åª Å« È² È³"
+literal|"Ä Ä Ä Ä Äª Ä« Å Å Åª Å« È² È³"
 operator|+
-literal|"Ä Ä Ä Ä Ä Ä Ä¬ Ä­ Å ï¿½? Å¬ Å­   "
+literal|"Ä Ä Ä Ä Ä Ä Ä¬ Ä­ Å Å Å¬ Å­   "
 operator|+
 literal|"Ä Ä Ä Ä Ä  Ä¡ Ä° Ä± Å» Å¼   Ä Ä Ä Ä Ä® Ä¯ Çª Ç« Å² Å³   "
 operator|+
-literal|"á¸ ï¿½? á¸¤ á¸¥ á¸¶ á¸· á¸¸ á¸¹ á¹ á¹ á¹ á¹ á¹ á¹ á¹ ï¿½? á¹¢ á¹£ á¹¬ á¹­   "
+literal|"á¸ á¸ á¸¤ á¸¥ á¸¶ á¸· á¸¸ á¸¹ á¹ á¹ á¹ á¹ á¹ á¹ á¹ á¹ á¹¢ á¹£ á¹¬ á¹­   "
 decl_stmt|;
 name|String
 name|expectedResults
@@ -1196,8 +1162,6 @@ literal|"CcEeGgIiZzAaEeIiOoUu"
 operator|+
 literal|"DdHhLlLlMmNnRrRrSsTt"
 decl_stmt|;
-name|Assert
-operator|.
 name|assertEquals
 argument_list|(
 name|expectedResults

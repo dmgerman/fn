@@ -7803,7 +7803,7 @@ name|ignored
 parameter_list|)
 block|{         }
 block|}
-comment|/**      * A better testcase for resolveStrings. Makes sure that also the document      * information and dublin core are written correctly.      *<p/>      * Data was contributed by Philip K.F. Hï¿½lzenspies (p.k.f.holzenspies [at] utwente.nl).      *      * @throws IOException      * @throws TransformerException      */
+comment|/**      * A better testcase for resolveStrings. Makes sure that also the document      * information and dublin core are written correctly.      *<p/>      * Data was contributed by Philip K.F. HÃ¶lzenspies (p.k.f.holzenspies [at] utwente.nl).      *      * @throws IOException      * @throws TransformerException      */
 annotation|@
 name|Test
 DECL|method|testResolveStrings2 ()

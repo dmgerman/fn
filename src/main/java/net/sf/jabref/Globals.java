@@ -3631,7 +3631,7 @@ literal|"&#270;"
 argument_list|)
 expr_stmt|;
 comment|// "Dcaron"
-comment|// Symbol #271 (dï¿½) has no special Latex command
+comment|// Symbol #271 (d) has no special Latex command
 name|Globals
 operator|.
 name|HTMLCHARS
@@ -4139,8 +4139,8 @@ literal|"&#316;"
 argument_list|)
 expr_stmt|;
 comment|// "lcedil"
-comment|// Symbol #317 (Lï¿½) has no special Latex command
-comment|// Symbol #318 (lï¿½) has no special Latex command
+comment|// Symbol #317 (L) has no special Latex command
+comment|// Symbol #318 (l) has no special Latex command
 name|Globals
 operator|.
 name|HTMLCHARS
@@ -4261,7 +4261,7 @@ literal|"&#328;"
 argument_list|)
 expr_stmt|;
 comment|// "ncaron"
-comment|// Symbol #329 (ï¿½n) has no special Latex command
+comment|// Symbol #329 (n) has no special Latex command
 name|Globals
 operator|.
 name|HTMLCHARS
@@ -4586,7 +4586,7 @@ literal|"&#356;"
 argument_list|)
 expr_stmt|;
 comment|// "Tcaron"
-comment|// Symbol #357 (tï¿½) has no special Latex command
+comment|// Symbol #357 (t) has no special Latex command
 name|Globals
 operator|.
 name|HTMLCHARS
@@ -10018,7 +10018,7 @@ literal|"\\u270D"
 argument_list|)
 expr_stmt|;
 comment|// "Dcaron"
-comment|// Symbol #271 (dï¿½) has no special Latex command
+comment|// Symbol #271 (d) has no special Latex command
 name|Globals
 operator|.
 name|RTFCHARS
@@ -10526,8 +10526,8 @@ literal|"\\u316l"
 argument_list|)
 expr_stmt|;
 comment|// "lcedil"
-comment|// Symbol #317 (Lï¿½) has no special Latex command
-comment|// Symbol #318 (lï¿½) has no special Latex command
+comment|// Symbol #317 (L) has no special Latex command
+comment|// Symbol #318 (l) has no special Latex command
 name|Globals
 operator|.
 name|RTFCHARS
@@ -10648,7 +10648,7 @@ literal|"\\u328n"
 argument_list|)
 expr_stmt|;
 comment|// "ncaron"
-comment|// Symbol #329 (ï¿½n) has no special Latex command
+comment|// Symbol #329 (n) has no special Latex command
 name|Globals
 operator|.
 name|RTFCHARS
@@ -10973,7 +10973,7 @@ literal|"\\u356T"
 argument_list|)
 expr_stmt|;
 comment|// "Tcaron"
-comment|// Symbol #357 (tï¿½) has no special Latex command
+comment|// Symbol #357 (t) has no special Latex command
 name|Globals
 operator|.
 name|RTFCHARS

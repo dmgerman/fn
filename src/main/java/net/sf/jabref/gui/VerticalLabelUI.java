@@ -143,7 +143,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A UI delegate for JLabel that rotates the label 90ï¿½  *<P>  * Extends {@link BasicLabelUI}.  *<P>  * The only difference between the appearance of labels in the Basic and Metal  * L&Fs is the manner in which diabled text is painted.  As VerticalLabelUI  * does not override the method paintDisabledText, this class can be adapted  * for Metal L&F by extending MetalLabelUI instead of BasicLabelUI.  *<P>  * No other changes are required.  *   * @author Darryl  */
+comment|/**  * A UI delegate for JLabel that rotates the label 90Â°  *<P>  * Extends {@link BasicLabelUI}.  *<P>  * The only difference between the appearance of labels in the Basic and Metal  * L&Fs is the manner in which diabled text is painted.  As VerticalLabelUI  * does not override the method paintDisabledText, this class can be adapted  * for Metal L&F by extending MetalLabelUI instead of BasicLabelUI.  *<P>  * No other changes are required.  *   * @author Darryl  */
 end_comment
 
 begin_class
