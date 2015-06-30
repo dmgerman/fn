@@ -43,8 +43,8 @@ DECL|class|BookLabelRule
 specifier|public
 class|class
 name|BookLabelRule
-extends|extends
-name|DefaultLabelRule
+implements|implements
+name|LabelRule
 block|{
 comment|// this is the rule used handle articles
 comment|// we try (first author)/(year)

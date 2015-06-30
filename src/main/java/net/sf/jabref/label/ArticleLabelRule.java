@@ -57,8 +57,8 @@ DECL|class|ArticleLabelRule
 specifier|public
 class|class
 name|ArticleLabelRule
-extends|extends
-name|DefaultLabelRule
+implements|implements
+name|LabelRule
 block|{
 comment|// this is the rule used handle articles
 comment|// we try (first author last name)/(year)/(first unique journal word)
