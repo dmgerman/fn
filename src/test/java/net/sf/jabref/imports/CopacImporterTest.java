@@ -266,8 +266,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|testImportEntries ()
 specifier|public
 name|void
@@ -276,6 +274,17 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|put
+argument_list|(
+literal|"defaultEncoding"
+argument_list|,
+literal|"UTF8"
+argument_list|)
+expr_stmt|;
 name|CopacImporter
 name|importer
 init|=

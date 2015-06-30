@@ -1890,11 +1890,9 @@ name|utf8Reader
 init|=
 name|ImportFormatReader
 operator|.
-name|getReader
+name|getUTF8Reader
 argument_list|(
 name|fileToOpen
-argument_list|,
-literal|"UTF8"
 argument_list|)
 decl_stmt|;
 name|String
@@ -1925,11 +1923,9 @@ name|utf16Reader
 init|=
 name|ImportFormatReader
 operator|.
-name|getReader
+name|getUTF16Reader
 argument_list|(
 name|fileToOpen
-argument_list|,
-literal|"UTF-16"
 argument_list|)
 decl_stmt|;
 name|suppliedEncoding
