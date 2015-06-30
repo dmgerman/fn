@@ -755,8 +755,6 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
-annotation|@
-name|Ignore
 DECL|method|testCheckLegalKey ()
 specifier|public
 name|void
@@ -795,20 +793,6 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|"AeaeaAAA"
-argument_list|,
-name|Util
-operator|.
-name|checkLegalKey
-argument_list|(
-literal|"Ã¯Â¿Â½Ã¯Â¿Â½Ã¯Â¿Â½Ã¯Â¿Â½Ã¯Â¿Â½Ã¯Â¿Â½"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|Assert
-operator|.
-name|assertEquals
-argument_list|(
 literal|""
 argument_list|,
 name|Util
@@ -830,6 +814,20 @@ name|void
 name|testReplaceSpecialCharacters
 parameter_list|()
 block|{
+name|Assert
+operator|.
+name|assertEquals
+argument_list|(
+literal|"Hallo Arger"
+argument_list|,
+name|Util
+operator|.
+name|replaceSpecialCharacters
+argument_list|(
+literal|"Hallo Arger"
+argument_list|)
+argument_list|)
+expr_stmt|;
 comment|// Shouldn't German Ã¯Â¿Â½ be resolved to Ae
 name|Assert
 operator|.
@@ -842,20 +840,6 @@ operator|.
 name|replaceSpecialCharacters
 argument_list|(
 literal|"Ã¯Â¿Â½Ã¯Â¿Â½Ã¯Â¿Â½Ã¯Â¿Â½Ã¯Â¿Â½Ã¯Â¿Â½"
-argument_list|)
-argument_list|)
-expr_stmt|;
-name|Assert
-operator|.
-name|assertEquals
-argument_list|(
-literal|"Hallo Arger"
-argument_list|,
-name|Util
-operator|.
-name|replaceSpecialCharacters
-argument_list|(
-literal|"Hallo Arger"
 argument_list|)
 argument_list|)
 expr_stmt|;
