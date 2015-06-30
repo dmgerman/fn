@@ -106,12 +106,12 @@ argument_list|(
 literal|"([\\. \\p{javaUpperCase}]+) (\\p{javaUpperCase}[\\p{javaLowerCase}]+)"
 argument_list|)
 decl_stmt|;
-DECL|field|singleName
+DECL|field|SINGLE_NAME
 specifier|private
 specifier|static
 specifier|final
 name|Pattern
-name|singleName
+name|SINGLE_NAME
 init|=
 name|Pattern
 operator|.
@@ -120,7 +120,6 @@ argument_list|(
 literal|"(\\p{javaUpperCase}[\\p{javaLowerCase}]*)"
 argument_list|)
 decl_stmt|;
-comment|/*public static void main(String[] args) {         normalizeAuthorList("Staci D. Bilbo and Smith SH and Jaclyn M Schwarz");         //System.out.println(normalizeAuthorList("Ãlver MA"));         //System.out.println(normalizeAuthorList("Ãlver MA, GG Ãie, Ãie GG, Alfredsen JÃÃ, Jo Alfredsen, Olsen Y.Y. and Olsen Y. Y."));         //System.out.println(normalizeAuthorList("Ãlver MA, GG Ãie, Ãie GG, Alfredsen JÃÃ, Jo Alfredsen, Olsen Y.Y., Olsen Y. Y."));         //System.out.println(normalizeAuthorList("Alver, Morten and Alver, Morten O and Alfredsen, JA and Olsen, Y.Y."));         //System.out.println(normalizeAuthorList("Alver, MA; Alfredsen, JA; Olsen Y.Y."));     }*/
 DECL|method|normalizeAuthorList (String in)
 specifier|public
 specifier|static
@@ -135,17 +134,6 @@ name|boolean
 name|andSep
 init|=
 literal|false
-decl_stmt|,
-name|semicolonSep
-init|=
-literal|false
-decl_stmt|,
-name|commaSep
-init|=
-literal|false
-decl_stmt|;
-name|String
-name|author
 decl_stmt|;
 name|String
 index|[]
@@ -198,10 +186,6 @@ operator|>
 literal|1
 condition|)
 block|{
-name|semicolonSep
-operator|=
-literal|true
-expr_stmt|;
 name|authors
 operator|=
 name|a2
@@ -228,10 +212,6 @@ literal|3
 condition|)
 block|{
 comment|// Probably more than a single author, so we split by commas.
-name|commaSep
-operator|=
-literal|true
-expr_stmt|;
 name|authors
 operator|=
 name|a2
@@ -1299,7 +1279,7 @@ name|m2
 init|=
 name|NameListNormalizer
 operator|.
-name|singleName
+name|SINGLE_NAME
 operator|.
 name|matcher
 argument_list|(
@@ -1446,7 +1426,7 @@ name|m
 operator|=
 name|NameListNormalizer
 operator|.
-name|singleName
+name|SINGLE_NAME
 operator|.
 name|matcher
 argument_list|(
