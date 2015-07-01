@@ -216,8 +216,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|label
-operator|.
 name|HandleDuplicateWarnings
 import|;
 end_import
