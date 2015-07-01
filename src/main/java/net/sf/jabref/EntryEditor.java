@@ -7697,7 +7697,7 @@ name|e
 parameter_list|)
 block|{
 comment|// 1. get Bitexentry for selected index (already have)
-comment|// 2. run the LabelMaker by it
+comment|// 2. update label
 try|try
 block|{
 comment|// Store the current edit in case this action is called during the

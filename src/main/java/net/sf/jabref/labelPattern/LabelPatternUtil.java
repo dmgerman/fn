@@ -4973,7 +4973,6 @@ name|author
 init|=
 literal|""
 decl_stmt|;
-comment|// This code was part of 'ApplyRule' in 'ArticleLabelRule'
 name|String
 index|[]
 name|tokens
@@ -5342,7 +5341,6 @@ name|author
 init|=
 literal|""
 decl_stmt|;
-comment|// This code was part of 'ApplyRule' in 'ArticleLabelRule'
 name|String
 index|[]
 name|tokens
@@ -5466,7 +5464,6 @@ name|author
 init|=
 literal|""
 decl_stmt|;
-comment|// This code was part of 'ApplyRule' in 'ArticleLabelRule'
 name|String
 index|[]
 name|tokens
