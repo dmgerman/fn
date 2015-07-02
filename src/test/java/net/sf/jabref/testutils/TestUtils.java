@@ -24,6 +24,18 @@ name|JabRef
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefMain
+import|;
+end_import
+
 begin_comment
 comment|/**  * UtilsClass for UnitTests.  *  * @author kahlert, cordes  */
 end_comment
@@ -65,7 +77,7 @@ operator|.
 name|PATH_TO_TEST_BIBTEX
 block|}
 decl_stmt|;
-name|JabRef
+name|JabRefMain
 operator|.
 name|main
 argument_list|(
@@ -81,16 +93,11 @@ name|void
 name|closeJabRef
 parameter_list|()
 block|{
-name|JabRef
-name|jabref
-init|=
-name|JabRef
-operator|.
-name|singleton
-decl_stmt|;
 if|if
 condition|(
-name|jabref
+name|JabRef
+operator|.
+name|jrf
 operator|!=
 literal|null
 condition|)

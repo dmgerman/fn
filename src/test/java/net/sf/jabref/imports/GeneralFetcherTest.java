@@ -44,6 +44,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|JabRefMain
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|SidePaneManager
 import|;
 end_import
@@ -305,7 +317,7 @@ name|void
 name|setUp
 parameter_list|()
 block|{
-name|JabRef
+name|JabRefMain
 operator|.
 name|main
 argument_list|(

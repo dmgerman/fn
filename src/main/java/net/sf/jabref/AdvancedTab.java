@@ -397,7 +397,13 @@ specifier|final
 name|JCheckBox
 name|useUnitFormatterOnSearch
 decl_stmt|;
-DECL|method|AdvancedTab (JabRefPreferences prefs, HelpDialog diag)
+DECL|field|jabRef
+specifier|private
+specifier|final
+name|JabRef
+name|jabRef
+decl_stmt|;
+DECL|method|AdvancedTab (JabRefPreferences prefs, HelpDialog diag, JabRef jabRef)
 specifier|public
 name|AdvancedTab
 parameter_list|(
@@ -406,8 +412,17 @@ name|prefs
 parameter_list|,
 name|HelpDialog
 name|diag
+parameter_list|,
+name|JabRef
+name|jabRef
 parameter_list|)
 block|{
+name|this
+operator|.
+name|jabRef
+operator|=
+name|jabRef
+expr_stmt|;
 name|_prefs
 operator|=
 name|prefs
@@ -1642,9 +1657,7 @@ name|RemoteListenerLifecycle
 operator|.
 name|openAndStartRemoteListener
 argument_list|(
-name|JabRef
-operator|.
-name|singleton
+name|jabRef
 argument_list|)
 expr_stmt|;
 block|}

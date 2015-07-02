@@ -315,12 +315,21 @@ specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
-DECL|method|PrefsDialog3 (JabRefFrame parent)
+DECL|field|jabRef
+specifier|private
+specifier|final
+name|JabRef
+name|jabRef
+decl_stmt|;
+DECL|method|PrefsDialog3 (JabRefFrame parent, JabRef jabRef)
 specifier|public
 name|PrefsDialog3
 parameter_list|(
 name|JabRefFrame
 name|parent
+parameter_list|,
+name|JabRef
+name|jabRef
 parameter_list|)
 block|{
 name|super
@@ -336,6 +345,12 @@ argument_list|)
 argument_list|,
 literal|false
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|jabRef
+operator|=
+name|jabRef
 expr_stmt|;
 specifier|final
 name|JabRefPreferences
@@ -668,6 +683,8 @@ argument_list|,
 name|parent
 operator|.
 name|helpDiag
+argument_list|,
+name|jabRef
 argument_list|)
 argument_list|)
 expr_stmt|;

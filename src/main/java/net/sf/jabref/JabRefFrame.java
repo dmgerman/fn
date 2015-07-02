@@ -1458,6 +1458,12 @@ argument_list|,
 literal|0
 argument_list|)
 decl_stmt|;
+DECL|field|jabRef
+specifier|private
+specifier|final
+name|JabRef
+name|jabRef
+decl_stmt|;
 DECL|class|ToolBar
 class|class
 name|ToolBar
@@ -4109,11 +4115,20 @@ literal|"other"
 argument_list|)
 block|}
 decl_stmt|;
-DECL|method|JabRefFrame ()
+DECL|method|JabRefFrame (JabRef jabRef)
 specifier|public
 name|JabRefFrame
-parameter_list|()
+parameter_list|(
+name|JabRef
+name|jabRef
+parameter_list|)
 block|{
+name|this
+operator|.
+name|jabRef
+operator|=
+name|jabRef
+expr_stmt|;
 name|init
 argument_list|()
 expr_stmt|;
@@ -5476,6 +5491,8 @@ argument_list|(
 name|JabRefFrame
 operator|.
 name|this
+argument_list|,
+name|jabRef
 argument_list|)
 expr_stmt|;
 name|Util
