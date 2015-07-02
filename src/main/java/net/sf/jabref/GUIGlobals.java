@@ -126,16 +126,6 @@ end_import
 
 begin_import
 import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|SwingConstants
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -161,6 +151,20 @@ operator|.
 name|shortcut
 operator|.
 name|EmacsKeyBindings
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|specialfields
+operator|.
+name|Printed
 import|;
 end_import
 
@@ -216,6 +220,20 @@ name|jabref
 operator|.
 name|specialfields
 operator|.
+name|ReadStatus
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|specialfields
+operator|.
 name|Relevance
 import|;
 end_import
@@ -247,46 +265,63 @@ block|{
 comment|// Frame titles.
 specifier|public
 specifier|static
+specifier|final
 name|String
 DECL|field|frameTitle
 name|frameTitle
 init|=
 literal|"JabRef"
-decl_stmt|,
-DECL|field|version
-name|version
-init|=
-name|Globals
-operator|.
-name|VERSION
-decl_stmt|,
+decl_stmt|;
 DECL|field|stringsTitle
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|stringsTitle
 init|=
 literal|"Strings for database"
-decl_stmt|,
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
 comment|//untitledStringsTitle = stringsTitle + Globals.lang("untitled"),
 DECL|field|untitledTitle
 name|untitledTitle
 init|=
 literal|"untitled"
-decl_stmt|,
+decl_stmt|;
 DECL|field|helpTitle
+specifier|public
+specifier|static
+name|String
 name|helpTitle
 init|=
 literal|"JabRef help"
-decl_stmt|,
+decl_stmt|;
 DECL|field|TYPE_HEADER
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|TYPE_HEADER
 init|=
 literal|"entrytype"
-decl_stmt|,
+decl_stmt|;
 DECL|field|NUMBER_COL
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|NUMBER_COL
 init|=
 literal|"#"
-decl_stmt|,
+decl_stmt|;
 DECL|field|encPrefix
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|encPrefix
 init|=
 literal|"Encoding: "
@@ -297,14 +332,23 @@ specifier|public
 specifier|static
 name|Font
 name|CURRENTFONT
-decl_stmt|,
+decl_stmt|;
 DECL|field|typeNameFont
+specifier|public
+specifier|static
+name|Font
 name|typeNameFont
-decl_stmt|,
+decl_stmt|;
 DECL|field|jabRefFont
+specifier|public
+specifier|static
+name|Font
 name|jabRefFont
-decl_stmt|,
+decl_stmt|;
 DECL|field|fieldNameFont
+specifier|private
+specifier|static
+name|Font
 name|fieldNameFont
 decl_stmt|;
 comment|// Signature written at the top of the .bib file.
@@ -395,7 +439,7 @@ comment|// + 15 for possible scrollbar.
 DECL|field|TABLE_ROW_PADDING
 name|TABLE_ROW_PADDING
 init|=
-literal|4
+literal|8
 decl_stmt|,
 DECL|field|KEYBIND_COL_0
 name|KEYBIND_COL_0
@@ -417,6 +461,7 @@ comment|// The max width of the combobox for content selectors.
 comment|// File names.
 specifier|public
 specifier|static
+specifier|final
 name|String
 comment|//configFile = "preferences.dat",
 DECL|field|backupExt
@@ -425,43 +470,67 @@ init|=
 literal|".bak"
 decl_stmt|;
 comment|// Image paths.
-specifier|public
+specifier|private
 specifier|static
+specifier|final
 name|String
 DECL|field|imageSize
 name|imageSize
 init|=
 literal|"24"
-decl_stmt|,
+decl_stmt|;
 DECL|field|extension
+specifier|private
+specifier|static
+specifier|final
+name|String
 name|extension
 init|=
 literal|".gif"
-decl_stmt|,
+decl_stmt|;
 DECL|field|ex
+specifier|public
+specifier|static
+name|String
 name|ex
 init|=
+name|GUIGlobals
+operator|.
 name|imageSize
 operator|+
+name|GUIGlobals
+operator|.
 name|extension
-decl_stmt|,
+decl_stmt|;
 DECL|field|pre
+specifier|public
+specifier|static
+name|String
 name|pre
 init|=
 literal|"/images/"
-decl_stmt|,
+decl_stmt|;
 DECL|field|helpPre
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|helpPre
 init|=
 literal|"/help/"
-decl_stmt|,
+decl_stmt|;
 DECL|field|fontPath
+specifier|public
+specifier|static
+name|String
 name|fontPath
 init|=
 literal|"/images/font/"
 decl_stmt|;
 DECL|field|tableIcons
+specifier|private
 specifier|static
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -484,6 +553,7 @@ comment|// further below.
 DECL|field|activeEditor
 specifier|public
 specifier|static
+specifier|final
 name|Color
 name|activeEditor
 init|=
@@ -498,6 +568,7 @@ literal|255
 argument_list|)
 decl_stmt|;
 DECL|field|iconMap
+specifier|private
 specifier|static
 name|HashMap
 argument_list|<
@@ -520,6 +591,8 @@ block|{
 name|Object
 name|o
 init|=
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|get
@@ -550,12 +623,14 @@ literal|null
 return|;
 block|}
 else|else
+block|{
 return|return
 operator|(
 name|JLabel
 operator|)
 name|o
 return|;
+block|}
 block|}
 comment|//Help files (in HTML format):
 specifier|public
@@ -723,9 +798,13 @@ literal|30
 argument_list|,
 literal|30
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 comment|// Light gray background
 DECL|field|entryEditorLabelColor
+specifier|public
+specifier|static
+specifier|final
+name|Color
 name|entryEditorLabelColor
 init|=
 operator|new
@@ -737,9 +816,13 @@ literal|100
 argument_list|,
 literal|150
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 comment|// Empty field, blue.
 DECL|field|nullFieldColor
+specifier|public
+specifier|static
+specifier|final
+name|Color
 name|nullFieldColor
 init|=
 operator|new
@@ -751,9 +834,12 @@ literal|130
 argument_list|,
 literal|95
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 comment|// Valid field, green.
 DECL|field|gradientGray
+specifier|public
+specifier|static
+name|Color
 name|gradientGray
 init|=
 operator|new
@@ -765,9 +851,12 @@ literal|121
 argument_list|,
 literal|165
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 comment|// Title bar gradient color, sidepaneheader
 DECL|field|gradientBlue
+specifier|public
+specifier|static
+name|Color
 name|gradientBlue
 init|=
 operator|new
@@ -779,28 +868,42 @@ literal|27
 argument_list|,
 literal|102
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 comment|// Title bar gradient color, sidepaneheader
+specifier|public
+specifier|static
+specifier|final
+name|Color
 comment|//activeTabbed = Color.black,  // active Database (JTabbedPane)
 comment|//inActiveTabbed = Color.gray.darker(),  // inactive Database
 DECL|field|activeTabbed
 name|activeTabbed
 init|=
+name|GUIGlobals
+operator|.
 name|entryEditorLabelColor
 operator|.
 name|darker
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 comment|// active Database (JTabbedPane)
 DECL|field|inActiveTabbed
+specifier|public
+specifier|static
+specifier|final
+name|Color
 name|inActiveTabbed
 init|=
 name|Color
 operator|.
 name|black
-decl_stmt|,
+decl_stmt|;
 comment|// inactive Database
 DECL|field|infoField
+specifier|public
+specifier|static
+specifier|final
+name|Color
 name|infoField
 init|=
 operator|new
@@ -840,6 +943,7 @@ decl_stmt|;
 DECL|field|META_FLAG
 specifier|public
 specifier|static
+specifier|final
 name|String
 name|META_FLAG
 init|=
@@ -848,6 +952,7 @@ decl_stmt|;
 DECL|field|META_FLAG_OLD
 specifier|public
 specifier|static
+specifier|final
 name|String
 name|META_FLAG_OLD
 init|=
@@ -856,6 +961,7 @@ decl_stmt|;
 DECL|field|ENTRYTYPE_FLAG
 specifier|public
 specifier|static
+specifier|final
 name|String
 name|ENTRYTYPE_FLAG
 init|=
@@ -911,7 +1017,7 @@ init|=
 literal|"file"
 decl_stmt|;
 DECL|field|FOLDER_FIELD
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -951,6 +1057,7 @@ comment|//	Size constants for EntryTypeForm; small, medium and large.
 DECL|field|FORM_WIDTH
 specifier|public
 specifier|static
+specifier|final
 name|int
 index|[]
 name|FORM_WIDTH
@@ -969,6 +1076,7 @@ decl_stmt|;
 DECL|field|FORM_HEIGHT
 specifier|public
 specifier|static
+specifier|final
 name|int
 index|[]
 name|FORM_HEIGHT
@@ -1003,23 +1111,36 @@ comment|// Maximum
 DECL|field|DEFAULT_FIELD_LENGTH
 specifier|public
 specifier|static
+specifier|final
 name|int
 name|DEFAULT_FIELD_LENGTH
 init|=
 literal|100
-decl_stmt|,
+decl_stmt|;
 DECL|field|NUMBER_COL_LENGTH
+specifier|public
+specifier|static
+specifier|final
+name|int
 name|NUMBER_COL_LENGTH
 init|=
 literal|32
-decl_stmt|,
+decl_stmt|;
 DECL|field|WIDTH_ICON_COL_RANKING
+specifier|public
+specifier|static
+specifier|final
+name|int
 name|WIDTH_ICON_COL_RANKING
 init|=
 literal|35
-decl_stmt|,
+decl_stmt|;
 comment|// Width of Ranking Icon Column
 DECL|field|WIDTH_ICON_COL
+specifier|public
+specifier|static
+specifier|final
+name|int
 name|WIDTH_ICON_COL
 init|=
 literal|19
@@ -1095,6 +1216,8 @@ argument_list|>
 argument_list|()
 expr_stmt|;
 comment|// LANGUAGES contains mappings for supported languages.
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1104,6 +1227,8 @@ argument_list|,
 literal|"en"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1113,6 +1238,8 @@ argument_list|,
 literal|"da"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1122,6 +1249,8 @@ argument_list|,
 literal|"de"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1131,6 +1260,8 @@ argument_list|,
 literal|"fr"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1140,6 +1271,8 @@ argument_list|,
 literal|"it"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1149,6 +1282,8 @@ argument_list|,
 literal|"ja"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1158,6 +1293,8 @@ argument_list|,
 literal|"nl"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1167,6 +1304,8 @@ argument_list|,
 literal|"no"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1177,6 +1316,8 @@ literal|"es"
 argument_list|)
 expr_stmt|;
 comment|//LANGUAGES.put("Polski", "pl");
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1186,6 +1327,8 @@ argument_list|,
 literal|"tr"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1195,6 +1338,8 @@ argument_list|,
 literal|"zh"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1204,6 +1349,8 @@ argument_list|,
 literal|"vi"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1213,6 +1360,8 @@ argument_list|,
 literal|"in"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1222,6 +1371,8 @@ argument_list|,
 literal|"pt_BR"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|LANGUAGES
 operator|.
 name|put
@@ -1232,6 +1383,8 @@ literal|"ru"
 argument_list|)
 expr_stmt|;
 comment|// Set up entry editor colors, first time:
+name|GUIGlobals
+operator|.
 name|updateEntryEditorColors
 argument_list|()
 expr_stmt|;
@@ -1243,6 +1396,8 @@ name|void
 name|updateEntryEditorColors
 parameter_list|()
 block|{
+name|GUIGlobals
+operator|.
 name|activeBackground
 operator|=
 name|JabRefPreferences
@@ -1255,6 +1410,8 @@ argument_list|(
 literal|"activeFieldEditorBackgroundColor"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|validFieldBackgroundColor
 operator|=
 name|JabRefPreferences
@@ -1267,6 +1424,8 @@ argument_list|(
 literal|"validFieldBackgroundColor"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|invalidFieldBackgroundColor
 operator|=
 name|JabRefPreferences
@@ -1279,6 +1438,8 @@ argument_list|(
 literal|"invalidFieldBackgroundColor"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|editorTextColor
 operator|=
 name|JabRefPreferences
@@ -1292,7 +1453,7 @@ literal|"fieldEditorTextColor"
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Read either the default icon theme, or a custom one. If loading of the custom theme 	 * fails, try to fall back on the default theme. 	 */
+comment|/**      * Read either the default icon theme, or a custom one. If loading of the custom theme      * fails, try to fall back on the default theme.      */
 DECL|method|setUpIconTheme ()
 specifier|public
 specifier|static
@@ -1358,6 +1519,7 @@ name|filename
 operator|!=
 literal|null
 condition|)
+block|{
 try|try
 block|{
 name|File
@@ -1420,10 +1582,15 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+block|}
 try|try
 block|{
+name|GUIGlobals
+operator|.
 name|iconMap
 operator|=
+name|GUIGlobals
+operator|.
 name|readIconThemeFile
 argument_list|(
 name|resource
@@ -1458,7 +1625,7 @@ operator|.
 name|toString
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 comment|// If we were trying to load a custom theme, try the default one as a fallback:
@@ -1468,10 +1635,15 @@ name|resource
 operator|!=
 name|defaultResource
 condition|)
+block|{
 try|try
 block|{
+name|GUIGlobals
+operator|.
 name|iconMap
 operator|=
+name|GUIGlobals
+operator|.
 name|readIconThemeFile
 argument_list|(
 name|defaultResource
@@ -1503,7 +1675,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 	 * Looks up the URL for the image representing the given function, in the resource 	 * file listing images. 	 * @param name The name of the icon, such as "open", "save", "saveAs" etc. 	 * @return The URL to the actual image to use. 	 */
+block|}
+comment|/**      * Looks up the URL for the image representing the given function, in the resource      * file listing images.      * @param name The name of the icon, such as "open", "save", "saveAs" etc.      * @return The URL to the actual image to use.      */
 DECL|method|getIconUrl (String name)
 specifier|public
 specifier|static
@@ -1516,6 +1689,8 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|GUIGlobals
+operator|.
 name|iconMap
 operator|.
 name|containsKey
@@ -1527,6 +1702,8 @@ block|{
 name|String
 name|path
 init|=
+name|GUIGlobals
+operator|.
 name|iconMap
 operator|.
 name|get
@@ -1552,6 +1729,7 @@ name|url
 operator|==
 literal|null
 condition|)
+block|{
 comment|// This may be a resource outside of the jar file, so we try a general URL:
 try|try
 block|{
@@ -1569,13 +1747,15 @@ parameter_list|(
 name|MalformedURLException
 name|ignored
 parameter_list|)
-block|{ 				}
+block|{                 }
+block|}
 if|if
 condition|(
 name|url
 operator|==
 literal|null
 condition|)
+block|{
 name|System
 operator|.
 name|err
@@ -1593,19 +1773,22 @@ literal|" '"
 operator|+
 name|path
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|url
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
 block|}
-comment|/** 	 * Constructs an ImageIcon for the given function, using the image specified in 	 * the resource files resource/Icons_en.properties. 	 * @param name The name of the icon, such as "open", "save", "saveAs" etc. 	 * @return The ImageIcon for the function. 	 */
+block|}
+comment|/**      * Constructs an ImageIcon for the given function, using the image specified in      * the resource files resource/Icons_en.properties.      * @param name The name of the icon, such as "open", "save", "saveAs" etc.      * @return The ImageIcon for the function.      */
 DECL|method|getImage (String name)
 specifier|public
 specifier|static
@@ -1619,6 +1802,8 @@ block|{
 name|URL
 name|u
 init|=
+name|GUIGlobals
+operator|.
 name|getIconUrl
 argument_list|(
 name|name
@@ -1632,6 +1817,8 @@ condition|?
 operator|new
 name|ImageIcon
 argument_list|(
+name|GUIGlobals
+operator|.
 name|getIconUrl
 argument_list|(
 name|name
@@ -1659,11 +1846,13 @@ name|Collections
 operator|.
 name|unmodifiableMap
 argument_list|(
+name|GUIGlobals
+operator|.
 name|iconMap
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Read a typical java property file into a HashMap. Currently doesn't support escaping 	 * of the '=' character - it simply looks for the first '=' to determine where the key ends. 	 * Both the key and the value is trimmed for whitespace at the ends. 	 * @param file The URL to read information from. 	 * @param prefix A String to prefix to all values read. Can represent e.g. the directory 	 * where icon files are to be found. 	 * @return A HashMap containing all key-value pairs found. 	 * @throws IOException 	 */
+comment|/**      * Read a typical java property file into a HashMap. Currently doesn't support escaping      * of the '=' character - it simply looks for the first '=' to determine where the key ends.      * Both the key and the value is trimmed for whitespace at the ends.      * @param file The URL to read information from.      * @param prefix A String to prefix to all values read. Can represent e.g. the directory      * where icon files are to be found.      * @return A HashMap containing all key-value pairs found.      * @throws IOException      */
 DECL|method|readIconThemeFile (URL file, String prefix)
 specifier|private
 specifier|static
@@ -1715,11 +1904,11 @@ operator|.
 name|openStream
 argument_list|()
 expr_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|buffer
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|int
@@ -1739,6 +1928,7 @@ operator|!=
 operator|-
 literal|1
 condition|)
+block|{
 name|buffer
 operator|.
 name|append
@@ -1749,6 +1939,7 @@ operator|)
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 index|[]
 name|lines
@@ -1850,11 +2041,13 @@ name|in
 operator|!=
 literal|null
 condition|)
+block|{
 name|in
 operator|.
 name|close
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1899,7 +2092,7 @@ argument_list|(
 literal|"language"
 argument_list|)
 operator|+
-literal|"/"
+literal|'/'
 decl_stmt|;
 if|if
 condition|(
@@ -1910,20 +2103,24 @@ argument_list|(
 literal|"en/"
 argument_list|)
 condition|)
+block|{
 name|middle
 operator|=
 literal|""
 expr_stmt|;
 comment|// english in base help dir.
+block|}
 return|return
 operator|(
+name|GUIGlobals
+operator|.
 name|helpPre
 operator|+
 name|middle
 operator|)
 return|;
 block|}
-comment|/** 	 * Perform initializations that are only used in graphical mode. This is to prevent 	 * the "Xlib: connection to ":0.0" refused by server" error when access to the X server 	 * on Un*x is unavailable. 	 */
+comment|/**      * Perform initializations that are only used in graphical mode. This is to prevent      * the "Xlib: connection to ":0.0" refused by server" error when access to the X server      * on Un*x is unavailable.      */
 DECL|method|init ()
 specifier|public
 specifier|static
@@ -1931,6 +2128,8 @@ name|void
 name|init
 parameter_list|()
 block|{
+name|GUIGlobals
+operator|.
 name|typeNameFont
 operator|=
 operator|new
@@ -1949,6 +2148,8 @@ argument_list|,
 literal|18
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|fieldNameFont
 operator|=
 operator|new
@@ -1975,6 +2176,8 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
+name|GUIGlobals
+operator|.
 name|getImage
 argument_list|(
 literal|"pdfSmall"
@@ -1995,6 +2198,8 @@ operator|+
 literal|" PDF"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2009,6 +2214,8 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
+name|GUIGlobals
+operator|.
 name|getImage
 argument_list|(
 literal|"wwwSmall"
@@ -2029,6 +2236,8 @@ operator|+
 literal|" URL"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2043,6 +2252,8 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
+name|GUIGlobals
+operator|.
 name|getImage
 argument_list|(
 literal|"citeseer"
@@ -2063,6 +2274,8 @@ operator|+
 literal|" CiteSeer URL"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2077,6 +2290,8 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
+name|GUIGlobals
+operator|.
 name|getImage
 argument_list|(
 literal|"arxiv"
@@ -2097,6 +2312,8 @@ operator|+
 literal|" ArXiv URL"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2111,6 +2328,8 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
+name|GUIGlobals
+operator|.
 name|getImage
 argument_list|(
 literal|"doiSmall"
@@ -2138,6 +2357,8 @@ literal|"web link"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2152,6 +2373,8 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
+name|GUIGlobals
+operator|.
 name|getImage
 argument_list|(
 literal|"psSmall"
@@ -2172,6 +2395,8 @@ operator|+
 literal|" PS"
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2186,6 +2411,8 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
+name|GUIGlobals
+operator|.
 name|getImage
 argument_list|(
 literal|"psSmall"
@@ -2204,6 +2431,8 @@ literal|"Open folder"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2220,6 +2449,8 @@ operator|=
 operator|new
 name|JLabel
 argument_list|(
+name|GUIGlobals
+operator|.
 name|getImage
 argument_list|(
 literal|"psSmall"
@@ -2238,6 +2469,8 @@ literal|"Open file"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2292,6 +2525,8 @@ literal|" file"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2332,6 +2567,8 @@ name|getToolTip
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2371,6 +2608,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//tableIcons.put("quality", lab);
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2411,6 +2650,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//        lab.setName("0");
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2450,6 +2691,8 @@ name|getToolTip
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|GUIGlobals
+operator|.
 name|tableIcons
 operator|.
 name|put
@@ -2457,6 +2700,88 @@ argument_list|(
 name|SpecialFieldsUtils
 operator|.
 name|FIELDNAME_PRIORITY
+argument_list|,
+name|lab
+argument_list|)
+expr_stmt|;
+comment|// Read icon used for menu
+name|lab
+operator|=
+operator|new
+name|JLabel
+argument_list|(
+name|ReadStatus
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getRepresentingIcon
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|lab
+operator|.
+name|setToolTipText
+argument_list|(
+name|ReadStatus
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getToolTip
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|GUIGlobals
+operator|.
+name|tableIcons
+operator|.
+name|put
+argument_list|(
+name|SpecialFieldsUtils
+operator|.
+name|FIELDNAME_READ
+argument_list|,
+name|lab
+argument_list|)
+expr_stmt|;
+comment|// Print icon used for menu
+name|lab
+operator|=
+operator|new
+name|JLabel
+argument_list|(
+name|Printed
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getRepresentingIcon
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|lab
+operator|.
+name|setToolTipText
+argument_list|(
+name|Printed
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getToolTip
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|GUIGlobals
+operator|.
+name|tableIcons
+operator|.
+name|put
+argument_list|(
+name|SpecialFieldsUtils
+operator|.
+name|FIELDNAME_PRINTED
 argument_list|,
 name|lab
 argument_list|)

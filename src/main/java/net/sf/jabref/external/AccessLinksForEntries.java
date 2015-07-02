@@ -118,67 +118,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BaseAction
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BasePanel
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|MetaData
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Util
+name|*
 import|;
 end_import
 
@@ -222,7 +162,7 @@ name|AccessLinksForEntries
 block|{
 comment|/**      * Look up all external files linked from (at least) one of the entries in a set.      * This method does not verify the links.      *      * @param entries The set of entries.      * @return A list of FileListEntry objects pointing to the external files.      */
 DECL|method|getExternalLinksForEntries (List<BibtexEntry> entries)
-specifier|public
+specifier|private
 specifier|static
 name|List
 argument_list|<
@@ -283,7 +223,9 @@ name|links
 operator|==
 literal|null
 condition|)
+block|{
 continue|continue;
+block|}
 name|model
 operator|.
 name|setContent
@@ -308,6 +250,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|files
 operator|.
 name|add
@@ -321,13 +264,14 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 return|return
 name|files
 return|;
 block|}
 comment|/**      * Take a list of external links and copy the referred files to a given directory.      * This method should be run off the Event Dispatch Thread. A progress bar, if given,      * will be updated on the EDT.      *      * @param files The list of file links.      * @param toDir The directory to copy the files to.      * @param metaData The MetaData for the database containing the external links. This is needed      *  because the database might have its own file directory.      * @param prog A JProgressBar which will be updated to show the progress of the process.      *  This argument can be null if no progress bar is needed.      * @param deleteOriginalFiles if true, the files in their original locations will be deleted      *  after copying, for each file whose source directory is different from the destination      *  directory differs.      * @param callback An ActionListener which should be notified when the process is finished.      *  This parameter can be null if no callback is needed.      */
 DECL|method|copyExternalLinksToDirectory (final List<FileListEntry> files, File toDir, MetaData metaData, final JProgressBar prog, boolean deleteOriginalFiles, final ActionListener callback)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|copyExternalLinksToDirectory
@@ -363,6 +307,7 @@ name|prog
 operator|!=
 literal|null
 condition|)
+block|{
 name|SwingUtilities
 operator|.
 name|invokeLater
@@ -371,6 +316,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -404,6 +351,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 name|Set
 argument_list|<
 name|String
@@ -474,12 +422,14 @@ operator|&&
 operator|(
 name|pos
 operator|<
+operator|(
 name|name
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 operator|)
 operator|)
 condition|?
@@ -547,6 +497,7 @@ name|aDir
 range|:
 name|dir
 control|)
+block|{
 if|if
 condition|(
 operator|!
@@ -557,6 +508,7 @@ argument_list|(
 name|aDir
 argument_list|)
 condition|)
+block|{
 name|al
 operator|.
 name|add
@@ -564,6 +516,8 @@ argument_list|(
 name|aDir
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 for|for
 control|(
 name|String
@@ -571,6 +525,7 @@ name|aFileDir
 range|:
 name|fileDir
 control|)
+block|{
 if|if
 condition|(
 operator|!
@@ -581,6 +536,7 @@ argument_list|(
 name|aFileDir
 argument_list|)
 condition|)
+block|{
 name|al
 operator|.
 name|add
@@ -588,6 +544,8 @@ argument_list|(
 name|aFileDir
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 name|String
 index|[]
 name|dirs
@@ -609,7 +567,7 @@ decl_stmt|;
 name|File
 name|tmp
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -627,10 +585,12 @@ name|tmp
 operator|!=
 literal|null
 condition|)
+block|{
 name|file
 operator|=
 name|tmp
 expr_stmt|;
+block|}
 comment|// Check if we have arrived at an existing file:
 if|if
 condition|(
@@ -687,7 +647,7 @@ block|{
 try|try
 block|{
 comment|// Copy the file:
-name|Util
+name|FileUtil
 operator|.
 name|copyFile
 argument_list|(
@@ -703,11 +663,13 @@ if|if
 condition|(
 name|deleteOriginalFiles
 condition|)
+block|{
 name|file
 operator|.
 name|delete
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -742,6 +704,7 @@ name|prog
 operator|!=
 literal|null
 condition|)
+block|{
 name|SwingUtilities
 operator|.
 name|invokeLater
@@ -750,6 +713,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -766,6 +731,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else
@@ -794,11 +760,12 @@ specifier|public
 specifier|static
 class|class
 name|SaveWithLinkedFiles
-extends|extends
+implements|implements
 name|BaseAction
 block|{
 DECL|field|panel
 specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
@@ -961,16 +928,18 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
-name|Thread
-name|t
-init|=
-operator|new
-name|Thread
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
 argument_list|(
 operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1001,6 +970,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1021,11 +992,6 @@ expr_stmt|;
 block|}
 block|}
 argument_list|)
-decl_stmt|;
-name|t
-operator|.
-name|start
-argument_list|()
 expr_stmt|;
 block|}
 block|}

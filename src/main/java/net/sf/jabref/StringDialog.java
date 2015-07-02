@@ -146,6 +146,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|ActionMap
 import|;
 end_import
@@ -378,7 +388,6 @@ end_import
 
 begin_class
 DECL|class|StringDialog
-specifier|public
 class|class
 name|StringDialog
 extends|extends
@@ -386,83 +395,48 @@ name|JDialog
 block|{
 comment|// A reference to the entry this object works on.
 DECL|field|base
+specifier|private
+specifier|final
 name|BibtexDatabase
 name|base
 decl_stmt|;
 DECL|field|frame
+specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|panel
+specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|prefs
+specifier|private
+specifier|final
 name|JabRefPreferences
 name|prefs
 decl_stmt|;
-DECL|field|stringsSet
-name|TreeSet
-argument_list|<
-name|BibtexString
-argument_list|>
-name|stringsSet
-decl_stmt|;
-comment|// Our locally sorted set of strings.
 DECL|field|strings
+specifier|private
 name|Object
 index|[]
 name|strings
-decl_stmt|;
-comment|// Layout objects.
-DECL|field|gbl
-name|GridBagLayout
-name|gbl
-init|=
-operator|new
-name|GridBagLayout
-argument_list|()
-decl_stmt|;
-DECL|field|con
-name|GridBagConstraints
-name|con
-init|=
-operator|new
-name|GridBagConstraints
-argument_list|()
 decl_stmt|;
 DECL|field|lab
 name|JLabel
 name|lab
 decl_stmt|;
-DECL|field|conPane
-name|Container
-name|conPane
-init|=
-name|getContentPane
-argument_list|()
-decl_stmt|;
-DECL|field|tlb
-name|JToolBar
-name|tlb
-init|=
-operator|new
-name|JToolBar
-argument_list|()
-decl_stmt|;
-DECL|field|pan
-name|JPanel
-name|pan
-init|=
-operator|new
-name|JPanel
-argument_list|()
-decl_stmt|;
 DECL|field|table
+specifier|private
+specifier|final
 name|StringTable
 name|table
 decl_stmt|;
 DECL|field|helpAction
+specifier|private
+specifier|final
 name|HelpAction
 name|helpAction
 decl_stmt|;
@@ -537,6 +511,8 @@ operator|new
 name|WindowAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|windowClosing
@@ -564,6 +540,8 @@ operator|new
 name|LayoutFocusTraversalPolicy
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|protected
 name|boolean
 name|accept
@@ -626,6 +604,20 @@ literal|"stringsSizeY"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|JPanel
+name|pan
+init|=
+operator|new
+name|JPanel
+argument_list|()
+decl_stmt|;
+name|GridBagLayout
+name|gbl
+init|=
+operator|new
+name|GridBagLayout
+argument_list|()
+decl_stmt|;
 name|pan
 operator|.
 name|setLayout
@@ -633,6 +625,13 @@ argument_list|(
 name|gbl
 argument_list|)
 expr_stmt|;
+name|GridBagConstraints
+name|con
+init|=
+operator|new
+name|GridBagConstraints
+argument_list|()
+decl_stmt|;
 name|con
 operator|.
 name|fill
@@ -681,6 +680,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|table
 operator|.
 name|setRowSelectionInterval
@@ -690,6 +690,7 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
 name|gbl
 operator|.
 name|setConstraints
@@ -712,6 +713,13 @@ name|getPane
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|JToolBar
+name|tlb
+init|=
+operator|new
+name|JToolBar
+argument_list|()
+decl_stmt|;
 name|InputMap
 name|im
 init|=
@@ -746,6 +754,15 @@ argument_list|,
 literal|"add"
 argument_list|)
 expr_stmt|;
+name|NewStringAction
+name|newStringAction
+init|=
+operator|new
+name|NewStringAction
+argument_list|(
+name|this
+argument_list|)
+decl_stmt|;
 name|am
 operator|.
 name|put
@@ -769,6 +786,15 @@ argument_list|,
 literal|"remove"
 argument_list|)
 expr_stmt|;
+name|RemoveStringAction
+name|removeStringAction
+init|=
+operator|new
+name|RemoveStringAction
+argument_list|(
+name|this
+argument_list|)
+decl_stmt|;
 name|am
 operator|.
 name|put
@@ -842,6 +868,13 @@ argument_list|,
 literal|"undo"
 argument_list|)
 expr_stmt|;
+name|UndoAction
+name|undoAction
+init|=
+operator|new
+name|UndoAction
+argument_list|()
+decl_stmt|;
 name|am
 operator|.
 name|put
@@ -865,6 +898,13 @@ argument_list|,
 literal|"redo"
 argument_list|)
 expr_stmt|;
+name|RedoAction
+name|redoAction
+init|=
+operator|new
+name|RedoAction
+argument_list|()
+decl_stmt|;
 name|am
 operator|.
 name|put
@@ -909,6 +949,12 @@ argument_list|(
 name|helpAction
 argument_list|)
 expr_stmt|;
+name|Container
+name|conPane
+init|=
+name|getContentPane
+argument_list|()
+decl_stmt|;
 name|conPane
 operator|.
 name|add
@@ -940,6 +986,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|setTitle
 argument_list|(
 name|Globals
@@ -962,7 +1009,9 @@ name|getName
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|setTitle
 argument_list|(
 name|Globals
@@ -987,6 +1036,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 DECL|class|StringTable
 class|class
 name|StringTable
@@ -994,6 +1044,7 @@ extends|extends
 name|JTable
 block|{
 DECL|field|sp
+specifier|final
 name|JScrollPane
 name|sp
 init|=
@@ -1179,8 +1230,12 @@ name|sortStrings
 parameter_list|()
 block|{
 comment|// Rebuild our sorted set of strings:
+name|TreeSet
+argument_list|<
+name|BibtexString
+argument_list|>
 name|stringsSet
-operator|=
+init|=
 operator|new
 name|TreeSet
 argument_list|<
@@ -1193,7 +1248,7 @@ argument_list|(
 literal|false
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 for|for
 control|(
 name|String
@@ -1258,10 +1313,12 @@ extends|extends
 name|AbstractTableModel
 block|{
 DECL|field|base
+specifier|final
 name|BibtexDatabase
 name|base
 decl_stmt|;
 DECL|field|parent
+specifier|final
 name|StringDialog
 name|parent
 decl_stmt|;
@@ -1289,6 +1346,8 @@ operator|=
 name|base
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getValueAt (int row, int col)
 specifier|public
 name|Object
@@ -1337,6 +1396,8 @@ argument_list|()
 operator|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValueAt (Object value, int row, int col)
 specifier|public
 name|void
@@ -1398,6 +1459,7 @@ operator|)
 name|value
 argument_list|)
 condition|)
+block|{
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -1425,6 +1487,7 @@ operator|.
 name|ERROR_MESSAGE
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1710,6 +1773,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnCount ()
 specifier|public
 name|int
@@ -1720,6 +1785,8 @@ return|return
 literal|2
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRowCount ()
 specifier|public
 name|int
@@ -1733,6 +1800,8 @@ name|length
 return|;
 comment|//base.getStringCount();
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnName (int col)
 specifier|public
 name|String
@@ -1766,6 +1835,8 @@ argument_list|)
 operator|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isCellEditable (int row, int col)
 specifier|public
 name|boolean
@@ -1784,7 +1855,7 @@ return|;
 block|}
 block|}
 DECL|method|isNumber (String name)
-specifier|protected
+specifier|private
 name|boolean
 name|isNumber
 parameter_list|(
@@ -1819,7 +1890,6 @@ return|;
 block|}
 block|}
 DECL|method|assureNotEditing ()
-specifier|protected
 name|void
 name|assureNotEditing
 parameter_list|()
@@ -1863,6 +1933,8 @@ block|}
 block|}
 comment|// The action concerned with closing the window.
 DECL|field|closeAction
+specifier|private
+specifier|final
 name|CloseAction
 name|closeAction
 init|=
@@ -1879,6 +1951,7 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|field|parent
+specifier|final
 name|StringDialog
 name|parent
 decl_stmt|;
@@ -1898,6 +1971,8 @@ expr_stmt|;
 comment|//, new ImageIcon(GUIGlobals.closeIconFile));
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -1915,6 +1990,8 @@ operator|=
 name|parent
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1990,16 +2067,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|field|newStringAction
-name|NewStringAction
-name|newStringAction
-init|=
-operator|new
-name|NewStringAction
-argument_list|(
-name|this
-argument_list|)
-decl_stmt|;
 DECL|class|NewStringAction
 class|class
 name|NewStringAction
@@ -2007,6 +2074,7 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|field|parent
+specifier|final
 name|StringDialog
 name|parent
 decl_stmt|;
@@ -2032,6 +2100,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -2049,6 +2119,8 @@ operator|=
 name|parent
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2081,7 +2153,9 @@ name|name
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|isNumber
@@ -2196,9 +2270,9 @@ block|{
 name|String
 name|newId
 init|=
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 decl_stmt|;
 name|BibtexString
@@ -2298,12 +2372,14 @@ name|this
 argument_list|)
 decl_stmt|;
 DECL|class|StoreContentAction
+specifier|static
 class|class
 name|StoreContentAction
 extends|extends
 name|AbstractAction
 block|{
 DECL|field|parent
+specifier|final
 name|StringDialog
 name|parent
 decl_stmt|;
@@ -2329,6 +2405,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -2346,6 +2424,8 @@ operator|=
 name|parent
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2354,18 +2434,8 @@ parameter_list|(
 name|ActionEvent
 name|e
 parameter_list|)
-block|{ 	}
+block|{         }
 block|}
-DECL|field|removeStringAction
-name|RemoveStringAction
-name|removeStringAction
-init|=
-operator|new
-name|RemoveStringAction
-argument_list|(
-name|this
-argument_list|)
-decl_stmt|;
 DECL|class|RemoveStringAction
 class|class
 name|RemoveStringAction
@@ -2373,6 +2443,7 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|field|parent
+specifier|final
 name|StringDialog
 name|parent
 decl_stmt|;
@@ -2398,6 +2469,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -2415,6 +2488,8 @@ operator|=
 name|parent
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2457,7 +2532,7 @@ argument_list|(
 literal|"Really delete the selected"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 operator|(
 operator|(
@@ -2489,7 +2564,7 @@ literal|"entry"
 argument_list|)
 operator|)
 operator|+
-literal|"?"
+literal|'?'
 decl_stmt|;
 name|int
 name|answer
@@ -2622,6 +2697,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|table
 operator|.
 name|setRowSelectionInterval
@@ -2637,15 +2713,8 @@ block|}
 block|}
 block|}
 block|}
-comment|/*    StringUpAction stringUpAction = new StringUpAction();     class StringUpAction extends AbstractAction { 	public StringUpAction() { 	    super("Move string up", 		  new ImageIcon(GUIGlobals.upIconFile)); 	    putValue(SHORT_DESCRIPTION, Globals.lang("Move string up")); 	} 	public void actionPerformed(ActionEvent e) { 	    int[] sel = table.getSelectedRows(); 	    if ((sel.length == 1)&& (sel[0]> 0)) {  		// Make sure no cell is being edited, as caused by the 		// keystroke. This makes the content hang on the screen. 		assureNotEditing(); 		// Store undo information: 		panel.undoManager.addEdit(new UndoableMoveString 					      (panel, base, sel[0], true));  		BibtexString bs = base.getString(sel[0]); 		base.removeString(sel[0]); 		try { 		    base.addString(bs, sel[0]-1); 		} catch (KeyCollisionException ex) {} 		table.revalidate(); 		table.setRowSelectionInterval(sel[0]-1, sel[0]-1); 		table.repaint(); 		panel.markBaseChanged(); 	    } 	}     }      StringDownAction stringDownAction = new StringDownAction();     class StringDownAction extends AbstractAction { 	public StringDownAction() { 	    super("Move string down", 		  new ImageIcon(GUIGlobals.downIconFile)); 	    putValue(SHORT_DESCRIPTION, Globals.lang("Move string down")); 	} 	public void actionPerformed(ActionEvent e) { 	    int[] sel = table.getSelectedRows(); 	    if ((sel.length == 1)&& (sel[0]+1< base.getStringCount())) {  		// Make sure no cell is being edited, as caused by the 		// keystroke. This makes the content hang on the screen. 		assureNotEditing();   		// Store undo information: 		panel.undoManager.addEdit(new UndoableMoveString 					      (panel, base, sel[0], false));   		BibtexString bs = base.getString(sel[0]); 		base.removeString(sel[0]); 		try { 		    base.addString(bs, sel[0]+1); 		} catch (KeyCollisionException ex) {} 		table.revalidate(); 		table.setRowSelectionInterval(sel[0]+1, sel[0]+1); 		table.repaint(); 		panel.markBaseChanged(); 	    }  	}     }*/
-DECL|field|undoAction
-name|UndoAction
-name|undoAction
-init|=
-operator|new
-name|UndoAction
-argument_list|()
-decl_stmt|;
+block|}
+comment|/*    StringUpAction stringUpAction = new StringUpAction();     class StringUpAction extends AbstractAction {     public StringUpAction() {         super("Move string up",     	  new ImageIcon(GUIGlobals.upIconFile));         putValue(SHORT_DESCRIPTION, Globals.lang("Move string up"));     }     public void actionPerformed(ActionEvent e) {         int[] sel = table.getSelectedRows();         if ((sel.length == 1)&& (sel[0]> 0)) {      	// Make sure no cell is being edited, as caused by the     	// keystroke. This makes the content hang on the screen.     	assureNotEditing();     	// Store undo information:     	panel.undoManager.addEdit(new UndoableMoveString     				      (panel, base, sel[0], true));      	BibtexString bs = base.getString(sel[0]);     	base.removeString(sel[0]);     	try {     	    base.addString(bs, sel[0]-1);     	} catch (KeyCollisionException ex) {}     	table.revalidate();     	table.setRowSelectionInterval(sel[0]-1, sel[0]-1);     	table.repaint();     	panel.markBaseChanged();         }     }     }      StringDownAction stringDownAction = new StringDownAction();     class StringDownAction extends AbstractAction {     public StringDownAction() {         super("Move string down",     	  new ImageIcon(GUIGlobals.downIconFile));         putValue(SHORT_DESCRIPTION, Globals.lang("Move string down"));     }     public void actionPerformed(ActionEvent e) {         int[] sel = table.getSelectedRows();         if ((sel.length == 1)&& (sel[0]+1< base.getStringCount())) {      	// Make sure no cell is being edited, as caused by the     	// keystroke. This makes the content hang on the screen.     	assureNotEditing();       	// Store undo information:     	panel.undoManager.addEdit(new UndoableMoveString     				      (panel, base, sel[0], false));       	BibtexString bs = base.getString(sel[0]);     	base.removeString(sel[0]);     	try {     	    base.addString(bs, sel[0]+1);     	} catch (KeyCollisionException ex) {}     	table.revalidate();     	table.setRowSelectionInterval(sel[0]+1, sel[0]+1);     	table.repaint();     	panel.markBaseChanged();         }      }     }*/
 DECL|class|UndoAction
 class|class
 name|UndoAction
@@ -2671,6 +2740,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -2682,6 +2753,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2706,17 +2779,9 @@ parameter_list|(
 name|Throwable
 name|ignored
 parameter_list|)
-block|{}
+block|{             }
 block|}
 block|}
-DECL|field|redoAction
-name|RedoAction
-name|redoAction
-init|=
-operator|new
-name|RedoAction
-argument_list|()
-decl_stmt|;
 DECL|class|RedoAction
 class|class
 name|RedoAction
@@ -2742,6 +2807,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -2753,6 +2820,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2777,7 +2846,7 @@ parameter_list|(
 name|Throwable
 name|ignored
 parameter_list|)
-block|{}
+block|{             }
 block|}
 block|}
 block|}

@@ -40,14 +40,13 @@ end_import
 
 begin_class
 DECL|class|JPanelXBoxLeftJustify
-specifier|public
 class|class
 name|JPanelXBoxLeftJustify
 extends|extends
 name|JPanelXBox
 block|{
 DECL|method|JPanelXBoxLeftJustify ()
-specifier|public
+specifier|private
 name|JPanelXBoxLeftJustify
 parameter_list|()
 block|{
@@ -80,6 +79,8 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|add (Component c)
 specifier|public
 name|Component

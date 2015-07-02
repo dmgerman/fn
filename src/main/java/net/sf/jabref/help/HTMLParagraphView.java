@@ -70,8 +70,9 @@ extends|extends
 name|ParagraphView
 block|{
 DECL|field|MAX_VIEW_SIZE
-specifier|public
+specifier|private
 specifier|static
+specifier|final
 name|int
 name|MAX_VIEW_SIZE
 init|=
@@ -100,13 +101,15 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|class|HTMLFlowStrategy
-specifier|public
+specifier|private
 specifier|static
 class|class
 name|HTMLFlowStrategy
 extends|extends
 name|FlowStrategy
 block|{
+annotation|@
+name|Override
 DECL|method|createView (FlowView fv, int startOffset, int spanLeft, int rowIndex)
 specifier|protected
 name|View
@@ -143,6 +146,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|res
 operator|.
 name|getEndOffset
@@ -152,7 +156,10 @@ name|res
 operator|.
 name|getStartOffset
 argument_list|()
+operator|)
 operator|>
+name|HTMLParagraphView
+operator|.
 name|MAX_VIEW_SIZE
 condition|)
 block|{
@@ -166,6 +173,8 @@ name|startOffset
 argument_list|,
 name|startOffset
 operator|+
+name|HTMLParagraphView
+operator|.
 name|MAX_VIEW_SIZE
 argument_list|)
 expr_stmt|;
@@ -175,6 +184,8 @@ name|res
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getResizeWeight (int axis)
 specifier|public
 name|int

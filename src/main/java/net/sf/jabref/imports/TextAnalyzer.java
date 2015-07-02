@@ -74,11 +74,12 @@ end_import
 
 begin_class
 DECL|class|TextAnalyzer
-specifier|public
 class|class
 name|TextAnalyzer
 block|{
 DECL|field|be
+specifier|private
+specifier|final
 name|BibtexEntry
 name|be
 init|=
@@ -109,7 +110,7 @@ name|be
 return|;
 block|}
 DECL|method|guessBibtexFields (String text)
-specifier|public
+specifier|private
 name|void
 name|guessBibtexFields
 parameter_list|(
@@ -141,8 +142,6 @@ expr_stmt|;
 name|String
 index|[]
 name|split
-init|=
-literal|null
 decl_stmt|;
 comment|// Look for the year:
 name|String
@@ -289,7 +288,9 @@ name|number
 operator|==
 name|yearFound
 condition|)
+block|{
 continue|continue;
+block|}
 if|if
 condition|(
 name|number
@@ -439,8 +440,6 @@ block|}
 comment|// Look for Pages:
 name|String
 name|pages
-init|=
-literal|null
 decl_stmt|;
 name|String
 name|pagesRx
@@ -610,9 +609,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|second
 operator|-
 name|first
+operator|)
 operator|>
 literal|3
 condition|)
@@ -697,12 +698,8 @@ block|}
 comment|//String journalRx = "(\\.|\\n)\\s??([a-zA-Z\\. ]{8,30}+)((vol\\.|Vol\\.|Volume|volume))??(.??)(\\d{1,3})(\\.|,|\\s)";
 name|String
 name|journal
-init|=
-literal|null
 decl_stmt|,
 name|volume
-init|=
-literal|null
 decl_stmt|;
 name|String
 name|journalRx
@@ -861,6 +858,7 @@ argument_list|(
 literal|"v"
 argument_list|)
 condition|)
+block|{
 name|journal
 operator|=
 name|clean
@@ -875,6 +873,7 @@ name|pos
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|pos
 operator|=
@@ -922,10 +921,6 @@ block|}
 else|else
 block|{
 comment|// No journal found. Maybe the year precedes the volume? Try another regexp:
-name|journalRx
-operator|=
-literal|"(,|\\.|\\n)\\s??([a-zA-Z\\. ]{8,30}+)((.){0,2})\\s??(\\d{1,3})(\\.|,|\\s|:)"
-expr_stmt|;
 block|}
 comment|// Then try to find title and authors.
 name|Substring
@@ -963,12 +958,14 @@ name|usedPart
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|ss
 operator|.
 name|begin
 argument_list|()
 operator|-
 name|piv
+operator|)
 operator|>
 literal|10
 condition|)
@@ -1023,12 +1020,14 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|text
 operator|.
 name|length
 argument_list|()
 operator|-
 name|piv
+operator|)
 operator|>
 literal|10
 condition|)
@@ -1078,7 +1077,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|getMatches (String text, String regexp)
-specifier|public
+specifier|private
 name|String
 index|[]
 name|getMatches
@@ -1114,6 +1113,7 @@ name|length
 operator|<
 literal|2
 condition|)
+block|{
 return|return
 operator|new
 name|String
@@ -1121,6 +1121,7 @@ index|[
 literal|0
 index|]
 return|;
+block|}
 name|String
 index|[]
 name|out
@@ -1259,12 +1260,14 @@ condition|(
 operator|!
 name|found
 operator|&&
+operator|(
 name|left
 operator|<
 name|s
 operator|.
 name|length
 argument_list|()
+operator|)
 condition|)
 block|{
 name|char
@@ -1316,14 +1319,18 @@ operator|==
 literal|')'
 operator|)
 condition|)
+block|{
 name|left
 operator|++
 expr_stmt|;
+block|}
 else|else
+block|{
 name|found
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 name|found
 operator|=
@@ -1334,9 +1341,11 @@ condition|(
 operator|!
 name|found
 operator|&&
+operator|(
 name|right
 operator|>
 name|left
+operator|)
 condition|)
 block|{
 name|char
@@ -1388,14 +1397,18 @@ operator|==
 literal|'('
 operator|)
 condition|)
+block|{
 name|right
 operator|--
 expr_stmt|;
+block|}
 else|else
+block|{
 name|found
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 comment|//Util.pr(s+"\n"+left+" "+right);
 return|return
@@ -1432,10 +1445,13 @@ name|Substring
 argument_list|>
 block|{
 DECL|field|begin
-DECL|field|end
+specifier|final
 name|int
 name|begin
-decl_stmt|,
+decl_stmt|;
+DECL|field|end
+specifier|final
+name|int
 name|end
 decl_stmt|;
 DECL|method|Substring (String name, int begin, int end)
@@ -1485,6 +1501,8 @@ return|return
 name|end
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|compareTo (Substring other)
 specifier|public
 name|int

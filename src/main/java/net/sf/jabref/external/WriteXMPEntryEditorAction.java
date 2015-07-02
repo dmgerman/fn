@@ -136,11 +136,13 @@ name|AbstractAction
 block|{
 DECL|field|panel
 specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|editor
 specifier|private
+specifier|final
 name|EntryEditor
 name|editor
 decl_stmt|;
@@ -176,6 +178,8 @@ name|editor
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|Globals
@@ -189,6 +193,8 @@ expr_stmt|;
 comment|// normally, this call should be without "Globals.lang". However, the string "Write XMP" is also used in non-menu places and therefore, the translation must be also available at Globals.lang()
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SMALL_ICON
 argument_list|,
 name|GUIGlobals
@@ -201,6 +207,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -212,6 +220,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent actionEvent)
 specifier|public
 name|void
@@ -308,7 +318,7 @@ decl_stmt|;
 name|File
 name|f
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -323,6 +333,7 @@ name|f
 operator|!=
 literal|null
 condition|)
+block|{
 name|files
 operator|.
 name|add
@@ -330,6 +341,7 @@ argument_list|(
 name|f
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Then check the "file" field:
 name|dirs
 operator|=
@@ -438,7 +450,7 @@ condition|)
 block|{
 name|f
 operator|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -456,6 +468,7 @@ name|f
 operator|!=
 literal|null
 condition|)
+block|{
 name|files
 operator|.
 name|add
@@ -463,6 +476,7 @@ argument_list|(
 name|f
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -522,6 +536,7 @@ name|AbstractWorker
 block|{
 DECL|field|files
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|File
@@ -530,6 +545,7 @@ name|files
 decl_stmt|;
 DECL|field|entry
 specifier|private
+specifier|final
 name|BibtexEntry
 name|entry
 decl_stmt|;
@@ -560,6 +576,8 @@ operator|=
 name|entry
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -625,6 +643,7 @@ argument_list|()
 operator|==
 literal|1
 condition|)
+block|{
 name|message
 operator|=
 name|Globals
@@ -634,6 +653,7 @@ argument_list|(
 literal|"PDF does not exist"
 argument_list|)
 expr_stmt|;
+block|}
 name|error
 operator|++
 expr_stmt|;
@@ -665,6 +685,7 @@ argument_list|()
 operator|==
 literal|1
 condition|)
+block|{
 name|message
 operator|=
 name|Globals
@@ -674,6 +695,7 @@ argument_list|(
 literal|"Wrote XMP-metadata"
 argument_list|)
 expr_stmt|;
+block|}
 name|written
 operator|++
 expr_stmt|;
@@ -693,6 +715,7 @@ argument_list|()
 operator|==
 literal|1
 condition|)
+block|{
 name|message
 operator|=
 name|Globals
@@ -711,6 +734,7 @@ argument_list|()
 operator|+
 literal|"'"
 expr_stmt|;
+block|}
 name|error
 operator|++
 expr_stmt|;
@@ -759,6 +783,7 @@ name|error
 operator|>
 literal|0
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -783,6 +808,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|message
 operator|=
 name|sb

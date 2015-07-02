@@ -50,7 +50,7 @@ name|jabref
 operator|.
 name|autocompleter
 operator|.
-name|AbstractAutoCompleter
+name|AutoCompleter
 import|;
 end_import
 
@@ -62,43 +62,7 @@ name|awt
 operator|.
 name|event
 operator|.
-name|KeyAdapter
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|KeyEvent
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|FocusListener
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|awt
-operator|.
-name|event
-operator|.
-name|FocusEvent
+name|*
 import|;
 end_import
 
@@ -143,6 +107,7 @@ block|{
 DECL|field|logger
 specifier|private
 specifier|static
+specifier|final
 name|Logger
 name|logger
 init|=
@@ -159,12 +124,14 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|completer
-name|AbstractAutoCompleter
+specifier|private
+specifier|final
+name|AutoCompleter
 name|completer
 decl_stmt|;
 comment|// These variables keep track of the situation from time to time.
 DECL|field|toSetIn
-specifier|protected
+specifier|private
 name|String
 name|toSetIn
 init|=
@@ -172,7 +139,7 @@ literal|null
 decl_stmt|;
 comment|// null indicates that there are no completions available
 DECL|field|lastBeginning
-specifier|protected
+specifier|private
 name|String
 name|lastBeginning
 init|=
@@ -180,7 +147,7 @@ literal|null
 decl_stmt|;
 comment|// the letters, the user has typed until know
 DECL|field|lastCaretPosition
-specifier|protected
+specifier|private
 name|int
 name|lastCaretPosition
 init|=
@@ -188,7 +155,7 @@ operator|-
 literal|1
 decl_stmt|;
 DECL|field|lastCompletions
-specifier|protected
+specifier|private
 name|String
 index|[]
 name|lastCompletions
@@ -196,14 +163,14 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|lastShownCompletion
-specifier|protected
+specifier|private
 name|int
 name|lastShownCompletion
 init|=
 literal|0
 decl_stmt|;
 DECL|field|consumeEnterKey
-specifier|protected
+specifier|private
 name|boolean
 name|consumeEnterKey
 init|=
@@ -213,17 +180,17 @@ comment|// This field is set if the focus listener should call another focus lis
 comment|// after finishing. This is needed because the autocomplete listener must
 comment|// run before the focus listener responsible for storing the current edit.
 DECL|field|nextFocusListener
-specifier|protected
+specifier|private
 name|FocusListener
 name|nextFocusListener
 init|=
 literal|null
 decl_stmt|;
-DECL|method|AutoCompleteListener (AbstractAutoCompleter completer)
+DECL|method|AutoCompleteListener (AutoCompleter completer)
 specifier|public
 name|AutoCompleteListener
 parameter_list|(
-name|AbstractAutoCompleter
+name|AutoCompleter
 name|completer
 parameter_list|)
 block|{
@@ -274,6 +241,8 @@ operator|=
 name|t
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|keyPressed (KeyEvent e)
 specifier|public
 name|void
@@ -347,11 +316,13 @@ if|if
 condition|(
 name|consumeEnterKey
 condition|)
+block|{
 name|e
 operator|.
 name|consume
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|// Cycle through alternative completions when user presses PGUP/PGDN:
 elseif|else
@@ -473,6 +444,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|finest
@@ -484,6 +457,8 @@ block|}
 block|}
 else|else
 block|{
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|finest
@@ -533,10 +508,12 @@ name|lastCompletions
 operator|.
 name|length
 condition|)
+block|{
 name|lastShownCompletion
 operator|=
 literal|0
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -544,6 +521,7 @@ name|lastShownCompletion
 operator|<
 literal|0
 condition|)
+block|{
 name|lastShownCompletion
 operator|=
 name|lastCompletions
@@ -552,6 +530,7 @@ name|length
 operator|-
 literal|1
 expr_stmt|;
+block|}
 name|String
 name|sno
 init|=
@@ -687,12 +666,14 @@ name|select
 argument_list|(
 name|oldSelectionStart
 argument_list|,
+operator|(
 name|oldSelectionStart
 operator|+
 name|toSetIn
 operator|.
 name|length
 argument_list|()
+operator|)
 operator|-
 literal|1
 argument_list|)
@@ -729,6 +710,8 @@ operator|==
 literal|null
 condition|)
 block|{
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|finest
@@ -740,6 +723,8 @@ comment|// There was no previous input (if the user typed a word, where no autoc
 comment|// Thus, there is nothing to replace
 return|return;
 block|}
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|finest
@@ -748,7 +733,7 @@ literal|"lastBeginning:>"
 operator|+
 name|lastBeginning
 operator|+
-literal|"<"
+literal|'<'
 argument_list|)
 expr_stmt|;
 if|if
@@ -769,6 +754,8 @@ condition|(
 name|wordSeperatorTyped
 condition|)
 block|{
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|finest
@@ -786,6 +773,8 @@ block|}
 block|}
 else|else
 block|{
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|finest
@@ -953,12 +942,11 @@ literal|null
 operator|)
 operator|&&
 operator|(
+operator|!
 name|prefix
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 condition|?
 name|currentword
@@ -981,6 +969,8 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|isLoggable
@@ -991,6 +981,8 @@ name|FINEST
 argument_list|)
 condition|)
 block|{
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|finest
@@ -998,6 +990,8 @@ argument_list|(
 literal|"startCompletion"
 argument_list|)
 expr_stmt|;
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|finest
@@ -1006,9 +1000,11 @@ literal|"currentword:>"
 operator|+
 name|currentword
 operator|+
-literal|"<"
+literal|'<'
 argument_list|)
 expr_stmt|;
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|finest
@@ -1017,9 +1013,11 @@ literal|"prefix:>"
 operator|+
 name|prefix
 operator|+
-literal|"<"
+literal|'<'
 argument_list|)
 expr_stmt|;
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|finest
@@ -1028,7 +1026,7 @@ literal|"cword:>"
 operator|+
 name|cWord
 operator|+
-literal|"<"
+literal|'<'
 argument_list|)
 expr_stmt|;
 block|}
@@ -1091,6 +1089,8 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|isLoggable
@@ -1101,6 +1101,8 @@ name|FINEST
 argument_list|)
 condition|)
 block|{
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|finest
@@ -1109,7 +1111,7 @@ literal|"toSetIn:>"
 operator|+
 name|toSetIn
 operator|+
-literal|"<"
+literal|'<'
 argument_list|)
 expr_stmt|;
 block|}
@@ -1167,6 +1169,7 @@ name|cp
 operator|+
 literal|1
 argument_list|,
+operator|(
 name|cp
 operator|+
 literal|1
@@ -1175,6 +1178,7 @@ name|sno
 operator|.
 name|length
 argument_list|()
+operator|)
 operator|-
 name|cWord
 operator|.
@@ -1202,6 +1206,8 @@ operator|.
 name|getKeyChar
 argument_list|()
 decl_stmt|;
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|finest
@@ -1210,7 +1216,7 @@ literal|"Appending>"
 operator|+
 name|ch
 operator|+
-literal|"<"
+literal|'<'
 argument_list|)
 expr_stmt|;
 if|if
@@ -1264,6 +1270,8 @@ expr_stmt|;
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|keyTyped (KeyEvent e)
 specifier|public
 name|void
@@ -1273,6 +1281,8 @@ name|KeyEvent
 name|e
 parameter_list|)
 block|{
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|finest
@@ -1294,8 +1304,10 @@ name|ch
 operator|==
 literal|'\n'
 condition|)
+block|{
 comment|// this case is handled at keyPressed(e)
 return|return;
+block|}
 if|if
 condition|(
 operator|(
@@ -1304,12 +1316,12 @@ operator|.
 name|getModifiers
 argument_list|()
 operator||
-name|KeyEvent
+name|InputEvent
 operator|.
 name|SHIFT_MASK
 operator|)
 operator|==
-name|KeyEvent
+name|InputEvent
 operator|.
 name|SHIFT_MASK
 condition|)
@@ -1359,6 +1371,8 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|isLoggable
@@ -1375,6 +1389,9 @@ name|toSetIn
 operator|==
 literal|null
 condition|)
+block|{
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|finest
@@ -1382,7 +1399,11 @@ argument_list|(
 literal|"toSetIn: NULL"
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|finest
@@ -1391,9 +1412,10 @@ literal|"toSetIn:>"
 operator|+
 name|toSetIn
 operator|+
-literal|"<"
+literal|'<'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// The case-insensitive system is a bit tricky here
 comment|// If keyword is "TODO" and user types "tO", then this is treated as "continue" as the "O" matches the "O"
@@ -1428,6 +1450,8 @@ operator|)
 condition|)
 block|{
 comment|// User continues on the word that was suggested.
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|finest
@@ -1446,12 +1470,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|toSetIn
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|int
@@ -1468,9 +1491,11 @@ name|comp
 operator|.
 name|select
 argument_list|(
+operator|(
 name|cp
 operator|+
 literal|1
+operator|)
 operator|-
 name|toSetIn
 operator|.
@@ -1657,6 +1682,8 @@ name|ch
 expr_stmt|;
 if|if
 condition|(
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|isLoggable
@@ -1667,6 +1694,8 @@ name|FINEST
 argument_list|)
 condition|)
 block|{
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|finest
@@ -1674,6 +1703,8 @@ argument_list|(
 literal|"discont"
 argument_list|)
 expr_stmt|;
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|finest
@@ -1682,9 +1713,11 @@ literal|"toSetIn:>"
 operator|+
 name|toSetIn
 operator|+
-literal|"<"
+literal|'<'
 argument_list|)
 expr_stmt|;
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|finest
@@ -1693,7 +1726,7 @@ literal|"lastBeginning:>"
 operator|+
 name|lastBeginning
 operator|+
-literal|"<"
+literal|'<'
 argument_list|)
 expr_stmt|;
 block|}
@@ -1788,6 +1821,7 @@ name|substring
 argument_list|(
 literal|0
 argument_list|,
+operator|(
 name|lastCaretPosition
 operator|-
 name|lastLen
@@ -1796,6 +1830,7 @@ name|lastBeginning
 operator|.
 name|length
 argument_list|()
+operator|)
 operator|+
 literal|1
 argument_list|)
@@ -1813,21 +1848,25 @@ expr_stmt|;
 name|int
 name|startSelect
 init|=
+operator|(
 name|lastCaretPosition
 operator|+
 literal|1
+operator|)
 operator|-
 name|lastLen
 decl_stmt|;
 name|int
 name|endSelect
 init|=
+operator|(
 name|lastCaretPosition
 operator|+
 name|toSetIn
 operator|.
 name|length
 argument_list|()
+operator|)
 operator|-
 name|lastLen
 decl_stmt|;
@@ -1877,6 +1916,8 @@ expr_stmt|;
 return|return;
 block|}
 block|}
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|finest
@@ -1905,12 +1946,14 @@ name|currentword
 operator|==
 literal|null
 condition|)
+block|{
 name|currentword
 operator|=
 operator|new
 name|StringBuffer
 argument_list|()
 expr_stmt|;
+block|}
 comment|// only "real characters" end up here
 assert|assert
 operator|(
@@ -1960,6 +2003,8 @@ name|isSingleUnitField
 argument_list|()
 operator|)
 assert|;
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|finest
@@ -1989,6 +2034,8 @@ argument_list|()
 expr_stmt|;
 return|return;
 block|}
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|finest
@@ -2035,6 +2082,8 @@ name|void
 name|resetAutoCompletion
 parameter_list|()
 block|{
+name|AutoCompleteListener
+operator|.
 name|logger
 operator|.
 name|finest
@@ -2052,7 +2101,7 @@ literal|null
 expr_stmt|;
 block|}
 DECL|method|findCompletions (String beginning, JTextComponent comp)
-specifier|protected
+specifier|private
 name|String
 index|[]
 name|findCompletions
@@ -2074,7 +2123,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|getCurrentWord (JTextComponent comp)
-specifier|protected
+specifier|private
 name|StringBuffer
 name|getCurrentWord
 parameter_list|(
@@ -2240,19 +2289,27 @@ name|res
 return|;
 block|}
 DECL|field|ANY_NAME
-DECL|field|FIRST_NAME
-DECL|field|LAST_NAME
+specifier|private
 specifier|final
 specifier|static
 name|int
 name|ANY_NAME
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
+DECL|field|FIRST_NAME
+specifier|private
+specifier|final
+specifier|static
+name|int
 name|FIRST_NAME
 init|=
 literal|1
-decl_stmt|,
+decl_stmt|;
+DECL|field|LAST_NAME
+specifier|final
+specifier|static
+name|int
 name|LAST_NAME
 init|=
 literal|2
@@ -2318,13 +2375,21 @@ name|commaIndex
 operator|<
 literal|0
 condition|)
+block|{
 return|return
+name|AutoCompleteListener
+operator|.
 name|ANY_NAME
 return|;
+block|}
 else|else
+block|{
 return|return
+name|AutoCompleteListener
+operator|.
 name|FIRST_NAME
 return|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -2333,10 +2398,14 @@ name|ex
 parameter_list|)
 block|{
 return|return
+name|AutoCompleteListener
+operator|.
 name|ANY_NAME
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|focusGained (FocusEvent event)
 specifier|public
 name|void
@@ -2352,6 +2421,7 @@ name|nextFocusListener
 operator|!=
 literal|null
 condition|)
+block|{
 name|nextFocusListener
 operator|.
 name|focusGained
@@ -2360,6 +2430,9 @@ name|event
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|focusLost (FocusEvent event)
 specifier|public
 name|void
@@ -2399,6 +2472,7 @@ name|nextFocusListener
 operator|!=
 literal|null
 condition|)
+block|{
 name|nextFocusListener
 operator|.
 name|focusLost
@@ -2406,6 +2480,7 @@ argument_list|(
 name|event
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|clearCurrentSuggestion (JTextComponent comp)
 specifier|public

@@ -71,6 +71,8 @@ operator|new
 name|NoSearchMatcher
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|matches (BibtexEntry object)
 specifier|public
 name|boolean

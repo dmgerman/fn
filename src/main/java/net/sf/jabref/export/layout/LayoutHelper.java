@@ -58,6 +58,18 @@ name|Vector
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
 begin_comment
 comment|/**  * Helper class to get a Layout object.  *   *<code>  * LayoutHelper helper = new LayoutHelper(...a reader...);  * Layout layout = helper.getLayoutFromText();  *</code>  *  */
 end_comment
@@ -168,11 +180,13 @@ literal|null
 decl_stmt|;
 DECL|field|_in
 specifier|private
+specifier|final
 name|PushbackReader
 name|_in
 decl_stmt|;
 DECL|field|parsedEntries
 specifier|private
+specifier|final
 name|Vector
 argument_list|<
 name|StringInt
@@ -266,6 +280,8 @@ name|si
 operator|.
 name|i
 operator|==
+name|LayoutHelper
+operator|.
 name|IS_SIMPLE_FIELD
 operator|)
 operator|||
@@ -274,6 +290,8 @@ name|si
 operator|.
 name|i
 operator|==
+name|LayoutHelper
+operator|.
 name|IS_FIELD_START
 operator|)
 operator|||
@@ -282,6 +300,8 @@ name|si
 operator|.
 name|i
 operator|==
+name|LayoutHelper
+operator|.
 name|IS_FIELD_END
 operator|)
 operator|||
@@ -290,6 +310,8 @@ name|si
 operator|.
 name|i
 operator|==
+name|LayoutHelper
+operator|.
 name|IS_GROUP_START
 operator|)
 operator|||
@@ -298,6 +320,8 @@ name|si
 operator|.
 name|i
 operator|==
+name|LayoutHelper
+operator|.
 name|IS_GROUP_END
 operator|)
 condition|)
@@ -318,9 +342,7 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-name|Layout
-name|layout
-init|=
+return|return
 operator|new
 name|Layout
 argument_list|(
@@ -328,9 +350,6 @@ name|parsedEntries
 argument_list|,
 name|classPrefix
 argument_list|)
-decl_stmt|;
-return|return
-name|layout
 return|;
 block|}
 DECL|method|getCurrentGroup ()
@@ -341,6 +360,8 @@ name|getCurrentGroup
 parameter_list|()
 block|{
 return|return
+name|LayoutHelper
+operator|.
 name|currentGroup
 return|;
 block|}
@@ -354,6 +375,8 @@ name|String
 name|newGroup
 parameter_list|)
 block|{
+name|LayoutHelper
+operator|.
 name|currentGroup
 operator|=
 name|newGroup
@@ -638,7 +661,7 @@ operator|.
 name|toString
 argument_list|()
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 name|option
 expr_stmt|;
@@ -662,6 +685,8 @@ name|StringInt
 argument_list|(
 name|tmp
 argument_list|,
+name|LayoutHelper
+operator|.
 name|IS_OPTION_FIELD
 argument_list|)
 argument_list|)
@@ -736,13 +761,17 @@ comment|//if (buffer != null)
 comment|//{
 if|if
 condition|(
+operator|(
 name|c
 operator|==
 literal|']'
+operator|)
 operator|&&
+operator|(
 name|buffer
 operator|!=
 literal|null
+operator|)
 condition|)
 block|{
 comment|// changed section end - arudert
@@ -806,7 +835,7 @@ name|tmp
 operator|=
 name|parameter
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 name|option
 expr_stmt|;
@@ -828,6 +857,8 @@ name|StringInt
 argument_list|(
 name|tmp
 argument_list|,
+name|LayoutHelper
+operator|.
 name|IS_OPTION_FIELD
 argument_list|)
 argument_list|)
@@ -868,6 +899,7 @@ name|buffer
 operator|==
 literal|null
 condition|)
+block|{
 name|buffer
 operator|=
 operator|new
@@ -876,6 +908,7 @@ argument_list|(
 literal|100
 argument_list|)
 expr_stmt|;
+block|}
 name|buffer
 operator|.
 name|append
@@ -937,6 +970,8 @@ name|parse
 parameter_list|()
 throws|throws
 name|IOException
+throws|,
+name|StringIndexOutOfBoundsException
 block|{
 name|skipWhitespace
 argument_list|()
@@ -977,13 +1012,14 @@ name|_eof
 operator|=
 literal|true
 expr_stmt|;
-comment|/* 				 * CO 2006-11-11: Added check for null, otherwise a Layout that 				 * finishs with a curly brace throws a NPE 				 */
+comment|/*                  * CO 2006-11-11: Added check for null, otherwise a Layout that                  * finishs with a curly brace throws a NPE                  */
 if|if
 condition|(
 name|buffer
 operator|!=
 literal|null
 condition|)
+block|{
 name|parsedEntries
 operator|.
 name|add
@@ -996,10 +1032,13 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
+name|LayoutHelper
+operator|.
 name|IS_LAYOUT_TEXT
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 literal|null
 return|;
@@ -1042,6 +1081,8 @@ operator|.
 name|toString
 argument_list|()
 argument_list|,
+name|LayoutHelper
+operator|.
 name|IS_LAYOUT_TEXT
 argument_list|)
 argument_list|)
@@ -1119,7 +1160,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** 	 *  	 */
+comment|/**      *       */
 DECL|method|parseField ()
 specifier|private
 name|void
@@ -1127,6 +1168,8 @@ name|parseField
 parameter_list|()
 throws|throws
 name|IOException
+throws|,
+name|StringIndexOutOfBoundsException
 block|{
 name|int
 name|c
@@ -1135,6 +1178,9 @@ name|StringBuffer
 name|buffer
 init|=
 literal|null
+decl_stmt|;
+name|char
+name|firstLetter
 decl_stmt|;
 name|String
 name|name
@@ -1209,19 +1255,108 @@ argument_list|()
 else|:
 literal|""
 expr_stmt|;
-comment|//System.out.println("NAME:" + name);
-name|buffer
+try|try
+block|{
+name|firstLetter
 operator|=
-literal|null
-expr_stmt|;
-if|if
-condition|(
 name|name
 operator|.
 name|charAt
 argument_list|(
 literal|0
 argument_list|)
+expr_stmt|;
+block|}
+catch|catch
+parameter_list|(
+name|StringIndexOutOfBoundsException
+name|ex
+parameter_list|)
+block|{
+name|StringBuilder
+name|lastFive
+init|=
+operator|new
+name|StringBuilder
+argument_list|(
+literal|10
+argument_list|)
+decl_stmt|;
+for|for
+control|(
+name|StringInt
+name|entry
+range|:
+name|parsedEntries
+operator|.
+name|subList
+argument_list|(
+name|Math
+operator|.
+name|max
+argument_list|(
+literal|0
+argument_list|,
+name|parsedEntries
+operator|.
+name|size
+argument_list|()
+operator|-
+literal|6
+argument_list|)
+argument_list|,
+name|parsedEntries
+operator|.
+name|size
+argument_list|()
+operator|-
+literal|1
+argument_list|)
+control|)
+block|{
+name|lastFive
+operator|.
+name|append
+argument_list|(
+name|entry
+operator|.
+name|s
+argument_list|)
+expr_stmt|;
+block|}
+throw|throw
+operator|new
+name|StringIndexOutOfBoundsException
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Backslash parsing error near"
+argument_list|)
+operator|+
+literal|" \'"
+operator|+
+name|lastFive
+operator|.
+name|toString
+argument_list|()
+operator|.
+name|replace
+argument_list|(
+literal|"\n"
+argument_list|,
+literal|" "
+argument_list|)
+operator|+
+literal|'\''
+argument_list|)
+throw|;
+block|}
+comment|//System.out.println("NAME:" + name);
+if|if
+condition|(
+name|firstLetter
 operator|==
 literal|'b'
 condition|)
@@ -1239,6 +1374,8 @@ block|{
 comment|// get field name
 name|getBracketedField
 argument_list|(
+name|LayoutHelper
+operator|.
 name|IS_FIELD_START
 argument_list|)
 expr_stmt|;
@@ -1258,6 +1395,8 @@ block|{
 comment|// get field name
 name|getBracketedField
 argument_list|(
+name|LayoutHelper
+operator|.
 name|IS_GROUP_START
 argument_list|)
 expr_stmt|;
@@ -1267,12 +1406,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|name
-operator|.
-name|charAt
-argument_list|(
-literal|0
-argument_list|)
+name|firstLetter
 operator|==
 literal|'f'
 condition|)
@@ -1298,6 +1432,8 @@ comment|// get format parameter
 comment|// get field name
 name|getBracketedOptionField
 argument_list|(
+name|LayoutHelper
+operator|.
 name|IS_OPTION_FIELD
 argument_list|)
 expr_stmt|;
@@ -1308,6 +1444,8 @@ block|{
 comment|// get field name
 name|getBracketedField
 argument_list|(
+name|LayoutHelper
+operator|.
 name|IS_OPTION_FIELD
 argument_list|)
 expr_stmt|;
@@ -1337,6 +1475,8 @@ name|StringInt
 argument_list|(
 name|name
 argument_list|,
+name|LayoutHelper
+operator|.
 name|IS_FILENAME
 argument_list|)
 argument_list|)
@@ -1366,6 +1506,8 @@ name|StringInt
 argument_list|(
 name|name
 argument_list|,
+name|LayoutHelper
+operator|.
 name|IS_FILEPATH
 argument_list|)
 argument_list|)
@@ -1376,12 +1518,7 @@ block|}
 elseif|else
 if|if
 condition|(
-name|name
-operator|.
-name|charAt
-argument_list|(
-literal|0
-argument_list|)
+name|firstLetter
 operator|==
 literal|'e'
 condition|)
@@ -1399,6 +1536,8 @@ block|{
 comment|// get field name
 name|getBracketedField
 argument_list|(
+name|LayoutHelper
+operator|.
 name|IS_FIELD_END
 argument_list|)
 expr_stmt|;
@@ -1418,6 +1557,8 @@ block|{
 comment|// get field name
 name|getBracketedField
 argument_list|(
+name|LayoutHelper
+operator|.
 name|IS_GROUP_END
 argument_list|)
 expr_stmt|;
@@ -1446,6 +1587,8 @@ name|StringInt
 argument_list|(
 name|name
 argument_list|,
+name|LayoutHelper
+operator|.
 name|IS_ENCODING_NAME
 argument_list|)
 argument_list|)
@@ -1463,6 +1606,8 @@ name|StringInt
 argument_list|(
 name|name
 argument_list|,
+name|LayoutHelper
+operator|.
 name|IS_SIMPLE_FIELD
 argument_list|)
 argument_list|)

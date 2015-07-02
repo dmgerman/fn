@@ -110,16 +110,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|TreeSet
 import|;
 end_import
@@ -131,6 +121,16 @@ operator|.
 name|swing
 operator|.
 name|AbstractAction
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|Action
 import|;
 end_import
 
@@ -348,7 +348,7 @@ name|jabref
 operator|.
 name|autocompleter
 operator|.
-name|AbstractAutoCompleter
+name|AutoCompleter
 import|;
 end_import
 
@@ -363,6 +363,20 @@ operator|.
 name|gui
 operator|.
 name|AutoCompleteListener
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|specialfields
+operator|.
+name|Printed
 import|;
 end_import
 
@@ -405,6 +419,20 @@ operator|.
 name|specialfields
 operator|.
 name|Rank
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|specialfields
+operator|.
+name|ReadStatus
 import|;
 end_import
 
@@ -506,6 +534,7 @@ name|MnemonicAwareAction
 block|{
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -525,17 +554,11 @@ decl_stmt|;
 DECL|field|keywordListModel
 specifier|private
 name|DefaultListModel
-argument_list|<
-name|String
-argument_list|>
 name|keywordListModel
 decl_stmt|;
 DECL|field|keywordList
 specifier|private
 name|JList
-argument_list|<
-name|String
-argument_list|>
 name|keywordList
 decl_stmt|;
 DECL|field|intersectKeywords
@@ -553,6 +576,7 @@ name|cancelled
 decl_stmt|;
 DECL|field|sortedKeywordsOfAllEntriesBeforeUpdateByUser
 specifier|private
+specifier|final
 name|TreeSet
 argument_list|<
 name|String
@@ -576,6 +600,8 @@ parameter_list|)
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Manage keywords"
@@ -604,18 +630,12 @@ name|keywordListModel
 operator|=
 operator|new
 name|DefaultListModel
-argument_list|<
-name|String
-argument_list|>
 argument_list|()
 expr_stmt|;
 name|keywordList
 operator|=
 operator|new
 name|JList
-argument_list|<
-name|String
-argument_list|>
 argument_list|(
 name|keywordListModel
 argument_list|)
@@ -760,6 +780,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -973,6 +995,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1001,6 +1025,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1036,6 +1062,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1059,10 +1087,8 @@ if|if
 condition|(
 name|text
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
 block|{
 comment|// no text to add, do nothing
@@ -1094,6 +1120,9 @@ decl_stmt|;
 name|String
 name|element
 init|=
+operator|(
+name|String
+operator|)
 name|keywordListModel
 operator|.
 name|getElementAt
@@ -1205,6 +1234,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1214,15 +1245,17 @@ name|arg0
 parameter_list|)
 block|{
 comment|// keywordList.getSelectedIndices(); does not work, therefore we operate on the values
-name|List
-argument_list|<
 name|String
-argument_list|>
+index|[]
 name|values
 init|=
+operator|(
+name|String
+index|[]
+operator|)
 name|keywordList
 operator|.
-name|getSelectedValuesList
+name|getSelectedValues
 argument_list|()
 decl_stmt|;
 for|for
@@ -1259,6 +1292,8 @@ operator|new
 name|KeyListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|keyTyped
@@ -1266,7 +1301,9 @@ parameter_list|(
 name|KeyEvent
 name|arg0
 parameter_list|)
-block|{}
+block|{             }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|keyReleased
@@ -1274,7 +1311,9 @@ parameter_list|(
 name|KeyEvent
 name|arg0
 parameter_list|)
-block|{}
+block|{             }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|keyPressed
@@ -1307,7 +1346,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-name|AbstractAutoCompleter
+name|AutoCompleter
 name|autoComp
 init|=
 name|JabRef
@@ -1317,7 +1356,10 @@ operator|.
 name|basePanel
 argument_list|()
 operator|.
-name|getAutoCompleter
+name|getAutoCompleters
+argument_list|()
+operator|.
+name|get
 argument_list|(
 literal|"keywords"
 argument_list|)
@@ -1353,6 +1395,8 @@ operator|new
 name|KeyListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|keyTyped
@@ -1360,7 +1404,9 @@ parameter_list|(
 name|KeyEvent
 name|e
 parameter_list|)
-block|{}
+block|{             }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|keyReleased
@@ -1368,7 +1414,9 @@ parameter_list|(
 name|KeyEvent
 name|e
 parameter_list|)
-block|{}
+block|{             }
+annotation|@
+name|Override
 specifier|public
 name|void
 name|keyPressed
@@ -1489,6 +1537,8 @@ argument_list|)
 expr_stmt|;
 comment|//diag.pack();
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1512,7 +1562,9 @@ name|bp
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|bp
@@ -1572,7 +1624,9 @@ if|if
 condition|(
 name|cancelled
 condition|)
+block|{
 return|return;
+block|}
 name|HashSet
 argument_list|<
 name|String
@@ -1603,9 +1657,6 @@ comment|// build keywordsToAdd and userSelectedKeywords in parallel
 for|for
 control|(
 name|Enumeration
-argument_list|<
-name|String
-argument_list|>
 name|keywords
 init|=
 name|keywordListModel
@@ -1623,6 +1674,9 @@ block|{
 name|String
 name|keyword
 init|=
+operator|(
+name|String
+operator|)
 name|keywords
 operator|.
 name|nextElement
@@ -1906,6 +1960,94 @@ operator|.
 name|addAll
 argument_list|(
 name|Relevance
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getKeyWords
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Read status
+name|clone
+operator|=
+name|createClone
+argument_list|(
+name|keywordsToAdd
+argument_list|)
+expr_stmt|;
+name|clone
+operator|.
+name|retainAll
+argument_list|(
+name|ReadStatus
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getKeyWords
+argument_list|()
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|clone
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|keywordsToRemove
+operator|.
+name|addAll
+argument_list|(
+name|ReadStatus
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getKeyWords
+argument_list|()
+argument_list|)
+expr_stmt|;
+block|}
+comment|// Printed
+name|clone
+operator|=
+name|createClone
+argument_list|(
+name|keywordsToAdd
+argument_list|)
+expr_stmt|;
+name|clone
+operator|.
+name|retainAll
+argument_list|(
+name|Printed
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getKeyWords
+argument_list|()
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|clone
+operator|.
+name|isEmpty
+argument_list|()
+condition|)
+block|{
+name|keywordsToRemove
+operator|.
+name|addAll
+argument_list|(
+name|Printed
 operator|.
 name|getInstance
 argument_list|()

@@ -36,7 +36,7 @@ specifier|public
 interface|interface
 name|IExportFormatProvider
 block|{
-comment|/** 	 * @return a list of export formats 	 */
+comment|/**      * @return a list of export formats      */
 DECL|method|getExportFormats ()
 name|List
 argument_list|<

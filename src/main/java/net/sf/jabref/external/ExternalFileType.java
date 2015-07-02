@@ -54,29 +54,37 @@ name|ExternalFileType
 argument_list|>
 block|{
 DECL|field|name
-DECL|field|extension
-DECL|field|openWith
-DECL|field|iconName
-DECL|field|mimeType
-specifier|protected
+specifier|private
 name|String
 name|name
-decl_stmt|,
+decl_stmt|;
+DECL|field|extension
+name|String
 name|extension
-decl_stmt|,
+decl_stmt|;
+DECL|field|openWith
+specifier|private
+name|String
 name|openWith
-decl_stmt|,
+decl_stmt|;
+DECL|field|iconName
+specifier|private
+name|String
 name|iconName
-decl_stmt|,
+decl_stmt|;
+DECL|field|mimeType
+specifier|private
+name|String
 name|mimeType
 decl_stmt|;
 DECL|field|icon
-specifier|protected
+specifier|private
 name|ImageIcon
 name|icon
 decl_stmt|;
 DECL|field|label
-specifier|protected
+specifier|private
+specifier|final
 name|JLabel
 name|label
 init|=
@@ -176,6 +184,7 @@ operator|<
 literal|4
 operator|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -183,6 +192,7 @@ argument_list|(
 literal|"Cannot contruct ExternalFileType without four elements in String[] argument."
 argument_list|)
 throw|;
+block|}
 name|this
 operator|.
 name|name
@@ -538,6 +548,8 @@ operator|=
 name|icon
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String
@@ -549,6 +561,8 @@ name|getName
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|compareTo (ExternalFileType o)
 specifier|public
 name|int
@@ -593,6 +607,8 @@ name|iconName
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|hashCode ()
 specifier|public
 name|int
@@ -607,6 +623,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * We define two file type objects as equal if their name, extension, openWith and      * iconName are equal.      *      * @param object The file type to compare with.      * @return true if the file types are equal.      */
+annotation|@
+name|Override
 DECL|method|equals (Object object)
 specifier|public
 name|boolean
@@ -630,9 +648,11 @@ name|other
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 return|return
 operator|(
 name|name

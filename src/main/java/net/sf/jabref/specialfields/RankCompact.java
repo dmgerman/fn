@@ -73,7 +73,7 @@ init|=
 literal|null
 decl_stmt|;
 DECL|method|RankCompact ()
-specifier|public
+specifier|private
 name|RankCompact
 parameter_list|()
 block|{
@@ -100,7 +100,12 @@ name|SpecialFieldValue
 argument_list|(
 name|this
 argument_list|,
-literal|null
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"null"
+argument_list|)
 argument_list|,
 literal|"clearRank"
 argument_list|,
@@ -131,7 +136,12 @@ name|SpecialFieldValue
 argument_list|(
 name|this
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"rank1"
+argument_list|)
 argument_list|,
 literal|"setRank1"
 argument_list|,
@@ -167,7 +177,12 @@ name|SpecialFieldValue
 argument_list|(
 name|this
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"rank2"
+argument_list|)
 argument_list|,
 literal|"setRank2"
 argument_list|,
@@ -203,7 +218,12 @@ name|SpecialFieldValue
 argument_list|(
 name|this
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"rank3"
+argument_list|)
 argument_list|,
 literal|"setRank3"
 argument_list|,
@@ -239,7 +259,12 @@ name|SpecialFieldValue
 argument_list|(
 name|this
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"rank4"
+argument_list|)
 argument_list|,
 literal|"setRank4"
 argument_list|,
@@ -275,7 +300,12 @@ name|SpecialFieldValue
 argument_list|(
 name|this
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"rank5"
+argument_list|)
 argument_list|,
 literal|"setRank5"
 argument_list|,
@@ -311,7 +341,7 @@ argument_list|)
 expr_stmt|;
 name|TEXT_DONE_PATTERN
 operator|=
-literal|"Set rank %0 for %1 entries"
+literal|"Set rank to '%0' for %1 entries"
 expr_stmt|;
 block|}
 DECL|method|getInstance ()
@@ -323,11 +353,15 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|RankCompact
+operator|.
 name|INSTANCE
 operator|==
 literal|null
 condition|)
 block|{
+name|RankCompact
+operator|.
 name|INSTANCE
 operator|=
 operator|new
@@ -336,9 +370,13 @@ argument_list|()
 expr_stmt|;
 block|}
 return|return
+name|RankCompact
+operator|.
 name|INSTANCE
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRepresentingIcon ()
 specifier|public
 name|ImageIcon

@@ -74,6 +74,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JFileChooser
 import|;
 end_import
@@ -147,7 +157,7 @@ class|class
 name|ImportFormats
 block|{
 DECL|method|createImportFileChooser (String currentDir)
-specifier|public
+specifier|private
 specifier|static
 name|JFileChooser
 name|createImportFileChooser
@@ -244,10 +254,12 @@ argument_list|(
 name|lastUsedFormat
 argument_list|)
 condition|)
+block|{
 name|defaultFilter
 operator|=
 name|filter
 expr_stmt|;
+block|}
 block|}
 for|for
 control|(
@@ -271,6 +283,7 @@ name|defaultFilter
 operator|!=
 literal|null
 condition|)
+block|{
 name|fc
 operator|.
 name|setFileFilter
@@ -278,7 +291,9 @@ argument_list|(
 name|defaultFilter
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|fc
 operator|.
 name|setFileFilter
@@ -289,6 +304,7 @@ name|getAcceptAllFileFilter
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|fc
 return|;
@@ -313,10 +329,12 @@ extends|extends
 name|MnemonicAwareAction
 block|{
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 specifier|private
+specifier|final
 name|boolean
 name|openInNew
 decl_stmt|;
@@ -344,6 +362,8 @@ name|openInNew
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|openInNew
@@ -355,6 +375,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|openInNew
@@ -379,6 +401,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -425,7 +449,9 @@ name|file
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|FileFilter
 name|ff
 init|=
@@ -445,6 +471,7 @@ name|ff
 operator|instanceof
 name|ImportFileFilter
 condition|)
+block|{
 name|format
 operator|=
 operator|(
@@ -457,6 +484,7 @@ operator|.
 name|getImportFormat
 argument_list|()
 expr_stmt|;
+block|}
 try|try
 block|{
 if|if
@@ -541,6 +569,7 @@ name|format
 operator|!=
 literal|null
 condition|)
+block|{
 name|Globals
 operator|.
 name|prefs
@@ -555,7 +584,9 @@ name|getFormatName
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|Globals
 operator|.
 name|prefs
@@ -567,6 +598,7 @@ argument_list|,
 literal|"__all"
 argument_list|)
 expr_stmt|;
+block|}
 name|Globals
 operator|.
 name|prefs

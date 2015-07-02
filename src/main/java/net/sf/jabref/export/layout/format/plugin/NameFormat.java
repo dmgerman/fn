@@ -98,7 +98,7 @@ init|=
 literal|"1@*@{ff }{vv }{ll}{, jj}@@*@1@{ff }{vv }{ll}{, jj}@*@, {ff }{vv }{ll}{, jj}"
 decl_stmt|;
 DECL|method|format (String toFormat, AuthorList al, String[] formats)
-specifier|public
+specifier|private
 name|String
 name|format
 parameter_list|(
@@ -113,11 +113,11 @@ index|[]
 name|formats
 parameter_list|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|int
@@ -280,24 +280,28 @@ name|s
 operator|<
 literal|0
 condition|)
+block|{
 name|s
 operator|+=
 name|n
 operator|+
 literal|1
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|e
 operator|<
 literal|0
 condition|)
+block|{
 name|e
 operator|+=
 name|n
 operator|+
 literal|1
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|e
@@ -321,13 +325,17 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|s
 operator|<=
 name|i
+operator|)
 operator|&&
+operator|(
 name|i
 operator|<=
 name|e
+operator|)
 condition|)
 block|{
 name|sb
@@ -392,16 +400,18 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|parameters
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|parameters
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
+operator|)
 condition|)
 block|{
 name|parameters
@@ -514,6 +524,8 @@ return|return
 name|toFormat
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -535,9 +547,12 @@ argument_list|)
 return|;
 block|}
 DECL|field|parameter
+specifier|private
 name|String
 name|parameter
 init|=
+name|NameFormat
+operator|.
 name|DEFAULT_FORMAT
 decl_stmt|;
 DECL|method|setParameter (String parameter)

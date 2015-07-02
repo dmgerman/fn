@@ -202,16 +202,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -308,79 +298,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibtexDatabase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|OutputPrinter
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Util
+name|*
 import|;
 end_import
 
@@ -402,6 +320,7 @@ name|CaseKeeperList
 argument_list|()
 decl_stmt|;
 DECL|field|caseKeeper
+specifier|private
 specifier|final
 name|CaseKeeper
 name|caseKeeper
@@ -411,6 +330,7 @@ name|CaseKeeper
 argument_list|()
 decl_stmt|;
 DECL|field|unitFormatter
+specifier|private
 specifier|final
 name|UnitFormatter
 name|unitFormatter
@@ -419,17 +339,8 @@ operator|new
 name|UnitFormatter
 argument_list|()
 decl_stmt|;
-DECL|field|dialog
-name|ImportInspector
-name|dialog
-init|=
-literal|null
-decl_stmt|;
-DECL|field|status
-name|OutputPrinter
-name|status
-decl_stmt|;
 DECL|field|htmlConverter
+specifier|private
 specifier|final
 name|HTMLConverter
 name|htmlConverter
@@ -440,6 +351,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|absCheckBox
 specifier|private
+specifier|final
 name|JCheckBox
 name|absCheckBox
 init|=
@@ -458,6 +370,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|htmlButton
 specifier|private
+specifier|final
 name|JRadioButton
 name|htmlButton
 init|=
@@ -474,6 +387,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|bibButton
 specifier|private
+specifier|final
 name|JRadioButton
 name|bibButton
 init|=
@@ -488,15 +402,6 @@ literal|"BibTeX importer"
 argument_list|)
 argument_list|)
 decl_stmt|;
-DECL|field|cm
-specifier|private
-name|CookieManager
-name|cm
-init|=
-operator|new
-name|CookieManager
-argument_list|()
-decl_stmt|;
 DECL|field|MAX_FETCH
 specifier|private
 specifier|static
@@ -507,23 +412,32 @@ init|=
 literal|100
 decl_stmt|;
 DECL|field|perPage
-DECL|field|hits
-DECL|field|unparseable
-DECL|field|parsed
 specifier|private
+specifier|final
 name|int
 name|perPage
 init|=
+name|IEEEXploreFetcher
+operator|.
 name|MAX_FETCH
-decl_stmt|,
+decl_stmt|;
+DECL|field|hits
+specifier|private
+name|int
 name|hits
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
+DECL|field|unparseable
+specifier|private
+name|int
 name|unparseable
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
+DECL|field|parsed
+specifier|private
+name|int
 name|parsed
 init|=
 literal|0
@@ -561,14 +475,6 @@ specifier|private
 name|String
 name|terms
 decl_stmt|;
-DECL|field|startUrl
-specifier|private
-specifier|final
-name|String
-name|startUrl
-init|=
-literal|"http://ieeexplore.ieee.org/search/freesearchresult.jsp?queryText="
-decl_stmt|;
 DECL|field|endUrl
 specifier|private
 specifier|final
@@ -590,14 +496,6 @@ DECL|field|searchUrl
 specifier|private
 name|String
 name|searchUrl
-decl_stmt|;
-DECL|field|importUrl
-specifier|private
-specifier|final
-name|String
-name|importUrl
-init|=
-literal|"http://ieeexplore.ieee.org/xpls/downloadCitations"
 decl_stmt|;
 DECL|field|hitsPattern
 specifier|private
@@ -642,6 +540,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|fieldPatterns
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -686,6 +585,8 @@ literal|"\\s+(.+)"
 argument_list|)
 decl_stmt|;
 DECL|field|publicationPattern
+specifier|private
+specifier|final
 name|Pattern
 name|publicationPattern
 init|=
@@ -697,6 +598,8 @@ literal|"(.*), \\d*\\.*\\s?(.*)"
 argument_list|)
 decl_stmt|;
 DECL|field|proceedingPattern
+specifier|private
+specifier|final
 name|Pattern
 name|proceedingPattern
 init|=
@@ -718,12 +621,6 @@ argument_list|(
 literal|"<a href=\'(.+)\'>\\s*<span class=\"more\">View full.*</span></a>"
 argument_list|)
 decl_stmt|;
-DECL|field|abrvPattern
-name|String
-name|abrvPattern
-init|=
-literal|".*[^,] '?\\d+\\)?"
-decl_stmt|;
 DECL|field|ieeeArticleNumberPattern
 name|Pattern
 name|ieeeArticleNumberPattern
@@ -736,6 +633,8 @@ literal|"<a href=\".*arnumber=(\\d+).*\">"
 argument_list|)
 decl_stmt|;
 DECL|field|authorPattern
+specifier|private
+specifier|final
 name|Pattern
 name|authorPattern
 init|=
@@ -745,6 +644,24 @@ name|compile
 argument_list|(
 literal|"<span id=\"preferredName\" class=\"(.*)\">"
 argument_list|)
+decl_stmt|;
+DECL|field|IMPORT_URL
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|IMPORT_URL
+init|=
+literal|"http://ieeexplore.ieee.org/xpls/downloadCitations"
+decl_stmt|;
+DECL|field|START_URL
+specifier|private
+specifier|static
+specifier|final
+name|String
+name|START_URL
+init|=
+literal|"http://ieeexplore.ieee.org/search/freesearchresult.jsp?queryText="
 decl_stmt|;
 comment|// Common words in IEEE Xplore that should always be
 DECL|method|IEEEXploreFetcher ()
@@ -759,7 +676,9 @@ name|CookieHandler
 operator|.
 name|setDefault
 argument_list|(
-name|cm
+operator|new
+name|CookieManager
+argument_list|()
 argument_list|)
 expr_stmt|;
 name|fieldPatterns
@@ -831,6 +750,8 @@ literal|"<a href=\"(/stamp/stamp[^\"]+)"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getOptionsPanel ()
 specifier|public
 name|JPanel
@@ -932,6 +853,8 @@ return|return
 name|pan
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter status)
 specifier|public
 name|boolean
@@ -947,18 +870,6 @@ name|OutputPrinter
 name|status
 parameter_list|)
 block|{
-name|this
-operator|.
-name|dialog
-operator|=
-name|dialog
-expr_stmt|;
-name|this
-operator|.
-name|status
-operator|=
-name|status
-expr_stmt|;
 name|terms
 operator|=
 name|query
@@ -1194,6 +1105,8 @@ if|if
 condition|(
 name|hits
 operator|>
+name|IEEEXploreFetcher
+operator|.
 name|MAX_FETCH
 condition|)
 block|{
@@ -1224,6 +1137,8 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
+name|IEEEXploreFetcher
+operator|.
 name|MAX_FETCH
 argument_list|)
 block|}
@@ -1243,6 +1158,8 @@ argument_list|)
 expr_stmt|;
 name|hits
 operator|=
+name|IEEEXploreFetcher
+operator|.
 name|MAX_FETCH
 expr_stmt|;
 block|}
@@ -1266,9 +1183,11 @@ while|while
 condition|(
 name|shouldContinue
 operator|&&
+operator|(
 name|firstEntry
 operator|<
 name|hits
+operator|)
 condition|)
 block|{
 name|pageNumber
@@ -1297,7 +1216,9 @@ condition|(
 operator|!
 name|shouldContinue
 condition|)
+block|{
 break|break;
+block|}
 name|parse
 argument_list|(
 name|dialog
@@ -1404,6 +1325,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTitle ()
 specifier|public
 name|String
@@ -1414,21 +1337,8 @@ return|return
 literal|"IEEEXplore"
 return|;
 block|}
-DECL|method|getIcon ()
-specifier|public
-name|URL
-name|getIcon
-parameter_list|()
-block|{
-return|return
-name|GUIGlobals
-operator|.
-name|getIconUrl
-argument_list|(
-literal|"www"
-argument_list|)
-return|;
-block|}
+annotation|@
+name|Override
 DECL|method|getHelpPage ()
 specifier|public
 name|String
@@ -1439,6 +1349,8 @@ return|return
 literal|"IEEEXploreHelp.html"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeyName ()
 specifier|public
 name|String
@@ -1450,6 +1362,8 @@ literal|"IEEEXplore"
 return|;
 block|}
 comment|/**      * This method is called by the dialog when the user has cancelled the import.      */
+annotation|@
+name|Override
 DECL|method|stopFetching ()
 specifier|public
 name|void
@@ -1471,7 +1385,9 @@ name|startIndex
 parameter_list|)
 block|{
 return|return
-name|startUrl
+name|IEEEXploreFetcher
+operator|.
+name|START_URL
 operator|+
 name|terms
 operator|.
@@ -1544,6 +1460,7 @@ decl_stmt|;
 while|while
 condition|(
 operator|(
+operator|(
 name|id
 operator|=
 name|parseNextEntryId
@@ -1555,6 +1472,7 @@ argument_list|)
 operator|)
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|shouldContinue
 condition|)
@@ -1730,28 +1648,25 @@ operator|.
 name|isEmpty
 argument_list|()
 condition|)
+block|{
 return|return
 literal|null
 return|;
-name|URL
-name|url
-decl_stmt|;
+block|}
 name|URLConnection
 name|conn
 decl_stmt|;
 try|try
 block|{
-name|url
+name|conn
 operator|=
 operator|new
 name|URL
 argument_list|(
-name|importUrl
+name|IEEEXploreFetcher
+operator|.
+name|IMPORT_URL
 argument_list|)
-expr_stmt|;
-name|conn
-operator|=
-name|url
 operator|.
 name|openConnection
 argument_list|()
@@ -1914,11 +1829,11 @@ argument_list|()
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|char
@@ -1953,7 +1868,9 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 break|break;
+block|}
 for|for
 control|(
 name|int
@@ -1968,6 +1885,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1978,6 +1896,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|System
 operator|.
@@ -2030,9 +1949,11 @@ name|entry
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 comment|// clean up title
 name|String
 name|title
@@ -2274,7 +2195,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// clean up author
-comment|/*   	String author = (String)entry.getField("author");     	if (author != null) { 	    if (author.indexOf("a href=")>= 0) {  // Author parsing failed because it was empty 		entry.setField("author","");  // Maybe not needed anymore due to another change 	    } else { 	    	author = author.replaceAll("\\s+", " "); 	    	author = author.replaceAll("\\.", ". "); 	    	author = author.replaceAll("([^;]+),([^;]+),([^;]+)","$1,$3,$2"); // Change order in case of Jr. etc 	    	author = author.replaceAll("  ", " "); 	    	author = author.replaceAll("\\. -", ".-");                 author = author.replaceAll("; ", " and "); 	    	author = author.replaceAll(" ,", ","); 	    	author = author.replaceAll("  ", " "); 	    	author = author.replaceAll("[ ,;]+$", ""); 	    	entry.setField("author", author); 	    } 	}*/
+comment|/*   	String author = (String)entry.getField("author");            	if (author != null) {             if (author.indexOf("a href=")>= 0) {  // Author parsing failed because it was empty         	entry.setField("author","");  // Maybe not needed anymore due to another change             } else {             	author = author.replaceAll("\\s+", " ");             	author = author.replaceAll("\\.", ". ");             	author = author.replaceAll("([^;]+),([^;]+),([^;]+)","$1,$3,$2"); // Change order in case of Jr. etc             	author = author.replaceAll("  ", " ");             	author = author.replaceAll("\\. -", ".-");                        author = author.replaceAll("; ", " and ");             	author = author.replaceAll(" ,", ",");             	author = author.replaceAll("  ", " ");             	author = author.replaceAll("[ ,;]+$", "");             	entry.setField("author", author);             }         }*/
 comment|// clean up month
 name|String
 name|month
@@ -2521,10 +2442,12 @@ literal|","
 expr_stmt|;
 block|}
 else|else
+block|{
 name|date
 operator|+=
 literal|","
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -3010,6 +2933,11 @@ argument_list|(
 name|fullName
 argument_list|)
 decl_stmt|;
+name|String
+name|abrvPattern
+init|=
+literal|".*[^,] '?\\d+\\)?"
+decl_stmt|;
 if|if
 condition|(
 name|m1
@@ -3224,10 +3152,12 @@ name|id
 operator|!=
 literal|null
 condition|)
+block|{
 name|fullName
 operator|=
 name|id
 expr_stmt|;
+block|}
 block|}
 block|}
 if|if
@@ -3492,12 +3422,14 @@ argument_list|(
 literal|"Conference Record"
 argument_list|)
 condition|)
+block|{
 name|fullName
 operator|=
 literal|"Proc. "
 operator|+
 name|fullName
 expr_stmt|;
+block|}
 block|}
 name|entry
 operator|.
@@ -3770,13 +3702,17 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|index
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|endIndex
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|String
@@ -3876,13 +3812,17 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|index
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|endIndex
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|endIndex
@@ -4203,9 +4143,9 @@ operator|=
 operator|new
 name|BibtexEntry
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|,
 name|type
@@ -4455,12 +4395,14 @@ argument_list|(
 literal|"pages"
 argument_list|)
 operator|&&
+operator|(
 name|fieldMatcher
 operator|.
 name|groupCount
 argument_list|()
 operator|==
 literal|2
+operator|)
 condition|)
 block|{
 name|entry
@@ -4573,6 +4515,7 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|entry
 operator|.
 name|getField
@@ -4581,6 +4524,7 @@ literal|"author"
 argument_list|)
 operator|==
 literal|null
+operator|)
 operator|||
 name|entry
 operator|.
@@ -4620,6 +4564,7 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|entry
 operator|.
 name|getType
@@ -4631,6 +4576,7 @@ name|getStandardType
 argument_list|(
 literal|"inproceedings"
 argument_list|)
+operator|)
 operator|&&
 name|entry
 operator|.
@@ -4871,6 +4817,7 @@ operator|.
 name|find
 argument_list|()
 condition|)
+block|{
 return|return
 name|Integer
 operator|.
@@ -4884,7 +4831,9 @@ literal|1
 argument_list|)
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -4898,9 +4847,10 @@ argument_list|)
 argument_list|)
 throw|;
 block|}
+block|}
 comment|/**      * Download the URL and return contents as a String.      * @param source      * @return      * @throws IOException      */
 DECL|method|getResults (URL source)
-specifier|public
+specifier|private
 name|String
 name|getResults
 parameter_list|(
@@ -4918,11 +4868,11 @@ operator|.
 name|openStream
 argument_list|()
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|byte
@@ -4957,7 +4907,9 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 break|break;
+block|}
 for|for
 control|(
 name|int
@@ -4972,6 +4924,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|sb
 operator|.
 name|append
@@ -4985,6 +4938,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb
@@ -5018,11 +4972,11 @@ name|f
 argument_list|)
 argument_list|)
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|byte
@@ -5057,7 +5011,9 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 break|break;
+block|}
 for|for
 control|(
 name|int
@@ -5072,6 +5028,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|sb
 operator|.
 name|append
@@ -5085,6 +5042,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb

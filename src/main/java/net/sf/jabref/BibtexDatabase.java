@@ -152,16 +152,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -177,6 +167,8 @@ class|class
 name|BibtexDatabase
 block|{
 DECL|field|_entries
+specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -195,12 +187,15 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|_preamble
+specifier|private
 name|String
 name|_preamble
 init|=
 literal|null
 decl_stmt|;
 DECL|field|_strings
+specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -218,21 +213,9 @@ name|BibtexString
 argument_list|>
 argument_list|()
 decl_stmt|;
-DECL|field|_strings_
-name|Vector
-argument_list|<
-name|String
-argument_list|>
-name|_strings_
-init|=
-operator|new
-name|Vector
-argument_list|<
-name|String
-argument_list|>
-argument_list|()
-decl_stmt|;
 DECL|field|changeListeners
+specifier|private
+specifier|final
 name|Set
 argument_list|<
 name|DatabaseChangeListener
@@ -253,9 +236,10 @@ name|followCrossrefs
 init|=
 literal|true
 decl_stmt|;
-comment|/** 	 * use a map instead of a set since i need to know how many of each key is 	 * inthere 	 */
+comment|/**      * use a map instead of a set since i need to know how many of each key is      * inthere      */
 DECL|field|allKeys
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -273,7 +257,7 @@ name|Integer
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|/* 	 * Entries are stored in a HashMap with the ID as key. What happens if 	 * someone changes a BibtexEntry's ID after it has been added to this 	 * BibtexDatabase? The key of that entry would be the old ID, not the new 	 * one. Use a PropertyChangeListener to identify an ID change and update the 	 * Map. 	 */
+comment|/*      * Entries are stored in a HashMap with the ID as key. What happens if      * someone changes a BibtexEntry's ID after it has been added to this      * BibtexDatabase? The key of that entry would be the old ID, not the new      * one. Use a PropertyChangeListener to identify an ID change and update the      * Map.      */
 DECL|field|listener
 specifier|private
 specifier|final
@@ -284,6 +268,8 @@ operator|new
 name|VetoableChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|vetoableChange
@@ -303,6 +289,7 @@ argument_list|()
 operator|==
 literal|null
 condition|)
+block|{
 name|fireDatabaseChanged
 argument_list|(
 operator|new
@@ -328,6 +315,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -765,6 +753,7 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 condition|)
+block|{
 name|entries
 operator|.
 name|add
@@ -772,6 +761,7 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|entries
@@ -902,9 +892,11 @@ name|oldValue
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|removeKeyFromSet
 argument_list|(
 name|oldValue
@@ -964,10 +956,12 @@ argument_list|(
 name|id
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
 comment|// Entry doesn't exist!
+block|}
 name|BibtexEntry
 name|entry
 init|=
@@ -990,6 +984,7 @@ name|key
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -1001,7 +996,9 @@ argument_list|,
 name|key
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|entry
 operator|.
 name|clearField
@@ -1011,6 +1008,7 @@ operator|.
 name|KEY_FIELD
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|checkForDuplicateKeyAndAdd
 argument_list|(
@@ -1081,7 +1079,12 @@ throw|throw
 operator|new
 name|KeyCollisionException
 argument_list|(
-literal|"A string with this label already exists,"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"A string with this label already exists"
+argument_list|)
 argument_list|)
 throw|;
 block|}
@@ -1097,6 +1100,7 @@ name|getId
 argument_list|()
 argument_list|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|KeyCollisionException
@@ -1104,6 +1108,7 @@ argument_list|(
 literal|"Duplicate BibtexString id."
 argument_list|)
 throw|;
+block|}
 name|_strings
 operator|.
 name|put
@@ -1239,9 +1244,11 @@ argument_list|(
 name|label
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 return|return
 literal|false
@@ -1286,7 +1293,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Take the given collection of BibtexEntry and resolve any string 	 * references. 	 *  	 * @param entries 	 *            A collection of BibtexEntries in which all strings of the form 	 *            #xxx# will be resolved against the hash map of string 	 *            references stored in the databasee. 	 *             	 * @param inPlace If inPlace is true then the given BibtexEntries will be modified, if false then copies of the BibtexEntries are made before resolving the strings. 	 *  	 * @return a list of bibtexentries, with all strings resolved. It is dependent on the value of inPlace whether copies are made or the given BibtexEntries are modified.  	 */
+comment|/**      * Take the given collection of BibtexEntry and resolve any string      * references.      *       * @param entries      *            A collection of BibtexEntries in which all strings of the form      *            #xxx# will be resolved against the hash map of string      *            references stored in the databasee.      *                  * @param inPlace If inPlace is true then the given BibtexEntries will be modified, if false then copies of the BibtexEntries are made before resolving the strings.      *       * @return a list of bibtexentries, with all strings resolved. It is dependent on the value of inPlace whether copies are made or the given BibtexEntries are modified.       */
 DECL|method|resolveForStrings (Collection<BibtexEntry> entries, boolean inPlace)
 specifier|public
 name|List
@@ -1311,11 +1318,13 @@ name|entries
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|NullPointerException
 argument_list|()
 throw|;
+block|}
 name|List
 argument_list|<
 name|BibtexEntry
@@ -1361,7 +1370,7 @@ return|return
 name|results
 return|;
 block|}
-comment|/** 	 * Take the given BibtexEntry and resolve any string references. 	 *  	 * @param entry 	 *            A BibtexEntry in which all strings of the form #xxx# will be 	 *            resolved against the hash map of string references stored in 	 *            the databasee. 	 *  	 * @param inPlace 	 *            If inPlace is true then the given BibtexEntry will be 	 *            modified, if false then a copy is made using close made before 	 *            resolving the strings. 	 *  	 * @return a BibtexEntry with all string references resolved. It is 	 *         dependent on the value of inPlace whether a copy is made or the 	 *         given BibtexEntries is modified. 	 */
+comment|/**      * Take the given BibtexEntry and resolve any string references.      *       * @param entry      *            A BibtexEntry in which all strings of the form #xxx# will be      *            resolved against the hash map of string references stored in      *            the databasee.      *       * @param inPlace      *            If inPlace is true then the given BibtexEntry will be      *            modified, if false then a copy is made using close made before      *            resolving the strings.      *       * @return a BibtexEntry with all string references resolved. It is      *         dependent on the value of inPlace whether a copy is made or the      *         given BibtexEntries is modified.      */
 DECL|method|resolveForStrings (BibtexEntry entry, boolean inPlace)
 specifier|public
 name|BibtexEntry
@@ -1432,7 +1441,7 @@ return|return
 name|entry
 return|;
 block|}
-comment|/**     * If the label represents a string contained in this database, returns     * that string's content. Resolves references to other strings, taking     * care not to follow a circular reference pattern.     * If the string is undefined, returns null.     */
+comment|/**      * If the label represents a string contained in this database, returns      * that string's content. Resolves references to other strings, taking      * care not to follow a circular reference pattern.      * If the string is undefined, returns null.      */
 DECL|method|resolveString (String label, HashSet<String> usedIds)
 specifier|private
 name|String
@@ -1558,40 +1567,38 @@ block|}
 block|}
 comment|// If we get to this point, the string has obviously not been defined locally.
 comment|// Check if one of the standard BibTeX month strings has been used:
-name|Object
-name|o
+name|MonthUtil
+operator|.
+name|Month
+name|month
+init|=
+name|MonthUtil
+operator|.
+name|getMonthByShortName
+argument_list|(
+name|label
+argument_list|)
 decl_stmt|;
 if|if
 condition|(
-operator|(
-name|o
-operator|=
-name|Globals
+name|month
 operator|.
-name|MONTH_STRINGS
-operator|.
-name|get
-argument_list|(
-name|label
-operator|.
-name|toLowerCase
+name|isValid
 argument_list|()
-argument_list|)
-operator|)
-operator|!=
-literal|null
 condition|)
 block|{
 return|return
-operator|(
-name|String
-operator|)
-name|o
+name|month
+operator|.
+name|fullName
 return|;
 block|}
+else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 DECL|method|resolveContent (String res, HashSet<String> usedIds)
 specifier|private
@@ -1632,8 +1639,6 @@ init|=
 literal|0
 decl_stmt|,
 name|next
-init|=
-literal|0
 decl_stmt|;
 while|while
 condition|(
@@ -1661,6 +1666,7 @@ name|next
 operator|>
 literal|0
 condition|)
+block|{
 name|newRes
 operator|.
 name|append
@@ -1675,6 +1681,7 @@ name|next
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|int
 name|stringEnd
 init|=
@@ -1749,6 +1756,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 comment|// The string was resolved, so we display its meaning only,
 comment|// stripping the # characters signifying the string label:
 name|newRes
@@ -1758,6 +1766,7 @@ argument_list|(
 name|resolved
 argument_list|)
 expr_stmt|;
+block|}
 name|piv
 operator|=
 name|stringEnd
@@ -1796,13 +1805,16 @@ if|if
 condition|(
 name|piv
 operator|<
+operator|(
 name|res
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|newRes
 operator|.
 name|append
@@ -1815,6 +1827,7 @@ name|piv
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|res
 operator|=
 name|newRes
@@ -1834,7 +1847,7 @@ comment|//############################################
 comment|// if the newkey already exists and is not the same as oldkey it will give a warning
 comment|// else it will add the newkey to the to set and remove the oldkey
 DECL|method|checkForDuplicateKeyAndAdd (String oldKey, String newKey, boolean issueWarning)
-specifier|public
+specifier|private
 name|boolean
 name|checkForDuplicateKeyAndAdd
 parameter_list|(
@@ -1851,8 +1864,6 @@ block|{
 comment|// Globals.logger(" checkForDuplicateKeyAndAdd [oldKey = " + oldKey + "] [newKey = " + newKey + "]");
 name|boolean
 name|duplicate
-init|=
-literal|false
 decl_stmt|;
 if|if
 condition|(
@@ -1932,7 +1943,7 @@ argument_list|(
 literal|"Warning there is a duplicate key"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 operator|+
 name|newKey
 argument_list|,
@@ -1980,16 +1991,20 @@ name|o
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|0
 return|;
+block|}
 else|else
+block|{
 return|return
 operator|(
 name|Integer
 operator|)
 name|o
 return|;
+block|}
 block|}
 comment|//========================================================
 comment|// keep track of all the keys to warn if there are duplicates
@@ -2018,15 +2033,15 @@ operator|)
 operator|||
 name|key
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
+block|{
 return|return
 literal|false
 return|;
 comment|//don't put empty key
+block|}
 if|if
 condition|(
 name|allKeys
@@ -2061,6 +2076,7 @@ expr_stmt|;
 comment|// incrementInteger( allKeys.get(key)));
 block|}
 else|else
+block|{
 name|allKeys
 operator|.
 name|put
@@ -2070,6 +2086,7 @@ argument_list|,
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|exists
 return|;
@@ -2097,12 +2114,12 @@ operator|)
 operator|||
 name|key
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|allKeys
@@ -2130,6 +2147,7 @@ name|tI
 operator|==
 literal|1
 condition|)
+block|{
 name|allKeys
 operator|.
 name|remove
@@ -2137,7 +2155,9 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|allKeys
 operator|.
 name|put
@@ -2152,8 +2172,9 @@ expr_stmt|;
 comment|//decrementInteger( tI ));
 block|}
 block|}
+block|}
 DECL|method|fireDatabaseChanged (DatabaseChangeEvent e)
-specifier|public
+specifier|private
 name|void
 name|fireDatabaseChanged
 parameter_list|(
@@ -2212,7 +2233,7 @@ name|l
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Returns the text stored in the given field of the given bibtex entry 	 * which belongs to the given database. 	 *  	 * If a database is given, this function will try to resolve any string 	 * references in the field-value.      * Also, if a database is given, this function will try to find values for      * unset fields in the entry linked by the "crossref" field, if any. 	 *  	 * @param field 	 *            The field to return the value of. 	 * @param bibtex maybenull 	 *            The bibtex entry which contains the field. 	 * @param database maybenull 	 *            The database of the bibtex entry. 	 * @return The resolved field value or null if not found. 	 */
+comment|/**      * Returns the text stored in the given field of the given bibtex entry      * which belongs to the given database.      *       * If a database is given, this function will try to resolve any string      * references in the field-value.      * Also, if a database is given, this function will try to find values for      * unset fields in the entry linked by the "crossref" field, if any.      *       * @param field      *            The field to return the value of.      * @param bibtex maybenull      *            The bibtex entry which contains the field.      * @param database maybenull      *            The database of the bibtex entry.      * @return The resolved field value or null if not found.      */
 DECL|method|getResolvedField (String field, BibtexEntry bibtex, BibtexDatabase database)
 specifier|public
 specifier|static
@@ -2238,6 +2259,7 @@ argument_list|(
 literal|"bibtextype"
 argument_list|)
 condition|)
+block|{
 return|return
 name|bibtex
 operator|.
@@ -2247,12 +2269,16 @@ operator|.
 name|getName
 argument_list|()
 return|;
+block|}
+comment|// TODO: Changed this to also consider alias fields, which is the expected
+comment|// behavior for the preview layout and for the check whatever all fields are present.
+comment|// But there might be unwanted side-effects?!
 name|Object
 name|o
 init|=
 name|bibtex
 operator|.
-name|getField
+name|getFieldOrAlias
 argument_list|(
 name|field
 argument_list|)
@@ -2340,6 +2366,8 @@ block|}
 block|}
 block|}
 return|return
+name|BibtexDatabase
+operator|.
 name|getText
 argument_list|(
 operator|(
@@ -2351,7 +2379,7 @@ name|database
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Returns a text with references resolved according to an optionally given 	 * database. 	 	 * @param toResolve maybenull The text to resolve. 	 * @param database maybenull The database to use for resolving the text. 	 * @return The resolved text or the original text if either the text or the database are null 	 */
+comment|/**      * Returns a text with references resolved according to an optionally given      * database.           * @param toResolve maybenull The text to resolve.      * @param database maybenull The database to use for resolving the text.      * @return The resolved text or the original text if either the text or the database are null      */
 DECL|method|getText (String toResolve, BibtexDatabase database)
 specifier|public
 specifier|static
@@ -2367,14 +2395,19 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|toResolve
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|database
 operator|!=
 literal|null
+operator|)
 condition|)
+block|{
 return|return
 name|database
 operator|.
@@ -2383,6 +2416,7 @@ argument_list|(
 name|toResolve
 argument_list|)
 return|;
+block|}
 return|return
 name|toResolve
 return|;

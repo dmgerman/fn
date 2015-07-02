@@ -141,18 +141,18 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|field|m_node
-specifier|protected
+specifier|private
 name|GroupTreeNode
 name|m_node
 decl_stmt|;
 DECL|field|m_move
-specifier|protected
+specifier|private
 specifier|final
 name|boolean
 name|m_move
 decl_stmt|;
 DECL|field|m_panel
-specifier|protected
+specifier|private
 name|BasePanel
 name|m_panel
 decl_stmt|;
@@ -255,6 +255,8 @@ operator|=
 name|node
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent evt)
 specifier|public
 name|void
@@ -343,7 +345,9 @@ operator|.
 name|supportsRemove
 argument_list|()
 condition|)
+block|{
 continue|continue;
+block|}
 for|for
 control|(
 name|BibtexEntry
@@ -364,6 +368,7 @@ argument_list|(
 name|entry
 argument_list|)
 condition|)
+block|{
 name|removeGroupsNodes
 operator|.
 name|add
@@ -371,6 +376,7 @@ argument_list|(
 name|node
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// warning for all groups from which the entries are removed, and
@@ -407,6 +413,7 @@ condition|;
 operator|++
 name|i
 control|)
+block|{
 name|groups
 index|[
 name|i
@@ -422,6 +429,7 @@ operator|.
 name|getGroup
 argument_list|()
 expr_stmt|;
+block|}
 name|groups
 index|[
 name|groups
@@ -458,8 +466,10 @@ name|frame
 argument_list|()
 argument_list|)
 condition|)
+block|{
 return|return;
 comment|// user aborted operation
+block|}
 block|}
 else|else
 block|{
@@ -494,8 +504,10 @@ name|frame
 argument_list|()
 block|)
 block|)
-function|return;
+block|{
+return|return;
 comment|// user aborted operation
+block|}
 block|}
 end_class
 
@@ -583,6 +595,7 @@ argument_list|(
 name|entries
 argument_list|)
 condition|)
+block|{
 name|undoAll
 operator|.
 name|addEdit
@@ -595,6 +608,7 @@ name|entries
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// then add
 name|AbstractUndoableEdit
@@ -613,6 +627,7 @@ name|undoAdd
 operator|!=
 literal|null
 condition|)
+block|{
 name|undoAll
 operator|.
 name|addEdit
@@ -620,6 +635,7 @@ argument_list|(
 name|undoAdd
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -639,8 +655,10 @@ name|undoAdd
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
 comment|// no changed made
+block|}
 name|undoAll
 operator|.
 name|addEdit

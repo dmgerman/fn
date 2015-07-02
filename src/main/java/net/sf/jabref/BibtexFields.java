@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 Raik Nagel and JabRef contributors     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2014 Raik Nagel and JabRef contributors     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_comment
@@ -186,33 +186,57 @@ DECL|field|SEARCH
 name|SEARCH
 init|=
 literal|"__search"
-decl_stmt|,
+decl_stmt|;
 DECL|field|GROUPSEARCH
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|GROUPSEARCH
 init|=
 literal|"__groupsearch"
-decl_stmt|,
+decl_stmt|;
 DECL|field|MARKED
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|MARKED
 init|=
 literal|"__markedentry"
-decl_stmt|,
+decl_stmt|;
 DECL|field|OWNER
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|OWNER
 init|=
 literal|"owner"
-decl_stmt|,
+decl_stmt|;
 DECL|field|TIMESTAMP
+specifier|public
+specifier|static
+specifier|final
+name|String
 name|TIMESTAMP
 init|=
 literal|"timestamp"
-decl_stmt|,
+decl_stmt|;
 comment|// it's also definied at the JabRefPreferences class
 DECL|field|ENTRYTYPE
+specifier|private
+specifier|static
+specifier|final
+name|String
 name|ENTRYTYPE
 init|=
 literal|"entrytype"
-decl_stmt|,
+decl_stmt|;
+specifier|public
+specifier|static
+specifier|final
+name|String
 comment|// Using this when I have no database open or when I read
 comment|// non bibtex file formats (used by the ImportFormatReader.java)
 DECL|field|DEFAULT_BIBTEXENTRY_ID
@@ -238,6 +262,8 @@ literal|"title"
 block|,
 literal|"year"
 block|,
+name|BibtexFields
+operator|.
 name|KEY_FIELD
 block|}
 decl_stmt|;
@@ -256,6 +282,7 @@ decl_stmt|;
 comment|// contains all bibtex-field objects (BibtexSingleField)
 DECL|field|fieldSet
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -291,8 +318,6 @@ argument_list|()
 expr_stmt|;
 name|BibtexSingleField
 name|dummy
-init|=
-literal|null
 decl_stmt|;
 comment|// FIRST: all standard fields
 comment|// These are the fields that BibTex might want to treat, so these
@@ -458,6 +483,32 @@ operator|new
 name|BibtexSingleField
 argument_list|(
 literal|"journal"
+argument_list|,
+literal|true
+argument_list|,
+name|GUIGlobals
+operator|.
+name|SMALL_W
+argument_list|)
+expr_stmt|;
+name|dummy
+operator|.
+name|setExtras
+argument_list|(
+literal|"journalNames"
+argument_list|)
+expr_stmt|;
+name|add
+argument_list|(
+name|dummy
+argument_list|)
+expr_stmt|;
+name|dummy
+operator|=
+operator|new
+name|BibtexSingleField
+argument_list|(
+literal|"journaltitle"
 argument_list|,
 literal|true
 argument_list|,
@@ -912,12 +963,118 @@ argument_list|(
 name|dummy
 argument_list|)
 expr_stmt|;
+name|dummy
+operator|=
+operator|new
+name|BibtexSingleField
+argument_list|(
+name|SpecialFieldsUtils
+operator|.
+name|FIELDNAME_READ
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|SpecialFieldsUtils
+operator|.
+name|PREF_SERIALIZESPECIALFIELDS
+argument_list|)
+condition|)
+block|{
+name|dummy
+operator|.
+name|setPrivate
+argument_list|()
+expr_stmt|;
+name|dummy
+operator|.
+name|setWriteable
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|dummy
+operator|.
+name|setDisplayable
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+name|add
+argument_list|(
+name|dummy
+argument_list|)
+expr_stmt|;
+name|dummy
+operator|=
+operator|new
+name|BibtexSingleField
+argument_list|(
+name|SpecialFieldsUtils
+operator|.
+name|FIELDNAME_PRINTED
+argument_list|,
+literal|false
+argument_list|)
+expr_stmt|;
+if|if
+condition|(
+operator|!
+name|Globals
+operator|.
+name|prefs
+operator|.
+name|getBoolean
+argument_list|(
+name|SpecialFieldsUtils
+operator|.
+name|PREF_SERIALIZESPECIALFIELDS
+argument_list|)
+condition|)
+block|{
+name|dummy
+operator|.
+name|setPrivate
+argument_list|()
+expr_stmt|;
+name|dummy
+operator|.
+name|setWriteable
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+name|dummy
+operator|.
+name|setDisplayable
+argument_list|(
+literal|false
+argument_list|)
+expr_stmt|;
+block|}
+name|add
+argument_list|(
+name|dummy
+argument_list|)
+expr_stmt|;
 comment|// some semi-standard fields
 name|dummy
 operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
+name|BibtexFields
+operator|.
 name|KEY_FIELD
 argument_list|,
 literal|true
@@ -1237,6 +1394,8 @@ operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
+name|BibtexFields
+operator|.
 name|OWNER
 argument_list|,
 literal|false
@@ -1268,6 +1427,8 @@ operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
+name|BibtexFields
+operator|.
 name|TIMESTAMP
 argument_list|,
 literal|false
@@ -1299,6 +1460,8 @@ operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
+name|BibtexFields
+operator|.
 name|ENTRYTYPE
 argument_list|,
 literal|false
@@ -1321,6 +1484,8 @@ operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
+name|BibtexFields
+operator|.
 name|SEARCH
 argument_list|,
 literal|false
@@ -1355,6 +1520,8 @@ operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
+name|BibtexFields
+operator|.
 name|GROUPSEARCH
 argument_list|,
 literal|false
@@ -1389,6 +1556,8 @@ operator|=
 operator|new
 name|BibtexSingleField
 argument_list|(
+name|BibtexFields
+operator|.
 name|MARKED
 argument_list|,
 literal|false
@@ -1535,7 +1704,9 @@ name|numFields
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 comment|// Build a Set of field names for the fields that should be sorted numerically:
 name|HashSet
 argument_list|<
@@ -1565,6 +1736,8 @@ control|(
 name|String
 name|fieldName
 range|:
+name|BibtexFields
+operator|.
 name|runtime
 operator|.
 name|fieldSet
@@ -1576,6 +1749,8 @@ block|{
 name|BibtexSingleField
 name|field
 init|=
+name|BibtexFields
+operator|.
 name|runtime
 operator|.
 name|fieldSet
@@ -1650,6 +1825,8 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+name|BibtexFields
+operator|.
 name|runtime
 operator|.
 name|fieldSet
@@ -1664,7 +1841,7 @@ expr_stmt|;
 block|}
 block|}
 comment|/** insert a field into the internal list */
-DECL|method|add ( BibtexSingleField field )
+DECL|method|add (BibtexSingleField field)
 specifier|private
 name|void
 name|add
@@ -1692,7 +1869,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/** read a xml definiton file and put only NEW fields into the field list */
-DECL|method|readXML ( String resName )
+DECL|method|readXML (String resName)
 specifier|private
 name|void
 name|readXML
@@ -1839,7 +2016,7 @@ block|}
 comment|// --------------------------------------------------------------------------
 comment|//  the "static area"
 comment|// --------------------------------------------------------------------------
-DECL|method|getField ( String name )
+DECL|method|getField (String name)
 specifier|private
 specifier|static
 name|BibtexSingleField
@@ -1857,6 +2034,8 @@ literal|null
 condition|)
 block|{
 return|return
+name|BibtexFields
+operator|.
 name|runtime
 operator|.
 name|fieldSet
@@ -1874,7 +2053,7 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|getFieldExtras ( String name )
+DECL|method|getFieldExtras (String name)
 specifier|public
 specifier|static
 name|String
@@ -1887,6 +2066,8 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
+name|BibtexFields
+operator|.
 name|getField
 argument_list|(
 name|name
@@ -1923,6 +2104,8 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
+name|BibtexFields
+operator|.
 name|getField
 argument_list|(
 name|name
@@ -1948,7 +2131,7 @@ operator|.
 name|STANDARD_EDITOR
 return|;
 block|}
-DECL|method|getFieldWeight ( String name )
+DECL|method|getFieldWeight (String name)
 specifier|public
 specifier|static
 name|double
@@ -1961,6 +2144,8 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
+name|BibtexFields
+operator|.
 name|getField
 argument_list|(
 name|name
@@ -1986,7 +2171,7 @@ operator|.
 name|DEFAULT_FIELD_WEIGHT
 return|;
 block|}
-DECL|method|setFieldWeight ( String fieldName, double weight )
+DECL|method|setFieldWeight (String fieldName, double weight)
 specifier|public
 specifier|static
 name|void
@@ -2002,6 +2187,8 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
+name|BibtexFields
+operator|.
 name|getField
 argument_list|(
 name|fieldName
@@ -2023,7 +2210,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|getFieldLength ( String name )
+DECL|method|getFieldLength (String name)
 specifier|public
 specifier|static
 name|int
@@ -2036,6 +2223,8 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
+name|BibtexFields
+operator|.
 name|getField
 argument_list|(
 name|name
@@ -2062,7 +2251,7 @@ name|DEFAULT_FIELD_LENGTH
 return|;
 block|}
 comment|// returns an alternative name for the given fieldname
-DECL|method|getFieldDisplayName ( String fieldName )
+DECL|method|getFieldDisplayName (String fieldName)
 specifier|public
 specifier|static
 name|String
@@ -2075,6 +2264,8 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
+name|BibtexFields
+operator|.
 name|getField
 argument_list|(
 name|fieldName
@@ -2098,7 +2289,7 @@ return|return
 literal|null
 return|;
 block|}
-DECL|method|isWriteableField ( String field )
+DECL|method|isWriteableField (String field)
 specifier|public
 specifier|static
 name|boolean
@@ -2111,30 +2302,25 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
+name|BibtexFields
+operator|.
 name|getField
 argument_list|(
 name|field
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|sField
-operator|!=
-literal|null
-condition|)
-block|{
 return|return
+name|sField
+operator|==
+literal|null
+operator|||
 name|sField
 operator|.
 name|isWriteable
 argument_list|()
 return|;
 block|}
-return|return
-literal|true
-return|;
-block|}
-DECL|method|isDisplayableField ( String field )
+DECL|method|isDisplayableField (String field)
 specifier|public
 specifier|static
 name|boolean
@@ -2147,31 +2333,26 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
+name|BibtexFields
+operator|.
 name|getField
 argument_list|(
 name|field
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|sField
-operator|!=
-literal|null
-condition|)
-block|{
 return|return
+name|sField
+operator|==
+literal|null
+operator|||
 name|sField
 operator|.
 name|isDisplayable
 argument_list|()
 return|;
 block|}
-return|return
-literal|true
-return|;
-block|}
-comment|/**    * Returns true if the given field is a standard Bibtex field.    *    * @param field a<code>String</code> value    * @return a<code>boolean</code> value    */
-DECL|method|isStandardField ( String field )
+comment|/**      * Returns true if the given field is a standard Bibtex field.      *      * @param field a<code>String</code> value      * @return a<code>boolean</code> value      */
+DECL|method|isStandardField (String field)
 specifier|public
 specifier|static
 name|boolean
@@ -2184,30 +2365,25 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
+name|BibtexFields
+operator|.
 name|getField
 argument_list|(
 name|field
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
+return|return
 name|sField
 operator|!=
 literal|null
-condition|)
-block|{
-return|return
+operator|&&
 name|sField
 operator|.
 name|isStandard
 argument_list|()
 return|;
 block|}
-return|return
-literal|false
-return|;
-block|}
-DECL|method|isNumeric ( String field )
+DECL|method|isNumeric (String field)
 specifier|public
 specifier|static
 name|boolean
@@ -2220,27 +2396,22 @@ block|{
 name|BibtexSingleField
 name|sField
 init|=
+name|BibtexFields
+operator|.
 name|getField
 argument_list|(
 name|field
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
+return|return
 name|sField
 operator|!=
 literal|null
-condition|)
-block|{
-return|return
+operator|&&
 name|sField
 operator|.
 name|isNumeric
 argument_list|()
-return|;
-block|}
-return|return
-literal|false
 return|;
 block|}
 comment|/** returns an string-array with all fieldnames */
@@ -2253,6 +2424,8 @@ name|getAllFieldNames
 parameter_list|()
 block|{
 return|return
+name|BibtexFields
+operator|.
 name|runtime
 operator|.
 name|PUBLIC_FIELDS
@@ -2285,6 +2458,8 @@ control|(
 name|BibtexSingleField
 name|sField
 range|:
+name|BibtexFields
+operator|.
 name|runtime
 operator|.
 name|fieldSet
@@ -2330,7 +2505,7 @@ argument_list|)
 return|;
 block|}
 comment|/** returns the fieldname of the entry at index t */
-DECL|method|getFieldName ( int t )
+DECL|method|getFieldName (int t)
 specifier|public
 specifier|static
 name|String
@@ -2341,6 +2516,8 @@ name|t
 parameter_list|)
 block|{
 return|return
+name|BibtexFields
+operator|.
 name|runtime
 operator|.
 name|PUBLIC_FIELDS
@@ -2358,6 +2535,8 @@ name|numberOfPublicFields
 parameter_list|()
 block|{
 return|return
+name|BibtexFields
+operator|.
 name|runtime
 operator|.
 name|PUBLIC_FIELDS
@@ -2365,7 +2544,7 @@ operator|.
 name|length
 return|;
 block|}
-comment|/*      public static int getPreferredFieldLength(String name) {      int l = DEFAULT_FIELD_LENGTH;      Object o = fieldLength.get(name.toLowerCase());      if (o != null)      l = ((Integer)o).intValue();      return l;      }*/
+comment|/*        public static int getPreferredFieldLength(String name) {        int l = DEFAULT_FIELD_LENGTH;        Object o = fieldLength.get(name.toLowerCase());        if (o != null)        l = ((Integer)o).intValue();        return l;        }*/
 comment|// --------------------------------------------------------------------------
 comment|// a container class for all properties of a bibtex-field
 comment|// --------------------------------------------------------------------------
@@ -2416,8 +2595,12 @@ specifier|private
 name|int
 name|flag
 init|=
+name|BibtexSingleField
+operator|.
 name|DISPLAYABLE
 operator||
+name|BibtexSingleField
+operator|.
 name|WRITEABLE
 decl_stmt|;
 DECL|field|length
@@ -2482,7 +2665,7 @@ comment|// a Hashmap for a lot of additional "not standard" properties
 comment|// todo: add the handling in a key=value manner
 comment|// private HashMap props = new HashMap() ;
 comment|// some constructors ;-)
-DECL|method|BibtexSingleField ( String fieldName )
+DECL|method|BibtexSingleField (String fieldName)
 specifier|public
 name|BibtexSingleField
 parameter_list|(
@@ -2495,7 +2678,7 @@ operator|=
 name|fieldName
 expr_stmt|;
 block|}
-DECL|method|BibtexSingleField ( String fieldName, boolean pStandard )
+DECL|method|BibtexSingleField (String fieldName, boolean pStandard)
 specifier|public
 name|BibtexSingleField
 parameter_list|(
@@ -2514,11 +2697,13 @@ name|setFlag
 argument_list|(
 name|pStandard
 argument_list|,
+name|BibtexSingleField
+operator|.
 name|STANDARD
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|BibtexSingleField ( String fieldName, boolean pStandard, double pWeight)
+DECL|method|BibtexSingleField (String fieldName, boolean pStandard, double pWeight)
 specifier|public
 name|BibtexSingleField
 parameter_list|(
@@ -2540,6 +2725,8 @@ name|setFlag
 argument_list|(
 name|pStandard
 argument_list|,
+name|BibtexSingleField
+operator|.
 name|STANDARD
 argument_list|)
 expr_stmt|;
@@ -2548,7 +2735,7 @@ operator|=
 name|pWeight
 expr_stmt|;
 block|}
-DECL|method|BibtexSingleField ( String fieldName, boolean pStandard, int pLength)
+DECL|method|BibtexSingleField (String fieldName, boolean pStandard, int pLength)
 specifier|public
 name|BibtexSingleField
 parameter_list|(
@@ -2570,6 +2757,8 @@ name|setFlag
 argument_list|(
 name|pStandard
 argument_list|,
+name|BibtexSingleField
+operator|.
 name|STANDARD
 argument_list|)
 expr_stmt|;
@@ -2578,7 +2767,7 @@ operator|=
 name|pLength
 expr_stmt|;
 block|}
-DECL|method|BibtexSingleField ( String fieldName, boolean pStandard, double pWeight, int pLength)
+DECL|method|BibtexSingleField (String fieldName, boolean pStandard, double pWeight, int pLength)
 specifier|public
 name|BibtexSingleField
 parameter_list|(
@@ -2603,6 +2792,8 @@ name|setFlag
 argument_list|(
 name|pStandard
 argument_list|,
+name|BibtexSingleField
+operator|.
 name|STANDARD
 argument_list|)
 expr_stmt|;
@@ -2616,7 +2807,7 @@ name|pLength
 expr_stmt|;
 block|}
 comment|/** the constructor reads all neccessary data from the xml file */
-DECL|method|BibtexSingleField ( TXMLReader reader, Element node)
+DECL|method|BibtexSingleField (TXMLReader reader, Element node)
 specifier|public
 name|BibtexSingleField
 parameter_list|(
@@ -2630,8 +2821,12 @@ block|{
 comment|// default is: not standard, public, displayable and writable
 name|flag
 operator|=
+name|BibtexSingleField
+operator|.
 name|DISPLAYABLE
 operator||
+name|BibtexSingleField
+operator|.
 name|WRITEABLE
 expr_stmt|;
 name|name
@@ -2825,7 +3020,7 @@ expr_stmt|;
 block|}
 comment|// -----------------------------------------------------------------------
 comment|// -----------------------------------------------------------------------
-DECL|method|setFlag ( boolean onOff, int flagID)
+DECL|method|setFlag (boolean onOff, int flagID)
 specifier|private
 name|void
 name|setFlag
@@ -2865,7 +3060,7 @@ operator|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|isSet ( int flagID )
+DECL|method|isSet (int flagID)
 specifier|private
 name|boolean
 name|isSet
@@ -2894,6 +3089,8 @@ block|{
 return|return
 name|isSet
 argument_list|(
+name|BibtexSingleField
+operator|.
 name|STANDARD
 argument_list|)
 return|;
@@ -2908,6 +3105,8 @@ name|flag
 operator|=
 name|flag
 operator||
+name|BibtexSingleField
+operator|.
 name|PRIVATE
 expr_stmt|;
 block|}
@@ -2920,6 +3119,8 @@ block|{
 return|return
 name|isSet
 argument_list|(
+name|BibtexSingleField
+operator|.
 name|PRIVATE
 argument_list|)
 return|;
@@ -2934,6 +3135,8 @@ name|setFlag
 argument_list|(
 literal|false
 argument_list|,
+name|BibtexSingleField
+operator|.
 name|PRIVATE
 argument_list|)
 expr_stmt|;
@@ -2948,6 +3151,8 @@ return|return
 operator|!
 name|isSet
 argument_list|(
+name|BibtexSingleField
+operator|.
 name|PRIVATE
 argument_list|)
 return|;
@@ -2965,6 +3170,8 @@ name|setFlag
 argument_list|(
 name|value
 argument_list|,
+name|BibtexSingleField
+operator|.
 name|DISPLAYABLE
 argument_list|)
 expr_stmt|;
@@ -2978,6 +3185,8 @@ block|{
 return|return
 name|isSet
 argument_list|(
+name|BibtexSingleField
+operator|.
 name|DISPLAYABLE
 argument_list|)
 return|;
@@ -2995,6 +3204,8 @@ name|setFlag
 argument_list|(
 name|value
 argument_list|,
+name|BibtexSingleField
+operator|.
 name|WRITEABLE
 argument_list|)
 expr_stmt|;
@@ -3008,12 +3219,14 @@ block|{
 return|return
 name|isSet
 argument_list|(
+name|BibtexSingleField
+operator|.
 name|WRITEABLE
 argument_list|)
 return|;
 block|}
 comment|// -----------------------------------------------------------------------
-DECL|method|setAlternativeDisplayName ( String aName)
+DECL|method|setAlternativeDisplayName (String aName)
 specifier|public
 name|void
 name|setAlternativeDisplayName
@@ -3038,7 +3251,7 @@ name|alternativeDisplayName
 return|;
 block|}
 comment|// -----------------------------------------------------------------------
-DECL|method|setExtras ( String pExtras)
+DECL|method|setExtras (String pExtras)
 specifier|public
 name|void
 name|setExtras
@@ -3089,7 +3302,7 @@ name|editorType
 return|;
 block|}
 comment|// -----------------------------------------------------------------------
-DECL|method|setWeight ( double value )
+DECL|method|setWeight (double value)
 specifier|public
 name|void
 name|setWeight
@@ -3141,7 +3354,7 @@ return|return
 name|name
 return|;
 block|}
-comment|/**        * Set this field's numeric propery        * @param numeric true to indicate that this is a numeric field.        * @return this BibtexSingleField instance. Makes it easier to call this        *   method on the fly while initializing without using a local variable.        */
+comment|/**          * Set this field's numeric propery          * @param numeric true to indicate that this is a numeric field.          * @return this BibtexSingleField instance. Makes it easier to call this          *   method on the fly while initializing without using a local variable.          */
 DECL|method|setNumeric (boolean numeric)
 specifier|public
 name|BibtexSingleField

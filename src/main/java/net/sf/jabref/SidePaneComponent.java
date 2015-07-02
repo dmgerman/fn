@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -74,6 +74,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|BorderFactory
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|ImageIcon
 import|;
 end_import
@@ -123,6 +133,7 @@ name|SimpleInternalFrame
 block|{
 DECL|field|close
 specifier|protected
+specifier|final
 name|JButton
 name|close
 init|=
@@ -138,14 +149,15 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|visible
-specifier|protected
+specifier|private
 name|boolean
 name|visible
 init|=
 literal|false
 decl_stmt|;
 DECL|field|manager
-specifier|protected
+specifier|private
+specifier|final
 name|SidePaneManager
 name|manager
 decl_stmt|;
@@ -224,11 +236,119 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+name|JButton
+name|up
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|GUIGlobals
+operator|.
+name|getImage
+argument_list|(
+literal|"up"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|up
+operator|.
+name|setMargin
+argument_list|(
+operator|new
+name|Insets
+argument_list|(
+literal|0
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|JButton
+name|down
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|GUIGlobals
+operator|.
+name|getImage
+argument_list|(
+literal|"down"
+argument_list|)
+argument_list|)
+decl_stmt|;
+name|down
+operator|.
+name|setMargin
+argument_list|(
+operator|new
+name|Insets
+argument_list|(
+literal|0
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|,
+literal|0
+argument_list|)
+argument_list|)
+expr_stmt|;
+name|up
+operator|.
+name|setBorder
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+name|down
+operator|.
+name|setBorder
+argument_list|(
+literal|null
+argument_list|)
+expr_stmt|;
+name|up
+operator|.
+name|addActionListener
+argument_list|(
+operator|new
+name|UpButtonListener
+argument_list|()
+argument_list|)
+expr_stmt|;
+name|down
+operator|.
+name|addActionListener
+argument_list|(
+operator|new
+name|DownButtonListener
+argument_list|()
+argument_list|)
+expr_stmt|;
 name|tlb
 operator|.
 name|setFloatable
 argument_list|(
 literal|false
+argument_list|)
+expr_stmt|;
+name|tlb
+operator|.
+name|add
+argument_list|(
+name|up
+argument_list|)
+expr_stmt|;
+name|tlb
+operator|.
+name|add
+argument_list|(
+name|down
 argument_list|)
 expr_stmt|;
 name|tlb
@@ -253,13 +373,20 @@ name|tlb
 argument_list|)
 expr_stmt|;
 comment|// setBorder(BorderFactory.createEtchedBorder());
+name|setBorder
+argument_list|(
+name|BorderFactory
+operator|.
+name|createEmptyBorder
+argument_list|()
+argument_list|)
+expr_stmt|;
 comment|// setBorder(BorderFactory.createMatteBorder(1,1,1,1,java.awt.Color.green));
 comment|// setPreferredSize(new java.awt.Dimension
 comment|// (GUIGlobals.SPLIT_PANE_DIVIDER_LOCATION, 200));
 comment|// Util.pr(""+GUIGlobals.SPLIT_PANE_DIVIDER_LOCATION);
 block|}
 DECL|method|hideAway ()
-specifier|public
 name|void
 name|hideAway
 parameter_list|()
@@ -272,7 +399,35 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Used by SidePaneManager only, to keep track of visibility. 	 *  	 */
+DECL|method|moveUp ()
+specifier|private
+name|void
+name|moveUp
+parameter_list|()
+block|{
+name|manager
+operator|.
+name|moveUp
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|moveDown ()
+specifier|private
+name|void
+name|moveDown
+parameter_list|()
+block|{
+name|manager
+operator|.
+name|moveDown
+argument_list|(
+name|this
+argument_list|)
+expr_stmt|;
+block|}
+comment|/**      * Used by SidePaneManager only, to keep track of visibility.      *       */
 DECL|method|setVisibility (boolean vis)
 name|void
 name|setVisibility
@@ -286,7 +441,7 @@ operator|=
 name|vis
 expr_stmt|;
 block|}
-comment|/** 	 * Used by SidePaneManager only, to keep track of visibility. 	 *  	 */
+comment|/**      * Used by SidePaneManager only, to keep track of visibility.      *       */
 DECL|method|hasVisibility ()
 name|boolean
 name|hasVisibility
@@ -322,20 +477,22 @@ return|return
 name|panel
 return|;
 block|}
-comment|/** 	 * Override this method if the component needs to make any changes before it 	 * can close. 	 */
+comment|/**      * Override this method if the component needs to make any changes before it      * can close.      */
 DECL|method|componentClosing ()
 specifier|public
 name|void
 name|componentClosing
 parameter_list|()
-block|{  	}
-comment|/** 	 * Override this method if the component needs to do any actions when 	 * opening. 	 */
+block|{      }
+comment|/**      * Override this method if the component needs to do any actions when      * opening.      */
 DECL|method|componentOpening ()
 specifier|public
 name|void
 name|componentOpening
 parameter_list|()
-block|{  	}
+block|{      }
+annotation|@
+name|Override
 DECL|method|getMinimumSize ()
 specifier|public
 name|Dimension
@@ -348,11 +505,14 @@ argument_list|()
 return|;
 block|}
 DECL|class|CloseButtonListener
+specifier|private
 class|class
 name|CloseButtonListener
 implements|implements
 name|ActionListener
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -363,6 +523,52 @@ name|e
 parameter_list|)
 block|{
 name|hideAway
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+DECL|class|UpButtonListener
+specifier|private
+class|class
+name|UpButtonListener
+implements|implements
+name|ActionListener
+block|{
+annotation|@
+name|Override
+DECL|method|actionPerformed (ActionEvent e)
+specifier|public
+name|void
+name|actionPerformed
+parameter_list|(
+name|ActionEvent
+name|e
+parameter_list|)
+block|{
+name|moveUp
+argument_list|()
+expr_stmt|;
+block|}
+block|}
+DECL|class|DownButtonListener
+specifier|private
+class|class
+name|DownButtonListener
+implements|implements
+name|ActionListener
+block|{
+annotation|@
+name|Override
+DECL|method|actionPerformed (ActionEvent e)
+specifier|public
+name|void
+name|actionPerformed
+parameter_list|(
+name|ActionEvent
+name|e
+parameter_list|)
+block|{
+name|moveDown
 argument_list|()
 expr_stmt|;
 block|}

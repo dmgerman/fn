@@ -133,6 +133,8 @@ implements|implements
 name|LayoutFormatter
 block|{
 comment|//~ Methods ////////////////////////////////////////////////////////////////
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -147,11 +149,11 @@ name|fieldEntry
 init|=
 name|fieldText
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|fieldEntry
 operator|.
@@ -233,7 +235,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|","
+literal|','
 argument_list|)
 expr_stmt|;
 block|}

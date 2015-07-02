@@ -116,7 +116,6 @@ end_comment
 
 begin_class
 DECL|class|StringInt
-specifier|public
 class|class
 name|StringInt
 implements|implements
@@ -137,6 +136,7 @@ decl_stmt|;
 comment|/**      *  Description of the Field      */
 DECL|field|i
 specifier|public
+specifier|final
 name|int
 name|i
 decl_stmt|;

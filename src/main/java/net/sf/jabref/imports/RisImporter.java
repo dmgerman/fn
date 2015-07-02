@@ -90,71 +90,13 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
 operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|AuthorList
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexFields
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|OutputPrinter
+name|*
 import|;
 end_import
 
@@ -171,6 +113,8 @@ extends|extends
 name|ImportFormat
 block|{
 comment|/**      * Return the name of this import format.      */
+annotation|@
+name|Override
 DECL|method|getFormatName ()
 specifier|public
 name|String
@@ -182,6 +126,8 @@ literal|"RIS"
 return|;
 block|}
 comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
+annotation|@
+name|Override
 DECL|method|getCLIId ()
 specifier|public
 name|String
@@ -193,6 +139,8 @@ literal|"ris"
 return|;
 block|}
 comment|/**      * Check whether the source is in the correct format for this importer.      */
+annotation|@
+name|Override
 DECL|method|isRecognizedFormat (InputStream stream)
 specifier|public
 name|boolean
@@ -258,15 +206,19 @@ operator|.
 name|find
 argument_list|()
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 return|return
 literal|false
 return|;
 block|}
 comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
+annotation|@
+name|Override
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
@@ -297,11 +249,11 @@ name|BibtexEntry
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|BufferedReader
@@ -405,7 +357,9 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 continue|continue;
+block|}
 name|String
 name|type
 init|=
@@ -476,11 +430,11 @@ name|j
 operator|++
 control|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|current
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|fields
 index|[
@@ -501,11 +455,13 @@ operator|&&
 operator|(
 name|j
 operator|<
+operator|(
 name|fields
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 operator|)
 condition|)
 block|{
@@ -593,6 +549,7 @@ literal|0
 argument_list|)
 argument_list|)
 condition|)
+block|{
 name|current
 operator|.
 name|append
@@ -600,6 +557,7 @@ argument_list|(
 literal|' '
 argument_list|)
 expr_stmt|;
+block|}
 name|current
 operator|.
 name|append
@@ -617,10 +575,12 @@ operator|++
 expr_stmt|;
 block|}
 else|else
+block|{
 name|done
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 name|String
 name|entry
@@ -639,7 +599,9 @@ argument_list|()
 operator|<
 literal|6
 condition|)
+block|{
 continue|continue;
+block|}
 else|else
 block|{
 name|String
@@ -686,10 +648,12 @@ argument_list|(
 literal|"BOOK"
 argument_list|)
 condition|)
+block|{
 name|type
 operator|=
 literal|"book"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -707,10 +671,12 @@ argument_list|(
 literal|"MGZN"
 argument_list|)
 condition|)
+block|{
 name|type
 operator|=
 literal|"article"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -721,10 +687,12 @@ argument_list|(
 literal|"THES"
 argument_list|)
 condition|)
+block|{
 name|type
 operator|=
 literal|"phdthesis"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -735,10 +703,12 @@ argument_list|(
 literal|"UNPB"
 argument_list|)
 condition|)
+block|{
 name|type
 operator|=
 literal|"unpublished"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -749,10 +719,12 @@ argument_list|(
 literal|"RPRT"
 argument_list|)
 condition|)
+block|{
 name|type
 operator|=
 literal|"techreport"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -763,10 +735,12 @@ argument_list|(
 literal|"CONF"
 argument_list|)
 condition|)
+block|{
 name|type
 operator|=
 literal|"inproceedings"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -777,16 +751,20 @@ argument_list|(
 literal|"CHAP"
 argument_list|)
 condition|)
+block|{
 name|type
 operator|=
 literal|"incollection"
 expr_stmt|;
 comment|//"inbook";
+block|}
 else|else
+block|{
 name|type
 operator|=
 literal|"other"
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -822,6 +800,7 @@ name|oldVal
 operator|==
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -831,6 +810,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 if|if
@@ -856,6 +836,7 @@ argument_list|(
 literal|"?"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -869,7 +850,9 @@ operator|+
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|hm
 operator|.
 name|put
@@ -883,6 +866,7 @@ operator|+
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|// =
@@ -949,18 +933,21 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
-comment|// don't add " and " for the first author
+block|{
 name|author
 operator|=
 name|val
 expr_stmt|;
+block|}
 else|else
+block|{
 name|author
 operator|+=
 literal|" and "
 operator|+
 name|val
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -982,18 +969,21 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
-comment|// don't add " and " for the first editor
+block|{
 name|editor
 operator|=
 name|val
 expr_stmt|;
+block|}
 else|else
+block|{
 name|editor
 operator|+=
 literal|" and "
 operator|+
 name|val
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -1029,6 +1019,7 @@ argument_list|(
 literal|"inproceedings"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1038,7 +1029,9 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|hm
 operator|.
 name|put
@@ -1048,6 +1041,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -1059,10 +1053,12 @@ argument_list|(
 literal|"SP"
 argument_list|)
 condition|)
+block|{
 name|startPage
 operator|=
 name|val
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1083,6 +1079,7 @@ argument_list|(
 literal|"phdthesis"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1092,7 +1089,9 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|hm
 operator|.
 name|put
@@ -1102,6 +1101,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -1120,6 +1120,7 @@ argument_list|(
 literal|"CY"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1129,6 +1130,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1139,10 +1141,12 @@ argument_list|(
 literal|"EP"
 argument_list|)
 condition|)
+block|{
 name|endPage
 operator|=
 name|val
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1153,6 +1157,7 @@ argument_list|(
 literal|"SN"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1162,6 +1167,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1172,6 +1178,7 @@ argument_list|(
 literal|"VL"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1181,6 +1188,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1191,6 +1199,7 @@ argument_list|(
 literal|"IS"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1200,6 +1209,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1234,6 +1244,7 @@ name|oldAb
 operator|==
 literal|null
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1243,7 +1254,9 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|hm
 operator|.
 name|put
@@ -1258,6 +1271,7 @@ name|val
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 elseif|else
 if|if
 condition|(
@@ -1268,6 +1282,7 @@ argument_list|(
 literal|"UR"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1277,6 +1292,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1296,12 +1312,14 @@ literal|"PY"
 argument_list|)
 operator|)
 operator|&&
+operator|(
 name|val
 operator|.
 name|length
 argument_list|()
 operator|>=
 literal|4
+operator|)
 condition|)
 block|{
 name|String
@@ -1353,7 +1371,7 @@ block|{
 try|try
 block|{
 name|int
-name|month
+name|monthNumber
 init|=
 name|Integer
 operator|.
@@ -1365,40 +1383,35 @@ literal|1
 index|]
 argument_list|)
 decl_stmt|;
+name|MonthUtil
+operator|.
+name|Month
+name|month
+init|=
+name|MonthUtil
+operator|.
+name|getMonthByNumber
+argument_list|(
+name|monthNumber
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
-operator|(
 name|month
-operator|>
-literal|0
-operator|)
-operator|&&
-operator|(
-name|month
-operator|<=
-literal|12
-operator|)
+operator|.
+name|isValid
+argument_list|()
 condition|)
 block|{
-comment|//System.out.println(Globals.MONTHS[month-1]);
 name|hm
 operator|.
 name|put
 argument_list|(
 literal|"month"
 argument_list|,
-literal|"#"
-operator|+
-name|Globals
-operator|.
-name|MONTHS
-index|[
 name|month
-operator|-
-literal|1
-index|]
-operator|+
-literal|"#"
+operator|.
+name|bibtexFormat
 argument_list|)
 expr_stmt|;
 block|}
@@ -1434,6 +1447,7 @@ argument_list|(
 literal|"keywords"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1443,6 +1457,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 name|String
@@ -1504,12 +1519,14 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|comment
 operator|=
 name|comment
 operator|+
 literal|"\n"
 expr_stmt|;
+block|}
 name|comment
 operator|=
 name|comment
@@ -1528,6 +1545,7 @@ argument_list|(
 literal|"ID"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -1537,7 +1555,7 @@ argument_list|,
 name|val
 argument_list|)
 expr_stmt|;
-comment|// Added doi import (sciencedirect.com) 2011.01.10, Alexander Hug<alexander@alexanderhug.info>
+block|}
 elseif|else
 if|if
 condition|(
@@ -1757,6 +1775,7 @@ operator|==
 literal|0
 operator|)
 condition|)
+block|{
 name|toRemove
 operator|.
 name|add
@@ -1764,6 +1783,7 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 for|for
 control|(

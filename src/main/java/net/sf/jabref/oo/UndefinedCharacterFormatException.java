@@ -22,13 +22,14 @@ end_comment
 
 begin_class
 DECL|class|UndefinedCharacterFormatException
-specifier|public
 class|class
 name|UndefinedCharacterFormatException
 extends|extends
 name|Exception
 block|{
 DECL|field|formatName
+specifier|private
+specifier|final
 name|String
 name|formatName
 decl_stmt|;

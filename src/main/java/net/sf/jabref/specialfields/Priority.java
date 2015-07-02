@@ -78,6 +78,7 @@ literal|null
 decl_stmt|;
 DECL|field|icon
 specifier|private
+specifier|final
 name|ImageIcon
 name|icon
 init|=
@@ -93,7 +94,7 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|method|Priority ()
-specifier|public
+specifier|private
 name|Priority
 parameter_list|()
 block|{
@@ -119,7 +120,12 @@ name|SpecialFieldValue
 argument_list|(
 name|this
 argument_list|,
-literal|null
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"null"
+argument_list|)
 argument_list|,
 literal|"clearPriority"
 argument_list|,
@@ -162,7 +168,12 @@ name|SpecialFieldValue
 argument_list|(
 name|this
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"prio1"
+argument_list|)
 argument_list|,
 literal|"setPriority1"
 argument_list|,
@@ -202,7 +213,12 @@ name|SpecialFieldValue
 argument_list|(
 name|this
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"prio2"
+argument_list|)
 argument_list|,
 literal|"setPriority2"
 argument_list|,
@@ -242,7 +258,12 @@ name|SpecialFieldValue
 argument_list|(
 name|this
 argument_list|,
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"prio3"
+argument_list|)
 argument_list|,
 literal|"setPriority3"
 argument_list|,
@@ -273,7 +294,7 @@ argument_list|)
 expr_stmt|;
 name|TEXT_DONE_PATTERN
 operator|=
-literal|"Set priority %0 for %1 entries"
+literal|"Set priority to '%0' for %1 entries"
 expr_stmt|;
 block|}
 DECL|method|getInstance ()
@@ -285,11 +306,15 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|Priority
+operator|.
 name|INSTANCE
 operator|==
 literal|null
 condition|)
 block|{
+name|Priority
+operator|.
 name|INSTANCE
 operator|=
 operator|new
@@ -298,9 +323,13 @@ argument_list|()
 expr_stmt|;
 block|}
 return|return
+name|Priority
+operator|.
 name|INSTANCE
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getFieldName ()
 specifier|public
 name|String
@@ -313,6 +342,8 @@ operator|.
 name|FIELDNAME_PRIORITY
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRepresentingIcon ()
 specifier|public
 name|ImageIcon
@@ -325,6 +356,8 @@ operator|.
 name|icon
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getToolTip ()
 specifier|public
 name|String
@@ -340,6 +373,8 @@ literal|"Priority"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getMenuString ()
 specifier|public
 name|String

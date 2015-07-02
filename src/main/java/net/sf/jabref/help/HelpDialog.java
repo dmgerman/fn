@@ -148,16 +148,19 @@ name|HyperlinkListener
 block|{
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|content
 specifier|private
+specifier|final
 name|HelpContent
 name|content
 decl_stmt|;
 DECL|field|back
 specifier|private
+specifier|final
 name|BackAction
 name|back
 init|=
@@ -167,6 +170,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|forward
 specifier|private
+specifier|final
 name|ForwardAction
 name|forward
 init|=
@@ -580,6 +584,8 @@ name|requestFocus
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|hyperlinkUpdate (HyperlinkEvent e)
 specifier|public
 name|void
@@ -653,6 +659,8 @@ expr_stmt|;
 comment|// , new ImageIcon(GUIGlobals.closeIconFile));
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -664,6 +672,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -703,6 +713,8 @@ argument_list|)
 expr_stmt|;
 comment|// putValue(SHORT_DESCRIPTION, "Show the previous page");
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -753,6 +765,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -803,6 +817,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

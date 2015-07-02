@@ -71,6 +71,8 @@ implements|implements
 name|BstFunction
 block|{
 DECL|field|vm
+specifier|private
+specifier|final
 name|VM
 name|vm
 decl_stmt|;
@@ -89,6 +91,8 @@ operator|=
 name|vm
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|execute (BstEntry context)
 specifier|public
 name|void

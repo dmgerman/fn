@@ -152,6 +152,7 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|message
+specifier|private
 name|String
 name|message
 init|=
@@ -159,6 +160,7 @@ literal|null
 decl_stmt|;
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -177,6 +179,8 @@ operator|=
 name|frame
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -217,7 +221,9 @@ name|panel
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 if|if
 condition|(
 name|panel
@@ -258,12 +264,18 @@ name|getSelectedEntries
 argument_list|()
 decl_stmt|;
 comment|// write the entries using sw, which is used later to form the email content
-name|LatexFieldFormatter
-name|ff
+name|BibtexEntryWriter
+name|bibtexEntryWriter
 init|=
+operator|new
+name|BibtexEntryWriter
+argument_list|(
 operator|new
 name|LatexFieldFormatter
 argument_list|()
+argument_list|,
+literal|true
+argument_list|)
 decl_stmt|;
 for|for
 control|(
@@ -275,15 +287,13 @@ control|)
 block|{
 try|try
 block|{
-name|entry
+name|bibtexEntryWriter
 operator|.
 name|write
 argument_list|(
+name|entry
+argument_list|,
 name|sw
-argument_list|,
-name|ff
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 block|}
@@ -398,6 +408,8 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+name|SendAsEMailAction
+operator|.
 name|logger
 operator|.
 name|fine
@@ -489,8 +501,6 @@ expr_stmt|;
 block|}
 name|URI
 name|uriMailTo
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{
@@ -590,6 +600,8 @@ name|length
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void

@@ -363,6 +363,7 @@ name|xmlDocuments
 decl_stmt|;
 DECL|field|fileName
 specifier|private
+specifier|final
 name|String
 name|fileName
 decl_stmt|;
@@ -375,16 +376,19 @@ name|webserviceStatus
 decl_stmt|;
 DECL|field|thisDialog
 specifier|private
+specifier|final
 name|Component
 name|thisDialog
 decl_stmt|;
 DECL|field|showBlankButton
 specifier|private
+specifier|final
 name|boolean
 name|showBlankButton
 decl_stmt|;
 DECL|field|cardLayou
 specifier|private
+specifier|final
 name|CardLayout
 name|cardLayou
 init|=
@@ -493,6 +497,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -516,6 +522,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -539,6 +547,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -562,6 +572,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -579,6 +591,8 @@ argument_list|)
 expr_stmt|;
 name|setDefaultCloseOperation
 argument_list|(
+name|WindowConstants
+operator|.
 name|DO_NOTHING_ON_CLOSE
 argument_list|)
 expr_stmt|;
@@ -588,6 +602,8 @@ operator|new
 name|WindowAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|windowClosing
@@ -611,6 +627,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1830,7 +1848,7 @@ name|contentPane
 return|;
 block|}
 DECL|class|MyTableModel
-specifier|public
+specifier|private
 specifier|static
 class|class
 name|MyTableModel

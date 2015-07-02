@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2014 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -108,11 +108,11 @@ end_import
 
 begin_import
 import|import
-name|javax
+name|java
 operator|.
-name|swing
+name|util
 operator|.
-name|ActionMap
+name|Map
 import|;
 end_import
 
@@ -122,47 +122,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|InputMap
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JComponent
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JPanel
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JScrollPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|KeyStroke
+name|*
 import|;
 end_import
 
@@ -176,7 +136,7 @@ name|jabref
 operator|.
 name|autocompleter
 operator|.
-name|AbstractAutoCompleter
+name|AutoCompleter
 import|;
 end_import
 
@@ -242,12 +202,12 @@ end_comment
 
 begin_class
 DECL|class|EntryEditorTab
-specifier|public
 class|class
 name|EntryEditorTab
 block|{
 DECL|field|panel
 specifier|private
+specifier|final
 name|JPanel
 name|panel
 init|=
@@ -257,6 +217,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|scrollPane
 specifier|private
+specifier|final
 name|JScrollPane
 name|scrollPane
 init|=
@@ -265,27 +226,31 @@ name|JScrollPane
 argument_list|(
 name|panel
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|VERTICAL_SCROLLBAR_AS_NEEDED
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|HORIZONTAL_SCROLLBAR_NEVER
 argument_list|)
 decl_stmt|;
 DECL|field|fields
 specifier|private
+specifier|final
 name|String
 index|[]
 name|fields
 decl_stmt|;
 DECL|field|parent
+specifier|private
+specifier|final
 name|EntryEditor
 name|parent
 decl_stmt|;
 DECL|field|editors
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -318,12 +283,7 @@ name|fileListEditor
 init|=
 literal|null
 decl_stmt|;
-DECL|method|EntryEditorTab ()
-specifier|protected
-name|EntryEditorTab
-parameter_list|()
-block|{      }
-DECL|method|EntryEditorTab (JabRefFrame frame, BasePanel panel, List<String> fields, EntryEditor parent, boolean addKeyField, String name)
+DECL|method|EntryEditorTab (JabRefFrame frame, BasePanel panel, List<String> fields, EntryEditor parent, boolean addKeyField, boolean compressed, String name)
 specifier|public
 name|EntryEditorTab
 parameter_list|(
@@ -345,6 +305,9 @@ parameter_list|,
 name|boolean
 name|addKeyField
 parameter_list|,
+name|boolean
+name|compressed
+parameter_list|,
 name|String
 name|name
 parameter_list|)
@@ -355,6 +318,7 @@ name|fields
 operator|!=
 literal|null
 condition|)
+block|{
 name|this
 operator|.
 name|fields
@@ -373,7 +337,9 @@ argument_list|()
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|this
 operator|.
 name|fields
@@ -383,6 +349,7 @@ name|String
 index|[]
 block|{}
 expr_stmt|;
+block|}
 name|this
 operator|.
 name|parent
@@ -397,10 +364,12 @@ name|panel
 argument_list|,
 name|addKeyField
 argument_list|,
+name|compressed
+argument_list|,
 name|name
 argument_list|)
 expr_stmt|;
-comment|/* 		 * The following line makes sure focus cycles inside tab instead of 		 * being lost to other parts of the frame: 		 */
+comment|/*          * The following line makes sure focus cycles inside tab instead of          * being lost to other parts of the frame:          */
 name|scrollPane
 operator|.
 name|setFocusCycleRoot
@@ -409,7 +378,8 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|setupPanel (JabRefFrame frame, BasePanel bPanel, boolean addKeyField, String title)
+DECL|method|setupPanel (JabRefFrame frame, BasePanel bPanel, boolean addKeyField, boolean compressed, String title)
+specifier|private
 name|void
 name|setupPanel
 parameter_list|(
@@ -421,6 +391,9 @@ name|bPanel
 parameter_list|,
 name|boolean
 name|addKeyField
+parameter_list|,
+name|boolean
+name|compressed
 parameter_list|,
 name|String
 name|title
@@ -732,25 +705,67 @@ argument_list|(
 name|title
 argument_list|)
 expr_stmt|;
+name|int
+name|fieldsPerRow
+init|=
+name|compressed
+condition|?
+literal|2
+else|:
+literal|1
+decl_stmt|;
 comment|//String rowSpec = "left:pref, 4dlu, fill:pref:grow, 4dlu, fill:pref";
 name|String
 name|colSpec
 init|=
+name|compressed
+condition|?
+literal|"fill:pref, 1dlu, fill:10dlu:grow, 1dlu, fill:pref, "
+operator|+
+literal|"8dlu, fill:pref, 1dlu, fill:10dlu:grow, 1dlu, fill:pref"
+else|:
 literal|"fill:pref, 1dlu, fill:pref:grow, 1dlu, fill:pref"
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
+decl_stmt|;
+name|int
+name|rows
+init|=
+operator|(
+name|int
+operator|)
+name|Math
+operator|.
+name|ceil
+argument_list|(
+operator|(
+name|double
+operator|)
+name|fields
+operator|.
+name|length
+operator|/
+name|fieldsPerRow
+argument_list|)
 decl_stmt|;
 for|for
 control|(
-name|String
-name|field
-range|:
-name|fields
+name|int
+name|i
+init|=
+literal|0
+init|;
+name|i
+operator|<
+name|rows
+condition|;
+name|i
+operator|++
 control|)
 block|{
 name|sb
@@ -765,6 +780,7 @@ if|if
 condition|(
 name|addKeyField
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -772,7 +788,18 @@ argument_list|(
 literal|"4dlu, fill:pref"
 argument_list|)
 expr_stmt|;
-else|else
+block|}
+elseif|else
+if|if
+condition|(
+name|sb
+operator|.
+name|length
+argument_list|()
+operator|>=
+literal|2
+condition|)
+block|{
 name|sb
 operator|.
 name|delete
@@ -790,6 +817,7 @@ name|length
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|rowSpec
 init|=
@@ -974,12 +1002,15 @@ name|ta
 argument_list|)
 decl_stmt|;
 comment|// Add autocompleter listener, if required for this field:
-name|AbstractAutoCompleter
+name|AutoCompleter
 name|autoComp
 init|=
 name|bPanel
 operator|.
-name|getAutoCompleter
+name|getAutoCompleters
+argument_list|()
+operator|.
+name|get
 argument_list|(
 name|fields
 index|[
@@ -1044,11 +1075,19 @@ name|i
 operator|==
 literal|0
 condition|)
+block|{
 name|activeField
 operator|=
 name|ta
 expr_stmt|;
+block|}
 comment|//System.out.println(fields[i]+": "+BibtexFields.getFieldWeight(fields[i]));
+if|if
+condition|(
+operator|!
+name|compressed
+condition|)
+block|{
 name|ta
 operator|.
 name|getPane
@@ -1072,6 +1111,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|builder
 operator|.
 name|append
@@ -1088,6 +1128,7 @@ name|ex
 operator|==
 literal|null
 condition|)
+block|{
 name|builder
 operator|.
 name|append
@@ -1100,6 +1141,7 @@ argument_list|,
 literal|3
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 name|builder
@@ -1147,11 +1189,27 @@ name|pan
 argument_list|)
 expr_stmt|;
 block|}
+if|if
+condition|(
+operator|(
+operator|(
+name|i
+operator|+
+literal|1
+operator|)
+operator|%
+name|fieldsPerRow
+operator|)
+operator|==
+literal|0
+condition|)
+block|{
 name|builder
 operator|.
 name|nextLine
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|// Add the edit field for Bibtex-key.
 if|if
@@ -1202,7 +1260,7 @@ argument_list|,
 name|tf
 argument_list|)
 expr_stmt|;
-comment|/* 			 * If the key field is the only field, we should have only one 			 * editor, and this one should be set as active initially: 			 */
+comment|/*              * If the key field is the only field, we should have only one              * editor, and this one should be set as active initially:              */
 if|if
 condition|(
 name|editors
@@ -1212,10 +1270,12 @@ argument_list|()
 operator|==
 literal|1
 condition|)
+block|{
 name|activeField
 operator|=
 name|tf
 expr_stmt|;
+block|}
 name|builder
 operator|.
 name|nextLine
@@ -1243,11 +1303,12 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|entry
+specifier|private
 name|BibtexEntry
 name|entry
 decl_stmt|;
 DECL|method|getEntry ()
-specifier|public
+specifier|private
 name|BibtexEntry
 name|getEntry
 parameter_list|()
@@ -1257,6 +1318,7 @@ name|entry
 return|;
 block|}
 DECL|method|isFieldModified (FieldEditor f)
+specifier|private
 name|boolean
 name|isFieldModified
 parameter_list|(
@@ -1279,10 +1341,8 @@ if|if
 condition|(
 name|text
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 return|return
@@ -1317,9 +1377,11 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 return|return
+operator|(
 name|entryValue
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|entryValue
@@ -1370,6 +1432,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|markBaseChanged ()
+specifier|private
 name|void
 name|markBaseChanged
 parameter_list|()
@@ -1382,7 +1445,7 @@ name|markBaseChanged
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * Only sets the activeField variable but does not focus it. 	 *  	 * Call activate afterwards. 	 *  	 * @param c 	 */
+comment|/**      * Only sets the activeField variable but does not focus it.      *       * Call activate afterwards.      *       * @param c      */
 DECL|method|setActive (FieldEditor c)
 specifier|public
 name|void
@@ -1442,7 +1505,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|/** 			 * Corrected to fix [ 1594169 ] Entry editor: navigation between panels 			 */
+comment|/**              * Corrected to fix [ 1594169 ] Entry editor: navigation between panels              */
 operator|new
 name|FocusRequester
 argument_list|(
@@ -1454,7 +1517,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Reset all fields from the data in the BibtexEntry. 	 *  	 */
+comment|/**      * Reset all fields from the data in the BibtexEntry.      *       */
 DECL|method|updateAll ()
 specifier|public
 name|void
@@ -1469,7 +1532,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|field|updating
-specifier|protected
+specifier|private
 name|boolean
 name|updating
 init|=
@@ -1543,6 +1606,7 @@ name|getText
 argument_list|()
 argument_list|)
 condition|)
+block|{
 name|editor
 operator|.
 name|setText
@@ -1550,6 +1614,7 @@ argument_list|(
 name|toSet
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|this
 operator|.
@@ -1588,9 +1653,11 @@ argument_list|(
 name|field
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|FieldEditor
 name|ed
 init|=
@@ -1620,24 +1687,29 @@ parameter_list|()
 block|{
 for|for
 control|(
+name|Map
+operator|.
+name|Entry
+argument_list|<
 name|String
-name|field
+argument_list|,
+name|FieldEditor
+argument_list|>
+name|stringFieldEditorEntry
 range|:
 name|editors
 operator|.
-name|keySet
+name|entrySet
 argument_list|()
 control|)
 block|{
 name|FieldEditor
 name|ed
 init|=
-name|editors
+name|stringFieldEditorEntry
 operator|.
-name|get
-argument_list|(
-name|field
-argument_list|)
+name|getValue
+argument_list|()
 decl_stmt|;
 name|ed
 operator|.
@@ -1663,17 +1735,21 @@ operator|.
 name|hasFocus
 argument_list|()
 condition|)
+block|{
 name|ed
 operator|.
 name|setActiveBackgroundColor
 argument_list|()
 expr_stmt|;
+block|}
 else|else
+block|{
 name|ed
 operator|.
 name|setValidBackgroundColor
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|setEnabled (boolean enabled)
@@ -1715,9 +1791,19 @@ return|return
 name|scrollPane
 return|;
 block|}
-comment|/** 	 * Set up key bindings and focus listener for the FieldEditor. 	 *  	 * @param component 	 */
-DECL|method|setupJTextComponent (final JComponent component, final AutoCompleteListener acl)
+DECL|method|getParent ()
 specifier|public
+name|EntryEditor
+name|getParent
+parameter_list|()
+block|{
+return|return
+name|parent
+return|;
+block|}
+comment|/**      * Set up key bindings and focus listener for the FieldEditor.      *       * @param component      */
+DECL|method|setupJTextComponent (final JComponent component, final AutoCompleteListener acl)
+specifier|private
 name|void
 name|setupJTextComponent
 parameter_list|(
@@ -1768,6 +1854,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|component
 operator|.
 name|addFocusListener
@@ -1775,6 +1862,7 @@ argument_list|(
 name|fieldListener
 argument_list|)
 expr_stmt|;
+block|}
 name|InputMap
 name|im
 init|=
@@ -2191,6 +2279,8 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|fieldListener
+specifier|private
+specifier|final
 name|FocusListener
 name|fieldListener
 init|=

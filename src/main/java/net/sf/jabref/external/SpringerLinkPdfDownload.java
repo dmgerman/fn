@@ -81,6 +81,8 @@ specifier|public
 name|SpringerLinkPdfDownload
 parameter_list|()
 block|{      }
+annotation|@
+name|Override
 DECL|method|supportsSite (URL url)
 specifier|public
 name|boolean
@@ -105,6 +107,8 @@ literal|"www.springerlink.com"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|findFullTextURL (URL url)
 specifier|public
 name|URL
@@ -143,6 +147,8 @@ operator|=
 operator|new
 name|URL
 argument_list|(
+name|SpringerLinkPdfDownload
+operator|.
 name|CONTENT_BASE_URL
 operator|+
 name|url
@@ -240,6 +246,7 @@ literal|1
 operator|)
 operator|&&
 operator|(
+operator|(
 name|index
 operator|+
 name|marker
@@ -248,6 +255,7 @@ name|length
 argument_list|()
 operator|+
 literal|1
+operator|)
 operator|<
 name|leading
 operator|.
@@ -283,6 +291,8 @@ init|=
 operator|new
 name|URL
 argument_list|(
+name|SpringerLinkPdfDownload
+operator|.
 name|BASE_URL
 operator|+
 name|leading
@@ -334,9 +344,11 @@ literal|null
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 block|}
 end_class

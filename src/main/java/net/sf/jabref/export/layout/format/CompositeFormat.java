@@ -49,11 +49,12 @@ implements|implements
 name|LayoutFormatter
 block|{
 DECL|field|formatters
+specifier|private
 name|LayoutFormatter
 index|[]
 name|formatters
 decl_stmt|;
-comment|/** 	 * If called with this constructor, this formatter does nothing. 	 */
+comment|/**      * If called with this constructor, this formatter does nothing.      */
 DECL|method|CompositeFormat ()
 specifier|public
 name|CompositeFormat
@@ -100,6 +101,8 @@ operator|=
 name|formatters
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String

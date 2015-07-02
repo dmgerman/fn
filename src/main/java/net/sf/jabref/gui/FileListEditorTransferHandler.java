@@ -226,34 +226,37 @@ end_import
 
 begin_class
 DECL|class|FileListEditorTransferHandler
-specifier|public
 class|class
 name|FileListEditorTransferHandler
 extends|extends
 name|TransferHandler
 block|{
 DECL|field|urlFlavor
-specifier|protected
+specifier|private
 name|DataFlavor
 name|urlFlavor
 decl_stmt|;
 DECL|field|stringFlavor
-specifier|protected
+specifier|private
+specifier|final
 name|DataFlavor
 name|stringFlavor
 decl_stmt|;
 DECL|field|frame
-specifier|protected
+specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|entryContainer
-specifier|protected
+specifier|private
+specifier|final
 name|EntryContainer
 name|entryContainer
 decl_stmt|;
 DECL|field|textTransferHandler
 specifier|private
+specifier|final
 name|TransferHandler
 name|textTransferHandler
 decl_stmt|;
@@ -264,7 +267,7 @@ name|dfh
 init|=
 literal|null
 decl_stmt|;
-comment|/** 	 *  	 * @param frame 	 * @param entryContainer 	 * @param textTransferHandler is an instance of javax.swing.plaf.basic.BasicTextUI.TextTransferHandler. That class is not visible. Therefore, we have to "cheat" 	 */
+comment|/**      *       * @param frame      * @param entryContainer      * @param textTransferHandler is an instance of javax.swing.plaf.basic.BasicTextUI.TextTransferHandler. That class is not visible. Therefore, we have to "cheat"      */
 DECL|method|FileListEditorTransferHandler (JabRefFrame frame, EntryContainer entryContainer, TransferHandler textTransferHandler)
 specifier|public
 name|FileListEditorTransferHandler
@@ -397,6 +400,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -554,6 +559,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -579,8 +586,6 @@ argument_list|()
 decl_stmt|;
 name|String
 name|extension
-init|=
-literal|""
 decl_stmt|;
 name|ExternalFileType
 name|fileType
@@ -749,8 +754,8 @@ literal|"can't transfer input: "
 argument_list|)
 expr_stmt|;
 name|DataFlavor
-name|inflavs
 index|[]
+name|inflavs
 init|=
 name|t
 operator|.
@@ -834,9 +839,11 @@ operator|.
 name|javaFileListFlavor
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 comment|// nope, never heard of this type
 return|return

@@ -40,7 +40,6 @@ end_import
 
 begin_class
 DECL|class|JPanelXBoxPreferredHeight
-specifier|public
 class|class
 name|JPanelXBoxPreferredHeight
 extends|extends
@@ -67,6 +66,8 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getMaximumSize ()
 specifier|public
 name|Dimension

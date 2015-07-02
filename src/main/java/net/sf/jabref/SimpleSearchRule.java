@@ -51,13 +51,16 @@ implements|implements
 name|SearchRule
 block|{
 DECL|field|m_caseSensitiveSearch
+specifier|private
 specifier|final
 name|boolean
 name|m_caseSensitiveSearch
 decl_stmt|;
 comment|//static RemoveBrackets removeBrackets = new RemoveBrackets();
 DECL|field|removeBrackets
+specifier|private
 specifier|static
+specifier|final
 name|RemoveLatexCommands
 name|removeBrackets
 init|=
@@ -78,6 +81,8 @@ operator|=
 name|caseSensitive
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|validateSearchStrings (Map<String, String> searchStrings)
 specifier|public
 name|boolean
@@ -96,6 +101,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|applyRule (Map<String, String> searchStrings, BibtexEntry bibtexEntry)
 specifier|public
 name|int
@@ -132,6 +139,7 @@ condition|(
 operator|!
 name|m_caseSensitiveSearch
 condition|)
+block|{
 name|searchString
 operator|=
 name|searchString
@@ -139,6 +147,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 expr_stmt|;
+block|}
 name|int
 name|score
 init|=
@@ -181,10 +190,13 @@ name|fieldContentAsObject
 operator|!=
 literal|null
 condition|)
+block|{
 try|try
 block|{
 name|fieldContent
 operator|=
+name|SimpleSearchRule
+operator|.
 name|removeBrackets
 operator|.
 name|format
@@ -200,6 +212,7 @@ condition|(
 operator|!
 name|m_caseSensitiveSearch
 condition|)
+block|{
 name|fieldContent
 operator|=
 name|fieldContent
@@ -207,6 +220,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 expr_stmt|;
+block|}
 name|counter
 operator|=
 name|fieldContent
@@ -260,6 +274,7 @@ operator|+
 name|t
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|counter
 operator|=

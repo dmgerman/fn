@@ -82,11 +82,11 @@ end_comment
 
 begin_class
 DECL|class|DocumentWrapper
-specifier|public
 class|class
 name|DocumentWrapper
 block|{
 DECL|field|xmlDocument
+specifier|private
 name|Document
 name|xmlDocument
 decl_stmt|;
@@ -163,12 +163,13 @@ return|;
 block|}
 block|}
 DECL|method|hasTitle ()
-specifier|public
+specifier|private
 name|boolean
 name|hasTitle
 parameter_list|()
 block|{
 return|return
+operator|(
 operator|(
 name|xmlDocument
 operator|.
@@ -176,7 +177,9 @@ name|getTitle
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|xmlDocument
 operator|.
 name|getTitle
@@ -186,6 +189,7 @@ name|getValue
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|xmlDocument
@@ -238,12 +242,13 @@ return|;
 block|}
 block|}
 DECL|method|hasAbstract ()
-specifier|public
+specifier|private
 name|boolean
 name|hasAbstract
 parameter_list|()
 block|{
 return|return
+operator|(
 operator|(
 name|xmlDocument
 operator|.
@@ -251,7 +256,9 @@ name|getAbstract
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 operator|(
 operator|(
 name|Abstract
@@ -266,6 +273,7 @@ name|getValue
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 operator|(
@@ -370,11 +378,11 @@ name|value
 operator|=
 name|value
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|seperator
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
 block|}
 else|else
@@ -408,12 +416,13 @@ return|;
 block|}
 block|}
 DECL|method|hasAuthors ()
-specifier|public
+specifier|private
 name|boolean
 name|hasAuthors
 parameter_list|()
 block|{
 return|return
+operator|(
 operator|(
 name|xmlDocument
 operator|.
@@ -421,7 +430,9 @@ name|getAuthors
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|xmlDocument
 operator|.
 name|getAuthors
@@ -431,6 +442,7 @@ name|getCollection
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|xmlDocument
@@ -446,7 +458,7 @@ argument_list|()
 operator|)
 return|;
 block|}
-comment|/* public String getKeyWords(){         if(this.hasKeyWords()){             List<XmlKeyword> keywords = xmlDocument.getKeywords().getKeywords();             String value = "";             int i = 1;             for(XmlKeyword keyword : keywords){                 if(i< keywords.size()){                     value = value + keyword.getValue();                     value = value + ", ";                 }                 else{                     value = value + keyword.getValue();                 }                 i++;             }             return value;         }         else{             return "";         }     }      public boolean hasKeyWords(){         return (xmlDocument.getKeywords() != null&& xmlDocument.getKeywords().getKeywords() != null&& !xmlDocument.getKeywords().getKeywords().isEmpty());     } */
+comment|/* public String getKeyWords(){         if(this.hasKeyWords()){             List<XmlKeyword> keywords = xmlDocument.getKeywords().getKeywords();             String value = "";             int i = 1;             for(XmlKeyword keyword : keywords){                 if(i< keywords.size()){                     value = value + keyword.getValue();                     value = value + ", ";                 }                 else{                     value = value + keyword.getValue();                 }                 i++;             }             return value;         }         else{             return "";         }     }      public boolean hasKeyWords(){         return (xmlDocument.getKeywords() != null&& xmlDocument.getKeywords().getKeywords() != null&& !xmlDocument.getKeywords().getKeywords().isEmpty());     }     */
 DECL|method|getDoi ()
 specifier|public
 name|String
@@ -481,12 +493,13 @@ return|;
 block|}
 block|}
 DECL|method|hasDoi ()
-specifier|public
+specifier|private
 name|boolean
 name|hasDoi
 parameter_list|()
 block|{
 return|return
+operator|(
 operator|(
 name|xmlDocument
 operator|.
@@ -494,7 +507,9 @@ name|getDoi
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|this
 operator|.
 name|getSimpleTypeValue
@@ -506,6 +521,7 @@ argument_list|()
 argument_list|)
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|this
@@ -523,7 +539,7 @@ argument_list|()
 operator|)
 return|;
 block|}
-comment|/*     public String getPages(){         if(this.hasPages()){             return xmlDocument.getPages().getValue();         }         else{             return "";         }     }      public boolean hasPages(){         return (xmlDocument.getPages() != null&& xmlDocument.getPages().getValue() != null&& !xmlDocument.getPages().getValue().isEmpty());     }      public String getVolume(){         if(this.hasVolume()){             return xmlDocument.getVolume().getValue();         }         else{             return "";         }     }      public boolean hasVolume(){         return (xmlDocument.getVolume() != null&& xmlDocument.getVolume().getValue() != null&& !xmlDocument.getVolume().getValue().isEmpty());     }      public String getNumber(){         if(this.hasNumber()){             return xmlDocument.getNumber().getValue();         }         else{             return "";         }     }      public boolean hasNumber(){         return (xmlDocument.getNumber() != null&& xmlDocument.getNumber().getValue() != null&& !xmlDocument.getNumber().getValue().isEmpty());     } */
+comment|/*         public String getPages(){             if(this.hasPages()){                 return xmlDocument.getPages().getValue();             }             else{                 return "";             }         }          public boolean hasPages(){             return (xmlDocument.getPages() != null&& xmlDocument.getPages().getValue() != null&& !xmlDocument.getPages().getValue().isEmpty());         }          public String getVolume(){             if(this.hasVolume()){                 return xmlDocument.getVolume().getValue();             }             else{                 return "";             }         }          public boolean hasVolume(){             return (xmlDocument.getVolume() != null&& xmlDocument.getVolume().getValue() != null&& !xmlDocument.getVolume().getValue().isEmpty());         }          public String getNumber(){             if(this.hasNumber()){                 return xmlDocument.getNumber().getValue();             }             else{                 return "";             }         }          public boolean hasNumber(){             return (xmlDocument.getNumber() != null&& xmlDocument.getNumber().getValue() != null&& !xmlDocument.getNumber().getValue().isEmpty());         }     */
 DECL|method|getYear ()
 specifier|public
 name|String
@@ -558,12 +574,13 @@ return|;
 block|}
 block|}
 DECL|method|hasYear ()
-specifier|public
+specifier|private
 name|boolean
 name|hasYear
 parameter_list|()
 block|{
 return|return
+operator|(
 operator|(
 name|this
 operator|.
@@ -576,6 +593,7 @@ argument_list|()
 argument_list|)
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|this
@@ -609,7 +627,7 @@ argument_list|)
 operator|)
 return|;
 block|}
-comment|/*      public String getMonth(){         if(this.hasMonth()){             return xmlDocument.getPublishdate().getMonth();         }         else{             return "";         }     }      public boolean hasMonth(){         return (xmlDocument.getPublishdate() != null&& xmlDocument.getPublishdate().getMonth() != null&& !xmlDocument.getPublishdate().getMonth().isEmpty());     }      public String getDay(){         if(this.hasDay()){             return xmlDocument.getPublishdate().getDay();         }         else{             return "";         }     }      public boolean hasDay(){         return (xmlDocument.getPublishdate() != null&& xmlDocument.getPublishdate().getDay() != null&& !xmlDocument.getPublishdate().getDay().isEmpty());     }      	/*     public String getVenue() {         if(this.hasVenue()){             return xmlDocument.getVenue().getValue();         }         else{             return "";         }     }      public boolean hasVenue(){         return (xmlDocument.getVenue() != null&& xmlDocument.getVenue().getValue() != null&& !xmlDocument.getVenue().getValue().isEmpty());     }*/
+comment|/*          public String getMonth(){             if(this.hasMonth()){                 return xmlDocument.getPublishdate().getMonth();             }             else{                 return "";             }         }          public boolean hasMonth(){             return (xmlDocument.getPublishdate() != null&& xmlDocument.getPublishdate().getMonth() != null&& !xmlDocument.getPublishdate().getMonth().isEmpty());         }          public String getDay(){             if(this.hasDay()){                 return xmlDocument.getPublishdate().getDay();             }             else{                 return "";             }         }          public boolean hasDay(){             return (xmlDocument.getPublishdate() != null&& xmlDocument.getPublishdate().getDay() != null&& !xmlDocument.getPublishdate().getDay().isEmpty());         }              	/*         public String getVenue() {             if(this.hasVenue()){                 return xmlDocument.getVenue().getValue();             }             else{                 return "";             }         }          public boolean hasVenue(){             return (xmlDocument.getVenue() != null&& xmlDocument.getVenue().getValue() != null&& !xmlDocument.getVenue().getValue().isEmpty());         }*/
 DECL|method|getNameComplete (Author author)
 specifier|private
 name|String
@@ -625,9 +643,11 @@ name|author
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 name|String
 name|result
 init|=
@@ -645,6 +665,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|=
 name|result
@@ -660,8 +681,9 @@ operator|.
 name|trim
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|getSimpleTypeValue
@@ -674,6 +696,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|=
 name|result
@@ -689,8 +712,9 @@ operator|.
 name|trim
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|getSimpleTypeValue
@@ -703,6 +727,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|=
 name|result
@@ -718,8 +743,9 @@ operator|.
 name|trim
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|getSimpleTypeValue
@@ -732,6 +758,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|=
 name|result
@@ -747,8 +774,9 @@ operator|.
 name|trim
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|getSimpleTypeValue
@@ -761,6 +789,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|=
 name|result
@@ -776,8 +805,9 @@ operator|.
 name|trim
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 expr_stmt|;
+block|}
 return|return
 name|result
 operator|.
@@ -796,10 +826,6 @@ parameter_list|)
 block|{
 if|if
 condition|(
-name|bean
-operator|==
-literal|null
-operator|||
 operator|!
 operator|(
 name|bean
@@ -807,9 +833,11 @@ operator|instanceof
 name|SimpleTypeElementBean
 operator|)
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|SimpleTypeElementBean
 name|simpleTypeElementBean
 init|=
@@ -820,12 +848,14 @@ name|bean
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|simpleTypeElementBean
 operator|.
 name|getValue
 argument_list|()
 operator|==
 literal|null
+operator|)
 operator|||
 name|simpleTypeElementBean
 operator|.
@@ -837,6 +867,7 @@ argument_list|(
 literal|"null"
 argument_list|)
 operator|||
+operator|(
 name|simpleTypeElementBean
 operator|.
 name|getValue
@@ -846,10 +877,13 @@ name|length
 argument_list|()
 operator|<=
 literal|0
+operator|)
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 return|return
 name|simpleTypeElementBean
 operator|.

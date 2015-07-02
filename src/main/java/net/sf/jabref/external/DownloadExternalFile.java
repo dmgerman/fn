@@ -18,66 +18,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|io
-operator|.
-name|File
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|IOException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|MalformedURLException
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URL
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JOptionPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|SwingUtilities
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -130,6 +70,56 @@ name|URLDownload
 import|;
 end_import
 
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|File
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|io
+operator|.
+name|IOException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|MalformedURLException
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|net
+operator|.
+name|URL
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class handles the download of an external file. Typically called when the user clicks  * the "Download" button in a FileListEditor shown in an EntryEditor.  *<p/>  * The FileListEditor constructs the DownloadExternalFile instance, then calls the download()  * method passing a reference to itself as a callback. The download() method asks for the URL,  * then starts the download. When the download is completed, it calls the downloadCompleted()  * method on the callback FileListEditor, which then needs to take care of linking to the file.  * The local filename is passed as an argument to the downloadCompleted() method.  *<p/>  * If the download is cancelled, or failed, the user is informed. The callback is never called.  */
 end_comment
@@ -142,16 +132,19 @@ name|DownloadExternalFile
 block|{
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|metaData
 specifier|private
+specifier|final
 name|MetaData
 name|metaData
 decl_stmt|;
 DECL|field|bibtexKey
 specifier|private
+specifier|final
 name|String
 name|bibtexKey
 decl_stmt|;
@@ -244,10 +237,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|res
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|res
 operator|.
 name|trim
@@ -257,12 +253,13 @@ name|length
 argument_list|()
 operator|==
 literal|0
+operator|)
 condition|)
+block|{
 return|return;
+block|}
 name|URL
 name|url
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{
@@ -340,10 +337,8 @@ operator|.
 name|toString
 argument_list|()
 decl_stmt|;
-name|URLDownload
-name|udl
-init|=
-literal|null
+name|String
+name|mimeType
 decl_stmt|;
 comment|// First of all, start the download itself in the background to a temporary file:
 specifier|final
@@ -364,26 +359,28 @@ operator|.
 name|deleteOnExit
 argument_list|()
 expr_stmt|;
-comment|//long time = System.currentTimeMillis();
-try|try
-block|{
-name|udl
-operator|=
-operator|new
 name|URLDownload
+name|udl
+init|=
+name|URLDownload
+operator|.
+name|buildMonitoredDownload
 argument_list|(
 name|frame
 argument_list|,
 name|url
-argument_list|,
-name|tmp
 argument_list|)
-expr_stmt|;
+decl_stmt|;
+comment|//long time = System.currentTimeMillis();
+try|try
+block|{
 comment|// TODO: what if this takes long time?
 comment|// TODO: stop editor dialog if this results in an error:
+name|mimeType
+operator|=
 name|udl
 operator|.
-name|openConnectionOnly
+name|determineMimeType
 argument_list|()
 expr_stmt|;
 comment|// Read MIME type
@@ -454,11 +451,18 @@ init|=
 name|udl
 decl_stmt|;
 comment|//System.out.println("Time: "+(System.currentTimeMillis()-time));
-operator|(
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
+argument_list|(
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -468,8 +472,10 @@ try|try
 block|{
 name|udlF
 operator|.
-name|download
-argument_list|()
+name|downloadToFile
+argument_list|(
+name|tmp
+argument_list|)
 expr_stmt|;
 block|}
 catch|catch
@@ -497,6 +503,7 @@ name|isVisible
 argument_list|()
 operator|)
 condition|)
+block|{
 name|editor
 operator|.
 name|setVisible
@@ -506,6 +513,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -565,6 +573,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -579,10 +589,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-operator|)
-operator|.
-name|start
-argument_list|()
+argument_list|)
 expr_stmt|;
 name|ExternalFileType
 name|suggestedType
@@ -591,10 +598,7 @@ literal|null
 decl_stmt|;
 if|if
 condition|(
-name|udl
-operator|.
-name|getMimeType
-argument_list|()
+name|mimeType
 operator|!=
 literal|null
 condition|)
@@ -607,10 +611,7 @@ name|println
 argument_list|(
 literal|"mimetype:"
 operator|+
-name|udl
-operator|.
-name|getMimeType
-argument_list|()
+name|mimeType
 argument_list|)
 expr_stmt|;
 name|suggestedType
@@ -621,10 +622,7 @@ name|prefs
 operator|.
 name|getExternalFileTypeByMimeType
 argument_list|(
-name|udl
-operator|.
-name|getMimeType
-argument_list|()
+name|mimeType
 argument_list|)
 expr_stmt|;
 comment|/*if (suggestedType != null)                 System.out.println("Found type '"+suggestedType.getName()+"' by MIME type '"+udl.getMimeType()+"'");*/
@@ -705,11 +703,14 @@ name|length
 operator|==
 literal|0
 condition|)
+block|{
 name|directory
 operator|=
 literal|null
 expr_stmt|;
+block|}
 else|else
+block|{
 name|directory
 operator|=
 name|fDirectory
@@ -717,6 +718,7 @@ index|[
 literal|0
 index|]
 expr_stmt|;
+block|}
 specifier|final
 name|String
 name|suggestDir
@@ -812,6 +814,8 @@ operator|new
 name|ConfirmCloseFileListEntryEditor
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|confirmClose
@@ -932,9 +936,11 @@ name|OK_OPTION
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -944,7 +950,7 @@ condition|(
 operator|!
 name|dontShowDialog
 condition|)
-comment|// If an error occured with the URL, this flag may have been set
+block|{
 name|editor
 operator|.
 name|setVisible
@@ -954,8 +960,11 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 return|return;
+block|}
 comment|// Editor closed. Go on:
 if|if
 condition|(
@@ -1016,6 +1025,7 @@ literal|"file.separator"
 argument_list|)
 argument_list|)
 condition|)
+block|{
 name|dirPrefix
 operator|=
 name|directory
@@ -1027,23 +1037,28 @@ argument_list|(
 literal|"file.separator"
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|dirPrefix
 operator|=
 name|directory
 expr_stmt|;
 block|}
+block|}
 else|else
+block|{
 name|dirPrefix
 operator|=
 literal|null
 expr_stmt|;
+block|}
 try|try
 block|{
 name|boolean
 name|success
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|copyFile
 argument_list|(
@@ -1159,6 +1174,7 @@ if|if
 condition|(
 name|downloadFinished
 condition|)
+block|{
 name|tmp
 operator|.
 name|delete
@@ -1166,7 +1182,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Construct a File object pointing to the file linked, whether the link is      * absolute or relative to the main directory.      * @param directory The main directory.      * @param link The absolute or relative link.      * @return The expanded File.      */
+block|}
+comment|/**      * Construct a File object pointing to the file linked, whether the link is      * absolute or relative to the main directory.      *      * @param directory The main directory.      * @param link      The absolute or relative link.      * @return The expanded File.      */
 DECL|method|expandFilename (String directory, String link)
 specifier|private
 name|File
@@ -1227,7 +1244,7 @@ return|;
 block|}
 comment|/**      * This is called by the download thread when download is completed.      */
 DECL|method|downloadFinished ()
-specifier|public
+specifier|private
 name|void
 name|downloadFinished
 parameter_list|()
@@ -1281,7 +1298,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getSuggestedFileName (String suffix)
-specifier|public
+specifier|private
 name|String
 name|getSuggestedFileName
 parameter_list|(
@@ -1303,12 +1320,14 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|plannedName
 operator|+=
 literal|"."
 operator|+
 name|suffix
 expr_stmt|;
+block|}
 comment|/*         * [ 1548875 ] download pdf produces unsupported filename         *         * http://sourceforge.net/tracker/index.php?func=detail&aid=1548875&group_id=92314&atid=600306         *         */
 if|if
 condition|(
@@ -1355,7 +1374,7 @@ return|;
 block|}
 comment|/**      * Look for the last '.' in the link, and returnthe following characters.      * This gives the extension for most reasonably named links.      *      * @param link The link      * @return The suffix, excluding the dot (e.g. "pdf")      */
 DECL|method|getSuffix (final String link)
-specifier|public
+specifier|private
 name|String
 name|getSuffix
 parameter_list|(
@@ -1401,12 +1420,14 @@ operator|.
 name|length
 argument_list|()
 operator|<
+operator|(
 name|link
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 operator|)
 condition|)
 block|{
@@ -1470,6 +1491,7 @@ operator|||
 operator|(
 name|index
 operator|==
+operator|(
 name|strippedLink
 operator|.
 name|length
@@ -1477,13 +1499,16 @@ argument_list|()
 operator|-
 literal|1
 operator|)
+operator|)
 condition|)
-comment|// No occurence, or at the end
+block|{
 name|suffix
 operator|=
 literal|null
 expr_stmt|;
+block|}
 else|else
+block|{
 name|suffix
 operator|=
 name|strippedLink
@@ -1495,6 +1520,7 @@ operator|+
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|Globals
@@ -1537,12 +1563,14 @@ operator|||
 operator|(
 name|index
 operator|==
+operator|(
 name|strippedLink
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 operator|)
 condition|)
 block|{
@@ -1560,14 +1588,18 @@ argument_list|)
 operator|>
 literal|0
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 else|else
+block|{
 return|return
 name|suffix
 return|;
 comment|// return the first one we found, anyway.
+block|}
 block|}
 else|else
 block|{
@@ -1591,10 +1623,13 @@ argument_list|)
 operator|>
 literal|0
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 else|else
+block|{
 return|return
 name|link
 operator|.
@@ -1608,8 +1643,9 @@ return|;
 block|}
 block|}
 block|}
+block|}
 DECL|method|getFileDirectory (String link)
-specifier|public
+specifier|private
 name|String
 index|[]
 name|getFileDirectory
@@ -1636,7 +1672,6 @@ interface|interface
 name|DownloadCallback
 block|{
 DECL|method|downloadComplete (FileListEntry file)
-specifier|public
 name|void
 name|downloadComplete
 parameter_list|(

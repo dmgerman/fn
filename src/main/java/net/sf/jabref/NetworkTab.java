@@ -156,26 +156,29 @@ name|JPanel
 implements|implements
 name|PrefsTab
 block|{
-specifier|private
-name|JCheckBox
 DECL|field|useProxy
+specifier|private
+specifier|final
+name|JCheckBox
 name|useProxy
 decl_stmt|;
 DECL|field|defProxyHostname
-DECL|field|defProxyPort
 specifier|private
+specifier|final
 name|JTextField
 name|defProxyHostname
-decl_stmt|,
+decl_stmt|;
+DECL|field|defProxyPort
+specifier|private
+specifier|final
+name|JTextField
 name|defProxyPort
 decl_stmt|;
 DECL|field|_prefs
+specifier|private
+specifier|final
 name|JabRefPreferences
 name|_prefs
-decl_stmt|;
-DECL|field|_frame
-name|JabRefFrame
-name|_frame
 decl_stmt|;
 comment|//    private HelpAction ownerHelp, timeStampHelp;
 DECL|method|NetworkTab (JabRefFrame frame, JabRefPreferences prefs)
@@ -192,10 +195,6 @@ block|{
 name|_prefs
 operator|=
 name|prefs
-expr_stmt|;
-name|_frame
-operator|=
-name|frame
 expr_stmt|;
 name|setLayout
 argument_list|(
@@ -282,6 +281,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -390,7 +391,7 @@ argument_list|(
 literal|"Host"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|)
 decl_stmt|;
 name|builder
@@ -434,7 +435,7 @@ argument_list|(
 literal|"Port"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|)
 decl_stmt|;
 name|builder
@@ -488,6 +489,8 @@ name|CENTER
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -532,6 +535,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -582,6 +587,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|readyToClose ()
 specifier|public
 name|boolean
@@ -629,10 +636,8 @@ operator|.
 name|trim
 argument_list|()
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 operator|)
 operator|||
 operator|(
@@ -647,10 +652,8 @@ operator|.
 name|trim
 argument_list|()
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 operator|)
 condition|)
 block|{
@@ -740,6 +743,8 @@ return|return
 name|validSetting
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTabName ()
 specifier|public
 name|String

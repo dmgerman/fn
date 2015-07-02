@@ -97,6 +97,7 @@ decl_stmt|;
 comment|/** This holds the new subtree (the root's modified children) to allow redo. */
 DECL|field|m_modifiedSubtree
 specifier|private
+specifier|final
 name|Vector
 argument_list|<
 name|TreeNode
@@ -168,6 +169,8 @@ operator|=
 name|name
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getUndoPresentationName ()
 specifier|public
 name|String
@@ -188,6 +191,8 @@ name|m_name
 return|;
 comment|// JZTODO lyrics
 block|}
+annotation|@
+name|Override
 DECL|method|getRedoPresentationName ()
 specifier|public
 name|String
@@ -207,6 +212,8 @@ operator|+
 name|m_name
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|undo ()
 specifier|public
 name|void
@@ -253,6 +260,7 @@ condition|;
 operator|++
 name|i
 control|)
+block|{
 name|m_modifiedSubtree
 operator|.
 name|add
@@ -265,6 +273,7 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 comment|// keep subtree handle, but restore everything else from backup
 name|subtreeRoot
 operator|.
@@ -288,6 +297,7 @@ condition|;
 operator|++
 name|i
 control|)
+block|{
 name|subtreeRoot
 operator|.
 name|add
@@ -308,16 +318,21 @@ name|deepCopy
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|m_revalidate
 condition|)
+block|{
 name|m_groupSelector
 operator|.
 name|revalidateGroups
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|redo ()
 specifier|public
 name|void
@@ -362,6 +377,7 @@ condition|;
 operator|++
 name|i
 control|)
+block|{
 name|subtreeRoot
 operator|.
 name|add
@@ -377,15 +393,18 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|m_revalidate
 condition|)
+block|{
 name|m_groupSelector
 operator|.
 name|revalidateGroups
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 comment|/**      * Call this method to decide if the group list should be immediately      * revalidated by this operation. Default is true.      */
 DECL|method|setRevalidate (boolean revalidate)

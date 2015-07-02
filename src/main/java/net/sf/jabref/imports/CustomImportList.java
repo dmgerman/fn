@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2005 Andreas Rudert, based on CustomExportList by ??   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html */
+comment|/*  Copyright (C) 2005 Andreas Rudert, based on CustomExportList by ??   All programs in this directory and  subdirectories are published under the GNU General Public License as  described below.   This program is free software; you can redistribute it and/or modify  it under the terms of the GNU General Public License as published by  the Free Software Foundation; either version 2 of the License, or (at  your option) any later version.   This program is distributed in the hope that it will be useful, but  WITHOUT ANY WARRANTY; without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU  General Public License for more details.   You should have received a copy of the GNU General Public License  along with this program; if not, write to the Free Software  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307  USA   Further information about the GNU GPL is available at:  http://www.gnu.org/copyleft/gpl.ja.html   Copyright (C) 2005-2014 JabRef contributors.   */
 end_comment
 
 begin_package
@@ -107,7 +107,7 @@ operator|.
 name|Importer
 argument_list|>
 block|{
-comment|/**    * Object with data for a custom importer.    *     *<p>Is also responsible for instantiating the class loader.</p>    */
+comment|/**      * Object with data for a custom importer.      *       *<p>Is also responsible for instantiating the class loader.</p>      */
 DECL|class|Importer
 specifier|public
 class|class
@@ -298,8 +298,18 @@ expr_stmt|;
 block|}
 DECL|method|getBasePath ()
 specifier|public
-name|File
+name|String
 name|getBasePath
+parameter_list|()
+block|{
+return|return
+name|basePath
+return|;
+block|}
+DECL|method|getFileFromBasePath ()
+specifier|public
+name|File
+name|getFileFromBasePath
 parameter_list|()
 block|{
 return|return
@@ -319,7 +329,7 @@ throws|throws
 name|MalformedURLException
 block|{
 return|return
-name|getBasePath
+name|getFileFromBasePath
 argument_list|()
 operator|.
 name|toURI
@@ -351,6 +361,8 @@ name|basePath
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|equals (Object o)
 specifier|public
 name|boolean
@@ -361,13 +373,17 @@ name|o
 parameter_list|)
 block|{
 return|return
+operator|(
 name|o
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|o
 operator|instanceof
 name|Importer
+operator|)
 operator|&&
 name|this
 operator|.
@@ -388,6 +404,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|hashCode ()
 specifier|public
 name|int
@@ -401,6 +419,8 @@ name|hashCode
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|compareTo (Importer o)
 specifier|public
 name|int
@@ -425,6 +445,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String
@@ -508,6 +530,7 @@ block|}
 block|}
 DECL|field|prefs
 specifier|private
+specifier|final
 name|JabRefPreferences
 name|prefs
 decl_stmt|;
@@ -546,8 +569,6 @@ decl_stmt|;
 name|String
 index|[]
 name|s
-init|=
-literal|null
 decl_stmt|;
 while|while
 condition|(
@@ -611,7 +632,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|addImporter (Importer customImporter)
-specifier|public
+specifier|private
 name|void
 name|addImporter
 parameter_list|(
@@ -627,7 +648,7 @@ name|customImporter
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Adds an importer.    *     *<p>If an old one equal to the new one was contained, the old    * one is replaced.</p>    *     * @param customImporter new (version of an) importer    * @return  if the importer was contained    */
+comment|/**      * Adds an importer.      *       *<p>If an old one equal to the new one was contained, the old      * one is replaced.</p>      *       * @param customImporter new (version of an) importer      * @return  if the importer was contained      */
 DECL|method|replaceImporter (Importer customImporter)
 specifier|public
 name|boolean

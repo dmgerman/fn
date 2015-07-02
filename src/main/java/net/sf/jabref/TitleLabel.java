@@ -46,14 +46,13 @@ end_import
 
 begin_class
 DECL|class|TitleLabel
-specifier|public
 class|class
 name|TitleLabel
 extends|extends
 name|JLabel
 block|{
 DECL|method|TitleLabel (String txt, int orientation)
-specifier|public
+specifier|private
 name|TitleLabel
 parameter_list|(
 name|String

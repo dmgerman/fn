@@ -156,14 +156,15 @@ end_import
 
 begin_class
 DECL|class|HelpContent
-specifier|public
 class|class
 name|HelpContent
 extends|extends
 name|JTextPane
 block|{
 DECL|field|log
+specifier|private
 specifier|static
+specifier|final
 name|Log
 name|log
 init|=
@@ -177,21 +178,32 @@ name|class
 argument_list|)
 decl_stmt|;
 DECL|field|pane
+specifier|private
+specifier|final
 name|JScrollPane
 name|pane
 decl_stmt|;
 DECL|field|history
-DECL|field|forw
 specifier|private
+specifier|final
 name|Stack
 argument_list|<
 name|URL
 argument_list|>
 name|history
-decl_stmt|,
+decl_stmt|;
+DECL|field|forw
+specifier|private
+specifier|final
+name|Stack
+argument_list|<
+name|URL
+argument_list|>
 name|forw
 decl_stmt|;
 DECL|field|prefs
+specifier|private
+specifier|final
 name|JabRefPreferences
 name|prefs
 decl_stmt|;
@@ -213,11 +225,11 @@ name|JScrollPane
 argument_list|(
 name|this
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|VERTICAL_SCROLLBAR_AS_NEEDED
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|HORIZONTAL_SCROLLBAR_AS_NEEDED
 argument_list|)
@@ -284,6 +296,8 @@ operator|new
 name|HyperlinkListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|hyperlinkUpdate
@@ -521,7 +535,7 @@ argument_list|(
 literal|"language"
 argument_list|)
 operator|+
-literal|"/"
+literal|'/'
 decl_stmt|;
 if|if
 condition|(
@@ -532,11 +546,13 @@ argument_list|(
 literal|"en/"
 argument_list|)
 condition|)
+block|{
 name|middle
 operator|=
 literal|""
 expr_stmt|;
 comment|// english in base help dir.
+block|}
 name|URL
 name|old
 init|=
@@ -593,6 +609,8 @@ literal|null
 condition|)
 block|{
 comment|// TODO show warning to user
+name|HelpContent
+operator|.
 name|log
 operator|.
 name|error
@@ -616,7 +634,7 @@ operator|.
 name|toString
 argument_list|()
 operator|+
-literal|"#"
+literal|'#'
 operator|+
 name|reference
 argument_list|)
@@ -646,6 +664,7 @@ name|old
 operator|!=
 literal|null
 condition|)
+block|{
 name|history
 operator|.
 name|push
@@ -654,7 +673,10 @@ name|old
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Convenience method for setPage(String) 	 */
+block|}
+comment|/**      * Convenience method for setPage(String)      */
+annotation|@
+name|Override
 DECL|method|setPage (URL url)
 specifier|public
 name|void
@@ -746,7 +768,7 @@ operator|.
 name|getFile
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 block|}
@@ -762,7 +784,7 @@ return|return
 name|pane
 return|;
 block|}
-comment|/*public void paintComponent(Graphics g) { 		Graphics2D g2 = (Graphics2D) g; 		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON); 		g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY); 		super.paintComponent(g2); 	}*/
+comment|/*public void paintComponent(Graphics g) {     	Graphics2D g2 = (Graphics2D) g;     	g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);     	g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);     	super.paintComponent(g2);     }*/
 block|}
 end_class
 

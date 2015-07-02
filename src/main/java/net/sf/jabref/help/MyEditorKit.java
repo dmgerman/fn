@@ -107,7 +107,6 @@ argument_list|(
 literal|"serial"
 argument_list|)
 DECL|class|MyEditorKit
-specifier|public
 class|class
 name|MyEditorKit
 extends|extends
@@ -115,6 +114,7 @@ name|LargeHTMLEditorKit
 block|{
 DECL|class|MyNextVisualPositionAction
 specifier|public
+specifier|static
 class|class
 name|MyNextVisualPositionAction
 extends|extends
@@ -122,11 +122,13 @@ name|TextAction
 block|{
 DECL|field|textActn
 specifier|private
+specifier|final
 name|Action
 name|textActn
 decl_stmt|;
 DECL|field|direction
 specifier|private
+specifier|final
 name|int
 name|direction
 decl_stmt|;
@@ -169,6 +171,8 @@ operator|=
 name|direction
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -281,6 +285,8 @@ name|Action
 index|[]
 name|myActions
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getActions ()
 specifier|public
 name|Action

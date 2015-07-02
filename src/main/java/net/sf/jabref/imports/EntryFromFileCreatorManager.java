@@ -151,6 +151,7 @@ name|EntryFromFileCreatorManager
 block|{
 DECL|field|entryCreators
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|EntryFromFileCreator
@@ -246,13 +247,16 @@ control|)
 block|{
 if|if
 condition|(
+operator|(
 name|entryCreator
 operator|.
 name|getExternalFileType
 argument_list|()
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|entryCreator
 operator|.
 name|getExternalFileType
@@ -262,6 +266,7 @@ name|getExtension
 argument_list|()
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 continue|continue;
@@ -294,7 +299,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/** 	 * Returns a EntryFromFileCreator object that is capable of creating a 	 * BibtexEntry for the given File. 	 *  	 * @param file the pdf file 	 * @return null if there is no EntryFromFileCreator for this File. 	 */
+comment|/**      * Returns a EntryFromFileCreator object that is capable of creating a      * BibtexEntry for the given File.      *       * @param file the pdf file      * @return null if there is no EntryFromFileCreator for this File.      */
 DECL|method|getEntryCreator (File file)
 specifier|public
 name|EntryFromFileCreator
@@ -306,9 +311,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|file
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|file
@@ -348,7 +355,7 @@ return|return
 literal|null
 return|;
 block|}
-comment|/** 	 * Trys to add a entry for each file in the List. 	 *  	 * @param files 	 * @param database 	 * @param entryType 	 * @return List of unexcpected import event messages including failures. 	 */
+comment|/**      * Trys to add a entry for each file in the List.      *       * @param files      * @param database      * @param entryType      * @return List of unexcpected import event messages including failures.      */
 DECL|method|addEntrysFromFiles (List<File> files, BibtexDatabase database, BibtexEntryType entryType, boolean generateKeywordsFromPathToFile)
 specifier|public
 name|List
@@ -407,7 +414,7 @@ return|return
 name|importGUIMessages
 return|;
 block|}
-comment|/** 	 * Tries to add a entry for each file in the List. 	 *  	 * @param files      * @param database      * @param panel 	 * @param entryType 	 * @param generateKeywordsFromPathToFile 	 * @param changeListener      * @param importGUIMessages list of unexpected import event - Messages including      	 *         failures 	 * @return Returns The number of entries added 	 */
+comment|/**      * Tries to add a entry for each file in the List.      *       * @param files      * @param database      * @param panel      * @param entryType      * @param generateKeywordsFromPathToFile      * @param changeListener      * @param importGUIMessages list of unexpected import event - Messages including      *         failures      * @return Returns The number of entries added      */
 DECL|method|addEntrysFromFiles (List<File> files, BibtexDatabase database, BasePanel panel, BibtexEntryType entryType, boolean generateKeywordsFromPathToFile, ChangeListener changeListener, List<String> importGUIMessages)
 specifier|public
 name|int
@@ -540,14 +547,14 @@ name|entry
 operator|.
 name|setId
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-comment|/* 				 * TODO: database.insertEntry(BibtexEntry) is not sensible. Why 				 * does 'true' mean "There were duplicates", while 'false' means 				 * "Everything alright"? 				 */
+comment|/*                  * TODO: database.insertEntry(BibtexEntry) is not sensible. Why                  * does 'true' mean "There were duplicates", while 'false' means                  * "Everything alright"?                  */
 if|if
 condition|(
 name|database
@@ -601,6 +608,7 @@ name|panel
 operator|!=
 literal|null
 condition|)
+block|{
 name|ce
 operator|.
 name|addEdit
@@ -616,6 +624,7 @@ name|panel
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -642,6 +651,7 @@ name|changeListener
 operator|!=
 literal|null
 condition|)
+block|{
 name|changeListener
 operator|.
 name|stateChanged
@@ -653,6 +663,7 @@ name|this
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|System
 operator|.
@@ -708,9 +719,9 @@ return|return
 name|count
 return|;
 block|}
-comment|/** 	 * Returns a {@link FileFilter} instance which will accept all files, for 	 * which a {@link EntryFromFileCreator} exists, that accepts the files.<br> 	 *<br> 	 * This {@link FileFilter} will be displayed in the GUI as 	 * "All supported files". 	 *  	 * @return A {@link FileFilter} that accepts all files for which creators 	 *         exist. 	 */
+comment|/**      * Returns a {@link FileFilter} instance which will accept all files, for      * which a {@link EntryFromFileCreator} exists, that accepts the files.<br>      *<br>      * This {@link FileFilter} will be displayed in the GUI as      * "All supported files".      *       * @return A {@link FileFilter} that accepts all files for which creators      *         exist.      */
 DECL|method|getFileFilter ()
-specifier|public
+specifier|private
 name|FileFilter
 name|getFileFilter
 parameter_list|()
@@ -720,7 +731,9 @@ operator|new
 name|FileFilter
 argument_list|()
 block|{
-comment|/** 			 * Accepts all files, which are accepted by any known creator. 			 */
+comment|/**              * Accepts all files, which are accepted by any known creator.              */
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|accept
@@ -770,7 +783,7 @@ block|}
 block|}
 return|;
 block|}
-comment|/** 	 * Returns a list of all {@link FileFilter} instances (i.e. 	 * {@link EntryFromFileCreator}, plus the file filter that comes with the 	 * {@link #getFileFilter()} method. 	 *  	 * @return A List of all known possible file filters. 	 */
+comment|/**      * Returns a list of all {@link FileFilter} instances (i.e.      * {@link EntryFromFileCreator}, plus the file filter that comes with the      * {@link #getFileFilter()} method.      *       * @return A List of all known possible file filters.      */
 DECL|method|getFileFilterList ()
 specifier|public
 name|List

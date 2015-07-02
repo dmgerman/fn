@@ -103,6 +103,7 @@ class|class
 name|RegExpFileSearch
 block|{
 DECL|field|EXT_MARKER
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -127,9 +128,9 @@ init|=
 operator|new
 name|BibtexEntry
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -217,6 +218,8 @@ name|out
 operator|.
 name|println
 argument_list|(
+name|RegExpFileSearch
+operator|.
 name|findFiles
 argument_list|(
 name|entry
@@ -312,6 +315,8 @@ name|put
 argument_list|(
 name|entry
 argument_list|,
+name|RegExpFileSearch
+operator|.
 name|findFiles
 argument_list|(
 name|entry
@@ -331,7 +336,7 @@ return|;
 block|}
 comment|/**      * Method for searching for files using regexp. A list of extensions and directories can be      * given.      * @param entry The entry to search for.      * @param extensions The extensions that are acceptable.      * @param directories The root directories to search.      * @param regularExpression The expression deciding which names are acceptable.      * @return A list of files paths matching the given criteria.      */
 DECL|method|findFiles (BibtexEntry entry, Collection<String> extensions, Collection<File> directories, String regularExpression)
-specifier|public
+specifier|private
 specifier|static
 name|List
 argument_list|<
@@ -402,27 +407,31 @@ operator|.
 name|hasNext
 argument_list|()
 condition|)
+block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|"|"
+literal|'|'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|String
 name|extensionRegExp
 init|=
-literal|"("
+literal|'('
 operator|+
 name|sb
 operator|.
 name|toString
 argument_list|()
 operator|+
-literal|")"
+literal|')'
 decl_stmt|;
 return|return
+name|RegExpFileSearch
+operator|.
 name|findFile
 argument_list|(
 name|entry
@@ -439,9 +448,9 @@ literal|true
 argument_list|)
 return|;
 block|}
-comment|/** 	 * Searches the given directory and file name pattern for a file for the 	 * bibtexentry. 	 * 	 * Used to fix: 	 * 	 * http://sourceforge.net/tracker/index.php?func=detail&aid=1503410&group_id=92314&atid=600309 	 * 	 * Requirements: 	 *  - Be able to find the associated PDF in a set of given directories. 	 *  - Be able to return a relative path or absolute path. 	 *  - Be fast. 	 *  - Allow for flexible naming schemes in the PDFs. 	 * 	 * Syntax scheme for file: 	 *<ul> 	 *<li>* Any subDir</li> 	 *<li>** Any subDir (recursiv)</li> 	 *<li>[key] Key from bibtex file and database</li> 	 *<li>.* Anything else is taken to be a Regular expression.</li> 	 *</ul> 	 * 	 * @param entry 	 *            non-null 	 * @param database 	 *            non-null 	 * @param dirs 	 *            A set of root directories to start the search from. Paths are 	 *            returned relative to these directories if relative is set to 	 *            true. These directories will not be expanded or anything. Use 	 *            the file attribute for this. 	 * @param file 	 *            non-null 	 * 	 * @param relative 	 *            whether to return relative file paths or absolute ones 	 * 	 * @return Will return the first file found to match the given criteria or 	 *         null if none was found. 	 */
+comment|/**      * Searches the given directory and file name pattern for a file for the      * bibtexentry.      *      * Used to fix:      *      * http://sourceforge.net/tracker/index.php?func=detail&aid=1503410&group_id=92314&atid=600309      *      * Requirements:      *  - Be able to find the associated PDF in a set of given directories.      *  - Be able to return a relative path or absolute path.      *  - Be fast.      *  - Allow for flexible naming schemes in the PDFs.      *      * Syntax scheme for file:      *<ul>      *<li>* Any subDir</li>      *<li>** Any subDir (recursiv)</li>      *<li>[key] Key from bibtex file and database</li>      *<li>.* Anything else is taken to be a Regular expression.</li>      *</ul>      *      * @param entry      *            non-null      * @param database      *            non-null      * @param dirs      *            A set of root directories to start the search from. Paths are      *            returned relative to these directories if relative is set to      *            true. These directories will not be expanded or anything. Use      *            the file attribute for this.      * @param file      *            non-null      *      * @param relative      *            whether to return relative file paths or absolute ones      *      * @return Will return the first file found to match the given criteria or      *         null if none was found.      */
 DECL|method|findFile (BibtexEntry entry, BibtexDatabase database, Collection<File> dirs, String file, String extensionRegExp, boolean relative)
-specifier|public
+specifier|private
 specifier|static
 name|List
 argument_list|<
@@ -498,6 +507,8 @@ name|File
 argument_list|>
 name|tmp
 init|=
+name|RegExpFileSearch
+operator|.
 name|findFile
 argument_list|(
 name|entry
@@ -522,6 +533,7 @@ name|tmp
 operator|!=
 literal|null
 condition|)
+block|{
 name|res
 operator|.
 name|addAll
@@ -530,13 +542,14 @@ name|tmp
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 return|return
 name|res
 return|;
 block|}
 comment|/**      * Internal Version of findFile, which also accepts a current directory to      * base the search on.      *      */
 DECL|method|findFile (BibtexEntry entry, BibtexDatabase database, String directory, String file, String extensionRegExp, boolean relative)
-specifier|public
+specifier|private
 specifier|static
 name|List
 argument_list|<
@@ -614,6 +627,8 @@ return|;
 block|}
 name|res
 operator|=
+name|RegExpFileSearch
+operator|.
 name|findFile
 argument_list|(
 name|entry
@@ -629,12 +644,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|!
 name|res
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 for|for
@@ -654,6 +668,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 try|try
 block|{
 comment|/**                      * [ 1601651 ] PDF subdirectory - missing first character                      *                      * http://sourceforge.net/tracker/index.php?func=detail&aid=1601651&group_id=92314&atid=600306                      */
@@ -707,6 +722,7 @@ operator|.
 name|separatorChar
 operator|)
 condition|)
+block|{
 name|tmp
 operator|=
 name|tmp
@@ -716,6 +732,7 @@ argument_list|(
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 name|res
 operator|.
 name|set
@@ -743,13 +760,14 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+block|}
 return|return
 name|res
 return|;
 block|}
 comment|/**      * The actual work-horse. Will find absolute filepaths starting from the      * given directory using the given regular expression string for search.      */
 DECL|method|findFile (BibtexEntry entry, BibtexDatabase database, File directory, String file, String extensionRegExp)
-specifier|protected
+specifier|private
 specifier|static
 name|List
 argument_list|<
@@ -858,7 +876,7 @@ argument_list|(
 literal|1
 argument_list|)
 operator|+
-literal|"/"
+literal|'/'
 operator|+
 name|m
 operator|.
@@ -902,9 +920,11 @@ name|length
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|res
 return|;
+block|}
 if|if
 condition|(
 name|fileParts
@@ -923,11 +943,13 @@ literal|0
 init|;
 name|i
 operator|<
+operator|(
 name|fileParts
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|;
 name|i
 operator|++
@@ -972,7 +994,7 @@ name|File
 argument_list|(
 name|dirToProcess
 operator|+
-literal|"/"
+literal|'/'
 argument_list|)
 expr_stmt|;
 continue|continue;
@@ -1043,7 +1065,7 @@ block|{
 name|String
 name|restOfFileString
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|join
 argument_list|(
@@ -1080,6 +1102,8 @@ name|res
 operator|.
 name|addAll
 argument_list|(
+name|RegExpFileSearch
+operator|.
 name|findFile
 argument_list|(
 name|entry
@@ -1132,7 +1156,7 @@ expr_stmt|;
 name|String
 name|restOfFileString
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|join
 argument_list|(
@@ -1179,8 +1203,9 @@ name|subDirs
 operator|==
 literal|null
 condition|)
-comment|// No permission?
+block|{
 continue|continue;
+block|}
 name|toDo
 operator|.
 name|addAll
@@ -1209,11 +1234,15 @@ operator|.
 name|isDirectory
 argument_list|()
 condition|)
+block|{
 continue|continue;
+block|}
 name|res
 operator|.
 name|addAll
 argument_list|(
+name|RegExpFileSearch
+operator|.
 name|findFile
 argument_list|(
 name|entry
@@ -1251,6 +1280,8 @@ name|replaceAll
 argument_list|(
 literal|"\\[extension\\]"
 argument_list|,
+name|RegExpFileSearch
+operator|.
 name|EXT_MARKER
 argument_list|)
 decl_stmt|;
@@ -1270,6 +1301,8 @@ argument_list|)
 operator|.
 name|replaceAll
 argument_list|(
+name|RegExpFileSearch
+operator|.
 name|EXT_MARKER
 argument_list|,
 name|extensionRegExp
@@ -1283,7 +1316,7 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
-literal|"^"
+literal|'^'
 operator|+
 name|filenameToLookFor
 operator|.
@@ -1294,7 +1327,7 @@ argument_list|,
 literal|"\\\\"
 argument_list|)
 operator|+
-literal|"$"
+literal|'$'
 argument_list|,
 name|Pattern
 operator|.
@@ -1313,6 +1346,8 @@ operator|new
 name|FilenameFilter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|accept
@@ -1341,9 +1376,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|matches
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|(
 name|matches
@@ -1353,6 +1390,7 @@ operator|>
 literal|0
 operator|)
 condition|)
+block|{
 name|Collections
 operator|.
 name|addAll
@@ -1362,6 +1400,7 @@ argument_list|,
 name|matches
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|res
 return|;

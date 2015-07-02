@@ -126,21 +126,25 @@ name|AbstractAction
 block|{
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|eEditor
 specifier|private
+specifier|final
 name|EntryEditor
 name|eEditor
 decl_stmt|;
 DECL|field|editor
 specifier|private
+specifier|final
 name|FileListEditor
 name|editor
 decl_stmt|;
 DECL|field|toFileDir
 specifier|private
+specifier|final
 name|boolean
 name|toFileDir
 decl_stmt|;
@@ -186,6 +190,8 @@ operator|=
 name|toFileDir
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -210,7 +216,9 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 return|return;
+block|}
 name|FileListEntry
 name|flEntry
 init|=
@@ -295,6 +303,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 if|if
 condition|(
 operator|new
@@ -315,6 +324,7 @@ operator|=
 name|i
 expr_stmt|;
 break|break;
+block|}
 block|}
 if|if
 condition|(
@@ -370,7 +380,7 @@ condition|)
 block|{
 name|file
 operator|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -409,6 +419,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|extension
 operator|=
 literal|"."
@@ -421,6 +432,7 @@ operator|.
 name|getExtension
 argument_list|()
 expr_stmt|;
+block|}
 name|File
 name|newFile
 init|=
@@ -531,6 +543,7 @@ name|getName
 argument_list|()
 argument_list|)
 condition|)
+block|{
 name|answer
 operator|=
 name|JOptionPane
@@ -553,7 +566,9 @@ operator|.
 name|YES_NO_OPTION
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|answer
 operator|=
 name|JOptionPane
@@ -581,6 +596,7 @@ operator|.
 name|YES_NO_OPTION
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|answer
@@ -589,7 +605,9 @@ name|JOptionPane
 operator|.
 name|YES_OPTION
 condition|)
+block|{
 return|return;
+block|}
 name|Globals
 operator|.
 name|prefs
@@ -631,6 +649,7 @@ operator|.
 name|separator
 argument_list|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -640,6 +659,7 @@ operator|.
 name|separator
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|cbm
@@ -773,12 +793,16 @@ condition|(
 operator|!
 name|toFileDir
 condition|)
+block|{
 name|repeat
 operator|=
 literal|true
 expr_stmt|;
+block|}
 else|else
+block|{
 return|return;
+block|}
 block|}
 block|}
 if|if
@@ -812,7 +836,7 @@ condition|)
 block|{
 name|success
 operator|=
-name|Util
+name|FileUtil
 operator|.
 name|copyFile
 argument_list|(
@@ -902,6 +926,7 @@ operator|.
 name|separatorChar
 operator|)
 condition|)
+block|{
 name|flEntry
 operator|.
 name|setLink
@@ -922,7 +947,9 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|flEntry
 operator|.
 name|setLink
@@ -942,7 +969,9 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 else|else
+block|{
 name|flEntry
 operator|.
 name|setLink
@@ -953,6 +982,7 @@ name|getCanonicalPath
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|eEditor
 operator|.
 name|updateField

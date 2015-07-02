@@ -172,7 +172,9 @@ name|LayoutFormatter
 block|{
 comment|//~ Methods ////////////////////////////////////////////////////////////////
 DECL|field|xc
+specifier|private
 specifier|static
+specifier|final
 name|XMLChars
 name|xc
 init|=
@@ -180,6 +182,8 @@ operator|new
 name|XMLChars
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -230,7 +234,6 @@ comment|//<author><firstname>J.</firstname><surname>Bajorath</surname></author>
 comment|/*         if (fieldText.indexOf(" and ") == -1)         {           sb.append("<author>");           singleAuthor(sb, fieldText);           sb.append("</author>");         }         else         {             String[] names = fieldText.split(" and ");             for (int i=0; i<names.length; i++)             {               sb.append("<author>");               singleAuthor(sb, names[i]);               sb.append("</author>");               if (i< names.length -1)                 sb.append("\n       ");             }         }            fieldText = sb.toString();          return fieldText;*/
 block|}
 DECL|method|addBody (StringBuilder sb, AuthorList al, String tagName)
-specifier|public
 name|void
 name|addBody
 parameter_list|(
@@ -266,7 +269,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|"<"
+literal|'<'
 argument_list|)
 operator|.
 name|append
@@ -276,7 +279,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|">"
+literal|'>'
 argument_list|)
 expr_stmt|;
 name|AuthorList
@@ -303,15 +306,14 @@ literal|null
 operator|)
 operator|&&
 operator|(
+operator|!
 name|a
 operator|.
 name|getFirst
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 condition|)
 block|{
@@ -326,6 +328,8 @@ name|sb
 operator|.
 name|append
 argument_list|(
+name|CreateDocBookAuthors
+operator|.
 name|xc
 operator|.
 name|format
@@ -357,15 +361,14 @@ literal|null
 operator|)
 operator|&&
 operator|(
+operator|!
 name|a
 operator|.
 name|getVon
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 condition|)
 block|{
@@ -380,6 +383,8 @@ name|sb
 operator|.
 name|append
 argument_list|(
+name|CreateDocBookAuthors
+operator|.
 name|xc
 operator|.
 name|format
@@ -411,15 +416,14 @@ literal|null
 operator|)
 operator|&&
 operator|(
+operator|!
 name|a
 operator|.
 name|getLast
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 condition|)
 block|{
@@ -434,6 +438,8 @@ name|sb
 operator|.
 name|append
 argument_list|(
+name|CreateDocBookAuthors
+operator|.
 name|xc
 operator|.
 name|format
@@ -457,15 +463,14 @@ literal|null
 operator|)
 operator|&&
 operator|(
+operator|!
 name|a
 operator|.
 name|getJr
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 operator|)
 condition|)
 block|{
@@ -473,11 +478,13 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 operator|.
 name|append
 argument_list|(
+name|CreateDocBookAuthors
+operator|.
 name|xc
 operator|.
 name|format
@@ -502,13 +509,16 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|al
 operator|.
 name|size
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -526,7 +536,9 @@ argument_list|(
 literal|">\n       "
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -541,9 +553,10 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|">"
+literal|'>'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * @param sb      * @param author      */

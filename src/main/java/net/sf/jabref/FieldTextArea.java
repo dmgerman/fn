@@ -91,14 +91,19 @@ name|Dimension
 name|PREFERRED_SIZE
 decl_stmt|;
 DECL|field|sp
+specifier|private
+specifier|final
 name|JScrollPane
 name|sp
 decl_stmt|;
 DECL|field|label
+specifier|private
+specifier|final
 name|FieldNameLabel
 name|label
 decl_stmt|;
 DECL|field|fieldName
+specifier|private
 name|String
 name|fieldName
 decl_stmt|;
@@ -153,7 +158,7 @@ name|content
 argument_list|)
 expr_stmt|;
 comment|// Listen for undo and redo events
-comment|/* 		 * getDocument().addUndoableEditListener(new UndoableEditListener() { 		 * public void undoableEditHappened(UndoableEditEvent evt) { 		 * undo.addEdit(evt.getEdit()); } }); 		 */
+comment|/*          * getDocument().addUndoableEditListener(new UndoableEditListener() {          * public void undoableEditHappened(UndoableEditEvent evt) {          * undo.addEdit(evt.getEdit()); } });          */
 name|updateFont
 argument_list|()
 expr_stmt|;
@@ -180,11 +185,11 @@ name|JScrollPane
 argument_list|(
 name|this
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|VERTICAL_SCROLLBAR_AS_NEEDED
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|HORIZONTAL_SCROLLBAR_NEVER
 argument_list|)
@@ -221,16 +226,16 @@ operator|=
 operator|new
 name|FieldNameLabel
 argument_list|(
-literal|" "
+literal|' '
 operator|+
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
 name|fieldName
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 argument_list|)
 expr_stmt|;
 name|setBackground
@@ -272,6 +277,8 @@ name|popMenu
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getPreferredScrollableViewportSize ()
 specifier|public
 name|Dimension
@@ -283,7 +290,9 @@ name|getPreferredSize
 argument_list|()
 return|;
 block|}
-comment|/* 	 * public void paint(Graphics g) { Graphics2D g2 = (Graphics2D) g; if 	 * (antialias) g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, 	 * RenderingHints.VALUE_ANTIALIAS_ON); super.paint(g2); } 	 */
+comment|/*      * public void paint(Graphics g) { Graphics2D g2 = (Graphics2D) g; if      * (antialias) g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,      * RenderingHints.VALUE_ANTIALIAS_ON); super.paint(g2); }      */
+annotation|@
+name|Override
 DECL|method|getFieldName ()
 specifier|public
 name|String
@@ -308,6 +317,8 @@ operator|=
 name|newName
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getLabel ()
 specifier|public
 name|JLabel
@@ -318,6 +329,8 @@ return|return
 name|label
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setLabelColor (Color c)
 specifier|public
 name|void
@@ -335,6 +348,8 @@ name|c
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getPane ()
 specifier|public
 name|JComponent
@@ -345,6 +360,8 @@ return|return
 name|sp
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTextComponent ()
 specifier|public
 name|JComponent
@@ -355,6 +372,8 @@ return|return
 name|this
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setActiveBackgroundColor ()
 specifier|public
 name|void
@@ -369,6 +388,8 @@ name|activeBackground
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValidBackgroundColor ()
 specifier|public
 name|void
@@ -383,6 +404,8 @@ name|validFieldBackgroundColor
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setInvalidBackgroundColor ()
 specifier|public
 name|void
@@ -397,6 +420,8 @@ name|invalidFieldBackgroundColor
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|updateFontColor ()
 specifier|public
 name|void
@@ -411,6 +436,8 @@ name|editorTextColor
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|updateFont ()
 specifier|public
 name|void
@@ -425,6 +452,8 @@ name|CURRENTFONT
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|paste (String textToInsert)
 specifier|public
 name|void
@@ -449,12 +478,13 @@ name|sel
 operator|>
 literal|0
 condition|)
-comment|// selected text available
+block|{
 name|replaceSelection
 argument_list|(
 name|textToInsert
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 name|int
@@ -476,6 +506,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|hasUndoInformation ()
 specifier|public
 name|boolean
@@ -487,14 +519,18 @@ literal|false
 return|;
 comment|// undo.canUndo();
 block|}
+annotation|@
+name|Override
 DECL|method|undo ()
 specifier|public
 name|void
 name|undo
 parameter_list|()
 block|{
-comment|/* 		 * try { if (undo.canUndo()) { undo.undo(); } } catch 		 * (CannotUndoException e) { } 		 */
+comment|/*          * try { if (undo.canUndo()) { undo.undo(); } } catch          * (CannotUndoException e) { }          */
 block|}
+annotation|@
+name|Override
 DECL|method|hasRedoInformation ()
 specifier|public
 name|boolean
@@ -506,14 +542,18 @@ literal|false
 return|;
 comment|// undo.canRedo();
 block|}
+annotation|@
+name|Override
 DECL|method|redo ()
 specifier|public
 name|void
 name|redo
 parameter_list|()
 block|{
-comment|/* 		 * try { if (undo.canRedo()) { undo.redo(); } } catch 		 * (CannotUndoException e) { } 		 */
+comment|/*          * try { if (undo.canRedo()) { undo.redo(); } } catch          * (CannotUndoException e) { }          */
 block|}
+annotation|@
+name|Override
 DECL|method|addUndoableEditListener (UndoableEditListener listener)
 specifier|public
 name|void
@@ -532,6 +572,8 @@ name|listener
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setAutoCompleteListener (AutoCompleteListener listener)
 specifier|public
 name|void
@@ -546,6 +588,8 @@ operator|=
 name|listener
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|clearAutoCompleteSuggestion ()
 specifier|public
 name|void

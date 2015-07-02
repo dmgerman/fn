@@ -294,31 +294,40 @@ literal|"DroppedFileHandler_RenameFile"
 decl_stmt|;
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|panel
 specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|linkInPlace
-DECL|field|copyRadioButton
 specifier|private
+specifier|final
 name|JRadioButton
 name|linkInPlace
 init|=
 operator|new
 name|JRadioButton
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+DECL|field|copyRadioButton
+specifier|private
+specifier|final
+name|JRadioButton
 name|copyRadioButton
 init|=
 operator|new
 name|JRadioButton
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|moveRadioButton
+specifier|private
+specifier|final
+name|JRadioButton
 name|moveRadioButton
 init|=
 operator|new
@@ -327,6 +336,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|destDirLabel
 specifier|private
+specifier|final
 name|JLabel
 name|destDirLabel
 init|=
@@ -336,6 +346,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|renameCheckBox
 specifier|private
+specifier|final
 name|JCheckBox
 name|renameCheckBox
 init|=
@@ -345,6 +356,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|renameToTextBox
 specifier|private
+specifier|final
 name|JTextField
 name|renameToTextBox
 init|=
@@ -356,6 +368,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|optionsPanel
 specifier|private
+specifier|final
 name|JPanel
 name|optionsPanel
 init|=
@@ -628,7 +641,7 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      *      * @param fileName      *        The name of the dragged file.      * @param fileType      *        The FileType associated with the file.      * @param localFile  *            Indicate whether this is a local file, or a remote file copied  *            to a local temporary file.      * @param entry      *        The target entry for the drop.      */
+comment|/**      *      * @param fileName      *        The name of the dragged file.      * @param fileType      *        The FileType associated with the file.      * @param localFile      *            Indicate whether this is a local file, or a remote file copied      *            to a local temporary file.      * @param entry      *        The target entry for the drop.      */
 DECL|method|handleDroppedfile (String fileName, ExternalFileType fileType, boolean localFile, BibtexEntry entry)
 specifier|public
 name|void
@@ -730,7 +743,9 @@ name|database
 argument_list|()
 argument_list|)
 condition|)
+block|{
 return|return;
+block|}
 comment|/*          * Ok, we're ready to go. See first if we need to do a file copy before          * linking:          */
 name|boolean
 name|success
@@ -750,7 +765,7 @@ condition|)
 block|{
 name|destFilename
 operator|=
-name|Util
+name|FileUtil
 operator|.
 name|shortenFileName
 argument_list|(
@@ -1008,7 +1023,9 @@ name|database
 argument_list|()
 argument_list|)
 condition|)
+block|{
 return|return;
+block|}
 comment|/*          * Ok, we're ready to go. See first if we need to do a file copy before          * linking:          */
 name|boolean
 name|success
@@ -1028,7 +1045,7 @@ condition|)
 block|{
 name|destFilename
 operator|=
-name|Util
+name|FileUtil
 operator|.
 name|shortenFileName
 argument_list|(
@@ -1254,7 +1271,7 @@ condition|)
 block|{
 name|destFilename
 operator|=
-name|Util
+name|FileUtil
 operator|.
 name|shortenFileName
 argument_list|(
@@ -1373,18 +1390,13 @@ control|)
 block|{
 try|try
 block|{
-name|BibtexEntry
-name|entry
-init|=
 name|aXmpEntriesInFile
-decl_stmt|;
-name|entry
 operator|.
 name|setId
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1400,7 +1412,7 @@ operator|.
 name|getDatabase
 argument_list|()
 argument_list|,
-name|entry
+name|aXmpEntriesInFile
 argument_list|,
 name|panel
 argument_list|)
@@ -1413,12 +1425,12 @@ argument_list|()
 operator|.
 name|insertEntry
 argument_list|(
-name|entry
+name|aXmpEntriesInFile
 argument_list|)
 expr_stmt|;
 name|doLink
 argument_list|(
-name|entry
+name|aXmpEntriesInFile
 argument_list|,
 name|fileType
 argument_list|,
@@ -1504,8 +1516,6 @@ argument_list|<
 name|BibtexEntry
 argument_list|>
 name|xmpEntriesInFile
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{
@@ -1667,7 +1677,7 @@ condition|)
 block|{
 name|destFilename
 operator|=
-name|Util
+name|FileUtil
 operator|.
 name|shortenFileName
 argument_list|(
@@ -1786,18 +1796,13 @@ control|)
 block|{
 try|try
 block|{
-name|BibtexEntry
-name|entry
-init|=
 name|aXmpEntriesInFile
-decl_stmt|;
-name|entry
 operator|.
 name|setId
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1813,7 +1818,7 @@ operator|.
 name|getDatabase
 argument_list|()
 argument_list|,
-name|entry
+name|aXmpEntriesInFile
 argument_list|,
 name|panel
 argument_list|)
@@ -1826,12 +1831,12 @@ argument_list|()
 operator|.
 name|insertEntry
 argument_list|(
-name|entry
+name|aXmpEntriesInFile
 argument_list|)
 expr_stmt|;
 name|doLink
 argument_list|(
-name|entry
+name|aXmpEntriesInFile
 argument_list|,
 name|fileType
 argument_list|,
@@ -1869,7 +1874,7 @@ comment|//
 comment|// @return true if user pushed "Ok", false otherwise
 comment|//
 DECL|method|showLinkMoveCopyRenameDialog (String linkFileName, ExternalFileType fileType, BibtexEntry entry, boolean newEntry, final boolean multipleEntries, BibtexDatabase database)
-specifier|public
+specifier|private
 name|boolean
 name|showLinkMoveCopyRenameDialog
 parameter_list|(
@@ -1951,6 +1956,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 if|if
 condition|(
 operator|new
@@ -1971,6 +1977,7 @@ operator|=
 name|i
 expr_stmt|;
 break|break;
+block|}
 block|}
 if|if
 condition|(
@@ -2082,6 +2089,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -2279,6 +2288,8 @@ argument_list|()
 operator|.
 name|getBoolean
 argument_list|(
+name|DroppedFileHandler
+operator|.
 name|DFH_LEAVE
 argument_list|)
 argument_list|)
@@ -2294,6 +2305,8 @@ argument_list|()
 operator|.
 name|getBoolean
 argument_list|(
+name|DroppedFileHandler
+operator|.
 name|DFH_COPY
 argument_list|)
 argument_list|)
@@ -2309,6 +2322,8 @@ argument_list|()
 operator|.
 name|getBoolean
 argument_list|(
+name|DroppedFileHandler
+operator|.
 name|DFH_MOVE
 argument_list|)
 argument_list|)
@@ -2324,6 +2339,8 @@ argument_list|()
 operator|.
 name|getBoolean
 argument_list|(
+name|DroppedFileHandler
+operator|.
 name|DFH_RENAME
 argument_list|)
 argument_list|)
@@ -2404,6 +2421,8 @@ argument_list|()
 operator|.
 name|putBoolean
 argument_list|(
+name|DroppedFileHandler
+operator|.
 name|DFH_LEAVE
 argument_list|,
 name|linkInPlace
@@ -2419,6 +2438,8 @@ argument_list|()
 operator|.
 name|putBoolean
 argument_list|(
+name|DroppedFileHandler
+operator|.
 name|DFH_COPY
 argument_list|,
 name|copyRadioButton
@@ -2434,6 +2455,8 @@ argument_list|()
 operator|.
 name|putBoolean
 argument_list|(
+name|DroppedFileHandler
+operator|.
 name|DFH_MOVE
 argument_list|,
 name|moveRadioButton
@@ -2449,6 +2472,8 @@ argument_list|()
 operator|.
 name|putBoolean
 argument_list|(
+name|DroppedFileHandler
+operator|.
 name|DFH_RENAME
 argument_list|,
 name|renameCheckBox
@@ -2526,6 +2551,7 @@ name|oldValue
 operator|!=
 literal|null
 condition|)
+block|{
 name|tm
 operator|.
 name|setContent
@@ -2533,6 +2559,7 @@ argument_list|(
 name|oldValue
 argument_list|)
 expr_stmt|;
+block|}
 comment|// If avoidDuplicate==true, we should check if this file is already linked:
 if|if
 condition|(
@@ -2581,7 +2608,7 @@ literal|0
 operator|)
 operator|)
 condition|?
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -2652,7 +2679,7 @@ literal|0
 operator|)
 operator|)
 condition|?
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -2693,7 +2720,9 @@ argument_list|(
 name|absName
 argument_list|)
 condition|)
+block|{
 return|return;
+block|}
 block|}
 block|}
 name|tm
@@ -2837,6 +2866,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 if|if
 condition|(
 operator|new
@@ -2857,6 +2887,7 @@ operator|=
 name|i
 expr_stmt|;
 break|break;
+block|}
 block|}
 if|if
 condition|(
@@ -3041,6 +3072,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 if|if
 condition|(
 operator|new
@@ -3061,6 +3093,7 @@ operator|=
 name|i
 expr_stmt|;
 break|break;
+block|}
 block|}
 if|if
 condition|(
@@ -3204,13 +3237,15 @@ name|JOptionPane
 operator|.
 name|NO_OPTION
 condition|)
+block|{
 return|return
 literal|false
 return|;
 block|}
+block|}
 try|try
 block|{
-name|Util
+name|FileUtil
 operator|.
 name|copyFile
 argument_list|(

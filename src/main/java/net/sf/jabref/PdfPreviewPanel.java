@@ -184,7 +184,6 @@ end_import
 
 begin_class
 DECL|class|PdfPreviewPanel
-specifier|public
 class|class
 name|PdfPreviewPanel
 extends|extends
@@ -192,6 +191,7 @@ name|JPanel
 block|{
 DECL|field|picLabel
 specifier|private
+specifier|final
 name|JLabel
 name|picLabel
 decl_stmt|;
@@ -266,8 +266,6 @@ return|return;
 block|}
 name|PDDocument
 name|document
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{
@@ -326,8 +324,6 @@ argument_list|)
 decl_stmt|;
 name|BufferedImage
 name|image
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{
@@ -730,7 +726,7 @@ block|{
 name|File
 name|pdfFile
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(

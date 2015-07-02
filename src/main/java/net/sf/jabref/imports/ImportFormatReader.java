@@ -107,6 +107,7 @@ block|{
 DECL|field|BIBTEX_FORMAT
 specifier|public
 specifier|static
+specifier|final
 name|String
 name|BIBTEX_FORMAT
 init|=
@@ -115,6 +116,7 @@ decl_stmt|;
 comment|/** all import formats, in the default order of import formats */
 DECL|field|formats
 specifier|private
+specifier|final
 name|SortedSet
 argument_list|<
 name|ImportFormat
@@ -312,7 +314,7 @@ name|BibtexImporter
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|/**      * Get import formats that are plug-ins      */
+comment|/**          * Get import formats that are plug-ins          */
 name|JabRefPlugin
 name|jabrefPlugin
 init|=
@@ -369,7 +371,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/** 	 * Get custom import formats 	 */
+comment|/**          * Get custom import formats          */
 for|for
 control|(
 name|CustomImportList
@@ -432,9 +434,9 @@ expr_stmt|;
 block|}
 block|}
 block|}
-comment|/**    * Format for a given CLI-ID.    *     *<p>Will return the first format according to the default-order of    * format that matches the given ID.</p>    *     * @param cliId  CLI-Id    * @return  Import Format or<code>null</code> if none matches    */
+comment|/**      * Format for a given CLI-ID.      *       *<p>Will return the first format according to the default-order of      * format that matches the given ID.</p>      *       * @param cliId  CLI-Id      * @return  Import Format or<code>null</code> if none matches      */
 DECL|method|getByCliId (String cliId)
-specifier|public
+specifier|private
 name|ImportFormat
 name|getByCliId
 parameter_list|(
@@ -506,6 +508,7 @@ name|importer
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -515,6 +518,7 @@ operator|+
 name|format
 argument_list|)
 throw|;
+block|}
 name|List
 argument_list|<
 name|BibtexEntry
@@ -537,11 +541,15 @@ name|res
 operator|!=
 literal|null
 condition|)
+block|{
+name|ImportFormatReader
+operator|.
 name|purgeEmptyEntries
 argument_list|(
 name|res
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|res
 return|;
@@ -580,6 +588,7 @@ name|importer
 operator|==
 literal|null
 condition|)
+block|{
 throw|throw
 operator|new
 name|IllegalArgumentException
@@ -589,6 +598,7 @@ operator|+
 name|format
 argument_list|)
 throw|;
+block|}
 return|return
 name|importFromFile
 argument_list|(
@@ -662,6 +672,7 @@ argument_list|(
 name|stream
 argument_list|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|IOException
@@ -674,6 +685,7 @@ literal|"Wrong file format"
 argument_list|)
 argument_list|)
 throw|;
+block|}
 name|stream
 operator|=
 operator|new
@@ -727,6 +739,8 @@ argument_list|>
 name|bibentries
 parameter_list|)
 block|{
+name|ImportFormatReader
+operator|.
 name|purgeEmptyEntries
 argument_list|(
 name|bibentries
@@ -753,9 +767,9 @@ name|entry
 operator|.
 name|setId
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -788,7 +802,7 @@ return|return
 name|database
 return|;
 block|}
-comment|/**    * All custom importers.    *     *<p>Elements are in default order.</p>    *     * @return all custom importers, elements are of type InputFormat    */
+comment|/**      * All custom importers.      *       *<p>Elements are in default order.</p>      *       * @return all custom importers, elements are of type InputFormat      */
 DECL|method|getCustomImportFormats ()
 specifier|public
 name|SortedSet
@@ -840,7 +854,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/**    * All built-in importers.    *     *<p>Elements are in default order.</p>    *     * @return all custom importers, elements are of type InputFormat    */
+comment|/**      * All built-in importers.      *       *<p>Elements are in default order.</p>      *       * @return all custom importers, elements are of type InputFormat      */
 DECL|method|getBuiltInInputFormats ()
 specifier|public
 name|SortedSet
@@ -893,7 +907,7 @@ return|return
 name|result
 return|;
 block|}
-comment|/** 	 * All importers. 	 *  	 *<p> 	 * Elements are in default order. 	 *</p> 	 *  	 * @return all custom importers, elements are of type InputFormat 	 */
+comment|/**      * All importers.      *       *<p>      * Elements are in default order.      *</p>      *       * @return all custom importers, elements are of type InputFormat      */
 DECL|method|getImportFormats ()
 specifier|public
 name|SortedSet
@@ -909,18 +923,18 @@ operator|.
 name|formats
 return|;
 block|}
-comment|/**    * Human readable list of all known import formats (name and CLI Id).    *     *<p>List is in default-order.</p>    *     * @return  human readable list of all known import formats    */
+comment|/**      * Human readable list of all known import formats (name and CLI Id).      *       *<p>List is in default-order.</p>      *       * @return  human readable list of all known import formats      */
 DECL|method|getImportFormatList ()
 specifier|public
 name|String
 name|getImportFormatList
 parameter_list|()
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 for|for
@@ -982,6 +996,7 @@ condition|;
 name|j
 operator|++
 control|)
+block|{
 name|sb
 operator|.
 name|append
@@ -989,6 +1004,7 @@ argument_list|(
 literal|" "
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
@@ -1014,16 +1030,11 @@ literal|"\n"
 argument_list|)
 expr_stmt|;
 block|}
-name|String
-name|res
-init|=
+return|return
 name|sb
 operator|.
 name|toString
 argument_list|()
-decl_stmt|;
-return|return
-name|res
 return|;
 comment|//.substring(0, res.length()-1);
 block|}
@@ -1049,11 +1060,11 @@ argument_list|(
 literal|" and "
 argument_list|)
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 for|for
@@ -1127,6 +1138,7 @@ name|length
 operator|>
 literal|1
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1134,6 +1146,7 @@ argument_list|(
 literal|", "
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 for|for
 control|(
@@ -1158,10 +1171,13 @@ name|j
 operator|==
 literal|1
 condition|)
+block|{
 name|sb
 operator|.
 name|append
 argument_list|(
+name|ImportFormatReader
+operator|.
 name|expandAll
 argument_list|(
 name|names
@@ -1171,7 +1187,9 @@ index|]
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -1182,16 +1200,20 @@ name|j
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|j
 operator|<
+operator|(
 name|names
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1199,6 +1221,7 @@ argument_list|(
 literal|", "
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else
@@ -1230,6 +1253,8 @@ name|sb
 operator|.
 name|append
 argument_list|(
+name|ImportFormatReader
+operator|.
 name|expandAll
 argument_list|(
 name|names
@@ -1280,12 +1305,15 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|authors
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1293,6 +1321,7 @@ argument_list|(
 literal|" and "
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb
@@ -1306,7 +1335,7 @@ return|;
 block|}
 comment|//------------------------------------------------------------------------------
 DECL|method|expandAll (String s)
-specifier|public
+specifier|private
 specifier|static
 name|String
 name|expandAll
@@ -1326,9 +1355,11 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|s
 return|;
+block|}
 comment|// If only one character (uppercase letter), add a dot and return immediately:
 if|if
 condition|(
@@ -1367,16 +1398,18 @@ argument_list|)
 argument_list|)
 operator|)
 condition|)
+block|{
 return|return
 name|s
 operator|+
 literal|"."
 return|;
-name|StringBuffer
+block|}
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|char
@@ -1615,9 +1648,11 @@ literal|null
 return|;
 block|}
 else|else
+block|{
 return|return
 name|f
 return|;
+block|}
 block|}
 comment|//==================================================
 comment|// Set a field, unless the string to set is empty.
@@ -1648,6 +1683,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|be
 operator|.
 name|setField
@@ -1657,6 +1693,49 @@ argument_list|,
 name|content
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+DECL|method|getUTF8Reader (File f)
+specifier|public
+specifier|static
+name|Reader
+name|getUTF8Reader
+parameter_list|(
+name|File
+name|f
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+name|getReader
+argument_list|(
+name|f
+argument_list|,
+literal|"UTF8"
+argument_list|)
+return|;
+block|}
+DECL|method|getUTF16Reader (File f)
+specifier|public
+specifier|static
+name|Reader
+name|getUTF16Reader
+parameter_list|(
+name|File
+name|f
+parameter_list|)
+throws|throws
+name|IOException
+block|{
+return|return
+name|getReader
+argument_list|(
+name|f
+argument_list|,
+literal|"UTF-16"
+argument_list|)
+return|;
 block|}
 DECL|method|getReader (File f, String encoding)
 specifier|public
@@ -1730,9 +1809,9 @@ return|return
 name|reader
 return|;
 block|}
-comment|/**    * Receives an ArrayList of BibtexEntry instances, iterates through them, and    * removes all entries that have no fields set. This is useful for rooting out    * an unsucessful import (wrong format) that returns a number of empty entries.    */
+comment|/**      * Receives an ArrayList of BibtexEntry instances, iterates through them, and      * removes all entries that have no fields set. This is useful for rooting out      * an unsucessful import (wrong format) that returns a number of empty entries.      */
 DECL|method|purgeEmptyEntries (Collection<BibtexEntry> entries)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|purgeEmptyEntries
@@ -1785,11 +1864,13 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 name|i
 operator|.
 name|remove
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|class|UnknownFormatImport
@@ -1800,11 +1881,13 @@ name|UnknownFormatImport
 block|{
 DECL|field|format
 specifier|public
+specifier|final
 name|String
 name|format
 decl_stmt|;
 DECL|field|parserResult
 specifier|public
+specifier|final
 name|ParserResult
 name|parserResult
 decl_stmt|;
@@ -1833,7 +1916,7 @@ name|parserResult
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Tries to import a file by iterating through the available import filters, 	 * and keeping the import that seems most promising. 	 *  	 * If all fails this method attempts to read this file as bibtex. 	 *  	 * @throws IOException  	 */
+comment|/**      * Tries to import a file by iterating through the available import filters,      * and keeping the import that seems most promising.      *       * If all fails this method attempts to read this file as bibtex.      *       * @throws IOException       */
 DECL|method|importUnknownFormat (String filename)
 specifier|public
 name|UnknownFormatImport
@@ -1916,6 +1999,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|ImportFormatReader
+operator|.
 name|purgeEmptyEntries
 argument_list|(
 name|entries
@@ -2060,6 +2145,8 @@ return|return
 operator|new
 name|UnknownFormatImport
 argument_list|(
+name|ImportFormatReader
+operator|.
 name|BIBTEX_FORMAT
 argument_list|,
 name|pr

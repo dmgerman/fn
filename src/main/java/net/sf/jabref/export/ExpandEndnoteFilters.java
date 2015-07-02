@@ -44,6 +44,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JFileChooser
 import|;
 end_import
@@ -157,21 +167,17 @@ implements|implements
 name|Worker
 block|{
 DECL|field|frame
+specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|file
+specifier|private
 name|File
 name|file
 init|=
 literal|null
-decl_stmt|;
-DECL|field|FILENAME
-specifier|final
-name|String
-name|FILENAME
-init|=
-literal|"/EndNote.zip"
 decl_stmt|;
 comment|/** Creates a new instance of ExpandEndnoteFilters */
 DECL|method|ExpandEndnoteFilters (JabRefFrame frame)
@@ -190,6 +196,8 @@ name|frame
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Unpack EndNote filter set"
@@ -197,6 +205,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -210,6 +220,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -254,7 +266,9 @@ name|filename
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 comment|//if (!filename.substring(4).equalsIgnoreCase(".zip"))
 comment|//    filename += ".zip";
 name|file
@@ -282,7 +296,7 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-literal|"'"
+literal|'\''
 operator|+
 name|file
 operator|.
@@ -318,7 +332,9 @@ name|JOptionPane
 operator|.
 name|OK_OPTION
 condition|)
+block|{
 return|return;
+block|}
 block|}
 comment|// Spin off the GUI thread, and run the run() method.
 operator|(
@@ -342,12 +358,19 @@ literal|null
 expr_stmt|;
 block|}
 comment|/**      * Worker method.      */
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
 name|run
 parameter_list|()
 block|{
+name|String
+name|FILENAME
+init|=
+literal|"/EndNote.zip"
+decl_stmt|;
 name|ResourceExtractor
 name|re
 init|=

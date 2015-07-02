@@ -39,11 +39,13 @@ name|CallBack
 block|{
 DECL|field|worker
 specifier|private
+specifier|final
 name|Worker
 name|worker
 decl_stmt|;
 DECL|field|callBack
 specifier|private
+specifier|final
 name|CallBack
 name|callBack
 decl_stmt|;
@@ -108,6 +110,8 @@ name|callBack
 return|;
 block|}
 comment|/**      * Empty implementation of the update() method. Override this method      * if a callback is needed.      */
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void

@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2012 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2015 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -107,6 +107,7 @@ comment|// {"decimal number of HTML entity", "text HTML entity", "corresponding 
 comment|// Leaving a field empty is OK as it then will not be included
 DECL|field|conversionList
 specifier|private
+specifier|final
 name|String
 index|[]
 index|[]
@@ -490,7 +491,7 @@ literal|"197"
 block|,
 literal|"Aring"
 block|,
-literal|"\\{\\\\AA\\}"
+literal|"\\{\\{\\\\AA\\}\\}"
 block|}
 block|,
 comment|// latin capital letter A with ring above
@@ -812,7 +813,7 @@ literal|"229"
 block|,
 literal|"aring"
 block|,
-literal|"\\{\\\\aa\\}"
+literal|"\\{\\{\\\\aa\\}\\}"
 block|}
 block|,
 comment|// latin small letter a with ring above
@@ -883,7 +884,7 @@ literal|"236"
 block|,
 literal|"igrave"
 block|,
-literal|"\\{\\\\`\\{\\\\i\\}\\}"
+literal|"\\{\\\\`\\{i\\}\\}"
 block|}
 block|,
 comment|// latin small letter i with grave,
@@ -893,7 +894,7 @@ literal|"237"
 block|,
 literal|"iacute"
 block|,
-literal|"\\{\\\\'\\{\\\\i\\}\\}"
+literal|"\\{\\\\'\\{i\\}\\}"
 block|}
 block|,
 comment|// latin small letter i with acute,
@@ -903,7 +904,7 @@ literal|"238"
 block|,
 literal|"icirc"
 block|,
-literal|"\\{\\\\\\^\\{\\\\i\\}\\}"
+literal|"\\{\\\\\\^\\{i\\}\\}"
 block|}
 block|,
 comment|// latin small letter i with circumflex,
@@ -913,7 +914,7 @@ literal|"239"
 block|,
 literal|"iuml"
 block|,
-literal|"\\{\\\\\"\\{\\\\i\\}\\}"
+literal|"\\{\\\\\"\\{i\\}\\}"
 block|}
 block|,
 comment|// latin small letter i with diaeresis,
@@ -1077,6 +1078,24 @@ block|}
 block|,
 comment|// latin small letter y with diaeresis,
 comment|//                                 U+00FF ISOlat1
+block|{
+literal|"332"
+block|,
+literal|"Omacro"
+block|,
+literal|"\\{\\\\=\\{O\\}\\}"
+block|}
+block|,
+comment|// the small letter o with macron
+block|{
+literal|"333"
+block|,
+literal|"omacro"
+block|,
+literal|"\\{\\\\=\\{o\\}\\}"
+block|}
+block|,
+comment|// the big letter O with macron
 block|{
 literal|"402"
 block|,
@@ -1716,7 +1735,7 @@ block|}
 block|,
 comment|// alef symbol = first transfinite cardinal,
 comment|//                                    U+2135 NEW
-comment|/*    alef symbol is NOT the same as hebrew letter alef,          U+05D0 although the same glyph could be used to depict both characters */
+comment|/*    alef symbol is NOT the same as hebrew letter alef,              U+05D0 although the same glyph could be used to depict both characters */
 comment|/* Arrows */
 block|{
 literal|"8592"
@@ -1782,7 +1801,7 @@ literal|"\\{\\$\\\\Leftarrow\\$\\}"
 block|}
 block|,
 comment|// leftwards double arrow, U+21D0 ISOtech
-comment|/*  ISO 10646 does not say that lArr is the same as the 'is implied by' arrow          but also does not have any other character for that function. So ? lArr can          be used for 'is implied by' as ISOtech suggests */
+comment|/*  ISO 10646 does not say that lArr is the same as the 'is implied by' arrow              but also does not have any other character for that function. So ? lArr can              be used for 'is implied by' as ISOtech suggests */
 block|{
 literal|"8657"
 block|,
@@ -1802,7 +1821,7 @@ block|}
 block|,
 comment|// rightwards double arrow,
 comment|//                                     U+21D2 ISOtech
-comment|/*   ISO 10646 does not say this is the 'implies' character but does not have           another character with this function so ?          rArr can be used for 'implies' as ISOtech suggests */
+comment|/*   ISO 10646 does not say this is the 'implies' character but does not have               another character with this function so ?              rArr can be used for 'implies' as ISOtech suggests */
 block|{
 literal|"8659"
 block|,
@@ -1908,7 +1927,7 @@ block|}
 block|,
 comment|// n-ary product = product sign,
 comment|//                                    U+220F ISOamsb
-comment|/*    prod is NOT the same character as U+03A0 'greek capital letter pi' though          the same glyph might be used for both  */
+comment|/*    prod is NOT the same character as U+03A0 'greek capital letter pi' though              the same glyph might be used for both  */
 block|{
 literal|"8721"
 block|,
@@ -1918,7 +1937,7 @@ literal|"\\$\\\\sum\\$"
 block|}
 block|,
 comment|// n-ary sumation, U+2211 ISOamsb
-comment|/*    sum is NOT the same character as U+03A3 'greek capital letter sigma'          though the same glyph might be used for both */
+comment|/*    sum is NOT the same character as U+03A3 'greek capital letter sigma'              though the same glyph might be used for both */
 block|{
 literal|"8722"
 block|,
@@ -2038,7 +2057,7 @@ block|}
 block|,
 comment|// tilde operator = varies with = similar to,
 comment|//                                    U+223C ISOtech
-comment|/*  tilde operator is NOT the same character as the tilde, U+007E,          although the same glyph might be used to represent both   */
+comment|/*  tilde operator is NOT the same character as the tilde, U+007E,              although the same glyph might be used to represent both   */
 block|{
 literal|"8773"
 block|,
@@ -2113,7 +2132,7 @@ literal|"\\$\\\\supset\\$"
 block|}
 block|,
 comment|// superset of, U+2283 ISOtech
-comment|/*    note that nsup, 'not a superset of, U+2283' is not covered by the Symbol           font encoding and is not included. Should it be, for symmetry?          It is in ISOamsn   */
+comment|/*    note that nsup, 'not a superset of, U+2283' is not covered by the Symbol               font encoding and is not included. Should it be, for symmetry?              It is in ISOamsn   */
 block|{
 literal|"8836"
 block|,
@@ -2231,7 +2250,7 @@ block|}
 block|,
 comment|// left-pointing angle bracket = bra,
 comment|//                                    U+2329 ISOtech
-comment|/*    lang is NOT the same character as U+003C 'less than'           or U+2039 'single left-pointing angle quotation mark' */
+comment|/*    lang is NOT the same character as U+003C 'less than'               or U+2039 'single left-pointing angle quotation mark' */
 block|{
 literal|"9002"
 block|,
@@ -2242,7 +2261,7 @@ block|}
 block|,
 comment|// right-pointing angle bracket = ket,
 comment|//                                    U+232A ISOtech
-comment|/*    rang is NOT the same character as U+003E 'greater than'           or U+203A 'single right-pointing angle quotation mark' */
+comment|/*    rang is NOT the same character as U+003E 'greater than'               or U+203A 'single right-pointing angle quotation mark' */
 comment|/* Geometric Shapes */
 block|{
 literal|"9674"
@@ -3906,6 +3925,7 @@ decl_stmt|;
 comment|// List of combining accents
 DECL|field|accentList
 specifier|private
+specifier|final
 name|String
 index|[]
 index|[]
@@ -4350,6 +4370,7 @@ block|}
 decl_stmt|;
 DECL|field|escapedSymbols
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -4369,6 +4390,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|escapedAccents
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|Integer
@@ -4388,6 +4410,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|numSymbols
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|Integer
@@ -4407,6 +4430,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|unicodeSymbols
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|Character
@@ -4617,9 +4641,11 @@ name|text
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|Set
 argument_list|<
 name|Character
@@ -4664,6 +4690,8 @@ return|return
 name|text
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|format (String text)
 specifier|public
 name|String
@@ -4679,9 +4707,11 @@ name|text
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|StringBuffer
 name|sb
 init|=
@@ -4803,6 +4833,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -4813,6 +4844,7 @@ operator|)
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|text
 operator|=
@@ -5440,9 +5472,11 @@ name|position
 operator|)
 operator|&&
 operator|(
+operator|(
 name|index
 operator|-
 name|position
+operator|)
 operator|<
 name|MAX_TAG_LENGTH
 operator|)
@@ -5455,10 +5489,12 @@ return|;
 comment|// Just skip the tag.
 block|}
 else|else
+block|{
 return|return
 name|position
 return|;
 comment|// Don't do anything.
+block|}
 block|}
 block|}
 end_class

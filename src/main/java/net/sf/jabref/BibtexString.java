@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+comment|/*  Copyright (C) 2003-2014 JabRef contributors.     This program is free software; you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation; either version 2 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License along     with this program; if not, write to the Free Software Foundation, Inc.,     51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 end_comment
 
 begin_package
@@ -56,6 +56,7 @@ argument_list|)
 block|;
 DECL|field|prefix
 specifier|private
+specifier|final
 name|String
 name|prefix
 decl_stmt|;
@@ -76,7 +77,6 @@ block|}
 DECL|method|get (String name)
 specifier|public
 specifier|static
-specifier|final
 name|Type
 name|get
 parameter_list|(
@@ -90,8 +90,8 @@ name|name
 operator|.
 name|length
 argument_list|()
-operator|==
-literal|0
+operator|<=
+literal|1
 condition|)
 block|{
 return|return
@@ -129,9 +129,11 @@ literal|""
 operator|)
 argument_list|)
 condition|)
+block|{
 return|return
 name|OTHER
 return|;
+block|}
 for|for
 control|(
 name|Type
@@ -161,9 +163,11 @@ operator|+
 literal|""
 argument_list|)
 condition|)
+block|{
 return|return
 name|t
 return|;
+block|}
 block|}
 return|return
 name|OTHER
@@ -171,16 +175,22 @@ return|;
 block|}
 block|}
 DECL|field|_name
-DECL|field|_content
-DECL|field|_id
+specifier|private
 name|String
 name|_name
-decl_stmt|,
+decl_stmt|;
+DECL|field|_content
+specifier|private
+name|String
 name|_content
-decl_stmt|,
+decl_stmt|;
+DECL|field|_id
+specifier|private
+name|String
 name|_id
 decl_stmt|;
 DECL|field|_type
+specifier|private
 name|Type
 name|_type
 decl_stmt|;
@@ -345,6 +355,8 @@ operator|=
 name|content
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|clone ()
 specifier|public
 name|Object

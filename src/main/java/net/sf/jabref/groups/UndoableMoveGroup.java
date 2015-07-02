@@ -46,7 +46,6 @@ end_comment
 
 begin_class
 DECL|class|UndoableMoveGroup
-specifier|public
 class|class
 name|UndoableMoveGroup
 extends|extends
@@ -158,6 +157,8 @@ name|moveNode
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getUndoPresentationName ()
 specifier|public
 name|String
@@ -182,6 +183,8 @@ literal|"move group"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRedoPresentationName ()
 specifier|public
 name|String
@@ -206,6 +209,8 @@ literal|"move group"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|undo ()
 specifier|public
 name|void
@@ -259,6 +264,8 @@ name|revalidateGroups
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|redo ()
 specifier|public
 name|void

@@ -63,9 +63,6 @@ class|class
 name|HintListModel
 extends|extends
 name|DefaultListModel
-argument_list|<
-name|IntegrityMessage
-argument_list|>
 block|{
 DECL|method|setData (Vector<IntegrityMessage> newData)
 specifier|public

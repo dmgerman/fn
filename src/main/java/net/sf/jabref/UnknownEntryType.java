@@ -14,16 +14,6 @@ name|jabref
 package|;
 end_package
 
-begin_import
-import|import
-name|java
-operator|.
-name|io
-operator|.
-name|Writer
-import|;
-end_import
-
 begin_comment
 comment|/**  * This class is used to represent an unknown entry type, e.g. encountered  * during bibtex parsing. The only known information is the type name.  * This is useful if the bibtex file contains type definitions that are used  * in the file - because the entries will be parsed before the type definitions  * are found. In the meantime, the entries will be assigned an   * UnknownEntryType giving the name.  */
 end_comment
@@ -38,11 +28,13 @@ name|BibtexEntryType
 block|{
 DECL|field|name
 specifier|private
+specifier|final
 name|String
 name|name
 decl_stmt|;
 DECL|field|fields
 specifier|private
+specifier|final
 name|String
 index|[]
 name|fields
@@ -66,6 +58,8 @@ operator|=
 name|name_
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getName ()
 specifier|public
 name|String
@@ -76,6 +70,8 @@ return|return
 name|name
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getOptionalFields ()
 specifier|public
 name|String
@@ -87,6 +83,8 @@ return|return
 name|fields
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRequiredFields ()
 specifier|public
 name|String
@@ -98,6 +96,8 @@ return|return
 name|fields
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|describeRequiredFields ()
 specifier|public
 name|String
@@ -108,6 +108,8 @@ return|return
 literal|"unknown"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|hasAllRequiredFields (BibtexEntry entry, BibtexDatabase database)
 specifier|public
 name|boolean

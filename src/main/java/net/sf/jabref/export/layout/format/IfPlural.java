@@ -49,13 +49,17 @@ extends|extends
 name|AbstractParamLayoutFormatter
 block|{
 DECL|field|pluralText
-DECL|field|singularText
-specifier|protected
+specifier|private
 name|String
 name|pluralText
-decl_stmt|,
+decl_stmt|;
+DECL|field|singularText
+specifier|private
+name|String
 name|singularText
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|setArgument (String arg)
 specifier|public
 name|void
@@ -69,6 +73,8 @@ name|String
 index|[]
 name|parts
 init|=
+name|AbstractParamLayoutFormatter
+operator|.
 name|parseArgument
 argument_list|(
 name|arg
@@ -82,8 +88,10 @@ name|length
 operator|<
 literal|2
 condition|)
+block|{
 return|return;
 comment|// TODO: too few arguments. Print an error message here?
+block|}
 name|pluralText
 operator|=
 name|parts
@@ -99,6 +107,8 @@ literal|1
 index|]
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -114,10 +124,12 @@ name|pluralText
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 name|fieldText
 return|;
 comment|// TODO: argument missing or invalid. Print an error message here?
+block|}
 if|if
 condition|(
 name|fieldText
@@ -127,13 +139,17 @@ argument_list|(
 literal|".*\\sand\\s.*"
 argument_list|)
 condition|)
+block|{
 return|return
 name|pluralText
 return|;
+block|}
 else|else
+block|{
 return|return
 name|singularText
 return|;
+block|}
 block|}
 block|}
 end_class

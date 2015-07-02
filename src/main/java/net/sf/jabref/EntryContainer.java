@@ -25,7 +25,6 @@ interface|interface
 name|EntryContainer
 block|{
 DECL|method|getEntry ()
-specifier|public
 name|BibtexEntry
 name|getEntry
 parameter_list|()

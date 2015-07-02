@@ -93,6 +93,8 @@ block|{
 name|Component
 name|child
 init|=
+name|TestUtils
+operator|.
 name|getChildNamed
 argument_list|(
 name|aChildren

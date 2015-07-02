@@ -56,10 +56,8 @@ name|RemoveLatexCommands
 implements|implements
 name|LayoutFormatter
 block|{
-DECL|field|i
-name|int
-name|i
-decl_stmt|;
+annotation|@
+name|Override
 DECL|method|format (String field)
 specifier|public
 name|String
@@ -69,11 +67,11 @@ name|String
 name|field
 parameter_list|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 literal|""
 argument_list|)
@@ -94,6 +92,9 @@ decl_stmt|,
 name|incommand
 init|=
 literal|false
+decl_stmt|;
+name|int
+name|i
 decl_stmt|;
 for|for
 control|(
@@ -174,13 +175,17 @@ operator|!
 name|incommand
 operator|&&
 operator|(
+operator|(
 name|c
 operator|==
 literal|'{'
+operator|)
 operator|||
+operator|(
 name|c
 operator|==
 literal|'}'
+operator|)
 operator|)
 condition|)
 block|{
@@ -219,6 +224,7 @@ condition|(
 operator|!
 name|incommand
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -226,7 +232,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
-comment|// Else we are in a command, and should not keep the letter.
+block|}
 else|else
 block|{
 name|currentCommand
@@ -263,7 +269,7 @@ operator|)
 condition|)
 block|{
 comment|// This indicates that we are in a command of the type \^o or \~{n}
-comment|/*            if (i>= field.length()-1)                break testCharCom;               String command = currentCommand.toString();              i++;              c = field.charAt(i);              //System.out.println("next: "+(char)c);              String combody;              if (c == '{') {                IntAndString part = getPart(field, i);                i += part.i;                combody = part.s;              }              else {                combody = field.substring(i,i+1);                //System.out.println("... "+combody);              }              Object result = Globals.HTMLCHARS.get(command+combody);              if (result != null)                sb.append((String)result);  */
+comment|/*            if (i>= field.length()-1)                                       break testCharCom;                                      String command = currentCommand.toString();                                     i++;                                     c = field.charAt(i);                                     //System.out.println("next: "+(char)c);                                     String combody;                                     if (c == '{') {                                       IntAndString part = getPart(field, i);                                       i += part.i;                                       combody = part.s;                                     }                                     else {                                       combody = field.substring(i,i+1);                                       //System.out.println("... "+combody);                                     }                                     Object result = Globals.HTMLCHARS.get(command+combody);                                     if (result != null)                                       sb.append((String)result);                         */
 name|incommand
 operator|=
 literal|false
@@ -295,6 +301,7 @@ condition|(
 operator|!
 name|incommand
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -303,7 +310,9 @@ name|c
 argument_list|)
 expr_stmt|;
 comment|// Else we are in a command, and should not keep the letter.
+block|}
 else|else
+block|{
 name|currentCommand
 operator|.
 name|append
@@ -311,6 +320,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -336,6 +346,7 @@ literal|'{'
 operator|)
 operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -343,6 +354,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 if|if
@@ -351,6 +363,7 @@ name|c
 operator|!=
 literal|'{'
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -358,6 +371,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|incommand
 operator|=

@@ -333,6 +333,7 @@ block|{
 DECL|field|CLIENT
 specifier|private
 specifier|static
+specifier|final
 name|Client
 name|CLIENT
 init|=
@@ -343,6 +344,8 @@ argument_list|()
 decl_stmt|;
 static|static
 block|{
+name|SplWebClient
+operator|.
 name|CLIENT
 operator|.
 name|setConnectTimeout
@@ -350,6 +353,8 @@ argument_list|(
 literal|1000
 argument_list|)
 expr_stmt|;
+name|SplWebClient
+operator|.
 name|CLIENT
 operator|.
 name|setReadTimeout
@@ -361,9 +366,12 @@ block|}
 DECL|field|WEBRESOURCE
 specifier|private
 specifier|static
+specifier|final
 name|WebResource
 name|WEBRESOURCE
 init|=
+name|SplWebClient
+operator|.
 name|CLIENT
 operator|.
 name|resource
@@ -374,9 +382,12 @@ decl_stmt|;
 DECL|field|INTERNETRESOURCE
 specifier|private
 specifier|static
+specifier|final
 name|WebResource
 name|INTERNETRESOURCE
 init|=
+name|SplWebClient
+operator|.
 name|CLIENT
 operator|.
 name|resource
@@ -406,12 +417,16 @@ block|{
 if|if
 condition|(
 operator|!
+name|SplWebClient
+operator|.
 name|isWebServiceAvailable
 argument_list|()
 condition|)
 block|{
 if|if
 condition|(
+name|SplWebClient
+operator|.
 name|isInternetAvailable
 argument_list|()
 condition|)
@@ -433,6 +448,8 @@ block|}
 block|}
 if|if
 condition|(
+name|SplWebClient
+operator|.
 name|isWebServiceOutDated
 argument_list|()
 condition|)
@@ -446,6 +463,8 @@ block|}
 if|if
 condition|(
 operator|!
+name|SplWebClient
+operator|.
 name|isMetaDataServiceAvailable
 argument_list|()
 condition|)
@@ -540,6 +559,8 @@ expr_stmt|;
 name|ClientResponse
 name|response
 init|=
+name|SplWebClient
+operator|.
 name|WEBRESOURCE
 operator|.
 name|path
@@ -566,6 +587,7 @@ decl_stmt|;
 comment|//System.out.println(response.getEntity(String.class));
 if|if
 condition|(
+operator|(
 name|response
 operator|.
 name|getClientResponseStatus
@@ -576,6 +598,7 @@ operator|.
 name|Status
 operator|.
 name|OK
+operator|)
 operator|&&
 name|response
 operator|.
@@ -837,7 +860,7 @@ operator|.
 name|getValue
 argument_list|()
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|temp
 operator|.
@@ -918,7 +941,7 @@ name|NO_METADATA
 return|;
 block|}
 DECL|method|isWebServiceOutDated ()
-specifier|public
+specifier|private
 specifier|static
 name|boolean
 name|isWebServiceOutDated
@@ -929,6 +952,8 @@ block|{
 name|ClientResponse
 name|response
 init|=
+name|SplWebClient
+operator|.
 name|WEBRESOURCE
 operator|.
 name|path
@@ -951,6 +976,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|response
 operator|.
 name|getClientResponseStatus
@@ -961,6 +987,7 @@ operator|.
 name|Status
 operator|.
 name|OK
+operator|)
 operator|&&
 name|response
 operator|.
@@ -1022,7 +1049,7 @@ literal|false
 return|;
 block|}
 DECL|method|isMetaDataServiceAvailable ()
-specifier|public
+specifier|private
 specifier|static
 name|boolean
 name|isMetaDataServiceAvailable
@@ -1033,6 +1060,8 @@ block|{
 name|ClientResponse
 name|response
 init|=
+name|SplWebClient
+operator|.
 name|WEBRESOURCE
 operator|.
 name|path
@@ -1049,6 +1078,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|response
 operator|.
 name|getClientResponseStatus
@@ -1059,6 +1089,7 @@ operator|.
 name|Status
 operator|.
 name|OK
+operator|)
 operator|&&
 name|response
 operator|.
@@ -1080,9 +1111,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|entity
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|entity
 operator|.
@@ -1111,7 +1144,7 @@ literal|true
 return|;
 block|}
 DECL|method|isWebServiceAvailable ()
-specifier|public
+specifier|private
 specifier|static
 name|boolean
 name|isWebServiceAvailable
@@ -1122,6 +1155,8 @@ block|{
 name|ClientResponse
 name|response
 init|=
+name|SplWebClient
+operator|.
 name|WEBRESOURCE
 operator|.
 name|path
@@ -1152,7 +1187,7 @@ literal|true
 return|;
 block|}
 DECL|method|isInternetAvailable ()
-specifier|public
+specifier|private
 specifier|static
 name|boolean
 name|isInternetAvailable
@@ -1163,6 +1198,8 @@ block|{
 name|ClientResponse
 name|response
 init|=
+name|SplWebClient
+operator|.
 name|INTERNETRESOURCE
 operator|.
 name|get

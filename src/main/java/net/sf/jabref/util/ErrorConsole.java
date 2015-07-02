@@ -139,6 +139,8 @@ extends|extends
 name|Handler
 block|{
 DECL|field|errByteStream
+specifier|private
+specifier|final
 name|ByteArrayOutputStream
 name|errByteStream
 init|=
@@ -147,6 +149,8 @@ name|ByteArrayOutputStream
 argument_list|()
 decl_stmt|;
 DECL|field|outByteStream
+specifier|private
+specifier|final
 name|ByteArrayOutputStream
 name|outByteStream
 init|=
@@ -155,6 +159,8 @@ name|ByteArrayOutputStream
 argument_list|()
 decl_stmt|;
 DECL|field|logOutput
+specifier|private
+specifier|final
 name|ArrayList
 argument_list|<
 name|String
@@ -169,18 +175,22 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|logOutputCache
+specifier|private
 name|String
 name|logOutputCache
 init|=
 literal|""
 decl_stmt|;
 DECL|field|logOutputCacheRefreshNeeded
+specifier|private
 name|boolean
 name|logOutputCacheRefreshNeeded
 init|=
 literal|true
 decl_stmt|;
 DECL|field|fmt
+specifier|private
+specifier|final
 name|SimpleFormatter
 name|fmt
 init|=
@@ -214,17 +224,25 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|ErrorConsole
+operator|.
 name|instance
 operator|==
 literal|null
 condition|)
+block|{
+name|ErrorConsole
+operator|.
 name|instance
 operator|=
 operator|new
 name|ErrorConsole
 argument_list|()
 expr_stmt|;
+block|}
 return|return
+name|ErrorConsole
+operator|.
 name|instance
 return|;
 block|}
@@ -411,10 +429,8 @@ operator|.
 name|getText
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 operator|)
 condition|)
 block|{
@@ -446,7 +462,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|displayErrorConsole (JFrame parent)
-specifier|public
+specifier|private
 name|void
 name|displayErrorConsole
 parameter_list|(
@@ -558,6 +574,7 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|field|frame
+specifier|final
 name|JFrame
 name|frame
 decl_stmt|;
@@ -581,6 +598,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SHORT_DESCRIPTION
 argument_list|,
 name|Globals
@@ -598,6 +617,8 @@ operator|=
 name|frame
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -634,12 +655,14 @@ block|}
 comment|// All writes to this print stream are copied to two print streams
 DECL|class|TeeStream
 specifier|public
+specifier|static
 class|class
 name|TeeStream
 extends|extends
 name|PrintStream
 block|{
 DECL|field|out
+specifier|final
 name|PrintStream
 name|out
 decl_stmt|;
@@ -666,14 +689,16 @@ operator|=
 name|out2
 expr_stmt|;
 block|}
-DECL|method|write (byte buf[], int off, int len)
+annotation|@
+name|Override
+DECL|method|write (byte[] buf, int off, int len)
 specifier|public
 name|void
 name|write
 parameter_list|(
 name|byte
-name|buf
 index|[]
+name|buf
 parameter_list|,
 name|int
 name|off
@@ -714,6 +739,8 @@ name|ignored
 parameter_list|)
 block|{             }
 block|}
+annotation|@
+name|Override
 DECL|method|flush ()
 specifier|public
 name|void
@@ -786,6 +813,8 @@ operator|.
 name|size
 argument_list|()
 operator|<
+name|ErrorConsole
+operator|.
 name|MAXLOGLINES
 condition|)
 block|{
@@ -811,6 +840,8 @@ operator|.
 name|size
 argument_list|()
 operator|>
+name|ErrorConsole
+operator|.
 name|MAXLOGLINES
 condition|)
 block|{

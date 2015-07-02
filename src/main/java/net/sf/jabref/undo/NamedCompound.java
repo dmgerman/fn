@@ -61,10 +61,13 @@ extends|extends
 name|CompoundEdit
 block|{
 DECL|field|name
+specifier|private
+specifier|final
 name|String
 name|name
 decl_stmt|;
 DECL|field|hasEdits
+specifier|private
 name|boolean
 name|hasEdits
 init|=
@@ -88,6 +91,8 @@ operator|=
 name|name
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|addEdit (UndoableEdit undoableEdit)
 specifier|public
 name|boolean
@@ -120,6 +125,8 @@ return|return
 name|hasEdits
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getUndoPresentationName ()
 specifier|public
 name|String
@@ -139,6 +146,8 @@ operator|+
 name|name
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRedoPresentationName ()
 specifier|public
 name|String

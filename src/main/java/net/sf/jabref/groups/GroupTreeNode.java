@@ -176,7 +176,7 @@ name|DataFlavor
 name|flavor
 decl_stmt|;
 DECL|field|flavors
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|DataFlavor
@@ -223,11 +223,13 @@ operator|new
 name|DataFlavor
 index|[]
 block|{
+name|GroupTreeNode
+operator|.
 name|flavor
 block|}
 expr_stmt|;
 block|}
-comment|/** 	 * Creates this node and associates the specified group with it. 	 */
+comment|/**      * Creates this node and associates the specified group with it.      */
 DECL|method|GroupTreeNode (AbstractGroup group)
 specifier|public
 name|GroupTreeNode
@@ -242,7 +244,7 @@ name|group
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * @return The group associated with this node. 	 */
+comment|/**      * @return The group associated with this node.      */
 DECL|method|getGroup ()
 specifier|public
 name|AbstractGroup
@@ -257,7 +259,7 @@ name|getUserObject
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Associates the specified group with this node. 	 */
+comment|/**      * Associates the specified group with this node.      */
 DECL|method|setGroup (AbstractGroup group)
 specifier|public
 name|void
@@ -273,18 +275,18 @@ name|group
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Returns a textual representation of this node and its children. This 	 * representation contains both the tree structure and the textual 	 * representations of the group associated with each node. It thus allows a 	 * complete reconstruction of this object and its children. 	 */
+comment|/**      * Returns a textual representation of this node and its children. This      * representation contains both the tree structure and the textual      * representations of the group associated with each node. It thus allows a      * complete reconstruction of this object and its children.      */
 DECL|method|getTreeAsString ()
 specifier|public
 name|String
 name|getTreeAsString
 parameter_list|()
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|Enumeration
@@ -353,7 +355,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Creates a deep copy of this node and all of its children, including all 	 * groups. 	 *  	 * @return This object's deep copy. 	 */
+comment|/**      * Creates a deep copy of this node and all of its children, including all      * groups.      *       * @return This object's deep copy.      */
 DECL|method|deepCopy ()
 specifier|public
 name|GroupTreeNode
@@ -385,6 +387,7 @@ condition|;
 operator|++
 name|i
 control|)
+block|{
 name|copy
 operator|.
 name|add
@@ -403,11 +406,12 @@ name|deepCopy
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|copy
 return|;
 block|}
-comment|/**          * Update all groups, if necessary, to handle the situation where the group          * tree is applied to a different BibtexDatabase than it was created for. This          * is for instance used when updating the group tree due to an external change.          *          * @param db The database to refresh for.          */
+comment|/**      * Update all groups, if necessary, to handle the situation where the group      * tree is applied to a different BibtexDatabase than it was created for. This      * is for instance used when updating the group tree due to an external change.      *      * @param db The database to refresh for.      */
 DECL|method|refreshGroupsForNewDatabase (BibtexDatabase db)
 specifier|public
 name|void
@@ -463,7 +467,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * @return An indexed path from the root node to this node. The elements in 	 *         the returned array represent the child index of each node in the 	 *         path. If this node is the root node, the returned array has zero 	 *         elements. 	 */
+comment|/**      * @return An indexed path from the root node to this node. The elements in      *         the returned array represent the child index of each node in the      *         path. If this node is the root node, the returned array has zero      *         elements.      */
 DECL|method|getIndexedPath ()
 specifier|public
 name|int
@@ -508,6 +512,7 @@ condition|;
 operator|++
 name|i
 control|)
+block|{
 name|indexedPath
 index|[
 name|i
@@ -530,11 +535,12 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|indexedPath
 return|;
 block|}
-comment|/** 	 * Returns the node indicated by the specified indexedPath, which contains 	 * child indices obtained e.g. by getIndexedPath(). 	 */
+comment|/**      * Returns the node indicated by the specified indexedPath, which contains      * child indices obtained e.g. by getIndexedPath().      */
 DECL|method|getNode (int[] indexedPath)
 specifier|public
 name|GroupTreeNode
@@ -557,6 +563,7 @@ name|anIndexedPath
 range|:
 name|indexedPath
 control|)
+block|{
 name|cursor
 operator|=
 operator|(
@@ -569,11 +576,12 @@ argument_list|(
 name|anIndexedPath
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|cursor
 return|;
 block|}
-comment|/** 	 * @param indexedPath 	 *            A sequence of child indices that describe a path from this 	 *            node to one of its desendants. Be aware that if<b>indexedPath 	 *</b> was obtained by getIndexedPath(), this node should 	 *            usually be the root node. 	 * @return The descendant found by evaluating<b>indexedPath</b>. If the 	 *         path could not be traversed completely (i.e. one of the child 	 *         indices did not exist), null will be returned. 	 */
+comment|/**      * @param indexedPath      *            A sequence of child indices that describe a path from this      *            node to one of its desendants. Be aware that if<b>indexedPath      *</b> was obtained by getIndexedPath(), this node should      *            usually be the root node.      * @return The descendant found by evaluating<b>indexedPath</b>. If the      *         path could not be traversed completely (i.e. one of the child      *         indices did not exist), null will be returned.      */
 DECL|method|getDescendant (int[] indexedPath)
 specifier|public
 name|GroupTreeNode
@@ -596,19 +604,24 @@ name|i
 init|=
 literal|0
 init|;
+operator|(
 name|i
 operator|<
 name|indexedPath
 operator|.
 name|length
+operator|)
 operator|&&
+operator|(
 name|cursor
 operator|!=
 literal|null
+operator|)
 condition|;
 operator|++
 name|i
 control|)
+block|{
 name|cursor
 operator|=
 operator|(
@@ -624,11 +637,12 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|cursor
 return|;
 block|}
-comment|/** 	 * A GroupTreeNode can create a SearchRule that finds elements contained in 	 * its own group, or the union of those elements in its own group and its 	 * children's groups (recursively), or the intersection of the elements in 	 * its own group and its parent's group. This setting is configured in the 	 * group contained in this node. 	 *  	 * @return A SearchRule that finds the desired elements. 	 */
+comment|/**      * A GroupTreeNode can create a SearchRule that finds elements contained in      * its own group, or the union of those elements in its own group and its      * children's groups (recursively), or the intersection of the elements in      * its own group and its parent's group. This setting is configured in the      * group contained in this node.      *       * @return A SearchRule that finds the desired elements.      */
 DECL|method|getSearchRule ()
 specifier|public
 name|SearchRule
@@ -647,7 +661,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|getSearchRule (int originalContext)
-specifier|protected
+specifier|private
 name|SearchRule
 name|getSearchRule
 parameter_list|(
@@ -673,6 +687,7 @@ name|AbstractGroup
 operator|.
 name|INDEPENDENT
 condition|)
+block|{
 return|return
 name|getGroup
 argument_list|()
@@ -680,6 +695,7 @@ operator|.
 name|getSearchRule
 argument_list|()
 return|;
+block|}
 name|AndOrSearchRuleSet
 name|searchRule
 init|=
@@ -708,17 +724,21 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|context
 operator|==
 name|AbstractGroup
 operator|.
 name|INCLUDING
+operator|)
 operator|&&
+operator|(
 name|originalContext
 operator|!=
 name|AbstractGroup
 operator|.
 name|REFINING
+operator|)
 condition|)
 block|{
 for|for
@@ -736,6 +756,7 @@ condition|;
 operator|++
 name|i
 control|)
+block|{
 name|searchRule
 operator|.
 name|addRule
@@ -757,24 +778,29 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|context
 operator|==
 name|AbstractGroup
 operator|.
 name|REFINING
+operator|)
 operator|&&
 operator|!
 name|isRoot
 argument_list|()
 operator|&&
+operator|(
 name|originalContext
 operator|!=
 name|AbstractGroup
 operator|.
 name|INCLUDING
+operator|)
 condition|)
 block|{
 name|searchRule
@@ -892,7 +918,7 @@ name|children
 argument_list|()
 return|;
 block|}
-comment|/** 	 * Scans the subtree rooted at this node. 	 *  	 * @return All groups that contain the specified entry. 	 */
+comment|/**      * Scans the subtree rooted at this node.      *       * @return All groups that contain the specified entry.      */
 DECL|method|getMatchingGroups (BibtexEntry entry)
 specifier|public
 name|AbstractGroup
@@ -959,7 +985,7 @@ argument_list|,
 name|entry
 argument_list|)
 condition|)
-comment|// first argument is never used
+block|{
 name|matchingGroups
 operator|.
 name|add
@@ -967,6 +993,7 @@ argument_list|(
 name|group
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|AbstractGroup
 index|[]
@@ -997,10 +1024,12 @@ name|canMoveUp
 parameter_list|()
 block|{
 return|return
+operator|(
 name|getPreviousSibling
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 operator|(
@@ -1018,10 +1047,12 @@ name|canMoveDown
 parameter_list|()
 block|{
 return|return
+operator|(
 name|getNextSibling
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 operator|(
@@ -1071,10 +1102,12 @@ name|canMoveRight
 parameter_list|()
 block|{
 return|return
+operator|(
 name|getPreviousSibling
 argument_list|()
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 operator|(
@@ -1197,12 +1230,14 @@ if|if
 condition|(
 name|index
 operator|<
+operator|(
 name|parent
 operator|.
 name|getChildCount
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 name|UndoableMoveGroup
@@ -1284,9 +1319,11 @@ name|myGrandParent
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 specifier|final
 name|int
 name|index
@@ -1361,9 +1398,11 @@ name|myPreviousSibling
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|UndoableMoveGroup
 name|undo
 init|=
@@ -1398,7 +1437,7 @@ return|return
 name|undo
 return|;
 block|}
-comment|/** 	 * @param path 	 *            A sequence of child indices that designate a node relative to 	 *            this node. 	 * @return The node designated by the specified path, or null if one or more 	 *         indices in the path could not be resolved. 	 */
+comment|/**      * @param path      *            A sequence of child indices that designate a node relative to      *            this node.      * @return The node designated by the specified path, or null if one or more      *         indices in the path could not be resolved.      */
 DECL|method|getChildAt (int[] path)
 specifier|public
 name|GroupTreeNode
@@ -1421,19 +1460,24 @@ name|i
 init|=
 literal|0
 init|;
+operator|(
 name|i
 operator|<
 name|path
 operator|.
 name|length
+operator|)
 operator|&&
+operator|(
 name|cursor
 operator|!=
 literal|null
+operator|)
 condition|;
 operator|++
 name|i
 control|)
+block|{
 name|cursor
 operator|=
 operator|(
@@ -1449,6 +1493,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|cursor
 return|;
@@ -1471,10 +1516,12 @@ argument_list|()
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
 comment|// paranoia
+block|}
 name|AbstractUndoableEdit
 name|undo
 init|=
@@ -1492,6 +1539,7 @@ name|undo
 operator|instanceof
 name|UndoableChangeAssignment
 condition|)
+block|{
 operator|(
 operator|(
 name|UndoableChangeAssignment
@@ -1504,6 +1552,7 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|undo
 return|;
@@ -1526,10 +1575,12 @@ argument_list|()
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
 comment|// paranoia
+block|}
 name|AbstractUndoableEdit
 name|undo
 init|=
@@ -1547,6 +1598,7 @@ name|undo
 operator|instanceof
 name|UndoableChangeAssignment
 condition|)
+block|{
 operator|(
 operator|(
 name|UndoableChangeAssignment
@@ -1559,10 +1611,13 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|undo
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTransferDataFlavors ()
 specifier|public
 name|DataFlavor
@@ -1571,9 +1626,13 @@ name|getTransferDataFlavors
 parameter_list|()
 block|{
 return|return
+name|GroupTreeNode
+operator|.
 name|flavors
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isDataFlavorSupported (DataFlavor someFlavor)
 specifier|public
 name|boolean
@@ -1594,6 +1653,8 @@ name|flavor
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTransferData (DataFlavor someFlavor)
 specifier|public
 name|Object
@@ -1615,6 +1676,7 @@ argument_list|(
 name|someFlavor
 argument_list|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|UnsupportedFlavorException
@@ -1622,11 +1684,14 @@ argument_list|(
 name|someFlavor
 argument_list|)
 throw|;
+block|}
 return|return
 name|this
 return|;
 block|}
-comment|/** 	 * Recursively compares this node's group and all subgroups. 	 */
+comment|/**      * Recursively compares this node's group and all subgroups.      */
+annotation|@
+name|Override
 DECL|method|equals (Object other)
 specifier|public
 name|boolean
@@ -1645,9 +1710,11 @@ operator|instanceof
 name|GroupTreeNode
 operator|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 specifier|final
 name|GroupTreeNode
 name|otherNode
@@ -1667,9 +1734,11 @@ operator|.
 name|getChildCount
 argument_list|()
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|AbstractGroup
 name|g1
 init|=
@@ -1687,37 +1756,51 @@ decl_stmt|;
 if|if
 condition|(
 operator|(
+operator|(
 name|g1
 operator|==
 literal|null
+operator|)
 operator|&&
+operator|(
 name|g2
 operator|!=
 literal|null
 operator|)
+operator|)
 operator|||
+operator|(
 operator|(
 name|g1
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|g2
 operator|==
 literal|null
 operator|)
+operator|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 if|if
 condition|(
+operator|(
 name|g1
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|g2
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|g1
@@ -1727,9 +1810,11 @@ argument_list|(
 name|g2
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 for|for
 control|(
 name|int
@@ -1764,9 +1849,11 @@ name|i
 argument_list|)
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 return|return
 literal|true

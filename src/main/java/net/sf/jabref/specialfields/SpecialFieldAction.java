@@ -83,40 +83,47 @@ DECL|class|SpecialFieldAction
 specifier|public
 class|class
 name|SpecialFieldAction
-extends|extends
+implements|implements
 name|BaseAction
 block|{
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|doneTextPattern
 specifier|private
+specifier|final
 name|String
 name|doneTextPattern
 decl_stmt|;
 DECL|field|c
 specifier|private
+specifier|final
 name|SpecialField
 name|c
 decl_stmt|;
 DECL|field|value
+specifier|private
+specifier|final
 name|String
 name|value
 decl_stmt|;
 DECL|field|nullFieldIfValueIsTheSame
 specifier|private
+specifier|final
 name|boolean
 name|nullFieldIfValueIsTheSame
 decl_stmt|;
 DECL|field|undoText
 specifier|private
+specifier|final
 name|String
 name|undoText
 decl_stmt|;
-comment|/** 	 *  	 * @param nullFieldIfValueIsTheSame - false also causes that doneTextPattern has two place holders %0 for the value and %1 for the sum of entries 	 * @param doneTextPattern - the pattern to use to update status information shown in MainFrame 	 */
-DECL|method|SpecialFieldAction ( JabRefFrame frame, SpecialField c, String value, boolean nullFieldIfValueIsTheSame, String undoText, String doneTextPattern )
+comment|/**      *       * @param nullFieldIfValueIsTheSame - false also causes that doneTextPattern has two place holders %0 for the value and %1 for the sum of entries      * @param doneTextPattern - the pattern to use to update status information shown in MainFrame      */
+DECL|method|SpecialFieldAction ( JabRefFrame frame, SpecialField c, String value, boolean nullFieldIfValueIsTheSame, String undoText, String doneTextPattern)
 specifier|public
 name|SpecialFieldAction
 parameter_list|(
@@ -176,6 +183,8 @@ operator|=
 name|doneTextPattern
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|action ()
 specifier|public
 name|void
@@ -211,7 +220,9 @@ name|bes
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 for|for
 control|(
 name|BibtexEntry
@@ -285,6 +296,7 @@ if|if
 condition|(
 name|nullFieldIfValueIsTheSame
 condition|)
+block|{
 name|outText
 operator|=
 name|Globals
@@ -303,7 +315,9 @@ name|length
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|outText
 operator|=
 name|Globals
@@ -324,6 +338,7 @@ name|length
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|frame
 operator|.
 name|output

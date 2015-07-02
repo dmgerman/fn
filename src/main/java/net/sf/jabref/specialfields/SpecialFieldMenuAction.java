@@ -60,11 +60,13 @@ name|AbstractAction
 block|{
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|actionName
 specifier|private
+specifier|final
 name|String
 name|actionName
 decl_stmt|;
@@ -108,6 +110,8 @@ name|getActionName
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent evt)
 specifier|public
 name|void

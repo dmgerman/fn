@@ -132,6 +132,8 @@ name|RemoveWhitespace
 implements|implements
 name|LayoutFormatter
 block|{
+annotation|@
+name|Override
 DECL|method|format (String fieldEntry)
 specifier|public
 name|String

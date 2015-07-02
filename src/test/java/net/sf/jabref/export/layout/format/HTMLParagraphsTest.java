@@ -38,6 +38,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -75,6 +85,8 @@ operator|new
 name|HTMLParagraphs
 argument_list|()
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|""
@@ -87,6 +99,8 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"<p>\nHello\n</p>"
@@ -99,6 +113,8 @@ literal|"Hello"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"<p>\nHello\nWorld\n</p>"
@@ -111,6 +127,8 @@ literal|"Hello\nWorld"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"<p>\nHello World\n</p>\n<p>\nWhat a lovely day\n</p>"
@@ -123,6 +141,8 @@ literal|"Hello World\n   \nWhat a lovely day\n"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"<p>\nHello World\n</p>\n<p>\nCould not be any better\n</p>\n<p>\nWhat a lovely day\n</p>"

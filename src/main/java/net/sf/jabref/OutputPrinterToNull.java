@@ -36,7 +36,7 @@ parameter_list|(
 name|String
 name|s
 parameter_list|)
-block|{ 	}
+block|{     }
 annotation|@
 name|Override
 DECL|method|showMessage (Object message, String title, int msgType)
@@ -53,7 +53,7 @@ parameter_list|,
 name|int
 name|msgType
 parameter_list|)
-block|{ 	}
+block|{     }
 annotation|@
 name|Override
 DECL|method|showMessage (String string)
@@ -64,7 +64,7 @@ parameter_list|(
 name|String
 name|string
 parameter_list|)
-block|{ 	}
+block|{     }
 block|}
 end_class
 

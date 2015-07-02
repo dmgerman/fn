@@ -92,6 +92,7 @@ decl_stmt|;
 block|}
 DECL|field|tagMap
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String

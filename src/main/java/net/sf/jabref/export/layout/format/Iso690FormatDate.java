@@ -54,6 +54,8 @@ specifier|public
 name|Iso690FormatDate
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 DECL|method|format (String s)
 specifier|public
 name|String
@@ -65,23 +67,25 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|s
 operator|==
 literal|null
+operator|)
 operator|||
 name|s
 operator|.
 name|trim
 argument_list|()
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 name|StringBuilder
 name|sb
 init|=
@@ -152,7 +156,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"-"
+literal|'-'
 argument_list|)
 operator|.
 name|append
@@ -194,7 +198,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"-"
+literal|'-'
 argument_list|)
 operator|.
 name|append
@@ -210,7 +214,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"-"
+literal|'-'
 argument_list|)
 operator|.
 name|append

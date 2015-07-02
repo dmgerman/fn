@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  Copyright (C) 2012 JabRef contributors.     This program is free software: you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation, either version 3 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License     along with this program.  If not, see<http://www.gnu.org/licenses/>. */
+comment|/*  Copyright (C) 2014 JabRef contributors.     This program is free software: you can redistribute it and/or modify     it under the terms of the GNU General Public License as published by     the Free Software Foundation, either version 3 of the License, or     (at your option) any later version.      This program is distributed in the hope that it will be useful,     but WITHOUT ANY WARRANTY; without even the implied warranty of     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the     GNU General Public License for more details.      You should have received a copy of the GNU General Public License     along with this program.  If not, see<http://www.gnu.org/licenses/>. */
 end_comment
 
 begin_package
@@ -126,18 +126,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Globals
 import|;
 end_import
@@ -184,6 +172,7 @@ init|=
 literal|"http://dx.doi.org/%s"
 decl_stmt|;
 DECL|field|caseKeeper
+specifier|private
 specifier|final
 name|CaseKeeper
 name|caseKeeper
@@ -193,6 +182,7 @@ name|CaseKeeper
 argument_list|()
 decl_stmt|;
 DECL|field|unitFormatter
+specifier|private
 specifier|final
 name|UnitFormatter
 name|unitFormatter
@@ -289,25 +279,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getIcon ()
-specifier|public
-name|URL
-name|getIcon
-parameter_list|()
-block|{
-comment|// no special icon for this fetcher available.
-comment|// Therefore, we return some kind of default icon
-return|return
-name|GUIGlobals
-operator|.
-name|getIconUrl
-argument_list|(
-literal|"www"
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|getHelpPage ()
 specifier|public
 name|String
@@ -332,7 +303,7 @@ literal|null
 return|;
 block|}
 DECL|method|getEntryFromDOI (String doi, OutputPrinter status)
-specifier|public
+specifier|private
 name|BibtexEntry
 name|getEntryFromDOI
 parameter_list|(
@@ -383,6 +354,8 @@ name|String
 operator|.
 name|format
 argument_list|(
+name|DOItoBibTeXFetcher
+operator|.
 name|URL_PATTERN
 argument_list|,
 name|q
@@ -452,7 +425,7 @@ name|setRequestProperty
 argument_list|(
 literal|"Accept"
 argument_list|,
-literal|"text/bibliography; style=bibtex"
+literal|"application/x-bibtex"
 argument_list|)
 expr_stmt|;
 name|String
@@ -464,9 +437,11 @@ name|bibtexString
 operator|=
 name|Util
 operator|.
-name|getResults
+name|getResultsWithEncoding
 argument_list|(
 name|conn
+argument_list|,
+literal|"UTF8"
 argument_list|)
 expr_stmt|;
 block|}
@@ -528,6 +503,19 @@ return|return
 literal|null
 return|;
 block|}
+comment|//Usually includes an en-dash in the page range. Char is in cp1252 but not
+comment|// ISO 8859-1 (which is what latex expects). For convenience replace here.
+name|bibtexString
+operator|=
+name|bibtexString
+operator|.
+name|replaceAll
+argument_list|(
+literal|"(pages=\\{[0-9]+)\u2013([0-9]+\\})"
+argument_list|,
+literal|"$1--$2"
+argument_list|)
+expr_stmt|;
 name|BibtexEntry
 name|entry
 init|=

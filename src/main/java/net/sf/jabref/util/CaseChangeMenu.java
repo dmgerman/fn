@@ -98,6 +98,7 @@ name|JMenu
 block|{
 DECL|field|parent
 specifier|private
+specifier|final
 name|JTextComponent
 name|parent
 decl_stmt|;

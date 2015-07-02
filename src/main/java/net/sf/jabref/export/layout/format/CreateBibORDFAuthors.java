@@ -133,6 +133,8 @@ implements|implements
 name|LayoutFormatter
 block|{
 comment|//~ Methods ////////////////////////////////////////////////////////////////
+annotation|@
+name|Override
 DECL|method|format (String fieldText)
 specifier|public
 name|String
@@ -230,19 +232,23 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|names
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|"\n"
+literal|'\n'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|fieldText
@@ -258,7 +264,7 @@ return|;
 block|}
 comment|/**      * @param sb      * @param author      * @param position      */
 DECL|method|singleAuthor (StringBuffer sb, String author, int position)
-specifier|protected
+specifier|private
 name|void
 name|singleAuthor
 parameter_list|(
@@ -298,9 +304,15 @@ operator|.
 name|append
 argument_list|(
 literal|"<bibo:contributor><foaf:Person foaf:name=\""
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|author
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"\"/></bibo:contributor>\n"
 argument_list|)
 expr_stmt|;
@@ -309,9 +321,15 @@ operator|.
 name|append
 argument_list|(
 literal|"<bibo:position>"
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 name|position
-operator|+
+argument_list|)
+operator|.
+name|append
+argument_list|(
 literal|"</bibo:position>\n"
 argument_list|)
 expr_stmt|;

@@ -107,6 +107,7 @@ literal|null
 decl_stmt|;
 DECL|field|winEdtPath
 specifier|private
+specifier|final
 name|JTextField
 name|winEdtPath
 init|=
@@ -115,8 +116,11 @@ name|JTextField
 argument_list|(
 literal|30
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|citeCommand
+specifier|private
+specifier|final
+name|JTextField
 name|citeCommand
 init|=
 operator|new
@@ -125,6 +129,8 @@ argument_list|(
 literal|30
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getName ()
 specifier|public
 name|String
@@ -140,6 +146,8 @@ literal|"Insert selected citations into WinEdt"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getApplicationName ()
 specifier|public
 name|String
@@ -150,6 +158,8 @@ return|return
 literal|"WinEdt"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTooltip ()
 specifier|public
 name|String
@@ -165,6 +175,8 @@ literal|"Push selection to WinEdt"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getIcon ()
 specifier|public
 name|Icon
@@ -180,6 +192,8 @@ literal|"winedt"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeyStrokeName ()
 specifier|public
 name|String
@@ -190,6 +204,8 @@ return|return
 literal|"Push to WinEdt"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|pushEntries (BibtexDatabase database, BibtexEntry[] entries, String keyString, MetaData metaData)
 specifier|public
 name|void
@@ -258,49 +274,6 @@ return|return;
 block|}
 try|try
 block|{
-name|StringBuffer
-name|toSend
-init|=
-operator|new
-name|StringBuffer
-argument_list|(
-literal|"\"[InsText('"
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"citeCommandWinEdt"
-argument_list|)
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|"{"
-argument_list|)
-operator|.
-name|append
-argument_list|(
-name|keyString
-operator|.
-name|replaceAll
-argument_list|(
-literal|"'"
-argument_list|,
-literal|"''"
-argument_list|)
-argument_list|)
-operator|.
-name|append
-argument_list|(
-literal|"}');]\""
-argument_list|)
-decl_stmt|;
 name|Runtime
 operator|.
 name|getRuntime
@@ -314,10 +287,29 @@ index|[]
 block|{
 name|winEdt
 block|,
-name|toSend
+literal|"\"[InsText('"
+operator|+
+name|Globals
 operator|.
-name|toString
-argument_list|()
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"citeCommandWinEdt"
+argument_list|)
+operator|+
+literal|"{"
+operator|+
+name|keyString
+operator|.
+name|replaceAll
+argument_list|(
+literal|"'"
+argument_list|,
+literal|"''"
+argument_list|)
+operator|+
+literal|"}');]\""
 block|}
 argument_list|)
 expr_stmt|;
@@ -339,6 +331,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|operationCompleted (BasePanel panel)
 specifier|public
 name|void
@@ -422,6 +416,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|Globals
 operator|.
 name|lang
@@ -430,6 +425,9 @@ literal|"Pushed citations to WinEdt"
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|requiresBibtexKeys ()
 specifier|public
 name|boolean
@@ -440,6 +438,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getSettingsPanel ()
 specifier|public
 name|JPanel
@@ -452,9 +452,11 @@ name|settings
 operator|==
 literal|null
 condition|)
+block|{
 name|initSettingsPanel
 argument_list|()
 expr_stmt|;
+block|}
 name|winEdtPath
 operator|.
 name|setText
@@ -536,14 +538,11 @@ expr_stmt|;
 name|BrowseAction
 name|action
 init|=
-operator|new
 name|BrowseAction
+operator|.
+name|buildForFile
 argument_list|(
-literal|null
-argument_list|,
 name|winEdtPath
-argument_list|,
-literal|false
 argument_list|)
 decl_stmt|;
 name|JButton
@@ -608,6 +607,8 @@ name|getPanel
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void

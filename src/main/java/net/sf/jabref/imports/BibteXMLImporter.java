@@ -165,6 +165,7 @@ block|{
 DECL|field|logger
 specifier|private
 specifier|static
+specifier|final
 name|Logger
 name|logger
 init|=
@@ -181,6 +182,8 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 comment|/**      * Return the name of this import format.      */
+annotation|@
+name|Override
 DECL|method|getFormatName ()
 specifier|public
 name|String
@@ -192,6 +195,8 @@ literal|"BibTeXML"
 return|;
 block|}
 comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
+annotation|@
+name|Override
 DECL|method|getCLIId ()
 specifier|public
 name|String
@@ -203,6 +208,8 @@ literal|"bibtexml"
 return|;
 block|}
 comment|/**      * Check whether the source is in the correct format for this importer.      */
+annotation|@
+name|Override
 DECL|method|isRecognizedFormat (InputStream stream)
 specifier|public
 name|boolean
@@ -268,15 +275,19 @@ operator|.
 name|find
 argument_list|()
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 return|return
 literal|false
 return|;
 block|}
 comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
+annotation|@
+name|Override
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
@@ -376,6 +387,8 @@ name|ParserConfigurationException
 name|e1
 parameter_list|)
 block|{
+name|BibteXMLImporter
+operator|.
 name|logger
 operator|.
 name|log
@@ -415,6 +428,8 @@ name|SAXException
 name|e2
 parameter_list|)
 block|{
+name|BibteXMLImporter
+operator|.
 name|logger
 operator|.
 name|log
@@ -452,6 +467,8 @@ name|IOException
 name|e3
 parameter_list|)
 block|{
+name|BibteXMLImporter
+operator|.
 name|logger
 operator|.
 name|log

@@ -20,7 +20,6 @@ end_comment
 
 begin_class
 DECL|class|BibLatexEntryTypes
-specifier|public
 class|class
 name|BibLatexEntryTypes
 block|{
@@ -36,6 +35,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -45,6 +46,8 @@ return|return
 literal|"Article"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -62,12 +65,12 @@ literal|"title"
 block|,
 literal|"journaltitle"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -117,8 +120,6 @@ literal|"eid"
 block|,
 literal|"issue"
 block|,
-literal|"date"
-block|,
 literal|"month"
 block|,
 literal|"year"
@@ -150,6 +151,8 @@ block|}
 return|;
 block|}
 comment|// TODO: number vs issue?
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -175,12 +178,6 @@ literal|"eid"
 block|,
 literal|"issue"
 block|,
-literal|"date"
-block|,
-literal|"month"
-block|,
-literal|"year"
-block|,
 literal|"pages"
 block|,
 literal|"note"
@@ -201,6 +198,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -210,6 +209,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -246,6 +247,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -255,6 +258,8 @@ return|return
 literal|"Book"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -270,12 +275,12 @@ literal|"author"
 block|,
 literal|"title"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -333,6 +338,10 @@ literal|"series"
 block|,
 literal|"number"
 block|,
+literal|"month"
+block|,
+literal|"year"
+block|,
 literal|"note"
 block|,
 literal|"publisher"
@@ -365,6 +374,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -416,6 +427,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -425,6 +438,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -461,6 +476,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -470,6 +487,8 @@ return|return
 literal|"Inbook"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -487,12 +506,12 @@ literal|"title"
 block|,
 literal|"booktitle"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -583,9 +602,13 @@ block|,
 literal|"url"
 block|,
 literal|"urldate"
+block|,
+literal|"year"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -641,6 +664,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -650,6 +675,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -686,6 +713,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -696,6 +725,8 @@ literal|"Bookinbook"
 return|;
 block|}
 comment|// Same fields as "INBOOK" according to Biblatex 1.0:
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -711,6 +742,8 @@ name|getRequiredFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -726,6 +759,8 @@ name|getOptionalFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -741,6 +776,8 @@ name|getPrimaryOptionalFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -750,6 +787,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -786,6 +825,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -796,6 +837,8 @@ literal|"Suppbook"
 return|;
 block|}
 comment|// Same fields as "INBOOK" according to Biblatex 1.0:
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -811,6 +854,8 @@ name|getRequiredFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -826,6 +871,8 @@ name|getOptionalFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -841,6 +888,8 @@ name|getPrimaryOptionalFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -850,6 +899,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -886,6 +937,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -895,6 +948,8 @@ return|return
 literal|"Booklet"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -912,12 +967,12 @@ literal|"editor"
 block|,
 literal|"title"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -945,6 +1000,8 @@ literal|"location"
 block|,
 literal|"chapter"
 block|,
+literal|"year"
+block|,
 literal|"pages"
 block|,
 literal|"pagetotal"
@@ -967,6 +1024,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1002,6 +1061,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -1011,6 +1072,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -1047,6 +1110,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -1056,6 +1121,8 @@ return|return
 literal|"Collection"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1071,12 +1138,12 @@ literal|"editor"
 block|,
 literal|"title"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1161,9 +1228,13 @@ block|,
 literal|"url"
 block|,
 literal|"urldate"
+block|,
+literal|"year"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1213,6 +1284,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -1222,6 +1295,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -1258,6 +1333,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -1267,6 +1344,8 @@ return|return
 literal|"Incollection"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1286,12 +1365,12 @@ literal|"title"
 block|,
 literal|"booktitle"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1378,9 +1457,13 @@ block|,
 literal|"url"
 block|,
 literal|"urldate"
+block|,
+literal|"year"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1434,6 +1517,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -1443,6 +1528,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -1479,6 +1566,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -1489,6 +1578,8 @@ literal|"Suppcollection"
 return|;
 block|}
 comment|// Treated as alias of "INCOLLECTION" according to Biblatex 1.0:
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1504,6 +1595,8 @@ name|getRequiredFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1519,6 +1612,8 @@ name|getOptionalFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1534,6 +1629,8 @@ name|getPrimaryOptionalFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -1543,6 +1640,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -1579,6 +1678,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -1588,6 +1689,8 @@ return|return
 literal|"Manual"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1605,12 +1708,12 @@ literal|"editor"
 block|,
 literal|"title"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1669,9 +1772,13 @@ block|,
 literal|"url"
 block|,
 literal|"urldate"
+block|,
+literal|"year"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1711,6 +1818,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -1720,6 +1829,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -1756,6 +1867,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -1765,6 +1878,8 @@ return|return
 literal|"Misc"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1782,12 +1897,12 @@ literal|"editor"
 block|,
 literal|"title"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1817,8 +1932,6 @@ literal|"organization"
 block|,
 literal|"location"
 block|,
-literal|"date"
-block|,
 literal|"month"
 block|,
 literal|"year"
@@ -1841,6 +1954,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1874,6 +1989,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -1883,6 +2000,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -1919,6 +2038,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -1928,6 +2049,8 @@ return|return
 literal|"Online"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1945,14 +2068,14 @@ literal|"editor"
 block|,
 literal|"title"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|,
 literal|"url"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -1976,8 +2099,6 @@ literal|"note"
 block|,
 literal|"organization"
 block|,
-literal|"date"
-block|,
 literal|"month"
 block|,
 literal|"year"
@@ -1990,6 +2111,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2013,6 +2136,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -2022,6 +2147,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -2058,6 +2185,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -2067,6 +2196,8 @@ return|return
 literal|"Patent"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2084,12 +2215,12 @@ literal|"title"
 block|,
 literal|"number"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2115,8 +2246,6 @@ literal|"location"
 block|,
 literal|"note"
 block|,
-literal|"date"
-block|,
 literal|"month"
 block|,
 literal|"year"
@@ -2139,6 +2268,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2170,6 +2301,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -2179,6 +2312,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -2215,6 +2350,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -2224,6 +2361,8 @@ return|return
 literal|"Periodical"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2239,12 +2378,12 @@ literal|"editor"
 block|,
 literal|"title"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2278,8 +2417,6 @@ literal|"number"
 block|,
 literal|"issue"
 block|,
-literal|"date"
-block|,
 literal|"month"
 block|,
 literal|"year"
@@ -2306,6 +2443,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2339,6 +2478,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -2348,6 +2489,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -2384,6 +2527,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -2394,6 +2539,8 @@ literal|"Suppperiodical"
 return|;
 block|}
 comment|// Treated as alias of "ARTICLE" according to Biblatex 1.0:
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2409,6 +2556,8 @@ name|getRequiredFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2424,6 +2573,8 @@ name|getOptionalFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2439,6 +2590,8 @@ name|getPrimaryOptionalFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -2448,6 +2601,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -2484,6 +2639,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -2493,6 +2650,8 @@ return|return
 literal|"Proceedings"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2508,12 +2667,12 @@ literal|"editor"
 block|,
 literal|"title"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2563,6 +2722,8 @@ literal|"location"
 block|,
 literal|"month"
 block|,
+literal|"year"
+block|,
 literal|"isbn"
 block|,
 literal|"chapter"
@@ -2589,6 +2750,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2638,6 +2801,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -2647,6 +2812,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -2683,6 +2850,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -2692,6 +2861,8 @@ return|return
 literal|"Inproceedings"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2711,12 +2882,12 @@ literal|"title"
 block|,
 literal|"booktitle"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2770,6 +2941,8 @@ literal|"location"
 block|,
 literal|"month"
 block|,
+literal|"year"
+block|,
 literal|"isbn"
 block|,
 literal|"chapter"
@@ -2794,6 +2967,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2845,6 +3020,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -2854,6 +3031,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -2890,6 +3069,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -2900,6 +3081,8 @@ literal|"Reference"
 return|;
 block|}
 comment|// Treated as alias of "COLLECTION" according to Biblatex 1.0:
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2915,6 +3098,8 @@ name|getRequiredFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2930,6 +3115,8 @@ name|getOptionalFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -2945,6 +3132,8 @@ name|getPrimaryOptionalFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -2954,6 +3143,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -2990,6 +3181,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -3000,6 +3193,8 @@ literal|"Inreference"
 return|;
 block|}
 comment|// Treated as alias of "INCOLLECTION" according to Biblatex 1.0:
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -3015,6 +3210,8 @@ name|getRequiredFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -3030,6 +3227,8 @@ name|getOptionalFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -3045,6 +3244,8 @@ name|getPrimaryOptionalFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -3054,6 +3255,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -3090,6 +3293,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -3099,6 +3304,8 @@ return|return
 literal|"Report"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -3118,12 +3325,12 @@ literal|"type"
 block|,
 literal|"institution"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -3151,6 +3358,8 @@ literal|"location"
 block|,
 literal|"month"
 block|,
+literal|"year"
+block|,
 literal|"isrn"
 block|,
 literal|"chapter"
@@ -3177,6 +3386,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -3216,6 +3427,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -3225,6 +3438,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -3261,6 +3476,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -3270,6 +3487,8 @@ return|return
 literal|"Set"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -3288,7 +3507,9 @@ block|}
 return|;
 block|}
 comment|// These are all the standard entry fields, custom fields and field aliases not included:
-comment|/* Optional fields left out since they take up too much space - I think the set type is mainly supposed 	   to fall back on content from the entries contained in the set, so only the required fields are included.*/
+comment|/* Optional fields left out since they take up too much space - I think the set type is mainly supposed            to fall back on content from the entries contained in the set, so only the required fields are included.*/
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -3298,9 +3519,11 @@ block|{
 return|return
 literal|null
 return|;
-comment|/*return new String[] {"abstract", "addendum", "afterword", "annotation", "annotator", "author", "authortype", 				 "bookauthor", "bookpagination", "booksubtitle", "booktitle", "booktitleaddon", 				 "chapter", "commentator", "date", "doi", "edition", "editor", "editora", "editorb", 				 "editorc", "editortype", "editoratype", "editorbtype", "editorctype", "eid", "eprint", 				 "eprintclass", "eprinttype", "eventdate", "eventtitle", "file", "foreword", "holder", 				 "howpublished", "indextitle", "insitution", "introduction", "isan", "isbn", "ismn", 				 "isrn", "issn", "issue", "issuesubtitle", "issuetitle", "iswc", "journalsubtitle", 				 "journaltitle", "label", "language", "library", "location", "mainsubtitle", 				 "maintitle", "maintitleaddon", "month", "nameaddon", "note", "number", "organization", 				 "origdate", "origlanguage", "origlocation", "origpublisher", "origtitle", "pages", 				 "pagetotal", "pagination", "part", "publisher", "pubstate", "reprinttitle", "series", 				 "shortauthor", "shorteditor", "shorthand", "shorthandintro", "shortjournal", 				 "shortseries", "shorttitle", "subtitle", "title", "titleaddon", "translator", "type", 				 "url", "urldate", "venue", "version", "volume", "volumes", "year", "crossref", 				 "entryset", "entrysubtype", "execute", "gender", "hyphenation", "indexsorttitle", 				 "keywords", "options", "presort", "sortkey", "sortname", "sorttitle", "sortyear", 				 "xref"};*/
+comment|/*return new String[] {"abstract", "addendum", "afterword", "annotation", "annotator", "author", "authortype",             	 "bookauthor", "bookpagination", "booksubtitle", "booktitle", "booktitleaddon",             	 "chapter", "commentator", "date", "doi", "edition", "editor", "editora", "editorb",             	 "editorc", "editortype", "editoratype", "editorbtype", "editorctype", "eid", "eprint",             	 "eprintclass", "eprinttype", "eventdate", "eventtitle", "file", "foreword", "holder",             	 "howpublished", "indextitle", "insitution", "introduction", "isan", "isbn", "ismn",             	 "isrn", "issn", "issue", "issuesubtitle", "issuetitle", "iswc", "journalsubtitle",             	 "journaltitle", "label", "language", "library", "location", "mainsubtitle",             	 "maintitle", "maintitleaddon", "month", "nameaddon", "note", "number", "organization",             	 "origdate", "origlanguage", "origlocation", "origpublisher", "origtitle", "pages",             	 "pagetotal", "pagination", "part", "publisher", "pubstate", "reprinttitle", "series",             	 "shortauthor", "shorteditor", "shorthand", "shorthandintro", "shortjournal",             	 "shortseries", "shorttitle", "subtitle", "title", "titleaddon", "translator", "type",             	 "url", "urldate", "venue", "version", "volume", "volumes", "year", "crossref",             	 "entryset", "entrysubtype", "execute", "gender", "hyphenation", "indexsorttitle",             	 "keywords", "options", "presort", "sortkey", "sortname", "sorttitle", "sortyear",             	 "xref"};*/
 block|}
 comment|// These are just appr. the first half of the above fields:
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -3310,8 +3533,10 @@ block|{
 return|return
 literal|null
 return|;
-comment|/*return new String[] {"abstract", "addendum", "afterword", "annotation", "annotator", "author", "authortype", 				 "bookauthor", "bookpagination", "booksubtitle", "booktitle", "booktitleaddon", 				 "chapter", "commentator", "date", "doi", "edition", "editor", "editora", "editorb", 				 "editorc", "editortype", "editoratype", "editorbtype", "editorctype", "eid", "eprint", 				 "eprintclass", "eprinttype", "eventdate", "eventtitle", "file", "foreword", "holder", 				 "howpublished", "indextitle", "insitution", "introduction", "isan", "isbn", "ismn", 				 "isrn", "issn", "issue", "issuesubtitle", "issuetitle", "iswc", "journalsubtitle", 				 "journaltitle", "label", "language", "library", "location", "mainsubtitle", 				 "maintitle", "maintitleaddon", "month", "nameaddon"};*/
+comment|/*return new String[] {"abstract", "addendum", "afterword", "annotation", "annotator", "author", "authortype",             	 "bookauthor", "bookpagination", "booksubtitle", "booktitle", "booktitleaddon",             	 "chapter", "commentator", "date", "doi", "edition", "editor", "editora", "editorb",             	 "editorc", "editortype", "editoratype", "editorbtype", "editorctype", "eid", "eprint",             	 "eprintclass", "eprinttype", "eventdate", "eventtitle", "file", "foreword", "holder",             	 "howpublished", "indextitle", "insitution", "introduction", "isan", "isbn", "ismn",             	 "isrn", "issn", "issue", "issuesubtitle", "issuetitle", "iswc", "journalsubtitle",             	 "journaltitle", "label", "language", "library", "location", "mainsubtitle",             	 "maintitle", "maintitleaddon", "month", "nameaddon"};*/
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -3321,6 +3546,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -3357,6 +3584,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -3366,6 +3595,8 @@ return|return
 literal|"Thesis"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -3385,12 +3616,12 @@ literal|"type"
 block|,
 literal|"institution"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -3413,6 +3644,8 @@ block|,
 literal|"location"
 block|,
 literal|"month"
+block|,
+literal|"year"
 block|,
 literal|"chapter"
 block|,
@@ -3438,6 +3671,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -3473,6 +3708,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -3482,6 +3719,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -3518,6 +3757,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -3527,6 +3768,8 @@ return|return
 literal|"Unpublished"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -3542,12 +3785,12 @@ literal|"author"
 block|,
 literal|"title"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -3571,8 +3814,6 @@ literal|"note"
 block|,
 literal|"location"
 block|,
-literal|"date"
-block|,
 literal|"month"
 block|,
 literal|"year"
@@ -3587,6 +3828,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -3612,6 +3855,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -3621,6 +3866,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -3658,6 +3905,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -3668,6 +3917,8 @@ literal|"Conference"
 return|;
 block|}
 comment|// Treated as alias of "INPROCEEDINGS" according to Biblatex 1.0:
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -3683,6 +3934,8 @@ name|getRequiredFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -3698,6 +3951,8 @@ name|getOptionalFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -3713,6 +3968,8 @@ name|getPrimaryOptionalFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -3722,6 +3979,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -3758,6 +4017,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -3768,6 +4029,8 @@ literal|"Electronic"
 return|;
 block|}
 comment|// Treated as alias of "ONLINE" according to Biblatex 1.0:
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -3783,6 +4046,8 @@ name|getRequiredFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -3798,6 +4063,8 @@ name|getOptionalFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -3813,6 +4080,8 @@ name|getPrimaryOptionalFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -3822,6 +4091,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -3858,6 +4129,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -3868,6 +4141,8 @@ literal|"Mastersthesis"
 return|;
 block|}
 comment|// Treated as alias of "THESIS", except "type" field is optional
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -3885,12 +4160,12 @@ literal|"title"
 block|,
 literal|"institution"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -3916,6 +4191,8 @@ literal|"location"
 block|,
 literal|"month"
 block|,
+literal|"year"
+block|,
 literal|"chapter"
 block|,
 literal|"pages"
@@ -3940,6 +4217,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -3977,6 +4256,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -3986,6 +4267,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -4022,6 +4305,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -4032,6 +4317,8 @@ literal|"Phdthesis"
 return|;
 block|}
 comment|// Treated as alias of "THESIS", except "type" field is optional
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -4049,12 +4336,12 @@ literal|"title"
 block|,
 literal|"institution"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -4080,6 +4367,8 @@ literal|"location"
 block|,
 literal|"month"
 block|,
+literal|"year"
+block|,
 literal|"chapter"
 block|,
 literal|"pages"
@@ -4104,6 +4393,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -4141,6 +4432,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -4150,6 +4443,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -4186,6 +4481,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -4196,6 +4493,8 @@ literal|"Techreport"
 return|;
 block|}
 comment|// Treated as alias of "REPORT", except "type" field is optional
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -4213,12 +4512,12 @@ literal|"title"
 block|,
 literal|"institution"
 block|,
-literal|"year"
-block|,
 literal|"date"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -4248,6 +4547,8 @@ literal|"location"
 block|,
 literal|"month"
 block|,
+literal|"year"
+block|,
 literal|"isrn"
 block|,
 literal|"chapter"
@@ -4274,6 +4575,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -4315,6 +4618,8 @@ literal|"urldate"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -4324,6 +4629,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -4360,6 +4667,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -4370,6 +4679,8 @@ literal|"Www"
 return|;
 block|}
 comment|// Treated as alias of "ONLINE" according to Biblatex 1.0:
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -4385,6 +4696,8 @@ name|getRequiredFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -4400,6 +4713,8 @@ name|getOptionalFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -4415,6 +4730,8 @@ name|getPrimaryOptionalFields
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -4424,6 +4741,8 @@ return|return
 literal|""
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields
@@ -4461,6 +4780,8 @@ operator|new
 name|BibtexEntryType
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|String
 name|getName
@@ -4470,6 +4791,8 @@ return|return
 literal|"IEEEtranBSTCTL"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -4505,6 +4828,8 @@ literal|"ctlname_url_prefix"
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 index|[]
@@ -4515,6 +4840,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|String
 name|describeRequiredFields
@@ -4524,6 +4851,8 @@ return|return
 literal|"None"
 return|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|hasAllRequiredFields

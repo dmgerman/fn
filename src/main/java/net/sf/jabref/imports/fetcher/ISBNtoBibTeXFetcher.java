@@ -128,18 +128,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Globals
 import|;
 end_import
@@ -227,7 +215,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class uses Manas Tungare's ISBN to BibTeX Converter to convert an ISBN to a BibTeX entry<br />  * The online version of the converter is available at http://manas.tungare.name/software/isbn-to-bibtex/  */
+comment|/**  * This class uses Manas Tungare's ISBN to BibTeX Converter to convert an ISBN to a BibTeX entry<br />  * The online version of the converter is available at http://manas.tungare.name/software/isbn-to-bibtex/  * This was not approved by him, see discussion https://sourceforge.net/p/jabref/bugs/1241/.  * We are currently working on sorting things out  */
 end_comment
 
 begin_class
@@ -248,6 +236,7 @@ init|=
 literal|"http://manas.tungare.name/software/isbn-to-bibtex/isbn-service?isbn=%s"
 decl_stmt|;
 DECL|field|caseKeeper
+specifier|private
 specifier|final
 name|CaseKeeper
 name|caseKeeper
@@ -257,6 +246,7 @@ name|CaseKeeper
 argument_list|()
 decl_stmt|;
 DECL|field|unitFormatter
+specifier|private
 specifier|final
 name|UnitFormatter
 name|unitFormatter
@@ -344,6 +334,8 @@ name|String
 operator|.
 name|format
 argument_list|(
+name|ISBNtoBibTeXFetcher
+operator|.
 name|URL_PATTERN
 argument_list|,
 name|q
@@ -611,25 +603,6 @@ parameter_list|()
 block|{
 return|return
 literal|"ISBNtoBibTeX"
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|getIcon ()
-specifier|public
-name|URL
-name|getIcon
-parameter_list|()
-block|{
-comment|// no special icon for this fetcher available.
-comment|// Therefore, we return some kind of default icon
-return|return
-name|GUIGlobals
-operator|.
-name|getIconUrl
-argument_list|(
-literal|"www"
-argument_list|)
 return|;
 block|}
 annotation|@

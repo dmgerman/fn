@@ -272,7 +272,67 @@ name|java
 operator|.
 name|util
 operator|.
-name|*
+name|ArrayList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Enumeration
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Iterator
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|LinkedList
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|List
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|TreeMap
+import|;
+end_import
+
+begin_import
+import|import
+name|java
+operator|.
+name|util
+operator|.
+name|Vector
 import|;
 end_import
 
@@ -482,6 +542,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|WindowConstants
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|event
 operator|.
 name|ChangeEvent
@@ -586,20 +656,6 @@ end_import
 
 begin_import
 import|import
-name|com
-operator|.
-name|jgoodies
-operator|.
-name|forms
-operator|.
-name|builder
-operator|.
-name|ButtonBarBuilder
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -654,6 +710,20 @@ name|UnlinkedPDFFileFilter
 import|;
 end_import
 
+begin_import
+import|import
+name|com
+operator|.
+name|jgoodies
+operator|.
+name|forms
+operator|.
+name|builder
+operator|.
+name|ButtonBarBuilder
+import|;
+end_import
+
 begin_comment
 comment|/**  * GUI Dialog for the feature "Find unlinked files".  *   * @author Nosh&Dan  * @version 25.11.2008 | 23:13:29  *  */
 end_comment
@@ -676,7 +746,7 @@ init|=
 operator|-
 literal|5778378185253640030L
 decl_stmt|;
-comment|/** 	 * Keys to be used for referencing this Action. 	 */
+comment|/**      * Keys to be used for referencing this Action.      */
 DECL|field|ACTION_COMMAND
 specifier|public
 specifier|static
@@ -712,6 +782,15 @@ name|ACTION_ICON
 init|=
 literal|"toggleSearch"
 decl_stmt|;
+DECL|field|ACTION_KEYBINDING_ACTION
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|ACTION_KEYBINDING_ACTION
+init|=
+literal|"Find unlinked files"
+decl_stmt|;
 DECL|field|ACTION_SHORT_DESCRIPTION
 specifier|public
 specifier|static
@@ -745,12 +824,12 @@ init|=
 literal|"findUnlinkedFilesDialogSize"
 decl_stmt|;
 DECL|field|frame
-specifier|protected
+specifier|private
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|database
-specifier|protected
+specifier|private
 name|BibtexDatabase
 name|database
 decl_stmt|;
@@ -765,7 +844,7 @@ name|UnlinkedFilesCrawler
 name|crawler
 decl_stmt|;
 DECL|field|lastSelectedDirectory
-specifier|protected
+specifier|private
 name|File
 name|lastSelectedDirectory
 decl_stmt|;
@@ -776,150 +855,139 @@ name|treeModel
 decl_stmt|;
 comment|/* PANELS */
 DECL|field|panelDirectory
-specifier|protected
+specifier|private
 name|JPanel
 name|panelDirectory
 decl_stmt|;
 DECL|field|panelSearchArea
-specifier|protected
+specifier|private
 name|JPanel
 name|panelSearchArea
 decl_stmt|;
 DECL|field|panelFiles
-specifier|protected
+specifier|private
 name|JPanel
 name|panelFiles
 decl_stmt|;
 DECL|field|panelOptions
-specifier|protected
+specifier|private
 name|JPanel
 name|panelOptions
 decl_stmt|;
 DECL|field|panelButtons
-specifier|protected
+specifier|private
 name|JPanel
 name|panelButtons
 decl_stmt|;
 DECL|field|panelEntryTypesSelection
-specifier|protected
+specifier|private
 name|JPanel
 name|panelEntryTypesSelection
 decl_stmt|;
 DECL|field|panelImportArea
-specifier|protected
+specifier|private
 name|JPanel
 name|panelImportArea
 decl_stmt|;
-DECL|field|mainArea
-specifier|protected
-name|JPanel
-name|mainArea
-decl_stmt|;
 DECL|field|buttonBrowse
-specifier|protected
+specifier|private
 name|JButton
 name|buttonBrowse
 decl_stmt|;
 DECL|field|buttonScan
-specifier|protected
+specifier|private
 name|JButton
 name|buttonScan
 decl_stmt|;
 DECL|field|buttonApply
-specifier|protected
+specifier|private
 name|JButton
 name|buttonApply
 decl_stmt|;
 DECL|field|buttonClose
-specifier|protected
+specifier|private
 name|JButton
 name|buttonClose
 decl_stmt|;
 comment|/* Options for the TreeView */
 DECL|field|buttonOptionSelectAll
-specifier|protected
+specifier|private
 name|JButton
 name|buttonOptionSelectAll
 decl_stmt|;
 DECL|field|buttonOptionUnselectAll
-specifier|protected
+specifier|private
 name|JButton
 name|buttonOptionUnselectAll
 decl_stmt|;
 DECL|field|buttonOptionExpandAll
-specifier|protected
+specifier|private
 name|JButton
 name|buttonOptionExpandAll
 decl_stmt|;
 DECL|field|buttonOptionCollapseAll
-specifier|protected
+specifier|private
 name|JButton
 name|buttonOptionCollapseAll
 decl_stmt|;
 DECL|field|checkboxCreateKeywords
-specifier|protected
+specifier|private
 name|JCheckBox
 name|checkboxCreateKeywords
 decl_stmt|;
 DECL|field|textfieldDirectoryPath
-specifier|protected
+specifier|private
 name|JTextField
 name|textfieldDirectoryPath
 decl_stmt|;
 DECL|field|labelDirectoryDescription
-specifier|protected
+specifier|private
 name|JLabel
 name|labelDirectoryDescription
 decl_stmt|;
 DECL|field|labelFileTypesDescription
-specifier|protected
+specifier|private
 name|JLabel
 name|labelFileTypesDescription
 decl_stmt|;
 DECL|field|labelFilesDescription
-specifier|protected
+specifier|private
 name|JLabel
 name|labelFilesDescription
 decl_stmt|;
 DECL|field|labelEntryTypeDescription
-specifier|protected
+specifier|private
 name|JLabel
 name|labelEntryTypeDescription
 decl_stmt|;
 DECL|field|labelSearchingDirectoryInfo
-specifier|protected
+specifier|private
 name|JLabel
 name|labelSearchingDirectoryInfo
 decl_stmt|;
 DECL|field|labelImportingInfo
-specifier|protected
+specifier|private
 name|JLabel
 name|labelImportingInfo
 decl_stmt|;
 DECL|field|tree
-specifier|protected
+specifier|private
 name|JTree
 name|tree
 decl_stmt|;
 DECL|field|scrollpaneTree
-specifier|protected
+specifier|private
 name|JScrollPane
 name|scrollpaneTree
 decl_stmt|;
 DECL|field|comboBoxFileTypeSelection
-specifier|protected
+specifier|private
 name|JComboBox
-argument_list|<
-name|FileFilter
-argument_list|>
 name|comboBoxFileTypeSelection
 decl_stmt|;
 DECL|field|comboBoxEntryTypeSelection
-specifier|protected
+specifier|private
 name|JComboBox
-argument_list|<
-name|BibtexEntryTypeWrapper
-argument_list|>
 name|comboBoxEntryTypeSelection
 decl_stmt|;
 DECL|field|progressBarSearching
@@ -987,7 +1055,7 @@ name|checkBoxWhyIsThereNoGetSelectedStupidSwing
 init|=
 literal|false
 decl_stmt|;
-comment|/** 	 * For Unit-testing only.<i>Don't remove!</i><br> 	 * Used via reflection in {@link net.sf.jabref.imports.DatabaseFileLookup} to construct this 	 * class. 	 */
+comment|/**      * For Unit-testing only.<i>Don't remove!</i><br>      * Used via reflection in {@link net.sf.jabref.imports.DatabaseFileLookup} to construct this      * class.      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -997,7 +1065,7 @@ DECL|method|FindUnlinkedFilesDialog ()
 specifier|private
 name|FindUnlinkedFilesDialog
 parameter_list|()
-block|{ 	}
+block|{     }
 DECL|method|FindUnlinkedFilesDialog (Frame owner, JabRefFrame frame, BasePanel panel)
 specifier|public
 name|FindUnlinkedFilesDialog
@@ -1072,7 +1140,9 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Close dialog when pressing escape 	 */
+comment|/**      * Close dialog when pressing escape      */
+annotation|@
+name|Override
 DECL|method|createRootPane ()
 specifier|protected
 name|JRootPane
@@ -1086,6 +1156,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1140,7 +1212,7 @@ return|return
 name|rootPane
 return|;
 block|}
-comment|/** 	 * Stores the current size of this dialog persistently. 	 */
+comment|/**      * Stores the current size of this dialog persistently.      */
 DECL|method|storeSizeOfDialog ()
 specifier|private
 name|void
@@ -1172,13 +1244,15 @@ name|prefs
 operator|.
 name|put
 argument_list|(
+name|FindUnlinkedFilesDialog
+operator|.
 name|GLOBAL_PREFS_DIALOG_SIZE_KEY
 argument_list|,
 name|store
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Restores the location and size of this dialog from the persistent storage. 	 */
+comment|/**      * Restores the location and size of this dialog from the persistent storage.      */
 DECL|method|restoreSizeOfDialog ()
 specifier|private
 name|void
@@ -1194,6 +1268,8 @@ name|prefs
 operator|.
 name|get
 argument_list|(
+name|FindUnlinkedFilesDialog
+operator|.
 name|GLOBAL_PREFS_DIALOG_SIZE_KEY
 argument_list|)
 decl_stmt|;
@@ -1252,7 +1328,7 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{ 			}
+block|{             }
 block|}
 if|if
 condition|(
@@ -1268,9 +1344,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Initializes the components, the layout, the data structure and the 	 * actions in this dialog. 	 */
+comment|/**      * Initializes the components, the layout, the data structure and the      * actions in this dialog.      */
 DECL|method|initialize ()
-specifier|protected
+specifier|private
 name|void
 name|initialize
 parameter_list|()
@@ -1300,9 +1376,9 @@ name|pack
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * Initializes action objects.<br> 	 * Does not assign actions to components yet! 	 */
+comment|/**      * Initializes action objects.<br>      * Does not assign actions to components yet!      */
 DECL|method|initializeActions ()
-specifier|protected
+specifier|private
 name|void
 name|initializeActions
 parameter_list|()
@@ -1328,6 +1404,8 @@ name|serialVersionUID
 init|=
 literal|9153126361571985383L
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1392,6 +1470,8 @@ init|=
 operator|-
 literal|9012913268030356450L
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1456,6 +1536,8 @@ init|=
 operator|-
 literal|4794088095435302433L
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1515,6 +1597,8 @@ name|serialVersionUID
 init|=
 literal|6007246730370326456L
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1559,7 +1643,7 @@ operator|new
 name|ComponentAdapter
 argument_list|()
 block|{
-comment|/* (non-Javadoc) 			 * @see java.awt.event.ComponentAdapter#componentResized(java.awt.event.ComponentEvent) 			 */
+comment|/* (non-Javadoc)              * @see java.awt.event.ComponentAdapter#componentResized(java.awt.event.ComponentEvent)              */
 annotation|@
 name|Override
 specifier|public
@@ -1574,7 +1658,7 @@ name|storeSizeOfDialog
 argument_list|()
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc) 			 * @see java.awt.event.ComponentAdapter#componentMoved(java.awt.event.ComponentEvent) 			 */
+comment|/* (non-Javadoc)              * @see java.awt.event.ComponentAdapter#componentMoved(java.awt.event.ComponentEvent)              */
 annotation|@
 name|Override
 specifier|public
@@ -1592,7 +1676,7 @@ block|}
 block|}
 expr_stmt|;
 block|}
-comment|/** 	 * Stores the working directory path for this view in the global 	 * preferences. 	 *  	 * @param lastSelectedDirectory 	 *            directory that is used as the working directory in this view. 	 */
+comment|/**      * Stores the working directory path for this view in the global      * preferences.      *       * @param lastSelectedDirectory      *            directory that is used as the working directory in this view.      */
 DECL|method|storeLastSelectedDirectory (File lastSelectedDirectory)
 specifier|private
 name|void
@@ -1621,6 +1705,8 @@ name|prefs
 operator|.
 name|put
 argument_list|(
+name|FindUnlinkedFilesDialog
+operator|.
 name|GLOBAL_PREFS_WORKING_DIRECTORY_KEY
 argument_list|,
 name|lastSelectedDirectory
@@ -1631,7 +1717,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Loads the working directory path which is persistantly stored for this 	 * view and returns it as a {@link File}-Object.<br> 	 *<br> 	 * If there is no working directory path stored, the general working 	 * directory will be consulted. 	 *  	 * @return The persistently stored working directory path for this view. 	 */
+comment|/**      * Loads the working directory path which is persistantly stored for this      * view and returns it as a {@link File}-Object.<br>      *<br>      * If there is no working directory path stored, the general working      * directory will be consulted.      *       * @return The persistently stored working directory path for this view.      */
 DECL|method|loadLastSelectedDirectory ()
 specifier|private
 name|File
@@ -1647,6 +1733,8 @@ name|prefs
 operator|.
 name|get
 argument_list|(
+name|FindUnlinkedFilesDialog
+operator|.
 name|GLOBAL_PREFS_WORKING_DIRECTORY_KEY
 argument_list|)
 decl_stmt|;
@@ -1656,6 +1744,7 @@ name|workingDirectory
 operator|==
 literal|null
 condition|)
+block|{
 name|workingDirectory
 operator|=
 name|Globals
@@ -1667,6 +1756,7 @@ argument_list|(
 literal|"workingDirectory"
 argument_list|)
 expr_stmt|;
+block|}
 name|lastSelectedDirectory
 operator|=
 operator|new
@@ -1682,6 +1772,7 @@ operator|.
 name|isFile
 argument_list|()
 condition|)
+block|{
 name|lastSelectedDirectory
 operator|=
 name|lastSelectedDirectory
@@ -1689,11 +1780,12 @@ operator|.
 name|getParentFile
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|lastSelectedDirectory
 return|;
 block|}
-comment|/** 	 * Opens a {@link JFileChooser} and receives the user input as a 	 * {@link File} object, which this method returns.<br> 	 *<br> 	 * The "Open file" dialog will start at the path that is set in the 	 * "directory" textfield, or at the last stored path for this dialog, if the 	 * textfield is empty.<br> 	 *<br> 	 * If the user cancels the "Open file" dialog, this method returns null.<br> 	 *<br> 	 * If the user has selected a valid directory in the "Open file" dialog, 	 * this path will be stored persistently for this dialog, so that it can be 	 * preset at the next time this dialog is opened. 	 *  	 * @return The selected directory from the user, or<code>null</code>, if 	 *         the user has aborted the selection. 	 */
+comment|/**      * Opens a {@link JFileChooser} and receives the user input as a      * {@link File} object, which this method returns.<br>      *<br>      * The "Open file" dialog will start at the path that is set in the      * "directory" textfield, or at the last stored path for this dialog, if the      * textfield is empty.<br>      *<br>      * If the user cancels the "Open file" dialog, this method returns null.<br>      *<br>      * If the user has selected a valid directory in the "Open file" dialog,      * this path will be stored persistently for this dialog, so that it can be      * preset at the next time this dialog is opened.      *       * @return The selected directory from the user, or<code>null</code>, if      *         the user has aborted the selection.      */
 DECL|method|chooseDirectory ()
 specifier|private
 name|File
@@ -1776,9 +1868,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|path
 operator|==
 literal|null
+operator|)
 operator|||
 name|path
 operator|.
@@ -1787,6 +1881,7 @@ argument_list|(
 literal|""
 argument_list|)
 condition|)
+block|{
 name|fileChooser
 operator|.
 name|setCurrentDirectory
@@ -1794,7 +1889,9 @@ argument_list|(
 name|lastSelectedDirectory
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|fileChooser
 operator|.
 name|setCurrentDirectory
@@ -1806,6 +1903,7 @@ name|path
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|int
 name|result
 init|=
@@ -1868,7 +1966,7 @@ return|return
 name|selectedDirectory
 return|;
 block|}
-comment|/** 	 * Disables or enables all visible Elements in this Dialog.<br> 	 *<br> 	 * This also removes the {@link MouseListener} from the Tree-View to prevent 	 * it from receiving mouse events when in disabled-state. 	 *  	 * @param enable 	 *<code>true</code> when the elements shall get enabled, 	 *<code>false</code> when they shall get disabled. 	 */
+comment|/**      * Disables or enables all visible Elements in this Dialog.<br>      *<br>      * This also removes the {@link MouseListener} from the Tree-View to prevent      * it from receiving mouse events when in disabled-state.      *       * @param enable      *<code>true</code> when the elements shall get enabled,      *<code>false</code> when they shall get disabled.      */
 DECL|method|disOrEnableDialog (boolean enable)
 specifier|private
 name|void
@@ -1911,7 +2009,7 @@ name|enable
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Recursively disables or enables all swing and awt components in this 	 * dialog, starting with but not including the container 	 *<code>startContainer</code>. 	 *  	 * @param startContainer 	 *            The GUI Element to start with. 	 * @param enable 	 *<code>true</code>, if all elements will get enabled, 	 *<code>false</code> if all elements will get disabled. 	 */
+comment|/**      * Recursively disables or enables all swing and awt components in this      * dialog, starting with but not including the container      *<code>startContainer</code>.      *       * @param startContainer      *            The GUI Element to start with.      * @param enable      *<code>true</code>, if all elements will get enabled,      *<code>false</code> if all elements will get disabled.      */
 DECL|method|disOrEnableAllElements (Container startContainer, boolean enable)
 specifier|private
 name|void
@@ -1968,7 +2066,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Expands or collapses the specified tree according to the 	 *<code>expand</code>-parameter. 	 */
+comment|/**      * Expands or collapses the specified tree according to the      *<code>expand</code>-parameter.      */
 DECL|method|expandTree (JTree tree, TreePath parent, boolean expand)
 specifier|private
 name|void
@@ -2070,9 +2168,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Starts the search of unlinked files according to the current dialog 	 * state.<br> 	 *<br> 	 * This state is made of:<br> 	 *<li>The value of the "directory"-input-textfield and<li>The file type 	 * selection.<br> 	 * The search will process in a seperate thread and the progress bar behind 	 * the "search" button will be displayed.<br> 	 *<br> 	 * When the search has completed, the 	 * {@link #searchFinishedHandler(CheckableTreeNode)} handler method is 	 * invoked. 	 */
+comment|/**      * Starts the search of unlinked files according to the current dialog      * state.<br>      *<br>      * This state is made of:<br>      *<li>The value of the "directory"-input-textfield and<li>The file type      * selection.<br>      * The search will process in a seperate thread and the progress bar behind      * the "search" button will be displayed.<br>      *<br>      * When the search has completed, the      * {@link #searchFinishedHandler(CheckableTreeNode)} handler method is      * invoked.      */
 DECL|method|startSearch ()
-specifier|protected
+specifier|private
 name|void
 name|startSearch
 parameter_list|()
@@ -2203,13 +2301,18 @@ block|{
 literal|1
 block|}
 expr_stmt|;
-operator|new
-name|Thread
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
 argument_list|(
 operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -2248,6 +2351,8 @@ name|counter
 init|=
 literal|0
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -2278,14 +2383,11 @@ expr_stmt|;
 block|}
 block|}
 argument_list|)
-operator|.
-name|start
-argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * This will start the import of all file of all selected nodes in this 	 * dialogs tree view.<br> 	 *<br> 	 * The import itself will run in a seperate thread, whilst this dialog will 	 * be showing a progress bar, until the thread has finished its work.<br> 	 *<br> 	 * When the import has finished, the {@link #importFinishedHandler(int, java.util.List)} is 	 * invoked. 	 */
+comment|/**      * This will start the import of all file of all selected nodes in this      * dialogs tree view.<br>      *<br>      * The import itself will run in a seperate thread, whilst this dialog will      * be showing a progress bar, until the thread has finished its work.<br>      *<br>      * When the import has finished, the {@link #importFinishedHandler(int, java.util.List)} is      * invoked.      */
 DECL|method|startImport ()
-specifier|protected
+specifier|private
 name|void
 name|startImport
 parameter_list|()
@@ -2301,6 +2403,8 @@ return|return;
 block|}
 name|setDefaultCloseOperation
 argument_list|(
+name|WindowConstants
+operator|.
 name|DO_NOTHING_ON_CLOSE
 argument_list|)
 expr_stmt|;
@@ -2329,9 +2433,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|fileList
 operator|==
 literal|null
+operator|)
 operator|||
 name|fileList
 operator|.
@@ -2437,13 +2543,18 @@ block|{
 literal|1
 block|}
 expr_stmt|;
-operator|new
-name|Thread
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
 argument_list|(
 operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -2491,6 +2602,8 @@ name|counter
 init|=
 literal|0
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -2537,14 +2650,11 @@ expr_stmt|;
 block|}
 block|}
 argument_list|)
-operator|.
-name|start
-argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 *  	 * @param errors 	 */
+comment|/**      *       * @param errors      */
 DECL|method|importFinishedHandler (int count, List<String> errors)
-specifier|protected
+specifier|private
 name|void
 name|importFinishedHandler
 parameter_list|(
@@ -2560,43 +2670,33 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|errors
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|errors
 operator|.
 name|size
 argument_list|()
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
-name|StringBuilder
-name|warningInfo
-init|=
-operator|new
-name|StringBuilder
-argument_list|()
-decl_stmt|;
-name|warningInfo
+name|JOptionPane
 operator|.
-name|append
+name|showMessageDialog
 argument_list|(
+name|this
+argument_list|,
 literal|"The import finished with warnings:\n"
-argument_list|)
-expr_stmt|;
-name|warningInfo
-operator|.
-name|append
-argument_list|(
+operator|+
 literal|"There "
-argument_list|)
-expr_stmt|;
-name|warningInfo
-operator|.
-name|append
-argument_list|(
+operator|+
+operator|(
 name|errors
 operator|.
 name|size
@@ -2607,22 +2707,14 @@ condition|?
 literal|"were "
 else|:
 literal|"was "
-argument_list|)
-expr_stmt|;
-name|warningInfo
-operator|.
-name|append
-argument_list|(
+operator|)
+operator|+
 name|errors
 operator|.
 name|size
 argument_list|()
-argument_list|)
-expr_stmt|;
-name|warningInfo
-operator|.
-name|append
-argument_list|(
+operator|+
+operator|(
 name|errors
 operator|.
 name|size
@@ -2633,12 +2725,9 @@ condition|?
 literal|" files"
 else|:
 literal|" file"
-argument_list|)
-expr_stmt|;
-name|warningInfo
-operator|.
-name|append
-argument_list|(
+operator|)
+operator|+
+operator|(
 name|errors
 operator|.
 name|size
@@ -2649,25 +2738,9 @@ condition|?
 literal|" which"
 else|:
 literal|" that"
-argument_list|)
-expr_stmt|;
-name|warningInfo
-operator|.
-name|append
-argument_list|(
+operator|)
+operator|+
 literal|" could not be imported."
-argument_list|)
-expr_stmt|;
-name|JOptionPane
-operator|.
-name|showMessageDialog
-argument_list|(
-name|this
-argument_list|,
-name|warningInfo
-operator|.
-name|toString
-argument_list|()
 argument_list|,
 name|Globals
 operator|.
@@ -2717,6 +2790,8 @@ argument_list|)
 expr_stmt|;
 name|setDefaultCloseOperation
 argument_list|(
+name|WindowConstants
+operator|.
 name|DISPOSE_ON_CLOSE
 argument_list|)
 expr_stmt|;
@@ -2729,9 +2804,9 @@ name|markBaseChanged
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * Will be called from the Thread in which the "unlinked files search" is 	 * processed. As the result of the search, the root node of the determined 	 * file structure is passed. 	 *  	 * @param rootNode 	 *            The root of the file structure as the result of the search. 	 */
+comment|/**      * Will be called from the Thread in which the "unlinked files search" is      * processed. As the result of the search, the root node of the determined      * file structure is passed.      *       * @param rootNode      *            The root of the file structure as the result of the search.      */
 DECL|method|searchFinishedHandler (CheckableTreeNode rootNode)
-specifier|protected
+specifier|private
 name|void
 name|searchFinishedHandler
 parameter_list|(
@@ -2817,14 +2892,14 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Sets up the actions for the components. 	 */
+comment|/**      * Sets up the actions for the components.      */
 DECL|method|setupActions ()
 specifier|private
 name|void
 name|setupActions
 parameter_list|()
 block|{
-comment|/** 		 * Stores the selected Directory. 		 */
+comment|/**          * Stores the selected Directory.          */
 name|buttonBrowse
 operator|.
 name|addActionListener
@@ -2833,6 +2908,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2864,6 +2941,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2879,7 +2958,7 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|/** 		 * Action for the button "Import...".<br> 		 *<br> 		 * Actions on this button will start the import of all file of all 		 * selected nodes in this dialogs tree view.<br> 		 */
+comment|/**          * Action for the button "Import...".<br>          *<br>          * Actions on this button will start the import of all file of all          * selected nodes in this dialogs tree view.<br>          */
 name|ActionListener
 name|actionListenerImportEntrys
 init|=
@@ -2887,6 +2966,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2916,6 +2997,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2932,7 +3015,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Creates a list of {@link File}s for all leaf nodes in the tree structure 	 *<code>node</code>, which have been marked as<i>selected</i>.<br> 	 *<br> 	 *<code>Selected</code> nodes correspond to those entries in the tree, 	 * whose checkbox is<code>checked</code>. 	 *  	 * SIDE EFFECT: The checked nodes are removed from the tree. 	 *  	 * @param node 	 *            The root node representing a tree structure. 	 * @return A list of files of all checked leaf nodes. 	 */
+comment|/**      * Creates a list of {@link File}s for all leaf nodes in the tree structure      *<code>node</code>, which have been marked as<i>selected</i>.<br>      *<br>      *<code>Selected</code> nodes correspond to those entries in the tree,      * whose checkbox is<code>checked</code>.      *       * SIDE EFFECT: The checked nodes are removed from the tree.      *       * @param node      *            The root node representing a tree structure.      * @return A list of files of all checked leaf nodes.      */
 annotation|@
 name|SuppressWarnings
 argument_list|(
@@ -3035,9 +3118,11 @@ name|file
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|nodeFile
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|nodeFile
 operator|.
@@ -3103,9 +3188,11 @@ expr_stmt|;
 comment|// remove empty parent node
 while|while
 condition|(
+operator|(
 name|parent
 operator|!=
 literal|null
+operator|)
 operator|&&
 name|parent
 operator|.
@@ -3160,7 +3247,7 @@ return|return
 name|filesList
 return|;
 block|}
-comment|/** 	 * Initializes the visible components in this dialog. 	 */
+comment|/**      * Initializes the visible components in this dialog.      */
 DECL|method|initComponents ()
 specifier|private
 name|void
@@ -3241,12 +3328,6 @@ name|JPanel
 argument_list|()
 expr_stmt|;
 name|panelImportArea
-operator|=
-operator|new
-name|JPanel
-argument_list|()
-expr_stmt|;
-name|mainArea
 operator|=
 operator|new
 name|JPanel
@@ -3501,6 +3582,8 @@ operator|new
 name|ItemListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|itemStateChanged
@@ -3726,7 +3809,7 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Initializes the layout for the visible components in this menu. A 	 * {@link GridBagLayout} is used. 	 */
+comment|/**      * Initializes the layout for the visible components in this menu. A      * {@link GridBagLayout} is used.      */
 DECL|method|initLayout ()
 specifier|private
 name|void
@@ -3852,6 +3935,8 @@ literal|0
 argument_list|)
 decl_stmt|;
 comment|// 		x, y, w, h, wx,wy,ix,iy
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -3887,6 +3972,8 @@ argument_list|,
 literal|10
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -3922,6 +4009,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -3957,6 +4046,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4000,6 +4091,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4033,6 +4126,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4068,6 +4163,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4113,6 +4210,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4158,6 +4257,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4203,6 +4304,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4248,6 +4351,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4283,6 +4388,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4318,6 +4425,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4353,6 +4462,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4388,6 +4499,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4433,6 +4546,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4468,6 +4583,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4503,6 +4620,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4538,6 +4657,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4573,6 +4694,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4618,6 +4741,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4663,6 +4788,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4698,6 +4825,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4734,6 +4863,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4780,6 +4911,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4826,6 +4959,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -4942,7 +5077,7 @@ name|pack
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * Adds a component to a container, using the specified gridbag-layout and 	 * the supplied parameters.<br> 	 *<br> 	 * This method is simply used to ged rid of thousands of lines of code, 	 * which inevitably rise when layouts such as the gridbag-layout is being 	 * used. 	 *  	 * @param layout 	 *            The layout to be used. 	 * @param container 	 *            The {@link Container}, to which the component will be added. 	 * @param component 	 *            An AWT {@link Component}, that will be added to the container. 	 * @param fill 	 *            A constant describing the fill behaviour (see 	 *            {@link GridBagConstraints}). Can be<code>null</code>, if no 	 *            filling wants to be specified. 	 * @param anchor 	 *            A constant describing the anchor of the element in its parent 	 *            container (see {@link GridBagConstraints}). Can be 	 *<code>null</code>, if no specification is needed. 	 * @param gridX 	 *            The relative grid-X coordinate. 	 * @param gridY 	 *            The relative grid-Y coordinate. 	 * @param width 	 *            The relative width of the component. 	 * @param height 	 *            The relative height of the component. 	 * @param weightX 	 *            A value for the horizontal weight. 	 * @param weightY 	 *            A value for the vertical weight. 	 * @param insets 	 *            Insets of the component. Can be<code>null</code>. 	 */
+comment|/**      * Adds a component to a container, using the specified gridbag-layout and      * the supplied parameters.<br>      *<br>      * This method is simply used to ged rid of thousands of lines of code,      * which inevitably rise when layouts such as the gridbag-layout is being      * used.      *       * @param layout      *            The layout to be used.      * @param container      *            The {@link Container}, to which the component will be added.      * @param component      *            An AWT {@link Component}, that will be added to the container.      * @param fill      *            A constant describing the fill behaviour (see      *            {@link GridBagConstraints}). Can be<code>null</code>, if no      *            filling wants to be specified.      * @param anchor      *            A constant describing the anchor of the element in its parent      *            container (see {@link GridBagConstraints}). Can be      *<code>null</code>, if no specification is needed.      * @param gridX      *            The relative grid-X coordinate.      * @param gridY      *            The relative grid-Y coordinate.      * @param width      *            The relative width of the component.      * @param height      *            The relative height of the component.      * @param weightX      *            A value for the horizontal weight.      * @param weightY      *            A value for the vertical weight.      * @param insets      *            Insets of the component. Can be<code>null</code>.      */
 DECL|method|addComponent (GridBagLayout layout, Container container, Component component, Integer fill, Integer anchor, Insets insets, int gridX, int gridY, int width, int height, double weightX, double weightY, int ipadX, int ipadY)
 specifier|private
 specifier|static
@@ -5060,36 +5195,42 @@ name|fill
 operator|!=
 literal|null
 condition|)
+block|{
 name|constraints
 operator|.
 name|fill
 operator|=
 name|fill
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|insets
 operator|!=
 literal|null
 condition|)
+block|{
 name|constraints
 operator|.
 name|insets
 operator|=
 name|insets
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|anchor
 operator|!=
 literal|null
 condition|)
+block|{
 name|constraints
 operator|.
 name|anchor
 operator|=
 name|anchor
 expr_stmt|;
+block|}
 name|layout
 operator|.
 name|setConstraints
@@ -5107,20 +5248,22 @@ name|component
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Creates the tree view, that holds the data structure.<br> 	 *<br> 	 * Initially, the root node is<b>not</b> visible, so that the tree appears empty at the beginning. 	 */
+comment|/**      * Creates the tree view, that holds the data structure.<br>      *<br>      * Initially, the root node is<b>not</b> visible, so that the tree appears empty at the beginning.      */
 DECL|method|createTree ()
 specifier|private
 name|void
 name|createTree
 parameter_list|()
 block|{
-comment|/** 		 * Mouse listener to listen for mouse events on the tree.<br> 		 * This will mark the selected tree entry as "selected" or "unselected", 		 * which will cause this nodes checkbox to appear as either "checked" or 		 * "unchecked". 		 */
+comment|/**          * Mouse listener to listen for mouse events on the tree.<br>          * This will mark the selected tree entry as "selected" or "unselected",          * which will cause this nodes checkbox to appear as either "checked" or          * "unchecked".          */
 name|treeMouseListener
 operator|=
 operator|new
 name|MouseAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|mousePressed
@@ -5205,9 +5348,11 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|userObject
 operator|instanceof
 name|FileNodeWrapper
+operator|)
 operator|&&
 name|node
 operator|.
@@ -5342,7 +5487,7 @@ name|treeMouseListener
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Initialises the combobox that contains the available file types which 	 * bibtex entries can be created of. 	 */
+comment|/**      * Initialises the combobox that contains the available file types which      * bibtex entries can be created of.      */
 DECL|method|createFileTypesCombobox ()
 specifier|private
 name|void
@@ -5393,9 +5538,6 @@ name|comboBoxFileTypeSelection
 operator|=
 operator|new
 name|JComboBox
-argument_list|<
-name|FileFilter
-argument_list|>
 argument_list|(
 name|vector
 argument_list|)
@@ -5416,7 +5558,7 @@ name|serialVersionUID
 init|=
 literal|8503499454763947465L
 decl_stmt|;
-comment|/* (non-Javadoc) 			 * @see javax.swing.DefaultListCellRenderer#getListCellRendererComponent(javax.swing.JList, java.lang.Object, int, boolean, boolean) 			 */
+comment|/* (non-Javadoc)              * @see javax.swing.DefaultListCellRenderer#getListCellRendererComponent(javax.swing.JList, java.lang.Object, int, boolean, boolean)              */
 annotation|@
 name|Override
 specifier|public
@@ -5508,7 +5650,7 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Creates the ComboBox-View vor the Listbox that holds the Bibtex entry 	 * types. 	 */
+comment|/**      * Creates the ComboBox-View vor the Listbox that holds the Bibtex entry      * types.      */
 DECL|method|createEntryTypesCombobox ()
 specifier|private
 name|void
@@ -5592,15 +5734,12 @@ name|comboBoxEntryTypeSelection
 operator|=
 operator|new
 name|JComboBox
-argument_list|<
-name|BibtexEntryTypeWrapper
-argument_list|>
 argument_list|(
 name|list
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Wrapper for displaying the Type {@link BibtexEntryType} in a Combobox. 	 *  	 * @author Nosh&Dan 	 * @version 12.11.2008 | 01:02:30 	 * 	 */
+comment|/**      * Wrapper for displaying the Type {@link BibtexEntryType} in a Combobox.      *       * @author Nosh&Dan      * @version 12.11.2008 | 01:02:30      *      */
 DECL|class|BibtexEntryTypeWrapper
 specifier|private
 specifier|static
@@ -5626,7 +5765,7 @@ operator|=
 name|bibtexType
 expr_stmt|;
 block|}
-comment|/* (non-Javadoc) 		 * @see java.lang.Object#toString() 		 */
+comment|/* (non-Javadoc)          * @see java.lang.Object#toString()          */
 annotation|@
 name|Override
 DECL|method|toString ()
@@ -5641,6 +5780,7 @@ name|entryType
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 name|Globals
 operator|.
@@ -5649,6 +5789,7 @@ argument_list|(
 literal|"<No selection>"
 argument_list|)
 return|;
+block|}
 return|return
 name|entryType
 operator|.
@@ -5705,7 +5846,7 @@ name|JCheckBox
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 		 * @return the checkbox 		 */
+comment|/**          * @return the checkbox          */
 DECL|method|getCheckbox ()
 specifier|public
 name|JCheckBox
@@ -5716,7 +5857,7 @@ return|return
 name|checkbox
 return|;
 block|}
-comment|/** 		 * @param checkbox 		 *            the checkbox to set 		 */
+comment|/**          * @param checkbox          *            the checkbox to set          */
 DECL|method|setCheckbox (JCheckBox checkbox)
 specifier|public
 name|void
@@ -5829,7 +5970,7 @@ init|=
 literal|3737245079578074387L
 decl_stmt|;
 DECL|field|fsv
-specifier|protected
+specifier|final
 name|FileSystemView
 name|fsv
 init|=
@@ -5838,6 +5979,8 @@ operator|.
 name|getFileSystemView
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getTreeCellRendererComponent (final JTree tree, Object value, boolean sel, boolean expanded, boolean leaf, int row, boolean hasFocus)
 specifier|public
 name|Component
@@ -5952,7 +6095,7 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{}
+block|{             }
 name|newPanel
 operator|.
 name|setBackground
@@ -5980,6 +6123,8 @@ operator|new
 name|GridBagLayout
 argument_list|()
 decl_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -6011,6 +6156,8 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -6092,6 +6239,8 @@ operator|+
 literal|")"
 argument_list|)
 decl_stmt|;
+name|FindUnlinkedFilesDialog
+operator|.
 name|addComponent
 argument_list|(
 name|gbl
@@ -6173,7 +6322,7 @@ literal|0
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 		 * @param aDirectory 		 * @param fileCount 		 */
+comment|/**          * @param aDirectory          * @param fileCount          */
 DECL|method|FileNodeWrapper (File aDirectory, int fileCount)
 specifier|public
 name|FileNodeWrapper
@@ -6198,7 +6347,7 @@ operator|=
 name|fileCount
 expr_stmt|;
 block|}
-comment|/* 		 * (non-Javadoc) 		 *  		 * @see java.lang.Object#toString() 		 */
+comment|/*          * (non-Javadoc)          *           * @see java.lang.Object#toString()          */
 annotation|@
 name|Override
 DECL|method|toString ()

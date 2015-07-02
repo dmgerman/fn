@@ -70,6 +70,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JDialog
 import|;
 end_import
@@ -94,7 +104,6 @@ end_comment
 
 begin_class
 DECL|class|AutoLinkFilesAction
-specifier|public
 class|class
 name|AutoLinkFilesAction
 extends|extends
@@ -107,6 +116,8 @@ parameter_list|()
 block|{
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|SMALL_ICON
 argument_list|,
 name|GUIGlobals
@@ -119,6 +130,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 name|Globals
@@ -131,6 +144,8 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|ACCELERATOR_KEY
 argument_list|,
 name|Globals
@@ -144,6 +159,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent event)
 specifier|public
 name|void
@@ -238,6 +255,9 @@ literal|"Automatically set file links"
 argument_list|)
 argument_list|)
 decl_stmt|;
+name|Runnable
+name|runnable
+init|=
 name|Util
 operator|.
 name|autoSetLinks
@@ -264,6 +284,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -337,6 +359,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|JabRef
 operator|.
 name|jrf
@@ -362,8 +385,18 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 argument_list|,
 name|diag
+argument_list|)
+decl_stmt|;
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
+argument_list|(
+name|runnable
 argument_list|)
 expr_stmt|;
 block|}

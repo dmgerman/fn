@@ -288,6 +288,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|StringUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|Util
 import|;
 end_import
@@ -408,17 +420,21 @@ decl_stmt|;
 comment|// for all types
 DECL|field|m_name
 specifier|private
+specifier|final
 name|JTextField
 name|m_name
 init|=
 operator|new
 name|JTextField
 argument_list|(
+name|GroupDialog
+operator|.
 name|TEXTFIELD_LENGTH
 argument_list|)
 decl_stmt|;
 DECL|field|m_explicitRadioButton
 specifier|private
+specifier|final
 name|JRadioButton
 name|m_explicitRadioButton
 init|=
@@ -435,6 +451,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|m_keywordsRadioButton
 specifier|private
+specifier|final
 name|JRadioButton
 name|m_keywordsRadioButton
 init|=
@@ -451,6 +468,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|m_searchRadioButton
 specifier|private
+specifier|final
 name|JRadioButton
 name|m_searchRadioButton
 init|=
@@ -467,6 +485,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|m_independentButton
 specifier|private
+specifier|final
 name|JRadioButton
 name|m_independentButton
 init|=
@@ -484,6 +503,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|m_intersectionButton
 specifier|private
+specifier|final
 name|JRadioButton
 name|m_intersectionButton
 init|=
@@ -501,6 +521,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|m_unionButton
 specifier|private
+specifier|final
 name|JRadioButton
 name|m_unionButton
 init|=
@@ -519,17 +540,21 @@ decl_stmt|;
 comment|// for KeywordGroup
 DECL|field|m_kgSearchField
 specifier|private
+specifier|final
 name|JTextField
 name|m_kgSearchField
 init|=
 operator|new
 name|JTextField
 argument_list|(
+name|GroupDialog
+operator|.
 name|TEXTFIELD_LENGTH
 argument_list|)
 decl_stmt|;
 DECL|field|m_kgSearchTerm
 specifier|private
+specifier|final
 name|FieldTextField
 name|m_kgSearchTerm
 init|=
@@ -545,6 +570,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|m_kgCaseSensitive
 specifier|private
+specifier|final
 name|JCheckBox
 name|m_kgCaseSensitive
 init|=
@@ -561,6 +587,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|m_kgRegExp
 specifier|private
+specifier|final
 name|JCheckBox
 name|m_kgRegExp
 init|=
@@ -578,17 +605,21 @@ decl_stmt|;
 comment|// for SearchGroup
 DECL|field|m_sgSearchExpression
 specifier|private
+specifier|final
 name|JTextField
 name|m_sgSearchExpression
 init|=
 operator|new
 name|JTextField
 argument_list|(
+name|GroupDialog
+operator|.
 name|TEXTFIELD_LENGTH
 argument_list|)
 decl_stmt|;
 DECL|field|m_sgCaseSensitive
 specifier|private
+specifier|final
 name|JCheckBox
 name|m_sgCaseSensitive
 init|=
@@ -605,6 +636,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|m_sgRegExp
 specifier|private
+specifier|final
 name|JCheckBox
 name|m_sgRegExp
 init|=
@@ -622,6 +654,7 @@ decl_stmt|;
 comment|// for all types
 DECL|field|m_ok
 specifier|private
+specifier|final
 name|JButton
 name|m_ok
 init|=
@@ -638,6 +671,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|m_optionsPanel
 specifier|private
+specifier|final
 name|JPanel
 name|m_optionsPanel
 init|=
@@ -647,6 +681,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|m_description
 specifier|private
+specifier|final
 name|JLabel
 name|m_description
 init|=
@@ -654,6 +689,8 @@ operator|new
 name|JLabel
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Dimension
 name|getPreferredSize
@@ -714,6 +751,7 @@ name|m_editedGroup
 decl_stmt|;
 DECL|field|m_optionsLayout
 specifier|private
+specifier|final
 name|CardLayout
 name|m_optionsLayout
 init|=
@@ -721,7 +759,7 @@ operator|new
 name|CardLayout
 argument_list|()
 decl_stmt|;
-comment|/**          * Shows a group add/edit dialog.          *          * @param jabrefFrame          *            The parent frame.          * @param basePanel          *            The default grouping field.          * @param editedGroup          *            The group being edited, or null if a new group is to be          *            created.          */
+comment|/**      * Shows a group add/edit dialog.      *      * @param jabrefFrame      *            The parent frame.      * @param basePanel      *            The default grouping field.      * @param editedGroup      *            The group being edited, or null if a new group is to be      *            created.      */
 DECL|method|GroupDialog (JabRefFrame jabrefFrame, BasePanel basePanel, AbstractGroup editedGroup)
 specifier|public
 name|GroupDialog
@@ -754,11 +792,6 @@ name|m_basePanel
 operator|=
 name|basePanel
 expr_stmt|;
-name|JabRefFrame
-name|m_parent
-init|=
-name|jabrefFrame
-decl_stmt|;
 name|m_editedGroup
 operator|=
 name|editedGroup
@@ -840,7 +873,7 @@ name|m_description
 operator|.
 name|setVerticalAlignment
 argument_list|(
-name|JLabel
+name|SwingConstants
 operator|.
 name|TOP
 argument_list|)
@@ -872,6 +905,8 @@ argument_list|()
 argument_list|,
 literal|""
 operator|+
+name|GroupDialog
+operator|.
 name|INDEX_EXPLICITGROUP
 argument_list|)
 expr_stmt|;
@@ -946,7 +981,7 @@ argument_list|(
 operator|new
 name|FieldContentSelector
 argument_list|(
-name|m_parent
+name|jabrefFrame
 argument_list|,
 name|m_basePanel
 argument_list|,
@@ -1006,6 +1041,8 @@ argument_list|()
 argument_list|,
 literal|""
 operator|+
+name|GroupDialog
+operator|.
 name|INDEX_KEYWORDGROUP
 argument_list|)
 expr_stmt|;
@@ -1086,6 +1123,8 @@ argument_list|()
 argument_list|,
 literal|""
 operator|+
+name|GroupDialog
+operator|.
 name|INDEX_SEARCHGROUP
 argument_list|)
 expr_stmt|;
@@ -1477,15 +1516,17 @@ name|JScrollPane
 argument_list|(
 name|m_description
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|VERTICAL_SCROLLBAR_AS_NEEDED
 argument_list|,
-name|JScrollPane
+name|ScrollPaneConstants
 operator|.
 name|HORIZONTAL_SCROLLBAR_AS_NEEDED
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|Dimension
 name|getPreferredSize
@@ -1590,7 +1631,7 @@ name|placeDialog
 argument_list|(
 name|this
 argument_list|,
-name|m_parent
+name|jabrefFrame
 argument_list|)
 expr_stmt|;
 comment|// add listeners
@@ -1601,6 +1642,8 @@ operator|new
 name|ItemListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|itemStateChanged
@@ -1646,6 +1689,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1716,6 +1761,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1798,9 +1845,11 @@ name|m_editedGroup
 operator|!=
 literal|null
 condition|)
+block|{
 name|addPreviousEntries
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 elseif|else
@@ -1860,13 +1909,17 @@ expr_stmt|;
 if|if
 condition|(
 operator|(
+operator|(
 name|m_editedGroup
 operator|instanceof
 name|ExplicitGroup
+operator|)
 operator|||
+operator|(
 name|m_editedGroup
 operator|instanceof
 name|SearchGroup
+operator|)
 operator|)
 operator|&&
 name|m_resultingGroup
@@ -1953,6 +2006,8 @@ operator|new
 name|CaretListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|caretUpdate
@@ -1974,6 +2029,8 @@ operator|new
 name|ItemListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|itemStateChanged
@@ -2284,6 +2341,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|m_optionsLayout
 operator|.
 name|show
@@ -2294,10 +2352,13 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
+name|GroupDialog
+operator|.
 name|INDEX_EXPLICITGROUP
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -2306,6 +2367,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|m_optionsLayout
 operator|.
 name|show
@@ -2316,10 +2378,13 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
+name|GroupDialog
+operator|.
 name|INDEX_KEYWORDGROUP
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -2328,6 +2393,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|m_optionsLayout
 operator|.
 name|show
@@ -2338,10 +2404,13 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
+name|GroupDialog
+operator|.
 name|INDEX_SEARCHGROUP
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|updateComponents ()
 specifier|private
@@ -2353,6 +2422,7 @@ comment|// all groups need a name
 name|boolean
 name|okEnabled
 init|=
+operator|!
 name|m_name
 operator|.
 name|getText
@@ -2361,10 +2431,8 @@ operator|.
 name|trim
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 decl_stmt|;
 if|if
 condition|(
@@ -2439,12 +2507,13 @@ name|okEnabled
 operator|=
 name|okEnabled
 operator|&&
+operator|(
+operator|!
 name|s2
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
+operator|)
 expr_stmt|;
 if|if
 condition|(
@@ -2582,12 +2651,13 @@ name|okEnabled
 operator|=
 name|okEnabled
 operator|&
+operator|(
+operator|!
 name|s1
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
+operator|)
 expr_stmt|;
 if|if
 condition|(
@@ -2734,7 +2804,7 @@ name|okEnabled
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**          * This is used when a group is converted and the new group supports          * explicit adding of entries: All entries that match the previous group are          * added to the new group.          */
+comment|/**      * This is used when a group is converted and the new group supports      * explicit adding of entries: All entries that match the previous group are      * added to the new group.      */
 DECL|method|addPreviousEntries ()
 specifier|private
 name|void
@@ -2785,7 +2855,9 @@ name|JOptionPane
 operator|.
 name|NO_OPTION
 condition|)
+block|{
 return|return;
+block|}
 name|Vector
 argument_list|<
 name|BibtexEntry
@@ -2822,6 +2894,7 @@ argument_list|(
 name|entry
 argument_list|)
 condition|)
+block|{
 name|vec
 operator|.
 name|add
@@ -2830,14 +2903,14 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 if|if
 condition|(
+operator|!
 name|vec
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|BibtexEntry
@@ -2884,7 +2957,9 @@ operator|,
 name|this
 block|)
 block|)
-function|return;
+block|{
+return|return;
+block|}
 comment|// the undo information for a conversion to an ExplicitGroup is
 comment|// contained completely in the UndoableModifyGroup object.
 if|if
@@ -2896,6 +2971,7 @@ operator|instanceof
 name|ExplicitGroup
 operator|)
 condition|)
+block|{
 name|m_undoAddPreviousEntires
 operator|=
 name|m_resultingGroup
@@ -2906,10 +2982,11 @@ name|entries
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 end_class
 
 begin_function
-unit|}          protected
+unit|}      private
 DECL|method|setDescription (String description)
 name|void
 name|setDescription
@@ -2934,7 +3011,7 @@ end_function
 
 begin_function
 DECL|method|formatRegExException (String regExp, Exception e)
-specifier|protected
+specifier|private
 name|String
 name|formatRegExException
 parameter_list|(
@@ -2989,6 +3066,7 @@ name|i
 operator|>
 literal|0
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -2996,11 +3074,12 @@ argument_list|(
 literal|"<br>"
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|quoteForHTML
 argument_list|(
@@ -3021,7 +3100,7 @@ name|lang
 argument_list|(
 literal|"The regular expression<b>%0</b> is invalid%c"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|quoteForHTML
 argument_list|(
@@ -3047,9 +3126,11 @@ operator|instanceof
 name|PatternSyntaxException
 operator|)
 condition|)
+block|{
 return|return
 name|s
 return|;
+block|}
 name|int
 name|lastNewline
 init|=
@@ -3072,18 +3153,25 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|lastNewline
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|hat
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|hat
 operator|>
 name|lastNewline
+operator|)
 condition|)
+block|{
 return|return
 name|s
 operator|.
@@ -3112,6 +3200,7 @@ argument_list|,
 literal|"&nbsp;"
 argument_list|)
 return|;
+block|}
 return|return
 name|s
 return|;
@@ -3119,7 +3208,7 @@ block|}
 end_function
 
 begin_comment
-comment|/**          * Returns an undo object for adding the edited group's entries to the new          * group, or null if this did not occur.          */
+comment|/**      * Returns an undo object for adding the edited group's entries to the new      * group, or null if this did not occur.      */
 end_comment
 
 begin_function
@@ -3141,7 +3230,7 @@ end_comment
 
 begin_function
 DECL|method|setNameFontItalic (boolean italic)
-specifier|protected
+specifier|private
 name|void
 name|setNameFontItalic
 parameter_list|(
@@ -3196,12 +3285,12 @@ block|}
 end_function
 
 begin_comment
-comment|/**          * Returns the int representing the selected hierarchical group context.          */
+comment|/**      * Returns the int representing the selected hierarchical group context.      */
 end_comment
 
 begin_function
 DECL|method|getContext ()
-specifier|protected
+specifier|private
 name|int
 name|getContext
 parameter_list|()
@@ -3213,11 +3302,13 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 return|return
 name|AbstractGroup
 operator|.
 name|INDEPENDENT
 return|;
+block|}
 if|if
 condition|(
 name|m_intersectionButton
@@ -3225,11 +3316,13 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 return|return
 name|AbstractGroup
 operator|.
 name|REFINING
 return|;
+block|}
 if|if
 condition|(
 name|m_unionButton
@@ -3237,11 +3330,13 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 return|return
 name|AbstractGroup
 operator|.
 name|INCLUDING
 return|;
+block|}
 return|return
 name|AbstractGroup
 operator|.
@@ -3253,7 +3348,7 @@ end_function
 
 begin_function
 DECL|method|setContext (int context)
-specifier|protected
+specifier|private
 name|void
 name|setContext
 parameter_list|(

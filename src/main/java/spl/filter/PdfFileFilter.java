@@ -40,6 +40,8 @@ name|PdfFileFilter
 implements|implements
 name|FileFilter
 block|{
+annotation|@
+name|Override
 DECL|method|accept (File file)
 specifier|public
 name|boolean
@@ -75,9 +77,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|path
 operator|==
 literal|null
+operator|)
 operator|||
 name|path
 operator|.
@@ -92,9 +96,11 @@ argument_list|(
 literal|"."
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 return|return
 name|isMatchingFileFilter
 argument_list|(

@@ -25,7 +25,6 @@ interface|interface
 name|Worker
 block|{
 DECL|method|run ()
-specifier|public
 name|void
 name|run
 parameter_list|()

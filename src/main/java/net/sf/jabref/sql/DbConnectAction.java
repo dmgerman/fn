@@ -121,11 +121,12 @@ DECL|class|DbConnectAction
 specifier|public
 class|class
 name|DbConnectAction
-extends|extends
+implements|implements
 name|BaseAction
 block|{
 DECL|field|panel
 specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
@@ -157,11 +158,14 @@ argument_list|()
 return|;
 block|}
 DECL|class|DbImpAction
+specifier|private
 class|class
 name|DbImpAction
 extends|extends
 name|AbstractAction
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -176,6 +180,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|action ()
 specifier|public
 name|void
@@ -391,7 +397,7 @@ argument_list|(
 name|preamble
 argument_list|)
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 name|errorMessage
 argument_list|,
