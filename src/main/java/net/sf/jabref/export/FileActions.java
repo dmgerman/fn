@@ -822,9 +822,12 @@ name|write
 argument_list|(
 literal|' '
 operator|+
-name|GUIGlobals
+name|Globals
 operator|.
-name|version
+name|BUILD_INFO
+operator|.
+name|getVersion
+argument_list|()
 operator|+
 literal|'.'
 operator|+

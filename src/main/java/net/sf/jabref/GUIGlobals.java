@@ -272,17 +272,6 @@ name|frameTitle
 init|=
 literal|"JabRef"
 decl_stmt|;
-DECL|field|version
-specifier|public
-specifier|static
-specifier|final
-name|String
-name|version
-init|=
-name|Globals
-operator|.
-name|VERSION
-decl_stmt|;
 DECL|field|stringsTitle
 specifier|public
 specifier|static

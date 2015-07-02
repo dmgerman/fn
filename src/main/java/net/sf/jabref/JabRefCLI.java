@@ -1136,9 +1136,12 @@ name|format
 argument_list|(
 literal|"JabRef %s"
 argument_list|,
-name|GUIGlobals
+name|Globals
 operator|.
-name|version
+name|BUILD_INFO
+operator|.
+name|getVersion
+argument_list|()
 argument_list|)
 return|;
 block|}

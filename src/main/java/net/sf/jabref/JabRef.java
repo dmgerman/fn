@@ -1002,7 +1002,10 @@ literal|"JabRef."
 operator|+
 name|Globals
 operator|.
-name|VERSION
+name|BUILD_INFO
+operator|.
+name|getVersion
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//System.out.println(getCurrentProcessExplicitAppUserModelID());
