@@ -190,6 +190,20 @@ name|UndoableInsertString
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
 comment|/**  * Created by IntelliJ IDEA.  * User: alver  * Date: May 18, 2006  * Time: 9:49:02 PM  * To change this template use File | Settings | File Templates.  */
 end_comment

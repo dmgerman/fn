@@ -172,6 +172,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|util
+operator|.
 name|FileUtil
 import|;
 end_import
@@ -231,6 +233,8 @@ operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|util
 operator|.
 name|Util
 import|;

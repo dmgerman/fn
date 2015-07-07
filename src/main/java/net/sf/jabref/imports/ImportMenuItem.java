@@ -216,6 +216,20 @@ name|UndoableRemoveEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
 comment|/*   * TODO: could separate the "menu item" functionality from the importing functionality  *   */
 end_comment

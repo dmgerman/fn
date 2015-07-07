@@ -180,6 +180,20 @@ name|LayoutFormatterExtension
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
 comment|/**  * DOCUMENT ME!  *   * @author $author$  * @version $Revision$  */
 end_comment

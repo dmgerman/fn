@@ -1,14 +1,30 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.util
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|util
 package|;
 end_package
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|DOIUtil
+import|;
+end_import
 
 begin_import
 import|import
@@ -27,18 +43,6 @@ operator|.
 name|junit
 operator|.
 name|Test
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|*
 import|;
 end_import
 
@@ -137,7 +141,7 @@ name|DOIUtil
 operator|.
 name|checkForDOIwithHTTPprefix
 argument_list|(
-literal|"thfjtfjglkjjlkkölm5476576658796"
+literal|"thfjtfjglkjjlkkï¿½lm5476576658796"
 argument_list|)
 argument_list|)
 expr_stmt|;

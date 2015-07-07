@@ -174,6 +174,20 @@ name|Options
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
 comment|/**  * A combo-box and a manage button that will add selected strings to an  * associated entry editor.  *   * Used to manage keywords and authors for instance.  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
 end_comment

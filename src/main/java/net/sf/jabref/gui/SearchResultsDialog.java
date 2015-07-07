@@ -312,6 +312,34 @@ name|UIFSplitPane
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|StringUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
 comment|/**  * Dialog to display search results, potentially from more than one BasePanel, with  * possibility to preview and to locate each entry in the main window.  *  * TODO: should be possible to save or export the list.  */
 end_comment

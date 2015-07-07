@@ -146,6 +146,20 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
 comment|/**  * Class for importing BibTeX-files.  *   * Use:  *   * BibtexParser parser = new BibtexParser(reader);  *   * ParserResult result = parser.parse();  *   * or  *   * ParserResult result = BibtexParser.parse(reader);  *   * Can be used stand-alone.  *   * @author David Weitzman  * @author Nizar N. Batada  * @author Morten O. Alver  * @author Christopher Oezbek   */
 end_comment

@@ -80,6 +80,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|util
+operator|.
 name|StringUtil
 import|;
 end_import

@@ -150,6 +150,20 @@ name|FileListTableModel
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|FileUtil
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class handles the task of looking up all external files linked for a set  * of entries. This is useful for tasks where the user wants e.g. to send a database  * with external files included.  */
 end_comment

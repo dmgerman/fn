@@ -622,6 +622,20 @@ name|UndoableRemoveEntry
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
 comment|/**  * GUI component that allows editing of the fields of a BibtexEntry (i.e. the  * one that shows up, when you double click on an entry in the table)  *   * It hosts the tabs (required, general, optional) and the buttons to the left.  *   * EntryEditor also registers itself as a VetoableChangeListener, receiving  * events whenever a field of the entry changes, enabling the text fields to  * update themselves if the change is made from somewhere else.  */
 end_comment
