@@ -3953,8 +3953,7 @@ name|updateExternalFileTypes
 argument_list|()
 expr_stmt|;
 comment|// This property is set to make the Mac OSX Java VM move the menu bar to
-comment|// the top
-comment|// of the screen, where Mac users expect it to be.
+comment|// the top of the screen, where Mac users expect it to be.
 name|System
 operator|.
 name|setProperty
@@ -3966,8 +3965,28 @@ argument_list|)
 expr_stmt|;
 comment|// Set antialiasing on everywhere. This only works in JRE>= 1.5.
 comment|// Or... it doesn't work, period.
-comment|//System.setProperty("swing.aatext", "true");
 comment|// TODO test and maybe remove this! I found this commented out with no additional info ( payload@lavabit.com )
+comment|// Enabled since JabRef 2.11 beta 4
+name|System
+operator|.
+name|setProperty
+argument_list|(
+literal|"swing.aatext"
+argument_list|,
+literal|"true"
+argument_list|)
+expr_stmt|;
+comment|// Default is "on".
+comment|// "lcd" instead of "on" because of http://wiki.netbeans.org/FaqFontRendering and http://docs.oracle.com/javase/6/docs/technotes/guides/2d/flags.html#aaFonts
+name|System
+operator|.
+name|setProperty
+argument_list|(
+literal|"awt.useSystemAAFontSettings"
+argument_list|,
+literal|"lcd"
+argument_list|)
+expr_stmt|;
 comment|// Set the Look& Feel for Swing.
 try|try
 block|{
