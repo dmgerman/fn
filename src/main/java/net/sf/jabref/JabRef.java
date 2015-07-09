@@ -622,10 +622,7 @@ block|{
 comment|// NetworkTab.java ensures that proxyHostname and proxyPort are not null
 name|System
 operator|.
-name|getProperties
-argument_list|()
-operator|.
-name|put
+name|setProperty
 argument_list|(
 literal|"http.proxyHost"
 argument_list|,
@@ -639,10 +636,7 @@ argument_list|)
 expr_stmt|;
 name|System
 operator|.
-name|getProperties
-argument_list|()
-operator|.
-name|put
+name|setProperty
 argument_list|(
 literal|"http.proxyPort"
 argument_list|,
@@ -669,10 +663,7 @@ condition|)
 block|{
 name|System
 operator|.
-name|getProperties
-argument_list|()
-operator|.
-name|put
+name|setProperty
 argument_list|(
 literal|"http.proxyUser"
 argument_list|,
@@ -686,10 +677,7 @@ argument_list|)
 expr_stmt|;
 name|System
 operator|.
-name|getProperties
-argument_list|()
-operator|.
-name|put
+name|setProperty
 argument_list|(
 literal|"http.proxyPassword"
 argument_list|,
@@ -718,10 +706,7 @@ argument_list|)
 expr_stmt|;
 name|System
 operator|.
-name|getProperties
-argument_list|()
-operator|.
-name|put
+name|setProperty
 argument_list|(
 literal|"proxySet"
 argument_list|,
