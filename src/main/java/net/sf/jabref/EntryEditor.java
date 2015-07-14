@@ -520,7 +520,7 @@ name|jabref
 operator|.
 name|journals
 operator|.
-name|JournalAbbreviations
+name|JournalAbbreviationsUtil
 import|;
 end_import
 
@@ -2939,7 +2939,7 @@ name|controls
 operator|.
 name|add
 argument_list|(
-name|JournalAbbreviations
+name|JournalAbbreviationsUtil
 operator|.
 name|getNameSwitcher
 argument_list|(

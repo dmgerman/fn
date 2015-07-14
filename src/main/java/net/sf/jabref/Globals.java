@@ -266,7 +266,9 @@ name|jabref
 operator|.
 name|journals
 operator|.
-name|JournalAbbreviations
+name|logic
+operator|.
+name|JournalAbbreviationRepository
 import|;
 end_import
 
@@ -338,6 +340,15 @@ specifier|public
 class|class
 name|Globals
 block|{
+DECL|field|JOURNALS_IEEE_INTERNAL_LIST
+specifier|public
+specifier|static
+specifier|final
+name|String
+name|JOURNALS_IEEE_INTERNAL_LIST
+init|=
+literal|"/resource/IEEEJournalList.txt"
+decl_stmt|;
 comment|/**      * {@link Control} class allowing properties bundles to be in different encodings.      *       * @see<a href="http://stackoverflow.com/questions/4659929/how-to-use-utf-8-in-resource-properties-with-resourcebundle">utf-8 and property files</a>      */
 DECL|class|EncodingControl
 specifier|private
@@ -1777,7 +1788,7 @@ block|}
 DECL|field|journalAbbrev
 specifier|public
 specifier|static
-name|JournalAbbreviations
+name|JournalAbbreviationRepository
 name|journalAbbrev
 decl_stmt|;
 DECL|method|lang (String key, String[] params)
@@ -11275,7 +11286,14 @@ operator|.
 name|journalAbbrev
 operator|=
 operator|new
-name|JournalAbbreviations
+name|JournalAbbreviationRepository
+argument_list|()
+expr_stmt|;
+name|Globals
+operator|.
+name|journalAbbrev
+operator|.
+name|readJournalListFromResource
 argument_list|(
 name|Globals
 operator|.
@@ -11298,9 +11316,9 @@ name|Globals
 operator|.
 name|journalAbbrev
 operator|.
-name|readJournalList
+name|readJournalListFromResource
 argument_list|(
-literal|"/resource/IEEEJournalList.txt"
+name|JOURNALS_IEEE_INTERNAL_LIST
 argument_list|)
 expr_stmt|;
 block|}
@@ -11361,7 +11379,7 @@ name|Globals
 operator|.
 name|journalAbbrev
 operator|.
-name|readJournalList
+name|readJournalListFromFile
 argument_list|(
 operator|new
 name|File
@@ -11415,7 +11433,7 @@ name|Globals
 operator|.
 name|journalAbbrev
 operator|.
-name|readJournalList
+name|readJournalListFromFile
 argument_list|(
 operator|new
 name|File

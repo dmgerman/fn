@@ -909,7 +909,7 @@ name|Globals
 operator|.
 name|journalAbbrev
 operator|.
-name|readJournalList
+name|readJournalListFromFile
 argument_list|(
 operator|new
 name|File

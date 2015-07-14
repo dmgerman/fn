@@ -186,7 +186,9 @@ name|jabref
 operator|.
 name|journals
 operator|.
-name|JournalAbbreviations
+name|logic
+operator|.
+name|JournalAbbreviationRepository
 import|;
 end_import
 
@@ -1581,9 +1583,18 @@ operator|.
 name|journalAbbrev
 operator|=
 operator|new
-name|JournalAbbreviations
+name|JournalAbbreviationRepository
+argument_list|()
+expr_stmt|;
+name|Globals
+operator|.
+name|journalAbbrev
+operator|.
+name|readJournalListFromResource
 argument_list|(
-literal|"/resource/IEEEJournalList.txt"
+name|Globals
+operator|.
+name|JOURNALS_IEEE_INTERNAL_LIST
 argument_list|)
 expr_stmt|;
 block|}
