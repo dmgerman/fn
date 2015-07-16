@@ -85,7 +85,6 @@ name|path
 decl_stmt|;
 DECL|field|expiresFormat1
 specifier|private
-specifier|static
 specifier|final
 name|DateFormat
 name|expiresFormat1
@@ -102,7 +101,6 @@ argument_list|)
 decl_stmt|;
 DECL|field|expiresFormat2
 specifier|private
-specifier|static
 specifier|final
 name|DateFormat
 name|expiresFormat2
@@ -426,8 +424,6 @@ name|this
 operator|.
 name|expires
 operator|=
-name|Cookie
-operator|.
 name|expiresFormat1
 operator|.
 name|parse
@@ -448,8 +444,6 @@ name|this
 operator|.
 name|expires
 operator|=
-name|Cookie
-operator|.
 name|expiresFormat2
 operator|.
 name|parse
