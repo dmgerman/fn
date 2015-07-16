@@ -1395,9 +1395,6 @@ argument_list|,
 name|index
 argument_list|)
 decl_stmt|;
-name|Short
-name|typeS
-decl_stmt|;
 try|try
 block|{
 comment|/*typeS = new Short(Short.parseShort(type));                 OOBibFormatParser parser = new OOBibFormatParser(new StringReader(formatString));                 PropertyValue[][] layout = parser.parse();*/
@@ -4489,6 +4486,13 @@ name|Object
 name|o
 parameter_list|)
 block|{
+if|if
+condition|(
+name|o
+operator|!=
+literal|null
+condition|)
+block|{
 return|return
 name|styleFile
 operator|.
@@ -4504,6 +4508,13 @@ operator|.
 name|styleFile
 argument_list|)
 return|;
+block|}
+else|else
+block|{
+return|return
+literal|false
+return|;
+block|}
 block|}
 block|}
 end_class
