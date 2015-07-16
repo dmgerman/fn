@@ -178,10 +178,10 @@ argument_list|)
 return|;
 block|}
 comment|/**      * String used to identify this import filter on the command line.      *       * @return "xmp"      */
-DECL|method|getCLIid ()
+DECL|method|getCommandLineId ()
 specifier|public
 name|String
-name|getCLIid
+name|getCommandLineId
 parameter_list|()
 block|{
 return|return
