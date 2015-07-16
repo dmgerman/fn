@@ -2753,7 +2753,7 @@ operator|new
 name|EasyDateFormat
 argument_list|()
 operator|.
-name|easyDateFormat
+name|getCurrentDate
 argument_list|()
 decl_stmt|;
 name|ed

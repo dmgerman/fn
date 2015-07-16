@@ -4764,7 +4764,7 @@ name|timestamp
 init|=
 name|dateFormatter
 operator|.
-name|easyDateFormat
+name|getCurrentDate
 argument_list|()
 decl_stmt|;
 name|boolean
@@ -4934,7 +4934,7 @@ name|timestamp
 init|=
 name|dateFormatter
 operator|.
-name|easyDateFormat
+name|getCurrentDate
 argument_list|()
 decl_stmt|;
 name|String
@@ -8801,7 +8801,7 @@ name|timestamp
 init|=
 name|dateFormatter
 operator|.
-name|easyDateFormat
+name|getCurrentDate
 argument_list|()
 decl_stmt|;
 name|Util

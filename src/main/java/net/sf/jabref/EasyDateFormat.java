@@ -45,14 +45,14 @@ init|=
 literal|null
 decl_stmt|;
 comment|/**      * Creates a String containing the current date (and possibly time),      * formatted according to the format set in preferences under the key      * "timeStampFormat".      *      * @return The date string.      */
-DECL|method|easyDateFormat ()
+DECL|method|getCurrentDate ()
 specifier|public
 name|String
-name|easyDateFormat
+name|getCurrentDate
 parameter_list|()
 block|{
 return|return
-name|easyDateFormat
+name|getDateAt
 argument_list|(
 operator|new
 name|Date
@@ -61,10 +61,10 @@ argument_list|)
 return|;
 block|}
 comment|/**      * Creates a readable Date string from the parameter date. The format is set      * in preferences under the key "timeStampFormat".      *      * @return The formatted date string.      */
-DECL|method|easyDateFormat (Date date)
+DECL|method|getDateAt (Date date)
 specifier|public
 name|String
-name|easyDateFormat
+name|getDateAt
 parameter_list|(
 name|Date
 name|date
