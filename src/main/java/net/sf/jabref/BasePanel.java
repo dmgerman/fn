@@ -1673,18 +1673,6 @@ name|showingSearch
 init|=
 literal|false
 decl_stmt|;
-annotation|@
-name|SuppressWarnings
-argument_list|(
-literal|"unused"
-argument_list|)
-DECL|field|showingGroup
-specifier|private
-name|boolean
-name|showingGroup
-init|=
-literal|false
-decl_stmt|;
 DECL|field|sortingBySearchResults
 specifier|public
 name|boolean
@@ -12793,10 +12781,6 @@ argument_list|(
 name|matcher
 argument_list|)
 expr_stmt|;
-name|showingGroup
-operator|=
-literal|true
-expr_stmt|;
 block|}
 DECL|method|stopShowingSearchResults ()
 specifier|public
@@ -12832,10 +12816,6 @@ name|NoSearchMatcher
 operator|.
 name|INSTANCE
 argument_list|)
-expr_stmt|;
-name|showingGroup
-operator|=
-literal|false
 expr_stmt|;
 block|}
 comment|/**      * Query whether this BasePanel is in the mode where a float search result is shown.      * @return true if showing float search, false otherwise.      */
