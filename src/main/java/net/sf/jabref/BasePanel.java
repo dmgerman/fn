@@ -12596,7 +12596,7 @@ literal|"Saved database"
 argument_list|)
 argument_list|)
 condition|)
-block|{         }
+block|{
 name|frame
 operator|.
 name|output
@@ -12604,6 +12604,7 @@ argument_list|(
 literal|" "
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|markNonUndoableBaseChanged ()
 specifier|public
