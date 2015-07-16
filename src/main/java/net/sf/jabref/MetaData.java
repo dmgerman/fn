@@ -1112,16 +1112,6 @@ argument_list|(
 name|key
 argument_list|)
 decl_stmt|;
-if|if
-condition|(
-name|orderedData
-operator|.
-name|size
-argument_list|()
-operator|>=
-literal|0
-condition|)
-block|{
 name|sb
 operator|.
 name|append
@@ -1198,7 +1188,6 @@ argument_list|(
 literal|"}"
 argument_list|)
 expr_stmt|;
-block|}
 name|wrapStringBuffer
 argument_list|(
 name|sb
