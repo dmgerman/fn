@@ -652,6 +652,15 @@ name|VetoableChangeListener
 implements|,
 name|EntryContainer
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 comment|// A reference to the entry this object works on.
 DECL|field|entry
 specifier|private
@@ -1059,13 +1068,6 @@ operator|new
 name|CloseAction
 argument_list|()
 expr_stmt|;
-name|CopyKeyAction
-name|copyKeyAction
-init|=
-operator|new
-name|CopyKeyAction
-argument_list|()
-decl_stmt|;
 name|generateKeyAction
 operator|=
 operator|new
@@ -5572,6 +5574,15 @@ name|TypeButton
 extends|extends
 name|JButton
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|TypeButton (String type)
 specifier|public
 name|TypeButton
@@ -5679,6 +5690,15 @@ name|TypeLabel
 extends|extends
 name|JLabel
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|TypeLabel (String type)
 specifier|public
 name|TypeLabel
@@ -6058,6 +6078,15 @@ name|DeleteAction
 extends|extends
 name|AbstractAction
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|DeleteAction ()
 specifier|public
 name|DeleteAction
@@ -6199,6 +6228,15 @@ name|CloseAction
 extends|extends
 name|AbstractAction
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|CloseAction ()
 specifier|public
 name|CloseAction
@@ -6298,6 +6336,15 @@ name|CopyKeyAction
 extends|extends
 name|AbstractAction
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|CopyKeyAction ()
 specifier|public
 name|CopyKeyAction
@@ -6385,6 +6432,15 @@ name|StoreFieldAction
 extends|extends
 name|AbstractAction
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|StoreFieldAction ()
 specifier|public
 name|StoreFieldAction
@@ -7235,6 +7291,15 @@ name|SwitchLeftAction
 extends|extends
 name|AbstractAction
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|SwitchLeftAction ()
 specifier|public
 name|SwitchLeftAction
@@ -7305,6 +7370,15 @@ name|SwitchRightAction
 extends|extends
 name|AbstractAction
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|SwitchRightAction ()
 specifier|public
 name|SwitchRightAction
@@ -7373,6 +7447,15 @@ name|NextEntryAction
 extends|extends
 name|AbstractAction
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|NextEntryAction ()
 specifier|public
 name|NextEntryAction
@@ -7502,6 +7585,15 @@ name|PrevEntryAction
 extends|extends
 name|AbstractAction
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|PrevEntryAction ()
 specifier|public
 name|PrevEntryAction
@@ -7644,6 +7736,15 @@ name|GenerateKeyAction
 extends|extends
 name|AbstractAction
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|field|parent
 specifier|final
 name|JabRefFrame
@@ -7968,6 +8069,15 @@ name|UndoAction
 extends|extends
 name|AbstractAction
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|UndoAction ()
 specifier|public
 name|UndoAction
@@ -8030,6 +8140,15 @@ name|RedoAction
 extends|extends
 name|AbstractAction
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|RedoAction ()
 specifier|public
 name|RedoAction
@@ -8092,6 +8211,15 @@ name|SaveDatabaseAction
 extends|extends
 name|AbstractAction
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|SaveDatabaseAction ()
 specifier|public
 name|SaveDatabaseAction
@@ -8301,6 +8429,15 @@ name|ChangeTypeAction
 extends|extends
 name|AbstractAction
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|field|type
 specifier|final
 name|BibtexEntryType
@@ -8411,6 +8548,15 @@ name|AutoLinkAction
 extends|extends
 name|AbstractAction
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|method|AutoLinkAction ()
 specifier|public
 name|AutoLinkAction
