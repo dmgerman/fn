@@ -258,7 +258,9 @@ name|editor
 operator|.
 name|setText
 argument_list|(
+operator|new
 name|EasyDateFormat
+argument_list|()
 operator|.
 name|easyDateFormat
 argument_list|(

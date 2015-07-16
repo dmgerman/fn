@@ -986,6 +986,17 @@ argument_list|(
 literal|"[a-z]+://.*"
 argument_list|)
 decl_stmt|;
+DECL|field|dateFormatter
+specifier|private
+specifier|static
+specifier|final
+name|EasyDateFormat
+name|dateFormatter
+init|=
+operator|new
+name|EasyDateFormat
+argument_list|()
+decl_stmt|;
 DECL|method|pr (String s)
 specifier|public
 specifier|static
@@ -4751,7 +4762,7 @@ decl_stmt|;
 name|String
 name|timestamp
 init|=
-name|EasyDateFormat
+name|dateFormatter
 operator|.
 name|easyDateFormat
 argument_list|()
@@ -4921,7 +4932,7 @@ decl_stmt|;
 name|String
 name|timestamp
 init|=
-name|EasyDateFormat
+name|dateFormatter
 operator|.
 name|easyDateFormat
 argument_list|()
@@ -8788,7 +8799,7 @@ decl_stmt|;
 name|String
 name|timestamp
 init|=
-name|EasyDateFormat
+name|dateFormatter
 operator|.
 name|easyDateFormat
 argument_list|()

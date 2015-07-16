@@ -36,10 +36,9 @@ specifier|public
 class|class
 name|EasyDateFormat
 block|{
-comment|/**      * A static Object for date formatting. Please do not create the object      * here, because there are some references from the Globals class.....      */
+comment|/**      * The formatter objects      */
 DECL|field|dateFormatter
 specifier|private
-specifier|static
 name|SimpleDateFormat
 name|dateFormatter
 init|=
@@ -48,7 +47,6 @@ decl_stmt|;
 comment|/**      * Creates a String containing the current date (and possibly time),      * formatted according to the format set in preferences under the key      * "timeStampFormat".      *      * @return The date string.      */
 DECL|method|easyDateFormat ()
 specifier|public
-specifier|static
 name|String
 name|easyDateFormat
 parameter_list|()
@@ -65,7 +63,6 @@ block|}
 comment|/**      * Creates a readable Date string from the parameter date. The format is set      * in preferences under the key "timeStampFormat".      *      * @return The formatted date string.      */
 DECL|method|easyDateFormat (Date date)
 specifier|public
-specifier|static
 name|String
 name|easyDateFormat
 parameter_list|(
