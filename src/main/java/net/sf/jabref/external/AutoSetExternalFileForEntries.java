@@ -1166,11 +1166,11 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Found "
-operator|+
+literal|"Found %0 broken links"
+argument_list|,
 name|brokenLinks
 operator|+
-literal|" broken links"
+literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
