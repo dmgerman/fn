@@ -26,6 +26,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -61,6 +71,8 @@ name|void
 name|testFormat
 parameter_list|()
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|"John von Neumann and John Smith and Peter Black Brown, Jr"

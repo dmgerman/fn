@@ -267,6 +267,7 @@ name|tableModel
 decl_stmt|;
 DECL|field|ok
 specifier|private
+specifier|final
 name|JButton
 name|ok
 init|=
@@ -280,8 +281,11 @@ argument_list|(
 literal|"Ok"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|cancel
+specifier|private
+specifier|final
+name|JButton
 name|cancel
 init|=
 operator|new
@@ -297,6 +301,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|add
 specifier|private
+specifier|final
 name|JButton
 name|add
 init|=
@@ -310,8 +315,11 @@ argument_list|(
 literal|"add"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|remove
+specifier|private
+specifier|final
+name|JButton
 name|remove
 init|=
 operator|new
@@ -324,8 +332,11 @@ argument_list|(
 literal|"remove"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|edit
+specifier|private
+specifier|final
+name|JButton
 name|edit
 init|=
 operator|new
@@ -338,8 +349,11 @@ argument_list|(
 literal|"edit"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|toDefaults
+specifier|private
+specifier|final
+name|JButton
 name|toDefaults
 init|=
 operator|new
@@ -355,6 +369,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|editListener
 specifier|private
+specifier|final
 name|EditListener
 name|editListener
 init|=
@@ -363,7 +378,7 @@ name|EditListener
 argument_list|()
 decl_stmt|;
 DECL|method|ExternalFileTypeEditor (JFrame frame)
-specifier|public
+specifier|private
 name|ExternalFileTypeEditor
 parameter_list|(
 name|JFrame
@@ -395,7 +410,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|ExternalFileTypeEditor (JDialog dialog)
-specifier|public
+specifier|private
 name|ExternalFileTypeEditor
 parameter_list|(
 name|JDialog
@@ -428,7 +443,7 @@ expr_stmt|;
 block|}
 comment|/**      * Update the editor to show the current settings in Preferences.      */
 DECL|method|setValues ()
-specifier|public
+specifier|private
 name|void
 name|setValues
 parameter_list|()
@@ -478,7 +493,7 @@ expr_stmt|;
 block|}
 comment|/**      * Store the list of external entry types to Preferences.      */
 DECL|method|storeSettings ()
-specifier|public
+specifier|private
 name|void
 name|storeSettings
 parameter_list|()
@@ -507,6 +522,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -532,6 +549,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -562,6 +581,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1074,17 +1095,21 @@ name|frame
 operator|!=
 literal|null
 condition|)
+block|{
 name|setLocationRelativeTo
 argument_list|(
 name|frame
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|setLocationRelativeTo
 argument_list|(
 name|dialog
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|getEditor (ExternalFileType type)
 specifier|private
@@ -1101,6 +1126,7 @@ name|entryEditor
 operator|==
 literal|null
 condition|)
+block|{
 name|entryEditor
 operator|=
 operator|new
@@ -1113,7 +1139,9 @@ argument_list|,
 name|type
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|entryEditor
 operator|.
 name|setEntry
@@ -1121,6 +1149,7 @@ argument_list|(
 name|type
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|entryEditor
 return|;
@@ -1164,11 +1193,14 @@ argument_list|)
 return|;
 block|}
 DECL|class|AddListener
+specifier|private
 class|class
 name|AddListener
 implements|implements
 name|ActionListener
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1232,11 +1264,14 @@ block|}
 block|}
 block|}
 DECL|class|RemoveListener
+specifier|private
 class|class
 name|RemoveListener
 implements|implements
 name|ActionListener
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1263,7 +1298,9 @@ name|length
 operator|==
 literal|0
 condition|)
+block|{
 return|return;
+block|}
 for|for
 control|(
 name|int
@@ -1347,6 +1384,8 @@ name|EditListener
 implements|implements
 name|ActionListener
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1373,7 +1412,9 @@ name|length
 operator|!=
 literal|1
 condition|)
+block|{
 return|return;
+block|}
 name|getEditor
 argument_list|(
 name|fileTypes
@@ -1399,11 +1440,13 @@ operator|.
 name|okPressed
 argument_list|()
 condition|)
+block|{
 name|tableModel
 operator|.
 name|fireTableDataChanged
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|class|IconRenderer
@@ -1413,6 +1456,7 @@ implements|implements
 name|TableCellRenderer
 block|{
 DECL|field|lab
+specifier|final
 name|JLabel
 name|lab
 init|=
@@ -1420,6 +1464,8 @@ operator|new
 name|JLabel
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getTableCellRendererComponent (JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
 specifier|public
 name|Component
@@ -1467,11 +1513,14 @@ return|;
 block|}
 block|}
 DECL|class|FileTypeTableModel
+specifier|private
 class|class
 name|FileTypeTableModel
 extends|extends
 name|AbstractTableModel
 block|{
+annotation|@
+name|Override
 DECL|method|getColumnCount ()
 specifier|public
 name|int
@@ -1482,6 +1531,8 @@ return|return
 literal|5
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRowCount ()
 specifier|public
 name|int
@@ -1495,6 +1546,8 @@ name|size
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnName (int column)
 specifier|public
 name|String
@@ -1565,6 +1618,8 @@ literal|null
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnClass (int columnIndex)
 specifier|public
 name|Class
@@ -1583,18 +1638,24 @@ name|columnIndex
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 name|ImageIcon
 operator|.
 name|class
 return|;
+block|}
 else|else
+block|{
 return|return
 name|String
 operator|.
 name|class
 return|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|getValueAt (int rowIndex, int columnIndex)
 specifier|public
 name|Object
@@ -1708,6 +1769,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|mouseClicked (MouseEvent e)
 specifier|public
 name|void
@@ -1723,6 +1786,8 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|mousePressed (MouseEvent e)
 specifier|public
 name|void
@@ -1738,6 +1803,8 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|mouseReleased (MouseEvent e)
 specifier|public
 name|void
@@ -1795,6 +1862,8 @@ argument_list|()
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Manage external file types"
@@ -1820,6 +1889,8 @@ argument_list|()
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Manage external file types"
@@ -1832,6 +1903,8 @@ operator|=
 name|dialog
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1854,6 +1927,7 @@ name|frame
 operator|!=
 literal|null
 condition|)
+block|{
 name|editor
 operator|=
 operator|new
@@ -1862,7 +1936,9 @@ argument_list|(
 name|frame
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|editor
 operator|=
 operator|new
@@ -1871,6 +1947,7 @@ argument_list|(
 name|dialog
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|editor
 operator|.
@@ -1900,6 +1977,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|frame
 operator|.
 name|basePanel
@@ -1910,6 +1988,7 @@ operator|.
 name|repaint
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}

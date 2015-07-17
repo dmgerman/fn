@@ -230,75 +230,126 @@ implements|implements
 name|PrefsTab
 block|{
 DECL|field|_prefs
+specifier|private
+specifier|final
 name|JabRefPreferences
 name|_prefs
 decl_stmt|;
 DECL|field|autoResizeMode
-DECL|field|priDesc
-DECL|field|secDesc
-DECL|field|terDesc
-DECL|field|floatMarked
 specifier|private
+specifier|final
 name|JCheckBox
 name|autoResizeMode
-decl_stmt|,
+decl_stmt|;
+DECL|field|priDesc
+specifier|private
+specifier|final
+name|JCheckBox
 name|priDesc
-decl_stmt|,
+decl_stmt|;
+DECL|field|secDesc
+specifier|private
+specifier|final
+name|JCheckBox
 name|secDesc
-decl_stmt|,
+decl_stmt|;
+DECL|field|terDesc
+specifier|private
+specifier|final
+name|JCheckBox
 name|terDesc
-decl_stmt|,
+decl_stmt|;
+DECL|field|floatMarked
+specifier|private
+specifier|final
+name|JCheckBox
 name|floatMarked
 decl_stmt|;
 DECL|field|namesAsIs
-DECL|field|namesFf
-DECL|field|namesFl
-DECL|field|namesNatbib
-DECL|field|abbrNames
-DECL|field|noAbbrNames
 specifier|private
+specifier|final
 name|JRadioButton
 name|namesAsIs
-decl_stmt|,
+decl_stmt|;
+DECL|field|namesFf
+specifier|private
+specifier|final
+name|JRadioButton
 name|namesFf
-decl_stmt|,
+decl_stmt|;
+DECL|field|namesFl
+specifier|private
+specifier|final
+name|JRadioButton
 name|namesFl
-decl_stmt|,
+decl_stmt|;
+DECL|field|namesNatbib
+specifier|private
+specifier|final
+name|JRadioButton
 name|namesNatbib
-decl_stmt|,
+decl_stmt|;
+DECL|field|abbrNames
+specifier|private
+specifier|final
+name|JRadioButton
 name|abbrNames
-decl_stmt|,
+decl_stmt|;
+DECL|field|noAbbrNames
+specifier|private
+specifier|final
+name|JRadioButton
 name|noAbbrNames
-decl_stmt|,
+decl_stmt|;
 DECL|field|lastNamesOnly
+specifier|private
+specifier|final
+name|JRadioButton
 name|lastNamesOnly
 decl_stmt|;
 DECL|field|priField
-DECL|field|secField
-DECL|field|terField
-DECL|field|numericFields
 specifier|private
+specifier|final
 name|JTextField
 name|priField
-decl_stmt|,
+decl_stmt|;
+DECL|field|secField
+specifier|private
+specifier|final
+name|JTextField
 name|secField
-decl_stmt|,
+decl_stmt|;
+DECL|field|terField
+specifier|private
+specifier|final
+name|JTextField
 name|terField
-decl_stmt|,
+decl_stmt|;
+DECL|field|numericFields
+specifier|private
+specifier|final
+name|JTextField
 name|numericFields
 decl_stmt|;
 DECL|field|priSort
-DECL|field|secSort
-DECL|field|terSort
 specifier|private
+specifier|final
 name|JComboBox
 name|priSort
-decl_stmt|,
+decl_stmt|;
+DECL|field|secSort
+specifier|private
+specifier|final
+name|JComboBox
 name|secSort
-decl_stmt|,
+decl_stmt|;
+DECL|field|terSort
+specifier|private
+specifier|final
+name|JComboBox
 name|terSort
 decl_stmt|;
-comment|/** 	 * Customization of external program paths. 	 *  	 * @param prefs 	 *            a<code>JabRefPreferences</code> value 	 */
+comment|/**      * Customization of external program paths.      *       * @param prefs      *            a<code>JabRefPreferences</code> value      */
 DECL|method|TablePrefsTab (JabRefPreferences prefs, JabRefFrame frame)
 specifier|public
 name|TablePrefsTab
@@ -321,7 +372,7 @@ name|BorderLayout
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|/** 		 * Added Bibtexkey to combobox. 		 *  		 * [ 1540646 ] default sort order: bibtexkey 		 *  		 * http://sourceforge.net/tracker/index.php?func=detail&aid=1540646&group_id=92314&atid=600306 		 */
+comment|/**          * Added Bibtexkey to combobox.          *           * [ 1540646 ] default sort order: bibtexkey          *           * http://sourceforge.net/tracker/index.php?func=detail&aid=1540646&group_id=92314&atid=600306          */
 name|Vector
 argument_list|<
 name|String
@@ -602,6 +653,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -653,6 +706,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -704,6 +759,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1240,7 +1297,7 @@ argument_list|(
 literal|"Sort the following fields as numeric fields"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|)
 expr_stmt|;
 name|builder2
@@ -1340,6 +1397,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -1386,6 +1445,8 @@ block|}
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -1482,6 +1543,7 @@ argument_list|(
 literal|"namesAsIs"
 argument_list|)
 condition|)
+block|{
 name|namesAsIs
 operator|.
 name|setSelected
@@ -1489,6 +1551,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1499,6 +1562,7 @@ argument_list|(
 literal|"namesFf"
 argument_list|)
 condition|)
+block|{
 name|namesFf
 operator|.
 name|setSelected
@@ -1506,6 +1570,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1516,6 +1581,7 @@ argument_list|(
 literal|"namesNatbib"
 argument_list|)
 condition|)
+block|{
 name|namesNatbib
 operator|.
 name|setSelected
@@ -1523,7 +1589,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|namesFl
 operator|.
 name|setSelected
@@ -1531,6 +1599,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|_prefs
@@ -1540,6 +1609,7 @@ argument_list|(
 literal|"abbrAuthorNames"
 argument_list|)
 condition|)
+block|{
 name|abbrNames
 operator|.
 name|setSelected
@@ -1547,6 +1617,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1557,6 +1628,7 @@ argument_list|(
 literal|"namesLastOnly"
 argument_list|)
 condition|)
+block|{
 name|lastNamesOnly
 operator|.
 name|setSelected
@@ -1564,7 +1636,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|noAbbrNames
 operator|.
 name|setSelected
@@ -1572,6 +1646,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 name|priDesc
 operator|.
 name|setSelected
@@ -1675,6 +1750,7 @@ name|numF
 operator|==
 literal|null
 condition|)
+block|{
 name|numericFields
 operator|.
 name|setText
@@ -1682,7 +1758,9 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|numericFields
 operator|.
 name|setText
@@ -1691,7 +1769,10 @@ name|numF
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Store changes to table preferences. This method is called when the user 	 * clicks Ok. 	 *  	 */
+block|}
+comment|/**      * Store changes to table preferences. This method is called when the user      * clicks Ok.      *       */
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -1922,15 +2003,15 @@ if|if
 condition|(
 name|newVal
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
+block|{
 name|newVal
 operator|=
 literal|null
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -1994,6 +2075,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|readyToClose ()
 specifier|public
 name|boolean
@@ -2004,6 +2087,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTabName ()
 specifier|public
 name|String

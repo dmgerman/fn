@@ -27,7 +27,6 @@ interface|interface
 name|FieldFormatter
 block|{
 DECL|method|format (String s, String fieldName)
-specifier|public
 name|String
 name|format
 parameter_list|(

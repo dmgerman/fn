@@ -212,12 +212,12 @@ end_comment
 
 begin_class
 DECL|class|OpenDocumentRepresentation
-specifier|public
 class|class
 name|OpenDocumentRepresentation
 block|{
 DECL|field|entries
-specifier|protected
+specifier|private
+specifier|final
 name|Collection
 argument_list|<
 name|BibtexEntry
@@ -226,6 +226,7 @@ name|entries
 decl_stmt|;
 DECL|field|database
 specifier|private
+specifier|final
 name|BibtexDatabase
 name|database
 decl_stmt|;
@@ -325,6 +326,7 @@ name|keySet
 operator|==
 literal|null
 condition|)
+block|{
 name|entryList
 operator|.
 name|addAll
@@ -335,6 +337,7 @@ name|getEntries
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 for|for
@@ -344,6 +347,7 @@ name|key
 range|:
 name|keySet
 control|)
+block|{
 name|entryList
 operator|.
 name|add
@@ -356,6 +360,7 @@ name|key
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|entries
 operator|=
@@ -1718,7 +1723,7 @@ name|result
 return|;
 block|}
 DECL|method|getField (BibtexEntry e, String field)
-specifier|protected
+specifier|private
 name|String
 name|getField
 parameter_list|(
@@ -1754,7 +1759,7 @@ name|s
 return|;
 block|}
 DECL|method|addTableCell (Document doc, Element parent, String content)
-specifier|protected
+specifier|private
 name|void
 name|addTableCell
 parameter_list|(

@@ -58,16 +58,6 @@ begin_import
 import|import
 name|java
 operator|.
-name|awt
-operator|.
-name|Frame
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
 name|io
 operator|.
 name|File
@@ -404,6 +394,34 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|remote
+operator|.
+name|RemoteListenerLifecycle
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|splash
+operator|.
+name|SplashScreenLifecycle
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|wizard
 operator|.
 name|auximport
@@ -475,7 +493,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * JabRef Main Class - The application gets started here.  *  */
+comment|/**  * JabRef Main Class - The application gets started here.  */
 end_comment
 
 begin_class
@@ -484,42 +502,14 @@ specifier|public
 class|class
 name|JabRef
 block|{
-DECL|field|singleton
-specifier|public
-specifier|static
-name|JabRef
-name|singleton
-decl_stmt|;
-DECL|field|remoteListener
-specifier|public
-specifier|static
-name|RemoteListener
-name|remoteListener
-init|=
-literal|null
-decl_stmt|;
 DECL|field|jrf
 specifier|public
 specifier|static
 name|JabRefFrame
 name|jrf
 decl_stmt|;
-DECL|field|splashScreen
-specifier|public
-specifier|static
-name|Frame
-name|splashScreen
-init|=
-literal|null
-decl_stmt|;
-DECL|field|graphicFailure
-name|boolean
-name|graphicFailure
-init|=
-literal|false
-decl_stmt|;
 DECL|field|MAX_DIALOG_WARNINGS
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|int
@@ -527,42 +517,37 @@ name|MAX_DIALOG_WARNINGS
 init|=
 literal|10
 decl_stmt|;
+DECL|field|graphicFailure
+specifier|private
+name|boolean
+name|graphicFailure
+init|=
+literal|false
+decl_stmt|;
 DECL|field|cli
 specifier|private
 name|JabRefCLI
 name|cli
 decl_stmt|;
-DECL|method|main (String[] args)
-specifier|public
-specifier|static
-name|void
-name|main
-parameter_list|(
-name|String
-index|[]
-name|args
-parameter_list|)
-block|{
+DECL|field|splashScreen
+specifier|private
+name|SplashScreenLifecycle
+name|splashScreen
+init|=
 operator|new
-name|JabRef
-argument_list|(
-name|args
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|JabRef (String[] args)
-specifier|protected
-name|JabRef
+name|SplashScreenLifecycle
+argument_list|()
+decl_stmt|;
+DECL|method|start (String[] args)
+specifier|public
+name|void
+name|start
 parameter_list|(
 name|String
 index|[]
 name|args
 parameter_list|)
 block|{
-name|singleton
-operator|=
-name|this
-expr_stmt|;
 name|JabRefPreferences
 name|prefs
 init|=
@@ -637,10 +622,7 @@ block|{
 comment|// NetworkTab.java ensures that proxyHostname and proxyPort are not null
 name|System
 operator|.
-name|getProperties
-argument_list|()
-operator|.
-name|put
+name|setProperty
 argument_list|(
 literal|"http.proxyHost"
 argument_list|,
@@ -654,10 +636,7 @@ argument_list|)
 expr_stmt|;
 name|System
 operator|.
-name|getProperties
-argument_list|()
-operator|.
-name|put
+name|setProperty
 argument_list|(
 literal|"http.proxyPort"
 argument_list|,
@@ -684,10 +663,7 @@ condition|)
 block|{
 name|System
 operator|.
-name|getProperties
-argument_list|()
-operator|.
-name|put
+name|setProperty
 argument_list|(
 literal|"http.proxyUser"
 argument_list|,
@@ -701,10 +677,7 @@ argument_list|)
 expr_stmt|;
 name|System
 operator|.
-name|getProperties
-argument_list|()
-operator|.
-name|put
+name|setProperty
 argument_list|(
 literal|"http.proxyPassword"
 argument_list|,
@@ -733,10 +706,7 @@ argument_list|)
 expr_stmt|;
 name|System
 operator|.
-name|getProperties
-argument_list|()
-operator|.
-name|put
+name|setProperty
 argument_list|(
 literal|"proxySet"
 argument_list|,
@@ -760,74 +730,9 @@ name|prefs
 operator|=
 name|prefs
 expr_stmt|;
-name|String
-name|langStr
-init|=
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"language"
-argument_list|)
-decl_stmt|;
-name|String
-index|[]
-name|parts
-init|=
-name|langStr
-operator|.
-name|split
-argument_list|(
-literal|"_"
-argument_list|)
-decl_stmt|;
-name|String
-name|language
-decl_stmt|,
-name|country
-decl_stmt|;
-if|if
-condition|(
-name|parts
-operator|.
-name|length
-operator|==
-literal|1
-condition|)
-block|{
-name|language
-operator|=
-name|langStr
-expr_stmt|;
-name|country
-operator|=
-literal|""
-expr_stmt|;
-block|}
-else|else
-block|{
-name|language
-operator|=
-name|parts
-index|[
-literal|0
-index|]
-expr_stmt|;
-name|country
-operator|=
-name|parts
-index|[
-literal|1
-index|]
-expr_stmt|;
-block|}
-name|Globals
-operator|.
 name|setLanguage
 argument_list|(
-name|language
-argument_list|,
-name|country
+name|prefs
 argument_list|)
 expr_stmt|;
 name|Globals
@@ -837,7 +742,7 @@ operator|.
 name|setLanguageDependentDefaultValues
 argument_list|()
 expr_stmt|;
-comment|/* 		 * The Plug-in System is started automatically on the first call to 		 * PluginCore.getManager(). 		 *  		 * Plug-ins are activated on the first call to their getInstance method. 		 */
+comment|/*          * The Plug-in System is started automatically on the first call to          * PluginCore.getManager().          *           * Plug-ins are activated on the first call to their getInstance method.          */
 comment|// Update which fields should be treated as numeric, based on preferences:
 name|BibtexFields
 operator|.
@@ -883,9 +788,7 @@ literal|"useRemoteServer"
 argument_list|)
 condition|)
 block|{
-name|remoteListener
-operator|=
-name|RemoteListener
+name|RemoteListenerLifecycle
 operator|.
 name|openRemoteListener
 argument_list|(
@@ -894,9 +797,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
-name|remoteListener
-operator|==
-literal|null
+operator|!
+name|RemoteListenerLifecycle
+operator|.
+name|isRemoteListenerOpen
+argument_list|()
 condition|)
 block|{
 comment|// Unless we are alone, try to contact already running JabRef:
@@ -910,7 +815,7 @@ name|args
 argument_list|)
 condition|)
 block|{
-comment|/* 					 * We have successfully sent our command line options 					 * through the socket to another JabRef instance. So we 					 * assume it's all taken care of, and quit. 					 */
+comment|/*                      * We have successfully sent our command line options                      * through the socket to another JabRef instance. So we                      * assume it's all taken care of, and quit.                      */
 name|System
 operator|.
 name|out
@@ -925,27 +830,26 @@ literal|"Arguments passed on to running JabRef instance. Shutting down."
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|System
+name|JabRefExecutorService
 operator|.
-name|exit
-argument_list|(
-literal|0
-argument_list|)
+name|INSTANCE
+operator|.
+name|shutdownEverything
+argument_list|()
 expr_stmt|;
+return|return;
 block|}
 block|}
 else|else
 block|{
-comment|// No listener found, thus we are the first instance to be
-comment|// started.
-name|remoteListener
+name|RemoteListenerLifecycle
 operator|.
-name|start
+name|startRemoteListener
 argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/* 		 * See if the user has a personal journal list set up. If so, add these 		 * journal names and abbreviations to the list: 		 */
+comment|/*          * See if the user has a personal journal list set up. If so, add these          * journal names and abbreviations to the list:          */
 name|String
 name|personalJournalList
 init|=
@@ -958,9 +862,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|personalJournalList
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|personalJournalList
@@ -1073,25 +979,146 @@ condition|)
 block|{
 comment|// Set application user model id so that pinning JabRef to the Win7/8 taskbar works
 comment|// Based on http://stackoverflow.com/a/1928830
+name|JabRef
+operator|.
 name|setCurrentProcessExplicitAppUserModelID
 argument_list|(
 literal|"JabRef."
 operator|+
 name|Globals
 operator|.
-name|VERSION
+name|BUILD_INFO
+operator|.
+name|getVersion
+argument_list|()
 argument_list|)
 expr_stmt|;
 comment|//System.out.println(getCurrentProcessExplicitAppUserModelID());
 block|}
-name|openWindow
-argument_list|(
+name|Vector
+argument_list|<
+name|ParserResult
+argument_list|>
+name|loaded
+init|=
 name|processArguments
 argument_list|(
 name|args
 argument_list|,
 literal|true
 argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|loaded
+operator|==
+literal|null
+operator|||
+name|graphicFailure
+operator|||
+name|cli
+operator|.
+name|isDisableGui
+argument_list|()
+operator|||
+name|cli
+operator|.
+name|isShowVersion
+argument_list|()
+condition|)
+block|{
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|shutdownEverything
+argument_list|()
+expr_stmt|;
+return|return;
+block|}
+name|openWindow
+argument_list|(
+name|loaded
+argument_list|)
+expr_stmt|;
+block|}
+DECL|method|setLanguage (JabRefPreferences prefs)
+specifier|private
+name|void
+name|setLanguage
+parameter_list|(
+name|JabRefPreferences
+name|prefs
+parameter_list|)
+block|{
+name|String
+name|langStr
+init|=
+name|prefs
+operator|.
+name|get
+argument_list|(
+literal|"language"
+argument_list|)
+decl_stmt|;
+name|String
+index|[]
+name|parts
+init|=
+name|langStr
+operator|.
+name|split
+argument_list|(
+literal|"_"
+argument_list|)
+decl_stmt|;
+name|String
+name|language
+decl_stmt|,
+name|country
+decl_stmt|;
+if|if
+condition|(
+name|parts
+operator|.
+name|length
+operator|==
+literal|1
+condition|)
+block|{
+name|language
+operator|=
+name|langStr
+expr_stmt|;
+name|country
+operator|=
+literal|""
+expr_stmt|;
+block|}
+else|else
+block|{
+name|language
+operator|=
+name|parts
+index|[
+literal|0
+index|]
+expr_stmt|;
+name|country
+operator|=
+name|parts
+index|[
+literal|1
+index|]
+expr_stmt|;
+block|}
+name|Globals
+operator|.
+name|setLanguage
+argument_list|(
+name|language
+argument_list|,
+name|country
 argument_list|)
 expr_stmt|;
 block|}
@@ -1113,6 +1140,8 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+name|JabRef
+operator|.
 name|GetCurrentProcessExplicitAppUserModelID
 argument_list|(
 name|r
@@ -1150,7 +1179,7 @@ literal|"N/A"
 return|;
 block|}
 DECL|method|setCurrentProcessExplicitAppUserModelID (final String appID)
-specifier|public
+specifier|private
 specifier|static
 name|void
 name|setCurrentProcessExplicitAppUserModelID
@@ -1162,6 +1191,8 @@ parameter_list|)
 block|{
 if|if
 condition|(
+name|JabRef
+operator|.
 name|SetCurrentProcessExplicitAppUserModelID
 argument_list|(
 operator|new
@@ -1176,6 +1207,7 @@ argument_list|()
 operator|!=
 literal|0
 condition|)
+block|{
 throw|throw
 operator|new
 name|RuntimeException
@@ -1185,6 +1217,7 @@ operator|+
 name|appID
 argument_list|)
 throw|;
+block|}
 block|}
 DECL|method|GetCurrentProcessExplicitAppUserModelID (PointerByReference appID)
 specifier|private
@@ -1262,19 +1295,8 @@ condition|)
 block|{
 name|cli
 operator|.
-name|options
-operator|.
 name|displayVersion
 argument_list|()
-expr_stmt|;
-name|cli
-operator|.
-name|disableGui
-operator|.
-name|setInvoked
-argument_list|(
-literal|true
-argument_list|)
 expr_stmt|;
 block|}
 if|if
@@ -1287,99 +1309,18 @@ name|isHelp
 argument_list|()
 condition|)
 block|{
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-literal|"jabref [options] [bibtex-file]\n"
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
 name|cli
 operator|.
-name|getHelp
+name|printUsage
 argument_list|()
-argument_list|)
 expr_stmt|;
-name|String
-name|importFormats
-init|=
-name|Globals
-operator|.
-name|importFormatReader
-operator|.
-name|getImportFormatList
-argument_list|()
-decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Available import formats"
-argument_list|)
-operator|+
-literal|":\n"
-operator|+
-name|importFormats
-argument_list|)
-expr_stmt|;
-name|String
-name|outFormats
-init|=
-name|ExportFormats
-operator|.
-name|getConsoleExportList
-argument_list|(
-literal|70
-argument_list|,
-literal|20
-argument_list|,
-literal|"\t"
-argument_list|)
-decl_stmt|;
-name|System
-operator|.
-name|out
-operator|.
-name|println
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Available export formats"
-argument_list|)
-operator|+
-literal|": "
-operator|+
-name|outFormats
-operator|+
-literal|"."
-argument_list|)
-expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
+return|return
+literal|null
+return|;
+comment|// TODO replace with optional one day
 block|}
 name|boolean
-name|commandmode
+name|commandMode
 init|=
 name|cli
 operator|.
@@ -1388,9 +1329,7 @@ argument_list|()
 operator|||
 name|cli
 operator|.
-name|fetcherEngine
-operator|.
-name|isInvoked
+name|isFetcherEngine
 argument_list|()
 decl_stmt|;
 comment|// First we quickly scan the command line parameters for any that signal
@@ -1402,7 +1341,7 @@ condition|(
 name|initialStartup
 operator|&&
 operator|!
-name|commandmode
+name|commandMode
 operator|&&
 operator|!
 name|cli
@@ -1414,10 +1353,8 @@ block|{
 try|try
 block|{
 name|splashScreen
-operator|=
-name|SplashScreen
 operator|.
-name|splash
+name|show
 argument_list|()
 expr_stmt|;
 block|}
@@ -1454,9 +1391,7 @@ if|if
 condition|(
 name|cli
 operator|.
-name|defPrefs
-operator|.
-name|isInvoked
+name|isPreferencesReset
 argument_list|()
 condition|)
 block|{
@@ -1465,9 +1400,7 @@ name|value
 init|=
 name|cli
 operator|.
-name|defPrefs
-operator|.
-name|getStringValue
+name|getPreferencesReset
 argument_list|()
 decl_stmt|;
 if|if
@@ -1632,9 +1565,7 @@ if|if
 condition|(
 name|cli
 operator|.
-name|importPrefs
-operator|.
-name|isInvoked
+name|isPreferencesImport
 argument_list|()
 condition|)
 block|{
@@ -1648,9 +1579,7 @@ name|importPreferences
 argument_list|(
 name|cli
 operator|.
-name|importPrefs
-operator|.
-name|getStringValue
+name|getPreferencesImport
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1777,8 +1706,11 @@ if|if
 condition|(
 name|bibExtension
 condition|)
+block|{
 name|pr
 operator|=
+name|JabRef
+operator|.
 name|openBibFile
 argument_list|(
 name|aLeftOver
@@ -1786,6 +1718,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -1827,6 +1760,8 @@ block|{
 name|ParserResult
 name|res
 init|=
+name|JabRef
+operator|.
 name|importToOpenBase
 argument_list|(
 name|aLeftOver
@@ -1838,6 +1773,7 @@ name|res
 operator|!=
 literal|null
 condition|)
+block|{
 name|loaded
 operator|.
 name|add
@@ -1845,7 +1781,9 @@ argument_list|(
 name|res
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|loaded
 operator|.
 name|add
@@ -1857,6 +1795,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 elseif|else
 if|if
 condition|(
@@ -1866,6 +1805,7 @@ name|ParserResult
 operator|.
 name|FILE_LOCKED
 condition|)
+block|{
 name|loaded
 operator|.
 name|add
@@ -1873,6 +1813,7 @@ argument_list|(
 name|pr
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 if|if
@@ -1885,9 +1826,7 @@ argument_list|()
 operator|&&
 name|cli
 operator|.
-name|importFile
-operator|.
-name|isInvoked
+name|isFileImport
 argument_list|()
 condition|)
 block|{
@@ -1897,9 +1836,7 @@ name|add
 argument_list|(
 name|cli
 operator|.
-name|importFile
-operator|.
-name|getStringValue
+name|getFileImport
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -1915,6 +1852,8 @@ block|{
 name|ParserResult
 name|pr
 init|=
+name|JabRef
+operator|.
 name|importFile
 argument_list|(
 name|filenameString
@@ -1926,6 +1865,7 @@ name|pr
 operator|!=
 literal|null
 condition|)
+block|{
 name|loaded
 operator|.
 name|add
@@ -1933,6 +1873,7 @@ argument_list|(
 name|pr
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -1944,22 +1885,20 @@ argument_list|()
 operator|&&
 name|cli
 operator|.
-name|importToOpenBase
-operator|.
-name|isInvoked
+name|isImportToOpenBase
 argument_list|()
 condition|)
 block|{
 name|ParserResult
 name|res
 init|=
+name|JabRef
+operator|.
 name|importToOpenBase
 argument_list|(
 name|cli
 operator|.
-name|importToOpenBase
-operator|.
-name|getStringValue
+name|getImportToOpenBase
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -1969,6 +1908,7 @@ name|res
 operator|!=
 literal|null
 condition|)
+block|{
 name|loaded
 operator|.
 name|add
@@ -1976,6 +1916,7 @@ argument_list|(
 name|res
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -1987,9 +1928,7 @@ argument_list|()
 operator|&&
 name|cli
 operator|.
-name|fetcherEngine
-operator|.
-name|isInvoked
+name|isFetcherEngine
 argument_list|()
 condition|)
 block|{
@@ -2000,9 +1939,7 @@ name|fetch
 argument_list|(
 name|cli
 operator|.
-name|fetcherEngine
-operator|.
-name|getStringValue
+name|getFetcherEngine
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -2012,6 +1949,7 @@ name|res
 operator|!=
 literal|null
 condition|)
+block|{
 name|loaded
 operator|.
 name|add
@@ -2020,13 +1958,12 @@ name|res
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 if|if
 condition|(
 name|cli
 operator|.
-name|exportMatches
-operator|.
-name|isInvoked
+name|isExportMatches
 argument_list|()
 condition|)
 block|{
@@ -2046,9 +1983,7 @@ name|data
 init|=
 name|cli
 operator|.
-name|exportMatches
-operator|.
-name|getStringValue
+name|getExportMatches
 argument_list|()
 operator|.
 name|split
@@ -2119,16 +2054,20 @@ comment|//newBase contains only match entries
 comment|//export database
 if|if
 condition|(
+operator|(
 name|newBase
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|newBase
 operator|.
 name|getEntryCount
 argument_list|()
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|String
@@ -2138,8 +2077,6 @@ literal|null
 decl_stmt|;
 name|IExportFormat
 name|format
-init|=
-literal|null
 decl_stmt|;
 comment|//read in the export format, take default format if no format entered
 switch|switch
@@ -2209,16 +2146,14 @@ argument_list|)
 operator|+
 name|JabRefCLI
 operator|.
-name|exportMatchesSyntax
+name|getExportMatchesSyntax
+argument_list|()
 argument_list|)
 expr_stmt|;
-name|System
-operator|.
-name|exit
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
+return|return
+literal|null
+return|;
+comment|// TODO replace with optional one day
 block|}
 block|}
 comment|//end switch
@@ -2325,6 +2260,7 @@ expr_stmt|;
 block|}
 block|}
 else|else
+block|{
 name|System
 operator|.
 name|err
@@ -2343,6 +2279,7 @@ operator|+
 name|formatName
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|/*end if newBase != null*/
 else|else
@@ -2387,9 +2324,7 @@ if|if
 condition|(
 name|cli
 operator|.
-name|exportFile
-operator|.
-name|isInvoked
+name|isFileExport
 argument_list|()
 condition|)
 block|{
@@ -2409,9 +2344,7 @@ name|data
 init|=
 name|cli
 operator|.
-name|exportFile
-operator|.
-name|getStringValue
+name|getFileExport
 argument_list|()
 operator|.
 name|split
@@ -2545,6 +2478,7 @@ operator|.
 name|couldEncodeAll
 argument_list|()
 condition|)
+block|{
 name|System
 operator|.
 name|err
@@ -2581,6 +2515,7 @@ name|getProblemCharacters
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|session
 operator|.
 name|commit
@@ -2625,6 +2560,7 @@ block|}
 block|}
 block|}
 else|else
+block|{
 name|System
 operator|.
 name|err
@@ -2639,6 +2575,7 @@ literal|"The output option depends on a valid import option."
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -2686,6 +2623,7 @@ operator|.
 name|isAbsolute
 argument_list|()
 condition|)
+block|{
 name|theFile
 operator|=
 name|theFile
@@ -2693,6 +2631,7 @@ operator|.
 name|getAbsoluteFile
 argument_list|()
 expr_stmt|;
+block|}
 name|MetaData
 name|metaData
 init|=
@@ -2843,6 +2782,7 @@ expr_stmt|;
 block|}
 block|}
 else|else
+block|{
 name|System
 operator|.
 name|err
@@ -2866,7 +2806,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 else|else
+block|{
 name|System
 operator|.
 name|err
@@ -2882,14 +2824,13 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 comment|//Util.pr(": Finished export");
 if|if
 condition|(
 name|cli
 operator|.
-name|exportPrefs
-operator|.
-name|isInvoked
+name|isPreferencesExport
 argument_list|()
 condition|)
 block|{
@@ -2903,9 +2844,7 @@ name|exportPreferences
 argument_list|(
 name|cli
 operator|.
-name|exportPrefs
-operator|.
-name|getStringValue
+name|getPreferencesExport
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -2938,9 +2877,7 @@ argument_list|()
 operator|&&
 name|cli
 operator|.
-name|auxImExport
-operator|.
-name|isInvoked
+name|isAuxImport
 argument_list|()
 condition|)
 block|{
@@ -2966,9 +2903,7 @@ name|data
 init|=
 name|cli
 operator|.
-name|auxImExport
-operator|.
-name|getStringValue
+name|getAuxImport
 argument_list|()
 operator|.
 name|split
@@ -3044,7 +2979,7 @@ block|{
 name|String
 name|subName
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|getCorrectFileName
 argument_list|(
@@ -3128,6 +3063,7 @@ operator|.
 name|couldEncodeAll
 argument_list|()
 condition|)
+block|{
 name|System
 operator|.
 name|err
@@ -3164,6 +3100,7 @@ name|getProblemCharacters
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|session
 operator|.
 name|commit
@@ -3213,6 +3150,7 @@ condition|(
 operator|!
 name|notSavedMsg
 condition|)
+block|{
 name|System
 operator|.
 name|out
@@ -3228,17 +3166,22 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 else|else
+block|{
 name|usageMsg
 operator|=
 literal|true
 expr_stmt|;
 block|}
+block|}
 else|else
+block|{
 name|usageMsg
 operator|=
 literal|true
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|usageMsg
@@ -3291,7 +3234,7 @@ return|;
 block|}
 comment|/**      * Run an entry fetcher from the command line.      *       * Note that this only works headlessly if the EntryFetcher does not show      * any GUI.      *       * @param fetchCommand      *            A string containing both the fetcher to use (id of      *            EntryFetcherExtension minus Fetcher) and the search query,      *            separated by a :      * @return A parser result containing the entries fetched or null if an      *         error occurred.      */
 DECL|method|fetch (String fetchCommand)
-specifier|protected
+specifier|private
 name|ParserResult
 name|fetch
 parameter_list|(
@@ -3301,9 +3244,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|fetchCommand
 operator|==
 literal|null
+operator|)
 operator|||
 operator|!
 name|fetchCommand
@@ -3313,6 +3258,7 @@ argument_list|(
 literal|":"
 argument_list|)
 operator|||
+operator|(
 name|fetchCommand
 operator|.
 name|split
@@ -3323,6 +3269,7 @@ operator|.
 name|length
 operator|!=
 literal|2
+operator|)
 condition|)
 block|{
 name|System
@@ -3432,6 +3379,7 @@ name|toLowerCase
 argument_list|()
 argument_list|)
 condition|)
+block|{
 name|fetcher
 operator|=
 name|e
@@ -3439,6 +3387,7 @@ operator|.
 name|getEntryFetcher
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -3571,16 +3520,20 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|result
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|result
 operator|.
 name|size
 argument_list|()
 operator|==
 literal|0
+operator|)
 condition|)
 block|{
 name|System
@@ -3756,6 +3709,8 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
+name|JabRef
+operator|.
 name|jrf
 argument_list|,
 name|Globals
@@ -3968,7 +3923,7 @@ block|}
 block|}
 block|}
 DECL|method|openWindow (Vector<ParserResult> loaded)
-specifier|public
+specifier|private
 name|void
 name|openWindow
 parameter_list|(
@@ -3978,18 +3933,6 @@ name|ParserResult
 argument_list|>
 name|loaded
 parameter_list|)
-block|{
-if|if
-condition|(
-operator|!
-name|graphicFailure
-operator|&&
-operator|!
-name|cli
-operator|.
-name|isDisableGui
-argument_list|()
-condition|)
 block|{
 comment|// Call the method performCompatibilityUpdate(), which does any
 comment|// necessary changes for users with a preference set from an older
@@ -4010,8 +3953,7 @@ name|updateExternalFileTypes
 argument_list|()
 expr_stmt|;
 comment|// This property is set to make the Mac OSX Java VM move the menu bar to
-comment|// the top
-comment|// of the screen, where Mac users expect it to be.
+comment|// the top of the screen, where Mac users expect it to be.
 name|System
 operator|.
 name|setProperty
@@ -4023,8 +3965,28 @@ argument_list|)
 expr_stmt|;
 comment|// Set antialiasing on everywhere. This only works in JRE>= 1.5.
 comment|// Or... it doesn't work, period.
-comment|//System.setProperty("swing.aatext", "true");
 comment|// TODO test and maybe remove this! I found this commented out with no additional info ( payload@lavabit.com )
+comment|// Enabled since JabRef 2.11 beta 4
+name|System
+operator|.
+name|setProperty
+argument_list|(
+literal|"swing.aatext"
+argument_list|,
+literal|"true"
+argument_list|)
+expr_stmt|;
+comment|// Default is "on".
+comment|// "lcd" instead of "on" because of http://wiki.netbeans.org/FaqFontRendering and http://docs.oracle.com/javase/6/docs/technotes/guides/2d/flags.html#aaFonts
+name|System
+operator|.
+name|setProperty
+argument_list|(
+literal|"awt.useSystemAAFontSettings"
+argument_list|,
+literal|"lcd"
+argument_list|)
+expr_stmt|;
 comment|// Set the Look& Feel for Swing.
 try|try
 block|{
@@ -4158,9 +4120,11 @@ argument_list|(
 name|fileToOpen
 argument_list|)
 condition|)
+block|{
 continue|continue
 name|lastEdLoop
 continue|;
+block|}
 block|}
 if|if
 condition|(
@@ -4173,6 +4137,8 @@ block|{
 name|ParserResult
 name|pr
 init|=
+name|JabRef
+operator|.
 name|openBibFile
 argument_list|(
 name|name
@@ -4229,6 +4195,7 @@ name|ParserResult
 operator|.
 name|FILE_LOCKED
 condition|)
+block|{
 name|loaded
 operator|.
 name|add
@@ -4236,6 +4203,7 @@ argument_list|(
 name|pr
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -4281,11 +4249,15 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|//Util.pr(": Initializing frame");
+name|JabRef
+operator|.
 name|jrf
 operator|=
 operator|new
 name|JabRefFrame
-argument_list|()
+argument_list|(
+name|this
+argument_list|)
 expr_stmt|;
 comment|// Add all loaded databases to the frame:
 name|boolean
@@ -4421,6 +4393,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|JabRef
+operator|.
 name|jrf
 operator|.
 name|addParserResult
@@ -4465,6 +4439,8 @@ range|:
 name|toOpenTab
 control|)
 block|{
+name|JabRef
+operator|.
 name|jrf
 operator|.
 name|addParserResult
@@ -4486,6 +4462,9 @@ operator|.
 name|isLoadSession
 argument_list|()
 condition|)
+block|{
+name|JabRef
+operator|.
 name|jrf
 operator|.
 name|loadSessionAction
@@ -4501,6 +4480,8 @@ name|event
 operator|.
 name|ActionEvent
 argument_list|(
+name|JabRef
+operator|.
 name|jrf
 argument_list|,
 literal|0
@@ -4509,25 +4490,13 @@ literal|""
 argument_list|)
 argument_list|)
 expr_stmt|;
-if|if
-condition|(
-name|splashScreen
-operator|!=
-literal|null
-condition|)
-block|{
-comment|// do this only if splashscreen was actually created
+block|}
 name|splashScreen
 operator|.
-name|dispose
+name|hide
 argument_list|()
 expr_stmt|;
-name|splashScreen
-operator|=
-literal|null
-expr_stmt|;
-block|}
-comment|/*JOptionPane.showMessageDialog(null, Globals.lang("Please note that this "                 +"is an early beta version. Do not use it without backing up your files!"),                     Globals.lang("Beta version"), JOptionPane.WARNING_MESSAGE);*/
+comment|/*JOptionPane.showMessageDialog(null, Globals.lang("Please note that this "             +"is an early beta version. Do not use it without backing up your files!"),                 Globals.lang("Beta version"), JOptionPane.WARNING_MESSAGE);*/
 comment|// Start auto save timer:
 if|if
 condition|(
@@ -4540,13 +4509,17 @@ argument_list|(
 literal|"autoSave"
 argument_list|)
 condition|)
+block|{
 name|Globals
 operator|.
 name|startAutoSaveManager
 argument_list|(
+name|JabRef
+operator|.
 name|jrf
 argument_list|)
 expr_stmt|;
+block|}
 comment|// If we are set to remember the window location, we also remember the maximised
 comment|// state. This needs to be set after the window has been made visible, so we
 comment|// do it here:
@@ -4562,6 +4535,8 @@ literal|"windowMaximised"
 argument_list|)
 condition|)
 block|{
+name|JabRef
+operator|.
 name|jrf
 operator|.
 name|setExtendedState
@@ -4572,6 +4547,8 @@ name|MAXIMIZED_BOTH
 argument_list|)
 expr_stmt|;
 block|}
+name|JabRef
+operator|.
 name|jrf
 operator|.
 name|setVisible
@@ -4591,6 +4568,8 @@ literal|"windowMaximised"
 argument_list|)
 condition|)
 block|{
+name|JabRef
+operator|.
 name|jrf
 operator|.
 name|setExtendedState
@@ -4604,6 +4583,8 @@ block|}
 comment|// TEST TEST TEST TEST TEST TEST
 name|startSidePanePlugins
 argument_list|(
+name|JabRef
+operator|.
 name|jrf
 argument_list|)
 expr_stmt|;
@@ -4648,6 +4629,8 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
+name|JabRef
+operator|.
 name|jrf
 argument_list|,
 name|message
@@ -4739,6 +4722,8 @@ name|Math
 operator|.
 name|min
 argument_list|(
+name|JabRef
+operator|.
 name|MAX_DIALOG_WARNINGS
 argument_list|,
 name|wrns
@@ -4749,6 +4734,7 @@ condition|;
 name|j
 operator|++
 control|)
+block|{
 name|wrn
 operator|.
 name|append
@@ -4776,12 +4762,15 @@ argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|wrns
 operator|.
 name|length
 operator|>
+name|JabRef
+operator|.
 name|MAX_DIALOG_WARNINGS
 condition|)
 block|{
@@ -4824,6 +4813,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|wrn
 operator|.
 name|deleteCharAt
@@ -4836,6 +4826,9 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
+name|JabRef
+operator|.
 name|jrf
 operator|.
 name|showBaseAt
@@ -4847,6 +4840,8 @@ name|JOptionPane
 operator|.
 name|showMessageDialog
 argument_list|(
+name|JabRef
+operator|.
 name|jrf
 argument_list|,
 name|wrn
@@ -4907,6 +4902,8 @@ operator|&&
 operator|(
 name|i
 operator|<
+name|JabRef
+operator|.
 name|jrf
 operator|.
 name|baseCount
@@ -4930,6 +4927,8 @@ decl_stmt|;
 name|BasePanel
 name|panel
 init|=
+name|JabRef
+operator|.
 name|jrf
 operator|.
 name|baseAt
@@ -4968,6 +4967,8 @@ init|=
 operator|new
 name|AutosaveStartupPrompter
 argument_list|(
+name|JabRef
+operator|.
 name|jrf
 argument_list|,
 name|postponed
@@ -4991,6 +4992,8 @@ operator|>
 literal|0
 condition|)
 block|{
+name|JabRef
+operator|.
 name|jrf
 operator|.
 name|tabbedPane
@@ -5007,6 +5010,8 @@ operator|(
 operator|(
 name|BasePanel
 operator|)
+name|JabRef
+operator|.
 name|jrf
 operator|.
 name|tabbedPane
@@ -5021,15 +5026,6 @@ name|mainTable
 argument_list|)
 expr_stmt|;
 block|}
-block|}
-else|else
-name|System
-operator|.
-name|exit
-argument_list|(
-literal|0
-argument_list|)
-expr_stmt|;
 block|}
 comment|/**      * Go through all registered instances of SidePanePlugin, and register them      * in the SidePaneManager.      *      * @param jrf The JabRefFrame.      */
 DECL|method|startSidePanePlugins (JabRefFrame jrf)
@@ -5291,7 +5287,7 @@ block|}
 if|if
 condition|(
 operator|!
-name|Util
+name|FileBasedLock
 operator|.
 name|waitForFileLock
 argument_list|(
@@ -5421,6 +5417,7 @@ name|aWarn
 range|:
 name|warn
 control|)
+block|{
 name|System
 operator|.
 name|out
@@ -5439,6 +5436,7 @@ operator|+
 name|aWarn
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|pr
@@ -5498,7 +5496,7 @@ return|;
 block|}
 block|}
 DECL|method|importFile (String argument)
-specifier|public
+specifier|private
 specifier|static
 name|ParserResult
 name|importFile
@@ -5596,6 +5594,8 @@ index|[
 literal|0
 index|]
 argument_list|,
+name|JabRef
+operator|.
 name|jrf
 argument_list|)
 expr_stmt|;
@@ -5632,6 +5632,8 @@ literal|"user.home"
 argument_list|)
 argument_list|)
 argument_list|,
+name|JabRef
+operator|.
 name|jrf
 argument_list|)
 expr_stmt|;
@@ -5849,7 +5851,7 @@ return|;
 block|}
 comment|/**      * Will open a file (like importFile), but will also request JabRef to focus on this database       * @param argument See importFile.      * @return ParserResult with setToOpenTab(true)      */
 DECL|method|importToOpenBase (String argument)
-specifier|public
+specifier|private
 specifier|static
 name|ParserResult
 name|importToOpenBase
@@ -5861,6 +5863,8 @@ block|{
 name|ParserResult
 name|result
 init|=
+name|JabRef
+operator|.
 name|importFile
 argument_list|(
 name|argument
@@ -5872,6 +5876,7 @@ name|result
 operator|!=
 literal|null
 condition|)
+block|{
 name|result
 operator|.
 name|setToOpenTab
@@ -5879,6 +5884,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|result
 return|;

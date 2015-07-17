@@ -18,16 +18,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|net
-operator|.
-name|URL
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -78,7 +68,6 @@ name|CallBack
 block|{
 comment|/**      * Handle a query entered by the user.      *       * The method is expected to block the caller until all entries have been      * reported to the inspector.      *       * @param query      *            The query text.      * @param inspector      *            The dialog to add imported entries to.      * @param status      *            An OutputPrinter passed to the activeFetcher for reporting about the      *            status of the fetching.      *       * @return True if the query was completed successfully, false if an error      *         occurred.      */
 DECL|method|processQuery (String query, ImportInspector inspector, OutputPrinter status)
-specifier|public
 name|boolean
 name|processQuery
 parameter_list|(
@@ -94,35 +83,24 @@ parameter_list|)
 function_decl|;
 comment|/**      * The title for this activeFetcher, displayed in the menu and in the side pane.      *       * @return The title      */
 DECL|method|getTitle ()
-specifier|public
 name|String
 name|getTitle
 parameter_list|()
 function_decl|;
 comment|/**      * Get the name of the key binding for this activeFetcher, if any.      *       * @return The name of the key binding or null, if no keybinding should be      *         created.      */
 DECL|method|getKeyName ()
-specifier|public
 name|String
 name|getKeyName
 parameter_list|()
 function_decl|;
-comment|/**      * Get the appropriate icon URL for this activeFetcher.      *       * @return The icon URL      */
-DECL|method|getIcon ()
-specifier|public
-name|URL
-name|getIcon
-parameter_list|()
-function_decl|;
 comment|/**      * Get the name of the help page for this activeFetcher.      *       * If given, a question mark is displayed in the side pane which leads to      * the help page.      *       * @return The name of the help file or null if this activeFetcher does not have      *         any help.      */
 DECL|method|getHelpPage ()
-specifier|public
 name|String
 name|getHelpPage
 parameter_list|()
 function_decl|;
 comment|/**      * If this activeFetcher requires additional options, a panel for setting up these      * should be returned in a JPanel by this method. This JPanel will be added      * to the side pane component automatically.      *       * @return Options panel for this activeFetcher or null if this activeFetcher does not      *         have any options.      */
 DECL|method|getOptionsPanel ()
-specifier|public
 name|JPanel
 name|getOptionsPanel
 parameter_list|()

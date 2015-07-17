@@ -114,6 +114,7 @@ name|AutoSaveManager
 block|{
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -145,6 +146,20 @@ name|void
 name|startAutoSaveTimer
 parameter_list|()
 block|{
+if|if
+condition|(
+name|t
+operator|!=
+literal|null
+condition|)
+block|{
+comment|// shut down any previously set timer to not leak any timers
+name|t
+operator|.
+name|cancel
+argument_list|()
+expr_stmt|;
+block|}
 name|TimerTask
 name|task
 init|=
@@ -161,10 +176,6 @@ expr_stmt|;
 name|long
 name|interval
 init|=
-call|(
-name|long
-call|)
-argument_list|(
 literal|60000
 operator|*
 name|Globals
@@ -174,7 +185,6 @@ operator|.
 name|getInt
 argument_list|(
 literal|"autoSaveInterval"
-argument_list|)
 argument_list|)
 decl_stmt|;
 name|t
@@ -202,11 +212,14 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|class|AutoSaveTask
+specifier|private
 class|class
 name|AutoSaveTask
 extends|extends
 name|TimerTask
 block|{
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -245,6 +258,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|panels
 operator|.
 name|add
@@ -257,11 +271,7 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|int
-name|i
-init|=
-literal|0
-decl_stmt|;
+block|}
 for|for
 control|(
 name|BasePanel
@@ -288,6 +298,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|AutoSaveManager
+operator|.
 name|autoSave
 argument_list|(
 name|panel
@@ -295,11 +307,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-else|else
-block|{                 }
-name|i
-operator|++
-expr_stmt|;
 block|}
 block|}
 block|}
@@ -335,13 +342,13 @@ literal|".$"
 operator|+
 name|n
 operator|+
-literal|"$"
+literal|'$'
 argument_list|)
 return|;
 block|}
 comment|/**      * Perform an autosave.      * @param panel The BasePanel to autosave for.      * @return true if successful, false otherwise.      */
 DECL|method|autoSave (BasePanel panel)
-specifier|public
+specifier|private
 specifier|static
 name|boolean
 name|autoSave
@@ -353,6 +360,8 @@ block|{
 name|File
 name|backupFile
 init|=
+name|AutoSaveManager
+operator|.
 name|getAutoSaveFile
 argument_list|(
 name|panel
@@ -458,12 +467,16 @@ argument_list|()
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 name|File
 name|backupFile
 init|=
+name|AutoSaveManager
+operator|.
 name|getAutoSaveFile
 argument_list|(
 name|panel
@@ -488,9 +501,11 @@ argument_list|()
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 comment|/**      * Clean up by deleting the autosave files corresponding to all open files,      * if they exist.      */
 DECL|method|clearAutoSaves ()
@@ -529,6 +544,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|panels
 operator|.
 name|add
@@ -541,6 +557,7 @@ name|i
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 for|for
 control|(
 name|BasePanel
@@ -549,6 +566,8 @@ range|:
 name|panels
 control|)
 block|{
+name|AutoSaveManager
+operator|.
 name|deleteAutoSaveFile
 argument_list|(
 name|panel
@@ -570,6 +589,8 @@ block|{
 name|File
 name|asFile
 init|=
+name|AutoSaveManager
+operator|.
 name|getAutoSaveFile
 argument_list|(
 name|f

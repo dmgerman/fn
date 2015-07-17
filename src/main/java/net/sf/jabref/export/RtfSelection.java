@@ -74,23 +74,25 @@ end_import
 
 begin_class
 DECL|class|RtfSelection
-specifier|public
 class|class
 name|RtfSelection
 implements|implements
 name|Transferable
 block|{
 DECL|field|rtfFlavor
+specifier|private
 name|DataFlavor
 name|rtfFlavor
 decl_stmt|;
 DECL|field|supportedFlavors
+specifier|private
 name|DataFlavor
 index|[]
 name|supportedFlavors
 decl_stmt|;
 DECL|field|content
 specifier|private
+specifier|final
 name|String
 name|content
 decl_stmt|;
@@ -143,6 +145,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|isDataFlavorSupported (DataFlavor flavor)
 specifier|public
 name|boolean
@@ -170,6 +174,8 @@ name|stringFlavor
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTransferDataFlavors ()
 specifier|public
 name|java
@@ -188,6 +194,8 @@ return|return
 name|supportedFlavors
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTransferData (DataFlavor flavor)
 specifier|public
 name|Object

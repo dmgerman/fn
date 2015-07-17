@@ -91,6 +91,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|entry
 specifier|private
+specifier|final
 name|BibtexEntry
 name|entry
 decl_stmt|;

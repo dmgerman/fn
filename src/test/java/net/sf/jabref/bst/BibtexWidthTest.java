@@ -18,6 +18,16 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -69,6 +79,8 @@ name|String
 name|string
 parameter_list|)
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 name|i
@@ -83,6 +95,8 @@ operator|new
 name|Warn
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|warn
@@ -91,6 +105,8 @@ name|String
 name|s
 parameter_list|)
 block|{
+name|Assert
+operator|.
 name|fail
 argument_list|(
 literal|"Should not Warn! Width should be "
@@ -188,6 +204,8 @@ name|void
 name|testGetCharWidth
 parameter_list|()
 block|{
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|500
@@ -200,6 +218,8 @@ literal|'0'
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|361
@@ -212,6 +232,8 @@ literal|'I'
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|500
@@ -224,6 +246,8 @@ literal|'~'
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|500
@@ -236,6 +260,8 @@ literal|'}'
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|278

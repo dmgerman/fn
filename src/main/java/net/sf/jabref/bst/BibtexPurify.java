@@ -30,7 +30,7 @@ specifier|public
 class|class
 name|BibtexPurify
 block|{
-comment|/** 	 *  	 * @param toPurify 	 * @param warn 	 *            may-be-null 	 * @return 	 */
+comment|/**      *       * @param toPurify      * @param warn      *            may-be-null      * @return      */
 DECL|method|purify (String toPurify, Warn warn)
 specifier|public
 specifier|static
@@ -101,13 +101,17 @@ argument_list|(
 name|c
 argument_list|)
 operator|||
+operator|(
 name|c
 operator|==
 literal|'-'
+operator|)
 operator|||
+operator|(
 name|c
 operator|==
 literal|'~'
+operator|)
 condition|)
 block|{
 name|sb
@@ -150,15 +154,21 @@ operator|++
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|braceLevel
 operator|==
 literal|1
+operator|)
 operator|&&
+operator|(
+operator|(
 name|i
 operator|+
 literal|1
+operator|)
 operator|<
 name|n
+operator|)
 operator|&&
 operator|(
 name|cs
@@ -178,13 +188,17 @@ expr_stmt|;
 comment|// skip brace
 while|while
 condition|(
+operator|(
 name|i
-argument_list|<
+operator|<
 name|n
+operator|)
 operator|&&
+operator|(
 name|braceLevel
-argument_list|>
+operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|i
@@ -220,9 +234,11 @@ expr_stmt|;
 block|}
 while|while
 condition|(
+operator|(
 name|i
 operator|<
 name|n
+operator|)
 operator|&&
 name|Character
 operator|.
@@ -241,14 +257,19 @@ expr_stmt|;
 block|}
 while|while
 condition|(
+operator|(
 name|i
-argument_list|<
+operator|<
 name|n
+operator|)
 operator|&&
+operator|(
 name|braceLevel
-argument_list|>
+operator|>
 literal|0
+operator|)
 operator|&&
+operator|(
 operator|(
 name|c
 operator|=
@@ -259,6 +280,7 @@ index|]
 operator|)
 operator|!=
 literal|'\\'
+operator|)
 condition|)
 block|{
 if|if
@@ -338,6 +360,7 @@ name|warn
 operator|!=
 literal|null
 condition|)
+block|{
 name|warn
 operator|.
 name|warn
@@ -347,6 +370,7 @@ operator|+
 name|toPurify
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|i
@@ -355,14 +379,19 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|(
 name|braceLevel
 operator|!=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|warn
 operator|!=
 literal|null
+operator|)
 condition|)
+block|{
 name|warn
 operator|.
 name|warn
@@ -372,6 +401,7 @@ operator|+
 name|toPurify
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|sb
 operator|.

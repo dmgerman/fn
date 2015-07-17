@@ -286,6 +286,38 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|oo
+operator|.
+name|sorting
+operator|.
+name|AuthorYearTitleComparator
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|oo
+operator|.
+name|sorting
+operator|.
+name|YearAuthorTitleComparator
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|io
@@ -376,11 +408,11 @@ end_comment
 
 begin_class
 DECL|class|OOBibBase
-specifier|public
 class|class
 name|OOBibBase
 block|{
 DECL|field|BIB_SECTION_NAME
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -389,6 +421,7 @@ init|=
 literal|"JR_bib"
 decl_stmt|;
 DECL|field|BIB_SECTION_END_NAME
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -397,6 +430,7 @@ init|=
 literal|"JR_bib_end"
 decl_stmt|;
 DECL|field|BIB_CITATION
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -405,7 +439,7 @@ init|=
 literal|"JR_cite"
 decl_stmt|;
 DECL|field|citePattern
-specifier|public
+specifier|private
 specifier|final
 name|Pattern
 name|citePattern
@@ -414,11 +448,14 @@ name|Pattern
 operator|.
 name|compile
 argument_list|(
+name|OOBibBase
+operator|.
 name|BIB_CITATION
 operator|+
 literal|"\\d*_(\\d*)_(.*)"
 argument_list|)
 decl_stmt|;
+specifier|private
 specifier|final
 specifier|static
 name|int
@@ -426,13 +463,21 @@ DECL|field|AUTHORYEAR_PAR
 name|AUTHORYEAR_PAR
 init|=
 literal|1
-decl_stmt|,
+decl_stmt|;
 DECL|field|AUTHORYEAR_INTEXT
+specifier|private
+specifier|final
+specifier|static
+name|int
 name|AUTHORYEAR_INTEXT
 init|=
 literal|2
-decl_stmt|,
+decl_stmt|;
 DECL|field|INVISIBLE_CIT
+specifier|private
+specifier|final
+specifier|static
+name|int
 name|INVISIBLE_CIT
 init|=
 literal|3
@@ -529,30 +574,35 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|xViewCursorSupplier
+specifier|private
 name|XTextViewCursorSupplier
 name|xViewCursorSupplier
 init|=
 literal|null
 decl_stmt|;
 DECL|field|xCurrentComponent
+specifier|private
 name|XComponent
 name|xCurrentComponent
 init|=
 literal|null
 decl_stmt|;
 DECL|field|xComponentLoader
+specifier|private
 name|XComponentLoader
 name|xComponentLoader
 init|=
 literal|null
 decl_stmt|;
 DECL|field|userProperties
+specifier|private
 name|XPropertyContainer
 name|userProperties
 init|=
 literal|null
 decl_stmt|;
 DECL|field|propertySet
+specifier|private
 name|XPropertySet
 name|propertySet
 init|=
@@ -560,29 +610,33 @@ literal|null
 decl_stmt|;
 DECL|field|atEnd
 specifier|private
+specifier|final
 name|boolean
 name|atEnd
 decl_stmt|;
 DECL|field|entryComparator
 specifier|private
-name|AlphanumericComparator
+specifier|final
+name|AuthorYearTitleComparator
 name|entryComparator
 init|=
 operator|new
-name|AlphanumericComparator
+name|AuthorYearTitleComparator
 argument_list|()
 decl_stmt|;
-DECL|field|yearComparator
+DECL|field|yearAuthorTitleComparator
 specifier|private
-name|YearComparator
-name|yearComparator
+specifier|final
+name|YearAuthorTitleComparator
+name|yearAuthorTitleComparator
 init|=
 operator|new
-name|YearComparator
+name|YearAuthorTitleComparator
 argument_list|()
 decl_stmt|;
 DECL|field|uniquefiers
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -705,9 +759,11 @@ return|;
 block|}
 block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 DECL|method|selectDocument ()
 specifier|public
@@ -728,17 +784,13 @@ argument_list|()
 decl_stmt|;
 name|XTextDocument
 name|selected
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
 name|ls
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 comment|// No text documents found.
@@ -776,6 +828,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|selected
 operator|=
 name|ls
@@ -785,6 +838,7 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|selected
@@ -929,7 +983,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|simpleBootstrap (String pathToExecutable)
-specifier|public
+specifier|private
 name|XDesktop
 name|simpleBootstrap
 parameter_list|(
@@ -1118,7 +1172,7 @@ name|xD
 return|;
 block|}
 DECL|method|getTextDocuments ()
-specifier|public
+specifier|private
 name|List
 argument_list|<
 name|XTextDocument
@@ -1354,6 +1408,7 @@ argument_list|(
 name|property
 argument_list|)
 condition|)
+block|{
 name|userProperties
 operator|.
 name|removeProperty
@@ -1361,12 +1416,14 @@ argument_list|(
 name|property
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|value
 operator|!=
 literal|null
 condition|)
+block|{
 name|userProperties
 operator|.
 name|addProperty
@@ -1397,6 +1454,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 DECL|method|getCustomProperty (String property)
 specifier|public
 name|String
@@ -1420,6 +1478,7 @@ argument_list|(
 name|property
 argument_list|)
 condition|)
+block|{
 return|return
 name|propertySet
 operator|.
@@ -1431,10 +1490,13 @@ operator|.
 name|toString
 argument_list|()
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 DECL|method|updateSortedReferenceMarks ()
 specifier|public
@@ -1543,16 +1605,19 @@ argument_list|(
 literal|"MultiCiteChronological"
 argument_list|)
 condition|)
+block|{
 name|Arrays
 operator|.
 name|sort
 argument_list|(
 name|entries
 argument_list|,
-name|yearComparator
+name|yearAuthorTitleComparator
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|Arrays
 operator|.
 name|sort
@@ -1562,6 +1627,7 @@ argument_list|,
 name|entryComparator
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|StringBuilder
 name|sb
@@ -1601,13 +1667,15 @@ name|i
 operator|>
 literal|0
 condition|)
+block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|","
+literal|','
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
@@ -1640,11 +1708,17 @@ condition|?
 operator|(
 name|inParenthesis
 condition|?
+name|OOBibBase
+operator|.
 name|AUTHORYEAR_PAR
 else|:
+name|OOBibBase
+operator|.
 name|AUTHORYEAR_INTEXT
 operator|)
 else|:
+name|OOBibBase
+operator|.
 name|INVISIBLE_CIT
 argument_list|)
 decl_stmt|;
@@ -2060,6 +2134,7 @@ operator|.
 name|find
 argument_list|()
 condition|)
+block|{
 name|tmp
 operator|.
 name|add
@@ -2067,6 +2142,7 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|names
 operator|=
@@ -2208,28 +2284,38 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
+name|Map
+operator|.
+name|Entry
+argument_list|<
 name|BibtexEntry
-name|entry
+argument_list|,
+name|BibtexDatabase
+argument_list|>
+name|bibtexEntryBibtexDatabaseEntry
 range|:
 name|entries
 operator|.
-name|keySet
+name|entrySet
 argument_list|()
 control|)
+block|{
 name|newMap
 operator|.
 name|put
 argument_list|(
-name|entry
-argument_list|,
-name|entries
+name|bibtexEntryBibtexDatabaseEntry
 operator|.
-name|get
-argument_list|(
-name|entry
-argument_list|)
+name|getKey
+argument_list|()
+argument_list|,
+name|bibtexEntryBibtexDatabaseEntry
+operator|.
+name|getValue
+argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|entries
 operator|=
 name|newMap
@@ -2312,6 +2398,7 @@ operator|.
 name|find
 argument_list|()
 condition|)
+block|{
 name|tmp
 operator|.
 name|add
@@ -2319,6 +2406,7 @@ argument_list|(
 name|name
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|names
 operator|=
@@ -2566,6 +2654,7 @@ name|database
 operator|!=
 literal|null
 condition|)
+block|{
 name|cEntries
 index|[
 name|j
@@ -2586,6 +2675,7 @@ index|]
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|cEntries
@@ -2609,7 +2699,7 @@ index|[
 name|j
 index|]
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 name|System
@@ -2625,7 +2715,7 @@ index|[
 name|i
 index|]
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 name|cEntries
@@ -2738,19 +2828,23 @@ if|if
 condition|(
 name|j
 operator|<
+operator|(
 name|keys
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|","
+literal|','
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|citationMarker
 operator|=
@@ -2850,6 +2944,7 @@ name|j
 index|]
 argument_list|)
 condition|)
+block|{
 name|num
 index|[
 name|j
@@ -2865,6 +2960,7 @@ name|j
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 name|numbers
@@ -2921,6 +3017,7 @@ condition|;
 name|j
 operator|++
 control|)
+block|{
 name|normCitMarker
 index|[
 name|j
@@ -2945,6 +3042,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -2970,6 +3068,7 @@ name|num
 operator|!=
 literal|null
 condition|)
+block|{
 name|citationMarker
 operator|=
 name|style
@@ -2983,7 +3082,9 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 throw|throw
 operator|new
 name|BibtexEntryNotFoundException
@@ -3006,6 +3107,7 @@ index|]
 argument_list|)
 argument_list|)
 throw|;
+block|}
 for|for
 control|(
 name|int
@@ -3022,6 +3124,7 @@ condition|;
 name|j
 operator|++
 control|)
+block|{
 name|normCitMarker
 index|[
 name|j
@@ -3048,6 +3151,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 else|else
 block|{
 if|if
@@ -3068,16 +3172,19 @@ argument_list|(
 literal|"MultiCiteChronological"
 argument_list|)
 condition|)
+block|{
 name|Arrays
 operator|.
 name|sort
 argument_list|(
 name|cEntries
 argument_list|,
-name|yearComparator
+name|yearAuthorTitleComparator
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|Arrays
 operator|.
 name|sort
@@ -3087,6 +3194,7 @@ argument_list|,
 name|entryComparator
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Update key list to match the new sorting:
 for|for
 control|(
@@ -3141,6 +3249,8 @@ argument_list|)
 argument_list|,
 name|type
 operator|==
+name|OOBibBase
+operator|.
 name|AUTHORYEAR_PAR
 argument_list|,
 literal|null
@@ -3165,6 +3275,7 @@ condition|;
 name|j
 operator|++
 control|)
+block|{
 name|normCitMarker
 index|[
 name|j
@@ -3194,6 +3305,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|citMarkers
 index|[
@@ -3474,12 +3586,22 @@ block|}
 comment|// Go through the collected lists and see where we need to uniquefy:
 for|for
 control|(
+name|Map
+operator|.
+name|Entry
+argument_list|<
 name|String
-name|marker
+argument_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
+name|stringListEntry
 range|:
 name|refKeys
 operator|.
-name|keySet
+name|entrySet
 argument_list|()
 control|)
 block|{
@@ -3489,12 +3611,10 @@ name|String
 argument_list|>
 name|keys
 init|=
-name|refKeys
+name|stringListEntry
 operator|.
-name|get
-argument_list|(
-name|marker
-argument_list|)
+name|getValue
+argument_list|()
 decl_stmt|;
 if|if
 condition|(
@@ -3770,6 +3890,7 @@ name|database
 operator|!=
 literal|null
 condition|)
+block|{
 name|cEntries
 index|[
 name|k
@@ -3793,6 +3914,7 @@ index|]
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|uniquif
 index|[
 name|k
@@ -3838,6 +3960,7 @@ name|database
 operator|!=
 literal|null
 condition|)
+block|{
 name|cEntries
 index|[
 name|k
@@ -3861,6 +3984,7 @@ index|]
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|uniquif
 index|[
 name|k
@@ -3893,6 +4017,7 @@ name|database
 operator|!=
 literal|null
 condition|)
+block|{
 name|cEntries
 index|[
 name|k
@@ -3916,6 +4041,7 @@ index|]
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|uniquif
 index|[
 name|k
@@ -3953,6 +4079,8 @@ index|[
 name|j
 index|]
 operator|==
+name|OOBibBase
+operator|.
 name|AUTHORYEAR_PAR
 argument_list|,
 name|uniquif
@@ -3969,6 +4097,8 @@ name|hadBibSection
 init|=
 name|getBookmarkRange
 argument_list|(
+name|OOBibBase
+operator|.
 name|BIB_SECTION_NAME
 argument_list|)
 operator|!=
@@ -4135,6 +4265,8 @@ index|[
 name|i
 index|]
 operator|!=
+name|OOBibBase
+operator|.
 name|INVISIBLE_CIT
 argument_list|,
 name|style
@@ -4147,6 +4279,8 @@ operator|&&
 operator|(
 name|getBookmarkRange
 argument_list|(
+name|OOBibBase
+operator|.
 name|BIB_SECTION_NAME
 argument_list|)
 operator|==
@@ -4172,6 +4306,8 @@ argument_list|)
 expr_stmt|;
 name|insertBookMark
 argument_list|(
+name|OOBibBase
+operator|.
 name|BIB_SECTION_NAME
 argument_list|,
 name|cursor
@@ -4234,6 +4370,7 @@ argument_list|(
 name|key
 argument_list|)
 condition|)
+block|{
 name|unresolvedKeys
 operator|.
 name|add
@@ -4243,12 +4380,13 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 return|return
 name|unresolvedKeys
 return|;
 block|}
 DECL|method|getSortedReferenceMarks (final XNameAccess nameAccess)
-specifier|public
+specifier|private
 name|String
 index|[]
 name|getSortedReferenceMarks
@@ -4494,13 +4632,15 @@ comment|//System.out.println(mark.getPosition().X+" -- "+mark.getPosition().Y+" 
 name|names
 index|[
 name|i
-operator|++
 index|]
 operator|=
 name|mark
 operator|.
 name|getName
 argument_list|()
+expr_stmt|;
+name|i
+operator|++
 expr_stmt|;
 block|}
 name|tvc
@@ -4628,28 +4768,38 @@ argument_list|)
 decl_stmt|;
 for|for
 control|(
+name|Map
+operator|.
+name|Entry
+argument_list|<
 name|BibtexEntry
-name|entry
+argument_list|,
+name|BibtexDatabase
+argument_list|>
+name|bibtexEntryBibtexDatabaseEntry
 range|:
 name|entries
 operator|.
-name|keySet
+name|entrySet
 argument_list|()
 control|)
+block|{
 name|newMap
 operator|.
 name|put
 argument_list|(
-name|entry
-argument_list|,
-name|entries
+name|bibtexEntryBibtexDatabaseEntry
 operator|.
-name|get
-argument_list|(
-name|entry
-argument_list|)
+name|getKey
+argument_list|()
+argument_list|,
+name|bibtexEntryBibtexDatabaseEntry
+operator|.
+name|getValue
+argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|entries
 operator|=
 name|newMap
@@ -4667,7 +4817,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getUniqueReferenceMarkName (String bibtexKey, int type)
-specifier|public
+specifier|private
 name|String
 name|getUniqueReferenceMarkName
 parameter_list|(
@@ -4708,13 +4858,15 @@ decl_stmt|;
 name|String
 name|name
 init|=
+name|OOBibBase
+operator|.
 name|BIB_CITATION
 operator|+
-literal|"_"
+literal|'_'
 operator|+
 name|type
 operator|+
-literal|"_"
+literal|'_'
 operator|+
 name|bibtexKey
 decl_stmt|;
@@ -4730,15 +4882,17 @@ condition|)
 block|{
 name|name
 operator|=
+name|OOBibBase
+operator|.
 name|BIB_CITATION
 operator|+
 name|i
 operator|+
-literal|"_"
+literal|'_'
 operator|+
 name|type
 operator|+
-literal|"_"
+literal|'_'
 operator|+
 name|bibtexKey
 expr_stmt|;
@@ -4750,8 +4904,8 @@ return|return
 name|name
 return|;
 block|}
-DECL|method|findCitedEntries (List<BibtexDatabase> databases, List<String> keys, HashMap<String,BibtexDatabase> linkSourceBase)
-specifier|public
+DECL|method|findCitedEntries (List<BibtexDatabase> databases, List<String> keys, HashMap<String, BibtexDatabase> linkSourceBase)
+specifier|private
 name|LinkedHashMap
 argument_list|<
 name|BibtexEntry
@@ -4871,6 +5025,7 @@ condition|(
 operator|!
 name|found
 condition|)
+block|{
 name|entries
 operator|.
 name|put
@@ -4885,12 +5040,13 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 return|return
 name|entries
 return|;
 block|}
 DECL|method|findCitedKeys ()
-specifier|public
+specifier|private
 name|List
 argument_list|<
 name|String
@@ -4986,11 +5142,6 @@ argument_list|,
 name|bookmark
 argument_list|)
 decl_stmt|;
-name|String
-name|name
-init|=
-name|name1
-decl_stmt|;
 name|List
 argument_list|<
 name|String
@@ -4999,7 +5150,7 @@ name|newKeys
 init|=
 name|parseRefMarkName
 argument_list|(
-name|name
+name|name1
 argument_list|)
 decl_stmt|;
 for|for
@@ -5009,6 +5160,7 @@ name|key
 range|:
 name|newKeys
 control|)
+block|{
 if|if
 condition|(
 operator|!
@@ -5019,6 +5171,7 @@ argument_list|(
 name|key
 argument_list|)
 condition|)
+block|{
 name|keys
 operator|.
 name|add
@@ -5027,12 +5180,14 @@ name|key
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+block|}
 return|return
 name|keys
 return|;
 block|}
-DECL|method|getSortedEntriesFromSortedRefMarks (String[] names, Map<BibtexEntry,BibtexDatabase> entries, HashMap<String,BibtexDatabase> linkSourceBase)
-specifier|public
+DECL|method|getSortedEntriesFromSortedRefMarks (String[] names, Map<BibtexEntry, BibtexDatabase> entries, HashMap<String, BibtexDatabase> linkSourceBase)
+specifier|private
 name|LinkedHashMap
 argument_list|<
 name|BibtexEntry
@@ -5169,6 +5324,7 @@ name|database
 operator|!=
 literal|null
 condition|)
+block|{
 name|origEntry
 operator|=
 name|database
@@ -5178,6 +5334,7 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|origEntry
@@ -5294,7 +5451,7 @@ name|newList
 return|;
 block|}
 DECL|method|findPosition (XTextViewCursor cursor, XTextRange range)
-specifier|public
+specifier|private
 name|Point
 name|findPosition
 parameter_list|(
@@ -5399,6 +5556,7 @@ argument_list|(
 name|aKeystring
 argument_list|)
 condition|)
+block|{
 name|keys
 operator|.
 name|add
@@ -5408,13 +5566,14 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 return|return
 name|keys
 return|;
 block|}
 comment|/**      * Resolve the bibtex key from a citation reference marker name, and look up      * the index of the key in a list of keys.      * @param citRefName The name of the ReferenceMark representing the citation.      * @param keys A List of bibtex keys representing the entries in the bibliography.      * @return the indices of the cited keys, -1 if a key is not found. Returns null if the ref name      *   could not be resolved as a citation.      */
 DECL|method|findCitedEntryIndex (String citRefName, List<String> keys)
-specifier|public
+specifier|private
 name|int
 index|[]
 name|findCitedEntryIndex
@@ -5528,9 +5687,11 @@ name|res
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 DECL|method|getCitationContext (XNameAccess nameAccess, String refMarkName, int charBefore, int charAfter, boolean htmlMarkup)
 specifier|public
@@ -5645,9 +5806,11 @@ condition|(
 operator|(
 name|i
 operator|>=
+operator|(
 name|charBefore
 operator|-
 name|flex
+operator|)
 operator|)
 operator|&&
 name|Character
@@ -5665,7 +5828,9 @@ literal|0
 argument_list|)
 argument_list|)
 condition|)
+block|{
 break|break;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -5715,9 +5880,11 @@ literal|0
 init|;
 name|i
 operator|<
+operator|(
 name|charAfter
 operator|+
 name|length
+operator|)
 condition|;
 name|i
 operator|++
@@ -5741,11 +5908,15 @@ if|if
 condition|(
 name|i
 operator|>=
+operator|(
+operator|(
 name|charAfter
 operator|+
 name|length
+operator|)
 operator|-
 name|flex
+operator|)
 condition|)
 block|{
 name|String
@@ -5775,7 +5946,9 @@ literal|1
 argument_list|)
 argument_list|)
 condition|)
+block|{
 break|break;
+block|}
 block|}
 block|}
 catch|catch
@@ -5836,8 +6009,8 @@ name|trim
 argument_list|()
 return|;
 block|}
-DECL|method|insertFullReferenceAtCursor (XTextCursor cursor, Map<BibtexEntry,BibtexDatabase> entries, OOBibStyle style, String parFormat)
-specifier|public
+DECL|method|insertFullReferenceAtCursor (XTextCursor cursor, Map<BibtexEntry, BibtexDatabase> entries, OOBibStyle style, String parFormat)
+specifier|private
 name|void
 name|insertFullReferenceAtCursor
 parameter_list|(
@@ -5902,6 +6075,7 @@ operator|.
 name|keySet
 argument_list|()
 control|)
+block|{
 name|newMap
 operator|.
 name|put
@@ -5916,6 +6090,7 @@ name|entry
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|entries
 operator|=
 name|newMap
@@ -5943,7 +6118,9 @@ name|entry
 operator|instanceof
 name|UndefinedBibtexEntry
 condition|)
+block|{
 continue|continue;
+block|}
 name|OOUtil
 operator|.
 name|insertParagraphBreak
@@ -6043,7 +6220,7 @@ parameter_list|(
 name|NoSuchMethodError
 name|ignore
 parameter_list|)
-block|{                              }
+block|{              }
 name|OOUtil
 operator|.
 name|insertFullReferenceAtCurrentLocation
@@ -6078,7 +6255,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|insertFullReferenceAtViewCursor (Map<BibtexEntry,BibtexDatabase> entries, OOBibStyle style, String parFormat)
+DECL|method|insertFullReferenceAtViewCursor (Map<BibtexEntry, BibtexDatabase> entries, OOBibStyle style, String parFormat)
 specifier|public
 name|void
 name|insertFullReferenceAtViewCursor
@@ -6171,7 +6348,7 @@ expr_stmt|;
 block|}
 comment|/**      * This method creates and inserts an XTextSection named as determined by the      * string BIB_SECTION_NAME.      * @param end true to indicate that the section should be put at the end of the document,      *  false to indicate that it should be put at the cursor position.      * @return true if the bibliography already existed, false otherwise..      * @throws Exception      */
 DECL|method|createBibTextSection (boolean end)
-specifier|public
+specifier|private
 name|boolean
 name|createBibTextSection
 parameter_list|(
@@ -6205,6 +6382,8 @@ argument_list|()
 operator|.
 name|hasByName
 argument_list|(
+name|OOBibBase
+operator|.
 name|BIB_SECTION_NAME
 argument_list|)
 condition|)
@@ -6234,6 +6413,7 @@ if|if
 condition|(
 name|end
 condition|)
+block|{
 name|mxDocCursor
 operator|.
 name|gotoEnd
@@ -6241,6 +6421,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 name|OOUtil
 operator|.
 name|insertParagraphBreak
@@ -6252,6 +6433,8 @@ argument_list|)
 expr_stmt|;
 name|insertBookMark
 argument_list|(
+name|OOBibBase
+operator|.
 name|BIB_SECTION_NAME
 argument_list|,
 name|mxDocCursor
@@ -6262,7 +6445,7 @@ literal|false
 return|;
 block|}
 DECL|method|createBibTextSection2 (boolean end)
-specifier|public
+specifier|private
 name|void
 name|createBibTextSection2
 parameter_list|(
@@ -6284,6 +6467,7 @@ if|if
 condition|(
 name|end
 condition|)
+block|{
 name|mxDocCursor
 operator|.
 name|gotoEnd
@@ -6291,6 +6475,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 name|OOUtil
 operator|.
 name|insertParagraphBreak
@@ -6325,6 +6510,8 @@ name|xChildNamed
 operator|.
 name|setName
 argument_list|(
+name|OOBibBase
+operator|.
 name|BIB_SECTION_NAME
 argument_list|)
 expr_stmt|;
@@ -6356,7 +6543,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|clearBibTextSectionContent2 ()
-specifier|public
+specifier|private
 name|void
 name|clearBibTextSectionContent2
 parameter_list|()
@@ -6402,6 +6589,8 @@ argument_list|()
 operator|.
 name|getByName
 argument_list|(
+name|OOBibBase
+operator|.
 name|BIB_SECTION_NAME
 argument_list|)
 argument_list|)
@@ -6485,6 +6674,8 @@ name|range
 init|=
 name|getBookmarkRange
 argument_list|(
+name|OOBibBase
+operator|.
 name|BIB_SECTION_NAME
 argument_list|)
 decl_stmt|;
@@ -6506,6 +6697,8 @@ name|rangeEnd
 init|=
 name|getBookmarkRange
 argument_list|(
+name|OOBibBase
+operator|.
 name|BIB_SECTION_END_NAME
 argument_list|)
 decl_stmt|;
@@ -6599,6 +6792,8 @@ argument_list|()
 expr_stmt|;
 name|removeBookMark
 argument_list|(
+name|OOBibBase
+operator|.
 name|BIB_SECTION_END_NAME
 argument_list|)
 expr_stmt|;
@@ -6607,21 +6802,27 @@ if|if
 condition|(
 name|getBookmarkRange
 argument_list|(
+name|OOBibBase
+operator|.
 name|BIB_SECTION_NAME
 argument_list|)
 operator|==
 literal|null
 condition|)
+block|{
 name|insertBookMark
 argument_list|(
+name|OOBibBase
+operator|.
 name|BIB_SECTION_NAME
 argument_list|,
 name|mxDocCursor
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|populateBibTextSection (Map<BibtexEntry,BibtexDatabase> entries, OOBibStyle style)
-specifier|public
+block|}
+DECL|method|populateBibTextSection (Map<BibtexEntry, BibtexDatabase> entries, OOBibStyle style)
+specifier|private
 name|void
 name|populateBibTextSection
 parameter_list|(
@@ -6672,6 +6873,8 @@ argument_list|()
 operator|.
 name|getByName
 argument_list|(
+name|OOBibBase
+operator|.
 name|BIB_SECTION_NAME
 argument_list|)
 argument_list|)
@@ -6742,6 +6945,8 @@ argument_list|)
 expr_stmt|;
 name|insertBookMark
 argument_list|(
+name|OOBibBase
+operator|.
 name|BIB_SECTION_END_NAME
 argument_list|,
 name|cursor
@@ -6749,7 +6954,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|insertBookMark (String name, XTextCursor position)
-specifier|public
+specifier|private
 name|XTextContent
 name|insertBookMark
 parameter_list|(
@@ -6832,7 +7037,7 @@ name|xTextContent
 return|;
 block|}
 DECL|method|insertReferenceMark (String name, String citText, XTextCursor position, boolean withText, OOBibStyle style)
-specifier|public
+specifier|private
 name|void
 name|insertReferenceMark
 parameter_list|(
@@ -7019,6 +7224,7 @@ block|}
 block|}
 block|}
 else|else
+block|{
 name|position
 operator|.
 name|setString
@@ -7026,6 +7232,7 @@ argument_list|(
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 name|position
 operator|.
 name|getText
@@ -7194,6 +7401,7 @@ if|if
 condition|(
 name|italicize
 condition|)
+block|{
 name|xcp
 operator|.
 name|setPropertyValue
@@ -7213,7 +7421,9 @@ operator|.
 name|ITALIC
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|xcp
 operator|.
 name|setPropertyValue
@@ -7233,6 +7443,7 @@ operator|.
 name|BOLD
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|testFootnote ()
 specifier|public
@@ -7261,7 +7472,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|insertFootnote (String name, String citText, XTextCursor position)
-specifier|public
+specifier|private
 name|void
 name|insertFootnote
 parameter_list|(
@@ -7410,7 +7621,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|removeBookMark (String name)
-specifier|public
+specifier|private
 name|void
 name|removeBookMark
 parameter_list|(
@@ -7484,7 +7695,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|removeReferenceMark (String name)
-specifier|public
+specifier|private
 name|void
 name|removeReferenceMark
 parameter_list|(
@@ -7559,7 +7770,7 @@ block|}
 block|}
 comment|/**      * Get the XTextRange corresponding to the named bookmark.      * @param name The name of the bookmark to find.      * @return The XTextRange for the bookmark.      * @throws Exception      */
 DECL|method|getBookmarkRange (String name)
-specifier|public
+specifier|private
 name|XTextRange
 name|getBookmarkRange
 parameter_list|(
@@ -7604,9 +7815,11 @@ argument_list|(
 name|name
 argument_list|)
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|Object
 name|foundBookmark
 init|=
@@ -7809,11 +8022,13 @@ while|while
 condition|(
 name|piv
 operator|<
+operator|(
 name|names
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 name|XTextRange
@@ -7984,10 +8199,8 @@ operator|.
 name|trim
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 operator|)
 condition|)
 block|{
@@ -8201,13 +8414,15 @@ name|i
 operator|>
 literal|0
 condition|)
+block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|","
+literal|','
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
@@ -8245,8 +8460,12 @@ name|keyString
 argument_list|,
 name|inParenthesis
 condition|?
+name|OOBibBase
+operator|.
 name|AUTHORYEAR_PAR
 else|:
+name|OOBibBase
+operator|.
 name|AUTHORYEAR_INTEXT
 argument_list|)
 decl_stmt|;

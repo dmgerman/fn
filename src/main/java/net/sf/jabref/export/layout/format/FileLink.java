@@ -38,6 +38,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|FileUtil
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|GUIGlobals
 import|;
 end_import
@@ -51,18 +63,6 @@ operator|.
 name|jabref
 operator|.
 name|Globals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Util
 import|;
 end_import
 
@@ -133,11 +133,14 @@ implements|implements
 name|ParamLayoutFormatter
 block|{
 DECL|field|fileType
+specifier|private
 name|String
 name|fileType
 init|=
 literal|null
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|format (String field)
 specifier|public
 name|String
@@ -160,9 +163,11 @@ name|field
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 name|tableModel
 operator|.
 name|setContent
@@ -192,6 +197,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|link
 operator|=
 name|tableModel
@@ -204,6 +210,7 @@ operator|.
 name|getLink
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -272,9 +279,11 @@ name|link
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|""
 return|;
+block|}
 name|String
 index|[]
 name|dirs
@@ -293,6 +302,7 @@ name|fileDirForDatabase
 operator|!=
 literal|null
 condition|)
+block|{
 name|dirs
 operator|=
 name|Globals
@@ -301,7 +311,9 @@ name|prefs
 operator|.
 name|fileDirForDatabase
 expr_stmt|;
+block|}
 else|else
+block|{
 name|dirs
 operator|=
 operator|new
@@ -322,10 +334,11 @@ literal|"Directory"
 argument_list|)
 block|}
 expr_stmt|;
+block|}
 name|File
 name|f
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -334,7 +347,7 @@ argument_list|,
 name|dirs
 argument_list|)
 decl_stmt|;
-comment|/* 		 * Stumbled over this while investigating 		 * 		 * https://sourceforge.net/tracker/index.php?func=detail&aid=1469903&group_id=92314&atid=600306 		 */
+comment|/*          * Stumbled over this while investigating          *          * https://sourceforge.net/tracker/index.php?func=detail&aid=1469903&group_id=92314&atid=600306          */
 if|if
 condition|(
 name|f
@@ -379,6 +392,8 @@ return|;
 block|}
 block|}
 comment|/**      * This method is called if the layout file specifies an argument for this      * formatter. We use it as an indicator of which file type we should look for.      * @param arg The file type.      */
+annotation|@
+name|Override
 DECL|method|setArgument (String arg)
 specifier|public
 name|void

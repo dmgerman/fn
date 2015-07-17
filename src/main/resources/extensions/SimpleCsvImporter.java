@@ -39,6 +39,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|IdGenerator
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|imports
 operator|.
 name|ImportFormat
@@ -67,6 +79,8 @@ name|SimpleCsvImporter
 extends|extends
 name|ImportFormat
 block|{
+annotation|@
+name|Override
 DECL|method|getFormatName ()
 specifier|public
 name|String
@@ -77,6 +91,8 @@ return|return
 literal|"Simple CSV Importer"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isRecognizedFormat (InputStream stream)
 specifier|public
 name|boolean
@@ -204,9 +220,9 @@ init|=
 operator|new
 name|BibtexEntry
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 decl_stmt|;

@@ -91,7 +91,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Try to download fulltext PDF for selected entry(ies) by following URL or DOI link. */
+comment|/**  * Try to download fulltext PDF for selected entry(ies) by following URL or DOI link.  */
 end_comment
 
 begin_class
@@ -104,6 +104,7 @@ name|AbstractWorker
 block|{
 DECL|field|basePanel
 specifier|private
+specifier|final
 name|BasePanel
 name|basePanel
 decl_stmt|;
@@ -138,6 +139,8 @@ operator|=
 name|basePanel
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|init ()
 specifier|public
 name|void
@@ -159,6 +162,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -192,6 +197,8 @@ name|entry
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void
@@ -281,6 +288,8 @@ operator|.
 name|DownloadCallback
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|downloadComplete

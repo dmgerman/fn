@@ -126,18 +126,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Globals
 import|;
 end_import
@@ -184,6 +172,7 @@ init|=
 literal|"http://dx.doi.org/%s"
 decl_stmt|;
 DECL|field|caseKeeper
+specifier|private
 specifier|final
 name|CaseKeeper
 name|caseKeeper
@@ -193,6 +182,7 @@ name|CaseKeeper
 argument_list|()
 decl_stmt|;
 DECL|field|unitFormatter
+specifier|private
 specifier|final
 name|UnitFormatter
 name|unitFormatter
@@ -289,25 +279,6 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|getIcon ()
-specifier|public
-name|URL
-name|getIcon
-parameter_list|()
-block|{
-comment|// no special icon for this fetcher available.
-comment|// Therefore, we return some kind of default icon
-return|return
-name|GUIGlobals
-operator|.
-name|getIconUrl
-argument_list|(
-literal|"www"
-argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
 DECL|method|getHelpPage ()
 specifier|public
 name|String
@@ -332,7 +303,7 @@ literal|null
 return|;
 block|}
 DECL|method|getEntryFromDOI (String doi, OutputPrinter status)
-specifier|public
+specifier|private
 name|BibtexEntry
 name|getEntryFromDOI
 parameter_list|(
@@ -383,6 +354,8 @@ name|String
 operator|.
 name|format
 argument_list|(
+name|DOItoBibTeXFetcher
+operator|.
 name|URL_PATTERN
 argument_list|,
 name|q

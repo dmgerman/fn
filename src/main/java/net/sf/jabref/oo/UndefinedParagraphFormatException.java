@@ -22,13 +22,14 @@ end_comment
 
 begin_class
 DECL|class|UndefinedParagraphFormatException
-specifier|public
 class|class
 name|UndefinedParagraphFormatException
 extends|extends
 name|Exception
 block|{
 DECL|field|formatName
+specifier|private
+specifier|final
 name|String
 name|formatName
 decl_stmt|;

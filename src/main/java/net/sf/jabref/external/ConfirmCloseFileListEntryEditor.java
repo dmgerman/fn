@@ -41,7 +41,6 @@ interface|interface
 name|ConfirmCloseFileListEntryEditor
 block|{
 DECL|method|confirmClose (FileListEntry entry)
-specifier|public
 name|boolean
 name|confirmClose
 parameter_list|(

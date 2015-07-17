@@ -155,23 +155,17 @@ name|hasRunConfig
 init|=
 literal|false
 decl_stmt|;
-DECL|field|clearKeys
-specifier|private
-name|boolean
-name|clearKeys
-init|=
-literal|true
-decl_stmt|;
-comment|// Should we clear the keys so new ones can be generated?
 DECL|field|MAX_ENTRIES_TO_LOAD
-specifier|protected
+specifier|private
 specifier|static
+specifier|final
 name|int
 name|MAX_ENTRIES_TO_LOAD
 init|=
 literal|50
 decl_stmt|;
 DECL|field|QUERY_MARKER
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -180,6 +174,7 @@ init|=
 literal|"___QUERY___"
 decl_stmt|;
 DECL|field|URL_START
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -188,6 +183,7 @@ init|=
 literal|"http://scholar.google.com"
 decl_stmt|;
 DECL|field|URL_SETTING
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -196,6 +192,7 @@ init|=
 literal|"http://scholar.google.com/scholar_settings"
 decl_stmt|;
 DECL|field|URL_SETPREFS
+specifier|private
 specifier|final
 specifier|static
 name|String
@@ -204,20 +201,26 @@ init|=
 literal|"http://scholar.google.com/scholar_setprefs"
 decl_stmt|;
 DECL|field|SEARCH_URL
+specifier|private
 specifier|final
 specifier|static
 name|String
 name|SEARCH_URL
 init|=
+name|GoogleScholarFetcher
+operator|.
 name|URL_START
 operator|+
 literal|"/scholar?q="
 operator|+
+name|GoogleScholarFetcher
+operator|.
 name|QUERY_MARKER
 operator|+
 literal|"&amp;hl=en&amp;btnG=Search"
 decl_stmt|;
 DECL|field|BIBTEX_LINK_PATTERN
+specifier|private
 specifier|final
 specifier|static
 name|Pattern
@@ -231,6 +234,7 @@ literal|"<a href=\"([^\"]*)\"[^>]*>[A-Za-z ]*BibTeX"
 argument_list|)
 decl_stmt|;
 DECL|field|TITLE_START_PATTERN
+specifier|private
 specifier|final
 specifier|static
 name|Pattern
@@ -244,6 +248,7 @@ literal|"<div class=\"gs_ri\">"
 argument_list|)
 decl_stmt|;
 DECL|field|LINK_PATTERN
+specifier|private
 specifier|final
 specifier|static
 name|Pattern
@@ -257,6 +262,7 @@ literal|"<h3 class=\"gs_rt\"><a href=\"([^\"]*)\">"
 argument_list|)
 decl_stmt|;
 DECL|field|TITLE_END_PATTERN
+specifier|private
 specifier|final
 specifier|static
 name|Pattern
@@ -270,7 +276,8 @@ literal|"<div class=\"gs_fl\">"
 argument_list|)
 decl_stmt|;
 DECL|field|entryLinks
-specifier|protected
+specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -291,12 +298,14 @@ decl_stmt|;
 comment|//final static Pattern NEXT_PAGE_PATTERN = Pattern.compile(
 comment|//        "<a href=\"([^\"]*)\"><span class=\"SPRITE_nav_next\"></span><br><span style=\".*\">Next</span></a>");
 DECL|field|stopFetching
-specifier|protected
+specifier|private
 name|boolean
 name|stopFetching
 init|=
 literal|false
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getWarningLimit ()
 specifier|public
 name|int
@@ -307,6 +316,8 @@ return|return
 literal|10
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getPreferredPreviewHeight ()
 specifier|public
 name|int
@@ -317,6 +328,8 @@ return|return
 literal|100
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|processQuery (String query, ImportInspector inspector, OutputPrinter status)
 specifier|public
 name|boolean
@@ -336,6 +349,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|processQueryGetPreview (String query, FetcherPreviewDialog preview, OutputPrinter status)
 specifier|public
 name|boolean
@@ -447,6 +462,8 @@ literal|false
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getEntries (Map<String, Boolean> selection, ImportInspector inspector)
 specifier|public
 name|void
@@ -498,9 +515,11 @@ if|if
 condition|(
 name|isSelected
 condition|)
+block|{
 name|toDownload
 operator|++
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -508,7 +527,9 @@ name|toDownload
 operator|==
 literal|0
 condition|)
+block|{
 return|return;
+block|}
 for|for
 control|(
 name|String
@@ -524,7 +545,9 @@ if|if
 condition|(
 name|stopFetching
 condition|)
+block|{
 break|break;
+block|}
 name|inspector
 operator|.
 name|setProgress
@@ -585,6 +608,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getTitle ()
 specifier|public
 name|String
@@ -595,6 +620,8 @@ return|return
 literal|"Google Scholar"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getKeyName ()
 specifier|public
 name|String
@@ -605,21 +632,8 @@ return|return
 literal|"Google Scholar"
 return|;
 block|}
-DECL|method|getIcon ()
-specifier|public
-name|URL
-name|getIcon
-parameter_list|()
-block|{
-return|return
-name|GUIGlobals
-operator|.
-name|getIconUrl
-argument_list|(
-literal|"www"
-argument_list|)
-return|;
-block|}
+annotation|@
+name|Override
 DECL|method|getHelpPage ()
 specifier|public
 name|String
@@ -630,6 +644,8 @@ return|return
 literal|"GoogleScholarHelp.html"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getOptionsPanel ()
 specifier|public
 name|JPanel
@@ -640,6 +656,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|stopFetching ()
 specifier|public
 name|void
@@ -692,73 +710,45 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|runConfig ()
-specifier|protected
+specifier|private
 name|void
 name|runConfig
 parameter_list|()
 throws|throws
 name|IOException
 block|{
-name|String
-name|urlQuery
-decl_stmt|;
 try|try
 block|{
-name|URL
-name|url
-decl_stmt|;
+operator|new
 name|URLDownload
-name|ud
-decl_stmt|;
-name|url
-operator|=
+argument_list|(
 operator|new
 name|URL
 argument_list|(
 literal|"http://scholar.google.com"
 argument_list|)
-expr_stmt|;
-name|ud
-operator|=
-operator|new
-name|URLDownload
-argument_list|(
-name|url
 argument_list|)
-expr_stmt|;
-name|ud
 operator|.
-name|download
-argument_list|()
-expr_stmt|;
-name|url
-operator|=
-operator|new
-name|URL
-argument_list|(
-name|URL_SETTING
-argument_list|)
-expr_stmt|;
-name|ud
-operator|=
-operator|new
-name|URLDownload
-argument_list|(
-name|url
-argument_list|)
-expr_stmt|;
-name|ud
-operator|.
-name|download
+name|downloadToString
 argument_list|()
 expr_stmt|;
 comment|//save("setting.html", ud.getStringContent());
 name|String
 name|settingsPage
 init|=
-name|ud
+operator|new
+name|URLDownload
+argument_list|(
+operator|new
+name|URL
+argument_list|(
+name|GoogleScholarFetcher
 operator|.
-name|getStringContent
+name|URL_SETTING
+argument_list|)
+argument_list|)
+operator|.
+name|downloadToString
 argument_list|()
 decl_stmt|;
 comment|// Get the form items and their values from the page:
@@ -770,6 +760,8 @@ name|String
 argument_list|>
 name|formItems
 init|=
+name|GoogleScholarFetcher
+operator|.
 name|getFormElements
 argument_list|(
 name|settingsPage
@@ -804,6 +796,8 @@ name|String
 operator|.
 name|valueOf
 argument_list|(
+name|GoogleScholarFetcher
+operator|.
 name|MAX_ENTRIES_TO_LOAD
 argument_list|)
 argument_list|)
@@ -814,6 +808,8 @@ init|=
 operator|new
 name|StringBuilder
 argument_list|(
+name|GoogleScholarFetcher
+operator|.
 name|URL_SETPREFS
 operator|+
 literal|"?"
@@ -879,6 +875,7 @@ operator|.
 name|hasNext
 argument_list|()
 condition|)
+block|{
 name|ub
 operator|.
 name|append
@@ -886,6 +883,7 @@ argument_list|(
 literal|"&"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|ub
 operator|.
@@ -895,9 +893,9 @@ literal|"&submit="
 argument_list|)
 expr_stmt|;
 comment|// Download the URL to set preferences:
-name|URL
-name|url_setprefs
-init|=
+operator|new
+name|URLDownload
+argument_list|(
 operator|new
 name|URL
 argument_list|(
@@ -906,18 +904,9 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
-decl_stmt|;
-name|ud
-operator|=
-operator|new
-name|URLDownload
-argument_list|(
-name|url_setprefs
 argument_list|)
-expr_stmt|;
-name|ud
 operator|.
-name|download
+name|downloadToString
 argument_list|()
 expr_stmt|;
 block|}
@@ -934,9 +923,9 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      *      * @param query      *            The search term to query Google Scholar for.      * @return a list of IDs      * @throws java.io.IOException      */
+comment|/**      * @param query The search term to query Google Scholar for.      * @return a list of IDs      * @throws java.io.IOException      */
 DECL|method|getCitations (String query)
-specifier|protected
+specifier|private
 name|Map
 argument_list|<
 name|String
@@ -975,10 +964,14 @@ try|try
 block|{
 name|urlQuery
 operator|=
+name|GoogleScholarFetcher
+operator|.
 name|SEARCH_URL
 operator|.
 name|replace
 argument_list|(
+name|GoogleScholarFetcher
+operator|.
 name|QUERY_MARKER
 argument_list|,
 name|URLEncoder
@@ -998,8 +991,6 @@ literal|1
 decl_stmt|;
 name|String
 name|nextPage
-init|=
-literal|null
 decl_stmt|;
 while|while
 condition|(
@@ -1036,7 +1027,9 @@ if|if
 condition|(
 name|stopFetching
 condition|)
+block|{
 break|break;
+block|}
 block|}
 return|return
 name|res
@@ -1058,7 +1051,7 @@ throw|;
 block|}
 block|}
 DECL|method|getCitationsFromUrl (String urlQuery, Map<String, JLabel> ids)
-specifier|protected
+specifier|private
 name|String
 name|getCitationsFromUrl
 parameter_list|(
@@ -1085,32 +1078,24 @@ argument_list|(
 name|urlQuery
 argument_list|)
 decl_stmt|;
-name|URLDownload
-name|ud
+name|String
+name|cont
 init|=
 operator|new
 name|URLDownload
 argument_list|(
 name|url
 argument_list|)
-decl_stmt|;
-name|ud
 operator|.
-name|download
-argument_list|()
-expr_stmt|;
-name|String
-name|cont
-init|=
-name|ud
-operator|.
-name|getStringContent
+name|downloadToString
 argument_list|()
 decl_stmt|;
 comment|//save("query.html", cont);
 name|Matcher
 name|m
 init|=
+name|GoogleScholarFetcher
+operator|.
 name|BIBTEX_LINK_PATTERN
 operator|.
 name|matcher
@@ -1150,8 +1135,6 @@ argument_list|)
 decl_stmt|;
 name|String
 name|pText
-init|=
-literal|null
 decl_stmt|;
 comment|//System.out.println("regionStart: "+m.start());
 name|String
@@ -1172,6 +1155,8 @@ decl_stmt|;
 name|Matcher
 name|titleS
 init|=
+name|GoogleScholarFetcher
+operator|.
 name|TITLE_START_PATTERN
 operator|.
 name|matcher
@@ -1182,6 +1167,8 @@ decl_stmt|;
 name|Matcher
 name|titleE
 init|=
+name|GoogleScholarFetcher
+operator|.
 name|TITLE_END_PATTERN
 operator|.
 name|matcher
@@ -1246,16 +1233,20 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|pText
 operator|=
 name|part
 expr_stmt|;
 block|}
+block|}
 else|else
+block|{
 name|pText
 operator|=
 name|link
 expr_stmt|;
+block|}
 name|pText
 operator|=
 name|pText
@@ -1294,6 +1285,8 @@ comment|// That will be set as "url" for the entry if downloaded:
 name|Matcher
 name|linkMatcher
 init|=
+name|GoogleScholarFetcher
+operator|.
 name|LINK_PATTERN
 operator|.
 name|matcher
@@ -1308,6 +1301,7 @@ operator|.
 name|find
 argument_list|()
 condition|)
+block|{
 name|entryLinks
 operator|.
 name|put
@@ -1322,6 +1316,7 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|lastRegionStart
 operator|=
 name|m
@@ -1336,7 +1331,7 @@ literal|null
 return|;
 block|}
 DECL|method|downloadEntry (String link)
-specifier|protected
+specifier|private
 name|BibtexEntry
 name|downloadEntry
 parameter_list|(
@@ -1354,31 +1349,23 @@ init|=
 operator|new
 name|URL
 argument_list|(
+name|GoogleScholarFetcher
+operator|.
 name|URL_START
 operator|+
 name|link
 argument_list|)
 decl_stmt|;
-name|URLDownload
-name|ud
+name|String
+name|s
 init|=
 operator|new
 name|URLDownload
 argument_list|(
 name|url
 argument_list|)
-decl_stmt|;
-name|ud
 operator|.
-name|download
-argument_list|()
-expr_stmt|;
-name|String
-name|s
-init|=
-name|ud
-operator|.
-name|getStringContent
+name|downloadToString
 argument_list|()
 decl_stmt|;
 name|BibtexParser
@@ -1455,10 +1442,16 @@ operator|.
 name|next
 argument_list|()
 decl_stmt|;
+name|boolean
+name|clearKeys
+init|=
+literal|true
+decl_stmt|;
 if|if
 condition|(
 name|clearKeys
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -1470,6 +1463,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 comment|// If the entry's url field is not set, and we have stored an url for this
 comment|// entry, set it:
 if|if
@@ -1500,6 +1494,7 @@ name|storedUrl
 operator|!=
 literal|null
 condition|)
+block|{
 name|entry
 operator|.
 name|setField
@@ -1509,6 +1504,7 @@ argument_list|,
 name|storedUrl
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Clean up some remaining HTML code from Elsevier(?) papers
 comment|// Search for: Poincare algebra
@@ -1658,7 +1654,9 @@ return|;
 block|}
 block|}
 DECL|field|inputPattern
+specifier|private
 specifier|static
+specifier|final
 name|Pattern
 name|inputPattern
 init|=
@@ -1670,7 +1668,7 @@ literal|"<input type=([^ ]+) name=([^ ]+) value=([^> ]+)"
 argument_list|)
 decl_stmt|;
 DECL|method|getFormElements (String page)
-specifier|public
+specifier|private
 specifier|static
 name|HashMap
 argument_list|<
@@ -1687,6 +1685,8 @@ block|{
 name|Matcher
 name|m
 init|=
+name|GoogleScholarFetcher
+operator|.
 name|inputPattern
 operator|.
 name|matcher
@@ -1767,6 +1767,7 @@ operator|==
 literal|'"'
 operator|)
 condition|)
+block|{
 name|name
 operator|=
 name|name
@@ -1783,6 +1784,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|value
 init|=
@@ -1831,6 +1833,7 @@ operator|==
 literal|'"'
 operator|)
 condition|)
+block|{
 name|value
 operator|=
 name|value
@@ -1847,6 +1850,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 name|items
 operator|.
 name|put

@@ -195,6 +195,8 @@ literal|".xml"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|performExport (final BibtexDatabase database, final MetaData metaData, final String file, final String encoding, Set<String> keySet)
 specifier|public
 name|void

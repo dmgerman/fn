@@ -246,6 +246,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|groupingField
 specifier|private
+specifier|final
 name|JTextField
 name|groupingField
 init|=
@@ -257,6 +258,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|keywordSeparator
 specifier|private
+specifier|final
 name|JTextField
 name|keywordSeparator
 init|=
@@ -294,6 +296,8 @@ operator|new
 name|FocusListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|focusGained
@@ -308,6 +312,8 @@ name|selectAll
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|focusLost
@@ -659,6 +665,8 @@ name|CENTER
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -762,6 +770,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -868,6 +878,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|readyToClose ()
 specifier|public
 name|boolean
@@ -878,6 +890,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTabName ()
 specifier|public
 name|String

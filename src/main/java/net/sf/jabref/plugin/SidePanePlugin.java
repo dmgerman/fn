@@ -73,7 +73,6 @@ interface|interface
 name|SidePanePlugin
 block|{
 DECL|method|init (JabRefFrame frame, SidePaneManager manager)
-specifier|public
 name|void
 name|init
 parameter_list|(
@@ -85,19 +84,16 @@ name|manager
 parameter_list|)
 function_decl|;
 DECL|method|getSidePaneComponent ()
-specifier|public
 name|SidePaneComponent
 name|getSidePaneComponent
 parameter_list|()
 function_decl|;
 DECL|method|getMenuItem ()
-specifier|public
 name|JMenuItem
 name|getMenuItem
 parameter_list|()
 function_decl|;
 DECL|method|getShortcutKey ()
-specifier|public
 name|String
 name|getShortcutKey
 parameter_list|()

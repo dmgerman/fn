@@ -74,11 +74,15 @@ extends|extends
 name|SearchRuleSet
 block|{
 DECL|field|and
-DECL|field|invert
 specifier|private
+specifier|final
 name|boolean
 name|and
-decl_stmt|,
+decl_stmt|;
+DECL|field|invert
+specifier|private
+specifier|final
+name|boolean
 name|invert
 decl_stmt|;
 DECL|method|AndOrSearchRuleSet (boolean and, boolean invert)
@@ -105,6 +109,8 @@ operator|=
 name|invert
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|applyRule (Map<String, String> searchString, BibtexEntry bibtexEntry)
 specifier|public
 name|int
@@ -163,6 +169,7 @@ if|if
 condition|(
 name|and
 condition|)
+block|{
 name|res
 operator|=
 operator|(
@@ -174,7 +181,9 @@ name|size
 argument_list|()
 operator|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|res
 operator|=
 operator|(
@@ -183,10 +192,12 @@ operator|>
 literal|0
 operator|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|invert
 condition|)
+block|{
 return|return
 operator|(
 name|res
@@ -196,6 +207,7 @@ else|:
 literal|1
 operator|)
 return|;
+block|}
 return|return
 operator|(
 name|res

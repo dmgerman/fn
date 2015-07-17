@@ -51,7 +51,9 @@ class|class
 name|NameListNormalizer
 block|{
 DECL|field|lastFF
+specifier|private
 specifier|static
+specifier|final
 name|Pattern
 name|lastFF
 init|=
@@ -63,7 +65,9 @@ literal|"(\\p{javaUpperCase}[\\p{javaLowerCase}]+) (\\p{javaUpperCase}+)"
 argument_list|)
 decl_stmt|;
 DECL|field|lastFdotF
+specifier|private
 specifier|static
+specifier|final
 name|Pattern
 name|lastFdotF
 init|=
@@ -75,7 +79,9 @@ literal|"(\\p{javaUpperCase}[\\p{javaLowerCase}]+) ([\\. \\p{javaUpperCase}]+)"
 argument_list|)
 decl_stmt|;
 DECL|field|FFlast
+specifier|private
 specifier|static
+specifier|final
 name|Pattern
 name|FFlast
 init|=
@@ -87,7 +93,9 @@ literal|"(\\p{javaUpperCase}+) (\\p{javaUpperCase}[\\p{javaLowerCase}]+)"
 argument_list|)
 decl_stmt|;
 DECL|field|FdotFlast
+specifier|private
 specifier|static
+specifier|final
 name|Pattern
 name|FdotFlast
 init|=
@@ -98,10 +106,12 @@ argument_list|(
 literal|"([\\. \\p{javaUpperCase}]+) (\\p{javaUpperCase}[\\p{javaLowerCase}]+)"
 argument_list|)
 decl_stmt|;
-DECL|field|singleName
+DECL|field|SINGLE_NAME
+specifier|private
 specifier|static
+specifier|final
 name|Pattern
-name|singleName
+name|SINGLE_NAME
 init|=
 name|Pattern
 operator|.
@@ -110,7 +120,6 @@ argument_list|(
 literal|"(\\p{javaUpperCase}[\\p{javaLowerCase}]*)"
 argument_list|)
 decl_stmt|;
-comment|/*public static void main(String[] args) {         normalizeAuthorList("Staci D. Bilbo and Smith SH and Jaclyn M Schwarz");         //System.out.println(normalizeAuthorList("Ãlver MA"));         //System.out.println(normalizeAuthorList("Ãlver MA, GG Ãie, Ãie GG, Alfredsen JÃÃ, Jo Alfredsen, Olsen Y.Y. and Olsen Y. Y."));         //System.out.println(normalizeAuthorList("Ãlver MA, GG Ãie, Ãie GG, Alfredsen JÃÃ, Jo Alfredsen, Olsen Y.Y., Olsen Y. Y."));         //System.out.println(normalizeAuthorList("Alver, Morten and Alver, Morten O and Alfredsen, JA and Olsen, Y.Y."));         //System.out.println(normalizeAuthorList("Alver, MA; Alfredsen, JA; Olsen Y.Y."));     }*/
 DECL|method|normalizeAuthorList (String in)
 specifier|public
 specifier|static
@@ -125,17 +134,6 @@ name|boolean
 name|andSep
 init|=
 literal|false
-decl_stmt|,
-name|semicolonSep
-init|=
-literal|false
-decl_stmt|,
-name|commaSep
-init|=
-literal|false
-decl_stmt|;
-name|String
-name|author
 decl_stmt|;
 name|String
 index|[]
@@ -159,10 +157,12 @@ name|length
 operator|>
 literal|1
 condition|)
+block|{
 name|andSep
 operator|=
 literal|true
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|/*             If there are no "and" separators in the original string, we assume it either means that             the author list is comma or semicolon separated or that it contains only a single name.             If there is a semicolon, we go by that. If not, we assume commas, and count the parts             separated by commas to determine which it is.             */
@@ -186,10 +186,6 @@ operator|>
 literal|1
 condition|)
 block|{
-name|semicolonSep
-operator|=
-literal|true
-expr_stmt|;
 name|authors
 operator|=
 name|a2
@@ -216,10 +212,6 @@ literal|3
 condition|)
 block|{
 comment|// Probably more than a single author, so we split by commas.
-name|commaSep
-operator|=
-literal|true
-expr_stmt|;
 name|authors
 operator|=
 name|a2
@@ -252,10 +244,12 @@ argument_list|()
 operator|>
 literal|3
 condition|)
+block|{
 name|authors
 operator|=
 name|a2
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -541,6 +535,8 @@ block|{
 name|String
 name|norm
 init|=
+name|NameListNormalizer
+operator|.
 name|normalizeName
 argument_list|(
 name|authors
@@ -560,12 +556,15 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|authors
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -573,6 +572,7 @@ argument_list|(
 literal|" and "
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb
@@ -582,7 +582,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|normalizeName (String name)
-specifier|public
+specifier|private
 specifier|static
 name|String
 name|normalizeName
@@ -594,6 +594,8 @@ block|{
 name|Matcher
 name|m
 init|=
+name|NameListNormalizer
+operator|.
 name|lastFF
 operator|.
 name|matcher
@@ -681,13 +683,16 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|initials
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -695,6 +700,7 @@ argument_list|(
 literal|' '
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb
@@ -705,6 +711,8 @@ return|;
 block|}
 name|m
 operator|=
+name|NameListNormalizer
+operator|.
 name|lastFdotF
 operator|.
 name|matcher
@@ -799,13 +807,16 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|initials
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -813,6 +824,7 @@ argument_list|(
 literal|' '
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb
@@ -823,6 +835,8 @@ return|;
 block|}
 name|m
 operator|=
+name|NameListNormalizer
+operator|.
 name|FFlast
 operator|.
 name|matcher
@@ -910,13 +924,16 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|initials
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -924,6 +941,7 @@ argument_list|(
 literal|' '
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb
@@ -934,6 +952,8 @@ return|;
 block|}
 name|m
 operator|=
+name|NameListNormalizer
+operator|.
 name|FdotFlast
 operator|.
 name|matcher
@@ -1028,13 +1048,16 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|initials
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1042,6 +1065,7 @@ argument_list|(
 literal|' '
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb
@@ -1078,13 +1102,16 @@ if|if
 condition|(
 name|index
 operator|==
+operator|(
 name|name
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|name
 operator|=
 name|name
@@ -1101,6 +1128,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 name|StringBuilder
 name|sb
 init|=
@@ -1190,6 +1218,7 @@ argument_list|()
 operator|==
 literal|1
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1202,10 +1231,12 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -1216,23 +1247,28 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|fParts
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else
@@ -1241,7 +1277,9 @@ comment|// Only a single part. Check if it looks like a name or initials:
 name|Matcher
 name|m2
 init|=
-name|singleName
+name|NameListNormalizer
+operator|.
+name|SINGLE_NAME
 operator|.
 name|matcher
 argument_list|(
@@ -1258,6 +1296,7 @@ operator|.
 name|matches
 argument_list|()
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1268,6 +1307,7 @@ literal|0
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|// It looks like initials.
@@ -1327,13 +1367,16 @@ if|if
 condition|(
 name|i
 operator|<
+operator|(
 name|initials
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1341,6 +1384,7 @@ argument_list|(
 literal|' '
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -1380,7 +1424,9 @@ control|)
 block|{
 name|m
 operator|=
-name|singleName
+name|NameListNormalizer
+operator|.
+name|SINGLE_NAME
 operator|.
 name|matcher
 argument_list|(
@@ -1439,7 +1485,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|","
+literal|','
 argument_list|)
 expr_stmt|;
 for|for
@@ -1451,11 +1497,13 @@ literal|0
 init|;
 name|i
 operator|<
+operator|(
 name|parts
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 condition|;
 name|i
 operator|++
@@ -1465,7 +1513,7 @@ name|sb
 operator|.
 name|append
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 operator|.
 name|append
@@ -1488,13 +1536,15 @@ argument_list|()
 operator|==
 literal|1
 condition|)
+block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 return|return

@@ -231,24 +231,25 @@ implements|implements
 name|ActionListener
 block|{
 DECL|field|frame
+specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|openInNew
+specifier|private
+specifier|final
 name|boolean
 name|openInNew
 decl_stmt|;
-DECL|field|worker
-name|MyWorker
-name|worker
-init|=
-literal|null
-decl_stmt|;
 DECL|field|importer
+specifier|private
+specifier|final
 name|ImportFormat
 name|importer
 decl_stmt|;
 DECL|field|importError
+specifier|private
 name|IOException
 name|importError
 init|=
@@ -332,6 +333,8 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -341,12 +344,13 @@ name|ActionEvent
 name|e
 parameter_list|)
 block|{
+name|MyWorker
 name|worker
-operator|=
+init|=
 operator|new
 name|MyWorker
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|worker
 operator|.
 name|init
@@ -443,6 +447,8 @@ name|fileOk
 init|=
 literal|false
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|init ()
 specifier|public
 name|void
@@ -544,6 +550,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -555,7 +563,9 @@ condition|(
 operator|!
 name|fileOk
 condition|)
+block|{
 return|return;
+block|}
 comment|// We import all files and collect their results:
 name|List
 argument_list|<
@@ -750,11 +760,11 @@ operator|.
 name|warnings
 argument_list|()
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|wrn
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 for|for
@@ -773,6 +783,7 @@ condition|;
 name|j
 operator|++
 control|)
+block|{
 name|wrn
 operator|.
 name|append
@@ -800,6 +811,7 @@ argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|wrn
@@ -809,6 +821,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|wrn
 operator|.
 name|deleteCharAt
@@ -821,6 +834,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -849,6 +863,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void
@@ -860,7 +876,9 @@ condition|(
 operator|!
 name|fileOk
 condition|)
+block|{
 return|return;
+block|}
 comment|// TODO: undo is not handled properly here, except for the entries
 comment|// added by
 comment|//  the import inspection dialog.
@@ -1042,6 +1060,7 @@ argument_list|(
 literal|"unmarkAllEntriesBeforeImporting"
 argument_list|)
 condition|)
+block|{
 for|for
 control|(
 name|BibtexEntry
@@ -1053,7 +1072,7 @@ name|getEntries
 argument_list|()
 control|)
 block|{
-name|Util
+name|EntryMarker
 operator|.
 name|unmarkEntry
 argument_list|(
@@ -1066,6 +1085,7 @@ argument_list|,
 name|ce
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 for|for
 control|(
@@ -1131,10 +1151,12 @@ name|DuplicateResolverDialog
 operator|.
 name|DO_NOT_IMPORT
 condition|)
+block|{
 name|keepEntry
 operator|=
 literal|false
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|answer
@@ -1332,6 +1354,7 @@ name|importer
 operator|==
 literal|null
 condition|)
+block|{
 name|frame
 operator|.
 name|output
@@ -1344,6 +1367,7 @@ literal|"Could not find a suitable import format."
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|// Import in a specific format was specified. Check if we have stored error information:
@@ -1418,7 +1442,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|mergeImportResults (List<ImportFormatReader.UnknownFormatImport> imports)
-specifier|public
+specifier|private
 name|ParserResult
 name|mergeImportResults
 parameter_list|(
@@ -1464,7 +1488,9 @@ name|importResult
 operator|==
 literal|null
 condition|)
+block|{
 continue|continue;
+block|}
 if|if
 condition|(
 name|ImportFormatReader
@@ -1693,9 +1719,11 @@ condition|(
 operator|!
 name|anythingUseful
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 if|if
 condition|(
 operator|(
@@ -1720,9 +1748,7 @@ return|;
 block|}
 else|else
 block|{
-name|ParserResult
-name|pr
-init|=
+return|return
 operator|new
 name|ParserResult
 argument_list|(
@@ -1741,9 +1767,6 @@ name|BibtexEntryType
 argument_list|>
 argument_list|()
 argument_list|)
-decl_stmt|;
-return|return
-name|pr
 return|;
 block|}
 block|}

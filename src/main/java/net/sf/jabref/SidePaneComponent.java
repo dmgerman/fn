@@ -133,6 +133,7 @@ name|SimpleInternalFrame
 block|{
 DECL|field|close
 specifier|protected
+specifier|final
 name|JButton
 name|close
 init|=
@@ -147,47 +148,16 @@ literal|"close"
 argument_list|)
 argument_list|)
 decl_stmt|;
-DECL|field|up
-specifier|protected
-name|JButton
-name|up
-init|=
-operator|new
-name|JButton
-argument_list|(
-name|GUIGlobals
-operator|.
-name|getImage
-argument_list|(
-literal|"up"
-argument_list|)
-argument_list|)
-decl_stmt|;
-DECL|field|down
-specifier|protected
-name|JButton
-name|down
-init|=
-operator|new
-name|JButton
-argument_list|(
-name|GUIGlobals
-operator|.
-name|getImage
-argument_list|(
-literal|"down"
-argument_list|)
-argument_list|)
-decl_stmt|;
 DECL|field|visible
-specifier|protected
+specifier|private
 name|boolean
 name|visible
 init|=
 literal|false
 decl_stmt|;
 DECL|field|manager
-specifier|protected
+specifier|private
+specifier|final
 name|SidePaneManager
 name|manager
 decl_stmt|;
@@ -266,6 +236,20 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+name|JButton
+name|up
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|GUIGlobals
+operator|.
+name|getImage
+argument_list|(
+literal|"up"
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|up
 operator|.
 name|setMargin
@@ -283,6 +267,20 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|JButton
+name|down
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|GUIGlobals
+operator|.
+name|getImage
+argument_list|(
+literal|"down"
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|down
 operator|.
 name|setMargin
@@ -389,7 +387,6 @@ comment|// (GUIGlobals.SPLIT_PANE_DIVIDER_LOCATION, 200));
 comment|// Util.pr(""+GUIGlobals.SPLIT_PANE_DIVIDER_LOCATION);
 block|}
 DECL|method|hideAway ()
-specifier|public
 name|void
 name|hideAway
 parameter_list|()
@@ -403,7 +400,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|moveUp ()
-specifier|public
+specifier|private
 name|void
 name|moveUp
 parameter_list|()
@@ -417,7 +414,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|moveDown ()
-specifier|public
+specifier|private
 name|void
 name|moveDown
 parameter_list|()
@@ -430,7 +427,7 @@ name|this
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** 	 * Used by SidePaneManager only, to keep track of visibility. 	 *  	 */
+comment|/**      * Used by SidePaneManager only, to keep track of visibility.      *       */
 DECL|method|setVisibility (boolean vis)
 name|void
 name|setVisibility
@@ -444,7 +441,7 @@ operator|=
 name|vis
 expr_stmt|;
 block|}
-comment|/** 	 * Used by SidePaneManager only, to keep track of visibility. 	 *  	 */
+comment|/**      * Used by SidePaneManager only, to keep track of visibility.      *       */
 DECL|method|hasVisibility ()
 name|boolean
 name|hasVisibility
@@ -480,20 +477,22 @@ return|return
 name|panel
 return|;
 block|}
-comment|/** 	 * Override this method if the component needs to make any changes before it 	 * can close. 	 */
+comment|/**      * Override this method if the component needs to make any changes before it      * can close.      */
 DECL|method|componentClosing ()
 specifier|public
 name|void
 name|componentClosing
 parameter_list|()
-block|{  	}
-comment|/** 	 * Override this method if the component needs to do any actions when 	 * opening. 	 */
+block|{      }
+comment|/**      * Override this method if the component needs to do any actions when      * opening.      */
 DECL|method|componentOpening ()
 specifier|public
 name|void
 name|componentOpening
 parameter_list|()
-block|{  	}
+block|{      }
+annotation|@
+name|Override
 DECL|method|getMinimumSize ()
 specifier|public
 name|Dimension
@@ -506,11 +505,14 @@ argument_list|()
 return|;
 block|}
 DECL|class|CloseButtonListener
+specifier|private
 class|class
 name|CloseButtonListener
 implements|implements
 name|ActionListener
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -526,11 +528,14 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|UpButtonListener
+specifier|private
 class|class
 name|UpButtonListener
 implements|implements
 name|ActionListener
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -546,11 +551,14 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|DownButtonListener
+specifier|private
 class|class
 name|DownButtonListener
 implements|implements
 name|ActionListener
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

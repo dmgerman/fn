@@ -154,9 +154,12 @@ name|s
 operator|.
 name|startsWith
 argument_list|(
+name|AllEntriesGroup
+operator|.
 name|ID
 argument_list|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|Exception
@@ -170,6 +173,7 @@ operator|+
 literal|"Please report this on www.sf.net/projects/jabref"
 argument_list|)
 throw|;
+block|}
 switch|switch
 condition|(
 name|version
@@ -204,6 +208,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getSearchRule ()
 specifier|public
 name|SearchRule
@@ -214,6 +220,8 @@ return|return
 name|this
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|supportsAdd ()
 specifier|public
 name|boolean
@@ -224,6 +232,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|supportsRemove ()
 specifier|public
 name|boolean
@@ -234,6 +244,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|add (BibtexEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
@@ -249,6 +261,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|remove (BibtexEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
@@ -264,6 +278,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|contains (Map<String, String> searchOptions, BibtexEntry entry)
 specifier|public
 name|boolean
@@ -286,6 +302,8 @@ literal|true
 return|;
 comment|// contains everything
 block|}
+annotation|@
+name|Override
 DECL|method|deepCopy ()
 specifier|public
 name|AbstractGroup
@@ -298,6 +316,8 @@ name|AllEntriesGroup
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|validateSearchStrings (Map<String, String> searchStrings)
 specifier|public
 name|boolean
@@ -316,6 +336,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|applyRule (Map<String, String> searchStrings, BibtexEntry bibtexEntry)
 specifier|public
 name|int
@@ -338,6 +360,8 @@ literal|1
 return|;
 comment|// contains everything
 block|}
+annotation|@
+name|Override
 DECL|method|equals (Object o)
 specifier|public
 name|boolean
@@ -353,6 +377,8 @@ operator|instanceof
 name|AllEntriesGroup
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String
@@ -360,9 +386,13 @@ name|toString
 parameter_list|()
 block|{
 return|return
+name|AllEntriesGroup
+operator|.
 name|ID
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|contains (BibtexEntry entry)
 specifier|public
 name|boolean
@@ -376,6 +406,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isDynamic ()
 specifier|public
 name|boolean
@@ -387,6 +419,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getDescription ()
 specifier|public
 name|String
@@ -398,6 +432,8 @@ literal|"This group contains all entries. It cannot be edited or removed."
 return|;
 comment|// JZTODO lyrics
 block|}
+annotation|@
+name|Override
 DECL|method|getShortDescription ()
 specifier|public
 name|String
@@ -413,6 +449,8 @@ literal|"<b>All Entries</b> (this group cannot be edited or removed)"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTypeId ()
 specifier|public
 name|String
@@ -420,6 +458,8 @@ name|getTypeId
 parameter_list|()
 block|{
 return|return
+name|AllEntriesGroup
+operator|.
 name|ID
 return|;
 block|}

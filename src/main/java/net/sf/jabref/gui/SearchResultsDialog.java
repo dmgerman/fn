@@ -122,97 +122,7 @@ name|javax
 operator|.
 name|swing
 operator|.
-name|AbstractAction
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|ActionMap
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|InputMap
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JComponent
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JDialog
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JLabel
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JPopupMenu
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JScrollPane
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|JTable
-import|;
-end_import
-
-begin_import
-import|import
-name|javax
-operator|.
-name|swing
-operator|.
-name|SwingUtilities
+name|*
 import|;
 end_import
 
@@ -225,6 +135,20 @@ operator|.
 name|table
 operator|.
 name|TableColumnModel
+import|;
+end_import
+
+begin_import
+import|import
+name|ca
+operator|.
+name|odell
+operator|.
+name|glazedlists
+operator|.
+name|gui
+operator|.
+name|AbstractTableComparatorChooser
 import|;
 end_import
 
@@ -400,6 +324,7 @@ name|SearchResultsDialog
 block|{
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -410,6 +335,7 @@ name|diag
 decl_stmt|;
 DECL|field|fields
 specifier|private
+specifier|final
 name|String
 index|[]
 name|fields
@@ -428,25 +354,32 @@ literal|"journal"
 block|}
 decl_stmt|;
 DECL|field|FILE_COL
-DECL|field|URL_COL
-specifier|protected
+specifier|private
 specifier|final
 name|int
 name|FILE_COL
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
+DECL|field|URL_COL
+specifier|private
+specifier|final
+name|int
 name|URL_COL
 init|=
 literal|1
-decl_stmt|,
+decl_stmt|;
 DECL|field|PAD
+specifier|private
+specifier|final
+name|int
 name|PAD
 init|=
 literal|2
 decl_stmt|;
 DECL|field|fileLabel
 specifier|private
+specifier|final
 name|JLabel
 name|fileLabel
 init|=
@@ -460,8 +393,11 @@ argument_list|(
 literal|"psSmall"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|urlLabel
+specifier|private
+specifier|final
+name|JLabel
 name|urlLabel
 init|=
 operator|new
@@ -476,7 +412,8 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|toRect
-specifier|protected
+specifier|private
+specifier|final
 name|Rectangle
 name|toRect
 init|=
@@ -502,6 +439,7 @@ name|model
 decl_stmt|;
 DECL|field|entries
 specifier|private
+specifier|final
 name|EventList
 argument_list|<
 name|BibtexEntry
@@ -525,6 +463,7 @@ name|sortedEntries
 decl_stmt|;
 DECL|field|entryHome
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|BibtexEntry
@@ -548,19 +487,21 @@ name|JTable
 name|entryTable
 decl_stmt|;
 DECL|field|contentPane
-specifier|protected
+specifier|private
+specifier|final
 name|UIFSplitPane
 name|contentPane
 init|=
 operator|new
 name|UIFSplitPane
 argument_list|(
-name|UIFSplitPane
+name|JSplitPane
 operator|.
 name|VERTICAL_SPLIT
 argument_list|)
 decl_stmt|;
 DECL|field|preview
+specifier|private
 name|PreviewPanel
 name|preview
 decl_stmt|;
@@ -748,7 +689,7 @@ name|entryTable
 argument_list|,
 name|sortedEntries
 argument_list|,
-name|TableComparatorChooser
+name|AbstractTableComparatorChooser
 operator|.
 name|MULTIPLE_COLUMN_KEYBOARD
 argument_list|)
@@ -833,6 +774,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -907,6 +850,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -917,15 +862,14 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|!
 name|selectionModel
 operator|.
 name|getSelected
 argument_list|()
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|BibtexEntry
@@ -991,7 +935,7 @@ argument_list|(
 literal|"Copied"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 operator|(
 name|bes
@@ -1022,7 +966,7 @@ argument_list|(
 literal|"entry"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 operator|)
 argument_list|)
 expr_stmt|;
@@ -1039,6 +983,8 @@ operator|new
 name|WindowAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|windowOpened
@@ -1055,6 +1001,8 @@ literal|0.5f
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|windowClosing
@@ -1182,6 +1130,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|entryTable
 operator|.
 name|setRowSelectionInterval
@@ -1191,6 +1140,7 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 name|contentPane
@@ -1228,7 +1178,7 @@ argument_list|(
 literal|"unchecked"
 argument_list|)
 DECL|method|setupComparatorChooser (TableComparatorChooser<BibtexEntry> comparatorChooser)
-specifier|protected
+specifier|private
 name|void
 name|setupComparatorChooser
 parameter_list|(
@@ -1312,6 +1262,7 @@ name|i
 operator|==
 name|FILE_COL
 condition|)
+block|{
 name|comparators
 operator|.
 name|add
@@ -1330,6 +1281,7 @@ block|}
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1337,6 +1289,7 @@ name|i
 operator|==
 name|URL_COL
 condition|)
+block|{
 name|comparators
 operator|.
 name|add
@@ -1354,6 +1307,7 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 comment|// Remaining columns:
 for|for
 control|(
@@ -1364,11 +1318,13 @@ name|PAD
 init|;
 name|i
 operator|<
+operator|(
 name|PAD
 operator|+
 name|fields
 operator|.
 name|length
+operator|)
 condition|;
 name|i
 operator|++
@@ -1441,7 +1397,7 @@ expr_stmt|;
 block|}
 comment|/**      * Set column widths according to which field is shown, and lock icon columns      * to a suitable width.      */
 DECL|method|setWidths ()
-specifier|protected
+specifier|private
 name|void
 name|setWidths
 parameter_list|()
@@ -1709,6 +1665,8 @@ name|TableClickListener
 extends|extends
 name|MouseAdapter
 block|{
+annotation|@
+name|Override
 DECL|method|mouseReleased (MouseEvent e)
 specifier|public
 name|void
@@ -1733,6 +1691,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|mousePressed (MouseEvent e)
 specifier|public
 name|void
@@ -1823,6 +1783,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|mouseClicked (MouseEvent e)
 specifier|public
 name|void
@@ -1954,7 +1916,9 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 return|return;
+block|}
 name|FileListEntry
 name|fl
 init|=
@@ -2022,6 +1986,7 @@ name|link
 operator|!=
 literal|null
 condition|)
+block|{
 name|Util
 operator|.
 name|openExternalViewer
@@ -2039,6 +2004,7 @@ argument_list|,
 literal|"url"
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -2207,12 +2173,11 @@ operator|.
 name|trim
 argument_list|()
 operator|.
-name|length
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 operator|)
 condition|)
+block|{
 name|description
 operator|=
 name|flEntry
@@ -2220,6 +2185,7 @@ operator|.
 name|getLink
 argument_list|()
 expr_stmt|;
+block|}
 name|menu
 operator|.
 name|add
@@ -2272,6 +2238,7 @@ name|count
 operator|>
 literal|0
 condition|)
+block|{
 name|menu
 operator|.
 name|show
@@ -2291,8 +2258,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 comment|/**      * The listener for the Glazed list monitoring the current selection.      * When selection changes, we need to update the preview panel.      */
 DECL|class|EntrySelectionListener
+specifier|private
 class|class
 name|EntrySelectionListener
 implements|implements
@@ -2301,6 +2270,8 @@ argument_list|<
 name|BibtexEntry
 argument_list|>
 block|{
+annotation|@
+name|Override
 DECL|method|listChanged (ListEvent<BibtexEntry> listEvent)
 specifier|public
 name|void
@@ -2384,6 +2355,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -2405,7 +2378,7 @@ block|}
 block|}
 comment|/**      * TableFormat for the table shown in the dialog. Handles the display of entry      * fields and icons for linked files and urls.      */
 DECL|class|EntryTableFormat
-specifier|public
+specifier|private
 class|class
 name|EntryTableFormat
 implements|implements
@@ -2414,6 +2387,8 @@ argument_list|<
 name|BibtexEntry
 argument_list|>
 block|{
+annotation|@
+name|Override
 DECL|method|getColumnCount ()
 specifier|public
 name|int
@@ -2428,6 +2403,8 @@ operator|.
 name|length
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnName (int column)
 specifier|public
 name|String
@@ -2443,8 +2420,9 @@ name|column
 operator|>=
 name|PAD
 condition|)
+block|{
 return|return
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
@@ -2456,11 +2434,16 @@ name|PAD
 index|]
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|""
 return|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|getColumnValue (BibtexEntry entry, int column)
 specifier|public
 name|Object
@@ -2545,6 +2528,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|fileLabel
 operator|.
 name|setIcon
@@ -2563,14 +2547,17 @@ name|getIcon
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|fileLabel
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 case|case
 name|URL_COL
 case|:
@@ -2605,9 +2592,11 @@ name|urlLabel
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 default|default:
 return|return
 literal|null
@@ -2654,6 +2643,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|frame
 operator|.
@@ -2673,6 +2663,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
+block|}
 return|return
 name|entry
 operator|.
@@ -2683,6 +2674,8 @@ argument_list|)
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnClass (int i)
 specifier|public
 name|Class
@@ -2701,18 +2694,24 @@ name|i
 operator|<
 name|PAD
 condition|)
+block|{
 return|return
 name|JLabel
 operator|.
 name|class
 return|;
+block|}
 else|else
+block|{
 return|return
 name|String
 operator|.
 name|class
 return|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|getColumnComparator (int i)
 specifier|public
 name|Comparator

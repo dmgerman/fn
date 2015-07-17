@@ -187,58 +187,86 @@ implements|implements
 name|PrefsTab
 block|{
 DECL|field|_prefs
+specifier|private
+specifier|final
 name|JabRefPreferences
 name|_prefs
 decl_stmt|;
 DECL|field|_frame
+specifier|private
+specifier|final
 name|JabRefFrame
 name|_frame
 decl_stmt|;
 DECL|field|pdfDir
-DECL|field|regExpTextField
-DECL|field|fileDir
-DECL|field|psDir
-DECL|field|emailSubject
+specifier|private
+specifier|final
 name|JTextField
 name|pdfDir
-decl_stmt|,
+decl_stmt|;
+DECL|field|regExpTextField
+specifier|private
+specifier|final
+name|JTextField
 name|regExpTextField
-decl_stmt|,
+decl_stmt|;
+DECL|field|fileDir
+specifier|private
+specifier|final
+name|JTextField
 name|fileDir
-decl_stmt|,
+decl_stmt|;
+DECL|field|psDir
+specifier|private
+specifier|final
+name|JTextField
 name|psDir
-decl_stmt|,
+decl_stmt|;
+DECL|field|emailSubject
+specifier|private
+specifier|final
+name|JTextField
 name|emailSubject
 decl_stmt|;
 DECL|field|bibLocationAsFileDir
-DECL|field|bibLocAsPrimaryDir
-DECL|field|runAutoFileSearch
+specifier|private
+specifier|final
 name|JCheckBox
 name|bibLocationAsFileDir
-decl_stmt|,
+decl_stmt|;
+DECL|field|bibLocAsPrimaryDir
+specifier|private
+specifier|final
+name|JCheckBox
 name|bibLocAsPrimaryDir
-decl_stmt|,
+decl_stmt|;
+DECL|field|runAutoFileSearch
+specifier|private
+specifier|final
+name|JCheckBox
 name|runAutoFileSearch
-decl_stmt|,
+decl_stmt|;
 DECL|field|allowFileAutoOpenBrowse
-DECL|field|openFoldersOfAttachedFiles
+specifier|private
+specifier|final
+name|JCheckBox
 name|allowFileAutoOpenBrowse
-decl_stmt|,
+decl_stmt|;
+DECL|field|openFoldersOfAttachedFiles
+specifier|private
+specifier|final
+name|JCheckBox
 name|openFoldersOfAttachedFiles
 decl_stmt|;
-DECL|field|editFileTypes
-name|JButton
-name|editFileTypes
-decl_stmt|;
-DECL|field|regExpListener
-name|ItemListener
-name|regExpListener
-decl_stmt|;
 DECL|field|useRegExpComboBox
+specifier|private
+specifier|final
 name|JRadioButton
 name|useRegExpComboBox
 decl_stmt|;
 DECL|field|matchExactKeyOnly
+specifier|private
+specifier|final
 name|JRadioButton
 name|matchExactKeyOnly
 init|=
@@ -252,8 +280,11 @@ argument_list|(
 literal|"Autolink only files that match the BibTeX key"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|matchStartsWithKey
+specifier|private
+specifier|final
+name|JRadioButton
 name|matchStartsWithKey
 init|=
 operator|new
@@ -371,6 +402,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -393,8 +426,9 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|JButton
 name|editFileTypes
-operator|=
+init|=
 operator|new
 name|JButton
 argument_list|(
@@ -405,7 +439,7 @@ argument_list|(
 literal|"Manage external file types"
 argument_list|)
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|runAutoFileSearch
 operator|=
 operator|new
@@ -453,12 +487,15 @@ literal|"Use Regular Expression Search"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|ItemListener
 name|regExpListener
-operator|=
+init|=
 operator|new
 name|ItemListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|itemStateChanged
@@ -479,7 +516,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-expr_stmt|;
+decl_stmt|;
 name|useRegExpComboBox
 operator|.
 name|addItemListener
@@ -576,7 +613,7 @@ argument_list|(
 name|pan
 argument_list|)
 expr_stmt|;
-comment|/** 		 * Fix for [ 1749613 ] About translation 		 *  		 * https://sourceforge.net/tracker/index.php?func=detail&aid=1749613&group_id=92314&atid=600306 		 *  		 * Cannot really use %0 to refer to the file type, since this ruins translation. 		 */
+comment|/**          * Fix for [ 1749613 ] About translation          *           * https://sourceforge.net/tracker/index.php?func=detail&aid=1749613&group_id=92314&atid=600306          *           * Cannot really use %0 to refer to the file type, since this ruins translation.          */
 name|JLabel
 name|lab
 init|=
@@ -590,7 +627,7 @@ argument_list|(
 literal|"Main file directory"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|)
 decl_stmt|;
 name|builder
@@ -609,14 +646,13 @@ argument_list|)
 expr_stmt|;
 name|browse
 operator|=
-operator|new
 name|BrowseAction
+operator|.
+name|buildForDir
 argument_list|(
 name|_frame
 argument_list|,
 name|fileDir
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 name|builder
@@ -1017,7 +1053,7 @@ argument_list|(
 literal|"Main PDF directory"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|)
 expr_stmt|;
 name|builder
@@ -1036,14 +1072,13 @@ argument_list|)
 expr_stmt|;
 name|browse
 operator|=
-operator|new
 name|BrowseAction
+operator|.
+name|buildForDir
 argument_list|(
 name|_frame
 argument_list|,
 name|pdfDir
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 name|builder
@@ -1087,7 +1122,7 @@ argument_list|(
 literal|"Main PS directory"
 argument_list|)
 operator|+
-literal|":"
+literal|':'
 argument_list|)
 expr_stmt|;
 name|builder
@@ -1106,14 +1141,13 @@ argument_list|)
 expr_stmt|;
 name|browse
 operator|=
-operator|new
 name|BrowseAction
+operator|.
+name|buildForDir
 argument_list|(
 name|_frame
 argument_list|,
 name|psDir
-argument_list|,
-literal|true
 argument_list|)
 expr_stmt|;
 name|builder
@@ -1345,6 +1379,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1385,6 +1421,8 @@ comment|//b.append(pan);
 comment|//if (b.getColumn()>= 6)
 comment|//    b.nextLine();
 block|}
+annotation|@
+name|Override
 DECL|method|setValues ()
 specifier|public
 name|void
@@ -1542,6 +1580,7 @@ operator|.
 name|USE_REG_EXP_SEARCH_KEY
 argument_list|)
 condition|)
+block|{
 name|useRegExpComboBox
 operator|.
 name|setSelected
@@ -1549,6 +1588,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1561,6 +1601,7 @@ operator|.
 name|AUTOLINK_EXACT_KEY_ONLY
 argument_list|)
 condition|)
+block|{
 name|matchExactKeyOnly
 operator|.
 name|setSelected
@@ -1568,7 +1609,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|matchStartsWithKey
 operator|.
 name|setSelected
@@ -1577,6 +1620,9 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|storeSettings ()
 specifier|public
 name|void
@@ -1752,6 +1798,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|readyToClose ()
 specifier|public
 name|boolean
@@ -1762,6 +1810,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTabName ()
 specifier|public
 name|String

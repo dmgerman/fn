@@ -90,7 +90,6 @@ end_import
 
 begin_class
 DECL|class|Change
-specifier|public
 specifier|abstract
 class|class
 name|Change
@@ -102,13 +101,13 @@ name|String
 name|name
 decl_stmt|;
 DECL|field|accepted
+specifier|private
 name|boolean
 name|accepted
 init|=
 literal|true
 decl_stmt|;
 DECL|method|Change ()
-specifier|public
 name|Change
 parameter_list|()
 block|{
@@ -118,7 +117,6 @@ literal|""
 expr_stmt|;
 block|}
 DECL|method|Change (String name)
-specifier|public
 name|Change
 parameter_list|(
 name|String
@@ -138,7 +136,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|getName ()
-specifier|public
+specifier|private
 name|String
 name|getName
 parameter_list|()
@@ -147,6 +145,8 @@ return|return
 name|name
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String
@@ -182,7 +182,7 @@ operator|=
 name|a
 expr_stmt|;
 block|}
-comment|/**    * This method is used to disable the "accept" box if the parent has been set to "not accepted".    * Thus the user can disable e.g. an entry change without having to disable all field changes.    * @return boolean false if the parent overrides by not being accepted.    */
+comment|/**      * This method is used to disable the "accept" box if the parent has been set to "not accepted".      * Thus the user can disable e.g. an entry change without having to disable all field changes.      * @return boolean false if the parent overrides by not being accepted.      */
 DECL|method|isAcceptable ()
 specifier|public
 name|boolean
@@ -205,6 +205,7 @@ operator|instanceof
 name|Change
 operator|)
 condition|)
+block|{
 return|return
 operator|(
 operator|(
@@ -217,19 +218,22 @@ operator|.
 name|isAccepted
 argument_list|()
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|true
 return|;
 block|}
-comment|/**    * This method returns a JComponent detailing the nature of the change.    * @return JComponent    */
+block|}
+comment|/**      * This method returns a JComponent detailing the nature of the change.      * @return JComponent      */
 DECL|method|description ()
 specifier|abstract
 name|JComponent
 name|description
 parameter_list|()
 function_decl|;
-comment|/**   * Perform the change. This method is responsible for adding a proper undo edit to   * the NamedCompound, so the change can be undone.   * @param panel BasePanel The tab where the database lives.   * @param secondary BibtexDatabase The "tmp" database for which the change   *   should also be made.   * @param undoEdit NamedCompound The compound to hold the undo edits.   * @return true if all changes were made, false if not all were accepted.   */
+comment|/**      * Perform the change. This method is responsible for adding a proper undo edit to      * the NamedCompound, so the change can be undone.      * @param panel BasePanel The tab where the database lives.      * @param secondary BibtexDatabase The "tmp" database for which the change      *   should also be made.      * @param undoEdit NamedCompound The compound to hold the undo edits.      * @return true if all changes were made, false if not all were accepted.      */
 DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|abstract
 name|boolean

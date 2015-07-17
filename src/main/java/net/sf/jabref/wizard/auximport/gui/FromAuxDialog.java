@@ -416,6 +416,7 @@ name|JDialog
 block|{
 DECL|field|statusPanel
 specifier|private
+specifier|final
 name|JPanel
 name|statusPanel
 init|=
@@ -425,6 +426,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|buttons
 specifier|private
+specifier|final
 name|JPanel
 name|buttons
 init|=
@@ -434,6 +436,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|selectInDBButton
 specifier|private
+specifier|final
 name|JButton
 name|selectInDBButton
 init|=
@@ -443,6 +446,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|generateButton
 specifier|private
+specifier|final
 name|JButton
 name|generateButton
 init|=
@@ -452,6 +456,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|cancelButton
 specifier|private
+specifier|final
 name|JButton
 name|cancelButton
 init|=
@@ -461,6 +466,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|parseButton
 specifier|private
+specifier|final
 name|JButton
 name|parseButton
 init|=
@@ -470,6 +476,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|dbChooser
 specifier|private
+specifier|final
 name|JComboBox
 name|dbChooser
 init|=
@@ -495,6 +502,7 @@ decl_stmt|;
 comment|// all open databases from JabRefFrame
 DECL|field|parentTabbedPane
 specifier|private
+specifier|final
 name|JTabbedPane
 name|parentTabbedPane
 decl_stmt|;
@@ -507,6 +515,7 @@ literal|false
 decl_stmt|;
 DECL|field|auxParser
 specifier|private
+specifier|final
 name|AuxSubGenerator
 name|auxParser
 decl_stmt|;
@@ -1024,6 +1033,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1105,10 +1116,12 @@ operator|.
 name|basePanel
 argument_list|()
 condition|)
+block|{
 name|toSelect
 operator|=
 name|i
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -1116,6 +1129,7 @@ name|toSelect
 operator|>=
 literal|0
 condition|)
+block|{
 name|dbChooser
 operator|.
 name|setSelectedIndex
@@ -1123,6 +1137,7 @@ argument_list|(
 name|toSelect
 argument_list|)
 expr_stmt|;
+block|}
 name|auxFileField
 operator|=
 operator|new
@@ -1859,11 +1874,13 @@ name|AbstractAction
 block|{
 DECL|field|comp
 specifier|private
+specifier|final
 name|JTextField
 name|comp
 decl_stmt|;
 DECL|field|_frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|_frame
 decl_stmt|;
@@ -1897,6 +1914,8 @@ operator|=
 name|tc
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1983,6 +2002,8 @@ operator|.
 name|ActionListener
 block|{
 DECL|field|adaptee
+specifier|private
+specifier|final
 name|FromAuxDialog
 name|adaptee
 decl_stmt|;
@@ -2000,6 +2021,8 @@ operator|=
 name|adaptee
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2034,6 +2057,8 @@ operator|.
 name|ActionListener
 block|{
 DECL|field|adaptee
+specifier|private
+specifier|final
 name|FromAuxDialog
 name|adaptee
 decl_stmt|;
@@ -2051,6 +2076,8 @@ operator|=
 name|adaptee
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2085,6 +2112,8 @@ operator|.
 name|ActionListener
 block|{
 DECL|field|adaptee
+specifier|private
+specifier|final
 name|FromAuxDialog
 name|adaptee
 decl_stmt|;
@@ -2102,6 +2131,8 @@ operator|=
 name|adaptee
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

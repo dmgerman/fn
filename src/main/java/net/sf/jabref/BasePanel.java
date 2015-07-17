@@ -220,87 +220,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Collection
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Vector
+name|*
 import|;
 end_import
 
@@ -466,7 +386,7 @@ name|jabref
 operator|.
 name|autocompleter
 operator|.
-name|AbstractAutoCompleter
+name|AutoCompleter
 import|;
 end_import
 
@@ -494,7 +414,7 @@ name|jabref
 operator|.
 name|autocompleter
 operator|.
-name|NameFieldAutoCompleter
+name|ContentAutoCompleters
 import|;
 end_import
 
@@ -1363,6 +1283,7 @@ block|{
 DECL|field|logger
 specifier|private
 specifier|static
+specifier|final
 name|Logger
 name|logger
 init|=
@@ -1379,9 +1300,6 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|SHOWING_NOTHING
-DECL|field|SHOWING_PREVIEW
-DECL|field|SHOWING_EDITOR
-DECL|field|WILL_SHOW_EDITOR
 specifier|public
 specifier|final
 specifier|static
@@ -1389,15 +1307,30 @@ name|int
 name|SHOWING_NOTHING
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
+DECL|field|SHOWING_PREVIEW
+specifier|private
+specifier|final
+specifier|static
+name|int
 name|SHOWING_PREVIEW
 init|=
 literal|1
-decl_stmt|,
+decl_stmt|;
+DECL|field|SHOWING_EDITOR
+specifier|public
+specifier|final
+specifier|static
+name|int
 name|SHOWING_EDITOR
 init|=
 literal|2
-decl_stmt|,
+decl_stmt|;
+DECL|field|WILL_SHOW_EDITOR
+specifier|public
+specifier|final
+specifier|static
+name|int
 name|WILL_SHOW_EDITOR
 init|=
 literal|3
@@ -1458,6 +1391,7 @@ name|UIFSplitPane
 argument_list|()
 decl_stmt|;
 DECL|field|splitPane
+specifier|private
 name|JSplitPane
 name|splitPane
 decl_stmt|;
@@ -1466,18 +1400,22 @@ name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|fileMonitorHandle
+specifier|private
 name|String
 name|fileMonitorHandle
 init|=
 literal|null
 decl_stmt|;
 DECL|field|saving
-DECL|field|updatedExternally
+specifier|private
 name|boolean
 name|saving
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
+DECL|field|updatedExternally
+specifier|private
+name|boolean
 name|updatedExternally
 init|=
 literal|false
@@ -1505,51 +1443,13 @@ argument_list|()
 decl_stmt|;
 comment|// Hashtable indexing the only search auto completer
 comment|// required for the SearchAutoCompleterUpdater
-DECL|field|searchAutoCompleterHM
-name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|AbstractAutoCompleter
-argument_list|>
-name|searchAutoCompleterHM
-init|=
-operator|new
-name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|AbstractAutoCompleter
-argument_list|>
-argument_list|()
-decl_stmt|;
-DECL|field|autoCompleters
-name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|AbstractAutoCompleter
-argument_list|>
-name|autoCompleters
-init|=
-operator|new
-name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|AbstractAutoCompleter
-argument_list|>
-argument_list|()
-decl_stmt|;
-comment|// Hashtable that holds as keys the names of the fields where
-comment|// autocomplete is active, and references to the autocompleter objects.
-DECL|field|searchCompleter
-name|NameFieldAutoCompleter
-name|searchCompleter
-init|=
-literal|null
+DECL|field|searchAutoCompleter
+specifier|private
+name|AutoCompleter
+name|searchAutoCompleter
 decl_stmt|;
 DECL|field|searchCompleteListener
+specifier|private
 name|AutoCompleteListener
 name|searchCompleteListener
 init|=
@@ -1558,6 +1458,7 @@ decl_stmt|;
 comment|// The undo manager.
 DECL|field|undoManager
 specifier|public
+specifier|final
 name|CountingUndoManager
 name|undoManager
 init|=
@@ -1568,6 +1469,8 @@ name|this
 argument_list|)
 decl_stmt|;
 DECL|field|undoAction
+specifier|private
+specifier|final
 name|UndoAction
 name|undoAction
 init|=
@@ -1576,6 +1479,8 @@ name|UndoAction
 argument_list|()
 decl_stmt|;
 DECL|field|redoAction
+specifier|private
+specifier|final
 name|RedoAction
 name|redoAction
 init|=
@@ -1585,6 +1490,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|previousEntries
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|BibtexEntry
@@ -1597,8 +1503,14 @@ argument_list|<
 name|BibtexEntry
 argument_list|>
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|nextEntries
+specifier|private
+specifier|final
+name|List
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|nextEntries
 init|=
 operator|new
@@ -1642,8 +1554,7 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|searchFilterList
-DECL|field|groupFilterList
-specifier|public
+specifier|private
 name|FilterList
 argument_list|<
 name|BibtexEntry
@@ -1651,7 +1562,13 @@ argument_list|>
 name|searchFilterList
 init|=
 literal|null
-decl_stmt|,
+decl_stmt|;
+DECL|field|groupFilterList
+specifier|private
+name|FilterList
+argument_list|<
+name|BibtexEntry
+argument_list|>
 name|groupFilterList
 init|=
 literal|null
@@ -1662,6 +1579,7 @@ name|RightClickMenu
 name|rcm
 decl_stmt|;
 DECL|field|showing
+specifier|private
 name|BibtexEntry
 name|showing
 init|=
@@ -1679,6 +1597,7 @@ decl_stmt|;
 comment|// To indicate which entry is currently shown.
 DECL|field|entryEditors
 specifier|public
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -1702,6 +1621,7 @@ comment|//HashMap entryTypeForms = new HashMap();
 comment|// Hashmap to keep track of which entries currently have open
 comment|// EntryTypeForm dialogs.
 DECL|field|preambleEditor
+specifier|private
 name|PreambleEditor
 name|preambleEditor
 init|=
@@ -1709,6 +1629,7 @@ literal|null
 decl_stmt|;
 comment|// Keeps track of the preamble dialog if it is open.
 DECL|field|stringDialog
+specifier|private
 name|StringDialog
 name|stringDialog
 init|=
@@ -1716,53 +1637,64 @@ literal|null
 decl_stmt|;
 comment|// Keeps track of the string dialog if it is open.
 DECL|field|saveAction
+specifier|private
 name|SaveDatabaseAction
 name|saveAction
 decl_stmt|;
-DECL|field|cleanUpAction
-name|CleanUpAction
-name|cleanUpAction
-decl_stmt|;
 comment|/**      * The group selector component for this database. Instantiated by the      * SidePaneManager if necessary, or from this class if merging groups from a      * different database.      */
 comment|//GroupSelector groupSelector;
-specifier|public
-name|boolean
 DECL|field|showingSearch
+specifier|private
+name|boolean
 name|showingSearch
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
 DECL|field|showingGroup
+specifier|private
+name|boolean
 name|showingGroup
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
 DECL|field|sortingBySearchResults
+specifier|public
+name|boolean
 name|sortingBySearchResults
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
 DECL|field|coloringBySearchResults
+specifier|public
+name|boolean
 name|coloringBySearchResults
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
 DECL|field|hidingNonHits
+specifier|public
+name|boolean
 name|hidingNonHits
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
 DECL|field|sortingByGroup
+specifier|public
+name|boolean
 name|sortingByGroup
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
 DECL|field|sortingByCiteSeerResults
+specifier|public
+name|boolean
 name|sortingByCiteSeerResults
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
 DECL|field|coloringByGroup
+specifier|public
+name|boolean
 name|coloringByGroup
 init|=
 literal|false
@@ -1778,11 +1710,13 @@ comment|// The number of hits in the latest search.
 comment|// Potential use in hiding non-hits completely.
 comment|// MetaData parses, keeps and writes meta data.
 DECL|field|metaData
+specifier|final
 name|MetaData
 name|metaData
 decl_stmt|;
 DECL|field|actions
 specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -1805,9 +1739,24 @@ specifier|private
 name|SidePaneManager
 name|sidePaneManager
 decl_stmt|;
+DECL|method|getAutoCompleters ()
+specifier|public
+name|ContentAutoCompleters
+name|getAutoCompleters
+parameter_list|()
+block|{
+return|return
+name|autoCompleters
+return|;
+block|}
+DECL|field|autoCompleters
+specifier|private
+name|ContentAutoCompleters
+name|autoCompleters
+decl_stmt|;
 comment|/**      * Create a new BasePanel with an empty database.      * @param frame The application window.      */
 DECL|method|BasePanel (JabRefFrame frame)
-specifier|public
+specifier|private
 name|BasePanel
 parameter_list|(
 name|JabRefFrame
@@ -1862,46 +1811,10 @@ argument_list|(
 literal|"defaultEncoding"
 argument_list|)
 expr_stmt|;
-comment|//System.out.println("Default: "+encoding);
 block|}
 DECL|method|BasePanel (JabRefFrame frame, BibtexDatabase db, File file, MetaData metaData, String encoding)
 specifier|public
 name|BasePanel
-parameter_list|(
-name|JabRefFrame
-name|frame
-parameter_list|,
-name|BibtexDatabase
-name|db
-parameter_list|,
-name|File
-name|file
-parameter_list|,
-name|MetaData
-name|metaData
-parameter_list|,
-name|String
-name|encoding
-parameter_list|)
-block|{
-name|init
-argument_list|(
-name|frame
-argument_list|,
-name|db
-argument_list|,
-name|file
-argument_list|,
-name|metaData
-argument_list|,
-name|encoding
-argument_list|)
-expr_stmt|;
-block|}
-DECL|method|init (JabRefFrame frame, BibtexDatabase db, File file, MetaData metaData, String encoding)
-specifier|private
-name|void
-name|init
 parameter_list|(
 name|JabRefFrame
 name|frame
@@ -2058,6 +1971,8 @@ name|IOException
 name|ex
 parameter_list|)
 block|{
+name|BasePanel
+operator|.
 name|logger
 operator|.
 name|warning
@@ -2196,6 +2111,7 @@ condition|(
 operator|!
 name|suppressOutput
 condition|)
+block|{
 name|frame
 operator|.
 name|output
@@ -2203,6 +2119,7 @@ argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|setupActions ()
 specifier|private
@@ -2218,14 +2135,15 @@ argument_list|(
 name|this
 argument_list|)
 expr_stmt|;
+name|CleanUpAction
 name|cleanUpAction
-operator|=
+init|=
 operator|new
 name|CleanUpAction
 argument_list|(
 name|this
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|actions
 operator|.
 name|put
@@ -2254,6 +2172,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -2282,6 +2202,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -2294,7 +2216,7 @@ name|editSignalled
 argument_list|()
 expr_stmt|;
 block|}
-comment|/*                   if (isShowingEditor()) {                       new FocusRequester(splitPane.getBottomComponent());                       return;                   }                    frame.block();                 //(new Thread() {                 //public void run() {                 int clickedOn = -1;                 // We demand that one and only one row is selected.                 if (entryTable.getSelectedRowCount() == 1) {                   clickedOn = entryTable.getSelectedRow();                 }                 if (clickedOn>= 0) {                   String id = tableModel.getIdForRow(clickedOn);                   BibtexEntry be = database.getEntryById(id);                   showEntry(be);                    if (splitPane.getBottomComponent() != null) {                       new FocusRequester(splitPane.getBottomComponent());                   }                  }         frame.unblock();               }                 */
+comment|/*               if (isShowingEditor()) {                   new FocusRequester(splitPane.getBottomComponent());                   return;               }                frame.block();             //(new Thread() {             //public void run() {             int clickedOn = -1;             // We demand that one and only one row is selected.             if (entryTable.getSelectedRowCount() == 1) {               clickedOn = entryTable.getSelectedRow();             }             if (clickedOn>= 0) {               String id = tableModel.getIdForRow(clickedOn);               BibtexEntry be = database.getEntryById(id);               showEntry(be);                if (splitPane.getBottomComponent() != null) {                   new FocusRequester(splitPane.getBottomComponent());               }              }             frame.unblock();             }             */
 block|}
 argument_list|)
 expr_stmt|;
@@ -2332,6 +2254,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -2393,6 +2317,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -2460,7 +2386,7 @@ argument_list|(
 literal|"Copied"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 operator|(
 name|bes
@@ -2491,7 +2417,7 @@ argument_list|(
 literal|"entry"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 operator|)
 argument_list|)
 expr_stmt|;
@@ -2598,7 +2524,7 @@ argument_list|(
 literal|"Copied cell contents"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -2618,6 +2544,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -2734,7 +2662,7 @@ argument_list|(
 literal|"Cut_pr"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 operator|(
 name|bes
@@ -2764,7 +2692,7 @@ literal|"entry"
 argument_list|)
 operator|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 name|ce
@@ -2783,7 +2711,7 @@ name|markBaseChanged
 argument_list|()
 expr_stmt|;
 comment|// Reselect the entry in the first prev. selected position:
-comment|/*if (row0>= entryTable.getRowCount())                             row0 = entryTable.getRowCount()-1;                         if (row0>= 0)                             entryTable.addRowSelectionInterval(row0, row0);*/
+comment|/*if (row0>= entryTable.getRowCount())                         row0 = entryTable.getRowCount()-1;                     if (row0>= 0)                         entryTable.addRowSelectionInterval(row0, row0);*/
 block|}
 block|}
 block|}
@@ -2799,6 +2727,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -2924,7 +2854,7 @@ argument_list|(
 literal|"Deleted"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 operator|(
 name|bes
@@ -2954,7 +2884,7 @@ literal|"entry"
 argument_list|)
 operator|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 name|ce
@@ -2972,7 +2902,7 @@ expr_stmt|;
 comment|//entryTable.clearSelection();
 block|}
 comment|// Reselect the entry in the first prev. selected position:
-comment|/*if (row0>= entryTable.getRowCount())                               row0 = entryTable.getRowCount()-1;                           if (row0>= 0) {                              final int toSel = row0;                             //                               SwingUtilities.invokeLater(new Runnable() {                                 public void run() {                                     entryTable.addRowSelectionInterval(toSel, toSel);                                     //entryTable.ensureVisible(toSel);                                 }                               });                             */
+comment|/*if (row0>= entryTable.getRowCount())                         row0 = entryTable.getRowCount()-1;                     if (row0>= 0) {                        final int toSel = row0;                       //                         SwingUtilities.invokeLater(new Runnable() {                           public void run() {                               entryTable.addRowSelectionInterval(toSel, toSel);                               //entryTable.ensureVisible(toSel);                           }                         });                       */
 block|}
 block|}
 block|}
@@ -2995,6 +2925,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -3293,10 +3225,12 @@ name|firstBE
 operator|==
 literal|null
 condition|)
+block|{
 name|firstBE
 operator|=
 name|be
 expr_stmt|;
+block|}
 name|Util
 operator|.
 name|setAutomaticFields
@@ -3331,9 +3265,9 @@ name|be
 operator|.
 name|setId
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 expr_stmt|;
@@ -3400,7 +3334,7 @@ argument_list|(
 literal|"Pasted"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 operator|(
 name|bes
@@ -3432,7 +3366,7 @@ literal|"entry"
 argument_list|)
 operator|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 name|markBaseChanged
@@ -3479,6 +3413,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -3504,6 +3440,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -3581,6 +3519,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -3658,6 +3598,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -3699,6 +3641,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -3759,6 +3703,8 @@ init|=
 literal|false
 decl_stmt|;
 comment|// run first, in EDT:
+annotation|@
+name|Override
 specifier|public
 name|void
 name|init
@@ -3872,6 +3818,8 @@ expr_stmt|;
 block|}
 block|}
 comment|// run second, on a different thread:
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -3892,7 +3840,7 @@ argument_list|()
 decl_stmt|;
 try|try
 block|{
-comment|/*boolean okToExport = null!=metaData.getFile();                     	if (!okToExport)                     	{                     		okToExport = false;                     		int response = JOptionPane.showConfirmDialog(null, "You need to save your database in the disk \n" +                     				"before saving. Save it now?", "Database is not saved",                     		        JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);                     			if(response == JOptionPane.YES_OPTION)                     			{                     				try {                     					saveAction.saveAs();                     					okToExport = (null!=metaData.getFile());                     				} catch (Throwable e) {                     				e.printStackTrace();                     			}                     		}                     	}                     	if (okToExport)                     	{*/
+comment|/*boolean okToExport = null!=metaData.getFile();                         if (!okToExport)                         {                         	okToExport = false;                         	int response = JOptionPane.showConfirmDialog(null, "You need to save your database in the disk \n" +                         			"before saving. Save it now?", "Database is not saved",                         	        JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);                         		if(response == JOptionPane.YES_OPTION)                         		{                         			try {                         				saveAction.saveAs();                         				okToExport = (null!=metaData.getFile());                         			} catch (Throwable e) {                         			e.printStackTrace();                         		}                         	}                         }                         if (okToExport)                         {*/
 name|frame
 operator|.
 name|output
@@ -3996,7 +3944,7 @@ argument_list|(
 name|preamble
 argument_list|)
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 name|errorMessage
 argument_list|,
@@ -4023,6 +3971,8 @@ expr_stmt|;
 block|}
 block|}
 comment|// run third, on EDT:
+annotation|@
+name|Override
 specifier|public
 name|void
 name|update
@@ -4092,7 +4042,7 @@ argument_list|(
 name|preamble
 argument_list|)
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 name|errorMessage
 argument_list|,
@@ -4200,6 +4150,8 @@ init|=
 literal|false
 decl_stmt|;
 comment|// Run first, in EDT:
+annotation|@
+name|Override
 specifier|public
 name|void
 name|init
@@ -4234,10 +4186,8 @@ if|if
 condition|(
 name|entries
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 comment|// None selected. Inform the user to select entries first.
@@ -4266,7 +4216,7 @@ operator|.
 name|INFORMATION_MESSAGE
 argument_list|)
 expr_stmt|;
-return|return ;
+return|return;
 block|}
 name|frame
 operator|.
@@ -4282,11 +4232,11 @@ argument_list|(
 literal|"Generating BibTeX key for"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|numSelected
 operator|+
-literal|" "
+literal|' '
 operator|+
 operator|(
 name|numSelected
@@ -4313,6 +4263,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Run second, on a different thread:
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -4320,8 +4272,6 @@ parameter_list|()
 block|{
 name|BibtexEntry
 name|bes
-init|=
-literal|null
 decl_stmt|;
 name|NamedCompound
 name|ce
@@ -4391,12 +4341,14 @@ argument_list|(
 literal|"avoidOverwritingKey"
 argument_list|)
 condition|)
+block|{
 comment|// Remove the entry, because its key is already set:
 name|i
 operator|.
 name|remove
 argument_list|()
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -4464,6 +4416,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|Globals
 operator|.
 name|prefs
@@ -4475,6 +4428,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|answer
@@ -4528,6 +4482,7 @@ argument_list|(
 literal|"avoidOverwritingKey"
 argument_list|)
 condition|)
+block|{
 for|for
 control|(
 name|BibtexEntry
@@ -4569,6 +4524,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 comment|// Finally, set the new keys:
 for|for
@@ -4646,6 +4602,8 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|// Run third, on EDT:
+annotation|@
+name|Override
 specifier|public
 name|void
 name|update
@@ -4700,6 +4658,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -4718,10 +4678,13 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|row
 operator|>=
 literal|0
+operator|)
 operator|&&
+operator|(
 name|mainTable
 operator|.
 name|getSelectedRowCount
@@ -4731,7 +4694,9 @@ name|entries
 operator|.
 name|size
 argument_list|()
+operator|)
 condition|)
+block|{
 name|mainTable
 operator|.
 name|addRowSelectionInterval
@@ -4741,6 +4706,7 @@ argument_list|,
 name|row
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -4756,11 +4722,11 @@ argument_list|(
 literal|"Generated BibTeX key for"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|numSelected
 operator|+
-literal|" "
+literal|' '
 operator|+
 operator|(
 name|numSelected
@@ -4812,6 +4778,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -4839,6 +4807,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -4884,6 +4854,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -4920,6 +4892,7 @@ if|if
 condition|(
 name|on
 condition|)
+block|{
 name|frame
 operator|.
 name|getSearchManager
@@ -4928,6 +4901,7 @@ operator|.
 name|startSearch
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -4942,6 +4916,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -4986,6 +4962,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -5042,6 +5020,7 @@ name|be
 range|:
 name|bes
 control|)
+block|{
 if|if
 condition|(
 name|be
@@ -5055,6 +5034,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|keys
 operator|.
 name|add
@@ -5069,14 +5049,14 @@ name|KEY_FIELD
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 if|if
 condition|(
 name|keys
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 name|output
@@ -5184,6 +5164,7 @@ name|bes
 operator|.
 name|length
 condition|)
+block|{
 comment|// All entries had keys.
 name|output
 argument_list|(
@@ -5204,10 +5185,12 @@ else|:
 literal|"Copied key"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|output
 argument_list|(
 name|Globals
@@ -5230,7 +5213,7 @@ name|size
 argument_list|()
 operator|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -5239,13 +5222,13 @@ argument_list|(
 literal|"out of"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|bes
 operator|.
 name|length
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -5254,9 +5237,10 @@ argument_list|(
 literal|"entries have undefined BibTeX key"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -5273,6 +5257,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -5329,6 +5315,7 @@ name|be
 range|:
 name|bes
 control|)
+block|{
 if|if
 condition|(
 name|be
@@ -5342,6 +5329,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|keys
 operator|.
 name|add
@@ -5356,14 +5344,14 @@ name|KEY_FIELD
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
+block|}
 if|if
 condition|(
 name|keys
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|==
-literal|0
 condition|)
 block|{
 name|output
@@ -5444,7 +5432,7 @@ operator|.
 name|toString
 argument_list|()
 operator|+
-literal|"}"
+literal|'}'
 argument_list|)
 decl_stmt|;
 name|Toolkit
@@ -5475,6 +5463,7 @@ name|bes
 operator|.
 name|length
 condition|)
+block|{
 comment|// All entries had keys.
 name|output
 argument_list|(
@@ -5498,10 +5487,12 @@ argument_list|(
 literal|"Copied key"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|output
 argument_list|(
 name|Globals
@@ -5524,7 +5515,7 @@ name|size
 argument_list|()
 operator|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -5533,13 +5524,13 @@ argument_list|(
 literal|"out of"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|bes
 operator|.
 name|length
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -5548,9 +5539,10 @@ argument_list|(
 literal|"entries have undefined BibTeX key"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -5567,6 +5559,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -5665,6 +5659,7 @@ name|be
 range|:
 name|bes
 control|)
+block|{
 if|if
 condition|(
 name|be
@@ -5696,6 +5691,7 @@ name|database
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -5748,6 +5744,7 @@ name|bes
 operator|.
 name|length
 condition|)
+block|{
 comment|// All entries had keys.
 name|output
 argument_list|(
@@ -5768,10 +5765,12 @@ else|:
 literal|"Copied key"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|output
 argument_list|(
 name|Globals
@@ -5787,7 +5786,7 @@ operator|(
 name|copied
 operator|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -5796,13 +5795,13 @@ argument_list|(
 literal|"out of"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|bes
 operator|.
 name|length
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -5811,9 +5810,10 @@ argument_list|(
 literal|"entries have undefined BibTeX key"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -5844,16 +5844,25 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
 parameter_list|()
 block|{
-operator|(
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
+argument_list|(
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -6022,7 +6031,7 @@ argument_list|(
 literal|"External viewer called"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -6130,7 +6139,7 @@ literal|"runAutomaticFileSearch"
 argument_list|)
 condition|)
 block|{
-comment|/*  The search can lead to an unexpected 100% CPU usage which is perceived                                          as a bug, if the search incidentally starts at a directory with lots                                          of stuff below. It is now disabled by default. */
+comment|/*  The search can lead to an unexpected 100% CPU usage which is perceived                                         as a bug, if the search incidentally starts at a directory with lots                                         of stuff below. It is now disabled by default. */
 comment|// see if we can fall back to a filename based on the bibtex key
 specifier|final
 name|Collection
@@ -6320,6 +6329,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|result
 operator|=
 name|Util
@@ -6333,6 +6343,7 @@ argument_list|,
 name|dirs
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|result
@@ -6366,12 +6377,11 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|!
 name|res
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|filepath
@@ -6407,12 +6417,14 @@ operator|&&
 operator|(
 name|index
 operator|<
+operator|(
 name|filepath
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 operator|)
 condition|)
 block|{
@@ -6469,7 +6481,7 @@ argument_list|(
 literal|"External viewer called"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 return|return;
@@ -6537,7 +6549,7 @@ argument_list|(
 literal|"External viewer called"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -6567,6 +6579,7 @@ expr_stmt|;
 block|}
 block|}
 else|else
+block|{
 name|output
 argument_list|(
 name|Globals
@@ -6576,11 +6589,13 @@ argument_list|(
 literal|"No pdf or ps defined, and no file matching Bibtex key found"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 else|else
+block|{
 name|output
 argument_list|(
 name|Globals
@@ -6593,10 +6608,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-operator|)
-operator|.
-name|start
-argument_list|()
+block|}
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -6625,16 +6638,25 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
 parameter_list|()
 block|{
-operator|(
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
+argument_list|(
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -6791,6 +6813,7 @@ argument_list|()
 expr_stmt|;
 block|}
 else|else
+block|{
 name|output
 argument_list|(
 name|Globals
@@ -6803,10 +6826,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-operator|)
-operator|.
-name|start
-argument_list|()
+block|}
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -6822,16 +6843,25 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
 parameter_list|()
 block|{
-operator|(
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
+argument_list|(
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -6896,6 +6926,8 @@ name|IOException
 name|e
 parameter_list|)
 block|{
+name|BasePanel
+operator|.
 name|logger
 operator|.
 name|fine
@@ -6910,10 +6942,7 @@ block|}
 block|}
 block|}
 block|}
-operator|)
-operator|.
-name|start
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}
@@ -6929,6 +6958,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -7044,7 +7075,7 @@ argument_list|(
 literal|"External viewer called"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -7209,7 +7240,7 @@ argument_list|(
 literal|"External viewer called"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -7237,6 +7268,7 @@ expr_stmt|;
 block|}
 block|}
 else|else
+block|{
 name|output
 argument_list|(
 name|Globals
@@ -7246,12 +7278,14 @@ argument_list|(
 literal|"No url defined"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 else|else
+block|{
 name|output
 argument_list|(
 name|Globals
@@ -7262,6 +7296,7 @@ literal|"No entries or multiple entries selected."
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -7276,6 +7311,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -7326,6 +7363,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|link
 operator|=
 name|SPIRESFetcher
@@ -7343,6 +7381,7 @@ literal|"eprint"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -7358,6 +7397,7 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 name|link
 operator|=
 name|SPIRESFetcher
@@ -7375,6 +7415,7 @@ literal|"slaccitation"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|link
@@ -7409,7 +7450,7 @@ argument_list|(
 literal|"External viewer called"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -7439,6 +7480,7 @@ expr_stmt|;
 block|}
 block|}
 else|else
+block|{
 name|output
 argument_list|(
 name|Globals
@@ -7448,11 +7490,13 @@ argument_list|(
 literal|"No url defined"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 else|else
+block|{
 name|output
 argument_list|(
 name|Globals
@@ -7465,9 +7509,10 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 argument_list|)
 expr_stmt|;
-comment|/* 		 *  It looks like this action was not being supported for SPIRES anyway 		 *  so we don't bother to implement it.         actions.put("openInspire", new BaseAction() {         	public void action() {         		BibtexEntry[] bes = mainTable.getSelectedEntries();                 if ((bes != null)&& (bes.length == 1)) {                 	Object link = null;                     if (bes[0].getField("eprint") != null)                       link = INSPIREFetcher.constructUrlFromEprint(bes[0].getField("eprint").toString());                     else if (bes[0].getField("slaccitation") != null)                         link = INSPIREFetcher.constructUrlFromSlaccitation(bes[0].getField("slaccitation").toString());                     if (link != null) {                       //output(Globals.lang("Calling external viewer..."));                       try {                         Util.openExternalViewer(metaData(), link.toString(), "url");                         output(Globals.lang("External viewer called")+".");                       } catch (IOException ex) {                           output(Globals.lang("Error") + ": " + ex.getMessage());                       }                     }                     else                         output(Globals.lang("No url defined")+".");                 } else                   output(Globals.lang("No entries or multiple entries selected."));             }         	}); 			*/
+comment|/*          *  It looks like this action was not being supported for SPIRES anyway          *  so we don't bother to implement it.         actions.put("openInspire", new BaseAction() {         	public void action() {         		BibtexEntry[] bes = mainTable.getSelectedEntries();                 if ((bes != null)&& (bes.length == 1)) {                 	Object link = null;                     if (bes[0].getField("eprint") != null)                       link = INSPIREFetcher.constructUrlFromEprint(bes[0].getField("eprint").toString());                     else if (bes[0].getField("slaccitation") != null)                         link = INSPIREFetcher.constructUrlFromSlaccitation(bes[0].getField("slaccitation").toString());                     if (link != null) {                       //output(Globals.lang("Calling external viewer..."));                       try {                         Util.openExternalViewer(metaData(), link.toString(), "url");                         output(Globals.lang("External viewer called")+".");                       } catch (IOException ex) {                           output(Globals.lang("Error") + ": " + ex.getMessage());                       }                     }                     else                         output(Globals.lang("No url defined")+".");                 } else                   output(Globals.lang("No entries or multiple entries selected."));             }         	});         	*/
 name|actions
 operator|.
 name|put
@@ -7478,6 +7523,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -7507,7 +7554,9 @@ operator|.
 name|okPressed
 argument_list|()
 condition|)
+block|{
 return|return;
+block|}
 name|int
 name|counter
 init|=
@@ -7578,6 +7627,7 @@ name|be
 range|:
 name|bes
 control|)
+block|{
 name|counter
 operator|+=
 name|rsd
@@ -7590,6 +7640,7 @@ name|ce
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 name|output
 argument_list|(
 name|Globals
@@ -7599,11 +7650,11 @@ argument_list|(
 literal|"Replaced"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|counter
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -7618,7 +7669,7 @@ else|:
 literal|"occurences"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 if|if
@@ -7658,14 +7709,19 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
 parameter_list|()
 block|{
-name|DuplicateSearch
-name|ds
-init|=
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|execute
+argument_list|(
 operator|new
 name|DuplicateSearch
 argument_list|(
@@ -7673,17 +7729,12 @@ name|BasePanel
 operator|.
 name|this
 argument_list|)
-decl_stmt|;
-name|ds
-operator|.
-name|start
-argument_list|()
+argument_list|)
 expr_stmt|;
 block|}
 block|}
 argument_list|)
 expr_stmt|;
-comment|/*actions.put("strictDupliCheck", new BaseAction() {                 public void action() {                   StrictDuplicateSearch ds = new StrictDuplicateSearch(BasePanel.this);                   ds.start();                 }               });*/
 name|actions
 operator|.
 name|put
@@ -7694,6 +7745,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -7741,13 +7794,15 @@ name|tp
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|String
 name|id
 init|=
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 decl_stmt|;
 name|BibtexEntry
@@ -7810,9 +7865,9 @@ name|Util
 operator|.
 name|setAutomaticFields
 argument_list|(
-name|Arrays
+name|Collections
 operator|.
-name|asList
+name|singletonList
 argument_list|(
 name|bibEntry
 argument_list|)
@@ -7835,7 +7890,7 @@ block|}
 argument_list|)
 expr_stmt|;
 comment|// The action starts the "import from plain text" dialog
-comment|/*actions.put("importPlainText", new BaseAction() {                       public void action()                       {                         BibtexEntry bibEntry = null ;                         // try to get the first marked entry                         BibtexEntry[] bes = entryTable.getSelectedEntries();                         if ((bes != null)&& (bes.length> 0))                           bibEntry = bes[0] ;                          if (bibEntry != null)                         {                           // Create an UndoableInsertEntry object.                           undoManager.addEdit(new UndoableInsertEntry(database, bibEntry, BasePanel.this));                            TextInputDialog tidialog = new TextInputDialog(frame, BasePanel.this,                                                                          "import", true,                                                                          bibEntry) ;                           Util.placeDialog(tidialog, BasePanel.this);                           tidialog.setVisible(true);                            if (tidialog.okPressed())                           {                             output(Globals.lang("changed ")+" '"                                    +bibEntry.getType().getName().toLowerCase()+"' "                                    +Globals.lang("entry")+".");                             refreshTable();                             int row = tableModel.getNumberFromName(bibEntry.getId());                              entryTable.clearSelection();                             entryTable.scrollTo(row);                             markBaseChanged(); // The database just changed.                             if (Globals.prefs.getBoolean("autoOpenForm"))                             {                                   showEntry(bibEntry);                             }                           }                         }                       }                   });                 */
+comment|/*actions.put("importPlainText", new BaseAction() {                 public void action()                 {                   BibtexEntry bibEntry = null ;                   // try to get the first marked entry                   BibtexEntry[] bes = entryTable.getSelectedEntries();                   if ((bes != null)&& (bes.length> 0))                     bibEntry = bes[0] ;                    if (bibEntry != null)                   {                     // Create an UndoableInsertEntry object.                     undoManager.addEdit(new UndoableInsertEntry(database, bibEntry, BasePanel.this));                      TextInputDialog tidialog = new TextInputDialog(frame, BasePanel.this,                                                                    "import", true,                                                                    bibEntry) ;                     Util.placeDialog(tidialog, BasePanel.this);                     tidialog.setVisible(true);                      if (tidialog.okPressed())                     {                       output(Globals.lang("changed ")+" '"                              +bibEntry.getType().getName().toLowerCase()+"' "                              +Globals.lang("entry")+".");                       refreshTable();                       int row = tableModel.getNumberFromName(bibEntry.getId());                        entryTable.clearSelection();                       entryTable.scrollTo(row);                       markBaseChanged(); // The database just changed.                       if (Globals.prefs.getBoolean("autoOpenForm"))                       {                             showEntry(bibEntry);                       }                     }                   }                 }             });           */
 name|actions
 operator|.
 name|put
@@ -7861,6 +7916,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -7920,7 +7977,7 @@ range|:
 name|bes
 control|)
 block|{
-name|Util
+name|EntryMarker
 operator|.
 name|unmarkEntry
 argument_list|(
@@ -8024,6 +8081,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -8054,7 +8113,7 @@ name|getEntries
 argument_list|()
 control|)
 block|{
-name|Util
+name|EntryMarker
 operator|.
 name|unmarkEntry
 argument_list|(
@@ -8402,6 +8461,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -8461,6 +8522,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -8547,6 +8610,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -8633,6 +8698,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -8657,6 +8724,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -8841,6 +8910,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -8865,6 +8936,8 @@ operator|new
 name|BaseAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|action
@@ -8945,7 +9018,7 @@ argument_list|)
 expr_stmt|;
 comment|//actions.put("downloadFullText", new FindFullTextAction(this));
 block|}
-comment|/**      * This method is called from JabRefFrame is a database specific      * action is requested by the user. Runs the command if it is      * defined, or prints an error message to the standard error      * stream.      *      * @param _command The name of the command to run.     */
+comment|/**      * This method is called from JabRefFrame is a database specific      * action is requested by the user. Runs the command if it is      * defined, or prints an error message to the standard error      * stream.      *      * @param _command The name of the command to run.      */
 DECL|method|runCommand (String _command)
 specifier|public
 name|void
@@ -8955,12 +9028,6 @@ name|String
 name|_command
 parameter_list|)
 block|{
-specifier|final
-name|String
-name|command
-init|=
-name|_command
-decl_stmt|;
 comment|//(new Thread() {
 comment|//  public void run() {
 if|if
@@ -8969,22 +9036,24 @@ name|actions
 operator|.
 name|get
 argument_list|(
-name|command
+name|_command
 argument_list|)
 operator|==
 literal|null
 condition|)
+block|{
 name|Util
 operator|.
 name|pr
 argument_list|(
 literal|"No action defined for '"
 operator|+
-name|command
+name|_command
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 name|Object
@@ -8994,7 +9063,7 @@ name|actions
 operator|.
 name|get
 argument_list|(
-name|command
+name|_command
 argument_list|)
 decl_stmt|;
 try|try
@@ -9005,6 +9074,7 @@ name|o
 operator|instanceof
 name|BaseAction
 condition|)
+block|{
 operator|(
 operator|(
 name|BaseAction
@@ -9015,6 +9085,7 @@ operator|.
 name|action
 argument_list|()
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|// This part uses Spin's features:
@@ -9139,6 +9210,7 @@ condition|(
 operator|!
 name|selectedOnly
 condition|)
+block|{
 name|session
 operator|=
 name|FileActions
@@ -9164,7 +9236,9 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|session
 operator|=
 name|FileActions
@@ -9191,6 +9265,7 @@ argument_list|,
 name|saveType
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -9303,11 +9378,13 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|ex
 operator|.
 name|printStackTrace
 argument_list|()
 expr_stmt|;
+block|}
 name|JOptionPane
 operator|.
 name|showMessageDialog
@@ -9586,10 +9663,12 @@ argument_list|)
 return|;
 block|}
 else|else
+block|{
 name|commit
 operator|=
 literal|false
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -9600,10 +9679,12 @@ name|JOptionPane
 operator|.
 name|CANCEL_OPTION
 condition|)
+block|{
 name|commit
 operator|=
 literal|false
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -9624,11 +9705,13 @@ expr_stmt|;
 comment|// Make sure to remember which encoding we used.
 block|}
 else|else
+block|{
 name|session
 operator|.
 name|cancel
 argument_list|()
 expr_stmt|;
+block|}
 return|return
 name|commit
 return|;
@@ -9696,9 +9779,9 @@ comment|// Only if the dialog was not cancelled.
 name|String
 name|id
 init|=
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 decl_stmt|;
 specifier|final
@@ -9802,7 +9885,7 @@ argument_list|(
 literal|"entry"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 comment|// We are going to select the new entry. Before that, make sure that we are in
@@ -9813,11 +9896,15 @@ if|if
 condition|(
 name|mode
 operator|!=
+name|BasePanel
+operator|.
 name|SHOWING_EDITOR
 condition|)
 block|{
 name|mode
 operator|=
+name|BasePanel
+operator|.
 name|WILL_SHOW_EDITOR
 expr_stmt|;
 block|}
@@ -9837,12 +9924,14 @@ name|row
 operator|>=
 literal|0
 condition|)
+block|{
 name|highlightEntry
 argument_list|(
 name|be
 argument_list|)
 expr_stmt|;
 comment|// Selects the entry. The selection listener will open the editor.
+block|}
 else|else
 block|{
 comment|// The entry is not visible in the table, perhaps due to a filtering search
@@ -9900,6 +9989,8 @@ name|GroupTreeUpdater
 implements|implements
 name|DatabaseChangeListener
 block|{
+annotation|@
+name|Override
 DECL|method|databaseChanged (DatabaseChangeEvent e)
 specifier|public
 name|void
@@ -10046,6 +10137,8 @@ name|SearchAutoCompleterUpdater
 implements|implements
 name|DatabaseChangeListener
 block|{
+annotation|@
+name|Override
 DECL|method|databaseChanged (DatabaseChangeEvent e)
 specifier|public
 name|void
@@ -10080,16 +10173,10 @@ name|ADDED_ENTRY
 operator|)
 condition|)
 block|{
-name|Util
+name|searchAutoCompleter
 operator|.
-name|updateCompletersForEntry
+name|addBibtexEntry
 argument_list|(
-name|BasePanel
-operator|.
-name|this
-operator|.
-name|searchAutoCompleterHM
-argument_list|,
 name|e
 operator|.
 name|getEntry
@@ -10107,6 +10194,8 @@ name|AutoCompletersUpdater
 implements|implements
 name|DatabaseChangeListener
 block|{
+annotation|@
+name|Override
 DECL|method|databaseChanged (DatabaseChangeEvent e)
 specifier|public
 name|void
@@ -10141,17 +10230,14 @@ name|ADDED_ENTRY
 operator|)
 condition|)
 block|{
-name|Util
-operator|.
-name|updateCompletersForEntry
-argument_list|(
 name|BasePanel
 operator|.
 name|this
 operator|.
-name|getAutoCompleters
-argument_list|()
-argument_list|,
+name|autoCompleters
+operator|.
+name|addEntry
+argument_list|(
 name|e
 operator|.
 name|getEntry
@@ -10198,6 +10284,7 @@ argument_list|(
 literal|"useOwner"
 argument_list|)
 condition|)
+block|{
 comment|// Set owner field to default value
 name|Util
 operator|.
@@ -10210,6 +10297,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Create an UndoableInsertEntry object.
 name|undoManager
 operator|.
@@ -10259,7 +10347,7 @@ argument_list|(
 literal|"entry"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 name|markBaseChanged
@@ -10324,7 +10412,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|createMainTable ()
-specifier|public
+specifier|private
 name|void
 name|createMainTable
 parameter_list|()
@@ -10475,6 +10563,8 @@ name|BibtexEntry
 argument_list|>
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|listChanged
@@ -10497,6 +10587,7 @@ argument_list|(
 literal|"highlightGroupsMatchingAny"
 argument_list|)
 condition|)
+block|{
 name|getGroupSelector
 argument_list|()
 operator|.
@@ -10510,6 +10601,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -10522,6 +10614,7 @@ argument_list|(
 literal|"highlightGroupsMatchingAll"
 argument_list|)
 condition|)
+block|{
 name|getGroupSelector
 argument_list|()
 operator|.
@@ -10535,7 +10628,9 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 comment|// no highlight
 name|getGroupSelector
 argument_list|()
@@ -10547,6 +10642,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 expr_stmt|;
@@ -10570,6 +10666,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -10615,6 +10713,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -10660,6 +10760,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -10700,6 +10802,8 @@ operator|new
 name|KeyAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|keyPressed
@@ -10778,6 +10882,7 @@ name|node
 operator|!=
 literal|null
 condition|)
+block|{
 name|frame
 operator|.
 name|groupSelector
@@ -10789,6 +10894,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 break|break;
 case|case
 name|KeyEvent
@@ -10806,6 +10912,7 @@ name|node
 operator|!=
 literal|null
 condition|)
+block|{
 name|frame
 operator|.
 name|groupSelector
@@ -10817,6 +10924,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 break|break;
 case|case
 name|KeyEvent
@@ -10834,6 +10942,7 @@ name|node
 operator|!=
 literal|null
 condition|)
+block|{
 name|frame
 operator|.
 name|groupSelector
@@ -10845,6 +10954,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 break|break;
 case|case
 name|KeyEvent
@@ -10862,6 +10972,7 @@ name|node
 operator|!=
 literal|null
 condition|)
+block|{
 name|frame
 operator|.
 name|groupSelector
@@ -10873,6 +10984,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 break|break;
 case|case
 name|KeyEvent
@@ -11044,11 +11156,15 @@ if|if
 condition|(
 name|mode
 operator|==
+name|BasePanel
+operator|.
 name|SHOWING_PREVIEW
 condition|)
 block|{
 name|mode
 operator|=
+name|BasePanel
+operator|.
 name|SHOWING_NOTHING
 expr_stmt|;
 name|int
@@ -11069,6 +11185,7 @@ name|row
 operator|>=
 literal|0
 condition|)
+block|{
 name|mainTable
 operator|.
 name|setRowSelectionInterval
@@ -11079,22 +11196,28 @@ name|row
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 elseif|else
 if|if
 condition|(
 name|mode
 operator|==
+name|BasePanel
+operator|.
 name|SHOWING_EDITOR
 condition|)
 block|{
 name|mode
 operator|=
+name|BasePanel
+operator|.
 name|SHOWING_NOTHING
 expr_stmt|;
 comment|/*int row = mainTable.findEntry(currentEditor.entry);             if (row>= 0)                 mainTable.setRowSelectionInterval(row, row);             */
 comment|//showEntryEditor(currentEditor);
 block|}
 else|else
+block|{
 name|splitPane
 operator|.
 name|setBottomComponent
@@ -11102,6 +11225,7 @@ argument_list|(
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 name|setLayout
 argument_list|(
 operator|new
@@ -11151,8 +11275,16 @@ literal|"autoComplete"
 argument_list|)
 condition|)
 block|{
-name|instantiateAutoCompleters
+name|autoCompleters
+operator|=
+operator|new
+name|ContentAutoCompleters
+argument_list|(
+name|getDatabase
 argument_list|()
+argument_list|,
+name|metaData
+argument_list|)
 expr_stmt|;
 comment|// ensure that the autocompleters are in sync with entries
 name|this
@@ -11197,69 +11329,21 @@ name|searchCompleteListener
 argument_list|)
 expr_stmt|;
 block|}
-DECL|method|getAutoCompleters ()
-specifier|public
-name|HashMap
-argument_list|<
-name|String
-argument_list|,
-name|AbstractAutoCompleter
-argument_list|>
-name|getAutoCompleters
-parameter_list|()
-block|{
-return|return
-name|autoCompleters
-return|;
-block|}
-DECL|method|getAutoCompleter (String fieldName)
-specifier|public
-name|AbstractAutoCompleter
-name|getAutoCompleter
-parameter_list|(
-name|String
-name|fieldName
-parameter_list|)
-block|{
-return|return
-name|autoCompleters
-operator|.
-name|get
-argument_list|(
-name|fieldName
-argument_list|)
-return|;
-block|}
 DECL|method|instantiateSearchAutoCompleter ()
 specifier|private
 name|void
 name|instantiateSearchAutoCompleter
 parameter_list|()
 block|{
-name|searchCompleter
+name|searchAutoCompleter
 operator|=
-operator|new
-name|NameFieldAutoCompleter
-argument_list|(
-operator|new
-name|String
-index|[]
-block|{
-literal|"author"
-block|,
-literal|"editor"
-block|}
-argument_list|,
-literal|true
-argument_list|)
-expr_stmt|;
-name|searchAutoCompleterHM
+name|AutoCompleterFactory
 operator|.
-name|put
+name|getFor
 argument_list|(
-literal|"x"
+literal|"author"
 argument_list|,
-name|searchCompleter
+literal|"editor"
 argument_list|)
 expr_stmt|;
 for|for
@@ -11273,12 +11357,10 @@ name|getEntries
 argument_list|()
 control|)
 block|{
-name|Util
+name|searchAutoCompleter
 operator|.
-name|updateCompletersForEntry
+name|addBibtexEntry
 argument_list|(
-name|searchAutoCompleterHM
-argument_list|,
 name|entry
 argument_list|)
 expr_stmt|;
@@ -11288,7 +11370,7 @@ operator|=
 operator|new
 name|AutoCompleteListener
 argument_list|(
-name|searchCompleter
+name|searchAutoCompleter
 argument_list|)
 expr_stmt|;
 name|searchCompleteListener
@@ -11299,231 +11381,6 @@ literal|false
 argument_list|)
 expr_stmt|;
 comment|// So you don't have to press Enter twice
-block|}
-DECL|method|instantiateAutoCompleters ()
-specifier|private
-name|void
-name|instantiateAutoCompleters
-parameter_list|()
-block|{
-name|autoCompleters
-operator|.
-name|clear
-argument_list|()
-expr_stmt|;
-name|String
-index|[]
-name|completeFields
-init|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|getStringArray
-argument_list|(
-literal|"autoCompleteFields"
-argument_list|)
-decl_stmt|;
-for|for
-control|(
-name|String
-name|field
-range|:
-name|completeFields
-control|)
-block|{
-name|AbstractAutoCompleter
-name|autoCompleter
-init|=
-name|AutoCompleterFactory
-operator|.
-name|getFor
-argument_list|(
-name|field
-argument_list|)
-decl_stmt|;
-name|autoCompleters
-operator|.
-name|put
-argument_list|(
-name|field
-argument_list|,
-name|autoCompleter
-argument_list|)
-expr_stmt|;
-block|}
-for|for
-control|(
-name|BibtexEntry
-name|entry
-range|:
-name|database
-operator|.
-name|getEntries
-argument_list|()
-control|)
-block|{
-name|Util
-operator|.
-name|updateCompletersForEntry
-argument_list|(
-name|autoCompleters
-argument_list|,
-name|entry
-argument_list|)
-expr_stmt|;
-block|}
-name|addJournalListToAutoCompleter
-argument_list|()
-expr_stmt|;
-name|addContentSelectorValuesToAutoCompleters
-argument_list|()
-expr_stmt|;
-block|}
-comment|/**      * For all fields with both autocompletion and content selector, add content selector      * values to the autocompleter list:      */
-DECL|method|addContentSelectorValuesToAutoCompleters ()
-specifier|public
-name|void
-name|addContentSelectorValuesToAutoCompleters
-parameter_list|()
-block|{
-for|for
-control|(
-name|String
-name|field
-range|:
-name|autoCompleters
-operator|.
-name|keySet
-argument_list|()
-control|)
-block|{
-name|AbstractAutoCompleter
-name|ac
-init|=
-name|autoCompleters
-operator|.
-name|get
-argument_list|(
-name|field
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|metaData
-operator|.
-name|getData
-argument_list|(
-name|Globals
-operator|.
-name|SELECTOR_META_PREFIX
-operator|+
-name|field
-argument_list|)
-operator|!=
-literal|null
-condition|)
-block|{
-name|Vector
-argument_list|<
-name|String
-argument_list|>
-name|items
-init|=
-name|metaData
-operator|.
-name|getData
-argument_list|(
-name|Globals
-operator|.
-name|SELECTOR_META_PREFIX
-operator|+
-name|field
-argument_list|)
-decl_stmt|;
-if|if
-condition|(
-name|items
-operator|!=
-literal|null
-condition|)
-block|{
-for|for
-control|(
-name|String
-name|item
-range|:
-name|items
-control|)
-name|ac
-operator|.
-name|addWordToIndex
-argument_list|(
-name|item
-argument_list|)
-expr_stmt|;
-block|}
-block|}
-block|}
-block|}
-comment|/**      * If an autocompleter exists for the "journal" field, add all      * journal names in the journal abbreviation list to this autocompleter.      */
-DECL|method|addJournalListToAutoCompleter ()
-specifier|public
-name|void
-name|addJournalListToAutoCompleter
-parameter_list|()
-block|{
-if|if
-condition|(
-name|autoCompleters
-operator|.
-name|containsKey
-argument_list|(
-literal|"journal"
-argument_list|)
-condition|)
-block|{
-name|AbstractAutoCompleter
-name|ac
-init|=
-name|autoCompleters
-operator|.
-name|get
-argument_list|(
-literal|"journal"
-argument_list|)
-decl_stmt|;
-name|Set
-argument_list|<
-name|String
-argument_list|>
-name|journals
-init|=
-name|Globals
-operator|.
-name|journalAbbrev
-operator|.
-name|getJournals
-argument_list|()
-operator|.
-name|keySet
-argument_list|()
-decl_stmt|;
-for|for
-control|(
-name|String
-name|journal
-range|:
-name|journals
-control|)
-name|ac
-operator|.
-name|addWordToIndex
-argument_list|(
-name|journal
-argument_list|)
-expr_stmt|;
-block|}
 block|}
 comment|/*     public void refreshTable() {         //System.out.println("hiding="+hidingNonHits+"\tlastHits="+lastSearchHits);         // This method is called by EntryTypeForm when a field value is         // stored. The table is scheduled for repaint.         entryTable.assureNotEditing();         //entryTable.invalidate();         BibtexEntry[] bes = entryTable.getSelectedEntries();     if (hidingNonHits)         tableModel.update(lastSearchHits);     else         tableModel.update();     //tableModel.remap();         if ((bes != null)&& (bes.length> 0))             selectEntries(bes, 0);      //long toc = System.currentTimeMillis();     //	Util.pr("Refresh took: "+(toc-tic)+" ms");     } */
 DECL|method|updatePreamble ()
@@ -11538,11 +11395,13 @@ name|preambleEditor
 operator|!=
 literal|null
 condition|)
+block|{
 name|preambleEditor
 operator|.
 name|updatePreamble
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 DECL|method|assureStringDialogNotEditing ()
 specifier|public
@@ -11556,11 +11415,13 @@ name|stringDialog
 operator|!=
 literal|null
 condition|)
+block|{
 name|stringDialog
 operator|.
 name|assureNotEditing
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 DECL|method|updateStringDialog ()
 specifier|public
@@ -11574,11 +11435,13 @@ name|stringDialog
 operator|!=
 literal|null
 condition|)
+block|{
 name|stringDialog
 operator|.
 name|refreshTable
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 DECL|method|updateEntryPreviewToRow (BibtexEntry e)
 specifier|public
@@ -11605,6 +11468,8 @@ if|if
 condition|(
 name|mode
 operator|==
+name|BasePanel
+operator|.
 name|SHOWING_PREVIEW
 condition|)
 block|{
@@ -11670,12 +11535,6 @@ if|if
 condition|(
 operator|(
 name|c
-operator|!=
-literal|null
-operator|)
-operator|&&
-operator|(
-name|c
 operator|instanceof
 name|EntryEditor
 operator|)
@@ -11694,9 +11553,11 @@ argument_list|()
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 DECL|method|moveFocusToEntryEditor ()
 specifier|public
@@ -11716,12 +11577,6 @@ if|if
 condition|(
 operator|(
 name|c
-operator|!=
-literal|null
-operator|)
-operator|&&
-operator|(
-name|c
 operator|instanceof
 name|EntryEditor
 operator|)
@@ -11736,7 +11591,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|isShowingEditor ()
-specifier|public
+specifier|private
 name|boolean
 name|isShowingEditor
 parameter_list|()
@@ -11879,6 +11734,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|divLoc
 operator|=
 name|splitPane
@@ -11886,6 +11742,7 @@ operator|.
 name|getDividerLocation
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|entryEditors
@@ -11933,6 +11790,7 @@ name|visName
 operator|!=
 literal|null
 condition|)
+block|{
 name|form
 operator|.
 name|setVisiblePanel
@@ -11940,6 +11798,7 @@ argument_list|(
 name|visName
 argument_list|)
 expr_stmt|;
+block|}
 name|splitPane
 operator|.
 name|setBottomComponent
@@ -11972,6 +11831,7 @@ name|visName
 operator|!=
 literal|null
 condition|)
+block|{
 name|form
 operator|.
 name|setVisiblePanel
@@ -11979,6 +11839,7 @@ argument_list|(
 name|visName
 argument_list|)
 expr_stmt|;
+block|}
 name|splitPane
 operator|.
 name|setBottomComponent
@@ -12019,6 +11880,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|splitPane
 operator|.
 name|setDividerLocation
@@ -12040,6 +11902,7 @@ argument_list|)
 expr_stmt|;
 comment|//new FocusRequester(form);
 comment|//form.requestFocus();
+block|}
 name|newEntryShowing
 argument_list|(
 name|be
@@ -12211,8 +12074,11 @@ if|if
 condition|(
 name|mode
 operator|==
+name|BasePanel
+operator|.
 name|SHOWING_EDITOR
 condition|)
+block|{
 name|Globals
 operator|.
 name|prefs
@@ -12232,13 +12098,17 @@ name|getDividerLocation
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
 name|mode
 operator|==
+name|BasePanel
+operator|.
 name|SHOWING_PREVIEW
 condition|)
+block|{
 name|Globals
 operator|.
 name|prefs
@@ -12258,8 +12128,11 @@ name|getDividerLocation
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|mode
 operator|=
+name|BasePanel
+operator|.
 name|SHOWING_EDITOR
 expr_stmt|;
 name|currentEditor
@@ -12283,6 +12156,7 @@ operator|!=
 name|getShowing
 argument_list|()
 condition|)
+block|{
 name|newEntryShowing
 argument_list|(
 name|editor
@@ -12291,6 +12165,7 @@ name|getEntry
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 name|adjustSplitter
 argument_list|()
 expr_stmt|;
@@ -12307,6 +12182,8 @@ parameter_list|)
 block|{
 name|mode
 operator|=
+name|BasePanel
+operator|.
 name|SHOWING_PREVIEW
 expr_stmt|;
 name|currentPreview
@@ -12330,6 +12207,8 @@ parameter_list|()
 block|{
 name|mode
 operator|=
+name|BasePanel
+operator|.
 name|SHOWING_NOTHING
 expr_stmt|;
 name|splitPane
@@ -12447,6 +12326,8 @@ condition|(
 operator|(
 name|mode
 operator|==
+name|BasePanel
+operator|.
 name|SHOWING_EDITOR
 operator|)
 operator|&&
@@ -12479,6 +12360,8 @@ if|if
 condition|(
 name|mode
 operator|==
+name|BasePanel
+operator|.
 name|SHOWING_EDITOR
 condition|)
 block|{
@@ -12576,24 +12459,29 @@ parameter_list|()
 block|{
 for|for
 control|(
+name|Map
+operator|.
+name|Entry
+argument_list|<
 name|String
-name|s
+argument_list|,
+name|EntryEditor
+argument_list|>
+name|stringEntryEditorEntry
 range|:
 name|entryEditors
 operator|.
-name|keySet
+name|entrySet
 argument_list|()
 control|)
 block|{
 name|EntryEditor
 name|ed
 init|=
-name|entryEditors
+name|stringEntryEditorEntry
 operator|.
-name|get
-argument_list|(
-name|s
-argument_list|)
+name|getValue
+argument_list|()
 decl_stmt|;
 name|ed
 operator|.
@@ -12610,24 +12498,29 @@ parameter_list|()
 block|{
 for|for
 control|(
+name|Map
+operator|.
+name|Entry
+argument_list|<
 name|String
-name|s
+argument_list|,
+name|EntryEditor
+argument_list|>
+name|stringEntryEditorEntry
 range|:
 name|entryEditors
 operator|.
-name|keySet
+name|entrySet
 argument_list|()
 control|)
 block|{
 name|EntryEditor
 name|ed
 init|=
-name|entryEditors
+name|stringEntryEditorEntry
 operator|.
-name|get
-argument_list|(
-name|s
-argument_list|)
+name|getValue
+argument_list|()
 decl_stmt|;
 name|ed
 operator|.
@@ -12677,7 +12570,7 @@ name|this
 argument_list|,
 name|oldTitle
 operator|+
-literal|"*"
+literal|'*'
 argument_list|,
 name|frame
 operator|.
@@ -12715,7 +12608,7 @@ literal|"Saved database"
 argument_list|)
 argument_list|)
 condition|)
-empty_stmt|;
+block|{         }
 name|frame
 operator|.
 name|output
@@ -12739,7 +12632,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|markChangedOrUnChanged ()
-specifier|public
+specifier|private
 specifier|synchronized
 name|void
 name|markChangedOrUnChanged
@@ -12784,6 +12677,7 @@ argument_list|()
 operator|!=
 literal|null
 condition|)
+block|{
 name|frame
 operator|.
 name|setTabTitle
@@ -12805,7 +12699,9 @@ name|getAbsolutePath
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|frame
 operator|.
 name|setTabTitle
@@ -12824,6 +12720,7 @@ argument_list|,
 literal|null
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|frame
 operator|.
@@ -12866,7 +12763,7 @@ argument_list|)
 expr_stmt|;
 block|}
 comment|/* *      * Selects all entries with a non-zero value in the field      * @param field<code>String</code> field name.      */
-comment|/*    public void selectResults(String field) {       LinkedList intervals = new LinkedList();       int prevStart = -1, prevToSel = 0;       // First we build a list of intervals to select, without touching the table.       for (int i = 0; i< entryTable.getRowCount(); i++) {         String value = (String) (database.getEntryById                                  (tableModel.getIdForRow(i)))             .getField(field);         if ( (value != null)&& !value.equals("0")) {           if (prevStart< 0)             prevStart = i;           prevToSel = i;         }         else if (prevStart>= 0) {           intervals.add(new int[] {prevStart, prevToSel});           prevStart = -1;         }       }       // Then select those intervals, if any.       if (intervals.size()> 0) {         entryTable.setSelectionListenerEnabled(false);         entryTable.clearSelection();         for (Iterator i=intervals.iterator(); i.hasNext();) {           int[] interval = (int[])i.next();           entryTable.addRowSelectionInterval(interval[0], interval[1]);         }         entryTable.setSelectionListenerEnabled(true);       }   */
+comment|/*    public void selectResults(String field) {           LinkedList intervals = new LinkedList();           int prevStart = -1, prevToSel = 0;           // First we build a list of intervals to select, without touching the table.           for (int i = 0; i< entryTable.getRowCount(); i++) {             String value = (String) (database.getEntryById                                      (tableModel.getIdForRow(i)))                 .getField(field);             if ( (value != null)&& !value.equals("0")) {               if (prevStart< 0)                 prevStart = i;               prevToSel = i;             }             else if (prevStart>= 0) {               intervals.add(new int[] {prevStart, prevToSel});               prevStart = -1;             }           }           // Then select those intervals, if any.           if (intervals.size()> 0) {             entryTable.setSelectionListenerEnabled(false);             entryTable.clearSelection();             for (Iterator i=intervals.iterator(); i.hasNext();) {               int[] interval = (int[])i.next();               entryTable.addRowSelectionInterval(interval[0], interval[1]);             }             entryTable.setSelectionListenerEnabled(true);           }       */
 DECL|method|setSearchMatcher (SearchMatcher matcher)
 specifier|public
 name|void
@@ -13061,7 +12958,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|changeType (BibtexEntry[] bes, BibtexEntryType type)
-specifier|public
+specifier|private
 name|void
 name|changeType
 parameter_list|(
@@ -13147,7 +13044,9 @@ name|JOptionPane
 operator|.
 name|NO_OPTION
 condition|)
+block|{
 return|return;
+block|}
 block|}
 name|NamedCompound
 name|ce
@@ -13222,13 +13121,13 @@ argument_list|(
 literal|"for"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|bes
 operator|.
 name|length
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -13237,7 +13136,7 @@ argument_list|(
 literal|"entries"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 name|ce
@@ -13290,7 +13189,7 @@ argument_list|(
 literal|"Really delete the selected"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -13299,7 +13198,7 @@ argument_list|(
 literal|"entry"
 argument_list|)
 operator|+
-literal|"?"
+literal|'?'
 decl_stmt|,
 name|title
 init|=
@@ -13326,11 +13225,11 @@ argument_list|(
 literal|"Really delete the selected"
 argument_list|)
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|numberOfEntries
 operator|+
-literal|" "
+literal|' '
 operator|+
 name|Globals
 operator|.
@@ -13339,7 +13238,7 @@ argument_list|(
 literal|"entries"
 argument_list|)
 operator|+
-literal|"?"
+literal|'?'
 expr_stmt|;
 name|title
 operator|=
@@ -13398,6 +13297,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|Globals
 operator|.
 name|prefs
@@ -13409,6 +13309,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 operator|(
 name|answer
@@ -13420,9 +13321,11 @@ operator|)
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 comment|/**      * If the relevant option is set, autogenerate keys for all entries that are      * lacking keys.      */
 DECL|method|autoGenerateKeysBeforeSaving ()
@@ -13492,10 +13395,8 @@ operator|||
 operator|(
 name|oldKey
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 operator|)
 condition|)
 block|{
@@ -13610,8 +13511,11 @@ if|if
 condition|(
 name|mode
 operator|==
+name|BasePanel
+operator|.
 name|SHOWING_PREVIEW
 condition|)
+block|{
 name|Globals
 operator|.
 name|prefs
@@ -13631,13 +13535,17 @@ name|getDividerLocation
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
 name|mode
 operator|==
+name|BasePanel
+operator|.
 name|SHOWING_EDITOR
 condition|)
+block|{
 name|Globals
 operator|.
 name|prefs
@@ -13658,12 +13566,15 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 DECL|class|UndoAction
 class|class
 name|UndoAction
-extends|extends
+implements|implements
 name|BaseAction
 block|{
+annotation|@
+name|Override
 DECL|method|action ()
 specifier|public
 name|void
@@ -13731,9 +13642,11 @@ argument_list|()
 expr_stmt|;
 block|}
 else|else
+block|{
 name|storeCurrentEdit
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 name|String
 name|name
@@ -13781,7 +13694,7 @@ argument_list|(
 literal|"Nothing to undo"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -13797,9 +13710,11 @@ block|}
 DECL|class|RedoAction
 class|class
 name|RedoAction
-extends|extends
+implements|implements
 name|BaseAction
 block|{
+annotation|@
+name|Override
 DECL|method|action ()
 specifier|public
 name|void
@@ -13886,7 +13801,7 @@ argument_list|(
 literal|"Nothing to redo"
 argument_list|)
 operator|+
-literal|"."
+literal|'.'
 argument_list|)
 expr_stmt|;
 block|}
@@ -13900,6 +13815,8 @@ expr_stmt|;
 block|}
 block|}
 comment|// Method pertaining to the ClipboardOwner interface.
+annotation|@
+name|Override
 DECL|method|lostOwnership (Clipboard clipboard, Transferable contents)
 specifier|public
 name|void
@@ -13911,9 +13828,9 @@ parameter_list|,
 name|Transferable
 name|contents
 parameter_list|)
-block|{}
+block|{     }
 DECL|method|setEntryEditorEnabled (boolean enabled)
-specifier|public
+specifier|private
 name|void
 name|setEntryEditorEnabled
 parameter_list|(
@@ -13960,6 +13877,7 @@ argument_list|()
 operator|!=
 name|enabled
 condition|)
+block|{
 name|ed
 operator|.
 name|setEnabled
@@ -13967,6 +13885,7 @@ argument_list|(
 name|enabled
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 DECL|method|fileMonitorHandle ()
@@ -13979,6 +13898,8 @@ return|return
 name|fileMonitorHandle
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|fileUpdated ()
 specifier|public
 name|void
@@ -13989,8 +13910,10 @@ if|if
 condition|(
 name|saving
 condition|)
+block|{
 return|return;
 comment|// We are just saving the file, so this message is most likely due
+block|}
 comment|//if (updatedExternally) {
 comment|//  return;
 comment|//}
@@ -14012,17 +13935,26 @@ argument_list|,
 name|BasePanel
 operator|.
 name|this
+argument_list|,
+name|BasePanel
+operator|.
+name|this
+operator|.
+name|getFile
+argument_list|()
 argument_list|)
 decl_stmt|;
 comment|// Adding the sidepane component is Swing work, so we must do this in the Swing
 comment|// thread:
-name|Thread
+name|Runnable
 name|t
 init|=
 operator|new
-name|Thread
+name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -14126,7 +14058,7 @@ literal|null
 operator|)
 operator|&&
 operator|!
-name|Util
+name|FileBasedLock
 operator|.
 name|waitForFileLock
 argument_list|(
@@ -14164,38 +14096,15 @@ argument_list|)
 expr_stmt|;
 return|return;
 block|}
-name|scanner
+name|JabRefExecutorService
 operator|.
-name|changeScan
+name|INSTANCE
+operator|.
+name|executeWithLowPriorityInOwnThreadAndWait
 argument_list|(
-name|BasePanel
-operator|.
-name|this
-operator|.
-name|getFile
-argument_list|()
+name|scanner
 argument_list|)
 expr_stmt|;
-try|try
-block|{
-name|scanner
-operator|.
-name|join
-argument_list|()
-expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
 if|if
 condition|(
 name|scanner
@@ -14222,6 +14131,8 @@ expr_stmt|;
 comment|//System.out.println("No changes found.");
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|fileRemoved ()
 specifier|public
 name|void
@@ -14257,6 +14168,7 @@ name|fileMonitorHandle
 operator|!=
 literal|null
 condition|)
+block|{
 name|Globals
 operator|.
 name|fileUpdateMonitor
@@ -14266,6 +14178,7 @@ argument_list|(
 name|fileMonitorHandle
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Check if there is a FileUpdatePanel for this BasePanel being shown. If so,
 comment|// remove it:
 if|if
@@ -14370,8 +14283,6 @@ argument_list|()
 decl_stmt|;
 name|String
 name|citeKey
-init|=
-literal|""
 decl_stmt|;
 comment|//, message = "";
 name|boolean
@@ -14404,18 +14315,20 @@ expr_stmt|;
 comment|// if the key is empty we give a warning and ignore this entry
 if|if
 condition|(
+operator|(
 name|citeKey
 operator|==
 literal|null
+operator|)
 operator|||
 name|citeKey
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
+block|{
 continue|continue;
+block|}
 if|if
 condition|(
 name|first
@@ -14439,7 +14352,7 @@ name|result
 operator|.
 name|append
 argument_list|(
-literal|","
+literal|','
 argument_list|)
 operator|.
 name|append
@@ -14573,7 +14486,7 @@ name|saving
 return|;
 block|}
 DECL|method|getShowing ()
-specifier|public
+specifier|private
 name|BibtexEntry
 name|getShowing
 parameter_list|()
@@ -14651,6 +14564,7 @@ name|GUIGlobals
 operator|.
 name|MAX_BACK_HISTORY_SIZE
 condition|)
+block|{
 name|previousEntries
 operator|.
 name|remove
@@ -14658,6 +14572,7 @@ argument_list|(
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|showing
 operator|=
@@ -14677,12 +14592,11 @@ parameter_list|()
 block|{
 if|if
 condition|(
+operator|!
 name|previousEntries
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|BibtexEntry
@@ -14719,6 +14633,7 @@ name|showing
 operator|!=
 literal|null
 condition|)
+block|{
 name|nextEntries
 operator|.
 name|add
@@ -14726,6 +14641,7 @@ argument_list|(
 name|showing
 argument_list|)
 expr_stmt|;
+block|}
 name|backOrForwardInProgress
 operator|=
 literal|true
@@ -14747,12 +14663,11 @@ parameter_list|()
 block|{
 if|if
 condition|(
+operator|!
 name|nextEntries
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|BibtexEntry
@@ -14789,6 +14704,7 @@ name|showing
 operator|!=
 literal|null
 condition|)
+block|{
 name|previousEntries
 operator|.
 name|add
@@ -14796,6 +14712,7 @@ argument_list|(
 name|showing
 argument_list|)
 expr_stmt|;
+block|}
 name|backOrForwardInProgress
 operator|=
 literal|true
@@ -14821,12 +14738,11 @@ name|back
 operator|.
 name|setEnabled
 argument_list|(
+operator|!
 name|previousEntries
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 argument_list|)
 expr_stmt|;
 name|frame
@@ -14835,12 +14751,11 @@ name|forward
 operator|.
 name|setEnabled
 argument_list|(
+operator|!
 name|nextEntries
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 argument_list|)
 expr_stmt|;
 block|}
@@ -14848,11 +14763,12 @@ DECL|class|SaveSelectedAction
 specifier|private
 class|class
 name|SaveSelectedAction
-extends|extends
+implements|implements
 name|BaseAction
 block|{
 DECL|field|saveType
 specifier|private
+specifier|final
 name|DatabaseSaveType
 name|saveType
 decl_stmt|;
@@ -14871,6 +14787,8 @@ operator|=
 name|saveType
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|action ()
 specifier|public
 name|void
@@ -14941,7 +14859,7 @@ name|showConfirmDialog
 argument_list|(
 name|frame
 argument_list|,
-literal|"'"
+literal|'\''
 operator|+
 name|expFile
 operator|.

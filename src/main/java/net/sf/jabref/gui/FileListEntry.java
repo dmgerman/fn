@@ -31,7 +31,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This class represents a file link for a Bibtex entry. */
+comment|/**  * This class represents a file link for a Bibtex entry.  */
 end_comment
 
 begin_class
@@ -166,6 +166,8 @@ operator|=
 name|type
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String

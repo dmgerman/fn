@@ -28,7 +28,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|StringUtil
 import|;
 end_import
 
@@ -77,7 +77,7 @@ class|class
 name|CaseChangers
 block|{
 DECL|field|SPACE_SEPARATOR
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -87,7 +87,6 @@ literal|" "
 decl_stmt|;
 DECL|interface|CaseChanger
 specifier|public
-specifier|static
 interface|interface
 name|CaseChanger
 block|{
@@ -113,6 +112,8 @@ name|LowerCaseChanger
 implements|implements
 name|CaseChanger
 block|{
+annotation|@
+name|Override
 DECL|method|getName ()
 specifier|public
 name|String
@@ -123,6 +124,8 @@ return|return
 literal|"lower"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|changeCase (String input)
 specifier|public
 name|String
@@ -148,6 +151,8 @@ name|UpperCaseChanger
 implements|implements
 name|CaseChanger
 block|{
+annotation|@
+name|Override
 DECL|method|getName ()
 specifier|public
 name|String
@@ -158,6 +163,8 @@ return|return
 literal|"UPPER"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|changeCase (String input)
 specifier|public
 name|String
@@ -197,6 +204,8 @@ argument_list|(
 literal|"\\b\\w"
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getName ()
 specifier|public
 name|String
@@ -207,6 +216,8 @@ return|return
 literal|"Upper first"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|changeCase (String input)
 specifier|public
 name|String
@@ -227,6 +238,8 @@ decl_stmt|;
 name|Matcher
 name|matcher
 init|=
+name|UpperFirstCaseChanger
+operator|.
 name|UF_PATTERN
 operator|.
 name|matcher
@@ -275,6 +288,8 @@ name|UpperEachFirstCaseChanger
 implements|implements
 name|CaseChanger
 block|{
+annotation|@
+name|Override
 DECL|method|getName ()
 specifier|public
 name|String
@@ -285,6 +300,8 @@ return|return
 literal|"Upper Each First"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|changeCase (String input)
 specifier|public
 name|String
@@ -347,7 +364,7 @@ index|[
 name|i
 index|]
 operator|=
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
@@ -359,12 +376,14 @@ argument_list|)
 expr_stmt|;
 block|}
 return|return
-name|Util
+name|StringUtil
 operator|.
 name|join
 argument_list|(
 name|result
 argument_list|,
+name|CaseChangers
+operator|.
 name|SPACE_SEPARATOR
 argument_list|)
 return|;
@@ -466,6 +485,8 @@ name|smallerWords
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getName ()
 specifier|public
 name|String
@@ -476,6 +497,8 @@ return|return
 literal|"Title"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|changeCase (String input)
 specifier|public
 name|String
@@ -554,11 +577,13 @@ name|alwaysCapitalizeLastWord
 init|=
 name|i
 operator|==
+operator|(
 name|words
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 decl_stmt|;
 if|if
 condition|(
@@ -566,42 +591,13 @@ name|alwaysCapitalizeFirstWord
 operator|||
 name|alwaysCapitalizeLastWord
 condition|)
+block|{
 name|result
 index|[
 name|i
 index|]
 operator|=
-name|Util
-operator|.
-name|nCase
-argument_list|(
-name|word
-argument_list|)
-expr_stmt|;
-elseif|else
-if|if
-condition|(
-name|notToCapitalize
-operator|.
-name|contains
-argument_list|(
-name|word
-argument_list|)
-condition|)
-name|result
-index|[
-name|i
-index|]
-operator|=
-name|word
-expr_stmt|;
-else|else
-name|result
-index|[
-name|i
-index|]
-operator|=
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
@@ -609,13 +605,52 @@ name|word
 argument_list|)
 expr_stmt|;
 block|}
+elseif|else
+if|if
+condition|(
+name|TitleCaseChanger
+operator|.
+name|notToCapitalize
+operator|.
+name|contains
+argument_list|(
+name|word
+argument_list|)
+condition|)
+block|{
+name|result
+index|[
+name|i
+index|]
+operator|=
+name|word
+expr_stmt|;
+block|}
+else|else
+block|{
+name|result
+index|[
+name|i
+index|]
+operator|=
+name|StringUtil
+operator|.
+name|nCase
+argument_list|(
+name|word
+argument_list|)
+expr_stmt|;
+block|}
+block|}
 return|return
-name|Util
+name|StringUtil
 operator|.
 name|join
 argument_list|(
 name|result
 argument_list|,
+name|CaseChangers
+operator|.
 name|SPACE_SEPARATOR
 argument_list|)
 return|;
@@ -690,14 +725,24 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
+name|CaseChangers
+operator|.
 name|LOWER
 argument_list|,
+name|CaseChangers
+operator|.
 name|UPPER
 argument_list|,
+name|CaseChangers
+operator|.
 name|UPPER_FIRST
 argument_list|,
+name|CaseChangers
+operator|.
 name|UPPER_EACH_FIRST
 argument_list|,
+name|CaseChangers
+operator|.
 name|TITLE
 argument_list|)
 decl_stmt|;

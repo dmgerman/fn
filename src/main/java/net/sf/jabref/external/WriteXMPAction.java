@@ -201,36 +201,47 @@ extends|extends
 name|AbstractWorker
 block|{
 DECL|field|panel
+specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|entries
+specifier|private
 name|BibtexEntry
 index|[]
 name|entries
 decl_stmt|;
 DECL|field|database
+specifier|private
 name|BibtexDatabase
 name|database
 decl_stmt|;
 DECL|field|optDiag
+specifier|private
 name|OptionsDialog
 name|optDiag
 decl_stmt|;
 DECL|field|goOn
+specifier|private
 name|boolean
 name|goOn
 init|=
 literal|true
 decl_stmt|;
 DECL|field|skipped
-DECL|field|entriesChanged
-DECL|field|errors
+specifier|private
 name|int
 name|skipped
-decl_stmt|,
+decl_stmt|;
+DECL|field|entriesChanged
+specifier|private
+name|int
 name|entriesChanged
-decl_stmt|,
+decl_stmt|;
+DECL|field|errors
+specifier|private
+name|int
 name|errors
 decl_stmt|;
 DECL|method|WriteXMPAction (BasePanel panel)
@@ -248,6 +259,8 @@ operator|=
 name|panel
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|init ()
 specifier|public
 name|void
@@ -441,6 +454,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -452,7 +467,9 @@ condition|(
 operator|!
 name|goOn
 condition|)
+block|{
 return|return;
+block|}
 for|for
 control|(
 name|BibtexEntry
@@ -503,7 +520,7 @@ decl_stmt|;
 name|File
 name|f
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -518,6 +535,7 @@ name|f
 operator|!=
 literal|null
 condition|)
+block|{
 name|files
 operator|.
 name|add
@@ -525,6 +543,7 @@ argument_list|(
 name|f
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Then check the "file" field:
 name|dirs
 operator|=
@@ -633,7 +652,7 @@ condition|)
 block|{
 name|f
 operator|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -651,6 +670,7 @@ name|f
 operator|!=
 literal|null
 condition|)
+block|{
 name|files
 operator|.
 name|add
@@ -658,6 +678,7 @@ argument_list|(
 name|f
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 block|}
@@ -708,6 +729,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 for|for
 control|(
 name|File
@@ -853,6 +875,7 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
 if|if
 condition|(
 name|optDiag
@@ -922,6 +945,8 @@ name|done
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void
@@ -933,7 +958,9 @@ condition|(
 operator|!
 name|goOn
 condition|)
+block|{
 return|return;
+block|}
 name|panel
 operator|.
 name|output
@@ -984,7 +1011,7 @@ init|=
 literal|7459164400811785958L
 decl_stmt|;
 DECL|field|okButton
-DECL|field|cancelButton
+specifier|final
 name|JButton
 name|okButton
 init|=
@@ -998,7 +1025,10 @@ argument_list|(
 literal|"Ok"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+DECL|field|cancelButton
+specifier|final
+name|JButton
 name|cancelButton
 init|=
 operator|new
@@ -1017,6 +1047,7 @@ name|boolean
 name|canceled
 decl_stmt|;
 DECL|field|progressArea
+specifier|final
 name|JTextArea
 name|progressArea
 decl_stmt|;
@@ -1057,6 +1088,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1088,6 +1121,8 @@ init|=
 operator|-
 literal|338601477652815366L
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed

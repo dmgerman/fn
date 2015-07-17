@@ -30,7 +30,7 @@ specifier|public
 class|class
 name|BibtexTextPrefix
 block|{
-comment|/** 	 *  	 * @param numOfChars 	 * @param toPrefix 	 * @param warn may-be-null 	 * @return 	 */
+comment|/**      *       * @param numOfChars      * @param toPrefix      * @param warn may-be-null      * @return      */
 DECL|method|textPrefix (int numOfChars, String toPrefix, Warn warn)
 specifier|public
 specifier|static
@@ -82,13 +82,17 @@ literal|0
 decl_stmt|;
 while|while
 condition|(
+operator|(
 name|i
-argument_list|<
+operator|<
 name|n
+operator|)
 operator|&&
+operator|(
 name|numOfChars
-argument_list|>
+operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|char
@@ -114,13 +118,17 @@ operator|++
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|braceLevel
 operator|==
 literal|1
+operator|)
 operator|&&
+operator|(
 name|i
 operator|<
 name|n
+operator|)
 operator|&&
 operator|(
 name|cs
@@ -138,13 +146,17 @@ expr_stmt|;
 comment|// skip backslash
 while|while
 condition|(
+operator|(
 name|i
-argument_list|<
+operator|<
 name|n
+operator|)
 operator|&&
+operator|(
 name|braceLevel
-argument_list|>
+operator|>
 literal|0
+operator|)
 condition|)
 block|{
 if|if
@@ -212,6 +224,7 @@ name|warn
 operator|!=
 literal|null
 condition|)
+block|{
 name|warn
 operator|.
 name|warn
@@ -221,6 +234,7 @@ operator|+
 name|toPrefix
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 else|else

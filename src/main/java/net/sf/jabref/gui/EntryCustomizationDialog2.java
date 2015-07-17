@@ -155,7 +155,8 @@ implements|,
 name|ActionListener
 block|{
 DECL|field|frame
-specifier|protected
+specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -178,46 +179,62 @@ name|GridBagConstraints
 argument_list|()
 decl_stmt|;
 DECL|field|reqComp
-DECL|field|optComp
-DECL|field|optComp2
-specifier|protected
+specifier|private
 name|FieldSetComponent
 name|reqComp
-decl_stmt|,
+decl_stmt|;
+DECL|field|optComp
+specifier|private
+name|FieldSetComponent
 name|optComp
-decl_stmt|,
+decl_stmt|;
+DECL|field|optComp2
+specifier|private
+name|FieldSetComponent
 name|optComp2
 decl_stmt|;
 DECL|field|typeComp
-specifier|protected
+specifier|private
 name|EntryTypeList
 name|typeComp
 decl_stmt|;
 DECL|field|ok
+specifier|private
+name|JButton
+name|ok
+decl_stmt|;
 DECL|field|cancel
+specifier|private
+name|JButton
+name|cancel
+decl_stmt|;
 DECL|field|apply
+specifier|private
+name|JButton
+name|apply
+decl_stmt|;
 DECL|field|helpButton
+specifier|protected
+name|JButton
+name|helpButton
+decl_stmt|;
 DECL|field|delete
+specifier|protected
+name|JButton
+name|delete
+decl_stmt|;
 DECL|field|importTypes
+specifier|protected
+name|JButton
+name|importTypes
+decl_stmt|;
 DECL|field|exportTypes
 specifier|protected
 name|JButton
-name|ok
-decl_stmt|,
-name|cancel
-decl_stmt|,
-name|apply
-decl_stmt|,
-name|helpButton
-decl_stmt|,
-name|delete
-decl_stmt|,
-name|importTypes
-decl_stmt|,
 name|exportTypes
 decl_stmt|;
 DECL|field|preset
-specifier|protected
+specifier|private
 specifier|final
 name|List
 argument_list|<
@@ -240,14 +257,15 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|lastSelected
-specifier|protected
+specifier|private
 name|String
 name|lastSelected
 init|=
 literal|null
 decl_stmt|;
 DECL|field|reqLists
-specifier|protected
+specifier|private
+specifier|final
 name|Map
 argument_list|<
 name|String
@@ -270,8 +288,19 @@ name|String
 argument_list|>
 argument_list|>
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|optLists
+specifier|private
+specifier|final
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
 name|optLists
 init|=
 operator|new
@@ -285,8 +314,19 @@ name|String
 argument_list|>
 argument_list|>
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|opt2Lists
+specifier|private
+specifier|final
+name|Map
+argument_list|<
+name|String
+argument_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
 name|opt2Lists
 init|=
 operator|new
@@ -302,8 +342,8 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|defaulted
-DECL|field|changed
-specifier|protected
+specifier|private
+specifier|final
 name|Set
 argument_list|<
 name|String
@@ -316,7 +356,14 @@ argument_list|<
 name|String
 argument_list|>
 argument_list|()
-decl_stmt|,
+decl_stmt|;
+DECL|field|changed
+specifier|private
+specifier|final
+name|Set
+argument_list|<
+name|String
+argument_list|>
 name|changed
 init|=
 operator|new
@@ -327,6 +374,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|biblatexMode
+specifier|private
 name|boolean
 name|biblatexMode
 decl_stmt|;
@@ -364,8 +412,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|initGui ()
-specifier|protected
-specifier|final
+specifier|private
 name|void
 name|initGui
 parameter_list|()
@@ -870,6 +917,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -999,6 +1048,8 @@ name|pack
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|valueChanged (ListSelectionEvent e)
 specifier|public
 name|void
@@ -1055,6 +1106,7 @@ if|if
 condition|(
 name|biblatexMode
 condition|)
+block|{
 name|opt2Lists
 operator|.
 name|put
@@ -1067,6 +1119,7 @@ name|getFields
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|String
 name|s
@@ -1082,7 +1135,9 @@ name|s
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|List
 argument_list|<
 name|String
@@ -1150,6 +1205,7 @@ name|rf
 operator|!=
 literal|null
 condition|)
+block|{
 name|req
 operator|=
 name|java
@@ -1163,7 +1219,9 @@ argument_list|(
 name|rf
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|req
 operator|=
 operator|new
@@ -1173,6 +1231,7 @@ name|String
 argument_list|>
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|!
@@ -1185,6 +1244,7 @@ name|of
 operator|!=
 literal|null
 condition|)
+block|{
 name|opt
 operator|=
 name|java
@@ -1198,7 +1258,9 @@ argument_list|(
 name|of
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|opt
 operator|=
 operator|new
@@ -1208,6 +1270,7 @@ name|String
 argument_list|>
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -1226,6 +1289,7 @@ name|priOf
 operator|!=
 literal|null
 condition|)
+block|{
 name|opt
 operator|=
 name|java
@@ -1239,7 +1303,9 @@ argument_list|(
 name|priOf
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|opt
 operator|=
 operator|new
@@ -1249,6 +1315,7 @@ name|String
 argument_list|>
 argument_list|()
 expr_stmt|;
+block|}
 name|List
 argument_list|<
 name|String
@@ -1268,6 +1335,7 @@ name|of
 operator|!=
 literal|null
 condition|)
+block|{
 for|for
 control|(
 name|String
@@ -1275,6 +1343,7 @@ name|anOf
 range|:
 name|of
 control|)
+block|{
 if|if
 condition|(
 operator|!
@@ -1285,6 +1354,7 @@ argument_list|(
 name|anOf
 argument_list|)
 condition|)
+block|{
 name|opt2
 operator|.
 name|add
@@ -1292,6 +1362,9 @@ argument_list|(
 name|anOf
 argument_list|)
 expr_stmt|;
+block|}
+block|}
+block|}
 name|optComp2
 operator|.
 name|setFields
@@ -1435,6 +1508,7 @@ if|if
 condition|(
 name|biblatexMode
 condition|)
+block|{
 name|optComp2
 operator|.
 name|setFields
@@ -1447,6 +1521,7 @@ name|s
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|lastSelected
 operator|=
@@ -1476,7 +1551,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|applyChanges ()
-specifier|protected
+specifier|private
 name|void
 name|applyChanges
 parameter_list|()
@@ -1512,12 +1587,22 @@ argument_list|()
 decl_stmt|;
 for|for
 control|(
+name|Map
+operator|.
+name|Entry
+argument_list|<
 name|String
-name|typeName
+argument_list|,
+name|List
+argument_list|<
+name|String
+argument_list|>
+argument_list|>
+name|stringListEntry
 range|:
 name|reqLists
 operator|.
-name|keySet
+name|entrySet
 argument_list|()
 control|)
 block|{
@@ -1528,22 +1613,25 @@ name|types
 operator|.
 name|contains
 argument_list|(
-name|typeName
+name|stringListEntry
+operator|.
+name|getKey
+argument_list|()
 argument_list|)
 condition|)
+block|{
 continue|continue;
+block|}
 name|List
 argument_list|<
 name|String
 argument_list|>
 name|reqFields
 init|=
-name|reqLists
+name|stringListEntry
 operator|.
-name|get
-argument_list|(
-name|typeName
-argument_list|)
+name|getValue
+argument_list|()
 decl_stmt|;
 name|List
 argument_list|<
@@ -1555,7 +1643,10 @@ name|optLists
 operator|.
 name|get
 argument_list|(
-name|typeName
+name|stringListEntry
+operator|.
+name|getKey
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|List
@@ -1568,7 +1659,10 @@ name|opt2Lists
 operator|.
 name|get
 argument_list|(
-name|typeName
+name|stringListEntry
+operator|.
+name|getKey
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|String
@@ -1625,6 +1719,7 @@ name|opt2Fields
 operator|!=
 literal|null
 condition|)
+block|{
 name|opt2Str
 operator|=
 name|opt2Fields
@@ -1641,7 +1736,9 @@ argument_list|()
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|opt2Str
 operator|=
 operator|new
@@ -1650,6 +1747,7 @@ index|[
 literal|0
 index|]
 expr_stmt|;
+block|}
 comment|// If this type is already existing, check if any changes have
 comment|// been made
 name|boolean
@@ -1663,7 +1761,10 @@ name|defaulted
 operator|.
 name|contains
 argument_list|(
-name|typeName
+name|stringListEntry
+operator|.
+name|getKey
+argument_list|()
 argument_list|)
 condition|)
 block|{
@@ -1672,11 +1773,14 @@ comment|//System.out.println("Defaulting: "+typeName);
 name|String
 name|nm
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
-name|typeName
+name|stringListEntry
+operator|.
+name|getKey
+argument_list|()
 argument_list|)
 decl_stmt|;
 name|BibtexEntryType
@@ -1700,7 +1804,10 @@ name|BibtexEntryType
 operator|.
 name|getType
 argument_list|(
-name|typeName
+name|stringListEntry
+operator|.
+name|getKey
+argument_list|()
 argument_list|)
 decl_stmt|;
 if|if
@@ -1776,10 +1883,12 @@ argument_list|,
 name|opt2Str
 argument_list|)
 condition|)
+block|{
 name|changesMade
 operator|=
 literal|false
 expr_stmt|;
+block|}
 block|}
 elseif|else
 if|if
@@ -1798,10 +1907,12 @@ argument_list|,
 name|optStr
 argument_list|)
 condition|)
+block|{
 name|changesMade
 operator|=
 literal|false
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -1817,11 +1928,14 @@ condition|?
 operator|new
 name|CustomEntryType
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
-name|typeName
+name|stringListEntry
+operator|.
+name|getKey
+argument_list|()
 argument_list|)
 argument_list|,
 name|reqStr
@@ -1834,11 +1948,14 @@ else|:
 operator|new
 name|CustomEntryType
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
-name|typeName
+name|stringListEntry
+operator|.
+name|getKey
+argument_list|()
 argument_list|)
 argument_list|,
 name|reqStr
@@ -1852,7 +1969,10 @@ name|ALL_TYPES
 operator|.
 name|put
 argument_list|(
-name|typeName
+name|stringListEntry
+operator|.
+name|getKey
+argument_list|()
 operator|.
 name|toLowerCase
 argument_list|()
@@ -1919,12 +2039,11 @@ block|}
 comment|// Remove those that should be removed:
 if|if
 condition|(
+operator|!
 name|toRemove
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 for|for
@@ -1934,6 +2053,7 @@ name|aToRemove
 range|:
 name|toRemove
 control|)
+block|{
 name|typeDeletion
 argument_list|(
 operator|(
@@ -1943,12 +2063,13 @@ name|aToRemove
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 name|updateTables
 argument_list|()
 expr_stmt|;
 block|}
 DECL|method|typeDeletion (String name)
-specifier|protected
+specifier|private
 name|void
 name|typeDeletion
 parameter_list|(
@@ -2014,14 +2135,14 @@ argument_list|)
 operator|+
 literal|" '"
 operator|+
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
 name|name
 argument_list|)
 operator|+
-literal|"'"
+literal|'\''
 argument_list|,
 name|JOptionPane
 operator|.
@@ -2040,7 +2161,9 @@ name|JOptionPane
 operator|.
 name|YES_OPTION
 condition|)
+block|{
 return|return;
+block|}
 block|}
 name|BibtexEntryType
 operator|.
@@ -2051,7 +2174,7 @@ argument_list|)
 expr_stmt|;
 name|updateTypesForEntries
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|nCase
 argument_list|(
@@ -2084,6 +2207,7 @@ if|if
 condition|(
 name|biblatexMode
 condition|)
+block|{
 name|opt2Lists
 operator|.
 name|remove
@@ -2092,11 +2216,12 @@ name|name
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 comment|//messageLabel.setText("'"+type.getName()+"' "+
 comment|//        Globals.lang("is a standard type."));
 block|}
 DECL|method|equalArrays (String[] one, String[] two)
-specifier|protected
+specifier|private
 name|boolean
 name|equalArrays
 parameter_list|(
@@ -2123,10 +2248,12 @@ operator|==
 literal|null
 operator|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
 comment|// Both null.
+block|}
 if|if
 condition|(
 operator|(
@@ -2141,10 +2268,12 @@ operator|==
 literal|null
 operator|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
 comment|// One of them null, the other not.
+block|}
 if|if
 condition|(
 name|one
@@ -2155,10 +2284,12 @@ name|two
 operator|.
 name|length
 condition|)
+block|{
 return|return
 literal|false
 return|;
 comment|// Different length.
+block|}
 comment|// If we get here, we know that both are non-null, and that they have the same length.
 for|for
 control|(
@@ -2193,15 +2324,19 @@ name|i
 index|]
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 comment|// If we get here, all entries have matched.
 return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2282,7 +2417,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**  * Cycle through all databases, and make sure everything is updated with  * the new type customization. This includes making sure all entries have  * a valid type, that no obsolete entry editors are around, and that  * the right-click menus' change type menu is up-to-date.  */
+comment|/**      * Cycle through all databases, and make sure everything is updated with      * the new type customization. This includes making sure all entries have      * a valid type, that no obsolete entry editors are around, and that      * the right-click menus' change type menu is up-to-date.      */
 DECL|method|updateTypesForEntries (String typeName)
 specifier|private
 name|void
@@ -2304,7 +2439,9 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 return|return;
+block|}
 for|for
 control|(
 name|int
@@ -2392,7 +2529,9 @@ argument_list|()
 operator|==
 literal|0
 condition|)
+block|{
 return|return;
+block|}
 for|for
 control|(
 name|int
@@ -2429,11 +2568,14 @@ block|}
 comment|// DEFAULT button pressed. Remember that this entry should be reset to default,
 comment|// unless changes are made later.
 DECL|class|DefaultListener
+specifier|private
 class|class
 name|DefaultListener
 implements|implements
 name|ActionListener
 block|{
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -2449,7 +2591,9 @@ name|lastSelected
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|defaulted
 operator|.
 name|add
@@ -2506,6 +2650,7 @@ name|rf
 operator|!=
 literal|null
 condition|)
+block|{
 name|req
 operator|=
 name|java
@@ -2519,7 +2664,9 @@ argument_list|(
 name|rf
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|req
 operator|=
 operator|new
@@ -2529,6 +2676,7 @@ name|String
 argument_list|>
 argument_list|()
 expr_stmt|;
+block|}
 name|opt1
 operator|=
 operator|new
@@ -2587,6 +2735,7 @@ name|priOptArray
 operator|!=
 literal|null
 condition|)
+block|{
 name|opt1
 operator|=
 name|java
@@ -2600,12 +2749,14 @@ argument_list|(
 name|priOptArray
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|secOptArray
 operator|!=
 literal|null
 condition|)
+block|{
 name|opt2
 operator|=
 name|java
@@ -2621,6 +2772,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
 else|else
 block|{
 if|if
@@ -2629,6 +2781,7 @@ name|of
 operator|!=
 literal|null
 condition|)
+block|{
 name|opt1
 operator|=
 name|java
@@ -2642,6 +2795,7 @@ argument_list|(
 name|of
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|reqComp
 operator|.
@@ -2668,6 +2822,7 @@ if|if
 condition|(
 name|biblatexMode
 condition|)
+block|{
 name|optComp2
 operator|.
 name|setFields
@@ -2678,12 +2833,15 @@ expr_stmt|;
 block|}
 block|}
 block|}
+block|}
 DECL|class|DataListener
 class|class
 name|DataListener
 implements|implements
 name|ListDataListener
 block|{
+annotation|@
+name|Override
 DECL|method|intervalAdded (javax.swing.event.ListDataEvent e)
 specifier|public
 name|void
@@ -2703,6 +2861,8 @@ name|record
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|intervalRemoved (javax.swing.event.ListDataEvent e)
 specifier|public
 name|void
@@ -2722,6 +2882,8 @@ name|record
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|contentsChanged (javax.swing.event.ListDataEvent e)
 specifier|public
 name|void
@@ -2753,7 +2915,9 @@ name|lastSelected
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|defaulted
 operator|.
 name|remove

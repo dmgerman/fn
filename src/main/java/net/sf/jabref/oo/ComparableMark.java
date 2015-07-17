@@ -36,7 +36,6 @@ end_comment
 
 begin_class
 DECL|class|ComparableMark
-specifier|public
 class|class
 name|ComparableMark
 implements|implements
@@ -46,10 +45,14 @@ name|ComparableMark
 argument_list|>
 block|{
 DECL|field|name
+specifier|private
+specifier|final
 name|String
 name|name
 decl_stmt|;
 DECL|field|position
+specifier|private
+specifier|final
 name|Point
 name|position
 decl_stmt|;
@@ -77,6 +80,8 @@ operator|=
 name|position
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|compareTo (ComparableMark other)
 specifier|public
 name|int
@@ -98,6 +103,7 @@ name|position
 operator|.
 name|Y
 condition|)
+block|{
 return|return
 name|position
 operator|.
@@ -109,7 +115,9 @@ name|position
 operator|.
 name|Y
 return|;
+block|}
 else|else
+block|{
 return|return
 name|position
 operator|.
@@ -121,6 +129,7 @@ name|position
 operator|.
 name|X
 return|;
+block|}
 block|}
 DECL|method|getName ()
 specifier|public

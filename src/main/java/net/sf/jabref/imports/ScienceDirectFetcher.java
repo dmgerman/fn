@@ -36,18 +36,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|GUIGlobals
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|Globals
 import|;
 end_import
@@ -181,15 +169,16 @@ implements|implements
 name|EntryFetcher
 block|{
 DECL|field|MAX_PAGES_TO_LOAD
-specifier|protected
+specifier|private
 specifier|static
+specifier|final
 name|int
 name|MAX_PAGES_TO_LOAD
 init|=
 literal|8
 decl_stmt|;
 DECL|field|WEBSITE_URL
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -198,18 +187,20 @@ init|=
 literal|"http://www.sciencedirect.com"
 decl_stmt|;
 DECL|field|SEARCH_URL
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
 name|SEARCH_URL
 init|=
+name|ScienceDirectFetcher
+operator|.
 name|WEBSITE_URL
 operator|+
 literal|"/science/quicksearch?query="
 decl_stmt|;
 DECL|field|linkPrefix
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -218,7 +209,7 @@ init|=
 literal|"http://www.sciencedirect.com/science?_ob=ArticleURL&"
 decl_stmt|;
 DECL|field|linkPattern
-specifier|protected
+specifier|private
 specifier|static
 specifier|final
 name|Pattern
@@ -230,6 +221,8 @@ name|compile
 argument_list|(
 literal|"<a href=\""
 operator|+
+name|ScienceDirectFetcher
+operator|.
 name|linkPrefix
 operator|.
 name|replaceAll
@@ -257,19 +250,14 @@ literal|"<a href=\"(.*)\">Next&gt;"
 argument_list|)
 decl_stmt|;
 DECL|field|stopFetching
-specifier|protected
+specifier|private
 name|boolean
 name|stopFetching
 init|=
 literal|false
 decl_stmt|;
-DECL|field|noAccessFound
-specifier|protected
-name|boolean
-name|noAccessFound
-init|=
-literal|false
-decl_stmt|;
+annotation|@
+name|Override
 DECL|method|getHelpPage ()
 specifier|public
 name|String
@@ -280,21 +268,8 @@ return|return
 literal|"ScienceDirect.html"
 return|;
 block|}
-DECL|method|getIcon ()
-specifier|public
-name|URL
-name|getIcon
-parameter_list|()
-block|{
-return|return
-name|GUIGlobals
-operator|.
-name|getIconUrl
-argument_list|(
-literal|"www"
-argument_list|)
-return|;
-block|}
+annotation|@
+name|Override
 DECL|method|getKeyName ()
 specifier|public
 name|String
@@ -305,6 +280,8 @@ return|return
 literal|"ScienceDirect"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getOptionsPanel ()
 specifier|public
 name|JPanel
@@ -316,6 +293,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTitle ()
 specifier|public
 name|String
@@ -331,6 +310,8 @@ literal|"Search ScienceDirect"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|stopFetching ()
 specifier|public
 name|void
@@ -341,11 +322,14 @@ name|stopFetching
 operator|=
 literal|true
 expr_stmt|;
+name|boolean
 name|noAccessFound
-operator|=
+init|=
 literal|false
-expr_stmt|;
+decl_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|processQuery (String query, ImportInspector dialog, OutputPrinter status)
 specifier|public
 name|boolean
@@ -384,9 +368,11 @@ name|citations
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 if|if
 condition|(
 name|citations
@@ -443,7 +429,9 @@ if|if
 condition|(
 name|stopFetching
 condition|)
+block|{
 break|break;
+block|}
 name|BibtexEntry
 name|entry
 init|=
@@ -460,6 +448,7 @@ name|entry
 operator|!=
 literal|null
 condition|)
+block|{
 name|dialog
 operator|.
 name|addEntry
@@ -467,6 +456,7 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
 name|dialog
 operator|.
 name|setProgress
@@ -522,7 +512,7 @@ return|;
 block|}
 comment|/**      *      * @param query      *            The search term to query JStor for.      * @return a list of IDs      * @throws java.io.IOException      */
 DECL|method|getCitations (String query)
-specifier|protected
+specifier|private
 name|List
 argument_list|<
 name|String
@@ -555,6 +545,8 @@ try|try
 block|{
 name|urlQuery
 operator|=
+name|ScienceDirectFetcher
+operator|.
 name|SEARCH_URL
 operator|+
 name|URLEncoder
@@ -573,8 +565,6 @@ literal|1
 decl_stmt|;
 name|String
 name|nextPage
-init|=
-literal|null
 decl_stmt|;
 while|while
 condition|(
@@ -596,6 +586,8 @@ operator|&&
 operator|(
 name|count
 operator|<
+name|ScienceDirectFetcher
+operator|.
 name|MAX_PAGES_TO_LOAD
 operator|)
 condition|)
@@ -628,7 +620,7 @@ throw|;
 block|}
 block|}
 DECL|method|getCitationsFromUrl (String urlQuery, List<String> ids)
-specifier|protected
+specifier|private
 name|String
 name|getCitationsFromUrl
 parameter_list|(
@@ -653,32 +645,24 @@ argument_list|(
 name|urlQuery
 argument_list|)
 decl_stmt|;
-name|URLDownload
-name|ud
+name|String
+name|cont
 init|=
 operator|new
 name|URLDownload
 argument_list|(
 name|url
 argument_list|)
-decl_stmt|;
-name|ud
 operator|.
-name|download
-argument_list|()
-expr_stmt|;
-name|String
-name|cont
-init|=
-name|ud
-operator|.
-name|getStringContent
+name|downloadToString
 argument_list|()
 decl_stmt|;
 comment|//String entirePage = cont;
 name|Matcher
 name|m
 init|=
+name|ScienceDirectFetcher
+operator|.
 name|linkPattern
 operator|.
 name|matcher
@@ -706,6 +690,8 @@ name|ids
 operator|.
 name|add
 argument_list|(
+name|ScienceDirectFetcher
+operator|.
 name|linkPrefix
 operator|+
 name|m
@@ -730,6 +716,8 @@ argument_list|)
 expr_stmt|;
 name|m
 operator|=
+name|ScienceDirectFetcher
+operator|.
 name|linkPattern
 operator|.
 name|matcher

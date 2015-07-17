@@ -77,6 +77,7 @@ decl_stmt|;
 comment|// localized menu string used at menu / button
 DECL|field|menuString
 specifier|private
+specifier|final
 name|String
 name|menuString
 decl_stmt|;
@@ -96,17 +97,19 @@ literal|null
 decl_stmt|;
 DECL|field|icon
 specifier|private
+specifier|final
 name|ImageIcon
 name|icon
 decl_stmt|;
 DECL|field|toolTipText
 specifier|private
+specifier|final
 name|String
 name|toolTipText
 decl_stmt|;
 comment|// value when used in a separate vield
 comment|//private String fieldValue;
-comment|/** 	 *  	 * @param field The special field this value is a value of 	 * @param keyword - The keyword to be used at BibTex's keyword field 	 * @param actionName - the action to call 	 * @param menuString - the string to display at a menu 	 * @param icon - the icon of this value 	 * @param toolTipText - the tool tip text 	 */
+comment|/**      *       * @param field The special field this value is a value of      * @param keyword - The keyword to be used at BibTex's keyword field      * @param actionName - the action to call      * @param menuString - the string to display at a menu      * @param icon - the icon of this value      * @param toolTipText - the tool tip text      */
 DECL|method|SpecialFieldValue ( SpecialField field, String keyword, String actionName, String menuString, ImageIcon icon, String toolTipText)
 specifier|public
 name|SpecialFieldValue

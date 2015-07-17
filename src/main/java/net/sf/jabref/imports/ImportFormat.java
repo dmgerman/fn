@@ -168,11 +168,11 @@ init|=
 name|getFormatName
 argument_list|()
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|result
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|id
 operator|.
@@ -288,6 +288,8 @@ name|isCustomImporter
 return|;
 block|}
 comment|/*      *  (non-Javadoc)      * @see java.lang.Object#hashCode()      */
+annotation|@
+name|Override
 DECL|method|hashCode ()
 specifier|public
 name|int
@@ -303,6 +305,8 @@ argument_list|()
 return|;
 block|}
 comment|/*      *  (non-Javadoc)      * @see java.lang.Object#equals(java.lang.Object)      */
+annotation|@
+name|Override
 DECL|method|equals (Object o)
 specifier|public
 name|boolean
@@ -313,14 +317,19 @@ name|o
 parameter_list|)
 block|{
 return|return
+operator|(
 name|o
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|o
 operator|instanceof
 name|ImportFormat
+operator|)
 operator|&&
+operator|(
 operator|(
 operator|(
 name|ImportFormat
@@ -333,6 +342,7 @@ argument_list|()
 operator|==
 name|getIsCustomImporter
 argument_list|()
+operator|)
 operator|&&
 operator|(
 operator|(
@@ -352,6 +362,8 @@ argument_list|)
 return|;
 block|}
 comment|/*      *  (non-Javadoc)      * @see java.lang.Object#toString()      */
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String
@@ -364,6 +376,8 @@ argument_list|()
 return|;
 block|}
 comment|/*      *  (non-Javadoc)      * @see java.lang.Comparable#compareTo(java.lang.Object)      */
+annotation|@
+name|Override
 DECL|method|compareTo (ImportFormat importer)
 specifier|public
 name|int
@@ -375,8 +389,6 @@ parameter_list|)
 block|{
 name|int
 name|result
-init|=
-literal|0
 decl_stmt|;
 if|if
 condition|(

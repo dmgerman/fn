@@ -114,20 +114,26 @@ end_import
 
 begin_class
 DECL|class|StringRemoveChange
-specifier|public
 class|class
 name|StringRemoveChange
 extends|extends
 name|Change
 block|{
 DECL|field|string
-DECL|field|inMem
+specifier|private
+specifier|final
 name|BibtexString
 name|string
-decl_stmt|,
+decl_stmt|;
+DECL|field|inMem
+specifier|private
+specifier|final
+name|BibtexString
 name|inMem
 decl_stmt|;
 DECL|field|tp
+specifier|private
+specifier|final
 name|InfoPane
 name|tp
 init|=
@@ -136,6 +142,8 @@ name|InfoPane
 argument_list|()
 decl_stmt|;
 DECL|field|sp
+specifier|private
+specifier|final
 name|JScrollPane
 name|sp
 init|=
@@ -147,6 +155,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|tmpString
 specifier|private
+specifier|final
 name|BibtexString
 name|tmpString
 decl_stmt|;
@@ -186,7 +195,7 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 expr_stmt|;
 name|this
 operator|.
@@ -250,6 +259,8 @@ literal|"</HTML>"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|boolean
@@ -340,6 +351,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|description ()
 name|JComponent
 name|description

@@ -73,7 +73,7 @@ init|=
 literal|null
 decl_stmt|;
 DECL|method|RankCompact ()
-specifier|public
+specifier|private
 name|RankCompact
 parameter_list|()
 block|{
@@ -353,11 +353,15 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|RankCompact
+operator|.
 name|INSTANCE
 operator|==
 literal|null
 condition|)
 block|{
+name|RankCompact
+operator|.
 name|INSTANCE
 operator|=
 operator|new
@@ -366,9 +370,13 @@ argument_list|()
 expr_stmt|;
 block|}
 return|return
+name|RankCompact
+operator|.
 name|INSTANCE
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRepresentingIcon ()
 specifier|public
 name|ImageIcon

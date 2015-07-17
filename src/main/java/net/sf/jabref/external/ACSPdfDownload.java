@@ -72,6 +72,8 @@ specifier|public
 name|ACSPdfDownload
 parameter_list|()
 block|{      }
+annotation|@
+name|Override
 DECL|method|supportsSite (URL url)
 specifier|public
 name|boolean
@@ -96,6 +98,8 @@ literal|"acs.org"
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|findFullTextURL (URL url)
 specifier|public
 name|URL
@@ -113,6 +117,8 @@ return|return
 operator|new
 name|URL
 argument_list|(
+name|ACSPdfDownload
+operator|.
 name|BASE_URL
 operator|+
 name|url

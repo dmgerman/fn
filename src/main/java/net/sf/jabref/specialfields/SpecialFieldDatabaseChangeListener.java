@@ -102,6 +102,8 @@ name|INSTANCE
 init|=
 literal|null
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|databaseChanged (DatabaseChangeEvent e)
 specifier|public
 name|void
@@ -195,11 +197,15 @@ parameter_list|()
 block|{
 if|if
 condition|(
+name|SpecialFieldDatabaseChangeListener
+operator|.
 name|INSTANCE
 operator|==
 literal|null
 condition|)
 block|{
+name|SpecialFieldDatabaseChangeListener
+operator|.
 name|INSTANCE
 operator|=
 operator|new
@@ -208,6 +214,8 @@ argument_list|()
 expr_stmt|;
 block|}
 return|return
+name|SpecialFieldDatabaseChangeListener
+operator|.
 name|INSTANCE
 return|;
 block|}

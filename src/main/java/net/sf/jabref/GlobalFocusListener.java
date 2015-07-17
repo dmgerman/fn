@@ -67,6 +67,7 @@ implements|implements
 name|FocusListener
 block|{
 DECL|field|focused
+specifier|private
 name|Component
 name|focused
 init|=
@@ -76,7 +77,9 @@ DECL|method|GlobalFocusListener ()
 specifier|public
 name|GlobalFocusListener
 parameter_list|()
-block|{   }
+block|{     }
+annotation|@
+name|Override
 DECL|method|focusGained (FocusEvent e)
 specifier|public
 name|void
@@ -94,6 +97,7 @@ operator|.
 name|isTemporary
 argument_list|()
 condition|)
+block|{
 name|focused
 operator|=
 operator|(
@@ -105,6 +109,9 @@ name|getSource
 argument_list|()
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|focusLost (FocusEvent e)
 specifier|public
 name|void
@@ -113,7 +120,7 @@ parameter_list|(
 name|FocusEvent
 name|e
 parameter_list|)
-block|{   }
+block|{     }
 DECL|method|getFocused ()
 specifier|public
 name|JComponent

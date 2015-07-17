@@ -223,20 +223,24 @@ DECL|class|GroupAddRemoveDialog
 specifier|public
 class|class
 name|GroupAddRemoveDialog
-extends|extends
+implements|implements
 name|BaseAction
 block|{
 DECL|field|panel
 specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|add
+specifier|private
+specifier|final
+name|boolean
+name|add
+decl_stmt|;
 DECL|field|move
 specifier|private
 name|boolean
-name|add
-decl_stmt|,
 name|move
 init|=
 literal|false
@@ -250,10 +254,12 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|tree
+specifier|private
 name|JTree
 name|tree
 decl_stmt|;
 DECL|field|ok
+specifier|private
 name|JButton
 name|ok
 decl_stmt|;
@@ -452,6 +458,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -488,6 +496,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -582,6 +592,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -595,11 +607,13 @@ condition|(
 name|doAddOrRemove
 argument_list|()
 condition|)
+block|{
 name|diag
 operator|.
 name|dispose
 argument_list|()
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -612,6 +626,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -692,6 +708,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -766,7 +784,7 @@ block|}
 comment|// If "expand" is true, all nodes in the tree area expanded
 comment|// otherwise all nodes in the tree are collapsed:
 DECL|method|expandAll (final JTree tree, final boolean expand)
-specifier|public
+specifier|private
 name|void
 name|expandAll
 parameter_list|(
@@ -787,6 +805,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -960,11 +980,14 @@ expr_stmt|;
 block|}
 block|}
 DECL|class|SelectionListener
+specifier|private
 class|class
 name|SelectionListener
 implements|implements
 name|TreeSelectionListener
 block|{
+annotation|@
+name|Override
 DECL|method|valueChanged (TreeSelectionEvent e)
 specifier|public
 name|void
@@ -1009,7 +1032,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|doAddOrRemove ()
-specifier|protected
+specifier|private
 name|boolean
 name|doAddOrRemove
 parameter_list|()
@@ -1159,7 +1182,7 @@ argument_list|)
 operator|)
 return|;
 block|}
-comment|/*    private class VetoableTreeSelectionModel extends DefaultTreeSelectionModel {          @Override         public void addSelectionPath(TreePath path) {             if (checkPath(path))                 super.addSelectionPath(path);         }          public void setSelectionPath(TreePath path){             if (checkPath(path))                 super.setSelectionPath(path);          }          private boolean checkPath(TreePath path) {             GroupTreeNode node = (GroupTreeNode)path.getLastPathComponent();             AbstractGroup group = node.getGroup();             return (add ? group.supportsAdd()&& !group.containsAll(GroupAddRemoveDialog.this.selection)                     : group.supportsRemove()&& group.containsAny(GroupAddRemoveDialog.this.selection));         }     }     {      } */
+comment|/*    private class VetoableTreeSelectionModel extends DefaultTreeSelectionModel {              @Override             public void addSelectionPath(TreePath path) {                 if (checkPath(path))                     super.addSelectionPath(path);             }              public void setSelectionPath(TreePath path){                 if (checkPath(path))                     super.setSelectionPath(path);              }              private boolean checkPath(TreePath path) {                 GroupTreeNode node = (GroupTreeNode)path.getLastPathComponent();                 AbstractGroup group = node.getGroup();                 return (add ? group.supportsAdd()&& !group.containsAll(GroupAddRemoveDialog.this.selection)                         : group.supportsRemove()&& group.containsAny(GroupAddRemoveDialog.this.selection));             }         }         {          } */
 DECL|class|AddRemoveGroupTreeCellRenderer
 class|class
 name|AddRemoveGroupTreeCellRenderer
@@ -1240,6 +1263,7 @@ argument_list|(
 name|group
 argument_list|)
 condition|)
+block|{
 name|c
 operator|.
 name|setForeground
@@ -1249,7 +1273,9 @@ operator|.
 name|black
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|c
 operator|.
 name|setForeground
@@ -1259,6 +1285,7 @@ operator|.
 name|gray
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|c
 return|;

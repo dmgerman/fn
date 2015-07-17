@@ -30,12 +30,13 @@ end_import
 
 begin_class
 DECL|class|JPanelYBoxPreferredWidth
-specifier|public
 class|class
 name|JPanelYBoxPreferredWidth
 extends|extends
 name|JPanelYBox
 block|{
+annotation|@
+name|Override
 DECL|method|getMaximumSize ()
 specifier|public
 name|Dimension

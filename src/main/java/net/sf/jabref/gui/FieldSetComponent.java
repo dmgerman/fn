@@ -316,7 +316,6 @@ end_comment
 
 begin_class
 DECL|class|FieldSetComponent
-specifier|public
 class|class
 name|FieldSetComponent
 extends|extends
@@ -325,7 +324,8 @@ implements|implements
 name|ActionListener
 block|{
 DECL|field|additionListeners
-specifier|protected
+specifier|private
+specifier|final
 name|Set
 argument_list|<
 name|ActionListener
@@ -340,59 +340,58 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|list
-specifier|protected
+specifier|final
 name|JList
 name|list
 decl_stmt|;
 DECL|field|sp
-specifier|protected
+specifier|private
 name|JScrollPane
 name|sp
 init|=
 literal|null
 decl_stmt|;
 DECL|field|listModel
-specifier|protected
 name|DefaultListModel
 name|listModel
 decl_stmt|;
 DECL|field|sel
-specifier|protected
+specifier|private
 name|JComboBox
 name|sel
 decl_stmt|;
 DECL|field|input
-specifier|protected
+specifier|private
 name|JTextField
 name|input
 decl_stmt|;
-DECL|field|title
-specifier|protected
-name|JLabel
-name|title
-init|=
-literal|null
-decl_stmt|;
 DECL|field|add
-DECL|field|remove
-DECL|field|up
-DECL|field|down
-specifier|protected
+specifier|private
+specifier|final
 name|JButton
 name|add
-decl_stmt|,
+decl_stmt|;
+DECL|field|remove
+specifier|final
+name|JButton
 name|remove
-decl_stmt|,
+decl_stmt|;
+DECL|field|up
+specifier|private
+name|JButton
 name|up
 init|=
 literal|null
-decl_stmt|,
+decl_stmt|;
+DECL|field|down
+specifier|private
+name|JButton
 name|down
 init|=
 literal|null
 decl_stmt|;
 DECL|field|gbl
-specifier|protected
+specifier|final
 name|GridBagLayout
 name|gbl
 init|=
@@ -401,7 +400,7 @@ name|GridBagLayout
 argument_list|()
 decl_stmt|;
 DECL|field|con
-specifier|protected
+specifier|final
 name|GridBagConstraints
 name|con
 init|=
@@ -410,17 +409,19 @@ name|GridBagConstraints
 argument_list|()
 decl_stmt|;
 DECL|field|forceLowerCase
-DECL|field|changesMade
-specifier|protected
+specifier|final
 name|boolean
 name|forceLowerCase
-decl_stmt|,
+decl_stmt|;
+DECL|field|changesMade
+name|boolean
 name|changesMade
 init|=
 literal|false
 decl_stmt|;
 DECL|field|modelListeners
-specifier|protected
+specifier|private
+specifier|final
 name|Set
 argument_list|<
 name|ListDataListener
@@ -481,7 +482,6 @@ expr_stmt|;
 block|}
 comment|/**      * Creates a new instance of FieldSetComponent without preset selection      * values. Replaces the JComboBox with a JTextField.      */
 DECL|method|FieldSetComponent (String title, List<String> fields, boolean arrows, boolean forceLowerCase)
-specifier|public
 name|FieldSetComponent
 parameter_list|(
 name|String
@@ -519,7 +519,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|FieldSetComponent (String title, List<String> fields, List<String> preset, String addText, String removeText, boolean arrows, boolean forceLowerCase)
-specifier|public
+specifier|private
 name|FieldSetComponent
 parameter_list|(
 name|String
@@ -588,15 +588,19 @@ operator|new
 name|DefaultListModel
 argument_list|()
 expr_stmt|;
+name|JLabel
+name|title1
+init|=
+literal|null
+decl_stmt|;
 if|if
 condition|(
 name|title
 operator|!=
 literal|null
 condition|)
-name|this
-operator|.
-name|title
+block|{
+name|title1
 operator|=
 operator|new
 name|JLabel
@@ -604,6 +608,7 @@ argument_list|(
 name|title
 argument_list|)
 expr_stmt|;
+block|}
 for|for
 control|(
 name|String
@@ -611,6 +616,7 @@ name|field
 range|:
 name|fields
 control|)
+block|{
 name|listModel
 operator|.
 name|addElement
@@ -618,6 +624,7 @@ argument_list|(
 name|field
 argument_list|)
 expr_stmt|;
+block|}
 name|list
 operator|=
 operator|new
@@ -695,9 +702,7 @@ name|REMAINDER
 expr_stmt|;
 if|if
 condition|(
-name|this
-operator|.
-name|title
+name|title1
 operator|!=
 literal|null
 condition|)
@@ -706,18 +711,14 @@ name|gbl
 operator|.
 name|setConstraints
 argument_list|(
-name|this
-operator|.
-name|title
+name|title1
 argument_list|,
 name|con
 argument_list|)
 expr_stmt|;
 name|add
 argument_list|(
-name|this
-operator|.
-name|title
+name|title1
 argument_list|)
 expr_stmt|;
 block|}
@@ -1120,6 +1121,7 @@ name|idx
 operator|>=
 literal|0
 condition|)
+block|{
 name|list
 operator|.
 name|setSelectedIndex
@@ -1127,6 +1129,7 @@ argument_list|(
 name|idx
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Make sure it is visible:
 name|JViewport
 name|viewport
@@ -1171,9 +1174,11 @@ name|o
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|null
 return|;
+block|}
 return|return
 operator|(
 name|String
@@ -1181,6 +1186,8 @@ operator|)
 name|o
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|setEnabled (boolean en)
 specifier|public
 name|void
@@ -1196,6 +1203,7 @@ name|input
 operator|!=
 literal|null
 condition|)
+block|{
 name|input
 operator|.
 name|setEnabled
@@ -1203,12 +1211,14 @@ argument_list|(
 name|en
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|sel
 operator|!=
 literal|null
 condition|)
+block|{
 name|sel
 operator|.
 name|setEnabled
@@ -1216,6 +1226,7 @@ argument_list|(
 name|en
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|up
@@ -1279,6 +1290,7 @@ name|field
 range|:
 name|fields
 control|)
+block|{
 name|newListModel
 operator|.
 name|addElement
@@ -1286,6 +1298,7 @@ argument_list|(
 name|field
 argument_list|)
 expr_stmt|;
+block|}
 name|this
 operator|.
 name|listModel
@@ -1299,6 +1312,7 @@ name|modelListener
 range|:
 name|modelListeners
 control|)
+block|{
 name|newListModel
 operator|.
 name|addListDataListener
@@ -1306,6 +1320,7 @@ argument_list|(
 name|modelListener
 argument_list|)
 expr_stmt|;
+block|}
 name|list
 operator|.
 name|setModel
@@ -1316,7 +1331,6 @@ expr_stmt|;
 block|}
 comment|/**      * This method is called when a new field should be added to the list. Performs validation of the       * field.      */
 DECL|method|addField (String s)
-specifier|protected
 name|void
 name|addField
 parameter_list|(
@@ -1335,6 +1349,7 @@ if|if
 condition|(
 name|forceLowerCase
 condition|)
+block|{
 name|s
 operator|=
 name|s
@@ -1342,6 +1357,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|s
@@ -1358,7 +1374,9 @@ argument_list|(
 name|s
 argument_list|)
 condition|)
+block|{
 return|return;
+block|}
 name|String
 name|testString
 init|=
@@ -1431,7 +1449,6 @@ expr_stmt|;
 block|}
 comment|/**      * This method adds a new field to the list, without any regard to validation. This method can be      * useful for classes that overrides addField(s) to provide different validation.      */
 DECL|method|addFieldUncritically (String s)
-specifier|protected
 name|void
 name|addFieldUncritically
 parameter_list|(
@@ -1476,7 +1493,6 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|removeSelected ()
-specifier|protected
 name|void
 name|removeSelected
 parameter_list|()
@@ -1498,10 +1514,12 @@ name|length
 operator|>
 literal|0
 condition|)
+block|{
 name|changesMade
 operator|=
 literal|true
 expr_stmt|;
+block|}
 for|for
 control|(
 name|int
@@ -1518,6 +1536,7 @@ condition|;
 name|i
 operator|++
 control|)
+block|{
 name|listModel
 operator|.
 name|removeElementAt
@@ -1534,6 +1553,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|activate ()
 specifier|public
@@ -1699,7 +1719,7 @@ expr_stmt|;
 block|}
 comment|/**      * If a field is selected in the list, move it dy positions.      */
 DECL|method|move (int dy)
-specifier|public
+specifier|private
 name|void
 name|move
 parameter_list|(
@@ -1721,7 +1741,9 @@ name|oldIdx
 operator|<
 literal|0
 condition|)
+block|{
 return|return;
+block|}
 name|String
 name|o
 init|=
@@ -1786,6 +1808,8 @@ name|newInd
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1936,10 +1960,12 @@ operator|==
 literal|0
 operator|)
 condition|)
+block|{
 comment|// These conditions signify arrow key navigation in the dropdown list, so we should
 comment|// not react to it. I'm not sure if this is well defined enough to be guaranteed to work
 comment|// everywhere.
 return|return;
+block|}
 name|String
 name|s
 init|=

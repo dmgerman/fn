@@ -86,6 +86,16 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|Action
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JOptionPane
 import|;
 end_import
@@ -281,24 +291,21 @@ extends|extends
 name|AbstractWorker
 block|{
 DECL|field|database
+specifier|private
 name|BibtexDatabase
 name|database
 init|=
 literal|null
 decl_stmt|;
 DECL|field|metaData
+specifier|private
 name|MetaData
 name|metaData
 init|=
 literal|null
 decl_stmt|;
-DECL|field|errorMessage
-name|String
-name|errorMessage
-init|=
-literal|null
-decl_stmt|;
 DECL|field|connectToDB
+specifier|private
 name|boolean
 name|connectToDB
 init|=
@@ -306,6 +313,7 @@ literal|false
 decl_stmt|;
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -317,6 +325,7 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|databases
+specifier|private
 name|ArrayList
 argument_list|<
 name|Object
@@ -376,12 +385,16 @@ argument_list|)
 expr_stmt|;
 name|putValue
 argument_list|(
+name|Action
+operator|.
 name|NAME
 argument_list|,
 literal|"Import from external SQL database"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -418,6 +431,8 @@ block|}
 block|}
 block|}
 comment|// run first, in EDT:
+annotation|@
+name|Override
 DECL|method|init ()
 specifier|public
 name|void
@@ -543,6 +558,8 @@ expr_stmt|;
 block|}
 block|}
 comment|// run second, on a different thread:
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -684,12 +701,11 @@ expr_stmt|;
 block|}
 if|if
 condition|(
+operator|!
 name|matrix
 operator|.
-name|size
+name|isEmpty
 argument_list|()
-operator|>
-literal|0
 condition|)
 block|{
 name|DBImportExportDialog
@@ -881,15 +897,16 @@ name|preamble
 init|=
 literal|"Could not import from SQL database for the following reason:"
 decl_stmt|;
+name|String
 name|errorMessage
-operator|=
+init|=
 name|SQLUtil
 operator|.
 name|getExceptionMessage
 argument_list|(
 name|ex
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|dbs
 operator|.
 name|isConfigValid
@@ -910,7 +927,7 @@ argument_list|(
 name|preamble
 argument_list|)
 operator|+
-literal|"\n"
+literal|'\n'
 operator|+
 name|errorMessage
 argument_list|,
@@ -947,6 +964,8 @@ block|}
 block|}
 block|}
 comment|// run third, on EDT:
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void
@@ -959,7 +978,9 @@ name|databases
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 for|for
 control|(
 name|Object

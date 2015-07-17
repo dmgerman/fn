@@ -28,11 +28,13 @@ name|BibtexEntryType
 block|{
 DECL|field|name
 specifier|private
+specifier|final
 name|String
 name|name
 decl_stmt|;
 DECL|field|fields
 specifier|private
+specifier|final
 name|String
 index|[]
 name|fields
@@ -56,6 +58,8 @@ operator|=
 name|name_
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getName ()
 specifier|public
 name|String
@@ -66,6 +70,8 @@ return|return
 name|name
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getOptionalFields ()
 specifier|public
 name|String
@@ -77,6 +83,8 @@ return|return
 name|fields
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRequiredFields ()
 specifier|public
 name|String
@@ -88,6 +96,8 @@ return|return
 name|fields
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|describeRequiredFields ()
 specifier|public
 name|String
@@ -98,6 +108,8 @@ return|return
 literal|"unknown"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|hasAllRequiredFields (BibtexEntry entry, BibtexDatabase database)
 specifier|public
 name|boolean

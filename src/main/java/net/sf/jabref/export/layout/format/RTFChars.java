@@ -76,6 +76,7 @@ comment|// Instantiate logger:
 DECL|field|logger
 specifier|private
 specifier|static
+specifier|final
 name|Logger
 name|logger
 init|=
@@ -91,6 +92,8 @@ name|toString
 argument_list|()
 argument_list|)
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|format (String field)
 specifier|public
 name|String
@@ -170,7 +173,7 @@ else|:
 literal|""
 operator|)
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 name|System
@@ -186,7 +189,7 @@ operator|.
 name|toString
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 comment|/**/
@@ -210,7 +213,7 @@ literal|"Char: '"
 operator|+
 name|c
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 expr_stmt|;
 if|if
@@ -266,13 +269,17 @@ operator|!
 name|incommand
 operator|&&
 operator|(
+operator|(
 name|c
 operator|==
 literal|'{'
+operator|)
 operator|||
+operator|(
 name|c
 operator|==
 literal|'}'
+operator|)
 operator|)
 condition|)
 block|{
@@ -364,16 +371,20 @@ if|if
 condition|(
 name|i
 operator|>=
+operator|(
 name|field
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 break|break
 name|testCharCom
 break|;
+block|}
 name|String
 name|command
 init|=
@@ -465,6 +476,7 @@ name|result
 operator|!=
 literal|null
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -472,6 +484,7 @@ argument_list|(
 name|result
 argument_list|)
 expr_stmt|;
+block|}
 name|incommand
 operator|=
 literal|false
@@ -515,6 +528,7 @@ literal|'}'
 operator|)
 operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -522,6 +536,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 assert|assert
@@ -623,16 +638,20 @@ if|if
 condition|(
 name|i
 operator|>=
+operator|(
 name|field
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
+block|{
 break|break
 name|testContent
 break|;
+block|}
 if|if
 condition|(
 operator|(
@@ -731,7 +750,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"}"
+literal|'}'
 argument_list|)
 expr_stmt|;
 block|}
@@ -784,12 +803,14 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|"}"
+literal|'}'
 argument_list|)
 expr_stmt|;
 block|}
 else|else
 block|{
+name|RTFChars
+operator|.
 name|logger
 operator|.
 name|fine
@@ -812,6 +833,7 @@ comment|// We have to add the space a
 block|}
 block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -819,6 +841,7 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|incommand
 operator|=
@@ -862,6 +885,7 @@ name|c
 operator|<
 literal|128
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -869,7 +893,9 @@ argument_list|(
 name|c
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -890,6 +916,7 @@ argument_list|(
 literal|'?'
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb
@@ -926,7 +953,7 @@ literal|"{\\\\rdblquote}"
 argument_list|)
 return|;
 block|}
-comment|/** 	 * @param text the text to extract the part from 	 * @param i the position to start 	 * @param commandNestedInBraces true if the command is nested in braces (\emph{xy}), false if spaces are sued (\emph xy)  	 * @return a tuple of number of added characters and the extracted part 	 */
+comment|/**      * @param text the text to extract the part from      * @param i the position to start      * @param commandNestedInBraces true if the command is nested in braces (\emph{xy}), false if spaces are sued (\emph xy)       * @return a tuple of number of added characters and the extracted part      */
 DECL|method|getPart (String text, int i, boolean commandNestedInBraces)
 specifier|private
 name|IntAndString
@@ -950,11 +977,11 @@ name|count
 init|=
 literal|0
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|part
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|loop
@@ -1058,15 +1085,18 @@ return|;
 block|}
 DECL|class|IntAndString
 specifier|private
+specifier|static
 class|class
 name|IntAndString
 block|{
 DECL|field|i
 specifier|public
+specifier|final
 name|int
 name|i
 decl_stmt|;
 DECL|field|s
+specifier|final
 name|String
 name|s
 decl_stmt|;

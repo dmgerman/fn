@@ -97,13 +97,16 @@ implements|implements
 name|SearchRule
 block|{
 DECL|field|m_caseSensitiveSearch
+specifier|private
 specifier|final
 name|boolean
 name|m_caseSensitiveSearch
 decl_stmt|;
 comment|//static RemoveBrackets removeBrackets = new RemoveBrackets();
 DECL|field|removeBrackets
+specifier|private
 specifier|static
+specifier|final
 name|RemoveLatexCommands
 name|removeBrackets
 init|=
@@ -124,6 +127,8 @@ operator|=
 name|caseSensitive
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|validateSearchStrings (Map<String, String> searchStrings)
 specifier|public
 name|boolean
@@ -167,6 +172,7 @@ condition|(
 operator|!
 name|m_caseSensitiveSearch
 condition|)
+block|{
 name|flags
 operator|=
 name|Pattern
@@ -174,6 +180,7 @@ operator|.
 name|CASE_INSENSITIVE
 expr_stmt|;
 comment|// testing
+block|}
 try|try
 block|{
 name|Pattern
@@ -203,6 +210,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|applyRule (Map<String, String> searchStrings, BibtexEntry bibtexEntry)
 specifier|public
 name|int
@@ -251,6 +260,7 @@ condition|(
 operator|!
 name|m_caseSensitiveSearch
 condition|)
+block|{
 name|flags
 operator|=
 name|Pattern
@@ -258,6 +268,7 @@ operator|.
 name|CASE_INSENSITIVE
 expr_stmt|;
 comment|// testing
+block|}
 comment|//System.out.println(searchString);
 name|Pattern
 name|pattern
@@ -290,7 +301,7 @@ name|score
 return|;
 block|}
 DECL|method|searchFields (Set<String> fields, BibtexEntry bibtexEntry, Pattern pattern)
-specifier|protected
+specifier|private
 name|int
 name|searchFields
 parameter_list|(
@@ -353,6 +364,8 @@ name|pattern
 operator|.
 name|matcher
 argument_list|(
+name|RegExpRule
+operator|.
 name|removeBrackets
 operator|.
 name|format
@@ -371,9 +384,11 @@ operator|.
 name|find
 argument_list|()
 condition|)
+block|{
 name|score
 operator|++
 expr_stmt|;
+block|}
 block|}
 block|}
 catch|catch

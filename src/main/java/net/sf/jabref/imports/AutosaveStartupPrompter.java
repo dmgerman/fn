@@ -122,11 +122,13 @@ name|Runnable
 block|{
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|files
 specifier|private
+specifier|final
 name|List
 argument_list|<
 name|File
@@ -160,6 +162,8 @@ operator|=
 name|files
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -221,8 +225,6 @@ name|file
 decl_stmt|;
 name|boolean
 name|tryingAutosave
-init|=
-literal|false
 decl_stmt|;
 if|if
 condition|(
@@ -299,10 +301,12 @@ name|YES_OPTION
 expr_stmt|;
 block|}
 else|else
+block|{
 name|tryingAutosave
 operator|=
 literal|true
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|tryingAutosave
@@ -415,11 +419,13 @@ if|if
 condition|(
 name|tryingAutosave
 condition|)
+block|{
 name|panel
 operator|.
 name|markNonUndoableBaseChanged
 argument_list|()
 expr_stmt|;
+block|}
 name|first
 operator|=
 literal|false
@@ -621,6 +627,7 @@ condition|;
 name|j
 operator|++
 control|)
+block|{
 name|wrn
 operator|.
 name|append
@@ -648,6 +655,7 @@ argument_list|(
 literal|"\n"
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|wrn
@@ -657,6 +665,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|wrn
 operator|.
 name|deleteCharAt
@@ -669,6 +678,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 name|frame
 operator|.
 name|showBaseAt

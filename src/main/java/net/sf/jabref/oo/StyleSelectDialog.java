@@ -368,12 +368,11 @@ end_comment
 
 begin_class
 DECL|class|StyleSelectDialog
-specifier|public
 class|class
 name|StyleSelectDialog
 block|{
 DECL|field|STYLE_FILE_EXTENSION
-specifier|public
+specifier|private
 specifier|static
 specifier|final
 name|String
@@ -383,6 +382,7 @@ literal|".jstyle"
 decl_stmt|;
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -406,6 +406,7 @@ name|table
 decl_stmt|;
 DECL|field|contentPane
 specifier|private
+specifier|final
 name|UIFSplitPane
 name|contentPane
 init|=
@@ -435,6 +436,7 @@ name|selectionModel
 decl_stmt|;
 DECL|field|popup
 specifier|private
+specifier|final
 name|JPopupMenu
 name|popup
 init|=
@@ -444,6 +446,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|edit
 specifier|private
+specifier|final
 name|JMenuItem
 name|edit
 init|=
@@ -460,6 +463,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|useDefaultAuthoryear
 specifier|private
+specifier|final
 name|JRadioButton
 name|useDefaultAuthoryear
 init|=
@@ -473,8 +477,11 @@ argument_list|(
 literal|"Default style (author-year citations)"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|useDefaultNumerical
+specifier|private
+specifier|final
+name|JRadioButton
 name|useDefaultNumerical
 init|=
 operator|new
@@ -487,8 +494,11 @@ argument_list|(
 literal|"Default style (numerical citations)"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|chooseDirectly
+specifier|private
+specifier|final
+name|JRadioButton
 name|chooseDirectly
 init|=
 operator|new
@@ -503,8 +513,11 @@ argument_list|)
 operator|+
 literal|":"
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|setDirectory
+specifier|private
+specifier|final
+name|JRadioButton
 name|setDirectory
 init|=
 operator|new
@@ -522,14 +535,18 @@ argument_list|)
 decl_stmt|;
 DECL|field|directFile
 specifier|private
+specifier|final
 name|JTextField
 name|directFile
 init|=
 operator|new
 name|JTextField
 argument_list|()
-decl_stmt|,
+decl_stmt|;
 DECL|field|styleDir
+specifier|private
+specifier|final
+name|JTextField
 name|styleDir
 init|=
 operator|new
@@ -538,6 +555,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|browseDirectFile
 specifier|private
+specifier|final
 name|JButton
 name|browseDirectFile
 init|=
@@ -551,8 +569,11 @@ argument_list|(
 literal|"Browse"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|browseStyleDir
+specifier|private
+specifier|final
+name|JButton
 name|browseStyleDir
 init|=
 operator|new
@@ -565,8 +586,11 @@ argument_list|(
 literal|"Browse"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|showDefaultAuthoryearStyle
+specifier|private
+specifier|final
+name|JButton
 name|showDefaultAuthoryearStyle
 init|=
 operator|new
@@ -579,8 +603,11 @@ argument_list|(
 literal|"View"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|showDefaultNumericalStyle
+specifier|private
+specifier|final
+name|JButton
 name|showDefaultNumericalStyle
 init|=
 operator|new
@@ -595,11 +622,13 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|preview
+specifier|private
 name|PreviewPanel
 name|preview
 decl_stmt|;
 DECL|field|toRect
 specifier|private
+specifier|final
 name|Rectangle
 name|toRect
 init|=
@@ -617,6 +646,7 @@ argument_list|)
 decl_stmt|;
 DECL|field|ok
 specifier|private
+specifier|final
 name|JButton
 name|ok
 init|=
@@ -630,8 +660,11 @@ argument_list|(
 literal|"Ok"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|cancel
+specifier|private
+specifier|final
+name|JButton
 name|cancel
 init|=
 operator|new
@@ -647,15 +680,16 @@ argument_list|)
 decl_stmt|;
 DECL|field|prevEntry
 specifier|private
+specifier|final
 name|BibtexEntry
 name|prevEntry
 init|=
 operator|new
 name|BibtexEntry
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|)
 decl_stmt|;
@@ -758,6 +792,7 @@ argument_list|(
 literal|"ooUseDefaultAuthoryearStyle"
 argument_list|)
 condition|)
+block|{
 name|useDefaultAuthoryear
 operator|.
 name|setSelected
@@ -765,6 +800,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -777,6 +813,7 @@ argument_list|(
 literal|"ooUseDefaultNumericalStyle"
 argument_list|)
 condition|)
+block|{
 name|useDefaultNumerical
 operator|.
 name|setSelected
@@ -784,6 +821,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
 block|{
 if|if
@@ -797,6 +835,7 @@ argument_list|(
 literal|"ooChooseStyleDirectly"
 argument_list|)
 condition|)
+block|{
 name|chooseDirectly
 operator|.
 name|setSelected
@@ -804,7 +843,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|setDirectory
 operator|.
 name|setSelected
@@ -812,6 +853,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|directFile
 operator|.
@@ -865,23 +907,15 @@ expr_stmt|;
 name|BrowseAction
 name|dfBrowse
 init|=
-operator|new
 name|BrowseAction
+operator|.
+name|buildForFile
 argument_list|(
-literal|null
-argument_list|,
 name|directFile
 argument_list|,
-literal|false
+name|directFile
 argument_list|)
 decl_stmt|;
-name|dfBrowse
-operator|.
-name|setFocusTarget
-argument_list|(
-name|directFile
-argument_list|)
-expr_stmt|;
 name|browseDirectFile
 operator|.
 name|addActionListener
@@ -892,23 +926,15 @@ expr_stmt|;
 name|BrowseAction
 name|sdBrowse
 init|=
-operator|new
 name|BrowseAction
+operator|.
+name|buildForDir
 argument_list|(
-literal|null
-argument_list|,
 name|styleDir
 argument_list|,
-literal|true
-argument_list|)
-decl_stmt|;
-name|sdBrowse
-operator|.
-name|setFocusTarget
-argument_list|(
 name|setDirectory
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|browseStyleDir
 operator|.
 name|addActionListener
@@ -924,6 +950,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -949,6 +977,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -975,6 +1005,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -998,7 +1030,9 @@ operator|==
 operator|-
 literal|1
 condition|)
+block|{
 return|return;
+block|}
 name|ExternalFileType
 name|type
 init|=
@@ -1035,6 +1069,7 @@ name|type
 operator|!=
 literal|null
 condition|)
+block|{
 name|Util
 operator|.
 name|openExternalFileAnyFormat
@@ -1048,7 +1083,9 @@ argument_list|,
 name|type
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|Util
 operator|.
 name|openExternalFileUnknown
@@ -1070,6 +1107,7 @@ literal|"jstyle"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1274,11 +1312,13 @@ operator|.
 name|isPopupTrigger
 argument_list|()
 condition|)
+block|{
 name|tablePopup
 argument_list|(
 name|mouseEvent
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 annotation|@
 name|Override
@@ -1297,11 +1337,13 @@ operator|.
 name|isPopupTrigger
 argument_list|()
 condition|)
+block|{
 name|tablePopup
 argument_list|(
 name|mouseEvent
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 argument_list|)
@@ -1329,6 +1371,8 @@ operator|new
 name|DocumentListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|insertUpdate
@@ -1348,6 +1392,8 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeUpdate
@@ -1367,6 +1413,8 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|changedUpdate
@@ -1400,6 +1448,8 @@ operator|new
 name|DocumentListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|insertUpdate
@@ -1416,6 +1466,8 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|removeUpdate
@@ -1432,6 +1484,8 @@ literal|true
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|changedUpdate
@@ -1710,6 +1764,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1794,19 +1850,23 @@ else|else
 block|{
 if|if
 condition|(
+operator|(
 name|table
 operator|.
 name|getRowCount
 argument_list|()
 operator|==
 literal|0
+operator|)
 operator|||
+operator|(
 name|table
 operator|.
 name|getSelectedRowCount
 argument_list|()
 operator|==
 literal|0
+operator|)
 condition|)
 block|{
 name|JOptionPane
@@ -1867,6 +1927,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2050,6 +2112,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -2135,6 +2199,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|addStyles
 argument_list|(
 name|styleDir
@@ -2145,6 +2210,7 @@ argument_list|,
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 name|styles
 operator|.
 name|getReadWriteLock
@@ -2249,6 +2315,7 @@ operator|>
 literal|0
 operator|)
 condition|)
+block|{
 name|table
 operator|.
 name|setRowSelectionInterval
@@ -2258,6 +2325,7 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -2270,6 +2338,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|table
 operator|.
 name|setRowSelectionInterval
@@ -2279,6 +2348,7 @@ argument_list|,
 literal|0
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * If the string dir indicates a file, parse it and add it to the list of styles if      * successful. If the string dir indicates a directory, parse all files looking like      * style files, and add them. The parameter recurse determines whether we should      * recurse into subdirectories.      * @param dir the directory or file to handle.      * @param recurse true indicates that we should recurse into subdirectories.      */
@@ -2345,6 +2415,8 @@ argument_list|()
 operator|.
 name|endsWith
 argument_list|(
+name|StyleSelectDialog
+operator|.
 name|STYLE_FILE_EXTENSION
 argument_list|)
 operator|)
@@ -2428,6 +2500,7 @@ argument_list|(
 name|style
 argument_list|)
 condition|)
+block|{
 name|styles
 operator|.
 name|add
@@ -2435,6 +2508,7 @@ argument_list|(
 name|style
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -2466,7 +2540,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|storeSettings ()
-specifier|public
+specifier|private
 name|void
 name|storeSettings
 parameter_list|()
@@ -2606,7 +2680,7 @@ block|}
 block|}
 comment|/**      * Get the currently selected style.      * @return the selected style, or null if no style is selected.      */
 DECL|method|getSelectedStyle ()
-specifier|public
+specifier|private
 name|OOBibStyle
 name|getSelectedStyle
 parameter_list|()
@@ -2623,6 +2697,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 return|return
 name|selectionModel
 operator|.
@@ -2634,10 +2709,13 @@ argument_list|(
 literal|0
 argument_list|)
 return|;
+block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 DECL|method|setupPrevEntry ()
 specifier|private
@@ -2737,6 +2815,8 @@ argument_list|<
 name|OOBibStyle
 argument_list|>
 block|{
+annotation|@
+name|Override
 DECL|method|getColumnCount ()
 specifier|public
 name|int
@@ -2747,6 +2827,8 @@ return|return
 literal|3
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnName (int i)
 specifier|public
 name|String
@@ -2800,6 +2882,8 @@ literal|""
 return|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getColumnValue (OOBibStyle style, int i)
 specifier|public
 name|Object
@@ -2914,6 +2998,7 @@ operator|.
 name|hasNext
 argument_list|()
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -2921,6 +3006,7 @@ argument_list|(
 literal|", "
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|sb
@@ -2941,7 +3027,7 @@ name|okPressed
 return|;
 block|}
 DECL|method|tablePopup (MouseEvent e)
-specifier|protected
+specifier|private
 name|void
 name|tablePopup
 parameter_list|(
@@ -2971,7 +3057,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|displayDefaultStyle (boolean authoryear)
-specifier|protected
+specifier|private
 name|void
 name|displayDefaultStyle
 parameter_list|(
@@ -3281,6 +3367,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -3333,6 +3421,7 @@ block|}
 block|}
 comment|/**      * The listener for the Glazed list monitoring the current selection.      * When selection changes, we need to update the preview panel.      */
 DECL|class|EntrySelectionListener
+specifier|private
 class|class
 name|EntrySelectionListener
 implements|implements
@@ -3341,6 +3430,8 @@ argument_list|<
 name|OOBibStyle
 argument_list|>
 block|{
+annotation|@
+name|Override
 DECL|method|listChanged (ListEvent<OOBibStyle> listEvent)
 specifier|public
 name|void
@@ -3424,6 +3515,8 @@ operator|new
 name|Runnable
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run

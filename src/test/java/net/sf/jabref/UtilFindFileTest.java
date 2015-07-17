@@ -16,6 +16,26 @@ name|org
 operator|.
 name|junit
 operator|.
+name|Assert
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
+name|Ignore
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|junit
+operator|.
 name|Test
 import|;
 end_import
@@ -80,18 +100,6 @@ name|Map
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|*
-import|;
-end_import
-
 begin_comment
 comment|/**  * Testing Util.findFile for finding files based on regular expressions.  *  * @author Christopher Oezbek<oezi@oezi.de>  */
 end_comment
@@ -116,12 +124,16 @@ name|file
 parameter_list|)
 block|{
 return|return
-name|Util
+name|UtilFindFiles
 operator|.
 name|findFile
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|,
+name|FileBasedTestCase
+operator|.
 name|database
 argument_list|,
 name|dir
@@ -135,6 +147,13 @@ block|}
 comment|/**      * Test that more than one slash is taken to mean that a relative path is to      * be returned.      *      * @throws IOException      */
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+name|value
+operator|=
+literal|"works on windows but not on linux"
+argument_list|)
 DECL|method|testFindFileRelative ()
 specifier|public
 name|void
@@ -144,6 +163,8 @@ throws|throws
 name|IOException
 block|{
 comment|// Most basic case
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 literal|"HipKro03.pdf"
@@ -162,6 +183,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Including directory
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 literal|"test/HipKro03.pdf"
@@ -178,6 +201,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// No relative paths
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 operator|new
@@ -207,6 +232,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// No relative paths
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 operator|new
@@ -220,12 +247,16 @@ operator|.
 name|getCanonicalPath
 argument_list|()
 argument_list|,
-name|Util
+name|UtilFindFiles
 operator|.
 name|findFile
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|,
+name|FileBasedTestCase
+operator|.
 name|database
 argument_list|,
 name|root
@@ -242,6 +273,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+name|value
+operator|=
+literal|"works on windows but not on linux"
+argument_list|)
 DECL|method|testFindPdf ()
 specifier|public
 name|void
@@ -250,14 +288,15 @@ parameter_list|()
 throws|throws
 name|IOException
 block|{
-block|{
 name|String
 name|pdf
 init|=
-name|Util
+name|UtilFindFiles
 operator|.
 name|findPdf
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|,
 literal|"pdf"
@@ -268,6 +307,8 @@ name|getAbsolutePath
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 literal|"HipKro03 - Hello.pdf"
@@ -278,7 +319,7 @@ expr_stmt|;
 name|File
 name|fullPath
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -290,6 +331,17 @@ name|getAbsolutePath
 argument_list|()
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
+name|assertNotNull
+argument_list|(
+literal|"expanded file must not be null"
+argument_list|,
+name|fullPath
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|fullPath
@@ -299,14 +351,30 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Test
+annotation|@
+name|Ignore
+argument_list|(
+name|value
+operator|=
+literal|"works on windows but not on linux"
+argument_list|)
+DECL|method|testFindPdfInSubfolder ()
+specifier|public
+name|void
+name|testFindPdfInSubfolder
+parameter_list|()
 block|{
 name|String
 name|pdf
 init|=
-name|Util
+name|UtilFindFiles
 operator|.
 name|findPdf
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|,
 literal|"pdf"
@@ -319,6 +387,8 @@ operator|+
 literal|"/pdfs/"
 argument_list|)
 decl_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 literal|"sub/HipKro03-sub.pdf"
@@ -329,7 +399,7 @@ expr_stmt|;
 name|File
 name|fullPath
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -343,6 +413,8 @@ operator|+
 literal|"/pdfs/"
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|fullPath
@@ -352,9 +424,15 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
-block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+name|value
+operator|=
+literal|"works on windows but not on linux"
+argument_list|)
 DECL|method|testFindAssociatedFiles ()
 specifier|public
 name|void
@@ -373,6 +451,8 @@ name|Arrays
 operator|.
 name|asList
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|)
 decl_stmt|;
@@ -446,6 +526,8 @@ argument_list|,
 name|dirs
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
 name|assertEquals
 argument_list|(
 literal|2
@@ -454,6 +536,8 @@ name|results
 operator|.
 name|get
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|)
 operator|.
@@ -461,12 +545,16 @@ name|size
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|results
 operator|.
 name|get
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|)
 operator|.
@@ -485,12 +573,16 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertFalse
 argument_list|(
 name|results
 operator|.
 name|get
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|)
 operator|.
@@ -509,12 +601,16 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|results
 operator|.
 name|get
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|)
 operator|.
@@ -536,6 +632,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+name|value
+operator|=
+literal|"works on windows but not on linux"
+argument_list|)
 DECL|method|testFindPdfInMultiple ()
 specifier|public
 name|void
@@ -569,10 +672,12 @@ decl_stmt|;
 name|String
 name|pdf
 init|=
-name|Util
+name|UtilFindFiles
 operator|.
 name|findPdf
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|,
 literal|"pdf"
@@ -580,6 +685,8 @@ argument_list|,
 name|dirsToSearch
 argument_list|)
 decl_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 literal|"HipKro03 - Hello.pdf"
@@ -590,7 +697,7 @@ expr_stmt|;
 name|File
 name|fullPath
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -599,6 +706,15 @@ argument_list|,
 name|dirsToSearch
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
+name|assertNotNull
+argument_list|(
+name|fullPath
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|fullPath
@@ -607,6 +723,8 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 name|root
@@ -649,7 +767,7 @@ name|tmp
 expr_stmt|;
 name|fullPath
 operator|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -658,6 +776,15 @@ argument_list|,
 name|dirsToSearch
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
+name|assertNotNull
+argument_list|(
+name|fullPath
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|fullPath
@@ -666,6 +793,8 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 name|root
@@ -683,7 +812,7 @@ argument_list|)
 expr_stmt|;
 name|fullPath
 operator|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -700,6 +829,8 @@ index|]
 block|}
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertNull
 argument_list|(
 name|fullPath
@@ -707,7 +838,7 @@ argument_list|)
 expr_stmt|;
 name|fullPath
 operator|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -724,6 +855,15 @@ index|]
 block|}
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
+name|assertNotNull
+argument_list|(
+name|fullPath
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|fullPath
@@ -732,6 +872,8 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 name|root
@@ -773,10 +915,12 @@ decl_stmt|;
 name|String
 name|pdf
 init|=
-name|Util
+name|UtilFindFiles
 operator|.
 name|findPdf
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|,
 literal|"pdf"
@@ -784,6 +928,8 @@ argument_list|,
 name|dirsToSearch
 argument_list|)
 decl_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 literal|"sub/HipKro03-sub.pdf"
@@ -794,7 +940,7 @@ expr_stmt|;
 name|File
 name|fullPath
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -803,6 +949,15 @@ argument_list|,
 name|dirsToSearch
 argument_list|)
 decl_stmt|;
+name|Assert
+operator|.
+name|assertNotNull
+argument_list|(
+name|fullPath
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|fullPath
@@ -811,6 +966,8 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 name|root
@@ -853,7 +1010,7 @@ name|tmp
 expr_stmt|;
 name|fullPath
 operator|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -862,6 +1019,15 @@ argument_list|,
 name|dirsToSearch
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
+name|assertNotNull
+argument_list|(
+name|fullPath
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|fullPath
@@ -870,6 +1036,8 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 name|root
@@ -887,7 +1055,7 @@ argument_list|)
 expr_stmt|;
 name|fullPath
 operator|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -904,6 +1072,8 @@ index|]
 block|}
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
 name|assertNull
 argument_list|(
 name|fullPath
@@ -911,7 +1081,7 @@ argument_list|)
 expr_stmt|;
 name|fullPath
 operator|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -928,6 +1098,15 @@ index|]
 block|}
 argument_list|)
 expr_stmt|;
+name|Assert
+operator|.
+name|assertNotNull
+argument_list|(
+name|fullPath
+argument_list|)
+expr_stmt|;
+name|Assert
+operator|.
 name|assertTrue
 argument_list|(
 name|fullPath
@@ -936,6 +1115,8 @@ name|exists
 argument_list|()
 argument_list|)
 expr_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 name|root
@@ -955,6 +1136,13 @@ block|}
 block|}
 annotation|@
 name|Test
+annotation|@
+name|Ignore
+argument_list|(
+name|value
+operator|=
+literal|"works on windows but not on linux"
+argument_list|)
 DECL|method|testFindFile ()
 specifier|public
 name|void
@@ -964,16 +1152,22 @@ throws|throws
 name|IOException
 block|{
 comment|// Simple case
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 literal|"HipKro03.pdf"
 argument_list|,
-name|Util
+name|UtilFindFiles
 operator|.
 name|findFile
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|,
+name|FileBasedTestCase
+operator|.
 name|database
 argument_list|,
 name|root
@@ -990,14 +1184,20 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Not found
+name|Assert
+operator|.
 name|assertNull
 argument_list|(
-name|Util
+name|UtilFindFiles
 operator|.
 name|findFile
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|,
+name|FileBasedTestCase
+operator|.
 name|database
 argument_list|,
 name|root
@@ -1014,6 +1214,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Test current dir
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 operator|new
@@ -1031,28 +1233,38 @@ operator|.
 name|getCanonicalPath
 argument_list|()
 argument_list|,
-name|Util
+name|UtilFindFiles
 operator|.
 name|findFile
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|,
+name|FileBasedTestCase
+operator|.
 name|database
 argument_list|,
 literal|"./build.xml"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 literal|"build.xml"
 argument_list|,
-name|Util
+name|UtilFindFiles
 operator|.
 name|findFile
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|,
+name|FileBasedTestCase
+operator|.
 name|database
 argument_list|,
 literal|"."
@@ -1064,6 +1276,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Test keys in path and regular expression in file
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 operator|new
@@ -1077,12 +1291,16 @@ operator|.
 name|getCanonicalPath
 argument_list|()
 argument_list|,
-name|Util
+name|UtilFindFiles
 operator|.
 name|findFile
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|,
+name|FileBasedTestCase
+operator|.
 name|database
 argument_list|,
 name|root
@@ -1095,6 +1313,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Test . and ..
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 operator|new
@@ -1108,12 +1328,16 @@ operator|.
 name|getCanonicalPath
 argument_list|()
 argument_list|,
-name|Util
+name|UtilFindFiles
 operator|.
 name|findFile
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|,
+name|FileBasedTestCase
+operator|.
 name|database
 argument_list|,
 name|root
@@ -1128,6 +1352,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Test Escape
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 operator|new
@@ -1141,12 +1367,16 @@ operator|.
 name|getCanonicalPath
 argument_list|()
 argument_list|,
-name|Util
+name|UtilFindFiles
 operator|.
 name|findFile
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|,
+name|FileBasedTestCase
+operator|.
 name|database
 argument_list|,
 name|root
@@ -1160,16 +1390,22 @@ literal|"[bibtexkey] - Hello\\\\.pdf"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 literal|"TE.ST"
 argument_list|,
-name|Util
+name|UtilFindFiles
 operator|.
 name|findFile
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|,
+name|FileBasedTestCase
+operator|.
 name|database
 argument_list|,
 name|root
@@ -1185,16 +1421,22 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 literal|".TEST"
 argument_list|,
-name|Util
+name|UtilFindFiles
 operator|.
 name|findFile
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|,
+name|FileBasedTestCase
+operator|.
 name|database
 argument_list|,
 name|root
@@ -1210,16 +1452,22 @@ literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 literal|"TEST["
 argument_list|,
-name|Util
+name|UtilFindFiles
 operator|.
 name|findFile
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|,
+name|FileBasedTestCase
+operator|.
 name|database
 argument_list|,
 name|root
@@ -1236,6 +1484,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Test *
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 operator|new
@@ -1249,12 +1499,16 @@ operator|.
 name|getCanonicalPath
 argument_list|()
 argument_list|,
-name|Util
+name|UtilFindFiles
 operator|.
 name|findFile
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|,
+name|FileBasedTestCase
+operator|.
 name|database
 argument_list|,
 name|root
@@ -1269,6 +1523,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Test **
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 operator|new
@@ -1282,12 +1538,16 @@ operator|.
 name|getCanonicalPath
 argument_list|()
 argument_list|,
-name|Util
+name|UtilFindFiles
 operator|.
 name|findFile
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|,
+name|FileBasedTestCase
+operator|.
 name|database
 argument_list|,
 name|root
@@ -1302,6 +1562,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Test ** - Find in level itself too
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 operator|new
@@ -1315,12 +1577,16 @@ operator|.
 name|getCanonicalPath
 argument_list|()
 argument_list|,
-name|Util
+name|UtilFindFiles
 operator|.
 name|findFile
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|,
+name|FileBasedTestCase
+operator|.
 name|database
 argument_list|,
 name|root
@@ -1335,6 +1601,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 comment|// Test ** - Find lowest level first (Rest is Depth first)
+name|AssertUtil
+operator|.
 name|assertEqualPaths
 argument_list|(
 operator|new
@@ -1348,12 +1616,16 @@ operator|.
 name|getCanonicalPath
 argument_list|()
 argument_list|,
-name|Util
+name|UtilFindFiles
 operator|.
 name|findFile
 argument_list|(
+name|FileBasedTestCase
+operator|.
 name|entry
 argument_list|,
+name|FileBasedTestCase
+operator|.
 name|database
 argument_list|,
 name|root

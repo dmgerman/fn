@@ -149,9 +149,12 @@ name|s
 operator|.
 name|startsWith
 argument_list|(
+name|ExplicitGroup
+operator|.
 name|ID
 argument_list|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|Exception
@@ -165,6 +168,7 @@ operator|+
 literal|"Please report this on www.sf.net/projects/jabref"
 argument_list|)
 throw|;
+block|}
 name|QuotedStringTokenizer
 name|tok
 init|=
@@ -175,14 +179,20 @@ name|s
 operator|.
 name|substring
 argument_list|(
+name|ExplicitGroup
+operator|.
 name|ID
 operator|.
 name|length
 argument_list|()
 argument_list|)
 argument_list|,
+name|AbstractGroup
+operator|.
 name|SEPARATOR
 argument_list|,
+name|AbstractGroup
+operator|.
 name|QUOTE_CHAR
 argument_list|)
 decl_stmt|;
@@ -293,7 +303,7 @@ block|}
 block|}
 comment|/** Called only when created fromString */
 DECL|method|addEntries (QuotedStringTokenizer tok, BibtexDatabase db)
-specifier|protected
+specifier|private
 name|void
 name|addEntries
 parameter_list|(
@@ -322,7 +332,7 @@ name|db
 operator|.
 name|getEntriesByKey
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|unquote
 argument_list|(
@@ -331,6 +341,8 @@ operator|.
 name|nextToken
 argument_list|()
 argument_list|,
+name|AbstractGroup
+operator|.
 name|QUOTE_CHAR
 argument_list|)
 argument_list|)
@@ -346,6 +358,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getSearchRule ()
 specifier|public
 name|SearchRule
@@ -356,6 +370,8 @@ return|return
 name|this
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|supportsAdd ()
 specifier|public
 name|boolean
@@ -366,6 +382,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|supportsRemove ()
 specifier|public
 name|boolean
@@ -376,6 +394,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|add (BibtexEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
@@ -394,10 +414,12 @@ name|length
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 literal|null
 return|;
 comment|// nothing to do
+block|}
 name|HashSet
 argument_list|<
 name|BibtexEntry
@@ -450,6 +472,8 @@ name|entry
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|remove (BibtexEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
@@ -468,10 +492,12 @@ name|length
 operator|==
 literal|0
 condition|)
+block|{
 return|return
 literal|null
 return|;
 comment|// nothing to do
+block|}
 name|HashSet
 argument_list|<
 name|BibtexEntry
@@ -494,6 +520,7 @@ name|entry
 range|:
 name|entries
 control|)
+block|{
 name|m_entries
 operator|.
 name|remove
@@ -501,6 +528,7 @@ argument_list|(
 name|entry
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 operator|new
 name|UndoableChangeAssignment
@@ -529,6 +557,8 @@ name|entry
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|contains (BibtexEntry entry)
 specifier|public
 name|boolean
@@ -547,6 +577,8 @@ name|entry
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|contains (Map<String, String> searchOptions, BibtexEntry entry)
 specifier|public
 name|boolean
@@ -571,6 +603,8 @@ name|entry
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|applyRule (Map<String, String> searchStrings, BibtexEntry bibtexEntry)
 specifier|public
 name|int
@@ -601,6 +635,8 @@ else|:
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|validateSearchStrings (Map<String, String> searchStrings)
 specifier|public
 name|boolean
@@ -619,6 +655,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|deepCopy ()
 specifier|public
 name|AbstractGroup
@@ -649,6 +687,8 @@ return|return
 name|copy
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|equals (Object o)
 specifier|public
 name|boolean
@@ -667,9 +707,11 @@ operator|instanceof
 name|ExplicitGroup
 operator|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|ExplicitGroup
 name|other
 init|=
@@ -693,10 +735,12 @@ operator|.
 name|size
 argument_list|()
 condition|)
+block|{
 return|return
 literal|false
 return|;
 comment|// add/remove
+block|}
 name|HashSet
 argument_list|<
 name|String
@@ -742,6 +786,7 @@ name|key
 operator|!=
 literal|null
 condition|)
+block|{
 name|keys
 operator|.
 name|add
@@ -749,6 +794,7 @@ argument_list|(
 name|key
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 for|for
 control|(
@@ -777,6 +823,7 @@ name|key
 operator|!=
 literal|null
 condition|)
+block|{
 if|if
 condition|(
 operator|!
@@ -787,9 +834,12 @@ argument_list|(
 name|key
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
+block|}
 block|}
 if|if
 condition|(
@@ -799,9 +849,11 @@ operator|.
 name|isEmpty
 argument_list|()
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 return|return
 name|other
 operator|.
@@ -812,6 +864,7 @@ argument_list|(
 name|m_name
 argument_list|)
 operator|&&
+operator|(
 name|other
 operator|.
 name|getHierarchicalContext
@@ -819,45 +872,56 @@ argument_list|()
 operator|==
 name|getHierarchicalContext
 argument_list|()
+operator|)
 return|;
 block|}
 comment|/**      * Returns a String representation of this group and its entries. Entries      * are referenced by their Bibtexkey. Entries that do not have a Bibtexkey      * are not included in the representation and will thus not be available      * upon recreation.      */
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String
 name|toString
 parameter_list|()
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|sb
 operator|.
 name|append
 argument_list|(
+name|ExplicitGroup
+operator|.
 name|ID
 argument_list|)
 operator|.
 name|append
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
 name|m_name
 argument_list|,
+name|AbstractGroup
+operator|.
 name|SEPARATOR
 argument_list|,
+name|AbstractGroup
+operator|.
 name|QUOTE_CHAR
 argument_list|)
 argument_list|)
 operator|.
 name|append
 argument_list|(
+name|AbstractGroup
+operator|.
 name|SEPARATOR
 argument_list|)
 operator|.
@@ -868,6 +932,8 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
+name|AbstractGroup
+operator|.
 name|SEPARATOR
 argument_list|)
 expr_stmt|;
@@ -905,19 +971,19 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|s
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|s
 operator|.
-name|equals
-argument_list|(
-literal|""
-argument_list|)
+name|isEmpty
+argument_list|()
 condition|)
-comment|// entries without a key are lost
+block|{
 name|sortedKeys
 operator|.
 name|add
@@ -925,6 +991,7 @@ argument_list|(
 name|s
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 for|for
 control|(
@@ -938,20 +1005,26 @@ name|sb
 operator|.
 name|append
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
 name|sortedKey
 argument_list|,
+name|AbstractGroup
+operator|.
 name|SEPARATOR
 argument_list|,
+name|AbstractGroup
+operator|.
 name|QUOTE_CHAR
 argument_list|)
 argument_list|)
 operator|.
 name|append
 argument_list|(
+name|AbstractGroup
+operator|.
 name|SEPARATOR
 argument_list|)
 expr_stmt|;
@@ -976,6 +1049,8 @@ name|clear
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|isDynamic ()
 specifier|public
 name|boolean
@@ -986,6 +1061,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getDescription ()
 specifier|public
 name|String
@@ -993,6 +1070,8 @@ name|getDescription
 parameter_list|()
 block|{
 return|return
+name|ExplicitGroup
+operator|.
 name|getDescriptionForPreview
 argument_list|()
 return|;
@@ -1025,17 +1104,19 @@ literal|"as long as it remains unique."
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getShortDescription ()
 specifier|public
 name|String
 name|getShortDescription
 parameter_list|()
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|sb
@@ -1129,6 +1210,8 @@ argument_list|()
 return|;
 block|}
 comment|/**      * Update the group to handle the situation where the group      * is applied to a different BibtexDatabase than it was created for.      * This group type contains a Set of BibtexEntry objects, and these will not      * be the same objects as in the new database. We must reset the entire Set with      * matching entries from the new database.      *      * @param db The database to refresh for.      */
+annotation|@
+name|Override
 DECL|method|refreshForNewDatabase (BibtexDatabase db)
 specifier|public
 name|void
@@ -1172,7 +1255,7 @@ name|getCiteKey
 argument_list|()
 argument_list|)
 decl_stmt|;
-comment|/*if (sameEntry == null) {                     System.out.println("Error: could not find entry '"+entry.getCiteKey()+"'");                 } else {                     System.out.println("'"+entry.getCiteKey()+"' ok");                 }*/
+comment|/*if (sameEntry == null) {                 System.out.println("Error: could not find entry '"+entry.getCiteKey()+"'");             } else {                 System.out.println("'"+entry.getCiteKey()+"' ok");             }*/
 name|newSet
 operator|.
 name|add
@@ -1207,6 +1290,8 @@ return|return
 name|m_entries
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getTypeId ()
 specifier|public
 name|String
@@ -1214,6 +1299,8 @@ name|getTypeId
 parameter_list|()
 block|{
 return|return
+name|ExplicitGroup
+operator|.
 name|ID
 return|;
 block|}

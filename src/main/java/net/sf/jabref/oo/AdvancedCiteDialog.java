@@ -144,11 +144,11 @@ end_comment
 
 begin_class
 DECL|class|AdvancedCiteDialog
-specifier|public
 class|class
 name|AdvancedCiteDialog
 block|{
 DECL|field|defaultInPar
+specifier|private
 specifier|static
 name|boolean
 name|defaultInPar
@@ -156,16 +156,21 @@ init|=
 literal|true
 decl_stmt|;
 DECL|field|okPressed
+specifier|private
 name|boolean
 name|okPressed
 init|=
 literal|false
 decl_stmt|;
 DECL|field|diag
+specifier|private
+specifier|final
 name|JDialog
 name|diag
 decl_stmt|;
 DECL|field|inPar
+specifier|private
+specifier|final
 name|JRadioButton
 name|inPar
 init|=
@@ -179,8 +184,11 @@ argument_list|(
 literal|"Cite selected entries"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|inText
+specifier|private
+specifier|final
+name|JRadioButton
 name|inText
 init|=
 operator|new
@@ -195,6 +203,8 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|pageInfo
+specifier|private
+specifier|final
 name|JTextField
 name|pageInfo
 init|=
@@ -205,6 +215,8 @@ literal|15
 argument_list|)
 decl_stmt|;
 DECL|field|ok
+specifier|private
+specifier|final
 name|JButton
 name|ok
 init|=
@@ -218,8 +230,11 @@ argument_list|(
 literal|"Ok"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|cancel
+specifier|private
+specifier|final
+name|JButton
 name|cancel
 init|=
 operator|new
@@ -281,8 +296,11 @@ argument_list|)
 expr_stmt|;
 if|if
 condition|(
+name|AdvancedCiteDialog
+operator|.
 name|defaultInPar
 condition|)
+block|{
 name|inPar
 operator|.
 name|setSelected
@@ -290,7 +308,9 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|inText
 operator|.
 name|setSelected
@@ -298,6 +318,7 @@ argument_list|(
 literal|true
 argument_list|)
 expr_stmt|;
+block|}
 name|inPar
 operator|.
 name|addChangeListener
@@ -306,6 +327,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -314,6 +337,8 @@ name|ChangeEvent
 name|changeEvent
 parameter_list|)
 block|{
+name|AdvancedCiteDialog
+operator|.
 name|defaultInPar
 operator|=
 name|inPar
@@ -508,6 +533,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -563,6 +590,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed

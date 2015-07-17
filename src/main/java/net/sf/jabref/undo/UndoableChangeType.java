@@ -65,13 +65,20 @@ extends|extends
 name|AbstractUndoableEdit
 block|{
 DECL|field|oldType
-DECL|field|newType
+specifier|private
+specifier|final
 name|BibtexEntryType
 name|oldType
-decl_stmt|,
+decl_stmt|;
+DECL|field|newType
+specifier|private
+specifier|final
+name|BibtexEntryType
 name|newType
 decl_stmt|;
 DECL|field|be
+specifier|private
+specifier|final
 name|BibtexEntry
 name|be
 decl_stmt|;
@@ -108,6 +115,8 @@ operator|=
 name|be
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|getUndoPresentationName ()
 specifier|public
 name|String
@@ -118,6 +127,8 @@ return|return
 literal|"Undo: change type"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getRedoPresentationName ()
 specifier|public
 name|String
@@ -128,6 +139,8 @@ return|return
 literal|"Redo: change type"
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|undo ()
 specifier|public
 name|void
@@ -147,6 +160,8 @@ name|oldType
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|redo ()
 specifier|public
 name|void

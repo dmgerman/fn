@@ -556,18 +556,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|ErrorMessageDisplay
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|GUIGlobals
 import|;
 end_import
@@ -711,12 +699,11 @@ implements|implements
 name|TreeSelectionListener
 implements|,
 name|ActionListener
-implements|,
-name|ErrorMessageDisplay
 block|{
 DECL|field|logger
 specifier|private
 specifier|static
+specifier|final
 name|Logger
 name|logger
 init|=
@@ -733,6 +720,8 @@ argument_list|()
 argument_list|)
 decl_stmt|;
 DECL|field|newButton
+specifier|private
+specifier|final
 name|JButton
 name|newButton
 init|=
@@ -746,22 +735,11 @@ argument_list|(
 literal|"new"
 argument_list|)
 argument_list|)
-decl_stmt|,
-DECL|field|helpButton
-name|helpButton
-init|=
-operator|new
-name|JButton
-argument_list|(
-name|GUIGlobals
-operator|.
-name|getImage
-argument_list|(
-literal|"help"
-argument_list|)
-argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|refresh
+specifier|private
+specifier|final
+name|JButton
 name|refresh
 init|=
 operator|new
@@ -774,8 +752,11 @@ argument_list|(
 literal|"refresh"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|autoGroup
+specifier|private
+specifier|final
+name|JButton
 name|autoGroup
 init|=
 operator|new
@@ -788,8 +769,11 @@ argument_list|(
 literal|"autoGroup"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|openset
+specifier|private
+specifier|final
+name|JButton
 name|openset
 init|=
 operator|new
@@ -812,38 +796,22 @@ operator|.
 name|white
 decl_stmt|;
 DECL|field|groupsTree
+specifier|private
 name|GroupsTree
 name|groupsTree
 decl_stmt|;
 DECL|field|groupsTreeModel
+specifier|private
 name|DefaultTreeModel
 name|groupsTreeModel
 decl_stmt|;
 DECL|field|groupsRoot
+specifier|private
 name|GroupTreeNode
 name|groupsRoot
 decl_stmt|;
-DECL|field|sp
-name|JScrollPane
-name|sp
-decl_stmt|;
-DECL|field|gbl
-name|GridBagLayout
-name|gbl
-init|=
-operator|new
-name|GridBagLayout
-argument_list|()
-decl_stmt|;
-DECL|field|con
-name|GridBagConstraints
-name|con
-init|=
-operator|new
-name|GridBagConstraints
-argument_list|()
-decl_stmt|;
 DECL|field|frame
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
@@ -852,6 +820,8 @@ name|String
 name|searchField
 decl_stmt|;
 DECL|field|groupsContextMenu
+specifier|private
+specifier|final
 name|JPopupMenu
 name|groupsContextMenu
 init|=
@@ -860,6 +830,8 @@ name|JPopupMenu
 argument_list|()
 decl_stmt|;
 DECL|field|settings
+specifier|private
+specifier|final
 name|JPopupMenu
 name|settings
 init|=
@@ -868,14 +840,20 @@ name|JPopupMenu
 argument_list|()
 decl_stmt|;
 DECL|field|hideNonHits
-DECL|field|grayOut
 specifier|private
+specifier|final
 name|JRadioButtonMenuItem
 name|hideNonHits
-decl_stmt|,
+decl_stmt|;
+DECL|field|grayOut
+specifier|private
+specifier|final
+name|JRadioButtonMenuItem
 name|grayOut
 decl_stmt|;
 DECL|field|andCb
+specifier|private
+specifier|final
 name|JRadioButtonMenuItem
 name|andCb
 init|=
@@ -892,24 +870,9 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-DECL|field|orCb
-name|JRadioButtonMenuItem
-name|orCb
-init|=
-operator|new
-name|JRadioButtonMenuItem
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Union"
-argument_list|)
-argument_list|,
-literal|false
-argument_list|)
-decl_stmt|;
 DECL|field|floatCb
+specifier|private
+specifier|final
 name|JRadioButtonMenuItem
 name|floatCb
 init|=
@@ -926,24 +889,9 @@ argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
-DECL|field|highlCb
-name|JRadioButtonMenuItem
-name|highlCb
-init|=
-operator|new
-name|JRadioButtonMenuItem
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Highlight"
-argument_list|)
-argument_list|,
-literal|false
-argument_list|)
-decl_stmt|;
 DECL|field|invCb
+specifier|private
+specifier|final
 name|JCheckBoxMenuItem
 name|invCb
 init|=
@@ -957,10 +905,13 @@ argument_list|(
 literal|"Inverted"
 argument_list|)
 argument_list|,
-DECL|field|select
 literal|false
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+DECL|field|select
+specifier|private
+specifier|final
+name|JCheckBoxMenuItem
 name|select
 init|=
 operator|new
@@ -977,6 +928,8 @@ literal|false
 argument_list|)
 decl_stmt|;
 DECL|field|showOverlappingGroups
+specifier|private
+specifier|final
 name|JCheckBoxMenuItem
 name|showOverlappingGroups
 init|=
@@ -993,6 +946,8 @@ argument_list|)
 decl_stmt|;
 comment|// JZTODO lyrics
 DECL|field|showNumberOfElements
+specifier|private
+specifier|final
 name|JCheckBoxMenuItem
 name|showNumberOfElements
 init|=
@@ -1008,6 +963,8 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|autoAssignGroup
+specifier|private
+specifier|final
 name|JCheckBoxMenuItem
 name|autoAssignGroup
 init|=
@@ -1022,60 +979,9 @@ literal|"Automatically assign new entry to selected groups"
 argument_list|)
 argument_list|)
 decl_stmt|;
-DECL|field|bgr
-name|ButtonGroup
-name|bgr
-init|=
-operator|new
-name|ButtonGroup
-argument_list|()
-decl_stmt|;
-DECL|field|visMode
-name|ButtonGroup
-name|visMode
-init|=
-operator|new
-name|ButtonGroup
-argument_list|()
-decl_stmt|;
-DECL|field|nonHits
-name|ButtonGroup
-name|nonHits
-init|=
-operator|new
-name|ButtonGroup
-argument_list|()
-decl_stmt|;
-DECL|field|expand
-name|JButton
-name|expand
-init|=
-operator|new
-name|JButton
-argument_list|(
-name|GUIGlobals
-operator|.
-name|getImage
-argument_list|(
-literal|"down"
-argument_list|)
-argument_list|)
-decl_stmt|,
-DECL|field|reduce
-name|reduce
-init|=
-operator|new
-name|JButton
-argument_list|(
-name|GUIGlobals
-operator|.
-name|getImage
-argument_list|(
-literal|"up"
-argument_list|)
-argument_list|)
-decl_stmt|;
 DECL|field|editModeCb
+specifier|private
+specifier|final
 name|JCheckBoxMenuItem
 name|editModeCb
 init|=
@@ -1093,6 +999,8 @@ literal|false
 argument_list|)
 decl_stmt|;
 DECL|field|editModeBorder
+specifier|private
+specifier|final
 name|Border
 name|editModeBorder
 init|=
@@ -1140,12 +1048,9 @@ name|RED
 argument_list|)
 decl_stmt|;
 DECL|field|editModeIndicator
+specifier|private
 name|boolean
 name|editModeIndicator
-decl_stmt|;
-DECL|field|manager
-name|SidePaneManager
-name|manager
 decl_stmt|;
 comment|/**      * The first element for each group defines which field to use for the      * quicksearch. The next two define the name and regexp for the group.      *      *      */
 DECL|method|GroupSelector (JabRefFrame frame, SidePaneManager manager)
@@ -1189,12 +1094,6 @@ operator|new
 name|AllEntriesGroup
 argument_list|()
 argument_list|)
-expr_stmt|;
-name|this
-operator|.
-name|manager
-operator|=
-name|manager
 expr_stmt|;
 name|this
 operator|.
@@ -1247,6 +1146,13 @@ literal|"grayOutNonHits"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|ButtonGroup
+name|nonHits
+init|=
+operator|new
+name|ButtonGroup
+argument_list|()
+decl_stmt|;
 name|nonHits
 operator|.
 name|add
@@ -1269,6 +1175,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -1303,6 +1211,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -1337,6 +1247,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -1371,6 +1283,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -1422,6 +1336,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -1456,6 +1372,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -1482,6 +1400,22 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|JRadioButtonMenuItem
+name|highlCb
+init|=
+operator|new
+name|JRadioButtonMenuItem
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Highlight"
+argument_list|)
+argument_list|,
+literal|false
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|Globals
@@ -1526,6 +1460,22 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+name|JRadioButtonMenuItem
+name|orCb
+init|=
+operator|new
+name|JRadioButtonMenuItem
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Union"
+argument_list|)
+argument_list|,
+literal|false
+argument_list|)
+decl_stmt|;
 if|if
 condition|(
 name|Globals
@@ -1639,6 +1589,8 @@ operator|new
 name|ChangeListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|stateChanged
@@ -1884,6 +1836,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1965,6 +1919,20 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|JButton
+name|expand
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|GUIGlobals
+operator|.
+name|getImage
+argument_list|(
+literal|"down"
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|expand
 operator|.
 name|addActionListener
@@ -1973,6 +1941,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2037,6 +2007,8 @@ argument_list|,
 name|i
 argument_list|)
 expr_stmt|;
+name|GroupSelector
+operator|.
 name|logger
 operator|.
 name|fine
@@ -2054,6 +2026,8 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|GroupSelector
+operator|.
 name|logger
 operator|.
 name|fine
@@ -2078,6 +2052,20 @@ block|}
 block|}
 argument_list|)
 expr_stmt|;
+name|JButton
+name|reduce
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|GUIGlobals
+operator|.
+name|getImage
+argument_list|(
+literal|"up"
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|reduce
 operator|.
 name|addActionListener
@@ -2086,6 +2074,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2175,6 +2165,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -2265,6 +2257,20 @@ argument_list|(
 name|butDim
 argument_list|)
 expr_stmt|;
+name|JButton
+name|helpButton
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|GUIGlobals
+operator|.
+name|getImage
+argument_list|(
+literal|"help"
+argument_list|)
+argument_list|)
+decl_stmt|;
 name|helpButton
 operator|.
 name|setPreferredSize
@@ -2618,6 +2624,13 @@ literal|"Click group to toggle membership of selected entries"
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|ButtonGroup
+name|bgr
+init|=
+operator|new
+name|ButtonGroup
+argument_list|()
+decl_stmt|;
 name|bgr
 operator|.
 name|add
@@ -2632,6 +2645,13 @@ argument_list|(
 name|orCb
 argument_list|)
 expr_stmt|;
+name|ButtonGroup
+name|visMode
+init|=
+operator|new
+name|ButtonGroup
+argument_list|()
+decl_stmt|;
 name|visMode
 operator|.
 name|add
@@ -2653,6 +2673,13 @@ operator|new
 name|JPanel
 argument_list|()
 decl_stmt|;
+name|GridBagLayout
+name|gbl
+init|=
+operator|new
+name|GridBagLayout
+argument_list|()
+decl_stmt|;
 name|main
 operator|.
 name|setLayout
@@ -2660,6 +2687,13 @@ argument_list|(
 name|gbl
 argument_list|)
 expr_stmt|;
+name|GridBagConstraints
+name|con
+init|=
+operator|new
+name|GridBagConstraints
+argument_list|()
+decl_stmt|;
 name|con
 operator|.
 name|fill
@@ -2850,8 +2884,9 @@ name|groupsRoot
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|JScrollPane
 name|sp
-operator|=
+init|=
 operator|new
 name|JScrollPane
 argument_list|(
@@ -2865,7 +2900,7 @@ name|JScrollPane
 operator|.
 name|HORIZONTAL_SCROLLBAR_AS_NEEDED
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 name|revalidateGroups
 argument_list|()
 expr_stmt|;
@@ -3168,6 +3203,13 @@ expr_stmt|;
 name|definePopup
 argument_list|()
 expr_stmt|;
+name|NodeAction
+name|moveNodeUpAction
+init|=
+operator|new
+name|MoveNodeUpAction
+argument_list|()
+decl_stmt|;
 name|moveNodeUpAction
 operator|.
 name|putValue
@@ -3190,6 +3232,13 @@ name|CTRL_MASK
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|NodeAction
+name|moveNodeDownAction
+init|=
+operator|new
+name|MoveNodeDownAction
+argument_list|()
+decl_stmt|;
 name|moveNodeDownAction
 operator|.
 name|putValue
@@ -3212,6 +3261,13 @@ name|CTRL_MASK
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|NodeAction
+name|moveNodeLeftAction
+init|=
+operator|new
+name|MoveNodeLeftAction
+argument_list|()
+decl_stmt|;
 name|moveNodeLeftAction
 operator|.
 name|putValue
@@ -3234,6 +3290,13 @@ name|CTRL_MASK
 argument_list|)
 argument_list|)
 expr_stmt|;
+name|NodeAction
+name|moveNodeRightAction
+init|=
+operator|new
+name|MoveNodeRightAction
+argument_list|()
+decl_stmt|;
 name|moveNodeRightAction
 operator|.
 name|putValue
@@ -3427,6 +3490,8 @@ operator|new
 name|MouseAdapter
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|mousePressed
@@ -3450,6 +3515,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|mouseReleased
@@ -3473,6 +3540,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|mouseClicked
@@ -3536,13 +3605,16 @@ return|return;
 block|}
 if|if
 condition|(
+operator|(
 name|e
 operator|.
 name|getClickCount
 argument_list|()
 operator|==
 literal|2
+operator|)
 operator|&&
+operator|(
 name|e
 operator|.
 name|getButton
@@ -3551,6 +3623,7 @@ operator|==
 name|MouseEvent
 operator|.
 name|BUTTON1
+operator|)
 condition|)
 block|{
 comment|// edit
@@ -3566,13 +3639,16 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|e
 operator|.
 name|getClickCount
 argument_list|()
 operator|==
 literal|1
+operator|)
 operator|&&
+operator|(
 name|e
 operator|.
 name|getButton
@@ -3581,6 +3657,7 @@ operator|==
 name|MouseEvent
 operator|.
 name|BUTTON1
+operator|)
 condition|)
 block|{
 name|annotationEvent
@@ -3603,6 +3680,8 @@ operator|new
 name|PopupMenuListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|popupMenuWillBecomeVisible
@@ -3613,6 +3692,8 @@ parameter_list|)
 block|{
 comment|// nothing to do
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|popupMenuWillBecomeInvisible
@@ -3629,6 +3710,8 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|popupMenuCanceled
@@ -4524,6 +4607,8 @@ name|entry
 argument_list|)
 condition|)
 block|{
+name|GroupSelector
+operator|.
 name|logger
 operator|.
 name|fine
@@ -4546,6 +4631,8 @@ expr_stmt|;
 block|}
 else|else
 block|{
+name|GroupSelector
+operator|.
 name|logger
 operator|.
 name|fine
@@ -4576,6 +4663,7 @@ operator|.
 name|isEmpty
 argument_list|()
 condition|)
+block|{
 name|undoRemove
 operator|=
 name|node
@@ -4597,6 +4685,7 @@ index|]
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 comment|// If there are entries to add
 if|if
 condition|(
@@ -4606,6 +4695,7 @@ operator|.
 name|isEmpty
 argument_list|()
 condition|)
+block|{
 name|undoAdd
 operator|=
 name|node
@@ -4627,6 +4717,7 @@ index|]
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Remember undo information
 if|if
 condition|(
@@ -4757,6 +4848,8 @@ name|GroupTreeNode
 name|node
 parameter_list|)
 block|{
+name|GroupSelector
+operator|.
 name|logger
 operator|.
 name|fine
@@ -4764,6 +4857,8 @@ argument_list|(
 literal|"annotationEvent"
 argument_list|)
 expr_stmt|;
+name|GroupSelector
+operator|.
 name|logger
 operator|.
 name|fine
@@ -4802,6 +4897,8 @@ block|}
 comment|//    private void annotationEvent() {
 comment|//        this.annotationEvent((GroupTreeNode) ((groupsTree.getSelectionPaths())[0].getLastPathComponent()));
 comment|//    }
+annotation|@
+name|Override
 DECL|method|valueChanged (TreeSelectionEvent e)
 specifier|public
 name|void
@@ -4834,23 +4931,30 @@ argument_list|()
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|selection
 operator|==
 literal|null
-operator|||
-name|selection
-operator|.
-name|length
-operator|==
-literal|0
+operator|)
 operator|||
 operator|(
 name|selection
 operator|.
 name|length
 operator|==
+literal|0
+operator|)
+operator|||
+operator|(
+operator|(
+name|selection
+operator|.
+name|length
+operator|==
 literal|1
+operator|)
 operator|&&
+operator|(
 operator|(
 operator|(
 name|GroupTreeNode
@@ -4868,6 +4972,7 @@ name|getGroup
 argument_list|()
 operator|instanceof
 name|AllEntriesGroup
+operator|)
 operator|)
 condition|)
 block|{
@@ -5051,11 +5156,13 @@ name|AbstractWorker
 block|{
 DECL|field|rules
 specifier|private
+specifier|final
 name|SearchRuleSet
 name|rules
 decl_stmt|;
 DECL|field|searchTerm
 specifier|private
+specifier|final
 name|Hashtable
 argument_list|<
 name|String
@@ -5066,6 +5173,7 @@ name|searchTerm
 decl_stmt|;
 DECL|field|matches
 specifier|private
+specifier|final
 name|ArrayList
 argument_list|<
 name|BibtexEntry
@@ -5081,6 +5189,7 @@ argument_list|()
 decl_stmt|;
 DECL|field|showOverlappingGroupsP
 specifier|private
+specifier|final
 name|boolean
 name|showOverlappingGroupsP
 decl_stmt|;
@@ -5126,6 +5235,8 @@ name|isSelected
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -5191,6 +5302,8 @@ block|}
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void
@@ -5309,7 +5422,7 @@ expr_stmt|;
 block|}
 comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and set the specified selection and expansion state.      * @param node If this is non-null, the view is scrolled to make it visible.      */
 DECL|method|revalidateGroups (TreePath[] selectionPaths, Enumeration<TreePath> expandedNodes, GroupTreeNode node)
-specifier|public
+specifier|private
 name|void
 name|revalidateGroups
 parameter_list|(
@@ -5423,7 +5536,7 @@ expr_stmt|;
 block|}
 comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and maintain the current selection and expansion state.      * @param node If this is non-null, the view is scrolled to make it visible.      */
 DECL|method|revalidateGroups (GroupTreeNode node)
-specifier|public
+specifier|private
 name|void
 name|revalidateGroups
 parameter_list|(
@@ -5445,6 +5558,8 @@ name|node
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -5746,7 +5861,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|setGroups (GroupTreeNode groupsRoot)
-specifier|public
+specifier|private
 name|void
 name|setGroups
 parameter_list|(
@@ -5862,7 +5977,6 @@ extends|extends
 name|AbstractAction
 block|{
 DECL|field|m_node
-specifier|protected
 name|GroupTreeNode
 name|m_node
 init|=
@@ -5957,6 +6071,7 @@ return|;
 block|}
 block|}
 DECL|field|editGroupAction
+specifier|private
 specifier|final
 name|AbstractAction
 name|editGroupAction
@@ -5966,6 +6081,7 @@ name|EditGroupAction
 argument_list|()
 decl_stmt|;
 DECL|field|editGroupPopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|editGroupPopupAction
@@ -5975,6 +6091,7 @@ name|EditGroupAction
 argument_list|()
 decl_stmt|;
 DECL|field|addGroupPopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|addGroupPopupAction
@@ -5984,6 +6101,7 @@ name|AddGroupAction
 argument_list|()
 decl_stmt|;
 DECL|field|addSubgroupPopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|addSubgroupPopupAction
@@ -5993,6 +6111,7 @@ name|AddSubgroupAction
 argument_list|()
 decl_stmt|;
 DECL|field|removeGroupAndSubgroupsPopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|removeGroupAndSubgroupsPopupAction
@@ -6002,6 +6121,7 @@ name|RemoveGroupAndSubgroupsAction
 argument_list|()
 decl_stmt|;
 DECL|field|removeSubgroupsPopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|removeSubgroupsPopupAction
@@ -6011,6 +6131,7 @@ name|RemoveSubgroupsAction
 argument_list|()
 decl_stmt|;
 DECL|field|removeGroupKeepSubgroupsPopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|removeGroupKeepSubgroupsPopupAction
@@ -6020,6 +6141,7 @@ name|RemoveGroupKeepSubgroupsAction
 argument_list|()
 decl_stmt|;
 DECL|field|moveNodeUpPopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|moveNodeUpPopupAction
@@ -6029,6 +6151,7 @@ name|MoveNodeUpAction
 argument_list|()
 decl_stmt|;
 DECL|field|moveNodeDownPopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|moveNodeDownPopupAction
@@ -6038,6 +6161,7 @@ name|MoveNodeDownAction
 argument_list|()
 decl_stmt|;
 DECL|field|moveNodeLeftPopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|moveNodeLeftPopupAction
@@ -6047,6 +6171,7 @@ name|MoveNodeLeftAction
 argument_list|()
 decl_stmt|;
 DECL|field|moveNodeRightPopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|moveNodeRightPopupAction
@@ -6055,43 +6180,8 @@ operator|new
 name|MoveNodeRightAction
 argument_list|()
 decl_stmt|;
-DECL|field|moveNodeUpAction
-specifier|final
-name|NodeAction
-name|moveNodeUpAction
-init|=
-operator|new
-name|MoveNodeUpAction
-argument_list|()
-decl_stmt|;
-DECL|field|moveNodeDownAction
-specifier|final
-name|NodeAction
-name|moveNodeDownAction
-init|=
-operator|new
-name|MoveNodeDownAction
-argument_list|()
-decl_stmt|;
-DECL|field|moveNodeLeftAction
-specifier|final
-name|NodeAction
-name|moveNodeLeftAction
-init|=
-operator|new
-name|MoveNodeLeftAction
-argument_list|()
-decl_stmt|;
-DECL|field|moveNodeRightAction
-specifier|final
-name|NodeAction
-name|moveNodeRightAction
-init|=
-operator|new
-name|MoveNodeRightAction
-argument_list|()
-decl_stmt|;
 DECL|field|expandSubtreePopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|expandSubtreePopupAction
@@ -6101,6 +6191,7 @@ name|ExpandSubtreeAction
 argument_list|()
 decl_stmt|;
 DECL|field|collapseSubtreePopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|collapseSubtreePopupAction
@@ -6110,6 +6201,7 @@ name|CollapseSubtreeAction
 argument_list|()
 decl_stmt|;
 DECL|field|sortDirectSubgroupsPopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|sortDirectSubgroupsPopupAction
@@ -6119,6 +6211,7 @@ name|SortDirectSubgroupsAction
 argument_list|()
 decl_stmt|;
 DECL|field|sortAllSubgroupsPopupAction
+specifier|private
 specifier|final
 name|NodeAction
 name|sortAllSubgroupsPopupAction
@@ -6128,6 +6221,7 @@ name|SortAllSubgroupsAction
 argument_list|()
 decl_stmt|;
 DECL|field|addToGroup
+specifier|private
 specifier|final
 name|AddToGroupAction
 name|addToGroup
@@ -6139,6 +6233,7 @@ literal|false
 argument_list|)
 decl_stmt|;
 DECL|field|moveToGroup
+specifier|private
 specifier|final
 name|AddToGroupAction
 name|moveToGroup
@@ -6150,6 +6245,7 @@ literal|true
 argument_list|)
 decl_stmt|;
 DECL|field|removeFromGroup
+specifier|private
 specifier|final
 name|RemoveFromGroupAction
 name|removeFromGroup
@@ -6181,6 +6277,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -6387,6 +6485,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -6601,6 +6701,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -6769,6 +6871,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -6922,6 +7026,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -7074,6 +7180,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -7289,6 +7397,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent ae)
 specifier|public
 name|void
@@ -7389,6 +7499,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent ae)
 specifier|public
 name|void
@@ -7484,6 +7596,8 @@ literal|"Clear highlight"
 argument_list|)
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -7525,6 +7639,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent ae)
 specifier|public
 name|void
@@ -7594,6 +7710,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent ae)
 specifier|public
 name|void
@@ -7663,6 +7781,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -7711,6 +7831,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -7759,6 +7881,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -7807,6 +7931,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -7880,8 +8006,6 @@ block|}
 block|}
 name|AbstractUndoableEdit
 name|undo
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -7891,6 +8015,7 @@ operator|.
 name|canMoveUp
 argument_list|()
 operator|||
+operator|(
 operator|(
 name|undo
 operator|=
@@ -7905,6 +8030,7 @@ argument_list|)
 operator|)
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 name|frame
@@ -8014,8 +8140,6 @@ block|}
 block|}
 name|AbstractUndoableEdit
 name|undo
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -8025,6 +8149,7 @@ operator|.
 name|canMoveDown
 argument_list|()
 operator|||
+operator|(
 operator|(
 name|undo
 operator|=
@@ -8039,6 +8164,7 @@ argument_list|)
 operator|)
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 name|frame
@@ -8148,8 +8274,6 @@ block|}
 block|}
 name|AbstractUndoableEdit
 name|undo
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -8159,6 +8283,7 @@ operator|.
 name|canMoveLeft
 argument_list|()
 operator|||
+operator|(
 operator|(
 name|undo
 operator|=
@@ -8173,6 +8298,7 @@ argument_list|)
 operator|)
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 name|frame
@@ -8281,8 +8407,6 @@ block|}
 block|}
 name|AbstractUndoableEdit
 name|undo
-init|=
-literal|null
 decl_stmt|;
 if|if
 condition|(
@@ -8292,6 +8416,7 @@ operator|.
 name|canMoveRight
 argument_list|()
 operator|||
+operator|(
 operator|(
 name|undo
 operator|=
@@ -8306,6 +8431,7 @@ argument_list|)
 operator|)
 operator|==
 literal|null
+operator|)
 condition|)
 block|{
 name|frame
@@ -8542,6 +8668,8 @@ expr_stmt|;
 block|}
 block|}
 DECL|field|moveSubmenu
+specifier|private
+specifier|final
 name|JMenu
 name|moveSubmenu
 init|=
@@ -8557,6 +8685,8 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|sortSubmenu
+specifier|private
+specifier|final
 name|JMenu
 name|sortSubmenu
 init|=
@@ -8608,6 +8738,8 @@ argument_list|)
 return|;
 block|}
 comment|/** panel may be null to indicate that no file is currently open. */
+annotation|@
+name|Override
 DECL|method|setActiveBasePanel (BasePanel panel)
 specifier|public
 name|void
@@ -8784,52 +8916,6 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
-comment|/**      * This method is required by the ErrorMessageDisplay interface, and lets this class      * serve as a callback for regular expression exceptions happening in DatabaseSearch.      * @param errorMessage      */
-DECL|method|reportError (String errorMessage)
-specifier|public
-name|void
-name|reportError
-parameter_list|(
-name|String
-name|errorMessage
-parameter_list|)
-block|{
-comment|// this should never happen, since regular expressions are checked for
-comment|// correctness by the edit group dialog, and no other errors should
-comment|// occur in a search
-name|System
-operator|.
-name|err
-operator|.
-name|println
-argument_list|(
-literal|"Error in group search: "
-operator|+
-name|errorMessage
-operator|+
-literal|". Please report this on www.sf.net/projects/jabref"
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * This method is required by the ErrorMessageDisplay interface, and lets this class      * serve as a callback for regular expression exceptions happening in DatabaseSearch.      * @param errorMessage      */
-DECL|method|reportError (String errorMessage, Exception exception)
-specifier|public
-name|void
-name|reportError
-parameter_list|(
-name|String
-name|errorMessage
-parameter_list|,
-name|Exception
-name|exception
-parameter_list|)
-block|{
-name|reportError
-argument_list|(
-name|errorMessage
-argument_list|)
-expr_stmt|;
-block|}
 comment|/**      * Highlight all groups that contain any/all of the specified entries.      * If entries is null or has zero length, highlight is cleared.      */
 DECL|method|showMatchingGroups (BibtexEntry[] entries, boolean requireAll)
 specifier|public
@@ -8846,15 +8932,19 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|entries
 operator|==
 literal|null
+operator|)
 operator|||
+operator|(
 name|entries
 operator|.
 name|length
 operator|==
 literal|0
+operator|)
 condition|)
 block|{
 comment|// nothing selected
@@ -8995,11 +9085,13 @@ if|if
 condition|(
 name|requireAll
 operator|&&
+operator|(
 name|i
 operator|>=
 name|entries
 operator|.
 name|length
+operator|)
 condition|)
 comment|// did not break from loop
 block|{
@@ -9087,7 +9179,7 @@ expr_stmt|;
 block|}
 comment|/** Show groups that, if selected, would show at least one      * of the entries found in the specified search. */
 DECL|method|showOverlappingGroups (List<BibtexEntry> matches)
-specifier|protected
+specifier|private
 name|void
 name|showOverlappingGroups
 parameter_list|(

@@ -60,6 +60,7 @@ block|{
 DECL|field|INSTANCE
 specifier|public
 specifier|static
+specifier|final
 name|SearchMatcher
 name|INSTANCE
 init|=
@@ -67,6 +68,8 @@ operator|new
 name|SearchMatcher
 argument_list|()
 decl_stmt|;
+annotation|@
+name|Override
 DECL|method|matches (BibtexEntry entry)
 specifier|public
 name|boolean

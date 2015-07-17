@@ -150,7 +150,6 @@ end_comment
 
 begin_class
 DECL|class|OOBibStyle
-specifier|public
 class|class
 name|OOBibStyle
 implements|implements
@@ -169,12 +168,15 @@ init|=
 literal|"??"
 decl_stmt|;
 DECL|field|name
+specifier|private
 name|String
 name|name
 init|=
 literal|null
 decl_stmt|;
 DECL|field|journals
+specifier|private
+specifier|final
 name|SortedSet
 argument_list|<
 name|String
@@ -190,6 +192,8 @@ argument_list|()
 decl_stmt|;
 comment|// Formatter to be run on fields before they are used as part of citation marker:
 DECL|field|fieldFormatter
+specifier|private
+specifier|final
 name|LayoutFormatter
 name|fieldFormatter
 init|=
@@ -198,11 +202,14 @@ name|OOPreFormatter
 argument_list|()
 decl_stmt|;
 DECL|field|defaultBibLayout
+specifier|private
 name|Layout
 name|defaultBibLayout
 decl_stmt|;
 comment|// reference layout mapped from entry type number:
 DECL|field|bibLayout
+specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -221,6 +228,8 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|properties
+specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -239,6 +248,8 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|citProperties
+specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -257,6 +268,8 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|numPattern
+specifier|private
+specifier|final
 name|Pattern
 name|numPattern
 init|=
@@ -268,73 +281,116 @@ literal|"-?\\d+"
 argument_list|)
 decl_stmt|;
 DECL|field|valid
+specifier|private
 name|boolean
 name|valid
 init|=
 literal|false
 decl_stmt|;
 DECL|field|NONE
-DECL|field|LAYOUT
-DECL|field|PROPERTIES
-DECL|field|CITATION
-DECL|field|NAME
-DECL|field|JOURNALS
+specifier|private
 specifier|final
 specifier|static
 name|int
 name|NONE
 init|=
 literal|0
-decl_stmt|,
+decl_stmt|;
+DECL|field|LAYOUT
+specifier|private
+specifier|final
+specifier|static
+name|int
 name|LAYOUT
 init|=
 literal|1
-decl_stmt|,
+decl_stmt|;
+DECL|field|PROPERTIES
+specifier|private
+specifier|final
+specifier|static
+name|int
 name|PROPERTIES
 init|=
 literal|2
-decl_stmt|,
+decl_stmt|;
+DECL|field|CITATION
+specifier|private
+specifier|final
+specifier|static
+name|int
 name|CITATION
 init|=
 literal|3
-decl_stmt|,
+decl_stmt|;
+DECL|field|NAME
+specifier|private
+specifier|final
+specifier|static
+name|int
 name|NAME
 init|=
 literal|4
-decl_stmt|,
+decl_stmt|;
+DECL|field|JOURNALS
+specifier|private
+specifier|final
+specifier|static
+name|int
 name|JOURNALS
 init|=
 literal|5
 decl_stmt|;
 DECL|field|LAYOUT_MRK
+specifier|private
 specifier|final
 specifier|static
 name|String
 name|LAYOUT_MRK
 init|=
 literal|"LAYOUT"
-decl_stmt|,
+decl_stmt|;
 DECL|field|PROPERTIES_MARK
+specifier|private
+specifier|final
+specifier|static
+name|String
 name|PROPERTIES_MARK
 init|=
 literal|"PROPERTIES"
-decl_stmt|,
+decl_stmt|;
 DECL|field|CITATION_MARK
+specifier|private
+specifier|final
+specifier|static
+name|String
 name|CITATION_MARK
 init|=
 literal|"CITATION"
-decl_stmt|,
+decl_stmt|;
 DECL|field|NAME_MARK
+specifier|private
+specifier|final
+specifier|static
+name|String
 name|NAME_MARK
 init|=
 literal|"NAME"
-decl_stmt|,
+decl_stmt|;
 DECL|field|JOURNALS_MARK
+specifier|private
+specifier|final
+specifier|static
+name|String
 name|JOURNALS_MARK
 init|=
 literal|"JOURNALS"
-decl_stmt|,
+decl_stmt|;
 DECL|field|DEFAULT_MARK
+specifier|private
+specifier|final
+specifier|static
+name|String
 name|DEFAULT_MARK
 init|=
 literal|"default"
@@ -356,16 +412,10 @@ name|Long
 operator|.
 name|MIN_VALUE
 decl_stmt|;
-DECL|field|COMBINED_ENTRIES_SEPARATOR
-specifier|private
-name|String
-name|COMBINED_ENTRIES_SEPARATOR
-init|=
-literal|"-"
-decl_stmt|;
 comment|//private Pattern quoted = Pattern.compile("\".*^\\\\\"");
 DECL|field|quoted
 specifier|private
+specifier|final
 name|Pattern
 name|quoted
 init|=
@@ -401,6 +451,8 @@ name|styleFile
 operator|=
 name|styleFile
 expr_stmt|;
+name|OOBibStyle
+operator|.
 name|styleFileModificationTime
 operator|=
 operator|(
@@ -821,13 +873,15 @@ operator|!
 name|isUpToDate
 argument_list|()
 condition|)
+block|{
 name|reload
 argument_list|()
 expr_stmt|;
 block|}
+block|}
 comment|/**      * If this style was initialized from a file on disk, reload the style      * information.      * @throws Exception      */
 DECL|method|reload ()
-specifier|public
+specifier|private
 name|void
 name|reload
 parameter_list|()
@@ -841,6 +895,8 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|OOBibStyle
+operator|.
 name|styleFileModificationTime
 operator|=
 operator|(
@@ -863,7 +919,7 @@ block|}
 block|}
 comment|/**      * If this style was initialized from a file on disk, check whether the file      * is unmodified since initialization.      * @return true if the file has not been modified, false otherwise.      */
 DECL|method|isUpToDate ()
-specifier|public
+specifier|private
 name|boolean
 name|isUpToDate
 parameter_list|()
@@ -881,13 +937,17 @@ operator|.
 name|lastModified
 argument_list|()
 operator|==
+name|OOBibStyle
+operator|.
 name|styleFileModificationTime
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 DECL|method|readFormatFile (Reader in)
 specifier|private
@@ -955,6 +1015,8 @@ decl_stmt|;
 name|int
 name|mode
 init|=
+name|OOBibStyle
+operator|.
 name|NONE
 decl_stmt|;
 for|for
@@ -997,6 +1059,7 @@ operator|==
 literal|'\r'
 operator|)
 condition|)
+block|{
 name|line
 operator|=
 name|line
@@ -1013,6 +1076,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 comment|// Check for empty line or comment:
 if|if
 condition|(
@@ -1039,7 +1103,9 @@ operator|==
 literal|'#'
 operator|)
 condition|)
+block|{
 continue|continue;
+block|}
 comment|// Check if we should change mode:
 if|if
 condition|(
@@ -1047,12 +1113,16 @@ name|line
 operator|.
 name|equals
 argument_list|(
+name|OOBibStyle
+operator|.
 name|NAME_MARK
 argument_list|)
 condition|)
 block|{
 name|mode
 operator|=
+name|OOBibStyle
+operator|.
 name|NAME
 expr_stmt|;
 continue|continue;
@@ -1064,12 +1134,16 @@ name|line
 operator|.
 name|equals
 argument_list|(
+name|OOBibStyle
+operator|.
 name|LAYOUT_MRK
 argument_list|)
 condition|)
 block|{
 name|mode
 operator|=
+name|OOBibStyle
+operator|.
 name|LAYOUT
 expr_stmt|;
 continue|continue;
@@ -1081,12 +1155,16 @@ name|line
 operator|.
 name|equals
 argument_list|(
+name|OOBibStyle
+operator|.
 name|PROPERTIES_MARK
 argument_list|)
 condition|)
 block|{
 name|mode
 operator|=
+name|OOBibStyle
+operator|.
 name|PROPERTIES
 expr_stmt|;
 continue|continue;
@@ -1098,12 +1176,16 @@ name|line
 operator|.
 name|equals
 argument_list|(
+name|OOBibStyle
+operator|.
 name|CITATION_MARK
 argument_list|)
 condition|)
 block|{
 name|mode
 operator|=
+name|OOBibStyle
+operator|.
 name|CITATION
 expr_stmt|;
 continue|continue;
@@ -1115,12 +1197,16 @@ name|line
 operator|.
 name|equals
 argument_list|(
+name|OOBibStyle
+operator|.
 name|JOURNALS_MARK
 argument_list|)
 condition|)
 block|{
 name|mode
 operator|=
+name|OOBibStyle
+operator|.
 name|JOURNALS
 expr_stmt|;
 continue|continue;
@@ -1145,6 +1231,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|name
 operator|=
 name|line
@@ -1152,6 +1239,7 @@ operator|.
 name|trim
 argument_list|()
 expr_stmt|;
+block|}
 case|case
 name|LAYOUT
 case|:
@@ -1199,12 +1287,16 @@ if|if
 condition|(
 name|mode
 operator|!=
+name|OOBibStyle
+operator|.
 name|NONE
 condition|)
+block|{
 name|valid
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 comment|/**      * After initalizing this style from a file, this method can be used to check      * whether the file appeared to be a proper style file.      * @return true if the file could be parsed as a style file, false otherwise.      */
 DECL|method|isValid ()
@@ -1248,12 +1340,14 @@ operator|&&
 operator|(
 name|index
 operator|<
+operator|(
 name|line
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 operator|)
 condition|)
 block|{
@@ -1284,6 +1378,8 @@ argument_list|)
 operator|.
 name|equals
 argument_list|(
+name|OOBibStyle
+operator|.
 name|DEFAULT_MARK
 argument_list|)
 decl_stmt|;
@@ -1329,11 +1425,14 @@ if|if
 condition|(
 name|setDefault
 condition|)
+block|{
 name|defaultBibLayout
 operator|=
 name|layout
 expr_stmt|;
+block|}
 else|else
+block|{
 name|bibLayout
 operator|.
 name|put
@@ -1346,6 +1445,7 @@ argument_list|,
 name|layout
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 catch|catch
 parameter_list|(
@@ -1400,12 +1500,14 @@ operator|&&
 operator|(
 name|index
 operator|<=
+operator|(
 name|line
 operator|.
 name|length
 argument_list|()
 operator|-
 literal|1
+operator|)
 operator|)
 condition|)
 block|{
@@ -1463,6 +1565,7 @@ operator|.
 name|matches
 argument_list|()
 condition|)
+block|{
 name|value
 operator|=
 name|value
@@ -1485,6 +1588,7 @@ operator|-
 literal|1
 argument_list|)
 expr_stmt|;
+block|}
 name|Object
 name|toSet
 init|=
@@ -1529,12 +1633,14 @@ argument_list|(
 literal|"true"
 argument_list|)
 condition|)
+block|{
 name|toSet
 operator|=
 name|Boolean
 operator|.
 name|TRUE
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -1551,12 +1657,14 @@ argument_list|(
 literal|"false"
 argument_list|)
 condition|)
+block|{
 name|toSet
 operator|=
 name|Boolean
 operator|.
 name|FALSE
 expr_stmt|;
+block|}
 name|map
 operator|.
 name|put
@@ -1590,6 +1698,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|journals
 operator|.
 name|add
@@ -1600,6 +1709,7 @@ name|trim
 argument_list|()
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|getReferenceFormat (String type)
 specifier|public
@@ -1629,13 +1739,17 @@ name|l
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|l
 return|;
+block|}
 else|else
+block|{
 return|return
 name|defaultBibLayout
 return|;
+block|}
 block|}
 comment|/**      * Get the array of elements composing the reference for a given entry type.      * @param bibType The OO type number.      * @return The format definition.      public PropertyValue[][] getReferenceFormat(short bibType) {         Object o = bibLayout.get(new Short(bibType));         if (o != null)             return (PropertyValue[][])o;         else             return defaultBibLayout;     }*/
 comment|/**      * Format a number-based citation marker for the given number.      * @param number The citation numbers.      * @return The text for the citation.      */
@@ -1834,11 +1948,13 @@ condition|(
 operator|(
 name|i
 operator|<
+operator|(
 name|lNum
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 operator|)
 operator|&&
 operator|(
@@ -1849,15 +1965,19 @@ operator|+
 literal|1
 index|]
 operator|==
+operator|(
 name|i1
 operator|+
 literal|1
 operator|)
+operator|)
 condition|)
+block|{
 name|combineFrom
 operator|=
 name|i1
 expr_stmt|;
+block|}
 else|else
 block|{
 comment|// Add single entry:
@@ -1867,6 +1987,7 @@ name|i
 operator|>
 literal|0
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1882,6 +2003,7 @@ literal|"CitationSeparator"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
@@ -1903,6 +2025,8 @@ name|i
 index|]
 argument_list|)
 else|:
+name|OOBibStyle
+operator|.
 name|UNDEFINED_CITATION_MARKER
 argument_list|)
 expr_stmt|;
@@ -1920,11 +2044,13 @@ condition|(
 operator|(
 name|i
 operator|==
+operator|(
 name|lNum
 operator|.
 name|length
 operator|-
 literal|1
+operator|)
 operator|)
 operator|||
 operator|(
@@ -1935,9 +2061,11 @@ operator|+
 literal|1
 index|]
 operator|!=
+operator|(
 name|i1
 operator|+
 literal|1
+operator|)
 operator|)
 condition|)
 block|{
@@ -1947,6 +2075,7 @@ name|written
 operator|>
 literal|0
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1962,6 +2091,7 @@ literal|"CitationSeparator"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -1971,11 +2101,15 @@ literal|0
 operator|)
 operator|&&
 operator|(
+operator|(
+operator|(
 name|i1
 operator|+
 literal|1
+operator|)
 operator|-
 name|combineFrom
+operator|)
 operator|>=
 name|minGroupingCount
 operator|)
@@ -2046,6 +2180,7 @@ name|jj
 operator|<
 name|i1
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -2061,6 +2196,7 @@ literal|"CitationSeparator"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|written
 operator|++
 expr_stmt|;
@@ -2571,9 +2707,11 @@ operator|&&
 operator|(
 name|i
 operator|>
+operator|(
 name|piv
 operator|+
 literal|1
+operator|)
 operator|)
 condition|)
 block|{
@@ -2629,9 +2767,11 @@ operator|&&
 operator|(
 name|i
 operator|>
+operator|(
 name|piv
 operator|+
 literal|1
+operator|)
 operator|)
 condition|)
 block|{
@@ -2707,6 +2847,7 @@ if|if
 condition|(
 name|inParenthesis
 condition|)
+block|{
 return|return
 name|getAuthorYearParenthesisMarker
 argument_list|(
@@ -2819,6 +2960,7 @@ argument_list|,
 name|unlimAuthors
 argument_list|)
 return|;
+block|}
 else|else
 block|{
 name|String
@@ -2853,10 +2995,12 @@ name|alsInText
 operator|!=
 literal|null
 condition|)
+block|{
 name|authorLastSeparator
 operator|=
 name|alsInText
 expr_stmt|;
+block|}
 return|return
 name|getAuthorYearInTextMarker
 argument_list|(
@@ -3054,7 +3198,7 @@ expr_stmt|;
 block|}
 comment|/**      * This method produces (Author, year) style citation strings in many different forms.      *      * @param entries The array of BibtexEntry to get fields from.      * @param authorField The bibtex field providing author names, e.g. "author" or "editor".      * @param yearField The bibtex field providing the year, e.g. "year".      * @param maxA The maximum number of authors to write out in full without using etal. Set to      *              -1 to always write out all authors.      * @param authorSep The String to add between author names except the last two, e.g. ", ".      * @param andString The String to add between the two last author names, e.g. "& ".      * @param etAlString The String to represent authors that are not mentioned, e.g. " et al."      * @param yearSep The String to separate authors from year, e.g. "; ".      * @param startBrace The opening parenthesis.      * @param endBrace The closing parenthesis.      * @param citationSeparator The String to separate citations from each other.      * @param uniquifiers Optional parameter to separate similar citations. Elements can be null if not needed.      * @return The formatted citation.      */
 DECL|method|getAuthorYearParenthesisMarker (BibtexEntry[] entries, BibtexDatabase database, String authorField, String yearField, int maxA, String authorSep, String andString, String etAlString, String yearSep, String startBrace, String endBrace, String citationSeparator, String[] uniquifiers, int[] unlimAuthors)
-specifier|public
+specifier|private
 name|String
 name|getAuthorYearParenthesisMarker
 parameter_list|(
@@ -3173,13 +3317,16 @@ name|entry
 operator|==
 literal|null
 condition|)
+block|{
 continue|continue;
+block|}
 if|if
 condition|(
 name|j
 operator|>
 literal|0
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -3187,6 +3334,7 @@ argument_list|(
 name|citationSeparator
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|author
 init|=
@@ -3266,12 +3414,14 @@ while|while
 condition|(
 name|i
 operator|<
+operator|(
 name|al
 operator|.
 name|size
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 name|sb
@@ -3367,6 +3517,7 @@ name|year
 operator|!=
 literal|null
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -3374,6 +3525,7 @@ argument_list|(
 name|year
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -3391,6 +3543,7 @@ operator|!=
 literal|null
 operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -3401,6 +3554,7 @@ name|j
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|sb
 operator|.
@@ -3418,7 +3572,7 @@ return|;
 block|}
 comment|/**      * This method produces "Author (year)" style citation strings in many different forms.      *      * @param entries The array of BibtexEntry to get fields from.      * @param authorField The bibtex field providing author names, e.g. "author" or "editor".      * @param yearField The bibtex field providing the year, e.g. "year".      * @param maxA The maximum number of authors to write out in full without using etal. Set to      *              -1 to always write out all authors.      * @param authorSep The String to add between author names except the last two, e.g. ", ".      * @param andString The String to add between the two last author names, e.g. "& ".      * @param etAlString The String to represent authors that are not mentioned, e.g. " et al."      * @param yearSep The String to separate authors from year, e.g. "; ".      * @param startBrace The opening parenthesis.      * @param endBrace The closing parenthesis.      * @param uniquefiers Optional parameters to separate similar citations. Can be null if not needed.      * @return The formatted citation.      */
 DECL|method|getAuthorYearInTextMarker (BibtexEntry[] entries, BibtexDatabase database, String authorField, String yearField, int maxA, String authorSep, String andString, String etAlString, String yearSep, String startBrace, String endBrace, String citationSeparator, String[] uniquefiers, int[] unlimAuthors)
-specifier|public
+specifier|private
 name|String
 name|getAuthorYearInTextMarker
 parameter_list|(
@@ -3530,13 +3684,16 @@ index|]
 operator|==
 literal|null
 condition|)
+block|{
 continue|continue;
+block|}
 if|if
 condition|(
 name|i
 operator|>
 literal|0
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -3544,6 +3701,7 @@ argument_list|(
 name|citationSeparator
 argument_list|)
 expr_stmt|;
+block|}
 name|String
 name|author
 init|=
@@ -3585,6 +3743,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -3597,6 +3756,7 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -3635,12 +3795,14 @@ while|while
 condition|(
 name|j
 operator|<
+operator|(
 name|al
 operator|.
 name|size
 argument_list|()
 operator|-
 literal|1
+operator|)
 condition|)
 block|{
 name|sb
@@ -3746,6 +3908,7 @@ name|year
 operator|!=
 literal|null
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -3753,6 +3916,7 @@ argument_list|(
 name|year
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 operator|(
@@ -3770,6 +3934,7 @@ operator|!=
 literal|null
 operator|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -3780,6 +3945,7 @@ name|i
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
@@ -3797,7 +3963,7 @@ return|;
 block|}
 comment|/**      * This method looks up a field for en entry in a database. Any number of backup fields can be used      * if the primary field is empty.      * @param entry The entry.      * @param database The database the entry belongs to.      * @param field The field, or succession of fields, to look up. If backup fields are needed, separate      *   field names by /. E.g. to use "author" with "editor" as backup, specify "author/editor".      * @return The resolved field content, or an empty string if the field(s) were empty.      */
 DECL|method|getCitationMarkerField (BibtexEntry entry, BibtexDatabase database, String field)
-specifier|public
+specifier|private
 name|String
 name|getCitationMarkerField
 parameter_list|(
@@ -3871,6 +4037,7 @@ name|fieldFormatter
 operator|!=
 literal|null
 condition|)
+block|{
 name|content
 operator|=
 name|fieldFormatter
@@ -3880,6 +4047,7 @@ argument_list|(
 name|content
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|content
 return|;
@@ -3892,7 +4060,7 @@ return|;
 block|}
 comment|/**      * Look up the nth author and return the proper last name for citation markers.      * @param al The author list.      * @param number The number of the author to return.      * @return The author name, or an empty String if inapplicable.      */
 DECL|method|getAuthorLastName (AuthorList al, int number)
-specifier|public
+specifier|private
 name|String
 name|getAuthorLastName
 parameter_list|(
@@ -3943,6 +4111,7 @@ operator|!=
 literal|null
 operator|)
 operator|&&
+operator|(
 name|a
 operator|.
 name|getVon
@@ -3952,6 +4121,7 @@ name|length
 argument_list|()
 operator|>
 literal|0
+operator|)
 condition|)
 block|{
 name|String
@@ -4061,6 +4231,7 @@ name|bracketAfter
 return|;
 block|}
 else|else
+block|{
 return|return
 name|citation
 operator|+
@@ -4071,6 +4242,7 @@ argument_list|)
 operator|+
 name|pageInfo
 return|;
+block|}
 block|}
 comment|/**      * Convenience method for checking the property for whether we use number citations or      * author-year citations.      * @return true if we use numbered citations, false otherwise.      */
 DECL|method|isNumberEntries ()
@@ -4282,6 +4454,8 @@ name|name
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|compareTo (OOBibStyle other)
 specifier|public
 name|int
@@ -4304,6 +4478,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|equals (Object o)
 specifier|public
 name|boolean

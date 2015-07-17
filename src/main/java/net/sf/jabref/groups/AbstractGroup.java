@@ -87,16 +87,16 @@ name|AbstractGroup
 block|{
 comment|/** The group's name (every type of group has one). */
 DECL|field|m_name
-specifier|protected
 name|String
 name|m_name
 decl_stmt|;
-comment|/** 	 * The hierarchical context of the group (INDEPENDENT, REFINING, or 	 * INCLUDING). Defaults to INDEPENDENT, which will be used if and 	 * only if the context specified in the constructor is invalid. 	 */
+comment|/**      * The hierarchical context of the group (INDEPENDENT, REFINING, or      * INCLUDING). Defaults to INDEPENDENT, which will be used if and      * only if the context specified in the constructor is invalid.      */
 DECL|field|m_context
-specifier|protected
 name|int
 name|m_context
 init|=
+name|AbstractGroup
+operator|.
 name|INDEPENDENT
 decl_stmt|;
 DECL|method|getTypeId ()
@@ -107,7 +107,6 @@ name|getTypeId
 parameter_list|()
 function_decl|;
 DECL|method|AbstractGroup (String name, int context)
-specifier|public
 name|AbstractGroup
 parameter_list|(
 name|String
@@ -137,7 +136,7 @@ name|INDEPENDENT
 init|=
 literal|0
 decl_stmt|;
-comment|/** 	 * Group's content is the intersection of its own content with its 	 * supergroup's content. 	 */
+comment|/**      * Group's content is the intersection of its own content with its      * supergroup's content.      */
 DECL|field|REFINING
 specifier|public
 specifier|static
@@ -147,7 +146,7 @@ name|REFINING
 init|=
 literal|1
 decl_stmt|;
-comment|/** 	 * Group's content is the union of its own content with its subgroups' 	 * content. 	 */
+comment|/**      * Group's content is the union of its own content with its subgroups'      * content.      */
 DECL|field|INCLUDING
 specifier|public
 specifier|static
@@ -159,7 +158,6 @@ literal|2
 decl_stmt|;
 comment|/** Character used for quoting in the string representation. */
 DECL|field|QUOTE_CHAR
-specifier|protected
 specifier|static
 specifier|final
 name|char
@@ -167,9 +165,8 @@ name|QUOTE_CHAR
 init|=
 literal|'\\'
 decl_stmt|;
-comment|/** 	 * For separating units (e.g. name, which every group has) in the string 	 * representation 	 */
+comment|/**      * For separating units (e.g. name, which every group has) in the string      * representation      */
 DECL|field|SEPARATOR
-specifier|protected
 specifier|static
 specifier|final
 name|String
@@ -177,7 +174,7 @@ name|SEPARATOR
 init|=
 literal|";"
 decl_stmt|;
-comment|/** 	 * @return A search rule that will identify this group's entries. 	 */
+comment|/**      * @return A search rule that will identify this group's entries.      */
 DECL|method|getSearchRule ()
 specifier|public
 specifier|abstract
@@ -185,7 +182,7 @@ name|SearchRule
 name|getSearchRule
 parameter_list|()
 function_decl|;
-comment|/** 	 * Re-create a group instance from a textual representation. 	 *  	 * @param s 	 *            The result from the group's toString() method. 	 * @return New instance of the encoded group. 	 * @throws Exception 	 *             If an error occured and a group could not be created, e.g. 	 *             due to a malformed regular expression. 	 */
+comment|/**      * Re-create a group instance from a textual representation.      *       * @param s      *            The result from the group's toString() method.      * @return New instance of the encoded group.      * @throws Exception      *             If an error occured and a group could not be created, e.g.      *             due to a malformed regular expression.      */
 DECL|method|fromString (String s, BibtexDatabase db, int version)
 specifier|public
 specifier|static
@@ -215,6 +212,7 @@ operator|.
 name|ID
 argument_list|)
 condition|)
+block|{
 return|return
 name|KeywordGroup
 operator|.
@@ -227,6 +225,7 @@ argument_list|,
 name|version
 argument_list|)
 return|;
+block|}
 if|if
 condition|(
 name|s
@@ -238,6 +237,7 @@ operator|.
 name|ID
 argument_list|)
 condition|)
+block|{
 return|return
 name|AllEntriesGroup
 operator|.
@@ -250,6 +250,7 @@ argument_list|,
 name|version
 argument_list|)
 return|;
+block|}
 if|if
 condition|(
 name|s
@@ -261,6 +262,7 @@ operator|.
 name|ID
 argument_list|)
 condition|)
+block|{
 return|return
 name|SearchGroup
 operator|.
@@ -273,6 +275,7 @@ argument_list|,
 name|version
 argument_list|)
 return|;
+block|}
 if|if
 condition|(
 name|s
@@ -284,6 +287,7 @@ operator|.
 name|ID
 argument_list|)
 condition|)
+block|{
 return|return
 name|ExplicitGroup
 operator|.
@@ -296,6 +300,7 @@ argument_list|,
 name|version
 argument_list|)
 return|;
+block|}
 return|return
 literal|null
 return|;
@@ -329,7 +334,7 @@ operator|=
 name|name
 expr_stmt|;
 block|}
-comment|/** 	 * @return true if this type of group supports the explicit adding of 	 *         entries. 	 */
+comment|/**      * @return true if this type of group supports the explicit adding of      *         entries.      */
 DECL|method|supportsAdd ()
 specifier|public
 specifier|abstract
@@ -337,7 +342,7 @@ name|boolean
 name|supportsAdd
 parameter_list|()
 function_decl|;
-comment|/** 	 * @return true if this type of group supports the explicit removal of 	 *         entries. 	 */
+comment|/**      * @return true if this type of group supports the explicit removal of      *         entries.      */
 DECL|method|supportsRemove ()
 specifier|public
 specifier|abstract
@@ -345,7 +350,7 @@ name|boolean
 name|supportsRemove
 parameter_list|()
 function_decl|;
-comment|/** 	 * Adds the specified entries to this group. 	 *  	 * @return If this group or one or more entries was/were modified as a 	 *         result of this operation, an object is returned that allows to 	 *         undo this change. null is returned otherwise. 	 */
+comment|/**      * Adds the specified entries to this group.      *       * @return If this group or one or more entries was/were modified as a      *         result of this operation, an object is returned that allows to      *         undo this change. null is returned otherwise.      */
 DECL|method|add (BibtexEntry[] entries)
 specifier|public
 specifier|abstract
@@ -357,7 +362,7 @@ index|[]
 name|entries
 parameter_list|)
 function_decl|;
-comment|/** 	 * Removes the specified entries from this group. 	 *  	 * @return If this group or one or more entries was/were modified as a 	 *         result of this operation, an object is returned that allows to 	 *         undo this change. null is returned otherwise. 	 */
+comment|/**      * Removes the specified entries from this group.      *       * @return If this group or one or more entries was/were modified as a      *         result of this operation, an object is returned that allows to      *         undo this change. null is returned otherwise.      */
 DECL|method|remove (BibtexEntry[] entries)
 specifier|public
 specifier|abstract
@@ -369,7 +374,7 @@ index|[]
 name|entries
 parameter_list|)
 function_decl|;
-comment|/** 	 * @param searchOptions 	 *            The search options to apply. 	 * @return true if this group contains the specified entry, false otherwise. 	 */
+comment|/**      * @param searchOptions      *            The search options to apply.      * @return true if this group contains the specified entry, false otherwise.      */
 DECL|method|contains (Map<String, String> searchOptions, BibtexEntry entry)
 specifier|public
 specifier|abstract
@@ -388,7 +393,7 @@ name|BibtexEntry
 name|entry
 parameter_list|)
 function_decl|;
-comment|/** 	 * @return true if this group contains the specified entry, false otherwise. 	 */
+comment|/**      * @return true if this group contains the specified entry, false otherwise.      */
 DECL|method|contains (BibtexEntry entry)
 specifier|public
 specifier|abstract
@@ -399,7 +404,7 @@ name|BibtexEntry
 name|entry
 parameter_list|)
 function_decl|;
-comment|/** 	 * @return true if this group contains any of the specified entries, false 	 *         otherwise. 	 */
+comment|/**      * @return true if this group contains any of the specified entries, false      *         otherwise.      */
 DECL|method|containsAny (BibtexEntry[] entries)
 specifier|public
 name|boolean
@@ -417,6 +422,7 @@ name|entry
 range|:
 name|entries
 control|)
+block|{
 if|if
 condition|(
 name|contains
@@ -424,14 +430,17 @@ argument_list|(
 name|entry
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
+block|}
 return|return
 literal|false
 return|;
 block|}
-comment|/** 	 * @return true if this group contains all of the specified entries, false 	 *         otherwise. 	 */
+comment|/**      * @return true if this group contains all of the specified entries, false      *         otherwise.      */
 DECL|method|containsAll (BibtexEntry[] entries)
 specifier|public
 name|boolean
@@ -449,6 +458,7 @@ name|entry
 range|:
 name|entries
 control|)
+block|{
 if|if
 condition|(
 operator|!
@@ -457,14 +467,17 @@ argument_list|(
 name|entry
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
+block|}
 return|return
 literal|true
 return|;
 block|}
-comment|/** 	 * Returns true if this group is dynamic, i.e. uses a search definition or 	 * equiv. that might match new entries, or false if this group contains a 	 * fixed set of entries and thus will never match a new entry that was not 	 * explicitly added to it. 	 */
+comment|/**      * Returns true if this group is dynamic, i.e. uses a search definition or      * equiv. that might match new entries, or false if this group contains a      * fixed set of entries and thus will never match a new entry that was not      * explicitly added to it.      */
 DECL|method|isDynamic ()
 specifier|public
 specifier|abstract
@@ -472,7 +485,7 @@ name|boolean
 name|isDynamic
 parameter_list|()
 function_decl|;
-comment|/** Sets the groups's hierarchical context. If context is not a valid 	 * value, the call is ignored. */
+comment|/** Sets the groups's hierarchical context. If context is not a valid      * value, the call is ignored. */
 DECL|method|setHierarchicalContext (int context)
 specifier|public
 name|void
@@ -484,19 +497,33 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|context
 operator|!=
+name|AbstractGroup
+operator|.
 name|INDEPENDENT
+operator|)
 operator|&&
+operator|(
 name|context
 operator|!=
+name|AbstractGroup
+operator|.
 name|REFINING
+operator|)
 operator|&&
+operator|(
 name|context
 operator|!=
+name|AbstractGroup
+operator|.
 name|INCLUDING
+operator|)
 condition|)
+block|{
 return|return;
+block|}
 name|m_context
 operator|=
 name|context
@@ -521,7 +548,7 @@ name|String
 name|getDescription
 parameter_list|()
 function_decl|;
-comment|/** 	 * @return A deep copy of this object. 	 */
+comment|/**      * @return A deep copy of this object.      */
 DECL|method|deepCopy ()
 specifier|public
 specifier|abstract
@@ -541,7 +568,7 @@ comment|// by general AbstractGroup contract, toString() must return
 comment|// something from which this object can be reconstructed
 comment|// using fromString(String).
 comment|// by general AbstractGroup contract, equals() must be implemented
-comment|/**          * Update the group, if necessary, to handle the situation where the group          * is applied to a different BibtexDatabase than it was created for. This          * is for instance used when updating the group tree due to an external change.          *          * @param db The database to refresh for.          */
+comment|/**      * Update the group, if necessary, to handle the situation where the group      * is applied to a different BibtexDatabase than it was created for. This      * is for instance used when updating the group tree due to an external change.      *      * @param db The database to refresh for.      */
 DECL|method|refreshForNewDatabase (BibtexDatabase db)
 specifier|public
 name|void

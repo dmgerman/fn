@@ -175,7 +175,9 @@ class|class
 name|JournalAbbreviations
 block|{
 DECL|field|TOOLTIPTEXT
+specifier|private
 specifier|static
+specifier|final
 name|String
 name|TOOLTIPTEXT
 init|=
@@ -202,6 +204,8 @@ operator|+
 literal|".</HTML>"
 decl_stmt|;
 DECL|field|fullNameKeyed
+specifier|private
+specifier|final
 name|TreeMap
 argument_list|<
 name|String
@@ -220,6 +224,8 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|abbrNameKeyed
+specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -238,6 +244,8 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|abbrNoDotsToAbbr
+specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|String
@@ -256,6 +264,8 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|all
+specifier|private
+specifier|final
 name|TreeMap
 argument_list|<
 name|String
@@ -277,7 +287,7 @@ DECL|method|JournalAbbreviations ()
 specifier|public
 name|JournalAbbreviations
 parameter_list|()
-block|{              }
+block|{      }
 DECL|method|JournalAbbreviations (String resource)
 specifier|public
 name|JournalAbbreviations
@@ -310,7 +320,7 @@ expr_stmt|;
 block|}
 comment|/**      * Get an iterator for the known journals in alphabetical order.      * @return Iterator for journal full names      */
 DECL|method|fullNameIterator ()
-specifier|public
+specifier|private
 name|Iterator
 argument_list|<
 name|String
@@ -329,7 +339,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|isKnownName (String journalName)
-specifier|public
+specifier|private
 name|boolean
 name|isKnownName
 parameter_list|(
@@ -383,7 +393,7 @@ operator|)
 return|;
 block|}
 DECL|method|isAbbreviatedName (String journalName)
-specifier|public
+specifier|private
 name|boolean
 name|isAbbreviatedName
 parameter_list|(
@@ -426,7 +436,7 @@ operator|)
 return|;
 block|}
 DECL|method|dotsToNodots (String name)
-specifier|public
+specifier|private
 name|String
 name|dotsToNodots
 parameter_list|(
@@ -540,9 +550,11 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 if|if
 condition|(
 operator|!
@@ -563,7 +575,7 @@ return|;
 block|}
 comment|/**      * Attempts to get the full name of the abbreviation given. Returns null if no      * full name is known.      * @param journalName The abbreviation to resolve.      * @return The full name, or null if it couldn't be found.      */
 DECL|method|getFullName (String journalName)
-specifier|public
+specifier|private
 name|String
 name|getFullName
 parameter_list|(
@@ -588,6 +600,7 @@ name|s
 operator|!=
 literal|null
 condition|)
+block|{
 name|s
 operator|=
 name|s
@@ -595,10 +608,13 @@ operator|.
 name|toLowerCase
 argument_list|()
 expr_stmt|;
+block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 name|Object
 name|o
 init|=
@@ -625,14 +641,18 @@ argument_list|(
 name|s
 argument_list|)
 condition|)
+block|{
 name|o
 operator|=
 name|s
 expr_stmt|;
+block|}
 else|else
+block|{
 return|return
 literal|null
 return|;
+block|}
 block|}
 name|s
 operator|=
@@ -730,7 +750,7 @@ expr_stmt|;
 block|}
 comment|/**      * Read the given file, which should contain a list of journal names and their      * abbreviations. Each line should be formatted as: "Full Journal Name=Abbr. Journal Name"      * @param in      */
 DECL|method|readJournalList (Reader in)
-specifier|public
+specifier|private
 name|void
 name|readJournalList
 parameter_list|(
@@ -776,7 +796,9 @@ argument_list|(
 literal|"#"
 argument_list|)
 condition|)
+block|{
 continue|continue;
+block|}
 name|String
 index|[]
 name|parts
@@ -1019,9 +1041,11 @@ name|text
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|String
 name|origText
 init|=
@@ -1033,6 +1057,7 @@ name|database
 operator|!=
 literal|null
 condition|)
+block|{
 name|text
 operator|=
 name|database
@@ -1042,6 +1067,7 @@ argument_list|(
 name|text
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|isKnownName
@@ -1072,9 +1098,11 @@ name|newText
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|entry
 operator|.
 name|setField
@@ -1138,9 +1166,11 @@ name|newText
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|entry
 operator|.
 name|setField
@@ -1172,9 +1202,11 @@ literal|true
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 block|}
 comment|/**      * Unabbreviate the journal name of the given entry.      * @param entry The entry to be treated.      * @param fieldName The field name (e.g. "journal")      * @param ce If the entry is changed, add an edit to this compound.      * @return true if the entry was changed, false otherwise.      */
@@ -1212,9 +1244,11 @@ name|text
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|String
 name|origText
 init|=
@@ -1226,6 +1260,7 @@ name|database
 operator|!=
 literal|null
 condition|)
+block|{
 name|text
 operator|=
 name|database
@@ -1235,6 +1270,7 @@ argument_list|(
 name|text
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|isKnownName
@@ -1262,9 +1298,11 @@ name|newText
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|entry
 operator|.
 name|setField
@@ -1296,9 +1334,11 @@ literal|true
 return|;
 block|}
 else|else
+block|{
 return|return
 literal|false
 return|;
+block|}
 block|}
 DECL|method|getJournals ()
 specifier|public
@@ -1358,6 +1398,8 @@ name|button
 operator|.
 name|setToolTipText
 argument_list|(
+name|JournalAbbreviations
+operator|.
 name|TOOLTIPTEXT
 argument_list|)
 expr_stmt|;
@@ -1374,6 +1416,8 @@ name|withDots
 init|=
 literal|true
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1627,9 +1671,7 @@ name|row
 operator|++
 expr_stmt|;
 block|}
-name|DefaultTableModel
-name|tableModel
-init|=
+return|return
 operator|new
 name|DefaultTableModel
 argument_list|(
@@ -1655,6 +1697,8 @@ argument_list|)
 block|}
 argument_list|)
 block|{
+annotation|@
+name|Override
 specifier|public
 name|boolean
 name|isCellEditable
@@ -1671,9 +1715,6 @@ literal|false
 return|;
 block|}
 block|}
-decl_stmt|;
-return|return
-name|tableModel
 return|;
 block|}
 block|}

@@ -107,7 +107,7 @@ operator|.
 name|Importer
 argument_list|>
 block|{
-comment|/**    * Object with data for a custom importer.    *     *<p>Is also responsible for instantiating the class loader.</p>    */
+comment|/**      * Object with data for a custom importer.      *       *<p>Is also responsible for instantiating the class loader.</p>      */
 DECL|class|Importer
 specifier|public
 class|class
@@ -361,6 +361,8 @@ name|basePath
 block|}
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|equals (Object o)
 specifier|public
 name|boolean
@@ -371,13 +373,17 @@ name|o
 parameter_list|)
 block|{
 return|return
+operator|(
 name|o
 operator|!=
 literal|null
+operator|)
 operator|&&
+operator|(
 name|o
 operator|instanceof
 name|Importer
+operator|)
 operator|&&
 name|this
 operator|.
@@ -398,6 +404,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|hashCode ()
 specifier|public
 name|int
@@ -411,6 +419,8 @@ name|hashCode
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|compareTo (Importer o)
 specifier|public
 name|int
@@ -435,6 +445,8 @@ argument_list|()
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String
@@ -518,6 +530,7 @@ block|}
 block|}
 DECL|field|prefs
 specifier|private
+specifier|final
 name|JabRefPreferences
 name|prefs
 decl_stmt|;
@@ -556,8 +569,6 @@ decl_stmt|;
 name|String
 index|[]
 name|s
-init|=
-literal|null
 decl_stmt|;
 while|while
 condition|(
@@ -621,7 +632,7 @@ expr_stmt|;
 block|}
 block|}
 DECL|method|addImporter (Importer customImporter)
-specifier|public
+specifier|private
 name|void
 name|addImporter
 parameter_list|(
@@ -637,7 +648,7 @@ name|customImporter
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**    * Adds an importer.    *     *<p>If an old one equal to the new one was contained, the old    * one is replaced.</p>    *     * @param customImporter new (version of an) importer    * @return  if the importer was contained    */
+comment|/**      * Adds an importer.      *       *<p>If an old one equal to the new one was contained, the old      * one is replaced.</p>      *       * @param customImporter new (version of an) importer      * @return  if the importer was contained      */
 DECL|method|replaceImporter (Importer customImporter)
 specifier|public
 name|boolean

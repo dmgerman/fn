@@ -228,14 +228,14 @@ operator|new
 name|SearchExpressionTreeParser
 argument_list|()
 decl_stmt|;
-comment|/** 	 * If m_searchExpression is in valid syntax for advanced search,<b>this 	 *</b> will do the search; otherwise, either<b>RegExpRule</b> or 	 *<b>SimpleSearchRule</b> will be used. 	 */
+comment|/**      * If m_searchExpression is in valid syntax for advanced search,<b>this      *</b> will do the search; otherwise, either<b>RegExpRule</b> or      *<b>SimpleSearchRule</b> will be used.      */
 DECL|field|m_searchRule
 specifier|private
 specifier|final
 name|SearchRule
 name|m_searchRule
 decl_stmt|;
-comment|/** 	 * Creates a SearchGroup with the specified properties. 	 */
+comment|/**      * Creates a SearchGroup with the specified properties.      */
 DECL|method|SearchGroup (String name, String searchExpression, boolean caseSensitive, boolean regExp, int context)
 specifier|public
 name|SearchGroup
@@ -278,8 +278,6 @@ expr_stmt|;
 comment|// create AST
 name|AST
 name|ast
-init|=
-literal|null
 decl_stmt|;
 try|try
 block|{
@@ -361,6 +359,7 @@ if|if
 condition|(
 name|m_regExp
 condition|)
+block|{
 name|m_searchRule
 operator|=
 operator|new
@@ -369,7 +368,9 @@ argument_list|(
 name|m_caseSensitive
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|m_searchRule
 operator|=
 operator|new
@@ -380,7 +381,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/** 	 * Parses s and recreates the SearchGroup from it. 	 *  	 * @param s 	 *            The String representation obtained from 	 *            SearchGroup.toString(), or null if incompatible 	 */
+block|}
+comment|/**      * Parses s and recreates the SearchGroup from it.      *       * @param s      *            The String representation obtained from      *            SearchGroup.toString(), or null if incompatible      */
 DECL|method|fromString (String s, BibtexDatabase db, int version)
 specifier|public
 specifier|static
@@ -406,9 +408,12 @@ name|s
 operator|.
 name|startsWith
 argument_list|(
+name|SearchGroup
+operator|.
 name|ID
 argument_list|)
 condition|)
+block|{
 throw|throw
 operator|new
 name|Exception
@@ -422,6 +427,7 @@ operator|+
 literal|"Please report this on www.sf.net/projects/jabref"
 argument_list|)
 throw|;
+block|}
 name|QuotedStringTokenizer
 name|tok
 init|=
@@ -432,14 +438,20 @@ name|s
 operator|.
 name|substring
 argument_list|(
+name|SearchGroup
+operator|.
 name|ID
 operator|.
 name|length
 argument_list|()
 argument_list|)
 argument_list|,
+name|AbstractGroup
+operator|.
 name|SEPARATOR
 argument_list|,
+name|AbstractGroup
+operator|.
 name|QUOTE_CHAR
 argument_list|)
 decl_stmt|;
@@ -510,21 +522,25 @@ return|return
 operator|new
 name|SearchGroup
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|unquote
 argument_list|(
 name|name
 argument_list|,
+name|AbstractGroup
+operator|.
 name|QUOTE_CHAR
 argument_list|)
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|unquote
 argument_list|(
 name|expression
 argument_list|,
+name|AbstractGroup
+operator|.
 name|QUOTE_CHAR
 argument_list|)
 argument_list|,
@@ -607,21 +623,25 @@ return|return
 operator|new
 name|SearchGroup
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|unquote
 argument_list|(
 name|name
 argument_list|,
+name|AbstractGroup
+operator|.
 name|QUOTE_CHAR
 argument_list|)
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|unquote
 argument_list|(
 name|expression
 argument_list|,
+name|AbstractGroup
+operator|.
 name|QUOTE_CHAR
 argument_list|)
 argument_list|,
@@ -645,6 +665,8 @@ argument_list|)
 throw|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getTypeId ()
 specifier|public
 name|String
@@ -652,10 +674,14 @@ name|getTypeId
 parameter_list|()
 block|{
 return|return
+name|SearchGroup
+operator|.
 name|ID
 return|;
 block|}
-comment|/** 	 * @see net.sf.jabref.groups.AbstractGroup#getSearchRule() 	 */
+comment|/**      * @see net.sf.jabref.groups.AbstractGroup#getSearchRule()      */
+annotation|@
+name|Override
 DECL|method|getSearchRule ()
 specifier|public
 name|SearchRule
@@ -666,7 +692,9 @@ return|return
 name|this
 return|;
 block|}
-comment|/** 	 * Returns a String representation of this object that can be used to 	 * reconstruct it. 	 */
+comment|/**      * Returns a String representation of this object that can be used to      * reconstruct it.      */
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String
@@ -674,36 +702,52 @@ name|toString
 parameter_list|()
 block|{
 return|return
+name|SearchGroup
+operator|.
 name|ID
 operator|+
-name|Util
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
 name|m_name
 argument_list|,
+name|AbstractGroup
+operator|.
 name|SEPARATOR
 argument_list|,
+name|AbstractGroup
+operator|.
 name|QUOTE_CHAR
 argument_list|)
 operator|+
+name|AbstractGroup
+operator|.
 name|SEPARATOR
 operator|+
 name|m_context
 operator|+
+name|AbstractGroup
+operator|.
 name|SEPARATOR
 operator|+
-name|Util
+name|StringUtil
 operator|.
 name|quote
 argument_list|(
 name|m_searchExpression
 argument_list|,
+name|AbstractGroup
+operator|.
 name|SEPARATOR
 argument_list|,
+name|AbstractGroup
+operator|.
 name|QUOTE_CHAR
 argument_list|)
 operator|+
+name|AbstractGroup
+operator|.
 name|SEPARATOR
 operator|+
 operator|(
@@ -714,6 +758,8 @@ else|:
 literal|"0"
 operator|)
 operator|+
+name|AbstractGroup
+operator|.
 name|SEPARATOR
 operator|+
 operator|(
@@ -724,6 +770,8 @@ else|:
 literal|"0"
 operator|)
 operator|+
+name|AbstractGroup
+operator|.
 name|SEPARATOR
 return|;
 block|}
@@ -737,6 +785,8 @@ return|return
 name|m_searchExpression
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|supportsAdd ()
 specifier|public
 name|boolean
@@ -747,6 +797,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|supportsRemove ()
 specifier|public
 name|boolean
@@ -757,6 +809,8 @@ return|return
 literal|false
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|add (BibtexEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
@@ -772,6 +826,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|remove (BibtexEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
@@ -787,6 +843,8 @@ return|return
 literal|null
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|equals (Object o)
 specifier|public
 name|boolean
@@ -805,9 +863,11 @@ operator|instanceof
 name|SearchGroup
 operator|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 name|SearchGroup
 name|other
 init|=
@@ -835,18 +895,23 @@ operator|.
 name|m_searchExpression
 argument_list|)
 operator|&&
+operator|(
 name|m_caseSensitive
 operator|==
 name|other
 operator|.
 name|m_caseSensitive
+operator|)
 operator|&&
+operator|(
 name|m_regExp
 operator|==
 name|other
 operator|.
 name|m_regExp
+operator|)
 operator|&&
+operator|(
 name|getHierarchicalContext
 argument_list|()
 operator|==
@@ -854,9 +919,12 @@ name|other
 operator|.
 name|getHierarchicalContext
 argument_list|()
+operator|)
 return|;
 block|}
-comment|/* 	 * (non-Javadoc) 	 *  	 * @see net.sf.jabref.groups.AbstractGroup#contains(java.util.Map, 	 *      net.sf.jabref.BibtexEntry) 	 */
+comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.groups.AbstractGroup#contains(java.util.Map,      *      net.sf.jabref.BibtexEntry)      */
+annotation|@
+name|Override
 DECL|method|contains (Map<String, String> searchOptions, BibtexEntry entry)
 specifier|public
 name|boolean
@@ -885,6 +953,8 @@ operator|!=
 literal|0
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|contains (BibtexEntry entry)
 specifier|public
 name|boolean
@@ -911,6 +981,8 @@ name|entry
 argument_list|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|applyRule (Map<String, String> searchOptions, BibtexEntry entry)
 specifier|public
 name|int
@@ -960,6 +1032,8 @@ block|}
 try|try
 block|{
 return|return
+name|SearchGroup
+operator|.
 name|m_treeParser
 operator|.
 name|apply
@@ -982,6 +1056,8 @@ return|;
 comment|// this should never occur
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|deepCopy ()
 specifier|public
 name|AbstractGroup
@@ -1054,6 +1130,8 @@ return|return
 name|m_regExp
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|isDynamic ()
 specifier|public
 name|boolean
@@ -1064,6 +1142,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|getDescription ()
 specifier|public
 name|String
@@ -1071,6 +1151,8 @@ name|getDescription
 parameter_list|()
 block|{
 return|return
+name|SearchGroup
+operator|.
 name|getDescriptionForPreview
 argument_list|(
 name|m_searchExpression
@@ -1102,11 +1184,11 @@ name|boolean
 name|regExp
 parameter_list|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 if|if
@@ -1128,7 +1210,7 @@ name|lang
 argument_list|(
 literal|"This group contains entries in which any field contains the regular expression<b>%0</b>"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|quoteForHTML
 argument_list|(
@@ -1142,7 +1224,7 @@ name|lang
 argument_list|(
 literal|"This group contains entries in which any field contains the term<b>%0</b>"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|quoteForHTML
 argument_list|(
@@ -1233,13 +1315,15 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 expr_stmt|;
 name|sb
 operator|.
 name|append
 argument_list|(
+name|SearchGroup
+operator|.
 name|describeNode
 argument_list|(
 name|ast
@@ -1290,7 +1374,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|describeNode (AST node, boolean regExp, boolean not, boolean and, boolean or)
-specifier|protected
+specifier|private
 specifier|static
 name|String
 name|describeNode
@@ -1311,11 +1395,11 @@ name|boolean
 name|or
 parameter_list|)
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 switch|switch
@@ -1335,6 +1419,7 @@ if|if
 condition|(
 name|not
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1349,9 +1434,10 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 expr_stmt|;
+block|}
 comment|// if there was an "or" in this subtree so far, braces may be needed
 if|if
 condition|(
@@ -1359,17 +1445,21 @@ name|or
 operator|||
 name|not
 condition|)
+block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|"("
+literal|'('
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
 argument_list|(
+name|SearchGroup
+operator|.
 name|describeNode
 argument_list|(
 name|node
@@ -1389,7 +1479,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 operator|.
 name|append
@@ -1404,11 +1494,13 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 operator|.
 name|append
 argument_list|(
+name|SearchGroup
+operator|.
 name|describeNode
 argument_list|(
 name|node
@@ -1435,13 +1527,15 @@ name|or
 operator|||
 name|not
 condition|)
+block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|")"
+literal|')'
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|sb
 operator|.
@@ -1457,6 +1551,7 @@ if|if
 condition|(
 name|not
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1471,9 +1566,10 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 expr_stmt|;
+block|}
 comment|// if there was an "and" in this subtree so far, braces may be
 comment|// needed
 if|if
@@ -1482,17 +1578,21 @@ name|and
 operator|||
 name|not
 condition|)
+block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|"("
+literal|'('
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
 argument_list|(
+name|SearchGroup
+operator|.
 name|describeNode
 argument_list|(
 name|node
@@ -1512,7 +1612,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 operator|.
 name|append
@@ -1527,11 +1627,13 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-literal|" "
+literal|' '
 argument_list|)
 operator|.
 name|append
 argument_list|(
+name|SearchGroup
+operator|.
 name|describeNode
 argument_list|(
 name|node
@@ -1558,13 +1660,15 @@ name|and
 operator|||
 name|not
 condition|)
+block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-literal|")"
+literal|')'
 argument_list|)
 expr_stmt|;
+block|}
 return|return
 name|sb
 operator|.
@@ -1577,6 +1681,8 @@ operator|.
 name|Not
 case|:
 return|return
+name|SearchGroup
+operator|.
 name|describeNode
 argument_list|(
 name|node
@@ -1652,7 +1758,7 @@ specifier|final
 name|String
 name|termQuoted
 init|=
-name|Util
+name|StringUtil
 operator|.
 name|quoteForHTML
 argument_list|(
@@ -1674,7 +1780,7 @@ name|lang
 argument_list|(
 literal|"any field that matches the regular expression<b>%0</b>"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|quoteForHTML
 argument_list|(
@@ -1688,7 +1794,7 @@ name|lang
 argument_list|(
 literal|"the field<b>%0</b>"
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|quoteForHTML
 argument_list|(
@@ -1715,6 +1821,7 @@ if|if
 condition|(
 name|regExp
 condition|)
+block|{
 return|return
 name|not
 condition|?
@@ -1740,6 +1847,7 @@ argument_list|,
 name|termQuoted
 argument_list|)
 return|;
+block|}
 return|return
 name|not
 condition|?
@@ -1779,6 +1887,7 @@ if|if
 condition|(
 name|regExp
 condition|)
+block|{
 return|return
 name|not
 condition|?
@@ -1804,6 +1913,7 @@ argument_list|,
 name|termQuoted
 argument_list|)
 return|;
+block|}
 return|return
 name|not
 condition|?
@@ -1838,6 +1948,7 @@ if|if
 condition|(
 name|regExp
 condition|)
+block|{
 return|return
 name|not
 condition|?
@@ -1863,6 +1974,7 @@ argument_list|,
 name|termQuoted
 argument_list|)
 return|;
+block|}
 return|return
 name|not
 condition|?
@@ -1898,17 +2010,19 @@ comment|// this should never happen
 block|}
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|getShortDescription ()
 specifier|public
 name|String
 name|getShortDescription
 parameter_list|()
 block|{
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|sb
@@ -1929,6 +2043,7 @@ argument_list|(
 literal|"groupShowDynamic"
 argument_list|)
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -1938,7 +2053,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|quoteForHTML
 argument_list|(
@@ -1952,12 +2067,14 @@ argument_list|(
 literal|"</i>"
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|quoteForHTML
 argument_list|(
@@ -1966,6 +2083,7 @@ argument_list|()
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append
@@ -2013,7 +2131,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|Util
+name|StringUtil
 operator|.
 name|quoteForHTML
 argument_list|(
@@ -2088,6 +2206,8 @@ name|toString
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|validateSearchStrings (Map<String, String> searchStrings)
 specifier|public
 name|boolean

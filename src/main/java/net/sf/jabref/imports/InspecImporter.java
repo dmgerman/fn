@@ -161,6 +161,8 @@ extends|extends
 name|ImportFormat
 block|{
 comment|/**      * Return the name of this import format.      */
+annotation|@
+name|Override
 DECL|method|getFormatName ()
 specifier|public
 name|String
@@ -171,7 +173,9 @@ return|return
 literal|"INSPEC"
 return|;
 block|}
-comment|/*    *  (non-Javadoc)    * @see net.sf.jabref.imports.ImportFormat#getCLIId()    */
+comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
+annotation|@
+name|Override
 DECL|method|getCLIId ()
 specifier|public
 name|String
@@ -182,7 +186,9 @@ return|return
 literal|"inspec"
 return|;
 block|}
-comment|/**    * Check whether the source is in the correct format for this importer.    */
+comment|/**      * Check whether the source is in the correct format for this importer.      */
+annotation|@
+name|Override
 DECL|method|isRecognizedFormat (InputStream stream)
 specifier|public
 name|boolean
@@ -253,15 +259,19 @@ operator|.
 name|find
 argument_list|()
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 return|return
 literal|false
 return|;
 block|}
 comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
+annotation|@
+name|Override
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
@@ -292,11 +302,11 @@ name|BibtexEntry
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|BufferedReader
@@ -339,7 +349,9 @@ argument_list|()
 operator|<
 literal|2
 condition|)
+block|{
 continue|continue;
+block|}
 if|if
 condition|(
 name|str
@@ -351,6 +363,7 @@ argument_list|)
 operator|==
 literal|0
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -363,7 +376,9 @@ argument_list|(
 name|str
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|sb
 operator|.
 name|append
@@ -376,6 +391,7 @@ argument_list|(
 name|str
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|in
 operator|.
@@ -437,7 +453,9 @@ argument_list|)
 operator|!=
 literal|0
 condition|)
+block|{
 continue|continue;
+block|}
 name|h
 operator|.
 name|clear
@@ -494,6 +512,7 @@ argument_list|(
 literal|"TI"
 argument_list|)
 condition|)
+block|{
 name|h
 operator|.
 name|put
@@ -503,6 +522,7 @@ argument_list|,
 name|frest
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -513,6 +533,7 @@ argument_list|(
 literal|"PY"
 argument_list|)
 condition|)
+block|{
 name|h
 operator|.
 name|put
@@ -522,6 +543,7 @@ argument_list|,
 name|frest
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -532,6 +554,7 @@ argument_list|(
 literal|"AU"
 argument_list|)
 condition|)
+block|{
 name|h
 operator|.
 name|put
@@ -560,6 +583,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -570,6 +594,7 @@ argument_list|(
 literal|"AB"
 argument_list|)
 condition|)
+block|{
 name|h
 operator|.
 name|put
@@ -579,6 +604,7 @@ argument_list|,
 name|frest
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -589,6 +615,7 @@ argument_list|(
 literal|"ID"
 argument_list|)
 condition|)
+block|{
 name|h
 operator|.
 name|put
@@ -598,6 +625,7 @@ argument_list|,
 name|frest
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -798,10 +826,12 @@ argument_list|(
 literal|"Journal-Paper"
 argument_list|)
 condition|)
+block|{
 name|Type
 operator|=
 literal|"article"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -819,11 +849,14 @@ argument_list|(
 literal|"Conference-Paper; Journal-Paper"
 argument_list|)
 condition|)
+block|{
 name|Type
 operator|=
 literal|"inproceedings"
 expr_stmt|;
+block|}
 else|else
+block|{
 name|Type
 operator|=
 name|frest
@@ -835,6 +868,7 @@ argument_list|,
 literal|""
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 name|BibtexEntry

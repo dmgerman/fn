@@ -26,11 +26,12 @@ end_import
 
 begin_class
 DECL|class|IncrementalSearcher
-specifier|public
 class|class
 name|IncrementalSearcher
 block|{
 DECL|field|prefs
+specifier|private
+specifier|final
 name|JabRefPreferences
 name|prefs
 decl_stmt|;
@@ -95,7 +96,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|searchFields (Set<String> fields, BibtexEntry bibtexEntry, String searchString)
-specifier|protected
+specifier|private
 name|boolean
 name|searchFields
 parameter_list|(
@@ -134,7 +135,7 @@ control|)
 block|{
 try|try
 block|{
-comment|/*Globals.logger("Searching field '"+fields[i].toString() 				       +"' for '" 				       +pattern.toString()+"'.");*/
+comment|/*Globals.logger("Searching field '"+fields[i].toString()                     	       +"' for '"                     	       +pattern.toString()+"'.");*/
 if|if
 condition|(
 name|bibtexEntry
@@ -171,10 +172,12 @@ argument_list|(
 name|searchString
 argument_list|)
 condition|)
+block|{
 name|found
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 else|else
 block|{
@@ -198,10 +201,12 @@ name|toLowerCase
 argument_list|()
 argument_list|)
 condition|)
+block|{
 name|found
 operator|=
 literal|true
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(

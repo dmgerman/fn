@@ -44,6 +44,7 @@ name|Runnable
 block|{
 DECL|field|comp
 specifier|private
+specifier|final
 name|Component
 name|comp
 decl_stmt|;
@@ -61,11 +62,13 @@ name|comp
 operator|==
 literal|null
 condition|)
+block|{
 name|Thread
 operator|.
 name|dumpStack
 argument_list|()
 expr_stmt|;
+block|}
 comment|//System.out.println("FocusRequester: "+comp.toString());
 name|this
 operator|.
@@ -96,6 +99,8 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void

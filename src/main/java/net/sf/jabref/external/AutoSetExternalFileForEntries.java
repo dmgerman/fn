@@ -190,11 +190,13 @@ name|AbstractWorker
 block|{
 DECL|field|fieldName
 specifier|private
+specifier|final
 name|String
 name|fieldName
 decl_stmt|;
 DECL|field|panel
 specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
@@ -214,6 +216,8 @@ init|=
 literal|null
 decl_stmt|;
 DECL|field|brokenLinkOptions
+specifier|private
+specifier|final
 name|Object
 index|[]
 name|brokenLinkOptions
@@ -271,14 +275,9 @@ init|=
 literal|true
 decl_stmt|;
 DECL|field|entriesChanged
-DECL|field|brokenLinks
 specifier|private
 name|int
 name|entriesChanged
-init|=
-literal|0
-decl_stmt|,
-name|brokenLinks
 init|=
 literal|0
 decl_stmt|;
@@ -306,6 +305,8 @@ operator|=
 name|panel
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|init ()
 specifier|public
 name|void
@@ -349,6 +350,7 @@ name|optDiag
 operator|==
 literal|null
 condition|)
+block|{
 name|optDiag
 operator|=
 operator|new
@@ -362,6 +364,7 @@ argument_list|,
 name|fieldName
 argument_list|)
 expr_stmt|;
+block|}
 name|Util
 operator|.
 name|placeDialog
@@ -441,6 +444,8 @@ argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -537,10 +542,11 @@ name|entriesChanged
 operator|=
 literal|0
 expr_stmt|;
+name|int
 name|brokenLinks
-operator|=
+init|=
 literal|0
-expr_stmt|;
+decl_stmt|;
 name|NamedCompound
 name|ce
 init|=
@@ -675,7 +681,9 @@ operator|&&
 operator|!
 name|overWriteAllowed
 condition|)
+block|{
 continue|continue;
+block|}
 name|extPan
 operator|.
 name|setEntry
@@ -703,9 +711,12 @@ else|:
 literal|""
 argument_list|)
 expr_stmt|;
-name|Thread
-name|t
-init|=
+name|JabRefExecutorService
+operator|.
+name|INSTANCE
+operator|.
+name|executeAndWait
+argument_list|(
 name|extPan
 operator|.
 name|autoSetFile
@@ -714,34 +725,8 @@ name|fieldName
 argument_list|,
 name|editor
 argument_list|)
-decl_stmt|;
-comment|// Wait for the autoset process to finish:
-if|if
-condition|(
-name|t
-operator|!=
-literal|null
-condition|)
-try|try
-block|{
-name|t
-operator|.
-name|join
-argument_list|()
+argument_list|)
 expr_stmt|;
-block|}
-catch|catch
-parameter_list|(
-name|InterruptedException
-name|e
-parameter_list|)
-block|{
-name|e
-operator|.
-name|printStackTrace
-argument_list|()
-expr_stmt|;
-block|}
 comment|// If something was found, entriesChanged it:
 if|if
 condition|(
@@ -869,7 +854,7 @@ comment|// Get an absolute path representation:
 name|File
 name|file
 init|=
-name|Util
+name|FileUtil
 operator|.
 name|expandFilename
 argument_list|(
@@ -1117,6 +1102,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void
@@ -1128,7 +1115,9 @@ condition|(
 operator|!
 name|goOn
 condition|)
+block|{
 return|return;
+block|}
 name|panel
 operator|.
 name|output
@@ -1189,20 +1178,27 @@ extends|extends
 name|JDialog
 block|{
 DECL|field|autoSetUnset
-DECL|field|autoSetAll
-DECL|field|autoSetNone
+specifier|final
 name|JRadioButton
 name|autoSetUnset
-decl_stmt|,
+decl_stmt|;
+DECL|field|autoSetAll
+specifier|final
+name|JRadioButton
 name|autoSetAll
-decl_stmt|,
+decl_stmt|;
+DECL|field|autoSetNone
+specifier|final
+name|JRadioButton
 name|autoSetNone
 decl_stmt|;
 DECL|field|checkLinks
+specifier|final
 name|JCheckBox
 name|checkLinks
 decl_stmt|;
 DECL|field|ok
+specifier|final
 name|JButton
 name|ok
 init|=
@@ -1216,8 +1212,10 @@ argument_list|(
 literal|"Ok"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|cancel
+specifier|final
+name|JButton
 name|cancel
 init|=
 operator|new
@@ -1244,6 +1242,7 @@ literal|true
 decl_stmt|;
 DECL|field|fieldName
 specifier|private
+specifier|final
 name|String
 name|fieldName
 decl_stmt|;
@@ -1300,6 +1299,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1326,6 +1327,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1744,6 +1747,8 @@ name|pack
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setVisible (boolean visible)
 specifier|public
 name|void
@@ -1757,10 +1762,12 @@ if|if
 condition|(
 name|visible
 condition|)
+block|{
 name|canceled
 operator|=
 literal|true
 expr_stmt|;
+block|}
 name|String
 index|[]
 name|dirs

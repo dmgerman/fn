@@ -78,17 +78,20 @@ end_import
 
 begin_class
 DECL|class|StringAddChange
-specifier|public
 class|class
 name|StringAddChange
 extends|extends
 name|Change
 block|{
 DECL|field|string
+specifier|private
+specifier|final
 name|BibtexString
 name|string
 decl_stmt|;
 DECL|field|tp
+specifier|private
+specifier|final
 name|InfoPane
 name|tp
 init|=
@@ -97,6 +100,8 @@ name|InfoPane
 argument_list|()
 decl_stmt|;
 DECL|field|sp
+specifier|private
+specifier|final
 name|JScrollPane
 name|sp
 init|=
@@ -130,7 +135,7 @@ operator|.
 name|getName
 argument_list|()
 operator|+
-literal|"'"
+literal|'\''
 expr_stmt|;
 name|this
 operator|.
@@ -187,6 +192,8 @@ literal|"</HTML>"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|makeChange (BasePanel panel, BibtexDatabase secondary, NamedCompound undoEdit)
 specifier|public
 name|boolean
@@ -302,9 +309,9 @@ argument_list|(
 operator|new
 name|BibtexString
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|,
 name|string
@@ -350,6 +357,8 @@ return|return
 literal|true
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|description ()
 name|JComponent
 name|description

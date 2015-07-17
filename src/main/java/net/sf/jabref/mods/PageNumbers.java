@@ -87,16 +87,20 @@ class|class
 name|PageNumbers
 block|{
 DECL|field|freeform
+specifier|private
 name|String
 name|freeform
 init|=
 literal|null
 decl_stmt|;
 DECL|field|start
-DECL|field|end
+specifier|private
 name|int
 name|start
-decl_stmt|,
+decl_stmt|;
+DECL|field|end
+specifier|private
+name|int
 name|end
 decl_stmt|;
 DECL|method|PageNumbers (String s)
@@ -114,7 +118,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|parsePageNums (String s)
-specifier|protected
+specifier|private
 name|void
 name|parsePageNums
 parameter_list|(
@@ -180,10 +184,12 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|freeform
 operator|=
 name|s
 expr_stmt|;
+block|}
 block|}
 DECL|method|getDOMrepresentation (Document d)
 specifier|public
@@ -326,9 +332,11 @@ name|freeform
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 name|freeform
 return|;
+block|}
 return|return
 operator|(
 name|start
@@ -339,6 +347,8 @@ name|end
 operator|)
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|toString ()
 specifier|public
 name|String

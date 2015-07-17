@@ -216,6 +216,7 @@ name|Globals
 operator|.
 name|ON_MAC
 condition|)
+block|{
 name|button
 operator|.
 name|setMargin
@@ -233,6 +234,7 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|button
 operator|.
 name|setBorder
@@ -348,21 +350,25 @@ name|popup
 decl_stmt|;
 DECL|field|dim
 specifier|private
+specifier|final
 name|Dimension
 name|dim
 decl_stmt|;
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|field
 specifier|private
+specifier|final
 name|SpecialField
 name|field
 decl_stmt|;
 DECL|field|button
 specifier|private
+specifier|final
 name|JButton
 name|button
 decl_stmt|;
@@ -408,6 +414,8 @@ operator|=
 name|button
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -541,11 +549,13 @@ name|ActionListener
 block|{
 DECL|field|panel
 specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|actionName
 specifier|private
+specifier|final
 name|String
 name|actionName
 decl_stmt|;
@@ -573,6 +583,8 @@ operator|=
 name|actionName
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

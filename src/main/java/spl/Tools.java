@@ -74,13 +74,13 @@ end_comment
 
 begin_class
 DECL|class|Tools
-specifier|public
 class|class
 name|Tools
 block|{
 DECL|field|WEBSERVICE_APP_ID
 specifier|public
 specifier|static
+specifier|final
 name|int
 name|WEBSERVICE_APP_ID
 init|=
@@ -350,6 +350,7 @@ name|mySize
 operator|.
 name|width
 condition|)
+block|{
 name|x
 operator|=
 operator|(
@@ -370,13 +371,16 @@ name|topLeft
 operator|.
 name|x
 expr_stmt|;
+block|}
 else|else
+block|{
 name|x
 operator|=
 name|topLeft
 operator|.
 name|x
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|parentSize
@@ -387,6 +391,7 @@ name|mySize
 operator|.
 name|height
 condition|)
+block|{
 name|y
 operator|=
 operator|(
@@ -407,13 +412,16 @@ name|topLeft
 operator|.
 name|y
 expr_stmt|;
+block|}
 else|else
+block|{
 name|y
 operator|=
 name|topLeft
 operator|.
 name|y
 expr_stmt|;
+block|}
 name|diag
 operator|.
 name|setLocation
@@ -439,9 +447,11 @@ parameter_list|)
 block|{
 if|if
 condition|(
+operator|(
 name|link
 operator|==
 literal|null
+operator|)
 operator|||
 name|link
 operator|.
@@ -614,7 +624,7 @@ name|link
 return|;
 block|}
 DECL|method|isAbsolutePath (String path)
-specifier|public
+specifier|private
 specifier|static
 name|boolean
 name|isAbsolutePath

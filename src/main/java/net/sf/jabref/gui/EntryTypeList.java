@@ -169,7 +169,8 @@ implements|,
 name|ActionListener
 block|{
 DECL|field|def
-specifier|protected
+specifier|private
+specifier|final
 name|JButton
 name|def
 init|=
@@ -283,6 +284,8 @@ literal|false
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|addField (String s)
 specifier|protected
 name|void
@@ -303,6 +306,7 @@ if|if
 condition|(
 name|forceLowerCase
 condition|)
+block|{
 name|s
 operator|=
 name|s
@@ -310,6 +314,7 @@ operator|.
 name|toLowerCase
 argument_list|()
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|s
@@ -326,7 +331,9 @@ argument_list|(
 name|s
 argument_list|)
 condition|)
+block|{
 return|return;
+block|}
 name|String
 name|testString
 init|=
@@ -436,6 +443,8 @@ name|s
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|removeSelected ()
 specifier|protected
 name|void
@@ -460,10 +469,12 @@ name|length
 operator|>
 literal|0
 condition|)
+block|{
 name|changesMade
 operator|=
 literal|true
 expr_stmt|;
+block|}
 for|for
 control|(
 name|int
@@ -549,6 +560,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 comment|// This shouldn't happen, since the Remove button should be disabled.
 name|JOptionPane
 operator|.
@@ -577,6 +589,9 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|valueChanged (ListSelectionEvent e)
 specifier|public
 name|void
@@ -636,6 +651,7 @@ argument_list|)
 expr_stmt|;
 block|}
 else|else
+block|{
 name|def
 operator|.
 name|setEnabled
@@ -643,6 +659,7 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 name|remove
 operator|.
 name|setEnabled
@@ -686,6 +703,8 @@ name|l
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -705,6 +724,7 @@ argument_list|()
 operator|==
 name|def
 condition|)
+block|{
 name|def
 operator|.
 name|setEnabled
@@ -712,7 +732,9 @@ argument_list|(
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|super
 operator|.
 name|actionPerformed
@@ -721,6 +743,9 @@ name|e
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|setEnabled (boolean en)
 specifier|public
 name|void

@@ -48,7 +48,6 @@ name|FullTextFinder
 block|{
 comment|/**      * Report whether this FullTextFinder works for the site providing the given URL.      *      * @param url The url to check.      * @return true if the site is supported, false otherwise. If the site might be supported,      *   it is best to return true.      */
 DECL|method|supportsSite (URL url)
-specifier|public
 name|boolean
 name|supportsSite
 parameter_list|(
@@ -58,7 +57,6 @@ parameter_list|)
 function_decl|;
 comment|/**      * Take the source HTML for an article page, and try to find the URL to the      * full text for this article.      *      * @param url The URL to the article's web page.      * @return The fulltext PDF URL, if found, or null if not found.      * @throws java.io.IOException      */
 DECL|method|findFullTextURL (URL url)
-specifier|public
 name|URL
 name|findFullTextURL
 parameter_list|(

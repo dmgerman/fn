@@ -298,26 +298,38 @@ end_comment
 
 begin_class
 DECL|class|PrefsDialog3
-specifier|public
 class|class
 name|PrefsDialog3
 extends|extends
 name|JDialog
 block|{
 DECL|field|main
+specifier|private
+specifier|final
 name|JPanel
 name|main
 decl_stmt|;
 DECL|field|frame
+specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
-DECL|method|PrefsDialog3 (JabRefFrame parent)
+DECL|field|jabRef
+specifier|private
+specifier|final
+name|JabRef
+name|jabRef
+decl_stmt|;
+DECL|method|PrefsDialog3 (JabRefFrame parent, JabRef jabRef)
 specifier|public
 name|PrefsDialog3
 parameter_list|(
 name|JabRefFrame
 name|parent
+parameter_list|,
+name|JabRef
+name|jabRef
 parameter_list|)
 block|{
 name|super
@@ -333,6 +345,12 @@ argument_list|)
 argument_list|,
 literal|false
 argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|jabRef
+operator|=
+name|jabRef
 expr_stmt|;
 specifier|final
 name|JabRefPreferences
@@ -665,6 +683,8 @@ argument_list|,
 name|parent
 operator|.
 name|helpDiag
+argument_list|,
+name|jabRef
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -717,13 +737,15 @@ decl_stmt|;
 name|names
 index|[
 name|i
-operator|++
 index|]
 operator|=
 name|tab
 operator|.
 name|getTabName
 argument_list|()
+expr_stmt|;
+name|i
+operator|++
 expr_stmt|;
 name|main
 operator|.
@@ -803,6 +825,8 @@ operator|new
 name|ListSelectionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|valueChanged
@@ -818,7 +842,9 @@ operator|.
 name|getValueIsAdjusting
 argument_list|()
 condition|)
+block|{
 return|return;
+block|}
 name|String
 name|o
 init|=
@@ -1100,6 +1126,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1143,7 +1171,9 @@ name|filename
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|File
 name|file
 init|=
@@ -1170,7 +1200,7 @@ name|PrefsDialog3
 operator|.
 name|this
 argument_list|,
-literal|"'"
+literal|'\''
 operator|+
 name|file
 operator|.
@@ -1269,6 +1299,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -1312,7 +1344,9 @@ name|filename
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 try|try
 block|{
 name|prefs
@@ -1422,6 +1456,8 @@ literal|"Ok"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void
@@ -1443,6 +1479,8 @@ name|ready
 init|=
 literal|true
 decl_stmt|;
+annotation|@
+name|Override
 specifier|public
 name|void
 name|run
@@ -1544,6 +1582,8 @@ name|flush
 argument_list|()
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 specifier|public
 name|void
 name|update
@@ -1554,7 +1594,9 @@ condition|(
 operator|!
 name|ready
 condition|)
+block|{
 return|return;
+block|}
 name|setVisible
 argument_list|(
 literal|false
@@ -1688,6 +1730,8 @@ literal|"Cancel"
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|actionPerformed (ActionEvent e)
 specifier|public
 name|void

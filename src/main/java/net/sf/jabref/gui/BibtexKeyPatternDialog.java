@@ -134,6 +134,16 @@ end_import
 
 begin_import
 import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|WindowConstants
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -254,6 +264,7 @@ name|panel
 decl_stmt|;
 DECL|field|labelPatternPanel
 specifier|private
+specifier|final
 name|LabelPatternPanel
 name|labelPatternPanel
 decl_stmt|;
@@ -303,7 +314,7 @@ name|init
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** 	 * Used for updating an existing Dialog 	 *  	 * @param panel the panel to read the data from 	 */
+comment|/**      * Used for updating an existing Dialog      *       * @param panel the panel to read the data from      */
 DECL|method|setPanel (BasePanel panel)
 specifier|public
 name|void
@@ -468,6 +479,8 @@ name|this
 operator|.
 name|setDefaultCloseOperation
 argument_list|(
+name|WindowConstants
+operator|.
 name|DISPOSE_ON_CLOSE
 argument_list|)
 expr_stmt|;
@@ -496,6 +509,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -599,6 +614,8 @@ name|cancelAction
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|setVisible (boolean visible)
 specifier|public
 name|void
@@ -612,6 +629,7 @@ if|if
 condition|(
 name|visible
 condition|)
+block|{
 name|super
 operator|.
 name|setVisible
@@ -619,6 +637,7 @@ argument_list|(
 name|visible
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class

@@ -183,10 +183,14 @@ extends|extends
 name|JDialog
 block|{
 DECL|field|frame
+specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|sliders
+specifier|private
+specifier|final
 name|HashMap
 argument_list|<
 name|JSlider
@@ -205,6 +209,8 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 DECL|field|ok
+specifier|private
+specifier|final
 name|JButton
 name|ok
 init|=
@@ -218,8 +224,11 @@ argument_list|(
 literal|"Ok"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|cancel
+specifier|private
+specifier|final
+name|JButton
 name|cancel
 init|=
 operator|new
@@ -257,7 +266,7 @@ argument_list|)
 expr_stmt|;
 block|}
 DECL|method|FieldWeightDialog (JabRefFrame frame)
-specifier|public
+specifier|private
 name|FieldWeightDialog
 parameter_list|(
 name|JabRefFrame
@@ -324,7 +333,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|buildMainPanel ()
-specifier|public
+specifier|private
 name|JPanel
 name|buildMainPanel
 parameter_list|()
@@ -449,6 +458,7 @@ call|(
 name|int
 call|)
 argument_list|(
+operator|(
 literal|100
 operator|*
 name|BibtexFields
@@ -457,6 +467,7 @@ name|getFieldWeight
 argument_list|(
 name|field
 argument_list|)
+operator|)
 operator|/
 name|GUIGlobals
 operator|.
@@ -514,7 +525,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|buildButtonPanel ()
-specifier|public
+specifier|private
 name|JPanel
 name|buildButtonPanel
 parameter_list|()
@@ -527,6 +538,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -553,6 +566,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -607,7 +622,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|storeSettings ()
-specifier|public
+specifier|private
 name|void
 name|storeSettings
 parameter_list|()
@@ -649,6 +664,7 @@ block|{
 name|double
 name|weight
 init|=
+operator|(
 name|GUIGlobals
 operator|.
 name|MAX_FIELD_WEIGHT
@@ -658,6 +674,7 @@ name|slider
 operator|.
 name|getValue
 argument_list|()
+operator|)
 operator|)
 operator|/
 literal|100d
@@ -688,10 +705,12 @@ class|class
 name|SliderInfo
 block|{
 DECL|field|fieldName
+specifier|final
 name|String
 name|fieldName
 decl_stmt|;
 DECL|field|originalValue
+specifier|final
 name|int
 name|originalValue
 decl_stmt|;

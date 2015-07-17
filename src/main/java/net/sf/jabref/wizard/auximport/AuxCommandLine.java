@@ -80,7 +80,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|StringUtil
 import|;
 end_import
 
@@ -92,11 +92,13 @@ name|AuxCommandLine
 block|{
 DECL|field|auxName
 specifier|private
+specifier|final
 name|String
 name|auxName
 decl_stmt|;
 DECL|field|bib
 specifier|private
+specifier|final
 name|BibtexDatabase
 name|bib
 decl_stmt|;
@@ -113,7 +115,7 @@ parameter_list|)
 block|{
 name|auxName
 operator|=
-name|Util
+name|StringUtil
 operator|.
 name|getCorrectFileName
 argument_list|(
@@ -307,6 +309,7 @@ name|nested
 operator|>
 literal|0
 condition|)
+block|{
 name|System
 operator|.
 name|out
@@ -325,6 +328,7 @@ operator|+
 name|nested
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 return|return
 name|back

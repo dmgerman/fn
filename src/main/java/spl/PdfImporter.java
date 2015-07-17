@@ -258,11 +258,13 @@ name|PdfImporter
 block|{
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|panel
 specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
@@ -514,12 +516,14 @@ name|panel
 operator|==
 literal|null
 condition|)
+block|{
 return|return
 name|Collections
 operator|.
 name|emptyList
 argument_list|()
 return|;
+block|}
 name|ImportDialog
 name|importDialog
 init|=
@@ -794,7 +798,7 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{}
+block|{                         }
 block|}
 if|if
 condition|(
@@ -901,7 +905,7 @@ operator|.
 name|getName
 argument_list|()
 argument_list|,
-name|Util
+name|FileUtil
 operator|.
 name|shortenFileName
 argument_list|(
@@ -1091,7 +1095,7 @@ parameter_list|(
 name|Exception
 name|ignored
 parameter_list|)
-block|{}
+block|{                         }
 block|}
 comment|// import failed -> generate default entry
 if|if
@@ -1288,11 +1292,14 @@ expr_stmt|;
 comment|// to satisfy the Java compiler
 if|if
 condition|(
+operator|(
 name|document
 operator|!=
 literal|null
 comment|/*&& documents.getDocuments() != null&& documents.getDocuments().size()> 0*/
+operator|)
 operator|&&
+operator|(
 name|metaDataListDialog
 operator|.
 name|getResult
@@ -1301,6 +1308,7 @@ operator|==
 name|JOptionPane
 operator|.
 name|OK_OPTION
+operator|)
 condition|)
 block|{
 name|int
@@ -1327,9 +1335,9 @@ comment|//Document document = documents/*.getDocuments().get(selected)*/;
 name|String
 name|id
 init|=
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 decl_stmt|;
 name|entry
@@ -1543,11 +1551,14 @@ block|}
 elseif|else
 if|if
 condition|(
+operator|(
 name|document
 operator|==
 literal|null
 comment|/*|| document.getDocuments() == null || document.getDocuments().size()<= 0*/
+operator|)
 operator|&&
+operator|(
 name|metaDataListDialog
 operator|.
 name|getResult
@@ -1556,6 +1567,7 @@ operator|==
 name|JOptionPane
 operator|.
 name|OK_OPTION
+operator|)
 condition|)
 block|{
 name|entry
@@ -1639,11 +1651,14 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
+operator|(
 name|document
 operator|!=
 literal|null
 comment|/*&& document.getDocuments() != null&& document.getDocuments().size()> 0*/
+operator|)
 operator|&&
+operator|(
 name|metaDataListDialog
 operator|.
 name|getResult
@@ -1652,6 +1667,7 @@ operator|==
 name|JOptionPane
 operator|.
 name|OK_OPTION
+operator|)
 condition|)
 block|{
 name|int
@@ -2023,9 +2039,11 @@ name|string
 parameter_list|)
 block|{
 return|return
+operator|(
 name|string
 operator|!=
 literal|null
+operator|)
 operator|&&
 operator|!
 name|string
@@ -2086,9 +2104,9 @@ comment|// Only if the dialog was not cancelled.
 name|String
 name|id
 init|=
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 decl_stmt|;
 specifier|final

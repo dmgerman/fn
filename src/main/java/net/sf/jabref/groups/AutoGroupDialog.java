@@ -252,7 +252,8 @@ implements|implements
 name|CaretListener
 block|{
 DECL|field|remove
-DECL|field|field
+specifier|private
+specifier|final
 name|JTextField
 name|remove
 init|=
@@ -261,7 +262,11 @@ name|JTextField
 argument_list|(
 literal|60
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+DECL|field|field
+specifier|private
+specifier|final
+name|JTextField
 name|field
 init|=
 operator|new
@@ -269,8 +274,11 @@ name|JTextField
 argument_list|(
 literal|60
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|deliminator
+specifier|private
+specifier|final
+name|JTextField
 name|deliminator
 init|=
 operator|new
@@ -312,6 +320,8 @@ operator|+
 literal|":"
 argument_list|)
 decl_stmt|;
+specifier|private
+specifier|final
 name|JRadioButton
 DECL|field|keywords
 name|keywords
@@ -326,8 +336,11 @@ argument_list|(
 literal|"Generate groups from keywords in a BibTeX field"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|authors
+specifier|private
+specifier|final
+name|JRadioButton
 name|authors
 init|=
 operator|new
@@ -340,8 +353,11 @@ argument_list|(
 literal|"Generate groups for author last names"
 argument_list|)
 argument_list|)
-decl_stmt|,
+decl_stmt|;
 DECL|field|editors
+specifier|private
+specifier|final
+name|JRadioButton
 name|editors
 init|=
 operator|new
@@ -356,6 +372,8 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|nd
+specifier|private
+specifier|final
 name|JCheckBox
 name|nd
 init|=
@@ -371,6 +389,8 @@ argument_list|)
 argument_list|)
 decl_stmt|;
 DECL|field|ok
+specifier|private
+specifier|final
 name|JButton
 name|ok
 init|=
@@ -384,35 +404,6 @@ argument_list|(
 literal|"Ok"
 argument_list|)
 argument_list|)
-decl_stmt|,
-DECL|field|cancel
-name|cancel
-init|=
-operator|new
-name|JButton
-argument_list|(
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"Cancel"
-argument_list|)
-argument_list|)
-decl_stmt|;
-DECL|field|main
-DECL|field|opt
-name|JPanel
-name|main
-init|=
-operator|new
-name|JPanel
-argument_list|()
-decl_stmt|,
-name|opt
-init|=
-operator|new
-name|JPanel
-argument_list|()
 decl_stmt|;
 DECL|field|ok_pressed
 specifier|private
@@ -423,21 +414,25 @@ literal|false
 decl_stmt|;
 DECL|field|m_groupsRoot
 specifier|private
+specifier|final
 name|GroupTreeNode
 name|m_groupsRoot
 decl_stmt|;
 DECL|field|frame
 specifier|private
+specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
 DECL|field|panel
 specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|gs
 specifier|private
+specifier|final
 name|GroupSelector
 name|gs
 decl_stmt|;
@@ -557,6 +552,8 @@ operator|new
 name|ActionListener
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -940,6 +937,8 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+annotation|@
+name|Override
 specifier|public
 name|void
 name|actionPerformed
@@ -953,6 +952,20 @@ argument_list|()
 expr_stmt|;
 block|}
 block|}
+decl_stmt|;
+name|JButton
+name|cancel
+init|=
+operator|new
+name|JButton
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Cancel"
+argument_list|)
+argument_list|)
 decl_stmt|;
 name|cancel
 operator|.
@@ -969,6 +982,13 @@ name|okListener
 argument_list|)
 expr_stmt|;
 comment|// Key bindings:
+name|JPanel
+name|main
+init|=
+operator|new
+name|JPanel
+argument_list|()
+decl_stmt|;
 name|ActionMap
 name|am
 init|=
@@ -1207,6 +1227,13 @@ operator|.
 name|nextLine
 argument_list|()
 expr_stmt|;
+name|JPanel
+name|opt
+init|=
+operator|new
+name|JPanel
+argument_list|()
+decl_stmt|;
 name|ButtonBarBuilder
 name|bb
 init|=
@@ -1350,7 +1377,7 @@ name|oldRemove
 return|;
 block|}
 DECL|method|field ()
-specifier|public
+specifier|private
 name|String
 name|field
 parameter_list|()
@@ -1363,7 +1390,7 @@ argument_list|()
 return|;
 block|}
 DECL|method|remove ()
-specifier|public
+specifier|private
 name|String
 name|remove
 parameter_list|()
@@ -1375,6 +1402,8 @@ name|getText
 argument_list|()
 return|;
 block|}
+annotation|@
+name|Override
 DECL|method|caretUpdate (CaretEvent e)
 specifier|public
 name|void
@@ -1389,7 +1418,7 @@ argument_list|()
 expr_stmt|;
 block|}
 DECL|method|updateComponents ()
-specifier|protected
+specifier|private
 name|void
 name|updateComponents
 parameter_list|()

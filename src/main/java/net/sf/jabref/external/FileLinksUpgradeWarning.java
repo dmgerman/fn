@@ -148,6 +148,8 @@ literal|"ps"
 block|}
 decl_stmt|;
 comment|/**      * This method should be performed if the major/minor versions recorded in the ParserResult      * are less than or equal to 2.2.      * @param pr      * @return true if the file was written by a jabref version<=2.2      */
+annotation|@
+name|Override
 DECL|method|isActionNecessary (ParserResult pr)
 specifier|public
 name|boolean
@@ -170,9 +172,11 @@ argument_list|(
 literal|"showFileLinksUpgradeWarning"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|false
 return|;
+block|}
 if|if
 condition|(
 name|pr
@@ -182,10 +186,12 @@ argument_list|()
 operator|<
 literal|0
 condition|)
+block|{
 return|return
 literal|false
 return|;
 comment|// non-JabRef file
+block|}
 if|if
 condition|(
 name|pr
@@ -195,10 +201,12 @@ argument_list|()
 operator|<
 literal|2
 condition|)
+block|{
 return|return
 literal|true
 return|;
 comment|// old
+block|}
 if|if
 condition|(
 name|pr
@@ -208,10 +216,12 @@ argument_list|()
 operator|>
 literal|2
 condition|)
+block|{
 return|return
 literal|false
 return|;
 comment|// wow, did we ever reach version 3?
+block|}
 return|return
 operator|(
 name|pr
@@ -224,6 +234,8 @@ operator|)
 return|;
 block|}
 comment|/**      * This method presents a dialog box explaining and offering to make the      * changes. If the user confirms, the changes are performed.      * @param panel      * @param pr      */
+annotation|@
+name|Override
 DECL|method|performAction (BasePanel panel, ParserResult pr)
 specifier|public
 name|void
@@ -266,6 +278,8 @@ operator|.
 name|getDatabase
 argument_list|()
 argument_list|,
+name|FileLinksUpgradeWarning
+operator|.
 name|FIELDS_TO_LOOK_FOR
 argument_list|)
 decl_stmt|;
@@ -318,8 +332,10 @@ operator|&&
 operator|!
 name|offerSetFileDir
 condition|)
+block|{
 return|return;
 comment|// Nothing to do, just return.
+block|}
 name|JCheckBox
 name|changeSettings
 init|=
@@ -516,6 +532,7 @@ argument_list|(
 literal|"pdfDirectory"
 argument_list|)
 condition|)
+block|{
 name|fileDir
 operator|.
 name|setText
@@ -530,7 +547,9 @@ literal|"pdfDirectory"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|fileDir
 operator|.
 name|setText
@@ -545,6 +564,7 @@ literal|"psDirectory"
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 name|JPanel
 name|pan
 init|=
@@ -584,14 +604,11 @@ name|browse
 operator|.
 name|addActionListener
 argument_list|(
-operator|new
 name|BrowseAction
+operator|.
+name|buildForDir
 argument_list|(
-literal|null
-argument_list|,
 name|fileDir
-argument_list|,
-literal|true
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -667,6 +684,7 @@ operator|.
 name|isSelected
 argument_list|()
 condition|)
+block|{
 name|Globals
 operator|.
 name|prefs
@@ -678,6 +696,7 @@ argument_list|,
 literal|false
 argument_list|)
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|answer
@@ -686,6 +705,7 @@ name|JOptionPane
 operator|.
 name|YES_OPTION
 condition|)
+block|{
 name|makeChanges
 argument_list|(
 name|panel
@@ -716,9 +736,10 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
+block|}
 comment|/**      * Check the database to find out whether any of a set of fields are used      * for any of the entries.      * @param database The bib database.      * @param fields The set of fields to look for.      * @return true if at least one of the given fields is set in at least one entry,      *  false otherwise.      */
 DECL|method|linksFound (BibtexDatabase database, String[] fields)
-specifier|public
+specifier|private
 name|boolean
 name|linksFound
 parameter_list|(
@@ -760,9 +781,11 @@ argument_list|)
 operator|!=
 literal|null
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 block|}
 block|}
 return|return
@@ -771,7 +794,7 @@ return|;
 block|}
 comment|/**      * This method performs the actual changes.      * @param panel      * @param pr      * @param fileDir The path to the file directory to set, or null if it should not be set.      */
 DECL|method|makeChanges (BasePanel panel, ParserResult pr, boolean upgradePrefs, boolean upgradeDatabase, String fileDir)
-specifier|public
+specifier|private
 name|void
 name|makeChanges
 parameter_list|(
@@ -809,6 +832,8 @@ operator|.
 name|getDatabase
 argument_list|()
 argument_list|,
+name|FileLinksUpgradeWarning
+operator|.
 name|FIELDS_TO_LOOK_FOR
 argument_list|)
 decl_stmt|;
@@ -908,11 +933,11 @@ literal|"0"
 argument_list|)
 decl_stmt|;
 comment|//System.out.println(gfs);
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|(
 name|gfs
 argument_list|)
@@ -926,6 +951,7 @@ argument_list|()
 operator|>
 literal|0
 condition|)
+block|{
 name|sb
 operator|.
 name|append
@@ -933,6 +959,7 @@ argument_list|(
 literal|";"
 argument_list|)
 expr_stmt|;
+block|}
 name|sb
 operator|.
 name|append

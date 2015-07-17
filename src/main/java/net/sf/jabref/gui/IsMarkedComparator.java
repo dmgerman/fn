@@ -36,7 +36,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Util
+name|EntryMarker
 import|;
 end_import
 
@@ -52,7 +52,6 @@ end_import
 
 begin_class
 DECL|class|IsMarkedComparator
-specifier|public
 class|class
 name|IsMarkedComparator
 implements|implements
@@ -61,6 +60,8 @@ argument_list|<
 name|BibtexEntry
 argument_list|>
 block|{
+annotation|@
+name|Override
 DECL|method|compare (BibtexEntry e1, BibtexEntry e2)
 specifier|public
 name|int
@@ -75,14 +76,14 @@ parameter_list|)
 block|{
 return|return
 operator|-
-name|Util
+name|EntryMarker
 operator|.
 name|isMarked
 argument_list|(
 name|e1
 argument_list|)
 operator|+
-name|Util
+name|EntryMarker
 operator|.
 name|isMarked
 argument_list|(

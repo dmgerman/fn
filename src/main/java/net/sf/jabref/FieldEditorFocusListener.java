@@ -54,7 +54,6 @@ end_comment
 
 begin_class
 DECL|class|FieldEditorFocusListener
-specifier|public
 class|class
 name|FieldEditorFocusListener
 implements|implements
@@ -65,6 +64,8 @@ specifier|public
 name|FieldEditorFocusListener
 parameter_list|()
 block|{     }
+annotation|@
+name|Override
 DECL|method|focusGained (FocusEvent event)
 specifier|public
 name|void
@@ -83,6 +84,7 @@ argument_list|()
 operator|instanceof
 name|FieldEditor
 condition|)
+block|{
 operator|(
 operator|(
 name|FieldEditor
@@ -96,7 +98,9 @@ operator|.
 name|setActiveBackgroundColor
 argument_list|()
 expr_stmt|;
+block|}
 else|else
+block|{
 operator|(
 operator|(
 name|JComponent
@@ -115,6 +119,9 @@ name|activeBackground
 argument_list|)
 expr_stmt|;
 block|}
+block|}
+annotation|@
+name|Override
 DECL|method|focusLost (FocusEvent event)
 specifier|public
 name|void
@@ -133,6 +140,7 @@ argument_list|()
 operator|instanceof
 name|FieldEditor
 condition|)
+block|{
 operator|(
 operator|(
 name|FieldEditor
@@ -146,7 +154,9 @@ operator|.
 name|setValidBackgroundColor
 argument_list|()
 expr_stmt|;
+block|}
 else|else
+block|{
 operator|(
 operator|(
 name|JComponent
@@ -164,6 +174,7 @@ operator|.
 name|validFieldBackgroundColor
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 block|}
 end_class

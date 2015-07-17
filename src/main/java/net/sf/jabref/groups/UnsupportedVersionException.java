@@ -30,7 +30,6 @@ end_import
 
 begin_class
 DECL|class|UnsupportedVersionException
-specifier|public
 class|class
 name|UnsupportedVersionException
 extends|extends

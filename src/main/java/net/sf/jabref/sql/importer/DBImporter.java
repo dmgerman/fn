@@ -54,67 +54,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|ArrayList
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Arrays
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Iterator
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|LinkedHashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|List
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Set
+name|*
 import|;
 end_import
 
@@ -126,79 +66,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibtexDatabase
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexEntryType
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexFields
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|BibtexString
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|MetaData
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|Util
+name|*
 import|;
 end_import
 
@@ -372,7 +240,7 @@ literal|"entries_id"
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|/** 	 * Given a DBStrings it connects to the DB and returns the 	 * java.sql.Connection object 	 *  	 * @param dbstrings 	 *            The DBStrings to use to make the connection 	 * @return java.sql.Connection to the DB chosen 	 * @throws Exception 	 */
+comment|/**      * Given a DBStrings it connects to the DB and returns the      * java.sql.Connection object      *       * @param dbstrings      *            The DBStrings to use to make the connection      * @return java.sql.Connection to the DB chosen      * @throws Exception      */
 DECL|method|connectToDB (DBStrings dbstrings)
 specifier|protected
 specifier|abstract
@@ -385,7 +253,7 @@ parameter_list|)
 throws|throws
 name|Exception
 function_decl|;
-comment|/** 	 *  	 * @param conn 	 *            Connection object to the database 	 * @return A ResultSet with column name for the entries table 	 * @throws SQLException 	 */
+comment|/**      *       * @param conn      *            Connection object to the database      * @return A ResultSet with column name for the entries table      * @throws SQLException      */
 DECL|method|readColumnNames (Connection conn)
 specifier|protected
 specifier|abstract
@@ -398,7 +266,7 @@ parameter_list|)
 throws|throws
 name|SQLException
 function_decl|;
-comment|/** 	 * Worker method to perform the import from a database 	 *  	 * @param keySet 	 *            The set of IDs of the entries to export. 	 * @param dbs 	 *            The necessary database connection information 	 * @return An ArrayList containing pairs of Objects. Each position of the 	 *         ArrayList stores three Objects: a BibtexDatabase, a MetaData and 	 *         a String with the bib database name stored in the DBMS 	 * @throws Exception 	 */
+comment|/**      * Worker method to perform the import from a database      *       * @param keySet      *            The set of IDs of the entries to export.      * @param dbs      *            The necessary database connection information      * @return An ArrayList containing pairs of Objects. Each position of the      *         ArrayList stores three Objects: a BibtexDatabase, a MetaData and      *         a String with the bib database name stored in the DBMS      * @throws Exception      */
 DECL|method|performImport (Set<String> keySet, DBStrings dbs, List<String> listOfDBs)
 specifier|public
 name|ArrayList
@@ -477,7 +345,7 @@ condition|)
 block|{
 name|jabrefDBs
 operator|+=
-literal|"'"
+literal|'\''
 operator|+
 name|itLista
 operator|.
@@ -503,7 +371,7 @@ operator|-
 literal|1
 argument_list|)
 operator|+
-literal|")"
+literal|')'
 expr_stmt|;
 name|ResultSet
 name|rsDatabase
@@ -651,6 +519,7 @@ literal|1
 argument_list|)
 argument_list|)
 condition|)
+block|{
 name|colNames
 operator|.
 name|add
@@ -663,6 +532,7 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|rsColumns
 operator|.
@@ -740,9 +610,9 @@ init|=
 operator|new
 name|BibtexEntry
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|,
 name|types
@@ -881,7 +751,7 @@ literal|"strings WHERE database_id='"
 operator|+
 name|database_id
 operator|+
-literal|"'"
+literal|'\''
 argument_list|)
 decl_stmt|;
 while|while
@@ -937,9 +807,9 @@ init|=
 operator|new
 name|BibtexString
 argument_list|(
-name|Util
+name|IdGenerator
 operator|.
-name|createNeutralId
+name|next
 argument_list|()
 argument_list|,
 name|label
@@ -1014,9 +884,9 @@ return|return
 name|result
 return|;
 block|}
-comment|/** 	 * Look up the group type name from the type ID in the database. 	 *  	 * @param groupId 	 *            The database's groups id 	 * @param conn 	 *            The database connection 	 *  	 * @return The name (JabRef type id) of the group type. 	 * @throws SQLException 	 */
+comment|/**      * Look up the group type name from the type ID in the database.      *       * @param groupId      *            The database's groups id      * @param conn      *            The database connection      *       * @return The name (JabRef type id) of the group type.      * @throws SQLException      */
 DECL|method|findGroupTypeName (String groupId, Connection conn)
-specifier|public
+specifier|private
 name|String
 name|findGroupTypeName
 parameter_list|(
@@ -1045,7 +915,7 @@ argument_list|)
 return|;
 block|}
 DECL|method|importGroupsTree (MetaData metaData, HashMap<String, BibtexEntry> entries, Connection conn, String database_id)
-specifier|public
+specifier|private
 name|void
 name|importGroupsTree
 parameter_list|(
@@ -1261,7 +1131,7 @@ argument_list|(
 literal|"label"
 argument_list|)
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|unquote
 argument_list|(
@@ -1275,7 +1145,7 @@ argument_list|,
 literal|'\\'
 argument_list|)
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|unquote
 argument_list|(
@@ -1353,7 +1223,7 @@ argument_list|(
 literal|"label"
 argument_list|)
 argument_list|,
-name|Util
+name|StringUtil
 operator|.
 name|unquote
 argument_list|(
@@ -1440,24 +1310,29 @@ comment|// and another map of all group IDs and their group nodes.
 comment|// Now we need to build the groups tree:
 for|for
 control|(
+name|Map
+operator|.
+name|Entry
+argument_list|<
 name|GroupTreeNode
-name|node
+argument_list|,
+name|String
+argument_list|>
+name|groupTreeNodeStringEntry
 range|:
 name|parentIds
 operator|.
-name|keySet
+name|entrySet
 argument_list|()
 control|)
 block|{
 name|String
 name|parentId
 init|=
-name|parentIds
+name|groupTreeNodeStringEntry
 operator|.
-name|get
-argument_list|(
-name|node
-argument_list|)
+name|getValue
+argument_list|()
 decl_stmt|;
 name|GroupTreeNode
 name|parent
@@ -1484,7 +1359,10 @@ name|parent
 operator|.
 name|add
 argument_list|(
-name|node
+name|groupTreeNodeStringEntry
+operator|.
+name|getKey
+argument_list|()
 argument_list|)
 expr_stmt|;
 block|}

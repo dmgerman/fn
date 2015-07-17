@@ -98,7 +98,6 @@ end_comment
 
 begin_class
 DECL|class|SearchManagerNoGUI
-specifier|public
 class|class
 name|SearchManagerNoGUI
 block|{
@@ -108,16 +107,21 @@ name|String
 name|searchTerm
 decl_stmt|;
 DECL|field|database
+specifier|private
+specifier|final
+name|BibtexDatabase
+name|database
+decl_stmt|;
 DECL|field|base
 specifier|private
 name|BibtexDatabase
-name|database
-decl_stmt|,
 name|base
 init|=
 literal|null
 decl_stmt|;
 DECL|field|searchOptions
+specifier|private
+specifier|final
 name|Hashtable
 argument_list|<
 name|String
@@ -479,13 +483,17 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
+operator|(
 name|year1
 operator|<
 literal|2000
+operator|)
 operator|&&
+operator|(
 name|year2
 operator|>=
 literal|2000
+operator|)
 condition|)
 block|{
 comment|//for 199.
@@ -573,6 +581,7 @@ block|}
 block|}
 if|if
 condition|(
+operator|(
 name|Integer
 operator|.
 name|parseInt
@@ -584,10 +593,13 @@ index|]
 argument_list|)
 operator|>=
 literal|2000
+operator|)
 operator|&&
+operator|(
 name|year1
 operator|<
 literal|2000
+operator|)
 condition|)
 block|{
 comment|//for 200.

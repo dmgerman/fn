@@ -91,16 +91,21 @@ extends|extends
 name|AbstractWorker
 block|{
 DECL|field|panel
+specifier|private
+specifier|final
 name|BasePanel
 name|panel
 decl_stmt|;
 DECL|field|message
+specifier|private
 name|String
 name|message
 init|=
 literal|""
 decl_stmt|;
 DECL|field|iso
+specifier|private
+specifier|final
 name|boolean
 name|iso
 decl_stmt|;
@@ -128,6 +133,8 @@ operator|=
 name|iso
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|init ()
 specifier|public
 name|void
@@ -143,6 +150,8 @@ literal|"Abbreviating..."
 argument_list|)
 expr_stmt|;
 block|}
+annotation|@
+name|Override
 DECL|method|run ()
 specifier|public
 name|void
@@ -165,7 +174,9 @@ name|entries
 operator|==
 literal|null
 condition|)
+block|{
 return|return;
+block|}
 name|NamedCompound
 name|ce
 init|=
@@ -210,9 +221,11 @@ argument_list|,
 name|iso
 argument_list|)
 condition|)
+block|{
 name|count
 operator|++
 expr_stmt|;
+block|}
 if|if
 condition|(
 name|Globals
@@ -235,9 +248,11 @@ argument_list|,
 name|iso
 argument_list|)
 condition|)
+block|{
 name|count
 operator|++
 expr_stmt|;
+block|}
 block|}
 if|if
 condition|(
@@ -295,6 +310,8 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+annotation|@
+name|Override
 DECL|method|update ()
 specifier|public
 name|void

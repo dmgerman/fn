@@ -48,7 +48,6 @@ name|LayoutFormatter
 block|{
 comment|/**      * Method for setting the argument of this formatter.      * @param arg A String argument.      */
 DECL|method|setArgument (String arg)
-specifier|public
 name|void
 name|setArgument
 parameter_list|(

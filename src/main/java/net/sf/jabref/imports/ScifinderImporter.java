@@ -149,6 +149,8 @@ extends|extends
 name|ImportFormat
 block|{
 comment|/**      * Return the name of this import format.      */
+annotation|@
+name|Override
 DECL|method|getFormatName ()
 specifier|public
 name|String
@@ -160,6 +162,8 @@ literal|"Scifinder"
 return|;
 block|}
 comment|/*      *  (non-Javadoc)      * @see net.sf.jabref.imports.ImportFormat#getCLIId()      */
+annotation|@
+name|Override
 DECL|method|getCLIId ()
 specifier|public
 name|String
@@ -171,6 +175,8 @@ literal|"scifinder"
 return|;
 block|}
 comment|/**      * Check whether the source is in the correct format for this importer.      */
+annotation|@
+name|Override
 DECL|method|isRecognizedFormat (InputStream stream)
 specifier|public
 name|boolean
@@ -238,9 +244,11 @@ argument_list|(
 literal|"START_RECORD"
 argument_list|)
 condition|)
+block|{
 return|return
 literal|true
 return|;
+block|}
 name|i
 operator|++
 expr_stmt|;
@@ -250,6 +258,8 @@ literal|false
 return|;
 block|}
 comment|/**      * Parse the entries in the source, and return a List of BibtexEntry      * objects.      */
+annotation|@
+name|Override
 DECL|method|importEntries (InputStream stream, OutputPrinter status)
 specifier|public
 name|List
@@ -280,11 +290,11 @@ name|BibtexEntry
 argument_list|>
 argument_list|()
 decl_stmt|;
-name|StringBuffer
+name|StringBuilder
 name|sb
 init|=
 operator|new
-name|StringBuffer
+name|StringBuilder
 argument_list|()
 decl_stmt|;
 name|BufferedReader
@@ -426,6 +436,7 @@ name|field
 range|:
 name|fields
 control|)
+block|{
 if|if
 condition|(
 name|field
@@ -509,6 +520,7 @@ argument_list|(
 literal|"Author"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -533,6 +545,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -546,6 +559,7 @@ argument_list|(
 literal|"Title"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -558,6 +572,7 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -593,6 +608,7 @@ argument_list|(
 literal|"Volume"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -605,6 +621,7 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -618,6 +635,7 @@ argument_list|(
 literal|"Page"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -630,6 +648,7 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -643,6 +662,7 @@ argument_list|(
 literal|"Publication Year"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -655,6 +675,7 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -668,6 +689,7 @@ argument_list|(
 literal|"Abstract"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -680,6 +702,7 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -693,6 +716,7 @@ argument_list|(
 literal|"Supplementary Terms"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -705,6 +729,7 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -733,6 +758,7 @@ operator|>
 literal|0
 operator|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -757,6 +783,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -770,6 +797,7 @@ argument_list|(
 literal|"Patent Assignee"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -782,6 +810,7 @@ literal|1
 index|]
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -795,6 +824,7 @@ argument_list|(
 literal|"Patent Kind Code"
 argument_list|)
 condition|)
+block|{
 name|kindcode
 operator|=
 literal|" "
@@ -804,6 +834,7 @@ index|[
 literal|1
 index|]
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -817,6 +848,7 @@ argument_list|(
 literal|"Patent Country"
 argument_list|)
 condition|)
+block|{
 name|country
 operator|=
 name|tmp
@@ -826,6 +858,7 @@ index|]
 operator|+
 literal|" "
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -839,6 +872,7 @@ argument_list|(
 literal|"Patent Number"
 argument_list|)
 condition|)
+block|{
 name|number
 operator|=
 name|tmp
@@ -846,6 +880,7 @@ index|[
 literal|1
 index|]
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -859,6 +894,7 @@ argument_list|(
 literal|"Priority Application Date"
 argument_list|)
 condition|)
+block|{
 name|hm
 operator|.
 name|put
@@ -872,6 +908,7 @@ operator|+
 name|kindcode
 argument_list|)
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -908,10 +945,12 @@ argument_list|(
 literal|"Review"
 argument_list|)
 condition|)
+block|{
 name|Type
 operator|=
 literal|"article"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -925,10 +964,12 @@ argument_list|(
 literal|"Dissertation"
 argument_list|)
 condition|)
+block|{
 name|Type
 operator|=
 literal|"phdthesis"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -942,10 +983,12 @@ argument_list|(
 literal|"Patent"
 argument_list|)
 condition|)
+block|{
 name|Type
 operator|=
 literal|"patent"
 expr_stmt|;
+block|}
 elseif|else
 if|if
 condition|(
@@ -959,11 +1002,14 @@ argument_list|(
 literal|"Conference"
 argument_list|)
 condition|)
+block|{
 name|Type
 operator|=
 literal|"conference"
 expr_stmt|;
+block|}
 else|else
+block|{
 name|Type
 operator|=
 name|tmp
@@ -971,6 +1017,8 @@ index|[
 literal|1
 index|]
 expr_stmt|;
+block|}
+block|}
 block|}
 block|}
 block|}
@@ -1017,6 +1065,7 @@ argument_list|(
 literal|"conference"
 argument_list|)
 condition|)
+block|{
 name|b
 operator|.
 name|setField
@@ -1026,7 +1075,9 @@ argument_list|,
 name|journal
 argument_list|)
 expr_stmt|;
+block|}
 else|else
+block|{
 name|b
 operator|.
 name|setField
@@ -1036,6 +1087,7 @@ argument_list|,
 name|journal
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 name|bibitems
 operator|.
