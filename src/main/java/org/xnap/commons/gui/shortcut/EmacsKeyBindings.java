@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_comment
-comment|/*  *  This file is part of JabRef and is based on XNap Commons.  *  This file may be used under the LGPL 2.1 license if used without JabRef.   *  JabRef is free software: you can redistribute it and/or modify  *  it under the terms of the GNU General Public License as published by  *  the Free Software Foundation, either version 3 of the License, or  *  (at your option) any later version.  *  *  JabRef is distributed in the hope that it will be useful,  *  but WITHOUT ANY WARRANTY; without even the implied warranty of  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  *  GNU General Public License for more details.  *  *  You should have received a copy of the GNU General Public License  *  along with JabRef.  If not, see<http://www.gnu.org/licenses/>.  *  *  *  XNap Commons - EmacsKeyBindings  *  *  Copyright (C) 2005  Steffen Pingel  *  Copyright (C) 2005  Felix Berger  *  *  This library is free software; you can redistribute it and/or  *  modify it under the terms of the GNU Lesser General Public  *  License as published by the Free Software Foundation; either  *  version 2.1 of the License, or (at your option) any later version.  *  *  This library is distributed in the hope that it will be useful,  *  but WITHOUT ANY WARRANTY; without even the implied warranty of  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU  *  Lesser General Public License for more details.  *  *  You should have received a copy of the GNU Lesser General Public  *  License along with this library; if not, write to the Free Software  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA  */
+comment|/*  *  Copyright (C) 2015  Oliver Kopp  *  *  This file is part of JabRef and is based on XNap Commons.  *  This file may be used under the LGPL 2.1 license if used without JabRef.   *  JabRef is free software: you can redistribute it and/or modify  *  it under the terms of the GNU General Public License as published by  *  the Free Software Foundation, either version 3 of the License, or  *  (at your option) any later version.  *  *  JabRef is distributed in the hope that it will be useful,  *  but WITHOUT ANY WARRANTY; without even the implied warranty of  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the  *  GNU General Public License for more details.  *  *  You should have received a copy of the GNU General Public License  *  along with JabRef.  If not, see<http://www.gnu.org/licenses/>.  *  *  *  XNap Commons - EmacsKeyBindings  *  *  Copyright (C) 2005  Steffen Pingel  *  Copyright (C) 2005  Felix Berger  *  *  This library is free software; you can redistribute it and/or  *  modify it under the terms of the GNU Lesser General Public  *  License as published by the Free Software Foundation; either  *  version 2.1 of the License, or (at your option) any later version.  *  *  This library is distributed in the hope that it will be useful,  *  but WITHOUT ANY WARRANTY; without even the implied warranty of  *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU  *  Lesser General Public License for more details.  *  *  You should have received a copy of the GNU Lesser General Public  *  License along with this library; if not, write to the Free Software  *  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA  */
 end_comment
 
 begin_package
@@ -279,7 +279,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Generic class which activates Emacs keybindings for java input {@link  * JTextComponent}s.  *   * The inner class actions can also be used independently.  *  * @author Felix Berger  */
+comment|/**  * Generic class which activates Emacs keybindings for java input {@link  * JTextComponent}s.  *   * The inner class actions can also be used independently.  */
 end_comment
 
 begin_class
@@ -586,12 +586,6 @@ operator|.
 name|nextWordAction
 argument_list|)
 block|,
-comment|// CTRL+F is also used for "search", which is used more often than going forward one letter
-comment|// Therefore, we just disalbe this key
-comment|//		new JTextComponent.
-comment|//			KeyBinding(KeyStroke.getKeyStroke(KeyEvent.VK_F,
-comment|//											  InputEvent.CTRL_MASK),
-comment|//					   DefaultEditorKit.forwardAction),
 operator|new
 name|JTextComponent
 operator|.
@@ -908,6 +902,38 @@ argument_list|,
 name|DefaultEditorKit
 operator|.
 name|beginLineAction
+argument_list|)
+decl_stmt|;
+DECL|field|EMACS_KEY_BINDING_C_F
+specifier|private
+specifier|static
+specifier|final
+name|JTextComponent
+operator|.
+name|KeyBinding
+name|EMACS_KEY_BINDING_C_F
+init|=
+operator|new
+name|JTextComponent
+operator|.
+name|KeyBinding
+argument_list|(
+name|KeyStroke
+operator|.
+name|getKeyStroke
+argument_list|(
+name|KeyEvent
+operator|.
+name|VK_F
+argument_list|,
+name|InputEvent
+operator|.
+name|CTRL_MASK
+argument_list|)
+argument_list|,
+name|DefaultEditorKit
+operator|.
+name|forwardAction
 argument_list|)
 decl_stmt|;
 DECL|field|EMACS_ACTIONS
@@ -1450,8 +1476,9 @@ name|KeyBinding
 index|[]
 name|keybindings
 decl_stmt|;
-if|if
-condition|(
+name|boolean
+name|rebindCA
+init|=
 name|JabRefPreferences
 operator|.
 name|getInstance
@@ -1463,8 +1490,31 @@ name|JabRefPreferences
 operator|.
 name|EDITOR_EMACS_KEYBINDINGS_REBIND_CA
 argument_list|)
+decl_stmt|;
+name|boolean
+name|rebindCF
+init|=
+name|JabRefPreferences
+operator|.
+name|getInstance
+argument_list|()
+operator|.
+name|getBoolean
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|EDITOR_EMACS_KEYBINDINGS_REBIND_CF
+argument_list|)
+decl_stmt|;
+if|if
+condition|(
+name|rebindCA
+operator|||
+name|rebindCF
 condition|)
 block|{
+comment|// if we additionally rebind C-a or C-f, we have to add the shortcuts to EmacsKeyBindings.EMACS_KEY_BINDINGS_BASE
+comment|// determine size of new array and position of the new key bindings in the array
 name|int
 name|size
 init|=
@@ -1473,9 +1523,46 @@ operator|.
 name|EMACS_KEY_BINDINGS_BASE
 operator|.
 name|length
-operator|+
+decl_stmt|;
+name|int
+name|CAPos
+init|=
+operator|-
 literal|1
 decl_stmt|;
+name|int
+name|CFPos
+init|=
+operator|-
+literal|1
+decl_stmt|;
+if|if
+condition|(
+name|rebindCA
+condition|)
+block|{
+name|CAPos
+operator|=
+name|size
+expr_stmt|;
+name|size
+operator|++
+expr_stmt|;
+block|}
+if|if
+condition|(
+name|rebindCF
+condition|)
+block|{
+name|CFPos
+operator|=
+name|size
+expr_stmt|;
+name|size
+operator|++
+expr_stmt|;
+block|}
+comment|// generate new array
 name|keybindings
 operator|=
 operator|new
@@ -1507,19 +1594,36 @@ operator|.
 name|length
 argument_list|)
 expr_stmt|;
+if|if
+condition|(
+name|rebindCA
+condition|)
+block|{
 name|keybindings
 index|[
-name|EmacsKeyBindings
-operator|.
-name|EMACS_KEY_BINDINGS_BASE
-operator|.
-name|length
+name|CAPos
 index|]
 operator|=
 name|EmacsKeyBindings
 operator|.
 name|EMACS_KEY_BINDING_C_A
 expr_stmt|;
+block|}
+if|if
+condition|(
+name|rebindCF
+condition|)
+block|{
+name|keybindings
+index|[
+name|CFPos
+index|]
+operator|=
+name|EmacsKeyBindings
+operator|.
+name|EMACS_KEY_BINDING_C_F
+expr_stmt|;
+block|}
 block|}
 else|else
 block|{
