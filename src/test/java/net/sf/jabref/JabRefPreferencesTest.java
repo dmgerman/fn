@@ -150,7 +150,7 @@ block|{
 name|String
 name|tmpFile
 init|=
-literal|"src/test/resources/net/sf/jabref/preferencesTest.pref"
+literal|"src/test/resources/net/sf/jabref/preferencesTest.xml"
 decl_stmt|;
 name|prefs
 operator|.
@@ -191,7 +191,7 @@ name|Paths
 operator|.
 name|get
 argument_list|(
-literal|"src/test/resources/net/sf/jabref/defaultPreferences.pref"
+literal|"src/test/resources/net/sf/jabref/defaultPreferences.xml"
 argument_list|)
 argument_list|)
 decl_stmt|;
