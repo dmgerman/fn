@@ -3145,7 +3145,6 @@ argument_list|,
 literal|"/home/alver/div/crystaltheme_16/Icons.properties"
 argument_list|)
 expr_stmt|;
-comment|//defaults.put("recentFiles", "/home/alver/Documents/bibk_dok/hovedbase.bib");
 name|defaults
 operator|.
 name|put
@@ -5407,7 +5406,6 @@ name|String
 name|key
 parameter_list|)
 block|{
-comment|//System.out.println("READ PREF [" + key + "]=" + result);
 return|return
 name|prefs
 operator|.
