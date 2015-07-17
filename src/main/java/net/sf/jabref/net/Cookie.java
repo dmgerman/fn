@@ -83,6 +83,7 @@ specifier|private
 name|String
 name|path
 decl_stmt|;
+comment|/**      * DateFormats should not be reused among instances (or rather among threads), because they are not thread-safe.      * If they are shared, their usage should be synchronized.      */
 DECL|field|expiresFormat1
 specifier|private
 specifier|final
