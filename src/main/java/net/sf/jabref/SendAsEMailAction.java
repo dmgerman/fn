@@ -120,6 +120,20 @@ name|LatexFieldFormatter
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
 comment|/**  * Sends the selected entry as email - by Oliver Kopp  *   * It uses the mailto:-mechanism  *   * Microsoft Outlook does not support attachments via mailto  * Therefore, the folder(s), where the file(s) belonging to the entry are stored,  * are opened. This feature is disabled by default and can be switched on at  * preferences/external programs     */
 end_comment

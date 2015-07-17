@@ -118,6 +118,20 @@ name|FormLayout
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
 comment|/**  * This class defines the warning that can be offered when opening a pre-2.3  * JabRef file into a later version. This warning mentions the new external file  * link system in this version of JabRef, and offers to:  *  * * upgrade old-style PDF/PS links into the "file" field  * * modify General fields to show "file" instead of "pdf" / "ps"  * * modify table column settings to show "file" instead of "pdf" / "ps"  */
 end_comment

@@ -240,6 +240,20 @@ name|PreviewPanelTransferHandler
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
 comment|/**  * Displays an BibtexEntry using the given layout format.  */
 end_comment

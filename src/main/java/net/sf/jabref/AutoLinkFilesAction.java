@@ -98,6 +98,20 @@ name|NamedCompound
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
 comment|/**  * This Action may only be used in a menu or button.  * Never in the entry editor. FileListEditor and EntryEditor have other ways to update the file links  */
 end_comment

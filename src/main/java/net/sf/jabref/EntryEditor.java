@@ -520,7 +520,7 @@ name|jabref
 operator|.
 name|journals
 operator|.
-name|JournalAbbreviations
+name|JournalAbbreviationsUtil
 import|;
 end_import
 
@@ -619,6 +619,20 @@ operator|.
 name|undo
 operator|.
 name|UndoableRemoveEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
 import|;
 end_import
 
@@ -2925,7 +2939,7 @@ name|controls
 operator|.
 name|add
 argument_list|(
-name|JournalAbbreviations
+name|JournalAbbreviationsUtil
 operator|.
 name|getNameSwitcher
 argument_list|(

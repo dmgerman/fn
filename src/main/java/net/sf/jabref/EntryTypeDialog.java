@@ -126,6 +126,20 @@ name|ButtonBarBuilder
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|StringUtil
+import|;
+end_import
+
 begin_class
 DECL|class|EntryTypeDialog
 specifier|public

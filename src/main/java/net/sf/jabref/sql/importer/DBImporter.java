@@ -196,6 +196,20 @@ name|SQLUtil
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|StringUtil
+import|;
+end_import
+
 begin_comment
 comment|/**  *   * @author ifsteinm.  *   *         Jan 20th Abstract Class to provide main features to import entries  *         from a DB. To insert a new DB it is necessary to extend this class  *         and add the DB name the enum available at  *         net.sf.jabref.sql.DBImporterAndExporterFactory (and to the GUI). This  *         class and its subclasses import database, entries and related stuff  *         from a DB to bib. Each exported database is imported as a new JabRef  *         (bib) database, presented on a new tab  *   */
 end_comment

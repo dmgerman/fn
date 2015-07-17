@@ -44,6 +44,35 @@ specifier|public
 class|class
 name|DuplicateCheck
 block|{
+comment|/*      * Integer values for indicating result of duplicate check (for entries):      *      */
+DECL|field|NOT_EQUAL
+DECL|field|EQUAL
+DECL|field|EMPTY_IN_ONE
+DECL|field|EMPTY_IN_TWO
+DECL|field|EMPTY_IN_BOTH
+specifier|final
+specifier|static
+name|int
+name|NOT_EQUAL
+init|=
+literal|0
+decl_stmt|,
+name|EQUAL
+init|=
+literal|1
+decl_stmt|,
+name|EMPTY_IN_ONE
+init|=
+literal|2
+decl_stmt|,
+name|EMPTY_IN_TWO
+init|=
+literal|3
+decl_stmt|,
+name|EMPTY_IN_BOTH
+init|=
+literal|4
+decl_stmt|;
 DECL|field|duplicateThreshold
 specifier|public
 specifier|static
@@ -465,8 +494,6 @@ if|if
 condition|(
 name|result
 operator|==
-name|Util
-operator|.
 name|EQUAL
 condition|)
 block|{
@@ -480,8 +507,6 @@ if|if
 condition|(
 name|result
 operator|==
-name|Util
-operator|.
 name|EMPTY_IN_BOTH
 condition|)
 block|{
@@ -576,16 +601,12 @@ literal|null
 condition|)
 block|{
 return|return
-name|Util
-operator|.
 name|EMPTY_IN_BOTH
 return|;
 block|}
 else|else
 block|{
 return|return
-name|Util
-operator|.
 name|EMPTY_IN_ONE
 return|;
 block|}
@@ -599,8 +620,6 @@ literal|null
 condition|)
 block|{
 return|return
-name|Util
-operator|.
 name|EMPTY_IN_TWO
 return|;
 block|}
@@ -692,16 +711,12 @@ literal|0.8
 condition|)
 block|{
 return|return
-name|Util
-operator|.
 name|EQUAL
 return|;
 block|}
 else|else
 block|{
 return|return
-name|Util
-operator|.
 name|NOT_EQUAL
 return|;
 block|}
@@ -753,16 +768,12 @@ argument_list|)
 condition|)
 block|{
 return|return
-name|Util
-operator|.
 name|EQUAL
 return|;
 block|}
 else|else
 block|{
 return|return
-name|Util
-operator|.
 name|NOT_EQUAL
 return|;
 block|}
@@ -832,16 +843,12 @@ literal|0.8
 condition|)
 block|{
 return|return
-name|Util
-operator|.
 name|EQUAL
 return|;
 block|}
 else|else
 block|{
 return|return
-name|Util
-operator|.
 name|NOT_EQUAL
 return|;
 block|}
@@ -884,16 +891,12 @@ literal|0.8
 condition|)
 block|{
 return|return
-name|Util
-operator|.
 name|EQUAL
 return|;
 block|}
 else|else
 block|{
 return|return
-name|Util
-operator|.
 name|NOT_EQUAL
 return|;
 comment|/*if (s1.trim().equals(s2.trim()))                 return Util.EQUAL;             else                 return Util.NOT_EQUAL;*/
@@ -1102,7 +1105,7 @@ literal|null
 return|;
 comment|// No duplicate found.
 block|}
-comment|/**      * Compare two strings on the basis of word-by-word correlation analysis.      * @param s1 The first string      * @param s2 The second string      * @param truncate if true, always truncate the longer of two words to be compared to      *   harmonize their length. If false, use interpolation to harmonize the strings.      * @return a value in the interval [0, 1] indicating the degree of match.      */
+comment|/**      * Compare two strings on the basis of word-by-word correlation analysis.      *      * @param s1       The first string      * @param s2       The second string      * @param truncate if true, always truncate the longer of two words to be compared to      *                 harmonize their length. If false, use interpolation to harmonize the strings.      * @return a value in the interval [0, 1] indicating the degree of match.      */
 DECL|method|correlateByWords (String s1, String s2, boolean truncate)
 specifier|private
 specifier|static
@@ -1950,11 +1953,13 @@ name|String
 name|d1
 init|=
 literal|"Characterization of Calanus finmarchicus habitat in the North Sea"
-decl_stmt|,
+decl_stmt|;
+name|String
 name|d2
 init|=
 literal|"Characterization of Calunus finmarchicus habitat in the North Sea"
-decl_stmt|,
+decl_stmt|;
+name|String
 name|d3
 init|=
 literal|"Characterization of Calanus glacialissss habitat in the South Sea"

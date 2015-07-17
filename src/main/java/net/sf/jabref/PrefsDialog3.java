@@ -292,6 +292,20 @@ name|ButtonBarBuilder
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
 comment|/**  * Preferences dialog. Contains a TabbedPane, and tabs will be defined in  * separate classes. Tabs MUST implement the PrefsTab interface, since this  * dialog will call the storeSettings() method of all tabs when the user presses  * ok.  *   * With this design, it should be very easy to add new tabs later.  *   */
 end_comment

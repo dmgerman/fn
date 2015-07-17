@@ -32,7 +32,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|FileBasedTestCase
+name|BibtexTestData
 import|;
 end_import
 
@@ -193,18 +193,6 @@ operator|.
 name|util
 operator|.
 name|Map
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|*
 import|;
 end_import
 
@@ -1651,7 +1639,7 @@ decl_stmt|;
 name|BibtexEntry
 name|e
 init|=
-name|FileBasedTestCase
+name|BibtexTestData
 operator|.
 name|getBibtexEntry
 argument_list|()

@@ -29,17 +29,13 @@ name|portNumber
 parameter_list|)
 block|{
 return|return
-operator|(
 name|portNumber
 operator|>
 literal|1024
-operator|)
 operator|&&
-operator|(
 name|portNumber
 operator|<=
 literal|65535
-operator|)
 return|;
 block|}
 block|}

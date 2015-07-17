@@ -82,6 +82,20 @@ name|*
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|Util
+import|;
+end_import
+
 begin_comment
 comment|/**  * The menu item used in the popup menu for opening external resources associated  * with an entry. Shows the resource name and icon given, and adds an action listener  * to process the request if the user clicks this menu item.  */
 end_comment
