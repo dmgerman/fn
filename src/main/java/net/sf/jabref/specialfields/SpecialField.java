@@ -65,6 +65,7 @@ name|SpecialField
 block|{
 comment|// currently, menuString is used for undo string
 comment|// public static String TEXT_UNDO;
+comment|// Plain string; NOT treated by Globals.lang
 DECL|field|TEXT_DONE_PATTERN
 specifier|public
 name|String

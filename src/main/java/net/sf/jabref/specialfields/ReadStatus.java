@@ -120,12 +120,7 @@ name|SpecialFieldValue
 argument_list|(
 name|this
 argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"null"
-argument_list|)
+literal|null
 argument_list|,
 literal|"clearReadStatus"
 argument_list|,
@@ -159,6 +154,7 @@ argument_list|(
 literal|"readStatusRead"
 argument_list|)
 expr_stmt|;
+comment|// DO NOT TRANSLATE "read" as this makes the produced .bib files non portable
 name|values
 operator|.
 name|add
@@ -168,12 +164,7 @@ name|SpecialFieldValue
 argument_list|(
 name|this
 argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
 literal|"read"
-argument_list|)
 argument_list|,
 literal|"setReadStatusToRead"
 argument_list|,
@@ -213,12 +204,7 @@ name|SpecialFieldValue
 argument_list|(
 name|this
 argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
 literal|"skimmed"
-argument_list|)
 argument_list|,
 literal|"setReadStatusToSkimmed"
 argument_list|,

@@ -56,6 +56,10 @@ name|Globals
 import|;
 end_import
 
+begin_comment
+comment|/**  * Wider representation of icons  */
+end_comment
+
 begin_class
 DECL|class|RankExtended
 specifier|public
@@ -102,12 +106,7 @@ name|SpecialFieldValue
 argument_list|(
 name|this
 argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"null"
-argument_list|)
+literal|null
 argument_list|,
 literal|"clearRank"
 argument_list|,
@@ -129,6 +128,7 @@ argument_list|)
 argument_list|)
 argument_list|)
 expr_stmt|;
+comment|// DO NOT TRANSLATE "rank1" etc. as this makes the .bib files non portable
 name|values
 operator|.
 name|add
@@ -138,12 +138,7 @@ name|SpecialFieldValue
 argument_list|(
 name|this
 argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
 literal|"rank1"
-argument_list|)
 argument_list|,
 literal|"setRank1"
 argument_list|,
@@ -179,12 +174,7 @@ name|SpecialFieldValue
 argument_list|(
 name|this
 argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
 literal|"rank2"
-argument_list|)
 argument_list|,
 literal|"setRank2"
 argument_list|,
@@ -220,12 +210,7 @@ name|SpecialFieldValue
 argument_list|(
 name|this
 argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
 literal|"rank3"
-argument_list|)
 argument_list|,
 literal|"setRank3"
 argument_list|,
@@ -261,12 +246,7 @@ name|SpecialFieldValue
 argument_list|(
 name|this
 argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
 literal|"rank4"
-argument_list|)
 argument_list|,
 literal|"setRank4"
 argument_list|,
@@ -302,12 +282,7 @@ name|SpecialFieldValue
 argument_list|(
 name|this
 argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
 literal|"rank5"
-argument_list|)
 argument_list|,
 literal|"setRank5"
 argument_list|,

@@ -120,12 +120,7 @@ name|SpecialFieldValue
 argument_list|(
 name|this
 argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
-literal|"null"
-argument_list|)
+literal|null
 argument_list|,
 literal|"clearPriority"
 argument_list|,
@@ -159,6 +154,7 @@ argument_list|(
 literal|"red"
 argument_list|)
 expr_stmt|;
+comment|// DO NOT TRANSLATE "prio1" etc. as this makes the .bib files non portable
 name|values
 operator|.
 name|add
@@ -168,12 +164,7 @@ name|SpecialFieldValue
 argument_list|(
 name|this
 argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
 literal|"prio1"
-argument_list|)
 argument_list|,
 literal|"setPriority1"
 argument_list|,
@@ -213,12 +204,7 @@ name|SpecialFieldValue
 argument_list|(
 name|this
 argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
 literal|"prio2"
-argument_list|)
 argument_list|,
 literal|"setPriority2"
 argument_list|,
@@ -258,12 +244,7 @@ name|SpecialFieldValue
 argument_list|(
 name|this
 argument_list|,
-name|Globals
-operator|.
-name|lang
-argument_list|(
 literal|"prio3"
-argument_list|)
 argument_list|,
 literal|"setPriority3"
 argument_list|,

@@ -93,6 +93,7 @@ argument_list|>
 argument_list|()
 decl_stmt|;
 comment|// action directly set by JabRefFrame
+comment|// DO NOT TRANSLATE "relevant" as this makes the produced .bib files non portable
 name|values
 operator|.
 name|add
