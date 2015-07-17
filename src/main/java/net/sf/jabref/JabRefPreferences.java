@@ -5026,6 +5026,21 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
+DECL|method|resetToDefaultPreferences ()
+specifier|public
+name|void
+name|resetToDefaultPreferences
+parameter_list|()
+block|{
+name|JabRefPreferences
+operator|.
+name|singleton
+operator|=
+operator|new
+name|JabRefPreferences
+argument_list|()
+expr_stmt|;
+block|}
 DECL|method|setLanguageDependentDefaultValues ()
 specifier|public
 name|void
@@ -9929,11 +9944,24 @@ operator|new
 name|IOException
 argument_list|(
 name|ex
-operator|.
-name|getMessage
-argument_list|()
 argument_list|)
 throw|;
+block|}
+finally|finally
+block|{
+if|if
+condition|(
+name|os
+operator|!=
+literal|null
+condition|)
+block|{
+name|os
+operator|.
+name|close
+argument_list|()
+expr_stmt|;
+block|}
 block|}
 block|}
 comment|/**      * Imports Preferences from an XML file.      *      * @param filename String File to import from      */
