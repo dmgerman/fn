@@ -33,6 +33,18 @@ import|;
 end_import
 
 begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|Globals
+import|;
+end_import
+
+begin_import
 import|import static
 name|com
 operator|.
@@ -554,13 +566,24 @@ name|System
 operator|.
 name|out
 operator|.
-name|format
+name|println
 argument_list|(
-literal|"Duplicate Journal Abbreviation - old one will be overwritten by new one%nOLD: %s%nNEW: %s%n"
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Duplicate Journal Abbreviation - old one will be overwritten by new one\nOLD: %0\nNEW: %1"
 argument_list|,
 name|previous
+operator|.
+name|toString
+argument_list|()
 argument_list|,
 name|abbreviation
+operator|.
+name|toString
+argument_list|()
+argument_list|)
 argument_list|)
 expr_stmt|;
 block|}
