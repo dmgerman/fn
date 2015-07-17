@@ -982,7 +982,7 @@ block|}
 comment|// we must catch all exceptions to be able notify users that
 comment|// saving failed, no matter what the reason was
 comment|// (and they won't just quit JabRef thinking
-comment|// everyting worked and loosing data)
+comment|// everything worked and loosing data)
 name|e
 operator|.
 name|printStackTrace
