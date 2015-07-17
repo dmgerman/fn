@@ -55,7 +55,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Class with static methods for changing the case of strings and arrays of  * strings.  *  * @author Moritz Ringler, Simon Harrer  * @version $Revision$ ($Date$)  */
+comment|/**  * Class with static methods for changing the case of strings and arrays of  * strings.  *  * @author Moritz Ringler, Simon Harrer  */
 end_comment
 
 begin_class

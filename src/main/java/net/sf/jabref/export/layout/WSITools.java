@@ -102,10 +102,6 @@ name|layout
 package|;
 end_package
 
-begin_comment
-comment|/*==========================================================================*  * IMPORTS  *========================================================================== */
-end_comment
-
 begin_import
 import|import
 name|java
@@ -127,11 +123,7 @@ import|;
 end_import
 
 begin_comment
-comment|/*==========================================================================*  * CLASS DECLARATION  *========================================================================== */
-end_comment
-
-begin_comment
-comment|/**  * JabRef helper methods.  *  * @author     wegnerj  * @version    $Revision$, $Date$  */
+comment|/**  * JabRef helper methods.  *  * @author     wegnerj  */
 end_comment
 
 begin_class
@@ -140,13 +132,11 @@ specifier|public
 class|class
 name|WSITools
 block|{
-comment|//~ Constructors ///////////////////////////////////////////////////////////
 DECL|method|WSITools ()
 specifier|private
 name|WSITools
 parameter_list|()
 block|{     }
-comment|//~ Methods ////////////////////////////////////////////////////////////////
 comment|/**      * @param  vcr  {@link java.util.Vector} of<tt>String</tt>      * @param  buf  Description of the Parameter      * @return      Description of the Return Value      */
 DECL|method|tokenize (Vector<String> vcr, String buf)
 specifier|public
@@ -376,18 +366,6 @@ return|;
 block|}
 block|}
 end_class
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
-
-begin_comment
-comment|//  END OF FILE.
-end_comment
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
 
 end_unit
 

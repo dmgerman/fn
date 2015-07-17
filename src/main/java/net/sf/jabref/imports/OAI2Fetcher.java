@@ -181,7 +181,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * This class can be used to access any archive offering an OAI2 interface. By  * default it will access ArXiv.org  *   * @author Ulrich St&auml;rk  * @author Christian Kopf  *   * @version $Revision$ ($Date$)  *   */
+comment|/**  *   * This class can be used to access any archive offering an OAI2 interface. By  * default it will access ArXiv.org  *   * @author Ulrich St&auml;rk  * @author Christian Kopf  */
 end_comment
 
 begin_class

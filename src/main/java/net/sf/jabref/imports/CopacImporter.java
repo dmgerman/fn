@@ -127,7 +127,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Importer for COPAC format.  *   * Documentation can be found online at:  *   * http://copac.ac.uk/faq/#format  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  * Importer for COPAC format.  *   * Documentation can be found online at:  *   * http://copac.ac.uk/faq/#format  */
 end_comment
 
 begin_class

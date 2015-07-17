@@ -57,7 +57,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Inserts the current date (the time a database is being exported).  *   *<p>If a fieldText is given, it must be a valid {@link SimpleDateFormat} pattern.  * If none is given, the format pattern will be<code>yyyy.MM.dd hh:mm:ss z</code></p>  *  * @author andreas_sf at rudert-home dot de  * @version $Revision$  */
+comment|/**  * Inserts the current date (the time a database is being exported).  *   *<p>If a fieldText is given, it must be a valid {@link SimpleDateFormat} pattern.  * If none is given, the format pattern will be<code>yyyy.MM.dd hh:mm:ss z</code></p>  *  * @author andreas_sf at rudert-home dot de  */
 end_comment
 
 begin_class

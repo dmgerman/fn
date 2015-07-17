@@ -63,7 +63,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Main class for formatting DOCUMENT ME!  *  * @author $author$  * @version $Revision$  */
+comment|/**  * Main class for formatting DOCUMENT ME!  */
 end_comment
 
 begin_class
@@ -72,7 +72,6 @@ specifier|public
 class|class
 name|Layout
 block|{
-comment|//~ Instance fields ////////////////////////////////////////////////////////
 DECL|field|layoutEntries
 specifier|private
 specifier|final
@@ -96,7 +95,6 @@ name|String
 argument_list|>
 argument_list|()
 decl_stmt|;
-comment|//~ Constructors ///////////////////////////////////////////////////////////
 DECL|method|Layout (Vector<StringInt> parsedEntries, String classPrefix)
 specifier|public
 name|Layout
@@ -852,18 +850,6 @@ return|;
 block|}
 block|}
 end_class
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
-
-begin_comment
-comment|//  END OF FILE.
-end_comment
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
 
 end_unit
 

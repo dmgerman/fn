@@ -15,7 +15,7 @@ package|;
 end_package
 
 begin_comment
-comment|/**  * A prefsTab is a component displayed in the PreferenceDialog.  *   * It needs to extend from Component.  *   * @author $Author$  * @version $Revision$ ($Date$)  *  */
+comment|/**  * A prefsTab is a component displayed in the PreferenceDialog.  *   * It needs to extend from Component.  */
 end_comment
 
 begin_interface

@@ -132,7 +132,6 @@ name|GetOpenOfficeType
 implements|implements
 name|LayoutFormatter
 block|{
-comment|//~ Methods ////////////////////////////////////////////////////////////////
 annotation|@
 name|Override
 DECL|method|format (String fieldText)
@@ -347,18 +346,6 @@ return|;
 block|}
 block|}
 end_class
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
-
-begin_comment
-comment|//  END OF FILE.
-end_comment
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
 
 end_unit
 

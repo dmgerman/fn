@@ -63,7 +63,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This formatter escapes characters so they are suitable for HTML.  *   * @version $Revision$ ($Date$)  */
+comment|/**  * This formatter escapes characters so they are suitable for HTML.  */
 end_comment
 
 begin_class

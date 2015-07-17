@@ -121,7 +121,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Convert the contents to lower case.  *   * @author $author$  * @version $Revision$  */
+comment|/**  * Convert the contents to lower case.  */
 end_comment
 
 begin_class

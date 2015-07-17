@@ -52,7 +52,6 @@ name|SaveException
 extends|extends
 name|Exception
 block|{
-comment|//~ Instance fields ////////////////////////////////////////////////////////
 DECL|field|FILE_LOCKED
 specifier|public
 specifier|static
@@ -102,7 +101,6 @@ name|status
 init|=
 literal|0
 decl_stmt|;
-comment|//~ Constructors ///////////////////////////////////////////////////////////
 DECL|method|SaveException (String message)
 specifier|public
 name|SaveException
@@ -171,7 +169,6 @@ operator|=
 name|entry
 expr_stmt|;
 block|}
-comment|//~ Methods ////////////////////////////////////////////////////////////////
 DECL|method|getStatus ()
 specifier|public
 name|int
@@ -208,18 +205,6 @@ return|;
 block|}
 block|}
 end_class
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
-
-begin_comment
-comment|//  END OF FILE.
-end_comment
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
 
 end_unit
 

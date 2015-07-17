@@ -16,10 +16,6 @@ name|export
 package|;
 end_package
 
-begin_comment
-comment|/**  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
-end_comment
-
 begin_interface
 DECL|interface|FieldFormatter
 specifier|public

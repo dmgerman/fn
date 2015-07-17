@@ -194,17 +194,11 @@ name|Util
 import|;
 end_import
 
-begin_comment
-comment|/**  * DOCUMENT ME!  *   * @author $author$  * @version $Revision$  */
-end_comment
-
 begin_class
 DECL|class|LayoutEntry
 class|class
 name|LayoutEntry
 block|{
-comment|// ~ Instance fields
-comment|// ////////////////////////////////////////////////////////
 DECL|field|option
 specifier|private
 name|LayoutFormatter
@@ -252,8 +246,6 @@ name|invalidFormatter
 init|=
 literal|null
 decl_stmt|;
-comment|// ~ Constructors
-comment|// ///////////////////////////////////////////////////////////
 DECL|method|LayoutEntry (StringInt si, String classPrefix_)
 specifier|public
 name|LayoutEntry

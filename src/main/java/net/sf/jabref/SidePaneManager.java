@@ -59,7 +59,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Manages visibility of SideShowComponents in a given newly constructed  * sidePane.  *   * @version $Revision$ ($Date$)  *   */
+comment|/**  * Manages visibility of SideShowComponents in a given newly constructed  * sidePane.  */
 end_comment
 
 begin_class

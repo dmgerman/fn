@@ -103,15 +103,7 @@ package|;
 end_package
 
 begin_comment
-comment|/*==========================================================================*  * IMPORTS  *========================================================================== */
-end_comment
-
-begin_comment
-comment|/*==========================================================================*  * CLASS DECLARATION  *========================================================================== */
-end_comment
-
-begin_comment
-comment|/**  * String and integer value.  *  * @author     wegnerj  * @version    $Revision$, $Date$  */
+comment|/**  * String and integer value.  *  * @author     wegnerj  */
 end_comment
 
 begin_class
@@ -125,8 +117,6 @@ name|io
 operator|.
 name|Serializable
 block|{
-comment|//~ Instance fields ////////////////////////////////////////////////////////
-comment|/*-------------------------------------------------------------------------*      * public member variables      *------------------------------------------------------------------------- */
 comment|/**      *  Description of the Field      */
 DECL|field|s
 specifier|public
@@ -140,8 +130,6 @@ specifier|final
 name|int
 name|i
 decl_stmt|;
-comment|//~ Constructors ///////////////////////////////////////////////////////////
-comment|/*-------------------------------------------------------------------------*      * constructor      *------------------------------------------------------------------------- */
 comment|/**      *  Constructor for the StringString object      *      * @param  _s  Description of the Parameter      * @param  _i  Description of the Parameter      */
 DECL|method|StringInt (String _s, int _i)
 specifier|public
@@ -165,18 +153,6 @@ expr_stmt|;
 block|}
 block|}
 end_class
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
-
-begin_comment
-comment|//  END OF FILE.
-end_comment
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
 
 end_unit
 

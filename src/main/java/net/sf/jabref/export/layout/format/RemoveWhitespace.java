@@ -121,7 +121,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Remove non printable character formatter.  *   * Based on the RemoveBrackets.java class (Revision 1.2) by mortenalver  *   * @author $author$  * @version $Revision$  */
+comment|/**  * Remove non printable character formatter.  *   * Based on the RemoveBrackets.java class (Revision 1.2) by mortenalver  */
 end_comment
 
 begin_class

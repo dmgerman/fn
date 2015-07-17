@@ -141,7 +141,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Preference Tab for XMP.  *   * Allows the user to enable and configure the XMP privacy filter.  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  * Preference Tab for XMP.  *   * Allows the user to enable and configure the XMP privacy filter.  */
 end_comment
 
 begin_class

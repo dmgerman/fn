@@ -97,7 +97,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Wraps the XMPUtility function to be used as an ImportFormat.  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  * Wraps the XMPUtility function to be used as an ImportFormat.  */
 end_comment
 
 begin_class

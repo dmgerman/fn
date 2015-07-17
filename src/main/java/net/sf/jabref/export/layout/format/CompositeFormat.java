@@ -37,7 +37,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * A layout formatter that is the composite of the given Formatters executed in  * order.  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  * A layout formatter that is the composite of the given Formatters executed in  * order.  *   */
 end_comment
 
 begin_class

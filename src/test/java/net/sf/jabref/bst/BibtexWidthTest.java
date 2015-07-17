@@ -32,32 +32,8 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|fail
-import|;
-end_import
-
 begin_comment
-comment|/**  * How to create these test using Bibtex:  *<p/>  * Execute this charWidth.bst with the following charWidth.aux:  *<p/>  *<p/>  *<code>  * ENTRY{}{}{}  * FUNCTION{test}  * {  * "i" width$ int.to.str$ write$ newline$  * "0I~ " width$ int.to.str$ write$ newline$  * "Hi Hi " width$ int.to.str$ write$ newline$  * "{\oe}" width$ int.to.str$ write$ newline$  * "Hi {\oe   }Hi " width$ int.to.str$ write$ newline$  * }  * READ  * EXECUTE{test}  *</code>  *<p/>  *<code>  * \bibstyle{charWidth}  * \citation{canh05}  * \bibdata{test}  * \bibcite{canh05}{CMM{$^{+}$}05}  *</code>  *  * @author $Author$  * @version $Revision$ ($Date$)  */
+comment|/**  * How to create these test using Bibtex:  *<p/>  * Execute this charWidth.bst with the following charWidth.aux:  *<p/>  *<p/>  *<code>  * ENTRY{}{}{}  * FUNCTION{test}  * {  * "i" width$ int.to.str$ write$ newline$  * "0I~ " width$ int.to.str$ write$ newline$  * "Hi Hi " width$ int.to.str$ write$ newline$  * "{\oe}" width$ int.to.str$ write$ newline$  * "Hi {\oe   }Hi " width$ int.to.str$ write$ newline$  * }  * READ  * EXECUTE{test}  *</code>  *<p/>  *<code>  * \bibstyle{charWidth}  * \citation{canh05}  * \bibdata{test}  * \bibcite{canh05}{CMM{$^{+}$}05}  *</code>  */
 end_comment
 
 begin_class

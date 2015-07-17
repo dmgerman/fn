@@ -87,7 +87,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * An implementation of the FieldEditor backed by a JTextArea. Used for  * multi-line input.  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  * An implementation of the FieldEditor backed by a JTextArea. Used for  * multi-line input.  */
 end_comment
 
 begin_class

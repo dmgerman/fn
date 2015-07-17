@@ -141,7 +141,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Importer for the ISI Web of Science, INSPEC and Medline format.  *   * Documentation about ISI WOS format:  *   *<ul>  *<li>http://wos.isitrial.com/help/helpprn.html</li>  *</ul>  *   *<ul>  *<li>Check compatibility with other ISI2Bib tools like:  * http://www-lab.imr.tohoku.ac.jp/~t-nissie/computer/software/isi/ or  * http://www.tug.org/tex-archive/biblio/bibtex/utils/isi2bibtex/isi2bibtex or  * http://web.mit.edu/emilio/www/utils.html</li>  *<li>Deal with capitalization correctly</li>  *</ul>  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  * Importer for the ISI Web of Science, INSPEC and Medline format.  *   * Documentation about ISI WOS format:  *   *<ul>  *<li>http://wos.isitrial.com/help/helpprn.html</li>  *</ul>  *   *<ul>  *<li>Check compatibility with other ISI2Bib tools like:  * http://www-lab.imr.tohoku.ac.jp/~t-nissie/computer/software/isi/ or  * http://www.tug.org/tex-archive/biblio/bibtex/utils/isi2bibtex/isi2bibtex or  * http://web.mit.edu/emilio/www/utils.html</li>  *<li>Deal with capitalization correctly</li>  *</ul>  */
 end_comment
 
 begin_class

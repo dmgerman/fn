@@ -97,7 +97,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * A comparator for BibtexEntry fields  *   * Initial Version:  *   * @author alver  * @version Date: Oct 13, 2005 Time: 10:10:04 PM To  *   * Current Version:  *   * @author $Author$  * @version $Revision$ ($Date$)  *   * TODO: Testcases  *   */
+comment|/**  *   * A comparator for BibtexEntry fields  *   * Initial Version:  *   * @author alver  * @version Date: Oct 13, 2005 Time: 10:10:04 PM To  *   * TODO: Testcases  *   */
 end_comment
 
 begin_class

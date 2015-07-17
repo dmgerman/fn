@@ -61,7 +61,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Will interpret two consecutive newlines as the start of a new paragraph and thus  * wrap the paragraph in HTML-p-tags.  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  * Will interpret two consecutive newlines as the start of a new paragraph and thus  * wrap the paragraph in HTML-p-tags.  */
 end_comment
 
 begin_class

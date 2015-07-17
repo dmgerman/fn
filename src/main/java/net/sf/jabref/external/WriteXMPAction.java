@@ -217,7 +217,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * This action goes through all selected entries in the BasePanel, and attempts  * to write the XMP data to the external pdf.  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  *   * This action goes through all selected entries in the BasePanel, and attempts  * to write the XMP data to the external pdf.  */
 end_comment
 
 begin_class

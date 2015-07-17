@@ -287,7 +287,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * XMPUtils provide support for reading and writing BibTex data as XMP-Metadata  * in PDF-documents.  *   * @author Christopher Oezbek<oezi@oezi.de>  *   * TODO:  *   * Synchronization  *   * @version $Revision$ ($Date$)  */
+comment|/**  * XMPUtils provide support for reading and writing BibTex data as XMP-Metadata  * in PDF-documents.  *   * @author Christopher Oezbek<oezi@oezi.de>  *   * TODO:  *   * Synchronization  */
 end_comment
 
 begin_class

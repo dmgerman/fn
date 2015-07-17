@@ -37,7 +37,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *<p>  * LayoutFormatter that removes the space between abbreviated First names  *</p>  *<p>  * What out that this regular expression might also remove other spaces that fit  * the pattern.  *</p>  *<p>  * Example: J. R. R. Tolkien becomes J.R.R. Tolkien.  *</p>  *<p>  * See Testcase for more examples.  *<p>  *   * @author $Author$  * @version $Revision$ ($Date$)  *   */
+comment|/**  *<p>  * LayoutFormatter that removes the space between abbreviated First names  *</p>  *<p>  * What out that this regular expression might also remove other spaces that fit  * the pattern.  *</p>  *<p>  * Example: J. R. R. Tolkien becomes J.R.R. Tolkien.  *</p>  *<p>  * See Testcase for more examples.  *<p>  */
 end_comment
 
 begin_class

@@ -84,32 +84,8 @@ name|List
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertTrue
-import|;
-end_import
-
 begin_comment
-comment|/**  * Test cases for the IsiImporter  *  * @author $Author$  * @version $Revision$ ($Date$)  */
+comment|/**  * Test cases for the IsiImporter  */
 end_comment
 
 begin_class

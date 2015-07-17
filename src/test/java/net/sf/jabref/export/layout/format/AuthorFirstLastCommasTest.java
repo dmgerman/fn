@@ -56,22 +56,6 @@ name|Test
 import|;
 end_import
 
-begin_import
-import|import static
-name|org
-operator|.
-name|junit
-operator|.
-name|Assert
-operator|.
-name|assertEquals
-import|;
-end_import
-
-begin_comment
-comment|/**  * @author $Author$  * @version $Revision$ ($Date$)  */
-end_comment
-
 begin_class
 DECL|class|AuthorFirstLastCommasTest
 specifier|public

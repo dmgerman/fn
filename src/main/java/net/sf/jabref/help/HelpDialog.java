@@ -135,7 +135,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  *   * This is a non-modal help Dialog. The contents of the help is specified by  * calling showPage().  *   * @version $Revision$ ($Date$)  *   */
+comment|/**  *   * This is a non-modal help Dialog. The contents of the help is specified by  * calling showPage().  */
 end_comment
 
 begin_class

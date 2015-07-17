@@ -159,7 +159,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Create DocBook authors formatter.  *  * @author $author$  * @version $Revision$  */
+comment|/**  * Create DocBook authors formatter.  */
 end_comment
 
 begin_class
@@ -170,7 +170,6 @@ name|CreateDocBookAuthors
 implements|implements
 name|LayoutFormatter
 block|{
-comment|//~ Methods ////////////////////////////////////////////////////////////////
 DECL|field|xc
 specifier|private
 specifier|static
@@ -842,18 +841,6 @@ block|}
 block|}
 block|}
 end_class
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
-
-begin_comment
-comment|//  END OF FILE.
-end_comment
-
-begin_comment
-comment|///////////////////////////////////////////////////////////////////////////////
-end_comment
 
 end_unit
 
