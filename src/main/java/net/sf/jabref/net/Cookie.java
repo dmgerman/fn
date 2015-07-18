@@ -83,9 +83,9 @@ specifier|private
 name|String
 name|path
 decl_stmt|;
+comment|/**      * DateFormats should not be reused among instances (or rather among threads), because they are not thread-safe.      * If they are shared, their usage should be synchronized.      */
 DECL|field|expiresFormat1
 specifier|private
-specifier|static
 specifier|final
 name|DateFormat
 name|expiresFormat1
@@ -102,7 +102,6 @@ argument_list|)
 decl_stmt|;
 DECL|field|expiresFormat2
 specifier|private
-specifier|static
 specifier|final
 name|DateFormat
 name|expiresFormat2
@@ -426,8 +425,6 @@ name|this
 operator|.
 name|expires
 operator|=
-name|Cookie
-operator|.
 name|expiresFormat1
 operator|.
 name|parse
@@ -448,8 +445,6 @@ name|this
 operator|.
 name|expires
 operator|=
-name|Cookie
-operator|.
 name|expiresFormat2
 operator|.
 name|parse

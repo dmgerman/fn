@@ -454,29 +454,6 @@ return|return
 name|format
 return|;
 block|}
-DECL|method|getElementAt (int pos)
-specifier|public
-name|String
-index|[]
-name|getElementAt
-parameter_list|(
-name|int
-name|pos
-parameter_list|)
-block|{
-return|return
-operator|(
-name|String
-index|[]
-operator|)
-operator|(
-name|array
-index|[
-name|pos
-index|]
-operator|)
-return|;
-block|}
 DECL|method|addFormat (String[] s)
 specifier|public
 name|void

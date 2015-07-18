@@ -6532,13 +6532,6 @@ name|msbib
 operator|.
 name|equals
 argument_list|(
-literal|"DocumentFromInternetSite"
-argument_list|)
-operator|||
-name|msbib
-operator|.
-name|equals
-argument_list|(
 literal|"ElectronicSource"
 argument_list|)
 operator|||

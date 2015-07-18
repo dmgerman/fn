@@ -82,6 +82,34 @@ end_import
 
 begin_import
 import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -205,7 +233,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This action goes through all selected entries in the BasePanel, and attempts to autoset the  * given external file (pdf, ps, ...) based on the same algorithm used for the "Auto" button in  * EntryEditor.  */
+comment|/**  * This action goes through all selected entries in the BasePanel, and attempts to autoset the given external file (pdf,  * ps, ...) based on the same algorithm used for the "Auto" button in EntryEditor.  */
 end_comment
 
 begin_class
@@ -242,6 +270,22 @@ name|OptionsDialog
 name|optDiag
 init|=
 literal|null
+decl_stmt|;
+DECL|field|log
+specifier|private
+specifier|static
+specifier|final
+name|Log
+name|log
+init|=
+name|LogFactory
+operator|.
+name|getLog
+argument_list|(
+name|AutoSetExternalFileForEntries
+operator|.
+name|class
+argument_list|)
 decl_stmt|;
 DECL|field|brokenLinkOptions
 specifier|private
@@ -1106,6 +1150,31 @@ block|}
 block|}
 block|}
 block|}
+comment|//log brokenLinks if some were found
+if|if
+condition|(
+name|brokenLinks
+operator|>
+literal|0
+condition|)
+block|{
+name|log
+operator|.
+name|warn
+argument_list|(
+name|Globals
+operator|.
+name|lang
+argument_list|(
+literal|"Found %0 broken links"
+argument_list|,
+name|brokenLinks
+operator|+
+literal|""
+argument_list|)
+argument_list|)
+expr_stmt|;
+block|}
 if|if
 condition|(
 name|entriesChanged
@@ -1205,6 +1274,15 @@ name|OptionsDialog
 extends|extends
 name|JDialog
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|field|autoSetUnset
 specifier|final
 name|JRadioButton
@@ -1355,6 +1433,14 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -1422,13 +1508,6 @@ literal|"close"
 argument_list|,
 name|closeAction
 argument_list|)
-expr_stmt|;
-name|fieldName
-operator|=
-name|fieldName
-operator|.
-name|toUpperCase
-argument_list|()
 expr_stmt|;
 name|autoSetUnset
 operator|=

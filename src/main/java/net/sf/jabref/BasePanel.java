@@ -1294,6 +1294,15 @@ name|ClipboardOwner
 implements|,
 name|FileUpdateListener
 block|{
+DECL|field|serialVersionUID
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 DECL|field|logger
 specifier|private
 specifier|static
@@ -1664,13 +1673,6 @@ name|showingSearch
 init|=
 literal|false
 decl_stmt|;
-DECL|field|showingGroup
-specifier|private
-name|boolean
-name|showingGroup
-init|=
-literal|false
-decl_stmt|;
 DECL|field|sortingBySearchResults
 specifier|public
 name|boolean
@@ -1768,64 +1770,6 @@ specifier|private
 name|ContentAutoCompleters
 name|autoCompleters
 decl_stmt|;
-comment|/**      * Create a new BasePanel with an empty database.      * @param frame The application window.      */
-DECL|method|BasePanel (JabRefFrame frame)
-specifier|private
-name|BasePanel
-parameter_list|(
-name|JabRefFrame
-name|frame
-parameter_list|)
-block|{
-name|this
-operator|.
-name|sidePaneManager
-operator|=
-name|Globals
-operator|.
-name|sidePaneManager
-expr_stmt|;
-name|database
-operator|=
-operator|new
-name|BibtexDatabase
-argument_list|()
-expr_stmt|;
-name|metaData
-operator|=
-operator|new
-name|MetaData
-argument_list|()
-expr_stmt|;
-name|metaData
-operator|.
-name|initializeNewDatabase
-argument_list|()
-expr_stmt|;
-name|this
-operator|.
-name|frame
-operator|=
-name|frame
-expr_stmt|;
-name|setupActions
-argument_list|()
-expr_stmt|;
-name|setupMainPanel
-argument_list|()
-expr_stmt|;
-name|encoding
-operator|=
-name|Globals
-operator|.
-name|prefs
-operator|.
-name|get
-argument_list|(
-literal|"defaultEncoding"
-argument_list|)
-expr_stmt|;
-block|}
 DECL|method|BasePanel (JabRefFrame frame, BibtexDatabase db, File file, MetaData metaData, String encoding)
 specifier|public
 name|BasePanel
@@ -10680,6 +10624,14 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -10727,6 +10679,14 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -10774,6 +10734,14 @@ operator|new
 name|AbstractAction
 argument_list|()
 block|{
+specifier|private
+specifier|static
+specifier|final
+name|long
+name|serialVersionUID
+init|=
+literal|1L
+decl_stmt|;
 annotation|@
 name|Override
 specifier|public
@@ -12078,12 +12046,6 @@ name|EntryEditor
 name|editor
 parameter_list|)
 block|{
-name|int
-name|oldSplitterLocation
-init|=
-operator|-
-literal|1
-decl_stmt|;
 if|if
 condition|(
 name|mode
@@ -12622,7 +12584,7 @@ literal|"Saved database"
 argument_list|)
 argument_list|)
 condition|)
-block|{         }
+block|{
 name|frame
 operator|.
 name|output
@@ -12630,6 +12592,7 @@ argument_list|(
 literal|" "
 argument_list|)
 expr_stmt|;
+block|}
 block|}
 DECL|method|markNonUndoableBaseChanged ()
 specifier|public
@@ -12818,10 +12781,6 @@ argument_list|(
 name|matcher
 argument_list|)
 expr_stmt|;
-name|showingGroup
-operator|=
-literal|true
-expr_stmt|;
 block|}
 DECL|method|stopShowingSearchResults ()
 specifier|public
@@ -12857,10 +12816,6 @@ name|NoSearchMatcher
 operator|.
 name|INSTANCE
 argument_list|)
-expr_stmt|;
-name|showingGroup
-operator|=
-literal|false
 expr_stmt|;
 block|}
 comment|/**      * Query whether this BasePanel is in the mode where a float search result is shown.      * @return true if showing float search, false otherwise.      */
