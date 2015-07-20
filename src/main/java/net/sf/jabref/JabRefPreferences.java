@@ -5025,21 +5025,6 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-DECL|method|resetToDefaultPreferences ()
-specifier|public
-name|void
-name|resetToDefaultPreferences
-parameter_list|()
-block|{
-name|JabRefPreferences
-operator|.
-name|singleton
-operator|=
-operator|new
-name|JabRefPreferences
-argument_list|()
-expr_stmt|;
-block|}
 DECL|method|setLanguageDependentDefaultValues ()
 specifier|public
 name|void

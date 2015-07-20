@@ -136,20 +136,6 @@ argument_list|()
 expr_stmt|;
 block|}
 annotation|@
-name|After
-DECL|method|tearDown ()
-specifier|public
-name|void
-name|tearDown
-parameter_list|()
-block|{
-name|prefs
-operator|.
-name|resetToDefaultPreferences
-argument_list|()
-expr_stmt|;
-block|}
-annotation|@
 name|Test
 DECL|method|testPreferencesExport ()
 specifier|public
@@ -312,6 +298,18 @@ operator|.
 name|SAVE_PRIMARY_SORT_FIELD
 argument_list|)
 decl_stmt|;
+comment|//clean up preferences to default state
+name|prefs
+operator|.
+name|put
+argument_list|(
+name|JabRefPreferences
+operator|.
+name|SAVE_PRIMARY_SORT_FIELD
+argument_list|,
+literal|"author"
+argument_list|)
+expr_stmt|;
 name|assertEquals
 argument_list|(
 name|expected
