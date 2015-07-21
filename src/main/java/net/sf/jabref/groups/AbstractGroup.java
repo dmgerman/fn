@@ -18,16 +18,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
 name|javax
 operator|.
 name|swing
@@ -88,14 +78,14 @@ class|class
 name|AbstractGroup
 block|{
 comment|/** The group's name (every type of group has one). */
-DECL|field|m_name
+DECL|field|name
 name|String
-name|m_name
+name|name
 decl_stmt|;
 comment|/**      * The hierarchical context of the group (INDEPENDENT, REFINING, or      * INCLUDING). Defaults to INDEPENDENT, which will be used if and      * only if the context specified in the constructor is invalid.      */
-DECL|field|m_context
+DECL|field|context
 name|int
-name|m_context
+name|context
 init|=
 name|AbstractGroup
 operator|.
@@ -118,7 +108,9 @@ name|int
 name|context
 parameter_list|)
 block|{
-name|m_name
+name|this
+operator|.
+name|name
 operator|=
 name|name
 expr_stmt|;
@@ -317,7 +309,7 @@ name|getName
 parameter_list|()
 block|{
 return|return
-name|m_name
+name|name
 return|;
 block|}
 comment|/** Sets the group's name. */
@@ -331,7 +323,9 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|m_name
+name|this
+operator|.
+name|name
 operator|=
 name|name
 expr_stmt|;
@@ -521,7 +515,9 @@ condition|)
 block|{
 return|return;
 block|}
-name|m_context
+name|this
+operator|.
+name|context
 operator|=
 name|context
 expr_stmt|;
@@ -534,7 +530,7 @@ name|getHierarchicalContext
 parameter_list|()
 block|{
 return|return
-name|m_context
+name|context
 return|;
 block|}
 comment|/** Returns a lengthy textual description of this instance (for       * the groups editor). The text is formatted in HTML. */

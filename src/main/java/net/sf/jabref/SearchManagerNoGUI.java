@@ -284,8 +284,6 @@ name|getBoolean
 argument_list|(
 literal|"regExpSearch"
 argument_list|)
-argument_list|,
-name|searchTerm
 argument_list|)
 expr_stmt|;
 block|}

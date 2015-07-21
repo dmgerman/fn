@@ -2963,11 +2963,6 @@ name|getBoolean
 argument_list|(
 literal|"regExpSearch"
 argument_list|)
-argument_list|,
-name|searchField
-operator|.
-name|getText
-argument_list|()
 argument_list|)
 expr_stmt|;
 block|}
