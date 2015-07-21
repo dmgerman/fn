@@ -829,7 +829,9 @@ name|_prefs
 operator|.
 name|put
 argument_list|(
-literal|"fontFamily"
+name|JabRefPreferences
+operator|.
+name|FONT_FAMILY
 argument_list|,
 name|font
 operator|.

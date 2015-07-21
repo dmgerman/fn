@@ -4321,7 +4321,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"fontFamily"
+name|JabRefPreferences
+operator|.
+name|FONT_FAMILY
 argument_list|)
 argument_list|,
 name|Globals
