@@ -1855,7 +1855,7 @@ literal|1
 argument_list|)
 argument_list|)
 expr_stmt|;
-name|setContent
+name|setContentContainer
 argument_list|(
 name|main
 argument_list|)
