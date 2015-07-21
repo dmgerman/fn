@@ -10859,7 +10859,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultEncoding"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_ENCODING
 argument_list|)
 expr_stmt|;
 block|}
@@ -11658,7 +11660,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultEncoding"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_ENCODING
 argument_list|)
 argument_list|,
 literal|true
@@ -11811,7 +11815,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultEncoding"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_ENCODING
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -12454,7 +12460,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultEncoding"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_ENCODING
 argument_list|)
 argument_list|)
 decl_stmt|;

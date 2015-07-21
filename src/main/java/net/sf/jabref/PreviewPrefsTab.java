@@ -983,7 +983,9 @@ name|_prefs
 operator|.
 name|get
 argument_list|(
-literal|"preview0"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_0
 argument_list|)
 operator|.
 name|replaceAll
@@ -1055,7 +1057,9 @@ name|_prefs
 operator|.
 name|get
 argument_list|(
-literal|"preview1"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_1
 argument_list|)
 operator|.
 name|replaceAll
@@ -1603,7 +1607,9 @@ name|_prefs
 operator|.
 name|get
 argument_list|(
-literal|"preview0"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_0
 argument_list|)
 operator|.
 name|replaceAll
@@ -1622,7 +1628,9 @@ name|_prefs
 operator|.
 name|get
 argument_list|(
-literal|"preview1"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_1
 argument_list|)
 operator|.
 name|replaceAll
@@ -1660,7 +1668,9 @@ name|_prefs
 operator|.
 name|put
 argument_list|(
-literal|"preview0"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_0
 argument_list|,
 name|layout1
 operator|.
@@ -1679,7 +1689,9 @@ name|_prefs
 operator|.
 name|put
 argument_list|(
-literal|"preview1"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_1
 argument_list|,
 name|layout2
 operator|.

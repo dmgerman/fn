@@ -1510,7 +1510,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"customIconThemeFile"
+name|JabRefPreferences
+operator|.
+name|CUSTOM_ICON_THEME_FILE
 argument_list|)
 decl_stmt|;
 if|if
@@ -2089,7 +2091,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"language"
+name|JabRefPreferences
+operator|.
+name|LANGUAGE
 argument_list|)
 operator|+
 literal|'/'

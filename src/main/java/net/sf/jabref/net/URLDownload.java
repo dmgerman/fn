@@ -30,6 +30,18 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -327,7 +339,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultEncoding"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_ENCODING
 argument_list|)
 argument_list|)
 return|;

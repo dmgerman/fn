@@ -1367,7 +1367,9 @@ name|preferences
 operator|.
 name|get
 argument_list|(
-literal|"lookAndFeel"
+name|JabRefPreferences
+operator|.
+name|WIN_LOOK_AND_FEEL
 argument_list|)
 expr_stmt|;
 name|useDefault

@@ -207,7 +207,9 @@ argument_list|()
 operator|.
 name|get
 argument_list|(
-literal|"defaultLabelPattern"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_LABEL_PATTERN
 argument_list|)
 argument_list|)
 expr_stmt|;

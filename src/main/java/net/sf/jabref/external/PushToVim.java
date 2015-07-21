@@ -257,7 +257,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"vim"
+name|JabRefPreferences
+operator|.
+name|VIM
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -271,7 +273,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"vimServer"
+name|JabRefPreferences
+operator|.
+name|VIM_SERVER
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -285,7 +289,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommandVim"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_VIM
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -533,7 +539,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"vim"
+name|JabRefPreferences
+operator|.
+name|VIM
 argument_list|)
 block|,
 literal|"--servername"
@@ -544,7 +552,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"vimServer"
+name|JabRefPreferences
+operator|.
+name|VIM_SERVER
 argument_list|)
 block|,
 literal|"--remote-send"
@@ -557,7 +567,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommandVim"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_VIM
 argument_list|)
 operator|+
 literal|"{"

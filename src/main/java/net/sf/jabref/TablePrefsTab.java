@@ -1540,7 +1540,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"namesAsIs"
+name|JabRefPreferences
+operator|.
+name|NAMES_AS_IS
 argument_list|)
 condition|)
 block|{
@@ -1559,7 +1561,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"namesFf"
+name|JabRefPreferences
+operator|.
+name|NAMES_FIRST_LAST
 argument_list|)
 condition|)
 block|{
@@ -1578,7 +1582,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"namesNatbib"
+name|JabRefPreferences
+operator|.
+name|NAMES_NATBIB
 argument_list|)
 condition|)
 block|{
@@ -1606,7 +1612,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"abbrAuthorNames"
+name|JabRefPreferences
+operator|.
+name|ABBR_AUTHOR_NAMES
 argument_list|)
 condition|)
 block|{
@@ -1625,7 +1633,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"namesLastOnly"
+name|JabRefPreferences
+operator|.
+name|NAMES_LAST_ONLY
 argument_list|)
 condition|)
 block|{
@@ -1697,7 +1707,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"floatMarkedEntries"
+name|JabRefPreferences
+operator|.
+name|FLOAT_MARKED_ENTRIES
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1741,7 +1753,9 @@ name|_prefs
 operator|.
 name|get
 argument_list|(
-literal|"numericFields"
+name|JabRefPreferences
+operator|.
+name|NUMERIC_FIELDS
 argument_list|)
 decl_stmt|;
 if|if
@@ -1969,7 +1983,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"floatMarkedEntries"
+name|JabRefPreferences
+operator|.
+name|FLOAT_MARKED_ENTRIES
 argument_list|,
 name|floatMarked
 operator|.

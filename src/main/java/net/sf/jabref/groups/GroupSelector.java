@@ -5737,7 +5737,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"groupsDefaultField"
+name|JabRefPreferences
+operator|.
+name|GROUPS_DEFAULT_FIELD
 argument_list|)
 argument_list|,
 literal|" .,"

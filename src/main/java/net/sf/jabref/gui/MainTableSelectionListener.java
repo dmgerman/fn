@@ -528,7 +528,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"preview0"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_0
 argument_list|)
 argument_list|,
 literal|true
@@ -557,7 +559,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"preview1"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_1
 argument_list|)
 argument_list|,
 literal|true
@@ -618,7 +622,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"preview0"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_0
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -635,7 +641,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"preview1"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_1
 argument_list|)
 argument_list|)
 expr_stmt|;

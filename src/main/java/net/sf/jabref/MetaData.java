@@ -691,7 +691,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"userFileDirIndividual"
+name|JabRefPreferences
+operator|.
+name|USER_FILE_DIR_INDIVIDUAL
 argument_list|)
 decl_stmt|;
 name|List
@@ -733,7 +735,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"userFileDir"
+name|JabRefPreferences
+operator|.
+name|USER_FILE_DIR
 argument_list|)
 expr_stmt|;
 name|vec

@@ -11360,7 +11360,9 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"externalJournalLists"
+name|JabRefPreferences
+operator|.
+name|EXTERNAL_JOURNAL_LISTS
 argument_list|)
 decl_stmt|;
 if|if
@@ -11470,7 +11472,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"personalJournalList"
+name|JabRefPreferences
+operator|.
+name|PERSONAL_JOURNAL_LIST
 argument_list|)
 argument_list|)
 argument_list|)
@@ -11494,7 +11498,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"personalJournalList"
+name|JabRefPreferences
+operator|.
+name|PERSONAL_JOURNAL_LIST
 argument_list|)
 operator|+
 literal|"' not found."

@@ -532,7 +532,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"language"
+name|JabRefPreferences
+operator|.
+name|LANGUAGE
 argument_list|)
 operator|+
 literal|'/'

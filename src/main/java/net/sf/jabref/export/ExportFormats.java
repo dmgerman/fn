@@ -1229,7 +1229,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"exportWorkingDirectory"
+name|JabRefPreferences
+operator|.
+name|EXPORT_WORKING_DIRECTORY
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -1757,7 +1759,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"lastUsedExport"
+name|JabRefPreferences
+operator|.
+name|LAST_USED_EXPORT
 argument_list|)
 decl_stmt|;
 name|FileFilter

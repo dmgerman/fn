@@ -879,7 +879,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultOwner"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_OWNER
 argument_list|)
 argument_list|)
 expr_stmt|;

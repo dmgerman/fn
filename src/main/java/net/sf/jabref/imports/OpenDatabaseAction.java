@@ -486,7 +486,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"workingDirectory"
+name|JabRefPreferences
+operator|.
+name|WORKING_DIRECTORY
 argument_list|)
 argument_list|)
 argument_list|,
@@ -1124,7 +1126,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultEncoding"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_ENCODING
 argument_list|)
 decl_stmt|;
 if|if

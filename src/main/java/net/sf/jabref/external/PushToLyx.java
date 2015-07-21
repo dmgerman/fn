@@ -159,7 +159,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"lyxpipe"
+name|JabRefPreferences
+operator|.
+name|LYXPIPE
 argument_list|)
 decl_stmt|;
 if|if
@@ -440,7 +442,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"lyxpipe"
+name|JabRefPreferences
+operator|.
+name|LYXPIPE
 argument_list|)
 operator|+
 literal|"]"
@@ -554,7 +558,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"lyxpipe"
+name|JabRefPreferences
+operator|.
+name|LYXPIPE
 argument_list|)
 argument_list|)
 expr_stmt|;
