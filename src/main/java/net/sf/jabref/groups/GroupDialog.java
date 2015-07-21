@@ -310,20 +310,6 @@ end_import
 
 begin_import
 import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|search
-operator|.
-name|SearchExpressionParser
-import|;
-end_import
-
-begin_import
-import|import
 name|antlr
 operator|.
 name|collections

@@ -1060,6 +1060,8 @@ name|jabref
 operator|.
 name|search
 operator|.
+name|matchers
+operator|.
 name|NoSearchMatcher
 import|;
 end_import
@@ -1073,6 +1075,8 @@ operator|.
 name|jabref
 operator|.
 name|search
+operator|.
+name|matchers
 operator|.
 name|SearchMatcher
 import|;

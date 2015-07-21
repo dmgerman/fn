@@ -4,15 +4,29 @@ comment|/* Copyright (C) 2003  Nathan Dunn  All programs in this directory and s
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.search
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|search
 package|;
 end_package
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|BibtexEntry
+import|;
+end_import
 
 begin_import
 import|import
@@ -30,6 +44,7 @@ specifier|public
 interface|interface
 name|SearchRule
 block|{
+comment|//TODO why is there a Map required for applying the a search query? In every case I looked at only the first element is used.
 DECL|method|applyRule (Map<String, String> searchStrings, BibtexEntry bibtexEntry)
 name|int
 name|applyRule

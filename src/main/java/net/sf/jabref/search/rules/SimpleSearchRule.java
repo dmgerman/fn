@@ -4,13 +4,17 @@ comment|/*  Copyright (C) 2003 Nathan Dunn, Morten O. Alver   All programs in th
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.search.rules
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|search
+operator|.
+name|rules
 package|;
 end_package
 
@@ -32,6 +36,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|BibtexEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|export
 operator|.
 name|layout
@@ -39,6 +55,20 @@ operator|.
 name|format
 operator|.
 name|RemoveLatexCommands
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|search
+operator|.
+name|SearchRule
 import|;
 end_import
 
@@ -50,13 +80,6 @@ name|SimpleSearchRule
 implements|implements
 name|SearchRule
 block|{
-DECL|field|m_caseSensitiveSearch
-specifier|private
-specifier|final
-name|boolean
-name|m_caseSensitiveSearch
-decl_stmt|;
-comment|//static RemoveBrackets removeBrackets = new RemoveBrackets();
 DECL|field|removeBrackets
 specifier|private
 specifier|static
@@ -68,6 +91,12 @@ operator|new
 name|RemoveLatexCommands
 argument_list|()
 decl_stmt|;
+DECL|field|caseSensitive
+specifier|private
+specifier|final
+name|boolean
+name|caseSensitive
+decl_stmt|;
 DECL|method|SimpleSearchRule (boolean caseSensitive)
 specifier|public
 name|SimpleSearchRule
@@ -76,7 +105,9 @@ name|boolean
 name|caseSensitive
 parameter_list|)
 block|{
-name|m_caseSensitiveSearch
+name|this
+operator|.
+name|caseSensitive
 operator|=
 name|caseSensitive
 expr_stmt|;
@@ -137,7 +168,7 @@ decl_stmt|;
 if|if
 condition|(
 operator|!
-name|m_caseSensitiveSearch
+name|caseSensitive
 condition|)
 block|{
 name|searchString
@@ -158,12 +189,6 @@ name|counter
 init|=
 literal|0
 decl_stmt|;
-name|Object
-name|fieldContentAsObject
-decl_stmt|;
-name|String
-name|fieldContent
-decl_stmt|;
 for|for
 control|(
 name|String
@@ -175,15 +200,16 @@ name|getAllFields
 argument_list|()
 control|)
 block|{
+name|Object
 name|fieldContentAsObject
-operator|=
+init|=
 name|bibtexEntry
 operator|.
 name|getField
 argument_list|(
 name|field
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|fieldContentAsObject
@@ -193,8 +219,9 @@ condition|)
 block|{
 try|try
 block|{
+name|String
 name|fieldContent
-operator|=
+init|=
 name|SimpleSearchRule
 operator|.
 name|removeBrackets
@@ -206,11 +233,11 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 operator|!
-name|m_caseSensitiveSearch
+name|caseSensitive
 condition|)
 block|{
 name|fieldContent
@@ -239,8 +266,8 @@ operator|>=
 literal|0
 condition|)
 block|{
-operator|++
 name|score
+operator|++
 expr_stmt|;
 name|counter
 operator|=

@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.search
+DECL|package|net.sf.jabref.search.expression
 package|package
 name|net
 operator|.
@@ -13,6 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|search
+operator|.
+name|expression
 package|;
 end_package
 

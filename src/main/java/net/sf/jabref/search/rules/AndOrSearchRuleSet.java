@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.groups
+DECL|package|net.sf.jabref.search.rules
 package|package
 name|net
 operator|.
@@ -12,7 +12,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|groups
+name|search
+operator|.
+name|rules
 package|;
 end_package
 
@@ -46,19 +48,9 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|search
+operator|.
 name|SearchRule
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|SearchRuleSet
 import|;
 end_import
 
@@ -68,6 +60,7 @@ end_comment
 
 begin_class
 DECL|class|AndOrSearchRuleSet
+specifier|public
 class|class
 name|AndOrSearchRuleSet
 extends|extends
@@ -79,21 +72,12 @@ specifier|final
 name|boolean
 name|and
 decl_stmt|;
-DECL|field|invert
-specifier|private
-specifier|final
-name|boolean
-name|invert
-decl_stmt|;
-DECL|method|AndOrSearchRuleSet (boolean and, boolean invert)
+DECL|method|AndOrSearchRuleSet (boolean and)
 specifier|public
 name|AndOrSearchRuleSet
 parameter_list|(
 name|boolean
 name|and
-parameter_list|,
-name|boolean
-name|invert
 parameter_list|)
 block|{
 name|this
@@ -101,12 +85,6 @@ operator|.
 name|and
 operator|=
 name|and
-expr_stmt|;
-name|this
-operator|.
-name|invert
-operator|=
-name|invert
 expr_stmt|;
 block|}
 annotation|@
@@ -172,50 +150,29 @@ condition|)
 block|{
 name|res
 operator|=
-operator|(
 name|score
 operator|==
 name|ruleSet
 operator|.
 name|size
 argument_list|()
-operator|)
 expr_stmt|;
 block|}
 else|else
 block|{
 name|res
 operator|=
-operator|(
 name|score
 operator|>
 literal|0
-operator|)
 expr_stmt|;
 block|}
-if|if
-condition|(
-name|invert
-condition|)
-block|{
 return|return
-operator|(
-name|res
-condition|?
-literal|0
-else|:
-literal|1
-operator|)
-return|;
-block|}
-return|return
-operator|(
 name|res
 condition|?
 literal|1
 else|:
 literal|0
-operator|)
 return|;
 block|}
 block|}

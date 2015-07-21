@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.search
+DECL|package|net.sf.jabref.search.matchers
 package|package
 name|net
 operator|.
@@ -13,6 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|search
+operator|.
+name|matchers
 package|;
 end_package
 
@@ -43,47 +45,36 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Matcher that accepts all entries. Used for filtering when so search is  * active.  */
+comment|/**  * Matcher for filtering or sorting the table according to whether entries are  * tagged as search matches.  */
 end_comment
 
 begin_class
-DECL|class|NoSearchMatcher
+DECL|class|SearchMatcher
 specifier|public
 class|class
-name|NoSearchMatcher
+name|SearchMatcher
 implements|implements
 name|Matcher
 argument_list|<
 name|BibtexEntry
 argument_list|>
 block|{
-DECL|field|INSTANCE
-specifier|public
-specifier|static
-specifier|final
-name|Matcher
-argument_list|<
-name|BibtexEntry
-argument_list|>
-name|INSTANCE
-init|=
-operator|new
-name|NoSearchMatcher
-argument_list|()
-decl_stmt|;
 annotation|@
 name|Override
-DECL|method|matches (BibtexEntry object)
+DECL|method|matches (BibtexEntry entry)
 specifier|public
 name|boolean
 name|matches
 parameter_list|(
 name|BibtexEntry
-name|object
+name|entry
 parameter_list|)
 block|{
 return|return
-literal|true
+name|entry
+operator|.
+name|isSearchHit
+argument_list|()
 return|;
 block|}
 block|}

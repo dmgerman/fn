@@ -616,7 +616,11 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|SearchRule
+name|search
+operator|.
+name|rules
+operator|.
+name|AndOrSearchRuleSet
 import|;
 end_import
 
@@ -628,7 +632,25 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|SearchRuleSet
+name|search
+operator|.
+name|rules
+operator|.
+name|InvertSearchRule
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|search
+operator|.
+name|SearchRule
 import|;
 end_import
 
@@ -5050,11 +5072,6 @@ name|andCb
 operator|.
 name|isSelected
 argument_list|()
-argument_list|,
-name|invCb
-operator|.
-name|isSelected
-argument_list|()
 argument_list|)
 decl_stmt|;
 name|TreePath
@@ -5119,13 +5136,29 @@ argument_list|,
 literal|"dummy"
 argument_list|)
 expr_stmt|;
+name|SearchRule
+name|searchRule
+init|=
+name|invCb
+operator|.
+name|isSelected
+argument_list|()
+condition|?
+operator|new
+name|InvertSearchRule
+argument_list|(
+name|searchRules
+argument_list|)
+else|:
+name|searchRules
+decl_stmt|;
 name|GroupingWorker
 name|worker
 init|=
 operator|new
 name|GroupingWorker
 argument_list|(
-name|searchRules
+name|searchRule
 argument_list|,
 name|searchOptions
 argument_list|)
@@ -5157,7 +5190,7 @@ block|{
 DECL|field|rules
 specifier|private
 specifier|final
-name|SearchRuleSet
+name|SearchRule
 name|rules
 decl_stmt|;
 DECL|field|searchTerm
@@ -5199,11 +5232,11 @@ name|hits
 init|=
 literal|0
 decl_stmt|;
-DECL|method|GroupingWorker (SearchRuleSet rules, Hashtable<String, String> searchTerm)
+DECL|method|GroupingWorker (SearchRule rules, Hashtable<String, String> searchTerm)
 specifier|public
 name|GroupingWorker
 parameter_list|(
-name|SearchRuleSet
+name|SearchRule
 name|rules
 parameter_list|,
 name|Hashtable

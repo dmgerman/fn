@@ -92,7 +92,7 @@ name|jabref
 operator|.
 name|search
 operator|.
-name|SearchExpressionLexer
+name|*
 import|;
 end_import
 
@@ -106,7 +106,9 @@ name|jabref
 operator|.
 name|search
 operator|.
-name|SearchExpressionParser
+name|rules
+operator|.
+name|RegExpSearchRule
 import|;
 end_import
 
@@ -120,7 +122,7 @@ name|jabref
 operator|.
 name|search
 operator|.
-name|SearchExpressionTreeParser
+name|SearchRule
 import|;
 end_import
 
@@ -134,7 +136,9 @@ name|jabref
 operator|.
 name|search
 operator|.
-name|SearchExpressionTreeParserTokenTypes
+name|rules
+operator|.
+name|SimpleSearchRule
 import|;
 end_import
 
@@ -242,7 +246,7 @@ operator|new
 name|SearchExpressionTreeParser
 argument_list|()
 decl_stmt|;
-comment|/**      * If m_searchExpression is in valid syntax for advanced search,<b>this      *</b> will do the search; otherwise, either<b>RegExpRule</b> or      *<b>SimpleSearchRule</b> will be used.      */
+comment|/**      * If m_searchExpression is in valid syntax for advanced search,<b>this      *</b> will do the search; otherwise, either<b>RegExpSearchRule</b> or      *<b>SimpleSearchRule</b> will be used.      */
 DECL|field|m_searchRule
 specifier|private
 specifier|final
@@ -377,7 +381,7 @@ block|{
 name|m_searchRule
 operator|=
 operator|new
-name|RegExpRule
+name|RegExpSearchRule
 argument_list|(
 name|m_caseSensitive
 argument_list|)

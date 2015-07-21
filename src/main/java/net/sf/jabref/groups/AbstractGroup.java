@@ -70,6 +70,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|search
+operator|.
 name|SearchRule
 import|;
 end_import
