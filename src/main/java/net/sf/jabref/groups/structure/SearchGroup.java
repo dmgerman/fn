@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.groups
+DECL|package|net.sf.jabref.groups.structure
 package|package
 name|net
 operator|.
@@ -13,6 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|groups
+operator|.
+name|structure
 package|;
 end_package
 
@@ -145,7 +147,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author jzieren  */
+comment|/**  * Internally, it consists of a search pattern.  *  * @author jzieren  */
 end_comment
 
 begin_class
@@ -197,7 +199,7 @@ name|SearchExpression
 name|expressionSearchRule
 decl_stmt|;
 comment|/**      * Creates a SearchGroup with the specified properties.      */
-DECL|method|SearchGroup (String name, String searchExpression, boolean caseSensitive, boolean regExp, int context)
+DECL|method|SearchGroup (String name, String searchExpression, boolean caseSensitive, boolean regExp, GroupHierarchyType context)
 specifier|public
 name|SearchGroup
 parameter_list|(
@@ -213,7 +215,7 @@ parameter_list|,
 name|boolean
 name|regExp
 parameter_list|,
-name|int
+name|GroupHierarchyType
 name|context
 parameter_list|)
 block|{
@@ -266,8 +268,7 @@ condition|)
 block|{
 name|searchRule
 operator|=
-name|getSearchRule
-argument_list|()
+name|expressionSearchRule
 expr_stmt|;
 comment|// do advanced search
 block|}
@@ -470,7 +471,7 @@ name|caseSensitive
 argument_list|,
 name|regExp
 argument_list|,
-name|AbstractGroup
+name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|)
@@ -571,7 +572,12 @@ name|caseSensitive
 argument_list|,
 name|regExp
 argument_list|,
+name|GroupHierarchyType
+operator|.
+name|getByNumber
+argument_list|(
 name|context
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -601,7 +607,7 @@ operator|.
 name|ID
 return|;
 block|}
-comment|/**      * @see net.sf.jabref.groups.AbstractGroup#getSearchRule()      */
+comment|/**      * @see AbstractGroup#getSearchRule()      */
 annotation|@
 name|Override
 DECL|method|getSearchRule ()
@@ -674,25 +680,23 @@ name|AbstractGroup
 operator|.
 name|SEPARATOR
 operator|+
-operator|(
+name|StringUtil
+operator|.
+name|booleanToBinaryString
+argument_list|(
 name|caseSensitive
-condition|?
-literal|"1"
-else|:
-literal|"0"
-operator|)
+argument_list|)
 operator|+
 name|AbstractGroup
 operator|.
 name|SEPARATOR
 operator|+
-operator|(
+name|StringUtil
+operator|.
+name|booleanToBinaryString
+argument_list|(
 name|regExp
-condition|?
-literal|"1"
-else|:
-literal|"0"
-operator|)
+argument_list|)
 operator|+
 name|AbstractGroup
 operator|.
@@ -846,7 +850,7 @@ argument_list|()
 operator|)
 return|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.groups.AbstractGroup#contains(java.util.Map,      *      net.sf.jabref.BibtexEntry)      */
+comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.groups.structure.AbstractGroup#contains(java.util.Map,      *      net.sf.jabref.BibtexEntry)      */
 annotation|@
 name|Override
 DECL|method|contains (String searchOptions, BibtexEntry entry)
@@ -1152,8 +1156,6 @@ argument_list|()
 condition|)
 block|{
 case|case
-name|AbstractGroup
-operator|.
 name|INCLUDING
 case|:
 name|sb
@@ -1175,8 +1177,6 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|AbstractGroup
-operator|.
 name|REFINING
 case|:
 name|sb

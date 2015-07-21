@@ -58,6 +58,8 @@ name|jabref
 operator|.
 name|groups
 operator|.
+name|migrations
+operator|.
 name|VersionHandling
 import|;
 end_import

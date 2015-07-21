@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.groups
+DECL|package|net.sf.jabref.groups.structure
 package|package
 name|net
 operator|.
@@ -13,6 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|groups
+operator|.
+name|structure
 package|;
 end_package
 
@@ -47,6 +49,20 @@ operator|.
 name|jabref
 operator|.
 name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|groups
+operator|.
+name|UndoableChangeAssignment
 import|;
 end_import
 
@@ -93,7 +109,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author jzieren  *  */
+comment|/**  * Select explicit bibtex entries. It is also known as static group.  *  * @author jzieren  */
 end_comment
 
 begin_class
@@ -121,15 +137,22 @@ argument_list|<
 name|BibtexEntry
 argument_list|>
 name|entries
+init|=
+operator|new
+name|HashSet
+argument_list|<
+name|BibtexEntry
+argument_list|>
+argument_list|()
 decl_stmt|;
-DECL|method|ExplicitGroup (String name, int context)
+DECL|method|ExplicitGroup (String name, GroupHierarchyType context)
 specifier|public
 name|ExplicitGroup
 parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|int
+name|GroupHierarchyType
 name|context
 parameter_list|)
 block|{
@@ -139,15 +162,6 @@ name|name
 argument_list|,
 name|context
 argument_list|)
-expr_stmt|;
-name|entries
-operator|=
-operator|new
-name|HashSet
-argument_list|<
-name|BibtexEntry
-argument_list|>
-argument_list|()
 expr_stmt|;
 block|}
 DECL|method|fromString (String s, BibtexDatabase db, int version)
@@ -248,7 +262,7 @@ operator|.
 name|nextToken
 argument_list|()
 argument_list|,
-name|AbstractGroup
+name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|)
@@ -299,7 +313,12 @@ name|ExplicitGroup
 argument_list|(
 name|name
 argument_list|,
+name|GroupHierarchyType
+operator|.
+name|getByNumber
+argument_list|(
 name|context
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|newGroup
@@ -327,7 +346,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/** Called only when created fromString */
+comment|/**      * Called only when created fromString      */
 DECL|method|addEntries (QuotedStringTokenizer tok, BibtexDatabase db)
 specifier|private
 name|void
@@ -1063,7 +1082,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** Remove all assignments, resulting in an empty group. */
+comment|/**      * Remove all assignments, resulting in an empty group.      */
 DECL|method|clearAssignments ()
 specifier|public
 name|void
@@ -1181,8 +1200,6 @@ argument_list|()
 condition|)
 block|{
 case|case
-name|AbstractGroup
-operator|.
 name|INCLUDING
 case|:
 name|sb
@@ -1204,8 +1221,6 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|AbstractGroup
-operator|.
 name|REFINING
 case|:
 name|sb

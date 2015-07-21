@@ -752,6 +752,8 @@ name|jabref
 operator|.
 name|groups
 operator|.
+name|structure
+operator|.
 name|AbstractGroup
 import|;
 end_import
@@ -765,6 +767,8 @@ operator|.
 name|jabref
 operator|.
 name|groups
+operator|.
+name|structure
 operator|.
 name|AllEntriesGroup
 import|;

@@ -82,6 +82,8 @@ name|jabref
 operator|.
 name|groups
 operator|.
+name|structure
+operator|.
 name|AllEntriesGroup
 import|;
 end_import
@@ -135,11 +137,11 @@ name|GroupChange
 extends|extends
 name|Change
 block|{
-DECL|field|m_changedGroups
+DECL|field|changedGroups
 specifier|private
 specifier|final
 name|GroupTreeNode
-name|m_changedGroups
+name|changedGroups
 decl_stmt|;
 DECL|field|tmpGroupRoot
 specifier|private
@@ -170,7 +172,9 @@ literal|"Removed all groups"
 argument_list|)
 expr_stmt|;
 comment|// JZTODO lyrics
-name|m_changedGroups
+name|this
+operator|.
+name|changedGroups
 operator|=
 name|changedGroups
 expr_stmt|;
@@ -240,7 +244,6 @@ literal|"Modified groups"
 argument_list|)
 argument_list|)
 decl_stmt|;
-comment|// JZTODO lyrics
 name|root
 operator|.
 name|removeAllChildren
@@ -248,7 +251,7 @@ argument_list|()
 expr_stmt|;
 if|if
 condition|(
-name|m_changedGroups
+name|changedGroups
 operator|==
 literal|null
 condition|)
@@ -271,7 +274,7 @@ name|root
 operator|.
 name|setGroup
 argument_list|(
-name|m_changedGroups
+name|changedGroups
 operator|.
 name|getGroup
 argument_list|()
@@ -286,7 +289,7 @@ literal|0
 init|;
 name|i
 operator|<
-name|m_changedGroups
+name|changedGroups
 operator|.
 name|getChildCount
 argument_list|()
@@ -303,7 +306,7 @@ operator|(
 operator|(
 name|GroupTreeNode
 operator|)
-name|m_changedGroups
+name|changedGroups
 operator|.
 name|getChildAt
 argument_list|(
@@ -363,7 +366,7 @@ comment|// Update tmp database:
 name|GroupTreeNode
 name|copied
 init|=
-name|m_changedGroups
+name|changedGroups
 operator|.
 name|deepCopy
 argument_list|()
@@ -451,7 +454,7 @@ operator|+
 literal|'.'
 operator|+
 operator|(
-name|m_changedGroups
+name|changedGroups
 operator|!=
 literal|null
 condition|?

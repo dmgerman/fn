@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.groups
+DECL|package|net.sf.jabref.groups.structure
 package|package
 name|net
 operator|.
@@ -13,6 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|groups
+operator|.
+name|structure
 package|;
 end_package
 
@@ -79,7 +81,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * This group contains all entries.  */
+comment|/**  * This group contains all entries. Always. At any time!  */
 end_comment
 
 begin_class
@@ -113,7 +115,7 @@ argument_list|(
 literal|"All Entries"
 argument_list|)
 argument_list|,
-name|AbstractGroup
+name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|)
@@ -405,9 +407,13 @@ name|getDescription
 parameter_list|()
 block|{
 return|return
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"This group contains all entries. It cannot be edited or removed."
+argument_list|)
 return|;
-comment|// JZTODO lyrics
 block|}
 annotation|@
 name|Override

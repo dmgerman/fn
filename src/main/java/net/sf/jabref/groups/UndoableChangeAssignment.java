@@ -72,6 +72,22 @@ name|Globals
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|groups
+operator|.
+name|structure
+operator|.
+name|ExplicitGroup
+import|;
+end_import
+
 begin_comment
 comment|/**  * @author jzieren  *   */
 end_comment

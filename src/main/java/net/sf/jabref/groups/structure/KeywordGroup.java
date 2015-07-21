@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.groups
+DECL|package|net.sf.jabref.groups.structure
 package|package
 name|net
 operator|.
@@ -13,6 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|groups
+operator|.
+name|structure
 package|;
 end_package
 
@@ -175,7 +177,7 @@ init|=
 literal|null
 decl_stmt|;
 comment|/**      * Creates a KeywordGroup with the specified properties.      */
-DECL|method|KeywordGroup (String name, String searchField, String searchExpression, boolean caseSensitive, boolean regExp, int context)
+DECL|method|KeywordGroup (String name, String searchField, String searchExpression, boolean caseSensitive, boolean regExp, GroupHierarchyType context)
 specifier|public
 name|KeywordGroup
 parameter_list|(
@@ -194,7 +196,7 @@ parameter_list|,
 name|boolean
 name|regExp
 parameter_list|,
-name|int
+name|GroupHierarchyType
 name|context
 parameter_list|)
 throws|throws
@@ -282,7 +284,7 @@ name|CASE_INSENSITIVE
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Parses s and recreates the KeywordGroup from it.      *       * @param s      *            The String representation obtained from      *            KeywordGroup.toString()      */
+comment|/**      * Parses s and recreates the KeywordGroup from it.      *      * @param s The String representation obtained from      *          KeywordGroup.toString()      */
 DECL|method|fromString (String s, BibtexDatabase db, int version)
 specifier|public
 specifier|static
@@ -430,7 +432,7 @@ literal|false
 argument_list|,
 literal|true
 argument_list|,
-name|AbstractGroup
+name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|)
@@ -538,7 +540,7 @@ name|caseSensitive
 argument_list|,
 name|regExp
 argument_list|,
-name|AbstractGroup
+name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|)
@@ -656,7 +658,12 @@ name|caseSensitive
 argument_list|,
 name|regExp
 argument_list|,
+name|GroupHierarchyType
+operator|.
+name|getByNumber
+argument_list|(
 name|context
+argument_list|)
 argument_list|)
 return|;
 block|}
@@ -672,7 +679,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/**      * @see net.sf.jabref.groups.AbstractGroup#getSearchRule()      */
+comment|/**      * @see AbstractGroup#getSearchRule()      */
 annotation|@
 name|Override
 DECL|method|getSearchRule ()
@@ -806,25 +813,23 @@ name|AbstractGroup
 operator|.
 name|SEPARATOR
 operator|+
-operator|(
+name|StringUtil
+operator|.
+name|booleanToBinaryString
+argument_list|(
 name|caseSensitive
-condition|?
-literal|"1"
-else|:
-literal|"0"
-operator|)
+argument_list|)
 operator|+
 name|AbstractGroup
 operator|.
 name|SEPARATOR
 operator|+
-operator|(
+name|StringUtil
+operator|.
+name|booleanToBinaryString
+argument_list|(
 name|regExp
-condition|?
-literal|"1"
-else|:
-literal|"0"
-operator|)
+argument_list|)
 operator|+
 name|AbstractGroup
 operator|.
@@ -1274,7 +1279,7 @@ argument_list|()
 operator|)
 return|;
 block|}
-comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.groups.AbstractGroup#contains(java.util.Map,      *      net.sf.jabref.BibtexEntry)      */
+comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.groups.structure.AbstractGroup#contains(java.util.Map,      *      net.sf.jabref.BibtexEntry)      */
 annotation|@
 name|Override
 DECL|method|contains (String query, BibtexEntry entry)
@@ -1378,7 +1383,7 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-comment|/**      * Look for the given non-regexp string in another string, but check whether a      * match concerns a complete word, not part of a word.      * @param word The word to look for.      * @param text The string to look in.      * @return true if the word was found, false otherwise.      */
+comment|/**      * Look for the given non-regexp string in another string, but check whether a      * match concerns a complete word, not part of a word.      *      * @param word The word to look for.      * @param text The string to look in.      * @return true if the word was found, false otherwise.      */
 DECL|method|containsWord (String word, String text)
 specifier|private
 specifier|static
@@ -1408,7 +1413,7 @@ argument_list|()
 condition|)
 block|{
 name|int
-name|ind
+name|index
 init|=
 name|text
 operator|.
@@ -1421,7 +1426,7 @@ argument_list|)
 decl_stmt|;
 if|if
 condition|(
-name|ind
+name|index
 operator|<
 literal|0
 condition|)
@@ -1434,11 +1439,9 @@ comment|// Found a match. See if it is a complete word:
 if|if
 condition|(
 operator|(
-operator|(
-name|ind
+name|index
 operator|==
 literal|0
-operator|)
 operator|||
 operator|!
 name|Character
@@ -1449,7 +1452,7 @@ name|text
 operator|.
 name|charAt
 argument_list|(
-name|ind
+name|index
 operator|-
 literal|1
 argument_list|)
@@ -1459,7 +1462,7 @@ operator|&&
 operator|(
 operator|(
 operator|(
-name|ind
+name|index
 operator|+
 name|word
 operator|.
@@ -1482,7 +1485,7 @@ name|text
 operator|.
 name|charAt
 argument_list|(
-name|ind
+name|index
 operator|+
 name|word
 operator|.
@@ -1501,7 +1504,7 @@ else|else
 block|{
 name|piv
 operator|=
-name|ind
+name|index
 operator|+
 literal|1
 expr_stmt|;
@@ -1965,8 +1968,9 @@ name|boolean
 name|regExp
 parameter_list|)
 block|{
-return|return
-operator|(
+name|String
+name|header
+init|=
 name|regExp
 condition|?
 name|Globals
@@ -2000,11 +2004,10 @@ argument_list|(
 name|expr
 argument_list|)
 argument_list|)
-operator|)
-operator|+
-literal|" ("
-operator|+
-operator|(
+decl_stmt|;
+name|String
+name|caseSensitiveText
+init|=
 name|caseSensitive
 condition|?
 name|Globals
@@ -2020,11 +2023,10 @@ name|lang
 argument_list|(
 literal|"case insensitive"
 argument_list|)
-operator|)
-operator|+
-literal|"). "
-operator|+
-operator|(
+decl_stmt|;
+name|String
+name|footer
+init|=
 name|regExp
 condition|?
 name|Globals
@@ -2065,7 +2067,20 @@ argument_list|(
 name|expr
 argument_list|)
 argument_list|)
-operator|)
+decl_stmt|;
+return|return
+name|String
+operator|.
+name|format
+argument_list|(
+literal|"%s (%s). %s"
+argument_list|,
+name|header
+argument_list|,
+name|caseSensitiveText
+argument_list|,
+name|footer
+argument_list|)
 return|;
 block|}
 annotation|@
@@ -2227,8 +2242,6 @@ argument_list|()
 condition|)
 block|{
 case|case
-name|AbstractGroup
-operator|.
 name|INCLUDING
 case|:
 name|sb
@@ -2250,8 +2263,6 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|AbstractGroup
-operator|.
 name|REFINING
 case|:
 name|sb
