@@ -22,16 +22,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|regex
 operator|.
 name|Pattern
@@ -1225,18 +1215,13 @@ block|}
 comment|/*      * (non-Javadoc)      *       * @see net.sf.jabref.groups.AbstractGroup#contains(java.util.Map,      *      net.sf.jabref.BibtexEntry)      */
 annotation|@
 name|Override
-DECL|method|contains (Map<String, String> searchOptions, BibtexEntry entry)
+DECL|method|contains (String query, BibtexEntry entry)
 specifier|public
 name|boolean
 name|contains
 parameter_list|(
-name|Map
-argument_list|<
 name|String
-argument_list|,
-name|String
-argument_list|>
-name|searchOptions
+name|query
 parameter_list|,
 name|BibtexEntry
 name|entry
@@ -1770,17 +1755,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyRule (Map<String, String> searchOptions, BibtexEntry entry)
+DECL|method|applyRule (String searchOptions, BibtexEntry entry)
 specifier|public
 name|int
 name|applyRule
 parameter_list|(
-name|Map
-argument_list|<
 name|String
-argument_list|,
-name|String
-argument_list|>
 name|searchOptions
 parameter_list|,
 name|BibtexEntry
@@ -1802,18 +1782,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|validateSearchStrings (Map<String, String> searchStrings)
+DECL|method|validateSearchStrings (String query)
 specifier|public
 name|boolean
 name|validateSearchStrings
 parameter_list|(
-name|Map
-argument_list|<
 name|String
-argument_list|,
-name|String
-argument_list|>
-name|searchStrings
+name|query
 parameter_list|)
 block|{
 return|return

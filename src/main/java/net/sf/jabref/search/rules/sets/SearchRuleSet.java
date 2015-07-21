@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003  Nathan Dunn   All programs in this directory and
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.search.rules
+DECL|package|net.sf.jabref.search.rules.sets
 package|package
 name|net
 operator|.
@@ -15,6 +15,8 @@ operator|.
 name|search
 operator|.
 name|rules
+operator|.
+name|sets
 package|;
 end_package
 
@@ -41,16 +43,6 @@ operator|.
 name|search
 operator|.
 name|SearchRule
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
 import|;
 end_import
 
@@ -119,17 +111,12 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyRule (Map<String, String> searchString, BibtexEntry bibtexEntry)
+DECL|method|applyRule (String searchString, BibtexEntry bibtexEntry)
 specifier|public
 name|int
 name|applyRule
 parameter_list|(
-name|Map
-argument_list|<
 name|String
-argument_list|,
-name|String
-argument_list|>
 name|searchString
 parameter_list|,
 name|BibtexEntry
@@ -169,18 +156,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|validateSearchStrings (Map<String, String> searchStrings)
+DECL|method|validateSearchStrings (String query)
 specifier|public
 name|boolean
 name|validateSearchStrings
 parameter_list|(
-name|Map
-argument_list|<
 name|String
-argument_list|,
-name|String
-argument_list|>
-name|searchStrings
+name|query
 parameter_list|)
 block|{
 for|for
@@ -198,7 +180,7 @@ name|searchRule
 operator|.
 name|validateSearchStrings
 argument_list|(
-name|searchStrings
+name|query
 argument_list|)
 condition|)
 block|{

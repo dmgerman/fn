@@ -1,6 +1,6 @@
 begin_unit|revision:0.9.5;language:Java;cregit-version:0.0.1
 begin_package
-DECL|package|net.sf.jabref.search
+DECL|package|net.sf.jabref.search.rules
 package|package
 name|net
 operator|.
@@ -9,6 +9,8 @@ operator|.
 name|jabref
 operator|.
 name|search
+operator|.
+name|rules
 package|;
 end_package
 
@@ -21,6 +23,22 @@ operator|.
 name|jabref
 operator|.
 name|*
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|search
+operator|.
+name|rules
+operator|.
+name|BasicRegexSearchRule
 import|;
 end_import
 
@@ -112,8 +130,6 @@ operator|new
 name|BasicSearchRule
 argument_list|(
 literal|true
-argument_list|,
-literal|false
 argument_list|)
 decl_stmt|;
 name|BasicSearchRule
@@ -123,18 +139,14 @@ operator|new
 name|BasicSearchRule
 argument_list|(
 literal|false
-argument_list|,
-literal|false
 argument_list|)
 decl_stmt|;
 name|BasicSearchRule
 name|bsCaseSensitiveRegexp
 init|=
 operator|new
-name|BasicSearchRule
+name|BasicRegexSearchRule
 argument_list|(
-literal|true
-argument_list|,
 literal|true
 argument_list|)
 decl_stmt|;
@@ -142,11 +154,9 @@ name|BasicSearchRule
 name|bsCaseInsensitiveRegexp
 init|=
 operator|new
-name|BasicSearchRule
+name|BasicRegexSearchRule
 argument_list|(
 literal|false
-argument_list|,
-literal|true
 argument_list|)
 decl_stmt|;
 name|String

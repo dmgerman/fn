@@ -28,50 +28,29 @@ name|BibtexEntry
 import|;
 end_import
 
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
 begin_interface
 DECL|interface|SearchRule
 specifier|public
 interface|interface
 name|SearchRule
 block|{
-comment|//TODO why is there a Map required for applying the a search query? In every case I looked at only the first element is used.
-DECL|method|applyRule (Map<String, String> searchStrings, BibtexEntry bibtexEntry)
+DECL|method|applyRule (String query, BibtexEntry bibtexEntry)
 name|int
 name|applyRule
 parameter_list|(
-name|Map
-argument_list|<
 name|String
-argument_list|,
-name|String
-argument_list|>
-name|searchStrings
+name|query
 parameter_list|,
 name|BibtexEntry
 name|bibtexEntry
 parameter_list|)
 function_decl|;
-DECL|method|validateSearchStrings (Map<String, String> searchStrings)
+DECL|method|validateSearchStrings (String query)
 name|boolean
 name|validateSearchStrings
 parameter_list|(
-name|Map
-argument_list|<
 name|String
-argument_list|,
-name|String
-argument_list|>
-name|searchStrings
+name|query
 parameter_list|)
 function_decl|;
 block|}

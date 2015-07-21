@@ -20,16 +20,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -71,6 +61,10 @@ operator|.
 name|SearchRule
 import|;
 end_import
+
+begin_comment
+comment|//TODO why have simple and basic search rule????
+end_comment
 
 begin_class
 DECL|class|SimpleSearchRule
@@ -114,18 +108,13 @@ expr_stmt|;
 block|}
 annotation|@
 name|Override
-DECL|method|validateSearchStrings (Map<String, String> searchStrings)
+DECL|method|validateSearchStrings (String query)
 specifier|public
 name|boolean
 name|validateSearchStrings
 parameter_list|(
-name|Map
-argument_list|<
 name|String
-argument_list|,
-name|String
-argument_list|>
-name|searchStrings
+name|query
 parameter_list|)
 block|{
 return|return
@@ -134,18 +123,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|applyRule (Map<String, String> searchStrings, BibtexEntry bibtexEntry)
+DECL|method|applyRule (String query, BibtexEntry bibtexEntry)
 specifier|public
 name|int
 name|applyRule
 parameter_list|(
-name|Map
-argument_list|<
 name|String
-argument_list|,
-name|String
-argument_list|>
-name|searchStrings
+name|query
 parameter_list|,
 name|BibtexEntry
 name|bibtexEntry
@@ -154,16 +138,7 @@ block|{
 name|String
 name|searchString
 init|=
-name|searchStrings
-operator|.
-name|values
-argument_list|()
-operator|.
-name|iterator
-argument_list|()
-operator|.
-name|next
-argument_list|()
+name|query
 decl_stmt|;
 if|if
 condition|(

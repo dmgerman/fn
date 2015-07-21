@@ -32,16 +32,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|Hashtable
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|Vector
 import|;
 end_import
@@ -127,22 +117,6 @@ operator|.
 name|jabref
 operator|.
 name|JabRefPreferences
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|search
-operator|.
-name|rules
-operator|.
-name|SearchRuleSet
 import|;
 end_import
 
@@ -241,20 +215,6 @@ operator|.
 name|gui
 operator|.
 name|TableFormat
-import|;
-end_import
-
-begin_import
-import|import
-name|ca
-operator|.
-name|odell
-operator|.
-name|glazedlists
-operator|.
-name|matchers
-operator|.
-name|Matcher
 import|;
 end_import
 
@@ -825,7 +785,7 @@ comment|/*String disName = BibtexFields.getFieldDisplayName(columns[col - padlef
 block|}
 comment|//return Util.nCase(columns[col - padleft]);
 block|}
-comment|/**      * Get the column title, or a string identifying the column if it is an icon      * column without a title.      * @param col The column number      * @return the String identifying the column      */
+comment|/**      * Get the column title, or a string identifying the column if it is an icon      * column without a title.      *      * @param col The column number      * @return the String identifying the column      */
 DECL|method|getColumnType (int col)
 specifier|public
 name|String
@@ -942,7 +902,7 @@ literal|null
 return|;
 block|}
 block|}
-comment|/**      * Finds the column index for the given column name.      * @param colName The column name      * @return The column index if any, or -1 if no column has that name.      */
+comment|/**      * Finds the column index for the given column name.      *      * @param colName The column name      * @return The column index if any, or -1 if no column has that name.      */
 DECL|method|getColumnIndex (String colName)
 specifier|public
 name|int
@@ -998,7 +958,7 @@ operator|-
 literal|1
 return|;
 block|}
-comment|/**      * Checks, if the Column (int col) is a Ranking-Column      * @param col Column Number      * @return Is Ranking-Column or not?      */
+comment|/**      * Checks, if the Column (int col) is a Ranking-Column      *      * @param col Column Number      * @return Is Ranking-Column or not?      */
 DECL|method|isRankingColumn (int col)
 specifier|public
 name|boolean
@@ -1709,7 +1669,7 @@ return|return
 name|o
 return|;
 block|}
-comment|/**      * Format a name field for the table, according to user preferences.      * @param o The contents of the name field.      * @return The formatted name field.      */
+comment|/**      * Format a name field for the table, according to user preferences.      *      * @param o The contents of the name field.      * @return The formatted name field.      */
 DECL|method|formatName (Object o)
 specifier|public
 name|Object
@@ -2903,139 +2863,6 @@ argument_list|(
 name|i
 argument_list|)
 expr_stmt|;
-block|}
-block|}
-DECL|method|isIconColumn (int col)
-specifier|public
-name|boolean
-name|isIconColumn
-parameter_list|(
-name|int
-name|col
-parameter_list|)
-block|{
-return|return
-operator|(
-name|getIconTypeForColumn
-argument_list|(
-name|col
-argument_list|)
-operator|!=
-literal|null
-operator|)
-return|;
-block|}
-DECL|class|NoSearchMatcher
-specifier|private
-specifier|static
-class|class
-name|NoSearchMatcher
-implements|implements
-name|Matcher
-argument_list|<
-name|BibtexEntry
-argument_list|>
-block|{
-annotation|@
-name|Override
-DECL|method|matches (BibtexEntry object)
-specifier|public
-name|boolean
-name|matches
-parameter_list|(
-name|BibtexEntry
-name|object
-parameter_list|)
-block|{
-return|return
-literal|true
-return|;
-block|}
-block|}
-DECL|class|SearchMatcher
-specifier|static
-class|class
-name|SearchMatcher
-implements|implements
-name|Matcher
-argument_list|<
-name|BibtexEntry
-argument_list|>
-block|{
-DECL|field|ruleSet
-specifier|private
-specifier|final
-name|SearchRuleSet
-name|ruleSet
-decl_stmt|;
-DECL|field|searchOptions
-specifier|private
-specifier|final
-name|Hashtable
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|searchOptions
-decl_stmt|;
-DECL|method|SearchMatcher (SearchRuleSet ruleSet, Hashtable<String, String> searchOptions)
-specifier|public
-name|SearchMatcher
-parameter_list|(
-name|SearchRuleSet
-name|ruleSet
-parameter_list|,
-name|Hashtable
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|searchOptions
-parameter_list|)
-block|{
-name|this
-operator|.
-name|ruleSet
-operator|=
-name|ruleSet
-expr_stmt|;
-name|this
-operator|.
-name|searchOptions
-operator|=
-name|searchOptions
-expr_stmt|;
-block|}
-annotation|@
-name|Override
-DECL|method|matches (BibtexEntry entry)
-specifier|public
-name|boolean
-name|matches
-parameter_list|(
-name|BibtexEntry
-name|entry
-parameter_list|)
-block|{
-name|int
-name|result
-init|=
-name|ruleSet
-operator|.
-name|applyRule
-argument_list|(
-name|searchOptions
-argument_list|,
-name|entry
-argument_list|)
-decl_stmt|;
-return|return
-name|result
-operator|>
-literal|0
-return|;
 block|}
 block|}
 block|}

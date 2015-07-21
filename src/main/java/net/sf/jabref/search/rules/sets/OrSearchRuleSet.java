@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.search.rules
+DECL|package|net.sf.jabref.search.rules.sets
 package|package
 name|net
 operator|.
@@ -15,18 +15,10 @@ operator|.
 name|search
 operator|.
 name|rules
+operator|.
+name|sets
 package|;
 end_package
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
 
 begin_import
 import|import
@@ -59,47 +51,21 @@ comment|/**  * Subclass of SearchRuleSet that ANDs or ORs between its rules, ret
 end_comment
 
 begin_class
-DECL|class|AndOrSearchRuleSet
+DECL|class|OrSearchRuleSet
 specifier|public
 class|class
-name|AndOrSearchRuleSet
+name|OrSearchRuleSet
 extends|extends
 name|SearchRuleSet
 block|{
-DECL|field|and
-specifier|private
-specifier|final
-name|boolean
-name|and
-decl_stmt|;
-DECL|method|AndOrSearchRuleSet (boolean and)
-specifier|public
-name|AndOrSearchRuleSet
-parameter_list|(
-name|boolean
-name|and
-parameter_list|)
-block|{
-name|this
-operator|.
-name|and
-operator|=
-name|and
-expr_stmt|;
-block|}
 annotation|@
 name|Override
-DECL|method|applyRule (Map<String, String> searchString, BibtexEntry bibtexEntry)
+DECL|method|applyRule (String searchString, BibtexEntry bibtexEntry)
 specifier|public
 name|int
 name|applyRule
 parameter_list|(
-name|Map
-argument_list|<
 name|String
-argument_list|,
-name|String
-argument_list|>
 name|searchString
 parameter_list|,
 name|BibtexEntry
@@ -138,35 +104,14 @@ else|:
 literal|0
 expr_stmt|;
 block|}
-comment|// Then an AND rule demands that score == number of rules, and
-comment|// an OR rule demands score> 0.
+comment|// OR rule demands score> 0.
 name|boolean
 name|res
-decl_stmt|;
-if|if
-condition|(
-name|and
-condition|)
-block|{
-name|res
-operator|=
-name|score
-operator|==
-name|ruleSet
-operator|.
-name|size
-argument_list|()
-expr_stmt|;
-block|}
-else|else
-block|{
-name|res
-operator|=
+init|=
 name|score
 operator|>
 literal|0
-expr_stmt|;
-block|}
+decl_stmt|;
 return|return
 name|res
 condition|?
