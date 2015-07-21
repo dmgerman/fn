@@ -827,10 +827,6 @@ specifier|final
 name|JabRefFrame
 name|frame
 decl_stmt|;
-DECL|field|searchField
-name|String
-name|searchField
-decl_stmt|;
 DECL|field|groupsContextMenu
 specifier|private
 specifier|final
@@ -1064,7 +1060,7 @@ specifier|private
 name|boolean
 name|editModeIndicator
 decl_stmt|;
-comment|/**      * The first element for each group defines which field to use for the      * quicksearch. The next two define the name and regexp for the group.      *      *      */
+comment|/**      * The first element for each group defines which field to use for the      * quicksearch. The next two define the name and regexp for the group.      */
 DECL|method|GroupSelector (JabRefFrame frame, SidePaneManager manager)
 specifier|public
 name|GroupSelector
@@ -4526,7 +4522,7 @@ name|repaint
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      *       * @param node deletion != addition      */
+comment|/**      * @param node deletion != addition      */
 DECL|method|updateGroupContent (GroupTreeNode node)
 specifier|private
 name|void
@@ -4783,7 +4779,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      *       * @param deletion != addition      */
+comment|/**      * @param deletion != addition      */
 DECL|method|updateGroupContentIfEnabled (boolean deletion)
 specifier|public
 name|void
@@ -5422,7 +5418,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and set the specified selection and expansion state.      * @param node If this is non-null, the view is scrolled to make it visible.      */
+comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and set the specified selection and expansion state.      *      * @param node If this is non-null, the view is scrolled to make it visible.      */
 DECL|method|revalidateGroups (TreePath[] selectionPaths, Enumeration<TreePath> expandedNodes, GroupTreeNode node)
 specifier|private
 name|void
@@ -5523,7 +5519,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and maintain the current selection and expansion state. */
+comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and maintain the current selection and expansion state.      */
 DECL|method|revalidateGroups ()
 specifier|public
 name|void
@@ -5536,7 +5532,7 @@ literal|null
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and maintain the current selection and expansion state.      * @param node If this is non-null, the view is scrolled to make it visible.      */
+comment|/**      * Revalidate the groups tree (e.g. after the data stored in the model has      * been changed) and maintain the current selection and expansion state.      *      * @param node If this is non-null, the view is scrolled to make it visible.      */
 DECL|method|revalidateGroups (GroupTreeNode node)
 specifier|private
 name|void
@@ -6024,7 +6020,7 @@ operator|=
 name|node
 expr_stmt|;
 block|}
-comment|/** Returns the node to use in this action. If a node has been          * set explicitly (via setNode), it is returned. Otherwise, the first          * node in the current selection is returned. If all this fails, null          * is returned. */
+comment|/**          * Returns the node to use in this action. If a node has been          * set explicitly (via setNode), it is returned. Otherwise, the first          * node in the current selection is returned. If all this fails, null          * is returned.          */
 DECL|method|getNodeToUse ()
 specifier|public
 name|GroupTreeNode
@@ -8494,7 +8490,7 @@ return|return
 literal|true
 return|;
 block|}
-comment|/**      * Concludes the moving of a group tree node by storing the specified      * undo information, marking the change, and setting the status line.      * @param undo Undo information for the move operation.      * @param node The node that has been moved.      */
+comment|/**      * Concludes the moving of a group tree node by storing the specified      * undo information, marking the change, and setting the status line.      *      * @param undo Undo information for the move operation.      * @param node The node that has been moved.      */
 DECL|method|concludeMoveGroup (AbstractUndoableEdit undo, GroupTreeNode node)
 specifier|public
 name|void
@@ -8739,7 +8735,7 @@ argument_list|)
 argument_list|)
 return|;
 block|}
-comment|/** panel may be null to indicate that no file is currently open. */
+comment|/**      * panel may be null to indicate that no file is currently open.      */
 annotation|@
 name|Override
 DECL|method|setActiveBasePanel (BasePanel panel)
@@ -8964,12 +8960,6 @@ argument_list|()
 expr_stmt|;
 return|return;
 block|}
-name|GroupTreeNode
-name|node
-decl_stmt|;
-name|AbstractGroup
-name|group
-decl_stmt|;
 name|Vector
 argument_list|<
 name|GroupTreeNode
@@ -9003,20 +8993,22 @@ argument_list|()
 condition|;
 control|)
 block|{
+name|GroupTreeNode
 name|node
-operator|=
+init|=
 name|e
 operator|.
 name|nextElement
 argument_list|()
-expr_stmt|;
+decl_stmt|;
+name|AbstractGroup
 name|group
-operator|=
+init|=
 name|node
 operator|.
 name|getGroup
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 name|int
 name|i
 decl_stmt|;
@@ -9135,8 +9127,9 @@ operator|++
 name|i
 control|)
 block|{
+name|GroupTreeNode
 name|node
-operator|=
+init|=
 operator|(
 name|GroupTreeNode
 operator|)
@@ -9149,7 +9142,7 @@ argument_list|)
 operator|.
 name|getParent
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|node
@@ -9179,7 +9172,7 @@ name|revalidate
 argument_list|()
 expr_stmt|;
 block|}
-comment|/** Show groups that, if selected, would show at least one      * of the entries found in the specified search. */
+comment|/**      * Show groups that, if selected, would show at least one      * of the entries found in the specified search.      */
 DECL|method|showOverlappingGroups (List<BibtexEntry> matches)
 specifier|private
 name|void
@@ -9193,23 +9186,14 @@ name|matches
 parameter_list|)
 block|{
 comment|//DatabaseSearch search) {
-name|GroupTreeNode
-name|node
-decl_stmt|;
-name|SearchRule
-name|rule
-decl_stmt|;
-name|BibtexEntry
-name|entry
-decl_stmt|;
-name|Vector
+name|List
 argument_list|<
 name|GroupTreeNode
 argument_list|>
-name|vec
+name|nodes
 init|=
 operator|new
-name|Vector
+name|ArrayList
 argument_list|<
 name|GroupTreeNode
 argument_list|>
@@ -9235,32 +9219,30 @@ argument_list|()
 condition|;
 control|)
 block|{
+name|GroupTreeNode
 name|node
-operator|=
+init|=
 name|e
 operator|.
 name|nextElement
 argument_list|()
-expr_stmt|;
+decl_stmt|;
+name|SearchRule
 name|rule
-operator|=
+init|=
 name|node
 operator|.
 name|getSearchRule
 argument_list|()
-expr_stmt|;
+decl_stmt|;
 for|for
 control|(
 name|BibtexEntry
-name|matche
+name|match
 range|:
 name|matches
 control|)
 block|{
-name|entry
-operator|=
-name|matche
-expr_stmt|;
 if|if
 condition|(
 name|rule
@@ -9271,7 +9253,7 @@ name|SearchRule
 operator|.
 name|DUMMY_QUERY
 argument_list|,
-name|entry
+name|match
 argument_list|)
 operator|==
 literal|0
@@ -9279,7 +9261,7 @@ condition|)
 block|{
 continue|continue;
 block|}
-name|vec
+name|nodes
 operator|.
 name|add
 argument_list|(
@@ -9293,7 +9275,7 @@ name|groupsTree
 operator|.
 name|setHighlight2Cells
 argument_list|(
-name|vec
+name|nodes
 operator|.
 name|toArray
 argument_list|()

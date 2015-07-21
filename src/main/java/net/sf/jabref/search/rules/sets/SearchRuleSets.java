@@ -28,9 +28,9 @@ enum|enum
 name|RuleSetType
 block|{
 DECL|enumConstant|AND
-DECL|enumConstant|OR
 name|AND
 block|,
+DECL|enumConstant|OR
 name|OR
 block|;     }
 DECL|method|build (RuleSetType ruleSet)
