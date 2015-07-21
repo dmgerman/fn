@@ -5137,7 +5137,9 @@ name|GroupingWorker
 argument_list|(
 name|searchRule
 argument_list|,
-literal|"dummy"
+name|SearchRule
+operator|.
+name|DUMMY_QUERY
 argument_list|)
 decl_stmt|;
 name|worker
@@ -9265,7 +9267,9 @@ name|rule
 operator|.
 name|applyRule
 argument_list|(
-literal|"dummy"
+name|SearchRule
+operator|.
+name|DUMMY_QUERY
 argument_list|,
 name|entry
 argument_list|)

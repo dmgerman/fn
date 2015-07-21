@@ -886,7 +886,9 @@ if|if
 condition|(
 name|applyRule
 argument_list|(
-literal|null
+name|SearchRule
+operator|.
+name|NULL_QUERY
 argument_list|,
 name|entry
 argument_list|)
@@ -1059,7 +1061,7 @@ if|if
 condition|(
 name|applyRule
 argument_list|(
-literal|null
+name|NULL_QUERY
 argument_list|,
 name|entry
 argument_list|)

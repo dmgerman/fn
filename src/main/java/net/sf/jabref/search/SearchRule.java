@@ -34,6 +34,19 @@ specifier|public
 interface|interface
 name|SearchRule
 block|{
+comment|/*      * Because some rules require the query in the constructor,      * the parameter query is not always used as expected.      * The two constants provide means to mark this as dummy.      * As I am not sure whether null could be substituted by "dummy" I leave everything as is.      */
+DECL|field|DUMMY_QUERY
+name|String
+name|DUMMY_QUERY
+init|=
+literal|"dummy"
+decl_stmt|;
+DECL|field|NULL_QUERY
+name|String
+name|NULL_QUERY
+init|=
+literal|null
+decl_stmt|;
 DECL|method|applyRule (String query, BibtexEntry bibtexEntry)
 name|int
 name|applyRule

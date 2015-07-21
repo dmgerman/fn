@@ -74,12 +74,12 @@ name|SimpleSearchRule
 implements|implements
 name|SearchRule
 block|{
-DECL|field|removeBrackets
+DECL|field|REMOVE_LATEX_COMMANDS
 specifier|private
 specifier|static
 specifier|final
 name|RemoveLatexCommands
-name|removeBrackets
+name|REMOVE_LATEX_COMMANDS
 init|=
 operator|new
 name|RemoveLatexCommands
@@ -199,7 +199,7 @@ name|fieldContent
 init|=
 name|SimpleSearchRule
 operator|.
-name|removeBrackets
+name|REMOVE_LATEX_COMMANDS
 operator|.
 name|format
 argument_list|(

@@ -970,7 +970,9 @@ block|{
 return|return
 name|contains
 argument_list|(
-literal|"dummy"
+name|SearchRule
+operator|.
+name|DUMMY_QUERY
 argument_list|,
 name|entry
 argument_list|)
