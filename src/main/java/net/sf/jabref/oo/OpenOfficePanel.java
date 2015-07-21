@@ -2717,7 +2717,7 @@ argument_list|()
 decl_stmt|;
 name|comp
 operator|.
-name|setContent
+name|setContentContainer
 argument_list|(
 name|content
 argument_list|)
