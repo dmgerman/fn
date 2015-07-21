@@ -215,7 +215,6 @@ literal|0
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|// tlb.setOpaque(false);
 name|close
 operator|.
 name|setBorder
@@ -354,7 +353,6 @@ name|CloseButtonListener
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|//        setToolBar(tlb);
 name|this
 operator|.
 name|getUI
@@ -368,7 +366,6 @@ argument_list|(
 name|tlb
 argument_list|)
 expr_stmt|;
-comment|// setBorder(BorderFactory.createEtchedBorder());
 name|setBorder
 argument_list|(
 name|BorderFactory
@@ -377,10 +374,6 @@ name|createEmptyBorder
 argument_list|()
 argument_list|)
 expr_stmt|;
-comment|// setBorder(BorderFactory.createMatteBorder(1,1,1,1,java.awt.Color.green));
-comment|// setPreferredSize(new java.awt.Dimension
-comment|// (GUIGlobals.SPLIT_PANE_DIVIDER_LOCATION, 200));
-comment|// Util.pr(""+GUIGlobals.SPLIT_PANE_DIVIDER_LOCATION);
 block|}
 DECL|method|hideAway ()
 name|void
