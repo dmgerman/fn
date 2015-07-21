@@ -84,7 +84,27 @@ name|javax
 operator|.
 name|swing
 operator|.
+name|ImageIcon
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
 name|JButton
+import|;
+end_import
+
+begin_import
+import|import
+name|javax
+operator|.
+name|swing
+operator|.
+name|JLabel
 import|;
 end_import
 
@@ -179,10 +199,24 @@ name|String
 name|title
 parameter_list|)
 block|{
-comment|//TODO: set icon
 name|super
 argument_list|(
 name|title
+argument_list|)
+expr_stmt|;
+name|this
+operator|.
+name|add
+argument_list|(
+operator|new
+name|JLabel
+argument_list|(
+operator|new
+name|ImageIcon
+argument_list|(
+name|icon
+argument_list|)
+argument_list|)
 argument_list|)
 expr_stmt|;
 name|this
@@ -466,14 +500,14 @@ return|return
 name|panel
 return|;
 block|}
-comment|/**      * Override this method if the component needs to make any changes before it      * can close.      */
+comment|/**      * Override this method if the component needs to make any changes before it can close.      */
 DECL|method|componentClosing ()
 specifier|public
 name|void
 name|componentClosing
 parameter_list|()
 block|{      }
-comment|/**      * Override this method if the component needs to do any actions when      * opening.      */
+comment|/**      * Override this method if the component needs to do any actions when opening.      */
 DECL|method|componentOpening ()
 specifier|public
 name|void
