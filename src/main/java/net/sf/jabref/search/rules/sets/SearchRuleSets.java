@@ -29,12 +29,9 @@ name|RuleSetType
 block|{
 DECL|enumConstant|AND
 DECL|enumConstant|OR
-DECL|enumConstant|NONE
 name|AND
 block|,
 name|OR
-block|,
-name|NONE
 block|;     }
 DECL|method|build (RuleSetType ruleSet)
 specifier|public
@@ -61,27 +58,11 @@ name|AndSearchRuleSet
 argument_list|()
 return|;
 block|}
-elseif|else
-if|if
-condition|(
-name|ruleSet
-operator|==
-name|RuleSetType
-operator|.
-name|OR
-condition|)
-block|{
-return|return
-operator|new
-name|OrSearchRuleSet
-argument_list|()
-return|;
-block|}
 else|else
 block|{
 return|return
 operator|new
-name|SearchRuleSet
+name|OrSearchRuleSet
 argument_list|()
 return|;
 block|}

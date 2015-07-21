@@ -130,24 +130,6 @@ name|SearchRule
 import|;
 end_import
 
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
-name|search
-operator|.
-name|rules
-operator|.
-name|sets
-operator|.
-name|SearchRuleSet
-import|;
-end_import
-
 begin_comment
 comment|/**  * @author Silberer, Zirn  */
 end_comment
@@ -229,15 +211,8 @@ name|fieldYear
 argument_list|()
 expr_stmt|;
 block|}
-name|SearchRuleSet
-name|searchRules
-init|=
-operator|new
-name|SearchRuleSet
-argument_list|()
-decl_stmt|;
 name|SearchRule
-name|rule1
+name|searchRule
 decl_stmt|;
 if|if
 condition|(
@@ -251,7 +226,7 @@ literal|"regExpSearch"
 argument_list|)
 condition|)
 block|{
-name|rule1
+name|searchRule
 operator|=
 operator|new
 name|BasicRegexSearchRule
@@ -269,7 +244,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|rule1
+name|searchRule
 operator|=
 operator|new
 name|BasicSearchRule
@@ -287,7 +262,7 @@ expr_stmt|;
 block|}
 try|try
 block|{
-name|rule1
+name|searchRule
 operator|=
 operator|new
 name|SearchExpression
@@ -320,17 +295,10 @@ name|Exception
 name|ignored
 parameter_list|)
 block|{          }
-name|searchRules
-operator|.
-name|addRule
-argument_list|(
-name|rule1
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|!
-name|searchRules
+name|searchRule
 operator|.
 name|validateSearchStrings
 argument_list|(
@@ -391,7 +359,7 @@ block|{
 name|boolean
 name|hit
 init|=
-name|searchRules
+name|searchRule
 operator|.
 name|applyRule
 argument_list|(

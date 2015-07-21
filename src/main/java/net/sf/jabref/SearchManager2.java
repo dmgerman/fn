@@ -2888,15 +2888,8 @@ argument_list|()
 argument_list|)
 expr_stmt|;
 comment|// Setup search parameters common to both normal and float.
-name|SearchRuleSet
-name|searchRules
-init|=
-operator|new
-name|SearchRuleSet
-argument_list|()
-decl_stmt|;
 name|SearchRule
-name|rule1
+name|searchRule
 decl_stmt|;
 if|if
 condition|(
@@ -2910,7 +2903,7 @@ literal|"regExpSearch"
 argument_list|)
 condition|)
 block|{
-name|rule1
+name|searchRule
 operator|=
 operator|new
 name|BasicRegexSearchRule
@@ -2928,7 +2921,7 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|rule1
+name|searchRule
 operator|=
 operator|new
 name|BasicSearchRule
@@ -2948,7 +2941,7 @@ try|try
 block|{
 comment|// this searches specified fields if specified,
 comment|// and all fields otherwise
-name|rule1
+name|searchRule
 operator|=
 operator|new
 name|SearchExpression
@@ -2986,17 +2979,10 @@ parameter_list|)
 block|{
 comment|// we'll do a search in all fields
 block|}
-name|searchRules
-operator|.
-name|addRule
-argument_list|(
-name|rule1
-argument_list|)
-expr_stmt|;
 if|if
 condition|(
 operator|!
-name|searchRules
+name|searchRule
 operator|.
 name|validateSearchStrings
 argument_list|(
@@ -3032,7 +3018,7 @@ init|=
 operator|new
 name|SearchWorker
 argument_list|(
-name|searchRules
+name|searchRule
 argument_list|,
 name|searchField
 operator|.
@@ -3083,11 +3069,11 @@ name|SearchWorker
 extends|extends
 name|AbstractWorker
 block|{
-DECL|field|rules
+DECL|field|rule
 specifier|private
 specifier|final
-name|SearchRuleSet
-name|rules
+name|SearchRule
+name|rule
 decl_stmt|;
 DECL|field|searchTerm
 specifier|private
@@ -3101,12 +3087,12 @@ name|hits
 init|=
 literal|0
 decl_stmt|;
-DECL|method|SearchWorker (SearchRuleSet rules, String searchTerm)
+DECL|method|SearchWorker (SearchRule rule, String searchTerm)
 specifier|public
 name|SearchWorker
 parameter_list|(
-name|SearchRuleSet
-name|rules
+name|SearchRule
+name|rule
 parameter_list|,
 name|String
 name|searchTerm
@@ -3114,9 +3100,9 @@ parameter_list|)
 block|{
 name|this
 operator|.
-name|rules
+name|rule
 operator|=
-name|rules
+name|rule
 expr_stmt|;
 name|this
 operator|.
@@ -3160,7 +3146,7 @@ block|{
 name|boolean
 name|hit
 init|=
-name|rules
+name|rule
 operator|.
 name|applyRule
 argument_list|(
@@ -3240,7 +3226,7 @@ block|{
 name|boolean
 name|hit
 init|=
-name|rules
+name|rule
 operator|.
 name|applyRule
 argument_list|(
