@@ -105,18 +105,13 @@ literal|0
 expr_stmt|;
 block|}
 comment|// Then an AND rule demands that score == number of rules
-name|boolean
-name|res
-init|=
+return|return
 name|score
 operator|==
 name|ruleSet
 operator|.
 name|size
 argument_list|()
-decl_stmt|;
-return|return
-name|res
 condition|?
 literal|1
 else|:

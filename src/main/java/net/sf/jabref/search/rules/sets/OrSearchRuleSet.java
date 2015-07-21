@@ -105,15 +105,10 @@ literal|0
 expr_stmt|;
 block|}
 comment|// OR rule demands score> 0.
-name|boolean
-name|res
-init|=
+return|return
 name|score
 operator|>
 literal|0
-decl_stmt|;
-return|return
-name|res
 condition|?
 literal|1
 else|:

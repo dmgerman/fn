@@ -28,18 +28,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|BibtexEntry
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|search
 operator|.
 name|SearchRule
@@ -53,18 +41,6 @@ operator|.
 name|util
 operator|.
 name|Vector
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|regex
-operator|.
-name|PatternSyntaxException
 import|;
 end_import
 
