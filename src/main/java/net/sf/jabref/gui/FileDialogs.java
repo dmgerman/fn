@@ -637,7 +637,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useNativeFileDialogOnMac"
+name|JabRefPreferences
+operator|.
+name|USE_NATIVE_FILE_DIALOG_ON_MAC
 argument_list|)
 condition|)
 block|{

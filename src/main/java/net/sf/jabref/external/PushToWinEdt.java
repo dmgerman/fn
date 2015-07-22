@@ -647,7 +647,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"citeCommandWinEdt"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_WIN_EDT
 argument_list|,
 name|citeCommand
 operator|.

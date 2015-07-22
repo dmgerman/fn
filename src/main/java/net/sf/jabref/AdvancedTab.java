@@ -1436,7 +1436,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useNativeFileDialogOnMac"
+name|JabRefPreferences
+operator|.
+name|USE_NATIVE_FILE_DIALOG_ON_MAC
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1450,7 +1452,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"filechooserDisableRename"
+name|JabRefPreferences
+operator|.
+name|FILECHOOSER_DISABLE_RENAME
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1573,7 +1577,9 @@ name|preferences
 operator|.
 name|putBoolean
 argument_list|(
-literal|"useNativeFileDialogOnMac"
+name|JabRefPreferences
+operator|.
+name|USE_NATIVE_FILE_DIALOG_ON_MAC
 argument_list|,
 name|useNativeFileDialogOnMac
 operator|.
@@ -1585,7 +1591,9 @@ name|preferences
 operator|.
 name|putBoolean
 argument_list|(
-literal|"filechooserDisableRename"
+name|JabRefPreferences
+operator|.
+name|FILECHOOSER_DISABLE_RENAME
 argument_list|,
 name|filechooserDisableRename
 operator|.

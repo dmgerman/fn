@@ -2433,7 +2433,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"importInspectionDialogWidth"
+name|JabRefPreferences
+operator|.
+name|IMPORT_INSPECTION_DIALOG_WIDTH
 argument_list|)
 argument_list|,
 name|Globals
@@ -2442,7 +2444,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"importInspectionDialogHeight"
+name|JabRefPreferences
+operator|.
+name|IMPORT_INSPECTION_DIALOG_HEIGHT
 argument_list|)
 argument_list|)
 argument_list|)
@@ -2487,7 +2491,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"importInspectionDialogWidth"
+name|JabRefPreferences
+operator|.
+name|IMPORT_INSPECTION_DIALOG_WIDTH
 argument_list|,
 name|getSize
 argument_list|()
@@ -2501,7 +2507,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"importInspectionDialogHeight"
+name|JabRefPreferences
+operator|.
+name|IMPORT_INSPECTION_DIALOG_HEIGHT
 argument_list|,
 name|getSize
 argument_list|()

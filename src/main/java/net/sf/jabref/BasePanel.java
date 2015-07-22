@@ -13593,7 +13593,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"generateKeysBeforeSaving"
+name|JabRefPreferences
+operator|.
+name|GENERATE_KEYS_BEFORE_SAVING
 argument_list|)
 condition|)
 block|{

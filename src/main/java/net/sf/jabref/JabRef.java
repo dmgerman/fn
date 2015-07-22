@@ -956,7 +956,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"personalJournalList"
+name|JabRefPreferences
+operator|.
+name|PERSONAL_JOURNAL_LIST
 argument_list|)
 decl_stmt|;
 if|if
@@ -1034,7 +1036,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"personalJournalList"
+name|JabRefPreferences
+operator|.
+name|PERSONAL_JOURNAL_LIST
 argument_list|,
 literal|""
 argument_list|)

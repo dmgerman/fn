@@ -1488,7 +1488,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"lastUsedExport"
+name|JabRefPreferences
+operator|.
+name|LAST_USED_EXPORT
 argument_list|,
 name|format
 operator|.

@@ -2085,7 +2085,9 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"externalJournalLists"
+name|JabRefPreferences
+operator|.
+name|EXTERNAL_JOURNAL_LISTS
 argument_list|)
 decl_stmt|;
 if|if
@@ -2636,7 +2638,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"personalJournalList"
+name|JabRefPreferences
+operator|.
+name|PERSONAL_JOURNAL_LIST
 argument_list|,
 name|filename
 argument_list|)
@@ -2706,7 +2710,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"externalJournalLists"
+name|JabRefPreferences
+operator|.
+name|EXTERNAL_JOURNAL_LISTS
 argument_list|,
 literal|""
 argument_list|)
@@ -2738,7 +2744,9 @@ name|prefs
 operator|.
 name|putStringArray
 argument_list|(
-literal|"externalJournalLists"
+name|JabRefPreferences
+operator|.
+name|EXTERNAL_JOURNAL_LISTS
 argument_list|,
 name|list
 argument_list|)

@@ -11449,7 +11449,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"personalJournalList"
+name|JabRefPreferences
+operator|.
+name|PERSONAL_JOURNAL_LIST
 argument_list|)
 operator|!=
 literal|null

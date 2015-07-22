@@ -1321,7 +1321,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"searchDialogWidth"
+name|JabRefPreferences
+operator|.
+name|SEARCH_DIALOG_WIDTH
 argument_list|,
 name|diag
 operator|.
@@ -1337,7 +1339,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"searchDialogHeight"
+name|JabRefPreferences
+operator|.
+name|SEARCH_DIALOG_HEIGHT
 argument_list|,
 name|diag
 operator|.
@@ -1379,7 +1383,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"searchDialogWidth"
+name|JabRefPreferences
+operator|.
+name|SEARCH_DIALOG_WIDTH
 argument_list|)
 argument_list|,
 name|Globals
@@ -1388,7 +1394,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"searchDialogHeight"
+name|JabRefPreferences
+operator|.
+name|SEARCH_DIALOG_HEIGHT
 argument_list|)
 argument_list|)
 argument_list|)

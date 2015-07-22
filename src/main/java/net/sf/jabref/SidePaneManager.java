@@ -1338,7 +1338,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"sidePaneWidth"
+name|JabRefPreferences
+operator|.
+name|SIDE_PANE_WIDTH
 argument_list|)
 decl_stmt|;
 if|if
@@ -1394,7 +1396,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"sidePaneWidth"
+name|JabRefPreferences
+operator|.
+name|SIDE_PANE_WIDTH
 argument_list|,
 name|frame
 operator|.

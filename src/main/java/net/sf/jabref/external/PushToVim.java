@@ -345,7 +345,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"citeCommandVim"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_VIM
 argument_list|,
 name|citeCommand
 operator|.

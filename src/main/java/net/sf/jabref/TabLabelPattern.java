@@ -489,7 +489,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"generateKeysBeforeSaving"
+name|JabRefPreferences
+operator|.
+name|GENERATE_KEYS_BEFORE_SAVING
 argument_list|,
 name|generateOnSave
 operator|.
@@ -511,7 +513,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"keyGenAlwaysAddLetter"
+name|JabRefPreferences
+operator|.
+name|KEY_GEN_ALWAYS_ADD_LETTER
 argument_list|,
 literal|true
 argument_list|)
@@ -543,7 +547,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"keyGenAlwaysAddLetter"
+name|JabRefPreferences
+operator|.
+name|KEY_GEN_ALWAYS_ADD_LETTER
 argument_list|,
 literal|false
 argument_list|)
@@ -568,7 +574,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"keyGenAlwaysAddLetter"
+name|JabRefPreferences
+operator|.
+name|KEY_GEN_ALWAYS_ADD_LETTER
 argument_list|,
 literal|false
 argument_list|)

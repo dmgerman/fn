@@ -921,7 +921,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"floatMarkedEntries"
+name|JabRefPreferences
+operator|.
+name|FLOAT_MARKED_ENTRIES
 argument_list|)
 condition|)
 block|{

@@ -2096,7 +2096,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"keyGenAlwaysAddLetter"
+name|JabRefPreferences
+operator|.
+name|KEY_GEN_ALWAYS_ADD_LETTER
 argument_list|)
 decl_stmt|,
 name|firstLetterA

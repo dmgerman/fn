@@ -4209,7 +4209,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"filechooserDisableRename"
+name|JabRefPreferences
+operator|.
+name|FILECHOOSER_DISABLE_RENAME
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5815,7 +5817,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"sidePaneWidth"
+name|JabRefPreferences
+operator|.
+name|SIDE_PANE_WIDTH
 argument_list|,
 name|width
 argument_list|)

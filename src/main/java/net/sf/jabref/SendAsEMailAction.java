@@ -349,7 +349,9 @@ argument_list|()
 operator|.
 name|getBoolean
 argument_list|(
-literal|"openFoldersOfAttachedFiles"
+name|JabRefPreferences
+operator|.
+name|OPEN_FOLDERS_OF_ATTACHED_FILES
 argument_list|)
 decl_stmt|;
 name|List

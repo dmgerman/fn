@@ -643,7 +643,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"citeCommandLed"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_LED
 argument_list|,
 name|citeCommand
 operator|.
