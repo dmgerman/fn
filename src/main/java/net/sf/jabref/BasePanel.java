@@ -6331,7 +6331,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"runAutomaticFileSearch"
+name|JabRefPreferences
+operator|.
+name|RUN_AUTOMATIC_FILE_SEARCH
 argument_list|)
 condition|)
 block|{

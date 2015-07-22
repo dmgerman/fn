@@ -276,7 +276,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"promptBeforeUsingAutosave"
+name|JabRefPreferences
+operator|.
+name|PROMPT_BEFORE_USING_AUTOSAVE
 argument_list|)
 condition|)
 block|{

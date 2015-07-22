@@ -467,7 +467,9 @@ name|Globals
 operator|.
 name|lang
 argument_list|(
-literal|"Autosave"
+name|JabRefPreferences
+operator|.
+name|AUTO_SAVE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1763,7 +1765,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autoSave"
+name|JabRefPreferences
+operator|.
+name|AUTO_SAVE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1775,7 +1779,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"promptBeforeUsingAutosave"
+name|JabRefPreferences
+operator|.
+name|PROMPT_BEFORE_USING_AUTOSAVE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1787,7 +1793,9 @@ name|_prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"autoSaveInterval"
+name|JabRefPreferences
+operator|.
+name|AUTO_SAVE_INTERVAL
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1806,7 +1814,9 @@ name|_prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"valueDelimiters"
+name|JabRefPreferences
+operator|.
+name|VALUE_DELIMITERS2
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1818,7 +1828,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"includeEmptyFields"
+name|JabRefPreferences
+operator|.
+name|INCLUDE_EMPTY_FIELDS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2076,7 +2088,9 @@ name|_prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"valueDelimiters"
+name|JabRefPreferences
+operator|.
+name|VALUE_DELIMITERS2
 argument_list|,
 name|valueDelimiter
 operator|.

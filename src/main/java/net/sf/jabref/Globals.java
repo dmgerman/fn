@@ -11334,7 +11334,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useIEEEAbrv"
+name|JabRefPreferences
+operator|.
+name|USE_IEEE_ABRV
 argument_list|)
 condition|)
 block|{

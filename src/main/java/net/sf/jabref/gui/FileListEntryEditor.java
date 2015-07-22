@@ -1519,7 +1519,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"allowFileAutoOpenBrowse"
+name|JabRefPreferences
+operator|.
+name|ALLOW_FILE_AUTO_OPEN_BROWSE
 argument_list|)
 expr_stmt|;
 if|if

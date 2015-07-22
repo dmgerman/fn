@@ -536,7 +536,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"selectedFetcherIndex"
+name|JabRefPreferences
+operator|.
+name|SELECTED_FETCHER_INDEX
 argument_list|)
 decl_stmt|;
 if|if
@@ -646,7 +648,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"selectedFetcherIndex"
+name|JabRefPreferences
+operator|.
+name|SELECTED_FETCHER_INDEX
 argument_list|,
 name|fetcherChoice
 operator|.
@@ -1806,7 +1810,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"webSearchVisible"
+name|JabRefPreferences
+operator|.
+name|WEB_SEARCH_VISIBLE
 argument_list|,
 name|Boolean
 operator|.
@@ -1833,7 +1839,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"webSearchVisible"
+name|JabRefPreferences
+operator|.
+name|WEB_SEARCH_VISIBLE
 argument_list|,
 name|Boolean
 operator|.

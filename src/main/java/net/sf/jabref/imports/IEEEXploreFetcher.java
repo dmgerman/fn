@@ -2029,7 +2029,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useConvertToEquation"
+name|JabRefPreferences
+operator|.
+name|USE_CONVERT_TO_EQUATION
 argument_list|)
 condition|)
 block|{
@@ -2146,7 +2148,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useUnitFormatterOnSearch"
+name|JabRefPreferences
+operator|.
+name|USE_UNIT_FORMATTER_ON_SEARCH
 argument_list|)
 condition|)
 block|{
@@ -2169,7 +2173,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useCaseKeeperOnSearch"
+name|JabRefPreferences
+operator|.
+name|USE_CASE_KEEPER_ON_SEARCH
 argument_list|)
 condition|)
 block|{
@@ -3128,7 +3134,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useIEEEAbrv"
+name|JabRefPreferences
+operator|.
+name|USE_IEEE_ABRV
 argument_list|)
 condition|)
 block|{
@@ -3494,7 +3502,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useConvertToEquation"
+name|JabRefPreferences
+operator|.
+name|USE_CONVERT_TO_EQUATION
 argument_list|)
 condition|)
 block|{

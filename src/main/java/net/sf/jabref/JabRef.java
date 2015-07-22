@@ -4637,7 +4637,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autoSave"
+name|JabRefPreferences
+operator|.
+name|AUTO_SAVE
 argument_list|)
 condition|)
 block|{

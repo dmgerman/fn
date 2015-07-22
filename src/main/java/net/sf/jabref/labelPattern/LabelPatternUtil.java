@@ -2109,7 +2109,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"keyGenFirstLetterA"
+name|JabRefPreferences
+operator|.
+name|KEY_GEN_FIRST_LETTER_A
 argument_list|)
 decl_stmt|;
 if|if

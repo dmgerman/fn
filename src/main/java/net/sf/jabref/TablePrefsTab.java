@@ -2095,7 +2095,9 @@ name|_prefs
 operator|.
 name|put
 argument_list|(
-literal|"numericFields"
+name|JabRefPreferences
+operator|.
+name|NUMERIC_FIELDS
 argument_list|,
 name|newVal
 argument_list|)

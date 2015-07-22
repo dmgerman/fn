@@ -8822,7 +8822,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"webSearchVisible"
+name|JabRefPreferences
+operator|.
+name|WEB_SEARCH_VISIBLE
 argument_list|)
 condition|)
 block|{

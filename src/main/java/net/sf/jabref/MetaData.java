@@ -915,7 +915,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"bibLocationAsFileDir"
+name|JabRefPreferences
+operator|.
+name|BIB_LOCATION_AS_FILE_DIR
 argument_list|)
 operator|&&
 operator|(
@@ -935,7 +937,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"bibLocAsPrimaryDir"
+name|JabRefPreferences
+operator|.
+name|BIB_LOC_AS_PRIMARY_DIR
 argument_list|)
 condition|)
 block|{

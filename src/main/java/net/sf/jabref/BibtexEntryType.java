@@ -2920,7 +2920,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"biblatexMode"
+name|JabRefPreferences
+operator|.
+name|BIBLATEX_MODE
 argument_list|)
 condition|)
 block|{

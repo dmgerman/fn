@@ -1370,7 +1370,9 @@ argument_list|()
 operator|.
 name|getBoolean
 argument_list|(
-literal|"enforceLegalBibtexKey"
+name|JabRefPreferences
+operator|.
+name|ENFORCE_LEGAL_BIBTEX_KEY
 argument_list|)
 condition|)
 block|{

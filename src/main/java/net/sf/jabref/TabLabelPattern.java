@@ -536,7 +536,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"keyGenFirstLetterA"
+name|JabRefPreferences
+operator|.
+name|KEY_GEN_FIRST_LETTER_A
 argument_list|,
 literal|true
 argument_list|)
@@ -563,7 +565,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"keyGenFirstLetterA"
+name|JabRefPreferences
+operator|.
+name|KEY_GEN_FIRST_LETTER_A
 argument_list|,
 literal|false
 argument_list|)

@@ -469,7 +469,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"dbConnectServerType"
+name|JabRefPreferences
+operator|.
+name|DB_CONNECT_SERVER_TYPE
 argument_list|,
 name|getServerType
 argument_list|()
@@ -481,7 +483,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"dbConnectHostname"
+name|JabRefPreferences
+operator|.
+name|DB_CONNECT_HOSTNAME
 argument_list|,
 name|getServerHostname
 argument_list|()
@@ -493,7 +497,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"dbConnectDatabase"
+name|JabRefPreferences
+operator|.
+name|DB_CONNECT_DATABASE
 argument_list|,
 name|getDatabase
 argument_list|()
@@ -505,7 +511,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"dbConnectUsername"
+name|JabRefPreferences
+operator|.
+name|DB_CONNECT_USERNAME
 argument_list|,
 name|getUsername
 argument_list|()
