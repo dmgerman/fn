@@ -321,7 +321,7 @@ return|return
 name|connection
 return|;
 block|}
-comment|/**      * Encoding will be determined from "defaultEncoding"      *      * @return the downloaded string      * @throws IOException      */
+comment|/**      * Encoding will be determined from JabRefPreferences.DEFAULT_ENCODING      *      * @return the downloaded string      * @throws IOException      */
 DECL|method|downloadToString ()
 specifier|public
 name|String

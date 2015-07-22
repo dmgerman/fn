@@ -550,7 +550,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"renameOnMoveFileToFileDir"
+name|JabRefPreferences
+operator|.
+name|RENAME_ON_MOVE_FILE_TO_FILE_DIR
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -642,7 +644,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"renameOnMoveFileToFileDir"
+name|JabRefPreferences
+operator|.
+name|RENAME_ON_MOVE_FILE_TO_FILE_DIR
 argument_list|,
 name|cbm
 operator|.

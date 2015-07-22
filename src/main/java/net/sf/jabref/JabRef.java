@@ -3148,7 +3148,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultEncoding"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_ENCODING
 argument_list|)
 argument_list|,
 literal|false
@@ -3866,7 +3868,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"overrideDefaultFonts"
+name|JabRefPreferences
+operator|.
+name|OVERRIDE_DEFAULT_FONTS
 argument_list|)
 decl_stmt|;
 if|if
@@ -4354,7 +4358,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"fontStyle"
+name|JabRefPreferences
+operator|.
+name|FONT_STYLE
 argument_list|)
 argument_list|,
 name|Globals
@@ -4363,7 +4369,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"fontSize"
+name|JabRefPreferences
+operator|.
+name|FONT_SIZE
 argument_list|)
 argument_list|)
 expr_stmt|;

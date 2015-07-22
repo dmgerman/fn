@@ -4323,7 +4323,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"toolbarVisible"
+name|JabRefPreferences
+operator|.
+name|TOOLBAR_VISIBLE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4724,7 +4726,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"highlightGroupsMatchingAny"
+name|JabRefPreferences
+operator|.
+name|HIGHLIGHT_GROUPS_MATCHING_ANY
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4738,7 +4742,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"highlightGroupsMatchingAll"
+name|JabRefPreferences
+operator|.
+name|HIGHLIGHT_GROUPS_MATCHING_ALL
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5124,7 +5130,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"searchPanelVisible"
+name|JabRefPreferences
+operator|.
+name|SEARCH_PANEL_VISIBLE
 argument_list|)
 condition|)
 block|{
@@ -5759,7 +5767,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"toolbarVisible"
+name|JabRefPreferences
+operator|.
+name|TOOLBAR_VISIBLE
 argument_list|,
 name|tlb
 operator|.
@@ -5771,7 +5781,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"searchPanelVisible"
+name|JabRefPreferences
+operator|.
+name|SEARCH_PANEL_VISIBLE
 argument_list|,
 name|sidePaneManager
 operator|.
@@ -14857,7 +14869,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"fontSize"
+name|JabRefPreferences
+operator|.
+name|FONT_SIZE
 argument_list|,
 name|currentSize
 operator|+
@@ -14990,7 +15004,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"fontSize"
+name|JabRefPreferences
+operator|.
+name|FONT_SIZE
 argument_list|,
 name|currentSize
 operator|-

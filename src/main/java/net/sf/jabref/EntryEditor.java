@@ -3588,7 +3588,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"fontSize"
+name|JabRefPreferences
+operator|.
+name|FONT_SIZE
 argument_list|)
 argument_list|)
 argument_list|)

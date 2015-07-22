@@ -2026,7 +2026,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"groupsVisibleRows"
+name|JabRefPreferences
+operator|.
+name|GROUPS_VISIBLE_ROWS
 argument_list|)
 operator|+
 literal|1
@@ -2068,7 +2070,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"groupsVisibleRows"
+name|JabRefPreferences
+operator|.
+name|GROUPS_VISIBLE_ROWS
 argument_list|,
 name|i
 argument_list|)
@@ -2159,7 +2163,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"groupsVisibleRows"
+name|JabRefPreferences
+operator|.
+name|GROUPS_VISIBLE_ROWS
 argument_list|)
 operator|-
 literal|1
@@ -2214,7 +2220,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"groupsVisibleRows"
+name|JabRefPreferences
+operator|.
+name|GROUPS_VISIBLE_ROWS
 argument_list|,
 name|i
 argument_list|)

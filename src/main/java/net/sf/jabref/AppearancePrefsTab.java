@@ -770,7 +770,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"overrideDefaultFonts"
+name|JabRefPreferences
+operator|.
+name|OVERRIDE_DEFAULT_FONTS
 argument_list|)
 argument_list|)
 expr_stmt|;

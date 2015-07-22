@@ -5243,7 +5243,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"generalFields"
+name|JabRefPreferences
+operator|.
+name|GENERAL_FIELDS
 argument_list|,
 name|newGen
 argument_list|)

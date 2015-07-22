@@ -382,7 +382,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"historySize"
+name|JabRefPreferences
+operator|.
+name|HISTORY_SIZE
 argument_list|)
 condition|)
 block|{

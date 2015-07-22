@@ -1505,7 +1505,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useCustomIconTheme"
+name|JabRefPreferences
+operator|.
+name|USE_CUSTOM_ICON_THEME
 argument_list|)
 condition|)
 block|{
