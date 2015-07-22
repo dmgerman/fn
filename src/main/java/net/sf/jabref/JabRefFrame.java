@@ -4345,7 +4345,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"windowMaximised"
+name|JabRefPreferences
+operator|.
+name|WINDOW_MAXIMISED
 argument_list|)
 condition|)
 block|{
@@ -4356,7 +4358,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"sizeX"
+name|JabRefPreferences
+operator|.
+name|SIZE_X
 argument_list|)
 decl_stmt|;
 name|int
@@ -4366,7 +4370,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"sizeY"
+name|JabRefPreferences
+operator|.
+name|SIZE_Y
 argument_list|)
 decl_stmt|;
 name|int
@@ -4376,7 +4382,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"posX"
+name|JabRefPreferences
+operator|.
+name|POS_X
 argument_list|)
 decl_stmt|;
 name|int
@@ -4386,7 +4394,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"posY"
+name|JabRefPreferences
+operator|.
+name|POS_Y
 argument_list|)
 decl_stmt|;
 comment|/*             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();             GraphicsDevice[] gs = ge.getScreenDevices();               // Get size of each screen             for (int i=0; i<gs.length; i++) {                 DisplayMode dm = gs[i].getDisplayMode();                 int screenWidth = dm.getWidth();                 int screenHeight = dm.getHeight();                 System.out.println(gs[i].getDefaultConfiguration().getBounds());             }*/
@@ -4533,7 +4543,9 @@ name|prefs
 operator|.
 name|getIntDefault
 argument_list|(
-literal|"posX"
+name|JabRefPreferences
+operator|.
+name|POS_X
 argument_list|)
 expr_stmt|;
 name|sizeX
@@ -4542,7 +4554,9 @@ name|prefs
 operator|.
 name|getIntDefault
 argument_list|(
-literal|"sizeX"
+name|JabRefPreferences
+operator|.
+name|SIZE_X
 argument_list|)
 expr_stmt|;
 block|}
@@ -4580,7 +4594,9 @@ name|prefs
 operator|.
 name|getIntDefault
 argument_list|(
-literal|"posY"
+name|JabRefPreferences
+operator|.
+name|POS_Y
 argument_list|)
 expr_stmt|;
 name|sizeY
@@ -4589,7 +4605,9 @@ name|prefs
 operator|.
 name|getIntDefault
 argument_list|(
-literal|"sizeY"
+name|JabRefPreferences
+operator|.
+name|SIZE_Y
 argument_list|)
 expr_stmt|;
 block|}
@@ -5650,7 +5668,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"posX"
+name|JabRefPreferences
+operator|.
+name|POS_X
 argument_list|,
 name|JabRefFrame
 operator|.
@@ -5666,7 +5686,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"posY"
+name|JabRefPreferences
+operator|.
+name|POS_Y
 argument_list|,
 name|JabRefFrame
 operator|.
@@ -5682,7 +5704,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"sizeX"
+name|JabRefPreferences
+operator|.
+name|SIZE_X
 argument_list|,
 name|JabRefFrame
 operator|.
@@ -5698,7 +5722,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"sizeY"
+name|JabRefPreferences
+operator|.
+name|SIZE_Y
 argument_list|,
 name|JabRefFrame
 operator|.
@@ -5710,12 +5736,14 @@ operator|.
 name|height
 argument_list|)
 expr_stmt|;
-comment|//prefs.putBoolean("windowMaximised", (getExtendedState()&MAXIMIZED_BOTH)>0);
+comment|//prefs.putBoolean(JabRefPreferences.WINDOW_MAXIMISED, (getExtendedState()&MAXIMIZED_BOTH)>0);
 name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"windowMaximised"
+name|JabRefPreferences
+operator|.
+name|WINDOW_MAXIMISED
 argument_list|,
 operator|(
 name|getExtendedState

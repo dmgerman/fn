@@ -2144,7 +2144,9 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"columnNames"
+name|JabRefPreferences
+operator|.
+name|COLUMN_NAMES
 argument_list|)
 decl_stmt|;
 name|columns
@@ -2235,7 +2237,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"showShort"
+name|JabRefPreferences
+operator|.
+name|SHOW_SHORT
 argument_list|)
 decl_stmt|;
 name|namesNatbib
@@ -2246,7 +2250,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"namesNatbib"
+name|JabRefPreferences
+operator|.
+name|NAMES_NATBIB
 argument_list|)
 expr_stmt|;
 comment|//MK:
@@ -2258,7 +2264,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"namesLastOnly"
+name|JabRefPreferences
+operator|.
+name|NAMES_LAST_ONLY
 argument_list|)
 expr_stmt|;
 name|namesAsIs
@@ -2269,7 +2277,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"namesAsIs"
+name|JabRefPreferences
+operator|.
+name|NAMES_AS_IS
 argument_list|)
 expr_stmt|;
 name|abbr_names
@@ -2280,7 +2290,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"abbrAuthorNames"
+name|JabRefPreferences
+operator|.
+name|ABBR_AUTHOR_NAMES
 argument_list|)
 expr_stmt|;
 comment|//MK:
@@ -2292,7 +2304,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"namesFf"
+name|JabRefPreferences
+operator|.
+name|NAMES_FIRST_LAST
 argument_list|)
 expr_stmt|;
 name|namesLf

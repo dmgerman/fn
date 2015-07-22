@@ -3696,7 +3696,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useDefaultLookAndFeel"
+name|JabRefPreferences
+operator|.
+name|USE_DEFAULT_LOOK_AND_FEEL
 argument_list|)
 condition|)
 block|{
@@ -4644,7 +4646,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"windowMaximised"
+name|JabRefPreferences
+operator|.
+name|WINDOW_MAXIMISED
 argument_list|)
 condition|)
 block|{
@@ -4677,7 +4681,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"windowMaximised"
+name|JabRefPreferences
+operator|.
+name|WINDOW_MAXIMISED
 argument_list|)
 condition|)
 block|{

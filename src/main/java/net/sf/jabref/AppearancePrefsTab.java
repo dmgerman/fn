@@ -712,7 +712,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"tableColorCodesOn"
+name|JabRefPreferences
+operator|.
+name|TABLE_COLOR_CODES_ON
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -793,7 +795,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"tableShowGrid"
+name|JabRefPreferences
+operator|.
+name|TABLE_SHOW_GRID
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -816,7 +820,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"tableColorCodesOn"
+name|JabRefPreferences
+operator|.
+name|TABLE_COLOR_CODES_ON
 argument_list|,
 name|colorCodes
 operator|.
@@ -843,7 +849,9 @@ name|_prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"fontStyle"
+name|JabRefPreferences
+operator|.
+name|FONT_STYLE
 argument_list|,
 name|font
 operator|.
@@ -855,7 +863,9 @@ name|_prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"fontSize"
+name|JabRefPreferences
+operator|.
+name|FONT_SIZE
 argument_list|,
 name|font
 operator|.
@@ -867,7 +877,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"overrideDefaultFonts"
+name|JabRefPreferences
+operator|.
+name|OVERRIDE_DEFAULT_FONTS
 argument_list|,
 name|overrideFonts
 operator|.
@@ -890,7 +902,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"tableShowGrid"
+name|JabRefPreferences
+operator|.
+name|TABLE_SHOW_GRID
 argument_list|,
 name|showGrid
 operator|.
@@ -935,7 +949,9 @@ name|_prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"menuFontSize"
+name|JabRefPreferences
+operator|.
+name|MENU_FONT_SIZE
 argument_list|,
 name|size
 argument_list|)

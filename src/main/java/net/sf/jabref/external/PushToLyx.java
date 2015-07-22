@@ -485,7 +485,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"lyxpipe"
+name|JabRefPreferences
+operator|.
+name|LYXPIPE
 argument_list|)
 operator|+
 literal|".in"
@@ -582,7 +584,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"lyxpipe"
+name|JabRefPreferences
+operator|.
+name|LYXPIPE
 argument_list|,
 name|lyxPipe
 operator|.

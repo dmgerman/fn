@@ -11694,7 +11694,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"previewPanelHeight"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_PANEL_HEIGHT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -11716,7 +11718,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"entryEditorHeight"
+name|JabRefPreferences
+operator|.
+name|ENTRY_EDITOR_HEIGHT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -12102,7 +12106,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"entryEditorHeight"
+name|JabRefPreferences
+operator|.
+name|ENTRY_EDITOR_HEIGHT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -12285,7 +12291,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"entryEditorHeight"
+name|JabRefPreferences
+operator|.
+name|ENTRY_EDITOR_HEIGHT
 argument_list|,
 name|splitPane
 operator|.
@@ -12315,7 +12323,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"previewPanelHeight"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_PANEL_HEIGHT
 argument_list|,
 name|splitPane
 operator|.
@@ -12488,7 +12498,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"entryEditorHeight"
+name|JabRefPreferences
+operator|.
+name|ENTRY_EDITOR_HEIGHT
 argument_list|,
 name|splitPane
 operator|.
@@ -13715,7 +13727,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"previewPanelHeight"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_PANEL_HEIGHT
 argument_list|,
 name|splitPane
 operator|.
@@ -13745,7 +13759,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"entryEditorHeight"
+name|JabRefPreferences
+operator|.
+name|ENTRY_EDITOR_HEIGHT
 argument_list|,
 name|splitPane
 operator|.

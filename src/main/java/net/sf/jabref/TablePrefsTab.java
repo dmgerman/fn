@@ -1462,7 +1462,9 @@ name|_prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"autoResizeMode"
+name|JabRefPreferences
+operator|.
+name|AUTO_RESIZE_MODE
 argument_list|)
 operator|==
 name|JTable
@@ -1797,7 +1799,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"namesAsIs"
+name|JabRefPreferences
+operator|.
+name|NAMES_AS_IS
 argument_list|,
 name|namesAsIs
 operator|.
@@ -1809,7 +1813,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"namesFf"
+name|JabRefPreferences
+operator|.
+name|NAMES_FIRST_LAST
 argument_list|,
 name|namesFf
 operator|.
@@ -1821,7 +1827,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"namesNatbib"
+name|JabRefPreferences
+operator|.
+name|NAMES_NATBIB
 argument_list|,
 name|namesNatbib
 operator|.
@@ -1833,7 +1841,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"namesLastOnly"
+name|JabRefPreferences
+operator|.
+name|NAMES_LAST_ONLY
 argument_list|,
 name|lastNamesOnly
 operator|.
@@ -1845,7 +1855,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"abbrAuthorNames"
+name|JabRefPreferences
+operator|.
+name|ABBR_AUTHOR_NAMES
 argument_list|,
 name|abbrNames
 operator|.
@@ -1857,7 +1869,9 @@ name|_prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"autoResizeMode"
+name|JabRefPreferences
+operator|.
+name|AUTO_RESIZE_MODE
 argument_list|,
 name|autoResizeMode
 operator|.
@@ -2001,7 +2015,9 @@ name|_prefs
 operator|.
 name|get
 argument_list|(
-literal|"numericFields"
+name|JabRefPreferences
+operator|.
+name|NUMERIC_FIELDS
 argument_list|)
 decl_stmt|;
 name|String

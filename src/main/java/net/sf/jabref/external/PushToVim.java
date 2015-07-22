@@ -313,7 +313,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"vim"
+name|JabRefPreferences
+operator|.
+name|VIM
 argument_list|,
 name|vimPath
 operator|.
@@ -327,7 +329,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"vimServer"
+name|JabRefPreferences
+operator|.
+name|VIM_SERVER
 argument_list|,
 name|vimServer
 operator|.

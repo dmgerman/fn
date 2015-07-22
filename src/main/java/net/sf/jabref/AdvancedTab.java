@@ -1358,7 +1358,9 @@ name|preferences
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useDefaultLookAndFeel"
+name|JabRefPreferences
+operator|.
+name|USE_DEFAULT_LOOK_AND_FEEL
 argument_list|)
 expr_stmt|;
 name|oldLnf
@@ -1539,7 +1541,9 @@ name|preferences
 operator|.
 name|putBoolean
 argument_list|(
-literal|"useDefaultLookAndFeel"
+name|JabRefPreferences
+operator|.
+name|USE_DEFAULT_LOOK_AND_FEEL
 argument_list|,
 operator|!
 name|useDefault

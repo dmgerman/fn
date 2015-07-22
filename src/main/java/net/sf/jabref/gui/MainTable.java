@@ -577,7 +577,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"autoResizeMode"
+name|JabRefPreferences
+operator|.
+name|AUTO_RESIZE_MODE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -698,7 +700,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"tableColorCodesOn"
+name|JabRefPreferences
+operator|.
+name|TABLE_COLOR_CODES_ON
 argument_list|)
 expr_stmt|;
 name|selectionModel
@@ -748,7 +752,9 @@ name|prefs
 operator|.
 name|getColor
 argument_list|(
-literal|"tableBackground"
+name|JabRefPreferences
+operator|.
+name|TABLE_BACKGROUND
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -760,7 +766,9 @@ name|prefs
 operator|.
 name|getColor
 argument_list|(
-literal|"gridColor"
+name|JabRefPreferences
+operator|.
+name|GRID_COLOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -772,7 +780,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"tableShowGrid"
+name|JabRefPreferences
+operator|.
+name|TABLE_SHOW_GRID
 argument_list|)
 condition|)
 block|{
