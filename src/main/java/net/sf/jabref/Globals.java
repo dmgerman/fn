@@ -11569,7 +11569,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"regExpSearch"
+name|JabRefPreferences
+operator|.
+name|REG_EXP_SEARCH
 argument_list|)
 decl_stmt|;
 comment|// compile the words to a regex in the form (w1) | (w2) | (w3)

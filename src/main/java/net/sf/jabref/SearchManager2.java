@@ -708,7 +708,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"regExpSearch"
+name|JabRefPreferences
+operator|.
+name|REG_EXP_SEARCH
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1064,7 +1066,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"highLightWords"
+name|JabRefPreferences
+operator|.
+name|HIGH_LIGHT_WORDS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2516,7 +2520,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"selectS"
+name|JabRefPreferences
+operator|.
+name|SELECT_S
 argument_list|,
 name|select
 operator|.
@@ -2560,7 +2566,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"regExpSearch"
+name|JabRefPreferences
+operator|.
+name|REG_EXP_SEARCH
 argument_list|,
 name|regExpSearch
 operator|.
@@ -2574,7 +2582,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"highLightWords"
+name|JabRefPreferences
+operator|.
+name|HIGH_LIGHT_WORDS
 argument_list|,
 name|highLightWords
 operator|.
@@ -2927,7 +2937,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"regExpSearch"
+name|JabRefPreferences
+operator|.
+name|REG_EXP_SEARCH
 argument_list|)
 condition|)
 block|{
@@ -2995,7 +3007,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"regExpSearch"
+name|JabRefPreferences
+operator|.
+name|REG_EXP_SEARCH
 argument_list|)
 argument_list|)
 expr_stmt|;

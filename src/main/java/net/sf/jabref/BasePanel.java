@@ -11481,7 +11481,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autoComplete"
+name|JabRefPreferences
+operator|.
+name|AUTO_COMPLETE
 argument_list|)
 condition|)
 block|{

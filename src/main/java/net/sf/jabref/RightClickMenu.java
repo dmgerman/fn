@@ -2826,7 +2826,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"groupShowDynamic"
+name|JabRefPreferences
+operator|.
+name|GROUP_SHOW_DYNAMIC
 argument_list|)
 condition|)
 block|{
@@ -2865,7 +2867,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"groupShowIcons"
+name|JabRefPreferences
+operator|.
+name|GROUP_SHOW_ICONS
 argument_list|)
 condition|)
 block|{

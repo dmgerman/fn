@@ -793,7 +793,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"highLightWords"
+name|JabRefPreferences
+operator|.
+name|HIGH_LIGHT_WORDS
 argument_list|)
 condition|)
 block|{
@@ -841,7 +843,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"highLightWords"
+name|JabRefPreferences
+operator|.
+name|HIGH_LIGHT_WORDS
 argument_list|)
 condition|)
 block|{

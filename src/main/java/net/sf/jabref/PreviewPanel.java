@@ -1757,7 +1757,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"highLightWords"
+name|JabRefPreferences
+operator|.
+name|HIGH_LIGHT_WORDS
 argument_list|)
 condition|)
 block|{
@@ -1782,7 +1784,7 @@ operator|!=
 literal|null
 condition|)
 block|{
-comment|// setting of "highLightWords" seems to have changed.
+comment|// setting of JabRefPreferences.HIGH_LIGHT_WORDS seems to have changed.
 comment|// clear all highlights and remember the clearing (by wordsToHighlight = null)
 name|this
 operator|.

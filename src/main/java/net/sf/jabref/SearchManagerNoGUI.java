@@ -222,7 +222,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"regExpSearch"
+name|JabRefPreferences
+operator|.
+name|REG_EXP_SEARCH
 argument_list|)
 condition|)
 block|{
@@ -288,7 +290,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"regExpSearch"
+name|JabRefPreferences
+operator|.
+name|REG_EXP_SEARCH
 argument_list|)
 argument_list|)
 expr_stmt|;

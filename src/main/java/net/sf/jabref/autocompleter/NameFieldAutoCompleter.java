@@ -173,7 +173,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autoCompFF"
+name|JabRefPreferences
+operator|.
+name|AUTO_COMP_FIRST_LAST
 argument_list|)
 condition|)
 block|{
@@ -195,7 +197,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autoCompLF"
+name|JabRefPreferences
+operator|.
+name|AUTO_COMP_LAST_FIRST
 argument_list|)
 condition|)
 block|{
