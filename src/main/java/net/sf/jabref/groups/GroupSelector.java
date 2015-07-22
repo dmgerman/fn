@@ -1160,7 +1160,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"grayOutNonHits"
+name|JabRefPreferences
+operator|.
+name|GRAY_OUT_NON_HITS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1182,7 +1184,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"grayOutNonHits"
+name|JabRefPreferences
+operator|.
+name|GRAY_OUT_NON_HITS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1438,7 +1442,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"grayOutNonHits"
+name|JabRefPreferences
+operator|.
+name|GRAY_OUT_NON_HITS
 argument_list|,
 name|grayOut
 operator|.
@@ -5225,7 +5231,7 @@ operator|.
 name|update
 argument_list|()
 expr_stmt|;
-comment|/*panel.setGroupMatcher(new SearchMatcher(searchRules, searchOptions));         DatabaseSearch search = new DatabaseSearch(this, searchOptions, searchRules,                 panel, Globals.GROUPSEARCH, floatCb.isSelected(), Globals.prefs                         .getBoolean("grayOutNonHits"),                 //true,                 select.isSelected());         search.start();*/
+comment|/*panel.setGroupMatcher(new SearchMatcher(searchRules, searchOptions));         DatabaseSearch search = new DatabaseSearch(this, searchOptions, searchRules,                 panel, Globals.GROUPSEARCH, floatCb.isSelected(), Globals.prefs                         .getBoolean(JabRefPreferences.GRAY_OUT_NON_HITS),                 //true,                 select.isSelected());         search.start();*/
 block|}
 DECL|class|GroupingWorker
 class|class

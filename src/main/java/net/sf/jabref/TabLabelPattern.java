@@ -411,7 +411,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"warnBeforeOverwritingKey"
+name|JabRefPreferences
+operator|.
+name|WARN_BEFORE_OVERWRITING_KEY
 argument_list|,
 name|warnBeforeOverwriting
 operator|.
@@ -425,7 +427,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"avoidOverwritingKey"
+name|JabRefPreferences
+operator|.
+name|AVOID_OVERWRITING_KEY
 argument_list|,
 name|dontOverwrite
 operator|.

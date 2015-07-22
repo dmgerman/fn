@@ -3425,7 +3425,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"overwriteOwner"
+name|JabRefPreferences
+operator|.
+name|OVERWRITE_OWNER
 argument_list|)
 argument_list|,
 name|Globals
@@ -4524,7 +4526,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"avoidOverwritingKey"
+name|JabRefPreferences
+operator|.
+name|AVOID_OVERWRITING_KEY
 argument_list|)
 condition|)
 block|{
@@ -4544,7 +4548,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"warnBeforeOverwritingKey"
+name|JabRefPreferences
+operator|.
+name|WARN_BEFORE_OVERWRITING_KEY
 argument_list|)
 condition|)
 block|{
@@ -4609,7 +4615,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"warnBeforeOverwritingKey"
+name|JabRefPreferences
+operator|.
+name|WARN_BEFORE_OVERWRITING_KEY
 argument_list|,
 literal|false
 argument_list|)
@@ -4665,7 +4673,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"avoidOverwritingKey"
+name|JabRefPreferences
+operator|.
+name|AVOID_OVERWRITING_KEY
 argument_list|)
 condition|)
 block|{
@@ -10485,7 +10495,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useOwner"
+name|JabRefPreferences
+operator|.
+name|USE_OWNER
 argument_list|)
 condition|)
 block|{
@@ -13410,7 +13422,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"confirmDelete"
+name|JabRefPreferences
+operator|.
+name|CONFIRM_DELETE
 argument_list|)
 condition|)
 block|{
@@ -13539,7 +13553,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"confirmDelete"
+name|JabRefPreferences
+operator|.
+name|CONFIRM_DELETE
 argument_list|,
 literal|false
 argument_list|)

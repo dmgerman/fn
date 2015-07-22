@@ -792,7 +792,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"searchAllBases"
+name|JabRefPreferences
+operator|.
+name|SEARCH_ALL_BASES
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1531,7 +1533,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"floatSearch"
+name|JabRefPreferences
+operator|.
+name|FLOAT_SEARCH
 argument_list|)
 condition|)
 block|{
@@ -1552,7 +1556,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"showSearchInDialog"
+name|JabRefPreferences
+operator|.
+name|SHOW_SEARCH_IN_DIALOG
 argument_list|)
 condition|)
 block|{
@@ -1573,7 +1579,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"searchAllBases"
+name|JabRefPreferences
+operator|.
+name|SEARCH_ALL_BASES
 argument_list|)
 condition|)
 block|{
@@ -2536,7 +2544,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"floatSearch"
+name|JabRefPreferences
+operator|.
+name|FLOAT_SEARCH
 argument_list|,
 name|floatSearch
 operator|.
@@ -2598,7 +2608,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"showSearchInDialog"
+name|JabRefPreferences
+operator|.
+name|SHOW_SEARCH_IN_DIALOG
 argument_list|,
 name|showResultsInDialog
 operator|.
@@ -2612,7 +2624,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"searchAllBases"
+name|JabRefPreferences
+operator|.
+name|SEARCH_ALL_BASES
 argument_list|,
 name|searchAllBases
 operator|.

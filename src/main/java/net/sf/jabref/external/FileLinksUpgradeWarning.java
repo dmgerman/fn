@@ -183,7 +183,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"showFileLinksUpgradeWarning"
+name|JabRefPreferences
+operator|.
+name|SHOW_FILE_LINKS_UPGRADE_WARNING
 argument_list|)
 condition|)
 block|{
@@ -707,7 +709,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"showFileLinksUpgradeWarning"
+name|JabRefPreferences
+operator|.
+name|SHOW_FILE_LINKS_UPGRADE_WARNING
 argument_list|,
 literal|false
 argument_list|)

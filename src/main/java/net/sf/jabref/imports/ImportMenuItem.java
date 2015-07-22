@@ -760,7 +760,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"displayKeyWarningDialogAtStartup"
+name|JabRefPreferences
+operator|.
+name|DISPLAY_KEY_WARNING_DIALOG_AT_STARTUP
 argument_list|)
 operator|&&
 name|pr
@@ -1698,7 +1700,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"overwriteOwner"
+name|JabRefPreferences
+operator|.
+name|OVERWRITE_OWNER
 argument_list|)
 argument_list|,
 name|Globals

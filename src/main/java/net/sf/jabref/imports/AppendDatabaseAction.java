@@ -708,7 +708,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"overwriteOwner"
+name|JabRefPreferences
+operator|.
+name|OVERWRITE_OWNER
 argument_list|)
 decl_stmt|;
 name|boolean

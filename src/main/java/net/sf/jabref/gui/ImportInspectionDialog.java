@@ -4218,7 +4218,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"overwriteOwner"
+name|JabRefPreferences
+operator|.
+name|OVERWRITE_OWNER
 argument_list|)
 argument_list|,
 name|Globals
