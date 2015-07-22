@@ -972,7 +972,9 @@ name|_prefs
 operator|.
 name|remove
 argument_list|(
-literal|"preview0"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_0
 argument_list|)
 expr_stmt|;
 name|layout1
@@ -1000,7 +1002,9 @@ name|_prefs
 operator|.
 name|put
 argument_list|(
-literal|"preview0"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_0
 argument_list|,
 name|tmp
 argument_list|)
@@ -1046,7 +1050,9 @@ name|_prefs
 operator|.
 name|remove
 argument_list|(
-literal|"preview1"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_1
 argument_list|)
 expr_stmt|;
 name|layout2
@@ -1074,7 +1080,9 @@ name|_prefs
 operator|.
 name|put
 argument_list|(
-literal|"preview1"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_1
 argument_list|,
 name|tmp
 argument_list|)

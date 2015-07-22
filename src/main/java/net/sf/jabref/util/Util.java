@@ -8747,7 +8747,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useTimeStamp"
+name|JabRefPreferences
+operator|.
+name|USE_TIME_STAMP
 argument_list|)
 operator|&&
 name|Globals

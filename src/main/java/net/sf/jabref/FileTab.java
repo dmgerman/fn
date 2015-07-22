@@ -1682,7 +1682,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autoDoubleBraces"
+name|JabRefPreferences
+operator|.
+name|AUTO_DOUBLE_BRACES
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1694,7 +1696,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"resolveStringsAllFields"
+name|JabRefPreferences
+operator|.
+name|RESOLVE_STRINGS_ALL_FIELDS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1717,7 +1721,9 @@ name|_prefs
 operator|.
 name|get
 argument_list|(
-literal|"doNotResolveStringsFor"
+name|JabRefPreferences
+operator|.
+name|DO_NOT_RESOLVE_STRINGS_FOR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1729,7 +1735,9 @@ name|_prefs
 operator|.
 name|get
 argument_list|(
-literal|"putBracesAroundCapitals"
+name|JabRefPreferences
+operator|.
+name|PUT_BRACES_AROUND_CAPITALS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1741,7 +1749,9 @@ name|_prefs
 operator|.
 name|get
 argument_list|(
-literal|"nonWrappableFields"
+name|JabRefPreferences
+operator|.
+name|NON_WRAPPABLE_FIELDS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2209,7 +2219,9 @@ name|_prefs
 operator|.
 name|put
 argument_list|(
-literal|"putBracesAroundCapitals"
+name|JabRefPreferences
+operator|.
+name|PUT_BRACES_AROUND_CAPITALS
 argument_list|,
 name|bracesAroundCapitalsFields
 operator|.
@@ -2239,7 +2251,9 @@ name|_prefs
 operator|.
 name|get
 argument_list|(
-literal|"nonWrappableFields"
+name|JabRefPreferences
+operator|.
+name|NON_WRAPPABLE_FIELDS
 argument_list|)
 argument_list|)
 condition|)
@@ -2248,7 +2262,9 @@ name|_prefs
 operator|.
 name|put
 argument_list|(
-literal|"nonWrappableFields"
+name|JabRefPreferences
+operator|.
+name|NON_WRAPPABLE_FIELDS
 argument_list|,
 name|nonWrappableFields
 operator|.

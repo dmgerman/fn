@@ -947,7 +947,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useImportInspectionDialog"
+name|JabRefPreferences
+operator|.
+name|USE_IMPORT_INSPECTION_DIALOG
 argument_list|)
 operator|&&
 operator|(
@@ -957,7 +959,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useImportInspectionDialogForSingle"
+name|JabRefPreferences
+operator|.
+name|USE_IMPORT_INSPECTION_DIALOG_FOR_SINGLE
 argument_list|)
 operator|||
 operator|(
@@ -1049,7 +1053,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"generateKeysAfterInspection"
+name|JabRefPreferences
+operator|.
+name|GENERATE_KEYS_AFTER_INSPECTION
 argument_list|)
 decl_stmt|;
 name|NamedCompound
@@ -1075,7 +1081,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"unmarkAllEntriesBeforeImporting"
+name|JabRefPreferences
+operator|.
+name|UNMARK_ALL_ENTRIES_BEFORE_IMPORTING
 argument_list|)
 condition|)
 block|{
@@ -1699,7 +1707,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"overwriteTimeStamp"
+name|JabRefPreferences
+operator|.
+name|OVERWRITE_TIME_STAMP
 argument_list|)
 argument_list|,
 operator|!
@@ -1711,7 +1721,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"markImportedEntries"
+name|JabRefPreferences
+operator|.
+name|MARK_IMPORTED_ENTRIES
 argument_list|)
 argument_list|)
 expr_stmt|;

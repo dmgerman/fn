@@ -395,7 +395,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"defaultLabelPattern"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_LABEL_PATTERN
 argument_list|,
 name|defaultPat
 operator|.
@@ -467,7 +469,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"generateKeysAfterInspection"
+name|JabRefPreferences
+operator|.
+name|GENERATE_KEYS_AFTER_INSPECTION
 argument_list|,
 name|autoGenerateOnImport
 operator|.

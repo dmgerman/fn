@@ -4712,7 +4712,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"previewEnabled"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_ENABLED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -12127,7 +12129,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useImportInspectionDialog"
+name|JabRefPreferences
+operator|.
+name|USE_IMPORT_INSPECTION_DIALOG
 argument_list|)
 operator|&&
 operator|(
@@ -12137,7 +12141,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useImportInspectionDialogForSingle"
+name|JabRefPreferences
+operator|.
+name|USE_IMPORT_INSPECTION_DIALOG_FOR_SINGLE
 argument_list|)
 operator|||
 operator|(
@@ -12399,7 +12405,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"overwriteTimeStamp"
+name|JabRefPreferences
+operator|.
+name|OVERWRITE_TIME_STAMP
 argument_list|)
 argument_list|,
 name|Globals
@@ -12408,7 +12416,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"markImportedEntries"
+name|JabRefPreferences
+operator|.
+name|MARK_IMPORTED_ENTRIES
 argument_list|)
 argument_list|)
 expr_stmt|;

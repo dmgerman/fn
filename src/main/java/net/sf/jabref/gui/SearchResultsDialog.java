@@ -856,7 +856,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"activePreview"
+name|JabRefPreferences
+operator|.
+name|ACTIVE_PREVIEW
 argument_list|)
 decl_stmt|;
 name|preview

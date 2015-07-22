@@ -610,7 +610,9 @@ argument_list|()
 operator|.
 name|getBoolean
 argument_list|(
-literal|"previewPrintButton"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_PRINT_BUTTON
 argument_list|)
 condition|)
 block|{

@@ -1436,7 +1436,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"generateKeysAfterInspection"
+name|JabRefPreferences
+operator|.
+name|GENERATE_KEYS_AFTER_INSPECTION
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -3916,7 +3918,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"warnAboutDuplicatesInInspection"
+name|JabRefPreferences
+operator|.
+name|WARN_ABOUT_DUPLICATES_IN_INSPECTION
 argument_list|)
 condition|)
 block|{
@@ -4015,7 +4019,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"warnAboutDuplicatesInInspection"
+name|JabRefPreferences
+operator|.
+name|WARN_ABOUT_DUPLICATES_IN_INSPECTION
 argument_list|,
 literal|false
 argument_list|)
@@ -4124,7 +4130,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"generateKeysAfterInspection"
+name|JabRefPreferences
+operator|.
+name|GENERATE_KEYS_AFTER_INSPECTION
 argument_list|,
 name|autoGenerate
 operator|.
@@ -4219,7 +4227,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"overwriteTimeStamp"
+name|JabRefPreferences
+operator|.
+name|OVERWRITE_TIME_STAMP
 argument_list|)
 argument_list|,
 name|Globals
@@ -4228,7 +4238,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"markImportedEntries"
+name|JabRefPreferences
+operator|.
+name|MARK_IMPORTED_ENTRIES
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4241,7 +4253,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"unmarkAllEntriesBeforeImporting"
+name|JabRefPreferences
+operator|.
+name|UNMARK_ALL_ENTRIES_BEFORE_IMPORTING
 argument_list|)
 condition|)
 block|{
