@@ -2593,7 +2593,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"saveInOriginalOrder"
+name|JabRefPreferences
+operator|.
+name|SAVE_IN_ORIGINAL_ORDER
 argument_list|)
 expr_stmt|;
 block|}
@@ -2626,7 +2628,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"exportInOriginalOrder"
+name|JabRefPreferences
+operator|.
+name|EXPORT_IN_ORIGINAL_ORDER
 argument_list|)
 expr_stmt|;
 block|}
