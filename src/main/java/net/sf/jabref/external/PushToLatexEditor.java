@@ -627,7 +627,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"latexEditorPath"
+name|JabRefPreferences
+operator|.
+name|LATEX_EDITOR_PATH
 argument_list|,
 name|ledPath
 operator|.
