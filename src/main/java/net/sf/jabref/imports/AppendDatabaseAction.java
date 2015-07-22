@@ -486,7 +486,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"workingDirectory"
+name|JabRefPreferences
+operator|.
+name|WORKING_DIRECTORY
 argument_list|,
 name|file
 operator|.

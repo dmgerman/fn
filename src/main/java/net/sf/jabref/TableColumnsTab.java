@@ -2948,7 +2948,9 @@ name|_prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"numberColWidth"
+name|JabRefPreferences
+operator|.
+name|NUMBER_COL_WIDTH
 argument_list|)
 expr_stmt|;
 block|}
@@ -4988,7 +4990,9 @@ name|_prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"numberColWidth"
+name|JabRefPreferences
+operator|.
+name|NUMBER_COL_WIDTH
 argument_list|,
 name|ncWidth
 argument_list|)

@@ -1573,7 +1573,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"openLastEdited"
+name|JabRefPreferences
+operator|.
+name|OPEN_LAST_EDITED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1585,7 +1587,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"backup"
+name|JabRefPreferences
+operator|.
+name|BACKUP
 argument_list|)
 argument_list|)
 expr_stmt|;

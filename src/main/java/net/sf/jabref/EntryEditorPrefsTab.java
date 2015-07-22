@@ -1629,7 +1629,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"autoOpenForm"
+name|JabRefPreferences
+operator|.
+name|AUTO_OPEN_FORM
 argument_list|,
 name|autoOpenForm
 operator|.

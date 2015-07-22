@@ -3562,7 +3562,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autoOpenForm"
+name|JabRefPreferences
+operator|.
+name|AUTO_OPEN_FORM
 argument_list|)
 condition|)
 block|{
@@ -10544,7 +10546,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autoOpenForm"
+name|JabRefPreferences
+operator|.
+name|AUTO_OPEN_FORM
 argument_list|)
 condition|)
 block|{

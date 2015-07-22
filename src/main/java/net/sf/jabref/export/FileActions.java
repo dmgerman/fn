@@ -911,7 +911,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"backup"
+name|JabRefPreferences
+operator|.
+name|BACKUP
 argument_list|)
 decl_stmt|;
 if|if
@@ -2027,7 +2029,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"backup"
+name|JabRefPreferences
+operator|.
+name|BACKUP
 argument_list|)
 decl_stmt|;
 name|SaveSession

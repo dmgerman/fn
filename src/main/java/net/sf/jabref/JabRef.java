@@ -4130,7 +4130,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"openLastEdited"
+name|JabRefPreferences
+operator|.
+name|OPEN_LAST_EDITED
 argument_list|)
 operator|&&
 operator|(

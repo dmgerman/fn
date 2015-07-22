@@ -587,7 +587,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"exportWorkingDirectory"
+name|JabRefPreferences
+operator|.
+name|EXPORT_WORKING_DIRECTORY
 argument_list|,
 name|chosen
 operator|.

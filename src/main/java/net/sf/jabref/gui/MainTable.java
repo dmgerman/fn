@@ -1592,7 +1592,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"numberColWidth"
+name|JabRefPreferences
+operator|.
+name|NUMBER_COL_WIDTH
 argument_list|)
 decl_stmt|;
 name|String

@@ -619,7 +619,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"importWorkingDirectory"
+name|JabRefPreferences
+operator|.
+name|IMPORT_WORKING_DIRECTORY
 argument_list|,
 name|file
 operator|.

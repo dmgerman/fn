@@ -5813,7 +5813,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"openLastEdited"
+name|JabRefPreferences
+operator|.
+name|OPEN_LAST_EDITED
 argument_list|)
 condition|)
 block|{
@@ -5832,7 +5834,9 @@ name|prefs
 operator|.
 name|remove
 argument_list|(
-literal|"lastEdited"
+name|JabRefPreferences
+operator|.
+name|LAST_EDITED
 argument_list|)
 expr_stmt|;
 block|}
@@ -5886,7 +5890,9 @@ name|prefs
 operator|.
 name|putStringArray
 argument_list|(
-literal|"lastEdited"
+name|JabRefPreferences
+operator|.
+name|LAST_EDITED
 argument_list|,
 name|names
 argument_list|)
