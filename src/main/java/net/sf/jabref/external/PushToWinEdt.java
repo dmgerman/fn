@@ -631,7 +631,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"winEdtPath"
+name|JabRefPreferences
+operator|.
+name|WIN_EDT_PATH
 argument_list|,
 name|winEdtPath
 operator|.
