@@ -3804,7 +3804,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"lookAndFeel"
+name|JabRefPreferences
+operator|.
+name|WIN_LOOK_AND_FEEL
 argument_list|,
 name|systemLnF
 argument_list|)
