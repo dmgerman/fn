@@ -2848,7 +2848,9 @@ name|_prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"columnNames"
+name|JabRefPreferences
+operator|.
+name|COLUMN_NAMES
 argument_list|)
 decl_stmt|,
 name|lengths
@@ -2857,7 +2859,9 @@ name|_prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"columnWidths"
+name|JabRefPreferences
+operator|.
+name|COLUMN_WIDTHS
 argument_list|)
 decl_stmt|;
 for|for
@@ -5055,7 +5059,9 @@ name|_prefs
 operator|.
 name|putStringArray
 argument_list|(
-literal|"columnNames"
+name|JabRefPreferences
+operator|.
+name|COLUMN_NAMES
 argument_list|,
 name|names
 argument_list|)
@@ -5064,7 +5070,9 @@ name|_prefs
 operator|.
 name|putStringArray
 argument_list|(
-literal|"columnWidths"
+name|JabRefPreferences
+operator|.
+name|COLUMN_WIDTHS
 argument_list|,
 name|widths
 argument_list|)

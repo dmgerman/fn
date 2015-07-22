@@ -1641,7 +1641,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"defaultShowSource"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_SHOW_SOURCE
 argument_list|,
 name|defSource
 operator|.

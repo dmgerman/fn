@@ -1056,7 +1056,9 @@ argument_list|()
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useXmpPrivacyFilter"
+name|JabRefPreferences
+operator|.
+name|USE_XMP_PRIVACY_FILTER
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1214,7 +1216,9 @@ argument_list|()
 operator|.
 name|putBoolean
 argument_list|(
-literal|"useXmpPrivacyFilter"
+name|JabRefPreferences
+operator|.
+name|USE_XMP_PRIVACY_FILTER
 argument_list|,
 name|privacyFilterCheckBox
 operator|.

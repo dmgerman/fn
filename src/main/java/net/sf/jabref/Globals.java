@@ -11675,7 +11675,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"caseSensitiveSearch"
+name|JabRefPreferences
+operator|.
+name|CASE_SENSITIVE_SEARCH
 argument_list|)
 condition|)
 block|{

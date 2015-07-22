@@ -600,7 +600,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"stringsSizeY"
+name|JabRefPreferences
+operator|.
+name|STRINGS_SIZE_Y
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2058,7 +2060,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"stringsSizeY"
+name|JabRefPreferences
+operator|.
+name|STRINGS_SIZE_Y
 argument_list|,
 name|d
 operator|.

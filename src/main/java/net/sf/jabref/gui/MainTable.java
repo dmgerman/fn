@@ -1605,7 +1605,9 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"columnWidths"
+name|JabRefPreferences
+operator|.
+name|COLUMN_WIDTHS
 argument_list|)
 decl_stmt|;
 name|TableColumnModel
