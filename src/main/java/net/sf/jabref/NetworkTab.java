@@ -505,7 +505,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useProxy"
+name|JabRefPreferences
+operator|.
+name|USE_PROXY
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -518,7 +520,9 @@ name|_prefs
 operator|.
 name|get
 argument_list|(
-literal|"proxyHostname"
+name|JabRefPreferences
+operator|.
+name|PROXY_HOSTNAME
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -530,7 +534,9 @@ name|_prefs
 operator|.
 name|get
 argument_list|(
-literal|"proxyPort"
+name|JabRefPreferences
+operator|.
+name|PROXY_PORT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -547,7 +553,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"useProxy"
+name|JabRefPreferences
+operator|.
+name|USE_PROXY
 argument_list|,
 name|useProxy
 operator|.
@@ -560,7 +568,9 @@ name|_prefs
 operator|.
 name|put
 argument_list|(
-literal|"proxyHostname"
+name|JabRefPreferences
+operator|.
+name|PROXY_HOSTNAME
 argument_list|,
 name|defProxyHostname
 operator|.
@@ -575,7 +585,9 @@ name|_prefs
 operator|.
 name|put
 argument_list|(
-literal|"proxyPort"
+name|JabRefPreferences
+operator|.
+name|PROXY_PORT
 argument_list|,
 name|defProxyPort
 operator|.

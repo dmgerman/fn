@@ -344,7 +344,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"activePreview"
+name|JabRefPreferences
+operator|.
+name|ACTIVE_PREVIEW
 argument_list|)
 decl_stmt|;
 DECL|field|preview
@@ -384,7 +386,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"previewEnabled"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_ENABLED
 argument_list|)
 decl_stmt|;
 DECL|field|workingOnPreview
@@ -528,7 +532,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"preview0"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_0
 argument_list|)
 argument_list|,
 literal|true
@@ -557,7 +563,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"preview1"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_1
 argument_list|)
 argument_list|,
 literal|true
@@ -618,7 +626,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"preview0"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_0
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -635,7 +645,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"preview1"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_1
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2792,7 +2804,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"activePreview"
+name|JabRefPreferences
+operator|.
+name|ACTIVE_PREVIEW
 argument_list|,
 name|activePreview
 argument_list|)

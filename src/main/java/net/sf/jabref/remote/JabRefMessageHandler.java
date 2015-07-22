@@ -153,7 +153,7 @@ throw|;
 block|}
 comment|// put "bringToFront" in the queue
 comment|// it has to happen before the call to import as the import might open a dialog
-comment|// --> Globals.prefs.getBoolean("useImportInspectionDialog")
+comment|// --> Globals.prefs.getBoolean(JabRefPreferences.USE_IMPORT_INSPECTION_DIALOG)
 comment|// this dialog has to be shown AFTER JabRef has been brought to front
 name|SwingUtilities
 operator|.

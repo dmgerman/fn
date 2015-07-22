@@ -182,7 +182,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"preview0"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_0
 argument_list|)
 argument_list|)
 decl_stmt|;

@@ -1477,7 +1477,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"bibLocationAsFileDir"
+name|JabRefPreferences
+operator|.
+name|BIB_LOCATION_AS_FILE_DIR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1489,7 +1491,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"bibLocAsPrimaryDir"
+name|JabRefPreferences
+operator|.
+name|BIB_LOC_AS_PRIMARY_DIR
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1511,7 +1515,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"runAutomaticFileSearch"
+name|JabRefPreferences
+operator|.
+name|RUN_AUTOMATIC_FILE_SEARCH
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1537,7 +1543,9 @@ name|_prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"allowFileAutoOpenBrowse"
+name|JabRefPreferences
+operator|.
+name|ALLOW_FILE_AUTO_OPEN_BROWSE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1711,7 +1719,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"bibLocationAsFileDir"
+name|JabRefPreferences
+operator|.
+name|BIB_LOCATION_AS_FILE_DIR
 argument_list|,
 name|bibLocationAsFileDir
 operator|.
@@ -1723,7 +1733,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"bibLocAsPrimaryDir"
+name|JabRefPreferences
+operator|.
+name|BIB_LOC_AS_PRIMARY_DIR
 argument_list|,
 name|bibLocAsPrimaryDir
 operator|.
@@ -1749,7 +1761,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"runAutomaticFileSearch"
+name|JabRefPreferences
+operator|.
+name|RUN_AUTOMATIC_FILE_SEARCH
 argument_list|,
 name|runAutoFileSearch
 operator|.
@@ -1761,7 +1775,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"allowFileAutoOpenBrowse"
+name|JabRefPreferences
+operator|.
+name|ALLOW_FILE_AUTO_OPEN_BROWSE
 argument_list|,
 name|allowFileAutoOpenBrowse
 operator|.

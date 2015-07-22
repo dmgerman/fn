@@ -1160,7 +1160,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"grayOutNonHits"
+name|JabRefPreferences
+operator|.
+name|GRAY_OUT_NON_HITS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1182,7 +1184,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"grayOutNonHits"
+name|JabRefPreferences
+operator|.
+name|GRAY_OUT_NON_HITS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1231,7 +1235,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"groupFloatSelections"
+name|JabRefPreferences
+operator|.
+name|GROUP_FLOAT_SELECTIONS
 argument_list|,
 name|floatCb
 operator|.
@@ -1267,7 +1273,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"groupIntersectSelections"
+name|JabRefPreferences
+operator|.
+name|GROUP_INTERSECT_SELECTIONS
 argument_list|,
 name|andCb
 operator|.
@@ -1303,7 +1311,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"groupInvertSelections"
+name|JabRefPreferences
+operator|.
+name|GROUP_INVERT_SELECTIONS
 argument_list|,
 name|invCb
 operator|.
@@ -1339,7 +1349,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"groupShowOverlapping"
+name|JabRefPreferences
+operator|.
+name|GROUP_SHOW_OVERLAPPING
 argument_list|,
 name|showOverlappingGroups
 operator|.
@@ -1392,7 +1404,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"groupSelectMatches"
+name|JabRefPreferences
+operator|.
+name|GROUP_SELECT_MATCHES
 argument_list|,
 name|select
 operator|.
@@ -1428,7 +1442,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"grayOutNonHits"
+name|JabRefPreferences
+operator|.
+name|GRAY_OUT_NON_HITS
 argument_list|,
 name|grayOut
 operator|.
@@ -1464,7 +1480,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"groupFloatSelections"
+name|JabRefPreferences
+operator|.
+name|GROUP_FLOAT_SELECTIONS
 argument_list|)
 condition|)
 block|{
@@ -1524,7 +1542,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"groupIntersectSelections"
+name|JabRefPreferences
+operator|.
+name|GROUP_INTERSECT_SELECTIONS
 argument_list|)
 condition|)
 block|{
@@ -1645,7 +1665,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"autoAssignGroup"
+name|JabRefPreferences
+operator|.
+name|AUTO_ASSIGN_GROUP
 argument_list|,
 name|autoAssignGroup
 operator|.
@@ -1667,7 +1689,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"groupInvertSelections"
+name|JabRefPreferences
+operator|.
+name|GROUP_INVERT_SELECTIONS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1681,7 +1705,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"groupShowOverlapping"
+name|JabRefPreferences
+operator|.
+name|GROUP_SHOW_OVERLAPPING
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1695,7 +1721,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"groupSelectMatches"
+name|JabRefPreferences
+operator|.
+name|GROUP_SELECT_MATCHES
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1745,7 +1773,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autoAssignGroup"
+name|JabRefPreferences
+operator|.
+name|AUTO_ASSIGN_GROUP
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1936,7 +1966,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autoAssignGroup"
+name|JabRefPreferences
+operator|.
+name|AUTO_ASSIGN_GROUP
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2000,7 +2032,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"groupsVisibleRows"
+name|JabRefPreferences
+operator|.
+name|GROUPS_VISIBLE_ROWS
 argument_list|)
 operator|+
 literal|1
@@ -2042,7 +2076,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"groupsVisibleRows"
+name|JabRefPreferences
+operator|.
+name|GROUPS_VISIBLE_ROWS
 argument_list|,
 name|i
 argument_list|)
@@ -2133,7 +2169,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"groupsVisibleRows"
+name|JabRefPreferences
+operator|.
+name|GROUPS_VISIBLE_ROWS
 argument_list|)
 operator|-
 literal|1
@@ -2188,7 +2226,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"groupsVisibleRows"
+name|JabRefPreferences
+operator|.
+name|GROUPS_VISIBLE_ROWS
 argument_list|,
 name|i
 argument_list|)
@@ -5191,7 +5231,7 @@ operator|.
 name|update
 argument_list|()
 expr_stmt|;
-comment|/*panel.setGroupMatcher(new SearchMatcher(searchRules, searchOptions));         DatabaseSearch search = new DatabaseSearch(this, searchOptions, searchRules,                 panel, Globals.GROUPSEARCH, floatCb.isSelected(), Globals.prefs                         .getBoolean("grayOutNonHits"),                 //true,                 select.isSelected());         search.start();*/
+comment|/*panel.setGroupMatcher(new SearchMatcher(searchRules, searchOptions));         DatabaseSearch search = new DatabaseSearch(this, searchOptions, searchRules,                 panel, Globals.GROUPSEARCH, floatCb.isSelected(), Globals.prefs                         .getBoolean(JabRefPreferences.GRAY_OUT_NON_HITS),                 //true,                 select.isSelected());         search.start();*/
 block|}
 DECL|class|GroupingWorker
 class|class
@@ -5772,7 +5812,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"groupsDefaultField"
+name|JabRefPreferences
+operator|.
+name|GROUPS_DEFAULT_FIELD
 argument_list|)
 argument_list|,
 literal|" .,"
@@ -5931,7 +5973,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"groupExpandTree"
+name|JabRefPreferences
+operator|.
+name|GROUP_EXPAND_TREE
 argument_list|)
 condition|)
 block|{
@@ -8872,7 +8916,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"groupAutoShow"
+name|JabRefPreferences
+operator|.
+name|GROUP_AUTO_SHOW
 argument_list|)
 operator|&&
 operator|!
@@ -8911,7 +8957,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"groupAutoHide"
+name|JabRefPreferences
+operator|.
+name|GROUP_AUTO_HIDE
 argument_list|)
 operator|&&
 name|groupsRoot

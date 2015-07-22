@@ -54,6 +54,18 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
 name|java
 operator|.
 name|util
@@ -184,7 +196,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"autoSaveInterval"
+name|JabRefPreferences
+operator|.
+name|AUTO_SAVE_INTERVAL
 argument_list|)
 decl_stmt|;
 name|t

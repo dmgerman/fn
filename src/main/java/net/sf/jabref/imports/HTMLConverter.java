@@ -68,11 +68,7 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|export
-operator|.
-name|layout
-operator|.
-name|LayoutFormatter
+name|Globals
 import|;
 end_import
 
@@ -84,7 +80,23 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|Globals
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|export
+operator|.
+name|layout
+operator|.
+name|LayoutFormatter
 import|;
 end_import
 
@@ -4730,7 +4742,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useConvertToEquation"
+name|JabRefPreferences
+operator|.
+name|USE_CONVERT_TO_EQUATION
 argument_list|)
 condition|)
 block|{

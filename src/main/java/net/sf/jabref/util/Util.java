@@ -1370,7 +1370,9 @@ argument_list|()
 operator|.
 name|getBoolean
 argument_list|(
-literal|"enforceLegalBibtexKey"
+name|JabRefPreferences
+operator|.
+name|ENFORCE_LEGAL_BIBTEX_KEY
 argument_list|)
 condition|)
 block|{
@@ -4736,7 +4738,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"timeStampField"
+name|JabRefPreferences
+operator|.
+name|TIME_STAMP_FIELD
 argument_list|)
 decl_stmt|;
 name|String
@@ -4748,7 +4752,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultOwner"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_OWNER
 argument_list|)
 decl_stmt|;
 name|String
@@ -4768,7 +4774,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useOwner"
+name|JabRefPreferences
+operator|.
+name|USE_OWNER
 argument_list|)
 decl_stmt|,
 name|globalSetTimeStamp
@@ -4779,7 +4787,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useTimeStamp"
+name|JabRefPreferences
+operator|.
+name|USE_TIME_STAMP
 argument_list|)
 decl_stmt|;
 comment|// Do not need to do anything if all options are disabled
@@ -4918,7 +4928,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultOwner"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_OWNER
 argument_list|)
 decl_stmt|;
 name|String
@@ -4938,7 +4950,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"timeStampField"
+name|JabRefPreferences
+operator|.
+name|TIME_STAMP_FIELD
 argument_list|)
 decl_stmt|;
 name|boolean
@@ -4950,7 +4964,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useOwner"
+name|JabRefPreferences
+operator|.
+name|USE_OWNER
 argument_list|)
 operator|&&
 operator|(
@@ -4979,7 +4995,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useTimeStamp"
+name|JabRefPreferences
+operator|.
+name|USE_TIME_STAMP
 argument_list|)
 operator|&&
 operator|(
@@ -5098,7 +5116,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"generalFields"
+name|JabRefPreferences
+operator|.
+name|GENERAL_FIELDS
 argument_list|)
 decl_stmt|;
 comment|// pr(genFields+"\t"+genFields.indexOf("abstract"));
@@ -5225,7 +5245,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"generalFields"
+name|JabRefPreferences
+operator|.
+name|GENERAL_FIELDS
 argument_list|,
 name|newGen
 argument_list|)
@@ -8727,7 +8749,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useTimeStamp"
+name|JabRefPreferences
+operator|.
+name|USE_TIME_STAMP
 argument_list|)
 operator|&&
 name|Globals
@@ -8785,7 +8809,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"timeStampField"
+name|JabRefPreferences
+operator|.
+name|TIME_STAMP_FIELD
 argument_list|)
 decl_stmt|;
 name|String

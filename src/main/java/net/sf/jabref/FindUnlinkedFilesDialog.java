@@ -1767,7 +1767,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"workingDirectory"
+name|JabRefPreferences
+operator|.
+name|WORKING_DIRECTORY
 argument_list|)
 expr_stmt|;
 block|}

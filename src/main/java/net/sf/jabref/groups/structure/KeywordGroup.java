@@ -964,7 +964,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"groupKeywordSeparator"
+name|JabRefPreferences
+operator|.
+name|GROUP_KEYWORD_SEPARATOR
 argument_list|)
 decl_stmt|;
 name|String
@@ -1603,7 +1605,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"groupKeywordSeparator"
+name|JabRefPreferences
+operator|.
+name|GROUP_KEYWORD_SEPARATOR
 argument_list|)
 decl_stmt|;
 while|while
@@ -2113,7 +2117,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"groupShowDynamic"
+name|JabRefPreferences
+operator|.
+name|GROUP_SHOW_DYNAMIC
 argument_list|)
 condition|)
 block|{

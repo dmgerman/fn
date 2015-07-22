@@ -719,7 +719,9 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"sidePaneComponentNames"
+name|JabRefPreferences
+operator|.
+name|SIDE_PANE_COMPONENT_NAMES
 argument_list|)
 decl_stmt|;
 name|String
@@ -732,7 +734,9 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"sidePaneComponentPreferredPositions"
+name|JabRefPreferences
+operator|.
+name|SIDE_PANE_COMPONENT_PREFERRED_POSITIONS
 argument_list|)
 decl_stmt|;
 for|for
@@ -925,7 +929,9 @@ name|prefs
 operator|.
 name|putStringArray
 argument_list|(
-literal|"sidePaneComponentNames"
+name|JabRefPreferences
+operator|.
+name|SIDE_PANE_COMPONENT_NAMES
 argument_list|,
 name|componentNames
 argument_list|)
@@ -936,7 +942,9 @@ name|prefs
 operator|.
 name|putStringArray
 argument_list|(
-literal|"sidePaneComponentPreferredPositions"
+name|JabRefPreferences
+operator|.
+name|SIDE_PANE_COMPONENT_PREFERRED_POSITIONS
 argument_list|,
 name|componentPositions
 argument_list|)
@@ -1330,7 +1338,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"sidePaneWidth"
+name|JabRefPreferences
+operator|.
+name|SIDE_PANE_WIDTH
 argument_list|)
 decl_stmt|;
 if|if
@@ -1386,7 +1396,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"sidePaneWidth"
+name|JabRefPreferences
+operator|.
+name|SIDE_PANE_WIDTH
 argument_list|,
 name|frame
 operator|.

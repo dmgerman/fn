@@ -1135,14 +1135,18 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"showSource"
+name|JabRefPreferences
+operator|.
+name|SHOW_SOURCE
 argument_list|)
 operator|&&
 name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"defaultShowSource"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_SHOW_SOURCE
 argument_list|)
 condition|)
 block|{
@@ -1325,7 +1329,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"biblatexMode"
+name|JabRefPreferences
+operator|.
+name|BIBLATEX_MODE
 argument_list|)
 condition|)
 block|{
@@ -2007,7 +2013,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"showSource"
+name|JabRefPreferences
+operator|.
+name|SHOW_SOURCE
 argument_list|)
 condition|)
 block|{
@@ -2690,7 +2698,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"timeStampField"
+name|JabRefPreferences
+operator|.
+name|TIME_STAMP_FIELD
 argument_list|)
 argument_list|)
 operator|)
@@ -3453,7 +3463,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultOwner"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_OWNER
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -3578,7 +3590,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"fontSize"
+name|JabRefPreferences
+operator|.
+name|FONT_SIZE
 argument_list|)
 argument_list|)
 argument_list|)
@@ -7851,7 +7865,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"avoidOverwritingKey"
+name|JabRefPreferences
+operator|.
+name|AVOID_OVERWRITING_KEY
 argument_list|)
 condition|)
 block|{
@@ -7878,7 +7894,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"warnBeforeOverwritingKey"
+name|JabRefPreferences
+operator|.
+name|WARN_BEFORE_OVERWRITING_KEY
 argument_list|)
 condition|)
 block|{
@@ -7942,7 +7960,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"warnBeforeOverwritingKey"
+name|JabRefPreferences
+operator|.
+name|WARN_BEFORE_OVERWRITING_KEY
 argument_list|,
 literal|false
 argument_list|)
@@ -8520,7 +8540,7 @@ literal|"Duplicate BibTeX key. Grouping may not work for this entry."
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/*if (prefs.getBoolean("dialogWarningForDuplicateKey")) {             // JZTODO lyrics             CheckBoxMessage jcb = new CheckBoxMessage(Globals.lang("Warning") + ": "                 + Globals.lang("Duplicate BibTeX key. Grouping may not work for this entry."),                 Globals.lang("Disable this warning dialog"), false);             JOptionPane.showMessageDialog(frame, jcb, Globals.lang("Warning"),                 JOptionPane.WARNING_MESSAGE);              if (jcb.isSelected())                 prefs.putBoolean("dialogWarningForDuplicateKey", false);         }*/
+comment|/*if (prefs.getBoolean(JabRefPreferences.DIALOG_WARNING_FOR_DUPLICATE_KEY)) {             // JZTODO lyrics             CheckBoxMessage jcb = new CheckBoxMessage(Globals.lang("Warning") + ": "                 + Globals.lang("Duplicate BibTeX key. Grouping may not work for this entry."),                 Globals.lang("Disable this warning dialog"), false);             JOptionPane.showMessageDialog(frame, jcb, Globals.lang("Warning"),                 JOptionPane.WARNING_MESSAGE);              if (jcb.isSelected())                 prefs.putBoolean(JabRefPreferences.DIALOG_WARNING_FOR_DUPLICATE_KEY, false);         }*/
 block|}
 DECL|method|warnEmptyBibtexkey ()
 specifier|private
@@ -8541,7 +8561,7 @@ literal|"Empty BibTeX key. Grouping may not work for this entry."
 argument_list|)
 argument_list|)
 expr_stmt|;
-comment|/*if (prefs.getBoolean("dialogWarningForEmptyKey")) {             // JZTODO lyrics             CheckBoxMessage jcb = new CheckBoxMessage(Globals.lang("Warning") + ": "                 + Globals.lang("Empty BibTeX key. Grouping may not work for this entry."), Globals                 .lang("Disable this warning dialog"), false);             JOptionPane.showMessageDialog(frame, jcb, Globals.lang("Warning"),                 JOptionPane.WARNING_MESSAGE);              if (jcb.isSelected())                 prefs.putBoolean("dialogWarningForEmptyKey", false);         }*/
+comment|/*if (prefs.getBoolean(JabRefPreferences.DIALOG_WARNING_FOR_EMPTY_KEY)) {             // JZTODO lyrics             CheckBoxMessage jcb = new CheckBoxMessage(Globals.lang("Warning") + ": "                 + Globals.lang("Empty BibTeX key. Grouping may not work for this entry."), Globals                 .lang("Disable this warning dialog"), false);             JOptionPane.showMessageDialog(frame, jcb, Globals.lang("Warning"),                 JOptionPane.WARNING_MESSAGE);              if (jcb.isSelected())                 prefs.putBoolean(JabRefPreferences.DIALOG_WARNING_FOR_EMPTY_KEY, false);         }*/
 block|}
 DECL|class|AutoLinkAction
 specifier|private

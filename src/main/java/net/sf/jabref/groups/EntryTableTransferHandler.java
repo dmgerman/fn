@@ -230,6 +230,18 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|external
 operator|.
 name|DroppedFileHandler
@@ -1628,7 +1640,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultEncoding"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_ENCODING
 argument_list|)
 decl_stmt|;
 for|for
@@ -1858,7 +1872,7 @@ argument_list|)
 expr_stmt|;
 continue|continue;
 block|}
-comment|/*             			if (extension.equals("pdf")) {             				Collection c;             				try {             					c = XMPUtil.readXMP(fileNames[i]);             				} catch (IOException e1) {             					c = null;             					frame.output(Globals.lang("No XMP metadata found in " + fileNames[i]));             				}              				if (c != null&& c.size()> 0) {             					Iterator it = c.iterator();              					BasePanel panel = frame.basePanel();              					if (panel == null) {             						// // Create a new, empty, database.             						BibtexDatabase database = new BibtexDatabase();             						frame.addTab(database, null, null, Globals.prefs.get("defaultEncoding"),             							true);             						frame.output(Globals.lang("New database created."));             						panel = frame.basePanel();             					}              					BibtexDatabase database = frame.basePanel().database();              					NamedCompound ce = new NamedCompound(Glbals.lang("Drop PDF"));              					while (it.hasNext()) {             						BibtexEntry e = (BibtexEntry) it.next();              						try {             							e.setId(Util.next());             							database.insertEntry(e);             							ce.addEdit(new UndoableInsertEntry(database, e, panel));             						} catch (Exception e2) {             							// Should not happen?             						}             					}              					ce.end();             					panel.undoManager.addEdit(ce);             					panel.markBaseChanged();             					continue;             				}             			}             			*/
+comment|/*             			if (extension.equals("pdf")) {             				Collection c;             				try {             					c = XMPUtil.readXMP(fileNames[i]);             				} catch (IOException e1) {             					c = null;             					frame.output(Globals.lang("No XMP metadata found in " + fileNames[i]));             				}              				if (c != null&& c.size()> 0) {             					Iterator it = c.iterator();              					BasePanel panel = frame.basePanel();              					if (panel == null) {             						// // Create a new, empty, database.             						BibtexDatabase database = new BibtexDatabase();             						frame.addTab(database, null, null, Globals.prefs.get(JabRefPreferences.DEFAULT_ENCODING),             							true);             						frame.output(Globals.lang("New database created."));             						panel = frame.basePanel();             					}              					BibtexDatabase database = frame.basePanel().database();              					NamedCompound ce = new NamedCompound(Glbals.lang("Drop PDF"));              					while (it.hasNext()) {             						BibtexEntry e = (BibtexEntry) it.next();              						try {             							e.setId(Util.next());             							database.insertEntry(e);             							ce.addEdit(new UndoableInsertEntry(database, e, panel));             						} catch (Exception e2) {             							// Should not happen?             						}             					}              					ce.end();             					panel.undoManager.addEdit(ce);             					panel.markBaseChanged();             					continue;             				}             			}             			*/
 name|notBibFiles
 operator|.
 name|add

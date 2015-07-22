@@ -426,7 +426,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"floatMarkedEntries"
+name|JabRefPreferences
+operator|.
+name|FLOAT_MARKED_ENTRIES
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -2193,7 +2195,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"floatMarkedEntries"
+name|JabRefPreferences
+operator|.
+name|FLOAT_MARKED_ENTRIES
 argument_list|,
 name|floatMarked
 operator|.
@@ -2411,7 +2415,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"floatMarkedEntries"
+name|JabRefPreferences
+operator|.
+name|FLOAT_MARKED_ENTRIES
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2826,7 +2832,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"groupShowDynamic"
+name|JabRefPreferences
+operator|.
+name|GROUP_SHOW_DYNAMIC
 argument_list|)
 condition|)
 block|{
@@ -2865,7 +2873,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"groupShowIcons"
+name|JabRefPreferences
+operator|.
+name|GROUP_SHOW_ICONS
 argument_list|)
 condition|)
 block|{

@@ -335,7 +335,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"includeEmptyFields"
+name|JabRefPreferences
+operator|.
+name|INCLUDE_EMPTY_FIELDS
 argument_list|)
 decl_stmt|;
 DECL|field|writeFieldSortStype

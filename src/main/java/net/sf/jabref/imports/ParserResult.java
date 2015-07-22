@@ -565,7 +565,7 @@ operator|=
 name|enc
 expr_stmt|;
 block|}
-comment|/**      * Returns the name of the encoding used during parsing, or null if not specified      * (indicates that prefs.get("defaultEncoding") was used).      */
+comment|/**      * Returns the name of the encoding used during parsing, or null if not specified      * (indicates that prefs.get(JabRefPreferences.DEFAULT_ENCODING) was used).      */
 DECL|method|getEncoding ()
 specifier|public
 name|String

@@ -183,7 +183,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"showFileLinksUpgradeWarning"
+name|JabRefPreferences
+operator|.
+name|SHOW_FILE_LINKS_UPGRADE_WARNING
 argument_list|)
 condition|)
 block|{
@@ -274,7 +276,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"fileColumn"
+name|JabRefPreferences
+operator|.
+name|FILE_COLUMN
 argument_list|)
 operator|||
 operator|!
@@ -705,7 +709,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"showFileLinksUpgradeWarning"
+name|JabRefPreferences
+operator|.
+name|SHOW_FILE_LINKS_UPGRADE_WARNING
 argument_list|,
 literal|false
 argument_list|)
@@ -901,7 +907,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"pdfColumn"
+name|JabRefPreferences
+operator|.
+name|PDF_COLUMN
 argument_list|,
 name|Boolean
 operator|.
@@ -914,7 +922,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"fileColumn"
+name|JabRefPreferences
+operator|.
+name|FILE_COLUMN
 argument_list|,
 name|Boolean
 operator|.

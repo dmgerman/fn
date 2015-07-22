@@ -207,7 +207,9 @@ argument_list|()
 operator|.
 name|get
 argument_list|(
-literal|"defaultLabelPattern"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_LABEL_PATTERN
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -2094,7 +2096,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"keyGenAlwaysAddLetter"
+name|JabRefPreferences
+operator|.
+name|KEY_GEN_ALWAYS_ADD_LETTER
 argument_list|)
 decl_stmt|,
 name|firstLetterA
@@ -2105,7 +2109,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"keyGenFirstLetterA"
+name|JabRefPreferences
+operator|.
+name|KEY_GEN_FIRST_LETTER_A
 argument_list|)
 decl_stmt|;
 if|if

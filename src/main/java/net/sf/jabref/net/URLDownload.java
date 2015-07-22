@@ -30,6 +30,18 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing
@@ -309,7 +321,7 @@ return|return
 name|connection
 return|;
 block|}
-comment|/**      * Encoding will be determined from "defaultEncoding"      *      * @return the downloaded string      * @throws IOException      */
+comment|/**      * Encoding will be determined from JabRefPreferences.DEFAULT_ENCODING      *      * @return the downloaded string      * @throws IOException      */
 DECL|method|downloadToString ()
 specifier|public
 name|String
@@ -327,7 +339,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultEncoding"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_ENCODING
 argument_list|)
 argument_list|)
 return|;

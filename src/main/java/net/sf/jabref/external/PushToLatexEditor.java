@@ -246,7 +246,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"latexEditorPath"
+name|JabRefPreferences
+operator|.
+name|LATEX_EDITOR_PATH
 argument_list|)
 decl_stmt|;
 if|if
@@ -297,7 +299,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommandLed"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_LED
 argument_list|)
 operator|+
 literal|"{"
@@ -402,7 +406,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"latexEditorPath"
+name|JabRefPreferences
+operator|.
+name|LATEX_EDITOR_PATH
 argument_list|)
 operator|+
 literal|"'."
@@ -463,7 +469,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"latexEditorPath"
+name|JabRefPreferences
+operator|.
+name|LATEX_EDITOR_PATH
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -477,7 +485,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommandLed"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_LED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -617,7 +627,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"latexEditorPath"
+name|JabRefPreferences
+operator|.
+name|LATEX_EDITOR_PATH
 argument_list|,
 name|ledPath
 operator|.
@@ -631,7 +643,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"citeCommandLed"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_LED
 argument_list|,
 name|citeCommand
 operator|.

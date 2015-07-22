@@ -1407,7 +1407,9 @@ argument_list|()
 operator|.
 name|getColor
 argument_list|(
-literal|"activeFieldEditorBackgroundColor"
+name|JabRefPreferences
+operator|.
+name|ACTIVE_FIELD_EDITOR_BACKGROUND_COLOR
 argument_list|)
 expr_stmt|;
 name|GUIGlobals
@@ -1421,7 +1423,9 @@ argument_list|()
 operator|.
 name|getColor
 argument_list|(
-literal|"validFieldBackgroundColor"
+name|JabRefPreferences
+operator|.
+name|VALID_FIELD_BACKGROUND_COLOR
 argument_list|)
 expr_stmt|;
 name|GUIGlobals
@@ -1435,7 +1439,9 @@ argument_list|()
 operator|.
 name|getColor
 argument_list|(
-literal|"invalidFieldBackgroundColor"
+name|JabRefPreferences
+operator|.
+name|INVALID_FIELD_BACKGROUND_COLOR
 argument_list|)
 expr_stmt|;
 name|GUIGlobals
@@ -1449,7 +1455,9 @@ argument_list|()
 operator|.
 name|getColor
 argument_list|(
-literal|"fieldEditorTextColor"
+name|JabRefPreferences
+operator|.
+name|FIELD_EDITOR_TEXT_COLOR
 argument_list|)
 expr_stmt|;
 block|}
@@ -1497,7 +1505,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useCustomIconTheme"
+name|JabRefPreferences
+operator|.
+name|USE_CUSTOM_ICON_THEME
 argument_list|)
 condition|)
 block|{
@@ -1510,7 +1520,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"customIconThemeFile"
+name|JabRefPreferences
+operator|.
+name|CUSTOM_ICON_THEME_FILE
 argument_list|)
 decl_stmt|;
 if|if
@@ -2089,7 +2101,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"language"
+name|JabRefPreferences
+operator|.
+name|LANGUAGE
 argument_list|)
 operator|+
 literal|'/'

@@ -2230,7 +2230,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useXmpPrivacyFilter"
+name|JabRefPreferences
+operator|.
+name|USE_XMP_PRIVACY_FILTER
 argument_list|)
 decl_stmt|;
 comment|// Fields for which not to write XMP data later on:
@@ -3068,7 +3070,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useXmpPrivacyFilter"
+name|JabRefPreferences
+operator|.
+name|USE_XMP_PRIVACY_FILTER
 argument_list|)
 decl_stmt|;
 comment|// Fields for which not to write XMP data later on:

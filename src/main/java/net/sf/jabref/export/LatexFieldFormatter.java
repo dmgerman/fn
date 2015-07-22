@@ -166,7 +166,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"resolveStringsAllFields"
+name|JabRefPreferences
+operator|.
+name|RESOLVE_STRINGS_ALL_FIELDS
 argument_list|)
 expr_stmt|;
 name|valueDelimitersZero
@@ -199,7 +201,9 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"doNotResolveStringsFor"
+name|JabRefPreferences
+operator|.
+name|DO_NOT_RESOLVE_STRINGS_FOR
 argument_list|)
 expr_stmt|;
 name|writefieldWrapfield

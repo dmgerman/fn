@@ -1695,7 +1695,9 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"numericFields"
+name|JabRefPreferences
+operator|.
+name|NUMERIC_FIELDS
 argument_list|)
 decl_stmt|;
 if|if

@@ -238,7 +238,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"entryTypeFormHeightFactor"
+name|JabRefPreferences
+operator|.
+name|ENTRY_TYPE_FORM_HEIGHT_FACTOR
 argument_list|)
 index|]
 argument_list|)
@@ -253,7 +255,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"entryTypeFormWidth"
+name|JabRefPreferences
+operator|.
+name|ENTRY_TYPE_FORM_WIDTH
 argument_list|)
 index|]
 argument_list|,

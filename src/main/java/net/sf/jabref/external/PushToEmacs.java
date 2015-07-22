@@ -267,7 +267,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommandEmacs"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_EMACS
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -337,7 +339,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"citeCommandEmacs"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_EMACS
 argument_list|,
 name|citeCommand
 operator|.
@@ -745,7 +749,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommandEmacs"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_EMACS
 argument_list|)
 operator|.
 name|replaceAll
@@ -783,7 +789,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommandEmacs"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_EMACS
 argument_list|)
 operator|.
 name|replaceAll

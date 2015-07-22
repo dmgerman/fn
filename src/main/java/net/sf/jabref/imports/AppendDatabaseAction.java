@@ -349,7 +349,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"workingDirectory"
+name|JabRefPreferences
+operator|.
+name|WORKING_DIRECTORY
 argument_list|)
 argument_list|)
 argument_list|,
@@ -484,7 +486,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"workingDirectory"
+name|JabRefPreferences
+operator|.
+name|WORKING_DIRECTORY
 argument_list|,
 name|file
 operator|.
@@ -502,7 +506,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultEncoding"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_ENCODING
 argument_list|)
 decl_stmt|;
 name|ParserResult
@@ -702,7 +708,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"overwriteOwner"
+name|JabRefPreferences
+operator|.
+name|OVERWRITE_OWNER
 argument_list|)
 decl_stmt|;
 name|boolean
@@ -714,7 +722,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"overwriteTimeStamp"
+name|JabRefPreferences
+operator|.
+name|OVERWRITE_TIME_STAMP
 argument_list|)
 decl_stmt|;
 for|for

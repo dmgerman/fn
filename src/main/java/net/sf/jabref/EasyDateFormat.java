@@ -87,7 +87,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"timeStampFormat"
+name|JabRefPreferences
+operator|.
+name|TIME_STAMP_FORMAT
 argument_list|)
 decl_stmt|;
 name|dateFormatter

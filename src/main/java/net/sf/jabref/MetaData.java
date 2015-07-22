@@ -693,7 +693,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"userFileDirIndividual"
+name|JabRefPreferences
+operator|.
+name|USER_FILE_DIR_INDIVIDUAL
 argument_list|)
 decl_stmt|;
 name|List
@@ -735,7 +737,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"userFileDir"
+name|JabRefPreferences
+operator|.
+name|USER_FILE_DIR
 argument_list|)
 expr_stmt|;
 name|vec
@@ -911,7 +915,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"bibLocationAsFileDir"
+name|JabRefPreferences
+operator|.
+name|BIB_LOCATION_AS_FILE_DIR
 argument_list|)
 operator|&&
 operator|(
@@ -931,7 +937,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"bibLocAsPrimaryDir"
+name|JabRefPreferences
+operator|.
+name|BIB_LOC_AS_PRIMARY_DIR
 argument_list|)
 condition|)
 block|{

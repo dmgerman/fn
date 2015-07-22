@@ -302,7 +302,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autoDoubleBraces"
+name|JabRefPreferences
+operator|.
+name|AUTO_DOUBLE_BRACES
 argument_list|)
 expr_stmt|;
 name|_in

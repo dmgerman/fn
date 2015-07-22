@@ -280,10 +280,10 @@ literal|"Generate keys for imported entries"
 argument_list|)
 argument_list|)
 decl_stmt|;
+DECL|field|letterStartA
 specifier|private
 specifier|final
 name|JRadioButton
-DECL|field|letterStartA
 name|letterStartA
 init|=
 operator|new
@@ -379,7 +379,7 @@ name|appendKeyGeneratorSettings
 argument_list|()
 expr_stmt|;
 block|}
-comment|/**      * Store changes to table preferences. This method is called when      * the user clicks Ok.      *      */
+comment|/**      * Store changes to table preferences. This method is called when the user clicks Ok.      *      */
 annotation|@
 name|Override
 DECL|method|storeSettings ()
@@ -395,7 +395,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"defaultLabelPattern"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_LABEL_PATTERN
 argument_list|,
 name|defaultPat
 operator|.
@@ -409,7 +411,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"warnBeforeOverwritingKey"
+name|JabRefPreferences
+operator|.
+name|WARN_BEFORE_OVERWRITING_KEY
 argument_list|,
 name|warnBeforeOverwriting
 operator|.
@@ -423,7 +427,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"avoidOverwritingKey"
+name|JabRefPreferences
+operator|.
+name|AVOID_OVERWRITING_KEY
 argument_list|,
 name|dontOverwrite
 operator|.
@@ -467,7 +473,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"generateKeysAfterInspection"
+name|JabRefPreferences
+operator|.
+name|GENERATE_KEYS_AFTER_INSPECTION
 argument_list|,
 name|autoGenerateOnImport
 operator|.
@@ -481,7 +489,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"generateKeysBeforeSaving"
+name|JabRefPreferences
+operator|.
+name|GENERATE_KEYS_BEFORE_SAVING
 argument_list|,
 name|generateOnSave
 operator|.
@@ -503,7 +513,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"keyGenAlwaysAddLetter"
+name|JabRefPreferences
+operator|.
+name|KEY_GEN_ALWAYS_ADD_LETTER
 argument_list|,
 literal|true
 argument_list|)
@@ -524,7 +536,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"keyGenFirstLetterA"
+name|JabRefPreferences
+operator|.
+name|KEY_GEN_FIRST_LETTER_A
 argument_list|,
 literal|true
 argument_list|)
@@ -535,7 +549,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"keyGenAlwaysAddLetter"
+name|JabRefPreferences
+operator|.
+name|KEY_GEN_ALWAYS_ADD_LETTER
 argument_list|,
 literal|false
 argument_list|)
@@ -549,7 +565,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"keyGenFirstLetterA"
+name|JabRefPreferences
+operator|.
+name|KEY_GEN_FIRST_LETTER_A
 argument_list|,
 literal|false
 argument_list|)
@@ -560,7 +578,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"keyGenAlwaysAddLetter"
+name|JabRefPreferences
+operator|.
+name|KEY_GEN_ALWAYS_ADD_LETTER
 argument_list|,
 literal|false
 argument_list|)
@@ -995,7 +1015,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultLabelPattern"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_LABEL_PATTERN
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1009,7 +1031,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"avoidOverwritingKey"
+name|JabRefPreferences
+operator|.
+name|AVOID_OVERWRITING_KEY
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1023,7 +1047,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"generateKeysBeforeSaving"
+name|JabRefPreferences
+operator|.
+name|GENERATE_KEYS_BEFORE_SAVING
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1037,7 +1063,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"generateKeysAfterInspection"
+name|JabRefPreferences
+operator|.
+name|GENERATE_KEYS_AFTER_INSPECTION
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1051,7 +1079,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"warnBeforeOverwritingKey"
+name|JabRefPreferences
+operator|.
+name|WARN_BEFORE_OVERWRITING_KEY
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1064,7 +1094,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"keyGenAlwaysAddLetter"
+name|JabRefPreferences
+operator|.
+name|KEY_GEN_ALWAYS_ADD_LETTER
 argument_list|)
 decl_stmt|,
 name|firstLetterA
@@ -1075,7 +1107,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"keyGenFirstLetterA"
+name|JabRefPreferences
+operator|.
+name|KEY_GEN_FIRST_LETTER_A
 argument_list|)
 decl_stmt|;
 if|if

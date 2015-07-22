@@ -242,7 +242,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"winEdtPath"
+name|JabRefPreferences
+operator|.
+name|WIN_EDT_PATH
 argument_list|)
 decl_stmt|;
 if|if
@@ -295,7 +297,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommandWinEdt"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_WIN_EDT
 argument_list|)
 operator|+
 literal|"{"
@@ -408,7 +412,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"winEdtPath"
+name|JabRefPreferences
+operator|.
+name|WIN_EDT_PATH
 argument_list|)
 operator|+
 literal|"'."
@@ -467,7 +473,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"winEdtPath"
+name|JabRefPreferences
+operator|.
+name|WIN_EDT_PATH
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -481,7 +489,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"citeCommandWinEdt"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_WIN_EDT
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -621,7 +631,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"winEdtPath"
+name|JabRefPreferences
+operator|.
+name|WIN_EDT_PATH
 argument_list|,
 name|winEdtPath
 operator|.
@@ -635,7 +647,9 @@ name|prefs
 operator|.
 name|put
 argument_list|(
-literal|"citeCommandWinEdt"
+name|JabRefPreferences
+operator|.
+name|CITE_COMMAND_WIN_EDT
 argument_list|,
 name|citeCommand
 operator|.

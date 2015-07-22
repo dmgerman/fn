@@ -222,7 +222,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"regExpSearch"
+name|JabRefPreferences
+operator|.
+name|REG_EXP_SEARCH
 argument_list|)
 condition|)
 block|{
@@ -237,7 +239,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"caseSensitiveSearch"
+name|JabRefPreferences
+operator|.
+name|CASE_SENSITIVE_SEARCH
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -255,7 +259,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"caseSensitiveSearch"
+name|JabRefPreferences
+operator|.
+name|CASE_SENSITIVE_SEARCH
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -273,7 +279,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"caseSensitiveSearch"
+name|JabRefPreferences
+operator|.
+name|CASE_SENSITIVE_SEARCH
 argument_list|)
 argument_list|,
 name|Globals
@@ -282,7 +290,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"regExpSearch"
+name|JabRefPreferences
+operator|.
+name|REG_EXP_SEARCH
 argument_list|)
 argument_list|)
 expr_stmt|;

@@ -22,7 +22,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|IOException
+name|FileNotFoundException
 import|;
 end_import
 
@@ -32,7 +32,7 @@ name|java
 operator|.
 name|io
 operator|.
-name|FileNotFoundException
+name|IOException
 import|;
 end_import
 
@@ -127,6 +127,18 @@ operator|.
 name|jabref
 operator|.
 name|Globals
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|JabRefPreferences
 import|;
 end_import
 
@@ -468,7 +480,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useUnitFormatterOnSearch"
+name|JabRefPreferences
+operator|.
+name|USE_UNIT_FORMATTER_ON_SEARCH
 argument_list|)
 condition|)
 block|{
@@ -491,7 +505,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useCaseKeeperOnSearch"
+name|JabRefPreferences
+operator|.
+name|USE_CASE_KEEPER_ON_SEARCH
 argument_list|)
 condition|)
 block|{

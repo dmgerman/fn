@@ -1045,7 +1045,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"groupShowDynamic"
+name|JabRefPreferences
+operator|.
+name|GROUP_SHOW_DYNAMIC
 argument_list|)
 condition|)
 block|{

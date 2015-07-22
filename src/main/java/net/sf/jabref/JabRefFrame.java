@@ -4209,7 +4209,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"filechooserDisableRename"
+name|JabRefPreferences
+operator|.
+name|FILECHOOSER_DISABLE_RENAME
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4323,7 +4325,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"toolbarVisible"
+name|JabRefPreferences
+operator|.
+name|TOOLBAR_VISIBLE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4345,7 +4349,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"windowMaximised"
+name|JabRefPreferences
+operator|.
+name|WINDOW_MAXIMISED
 argument_list|)
 condition|)
 block|{
@@ -4356,7 +4362,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"sizeX"
+name|JabRefPreferences
+operator|.
+name|SIZE_X
 argument_list|)
 decl_stmt|;
 name|int
@@ -4366,7 +4374,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"sizeY"
+name|JabRefPreferences
+operator|.
+name|SIZE_Y
 argument_list|)
 decl_stmt|;
 name|int
@@ -4376,7 +4386,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"posX"
+name|JabRefPreferences
+operator|.
+name|POS_X
 argument_list|)
 decl_stmt|;
 name|int
@@ -4386,7 +4398,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"posY"
+name|JabRefPreferences
+operator|.
+name|POS_Y
 argument_list|)
 decl_stmt|;
 comment|/*             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();             GraphicsDevice[] gs = ge.getScreenDevices();               // Get size of each screen             for (int i=0; i<gs.length; i++) {                 DisplayMode dm = gs[i].getDisplayMode();                 int screenWidth = dm.getWidth();                 int screenHeight = dm.getHeight();                 System.out.println(gs[i].getDefaultConfiguration().getBounds());             }*/
@@ -4533,7 +4547,9 @@ name|prefs
 operator|.
 name|getIntDefault
 argument_list|(
-literal|"posX"
+name|JabRefPreferences
+operator|.
+name|POS_X
 argument_list|)
 expr_stmt|;
 name|sizeX
@@ -4542,7 +4558,9 @@ name|prefs
 operator|.
 name|getIntDefault
 argument_list|(
-literal|"sizeX"
+name|JabRefPreferences
+operator|.
+name|SIZE_X
 argument_list|)
 expr_stmt|;
 block|}
@@ -4580,7 +4598,9 @@ name|prefs
 operator|.
 name|getIntDefault
 argument_list|(
-literal|"posY"
+name|JabRefPreferences
+operator|.
+name|POS_Y
 argument_list|)
 expr_stmt|;
 name|sizeY
@@ -4589,7 +4609,9 @@ name|prefs
 operator|.
 name|getIntDefault
 argument_list|(
-literal|"sizeY"
+name|JabRefPreferences
+operator|.
+name|SIZE_Y
 argument_list|)
 expr_stmt|;
 block|}
@@ -4692,7 +4714,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"previewEnabled"
+name|JabRefPreferences
+operator|.
+name|PREVIEW_ENABLED
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4706,7 +4730,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"highlightGroupsMatchingAny"
+name|JabRefPreferences
+operator|.
+name|HIGHLIGHT_GROUPS_MATCHING_ANY
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -4720,7 +4746,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"highlightGroupsMatchingAll"
+name|JabRefPreferences
+operator|.
+name|HIGHLIGHT_GROUPS_MATCHING_ALL
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -5106,7 +5134,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"searchPanelVisible"
+name|JabRefPreferences
+operator|.
+name|SEARCH_PANEL_VISIBLE
 argument_list|)
 condition|)
 block|{
@@ -5650,7 +5680,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"posX"
+name|JabRefPreferences
+operator|.
+name|POS_X
 argument_list|,
 name|JabRefFrame
 operator|.
@@ -5666,7 +5698,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"posY"
+name|JabRefPreferences
+operator|.
+name|POS_Y
 argument_list|,
 name|JabRefFrame
 operator|.
@@ -5682,7 +5716,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"sizeX"
+name|JabRefPreferences
+operator|.
+name|SIZE_X
 argument_list|,
 name|JabRefFrame
 operator|.
@@ -5698,7 +5734,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"sizeY"
+name|JabRefPreferences
+operator|.
+name|SIZE_Y
 argument_list|,
 name|JabRefFrame
 operator|.
@@ -5710,12 +5748,14 @@ operator|.
 name|height
 argument_list|)
 expr_stmt|;
-comment|//prefs.putBoolean("windowMaximised", (getExtendedState()&MAXIMIZED_BOTH)>0);
+comment|//prefs.putBoolean(JabRefPreferences.WINDOW_MAXIMISED, (getExtendedState()&MAXIMIZED_BOTH)>0);
 name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"windowMaximised"
+name|JabRefPreferences
+operator|.
+name|WINDOW_MAXIMISED
 argument_list|,
 operator|(
 name|getExtendedState
@@ -5731,7 +5771,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"toolbarVisible"
+name|JabRefPreferences
+operator|.
+name|TOOLBAR_VISIBLE
 argument_list|,
 name|tlb
 operator|.
@@ -5743,7 +5785,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"searchPanelVisible"
+name|JabRefPreferences
+operator|.
+name|SEARCH_PANEL_VISIBLE
 argument_list|,
 name|sidePaneManager
 operator|.
@@ -5773,7 +5817,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"sidePaneWidth"
+name|JabRefPreferences
+operator|.
+name|SIDE_PANE_WIDTH
 argument_list|,
 name|width
 argument_list|)
@@ -5785,7 +5831,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"openLastEdited"
+name|JabRefPreferences
+operator|.
+name|OPEN_LAST_EDITED
 argument_list|)
 condition|)
 block|{
@@ -5804,7 +5852,9 @@ name|prefs
 operator|.
 name|remove
 argument_list|(
-literal|"lastEdited"
+name|JabRefPreferences
+operator|.
+name|LAST_EDITED
 argument_list|)
 expr_stmt|;
 block|}
@@ -5858,7 +5908,9 @@ name|prefs
 operator|.
 name|putStringArray
 argument_list|(
-literal|"lastEdited"
+name|JabRefPreferences
+operator|.
+name|LAST_EDITED
 argument_list|,
 name|names
 argument_list|)
@@ -8770,7 +8822,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"webSearchVisible"
+name|JabRefPreferences
+operator|.
+name|WEB_SEARCH_VISIBLE
 argument_list|)
 condition|)
 block|{
@@ -9256,7 +9310,7 @@ argument_list|(
 name|manageJournals
 argument_list|)
 expr_stmt|;
-comment|/*options.add(new AbstractAction("Font") {         public void actionPerformed(ActionEvent e) {             Font f=new FontSelectorDialog           (JabRefFrame.this, GUIGlobals.CURRENTFONT).getSelectedFont();          if(f==null)           return;          else           GUIGlobals.CURRENTFONT=f;          // updatefont          prefs.put("fontFamily", GUIGlobals.CURRENTFONT.getFamily());          prefs.putInt("fontStyle", GUIGlobals.CURRENTFONT.getStyle());          prefs.putInt("fontSize", GUIGlobals.CURRENTFONT.getSize());          if (tabbedPane.getTabCount()> 0) {           for (int i=0; i<tabbedPane.getTabCount(); i++) {            baseAt(i).entryTable.updateFont();            baseAt(i).refreshTable();           }          }         }         });*/
+comment|/*options.add(new AbstractAction("Font") {         public void actionPerformed(ActionEvent e) {             Font f=new FontSelectorDialog           (JabRefFrame.this, GUIGlobals.CURRENTFONT).getSelectedFont();          if(f==null)           return;          else           GUIGlobals.CURRENTFONT=f;          // updatefont          prefs.put(JabRefPreferences.FONT_FAMILY, GUIGlobals.CURRENTFONT.getFamily());          prefs.putInt("fontStyle", GUIGlobals.CURRENTFONT.getStyle());          prefs.putInt("fontSize", GUIGlobals.CURRENTFONT.getSize());          if (tabbedPane.getTabCount()> 0) {           for (int i=0; i<tabbedPane.getTabCount(); i++) {            baseAt(i).entryTable.updateFont();            baseAt(i).refreshTable();           }          }         }         });*/
 name|pluginMenu
 operator|.
 name|add
@@ -10859,7 +10913,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultEncoding"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_ENCODING
 argument_list|)
 expr_stmt|;
 block|}
@@ -11658,7 +11714,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultEncoding"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_ENCODING
 argument_list|)
 argument_list|,
 literal|true
@@ -11811,7 +11869,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultEncoding"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_ENCODING
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -12075,7 +12135,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useImportInspectionDialog"
+name|JabRefPreferences
+operator|.
+name|USE_IMPORT_INSPECTION_DIALOG
 argument_list|)
 operator|&&
 operator|(
@@ -12085,7 +12147,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"useImportInspectionDialogForSingle"
+name|JabRefPreferences
+operator|.
+name|USE_IMPORT_INSPECTION_DIALOG_FOR_SINGLE
 argument_list|)
 operator|||
 operator|(
@@ -12338,7 +12402,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"overwriteOwner"
+name|JabRefPreferences
+operator|.
+name|OVERWRITE_OWNER
 argument_list|)
 argument_list|,
 name|Globals
@@ -12347,7 +12413,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"overwriteTimeStamp"
+name|JabRefPreferences
+operator|.
+name|OVERWRITE_TIME_STAMP
 argument_list|)
 argument_list|,
 name|Globals
@@ -12356,7 +12424,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"markImportedEntries"
+name|JabRefPreferences
+operator|.
+name|MARK_IMPORTED_ENTRIES
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -12454,7 +12524,9 @@ name|prefs
 operator|.
 name|get
 argument_list|(
-literal|"defaultEncoding"
+name|JabRefPreferences
+operator|.
+name|DEFAULT_ENCODING
 argument_list|)
 argument_list|)
 decl_stmt|;
@@ -14815,7 +14887,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"fontSize"
+name|JabRefPreferences
+operator|.
+name|FONT_SIZE
 argument_list|,
 name|currentSize
 operator|+
@@ -14948,7 +15022,9 @@ name|prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"fontSize"
+name|JabRefPreferences
+operator|.
+name|FONT_SIZE
 argument_list|,
 name|currentSize
 operator|-
