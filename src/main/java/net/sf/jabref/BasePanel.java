@@ -10204,7 +10204,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autoAssignGroup"
+name|JabRefPreferences
+operator|.
+name|AUTO_ASSIGN_GROUP
 argument_list|)
 operator|)
 operator|&&

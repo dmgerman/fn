@@ -1818,7 +1818,9 @@ name|_prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"disableOnMultipleSelection"
+name|JabRefPreferences
+operator|.
+name|DISABLE_ON_MULTIPLE_SELECTION
 argument_list|,
 name|disableOnMultiple
 operator|.

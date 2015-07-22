@@ -3805,7 +3805,9 @@ name|prefs
 operator|.
 name|getColor
 argument_list|(
-literal|"incompleteEntryBackground"
+name|JabRefPreferences
+operator|.
+name|INCOMPLETE_ENTRY_BACKGROUND
 argument_list|)
 argument_list|)
 expr_stmt|;

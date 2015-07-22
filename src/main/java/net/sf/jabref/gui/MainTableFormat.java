@@ -2533,7 +2533,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"fileColumn"
+name|JabRefPreferences
+operator|.
+name|FILE_COLUMN
 argument_list|)
 condition|)
 block|{
@@ -2560,7 +2562,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"pdfColumn"
+name|JabRefPreferences
+operator|.
+name|PDF_COLUMN
 argument_list|)
 condition|)
 block|{
@@ -2587,7 +2591,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"urlColumn"
+name|JabRefPreferences
+operator|.
+name|URL_COLUMN
 argument_list|)
 condition|)
 block|{
@@ -2599,7 +2605,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"preferUrlDoi"
+name|JabRefPreferences
+operator|.
+name|PREFER_URL_DOI
 argument_list|)
 condition|)
 block|{
@@ -2644,7 +2652,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"arxivColumn"
+name|JabRefPreferences
+operator|.
+name|ARXIV_COLUMN
 argument_list|)
 condition|)
 block|{
@@ -2671,7 +2681,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"extraFileColumns"
+name|JabRefPreferences
+operator|.
+name|EXTRA_FILE_COLUMNS
 argument_list|)
 condition|)
 block|{
@@ -2685,7 +2697,9 @@ name|prefs
 operator|.
 name|getStringArray
 argument_list|(
-literal|"listOfFileColumns"
+name|JabRefPreferences
+operator|.
+name|LIST_OF_FILE_COLUMNS
 argument_list|)
 decl_stmt|;
 for|for

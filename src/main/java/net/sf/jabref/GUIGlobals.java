@@ -1407,7 +1407,9 @@ argument_list|()
 operator|.
 name|getColor
 argument_list|(
-literal|"activeFieldEditorBackgroundColor"
+name|JabRefPreferences
+operator|.
+name|ACTIVE_FIELD_EDITOR_BACKGROUND_COLOR
 argument_list|)
 expr_stmt|;
 name|GUIGlobals
@@ -1421,7 +1423,9 @@ argument_list|()
 operator|.
 name|getColor
 argument_list|(
-literal|"validFieldBackgroundColor"
+name|JabRefPreferences
+operator|.
+name|VALID_FIELD_BACKGROUND_COLOR
 argument_list|)
 expr_stmt|;
 name|GUIGlobals
@@ -1435,7 +1439,9 @@ argument_list|()
 operator|.
 name|getColor
 argument_list|(
-literal|"invalidFieldBackgroundColor"
+name|JabRefPreferences
+operator|.
+name|INVALID_FIELD_BACKGROUND_COLOR
 argument_list|)
 expr_stmt|;
 name|GUIGlobals
@@ -1449,7 +1455,9 @@ argument_list|()
 operator|.
 name|getColor
 argument_list|(
-literal|"fieldEditorTextColor"
+name|JabRefPreferences
+operator|.
+name|FIELD_EDITOR_TEXT_COLOR
 argument_list|)
 expr_stmt|;
 block|}

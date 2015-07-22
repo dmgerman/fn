@@ -1231,7 +1231,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"groupFloatSelections"
+name|JabRefPreferences
+operator|.
+name|GROUP_FLOAT_SELECTIONS
 argument_list|,
 name|floatCb
 operator|.
@@ -1472,7 +1474,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"groupFloatSelections"
+name|JabRefPreferences
+operator|.
+name|GROUP_FLOAT_SELECTIONS
 argument_list|)
 condition|)
 block|{
@@ -1655,7 +1659,9 @@ name|prefs
 operator|.
 name|putBoolean
 argument_list|(
-literal|"autoAssignGroup"
+name|JabRefPreferences
+operator|.
+name|AUTO_ASSIGN_GROUP
 argument_list|,
 name|autoAssignGroup
 operator|.
@@ -1761,7 +1767,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autoAssignGroup"
+name|JabRefPreferences
+operator|.
+name|AUTO_ASSIGN_GROUP
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -1952,7 +1960,9 @@ name|prefs
 operator|.
 name|getBoolean
 argument_list|(
-literal|"autoAssignGroup"
+name|JabRefPreferences
+operator|.
+name|AUTO_ASSIGN_GROUP
 argument_list|)
 argument_list|)
 expr_stmt|;
