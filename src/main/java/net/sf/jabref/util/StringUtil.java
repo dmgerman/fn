@@ -1570,6 +1570,24 @@ return|return
 name|s
 return|;
 block|}
+DECL|method|booleanToBinaryString (boolean expression)
+specifier|public
+specifier|static
+name|String
+name|booleanToBinaryString
+parameter_list|(
+name|boolean
+name|expression
+parameter_list|)
+block|{
+return|return
+name|expression
+condition|?
+literal|"1"
+else|:
+literal|"0"
+return|;
+block|}
 block|}
 end_class
 

@@ -28,6 +28,20 @@ end_import
 
 begin_import
 import|import
+name|com
+operator|.
+name|google
+operator|.
+name|common
+operator|.
+name|base
+operator|.
+name|Preconditions
+import|;
+end_import
+
+begin_import
+import|import
 name|net
 operator|.
 name|sf
@@ -91,7 +105,12 @@ name|this
 operator|.
 name|hitOrMiss
 operator|=
+name|Preconditions
+operator|.
+name|checkNotNull
+argument_list|(
 name|hitOrMiss
+argument_list|)
 expr_stmt|;
 block|}
 annotation|@
@@ -128,7 +147,8 @@ name|matches
 argument_list|(
 name|o1
 argument_list|)
-decl_stmt|,
+decl_stmt|;
+name|boolean
 name|hit2
 init|=
 name|hitOrMiss
@@ -138,6 +158,7 @@ argument_list|(
 name|o2
 argument_list|)
 decl_stmt|;
+comment|// TODO use Boolean.compareTo when converting to Java8
 if|if
 condition|(
 name|hit1

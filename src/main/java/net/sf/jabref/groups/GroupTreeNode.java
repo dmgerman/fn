@@ -150,12 +150,98 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|groups
+operator|.
+name|structure
+operator|.
+name|AbstractGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|groups
+operator|.
+name|structure
+operator|.
+name|AllEntriesGroup
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|groups
+operator|.
+name|structure
+operator|.
+name|GroupHierarchyType
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|search
+operator|.
 name|SearchRule
 import|;
 end_import
 
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|search
+operator|.
+name|rules
+operator|.
+name|sets
+operator|.
+name|SearchRuleSets
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|search
+operator|.
+name|rules
+operator|.
+name|sets
+operator|.
+name|SearchRuleSet
+import|;
+end_import
+
 begin_comment
-comment|/**  * A node in the groups tree that holds exactly one AbstractGroup.  *   * @author jzieren  */
+comment|/**  * A node in the groups tree that holds exactly one AbstractGroup.  *  * @author jzieren  */
 end_comment
 
 begin_class
@@ -355,7 +441,7 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/**      * Creates a deep copy of this node and all of its children, including all      * groups.      *       * @return This object's deep copy.      */
+comment|/**      * Creates a deep copy of this node and all of its children, including all      * groups.      *      * @return This object's deep copy.      */
 DECL|method|deepCopy ()
 specifier|public
 name|GroupTreeNode
@@ -467,7 +553,7 @@ argument_list|)
 expr_stmt|;
 block|}
 block|}
-comment|/**      * @return An indexed path from the root node to this node. The elements in      *         the returned array represent the child index of each node in the      *         path. If this node is the root node, the returned array has zero      *         elements.      */
+comment|/**      * @return An indexed path from the root node to this node. The elements in      * the returned array represent the child index of each node in the      * path. If this node is the root node, the returned array has zero      * elements.      */
 DECL|method|getIndexedPath ()
 specifier|public
 name|int
@@ -581,7 +667,7 @@ return|return
 name|cursor
 return|;
 block|}
-comment|/**      * @param indexedPath      *            A sequence of child indices that describe a path from this      *            node to one of its desendants. Be aware that if<b>indexedPath      *</b> was obtained by getIndexedPath(), this node should      *            usually be the root node.      * @return The descendant found by evaluating<b>indexedPath</b>. If the      *         path could not be traversed completely (i.e. one of the child      *         indices did not exist), null will be returned.      */
+comment|/**      * @param indexedPath A sequence of child indices that describe a path from this      *                    node to one of its desendants. Be aware that if<b>indexedPath      *</b> was obtained by getIndexedPath(), this node should      *                    usually be the root node.      * @return The descendant found by evaluating<b>indexedPath</b>. If the      * path could not be traversed completely (i.e. one of the child      * indices did not exist), null will be returned.      */
 DECL|method|getDescendant (int[] indexedPath)
 specifier|public
 name|GroupTreeNode
@@ -642,7 +728,7 @@ return|return
 name|cursor
 return|;
 block|}
-comment|/**      * A GroupTreeNode can create a SearchRule that finds elements contained in      * its own group, or the union of those elements in its own group and its      * children's groups (recursively), or the intersection of the elements in      * its own group and its parent's group. This setting is configured in the      * group contained in this node.      *       * @return A SearchRule that finds the desired elements.      */
+comment|/**      * A GroupTreeNode can create a SearchRule that finds elements contained in      * its own group, or the union of those elements in its own group and its      * children's groups (recursively), or the intersection of the elements in      * its own group and its parent's group. This setting is configured in the      * group contained in this node.      *      * @return A SearchRule that finds the desired elements.      */
 DECL|method|getSearchRule ()
 specifier|public
 name|SearchRule
@@ -660,17 +746,17 @@ argument_list|()
 argument_list|)
 return|;
 block|}
-DECL|method|getSearchRule (int originalContext)
+DECL|method|getSearchRule (GroupHierarchyType originalContext)
 specifier|private
 name|SearchRule
 name|getSearchRule
 parameter_list|(
-name|int
+name|GroupHierarchyType
 name|originalContext
 parameter_list|)
 block|{
 specifier|final
-name|int
+name|GroupHierarchyType
 name|context
 init|=
 name|getGroup
@@ -683,7 +769,7 @@ if|if
 condition|(
 name|context
 operator|==
-name|AbstractGroup
+name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 condition|)
@@ -696,19 +782,30 @@ name|getSearchRule
 argument_list|()
 return|;
 block|}
-name|AndOrSearchRuleSet
+name|SearchRuleSet
 name|searchRule
 init|=
-operator|new
-name|AndOrSearchRuleSet
+name|SearchRuleSets
+operator|.
+name|build
 argument_list|(
 name|context
 operator|==
-name|AbstractGroup
+name|GroupHierarchyType
 operator|.
 name|REFINING
-argument_list|,
-literal|false
+condition|?
+name|SearchRuleSets
+operator|.
+name|RuleSetType
+operator|.
+name|AND
+else|:
+name|SearchRuleSets
+operator|.
+name|RuleSetType
+operator|.
+name|OR
 argument_list|)
 decl_stmt|;
 name|searchRule
@@ -727,7 +824,7 @@ condition|(
 operator|(
 name|context
 operator|==
-name|AbstractGroup
+name|GroupHierarchyType
 operator|.
 name|INCLUDING
 operator|)
@@ -735,7 +832,7 @@ operator|&&
 operator|(
 name|originalContext
 operator|!=
-name|AbstractGroup
+name|GroupHierarchyType
 operator|.
 name|REFINING
 operator|)
@@ -785,7 +882,7 @@ condition|(
 operator|(
 name|context
 operator|==
-name|AbstractGroup
+name|GroupHierarchyType
 operator|.
 name|REFINING
 operator|)
@@ -797,7 +894,7 @@ operator|&&
 operator|(
 name|originalContext
 operator|!=
-name|AbstractGroup
+name|GroupHierarchyType
 operator|.
 name|INCLUDING
 operator|)
@@ -918,7 +1015,7 @@ name|children
 argument_list|()
 return|;
 block|}
-comment|/**      * Scans the subtree rooted at this node.      *       * @return All groups that contain the specified entry.      */
+comment|/**      * Scans the subtree rooted at this node.      *      * @return All groups that contain the specified entry.      */
 DECL|method|getMatchingGroups (BibtexEntry entry)
 specifier|public
 name|AbstractGroup
@@ -1437,7 +1534,7 @@ return|return
 name|undo
 return|;
 block|}
-comment|/**      * @param path      *            A sequence of child indices that designate a node relative to      *            this node.      * @return The node designated by the specified path, or null if one or more      *         indices in the path could not be resolved.      */
+comment|/**      * @param path A sequence of child indices that designate a node relative to      *             this node.      * @return The node designated by the specified path, or null if one or more      * indices in the path could not be resolved.      */
 DECL|method|getChildAt (int[] path)
 specifier|public
 name|GroupTreeNode
@@ -1498,7 +1595,7 @@ return|return
 name|cursor
 return|;
 block|}
-comment|/** Adds the selected entries to this node's group. */
+comment|/**      * Adds the selected entries to this node's group.      */
 DECL|method|addToGroup (BibtexEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit
@@ -1557,7 +1654,7 @@ return|return
 name|undo
 return|;
 block|}
-comment|/** Removes the selected entries from this node's group. */
+comment|/**      * Removes the selected entries from this node's group.      */
 DECL|method|removeFromGroup (BibtexEntry[] entries)
 specifier|public
 name|AbstractUndoableEdit

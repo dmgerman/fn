@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.groups
+DECL|package|net.sf.jabref.groups.structure
 package|package
 name|net
 operator|.
@@ -13,18 +13,10 @@ operator|.
 name|jabref
 operator|.
 name|groups
+operator|.
+name|structure
 package|;
 end_package
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
 
 begin_import
 import|import
@@ -82,12 +74,14 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|search
+operator|.
 name|SearchRule
 import|;
 end_import
 
 begin_comment
-comment|/**  * This group contains all entries.  */
+comment|/**  * This group contains all entries. Always. At any time!  */
 end_comment
 
 begin_class
@@ -97,8 +91,6 @@ class|class
 name|AllEntriesGroup
 extends|extends
 name|AbstractGroup
-implements|implements
-name|SearchRule
 block|{
 DECL|field|ID
 specifier|public
@@ -123,7 +115,7 @@ argument_list|(
 literal|"All Entries"
 argument_list|)
 argument_list|,
-name|AbstractGroup
+name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|)
@@ -217,7 +209,43 @@ name|getSearchRule
 parameter_list|()
 block|{
 return|return
-name|this
+operator|new
+name|SearchRule
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|int
+name|applyRule
+parameter_list|(
+name|String
+name|query
+parameter_list|,
+name|BibtexEntry
+name|bibtexEntry
+parameter_list|)
+block|{
+return|return
+literal|1
+return|;
+comment|// contains everything
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|validateSearchStrings
+parameter_list|(
+name|String
+name|query
+parameter_list|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+block|}
 return|;
 block|}
 annotation|@
@@ -280,18 +308,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|contains (Map<String, String> searchOptions, BibtexEntry entry)
+DECL|method|contains (String query, BibtexEntry entry)
 specifier|public
 name|boolean
 name|contains
 parameter_list|(
-name|Map
-argument_list|<
 name|String
-argument_list|,
-name|String
-argument_list|>
-name|searchOptions
+name|query
 parameter_list|,
 name|BibtexEntry
 name|entry
@@ -315,50 +338,6 @@ operator|new
 name|AllEntriesGroup
 argument_list|()
 return|;
-block|}
-annotation|@
-name|Override
-DECL|method|validateSearchStrings (Map<String, String> searchStrings)
-specifier|public
-name|boolean
-name|validateSearchStrings
-parameter_list|(
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|searchStrings
-parameter_list|)
-block|{
-return|return
-literal|true
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|applyRule (Map<String, String> searchStrings, BibtexEntry bibtexEntry)
-specifier|public
-name|int
-name|applyRule
-parameter_list|(
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|searchStrings
-parameter_list|,
-name|BibtexEntry
-name|bibtexEntry
-parameter_list|)
-block|{
-return|return
-literal|1
-return|;
-comment|// contains everything
 block|}
 annotation|@
 name|Override
@@ -428,9 +407,13 @@ name|getDescription
 parameter_list|()
 block|{
 return|return
+name|Globals
+operator|.
+name|lang
+argument_list|(
 literal|"This group contains all entries. It cannot be edited or removed."
+argument_list|)
 return|;
-comment|// JZTODO lyrics
 block|}
 annotation|@
 name|Override

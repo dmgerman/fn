@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.groups
+DECL|package|net.sf.jabref.groups.structure
 package|package
 name|net
 operator|.
@@ -13,6 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|groups
+operator|.
+name|structure
 package|;
 end_package
 
@@ -58,6 +60,34 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|groups
+operator|.
+name|UndoableChangeAssignment
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|search
+operator|.
+name|SearchRule
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
 name|util
 operator|.
 name|QuotedStringTokenizer
@@ -79,7 +109,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * @author jzieren  *  */
+comment|/**  * Select explicit bibtex entries. It is also known as static group.  *  * @author jzieren  */
 end_comment
 
 begin_class
@@ -89,8 +119,6 @@ class|class
 name|ExplicitGroup
 extends|extends
 name|AbstractGroup
-implements|implements
-name|SearchRule
 block|{
 DECL|field|ID
 specifier|public
@@ -101,23 +129,30 @@ name|ID
 init|=
 literal|"ExplicitGroup:"
 decl_stmt|;
-DECL|field|m_entries
+DECL|field|entries
 specifier|private
 specifier|final
 name|Set
 argument_list|<
 name|BibtexEntry
 argument_list|>
-name|m_entries
+name|entries
+init|=
+operator|new
+name|HashSet
+argument_list|<
+name|BibtexEntry
+argument_list|>
+argument_list|()
 decl_stmt|;
-DECL|method|ExplicitGroup (String name, int context)
+DECL|method|ExplicitGroup (String name, GroupHierarchyType context)
 specifier|public
 name|ExplicitGroup
 parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|int
+name|GroupHierarchyType
 name|context
 parameter_list|)
 block|{
@@ -127,15 +162,6 @@ name|name
 argument_list|,
 name|context
 argument_list|)
-expr_stmt|;
-name|m_entries
-operator|=
-operator|new
-name|HashSet
-argument_list|<
-name|BibtexEntry
-argument_list|>
-argument_list|()
 expr_stmt|;
 block|}
 DECL|method|fromString (String s, BibtexDatabase db, int version)
@@ -236,7 +262,7 @@ operator|.
 name|nextToken
 argument_list|()
 argument_list|,
-name|AbstractGroup
+name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 argument_list|)
@@ -287,7 +313,12 @@ name|ExplicitGroup
 argument_list|(
 name|name
 argument_list|,
+name|GroupHierarchyType
+operator|.
+name|getByNumber
+argument_list|(
 name|context
+argument_list|)
 argument_list|)
 decl_stmt|;
 name|newGroup
@@ -315,7 +346,7 @@ argument_list|)
 throw|;
 block|}
 block|}
-comment|/** Called only when created fromString */
+comment|/**      * Called only when created fromString      */
 DECL|method|addEntries (QuotedStringTokenizer tok, BibtexDatabase db)
 specifier|private
 name|void
@@ -365,7 +396,9 @@ name|Collections
 operator|.
 name|addAll
 argument_list|(
-name|m_entries
+name|this
+operator|.
+name|entries
 argument_list|,
 name|entries
 argument_list|)
@@ -381,7 +414,51 @@ name|getSearchRule
 parameter_list|()
 block|{
 return|return
-name|this
+operator|new
+name|SearchRule
+argument_list|()
+block|{
+annotation|@
+name|Override
+specifier|public
+name|int
+name|applyRule
+parameter_list|(
+name|String
+name|query
+parameter_list|,
+name|BibtexEntry
+name|bibtexEntry
+parameter_list|)
+block|{
+return|return
+name|contains
+argument_list|(
+name|query
+argument_list|,
+name|bibtexEntry
+argument_list|)
+condition|?
+literal|1
+else|:
+literal|0
+return|;
+block|}
+annotation|@
+name|Override
+specifier|public
+name|boolean
+name|validateSearchStrings
+parameter_list|(
+name|String
+name|query
+parameter_list|)
+block|{
+return|return
+literal|true
+return|;
+block|}
+block|}
 return|;
 block|}
 annotation|@
@@ -446,14 +523,18 @@ argument_list|<
 name|BibtexEntry
 argument_list|>
 argument_list|(
-name|m_entries
+name|this
+operator|.
+name|entries
 argument_list|)
 decl_stmt|;
 name|Collections
 operator|.
 name|addAll
 argument_list|(
-name|m_entries
+name|this
+operator|.
+name|entries
 argument_list|,
 name|entries
 argument_list|)
@@ -464,7 +545,9 @@ name|UndoableChangeAssignment
 argument_list|(
 name|entriesBeforeEdit
 argument_list|,
-name|m_entries
+name|this
+operator|.
+name|entries
 argument_list|)
 return|;
 block|}
@@ -478,7 +561,7 @@ name|entry
 parameter_list|)
 block|{
 return|return
-name|m_entries
+name|entries
 operator|.
 name|add
 argument_list|(
@@ -524,7 +607,9 @@ argument_list|<
 name|BibtexEntry
 argument_list|>
 argument_list|(
-name|m_entries
+name|this
+operator|.
+name|entries
 argument_list|)
 decl_stmt|;
 for|for
@@ -535,7 +620,9 @@ range|:
 name|entries
 control|)
 block|{
-name|m_entries
+name|this
+operator|.
+name|entries
 operator|.
 name|remove
 argument_list|(
@@ -549,7 +636,9 @@ name|UndoableChangeAssignment
 argument_list|(
 name|entriesBeforeEdit
 argument_list|,
-name|m_entries
+name|this
+operator|.
+name|entries
 argument_list|)
 return|;
 block|}
@@ -563,7 +652,7 @@ name|entry
 parameter_list|)
 block|{
 return|return
-name|m_entries
+name|entries
 operator|.
 name|remove
 argument_list|(
@@ -583,7 +672,7 @@ name|entry
 parameter_list|)
 block|{
 return|return
-name|m_entries
+name|entries
 operator|.
 name|contains
 argument_list|(
@@ -593,18 +682,13 @@ return|;
 block|}
 annotation|@
 name|Override
-DECL|method|contains (Map<String, String> searchOptions, BibtexEntry entry)
+DECL|method|contains (String query, BibtexEntry entry)
 specifier|public
 name|boolean
 name|contains
 parameter_list|(
-name|Map
-argument_list|<
 name|String
-argument_list|,
-name|String
-argument_list|>
-name|searchOptions
+name|query
 parameter_list|,
 name|BibtexEntry
 name|entry
@@ -615,58 +699,6 @@ name|contains
 argument_list|(
 name|entry
 argument_list|)
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|applyRule (Map<String, String> searchStrings, BibtexEntry bibtexEntry)
-specifier|public
-name|int
-name|applyRule
-parameter_list|(
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|searchStrings
-parameter_list|,
-name|BibtexEntry
-name|bibtexEntry
-parameter_list|)
-block|{
-return|return
-name|contains
-argument_list|(
-name|searchStrings
-argument_list|,
-name|bibtexEntry
-argument_list|)
-condition|?
-literal|1
-else|:
-literal|0
-return|;
-block|}
-annotation|@
-name|Override
-DECL|method|validateSearchStrings (Map<String, String> searchStrings)
-specifier|public
-name|boolean
-name|validateSearchStrings
-parameter_list|(
-name|Map
-argument_list|<
-name|String
-argument_list|,
-name|String
-argument_list|>
-name|searchStrings
-parameter_list|)
-block|{
-return|return
-literal|true
 return|;
 block|}
 annotation|@
@@ -683,18 +715,18 @@ init|=
 operator|new
 name|ExplicitGroup
 argument_list|(
-name|m_name
+name|name
 argument_list|,
-name|m_context
+name|context
 argument_list|)
 decl_stmt|;
 name|copy
 operator|.
-name|m_entries
+name|entries
 operator|.
 name|addAll
 argument_list|(
-name|m_entries
+name|entries
 argument_list|)
 expr_stmt|;
 return|return
@@ -737,14 +769,14 @@ decl_stmt|;
 comment|// compare entries assigned to both groups
 if|if
 condition|(
-name|m_entries
+name|entries
 operator|.
 name|size
 argument_list|()
 operator|!=
 name|other
 operator|.
-name|m_entries
+name|entries
 operator|.
 name|size
 argument_list|()
@@ -780,7 +812,7 @@ control|(
 name|BibtexEntry
 name|m_entry1
 range|:
-name|m_entries
+name|entries
 control|)
 block|{
 name|entry
@@ -817,7 +849,7 @@ name|m_entry
 range|:
 name|other
 operator|.
-name|m_entries
+name|entries
 control|)
 block|{
 name|entry
@@ -871,11 +903,11 @@ block|}
 return|return
 name|other
 operator|.
-name|m_name
+name|name
 operator|.
 name|equals
 argument_list|(
-name|m_name
+name|name
 argument_list|)
 operator|&&
 operator|(
@@ -920,7 +952,7 @@ name|StringUtil
 operator|.
 name|quote
 argument_list|(
-name|m_name
+name|name
 argument_list|,
 name|AbstractGroup
 operator|.
@@ -941,7 +973,7 @@ argument_list|)
 operator|.
 name|append
 argument_list|(
-name|m_context
+name|context
 argument_list|)
 operator|.
 name|append
@@ -973,7 +1005,7 @@ control|(
 name|BibtexEntry
 name|m_entry
 range|:
-name|m_entries
+name|entries
 control|)
 block|{
 name|s
@@ -1050,14 +1082,14 @@ name|toString
 argument_list|()
 return|;
 block|}
-comment|/** Remove all assignments, resulting in an empty group. */
+comment|/**      * Remove all assignments, resulting in an empty group.      */
 DECL|method|clearAssignments ()
 specifier|public
 name|void
 name|clearAssignments
 parameter_list|()
 block|{
-name|m_entries
+name|entries
 operator|.
 name|clear
 argument_list|()
@@ -1168,8 +1200,6 @@ argument_list|()
 condition|)
 block|{
 case|case
-name|AbstractGroup
-operator|.
 name|INCLUDING
 case|:
 name|sb
@@ -1191,8 +1221,6 @@ argument_list|)
 expr_stmt|;
 break|break;
 case|case
-name|AbstractGroup
-operator|.
 name|REFINING
 case|:
 name|sb
@@ -1253,7 +1281,7 @@ control|(
 name|BibtexEntry
 name|entry
 range|:
-name|m_entries
+name|entries
 control|)
 block|{
 name|BibtexEntry
@@ -1278,12 +1306,12 @@ name|sameEntry
 argument_list|)
 expr_stmt|;
 block|}
-name|m_entries
+name|entries
 operator|.
 name|clear
 argument_list|()
 expr_stmt|;
-name|m_entries
+name|entries
 operator|.
 name|addAll
 argument_list|(
@@ -1301,7 +1329,7 @@ name|getEntries
 parameter_list|()
 block|{
 return|return
-name|m_entries
+name|entries
 return|;
 block|}
 annotation|@
@@ -1325,7 +1353,7 @@ name|getNumEntries
 parameter_list|()
 block|{
 return|return
-name|m_entries
+name|entries
 operator|.
 name|size
 argument_list|()

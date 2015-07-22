@@ -1060,6 +1060,8 @@ name|jabref
 operator|.
 name|search
 operator|.
+name|matchers
+operator|.
 name|NoSearchMatcher
 import|;
 end_import
@@ -1073,6 +1075,8 @@ operator|.
 name|jabref
 operator|.
 name|search
+operator|.
+name|matchers
 operator|.
 name|SearchMatcher
 import|;
@@ -1371,6 +1375,20 @@ operator|.
 name|undo
 operator|.
 name|UndoableRemoveEntry
+import|;
+end_import
+
+begin_import
+import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|util
+operator|.
+name|FileBasedLock
 import|;
 end_import
 

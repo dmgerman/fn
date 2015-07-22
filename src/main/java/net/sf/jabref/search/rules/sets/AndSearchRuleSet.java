@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.search
+DECL|package|net.sf.jabref.search.rules.sets
 package|package
 name|net
 operator|.
@@ -13,6 +13,10 @@ operator|.
 name|jabref
 operator|.
 name|search
+operator|.
+name|rules
+operator|.
+name|sets
 package|;
 end_package
 
@@ -30,60 +34,88 @@ end_import
 
 begin_import
 import|import
-name|ca
+name|net
 operator|.
-name|odell
+name|sf
 operator|.
-name|glazedlists
+name|jabref
 operator|.
-name|matchers
+name|search
 operator|.
-name|Matcher
+name|SearchRule
 import|;
 end_import
 
 begin_comment
-comment|/**  * Matcher that accepts all entries. Used for filtering when so search is  * active.  */
+comment|/**  * Subclass of SearchRuleSet that ANDs or ORs between its rules, returning 0 or  * 1.  */
 end_comment
 
 begin_class
-DECL|class|NoSearchMatcher
+DECL|class|AndSearchRuleSet
 specifier|public
 class|class
-name|NoSearchMatcher
-implements|implements
-name|Matcher
-argument_list|<
-name|BibtexEntry
-argument_list|>
+name|AndSearchRuleSet
+extends|extends
+name|SearchRuleSet
 block|{
-DECL|field|INSTANCE
-specifier|public
-specifier|static
-specifier|final
-name|Matcher
-argument_list|<
-name|BibtexEntry
-argument_list|>
-name|INSTANCE
-init|=
-operator|new
-name|NoSearchMatcher
-argument_list|()
-decl_stmt|;
 annotation|@
 name|Override
-DECL|method|matches (BibtexEntry object)
+DECL|method|applyRule (String searchString, BibtexEntry bibtexEntry)
 specifier|public
-name|boolean
-name|matches
+name|int
+name|applyRule
 parameter_list|(
+name|String
+name|searchString
+parameter_list|,
 name|BibtexEntry
-name|object
+name|bibtexEntry
 parameter_list|)
 block|{
+name|int
+name|score
+init|=
+literal|0
+decl_stmt|;
+comment|// We let each rule add a maximum of 1 to the score.
+for|for
+control|(
+name|SearchRule
+name|rule
+range|:
+name|ruleSet
+control|)
+block|{
+name|score
+operator|+=
+name|rule
+operator|.
+name|applyRule
+argument_list|(
+name|searchString
+argument_list|,
+name|bibtexEntry
+argument_list|)
+operator|>
+literal|0
+condition|?
+literal|1
+else|:
+literal|0
+expr_stmt|;
+block|}
+comment|// Then an AND rule demands that score == number of rules
 return|return
-literal|true
+name|score
+operator|==
+name|ruleSet
+operator|.
+name|size
+argument_list|()
+condition|?
+literal|1
+else|:
+literal|0
 return|;
 block|}
 block|}

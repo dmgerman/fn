@@ -692,18 +692,6 @@ name|sf
 operator|.
 name|jabref
 operator|.
-name|MonthUtil
-import|;
-end_import
-
-begin_import
-import|import
-name|net
-operator|.
-name|sf
-operator|.
-name|jabref
-operator|.
 name|OpenFileFilter
 import|;
 end_import
@@ -818,6 +806,8 @@ name|jabref
 operator|.
 name|groups
 operator|.
+name|structure
+operator|.
 name|AbstractGroup
 import|;
 end_import
@@ -831,6 +821,8 @@ operator|.
 name|jabref
 operator|.
 name|groups
+operator|.
+name|structure
 operator|.
 name|KeywordGroup
 import|;

@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.groups
+DECL|package|net.sf.jabref.groups.structure
 package|package
 name|net
 operator|.
@@ -13,18 +13,10 @@ operator|.
 name|jabref
 operator|.
 name|groups
+operator|.
+name|structure
 package|;
 end_package
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|Map
-import|;
-end_import
 
 begin_import
 import|import
@@ -70,6 +62,8 @@ name|sf
 operator|.
 name|jabref
 operator|.
+name|search
+operator|.
 name|SearchRule
 import|;
 end_import
@@ -85,17 +79,17 @@ specifier|abstract
 class|class
 name|AbstractGroup
 block|{
-comment|/** The group's name (every type of group has one). */
-DECL|field|m_name
+comment|/**      * The group's name (every type of group has one).      */
+DECL|field|name
 name|String
-name|m_name
+name|name
 decl_stmt|;
 comment|/**      * The hierarchical context of the group (INDEPENDENT, REFINING, or      * INCLUDING). Defaults to INDEPENDENT, which will be used if and      * only if the context specified in the constructor is invalid.      */
-DECL|field|m_context
-name|int
-name|m_context
+DECL|field|context
+name|GroupHierarchyType
+name|context
 init|=
-name|AbstractGroup
+name|GroupHierarchyType
 operator|.
 name|INDEPENDENT
 decl_stmt|;
@@ -106,17 +100,19 @@ name|String
 name|getTypeId
 parameter_list|()
 function_decl|;
-DECL|method|AbstractGroup (String name, int context)
+DECL|method|AbstractGroup (String name, GroupHierarchyType context)
 name|AbstractGroup
 parameter_list|(
 name|String
 name|name
 parameter_list|,
-name|int
+name|GroupHierarchyType
 name|context
 parameter_list|)
 block|{
-name|m_name
+name|this
+operator|.
+name|name
 operator|=
 name|name
 expr_stmt|;
@@ -126,37 +122,7 @@ name|context
 argument_list|)
 expr_stmt|;
 block|}
-comment|/** Group's contents are independent of its hierarchical position. */
-DECL|field|INDEPENDENT
-specifier|public
-specifier|static
-specifier|final
-name|int
-name|INDEPENDENT
-init|=
-literal|0
-decl_stmt|;
-comment|/**      * Group's content is the intersection of its own content with its      * supergroup's content.      */
-DECL|field|REFINING
-specifier|public
-specifier|static
-specifier|final
-name|int
-name|REFINING
-init|=
-literal|1
-decl_stmt|;
-comment|/**      * Group's content is the union of its own content with its subgroups'      * content.      */
-DECL|field|INCLUDING
-specifier|public
-specifier|static
-specifier|final
-name|int
-name|INCLUDING
-init|=
-literal|2
-decl_stmt|;
-comment|/** Character used for quoting in the string representation. */
+comment|/**      * Character used for quoting in the string representation.      */
 DECL|field|QUOTE_CHAR
 specifier|static
 specifier|final
@@ -182,7 +148,7 @@ name|SearchRule
 name|getSearchRule
 parameter_list|()
 function_decl|;
-comment|/**      * Re-create a group instance from a textual representation.      *       * @param s      *            The result from the group's toString() method.      * @return New instance of the encoded group.      * @throws Exception      *             If an error occured and a group could not be created, e.g.      *             due to a malformed regular expression.      */
+comment|/**      * Re-create a group instance from a textual representation.      *      * @param s The result from the group's toString() method.      * @return New instance of the encoded group.      * @throws Exception If an error occured and a group could not be created, e.g.      *                   due to a malformed regular expression.      */
 DECL|method|fromString (String s, BibtexDatabase db, int version)
 specifier|public
 specifier|static
@@ -306,7 +272,7 @@ literal|null
 return|;
 comment|// unknown group
 block|}
-comment|/** Returns this group's name, e.g. for display in a list/tree. */
+comment|/**      * Returns this group's name, e.g. for display in a list/tree.      */
 DECL|method|getName ()
 specifier|public
 specifier|final
@@ -315,10 +281,10 @@ name|getName
 parameter_list|()
 block|{
 return|return
-name|m_name
+name|name
 return|;
 block|}
-comment|/** Sets the group's name. */
+comment|/**      * Sets the group's name.      */
 DECL|method|setName (String name)
 specifier|public
 specifier|final
@@ -329,12 +295,14 @@ name|String
 name|name
 parameter_list|)
 block|{
-name|m_name
+name|this
+operator|.
+name|name
 operator|=
 name|name
 expr_stmt|;
 block|}
-comment|/**      * @return true if this type of group supports the explicit adding of      *         entries.      */
+comment|/**      * @return true if this type of group supports the explicit adding of      * entries.      */
 DECL|method|supportsAdd ()
 specifier|public
 specifier|abstract
@@ -342,7 +310,7 @@ name|boolean
 name|supportsAdd
 parameter_list|()
 function_decl|;
-comment|/**      * @return true if this type of group supports the explicit removal of      *         entries.      */
+comment|/**      * @return true if this type of group supports the explicit removal of      * entries.      */
 DECL|method|supportsRemove ()
 specifier|public
 specifier|abstract
@@ -350,7 +318,7 @@ name|boolean
 name|supportsRemove
 parameter_list|()
 function_decl|;
-comment|/**      * Adds the specified entries to this group.      *       * @return If this group or one or more entries was/were modified as a      *         result of this operation, an object is returned that allows to      *         undo this change. null is returned otherwise.      */
+comment|/**      * Adds the specified entries to this group.      *      * @return If this group or one or more entries was/were modified as a      * result of this operation, an object is returned that allows to      * undo this change. null is returned otherwise.      */
 DECL|method|add (BibtexEntry[] entries)
 specifier|public
 specifier|abstract
@@ -362,7 +330,7 @@ index|[]
 name|entries
 parameter_list|)
 function_decl|;
-comment|/**      * Removes the specified entries from this group.      *       * @return If this group or one or more entries was/were modified as a      *         result of this operation, an object is returned that allows to      *         undo this change. null is returned otherwise.      */
+comment|/**      * Removes the specified entries from this group.      *      * @return If this group or one or more entries was/were modified as a      * result of this operation, an object is returned that allows to      * undo this change. null is returned otherwise.      */
 DECL|method|remove (BibtexEntry[] entries)
 specifier|public
 specifier|abstract
@@ -374,20 +342,15 @@ index|[]
 name|entries
 parameter_list|)
 function_decl|;
-comment|/**      * @param searchOptions      *            The search options to apply.      * @return true if this group contains the specified entry, false otherwise.      */
-DECL|method|contains (Map<String, String> searchOptions, BibtexEntry entry)
+comment|/**      * @param query The search option to apply.      * @return true if this group contains the specified entry, false otherwise.      */
+DECL|method|contains (String query, BibtexEntry entry)
 specifier|public
 specifier|abstract
 name|boolean
 name|contains
 parameter_list|(
-name|Map
-argument_list|<
 name|String
-argument_list|,
-name|String
-argument_list|>
-name|searchOptions
+name|query
 parameter_list|,
 name|BibtexEntry
 name|entry
@@ -404,7 +367,7 @@ name|BibtexEntry
 name|entry
 parameter_list|)
 function_decl|;
-comment|/**      * @return true if this group contains any of the specified entries, false      *         otherwise.      */
+comment|/**      * @return true if this group contains any of the specified entries, false      * otherwise.      */
 DECL|method|containsAny (BibtexEntry[] entries)
 specifier|public
 name|boolean
@@ -440,7 +403,7 @@ return|return
 literal|false
 return|;
 block|}
-comment|/**      * @return true if this group contains all of the specified entries, false      *         otherwise.      */
+comment|/**      * @return true if this group contains all of the specified entries, false      * otherwise.      */
 DECL|method|containsAll (BibtexEntry[] entries)
 specifier|public
 name|boolean
@@ -485,62 +448,44 @@ name|boolean
 name|isDynamic
 parameter_list|()
 function_decl|;
-comment|/** Sets the groups's hierarchical context. If context is not a valid      * value, the call is ignored. */
-DECL|method|setHierarchicalContext (int context)
+comment|/**      * Sets the groups's hierarchical context. If context is not a valid      * value, the call is ignored.      */
+DECL|method|setHierarchicalContext (GroupHierarchyType context)
 specifier|public
 name|void
 name|setHierarchicalContext
 parameter_list|(
-name|int
+name|GroupHierarchyType
 name|context
 parameter_list|)
 block|{
 if|if
 condition|(
-operator|(
 name|context
-operator|!=
-name|AbstractGroup
-operator|.
-name|INDEPENDENT
-operator|)
-operator|&&
-operator|(
-name|context
-operator|!=
-name|AbstractGroup
-operator|.
-name|REFINING
-operator|)
-operator|&&
-operator|(
-name|context
-operator|!=
-name|AbstractGroup
-operator|.
-name|INCLUDING
-operator|)
+operator|==
+literal|null
 condition|)
 block|{
 return|return;
 block|}
-name|m_context
+name|this
+operator|.
+name|context
 operator|=
 name|context
 expr_stmt|;
 block|}
-comment|/** Returns the group's hierarchical context. */
+comment|/**      * Returns the group's hierarchical context.      */
 DECL|method|getHierarchicalContext ()
 specifier|public
-name|int
+name|GroupHierarchyType
 name|getHierarchicalContext
 parameter_list|()
 block|{
 return|return
-name|m_context
+name|context
 return|;
 block|}
-comment|/** Returns a lengthy textual description of this instance (for       * the groups editor). The text is formatted in HTML. */
+comment|/**      * Returns a lengthy textual description of this instance (for      * the groups editor). The text is formatted in HTML.      */
 DECL|method|getDescription ()
 specifier|public
 specifier|abstract
@@ -556,7 +501,7 @@ name|AbstractGroup
 name|deepCopy
 parameter_list|()
 function_decl|;
-comment|/** Returns a short description of the group in HTML (for a tooltip). */
+comment|/**      * Returns a short description of the group in HTML (for a tooltip).      */
 DECL|method|getShortDescription ()
 specifier|public
 specifier|abstract

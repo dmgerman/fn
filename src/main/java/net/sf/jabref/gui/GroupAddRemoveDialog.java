@@ -90,6 +90,22 @@ end_import
 
 begin_import
 import|import
+name|net
+operator|.
+name|sf
+operator|.
+name|jabref
+operator|.
+name|groups
+operator|.
+name|structure
+operator|.
+name|AbstractGroup
+import|;
+end_import
+
+begin_import
+import|import
 name|javax
 operator|.
 name|swing

@@ -88,7 +88,8 @@ name|boolean
 name|escaped
 init|=
 literal|false
-decl_stmt|,
+decl_stmt|;
+name|boolean
 name|incommand
 init|=
 literal|false

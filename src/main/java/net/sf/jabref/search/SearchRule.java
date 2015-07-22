@@ -4,23 +4,27 @@ comment|/* Copyright (C) 2003  Nathan Dunn  All programs in this directory and s
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref
+DECL|package|net.sf.jabref.search
 package|package
 name|net
 operator|.
 name|sf
 operator|.
 name|jabref
+operator|.
+name|search
 package|;
 end_package
 
 begin_import
 import|import
-name|java
+name|net
 operator|.
-name|util
+name|sf
 operator|.
-name|Map
+name|jabref
+operator|.
+name|BibtexEntry
 import|;
 end_import
 
@@ -30,33 +34,36 @@ specifier|public
 interface|interface
 name|SearchRule
 block|{
-DECL|method|applyRule (Map<String, String> searchStrings, BibtexEntry bibtexEntry)
+comment|/*      * Because some rules require the query in the constructor,      * the parameter query is not always used as expected.      * The two constants provide means to mark this as dummy.      * As I am not sure whether null could be substituted by "dummy" I leave everything as is.      */
+DECL|field|DUMMY_QUERY
+name|String
+name|DUMMY_QUERY
+init|=
+literal|"dummy"
+decl_stmt|;
+DECL|field|NULL_QUERY
+name|String
+name|NULL_QUERY
+init|=
+literal|null
+decl_stmt|;
+DECL|method|applyRule (String query, BibtexEntry bibtexEntry)
 name|int
 name|applyRule
 parameter_list|(
-name|Map
-argument_list|<
 name|String
-argument_list|,
-name|String
-argument_list|>
-name|searchStrings
+name|query
 parameter_list|,
 name|BibtexEntry
 name|bibtexEntry
 parameter_list|)
 function_decl|;
-DECL|method|validateSearchStrings (Map<String, String> searchStrings)
+DECL|method|validateSearchStrings (String query)
 name|boolean
 name|validateSearchStrings
 parameter_list|(
-name|Map
-argument_list|<
 name|String
-argument_list|,
-name|String
-argument_list|>
-name|searchStrings
+name|query
 parameter_list|)
 function_decl|;
 block|}

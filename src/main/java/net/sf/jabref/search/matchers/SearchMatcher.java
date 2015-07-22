@@ -4,7 +4,7 @@ comment|/*  Copyright (C) 2003-2011 JabRef contributors.     This program is fre
 end_comment
 
 begin_package
-DECL|package|net.sf.jabref.search
+DECL|package|net.sf.jabref.search.matchers
 package|package
 name|net
 operator|.
@@ -13,6 +13,8 @@ operator|.
 name|jabref
 operator|.
 name|search
+operator|.
+name|matchers
 package|;
 end_package
 
@@ -57,17 +59,6 @@ argument_list|<
 name|BibtexEntry
 argument_list|>
 block|{
-DECL|field|INSTANCE
-specifier|public
-specifier|static
-specifier|final
-name|SearchMatcher
-name|INSTANCE
-init|=
-operator|new
-name|SearchMatcher
-argument_list|()
-decl_stmt|;
 annotation|@
 name|Override
 DECL|method|matches (BibtexEntry entry)
