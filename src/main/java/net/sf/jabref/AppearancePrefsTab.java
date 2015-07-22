@@ -729,7 +729,9 @@ name|_prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"menuFontSize"
+name|JabRefPreferences
+operator|.
+name|MENU_FONT_SIZE
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -743,7 +745,9 @@ name|_prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"tableRowPadding"
+name|JabRefPreferences
+operator|.
+name|TABLE_ROW_PADDING
 argument_list|)
 argument_list|)
 expr_stmt|;
@@ -753,7 +757,9 @@ name|_prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"menuFontSize"
+name|JabRefPreferences
+operator|.
+name|MENU_FONT_SIZE
 argument_list|)
 expr_stmt|;
 name|overrideFonts
@@ -1029,7 +1035,9 @@ name|_prefs
 operator|.
 name|putInt
 argument_list|(
-literal|"tableRowPadding"
+name|JabRefPreferences
+operator|.
+name|TABLE_ROW_PADDING
 argument_list|,
 name|padding
 argument_list|)

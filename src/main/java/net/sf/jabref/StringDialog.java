@@ -1160,7 +1160,9 @@ name|prefs
 operator|.
 name|getColor
 argument_list|(
-literal|"tableBackground"
+name|JabRefPreferences
+operator|.
+name|TABLE_BACKGROUND
 argument_list|)
 argument_list|)
 expr_stmt|;

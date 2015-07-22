@@ -3883,7 +3883,9 @@ name|prefs
 operator|.
 name|getInt
 argument_list|(
-literal|"menuFontSize"
+name|JabRefPreferences
+operator|.
+name|MENU_FONT_SIZE
 argument_list|)
 decl_stmt|;
 name|UIDefaults
