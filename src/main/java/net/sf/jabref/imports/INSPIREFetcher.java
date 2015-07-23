@@ -173,7 +173,7 @@ specifier|final
 name|String
 name|INSPIRE_HOST
 init|=
-literal|"inspirebeta.net"
+literal|"inspirehep.net"
 decl_stmt|;
 DECL|method|INSPIREFetcher ()
 specifier|public
