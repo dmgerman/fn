@@ -153,7 +153,7 @@ if|if
 condition|(
 name|l
 operator|.
-name|equals
+name|contains
 argument_list|(
 literal|"<pre>"
 argument_list|)
@@ -175,7 +175,7 @@ if|if
 condition|(
 name|l
 operator|.
-name|equals
+name|contains
 argument_list|(
 literal|"</pre>"
 argument_list|)
