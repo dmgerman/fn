@@ -674,6 +674,9 @@ operator|.
 name|SEPARATOR
 operator|+
 name|context
+operator|.
+name|ordinal
+argument_list|()
 operator|+
 name|AbstractGroup
 operator|.

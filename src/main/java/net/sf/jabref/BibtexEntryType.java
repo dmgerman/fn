@@ -30,7 +30,7 @@ name|java
 operator|.
 name|util
 operator|.
-name|TreeMap
+name|Locale
 import|;
 end_import
 
@@ -40,12 +40,12 @@ name|java
 operator|.
 name|util
 operator|.
-name|Locale
+name|TreeMap
 import|;
 end_import
 
 begin_comment
-comment|/**  * Provides a list of known entry types  *  * The list of optional and required fields is derived from http://en.wikipedia.org/wiki/BibTeX#Entry_types  */
+comment|/**  * Provides a list of known entry types  *<p/>  * The list of optional and required fields is derived from http://en.wikipedia.org/wiki/BibTeX#Entry_types  */
 end_comment
 
 begin_class
@@ -2469,7 +2469,7 @@ return|;
 block|}
 block|}
 decl_stmt|;
-comment|/**      * This type is used for IEEEtran.bst to control various       * be repeated or not. Not a very elegant solution, but it works...      */
+comment|/**      * This type is used for IEEEtran.bst to control various      * be repeated or not. Not a very elegant solution, but it works...      */
 DECL|field|IEEETRANBSTCTL
 specifier|private
 specifier|static
@@ -3914,7 +3914,7 @@ name|number
 argument_list|)
 expr_stmt|;
 block|}
-comment|/**      * Get an array of the required fields in a form appropriate for the entry customization      * dialog - that is, thie either-or fields together and separated by slashes.      * @return Array of the required fields in a form appropriate for the entry customization dialog.      */
+comment|/**      * Get an array of the required fields in a form appropriate for the entry customization      * dialog - that is, thie either-or fields together and separated by slashes.      *      * @return Array of the required fields in a form appropriate for the entry customization dialog.      */
 DECL|method|getRequiredFieldsForCustomization ()
 specifier|public
 name|String
