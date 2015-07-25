@@ -262,6 +262,7 @@ name|regExp
 operator|=
 name|regExp
 expr_stmt|;
+comment|// TODO why use other search rules instead of "normal" search in JabRef. This WILL cause confusion!
 name|expressionSearchRule
 operator|=
 operator|new
