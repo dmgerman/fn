@@ -64,16 +64,6 @@ name|java
 operator|.
 name|util
 operator|.
-name|HashMap
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
 name|List
 import|;
 end_import
@@ -237,7 +227,7 @@ annotation|@
 name|Override
 DECL|method|applyRule (String query, BibtexEntry bibtexEntry)
 specifier|public
-name|int
+name|boolean
 name|applyRule
 parameter_list|(
 name|String
@@ -329,7 +319,7 @@ name|ex
 parameter_list|)
 block|{
 return|return
-literal|0
+literal|false
 return|;
 block|}
 comment|//print(words);
@@ -477,13 +467,13 @@ name|aMatchFound
 condition|)
 block|{
 return|return
-literal|0
+literal|false
 return|;
 comment|// Didn't match all words.
 block|}
 block|}
 return|return
-literal|1
+literal|true
 return|;
 comment|// Matched all words.
 block|}

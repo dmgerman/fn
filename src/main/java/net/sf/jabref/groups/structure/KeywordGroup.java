@@ -696,7 +696,7 @@ block|{
 annotation|@
 name|Override
 specifier|public
-name|int
+name|boolean
 name|applyRule
 parameter_list|(
 name|String
@@ -713,10 +713,6 @@ name|query
 argument_list|,
 name|bibtexEntry
 argument_list|)
-condition|?
-literal|1
-else|:
-literal|0
 return|;
 block|}
 annotation|@
@@ -934,6 +930,7 @@ control|)
 block|{
 if|if
 condition|(
+operator|!
 name|getSearchRule
 argument_list|()
 operator|.
@@ -945,8 +942,6 @@ name|NULL_QUERY
 argument_list|,
 name|entry
 argument_list|)
-operator|==
-literal|0
 condition|)
 block|{
 name|String
@@ -1125,8 +1120,6 @@ name|NULL_QUERY
 argument_list|,
 name|entry
 argument_list|)
-operator|>
-literal|0
 condition|)
 block|{
 name|String

@@ -94,12 +94,12 @@ name|BasicSearchRule
 implements|implements
 name|SearchRule
 block|{
-DECL|field|removeBrackets
+DECL|field|REMOVE_LATEX_COMMANDS
 specifier|private
 specifier|static
 specifier|final
 name|RemoveLatexCommands
-name|removeBrackets
+name|REMOVE_LATEX_COMMANDS
 init|=
 operator|new
 name|RemoveLatexCommands
@@ -145,7 +145,7 @@ annotation|@
 name|Override
 DECL|method|applyRule (String query, BibtexEntry bibtexEntry)
 specifier|public
-name|int
+name|boolean
 name|applyRule
 parameter_list|(
 name|String
@@ -200,12 +200,6 @@ name|size
 argument_list|()
 index|]
 decl_stmt|;
-name|Object
-name|fieldContentAsObject
-decl_stmt|;
-name|String
-name|fieldContent
-decl_stmt|;
 comment|//TODO build upon already existing SimpleSearchRule
 for|for
 control|(
@@ -218,15 +212,16 @@ name|getAllFields
 argument_list|()
 control|)
 block|{
+name|Object
 name|fieldContentAsObject
-operator|=
+init|=
 name|bibtexEntry
 operator|.
 name|getField
 argument_list|(
 name|field
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 name|fieldContentAsObject
@@ -234,11 +229,12 @@ operator|!=
 literal|null
 condition|)
 block|{
+name|String
 name|fieldContent
-operator|=
+init|=
 name|BasicSearchRule
 operator|.
-name|removeBrackets
+name|REMOVE_LATEX_COMMANDS
 operator|.
 name|format
 argument_list|(
@@ -247,7 +243,7 @@ operator|.
 name|toString
 argument_list|()
 argument_list|)
-expr_stmt|;
+decl_stmt|;
 if|if
 condition|(
 operator|!
@@ -315,13 +311,13 @@ name|aMatchFound
 condition|)
 block|{
 return|return
-literal|0
+literal|false
 return|;
 comment|// Didn't match all words.
 block|}
 block|}
 return|return
-literal|1
+literal|true
 return|;
 comment|// Matched all words.
 block|}

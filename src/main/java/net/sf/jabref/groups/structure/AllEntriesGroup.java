@@ -216,7 +216,7 @@ block|{
 annotation|@
 name|Override
 specifier|public
-name|int
+name|boolean
 name|applyRule
 parameter_list|(
 name|String
@@ -227,7 +227,7 @@ name|bibtexEntry
 parameter_list|)
 block|{
 return|return
-literal|1
+literal|true
 return|;
 comment|// contains everything
 block|}

@@ -329,8 +329,6 @@ name|searchTerm
 argument_list|,
 name|entry
 argument_list|)
-operator|>
-literal|0
 decl_stmt|;
 name|entry
 operator|.

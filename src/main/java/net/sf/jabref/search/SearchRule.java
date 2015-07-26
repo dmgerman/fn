@@ -48,7 +48,7 @@ init|=
 literal|null
 decl_stmt|;
 DECL|method|applyRule (String query, BibtexEntry bibtexEntry)
-name|int
+name|boolean
 name|applyRule
 parameter_list|(
 name|String

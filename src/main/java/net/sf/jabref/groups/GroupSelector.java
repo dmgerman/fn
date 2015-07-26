@@ -5343,8 +5343,6 @@ name|searchTerm
 argument_list|,
 name|entry
 argument_list|)
-operator|>
-literal|0
 decl_stmt|;
 name|entry
 operator|.
@@ -9330,6 +9328,7 @@ control|)
 block|{
 if|if
 condition|(
+operator|!
 name|rule
 operator|.
 name|applyRule
@@ -9340,8 +9339,6 @@ name|DUMMY_QUERY
 argument_list|,
 name|match
 argument_list|)
-operator|==
-literal|0
 condition|)
 block|{
 continue|continue;

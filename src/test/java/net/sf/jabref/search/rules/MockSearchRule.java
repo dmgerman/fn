@@ -55,7 +55,7 @@ block|{
 DECL|field|result
 specifier|private
 specifier|final
-name|int
+name|boolean
 name|result
 decl_stmt|;
 DECL|field|valid
@@ -64,11 +64,11 @@ specifier|final
 name|boolean
 name|valid
 decl_stmt|;
-DECL|method|MockSearchRule (int result, boolean valid)
+DECL|method|MockSearchRule (boolean result, boolean valid)
 specifier|public
 name|MockSearchRule
 parameter_list|(
-name|int
+name|boolean
 name|result
 parameter_list|,
 name|boolean
@@ -92,7 +92,7 @@ annotation|@
 name|Override
 DECL|method|applyRule (String query, BibtexEntry bibtexEntry)
 specifier|public
-name|int
+name|boolean
 name|applyRule
 parameter_list|(
 name|String

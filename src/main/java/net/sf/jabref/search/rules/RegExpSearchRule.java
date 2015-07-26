@@ -224,7 +224,7 @@ annotation|@
 name|Override
 DECL|method|applyRule (String query, BibtexEntry bibtexEntry)
 specifier|public
-name|int
+name|boolean
 name|applyRule
 parameter_list|(
 name|String
@@ -265,6 +265,8 @@ argument_list|)
 expr_stmt|;
 return|return
 name|score
+operator|>
+literal|0
 return|;
 block|}
 DECL|method|searchFields (Set<String> fields, BibtexEntry bibtexEntry, Pattern pattern)

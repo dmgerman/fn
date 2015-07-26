@@ -62,7 +62,7 @@ annotation|@
 name|Override
 DECL|method|applyRule (String searchString, BibtexEntry bibtexEntry)
 specifier|public
-name|int
+name|boolean
 name|applyRule
 parameter_list|(
 name|String
@@ -86,8 +86,8 @@ range|:
 name|ruleSet
 control|)
 block|{
-name|score
-operator|+=
+if|if
+condition|(
 name|rule
 operator|.
 name|applyRule
@@ -96,13 +96,12 @@ name|searchString
 argument_list|,
 name|bibtexEntry
 argument_list|)
-operator|>
-literal|0
-condition|?
-literal|1
-else|:
-literal|0
+condition|)
+block|{
+name|score
+operator|++
 expr_stmt|;
+block|}
 block|}
 comment|// Then an AND rule demands that score == number of rules
 return|return
@@ -112,10 +111,6 @@ name|ruleSet
 operator|.
 name|size
 argument_list|()
-condition|?
-literal|1
-else|:
-literal|0
 return|;
 block|}
 block|}

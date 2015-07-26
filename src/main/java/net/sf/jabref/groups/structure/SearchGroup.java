@@ -897,8 +897,6 @@ name|searchOptions
 argument_list|,
 name|entry
 argument_list|)
-operator|!=
-literal|0
 return|;
 block|}
 annotation|@

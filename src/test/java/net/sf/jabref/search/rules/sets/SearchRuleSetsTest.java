@@ -95,7 +95,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|1
+literal|true
 argument_list|,
 name|searchRuleSet
 operator|.
@@ -126,7 +126,7 @@ argument_list|(
 operator|new
 name|MockSearchRule
 argument_list|(
-literal|1
+literal|true
 argument_list|,
 literal|true
 argument_list|)
@@ -134,7 +134,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|1
+literal|true
 argument_list|,
 name|searchRuleSet
 operator|.
@@ -165,7 +165,7 @@ argument_list|(
 operator|new
 name|MockSearchRule
 argument_list|(
-literal|0
+literal|false
 argument_list|,
 literal|false
 argument_list|)
@@ -173,7 +173,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|0
+literal|false
 argument_list|,
 name|searchRuleSet
 operator|.
@@ -224,7 +224,7 @@ argument_list|)
 decl_stmt|;
 name|assertEquals
 argument_list|(
-literal|0
+literal|false
 argument_list|,
 name|searchRuleSet
 operator|.
@@ -255,7 +255,7 @@ argument_list|(
 operator|new
 name|MockSearchRule
 argument_list|(
-literal|1
+literal|true
 argument_list|,
 literal|true
 argument_list|)
@@ -263,7 +263,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|1
+literal|true
 argument_list|,
 name|searchRuleSet
 operator|.
@@ -294,7 +294,7 @@ argument_list|(
 operator|new
 name|MockSearchRule
 argument_list|(
-literal|0
+literal|false
 argument_list|,
 literal|false
 argument_list|)
@@ -302,7 +302,7 @@ argument_list|)
 expr_stmt|;
 name|assertEquals
 argument_list|(
-literal|1
+literal|true
 argument_list|,
 name|searchRuleSet
 operator|.

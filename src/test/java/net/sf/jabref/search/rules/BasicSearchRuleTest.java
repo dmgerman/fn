@@ -168,7 +168,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|0
+literal|false
 argument_list|,
 name|bsCaseSensitive
 operator|.
@@ -184,7 +184,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|1
+literal|true
 argument_list|,
 name|bsCaseInsensitive
 operator|.
@@ -200,7 +200,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|0
+literal|false
 argument_list|,
 name|bsCaseSensitiveRegexp
 operator|.
@@ -216,7 +216,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|1
+literal|true
 argument_list|,
 name|bsCaseInsensitiveRegexp
 operator|.
@@ -236,7 +236,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|0
+literal|false
 argument_list|,
 name|bsCaseSensitive
 operator|.
@@ -252,7 +252,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|0
+literal|false
 argument_list|,
 name|bsCaseInsensitive
 operator|.
@@ -268,7 +268,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|0
+literal|false
 argument_list|,
 name|bsCaseSensitiveRegexp
 operator|.
@@ -284,7 +284,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|0
+literal|false
 argument_list|,
 name|bsCaseInsensitiveRegexp
 operator|.
@@ -304,7 +304,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|0
+literal|false
 argument_list|,
 name|bsCaseSensitive
 operator|.
@@ -320,7 +320,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|0
+literal|false
 argument_list|,
 name|bsCaseInsensitive
 operator|.
@@ -336,7 +336,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|0
+literal|false
 argument_list|,
 name|bsCaseSensitiveRegexp
 operator|.
@@ -352,7 +352,7 @@ name|Assert
 operator|.
 name|assertEquals
 argument_list|(
-literal|1
+literal|true
 argument_list|,
 name|bsCaseInsensitiveRegexp
 operator|.

@@ -477,7 +477,7 @@ annotation|@
 name|Override
 DECL|method|applyRule (String query, BibtexEntry bibtexEntry)
 specifier|public
-name|int
+name|boolean
 name|applyRule
 parameter_list|(
 name|String
@@ -487,9 +487,7 @@ name|BibtexEntry
 name|bibtexEntry
 parameter_list|)
 block|{
-name|Boolean
-name|result
-init|=
+return|return
 operator|new
 name|BibtexSearchVisitor
 argument_list|(
@@ -504,14 +502,6 @@ name|visit
 argument_list|(
 name|tree
 argument_list|)
-decl_stmt|;
-comment|// convert to int value
-return|return
-name|result
-condition|?
-literal|1
-else|:
-literal|0
 return|;
 block|}
 annotation|@

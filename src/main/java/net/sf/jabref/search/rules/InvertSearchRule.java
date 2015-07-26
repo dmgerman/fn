@@ -55,7 +55,7 @@ import|;
 end_import
 
 begin_comment
-comment|/**  * Inverts result score.  *  * Example:  * 0 --> 1  * 1 --> 0  * ELSE --> 0  */
+comment|/**  * Inverts result score.  *  * Example:  * false --> true  * true --> false  */
 end_comment
 
 begin_class
@@ -96,7 +96,7 @@ annotation|@
 name|Override
 DECL|method|applyRule (String query, BibtexEntry bibtexEntry)
 specifier|public
-name|int
+name|boolean
 name|applyRule
 parameter_list|(
 name|String
@@ -107,6 +107,7 @@ name|bibtexEntry
 parameter_list|)
 block|{
 return|return
+operator|!
 name|otherRule
 operator|.
 name|applyRule
@@ -115,12 +116,6 @@ name|query
 argument_list|,
 name|bibtexEntry
 argument_list|)
-operator|==
-literal|0
-condition|?
-literal|1
-else|:
-literal|0
 return|;
 block|}
 annotation|@
