@@ -767,7 +767,7 @@ parameter_list|)
 block|{
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 literal|"Cannot copy to temporary file '"
 operator|+

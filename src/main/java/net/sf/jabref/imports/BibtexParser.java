@@ -1270,7 +1270,7 @@ comment|// FIXME: user comments are simply dropped
 comment|// at least, we log that we ignored the comment
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 name|Globals
 operator|.

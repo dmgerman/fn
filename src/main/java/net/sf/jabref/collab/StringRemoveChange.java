@@ -318,7 +318,7 @@ parameter_list|)
 block|{
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 literal|"Error: could not add string '"
 operator|+

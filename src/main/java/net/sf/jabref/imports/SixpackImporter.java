@@ -992,7 +992,7 @@ parameter_list|)
 block|{
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 literal|"Problem parsing Sixpack entry, ignoring entry."
 argument_list|)

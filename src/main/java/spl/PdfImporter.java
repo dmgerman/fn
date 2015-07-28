@@ -849,7 +849,7 @@ block|{
 comment|// import failed -> generate default entry
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 name|Globals
 operator|.
@@ -1019,7 +1019,7 @@ block|{
 comment|// import failed -> generate default entry
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 name|Globals
 operator|.
@@ -1075,7 +1075,7 @@ block|{
 comment|// import failed -> generate default entry
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 name|Globals
 operator|.

@@ -228,7 +228,7 @@ block|{
 comment|// The name to change to is already in the database, so we can't comply.
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 literal|"Cannot add string '"
 operator|+
@@ -282,7 +282,7 @@ parameter_list|)
 block|{
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 literal|"Error: could not add string '"
 operator|+
@@ -335,7 +335,7 @@ parameter_list|)
 block|{
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 literal|"Error: could not add string '"
 operator|+

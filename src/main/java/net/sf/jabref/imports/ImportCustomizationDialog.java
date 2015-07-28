@@ -829,7 +829,7 @@ parameter_list|)
 block|{
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 literal|"Could not open Zip-archive: \n"
 operator|+

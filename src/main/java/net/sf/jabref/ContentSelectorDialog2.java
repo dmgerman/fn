@@ -1666,7 +1666,7 @@ parameter_list|)
 block|{
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 literal|"Could not apply changes in \"Setup selectors\""
 argument_list|)
@@ -1745,7 +1745,7 @@ parameter_list|)
 block|{
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 literal|"Could not apply changes in \"Setup selectors\""
 argument_list|)

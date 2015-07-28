@@ -609,7 +609,7 @@ condition|)
 block|{
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 literal|"Error: no table icon defined for type '"
 operator|+

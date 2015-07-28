@@ -136,31 +136,7 @@ name|util
 operator|.
 name|logging
 operator|.
-name|ConsoleHandler
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
 name|Handler
-import|;
-end_import
-
-begin_import
-import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|LogRecord
 import|;
 end_import
 
@@ -335,6 +311,34 @@ operator|.
 name|logging
 operator|.
 name|StdoutConsoleHandler
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
 import|;
 end_import
 
@@ -1378,23 +1382,23 @@ name|length
 argument_list|()
 decl_stmt|;
 comment|// Instantiate logger:
-DECL|field|logger
+DECL|field|LOGGER
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|logger
+name|Log
+name|LOGGER
 init|=
-name|Logger
+name|LogFactory
 operator|.
-name|getLogger
+name|getLog
 argument_list|(
-name|Logger
+name|Globals
 operator|.
-name|GLOBAL_LOGGER_NAME
+name|class
 argument_list|)
 decl_stmt|;
-comment|/**      * true if we have unix newlines      */
+comment|/**              * true if we have unix newlines              */
 DECL|field|UNIX_NEWLINE
 specifier|public
 specifier|static
@@ -1535,48 +1539,21 @@ literal|null
 expr_stmt|;
 block|}
 block|}
-DECL|method|logger (String s)
+DECL|method|logInfo (String s)
 specifier|public
 specifier|static
 name|void
-name|logger
+name|logInfo
 parameter_list|(
 name|String
 name|s
 parameter_list|)
 block|{
-name|Globals
-operator|.
-name|logger
+name|LOGGER
 operator|.
 name|info
 argument_list|(
 name|s
-argument_list|)
-expr_stmt|;
-block|}
-comment|/**      * Should be only called once      */
-DECL|method|turnOnConsoleLogging ()
-specifier|public
-specifier|static
-name|void
-name|turnOnConsoleLogging
-parameter_list|()
-block|{
-name|Handler
-name|consoleHandler
-init|=
-operator|new
-name|ConsoleHandler
-argument_list|()
-decl_stmt|;
-name|Globals
-operator|.
-name|logger
-operator|.
-name|addHandler
-argument_list|(
-name|consoleHandler
 argument_list|)
 expr_stmt|;
 block|}
@@ -11317,7 +11294,7 @@ block|{
 comment|// The file couldn't be found... should we tell anyone?
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 name|e
 operator|.
@@ -11378,7 +11355,7 @@ parameter_list|)
 block|{
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 literal|"Personal journal list file '"
 operator|+

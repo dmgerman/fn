@@ -482,7 +482,7 @@ parameter_list|)
 block|{
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 literal|"Unable to configure drag and drop for main table"
 argument_list|)

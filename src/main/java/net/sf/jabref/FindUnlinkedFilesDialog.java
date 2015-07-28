@@ -5419,7 +5419,7 @@ parameter_list|)
 block|{
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 literal|"Error opening file"
 argument_list|)

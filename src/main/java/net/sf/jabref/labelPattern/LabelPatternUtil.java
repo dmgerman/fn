@@ -2597,7 +2597,7 @@ else|else
 block|{
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 literal|"Key generator warning: unknown modifier '"
 operator|+

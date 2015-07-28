@@ -5280,7 +5280,7 @@ parameter_list|)
 block|{
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 name|Globals
 operator|.

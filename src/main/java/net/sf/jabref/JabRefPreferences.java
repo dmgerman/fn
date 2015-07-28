@@ -3493,7 +3493,7 @@ parameter_list|)
 block|{
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 literal|"Could not import preferences from jabref.xml:"
 operator|+
@@ -6829,7 +6829,7 @@ parameter_list|)
 block|{
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 literal|"Hostname not found."
 argument_list|)
@@ -8087,7 +8087,7 @@ comment|// there isn't even a default value
 comment|// Output error
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 literal|"Could not get key binding for \""
 operator|+
@@ -8370,7 +8370,7 @@ parameter_list|)
 block|{
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 literal|"Could not save preferences for memory stick mode: "
 operator|+
@@ -8613,7 +8613,7 @@ parameter_list|)
 block|{
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 literal|"BackingStoreException in JabRefPreferences.getKeyPattern"
 argument_list|)
@@ -8679,7 +8679,7 @@ parameter_list|)
 block|{
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 literal|"BackingStoreException in JabRefPreferences.putKeyPattern"
 argument_list|)

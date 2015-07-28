@@ -178,7 +178,7 @@ condition|)
 block|{
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 literal|"Could not load extension "
 operator|+

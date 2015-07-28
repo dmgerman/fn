@@ -1821,7 +1821,7 @@ parameter_list|)
 block|{
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 literal|"Exception while setting column widths. Choosing default."
 argument_list|)

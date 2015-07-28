@@ -1061,7 +1061,7 @@ argument_list|)
 expr_stmt|;
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 name|Globals
 operator|.
@@ -1133,7 +1133,7 @@ argument_list|)
 expr_stmt|;
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 name|Globals
 operator|.
@@ -1950,7 +1950,7 @@ argument_list|)
 expr_stmt|;
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 literal|"Error while downloading "
 operator|+

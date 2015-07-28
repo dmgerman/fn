@@ -1410,7 +1410,7 @@ parameter_list|)
 block|{
 name|Globals
 operator|.
-name|logger
+name|logInfo
 argument_list|(
 literal|"Ill-formed entrytype comment in BibTeX file."
 argument_list|)
