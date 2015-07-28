@@ -793,7 +793,7 @@ argument_list|()
 expr_stmt|;
 name|Globals
 operator|.
-name|setupLogging
+name|setupLogHandlerForErrorConsole
 argument_list|()
 expr_stmt|;
 name|Globals

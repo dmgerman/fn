@@ -11564,14 +11564,13 @@ return|return
 name|pattern
 return|;
 block|}
-DECL|method|setupLogging ()
+DECL|method|setupLogHandlerForErrorConsole ()
 specifier|public
 specifier|static
 name|void
-name|setupLogging
+name|setupLogHandlerForErrorConsole
 parameter_list|()
 block|{
-comment|// get the root logger. It is NOT GLOBAL_LOGGER_NAME
 name|Logger
 name|rootLogger
 init|=
