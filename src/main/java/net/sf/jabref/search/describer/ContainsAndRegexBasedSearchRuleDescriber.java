@@ -297,7 +297,7 @@ name|andSeparator
 init|=
 name|String
 operator|.
-name|join
+name|format
 argument_list|(
 literal|" %s "
 argument_list|,
