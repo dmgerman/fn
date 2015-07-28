@@ -64,18 +64,6 @@ end_import
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
 name|org
 operator|.
 name|apache
@@ -210,24 +198,6 @@ name|EntryFromPDFCreator
 extends|extends
 name|EntryFromFileCreator
 block|{
-DECL|field|logger
-specifier|private
-specifier|static
-name|Logger
-name|logger
-init|=
-name|Logger
-operator|.
-name|getLogger
-argument_list|(
-name|EntryFromPDFCreator
-operator|.
-name|class
-operator|.
-name|getName
-argument_list|()
-argument_list|)
-decl_stmt|;
 DECL|method|EntryFromPDFCreator ()
 specifier|public
 name|EntryFromPDFCreator

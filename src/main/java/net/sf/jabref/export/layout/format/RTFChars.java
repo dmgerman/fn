@@ -22,18 +22,6 @@ end_package
 
 begin_import
 import|import
-name|java
-operator|.
-name|util
-operator|.
-name|logging
-operator|.
-name|Logger
-import|;
-end_import
-
-begin_import
-import|import
 name|net
 operator|.
 name|sf
@@ -60,6 +48,34 @@ name|LayoutFormatter
 import|;
 end_import
 
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|Log
+import|;
+end_import
+
+begin_import
+import|import
+name|org
+operator|.
+name|apache
+operator|.
+name|commons
+operator|.
+name|logging
+operator|.
+name|LogFactory
+import|;
+end_import
+
 begin_comment
 comment|/**  * Transform a LaTeX-String to RTF.  *   * This method will:  *   *   1.) Remove LaTeX-Command sequences.  *     *   2.) Replace LaTeX-Special chars with RTF aquivalents.  *     *   3.) Replace emph and textit and textbf with their RTF replacements.  *     *   4.) Take special care to save all unicode characters correctly.  *  *   5.) Replace --- by \emdash and -- by \endash.  */
 end_comment
@@ -73,23 +89,20 @@ implements|implements
 name|LayoutFormatter
 block|{
 comment|// Instantiate logger:
-DECL|field|logger
+DECL|field|LOGGER
 specifier|private
 specifier|static
 specifier|final
-name|Logger
-name|logger
+name|Log
+name|LOGGER
 init|=
-name|Logger
+name|LogFactory
 operator|.
-name|getLogger
+name|getLog
 argument_list|(
-name|RTFChars
+name|LayoutFormatter
 operator|.
 name|class
-operator|.
-name|toString
-argument_list|()
 argument_list|)
 decl_stmt|;
 annotation|@
@@ -809,11 +822,9 @@ expr_stmt|;
 block|}
 else|else
 block|{
-name|RTFChars
+name|LOGGER
 operator|.
-name|logger
-operator|.
-name|fine
+name|info
 argument_list|(
 literal|"Unknown command "
 operator|+
